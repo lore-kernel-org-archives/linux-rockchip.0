@@ -4,76 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 479A9D30CFD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 01:44:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD5DD31A02
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 01:47:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JJFGqNG+S0mZKcbGCmwNQ2KITlcA3vR3Q//8j1Bn5K8=; b=NwlCbME/e+m527
-	Isv3M3AjJxF0rH4rpYtMYXhdnZiaY0+p5/FPcFoaHpFFwHMbIzINfNAfFN51zTb7FK83sx66KnupJ
-	L696jGJZcymxM6EImpDKcN0SS+xFGyD3VpdNwVBXfk1a0LRibbNyfOpDaBzxRrz6on+Mj9aCJpTBg
-	WlIWdm1S8PeymC9AmDPvXvtPozT9M3XYgMmv6fSbjah8Zps6rBZSVT9vFKCHDp7FBKeq5VboYjWQO
-	WNMkMPlKsybj4D0Eq/AvDupCBBF9+bEH6R+z1B+4erjwf1KTOeYuaH7eM0a7lHARlUmZZ1wPrNXsd
-	aCJ4GM291nrkwoVihsEw==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=C/4C8f9Ld/wjyzXPGrguyUWBGogb6uBl0Mk7/Eid2Xo=; b=rZAml0W7c/zCK4
+	DNF6K2yxJ0syJ+4ZMPZzH5xzCOmSu6fV84YZJyt3Ybj8OMbUN7mpRQLCzEfHWqOABFbliz7WdRibx
+	hF3WIF6a2qzr6BgetTGWlnLs4jAEd9+etJiBOUzYqMMSgbKpN3zhO73trgpUVskYHB8ADKLSh4fFB
+	0LLe0k6lGY9bbc2T4Aj9ilIwxVnvKY/h+vaCuPGM2YX+R/MdU86aNYAoxBYnKKQcDuaYbHbU6Ldhf
+	mrMONswDJ7vcBgrM/qnD/H9teXeGW/OMg0aqqJBaR4fLk18HJJhtCRKSThqj03Nmrq49+k2CHw4Ri
+	dTa4m89P7tov7YtSRb/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfpvl-00000007xQh-1hJ1;
-	Wed, 14 Jan 2026 01:44:17 +0000
-Received: from smtpbgsg1.qq.com ([54.254.200.92])
+	id 1vfpyn-00000007xfZ-3vLi;
+	Wed, 14 Jan 2026 01:47:25 +0000
+Received: from mail-m1973184.qiye.163.com ([220.197.31.84])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfpvi-00000007xOk-3iiJ;
-	Wed, 14 Jan 2026 01:44:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1768354970;
-	bh=JtDaMTrCVYTenPyLUxDxSKCKTU8w9pk7EHSNHOX9HKM=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=cwGDN4CV1gVhbiig7lhSn9Wzhuy88NCCh/A+Jo5pEUFHUXNDaERE0br5EUoaX5N/e
-	 SuxU/EJbjYzlu7YSvIWm8SoGsvrePUGD5Gil241qPp/1yHEOQ0SH2hIyza4E+t1IXf
-	 qfNVbjHVbUBacSVElx3xg4NUbVh/mjyoVtd8xQcs=
-X-QQ-mid: esmtpgz12t1768354962tdb7ab234
-X-QQ-Originating-IP: C3zBYr1GJh9vpI3rU4BSSw305QsfwgZ2bJEwtEh/f9c=
-Received: from [172.16.12.51] ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 14 Jan 2026 09:42:40 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7794570359675995168
-Message-ID: <C5D30204B8186D5B+5f2f87f2-3fff-403e-a439-847fda61e2d8@airkyi.com>
-Date: Wed, 14 Jan 2026 09:42:39 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/5] Add DisplayPort support for rk3576
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20260109080054.228671-1-andyshrk@163.com>
- <aWa8mvBkTrKhZBFo@venus>
-Content-Language: en-US
-From: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <aWa8mvBkTrKhZBFo@venus>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: OatzRg8pHEjp9nPMuOfAIDYiogTmRS1w5otD66gS7MphYXe6UQYMhFfe
-	PvwbI57UVt/joEGMsR952ECncWatZRD4OdaWX5TZJBomWpHzEfqzKSburwN7u3HSZg0lyoV
-	9AMNtcdBJUIzaE9Gt+Xl81Zcs4UlVjjmwVXcNuGkTr9VWQuBGEuo059Lf2ty8VKpgsLyE4I
-	wufOnPyenTz6D7hW81M/25uT75zjoXn3E+1R/VK3iS8MdpgPszr7KvaPFhImPHNfK7bkj0M
-	wNPTyNz8ZmAYji5O7/kj7vvGTBnSGjr7EpyqzgtuAZkQfa1eHGggcw9AIAyinZcjexl3TSM
-	JitP7fgKXHW1dQQ67i7QXGOqbdhD4EnJdhulmt6TGeTZPFbani7HXJ/AqF2N2uWIbNqjXLs
-	G4pp0jT9bwGWLRLjV1UQYz/PibOVgV2ZKf/IDwGrzp3NdmzW0i4RNP9akmx7QAXx6h7hVoL
-	2Z8YYFAGDQKHwGudImNOdXsdqa0wKDqsOvROsbqgJIRLhelcPL+iGQeffcDNzJbZxBYr/Rb
-	Um5LOnGnsF2/itseh3lQgebXnT3HzUVPNxf95x3cS3+Pb3+tHwPvzts5F7HySaFRfT724k4
-	R1YO/MjXprSbwSuEM05XqDuU790RaRlcGXqcZSL5Wk9yyKzciXEc8ntoVAcR7qC59INtip/
-	YX9JFHzSmC9lEKv9Td45InmAqTc+YFmVIoV9Su1yihGR/QL7MdHOhMcalSgr0AJEyMnG4G9
-	fYMNDBbzyygsRBOU2ZclucB9hZJbUgRwFEaVGeDksTpCqpEi+dtDsWVBv6ecl/5u+l1A2ci
-	g8d9Y06KYZEA7sBbFWuLZGmOkg3vGCGgsPDXSBYxUnliCO6f1NYYdD9Ho6gpnWINPdC4zuW
-	nhJ9YiYV565NgskJpQhIaJR/z0oOTr50QKB91AHRAUPuoF/NhzELzqBVVfSeZjZqhlx2/kc
-	7xNai/pEiC4+4xxVl341uNMmZxu+CqAW6X1WkEf+7FVKEZIk3ukznoqeH
-X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
-X-QQ-RECHKSPAM: 0
+	id 1vfpyk-00000007xek-2DE4
+	for linux-rockchip@lists.infradead.org;
+	Wed, 14 Jan 2026 01:47:24 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 308c2b3c7;
+	Wed, 14 Jan 2026 09:47:18 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Marco Schirrmeister <mschirrmeister@gmail.com>,
+	John Clark <inindev@gmail.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v3 0/3] Fix sd card support for RK3576
+Date: Wed, 14 Jan 2026 09:46:51 +0800
+Message-Id: <1768355214-198361-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9bba2f90a109cckunmdcf781114283a4
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhpLQ1ZMGUsZHR9PTE9KSEhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=YsB/yTclbhStGVe9wPRCj09ngucI6Ehua3JgYLZsKBDattVtpIl+eyqj8l3eeCI8CNvqUetguau7RqAssFy0K+2TcTbKAZfJxgIHLbjUyt5/3fXpi/SdA6vvElW9LDh5bdkkKRZBAEpatxac5QVsAmeBrYnmMv3AUUH2fT/4GnU=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=/SwOSO65L2hA9pCZ/ByY9Rw19Jn5x5M07x+YiJuu2J8=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_174415_442750_269BE91B 
-X-CRM114-Status: GOOD (  17.01  )
+X-CRM114-CacheID: sfid-20260113_174723_102980_761716A8 
+X-CRM114-Status: GOOD (  10.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +68,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, robh@kernel.org, conor+dt@kernel.org, heiko@sntech.de, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, Andy Yan <andyshrk@163.com>, mripard@kernel.org, hjc@rock-chips.com, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, tzimmermann@suse.de, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sebastian,
+SD card hot-plug support for RK3576 is totally broken. This is because sd slot
+should try to use slot-gpio(cd-gpios) instead of function IO for supporting
+runtime PM. In order to support slot-gpio method, we should disable jtag
+switching for RK3576.
 
-On 1/14/2026 5:51 AM, Sebastian Reichel wrote:
-> Hi,
-> 
-> On Fri, Jan 09, 2026 at 04:00:43PM +0800, Andy Yan wrote:
->> From: Andy Yan <andy.yan@rock-chips.com>
->>
->> The DisplayPort found on RK3576 is very similar to that of RK3588,
->> but work in qual pixel mode and support for MST.
->>
->> This patch series aims to add basic display output, not include
->> audio and MST, which will be the work for the next stage.
->>
->> Only test with 2 lane standard DP port output now.
-> 
-> This is a nice minimal series :) I got it working to some degree on
-> the RK3576 Sige5 USB-C port. The display connection detection is
-> _very_ unstable, but that part is handled by the TypeC Port Manager
-> and unrelated to the DP controller (and already an issue on the RK3588
-> based Rock 5B). IF the display is detected (i.e. USB-C side worked
-> properly), the DP controller managed to do proper output too. Thus
-> I believe this should be merged. I plan to look into the TCPM issues
-> in the meantime.
+But the rockchip_grf_init fails to handle this because it couldn't handle
+multiple grf nodes. In this case, iocgrf is in behind of sysgrf, so only
+sysgrf is handled. We should scan all possible nodes.
 
-Based on experience with other platforms, I suspect that some HPD events
-are not being properly propagated to the DP driver. This might be worth 
-looking into.
+Moreover, the offset is wrong as well. Per the TRM, the address of
+TOP_IOC_IOC_MISC_CON is 0x260440F0, which means the offset if 0x40F0
+intead of 0x040F
+
+This series fixes this mess but only adds slot-gpio support for RK3576-EVB1.
+Other boards are also missing slot-gpio support, but folks are all cced for
+checking the board they are using.
+
+Please review and test
+
+
+Changes in v3:
+- remove of_node_put() (Heiko)
+- collect tags
+
+Changes in v2:
+- use for_each_matching_node_and_match(Heiko)
+- add fixes tag
+
+Shawn Lin (3):
+  soc: rockchip: grf: Fix wrong RK3576_IOCGRF_MISC_CON definition
+  soc: rockchip: grf: Support multiple grf to be handled
+  arm64: dts: rockchip: Add cd-gpios for sdmmc of RK3576 EVB1
+
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts |  1 +
+ drivers/soc/rockchip/grf.c                       | 57 ++++++++++++------------
+ 2 files changed, 29 insertions(+), 29 deletions(-)
 
 -- 
-Best, 
-Chaoyi
+2.7.4
 
 
 _______________________________________________
