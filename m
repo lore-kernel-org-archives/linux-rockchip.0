@@ -4,67 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96024D29FE8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 949DDD29FEF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 11:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0kmGqNVSxT6KoyxpJzu6HbSovfaBQO8jKYUNrgTk788=; b=OurpCL0UYG44cl
-	SozJTS0oeRPIznlkxHrs3ssCtMK/pnubhGrEA5MtxqH5pCtYbgmXLASlbXk9DvXLSdSKT/oWhKYNE
-	AS+ggMcKIwlXyvRv+pg/fgGK5FW+VxjTg7pkf/38f2lG8C6Std7pjFQqBkDosl6epbLATlwQEUX9i
-	NNw8yLNbvqn/6Zwx7IQgVEYziBUWnm5jxdcQwSRyjtLDa/HlCZHQDS9V/3/QpZJiE+V5ujaLWMs+r
-	IuizODz9rsoRuwVgkrafjOUozxi+BJ7zZE8GLOvcOWtC5IKqC8Z8UN4f0uFlgE9WdagSOCjG2oYSZ
-	geNhEFbDyjX4zLoYca2g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=yFZAvCZE5Fh2CJuFA3B7zKJMCK2K0cgbl4ZAkhwjccE=; b=fkygJM8ca0W0QeL8Y7vTXG4fBW
+	jJhR0EtcNU+310o4ZCVXEFNwyztIrX1ssAsjLKrS1Lek7cRlsXIeO7ZRVUuQZQf5vGfri/uJCPoAx
+	uQL5LFqXSegRTO17yjWkKgzfH+7x3RjsZ2xsI99iGdrpn0aisdNpDRezg7wAVml7phXEVHcAGzJQV
+	Ohj1EIzmJrPm/P+5oxrOLUz2S0lc7G+UT+9Gf9dxbyG1UUB+3NbWqZDXOzu+6x8SbiNvVhKKJf9RX
+	QQcO1ng3A1UIIv+/7K0R1Tz9qJ9su0OmekFQ3eAy85e3A66+/pp6NGPFCqxk72CA80sk2SP8AiztP
+	NB82ROfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfySU-00000008riu-1xD2;
-	Wed, 14 Jan 2026 10:50:38 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vfyvi-00000008w8z-3v9d;
+	Wed, 14 Jan 2026 11:20:50 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfySQ-00000008rfw-0qZb;
-	Wed, 14 Jan 2026 10:50:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=htkP6Pi1hR5sLWZLIAp5bvw4UNy0AcaV5hG702kfd58=; b=UEIBZrdr1CmlYzAy7kRNlvxawY
-	IDzrS4vRHXt+fHD+cx3IXvqcDTN0QW8v068Gi1oA4GrB0WKM0yGvFeNIBKfin62LNUuOuV/wfEgrV
-	TqZLFUa5ijcXJN095vLknAdY/vkDShw6gMtQggZW/vjh5pySxNxKEmdiAsdSCIC3JK33N9Kucjuw3
-	Wbmvadt9deH+XyMLSRtslWTMYoML1KXeGDgqyIiINIvqsOPY1DX2GV7yt+s48I4yPPcUrXs6pJnn/
-	NiITrxMGcg4py/kF41oY4Mqw3WGgyspoJr9LXyoTEGy47TxGmoAGnH+/0y6uZId2gtdqMql0FVY7r
-	W8PKwZgg==;
-Received: from i53875b96.versanet.de ([83.135.91.150] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vfyS7-002HSK-Vs; Wed, 14 Jan 2026 11:50:16 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Geert Uytterhoeven <geert+renesas@glider.be>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] drm/rockchip: DRM_ROCKCHIP should depend on ARCH_ROCKCHIP
-Date: Wed, 14 Jan 2026 11:50:14 +0100
-Message-ID: <176838780308.4067705.6421121345360126054.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <5db192d31cc51f027f107c01c01a353a0569ebf4.1768310045.git.geert+renesas@glider.be>
-References: <5db192d31cc51f027f107c01c01a353a0569ebf4.1768310045.git.geert+renesas@glider.be>
+	id 1vfyvh-00000008w8L-0In3;
+	Wed, 14 Jan 2026 11:20:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=McwtWZarGy/mqfWsR4TlM8acbCbH3jUkpH7EWjhWvVM=; b=gZ6PmiwHIfB854+dG9vt73Im7t
+	2kdtPYgmfkRV2BphL1R29H5oW0Gj/FJrlCQsObnNQLjSVJBnteCQdetqEs3ffrz+Bfx/eKYTpB6ud
+	J016zR8KZ1Al4rd7+1/KZ8EdcgYg/lQfXmu6EafpD8gLtxY8QH/37ukyefnG9w3Tmdurq+dQMlqS4
+	Cg3T091d1D9Xi41DGlTwVdNWkFSR7UCE4ESmtUAeo+LW24fhYig4Mrl7iQIS51xrN5lJO0IBluIbX
+	saiPmjqcVMldWjfko5VolZ6jCG21BqiGxg1nlefdzzbCdRMduWrBwJ3b+bSQ4K2JtNDlUndOdNOTd
+	EjAgAMLw==;
+Received: from layka.disroot.org ([178.21.23.139])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vfyvd-000000066ow-1N4v;
+	Wed, 14 Jan 2026 11:20:47 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 9FCD525F65;
+	Wed, 14 Jan 2026 07:00:03 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id PMC-TBv38890; Wed, 14 Jan 2026 07:00:02 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1768370402; bh=McwtWZarGy/mqfWsR4TlM8acbCbH3jUkpH7EWjhWvVM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=Lg7DywJZhDrdYLigBJpXvVi+gvXfb1x0GbLK8LVmtJSXSuAGZIdWUs9MR6HMf4ubX
+	 5hkran3Z6nplnFonZjtC+A87JXkLh0Fg3eiyY9qBOuA7NBwHovXBmvVcpR8q6CcAU7
+	 WjQBWxPlVNT8sy3WM+1iMbQaE3xHLMynnYHrLjC5MqmevEwCpl+NQFWvjh7XczrnOz
+	 BFTHteGavPoJiVPTbZ2nVRevuSq+BA/U3IydVFb91n66OvE+t5rKLqyG7JPdYfufYI
+	 dEmUjuZa1NQ+H4zisfuPuG3sYZ+FUuWJuI68NnE4Uor4yX+ZyzDZl4KirHhVDjrEjQ
+	 n1T64K/DHjQfg==
+From: Danct12 <danct12@disroot.org>
+To: guptarud@gmail.com, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>,
+ Krzysztof Kozlowski <krzk@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Martijn Braam <martijn@brixit.nl>,
+ Kamil =?UTF-8?B?VHJ6Y2nFhHNraQ==?= <ayufan@ayufan.eu>,
+ Ondrej Jirman <megi@xff.cz>
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Add modem to the Pinephone Pro
+Date: Wed, 14 Jan 2026 05:57:03 +0000
+Message-ID: <6468173.31r3eYUQgx@melttower>
+In-Reply-To: <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
+References: <20260112-ppp_connectivity-v1-0-284d6e83b212@gmail.com>
+ <20260112-ppp_connectivity-v1-1-284d6e83b212@gmail.com>
+ <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_025034_291023_11B62929 
-X-CRM114-Status: GOOD (  11.05  )
+X-CRM114-CacheID: sfid-20260114_112045_444696_02434B54 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,32 +88,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5618752448677798343=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+--===============5618752448677798343==
+Content-Type: multipart/signed; boundary="nextPart6104322.LvFx2qVVIh";
+ micalg="pgp-sha512"; protocol="application/pgp-signature"
 
-On Tue, 13 Jan 2026 14:15:01 +0100, Geert Uytterhoeven wrote:
-> Rockchip display hardware is only available on Rockchip SoCs.  Hence add
-> a dependency on ARCH_ROCKCHIP, to prevent asking the user about this
-> driver when configuring a kernel without Rockchip platform support.
-> 
-> Before, this dependency was implicit through a hard dependency on
-> ROCKCHIP_IOMMU.
-> 
-> [...]
+--nextPart6104322.LvFx2qVVIh
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"; protected-headers="v1"
+From: Danct12 <danct12@disroot.org>
+Date: Wed, 14 Jan 2026 05:57:03 +0000
+Message-ID: <6468173.31r3eYUQgx@melttower>
+In-Reply-To: <bcee4f0b-6159-46c9-81ba-ec2970994613@kernel.org>
+MIME-Version: 1.0
 
-Applied, thanks!
+Hi Krzysztof and Rudraksha,
 
-[1/1] drm/rockchip: DRM_ROCKCHIP should depend on ARCH_ROCKCHIP
-      commit: cd98e73492102a2ff54923f08c37a2780979ac4c
+On Tuesday, January 13, 2026 7:22:33=E2=80=AFAM Coordinated Universal Time =
+Krzysztof=20
+Kozlowski wrote:
+> On 13/01/2026 07:42, Rudraksha Gupta via B4 Relay wrote:
+> > From: Rudraksha Gupta <guptarud@gmail.com>
+> >=20
+> > This adds the Quectel EG25-G modem to the Pinephone Pro.
+> >=20
+> > Co-developed-by: Martijn Braam <martijn@brixit.nl>
+> > Signed-off-by: Martijn Braam <martijn@brixit.nl>
+> > Co-developed-by: Kamil Trzci=C5=84ski <ayufan@ayufan.eu>
+> > Signed-off-by: Kamil Trzci=C5=84ski <ayufan@ayufan.eu>
+> > Co-developed-by: Ondrej Jirman <megi@xff.cz>
+> > Signed-off-by: Ondrej Jirman <megi@xff.cz>
+> > Co-developed-by: Danct12 <danct12@disroot.org>
+> > Signed-off-by: Danct12 <danct12@disroot.org>
+=46or clarification, I did not add my Signed-off-by.
+
+I'm pretty sure the original patch came from [1] which was a distribution-
+specific patch applied on top of [2] Linux fork, which does not have a Sign=
+ed-
+off tag.
+
+Please remove my (nick)name, Signed-off-by and Co-developed-by from this pa=
+tch.
+
+>=20
+> You need full names.
+>=20
+> Are you sure so many people actually were co-developing this?
+>=20
+> Best regards,
+> Krzysztof
+
+[1]: https://github.com/dreemurrs-embedded/danctnix-packages/blob/main/pine=
+64/
+linux-megi/dts-pinephone-pro-remove-modem-node.patch
+[2]: https://codeberg.org/megi/linux
 
 Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Dang
+--nextPart6104322.LvFx2qVVIh
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part.
+Content-Transfer-Encoding: 7Bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE8JqTPA/gMx5VjKThZsq36qRd14EFAmlnMC8ACgkQZsq36qRd
+14GLtRAAraxXEz2JwF+2pZPPGY143ElMBaBuVO0UmPiP2C1cgLHQpW9OvoXnT082
+XGSl3jpjKBZH60MiWAHq3mp26nKLuByjCRklsIdG/eHxThcGYVbwi0xJS0BIus0I
+kpmR8X7lkdLYL4lndob6xE6xAdFmgqypI3DjpedjGQO/en+eoGqN7+lGODGa+iUU
+VJDs3OZDj7UMThD6+GepJgw+FS9SGwnsgeJRZou1HNaupaoQ/Bsrc1OA9S3SKlpD
+fDIrKchmHglpXhoC88bHf2VPO8Z0leT//+A0sDCTqeboDodlplrNLya+iIxGVBDF
+C2qJVGnee0oD6NJXtU7nhT9g0i16A86Ea+H6vT8VzNBFvA2RBZRRrXmCgH2SzqRr
+4/ycWKfhjLgALVty/q9wOE1lk5pejnX616zWikS1UKWi+nxyE0iq8SKnGi7CBHvz
+Jn3n+BWyEiVPp/EFbdRbmLcDcmOYdfD3FLaiaaUz+F9uBV6D5ug8JAL/sn7bor/0
+0LAQJ35PRi4MRYIyRq1XH2r56MYJEKcda0HQVVnsFoknnR5RCX2hr9t4j4K2ufnz
+DxA6bpgIhCN58BkA2NOsEL9JvxKCs6DFDVQj5MSW8feG3pdkO+ICaqvvrFtIfiP9
+Niu4Mr5U495aCGIDCEIrI4V+mBuKGZsduMyD19lzUA4/RhhHshI=
+=AxqS
+-----END PGP SIGNATURE-----
+
+--nextPart6104322.LvFx2qVVIh--
+
+
+
+
+
+--===============5618752448677798343==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5618752448677798343==--
+
+
+
+
