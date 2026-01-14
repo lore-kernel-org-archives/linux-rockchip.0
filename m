@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 445EFD37E4D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 15:30:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B197D37E4D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 15:30:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Q0ugIJ1zC9TjUH/cTJvsQaaBp74QUo0zxyCQLPBrPuc=; b=h1Ve6YIP3eZ3fG
-	9aJm5YbRU3vg14fp6wj9BKL5PfDAKmPew6dTStTj8nk639dopCS1BEDuUbl8JWy4iQGddVdz0E48/
-	h0wJYhg5gjBpBYsZNjvLc3U+3sbN/7k3XYY2s3pJbYKakkJZ7prknawPMph+NAz5RHcntxogXxVD4
-	EgF736LDArv3gy6hVbL0yAZ/R/sY2YmWLSEorahYNcoXbWzbgwTpfglYNgGnCZPax/cRozK9kRfr8
-	lTOMoBE1VTxQ2YX/Xhj5GOVMfpuOsuPrk70mrJ2yRjYXqI/wNJ/gFcBtFr0QPDnTqcSeI/QGLcvcc
-	kUnIzw1u17KA4j+ir8Qg==;
+	List-Owner; bh=kybtipprrFx356RqnVnyP49F5sdC/sWj8bqbWo7MsZg=; b=MFZQc79/ehuj1w
+	+VWLgStvRtnIAQF47POItp83shjFd3MwX5l9uXG/NG4sjAK8fUB8jfeseM3skaeDHOHvoNVm98iMT
+	BmELLM390pt4Lz9oxflNytVQoWHE/HFppu2q3Nv1Ycj0QacKNpvXC1zwElsoLMsR4EURS5fH64ynU
+	zNZJ1yrJDadJQfj8YLqryip3ya14UhT2smeYdwWlpeRGf2gSkFD8DpgqEslNZxakM31dZ1KDdiVEL
+	x96bcJgMwEUZo5Ymt6g0Gw1Ih8hRIeUQP2rGVuOD1UGyb8VF9x/ckI5udTuAfxjnhjFd9Rff/y1uu
+	l1ogOUzSiTswSgXMpoqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg2pP-00000009hMq-2KiK;
-	Wed, 14 Jan 2026 15:30:35 +0000
+	id 1vg2pV-00000009hRX-3DW2;
+	Wed, 14 Jan 2026 15:30:41 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg2pI-00000009hFN-2pFo
+	id 1vg2pI-00000009hFM-2lps
 	for linux-rockchip@lists.infradead.org;
 	Wed, 14 Jan 2026 15:30:30 +0000
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60EDV5jA3551566
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 60EA4vRV2902734
 	for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 15:30:28 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	TQOWmZ4i8qr9JpAuK61Y9RoWdOmJcEUPWfdU+wHADeY=; b=Nd+c0nG/FDs7XoIV
-	szExDaUVSYkyrbiaHalQ7Ap9+Ae6UJ/LuHmENsYmw2Y917XAkpOSA5PDn/ucsIXw
-	RLjTwBfwp+vw9JlBmnZtHYYPA+nuxAqdd1pB4mQdMxi8gLqJiqMqFue9dtxzWhhw
-	z2Mh4kP3YONo/VwuqMbCWqIdg2ZulAZiBjr4/v+VsHOzRPeea0BMSLLBuepXEfaK
-	4TcnFo8VnR36XVqUEY+VzZlVDB5GSRQreJSVMoii0SAdOXRljAxbNb1718WPAMnT
-	H1EH+vCGRqzwWc6iLgCOM8ppr/Cv0FkS9cCCOv2YBPPewR6rimIDRchIvZsKHfwn
-	UwREZQ==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bpc3jrd3y-1
+	Td023EyNphU3HomQn2sLFQM9CKKDLSqiy1q/KAZbFDo=; b=m9guE2VH4qUM/cRJ
+	F9CSne1yWYFXLejgSGprT79ctgmVOvU0Un8d+0E8aaesqKyWhy39p/Y5Nk+zgulz
+	Nj6F97jEeXMdB7O/77IKakV+NC9vzbhiwyv0+JxNix0O24cIR3nPDmsy2ToeuooL
+	eg5rtcsqs5cHJVQRQsNOMX2C29hm+J9lhkLUgwwKjku/sN51CRNUJXXhiP0Sqfoy
+	ypK0q0R2Lu2+oyU+x76U7mJA9dHP9si/D0jfLUBBlngAHXOWYjQdmWkUXTJ/Cuy6
+	hpIlMQ2m9ih2/r4ADu+T3z57erTicOBqKkLRdQ9hDxgyp6sNsVw+p5Or6YsQ+5tK
+	PtqQ8w==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4bp931h2aj-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 15:30:27 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8b9fa6f808cso2634156685a.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 07:30:27 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 15:30:28 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-8c53919fbfcso12723785a.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 07:30:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=oss.qualcomm.com; s=google; t=1768404627; x=1769009427; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=TQOWmZ4i8qr9JpAuK61Y9RoWdOmJcEUPWfdU+wHADeY=;
-        b=Mhe3RH2OgZl5LJYU7BnA2faKgkqMAOhRPiWgoQIGEodG2R7N+EuH2b9+/wC7FW3Kth
-         X7o5OvS2CdeF5ycvJmXb2BGReK0rnx1sZqvinf6UWermErqbRNtP77JXiHQZ6P0VES+g
-         RlR5twKo9Gf5eHshn0zlodthrDUzBA7edGIhHu6H8PtB9adZQpIBQDE29t7zTaOeKApK
-         UQ2YpH70UQZsRAQKdISWrsoZcyaKz/ZI0DGAqqYsqMy2JBXHfevz8whVhB7I6+D4yIDl
-         XEuC3LfsP2FmXJLz9VJHyK98TQNVjo4ryNL3GCwCugOf6phS1AboCxnVUOOM/9PtniHc
-         N/pg==
+        bh=Td023EyNphU3HomQn2sLFQM9CKKDLSqiy1q/KAZbFDo=;
+        b=kxu20ZslKi9+wsYSCQx4WVbLGcsIFwBuXcE+oS/dIo/HG4cmgwhro/uu15p+je7XsS
+         3N4RwWkpA3uFSYm/+GKEqI43OauuDXhtWu527jh+9Y/0WLhSUPu0Ws2vxqcQFl8bwXx3
+         aieHLqdro5zIVGxAE/t/glBi4EPeYkxhZPn9HoYT5GXAPXloAWpBlqEeMufPynxdjdTE
+         nwdEjryU7fBo2rGuzMfET0OWrytF0yFNsezlG5FD//MoEzLIhBBRecvrb5hh1UwJFqAj
+         XADpq/nJN2jCvVs+BqG0OzwpfbxXC3E0LtPGESl5/LltTa2swp71229KLTWEted/rNJD
+         0g+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1768404627; x=1769009427;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=TQOWmZ4i8qr9JpAuK61Y9RoWdOmJcEUPWfdU+wHADeY=;
-        b=RMoYiykKgNBk+FXFONzGDBobcTavZnMvOwwCTvsG4jeV3KrtOnt5helsmth1dotf75
-         7yWCxPXl/wB/MJcTnBMdAp0TsXyoB20Lpy7vs5ZoArRCBRgad+rm43+iaPNtDkYbb4f/
-         BUYv4KniEdK9FxTiT76xXyzMxYl7XJDAEB9YXRp7+9Uz4cAi0TDhAQERvLTW8v9NYx+0
-         9WCPBzKhT/EBicLlfwMtW4fBIDDvQL+GuJcvR7sToSi4UIje3zN/hiJTiMiQhC86Ug2O
-         K3r3likERwUlzt+sKzqawpR3UcUv0n29hFggbza7FdkAst6fOigMxcVm8O6smLx7+NWH
-         aA2g==
-X-Forwarded-Encrypted: i=1; AJvYcCWJrG7vGsxzElxgjA9skz/flBaLIli9Of+V7Cbr4g/Md157XJvSpwgGAT53h4bzomjbSxbLrE9MaObhwoyD1A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzY7kFyLX8z/xhtBWFZ+eXdQbEJqOOC3rHw5PtyrFT+/eMqfxMJ
-	Zyt3HxrXiwW+pRAkqpd73E8Iro87z6nA81D6smRcBn/nYkadB8J02iWJQoIeSSKB2SEqEYh+UM7
-	BG/eCRttCIPfosKgpDnHu52q1o83FZbv72oe2YVBrawvsLjAswIpqoVq5x5SP0nPy08sL8sr/5v
-	I=
-X-Gm-Gg: AY/fxX4WiIenzU+BKWooAFJNORaaoFyQRl80OANlBpNM04xFVmJvQdYDX6furb+UUwf
-	TuycRnd8uu1VWZW9B0cXWmHRFL8YdynBEOhrhbHcrGrLbk/DM7hVJ1yftw/JDnmeNRhU0I3B66x
-	gayrpOHDBtmZFpbq5hTpitE/iEAhpuBaIQd82JpgeObsxiX2Y4ACPd57EyP6J7wK9rwUzD7Z0iA
-	ACoYF782uTQGsTXRNEV/FaEJiSsMUzZGXzp6znMK0gDtgz8KU3NwFS/HTEClvP4Lg4xCrXaiPQc
-	ULkA7BG8lIhvyN26ZvNBTQpynmrcaODbMsP0js75/bHAzxqasRuSzAJDKMQdEiXkW2hPJRkIEpn
-	hFuMorFbEqymuZ/idTTMfqxPIDLM8RszwsQ==
-X-Received: by 2002:a05:620a:44c4:b0:8ba:5255:107 with SMTP id af79cd13be357-8c52fb2406emr386805285a.18.1768404625665;
+        bh=Td023EyNphU3HomQn2sLFQM9CKKDLSqiy1q/KAZbFDo=;
+        b=DozuMN8Wbxh7aLfKVoa2n/GfrK6ACYq0uFXofeVdf6XNAcWIXztxsscYo++JI2tqgK
+         j35gkrv02ZVd9sp3pOuurf+O5VQ5t5AxV52/7AJpEph/Z7gQA1qqUU20J0+xKJ49wnrv
+         Wkd/NOSKmyPzMv/7o8kyRKceSiUd0l1ArRUDHzWoKbvkD+T71bgZSYRLS8XE80KQK6cb
+         HKMONGL80ef3DbqA1sM4d8B2tgksKDISZ6zq9LI46EsHYL0iEoEuuJAvKy2bWmS4MHVF
+         ppF9X4K46VQYzskbdxf1Mb96kT6dPdp5HRYLn43K2PKfp/hAIzvo3xUUeAYdWsjHjcsd
+         /n4Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWjvDTHNi7xci4xMzicta3WnrfNet3QTdBYit4aWYWIoScOL3RyA5rcVPn/PRngXv4IiLXZW31mVBmvFKxJjw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz5BQsgxCe97x4EhUGR7hI2NfFuy5HKKq8kEESxvnLwLOcjkasr
+	DvIwBZJwd9tBL1fkJTB1Jx5NIDkbgZgeyrDQ93jgEGs5McvmCjN97Oe4Sm8P/Y84UxYINscSB1Y
+	Rb4yMFjS3Tr+v/ivmIhnUxm3hVC8sJVJRmRFU6u6CMsjwOTV8et5aIwT8WtcsKSr4XZsbG5j2S8
+	8=
+X-Gm-Gg: AY/fxX4ts9E1KZA9IM9sBYbH1FFWYsMiSHn97PBNOiGjHUQd5dwTfuLLGV9UljU4AKD
+	lt12K6u/Pq7DHXkT1dq/qWJ6wpd0b62XhXqk76DLcewqC8sSTafbgwd7XVavq6ZLQ6P0RQ1MHai
+	yAwsa54k1oQRDt/X++bdS/lCVuPnkNPEIrlwgKUmyaPLGAKNglrLGzbiHX5n8j/ozM4jIxXmb61
+	7/vy+vtNAKKkW2BHpo02856LzTDWxioafsq3AjLEbmnsY3VXuRVDqnPkEFQF3u8v5lD/F5n9jy6
+	YE655pUgA65DdzJKYd1mzZKHLAunb48MwkEKgskqW7MgO0zqu3DbTJtB7TXfiV+e7Nq8cdWPWYR
+	RtrztnXAj9E9QeYqdi7ItKpWQ/fWrOGZGbg==
+X-Received: by 2002:a05:620a:178a:b0:8b2:63ed:dd10 with SMTP id af79cd13be357-8c531817444mr270060185a.78.1768404626550;
+        Wed, 14 Jan 2026 07:30:26 -0800 (PST)
+X-Received: by 2002:a05:620a:178a:b0:8b2:63ed:dd10 with SMTP id af79cd13be357-8c531817444mr270052985a.78.1768404625897;
         Wed, 14 Jan 2026 07:30:25 -0800 (PST)
-X-Received: by 2002:a05:620a:44c4:b0:8ba:5255:107 with SMTP id af79cd13be357-8c52fb2406emr386788385a.18.1768404624120;
-        Wed, 14 Jan 2026 07:30:24 -0800 (PST)
 Received: from [127.0.1.1] ([178.197.218.229])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6507bf667fcsm22812989a12.29.2026.01.14.07.30.22
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6507bf667fcsm22812989a12.29.2026.01.14.07.30.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jan 2026 07:30:23 -0800 (PST)
+        Wed, 14 Jan 2026 07:30:25 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Date: Wed, 14 Jan 2026 16:30:03 +0100
-Subject: [PATCH 02/11] pinctrl: starfive: jh7110-sys: Cleanup header
- includes
+Date: Wed, 14 Jan 2026 16:30:04 +0100
+Subject: [PATCH 03/11] pinctrl: sophgo: Cleanup header includes
 MIME-Version: 1.0
-Message-Id: <20260114-pinctrl-cleanup-guard-v1-2-a14572685cd3@oss.qualcomm.com>
+Message-Id: <20260114-pinctrl-cleanup-guard-v1-3-a14572685cd3@oss.qualcomm.com>
 References: <20260114-pinctrl-cleanup-guard-v1-0-a14572685cd3@oss.qualcomm.com>
 In-Reply-To: <20260114-pinctrl-cleanup-guard-v1-0-a14572685cd3@oss.qualcomm.com>
 To: Andrew Jeffery <andrew@codeconstruct.com.au>,
@@ -119,51 +118,49 @@ Cc: linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
         linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org,
         Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=906;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1597;
  i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
- bh=vQTc4Cx1cuzPah8LLXL26kybe/0nRvPEYAbDNlVXaL0=;
- b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpZ7aBbIM2DWPBQNuBnGlAmRqfublmk+ABnSOCP
- +eX7CJ/kqCJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaWe2gQAKCRDBN2bmhouD
- 13B7D/9HNpUgwKflmRiVEQKiqAHJlihytGsm6xhqvuPk0OXM6g4wK8KWJ7AoXqklkhVGJfLYvjS
- EVoKICEkLULEFDlMFEFKdNqN/uGc1TUwNp5gMcRJRrlIE+ZYvRo4LIknCsvHV1jT9i+Y2L23c3p
- +uDVB8dH2uwJv3IuhJUnA1gGMQM4xpw4ac7NB+UCOk2LnfcACtKncHKQ7jr4vbc3O0f3pfTQpJp
- dZkWVtWxp4BQm+5d1XuZwVzvgj4b/xAJcvhU0BzFKw41RORAakfzsVxAkTHHtP62LHFxnKZSwKi
- E8XvqOwq5O+74OFdv+vHFLcG/6f+rPsNDMLHCxupzCLkx6Pwqg6qJp9qYbsQJCEuj1EJyrotryy
- ANOtROt7QabL1HCVBOeWE7/I1c/PzdUslygkZyhowuMmtTrgMAsawR3fzOXHuQOQhjeKsN9lt/M
- fx0zuszc+shjokj+huAOTlufmrLlWzFxqM4Hu67hEma3ScG2iv485ncOEg87MQQpuFfjrtb+vDK
- ICaUVJAoHNSRifaTDmw6lMDG1ZAAU7vvujZpio8eHVdgOh3jPCnAMmeTePFgqI8N3JIJ+bkQyuz
- 2wHidhJCNQckjPlFZ10HKxqor1PXsDvliPHX6i68yW1W61YZ+wIbn5bOmZ0GIDO6/jOlooNoy63
- tkrtX+1GbUIJE4Q==
+ bh=4PObio8XO1Yv8S6gHkX3VQh/PJ6tCJixfC8ij3DGRyo=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpZ7aCHz5EDoUoqxZYrNILSL7sGe0v1k0RWIrht
+ 2xoRozKYP6JAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaWe2ggAKCRDBN2bmhouD
+ 1w/tD/4gze1JdYhn1yRw9z1Dt7upNwMEXwviunBaUWTiyScupfZYrZZ+mi8XAQ3h7sV+pqVxDTa
+ PlkvxnU6zlG9dkymlIE0QgQwLo9fLEkTv385MPjlesnC9lrc/f4FDfX+4dPN/oXA39A4biQkB+c
+ +amG/ZurwftY7LyIH7q30PDuDYI4vF65nRj/b1+hVgqxfAvp9gAvZSRqpQHvBejFn4Y/0jwRz9U
+ a/edRO1L1nMLZLFNbB8+8W6lcAPnWlYV4bma5tTKPxGMBTZSNBHmnLG78ad7y2kuVLduxRIgZZL
+ BGStla564Uwnso8MjSs87/BMaJR+GTfNwesX1/LRok3T6S4JdM6K1/KHCtI/jz/+gWrLYZokrkU
+ ecfBDZj08Vkc/2LTaQ5kpQDxJdktYM9STLZFAlNercSl7aVzW8OmmGBOw+iLV3swzbnsI1tUfQf
+ kFwmjYQ0S4oqnI7TBdpuzYuPOn9N71vc66VV3r2ngU9DZFiWSO1ZhGwyfvLqDUvvLW1+JElj8Db
+ jdcFgyCm0Tzu8bpsTC+DfNskjK/kXhSqapyyboNwAEEnFX0NZ34wopWT0mmkUiYg36PGz5siF3w
+ nIvRqmBVbenaq9nzL8bCWZLjfudHFcAUvDUbRkL6uD45begdv/TVys2yD0mRpm6Z8qUVqmIDry0
+ uvlzYRfNG+QaVoQ==
 X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
  fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDEzMCBTYWx0ZWRfX7CbBxQDJAyGT
- 8mweDzDL7q/ZvJUxeJfYDz5R84yHUp24bv01PXB5bDODlmbxQlgJPUX8vrdnFpvutIh30gXHT3V
- hDnIHwTJT8yRzndizNhzjCcukdJTA/g3rnzJ4yHJL52MG60qadGJFJsB/fRxHv9gE01Lhj9DgE+
- VKXLFqPg0j+s72uv6ZBe7WhWduUDNyanVLyiuUJzcxLkFU7hCbC2MxVxB/N3m6l9+yWOInT9YVQ
- AYJ67d8VPdaP2XAOk/8NUa5WcANBnGm6sX8fjcuoS7bI6IUdA7azg8bBepDubK/pGef5q6WkWdm
- 1fXYLkfEmsiSkmUIljbwvfmlrZKvjjENYCJ8r4T6+N//7Cse2IWaOZY9XlrYnJB5LXjraRT0YX8
- pzgt0gvAYxiyJWtfPTTsGdC0rL/HRq20BIOs3f68ZXYOxQlDqzWiNaS/Scey+o+C6jwMTEtqhkt
- CK5+IwHz6CgL552Fbiw==
-X-Authority-Analysis: v=2.4 cv=RLO+3oi+ c=1 sm=1 tr=0 ts=6967b693 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=Eb9f15NH/cHKzfGOmZSO4Q==:17
+X-Authority-Analysis: v=2.4 cv=BOW+bVQG c=1 sm=1 tr=0 ts=6967b694 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=Eb9f15NH/cHKzfGOmZSO4Q==:17
  a=IkcTkHD0fZMA:10 a=vUbySO9Y5rIA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=EUspDBNiAAAA:8 a=b-TtO4hhcUHcL_E8iecA:9
- a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-GUID: YomZR5D2k1Su4Ae4kZ29igxUI4Er1Cbx
-X-Proofpoint-ORIG-GUID: YomZR5D2k1Su4Ae4kZ29igxUI4Er1Cbx
+ a=VkNPw1HP01LnGYTKEx00:22 a=EUspDBNiAAAA:8 a=XMepgddcWT0EFqeyVMQA:9
+ a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-ORIG-GUID: b0vOwDQePFhq-MVLb-RioPsQAnZHJB_Z
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMTE0MDEyOSBTYWx0ZWRfX91/a+0fVxxBy
+ I4ouLC4sRXxKXzfjCPvicrgQ6a4xmU7OKMC+CxvXu0leHteNcM41O2KgneBiKIQDYvvXfRRAMIi
+ 7Tx2CbFKIpm8HinRiML4HmdTKSCrkk9yv2SvUBckQGJkI0Vp8oOFWvNXqs5CaGWdP8vXITvo98m
+ uyR0C8WrX1VeJU0rhesKH0EY1+tv7RvGQQgHWsjLgdKWCtO3+xZ3bES7IHTxjUuJw/IfU/rTAHm
+ 87l6K9z7n2bm3UsadW2F94P2LHvhKRgHvr9FzazXc2AnovCpRcLOZw0oFw7gXLuIlUyNcZYybFs
+ XX+SIu+3Uum/geEnchkE1JAKQMUQ7+JA/3hgjTGSVhR9fe6CKRyolCo3jLbW305OIgiaW9rM22V
+ dgPEXZOHzAmiwpybXq1zuP7jhnY5FSZUHBgBwuwPl9if5/lwT14hVwAQvn0xkBmz0KT8FDo0VlW
+ iLdFR8L8RdXJaeVRPIw==
+X-Proofpoint-GUID: b0vOwDQePFhq-MVLb-RioPsQAnZHJB_Z
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
  definitions=2026-01-14_04,2026-01-14_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 phishscore=0 malwarescore=0 lowpriorityscore=0
- priorityscore=1501 suspectscore=0 clxscore=1015 bulkscore=0 adultscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2512120000
- definitions=main-2601140130
+ suspectscore=0 spamscore=0 priorityscore=1501 malwarescore=0 clxscore=1015
+ adultscore=0 lowpriorityscore=0 phishscore=0 impostorscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2512120000 definitions=main-2601140129
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_073028_732682_CE498DF3 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260114_073028_756283_CC2AB9A5 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -180,32 +177,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove unused includes: no clocks, mutexes and resets.
+Remove unused includes from internal headers, because they do not have
+following: bit manipulations, mutexes, spinlocks and struct devices.
+These headers are included by actual C files, which seem to have all
+necessary includes.
 
 Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/pinctrl/starfive/pinctrl-starfive-jh7110-sys.c | 3 ---
- 1 file changed, 3 deletions(-)
+ drivers/pinctrl/sophgo/pinctrl-cv18xx.h | 4 ----
+ drivers/pinctrl/sophgo/pinctrl-sg2042.h | 6 ------
+ 2 files changed, 10 deletions(-)
 
-diff --git a/drivers/pinctrl/starfive/pinctrl-starfive-jh7110-sys.c b/drivers/pinctrl/starfive/pinctrl-starfive-jh7110-sys.c
-index 9b67063a0b0b..44f84e4c29bf 100644
---- a/drivers/pinctrl/starfive/pinctrl-starfive-jh7110-sys.c
-+++ b/drivers/pinctrl/starfive/pinctrl-starfive-jh7110-sys.c
-@@ -7,14 +7,11 @@
-  */
+diff --git a/drivers/pinctrl/sophgo/pinctrl-cv18xx.h b/drivers/pinctrl/sophgo/pinctrl-cv18xx.h
+index 759c0e604acf..973ab9a38fcf 100644
+--- a/drivers/pinctrl/sophgo/pinctrl-cv18xx.h
++++ b/drivers/pinctrl/sophgo/pinctrl-cv18xx.h
+@@ -6,11 +6,7 @@
+ #ifndef _PINCTRL_SOPHGO_CV18XX_H
+ #define _PINCTRL_SOPHGO_CV18XX_H
  
- #include <linux/bits.h>
--#include <linux/clk.h>
- #include <linux/gpio/driver.h>
- #include <linux/io.h>
- #include <linux/mod_devicetable.h>
- #include <linux/module.h>
+-#include <linux/bits.h>
+ #include <linux/bitfield.h>
 -#include <linux/mutex.h>
- #include <linux/platform_device.h>
--#include <linux/reset.h>
- #include <linux/spinlock.h>
- 
+-#include <linux/spinlock.h>
+-#include <linux/platform_device.h>
  #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinconf.h>
+ 
+diff --git a/drivers/pinctrl/sophgo/pinctrl-sg2042.h b/drivers/pinctrl/sophgo/pinctrl-sg2042.h
+index d481973fcf97..1a2b00dde1fa 100644
+--- a/drivers/pinctrl/sophgo/pinctrl-sg2042.h
++++ b/drivers/pinctrl/sophgo/pinctrl-sg2042.h
+@@ -6,12 +6,6 @@
+ #ifndef _PINCTRL_SOPHGO_SG2042_H
+ #define _PINCTRL_SOPHGO_SG2042_H
+ 
+-#include <linux/bits.h>
+-#include <linux/bitfield.h>
+-#include <linux/device.h>
+-#include <linux/mutex.h>
+-#include <linux/spinlock.h>
+-#include <linux/platform_device.h>
+ #include <linux/pinctrl/pinctrl.h>
+ #include <linux/pinctrl/pinconf.h>
+ 
 
 -- 
 2.51.0
