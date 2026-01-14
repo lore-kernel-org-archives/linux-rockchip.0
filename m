@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B236CD29FFF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 13:00:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 320A9D37E25
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 13:03:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AE6HbsbQD+NSJ3V/uJ9B9FY5DMd9C9UzbzgKNfHrC+k=; b=saP2fUcvX5xBVz
-	efJiEli5POxkpxl/LpT4vn5zYBW/j7y/3S8q+4q0TjffPaVmvssKOPbs5IIuVfkTftqBqfw1hitVk
-	sUFy+/uaiVU0T63PRZ9rJvHQPY8iOkTaw//IyAoGKkWCHzHOXtLNrBLLQxvF6hHIvlehBR7ISDzlk
-	M1uICBiroaP+RIYtqrHLlqju0HdxNxKwg1LombRkgIS6mQF8lyOI9uvLTvqp/fZTwEAVn7FPfSVZp
-	4+F0W08C/QzygRlh+NDx/SU8Ydo0J7bZ68kWyPEesiKKT46yWaE/lV6D68uH9gRE0ka54ETPObVeW
-	YE+COpSkLHYnjC3E81ww==;
+	List-Owner; bh=no6naZDKHLDFrjI02XXQaXPo44D9MFKELBItkGEYX+s=; b=YSv1hQgXagvg/r
+	uUyLa3PIem/yZNPwVTw0Qmq/HE0tUGAPdtLzv0SVLThs8s13qs67Z4hUgNMJax5eNndvkdUOs61R3
+	KB8j3YGEII2C9dTt1HPmwzgXuPvF6+aYjclDSVHB6ODTS+/DBvfdeHYdFAE2/B3K7yVJ9m0yEHGWm
+	SiUi8ZBuInPITK9J0F6YktgjsGj5ZnR4nHqbgORVs4uF6/pRSrxLzYR+L0XYy6ahU4/s+IehUFhWu
+	Iq1aXzuxi5JAKpEzMOiBAwhBC1EPaw1SHs1e+VXeSRPGovfe/cx+DhddInha5ZL4Ui4c2eV0l6hD5
+	ldjst+we7i3dlCNi45gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg0Te-00000009FuV-0Wuo;
-	Wed, 14 Jan 2026 12:59:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vg0Ws-00000009GPC-2g1B;
+	Wed, 14 Jan 2026 13:03:22 +0000
+Received: from wp530.webpack.hosteurope.de ([80.237.130.52])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg0Ta-00000009Ftq-3nuW;
-	Wed, 14 Jan 2026 12:59:56 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A1E98443C4;
-	Wed, 14 Jan 2026 12:59:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5347DC19425;
-	Wed, 14 Jan 2026 12:59:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768395593;
-	bh=2/z3t3tjGrx/h34H8mnEiXZGVxzRQTFDBZSR/QkoL8s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qyl+x6niBnl+Hkqz669O/P43ZyunjSntia/2ZlIUSfxIlevMkhMao7Qj1TdQHI5Ik
-	 lq/rkz0Dfc1NJ8XdsUbMqrwIq6simoJ/gnqKq6L7Xy+mp/Np2Bt6wtAqi7hNKD7Ehq
-	 8vfXwH58/vx2kr3D32e/PnGfo3cJTC9dq+HytQRVUNZ4cBE5L8DHLF/nt/gogfGIU1
-	 ORST1I3YxO+MNv1TBAGazKLamw645HtPkKD/K/RJog7pJD0andkbL+APJ/ezW8e+nE
-	 nh0OSCokHR4CS5FQEgOlJoYlwn41MOuE0E3vZg1vH+CPraUVUSU8+GBgd8+irYngt4
-	 vEVTCOs43w7mQ==
-Date: Wed, 14 Jan 2026 12:59:47 +0000
-From: Will Deacon <will@kernel.org>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Cc: joro@8bytes.org, robin.murphy@arm.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
-	mchehab@kernel.org, iommu@lists.linux.dev,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
-	kernel@collabora.com
-Subject: Re: [PATCH v11 3/7] iommu: Add verisilicon IOMMU driver
-Message-ID: <aWeTQ50DOtntcniN@willie-the-truck>
-References: <20260107101005.84039-1-benjamin.gaignard@collabora.com>
- <20260107101005.84039-4-benjamin.gaignard@collabora.com>
- <aWZui-rn5RDPwpEO@willie-the-truck>
- <68a49f8b-178c-4fa2-b4a9-315ad602271d@collabora.com>
+	id 1vg0Wp-00000009GO8-1YGO
+	for linux-rockchip@lists.infradead.org;
+	Wed, 14 Jan 2026 13:03:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=leemhuis.info; s=he214686; h=Content-Transfer-Encoding:Content-Type:
+	In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:In-Reply-To:
+	References; bh=eJpmp5JpOgpjYZu8Fq+aQnrp8DeZBHaRLTUswEI/+R8=; t=1768395795;
+	x=1768827795; b=2o5ggtgpqLVLYIm4Ih37HkyzOn0ZNhFcJQ3y3JahYIWGK51OWq5YpZjUa2GL4
+	g9HUU+9Xjo4lbUEI8L3RBgp9e6yfsQuK3LjNxz7C6ASTA0K7q0Ay9/iJOjvTF8hrqDY3b0LuyuMRM
+	xNJZ026K7DwXDJNTEjR/FuNuGlVv/N94WCmPMHjx6s/iSzq+NcDxsLEt6qKMVmtBW0SmbvRhK7sBY
+	GNL++cHZGYQUPr2GHWMxKYiM3z8DB732Zy1VK0UrrEMTWVZ9pl+tzv1cW+fmCfixyhxFBqlxwA4aX
+	CULcoObsS1r2C2gO3rmqcCck3FNwQ69NrDJLDeLAIjxu9fANOQ==;
+Received: from [2a02:8108:8984:1d00:a0cf:1912:4be:477f]; authenticated
+	by wp530.webpack.hosteurope.de running ExIM with esmtpsa (TLS1.3:ECDHE_X25519__RSA_PSS_RSAE_SHA256__AES_128_GCM:128)
+	id 1vg0Wl-00C01M-2L;
+	Wed, 14 Jan 2026 14:03:11 +0100
+Message-ID: <5f8805a8-b2d6-4bc3-9c6c-c8fc696daacd@leemhuis.info>
+Date: Wed, 14 Jan 2026 14:03:11 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <68a49f8b-178c-4fa2-b4a9-315ad602271d@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [REGRESSION][BISECTED] wifi broken on pinebook pro
+To: Peter Robinson <pbrobinson@gmail.com>, Jan Palus <jpalus@fastmail.com>
+Cc: linux-rockchip@lists.infradead.org, Heiko Stuebner <heiko@sntech.de>,
+ regressions@lists.linux.dev
+References: <aUKOlj-RvTYlrpiS@rock.grzadka>
+ <CALeDE9OzCzbhKmc61Kgbmzr67oJnjZMjsO6yYbkXujzA-OuO+A@mail.gmail.com>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <CALeDE9OzCzbhKmc61Kgbmzr67oJnjZMjsO6yYbkXujzA-OuO+A@mail.gmail.com>
+X-bounce-key: webpack.hosteurope.de;regressions@leemhuis.info;1768395795;a19d972e;
+X-HE-SMSGID: 1vg0Wl-00C01M-2L
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_045954_990191_6F1662C6 
-X-CRM114-Status: GOOD (  38.71  )
+X-CRM114-CacheID: sfid-20260114_050315_594992_4304FE65 
+X-CRM114-Status: GOOD (  15.24  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,127 +71,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 13, 2026 at 05:25:38PM +0100, Benjamin Gaignard wrote:
-> =
+[top-posting to facilitate processing]
 
-> Le 13/01/2026 =E0 17:10, Will Deacon a =E9crit=A0:
-> > Hi Benjamin,
-> > =
+Peter, Heiko, what's the deal here? This looks stalled. Is temporarily
+reverting an option, or would that cause regressions for other users
+that already benefit from the change that is causing the problem?
 
-> > Thanks for posting a v11.
-> > =
+Ciao, Thorsten
 
-> > On Wed, Jan 07, 2026 at 11:09:53AM +0100, Benjamin Gaignard wrote:
-> > > The Verisilicon IOMMU hardware block can be found in combination
-> > > with Verisilicon hardware video codecs (encoders or decoders) on
-> > > different SoCs.
-> > > Enable it will allow us to use non contiguous memory allocators
-> > > for Verisilicon video codecs.
-> > > If both decoder and this iommu driver are compiled has modules
-> > > there is undefined symboles issues so this iommu driver could
-> > > only be compiled has built-in.
-> > > =
+On 12/29/25 07:23, Peter Robinson wrote:
+> On Wed, 17 Dec 2025 at 11:26, Jan Palus <jpalus@fastmail.com> wrote:
+>>
+>> WiFi no longer works on Pinebook Pro after upgrade to kernel 6.18. It
+>> appears firmware fails to load:
+>>
+>> ...
+>> mmc_host mmc0: card is non-removable.
+>> mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+>> Bluetooth: hci0: BCM: features 0x0f
+>> Bluetooth: hci0: BCM4345C5 Ampak_CL1 UART 37.4 MHz BT 5.0 [Version: Version: 0039.0089]
+>> Bluetooth: hci0: BCM4345C5 (003.006.006) build 0089
+>> mmc_host mmc0: Bus speed (slot 0) = 148500000Hz (slot req 150000000Hz, actual 148500000HZ div = 0)
+>> dwmmc_rockchip fe310000.mmc: Successfully tuned phase to 55
+>> mmc0: new UHS-I speed SDR104 SDIO card at address 0001
+>> brcmfmac: brcmf_fw_alloc_request: using brcm/brcmfmac43456-sdio for chip BCM4345/9
+>> usbcore: registered new interface driver brcmfmac
+>> brcmfmac mmc0:0001:1: Direct firmware load for brcm/brcmfmac43456-sdio.pine64,pinebook-pro.bin failed with error -2
+>> brcmfmac: brcmf_sdio_bus_rxctl: resumed on timeout
+>> ieee80211 phy0: brcmf_bus_started: failed: -110
+>> ieee80211 phy0: brcmf_attach: dongle is not responding: err=-110
+>> brcmfmac: brcmf_sdio_firmware_callback: brcmf_attach failed
+>>
+>> compared to 6.17 instead of last 4 lines with errors there's single one
+>> with info about loaded firmware:
+>>
+>> brcmfmac: brcmf_c_preinit_dcmds: Firmware: BCM4345/9 wl0: May 14 2020 17:26:08 version 7.84.17.1 (r871554) FWID 01-3d9e1d87
+>>
+>> Bisected to:
+>>
+>> 6d54d935062e2d4a7d3f779ceb9eeff108d0535d is the first new commit
+>> commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d (HEAD)
+>> Author: Peter Robinson <pbrobinson@gmail.com>
+>> Date:   Wed Aug 27 16:30:37 2025
+>>
+>>     arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro
+>>
+>>     Update the wake-up pin and associated interupt details for the
+>>     Pinebook Pro WiFi module.
+>>
+>>     Signed-off-by: Peter Robinson <pbrobinson@gmail.com>
+>>     Link: https://lore.kernel.org/r/20250827143040.1644867-1-pbrobinson@gmail.com
+>>     Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+>>
+>>  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 18 ++++++++++++++++++
+>>  1 file changed, 18 insertions(+)
+>>
+>>
+>> With this commit reverted on top of 6.18.1 wireless connection works
+>> fine.
+>>
+>> Not sure what could be relevant but:
+>> - it's an early model, I think second batch, delivered end of 2019
+> 
+> Is it the Synoptics or the Cypress/Infineon module? What firmware are you using?
+> 
+>> - mainline uboot 2025.10 is used
+>>
+>>
+>> #regzbot introduced: 6d54d93506
+> 
+> 
 
-> > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> > > ---
-> > > changes in version 11:
-> > > - Fix dependency issue when decoder driver is build as module.
-> > > =
-
-> > >   drivers/iommu/Kconfig     |  11 +
-> > >   drivers/iommu/Makefile    |   1 +
-> > >   drivers/iommu/vsi-iommu.c | 808 +++++++++++++++++++++++++++++++++++=
-+++
-> > >   include/linux/vsi-iommu.h |  21 +
-> > >   4 files changed, 841 insertions(+)
-> > >   create mode 100644 drivers/iommu/vsi-iommu.c
-> > >   create mode 100644 include/linux/vsi-iommu.h
-> > Based on your reply to v9:
-> > =
-
-> > https://lore.kernel.org/all/0eff8b1a-c45f-47b1-a871-59f4a0101f0f@collab=
-ora.com/
-> > =
-
-> > I took another look at this to see whether it had changed significantly
-> > from v6 when compared to the rockchip driver. Sadly, they still look
-> > very similar to me and I continue to suspect that the hardware is a
-> > derivative. I really don't understand why having a shared implementation
-> > of the default domain ops is difficult or controversial. Have you tried
-> > to write it?
-> > =
-
-> > However, given that nobody from the Rockchip side has contributed to the
-> > discussion and you claim that this is a distinct piece of IP, I don't
-> > want to block the merging of the driver by leaving the conversation
-> > hanging.
-> > =
-
-> > There is still one thing I don't understand (which, amusingly, the
-> > rockchip driver doesn't seem to suffer from):
-> > =
-
-> > > +static void vsi_iommu_flush_tlb_all(struct iommu_domain *domain)
-> > > +{
-> > > +	struct vsi_iommu_domain *vsi_domain =3D to_vsi_domain(domain);
-> > > +	struct list_head *pos;
-> > > +	unsigned long flags;
-> > > +
-> > > +	spin_lock_irqsave(&vsi_domain->lock, flags);
-> > > +
-> > > +	list_for_each(pos, &vsi_domain->iommus) {
-> > > +		struct vsi_iommu *iommu;
-> > > +		int ret;
-> > > +
-> > > +		iommu =3D list_entry(pos, struct vsi_iommu, node);
-> > > +		ret =3D pm_runtime_resume_and_get(iommu->dev);
-> > > +		if (ret < 0)
-> > > +			continue;
-> > > +
-> > > +		spin_lock(&iommu->lock);
-> > > +
-> > > +		writel(VSI_MMU_BIT_FLUSH, iommu->regs + VSI_MMU_FLUSH_BASE);
-> > > +		writel(0, iommu->regs + VSI_MMU_FLUSH_BASE);
-> > > +
-> > > +		spin_unlock(&iommu->lock);
-> > > +		pm_runtime_put_autosuspend(iommu->dev);
-> > > +	}
-> > > +
-> > > +	spin_unlock_irqrestore(&vsi_domain->lock, flags);
-> > > +}
-> > [...]
-> > =
-
-> > > +static const struct iommu_ops vsi_iommu_ops =3D {
-> > > +	.identity_domain =3D &vsi_identity_domain,
-> > > +	.release_domain =3D &vsi_identity_domain,
-> > > +	.domain_alloc_paging =3D vsi_iommu_domain_alloc_paging,
-> > > +	.of_xlate =3D vsi_iommu_of_xlate,
-> > > +	.probe_device =3D vsi_iommu_probe_device,
-> > > +	.release_device =3D vsi_iommu_release_device,
-> > > +	.device_group =3D generic_single_device_group,
-> > > +	.owner =3D THIS_MODULE,
-> > > +	.default_domain_ops =3D &(const struct iommu_domain_ops) {
-> > > +		.attach_dev		=3D vsi_iommu_attach_device,
-> > > +		.map_pages		=3D vsi_iommu_map,
-> > > +		.unmap_pages		=3D vsi_iommu_unmap,
-> > > +		.flush_iotlb_all	=3D vsi_iommu_flush_tlb_all,
-> > This has no callers and so your unmap routine appears to be broken.
-> =
-
-> It is a leftover of previous attempt to allow video decoder to clean/flush
-> the iommu by using a function from the API.
-> Now it is using vsi_iommu_restore_ctx().
-> I while remove it in version 12.
-
-Don't you still need some invalidation on the unmap path?
-
-Will
 
 _______________________________________________
 Linux-rockchip mailing list
