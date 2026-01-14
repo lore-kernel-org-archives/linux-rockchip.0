@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EC6FD31A3E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623C0D31A3C
 	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:09:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UgjBqdM4QqlNJbd/IxJCg+xvQHAbzjt/7iZoBUhlkAQ=; b=yiJ3IrGU30t8Lh
-	NtlmLItfGdAoN3vzN4ubhbVHprXDCLxtCDBtTk7ClunZaus7Y0JRuvF6rrUtApTlcwz+vWnjkznBS
-	r44QpqH0P7odwgxIMEq809UhbyR/54ZobCNbAM6T9SUUl1WEGhXD8S0DjyuSPdYyVigaRZgQM1fPU
-	bHslYM1zRpzGMmDVToDlJPPZgPo0ww1I2VBxGF03db8Usoz3yyzDU0mDtLxSQsyIwi2d9X6FNF9TR
-	GLIQVUTc/Mi/Rw4+vcZQcrBK+6Bhm/IlXBHsASq+QfysYvY6yKxygRWFrm1Q6mkazZh9zjZW4ZgT7
-	sQ07aHkdQnQQQ1PmAFUA==;
+	List-Owner; bh=ZD5YxcedcLOYWu7ldqWNPAKHwgbrqcBm7TJ5+hw4beg=; b=Ag6jIO1z4L/IFq
+	NWMzYpsVn9viVP1lB5/YeIA7O4N9sFJvWuy+Z9eJOB0hE6+4n6PaH0IYaOc/Z6ZTIta0D0cXfMgY8
+	Ktgp4KMG0GkEZpumwFWwqkFzY2fb+g6/7hesC2ukQEKRSJf/Q/MrfoGuhau7mdx5R6P7g7mn1PYLX
+	fTmqNQnvmVEjH028TGQvXzLUTPDzC9fHN3Msq6STU/bgoynC1egnqEO3PBOBqKkGDAIBih7f+5EGU
+	tuFnK1XP7DwkOnFUU9Ivj5MdK8/9u0SYcqYGYN5Run4jmJqmjBN2ts15gzyxYRiaE3WGCLUpMj0A1
+	Cg8sOci7Cp+0G4Ow1bhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxoq-00000008he3-1pRp;
-	Wed, 14 Jan 2026 10:09:40 +0000
+	id 1vfxop-00000008hd8-3EXV;
+	Wed, 14 Jan 2026 10:09:39 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxog-00000008hVn-3xTu;
+	id 1vfxog-00000008hVG-2fJO;
 	Wed, 14 Jan 2026 10:09:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768385369;
-	bh=heh+k/1ODoaxXv2R5HPjXJm6oybJcbQZVD3EyshC35g=;
+	s=mail; t=1768385368;
+	bh=kzz1stJ/eG8rdi6weyOcBPC+8rDtte6uRtWAAV5e9pQ=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=DDyaYGQwqiS1mfajco1EktEcdRjVvi6T3pMXq+k3ZPN4jaEnwQPsMij8nmCEIufY5
-	 V69+hMFUJ5Ijon2UgkFHDiHQH6EaGOdf+BKtTyiwOzfnDqRrmi+9zdniOO7c3M1YL4
-	 OnvFouO6ZTEiv9Kwo/Lf/cc+iRtCnmanHJsnXZN9s551kOF8Bx21FMinONK707Q818
-	 VgPIJWOnZ1Eb8K/6gA3W/nBHoH3t/7qc0dtPmXWz8gkP95eYBTTdtUmPsd3bO5NaSJ
-	 z8XSRb1VTNDoA/UWuIZoMlsejDuCGCmeAy32NUBATu23Tp0ttDrAZvj2SiwJWX2tkI
-	 s3zhLd+0hkRJA==
+	b=oab1aactIrGMSI3JwCXPVsqN7dTfh0347oBjUsOOxVtvswc88KEmgVqaxHFYYVC5t
+	 v3m93YY8zcZJ1RAHtXffzO9urKECL1ztur8ogx2EGDWGx81Kq99tGY3YNEKEjeblfV
+	 SskMKasELF/gWKFkYWxGOccTJ3TC66f1UfB4beVrAd4nvdOhdlPYin0dOb/XZx1+cu
+	 ECu4Q+RtDcSFHVHQ5R/8Nfg4SIoMS1ubDPVVQ+I3WdrSQGJwMk08b7+jv2OuDShmgG
+	 4Ip5JNQY7aN5WJFSe0wRbJIEIOLATxeC/7k2CeoUNO9nqh+eUt7oMCVvBq6q36Vq0/
+	 chgv2mT/e5OPA==
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:1dad:60e8:7174:bd20])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8E63517E13C3;
-	Wed, 14 Jan 2026 11:09:28 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E935F17E1355;
+	Wed, 14 Jan 2026 11:09:27 +0100 (CET)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: joro@8bytes.org,
 	will@kernel.org,
@@ -63,16 +63,17 @@ Cc: iommu@lists.linux.dev,
 	kernel@collabora.com,
 	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
 	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v12 2/6] dt-bindings: iommu: verisilicon: Add binding for VSI IOMMU
-Date: Wed, 14 Jan 2026 11:09:14 +0100
-Message-ID: <20260114100922.149187-3-benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 1/6] dt-bindings: vendor-prefixes: Add Verisilicon
+Date: Wed, 14 Jan 2026 11:09:13 +0100
+Message-ID: <20260114100922.149187-2-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
 References: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_020931_183272_75D87894 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20260114_020930_828896_F5C2E81D 
+X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,94 +90,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a device tree binding for the Verisilicon (VSI) IOMMU.
-This IOMMU sits in front of hardware encoder and decoder
-blocks on SoCs using Verisilicon IP, such as the Rockchip RK3588.
+Verisilicon Microelectronics is a company based in Shanghai, China,
+developping hardware blocks for SoC.
+
+https://verisilicon.com/
+
+Add their name to the list of vendors.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- .../bindings/iommu/verisilicon,iommu.yaml     | 71 +++++++++++++++++++
- 1 file changed, 71 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-new file mode 100644
-index 000000000000..d3ce9e603b61
---- /dev/null
-+++ b/Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
-@@ -0,0 +1,71 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/iommu/verisilicon,iommu.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Verisilicon IOMMU
-+
-+maintainers:
-+  - Benjamin Gaignard <benjamin.gaignard@collabora.com>
-+
-+description: |+
-+  A Versilicon iommu translates io virtual addresses to physical addresses for
-+  its associated video decoder.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: rockchip,rk3588-av1-iommu
-+      - const: verisilicon,iommu-1.2
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  clocks:
-+    items:
-+      - description: Core clock
-+      - description: Interface clock
-+
-+  clock-names:
-+    items:
-+      - const: core
-+      - const: iface
-+
-+  "#iommu-cells":
-+    const: 0
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - clocks
-+  - clock-names
-+  - "#iommu-cells"
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+
-+    bus {
-+      #address-cells = <2>;
-+      #size-cells = <2>;
-+
-+      iommu@fdca0000 {
-+        compatible = "rockchip,rk3588-av1-iommu","verisilicon,iommu-1.2";
-+        reg = <0x0 0xfdca0000 0x0 0x600>;
-+        interrupts = <GIC_SPI 109 IRQ_TYPE_LEVEL_HIGH 0>;
-+        clocks = <&cru ACLK_AV1>, <&cru PCLK_AV1>;
-+        clock-names = "core", "iface";
-+        #iommu-cells = <0>;
-+      };
-+    };
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index c7591b2aec2a..ce5c413948b1 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -1745,6 +1745,8 @@ patternProperties:
+     description: Variscite Ltd.
+   "^vdl,.*":
+     description: Van der Laan b.v.
++  "^verisilicon,.*":
++    description: VeriSilicon Microelectronics
+   "^vertexcom,.*":
+     description: Vertexcom Technologies, Inc.
+   "^via,.*":
 -- 
 2.43.0
 
