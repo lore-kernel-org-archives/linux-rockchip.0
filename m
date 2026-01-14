@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DB62D31A03
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 02:01:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B0FD31A02
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 02:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MEBcY+3ojT7bqKWd3eUSdAuZO2ViujxJnQw9aqbKnlg=; b=qr9K70nac5xOAo
-	gaQLMfTsrlnP8E43XEBK8gmXpDYuISItRshk9Yag64UAxfr/7Z4HUNcxnMLYh9K/nNc3HYzL1OcUT
-	0rX8VNtzLMWU757Ay+naZ6QGdEXAaUkYH+QvGkto2SJkWg7G4Jyx7c8UfwodDepVaoYI8n2P2sBfv
-	VgWe5joS9pSkBvy/6ynKUVASuaEd76lCZCvHz6IRd2pMUxmhRZr8Nfa53R/XuQfYTqZwfccWcipSk
-	UH513wa3jXhYi57cDZllMt1UJOww9jAOQaLTlWXyZi7CcwjMioqEbzM3E2G6k4qU62nuu9FBOwBBt
-	YgfxBhYZ5l0LXgHO4RDw==;
+	List-Owner; bh=egkWXjtrfTgnShkRT9lDZp3NF+CC2phtmIo6dCS0cI0=; b=LojNHa+kMsdLnr
+	pNTZvMG14hD9eifUCX1AVSpG3zPXW0bVhjBae9dCaFx6YVv6IDDnpR7gRi28HruhiXC3dRrLvDlZ6
+	AzzABsC9erSQv3plXrBhhpOP3JXlXXRtLpNWwl9LwrHmvA6eKAFPmyLHMgbYmsxPQQpqWSYtkdFFz
+	mgyfDxPlu8UkHUWQsFzXQwe0giN0HndSi+mjD0pVulhYUdOzt9CSDZlCScEGHlFDFbNCI/43LU0kF
+	viF7J2nSng7WamLq5mjNNvWnWWnaNeecNIHaBdKc5mjvnzkKVqBhH7Ype4M3BV0552hzF6Ds8ZqhN
+	QmlkkhX7bcWSW0EGAe0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfqCD-00000007yFF-2cec;
-	Wed, 14 Jan 2026 02:01:17 +0000
-Received: from mail-m1973199.qiye.163.com ([220.197.31.99])
+	id 1vfr5S-000000080Yi-0NIT;
+	Wed, 14 Jan 2026 02:58:22 +0000
+Received: from mail-m49248.qiye.163.com ([45.254.49.248])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfqC9-00000007yEY-3X1q
-	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Jan 2026 02:01:16 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 308cc1bf2;
-	Wed, 14 Jan 2026 10:01:09 +0800 (GMT+08:00)
-Message-ID: <05979948-1bc2-4bc0-ad2f-b0c3cd1c367f@rock-chips.com>
-Date: Wed, 14 Jan 2026 10:01:08 +0800
+	id 1vfr5N-000000080YG-2f4u;
+	Wed, 14 Jan 2026 02:58:19 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 308f250c9;
+	Wed, 14 Jan 2026 10:58:07 +0800 (GMT+08:00)
+Message-ID: <2d77eac3-c213-42d5-bf47-4e81b30f9f38@rock-chips.com>
+Date: Wed, 14 Jan 2026 10:58:07 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- FUKAUMI Naoki <naoki@radxa.com>, John Clark <inindev@gmail.com>,
- Tianling Shen <cnsztl@gmail.com>,
- Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: [PATCH v2 0/3] Fix sd card support for RK3576
-To: Marco Schirrmeister <mschirrmeister@gmail.com>
-References: <1768267105-127385-1-git-send-email-shawn.lin@rock-chips.com>
- <CAGJh8eAXC+CAMfjxOP8LUwR-xcQGgbwyxFkNLgAujFiP6c2hOg@mail.gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <CAGJh8eAXC+CAMfjxOP8LUwR-xcQGgbwyxFkNLgAujFiP6c2hOg@mail.gmail.com>
-X-HM-Tid: 0a9bba3c3f7a09cckunm945f63b942b5c2
+Subject: Re: [PATCH] drm/rockchip: DRM_ROCKCHIP should depend on ARCH_ROCKCHIP
+To: Geert Uytterhoeven <geert+renesas@glider.be>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <5db192d31cc51f027f107c01c01a353a0569ebf4.1768310045.git.geert+renesas@glider.be>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <5db192d31cc51f027f107c01c01a353a0569ebf4.1768310045.git.geert+renesas@glider.be>
+X-HM-Tid: 0a9bba70697d03abkunmb3f2a1de1f8330
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkxCSVZKHUhDSB0eTkkfHk1WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	xVSktLVUpCS0tZBg++
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkNOTFYaS0tCT0xJSkNMSBhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=UDwBVrXCaVtqIYVs6qzI0xGX+D3JfSbP920C/M75WdA7On08Lv2/H2J4GegQvhiSKNmjlIijqL0GPWOKX0lw46JGodAMW7WkNoqfWkyHAsMPAjLmnpQhftX2gFLbLS/DWwwmoUHeGA1coHqNr07vuOIbJF6NOTShbQMN616owZc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=vbBSKZDRjU8UtCXxv4OwpYCJNOYxh2lr4Kodtylvbj0=;
+	b=j9QIudcYTQdvAa4MQgAhI4Fa8GsWXodzhvPhl5TmPHpdmhS0nTyCktPg0RIFRrgmZLLwRm/qqFGxNIFJfR8xsPugPJWrTrV2cA4CdA4+4le2+yxPG9jw1gMy1QgdTWuEIZsV8nlYaKcQoWgaYV3ADLUZV6io90Fwf5+U69oMxa0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=BExGeWQxtEVNv6OQM+naThqTHzsblmqsaTZLZYeFiYk=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260113_180114_418170_6775FD7B 
-X-CRM114-Status: GOOD (  12.11  )
+X-CRM114-CacheID: sfid-20260113_185818_223723_201D7005 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,34 +70,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYvMDEvMTQg5pif5pyf5LiJIDQ6MzUsIE1hcmNvIFNjaGlycm1laXN0ZXIg5YaZ6YGT
-Ogo+IEhpIFNoYXduLAo+IAo+IE9uIFR1ZSwgSmFuIDEzLCAyMDI2IGF0IDI6MTnigK9BTSBTaGF3
-biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Cj4+IFRoaXMgc2VyaWVz
-IGZpeGVzIHRoaXMgbWVzcyBidXQgb25seSBhZGRzIHNsb3QtZ3BpbyBzdXBwb3J0IGZvciBSSzM1
-NzYtRVZCMS4KPj4gT3RoZXIgYm9hcmRzIGFyZSBhbHNvIG1pc3Npbmcgc2xvdC1ncGlvIHN1cHBv
-cnQsIGJ1dCBmb2xrcyBhcmUgYWxsIGNjZWQgZm9yCj4+IGNoZWNraW5nIHRoZSBib2FyZHMgdGhl
-eSBhcmUgdXNpbmcuCj4+Cj4+IFBsZWFzZSByZXZpZXcgYW5kIHRlc3QKPiAKPiBJIHRlc3RlZCB0
-aGlzIHNlcmllcyBvbiB0aGUgRnJpZW5kbHlFbGVjIE5hbm9QaSBSNzZTLgo+IFdpdGggdGhlIGFk
-ZGl0aW9uIG9mICdjZC1ncGlvcyA9IDwmZ3BpbzAgUktfUEE3IEdQSU9fQUNUSVZFX0xPVz47Jwo+
-IGluIHRoZSBib2FyZCBEVFMsIHRoZSDCtVNEIGhvdC1wbHVnIG5vdyB3b3JrcyBjb3JyZWN0bHku
-Cj4gCgpUaGFua3MgZm9yIHRlc3RpbmcuCgo+IEhvd2V2ZXIsIGV2ZW4gd2l0aCB0aGlzIGZpeCwg
-dGhlIE5hbm9QaSBSNzZTIHN0aWxsIHN1ZmZlcnMgZnJvbSB0aGUKPiBjb25zdGFudCA0MDBrSHog
-cmV0dW5pbmcgbG9vcCB3aGVuIHJ1bnRpbWUgUE0gaXMgZW5hYmxlZC4gSSB3aWxsIHNlbmQKPiBh
-IHYyIG9mIG15IGRyaXZlciBxdWlyayB0byBhZGRyZXNzIHRoaXMgYm9hcmQtc3BlY2lmaWMgaW5z
-dGFiaWxpdHkuCj4gCgpXaGVuIHRhbGtpbmcgYWJvdXQgYm9hcmQtc3BlY2lmaWMgaW5zdGFiaWxp
-dHkgb2YgU0Qgc3VwcG9ydCwgdGhlCmludHVpdGl2ZSByZWFjdGlvbiBpcyBidXMgbW9yZSBvciBm
-cmVxdWVuY3kgcmVsYXRlZC4gSSBuZXZlciBjYW1lCmFjcm9zcyB0aGlzIGtpbmQgb2YgcHJvYmxl
-bSB3aGljaCBjYXVzZWQgYnkgcnVudGltZSBQTSBzdXBwb3J0LiBUaGF0CmJlaW5nIHNhaWQsIHRo
-ZXJlIGlzIHBvdGVudGlhbCB1bnZlaWxlZCBwcm9ibGVtcyBmb3IgeW91ciBib2FyZHMuCkkgd2ls
-bCBjb21tZW50IHlvdXIgdjIgdG8gc2VlIGlmIHdlIGNvdWxkIHNvcnQgdGhlbSBvdXQuCgo+IExp
-bmsgdG8gdjE6IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2FsbC8yMDI2MDExMDAxMDcxNS4xNjEw
-MTU5LTEtbXNjaGlycm1laXN0ZXJAZ21haWwuY29tL1QvI3QKPiAKPiBUZXN0ZWQtYnk6IE1hcmNv
-IFNjaGlycm1laXN0ZXIgPG1zY2hpcnJtZWlzdGVyQGdtYWlsLmNvbT4KPiAKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 1/13/2026 9:15 PM, Geert Uytterhoeven wrote:
+> Rockchip display hardware is only available on Rockchip SoCs.  Hence add
+> a dependency on ARCH_ROCKCHIP, to prevent asking the user about this
+> driver when configuring a kernel without Rockchip platform support.
+> 
+> Before, this dependency was implicit through a hard dependency on
+> ROCKCHIP_IOMMU.
+> 
+> Fixes: 0244539f9a4f3b56 ("drm/rockchip: Drop ROCKCHIP_IOMMU depend for DRM_ROCKCHIP")
+> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> ---
+>  drivers/gpu/drm/rockchip/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
+> index 025bd770f499e6ed..1479b8c4ed40ad16 100644
+> --- a/drivers/gpu/drm/rockchip/Kconfig
+> +++ b/drivers/gpu/drm/rockchip/Kconfig
+> @@ -2,6 +2,7 @@
+>  config DRM_ROCKCHIP
+>  	tristate "DRM Support for Rockchip"
+>  	depends on DRM
+> +	depends on ARCH_ROCKCHIP || COMPILE_TEST
+>  	depends on ROCKCHIP_IOMMU || !ROCKCHIP_IOMMU
+>  	depends on OF
+>  	select DRM_CLIENT_SELECTION
+
+Thank you for the fix.
+
+Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+
+-- 
+Best, 
+Chaoyi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
