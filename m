@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623C0D31A3C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:09:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 368ABD29DC5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 10:09:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZD5YxcedcLOYWu7ldqWNPAKHwgbrqcBm7TJ5+hw4beg=; b=Ag6jIO1z4L/IFq
-	NWMzYpsVn9viVP1lB5/YeIA7O4N9sFJvWuy+Z9eJOB0hE6+4n6PaH0IYaOc/Z6ZTIta0D0cXfMgY8
-	Ktgp4KMG0GkEZpumwFWwqkFzY2fb+g6/7hesC2ukQEKRSJf/Q/MrfoGuhau7mdx5R6P7g7mn1PYLX
-	fTmqNQnvmVEjH028TGQvXzLUTPDzC9fHN3Msq6STU/bgoynC1egnqEO3PBOBqKkGDAIBih7f+5EGU
-	tuFnK1XP7DwkOnFUU9Ivj5MdK8/9u0SYcqYGYN5Run4jmJqmjBN2ts15gzyxYRiaE3WGCLUpMj0A1
-	Cg8sOci7Cp+0G4Ow1bhg==;
+	List-Owner; bh=xbiQh3RZEubxUNTWYhp5TRRfz3tQ4RDjM+c9xoMPd2Q=; b=YsRJOamFdXmXvx
+	BVi5zlvJOvkXmmchj8hQhfoksImpABsZ121lZJZVLw57TNhdsxXKzZkCkBpWDvF2I0nSy3BovEY/g
+	GO4Rx00bZulfPBSlZH1s0KM3anYjekqVf1/fxaJDPhwpxNcEMira7LviKiaPlTT1W/9LDoYOKCmQU
+	gm1OpGg6ShKbFYyov7YJUDcL+Sw7MTMVHf+MDU6rOV0e2JD9ZEaoj1rMPqsUxZk26ixke91otFjTe
+	/ggazx9L3YmEmWxrpTHvl4zZVIvvq89dmokdl7cdmJhXfJxxyhVSqLIcUf+fyMLhnRJayvX2PUP9g
+	5AW7e5Vuqm66ZUHrqelQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxop-00000008hd8-3EXV;
-	Wed, 14 Jan 2026 10:09:39 +0000
+	id 1vfxor-00000008hf6-0Aps;
+	Wed, 14 Jan 2026 10:09:41 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfxog-00000008hVG-2fJO;
-	Wed, 14 Jan 2026 10:09:35 +0000
+	id 1vfxol-00000008hYI-2HRM;
+	Wed, 14 Jan 2026 10:09:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768385368;
-	bh=kzz1stJ/eG8rdi6weyOcBPC+8rDtte6uRtWAAV5e9pQ=;
+	s=mail; t=1768385371;
+	bh=kfoyO6mLrJT+5jwg7vHiUeoqvatV7KVxcH5i/FCsdRc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=oab1aactIrGMSI3JwCXPVsqN7dTfh0347oBjUsOOxVtvswc88KEmgVqaxHFYYVC5t
-	 v3m93YY8zcZJ1RAHtXffzO9urKECL1ztur8ogx2EGDWGx81Kq99tGY3YNEKEjeblfV
-	 SskMKasELF/gWKFkYWxGOccTJ3TC66f1UfB4beVrAd4nvdOhdlPYin0dOb/XZx1+cu
-	 ECu4Q+RtDcSFHVHQ5R/8Nfg4SIoMS1ubDPVVQ+I3WdrSQGJwMk08b7+jv2OuDShmgG
-	 4Ip5JNQY7aN5WJFSe0wRbJIEIOLATxeC/7k2CeoUNO9nqh+eUt7oMCVvBq6q36Vq0/
-	 chgv2mT/e5OPA==
+	b=IhnVViitxQ0X37IQlOUJcltVqn1USTYsKeU+mV4NKl6qBFJaR2LuYrl2B7J4Dw2c8
+	 Ov0gO5HpqE1I0MnnVzeZRNGr5WC4jTnQVaskpcGTAvb4dOtoyyqDEQsgJ51KOA8RWU
+	 KaStQfxiGLua5E/qy0oaavf75KM0lI6Gagc5kddo3WfqaK4mb++ZN1ekxdhmvDXtYN
+	 LQltGJpP0MByFPRT4gOsLIxEnmwFguBttWQ+SpWqPptx0SK8Ymx+OFFVEUY/oePjsu
+	 TjZ7MlyOJTiD+aXeNT+eFlNwavQuN+7a0uJs3Y9HlqF65JOyALCUPBgSBe3YRoFs+R
+	 OZgq3EMJaqULA==
 Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:1dad:60e8:7174:bd20])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E935F17E1355;
-	Wed, 14 Jan 2026 11:09:27 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 04E6C17E1525;
+	Wed, 14 Jan 2026 11:09:30 +0100 (CET)
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 To: joro@8bytes.org,
 	will@kernel.org,
@@ -61,18 +61,17 @@ Cc: iommu@lists.linux.dev,
 	linux-rockchip@lists.infradead.org,
 	linux-media@vger.kernel.org,
 	kernel@collabora.com,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH v12 1/6] dt-bindings: vendor-prefixes: Add Verisilicon
-Date: Wed, 14 Jan 2026 11:09:13 +0100
-Message-ID: <20260114100922.149187-2-benjamin.gaignard@collabora.com>
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: [PATCH v12 6/6] arm64: defconfig: enable Verisilicon IOMMU for Rockchip RK3588
+Date: Wed, 14 Jan 2026 11:09:18 +0100
+Message-ID: <20260114100922.149187-7-benjamin.gaignard@collabora.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
 References: <20260114100922.149187-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_020930_828896_F5C2E81D 
-X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-CacheID: sfid-20260114_020935_730779_45ECA4B7 
+X-CRM114-Status: UNSURE (   7.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,32 +89,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Verisilicon Microelectronics is a company based in Shanghai, China,
-developping hardware blocks for SoC.
-
-https://verisilicon.com/
-
-Add their name to the list of vendors.
+Enable Verisilicon IOMMU used by Rockchip RK3588 AV1 hardware codec.
+This hardware block could be found in Radxa Rock 5B board.
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
- 1 file changed, 2 insertions(+)
+ arch/arm64/configs/defconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-index c7591b2aec2a..ce5c413948b1 100644
---- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
-+++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
-@@ -1745,6 +1745,8 @@ patternProperties:
-     description: Variscite Ltd.
-   "^vdl,.*":
-     description: Van der Laan b.v.
-+  "^verisilicon,.*":
-+    description: VeriSilicon Microelectronics
-   "^vertexcom,.*":
-     description: Vertexcom Technologies, Inc.
-   "^via,.*":
+diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
+index 45288ec9eaf7..4751f7fa8bb0 100644
+--- a/arch/arm64/configs/defconfig
++++ b/arch/arm64/configs/defconfig
+@@ -1525,6 +1525,7 @@ CONFIG_ARM_SMMU=y
+ CONFIG_ARM_SMMU_V3=y
+ CONFIG_MTK_IOMMU=y
+ CONFIG_QCOM_IOMMU=y
++CONFIG_VSI_IOMMU=y
+ CONFIG_REMOTEPROC=y
+ CONFIG_IMX_REMOTEPROC=y
+ CONFIG_MTK_SCP=m
 -- 
 2.43.0
 
