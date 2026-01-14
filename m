@@ -4,94 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FF60D37E59
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 16:08:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBA93D38FE7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 16:16:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wW7Yi41jBwAN/5wNFDOvxZJSY/5H+uWEteBg10YpLTQ=; b=v4wD4MQhBbo4Gq
-	7Mwe72vQwo1edlpdH2FW88hAzC5xCOG8zMK0OSN4CcBKSOkw8/I6Xm6padc6cJfYPabtc3Zia8EaT
-	NvZK2n0Qqf6OAEN5Gy209jkjnDFV5T7i9pbV8NBMDwUdY0IXRhBN3LyTmrf5O32T/uoqjyyuK9Ema
-	6nK7SLztihPlQoLNaNL1FN9IgMkb5o8xpAnu+SqxajP35tsSDDq6ApoVn3dWQdgeQee/kd3aTqIfG
-	K6R6fry++vurZHEZt1vyt0h25U7C0n7ScbSu0TJfs/g1bxKOKbViCT0TJSkw8sabpVSIMM4hWqx4Y
-	YTdGDpSKKFF7jLpP04cw==;
+	List-Owner; bh=jYBms/FxnITI+L9luVkeRUPgHN01k07e8HmEwq2zLM8=; b=i0CzPr2J12xAuB
+	YOByqkSTtBwKzVEbpmY8Iip1Tg4PA5A/i140+TlEDes1xlTaXq24DjZLKzPc/bcf8kL/YaSl9Etqt
+	Q35EipQMxXzljZmt4m+RRavbtGi1QmHiBdu+TsSGpmAi5cvXd5qboYxPEutrxks+zrIRcY0Bdjacy
+	fCpi3F1sRqGa1FUJtrs9wF9aiLHib7qzB8irufoD4uMhfkfmnnWL7vp8Uk1Ij+5nHLdqT7+4ergBK
+	XjTDaNcg//wTkNxtmkoQuw9zVCC6nxxLVy1K1jZkWZ/KMpYVs+3/OM3luhw0bploFY3QcCJ0j9Qbv
+	NPLZKJ+KVt9VzkJlR/MQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg3PU-00000009rkl-3yp1;
-	Wed, 14 Jan 2026 16:07:52 +0000
-Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
+	id 1vg3Xx-00000009tJh-1QYG;
+	Wed, 14 Jan 2026 16:16:37 +0000
+Received: from mail-westus2azolkn19010035.outbound.protection.outlook.com ([52.103.10.35] helo=CO1PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg3PQ-00000009rir-3Vgk
-	for linux-rockchip@lists.infradead.org;
-	Wed, 14 Jan 2026 16:07:51 +0000
-Received: by mail-qv1-xf29.google.com with SMTP id 6a1803df08f44-88a34450f19so88901536d6.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 14 Jan 2026 08:07:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=rowland.harvard.edu; s=google; t=1768406867; x=1769011667; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=0w8zIqQECJAGujQJ53HaaQtSuGI0B6FUk93HelliUNY=;
-        b=LTL7fzr31dYvn9FuJlwds12UYuCd9raFwegAdWr/6MM9tBoxm03px0tkno5p5SD5rK
-         ReFFEMZQ2PHix/cxDmEILLAKeLUCQn1vkGjGJNu6ts1b7w9j4bGMxI1lsZqdTLGvdaLJ
-         3Fjk48JruaKcIev1I+WSs6yfhNWzociwqBjmjTAvUO21qQ2My14Ip745kRJLnAqu2L7L
-         9MJpxKF3xTe+f8WB7sKtFPUVwA3xsmZhk0NkHAeBdGlchoHuRryD1s5WggIdb5U0kCv9
-         Kf9ppdxObJKGRq0DCbzpMW4HphF/wAgQvJSE7pJV33xzuG4qG7+1vlnsMun3Y0QehkEn
-         QUog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768406867; x=1769011667;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=0w8zIqQECJAGujQJ53HaaQtSuGI0B6FUk93HelliUNY=;
-        b=E2632ePfaa/sCTNa7tzrannQXqDzJkNYJO8KfHLwlzFugOGT74IewdG2YKrVhuAeTg
-         DS1l5kslEVeaQqeSB/9lju5s2I+tCQwxXmidBQtuuXcirJaDh8KvXd33c10BKAJqs0Fc
-         M2VpDFkQpF4irRcUQhH9qbWK/uBuFfVOOAUQZmkAtIGCtP4YA5zRt1vGL9YvlVbLg8GD
-         fW/SzdpbWH+FmvdsA6VbkjtFiGyhmliMdM1GrgtQsFhOVUGlBql+svkU+sVj8p85x17p
-         Sx26aIzxTviZixbvtSKtgK805LmL6oycPB47tlUCxvYK8agPpgrYY6exhU//K2eB13bm
-         iVuw==
-X-Forwarded-Encrypted: i=1; AJvYcCUyQZAmw9XUG8+qDX5Tr8wlRtXkfyPblGz6AIJnyQBHu/Zi1B0TqD1dVLtSk+S3Ed14eaGkYiLtpXj3zRNM9A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzSubaEGILZ3Qr/8Wy0+XUmvsr2zkqKM4TiOc/2++zq73b9w71s
-	SAp1d4Om635prNGsOFoYoi0WWxgCUOIDGpaFFEtmi8EBLKOQfD8LJeVrNJmkr+SuPG9g89vIaaE
-	dQE8=
-X-Gm-Gg: AY/fxX7fViY5mVSnsjKgkICNhMOzti+LJjeNh9YZglGQPYNifW+D/XUjrPDMUGMJdoJ
-	WN8XHyR0+lbyYoI6MmsxW1mEM0VY8iynEXl+bh2/ZicGqYFpJ38THtdv3nxTCX2Kjr1sIiLuRwq
-	SQttxTukqdwSBKd+zSh/F22K8nZdPZqyLbjCXLpdWmUdCIhhgB/t5MH0gIoDJHc8gVJsu29Zmt2
-	mkBhtDmYP6D8s4FrCNkNm4txezwjaL415OSntOdmJopsolWNBAh+ONhWGDeg8k3PXlt6KwBbNEl
-	0SApO+1YGQXcQJteemx3cJ1dGeir86SnfKA+UzuioekPF8LyaVRaaF86KpTG5KezDzS2M7bKJ/b
-	W4+5/DHe8QobuWREEBNAVIIAfUit06DHx5SxbS2IPxdwjvjuZOyXao0XqaZVSStJCV6LcuRvUO3
-	vD1ByT3vMZFhRhzQEA+AS6dGaXPsSodyQNeD4o56D5
-X-Received: by 2002:ad4:5be5:0:b0:888:593d:c08c with SMTP id 6a1803df08f44-89274390c21mr42145126d6.20.1768406865775;
-        Wed, 14 Jan 2026 08:07:45 -0800 (PST)
-Received: from rowland.harvard.edu ([140.247.181.15])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8907728565dsm172303526d6.56.2026.01.14.08.07.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Jan 2026 08:07:45 -0800 (PST)
-Date: Wed, 14 Jan 2026 11:07:42 -0500
-From: Alan Stern <stern@rowland.harvard.edu>
-To: Diederik de Haas <diederik@cknow-tech.com>
-Cc: USB mailing list <linux-usb@vger.kernel.org>,
-	linux-rockchip@lists.infradead.org
-Subject: Re: Track down EHCI and companion errors on rk3xxx systems
-Message-ID: <febe88e2-9abd-481e-af9d-3f0825ef204b@rowland.harvard.edu>
-References: <073879e4-aea8-4625-bc83-c4b6dd9c9231@rowland.harvard.edu>
- <DFNI1Q9N7GC6.20PN0RG9LRAQF@cknow-tech.com>
- <38365c37-b125-4ffb-8ce7-bd4f3f7596ba@rowland.harvard.edu>
- <DFNLGSUWJA5Z.3OJHVYWST2YFH@cknow-tech.com>
- <b9041d32-1eab-4428-ab2b-769daefdbdcd@rowland.harvard.edu>
- <DFNRUF2LUPH4.1493G2SYERZ7Q@cknow-tech.com>
- <b108b747-cc7c-4537-b9bc-b0862bac71ff@rowland.harvard.edu>
- <DFOEGOTI1AQ9.175GP7V1VK1XU@cknow-tech.com>
- <91fb697a-7bfa-4e26-85cd-40810a8d2be5@rowland.harvard.edu>
- <DFOFCN7H0Z10.1FAC3SN3TX79O@cknow-tech.com>
-MIME-Version: 1.0
+	id 1vg3Xu-00000009tIa-2xrd;
+	Wed, 14 Jan 2026 16:16:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=iiKQrpbsJRvvcqpWaZVIbInS/TsTX5soGPtnFOKTluAJ7UcFYlMoPNCxvXvsac54uCRixW+6WnKp6hKCeRI+voTczvGnsTzQRHauzsUk5D8jVVocv/eSRNg4t2eSD8NRLX2OkAkBQvvfl5OdF89LMDqXa3/RiF1YIIA4S2sYHGtnEc99onwe3+abYiukZJl7EWntXoSgul75f1RER/IKV+hSRow8h+eSx76yjpU1sDzkQeY8VKiMcBpmmYZWZFjWM9WJfAuikVkoXf9JNOEOQgwE1IXfqH85P8WNSJEy4yDKjpfqlMRdD38+7zwDTn98FkI9P3x1LxLCcu9Tm1uvZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=yqLLPrQJARBCtf9IpQ2+zX7BzGKVvWxE9LNXzj1MnLU=;
+ b=l5s5EZQmZNeCWLFCcz4d5Ox+uryOsu10cq/c0+8Uc0PXqR5GGM4E6WBop6AGGwOxODlz1yWcTYo4ZNEyEyRHXuwb4bANE55bKv2CeDMVyTibMzs3rxP+hVjQg9iosoY7Lo8rL2eYBcr3jBscaSTgrAHG+jqqO909I2pLZUHoMfHehuXGfmOmn2ebFjDVEtYs23dFc8gUp+lfVtbeMhdWgmZiHITuyj39VpWMbEU+44Y5CYmTmfd9KRZPDRKnpbEoELGtKTVcwaSKSEs3LhfsbLUkEJg0PZPsKVSkKZbg+Y5DnXbEDUSeWczWkdqPCc6TQJLl9nnIIjckSBfrAcPA+g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=yqLLPrQJARBCtf9IpQ2+zX7BzGKVvWxE9LNXzj1MnLU=;
+ b=C5BSC+GX08ZpeIqtzW8vsjfrZYBbowARX+vtQk4DfeCBPpoRmRmQWBYXmxm8jvQBMX/j/zS23FZuVzdWn+vR+V060bLXxeetdjrlZTZZ8B94thps9amkhdkrVtKekrRQJB8dVisqAf5yHHwGfuulOfAOF3u/jKUkYC/k5toubCYxT3wr8Bl/Tz8tPI3BwAn7imOc5xIkI7eEQe5/iWjoVglQ8LW+ExWd1jwUZnUCJoRMJIMq7FVlOUIYGgAn/Gem5kFNA6oZmXM+woyVuLdfKqvMi5z7xFHsKZNJEmFDG7rBRkzlI8qDxN36DXGOEXBHQTqhJMdFGbpIFmqHpwNyAw==
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com (2603:10b6:805:b::18)
+ by IA1PR19MB7229.namprd19.prod.outlook.com (2603:10b6:208:42e::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.5; Wed, 14 Jan
+ 2026 16:16:28 +0000
+Received: from SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::57b1:b92:26fc:c937]) by SN6PR1901MB4654.namprd19.prod.outlook.com
+ ([fe80::57b1:b92:26fc:c937%3]) with mapi id 15.20.9499.005; Wed, 14 Jan 2026
+ 16:16:28 +0000
+Date: Wed, 14 Jan 2026 10:16:25 -0600
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Maud Spierings <maud_spierings@hotmail.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2 0/4] Add HDMI 2.0 support to DW HDMI QP TX
+Message-ID: <SN6PR1901MB465494AAFA4090D8806D7B12A58FA@SN6PR1901MB4654.namprd19.prod.outlook.com>
+References: <20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com>
+ <0b28ae6d-295d-4958-9571-190fedd95efe@collabora.com>
 Content-Disposition: inline
-In-Reply-To: <DFOFCN7H0Z10.1FAC3SN3TX79O@cknow-tech.com>
+In-Reply-To: <0b28ae6d-295d-4958-9571-190fedd95efe@collabora.com>
+X-ClientProxiedBy: SA0PR11CA0012.namprd11.prod.outlook.com
+ (2603:10b6:806:d3::17) To SN6PR1901MB4654.namprd19.prod.outlook.com
+ (2603:10b6:805:b::18)
+X-Microsoft-Original-Message-ID: <aWfBWejGjvumqvZ-@wintermute.localhost.fail>
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SN6PR1901MB4654:EE_|IA1PR19MB7229:EE_
+X-MS-Office365-Filtering-Correlation-Id: 96546c94-ed4b-4a54-39f1-08de5388453f
+X-Microsoft-Antispam: BCL:0;ARA:14566002|6090799003|461199028|5072599009|39105399006|15080799012|23021999003|8060799015|19110799012|3412199025|440099028|41105399003|40105399003|56899033;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?POtFJ9px6YzoUcstx3V/DBnVxCvpQxuqIwG92HFT9Yf/uUgpx+shO3I2mH3x?=
+ =?us-ascii?Q?bt1hqGI8r/5yTZPpT8Kr5mk8AQD/qQEXleYm9ldUqTp4LTxjE4OUPDD9xWRM?=
+ =?us-ascii?Q?kLXUdMyJTrJT6T8/xlMcBK25C5UA0D77b2Y799dNGmqYxEjtwMJk0JMoca9q?=
+ =?us-ascii?Q?tVHrHBbCzjVyj7ptuBFvX3dVfihKLH2R7hQ7qoqXG99nzFg+SvBD3VJVnEuW?=
+ =?us-ascii?Q?AZkgaqkoqZSOzYgNLzXVBP7YVBs4q/kPx0p75RU52WI7UiMTS1MfBoBKWQzx?=
+ =?us-ascii?Q?Mlbodd+mR91yj4JT7DyjAcT3vCyHDXH0Tu9q2s6UBj48S3tzju+YN2sFlPVA?=
+ =?us-ascii?Q?aonYjFzIq708GhQ/t9aACS8cFHbzQhrjME4klIrmtJ0shKfjWiECMo3cdo8d?=
+ =?us-ascii?Q?hTikhyATS/qDcN1uxxA4zJnxiAJjQ1qtroNhi6jHI+zIhkVoRT0rTF15ds58?=
+ =?us-ascii?Q?ayQJUisi4Qu1ufg6IBVilQFJ3vBz1t2ogWJ8esrCbM545wEuIq8uHS/SAbak?=
+ =?us-ascii?Q?z/trOL9o8dk+ilgZAIaFAdbiXgq0e0MFkh/Vb7kFTAbKX8LvKgeGPfI8Ewcd?=
+ =?us-ascii?Q?Xh/MmmRXFOzRf9yAFLlYRtvkD+G0Iw+0CyFf/xSwv0ljazIykyXBV8uFEGT9?=
+ =?us-ascii?Q?1srWA8l04NB5JOJzfIz1paje8nw7Pvz/ALkkI0p9C222epW73o/KLxMh1WQu?=
+ =?us-ascii?Q?o/RyTIp/r97QfqY8Ml48u7qcRHQGLTjikCZ2QfdSiGYWOTVBEUugGddNuyQs?=
+ =?us-ascii?Q?WXpow69fkf7IvRHdujTjpVF9LktkprY/bCAyYkgFbg4pM1S7MWg+xvP4RPXV?=
+ =?us-ascii?Q?5vGirIm+xcLAEx5Csu/vCIW+tXFs2MJnSZQdZ3jeDvOEmxcOH5fWUqed73SA?=
+ =?us-ascii?Q?kZcbxdw3Mk2owantq8GZIOxhsUO0Pfq7E+EDV6mCWZA0MjD0/8pI+IDcT8PP?=
+ =?us-ascii?Q?uzw+ikvr7QU4RuJYFhJvlLED3nc9f+rQRvgx70xPHkpBAoCnCDnLvcPlaPDj?=
+ =?us-ascii?Q?AvNE7eAomEo6MxK1ZB7ZWZ4LTCHv0m2bqerRqFajRpQuJ+6Zyh94sn1XmNz8?=
+ =?us-ascii?Q?cfBNbCrRgV+7bFKze1JkaBCXGF5AH7AE0W3MeaP7RyYfuL6WSDYVleHwdio+?=
+ =?us-ascii?Q?f3+JSa4Oux/KvS52mCO1vEvq7uBPZa5z8STFzrYtf9ZjYRxj7bBNRNeN2Dau?=
+ =?us-ascii?Q?eR7F5Id2JBy+GViSbOB2j5XuFfRmoxsiI33JdJuJd9ikylTEvA+NzO91iZk?=
+ =?us-ascii?Q?=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Xq9bTnpg7TUxkTAeDRsqiKayLjj6l45YGeokbNKPmloP2PqkD8Ar/jJz3JZM?=
+ =?us-ascii?Q?jWA5s/HVj2fXqrBWXMIhTYcELnr56RBhE4GJWKb8NUhcbV8dluVcQyDKLcS1?=
+ =?us-ascii?Q?RT+Uh7FF0WQcl6qi90I63+b25Out3V4j854XCK5QQJV/wWT8xBJG0u6u2nZA?=
+ =?us-ascii?Q?eveto10qzat1GVO8TU1N3hvAjifTVxD5/gyuzcEdh6VDnvcLLaDRkeL7Z4e0?=
+ =?us-ascii?Q?3EIGlEWs7zcZ37OdL8nGSoRK6d/5BDhvJE6cKdBPfEn2tJ9ihPvOK2yVZfsk?=
+ =?us-ascii?Q?fwpW0Qi+H5SOhg4AOtD+mkQ2z9Xw89vLqu2Of/e2NV/mWLZnyT8z6NlpdFMb?=
+ =?us-ascii?Q?Rvg7kzzTNjYErQJuDANLPt3Y8pzEI2YIRcWwsotnJX8aoifxO9VQIWM2p5ev?=
+ =?us-ascii?Q?LcNPzkuMSjYO7DOeMx24mSaHR73tNZPJSI6vF3o+c+gmgrWE/rGE7ikURuSw?=
+ =?us-ascii?Q?jai3CF14C2lq9oyvbX2JkHj7vKnJX2SokHsFzuvcLY5MQf30fxVnEza1/B0c?=
+ =?us-ascii?Q?AKcBAU9DiS73VCNDjijIXjbeTMQgaie/LmxiXPt2ru+bjpU+5mSWJBAZAam+?=
+ =?us-ascii?Q?6Dv6rBrlbNPOIS8cYE+8LLO6GddaZp9BzL3y6RJyPkwGG4JehQElPDpfhmoX?=
+ =?us-ascii?Q?TqYb4FQujNcA/yntIIVIb4PgX4ym/j3nsZzMmJYSwZRASuxNH9mTCmmYwf55?=
+ =?us-ascii?Q?FJ5GibyDzeQ4rSrAV4J6IecQxSBEanlXL2VdwwYrfjxg9xqKW1BANUxhnDSR?=
+ =?us-ascii?Q?jTIUe+hHESX/G9oqlsI/oIbsKluBzrJTWO67CBOJWvaKj2StMHOYq8lkntSY?=
+ =?us-ascii?Q?aXHhsAPoCbr8HPMd8Oy7fsBqf84sJXka29bmRRyxOd1ccsvSVWzlpBk6B6j/?=
+ =?us-ascii?Q?728Cm7vZZkLiB4VLagX9uNa1nNL0Wik4JvEPemt4UbhUbZ68aAXbLGQOfIMs?=
+ =?us-ascii?Q?stHe+fY20sdaV4jqratrSUxZt0I27SusIK0bKroR1pYIQBI+vZQLc+kQHhQm?=
+ =?us-ascii?Q?4n2Kja08XUCfB2PhSsW6veVToP+tEBuSPbqbfa4ObGpgapFVk6CU3OV10l7B?=
+ =?us-ascii?Q?9q6ulQj1Scm2BVA+OixJfsaojvEeh/4IyG8kgCI+ayr2OMih4TAI3nFYspDO?=
+ =?us-ascii?Q?G4n00i9LGUrzqJlGh7Q0FSMl/qH9xGHogP2I1wJozZ0D2YFvm1GzBdGqW1ky?=
+ =?us-ascii?Q?91p76Lc2lhoHjqt6Xscb1rl3Q0t4HzLW1ya7yM6sf3uZMgMzmkqiir6WQVmJ?=
+ =?us-ascii?Q?Aehbu0fNTctvtSKypnAAd57W5BtgYvTO172LW5wF/PvzsOgQyA1SGdDTvXcv?=
+ =?us-ascii?Q?UMzHVTj2M3CtgCphGppI0AhiT2lKxb0mhnsBuSIchbgZHb26fBBdU3gt5IjE?=
+ =?us-ascii?Q?v/082jjW4Efxuph5+QzHvwTuGErs8MiPnJKEaprkbzK5s700HA=3D=3D?=
+X-OriginatorOrg: sct-15-20-9412-3-msonline-outlook-6f20a.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 96546c94-ed4b-4a54-39f1-08de5388453f
+X-MS-Exchange-CrossTenant-AuthSource: SN6PR1901MB4654.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Jan 2026 16:16:28.3152
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR19MB7229
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_080749_016575_EA5F2ACE 
-X-CRM114-Status: GOOD (  17.10  )
+X-CRM114-CacheID: sfid-20260114_081634_755844_03294427 
+X-CRM114-Status: GOOD (  21.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,37 +162,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 14, 2026 at 04:41:13PM +0100, Diederik de Haas wrote:
-> On Wed Jan 14, 2026 at 4:19 PM CET, Alan Stern wrote:
-> > 30 seconds was a generous estimate on my part; 5 seconds probably would 
-> > have been enough.  However, the USB subsystem does include some timeouts 
-> > that are 2 seconds long and others that are 5 seconds long, and some of 
-> > these timeouts are inside retry loops.  So a 30-second wait isn't 
-> > unreasonable.
+On Tue, Jan 13, 2026 at 12:40:46AM +0200, Cristian Ciocaltea wrote:
+> On 1/13/26 12:26 AM, Cristian Ciocaltea wrote:
+> > This patch series provides the missing support for high TMDS clock ratio
+> > and scrambling to DW HDMI QP TX library, required for handling HDMI 2.0
+> > display modes on RK3576 & RK3588 SoCs.
+> > 
+> > In order to allow addressing the SCDC status lost on sink disconnects,
+> > it adds an atomic variant of the drm_bridge_funcs.detect callback and a
+> > new drm_bridge_detect_ctx() helper, which is further used in
+> > drm_bridge_connector to switch to ->detect_ctx hook.
+> > 
+> > Furthermore, it optimizes HPD event handling in dw_hdmi_qp Rockchip
+> > platform driver to run the detect cycle on the affected connector only.
+> > 
+> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > ---
+> > Changes in v2:
+> > - Collected Tested-by tags from Diederik and Maud
+> > - Rebased onto latest drm-misc-next
+> > - Ensured the recently introduced 'no-hpd' support for dealing with
+> >   unconnected/repurposed/broken HPD pin is limited to HDMI 1.4 rates
 > 
-> But that's all processing times *after* it detected a USB device?
-> The thing that really surprised me that it took the kernel a minute to
-> detect anything had happened at all. If that had taken 30 secs, that
-> would've surprised me too. If it then took some time to make the device
-> fully available and operational, sure, fine.
+> Chris, could you please confirm no-hpd is still functional with this series on
+> your Gameforce Ace board when testing with a HDMI 2.0 display?
+> 
+> Thanks,
+> Cristian
+> 
 
-Well yes, I wanted you to wait long enough for all the initial 
-processing (making the device fully available and operational) to finish 
-up.
+I can confirm no-hpd still works with this series, but I don't have an
+HDMI 2.0 monitor to test with.
 
-However, I agree: 30 seconds is _much_ longer than it should take to 
-detect a newly plugged-in device.  It should take less than one second.  
-One possibility is that something involved in waking up the EHCI host 
-controller from its runtime suspend may have caused the delay -- that's 
-why I asked you to try turning off the controller's runtime suspend. 
-
-Also, I'm not at all familiar with the particular hardware used by your 
-platform for receiving wakeup signals.  It's possible that a GPIO 
-responsible for this wasn't working right and that's why you were 
-getting all those warning messages.  Another reason for wanting to know 
-what will happen if you take suspends and wakeups out of the picture.
-
-Alan Stern
+Thank you,
+Chris
 
 _______________________________________________
 Linux-rockchip mailing list
