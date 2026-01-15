@@ -4,59 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C78D3CC95
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 01:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C778D3CC9E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 01:41:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4/884Xkah+B61992juhLOcBJAouWmglF4i8xthTqYIk=; b=JqENNQLGBUNIxO
-	NPX2N0fnT0ChlEcqWY9pu8TOluBuHD61XPpQJcHJPK+XWK1Jg7/5mC/BGRwSXcV4rKcE7FGo5IhNT
-	WQzNml0bvRIeiznHDle1fcRX0q5IEuc8rWhCT3k9g4SebLTLXf4B4EZ/JIPhLPZGf0H9/kbXBMgrW
-	R1SvLyVVJFVFKCGFvA9jlEesPNAyWo5aclOrPA95SM1s+Tugl1a7Rc2JY5NMFO87lLuTBymcts7nb
-	7hY+EE6ygTBON+J7Mxuhjt3M3K8GtDip7DvzPv2E8ZVBZPrisx+pjjF5qbXR72fLTIZRhaUWQd8MQ
-	k9S2Eq3UaWPrnVrOORug==;
+	List-Owner; bh=CFVDTIg+mefpPJY9Nu4sM4IiZjCWZRoWNUSn+shGWos=; b=KHuE6QTJGEwNzj
+	UGLhowGNtCJ/mBiTXYjS/cmzdz/eNwETe+XZuMmI3uBsnxwPPqGw9l1AHe01CMzq69HeUlYrZEilp
+	RzwXP/eaBNCZlPABBrKRwpZadlxxQRalImHbSwwsEy1Fu5GlDZgOuPlkLmPjpp1BAEMPQYh2uocWx
+	Rkv2xEPj0Hk4QrrZ5pPJSD0PrI8ybPbTnbbv4nZlwll6kwRvPqt6JRnbrzJC6aTI9ha6j37B2F4p0
+	KL3ynFrfHDiNp2QiJ2P7eS034NHWs5jerCL1zE/3dmJtBGC8TYCQ7gMMpx8trYzAUL4lRk8Sc2XVB
+	fUkFAUQeesn3kCkUiWdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgCCK-0000000BP7c-0vrL;
-	Thu, 15 Jan 2026 01:30:52 +0000
-Received: from mail-m19731104.qiye.163.com ([220.197.31.104])
+	id 1vgCMr-0000000BQsi-1wZm;
+	Thu, 15 Jan 2026 01:41:45 +0000
+Received: from pi.codeconstruct.com.au ([203.29.241.158] helo=codeconstruct.com.au)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgCCG-0000000BP6B-3Abh;
-	Thu, 15 Jan 2026 01:30:51 +0000
-Received: from [127.0.0.1] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 30b1d617a;
-	Thu, 15 Jan 2026 09:25:37 +0800 (GMT+08:00)
-Message-ID: <8f7880cc-5469-4ac1-9fcc-9bd33327e571@rock-chips.com>
-Date: Thu, 15 Jan 2026 09:25:34 +0800
+	id 1vgCMo-0000000BQrJ-0gvz;
+	Thu, 15 Jan 2026 01:41:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=codeconstruct.com.au; s=2022a; t=1768441299;
+	bh=YvL196Y8Jf6UpyplUKqHRSkjNlU+qv/HoPgPsGaW3/U=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=i9X1/Q4uIVX6nV7K73FQ4EyscmGIdjxu1kCH754NihRYkeb7dOwpfGrIDJ1OGo8Nu
+	 olTR17Xtj1um35SV+M3fPOmZpV7qMGjPYxzNQmxIjMelob3kXWx6fdop7BCdE4FdJT
+	 YTllNZy8ElszhgX+fwMlcXV9ihLywCpSZy5NDQEKiwwzS+sl+H1A9Bh/muszYezeUp
+	 3/qBPsAHAj1i1rVq9QOZ3AbKsBYHzBnqEuuobRpD3SaxLUZx/oIlU5MDa5I5FUU5X7
+	 YaLzNnvSnX9MfCcVaeGL7AieKlSkWPSvoKav3xITpDeHyO4lU1UBw2qcBGbJdUrSKw
+	 s1oG7FNxfJo9Q==
+Received: from [192.168.68.115] (unknown [180.150.112.60])
+	by mail.codeconstruct.com.au (Postfix) with ESMTPSA id D96D16472A;
+	Thu, 15 Jan 2026 09:41:35 +0800 (AWST)
+Message-ID: <88ad862c8d68853eddfd17c7588cad65b3e104f9.camel@codeconstruct.com.au>
+Subject: Re: [PATCH 01/11] pinctrl: aspeed: Cleanup header includes
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Linus
+ Walleij	 <linusw@kernel.org>, Joel Stanley <joel@jms.id.au>, Emil Renner
+ Berthing	 <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>, Chen
+ Wang	 <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>,
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>, Shyam Sundar S K
+ <Shyam-sundar.S-k@amd.com>, Bartosz Golaszewski <brgl@kernel.org>, Steen
+ Hegelund <Steen.Hegelund@microchip.com>, Daniel Machon	
+ <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, Thierry Reding
+	 <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, Heiko
+ Stuebner <heiko@sntech.de>, Patrice Chotard <patrice.chotard@foss.st.com>
+Cc: linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, sophgo@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org
+Date: Thu, 15 Jan 2026 12:11:35 +1030
+In-Reply-To: <20260114-pinctrl-cleanup-guard-v1-1-a14572685cd3@oss.qualcomm.com>
+References: <20260114-pinctrl-cleanup-guard-v1-0-a14572685cd3@oss.qualcomm.com>
+	 <20260114-pinctrl-cleanup-guard-v1-1-a14572685cd3@oss.qualcomm.com>
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Enable HDMI output on
- RK3368-Lion-Haikou
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: quentin.schulz@cherry.de, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Heiko Stuebner <heiko.stuebner@cherry.de>
-References: <20260114230707.4175162-1-heiko@sntech.de>
- <20260114230707.4175162-4-heiko@sntech.de>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260114230707.4175162-4-heiko@sntech.de>
-X-HM-Tid: 0a9bbf4215a203abkunm214bc3be3234c5
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUpIH1ZNSR1KGR4fTUhDSh9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=TMftbF1zFQAlW75PgYyksAAUvtot55QwAUdwv0T8fY+YNNoyONq74dcyK2IAqv0LTiQ+E/k1JZTdK8R6+FxSWfAHxExXa5WilSUjEQc7SabHsMv/iDt4LUvuFrfnDYlY7qg1Fkfrkk6jvRc+XS6/h5KrKRdLBG9R6vWBnFKi5Wo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=JacTlUk1HuaCLrtV/Vf44fWWraUgKuwLbZmZaKiYjzQ=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_173048_985417_EB5842B0 
-X-CRM114-Status: UNSURE (   7.59  )
+X-CRM114-CacheID: sfid-20260114_174142_400074_63B17ADE 
+X-CRM114-Status: UNSURE (   6.28  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -69,33 +77,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
-
-On 1/15/2026 7:07 AM, Heiko Stuebner wrote:
-> From: Heiko Stuebner <heiko.stuebner@cherry.de>
-> 
-> Enable the VOP and HDMI controller on the Lion-Haikou board.
-> 
-> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
-> ---
->  .../boot/dts/rockchip/rk3368-lion-haikou.dts     | 16 ++++++++++++++++
->  arch/arm64/boot/dts/rockchip/rk3368-lion.dtsi    |  5 +++++
->  2 files changed, 21 insertions(+)
-> 
-
-I guess NPLL is an independent PLL available for VOP, 
-could you give it a try?
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCAyMDI2LTAxLTE0IGF0IDE2OjMwICswMTAwLCBLcnp5c3p0b2YgS296bG93c2tpIHdy
+b3RlOgo+IFJlbW92ZSB1bnVzZWQgaW5jbHVkZXMgKG5vIG11dGV4ZXMsIHN0cmluZyBmdW5jdGlv
+bnMsIG5vIE9GIGZ1bmN0aW9ucykKPiBhbmQgYnJpbmcgZGlyZWN0bHkgdXNlZCBtb2RfZGV2aWNl
+dGFibGUuaCAocHJldmlvdXNseSBwdWxsZWQgdmlhIG9mLmgpLgo+IAo+IFNpZ25lZC1vZmYtYnk6
+IEtyenlzenRvZiBLb3psb3dza2kgPGtyenlzenRvZi5rb3psb3dza2lAb3NzLnF1YWxjb21tLmNv
+bT4KPiAtLS0KPiDCoGRyaXZlcnMvcGluY3RybC9hc3BlZWQvcGluY3RybC1hc3BlZWQtZzQuYyB8
+IDQgKy0tLQo+IMKgZHJpdmVycy9waW5jdHJsL2FzcGVlZC9waW5jdHJsLWFzcGVlZC1nNS5jIHwg
+MyArLS0KPiDCoGRyaXZlcnMvcGluY3RybC9hc3BlZWQvcGluY3RybC1hc3BlZWQtZzYuYyB8IDUg
+Ky0tLS0KPiDCoDMgZmlsZXMgY2hhbmdlZCwgMyBpbnNlcnRpb25zKCspLCA5IGRlbGV0aW9ucygt
+KQoKUmV2aWV3ZWQtYnk6IEFuZHJldyBKZWZmZXJ5IDxhbmRyZXdAY29kZWNvbnN0cnVjdC5jb20u
+YXU+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
