@@ -4,170 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8028BD44C63
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 15:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6B0D44C66
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 16:15:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QJI+ErpHg4FFTuJNzNxFNZBKu4FHN2WafcLpzCV2vyE=; b=uE1G3YNDXh9IRU
-	FOtRbunkdYbNBKRPmGVgVdmBU4/HMyRhrh2JFKv5BztjbqVUtE97vO1qGNF30NZJHSkVYOq0cTq9g
-	xHvlJP9+46Q6eCT6R5GGIMKctOnVUWk/PlFt2Hu3ZlidWGtj69cNHaJJZ3cqASklQ+9rGvq2MEZJ5
-	CF7RWyojYmTIXA9NdpgH5Q/PFCxl9I/csP4OXI2HZCJbmgwXioZaVUw2OBDQTx2VAajewLUPmYqFi
-	dNB9t2BGkZEC4SCXunmagF6JDIlRY3dMpChVTyvcGMTuOmZKuRMnWMxAeNSU1ae5NvsQC9kIL9klf
-	/4TfG0xp58GGjRlGtAXg==;
+	List-Owner; bh=t2DyKpqLhk4r+3kWBlE00wQZpxkpjRFPWbYl2L9pebQ=; b=Udd3KwDw9+QRkn
+	y1D7HwDvXqUEM//b7G754yNw+1YKbh3kX8U1Iw7v/sEKyGMjxMW+d3wkj4yIe5ZzfbWmmAEcSpB3S
+	ENA5SJw0vJkhzf9VfCG54cIIb26VVgqr6SkRQKIF48DN+G3mt6F6Uu5PhBq4xC3C5M/mGG+V3mPH6
+	XOE1nSbdI1aNLT1ws29Uib2ourP9MAYRIbEKHfcyx4bCfYUmBG85iGSCWvcsNPFtkMOeSItzh+Jyp
+	wx2v9CQzdFcQqJiqQI7E9TsDbhjkYaMrPnp0MArKknEV3hcQNxQEekcqvSTVlUbVH4x6yPmD1NjpJ
+	0j9HZ9VzFqAO+uiDNmLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgPCq-0000000CaXg-3SXf;
-	Thu, 15 Jan 2026 15:24:16 +0000
-Received: from mail-northeuropeazon11011009.outbound.protection.outlook.com ([52.101.65.9] helo=DU2PR03CU002.outbound.protection.outlook.com)
+	id 1vgQ0N-0000000CfVv-2obV;
+	Thu, 15 Jan 2026 16:15:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgPCo-0000000CaX9-1Ar1;
-	Thu, 15 Jan 2026 15:24:15 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=UmIMQ/gFliVjMFiRBq1mbQr0xraGi72ISGKI7wHBeRSgjSdIfJzyaot29N4V+tGbeH3ejwnRGD5RKoRvZQhvtMDTXzXA1vduZR2yOZhyJ1un9n9R+ghQI2nc8dfDt3lzERpgPzOMrIN1UCJ2sBsfbVD5jyYxLmIYto7DFS3KfaUITIGdqTbeYSdDFzMeKvegtCf7jIdCTHga+VbgPxDwXJT4HTTort9Ugpe54b6MgG2F/Hpxlnjd3w37owZt9TdStkwpZJbNuKBbrx/2ORPbFpMLSW2Lt5S44G61qzbIoe+yzJqrvzk2PXD3m3NwKOZ66LeDzKN+WIqb9xxXxfHprg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=+hUgYjH7OCHSFJB6K819F9UmTPlFrHa18xEmMODxPk8=;
- b=hL/ZvTRHO2QA8WdLQW8ZVGlvsFUpEhCFyP01ns4a1nZBwNKKDWdNRdyjuCE72cAaqMaCxP/2ZptAcUyhHHhb79vU9KF6ngbuvSe+36MXCPQjrgcYlisCybiLko9EvDPEYQ3O/PRFw6KaPnTyaYyLLPulnCXPteV+h2f4MlelLMC+VT4aj3Kxw3Oytn8rfw5c6lyA02QHGCBsmr1aXWpt5h+Lz2QOYp9o1Ap+q6ckAr45O8xjT85evo6Ox5gRN9PV1Gl+WgN6Pnyv+udDiR3YLZSNKIc9XXp4eOBn8Vk5ETD53q4v8KKYX0KJ4JC5QcFrjiSmLo06KOLZjR+3HH7Qnw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=+hUgYjH7OCHSFJB6K819F9UmTPlFrHa18xEmMODxPk8=;
- b=eJQqDVLNBkQShyy8zz6kfd/nE/KI9To2cYfQJxnV99IdUdlIzOqQq1ja9G5mVq3LlvNPO6zXJYhzvDdZiYNqEkoPLr6JTEjy5F0R5EBHBe7STB4nb9vvvo2MEJgKjCJMK5TlD7iuDfYWFzoedtk4Lf0QwPHkDuyBPDQDZVJ15LEG/y1WTb56P66NVBktJFVsfaCFnSt/Xsju1y3oAw9Evdu8zJypL1ny92CyLEtGgrM0UDZSk3B9xFku19T0bUfA47rjxJkyzXAvrROA9y+mSZTRI+sqnVe4OlWrFcoXq6t82fqEr/g28Q4UE/89+12w8pjwtpeU+YzjKoqTFdNPtQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AS8PR04MB8948.eurprd04.prod.outlook.com (2603:10a6:20b:42f::17)
- by DU2PR04MB8662.eurprd04.prod.outlook.com (2603:10a6:10:2dd::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.5; Thu, 15 Jan
- 2026 15:24:05 +0000
-Received: from AS8PR04MB8948.eurprd04.prod.outlook.com
- ([fe80::843f:752e:60d:3e5e]) by AS8PR04MB8948.eurprd04.prod.outlook.com
- ([fe80::843f:752e:60d:3e5e%4]) with mapi id 15.20.9499.002; Thu, 15 Jan 2026
- 15:24:05 +0000
-Date: Thu, 15 Jan 2026 10:23:48 -0500
-From: Frank Li <Frank.li@nxp.com>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	cassel@kernel.org, vigneshr@ti.com, s-vadapalli@ti.com,
-	hongxing.zhu@nxp.com, l.stach@pengutronix.de, shawnguo@kernel.org,
-	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
-	minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com,
-	jesper.nilsson@axis.com, heiko@sntech.de,
-	srikanth.thokala@intel.com, marek.vasut+renesas@gmail.com,
-	yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
-	magnus.damm@gmail.com, christian.bruel@foss.st.com,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	thierry.reding@gmail.com, jonathanh@nvidia.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
-	18255117159@163.com, shawn.lin@rock-chips.com,
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
-	vidyas@nvidia.com, linux-omap@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v8 5/5] Documentation: PCI: endpoint: Clarify
- pci_epc_set_bar() usage
-Message-ID: <aWkGhPM3WRK+Xq+C@lizhi-Precision-Tower-5810>
-References: <20260115084928.55701-1-den@valinux.co.jp>
- <20260115084928.55701-6-den@valinux.co.jp>
-Content-Disposition: inline
-In-Reply-To: <20260115084928.55701-6-den@valinux.co.jp>
-X-ClientProxiedBy: BY3PR04CA0017.namprd04.prod.outlook.com
- (2603:10b6:a03:217::22) To AS8PR04MB8948.eurprd04.prod.outlook.com
- (2603:10a6:20b:42f::17)
+	id 1vgQ0I-0000000CfTs-0ImD;
+	Thu, 15 Jan 2026 16:15:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=zjAI4sw5fZWleNcy5E+bpQXvW8kKtlqPBKTICHmyuec=; b=SgdIcZUflo3NqJzUtZoYf3GC3K
+	JoftSOW3X/lY1Pi0hsKuGnEAdP4Xkf5RvordXf9jqy/NXsqZI+Z3rm0864ea3sOV7wd/8n9x7TvtR
+	ARiOH/6XDRwyxFUUZHmrpZt0rTw3cKAEfr/8D2rBa/g7KXdHd4XnhJA71SnSWDqVtE46lIRk+gy1J
+	Q0WOnuPWm0qZF9cm/OdeCNOkNotf4XE+ZUvm31xeAo65yyG78TGmmnh9t5FRX88lrDB46GzObUFAh
+	+/gpCNBZZk3YysdtvJL0VWcu3kTeeVsfbo57gmVuXzvKtkhX3JI40zs0p7BTnQcxIo1BAyB3m1W7H
+	bUiVO0eg==;
+Received: from i53875b85.versanet.de ([83.135.91.133] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vgPzV-002UXc-0C; Thu, 15 Jan 2026 17:14:33 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Linus Walleij <linusw@kernel.org>, Joel Stanley <joel@jms.id.au>,
+ Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>,
+ Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>,
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
+ Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+ Bartosz Golaszewski <brgl@kernel.org>,
+ Steen Hegelund <Steen.Hegelund@microchip.com>,
+ Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com,
+ Thierry Reding <thierry.reding@gmail.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>,
+ Patrice Chotard <patrice.chotard@foss.st.com>,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, sophgo@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH 10/11] pinctrl: rockchip: Simplify locking with scoped_guard()
+Date: Thu, 15 Jan 2026 17:14:32 +0100
+Message-ID: <2415619.22IY78Rhhi@diego>
+In-Reply-To: <20260114-pinctrl-cleanup-guard-v1-10-a14572685cd3@oss.qualcomm.com>
+References: <20260114-pinctrl-cleanup-guard-v1-0-a14572685cd3@oss.qualcomm.com>
+ <20260114-pinctrl-cleanup-guard-v1-10-a14572685cd3@oss.qualcomm.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AS8PR04MB8948:EE_|DU2PR04MB8662:EE_
-X-MS-Office365-Filtering-Correlation-Id: ffd74b9c-e802-427a-b22e-08de544a1e8f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|19092799006|1800799024|52116014|376014|7416014|38350700014|7053199007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?c6ENE8n5Hc1Xjx+7u7TsVLXN/UPBYFdpjh9LoCzxNjH8mmH+QrYj7NgVgVKt?=
- =?us-ascii?Q?XRzFdRWqWZcBWw8rEWgHzj/EioXCb92fWL12p4XgwCLM6qRZPJLG5QPNwJJu?=
- =?us-ascii?Q?ugFABMUdI4MqcXRmXTu3jpVE6V/uOhmr1N2BKjFkxJ8Hmak4TaJSd5gjKg+y?=
- =?us-ascii?Q?SdOESSL1uGv7W2tcEKMDXCrFvYvGWfdxFNA2C1U1bHmS4NE1zjrofg3jcm0T?=
- =?us-ascii?Q?uKjgdwhVHHlWeW3j/2+wIXq169U53LC3DKx7LfbzIGjyUDhCboIeAzp4nOmx?=
- =?us-ascii?Q?efkwPRo1wNRmWeuVGLJV/5uPoX/SL4ImZ8DGv8qhyBpQdAJleMfU6W7kDRVU?=
- =?us-ascii?Q?7t7SKyhtlyVH8JrmyhscWbaSl+aezSnMZPzxmt1BBhw4eL8glZ9V60n2oEQN?=
- =?us-ascii?Q?GG9OnEMmdB9ekWkObk4P06QOHlnNHS2V8L4xQVnaRjV1S6k/2R7KgSS+XQEK?=
- =?us-ascii?Q?Q2GroyvXa/08X64Vwksieaz+EXDZWMsQtFzhi/TB/nb0WQ5MXPRUlKHXbteF?=
- =?us-ascii?Q?owm9q3r+J3w/NyRT6pvNWIoPAYFj6A2iOKFihfz/AafKC6GjBs1+lmXIZbbK?=
- =?us-ascii?Q?pvKo7MQl9EDah/9McpvN4KZR4hk6RpwxD1lDH0BpOj4jQgp6ZHlRnb6oKfu3?=
- =?us-ascii?Q?NWss+5KZhpeJBTsRrxCjUghhGwCZmP1wulAWquDliS9rg3ziQ05qDhlK3kLT?=
- =?us-ascii?Q?R6nQ/XLYt09KC7xGOJVdlU8jPb3bmtLC3EHgDqGQJo106WHt1rvHcUb1sz4Y?=
- =?us-ascii?Q?/bD47xjfDx7ypC05tWopCxbZgbS0nVMEBWuiiA3WVOAD0OhIQAROWZdO1ico?=
- =?us-ascii?Q?Ipj3TJh/eSRJVmyfflL4quusCjedcrJmy7tqKBm4UYyH+seI50AF/zzQFg5z?=
- =?us-ascii?Q?t7sy3/Ey4bzqm+8Jma4iTmRDF0tTOa2B42WXr4MvKkJHl7vNVck++7Zcnfkd?=
- =?us-ascii?Q?diZWw/hx7B0rKT92c3j3PIeMGP5vMCbWJ3DuFE6NPAZO3lZz4V1XviPTxI/m?=
- =?us-ascii?Q?ZAfJNJ0StIlsh34l2aaaEZLd34UOzVZ9LDpHr//cGStFT3XAqa2M8ldxktPi?=
- =?us-ascii?Q?4W6LzYnrl5CsWfn79ZHUaXT08V/grAihyPZUmpaNavemTIDvhuYIv9qML4Yf?=
- =?us-ascii?Q?B48gtSqvYgwPyfKnUKhMLDTF4cap/tvJhK4utlD4LseJqZdKZSg81FIGnFf3?=
- =?us-ascii?Q?qf8ILoGOJqf00DJt8u1pOOIr3ciDBEWlF3fZGxGTPTlz4O8XFApJSw4yX3f8?=
- =?us-ascii?Q?x3df+X0kmuLixScHCCWx0RQNB3g54VsLPjVRvQwuss3X1Ad35Ki+jHQkOTM4?=
- =?us-ascii?Q?5SrNkmbrM2ZDi+Z18Dxtlh7z8n50S0HdnqffSAB5dCV1HuOCGOWxnmH0WuP1?=
- =?us-ascii?Q?dt7VMQNybRxaZxMT7SeJQCe16nb1VCk564fjHL9OA0BEbVioFvECpVx4FssH?=
- =?us-ascii?Q?lupq8u0cGgfctt59us4jJr4YnivRoIlG1OehG3YvIwYVXlZ/YNP6FtfLyKir?=
- =?us-ascii?Q?SbDJFZpbT4yg7SWNTZ1yaXvdM7Bl906GtRhuvX/OHsimis/6qjLSPCSzqZLg?=
- =?us-ascii?Q?iskHDDP0xLQ7jxY1dx/z0h3irwyfZaKpzDrO/bpD2Wc54sBD7NkIHbdCmwCI?=
- =?us-ascii?Q?KpFHqZa2Rg9Aju1Jo1A3DyE=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8948.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(19092799006)(1800799024)(52116014)(376014)(7416014)(38350700014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?peQqdrQshvJ00g7WAL6fV6PkTTZgWJAJWrxoMpjB9Hyt2ezUOIkD4uf6s20l?=
- =?us-ascii?Q?2Dg+8y/ptpu1riis2V/AqCZwuhtnQcQLoDnpr0QzPGtNcNySWwu1qhnKn2/5?=
- =?us-ascii?Q?VSk4g1yzYs0kb6rmtDMMAPW20I6kFwKJ/1vMpY0NR5kz1UxZMvnRnxJTweuy?=
- =?us-ascii?Q?SSxL7yFYevtIKRLvBzDHnFKmWAhX9tPUO8b/ItsSHOuB0iCJechigPXvM+PL?=
- =?us-ascii?Q?9zO4I7G3GjaMm/juGXIHeYNbZdw+wYvTV+6JMtLEMV707B3fQ0uB9SMuLfTf?=
- =?us-ascii?Q?IUhU7/zN5FRrXhRb2gyidZc3DUCcBeXbTIoRrX+8HFrkPJ/NpxLfizvbPd/j?=
- =?us-ascii?Q?y4ZociiDEolrtE2j4Kf/2rO72c8U96Emkp3D+Y48kHUoOnqfJz6grLO5cAOr?=
- =?us-ascii?Q?87weAN5cT3k042Y3wAIBvBIP5rUOg/p9dnGHDGs39B/65cPJ/4o4c0QvsV0k?=
- =?us-ascii?Q?z3M0oSbenjM1hBoBrzH0ucNNle42gK+zjKcjLwS3fSMQ7LTIyjJyuDRvsvUr?=
- =?us-ascii?Q?uUy3vKodcUpQYe8PvMJpwmPMqqJC/DtaLlxCgKj5LbREMRJ/IfBG+ndJOx4c?=
- =?us-ascii?Q?I6oBWR5GQgBZiCTvNyPJsQA6i+WgaocMzX7bqziXnrVsmpgPAduNQmorfB3r?=
- =?us-ascii?Q?E9n5nZbcropwUfHawmzH/ZL6UnhGaNrcImespSqZu2ZIZSASfGNu3/RKBW6/?=
- =?us-ascii?Q?cZAfEaXKjf2fuUJyY0Qpp2NwKShKSRK7qUDUOSilFZRk1spb5s/YGFetpiMd?=
- =?us-ascii?Q?diWzaCbKCyD/nAnUriyN9Nz24S/Yv7fm0XxDt+oiY5vyDH6TZeXjc0cZ4JfQ?=
- =?us-ascii?Q?ma/KIxFHoklso6czAnLHkNQKgAmeUuQuEQaFiXr5d3lAcpxSRaZlcKvu6Bkl?=
- =?us-ascii?Q?CQyX68w/IBlCikFXhQNIqb25Kb/TcKmPvLlnlHYINOaYKbvHBWZYMvOU8K/p?=
- =?us-ascii?Q?v+u6FA6H2Pil5wsj4dHLA12UngQxn7H7JHJCQ1Kq0LWWOYVuiCGGlG4BZeRZ?=
- =?us-ascii?Q?8Kglz+tqb/2BZiL59Ov/jvC4rFe+PCzuX/aO/I7hDqnxWSsfCARshZnWnfLy?=
- =?us-ascii?Q?VjEgo9Px0lLrQ7d2hBYSz1Mb1wApORY8p2suV9JzPXsvUNKtv/AVDOgAbyE6?=
- =?us-ascii?Q?p8a5VrGck3O6y3xuSigjJ0BNLtCsmLTOG54W173znRIQ5CU7A2r+LY9BC/gm?=
- =?us-ascii?Q?mqMzjJXSCu+yDkBUtQoNvlyrfeaxTaCtKmMLnEfiVhGheDl6F2mzlB+ACDxj?=
- =?us-ascii?Q?xs6z8NcmheEYvny+6KyYULL8Wta7WDjGjTv2o3sb0L9ER3bW3GLieBRXiBzU?=
- =?us-ascii?Q?oN2ObEFQMHPNkF8fpoK+wbIJahuushybfJ3df+X+hf7jS1hQk7AMynglL+97?=
- =?us-ascii?Q?nhhBWUQWBtXwC9VZYpJYTYV6iA8fopAWbuH4PxaUmkxX0OZWBIcJ8o7NfprD?=
- =?us-ascii?Q?IBKXLVmoDn3ZTo/ZlmkaMXYd0x3jcigK4CYUUv+eV9nBIzZnYtRu8wodxKX7?=
- =?us-ascii?Q?dMCfusuN2W8TpGTXnPdjJxackAzZ0ym7NbrN0IygHHPAtoL8d/R+ypEPrczv?=
- =?us-ascii?Q?19wL6eaRCAl1HBfmcvUms6EPe8thqfPA3dlA1toM6Wj+VJGiPxEVE3bWbfzy?=
- =?us-ascii?Q?wj9OAnSHZ/+MDItOJVA1NXNZcTU9mFzYQ4LDdR++tiTjfxNa2ao31M8Metob?=
- =?us-ascii?Q?5NUxh12rRuSavywwtamT83d1POqhfNvCjr4EVlRMiTrhl3h3?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ffd74b9c-e802-427a-b22e-08de544a1e8f
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8948.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jan 2026 15:24:05.1535
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: l790yAvTGYjBbFSUiagVmk9SsGvkT7IH2EyPpi2QYd39Q0BAyKc2UAmTxsQDZY+VttrAAcyLNstI8Uq7hvjh0Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB8662
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_072414_324072_8BAF97EA 
-X-CRM114-Status: GOOD (  25.96  )
+X-CRM114-CacheID: sfid-20260115_081522_750288_16345547 
+X-CRM114-Status: UNSURE (   7.60  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -179,72 +81,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 15, 2026 at 05:49:28PM +0900, Koichiro Den wrote:
-> The current documentation implies that pci_epc_set_bar() is only used
-> before the host enumerates the endpoint.
->
-> In practice, some Endpoint Controllers support calling pci_epc_set_bar()
-> multiple times for the same BAR (without clearing it) in order to update
-> inbound address translations after the host has programmed the BAR base
-> address, which some Endpoint Functions such as vNTB already rely on.
-> Add document text for that.
->
-> Also document the expected call flow for BAR subrange mapping
-> (pci_epf_bar.num_submap / pci_epf_bar.submap), which may require a
-> second pci_epc_set_bar() call after the host has programmed the BAR base
-> address.
->
-> Signed-off-by: Koichiro Den <den@valinux.co.jp>
-> ---
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
->  Documentation/PCI/endpoint/pci-endpoint.rst | 24 +++++++++++++++++++++
->  1 file changed, 24 insertions(+)
->
-> diff --git a/Documentation/PCI/endpoint/pci-endpoint.rst b/Documentation/PCI/endpoint/pci-endpoint.rst
-> index 0741c8cbd74e..4697377adeae 100644
-> --- a/Documentation/PCI/endpoint/pci-endpoint.rst
-> +++ b/Documentation/PCI/endpoint/pci-endpoint.rst
-> @@ -95,6 +95,30 @@ by the PCI endpoint function driver.
->     Register space of the function driver is usually configured
->     using this API.
->
-> +   Some endpoint controllers also support calling pci_epc_set_bar() again
-> +   for the same BAR (without calling pci_epc_clear_bar()) to update inbound
-> +   address translations after the host has programmed the BAR base address.
-> +   Endpoint function drivers can check this capability via the
-> +   dynamic_inbound_mapping EPC feature bit.
-> +
-> +   When pci_epf_bar.num_submap is non-zero, the endpoint function driver is
-> +   requesting BAR subrange mapping using pci_epf_bar.submap. This requires
-> +   the EPC to advertise support via the subrange_mapping EPC feature bit.
-> +
-> +   When an EPF driver wants to make use of the inbound subrange mapping
-> +   feature, it requires that the BAR base address has been programmed by
-> +   the host during enumeration. Thus, it needs to call pci_epc_set_bar()
-> +   twice for the same BAR (requires dynamic_inbound_mapping): first with
-> +   num_submap set to zero and configuring the BAR size, then after the PCIe
-> +   link is up and the host enumerates the endpoint and programs the BAR
-> +   base address, again with num_submap set to non-zero value.
-> +
-> +   Note that when making use of the inbound subrange mapping feature, the
-> +   EPF driver must not call pci_epc_clear_bar() between the two
-> +   pci_epc_set_bar() calls, because clearing the BAR can clear/disable the
-> +   BAR register or BAR decode on the endpoint while the host still expects
-> +   the assigned BAR address to remain valid.
-> +
->  * pci_epc_clear_bar()
->
->     The PCI endpoint function driver should use pci_epc_clear_bar() to reset
-> --
-> 2.51.0
->
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTWl0dHdvY2gsIDE0LiBKYW51YXIgMjAyNiwgMTY6MzA6MTEgTWl0dGVsZXVyb3DDpGlzY2hl
+IE5vcm1hbHplaXQgc2NocmllYiBLcnp5c3p0b2YgS296bG93c2tpOgo+IFNpbXBsaWZ5IGVycm9y
+IGhhbmRsaW5nIGJ5IHJlbW92aW5nIHR3byBtdXRleF91bmxvY2soKSBjYWxscyB3aXRoCj4gc2Nv
+cGVkX2d1YXJkKCkuCj4gCj4gU2lnbmVkLW9mZi1ieTogS3J6eXN6dG9mIEtvemxvd3NraSA8a3J6
+eXN6dG9mLmtvemxvd3NraUBvc3MucXVhbGNvbW0uY29tPgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0
+dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2Nr
+Y2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxt
+YW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
