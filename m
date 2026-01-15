@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 432AFD44C7B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 16:25:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABC4D44C7B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 16:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=s1xJObPWo56/tYw+Odvg2mXTRBgePGPM4IeAWam0d98=; b=rRpXFWYNB+V1su
-	jI0cQ9JRfZMyEAD4oNhEL1PUp0Fu0FLLBqVCZ3BoALyiPzUDkgTjuvDd4YjQ0R44y40ei86cJzVVZ
-	ZUc9suwuC8eL4aod7j14KdanH2dRXkZZObgrJgSznlhi7k+FYnXcNdCfI/wrFbipb82V/QPkm9A/a
-	5XlGREP84gu3chvMDYEiu9AWyq7aa/991eTeeNCjIJIMpbjcN21XAolHrx+HgxmV7rK0yaBE+j5v4
-	ejjGXNRT9QUZn4uu3RUgBQXC5Z/bvyaYwx9Ki9f/mIILxldqaury/FwDDI/sTSdyHg1wd6C/KWRIC
-	HnllYIIaC6VfNiZr6WOQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9bqJ4Xeq6499yHLMtq6YB+CZLVLbglt4kLyQJI1exJs=; b=BVMGYSF/WDUWiI
+	IV/bRekSzAzxOjdhN703B6chGaSXfhadrJibW/kykH1PSZUpiScQk3H4H2nAoEBFADTz37uoSbACr
+	VWvIFLZiSFvKjcleK2YJ6p0Y+YNVHnZg6VjgedHxgkkP5DJ7moSQ4aEiK/d9tlQXheP4JRXcfURdl
+	RRUT07by1dI4z3DlDS1AREbXsdvIpzvYaqFO6w+aWCj8JSyU+vqc/8MjnD2B9ZRsc/hxW9/a32796
+	w3qVDEE3TuxAcDW9OdG4NiVEl7kFv/iiLLWVJFup5ZRVUujzBQLLAQEZdVQyEFxZwmQt1iEYixYPO
+	xmvYxaYiuoXRGb8My6xQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgQ9n-0000000CgUB-3O3k;
-	Thu, 15 Jan 2026 16:25:11 +0000
+	id 1vgQ9o-0000000CgUp-1auE;
+	Thu, 15 Jan 2026 16:25:12 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgQ9j-0000000CgS8-0s8P;
+	id 1vgQ9j-0000000CgS6-15hj;
 	Thu, 15 Jan 2026 16:25:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768494304;
-	bh=sZkcmxgPloiZOgcyn0CucYEXzZq6QpSQQfwD2zQtYb0=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JWBfxwqX5FBqNKey+KoyFDp9aSS9Uvly3g/ZY5dIiWJUO85ZF91M2sxIxPRbVEDxJ
-	 cAjj+AvfWSKd7GAxs/ebD0maPRPOrL2jS7++4wjjnCcbDShSBTubLgPXTLheIvDfCN
-	 eqvhjM8PkUqNkdgGz+AMBDyUvlobK88l7FUNOCHFfXa/DsLprBmPDGr7vACdg1bPEj
-	 LisAP8WUJe+qTXSA6+Uuf70fbLDXjpmmqEmYu6m480+L65kX56fQp3useqlHs7aIfF
-	 iGJ3b30LVtR+u8tYf8BKMrPeP9CD3rp8pBhBkej9DN5zo/dxdd7tOzIjBLl8XHjqdY
-	 c1tt6E0eCPWEw==
+	s=mail; t=1768494303;
+	bh=bHsNW7HAQnNrUBtDDGcPlMhwlJ9HZhIEIGRZ5AuWkrk=;
+	h=From:Subject:Date:To:Cc:From;
+	b=E7zLKdVdJTAB6HdQdqSN8pRKtGdAFX/mRxTQg3sKw98q2/vhGHPeZ8gJXZJF4oD3G
+	 WKJOOZCT+b0MdsFZT4JR6ftaIePKRHSXKUHRDkAzjRnaOd8kblQ2pt3xhx6Lq2RA9i
+	 O8hKsD/A5jjei0fxDet6U1Rl+fBd5GaGsjirPtTUYG3Fr9D3BC+7nka549WpDNfbwf
+	 lS5DSohKyULQzubpth17mHrZF7Gy9GdzvVtLw5SVWkor205FJuOEo2XAUNXSB60Lp0
+	 Bl4aQOe1HL0lOSzHPKU0HlpouvJ73e9QsbOmcYEkhUiHPrnIxZitCKiv1xVvgwcAwu
+	 vjpbNQ6vkQP0w==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3B9C317E07FA;
-	Thu, 15 Jan 2026 17:25:04 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 514B617E0456;
+	Thu, 15 Jan 2026 17:25:03 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 15 Jan 2026 18:24:43 +0200
-Subject: [PATCH 1/2] drm/rockchip: dw_hdmi_qp: Fix RK3576 HPD interrupt
- handling
+Subject: [PATCH 0/2] Hotplug detection fixup on Rockchip DW HDMI QP
+Date: Thu, 15 Jan 2026 18:24:42 +0200
+Message-Id: <20260115-dw-hdmi-qp-hpd-v1-0-e59c166eaa65@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20260115-dw-hdmi-qp-hpd-v1-1-e59c166eaa65@collabora.com>
-References: <20260115-dw-hdmi-qp-hpd-v1-0-e59c166eaa65@collabora.com>
-In-Reply-To: <20260115-dw-hdmi-qp-hpd-v1-0-e59c166eaa65@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAMoUaWkC/x2MMQqAMAwAvyKZDZiiUvyKOBQTbQZrbUEF8e8Wl
+ 4Mb7h7IklQyDNUDSU7NuociVFcwexdWQeXiYBrTN0Qd8oWeN8Ujoo+M1BpryVkugBLFJIve/3C
+ c3vcDzo5WxWAAAAA=
+X-Change-ID: 20260115-dw-hdmi-qp-hpd-142881a8d81a
 To: Sandy Huang <hjc@rock-chips.com>, 
  =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  Andy Yan <andy.yan@rock-chips.com>, 
@@ -62,8 +63,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_082507_403105_E51324D2 
-X-CRM114-Status: GOOD (  11.10  )
+X-CRM114-CacheID: sfid-20260115_082507_488693_202B1FBE 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,48 +82,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The threaded interrupt handler on RK3576 checks HPD IRQ status before
-deciding to continue with interrupt clearing and unmasking.
+The threaded interrupt handler on RK3576 responsible for providing the
+HDMI HPD capability is currently unreliable, since it's affected by a
+bug leading to a broken hotplug detection in some cases.
 
-This is not only redundant, since a similar verification has been
-already performed by the hard IRQ handler before masking the interrupt,
-but is also error prone, because it might happen that hardware clears
-the status register right after the masking operation completes, and
-before the threaded handler reads its value.
+RK3588 is affected by a similar implementation deficiency, however it
+doesn't seem to cause any functional breakage.
 
-The consequence is that HPD IRQ gets never unmasked, which breaks
-hotplug detection until reloading the driver or rebooting the system.
+The series aims to fix the RK3576 HPD issue and optimize HPD handling on
+RK3588.
 
-Drop the unnecessary verification of the HPD interrupt status from the
-threaded interrupt handler.
-
-Fixes: 36439120efbd ("drm/rockchip: dw_hdmi_qp: Add basic RK3576 HDMI output support")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 7 +------
- 1 file changed, 1 insertion(+), 6 deletions(-)
+Cristian Ciocaltea (2):
+      drm/rockchip: dw_hdmi_qp: Fix RK3576 HPD interrupt handling
+      drm/rockchip: dw_hdmi_qp: Optimize RK3588 HPD interrupt handling
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index c4365909c3e7..33b0f032258a 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -280,12 +280,7 @@ static irqreturn_t dw_hdmi_qp_rk3576_hardirq(int irq, void *dev_id)
- static irqreturn_t dw_hdmi_qp_rk3576_irq(int irq, void *dev_id)
- {
- 	struct rockchip_hdmi_qp *hdmi = dev_id;
--	u32 intr_stat, val;
--
--	regmap_read(hdmi->regmap, RK3576_IOC_HDMI_HPD_STATUS, &intr_stat);
--
--	if (!intr_stat)
--		return IRQ_NONE;
-+	u32 val;
- 
- 	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_CLR, 1);
- 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
-
--- 
-2.52.0
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 ++-----------
+ 1 file changed, 2 insertions(+), 11 deletions(-)
+---
+base-commit: 9b7977f9e39b7768c70c2aa497f04e7569fd3e00
+change-id: 20260115-dw-hdmi-qp-hpd-142881a8d81a
 
 
 _______________________________________________
