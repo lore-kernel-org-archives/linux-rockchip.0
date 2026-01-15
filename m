@@ -4,59 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88420D41149
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 09:36:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF9ED41170
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 11:06:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P0jYvg54MH92xWayHk+EqWreMfA+N6uzHeXm1JXmT2w=; b=QSV9POZw5+094W
-	7yJwLiJ2Okf/K+gvswdJcRn+Agcbhb3IYCqBRHBXBMf+Oby55DTvFGmNCx3ACZ/k89QIvUcLknSyW
-	AmNQ2uxHuvOLvfUY5UIb9MTwe2YBvYHTl3/6+WSi4wbk1aoTPUcH4PBcYIbH56N3H7N5A+0OuS6rI
-	BLvO1s0VwlechPVugsBHmXlT7kFxadFgJ9WAs3Cr46fnfvXdnEITftYBRh12aewC5ly3W3rolC+5U
-	JxtomLNTqlLuUmZViP0mVT4KHRvI2WyA734Z9QGrK2Tb1f8A9LHtn5cPHFMbKxiwvEstlG+Zq9bSe
-	4hDmoFGVRapHbUVXYOuA==;
+	List-Owner; bh=5d9Q541/qhRjfqeM1tIta59xX+0LUE/847SnwJiQ9mw=; b=0exBTj0drt2uDg
+	o2cxdtDuQ1iNGSUvLxt3nYwJ2E/D2NGWgcpVTv4t28ZVjkEdY9ACD8IDZ3LTIZKxhz9swaEB56Qjt
+	jN4OlbHxKXBPYQLCpC1YtMVZOqAnmxBngD4CG2cW0CbqM/lroDfJuQ1F6tolBqdLtEspQDxESf2Hk
+	hZO1zVuY0a2Q/lJNOU3jOWbLHi5v4zSv+M3mZuhEBwCg/jkeLuWM7BqPpCPGXYWN6a++ZOD71aD6p
+	rc8bzK6kssVmU+WIbVe5xP1ImpcQbQuxMrqeA99INO/vNiaUWV4c6Az3uLaNibDMYakDfKNBISAsY
+	Lk5Ub/fDBXzpz3pb5hQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgJlc-0000000C4y1-3dFy;
-	Thu, 15 Jan 2026 09:35:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vgLBC-0000000CC14-0sJE;
+	Thu, 15 Jan 2026 11:06:18 +0000
+Received: from mail-m3293.qiye.163.com ([220.197.32.93])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgJlZ-0000000C4wU-2Rgo;
-	Thu, 15 Jan 2026 09:35:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=JYXltDpL0E6P70x7/T7CUClUHHDXZGWswJd0N771/no=; b=xiJJHr00vXBCki2jKRfl7tFi2f
-	eqiyJPSVUNN0luhQwYGJZnktZzI4n1QZVi88LLC7L81QBc0vY2milOMQeZDNs4s+g1pk+44cCdvOi
-	MF7ue+wVuKChpRYstO/XH5qHSR184Y/ZG6lXa5aX4QFRid1J7T+v8DwkprcJFikwB+p3+U8JQQqmh
-	RYnC0Oor3ntxhkEIqKJOHunUihBCM4Vcg8dXBNhKJpHtKomPlHmN0QpM7YuXVM2zkwljFWzP9ziKi
-	7H+fwrDOW2jKcKJcYom28PUGJ/r3SORsAS/PVSqDWPSLVzaqJraIWe2ZApKvbDQkhVVVyDaxv6/tK
-	5oeOphZQ==;
-Received: from i53875b85.versanet.de ([83.135.91.133] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vgJlU-002RHj-Il; Thu, 15 Jan 2026 10:35:41 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+	id 1vgLB9-0000000CBym-1QVA;
+	Thu, 15 Jan 2026 11:06:17 +0000
+Received: from [127.0.0.1] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30c74f925;
+	Thu, 15 Jan 2026 19:06:02 +0800 (GMT+08:00)
+Message-ID: <d487d1c4-a21e-4d6f-bc01-5797eb449c57@rock-chips.com>
+Date: Thu, 15 Jan 2026 19:05:58 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Enable HDMI output on
+ RK3368-Lion-Haikou
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
 Cc: quentin.schulz@cherry.de, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: Re: [PATCH v3 3/5] arm64: dts: rockchip: Enable HDMI output on
- RK3368-Lion-Haikou
-Date: Thu, 15 Jan 2026 10:35:38 +0100
-Message-ID: <10786293.qUNvkh4Gvn@diego>
-In-Reply-To: <8f7880cc-5469-4ac1-9fcc-9bd33327e571@rock-chips.com>
 References: <20260114230707.4175162-1-heiko@sntech.de>
  <20260114230707.4175162-4-heiko@sntech.de>
  <8f7880cc-5469-4ac1-9fcc-9bd33327e571@rock-chips.com>
-MIME-Version: 1.0
+ <10786293.qUNvkh4Gvn@diego>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <10786293.qUNvkh4Gvn@diego>
+X-HM-Tid: 0a9bc155786603abkunmbbe2c43d3c9934
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxoeHVZJSR1KTx1OHktITh1WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=QMy6QsEf96Dxldir3W7DP9dSiOA0T3gLQiix77OsfmCztiqZc6x2PJiSZu8fQBvp87FDBlWY1SOrAsDlqs230IwcfxWQnXbqAD3TczkuYSEH4rBLdW0ptICsFjBdO5Rx1WdZs+hU9vSjowTEPb+YosktOFR7nAjSEmeYy7UECts=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=VITCb4bX5R30M6IQTSFF+7s0mSypA76PtH4Lp3AhVpc=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_013545_682612_D4CFC4DD 
-X-CRM114-Status: GOOD (  16.20  )
+X-CRM114-CacheID: sfid-20260115_030615_926451_982DC930 
+X-CRM114-Status: GOOD (  12.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,24 +75,26 @@ Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBEb25uZXJzdGFnLCAxNS4gSmFudWFyIDIwMjYsIDAyOjI1OjM0IE1pdHRlbGV1cm9w
-w6Rpc2NoZSBOb3JtYWx6ZWl0IHNjaHJpZWIgQ2hhb3lpIENoZW46Cj4gT24gMS8xNS8yMDI2IDc6
-MDcgQU0sIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4gRnJvbTogSGVpa28gU3R1ZWJuZXIgPGhl
-aWtvLnN0dWVibmVyQGNoZXJyeS5kZT4KPiA+IAo+ID4gRW5hYmxlIHRoZSBWT1AgYW5kIEhETUkg
-Y29udHJvbGxlciBvbiB0aGUgTGlvbi1IYWlrb3UgYm9hcmQuCj4gPiAKPiA+IFNpZ25lZC1vZmYt
-Ynk6IEhlaWtvIFN0dWVibmVyIDxoZWlrby5zdHVlYm5lckBjaGVycnkuZGU+Cj4gPiAtLS0KPiA+
-ICAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LWxpb24taGFpa291LmR0cyAgICAgfCAxNiAr
-KysrKysrKysrKysrKysrCj4gPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzNjgt
-bGlvbi5kdHNpICAgIHwgIDUgKysrKysKPiA+ICAyIGZpbGVzIGNoYW5nZWQsIDIxIGluc2VydGlv
-bnMoKykKPiA+IAo+IAo+IEkgZ3Vlc3MgTlBMTCBpcyBhbiBpbmRlcGVuZGVudCBQTEwgYXZhaWxh
-YmxlIGZvciBWT1AsIAo+IGNvdWxkIHlvdSBnaXZlIGl0IGEgdHJ5PwoKbm90IHJlYWxseSBzdXJl
-IHdoYXQgeW91IG1lYW4gaGVyZS4KClRoZSBWT1AtYmluZGluZyBzcGVjaWZpZXMgdGhlIGFjbGss
-IGRjbGsgYW5kIGhjbGsgY2xvY2tzLgoKVGhlIE5QTEwgaXMgYSBwb3NzaWJsZSBzb3VyY2UgZm9y
-IHF1aXRlIGEgbG90IG9mIHBlcmlwaGVyYWxzIG9uIHRoZSByazMzNjgKYWNsa19jY2lfcHJlLCAg
-c2Nsa190Y3AsIHZlcHUvdmRwdSwgaGV2YywgaXNwLCBncHUsIGdtYWMKClNvIGl0J3MgZGVmaW5p
-dGx5IG5vdCBkZWRpY2F0ZWQgdG8gdGhlIFZPUCwgYW5kIHRodXMgc2hvdWxkIG5vdApjaGFuZ2Ug
-ZnJlcXVlbmN5IGZvciB0aGUgVk9QIGFsb25lLCBiZWNhdXNlIHRoYXQgY291bGQgYWZmZWN0Cm90
-aGVyIGJsb2Nrcy4KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+T24gMS8xNS8yMDI2IDU6MzUgUE0sIEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+IEhpLAo+IAo+IEFt
+IERvbm5lcnN0YWcsIDE1LiBKYW51YXIgMjAyNiwgMDI6MjU6MzQgTWl0dGVsZXVyb3DDpGlzY2hl
+IE5vcm1hbHplaXQgc2NocmllYiBDaGFveWkgQ2hlbjoKPj4gT24gMS8xNS8yMDI2IDc6MDcgQU0s
+IEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4gRnJvbTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvLnN0
+dWVibmVyQGNoZXJyeS5kZT4KPj4+Cj4+PiBFbmFibGUgdGhlIFZPUCBhbmQgSERNSSBjb250cm9s
+bGVyIG9uIHRoZSBMaW9uLUhhaWtvdSBib2FyZC4KPj4+Cj4+PiBTaWduZWQtb2ZmLWJ5OiBIZWlr
+byBTdHVlYm5lciA8aGVpa28uc3R1ZWJuZXJAY2hlcnJ5LmRlPgo+Pj4gLS0tCj4+PiAgLi4uL2Jv
+b3QvZHRzL3JvY2tjaGlwL3JrMzM2OC1saW9uLWhhaWtvdS5kdHMgICAgIHwgMTYgKysrKysrKysr
+KysrKysrKwo+Pj4gIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzY4LWxpb24uZHRz
+aSAgICB8ICA1ICsrKysrCj4+PiAgMiBmaWxlcyBjaGFuZ2VkLCAyMSBpbnNlcnRpb25zKCspCj4+
+Pgo+Pgo+PiBJIGd1ZXNzIE5QTEwgaXMgYW4gaW5kZXBlbmRlbnQgUExMIGF2YWlsYWJsZSBmb3Ig
+Vk9QLCAKPj4gY291bGQgeW91IGdpdmUgaXQgYSB0cnk/Cj4gCj4gbm90IHJlYWxseSBzdXJlIHdo
+YXQgeW91IG1lYW4gaGVyZS4KPiAKPiBUaGUgVk9QLWJpbmRpbmcgc3BlY2lmaWVzIHRoZSBhY2xr
+LCBkY2xrIGFuZCBoY2xrIGNsb2Nrcy4KPiAKPiBUaGUgTlBMTCBpcyBhIHBvc3NpYmxlIHNvdXJj
+ZSBmb3IgcXVpdGUgYSBsb3Qgb2YgcGVyaXBoZXJhbHMgb24gdGhlIHJrMzM2OAo+IGFjbGtfY2Np
+X3ByZSwgIHNjbGtfdGNwLCB2ZXB1L3ZkcHUsIGhldmMsIGlzcCwgZ3B1LCBnbWFjCj4gCj4gU28g
+aXQncyBkZWZpbml0bHkgbm90IGRlZGljYXRlZCB0byB0aGUgVk9QLCBhbmQgdGh1cyBzaG91bGQg
+bm90Cj4gY2hhbmdlIGZyZXF1ZW5jeSBmb3IgdGhlIFZPUCBhbG9uZSwgYmVjYXVzZSB0aGF0IGNv
+dWxkIGFmZmVjdAo+IG90aGVyIGJsb2Nrcy4KPiAKPiAKPiBIZWlrbwoKT2gsIHlvdSBhcmUgcmln
+aHQuIEl0IGlzIGEgZ2VuZXJhbCBwdXJwb3NlIFBMTC4KCi0tIApCZXN0LCAKQ2hhb3lpCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
