@@ -4,74 +4,169 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 644C7D44C5D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 14:51:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF869D44C5C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 14:53:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2bNlib1ZEr8RW3pZDvbFOXPLEPPzRaFZIo5kwdIEOQI=; b=wcUl3lutVg1Uf8
-	V4LUGsnyyn5RbndElq12/JQxfWoBO5W0DHSBCqHiqqp5g5f1tluVIjDhD6ygtI5iL4PrjMKSeeBgm
-	4x7q0xVkDQ/oH+p6J2RgBN1RFOOqnPCFzqCDS9hbF8tnnpqHDaLiywlZQgyoNnskOmB6wWk+A20dL
-	IKGFovLM6Tbg7uaS6NbrQJ/Yrllgn4jZu2bfo6FDGJPhuVHvcm9EKBsSogznnwIFejN5/ciH+cjWY
-	V9B53Z0lzAyICwjVjMP9jywoxbu2cNaYjTMgP5nrEjD8WZKpuJUNl0nQI5V767sVzD9BZzRxWUnLv
-	AZr+CmCDgACBONwk0WIA==;
+	List-Owner; bh=9ClTgfXdSUkWTeZCJllFcG7HROynMNbuJ2CDxmyAAzc=; b=oURNIkVlCsxGA2
+	fYLdfwUObR88yqccrHpwwKW2ASL/gQigcRqcGeK5LQbIMr4ZCaRblAFGf+cwmeDTYAbPjKJqWKwmp
+	gaURLjheauHTIlbkpaHtCyoBvFftq+cWtDt6oFDnQVvMziwGhnz0vabTSJH2ye7oQCs7k6ICuzIzd
+	R0Z/+/ZrLOFUd/3GZ1M0Eh+9+H6lXuBICduH2ozcAwBlKL1OhMNyIsvcTBt3EWTU8ghpqM2Dubxae
+	2ihUJKPkbw5UJFBL+IAe++msOmsvDyl0l8c1AFjelvweyeyKayxo+idf39I6C5tztjBkyXhQRPRfU
+	EJGogKFAmPajvY98i4Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgOgl-0000000CX7f-2mt5;
-	Thu, 15 Jan 2026 14:51:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vgOix-0000000CXSU-3xQG;
+	Thu, 15 Jan 2026 14:53:23 +0000
+Received: from mail-swedencentralazon11013003.outbound.protection.outlook.com ([52.101.83.3] helo=GVXPR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgOgi-0000000CX6G-3ieo;
-	Thu, 15 Jan 2026 14:51:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768488661;
-	bh=BRGsOfOVfXBLkhozhMEHPG5fQHPNHu2lNFxYGy94qGk=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=oY7LcciRQYo38+nmrMdl7O9KkL0YsviEmUF9HoC9dnsYWB9N3IU/e736OW3qtYvv7
-	 7cX6v72M0iy3UtjkHDbXFgz73Z2UTg8aaI7Gw6ybiUabdefpoY3cJ+csVlecvD0gAA
-	 fqRwnRBH4CZ+Qpt7WQoG3pJHnIL2EBTmD5Ilc2p9RBt/M+jQTOWXj5BWSrMRNQPaH8
-	 51lyCKS2jBT+cttg0BsaBHS2qgXiap1d/zbK8eDR+4NJBPZ6jj4DUbaOGbGSuujisw
-	 1957Xhz0Us1fKU4E6/+MXAKRGqc6Eq73VsTV6L4EI7+IwDziyPwBQoT5740s4ZtSir
-	 PJp9Qq+Pw5OdQ==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 516DF17E12E5;
-	Thu, 15 Jan 2026 15:51:00 +0100 (CET)
-Message-ID: <fc15b8e5-c7ae-4e0e-b3b7-7ce5b5139455@collabora.com>
-Date: Thu, 15 Jan 2026 15:50:59 +0100
+	id 1vgOiv-0000000CXS6-1IIo;
+	Thu, 15 Jan 2026 14:53:22 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rOIOZTQikC2k1c+oT/CBzP4MoODpdwu/TY3f3vcDPmxph+zI2RqGzphqWq/zzLWdTOcu/nZlfhFPC28HprDEO4b6B3l3WmftlRALrH3LID+NqavNYIzAtvy+VqWwwuPiaGdp6Y3FX5SoRbZdRPwBlVUM6sFuxHGIGnpn1DYlprtLg90qe3y+LyqgAIKKbXHg3UoctischuHxkMOq2ev2Xtgvb/4llRipUntCU1onu/cCdlt/HdQBWMqpbm5v1QW2wetY44DmYRJzAZW9eWm/T+/CVEq2S+Qv1wJ9aw3WBlU4cmy6rdkA85al/MNi12a5zGH7pGbQw0IEnKLRkvJHnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=NwEpN3ULZ0pGo24iuVPoGe7uONTgEMh7VJlpEv+0nVE=;
+ b=Qbyc5q8spFQhNZqAcvdFzzlB4iRhZRDQOJndfG4JQhGAAGV9/byfoxyQdLzeNWPUPKafmLZB7znduvZ9qhQFVaA3T2SM4yBQqaNwQLxP2LDye3SB800+oDGtPTx/8o+8Wnu7b+FPCwdmHyrBjoQ2CfVldupsNSmXwPY2EuVBKs9HVBHaBgcmg6HChvPwJqVK9mx9KBR6Gh8KKj4AR+k6nl+YMXssaE06CgzrteFdeUpJ08Ivtq/NS8uBG39WG61/HGj9WzFCvBROFem4FCEQbrSRSaa1X95WighPzJtd2mBfxkEoGT0/t/XsY9YZA6sTR0NAfcB2shPmw1IJ304K2w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=NwEpN3ULZ0pGo24iuVPoGe7uONTgEMh7VJlpEv+0nVE=;
+ b=inRJDC6AHwuv1SLiT2EGfXY+yXfLtQJnYY5T7KRqwpz2A+sXIbybDXP/otA6n35YvTDvQgesDx7ekiO9U8FX+fZeX9cEfrFKgEZIzxkqgP6JQwNkQRbfKpRQhEfpVZtC4bLE2jVe5OAL5AE67q/Nja2I9B6Y8ppkuq35Zk0nSlPJR6AfYHom71LWSLiAgOhdCWa33Mbhrv/yCM4LAI+roadUXtT9QUc49cqOLUVjgChzDTpBjB0nLCCQRPKjy6r+j3ZpUmmmhAcxWWLH8MJ28z/0/esM3wFI/BKRmZedWh+rZCcmeMWghMIYCvkp8W/csjrr5+iLujV/2TyRkzxmgQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AS8PR04MB8948.eurprd04.prod.outlook.com (2603:10a6:20b:42f::17)
+ by AS8PR04MB9078.eurprd04.prod.outlook.com (2603:10a6:20b:445::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9520.6; Thu, 15 Jan
+ 2026 14:53:15 +0000
+Received: from AS8PR04MB8948.eurprd04.prod.outlook.com
+ ([fe80::843f:752e:60d:3e5e]) by AS8PR04MB8948.eurprd04.prod.outlook.com
+ ([fe80::843f:752e:60d:3e5e%4]) with mapi id 15.20.9499.002; Thu, 15 Jan 2026
+ 14:53:14 +0000
+Date: Thu, 15 Jan 2026 09:52:58 -0500
+From: Frank Li <Frank.li@nxp.com>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
+	cassel@kernel.org, vigneshr@ti.com, s-vadapalli@ti.com,
+	hongxing.zhu@nxp.com, l.stach@pengutronix.de, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
+	minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com,
+	jesper.nilsson@axis.com, heiko@sntech.de,
+	srikanth.thokala@intel.com, marek.vasut+renesas@gmail.com,
+	yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
+	magnus.damm@gmail.com, christian.bruel@foss.st.com,
+	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
+	thierry.reding@gmail.com, jonathanh@nvidia.com,
+	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
+	18255117159@163.com, shawn.lin@rock-chips.com,
+	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
+	vidyas@nvidia.com, linux-omap@vger.kernel.org,
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
+	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v8 2/5] PCI: endpoint: Add BAR subrange mapping support
+Message-ID: <aWj/Sr63+hl7CBe/@lizhi-Precision-Tower-5810>
+References: <20260115084928.55701-1-den@valinux.co.jp>
+ <20260115084928.55701-3-den@valinux.co.jp>
+Content-Disposition: inline
+In-Reply-To: <20260115084928.55701-3-den@valinux.co.jp>
+X-ClientProxiedBy: SJ0PR05CA0086.namprd05.prod.outlook.com
+ (2603:10b6:a03:332::31) To AS8PR04MB8948.eurprd04.prod.outlook.com
+ (2603:10a6:20b:42f::17)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/3] media: rockchip: add driver for the rockchip mipi
- csi-2 receiver
-To: Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20251114-rockchip-mipi-receiver-v3-0-16e83aa7f395@collabora.com>
- <20251114-rockchip-mipi-receiver-v3-2-16e83aa7f395@collabora.com>
- <aWdjGuhk9g1iaJuN@kekkonen.localdomain>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <aWdjGuhk9g1iaJuN@kekkonen.localdomain>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB8948:EE_|AS8PR04MB9078:EE_
+X-MS-Office365-Filtering-Correlation-Id: d1855dd9-67f5-4be6-d9a5-08de5445cfa6
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|52116014|376014|366016|19092799006|1800799024|7053199007|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?5oPQsfVSg2tVwfrFS7kGEJlXFL+/D29UV0ZPSyPgHGui2OuZfIqiFNR40GGx?=
+ =?us-ascii?Q?aV8EdK14s0oOoNzvVszWTFFqADZGyRhgrgbYE0knJ7Irw4NZTp+QwOuam1fP?=
+ =?us-ascii?Q?Jtf2I3hFN7y3M38YfeFU3LToDoRrDV3tQeaKSwbvZ+IcOD2/gpPoiglqQO7r?=
+ =?us-ascii?Q?mF4Aag2LX4JUZthue29cABz+idg6Lc223QXEjRQmrzN3TCI23wN8ohsrBB+7?=
+ =?us-ascii?Q?xLzyuWiX9X5obTT7VhpiC525mS9PXte4k67fRsY9FfI7w1spB3WhWYP9q/us?=
+ =?us-ascii?Q?Kdaqi8zXpFR8MJYCDbh6RXuDm8azk/M0/LNfj9yZqNp7Qmxjxp4FIFPE9pth?=
+ =?us-ascii?Q?0MOc98fC9ZA/gXLBAahud8fnilLXJ+RuuAOl74bIKjGG3SnCJaNxL+qyDUXx?=
+ =?us-ascii?Q?R8o42x9NNcJchJBaHMhIJj2Z8V8bNPJRDV/EuxPKVjv+++jf+rj/GAirXtKf?=
+ =?us-ascii?Q?90jkMFi+yu2KdaIVl00nbIBUccc6X/l0NF4qf/+FZpBDTqwKcorVLm6WUGtx?=
+ =?us-ascii?Q?jxiilJFdskSw8xkaEc1F19BF5frwvMZeGFsNdje32rIa3+dDoCt8hTt44ot1?=
+ =?us-ascii?Q?Uz+w6GYECW2k7yXB6BcW7KZnBVlhagpdpJZ2/oY1Oo2UfOcj7yQKudKIhLLw?=
+ =?us-ascii?Q?YXoPYx1XOZbi+h7PpKpXuG+nKdJk072V3rmwswVW9DeyVnOoptfQFG77n/m+?=
+ =?us-ascii?Q?hMW5Dz6+ObwY8okgQh8A4t/cHkOmaU7ATfo73MEWqL3OoZVtb4O/NFC53UDd?=
+ =?us-ascii?Q?Anqg0KTdsa5yLUz0vy/YWhODAHuyYPuNX4bgdV4K+gVC0ra0KCL0UFngpidt?=
+ =?us-ascii?Q?2qXnc6KolDl9FdtA7dtSPhaPDYtsU9CYBqVLDAVhhgyxsa9IhSlwUfJEIblT?=
+ =?us-ascii?Q?qkWn386xA1b+LOJOuWNRp9JBAYlm8unXQ+jm5M+/04iiq+bWBFssr3AcvnZz?=
+ =?us-ascii?Q?Psgv79NVCy4q7+wHX3J9EzSAX1D5X53fETQKPel0HNzVv99oAM8N9ak9fneP?=
+ =?us-ascii?Q?2jsYyX3RTmBbzAsAsOmnWcf6lPp7v3lancoz29wh0fwXgUmjPQ/JKnjIAXb9?=
+ =?us-ascii?Q?KpKQ+sYV6B/sM1XeaNlMHzDjbNMsbfZiTR9+esHc4xfLwP1sgmelVr8HrWXh?=
+ =?us-ascii?Q?0Ulpr6mAxk5qVKn/SaZZ1Nvp0wJ2LU3Ih0GPzBmnuTSTPBf7yIcSgCnjjeHy?=
+ =?us-ascii?Q?t2S72M7yA1supVevjfPXwTpjLykm9TzDDvDZoY2UMG9QHIdSqx/MCmvMV6op?=
+ =?us-ascii?Q?iymNES2gIg//mjU1TzVwshXpcfd3EteVQdmt5NByzTfGS5SZm7h6XUAURHWv?=
+ =?us-ascii?Q?139oENR/xlFaYaKMzHRa56Ez0RIPqs/AtAcdkbVsouhyE/M3Tvonvp3tstW8?=
+ =?us-ascii?Q?ln9K0XuvckAmZrZy/AHWvTxf3Np0b9Jsw+whh81pIjLzOM2zvw8Jet3etrwu?=
+ =?us-ascii?Q?KxVODVPS9hhBJVID1v5ag2tNhOvFcGaICUO6MtNyJbK8CLMkB9Z/GmQDhF7L?=
+ =?us-ascii?Q?Inip/BOM7/UNuoNxxGV94jZV1BIWJjuseMdjWGMWtAKne2R2drBYO3Vy3WhO?=
+ =?us-ascii?Q?PgBMBpOPy0O+DLU5A9kSSDxz7em4BN4mXFtQOMqioAI2wJ7xkiYWpc+1vAL6?=
+ =?us-ascii?Q?K5nSOxfZXpRVGkE+TWV/+ic=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB8948.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(52116014)(376014)(366016)(19092799006)(1800799024)(7053199007)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mGorIfuBD0t/E/vR/ZVygIBGuAo6AmKqW9zNkMrT/qxRhOkA6NpPb7j0Apx5?=
+ =?us-ascii?Q?VQQBb2zV3gUcw1hY10cR8pg9ubnXXfWqDmYQVvEOwPaTorDqsUhjkZ2IoHV1?=
+ =?us-ascii?Q?+2zjSv2k9taFabuwPPT60pVMRWRKQMYnr0ZzelUhurRACNbD4kOr16iET4DZ?=
+ =?us-ascii?Q?a990gEi45jaq/rFfEQ2n8Z0appi4uRk92lG4MeD/pXhIl+VVS8CdsrqSIe4t?=
+ =?us-ascii?Q?l4kUyZgjthLHPg55qyl0Eh6zYoNax8jU6y9DVGjU8CQ3xA5LfcTizjHIwbHu?=
+ =?us-ascii?Q?n6f2D0HeYi+0NfNUErkCy1OxER884AoM5m8ITAIItUrZTIdyZ2xSktn45l9L?=
+ =?us-ascii?Q?xFKH+vvztihhZ8SEk4PGUwo7oL6X6KigFY7oFBe/ftJZWIhFCmnkNqoJRDSb?=
+ =?us-ascii?Q?uxnYaB9X9tv4BUZQzh8zadJDl4Mw208RQEeMX0xFCcg/WktKYShkaTypMs2f?=
+ =?us-ascii?Q?n8xB5mAKAxfNkONcHq/PBjZo598wSle6MQx1h62AwtooU5g67xLQWzVPMVZb?=
+ =?us-ascii?Q?FtppfLXIhkI8/JmHWM3A4KuLvXQCkNHYITpLdese3kpyb/MDioVOSXhkiCxO?=
+ =?us-ascii?Q?4/LTnHyuJBL/FNT0HGBpQj0WlSHmlMax/LUk0sqXws+kWwFoiYTSbskG6V79?=
+ =?us-ascii?Q?QflxUIQKSPPqchvRNKxecydkdylu+1h5I8eDYazlqm9LAXg9INUJlwxrlZxZ?=
+ =?us-ascii?Q?YDfIVyV7GHwB6Fil44qG/gO3mPcPs4jtOPgVmcDpROIv4Nwmsju7EibeUDvj?=
+ =?us-ascii?Q?OwcxOz5uD144ycq951B3GfbhKdKwdgedaVTedjrj8RUIIQJCfP/r8qu7Rr7u?=
+ =?us-ascii?Q?lheqayY74VhzgHr6c79G3nif7CySa0VprmDgDREI4mBJdERl8jGsQCt7pmfW?=
+ =?us-ascii?Q?Xn3HLo7aoVN1CQid36MiAdNCbxYn0X1UEA7lXD+u8hnwZzVpxBoUrJqC1boB?=
+ =?us-ascii?Q?zs9YEkPcuFht0ZchMD1ry6RAp7L15doZZHbLDOEiv0p3UoMgQS2XR2L/eRmK?=
+ =?us-ascii?Q?yBoeSEtGzTPASTEQ2nLMH+WwnKDHC/lUDqdZRBMKMIlfoFSN+3a2dOAi0sHR?=
+ =?us-ascii?Q?HaM9oBb3IbYke5764DR3N8SL/Wy97/7UujIlKvKYPbJFaMFBCjHE3U238HGT?=
+ =?us-ascii?Q?tJG9y99TXtXmuftDaB6koSuAXFax1F59tFkMcZ3R1YNUQ7GxgcmUlcKPbfWH?=
+ =?us-ascii?Q?A/lWP8VHsZ8aqQZyIX5l21EQPtqiP/78SZBDOKMYJe0k+XWgrKS65eGg/5s2?=
+ =?us-ascii?Q?4aJzaht0JH9Y82Rn7/BQ/7L5CGpbzKLYA3qtzuihrV3Zc4iI7M+m6kkiJCWM?=
+ =?us-ascii?Q?jIt8ziJ1ZKeIXjiQhMbjP09QXt+QF46AVbCMT0JhWgg7Xx/XQiW+0t6Jk1z4?=
+ =?us-ascii?Q?LHqMfxgNuFY2x/eWNiMs/hO/wkSD3epDtkZP6NzStMqcxq0204fsXXILLTQf?=
+ =?us-ascii?Q?uNWLvKMW9DHNfnBoxpw1rlpHtVDaIzjftoamgKoINTLq0b5NaiWNLB5Jhk10?=
+ =?us-ascii?Q?cXu6qO8+cECKRbR9uVUTHiUWnkuQ0BPsm+RtXjXzm1eVHqASN/262HY0g2Bo?=
+ =?us-ascii?Q?o7pPKBqa0za2THjqgQ7W/HYYdnohY3lAC7SzNcl/Lmop/Qz10oe1kQ6jy3SF?=
+ =?us-ascii?Q?SxgDzISdGDk4Yl0WmnDB590qP8ZJF5EUKGL3TVNRv1FdIJE1XFFiD2wTbzJA?=
+ =?us-ascii?Q?l+ysdKJnUq9ea/UTIAtk6eHX75lYfWu7tbHYO04RxK2OUqtL?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d1855dd9-67f5-4be6-d9a5-08de5445cfa6
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB8948.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Jan 2026 14:53:14.9123
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: uB0nZ/zYaCU/l+931547YwTgX5ALaF2R0xSLJ7XW0S+IqJjGXoFOLyRA2iYBEKXxXVHQbUwCt8fFSTQVTvX6uQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB9078
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_065105_245658_74D4CD9A 
-X-CRM114-Status: GOOD (  29.71  )
+X-CRM114-CacheID: sfid-20260115_065321_512501_8E8AE6B2 
+X-CRM114-Status: GOOD (  30.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,720 +183,133 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
+On Thu, Jan 15, 2026 at 05:49:25PM +0900, Koichiro Den wrote:
+> Extend the PCI endpoint core to support mapping subranges within a BAR.
+> Add an optional 'submap' field in struct pci_epf_bar so an endpoint
+> function driver can request inbound mappings that fully cover the BAR.
+>
+> Introduce a new EPC feature bit, subrange_mapping, and reject submap
+> requests from pci_epc_set_bar() unless the controller advertises both
+> subrange_mapping and dynamic_inbound_mapping features.
+>
+> The submap array describes the complete BAR layout (no overlaps and no
+> gaps are allowed to avoid exposing untranslated address ranges). This
+> provides the generic infrastructure needed to map multiple logical
+> regions into a single BAR at different offsets, without assuming a
+> controller-specific inbound address translation mechanism.
+>
+> Signed-off-by: Koichiro Den <den@valinux.co.jp>
+> ---
+>  drivers/pci/endpoint/pci-epc-core.c |  8 ++++++++
+>  include/linux/pci-epc.h             |  4 ++++
+>  include/linux/pci-epf.h             | 27 +++++++++++++++++++++++++++
+>  3 files changed, 39 insertions(+)
+>
+> diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
+> index ca7f19cc973a..068155819c57 100644
+> --- a/drivers/pci/endpoint/pci-epc-core.c
+> +++ b/drivers/pci/endpoint/pci-epc-core.c
+> @@ -596,6 +596,14 @@ int pci_epc_set_bar(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
+>  	if (!epc_features)
+>  		return -EINVAL;
+>
+> +	if (epf_bar->num_submap && !epf_bar->submap)
+> +		return -EINVAL;
+> +
+> +	if (epf_bar->num_submap &&
+> +	    !(epc_features->dynamic_inbound_mapping &&
+> +	      epc_features->subrange_mapping))
+> +		return -EINVAL;
+> +
+>  	if (epc_features->bar[bar].type == BAR_RESIZABLE &&
+>  	    (epf_bar->size < SZ_1M || (u64)epf_bar->size > (SZ_128G * 1024)))
+>  		return -EINVAL;
+> diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+> index 4c8516756c56..c021c7af175f 100644
+> --- a/include/linux/pci-epc.h
+> +++ b/include/linux/pci-epc.h
+> @@ -227,6 +227,9 @@ struct pci_epc_bar_desc {
+>   *                           inbound mappings for an already configured BAR
+>   *                           (i.e. allow calling pci_epc_set_bar() again
+>   *                           without first calling pci_epc_clear_bar())
+> + * @subrange_mapping: indicate if the EPC device can map inbound subranges for a
+> + *                    BAR. This feature depends on @dynamic_inbound_mapping
+> + *                    feature.
+>   * @msi_capable: indicate if the endpoint function has MSI capability
+>   * @msix_capable: indicate if the endpoint function has MSI-X capability
+>   * @intx_capable: indicate if the endpoint can raise INTx interrupts
+> @@ -236,6 +239,7 @@ struct pci_epc_bar_desc {
+>  struct pci_epc_features {
+>  	unsigned int	linkup_notifier : 1;
+>  	unsigned int	dynamic_inbound_mapping : 1;
+> +	unsigned int	subrange_mapping : 1;
+>  	unsigned int	msi_capable : 1;
+>  	unsigned int	msix_capable : 1;
+>  	unsigned int	intx_capable : 1;
+> diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
+> index 48f68c4dcfa5..46f817da6e24 100644
+> --- a/include/linux/pci-epf.h
+> +++ b/include/linux/pci-epf.h
+> @@ -110,6 +110,26 @@ struct pci_epf_driver {
+>
+>  #define to_pci_epf_driver(drv) container_of_const((drv), struct pci_epf_driver, driver)
+>
+> +/**
+> + * struct pci_epf_bar_submap - BAR subrange for inbound mapping
+> + * @phys_addr: target physical/DMA address for this subrange
+> + * @size: the size of the subrange to be mapped
+> + *
+> + * When pci_epf_bar.num_submap is >0, pci_epf_bar.submap describes the
+> + * complete BAR layout. This allows an EPC driver to program multiple
+> + * inbound translation windows for a single BAR when supported by the
+> + * controller. The array order defines the BAR layout (submap[0] at offset
+> + * 0, and each immediately follows the previous one).
+> + *
+> + * Note that the subranges:
+> + * - must be non-overlapping
+> + * - must exactly cover the BAR (i.e. no holes)
 
-On 1/14/26 10:34, Sakari Ailus wrote:
-> Hi Michael,
-> 
-> Thanks for the set.
+It is impossible after use 'size'. It can be removed.
 
-Thanks for the review :-)
+> + */
+> +struct pci_epf_bar_submap {
+> +	dma_addr_t	phys_addr;
+> +	size_t		size;
+> +};
+> +
+>  /**
+>   * struct pci_epf_bar - represents the BAR of EPF device
+>   * @phys_addr: physical address that should be mapped to the BAR
+> @@ -119,6 +139,9 @@ struct pci_epf_driver {
+>   *            requirement
+>   * @barno: BAR number
+>   * @flags: flags that are set for the BAR
+> + * @num_submap: number of entries in @submap
+> + * @submap: array of subrange descriptors allocated by the caller. See
+> + *          struct pci_epf_bar_submap for the restrictions in detail.
+>   */
+>  struct pci_epf_bar {
+>  	dma_addr_t	phys_addr;
+> @@ -127,6 +150,10 @@ struct pci_epf_bar {
+>  	size_t		mem_size;
+>  	enum pci_barno	barno;
+>  	int		flags;
+> +
+> +	/* Optional sub-range mapping */
+> +	unsigned int	num_submap;
+> +	struct pci_epf_bar_submap	*submap;
 
->> [...]
->> diff --git a/drivers/media/platform/rockchip/rkcsi/rkcsi.c b/drivers/media/platform/rockchip/rkcsi/rkcsi.c
->> new file mode 100644
->> index 000000000000..03597f03f08f
->> --- /dev/null
->> +++ b/drivers/media/platform/rockchip/rkcsi/rkcsi.c
->> @@ -0,0 +1,742 @@
->> +// SPDX-License-Identifier: GPL-2.0
->> +/*
->> + * Rockchip MIPI CSI-2 Receiver Driver
->> + *
->> + * Copyright (C) 2019 Rockchip Electronics Co., Ltd.
->> + * Copyright (C) 2025 Michael Riesch <michael.riesch@wolfvision.net>
->> + * Copyright (C) 2026 Collabora, Ltd.
->> + */
->> +
->> +#include <linux/clk.h>
->> +#include <linux/delay.h>
->> +#include <linux/io.h>
->> +#include <linux/module.h>
->> +#include <linux/of.h>
->> +#include <linux/of_graph.h>
->> +#include <linux/of_platform.h>
-> 
-> Are the above two needed?
+struct pci_epf_bar_submap submap[] __counted_by(num_submap);
 
-They are not, apparently. I'll remove them.
+Not sure if use this simplify alloc/free.
 
-> 
->> +#include <linux/phy/phy.h>
->> +#include <linux/platform_device.h>
->> +#include <linux/pm_runtime.h>
-> 
-> #include <linux/property.h>
-
-Ack.
-
->> +#include <linux/reset.h>
->> [...]
->> +
->> +static const struct rkcsi_format *
->> +rkcsi_find_format(struct rkcsi_device *csi_dev, u32 mbus_code)
->> +{
->> +	const struct rkcsi_format *format;
-> 
-> This can be declared within the loop.
-
-Ack.
-
-> 
->> +
->> +	WARN_ON(csi_dev->formats_num == 0);
->> +
->> +	for (int i = 0; i < csi_dev->formats_num; i++) {
-> 
-> unsigned int?
-
-Ack.
-
-> 
->> +		format = &csi_dev->formats[i];
->> +		if (format->code == mbus_code)
->> +			return format;
->> +	}
->> +
->> +	return NULL;
->> +}
->> +
->> +static int rkcsi_start(struct rkcsi_device *csi_dev)
->> +{
->> +	struct media_pad *source_pad =
->> +		&csi_dev->source_sd->entity.pads[csi_dev->source_pad];
->> +	enum v4l2_mbus_type bus_type = csi_dev->vep.bus_type;
->> +	union phy_configure_opts opts;
->> +	s64 link_freq;
->> +	u32 lanes = csi_dev->vep.bus.mipi_csi2.num_data_lanes;
->> +	u32 control = 0;
->> +	int ret;
->> +
->> +	if (lanes < 1 || lanes > 4)
->> +		return -EINVAL;
->> +
->> +	/* set mult and div to 0, thus completely rely on V4L2_CID_LINK_FREQ */
->> +	link_freq = v4l2_get_link_freq(source_pad, 0, 0);
->> +	if (link_freq <= 0)
->> +		return -EINVAL;
-> 
-> Could you return link_freq here?
-
-Ack.
-
-> 
->> +
->> +	if (bus_type == V4L2_MBUS_CSI2_DPHY) {
->> +		struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
->> +
->> +		ret = phy_mipi_dphy_get_default_config_for_hsclk(link_freq * 2,
->> +								 lanes, cfg);
->> +		if (ret)
->> +			return ret;
->> +
->> +		ret = phy_set_mode(csi_dev->phy, PHY_MODE_MIPI_DPHY);
->> +		if (ret)
->> +			return ret;
->> +
->> +		ret = phy_configure(csi_dev->phy, &opts);
->> +		if (ret)
->> +			return ret;
->> +
->> +		control |= SW_CPHY_EN(0);
->> +
->> +	} else if (bus_type == V4L2_MBUS_CSI2_CPHY) {
->> +		/* TODO: implement CPHY configuration */
->> +		return -EOPNOTSUPP;
-> 
-> How about a switch()?
-
-Ok!
-
-> 
->> +	} else {
->> +		return -EINVAL;
->> +	}
->> +
->> +	control |= SW_DATATYPE_FS(0x00) | SW_DATATYPE_FE(0x01) |
->> +		   SW_DATATYPE_LS(0x02) | SW_DATATYPE_LE(0x03);
->> +
->> +	rkcsi_write(csi_dev, CSI2HOST_N_LANES, lanes - 1);
->> +	rkcsi_write(csi_dev, CSI2HOST_CONTROL, control);
->> +	rkcsi_write(csi_dev, CSI2HOST_CSI2_RESETN, 1);
->> +
->> +	ret = phy_power_on(csi_dev->phy);
-> 
-> 	return ...;
-
-Ack.
-
-> 
->> +	if (ret)
->> +		return ret;
->> +
->> +	return 0;
->> +}
->> +
->> +static void rkcsi_stop(struct rkcsi_device *csi_dev)
->> +{
->> +	phy_power_off(csi_dev->phy);
->> +
->> +	rkcsi_write(csi_dev, CSI2HOST_CSI2_RESETN, 0);
->> +	rkcsi_write(csi_dev, CSI2HOST_MSK1, ~0);
->> +	rkcsi_write(csi_dev, CSI2HOST_MSK2, ~0);
->> +}
->> +
->> +static const struct media_entity_operations rkcsi_media_ops = {
->> +	.link_validate = v4l2_subdev_link_validate,
->> +};
->> +
->> +static int rkcsi_enum_mbus_code(struct v4l2_subdev *sd,
->> +				struct v4l2_subdev_state *sd_state,
->> +				struct v4l2_subdev_mbus_code_enum *code)
->> +{
->> +	struct rkcsi_device *csi_dev = to_rkcsi(sd);
->> +
->> +	if (code->pad == RKCSI_PAD_SRC) {
->> +		const struct v4l2_mbus_framefmt *sink_fmt;
->> +
->> +		if (code->index)
->> +			return -EINVAL;
->> +
->> +		sink_fmt = v4l2_subdev_state_get_format(sd_state,
->> +							RKCSI_PAD_SINK);
->> +		code->code = sink_fmt->code;
->> +
->> +		return 0;
->> +	} else if (code->pad == RKCSI_PAD_SINK) {
-> 
-> switch() would be nice here.
-
-Ack.
-
-> 
->> +		if (code->index > csi_dev->formats_num)
->> +			return -EINVAL;
->> +
->> +		code->code = csi_dev->formats[code->index].code;
->> +		return 0;
->> +	}
->> +
->> +	return -EINVAL;
->> +}
->> +
->> +static int rkcsi_set_fmt(struct v4l2_subdev *sd,
->> +			 struct v4l2_subdev_state *state,
->> +			 struct v4l2_subdev_format *format)
->> +{
->> +	struct rkcsi_device *csi_dev = to_rkcsi(sd);
->> +	const struct rkcsi_format *fmt;
->> +	struct v4l2_mbus_framefmt *sink, *src;
->> +
->> +	/* the format on the source pad always matches the sink pad */
->> +	if (format->pad == RKCSI_PAD_SRC)
->> +		return v4l2_subdev_get_fmt(sd, state, format);
->> +
->> +	sink = v4l2_subdev_state_get_format(state, format->pad, format->stream);
->> +	if (!sink)
->> +		return -EINVAL;
->> +
->> +	fmt = rkcsi_find_format(csi_dev, format->format.code);
->> +	if (!fmt)
->> +		format->format = default_format;
->> +
->> +	*sink = format->format;
->> +
->> +	/* propagate the format to the source pad */
->> +	src = v4l2_subdev_state_get_opposite_stream_format(state, format->pad,
->> +							   format->stream);
->> +	if (!src)
->> +		return -EINVAL;
->> +
->> +	*src = *sink;
->> +
->> +	return 0;
->> +}
->> +
->> +static int rkcsi_set_routing(struct v4l2_subdev *sd,
->> +			     struct v4l2_subdev_state *state,
->> +			     enum v4l2_subdev_format_whence which,
->> +			     struct v4l2_subdev_krouting *routing)
->> +{
->> +	int ret;
->> +
->> +	ret = v4l2_subdev_routing_validate(sd, routing,
->> +					   V4L2_SUBDEV_ROUTING_ONLY_1_TO_1);
->> +	if (ret)
->> +		return ret;
->> +
->> +	ret = v4l2_subdev_set_routing_with_fmt(sd, state, routing,
->> +					       &default_format);
-> 
-> 	return ...;
-
-Ack.
-
-> 
->> +	if (ret)
->> +		return ret;
->> +
->> +	return 0;
->> +}
->> +
->> +static int rkcsi_enable_streams(struct v4l2_subdev *sd,
->> +				struct v4l2_subdev_state *state, u32 pad,
->> +				u64 streams_mask)
->> +{
->> +	struct rkcsi_device *csi_dev = to_rkcsi(sd);
->> +	struct v4l2_subdev *remote_sd;
->> +	struct media_pad *sink_pad, *remote_pad;
->> +	struct device *dev = csi_dev->dev;
->> +	u64 mask;
->> +	int ret;
->> +
->> +	sink_pad = &sd->entity.pads[RKCSI_PAD_SINK];
->> +	remote_pad = media_pad_remote_pad_first(sink_pad);
->> +	remote_sd = media_entity_to_v4l2_subdev(remote_pad->entity);
->> +
->> +	mask = v4l2_subdev_state_xlate_streams(state, RKCSI_PAD_SINK,
->> +					       RKCSI_PAD_SRC, &streams_mask);
->> +
->> +	ret = pm_runtime_resume_and_get(dev);
->> +	if (ret)
->> +		goto err;
->> +
->> +	ret = rkcsi_start(csi_dev);
->> +	if (ret) {
->> +		dev_err(dev, "failed to enable CSI hardware\n");
->> +		goto err_pm_runtime_put;
->> +	}
->> +
->> +	ret = v4l2_subdev_enable_streams(remote_sd, remote_pad->index, mask);
->> +	if (ret)
->> +		goto err_csi_stop;
->> +
->> +	return 0;
->> +
->> +err_csi_stop:
->> +	rkcsi_stop(csi_dev);
->> +err_pm_runtime_put:
->> +	pm_runtime_put_sync(dev);
->> +err:
->> +	return ret;
->> +}
->> +
->> +static int rkcsi_disable_streams(struct v4l2_subdev *sd,
->> +				 struct v4l2_subdev_state *state, u32 pad,
->> +				 u64 streams_mask)
->> +{
->> +	struct rkcsi_device *csi_dev = to_rkcsi(sd);
->> +	struct v4l2_subdev *remote_sd;
->> +	struct media_pad *sink_pad, *remote_pad;
->> +	struct device *dev = csi_dev->dev;
->> +	u64 mask;
->> +	int ret;
->> +
->> +	sink_pad = &sd->entity.pads[RKCSI_PAD_SINK];
->> +	remote_pad = media_pad_remote_pad_first(sink_pad);
->> +	remote_sd = media_entity_to_v4l2_subdev(remote_pad->entity);
->> +
->> +	mask = v4l2_subdev_state_xlate_streams(state, RKCSI_PAD_SINK,
->> +					       RKCSI_PAD_SRC, &streams_mask);
->> +
->> +	ret = v4l2_subdev_disable_streams(remote_sd, remote_pad->index, mask);
->> +
->> +	rkcsi_stop(csi_dev);
->> +
->> +	pm_runtime_mark_last_busy(dev);
-> 
-> Redundant, please drop.
-
-Ack.
-
-> 
->> +	pm_runtime_put_autosuspend(dev);
-> 
-> The driver doesn't enable autosuspend so the autosuspend variant isn't
-> useful. Maybe just switch to pm_runtime_put(), as resume probably takes
-> very little time?
-
-Ack.
-
-> 
->> +
->> +	return ret;
->> +}
->> +
->> +static const struct v4l2_subdev_pad_ops rkcsi_pad_ops = {
->> +	.enum_mbus_code = rkcsi_enum_mbus_code,
->> +	.get_fmt = v4l2_subdev_get_fmt,
->> +	.set_fmt = rkcsi_set_fmt,
->> +	.set_routing = rkcsi_set_routing,
->> +	.enable_streams = rkcsi_enable_streams,
->> +	.disable_streams = rkcsi_disable_streams,
->> +};
->> +
->> +static const struct v4l2_subdev_ops rkcsi_ops = {
->> +	.pad = &rkcsi_pad_ops,
->> +};
->> +
->> +static int rkcsi_init_state(struct v4l2_subdev *sd,
->> +			    struct v4l2_subdev_state *state)
->> +{
->> +	struct v4l2_subdev_route routes[] = {
->> +		{
->> +			.sink_pad = RKCSI_PAD_SINK,
->> +			.sink_stream = 0,
->> +			.source_pad = RKCSI_PAD_SRC,
->> +			.source_stream = 0,
->> +			.flags = V4L2_SUBDEV_ROUTE_FL_ACTIVE,
->> +		},
->> +	};
->> +	struct v4l2_subdev_krouting routing = {
->> +		.len_routes = ARRAY_SIZE(routes),
->> +		.num_routes = ARRAY_SIZE(routes),
->> +		.routes = routes,
->> +	};
->> +	int ret;
->> +
->> +	ret = v4l2_subdev_set_routing_with_fmt(sd, state, &routing,
->> +					       &default_format);
-> 
-> 	return ...;
-
-Ack.
-
-> 
->> +
->> +	return ret;
->> +}
->> +
->> +static const struct v4l2_subdev_internal_ops rkcsi_internal_ops = {
->> +	.init_state = rkcsi_init_state,
->> +};
->> +
->> +static int rkcsi_notifier_bound(struct v4l2_async_notifier *notifier,
->> +				struct v4l2_subdev *sd,
->> +				struct v4l2_async_connection *asd)
->> +{
->> +	struct rkcsi_device *csi_dev =
->> +		container_of(notifier, struct rkcsi_device, notifier);
->> +	int source_pad;
->> +
->> +	source_pad = media_entity_get_fwnode_pad(&sd->entity, sd->fwnode,
->> +						 MEDIA_PAD_FL_SOURCE);
-> 
-> Could you use v4l2_create_fwnode_links_to_pad()?
-
-Ack.
-
-> 
->> +	if (source_pad < 0) {
->> +		dev_err(csi_dev->dev, "failed to find source pad for %s\n",
->> +			sd->name);
->> +		return source_pad;
->> +	}
->> +
->> +	csi_dev->source_sd = sd;
-> 
-> I'd just use media_pad_remote_pad_unique() to obtain the remote pad when
-> needed.
-
-Ack.
-
-> 
->> +	csi_dev->source_pad = source_pad;
->> +
->> +	return media_create_pad_link(&sd->entity, source_pad,
->> +				     &csi_dev->sd.entity, RKCSI_PAD_SINK,
->> +				     MEDIA_LNK_FL_ENABLED);
->> +}
->> +
->> +static const struct v4l2_async_notifier_operations rkcsi_notifier_ops = {
->> +	.bound = rkcsi_notifier_bound,
->> +};
->> +
->> +static int rkcsi_register_notifier(struct rkcsi_device *csi_dev)
->> +{
->> +	struct v4l2_async_connection *asd;
->> +	struct v4l2_async_notifier *ntf = &csi_dev->notifier;
->> +	struct v4l2_fwnode_endpoint *vep = &csi_dev->vep;
->> +	struct v4l2_subdev *sd = &csi_dev->sd;
->> +	struct device *dev = csi_dev->dev;
->> +	struct fwnode_handle *ep;
->> +	int ret = 0;
-> 
-> Redundant initialisation.
-
-Ack.
-
-> 
->> +
->> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0, 0);
->> +	if (!ep)
->> +		return dev_err_probe(dev, -ENODEV, "failed to get endpoint\n");
->> +
->> +	vep->bus_type = V4L2_MBUS_UNKNOWN;
-> 
-> If you only need the number of lanes and PHY type, I'd store them to the
-> driver's own context struct. struct v4l2_fwnode_endpoint isn't tiny.
-
-Ack.
-
-> 
->> +	ret = v4l2_fwnode_endpoint_parse(ep, vep);
->> +	if (ret) {
->> +		ret = dev_err_probe(dev, ret, "failed to parse endpoint\n");
->> +		goto out;
->> +	}
->> +
->> +	if (vep->bus_type != V4L2_MBUS_CSI2_DPHY &&
->> +	    vep->bus_type != V4L2_MBUS_CSI2_CPHY) {
->> +		ret = dev_err_probe(dev, -EINVAL,
->> +				    "invalid bus type of endpoint\n");
->> +		goto out;
->> +	}
->> +
->> +	v4l2_async_subdev_nf_init(ntf, sd);
->> +	ntf->ops = &rkcsi_notifier_ops;
->> +
->> +	asd = v4l2_async_nf_add_fwnode_remote(ntf, ep,
->> +					      struct v4l2_async_connection);
->> +	if (IS_ERR(asd)) {
->> +		ret = PTR_ERR(asd);
->> +		goto err_nf_cleanup;
->> +	}
->> +
->> +	ret = v4l2_async_nf_register(ntf);
->> +	if (ret) {
->> +		ret = dev_err_probe(dev, ret, "failed to register notifier\n");
->> +		goto err_nf_cleanup;
->> +	}
->> +
->> +	goto out;
->> +
->> +err_nf_cleanup:
->> +	v4l2_async_nf_cleanup(ntf);
->> +out:
->> +	fwnode_handle_put(ep);
->> +	return ret;
->> +}
->> +
->> +static int rkcsi_register(struct rkcsi_device *csi_dev)
->> +{
->> +	struct media_pad *pads = csi_dev->pads;
->> +	struct v4l2_subdev *sd = &csi_dev->sd;
->> +	int ret;
->> +
->> +	ret = rkcsi_register_notifier(csi_dev);
->> +	if (ret)
->> +		goto err;
->> +
->> +	v4l2_subdev_init(sd, &rkcsi_ops);
->> +	sd->dev = csi_dev->dev;
->> +	sd->entity.ops = &rkcsi_media_ops;
->> +	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
->> +	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_STREAMS;
->> +	sd->internal_ops = &rkcsi_internal_ops;
->> +	sd->owner = THIS_MODULE;
->> +	snprintf(sd->name, sizeof(sd->name), "rockchip-mipi-csi %s",
->> +		 dev_name(csi_dev->dev));
-> 
-> Do you need to give it an explicit name? (v4l2_i2c_subdev_init() already
-> does that.)
-
-I do, actually. I don't call the _i2c_ variant. This is a platform device.
-
-> 
->> +
->> +	pads[RKCSI_PAD_SINK].flags = MEDIA_PAD_FL_SINK |
->> +				     MEDIA_PAD_FL_MUST_CONNECT;
->> +	pads[RKCSI_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE;
->> +	ret = media_entity_pads_init(&sd->entity, RKCSI_PAD_MAX, pads);
->> +	if (ret)
->> +		goto err_notifier_unregister;
->> +
->> +	ret = v4l2_subdev_init_finalize(sd);
->> +	if (ret)
->> +		goto err_entity_cleanup;
->> +
->> +	ret = v4l2_async_register_subdev(sd);
->> +	if (ret) {
->> +		dev_err(sd->dev, "failed to register CSI subdev\n");
->> +		goto err_subdev_cleanup;
->> +	}
->> +
->> +	return 0;
->> +
->> +err_subdev_cleanup:
->> +	v4l2_subdev_cleanup(sd);
->> +err_entity_cleanup:
->> +	media_entity_cleanup(&sd->entity);
->> +err_notifier_unregister:
->> +	v4l2_async_nf_unregister(&csi_dev->notifier);
->> +	v4l2_async_nf_cleanup(&csi_dev->notifier);
->> +err:
->> +	return ret;
->> +}
->> +
->> +static void rkcsi_unregister(struct rkcsi_device *csi_dev)
->> +{
->> +	struct v4l2_subdev *sd = &csi_dev->sd;
->> +
->> +	v4l2_async_unregister_subdev(sd);
->> +	v4l2_subdev_cleanup(sd);
->> +	media_entity_cleanup(&sd->entity);
->> +	v4l2_async_nf_unregister(&csi_dev->notifier);
->> +	v4l2_async_nf_cleanup(&csi_dev->notifier);
->> +}
->> +
->> +static const struct of_device_id rkcsi_of_match[] = {
->> +	{
->> +		.compatible = "rockchip,rk3568-mipi-csi",
->> +	},
->> +	{}
->> +};
->> +MODULE_DEVICE_TABLE(of, rkcsi_of_match);
->> +
->> +static int rkcsi_probe(struct platform_device *pdev)
->> +{
->> +	struct device *dev = &pdev->dev;
->> +	struct rkcsi_device *csi_dev;
->> +	int ret;
->> +
->> +	csi_dev = devm_kzalloc(dev, sizeof(*csi_dev), GFP_KERNEL);
->> +	if (!csi_dev)
->> +		return -ENOMEM;
->> +	csi_dev->dev = dev;
->> +	dev_set_drvdata(dev, csi_dev);
->> +
->> +	csi_dev->base_addr = devm_platform_ioremap_resource(pdev, 0);
->> +	if (IS_ERR(csi_dev->base_addr))
->> +		return PTR_ERR(csi_dev->base_addr);
->> +
->> +	ret = devm_clk_bulk_get_all(dev, &csi_dev->clks);
->> +	if (ret != RKCSI_CLKS_MAX)
->> +		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
->> +	csi_dev->clks_num = ret;
->> +
->> +	csi_dev->phy = devm_phy_get(dev, NULL);
->> +	if (IS_ERR(csi_dev->phy))
->> +		return dev_err_probe(dev, PTR_ERR(csi_dev->phy),
->> +				     "failed to get MIPI CSI PHY\n");
->> +
->> +	csi_dev->reset = devm_reset_control_get_exclusive(dev, NULL);
->> +	if (IS_ERR(csi_dev->reset))
->> +		return dev_err_probe(dev, PTR_ERR(csi_dev->reset),
->> +				     "failed to get reset\n");
->> +
->> +	csi_dev->formats = formats;
->> +	csi_dev->formats_num = ARRAY_SIZE(formats);
->> +
->> +	pm_runtime_enable(dev);
-> 
-> You're not resuming the device in probe(). I guess you depend on CONFIG_PM?
-
-I do depend on CONFIG_PM.
-
-I don't think there is need to resume in probe -> resume in
-_enable_streams should do the trick, right?
-
-> 
->> +
->> +	ret = phy_init(csi_dev->phy);
->> +	if (ret) {
->> +		ret = dev_err_probe(dev, ret,
->> +				    "failed to initialize MIPI CSI PHY\n");
->> +		goto err_pm_runtime_disable;
->> +	}
->> +
->> +	ret = rkcsi_register(csi_dev);
->> +	if (ret)
->> +		goto err_phy_exit;
->> +
->> +	return 0;
->> +
->> +err_phy_exit:
->> +	phy_exit(csi_dev->phy);
->> +err_pm_runtime_disable:
->> +	pm_runtime_disable(dev);
-> 
-> A newline would be nice here.
-
-Ack.
-
-> 
->> +	return ret;
->> +}
->> +
->> +static void rkcsi_remove(struct platform_device *pdev)
->> +{
->> +	struct rkcsi_device *csi_dev = platform_get_drvdata(pdev);
->> +	struct device *dev = &pdev->dev;
->> +
->> +	rkcsi_unregister(csi_dev);
->> +	phy_exit(csi_dev->phy);
->> +	pm_runtime_disable(dev);
->> +}
->> +
->> +static int rkcsi_runtime_suspend(struct device *dev)
->> +{
->> +	struct rkcsi_device *csi_dev = dev_get_drvdata(dev);
->> +
->> +	clk_bulk_disable_unprepare(csi_dev->clks_num, csi_dev->clks);
->> +
->> +	return 0;
->> +}
->> +
->> +static int rkcsi_runtime_resume(struct device *dev)
->> +{
->> +	struct rkcsi_device *csi_dev = dev_get_drvdata(dev);
->> +	int ret;
->> +
->> +	reset_control_assert(csi_dev->reset);
->> +	udelay(5);
->> +	reset_control_deassert(csi_dev->reset);
->> +
->> +	ret = clk_bulk_prepare_enable(csi_dev->clks_num, csi_dev->clks);
->> +	if (ret) {
->> +		dev_err(dev, "failed to enable clocks\n");
->> +		return ret;
->> +	}
->> +
->> +	return 0;
->> +}
->> +
->> +static const struct dev_pm_ops rkcsi_pm_ops = {
->> +	.runtime_suspend = rkcsi_runtime_suspend,
->> +	.runtime_resume = rkcsi_runtime_resume,
->> +};
-> 
-> Could you use DEFINE_RUNTIME_DEV_PM_OPS() (add static in front)?
-
-Ack.
-
-v4 coming up soon!
-
-Best regards,
-Michael
-
-> 
->> +
->> +static struct platform_driver rkcsi_drv = {
->> +	.driver = {
->> +		   .name = "rockchip-mipi-csi",
->> +		   .of_match_table = rkcsi_of_match,
->> +		   .pm = &rkcsi_pm_ops,
->> +	},
->> +	.probe = rkcsi_probe,
->> +	.remove = rkcsi_remove,
->> +};
->> +module_platform_driver(rkcsi_drv);
->> +
->> +MODULE_DESCRIPTION("Rockchip MIPI CSI-2 Receiver platform driver");
->> +MODULE_LICENSE("GPL");
->>
-> 
-
+Frank
+>  };
+>
+>  /**
+> --
+> 2.51.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
