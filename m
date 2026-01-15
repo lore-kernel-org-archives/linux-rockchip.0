@@ -4,59 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A43D2D3CC88
-	for <linux-rockchip@archiver.kernel.org>; Wed, 14 Jan 2026 23:07:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBB95D3CC91
+	for <linux-rockchip@archiver.kernel.org>; Thu, 15 Jan 2026 00:25:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lAGpf22bY1an11AdKpOWHwtsQjWOIUG89dnHnB+qt9w=; b=PmeFEBb9Kx5ZPV
-	e9L0xAD7bk+Dadfv1JLSmdWk9JwyR/QAUZDHfV4/ZLcgpYI/iVPmdJzcOQRR1xwRmF+BzbnQ7kjkP
-	AdgCG/rdZCN+hXws9xWyZjQvpXanw2yoR0CZlT9sH+B7TyLgfeFRGhKP7Zx5Izwzq4nuSYO7wEaaN
-	jCThcxQE+YNK0OVuDmJA8FuYyRO615P17VU0zxp623qBtEdSatumhxgfs6ilK59E5GY80vrGy5590
-	HtqLBxPckwL/PcbqPLrgVyek0NhBL/vfjs0pT80U/SEMG1XkmCoGdiaRbyPyfrXbIGxhzr1owgkVh
-	GV+0WA5rX9+8kCcH4ueA==;
+	List-Owner; bh=3erVInqmaAsIXWIOHnMXTqA/xoLdKJi5HK3ps+kQknY=; b=eFqmMFOfDY3+Id
+	X4p1n+uU+Iqu1cRI3rKC9SOn+dccpi9vcwZDpebquIg2O+Y6Qpga2jm5dxxpDFNFfLKh7mSUxlH6w
+	cZEaQnnYbaWQrVbwx81WZJu6gYj/Kyp3KoFb00rK8OEtLECmLO5Yc83J/7qsOPN0fNzjTpMZ0h3Ff
+	BPHGJ2EZGqu/TK4LslAW7DkGuiSX/KvLqS6fztlCoE+C4BjfciCSzB+uU6NwrNVxd/DiWx+8zabvl
+	VU5gy3otrmzlMMIcMN8mCXzgWzPt1LwZDIuXXcEi0Q7QxCJVxMq0N9x2nk8RZAxmxGgGU9hb12mTn
+	4u5KnV7YSYlrAcY9K7Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg9xe-0000000B1pC-2o6n;
-	Wed, 14 Jan 2026 23:07:34 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vgBB5-0000000BDbW-4299;
+	Thu, 15 Jan 2026 00:25:31 +0000
+Received: from mail-m49229.qiye.163.com ([45.254.49.229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vg9xX-0000000B1hN-01un;
-	Wed, 14 Jan 2026 23:07:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=OQZnrxjj0Ml1xg/bRDRZ4mf5kTwd2a34imkpo4Xbxt4=; b=S1dAnkYhZz2+v1SzpXUsuOgZI3
-	AIyHT8WuiKj7FP8fUcYYQe8LWNuwlvtIV753zAp92pTsGAhbtKkVoNF3WmHU1twDz+hq1P3/lMrfm
-	ShrOagBdERpKqc3+JNj3ibX/XrJTOAoBsMSd5LFXllGBPrsU2aBNDtdWuv8v+sdqlUWv2Yn+zhY7Y
-	i62wdBcvXYuXBwRZy59HVjZgqOJgksZO9raV3lgO84PFJOYKUQf4kRoUhZ77r41Dh9B06ynlTbVZk
-	ZcPZwwzovWN+ZtBFB2I4sly+mcP+q5gtscgWJVUXMUovwAz4kspgKnyb7sj7tfmJ5s3rdclkqJVs0
-	9GCI4GJQ==;
-Received: from i53875b96.versanet.de ([83.135.91.150] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vg9xU-002N2m-Ok; Thu, 15 Jan 2026 00:07:25 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: quentin.schulz@cherry.de,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Heiko Stuebner <heiko.stuebner@cherry.de>
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: Add the Video-Demo overlay for Lion Haikou
-Date: Thu, 15 Jan 2026 00:07:07 +0100
-Message-ID: <20260114230707.4175162-6-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260114230707.4175162-1-heiko@sntech.de>
-References: <20260114230707.4175162-1-heiko@sntech.de>
+	id 1vgBB2-0000000BDaY-3Y6C;
+	Thu, 15 Jan 2026 00:25:31 +0000
+Received: from [172.16.12.14] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30af7ff73;
+	Thu, 15 Jan 2026 08:25:20 +0800 (GMT+08:00)
+Message-ID: <b49b223e-e728-4ce9-b972-242ed9b5fa4a@rock-chips.com>
+Date: Thu, 15 Jan 2026 08:25:17 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, heiko@sntech.de, ulf.hansson@linaro.org
+Subject: Re: [PATCH v1 0/3] mmc: dw_mmc-rockchip: Add stability quirk for
+ NanoPi R76S
+To: Marco Schirrmeister <mschirrmeister@gmail.com>
+References: <20260110010715.1610159-1-mschirrmeister@gmail.com>
+ <67ccb8f6-f9bd-4266-b79a-b688bd6d030b@rock-chips.com>
+ <8536413c-8687-4d75-befb-8f25e54838bf@rock-chips.com>
+ <6934ae0d-16c5-436f-97f6-c11d304ca51d@rock-chips.com>
+ <CAGJh8eDXT43_PfmUbShL4Hysfkd21R=sCerRNe_AGQANbwvSPA@mail.gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <CAGJh8eDXT43_PfmUbShL4Hysfkd21R=sCerRNe_AGQANbwvSPA@mail.gmail.com>
+X-HM-Tid: 0a9bbf0ae48909cckunmf5ba25fc501b74
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkwZSVYaSExMTk1CGh5KSRhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=BxhOpBRTnQz+GPMIuPHkTUo8xgEUj3FoCSXW6s6PPy6OzyKosh4qIlUkrCft0RHY5hB8sma8mOnoGsD2/ynKIdEgaFgTzt1Tuv7raFbq7O0p21F9Z96Bl2QUbKDo39AB9n0HHNOjAjl8Q0LDzBio2SGKNaXeTGNwtLwIx5qgycs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=B4QfrPMND0dKajSMmYvgDtwoZx9Otg3YeOPfV5ej2AA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260114_150727_271307_8526CFA8 
-X-CRM114-Status: GOOD (  17.34  )
+X-CRM114-CacheID: sfid-20260114_162529_758779_0E350AF9 
+X-CRM114-Status: GOOD (  25.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,228 +71,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Heiko Stuebner <heiko.stuebner@cherry.de>
-
-The video-demo adapter also works on the Lion SoM when running
-on a Haikou baseboard, so add an overlay for it.
-
-Tested-by: Quentin Schulz <quentin.schulz@cherry.de>
-Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   5 +
- .../rk3368-lion-haikou-video-demo.dtso        | 170 ++++++++++++++++++
- 2 files changed, 175 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3368-lion-haikou-video-demo.dtso
-
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index dbdda9783e93..64c4199f8a43 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -42,6 +42,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-evb-act8846.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-geekbox.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-lba3368.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-lion-haikou.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-lion-haikou-video-demo.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-orion-r68-meta.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-px5-evb.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-r88.dtb
-@@ -238,6 +239,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += px30-ringneck-haikou-haikou-video-demo.dtb
- px30-ringneck-haikou-haikou-video-demo-dtbs := px30-ringneck-haikou.dtb \
- 	px30-ringneck-haikou-video-demo.dtbo
- 
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3368-lion-haikou-haikou-video-demo.dtb
-+rk3368-lion-haikou-haikou-video-demo-dtbs := rk3368-lion-haikou.dtb \
-+	rk3368-lion-haikou-video-demo.dtbo
-+
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-puma-haikou-haikou-video-demo.dtb
- rk3399-puma-haikou-haikou-video-demo-dtbs := rk3399-puma-haikou.dtb \
- 	rk3399-puma-haikou-video-demo.dtbo
-diff --git a/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou-video-demo.dtso b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou-video-demo.dtso
-new file mode 100644
-index 000000000000..2db0f3d9495b
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3368-lion-haikou-video-demo.dtso
-@@ -0,0 +1,170 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2025 Cherry Embedded Solutions GmbH
-+ *
-+ * DEVKIT ADDON CAM-TS-A01
-+ * https://embedded.cherry.de/product/development-kit/
-+ *
-+ * DT-overlay for the camera / DSI demo appliance for Haikou boards.
-+ * In the flavour for use with a Lion system-on-module.
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/clock/rk3368-cru.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&{/} {
-+	backlight: backlight {
-+		compatible = "pwm-backlight";
-+		power-supply = <&dc_12v>;
-+		pwms = <&pwm1 0 25000 0>;
-+	};
-+
-+	cam_afvdd_2v8: regulator-cam-afvdd-2v8 {
-+		compatible = "regulator-fixed";
-+		gpio = <&pca9670 2 GPIO_ACTIVE_LOW>;
-+		regulator-max-microvolt = <2800000>;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-name = "cam-afvdd-2v8";
-+		vin-supply = <&vcc2v8_video>;
-+	};
-+
-+	cam_avdd_2v8: regulator-cam-avdd-2v8 {
-+		compatible = "regulator-fixed";
-+		gpio = <&pca9670 4 GPIO_ACTIVE_LOW>;
-+		regulator-max-microvolt = <2800000>;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-name = "cam-avdd-2v8";
-+		vin-supply = <&vcc2v8_video>;
-+	};
-+
-+	cam_dovdd_1v8: regulator-cam-dovdd-1v8 {
-+		compatible = "regulator-fixed";
-+		gpio = <&pca9670 3 GPIO_ACTIVE_LOW>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-name = "cam-dovdd-1v8";
-+		vin-supply = <&vcc1v8_video>;
-+	};
-+
-+	cam_dvdd_1v2: regulator-cam-dvdd-1v2 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&pca9670 5 GPIO_ACTIVE_HIGH>;
-+		regulator-max-microvolt = <1200000>;
-+		regulator-min-microvolt = <1200000>;
-+		regulator-name = "cam-dvdd-1v2";
-+		vin-supply = <&vcc3v3_baseboard>;
-+	};
-+
-+	vcc1v8_video: regulator-vcc1v8-video {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-name = "vcc1v8-video";
-+		vin-supply = <&vcc3v3_baseboard>;
-+	};
-+
-+	vcc2v8_video: regulator-vcc2v8-video {
-+		compatible = "regulator-fixed";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-max-microvolt = <2800000>;
-+		regulator-min-microvolt = <2800000>;
-+		regulator-name = "vcc2v8-video";
-+		vin-supply = <&vcc3v3_baseboard>;
-+	};
-+
-+	video-adapter-leds {
-+		compatible = "gpio-leds";
-+
-+		video-adapter-led {
-+			color = <LED_COLOR_ID_BLUE>;
-+			gpios = <&pca9670 7 GPIO_ACTIVE_HIGH>;
-+			label = "video-adapter-led";
-+			linux,default-trigger = "none";
-+		};
-+	};
-+};
-+
-+&dphy {
-+	status = "okay";
-+};
-+
-+&i2c_gp2 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	/* OV5675, GT911, DW9714 are limited to 400KHz */
-+	clock-frequency = <400000>;
-+
-+	touchscreen@14 {
-+		compatible = "goodix,gt911";
-+		reg = <0x14>;
-+		interrupt-parent = <&gpio1>;
-+		interrupts = <RK_PB5 IRQ_TYPE_LEVEL_LOW>;
-+		irq-gpios = <&gpio1 RK_PB5 GPIO_ACTIVE_HIGH>;
-+		pinctrl-0 = <&touch_int>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&pca9670 1 GPIO_ACTIVE_HIGH>;
-+		AVDD28-supply = <&vcc2v8_video>;
-+		VDDIO-supply = <&vcc3v3_baseboard>;
-+	};
-+
-+	pca9670: gpio@27 {
-+		compatible = "nxp,pca9670";
-+		reg = <0x27>;
-+		gpio-controller;
-+		#gpio-cells = <2>;
-+		pinctrl-0 = <&pca9670_resetn>;
-+		pinctrl-names = "default";
-+		reset-gpios = <&gpio1 RK_PA5 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&mipi_dsi {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	panel@0 {
-+		compatible = "leadtek,ltk050h3148w";
-+		reg = <0>;
-+		backlight = <&backlight>;
-+		iovcc-supply = <&vcc1v8_video>;
-+		reset-gpios = <&pca9670 0 GPIO_ACTIVE_LOW>;
-+		vci-supply = <&vcc2v8_video>;
-+
-+		port {
-+			mipi_in_panel: endpoint {
-+				remote-endpoint = <&mipi_out_panel>;
-+			};
-+		};
-+	};
-+};
-+
-+&mipi_out {
-+	mipi_out_panel: endpoint {
-+		remote-endpoint = <&mipi_in_panel>;
-+	};
-+};
-+
-+&pinctrl {
-+	pca9670 {
-+		pca9670_resetn: pca9670-resetn {
-+			rockchip,pins = <1 RK_PA5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
-+	touch {
-+		touch_int: touch-int {
-+			rockchip,pins = <1 RK_PB5 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
--- 
-2.47.2
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYvMDEvMTUg5pif5pyf5ZubIDM6NTEsIE1hcmNvIFNjaGlycm1laXN0ZXIg5YaZ6YGT
+Ogo+IEhlbGxvIFNoYXduLAo+IAo+IE9uIFdlZCwgSmFuIDE0LCAyMDI2IGF0IDk6MDjigK9BTSBT
+aGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Cj4+IEV4Y2VwdCBm
+b3IgdGhlIHBhdGNoIG1lbnRpb25lZCBhYm92ZSBmb3IgZml4aW5nIHRoZSBob3QtcGx1ZyBwcm9i
+bGVtCj4+IHdoaWNoIHlvdSBjb25maXJtZWQgdG8gd29yayBmaW5lLiBJIGxvb2tlZCB0aGUgY29k
+ZSBhIGJpdCBhbmQgc2VlCj4+IGEgcG90ZW50aWFsIHByb2JsZW0gcmVsYXRlZCB0byB0aGUgcnVu
+dGltZSBzdXNwZW5kICsgcG93ZXItZG9tYWluLgo+PiBQbGVhc2UgY2hlY2sgdGhlIHBhdGNoIHRv
+IHNlZSBpZiBpdCBmaXhlcyB5b3VyIHByb2JsZW06Cj4gCj4gSSB0ZXN0ZWQgeW91ciBwYXRjaCBh
+bmQgdGhlIGlzc3VlIGlzIHN0aWxsIHByZXNlbnQuIEZvciB2ZXJpZmljYXRpb24gSSBkaWQKPiBh
+ZGQgc29tZSBkZWJ1ZyBzdGF0ZW1lbnRzIGFuZCBqdXN0IHRvIHNlZSB3aGF0IGl0IHNhdmVzIGFu
+ZCByZXN0b3Jlcy4KPiAKPiBUaGUgc3ltYm9scyBhcmUgdGhlcmUuCj4gcm9vdEBuYW5vcGktcjc2
+cyB+IyBncmVwIGR3X21jaV9yb2NrY2hpcF9ydW50aW1lIC9wcm9jL2thbGxzeW1zCj4gZmZmZjgw
+MDA4MGJmMjdhMCB0IGR3X21jaV9yb2NrY2hpcF9ydW50aW1lX3N1c3BlbmQKPiBmZmZmODAwMDgw
+YmYyOWMwIHQgZHdfbWNpX3JvY2tjaGlwX3J1bnRpbWVfcmVzdW1lCj4gCj4gIyBkbWVzZyBvdXRw
+dXQKPiBbV2VkIEphbiAxNCAyMDoxMzo0NiAyMDI2XSBFMjIwZDogUmVzdG9yaW5nIHBoYXNlczog
+c2FtcGxlPTIzMSwgZHJ2PTE4MAo+IFtXZWQgSmFuIDE0IDIwOjEzOjQ2IDIwMjZdIG1tY19ob3N0
+IG1tYzE6IEJ1cyBzcGVlZCAoc2xvdCAwKSA9IDQwMDAwMEh6Cj4gW1dlZCBKYW4gMTQgMjA6MTM6
+NDcgMjAyNl0gbW1jX2hvc3QgbW1jMTogQnVzIHNwZWVkIChzbG90IDApID0gMTk4MDAwMDAwSHoK
+PiBbV2VkIEphbiAxNCAyMDoxMzo0NyAyMDI2XSBkd21tY19yb2NrY2hpcCAyYTMxMDAwMC5tbWM6
+IFN1Y2Nlc3NmdWxseQo+IHR1bmVkIHBoYXNlIHRvIDIzMgo+IFtXZWQgSmFuIDE0IDIwOjEzOjQ4
+IDIwMjZdIEUyMjBkOiBTYXZpbmcgcGhhc2VzOiBzYW1wbGU9MjMxLCBkcnY9MTgwCj4gW1dlZCBK
+YW4gMTQgMjA6MTM6NDggMjAyNl0gRTIyMGQ6IFJlc3RvcmluZyBwaGFzZXM6IHNhbXBsZT0yMzEs
+IGRydj0xODAKPiBbV2VkIEphbiAxNCAyMDoxMzo0OCAyMDI2XSBtbWNfaG9zdCBtbWMxOiBCdXMg
+c3BlZWQgKHNsb3QgMCkgPSA0MDAwMDBIego+IFtXZWQgSmFuIDE0IDIwOjEzOjQ4IDIwMjZdIG1t
+Y19ob3N0IG1tYzE6IEJ1cyBzcGVlZCAoc2xvdCAwKSA9IDE5ODAwMDAwMEh6Cj4gW1dlZCBKYW4g
+MTQgMjA6MTM6NDggMjAyNl0gZHdtbWNfcm9ja2NoaXAgMmEzMTAwMDAubW1jOiBTdWNjZXNzZnVs
+bHkKPiB0dW5lZCBwaGFzZSB0byAyMzEKPiBbV2VkIEphbiAxNCAyMDoxMzo0OCAyMDI2XSBFMjIw
+ZDogU2F2aW5nIHBoYXNlczogc2FtcGxlPTIzMSwgZHJ2PTE4MAo+IAo+IEJhc2VkIG9uIHRoaXMs
+IGl0IG1ha2VzIG1lIGJlbGlldmUgdGhhdCBwb3dlciB0byB0aGUgc2QgY2FyZCBpcyBjb21wbGV0
+ZWx5IGN1dAo+IGFuZCB3aGVuIGl0IHdha2VzIHVwIGFuZCBrbm93cyBob3cgdG8gY29udGludWUs
+IGl0IHN0aWxsIG11c3QgZ28gdGhyb3VnaCB0aGUKPiByZXRyYWluaW5nIHBoYXNlLgo+IAoKVGhp
+cyBpcyBhbm90aGVyIG1pc3Rha2UgZm9yIHlvdXIgTmFub1BpIFI3NlMgYm9hcmQuIEJlZm9yZSBz
+ZW50IHRoaXMKcGF0Y2gsIEkgYWxyZWFkeSBjaGVja2VkIHRoZSBkdHMgYW5kIHNhdyBzZG1tYyB1
+c2VzIHZtbWMtc3VwcGx5ID0KPCZ2Y2NfM3YzX3MzPiB3aGljaCBpcyBtYXJrZWQgYXMgcmVndWxh
+dG9yLWFsd2F5cy1vbiwgYnV0IGl0J3MgKk5PVCoKYWN0dWFsbHkgcGVyIHRoZSBzaGNlbWF0aWNb
+MV1bMl0uIFNvIG5lZWQgYW5vdGhlciBmaXggZm9yIHlvdXIgYm9hcmQKdG8gbWFrZSBpdCBhY3R1
+YWxseSBncGlvLWJhc2VkIHBvd2VyIGNvbnRyb2xsZXIgaW5zdGFlZCBvZiBmdW5jdGlvbgpJTyBi
+YXNlZCwgYXMgd2hlbiBwb3dlcmluZyBvZmYgdGhlIHBvd2VyIGRvbWFpbiwgdGhlIHBvd2VyIGNv
+bnRyb2wgYml0CndpbGwgbm90IGJlIGFibGUgdG8gbWFpbnRhaW4uCgoKWzFdIApodHRwczovL3dp
+a2kuZnJpZW5kbHllbGVjLmNvbS93aWtpL2ltYWdlcy82LzYwL05hbm9QaV9SNzZTX0xQNFhfMjQx
+MV9TQ0gucGRmClsyXSAKaHR0cHM6Ly93aWtpLmZyaWVuZGx5ZWxlYy5jb20vd2lraS9pbWFnZXMv
+OS85MC9OYW5vUGlfUjc2U19MUDVfMjQxMV9TQ0gucGRmCgpFeGNlcHQgZm9yIHRoZSBwYXRjaGVz
+IHlvdSBoYXZlIHRlc3RlZCwgcGxlYXNlIGFwcGVuZCB0aGUgYmxvdyBwYXRjaCBhcyAKd2VsbCB0
+byB0ZXN0LgoKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NzYtbmFub3Bp
+LXI3NnMuZHRzCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LW5hbm9w
+aS1yNzZzLmR0cwpAQCAtMTkyLDYgKzE5MiwxOCBAQAogICAgICAgICAgICAgICAgIHJlZ3VsYXRv
+ci1uYW1lID0gInZjY18zdjNfczAiOwogICAgICAgICAgICAgICAgIHZpbi1zdXBwbHkgPSA8JnZj
+Y18zdjNfczM+OwogICAgICAgICB9OworCisgICAgICAgdmNjM3YzX3NkOiByZWd1bGF0b3ItdmNj
+LTN2My1zZCB7CisgICAgICAgICAgICAgICBjb21wYXRpYmxlID0gInJlZ3VsYXRvci1maXhlZCI7
+CisgICAgICAgICAgICAgICBlbmFibGUtYWN0aXZlLWhpZ2g7CisgICAgICAgICAgICAgICBncGlv
+cyA9IDwmZ3BpbzAgUktfUEI2IEdQSU9fQUNUSVZFX0hJR0g+OworICAgICAgICAgICAgICAgcGlu
+Y3RybC1uYW1lcyA9ICJkZWZhdWx0IjsKKyAgICAgICAgICAgICAgIHBpbmN0cmwtMCA9IDwmc2Rt
+bWNfcHdyZW4+OworICAgICAgICAgICAgICAgcmVndWxhdG9yLW5hbWUgPSAidmNjM3YzX3NkIjsK
+KyAgICAgICAgICAgICAgIHJlZ3VsYXRvci1taW4tbWljcm92b2x0ID0gPDMzMDAwMDA+OworICAg
+ICAgICAgICAgICAgcmVndWxhdG9yLW1heC1taWNyb3ZvbHQgPSA8MzMwMDAwMD47CisgICAgICAg
+ICAgICAgICB2aW4tc3VwcGx5ID0gPCZ2Y2NfM3YzX3MwPjsKKyAgICAgICB9OwogIH07CgogICZj
+b21icGh5MF9wcyB7CkBAIC03MjYsNiArNzM4LDEyIEBACiAgICAgICAgICAgICAgICAgfTsKICAg
+ICAgICAgfTsKCisgICAgICAgc2RtbWMgeworICAgICAgICAgICAgICAgc2RtbWNfcHdyZW46IHNk
+bW1jLXB3cmVuIHsKKyAgICAgICAgICAgICAgICAgICAgICAgcm9ja2NoaXAscGlucyA9IDwwIFJL
+X1BCNiBSS19GVU5DX0dQSU8gCiZwY2ZnX3B1bGxfbm9uZT47CisgICAgICAgICAgICAgICB9Owor
+ICAgICAgIH07CisKICAgICAgICAgdXNiIHsKICAgICAgICAgICAgICAgICB1c2Jfb3RnMF9wd3Jl
+bl9oOiB1c2Itb3RnMC1wd3Jlbi1oIHsKICAgICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlw
+LHBpbnMgPSA8MCBSS19QRDEgUktfRlVOQ19HUElPIAomcGNmZ19wdWxsX25vbmU+OwpAQCAtNzUx
+LDExICs3NjksMTQgQEAKICAgICAgICAgYnVzLXdpZHRoID0gPDQ+OwogICAgICAgICBjYXAtbW1j
+LWhpZ2hzcGVlZDsKICAgICAgICAgY2FwLXNkLWhpZ2hzcGVlZDsKKyAgICAgICBjZC1ncGlvcyA9
+IDwmZ3BpbzAgUktfUEE3IEdQSU9fQUNUSVZFX0xPVz47CiAgICAgICAgIGRpc2FibGUtd3A7CiAg
+ICAgICAgIG5vLW1tYzsKICAgICAgICAgbm8tc2RpbzsKKyAgICAgICBwaW5jdHJsLW5hbWVzID0g
+ImRlZmF1bHQiOworICAgICAgIHBpbmN0cmwtMCA9IDwmc2RtbWMwX2NsayAmc2RtbWMwX2NtZCAm
+c2RtbWMwX2RldCAmc2RtbWMwX2J1czQ+OwogICAgICAgICBzZC11aHMtc2RyMTA0OwotICAgICAg
+IHZtbWMtc3VwcGx5ID0gPCZ2Y2NfM3YzX3MzPjsKKyAgICAgICB2bW1jLXN1cHBseSA9IDwmdmNj
+M3YzX3NkPjsKICAgICAgICAgdnFtbWMtc3VwcGx5ID0gPCZ2Y2Npb19zZF9zMD47CiAgICAgICAg
+IHN0YXR1cyA9ICJva2F5IjsKCgoKCj4+IC0tLSBhL2RyaXZlcnMvbW1jL2hvc3QvZHdfbW1jLXJv
+Y2tjaGlwLmMKPj4gKysrIGIvZHJpdmVycy9tbWMvaG9zdC9kd19tbWMtcm9ja2NoaXAuYwo+PiBA
+QCAtMzYsNiArMzYsOCBAQCBzdHJ1Y3QgZHdfbWNpX3JvY2tjaGlwX3ByaXZfZGF0YSB7Cj4+ICAg
+ICAgICAgICBpbnQgICAgICAgICAgICAgICAgICAgICBkZWZhdWx0X3NhbXBsZV9waGFzZTsKPj4g
+ICAgICAgICAgIGludCAgICAgICAgICAgICAgICAgICAgIG51bV9waGFzZXM7Cj4+ICAgICAgICAg
+ICBib29sICAgICAgICAgICAgICAgICAgICBpbnRlcm5hbF9waGFzZTsKPj4gKyAgICAgICBpbnQg
+ICAgICAgICAgICAgICAgICAgICBzYW1wbGVfcGhhc2U7Cj4+ICsgICAgICAgaW50ICAgICAgICAg
+ICAgICAgICAgICAgZHJ2X3BoYXNlOwo+PiAgICB9Owo+Pgo+PiAgICAvKgo+PiBAQCAtNTczLDkg
+KzU3NSw0MyBAQCBzdGF0aWMgdm9pZCBkd19tY2lfcm9ja2NoaXBfcmVtb3ZlKHN0cnVjdAo+PiBw
+bGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ICAgICAgICAgICBkd19tY2lfcGx0Zm1fcmVtb3ZlKHBk
+ZXYpOwo+PiAgICB9Cj4+Cj4+ICtzdGF0aWMgaW50IGR3X21jaV9yb2NrY2hpcF9ydW50aW1lX3N1
+c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+PiArewo+PiArICAgICAgIHN0cnVjdCBwbGF0Zm9y
+bV9kZXZpY2UgKnBkZXYgPSB0b19wbGF0Zm9ybV9kZXZpY2UoZGV2KTsKPj4gKyAgICAgICBzdHJ1
+Y3QgZHdfbWNpICpob3N0ID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4+ICsgICAgICAg
+c3RydWN0IGR3X21jaV9yb2NrY2hpcF9wcml2X2RhdGEgKnByaXYgPSBob3N0LT5wcml2Owo+PiAr
+Cj4+ICsgICAgICAgaWYgKHByaXYtPmludGVybmFsX3BoYXNlKSB7Cj4+ICsgICAgICAgICAgICAg
+ICBwcml2LT5zYW1wbGVfcGhhc2UgPSByb2NrY2hpcF9tbWNfZ2V0X3BoYXNlKGhvc3QsIHRydWUp
+Owo+PiArICAgICAgICAgICAgICAgcHJpdi0+ZHJ2X3BoYXNlID0gcm9ja2NoaXBfbW1jX2dldF9w
+aGFzZShob3N0LCBmYWxzZSk7Cj4+ICsgICAgICAgfQo+PiArCj4+ICsgICAgICAgcmV0dXJuIGR3
+X21jaV9ydW50aW1lX3N1c3BlbmQoZGV2KTsKPj4gK30KPj4gKwo+PiArc3RhdGljIGludCBkd19t
+Y2lfcm9ja2NoaXBfcnVudGltZV9yZXN1bWUoc3RydWN0IGRldmljZSAqZGV2KQo+PiArewo+PiAr
+ICAgICAgIHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYgPSB0b19wbGF0Zm9ybV9kZXZpY2Uo
+ZGV2KTsKPj4gKyAgICAgICBzdHJ1Y3QgZHdfbWNpICpob3N0ID0gcGxhdGZvcm1fZ2V0X2RydmRh
+dGEocGRldik7Cj4+ICsgICAgICAgc3RydWN0IGR3X21jaV9yb2NrY2hpcF9wcml2X2RhdGEgKnBy
+aXYgPSBob3N0LT5wcml2Owo+PiArICAgICAgIGludCByZXQ7Cj4+ICsKPj4gKyAgICAgICByZXQg
+PSBkd19tY2lfcnVudGltZV9yZXN1bWUoZGV2KTsKPj4gKyAgICAgICBpZiAocmV0KQo+PiArICAg
+ICAgICAgICAgICAgcmV0dXJuIHJldDsKPj4gKwo+PiArICAgICAgIGlmIChwcml2LT5pbnRlcm5h
+bF9waGFzZSkgewo+PiArICAgICAgICAgICAgICAgcm9ja2NoaXBfbW1jX3NldF9waGFzZShob3N0
+LCB0cnVlLCBwcml2LT5zYW1wbGVfcGhhc2UpOwo+PiArICAgICAgICAgICAgICAgcm9ja2NoaXBf
+bW1jX3NldF9waGFzZShob3N0LCBmYWxzZSwgcHJpdi0+ZHJ2X3BoYXNlKTsKPj4gKyAgICAgICAg
+ICAgICAgIG1jaV93cml0ZWwoaG9zdCwgTUlTQ19DT04sIE1FTV9DTEtfQVVUT0dBVEVfRU5BQkxF
+KTsKPj4gKyAgICAgICB9Cj4+ICsKPj4gKyAgICAgICByZXR1cm4gcmV0Owo+PiArfQo+PiArCj4+
+ICAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZGV2X3BtX29wcyBkd19tY2lfcm9ja2NoaXBfZGV2X3Bt
+X29wcyA9IHsKPj4gICAgICAgICAgIFNZU1RFTV9TTEVFUF9QTV9PUFMocG1fcnVudGltZV9mb3Jj
+ZV9zdXNwZW5kLAo+PiBwbV9ydW50aW1lX2ZvcmNlX3Jlc3VtZSkKPj4gLSAgICAgICBSVU5USU1F
+X1BNX09QUyhkd19tY2lfcnVudGltZV9zdXNwZW5kLCBkd19tY2lfcnVudGltZV9yZXN1bWUsIE5V
+TEwpCj4+ICsgICAgICAgUlVOVElNRV9QTV9PUFMoZHdfbWNpX3JvY2tjaGlwX3J1bnRpbWVfc3Vz
+cGVuZCwKPj4gZHdfbWNpX3JvY2tjaGlwX3J1bnRpbWVfcmVzdW1lLCBOVUxMKQo+PiAgICB9Owo+
+Pgo+PiAgICBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciBkd19tY2lfcm9ja2NoaXBfcGx0
+Zm1fZHJpdmVyID0gewo+IAoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
