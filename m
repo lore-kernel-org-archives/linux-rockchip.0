@@ -4,65 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 620C9C79FBF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 14:04:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84EA3D4A60F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 14:25:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ChMhG99JS7pKx7RlkJcGWdjSRV5Su7IXUPGkCIPg7sw=; b=f0OEp/7t+3r9OD
-	MJLxj0XCbFaSnKXYrqqdWkRGY8ix7N8GTbTuU3K+5hqfegPPDzjQwRr52QfVisqd6e9QRObAIVKeL
-	RConyWQty/cAqJ1KfzQpYDAwRb7Jw48m9jzfvRSoJtGKnF/+NzY9L/MqSlILTNVjQmu3GKA56hsnl
-	W28YVIqFyZX7h8g6r9dp9xklcsIQGlTKezqPZ5KqfNHlAdjdUCmffV+3ZtHAqnikXObC8mDQmkMPJ
-	px61PGut8iJx4EHbka+QCqpxxQJ755Hh3YFszThFTH2iABNOo+JebLW/vGXl12Vh3/B0AFD+K1i1w
-	Jt9lz6LM8laxVVM2o4pA==;
+	List-Owner; bh=V8C1K915rw4IRHHox7mvLHRsfJZmJZ8Uhgej7pCSMXc=; b=H/ciGfuVcWNUJz
+	fpdRRr4gXM7dBM2t3o3CL8uBUQmYQq1wDegAdZDq2bmJI/KetSZJpipUriYzvr6KzGqgBDOdVZfRe
+	UEVnA5FVhqA+gUf5WO0qawXkdLG/9cdKnUwFiUy5VYcrV193hkD6ingiyLB3wQLS6LLHDKOLhdzhu
+	5ZLMSLBTr71NFTlICUVB1WcxDdrDRUPM3eQEfOB9d36GTABALq3f9p5awm9cGClKeuciEiLQqdeHV
+	354Nb9BKq2R/W1vNCCWwE+cN2GjDJhZZuT+5pX6j+8pZTiJti2YkcHSUuQoNmfNPuYBUpBHLmsN8s
+	KUlpP8v/5j8IscrVh8uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgkRN-0000000EERo-2z2O;
-	Fri, 16 Jan 2026 14:04:41 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vgkkx-0000000EFj8-24pd;
+	Fri, 16 Jan 2026 14:24:55 +0000
+Received: from mail-m3293.qiye.163.com ([220.197.32.93])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgkRM-0000000EER4-0I4w
+	id 1vgkkr-0000000EFiL-2PWG
 	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Jan 2026 14:04:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=m02yp4JILyjMta4cx49jNz+oe5Rk9FKD3X/QrnGlQEM=; b=GcflGdy5p1u9xWicgSscH0o80G
-	Uh478MPGX7lAw3bT36bK/itHD2n72665izwcMtPl6gUt/MtWGEniBrZWk3p4tB4rzzmh6qn5fJ9R0
-	aqCGKcUuVqfeEPVrxLZY+zuXvC92gR1JI5ZvwsUgvT9xC82xjg5AC0OoFpV/QmP2q5PYYy+XbfQ/6
-	c1B2qX6YTZTtx46k1eUcXDmAWGsTGZsGePErvyt1BpddawW1SfVLAJitDoTe9+FfpTw0HJqXFjhEB
-	ACBwlcgnBIWpugAomOAnrsJhayJga0VPJjU25PmRCzSmxbgUnud5ztmkRxhTIYr40njEQqN11IqsZ
-	2ioUdsVQ==;
-Received: from i53875a97.versanet.de ([83.135.90.151] helo=phil..)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vgkRA-002dRO-68; Fri, 16 Jan 2026 15:04:28 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: Ulf Hansson <ulf.hansson@linaro.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
-	linux-mmc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Marco Schirrmeister <mschirrmeister@gmail.com>,
-	John Clark <inindev@gmail.com>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>
-Subject: Re: (subset) [PATCH v4 0/5] Fix sd card support for RK3576 platform
-Date: Fri, 16 Jan 2026 15:04:25 +0100
-Message-ID: <176857210194.116631.11189192556414524729.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
+	Fri, 16 Jan 2026 14:24:54 +0000
+Received: from [172.16.12.14] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30ef46e5a;
+	Fri, 16 Jan 2026 22:24:40 +0800 (GMT+08:00)
+Message-ID: <0c6b4cc1-ce99-4d59-a470-b07dec763e8b@rock-chips.com>
+Date: Fri, 16 Jan 2026 22:24:38 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Cc: shawn.lin@rock-chips.com, linux-rockchip@lists.infradead.org,
+ linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
+ FUKAUMI Naoki <naoki@radxa.com>,
+ Marco Schirrmeister <mschirrmeister@gmail.com>,
+ John Clark <inindev@gmail.com>, Tianling Shen <cnsztl@gmail.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>
+Subject: Re: (subset) [PATCH v4 0/5] Fix sd card support for RK3576 platform
+To: Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulf.hansson@linaro.org>
+References: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
+ <176857210194.116631.11189192556414524729.b4-ty@sntech.de>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <176857210194.116631.11189192556414524729.b4-ty@sntech.de>
+X-HM-Tid: 0a9bc731aea209cckunma7c09507737a3c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUgaQlZJSk8dHktIHUlPTUNWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Sb+rY8nk8Ejra1PEfQhzgPPEi7zoTmfua3u4T3ZLfEzIZimP+iLjTUczs2Q/u7ML0JsvPRmfptEh9QF1QcdaERr6e4Pet/umJumuiaYX05kjmGuSKXIwx40j18+2imsv+HoIJUjyOk60TKCZt5Fr0ar2XTAgETW2Lv6Kg8CaUHI=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=xpJGynjXo2jFqQ092nLYCB2ielun+b6JZDAUGmUfEc4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_060440_111893_182E2A4B 
-X-CRM114-Status: GOOD (  11.75  )
+X-CRM114-CacheID: sfid-20260116_062451_065713_E2B05ADC 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,46 +70,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 16 Jan 2026 08:55:27 +0800, Shawn Lin wrote:
-> Marco reported a problem[1] for his FriendlyElec NanoPi R76S board. The problem
-> is becuase after runtime suspend, the associated power domain is powered off, which
-> resets the registers including power control bit, card detection logic and internal
-> phase registers. This leads to three problems need to be solved.
-> 
-> 1. hot-plug broken:
-> 
-> [...]
-
-Applied, thanks!
-
-[1/5] soc: rockchip: grf: Fix wrong RK3576_IOCGRF_MISC_CON definition
-      commit: 3cdc30c42d4a87444f6c7afbefd6a9381c4caa27
-[2/5] soc: rockchip: grf: Support multiple grf to be handled
-      commit: 75fb63ae031211e9264ac888fabc2ca9cd3fcccf
-[4/5] arm64: dts: rockchip: Fix SD card support for RK3576 EVB1
-      commit: 7226664bf952c4cfddccd74b154a7d994608d153
-[5/5] arm64: dts: rockchip: Fix SD card support for RK3576 Nanopi R76s
-      commit: a9c1acebfe0484343a443d082e039ca77186ed22
-
-I've queued them for 6.20 because I'd like them to marinate a bit longer
-due to the size of the changes, but added Cc-stable tags so that they
-then can make their way into stable kernels.
-
-Depending if MMC maintainers see patch3, you might want to resend it
-individually at some point.
-
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CuWcqCAyMDI2LzAxLzE2IOaYn+acn+S6lCAyMjowNCwgSGVpa28gU3R1ZWJuZXIg5YaZ6YGTOgo+
+IAo+IE9uIEZyaSwgMTYgSmFuIDIwMjYgMDg6NTU6MjcgKzA4MDAsIFNoYXduIExpbiB3cm90ZToK
+Pj4gTWFyY28gcmVwb3J0ZWQgYSBwcm9ibGVtWzFdIGZvciBoaXMgRnJpZW5kbHlFbGVjIE5hbm9Q
+aSBSNzZTIGJvYXJkLiBUaGUgcHJvYmxlbQo+PiBpcyBiZWN1YXNlIGFmdGVyIHJ1bnRpbWUgc3Vz
+cGVuZCwgdGhlIGFzc29jaWF0ZWQgcG93ZXIgZG9tYWluIGlzIHBvd2VyZWQgb2ZmLCB3aGljaAo+
+PiByZXNldHMgdGhlIHJlZ2lzdGVycyBpbmNsdWRpbmcgcG93ZXIgY29udHJvbCBiaXQsIGNhcmQg
+ZGV0ZWN0aW9uIGxvZ2ljIGFuZCBpbnRlcm5hbAo+PiBwaGFzZSByZWdpc3RlcnMuIFRoaXMgbGVh
+ZHMgdG8gdGhyZWUgcHJvYmxlbXMgbmVlZCB0byBiZSBzb2x2ZWQuCj4+Cj4+IDEuIGhvdC1wbHVn
+IGJyb2tlbjoKPj4KPj4gWy4uLl0KPiAKPiBBcHBsaWVkLCB0aGFua3MhCj4gCj4gWzEvNV0gc29j
+OiByb2NrY2hpcDogZ3JmOiBGaXggd3JvbmcgUkszNTc2X0lPQ0dSRl9NSVNDX0NPTiBkZWZpbml0
+aW9uCj4gICAgICAgIGNvbW1pdDogM2NkYzMwYzQyZDRhODc0NDRmNmM3YWZiZWZkNmE5MzgxYzRj
+YWEyNwo+IFsyLzVdIHNvYzogcm9ja2NoaXA6IGdyZjogU3VwcG9ydCBtdWx0aXBsZSBncmYgdG8g
+YmUgaGFuZGxlZAo+ICAgICAgICBjb21taXQ6IDc1ZmI2M2FlMDMxMjExZTkyNjRhYzg4OGZhYmMy
+Y2E5Y2QzZmNjY2YKPiBbNC81XSBhcm02NDogZHRzOiByb2NrY2hpcDogRml4IFNEIGNhcmQgc3Vw
+cG9ydCBmb3IgUkszNTc2IEVWQjEKPiAgICAgICAgY29tbWl0OiA3MjI2NjY0YmY5NTJjNGNmZGRj
+Y2Q3NGIxNTRhN2Q5OTQ2MDhkMTUzCj4gWzUvNV0gYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCBT
+RCBjYXJkIHN1cHBvcnQgZm9yIFJLMzU3NiBOYW5vcGkgUjc2cwo+ICAgICAgICBjb21taXQ6IGE5
+YzFhY2ViZmUwNDg0MzQzYTQ0M2QwODJlMDM5Y2E3NzE4NmVkMjIKPiAKPiBJJ3ZlIHF1ZXVlZCB0
+aGVtIGZvciA2LjIwIGJlY2F1c2UgSSdkIGxpa2UgdGhlbSB0byBtYXJpbmF0ZSBhIGJpdCBsb25n
+ZXIKPiBkdWUgdG8gdGhlIHNpemUgb2YgdGhlIGNoYW5nZXMsIGJ1dCBhZGRlZCBDYy1zdGFibGUg
+dGFncyBzbyB0aGF0IHRoZXkKPiB0aGVuIGNhbiBtYWtlIHRoZWlyIHdheSBpbnRvIHN0YWJsZSBr
+ZXJuZWxzLgo+IAoKU3VyZSwgdGhhbmtzIEhlaWtvLgoKPiBEZXBlbmRpbmcgaWYgTU1DIG1haW50
+YWluZXJzIHNlZSBwYXRjaDMsIHlvdSBtaWdodCB3YW50IHRvIHJlc2VuZCBpdAo+IGluZGl2aWR1
+YWxseSBhdCBzb21lIHBvaW50Lgo+IAo+IAo+IEJlc3QgcmVnYXJkcywKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
