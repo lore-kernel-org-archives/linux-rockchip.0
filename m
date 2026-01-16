@@ -4,87 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2709BC79FBF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 13:55:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E7B6C79FBC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 14:04:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tuYePtZ+xiR3giuehiDD3Z2tyCXcr0n6jVm6F4cSjiA=; b=OTVJ4yETVO97cY
-	7iGY8HyJ9y/b5R1YgsOPIwMnp+ZL4gX7WUn45K4udXhIQI83i1mtuy7EuPX7Ux3lwvtfGeg7Pe9a+
-	dpw/vz7Fv7Ard0O0lLjFa4v6XHseppWoMHeftlwKytBpyvT3xJXNbF6Sn4vYs+cITsjHC2bVjs9Fd
-	9c7wJ/f6as6K1MpIlIuylTS74S5CKUG6mi1Y2wHhDI3mybwpGfLG3c6pbgJ4oOy9BWXX9RLAOxDx+
-	AGMe60t838n1eeSUjAOmGlzSPtqZ67vTGkzH+zm0Xry7oQL4/dnHFLVLwXwiUEa2Yhy7VRAJp8rL0
-	xpYZaPXaZ+4EMavqKDEw==;
+	List-Owner; bh=PTz5i8QLIYQQBkZlKPOPECZfyKXptxtAsmbUWMhkBVQ=; b=FiQZN6LoFXtpEF
+	huoV+LR/hgHY2boP1RFgEk6tEEPPsibbyThFe2CwvmyPCQMqS2ArNE2z+BPtVRWm/y0hnSDRKjJwe
+	pgdDOdknH5N7L1xFEr8qF9oZ97D+yX+XrJvaPWZIj2wAFtoJlhdR3IeQJPcCuzv5k4Y9qqvUiWf2t
+	4sA/uhPcG9P2Ai8/cPw87YUQWQi4AHrnC0+7shB+L7p/voEBV5AblLKZFQ+wy4aOwcg14/KvuK9hf
+	WNijos3/8BFbyPFXRXzOLiKSZzcT4ObYF9uGFtFOamFfvW59eTpDBtX3ingrjKcWUr3Ai2Isnlk4m
+	NdRAjbos+fLroPmhiQow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgkIE-0000000EDWI-36eL;
-	Fri, 16 Jan 2026 13:55:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vgkRG-0000000EEPt-1tCx;
+	Fri, 16 Jan 2026 14:04:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgkI5-0000000EDOi-3epN;
-	Fri, 16 Jan 2026 13:55:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0527C444F0;
-	Fri, 16 Jan 2026 13:55:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CFBADC4AF0F;
-	Fri, 16 Jan 2026 13:55:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768571704;
-	bh=SBMojAQMLBEsq97VBBgUN3ogr+3rX2KzJ0Dl48KhAsI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=ik4FA65iokNPkeMZYHyov+0sD1A76whBsN0Wcd1d3t5Q8L9mfLZIa3UFzKP0g9JwE
-	 VBXGWEEV3NnX0dScETYg/OIedPHMWTMuCeeAsPETMqvPidURF3HUFn6cXZnAZv8qvv
-	 wpBau2L+RQds+s26WxgblaRvMoNmv7fxcm/efbdR2ERXm72jLJbISERpbfDAUce6Nb
-	 Ajf07Gd9rbf8cVFFzwHP/LKqM+2KO7zWPk8v3U1MZHkKMiGVulPsPap5IPHvVEuGlY
-	 5wlB/XZesRNOBA1DN83WvPynVfWCdAOEfH0rzQ4fyGsTXcGvZ16w9vHXJhvGD/O4Mn
-	 13JI2j99R4Uiw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3252C982C0;
-	Fri, 16 Jan 2026 13:55:04 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 16 Jan 2026 14:55:01 +0100
-Subject: [PATCH v6 3/3] arm64: defconfig: enable designware mipi csi-2
- receiver
+	id 1vgkRD-0000000EEP8-0i8w;
+	Fri, 16 Jan 2026 14:04:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=ZU6BM+w6eML1aaICueqOwGlIiWXfWBW5ZubqN3svxA0=; b=XIRPFCJl9mULxF8qJnYOv6N00X
+	dpNc1GdyE0HIQPf/uaVTMuGfz8VDm2gcvAW/YusJvxgvhFRiqnihcKUiDaylBn3ZrObHZDFsXZR4k
+	RYje3iyKb0OXnJVtnRP1gz/NjcsDmH/L/zoxEJUBqNuONCaZkrYIwJGTeL92edBjlDkewKbETGBIX
+	MeRW1eA/b6La1K3xWbJEautWt/49ilfe6LUXIohVg/hUTFMQPUTPL/VPiWVHZWBzyStSFtoOEJNs4
+	dAdwNh837+xr2pOzed/8wWXj59xBDppDPrySDc4PCK7caGHw5LKXaODChkElI/5YpplIX113d56jk
+	mypDaMVQ==;
+Received: from i53875a97.versanet.de ([83.135.90.151] helo=phil..)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vgkR9-002dRO-Mr; Fri, 16 Jan 2026 15:04:28 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: quentin.schulz@cherry.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 0/5] General RK3368 HDMI support and 2 outputs for RK3368-Lion
+Date: Fri, 16 Jan 2026 15:04:24 +0100
+Message-ID: <176857210195.116631.16665150473922790004.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20260114230707.4175162-1-heiko@sntech.de>
+References: <20260114230707.4175162-1-heiko@sntech.de>
 MIME-Version: 1.0
-Message-Id: <20251114-rockchip-mipi-receiver-v6-3-b7ce6e68b3fa@collabora.com>
-References: <20251114-rockchip-mipi-receiver-v6-0-b7ce6e68b3fa@collabora.com>
-In-Reply-To: <20251114-rockchip-mipi-receiver-v6-0-b7ce6e68b3fa@collabora.com>
-To: Michael Riesch <michael.riesch@collabora.com>, 
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
- Kever Yang <kever.yang@rock-chips.com>, Frank Li <Frank.li@nxp.com>, 
- Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Hans Verkuil <hverkuil@kernel.org>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Collabora Kernel Team <kernel@collabora.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1768571703; l=786;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=4/e4J7LessS5jdywMTVpeb4iDs9BMTFRupZRi4shvqg=;
- b=Bggx/lzI9bhnAatC3/C5uqs1E8vcMopP7FduWddmNcfFfe0+QykSLVvKqk744etEPuuBt1fKZ
- kiAlPRHEq9ND2eFm45VqIxKK9ATogTlk+JZ0AU4/KhDDYJ6Oa09lNik
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_055505_972991_692E88E0 
-X-CRM114-Status: UNSURE (   9.46  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260116_060431_232721_2CD2BBA8 
+X-CRM114-Status: GOOD (  13.86  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,40 +67,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
 
-The Synopsys DesignWare MIPI CSI-2 Receiver is integrated into
-recent Rockchip SoCs, such as the RK3568 and the RK3588.
-Enable the driver for it in the default configuration.
+On Thu, 15 Jan 2026 00:07:02 +0100, Heiko Stuebner wrote:
+> This series adds the necessary bits for HDMI output on RK3368 and enables
+> this on RK3368-Lion. At the same time, use the recently added DSI support
+> to enable the generic Video-Demo-adapter as an overlay on Lion as well.
+> 
+> 
+> The reason I'm shaving this Yak is that the recently added DSI support
+> created DTC warnings about a single endpoint with an address.
+> 
+> [...]
 
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
- arch/arm64/configs/defconfig | 1 +
- 1 file changed, 1 insertion(+)
+Applied, thanks!
 
-diff --git a/arch/arm64/configs/defconfig b/arch/arm64/configs/defconfig
-index 45288ec9eaf7..58bda738819a 100644
---- a/arch/arm64/configs/defconfig
-+++ b/arch/arm64/configs/defconfig
-@@ -873,6 +873,7 @@ CONFIG_SDR_PLATFORM_DRIVERS=y
- CONFIG_V4L_MEM2MEM_DRIVERS=y
- CONFIG_VIDEO_AMPHION_VPU=m
- CONFIG_VIDEO_CADENCE_CSI2RX=m
-+CONFIG_VIDEO_DW_MIPI_CSI2RX=m
- CONFIG_VIDEO_MEDIATEK_JPEG=m
- CONFIG_VIDEO_MEDIATEK_VCODEC=m
- CONFIG_VIDEO_WAVE_VPU=m
+[1/5] arm64: dts: rockchip: Use phandle for i2c_lvds_blc on rk3368-lion haikou
+      commit: 4f3df9abf44bd92ecd5d8c3018ddefa7f5bf74d0
+[2/5] arm64: dts: rockchip: Add HDMI node to RK3368
+      commit: 6d60168c6d2f76917b3f71d2a6807c6d8dd24363
+[3/5] arm64: dts: rockchip: Enable HDMI output on RK3368-Lion-Haikou
+      commit: 385430244e85e245f071ab158f7e4c7b2b5d99cb
+[4/5] arm64: dts: rockchip: Enable pwm1 on rk3368-lion-haikou
+      commit: f03f3e0a77a72f6f6284aff0da6d21d6508e57ac
+[5/5] arm64: dts: rockchip: Add the Video-Demo overlay for Lion Haikou
+      commit: 7f43ac104af7d3d4158ec306d4ca1c897ecce78c
 
+Best regards,
 -- 
-2.39.5
-
-
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
