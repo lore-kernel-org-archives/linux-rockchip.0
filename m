@@ -4,96 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D2F3D4899E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 12:51:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382D1D4A5E8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 13:04:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Hb0G/PVS4fujB8lpM+8weNPxBi63R74kjzzKjsb0AKI=; b=crfaaKBQz8EU30jWW24KbTQN5Z
-	oiiJzUTdsDJq7nIB8qyAzZiy2jv+yEWnH/DxaLv1HBgI75XDfEXwTjD0o1Ozn1V2eI8OhY6qn+oSY
-	OUtKAoo0wCPFfn3QCpLpfP5+h8irWFy/FqJUl0v4ChxJqrYbydVTv8XvdqSVjLwKLKhFs4fGPDfdy
-	PVtqTTDUNYhmZEBR5LOTq0ofZnb+lsfpP5CtwPxtDfl/yhCCobs5E/h/zO1SaL77pDRrEbtrQpHHm
-	6KXrom1Th6/luZEAMSuzrBthh4xgM3gzplyX0ILHCZ6DyhYxeyFzwNUc5SdSluZPymI9/Mh05f+vQ
-	EDyMIwEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Zjx4HMDepvuTdZsrxDkBXsghSaLHgdmxinb8jlBGvMc=; b=J0g+12lXlqGlvZ
+	n1fGlPqum3ojYodtI2r/xgsg4DX88OESfJ09d7eEIQZCVGwpi2Za1/K0tOfWlf+9q8gD/O3EHJsBJ
+	q+eI01o+2R1I2m2PHedO60TIAX6Ioib0rMyj0jK6/C/03F6VjkukzxarMBVxTTqDGY49ZNfwaIb3U
+	UcQ8pdARTtM5jkYxNuvJ5cXCFraetZYNMQnAUiYbDw4Rh4HcO/UH625QtYhRPTZPEtGMN33y7VhTn
+	sxB24ASVM3Jlt7n8K6M9JeMpHRGm4urAkzRD3KBIP7qMWhNb8paa8jxy25RHaaxAKEtO8bHE+Wlwv
+	RhpeYop0ytrZI5ChpOug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgjIC-0000000E7uB-2Ifh;
-	Fri, 16 Jan 2026 12:51:08 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1vgjVK-0000000E8bN-26tQ;
+	Fri, 16 Jan 2026 13:04:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgjI8-0000000E7t3-2HfS
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Jan 2026 12:51:05 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-47f5c2283b6so12737045e9.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 16 Jan 2026 04:51:03 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768567862; x=1769172662; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=zTkxHu8mh7w4aqi9Nu456ezpUXh108CX0ltHIeT0yH8=;
-        b=KHUOJVnx8NXpaXrSaiVCh0/adK7NWqeBT930k7Th+h1y4pinjZwoQ/+jWlZs0iTzZZ
-         O1wR8KRTQIujuAN2lhFodXquYTlIXyzVmpodxpu1rq6ojya54EgXwzuplxYRBZZEDJV5
-         WrzvUqXtwGy8H9oUTXye/XlxOgcekd56ZypqgPlm/c42DSnoHT2rYgyHM7AdWeFPdjFF
-         iW+//LSOxE+yoLFlcjGfHwUFL9u+ppkBv5eSOviMxaA55JG7wwe9o9euArq8nUrtnGTk
-         aBqMvqDYBXXtqiJOcZVHCFItdjFcEQXz61Yh6vGnOk7YIh1lYKpLNxAiPAZEv91mucRR
-         DZFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768567862; x=1769172662;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=zTkxHu8mh7w4aqi9Nu456ezpUXh108CX0ltHIeT0yH8=;
-        b=g3KNHY7XGd/zw323N0LLYOt9KC2nKxG1HGK7aFAgTKKzvy20I9uREPZhzUauSMQ4nG
-         ho/FiBSdhpNLmWZMzfsKIeRoH7mcVtXDSRbKNiNCfla5UYlhc4yoB6/yaTlxamAuhQOi
-         5/gPljqjUBAFob1npSIGL8cBVVvfRWnXlya6PACVa/ftoJkF4k0Ky5+7tsT8kXZwLd1M
-         Nkwf0U5+k2eacLLA4P13B6XGGdXbnIMNS4NTlXP4Wbou7KuTZctf+fMWbtjaHYwGyfZl
-         se+YcHwT1elWz+Ro9LoXdOSWwSDoqKvcGMYLPkKz/e0yNKIuZLx6bkCXTqDesQZi/FTy
-         aAeg==
-X-Forwarded-Encrypted: i=1; AJvYcCUfv8afQn/CA9+EpXAse36zlo0iCDCyNHaUt+NLC5TGCtrKjlBc0h0BjfTCPyBfQcy7ytYuW5PazHZaC9bh8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw2jbdLOWudF1wh0QcHM6oY4GTM8M2UYZoCHTOeMyo2kzstUEbq
-	/VQK0JhzcfkZp/Y0IlmgOYifURBKmBeMdaT5xQBFl3qf89ZNfNMUq6qr
-X-Gm-Gg: AY/fxX665Jig5duz7pNutkfv0pLjrM7mk8XUMsQJGMvXPXXX+svXGR5mXq1cyXGWDrS
-	9NTYp4MiSVUFgUNWbwHDO1QLJMzW681tiQcaA+5jc9bL08leAP+p8xNYONAZ2yWTQaMidTQea9p
-	7MnlghUjrZWpmDb4fAGrhfHQbcjd/+w8+IGOyIMRXFdATWWtwkOUNR9Sw9X4fUn6K1YE0TFBGqG
-	mdHsHZnag4BQwTUE94KgsS2eDyKCccbnO2dWrSFvm217+w6HiJggtT8s98i/MflH1Ofy9kXmws4
-	QzcxLqc1zfRwpPtuPl9ZA65hSxnyXWxAg+r7o4APvOG9ulYFR7njhjsNSkJsShu8gLlImA/TNeq
-	+jb9pQytf7FBVHrSOi8EIvtT4IN4D7vKLjR2y0BBpDIoj3RlCo+SdW3q67wfx7F5tpQhXlEJp5Q
-	IKQQtRfMgyu5KiTJPdStWrEg7Od8Chm2C21M9Vv4U6a0KlY4qepoZhFjXlbzb4vbb3x68vPYS8m
-	w==
-X-Received: by 2002:a05:6000:2004:b0:433:2f55:7cab with SMTP id ffacd0b85a97d-43569bbafd6mr3570766f8f.37.1768567861918;
-        Fri, 16 Jan 2026 04:51:01 -0800 (PST)
-Received: from orome (p200300e41f0ffa00f22f74fffe1f3a53.dip0.t-ipconnect.de. [2003:e4:1f0f:fa00:f22f:74ff:fe1f:3a53])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4356997eb0bsm5012584f8f.34.2026.01.16.04.50.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Jan 2026 04:51:00 -0800 (PST)
-Date: Fri, 16 Jan 2026 13:50:58 +0100
-From: Thierry Reding <thierry.reding@gmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Andrew Jeffery <andrew@codeconstruct.com.au>, 
-	Linus Walleij <linusw@kernel.org>, Joel Stanley <joel@jms.id.au>, 
-	Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>, 
-	Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
-	Basavaraj Natikar <Basavaraj.Natikar@amd.com>, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
-	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Patrice Chotard <patrice.chotard@foss.st.com>, linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
-	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, sophgo@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 08/11] pinctrl: tegra-xusb: Return void in padctl
- enable/disable functions
-Message-ID: <aWo0LESc5bIs1kHi@orome>
-References: <20260114-pinctrl-cleanup-guard-v1-0-a14572685cd3@oss.qualcomm.com>
- <20260114-pinctrl-cleanup-guard-v1-8-a14572685cd3@oss.qualcomm.com>
+	id 1vgjVG-0000000E8YQ-3jEr;
+	Fri, 16 Jan 2026 13:04:40 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7D16A43BF1;
+	Fri, 16 Jan 2026 13:04:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 4F50DC19421;
+	Fri, 16 Jan 2026 13:04:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768568678;
+	bh=s2u8m8fuVkjMI3E13P6pDYyB9Q5oNtLOKw3ocBqevlc=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=NfZ8UOrcoQMjryn6xeXIyXn8rksoIiGG0wzJtWtI2orPUvskYsDaOsbNsI24L3hhr
+	 Qhkqh+To59sU4DJy+V4dW3OU+J6Ho1amAcFd1YBSJ77v8IAZId/ZYAbH1+zXF9r5pE
+	 uYG+O2xaYkBMeYMlcZvLsNV5tCWiPPHhx2dIUPUaiY5c5mhbQqZz7QlCc2l9Fda6rm
+	 0MNLLSxcabSZuwwwBb5L5p/2tWdQZtQRL3kEAiJBhncXjnsoz69A9jeF2in6++TkmL
+	 LRSYg7G/2kGVAafcbuMZGF43mkOvNF//VDe1CNrPUzwwHweMFWnlDrSm7ehz3+RLng
+	 Jx+oCncl1WUZQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 43603D4A5E8;
+	Fri, 16 Jan 2026 13:04:38 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Subject: [PATCH v5 0/3] media: rockchip: add driver for the rockchip mipi
+ csi-2 receiver
+Date: Fri, 16 Jan 2026 14:02:45 +0100
+Message-Id: <20251114-rockchip-mipi-receiver-v5-0-45aa117f190a@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260114-pinctrl-cleanup-guard-v1-8-a14572685cd3@oss.qualcomm.com>
+X-B4-Tracking: v=1; b=H4sIAPU2amkC/43Qz2rDMAwG8FcpPs/D/9IkPe09yg62LC9iaRzs1
+ WyUvPvUHkdhOX4C/T6hm6hYCKs4HW6iYKNKeeHQvRwETH75QEmRszDKdFprJ0uGT5holRdaSRY
+ EpIZFquCTcQ5GGFDwcvAVZSh+gYnXl+s883AtmOj70XZ+5zxR/crl51He9H36b0/TUsmorRqOO
+ GgV4xvkefYhF/8K+SLubDP7KMMUhjE4a/s+gXtG2X2UZUrzRdb7Ptmxe0a5fZRjyvMbjwkhqs7
+ 8pbZt+wXdkrLstgEAAA==
+To: Michael Riesch <michael.riesch@collabora.com>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, Frank Li <Frank.li@nxp.com>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1768568676; l=3068;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=s2u8m8fuVkjMI3E13P6pDYyB9Q5oNtLOKw3ocBqevlc=;
+ b=Qob6j5XB8O1JAgrJjNnzezkslqHY1BeUYjMVSnGwA+hcJVIGV9nGSj5c09h0yHdjgC1xGDKyw
+ L+cmpk6ubMjBPRg9/aKoUqjNsvOMcWSWufl0mhImhm2EM+SvEfjD+rg
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_045104_625234_DC8CE618 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20260116_050439_615711_7F0A1AAF 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,70 +100,88 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4500266424156145078=="
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Habidere,
 
---===============4500266424156145078==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bhhiv6s43avuu3l7"
-Content-Disposition: inline
+This series adds support for the Rockchip MIPI CSI-2 Receiver that is
+integrated into recent Rockchip SoCs, such as the RK3568 and the RK3588.
+
+According to Rockchip, this core is NOT the Synopsys MIPI CSI-2 Host, but
+it features a compatible register layout (thanks Chaoyi for the
+clarification).
+
+As pointed out by Frank, we should thus rename the driver and place it
+under drivers/media/platform/synopsys to facilitate re-use of this code
+for similar IP cores.
+
+As has been discussed in [0], it would be beneficial to add support 
+for the split mode (a feature of the Rockchip CSI-2 DPHY) before
+integrating the MIPI CSI-2 Receiver into the respective SoC device tree
+includes. However, we can readily add the DT binding and the driver
+as I am positive they will not need to be changed significantly when this
+feature is introduced.
+
+This constitutes a small step towards mainline video capture and camera
+support on the Rockchip RK3588.
+
+Looking forward to your comments!
+
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+
+[0] https://lore.kernel.org/r/20240220-rk3568-vicap-v14-0-b38b6da0fc80@collabora.com
+
+---
+Changes in v5:
+- fixed indentation in struct platform_driver ... (Sakari)
+- fixed return value in case v4l2_get_link_freq returns 0 (Sakari)
+- switched from pm_runtime_put_sync() to pm_runtime_put() (Sakari)
+- Link to v4: https://lore.kernel.org/r/20251114-rockchip-mipi-receiver-v4-0-a9c86fecd052@collabora.com
+
+Changes in v4:
+- moved driver to drivers/media/platform/synopsys and renamed it (Frank)
+- addresse review comments by Sakari
+- Link to v3: https://lore.kernel.org/r/20251114-rockchip-mipi-receiver-v3-0-16e83aa7f395@collabora.com
+
+Changes in v3:
+- rebased onto v6.19/recent media-committers/next
+- Link to v2: https://lore.kernel.org/r/20251114-rockchip-mipi-receiver-v2-0-eb9b43377fc4@collabora.com
+
+Changes in v2:
+- dropped one R-b by Bryan, as there were two of them on the same patch
+  (Krzysztof)
+- Link to v1: https://lore.kernel.org/r/20251114-rockchip-mipi-receiver-v1-0-d13086e810dd@collabora.com
+
+---
+Michael Riesch (3):
+      media: dt-bindings: add rockchip mipi csi-2 receiver
+      media: synopsys: add driver for the designware mipi csi-2 receiver
+      arm64: defconfig: enable designware mipi csi-2 receiver
+
+ .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 141 ++++
+ MAINTAINERS                                        |   7 +
+ arch/arm64/configs/defconfig                       |   1 +
+ drivers/media/platform/synopsys/Kconfig            |   1 +
+ drivers/media/platform/synopsys/Makefile           |   1 +
+ .../media/platform/synopsys/dw-mipi-csi2/Kconfig   |  17 +
+ .../media/platform/synopsys/dw-mipi-csi2/Makefile  |   2 +
+ .../platform/synopsys/dw-mipi-csi2/dw-mipi-csi2.c  | 735 +++++++++++++++++++++
+ 8 files changed, 905 insertions(+)
+---
+base-commit: dc6c52205bdaddf1dc259497a958402b35c01fe2
+change-id: 20251114-rockchip-mipi-receiver-0baf244c9c8e
+
+Best regards,
+-- 
+Michael Riesch <michael.riesch@collabora.com>
 
 
---bhhiv6s43avuu3l7
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 08/11] pinctrl: tegra-xusb: Return void in padctl
- enable/disable functions
-MIME-Version: 1.0
-
-On Wed, Jan 14, 2026 at 04:30:09PM +0100, Krzysztof Kozlowski wrote:
-> Make the padctl functions a bit simpler by returning void instead of
-> always '0'.  The callers - phy init/exit - still need to return 0, but
-> these are smaller function without if/branching.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> ---
->  drivers/pinctrl/tegra/pinctrl-tegra-xusb.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
-
-Acked-by: Thierry Reding <treding@nvidia.com>
-
---bhhiv6s43avuu3l7
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmlqNDIACgkQ3SOs138+
-s6HKVA//WbWB3AVvEbOYpT8fr129RiWvQ5lRtQceA8fb/1Ep4k0qX0M5cVujq72g
-OFie2IcJyCzuci1ZmKEf7fTaR/cjlzExIrXvmox2TLmtKm5kBAFTu2UcHzvAbRcs
-VbasfUeQ/Wi7dlT6+I6JeNLYaXbstuH2RQV3NQ2BC3zPUsJk27p7DARdqBLUSNTJ
-7jX2sBu0xKu5n0hrBhesTMi/zBLMI3pZvqmMlhGzTU01GSlmPz72GMI5J6YmeeF0
-Midhy4ZCbs40l7nJPghjxdtQoKLhUPG6z+NzTyp9Hfelr7q/cYZ1avlAGkJ/39fI
-ugJEOfjl0ed/HMarlvwrRPSTjF6f2BUKH1Ub2xGxErbhGaGvOsKGJizbjsK0CGzl
-jdVsdFUF/wmzPeX27RIel8DxTdTYnhpUyZoylg7l9thjdhYGceKGJHeHb1DaOOZ+
-OhsSUZlejccTbalvk7OeBxtnujGfE56nEXsSByA0C6kaDRxPZmsH9WWtp4mwIzXg
-rvw2hOERLedWoFTjFynl0+3hazgw2hh21iH/uE+uOEiVwHNhPiEXeb+lJMGQbH/9
-Bm2mL/1gvDYA3KxeFZbTTyNwEiGkZyPFLvwZ4hpapk8AvhFdEu/60sMZWsTRlSgx
-H7CJIWp6MSs4e2ErCXbhjjucu3eJo1lFTm/bGVBosixPjjSZ720=
-=VB+5
------END PGP SIGNATURE-----
-
---bhhiv6s43avuu3l7--
-
-
---===============4500266424156145078==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4500266424156145078==--
-
