@@ -4,58 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B687C982DB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 16:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B78AAC982FE
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 21:05:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jTwJ+54Qc4ZrasNkwkxOE2Trv95ssDxrR1/i0jD3gow=; b=frXE/b/1OkGTAx
-	1gHb1RFFbrWlZsY9qSrifm4+X9wsTh6wqlYbmAEK1VOEU4ouQzQFAPKTZRmhKiUMW/gisg5REyYuu
-	MCFhcXCRXRrvJG5plxt468TobZRIQzr4GzpjnHrDjl1XM3dhq9ralqNC+iIytef24DLgliwYGyuja
-	lsoBjhu0DXg1/yk1Y3cwvAu95z8VgPJcTwa8whDz2dZm1EWpIYFxMc6I5F5m1ZmYdB6l/n/BLfNQp
-	XDzpn62QC7mATx1Z0FJKSGK/YElD2CiVk5clx6B3HR6W3M4b4dArxVM3BWwDyDUM8EYE9oWx2C9Rt
-	iu+mfe7VvtbaD5fNWYaw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:From:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=g3dXS8TUFO7nicyYqmx5Y1OPm6wq3tJyznkgFwGz8RQ=; b=J/rIfW4uiFU6AL
+	UxlEcAu6+2nLspRd4i8O4YSUf39bIseKCxuldlKi8wof786GZv2QV23apZnQ04dxsb2rV0i7y2QUA
+	c7e8OGsMeX/I589biJHyi2ZG5YwF9/PZUOWKTirxFG2h8vG4Ytobk3r00qrvMdhJnOZDC3udNUhMQ
+	LhFIjkTUscaF7ZPayuL7xEJmwHX1C1tNq8Eb3g+Mii5kRKZ0i3qrTEbFVqCVVsOAh7rZeqJhBGJgE
+	2WF3U6A9eGm7m1Mi0qrDm9TVKO/1scqiGNTRKNQ1vwUDynSjjgxwzeuvFw2xxqK5DvCQ+MGn1lD0i
+	KuieheKryvdyZ16svckA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgn18-0000000EUQJ-3C6e;
-	Fri, 16 Jan 2026 16:49:46 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vgr0c-0000000EqLA-3pZC;
+	Fri, 16 Jan 2026 21:05:30 +0000
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgn16-0000000EUPp-1l3r;
-	Fri, 16 Jan 2026 16:49:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=yI2XYSwTvVhb9DCV7BJIh+Gsz4vYaSmf6hvMKZExTCo=; b=ChRtAKmFPFgjEj2MJUr5lwxoqR
-	6KHtYVPzSVyn9bFz7rHB0lcpr2sYi5ewutGrLY8qE1juhIvHX/67F94QnlB3wraAH2jbNuNpFg5au
-	IUqv1YSIaYrLzsoah74DeYeyC1CmUwzF7yH9YPP5HtAeBisxSpCTqBnPNmEgNIBOKicSlpmLu1O1y
-	FY2kEU9Bf++OXlUxM8zRYYOKoDsWM6GO0ZOI2Lb3Vm1/at800F8Mj1DJpFupJQn7TYh6twB4eg4a4
-	vkvQRrNNTtUj5LtTcg3HNgxs/XmdZeQ5E6rbcPfIDuWwnTjBPBXkMzka6qXaS9py9cT8jz2tJ3N08
-	kyeM9y5w==;
-Received: from i53875a97.versanet.de ([83.135.90.151] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vgn0l-002eXq-JT; Fri, 16 Jan 2026 17:49:24 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Andy Yan <andyshrk@163.com>
-Cc: hjc@rock-chips.com, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
- tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH] drm/rockchip: vop2: Add mode valid callback for crtc
-Date: Fri, 16 Jan 2026 17:49:23 +0100
-Message-ID: <6509513.iIbC2pHGDl@diego>
-In-Reply-To: <20260116005953.286225-1-andyshrk@163.com>
-References: <20260116005953.286225-1-andyshrk@163.com>
+	id 1vgr0a-0000000EqKI-2qnq
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 Jan 2026 21:05:29 +0000
+Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-b873a14bb99so41338366b.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 16 Jan 2026 13:05:27 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1768597526; x=1769202326; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=g1isH0tUnm2oT2WHcWd/StM+CJam3RvoJ3PEdManM9k=;
+        b=GUb2GyAd07lMvfbPkgV6Mk8Z+PfN9HXW/gbuQrZhYEFNrE2jNBNHCzXfcBXmvBQ3Jz
+         z3i7GmLpt3bArjrZ3TdB7XvxFLGaf8CJf3sgPPGG4p1CU7tBbNQbyq3Xn/TT/jT2QEwN
+         TzaavOxCphRbBj0xxHAtAdWktrNy0sY6Vhn9thtvbOWKe5wekB+2trv0iWXfcS8F3J9o
+         1TxcF6L1+yuWIW06vtzveipHUX+wXy4k/MLY/kd/WuSXFJu0JKuFZr9TtvCwxdSy03pW
+         3q3lJ/DS8hXqyMBP1EObPKgOZ2ZyYN4MyC/OuGR8CPziEbSJ3l2qnEoXKf5EHHXvVyu6
+         Xy/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768597526; x=1769202326;
+        h=content-transfer-encoding:content-language:cc:to:subject:from
+         :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=g1isH0tUnm2oT2WHcWd/StM+CJam3RvoJ3PEdManM9k=;
+        b=KGlvxeaYNTi81heHkgDP9MvHJTDR4vACtl+J+wSK7BPuNyjd3sP1AW5q38zeJSxjKm
+         ws3aO4SQJbWfFyf8VWdkwk4nLEluTO3CnJgB2+tPsemXqRcIv5B1hPTl8aPRf8LzUv9l
+         iEWFf0x4bCo/1GxtF0pcDgIML9l+t4QhzR2lRYANEPJ1NlML5Ckl8sk+QIbJKjjXbr9+
+         k4lfKv81lgcKpJ6mdeHYFwzM7hSCN3m2hgx3sINEHoFktPwkPfG7WAeA2+HTOZn92dgO
+         2C6P+xhQYVFsCEEyT1rzahUIA0Gibh555i4pwb6x5Uu5DaGezOWb7RrSYFmpb5JgseX4
+         PWxw==
+X-Forwarded-Encrypted: i=1; AJvYcCVC0jWyRwqIp82UqOvAsUtECj1TqIneb2eb4nnWX0hmyBdk7xqvb8Cxy8dcbwa3QrpwtFdTTGLFnJpxXLPGcQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxJM9Wm2mzTL+aPCyGVGXELhHMVo6EpXUrZXqu37gKRccV1hu8i
+	QlMnyu+sPYmdH+4/NoyFeeMlntXctBKyv4g08QBrOfxmUPIfGu7qhnGy
+X-Gm-Gg: AY/fxX4JtMupMWFm/+N8e1n4uOYLxkPWeYZZyLC14C7nvI+tkhbcM9wDDSXtRe+Wf2h
+	MziXXDH4Ah0/EiZWW3CazjyFOIvhW8pM4MksJR4Q9uoegiQ8+/fX9Dvk+8X/q1IwU6M5EGmXvak
+	peP/A0GQtTLgegJ8z4ORWOBLfNRyUM6Fyp4FiLAa/Gz1/7Pp0Ksc5+jVhy1OmOV7kaXO/FqOeDy
+	DVj2AFF4mUmkb4p52G88ClgQhQT1F9GPU6+IuOqC+T2vG5SXzX4UCeUMxkEmdEd7ej8yghmQdjU
+	ZLie71GxPZ84b8MJznudJ8POETjwz6gH08bbgBF8vYLOFUfNYttKcnEm9YSSRU6+2cWzhiJdpMl
+	BKPJweGpqJFaDhWX2IjWpZoLRRkWPEsZW/VAJNAqensT0gLXQ6zCVmbTq6HOHwBvKm7wlSM4UAj
+	0ZFUzY2QrOrtuUKD+i8hP3XVSoOKKcWG5G2Y0oFKQYNd3W+EB3PQ==
+X-Received: by 2002:a17:907:db02:b0:b83:95ca:22e1 with SMTP id a640c23a62f3a-b8792e0edbemr223364666b.1.1768597526191;
+        Fri, 16 Jan 2026 13:05:26 -0800 (PST)
+Received: from ?IPV6:2a02:a449:4071:0:32d0:42ff:fe10:6983? ([2a02:a449:4071:0:32d0:42ff:fe10:6983])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b87959fbefdsm328674466b.55.2026.01.16.13.05.25
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 16 Jan 2026 13:05:25 -0800 (PST)
+Message-ID: <c6feab79-5b73-413b-a94f-9d1b2fa6df43@gmail.com>
+Date: Fri, 16 Jan 2026 22:05:24 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Johan Jonker <jbx6244@gmail.com>
+Subject: [PATCH v1] ARM: dts: rockchip: rk3036: remove mshc aliases
+To: heiko@sntech.de
+Cc: robh@kernel.org, conor+dt@kernel.org, krzk+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Content-Language: en-US
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260116_084944_501029_B428916E 
-X-CRM114-Status: GOOD (  22.56  )
+X-CRM114-CacheID: sfid-20260116_130528_729345_BF6FC490 
+X-CRM114-Status: UNSURE (   7.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,55 +95,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQW5keSwKCkFtIEZyZWl0YWcsIDE2LiBKYW51YXIgMjAyNiwgMDE6NTk6NDkgTWl0dGVsZXVy
-b3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBBbmR5IFlhbjoKPiBGcm9tOiBBbmR5IFlhbiA8
-YW5keS55YW5Acm9jay1jaGlwcy5jb20+Cgp3aGVuIHJlc2VuZGluZyBhbiB1bm1vZGlmaWVkIHBh
-dGNoLCBwbGVhc2UgbWFyayB0aGUgc3ViamVjdCBhcwpbUEFUQ0ggUkVTRU5EXSAuLi4uCgo+IEZp
-bHRlciB0aGUgbW9kZSB0aGF0IGNhbid0IG91dHB1dCBieSB0aGUgY3J0Yy4KCkluIGNvbW1pdCA4
-ZTE0MGNiNjAyNzAgKCJkcm0vcm9ja2NoaXA6IHZvcDogbGltaXQgbWF4aW11bSByZXNvbHV0aW9u
-IHRvCmhhcmR3YXJlIGNhcGFiaWxpdGllcyIpIHdoaWNoIGludHJvZHVjZWQgdGhlIHNpbWlsYXIg
-Y2hlY2sgb24gVk9QKDEpLCB3ZQpoYWQgYWRkaXRpb25hbCBpbmZvcm1hdGlvbiwgaW4gdGhhdCB0
-aGUgVk9QMSBoYXJkd2FyZSBkb2VzIG5vdCBoYXZlCmFuIG91dHB1dCBoZWlnaHQgbGltaXQuIElz
-IHRoZSBzYW1lIHRydWUgZm9yIFZPUDIgPwoKQmVjYXVzZSB0aGVuIEknZCBsaWtlIHRvIGV4dGVu
-ZCB0aGUgY29tbWl0IGRlc2NyaXB0aW9uIHRvIHNvbWV0aGluZyBsaWtlOgo9PT09PT09IDg8ID09
-PT09PT0KVGhlIGRpZmZlcmVudCBWT1AgdmFyaWFudHMgc3VwcG9ydCBkaWZmZXJlbnQgbWF4aW11
-bSByZXNvbHV0aW9ucy4gUmVqZWN0CnJlc29sdXRpb25zIHRoYXQgYXJlIG5vdCBzdXBwb3J0ZWQg
-YnkgYSBzcGVjaWZpYyB2YXJpYW50LgoKT25seSB0aGUgb3V0cHV0IHdpZHRoIGlzIGNoZWNrZWQg
-YmVjYXVzZSB0aGUgaGFyZHdhcmUgaXRzZWxmIGRvZXMgbm90CmhhdmUgYSBoYXJkIG91dHB1dCBo
-ZWlnaHQgbGltaXQuCj09PT09PT0gODwgPT09PT09PQoKQmVjYXVzZSB3aGVuIHNvbWVvbmUgc2Vl
-cyB0aGUgY29kZSBsYXRlciB0aGV5IG1pZ2h0IGFzayB3aHkgdGhlIGhlaWdodAppcyBub3QgY2hl
-Y2tlZCwgc28gaGF2aW5nIHRoYXQgaW4gdGhlIGNvbW1pdCBkZXNjcmlwdGlvbiBhbGxvd3MgdXMg
-YWxsIHRvCnJlbWVtYmVyIHdoeSB0aGUgY2hlY2sgaXMgdGhpcyBzcGVjaWZpYyB3YXkgOi0pCgpU
-aGFua3MKSGVpa28KCj4gU2lnbmVkLW9mZi1ieTogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hp
-cHMuY29tPgo+IC0tLQo+ICBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3Zv
-cDIuYyB8IDEyICsrKysrKysrKysrKwo+ICAxIGZpbGUgY2hhbmdlZCwgMTIgaW5zZXJ0aW9ucygr
-KQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJt
-X3ZvcDIuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jCj4g
-aW5kZXggNDk4ZGYwY2U0NjgwLi43NGZiYTI5YmZmZjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKPiArKysgYi9kcml2ZXJzL2dwdS9k
-cm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIuYwo+IEBAIC0xNDM5LDYgKzE0MzksMTcgQEAg
-c3RhdGljIHZvaWQgdm9wMl9jcnRjX2Rpc2FibGVfdmJsYW5rKHN0cnVjdCBkcm1fY3J0YyAqY3J0
-YykKPiAgCXZvcDJfY3J0Y19kaXNhYmxlX2lycSh2cCwgVlBfSU5UX0ZTX0ZJRUxEKTsKPiAgfQo+
-ICAKPiArc3RhdGljIGVudW0gZHJtX21vZGVfc3RhdHVzIHZvcDJfY3J0Y19tb2RlX3ZhbGlkKHN0
-cnVjdCBkcm1fY3J0YyAqY3J0YywKPiArCQkJCQkJIGNvbnN0IHN0cnVjdCBkcm1fZGlzcGxheV9t
-b2RlICptb2RlKQo+ICt7Cj4gKwlzdHJ1Y3Qgdm9wMl92aWRlb19wb3J0ICp2cCA9IHRvX3ZvcDJf
-dmlkZW9fcG9ydChjcnRjKTsKPiArCj4gKwlpZiAobW9kZS0+aGRpc3BsYXkgPiB2cC0+ZGF0YS0+
-bWF4X291dHB1dC53aWR0aCkKPiArCQlyZXR1cm4gTU9ERV9CQURfSFZBTFVFOwo+ICsKPiArCXJl
-dHVybiBNT0RFX09LOwo+ICt9Cj4gKwo+ICBzdGF0aWMgYm9vbCB2b3AyX2NydGNfbW9kZV9maXh1
-cChzdHJ1Y3QgZHJtX2NydGMgKmNydGMsCj4gIAkJCQkgY29uc3Qgc3RydWN0IGRybV9kaXNwbGF5
-X21vZGUgKm1vZGUsCj4gIAkJCQkgc3RydWN0IGRybV9kaXNwbGF5X21vZGUgKmFkal9tb2RlKQo+
-IEBAIC0xODg0LDYgKzE4OTUsNyBAQCBzdGF0aWMgdm9pZCB2b3AyX2NydGNfYXRvbWljX2ZsdXNo
-KHN0cnVjdCBkcm1fY3J0YyAqY3J0YywKPiAgCj4gIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHJtX2Ny
-dGNfaGVscGVyX2Z1bmNzIHZvcDJfY3J0Y19oZWxwZXJfZnVuY3MgPSB7Cj4gIAkubW9kZV9maXh1
-cCA9IHZvcDJfY3J0Y19tb2RlX2ZpeHVwLAo+ICsJLm1vZGVfdmFsaWQgPSB2b3AyX2NydGNfbW9k
-ZV92YWxpZCwKPiAgCS5hdG9taWNfY2hlY2sgPSB2b3AyX2NydGNfYXRvbWljX2NoZWNrLAo+ICAJ
-LmF0b21pY19iZWdpbiA9IHZvcDJfY3J0Y19hdG9taWNfYmVnaW4sCj4gIAkuYXRvbWljX2ZsdXNo
-ID0gdm9wMl9jcnRjX2F0b21pY19mbHVzaCwKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+The use of mshc aliases is deprecated for some while,
+so remove them from the rk3036.dtsi file.
+
+Signed-off-by: Johan Jonker <jbx6244@gmail.com>
+---
+ arch/arm/boot/dts/rockchip/rk3036.dtsi | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/arch/arm/boot/dts/rockchip/rk3036.dtsi b/arch/arm/boot/dts/rockchip/rk3036.dtsi
+index fca21ebb224b..78afae42f8b2 100644
+--- a/arch/arm/boot/dts/rockchip/rk3036.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3036.dtsi
+@@ -23,9 +23,6 @@ aliases {
+ 		i2c0 = &i2c0;
+ 		i2c1 = &i2c1;
+ 		i2c2 = &i2c2;
+-		mshc0 = &emmc;
+-		mshc1 = &sdmmc;
+-		mshc2 = &sdio;
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
+ 		serial2 = &uart2;
+--
+2.39.5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
