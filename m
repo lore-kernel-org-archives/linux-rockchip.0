@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E39BAD47CAB
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 00:56:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD2FBD47CAB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 01:00:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MPwILuweV96lb4zhtFlsBNUmBesdx/S4f6Pf5whJx/0=; b=glKHgAxN8FDzUx
-	pNDhE2fJViRN5Qu1AwYGVDabtGfOpaCkkA/TCpCUTqDwHWpXIrCD9SnW3/oFj+PaPPyVQnwDREHco
-	0pqPFII8IHOOwfRZMh3ZtyEq6da3CqShLvj6J0BGaNXJQTr79nnvh8RVzbROannzXMY4/WkgyKdB+
-	7yVaKbA65MDvG2+fvXiE4TzSj22i1E61nbULv8kuI2DjHdO157LvrePzspoegVy6uqj4yjsv56HDM
-	1dQaMHNtdsbuIC85wF8+MHe3q+l4uGa0/Smiz+zqETLj7e5aHDj3cmshf10jOEQ1S367GQcTS94kH
-	2BHU5/08dETNuqc+3SRA==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Lv8u9dnVCu4AuyIC2Wck68Cq832FUmvnTFB8WDPEjxM=; b=WBiUmbQBMMng/6
+	jyYFwSceTnUw+7xU3lO/ZX1UKeaYoP1KoKlbLsOCHO/pv2/xGcfhYp+au1PJXDo7n5/aYvF1PTMFM
+	zaFMDSjLBypdv7y41Z7dn7YVe5lSJ2b0L5elVrUpuPPn77NTw/pyi5VTcAZBnM+AEILtseHhMubI7
+	FkUAOkqtz9L+UtFnfvFhZmDyLKyIC2wu1ihJORef22FERDlcqOQS0TB3ct+WkW8Ou5/vg8PsRQ6Kf
+	T8mXiiZeNVY7xpvhWBQy7uxr9AEfV1o5433A9wOAVvPVvCU0/J9e/Eq5JQB4EWoxMqP10fzHKPEck
+	wAIBsmB8eanBcST8tPgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgY8S-0000000DNpJ-1OvR;
-	Fri, 16 Jan 2026 00:56:20 +0000
-Received: from mail-m155116.qiye.163.com ([101.71.155.116])
+	id 1vgYCa-0000000DNz1-1zhT;
+	Fri, 16 Jan 2026 01:00:36 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgY8N-0000000DNnn-2hMQ
-	for linux-rockchip@lists.infradead.org;
-	Fri, 16 Jan 2026 00:56:16 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 30d5a76ed;
-	Fri, 16 Jan 2026 08:56:10 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Heiko Stuebner <heiko@sntech.de>,
-	Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-mmc@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Marco Schirrmeister <mschirrmeister@gmail.com>,
-	John Clark <inindev@gmail.com>,
-	Tianling Shen <cnsztl@gmail.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v4 5/5] arm64: dts: rockchip: Fix SD card support for RK3576 Nanopi R76s
-Date: Fri, 16 Jan 2026 08:55:32 +0800
-Message-Id: <1768524932-163929-6-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9bc44d7abd09cckunm67a197c8691c83
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGklCTVZOGUhMTE9DSEpIHk9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	5VSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=jnoYFE+6GIc90VpWQjTFwycbX53cl5iXRvoWJ7lMjoq5Mb3LqWdXogwQC1Mr5wDnWZbX+QagcJdv0bjDQMBXFL3kDuxC2pn1YeYnNgpsMFFTmZ0qqijsMTnIp7uvCFFFdv3Nu1YTHyJS13B37MJkVQE7oV/lbS90OmOzd5mVbvs=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=rGhXF5/8uiyG5kkuJJMSCKix8pPHbfQoMwB2LnqjU2c=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vgYCX-0000000DNyY-04ZV;
+	Fri, 16 Jan 2026 01:00:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=ME
+	f0DHBWe9wPAEndIy61oCPwiRgDkfJY9Tvwbfp9TWI=; b=galtRY90/scvUYiiqi
+	R1/BDctSZsJyCULal6+W/axAI5CMzUGIw3sof82uUF7JrrmZTlZZC1d2ALOQ39YI
+	BvCNy19aIN90CRYfdMxBTXkQPwuZiOxDUmkTI2YR5aSvvuGQ/DE8/sWUpRQje9Hz
+	im+5Wk0Juf7PIlHwhyZFRVxA8=
+Received: from ProDesk-480.. (unknown [])
+	by gzga-smtp-mtada-g1-4 (Coremail) with SMTP id _____wDXRJeKjWlpWfAVGQ--.9426S2;
+	Fri, 16 Jan 2026 08:59:59 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: heiko@sntech.de
+Cc: hjc@rock-chips.com,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Subject: [PATCH] drm/rockchip: vop2: Add mode valid callback for crtc
+Date: Fri, 16 Jan 2026 08:59:49 +0800
+Message-ID: <20260116005953.286225-1-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
+X-CM-TRANSID: _____wDXRJeKjWlpWfAVGQ--.9426S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WFykGr1kGFy5KF1DtryUAwb_yoW8XF15pa
+	17ArWYgr4rKFZFgFn7JF4DCw1akw1ayayxJrs3Ww13uFyftr4DX3WrC34DCry3XFy7Ga43
+	KrnFyFW5AF1I9w7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jrl1kUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7Q87mWlpjY+34wAA3W
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_165615_873415_ACBA8436 
-X-CRM114-Status: GOOD (  11.83  )
+X-CRM114-CacheID: sfid-20260115_170033_427798_EDCA5479 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,85 +75,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When runtime suspend is enabled, the associated power domain is powered
-off, which resets the registers, including the power control bit. As a result,
-the card loses power during runtime suspend. The card should still be able
-to process I/O with the help of mmc_blk_mq_rw_recovery(), which is suboptimal.
-To address this issue, we must use vmmc-supply with a GPIO based method to
-maintain power to the card and store valid tuning phases. Also, add cd-gpios
-method to make hot-plug work correctly during idle periods.
+From: Andy Yan <andy.yan@rock-chips.com>
 
-Fixes: 7fee88882704 ("arm64: dts: rockchip: Add devicetree for the FriendlyElec NanoPi R76S")
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-Tested-by: Marco Schirrmeister <mschirrmeister@gmail.com>
+Filter the mode that can't output by the crtc.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 ---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-Changes in v3: None
-Changes in v2: None
-
- .../arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts | 23 +++++++++++++++++++++-
- 1 file changed, 22 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts
-index 31fbefa..7ec27b0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts
-@@ -192,6 +192,18 @@
- 		regulator-name = "vcc_3v3_s0";
- 		vin-supply = <&vcc_3v3_s3>;
- 	};
-+
-+	vcc3v3_sd: regulator-vcc-3v3-sd {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PB6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sdmmc_pwren>;
-+		regulator-name = "vcc3v3_sd";
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc_3v3_s0>;
-+	};
- };
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 498df0ce4680..74fba29bfff3 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1439,6 +1439,17 @@ static void vop2_crtc_disable_vblank(struct drm_crtc *crtc)
+ 	vop2_crtc_disable_irq(vp, VP_INT_FS_FIELD);
+ }
  
- &combphy0_ps {
-@@ -726,6 +738,12 @@
- 		};
- 	};
- 
-+	sdmmc {
-+		sdmmc_pwren: sdmmc-pwren {
-+			rockchip,pins = <0 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
++static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
++						 const struct drm_display_mode *mode)
++{
++	struct vop2_video_port *vp = to_vop2_video_port(crtc);
 +
- 	usb {
- 		usb_otg0_pwren_h: usb-otg0-pwren-h {
- 			rockchip,pins = <0 RK_PD1 RK_FUNC_GPIO &pcfg_pull_none>;
-@@ -751,11 +769,14 @@
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
- 	cap-sd-highspeed;
-+	cd-gpios = <&gpio0 RK_PA7 GPIO_ACTIVE_LOW>;
- 	disable-wp;
- 	no-mmc;
- 	no-sdio;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_det &sdmmc0_bus4>;
- 	sd-uhs-sdr104;
--	vmmc-supply = <&vcc_3v3_s3>;
-+	vmmc-supply = <&vcc3v3_sd>;
- 	vqmmc-supply = <&vccio_sd_s0>;
- 	status = "okay";
- };
++	if (mode->hdisplay > vp->data->max_output.width)
++		return MODE_BAD_HVALUE;
++
++	return MODE_OK;
++}
++
+ static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
+ 				 const struct drm_display_mode *mode,
+ 				 struct drm_display_mode *adj_mode)
+@@ -1884,6 +1895,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+ 
+ static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs = {
+ 	.mode_fixup = vop2_crtc_mode_fixup,
++	.mode_valid = vop2_crtc_mode_valid,
+ 	.atomic_check = vop2_crtc_atomic_check,
+ 	.atomic_begin = vop2_crtc_atomic_begin,
+ 	.atomic_flush = vop2_crtc_atomic_flush,
 -- 
-2.7.4
+2.43.0
 
 
 _______________________________________________
