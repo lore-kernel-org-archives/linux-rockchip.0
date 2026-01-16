@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 678AFD47CA4
-	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 00:32:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 857B7D47CAB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 16 Jan 2026 00:56:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=57oOh7M6S7P3KDJKet9x+0WG2zsr2QAf6QvxniwhxRY=; b=g2QB1dzTxDoN6O
-	xJd28xxml2LqkSsmDSpXmcPkR2gSQFh+9JcWhd1KmNpZxiQk9ZdloMcZaBTkNIURm3gXGFJMwuU4u
-	EM0M5sC29OMtPp8P1BPiWjub2AWqBDhHjwfwQrELIOg6TCpd3are7ntPBiF3mggv1aM3HMsf6wFWB
-	ChlcOOwXfP6wTE9gZcIfEOZ9+1FV8PIN36LSbvJybKIT1u2EYhQj0EUhXKRjTjm7DX2g7Si+8pmFi
-	gf+INM6UoWSxAhE/glBwq+QLC9tzWLYigQJdJTTsJGdznUkGp3EFxJ5RwX6W21mz2vF4CpNEotixQ
-	xkaRysvxZZu42eJObIiQ==;
+	List-Owner; bh=VrPan7FLn+HA9Jns5UohVUSa+Mf7PBYSX6tFWe/f+X8=; b=HBCAlmIPJB+ii8
+	A22rimc6/FW8sI+Dw/n/enWJUZ4v/a0stSOwqkXJtvBt1g0Oijb6q9U9Dy0QOtZ+YsEV92smZ/YTu
+	5smYbINYdLXJiG3ZNMZvXTj/PHJmPBAO13spJ529ln/kkZgv79AwNR/tY/8zH7yT8MMRU/5ragQV2
+	cq1LS6TNDe8UatHj74wXcw1jF+ImfPCWdoR6DT4NvQ+Tga/11Bh+p4O6EW0pIn8DrlCr8XHnlChnS
+	E9OV5C495J5/YASY+O0ZyAot8A1CaIAOCnRY/QUkIwTTCtRboScT+jUr0aPmwDIJMk4xhDW6Yv5ow
+	VqJfzzpEJ9m9AoPGBtNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgXkw-0000000DN1T-0CnJ;
-	Fri, 16 Jan 2026 00:32:02 +0000
-Received: from mail-m128115.netease.com ([103.209.128.115])
+	id 1vgY8H-0000000DNnB-2IsJ;
+	Fri, 16 Jan 2026 00:56:09 +0000
+Received: from mail-m822136143.xmail.ntesmail.com ([8.221.36.143])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vgXkt-0000000DN14-1J2k;
-	Fri, 16 Jan 2026 00:32:01 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 30d4f9429;
-	Fri, 16 Jan 2026 08:31:47 +0800 (GMT+08:00)
-Message-ID: <e686c919-74b3-4607-ac7d-09c57effb466@rock-chips.com>
-Date: Fri, 16 Jan 2026 08:31:44 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Cc: shawn.lin@rock-chips.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, linux-rockchip@lists.infradead.org,
- linux-mmc@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, heiko@sntech.de, ulf.hansson@linaro.org
-Subject: Re: [PATCH v1 0/3] mmc: dw_mmc-rockchip: Add stability quirk for
- NanoPi R76S
-To: Marco Schirrmeister <mschirrmeister@gmail.com>
-References: <20260110010715.1610159-1-mschirrmeister@gmail.com>
- <67ccb8f6-f9bd-4266-b79a-b688bd6d030b@rock-chips.com>
- <8536413c-8687-4d75-befb-8f25e54838bf@rock-chips.com>
- <6934ae0d-16c5-436f-97f6-c11d304ca51d@rock-chips.com>
- <CAGJh8eDXT43_PfmUbShL4Hysfkd21R=sCerRNe_AGQANbwvSPA@mail.gmail.com>
- <b49b223e-e728-4ce9-b972-242ed9b5fa4a@rock-chips.com>
- <CAGJh8eB0i5UYN=05SfNGQc4dMA5_ffktErY8GjX85JWjDna3Dw@mail.gmail.com>
+	id 1vgY8E-0000000DNmq-1jNO
+	for linux-rockchip@lists.infradead.org;
+	Fri, 16 Jan 2026 00:56:09 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 30d5a76b5;
+	Fri, 16 Jan 2026 08:55:58 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <CAGJh8eB0i5UYN=05SfNGQc4dMA5_ffktErY8GjX85JWjDna3Dw@mail.gmail.com>
-X-HM-Tid: 0a9bc437256e09cckunm3f0c5a6b68da5e
+To: Heiko Stuebner <heiko@sntech.de>,
+	Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-rockchip@lists.infradead.org,
+	linux-mmc@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Marco Schirrmeister <mschirrmeister@gmail.com>,
+	John Clark <inindev@gmail.com>,
+	Tianling Shen <cnsztl@gmail.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v4 3/5] mmc: dw_mmc-rockchip: Fix runtime PM support for internal phase support
+Date: Fri, 16 Jan 2026 08:55:30 +0800
+Message-Id: <1768524932-163929-4-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0a9bc44d49ba09cckunm67a197c8691bf9
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR9PSFYfGk1OTUpJSkoaTxpWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhoYS1YZSUxCSkJCTx9CSkhWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=GHOn1G6MfV1Xs1M+BErAj1YADRFid3RBFb8kV0b2MJROtI9/ZSogWy2otX46eeIPfNtNYaYHvN1S+47yEf+He2bp+4jxB/NQFQhW+8Nu1eIMekSiu8YYduMK7FCnbRYZVSlb+0ZF7YH4ubv8qs4ciReofgTyt5uDX7HuhEXgqKY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=M5UXOxPjPA+QX/q5RVny3Kc1OeIaWZcna4FhGLRLNu8=;
+	b=cn2q+pBXzH8PPm0DJPSFzeewkBw5/2FjgWROFXyful9U9I970ROifthHNseNkFnzLwMuIqu/Oot6nVrOerDkZogR9bzFdNcOhL6zn1EkXzMzqeanbhGIC1u1PeRkIIb1O9KQnyAB2Dut5xDyPxAVeuBSnTdxcGP9/qeP4FrwSLY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=nAxcwtoR+PZuKKJSWxlt9Mjgw/ELV6cayHnxUmZ3BKE=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260115_163159_897737_FF31B99D 
-X-CRM114-Status: GOOD (  22.48  )
+X-CRM114-CacheID: sfid-20260115_165607_507995_48C15FFC 
+X-CRM114-Status: GOOD (  14.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,112 +72,93 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYvMDEvMTYg5pif5pyf5LqUIDM6MzksIE1hcmNvIFNjaGlycm1laXN0ZXIg5YaZ6YGT
-Ogo+IEhlbGxvIFNoYXduLAo+IAo+IE9uIFRodSwgSmFuIDE1LCAyMDI2IGF0IDE6MjXigK9BTSBT
-aGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pgo+Pj4gQmFzZWQg
-b24gdGhpcywgaXQgbWFrZXMgbWUgYmVsaWV2ZSB0aGF0IHBvd2VyIHRvIHRoZSBzZCBjYXJkIGlz
-IGNvbXBsZXRlbHkgY3V0Cj4+PiBhbmQgd2hlbiBpdCB3YWtlcyB1cCBhbmQga25vd3MgaG93IHRv
-IGNvbnRpbnVlLCBpdCBzdGlsbCBtdXN0IGdvIHRocm91Z2ggdGhlCj4+PiByZXRyYWluaW5nIHBo
-YXNlLgo+Pj4KPj4KPj4gVGhpcyBpcyBhbm90aGVyIG1pc3Rha2UgZm9yIHlvdXIgTmFub1BpIFI3
-NlMgYm9hcmQuIEJlZm9yZSBzZW50IHRoaXMKPj4gcGF0Y2gsIEkgYWxyZWFkeSBjaGVja2VkIHRo
-ZSBkdHMgYW5kIHNhdyBzZG1tYyB1c2VzIHZtbWMtc3VwcGx5ID0KPj4gPCZ2Y2NfM3YzX3MzPiB3
-aGljaCBpcyBtYXJrZWQgYXMgcmVndWxhdG9yLWFsd2F5cy1vbiwgYnV0IGl0J3MgKk5PVCoKPj4g
-YWN0dWFsbHkgcGVyIHRoZSBzaGNlbWF0aWNbMV1bMl0uIFNvIG5lZWQgYW5vdGhlciBmaXggZm9y
-IHlvdXIgYm9hcmQKPj4gdG8gbWFrZSBpdCBhY3R1YWxseSBncGlvLWJhc2VkIHBvd2VyIGNvbnRy
-b2xsZXIgaW5zdGFlZCBvZiBmdW5jdGlvbgo+PiBJTyBiYXNlZCwgYXMgd2hlbiBwb3dlcmluZyBv
-ZmYgdGhlIHBvd2VyIGRvbWFpbiwgdGhlIHBvd2VyIGNvbnRyb2wgYml0Cj4+IHdpbGwgbm90IGJl
-IGFibGUgdG8gbWFpbnRhaW4uCj4+Cj4+IFsxXQo+PiBodHRwczovL3dpa2kuZnJpZW5kbHllbGVj
-LmNvbS93aWtpL2ltYWdlcy82LzYwL05hbm9QaV9SNzZTX0xQNFhfMjQxMV9TQ0gucGRmCj4+IFsy
-XQo+PiBodHRwczovL3dpa2kuZnJpZW5kbHllbGVjLmNvbS93aWtpL2ltYWdlcy85LzkwL05hbm9Q
-aV9SNzZTX0xQNV8yNDExX1NDSC5wZGYKPj4KPj4gRXhjZXB0IGZvciB0aGUgcGF0Y2hlcyB5b3Ug
-aGF2ZSB0ZXN0ZWQsIHBsZWFzZSBhcHBlbmQgdGhlIGJsb3cgcGF0Y2ggYXMKPj4gd2VsbCB0byB0
-ZXN0Lgo+IAo+IEJpbmdvLiBUaGVzZSBEVFMgYWRkaXRpb25zIGZpeGVkIHRoZSBwb3dlciBzdGFi
-aWxpdHkgZm9yIHRoZSBTRCBjYXJkLgo+IEkgaGF2ZSB2ZXJpZmllZCB0aGF0IHRoZSBjYXJkIG5v
-dyB3YWtlcyB1cCBpbnN0YW50bHkgd2l0aCBubyBlcnJvcnMgYW5kCj4gbm8gcmV0cmFpbmluZyBk
-ZWxheS4KPiAKClRoYW5rcywgSSB3aWxsIGZvbGQgdGhlc2UgdHdvIHBhdGNoZXMgaW50byBteSB0
-aHJlYWQgb2YgVjQgdG8gZml4IGFsbAp0aGVzZSBwcm9ibGVtcy4KCj4gSSB0ZXN0ZWQgdGhpcyBi
-b3RoIHdpdGggYW5kIHdpdGhvdXQgeW91ciBkcml2ZXIgcGF0Y2ggKHRoZSBzYXZlL3Jlc3RvcmUK
-PiBwaGFzZXMgbG9naWMpLgo+IAo+IFRoaXMgY29uZmlybXMgdGhlIGlzc3VlIHdhcyBpbmRlZWQg
-dGhlIHBvd2VyIHJhaWwgYmVpbmcgY3V0IGR1cmluZwo+IGlkbGUgcGVyaW9kcy4gR3JlYXQgZmlu
-ZCBvbiB0aGUgc2NoZW1hdGljIQo+IAo+PiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tj
-aGlwL3JrMzU3Ni1uYW5vcGktcjc2cy5kdHMKPj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1NzYtbmFub3BpLXI3NnMuZHRzCj4+IEBAIC0xOTIsNiArMTkyLDE4IEBACj4+
-ICAgICAgICAgICAgICAgICAgIHJlZ3VsYXRvci1uYW1lID0gInZjY18zdjNfczAiOwo+PiAgICAg
-ICAgICAgICAgICAgICB2aW4tc3VwcGx5ID0gPCZ2Y2NfM3YzX3MzPjsKPj4gICAgICAgICAgIH07
-Cj4+ICsKPj4gKyAgICAgICB2Y2MzdjNfc2Q6IHJlZ3VsYXRvci12Y2MtM3YzLXNkIHsKPj4gKyAg
-ICAgICAgICAgICAgIGNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPj4gKyAgICAgICAg
-ICAgICAgIGVuYWJsZS1hY3RpdmUtaGlnaDsKPj4gKyAgICAgICAgICAgICAgIGdwaW9zID0gPCZn
-cGlvMCBSS19QQjYgR1BJT19BQ1RJVkVfSElHSD47Cj4+ICsgICAgICAgICAgICAgICBwaW5jdHJs
-LW5hbWVzID0gImRlZmF1bHQiOwo+PiArICAgICAgICAgICAgICAgcGluY3RybC0wID0gPCZzZG1t
-Y19wd3Jlbj47Cj4+ICsgICAgICAgICAgICAgICByZWd1bGF0b3ItbmFtZSA9ICJ2Y2MzdjNfc2Qi
-Owo+PiArICAgICAgICAgICAgICAgcmVndWxhdG9yLW1pbi1taWNyb3ZvbHQgPSA8MzMwMDAwMD47
-Cj4+ICsgICAgICAgICAgICAgICByZWd1bGF0b3ItbWF4LW1pY3Jvdm9sdCA9IDwzMzAwMDAwPjsK
-Pj4gKyAgICAgICAgICAgICAgIHZpbi1zdXBwbHkgPSA8JnZjY18zdjNfczA+Owo+PiArICAgICAg
-IH07Cj4+ICAgIH07Cj4+Cj4+ICAgICZjb21icGh5MF9wcyB7Cj4+IEBAIC03MjYsNiArNzM4LDEy
-IEBACj4+ICAgICAgICAgICAgICAgICAgIH07Cj4+ICAgICAgICAgICB9Owo+Pgo+PiArICAgICAg
-IHNkbW1jIHsKPj4gKyAgICAgICAgICAgICAgIHNkbW1jX3B3cmVuOiBzZG1tYy1wd3JlbiB7Cj4+
-ICsgICAgICAgICAgICAgICAgICAgICAgIHJvY2tjaGlwLHBpbnMgPSA8MCBSS19QQjYgUktfRlVO
-Q19HUElPCj4+ICZwY2ZnX3B1bGxfbm9uZT47Cj4+ICsgICAgICAgICAgICAgICB9Owo+PiArICAg
-ICAgIH07Cj4+ICsKPj4gICAgICAgICAgIHVzYiB7Cj4+ICAgICAgICAgICAgICAgICAgIHVzYl9v
-dGcwX3B3cmVuX2g6IHVzYi1vdGcwLXB3cmVuLWggewo+PiAgICAgICAgICAgICAgICAgICAgICAg
-ICAgIHJvY2tjaGlwLHBpbnMgPSA8MCBSS19QRDEgUktfRlVOQ19HUElPCj4+ICZwY2ZnX3B1bGxf
-bm9uZT47Cj4+IEBAIC03NTEsMTEgKzc2OSwxNCBAQAo+PiAgICAgICAgICAgYnVzLXdpZHRoID0g
-PDQ+Owo+PiAgICAgICAgICAgY2FwLW1tYy1oaWdoc3BlZWQ7Cj4+ICAgICAgICAgICBjYXAtc2Qt
-aGlnaHNwZWVkOwo+PiArICAgICAgIGNkLWdwaW9zID0gPCZncGlvMCBSS19QQTcgR1BJT19BQ1RJ
-VkVfTE9XPjsKPj4gICAgICAgICAgIGRpc2FibGUtd3A7Cj4+ICAgICAgICAgICBuby1tbWM7Cj4+
-ICAgICAgICAgICBuby1zZGlvOwo+PiArICAgICAgIHBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7
-Cj4+ICsgICAgICAgcGluY3RybC0wID0gPCZzZG1tYzBfY2xrICZzZG1tYzBfY21kICZzZG1tYzBf
-ZGV0ICZzZG1tYzBfYnVzND47Cj4+ICAgICAgICAgICBzZC11aHMtc2RyMTA0Owo+PiAtICAgICAg
-IHZtbWMtc3VwcGx5ID0gPCZ2Y2NfM3YzX3MzPjsKPj4gKyAgICAgICB2bW1jLXN1cHBseSA9IDwm
-dmNjM3YzX3NkPjsKPj4gICAgICAgICAgIHZxbW1jLXN1cHBseSA9IDwmdmNjaW9fc2RfczA+Owo+
-PiAgICAgICAgICAgc3RhdHVzID0gIm9rYXkiOwo+Pgo+Pgo+Pgo+Pgo+Pj4+IC0tLSBhL2RyaXZl
-cnMvbW1jL2hvc3QvZHdfbW1jLXJvY2tjaGlwLmMKPj4+PiArKysgYi9kcml2ZXJzL21tYy9ob3N0
-L2R3X21tYy1yb2NrY2hpcC5jCj4+Pj4gQEAgLTM2LDYgKzM2LDggQEAgc3RydWN0IGR3X21jaV9y
-b2NrY2hpcF9wcml2X2RhdGEgewo+Pj4+ICAgICAgICAgICAgaW50ICAgICAgICAgICAgICAgICAg
-ICAgZGVmYXVsdF9zYW1wbGVfcGhhc2U7Cj4+Pj4gICAgICAgICAgICBpbnQgICAgICAgICAgICAg
-ICAgICAgICBudW1fcGhhc2VzOwo+Pj4+ICAgICAgICAgICAgYm9vbCAgICAgICAgICAgICAgICAg
-ICAgaW50ZXJuYWxfcGhhc2U7Cj4+Pj4gKyAgICAgICBpbnQgICAgICAgICAgICAgICAgICAgICBz
-YW1wbGVfcGhhc2U7Cj4+Pj4gKyAgICAgICBpbnQgICAgICAgICAgICAgICAgICAgICBkcnZfcGhh
-c2U7Cj4+Pj4gICAgIH07Cj4+Pj4KPj4+PiAgICAgLyoKPj4+PiBAQCAtNTczLDkgKzU3NSw0MyBA
-QCBzdGF0aWMgdm9pZCBkd19tY2lfcm9ja2NoaXBfcmVtb3ZlKHN0cnVjdAo+Pj4+IHBsYXRmb3Jt
-X2RldmljZSAqcGRldikKPj4+PiAgICAgICAgICAgIGR3X21jaV9wbHRmbV9yZW1vdmUocGRldik7
-Cj4+Pj4gICAgIH0KPj4+Pgo+Pj4+ICtzdGF0aWMgaW50IGR3X21jaV9yb2NrY2hpcF9ydW50aW1l
-X3N1c3BlbmQoc3RydWN0IGRldmljZSAqZGV2KQo+Pj4+ICt7Cj4+Pj4gKyAgICAgICBzdHJ1Y3Qg
-cGxhdGZvcm1fZGV2aWNlICpwZGV2ID0gdG9fcGxhdGZvcm1fZGV2aWNlKGRldik7Cj4+Pj4gKyAg
-ICAgICBzdHJ1Y3QgZHdfbWNpICpob3N0ID0gcGxhdGZvcm1fZ2V0X2RydmRhdGEocGRldik7Cj4+
-Pj4gKyAgICAgICBzdHJ1Y3QgZHdfbWNpX3JvY2tjaGlwX3ByaXZfZGF0YSAqcHJpdiA9IGhvc3Qt
-PnByaXY7Cj4+Pj4gKwo+Pj4+ICsgICAgICAgaWYgKHByaXYtPmludGVybmFsX3BoYXNlKSB7Cj4+
-Pj4gKyAgICAgICAgICAgICAgIHByaXYtPnNhbXBsZV9waGFzZSA9IHJvY2tjaGlwX21tY19nZXRf
-cGhhc2UoaG9zdCwgdHJ1ZSk7Cj4+Pj4gKyAgICAgICAgICAgICAgIHByaXYtPmRydl9waGFzZSA9
-IHJvY2tjaGlwX21tY19nZXRfcGhhc2UoaG9zdCwgZmFsc2UpOwo+Pj4+ICsgICAgICAgfQo+Pj4+
-ICsKPj4+PiArICAgICAgIHJldHVybiBkd19tY2lfcnVudGltZV9zdXNwZW5kKGRldik7Cj4+Pj4g
-K30KPj4+PiArCj4+Pj4gK3N0YXRpYyBpbnQgZHdfbWNpX3JvY2tjaGlwX3J1bnRpbWVfcmVzdW1l
-KHN0cnVjdCBkZXZpY2UgKmRldikKPj4+PiArewo+Pj4+ICsgICAgICAgc3RydWN0IHBsYXRmb3Jt
-X2RldmljZSAqcGRldiA9IHRvX3BsYXRmb3JtX2RldmljZShkZXYpOwo+Pj4+ICsgICAgICAgc3Ry
-dWN0IGR3X21jaSAqaG9zdCA9IHBsYXRmb3JtX2dldF9kcnZkYXRhKHBkZXYpOwo+Pj4+ICsgICAg
-ICAgc3RydWN0IGR3X21jaV9yb2NrY2hpcF9wcml2X2RhdGEgKnByaXYgPSBob3N0LT5wcml2Owo+
-Pj4+ICsgICAgICAgaW50IHJldDsKPj4+PiArCj4+Pj4gKyAgICAgICByZXQgPSBkd19tY2lfcnVu
-dGltZV9yZXN1bWUoZGV2KTsKPj4+PiArICAgICAgIGlmIChyZXQpCj4+Pj4gKyAgICAgICAgICAg
-ICAgIHJldHVybiByZXQ7Cj4+Pj4gKwo+Pj4+ICsgICAgICAgaWYgKHByaXYtPmludGVybmFsX3Bo
-YXNlKSB7Cj4+Pj4gKyAgICAgICAgICAgICAgIHJvY2tjaGlwX21tY19zZXRfcGhhc2UoaG9zdCwg
-dHJ1ZSwgcHJpdi0+c2FtcGxlX3BoYXNlKTsKPj4+PiArICAgICAgICAgICAgICAgcm9ja2NoaXBf
-bW1jX3NldF9waGFzZShob3N0LCBmYWxzZSwgcHJpdi0+ZHJ2X3BoYXNlKTsKPj4+PiArICAgICAg
-ICAgICAgICAgbWNpX3dyaXRlbChob3N0LCBNSVNDX0NPTiwgTUVNX0NMS19BVVRPR0FURV9FTkFC
-TEUpOwo+Pj4+ICsgICAgICAgfQo+Pj4+ICsKPj4+PiArICAgICAgIHJldHVybiByZXQ7Cj4+Pj4g
-K30KPj4+PiArCj4+Pj4gICAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZGV2X3BtX29wcyBkd19tY2lf
-cm9ja2NoaXBfZGV2X3BtX29wcyA9IHsKPj4+PiAgICAgICAgICAgIFNZU1RFTV9TTEVFUF9QTV9P
-UFMocG1fcnVudGltZV9mb3JjZV9zdXNwZW5kLAo+Pj4+IHBtX3J1bnRpbWVfZm9yY2VfcmVzdW1l
-KQo+Pj4+IC0gICAgICAgUlVOVElNRV9QTV9PUFMoZHdfbWNpX3J1bnRpbWVfc3VzcGVuZCwgZHdf
-bWNpX3J1bnRpbWVfcmVzdW1lLCBOVUxMKQo+Pj4+ICsgICAgICAgUlVOVElNRV9QTV9PUFMoZHdf
-bWNpX3JvY2tjaGlwX3J1bnRpbWVfc3VzcGVuZCwKPj4+PiBkd19tY2lfcm9ja2NoaXBfcnVudGlt
-ZV9yZXN1bWUsIE5VTEwpCj4+Pj4gICAgIH07Cj4+Pj4KPj4+PiAgICAgc3RhdGljIHN0cnVjdCBw
-bGF0Zm9ybV9kcml2ZXIgZHdfbWNpX3JvY2tjaGlwX3BsdGZtX2RyaXZlciA9IHsKPj4+Cj4+Cj4g
-CgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+RK3576 is the first platform to introduce internal phase support, and
+subsequent platforms are expected to adopt a similar design. In this
+architecture, runtime suspend powers off the attached power domain, which
+resets registers, including vendor-specific ones such as SDMMC_TIMING_CON0,
+SDMMC_TIMING_CON1, and SDMMC_MISC_CON. These registers must be saved and
+restored, a requirement that falls outside the scope of the dw_mmc core.
+
+Fixes: 59903441f5e4 ("mmc: dw_mmc-rockchip: Add internal phase support")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Tested-by: Marco Schirrmeister <mschirrmeister@gmail.com>
+---
+
+Changes in v3: None
+Changes in v2: None
+
+ drivers/mmc/host/dw_mmc-rockchip.c | 38 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 37 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 879188f..2fe0896 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -36,6 +36,8 @@ struct dw_mci_rockchip_priv_data {
+ 	int			default_sample_phase;
+ 	int			num_phases;
+ 	bool			internal_phase;
++	int                     sample_phase;
++	int                     drv_phase;
+ };
+ 
+ /*
+@@ -573,9 +575,43 @@ static void dw_mci_rockchip_remove(struct platform_device *pdev)
+ 	dw_mci_pltfm_remove(pdev);
+ }
+ 
++static int dw_mci_rockchip_runtime_suspend(struct device *dev)
++{
++	struct platform_device *pdev = to_platform_device(dev);
++	struct dw_mci *host = platform_get_drvdata(pdev);
++	struct dw_mci_rockchip_priv_data *priv = host->priv;
++
++	if (priv->internal_phase) {
++		priv->sample_phase = rockchip_mmc_get_phase(host, true);
++		priv->drv_phase = rockchip_mmc_get_phase(host, false);
++	}
++
++	return dw_mci_runtime_suspend(dev);
++}
++
++static int dw_mci_rockchip_runtime_resume(struct device *dev)
++{
++	struct platform_device *pdev = to_platform_device(dev);
++	struct dw_mci *host = platform_get_drvdata(pdev);
++	struct dw_mci_rockchip_priv_data *priv = host->priv;
++	int ret;
++
++	ret = dw_mci_runtime_resume(dev);
++	if (ret)
++		return ret;
++
++	if (priv->internal_phase) {
++		rockchip_mmc_set_phase(host, true, priv->sample_phase);
++		rockchip_mmc_set_phase(host, false, priv->drv_phase);
++		mci_writel(host, MISC_CON, MEM_CLK_AUTOGATE_ENABLE);
++	}
++
++	return ret;
++}
++
+ static const struct dev_pm_ops dw_mci_rockchip_dev_pm_ops = {
+ 	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
+-	RUNTIME_PM_OPS(dw_mci_runtime_suspend, dw_mci_runtime_resume, NULL)
++	RUNTIME_PM_OPS(dw_mci_rockchip_runtime_suspend, dw_mci_rockchip_runtime_resume, NULL)
+ };
+ 
+ static struct platform_driver dw_mci_rockchip_pltfm_driver = {
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
