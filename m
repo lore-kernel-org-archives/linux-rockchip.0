@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF83CC98315
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 22:10:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B6ECC9830C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 22:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vZQPbywwKJVM2MBgE6PPh8/qxhKbdEF1MGdS7Y7aqqo=; b=qzu4nnSPSeJ9m2nDKtkAtyRuK+
-	PK+Gj+piYdq9umIH7k0pkiNM7Uo9W5KSZr2yEua0LA9Uzn9CJVioVCfUPuNPsPc+bYS7daOolIOto
-	QL7vEnWLUbdDQf0iMTvBdFczhIicxHQs7ivQGKwCBSJrfQlZIHY/uN7IlFZw+XbkcPEa97b1P5m6r
-	NcbSL777kziWTXhRRUSl2OLFwbiuXeyhnQUkLZE1/FSfs6CUTFRNwwTIK439m5YnVdCzAJJSu8NBH
-	5VwhGwIudS24gxsWXKYo065kKNc3GTmNN/um+G/yPlfXLAAa2JNxu/EGJgOzmnIWoavZXEqoC2b9q
-	NpVmOBFQ==;
+	bh=NnzUVd7amPLtR8YWe0Unkw3XYoRssdIPtDnvTyK8T0U=; b=hAVZPTe81DGLMTKFgmt4VjI2Ud
+	a8Z4vBrw7rey/OEaHiN9RsXBsOfSlx2866zDxfjrgA20S6rLCM0Vl7Aeu4KPKv7/awB37mfaYBfiS
+	LsgmyRAbTHHD7A37tlBB+UpGXTiXDeeejyCtLn9sjgy8lm1BCn8tu5QTFBgbmq5cMh7otaV6N3Ass
+	GNN4DUNXy/us88IvYGpyCg4Mf8iw2uyyGTve7TIrJP2Vi5ucIHRbNZ4xCT7h2zplGixXOxY56DwHV
+	1pY/xzjmrUC6773PjKKLvaOGp/fOagzP5YTkMx/lQeWsJcksDPSW2FJ8K7vYr0WQ2WdGRcpxUUK+2
+	tDE721Ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhayO-000000014eh-0FaJ;
-	Sun, 18 Jan 2026 22:10:16 +0000
+	id 1vhb0p-000000014r1-3jiO;
+	Sun, 18 Jan 2026 22:12:47 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhayK-000000014di-23gY;
-	Sun, 18 Jan 2026 22:10:14 +0000
+	id 1vhb0n-000000014qA-1M3y;
+	Sun, 18 Jan 2026 22:12:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768774208;
-	bh=aNTnALIqn9gylktszv6Nhaa3ozx4VeFWCAfnVBwwD7w=;
+	s=mail; t=1768774362;
+	bh=yiv/l79VtpVG1KuLhly6us+bTKcuRvQGzcXTOVwGiYs=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ggzl6WAMLCoE7jp9/FcpGdGp9grrDkPtUgrk00OcuH+2Wnif0wbeyssjfVLio+ZNy
-	 4RLDbyz918ustQJu3C6AaSdk9Tmd4Ep0ovUbJXXkSBWQ+gcXRnBHuoeuwLO4XcPQtq
-	 lbaWsFAeHvB79ik8gy3YeqY6HouwbQRoxvM+8a7K0yFl7hPBU5fgDmhW259NBEHpuV
-	 HFEL45+XVnHwwav7C/KL1Gp6l6UPUX+mFhGjBP0LlnE9c0zcXP/FlY+5H8emZ9VtQ/
-	 r9z1ZZqFCHNSKE04fIZxW0VixkQY5K3ehNJEFszLyuG3M8pLD8uZx8DqssrQ2JcmBd
-	 HeEzy3RtFy04w==
+	b=at35WDEGRf57JCsN6kjQsOTWP1a7GCRPbt3ACQ/qAgF5HzeC2CNDB0uZU7fIukXSm
+	 ictqXPJuhP8oBsRO+EtrvugEZ1tWlyP1g06j53aNzmIEZ+xrJWTmpT8GKLzGf9RJsf
+	 R84zDjjbNBXUpu3JE1yX4hRrRKZV6i4zRxJY/R34WRatRUspFcs+0ftbgfm7wExWW6
+	 km6mg8RkiSxRnX7lMqsP92TRXa8jiMRN3TQFzaHm+LpkeEhcHAd+zTBlsjyY45RTlX
+	 zdWHy7KhJxrCzS4R9rfxVLDCDLzZD1Q/YpQxvEo7fVcO/JJMajxVEzciCqS3I+y44H
+	 ZsuU0DQXywIqQ==
 Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4D12B17E10E0;
-	Sun, 18 Jan 2026 23:10:06 +0100 (CET)
-Message-ID: <a6b50b9799bcb63a692e1ac6f3f1df3611e50f11.camel@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6004017E0222;
+	Sun, 18 Jan 2026 23:12:40 +0100 (CET)
+Message-ID: <abb909f0c3e435f2c97748c7edd8d555d61a8240.camel@collabora.com>
 Subject: Re: [PATCH v8 11/17] media: rkvdec: Support per-variant interrupt
  handler
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
@@ -59,7 +59,7 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, Ezequiel Garcia
  linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
  kernel@collabora.com, Jonas Karlman	 <jonas@kwiboo.se>, Diederik de Haas
  <didi.debian@cknow.org>
-Date: Sun, 18 Jan 2026 17:10:05 -0500
+Date: Sun, 18 Jan 2026 17:12:38 -0500
 In-Reply-To: <20260109161538.1294449-12-detlev.casanova@collabora.com>
 References: <20260109161538.1294449-1-detlev.casanova@collabora.com>
 	 <20260109161538.1294449-12-detlev.casanova@collabora.com>
@@ -80,8 +80,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_141012_706510_5B4DFACF 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20260118_141245_510178_84E775D7 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,17 +93,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1641951157759512642=="
+Content-Type: multipart/mixed; boundary="===============0537453155799500252=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1641951157759512642==
+--===============0537453155799500252==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-D6Niumx4QoSluEWIbZt1"
+	protocol="application/pgp-signature"; boundary="=-3F7AL5T1m7dsOWBeuMMz"
 
 
---=-D6Niumx4QoSluEWIbZt1
+--=-3F7AL5T1m7dsOWBeuMMz
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -127,13 +127,13 @@ Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ++++
 > =C2=A02 files changed, 23 insertions(+), 3 deletions(-)
 >=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
 > index ff6a09e45462..174536ebdcc7 100644
 > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
 > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
-> @@ -1222,10 +1222,9 @@ static void rkvdec_iommu_restore(struct rkvdec_dev
-> *rkvdec)
+> @@ -1222,10 +1222,9 @@ static void rkvdec_iommu_restore(struct rkvdec_dev=
+ *rkvdec)
 > =C2=A0	}
 > =C2=A0}
 > =C2=A0
@@ -147,8 +147,7 @@ Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 > =C2=A0	u32 status;
 > =C2=A0
 > @@ -1246,6 +1245,15 @@ static irqreturn_t rkvdec_irq_handler(int irq, voi=
-d
-> *priv)
+d *priv)
 > =C2=A0	return IRQ_HANDLED;
 > =C2=A0}
 > =C2=A0
@@ -165,8 +164,7 @@ d
 > =C2=A0{
 > =C2=A0	struct rkvdec_dev *rkvdec;
 > @@ -1261,16 +1269,22 @@ static void rkvdec_watchdog_func(struct work_stru=
-ct
-> *work)
+ct *work)
 > =C2=A0	}
 > =C2=A0}
 > =C2=A0
@@ -190,8 +188,7 @@ ct
 > =C2=A0};
 > =C2=A0
 > @@ -1278,6 +1292,7 @@ static const struct rkvdec_variant rk3399_rkvdec_va=
-riant
-> =3D {
+riant =3D {
 > =C2=A0	.num_regs =3D 78,
 > =C2=A0	.coded_fmts =3D rkvdec_coded_fmts,
 > =C2=A0	.num_coded_fmts =3D ARRAY_SIZE(rkvdec_coded_fmts),
@@ -199,8 +196,8 @@ riant
 > =C2=A0};
 > =C2=A0
 > =C2=A0static const struct of_device_id of_rkvdec_match[] =3D {
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.h
 > index 751f39afe7e2..faabedd2b9d8 100644
 > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
 > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
@@ -223,23 +220,23 @@ riant
 > =C2=A0};
 > =C2=A0
 
---=-D6Niumx4QoSluEWIbZt1
+--=-3F7AL5T1m7dsOWBeuMMz
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaW1aPQAKCRDZQZRRKWBy
-9D0GAPkBVhTizNxdmAGR1kM/MYiJ1yQBZh2PYoA/zlR6Nu2JywEA9QX8UD8rv0eT
-zt1tQouvBaO0eWjcn2CBMIU2MOavegk=
-=Cic7
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaW1a1wAKCRDZQZRRKWBy
+9OsBAP96ASIfjY1JZu/MyVbRKn9Xo1lCrjCpE1aBQc0ully+qAEApr36RA7o31Kp
+yQPN1Gsx+hY+nRFLDxc8URd6vUjtzQc=
+=Nehe
 -----END PGP SIGNATURE-----
 
---=-D6Niumx4QoSluEWIbZt1--
+--=-3F7AL5T1m7dsOWBeuMMz--
 
 
---===============1641951157759512642==
+--===============0537453155799500252==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -250,5 +247,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1641951157759512642==--
+--===============0537453155799500252==--
 
