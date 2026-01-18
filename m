@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCAC2C9830C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 21:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7719AC98315
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 21:47:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PbAD+b9Y4WDsI/onFn3wuBsiumGZuklUhyIkpYc3RPs=; b=KNeR3I2iy9qUZX
-	ot1T6avgqCmVTLhDuE93GcUYShQRa/4oniI1OyLsuN9U5A9VZyZ/8xx9gShSRnxBdp/6bT2zuSRP9
-	WI/jDJypS56Xj6+KrwbOYzI+UXmSsWjrtf+fFxpfQG7TJxbA2kZWRO/9msyWieeeiaXBoWxOZ8Tgn
-	52o+F3Kez5XZShPSNJuTVvenGupql2SSVHmu1i0/ajZHqND58Y8ja74vEs4zLu+tGWRsgiro6vqkm
-	vVj6VCYfjJvExSfHyHSaX/CKN+az2nRhB148mM413/i5w4RRVs5r+hzyuRdtCE8OTEQOgwwUoMTug
-	ZVeCAb9/ZPVSjwhT9o0g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wg7+RqGZ+ohYdxpt3MFgezkSHuqi4TkPJvBA62S5vhI=; b=QCAekNdHtzKehO
+	+3rbMagSk+7yNtcfJXzKxw5TruyrqOA4NrD2IE1kx9d9K9VR9WINwAoBSsqzq3oG8vNJkTc3pwirv
+	oMoJIsOOVrZV59jw3x6uQ14xtMYJiXWLUY2VgdOEW8EgYMjYo3vU8rQTw0Zj8PwUGyud99a3sg6MA
+	Tdhp8uTAxYs4GzGrHd7vzSIxBkledzoswuC+TK4U210Pt2i7WbKZ8oSWdUx6E0Ih2XnkgGNm7U5BX
+	lz30Zblwk7V/vFKj3vll1qDpShHuzTeS7n3lpjtAC8fELOkMbgSCpDXeEritxOCEZ0oPkg209Ojc8
+	C80uPEOFcQy5otKfV+kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhabt-000000012hW-1mR7;
+	id 1vhabt-000000012hf-2rFu;
 	Sun, 18 Jan 2026 21:47:01 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhabs-000000012hJ-0bMj
+	id 1vhabs-000000012hK-1J13
 	for linux-rockchip@bombadil.infradead.org;
 	Sun, 18 Jan 2026 21:47:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=qH+U+xKJhw7xryI6veBTOa8U279TGynYsRUuACCMLPY=; b=Xo9k2Z+Ju79JF/6eyln/xuyAKa
-	65uSw0NEM6VrarR1w9rcS2SVXVd423kd8e0bm37e5YEmjj+BB3OL1cuQIsGlzArS0tWT3BlV6RjyT
-	kKNK0kOavQSLtGm+o4q8Sjh7/8JNTBsCVPRfn+k9qLTWkD0gxRBKxgCEpwqXTpWxAc3fgp533duB4
-	5TkgOrJ1f3GOwFSyBv6n7sNIP8wvcoYA3GQOogSIx3+m6DpOycJqirTO//c24GPaZRBDRe9nf2R4l
-	k9mKj+36aqeBT9sOcnSSqpELUYVkaV4PzwAccSzBik+x64KEqkFCnuZWHr2sy842/DgCJe5GlWnKf
-	td9fTMZQ==;
-Received: from mail-108-mta245.mxroute.com ([136.175.108.245])
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=gZU1jtVtFJTK/4HZ7m9UqvrG5eW6sMN+A91lkyu629Y=; b=pK6N5Xp2SVJqVW/pLqNfDGHOwk
+	YI3McuGUkT7XAuMlV0MPGGYxxI0m9pD+Gz53gvhl0xAO3vg9oD8BKJazaphHDmcTEwXZbrS3BsOfL
+	0gPTgkCFbSV7XRTW/0j8et3oVNHFFJAytHQJzhEeLhM+BicRJ46E9yD3nFcGbjNrVAK+CNssqxRTx
+	qHWqkiB4Amp53fwTrn65nqK3MO1wVdytH/hS3EQ7A/Cb4xOWfB2VZFhhIozzDSJelTJgUe1mUa2HH
+	1RTYVGJ4cZgDIca7UST0zoxf9DBUTIvwyOtlQzjskizbY0LsVinRfysuQsm8vymaqoPPA1jy+4dQf
+	8U22ovww==;
+Received: from mail-108-mta41.mxroute.com ([136.175.108.41])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhabl-0000000B6tb-2prf
+	id 1vhabl-0000000B6tc-2DyX
 	for linux-rockchip@lists.infradead.org;
 	Sun, 18 Jan 2026 21:46:58 +0000
 Received: from filter006.mxroute.com ([136.175.111.3] filter006.mxroute.com)
  (Authenticated sender: mN4UYu2MZsgR)
- by mail-108-mta245.mxroute.com (ZoneMTA) with ESMTPSA id 19bd31322a30009140.003
+ by mail-108-mta41.mxroute.com (ZoneMTA) with ESMTPSA id 19bd31326640009140.003
  for <linux-rockchip@lists.infradead.org>
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
- Sun, 18 Jan 2026 21:46:45 +0000
-X-Zone-Loop: 2ca6b3f74efda158b85ef67c2937c83b3b19dfa8936d
+ Sun, 18 Jan 2026 21:46:46 +0000
+X-Zone-Loop: 8deea38c388eedab517b1670e699a48d2a582efeb8ec
 X-Originating-IP: [136.175.111.3]
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=luigi311.com; s=x; h=Content-Transfer-Encoding:MIME-Version:Date:Subject:Cc
-	:To:From:Sender:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	In-Reply-To:References; bh=qH+U+xKJhw7xryI6veBTOa8U279TGynYsRUuACCMLPY=; b=m0
-	m5r80W9xJ2C75mW3h+wGqSTKCFwvg+dgNDar7fFzmVT99XhxCqOcLRLjn5UJDn47ktqEgCg35E2VY
-	zl8SCg3r2PUMEhLbIHbX2ojpnAw1bnHbh6lLhzSSibE/nFUYIRYJ/yFynJYnKRDzKgL7CeKUN9o37
-	VIaFSn/b5hj96T5RsPzech5KZA/m9TIXwAs7CcDrJkwQrzV6zlDPDwsNpqe+TgHvbkEPifPw3P3fX
-	VSPqau0sRP4jSwXQziIBWPK9AkLNxvx2K9Xw1yB2omcp0jLazYSOQNkJNatGQbKUh9wvAFACCKZe4
-	bowdRNmK+6SFITNnUvatERy5v3Cne//A==;
+	d=luigi311.com; s=x; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID; bh=gZU1jtVtFJTK/4HZ7m9UqvrG5eW6sMN+A91lkyu629Y=; b=uhfsA9
+	1TzkNBb42KDAcZbV2+wbMPfLojTi6Xuyyr+3Nz6Sm891RP9bz9Q1dXSmMbGkb39IA+LxtT8//6uaj
+	EfvHubv9eGhlK29ooa7dUtnmtBU6+VNjLQMZpjrJh1/A/f9igwIy11IW5GcpLUhMcF30JaLZ4h1VK
+	mAbA2mEbNyjsQlidPkncxsI5JfG+FWPu8nylraVIETsrh3/DS5TwA9rOU7Fj59zTrN1++RcbGEjSk
+	5x20UY4Uj4/fSDbD4LepeiO7o8pNQIOycBJfTUC+esXNko0wQXjv9N3fkfDRLAmm7AJLyDM480SaE
+	L4+Y0rbWVcfXuM+SFZqKWIAbRE3w==;
 From: Luis Garcia <git@luigi311.com>
 To: Heiko Stuebner <heiko@sntech.de>
 Cc: devicetree@vger.kernel.org,
@@ -68,14 +68,16 @@ Cc: devicetree@vger.kernel.org,
 	Olivier Benjamin <olivier.benjamin@bootlin.com>,
 	megi@xff.cz,
 	Luis Garcia <git@luigi311.com>
-Subject: [PATCH 0/1] Fix imx258 variant on pinephone pro
-Date: Sun, 18 Jan 2026 14:46:19 -0700
-Message-ID: <20260118214620.3319040-1-git@luigi311.com>
+Subject: [PATCH 1/1] arm64: dts: rockchip: Fix imx258 variant on pinephone pro
+Date: Sun, 18 Jan 2026 14:46:20 -0700
+Message-ID: <20260118214620.3319040-2-git@luigi311.com>
+In-Reply-To: <20260118214620.3319040-1-git@luigi311.com>
+References: <20260118214620.3319040-1-git@luigi311.com>
 MIME-Version: 1.0
 X-Authenticated-Id: git@luigi311.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_214655_789158_5BCF643F 
-X-CRM114-Status: UNSURE (   6.81  )
+X-CRM114-CacheID: sfid-20260118_214656_983055_2F7B6C06 
+X-CRM114-Status: UNSURE (   9.70  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,18 +95,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-imx258 had the driver updated a while back and it introduced
-two variants, the imx258 and imx258-pdaf. The pinephone pro
-is using the pdaf variant so this switches it to the correct
-variant and eliminates the pdaf pixels from the sensor output
-resulting in a much cleaner image.
+Fix the variant of the imx258 camera sensor on the pinephone pro
 
-Luis Garcia (1):
-  arm64: dts: rockchip: Fix imx258 variant on pinephone pro
-
+Signed-off-by: Luis Garcia <git@luigi311.com>
+---
  arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+index 2dca1dca20b8..fd6facf1da2b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinephone-pro.dts
+@@ -451,7 +451,7 @@ &i2c1 {
+ 	status = "okay";
+ 
+ 	wcam: camera@1a {
+-		compatible = "sony,imx258";
++		compatible = "sony,imx258-pdaf";
+ 		reg = <0x1a>;
+ 		clocks = <&cru SCLK_CIF_OUT>; /* MIPI_MCLK0, derived from CIF_CLKO */
+ 		lens-focus = <&wcam_lens>;
 -- 
 2.50.1
 
