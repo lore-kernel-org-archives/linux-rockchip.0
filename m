@@ -4,76 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 617F0C98315
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 22:34:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B402C98315
+	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 23:44:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qaBG+b5xr1uGt2CtNYPRxtHu7bW6obVwpsOCS4WuvYI=; b=Tn5dzd9OcOC2eIzX6jvDBdzNrn
-	QqDssS6VR4l5Tbls6FTjoNPdv8InzFzHcp0O1UwX81ZIpLMRg8Z50ejghX3BOUCqVOnPBnOuXJjpT
-	3E8pIK7Vgsz3sL5fZZj2BDT1ruL8ZE/9G5iaTVkneCRAAOADHEGkyjTGL7qaLVZjFv6i5/1Bf97ud
-	AMhxGEl7SIcC0WTY8QZq6NpOG0QSpAhnvL/+SEaZGxgrlGQp23KyqfH1n4WpHl4bB/gNsJm4T2dp3
-	BLoeEIjJ09aSkkqjeG4Fp0TYyadwDdIwH+ovYcZHHzp9PKJAupfkAlTwV3QgXP6wqPDjpqMipZ5fS
-	chmY8a5Q==;
+	bh=lrAoUxaegLYht3mA1gq9jvNpLyXr7z45umOVkNXWo6o=; b=Z7VwZJJmLixSb51earLeYx0K+J
+	4qhIZzTY9oYHGNxjjunyBli45G4R55WR/iP22WkAPLL/juZTBpT20C2prQGODMusKSgbT15wHhCuK
+	ty0JtXZOrVlT0PKm6uIMHRq/+fw5t1O2ZN89gKwmyl1JX46RPMXdZF2V+XwBCterDy0krMUm28vku
+	o3dYU2rR8/hlTiZKd4qz6tCtCwx2kH5ESE8gvHqp+pt8YxZ0uDa2IVfaCXHMP+YaPu7ceEFNVwp8x
+	PDMW+pZ2wEekjEtcDzsVD5u9khuxRMp1nFMguVbzAsZRStkTvSrHLOp7uFZHUUh8b0uf06KaJqqsl
+	3DvGRDOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhbLs-000000016sY-3LyE;
-	Sun, 18 Jan 2026 22:34:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vhcR4-00000001AFW-28yU;
+	Sun, 18 Jan 2026 23:43:58 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhbLp-000000016rp-3nE0;
-	Sun, 18 Jan 2026 22:34:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768775667;
-	bh=+fpZRcVkISnDsiOYZILcnwYIBQK89nnMOZCHLherCTU=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ov3T7bN5higH0YOJ80PhZDF7mKZQH6dYsmkUv1GseIpzIF/PfldTg6wfTainrTEv4
-	 IruEyHZD1doDp68UGhBefy6HtORDyCyUzsmmTl55yXM5HRAu2KjtL+9ZPql47JoJ59
-	 RfXr5rPdRah7xbfDKWZr8BysO6k87NLnOPnNeVfhmqj3uFXth4xUlNCfH05oje/QXK
-	 qjoKBEpqLhqAdLVlYGysLh8qogH9+HeA7hDt9+6nsyLeI0Ncem/7u0I5PqSVHNzmhR
-	 rrR1XU8HQ07HuMaJr7lbCzct02Kih8fGry98TUkOdrygkWi44FAZFWXmi5GOk8omID
-	 3sGHnseSuuqdw==
-Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1662917E1274;
-	Sun, 18 Jan 2026 23:34:25 +0100 (CET)
-Message-ID: <e63bea4f457dad4e4661185188f2b030d82b7879.camel@collabora.com>
-Subject: Re: [PATCH] media: verisilicon: AV1: Fix tile info buffer size
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de,
- hverkuil@kernel.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	kernel@collabora.com
-Date: Sun, 18 Jan 2026 17:34:24 -0500
-In-Reply-To: <20260114090710.71473-1-benjamin.gaignard@collabora.com>
-References: <20260114090710.71473-1-benjamin.gaignard@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+	id 1vhcR1-00000001AEx-1cj8;
+	Sun, 18 Jan 2026 23:43:56 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1768779821; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=O3Qce/pmA9Qu3z3GWWTmXfTfAcYOIAeX36hXYZ+AiPsXHAqWW7uA9ssXjYOIIycKi7sU0w+Lo7zmlmsXyvUQydE9gxh32ILsdkNBJ1/Q9FN7UGJP5xTWWhPafIBKMFbO3I/7Ih/9Zlv/oNztdoDQvgo/P1IlOZKUzkG1onc84Js=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1768779821; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=9hgay9miSAD3buJLi8be3me5hA30C56BsMqqu95AEtU=; 
+	b=D+5ZTtKXUN7bzEeOjtr3zd/iUSSGWqAQ+NNYkmN/v2Ddu700/ZDNKvvrwQmx4PBjwNTiS5PXWcraClWwUpwGzOG2nq/sx7OssS+Iz5plIM+Lw1YF5fY77z+IZphu49PNzRfuHO633jqE756IKwYSkMt9E/DGMqySHVqPjpZF//Y=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1768779821;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=9hgay9miSAD3buJLi8be3me5hA30C56BsMqqu95AEtU=;
+	b=UI/+htiy/+v1rB1d/kDxDgitBxGJ5Nd4xTugSrhuzLz1x+3OfT1cZ7FLvhtAXC9T
+	KZXI/w2AlzUzaFljj2MXMQ4qeTqAcKpTg0V7ppaJM8Z/F7ET0IXcOWhmDHXXBm6jrD0
+	WxEZANakgSNKls+AEi5wTqP61q9YPdXOw7CDZ4IE=
+Received: by mx.zohomail.com with SMTPS id 1768779819376685.1898936418468;
+	Sun, 18 Jan 2026 15:43:39 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 89EF9180B3F; Mon, 19 Jan 2026 00:43:35 +0100 (CET)
+Date: Mon, 19 Jan 2026 00:43:35 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, mripard@kernel.org, 
+	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
+	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
+Subject: Re: [PATCH v2] drm/rockchip: vop2: Add mode valid callback for crtc
+Message-ID: <aW1uWZD6u4e2o6jF@venus>
+References: <20260117020738.294825-1-andyshrk@163.com>
 MIME-Version: 1.0
+In-Reply-To: <20260117020738.294825-1-andyshrk@163.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.5.1/268.777.50
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_143430_144431_47F4B485 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20260118_154355_508486_894106D3 
+X-CRM114-Status: GOOD (  22.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,83 +78,133 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5667807193745992778=="
+Content-Type: multipart/mixed; boundary="===============1586465035126301814=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============5667807193745992778==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-jI/5S99Z0pZFxvjm1Yct"
+--===============1586465035126301814==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gqujfsgpqcw3t2hl"
+Content-Disposition: inline
 
 
---=-jI/5S99Z0pZFxvjm1Yct
-Content-Type: text/plain; charset="UTF-8"
+--gqujfsgpqcw3t2hl
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2] drm/rockchip: vop2: Add mode valid callback for crtc
+MIME-Version: 1.0
 
-Le mercredi 14 janvier 2026 =C3=A0 10:07 +0100, Benjamin Gaignard a =C3=A9c=
-rit=C2=A0:
-> Each tile info is composed of: row_sb, col_sb, start_pos
-> and end_pos (4 bytes each). So the total required memory
-> is AV1_MAX_TILES * 16 bytes.
-> Use the correct #define to allocate the buffer and avoid
-> writing tile info in non-allocated memory.
+Hi,
+
+On Sat, Jan 17, 2026 at 10:07:30AM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
 >=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
+> The different Video Ports support different maximum resolutions.
+> Reject resolutions that are not supported by a specific VP.
+>=20
+> Only the output width is checked because the hardware itself does
+> not have a hard output height limit.
+>=20
+> Filter the mode that can't output by the VP/crtc.
+>=20
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+>=20
 > ---
-> =C2=A0.../media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c=C2=A0=
-=C2=A0 | 4 ++--
-> =C2=A01 file changed, 2 insertions(+), 2 deletions(-)
+
+A common RK3576 setup is VP0 mapped to HDMI and VP1 mapped to USB-C
+DP AltMode. Since RK3576 VP1 only supports 2.5K, this can easily
+become relevant when connecting a 4K screen via USB-C DP AltMode.
+I've tested that this patch properly drops all unsupported modes
+based on the resolution.
+
+Further checks will be needed to ensure the bandwidth requirements
+are also met (e.g. RK3576 VP1 only supports 2.5K@60Hz, so 2.5K@120Hz
+should be marked as BAD). I think the bandwidth check should be a
+separate patch, but thought it might be worth mentioning here in
+case somebody stumbles over it.
+
+Anyways:
+
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com> # Sige5
+
+Greetings,
+
+-- Sebastian
+
 >=20
-> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_de=
-c.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> index e4703bb6be7c..af854b149f35 100644
-> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-> @@ -373,12 +373,12 @@ int rockchip_vpu981_av1_dec_init(struct hantro_ctx =
-*ctx)
-> =C2=A0		return -ENOMEM;
-> =C2=A0	av1_dec->global_model.size =3D GLOBAL_MODEL_SIZE;
-> =C2=A0
-> -	av1_dec->tile_info.cpu =3D dma_alloc_coherent(vpu->dev, AV1_MAX_TILES,
-> +	av1_dec->tile_info.cpu =3D dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_S=
-IZE,
-> =C2=A0						=C2=A0=C2=A0=C2=A0 &av1_dec->tile_info.dma,
-> =C2=A0						=C2=A0=C2=A0=C2=A0 GFP_KERNEL);
-> =C2=A0	if (!av1_dec->tile_info.cpu)
-> =C2=A0		return -ENOMEM;
-> -	av1_dec->tile_info.size =3D AV1_MAX_TILES;
-> +	av1_dec->tile_info.size =3D AV1_TILE_INFO_SIZE;
+> Changes in v2:
+> - Add more detailed commit message
+>=20
+>  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>=20
+> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/d=
+rm/rockchip/rockchip_drm_vop2.c
+> index 498df0ce4680..74fba29bfff3 100644
+> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+> @@ -1439,6 +1439,17 @@ static void vop2_crtc_disable_vblank(struct drm_cr=
+tc *crtc)
+>  	vop2_crtc_disable_irq(vp, VP_INT_FS_FIELD);
+>  }
+> =20
+> +static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
+> +						 const struct drm_display_mode *mode)
+> +{
+> +	struct vop2_video_port *vp =3D to_vop2_video_port(crtc);
+> +
+> +	if (mode->hdisplay > vp->data->max_output.width)
+> +		return MODE_BAD_HVALUE;
+> +
+> +	return MODE_OK;
+> +}
+> +
+>  static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
+>  				 const struct drm_display_mode *mode,
+>  				 struct drm_display_mode *adj_mode)
+> @@ -1884,6 +1895,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc =
+*crtc,
+> =20
+>  static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs =3D {
+>  	.mode_fixup =3D vop2_crtc_mode_fixup,
+> +	.mode_valid =3D vop2_crtc_mode_valid,
+>  	.atomic_check =3D vop2_crtc_atomic_check,
+>  	.atomic_begin =3D vop2_crtc_atomic_begin,
+>  	.atomic_flush =3D vop2_crtc_atomic_flush,
+> --=20
+> 2.43.0
+>=20
+> base-commit: 1613a67b5360d6ff78f62143a1cf123414a1b4d9
+> branch: rk3576-dp-upstream
+>=20
 
-After checking the sizes, I can only conclude the we rarely have more then =
-8
-tiles in our tests.
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-> =C2=A0
-> =C2=A0	av1_dec->film_grain.cpu =3D dma_alloc_coherent(vpu->dev,
-> =C2=A0						=C2=A0=C2=A0=C2=A0=C2=A0 ALIGN(sizeof(struct rockchip_av1_fil=
-m_grain), 2048),
-
---=-jI/5S99Z0pZFxvjm1Yct
+--gqujfsgpqcw3t2hl
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaW1f8QAKCRDZQZRRKWBy
-9MMVAP9W46+A8zHAErcgPaB+4lWE35ITcz/n6XeOwtZ74V1TdQD/ScSGmvqGGrh0
-gcsWab4t4CLQtCetxyPHwd0GpkD+FQ0=
-=oGdY
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmltcCMACgkQ2O7X88g7
++ppLzg/+Nze7XGwl1X1xPP6i9XlcJI5K/+wDKX9sW548Lb49+6Rn5tzDvwLi1KCm
+mcpuzdyQJRYPUiNLW5RdkeStpP2N0y3zeot0OR6Nl7muZuNVB+m4qt6IsOFXNqt9
+/703p103lEg2EAl8H7C9w+EKCJXLgQpvBAvMhJA5fHLJLCMxFLeBR0iK9bGUJHx3
+uJ4xZrNlcSw0YXKPzUQd9EfmaQP1e3OriEp37tZ3grXRgwqrceO9ukvCy0VOuk8v
+EfpTHi1Umt0+wJH3Fjq9L73g8YbZkBu/siUKhoSJSCNY5FAOUBa+TKXdHmGjYEEi
+evVjntnrCKGZFlJbwqv8sViplGUOBKSUONqBI/gfoAmxQu5paRoY5812qYGnuKB3
+Y26nvcpNO8IjazYCAAum68YA5kzYwrCAl1339Eo79N337ihnas0HPyrl5ppv/8gz
+oMUr3ulgRFvvZI41qcVOOZmXbcoLz5rXPSQWHXp6s2BUcTlIE2DkZYKjIdafJcwz
+oHUJhR26avzPNizuDWM/J2R1E2lcoyuiTT16kmZ+B+YUrPkInEXXCh4JefB/wkEM
+c3WJBe81FtTJBs4Da4JqmQ59OaE+rro3dSOz2sH2WachZKQd4WRTkEMWS/LnXQ8P
+ILDjiNFgSh91z7DpQr5c3o2yPBJ5DM4BMt/peypMlIdwSQH0Efo=
+=kFms
 -----END PGP SIGNATURE-----
 
---=-jI/5S99Z0pZFxvjm1Yct--
+--gqujfsgpqcw3t2hl--
 
 
---===============5667807193745992778==
+--===============1586465035126301814==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -172,5 +215,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============5667807193745992778==--
+--===============1586465035126301814==--
 
