@@ -4,96 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 637B4D29C25
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 13:11:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 044BDD29C2A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 13:26:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FbnXDc9DdOdToGaaYqns9u3mtA9v6SJ+cpDY+ARVHx8=; b=hXNDXK3BC6wzLo
-	tF2YlpDsJpdhJd5oTct9y9kItixCcuuxEt971PZqX/P7TZ1kTMvjoLIaHx7zuSh9QjXZHXLBEbtmd
-	/91AFJVSLdFf0Yq/QUe2wF1oSE/JIdqPtYsztMdzdVpfvUslTFRHJljovc2UCnLTqiro9qYJ+tPbL
-	Hv686ul/ffVPh8LASr7/kI3aJhRhSelkIJuUH1fqqb1QS9BIFeTMOQ/g6RuaIoxUy5swngycRTBvG
-	VlzmA3So8sFtoLK2GIk6QMp+7UXb3mPuDkm9NPzYb5SelDO0kRoqiEXiMI67WlNpi5IaP954mW/Fc
-	XHJV6eZ/YNxfuXx5bqig==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7j7NCibeneL72KYX6dCuIg99kcEgN8I+svGbrt3JgyI=; b=hXxAS398Kn02/l
+	W4GrK8nJloKHES3MARZMdSNNN0CTJYP+qHTgPy15D8nmDo5GmVM7mmTW+OWy2WdP0OeIlp8h2sQFg
+	cePFaxXJxTfsOiAX6SUiKks7cB9lizhWSoeDPEZY0+5p6iCyoWbtD4pNwCqP2A2OcHiJPoIuKYihK
+	sR39ZMQ1tzkZusI3fKDfuXFMwL3sNvh+aHPklbUb0f4uO4YJzl74vXges3KcRmCunFxHGihlK0a11
+	YarAU/ZkzVmoCXmnraQbdfnQcHPA78xu4ke0dsFouwzkGIrVneNGRCjdiF8mIdMkFCWCfoiBQNBqP
+	HXZW1txlN8MPHSru23wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhp2D-000000028bu-0jQT;
-	Mon, 19 Jan 2026 13:11:09 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1vhpGk-000000029yJ-0ldP;
+	Mon, 19 Jan 2026 13:26:10 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhp1i-000000028ZI-0gZi;
-	Mon, 19 Jan 2026 13:11:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768828238; x=1800364238;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=aUXeE8chL4wN6frCncEOZhkvGcfHvgnI/l4mL6mm1mU=;
-  b=Cux/pO+I2BzJfABLuzNaPLdz7WGwMNwXvP2b+4UScGUPnhFp4ZIWv+ag
-   IIbz7jtcIqJ1lOSPhbUve9zHV89ZIQBlM6YJqhNWU8CGHSwPC0qWY9jTd
-   J0aRMd7bc+3btpaOrWpR4hZX1jHcDTX/6uHXyRSeZrwh+YT7XHAqdrLbo
-   kmtAKeOM/J+b8qyMIOQXXgjApNpKw2h/a3hkJ1jHl40sHHin8/y+AXNM3
-   rJLxCzhzXa48TS3hlTnF1AaE+Eu9AzbUrRbryoz7GQqe4rAxb6HAzh8r7
-   +e4oovG08rlBo7vDieKUtuLKrqok7AJygSoMg9SLpAVEo2/BLdv1kuTkK
-   Q==;
-X-CSE-ConnectionGUID: bb4h+/r9QoetODSRGVBQlQ==
-X-CSE-MsgGUID: ZEQp+xjnRg6whVi+yYFJ6Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11675"; a="92707770"
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
-   d="scan'208";a="92707770"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 05:10:36 -0800
-X-CSE-ConnectionGUID: rMJSlhZAQa+O5hVQha3jIw==
-X-CSE-MsgGUID: e/WXSfj9TQWN8Yd2qyFdig==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
-   d="scan'208";a="206123498"
-Received: from aotchere-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.246.12])
-  by fmviesa008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 05:10:24 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Maxime Ripard
- <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, Abhinav
- Kumar <abhinav.kumar@linux.dev>, Andrzej Hajda <andrzej.hajda@intel.com>,
- Andy Yan <andy.yan@rock-chips.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Chen-Yu Tsai <wens@kernel.org>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>, David Airlie <airlied@gmail.com>, Dmitry
- Baryshkov <lumag@kernel.org>, Heiko =?utf-8?Q?St=C3=BCbner?=
- <heiko@sntech.de>, Jernej
- Skrabec <jernej.skrabec@gmail.com>, Jessica Zhang
- <jesszhan0024@gmail.com>, Jonas Karlman <jonas@kwiboo.se>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Liu Ying
- <victor.liu@nxp.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Marijn Suijten
- <marijn.suijten@somainline.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, =?utf-8?Q?Ma=C3=ADra?= Canal <mcanal@igalia.com>,
- Neil Armstrong
- <neil.armstrong@linaro.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, Rob Clark
- <robin.clark@oss.qualcomm.com>, Robert Foss <rfoss@kernel.org>, Samuel
- Holland <samuel@sholland.org>, Sandy Huang <hjc@rock-chips.com>, Sean Paul
- <sean@poorly.run>, Simona Vetter <simona@ffwll.ch>, Thomas Zimmermann
- <tzimmermann@suse.de>
-Subject: Re: [PATCH v4 01/10] drm/tests: hdmi: check the infoframes behaviour
-In-Reply-To: <yj3r6d3azwwfl5g5yo5wj65qy47f5hzrio5tvfmxhgzlc5bezo@ij4dctwhswls>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
- <2fb910198a3be542215592ac3f22d6b2@kernel.org>
- <yj3r6d3azwwfl5g5yo5wj65qy47f5hzrio5tvfmxhgzlc5bezo@ij4dctwhswls>
-Date: Mon, 19 Jan 2026 15:10:21 +0200
-Message-ID: <44a39340ccf7690f6458072eb886e6a658b981d7@intel.com>
+	id 1vhpGe-000000029x2-1AlN;
+	Mon, 19 Jan 2026 13:26:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768829159;
+	bh=sqfQDshehqB1xMQVflYLdFdf0im+HgX16id1D1XuhGA=;
+	h=From:Subject:Date:To:Cc:From;
+	b=jqV9Qe0BxvrMoVgNxRaEVH+SP6bxkzyDX7XEU7WG+LBEtQhMzm17p89B6t0oOvDHv
+	 9HLQMgom53Ao11Uwjn4+TcyEeCJWdjBnmeLTMiR5clxqJsx5PsMDHAbwg6G7JR7FEu
+	 CrupbsODbkc3g4qADK7PII3aNL498ji74SGfFrnKfgVBJMwaCp2Au2ItvizHFQmHMI
+	 QAVGXe2VO7w8m41hqE9yx5RmAepUIkcPf6rcWQbKK5NkCvwGyc4xHmKnqnEIBsMF2P
+	 o81aKui/k+6TcKa5dZnK2XAJAwe0idtIqRXIAlhf5lqigI8VRZx4wHS3orrMvUlEWF
+	 ex+aEnWq3g+eA==
+Received: from localhost (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B9AC117E0117;
+	Mon, 19 Jan 2026 14:25:59 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v3 0/4] Add HDMI 2.0 support to DW HDMI QP TX
+Date: Mon, 19 Jan 2026 15:25:56 +0200
+Message-Id: <20260119-dw-hdmi-qp-scramb-v3-0-bd8611730fc1@collabora.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAOQwbmkC/33NTQrCMBCG4auUrB1Jpr+68h7iIpmkNtA2NZGol
+ N7dtOBGxOX7wTwzs2C8NYEds5l5E22wbkyR7zJGnRyvBqxOzZBjKZDnoB/Q6cHCbYJAXg4KSCv
+ dqLImag8s3U3etPa5medL6s6Gu/Ov7UUU6/pPiwI4NHnVmrrgQlaHE7m+l8p5uSc3sFWM+FEqL
+ sRPBZMiTa2QykZjob+VZVneOnAAbfwAAAA=
+X-Change-ID: 20251203-dw-hdmi-qp-scramb-cdbd8b57ccf9
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Maud Spierings <maud_spierings@hotmail.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_051038_268890_7CCC14A3 
-X-CRM114-Status: GOOD (  13.86  )
+X-CRM114-CacheID: sfid-20260119_052604_487723_5C59CF54 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,36 +88,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 19 Jan 2026, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com> wrote:
-> On Mon, Jan 19, 2026 at 10:13:43AM +0000, Maxime Ripard wrote:
->> On Wed, 7 Jan 2026 20:14:58 +0200, Dmitry Baryshkov wrote:
->> > Verify the InfoFrames behaviour. Check that reporting InfoFrame as
->> > unsupported doesn't result in a commit error. Also check that HDR and
->> > Audio InfoFrames are not triggered if corresponding features are not
->> > enabled.
->> > 
->> > 
->> > [ ... ]
->> 
->> Acked-by: Maxime Ripard <mripard@kernel.org>
->
-> Thanks for all the discussions and the reviews!
+This patch series provides the missing support for high TMDS clock ratio
+and scrambling to DW HDMI QP TX library, required for handling HDMI 2.0
+display modes on RK3576 & RK3588 SoCs.
 
-Your commit ca59e33f5a1f ("drm/atomic: add max_size check to
-drm_property_replace_blob_from_id()") added a new parameter and this
-commit 7436a87db99d ("drm/tests: hdmi: check the infoframes behaviour")
-still uses the old number of parameters, breaking the build.
+In order to allow addressing the SCDC status lost on sink disconnects,
+it adds an atomic variant of the drm_bridge_funcs.detect callback and a
+new drm_bridge_detect_ctx() helper, which is further used in
+drm_bridge_connector to switch to ->detect_ctx hook.
 
-When applying patches, please make sure to build the code before
-pushing.
+Furthermore, it optimizes HPD event handling in dw_hdmi_qp Rockchip
+platform driver to run the detect cycle on the affected connector only.
 
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v3:
+- Used drm_bridge_helper_reset_crtc() helper to reset the display
+  pipeline and got rid of some boilerplate code (Maxime)
+- Rebased onto latest drm-misc-next
+- Link to v2: https://lore.kernel.org/r/20260113-dw-hdmi-qp-scramb-v2-0-ae7b2c58d24d@collabora.com
 
-Thanks,
-Jani.
+Changes in v2:
+- Collected Tested-by tags from Diederik and Maud
+- Rebased onto latest drm-misc-next
+- Ensured the recently introduced 'no-hpd' support for dealing with
+  unconnected/repurposed/broken HPD pin is limited to HDMI 1.4 rates
+- Link to v1: https://lore.kernel.org/r/20251203-dw-hdmi-qp-scramb-v1-0-836fe7401a69@collabora.com
 
+---
+Cristian Ciocaltea (4):
+      drm/bridge: Add ->detect_ctx hook and drm_bridge_detect_ctx()
+      drm/bridge-connector: Switch to using ->detect_ctx hook
+      drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio and scrambling support
+      drm/rockchip: dw_hdmi_qp: Do not send HPD events for all connectors
 
--- 
-Jani Nikula, Intel
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c   | 167 ++++++++++++++++++++++---
+ drivers/gpu/drm/display/drm_bridge_connector.c |  73 +++++------
+ drivers/gpu/drm/drm_bridge.c                   |  58 +++++++++
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c |  44 +++----
+ include/drm/drm_bridge.h                       |  30 +++++
+ 5 files changed, 296 insertions(+), 76 deletions(-)
+---
+base-commit: 1c21f240fbc1e47b94e68abfa2da2c01ed29a74d
+change-id: 20251203-dw-hdmi-qp-scramb-cdbd8b57ccf9
+
 
 _______________________________________________
 Linux-rockchip mailing list
