@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B402C98315
-	for <linux-rockchip@archiver.kernel.org>; Sun, 18 Jan 2026 23:44:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0825DC9830C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 00:12:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lrAoUxaegLYht3mA1gq9jvNpLyXr7z45umOVkNXWo6o=; b=Z7VwZJJmLixSb51earLeYx0K+J
-	4qhIZzTY9oYHGNxjjunyBli45G4R55WR/iP22WkAPLL/juZTBpT20C2prQGODMusKSgbT15wHhCuK
-	ty0JtXZOrVlT0PKm6uIMHRq/+fw5t1O2ZN89gKwmyl1JX46RPMXdZF2V+XwBCterDy0krMUm28vku
-	o3dYU2rR8/hlTiZKd4qz6tCtCwx2kH5ESE8gvHqp+pt8YxZ0uDa2IVfaCXHMP+YaPu7ceEFNVwp8x
-	PDMW+pZ2wEekjEtcDzsVD5u9khuxRMp1nFMguVbzAsZRStkTvSrHLOp7uFZHUUh8b0uf06KaJqqsl
-	3DvGRDOw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=D/Y28hlR6rm+Xi+2b/wC5XXq0S5sfbUms2V5H1vvjTM=; b=AMQyHsizHakSs5
+	Zw6sbPdobedqEtJr1Dg+jB7ihH7E/E/3PpkGTyncsmEIjdxnTnXYzcyLU6o0dW+ga/XlErgYePQ7W
+	iXRssbck8aWy31X6XwLjnrvjPeGrbOXi+eb5EWVFGArXsTTNxAI7o2/EVY7Sdm37F5dkJQ0NVHzvp
+	arQUabDgNLBEr/FMFiSzKhs7YLOt4RI/NnUox5W1y0utbsms9qzM6cLANIEzVMrZXWhLD5c9IkUDe
+	LB7C2d/sB64rWcH94rZ50dFWfZajdOvr7gnBFBOcgrfc/15CYXSYxthXiTWDpJajaNZoPMJn1pMM4
+	B1WAoeYCTLPq5iwOlkUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhcR4-00000001AFW-28yU;
-	Sun, 18 Jan 2026 23:43:58 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vhcsj-00000001Bgy-4AuH;
+	Mon, 19 Jan 2026 00:12:33 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhcR1-00000001AEx-1cj8;
-	Sun, 18 Jan 2026 23:43:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1768779821; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=O3Qce/pmA9Qu3z3GWWTmXfTfAcYOIAeX36hXYZ+AiPsXHAqWW7uA9ssXjYOIIycKi7sU0w+Lo7zmlmsXyvUQydE9gxh32ILsdkNBJ1/Q9FN7UGJP5xTWWhPafIBKMFbO3I/7Ih/9Zlv/oNztdoDQvgo/P1IlOZKUzkG1onc84Js=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1768779821; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=9hgay9miSAD3buJLi8be3me5hA30C56BsMqqu95AEtU=; 
-	b=D+5ZTtKXUN7bzEeOjtr3zd/iUSSGWqAQ+NNYkmN/v2Ddu700/ZDNKvvrwQmx4PBjwNTiS5PXWcraClWwUpwGzOG2nq/sx7OssS+Iz5plIM+Lw1YF5fY77z+IZphu49PNzRfuHO633jqE756IKwYSkMt9E/DGMqySHVqPjpZF//Y=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1768779821;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=9hgay9miSAD3buJLi8be3me5hA30C56BsMqqu95AEtU=;
-	b=UI/+htiy/+v1rB1d/kDxDgitBxGJ5Nd4xTugSrhuzLz1x+3OfT1cZ7FLvhtAXC9T
-	KZXI/w2AlzUzaFljj2MXMQ4qeTqAcKpTg0V7ppaJM8Z/F7ET0IXcOWhmDHXXBm6jrD0
-	WxEZANakgSNKls+AEi5wTqP61q9YPdXOw7CDZ4IE=
-Received: by mx.zohomail.com with SMTPS id 1768779819376685.1898936418468;
-	Sun, 18 Jan 2026 15:43:39 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 89EF9180B3F; Mon, 19 Jan 2026 00:43:35 +0100 (CET)
-Date: Mon, 19 Jan 2026 00:43:35 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Andy Yan <andyshrk@163.com>
-Cc: heiko@sntech.de, hjc@rock-chips.com, mripard@kernel.org, 
-	maarten.lankhorst@linux.intel.com, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Andy Yan <andy.yan@rock-chips.com>
-Subject: Re: [PATCH v2] drm/rockchip: vop2: Add mode valid callback for crtc
-Message-ID: <aW1uWZD6u4e2o6jF@venus>
-References: <20260117020738.294825-1-andyshrk@163.com>
+	id 1vhcsi-00000001BgZ-1JSA
+	for linux-rockchip@lists.infradead.org;
+	Mon, 19 Jan 2026 00:12:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 7668D60127
+	for <linux-rockchip@lists.infradead.org>; Mon, 19 Jan 2026 00:12:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DE0CC2BCB1
+	for <linux-rockchip@lists.infradead.org>; Mon, 19 Jan 2026 00:12:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768781551;
+	bh=GM6hjWxnbx0Rs5/7Y45dHtccDdEstdeBQZhCBY29WCk=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=nW7h+1MyHv+XY/D+QMgQoPSEsvqC4xZS08EgMm5QgWJWAQqCzRkqWlAFfEeFeKwzk
+	 uoviDMATdhhTN9GYHHY9iRFzkaxxUD9pLBAMVOYbGJeVRuCnSJApuxVhY8BCvxlQ5E
+	 dgoArPak6gRs4bBLk5jVHbVkVkg4zsSs+2pVVD3EOiqYMmh34OZJEd/rJul6jkgQJ+
+	 e9oaDFyyAJoQ1Qp1DeErXTf+NherfvJ7rOJgwo457Bfp0Mm6oQ9fii3A6VAYrU5mb5
+	 JbGTWaIr7+xmJpWRxkx0Zf99/arNagUn4ATg1W9VXanBKldhTQJ3Mec8vROa2lsBl2
+	 3o8700Mmbeq+g==
+Received: by mail-yx1-f49.google.com with SMTP id 956f58d0204a3-64471fcdef0so2917142d50.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 18 Jan 2026 16:12:31 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCXYKAOK8QqembWUUKZU/KVzIwzM6wl9nATD/EUu3mpln68pV9v17bUyich4XeZBVy9eDbLyWMpv3etMbIJS0g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz8Xql8MS7yiMK6heGNBZieh6ANjXJF8nGPubJVyEVmOAbCjA2u
+	s0ZKibetzq5dRzFrQ6ChGSfoLid/3kSKf9wmOrvaRQXsAkGbGJkgZl0x5HPVKcdqctqq0MLcBwn
+	BfheMWlgEawzYUvhB8N2wvCqc7+lbn74=
+X-Received: by 2002:a05:690c:f96:b0:788:989:fdae with SMTP id
+ 00721157ae682-793c52a3abdmr187836947b3.28.1768781550470; Sun, 18 Jan 2026
+ 16:12:30 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <20260117020738.294825-1-andyshrk@163.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-1.5.1/268.777.50
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260118_154355_508486_894106D3 
-X-CRM114-Status: GOOD (  22.93  )
+References: <20260118-pinctrl-cleanup-guard-v2-0-bd36f681bdc0@oss.qualcomm.com>
+In-Reply-To: <20260118-pinctrl-cleanup-guard-v2-0-bd36f681bdc0@oss.qualcomm.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Mon, 19 Jan 2026 01:12:19 +0100
+X-Gmail-Original-Message-ID: <CAD++jL=+MP0UZsPRAh=+1TL+7ow+rZ_VqNW=XZN1Ht82Lw88FQ@mail.gmail.com>
+X-Gm-Features: AZwV_QgFwFIzeGhMFaeDXLwmJd24DRy_tYYmpsNkgD6HAMBqdqwm-YSi6s6fPfs
+Message-ID: <CAD++jL=+MP0UZsPRAh=+1TL+7ow+rZ_VqNW=XZN1Ht82Lw88FQ@mail.gmail.com>
+Subject: Re: [PATCH v2 00/11] pinctrl: Some code cleanup including guards
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+	Emil Renner Berthing <kernel@esmil.dk>, Hal Feng <hal.feng@starfivetech.com>, 
+	Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto <inochiama@gmail.com>, 
+	Basavaraj Natikar <Basavaraj.Natikar@amd.com>, Shyam Sundar S K <Shyam-sundar.S-k@amd.com>, 
+	Bartosz Golaszewski <brgl@kernel.org>, Steen Hegelund <Steen.Hegelund@microchip.com>, 
+	Daniel Machon <daniel.machon@microchip.com>, UNGLinuxDriver@microchip.com, 
+	Thierry Reding <thierry.reding@gmail.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Patrice Chotard <patrice.chotard@foss.st.com>, 
+	linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org, 
+	linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, sophgo@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Thierry Reding <treding@nvidia.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,142 +85,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1586465035126301814=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============1586465035126301814==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gqujfsgpqcw3t2hl"
-Content-Disposition: inline
-
-
---gqujfsgpqcw3t2hl
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v2] drm/rockchip: vop2: Add mode valid callback for crtc
-MIME-Version: 1.0
-
-Hi,
-
-On Sat, Jan 17, 2026 at 10:07:30AM +0800, Andy Yan wrote:
-> From: Andy Yan <andy.yan@rock-chips.com>
->=20
-> The different Video Ports support different maximum resolutions.
-> Reject resolutions that are not supported by a specific VP.
->=20
-> Only the output width is checked because the hardware itself does
-> not have a hard output height limit.
->=20
-> Filter the mode that can't output by the VP/crtc.
->=20
-> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
->=20
-> ---
-
-A common RK3576 setup is VP0 mapped to HDMI and VP1 mapped to USB-C
-DP AltMode. Since RK3576 VP1 only supports 2.5K, this can easily
-become relevant when connecting a 4K screen via USB-C DP AltMode.
-I've tested that this patch properly drops all unsupported modes
-based on the resolution.
-
-Further checks will be needed to ensure the bandwidth requirements
-are also met (e.g. RK3576 VP1 only supports 2.5K@60Hz, so 2.5K@120Hz
-should be marked as BAD). I think the bandwidth check should be a
-separate patch, but thought it might be worth mentioning here in
-case somebody stumbles over it.
-
-Anyways:
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com> # Sige5
-
-Greetings,
-
--- Sebastian
-
->=20
-> Changes in v2:
-> - Add more detailed commit message
->=20
->  drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/d=
-rm/rockchip/rockchip_drm_vop2.c
-> index 498df0ce4680..74fba29bfff3 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-> @@ -1439,6 +1439,17 @@ static void vop2_crtc_disable_vblank(struct drm_cr=
-tc *crtc)
->  	vop2_crtc_disable_irq(vp, VP_INT_FS_FIELD);
->  }
-> =20
-> +static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
-> +						 const struct drm_display_mode *mode)
-> +{
-> +	struct vop2_video_port *vp =3D to_vop2_video_port(crtc);
-> +
-> +	if (mode->hdisplay > vp->data->max_output.width)
-> +		return MODE_BAD_HVALUE;
-> +
-> +	return MODE_OK;
-> +}
-> +
->  static bool vop2_crtc_mode_fixup(struct drm_crtc *crtc,
->  				 const struct drm_display_mode *mode,
->  				 struct drm_display_mode *adj_mode)
-> @@ -1884,6 +1895,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc =
-*crtc,
-> =20
->  static const struct drm_crtc_helper_funcs vop2_crtc_helper_funcs =3D {
->  	.mode_fixup =3D vop2_crtc_mode_fixup,
-> +	.mode_valid =3D vop2_crtc_mode_valid,
->  	.atomic_check =3D vop2_crtc_atomic_check,
->  	.atomic_begin =3D vop2_crtc_atomic_begin,
->  	.atomic_flush =3D vop2_crtc_atomic_flush,
-> --=20
-> 2.43.0
->=20
-> base-commit: 1613a67b5360d6ff78f62143a1cf123414a1b4d9
-> branch: rk3576-dp-upstream
->=20
-
---gqujfsgpqcw3t2hl
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmltcCMACgkQ2O7X88g7
-+ppLzg/+Nze7XGwl1X1xPP6i9XlcJI5K/+wDKX9sW548Lb49+6Rn5tzDvwLi1KCm
-mcpuzdyQJRYPUiNLW5RdkeStpP2N0y3zeot0OR6Nl7muZuNVB+m4qt6IsOFXNqt9
-/703p103lEg2EAl8H7C9w+EKCJXLgQpvBAvMhJA5fHLJLCMxFLeBR0iK9bGUJHx3
-uJ4xZrNlcSw0YXKPzUQd9EfmaQP1e3OriEp37tZ3grXRgwqrceO9ukvCy0VOuk8v
-EfpTHi1Umt0+wJH3Fjq9L73g8YbZkBu/siUKhoSJSCNY5FAOUBa+TKXdHmGjYEEi
-evVjntnrCKGZFlJbwqv8sViplGUOBKSUONqBI/gfoAmxQu5paRoY5812qYGnuKB3
-Y26nvcpNO8IjazYCAAum68YA5kzYwrCAl1339Eo79N337ihnas0HPyrl5ppv/8gz
-oMUr3ulgRFvvZI41qcVOOZmXbcoLz5rXPSQWHXp6s2BUcTlIE2DkZYKjIdafJcwz
-oHUJhR26avzPNizuDWM/J2R1E2lcoyuiTT16kmZ+B+YUrPkInEXXCh4JefB/wkEM
-c3WJBe81FtTJBs4Da4JqmQ59OaE+rro3dSOz2sH2WachZKQd4WRTkEMWS/LnXQ8P
-ILDjiNFgSh91z7DpQr5c3o2yPBJ5DM4BMt/peypMlIdwSQH0Efo=
-=kFms
------END PGP SIGNATURE-----
-
---gqujfsgpqcw3t2hl--
-
-
---===============1586465035126301814==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1586465035126301814==--
-
+T24gU3VuLCBKYW4gMTgsIDIwMjYgYXQgNzoxMOKAr1BNIEtyenlzenRvZiBLb3psb3dza2kKPGty
+enlzenRvZi5rb3psb3dza2lAb3NzLnF1YWxjb21tLmNvbT4gd3JvdGU6Cgo+IENoYW5nZXMgaW4g
+djI6Cj4gLSBQYXRjaCAjOSAocGluY3RybDogdGVncmEteHVzYikgLSBEcm9wIHN0YWxlIG11dGV4
+X3VubG9jayAoSm9uKQo+IC0gQWRkIHRhZ3MKPiAtIExpbmsgdG8gdjE6IGh0dHBzOi8vcGF0Y2gu
+bXNnaWQubGluay8yMDI2MDExNC1waW5jdHJsLWNsZWFudXAtZ3VhcmQtdjEtMC1hMTQ1NzI2ODVj
+ZDNAb3NzLnF1YWxjb21tLmNvbQo+Cj4gRmV3IGNsZWFudXBzIC0gZnJvbSB1bnVzZWQgaGVhZGVy
+cyAtIG9yIGNvZGUgc2ltcGxpZnlpbmdzLCBpbmNsdWRpbmcKPiB1c2FnZSBvZiBndWFyZHMgd2hl
+biBiZW5lZmljaWFsLiAgSSBkaWQgbm90IGNvbnZlciBjYXNlcyB3aGVyZSBndWFyZHMKPiB3b3Vs
+ZCBiZSBtaXhlZCB3aXRoIGdvdG9zLCBiZWNhdXNlIHRoaXMgaXMgZGlzY291cmFnZWQgcHJhY3Rp
+Y2UuCgp2MiBsb29rcyBnb29kIHNvIHBhdGNoZXMgYXBwbGllZCEKCllvdXJzLApMaW51cyBXYWxs
+ZWlqCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
