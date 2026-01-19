@@ -4,102 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 440F4CCF2D1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 09:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75C9CCCF2D1
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 09:49:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qY5oUCvPw+FZQLjchmazF8Hw43nW/AoQ66fxGXtQIvI=; b=jjDorVwtyZ7WLQ
-	xDsJ1oM5f2IDGSkfpUZxlvWOe4zYP/Kk6KylQKZFixwWQ2p2VMPcBddiBZPFTJN7kd7o8KHXk+5PR
-	H7lqcAwak5VeR8lPaovnjJGZtwQau2ndpZN8MFgzJCBLEtgz9xx8YjyFpHhYwQaxnXmUNxo7mKwyU
-	01HqAGgiAHkOG+LuNnHCKZslW5x93lRMrlnhwJT7WUNhCeTjQWpSC4r06HJuTCu54T5BlTS1NWE6S
-	gM5Zk1wbmD7Yb6AMosEL9w+SpGFmJPViv+oAKuKooHw76JnXcKPUDSRlTY6h0S3gfXkmbpCi9nn3N
-	vRVLywudXrYyR22rn12g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KoX74Ekiez8UwYaTcJjv23UX0WNpg1pLY0a3uia7QSQ=; b=KdiWte+HctSnfY
+	ot6V55ovMk2tFvq0nrKYZfqp2UJQyXNXTDE5EiFTh6UWo4pDE1s0bg4BrMZHzCqW8mL0DtYb0WEDK
+	MdQZfTK5TYM4Whr3Sjus4XuLAojfQVUKLUua4OyHdyYPsY76K3st/u2gPUiWpxz+Z2ZXYtDbsVWLa
+	Z0ZsAxpuX5fR0K62A9nhbMl05ogWubMNnOdC6bHOd3dSxqNkR290eUjqgksx914Iol7Osr/J9gEwt
+	IOteIOuHKUrvbIr5TJugAkQq1adNxypShK+MD73YKQmlwCumuCTl0RHko5yYro9K/Z9GZAMej1Oed
+	zc2AJvL/NO6MDz2bi83w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhlT7-00000001cwO-3s0V;
-	Mon, 19 Jan 2026 09:22:41 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1vhlt6-00000001fHt-0VTO;
+	Mon, 19 Jan 2026 09:49:32 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhlT4-00000001cvJ-33Zm
-	for linux-rockchip@lists.infradead.org;
-	Mon, 19 Jan 2026 09:22:39 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-432d2c7a8b9so3539932f8f.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 19 Jan 2026 01:22:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1768814556; x=1769419356; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=a1TGTP9bNu4UHfSQMVaG1aEb1WfL6DST40MmwW/KTbs=;
-        b=E3xuEcgElwwmsXou2jB1Eer86WlKc/ls0M1BMJ4/Z7YoxEB4CW6Vx35ofkxGLtkW86
-         x1LHVSdt5GogQIpCOFaekustUKybQV3zMJw+q7aYHbpxVMEW7B2a9xKR+IJZ8NJl383t
-         Aao4KUYl7Ni4KB9w4+8pHjqtWcKvaXKZk8fvrhsxwHWDpvyHMJflnsL10GH8pQRG3aIR
-         pNusQhqCx4rm82h2YeeadQbb0tLEPlzg/TryF8Iautm/rorPra/WkY4RTSVOuqTPUm3c
-         u3g8QfJ9Wex7VY73ydpG1PXIwk6ZsOKd4wThvPKG03uyFhHLDnIjdloDx1N/2UDpZ1Zq
-         r30Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1768814556; x=1769419356;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=a1TGTP9bNu4UHfSQMVaG1aEb1WfL6DST40MmwW/KTbs=;
-        b=Gewj7q5VYv5nKTKacMjW3wOQiwe7HWKRcOZmixBaflRCeksK/bjvFXW6+0I2diojls
-         kqEAcKUoJjtkFotpbE0QS1iFX6XyEpnSa/p964yk4/v4uKYH1psNb/bJrp/AHSVuBtX2
-         7osY7RXdXTSr+JVbGgvEv5nkRvHzNe+FYg6YWVrYgviOvjb32ov5O94MRUW4dxPh7i+O
-         JbBNdbGsAWIWUvYUnrdEr1+XWOgtBfB1FwVF5peGRWwv1tjXCVj20X36iyzuqzfeGDSR
-         qHlZCMWhZbBF0hxpv98puZbpzjt0SItmuNwXqSZjs+x9gM90tLqzjfjtwusLn0yMHWqd
-         GMgA==
-X-Forwarded-Encrypted: i=1; AJvYcCUaGinat7Gv1A+tZC/mkkPihC2vniZW8YcXtKJhuSGZmGcP841qUlKj8PIsFNc8uBN+l9jHZt0pNRc0fe5ezQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy7ywYogUq0ANG3h/MbRRGuwhJbq3N2BbgAZUYFZ3w2F1XuZDSu
-	fbzge6vCNPa5jOdHtPcQQ8Fev7xpREi94aR3OvSXVzC+aNL+sPWA7+s3
-X-Gm-Gg: AZuq6aLyUYns8hWp1meOyL7zX242VL1BPueI7jgUdoJoHM2TA4ijJPGWwnD7PmdiyIx
-	PGv06Di+i0ms6DKNyMOTo57FqAlJgKLnYqc1KhvdMfFPeQ1R2x+zaXszonSsBC8sfdrnAiNtE7T
-	Eoxk3hURpJJyiSxsrIlaCL8Q5BQ1X9FujW/U2tPYpiGXWz3aF3e0J7YVricLerGYRYlw7/ti94p
-	Wg++N4LGTOVu4ELE2ZgdzpGaU/XHKhl5XbCeR1prGeOTs8m6tVCsif8/jGk8kqxjmdW1ppzHCWp
-	gijE2LaJoC/AzjI2LheHprqlFG3ejysvJE/19Tj8dIdAzHlGRy8MBFD0YPVwQDH1Qt2TNS0VyLY
-	87r7/qZZijFfx6G/INcyRG/AHiRAQ45A9NDuKgAcEi71U+JeGA9JNeLDzxOvYp/b/UmF5pcWEhH
-	eOLhS5zpg7tR5P7m/LpsCNk1Jd0h21MnLumNO3uOsUh9mS+yvSPpCRaVQe8XxpEoWtJ3/DXY7H9
-	A==
-X-Received: by 2002:a05:6000:2306:b0:434:32cc:6c86 with SMTP id ffacd0b85a97d-4356a039819mr13103624f8f.14.1768814556321;
-        Mon, 19 Jan 2026 01:22:36 -0800 (PST)
-Received: from alchark-surface.localdomain (bba-83-110-134-52.alshamil.net.ae. [83.110.134.52])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4356996d02dsm22113042f8f.23.2026.01.19.01.22.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Jan 2026 01:22:35 -0800 (PST)
-From: Alexey Charkov <alchark@gmail.com>
-Date: Mon, 19 Jan 2026 13:22:26 +0400
-Subject: [PATCH] arm64: dts: rockchip: Explicitly request UFS reset pin on
- RK3576
+	id 1vhlt0-00000001fGd-0hrg;
+	Mon, 19 Jan 2026 09:49:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768816162;
+	bh=vfGiGmp2PdH5f0tFUDU3+Qm9AzHUk5W1M/IoRoNUp9Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=X1wOWmk+HqZ3o+yuvnz4zoLINLy96fjhwfx20qnTnvazW3q/Df+Z0mpBFK79I/MDi
+	 yCWeoYmhsN4Gcpkk7TZi4qyKp6r571c+roXjFVEYahJTKAmJM4HdOVMefL436d1lqj
+	 RQyUcp3ItKvQ8KsBwRWRzxx4FJ9VS0kYOSwBMk5BL4/moqujy4fY3WYwsD6Mwr2roX
+	 aofBRNG2hYn9T4LHdSfNNnI8UhrOqgIdwB1pfrWYjtz8ogt5wFVzHjZ3/JW5p29Ax+
+	 DkBjGZXK09vky3kBNYKiFTuXMmooZfLSq2Eav4IGkykh++ZOHyVCQo4hc6Flnc7HUA
+	 YR9jjoS/z01xA==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2483017E1013;
+	Mon, 19 Jan 2026 10:49:21 +0100 (CET)
+Message-ID: <db2f0c20-ca7e-41c9-be08-67fd1f92c2af@collabora.com>
+Date: Mon, 19 Jan 2026 10:49:20 +0100
 MIME-Version: 1.0
-Message-Id: <20260119-ufs-rst-v1-1-c8e96493948c@gmail.com>
-X-B4-Tracking: v=1; b=H4sIANH3bWkC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDQ0NL3dK0Yt2i4hLdtLSkZIPUZAuLVANzJaDqgqLUtMwKsEnRsbW1AKC
- VxLdZAAAA
-X-Change-ID: 20260119-ufs-rst-ffbc0ec88e07
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- "Martin K. Petersen" <martin.petersen@oracle.com>, 
- Shawn Lin <shawn.lin@rock-chips.com>, 
- Manivannan Sadhasivam <mani@kernel.org>
-Cc: Quentin Schulz <quentin.schulz@cherry.de>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, stable@vger.kernel.org, 
- Alexey Charkov <alchark@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3764; i=alchark@gmail.com;
- h=from:subject:message-id; bh=Q5L1vRcMlZIpl7txxOw3lzUvlYNyoF2f3P4G6tmb3IU=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTmfr9z0OzeiQfiskqxnP0RL1N4F7mxMF4OqUgu35l3e
- /YKsZW8HRNZGMS4GCzFFFnmfltiO9WIb9YuD4+vMHNYmUCGSIs0MAABCwNfbmJeqZGOkZ6ptqGe
- oaGOsY4RAxenAEx1bAbD/6I50yV3xV3vE7SI9HdKsisNjiz9La7tYf7EfFr0o0g/HkaG5ucJ8v5
- 6rTtqNlzUcMqa5uBT7b+zOOL6lqJt34UFtuSxAAA=
-X-Developer-Key: i=alchark@gmail.com; a=openpgp;
- fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 2/3] media: synopsys: add driver for the designware
+ mipi csi-2 receiver
+To: Frank Li <Frank.li@nxp.com>
+Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20251114-rockchip-mipi-receiver-v5-0-45aa117f190a@collabora.com>
+ <20251114-rockchip-mipi-receiver-v5-2-45aa117f190a@collabora.com>
+ <aWpil6jI1Ad0DcEI@lizhi-Precision-Tower-5810>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <aWpil6jI1Ad0DcEI@lizhi-Precision-Tower-5810>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_012238_785715_8707920E 
-X-CRM114-Status: GOOD (  17.14  )
+X-CRM114-CacheID: sfid-20260119_014926_409625_A4665901 
+X-CRM114-Status: GOOD (  26.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,102 +91,245 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip RK3576 UFS controller uses a dedicated pin to reset the connected
-UFS device, which can operate either in a hardware controlled mode or as a
-GPIO pin.
+Hi Frank,
 
-Power-on default is GPIO mode, but the boot ROM reconfigures it to a
-hardware controlled mode if it uses UFS to load the next boot stage.
+Thanks for your review.
 
-Given that existing bindings (and rk3576.dtsi) expect a GPIO-controlled
-device reset, request the required pin config explicitly.
+On 1/16/26 17:08, Frank Li wrote:
+> On Fri, Jan 16, 2026 at 02:02:47PM +0100, Michael Riesch wrote:
+>> The Synopsys DesignWare MIPI CSI-2 Receiver is a CSI-2 bridge with
+>> one input port and one output port. It receives the data with the
+>> help of an external MIPI PHY (C-PHY or D-PHY) and passes it to e.g.,
+>> the Rockchip Video Capture (VICAP) block on recent Rockchip SoCs.
+>>
+>> Add a V4L2 subdevice driver for this unit.
+>>
+>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+>> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+>> Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
+>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+>> ---
+> ...
+>> +
+>> +static inline struct dw_mipi_csi2_device *to_csi2(struct v4l2_subdev *sd)
+>> +{
+>> +	return container_of(sd, struct dw_mipi_csi2_device, sd);
+>> +}
+>> +
+>> +static inline __maybe_unused void
+> 
+> why need '__maybe_unused', needn't inline. compiler can auto decide and
+> report unused function if no 'inline'.
 
-This doesn't appear to affect Linux, but it does affect U-boot:
+The __maybe_unused was helpful during development and is not really
+required now. It doesn't hurt either, so I left it in. I can remove it
+if you wish.
 
-Before:
-=> md.l 0x2604b398
-2604b398: 00000011 00000000 00000000 00000000  ................
-< ... snip ... >
-=> ufs init
-ufshcd-rockchip ufshc@2a2d0000: [RX, TX]: gear=[3, 3], lane[2, 2], pwr[FASTAUTO_MODE, FASTAUTO_MODE], rate = 2
-=> md.l 0x2604b398
-2604b398: 00000011 00000000 00000000 00000000  ................
+> 
+>> +dw_mipi_csi2_write(struct dw_mipi_csi2_device *csi2, unsigned int addr, u32 val)
+>> +{
+>> +	writel(val, csi2->base_addr + addr);
+>> +}
+>> +
+>> +static inline __maybe_unused u32
+>> +dw_mipi_csi2_read(struct dw_mipi_csi2_device *csi2, unsigned int addr)
+>> +{
+>> +	return readl(csi2->base_addr + addr);
+>> +}
+>> +
+>> +static const struct dw_mipi_csi2_format *
+>> +dw_mipi_csi2_find_format(struct dw_mipi_csi2_device *csi2, u32 mbus_code)
+>> +{
+>> +	WARN_ON(csi2->formats_num == 0);
+>> +
+>> +	for (unsigned int i = 0; i < csi2->formats_num; i++) {
+>> +		const struct dw_mipi_csi2_format *format = &csi2->formats[i];
+>> +
+>> +		if (format->code == mbus_code)
+>> +			return format;
+>> +	}
+>> +
+>> +	return NULL;
+>> +}
+>> +
+>> +static int dw_mipi_csi2_start(struct dw_mipi_csi2_device *csi2)
+>> +{
+>> +	struct media_pad *source_pad;
+>> +	union phy_configure_opts opts;
+>> +	s64 link_freq;
+>> +	u32 control = 0;
+>> +	u32 lanes = csi2->lanes_num;
+>> +	int ret;
+> 
+> try keep reverise christmas tree order.
 
-After:
-=> md.l 0x2604b398
-2604b398: 00000011 00000000 00000000 00000000  ................
-< ... snip ...>
-=> ufs init
-ufshcd-rockchip ufshc@2a2d0000: [RX, TX]: gear=[3, 3], lane[2, 2], pwr[FASTAUTO_MODE, FASTAUTO_MODE], rate = 2
-=> md.l 0x2604b398
-2604b398: 00000010 00000000 00000000 00000000  ................
+Ack.
 
-(0x2604b398 is the respective pin mux register, with its BIT0 driving the
-mode of UFS_RST: unset = GPIO, set = hardware controlled UFS_RST)
+> 
+>> +
+>> +	if (lanes < 1 || lanes > 4)
+>> +		return -EINVAL;
+>> +
+> ...
+>> +
+>> +static int dw_mipi_csi2_register_notifier(struct dw_mipi_csi2_device *csi2)
+>> +{
+>> +	struct v4l2_async_connection *asd;
+>> +	struct v4l2_async_notifier *ntf = &csi2->notifier;
+>> +	struct v4l2_fwnode_endpoint vep;
+>> +	struct v4l2_subdev *sd = &csi2->sd;
+>> +	struct device *dev = csi2->dev;
+>> +	struct fwnode_handle *ep;
+>> +	int ret;
+>> +
+>> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0, 0);
+> 
+> use  struct fwnode_handle *ep __free(fwnode_handle) can simplify err
+> handler.
 
-This helps ensure that GPIO-driven device reset actually fires when the
-system requests it, not when whatever black box magic inside the UFSHC
-decides to reset the flash chip.
+Sorry, I don't see the benefit of that.
 
-Cc: stable@vger.kernel.org
-Fixes: c75e5e010fef ("scsi: arm64: dts: rockchip: Add UFS support for RK3576 SoC")
-Reported-by: Quentin Schulz <quentin.schulz@cherry.de>
-Signed-off-by: Alexey Charkov <alchark@gmail.com>
----
-This has originally surfaced during the review of UFS patches for U-boot
-at [1], where it was found that the UFS reset line is not requested to be
-configured as GPIO but used as such. This leads in some cases to the UFS
-driver appearing to control device resets, while in fact it is the
-internal controller logic that drives the reset line (perhaps in
-unexpected ways).
+> 
+>> +	if (!ep)
+>> +		return dev_err_probe(dev, -ENODEV, "failed to get endpoint\n");
+>> +
+> ...
+>> +{
+>> +	struct media_pad *pads = csi2->pads;
+>> +	struct v4l2_subdev *sd = &csi2->sd;
+>> +	int ret;
+>> +
+>> +	ret = dw_mipi_csi2_register_notifier(csi2);
+>> +	if (ret)
+>> +		goto err;
+>> +
+>> +	v4l2_subdev_init(sd, &dw_mipi_csi2_ops);
+>> +	sd->dev = csi2->dev;
+>> +	sd->entity.ops = &dw_mipi_csi2_media_ops;
+>> +	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
+>> +	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_STREAMS;
+>> +	sd->internal_ops = &dw_mipi_csi2_internal_ops;
+>> +	sd->owner = THIS_MODULE;
+> 
+> I remeber needn't set owner, v4l2_async_register_subdev() do it for you.
 
-Thanks Quentin Schulz for spotting this issue.
+Indeed, nice catch.
 
-[1] https://lore.kernel.org/u-boot/259fc358-f72b-4a24-9a71-ad90f2081335@cherry.de/
----
- arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi | 7 +++++++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi         | 2 +-
- 2 files changed, 8 insertions(+), 1 deletion(-)
+> 
+>> +	snprintf(sd->name, sizeof(sd->name), "dw-mipi-csi2 %s",
+>> +		 dev_name(csi2->dev));
+>> +
+> ...
+>> +
+>> +static int dw_mipi_csi2_probe(struct platform_device *pdev)
+>> +{
+>> +	struct device *dev = &pdev->dev;
+>> +	struct dw_mipi_csi2_device *csi2;
+>> +	int ret;
+>> +
+>> +	csi2 = devm_kzalloc(dev, sizeof(*csi2), GFP_KERNEL);
+>> +	if (!csi2)
+>> +		return -ENOMEM;
+>> +	csi2->dev = dev;
+>> +	dev_set_drvdata(dev, csi2);
+>> +
+>> +	csi2->base_addr = devm_platform_ioremap_resource(pdev, 0);
+>> +	if (IS_ERR(csi2->base_addr))
+>> +		return PTR_ERR(csi2->base_addr);
+>> +
+>> +	ret = devm_clk_bulk_get_all(dev, &csi2->clks);
+>> +	if (ret != DW_MIPI_CSI2_CLKS_MAX)
+>> +		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
+>> +	csi2->clks_num = ret;
+>> +
+>> +	csi2->phy = devm_phy_get(dev, NULL);
+>> +	if (IS_ERR(csi2->phy))
+>> +		return dev_err_probe(dev, PTR_ERR(csi2->phy),
+>> +				     "failed to get MIPI CSI-2 PHY\n");
+>> +
+>> +	csi2->reset = devm_reset_control_get_exclusive(dev, NULL);
+>> +	if (IS_ERR(csi2->reset))
+>> +		return dev_err_probe(dev, PTR_ERR(csi2->reset),
+>> +				     "failed to get reset\n");
+>> +
+>> +	csi2->formats = formats;
+>> +	csi2->formats_num = ARRAY_SIZE(formats);
+>> +
+>> +	pm_runtime_enable(dev);
+> 
+> devm_pm_runtime_enable() will simple error handle.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi b/arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
-index 0b0851a7e4ea..20cfd3393a75 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi
-@@ -5228,6 +5228,13 @@ ufs_rst: ufs-rst {
- 				/* ufs_rstn */
- 				<4 RK_PD0 1 &pcfg_pull_none>;
- 		};
-+
-+		/omit-if-no-ref/
-+		ufs_rst_gpio: ufs-rst-gpio {
-+			rockchip,pins =
-+				/* ufs_rstn */
-+				<4 RK_PD0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
- 	};
- 
- 	ufs_testdata0 {
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 3a29c627bf6d..db610f57c845 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1865,7 +1865,7 @@ ufshc: ufshc@2a2d0000 {
- 			assigned-clock-parents = <&cru CLK_REF_MPHY_26M>;
- 			interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH>;
- 			power-domains = <&power RK3576_PD_USB>;
--			pinctrl-0 = <&ufs_refclk>;
-+			pinctrl-0 = <&ufs_refclk &ufs_rst_gpio>;
- 			pinctrl-names = "default";
- 			resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>,
- 				 <&cru SRST_A_UFS>, <&cru SRST_P_UFS_GRF>;
+Ack.
 
----
-base-commit: 46fe65a2c28ecf5df1a7475aba1f08ccf4c0ac1b
-change-id: 20260119-ufs-rst-ffbc0ec88e07
+> 
+>> +
+>> +	ret = phy_init(csi2->phy);
+>> +	if (ret) {
+>> +		ret = dev_err_probe(dev, ret,
+>> +				    "failed to initialize MIPI CSI-2 PHY\n");
+>> +		goto err_pm_runtime_disable;
+>> +	}
+>> +
+> ...
+>> +
+>> +static int dw_mipi_csi2_runtime_resume(struct device *dev)
+>> +{
+>> +	struct dw_mipi_csi2_device *csi2 = dev_get_drvdata(dev);
+>> +	int ret;
+>> +
+>> +	reset_control_assert(csi2->reset);
+>> +	udelay(5);
+> 
+> Now prefer use fsleep(), which auto choose difference sleep function
+> according to delay number.
+
+I'll keep that in mind, but here the first thing that fsleep does is to
+check whether the parameter is <= 10 and (since this is true) call
+udelay. So here I don't see the point really.
+
+> 
+>> +	reset_control_deassert(csi2->reset);
+>> +
+>> +	ret = clk_bulk_prepare_enable(csi2->clks_num, csi2->clks);
+>> +	if (ret) {
+>> +		dev_err(dev, "failed to enable clocks\n");
+>> +		return ret;
+>> +	}
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +static DEFINE_RUNTIME_DEV_PM_OPS(dw_mipi_csi2_pm_ops,
+>> +				 dw_mipi_csi2_runtime_suspend,
+>> +				 dw_mipi_csi2_runtime_resume, NULL);
+>> +
+>> +static struct platform_driver dw_mipi_csi2_drv = {
+>> +	.driver = {
+>> +		.name = "dw-mipi-csi2",
+>> +		.of_match_table = dw_mipi_csi2_of_match,
+>> +		.pm = &dw_mipi_csi2_pm_ops,
+> 
+> pm_ptr( &dw_mipi_csi2_pm_ops)
+
+Shouldn't make a difference here since this driver depends on CONFIG_PM.
 
 Best regards,
--- 
-Alexey Charkov <alchark@gmail.com>
+Michael
+
+> 
+> Frank
+>> +	},
+>> +	.probe = dw_mipi_csi2_probe,
+>> +	.remove = dw_mipi_csi2_remove,
+>> +};
+>> +module_platform_driver(dw_mipi_csi2_drv);
+>> +
+>> +MODULE_DESCRIPTION("Synopsys DesignWare MIPI CSI-2 Receiver platform driver");
+>> +MODULE_LICENSE("GPL");
+>>
+>> --
+>> 2.39.5
+>>
 
 
 _______________________________________________
