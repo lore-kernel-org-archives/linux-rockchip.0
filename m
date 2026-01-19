@@ -4,79 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50FBED29C39
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 15:41:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41662D29C41
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 16:07:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S1xA0S/oxf2WqdVrK3uObPqJB8Ga4u+HPbvWTSC7tj4=; b=0Qwe3Ic6WGGGQ1
-	W7pqPx6OG8zEyAGV7LBCoGZGhGByFY94++SYIbgU+Q8N+qFJ2ZjPl+lVYufEd3uMio9buihxshTA1
-	7p+kHEY3VrgQPHpgLwGEw9ZCVd8pxvbiRrk/JgAW+X65VAsBxB6J9mtgZcp3XAtfeQHW7twSTRJAw
-	bVHlxTHQQy84ZOpnwV3lNE0siP2iGOE86bE4/T/9ae7UBC5ux4hVb54djt2piVI6ot2mrkgZ5wddN
-	1BUKfAg1qoSpVsKh9M1iNBavtzy/8OyjOD7z1+w5o36VLhAsFT0UZ00lAamuRK9C/jMdCSbG9r1uB
-	IJhp2ZCPzE3w/9BiYwBA==;
+	List-Owner; bh=GH+V0ehcG4AJlhP2tMzY7aYLuUTzrzzotFNtcvRD0jw=; b=s4DuV1aKvW0Mo8
+	KdRUGu6rNuy/wPdas9KyxIMPIEiICPd8iCoQ1CBJlFXM97lI2qMcUJsdJzNQvB8zi+vhOV8TH0rlz
+	V5sButoz7hKDI6iWExgYmG+gMxzc1FYx9vVKltWEhACPfb9WnU3dDSyorWGbvbbNBYoariXNQCf8l
+	m6TknAjPYJAtEbgCLAZ7DAQsxZocJ2Gv5GE2Pu+PfkFNpdSn7mor76a7Rddn6irEIylb1jBUh7e9n
+	/5cQpMFZzZCEMa7V3txwAH2io7tblPyWoSjY2P4BlPeWP6hhGJIDPbjieDlSq4b4/IBLl4V88SxLa
+	zCB18Jv6fLGFnMwu3kvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhrNr-00000002NFo-0hqb;
-	Mon, 19 Jan 2026 15:41:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vhrmj-00000002QTK-1z32;
+	Mon, 19 Jan 2026 16:07:21 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhrNI-00000002ND5-2cYC;
-	Mon, 19 Jan 2026 15:41:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1768837261;
-	bh=WGje4+ey1jXaVxohpYLHfCxVK7LiezHtVRN34MEwaUQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FmCyE4EsGHuEGsVCgS3ZHCNmr1HZ0JgHB/6ULTjwJ4rtZ/iB2vMXCTTsmDK9leCcc
-	 xxfkjlbe9cBdTp/mN+roDs4MyBW9Yok/DOrprw+6g8XsvoI/6YaMrxs+2vlMr+uyel
-	 tCks0ibnW/FqNOtlPF7KITC+elSm3taLy9cuMJ5vI+zIk2zRUtZy0MmPTB7f1ID48g
-	 TZ0u9BEknq+EOVXxIcw6BKjiSrTtfOkCrlhRD9KYG4zkhvivuCug9nTK7U8UqEuLHS
-	 UbaM831YPK/V0dK5TWIc+KWwTYN548YcDrs1KMPeQcLcuaL/W1gPVKbI1yNhkrqE/L
-	 udOQRo9lCLG4g==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2340F17E0FFA;
-	Mon, 19 Jan 2026 16:41:00 +0100 (CET)
-Message-ID: <37c83a9a-088a-4a96-b6f6-343fa6cdddc6@collabora.com>
-Date: Mon, 19 Jan 2026 16:40:59 +0100
+	id 1vhrmh-00000002QSa-2oDN;
+	Mon, 19 Jan 2026 16:07:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=8pPZdQPY4l/E6Ki51s+kyYAdtveDcn2eRM82KhpKvEs=; b=NCLAf0GyaclQZPdMNf4kV+ydak
+	6AOdai735qQfi6T1UQ3K+ccjB1uImgyZUNmG93Tm03D3La8nM6AWcjwQNRgGIpoZCVP9XmqhH2eG8
+	cHedeNeY7IC4dYd0GYcW/QrLJxQ6jfW+7/H8ffARoq4O4fi3ye8TpQJheeEObtEde1vOd25ED51B/
+	/BlMHAiDjORwBRjW9/ZR+4UDHdN+ZMJ3YQoKyYzy8O92PBa8FrpqzhuVDHd2BBtAQH3LqiA3utzWH
+	s5GZF2eLd1PC5rgjvkWZ+xeBBkYm8asn/ll956TTgFVtFl/6vJSrvBBpzwFUCdc0NWg2VJaf5Q6YB
+	Endu1X2g==;
+Received: from i53875a9c.versanet.de ([83.135.90.156] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vhrmB-0037VG-F4; Mon, 19 Jan 2026 17:06:48 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
+ Damon Ding <damon.ding@rock-chips.com>
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
+ andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
+ dianders@chromium.org, m.szyprowski@samsung.com, luca.ceresoli@bootlin.com,
+ jani.nikula@intel.com, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v8 00/18] Apply drm_bridge_connector and panel_bridge helper for
+ the Analogix DP driver
+Date: Mon, 19 Jan 2026 17:06:46 +0100
+Message-ID: <6571983.R56niFO833@diego>
+In-Reply-To: <20251217093321.3108939-1-damon.ding@rock-chips.com>
+References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] media: synopsys: add driver for the designware
- mipi csi-2 receiver
-To: Frank Li <Frank.li@nxp.com>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
- Kever Yang <kever.yang@rock-chips.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Hans Verkuil <hverkuil@kernel.org>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20251114-rockchip-mipi-receiver-v5-0-45aa117f190a@collabora.com>
- <20251114-rockchip-mipi-receiver-v5-2-45aa117f190a@collabora.com>
- <aWpil6jI1Ad0DcEI@lizhi-Precision-Tower-5810>
- <db2f0c20-ca7e-41c9-be08-67fd1f92c2af@collabora.com>
- <aW5PLIv2w+OY7xJD@lizhi-Precision-Tower-5810>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <aW5PLIv2w+OY7xJD@lizhi-Precision-Tower-5810>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_074104_981045_555CE057 
-X-CRM114-Status: GOOD (  23.71  )
+X-CRM114-CacheID: sfid-20260119_080719_726474_E8A169C4 
+X-CRM114-Status: GOOD (  16.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,165 +77,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
-
-On 1/19/26 16:35, Frank Li wrote:
-> On Mon, Jan 19, 2026 at 10:49:20AM +0100, Michael Riesch wrote:
->> Hi Frank,
->>
->> Thanks for your review.
->>
->> On 1/16/26 17:08, Frank Li wrote:
->>> On Fri, Jan 16, 2026 at 02:02:47PM +0100, Michael Riesch wrote:
->>>> The Synopsys DesignWare MIPI CSI-2 Receiver is a CSI-2 bridge with
->>>> one input port and one output port. It receives the data with the
->>>> help of an external MIPI PHY (C-PHY or D-PHY) and passes it to e.g.,
->>>> the Rockchip Video Capture (VICAP) block on recent Rockchip SoCs.
->>>>
->>>> Add a V4L2 subdevice driver for this unit.
->>>>
->>>> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
->>>> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
->>>> Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
->>>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
->>>> ---
->>> ...
->>>> +
->>>> +static inline struct dw_mipi_csi2_device *to_csi2(struct v4l2_subdev *sd)
->>>> +{
->>>> +	return container_of(sd, struct dw_mipi_csi2_device, sd);
->>>> +}
->>>> +
->>>> +static inline __maybe_unused void
->>>
->>> why need '__maybe_unused', needn't inline. compiler can auto decide and
->>> report unused function if no 'inline'.
->>
->> The __maybe_unused was helpful during development and is not really
->> required now. It doesn't hurt either, so I left it in. I can remove it
->> if you wish.
->>
->>>
->>>> +
->>>> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0, 0);
->>>
->>> use  struct fwnode_handle *ep __free(fwnode_handle) can simplify err
->>> handler.
->>
->> Sorry, I don't see the benefit of that.
->>
-> 
-> I remember reduce one goto
-
-Since Sakari requested this variant as well, I changed it to as you
-suggested in v7.
-
-> 
->>>
->>>> +	if (!ep)
->>>> +		return dev_err_probe(dev, -ENODEV, "failed to get endpoint\n");
->>>> +
->>> ...
->>>> +{
->>>> +	struct media_pad *pads = csi2->pads;
->>>> +	struct v4l2_subdev *sd = &csi2->sd;
->>>> +	int ret;
->>>> +
->>>> +	ret = dw_mipi_csi2_register_notifier(csi2);
->>>> +	if (ret)
->>>> +		goto err;
->>>> +
->>>> +	v4l2_subdev_init(sd, &dw_mipi_csi2_ops);
->>>> +	sd->dev = csi2->dev;
->>>> +	sd->entity.ops = &dw_mipi_csi2_media_ops;
->>>> +	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
->>>> +	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_STREAMS;
->>>> +
->>>> +static int dw_mipi_csi2_runtime_resume(struct device *dev)
->>>> +{
->>>> +	struct dw_mipi_csi2_device *csi2 = dev_get_drvdata(dev);
->>>> +	int ret;
->>>> +
->>>> +	reset_control_assert(csi2->reset);
->>>> +	udelay(5);
->>>
->>> Now prefer use fsleep(), which auto choose difference sleep function
->>> according to delay number.
->>
->> I'll keep that in mind, but here the first thing that fsleep does is to
->> check whether the parameter is <= 10 and (since this is true) call
->> udelay. So here I don't see the point really.
-> 
-> Thank.
-> 
->>
->>>
->>>> +	reset_control_deassert(csi2->reset);
->>>> +
->>>> +	ret = clk_bulk_prepare_enable(csi2->clks_num, csi2->clks);
->>>> +	if (ret) {
->>>> +		dev_err(dev, "failed to enable clocks\n");
->>>> +		return ret;
->>>> +	}
->>>> +
->>>> +	return 0;
->>>> +}
->>>> +
->>>> +static DEFINE_RUNTIME_DEV_PM_OPS(dw_mipi_csi2_pm_ops,
->>>> +				 dw_mipi_csi2_runtime_suspend,
->>>> +				 dw_mipi_csi2_runtime_resume, NULL);
->>>> +
->>>> +static struct platform_driver dw_mipi_csi2_drv = {
->>>> +	.driver = {
->>>> +		.name = "dw-mipi-csi2",
->>>> +		.of_match_table = dw_mipi_csi2_of_match,
->>>> +		.pm = &dw_mipi_csi2_pm_ops,
->>>
->>> pm_ptr( &dw_mipi_csi2_pm_ops)
->>
->> Shouldn't make a difference here since this driver depends on CONFIG_PM.
->>
-> 
-> Avoid some static scan tools to report the problem, no harmful to add
-> pm_ptr().
-
-Interesting. Which tools to you use?
-
-I hope v7 is accepted as sent earlier today, and this should not be a
-blocker. We can add pm_ptr() easily in a follow-up patch.
-
-Thanks and regards,
-Michael
-
-> 
-> Frank
-> 
->> Best regards,
->> Michael
->>
->>>
->>> Frank
->>>> +	},
->>>> +	.probe = dw_mipi_csi2_probe,
->>>> +	.remove = dw_mipi_csi2_remove,
->>>> +};
->>>> +module_platform_driver(dw_mipi_csi2_drv);
->>>> +
->>>> +MODULE_DESCRIPTION("Synopsys DesignWare MIPI CSI-2 Receiver platform driver");
->>>> +MODULE_LICENSE("GPL");
->>>>
->>>> --
->>>> 2.39.5
->>>>
->>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFtb24sCgpBbSBNaXR0d29jaCwgMTcuIERlemVtYmVyIDIwMjUsIDEwOjMzOjAzIE1pdHRl
+bGV1cm9ww6Rpc2NoZSBOb3JtYWx6ZWl0IHNjaHJpZWIgRGFtb24gRGluZzoKPiBQQVRDSCAxIGlz
+IHRvIGVuc3VyZSB0aGUgbGFzdCBicmlkZ2UgZGVjbGFyZXMgT1BfRURJRCBvciBPUF9NT0RFUyBv
+ciBib3RoLgo+IFBBVENIIDIgaXMgYSBzbWFsbCBmb3JtYXQgb3B0aW1pemF0aW9uIGZvciBzdHJ1
+Y3QgYW5hbG9naWRfZHBfZGV2aWNlLgo+IFBBVENIIDMgaXMgdG8gcGVyZm9ybSBtb2RlIHNldHRp
+bmcgaW4gJmRybV9icmlkZ2VfZnVuY3MuYXRvbWljX2VuYWJsZS4KPiBQQVRDSCA0IGlzIHRvIGFk
+ZCBhIG5ldyBwYXJhbWV0ZXIgdG8gc3RvcmUgdGhlIHBvaW50IG9mIG5leHQgYnJpZGdlLgo+IFBB
+VENIIDUgaXMgdG8gbWFrZSBsZWdhY3kgYnJpZGdlIGRyaXZlciBtb3JlIHVuaXZlcnNhbC4KPiBQ
+QVRDSCA2LTExIGFyZSBwcmVwYXJhdGlvbnMgZm9yIGFwcGx5IGRybV9icmlkZ2VfY29ubmVjdG9y
+IGhlbHBlci4KPiBQQVRDSCAxMiBpcyB0byBhcHBseSB0aGUgZHJtX2JyaWRnZV9jb25uZWN0b3Ig
+aGVscGVyLgo+IFBBVENIIDEzLTE1IGFyZSB0byBtb3ZlIHRoZSBwYW5lbC9icmlkZ2UgcGFyc2lu
+ZyB0byB0aGUgQW5hbG9naXggc2lkZS4KPiBQQVRDSCAxNiBpcyB0byBhdHRhY2ggdGhlIG5leHQg
+YnJpZGdlIG9uIEFuYWxvZ2l4IHNpZGUgdW5pZm9ybWx5Lgo+IFBBVENIIDE3LTE4IGFyZSB0byBh
+cHBseSB0aGUgcGFuZWxfYnJpZGdlIGhlbHBlci4KCk9uIHRvcCBvZiBhbGwgdGhlIHJlY2VudCBi
+cmlkZ2UtcmVsYXRlZCBjb21taXRzLCB0aGlzIHNlcmllcyBzdGlsbCB3b3JrcwpvbiBteSByazM1
+ODgtZURQIGJvYXJkIC0gd2hlbiB0aGUgZGlzcGxheSBpcyBwbHVnZ2VkIGluIG9uIGJvb3QuCgpB
+cyB0aGF0IGlzIHRoZSBjdXJyZW50IHN0YXRlIHdlIGFsc28gaGFkIGJlZm9yZSwgdGhpcyBzZXJp
+ZXM6ClRlc3RlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4gb24gcmszNTg4
+CgoKPT09PT09CiEhISBUaGUgZm9sbG93aW5nIHNob3VsZCBub3QgaG9sZCB1cCB0aGlzIHNlcmll
+cyB0aG91Z2gsIGJlY2F1c2UgdGhlCmFuYWxvZ2l4LWRwIG5vdCBoYW5kbGluZyBob3RwbHVnLCBp
+cyBhbHNvIHRoZSBjdXJyZW50IHN0YXRlIGFscmVhZHkhISEKPT09PT09CgpIb3dldmVyLCBhY3R1
+YWxseSBob3RwbHVnZ2luZyB0aGUgZGV2aWNlIGRvZXMgbm90IHNlZW0gdG8gd29yay4KCldpdGgg
+dGhlIGhwZC1ncGlvIGluc2lkZSBhIGRwLWNvbm5lY3RvciBub2RlLgoKCigxKSBXaGVuIGJvb3Rp
+bmcgY29ubmVjdGVkIGFuZCB1bnBsdWdnaW5nIHRoZSBkaXNwbGF5IEkgZ2V0OgoKWyAgIDQyLjcy
+NTg4OF0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRwOiBSeCBNYXggTGluayBSYXRlIGlzIGFibm9y
+bWFsIDowICEKWyAgIDQyLjczMzMyNV0gcm9ja2NoaXAtZHAgZmRlYzAwMDAuZWRwOiBSeCBNYXgg
+TGFuZSBjb3VudCBpcyBhYm5vcm1hbCA6MCAhClsgICA0Mi43NjQ4NTNdIHJvY2tjaGlwLWRwIGZk
+ZWMwMDAwLmVkcDogTFQgbGluayBzdGFydCBmYWlsZWQhClsgICA0Mi43NzExMDVdIHJvY2tjaGlw
+LWRwIGZkZWMwMDAwLmVkcDogZURQIGxpbmsgdHJhaW5pbmcgZmFpbGVkICgtMTEwKQpbICAgNDIu
+Nzc4MzI5XSByb2NrY2hpcC1kcCBmZGVjMDAwMC5lZHA6IHVuYWJsZSB0byBkbyBsaW5rIHRyYWlu
+LCByZXQ9LTExMApbICAgNDIuNzg1NzQ3XSBbZHJtOmFuYWxvZ2l4X2RwX2JyaWRnZV9hdG9taWNf
+ZW5hYmxlXSAqRVJST1IqIGRwIGNvbW1pdCBlcnJvciwgcmV0ID0gLTExMAooIC4uLiByZXBlYXN0
+cyBhIGJ1bmNoIG9mIHRpbWVzIC4uLiApClsgICA0My4yODQ4OTddIHJvY2tjaGlwLWRwIGZkZWMw
+MDAwLmVkcDogZmFpbGVkIHRvIHNldCBicmlkZ2UsIHJldHJ5OiA0ClsgICA0My4yOTIwNDVdIHJv
+Y2tjaGlwLWRwIGZkZWMwMDAwLmVkcDogdG9vIG1hbnkgdGltZXMgcmV0cnkgc2V0IGJyaWRnZSwg
+Z2l2ZSBpdCB1cAoKcGx1Z2dpbmcgdGhlIGVEUCBiYWNrIGluIHJlZW5hYmxlcyB0aGUgZGlzcGxh
+eSBzdWNjZXNzZnVsbHkgdGhvdWdoLgoKKDIpIEJvb3Rpbmcgd2l0aCB0aGUgZGlzcGxheSB1bnBs
+dWdnZWQKClNhbWUgbWVzc2FnZXMgYXMgYWJvdmUsIGJ1dCBwbHVnZ2luZyB0aGUgZGlzcGxheSBp
+biBmb3IgdGhlIGZpcnN0IHRpbWUKZG9lcyBub3QgY3JlYXRlIGFuIG91dHB1dC4KCkknbGwgdHJ5
+IHRvIGRpZyBtb3JlLCBidXQgaWYgeW91IGhhdmUgYW4gaWRlYSwgd2hhdCBJIHNob3VsZCBsb29r
+IGF0LCBJJ2QsCmJlIHJlYWxseSBncmF0ZWZ1bC4KCgpUaGFua3MKSGVpa28KCgoKCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
