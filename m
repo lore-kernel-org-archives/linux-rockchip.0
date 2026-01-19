@@ -4,107 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ED6ACCF2D4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 09:56:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E065CCF2D5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 10:13:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
+	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sZS/OXWMnjqDvdNKOygYFFOc07eFLbQKuTWdhFD2a+o=; b=pwyqztbCS5yuQc
-	a9fwvHr2evHlRNBybjzTc8UG+4FndhuaNPepdfdByc7/ZrV17VjDc+cd2TXP8c+k1YIZcI5vtDNg1
-	uvmaJoBnKO6AF9fDri5muKg1f3nUNopIcpkxSMYwvTpvnTf8fd0XoLjnBeJ6w6VMaCuen72sv4Mbu
-	m6MGY+ozI9ykoehBoQqs7N+cWnAbwUxTmOlYWfvxqgrZRv8ayBzfwp24S9hjBkW3l4R8w7F8pvSfo
-	nvORwUahXKpef/g7kSiYLjuhWiYzGziw+357xKNr0H6Wa5Viquyf6Ervhr80NJ0F3NTuuc1xHD3o6
-	qwuDUaTCZ/YIkZY1JsIA==;
+	List-Owner; bh=M3YpWGV4odBaiTykIqLg03Q0Xws5MW3UrIO6decA1PQ=; b=ST/DlmqR7RpCoE
+	JT/C2Idv7vHLD8CNQoNGUAPJ6UVf+qgLEhY0ElyFn/cnwHj9isS76yGLRrAYc020k2NX4vkLybwQv
+	sVC1PxAfE3nLhqiLcAMcFLyYf1AMMgDwI4OpJUht0GzSVhrlS1g6V1X4MQz+DgSV0YgB0lne+OQZN
+	f1kbBeDl6fJ+XNFytzz7qFjqjlx+TFQhUiwVPg3EnRY35/qOQPAb7EdNxOjVGDGIw4y0MgoeckOAS
+	9atmIUxSRgZ+t2fG2zCM6XqEvK9UEECIwcwdnwFCF0JHMcdefcwrjRI2HtZxeI1TtonhfwAoDv5xL
+	9cxa3e8lZQr/PnEkjlQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhm09-00000001gXy-01lP;
-	Mon, 19 Jan 2026 09:56:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vhmGb-00000001jGa-1ocx;
+	Mon, 19 Jan 2026 10:13:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhm01-00000001gVU-308N;
-	Mon, 19 Jan 2026 09:56:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=HlDdIqlTMeMi8VpPk/jEYeBKb0RuEGvOD8PcqKkHaPY=; b=WLDPZ6WpnLJuK9i5CSgXx/U4Ca
-	w1tTjS8GgDwkdkPUOJQPUA16npwq3rkMwWJMT1IbtzojfGjCV1Y5ZcAXkzOTOAvgDikJfR4Maj0/J
-	vuDbta08tWodVELfMwRSyjy7VQ0+F2htp1JUU6vf53J3o+hRtx0MksmS4JAiBW15NsFpzRIx8lUZ7
-	Onkca869RSiNyANKv0JP1AxN3QwLBrnGy+l99zpS0Xym2p56+y4khyejEupiVIJ+2GLmxJ+BitXRi
-	dwXDks+AqeVjp1svBZSKRsTM+t0gV2STBEOfoXms18AUmzUXa1Ed4k16eKgIcqfP16NoXUd4ib6+u
-	3ctK/xzQ==;
-Received: from mgamail.intel.com ([192.198.163.8])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhlzy-0000000Bmf0-33zp;
-	Mon, 19 Jan 2026 09:56:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768816599; x=1800352599;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=FgBYa0U3JLtsWj50KdlzMNY1o0Jj1BIn7SsCMNQadsk=;
-  b=UuaKCPeAgxVJ9T1CA8hQovz61mvHGcAFlsG2XoZN5NNUUDcCFSrralQV
-   hWSqnuY+m6KPKGP0BxmnW+hq/Mp4F04oaUjEl0dpmbgq1r70HuY+iHSU+
-   L3otdPUWJad3JwUYcusKzvqLo2JRRTyob4/uBc8O/EbwmufBbMLsblsmG
-   ahqO2kHbae2A7eBrFMvS6zcyxZNZAFRn8hyhrYENHinIcnCce+zCqnGdc
-   agMZ03vyqcoSTTLX6qvrq9P+fNtNOPIPgkm7h/0IKeux1WXzs+fPGRmu7
-   Scyd+tDxE9O9BD/QL2GSmeOLQP+9f6jg2Gxb4P/ObrHtultssZ7+SaFxy
-   w==;
-X-CSE-ConnectionGUID: rcIeeSnLT5yCcmAZIsSYKQ==
-X-CSE-MsgGUID: BSoTvC2fRB6Shqd0MaKXEA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11675"; a="87604295"
-X-IronPort-AV: E=Sophos;i="6.21,238,1763452800"; 
-   d="scan'208";a="87604295"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 01:56:25 -0800
-X-CSE-ConnectionGUID: /f0Xv8jgSkqq8tYz6QKBIA==
-X-CSE-MsgGUID: GrWDzjQXSIOcEheq7QVB1Q==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,237,1763452800"; 
-   d="scan'208";a="210842283"
-Received: from rvuia-mobl.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.244.44])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Jan 2026 01:56:20 -0800
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 0B53D120280;
-	Mon, 19 Jan 2026 11:56:22 +0200 (EET)
-Date: Mon, 19 Jan 2026 11:56:21 +0200
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Frank Li <Frank.li@nxp.com>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 2/3] media: synopsys: add driver for the designware
- mipi csi-2 receiver
-Message-ID: <aW3_xSm2N42XTtzu@kekkonen.localdomain>
-References: <20251114-rockchip-mipi-receiver-v5-0-45aa117f190a@collabora.com>
- <20251114-rockchip-mipi-receiver-v5-2-45aa117f190a@collabora.com>
- <aWpil6jI1Ad0DcEI@lizhi-Precision-Tower-5810>
- <db2f0c20-ca7e-41c9-be08-67fd1f92c2af@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <db2f0c20-ca7e-41c9-be08-67fd1f92c2af@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_095639_138918_7C10FB1E 
-X-CRM114-Status: GOOD (  25.00  )
+	id 1vhmGZ-00000001jGG-1r1B;
+	Mon, 19 Jan 2026 10:13:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id BA8A46014E;
+	Mon, 19 Jan 2026 10:13:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E657EC116C6;
+	Mon, 19 Jan 2026 10:13:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768817626;
+	bh=1P25O01V1+pU3qLbbBJW/GjfXAE5BGBvNtHpKC+MLLk=;
+	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
+	b=IoP7E/9pRu+7PDLd0H764jZC/uaNamD0WEa4z1KHQ1LWmWDuerkPTvD00JtG85EOm
+	 SzdPIkNXbCfn6Md0mGJ1ogDNrUlWfYU1KRUElYJpxZ3ji5qbTBJlJDcSjQcC2+mviQ
+	 ZE/wyaZPh8k7s/KFqIk92XNEj6nHbp+MKbgOVDgXzCLBRNPoVgD69UHUxtGvi1aqJi
+	 iNASTiwUxup4KrDlPpADUKJgItJpUr2eliuygQdOW5LikrdFAKge0CU9xKkXvS/5es
+	 ZLften5mQg2ZaW9SoWZc5htrDu8insI8Ww82s/O0GqFp0V6EbvOVPO8lCv97yl2k9S
+	 EZ2Y8jIU3vGdw==
+Message-ID: <2fb910198a3be542215592ac3f22d6b2@kernel.org>
+Date: Mon, 19 Jan 2026 10:13:43 +0000
+From: "Maxime Ripard" <mripard@kernel.org>
+To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
+Subject: Re: [PATCH v4 01/10] drm/tests: hdmi: check the infoframes
+ behaviour
+In-Reply-To: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
+References: <20260107-limit-infoframes-2-v4-1-213d0d3bd490@oss.qualcomm.com>
+Cc: dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev, "Abhinav
+ Kumar" <abhinav.kumar@linux.dev>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
+ Yan" <andy.yan@rock-chips.com>, "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>, "Chen-Yu
+ Tsai" <wens@kernel.org>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>, "Dave
+ Stevenson" <dave.stevenson@raspberrypi.com>, "David Airlie" <airlied@gmail.com>, "Dmitry
+ Baryshkov" <lumag@kernel.org>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jernej
+ Skrabec" <jernej.skrabec@gmail.com>, "Jessica Zhang" <jesszhan0024@gmail.com>, "Jonas
+ Karlman" <jonas@kwiboo.se>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Liu
+ Ying" <victor.liu@nxp.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Marijn
+ Suijten" <marijn.suijten@somainline.org>, "Matthias Brugger" <matthias.bgg@gmail.com>, "Maxime
+ Ripard" <mripard@kernel.org>, =?utf-8?b?TWHDrXJhIENhbmFs?= <mcanal@igalia.com>, "Neil
+ Armstrong" <neil.armstrong@linaro.org>, "Philipp Zabel" <p.zabel@pengutronix.de>, "Raspberry
+ Pi Kernel Maintenance" <kernel-list@raspberrypi.com>, "Rob Clark" <robin.clark@oss.qualcomm.com>, "Robert
+ Foss" <rfoss@kernel.org>, "Samuel Holland" <samuel@sholland.org>, "Sandy
+ Huang" <hjc@rock-chips.com>, "Sean Paul" <sean@poorly.run>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
+ Zimmermann" <tzimmermann@suse.de>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,74 +76,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Mon, Jan 19, 2026 at 10:49:20AM +0100, Michael Riesch wrote:
-> Hi Frank,
+On Wed, 7 Jan 2026 20:14:58 +0200, Dmitry Baryshkov wrote:
+> Verify the InfoFrames behaviour. Check that reporting InfoFrame as
+> unsupported doesn't result in a commit error. Also check that HDR and
+> Audio InfoFrames are not triggered if corresponding features are not
+> enabled.
 > 
-> Thanks for your review.
 > 
-> On 1/16/26 17:08, Frank Li wrote:
-> > On Fri, Jan 16, 2026 at 02:02:47PM +0100, Michael Riesch wrote:
-> >> The Synopsys DesignWare MIPI CSI-2 Receiver is a CSI-2 bridge with
-> >> one input port and one output port. It receives the data with the
-> >> help of an external MIPI PHY (C-PHY or D-PHY) and passes it to e.g.,
-> >> the Rockchip Video Capture (VICAP) block on recent Rockchip SoCs.
-> >>
-> >> Add a V4L2 subdevice driver for this unit.
-> >>
-> >> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> >> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-> >> Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
-> >> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> >> ---
-> > ...
-> >> +
-> >> +static inline struct dw_mipi_csi2_device *to_csi2(struct v4l2_subdev *sd)
-> >> +{
-> >> +	return container_of(sd, struct dw_mipi_csi2_device, sd);
-> >> +}
-> >> +
-> >> +static inline __maybe_unused void
-> > 
-> > why need '__maybe_unused', needn't inline. compiler can auto decide and
-> > report unused function if no 'inline'.
-> 
-> The __maybe_unused was helpful during development and is not really
-> required now. It doesn't hurt either, so I left it in. I can remove it
-> if you wish.
+> [ ... ]
 
-Please. :-)
+Acked-by: Maxime Ripard <mripard@kernel.org>
 
-> >> +static int dw_mipi_csi2_register_notifier(struct dw_mipi_csi2_device *csi2)
-> >> +{
-> >> +	struct v4l2_async_connection *asd;
-> >> +	struct v4l2_async_notifier *ntf = &csi2->notifier;
-> >> +	struct v4l2_fwnode_endpoint vep;
-> >> +	struct v4l2_subdev *sd = &csi2->sd;
-> >> +	struct device *dev = csi2->dev;
-> >> +	struct fwnode_handle *ep;
-> >> +	int ret;
-> >> +
-> >> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0, 0);
-> > 
-> > use  struct fwnode_handle *ep __free(fwnode_handle) can simplify err
-> > handler.
-> 
-> Sorry, I don't see the benefit of that.
-
-I'd prefer this, too, when you unconditionally need to release or put
-something. It'll make error handling simpler, too.
-
--- 
-Kind regards,
-
-Sakari Ailus
+Thanks!
+Maxime
 
 _______________________________________________
 Linux-rockchip mailing list
