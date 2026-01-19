@@ -4,71 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDBFCCF2DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 10:28:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FE13CCF2DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 10:43:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UqX0+BWiRQc1GWbsTnnhD7LAJwQSdlcGklEayFpKix0=; b=06XKWZfeTnCDhW
-	wIF5K5K0YerA14s3AKWBuXgtahcvaCgRJfUPs3fyirD4eare8JlnBtZMo7u6fp60+pu3zD8/NM/Ti
-	No8kjtFec6AJmbIR7I/aM+yo4xK9gqOk7cBAaDZ86bKiGx/wWf8C+kW0ss0Kq5xjtyLxg4wCFDwgV
-	/5CBT9ubONKNW09ArfAVOr0EkUL8dbt0LSG3by8DXrUk65r6GAG0idU2U0+aX0XcKr1zA21txFOCQ
-	PSCae+YqGaealwk6iUbhmh7dNqxA1MY8pdOGw3NAv5G5pXIfzHdVX9rZpOjH+5U7XHhFnje5l/+As
-	sTcxGfSaKxU3XL8w1Z+A==;
+	List-Owner; bh=bX0UIfSaVOvpfD0Rt+0MpjhZ1YrOocqYbAT0SYzJGx0=; b=cI+L8GFa8duUTz
+	wYub84S9i6zHxYHYPOnC85mFALLMQgJZHjNJUD7rCvKGQYAiWU3zckyZjnhLQan+uyGeKoVWEbhte
+	zF/GhQdf2DOiKcTt08fm1sQlWpRchDofWqgsQy+yjFN7BW49VLrcDTr6+0d59sltZ7Phhzn1SbVR/
+	bhw0Sh2bbOETk/PbAs9aeJj0EVfe6e6VijW3XS+gbIwQTaVQTrM56FN6xCeOHMC6Zp45Ny3Ork/rV
+	WicurBhYZ3Rkf8TDbI85wbwOOlo7pIM6zU3rPvL8HvobYUNb6J2R+nNn7nOGmrDyPOmcHYTrMMWMU
+	qFBzCWYIfCYjdbIUN4fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhmUt-00000001m6H-0U1m;
-	Mon, 19 Jan 2026 10:28:35 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vhmjW-00000001nkB-3iAa;
+	Mon, 19 Jan 2026 10:43:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhmUq-00000001m5X-1Mnl;
-	Mon, 19 Jan 2026 10:28:33 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1768818497; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=c2+Oc9wLMk54ge9fXvqUDFJyAAT7ec7rGEzKziR5QaN+z1z+rYOLC4VTelqvmOGmxAWYdKRr6O6s6MNKpwLXDhlL5lcGObgtP0rdHil9Vb0BGdsnIs4YglM6IDmVEaxWfWUQUdSpnEvc+N1CvCq+b7wf0NJz67YVdzuQZegORwk=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1768818497; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=EsuevJkgsl5C8dp30TcVS68HeqiqukUtd3I4/TFexqc=; 
-	b=PCpgNlj7n6I5+jp2Tf7Tr7dHfDi1tCAjsYDvdzMx5yFgbzZX6WT/h8sBwDUjW/hCqwYF0Ev65ozoN4kome1DuU0c3HYx8O/Q3KClOtdpMKpcdvH15iWcsAngNGweP3xIAGbiJSVfDmHKROVyhsDbXAFuGlYofF0jcARnDjD9J1M=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
-	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1768818497;
-	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=EsuevJkgsl5C8dp30TcVS68HeqiqukUtd3I4/TFexqc=;
-	b=IzMYIQ9xcILSyPL5IEgFBFGVo7j1D7ZBB9+pLkD8TJou1OhxL5m2aeY0mUG8sBsv
-	Wv1ahwlZ/JxKsdyJ4LI5HiTSJL64r53/U8Kqgk1RJy/0aMnZ+lBkwQr9s8a6uXe7Fe1
-	Ncr7UNildBZ9+LxfW3aXn6Ywt29jhDAL6JPF1W+g=
-Received: by mx.zohomail.com with SMTPS id 1768818497079716.4924558723245;
-	Mon, 19 Jan 2026 02:28:17 -0800 (PST)
-Message-ID: <d81c0f26-ab36-42a9-bc40-b9767aea038a@collabora.com>
-Date: Mon, 19 Jan 2026 11:28:11 +0100
+	id 1vhmjT-00000001niR-1AUo;
+	Mon, 19 Jan 2026 10:43:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B3FD643F2D;
+	Mon, 19 Jan 2026 10:43:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 860C1C19424;
+	Mon, 19 Jan 2026 10:43:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768819417;
+	bh=LJP01ZDiMZk6OcQI+p5HVN1PTrgvKnmv0e2XRGu7cI4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=PhPhIj7rRtf26NMcXl/ucpGdS1ND+3oF1NvdZC8liexxZxR1/KGM7bo4bTBRlXXoa
+	 8Vkhex4w4BgthsMk2D8/hRJkNeA0GlBID9PzRv0e6azW9fnVbRsaiUihXGFNqD0uTS
+	 v6swGs0U4bLSQAPYE0pJI4ZK1Q8oMEE12PJGHmW+naEGp0lRpB/8HPKP8LHz00So/w
+	 tvX8e6iCXb311FxKvziL+ncBbgY7Pz2LIWmpWHMIul+KPG3JSOVqRMYo/F5x2Cc4M/
+	 QT8IKSfkend2XhPOTQXzPK+74elovXHakI6XGTo7GVl44xjP7aLZLYrkjgaXwAxCes
+	 4Z42PS+1UzIug==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 768E5CCF2DF;
+	Mon, 19 Jan 2026 10:43:37 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Mon, 19 Jan 2026 11:43:35 +0100
+Subject: [PATCH v7 1/3] media: dt-bindings: add rockchip mipi csi-2
+ receiver
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v11 3/7] iommu: Add verisilicon IOMMU driver
-To: =?UTF-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>,
- Will Deacon <will@kernel.org>
-Cc: robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, nicolas.dufresne@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org, iommu@lists.linux.dev,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-media@vger.kernel.org, kernel@collabora.com
-References: <20260107101005.84039-1-benjamin.gaignard@collabora.com>
- <20260107101005.84039-4-benjamin.gaignard@collabora.com>
- <aWZui-rn5RDPwpEO@willie-the-truck>
- <eqv7yfdagt2axkj5xbtmrtkaakhq63ywf2q5tjo33exumhfrc5@7ghelrz6yt2d>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <eqv7yfdagt2axkj5xbtmrtkaakhq63ywf2q5tjo33exumhfrc5@7ghelrz6yt2d>
+Message-Id: <20251114-rockchip-mipi-receiver-v7-1-42ff419f9b51@collabora.com>
+References: <20251114-rockchip-mipi-receiver-v7-0-42ff419f9b51@collabora.com>
+In-Reply-To: <20251114-rockchip-mipi-receiver-v7-0-42ff419f9b51@collabora.com>
+To: Michael Riesch <michael.riesch@collabora.com>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, Frank Li <Frank.li@nxp.com>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1768819415; l=5160;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=OgKl9RHS2qISqL1jKo3kMI1uxI5UDgx/C4nCyULXhQo=;
+ b=HjR+5klUIw+o0g+ra+nDzXkKsYgQrsgZvXzdwFBm6+gAsPng/45sFfIFvjJyC/s02DWY2vQYG
+ ziPO0+KYHHiDURUkfEseeoGwDqNa+ipyppO8hTg+IWv26KZjPfrA4Vy
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_022832_424923_03159957 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20260119_024339_380392_ACB0F0E4 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,36 +97,195 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDE4LzAxLzIwMjYgw6AgMTA6NDEsIErDtnJnIFLDtmRlbCBhIMOpY3JpdMKgOgo+IEJlbmph
-bWluLAo+Cj4gT24gVHVlLCBKYW4gMTMsIDIwMjYgYXQgMDQ6MTA6NTFQTSArMDAwMCwgV2lsbCBE
-ZWFjb24gd3JvdGU6Cj4+IEkgdG9vayBhbm90aGVyIGxvb2sgYXQgdGhpcyB0byBzZWUgd2hldGhl
-ciBpdCBoYWQgY2hhbmdlZCBzaWduaWZpY2FudGx5Cj4+IGZyb20gdjYgd2hlbiBjb21wYXJlZCB0
-byB0aGUgcm9ja2NoaXAgZHJpdmVyLiBTYWRseSwgdGhleSBzdGlsbCBsb29rCj4+IHZlcnkgc2lt
-aWxhciB0byBtZSBhbmQgSSBjb250aW51ZSB0byBzdXNwZWN0IHRoYXQgdGhlIGhhcmR3YXJlIGlz
-IGEKPj4gZGVyaXZhdGl2ZS4gSSByZWFsbHkgZG9uJ3QgdW5kZXJzdGFuZCB3aHkgaGF2aW5nIGEg
-c2hhcmVkIGltcGxlbWVudGF0aW9uCj4+IG9mIHRoZSBkZWZhdWx0IGRvbWFpbiBvcHMgaXMgZGlm
-ZmljdWx0IG9yIGNvbnRyb3ZlcnNpYWwuIEhhdmUgeW91IHRyaWVkCj4+IHRvIHdyaXRlIGl0Pwo+
-IFdoZW4gdXBkYXRpbmcgZm9yIHYxMiwgY2FuIHlvdSBwbGVhc2UgcHV0IGFuIGV4cGxhbmF0b3J5
-IGNvbW1lbnQgYXQgdGhlIHRvcCBvZgo+IHRoZSBmaWxlIGV4cGxhaW5pbmcgdGhlIHJlbGF0aW9u
-c2hpcCBvZiB0aGUgSVAgdGhpcyBkcml2ZXIgaXMgZm9yIHRvIHRoZQo+IFJvY2tDaGlwIElPTU1V
-IGFuZCB0aGUgcmF0aW9uYWxlIGZvciBoYXZpbmcgaXQgYXMgYSBzZXBhcmF0ZSBkcml2ZXI/IEkg
-d2FudAo+IHRoaXMgcGFydCBvZiB0aGUgZGlzY3Vzc2lvbiBkb2N1bWVudGVkIGluIHRoZSBjb2Rl
-IGluIGNhc2UgaXQgY29tZXMgdXAgYWdhaW4uCgpEb2VzIHRoZSBmb2xsb3cgd29yZGluZyBzdW1t
-YXJpemUgdGhlIHNpdHVhdGlvbiBjb3JyZWN0bHkgZm9yIHlvdSBpZiBJIHB1dCBpdAppbiBoZWFk
-ZXIgY29tbWVudCA/CgogICogVGhpcyBoYXJkd2FyZSBibG9jayBpcyB1c2luZyBhIDIgcGFnZXMg
-dGFibGVzIGFsbG9jYXRpb24gc3RydWN0dXJlLgogICogVGhhdCBtYWtlIHZlcnkgc2ltaWxhciB0
-byBSb2NraGlwIGlvbW11IGhhcmR3YXJlIGJsb2NrcyBidXQgaXQgaGFzCiAgKiBpdCBvd24gZHJp
-dmVyIGJlY2F1c2UgdGhlIHJlZ2lzdGVycyBvZmZzZXQgYW5kIGNvbmZpZ3VyYXRpb24gYml0cwog
-ICogYXJlIGNvbXBsZXRlbHkgZGlmZmVyZW50LiBBbiBhZGRpdGlvbmFsIHJhaXNvbiBpcyB0aGF0
-IHRoaXMgaGFyZHdhcmUKICAqIGhhcyBiZWVuIGRldmVsb3BwZWQgYnkgVmVyaXNpbGljb24gdG8g
-YmUgdXNlZCBieSB0aGVpciBoYXJkd2FyZSB2aWRlbwogICogZGVjb2RlcnMgYW5kIGZvciBhIGdl
-bmVyYWwgcHVycG9zZSBsaWtlIFJvY2tjaGlwIGlvbW11cy4KClJlZ2FyZHMsCkJlbmphbWluCgo+
-Cj4KPiAtSm9lcmcKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+From: Michael Riesch <michael.riesch@collabora.com>
+
+Add documentation for the Rockchip MIPI CSI-2 Receiver.
+
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 141 +++++++++++++++++++++
+ MAINTAINERS                                        |   6 +
+ 2 files changed, 147 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+new file mode 100644
+index 000000000000..2c2bd87582eb
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+@@ -0,0 +1,141 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip MIPI CSI-2 Receiver
++
++maintainers:
++  - Michael Riesch <michael.riesch@collabora.com>
++
++description:
++  The Rockchip MIPI CSI-2 Receiver is a CSI-2 bridge with one input port and
++  one output port. It receives the data with the help of an external MIPI PHY
++  (C-PHY or D-PHY) and passes it to the Rockchip Video Capture (VICAP) block.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3568-mipi-csi2
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    items:
++      - description: Interrupt that signals changes in CSI2HOST_ERR1.
++      - description: Interrupt that signals changes in CSI2HOST_ERR2.
++
++  interrupt-names:
++    items:
++      - const: err1
++      - const: err2
++
++  clocks:
++    maxItems: 1
++
++  phys:
++    maxItems: 1
++    description: MIPI C-PHY or D-PHY.
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/$defs/port-base
++        unevaluatedProperties: false
++        description: Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++            properties:
++              bus-type:
++                enum:
++                  - 1 # MEDIA_BUS_TYPE_CSI2_CPHY
++                  - 4 # MEDIA_BUS_TYPE_CSI2_DPHY
++
++              data-lanes:
++                minItems: 1
++                maxItems: 4
++
++            required:
++              - bus-type
++              - data-lanes
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output port connected to a Rockchip VICAP port.
++
++    required:
++      - port@0
++      - port@1
++
++  power-domains:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - phys
++  - ports
++  - power-domains
++  - resets
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3568-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/media/video-interfaces.h>
++    #include <dt-bindings/power/rk3568-power.h>
++
++    soc {
++        interrupt-parent = <&gic>;
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        csi: csi@fdfb0000 {
++            compatible = "rockchip,rk3568-mipi-csi2";
++            reg = <0x0 0xfdfb0000 0x0 0x10000>;
++            interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>,
++                         <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
++            interrupt-names = "err1", "err2";
++            clocks = <&cru PCLK_CSI2HOST1>;
++            phys = <&csi_dphy>;
++            power-domains = <&power RK3568_PD_VI>;
++            resets = <&cru SRST_P_CSI2HOST1>;
++
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                csi_in: port@0 {
++                    reg = <0>;
++
++                    csi_input: endpoint {
++                        bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
++                        data-lanes = <1 2 3 4>;
++                        remote-endpoint = <&imx415_output>;
++                    };
++                };
++
++                csi_out: port@1 {
++                    reg = <1>;
++
++                    csi_output: endpoint {
++                        remote-endpoint = <&vicap_mipi_input>;
++                    };
++                };
++            };
++        };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5560da0deb71..1d1589feaf95 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -25364,6 +25364,12 @@ S:	Maintained
+ F:	drivers/i2c/busses/i2c-designware-amdisp.c
+ F:	include/linux/soc/amd/isp4_misc.h
+ 
++SYNOPSYS DESIGNWARE MIPI CSI-2 RECEIVER DRIVER
++M:	Michael Riesch <michael.riesch@collabora.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
++
+ SYNOPSYS DESIGNWARE MMC/SD/SDIO DRIVER
+ M:	Jaehoon Chung <jh80.chung@samsung.com>
+ M:	Shawn Lin <shawn.lin@rock-chips.com>
+
+-- 
+2.39.5
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
