@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A9A1CCF2EF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 12:02:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DEA5FCCF2F6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 19 Jan 2026 12:33:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DQdSHPMcf+t9OqJ/ZR6tTbpsA6EP0JmKKaX2CtmrWs4=; b=x84ok7lHrbeuP4
-	kP3SPazWKLTP0G3X+mXqXus7nCmq+l4dv3p15M/U39Kd1E7BUUWoUJkj7SdEUMU7Z8ZvVqPtQ6plz
-	UiEh8E/XIjjIguWeCxSTBYWhWh+87fokezD+CSPacNWYXMT1Larz/SYzWqaMXFuM6Xi+ujZX1zDeU
-	dElRC4j7z6Ev5NiGGePF5cV+H89gmJFW4wyuLBnSabfQuUnWGDWhh7MyUgjziSXNfCPFcavZqcKDA
-	HkGjcDK468npZhnivC/7w5isPbXfzC/mKijKWNmYeBMqW0VCZlZNudvnkfhV92i5TLNzF6gTiu+Om
-	dU/oR600l2SFnjPJShOg==;
+	List-Owner; bh=eb8DeuvrcxLS2sfJzNIXWXeQdhBMEilL9OOWDjVWm0I=; b=3BJ7z4RREdGmnY
+	5odD7YKIEINngS9YTaDkiiKAZKGRb7IlgTxksU5ecc26RaKOt/6Xft/Sul79AVcm9DjssVDfDVchk
+	TM7mpmLZEx784lX4X4wHLsKxfjbHRaEaQd7aQLLyiWYzJTM2Zf1JeObjRTVD9jf54z9K20nuclA2Q
+	AkIkiQlhd95buSZh2d5AbY9BwFNBkLAAZh7eemDquoXkXSpTHxGL9CcIVGzYN9EspZZ8pn1z13VY0
+	G9xA+IaY0LikqaszNnuV3XM+lZnl4PRkp3HQ0wu/OAkrMkCEwEi6VXKIQM4ULySb+UJKqQxky4/e7
+	nOVWnyCY4ltkUEifQ1jA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhnxt-00000001wMv-3t8A;
-	Mon, 19 Jan 2026 12:02:37 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vhoRI-000000020df-2r17;
+	Mon, 19 Jan 2026 12:33:00 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vhnxj-00000001wMS-0bDs;
-	Mon, 19 Jan 2026 12:02:32 +0000
-Received: from pendragon.ideasonboard.com (81-175-209-152.bb.dnainternet.fi [81.175.209.152])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 144992D9;
-	Mon, 19 Jan 2026 13:01:51 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1768824111;
-	bh=rDWLbsxDX6g5bOU5oPzY9EefxAeD2i3+I8GJn8jVGaE=;
+	id 1vhoRD-000000020cs-35ER;
+	Mon, 19 Jan 2026 12:32:56 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id BA3256014E;
+	Mon, 19 Jan 2026 12:32:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34E65C116C6;
+	Mon, 19 Jan 2026 12:32:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1768825974;
+	bh=M+d6u8jNMJOG/dvieHbaSobR94YjAiJkXgQzt7gGqGY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CvsnKgGOy94zAGGGaXQv125gqcw6WHrWMi+sJ+IFJ11GxXHGQ/NG5RxyGbEec/Xl4
-	 TE4Mure2ZNHiscRA41CYTkCQnKfgQRvulxggdLyx01K5XDMNVY0vC/mosWAmOWHd7D
-	 fyjBaxiNXWpmmYWzBEjA9+H0kuJ0G0ewC+WgKItE=
-Date: Mon, 19 Jan 2026 14:01:59 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Frank Li <Frank.li@nxp.com>, Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	b=AedT0N6xsVrBAyEJQwxwMI7L0E1ha0dhwopq7LOvX6bGNGP/Hl2efB2FDeJWXCqHs
+	 3M5e5CQKpAAZC4tSjvi4Vjy7OCPhNHVtZs36enVffdaRm16stc0+WGqN5AAwK8l/kD
+	 jyyFF0tDkMTD/uMk9bRke/+5h9dxF/iUdvJGZmaqnyFiCFoHktjNbvpvF8WRpVLhEv
+	 KrYzILjhNYkhIYsHeDBCIeO461iCbnO827xVPOjDMBKgF6SFjpKlfcu86CVkESJbVR
+	 3JFAjjII3dtZAbzNbK2fb9d1jpmpEr6SlsOPfi9iqBPLTLlGxNc4it3VxoA5kHyEuI
+	 vk/HT8NvfjNpQ==
+Date: Mon, 19 Jan 2026 12:32:47 +0000
+From: Will Deacon <will@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 2/3] media: synopsys: add driver for the designware
- mipi csi-2 receiver
-Message-ID: <20260119120159.GA26642@pendragon.ideasonboard.com>
-References: <20251114-rockchip-mipi-receiver-v5-0-45aa117f190a@collabora.com>
- <20251114-rockchip-mipi-receiver-v5-2-45aa117f190a@collabora.com>
- <aWpil6jI1Ad0DcEI@lizhi-Precision-Tower-5810>
- <db2f0c20-ca7e-41c9-be08-67fd1f92c2af@collabora.com>
+	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v11 3/7] iommu: Add verisilicon IOMMU driver
+Message-ID: <aW4kb5EbxbrhTOxK@willie-the-truck>
+References: <20260107101005.84039-1-benjamin.gaignard@collabora.com>
+ <20260107101005.84039-4-benjamin.gaignard@collabora.com>
+ <aWZui-rn5RDPwpEO@willie-the-truck>
+ <68a49f8b-178c-4fa2-b4a9-315ad602271d@collabora.com>
+ <aWeTQ50DOtntcniN@willie-the-truck>
+ <db0950f1-b357-47c2-9829-e33262ab456d@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <db2f0c20-ca7e-41c9-be08-67fd1f92c2af@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260119_040227_358970_B543E8C3 
-X-CRM114-Status: GOOD (  37.04  )
+In-Reply-To: <db0950f1-b357-47c2-9829-e33262ab456d@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,246 +74,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jan 19, 2026 at 10:49:20AM +0100, Michael Riesch wrote:
-> Hi Frank,
-> 
-> Thanks for your review.
-> 
-> On 1/16/26 17:08, Frank Li wrote:
-> > On Fri, Jan 16, 2026 at 02:02:47PM +0100, Michael Riesch wrote:
-> >> The Synopsys DesignWare MIPI CSI-2 Receiver is a CSI-2 bridge with
-> >> one input port and one output port. It receives the data with the
-> >> help of an external MIPI PHY (C-PHY or D-PHY) and passes it to e.g.,
-> >> the Rockchip Video Capture (VICAP) block on recent Rockchip SoCs.
-> >>
-> >> Add a V4L2 subdevice driver for this unit.
-> >>
-> >> Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-> >> Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-> >> Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
-> >> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> >> ---
-> > ...
-> >> +
-> >> +static inline struct dw_mipi_csi2_device *to_csi2(struct v4l2_subdev *sd)
-> >> +{
-> >> +	return container_of(sd, struct dw_mipi_csi2_device, sd);
-> >> +}
-> >> +
-> >> +static inline __maybe_unused void
-> > 
-> > why need '__maybe_unused', needn't inline. compiler can auto decide and
-> > report unused function if no 'inline'.
-> 
-> The __maybe_unused was helpful during development and is not really
-> required now. It doesn't hurt either, so I left it in. I can remove it
-> if you wish.
-> 
-> >> +dw_mipi_csi2_write(struct dw_mipi_csi2_device *csi2, unsigned int addr, u32 val)
-> >> +{
-> >> +	writel(val, csi2->base_addr + addr);
-> >> +}
-> >> +
-> >> +static inline __maybe_unused u32
-> >> +dw_mipi_csi2_read(struct dw_mipi_csi2_device *csi2, unsigned int addr)
-> >> +{
-> >> +	return readl(csi2->base_addr + addr);
-> >> +}
-> >> +
-> >> +static const struct dw_mipi_csi2_format *
-> >> +dw_mipi_csi2_find_format(struct dw_mipi_csi2_device *csi2, u32 mbus_code)
-> >> +{
-> >> +	WARN_ON(csi2->formats_num == 0);
-> >> +
-> >> +	for (unsigned int i = 0; i < csi2->formats_num; i++) {
-> >> +		const struct dw_mipi_csi2_format *format = &csi2->formats[i];
-> >> +
-> >> +		if (format->code == mbus_code)
-> >> +			return format;
-> >> +	}
-> >> +
-> >> +	return NULL;
-> >> +}
-> >> +
-> >> +static int dw_mipi_csi2_start(struct dw_mipi_csi2_device *csi2)
-> >> +{
-> >> +	struct media_pad *source_pad;
-> >> +	union phy_configure_opts opts;
-> >> +	s64 link_freq;
-> >> +	u32 control = 0;
-> >> +	u32 lanes = csi2->lanes_num;
-> >> +	int ret;
-> > 
-> > try keep reverise christmas tree order.
-> 
-> Ack.
-> 
-> >> +
-> >> +	if (lanes < 1 || lanes > 4)
-> >> +		return -EINVAL;
-> >> +
-> > ...
-> >> +
-> >> +static int dw_mipi_csi2_register_notifier(struct dw_mipi_csi2_device *csi2)
-> >> +{
-> >> +	struct v4l2_async_connection *asd;
-> >> +	struct v4l2_async_notifier *ntf = &csi2->notifier;
-> >> +	struct v4l2_fwnode_endpoint vep;
-> >> +	struct v4l2_subdev *sd = &csi2->sd;
-> >> +	struct device *dev = csi2->dev;
-> >> +	struct fwnode_handle *ep;
-> >> +	int ret;
-> >> +
-> >> +	ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 0, 0, 0);
-> > 
-> > use  struct fwnode_handle *ep __free(fwnode_handle) can simplify err
-> > handler.
-> 
-> Sorry, I don't see the benefit of that.
-> 
-> >> +	if (!ep)
-> >> +		return dev_err_probe(dev, -ENODEV, "failed to get endpoint\n");
-> >> +
-> > ...
-> >> +{
-> >> +	struct media_pad *pads = csi2->pads;
-> >> +	struct v4l2_subdev *sd = &csi2->sd;
-> >> +	int ret;
-> >> +
-> >> +	ret = dw_mipi_csi2_register_notifier(csi2);
-> >> +	if (ret)
-> >> +		goto err;
-> >> +
-> >> +	v4l2_subdev_init(sd, &dw_mipi_csi2_ops);
-> >> +	sd->dev = csi2->dev;
-> >> +	sd->entity.ops = &dw_mipi_csi2_media_ops;
-> >> +	sd->entity.function = MEDIA_ENT_F_VID_IF_BRIDGE;
-> >> +	sd->flags |= V4L2_SUBDEV_FL_HAS_DEVNODE | V4L2_SUBDEV_FL_STREAMS;
-> >> +	sd->internal_ops = &dw_mipi_csi2_internal_ops;
-> >> +	sd->owner = THIS_MODULE;
-> > 
-> > I remeber needn't set owner, v4l2_async_register_subdev() do it for you.
-> 
-> Indeed, nice catch.
-> 
-> >> +	snprintf(sd->name, sizeof(sd->name), "dw-mipi-csi2 %s",
-> >> +		 dev_name(csi2->dev));
-> >> +
-> > ...
-> >> +
-> >> +static int dw_mipi_csi2_probe(struct platform_device *pdev)
-> >> +{
-> >> +	struct device *dev = &pdev->dev;
-> >> +	struct dw_mipi_csi2_device *csi2;
-> >> +	int ret;
-> >> +
-> >> +	csi2 = devm_kzalloc(dev, sizeof(*csi2), GFP_KERNEL);
-> >> +	if (!csi2)
-> >> +		return -ENOMEM;
-> >> +	csi2->dev = dev;
-> >> +	dev_set_drvdata(dev, csi2);
-> >> +
-> >> +	csi2->base_addr = devm_platform_ioremap_resource(pdev, 0);
-> >> +	if (IS_ERR(csi2->base_addr))
-> >> +		return PTR_ERR(csi2->base_addr);
-> >> +
-> >> +	ret = devm_clk_bulk_get_all(dev, &csi2->clks);
-> >> +	if (ret != DW_MIPI_CSI2_CLKS_MAX)
-> >> +		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
-> >> +	csi2->clks_num = ret;
-> >> +
-> >> +	csi2->phy = devm_phy_get(dev, NULL);
-> >> +	if (IS_ERR(csi2->phy))
-> >> +		return dev_err_probe(dev, PTR_ERR(csi2->phy),
-> >> +				     "failed to get MIPI CSI-2 PHY\n");
-> >> +
-> >> +	csi2->reset = devm_reset_control_get_exclusive(dev, NULL);
-> >> +	if (IS_ERR(csi2->reset))
-> >> +		return dev_err_probe(dev, PTR_ERR(csi2->reset),
-> >> +				     "failed to get reset\n");
-> >> +
-> >> +	csi2->formats = formats;
-> >> +	csi2->formats_num = ARRAY_SIZE(formats);
-> >> +
-> >> +	pm_runtime_enable(dev);
-> > 
-> > devm_pm_runtime_enable() will simple error handle.
-> 
-> Ack.
-> 
-> >> +
-> >> +	ret = phy_init(csi2->phy);
-> >> +	if (ret) {
-> >> +		ret = dev_err_probe(dev, ret,
-> >> +				    "failed to initialize MIPI CSI-2 PHY\n");
-> >> +		goto err_pm_runtime_disable;
-> >> +	}
-> >> +
-> > ...
-> >> +
-> >> +static int dw_mipi_csi2_runtime_resume(struct device *dev)
-> >> +{
-> >> +	struct dw_mipi_csi2_device *csi2 = dev_get_drvdata(dev);
-> >> +	int ret;
-> >> +
-> >> +	reset_control_assert(csi2->reset);
-> >> +	udelay(5);
-> > 
-> > Now prefer use fsleep(), which auto choose difference sleep function
-> > according to delay number.
-> 
-> I'll keep that in mind, but here the first thing that fsleep does is to
-> check whether the parameter is <= 10 and (since this is true) call
-> udelay. So here I don't see the point really.
+On Wed, Jan 14, 2026 at 02:10:48PM +0100, Benjamin Gaignard wrote:
+> =
 
-Using fsleep() by default, unless there's a specific need to use
-udelay() or msleep(), is usually preferred. It "does the right thing"
-(TM) automatically, freeing developers and reviewers from having to
-think about it.
+> Le 14/01/2026 =E0 13:59, Will Deacon a =E9crit=A0:
+> > On Tue, Jan 13, 2026 at 05:25:38PM +0100, Benjamin Gaignard wrote:
+> > > Le 13/01/2026 =E0 17:10, Will Deacon a =E9crit=A0:
+> > > > Hi Benjamin,
+> > > > =
 
-> >> +	reset_control_deassert(csi2->reset);
-> >> +
-> >> +	ret = clk_bulk_prepare_enable(csi2->clks_num, csi2->clks);
-> >> +	if (ret) {
-> >> +		dev_err(dev, "failed to enable clocks\n");
-> >> +		return ret;
-> >> +	}
-> >> +
-> >> +	return 0;
-> >> +}
-> >> +
-> >> +static DEFINE_RUNTIME_DEV_PM_OPS(dw_mipi_csi2_pm_ops,
-> >> +				 dw_mipi_csi2_runtime_suspend,
-> >> +				 dw_mipi_csi2_runtime_resume, NULL);
-> >> +
-> >> +static struct platform_driver dw_mipi_csi2_drv = {
-> >> +	.driver = {
-> >> +		.name = "dw-mipi-csi2",
-> >> +		.of_match_table = dw_mipi_csi2_of_match,
-> >> +		.pm = &dw_mipi_csi2_pm_ops,
-> > 
-> > pm_ptr( &dw_mipi_csi2_pm_ops)
-> 
-> Shouldn't make a difference here since this driver depends on CONFIG_PM.
-> 
-> >> +	},
-> >> +	.probe = dw_mipi_csi2_probe,
-> >> +	.remove = dw_mipi_csi2_remove,
-> >> +};
-> >> +module_platform_driver(dw_mipi_csi2_drv);
-> >> +
-> >> +MODULE_DESCRIPTION("Synopsys DesignWare MIPI CSI-2 Receiver platform driver");
-> >> +MODULE_LICENSE("GPL");
+> > > > Thanks for posting a v11.
+> > > > =
 
--- 
-Regards,
+> > > > On Wed, Jan 07, 2026 at 11:09:53AM +0100, Benjamin Gaignard wrote:
+> > > > > The Verisilicon IOMMU hardware block can be found in combination
+> > > > > with Verisilicon hardware video codecs (encoders or decoders) on
+> > > > > different SoCs.
+> > > > > Enable it will allow us to use non contiguous memory allocators
+> > > > > for Verisilicon video codecs.
+> > > > > If both decoder and this iommu driver are compiled has modules
+> > > > > there is undefined symboles issues so this iommu driver could
+> > > > > only be compiled has built-in.
+> > > > > =
 
-Laurent Pinchart
+> > > > > Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> > > > > ---
+> > > > > changes in version 11:
+> > > > > - Fix dependency issue when decoder driver is build as module.
+> > > > > =
+
+> > > > >    drivers/iommu/Kconfig     |  11 +
+> > > > >    drivers/iommu/Makefile    |   1 +
+> > > > >    drivers/iommu/vsi-iommu.c | 808 ++++++++++++++++++++++++++++++=
+++++++++
+> > > > >    include/linux/vsi-iommu.h |  21 +
+> > > > >    4 files changed, 841 insertions(+)
+> > > > >    create mode 100644 drivers/iommu/vsi-iommu.c
+> > > > >    create mode 100644 include/linux/vsi-iommu.h
+> > > > Based on your reply to v9:
+> > > > =
+
+> > > > https://lore.kernel.org/all/0eff8b1a-c45f-47b1-a871-59f4a0101f0f@co=
+llabora.com/
+> > > > =
+
+> > > > I took another look at this to see whether it had changed significa=
+ntly
+> > > > from v6 when compared to the rockchip driver. Sadly, they still look
+> > > > very similar to me and I continue to suspect that the hardware is a
+> > > > derivative. I really don't understand why having a shared implement=
+ation
+> > > > of the default domain ops is difficult or controversial. Have you t=
+ried
+> > > > to write it?
+> > > > =
+
+> > > > However, given that nobody from the Rockchip side has contributed t=
+o the
+> > > > discussion and you claim that this is a distinct piece of IP, I don=
+'t
+> > > > want to block the merging of the driver by leaving the conversation
+> > > > hanging.
+> > > > =
+
+> > > > There is still one thing I don't understand (which, amusingly, the
+> > > > rockchip driver doesn't seem to suffer from):
+> > > > =
+
+> > > > > +static void vsi_iommu_flush_tlb_all(struct iommu_domain *domain)
+> > > > > +{
+> > > > > +	struct vsi_iommu_domain *vsi_domain =3D to_vsi_domain(domain);
+> > > > > +	struct list_head *pos;
+> > > > > +	unsigned long flags;
+> > > > > +
+> > > > > +	spin_lock_irqsave(&vsi_domain->lock, flags);
+> > > > > +
+> > > > > +	list_for_each(pos, &vsi_domain->iommus) {
+> > > > > +		struct vsi_iommu *iommu;
+> > > > > +		int ret;
+> > > > > +
+> > > > > +		iommu =3D list_entry(pos, struct vsi_iommu, node);
+> > > > > +		ret =3D pm_runtime_resume_and_get(iommu->dev);
+> > > > > +		if (ret < 0)
+> > > > > +			continue;
+> > > > > +
+> > > > > +		spin_lock(&iommu->lock);
+> > > > > +
+> > > > > +		writel(VSI_MMU_BIT_FLUSH, iommu->regs + VSI_MMU_FLUSH_BASE);
+> > > > > +		writel(0, iommu->regs + VSI_MMU_FLUSH_BASE);
+> > > > > +
+> > > > > +		spin_unlock(&iommu->lock);
+> > > > > +		pm_runtime_put_autosuspend(iommu->dev);
+> > > > > +	}
+> > > > > +
+> > > > > +	spin_unlock_irqrestore(&vsi_domain->lock, flags);
+> > > > > +}
+> > > > [...]
+> > > > =
+
+> > > > > +static const struct iommu_ops vsi_iommu_ops =3D {
+> > > > > +	.identity_domain =3D &vsi_identity_domain,
+> > > > > +	.release_domain =3D &vsi_identity_domain,
+> > > > > +	.domain_alloc_paging =3D vsi_iommu_domain_alloc_paging,
+> > > > > +	.of_xlate =3D vsi_iommu_of_xlate,
+> > > > > +	.probe_device =3D vsi_iommu_probe_device,
+> > > > > +	.release_device =3D vsi_iommu_release_device,
+> > > > > +	.device_group =3D generic_single_device_group,
+> > > > > +	.owner =3D THIS_MODULE,
+> > > > > +	.default_domain_ops =3D &(const struct iommu_domain_ops) {
+> > > > > +		.attach_dev		=3D vsi_iommu_attach_device,
+> > > > > +		.map_pages		=3D vsi_iommu_map,
+> > > > > +		.unmap_pages		=3D vsi_iommu_unmap,
+> > > > > +		.flush_iotlb_all	=3D vsi_iommu_flush_tlb_all,
+> > > > This has no callers and so your unmap routine appears to be broken.
+> > > It is a leftover of previous attempt to allow video decoder to clean/=
+flush
+> > > the iommu by using a function from the API.
+> > > Now it is using vsi_iommu_restore_ctx().
+> > > I while remove it in version 12.
+> > Don't you still need some invalidation on the unmap path?
+> =
+
+> In vsi_iommu_unmap_iova() page is invalided by calling vsi_mk_pte_invalid=
+().
+
+But that just writes an invalid descriptor and doesn't appear to invalidate
+the TLB at all.
+
+> That clear BIT(0) so the hardware knows the page is invalid.
+> Do I have miss something here ?
+
+Yes, the TLB structure needs to be invalidated so that the page-table
+walker sees the new value that you have written in memory.
+
+The rockchip driver gets this correct...
+
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
