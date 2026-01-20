@@ -4,58 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA8EBD2ED0F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 12:05:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA012D2ECF7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 12:22:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+04yePpEyhIAbM6Q7EjfLCd16WKQzXXfVipm1xxtRXk=; b=YfIa3d0ERWv11l
-	tKpOWc/1EGrG01c6+tIrn0lz1y9kufFiNbnZce1ObfzlaDkgJMnXc9ofSC5yYh5X72XN4OahH9dT2
-	k/puQNz+MKcpFHw6cVRruVtn+wALKk/EMDNscT3FrphUpixghLjsfLl8eMt07kiYMWEoCe85flSWp
-	3BQ6JB8+yglnxgvFicwagA2/CjNZr+ZNV0Wnl3Qf8TwQonCdEQ4+Gmvfa2WBvdJBohN9Q4o/cnaWP
-	RBkFX/O5LYLcTgsBHliU+L8lqHcblz9Knsbf5E2OsYiEoHwlQwsOeLCzbJd2SC7J0qfNMjzn6hqNh
-	93zeybP6hC41qk11Itwg==;
+	List-Owner; bh=bX0UIfSaVOvpfD0Rt+0MpjhZ1YrOocqYbAT0SYzJGx0=; b=J70uU6rE/0Ez6x
+	2NIUTlFamH7bM3bQZyTROGAPAvp4pnyp2EBkI/whcevLP/hyQ38dwXEw/nw4jKSrZO3Kf5wxVYaf/
+	xNet6QG3iR7WE3eR0zcEezHlFlUOdFmHNxfjIEPD5N3oPFvclfZNk0B9yHNwdKLpZiR1lQPF4apau
+	ViSukUG2gCQnDtr+xZS7CquUuMokrVZyV0T7251mk8Gx+fwpJdCX9KwPyv5h9SGbOAxnv/GII92e+
+	6hSTQGultJ1Q4gCz37KuGfNTa8pzRBuADONC93utR9/WI5l1rbRFFM2KFuuOh/roUbJ3ndniy1n52
+	Oz+1ZVYNJQGINVrC8IKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viATy-00000003mYf-0o82;
-	Tue, 20 Jan 2026 12:05:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1viAkk-00000003oz7-0izE;
+	Tue, 20 Jan 2026 12:22:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viATt-00000003mXC-29jf;
-	Tue, 20 Jan 2026 12:05:12 +0000
+	id 1viAki-00000003oyP-2Wcy;
+	Tue, 20 Jan 2026 12:22:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CA63440C2B;
-	Tue, 20 Jan 2026 12:05:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FAADC16AAE;
-	Tue, 20 Jan 2026 12:05:07 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EC2BB60018;
+	Tue, 20 Jan 2026 12:22:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 89413C2BC86;
+	Tue, 20 Jan 2026 12:22:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768910708;
-	bh=tWKygxm4Rg1vI4GyJ9QRTEs3zlrz5NkZLCWCbQYismo=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=osSGWVFezwo+IxnhWRta1WDqC8SCElwyMbV7MwREOha4Jjs59JzbhjJQ4bMlQgecH
-	 y6nf2Pt0g6hoN6cgp1O0QRofMMIkRjn1624PIHOsB9WxptlgOxrlTnq8jYYYLkAM4X
-	 fzjo6WwRn+8AQV9dL2/a3NcjU+e2Y6hMtv9P3C46jl0qevTkmDfxKyCbUPy0zLh9YE
-	 y70TFUP+gNf2b4oPvYSAm8pwGMECs6LsdzhZpb89BqGkQ+sfF4ecl0EOxSMhF9IOb/
-	 xqwfunYWdt2fB9b/uEQkCBd/8uUayCfw8j6+eR6kRUPW8JwoFm4xwY0s9JBtlq+I67
-	 aoFQO3iFp5vNQ==
-From: Mark Brown <broonie@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Mark Brown <broonie@kernel.org>
-Cc: Aishwarya TCV <Aishwarya.TCV@arm.com>, linux-spi@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20260116-spi-rockchip-threaded-irq-v1-1-c45c3a5a38b1@kernel.org>
-References: <20260116-spi-rockchip-threaded-irq-v1-1-c45c3a5a38b1@kernel.org>
-Subject: Re: [PATCH] spi: rockchip: Use plain request_irq()
-Message-Id: <176891070705.53784.16388482856469002569.b4-ty@kernel.org>
-Date: Tue, 20 Jan 2026 12:05:07 +0000
+	s=k20201202; t=1768911751;
+	bh=LJP01ZDiMZk6OcQI+p5HVN1PTrgvKnmv0e2XRGu7cI4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=QTkHf0IOyDMlOQRoTPhWUShVu0H1j6YEWpOY8hstim23YvxfeawPY45jlhAHSASIF
+	 bOqHkus1q5AYKcggrvXb5q9A/sIOU6MFsC2x4PHHhlRDrkiIVOY06NkVjETM+HFeOX
+	 kb4ZmzPyPiIlMDTiY/U5enf9Wv+nHeTYAwfQGiHzQEgp80cwxcS0FOVRi7ISqoRwWL
+	 kTsddlKEKTEwnXPhoM90taRc9ZUKFsotTqoGmdCB7i6XAVTaZY0jOxgvF5XufGGNpR
+	 aY6DiOLTJtWqszPCRCC/7yj2A9apYNTEctigPZNEBBFDZdZ3Xxk+GjdHGOG0adyKUB
+	 2CXMX+Zg9d8yw==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 6E864D2ED12;
+	Tue, 20 Jan 2026 12:22:31 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Tue, 20 Jan 2026 13:22:27 +0100
+Subject: [PATCH v8 1/3] media: dt-bindings: add rockchip mipi csi-2
+ receiver
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-47773
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_040511_852579_7E97B7F8 
-X-CRM114-Status: GOOD (  12.26  )
+Message-Id: <20251114-rockchip-mipi-receiver-v8-1-bd1cf5cb9588@collabora.com>
+References: <20251114-rockchip-mipi-receiver-v8-0-bd1cf5cb9588@collabora.com>
+In-Reply-To: <20251114-rockchip-mipi-receiver-v8-0-bd1cf5cb9588@collabora.com>
+To: Michael Riesch <michael.riesch@collabora.com>, 
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+ Kever Yang <kever.yang@rock-chips.com>, Frank Li <Frank.li@nxp.com>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Hans Verkuil <hverkuil@kernel.org>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1768911749; l=5160;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=OgKl9RHS2qISqL1jKo3kMI1uxI5UDgx/C4nCyULXhQo=;
+ b=HC8IXy/NfVcDmjyGbQyK6E6NH7m9+XrfZjZi8IPQ548SYdQB9wllPuBBkvFYTtYYyxyDfiQCM
+ P42JtzCp86OBP4YXFCoNtp0frc1D/XfZDrv2xIcWqp/KTkNmjrk6cFO
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,48 +94,192 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 16 Jan 2026 13:23:40 +0000, Mark Brown wrote:
-> The Rockchip driver has since interrupt support was added used
-> request_threaded_irq() but not actually supplied a threaded handler,
-> handling everything in the primary handler.  This is equivalent to just
-> using a plain request_irq(), and since aef30c8d569c (genirq: Warn about
-> using IRQF_ONESHOT without a threaded handler) the current behaviour has
-> triggered a WARN_ON().  Convert to use request_irq().
-> 
-> [...]
+From: Michael Riesch <michael.riesch@collabora.com>
 
-Applied to
+Add documentation for the Rockchip MIPI CSI-2 Receiver.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 141 +++++++++++++++++++++
+ MAINTAINERS                                        |   6 +
+ 2 files changed, 147 insertions(+)
 
-Thanks!
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+new file mode 100644
+index 000000000000..2c2bd87582eb
+--- /dev/null
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+@@ -0,0 +1,141 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/media/rockchip,rk3568-mipi-csi2.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip MIPI CSI-2 Receiver
++
++maintainers:
++  - Michael Riesch <michael.riesch@collabora.com>
++
++description:
++  The Rockchip MIPI CSI-2 Receiver is a CSI-2 bridge with one input port and
++  one output port. It receives the data with the help of an external MIPI PHY
++  (C-PHY or D-PHY) and passes it to the Rockchip Video Capture (VICAP) block.
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3568-mipi-csi2
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    items:
++      - description: Interrupt that signals changes in CSI2HOST_ERR1.
++      - description: Interrupt that signals changes in CSI2HOST_ERR2.
++
++  interrupt-names:
++    items:
++      - const: err1
++      - const: err2
++
++  clocks:
++    maxItems: 1
++
++  phys:
++    maxItems: 1
++    description: MIPI C-PHY or D-PHY.
++
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@0:
++        $ref: /schemas/graph.yaml#/$defs/port-base
++        unevaluatedProperties: false
++        description: Input port node. Connect to e.g., a MIPI CSI-2 image sensor.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++            properties:
++              bus-type:
++                enum:
++                  - 1 # MEDIA_BUS_TYPE_CSI2_CPHY
++                  - 4 # MEDIA_BUS_TYPE_CSI2_DPHY
++
++              data-lanes:
++                minItems: 1
++                maxItems: 4
++
++            required:
++              - bus-type
++              - data-lanes
++
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Output port connected to a Rockchip VICAP port.
++
++    required:
++      - port@0
++      - port@1
++
++  power-domains:
++    maxItems: 1
++
++  resets:
++    maxItems: 1
++
++required:
++  - compatible
++  - reg
++  - clocks
++  - phys
++  - ports
++  - power-domains
++  - resets
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/clock/rk3568-cru.h>
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++    #include <dt-bindings/media/video-interfaces.h>
++    #include <dt-bindings/power/rk3568-power.h>
++
++    soc {
++        interrupt-parent = <&gic>;
++        #address-cells = <2>;
++        #size-cells = <2>;
++
++        csi: csi@fdfb0000 {
++            compatible = "rockchip,rk3568-mipi-csi2";
++            reg = <0x0 0xfdfb0000 0x0 0x10000>;
++            interrupts = <GIC_SPI 8 IRQ_TYPE_LEVEL_HIGH>,
++                         <GIC_SPI 9 IRQ_TYPE_LEVEL_HIGH>;
++            interrupt-names = "err1", "err2";
++            clocks = <&cru PCLK_CSI2HOST1>;
++            phys = <&csi_dphy>;
++            power-domains = <&power RK3568_PD_VI>;
++            resets = <&cru SRST_P_CSI2HOST1>;
++
++            ports {
++                #address-cells = <1>;
++                #size-cells = <0>;
++
++                csi_in: port@0 {
++                    reg = <0>;
++
++                    csi_input: endpoint {
++                        bus-type = <MEDIA_BUS_TYPE_CSI2_DPHY>;
++                        data-lanes = <1 2 3 4>;
++                        remote-endpoint = <&imx415_output>;
++                    };
++                };
++
++                csi_out: port@1 {
++                    reg = <1>;
++
++                    csi_output: endpoint {
++                        remote-endpoint = <&vicap_mipi_input>;
++                    };
++                };
++            };
++        };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5560da0deb71..1d1589feaf95 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -25364,6 +25364,12 @@ S:	Maintained
+ F:	drivers/i2c/busses/i2c-designware-amdisp.c
+ F:	include/linux/soc/amd/isp4_misc.h
+ 
++SYNOPSYS DESIGNWARE MIPI CSI-2 RECEIVER DRIVER
++M:	Michael Riesch <michael.riesch@collabora.com>
++L:	linux-media@vger.kernel.org
++S:	Maintained
++F:	Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
++
+ SYNOPSYS DESIGNWARE MMC/SD/SDIO DRIVER
+ M:	Jaehoon Chung <jh80.chung@samsung.com>
+ M:	Shawn Lin <shawn.lin@rock-chips.com>
 
-[1/1] spi: rockchip: Use plain request_irq()
-      commit: 83ba6efa711fad83a0fbf02178ad64d3906d8d09
+-- 
+2.39.5
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
 _______________________________________________
