@@ -4,61 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD3CD262A4
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 21:45:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1872D262A7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 22:20:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:MIME-Version:Date:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=1NwaU4KiCJmrmDeq8sz1tFzwx6p/RaiXetFClnSqraE=; b=cgsRhIoBJ9bKB2XK+FrZLcVW0X
-	CBTIsztoBlhEJE5fqYZx1S2SsI+bLofNoh91XBcCe/LxH3KGImeMAWKm+zbrJdZuWZzl9wi/fbmpY
-	syA015jsW3ApP0Ks/tqIl9iKOzzKnlNjsBFa6+w30NzVjcvxKmqflbflM2z4wiTnaPY2xevq1XdR6
-	e7jbLjVfKm133ZEJHuw7anwb69iMLx0Ca+bcvUAwg5hKLCF9CMyYHcWmVLBBwDLJvPgootE3DQWLw
-	y8wqeVLoaAtAjy5yXrfDDwWAT23Vi3U5p2POLXt81Q800HP0KD9B+gloT5pC3swum9KXaarSdZe9C
-	+zIESKmw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=SHp5LLpF4KLAWJehgBnZtVYZb+40mQ75E5Un3AvF0Po=; b=Z1BjBFtP/qLHzY
+	Dq3aORYOQV2WpBdR2KMhtROO4qYEiVSNP2oHHFfe8elkTHgplNjeroVM+zogh9LeR/Lahn6aRAFEJ
+	KmLnh/sg7ZmWKLLXnYB4iCp/lTdn1qZV8NSqSVzbCJWdgDZlKA9a3RFPdmd+D6Lbdbz+R5tk5JiYz
+	LT93P3BrXRMNGAmSredSB6/KvSWyxPOKL7h/B16GBA2PsQqtWT1GFSi81ILIZ7/DqBE+ouDkvJ19M
+	1twAcmuJoNZPqA0kb/Ic56l4Oi16khGKQiQWu796kxo0y4UfxVeBvmrsoapyazmtNwJWnVw87+Dex
+	BUlt+Ia3ff3W8dY1JIrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viJXQ-00000004V05-1ERg;
-	Tue, 20 Jan 2026 21:45:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1viK5S-00000004X9q-1vfb;
+	Tue, 20 Jan 2026 22:20:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viJXO-00000004Uzn-3leF;
-	Tue, 20 Jan 2026 21:45:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E615660054;
-	Tue, 20 Jan 2026 21:45:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 806E8C16AAE;
-	Tue, 20 Jan 2026 21:45:20 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768945521;
-	bh=iGmQTrcxjtgfmMDdD54wE5OCeQ2v++Q+BpE3G+cHjVo=;
-	h=From:Date:Cc:To:In-Reply-To:References:Subject:From;
-	b=rOWXQOxHQszpyhaIrGB3VjPh14nhOZrx73IUhV7HSwSXqaI0Eh/kaSt/S8v+wtEzY
-	 pJV5DZpDpV2ekat1rC3GcyHWhK7OjurBKMMqaUuk1dmFJIrBy1tYbaU5a8rcq+b0Gk
-	 hQ92Fhi8lf6SbSSpnyTZZYuy2LYGmQLkbsSgPcDbO4Cby4B/x4uJU7xkwYhNuObMDl
-	 YTwJ8rUtwsEMM1xJoLC8a0RUJqlDvSbHwAdA47XUS6AlYSIUdlQPCQlShBzOBpTKnc
-	 WTAR7f9EefWdSztnrYPEOE13ZLC6s+yk9fW/5dOZt3KZE9XNMLlr9zPSV7TBlgFJFC
-	 XG+dbVBrKnIrg==
-From: Rob Herring <robh@kernel.org>
-Date: Tue, 20 Jan 2026 15:45:19 -0600
+	id 1viK5O-00000004X95-1GbV;
+	Tue, 20 Jan 2026 22:20:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768947625;
+	bh=VOu//zKwpESYwiVen5/Iuw/HguocJ7wqDJHMFP8YBCI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=NqLeINkJd6NqX1XDq9O5SF6f98Ykd/RJLUTdR8uz6b93x3HOGja9DGdeqlZ4DbZnZ
+	 CzZvdqkqtCwc/ynXHPiDv8fdUHYO03KCwrJagNXhf/+o0olMNlxI6jxyxjHTuh3z+U
+	 pU9WwxtGM8aKwZ6tv3EHU6JE0IRTfJQ0E6D6e4X/XpZ1jJvl/fuCNhicXyqhQqttzz
+	 zt89iT5lkCNOGxeqoWoJYMhHIVl1SsYcoNEQrHRAS0RCI/XmEY9/QrPW+Q3thqVIG7
+	 1BQ88JT/tarYCHUbsIDUGbhFhlH/4UrjPLzgN2E8lPHyfhCM6mcQtODKA4OIATldHQ
+	 aSYHpd5gm3cGQ==
+Received: from earth.mtl.collabora.ca (mtl.collabora.ca [66.171.169.34])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A4EE017E0117;
+	Tue, 20 Jan 2026 23:20:21 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+To: linux-kernel@vger.kernel.org
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Daniel Almeida <daniel.almeida@collabora.com>,
+	Jonathan Corbet <corbet@lwn.net>,
+	Ricardo Ribalda <ribalda@chromium.org>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Yunke Cao <yunkec@google.com>,
+	Hans de Goede <hansg@kernel.org>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Pavan Bobba <opensource206@gmail.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	James Cowgill <james.cowgill@blaize.com>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Diederik de Haas <didi.debian@cknow.org>
+Subject: [PATCH v9 00/17] media: rkvdec: Add support for VDPU381 and VDPU383
+Date: Tue, 20 Jan 2026 17:20:00 -0500
+Message-ID: <20260120222018.404741-1-detlev.casanova@collabora.com>
+X-Mailer: git-send-email 2.52.0
 MIME-Version: 1.0
-Cc: devicetree@vger.kernel.org, Shawn Lin <shawn.lin@rock-chips.com>, 
- Quentin Schulz <quentin.schulz@cherry.de>, 
- Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org, 
- "Martin K. Petersen" <martin.petersen@oracle.com>, 
- Heiko Stuebner <heiko@sntech.de>, stable@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, linux-rockchip@lists.infradead.org
-To: Alexey Charkov <alchark@gmail.com>
-In-Reply-To: <20260120-ufs-rst-v2-1-b5735f1996f6@gmail.com>
-References: <20260120-ufs-rst-v2-1-b5735f1996f6@gmail.com>
-Message-Id: <176894531223.1201556.243460289333921566.robh@kernel.org>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: Explicitly request UFS reset
- pin on RK3576
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260120_142030_523173_37F0B491 
+X-CRM114-Status: GOOD (  23.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,118 +90,162 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+hese variants are found respectively in the RK3588 and RK3576 SoCs.
+This patch only adds support for H264 and H265 in both variants.
 
-On Tue, 20 Jan 2026 16:53:54 +0400, Alexey Charkov wrote:
-> Rockchip RK3576 UFS controller uses a dedicated pin to reset the connected
-> UFS device, which can operate either in a hardware controlled mode or as a
-> GPIO pin.
-> 
-> Power-on default is GPIO mode, but the boot ROM reconfigures it to a
-> hardware controlled mode if it uses UFS to load the next boot stage.
-> 
-> Given that existing bindings (and rk3576.dtsi) expect a GPIO-controlled
-> device reset, request the required pin config explicitly.
-> 
-> This doesn't appear to affect Linux, but it does affect U-boot:
-> 
-> Before:
-> => md.l 0x2604b398
-> 2604b398: 00000011 00000000 00000000 00000000  ................
-> < ... snip ... >
-> => ufs init
-> ufshcd-rockchip ufshc@2a2d0000: [RX, TX]: gear=[3, 3], lane[2, 2], pwr[FASTAUTO_MODE, FASTAUTO_MODE], rate = 2
-> => md.l 0x2604b398
-> 2604b398: 00000011 00000000 00000000 00000000  ................
-> 
-> After:
-> => md.l 0x2604b398
-> 2604b398: 00000011 00000000 00000000 00000000  ................
-> < ... snip ...>
-> => ufs init
-> ufshcd-rockchip ufshc@2a2d0000: [RX, TX]: gear=[3, 3], lane[2, 2], pwr[FASTAUTO_MODE, FASTAUTO_MODE], rate = 2
-> => md.l 0x2604b398
-> 2604b398: 00000010 00000000 00000000 00000000  ................
-> 
-> (0x2604b398 is the respective pin mux register, with its BIT0 driving the
-> mode of UFS_RST: unset = GPIO, set = hardware controlled UFS_RST)
-> 
-> This helps ensure that GPIO-driven device reset actually fires when the
-> system requests it, not when whatever black box magic inside the UFSHC
-> decides to reset the flash chip.
-> 
-> Cc: stable@vger.kernel.org
-> Fixes: c75e5e010fef ("scsi: arm64: dts: rockchip: Add UFS support for RK3576 SoC")
-> Reported-by: Quentin Schulz <quentin.schulz@cherry.de>
-> Signed-off-by: Alexey Charkov <alchark@gmail.com>
-> ---
-> This has originally surfaced during the review of UFS patches for U-boot
-> at [1], where it was found that the UFS reset line is not requested to be
-> configured as GPIO but used as such. This leads in some cases to the UFS
-> driver appearing to control device resets, while in fact it is the
-> internal controller logic that drives the reset line (perhaps in
-> unexpected ways).
-> 
-> Thanks Quentin Schulz for spotting this issue.
-> 
-> [1] https://lore.kernel.org/u-boot/259fc358-f72b-4a24-9a71-ad90f2081335@cherry.de/
-> ---
-> Changes in v2:
-> - Change default pin pull to pull-down in line with the SoC power-on default
-> - Link to v1: https://lore.kernel.org/r/20260119-ufs-rst-v1-1-c8e96493948c@gmail.com
-> ---
->  arch/arm64/boot/dts/rockchip/rk3576-pinctrl.dtsi | 7 +++++++
->  arch/arm64/boot/dts/rockchip/rk3576.dtsi         | 2 +-
->  2 files changed, 8 insertions(+), 1 deletion(-)
-> 
+As there is a considerable part of the code that can be shared with the
+already supported rkvdec decoder driver, the support for these variants
+is added here rather than writing a new driver.
 
+This patch set uses the newly introduced hevc_ext_sps_[ls]t_rps v4l2
+controls for HEVC.
+Therefore, a patched version of userpace tools is needed for HEVC
+support (added for GStreamer[1] and in an early stage for FFmpeg[2]).
 
-My bot found new DTB warnings on the .dts files added or changed in this
-series.
+The DTS changes can be found in another patch set[3]
 
-Some warnings may be from an existing SoC .dtsi. Or perhaps the warnings
-are fixed by another series. Ultimately, it is up to the platform
-maintainer whether these warnings are acceptable or not. No need to reply
-unless the platform maintainer has comments.
+[1]: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/9355
+[2]: https://gitlab.collabora.com/detlev/ffmpeg
+[3]: https://lore.kernel.org/all/20251020212009.8852-1-detlev.casanova@collabora.com/
 
-If you already ran DT checks and didn't see these error(s), then
-make sure dt-schema is up to date:
+Changes since v8:
+ - Fix function stack frame size being too big with clang and some config
+ - Move cabac tables declarations in their own header
+ - Add vdpu38x_h264_ctrl_descs to allow levels up to 6.0 on vdpu381 and vdpu383
+ - Fix small alignment issue
 
-  pip3 install dtschema --upgrade
+Changes since v7:
+ - Be more consistent with reg names format (reg<num:03>_<name>)
+ - Re-add sps validation in start(), skipping it would let userspace
+   configure the driver to do buffer overflows
+ - Move watchdog configuration to a common function
+ - Use div_u64() to allow building for 32 bits architectures
+ - Do not try to program extended rps if it was not set
 
+Changes since v6:
+ - Remove coded_fmts capabilities
+ - Remove inexistant V4L2_HEVC kconfig dependency
+ - Add missing rkvdec registers
+ - Fix memcpy sizes
+ - Remove non-necessary name and style changes
+ - Use common get_image_fmt
+ - Do not validate sps in start()
+ - Remove unused variable
+ - Change named_regs to has_single_reg_region
+ - Compared to v6, I didn't use a union for the ref addr and flags
+   registers, as I find the flat struct more readable.
 
-This patch series was applied (using b4) to base:
- Base: 46fe65a2c28ecf5df1a7475aba1f08ccf4c0ac1b (use --merge-base to override)
+Changes since v5:
+- Extract multicore management in separate commit
+- Move variant specific functions to an ops struct
+- Fix a typo and "h264" -> "hevc" copy/paste mistakes
+- Move RKVDEC_*_PIXELS to rkvdec.h
+- Drop VDPU383_*_PIXELS, use the the RKVDEC ones instead
+- Change RKVDEC_1080P_PIXELS value to 1920 * 1088
+- Long and short term ref sets extend controls:
+  - Add them in visl traces
+  - Reword documentation to specify SPS extension and use
+  - Mention Vulkan Video API similarity
+  - Specify behavior for empty array values
+  - Reorder struct fields to ensure fixed compiled size
+  - Remove the mention of V4L2_CTRL_FLAG_DYNAMIC_ARRAY flag
 
-If this is not the correct base, please add 'base-commit' tag
-(or use b4 which does this automatically)
+Changes since v4:
+ - Add basic ext_sps_[ls]t_rps validation (flags only)
+ - Add missing copyright in new common files
+ - Rename num_coded_fmts, rcb_num, clk_count
+ - Avoid allocating RCB config when not needed
+ - Merge rkvdec_config into rkvdec_variant
+ - Keep rkvdec_hevc_get_image_fmt per variant
 
+Changes since v3:
+ - Rebased on latest next (ea299a216426) + HEVC support for rk3399
 
-New warnings running 'make CHECK_DTBS=y for arch/arm64/boot/dts/rockchip/' for 20260120-ufs-rst-v2-1-b5735f1996f6@gmail.com:
+Changes since v2:
+ - Rebased on Kwiboo's HEVC support for rk3399
+ - Include hevc_ext_sps_[ls]t_rps v4l2 controls commits
+ - Remove empty lines at end of files
+ - Rename RKVDEC2_ALLOC_* to RKVDEC_ALLOC_*
+ - Set min_with and min_height to 64
+ - Remove vdpu38x_fill_pixfmt_mp() function
+ - Handle userspace not supporting hevc_ext_sps_[ls]t_rps
+ - Make all config structs static const
 
-arch/arm64/boot/dts/rockchip/rk3576-luckfox-omni3576.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 113} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-100ask-dshanpi-a1.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 130} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 116} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 117} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-nanopi-m5.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 133} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 122} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 134} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 130} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-evb1-v10-pcie1.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 134} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
-arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5-v1.2-wifibt.dtb: ufs: ufs-rst-gpio: {'rockchip,pins': [[4, 24, 0, 29]], 'phandle': 130} is not of type 'array'
-	from schema $id: http://devicetree.org/schemas/gpio/gpio-consumer.yaml
+Changes since v1:
+ - Add parsing of the short and long term ref frame sets from the new v4l2
+   controls
+ - Add RPS cache to avoid parsing the same data again
+ - Fix HEVC pixel formats selection
+ - Fix multiple indentation errors
 
+Detlev Casanova (17):
+  media: uapi: HEVC: Add v4l2_ctrl_hevc_ext_sps_[ls]t_rps controls
+  media: v4l2-ctrls: Add hevc_ext_sps_[ls]t_rps controls
+  media: visl: Add HEVC short and long term RPS sets
+  media: rkvdec: Switch to using structs instead of writel
+  media: rkvdec: Move cabac tables to their own source file
+  media: rkvdec: Use structs to represent the HW RPS
+  media: rkvdec: Move h264 functions to common file
+  media: rkvdec: Move hevc functions to common file
+  media: rkvdec: Add variant specific coded formats list
+  media: rkvdec: Add RCB and SRAM support
+  media: rkvdec: Support per-variant interrupt handler
+  media: rkvdec: Enable all clocks without naming them
+  media: rkvdec: Disable multicore support
+  media: rkvdec: Add H264 support for the VDPU381 variant
+  media: rkvdec: Add H264 support for the VDPU383 variant
+  media: rkvdec: Add HEVC support for the VDPU381 variant
+  media: rkvdec: Add HEVC support for the VDPU383 variant
 
+ .../media/v4l/ext-ctrls-codec-stateless.rst   | 120 +++
+ .../media/v4l/videodev2.h.rst.exceptions      |   2 +
+ .../media/v4l/vidioc-queryctrl.rst            |  12 +
+ .../media/platform/rockchip/rkvdec/Makefile   |  14 +-
+ .../{rkvdec-hevc-data.c => rkvdec-cabac.c}    | 506 +++++++++-
+ .../platform/rockchip/rkvdec/rkvdec-cabac.h   |  21 +
+ .../rockchip/rkvdec/rkvdec-h264-common.c      | 258 +++++
+ .../rockchip/rkvdec/rkvdec-h264-common.h      |  85 ++
+ .../platform/rockchip/rkvdec/rkvdec-h264.c    | 893 ++----------------
+ .../rockchip/rkvdec/rkvdec-hevc-common.c      | 511 ++++++++++
+ .../rockchip/rkvdec/rkvdec-hevc-common.h      | 107 +++
+ .../platform/rockchip/rkvdec/rkvdec-hevc.c    | 282 +-----
+ .../platform/rockchip/rkvdec/rkvdec-rcb.c     | 179 ++++
+ .../platform/rockchip/rkvdec/rkvdec-rcb.h     |  29 +
+ .../platform/rockchip/rkvdec/rkvdec-regs.h    | 586 ++++++++----
+ .../rockchip/rkvdec/rkvdec-vdpu381-h264.c     | 469 +++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-hevc.c     | 639 +++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu381-regs.h     | 430 +++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-h264.c     | 538 +++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-hevc.c     | 652 +++++++++++++
+ .../rockchip/rkvdec/rkvdec-vdpu383-regs.h     | 281 ++++++
+ .../platform/rockchip/rkvdec/rkvdec-vp9.c     | 232 ++---
+ .../media/platform/rockchip/rkvdec/rkvdec.c   | 633 +++++++++++--
+ .../media/platform/rockchip/rkvdec/rkvdec.h   |  50 +-
+ drivers/media/test-drivers/visl/visl-dec.c    |   7 +
+ drivers/media/test-drivers/visl/visl-dec.h    |   3 +
+ .../media/test-drivers/visl/visl-trace-hevc.h |  59 ++
+ drivers/media/v4l2-core/v4l2-ctrls-core.c     |  28 +
+ drivers/media/v4l2-core/v4l2-ctrls-defs.c     |  10 +
+ include/uapi/linux/v4l2-controls.h            |  61 ++
+ include/uapi/linux/videodev2.h                |   2 +
+ 31 files changed, 6235 insertions(+), 1464 deletions(-)
+ rename drivers/media/platform/rockchip/rkvdec/{rkvdec-hevc-data.c => rkvdec-cabac.c} (86%)
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-cabac.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-h264-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-hevc-common.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu381-regs.h
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c
+ create mode 100644 drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-regs.h
 
-
+-- 
+2.52.0
 
 
 _______________________________________________
