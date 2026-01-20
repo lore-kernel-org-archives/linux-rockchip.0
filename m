@@ -4,57 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D784BC44511
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F032EC44515
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EQC+MQhUPgQigGnKKk0WnykC67WF6L0q9naDfe9hPAo=; b=A8cn17UJe6280A
-	ltjKncok9h+69tT7PlYMO2OF9wnjjY2CQ4dbKOnOH7glS3ByuqcyfqNbmTvrjFupMwQ1xhWim3AI2
-	/kWxli8Z9cs2nAe91WRkS33ItI/ZcXP/LMMQwTnCcAS1ev1KaNGtooIhWidg0U7n24ja3XxE0Ucin
-	ZRJNxgbhg/vEuBTwBp0H6sHOJiWb+/BFCoahrfQ0+8t8yFsCViOiPA214CBExpDEkQF3jNVzimfRb
-	HSakvG2srz9TTNO3AVF/XnIdbFKhuiNUPO/QziBn8tvdBFtfEd0uiBiHUJzNF1X4yyVQlQRg5jj8S
-	O+p+lx0+UeOFcCEzv8kg==;
+	List-Owner; bh=YD6etnKXfm5M1MWJR2j0EidBKJ8jwoeCKZuYD+NmUH8=; b=t43gKJYO2FJta1
+	Wkg8rTDnh90nbkF8plQZRHR12oIvW3LJUZDQO9KVz+jR6llZgetohdD/jfxn1Jx6664PlMbiPLSvX
+	uo884omltFuC4+TTcshdnkdmM1lX+XOXWkxiDIfoybwudWDGpL5GvFlz9o4d2Su9XD1pHTH0RVclB
+	BOtPKRoXtkzYJlAAFDzHYUlnDkY9bjjjRejYMCV0GD1Q/f3XUdS+7KJkWkrS7Rimbs/yBkU3e+mcK
+	gdIRS1fVpXb7XB6n0CK6E19qrZiIr1GQk5FQ1BnKg6nyXlT5R/HMcfCD+CHrmwcHUSucn3hz7avKG
+	Gvb5P2s8rDKOScALM/6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkQw-00000001VIK-40W4;
-	Thu, 09 Jul 2026 08:48:38 +0000
-Received: from zeniv.linux.org.uk ([2a03:a000:7:0:5054:ff:fe1c:15ff])
+	id 1whkQn-00000001UpB-3afQ;
+	Thu, 09 Jul 2026 08:48:29 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAtsD-0000000B4ec-2wgB;
-	Thu, 09 Apr 2026 18:13:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=linux.org.uk; s=zeniv-20220401; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=BoGW7oywgvm57yYmgFIJhKPYzBfyhEW/uN+KSu6heaU=; b=JJcsCEcaKqyNrvJOUZ8XOnA1AS
-	yC//2gnLRa8FcBRiXofOYljopOoyt9r8CbkWaLEFmbUVfW5qK5utkUh3D77jxlkhKoZiYVbvdTEnm
-	X8jEr88bUddVEJ+24e8elVa7rPEDm9C+KeO3Yi+QSp+riwZi9Be8u3P2jnyNq7RhzU24dEi9YT5JB
-	9o5OjQL5vQk2h32ksN+l6XHB7LZbu7YtKRAMPXU1ZH+Yata0JOXemtl88QWI3UJ7mBXR7GCgddkg5
-	qrhpzNPrKwHYiMCapxKfC0E4ZwUatWZBULD1y88efyo7haqTewJrOOn317SRlKBwAg9TXV76h3bsC
-	A/eZOWQA==;
-Received: from viro by zeniv.linux.org.uk with local (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wAtvH-00000003xj6-26He;
-	Thu, 09 Apr 2026 18:16:11 +0000
-Date: Thu, 9 Apr 2026 19:16:11 +0100
-From: Al Viro <viro@zeniv.linux.org.uk>
-To: Philipp Hahn <phahn-oss@avm.de>
-Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr, dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org, gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org, intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev, kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org, linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org, linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org, linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org, linux-media@vger.kernel.org, linux-mips@vger.kernel.org, linux-mm@kvack.org, linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org, linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org, linux-phy@lists.infradead.org, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org, linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org, linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org, linux-wireless@vger.kernel.org, netdev@vger.kernel.org, ntfs3@lists.linux.dev, samba-technical@lists.samba.org, sched-ext@lists.linux.dev, target-devel@vger.kernel.org, tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, Julia Lawall <Julia.Lawall@inria.fr>, Nicolas Palix <nicolas.palix@imag.fr>, Chris Mason <clm@fb.com>, David Sterba <dsterba@suse.com>, Ilya Dryomov <idryomov@gmail.com>, Alex Markuze <amarkuze@redhat.com>, Viacheslav Dubeyko <slava@dubeyko.com>, Theodore Ts'o <tytso@mit.edu>, Andreas Dilger <adilger.kernel@dilger.ca>, Steve French <sfrench@samba.org>, Paulo Alcantara <pc@manguebit.org>, Ronnie Sahlberg <ronniesahlberg@gmail.com>, Shyam Prasad N <sprasad@microsoft.com>, Tom Talpey <tom@talpey.com>, Bharath SM <bharathsm@microsoft.com>, Eric Van Hensbergen <ericvh@kernel.org>, Latchesar Ionkov <lucho@ionkov.net>, Dominique Martinet <asmadeus@codewreck.org>, Christian Schoenebeck <linux_oss@crudebyte.com>, Gao Xiang <xiang@kernel.org>, Chao Yu <chao@kernel.org>, Yue Hu <zbestahu@gmail.com>, Jeffle Xu <jefflexu@linux.alibaba.com>, Sandeep Dhavale <dhavale@google.com>, Hongbo Li <lihongbo22@huawei.com>, Chunhai Guo <guochunhai@vivo.com>, Miklos Szeredi <miklos@szeredi.hu>, Konstantin Komarov <almaz.alexandrovich@paragon-software.com>, Andreas Gruenbacher <agruenba@redhat.com>, Kees Cook <kees@kernel.org>, Tony Luck <tony.luck@intel.com>, "Guilherme G. Piccoli" <gpiccoli@igalia.com>, Jan Kara <jack@suse.com>, Phillip Lougher <phillip@squashfs.org.uk>, Christian Brauner <brauner@kernel.org>, Jan Kara <jack@suse.cz>, Steven Rostedt <rostedt@goodmis.org>, Masami Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>, Tejun Heo <tj@kernel.org>, David Vernet <void@manifault.com>, Andrea Righi <arighi@nvidia.com>, Changwoo Min <changwoo@igalia.com>, Ingo Molnar <mingo@redhat.com>, Peter Zijlstra <peterz@infradead.org>, Juri Lelli <juri.lelli@redhat.com>, Vincent Guittot <vincent.guittot@linaro.org>, Dietmar Eggemann <dietmar.eggemann@arm.com>, Ben Segall <bsegall@google.com>, Mel Gorman <mgorman@suse.de>, Valentin Schneider <vschneid@redhat.com>, Luis Chamberlain <mcgrof@kernel.org>, Petr Pavlu <petr.pavlu@suse.com>, Daniel Gomez <da.gomez@kernel.org>, Sami Tolvanen <samitolvanen@google.com>, Aaron Tomlin <atomlin@atomlin.com>, Sylwester Nawrocki <s.nawrocki@samsung.com>, Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Max Filippov <jcmvbkbc@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, John Johansen <john.johansen@canonical.com>, Paul Moore <paul@paul-moore.com>, James Morris <jmorris@namei.org>, "Serge E. Hallyn" <serge@hallyn.com>, Andrew Morton <akpm@linux-foundation.org>,
- Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@kernel.org>, Mikulas Patocka <mpatocka@redhat.com>, Benjamin Marzinski <bmarzins@redhat.com>, "David S. Miller" <davem@davemloft.net>, David Ahern <dsahern@kernel.org>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Simon Horman <horms@kernel.org>, Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, Alexei Starovoitov <ast@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>, Jesper Dangaard Brouer <hawk@kernel.org>, John Fastabend <john.fastabend@gmail.com>, Stanislav Fomichev <sdf@fomichev.me>, Jamal Hadi Salim <jhs@mojatatu.com>, Jiri Pirko <jiri@resnulli.us>, Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>, Xin Long <lucien.xin@gmail.com>, Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, NeilBrown <neil@brown.name>, Olga Kornievskaia <okorniev@redhat.com>, Dai Ngo <Dai.Ngo@oracle.com>, Jon Maloy <jmaloy@redhat.com>, Johannes Berg <johannes@sipsolutions.net>, Catalin Marinas <catalin.marinas@arm.com>, Russell King <linux@armlinux.org.uk>, John Crispin <john@phrozen.org>, Thomas Bogendoerfer <tsbogend@alpha.franken.de>, Yoshinori Sato <ysato@users.sourceforge.jp>, Rich Felker <dalias@libc.org>, John Paul Adrian Glaubitz <glaubitz@physik.fu-berlin.de>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Zhenyu Wang <zhenyuw.linux@gmail.com>, Zhi Wang <zhi.wang.linux@gmail.com>, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, Alex Deucher <alexander.deucher@amd.com>, Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>, Sandy Huang <hjc@rock-chips.com>, Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Igor Russkikh <irusskikh@marvell.com>, Andrew Lunn <andrew+netdev@lunn.ch>, Pavan Chebbi <pavan.chebbi@broadcom.com>, Michael Chan <mchan@broadcom.com>, Potnuri Bharat Teja <bharat@chelsio.com>, Tony Nguyen <anthony.l.nguyen@intel.com>, Przemek Kitszel <przemyslaw.kitszel@intel.com>, Taras Chornyi <taras.chornyi@plvision.eu>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, Iyappan Subramanian <iyappan@os.amperecomputing.com>, Keyur Chudgar <keyur@os.amperecomputing.com>, Quan Nguyen <quan@os.amperecomputing.com>, Heiner Kallweit <hkallweit1@gmail.com>, Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@kernel.org>, Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>, Vinod Koul <vkoul@kernel.org>, Linus Walleij <linusw@kernel.org>, Ulf Hansson <ulf.hansson@linaro.org>, Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev <agordeev@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>, Sven Schnelle <svens@linux.ibm.com>, "Martin K. Petersen" <martin.petersen@oracle.com>, Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, "Rafael J. Wysocki" <rafael@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>, Alex Williamson <alex@shazbot.org>, Mark Greer <mgreer@animalcreek.com>, Miquel Raynal <miquel.raynal@bootlin.com>, Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Shuah Khan <skhan@linuxfoundation.org>, Kieran Bingham <kieran.bingham@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, Lee Jones <lee@kernel.org>, Pavel Machek <pavel@kernel.org>, Dave Penkler <dpenkler@gmail.com>, "K. Y. Srinivasan" <kys@microsoft.com>, Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, Dexuan Cui <decui@microsoft.com>, Long Li <longli@microsoft.com>, Justin Sanders <justin@coraid.com>, Jens Axboe <axboe@kernel.dk>, Georgi Djakov <djakov@kernel.org>, Michael Turquette <mturquette@baylibre.com>, Stephen Boyd <sboyd@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Borislav Petkov <bp@alien8.de>, Dave Hansen <dave.hansen@linux.intel.com>, x86@kernel.org, "H. Peter Anvin" <hpa@zytor.com>, Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Subject: Re: [PATCH 00/61] treewide: Use IS_ERR_OR_NULL over manual NULL
- check - refactor
-Message-ID: <20260409181611.GP3836593@ZenIV>
-References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+	id 1viHVb-00000004NXM-3jYa;
+	Tue, 20 Jan 2026 19:35:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1768937718;
+	bh=/A4LHTEaDLHlh1euWJRWHRa4K1G1d6F3Yldk56r6Vwo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=HEkB8hj9p8LUeEVWO84jAA1w6imq8/lvcrblLSPIsSdVFuaWpCQFeyddLMEHKlbHd
+	 egJd9Dj+j0cp3z6GZ5iTIo2xsxPkXvsbNtrrTr4VxtSDty3h+qxFllrmSYUXemBKRH
+	 SdM1+l/XaBTa0a/6JWOcSuTmrsHDbFJBpogFOLbNw0DHNntMl/BKh325pTHNQqE0CT
+	 J7VIGf1cE80Xck61pu20DlmoemnH7EvVMGDpV0s2gGAka8NRnBApD8E4I6oKW82YjE
+	 DNHOFWvze6eVrxkEFl3jHua9Y4e8PTuh1cgMRaOEC7S/wYFJOg85CsZ1CG5NH9R4/1
+	 Wcog+W21XTcMg==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DAA5817E0FDB;
+	Tue, 20 Jan 2026 20:35:17 +0100 (CET)
+Message-ID: <7722373a-b491-4aaa-9527-a8f091cf22fe@collabora.com>
+Date: Tue, 20 Jan 2026 20:35:17 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+User-Agent: Mozilla Thunderbird
+Subject: fixup! media: synopsys: add driver for the designware mipi csi-2
+ receiver
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+ Kever Yang <kever.yang@rock-chips.com>, Frank Li <Frank.li@nxp.com>,
+ Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Hans Verkuil <hverkuil@kernel.org>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20251114-rockchip-mipi-receiver-v8-0-bd1cf5cb9588@collabora.com>
+ <20251114-rockchip-mipi-receiver-v8-2-bd1cf5cb9588@collabora.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20251114-rockchip-mipi-receiver-v8-2-bd1cf5cb9588@collabora.com>
+X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_111301_877375_37628717 
-X-CRM114-Status: GOOD (  15.59  )
+X-CRM114-CacheID: sfid-20260120_113524_102035_79E0394A 
+X-CRM114-Status: GOOD (  13.13  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,16 +92,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 10, 2026 at 12:48:26PM +0100, Philipp Hahn wrote:
-> While doing some static code analysis I stumbled over a common pattern,
-> where IS_ERR() is combined with a NULL check. For that there is
-> IS_ERR_OR_NULL().
+Make smatch happy by adding braces around the initialization in switch
+cases.
 
-... and valid uses of IS_ERR_OR_NULL are rare as hen teeth.
-Most of those are "I'm not sure how this function returns an
-error, let's use that just in case".
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+@Sakari could you try the following patch? I think this should solve the
+issues with smatch/sparse you mentioned off-list.
 
-Please, do not introduce more of that crap.
+ drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+index 29119a1a8d38..dc82223e312a 100644
+--- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
++++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+@@ -236,7 +236,7 @@ static int dw_mipi_csi2rx_start(struct
+dw_mipi_csi2rx_device *csi2)
+                return link_freq;
+
+        switch (csi2->bus_type) {
+-       case V4L2_MBUS_CSI2_DPHY:
++       case V4L2_MBUS_CSI2_DPHY: {
+                struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
+
+                ret =
+phy_mipi_dphy_get_default_config_for_hsclk(link_freq * 2,
+@@ -254,7 +254,7 @@ static int dw_mipi_csi2rx_start(struct
+dw_mipi_csi2rx_device *csi2)
+
+                control |= SW_CPHY_EN(0);
+                break;
+-
++       }
+        case V4L2_MBUS_CSI2_CPHY:
+                /* TODO: implement CPHY configuration */
+                return -EOPNOTSUPP;
+@@ -293,7 +293,7 @@ dw_mipi_csi2rx_enum_mbus_code(struct v4l2_subdev *sd,
+        struct dw_mipi_csi2rx_device *csi2 = to_csi2(sd);
+
+        switch (code->pad) {
+-       case DW_MIPI_CSI2RX_PAD_SRC:
++       case DW_MIPI_CSI2RX_PAD_SRC: {
+                const struct v4l2_mbus_framefmt *sink_fmt;
+
+                if (code->index)
+@@ -304,6 +304,7 @@ dw_mipi_csi2rx_enum_mbus_code(struct v4l2_subdev *sd,
+                code->code = sink_fmt->code;
+
+                return 0;
++       }
+        case DW_MIPI_CSI2RX_PAD_SINK:
+                if (code->index > csi2->formats_num)
+                        return -EINVAL;
+
+-- 
+2.39.5
+
 
 _______________________________________________
 Linux-rockchip mailing list
