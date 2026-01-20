@@ -4,68 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44AC6D2ED0F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 10:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75266D2ECF7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 11:04:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WCY1YjhX/eWedv2wlMEszRQCZ3iOdSKbRh6x15IA4s8=; b=Yq/cuQ8KZJGoB+
-	NXoOdctOzA5Sz5FrbN1+s7iAc8/6d8p/1Cda09PDqwuip4zUQMNyznyUPhXt7dxtI1lrIaa3MVoYZ
-	Eb4QjjsDCiV1zvHawictl54bwIwYRX7ecgvbCeoroQz6yYHPi+dJZ+DL1H9NJCwpU0g8HZttl2BT8
-	62QTYkbTTWcZh6js788w/EB1HOgl/9ZMjj4hkbTdL3etkrkFZXKfVweu83b5yAxkNEZulEX3YUKC9
-	BtJW6BvGuId6q3HCXSmBc+wNGL5NiJpHe2BSLedsZkoJZgjw5q7FGZ7M9qLrvFYdUlsewdurKYKCh
-	bvh/GblohYLOOH599X+A==;
+	List-Owner; bh=3foI8epC/08tla/ulHZYctjpXR7FA4EwNpeZNx2Zj1o=; b=E5srer2AQRls/b
+	9pcGtdtYRTLNkB/ZsYo99tHDPyyVnvPihhWLtYISFwdUbfLz+B2OirBGdGIXtFQfCYKKHwxR1qCQg
+	53QaLX9PSsnvj/qrXIGrUYys8B7NaTWAekNl9dwk3wQXrQ0HHLY2DdWllBZRmdTj4jLUEUNYMFC8M
+	clXpLBJk735I34n2wt/fTVmaXVgIgx0r6ryVKKwTh/opu9tQYW7Ofg7i/HQ9EjXFQ3iT7uEzbiv0h
+	PQkrvlfrgBQ+nBolGZrTVLgsLHehjp6IIpK+pPz6CMNMrL6IVJcdGhWz/ZILaOjBDgK/wnrhbAb/7
+	XCVcCnvIOXLs9piEDRgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi9DM-00000003drp-0alW;
-	Tue, 20 Jan 2026 10:44:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vi9Ww-00000003fh0-1xyS;
+	Tue, 20 Jan 2026 11:04:14 +0000
+Received: from mail-qv1-xf32.google.com ([2607:f8b0:4864:20::f32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi9DK-00000003drM-1ThA;
-	Tue, 20 Jan 2026 10:43:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=O2FhviPnC5jz5ZsBAwO6tzGpttxJxSsq9OxCi424fEk=; b=pi4h7G/RQR+F19rHk0ijTGxoVj
-	qPB1Nop1AyfZJQbdjdJerJslw5wLJfvX+hr37AvIZmrmbwL3vOOINovFmkElnxI8vyekel45F9bTZ
-	fIj7NJsOdjek1zlav7otxy9c3V9zRPGiecgTCOjSYVEL5EpBOtJrcpE7HXFlk5s0DeKivhh6ycK3v
-	CH6PKEleudQCtjsiSzAhM0jNGN84pI7jSyOP0LgJtOMrGoX/nFlYYJbEo404ZYfrBOH6/x99rjsRH
-	ipvUbvz3Im4c4h9GRlZqUJPeHWnukGpL/ZdSfAu4wENI1+fbAhKVuaFZxKBu2D6v9XdkExed/h330
-	CsEvoOCA==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vi9DH-0000000Dpo3-25Ar;
-	Tue, 20 Jan 2026 10:43:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=O2FhviPnC5jz5ZsBAwO6tzGpttxJxSsq9OxCi424fEk=; b=lxZMgDnA7WGotJ0c12IMFqkU7a
-	rwtU+DoqMrphu1iorjPcGFxsr1p0/WtuZXWjU9WIWLzaIIDwgRAjmFpdOQr72wpzlEwBRKSxY1jUA
-	zpKgaOK1KezXk/bc0zdRwF7YZmrCBgt3CfDv/jmR5HEsJVlsQXdkH02mqs4lak3nNBx/pU6YyXQdL
-	W1t7Y+39lfIc1Tmxok2lYKPNC1R9UPgCAimMDW9NEIo2H/i1hxwJBdr+RUtsyVUVsJwuwCeaPrHVM
-	9QUlDYrhBFOrjOYNZHJM4IMdbqwJz7kzu0vi+vdAwxQXChIf+0jbUeOWnPBcIZNAi5VLurg7Qy9Tg
-	Oqh96xGg==;
-Received: from [192.76.154.238] (helo=phil.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vi9D4-003N5V-46; Tue, 20 Jan 2026 11:43:42 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: dmitry.baryshkov@oss.qualcomm.com, Andy Yan <andyshrk@163.com>
-Subject: Re: [PATCH 2/5] drm/bridge: synopsys: dw-dp: Set pixel mode by platform data
-Date: Tue, 20 Jan 2026 11:43:41 +0100
-Message-ID: <4083071.q0ZmV6gNhb@phil>
-In-Reply-To: <20260109080054.228671-3-andyshrk@163.com>
-References: <20260109080054.228671-1-andyshrk@163.com>
- <20260109080054.228671-3-andyshrk@163.com>
+	id 1vi9Ws-00000003ffw-2bDB
+	for linux-rockchip@lists.infradead.org;
+	Tue, 20 Jan 2026 11:04:13 +0000
+Received: by mail-qv1-xf32.google.com with SMTP id 6a1803df08f44-88a2fe9e200so48882316d6.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 20 Jan 2026 03:04:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1768907049; cv=none;
+        d=google.com; s=arc-20240605;
+        b=IqM3DPcTlgA7Av/tSQrJ+hJsLRBiaygaj71OfxNNOSUaVaAlu7R8YhgtAZ0rH2ShQH
+         GxMLycCYYEFYCWv/n4oA1h2Ri8xfiJXXiWFe34yVrAHOHIg5Ik/cVJA3ySetbdzJjZ80
+         a0UmkL0Vd6AQQNpWl59H5JgFgPXYECYX4i3eZd74YdZfl4ilpFnUr9NoO52ynRuwzNZ6
+         JWi4qp3j7/NFuYxFI1l7lw+ezdDjX1Ua0IMAcMSUejX4dASF5jy0giEK5j28utWIJQG2
+         SSXJhajt06k6P07U4eiml9HJfSdYS4FIpPRmoT1fRaFq7MADqmLGGpFhjji15fkPGS2j
+         QxZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=1WFMJIykjeDUwTLAnV/91H11zpuB8UJJKa8bgoRktHs=;
+        fh=3c1Lp1eup63zR12FJN3ep6kgTbiR2KT9PHqQWd2j48c=;
+        b=NeSX+CyR3n7rnyOtN4lWi8HJgKDma+nO//XO+xFkiSYmustfybJzbdrPWkAqWRzoOz
+         WGiAvU9hZZ0veaEVsI+9im/0zByxphdsegMp3bYHRzMOffzQ4BEr12fThc9ik/ZvJ7Wg
+         aFgPEzDXLdQ3/ClqOBgATfs2SVSXs0pJWyzHGDO0MWvvjR4GV2anCu1U88jeuki8gXUX
+         KjxciA0I+s+aLV51TeRo8hNomLMVuCso1wz+OL9dqCtsuP9GnvnMzGJ91cICUbWdgsfQ
+         gNx9EPlvI+nGsY/gOkWJRoDwgGfZfYkuuthmdrO8CLpucw1/ggv7MiJ5cy4lrB7XUZrN
+         Ikqw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=fooishbar.org; s=google; t=1768907049; x=1769511849; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=1WFMJIykjeDUwTLAnV/91H11zpuB8UJJKa8bgoRktHs=;
+        b=Sx29TOpVWgl02lkR9Ekuz1G4yyl1VGJjM3Hs3UVMwkQyYd++QtYuHvW688w6TLIMw+
+         vClxpLyetEJSYRc40xL1OI2fSet4NMpsYwFQqQq43Hg7PzLLSufDqAt/7ebLOsvCj7Rn
+         yXrE5p7lXklkB0ID1s71wh4B39OM0x7QVWegqMdFrlQGc27XRcbc7aFYUM+c5KTHymxB
+         5g448rJm4UONTjSAZU9b3fBWbFPguEfDuk5WA58tz6Xx0cbYukMscWowgTbyJvmwChPW
+         P6SWE0XbIUHkkSFmScTldedNpcx1a8RCplXRz/e7eSPCT9xXy8u02JAM1sCmuhvvHAB6
+         hITw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1768907049; x=1769511849;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=1WFMJIykjeDUwTLAnV/91H11zpuB8UJJKa8bgoRktHs=;
+        b=TCl47t+xK1jr5qJpKHjs0vS03OUXFQ0aqsOONvsN5PCVqQkcb4UVlcnpQsDi7r3KA/
+         b2XEntMWmjq21uqGl7Ca4om6j5cYdtm/kp+Bkx4a9cK+vgN66Y8+3VD2JIwWy01XDPAf
+         CrGu+EDXJxpB6JLNRspnT/8vRcdUEF1ut+giQ4jTB1QkOLv9uRoOsZmPlABZeeafV1wS
+         aicgPPnl0StYrC9f8qNNr6vZGvaC0D1qmP+JdMEcsjVqJJXm+eRrNGFScTlbzJj6wlY9
+         mneB04VxF3UZPFgodvUa642g1uT2cjyPWO9MIGR4l26J2h0CQqlmuUgNfoPEiawIM9qA
+         N2Fw==
+X-Forwarded-Encrypted: i=1; AJvYcCXGuxN+TV0IBHOEYFsJfoyPZsvbUMb0E6STI4+aEwwwe8kgSAfpijDD3Dgm9HXggb10NrKBqSVeFthoJgbQ8g==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx2iTtWOU5w9/faQmdKKYwk1YxvozY4/T5qsgPLWj/Im0chcgc+
+	uDwz2l4W3NXug9OD6aSaArzYZK21HRT9o3vyqp2RAGnGheceX3pr07Bx3THrjEuQrRqAIbIv9BO
+	KuJ36FcbOPpD+PvaD4PE14uxFyP0sGCvW0cJdTnhs7A==
+X-Gm-Gg: AZuq6aIkFwVeCpUcsTf9ayazyH04HdX2fgCBv0JiCsUopc0urpFTl5IjmxiAzXp1InD
+	2x8wHi3x0howwXhiZGPqibMAeTD5gPs/WbF7D7zRx0tS9piqVXHD6YleslgMgml8rsBKe2eLRZF
+	ws7LmnhEH/Mh6kCfRpBgbwRlz1hl8qKiMoEYkb/b1YImRqxW9O4XsRQZ8NDNBEx3uwnjflTxEpP
+	lcZIrQxv38ACOf9ARlBA/CfgjbXEXVmQBm3X8wODl22wWcjhltebr4AURH9a80/lxb6
+X-Received: by 2002:ad4:4eef:0:b0:88a:4694:5921 with SMTP id
+ 6a1803df08f44-8942ddad70fmr192050966d6.37.1768907049157; Tue, 20 Jan 2026
+ 03:04:09 -0800 (PST)
 MIME-Version: 1.0
+References: <20260109005821.225235-1-andyshrk@163.com>
+In-Reply-To: <20260109005821.225235-1-andyshrk@163.com>
+From: Daniel Stone <daniel@fooishbar.org>
+Date: Tue, 20 Jan 2026 11:03:57 +0000
+X-Gm-Features: AZwV_Qj6ykO3irdHAAivo3zJ7fPUY3sXls4LuuJI-exbLYOzFgw_HME4X3eA2Z4
+Message-ID: <CAPj87rPYsD9bp7Ep=fBb2ViOzSnWCgWNJ7Hj=WZuDR+OTNpnSQ@mail.gmail.com>
+Subject: Re: [PATCH] drm/rockchip: vop2: Add mode valid callback for crtc
+To: Andy Yan <andyshrk@163.com>
+Cc: heiko@sntech.de, hjc@rock-chips.com, dri-devel@lists.freedesktop.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, airlied@gmail.com, 
+	maarten.lankhorst@linux.intel.com, mripard@kernel.org, simona@ffwll.ch, 
+	Andy Yan <andy.yan@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_104355_651726_4837EB4D 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20260120_030410_687780_AB0DFB12 
+X-CRM114-Status: UNSURE (   8.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +113,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: robh@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, mripard@kernel.org, sebastian.reichel@collabora.com, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, tzimmermann@suse.de, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgOS4gSmFudWFyIDIwMjYsIDA5OjAwOjQ1IE1pdHRlbGV1cm9ww6Rpc2NoZSBO
-b3JtYWx6ZWl0IHNjaHJpZWIgQW5keSBZYW46Cj4gRnJvbTogQW5keSBZYW4gPGFuZHkueWFuQHJv
-Y2stY2hpcHMuY29tPgo+IAo+IFRoZSBEVyBEaXNwbGF5UG9ydCBoYXJkd2FyZSBibG9jayBjYW4g
-YmUgY29uZmlndXJlZCB0byB3b3JrIGluIHNpbmdsZSwKPiBkdWFsLHF1YWQgcGl4ZWwgbW9kZSBv
-biBkaWZmZXJudCBwbGF0Zm9ybXMsIHNvIG1ha2UgdGhlIHBpeGVsIG1vZGUgc2V0Cj4gYnkgcGxh
-dF9kYXRhIHRvIHN1cHBvcnQgdGhlIHVwY29taW5nIHJrMzU3NiB2YXJpYW50Lgo+IAo+IFNpZ25l
-ZC1vZmYtYnk6IEFuZHkgWWFuIDxhbmR5LnlhbkByb2NrLWNoaXBzLmNvbT4KCldoaWxlIERtaXRy
-eSBoZWxwZWQgYSBsb3Qgd2l0aCBsb29raW5nIGF0IGJyaWRnZSBkcml2ZXJzIHJlY2VudGx5LApJ
-IHRoaW5rIHlvdXIgcmVjaXBpZW50IGxpc3QgZG9lcyBtaXNzIGEgbnVtYmVyIG9mIG90aGVyIHBl
-b3BsZQpsaXN0ZWQgYXMgYnJpZGdlIHJldmlld2Vycy9tYWludGFpbmVycy4KCiQgc2NyaXB0cy9n
-ZXRfbWFpbnRhaW5lci5wbCBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlCkFuZHJ6ZWogSGFqZGEgPGFu
-ZHJ6ZWouaGFqZGFAaW50ZWwuY29tPiAobWFpbnRhaW5lcjpEUk0gRFJJVkVSUyBGT1IgQlJJREdF
-IENISVBTKQpOZWlsIEFybXN0cm9uZyA8bmVpbC5hcm1zdHJvbmdAbGluYXJvLm9yZz4gKG1haW50
-YWluZXI6RFJNIERSSVZFUlMgRk9SIEJSSURHRSBDSElQUykKUm9iZXJ0IEZvc3MgPHJmb3NzQGtl
-cm5lbC5vcmc+IChtYWludGFpbmVyOkRSTSBEUklWRVJTIEZPUiBCUklER0UgQ0hJUFMpCkxhdXJl
-bnQgUGluY2hhcnQgPExhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJvYXJkLmNvbT4gKHJldmlld2Vy
-OkRSTSBEUklWRVJTIEZPUiBCUklER0UgQ0hJUFMpCkpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJv
-by5zZT4gKHJldmlld2VyOkRSTSBEUklWRVJTIEZPUiBCUklER0UgQ0hJUFMpCkplcm5laiBTa3Jh
-YmVjIDxqZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+IChyZXZpZXdlcjpEUk0gRFJJVkVSUyBGT1Ig
-QlJJREdFIENISVBTKQoKQXMgeW91J2xsIG5lZWQgdG8gZG8gYSB2MiBmb3IgdGhlIGJpbmRpbmcs
-IHBsZWFzZSBhZGQgdGhlIG1pc3NpbmcgcGVvcGxlCnRvIHRoZSByZWNpcGllbnRzLgoKCkZvciB0
-aGUgY2hhbmdlIGl0c2VsZiwgY2FuIHlvdSBpbXByb3ZlIHRoZSBjb21taXQgbWVzc2FnZSBhIGJp
-dC4KCkkgYXNzdW1lIHRoZSBTaW5nbGUvRHVhbC9RdWFkLVBpeGVsIGNvbmZpZyBpcyBhIHJlYWwg
-aGFyZHdhcmUtZmVhdHVyZQp0aGF0IGlzIHNldCB3aGVuIHRoZSBJUCBpcyBpbnRlZ3JhdGVkIGlu
-dG8gdGhlIHNvYz8gT3IgdGhpcyBhIHJ1bnRpbWUKc2V0dGluZyBhbmQgYSBzb2MgY2FuIHN1cHBv
-cnQgbXVsdGlwbGUgb3V0cHV0IHZhcmlhbnRzPwoKClRoYW5rcwpIZWlrbwoKCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Andy,
+
+On Fri, 9 Jan 2026 at 00:59, Andy Yan <andyshrk@163.com> wrote:
+> Filter the mode that can't output by the crtc.
+>
+> [...]
+>
+> +static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
+> +                                                const struct drm_display_mode *mode)
+> +{
+> +       struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> +
+> +       if (mode->hdisplay > vp->data->max_output.width)
+> +               return MODE_BAD_HVALUE;
+
+Why not test height as well?
+
+Cheers,
+Daniel
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
