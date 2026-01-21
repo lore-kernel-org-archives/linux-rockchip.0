@@ -4,92 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA5FFD2629F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 20 Jan 2026 23:05:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C6C0D262AF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 01:54:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R09LEJkDAOzizNWnJK7+bNih9GX2seJW8HztSg6svj4=; b=CNrKCqS6kvBDJD
-	t36Rh9FfpIV3q0zXe8fLenigsjyoaXHeLVsCVFtgO21Fnr+SPiRYhIYrZGGuA4udYQUe2tgKo7vEo
-	bB8dNtpytxOj7GgylV+c4fGS6piGQUckhYXs2N60sGNhSrdV6zSxHHVxBxJ6adA61GCIuQX8+L3h5
-	dTJIKs3V5Pr1gZHeXpo7tO6RINWDOFcu9lux//g0eGRGD0u0B8Rl37jmgVXruhTjQs5uvaW/kHC5M
-	3yo9agC0tcF0DdD7T6mxLdC6hEelHS1sPMCMgyk/PNRNslUdQueZT0Tjq3i35BAsq4a1g2lE8XOJy
-	+6jzXc83C23VM3FxYbeA==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zRsQffgHulBF1BtBn2HtYCd8ThHSGfLxgL50wSjZsGk=; b=Mt6/8nH0YJnCuO
+	htOymOcQ7HCXyXYsIs5BKtSxKQHBsQM8EGq4BI3+Xn8wTJCo7f9F79Bq9IBnawUC44YhEUlVWL/+k
+	CIOnopOQ08QAgsQ1gzym8apTaXX4+ahDy1nR71zAi2LgQKurSNgPbLFYvxzqIV1SeSYD6mx6qS93U
+	HiuJabOVpau+GBUvBeJuGHf7SvNTSlb34olIvnAjnU7RzQTIKKOTMbhb38np5bnksqT+e26GdmpbA
+	Rht+3gpNRMTm3tY4OM353+MMktQAFJPnslYyYkNMrLDz35iefdsiMecZ2fo4MULwI9Bzf3q6a1bs1
+	0mjgjy5HdYv8tKkWYdBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viKmX-00000004brg-2B2Q;
-	Tue, 20 Jan 2026 23:05:05 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1viNQl-00000004jiY-0cXz;
+	Wed, 21 Jan 2026 01:54:47 +0000
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viKmU-00000004bqr-1bXJ;
-	Tue, 20 Jan 2026 23:05:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1768950301; x=1800486301;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=/C10asdU+CskhWeQvv6lZElGi85Hl4tPtMi3dsJAszk=;
-  b=mW+fQKePcjd5c0+JfaUTaaTBfaEbwHOTbgP2JZuQoJBxQWexC9NVZ1jO
-   QP5AW0xJUGy0EcCYnaZOR1UpawVOZ5PKL9Wj5BA2dD0ffk8tq9Ea3JYVh
-   0fpLSH1VM6cJA21x7ZCunECTWTrUv1YHQDlw4jphGipyvdgqyScdjNP7y
-   +p4qVAa1to0Z1q76CP1vM3H8W1KpmRv0PUmKXyWB+E2UA4Bmhx3P1arId
-   C5B07OMGyxgcnlvyBlsgdVQ3mB9xtIiscxOgHcNitvM0XGqltmxURXfKk
-   FR5ooE3On9KULpv34GVU+iTzueT9OqKLo6IK6Y2eZ3Elcy8b4XKSVMkTA
-   w==;
-X-CSE-ConnectionGUID: Vfy0lbdmQCW0VcdUIALMdQ==
-X-CSE-MsgGUID: 7kQxHgg5RMywUj1RwEP2Dg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11677"; a="74025241"
-X-IronPort-AV: E=Sophos;i="6.21,241,1763452800"; 
-   d="scan'208";a="74025241"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jan 2026 15:05:00 -0800
-X-CSE-ConnectionGUID: Lsv2Uk+LR6aYFpYi3yjcVg==
-X-CSE-MsgGUID: YVTunqWuQvWJGPPljzBMqg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,241,1763452800"; 
-   d="scan'208";a="206168836"
-Received: from dalessan-mobl3.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.44])
-  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Jan 2026 15:04:57 -0800
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 3AA3C121D60;
-	Wed, 21 Jan 2026 01:05:00 +0200 (EET)
-Date: Wed, 21 Jan 2026 01:05:00 +0200
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>, Frank Li <Frank.li@nxp.com>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+	id 1viNQi-00000004jfk-0rrL;
+	Wed, 21 Jan 2026 01:54:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1768960450;
+	bh=WZq7zIP7/86ZusWmfGwlEuQbY/grzwNqfRgaU1ANOgM=;
+	h=From:To:Subject:Date:Message-Id;
+	b=uadAQwnYj9uDJdocpzElGXKwxCahIq8KGRKuToX6UEztVmOg8XbbLawEPucvuaL5j
+	 qxTczyBb0uRtIf5B8kX/AikwWBhzQadrlVGutwxxS2ercjkXA1zSTJMqTp67EMpleN
+	 xyFGC4t10q/uLkWz/hQPAd9oLJ8Y7o+4YrhDxX4s=
+X-QQ-mid: zesmtpsz3t1768960443te5516434
+X-QQ-Originating-IP: ZazM54AfZm2RdLLOT68vt/up/bzHgtB6O8CyHXWTUiM=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Wed, 21 Jan 2026 09:54:00 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 16337528738947552159
+EX-QQ-RecipientCnt: 21
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Hsun Lai <i@chainsx.cn>,
+	John Clark <inindev@gmail.com>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
 	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	Andy Yan <andy.yan@rock-chips.com>
+Cc: devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: fixup! media: synopsys: add driver for the designware mipi csi-2
- receiver
-Message-ID: <aXAKHMjwVpWYUmp7@kekkonen.localdomain>
-References: <20251114-rockchip-mipi-receiver-v8-0-bd1cf5cb9588@collabora.com>
- <20251114-rockchip-mipi-receiver-v8-2-bd1cf5cb9588@collabora.com>
- <7722373a-b491-4aaa-9527-a8f091cf22fe@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7722373a-b491-4aaa-9527-a8f091cf22fe@collabora.com>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v4 0/2] arm64: dts: rockchip: Add rk3576 evb2 board
+Date: Wed, 21 Jan 2026 09:53:55 +0800
+Message-Id: <20260121015357.291-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: OWISOlifo4Hy2L7zlMA5PXytslX1F8lCFf0c2cb0emBivGiLxZc1zxYN
+	aEFdXtkSKsMGC87CnbuwxnFva3ONuiVQwcR2MatNQtVmBNU8pVWP47zBuSmAGnQD6FsoIB0
+	d3/9KXMd3AiB9z4Clp3LearMwcy1LhZndtOvegsU7+BS/JHDqpYZyNchFpPzUFk1tc4RH/+
+	O0HtwafRh3c1OcvDvhRJeODzlcsECCOi4URvO8hwlo8WX7tVeJ3kqd06p3QCOHnlOv6oR27
+	dzZQJTbIyIfTa0X1R6ZESfD7MtHhZDUBSq0xpAgABMvCKWCtJjYHUCZVCWbeXukxoEg24lt
+	kf+pNoADXT5tdGkmr17HfGSoGxoCOE31DABDgsgHA+tqs3+j/douUpGsGnJRLqyVsSaJhol
+	JZ4CS7V+3XGNvgT0G2rvCMazfHbXTwjvfonYnhig35geabVdsp3ke34EwVD6429/6+ZPCng
+	A2PuB3YPIvnVS2ctxHNIZD20aiIXSes9lWvHR9rAsPIfjuI6xkoa6KDvyatqBNeYV0/89ma
+	po9DQJ8ag6AqWrOBVV+9A0edt3z+NT0+lFvjR1uWZxEM0xY4hEKn4N70I65AZ5kiNnwFYkw
+	45NxZu3APJVMXOZtDSWvI1TnRkFogs6KrxjgU1mXhe7KJw0oFKsNSA7QWCwZPT5i2gzyLv+
+	FYhukI9bFksiX0RCnS99gcqBfqQ0/gwjWd0bVbkek68Bk2GGSZylRIK38SNWtAQLcWf+3rn
+	PGNDyRYR4Ave/rCedSLCueJOyxEOglnu/IsYVO4gqS9OyvzfUy7al+QVE+ihr03/vsCGfjM
+	d88EJ18Cc6wAHxuSyfNfxMYhmrggqjd7oPJgCxCN1udLn9dsK3eC8OPbDIG//5GmXjb7HS0
+	Buby02ZP+dtrMTgiTwmGHbE5cEYezT+2PXeMEFB+QRqtQtu6q30KlRzb5xIEJ2EIJJ47pV2
+	1CYiu6AWKvW8Qp6I+95bm82cV97m2TQ6T38FpgXzp0n7kn7JvX8swi2S1DziLCb9siTz9gT
+	2XdE45DT+U+yaMkcT4cQiW334bqJAGni3t49Tpqw==
+X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_150502_494600_5A3DA161 
-X-CRM114-Status: GOOD (  15.91  )
+X-CRM114-CacheID: sfid-20260120_175444_796014_51115012 
+X-CRM114-Status: GOOD (  13.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,65 +102,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-On Tue, Jan 20, 2026 at 08:35:17PM +0100, Michael Riesch wrote:
-> Make smatch happy by adding braces around the initialization in switch
-> cases.
-> 
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> ---
-> @Sakari could you try the following patch? I think this should solve the
-> issues with smatch/sparse you mentioned off-list.
+Hi,
 
-I don't know what went wrong but this won't apply.
+This series add support for rk3576 evb2 board.
 
-Instead I made the following changes:
+General features for rk3576 evb2 board:
+    - Rockchip RK3576
+    - LPDDR4/4X
+    - eMMC5.1
+    - RK806-2x2pcs + DiscretePower
+    - 1x HDMI2.1 TX / HDMI2.0 RX
+    - 1x full size DP1.4 TX (Only 2 Lanes)
+    - 2x 10/100/1000M Ethernet
+    - 5x SATA3.0 7Pin Slot
+    - 2x USB3.2 Gen1 Host
+    - 3x USB2.0 Host
+    - WIFI/BT
+    - ...
 
-diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-index 29119a1a8d38..170346ae1a59 100644
---- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-+++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-@@ -237,10 +237,8 @@ static int dw_mipi_csi2rx_start(struct dw_mipi_csi2rx_device *csi2)
- 
- 	switch (csi2->bus_type) {
- 	case V4L2_MBUS_CSI2_DPHY:
--		struct phy_configure_opts_mipi_dphy *cfg = &opts.mipi_dphy;
--
- 		ret = phy_mipi_dphy_get_default_config_for_hsclk(link_freq * 2,
--								 lanes, cfg);
-+								 lanes, &opts.mipi_dphy);
- 		if (ret)
- 			return ret;
- 
-@@ -294,14 +292,12 @@ dw_mipi_csi2rx_enum_mbus_code(struct v4l2_subdev *sd,
- 
- 	switch (code->pad) {
- 	case DW_MIPI_CSI2RX_PAD_SRC:
--		const struct v4l2_mbus_framefmt *sink_fmt;
--
- 		if (code->index)
- 			return -EINVAL;
- 
--		sink_fmt = v4l2_subdev_state_get_format(
--			sd_state, DW_MIPI_CSI2RX_PAD_SINK);
--		code->code = sink_fmt->code;
-+		code->code =
-+			v4l2_subdev_state_get_format(sd_state,
-+						     DW_MIPI_CSI2RX_PAD_SINK)->code;
- 
- 		return 0;
- 	case DW_MIPI_CSI2RX_PAD_SINK:
+To make the USB hub work, the additional patch from usb-next is required:
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git/commit/?h=usb-next&id=00fcc9c86a134c488fd857b5460a7925228272c1
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git/commit/?h=usb-next&id=fa3bb5011f33cccd246072954e64d64483d0d774
+
+Changes in v4:
+- Link to v3: https://lore.kernel.org/all/20260112022823.91-1-kernel@airkyi.com/
+- Move the USB hub code into a separate patch series, and that series have
+  already been merged into usb-next.
+- Fix supply and reset for usb hub.
+- Add cd-gpios for sdmmc.
+
+Changes in v3:
+- Link to v2: https://lore.kernel.org/all/20260107070322.323-1-kernel@airkyi.com/ 
+- Add binding for WCH CH334/CH335 hub controller.
+- Add alias for mmc.
+- Rename some usb vbus regulator.
+- Add DP regulator.
+- Change gmac phy-mode to rgmii-id.
+- Add target-supply for sata.
+- Change vcc-supply for ufshc.
+- Add usb hub.
+- ...
+
+Changes in v2:
+- Link to v1: https://lore.kernel.org/all/20260104023703.118-1-kernel@airkyi.com/
+- Enable hdmi_sound and sai6.
+- Add more cpu-supply.
+- Use regulator to control sata power.
+- Remove "cap-mmc-highspeed" prop in sdmmc.
+- Add regulator supply for ufshc.
+- Add the missing vcc3v3_hubreset regulator.
+- Add otg capability for usb_drd0_dwc3.
+
+Chaoyi Chen (2):
+  dt-bindings: arm: rockchip: Add rk3576 evb2 board
+  arm64: dts: rockchip: Add rk3576 evb2 board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    4 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3576-evb2-v10.dts     | 1004 +++++++++++++++++
+ 3 files changed, 1008 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
 
 -- 
-Regards,
+2.51.1
 
-Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
