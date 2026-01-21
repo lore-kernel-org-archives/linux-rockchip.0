@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D381C44536
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 14:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D5B3D46942
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 14:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cLEZkSjjb0OVFOstAspvRIqOcPhZVsJJ3xMEF4LEN/w=; b=C6Lt2e6Z45zOrM
-	UD6XmGVAtVPgwfuz2LPbh6YGdAX/C4ynzRa+MAKSErdJlrdc9lXiSCGDdByrj/TG5t6D4JO1Xsq3u
-	0VLX5Z5R4Bm+Ex+4dKkTiIXXj9IELRYxHRv9OgcoDVdO434UJWBRgPZkCITguv+am1G66eODR8W0c
-	w7UevXcCUQNRYNjf30QlRPhZZD7RnplKZj1xSYFZFMPOg64p5Bylo+2wgdK78+N08T/uZnVTFuTXf
-	lfsZApYzErcdLcuRMf5Kf4lK8Nzmsii3GiPm1iNOkTQqhZKNroBYu9+DD40SFBZfEcgdFA3R2qmE4
-	Wlz2JC1L5C9CmfJWCWHQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=kFtt8NalWW5TKBCfCkpa4CDEgeIum4/sNwokoR4xh9Y=; b=q+mtFs6GZF6zXWFDpZK9PGu2KJ
+	BcF7JSaoY2D4RXUWOfMeT8yybqRu7iAn02f3Xp/QPUON1Y2lyy5UfoQ+IPXSd7Mo3ekiCOHrKCVE0
+	nJjyV7Mzl1RTXNu+P4BQMFRKdfuEurESEtwe9XfJVHq0O13Fvu9v4JUQfF2aZWhBdq6/4a/+qn5zP
+	55cLu9Q5Tu0KLDxjgyXrcrtDMZDjERiNe4uCgH3n/nUM5TcStZCR9Qj+4ERIeIouIjE4NnzdTaX33
+	zYe18Fn56UrU1+/iq5uEX6S8+9q9s9qA/Vweiyxct4jgouh2DAZ2d9LzxDSIFNmX52HCJXD/5nzVy
+	zV6T+EJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viZU5-00000005dCB-1kQ8;
-	Wed, 21 Jan 2026 14:47:01 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1viZUA-00000005dHD-0Xe4;
+	Wed, 21 Jan 2026 14:47:06 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viZTz-00000005d67-0NVc;
-	Wed, 21 Jan 2026 14:46:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1769006780; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=e0A4bW9Bg//mH1TE8GfuAwqfayUGCpTByz8IEEaPpwXzBquMDVy0nh5DH51xbXKy5rmPwQH662AUdtZWghBgIouKZ/a4t5OcyMy6SRhKH7RF5w3XFXv3u1InZKhbzjnQuvfGp2x8L+/2NpFL+8gNDT5cyce1xYSb7IQm4Ny9WbY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1769006780; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=w+BU3yZcnZLVUl/l+ViGJZdk5XsNHMsU7ReIC8wTppQ=; 
-	b=UCX3Sl2AfKRLsoHrzKby2mB6kAlz8z7DLkyY2+qpryszgxTq5gKYjjN3N8LBgdeXs63ZR2XJQBp3n2w467z1PwweHayc0MWK7bkFJ9fn9HSueTfjNeCiVs/l9hf5cP827z+M+CJHOUZJTNxfEV1ZSeCjTJnKQeqlBIrdinhwmuc=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769006780;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=w+BU3yZcnZLVUl/l+ViGJZdk5XsNHMsU7ReIC8wTppQ=;
-	b=BBA3G30gz/faVkMIqxUCEfIPk4lJkyDvkZggDeRxsF+FnBk5WUiwMEHQo9huuyiy
-	h6tP6sZzmVJFb1mG3J6aljLWPNV+RxGUhRefiXBWZD8OZq9a6NJCzfHDr0Z9td7/Ahu
-	PhVSsOrPoBTnnbM0fkZMh4rytu6Lyv0rcJGVWJY0=
-Received: by mx.zohomail.com with SMTPS id 1769006778497255.4881577685843;
-	Wed, 21 Jan 2026 06:46:18 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 21 Jan 2026 15:45:13 +0100
-Subject: [PATCH v7 06/22] drm/display: hdmi-state-helper: Try subsampling
- in mode_valid
+	id 1viZU2-00000005d74-0ijQ;
+	Wed, 21 Jan 2026 14:47:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1769006813;
+	bh=afNV+4Kntzl2OJS5+YQHRny1CbURCs2XIYTp9jU1WYU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=P54WYVbsl17MXk2LcSxoBkOPZ+v81dklD6Yc/blcHFG8sQyIqIvF+MMRH6T4kaMDv
+	 Pxjo1NMW89sPRxGJFPkURFW1nWxsppd5963XazMJ726o6P/Iivoe7ec6ArmAQtamaO
+	 RlZyD7+bGDIGYPQHWw4oE32TfcDBZMg5TZYmlI0l9dEdtr06159ivtRWbsW9e4awTp
+	 4JrJvUoVQc2xrpYWyHOtVJluq9aPIwQkJerYHttPM1RBiv/vy2S6OAhougTe9RdHIV
+	 /r+5JJPd01uc3aTkRStbsetRpip9w6jVKRc4NTRpPW+rxSOZezyf7nN1TPm/6K4DEV
+	 0I9Nquhwzkj7A==
+Received: from [IPv6:2606:6d00:17:7b4b::c41] (unknown [IPv6:2606:6d00:17:7b4b::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E1FD417E12E5;
+	Wed, 21 Jan 2026 15:46:50 +0100 (CET)
+Message-ID: <69fda4f0136285e4d2f86e7e93d5bdd812c1d47a.camel@collabora.com>
+Subject: Re: [PATCH v9 15/17] media: rkvdec: Add H264 support for the
+ VDPU383 variant
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: kernel test robot <lkp@intel.com>, Detlev Casanova
+	 <detlev.casanova@collabora.com>, linux-kernel@vger.kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, Mauro Carvalho
+ Chehab	 <mchehab@kernel.org>, linux-media@vger.kernel.org, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Heiko Stuebner <heiko@sntech.de>, Daniel
+ Almeida <daniel.almeida@collabora.com>, Jonathan Corbet <corbet@lwn.net>,
+ Ricardo Ribalda	 <ribalda@chromium.org>, Hans Verkuil <hverkuil@xs4all.nl>,
+ Yunke Cao	 <yunkec@google.com>, Hans de Goede <hansg@kernel.org>, Laurent
+ Pinchart	 <laurent.pinchart@ideasonboard.com>, Pavan Bobba
+ <opensource206@gmail.com>,  Sakari Ailus <sakari.ailus@linux.intel.com>,
+ James Cowgill <james.cowgill@blaize.com>, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>, Diederik de Haas	
+ <didi.debian@cknow.org>
+Date: Wed, 21 Jan 2026 09:46:48 -0500
+In-Reply-To: <202601211924.rqKS2Ihm-lkp@intel.com>
+References: <20260120222018.404741-16-detlev.casanova@collabora.com>
+	 <202601211924.rqKS2Ihm-lkp@intel.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-Message-Id: <20260121-color-format-v7-6-ef790dae780c@collabora.com>
-References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
-In-Reply-To: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
- Rodrigo Siqueira <siqueira@igalia.com>, 
- Alex Deucher <alexander.deucher@amd.com>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- linux-doc@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260121_064655_183781_F89DCE3E 
-X-CRM114-Status: GOOD (  13.80  )
+X-CRM114-CacheID: sfid-20260121_064658_556094_277DEA10 
+X-CRM114-Status: GOOD (  20.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,63 +95,167 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4626630692525624084=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-drm_hdmi_connector_mode_valid assumes modes are only valid if they work
-with RGB. The reality is more complex however: YCbCr 4:2:0
-chroma-subsampled modes only require half the pixel clock that the same
-mode would require in RGB.
 
-This leads to drm_hdmi_connector_mode_valid rejecting perfectly valid
-420-only or 420-also modes.
+--===============4626630692525624084==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-HUBaFbLuQRAvVZ40o0vh"
 
-Fix this by checking whether the mode is 420-capable first. If so, then
-proceed by checking it with HDMI_COLORSPACE_YUV420 so long as the
-connector has legalized 420, otherwise error out. If the mode is not
-420-capable, check with RGB as was previously always the case.
 
-Fixes: 47368ab437fd ("drm/display: hdmi: add generic mode_valid helper")
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+--=-HUBaFbLuQRAvVZ40o0vh
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 1ea3b9c93aa5..ceabfdb30f7a 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -898,8 +898,21 @@ drm_hdmi_connector_mode_valid(struct drm_connector *connector,
- 			      const struct drm_display_mode *mode)
- {
- 	unsigned long long clock;
-+	enum hdmi_colorspace fmt;
-+
-+	if (drm_mode_is_420_only(&connector->display_info, mode)) {
-+		if (connector->ycbcr_420_allowed)
-+			fmt = HDMI_COLORSPACE_YUV420;
-+		else
-+			return MODE_NO_420;
-+	} else if (drm_mode_is_420_also(&connector->display_info, mode) &&
-+		   connector->ycbcr_420_allowed) {
-+		fmt = HDMI_COLORSPACE_YUV420;
-+	} else {
-+		fmt = HDMI_COLORSPACE_RGB;
-+	}
- 
--	clock = drm_hdmi_compute_mode_clock(mode, 8, HDMI_COLORSPACE_RGB);
-+	clock = drm_hdmi_compute_mode_clock(mode, 8, fmt);
- 	if (!clock)
- 		return MODE_ERROR;
- 
+Hi,
 
--- 
-2.52.0
+Le mercredi 21 janvier 2026 =C3=A0 22:27 +0800, kernel test robot a =C3=A9c=
+rit=C2=A0:
+> Hi Detlev,
+>=20
+> kernel test robot noticed the following build warnings:
+>=20
+> [auto build test WARNING on rockchip/for-next]
+> [also build test WARNING on linuxtv-media-pending/master media-tree/maste=
+r linus/master v6.19-rc6 next-20260120]
+> [If your patch is applied to the wrong git tree, kindly drop us a note.
+> And when submitting patch, we suggest to use '--base' as documented in
+> https://git-scm.com/docs/git-format-patch#_base_tree_information]
+>=20
+> url:=C2=A0=C2=A0=C2=A0 https://github.com/intel-lab-lkp/linux/commits/Det=
+lev-Casanova/media-uapi-HEVC-Add-v4l2_ctrl_hevc_ext_sps_-ls-t_rps-controls/=
+20260121-071026
+> base:=C2=A0=C2=A0 https://git.kernel.org/pub/scm/linux/kernel/git/mmind/l=
+inux-rockchip.git=C2=A0for-next
+> patch link:=C2=A0=C2=A0=C2=A0 https://lore.kernel.org/r/20260120222018.40=
+4741-16-detlev.casanova%40collabora.com
+> patch subject: [PATCH v9 15/17] media: rkvdec: Add H264 support for the V=
+DPU383 variant
+> config: loongarch-allmodconfig (https://download.01.org/0day-ci/archive/2=
+0260121/202601211924.rqKS2Ihm-lkp@intel.com/config)
+> compiler: clang version 19.1.7 (https://github.com/llvm/llvm-project=C2=
+=A0cd708029e0b2869e80abe31ddb175f7c35361f90)
 
+Modification has been done to reduce the stack utilization on clang, though=
+ we
+believe we are hitting limitations/bugs on older clang. We went ahead with =
+these
+patch by updating our CI to clang 21, which allocate a lot less stack with =
+KASAN
+enabled and this code. Our general advise is to use a newer clang, or GCC f=
+or
+testing with KASAN.
+
+The stack utilization is caused by the combination of loop unrolling, agres=
+sive
+inlining, and write operations to bitfield (which requires the compiler to
+generate more code for memory checks, since the writes are not aligned).
+
+cheers,
+Nicolas
+
+> reproduce (this is a W=3D1 build): (https://download.01.org/0day-ci/archi=
+ve/20260121/202601211924.rqKS2Ihm-lkp@intel.com/reproduce)
+>=20
+> If you fix the issue in a separate patch/commit (i.e. not just a new vers=
+ion of
+> the same patch/commit), kindly add following tags
+> > Reported-by: kernel test robot <lkp@intel.com>
+> > Closes: https://lore.kernel.org/oe-kbuild-all/202601211924.rqKS2Ihm-lkp=
+@intel.com/
+>=20
+> All warnings (new ones prefixed by >>):
+>=20
+> > > drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c:485:12: =
+warning: stack frame size (2064) exceeds limit (2048) in 'rkvdec_h264_run' =
+[-Wframe-larger-than]
+> =C2=A0=C2=A0=C2=A0=C2=A0 485 | static int rkvdec_h264_run(struct rkvdec_c=
+tx *ctx)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ^
+> =C2=A0=C2=A0 1 warning generated.
+>=20
+>=20
+> vim +/rkvdec_h264_run +485 drivers/media/platform/rockchip/rkvdec/rkvdec-=
+vdpu383-h264.c
+>=20
+> =C2=A0=C2=A0 484=09
+> =C2=A0> 485	static int rkvdec_h264_run(struct rkvdec_ctx *ctx)
+> =C2=A0=C2=A0 486	{
+> =C2=A0=C2=A0 487		struct v4l2_h264_reflist_builder reflist_builder;
+> =C2=A0=C2=A0 488		struct rkvdec_dev *rkvdec =3D ctx->dev;
+> =C2=A0=C2=A0 489		struct rkvdec_h264_ctx *h264_ctx =3D ctx->priv;
+> =C2=A0=C2=A0 490		struct rkvdec_h264_run run;
+> =C2=A0=C2=A0 491		struct rkvdec_h264_priv_tbl *tbl =3D h264_ctx->priv_tbl=
+.cpu;
+> =C2=A0=C2=A0 492		u32 timeout_threshold;
+> =C2=A0=C2=A0 493=09
+> =C2=A0=C2=A0 494		rkvdec_h264_run_preamble(ctx, &run);
+> =C2=A0=C2=A0 495=09
+> =C2=A0=C2=A0 496		/* Build the P/B{0,1} ref lists. */
+> =C2=A0=C2=A0 497		v4l2_h264_init_reflist_builder(&reflist_builder, run.de=
+code_params,
+> =C2=A0=C2=A0 498					=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 run.sps, run.de=
+code_params->dpb);
+> =C2=A0=C2=A0 499		v4l2_h264_build_p_ref_list(&reflist_builder, h264_ctx->=
+reflists.p);
+> =C2=A0=C2=A0 500		v4l2_h264_build_b_ref_lists(&reflist_builder, h264_ctx-=
+>reflists.b0,
+> =C2=A0=C2=A0 501					=C2=A0=C2=A0=C2=A0 h264_ctx->reflists.b1);
+> =C2=A0=C2=A0 502=09
+> =C2=A0=C2=A0 503		assemble_hw_scaling_list(&run, &tbl->scaling_list);
+> =C2=A0=C2=A0 504		assemble_hw_pps(ctx, &run);
+> =C2=A0=C2=A0 505		lookup_ref_buf_idx(ctx, &run);
+> =C2=A0=C2=A0 506		assemble_hw_rps(&reflist_builder, &run, &h264_ctx->refl=
+ists, &tbl->rps);
+> =C2=A0=C2=A0 507=09
+> =C2=A0=C2=A0 508		config_registers(ctx, &run);
+> =C2=A0=C2=A0 509=09
+> =C2=A0=C2=A0 510		rkvdec_run_postamble(ctx, &run.base);
+> =C2=A0=C2=A0 511=09
+> =C2=A0=C2=A0 512		timeout_threshold =3D h264_ctx->regs.common.reg013_core=
+_timeout_threshold;
+> =C2=A0=C2=A0 513		rkvdec_schedule_watchdog(rkvdec, timeout_threshold);
+> =C2=A0=C2=A0 514=09
+> =C2=A0=C2=A0 515		/* Start decoding! */
+> =C2=A0=C2=A0 516		writel(timeout_threshold, rkvdec->link + VDPU383_LINK_T=
+IMEOUT_THRESHOLD);
+> =C2=A0=C2=A0 517		writel(0, rkvdec->link + VDPU383_LINK_IP_ENABLE);
+> =C2=A0=C2=A0 518		writel(VDPU383_DEC_E_BIT, rkvdec->link + VDPU383_LINK_D=
+EC_ENABLE);
+> =C2=A0=C2=A0 519=09
+> =C2=A0=C2=A0 520		return 0;
+> =C2=A0=C2=A0 521	}
+> =C2=A0=C2=A0 522=09
+
+--=-HUBaFbLuQRAvVZ40o0vh
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaXDm2AAKCRDZQZRRKWBy
+9Fd5AQCFNfQJ7V7hO/CwnP/tTYqJgQUUANlbrcmEIqz2R5L3KAEAlUwzVwSgEeKi
+Ne3geJutlRoJdxx1o7GBsOPJDjWQTwU=
+=cGBC
+-----END PGP SIGNATURE-----
+
+--=-HUBaFbLuQRAvVZ40o0vh--
+
+
+--===============4626630692525624084==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4626630692525624084==--
+
