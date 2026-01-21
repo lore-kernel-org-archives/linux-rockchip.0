@@ -4,86 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFB8FD46940
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 14:49:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF27C44536
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 14:55:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BVkiz1mjRmrBCVEkkOm9hVWOsohgJJ66YROpcs4HgDg=; b=WkCB37lWJw7ubD
-	6IsbPuz96uk/BlP/eK9NCFw8u7VkhHzH60U1ESpM6E1Jgrpum30mZf1LEzEy5FhtHXpIaZqIL1nOk
-	J26kmWMHK1ETctbJqGDR9CCcWCOEI1LslcYRRbVtb+voMXvCMe8poPghkvsLRJ8eYiZzudspswB4x
-	ck25rN8MCqJfRJMZYP+MlirI18Z75TGpGmsshcWsPAObYlgkUh6KEF0nODU0YUlBgkLHE9Wh0OxKW
-	c4eLPOQaW4rjg0Nh0MNQm4BFy3tu6SiO802gLR/qqBiMqVY5/m231IhzMsRqk50bCBNkFCxebTWxM
-	hQc+lMZdpymrOPEDWUsg==;
+	List-Owner; bh=qFutcxdV2po5r7Ir9Gtb8HiOhatAwZXxuu0jX5mFbks=; b=EHo85NX8cfHjDO
+	32wjwUDdemrt/u6HAVUfJVBK9Ku9p+9ESWwZchzeGDA0/jJj/Ha7kXqocBaxJKQcO5QUuuKXFjsbM
+	cUsGdEpvRhLaZJYARYvg/cYv+qe9VtBglfx+ueXDezTjWudmYNIYU6MfM7o4p73N0kJULcaDCWOjF
+	OZCD9iZvNMtERCxiFwpQHwYPbl5ZO2MeyVf92iY9q+mpqabJx1LYNCP6HGrJnfA/PXSMqeUJS+GBc
+	5cEQHhW26TfWhLpfcsVxRASE0pVUfalklvzlewBfnYUzW+Ylia10Bq5wvn2u7jD2BBVeIzr73Z7MU
+	kRg7hRxwJid74PrsHvKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viZW7-00000005fOR-2wrQ;
-	Wed, 21 Jan 2026 14:49:07 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1viZbv-00000005gBy-3lao;
+	Wed, 21 Jan 2026 14:55:07 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viZVw-00000005fBd-41Ob;
-	Wed, 21 Jan 2026 14:49:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1769006908; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=OYt6qVbbrjZMXbBw+LEBTmxlwOop70fpQcLtGT2ImF/m1vmH1YqwVBnm7N3IQXqfZ447J1417F1BUJPXyLFiEDwm+DEZbrPhzz13d7C+HyyZBr6WdleiLa5FoT4nnrXVVzBt7dtTi1FIYSqK727+uD8+2a1i3ec0UBNvSRj0hiI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1769006908; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=SfjcxeAT2W+o+UxrPmZJDMJEXHj1m3+fRUI5YUGISxM=; 
-	b=fKwO4uXpYVblW+x3Qm73LdEHISMYhsKZ/5m2uYX0ChLdz7nflEzgkOYEKyq0vvgSJTmJw4agBcpcTGF06KBJD2iHuXTf65iXm3//0b6H/c8mpCZYZQ5VHBBHTzPqYGlSyadFjHk9ebWmBTehdyHs5H+3yarP9XGaeEkNuAJ9qSA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769006908;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=SfjcxeAT2W+o+UxrPmZJDMJEXHj1m3+fRUI5YUGISxM=;
-	b=A2BBkbWU94kSg+W/NTPr2nPRsdenciU8Romy3fRAuqrGzFGl0PyQs2l3bga5HFWp
-	8Cnib475FVreEMxft2BH3wYxF5wk9SeX+HhZonamG3LaO75IR2d29aNoGUzhLRdfd7r
-	/tlg16CXQerxZy8oPq/vohKH41nvnQRWrULsZ9+g=
-Received: by mx.zohomail.com with SMTPS id 1769006906502667.9559694495291;
-	Wed, 21 Jan 2026 06:48:26 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 21 Jan 2026 15:45:29 +0100
-Subject: [PATCH v7 22/22] drm/bridge: Document bridge chain format
- selection
+	id 1viZbs-00000005gB3-43Jy
+	for linux-rockchip@lists.infradead.org;
+	Wed, 21 Jan 2026 14:55:06 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-59dd263bfd3so696222e87.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 21 Jan 2026 06:55:02 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1769007298; cv=none;
+        d=google.com; s=arc-20240605;
+        b=XERKbc9aOZSI+Bab5hoIIlB9yYfMAWRfBDJixZ20UTcpUsIL6shDjsjxFE/ehEzrY5
+         LlDQNTu3RiT9H/GwOp/6xnGRdOPnorc7VvPIPOiuOBpr+Xt8plOCtvQmPSYGY3Oe/6dj
+         4uYyrh1FIPtxrCp5E9bzw9QwKR1CrIkOBKNdXnd6uk4Gr74ALGo/E0dEQRVg6wC9JASq
+         jj/76fJ6/7XnrshRpkZwTe2r6QIOW0nBy3KHI6f1nxaGIkvGeEKOU3mWF1tnOd5ZSPAf
+         OTTtTv+ZxjBU+Q5fQPmmBJrHkKYYuedlB6Ow5zj5EZ/jsqZ4fE4KdQ3kL79+ifeH1vQh
+         UU+Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=A6330N1LFD4XBCM84aMPcZjMDcowYLAuIIeheUGm2Io=;
+        fh=oe+YeBk5ORbnQELzrM/Kol0Zy+iMZ/IfWQzu/hbu9gU=;
+        b=OfZed5V9J7CQdVuTcWh72CP6QygpaefrF1qUxpBHsTOVvswtwbCo+MVdp/eN8AXC4o
+         PNcCFxUBzdvKUsBcPcpbT90ABohQYQorOgbJnYw7yOLN4lIO5HSnqyH2nOdaeKeYqlvv
+         b9K3i5lspgwx6E6pHWuYv043UrVjnUsoiJEGUQdiDUEn+Cakb97nbXvee6YdFbsafmDf
+         FtEXhn5rJK638Mtie4iKB/gSXLs/a2xSsXJLXiajBP4x1vM/Lmj22IdXAEVhKL2VoROQ
+         V0SStZQF83tojDk2CrJFPSST6sibAAgRZvkUP7GizFL+rSEGQxzowCGkUyQZDhS2EX0/
+         5rPg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1769007298; x=1769612098; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=A6330N1LFD4XBCM84aMPcZjMDcowYLAuIIeheUGm2Io=;
+        b=NryI818mApWFsKJa218kJBKL0s9RHjDBSMDyoi15N+WNt/TRkybVorfIXKHsfKrLY3
+         OKXkpbDvc4CyBz3I0JAfk57qkQZALoeR4DeyPO78zXIWOAc4G+Nd+fXbG7tKnozq2ZsF
+         xD7TpZ6E704qYbX+WNMkCbedByc+l17jTvcwoJlUgNAyq1lW00cuYyGf+mKDnGMcdvbM
+         Ge4kkwskmzQXgyhU4DF86JQxIe5/5Bf2vHWyC17o7pjIsVFA49DaiipOdg6UVpTnrzvO
+         sPR2Uw9YrVg1CFANlLOq0WSM4SU0ISuXDsyMk7Ko3SxkTrMNjNSOJPlrxQUckXDQ5CMp
+         pSpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769007298; x=1769612098;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=A6330N1LFD4XBCM84aMPcZjMDcowYLAuIIeheUGm2Io=;
+        b=lQptSRAx/HuiV24AMVD4PSTc3gqLnBbqCUYvDpekCnOsc/XJLQ8MP6iN4kY/6y87NO
+         oQBCFiY662X16EP2K85OC3rLiwV021ETt+9917Yyctds/BaZqldYGjRCvTESLRrQjHGU
+         q6T2BSrN6WaZb0AsxxLhngTn/4gsvrV886h3Vc5FcQmsmJjuob/F0SzL9rjnBuxTSqD8
+         SptbGxbgtRBhDKcfEgoWB7+LgA/lMp309BwvBRCpe+xQHx1YNs8Vm7+c3GYYHdt/B0z3
+         98NjNJq5txf9fKEEr15KuyO/SAPZdEV9aE7qLXMa3joVjT4wgmbU8g7QH+gysrYFKMMc
+         drSg==
+X-Forwarded-Encrypted: i=1; AJvYcCU4TTPcw5qMuNp882RhLhBMmzn8HFvb/RcWP0yCnk+9+5EwCsdKVD0o/01AS+Q0JpGA/zYoggVh6Ou/hbsP4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywg4dbxkUrctISY4VxE40pwl3bBpHlQPtC638UO7hD61gaFR/7z
+	kloH8yfH2v2ZIbxgKg0H+ADQhdrsHfv6Yc4MOqBWvQsqGVUQ9dWHQ3nwbLDyW2VucrtiHqYG3rW
+	RvYqKXigf48+gg+aT26/7M3Hxg9VnWPtHeijACjr0wg==
+X-Gm-Gg: AZuq6aIM4I5JrmdxAyDfAGMJTT/EKJeXBKhFMKWP8RXX35iG1olYKfCOTPr9zA3bWyY
+	aZtNGp2FO2k/y6tBf/Sw/gRrG+/7H2fHGjZuKUbAuJEHfGevYnWu5CaksQ1kCz2u3X2Nd3fhFAM
+	Fg2lQN7lychonr2PhEtrTKLOCmxjS08FZW30UrwBrnj09YF89JsuVJO7wnmPCSAdcDoqzjmZOOE
+	0hxKG3VpGx562qxjMva1BNpj6bYf/vkXZKsJaXg4UGHplErFY7NBM3fMjNzsqngJ/FUjvAR
+X-Received: by 2002:a05:6512:3b07:b0:59b:b3e3:c7fb with SMTP id
+ 2adb3069b0e04-59bb3e3c825mr5593429e87.9.1769007298426; Wed, 21 Jan 2026
+ 06:54:58 -0800 (PST)
 MIME-Version: 1.0
-Message-Id: <20260121-color-format-v7-22-ef790dae780c@collabora.com>
-References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
-In-Reply-To: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
- Rodrigo Siqueira <siqueira@igalia.com>, 
- Alex Deucher <alexander.deucher@amd.com>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- linux-doc@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.14.3
+References: <1768524932-163929-1-git-send-email-shawn.lin@rock-chips.com> <1768524932-163929-4-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1768524932-163929-4-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Wed, 21 Jan 2026 15:54:21 +0100
+X-Gm-Features: AZwV_QhAFWP6FlwdmN7VDr70aTTu8jbqo16cWKBC4DG2eUryPHPCQFlBbqWCxU4
+Message-ID: <CAPDyKFqbv0Vrb8a2bHN8gAdY7iEh_Sx8iWF7VWiQ71rjbWGBsg@mail.gmail.com>
+Subject: Re: [PATCH v4 3/5] mmc: dw_mmc-rockchip: Fix runtime PM support for
+ internal phase support
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org, 
+	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
+	FUKAUMI Naoki <naoki@radxa.com>, Marco Schirrmeister <mschirrmeister@gmail.com>, 
+	John Clark <inindev@gmail.com>, Tianling Shen <cnsztl@gmail.com>, 
+	Detlev Casanova <detlev.casanova@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260121_064857_050313_A7F2D24C 
-X-CRM114-Status: GOOD (  17.64  )
+X-CRM114-CacheID: sfid-20260121_065505_052876_DB9EAEC9 
+X-CRM114-Status: GOOD (  24.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,92 +118,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The bridge chain format selection behaviour was, until now,
-undocumented. With the addition of the "color format" DRM property, it's
-not sufficiently complex enough that documentation is warranted,
-especially for driver authors trying to do the right thing.
+On Fri, 16 Jan 2026 at 01:56, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> RK3576 is the first platform to introduce internal phase support, and
+> subsequent platforms are expected to adopt a similar design. In this
+> architecture, runtime suspend powers off the attached power domain, which
+> resets registers, including vendor-specific ones such as SDMMC_TIMING_CON0,
+> SDMMC_TIMING_CON1, and SDMMC_MISC_CON. These registers must be saved and
+> restored, a requirement that falls outside the scope of the dw_mmc core.
+>
+> Fixes: 59903441f5e4 ("mmc: dw_mmc-rockchip: Add internal phase support")
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Tested-by: Marco Schirrmeister <mschirrmeister@gmail.com>
 
-Add a high-level overview of how the process is supposed to work, and
-mention what the display driver is supposed to do if it wants to make
-use of this functionality.
+Following Heiko's approach, applied for next and by adding a stable-tag, thanks!
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- Documentation/gpu/drm-kms-helpers.rst |  6 ++++++
- drivers/gpu/drm/drm_bridge.c          | 39 +++++++++++++++++++++++++++++++++++
- 2 files changed, 45 insertions(+)
+Kind regards
+Uffe
 
-diff --git a/Documentation/gpu/drm-kms-helpers.rst b/Documentation/gpu/drm-kms-helpers.rst
-index 781129f78b06..47c4f593cf9d 100644
---- a/Documentation/gpu/drm-kms-helpers.rst
-+++ b/Documentation/gpu/drm-kms-helpers.rst
-@@ -181,6 +181,12 @@ Bridge Operations
- .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
-    :doc: bridge operations
- 
-+Bridge Chain Format Selection
-+-----------------------------
-+
-+.. kernel-doc:: drivers/gpu/drm/drm_bridge.c
-+   :doc: bridge chain format selection
-+
- Bridge Connector Helper
- -----------------------
- 
-diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-index b0dfa03dbb81..a155b8aa4a3d 100644
---- a/drivers/gpu/drm/drm_bridge.c
-+++ b/drivers/gpu/drm/drm_bridge.c
-@@ -198,6 +198,45 @@
-  * driver.
-  */
- 
-+/**
-+ * DOC: bridge chain format selection
-+ *
-+ * A bridge chain, from display output processor to connector, may contain
-+ * bridges capable of converting between bus formats on their inputs, and
-+ * output formats on their outputs. For example, a bridge may be able to convert
-+ * from RGB to YCbCr 4:4:4, and pass through YCbCr 4:2:0 as-is, but not convert
-+ * from RGB to YCbCr 4:2:0. This means not all input formats map to all output
-+ * formats.
-+ *
-+ * Further adding to this, a desired output color format, as specified with the
-+ * "color format" DRM property, might not correspond to what the display driver
-+ * should set at its output 1:1. The bridge chain it feeds into may only be able
-+ * to reach the desired output format, if a conversion from a different starting
-+ * format is performed.
-+ *
-+ * To deal with this complexity, the recursive bridge chain bus format selection
-+ * logic starts with the last bridge in the chain, usually the connector, and
-+ * then recursively walks the chain of bridges backwards to the first bridge,
-+ * trying to find a path.
-+ *
-+ * For a display driver to work in such a scenario, it should read the first
-+ * bridge's bridge state to figure out which bus format the chain resolved to.
-+ * If the first bridge's input format resolved to %MEDIA_BUS_FMT_FIXED, then its
-+ * output format should be used.
-+ *
-+ * Special handling is done for HDMI as it relates to format selection. Instead
-+ * of directly using the "color format" DRM property for bridge chains that end
-+ * in HDMI bridges, the bridge chain format selection logic will trust the logic
-+ * that set the HDMI output format. For the common HDMI state helper
-+ * functionality, this means that %DRM_COLOR_FORMAT_AUTO will allow fallbacks to
-+ * YCBCr 4:2:0 if the bandwidth requirements would otherwise be too high but the
-+ * mode and connector allow it.
-+ *
-+ * For bridge chains that do not end in an HDMI bridge, %DRM_COLOR_FORMAT_AUTO
-+ * will be satisfied with the first output format on the last bridge for which
-+ * it can find a path back to the first bridge.
-+ */
-+
- /* Protect bridge_list and bridge_lingering_list */
- static DEFINE_MUTEX(bridge_lock);
- static LIST_HEAD(bridge_list);
 
--- 
-2.52.0
-
+> ---
+>
+> Changes in v3: None
+> Changes in v2: None
+>
+>  drivers/mmc/host/dw_mmc-rockchip.c | 38 +++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 37 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+> index 879188f..2fe0896 100644
+> --- a/drivers/mmc/host/dw_mmc-rockchip.c
+> +++ b/drivers/mmc/host/dw_mmc-rockchip.c
+> @@ -36,6 +36,8 @@ struct dw_mci_rockchip_priv_data {
+>         int                     default_sample_phase;
+>         int                     num_phases;
+>         bool                    internal_phase;
+> +       int                     sample_phase;
+> +       int                     drv_phase;
+>  };
+>
+>  /*
+> @@ -573,9 +575,43 @@ static void dw_mci_rockchip_remove(struct platform_device *pdev)
+>         dw_mci_pltfm_remove(pdev);
+>  }
+>
+> +static int dw_mci_rockchip_runtime_suspend(struct device *dev)
+> +{
+> +       struct platform_device *pdev = to_platform_device(dev);
+> +       struct dw_mci *host = platform_get_drvdata(pdev);
+> +       struct dw_mci_rockchip_priv_data *priv = host->priv;
+> +
+> +       if (priv->internal_phase) {
+> +               priv->sample_phase = rockchip_mmc_get_phase(host, true);
+> +               priv->drv_phase = rockchip_mmc_get_phase(host, false);
+> +       }
+> +
+> +       return dw_mci_runtime_suspend(dev);
+> +}
+> +
+> +static int dw_mci_rockchip_runtime_resume(struct device *dev)
+> +{
+> +       struct platform_device *pdev = to_platform_device(dev);
+> +       struct dw_mci *host = platform_get_drvdata(pdev);
+> +       struct dw_mci_rockchip_priv_data *priv = host->priv;
+> +       int ret;
+> +
+> +       ret = dw_mci_runtime_resume(dev);
+> +       if (ret)
+> +               return ret;
+> +
+> +       if (priv->internal_phase) {
+> +               rockchip_mmc_set_phase(host, true, priv->sample_phase);
+> +               rockchip_mmc_set_phase(host, false, priv->drv_phase);
+> +               mci_writel(host, MISC_CON, MEM_CLK_AUTOGATE_ENABLE);
+> +       }
+> +
+> +       return ret;
+> +}
+> +
+>  static const struct dev_pm_ops dw_mci_rockchip_dev_pm_ops = {
+>         SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
+> -       RUNTIME_PM_OPS(dw_mci_runtime_suspend, dw_mci_runtime_resume, NULL)
+> +       RUNTIME_PM_OPS(dw_mci_rockchip_runtime_suspend, dw_mci_rockchip_runtime_resume, NULL)
+>  };
+>
+>  static struct platform_driver dw_mci_rockchip_pltfm_driver = {
+> --
+> 2.7.4
+>
 
 _______________________________________________
 Linux-rockchip mailing list
