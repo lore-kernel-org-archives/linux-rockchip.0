@@ -4,69 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56C38C44529
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 13:15:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F6CBC4452E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 13:46:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D9aiAlYvytorupCV3433bhDIwbuuhQurUdzQ5aNl21g=; b=nSzyBx8DloZwNU
-	zXo3hIF+ltvDAK1DXhCil+AaW7WtQx4pHnss6IunFYh+LLc5wXCCVmwYiEiu67H61rffDi6pJmZY4
-	4X9Ro6R5p+EMi6klYBciKFHcOrOriV4P7adWnQENtDSp3cWkky7is87+Fkq5/Q7bt2XME6lcpgV/n
-	0t3/7i25uly2DFWCVyjE9crnuKt2aWAmDuIbvlJ3BLlDEyM8mKqY6k7ZRlueUJARxCWmshofIY1No
-	IhiuUmAkyDgGmdxKAZ7q1cc0ynPODh1fADErJeo+19rtu4PdJVTXGUBKhuB5pYthibk4zjADSYj5/
-	8UNwY2EUjPw4bTAkWQ+A==;
+	List-Owner; bh=u4tY5BGZkPzzyYWnWdJloDfVpAmUCRetgqy4JA96LxA=; b=FCvdv5enPwFwyr
+	7mQxs0yCKSeyQyHVSWCeHQAm1bZoh8s68uQPJ98fK5kRoa292Plkl5X0Jc6Mogx2Ry68K6UdJy7mw
+	i1Afzf+LVFw2cFbA3C30t7BJsLXEp4Klw6NWBmy0Gi6yblCvcdVsAdUgE8AYbV2OOhOFS1XMY2mCj
+	5c51OKP+fBTQWCOwcg/HthWE0EbOyLynLfqwXAEeYGYyKM1m6d77zFzCus826OJpsCm/AKPSDG2O2
+	6ZMEV8IDWe5sxtYp2AChQvD37cGVOMZjLgLdjiKSI9w/rWpT9gqs84br+9ieda1rHkpdx/+9Ars6z
+	NnAeFH3fQLG2aNt4IsnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viY3b-00000005Txb-2gFd;
-	Wed, 21 Jan 2026 13:15:35 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1viYXk-00000005VHq-46DE;
+	Wed, 21 Jan 2026 13:46:44 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viY3Z-00000005TxB-1GKp;
-	Wed, 21 Jan 2026 13:15:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Gt5x1YSpMGnCtzukdJPqtJ1KKo1auwQYmco3HjMbW64=; b=vl0ieqsST/XAdQms2yS2AnXGP4
-	iKTNylKNi6MsB8Gs5xn+yFVLoVe2YzwSsYg7DXx2BghYOZ4lB6JPOQWDyN9GPbuzi5pcyoPcu704r
-	meApSaYjfZ6SwbuacnjfAeRvkweortpZYC5FwBlayKLJTZB9T/Aixz5XudvmtUcHDaAk=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1viY3D-003owk-Hj; Wed, 21 Jan 2026 14:15:11 +0100
-Date: Wed, 21 Jan 2026 14:15:11 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>, Hsun Lai <i@chainsx.cn>,
-	John Clark <inindev@gmail.com>, Jimmy Hon <honyuenkwun@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Alexey Charkov <alchark@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 2/2] arm64: dts: rockchip: Add rk3576 evb2 board
-Message-ID: <aec69818-9fd0-4e50-bab9-f5e36304a4a2@lunn.ch>
-References: <20260121015357.291-1-kernel@airkyi.com>
- <20260121015357.291-3-kernel@airkyi.com>
+	id 1viYXg-00000005VGG-3F0K;
+	Wed, 21 Jan 2026 13:46:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1769003161; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jlYHFWx2P3Kz6LTZ79x+6kdqLvari7VcC47ur0DqSG79+KQE/JW7gpF86NvCk+EWhTvpAVE6XE1n1dCJfJhS8ZIoKEFMouaAriJcpckoRdZK8M40ecIoWblvFOiDJWVS8E8R6QBJhVxv5iKtSpG1c2JMjkOkQ94IMJ4u8sRJk/U=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1769003161; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=QLGL7sAGGjAc4J4kRVufIDJ5+o6RGlXVLshIz0+jGpw=; 
+	b=S56vRgXoVMgJJnBVD3npkriP2aBkcgj91rL3N8NMLkyC3U8SAdaiPHisuSt9zjqAuWsbQLXt2hb6h+V0CLn/+cGlZRN4oT92X+ivBHmWxjs5jigtXQe3LiMIQpRew62ANnOHNEpiOjohskdgwuSl0IutAb5L2xJUZQnDj5m8fpg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769003160;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=QLGL7sAGGjAc4J4kRVufIDJ5+o6RGlXVLshIz0+jGpw=;
+	b=ZcfaTRN6WerfLB+GnZqROxbI2m562Gzxo1kyzDco1GRnbupQvcdDUh9qL6n8Wxuz
+	jx7FowaaGR6aY36KvntN5TbXi3zv4VVFtGoGtGMU0DTA9u7d0uFVrvfp5BMqivsErmZ
+	16WHLMAhNk+mu7JLRAxd/u5RLv6/yGT08dQhGAD8=
+Received: by mx.zohomail.com with SMTPS id 176900315953349.19319125732909;
+	Wed, 21 Jan 2026 05:45:59 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Wed, 21 Jan 2026 14:45:27 +0100
+Subject: [PATCH v6 01/21] drm/amd/display: Remove unnecessary
+ SIGNAL_TYPE_HDMI_TYPE_A check
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260121015357.291-3-kernel@airkyi.com>
+Message-Id: <20260121-color-format-v6-1-7b81a771cd0b@collabora.com>
+References: <20260121-color-format-v6-0-7b81a771cd0b@collabora.com>
+In-Reply-To: <20260121-color-format-v6-0-7b81a771cd0b@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Werner Sembach <wse@tuxedocomputers.com>, 
+ Andri Yngvason <andri@yngvason.is>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260121_051533_341656_90D5448C 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260121_054640_953143_4B2451C2 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,24 +102,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> +&mdio0 {
-> +	rgmii_phy0: ethernet-phy@1 {
-> +		compatible = "ethernet-phy-ieee802.3-c22";
-> +		reg = <0x1>;
-> +		pinctrl-names = "default";
-> +		pinctrl-0 = <&rgmii_phy0_rst>;
-> +		reset-assert-us = <20000>;
-> +		reset-deassert-us = <100000>;
-> +		reset-gpios = <&gpio3 RK_PD3 GPIO_ACTIVE_LOW>;
-> +		tx-internal-delay-ps = <1900>;
+From: Werner Sembach <wse@tuxedocomputers.com>
 
-What PHY is this? Does it actually implement this property?
+Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check that was performed in the
+drm_mode_is_420_only() case, but not in the drm_mode_is_420_also() &&
+force_yuv420_output case.
 
-It is also close to the 2000ps default. Have you put the board in an
-environment chamber and run tests at -20C to +70C to see if it will
-work with the default 2000ps?
+Without further knowledge if YCbCr 4:2:0 is supported outside of HDMI,
+there is no reason to use RGB when the display
+reports drm_mode_is_420_only() even on a non HDMI connection.
 
-     Andrew
+This patch also moves both checks in the same if-case. This  eliminates an
+extra else-if-case.
+
+Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+Tested-by: Andri Yngvason <andri@yngvason.is>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index cb13a2b0de62..4a2491a66fdd 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6699,12 +6699,9 @@ static void fill_stream_properties_from_drm_display_mode(
+ 	timing_out->v_border_top = 0;
+ 	timing_out->v_border_bottom = 0;
+ 	/* TODO: un-hardcode */
+-	if (drm_mode_is_420_only(info, mode_in)
+-			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
+-		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+-	else if (drm_mode_is_420_also(info, mode_in)
+-			&& aconnector
+-			&& aconnector->force_yuv420_output)
++	if (drm_mode_is_420_only(info, mode_in) ||
++	    (aconnector && aconnector->force_yuv420_output &&
++	     drm_mode_is_420_also(info, mode_in)))
+ 		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+ 	else if ((connector->display_info.color_formats & DRM_COLOR_FORMAT_YCBCR422)
+ 			&& aconnector
+
+-- 
+2.52.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
