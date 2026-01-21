@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38EC2C44503
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 08:52:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F16C44502
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 08:52:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=eNGVLkTDtv9OnINgwCamkDu0D+hqSrEcaxH6oaRdnLE=; b=NcVVB4yJj2cs3Q
-	ZpAlUdEFisabpGUh+Wk9geIym9eeMjJ1js3v/i+96t0sIxDeV8no5znxUWeP5Dt8iDNtdmB7qseT9
-	p33DNDnS46zDX5orUMjBrhj3022U1qlSd2+6Cbyd1XzEbcHX2oHRDbk7QFMNIrwZc77D3U0QSILFP
-	Mdyk1CXAqrgbhkF+z7I1rEB3D1U9tqRboCoYTeI3d8w8AaHzGjpK7+rSsXr1pkCNE4bxCfhJllgL3
-	jgNn1c837A5ayX+a4LEIgkK97JELfazy5SqxaWIvSmAl/ZYZ/5o7U3KAEezYbnuwskZPMDluqglvg
-	VC6ktRx69mnY5tJcSQhg==;
+	List-Owner; bh=KYvjwTb9tvVAyAD61MU9MDvQog2f0ICRvDiCMyzL4pg=; b=XXDB5j8/JurT3t
+	E0rt6YplCWceaafva73Ky0vG2zh3QzBw05rsHOZDgGhgonQmKcSHsryhnBIS67bs2WT84jPMamrqE
+	tUI22P1e5157fGTKaz8nllQhSybnvNseeeyC9MyyIU+57JL31RzOAT3ebVgaf9LIthkhEWptcs24M
+	rxwTPC13bXVeHJcGayroVfFZgky2U2pirrnJKG4EWbWEauKQ+r9cYP3NxS729nwXaqlBCXbbun1Y9
+	vaPjBjinX/w2Fytd8QX1phIkPFZFVeqtQgwktVErDNPiMNjB3VmIZHeoW4pKwBTsfYeaQE8gBOjzq
+	peExkd8LI2Je7VtJV4cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viTwW-000000057VG-3EcP;
-	Wed, 21 Jan 2026 08:52:00 +0000
+	id 1viTx4-000000057on-15Cg;
+	Wed, 21 Jan 2026 08:52:34 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viTwU-000000057UX-1IfX;
-	Wed, 21 Jan 2026 08:51:58 +0000
+	id 1viTx1-000000057me-2ndK;
+	Wed, 21 Jan 2026 08:52:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BAEA460051;
-	Wed, 21 Jan 2026 08:51:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7334BC116D0;
-	Wed, 21 Jan 2026 08:51:51 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1097260121;
+	Wed, 21 Jan 2026 08:52:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D473C116D0;
+	Wed, 21 Jan 2026 08:52:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768985516;
-	bh=b1OkaZbNKUB0kzLe7Q/SqmLQZt0wkkv/yFCuw4NH4Cs=;
+	s=k20201202; t=1768985550;
+	bh=GBX0TuUbi/wZVghRTq3x44Lmt4SYlKX0UDjtZonEMBo=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=JRox7huEDz8nFWjSs4ZCXM5FZBDddqq3Hbm0Fc8HE36ratOpY588+7QfjRwnqaBcI
-	 MJnHocoLBWWAm2tYtnOcO57kCvQ5KdvPjZp7KWpkPN7ruiujb740/53CENj7XQcjMu
-	 MAwUXv8UiXZGzarjbnl2opyXRkFC9gAK60D5N4+Rz/BEzq1fuEJauwM5CHWYfeEtza
-	 ub2sxpomfTBZmFt06nBF/xrL+XQ4r/IBQCHmN+2HZD8XtPtb7nQ9EgG/qmRvFz4ZU0
-	 2M4RM68hgh3K/fBNLWcxNm45GckJf2MFfRonCnhAPBrQEShersIDi0VeEQuBeGtPBX
-	 MSPFcXuYROycQ==
+	b=d6VZwmSNDbav9bCRw5i+01LI/LXTD9EBwONRR75dDNV0r8cETtQ7Gnb7WsfZ57Vyk
+	 3nP6SAqRF4YejDdSVdgpfzWuFO0nWxlxk0M9cYicq+v/xvzr2CPuVJO1yVLrE97LRf
+	 FOCyabKo37dNOm6tNAhDanjYodY4sSzJZlha3Ly4BbOC6ku3x++JCKy/5BuD4MpYZ1
+	 h6TqnaH5tTUMpJmQ9tnHHzm15qcUEwZcD61ursqhM0+4myGIZJ6WHKpM1bU3bYwWpK
+	 sOBMWT+LMHvmPRnJFsMB7PXsEPoWmkVaQs4S69SudwLUaqIA9rNowbo/OhoKUijsbS
+	 ddhRZn/WL4p6A==
 From: Vinod Koul <vkoul@kernel.org>
 To: Kishon Vijay Abraham I <kishon@kernel.org>, 
  Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
@@ -50,12 +50,12 @@ To: Kishon Vijay Abraham I <kishon@kernel.org>,
 Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-rockchip@lists.infradead.org
-In-Reply-To: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
-References: <20251221-phy-hdptx-frl-v5-0-dac390a780be@collabora.com>
-Subject: Re: [PATCH v5 00/11] Add HDMI 2.1 FRL support to
+In-Reply-To: <20260113-phy-hdptx-frl-v6-0-8d5f97419c0b@collabora.com>
+References: <20260113-phy-hdptx-frl-v6-0-8d5f97419c0b@collabora.com>
+Subject: Re: [PATCH v6 00/11] Add HDMI 2.1 FRL support to
  phy-rockchip-samsung-hdptx
-Message-Id: <176898551090.1268719.6685367481494669298.b4-ty@kernel.org>
-Date: Wed, 21 Jan 2026 14:21:50 +0530
+Message-Id: <176898554499.1268719.9527539961462152205.b4-ty@kernel.org>
+Date: Wed, 21 Jan 2026 14:22:24 +0530
 MIME-Version: 1.0
 X-Mailer: b4 0.13.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -75,7 +75,7 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sun, 21 Dec 2025 12:46:47 +0200, Cristian Ciocaltea wrote:
+On Tue, 13 Jan 2026 01:20:47 +0200, Cristian Ciocaltea wrote:
 > The Samsung HDMI/eDP Transmitter Combo PHY is capable of handling four
 > HDMI 2.1 Fixed Rate Link (FRL) lanes, while each lane can operate at
 > 3Gbps, 6Gbps, 8Gbps, 10Gbps or 12Gbps.
