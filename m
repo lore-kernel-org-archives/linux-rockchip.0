@@ -4,91 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D4BDD262BD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 03:17:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42F23D262B2
+	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 05:51:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LiwQNsAdjZ6bbIEpTqa6XaomISzh0cu6sbgwwv08c3o=; b=Wty4li/fB1J7ZX
-	aV3dsWNIj4HNCvNOS4qObWtIOEZwTXSs49KlVEySqAcIFPYuTHzFiNLOnlzh286su1qDVirfMsNks
-	quf4Y7fZI8xhMVtnuGbqm7dg15h4xnBM1h7TKb8R5ml+/fi/M1z875sgqMp7TqhuWYq2P1Ws548hQ
-	ZeIGnlSYiTsShDtCcskFsvIBRf3cwsSo0m1oIse0nbmeb8RqJvD9yFEQog4CNcJNkhXSabOxVBhKJ
-	vptOd4Bibnv6xVeJ5gYr3xVOw/swR1P7LXF8UunGaxNXlJgoHSTQfmyvM+DDiG8CD0Vmvn6iaI7ON
-	aI8Un9wgJzXeRehHH2CA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c8gtfbruZOZU0dk5QnOX1oCCpB1tJ1JlCgDTP/t1On4=; b=Sgu7YYLpDYVp3AKMF5IwIMCjF9
+	LkKfPA1kiuwzFLog8bJOpzCQIts7CJNURSLM/N6Oc/+CsLGyyh8+m4qUCFBLL8RDpmgy31WlwXWWO
+	EGZJzCnOEkCSmUl4ZN1HcrklTa2NBwjt1aE1OqVfligEEqoaLd0kgwO8eJTuRG1NDCOGqCow8TYIt
+	kd26s+mneYrWleCnCXwm4Gy2k0k4b3a9uuvBf8v/ODzkC3BBKPzE4fWna7dxvlNaMngeEPw+kxtZK
+	TTT4V0CZ9kVB2Jdw3WzfYKMMuoKxywjBJrh4JEiE6dCrehLhw8GygGNrOyAjzlSTmfnx563+AF+Ye
+	FeLsR5JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viOik-00000004p9c-0lxJ;
-	Wed, 21 Jan 2026 03:17:26 +0000
-Received: from smtpbg154.qq.com ([15.184.224.54])
+	id 1viR7w-00000004vCO-2evk;
+	Wed, 21 Jan 2026 05:51:36 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viOid-00000004p09-2P5c;
-	Wed, 21 Jan 2026 03:17:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1768965379;
-	bh=+7ef0kRiiQt4A42xSOCDW234pfzMWnquuL8cWqdlfIU=;
-	h=From:To:Subject:Date:Message-Id;
-	b=dChBKb7WDNtY1dRbeOxMqx1TEocxoKSG4cGdTk5EN0QGBXrdh60Kb4hjT6Z3iHtcK
-	 JKKQygLQLNqcPfN9MVeihlERtk2WZu4QqxvZq3JbyHtNRxQEMBAMGkWQZ/H7mNHvva
-	 MhaAz5O83x9kFw3l526zHHdLgqNIcXSdRDTGR374=
-X-QQ-mid: esmtpgz12t1768965377t5427cce8
-X-QQ-Originating-IP: 6vOSUOst9aL6W1nwt6MmCRWo9HAZ1hehzumRBuhyWPo=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 21 Jan 2026 11:16:09 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 16986462623485192806
-EX-QQ-RecipientCnt: 17
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Alexey Charkov <alchark@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Stephen Chen <stephen@radxa.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/3] arm64: dts: rockchip: Change gmac phy-mode to rgmii-id for roc-rk3576-pc
-Date: Wed, 21 Jan 2026 11:15:47 +0800
-Message-Id: <20260121031548.402-3-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260121031548.402-1-kernel@airkyi.com>
+	id 1viR7s-00000004vBi-1xAQ;
+	Wed, 21 Jan 2026 05:51:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1768974680; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Y2Qg56bDav42iDsHEi3mFLYNkHMuyAZ7Ztqy0A3VnX1viwnmCu7jSkRQBOVESdwERo+1KbTjvjWyREMvMpb+JhkVtzzj9Y0g2TDmBy6I0EpDdjuvZKKPkiN1kJRA1sTHHhnol8HlCWR6jn+JZkUJ/Tkccv2LVWep2xrSM+PlcAM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1768974680; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vg2r2aqj+bKEFxrX6PEqQmNUJg+R0LwggjFHbEypWzA=; 
+	b=L4q5uRwn4bUm6+yLtwYsSBIby/Sc96xOChQTGt4lrW1HJHm/+XgUDQnd2adm6Gh5DM/ArMtHfrygJfi+nlt1OCwg0+/kS5BJW4wt5/nc7eJ/VvAeJMPEadQkVrjreCbfXZLRiz6uXBW9SB4P8MFUfsz4AmIDGxUNj3KVgnTzq/k=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1768974680;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=vg2r2aqj+bKEFxrX6PEqQmNUJg+R0LwggjFHbEypWzA=;
+	b=MopltGMFgjIMaYYxz6MGuPbesycT6+DX8rehfOPo8GNz0XCF0Dok9uxtzpQul+7A
+	8qe1Kr4fVhYpvG4rnQV3PN1Rdu3lZDEUg0r7oEJcMWVcHu2ChWpbA8aYgQ4JdlV7pfd
+	niE0KXZ1iGDieIYKH3RbPXjqO/GFfkNHZcDFMYH0=
+Received: by mx.zohomail.com with SMTPS id 1768974679161902.5765053447564;
+	Tue, 20 Jan 2026 21:51:19 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 994E5186A24; Wed, 21 Jan 2026 06:51:14 +0100 (CET)
+Date: Wed, 21 Jan 2026 06:51:14 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Chaoyi Chen <kernel@airkyi.com>
+Cc: Andrew Lunn <andrew@lunn.ch>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Alexey Charkov <alchark@gmail.com>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	Andy Yan <andy.yan@rock-chips.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Detlev Casanova <detlev.casanova@collabora.com>, Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Change gmac phy-mode to
+ rgmii-id for rk3576 board
+Message-ID: <aXBlBHZIPQ6xhykE@venus>
 References: <20260121031548.402-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: esmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: M3vv73qU6a4uywa5T2AnRL5CgMvKQ1wmfJA81ASjs1836QZEhxQbIkBc
-	jT/SunHa5VZPSzy5rNsYrvVJ0TpKa9lLuc6PpJPF2M/zuCKMHj/VnjElwY9bbPpQ1yGJNAA
-	znsSWCZ+BwdgfZewDLpw4suA7tLs8AWrNReCkoGkuKzrcU8FYbSCx+CHqlSKqioM9ZiXlrz
-	wDv0LeijquQshAXMkiMTKUy5RXAu2YHXbSLCcuY8rj1DvASwxTGbkq7XP/xklX8jq4SE78v
-	COqC+r7lnDjGN5GH5y5jy8VecimDIe6lXPP9hrYFzJcxWXroDgkpaY5zONNK+1GQsZVaHxs
-	7xT+/6Nap+eDACIWjlzFlb0aSvlnSA9cd9H1MXM/SS94KGCZqPZu1TYxCDEnlaeRgCeU1Y2
-	oB2278JQ1Oc5YnuFETWfLbkps+qVT6wgz84p7iKwVbzn5E5ugQWYpuXuuonHgmOqe8KmufB
-	EkpAw5BW0XCuCFdLaREgwkWQ1ZmN6DoSK5EqKfqrgjV0s412T2H7F0D2zUvHMoXGJ/uugxn
-	AOyFHx8m6LLG5a6O5tXFHX7RDO5iY9IE0YsWewK8lWRSgyuRMuCgNWmIY4bNMrNop5yXPUz
-	hqu/iGNv33SVigJupgPfM0f84dgvJ601VUQxeasVGBlcDu+6+yHRiDwX/mRVzGun4rnI2yt
-	FV1EuyqBbLEcct8oj+9fpJQxbGrbKV7PI5iGKW4HD4lmLMrVrqEyJzkIziY+73lW/D3ObWh
-	JnG+/CGtyWtvdp1YORpD9NeBz5bpDeKrtcMehA0GcU/W/+Y1b3lIoDclPkjOxnrRYhK1hBC
-	P03TdKUNJhXJiHdQdPUdDRBJDgjEbUvJASOyvMigS0hLyygvj/1w4LnYLAPzU4tmJL30jSO
-	9hWtw18OcH88DlT0Kz0qr1ECE23ITcDk00AExCov+Nhwg13AvYHTkx+e5iajneMloqNfu1H
-	LtuyYOGuJWaPgEeaJ498cxROWsvGGwgwI7rdB0YLpWfAo3FYSHhKUCDYN1gBbQN5JM9gUKM
-	Nm2rV8aNcnaApak5ISMDuz+C/9Indk3lFVvPOJFg==
-X-QQ-XMRINFO: OD9hHCdaPRBwH5bRRRw8tsiH4UAatJqXfg==
-X-QQ-RECHKSPAM: 0
+MIME-Version: 1.0
+In-Reply-To: <20260121031548.402-1-kernel@airkyi.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-1.5.1/268.954.8
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260120_191720_210477_D50250DB 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20260120_215132_951999_852EA5EB 
+X-CRM114-Status: GOOD (  18.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,59 +82,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5159728297759421351=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-According to the description in the net documentation, PHY modes
-"rgmii", "rgmii-rxid" and "rgmii-txid" modes require the clock signal
-to be delayed on the PCB.
+--===============5159728297759421351==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="l2x6hmltxgc2qk4r"
+Content-Disposition: inline
 
-The Rockchip platform has long used the above mentioned PHY modes and
-private delay prop to describe the internal IO delay settings of the
-chip, which is inconsistent with what is described in the documentation.
 
-Let's describe this part of the delay in the PHY and use the more
-reasonable "rgmii-id" mode.
+--l2x6hmltxgc2qk4r
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 0/3] arm64: dts: rockchip: Change gmac phy-mode to
+ rgmii-id for rk3576 board
+MIME-Version: 1.0
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+Hi,
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts
-index d0ab1d1e0e11..edef483d37c4 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-roc-pc.dts
-@@ -275,10 +275,8 @@ &eth0m0_rx_bus2
- 		     &eth0m0_rgmii_clk
- 		     &eth0m0_rgmii_bus
- 		     &ethm0_clk0_25m_out>;
--	/* Use rgmii-rxid mode to disable rx delay inside Soc */
--	phy-mode = "rgmii-rxid";
-+	phy-mode = "rgmii-id";
- 	phy-handle = <&rgmii_phy0>;
--	tx_delay = <0x21>;
- 	status = "okay";
- };
- 
-@@ -313,6 +311,7 @@ rgmii_phy0: phy@1 {
- 		reset-delay-us = <20000>;
- 		reset-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
- 		reset-post-delay-us = <100000>;
-+		tx-internal-delay-ps = <1950>;
- 	};
- };
- 
--- 
-2.51.1
+On Wed, Jan 21, 2026 at 11:15:45AM +0800, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>=20
+> According to the description in the net documentation, PHY modes
+> "rgmii", "rgmii-rxid" and "rgmii-txid" modes require the clock signal
+> to be delayed on the PCB.
+>=20
+> The Rockchip platform has long used the above mentioned PHY modes and
+> private delay prop to describe the internal IO delay settings of the
+> chip, which is inconsistent with what is described in the documentation.
+>=20
+> Some background, for RK3576, you can assume that:
+>=20
+>         tx_delay_time(ns) =3D 0.0579 * delay_line_count + 0.105
+>=20
+> For example, tx_delay =3D <0x20> means:
+>=20
+>         time =3D 0.0579 * 0x20 + 0.105 ns =3D 1.9578 ns
+>=20
+> Recently, Andrew has often mentioned the problem of phy mode in board
+> level configuration. So let's start with the RK3576 to modify this.
+>=20
+> Please test this series of patches, thanks.
 
+The RTL8211F PHY driver does not use the "tx-internal-delay-ps"
+property, which would require using phy_get_internal_delay(). Also
+the hardware only seems to support enabling/disabling a fixed delay
+of 2ns, so it cannot be implemented as far as I can tell. So unless
+I missed something, this series makes no sense as-is.
+
+My suggestion would be to add support for <rx/tx>-internal-delay-ps
+to the Rockchip GMAC driver by introducing a new rk_gmac_ops
+entry to translate the standard properties into register values:
+
+int rk3576_delay_conversion(unsigned int delay_ps) {
+    return (delay_ps*10 - 1050) / 579;
+}
+
+That allows using standard properties in DT instead of vendor
+specific "rx_delay"/"tx_delay". This results in a much better board
+description and shows how far boards derive from the the standard
+2ns (which can use rgmii-id without any extra delay specification).
+
+Greetings,
+
+-- Sebastian
+
+--l2x6hmltxgc2qk4r
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmlwaUsACgkQ2O7X88g7
++pr3VQ/+K7upRXGFJh74bDRpfZgOcOTYGsx3gh9TOqe+8BOCo9Les+bNrZr5hEuP
+hKfPMARhUrIMnIcPW6LbLgGc1TMctwPbFGt7XoPll8e4CWNBM9oKf44mbIqh38rn
+z8LeWa2NUDA/QUkjy6nvtJC41lZJhu4JfVFjU89xbu3jncJFUxNHIeNftZmeFkt4
+L9gDdEfnaPcSRN5Lko9iVhZ0dIHpWnQa3EeAJLooPjoyRcmF5c4OLtQEo/bbGjOs
+nTg86OLquQwOykB7salQyMc857St6eC/pRAFcRBz02AQ6KGEpYk6s38GadPHhd/x
+eCQ0AvdBdvjyn+GZEUpkPefcZKrPqaniy4DywlsSkfUf0nONIXfx09FYoD0pP4TA
+Q0R5c+s9s40WVzWahO+9bZBzsLbi5VcmsY3xbCWEW1aE2T/xnR594Nqh/R46oNlN
+EjVuCJgnt/foPlJkQ6MGs52wW/FIZ7sl8VxTlUmWLpTmyDBcz7RU0SkMOBN3ZrBM
++MjCtCcfQ2GeJOc0IGagpeKy7FCBiTogPshTG5Zs+k4xHIHLhaNxGu5DiMOiRwRd
+BBV1J+GH/b3FADkdxQadcBqegpBE04Si/ZTFCLQHbe0zfa3ggXvmMOhrXsyaaj5C
+dR7EeRHh8lS3cBDzAWkfCBCPZWe/24aBHuqrPdbsEUSPT6OK//Y=
+=f90W
+-----END PGP SIGNATURE-----
+
+--l2x6hmltxgc2qk4r--
+
+
+--===============5159728297759421351==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5159728297759421351==--
+
