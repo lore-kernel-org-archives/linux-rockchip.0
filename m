@@ -4,68 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80EF6D46958
-	for <linux-rockchip@archiver.kernel.org>; Wed, 21 Jan 2026 23:18:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBEFAD4695A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 01:39:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=27i6d1wJIt4Azop5wcVZsrG9QfE15Ijab7imYaeu8Yg=; b=VnmYvYcRT/7Z1s
-	b2YpcGZphAAq4v8uXOIPrfHYPYomFhqKSvRItEYJFmjAiMHx1Z1inebbJZ41Alk4yHutfxCbKqONa
-	4wm6sa5bMgAa2bUUYPFf4x4ruNsYe3xt/7RywuLrh7NhPQfL05q0cmYzL42Pmdsvokr4dL7hrGxCA
-	IsyS5V31vv8hZUQyS3c9mvS7c8zHmFNHJ6H+58P70Eu+QMusaBngv9KLSEhgt0mWJziRKaAoSGCqT
-	dxmWPS/lreGOKZunWRK5RoaJTXiPCpZb2wwNhFJnk/3MwXr5bf5vCuQ9vNdp/R4siW24y156th7un
-	f5Gs3OLNoSRAodQ+3EQg==;
+	List-Owner; bh=jxiag/RufJhRzq7MQAPspM31g7bLwDHOQgaLiMY2rI4=; b=QzVEmIOnUhQEyo
+	OluKJIgBsonvA8Nf7eXrGpUVOQyTjEnQzeOTmpb22rANH4gGZUKYLhlLLaACuuJhdjCqAP33ZS+eN
+	BAY6ffyAkNVFJvzjNRG8k+4gJQ95FU6Kfzdz88d6INlh7avdJpkUjXCFUSy2InM+XRKRb6E/thG0O
+	rTthY+1uE4A0GppfYNvCO/osXQ8BpQCVhZWddsn6V8YEDWIYtm6GmVkchfOL1hKa3OuBbL+4QUfUX
+	6d4YMLxhdx+mULCQEAwgo7ueKrnavZl/7Ql/D3jN3BdVgOAxm4MvZ3g0RgRJH6Fn0gjX2Fsv24CSX
+	nhsMzJZRCBsZlrtW0Olg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vihSz-00000006A31-2vAV;
-	Wed, 21 Jan 2026 23:18:25 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vijfJ-00000006HDD-40Ue;
+	Thu, 22 Jan 2026 01:39:17 +0000
+Received: from smtpbguseast2.qq.com ([54.204.34.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vihSe-000000069cq-1hOf;
-	Wed, 21 Jan 2026 23:18:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1769037482;
-	bh=R+xJHiWmqddfOaWnYrv4TmuM68RjSsTBkMbRVA8KSLo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=HbFMzAd/cFrR6jx5Sj2PSFh+P7Oj3kZvYhuXk5n9FbaSh+f7crp1+8Agn3amlJJZp
-	 Opu0NnH5ON0FaMDee1h/n+o6lZJgMz6lCQnblGtMFcZzFbLITvknRmHstnS6yzhQTO
-	 cqT9kBRYKLU6gwl1/45+WOcwLXRurbEuluTy9Gk8QMBGqHlM3isMNIRRqqKTCS/Myy
-	 l4Qir70CMU33fNR0GV9dWRvsD8ofRXct1ZN9mo1wSrKvoHDodIXGab3XfO/MxTpnYX
-	 rbNoPG/Pa7j8acKnlOBOBXlFoILA6DjjpYXkXXrMVSqO7+V5hXHYLrwrbqrcCf0cAH
-	 ZvkU9kVHIyzCA==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5F92217E1513;
-	Thu, 22 Jan 2026 00:18:02 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 22 Jan 2026 01:17:39 +0200
-Subject: [PATCH 6/6] drm/rockchip: dw_hdmi_qp: Switch to
- drmm_encoder_init()
+	id 1vijfG-00000006HCX-2fPP;
+	Thu, 22 Jan 2026 01:39:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1769045903;
+	bh=cPE0p9RxdCG7EUodZ3CA4dL1d1UqXwSbCEzSbu8JCNA=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=clZNS/HvgFMGLO8/4q8wZ4fl6p8LfQGAaO4BzkRGGg8wYclcannzxH9HiiiAaLMVU
+	 IiZhYpnnTpXHCX2r2IKi07qbHgsV3BMTHAj794b4WS8pzTYgnQAhoznPDIfZZruIIR
+	 JDTHSvtKjAHmZEbuMliKlP6DgrBJI+J9cVMsSUrU=
+X-QQ-mid: zesmtpgz8t1769045901tf13cdf21
+X-QQ-Originating-IP: 94fsbE6w7nripzqNc9kOAoVpUQgk+IWMUu5xSnZT8bk=
+Received: from [127.0.0.1] ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Thu, 22 Jan 2026 09:38:19 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 5162936988609351219
+EX-QQ-RecipientCnt: 17
+Message-ID: <81D509A8F65F0243+c7b58aef-95a4-4f2a-a423-7e8b2c0bbeab@airkyi.com>
+Date: Thu, 22 Jan 2026 09:38:17 +0800
 MIME-Version: 1.0
-Message-Id: <20260122-drm-rk-fixes-v1-6-3942f185750e@collabora.com>
-References: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
-In-Reply-To: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Change gmac phy-mode to
+ rgmii-id for rk3576 evb1
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Alexey Charkov <alchark@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Chaoyi Chen <chaoyi.chen@rock-chips.com>, Andy Yan
+ <andy.yan@rock-chips.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.3
+References: <20260121031548.402-1-kernel@airkyi.com>
+ <20260121031548.402-2-kernel@airkyi.com>
+ <b87d0c82-b8b7-4e14-85c3-c4ba88aa4000@lunn.ch>
+Content-Language: en-US
+From: Chaoyi Chen <kernel@airkyi.com>
+In-Reply-To: <b87d0c82-b8b7-4e14-85c3-c4ba88aa4000@lunn.ch>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: N7bzzhFwp0G2UFyEb0wIrBnWrtYCHOLXAjMak90+CIQ6/WVfi7359wKn
+	lI4oG5CTJjC3kqy8Vkqex/WKvNhszPpm6qDItcz/HRPFwMCQhrX1mltwM5X+/c3vtB7ihwl
+	xZnlgaca+YImizL8QTsDa/6/TXV8W/SXt5xbdk4gzQVdB+TUpE1RfTezoZQLM6aN7GiPczk
+	KKQSg5UyTnU2ACylYL5BowYJoVkiWbB0qJPAWvKYlWecaiwSP261/IZXL7OvUzgVuTGAGmj
+	WuBHDBYiI96/OmoM1IdLhXqd4waw0EMvktenlofjYQ8GxK1BXd+Q3cRbBjlsr5HJxXQ3yp5
+	SrWmuv0ejr0ZaaowTsiQdAji1xwnHuqEWRJD40GroVj3trGuFVoEEuRemVnqgJdr+apH5lr
+	a9X5UzUulgLml0PBjJuLk3+7KCUv3ICwRCGj3AlcNM8SHvGx6cfysnOTCu4uwXhG33Rcx2F
+	9dhwk1WWT+GiU1VE2makFz0u9o0DwJfwHsXtZxJdhX60DtgsSntt2lEDDZXv0RuwJx7hvGh
+	F97vs2WGExX4JSb3NIaQz+IKRAMnWcbZf4e4AQFTVV+1vOwg4eTYvm6ePPncYQon3/RNDgD
+	V+ee9MU8+1tcEzHTaqNBSYvJ/35eUxoENeeY1EYtVn7RG0TWL44Box4QaVA/1Y6gQ6ArJUK
+	/cDR6psW7J6wvLqJLQrw+Gl4cLTAa6R7b0DGAS4mxZmCUKCOgNDdRTxKbbXvSwq92vHLaUf
+	9l5ylJFbf6z8kUVsjoDyB6S/kppLg9DxETMFXQASKW/w1da5cjgLSb7INlbF8e0+Ad47tq1
+	BJLRMBjugORIvoUUiPIe2ZOOSsULGAe/w7Wjyf7Ja/cDg4VDxfAoToQ6p4wOALi/UTvOIcR
+	hKhheWWXJsfT9OKm3DtsJLuG3L1HckYgKPj7brvcwpCTP/Z8qYbBnJnIemrNEqDgzn571xB
+	z+2tjZZqz4zq2EKoWgygs2b5CGIfVYiJoOmNWY+yxmYgMXmJ5UO27qIaflER8V3lm9vaL2m
+	RLQVl7YhKqu8k7ACae
+X-QQ-XMRINFO: M/715EihBoGS47X28/vv4NpnfpeBLnr4Qg==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260121_151804_626861_7FB89E6B 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20260121_173915_164204_C3D46390 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,69 +105,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Simplify encoder initialization and cleanup by making use of
-drmm_encoder_init(), which takes care of registering
-drm_encoder_cleanup() with drmm_add_action().
+Hi Andrew,
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 ++++++-------
- 1 file changed, 6 insertions(+), 7 deletions(-)
+On 1/21/2026 8:55 PM, Andrew Lunn wrote:
+>> @@ -721,6 +719,7 @@ rgmii_phy0: ethernet-phy@1 {
+>>  		reset-assert-us = <20000>;
+>>  		reset-deassert-us = <100000>;
+>>  		reset-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
+>> +		tx-internal-delay-ps = <1950>;
+> 
+> The PHY should add 2000ps, as required by the RGMII standard. The
+> difference is so small there is no need for tx-internal-delay.
+>
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index a8190a6e8978..94136d7fb1c3 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -21,6 +21,7 @@
- #include <drm/bridge/dw_hdmi_qp.h>
- #include <drm/display/drm_hdmi_helper.h>
- #include <drm/drm_bridge_connector.h>
-+#include <drm/drm_managed.h>
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
-@@ -477,7 +478,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	if (!pdev->dev.of_node)
- 		return -ENODEV;
- 
--	hdmi = devm_kzalloc(&pdev->dev, sizeof(*hdmi), GFP_KERNEL);
-+	hdmi = drmm_kzalloc(drm, sizeof(*hdmi), GFP_KERNEL);
- 	if (!hdmi)
- 		return -ENOMEM;
- 
-@@ -586,16 +587,16 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		return ret;
- 
- 	drm_encoder_helper_add(encoder, &dw_hdmi_qp_rockchip_encoder_helper_funcs);
--	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
-+	ret = drmm_encoder_init(drm, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
-+	if (ret)
-+		return dev_err_probe(hdmi->dev, ret, "Failed to init encoder");
- 
- 	platform_set_drvdata(pdev, hdmi);
- 
- 	hdmi->hdmi = dw_hdmi_qp_bind(pdev, encoder, &plat_data);
--	if (IS_ERR(hdmi->hdmi)) {
--		drm_encoder_cleanup(encoder);
-+	if (IS_ERR(hdmi->hdmi))
- 		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->hdmi),
- 				     "Failed to bind dw-hdmi-qp");
--	}
- 
- 	connector = drm_bridge_connector_init(drm, encoder);
- 	if (IS_ERR(connector))
-@@ -612,8 +613,6 @@ static void dw_hdmi_qp_rockchip_unbind(struct device *dev,
- 	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
- 
- 	cancel_delayed_work_sync(&hdmi->hpd_work);
--
--	drm_encoder_cleanup(&hdmi->encoder.encoder);
- }
- 
- static const struct component_ops dw_hdmi_qp_rockchip_ops = {
+Thank you for the clarification. I chose 1950 here because I find that
+the MotorComm yt8xxx Ethernet PHY binding only offer the options of 
+1950 or 2100. 
+
+> In most cases, 'rmgii-id' should be sufficient, unless the PCB is
+> badly designed.
+> 
+
+I suspect the ROCK 4D board might be an exception. Sebastian once
+reported that it wouldn't work properly under "rgmii-id". Well, I'm
+not sure what strategy to adopt in this case.
 
 -- 
-2.52.0
+Best, 
+Chaoyi
 
 
 _______________________________________________
