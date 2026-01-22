@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6EBAC44500
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 09:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CEC0C44536
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 09:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NI9j5qNHQwqgQKnAAqj9/NAv/0VZ0TOkA2qzXCBQg9M=; b=J7Nvk4x4I3nEhy
-	hH6BWtolrTnjOOd1nNZNmKIOtiFPS2zjbEPN9Dm+BOnX8/JCbRiJq2nL7fI/njZBL4HZ0RpACW6x4
-	7SoNNxZZxUtU81wjGtCL8+mP3MM1Zq6RHImx4xOpVr7CUi4phRecbsvcahPEQEChMt83UpjczlzV9
-	WZ92kVClinxui1FXjEaz3KL0NQaqmnExvDtBAXlC6k7mE3R4OkTTmRnxT7u7hJJuH3ji0B5EIthN3
-	qYmoC1CEqseRQ+nOA3uHXvVrV20YKXYfFOTZIAsEmOsk0qsPeHuUiuzSYuyIsb1IFpkJTeIVBQabB
-	zfKOQGENL56KEmFIlgKA==;
+	List-Owner; bh=oNqlVHW8IpJb0gHFk+1YoU2UxPLPcl2QVJ5P1j/cU7M=; b=gCkG9YefCBSeCi
+	hwA/w7xlqUdT1vw+pgrUpcm/tzZ3GqfP+J16T9i/jgHTxUOtwAME1lERhegt6TVvSrQP3ybV2azS5
+	ZZtozooIw0ZXEltcusNGnuSk4y18tLOo6VF6UaPvhRtatX2qcImbiOcuv2CMnadUH0SVADH57Trb0
+	Wz5GmUwk9PHbiQj3L2l8DvAXDzPe6jSK/TCKXs5Kl2Lh2zoa3OnMNniF8ExqP1n5JpUBYeww5wbbC
+	dCZUx2alb3aNvpNOUuGqzTGWN8bw2e8YqRQFGSqYrD0t0EP75JVH2OhOHSkvLiRNXStjv/uonh48M
+	xxjp9S0GRQkrQh9OqQ1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viqYH-00000006hIA-30YJ;
-	Thu, 22 Jan 2026 09:00:29 +0000
+	id 1viqbW-00000006i9o-2lax;
+	Thu, 22 Jan 2026 09:03:50 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viqYF-00000006hHG-2DlF;
-	Thu, 22 Jan 2026 09:00:28 +0000
+	id 1viqbU-00000006i98-26lR;
+	Thu, 22 Jan 2026 09:03:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6449A4189B;
-	Thu, 22 Jan 2026 09:00:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06C6BC116C6;
-	Thu, 22 Jan 2026 09:00:15 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F2702408EA;
+	Thu, 22 Jan 2026 09:03:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 84B24C116C6;
+	Thu, 22 Jan 2026 09:03:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769072425;
-	bh=AZFYl95tZw83k2fEE48wfdvR4CXEcLULoc8pMv1G/Bo=;
+	s=k20201202; t=1769072627;
+	bh=/MehKJmORgEwpJF+msBgFBXkm59BZbIQr2N6eBZwaBU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Mp8ENmYQVtJ1EMYz0X8bkcVxWU+gCr8Fgt+QaEj8GkJ+34FS+nBT+LQC9OkGsQezu
-	 5MApqwdB08KOLxvl+IburfuHXNQwD8Hy3mGkN83wSQCKFWXy8QOF21LPMxQAnImFrV
-	 SkRbS529Iy5egC5SypGHdJ0kyuctrmmCIyqot1zcplQxuH6Qlu5SFF+stcyxOJXr5c
-	 uzdOee9LlPwxuBMCk/ODtg5TSEF4vV4AqMSBKNX0vNQbRYxGG7YWc/VADSk+i4tTdb
-	 9OPXRV7NVJwsOJhuvpYlIs4O+x+cHQX67sgm2Pis2uH67qGA4dAmdBaLXIBiD1b50T
-	 DVt46F3Vf1GSg==
-Date: Thu, 22 Jan 2026 10:00:11 +0100
+	b=mzS2xZFueyQor31YESEgMROI8UCRsNdNneVBo50jCEGgFSMndbkcVLiq094C9Jgwo
+	 35xH5C7NvzIFyWXvYPRYokoInGijcOBS0s7kTSD2rs1/MqN9zduYtpaudJCO+JuAqG
+	 qcWHYywg7hKt7GdHjeGmWDOUYJB6iwtmm/ueYCQLgRuZFzV2GbCuKXuU2MXYlJakLG
+	 aH44EBU6o0ftXLIKcH4ybHu24Fk6i93FHqusQwGGBCq7PliSXGB5LtBmwErA8ofuSI
+	 1bNHoT4dAhRVT8PtymGXeVJ7cNMHyPdS0U6tbkBKYlgKT3Kc03EbDVdYMvih9iEmwv
+	 v/QGCAMt1Lw/Q==
+Date: Thu, 22 Jan 2026 10:03:33 +0100
 From: Niklas Cassel <cassel@kernel.org>
 To: Koichiro Den <den@valinux.co.jp>
 Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
@@ -67,17 +67,16 @@ Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
 	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v9 3/5] PCI: dwc: Advertise dynamic inbound mapping
- support
-Message-ID: <aXHnFskw9InGNuuR@ryzen>
+Subject: Re: [PATCH v9 2/5] PCI: endpoint: Add BAR subrange mapping support
+Message-ID: <aXHn3zuxxfBN1yps@ryzen>
 References: <20260122084909.2390865-1-den@valinux.co.jp>
- <20260122084909.2390865-4-den@valinux.co.jp>
+ <20260122084909.2390865-3-den@valinux.co.jp>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260122084909.2390865-4-den@valinux.co.jp>
+In-Reply-To: <20260122084909.2390865-3-den@valinux.co.jp>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_010027_593616_B1DDE654 
-X-CRM114-Status: GOOD (  11.31  )
+X-CRM114-CacheID: sfid-20260122_010348_579581_806B913E 
+X-CRM114-Status: GOOD (  11.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,22 +93,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 22, 2026 at 05:49:07PM +0900, Koichiro Den wrote:
-> The DesignWare EP core has supported updating the inbound iATU mapping
-> for an already configured BAR (i.e. allowing pci_epc_set_bar() to be
-> called again without a prior pci_epc_clear_bar()) since commit
-> 4284c88fff0e ("PCI: designware-ep: Allow pci_epc_set_bar() update
-> inbound map address").
+On Thu, Jan 22, 2026 at 05:49:06PM +0900, Koichiro Den wrote:
+> Some endpoint platforms have only a small number of usable BARs. At the
+> same time, EPF drivers (e.g. vNTB) may need multiple independent inbound
+> regions (control/scratchpad, one or more memory windows, and optionally
+> MSI or other feature-related regions). Subrange mapping allows these to
+> share a single BAR without consuming additional BARs that may not be
+> available, or forcing a fragile layout by aggressively packing into a
+> single contiguous memory range.
 > 
-> Now that this capability is exposed via the dynamic_inbound_mapping EPC
-> feature bit, set it for DWC-based EP glue drivers using a common
-> initializer macro to avoid duplicating the same flag in each driver.
+> Extend the PCI endpoint core to support mapping subranges within a BAR.
+> Add an optional 'submap' field in struct pci_epf_bar so an endpoint
+> function driver can request inbound mappings that fully cover the BAR.
 > 
-> Note that pci-layerscape-ep.c is untouched. It currently constructs the
-> feature struct dynamically in ls_pcie_ep_init(). Once converted to a
-> static feature definition, it will use DWC_EPC_COMMON_FEATURES as well.
+> Introduce a new EPC feature bit, subrange_mapping, and reject submap
+> requests from pci_epc_set_bar() unless the controller advertises both
+> subrange_mapping and dynamic_inbound_mapping features.
 > 
-> Reviewed-by: Frank Li <Frank.Li@nxp.com>
+> The submap array describes the complete BAR layout (no overlaps and no
+> gaps are allowed to avoid exposing untranslated address ranges). This
+> provides the generic infrastructure needed to map multiple logical
+> regions into a single BAR at different offsets, without assuming a
+> controller-specific inbound address translation mechanism.
+> 
 > Signed-off-by: Koichiro Den <den@valinux.co.jp>
 > ---
 
