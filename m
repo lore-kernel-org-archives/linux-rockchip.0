@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19843D625FC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 08:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D020C44536
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 08:45:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
 	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gMx1b/PdsnlP1GT/fCPw+CTq2YONLubIxtSyXsrYDC0=; b=IgZOXCZzh7TLLm
-	7LMFWRqtkEXKPsJ/tblfhCjuSHV2Weg+0Yj0wmnH/8tswJB/+t9zfWSDKZREtzJB7XM+M7XoY0kLt
-	fcqQbZ1t+x+9I7SwZeNBWsXAsZug2Ax+cYxrIMW6XA+2Vj8rbNMkgDDVI2WfCHmeGE+GhkX2RtWXw
-	+yjgMd25UhrMJCbS0EiMA6UEoOj5KDpbd3o+Rf31uGk7L2KtHwPDMt8xdIdF+JNKtPk6hjLeUjzfP
-	rbnGrDqdvdjlHukifHLX6zFMucjxQ79RQmq7rA16kQCr+/bw6aaVfNZIguoAetfVOV9Z10JTODL7/
-	403PPeE5NmW8CHt+ypew==;
+	List-Owner; bh=NTxDTcCbxfWyfvusYIIAPkNZO8fZgHUObMMJt6NCsJE=; b=DNXx0pf2h1bgtx
+	9l3C9E3hei6cVK/mVahRbwivCQOHd1T7a22EhuBZVqBWiPeOa8s6wF6qI8s5ZVDjaJdtFPanXiCcb
+	TOoVEZSVluXSYwbAneVNHX+ibdyMH0fLm76QrM/Rarp+O3PqfxY77St6bcf0xUEGDDXz+F/zNhpzt
+	6WngzgnUtz+O8BvCRFGbRNOanY78bEWqxm8hmdSVLDSiCpN2PNz+tRqRilENUlp8HBAwdR1xO4Xbs
+	DJU5B5ZglO5/TFCyzOGSqxIxkXIyteP7cBai56MCJcL7jJ/3iqqZg6XJr2qn4kQ22eV/jq6WE2bcW
+	bhNznK75HnYnBKSJZzaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viqI9-00000006fXP-3iJF;
-	Thu, 22 Jan 2026 08:43:49 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1viqJs-00000006fkz-2bmJ;
+	Thu, 22 Jan 2026 08:45:36 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viqI6-00000006fWZ-47we;
-	Thu, 22 Jan 2026 08:43:48 +0000
+	id 1viqJp-00000006fkN-0Vo1;
+	Thu, 22 Jan 2026 08:45:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=fTA80FuqYhWOuMXsi1m55riPj78ukM7kbnYx2MFukug=; b=E
-	XxVLKR4JFoLFd4tAIFASWJYld+cUVz83lO658BVm3W046UVIQAKtz3wbssJG1PBx
-	qeybRO4NxGiXAaFrm4KPM9F40TBO7+8iYJlYKFm+U1aoqqlUzrvwMSVa4JXZiaEt
-	oaIUWJCX8t5g+8SmxBxe5EYEakz+D22bplz0HrqscA=
+	Message-ID; bh=bTQS2Ub48cluoF04AksxVAcZz1dPPLXQ7ZO9ToPloD8=; b=k
+	g/vJ0TPJyGvaf2ouh7+ZkgLUAP8nvM10am5Erku9m7bIbDckHfw0bURZa0D/VQb4
+	nX7Sf5y4c+Eqiu8X38rRqxwoeOJXcn3ThpWJfObzkfeaAc8S9/n6PdA45lsFq3q3
+	L1SiiNyCptSK+e3S0ohSaxovyeMZr1hT3qdJdBa8QY=
 Received: from andyshrk$163.com ( [110.83.51.2] ) by
- ajax-webmail-wmsvr-40-107 (Coremail) ; Thu, 22 Jan 2026 16:42:32 +0800
+ ajax-webmail-wmsvr-40-107 (Coremail) ; Thu, 22 Jan 2026 16:44:24 +0800
  (CST)
 X-Originating-IP: [110.83.51.2]
-Date: Thu, 22 Jan 2026 16:42:32 +0800 (CST)
+Date: Thu, 22 Jan 2026 16:44:24 +0800 (CST)
 From: "Andy Yan" <andyshrk@163.com>
 To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>
 Cc: "Harry Wentland" <harry.wentland@amd.com>, "Leo Li" <sunpeng.li@amd.com>,
@@ -69,26 +69,26 @@ Cc: "Harry Wentland" <harry.wentland@amd.com>, "Leo Li" <sunpeng.li@amd.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
 	intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re:[PATCH v7 12/22] drm/rockchip: vop2: Recognise 10/12-bit YUV422
- as YUV formats
+Subject: Re:[PATCH v7 13/22] drm/rockchip: vop2: Set correct output format
+ for RK3576 YUV422
 X-Priority: 3
 X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
  20251222(83accb85) Copyright (c) 2002-2026 www.mailtech.cn 163com
-In-Reply-To: <20260121-color-format-v7-12-ef790dae780c@collabora.com>
+In-Reply-To: <20260121-color-format-v7-13-ef790dae780c@collabora.com>
 References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
- <20260121-color-format-v7-12-ef790dae780c@collabora.com>
-X-CM-CTRLMSGS: JAf/VHBsdXM9MTc2OTA3MTM1MTA2N185NzcxMDNkMTY1YzkwNTg0MDdmOWY0M
- zliMmZkZDZhZQ==
-X-NTES-SC: AL_Qu2dC/ycvksu5CCdZukfmUgWjuw/WsG1v/Ul1YBSP556jCHp1zA+YHtOI0XuzsGkOiqykTu2XSVH2/VTe6BkepsbgpnbONL2klcdDdTogoXoxQ==
+ <20260121-color-format-v7-13-ef790dae780c@collabora.com>
+X-CM-CTRLMSGS: RtNQZnBsdXM9MTc2OTA3MTQ2MzM1NV8yNGY3NzZiM2I2YjU1M2E3ZjVjMWNiM
+ GY5NjQzYTBhNw==
+X-NTES-SC: AL_Qu2dC/ycvkwt4iOcYukfmUgWjuw/WsG1v/Ul1YBSP556jCHp1zA+YHtOI0XuzsGkOiqykTu2XSVH2/VTe6BkepsbYkh+3JfXd1VE6LuMWmOAAQ==
 MIME-Version: 1.0
-Message-ID: <3e736769.79ad.19be4de9900.Coremail.andyshrk@163.com>
+Message-ID: <27c44445.7a56.19be4e04fa9.Coremail.andyshrk@163.com>
 X-Coremail-Locale: zh_CN
-X-CM-TRANSID: aygvCgDHlU_44nFpZLBcAA--.14934W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7hitDGlx4vgiFwAA3g
+X-CM-TRANSID: aygvCgDnDxRo43FpXbFcAA--.14910W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxgjJKGlx42hHoQAA3a
 X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_004347_390171_5E761291 
-X-CRM114-Status: UNSURE (   5.59  )
+X-CRM114-CacheID: sfid-20260122_004533_645772_0EC263B7 
+X-CRM114-Status: UNSURE (   5.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,37 +101,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpIZWxsbyBOaWNvbGFz77yMCkF0IDIwMjYtMDEtMjEgMjI6NDU6MTksICJOaWNvbGFzIEZyYXR0
-YXJvbGkiIDxuaWNvbGFzLmZyYXR0YXJvbGlAY29sbGFib3JhLmNvbT4gd3JvdGU6Cj5UaGUgUm9j
-a2NoaXAgVk9QMiB2aWRlbyBvdXRwdXQgZHJpdmVyIGhhcyBhICJpc195dXZfb3V0cHV0IiBmdW5j
-dGlvbiwKPndoaWNoIHJldHVybnMgdHJ1ZSB3aGVuIGEgZ2l2ZW4gYnVzIGZvcm1hdCBpcyBhIFlV
-ViBmb3JtYXQsIGFuZCBmYWxzZQo+b3RoZXJ3aXNlLgo+Cj5UaGlzIHN3aXRjaCBzdGF0ZW1lbnQg
-aXMgbGFja2luZyB0aGUgYnVzIGZvcm1hdCB1c2VkIGZvciBZVVY0MjIgMTAtYml0LAo+YXMgd2Vs
-bCBhcyB0aGUgYnVzIGZvcm1hdCB1c2VkIGZvciBZVVY0MjIgMTItYml0Lgo+Cj5BZGQgTUVESUFf
-QlVTX0ZNVF9ZVVlWMTBfMVgyMCBhbmQgTUVESUFfQlVTX0ZNVF9ZVVlWMTJfMVgyNCB0bwo+aXNf
-eXV2X291dHB1dCdzIHN3aXRjaCBjYXNlcyB0byByZXNvbHZlIHRoaXMuCj4KPkZpeGVzOiA2MDRi
-ZTg1NTQ3Y2UgKCJkcm0vcm9ja2NoaXA6IEFkZCBWT1AyIGRyaXZlciIpCj5TaWduZWQtb2ZmLWJ5
-OiBOaWNvbGFzIEZyYXR0YXJvbGkgPG5pY29sYXMuZnJhdHRhcm9saUBjb2xsYWJvcmEuY29tPgo+
-LS0tCj4gZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMgfCAzICsr
-Kwo+IDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKPgo+ZGlmZiAtLWdpdCBhL2RyaXZl
-cnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9wMi5jIGIvZHJpdmVycy9ncHUvZHJt
-L3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMKPmluZGV4IGYyMWVmYmNhNDJlNi4uM2RkN2I3
-NTcxNDg3IDEwMDY0NAo+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2Ry
-bV92b3AyLmMKPisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9yb2NrY2hpcF9kcm1fdm9w
-Mi5jCj5AQCAtMzY5LDYgKzM2OSw5IEBAIHN0YXRpYyBib29sIGlzX3l1dl9vdXRwdXQodTMyIGJ1
-c19mb3JtYXQpCj4gCXN3aXRjaCAoYnVzX2Zvcm1hdCkgewo+IAljYXNlIE1FRElBX0JVU19GTVRf
-WVVWOF8xWDI0Ogo+IAljYXNlIE1FRElBX0JVU19GTVRfWVVWMTBfMVgzMDoKPisJY2FzZSBNRURJ
-QV9CVVNfRk1UX1lVWVYxMF8xWDIwOgo+KwljYXNlIE1FRElBX0JVU19GTVRfVVlWWTEwXzFYMjA6
-Cgo+KwljYXNlIE1FRElBX0JVU19GTVRfWVVZVjEyXzFYMjQ6CgogICAgICAgICBNRURJQV9CVVNf
-Rk1UX1lVWVYxMl8xWDI0IGlzIG5vdCBzdXBwb3J0ZWQgYnkgVk9QLCAgdGhlIG1heCBvdXRwdXQg
-ZGVwdGggb2YgVk9QIGlzIDEwCgoKCgo+IAljYXNlIE1FRElBX0JVU19GTVRfVVlZVllZOF8wXzVY
-MjQ6Cj4gCWNhc2UgTUVESUFfQlVTX0ZNVF9VWVlWWVkxMF8wXzVYMzA6Cj4gCWNhc2UgTUVESUFf
-QlVTX0ZNVF9ZVVlWOF8yWDg6Cj4KPi0tIAo+Mi41Mi4wCj4KX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+
+
+Hello Nicolas,
+
+At 2026-01-21 22:45:20, "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com> wrote:
+>For RK3576 to be able to output YUV422 signals, it first needs to be
+>able to pick the right output mode in the display controller to do so.
+>
+>The RK3576 hardware specifies different output formats depending on the
+>used display protocol.
+>
+>Adjust the written register value based on the SoC and connector, so
+>other users of vcstate->output_mode don't have to care about this.
+>
+>Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+
+    Reviewed-by: Andy Yan <andyshrk@163.com>
+>---
+> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 16 ++++++++++++++++
+> 1 file changed, 16 insertions(+)
+>
+>diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>index 3dd7b7571487..d93c6779286e 100644
+>--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>@@ -1706,6 +1706,22 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+> 	if (vcstate->output_mode == ROCKCHIP_OUT_MODE_AAAA &&
+> 	    !(vp_data->feature & VOP2_VP_FEATURE_OUTPUT_10BIT))
+> 		out_mode = ROCKCHIP_OUT_MODE_P888;
+>+	else if (vcstate->output_mode == ROCKCHIP_OUT_MODE_YUV422 &&
+>+		 vop2->version == VOP_VERSION_RK3576)
+>+		switch (vcstate->output_type) {
+>+		case DRM_MODE_CONNECTOR_DisplayPort:
+>+		case DRM_MODE_CONNECTOR_eDP:
+>+			out_mode = ROCKCHIP_OUT_MODE_YUV422_RK3576_DP;
+>+			break;
+>+		case DRM_MODE_CONNECTOR_HDMIA:
+>+			out_mode = ROCKCHIP_OUT_MODE_YUV422_RK3576_HDMI;
+>+			break;
+>+		default:
+>+			drm_err(vop2->drm, "Unknown DRM_MODE_CONNECTOR %d\n",
+>+				vcstate->output_type);
+>+			vop2_unlock(vop2);
+>+			return;
+>+		}
+> 	else
+> 		out_mode = vcstate->output_mode;
+> 
+>
+>-- 
+>2.52.0
+>
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
