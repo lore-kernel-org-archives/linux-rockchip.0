@@ -4,61 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54680D3EE74
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 15:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0475DD3EE7F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 15:42:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JTuqqLZM3eT2+TVhkACZJWIKc1EtXqYPNd/2VleboO0=; b=JmcjBRWonTxkdt5EASH83/e6C1
-	ssp7Y34ASGzeVS06yg7rEc4QKOx3hqc0E/OnjoUYWlMUz9fr4r5aBV5dyvjj3kT6Pm0ysdQkWJzlE
-	S3wwMSirmPXUFM+5Q7dTwimYz1IsxUHt0kyxAkbqYd5CJG1L4cSGIlg6bJJeRcBQrYo1hMNkUspJw
-	InpZwn467j2AmY17Wv5tba2fyj2mELpMse/7IFnkxWkIT1e4xEShewn4bNIW1ianhk/tspXyKqZrb
-	5YhWV8Ez9xribiKROcx3eMtk3lnb9l6YnAnyAXfazFZjFL+eeRzD52igzuHyoLSSrPZq7iL6iHRXY
-	3ILiwxfA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=4/yXWVidmV4/tZaWUVGy4tRC0ENF0MTypnOlrcQR/Vo=; b=GvNtMKtefWqw8/
+	VuMNNCkyGHc/ZhWcxUHUCYhX//HadxT22Txvj1941DQcqz1HX/s9rcL1hSgnmJgYBZZbXylbcF1Gj
+	9WGtoADico0VboTmRCf4rEKcGsy89kmVu23UD6MC5Rb++AYLRVRlry5LOBTdPhCvapt4ZakDWMYBu
+	8VqgxrFQa0JW0WNfa8d1CQly1NR0LE9vGkFX4JNobHzdkjYyqGWLanm8UWvjZjt9kZGhjCcmcI5oO
+	lOW669lADr/92NvBIfx/fIbRoqLIaxBQGKu99YHHGZVQxpR0YfwUdDPGBav0DnUhVsoyWMBAB1rRi
+	Ckewpq8iuwh74wkYW2Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viwUt-00000007KDH-0d0x;
-	Thu, 22 Jan 2026 15:21:23 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1viwpD-00000007Lxd-1E6Q;
+	Thu, 22 Jan 2026 15:42:23 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1viwUp-00000007KCo-2OUN;
-	Thu, 22 Jan 2026 15:21:21 +0000
+	id 1viwpA-00000007LxC-3vrC;
+	Thu, 22 Jan 2026 15:42:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5869E408F3;
-	Thu, 22 Jan 2026 15:21:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1D66C116D0;
-	Thu, 22 Jan 2026 15:21:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0240A43DFD;
+	Thu, 22 Jan 2026 15:42:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F413DC116D0;
+	Thu, 22 Jan 2026 15:42:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769095278;
-	bh=a57X3Ufhsvd1TQxvNP3ZYZFgsodRlfD0KvNOTCSzduY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aLau4aEXXVJ9BNfzDqhRe5v5Rf3iMiEeJCO+t7WoE58yzRW/q4hK/F1Sa8ZHpJdAD
-	 We5md7hnrPwn49kABw80qJju+mQC5OICrx9VKNlemb0l74v6uK/cDjWA0p84jpOGTn
-	 OQYSwfFbDUVB8KdZhrTNgIP4s6JExmWGgSyKcb4cSiTOGk3sRbfeYxL40z7Mn8VGLa
-	 TnzZd9Jxe9oiGifVA0UYsOFd30b8Orw5/HjMG0Bxd6xfRk1K9K1YPfeIm0UOv5JXST
-	 lMITd0vPoWmCn1wRyx2qdTDZ2HKtaQM7mHpkwTM2tQyBpnN/+aSGji7Nfg4F4FgrfQ
-	 tvvjU4BdSmUiw==
-Date: Thu, 22 Jan 2026 16:21:15 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/6] Rockchip DRM use-after-free & null-ptr-deref fixes
-Message-ID: <20260122-classic-impressive-marmoset-f4723a@houat>
-References: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
+	s=k20201202; t=1769096539;
+	bh=SG2Prtwp4L+m3QwYsWSlSCQgnF9zbRN9SJuVDZSm6Ok=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UtneR2TDzZERdDO6ISCjAhUweh9cWOieb1NH85iBBRPueBxmQeKIqbe4uku0k1N9X
+	 qu+zpDe8lyFlfvg9Pzlkg5PI49sfDNITiS+w5hTsmHUipcgyl2OhDhYBeAQ6RevEsu
+	 eGGNm74Nl4vqH2E3NaqRSfujEiA4yrhC6Kat69BTpROgf/XkGF0SgFuHDsVi9ULZiw
+	 F4V2n9npZvzVruw78YGzipE90hZzOa5jYvV3byvw3Dc7wqivygX36p0FRg+XL7QYge
+	 eWYefiMxbGqnjDvgiWPgjM1q4yfjDZGhObdqZmgH2OCX1R9KjZjIqE55okSVsuNayd
+	 c+8OYUcWc5zNg==
+Message-ID: <bcb47643-bec3-4a60-bdd4-f182736a6ca7@kernel.org>
+Date: Thu, 22 Jan 2026 16:42:15 +0100
 MIME-Version: 1.0
-In-Reply-To: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [GIT PULL] Rockchip dts32 changes for 6.20 #1
+To: Heiko Stuebner <heiko@sntech.de>, arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <4560446.MSiuQNM8U4@diego>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <4560446.MSiuQNM8U4@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_072119_627407_562C11E5 
-X-CRM114-Status: GOOD (  10.54  )
+X-CRM114-CacheID: sfid-20260122_074221_041918_16FE0A06 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,64 +111,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7742159967832620920=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7742159967832620920==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="br2javf3yomklohz"
-Content-Disposition: inline
-
-
---br2javf3yomklohz
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 0/6] Rockchip DRM use-after-free & null-ptr-deref fixes
-MIME-Version: 1.0
-
-On Thu, Jan 22, 2026 at 01:17:33AM +0200, Cristian Ciocaltea wrote:
-> The first three patches in the series are fixes for use-after-free &
-> null-ptr-deref related issues found in dw_dp and inno-hdmi Rockchip DRM
-> drivers.
->=20
-> The remaining ones provide a few minor improvements to dw_dp and
-> dw_hdmi_qp.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-
-Just FYI, you'll also need to sprinkle the driver with
-drm_dev_enter/exit to make this actually safe.
-
-Maxime
-
---br2javf3yomklohz
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaXJAZAAKCRAnX84Zoj2+
-di78AX9GenUV8sOcDvlr+fIdWUk7lR/nWSQHmZbpG3kUXCPc5lbeaOOmVYhDJzfH
-f3QDG/0BfigN4FkQKxpTyIwbPBdIP43bV7hU7d4LvzHS3PDKeFEwkYtAr4JfOiRo
-rCcF/mvqzw==
-=9Hz2
------END PGP SIGNATURE-----
-
---br2javf3yomklohz--
+On 13/01/2026 14:46, Heiko Stuebner wrote:
+> The following changes since commit 8f0b4cce4481fb22653697cced8d0d04027cb1e8:
+> 
+>   Linux 6.19-rc1 (2025-12-14 16:05:07 +1200)
+> 
+> are available in the Git repository at:
+> 
+>   git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.20-rockchip-dts32-1
+> 
+> for you to fetch changes up to e74470cf3101da79666f20186c9406192223e9a8:
+> 
+>   ARM: dts: rockchip: Add vdec node for RK3288 (2025-12-15 12:21:05 +0100)
+> 
+> ----------------------------------------------------------------
+> HEVC decoder node for RK3288.
+> 
 
 
---===============7742159967832620920==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+It seems pw-bot did not TY this one, so to confirm - I merged this, thanks.
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7742159967832620920==--
-
