@@ -4,74 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E67D6CFA4
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 18:33:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C40D6CFA3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 18:33:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=wCYsLTTQl0KgphJ/Y0DTRicCRbgpbAmo12YgGwBdQB4=; b=Qk2Juj0sav9LIL
-	atvwFISFiGax/OEQV3TNoSzgMklpDVe1jfoW9Ez7wXM8/cqAQi3eiUPO5RwHW13ycv9/GJ9L0xgXc
-	gDDMgupvut/0/7lNNapBixdBnYIOBiHRKsLraoHQWEybWGZRnO5qrRJs7hKQ9Q+Jl04l/GjVyrRym
-	lR8CGm0kZkfammrA6e3UWKzrHefTnxbM8FJutdOAHn5xXb6d2EWOS3LjxI72MfBbw9CPguAJ/8lRO
-	CRHjl9c/6U+RDkGgBxfoihFqIFD1M02ox5IsoXSGvSnmC7XfOC72/9B4EtUVxdgEOAyoHxnY2ubM9
-	tIX3rvZTJsps46Xv8PvQ==;
+	List-Owner; bh=QH7Lx7nHiqlio/9bWunVtz0AS8QBfzO7Vo+2ceQBOB0=; b=Dv14jyHHmM14D3
+	H2b4ADfgGO6hiy1XSZLGS3Q6au24fXG4wtmcA1+VwLmXZGhMvBs+Wcruhm/FKW3LjCOjndvNqhrUb
+	zJChkAvvsn/pkNP1Rf6CWvvdw9VGZiZmnWdvQHz3I4i0EQFuXE28BqkD46zswb+3xTKgyAErmNmYp
+	mI/cl8su/ThTcYmeVpO7AE/6b6yin7n1c/h93ZTe4xE81sLbK7zrqd3QBy0nZ+h1Vhr4z5X3P0tAy
+	AL5aZJslQt8eLTvu/b+Fr19qptM9EWVwTortFT636vHDX+fPgtESMzzz91Ak/ALy6Ns8203woo5DC
+	OHyFbeC4H0klYT72QARA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vizUB-00000007dfA-10pm;
-	Thu, 22 Jan 2026 18:32:51 +0000
+	id 1vizUH-00000007di8-3WSQ;
+	Thu, 22 Jan 2026 18:32:57 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vizU8-00000007deZ-1pJQ
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Jan 2026 18:32:49 +0000
+	id 1vizUD-00000007dfp-2m7Y;
+	Thu, 22 Jan 2026 18:32:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=agslpXLRXlgoIqoXX1b/469dMp/dSJo51gcsUDWxm10=; b=US9+bYtdoESb7Sxo34iTpi/+4d
-	jHW0+3yOCh20Q0YUYmGdG2p1EkXJh/705kvbMhICO58eaTB4PPK4ZAuBoN2fK20pVwO4m1CeDEmM4
-	7cdQ5LuhhFOsEZGDaXXcwLK/a6kt1HFnnUFgQ9M4WOAVaOj/R49vI5BHCtGCBL8OtxF3zzVmCTKyV
-	Uw4+D1c8BputqR33CfqXIdml8wTUqqm4uvocq2U4iXhIHLLSjRLnkPd0rklNBy/T0aw3AGxjZfcEK
-	Oxr9I2drNpjGOhMuw8PEI/Af1ArM5TwqP5BnKQotsEVjqBbm831PaM8P0mpHp2wyaQeQBMeHzvssG
-	C12Ndzug==;
+	bh=nNcAXA78Lmf4S4GSMOlD97M4xfkehQtEkWEYKY3GGRU=; b=j8ymQqVVDP34hMaNDAd6lsm2gA
+	hUkLdSsKEo08LQ7zwkhttJ1uQ1iCfORq3BIFl76ch9eVplwUCTEgGUfte1vxkQO6xtTLlYCsn/r6b
+	yUSE0djpElYDsij7vJBq/8ULeC2Knf8cftaOv6HNLvlcRxYrXci+8ZoXvK4lTEB2A06mc6EwggcUm
+	2C+zdsBr6U+9WtBGfBOGWWtNU2uEh2vP067j0umnicDmUnUCRuD9InXy+2/uMzm+iGW1wDP7Hy9z6
+	C6Y1dQq53pdtcb+SoiNzNE0lasVPeftkQJtaPHMcBKXYJP8Av9KlIKUxFrUDlgS7lN5zgthei3n5Z
+	t/yKgPXw==;
 Received: from [192.76.154.238] (helo=phil.dip.tu-dresden.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vizU2-003rA9-Fa; Thu, 22 Jan 2026 19:32:43 +0100
+	id 1vizU1-003rA9-Ny; Thu, 22 Jan 2026 19:32:42 +0100
 From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Chris Morgan <macroalpha82@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	dri-devel@lists.freedesktop.org,
+	Quentin Schulz <quentin.schulz@cherry.de>,
 	devicetree@vger.kernel.org,
-	dmitry.torokhov@gmail.com,
-	simona@ffwll.ch,
-	airlied@gmail.com,
-	tzimmermann@suse.de,
-	mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	jesszhan0024@gmail.com,
-	neil.armstrong@linaro.org,
-	jagan@edgeble.ai,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	aweinzerl13@yahoo.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: (subset) [PATCH 0/6] Add Anbernic RG-DS
-Date: Thu, 22 Jan 2026 19:32:39 +0100
-Message-ID: <176910675441.726233.3829281115415341998.b4-ty@sntech.de>
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH v3] arm64: dts: rockchip: Explicitly request UFS reset pin on RK3576
+Date: Thu, 22 Jan 2026 19:32:37 +0100
+Message-ID: <176910675436.726233.5945062783721941669.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260113195721.151205-1-macroalpha82@gmail.com>
-References: <20260113195721.151205-1-macroalpha82@gmail.com>
+In-Reply-To: <20260121-ufs-rst-v3-1-35839bcb4ca7@gmail.com>
+References: <20260121-ufs-rst-v3-1-35839bcb4ca7@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260122_103248_495249_545BBA50 
-X-CRM114-Status: UNSURE (   8.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260122_103253_701168_7FEFD6C3 
+X-CRM114-Status: GOOD (  11.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,24 +82,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 13 Jan 2026 13:57:15 -0600, Chris Morgan wrote:
-> Add support for the Anbernic RG-DS. The Anbernic RG-DS is a dual-screen
-> handheld from Anbernic powered by the Rockchip RK3568 SoC. It has
-> dual DSI displays with touchscreens, multiple face buttons, and is in
-> a foldable clamshell form-factor.
+On Wed, 21 Jan 2026 11:42:13 +0400, Alexey Charkov wrote:
+> Rockchip RK3576 UFS controller uses a dedicated pin to reset the connected
+> UFS device, which can operate either in a hardware controlled mode or as a
+> GPIO pin.
 > 
-> https://anbernic.com/products/rgds
+> Power-on default is GPIO mode, but the boot ROM reconfigures it to a
+> hardware controlled mode if it uses UFS to load the next boot stage.
 > 
 > [...]
 
 Applied, thanks!
 
-[4/6] dt-bindings: arm: rockchip: Add Anbernic RG-DS
-      commit: 84f42966b80eaec59349c7b474ebd6b0943731e4
-[5/6] dt-bindings: input: touchscreen: goodix: Add "panel" property
-      commit: 3c8399d31c8eb10aa34bccec1f49b51694e67b00
-[6/6] arm64: dts: rockchip: Add Anbernic RG-DS
-      commit: 9e3f8ae040009f66367b2ba1081b7e313b39aeff
+[1/1] arm64: dts: rockchip: Explicitly request UFS reset pin on RK3576
+      commit: 79a3286e61829fc43abdd6e3beb31b24930c7af6
 
 Best regards,
 -- 
