@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC08AC44536
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 02:27:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84E91C44536
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 02:39:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sje1NBWFiGwOip4vfPdZ603CQUN26K6GeXk+jg+8VyU=; b=Ctyjtbne7cXnLn
-	1wEeFOGNwcZvyC7WWaqoEGKmmBLGXE5Nrwh/lVtl7jWMYFEAPFMQc727Z9KJs8bRKHo9hRDzfW01s
-	yLl0Bnl0KJuOabylnyi06Zvx3Y21A3COR5m/9gPmcThu6AJdzSET1IKzCPBJl8fAEWYt+6KiLscS1
-	vVetFzSjRfJLrqEA1R+WIxRmJMUSk/ljvZXFzNlKFy2kodjpY2OCOp1juwsAqS5L4YyTCHf8gMkAN
-	btHcU4J++5Ic5FNZvisYp39+7RvAvBoT7OiCFjffFMq/w9FxT20zPa6fMToql8PXEhwk1vj3aHdDW
-	hRuobpYzXkBKWGiWo6jw==;
+	List-Owner; bh=aAF4rahIiHv8aH+8xchUTwEpFONo64EawdopFn8oXvw=; b=VJz+GvuAN7QRu4
+	bWU5HJeCgo9nm/b8hAoGbgmc2QCvweeWLUV43cPsLYol36rJB/W7RZ2x5e8gAbeBx2FAJpe272Qk1
+	3lvD0pR0IGL48ZK4Moyq9nTvdpGwgPEOt73AoEWQ8v14AzNvt5aVgZCGzgYUd+KWXZWygQ77MFtZj
+	6zbhcpuR+JTPER5WxuEi1X0L+0Dap+dX5lg3tTFSRkscLzVUd8beUU4zVbfXZ7oYKmG8ALXh4IqCF
+	mKNV6lpVhfMP2j3y6BgqMAf0sYhlcUYf05cYHidN7mirLuYpOhOXhbpPoVX8drB2V4kdVW021+W/W
+	WDNqApCd8PCO8z/rua1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vikPt-00000006KNj-3UaJ;
-	Thu, 22 Jan 2026 02:27:25 +0000
-Received: from mail-m82213661.xmail.ntesmail.com ([8.221.36.61])
+	id 1vikbq-00000006Kta-1PWI;
+	Thu, 22 Jan 2026 02:39:46 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vikPp-00000006KNJ-36MM;
-	Thu, 22 Jan 2026 02:27:23 +0000
-Received: from [127.0.0.1] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 318612bcb;
-	Thu, 22 Jan 2026 10:27:15 +0800 (GMT+08:00)
-Message-ID: <8e770288-f29b-4e72-b5a6-e3cfd77b87fb@rock-chips.com>
-Date: Thu, 22 Jan 2026 10:27:13 +0800
+	id 1vikbn-00000006Ksj-30g2;
+	Thu, 22 Jan 2026 02:39:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=rxitm8n7F29DifZwUQzj7gNr+yPEqpgmZn1ppHGtpbk=; b=3BtsDdP4E9nfirUm02GGHVDQt4
+	7yGO1G/HoirThUsiWq8UGJ7P1cU2lCcrJVq48RV2+DdzRu/zYPOARWsn0x5AAsLt2TSM19d3qA/cg
+	xrx4J68dgh+qNshT277mxchcUfeU0HTPrCtl2bcObOQHwwfqiNu25SzrJfLP7244JMqs=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vikbN-003uAS-MA; Thu, 22 Jan 2026 03:39:17 +0100
+Date: Thu, 22 Jan 2026 03:39:17 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Jonas Karlman <jonas@kwiboo.se>, Hsun Lai <i@chainsx.cn>,
+	John Clark <inindev@gmail.com>, Jimmy Hon <honyuenkwun@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 2/2] arm64: dts: rockchip: Add rk3576 evb2 board
+Message-ID: <b61182f9-36ca-40c6-aaf7-ae7d21698285@lunn.ch>
+References: <20260121015357.291-1-kernel@airkyi.com>
+ <20260121015357.291-3-kernel@airkyi.com>
+ <aec69818-9fd0-4e50-bab9-f5e36304a4a2@lunn.ch>
+ <305c6ceb-2b4d-496a-95c1-e6a0454347a5@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] Rockchip DRM use-after-free & null-ptr-deref fixes
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
-X-HM-Tid: 0a9be387049103abkunm77d59df1bb420
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU9OTFZLSRgfSElLGkoaTUlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=I92+oDEgnhBj/xd19A1BnS+A6cqHFKTL38BIABnUxSdl1aNhq9t2J9vngMWKoJfjXkmkjLddbyv9G0fUmx2KjJg6a4Gdgq6zqv9BTh9pD64IuRiGOQ+4TdxbGOH5xX6gEvENNT3Vkulj7X1U8UA/rI4huZzfmJ2gIrurHe946ks=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=S49y2L4gD63j6L5j9pyo9jE88T6ardth6Lb6pcKfHeg=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <305c6ceb-2b4d-496a-95c1-e6a0454347a5@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260121_182722_498150_BA6DE2F1 
-X-CRM114-Status: UNSURE (   9.09  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260121_183943_757887_744FC4D0 
+X-CRM114-Status: GOOD (  15.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,44 +84,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Cristian,
+On Thu, Jan 22, 2026 at 09:41:19AM +0800, Chaoyi Chen wrote:
+> Hi Andrew,
+> 
+> On 1/21/2026 9:15 PM, Andrew Lunn wrote:
+> >> +&mdio0 {
+> >> +	rgmii_phy0: ethernet-phy@1 {
+> >> +		compatible = "ethernet-phy-ieee802.3-c22";
+> >> +		reg = <0x1>;
+> >> +		pinctrl-names = "default";
+> >> +		pinctrl-0 = <&rgmii_phy0_rst>;
+> >> +		reset-assert-us = <20000>;
+> >> +		reset-deassert-us = <100000>;
+> >> +		reset-gpios = <&gpio3 RK_PD3 GPIO_ACTIVE_LOW>;
+> >> +		tx-internal-delay-ps = <1900>;
+> > 
+> > What PHY is this? Does it actually implement this property?
+> > 
+> > It is also close to the 2000ps default. Have you put the board in an
+> > environment chamber and run tests at -20C to +70C to see if it will
+> > work with the default 2000ps?
+> >
+> 
+> It is MotorComm yt8xxx PHY. I chose 1950 here because I find that
+> the MotorComm PHY binding only offer the options of 1950 or 2100. 
 
-On 1/22/2026 7:17 AM, Cristian Ciocaltea wrote:
-> The first three patches in the series are fixes for use-after-free &
-> null-ptr-deref related issues found in dw_dp and inno-hdmi Rockchip DRM
-> drivers.
-> 
+Without the property it should default to something near to 2000. Most
+MAC/PHY pairs should work without this property, if the board is
+designed correctly. So i suggest you only have a tx-internal-delay-ps
+if it is required.
 
-Have you tried calling unbind() and bind() multiple times? 
-In this case, can DRM still work properly?
-
-> The remaining ones provide a few minor improvements to dw_dp and
-> dw_hdmi_qp.
-> 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
-> Cristian Ciocaltea (6):
->       drm/rockchip: inno-hdmi: Switch to drmm_kzalloc()
->       drm/rockchip: dw_dp: Switch to drmm_kzalloc()
->       drm/rockchip: dw_dp: Fix null-ptr-deref in dw_dp_remove()
->       drm/rockchip: dw_dp: Simplify error handling
->       drm/rockchip: dw_dp: Drop unnecessary #include
->       drm/rockchip: dw_hdmi_qp: Switch to drmm_encoder_init()
-> 
->  drivers/gpu/drm/rockchip/dw_dp-rockchip.c      | 35 ++++++++++----------------
->  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 +++++-----
->  drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c  |  3 ++-
->  3 files changed, 21 insertions(+), 30 deletions(-)
-> ---
-> base-commit: 68b271a3a94cfd6c7695a96b6398b52feb89e2c2
-> change-id: 20260122-drm-rk-fixes-a7622c71553e
-> 
-> 
-> 
-> 
--- 
-Best, 
-Chaoyi
+   Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
