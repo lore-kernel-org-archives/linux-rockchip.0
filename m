@@ -4,61 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F7A5C44536
-	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 02:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC08AC44536
+	for <linux-rockchip@archiver.kernel.org>; Thu, 22 Jan 2026 02:27:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=shQ1SsIZH9QAMavPsIJdFYk6y1ZwPfoiPD0xODB/hgU=; b=WaVbYkr+FyukGE
-	fKvBB6UH2EUfRgACfr2kTDeohuE0Fv3u81xB3QAmduYEiGILjmaVID98+Ny5+8SwSEHgHvmh4996Y
-	3pSqxT7NIk6uAMYMqF40TEbLHv9BisN9xPXN/Z6g8Gb5BUCEdpOnxVBeaBw/NBTzfaSZ06EaEcaZG
-	ikn+9yKcDV/kzpGEWCn0Vd4S+HngGokttwwpyMurNmKs+TwrAKkFq5/gge8UV3tq0j2U0DQUOqi94
-	1FJrErawoTyBVRJXWUlm9YA+rfklrymxOv0ceUL39aIZzGh1oRtphrarKbDhSydGQUBR54DUDBWgJ
-	zLG5D6fo2vfyY2ruuI7A==;
+	List-Owner; bh=Sje1NBWFiGwOip4vfPdZ603CQUN26K6GeXk+jg+8VyU=; b=Ctyjtbne7cXnLn
+	1wEeFOGNwcZvyC7WWaqoEGKmmBLGXE5Nrwh/lVtl7jWMYFEAPFMQc727Z9KJs8bRKHo9hRDzfW01s
+	yLl0Bnl0KJuOabylnyi06Zvx3Y21A3COR5m/9gPmcThu6AJdzSET1IKzCPBJl8fAEWYt+6KiLscS1
+	vVetFzSjRfJLrqEA1R+WIxRmJMUSk/ljvZXFzNlKFy2kodjpY2OCOp1juwsAqS5L4YyTCHf8gMkAN
+	btHcU4J++5Ic5FNZvisYp39+7RvAvBoT7OiCFjffFMq/w9FxT20zPa6fMToql8PXEhwk1vj3aHdDW
+	hRuobpYzXkBKWGiWo6jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vik20-00000006IJO-08hu;
-	Thu, 22 Jan 2026 02:02:44 +0000
-Received: from mail-m155116.qiye.163.com ([101.71.155.116])
+	id 1vikPt-00000006KNj-3UaJ;
+	Thu, 22 Jan 2026 02:27:25 +0000
+Received: from mail-m82213661.xmail.ntesmail.com ([8.221.36.61])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vik1v-00000006IGj-3RKG
-	for linux-rockchip@lists.infradead.org;
-	Thu, 22 Jan 2026 02:02:41 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3184fafe6;
-	Thu, 22 Jan 2026 10:02:35 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Manivannan Sadhasivam <mani@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>
-Cc: linux-rockchip@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	linux-trace-kernel@vger.kernel.org,
-	linux-doc@vger.kernel.org,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v4 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition trace support
-Date: Thu, 22 Jan 2026 10:02:20 +0800
-Message-Id: <1769047340-113287-4-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9be37070fe09cckunm8c44f6d054e5e
+	id 1vikPp-00000006KNJ-36MM;
+	Thu, 22 Jan 2026 02:27:23 +0000
+Received: from [127.0.0.1] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 318612bcb;
+	Thu, 22 Jan 2026 10:27:15 +0800 (GMT+08:00)
+Message-ID: <8e770288-f29b-4e72-b5a6-e3cfd77b87fb@rock-chips.com>
+Date: Thu, 22 Jan 2026 10:27:13 +0800
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/6] Rockchip DRM use-after-free & null-ptr-deref fixes
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com>
+X-HM-Tid: 0a9be387049103abkunm77d59df1bb420
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh0ZQlZJSU1IGBgZGB5KHxhWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU9OTFZLSRgfSElLGkoaTUlWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=dPz02LSTeKFbb1Y5KOG4mqccKgZ3vkBzMA9jIMEhC44fAKlEhLiYTjM3s8y+QiMSRa87ofDmfQx7TUVQseE2t/LibDmELg8HF4uQmkMfXz+BF6ItWI+9pz7dK44tmRmYhCzOsmwyfh6/r1q055zs9D9bI7RKNHnRHeh+eKRd2SQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=3IriWBu0NO6ZjqkCv7pP5bxw/S+T2xzX6jT2gTaB0G8=;
+	b=I92+oDEgnhBj/xd19A1BnS+A6cqHFKTL38BIABnUxSdl1aNhq9t2J9vngMWKoJfjXkmkjLddbyv9G0fUmx2KjJg6a4Gdgq6zqv9BTh9pD64IuRiGOQ+4TdxbGOH5xX6gEvENNT3Vkulj7X1U8UA/rI4huZzfmJ2gIrurHe946ks=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=S49y2L4gD63j6L5j9pyo9jE88T6ardth6Lb6pcKfHeg=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260121_180240_056795_4ED833DF 
-X-CRM114-Status: GOOD (  20.12  )
+X-CRM114-CacheID: sfid-20260121_182722_498150_BA6DE2F1 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,195 +73,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rockchip platforms provide a 64x4 bytes debug FIFO to trace the
-LTSSM history. Any LTSSM change will be recorded. It's useful
-for debug purpose, for example link failure, etc.
+Hi Cristian,
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
----
+On 1/22/2026 7:17 AM, Cristian Ciocaltea wrote:
+> The first three patches in the series are fixes for use-after-free &
+> null-ptr-deref related issues found in dw_dp and inno-hdmi Rockchip DRM
+> drivers.
+> 
 
-Changes in v4:
-- skip trace if pci_ltssm_tp_enabled() is false.(Steven)
-- wrap into 80 columns(Bjorn)
+Have you tried calling unbind() and bind() multiple times? 
+In this case, can DRM still work properly?
 
-Changes in v3:
-- reorder variables(Mani)
-- rename loop to i; rename en to enable(Mani)
-- use FIELD_GET(Mani)
-- add comment about how the FIFO works(Mani)
-
-Changes in v2:
-- use tracepoint
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 111 ++++++++++++++++++++++++++
- 1 file changed, 111 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 0fd7bb9..135326c 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -22,6 +22,8 @@
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
- #include <linux/reset.h>
-+#include <linux/workqueue.h>
-+#include <trace/events/pci_controller.h>
- 
- #include "../../pci.h"
- #include "pcie-designware.h"
-@@ -73,6 +75,20 @@
- #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_1	BIT(4)
- #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_2	BIT(5)
- 
-+/* Debug FIFO information */
-+#define PCIE_CLIENT_DBG_FIFO_MODE_CON	0x310
-+#define  PCIE_CLIENT_DBG_EN		0xffff0007
-+#define  PCIE_CLIENT_DBG_DIS		0xffff0000
-+#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0	0x320
-+#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1	0x324
-+#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0	0x328
-+#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1	0x32c
-+#define  PCIE_CLIENT_DBG_TRANSITION_DATA 0xffff0000
-+#define PCIE_CLIENT_DBG_FIFO_STATUS	0x350
-+#define  PCIE_DBG_FIFO_RATE_MASK	GENMASK(22, 20)
-+#define  PCIE_DBG_FIFO_L1SUB_MASK	GENMASK(10, 8)
-+#define PCIE_DBG_LTSSM_HISTORY_CNT	64
-+
- /* Hot Reset Control Register */
- #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
- #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
-@@ -98,6 +114,7 @@ struct rockchip_pcie {
- 	struct irq_domain *irq_domain;
- 	const struct rockchip_pcie_of_data *data;
- 	bool supports_clkreq;
-+	struct delayed_work trace_work;
- };
- 
- struct rockchip_pcie_of_data {
-@@ -208,6 +225,96 @@ static enum dw_pcie_ltssm rockchip_pcie_get_ltssm(struct dw_pcie *pci)
- 	return rockchip_pcie_get_ltssm_reg(rockchip) & PCIE_LTSSM_STATUS_MASK;
- }
- 
-+#ifdef CONFIG_TRACING
-+static void rockchip_pcie_ltssm_trace_work(struct work_struct *work)
-+{
-+	struct rockchip_pcie *rockchip = container_of(work,
-+						struct rockchip_pcie,
-+						trace_work.work);
-+	struct dw_pcie *pci = &rockchip->pci;
-+	enum dw_pcie_ltssm state;
-+	u32 i, l1ss, prev_val = DW_PCIE_LTSSM_UNKNOWN, rate, val;
-+
-+	if (!pci_ltssm_tp_enabled())
-+		goto skip_trace;
-+
-+	for (i = 0; i < PCIE_DBG_LTSSM_HISTORY_CNT; i++) {
-+		val = rockchip_pcie_readl_apb(rockchip,
-+				PCIE_CLIENT_DBG_FIFO_STATUS);
-+		rate = FIELD_GET(PCIE_DBG_FIFO_RATE_MASK, val);
-+		l1ss = FIELD_GET(PCIE_DBG_FIFO_L1SUB_MASK, val);
-+		val = FIELD_GET(PCIE_LTSSM_STATUS_MASK, val);
-+
-+		/*
-+		 * Hardware Mechanism: The ring FIFO employs two tracking
-+		 * counters:
-+		 * - 'last-read-point': maintains the user's last read position
-+		 * - 'last-valid-point': tracks the HW's last state update
-+		 *
-+		 * Software Handling: When two consecutive LTSSM states are
-+		 * identical, it indicates invalid subsequent data in the FIFO.
-+		 * In this case, we skip the remaining entries. The dual counter
-+		 * design ensures that on the next state transition, reading can
-+		 * resume from the last user position.
-+		 */
-+		if ((i > 0 && val == prev_val) || val > DW_PCIE_LTSSM_RCVRY_EQ3)
-+			break;
-+
-+		state = prev_val = val;
-+		if (val == DW_PCIE_LTSSM_L1_IDLE) {
-+			if (l1ss == 2)
-+				state = DW_PCIE_LTSSM_L1_2;
-+			else if (l1ss == 1)
-+				state = DW_PCIE_LTSSM_L1_1;
-+		}
-+
-+		trace_pcie_ltssm_state_transition(dev_name(pci->dev),
-+				dw_pcie_ltssm_status_string(state),
-+				((rate + 1) > pci->max_link_speed) ?
-+				PCI_SPEED_UNKNOWN : PCIE_SPEED_2_5GT + rate);
-+	}
-+
-+skip_trace:
-+	schedule_delayed_work(&rockchip->trace_work, msecs_to_jiffies(5000));
-+}
-+
-+static void rockchip_pcie_ltssm_trace(struct rockchip_pcie *rockchip,
-+				      bool enable)
-+{
-+	if (enable) {
-+		rockchip_pcie_writel_apb(rockchip,
-+					 PCIE_CLIENT_DBG_TRANSITION_DATA,
-+					 PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0);
-+		rockchip_pcie_writel_apb(rockchip,
-+					 PCIE_CLIENT_DBG_TRANSITION_DATA,
-+					 PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1);
-+		rockchip_pcie_writel_apb(rockchip,
-+					 PCIE_CLIENT_DBG_TRANSITION_DATA,
-+					 PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0);
-+		rockchip_pcie_writel_apb(rockchip,
-+					 PCIE_CLIENT_DBG_TRANSITION_DATA,
-+					 PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1);
-+		rockchip_pcie_writel_apb(rockchip,
-+					 PCIE_CLIENT_DBG_EN,
-+					 PCIE_CLIENT_DBG_FIFO_MODE_CON);
-+
-+		INIT_DELAYED_WORK(&rockchip->trace_work,
-+				  rockchip_pcie_ltssm_trace_work);
-+		schedule_delayed_work(&rockchip->trace_work, 0);
-+	} else {
-+		rockchip_pcie_writel_apb(rockchip,
-+					 PCIE_CLIENT_DBG_DIS,
-+					 PCIE_CLIENT_DBG_FIFO_MODE_CON);
-+		cancel_delayed_work_sync(&rockchip->trace_work);
-+	}
-+}
-+#else
-+static void rockchip_pcie_ltssm_trace(struct rockchip_pcie *rockchip,
-+				      bool enable)
-+{
-+}
-+#endif
-+
- static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
- {
- 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
-@@ -291,6 +398,9 @@ static int rockchip_pcie_start_link(struct dw_pcie *pci)
- 	 * 100us as we don't know how long should the device need to reset.
- 	 */
- 	msleep(PCIE_T_PVPERL_MS);
-+
-+	rockchip_pcie_ltssm_trace(rockchip, true);
-+
- 	gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
- 
- 	return 0;
-@@ -301,6 +411,7 @@ static void rockchip_pcie_stop_link(struct dw_pcie *pci)
- 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
- 
- 	rockchip_pcie_disable_ltssm(rockchip);
-+	rockchip_pcie_ltssm_trace(rockchip, false);
- }
- 
- static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+> The remaining ones provide a few minor improvements to dw_dp and
+> dw_hdmi_qp.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+> Cristian Ciocaltea (6):
+>       drm/rockchip: inno-hdmi: Switch to drmm_kzalloc()
+>       drm/rockchip: dw_dp: Switch to drmm_kzalloc()
+>       drm/rockchip: dw_dp: Fix null-ptr-deref in dw_dp_remove()
+>       drm/rockchip: dw_dp: Simplify error handling
+>       drm/rockchip: dw_dp: Drop unnecessary #include
+>       drm/rockchip: dw_hdmi_qp: Switch to drmm_encoder_init()
+> 
+>  drivers/gpu/drm/rockchip/dw_dp-rockchip.c      | 35 ++++++++++----------------
+>  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 13 +++++-----
+>  drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c  |  3 ++-
+>  3 files changed, 21 insertions(+), 30 deletions(-)
+> ---
+> base-commit: 68b271a3a94cfd6c7695a96b6398b52feb89e2c2
+> change-id: 20260122-drm-rk-fixes-a7622c71553e
+> 
+> 
+> 
+> 
 -- 
-2.7.4
-
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
