@@ -4,169 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEC76D74ED9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jan 2026 14:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C4F2D7788E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 23 Jan 2026 17:14:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iO1E2jKBgPJflbmkHNqxE2QXRQn503lQGfM4ZSlw8dM=; b=YKlUwh6yK0sb4b
-	3ysNU9DRs7d5ccfg6/RfaXoW72E05AghNA/I5RGnXpkx878qPZ3R4T7JrjwOxOARwiZj5n8cNk54F
-	4s061C8TApy0Kp5o5gaQ/y5mwBAwHLaZ140Ct7ND9Cn9dItqRIEtLgI03jwLqNQo3UJUm2joFBy1C
-	WA4GtGAHU5HIL+1YTviawRJPYAdTs0tXlaW3/IphmzUwkchLGxrxFbjmWEvqEfX6AfeU3eZ2Q+I1N
-	gYshLZkf7cMvvQ1Xm5XYvfiFC0ywj0HDpCndH2PCwOG7159eDr0YMDlc4+ImbHQ8eSYhXE4iLUUWI
-	gwTDkKHxjc5am/2J2nyg==;
+	List-Owner; bh=BBlIPXcfSNkMURqwf5qKXjiTArsr07wqLFLKqIj5hvU=; b=NKqItLfQmXzxCN
+	US9IDAp4VvN7j/Zp695hnip7Z9lkiBnkwR9GahrzgKdE2eM+c55V9qoPBCZ2bNrA/N3bqdZbAtX8w
+	wVgrGvbUXJM4Jk3D+KAoBKsSAxHVfFpZKHP2zePuz6VgMy12jD+HodSocIHnxukNKimowhqw0AqYH
+	J+aVVH56G2RQ1lZBTUqvaGn7mOEeXkW4RPxgUg0pI0pxqvPUXFccC8QVByWtgBRgnlbs3gWoNl9h2
+	GMVlyF4/m1iNMj63cyQYvqn1ETk5vCyXB9U0CM9xGS/SxbQssWIwPPWZ5zC26lw9HRjfpRrPIcDh7
+	GkcrCyOLqpP/1ymFt9Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjI9b-000000092fX-28e3;
-	Fri, 23 Jan 2026 14:28:51 +0000
-Received: from mail-japanwestazlp170100003.outbound.protection.outlook.com ([2a01:111:f403:c407::3] helo=OS0P286CU011.outbound.protection.outlook.com)
+	id 1vjKk4-00000009Gbs-0i9Y;
+	Fri, 23 Jan 2026 17:14:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjI9Y-000000092eG-1OiL;
-	Fri, 23 Jan 2026 14:28:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JC7N19/BRTxZYOBTx9pdcb0oIc7/PAL7ipjh2K5iSkizKYiP26gzZIaZSSNTwuQPuMEYw4YHpOZ0T2dNLKQbcDUg2PVR4s7x1ty3eWtGYNj9JUfTRkapzw2wrTeEC7gm3ZlZQLAFHAWZpNnZEZwnrnyPRBLqMBqLACUoz0xEayWNrH8MjJJE5kKLF5Fj2L9FOS+RQBiMzDwIxO7yWoitsr3V5nK14wT6AlkMVgGtCm0ZHmjqb5UlaeNAECcUVYTKIYrLWg8yIQUQHjxXEC2zTdfVQ/dXjqf6IkI8GArmkUZ/grjgaPQWNl6GAGoPh5gY5kg1CRAWZFy5oIgQFaWLig==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ytnkaAICS/2Id7jXbgU8CoJYMoDKfH/xTA0PQeJfwkE=;
- b=hDJRkh5fDd4+57Pp9Oh6rwvQKXGzLsuvV0ITY+9UUczN4NsKHKIeigA3U+xEcCYEuo5ylj03iBJSOJvVy6MWauvgtKqnbeN7CSRVuxlyLSneHoBPbMIlWHU2MdZdfOlr2k318T6OT0U+qu50Lnm6qH9XoCwVwTCswXL0yPE8k0dmde5Cv1yJSN7O5pdgQiOY98tVz5Hw1ngN1G1A/Op8wIMsHj8+nV4Oeebu8zlKb4zIIOa7Wj1Sw0QZ058Gg6F2CrpHMuUbW3oRdI/VieBAeYjPFrMR6r1Q6iEkpO6QDTkKRQ0Zrp9YgtHSebQjn1Q591HJe5KDJWt4SFKhQLccCA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
- header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=valinux.co.jp;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ytnkaAICS/2Id7jXbgU8CoJYMoDKfH/xTA0PQeJfwkE=;
- b=Zi/Gxgb0R+b9EsSKv9hT3kkZHJe4Wb65YFnhMb6A1ORCF/nIg/4enwWmkqgkGTCkt+FC9odBc/LwBxa4vsnda2z429H8W7kY19K0bL50bDWA/WgwQcCpJ/NS6RwzVML+P8leooJIBU96TmAi8rJljvBXiwTdFOnexNKW7RCn3uM=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=valinux.co.jp;
-Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:38f::10)
- by TYRP286MB5430.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:191::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.11; Fri, 23 Jan
- 2026 14:28:30 +0000
-Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- ([fe80::2305:327c:28ec:9b32]) by TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- ([fe80::2305:327c:28ec:9b32%5]) with mapi id 15.20.9542.010; Fri, 23 Jan 2026
- 14:28:30 +0000
-Date: Fri, 23 Jan 2026 23:28:28 +0900
-From: Koichiro Den <den@valinux.co.jp>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org, 
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com, vigneshr@ti.com, 
-	s-vadapalli@ti.com, hongxing.zhu@nxp.com, l.stach@pengutronix.de, 
-	shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, 
-	festevam@gmail.com, minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com, 
-	jesper.nilsson@axis.com, heiko@sntech.de, srikanth.thokala@intel.com, 
-	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be, 
-	magnus.damm@gmail.com, christian.bruel@foss.st.com, mcoquelin.stm32@gmail.com, 
-	alexandre.torgue@foss.st.com, thierry.reding@gmail.com, jonathanh@nvidia.com, 
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org, kishon@kernel.org, jirislaby@kernel.org, 
-	rongqianfeng@vivo.com, 18255117159@163.com, shawn.lin@rock-chips.com, 
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com, vidyas@nvidia.com, Frank.Li@nxp.com, 
-	linux-omap@vger.kernel.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org, 
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-stm32@st-md-mailman.stormreply.com, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v9 4/5] PCI: dwc: ep: Support BAR subrange inbound
- mapping via Address Match Mode iATU
-Message-ID: <tyudbsfjh2b7rzcascz4blv4uhkesemxqby6r5mmvgyfqrms45@mshhj53p53pt>
-References: <20260122084909.2390865-1-den@valinux.co.jp>
- <20260122084909.2390865-5-den@valinux.co.jp>
- <aXHsd7-WWAGyhy_w@ryzen>
- <s6bnqkbuugi7oio7ybekdbk3dokpbe2bui2wjltdwajxix2app@wosgmhrfsriv>
- <19D609EC-F850-4B43-A83C-0B8C70E641B5@kernel.org>
- <l7wknbayighcczjkqfwhbaqrepjtbgxxstgkntoqvnrs7dnm6g@wvmy67ky37pv>
- <aXM2hwCrziK2I8OL@ryzen>
-Content-Disposition: inline
-In-Reply-To: <aXM2hwCrziK2I8OL@ryzen>
-X-ClientProxiedBy: TYCP286CA0115.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:400:29c::19) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:405:38f::10)
+	id 1vjKk2-00000009Gb5-08lQ;
+	Fri, 23 Jan 2026 17:14:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 62173417C3;
+	Fri, 23 Jan 2026 17:14:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD58FC4CEF1;
+	Fri, 23 Jan 2026 17:14:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769188477;
+	bh=KuWTwQAvHKNEr7McYbtyjdsmHZtcDax2InXNF4vfUac=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IMyD5dIxCP9zQnGyRwuErwnLguBZCDeZLKP9ED4GVP9KZvGImzrxVqvtkyTo5toDQ
+	 twULnG+AnaQ6GicScONE10tSmaym03JPpQsUHGVJvzv25h2LAMeUzzkjONAAP6P2hu
+	 7gvXSzaj81E/JAPy1X6owf7tXRdFCrZKuiw8lo6lpUd0q8y8mGfQ5LZ7vMQFI+jy8U
+	 3m9bC5GwmBWqEov1tJ5Log4I3/fMjqcqZuo6jx7f+d1VpXTUiv6i7lRSyTdnAWMsr3
+	 s9CYwi/cvbBFO43BsZlLQHcRutV7916+N3hEWgikOYnzt3SmMR4KR9SIwOVlE/PoFw
+	 x9a72+MBAlgeA==
+Date: Fri, 23 Jan 2026 17:14:30 +0000
+From: Will Deacon <will@kernel.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: joro@8bytes.org, robin.murphy@arm.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de,
+	nicolas.dufresne@collabora.com, p.zabel@pengutronix.de,
+	mchehab@kernel.org, iommu@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org,
+	kernel@collabora.com
+Subject: Re: [PATCH v11 3/7] iommu: Add verisilicon IOMMU driver
+Message-ID: <aXOsdlGMVzhHOrUr@willie-the-truck>
+References: <20260107101005.84039-1-benjamin.gaignard@collabora.com>
+ <20260107101005.84039-4-benjamin.gaignard@collabora.com>
+ <aWZui-rn5RDPwpEO@willie-the-truck>
+ <68a49f8b-178c-4fa2-b4a9-315ad602271d@collabora.com>
+ <aWeTQ50DOtntcniN@willie-the-truck>
+ <db0950f1-b357-47c2-9829-e33262ab456d@collabora.com>
+ <aW4kb5EbxbrhTOxK@willie-the-truck>
+ <b8f43fe8-3e07-4d98-a50d-817c31370710@collabora.com>
+ <aXDL2JH_4RCDmAJv@willie-the-truck>
+ <4b33b50f-f0c3-4db8-b394-dd2d4d6e3a55@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY7P286MB7722:EE_|TYRP286MB5430:EE_
-X-MS-Office365-Filtering-Correlation-Id: 085d56e8-448c-4ba3-5caa-08de5a8badfa
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|10070799003|376014|7416014;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?teFzt6ongHxglH4Jao1c+WGnHlNpaeP3L3J4xRGbakyLOSXQvEq8DHI2frKB?=
- =?us-ascii?Q?4A6pGE+v5nFX1RVEHSNhMmmSb1Ggg4htHw/EHkbni3fGfYXYSCKgTNlqHs57?=
- =?us-ascii?Q?IR/R9RW8f4zzaTvz8SyMLpvr+U3OjVVZgBEVMhaLyFHvqdfmYdUffURb5xIg?=
- =?us-ascii?Q?9HD/UzRbCG9ju/1PbO1rfrhke0UB1hn+cFhThfjqv5XnOpwec/8kB9RYrwqN?=
- =?us-ascii?Q?sn076+sm4mfy+svM/5GLtBfMFD65PINpAFLhjluXTohyFH9ZOUrsolXzBG4u?=
- =?us-ascii?Q?UTFSMaxBsmHU/iUEfojQFWcobgXLoclnn/l5SJCZ1XP8A25hLp/6G/gpO87h?=
- =?us-ascii?Q?l3W3iJ5AXnZprg5iu80FpaNhSK2qexgKGoCmb55EY+PPtDWDWK8OGJ3FbgS0?=
- =?us-ascii?Q?u6WRGHWPIrrly7cfA9jz+YPhxgpcbDT50xeQlh4bLXhSkgvw9GEl5mOXcEbV?=
- =?us-ascii?Q?JiKHL537V1uGQ+qJ/w3SIu9rWEZuW9dFdG3XkxpeBfTPQ7yWU2W/gAlbmKWE?=
- =?us-ascii?Q?29BeeNHX77KuG4UArskukdVKWkljEOR/7ASLs3h+5SJLbxHb4GNffG+V/9LV?=
- =?us-ascii?Q?/4j8bsuz4SHsVU/itA1PK5Xda7I4nX+vb/mFLWyYhUzXb4wcNKdVTpgcp8OH?=
- =?us-ascii?Q?MUB22J90zL90vijIB3S73GeF0lRnauHtox2e+vGz89nw2IvnHwtd4LAJB7CM?=
- =?us-ascii?Q?dUl9FkxfFE2UBJrRJB6tX4B4p63IA6iIhV05WkVJp6dHjmWY+BN703Rf/Q0o?=
- =?us-ascii?Q?IS2aozGT+PtxP7Ds0tb5pcBqnFMLAKmQliQtDvDk4LjJJFm4K/VWRkLdDFNu?=
- =?us-ascii?Q?f1m7WYPGd1bPT/Wi7yC9LjmPcxFXkSf+TbK9ZaMneOSlF01HZg2//pI1iGX8?=
- =?us-ascii?Q?nCeeBDid8ZRVPZsdRP6RtCjmjXp6b7SyZ+HpTD/t3qu/oLlMOqCRVf47pv3V?=
- =?us-ascii?Q?I12paQ3gqRyciiJouJHp9w/yJTMEsPSOB6t86WUnQQH7JDumOsn/Y8hHdmMI?=
- =?us-ascii?Q?WsUB60Eb1qZv6KoZKNUlAY1C7UC6GCB42qjd88c/yAjCYCK78iF8bp6GV6Hk?=
- =?us-ascii?Q?BbZ6x0Hdp5NNsIcX5gU9OUj6dNR9t2rNDkPEvIVyXOcWf6+3JIAzsWngT39B?=
- =?us-ascii?Q?A+NYBjybImAZ59wcSNqf6xq0e0qrqh7p4wKj0ZtZvGcbnTm5b3cC+PNv+4ay?=
- =?us-ascii?Q?b9Z5/2MvMfDAdYpev6/NOQ0FSR9To2k/DScVVvhL9i8aUFQ1vuDGGEW+Hkt0?=
- =?us-ascii?Q?dM3X6ND96l+1O+przXfB7GgHAct80tpj1ONPxK4pay+MlEcAqTDu08AIUxMz?=
- =?us-ascii?Q?DFA3SoOooa4ecNqoJzrk4rRF5Sn2t5OuSq91/rl+828IsjGBd/libvINpLDD?=
- =?us-ascii?Q?uYIXm+v9zbrgwnbymTrbXib5+MljrzNHk/u1FhMfdHr+Ygx6vMrdlmt7UWau?=
- =?us-ascii?Q?HUdq2LNidVtKdVJ9vCBK7jlcVEjIB/x9XlRClXdmyM6xtwD5UKslS4WHUwVR?=
- =?us-ascii?Q?cmsRKUxECT1H7N3S7Q9hMpFHXS2xEOD/1H8T/igEV2z+r53RLqxOmipj5SwN?=
- =?us-ascii?Q?2y8+0Ubk1goyML7M7SytUk4d5PVOkhBKC6JTB/hz?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(10070799003)(376014)(7416014);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+yWVREqRY2nbvDcwzGyoD0OOhdvQ/c0V1015Aof8YRinZxmeOOkKjpv+3soo?=
- =?us-ascii?Q?YMoZO/Nsw2VRv2I24Mhc0t4KAAFp4OUTkvI2zbKimAvjmHIhBw6GE5hMsIFp?=
- =?us-ascii?Q?dj1adkCIxZNV5fso7HZ6vm5k/B49/wVbhJ6dTpWjWHkSLVHslaoLS2sZkexT?=
- =?us-ascii?Q?K77OYfBin5JRzPbSF1YXlOrmXAVcfydDS8dYY2GLOO8EmSM2rsExb9q0JEfy?=
- =?us-ascii?Q?Shtzebxzc9XpaQ2aCsCKC8GRadtKNBXJZ/9fPCmhut4yX73ADhLsQ+sGyaKG?=
- =?us-ascii?Q?KT612o1iiecxtPGcu5zHqJWaHKz4NO4WWr5F13sjx1KUUt2vER9NFs1S+fCL?=
- =?us-ascii?Q?wiwZrBaSie36DX0YivXeo1Yxh5mR9sv1sYEiQd+3OS+yTP6doAzc8ARouoOx?=
- =?us-ascii?Q?v5LRHqjaxjEOHCnvPszcDDMQVvRZ+354n3QVAOPK4vs9S+aJPB6qf+/5sF9V?=
- =?us-ascii?Q?MahGEWubG8KGlHsO1q35sBi+/4EpnFyq0DhVuXdRIqMNJX0sXSvxyr93uxWg?=
- =?us-ascii?Q?wIZ+ncNWDwZAokAg13c41hrz/CfUzNBocVeFwOymeiAqy/zmkpXRL8hphdpZ?=
- =?us-ascii?Q?h0H1alwOUNtOrU1lNbuQn+B+FBygVx8QHmvjVg++FLAYEulIML11aY/Szwbr?=
- =?us-ascii?Q?x2edHytBBjgCN1vNwKW4jxlSP1lDlf2ItcsgpN22J7YEdsWd1hRg9b6ilR7F?=
- =?us-ascii?Q?ATgEKBXIU1wT350L5dEWTdt2sswEosaP9T+p90iAolan7CHW1TxL6JWqwdPz?=
- =?us-ascii?Q?VHzHp1hbaIxkWmAlHOTLqSyI3LnuwfWFn4VQvjXrYtax4LSCpKdwGt7tTutE?=
- =?us-ascii?Q?kdlYxSsI155x5cVzTIj8URV8NQJ9vvRFG6mYyZpGcyMd3oDBKKqWmA87P51E?=
- =?us-ascii?Q?Edy+ITk+KRIdjpEUB8nxLsUQ38li3OFj25HBFysYEoSXuW/AjEddMSzZzd9l?=
- =?us-ascii?Q?fRozVqCE1Ow1D9INYnkXLp2S/T6U13Rv1eMoLd0krqFYgyq+SNqSTwcc5GhA?=
- =?us-ascii?Q?L3/xmM7QcYouvwlBUIPoMwZsVbra3wAY7L40J4yjZV1pjsAGc21G7Zyj0D4b?=
- =?us-ascii?Q?sNBICXD+RajmbjFnfses0J88GMYny5/W8wwtwESNaVS0XCgUENYPKmQ901kX?=
- =?us-ascii?Q?7U+l8iQkyrvPyaa5JoSRAWsT4OCJvBZGtPRn9JgxRIGgiyd+89X5Sjjks7VI?=
- =?us-ascii?Q?LecUzJOTniCYA4FpOM3JqZAlZf+zWdCGG/wbZl4o2vGknqts4yCzN9N56ITb?=
- =?us-ascii?Q?ZOg2lF41w3YX5ydmDY8n7xCIilVhlbIYyk1pMvCCaE7NDyeQ6VLXLoESmKXH?=
- =?us-ascii?Q?Pxu0j+5uKTlbVKBIqqRL/hDb/SjgmmCo1JR4e+tQNcWovlR0u7Oix4j8LMfA?=
- =?us-ascii?Q?jOXRk7x+u/xWY3z/TtmVUtKMz/Eld8U3EiVSh5Nms4acvlZazk9B0r9nKJwK?=
- =?us-ascii?Q?w9PKLnRF8JAuyWUfNV+OJ8baWDPULLmw0nKNA1lM2UnoFDjgasuGJeXpnmI8?=
- =?us-ascii?Q?e4x0gZGxCdaKrM5k40e+3jN66QuZ2Jev5QyG8+IpFZmR8Ls2rJdLMIBM/RTq?=
- =?us-ascii?Q?wIPbziB/F5ZOfG6L/ZSXZGlRancNjPgJXaG4p5gMAnyi9rHnUACnU1qOTUVA?=
- =?us-ascii?Q?BecMiJ7IHjvFB9qIfXqiXNkgUHkGXYdYx/phfPBVCSdELni6xnMxyDf9D4m+?=
- =?us-ascii?Q?qSAXIp2IkXDNGlg96Ixk2FYvcv7A0UglaikzaanfUmuWRrRQjdkFbXM87NNd?=
- =?us-ascii?Q?EP7+gbVFWYfZsb8sPTIjH42ILJHFeGqSg+XDWibTUi0OmXn6w1PA?=
-X-OriginatorOrg: valinux.co.jp
-X-MS-Exchange-CrossTenant-Network-Message-Id: 085d56e8-448c-4ba3-5caa-08de5a8badfa
-X-MS-Exchange-CrossTenant-AuthSource: TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Jan 2026 14:28:29.9571
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: InOf8FpzC3J3dvoe1hHhzNoM5Em6OjsdSgQc/nLGN5jLulc3OUmT7PcUJ3G3qOwFi+YO0gH/JV7+JpnGpuxRZg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYRP286MB5430
+Content-Disposition: inline
+In-Reply-To: <4b33b50f-f0c3-4db8-b394-dd2d4d6e3a55@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260123_062848_379411_0E190C0E 
-X-CRM114-Status: GOOD (  31.79  )
+X-CRM114-CacheID: sfid-20260123_091438_109909_362E7541 
+X-CRM114-Status: GOOD (  33.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,98 +81,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jan 23, 2026 at 09:51:19AM +0100, Niklas Cassel wrote:
-> On Fri, Jan 23, 2026 at 10:16:21AM +0900, Koichiro Den wrote:
-> > >
-> > > There might be other EPC drivers that don't disable all BARs in their .init(), so I would say that simply checking if the BAR has an address is not sufficient to guarantee that an EPF driver has called set_bar().
-> > >
-> >
-> > Even if an EPC driver does not reset the BAR in their .init() and some
-> > default translation is left exposed, wouldn't it be safe as long as
-> > dw_pcie_ep_ib_atu_addr() succeeds in programming inbound mappings for the
-> > entire BAR?
-> 
-> For e.g. on RK3588, the default HW configuration of the DWC controller has
-> all 5 BARs as enabled, with a size of 1 GB.
-> 
-> There is no inbound address translation for these BARs by default.
-> 
-> So for it to be safe, the size of the set_bar() call would have to
-> match the current size of the BAR, but how should the EPF driver know
-> that when it has not called set_bar() yet?
-> 
-> dw_pcie_ep_read_bar_assigned() does not return the current size of the
-> BAR. So you can't verify that the set_bar() call has the same size as
-> the BARs "default size".
+On Wed, Jan 21, 2026 at 02:50:18PM +0100, Benjamin Gaignard wrote:
+> =
 
-I wasn't considering either of the following cases as unsafe:
-- succeeding by chance in programming via a one-shot set_bar() with submaps
-- such a set_bar() failing (due to incorrect size recognition)
+> Le 21/01/2026 =E0 13:51, Will Deacon a =E9crit=A0:
+> > On Mon, Jan 19, 2026 at 03:03:44PM +0100, Benjamin Gaignard wrote:
+> > > > > > > > > +static const struct iommu_ops vsi_iommu_ops =3D {
+> > > > > > > > > +	.identity_domain =3D &vsi_identity_domain,
+> > > > > > > > > +	.release_domain =3D &vsi_identity_domain,
+> > > > > > > > > +	.domain_alloc_paging =3D vsi_iommu_domain_alloc_paging,
+> > > > > > > > > +	.of_xlate =3D vsi_iommu_of_xlate,
+> > > > > > > > > +	.probe_device =3D vsi_iommu_probe_device,
+> > > > > > > > > +	.release_device =3D vsi_iommu_release_device,
+> > > > > > > > > +	.device_group =3D generic_single_device_group,
+> > > > > > > > > +	.owner =3D THIS_MODULE,
+> > > > > > > > > +	.default_domain_ops =3D &(const struct iommu_domain_ops=
+) {
+> > > > > > > > > +		.attach_dev		=3D vsi_iommu_attach_device,
+> > > > > > > > > +		.map_pages		=3D vsi_iommu_map,
+> > > > > > > > > +		.unmap_pages		=3D vsi_iommu_unmap,
+> > > > > > > > > +		.flush_iotlb_all	=3D vsi_iommu_flush_tlb_all,
+> > > > > > > > This has no callers and so your unmap routine appears to be=
+ broken.
+> > > > > > > It is a leftover of previous attempt to allow video decoder t=
+o clean/flush
+> > > > > > > the iommu by using a function from the API.
+> > > > > > > Now it is using vsi_iommu_restore_ctx().
+> > > > > > > I while remove it in version 12.
+> > > > > > Don't you still need some invalidation on the unmap path?
+> > > > > In vsi_iommu_unmap_iova() page is invalided by calling vsi_mk_pte=
+_invalid().
+> > > > But that just writes an invalid descriptor and doesn't appear to in=
+validate
+> > > > the TLB at all.
+> > > > =
 
-while as I mentioned in my previous reply, the first case effectively
-becomes a loophole that contradicts the docs and git commit messages.
+> > > > > That clear BIT(0) so the hardware knows the page is invalid.
+> > > > > Do I have miss something here ?
+> > > > Yes, the TLB structure needs to be invalidated so that the page-tab=
+le
+> > > > walker sees the new value that you have written in memory.
+> > > > =
 
-However, since v8, the second case clears any existing mappings, which
-could indeed lead to an unsafe situtation.
+> > > > The rockchip driver gets this correct...
+> > > Rockchip hardware have a ZAP_ONE_LINE register which didn't exist on =
+Verisilicon
+> > > hardware.
+> > Presumably you have some sort of Verisilicon datasheet or downstream dr=
+iver
+> > from which you can infer the TLB invalidation runes?
+> =
 
-> 
-> 
-> >
-> > That said, such usage apparently contradicts the documented usage (1st
-> > set_bar with no submap, then with submap) described in the docs and commit
-> > messages in this series, and allowing it would make things unnecessarily
-> > complicated. So I agree that adding such a safeguard is the right approach.
-> >
-> > >
-> > > I think the safest option is my second suggestion because then we know that we will only call
-> > > dw_pcie_ep_ib_atu_addr()
-> > >
-> > > When:
-> > >
-> > > 1) If ep->epf_bar[bar] is set:
-> > > https://github.com/torvalds/linux/blob/v6.19-rc6/drivers/pci/controller/dwc/pcie-designware-ep.c#L363
-> > >
-> > >
-> > > 2) All the other requirements to dynamically update a BAR is also met:
-> > >
-> > > https://github.com/torvalds/linux/blob/v6.19-rc6/drivers/pci/controller/dwc/pcie-designware-ep.c#L368-L370
-> > >
-> >
-> > That makes sense, and it ensures that the behavior always accords with the
-> > docs and commit messages in this series.
-> 
-> I think it makes most sense to put the "use_addr_translation = true"
-> 
-> after the check:
-> 
-> 		/*
-> 		 * We can only dynamically change a BAR if the new BAR size and
-> 		 * BAR flags do not differ from the existing configuration.
-> 		 */
-> 		if (ep->epf_bar[bar]->barno != bar ||
-> 		    ep->epf_bar[bar]->size != size ||
-> 		    ep->epf_bar[bar]->flags != flags)
-> 			return -EINVAL;
-> 
-> 
-> So we know that dw_pcie_ep_ib_atu_addr() is only called when the size is the
-> same.
+> I have only this downstream driver:
+> https://github.com/rockchip-linux/kernel/blob/develop-6.1/drivers/iommu/r=
+ockchip-iommu-av1d.c
+> No datasheet...
+> =
 
-I'll send v10 with the fix, possibly adding a BAR_SUBRANGE_TEST to pci
-endpoint test as well.
+> > =
 
-Kind regards,
-Koichiro
+> > > I have tried to use VSI_MMU_BIT_FLUSH on VSI driver after unmapping i=
+ova
+> > > but it doesn't work.
+> > What do you mean by "doesn't work"? If it works without doing any
+> > invalidation at all, then it's very peculiar that adding the invalidati=
+on
+> > would introduce issues.
+> =
 
-> 
-> 
-> Kind regards,
-> Niklas
+> I mean VSI_MMU_BIT_FLUSH register can't be used to invalid the TLB.
+> I think the hardware iterates over the pages tables in memory and
+> check the valid/invalid bit.
+
+I bet it doesn't: that would be horrible for performance.
+
+The hardware clearly has TLB invalidation support, as the downstream driver
+that you linked above implements av1_iommu_flush_tlb_all() to poke it.
+If the hardware has a TLB, then unmapping a page-table means you need to:
+
+1. Clear the valid bit from the descriptor in memory
+2. Have some sort of memory barrier
+3. Invalidate the TLB
+4. Wait for the invalidation to complete
+
+All IOMMUs tend to work like that and I don't think this one is any
+different.
+
+Will
 
 _______________________________________________
 Linux-rockchip mailing list
