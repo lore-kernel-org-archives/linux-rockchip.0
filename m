@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45509D715EB
-	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Jan 2026 14:50:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBF88D715ED
+	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Jan 2026 14:50:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m+jVuPF6BnNLKbIlyxwfSl6AY4N093WYtcBNNCVzWbQ=; b=mcmyG6boqsW2il
-	gtkJ7023kVeQwjY9ItQj2l0rl8GPeflRnDYGJ1krR6t+8fSHuhN3i7xdaoU+E9wPaz7vC+vKgFD9f
-	EnU80IY6Xya69+zaBwXIrOBOIi9PLmBo6gq4lP0tZLmXBhKK+MMW/sGi3ev66qi3fipHN0Zm0Tahb
-	QTTcicaeq0vM4Su79OvItt8B3gbniQrk+sh2Dr6cc6mGLl/oMN1zzGy4Yrk5GKnYMjK8EdGM8hiQs
-	FrCNEL2dDW0bINAirnmQxpvBsV/3cqKe6u8RLbUsS1VB2fuXXiKylTN/KykY5GVU4kIRR6bp2a7Po
-	/sdncwxXuwvSi63FjRLw==;
+	List-Owner; bh=Fd/XQzTfvZmccSQFW09GyBUx5a22pakaUO+5hU0bkqo=; b=z0wQQE6n+4hvWE
+	9Ls0/4TW3jEEA5CUuU2JJoJQXjwDSlpWF3n70yHqm+0fYGOBQCSn+jq7Li9e8Hu9wo2r2NUDRRROm
+	sy/CrvYlPpbigVdpoy17/lKXi67hRNKDTLOo8Bg5dd83MiWZ0+KxQLWlJHq4Z0djc9DrLzaJ7hLb2
+	+48oqNiFP40ivw7VFrStBbj3h9ebfu0VKxCdFlXGu6riFdluM9+7mV2txJcoWUMmKTh8LDhbYqTNi
+	rbBFXPQXxYCcQkIuDEVZV9Zi0wiG5aZzm/voVMdnSQHJ/I0GEPEDTXtAGHy0p6VXogtxhUn5EU/LX
+	s+Q4hNtqk9uPFlnG+RPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjey4-0000000AJzW-3Ox7;
-	Sat, 24 Jan 2026 14:50:28 +0000
-Received: from mail-japanwestazon11020105.outbound.protection.outlook.com ([52.101.228.105] helo=OS0P286CU011.outbound.protection.outlook.com)
+	id 1vjeyI-0000000AK6p-29zf;
+	Sat, 24 Jan 2026 14:50:42 +0000
+Received: from mail-japanwestazon11021110.outbound.protection.outlook.com ([40.107.74.110] helo=OS0P286CU010.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjey1-0000000AJy0-3NTd;
-	Sat, 24 Jan 2026 14:50:26 +0000
+	id 1vjey9-0000000AK00-1V9Z;
+	Sat, 24 Jan 2026 14:50:35 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FuhKgPZOjBIa5D1O/W5kZVt8YTpYOmlYBHewjZRInzDv3T2Mt0zGJE8nV0MBOaj6wUDMK6kLYxwlAW2vE5Ta8ZeX4MBQ3xUjIzVe8SzgVNLwbSuzltLJSq11Ut8Pe+r/D1ykFceNc65AlIW9R8OtCiz70Fw5NDUMHzEtsvQJjoJSC83ENK0wvC7ttYz4uZh63tFskRP8G7ezbkroFhBezXDy40lQmWBi90ThbOIjVC5g0uAJd7szJUMjSkj5mTVd1gzDMTNfIXtKmvCJTqxrN32qWW/3LREbLytAVEUO84C6Hn+MXbB08w6PctwKF0uqPlEVyoZ8xStWjZX7E4iXhw==
+ b=YhROoJFCNhCP6iFqpzB7MBaRQzZ7hcRQxH7oPIPWL7hDrwmHwmUv/77scWLhpdk2tIxod0x4/g5Z9yMOBFp9w9Dvq8IEn4BUjuvh+ThqIupunlsFp3K2beQs9Crbc01h2Z8qZbLcj5TeD8Jh4dxRb7A2NTQbnUqzmY/hjqzel1E/LhuSCX1kM38ofrhArl1198enz2vqX++/MJ1JL/fEJufYPjKs+8ag4wM7cyhMhjdiTIt63NySS+fcj6CnYXGwo1akbpiyqOD4h9yuJhWBIUmLarViv/I9zK93u1AMaAzh1FrZVDIf2S5rMQerSkWCase1zZyszWmXcOd79sJxsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=vEzHc0VI8bGBMWQhyZjB/BDURylEtL2z6TI3n+xTPXA=;
- b=TEbyZS9rJe7n7sCrix+e76ULOj+GqosoWmWLq0ljFCAqhJTEe+p2pltIW/FhYSTfzcDHXdGb2X2nZsx+zZKb5AKGki3nw4v6FM2833J2cLvgH1iXOy0OOAQwuz7hKW1SQgZ2Eo8rYweJPTdp//DhGDqbGAbiptWNi+KFG7FipxE0r2SxiL87FYq7mmTMW/kd5OdMmGYggplRKVHQWg9GT3WlJVeMXNOQ100dE1HZ/Q6D27B2DxU5D3TZdgMTVxpRbQqNBGzX+LQ7Tc2/lPS5oE8NfjgHWT3/KogILlB+w/ATUsnPoz1tnlwKWnshJlN1g1GxQeQvnhs8jmPzgDhlCA==
+ bh=lrFY5/aIxzIIGCoLxuYNbQbTa7W/I1AYD7rFUrK+oIc=;
+ b=h0GMgBIQHkPwHD5okL1c4A7NbNKmRxxKuAHDkUCdOEebI9OmUbC6dtP9zubnSCDzzvl5bYJHIDAgiQD5+v0cCEPBrdJzfGt1Cxs5qXieyiHcd6MSxP8CZxj79jbL7jSURXaf5bX6bJ93XmaeR2RF1KmVgjMbGfKAiieRXp2vCX5sCTX1hjCOd8cCAx2fPEOgCIB2hdgZ8oFe8OGlJ3VLC2AB0UrkpPvFaamoZmoXZWQWpyZWkO9TZ9DluXjRAOLqqPGgGepzC+VvJRVnTGvgwczCFNvboxth8br0U7+u0MUB4NmElRR+8b+zXRUvSn0SFecf9Bi+FXHK3x5BKtc9og==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
  header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=valinux.co.jp;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=vEzHc0VI8bGBMWQhyZjB/BDURylEtL2z6TI3n+xTPXA=;
- b=kdFmp401mCSOfv5puq9FC+2GBtrouoDieUB2ic8ST6w8CFRXQakpFHu2aTc451HDsJ2qhfWYHXkf/sf/49Cq0cGPlJjCZO74Ed/r4n3vafIxQVGDWabFGRONwmw5Lksd9SsaIw/VjmSVgMTgiUcmRTQ1Cz9gpNkqmJZpUYdqDY4=
+ bh=lrFY5/aIxzIIGCoLxuYNbQbTa7W/I1AYD7rFUrK+oIc=;
+ b=ockLjkDXEQRjIxiOrCpb/udPTXTNKs7bgZpxNLDNiiyRXpjVaIzNYqCD21vkpzJ20KwueLTe5XHiUtoSO6Jj1CrLyd/KIODq5hQGhyhSvd3GDbO+7n+JQz8GJYubPPM68gLV+VMGu5tVZbJe/9n4DQKcNwu3mCtg/b+Fi90tFbo=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=valinux.co.jp;
 Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:38f::10)
  by TYYP286MB4692.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:19c::11) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.11; Sat, 24 Jan
- 2026 14:50:18 +0000
+ 2026 14:50:21 +0000
 Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
  ([fe80::2305:327c:28ec:9b32]) by TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
  ([fe80::2305:327c:28ec:9b32%5]) with mapi id 15.20.9542.010; Sat, 24 Jan 2026
- 14:50:18 +0000
+ 14:50:21 +0000
 From: Koichiro Den <den@valinux.co.jp>
 To: jingoohan1@gmail.com,
 	mani@kernel.org,
@@ -108,94 +108,94 @@ Cc: vigneshr@ti.com,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-tegra@vger.kernel.org,
 	linux-kselftest@vger.kernel.org
-Subject: [PATCH v10 2/8] PCI: endpoint: Add BAR subrange mapping support
-Date: Sat, 24 Jan 2026 23:50:06 +0900
-Message-ID: <20260124145012.2794108-3-den@valinux.co.jp>
+Subject: [PATCH v10 6/8] PCI: endpoint: pci-epf-test: Add BAR subrange mapping test support
+Date: Sat, 24 Jan 2026 23:50:10 +0900
+Message-ID: <20260124145012.2794108-7-den@valinux.co.jp>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260124145012.2794108-1-den@valinux.co.jp>
 References: <20260124145012.2794108-1-den@valinux.co.jp>
-X-ClientProxiedBy: TY4P286CA0015.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:405:2b0::15) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
+X-ClientProxiedBy: TY4P286CA0009.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:405:26d::17) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
  (2603:1096:405:38f::10)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: TY7P286MB7722:EE_|TYYP286MB4692:EE_
-X-MS-Office365-Filtering-Correlation-Id: 4dd2b301-b911-4b62-7284-08de5b57e40e
+X-MS-Office365-Filtering-Correlation-Id: b64b4d2d-377a-4f30-1ff4-08de5b57e622
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|10070799003|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?+5GoItwcbscs9wuAdv2EuSabtLmArrII/fvY7vSGkC384nx/OkqGe2ExJWGq?=
- =?us-ascii?Q?fcLD9UCUuzVAXtDUlnZNJlVSe2fpYbigYkjxODB5gAsjUhLNKEvD4/i/Z/Kw?=
- =?us-ascii?Q?QImYOdIpErOTbTvxRF/jlgwOaAvyBG6q6Crv0dd9yUtyqYLxuQ7Pca0Ja5jF?=
- =?us-ascii?Q?6gXBVUuYKuqCrPQL3oMdK/lrV1b0peJt6c3u+Odv6X5RlQwA+Q531NEXUd1z?=
- =?us-ascii?Q?CuG+QpCpGryDd9yFQqPArKHQDGR2bZmlkebQ2Lgkp/N1K9Ri2vayENyMIZWb?=
- =?us-ascii?Q?g8R+8ephY6QBJZ+Qy+I2UHUkg7SrRPZHNnIU8SbH50vHTw3VYPNzjnFn34ZN?=
- =?us-ascii?Q?psCfHCR74WnCWzCQcTAymjkA7vp13PnBSeo5UkU707zwNI1f/1K03sgIcwZg?=
- =?us-ascii?Q?Vbv/eS1mNQ1rFKf2QD6xb4g+CyYL6y/LCidcanAlvSE57iYyVvP1XUK/lUaK?=
- =?us-ascii?Q?yb54veFKH9tS+HE1brIvJO1EpIvkj2m1H4aQv4lh4vd387apP5yYkDEDRQjQ?=
- =?us-ascii?Q?x3MWypBAHr/aIRX7mq6Ebzqbf3QYgUoWo/0okdCn9YIUHxc8qZRhJasGZcFv?=
- =?us-ascii?Q?lmvHtMbLhSoX6q3uGX7c+l1w9N8p9Ko1XfXQMt6SLzJpI0+NGhNLmXvlDU95?=
- =?us-ascii?Q?S+DyJSTauLOfbR1wtgN87dJE6bPl688KjQ3kRtEUCdLrPngprBRLrL7aDKki?=
- =?us-ascii?Q?wlQ+ccfX1bJQiGZaUVvws1gzUIib/8bxDi3Bmi2RoRbDKqPJJqppciGNyuw7?=
- =?us-ascii?Q?VIbjoEi2FL2GZbilkjiClfxHFrMGxky7VxlgTdPZxeh/6D2SZfsLtuEFQoIT?=
- =?us-ascii?Q?c1Z61XR+kB8/UrO0zsapFAUZgoYl3/a9am2IDMFRhwmj7lO8Fyz1I3rMhSFZ?=
- =?us-ascii?Q?oqHvapy2tlNy0JbtygyY9kKZZ6bPCKmnAXhTsatDhxtNKy8UooYMDx3Fo52d?=
- =?us-ascii?Q?/nL30gDMBAe7ErYCS1SVRPZggXC4yTIurbFBYiJZ9IVoCybsFHcEvN5HfMEy?=
- =?us-ascii?Q?/I39NRV9mNoH8GJI3TTQeeCt+kezrK+9MrTGZa3Vypp2CQ7IMwdYAn73Ko8E?=
- =?us-ascii?Q?XgWPQ/qewSQTHTZoI+/bR30j6TgIh9xEEQppSzKKgtaQKOYxIkBRmGGMZWRE?=
- =?us-ascii?Q?OPIzKJwpkV3viCd7BGdsvRzerjj6ANZOeyaDer8r6S8Z9/96U5QSXSUUHibG?=
- =?us-ascii?Q?UNbfkZXfD9SQIuiIXQtK3vsHNHTFY7GmShJt1vQ2/Of0NZunMLpQCk5Oushn?=
- =?us-ascii?Q?3RjZjXjhKODGw6ow2pvUhw5Giga2+HNdyXEelPmwmQEHSP3zfhS+5eWxhl4D?=
- =?us-ascii?Q?zBL/3G14toXcDatg5/8iuVC5FqJB5mCRUZ+J8EQ0celWGCigQYwfWR5drzb+?=
- =?us-ascii?Q?LMDAy0szNQORH4k8o8sepg99rf3Gj9XhMc7qRXPdCKJW4N8zZpvTtPbpiX0K?=
- =?us-ascii?Q?8O0VMtQXnoRTJI7hwL0DLlcEfqJ3Ncy4mW3VFjg6qLQ75SrXcArIDjuzeY98?=
- =?us-ascii?Q?Wm2P8sLEFmTMwLdNMSV6mn8xujOa8rG9LHzlkM4jwC5cFgRgiRJsLPrTw1+O?=
- =?us-ascii?Q?Z5ipPBMEZYR6E4q5m30=3D?=
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?oMT/+pJLiReCXJyBL3siOdd9s7IaVUed4uOgdZ4RX5KDK42bY394+LQtKzeK?=
+ =?us-ascii?Q?Po1Atqq5TR1N5I3LWZT1Hus2iPIDmCION1uHqsYMu9nGfN8XLpgW42eP4Gl5?=
+ =?us-ascii?Q?1QEWZrhKlz72qGl/eDRuJB/1A5ZRcLZpQy4Od1SHtEbBOb7IvWfYsppC+cem?=
+ =?us-ascii?Q?m9OcqVa4q341UCULMX/ayFkfaAR/ZzmNgv8wOt3j0ARlNOJzkfJS3Vs7D7eU?=
+ =?us-ascii?Q?aWTCo1RNGUNd6+Dy3wSDAuM734Bs9Ih2vcau8JRWcK9hW/a3gAqk332oUeHh?=
+ =?us-ascii?Q?ZqNYZOf97mXzY/oCXZWT2v7O/9HPShCBz6a++aFDnemtVIfaGDbMisN7cuaC?=
+ =?us-ascii?Q?ZMOtWopxzfARnYco+zzBJZWHhIJN0aqXQ7qMAvxocqQOPjqOIWOtFUm9tcEc?=
+ =?us-ascii?Q?syAaazTjvtWYw9ou9CfbyOxC02inCW+jbpq5S1d+2lW7WE4F4Ok6Ozkm459t?=
+ =?us-ascii?Q?bDsiNbsxUDMlD8dgSLLB3lbR4ALJ+l2FxgfRTB/mVc/xxhmzOCPb3V7sB0Wo?=
+ =?us-ascii?Q?ddmr+Mee9LYTRgf/Dx17KpV573pAlkanaMaIEjER7ra25zhp6Gz2oPnXUR+I?=
+ =?us-ascii?Q?0BmRbnfqrchOd+tjFXeo4pAbc9bnk9vSzggeaeO8njW7/Wuvu2ys1gGhHzoC?=
+ =?us-ascii?Q?4bhr49h2shQ2OwmqKv6avOALwPM35jTidAIXa+St01m4LfpALDtbwrAUkajR?=
+ =?us-ascii?Q?46ewJriW9ME9VEs7WqoWSVz/fMe9MdSmRhHvmWBDVX0SDXYR03Og+wiyRPEK?=
+ =?us-ascii?Q?d8TDoN9NzWpp2aY6SEXCLNyyLXrbwz1etafSFC3u/eEtxRxZNp7yV2fLiDP2?=
+ =?us-ascii?Q?HsaYXzqb8HO9upcPupXdY8StoPnP6RfX39tZHyz7M4gowlPO/4Siy4xol/UW?=
+ =?us-ascii?Q?oT6Pkbnkn0dOTYoSozMPBRWbL/S4kWXX8lBPAtIa5gsUtQRMFWR4EzRwSt4n?=
+ =?us-ascii?Q?iF2qjLbqhZwdy9d9hdQ6LidJF4NvAW38Af7zo5kYEPHnnYjx+LA6tR4YgbNr?=
+ =?us-ascii?Q?GziNx1NwTplk2HL9LtFw499jwAbCLBtOhrI3rDdrJKI6/fQJ6VMlRNYO+SXQ?=
+ =?us-ascii?Q?5Sbdf0gBHy8bpVgDIOMejqJQAulhVBcBk81oFEGeDNIm5n2t0lVDCU//NFuF?=
+ =?us-ascii?Q?anzhIlxYzLO3bNAGxjPn+H4FqbqQRpYKRejWNil3LknnY2BXj9iBUXDr4ImC?=
+ =?us-ascii?Q?9gTz5278Yph5XDNQnLjxd2WO1PB0l73sZ/g9B3CnX1zu6qDD/XVCtzyMNLsC?=
+ =?us-ascii?Q?1guCFsqLWKvgPTSomxLv4hqxvOgU/FX9sKM2jDsdcK4SLJemnagPw+Sdmnts?=
+ =?us-ascii?Q?tkTodKQMF0meDiWClB9WhY8DIPlXZ4PnNgDB42WEj0+j3ReHjruXB4KOEWUe?=
+ =?us-ascii?Q?gC1RuVt6EBL2gQaImYPmCqsDt46a9kZJDCKaPWN1/VvihR3Euaxp8qJPyr7n?=
+ =?us-ascii?Q?b9OejToZGEv3P22IJd6qj+bIL7TlhPSxvxU/rU/zXsO6FQtDuBs4h+JWCxQI?=
+ =?us-ascii?Q?oX8dRKCfISSE6PDaLqrrj7/W51GsIXk90uEKtixR2on50KX/v5GTr6QtFFB2?=
+ =?us-ascii?Q?w7BaDqVosCoFQIwZu0E=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(10070799003)(366016);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?1xtyP7rUBqsC5vo2pMhS6FLP359o9zrB9ymETcIYifUlvQ8J2pJFDuKX5XvZ?=
- =?us-ascii?Q?jJ83J1IvsXEqANYHclG0bJkQ3n7l56UfrFSDg0vViXqKetL1Q1BAlmNEbSzv?=
- =?us-ascii?Q?zKTtaC92Q6R57Rb/SJDlDOv0viVrxuuW3b90LPyVPdfPiYR7hJ42+WacgBMb?=
- =?us-ascii?Q?LK7VCammAqybA5FOASMYjZ7o2DELSNibzP7UBq0HUMnbQOJVEG5WE3+mHmVb?=
- =?us-ascii?Q?QcjUOMoPxORiq6ILMDqlzA2cskSzOSJSgGklOzNvwQ3uu8D7FDUdoyByK1CJ?=
- =?us-ascii?Q?JWJlpt+Oi5/5CJT4ddFS8LbXBBS6wAl6FR5StUvNIHCGRM/ecR31gLV6LQTA?=
- =?us-ascii?Q?Q9VjA3fflB6icOkAG0nZcQqFjFldgzoFV/NZa4Fd7CvCpj9MYyoT5+AyEZRs?=
- =?us-ascii?Q?8r5bkDTQSLN0f2Ivu5MvdIZYzyFALwlYEIVEsh4vBsQy45F9S93qvzLnVj3o?=
- =?us-ascii?Q?KSg+rtv6ymhvkFlqdqx57ZrSmebO8fSUD1GFS9p7PaPiJIImdL+6dFOvP8r3?=
- =?us-ascii?Q?wBQH1CKE7z/ans+MafgLscLS8SUW3cGxUQyqJkHARnJPUp+8iQJ3rX7XJcU5?=
- =?us-ascii?Q?f/h3eP9UpPtfcXHDgOJZUfLXn9v04z6GtJnMaYydu4P8faxsBvK3cbUVivZ8?=
- =?us-ascii?Q?/9mx4MxJ/dBTqphDbRv92vmk0Ob6D14Y5n0fo8/y40b/i/BY82jonJwVNe5D?=
- =?us-ascii?Q?5p7LrWPxeeFg/HRxd4Z8MIhzvf6INKHPDaKZejE9FmryiQKoWPHpwP6Rx+Fq?=
- =?us-ascii?Q?4LMf6uYBv9IEFljTxAcqLgzSY+gnIadYXim8NRs67PGlBdIuSSchaAXWkZno?=
- =?us-ascii?Q?CbvhkNGgzmQSZ2u0aJIF7n1x8huKuaqzNCU49fOSXp70f8YYEWRw3frzOdUj?=
- =?us-ascii?Q?vboJUgCl5QEvJYiWRGcYU+awf6duHkj/Sy/9YIlx3xlVwxG+olSsXK+p3v+w?=
- =?us-ascii?Q?yypDbvG6xg6ie+gHguqAgl0en8LeJleBadFC3ALbdqW+G9nsvrEjNEKqTZiq?=
- =?us-ascii?Q?RY/jrRUJgdxFf6I7zqqkfq5XM9QfV+5hau3SmcQ51zn6HBtyJnHDigOu9sSf?=
- =?us-ascii?Q?W5DZVCJUFdWLlZE47c7EpSVZEmyqGoy5+pC0fosLLjUXvXKGqureFUvPbecf?=
- =?us-ascii?Q?R1iZYTmoMjlQG5CIZTeAGKyPYWrEq0hL6F6RAEiTOi5u6n4P/pvGIjv3SCpp?=
- =?us-ascii?Q?jTWWYmeojtZIxpiRYPzcF+FishO5tgKDksOaMsIlGmmvgOHKHLVv+52z1QbV?=
- =?us-ascii?Q?nrMZZsf0yyn8IirGQ2oZIlKD2xxRTFD/31Ef/te7Z3NPj5frcoqT0cj6UbZz?=
- =?us-ascii?Q?gSKX5C4dP6ECaCSBWHwf/6AR7NjYTbVapPMS7lGHqj4rx+6PinAW9jMGQnB2?=
- =?us-ascii?Q?R9N9Fh5QI9OGDCy351pCDvVx6EWM+c7Qv6LVtYlJ+PmSa7QDhbMOs+95j9pf?=
- =?us-ascii?Q?WYa1z6xfknwMm1cuCOr3mJpK5SE3frvKPb/3hzc+yyEAH3OP9m8BGVb+4roH?=
- =?us-ascii?Q?GJpBvJjMBvIoNp2JpQCLRMOFzAbct7yE3um04sq1FP1Zvw5Fatg21kITcSdj?=
- =?us-ascii?Q?qawf0b++kG0IzhDkQHvRlEuAF2iYS0SQZKgO3ijcR7YMsJKRQkP50PEU2Jvz?=
- =?us-ascii?Q?tJIZXHY1B/c4vaohN5RA3avd2qh8AtBHj7EufbPt4+5zCFUkJz5NHKWUbbj/?=
- =?us-ascii?Q?L/bUbrj3y3ViHST6bzR7t0FoS3h+M4E41IxlMKn9DITE5l0fk45/wd6RiDhS?=
- =?us-ascii?Q?VLJ4EmXZnLdgBg+Iyqte1XuKdzEVME3jiGVPpauQDZ9s4UiW2vvt?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?xDgnR026SnbVP+GCXYBaUJn8hfCXMcSegBczi8HDQnGgxF0GoRvvmzDm65/e?=
+ =?us-ascii?Q?+LXFmmT+vxiXKh0a3wE/Q0nlt4W+aZhye4be+qWwk84sDZruG6rgqNs2ZLHX?=
+ =?us-ascii?Q?b2WQIPSYxLNdU+eoj+ZZg1zDlu7kQfdjOMUB/uGKQazUwdkzK7uxHAxa8deo?=
+ =?us-ascii?Q?Mx4XZqDB5na2DUFHuQHm9nxy7TT9tS7J8S3N5CwAVc5lDiV1RiLdQ0SKthKR?=
+ =?us-ascii?Q?wXvyMKGAvjCjNJ6lejthaS+b7/kkvwYzFopygjXLtwyavySTYWxwppg2k7bL?=
+ =?us-ascii?Q?+Hull31V+B05IivK6Z8srU5iK5KEI2IUJcL19tI0xvYWaGAhwmDbn9ftqRyo?=
+ =?us-ascii?Q?wvq1mHDM63Ex6VtUpgXLx4lqMZ6VYIjuZ6Bn1J4BVy03F47tDU9yysxaB3It?=
+ =?us-ascii?Q?8SUpwiHSwJ0kfbdF/cFeWn6/sSJJPcveACN0lTTQd+l95IKdumvHNOjY8buH?=
+ =?us-ascii?Q?0+1xsd6zVgSOkRBx/0+KdeK208tAQkFc58KmGYdu8vHif5C9SXr4LThTPvI5?=
+ =?us-ascii?Q?gtkk516yjcMA6eNta8uHNZV9Df9OwBTE1v8CNUelYJeHKOIB+knxcG+Fl32C?=
+ =?us-ascii?Q?89T/OcxtmMEp9iXimmGw4MKYf8fcnKeP4YCSy5eLb1+uO/FBjT7owyjEEtyJ?=
+ =?us-ascii?Q?6fS2TKJ9QnR4PyC5yGT9VbYAbcKp9B2a/x6AdCZkKlXHC0IQx3icfbXLHmqE?=
+ =?us-ascii?Q?C7Ladi5Q9dQkAZ6XGT50SCTP7EUbZAYL2kG4ZKDDrsm23Hy3hZqg6hy+BKF1?=
+ =?us-ascii?Q?W9iZasTu3EhcMILMkNvNBUAxFbx9IbMZlwotcTMESeplf0Vq+x86M94jNbwk?=
+ =?us-ascii?Q?LAoB7JC+AClC9eO4r158nVOJlbPAmDffr//6LdOiPxJ6Eo8HmXNJdfSqh6mI?=
+ =?us-ascii?Q?fiuFPl8cvL9AnRMqsBO+GhwfM5IPu6U+2qMicvMu8+ppzgGri167jcpCAJNT?=
+ =?us-ascii?Q?7zjh2jNHfuLilpRHl/XDCpZKfOG5LSFvOM+3RA5aOsU23vO7EjMM5kPkjFfU?=
+ =?us-ascii?Q?yrur5YPqGXmEU2Tf9hSy7JBDFJ33gxn3JtXpeqVbaxJYqcMF6uM763HR5434?=
+ =?us-ascii?Q?famUd413CO9/fjsPavN1v92I1Bh4DLjhzr4/KjohDc6Nyi2VRJnxDvzQga8a?=
+ =?us-ascii?Q?xs2Gg+TfX/Nw4rTvo8Q28g2WOny0knZVhSXvZI60hICBp2HRz5pio96be9Pm?=
+ =?us-ascii?Q?4hRwuFoih5wVcSgV8RZtYU+wyPRapouKPzVR06dakxJdEMDLBi5M2FvG60Gx?=
+ =?us-ascii?Q?Qx2H89rkwMOmN7hdwhCmqG1iaP9JNib28WitqSrFxMU1KOxtyEIWCYAbPUtH?=
+ =?us-ascii?Q?oPMuBbyE0zXO5nIbq2sSxHo7uEnYqddeXUai0A6mv37xcyyxyxscnulWGf2H?=
+ =?us-ascii?Q?YyFJjmMqm6e2enxvOnMkjlciVnJhyeNS01Mr2/iFDpTwI1c5/xG9PWiNhQ2Y?=
+ =?us-ascii?Q?LC0N6iSCNJrvtzVNrxQuo7uNDPW+9W6cYj92oMiaULn06SK9P2pmQGWp9QNH?=
+ =?us-ascii?Q?X9XmxOEqreaIU4TCn/QZyulHv9qgozbTIgrRaiH5bvVxUHg2TpgTGYkjcU7+?=
+ =?us-ascii?Q?ChxQg9pN4JRM1DOz8s+CKAnQPsCZeiMr/PJ2arZDOZ52QyxRDBUB/tTp1oeK?=
+ =?us-ascii?Q?DSe850hl5Lh8ETetRhxGA7dJQ5Y5lV7c0uKLYafwUTdTgHz7oMky/7a6pT7+?=
+ =?us-ascii?Q?l6dbl2z48hUPoeFqjZNXNAiu3YnEZ/5DPSnOQWGNvkgfyvO1qN/csLjGPTk6?=
+ =?us-ascii?Q?Wg9Oz/f5xuJsC9r4ts/J9IHanxjClje9dEcxnjvB6MiaqVeRxTMe?=
 X-OriginatorOrg: valinux.co.jp
-X-MS-Exchange-CrossTenant-Network-Message-Id: 4dd2b301-b911-4b62-7284-08de5b57e40e
+X-MS-Exchange-CrossTenant-Network-Message-Id: b64b4d2d-377a-4f30-1ff4-08de5b57e622
 X-MS-Exchange-CrossTenant-AuthSource: TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2026 14:50:18.0075
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2026 14:50:21.5001
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3k6kijG2ifnFL61Bnz7HQnsv6Lc8B1zgkrt3mvTVLjR3zR2x2JKD29G0j7tTRWmPxizpNVuZ9CWoi7t1G6Ic+A==
+X-MS-Exchange-CrossTenant-UserPrincipalName: F/gT6w6xaQ9IX5dXuBt3Oc3P0v3HMYMtJVW4H0IEBOTlcTfNxTyumPM99Dhnul+gNCh7Tim1Kb+MHwtDptRT/A==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYYP286MB4692
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260124_065025_873020_2A5AFEA0 
+X-CRM114-CacheID: sfid-20260124_065033_474214_297775A1 
 X-CRM114-Status: GOOD (  17.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -213,125 +213,253 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some endpoint platforms have only a small number of usable BARs. At the
-same time, EPF drivers (e.g. vNTB) may need multiple independent inbound
-regions (control/scratchpad, one or more memory windows, and optionally
-MSI or other feature-related regions). Subrange mapping allows these to
-share a single BAR without consuming additional BARs that may not be
-available, or forcing a fragile layout by aggressively packing into a
-single contiguous memory range.
+Extend pci-epf-test so that pci_endpoint_test can exercise BAR subrange
+mapping end-to-end.
 
-Extend the PCI endpoint core to support mapping subranges within a BAR.
-Add an optional 'submap' field in struct pci_epf_bar so an endpoint
-function driver can request inbound mappings that fully cover the BAR.
+Add BAR_SUBRANGE_SETUP/CLEAR commands that program (and tear down) a
+simple 2-subrange layout for a selected BAR. The endpoint deliberately
+permutes the physical backing regions (swap the halves) and writes a
+deterministic signature byte per subrange. This allows the RC to verify
+that the submap order is actually applied, not just that reads/writes
+work with an identity mapping.
 
-Introduce a new EPC feature bit, subrange_mapping, and reject submap
-requests from pci_epc_set_bar() unless the controller advertises both
-subrange_mapping and dynamic_inbound_mapping features.
+Advertise CAP_SUBRANGE_MAPPING only when the underlying EPC supports
+dynamic_inbound_mapping and subrange_mapping. Also bump the default BAR
+sizes (BAR0-4) to 128 KiB so that split subranges are large enough to
+satisfy common inbound-translation alignment constraints. E.g. for DWC
+EP, the default and maximum CX_ATU_MIN_REGION_SIZE is 64 kB, so 128 KiB
+is sufficient for DWC-based EP platforms for 2-subrange testing.
 
-The submap array describes the complete BAR layout (no overlaps and no
-gaps are allowed to avoid exposing untranslated address ranges). This
-provides the generic infrastructure needed to map multiple logical
-regions into a single BAR at different offsets, without assuming a
-controller-specific inbound address translation mechanism.
-
-Reviewed-by: Niklas Cassel <cassel@kernel.org>
 Signed-off-by: Koichiro Den <den@valinux.co.jp>
 ---
- drivers/pci/endpoint/pci-epc-core.c |  8 ++++++++
- include/linux/pci-epc.h             |  4 ++++
- include/linux/pci-epf.h             | 23 +++++++++++++++++++++++
- 3 files changed, 35 insertions(+)
+ drivers/pci/endpoint/functions/pci-epf-test.c | 172 +++++++++++++++++-
+ 1 file changed, 171 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index ca7f19cc973a..068155819c57 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -596,6 +596,14 @@ int pci_epc_set_bar(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 	if (!epc_features)
- 		return -EINVAL;
+diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+index debd235253c5..1cc630a2ee75 100644
+--- a/drivers/pci/endpoint/functions/pci-epf-test.c
++++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+@@ -33,6 +33,8 @@
+ #define COMMAND_COPY			BIT(5)
+ #define COMMAND_ENABLE_DOORBELL		BIT(6)
+ #define COMMAND_DISABLE_DOORBELL	BIT(7)
++#define COMMAND_BAR_SUBRANGE_SETUP	BIT(8)
++#define COMMAND_BAR_SUBRANGE_CLEAR	BIT(9)
  
-+	if (epf_bar->num_submap && !epf_bar->submap)
-+		return -EINVAL;
-+
-+	if (epf_bar->num_submap &&
-+	    !(epc_features->dynamic_inbound_mapping &&
-+	      epc_features->subrange_mapping))
-+		return -EINVAL;
-+
- 	if (epc_features->bar[bar].type == BAR_RESIZABLE &&
- 	    (epf_bar->size < SZ_1M || (u64)epf_bar->size > (SZ_128G * 1024)))
- 		return -EINVAL;
-diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index 4c8516756c56..c021c7af175f 100644
---- a/include/linux/pci-epc.h
-+++ b/include/linux/pci-epc.h
-@@ -227,6 +227,9 @@ struct pci_epc_bar_desc {
-  *                           inbound mappings for an already configured BAR
-  *                           (i.e. allow calling pci_epc_set_bar() again
-  *                           without first calling pci_epc_clear_bar())
-+ * @subrange_mapping: indicate if the EPC device can map inbound subranges for a
-+ *                    BAR. This feature depends on @dynamic_inbound_mapping
-+ *                    feature.
-  * @msi_capable: indicate if the endpoint function has MSI capability
-  * @msix_capable: indicate if the endpoint function has MSI-X capability
-  * @intx_capable: indicate if the endpoint can raise INTx interrupts
-@@ -236,6 +239,7 @@ struct pci_epc_bar_desc {
- struct pci_epc_features {
- 	unsigned int	linkup_notifier : 1;
- 	unsigned int	dynamic_inbound_mapping : 1;
-+	unsigned int	subrange_mapping : 1;
- 	unsigned int	msi_capable : 1;
- 	unsigned int	msix_capable : 1;
- 	unsigned int	intx_capable : 1;
-diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
-index 48f68c4dcfa5..7737a7c03260 100644
---- a/include/linux/pci-epf.h
-+++ b/include/linux/pci-epf.h
-@@ -110,6 +110,22 @@ struct pci_epf_driver {
+ #define STATUS_READ_SUCCESS		BIT(0)
+ #define STATUS_READ_FAIL		BIT(1)
+@@ -48,6 +50,10 @@
+ #define STATUS_DOORBELL_ENABLE_FAIL	BIT(11)
+ #define STATUS_DOORBELL_DISABLE_SUCCESS BIT(12)
+ #define STATUS_DOORBELL_DISABLE_FAIL	BIT(13)
++#define STATUS_BAR_SUBRANGE_SETUP_SUCCESS	BIT(14)
++#define STATUS_BAR_SUBRANGE_SETUP_FAIL		BIT(15)
++#define STATUS_BAR_SUBRANGE_CLEAR_SUCCESS	BIT(16)
++#define STATUS_BAR_SUBRANGE_CLEAR_FAIL		BIT(17)
  
- #define to_pci_epf_driver(drv) container_of_const((drv), struct pci_epf_driver, driver)
+ #define FLAG_USE_DMA			BIT(0)
  
-+/**
-+ * struct pci_epf_bar_submap - BAR subrange for inbound mapping
-+ * @phys_addr: target physical/DMA address for this subrange
-+ * @size: the size of the subrange to be mapped
-+ *
-+ * When pci_epf_bar.num_submap is >0, pci_epf_bar.submap describes the
-+ * complete BAR layout. This allows an EPC driver to program multiple
-+ * inbound translation windows for a single BAR when supported by the
-+ * controller. The array order defines the BAR layout (submap[0] at offset
-+ * 0, and each immediately follows the previous one).
-+ */
-+struct pci_epf_bar_submap {
-+	dma_addr_t	phys_addr;
-+	size_t		size;
-+};
+@@ -57,6 +63,9 @@
+ #define CAP_MSI				BIT(1)
+ #define CAP_MSIX			BIT(2)
+ #define CAP_INTX			BIT(3)
++#define CAP_SUBRANGE_MAPPING		BIT(4)
 +
- /**
-  * struct pci_epf_bar - represents the BAR of EPF device
-  * @phys_addr: physical address that should be mapped to the BAR
-@@ -119,6 +135,9 @@ struct pci_epf_driver {
-  *            requirement
-  * @barno: BAR number
-  * @flags: flags that are set for the BAR
-+ * @num_submap: number of entries in @submap
-+ * @submap: array of subrange descriptors allocated by the caller. See
-+ *          struct pci_epf_bar_submap for the semantics in detail.
-  */
- struct pci_epf_bar {
- 	dma_addr_t	phys_addr;
-@@ -127,6 +146,10 @@ struct pci_epf_bar {
- 	size_t		mem_size;
- 	enum pci_barno	barno;
- 	int		flags;
-+
-+	/* Optional sub-range mapping */
-+	unsigned int	num_submap;
-+	struct pci_epf_bar_submap	*submap;
++#define PCI_EPF_TEST_BAR_SUBRANGE_NSUB	2
+ 
+ static struct workqueue_struct *kpcitest_workqueue;
+ 
+@@ -102,7 +111,7 @@ static struct pci_epf_header test_header = {
+ 	.interrupt_pin	= PCI_INTERRUPT_INTA,
  };
  
- /**
+-static size_t bar_size[] = { 512, 512, 1024, 16384, 131072, 1048576 };
++static size_t bar_size[] = { 131072, 131072, 131072, 131072, 131072, 1048576 };
+ 
+ static void pci_epf_test_dma_callback(void *param)
+ {
+@@ -806,6 +815,155 @@ static void pci_epf_test_disable_doorbell(struct pci_epf_test *epf_test,
+ 	reg->status = cpu_to_le32(status);
+ }
+ 
++static u8 pci_epf_test_subrange_sig_byte(enum pci_barno barno,
++					 unsigned int subno)
++{
++	return 0x50 + (barno * 8) + subno;
++}
++
++static void pci_epf_test_bar_subrange_setup(struct pci_epf_test *epf_test,
++					    struct pci_epf_test_reg *reg)
++{
++	struct pci_epf_bar_submap *submap, *old_submap;
++	struct pci_epf *epf = epf_test->epf;
++	struct pci_epc *epc = epf->epc;
++	struct pci_epf_bar *bar;
++	unsigned int nsub = PCI_EPF_TEST_BAR_SUBRANGE_NSUB, old_nsub;
++	/* reg->size carries BAR number for BAR_SUBRANGE_* commands. */
++	enum pci_barno barno = le32_to_cpu(reg->size);
++	u32 status = le32_to_cpu(reg->status);
++	unsigned int i, phys_idx;
++	size_t sub_size;
++	u8 *addr;
++	int ret;
++
++	if (barno >= PCI_STD_NUM_BARS) {
++		dev_err(&epf->dev, "Invalid barno: %d\n", barno);
++		goto err;
++	}
++
++	/* Host side should've avoided test_reg_bar, this is a safeguard. */
++	if (barno == epf_test->test_reg_bar) {
++		dev_err(&epf->dev, "test_reg_bar cannot be used for subrange test\n");
++		goto err;
++	}
++
++	if (!epf_test->epc_features->dynamic_inbound_mapping ||
++	    !epf_test->epc_features->subrange_mapping) {
++		dev_err(&epf->dev, "epc driver does not support subrange mapping\n");
++		goto err;
++	}
++
++	bar = &epf->bar[barno];
++	if (!bar->size || !bar->addr) {
++		dev_err(&epf->dev, "bar size/addr (%zu/%p) is invalid\n",
++			bar->size, bar->addr);
++		goto err;
++	}
++
++	if (bar->size % nsub) {
++		dev_err(&epf->dev, "BAR size %zu is not divisible by %u\n",
++			bar->size, nsub);
++		goto err;
++	}
++
++	sub_size = bar->size / nsub;
++
++	submap = kcalloc(nsub, sizeof(*submap), GFP_KERNEL);
++	if (!submap)
++		goto err;
++
++	for (i = 0; i < nsub; i++) {
++		/* Swap the two halves so RC can verify ordering. */
++		phys_idx = i ^ 1;
++		submap[i].phys_addr = bar->phys_addr + (phys_idx * sub_size);
++		submap[i].size = sub_size;
++	}
++
++	old_submap = bar->submap;
++	old_nsub = bar->num_submap;
++
++	bar->submap = submap;
++	bar->num_submap = nsub;
++
++	ret = pci_epc_set_bar(epc, epf->func_no, epf->vfunc_no, bar);
++	if (ret) {
++		dev_err(&epf->dev, "pci_epc_set_bar() failed: %d\n", ret);
++		bar->submap = old_submap;
++		bar->num_submap = old_nsub;
++		kfree(submap);
++		goto err;
++	}
++	kfree(old_submap);
++
++	/*
++	 * Fill deterministic signatures into the physical regions that
++	 * each BAR subrange maps to. RC verifies these to ensure the
++	 * submap order is really applied.
++	 */
++	addr = (u8 *)bar->addr;
++	for (i = 0; i < nsub; i++) {
++		phys_idx = i ^ 1;
++		memset(addr + (phys_idx * sub_size),
++		       pci_epf_test_subrange_sig_byte(barno, i),
++		       sub_size);
++	}
++
++	status |= STATUS_BAR_SUBRANGE_SETUP_SUCCESS;
++	reg->status = cpu_to_le32(status);
++	return;
++
++err:
++	status |= STATUS_BAR_SUBRANGE_SETUP_FAIL;
++	reg->status = cpu_to_le32(status);
++}
++
++static void pci_epf_test_bar_subrange_clear(struct pci_epf_test *epf_test,
++					    struct pci_epf_test_reg *reg)
++{
++	struct pci_epf *epf = epf_test->epf;
++	struct pci_epf_bar_submap *submap;
++	struct pci_epc *epc = epf->epc;
++	/* reg->size carries BAR number for BAR_SUBRANGE_* commands. */
++	enum pci_barno barno = le32_to_cpu(reg->size);
++	u32 status = le32_to_cpu(reg->status);
++	struct pci_epf_bar *bar;
++	unsigned int nsub;
++	int ret;
++
++	if (barno >= PCI_STD_NUM_BARS) {
++		dev_err(&epf->dev, "Invalid barno: %d\n", barno);
++		goto err;
++	}
++
++	bar = &epf->bar[barno];
++	submap = bar->submap;
++	nsub = bar->num_submap;
++
++	if (!submap || !nsub)
++		goto err;
++
++	bar->submap = NULL;
++	bar->num_submap = 0;
++
++	ret = pci_epc_set_bar(epc, epf->func_no, epf->vfunc_no, bar);
++	if (ret) {
++		bar->submap = submap;
++		bar->num_submap = nsub;
++		dev_err(&epf->dev, "pci_epc_set_bar() failed: %d\n", ret);
++		goto err;
++	}
++	kfree(submap);
++
++	status |= STATUS_BAR_SUBRANGE_CLEAR_SUCCESS;
++	reg->status = cpu_to_le32(status);
++	return;
++
++err:
++	status |= STATUS_BAR_SUBRANGE_CLEAR_FAIL;
++	reg->status = cpu_to_le32(status);
++}
++
+ static void pci_epf_test_cmd_handler(struct work_struct *work)
+ {
+ 	u32 command;
+@@ -861,6 +1019,14 @@ static void pci_epf_test_cmd_handler(struct work_struct *work)
+ 		pci_epf_test_disable_doorbell(epf_test, reg);
+ 		pci_epf_test_raise_irq(epf_test, reg);
+ 		break;
++	case COMMAND_BAR_SUBRANGE_SETUP:
++		pci_epf_test_bar_subrange_setup(epf_test, reg);
++		pci_epf_test_raise_irq(epf_test, reg);
++		break;
++	case COMMAND_BAR_SUBRANGE_CLEAR:
++		pci_epf_test_bar_subrange_clear(epf_test, reg);
++		pci_epf_test_raise_irq(epf_test, reg);
++		break;
+ 	default:
+ 		dev_err(dev, "Invalid command 0x%x\n", command);
+ 		break;
+@@ -933,6 +1099,10 @@ static void pci_epf_test_set_capabilities(struct pci_epf *epf)
+ 	if (epf_test->epc_features->intx_capable)
+ 		caps |= CAP_INTX;
+ 
++	if (epf_test->epc_features->dynamic_inbound_mapping &&
++	    epf_test->epc_features->subrange_mapping)
++		caps |= CAP_SUBRANGE_MAPPING;
++
+ 	reg->caps = cpu_to_le32(caps);
+ }
+ 
 -- 
 2.51.0
 
