@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55385D715ED
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC4AD715EC
 	for <linux-rockchip@archiver.kernel.org>; Sat, 24 Jan 2026 14:50:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,46 +12,46 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k5ineXTeG9VRQGppc5vuTslt7MHZHf8iVnZU/sq4xMk=; b=IF2www1Xqp6wsu
-	Lokyr1HvKdJ2O2YDOYgHHLucw7OOOEY4QDV/WxXriZDuYCmQ9UPozL8aNWYR03v0fnru9wLUq9zig
-	GVc+R6mZOYsX6aoAcotbK355MdLyIms1Jp83PTAQ6LJno/+BKhB0LphQohx3N0XmIE56UzPQi7gvV
-	gG2Wjkwg4TiTrKSBuEmp2Q/Iv3Q2mibjP/lTqle/gMg4peVlZgxp8Y+GcepyHr+qz83iiDRQ8d2Me
-	MVZrKXdJg5kmHGfdgm10wsPas1xzrtxbCRqC2qZRjcp4Zrcwl2xlZTJHXpgMc4k/Kfj46iBJ0IUNq
-	5sYEXftXb4Wb/+hFcHog==;
+	List-Owner; bh=vyMSgv1gQyiMdhFTPPw7BQS1/Ui5kOA9Gu7ebz/CDLQ=; b=aOXZZpEjVNSO0E
+	eP+rS+kBkepwNUey5HVSmn5F24VlMuGSn6zPjcFzwp+zGQJ9Xb3Cpv2Jp/ba77G7RJ19//0cuoB/v
+	I21jZq1VaDrZbC5FHM8BwOiq4xqhekab+/B2wAfja5FwEgjVvhsRZJ5fPR+DVcuB9+asIvV96gBk0
+	Rcpz0TBZMoFcK/KiCipstEmsCI8LYDDir1y9TUuMBd7LYJYwKkmTbGsN23I1hy16BJdDNoH+6ifFV
+	yBb9Qo0JphB9j5IsxJ4mKzfA8omzAEcmWfLorkTWXflQz9ZI1JzQ1BzXewHq0cUlRNpljozrJsZv+
+	e35kOfeFFGB4qCqnLstA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjeyG-0000000AK4a-133S;
-	Sat, 24 Jan 2026 14:50:40 +0000
-Received: from mail-japanwestazon11020105.outbound.protection.outlook.com ([52.101.228.105] helo=OS0P286CU011.outbound.protection.outlook.com)
+	id 1vjeyH-0000000AK5B-08A1;
+	Sat, 24 Jan 2026 14:50:41 +0000
+Received: from mail-japanwestazon11021110.outbound.protection.outlook.com ([40.107.74.110] helo=OS0P286CU010.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vjey3-0000000AJy0-1ukD;
-	Sat, 24 Jan 2026 14:50:28 +0000
+	id 1vjey6-0000000AK00-3YB5;
+	Sat, 24 Jan 2026 14:50:32 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LjWGhFVMDSB2kBkEXE2VxCbM0CQmvCsPLB0hD9y7p4bd+zFYlB9B2I/NzBquqQBvbh+CTkgiV8BlYiT/HCqZHhxZsRbSRUU/ePyfNw61/dvX1AfTpzrf7RQAXy9XciXf3nRQwIkdQTNA46euT5hWEzCS+RIag4ZvTBiUJJ3H9gK4kLXjnfHrr3oUl0l90k6or3cA+cGiQF3dUqzY366Lr3TUdUbmbfeJgIBxvAL1wgL59IWiVq85ZTemoUbkUrux3LTDvCjEYyjR0UbCHkf+4wKTvoucHQcABoTueTGQGNXTFHaODv4V7KVQKsJ3f8rs5p15pauo+YITEtw+X7yEDQ==
+ b=v3XzGn1On07XbwCoGj1tjFxZiaexfNH8f8owzjhGmMHQ45oaTlv2JWHkBk71DYsiLVVhcLdi1y8ZLaYtXLSk1LAvLrsQLBiLZueox1WIjPewpbyOGpQ72yVI4vosWY51qw89Mv2MSy9EbOTBrrwfjPcfL1ljmB82IsdNiN2JBsukvTG0Rns+EGddBhOoscT9/66tu/00XCmYlfIjlcA/qQH+Wux0gu6mCGuhy8Z+tmvnCNEZn3OxfhXJnlY3nEOrXuqBhQgxpPxJ1qn+nBZIu/rx4nqNfxO0UJLwB3seDyQlJJF4qXAc66VScOY3pcHX/vB1lodOr8vPdy+c6yxlvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=chFczwFFvy/TiqkqH263HVf+k+lSlM18M0he4pPOJlA=;
- b=yLxcjLsA71Hx5nClZZOSgW4GAzY/KA8rF8SPIHJ+UZRm7l6za4426D/p4v9heiUSNE5iX+wsS155Fc+kDqZF8kwBwo1BN8cr/odNvtdRXEvfNWOskuGVxPmbotXqDKRb25nZ9nuvK8/lYJgLeUDaPAkXq2dgswhcv+7A7K+OWdi/sr3BGq3bHR0g7Z5egD5tAEA4cP5TkCDiIXJSoljDdkXTrO1rwY+f42DnEu4ZN3MQqt6PNsMQ2w12OnzacKOMzUzYNFwk+oczSsDIYYZ57p3yePK3fCML2YAHvOBgq+nCRIr+zLVtoj0FpXsOUL9PovliMrHWw4bb/vixe0gb8g==
+ bh=oSOa7lwvYj/v8UXgWdEwkRWBMUl1vIwFnICJRAYmAgE=;
+ b=eTf10cbjfEBBBIWNN7fDeFGLE+gzroBSp6uNVkggSLyxfwnPqPAcKOZQt1lQYmAdlR4MalqPJmvDLm4b/wKSKv3e+vFnXuJoz6dTUqB0PLPwDbkg3U+Pqskwy1eaNH6VNsVQGfqL+L/fxFOWLe6kyx/UExxDYLu++CQrOhI0dbPNQ/Bd2VVbZpP8Y08Q4jJTSy+RVfwyI45+Jhi49H0ZgD/1QcdoZTxmJrpdNdV7/cuF2tzbCPEslkFy8L8ekk0DNkCJDmkcm3btYur6ZfoTHwc9qCt0ASpyRJtL0VdXne1QZUUUHdC5P+HVX8JDauAJsUsO+DlE4vD3pTT4f1EdQg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
  header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=valinux.co.jp;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=chFczwFFvy/TiqkqH263HVf+k+lSlM18M0he4pPOJlA=;
- b=tcWd1GZ9SND7KkW2vUAesubxRLw+H2wODhavmmxBmljKkGXcFjwJElAVi1/xCyVgpHCGaomlRMV+jYUxdkhSAh2T0rwSp+jPqYfkjs0yJhKXmGHmE7Dp9/3oRmu1gYFjOlOp5wKJ0RpNIb2h0tQp73QWn7aLXR5TYP2f8CUjgIs=
+ bh=oSOa7lwvYj/v8UXgWdEwkRWBMUl1vIwFnICJRAYmAgE=;
+ b=m7mFwJKyWpDneNcTJBVkkacVQly5Wg0apMlluwMoJcgvIvdpha3NmY91xEovhzfRCISwKHUU3XD7Sp6eYTDwaWZprZxldo+c+oVOW/wemGYG1TZuIAAUeMMEWqpkqxMaFQOIBbF28soU2F/kTFC4LDBjI2zumRf5IT6eDLXbBLM=
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=valinux.co.jp;
 Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:38f::10)
  by TYYP286MB4692.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:19c::11) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9542.11; Sat, 24 Jan
- 2026 14:50:18 +0000
+ 2026 14:50:16 +0000
 Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
  ([fe80::2305:327c:28ec:9b32]) by TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
  ([fe80::2305:327c:28ec:9b32%5]) with mapi id 15.20.9542.010; Sat, 24 Jan 2026
- 14:50:18 +0000
+ 14:50:16 +0000
 From: Koichiro Den <den@valinux.co.jp>
 To: jingoohan1@gmail.com,
 	mani@kernel.org,
@@ -108,95 +108,95 @@ Cc: vigneshr@ti.com,
 	linux-stm32@st-md-mailman.stormreply.com,
 	linux-tegra@vger.kernel.org,
 	linux-kselftest@vger.kernel.org
-Subject: [PATCH v10 3/8] PCI: dwc: Advertise dynamic inbound mapping support
-Date: Sat, 24 Jan 2026 23:50:07 +0900
-Message-ID: <20260124145012.2794108-4-den@valinux.co.jp>
+Subject: [PATCH v10 1/8] PCI: endpoint: Add dynamic_inbound_mapping EPC feature
+Date: Sat, 24 Jan 2026 23:50:05 +0900
+Message-ID: <20260124145012.2794108-2-den@valinux.co.jp>
 X-Mailer: git-send-email 2.51.0
 In-Reply-To: <20260124145012.2794108-1-den@valinux.co.jp>
 References: <20260124145012.2794108-1-den@valinux.co.jp>
-X-ClientProxiedBy: TY4P286CA0012.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:405:26d::10) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
+X-ClientProxiedBy: TYCP301CA0044.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:400:380::6) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
  (2603:1096:405:38f::10)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: TY7P286MB7722:EE_|TYYP286MB4692:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3ebe3c14-b081-4e9c-68f0-08de5b57e484
+X-MS-Office365-Filtering-Correlation-Id: c6152090-1354-4208-5131-08de5b57e363
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|10070799003|366016;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?yHbRXkS5HAUm4q+0hUMSdxHNvUCR1WMw8DhS2pcc3RkllCJzkbd3lKDjS6OK?=
- =?us-ascii?Q?2ISOhilBtrmn6n/RvP96o5l85MMKIt6eK/ARjEKoZHMCHGPsKqQyh7c3H8uo?=
- =?us-ascii?Q?rJNh+qbbKSBBRpc6y2bMVr3xZDCAVSTQ975Z97FhD3oqPKS62F0nsBC6Mkij?=
- =?us-ascii?Q?7lWfnr9Tpeom5hblTAfTAnwCvives8A2+podRB7LHkP9b13rQ0+X4jKfG5/7?=
- =?us-ascii?Q?+muLQFlbdBA/hC1u/NX+r8M3jeJUyzKVHWSU9l07wSeSj3/3Pal0UvTsPZIT?=
- =?us-ascii?Q?VQsfmz9Orci/TYQYAfJWkGhejbREznqzeFEn8MRWEK8Jvl0AjS2P0FPxzLcn?=
- =?us-ascii?Q?cba5LHl2HmUdJzC3mY33mR3aUxyf2XM9DY+h7IvBBSurPTA+1h2rP0jShKF3?=
- =?us-ascii?Q?tueo5aqUCMIMfD6nu5b7AJJH9MczVAD0WBQCqCTMvc+xIUJquxgDV2B+5zrG?=
- =?us-ascii?Q?D1PpGuaeBtOZUXuli5AJj32r1sEabpgjZxdgCrdxQJIwk7ML3oxxyOW29GHd?=
- =?us-ascii?Q?D/Rf7X/NTV6jxePcRpUN7feDb/dkKhDQR8FsCoHHq5zgfTRn4E8PyXgg01Wi?=
- =?us-ascii?Q?OFH6nnkRJWL/IeDqQ7skLGoXK7npWSri2laxTPLzkUckzT825hXJW/ccIuDC?=
- =?us-ascii?Q?qsBHZJMen5qg5vvYkLcO5HzY6QJMSONgxNfWHW8Qk1k7C8o95dSKl0xuGXcd?=
- =?us-ascii?Q?M/lwBrurSXCUm/qYGnlI6ndWh2CRYERN05E8RogzpTlXYMU61yViM0FyIlct?=
- =?us-ascii?Q?sd4mErco8iGi2OWir3t9vtBMEklFFytm6mkS5rNY4AGCjvBJ+BbSfrGSO3GV?=
- =?us-ascii?Q?u/4ID3U66KrqfNiwZo9TD8ZQ6dH2oPOuy0Ra755ppq65+C/fxdgAC3MpeGTA?=
- =?us-ascii?Q?nROQm1g6+993WtehBWoyTMyVibZ4dTCqjEmJSl59FtGEpCXY6JzgyBkqXRhC?=
- =?us-ascii?Q?ropjzSXkpXigxEbElFZCLirV+CFXbJfku803+XAB5kPhSDRNi2MeMoYlwO98?=
- =?us-ascii?Q?YqlMO4dA3sOVZeyPdUKJOt+uoUSrprYLXdiD2HgDNPx8nq6Va8W+zd3SEPXf?=
- =?us-ascii?Q?WjAzoR63MbUbl6mv/4MhgE8GR3EKcLkcTqMyx+W028feqc8OMJKXJmSX8uXK?=
- =?us-ascii?Q?jnk5yI1KPQ70VTjAUkhQ9HcF2YUVePp7yko+YhiSXwYNQ6pJNZYErg8wL7UL?=
- =?us-ascii?Q?5uraf2YaPiho3P14fe3K9UM8zMWdbJRFYNRySWtkO52wr3CVa/UJlYWS2j8y?=
- =?us-ascii?Q?k6k9j1okU7iBuGteqmt3qJ5zADeEl0VGOEFlrLXgdTctpXqLRHUU209N8lOj?=
- =?us-ascii?Q?5apb4dN61ToNbAgybt35JSrwjRL60ms6q4Bhyc2oF2GRyx+ZZzPX19tANDiE?=
- =?us-ascii?Q?wHpawm7up83Z8BvSLyMx9jkQRX09h8efLfb8BVKfR9WJyIK7I887GRMn60eq?=
- =?us-ascii?Q?lt2dhKbBTAriZT/AJgLmjB1AwoNQDglR6UJd+a67cnnXT9yf4RHm6mHGob0U?=
- =?us-ascii?Q?PJZFGnfAza9qAtSOZQrlwLaTtZklQonMiJ/LrwmlwZUjEGacIehKVJPgU4qH?=
- =?us-ascii?Q?E+UhZYC9gWTuMkUPCLo=3D?=
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?YpqQj/k4tpfQJ7v9t3wV/hKMIjVuHwiFkv3ZYI5p2TC+66KD7JCxbk37YqJ0?=
+ =?us-ascii?Q?5PZGKwr8GAnoWQ3otQ6e4gkCklBLuBwwvr4T4NsKG0seFL5sYg87sxf0L/5/?=
+ =?us-ascii?Q?MzZcgZCPeWvKqUDi6HGfrypqVuD4XxQ+upvn81UWLnTRhgmQcH+ioP2F3E4W?=
+ =?us-ascii?Q?bvFSYX6bS3Yho0hfc0GolQTHNRzn+47nvsCXutZaWOw6gDPmoX6UVNTqCc4J?=
+ =?us-ascii?Q?VrbRnn0YnpBjisCsBF96kSdWQnqKIyi/jtA/CLC5ToulLyBD9B/lxVJBL9mL?=
+ =?us-ascii?Q?9gyzvx2dbdZIlyS06y9I99XYpOJR48GGRMlbDbL42iD5Yy2q4mzapfKDpffH?=
+ =?us-ascii?Q?JFuZYxFfbq7mr8J8RAsQtQFaRT6M4QXiG2nJGE8wmY179RbEphdiQ3dA9Zka?=
+ =?us-ascii?Q?tC8CY7yUfsRbsFN4VB7f61p6aQ+vUErRkFEbRkmZNgaxZAcZstFLsZrO1mo0?=
+ =?us-ascii?Q?dHeouNlixxnqOC0FoobhGITY8duxbZ7uK3QwftzvK7XpVy3EXt4nBcKIhdj4?=
+ =?us-ascii?Q?eQAGdHVmVx+NnnFdTWi86eif3IsD60wZA/nVcpgexEjFie/uv8yHNvdykHXm?=
+ =?us-ascii?Q?VzZDTgaxkpFHFMvfLpFO7KUBqbB9VDgaYrW4C0UT3BlVdowhg2OVfzoVJCz6?=
+ =?us-ascii?Q?vTgTnBZ4VUscSCEj5zqNJFmYsRULaXq7bz+5uXImskQZBboKM5tSx9d0lA0T?=
+ =?us-ascii?Q?J1rVtMiSPRi4QrnyT/RU2macnFRHXLrqezJf5wmktpZdtzHsNgYThfYotsuA?=
+ =?us-ascii?Q?5BK2PUR+aSnXba5xyZP8mhrlgMLR8KmyqNase/Bck3urcfP42wQ8dUE/oFRo?=
+ =?us-ascii?Q?Xgf2IUees27x93MPWhiuAwfdgi5Um8wsHiP+GlwERtRnuB4Tuty/aPFtTcS6?=
+ =?us-ascii?Q?LN3xt1Fr1DQwdKxjNdVJGQahp/jYbyHqnXCfoZMcXJOgEiTPZrDNHltXUrtc?=
+ =?us-ascii?Q?xcDDsvxfNuVszrUTiLaA2OEBG9B4JCzlVFqPkSlLsoF2us2kDSwh+OvnI9mU?=
+ =?us-ascii?Q?5lyIsPTgPZKnnfZ5VHZA664ZGs4jH4e4vB9xdfB0ueT+Qp94VvB6bCEbtoUg?=
+ =?us-ascii?Q?rG6nnDyGcxesEAnhzlbrFRe9B4D9QCYomIoA9Sf0w4/Fkl/e/+WltcPistm7?=
+ =?us-ascii?Q?9Q1e7U80LsMXb9cLwbUiiVghTqQ+rtCoVWjXOtUOYheC8AYWyRNqSDZRQEp+?=
+ =?us-ascii?Q?VifImowR3tIhFlipp1afHK1ns3JEW5jo/fvfUPmiJUXQl+17XdT/s/rUDAek?=
+ =?us-ascii?Q?MGF50H8J2+tGC7KmAljYycKWwNiGZlH1LkO6AAGKFeiaEZ3jDBit3zvPryT6?=
+ =?us-ascii?Q?IV8efuuFL/cNWhvrdRdqEXyRfoimaqe7MAaM6tkf0N+4BYlAwwsV1qWeTjx4?=
+ =?us-ascii?Q?DBKCxxPx57HIcaLJkEblGtQ3xhnjVMxLOpPNMlooT64elcwVkady3wPYVydT?=
+ =?us-ascii?Q?r5q6HrT3lydTqBuVB/jArjlbIQ7GT0ulRmWSunOU9UhqaAX+HO5/G5ajtA7l?=
+ =?us-ascii?Q?ZBDjMyHtGH84NCUpFKOTcg5jXSDdXpokVwzNPTnwrApnLkIDyrTrawlI+S3G?=
+ =?us-ascii?Q?ly5OwstPVBlcPL+AnWA=3D?=
 X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(10070799003)(366016);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vthKXZC/iXgHfBW9Srz/igIWSIgGJAxvEd0yBOKNZXd4gWQRRqJ68IwqvWek?=
- =?us-ascii?Q?xBGZMjCQYidEgKlD1/nKFyHQO8n761EOkjhEfyw4WKDeEK8KFyOXz+JzYqkV?=
- =?us-ascii?Q?fzeQ638xgMJcJP0u7h/AqSEMou0Ghh/lxSXIRosk1YsRMh3afFP81by50CwN?=
- =?us-ascii?Q?i8UEUbuULjGgRrfiiCX2fp7aKbQqMykaZoeHFQXehJp+68AkTs7L1JTOyW/y?=
- =?us-ascii?Q?VQTmLq/LWa/mBAtnqMERMRrNttk+2Y7TyZ47XaKcfHCueSLfUw+kn3YaMpqB?=
- =?us-ascii?Q?NqxFNpZe7LjdYk2lqwOAquccz2QeskA5IpgkPbuvdYieEt4fdfKiVayD1iEC?=
- =?us-ascii?Q?JXw0EcqcvwoldfhQfbBqyb3q5RSAO6p+DSY2eA4NBk9zm/g9mm60rCKqtYiV?=
- =?us-ascii?Q?Lmf2POiGtXUcfDHHZ5EwN6YOqtxyKt/uiUqxfXaaXzQZXHnf95LHmTz+ptl6?=
- =?us-ascii?Q?o9/5AkXks7JFTayqAAr6FJayLhxKw6ziFzPV5PivoCVnvPk7Dw0QU/nWTq5s?=
- =?us-ascii?Q?tkCid3jhTTGfknAfRRrLTIdrbu9AKK6Zsl0I6TZY/FaM3XfEsa3FgnKf4GEd?=
- =?us-ascii?Q?ha7TPGPGQ8l9TTx37y1nFOQY/UyauI6OM1+LVgsOBwDrQ2MDD3Boay2jVyN9?=
- =?us-ascii?Q?PcM2F+tabd7rUyNPXJKZQb5eClFv8YXbYXrSmC6jnPJstBmcrrpUhHVSRSTF?=
- =?us-ascii?Q?ZdogEDtONDh25S8Oyt3mmiV5TIVNLnBOf7kmJqyrxpOzR3RBhOivJ5KMcWOK?=
- =?us-ascii?Q?a9vm76A4QUcyeodq0MAMRrjNxGUmOY8G/U0y9+01ak6riM3ebAiggSSCKzcw?=
- =?us-ascii?Q?4s9Uk9YkPQEUNCT3YGF1Z69FUQnqP/o78nVfhhZ9L3QYr0Y2ZgTtY5iimulr?=
- =?us-ascii?Q?7bX+iEohavnTHfl9FoEdxpan4b7FqXDwC56HcJ7HpTbOwiPgBie0rzkFIDbl?=
- =?us-ascii?Q?gI6cl7jt/Ohh8TLdXTIZ3wvIDPuX6CW6uRmdiR+y56FTLtlucSluoNKkA61O?=
- =?us-ascii?Q?ju/yaoMhKjE0AfSEapP95dLjhQXsqTenRqn+NS2WPcUbK/MlAP02rxxmDxtk?=
- =?us-ascii?Q?aJNbwLzUepbM8SkcdLXs86Rv6UP1EjS0kIjsv/Q/VHVTWknepHr5BTNH/9y7?=
- =?us-ascii?Q?/+qtEnzhMTlFmuKGL+Ibra/PgdRpZL6A0VIF9ofc2KOZnM6xX58AFd2cEquO?=
- =?us-ascii?Q?kSfqgvlx/Ywg5VtU+yXTqS5+MYuHR4s0BsfweBpKnaXaCRgNFAibpCgL3uBI?=
- =?us-ascii?Q?LJTEwyknu3XLzLZayNNdFRmZBtCJeY4r+KJhZXhbzIKZKTgtalQU15hWKNo7?=
- =?us-ascii?Q?Uje4v1HBURvp9B+KkK3IxZ5ZZQPY7ekZjuJtuHODgeIlXbYTEhIiErxNsBb+?=
- =?us-ascii?Q?p8S22gC5H3r8MxbeVE/DwM33HFEFgJEa0dbiVCSdBW9Vts1ZSoDQtutlxz1y?=
- =?us-ascii?Q?VISvl1p99foy/2YbwR258on5B9Uv6gO/aljflXc8JFDi56ij6WmZJ+gaCQ4z?=
- =?us-ascii?Q?9ag/aI4nJFOHg9vaCopxSb3W7X5SV0/9zIXrIQmK4NkpihKtTZa+0qN+pCiX?=
- =?us-ascii?Q?8r+CqoKl74Psf9qxjwAi5Qm+7t9fME1+QzwK/Z34+knvP8XWvHdUvbGusAS4?=
- =?us-ascii?Q?1Ji9CDby5GyzmOpuqDpECHuR38X9c5fwRRgy6JexB7/2jIxguzlaMJ3R/yvV?=
- =?us-ascii?Q?lM6So1K2X4RTKjr531jL7YBoQJPpBCMP/XNNER30oRR8PR3SSLReb9Ch/LAk?=
- =?us-ascii?Q?g+67A8YOHWHWSnn0ooYMBuB4t5wOO0974gHknHrUjDXf1AY5ITBC?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?+W5M/htmI9sg531YUvxKMwWjIeD7e/oyp1fbw+3ii3GLPpa6ZlY/LkHwxcQa?=
+ =?us-ascii?Q?pVTc2fL/i+83zw3aSeQaxTAQTDZUHBm0skQV8f+Y8oxG5uazCTcDCoJ94Hv6?=
+ =?us-ascii?Q?wLmARWkYtuC6ljmfdrnYGGEf8uiFO+2p7G+QAhQknfBimHb4wR2uMIOAcwXi?=
+ =?us-ascii?Q?PFIZoqUM9zBYRX/3QyIsAo9wnvqoE3TpldNqZzvwtHe2DOVjgdKUWV6sq3QZ?=
+ =?us-ascii?Q?wLN7iA1TI3hxo5c01jc4QXeeJHgNGYy/iksbBNV1sLHKJDytG4KoDbKv3stS?=
+ =?us-ascii?Q?ggIkTDWzUhp7Tnp6CWlNjL+7+ruOU9t7/diHxHKg6+tS4PNrCI5qB4XjNzVX?=
+ =?us-ascii?Q?2R7W0ouEYV5jGxcFnxJ7cdAqi49E4U3nmjeIuN5IdpTcD+LK3OJb378thw4+?=
+ =?us-ascii?Q?PUKkBH71hs6ws/cAty9EavTFOcN+Bcl7DhNkZdvZgJR0+5asFpXNxnXf76ft?=
+ =?us-ascii?Q?25dG6RxBukI8bBITbFye7uRUqiWQc9wxwiYG+ZMbE9ZrUbddFr7B9DSRhk/x?=
+ =?us-ascii?Q?b67pFIAJErT/DYAP747WAby/nh374NuucCIhUkA+5BaMqOx5xgJeJaHIVNPN?=
+ =?us-ascii?Q?ADGetL88fxJm2CTk680cLRFh+9y6LTYcCaOHair1tEWBsqyML0Kl+Art4KWO?=
+ =?us-ascii?Q?tUkY84HwQpyN/+xpVyUbn/9UMscSjodqSSiud5zR+FZ+HWy0W50eDG+nUCKq?=
+ =?us-ascii?Q?gYhY87/WnlkmlLKedoIzZl1vUfZUOZgYOnuQMQPoqn2w9UBiNn15MXJkNVt7?=
+ =?us-ascii?Q?+38FwaSrOQDix5m9M+BGTzPJrCoLW9NZf6OFQavBUrqykIm+sC9YrfoAex1k?=
+ =?us-ascii?Q?kLkUMBFxlZjYv/UF8UQsuxb3ee8xCbgUmD/k+31xsOptpJY8PgU4ZboUCuQN?=
+ =?us-ascii?Q?6esn1KydKZRtajvkz/MHGpIz0jo8ZvTAXIo/sj1RhZBr5e8EHZFdAOWrBq8D?=
+ =?us-ascii?Q?/z1jBmP5Z2hSqH/qLuVyPy2A27NsqB0GnRNb9zIL+Dl7dX8ofid5LJ422CNC?=
+ =?us-ascii?Q?m0PgfkAZoJOMXBuvdWQEl01APGnHQ0yHy+sELm4z6T/vMH1vhYDiRl4NxMit?=
+ =?us-ascii?Q?a7emsWvkcefDGsNQRQyqv2Jw4tqAQjmixsw8jLBAv9Crt2MsCYjJq0eimc31?=
+ =?us-ascii?Q?eH8kmSg2dLCEqVZEeJJRwjy2GL9fUXGevc37zmaYfz+5puWtAv9bZCeWW2we?=
+ =?us-ascii?Q?qvvFOVg6TGRLnOCvR+Rx+hplmxMY9XwgbYkEqSdqx+kLWE4cxbfPCSzR2lfb?=
+ =?us-ascii?Q?xEGr8mgAUbaL9Xe60pQcDDPaoJWSUJNmJTQXvU+9fGksIThKruo8CpfKJimB?=
+ =?us-ascii?Q?GASRHDhMi1uI7WNQTKi+X4e5X1sEZaGmjF2SnJEphUmKe/RVXL105dEw0T61?=
+ =?us-ascii?Q?AMOpLDwkDjJJN2e/fxhEQrFc3LhQv0H9Tlk5KvFZ+9gFoHTzupLEBd1217so?=
+ =?us-ascii?Q?v3IvVVubvG2eagHovSakKkEVTyml89BsjmviOQd98x81q0st3f7+BlEGNBu4?=
+ =?us-ascii?Q?rNRfS2mMZGWF16wovszFntKtYpN80a9Wo9MBb9ri+xrfJawpwgNNOgh/NG+H?=
+ =?us-ascii?Q?3MuOjFmX65QN6dq68P0+Ys9fs77tfLv5odtSpbxmqxwgB/x/2VwIuvC2MG94?=
+ =?us-ascii?Q?oo0bH1JYxk0cFFJ2vME5RR8TfQCJE2+NMhAsjr1q5CtXOcTOJpr1/fhCpeKF?=
+ =?us-ascii?Q?xIouPawouhPohuykxQ+pMZX1VWhWQA6l3JVuLQmOPSW/7rHx9LSBptaLKECG?=
+ =?us-ascii?Q?Lyr24Bg2oryD6og3Fn3NZl1xnqqtiA2uyieUbRx4KdKEFI2sehbF?=
 X-OriginatorOrg: valinux.co.jp
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3ebe3c14-b081-4e9c-68f0-08de5b57e484
+X-MS-Exchange-CrossTenant-Network-Message-Id: c6152090-1354-4208-5131-08de5b57e363
 X-MS-Exchange-CrossTenant-AuthSource: TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2026 14:50:18.7904
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Jan 2026 14:50:16.8857
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZVVzFdjmvJmFzgFzDihbOjA1tijxaMS2kX1JgamUGhhNrwKSk+8RaDH1SGN+YenrOO4HuBghh/uR+8SFwUIfrQ==
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6CPD0O4UvAhVBQdOqwYNtVPyEHGpZ0wZqoeHvEH04ohNLm2jbjLU7f8qyleonI2RLyclHDLKVQVJYDl2Y2B2bA==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYYP286MB4692
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260124_065027_503572_FA33F586 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20260124_065031_706609_E4FFE93D 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -213,229 +213,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DesignWare EP core has supported updating the inbound iATU mapping
-for an already configured BAR (i.e. allowing pci_epc_set_bar() to be
-called again without a prior pci_epc_clear_bar()) since
-commit 4284c88fff0e ("PCI: designware-ep: Allow pci_epc_set_bar() update
-inbound map address").
+Introduce a new EPC feature bit (dynamic_inbound_mapping) that indicates
+whether an Endpoint Controller can update the inbound address
+translation for a BAR without requiring the EPF driver to clear/reset
+the BAR first.
 
-Now that this capability is exposed via the dynamic_inbound_mapping EPC
-feature bit, set it for DWC-based EP glue drivers using a common
-initializer macro to avoid duplicating the same flag in each driver.
+Endpoint Function drivers (e.g. vNTB) can use this information to decide
+whether it really is safe to call pci_epc_set_bar() multiple times to
+update inbound mappings for the BAR.
 
-Note that pci-layerscape-ep.c is untouched. It currently constructs the
-feature struct dynamically in ls_pcie_ep_init(). Once converted to a
-static feature definition, it will use DWC_EPC_COMMON_FEATURES as well.
-
+Suggested-by: Niklas Cassel <cassel@kernel.org>
 Reviewed-by: Niklas Cassel <cassel@kernel.org>
 Reviewed-by: Frank Li <Frank.Li@nxp.com>
 Signed-off-by: Koichiro Den <den@valinux.co.jp>
 ---
- drivers/pci/controller/dwc/pci-dra7xx.c           | 1 +
- drivers/pci/controller/dwc/pci-imx6.c             | 3 +++
- drivers/pci/controller/dwc/pci-keystone.c         | 1 +
- drivers/pci/controller/dwc/pcie-artpec6.c         | 1 +
- drivers/pci/controller/dwc/pcie-designware-plat.c | 1 +
- drivers/pci/controller/dwc/pcie-designware.h      | 3 +++
- drivers/pci/controller/dwc/pcie-dw-rockchip.c     | 2 ++
- drivers/pci/controller/dwc/pcie-keembay.c         | 1 +
- drivers/pci/controller/dwc/pcie-qcom-ep.c         | 1 +
- drivers/pci/controller/dwc/pcie-rcar-gen4.c       | 1 +
- drivers/pci/controller/dwc/pcie-stm32-ep.c        | 1 +
- drivers/pci/controller/dwc/pcie-tegra194.c        | 1 +
- drivers/pci/controller/dwc/pcie-uniphier-ep.c     | 2 ++
- 13 files changed, 19 insertions(+)
+ include/linux/pci-epc.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
-index 01cfd9aeb0b8..d5d26229063f 100644
---- a/drivers/pci/controller/dwc/pci-dra7xx.c
-+++ b/drivers/pci/controller/dwc/pci-dra7xx.c
-@@ -424,6 +424,7 @@ static int dra7xx_pcie_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features dra7xx_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.linkup_notifier = true,
- 	.msi_capable = true,
- };
-diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
-index dfe814469993..06f45e009d7d 100644
---- a/drivers/pci/controller/dwc/pci-imx6.c
-+++ b/drivers/pci/controller/dwc/pci-imx6.c
-@@ -1388,6 +1388,7 @@ static int imx_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features imx8m_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.bar[BAR_1] = { .type = BAR_RESERVED, },
- 	.bar[BAR_3] = { .type = BAR_RESERVED, },
-@@ -1397,6 +1398,7 @@ static const struct pci_epc_features imx8m_pcie_epc_features = {
- };
- 
- static const struct pci_epc_features imx8q_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.bar[BAR_1] = { .type = BAR_RESERVED, },
- 	.bar[BAR_3] = { .type = BAR_RESERVED, },
-@@ -1417,6 +1419,7 @@ static const struct pci_epc_features imx8q_pcie_epc_features = {
-  * BAR5	| Enable   | 32-bit  | 64 KB   | Programmable Size
+diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
+index 4286bfdbfdfa..4c8516756c56 100644
+--- a/include/linux/pci-epc.h
++++ b/include/linux/pci-epc.h
+@@ -223,6 +223,10 @@ struct pci_epc_bar_desc {
+ /**
+  * struct pci_epc_features - features supported by a EPC device per function
+  * @linkup_notifier: indicate if the EPC device can notify EPF driver on link up
++ * @dynamic_inbound_mapping: indicate if the EPC device supports updating
++ *                           inbound mappings for an already configured BAR
++ *                           (i.e. allow calling pci_epc_set_bar() again
++ *                           without first calling pci_epc_clear_bar())
+  * @msi_capable: indicate if the endpoint function has MSI capability
+  * @msix_capable: indicate if the endpoint function has MSI-X capability
+  * @intx_capable: indicate if the endpoint can raise INTx interrupts
+@@ -231,6 +235,7 @@ struct pci_epc_bar_desc {
   */
- static const struct pci_epc_features imx95_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.bar[BAR_1] = { .type = BAR_FIXED, .fixed_size = SZ_64K, },
- 	.align = SZ_4K,
-diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
-index f86d9111f863..20fa4dadb82a 100644
---- a/drivers/pci/controller/dwc/pci-keystone.c
-+++ b/drivers/pci/controller/dwc/pci-keystone.c
-@@ -930,6 +930,7 @@ static int ks_pcie_am654_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features ks_pcie_am654_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.msix_capable = true,
- 	.bar[BAR_0] = { .type = BAR_RESERVED, },
-diff --git a/drivers/pci/controller/dwc/pcie-artpec6.c b/drivers/pci/controller/dwc/pcie-artpec6.c
-index f4a136ee2daf..e994b75986c3 100644
---- a/drivers/pci/controller/dwc/pcie-artpec6.c
-+++ b/drivers/pci/controller/dwc/pcie-artpec6.c
-@@ -370,6 +370,7 @@ static int artpec6_pcie_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features artpec6_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- };
- 
-diff --git a/drivers/pci/controller/dwc/pcie-designware-plat.c b/drivers/pci/controller/dwc/pcie-designware-plat.c
-index 12f41886c65d..8530746ec5cb 100644
---- a/drivers/pci/controller/dwc/pcie-designware-plat.c
-+++ b/drivers/pci/controller/dwc/pcie-designware-plat.c
-@@ -61,6 +61,7 @@ static int dw_plat_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features dw_plat_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.msix_capable = true,
- };
-diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
-index c3301b3aedb7..7ca9d0f6b7f2 100644
---- a/drivers/pci/controller/dwc/pcie-designware.h
-+++ b/drivers/pci/controller/dwc/pcie-designware.h
-@@ -305,6 +305,9 @@
- /* Default eDMA LLP memory size */
- #define DMA_LLP_MEM_SIZE		PAGE_SIZE
- 
-+/* Common struct pci_epc_feature bits among DWC EP glue drivers */
-+#define DWC_EPC_COMMON_FEATURES		.dynamic_inbound_mapping = true
-+
- struct dw_pcie;
- struct dw_pcie_rp;
- struct dw_pcie_ep;
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 77c4e6a4ddea..03ad8c242366 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -382,6 +382,7 @@ static int rockchip_pcie_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.linkup_notifier = true,
- 	.msi_capable = true,
- 	.msix_capable = true,
-@@ -402,6 +403,7 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
-  * BARs) would be overwritten, resulting in (all other BARs) no longer working.
-  */
- static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.linkup_notifier = true,
- 	.msi_capable = true,
- 	.msix_capable = true,
-diff --git a/drivers/pci/controller/dwc/pcie-keembay.c b/drivers/pci/controller/dwc/pcie-keembay.c
-index 60e74ac782af..2666a9c3d67e 100644
---- a/drivers/pci/controller/dwc/pcie-keembay.c
-+++ b/drivers/pci/controller/dwc/pcie-keembay.c
-@@ -309,6 +309,7 @@ static int keembay_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features keembay_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable		= true,
- 	.msix_capable		= true,
- 	.bar[BAR_0]		= { .only_64bit = true, },
-diff --git a/drivers/pci/controller/dwc/pcie-qcom-ep.c b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-index f1bc0ac81a92..5e990c7a5879 100644
---- a/drivers/pci/controller/dwc/pcie-qcom-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-@@ -820,6 +820,7 @@ static void qcom_pcie_ep_init_debugfs(struct qcom_pcie_ep *pcie_ep)
- }
- 
- static const struct pci_epc_features qcom_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.linkup_notifier = true,
- 	.msi_capable = true,
- 	.align = SZ_4K,
-diff --git a/drivers/pci/controller/dwc/pcie-rcar-gen4.c b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
-index 80778917d2dd..a6912e85e4dd 100644
---- a/drivers/pci/controller/dwc/pcie-rcar-gen4.c
-+++ b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
-@@ -420,6 +420,7 @@ static int rcar_gen4_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features rcar_gen4_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.bar[BAR_1] = { .type = BAR_RESERVED, },
- 	.bar[BAR_3] = { .type = BAR_RESERVED, },
-diff --git a/drivers/pci/controller/dwc/pcie-stm32-ep.c b/drivers/pci/controller/dwc/pcie-stm32-ep.c
-index 2cecf32d2b0f..c1944b40ce02 100644
---- a/drivers/pci/controller/dwc/pcie-stm32-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-stm32-ep.c
-@@ -70,6 +70,7 @@ static int stm32_pcie_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features stm32_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.msi_capable = true,
- 	.align = SZ_64K,
- };
-diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
-index 0ddeef70726d..06571d806ab3 100644
---- a/drivers/pci/controller/dwc/pcie-tegra194.c
-+++ b/drivers/pci/controller/dwc/pcie-tegra194.c
-@@ -1988,6 +1988,7 @@ static int tegra_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
- }
- 
- static const struct pci_epc_features tegra_pcie_epc_features = {
-+	DWC_EPC_COMMON_FEATURES,
- 	.linkup_notifier = true,
- 	.msi_capable = true,
- 	.bar[BAR_0] = { .type = BAR_FIXED, .fixed_size = SZ_1M,
-diff --git a/drivers/pci/controller/dwc/pcie-uniphier-ep.c b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
-index d6e73811216e..d52753060970 100644
---- a/drivers/pci/controller/dwc/pcie-uniphier-ep.c
-+++ b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
-@@ -420,6 +420,7 @@ static const struct uniphier_pcie_ep_soc_data uniphier_pro5_data = {
- 	.init = uniphier_pcie_pro5_init_ep,
- 	.wait = NULL,
- 	.features = {
-+		DWC_EPC_COMMON_FEATURES,
- 		.linkup_notifier = false,
- 		.msi_capable = true,
- 		.msix_capable = false,
-@@ -438,6 +439,7 @@ static const struct uniphier_pcie_ep_soc_data uniphier_nx1_data = {
- 	.init = uniphier_pcie_nx1_init_ep,
- 	.wait = uniphier_pcie_nx1_wait_ep,
- 	.features = {
-+		DWC_EPC_COMMON_FEATURES,
- 		.linkup_notifier = false,
- 		.msi_capable = true,
- 		.msix_capable = false,
+ struct pci_epc_features {
+ 	unsigned int	linkup_notifier : 1;
++	unsigned int	dynamic_inbound_mapping : 1;
+ 	unsigned int	msi_capable : 1;
+ 	unsigned int	msix_capable : 1;
+ 	unsigned int	intx_capable : 1;
 -- 
 2.51.0
 
