@@ -4,70 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5AE1D7237C
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jan 2026 22:28:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D8E5D7237C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jan 2026 23:04:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bZJnYmD0fRpvQzlG0wx434r5MmOvf8s3Jbq9uy8/lJA=; b=O1Om+verv8ZTWl
-	Qpqq7AJ7j+b8G+WgmOq/JcZ2hv7Y0DEk4V+p0IWuqn02i4UqDm+/P0P4P1pxHbKnKeTd6553bKyKd
-	c+7MWAhzReTb87QePfEbfk2pjLcD2MXn1RaPXA2YUAGLa6xMYBRBT5IgyeVr09gKPLDS7T8+xFnQ3
-	l7lbdu7LL1cSQk//hqXD1njdPmCwFqn7zL2vgPspyBMoASRa6ogv4DebxJuojd240tbixZMM4F+dY
-	rGqiu3AQ/sCIArP7/PEC7LKZC1hEzCIQ9WyFCfwnHXoiA7FI0eibZnemRaC2atZ6u61fLPmhbHymP
-	p9cP6c8NJPPx3Z4iNWsg==;
+	List-Owner; bh=TtU7xUA1EJaQNaZHV7F82rS+TBojW5ChDqqIZb8Uf/8=; b=jt+9f9QaAxAbMh
+	cr9uwIB6R3bXOGOnEZCVOLGtnItxt6sGXMHraEhsHHpxxGP6ikLvwnaubaE27xPkJlOwFAzLKASKw
+	PbVWnd9TmhDqQHZVQXc9nzH5KMQAQUq8aaPUdZAEhMlwh/WaA1FIUZSgK8AMpoXN/ZZ4skVcsu0N4
+	cqImPBsSQm/ciYYvjW5jon4zkv+9Z18tJA8TmAJtcG7uBD9/QHoH7dCUtgETmVh4z2l12+sFEEZrK
+	AzAwbqSeR9/a/R9SvQ40P3Tu0/KzhmCpHJS1jiYC+pEbAH7Frue7pKKaOhbZ3ABt/ng9/9HJB9b4E
+	yoV0j8Pz6c7d1ybxB/ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vk8aU-0000000BaIB-0KxH;
-	Sun, 25 Jan 2026 22:28:06 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vk99R-0000000Bf35-0ktr;
+	Sun, 25 Jan 2026 23:04:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vk8aQ-0000000BaHj-0PUE;
-	Sun, 25 Jan 2026 22:28:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=L2X891Ez3ofU6acQZJKt3+66chDjYg1lXlCjzKU3OXs=; b=EiMjt/g8Z82n8WlxNZmZG5T5uv
-	EpAjk6l6Np519Lwq+KkIQztvA05OO68xBvl4i4UH4rCD6tE/kWAlPtCG36okJQ90uoxrF0MKwI88Y
-	auR0oGXM5QGKFUj/H3GZUNe1Gi+qBPj3kv3f7a1CLwJxhnz/K5cpA04j8U18MkO8MbjraI15eE+e7
-	cghAlzquIBy4Fdx21Vr6RI3Nw1qzwneiiNp4eCth+mDWvwUWjra7Sgv/WbnvqMNgvMGgGVyM/l6ct
-	I3TujEL3WSTM6cm2MgI5Qu1HKYwJKsEvIdoDxYGvvsuZd/4PYkPhr5aty+knLWa+LKs3+uCV/r80m
-	Y4iR2Dyw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:32798)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vk8aI-0000000041d-2tWj;
-	Sun, 25 Jan 2026 22:27:54 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vk8aE-000000004Ma-3W6u;
-	Sun, 25 Jan 2026 22:27:50 +0000
-Date: Sun, 25 Jan 2026 22:27:50 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Jakub Kicinski <kuba@kernel.org>
+	id 1vk99O-0000000Bf2Z-07JY;
+	Sun, 25 Jan 2026 23:04:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3B54D43688;
+	Sun, 25 Jan 2026 23:04:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 997A9C4CEF1;
+	Sun, 25 Jan 2026 23:04:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769382249;
+	bh=960bktz2ZFqnPtMsf7RZW8qIbtxeJL5lmytaygJqpvY=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=rBvtu2rM+Zc7GcADmQSJmwr0x9DVRjuNeMrRLAoSLH6Eya2iSWt77HV8KDb2+VoiI
+	 REafSykfgSE2CExeF+wCE0VYXbiB4Qx2LBt3EBUU5bFwcrEfIhhdymmUN7rYp0ywyl
+	 WJBYF/4YzyjyvN5HyXJzz/rHbRo7ks917U+IuORUridp3Wbc9jr4Th9OcuzMw+it4H
+	 bj7bO4p74y1o2kJ7hnOtjAwJ3e402mDTdq9oH0aVJazfhXKHOUPLnhgaowqfN6vpVw
+	 WVx6lQNgnkKXGo3thbirZRrCvA8bbg1YxOSvKlmP9pOh2d5tQsECwCpnvVNrXid+j+
+	 5+hsFOY8uAu7g==
+Date: Sun, 25 Jan 2026 15:04:07 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: linux-arm-kernel@lists.infradead.org, andrew@lunn.ch,
-	davem@davemloft.net, alexandre.torgue@foss.st.com,
-	netdev@vger.kernel.org, edumazet@google.com, pabeni@redhat.com,
-	heiko@sntech.de, andrew+netdev@lunn.ch,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [net-next,18/21] net: stmmac: rk: rk3328: gmac2phy only supports
- RMII
-Message-ID: <aXaY5nKGFdBhVsnb@shell.armlinux.org.uk>
+ davem@davemloft.net, alexandre.torgue@foss.st.com, netdev@vger.kernel.org,
+ edumazet@google.com, pabeni@redhat.com, heiko@sntech.de,
+ andrew+netdev@lunn.ch, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [net-next,18/21] net: stmmac: rk: rk3328: gmac2phy only
+ supports RMII
+Message-ID: <20260125150407.3369b678@kernel.org>
+In-Reply-To: <aXaY5nKGFdBhVsnb@shell.armlinux.org.uk>
 References: <E1vjEvF-00000005ghI-3CYC@rmk-PC.armlinux.org.uk>
- <20260125221631.3396200-1-kuba@kernel.org>
+	<20260125221631.3396200-1-kuba@kernel.org>
+	<aXaY5nKGFdBhVsnb@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260125221631.3396200-1-kuba@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260125_142802_448922_BCC8338D 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20260125_150410_091304_4DD17AE0 
+X-CRM114-Status: UNSURE (   9.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,18 +77,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sun, Jan 25, 2026 at 02:16:31PM -0800, Jakub Kicinski wrote:
-> This is an AI-generated review of your patch. The human sending this
-> email has considered the AI review valid, or at least plausible.
+On Sun, 25 Jan 2026 22:27:50 +0000 Russell King (Oracle) wrote:
+> On Sun, Jan 25, 2026 at 02:16:31PM -0800, Jakub Kicinski wrote:
+> > This is an AI-generated review of your patch. The human sending this
+> > email has considered the AI review valid, or at least plausible.
+> > 
+> > For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html  
 > 
-> For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
+> This, and all the other AI generated comments on subsequent patches
+> are repeats of patch 17.
 
-This, and all the other AI generated comments on subsequent patches
-are repeats of patch 17.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+#$%&, should have checked. Sorry.
 
 _______________________________________________
 Linux-rockchip mailing list
