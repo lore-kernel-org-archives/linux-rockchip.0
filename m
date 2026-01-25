@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04EAAD74EFF
-	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jan 2026 22:16:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 179DAD7237B
+	for <linux-rockchip@archiver.kernel.org>; Sun, 25 Jan 2026 22:16:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/6sg8GR+GoX2y86OswNoadoS7FV2Ux+DS6gbNOrZDvI=; b=3WvlgmSfAu1NTt
-	AwS4x7u/fLPPZlUDotqQDKIabb+4snCwuCGE0ewbLIb5rj9DwCdLgRuKbzaPGKoXNDlqJoT4B3iqf
-	JsiHEoCdXuT7DGB/GmrebeZDs1PhHlQsjJA+Nmg6aQC8D8mce4VKeqpfbEnesQThVeVmTEN16/GFm
-	O9WGibjn6Q8qGWJp5H12GJv3Gumoj3ysCZD7rJRvhAX+G9w9/B/Ph+IuRksg75tfVnV+jvGQe+hbw
-	e0cD4SWllha9y+mJNRxevhbBuINjrr+N/yRqRCHVF+56LGg2eVWTp/ay6T0aNn+oCzy/3/+LDh3Ai
-	gJOfSfxxLelv2MsqlRNQ==;
+	List-Owner; bh=Sv2nZmn90VPYfU5cDJONAb9oJ468jYItK4lyqsqYGFU=; b=ILhP3djbD9Fxxf
+	i0VS3idTHO7mJPAOQGPk35cJoU1Nan2boda0Y3Y8T3sEhTbd+VlZOEuWoOfUT498h/I545+Z5sYiT
+	zjmum8wVek+fhj1OuNW9oIbbAxjc6Zb+1yMnjOCTuGuzhyJMON9wOz1UrCkGvixuhyaez/jqoKqCN
+	F1k4p6Ss8/e8HRsVT5U5wrRCfR46C/DerflBMCmNzYBZ0PHN5vZQqQGLqwo0DnQrfy9YjCx6fMBKN
+	8m4t3iw7FcY/mu2+RLgZjDOOZiaN6ULfUIVAUO4d2cE+2VU+FQnIUzznGQqtc+JKbzd+0OHu6FCsA
+	bfS0ovhSzulr1LcxvYGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vk8PI-0000000BYuj-0Gfj;
-	Sun, 25 Jan 2026 22:16:32 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vk8PT-0000000BZ2a-3otQ;
+	Sun, 25 Jan 2026 22:16:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vk8PE-0000000BYth-2ZV4;
-	Sun, 25 Jan 2026 22:16:29 +0000
+	id 1vk8PK-0000000BYvy-1Z9i;
+	Sun, 25 Jan 2026 22:16:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id CBA1442A5C;
-	Sun, 25 Jan 2026 22:16:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 25263C4CEF1;
-	Sun, 25 Jan 2026 22:16:27 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F3C726011E;
+	Sun, 25 Jan 2026 22:16:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 27ABFC19425;
+	Sun, 25 Jan 2026 22:16:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769379387;
-	bh=IXmYEQa3v2AXOgV7ZGc0qQyUfP6Kstj5GKYZ3gYVCpA=;
+	s=k20201202; t=1769379392;
+	bh=6tZOcoDzLjLZcLcPdF7/WrSy+zSdMZm9sx0zi040qLs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=lO3FJpY9D/lRWbrbZt5lKv/9RNiUf0XAQ1CTBQnkGmRGICX0fbqjXxP3cx+iV41YZ
-	 2utOyn6n0/g5qTZkOhbkLhGHcfrXFbMoL+AcVvrF+yrLOepU0BHU1RdYBGxG4+uaGs
-	 ZHDv1uNdNkK1PTXcronHbCVGe6m2jf5qYi78kqwd2QX6moWWnHHXRyDxQDrun7kcJ6
-	 idTmkGO0oedSkBaAqDsnZKbNbYUU1hgU/2z7LhEoa9FlY+ICoSDW4ky8q2I0jGC1Fa
-	 7t3qMbx8v/CBRxOGNIbP9l8+3LZeaXMk+1krgyH8on91VQj7ChHyv5ktPAGVI6Lbpg
-	 aE2Hkpc3PV+nA==
+	b=mhAo3cqiV3m5SxW526CCIL5J+nR3v9o0BKXcdtdln/txsFUNcEtkPC9z86vdxHAHs
+	 /j45rTwFWkBzTS6CTNz7S9PnQylV6tPQBA1wTY47zsmbFIHhyj+Ddm1/kq87McwBbH
+	 UIjNYuWt+q5z7OSRQXXgWmOv9pxjoHLfCLA4iswiDqAyUbnaVqgVxD0tAP0CZgDZzE
+	 nNlHu3drq4RpNMHdqAj3pNq2laOHJonC8+u5XfUA6LDEFW7bCAv680sTJXwKT7WZaC
+	 5rYjAl9yw68Vy4lh6j5Cr9n4TkHYx6CU7H3mrViRLVGz1wBR9o35l2gBHx7U3UrlbP
+	 l/fctiky0mCtQ==
 From: Jakub Kicinski <kuba@kernel.org>
 To: rmk+kernel@armlinux.org.uk
 Cc: Jakub Kicinski <kuba@kernel.org>,
@@ -55,16 +55,13 @@ Cc: Jakub Kicinski <kuba@kernel.org>,
 	andrew+netdev@lunn.ch,
 	linux-rockchip@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [net-next,03/21] net: stmmac: rk: convert rk3328 to use bsp_priv->id
-Date: Sun, 25 Jan 2026 14:16:25 -0800
-Message-ID: <20260125221625.3396113-1-kuba@kernel.org>
+Subject: Re: [net-next,18/21] net: stmmac: rk: rk3328: gmac2phy only supports RMII
+Date: Sun, 25 Jan 2026 14:16:31 -0800
+Message-ID: <20260125221631.3396200-1-kuba@kernel.org>
 X-Mailer: git-send-email 2.52.0
-In-Reply-To: <E1vjEu1-00000005gfq-05H8@rmk-PC.armlinux.org.uk>
-References: <E1vjEu1-00000005gfq-05H8@rmk-PC.armlinux.org.uk>
+In-Reply-To: <E1vjEvF-00000005ghI-3CYC@rmk-PC.armlinux.org.uk>
+References: <E1vjEvF-00000005ghI-3CYC@rmk-PC.armlinux.org.uk>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260125_141628_694169_359A1E00 
-X-CRM114-Status: GOOD (  19.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,122 +83,59 @@ email has considered the AI review valid, or at least plausible.
 
 For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
 ---
-net: stmmac: rk: convert to mask-based interface mode configuration
+net: stmmac: rk: rk3506, rk3528 and kk3588 have rmii_mode in clock register
 
-This commit converts many Rockchip GMAC implementations to use a new
-centralized mask-based infrastructure for configuring PHY interface
-mode. The PHY_INTF_SEL and RMII mode configuration is moved from
-individual set_to_rgmii()/set_to_rmii() functions to rk_gmac_powerup().
+This commit consolidates RMII mode configuration for rk3506, rk3528, and
+rk3588 by adding a rmii_mode_mask field to rk_clock_fields, removing the
+per-SoC set_to_rmii() functions, and adding common code in rk_gmac_powerup()
+to write this field.
 
 > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> index 4117f6863ff0..48fc5b58092f 100644
+> index ebbc09ea572a..759deb66ef2a 100644
 > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 
 [ ... ]
 
-> @@ -1198,9 +1225,6 @@ static const struct rk_gmac_ops rk3576_ops = {
->  #define RK3588_GRF_GMAC_CON0			0X0008
->  #define RK3588_GRF_CLK_CON1			0X0070
+> @@ -1412,6 +1385,15 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
+>  			return ret;
+>  	}
 
-The comment above this definition says "/* php_grf */" indicating that
-RK3588_GRF_GMAC_CON0 is in the php_grf address space.
+The code above (not shown in the diff, but present in the function) is:
 
-> -#define RK3588_GMAC_PHY_INTF_SEL(id, val)	\
-> -	(GRF_FIELD(5, 3, val) << ((id) * 6))
-> -
+    ret = rk_get_phy_intf_sel(bsp_priv->phy_iface);
+    ...
+    if (bsp_priv->gmac_phy_intf_sel_mask ||
+        bsp_priv->gmac_rmii_mode_mask) {
+        ...
+        ret = regmap_write(bsp_priv->grf, bsp_priv->gmac_grf_reg, val);
+        if (ret < 0)
+            return ret;
+    }
 
-[ ... ]
+At this point, if the block above executed, ret holds the return value from
+regmap_write() (0 on success), not the interface selector.
 
-> +static int rk3588_init(struct rk_priv_data *bsp_priv)
-> +{
-> +	switch (bsp_priv->id) {
-> +	case 0:
-> +		bsp_priv->gmac_phy_intf_sel_mask = GENMASK_U16(5, 3);
-> +		return 0;
+> +	if (bsp_priv->clock.rmii_mode_mask) {
+> +		val = rk_encode_wm16(ret == PHY_INTF_SEL_RMII,
+> +				     bsp_priv->clock.rmii_mode_mask);
+
+For rk3588, both gmac_phy_intf_sel_mask and clock.rmii_mode_mask are set in
+rk3588_init(). When the preceding block executes, it overwrites ret with
+the regmap_write() return value. Then here, ret == PHY_INTF_SEL_RMII
+compares 0 == 4 which is always false, so the rmii_mode bit will never be
+set for rk3588 in RMII mode.
+
+Should ret be saved before the preceding block so its original value
+(the interface selector) can be used here?
+
 > +
-> +	case 1:
-> +		bsp_priv->gmac_phy_intf_sel_mask = GENMASK_U16(11, 9);
-> +		return 0;
-> +
-> +	default:
-> +		return -EINVAL;
+> +		ret = rk_write_clock_grf_reg(bsp_priv, val);
+> +		if (ret < 0)
+> +			return ret;
 > +	}
-> +}
 
 [ ... ]
-
->  static void rk3588_set_to_rgmii(struct rk_priv_data *bsp_priv,
->  				int tx_delay, int rx_delay)
->  {
->  	u32 offset_con, id = bsp_priv->id;
->
->  	offset_con = bsp_priv->id == 1 ? RK3588_GRF_GMAC_CON9 :
->  					 RK3588_GRF_GMAC_CON8;
->
-> -	regmap_write(bsp_priv->php_grf, RK3588_GRF_GMAC_CON0,
-> -		     RK3588_GMAC_PHY_INTF_SEL(id, PHY_INTF_SEL_RGMII));
-
-This removed code wrote to php_grf, but the new centralized code in
-rk_gmac_powerup() writes to grf instead. Is this intentional?
-
-[ ... ]
-
->  static void rk3588_set_to_rmii(struct rk_priv_data *bsp_priv)
->  {
-> -	regmap_write(bsp_priv->php_grf, RK3588_GRF_GMAC_CON0,
-> -		     RK3588_GMAC_PHY_INTF_SEL(bsp_priv->id, PHY_INTF_SEL_RMII));
-
-Same here - the original wrote to php_grf.
-
-[ ... ]
-
->  static const struct rk_gmac_ops rk3588_ops = {
-> +	.init = rk3588_init,
->  	.set_to_rgmii = rk3588_set_to_rgmii,
->  	.set_to_rmii = rk3588_set_to_rmii,
->  	.set_speed = rk3588_set_gmac_speed,
->  	.set_clock_selection = rk3588_set_clock_selection,
-> +
-> +	.gmac_grf_reg = RK3588_GRF_GMAC_CON0,
-
-This sets gmac_grf_reg to RK3588_GRF_GMAC_CON0, which is then used by
-rk_gmac_powerup() to write to bsp_priv->grf.
-
-[ ... ]
-
-> @@ -1654,6 +1696,7 @@ static int rk_gmac_check_ops(struct rk_priv_data *bsp_priv)
->  static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
->  {
->  	struct device *dev = bsp_priv->dev;
-> +	u32 val;
->  	int ret;
-
-[ ... ]
-
-> +	if (bsp_priv->gmac_phy_intf_sel_mask ||
-> +	    bsp_priv->gmac_rmii_mode_mask) {
-> +		/* If defined, encode the phy_intf_sel value */
-> +		val = rk_encode_wm16(ret, bsp_priv->gmac_phy_intf_sel_mask);
-> +
-> +		/* If defined, encode the RMII mode mask setting. */
-> +		val |= rk_encode_wm16(ret == PHY_INTF_SEL_RMII,
-> +				      bsp_priv->gmac_rmii_mode_mask);
-> +
-> +		ret = regmap_write(bsp_priv->grf, bsp_priv->gmac_grf_reg, val);
-                                 ^^^^^^^^^^^^
-
-For RK3588, this writes to bsp_priv->grf at offset RK3588_GRF_GMAC_CON0
-(0x0008). However, the original code wrote to bsp_priv->php_grf at the
-same offset. These are different regmaps obtained from different device
-tree phandles (rockchip,grf vs rockchip,php-grf).
-
-Does RK3588 need a mechanism to write the PHY_INTF_SEL to php_grf rather
-than grf? The clock register already has clock_grf_reg_in_php support
-to select which regmap to use, but there does not appear to be a similar
-mechanism for gmac_grf_reg.
--- 
-pw-bot: cr
 
 _______________________________________________
 Linux-rockchip mailing list
