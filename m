@@ -4,53 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BD2CF65DB
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 12:12:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 836A1CF65F0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 12:32:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mTnQaNsBkyuFDWzklAlCPmnNPazHwXg4mKr2ZSoi8Ns=; b=KsfHvVB2djRlt5
-	3z60Ja7WDKKEeHRXFwnq7YRVnb5rPJGW/mGm70D2vejBkT+A5jRpYg4y/1Ztu1fZGZ7UV4UEPjwgA
-	7vqo8mNN9c736k606DWQkS9siBmbEh+LjFdPCBW6lqvN9Zyc/GjbxsE05Bs+ITa74z3pFT61pn6jH
-	QsGh76JYUoCEztzNEpUSx4QbiKT91f4xxhKn04XuTJyCOrHcG8b+F7PvrdYcJCfPZRc+VAWpnPsVg
-	jE4KtQeDivAOcRTCiSAofd9wPaU+wxMdFU2UjlU/MVY4II3DqOn77sEHGVlxlIPmv5USKQot8dYUz
-	TjMOB0X9X6wkbuH4BOLg==;
+	List-Owner; bh=yiQFoH1Ey7OXqrp50GyjcooZSN3NJWu+C/k6TU6QPxc=; b=EHe2SQcICd4KBp
+	tDKK46mpppmzV6t7b27jxh+/WYah/D0umyO++cJ6P831x7cXgU/2g8gytONDfJUWyl/Zs8eGkb5y3
+	/PUn62g+WEeUSHrf+wCMGpF+7bIan6Huw1OHG/4sI7B8+NbNtLhZf2SisSGLOLDpV2qgnq1IJhUeF
+	8iKBsBz3bg2aspKzyB7Oul2p4NdLE/CgLLnwlsaTjqFWca68+413MFsoGl9P1+0R19FA+nXFfF/Pi
+	7E3KwIO6NnZgXCV/79OJk4RWEEeWQawNTZQ7T8FJLL8ygGn0PIPDsrVqasRAsphtONZhtt4id929A
+	tpObjINcMt94RWJN7cAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkLSS-0000000CUdD-3cxL;
-	Mon, 26 Jan 2026 12:12:40 +0000
+	id 1vkLlP-0000000CXYf-2IAb;
+	Mon, 26 Jan 2026 12:32:15 +0000
 Received: from foss.arm.com ([217.140.110.172])
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkLSQ-0000000CUcj-2Rsu
-	for linux-rockchip@lists.infradead.org;
-	Mon, 26 Jan 2026 12:12:39 +0000
+	id 1vkLlM-0000000CXXz-46Qx;
+	Mon, 26 Jan 2026 12:32:14 +0000
 Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5E6B7339;
-	Mon, 26 Jan 2026 04:12:29 -0800 (PST)
-Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com [10.1.196.85])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 852153F5CA;
-	Mon, 26 Jan 2026 04:12:34 -0800 (PST)
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id C6D1A339;
+	Mon, 26 Jan 2026 04:32:04 -0800 (PST)
+Received: from 010265703453.arm.com (unknown [10.57.51.176])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 8B97B3F5CA;
+	Mon, 26 Jan 2026 04:32:10 -0800 (PST)
 From: Robin Murphy <robin.murphy@arm.com>
-To: brgl@kernel.org,
-	linusw@kernel.org,
-	heiko@sntech.de
-Cc: sebastian.reichel@collabora.com,
-	m.szyprowski@samsung.com,
-	linux-rockchip@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH] gpio/rockchip: Stop calling pinctrl for set_direction
-Date: Mon, 26 Jan 2026 12:12:26 +0000
-Message-Id: <bddc0469f25843ca5ae0cf578ab3671435ae98a7.1769429546.git.robin.murphy@arm.com>
-X-Mailer: git-send-email 2.39.2.101.g768bb238c484.dirty
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] arm64: dts: rockchip: Clean up NanoPi-R2S Plus
+Date: Mon, 26 Jan 2026 12:32:03 +0000
+Message-Id: <94f66f34d6023887111884093f31a8980e993ef9.1767111968.git.robin.murphy@arm.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_041238_750460_8734D236 
-X-CRM114-Status: GOOD (  13.82  )
+X-CRM114-CacheID: sfid-20260126_043213_084943_C37775CB 
+X-CRM114-Status: UNSURE (   7.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,95 +61,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Marking the whole controller as sleeping due to the pinctrl calls in the
-.direction_{input,output} callbacks has the unfortunate side effect that
-legitimate invocations of .get and .set, which cannot themselves sleep,
-in atomic context now spew WARN()s from gpiolib.
+Apparently something went wonky in the refactoring, and NanoPi R2S Plus
+has ended up "overriding" the GMAC properties from the base R2S include
+with all identical values. Clean up the redundancy.
 
-However, as Heiko points out, the driver doing this is a bit silly to
-begin with, as the pinctrl .gpio_set_direction hook doesn't even care
-about the direction, the hook is only used to claim the mux. And sure
-enough, the .gpio_request_enable hook exists to serve this very purpose,
-so switch to that and remove the problematic business entirely.
-
-Cc: stable@vger.kernel.org
-Fixes: 20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as sleeping")
-Suggested-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
-If I don't have to redesign bits of the GPIO subsystem itself, this much
-I can do :)
+ .../dts/rockchip/rk3328-nanopi-r2s-plus.dts     | 17 -----------------
+ 1 file changed, 17 deletions(-)
 
-Tested on RK3399 NanoPC-T4 with GPIOs with and without explicit pinctrl,
-and PROVE_LOCKING and DEBUG_ATOMIC_SLEEP stayed quiet (although I don't
-think this board has any shared pins)
----
- drivers/gpio/gpio-rockchip.c       | 8 --------
- drivers/pinctrl/pinctrl-rockchip.c | 9 ++++-----
- 2 files changed, 4 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index bae2061f15fc..0fff4a699f12 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -18,7 +18,6 @@
- #include <linux/of.h>
- #include <linux/of_address.h>
- #include <linux/of_irq.h>
--#include <linux/pinctrl/consumer.h>
- #include <linux/pinctrl/pinconf-generic.h>
- #include <linux/platform_device.h>
- #include <linux/regmap.h>
-@@ -164,12 +163,6 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
- 	unsigned long flags;
- 	u32 data = input ? 0 : 1;
- 
--
--	if (input)
--		pinctrl_gpio_direction_input(chip, offset);
--	else
--		pinctrl_gpio_direction_output(chip, offset);
--
- 	raw_spin_lock_irqsave(&bank->slock, flags);
- 	rockchip_gpio_writel_bit(bank, offset, data, bank->gpio_regs->port_ddr);
- 	raw_spin_unlock_irqrestore(&bank->slock, flags);
-@@ -593,7 +586,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	gc->ngpio = bank->nr_pins;
- 	gc->label = bank->name;
- 	gc->parent = bank->dev;
--	gc->can_sleep = true;
- 
- 	ret = gpiochip_add_data(gc, bank);
- 	if (ret) {
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index e44ef262beec..2fc67aeafdb3 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -3545,10 +3545,9 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
- 	return 0;
- }
- 
--static int rockchip_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
--					   struct pinctrl_gpio_range *range,
--					   unsigned offset,
--					   bool input)
-+static int rockchip_pmx_gpio_request_enable(struct pinctrl_dev *pctldev,
-+					    struct pinctrl_gpio_range *range,
-+					    unsigned int offset)
- {
- 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
- 	struct rockchip_pin_bank *bank;
-@@ -3562,7 +3561,7 @@ static const struct pinmux_ops rockchip_pmx_ops = {
- 	.get_function_name	= rockchip_pmx_get_func_name,
- 	.get_function_groups	= rockchip_pmx_get_groups,
- 	.set_mux		= rockchip_pmx_set,
--	.gpio_set_direction	= rockchip_pmx_gpio_set_direction,
-+	.gpio_request_enable	= rockchip_pmx_gpio_request_enable,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+index f72b1518c14f..4eff0503928a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts
+@@ -29,20 +29,3 @@ &emmc {
+ 	pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus8>;
+ 	status = "okay";
  };
- 
- /*
+-
+-&gmac2io {
+-	phy-handle = <&rtl8211e>;
+-	tx_delay = <0x24>;
+-	rx_delay = <0x18>;
+-
+-	mdio {
+-		rtl8211e: ethernet-phy@1 {
+-			reg = <1>;
+-			pinctrl-0 = <&eth_phy_reset_pin>;
+-			pinctrl-names = "default";
+-			reset-assert-us = <10000>;
+-			reset-deassert-us = <50000>;
+-			reset-gpios = <&gpio1 RK_PC2 GPIO_ACTIVE_LOW>;
+-		};
+-	};
+-};
 -- 
-2.39.2.101.g768bb238c484.dirty
+2.34.1
 
 
 _______________________________________________
