@@ -4,57 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 784EDD19502
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 16:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09693D19502
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 17:09:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cWdWv2QZeihd4dxzaA1/54FVIa3iiCQVBg4I5URGue8=; b=r9AaN7z32oILo5
-	7vO2BbOGiFBTgR5OW+tB+FGLCR4Pq8nGxIEcf01BnthahvO5oTUfcg1JfUX6lRpLD4DkBTSd0OqHW
-	HKZOsXzJwoQjIeOBS9prnq/b/TRzvUk9r4KmpYUD1145iS1okyc13SFP27rbebxNtThKbytUVqflC
-	scBeV18fNdZ5b/T/LeaieJpgd/vbZ08OJNEfGLt2w3He+ICICn0UqpYWgpFbXhMwMJI6MxEk7XZ8U
-	nRzrNLeV+tQmN7p5zuM6BTeVJlZ8kwHW4QF1uA6h+lIOq4NmcZuUmbP74trJ2zAtlIyD7q9DdOS/k
-	+xUcNs1ph+nl7mN2+Djw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1P5TrL52zNQ0zEJAaz7hwNx4cEnRh69PB7wR+zwLPrw=; b=hkPoEobTlxqs5z
+	zWIGW91gJTwGUmwLPFMHWfnoMUVa7NPKOEVCnpCgMQSuqUwYoSolJw4q9OK4BUiec9XanYs+PBWv2
+	bL66GlrfHCde57a2xrtxI0aI9hjKFAWwVyDHRtHn0ZnG6Vs/aUYz8Qr3LEBnFIMg01tAwfaUp7wci
+	jQMXBPBA58Zh/gX/6B5zfDUl/F6skOYeC66RWldfHQvevwy09y9rXPjCdyyIIV9448wGRTN9lYEhK
+	Dr87u/jerLr02EJM0HVQHJMZg8DayT5y0OkompKeL0u3/2XsgwPCEmnpASSSEgNc+ShJsGsFmp61N
+	pk10Plx3o17tlEc02N5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkPbv-0000000CsEq-0tSu;
-	Mon, 26 Jan 2026 16:38:43 +0000
+	id 1vkQ58-0000000CvWa-06xi;
+	Mon, 26 Jan 2026 17:08:54 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkPbs-0000000CsEV-3lZv
-	for linux-rockchip@lists.infradead.org;
-	Mon, 26 Jan 2026 16:38:42 +0000
+	id 1vkQ56-0000000CvUH-0iMI;
+	Mon, 26 Jan 2026 17:08:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=gzddAU+RboppgCwaNHzXk3IOvCbzpxU1v9uinFxITAQ=; b=ZqRrhOeX8v3fY66YMAulspBQhU
-	mAHebhBX/PNvGnCyoTsp+sIqbJRWfuwDwOw4A5rdnKeiV5DEBnME/ZLPol/TRyjh/BLWuVaZkhrwJ
-	Ygfznj2PYb8oEBzPldzr3g7MF8nrI0hktmTGyDgSynRS6oC8Zc15BhNpRNuh0M7uZRV/QP8psJAwH
-	5OU0MnjXh6Xnh8xLuJMWVEW8v7RxMdbi0W8Eh3fPtOGjZElncHJIIWpnKVO2PT+fDbB9G2B0EB5Tz
-	JhhopNvlOhT3h0yyYXg1xBqhuTEwGDJL+W5MKj2ZdXN5ASWJrFJvaWuxpGJ/xM3F3IRffJDS/k4WS
-	4mXSHUTQ==;
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=KLkm2SXxYAqywK7J66VoIRSl6/ndSOtBJAmzzNChgmQ=; b=A+qF168uNc0We3BIlPN2S902p+
+	WBur0Py/hf1/tlYzh6ydr5dLyr5FX4+nDan64FPARlaaE639uTfLR26GPBZrbdEImi6FDb7sTlkbd
+	L4xPOxcVUKqNyoGqmXik8vFVYPiT8yYR79aFOhsaFyCFYpbGH2/SQxPdXWWG5BiGa1nmrws+h9AmW
+	MV0wsoSlQwDxnpl2PPjyg+zYNkVqIZ74CDJKafUHw2QtgidSMSd0XaRY7ITq4fI2/SX3m5cBygAOd
+	LxatpjfY/3vVqeYRUL2wq3Yvyowo+cs2GfVHjaMXiZMcy5A8cxwsmN4UZha1sstJVcFeoQTbHmMXL
+	RStyPFDw==;
 Received: from i53875a0f.versanet.de ([83.135.90.15] helo=diego.localnet)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vkPbe-004dz9-4w; Mon, 26 Jan 2026 17:38:26 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: brgl@kernel.org, linusw@kernel.org, Robin Murphy <robin.murphy@arm.com>
-Cc: sebastian.reichel@collabora.com, m.szyprowski@samsung.com,
- linux-rockchip@lists.infradead.org, linux-gpio@vger.kernel.org,
- linux-kernel@vger.kernel.org, stable@vger.kernel.org
-Subject: Re: [PATCH] gpio/rockchip: Stop calling pinctrl for set_direction
-Date: Mon, 26 Jan 2026 17:38:25 +0100
-Message-ID: <10827351.CDJkKcVGEf@diego>
-In-Reply-To: <bddc0469f25843ca5ae0cf578ab3671435ae98a7.1769429546.git.robin.murphy@arm.com>
-References: <bddc0469f25843ca5ae0cf578ab3671435ae98a7.1769429546.git.robin.murphy@arm.com>
+	id 1vkQ53-004eOe-Ll; Mon, 26 Jan 2026 18:08:50 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip driver changes for 6.20 #1
+Date: Mon, 26 Jan 2026 18:08:49 +0100
+Message-ID: <7385436.MhkbZ0Pkbq@diego>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_083840_990073_FE803159 
-X-CRM114-Status: GOOD (  25.36  )
+X-CRM114-CacheID: sfid-20260126_090852_216624_2ED15F20 
+X-CRM114-Status: UNSURE (   9.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,80 +63,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAyNi4gSmFudWFyIDIwMjYsIDEzOjEyOjI2IE1pdHRlbGV1cm9ww6Rpc2NoZSBO
-b3JtYWx6ZWl0IHNjaHJpZWIgUm9iaW4gTXVycGh5Ogo+IE1hcmtpbmcgdGhlIHdob2xlIGNvbnRy
-b2xsZXIgYXMgc2xlZXBpbmcgZHVlIHRvIHRoZSBwaW5jdHJsIGNhbGxzIGluIHRoZQo+IC5kaXJl
-Y3Rpb25fe2lucHV0LG91dHB1dH0gY2FsbGJhY2tzIGhhcyB0aGUgdW5mb3J0dW5hdGUgc2lkZSBl
-ZmZlY3QgdGhhdAo+IGxlZ2l0aW1hdGUgaW52b2NhdGlvbnMgb2YgLmdldCBhbmQgLnNldCwgd2hp
-Y2ggY2Fubm90IHRoZW1zZWx2ZXMgc2xlZXAsCj4gaW4gYXRvbWljIGNvbnRleHQgbm93IHNwZXcg
-V0FSTigpcyBmcm9tIGdwaW9saWIuCj4gCj4gSG93ZXZlciwgYXMgSGVpa28gcG9pbnRzIG91dCwg
-dGhlIGRyaXZlciBkb2luZyB0aGlzIGlzIGEgYml0IHNpbGx5IHRvCj4gYmVnaW4gd2l0aCwgYXMg
-dGhlIHBpbmN0cmwgLmdwaW9fc2V0X2RpcmVjdGlvbiBob29rIGRvZXNuJ3QgZXZlbiBjYXJlCj4g
-YWJvdXQgdGhlIGRpcmVjdGlvbiwgdGhlIGhvb2sgaXMgb25seSB1c2VkIHRvIGNsYWltIHRoZSBt
-dXguIEFuZCBzdXJlCj4gZW5vdWdoLCB0aGUgLmdwaW9fcmVxdWVzdF9lbmFibGUgaG9vayBleGlz
-dHMgdG8gc2VydmUgdGhpcyB2ZXJ5IHB1cnBvc2UsCj4gc28gc3dpdGNoIHRvIHRoYXQgYW5kIHJl
-bW92ZSB0aGUgcHJvYmxlbWF0aWMgYnVzaW5lc3MgZW50aXJlbHkuCj4gCj4gQ2M6IHN0YWJsZUB2
-Z2VyLmtlcm5lbC5vcmcKPiBGaXhlczogMjBjZjJhZWQ4OWFjICgiZ3Bpbzogcm9ja2NoaXA6IG1h
-cmsgdGhlIEdQSU8gY29udHJvbGxlciBhcyBzbGVlcGluZyIpCj4gU3VnZ2VzdGVkLWJ5OiBIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IFNpZ25lZC1vZmYtYnk6IFJvYmluIE11cnBo
-eSA8cm9iaW4ubXVycGh5QGFybS5jb20+CgpUaGlzIHJlYWxseSBsb29rcyBncmVhdCBhbmQgc29s
-dmVzIHRoZSBwcm9ibGVtIG9mIHRoZSBzbGVlcGluZyBncGlvLWRyaXZlcgppbiBhIG5pY2Ugd2F5
-LiBFc3BlY2lhbGx5IGFzIHdlIHJlYWxseSBvbmx5IG5lZWQgdGhlIHBpbm11eCBvbiByZXF1ZXN0
-CmF0IGFsbC4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoK
-PiAtLS0KPiBJZiBJIGRvbid0IGhhdmUgdG8gcmVkZXNpZ24gYml0cyBvZiB0aGUgR1BJTyBzdWJz
-eXN0ZW0gaXRzZWxmLCB0aGlzIG11Y2gKPiBJIGNhbiBkbyA6KQo+IAo+IFRlc3RlZCBvbiBSSzMz
-OTkgTmFub1BDLVQ0IHdpdGggR1BJT3Mgd2l0aCBhbmQgd2l0aG91dCBleHBsaWNpdCBwaW5jdHJs
-LAo+IGFuZCBQUk9WRV9MT0NLSU5HIGFuZCBERUJVR19BVE9NSUNfU0xFRVAgc3RheWVkIHF1aWV0
-IChhbHRob3VnaCBJIGRvbid0Cj4gdGhpbmsgdGhpcyBib2FyZCBoYXMgYW55IHNoYXJlZCBwaW5z
-KQo+IC0tLQo+ICBkcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5jICAgICAgIHwgOCAtLS0tLS0t
-LQo+ICBkcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5jIHwgOSArKysrLS0tLS0KPiAg
-MiBmaWxlcyBjaGFuZ2VkLCA0IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQo+IAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncGlvL2dw
-aW8tcm9ja2NoaXAuYwo+IGluZGV4IGJhZTIwNjFmMTVmYy4uMGZmZjRhNjk5ZjEyIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL2dwaW8v
-Z3Bpby1yb2NrY2hpcC5jCj4gQEAgLTE4LDcgKzE4LDYgQEAKPiAgI2luY2x1ZGUgPGxpbnV4L29m
-Lmg+Cj4gICNpbmNsdWRlIDxsaW51eC9vZl9hZGRyZXNzLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9v
-Zl9pcnEuaD4KPiAtI2luY2x1ZGUgPGxpbnV4L3BpbmN0cmwvY29uc3VtZXIuaD4KPiAgI2luY2x1
-ZGUgPGxpbnV4L3BpbmN0cmwvcGluY29uZi1nZW5lcmljLmg+Cj4gICNpbmNsdWRlIDxsaW51eC9w
-bGF0Zm9ybV9kZXZpY2UuaD4KPiAgI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgo+IEBAIC0xNjQs
-MTIgKzE2Myw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ3Bpb19zZXRfZGlyZWN0aW9uKHN0cnVj
-dCBncGlvX2NoaXAgKmNoaXAsCj4gIAl1bnNpZ25lZCBsb25nIGZsYWdzOwo+ICAJdTMyIGRhdGEg
-PSBpbnB1dCA/IDAgOiAxOwo+ICAKPiAtCj4gLQlpZiAoaW5wdXQpCj4gLQkJcGluY3RybF9ncGlv
-X2RpcmVjdGlvbl9pbnB1dChjaGlwLCBvZmZzZXQpOwo+IC0JZWxzZQo+IC0JCXBpbmN0cmxfZ3Bp
-b19kaXJlY3Rpb25fb3V0cHV0KGNoaXAsIG9mZnNldCk7Cj4gLQo+ICAJcmF3X3NwaW5fbG9ja19p
-cnFzYXZlKCZiYW5rLT5zbG9jaywgZmxhZ3MpOwo+ICAJcm9ja2NoaXBfZ3Bpb193cml0ZWxfYml0
-KGJhbmssIG9mZnNldCwgZGF0YSwgYmFuay0+Z3Bpb19yZWdzLT5wb3J0X2Rkcik7Cj4gIAlyYXdf
-c3Bpbl91bmxvY2tfaXJxcmVzdG9yZSgmYmFuay0+c2xvY2ssIGZsYWdzKTsKPiBAQCAtNTkzLDcg
-KzU4Niw2IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ3Bpb2xpYl9yZWdpc3RlcihzdHJ1Y3Qgcm9j
-a2NoaXBfcGluX2JhbmsgKmJhbmspCj4gIAlnYy0+bmdwaW8gPSBiYW5rLT5ucl9waW5zOwo+ICAJ
-Z2MtPmxhYmVsID0gYmFuay0+bmFtZTsKPiAgCWdjLT5wYXJlbnQgPSBiYW5rLT5kZXY7Cj4gLQln
-Yy0+Y2FuX3NsZWVwID0gdHJ1ZTsKPiAgCj4gIAlyZXQgPSBncGlvY2hpcF9hZGRfZGF0YShnYywg
-YmFuayk7Cj4gIAlpZiAocmV0KSB7Cj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGluY3RybC9waW5j
-dHJsLXJvY2tjaGlwLmMgYi9kcml2ZXJzL3BpbmN0cmwvcGluY3RybC1yb2NrY2hpcC5jCj4gaW5k
-ZXggZTQ0ZWYyNjJiZWVjLi4yZmM2N2FlYWZkYjMgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9waW5j
-dHJsL3BpbmN0cmwtcm9ja2NoaXAuYwo+ICsrKyBiL2RyaXZlcnMvcGluY3RybC9waW5jdHJsLXJv
-Y2tjaGlwLmMKPiBAQCAtMzU0NSwxMCArMzU0NSw5IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcG14
-X3NldChzdHJ1Y3QgcGluY3RybF9kZXYgKnBjdGxkZXYsIHVuc2lnbmVkIHNlbGVjdG9yLAo+ICAJ
-cmV0dXJuIDA7Cj4gIH0KPiAgCj4gLXN0YXRpYyBpbnQgcm9ja2NoaXBfcG14X2dwaW9fc2V0X2Rp
-cmVjdGlvbihzdHJ1Y3QgcGluY3RybF9kZXYgKnBjdGxkZXYsCj4gLQkJCQkJICAgc3RydWN0IHBp
-bmN0cmxfZ3Bpb19yYW5nZSAqcmFuZ2UsCj4gLQkJCQkJICAgdW5zaWduZWQgb2Zmc2V0LAo+IC0J
-CQkJCSAgIGJvb2wgaW5wdXQpCj4gK3N0YXRpYyBpbnQgcm9ja2NoaXBfcG14X2dwaW9fcmVxdWVz
-dF9lbmFibGUoc3RydWN0IHBpbmN0cmxfZGV2ICpwY3RsZGV2LAo+ICsJCQkJCSAgICBzdHJ1Y3Qg
-cGluY3RybF9ncGlvX3JhbmdlICpyYW5nZSwKPiArCQkJCQkgICAgdW5zaWduZWQgaW50IG9mZnNl
-dCkKPiAgewo+ICAJc3RydWN0IHJvY2tjaGlwX3BpbmN0cmwgKmluZm8gPSBwaW5jdHJsX2Rldl9n
-ZXRfZHJ2ZGF0YShwY3RsZGV2KTsKPiAgCXN0cnVjdCByb2NrY2hpcF9waW5fYmFuayAqYmFuazsK
-PiBAQCAtMzU2Miw3ICszNTYxLDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBwaW5tdXhfb3BzIHJv
-Y2tjaGlwX3BteF9vcHMgPSB7Cj4gIAkuZ2V0X2Z1bmN0aW9uX25hbWUJPSByb2NrY2hpcF9wbXhf
-Z2V0X2Z1bmNfbmFtZSwKPiAgCS5nZXRfZnVuY3Rpb25fZ3JvdXBzCT0gcm9ja2NoaXBfcG14X2dl
-dF9ncm91cHMsCj4gIAkuc2V0X211eAkJPSByb2NrY2hpcF9wbXhfc2V0LAo+IC0JLmdwaW9fc2V0
-X2RpcmVjdGlvbgk9IHJvY2tjaGlwX3BteF9ncGlvX3NldF9kaXJlY3Rpb24sCj4gKwkuZ3Bpb19y
-ZXF1ZXN0X2VuYWJsZQk9IHJvY2tjaGlwX3BteF9ncGlvX3JlcXVlc3RfZW5hYmxlLAo+ICB9Owo+
-ICAKPiAgLyoKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+The following changes since commit 8f0b4cce4481fb22653697cced8d0d04027cb1e8:
+
+  Linux 6.19-rc1 (2025-12-14 16:05:07 +1200)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v6.20-rockchip-drivers1
+
+for you to fetch changes up to 75fb63ae031211e9264ac888fabc2ca9cd3fcccf:
+
+  soc: rockchip: grf: Support multiple grf to be handled (2026-01-16 11:33:50 +0100)
+
+----------------------------------------------------------------
+Two fixes for the default-settings code for the General-Register-Files,
+which sets system defaults for some settings like disabling the automatic
+jtag/sdmmc switching.
+
+One is a corrected register-offset and the other makes the code actually
+look for all matched GRF instances, which it didn't do before.
+
+----------------------------------------------------------------
+Shawn Lin (2):
+      soc: rockchip: grf: Fix wrong RK3576_IOCGRF_MISC_CON definition
+      soc: rockchip: grf: Support multiple grf to be handled
+
+ drivers/soc/rockchip/grf.c | 57 +++++++++++++++++++++++-----------------------
+ 1 file changed, 28 insertions(+), 29 deletions(-)
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
