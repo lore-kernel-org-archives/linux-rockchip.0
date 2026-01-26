@@ -4,78 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A547ACF65D0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 10:25:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FCDCCF65E2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 11:44:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+53YT7AdUXZlA+Cs35KijQVLS6LQi1a3UpiVeG1D3IA=; b=W5ctKVuBWRjaqX
-	/GWB1C/kpOYei9I50Q2lT/Gk6o34202q6rEjnjYRfexTa1YKXtGid7zRbfKDgOg1gBE/w66HOJ1ev
-	WVrrzB/6vSppKtxE7xQK/G+Q9IRhXBwOcXI3qCTlX4jifjrVRtcMk+PccjAfGhtO9FI9te1eOn5xg
-	QdqDQbVTFyMfRWz1AoJPnjn0fD7VL2Ux2rPxYk30Q4u+ltkpnIcYtAxrCK8vtPYn9cyhPxHwbd5rc
-	afNqrHYlWqFVTFwQB2h9Rs3G/FhQnwGexCbGG+neVH5KE5LV9+ulb2HoAcV3tP8cYVPfYCQlqxSqv
-	NnOxSaYeeuTgNzd8xzfg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=efqC8a2oDCgkkHblPwEma7X87r4MIQbSO6h5+V5tCOI=; b=QIvsRfGJ4/LVX3
+	ieZH+hxzZJSSIvC0xoOD8+Peo3+4spewX3th6N10gTEUoVbhgl7B8qzAIy8Lrsf9pixGFIVCG/3X0
+	P1UCdjwyVkGWGlQDYsJHHOxcg/pcfrYtl1kUqWc4/RdiPIzMkINV8+XpzWIxUNzsXKpu3hp8+MMLm
+	zlmRlnyCGby+PPTFmQFyP4sbv9ncDoz+5H48+iQ1xITTZ1Ef/ghIfhRLgJ6uV7ynWVv54bu+cGBLX
+	ZQKztfYr0aBmanZDJnW+xT7rnwe1a3iqZpsJ6QcNt3Zlb7U3X32JRfd5pSq+YrERvFf3KtlZOANDI
+	y0DhwfLMbYgzSQIdTbRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkJmZ-0000000CHde-0tJn;
-	Mon, 26 Jan 2026 10:25:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vkL17-0000000CQRi-3JfB;
+	Mon, 26 Jan 2026 11:44:25 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkJmX-0000000CHd2-0XSM;
-	Mon, 26 Jan 2026 10:25:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 43EE4600B0;
-	Mon, 26 Jan 2026 10:25:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CABA5C116C6;
-	Mon, 26 Jan 2026 10:25:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769423116;
-	bh=X15mCfB1eLkM+Q70lpbeFtmKLy3xRRhtPt0DJGPJd1I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kigC4KnPkwuten2W4vry7/Q7uLnx5jkxhwNDPy0SmE0+vvbSCHF02ake/mqQ6lpDx
-	 k3o+5GdnskVWEhwFv+soH8UL3BFwTStxAXpVkb7npdZKtA0UMIAzg1tVPsbpFK6Rg6
-	 4I1DwGLJocJGNLwVtaDzP5qs/IXjbThjudzizPR9NNoCayirZ5zFwD+EhinoKSrkqO
-	 FEa8FbY08hWJdyw1ez2QCO5ymgyh4sujmDe9gD6sM5qhEicDEJ9FfhMQgnchnA1N6u
-	 xE9gTZtR5iqv2+uoDoCPjx2r7bV7yVpvWCG0stjTBpjqqoqt2A+mm+zAfNOJhw0pf0
-	 WqfejPPvWWhng==
-Date: Mon, 26 Jan 2026 11:25:03 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Koichiro Den <den@valinux.co.jp>
-Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
-	Frank.Li@nxp.com, vigneshr@ti.com, s-vadapalli@ti.com,
-	hongxing.zhu@nxp.com, l.stach@pengutronix.de, shawnguo@kernel.org,
-	s.hauer@pengutronix.de, kernel@pengutronix.de, festevam@gmail.com,
-	minghuan.Lian@nxp.com, mingkai.hu@nxp.com, roy.zang@nxp.com,
-	jesper.nilsson@axis.com, heiko@sntech.de,
-	srikanth.thokala@intel.com, marek.vasut+renesas@gmail.com,
-	yoshihiro.shimoda.uh@renesas.com, geert+renesas@glider.be,
-	magnus.damm@gmail.com, christian.bruel@foss.st.com,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	thierry.reding@gmail.com, jonathanh@nvidia.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
-	18255117159@163.com, shawn.lin@rock-chips.com,
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
-	vidyas@nvidia.com, shuah@kernel.org, linux-omap@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v10 4/8] PCI: dwc: ep: Support BAR subrange inbound
- mapping via Address Match Mode iATU
-Message-ID: <aXdA_6shI23JBswI@ryzen>
-References: <20260124145012.2794108-1-den@valinux.co.jp>
- <20260124145012.2794108-5-den@valinux.co.jp>
+	id 1vkL14-0000000CQR0-4Ak8;
+	Mon, 26 Jan 2026 11:44:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=yBZgVQPE5pyIHc9AqGzEXNSbNLwIwnbp7Ek3gt6UiS0=; b=Y8lwjlEdMnBjJgPevGq9soTwBU
+	BO0PRHynTRQjso22RDyJLEtu8GL4on7kPvOqYgrb1FcLsxveUyHwIABeCBrvb1K95kQlbHJiWy/Zz
+	VNT7U1GToRrpnBcczM+N0v9ZrS5D8zwnfSUARTyfTgWkGv3+Ni0aGuEd7d9k6l4iXyFfREqGv3VEP
+	sBPs7f7SxUmM+6ptdeonH/owGEzhrhwpw2fEmXutCg9xUq1SsQGgJHk4N5AGLt0LQlEcwkkd1xvkR
+	7TQ/SrdcRybIfBYpRCzVAJdUW9Oa/p6Jc/YAGOkNOo2rkzoDgAEgzwZ0OZzs7u7QR6gqreJp3WJ/a
+	E8DvvxHA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:35628)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vkL0x-000000004dB-0NVz;
+	Mon, 26 Jan 2026 11:44:15 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vkL0t-000000004vB-2rTY;
+	Mon, 26 Jan 2026 11:44:11 +0000
+Date: Mon, 26 Jan 2026 11:44:11 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: [PATCH net-next v2 00/22] net: stmmac: rk: simplify per-SoC
+ configuration
+Message-ID: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260124145012.2794108-5-den@valinux.co.jp>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260126_034423_053705_5AEC5F43 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,35 +84,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Jan 24, 2026 at 11:50:08PM +0900, Koichiro Den wrote:
-> Extend dw_pcie_ep_set_bar() to support inbound mappings for BAR
-> subranges using Address Match Mode IB iATU when pci_epf_bar.num_submap
-> is non-zero.
-> 
-> Rename the existing BAR-match helper into dw_pcie_ep_ib_atu_bar() and
-> introduce dw_pcie_ep_ib_atu_addr() for Address Match Mode. When
-> num_submap is non-zero, read the assigned BAR base address and program
-> one inbound iATU window per subrange. Validate the submap array before
-> programming:
-> - each subrange is aligned to pci->region_align
-> - subranges cover the whole BAR (no gaps and no overlaps)
-> 
-> Track Address Match Mode mappings and tear them down on clear_bar() and
-> on set_bar() error paths to avoid leaving half-programmed state or
-> untranslated BAR holes.
-> 
-> Advertise this capability by extending the common feature bit
-> initializer macro (DWC_EPC_COMMON_FEATURES).
-> 
-> This enables multiple inbound windows within a single BAR, which is
-> useful on platforms where usable BARs are scarce but EPFs need multiple
-> inbound regions.
-> 
-> Reviewed-by: Frank Li <Frank.Li@nxp.com>
-> Signed-off-by: Koichiro Den <den@valinux.co.jp>
-> ---
+[Please note: due to google's spam filtering, I can no longer send
+patch series to @gmail.com addresses, and thus, to save being spammed
+with failed deliveries, I'm dropping such addresses from my patch
+series. Stop giving google so much power, use other email services.]
 
-Reviewed-by: Niklas Cassel <cassel@kernel.org>
+dwmac-rk has an excessive variability between each individual SoCs
+which makes this file extremely large.
+
+This series reworks the per-SoC handling, moving the majority of it
+out of code and into data in a way that greatly reduces the lines of
+code necessary for each SoC, moving the code into the higher level
+functions in this file.
+
+In order to do this, we need a version of FIELD_PREP_WM16() that works
+with non-constant masks, so we introduce rk_encode_wm16().
+
+We change the definitions to reveal the fact that in all of this
+variability, there is a lot of commonality in terms of the values of
+the bitfields, even though these bitfields appear to be randomly
+placed within registers.
+
+Both of these allow us to progressively move to a situation where
+the SoC independent code can, in the mojority of cases, program these
+RGMII clocks, RMII clocks and RMII speed without calling any SoC
+specific code.
+
+Further cleanup may be possible with the (actually incorrect) handling
+of RGMII delays, but this is not addressed in this already large
+series.
+
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 1237 ++++++++++--------------
+ 1 file changed, 508 insertions(+), 729 deletions(-)
+
+v2: fix AI review comments
+
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
