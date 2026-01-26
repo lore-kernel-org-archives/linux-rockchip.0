@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D8BCF65E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 11:45:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48783CF65DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 11:45:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
 	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H1s8oNLrEFq8sW56Seq+vcl5h4Vgjnhcmbsl0oOuEho=; b=gvEdNGCFO9aa4Z
-	tVozZ4Ffe5fkwspzg3xNs6Q5DE7fpgK1gR+h6cfCVcmQLvs6h41wH1W4eY7HoByXnKhcu4GBgSq3O
-	ZlOYs9t9L5nIi9W3VbHm+YnygyJnb2vi2rZb2e098ZT44IIC8dLnblbRA83o119qLmOI2A1Y6wJpf
-	FNXCVJ+LEILal2eYobb1eHofUcEyO36W9Z6+CJHynOzhkpvOmCxX9ILjl6V8G2bsReDRYU2VpB5Bb
-	+cQ+Df/z9SDVTpS0t9u37aYJ+fWbLBnIhneOU4A8PxN4H5kd+KTL8q4U0Tq6mZaEWfDdOI8NH/nMU
-	V+lI/bTF/CymT7XVq/EQ==;
+	List-Owner; bh=8fu6rXxF5O94rfSJzymW0Xa0DEzNdeWwff+5JgqBVKo=; b=uY1VYJzexBxQyl
+	5hQySe+Lb7pDXQnPixVfgpWJlK4I/UW+Ml8YGgQjPlMgfB8KkAcrHXpDbU313j1Rsdrdai1iqKGDs
+	YLlvA9+WE9C8UF4uiSN8ERjl6gA4Erpk/wJqg4H9WoyRy3nwKxNdwYUStUT2o42xAPK0sc8rTbLmB
+	ek+I99AR7iivrKjUf4pH3C+7ivGonqOVXf07A724ubr2pTf6ZyljdvNcJIfnEsItuSQwiJ3EV3OJU
+	BEWTOII/MmqsNTA8N1WrGCicw+r+maARiWJk6jTXnDjVebQgHeDNqlckMdALyRCP0soLZ4PtvJhwg
+	Ko6EXhhbIsnWl0ybVX9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkL24-0000000CQen-45mS;
-	Mon, 26 Jan 2026 11:45:24 +0000
+	id 1vkL2A-0000000CQjR-0p05;
+	Mon, 26 Jan 2026 11:45:30 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkL20-0000000CQb1-10ig;
-	Mon, 26 Jan 2026 11:45:21 +0000
+	id 1vkL25-0000000CQeC-2rkQ;
+	Mon, 26 Jan 2026 11:45:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
 	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
 	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=0qGx8UYOulSnUg11qGU4L409UfzsYItsrQ97nAr/FR8=; b=hHpaLz43MGySpdGbuqLG8yse+9
-	TEbi0kl4ewILB0Ej8AJj1w8zjDshHtoEl9a8T0gBDvD+FKIDLewIZKg0s/pq5/E4/QJiJOAAFdrRu
-	E8mVl1F6VaLq9UcUB+p1855s2E6+sZ/hJOMwTdVCGbWpvwfNjyJErOoBBB+4tUnrRQq1EIAar1MwT
-	w2OE0HpUoNe3jgVP1/eG5z1mt5rKGMo9QfTjXVbxVv9T03a64+GHYAJDJqH/WSrH4v3P076ZhAJOQ
-	vxAjwSvuLaZyRO+sD0vlyb2rkAslkpQgbn3wavH4L1WwM6XJQ9yFCqPy4BRJT7RKetiSM6OryJydd
-	IRKgbLVw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:41130 helo=rmk-PC.armlinux.org.uk)
+	bh=jVLFfVd3X1JU5vZWQqTSvIV4WWcbPJ1JZLcb+HxFgbA=; b=n5vf8hGGLLDEyvMmJc3tiY6EQS
+	Pbp6+qtBxcY65cSY9Z4Z397dQVe9a1MZF4jApZIO3XCWCPV5GheC4skN/QNMQEX7TGGnGYfbDN9XI
+	7C36v+NbC0fih7hihhDgs0ABnWzI4eX2id5Pq5vWrGteqsZ4tV3P+wWBjPu0uJltWjUrSRq3Mjz6n
+	8a2SShUKUWEsqH6kkGVjvrEpW0BTecHJwRy54Yzu18o2v50IBD9jNSR69K5kUzcLh1EZvs7hkLMJ5
+	uFFlN1Imvg/njHEkdlfKaEDces97SeDp+k894bNUyJMdAbcfpKEjYmCBx7N13gCmK19r5SUrw0EP+
+	LcgoLesA==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:37956 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
 	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vkL1u-000000004e2-0T9G;
-	Mon, 26 Jan 2026 11:45:14 +0000
+	id 1vkL1z-000000004eM-1jJZ;
+	Mon, 26 Jan 2026 11:45:19 +0000
 Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
 	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vkL1t-00000005usQ-0vjt;
-	Mon, 26 Jan 2026 11:45:13 +0000
+	id 1vkL1y-00000005usW-1TKX;
+	Mon, 26 Jan 2026 11:45:18 +0000
 In-Reply-To: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
 References: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
 From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
@@ -63,15 +63,15 @@ Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	linux-stm32@st-md-mailman.stormreply.com,
 	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next v2 03/22] net: stmmac: rk: convert rk3328 to use
- bsp_priv->id
+Subject: [PATCH net-next v2 04/22] net: stmmac: rk: group MACPHY register
+ offset and fields together
 MIME-Version: 1.0
 Content-Disposition: inline
-Message-Id: <E1vkL1t-00000005usQ-0vjt@rmk-PC.armlinux.org.uk>
-Date: Mon, 26 Jan 2026 11:45:13 +0000
+Message-Id: <E1vkL1y-00000005usW-1TKX@rmk-PC.armlinux.org.uk>
+Date: Mon, 26 Jan 2026 11:45:18 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_034520_287166_FC74CB52 
-X-CRM114-Status: GOOD (  14.07  )
+X-CRM114-CacheID: sfid-20260126_034525_726067_85444330 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,78 +88,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3328 contains two GMAC instances - gmac2io and gmac2phy. While the
-gmac2io instance may be connected to an external PHY, the gmac2phy
-instance is permanently connected via RMII to an on-SoC integrated PHY.
-
-The driver currently tests for the gmac2phy instance by checking
-bsp_priv->integrated_phy (determined from the PHY's phy-is-integrated
-property) and sometimes that the interface mode is RMII. This works
-because the rk3328.dtsi has:
-
-	gmac2phy: ethernet@ff550000 {
-		compatible = "rockchip,rk3328-gmac";
-		phy-mode = "rmii";
-		phy-handle = <&phy>;
-
-		mdio {
-			phy: ethernet-phy@0 {
-				phy-is-integrated;
-			};
-		};
-	};
-
-The driver contains a mechanism to look up the MMIO address in a table
-to determine bsp_priv->id, which is used for every other Rockchip
-device. Switch rk3328 to use this mechanism to determine bsp_priv->id
-and use that to select which GRF register is used for configuration,
-similarly to how the other Rockchip SoCs handle such differences.
+Group the MACPHY register offsets and associated bitfields together
+to become self-documenting which definitions are associated with
+which register.
 
 Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 15 +++++++++------
- 1 file changed, 9 insertions(+), 6 deletions(-)
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 0e66252eb5ae..c8b49ed2064a 100644
+index c8b49ed2064a..5f8d2031b97c 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -570,8 +570,7 @@ static void rk3328_set_to_rmii(struct rk_priv_data *bsp_priv)
- {
- 	unsigned int reg;
+@@ -162,15 +162,17 @@ static int rk_set_clk_mac_speed(struct rk_priv_data *bsp_priv,
+ 	 ((rx) ? soc##_GMAC_RXCLK_DLY_ENABLE : soc##_GMAC_RXCLK_DLY_DISABLE))
  
--	reg = bsp_priv->integrated_phy ? RK3328_GRF_MAC_CON2 :
--		  RK3328_GRF_MAC_CON1;
-+	reg = bsp_priv->id ? RK3328_GRF_MAC_CON2 : RK3328_GRF_MAC_CON1;
- 
- 	regmap_write(bsp_priv->grf, reg,
- 		     RK3328_GMAC_PHY_INTF_SEL(PHY_INTF_SEL_RMII) |
-@@ -591,10 +590,7 @@ static int rk3328_set_speed(struct rk_priv_data *bsp_priv,
- {
- 	unsigned int reg;
- 
--	if (interface == PHY_INTERFACE_MODE_RMII && bsp_priv->integrated_phy)
--		reg = RK3328_GRF_MAC_CON2;
--	else
--		reg = RK3328_GRF_MAC_CON1;
-+	reg = bsp_priv->id ? RK3328_GRF_MAC_CON2 : RK3328_GRF_MAC_CON1;
- 
- 	return rk_set_reg_speed(bsp_priv, &rk3328_reg_speed_data, reg,
- 				interface, speed);
-@@ -614,6 +610,13 @@ static const struct rk_gmac_ops rk3328_ops = {
- 	.set_speed = rk3328_set_speed,
- 	.integrated_phy_powerup = rk3328_integrated_phy_powerup,
- 	.integrated_phy_powerdown = rk_gmac_integrated_ephy_powerdown,
+ #define RK_GRF_MACPHY_CON0		0xb00
+-#define RK_GRF_MACPHY_CON1		0xb04
+-#define RK_GRF_MACPHY_CON2		0xb08
+-#define RK_GRF_MACPHY_CON3		0xb0c
+-
+ #define RK_MACPHY_ENABLE		GRF_BIT(0)
+ #define RK_MACPHY_DISABLE		GRF_CLR_BIT(0)
+ #define RK_MACPHY_CFG_CLK_50M		GRF_BIT(14)
+ #define RK_GMAC2PHY_RMII_MODE		GRF_FIELD(7, 6, 1)
 +
-+	.regs_valid = true,
-+	.regs = {
-+		0xff540000, /* gmac2io */
-+		0xff550000, /* gmac2phy */
-+		0, /* sentinel */
-+	},
- };
++#define RK_GRF_MACPHY_CON1		0xb04
++
++#define RK_GRF_MACPHY_CON2		0xb08
+ #define RK_GRF_CON2_MACPHY_ID		GRF_FIELD(15, 0, 0x1234)
++
++#define RK_GRF_MACPHY_CON3		0xb0c
+ #define RK_GRF_CON3_MACPHY_ID		GRF_FIELD(5, 0, 0x35)
  
- #define RK3366_GRF_SOC_CON6	0x0418
+ static void rk_gmac_integrated_ephy_powerup(struct rk_priv_data *priv)
 -- 
 2.47.3
 
