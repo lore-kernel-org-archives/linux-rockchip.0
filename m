@@ -4,88 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A93ACF65E5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 11:47:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9BD2CF65DB
+	for <linux-rockchip@archiver.kernel.org>; Mon, 26 Jan 2026 12:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
-	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GCiEqQw+XDTSb2AyItlUU3ZbLxbPvb4jKhxUy9cjZAs=; b=cdIyk0e8GZDmE+
-	Wu+5at4NXHtO+g4tscnP4e1neFc71Unkxwz+ty7UjOzhE4GH9PyYBzEdV/5CoUZhwD5anioe2cFJV
-	0p1YCVAkEexEMZEAN3bAhVVMHl+jfRdzgWWRuhpTfUD8dCabZae3dMHey69AjJ8m/OuzIOm2bkuLU
-	8Pv9etWev6p5Gfw93bvEA5zHprOLSeJtoVBS7xGY9q2X9A6BjRFIhp8/n803aCC3Ake6IIUW+5CI6
-	nOw3uQtFP162CUHf1dIWhzgqBhs7OApVo92YloKafDv1SgFoqFEuqNqiQW8IcfoyYjY5JqM0xRrux
-	9RUJnmB34wiqRG/vrw4A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mTnQaNsBkyuFDWzklAlCPmnNPazHwXg4mKr2ZSoi8Ns=; b=KsfHvVB2djRlt5
+	3z60Ja7WDKKEeHRXFwnq7YRVnb5rPJGW/mGm70D2vejBkT+A5jRpYg4y/1Ztu1fZGZ7UV4UEPjwgA
+	7vqo8mNN9c736k606DWQkS9siBmbEh+LjFdPCBW6lqvN9Zyc/GjbxsE05Bs+ITa74z3pFT61pn6jH
+	QsGh76JYUoCEztzNEpUSx4QbiKT91f4xxhKn04XuTJyCOrHcG8b+F7PvrdYcJCfPZRc+VAWpnPsVg
+	jE4KtQeDivAOcRTCiSAofd9wPaU+wxMdFU2UjlU/MVY4II3DqOn77sEHGVlxlIPmv5USKQot8dYUz
+	TjMOB0X9X6wkbuH4BOLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkL3w-0000000CSdm-2zuz;
-	Mon, 26 Jan 2026 11:47:20 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkL3c-0000000CSEa-2Jzj;
-	Mon, 26 Jan 2026 11:47:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description;
-	bh=Fk0OFdSv4z1lOiwA5ccWO4V+Shu5Ym4b7St2WuN3K3Q=; b=PGVudYTV83atXaPftV7dDCLn/H
-	ZjJqLO17Gj+TdiCziScxQQQAkLiNcDHh39DWGK+M2XSdHLMg2M1KFaKGxEzPnBzDbuQx8r2SaAcYw
-	AQ7EAjx1CSeK4Myy513QEiYDcOifDrg6/SF4Ce11qNY5jFdh/ddLGOgz5PMwYouNvoU5fxORJGudO
-	IGeUSPYR8HXxMILMeu3YT5uROjIF2fOxkjTI/XLo+rmliiDPMwjkRNDTpqqy/zh8OEfmyldDOOvZv
-	wO8nuHGridSWc5SC5LOHpTkabnfpOZByzhOj98xP5OmLx6FGoTIEKNkgFib3AL24gP5fGzvIbHosq
-	2U9BfU4g==;
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkL3Z-000000058ke-2cjj;
-	Mon, 26 Jan 2026 11:46:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Fk0OFdSv4z1lOiwA5ccWO4V+Shu5Ym4b7St2WuN3K3Q=; b=Hz1wQJGUWp2XQJS6YDkqg35Ay7
-	jJN/6+aKcGSW6E5Uw4npDTZhHbcHDO4ALQ6p+xiPpR8ZHQdYEph3ct3hLodZZKUH06iZ6/SKRgMGs
-	XHmFC3GK2LroOIMkKrkdyTK4dmsauRhv7nF2AqSqoDGPS3HX9/IIiJDYFYLGhk3CqVHw6rwvHjaoh
-	w3KFLMllsZwlyGNRlVmv1tzljA0YjoWmMeF8X+mBsHCBMVdNiNpxFR9m46x+BTlHFhPWK+k+ke0wj
-	T5dyFC17mb1deLOXl8RR1U/L6CMCwTnGp3cjB09p53DBXcZKT8twkqKPYM57AMFj1st5rKrT1tgLC
-	O5k8S+ug==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:33560 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vkL3U-000000004k8-0OwF;
-	Mon, 26 Jan 2026 11:46:52 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vkL3S-00000005uuG-2qFN;
-	Mon, 26 Jan 2026 11:46:50 +0000
-In-Reply-To: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
-References: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
+	id 1vkLSS-0000000CUdD-3cxL;
+	Mon, 26 Jan 2026 12:12:40 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vkLSQ-0000000CUcj-2Rsu
+	for linux-rockchip@lists.infradead.org;
+	Mon, 26 Jan 2026 12:12:39 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5E6B7339;
+	Mon, 26 Jan 2026 04:12:29 -0800 (PST)
+Received: from e121345-lin.cambridge.arm.com (e121345-lin.cambridge.arm.com [10.1.196.85])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 852153F5CA;
+	Mon, 26 Jan 2026 04:12:34 -0800 (PST)
+From: Robin Murphy <robin.murphy@arm.com>
+To: brgl@kernel.org,
+	linusw@kernel.org,
+	heiko@sntech.de
+Cc: sebastian.reichel@collabora.com,
+	m.szyprowski@samsung.com,
 	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next v2 22/22] net: stmmac: rk: rk3506, rk3528 and kk3588
- have rmii_mode in clock register
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: [PATCH] gpio/rockchip: Stop calling pinctrl for set_direction
+Date: Mon, 26 Jan 2026 12:12:26 +0000
+Message-Id: <bddc0469f25843ca5ae0cf578ab3671435ae98a7.1769429546.git.robin.murphy@arm.com>
+X-Mailer: git-send-email 2.39.2.101.g768bb238c484.dirty
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1vkL3S-00000005uuG-2qFN@rmk-PC.armlinux.org.uk>
-Date: Mon, 26 Jan 2026 11:46:50 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260126_114657_834852_54F8E9A7 
-X-CRM114-Status: GOOD (  14.59  )
+X-CRM114-CacheID: sfid-20260126_041238_750460_8734D236 
+X-CRM114-Status: GOOD (  13.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,203 +67,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk3506, rk3528 and rk3588 have the rmii_mode bit in the clock GRF
-register rather than the gmac GRF register. Provide a mask for this
-field in the clock register, and convert these SoCs to use this.
-Add the necessary code in rk_gmac_powerup() to write this field.
+Marking the whole controller as sleeping due to the pinctrl calls in the
+.direction_{input,output} callbacks has the unfortunate side effect that
+legitimate invocations of .get and .set, which cannot themselves sleep,
+in atomic context now spew WARN()s from gpiolib.
 
-This allows us to get rid of these SoCs set_to_rmii() function. As
-such, we need to mark these SoCs as supporting RMII mode.
+However, as Heiko points out, the driver doing this is a bit silly to
+begin with, as the pinctrl .gpio_set_direction hook doesn't even care
+about the direction, the hook is only used to claim the mux. And sure
+enough, the .gpio_request_enable hook exists to serve this very purpose,
+so switch to that and remove the problematic business entirely.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Cc: stable@vger.kernel.org
+Fixes: 20cf2aed89ac ("gpio: rockchip: mark the GPIO controller as sleeping")
+Suggested-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Robin Murphy <robin.murphy@arm.com>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 62 +++++++------------
- 1 file changed, 22 insertions(+), 40 deletions(-)
+If I don't have to redesign bits of the GPIO subsystem itself, this much
+I can do :)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 443d3bd62cae..3a03b2d57140 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -38,6 +38,7 @@ struct rk_clock_fields {
- 	u16 gmii_clk_sel_mask;
- 	u16 rmii_clk_sel_mask;
- 	u16 rmii_gate_en_mask;
-+	u16 rmii_mode_mask;
- 	u16 mac_speed_mask;
+Tested on RK3399 NanoPC-T4 with GPIOs with and without explicit pinctrl,
+and PROVE_LOCKING and DEBUG_ATOMIC_SLEEP stayed quiet (although I don't
+think this board has any shared pins)
+---
+ drivers/gpio/gpio-rockchip.c       | 8 --------
+ drivers/pinctrl/pinctrl-rockchip.c | 9 ++++-----
+ 2 files changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index bae2061f15fc..0fff4a699f12 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -18,7 +18,6 @@
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/of_irq.h>
+-#include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/pinconf-generic.h>
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+@@ -164,12 +163,6 @@ static int rockchip_gpio_set_direction(struct gpio_chip *chip,
+ 	unsigned long flags;
+ 	u32 data = input ? 0 : 1;
+ 
+-
+-	if (input)
+-		pinctrl_gpio_direction_input(chip, offset);
+-	else
+-		pinctrl_gpio_direction_output(chip, offset);
+-
+ 	raw_spin_lock_irqsave(&bank->slock, flags);
+ 	rockchip_gpio_writel_bit(bank, offset, data, bank->gpio_regs->port_ddr);
+ 	raw_spin_unlock_irqrestore(&bank->slock, flags);
+@@ -593,7 +586,6 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 	gc->ngpio = bank->nr_pins;
+ 	gc->label = bank->name;
+ 	gc->parent = bank->dev;
+-	gc->can_sleep = true;
+ 
+ 	ret = gpiochip_add_data(gc, bank);
+ 	if (ret) {
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index e44ef262beec..2fc67aeafdb3 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -3545,10 +3545,9 @@ static int rockchip_pmx_set(struct pinctrl_dev *pctldev, unsigned selector,
+ 	return 0;
+ }
+ 
+-static int rockchip_pmx_gpio_set_direction(struct pinctrl_dev *pctldev,
+-					   struct pinctrl_gpio_range *range,
+-					   unsigned offset,
+-					   bool input)
++static int rockchip_pmx_gpio_request_enable(struct pinctrl_dev *pctldev,
++					    struct pinctrl_gpio_range *range,
++					    unsigned int offset)
+ {
+ 	struct rockchip_pinctrl *info = pinctrl_dev_get_drvdata(pctldev);
+ 	struct rockchip_pin_bank *bank;
+@@ -3562,7 +3561,7 @@ static const struct pinmux_ops rockchip_pmx_ops = {
+ 	.get_function_name	= rockchip_pmx_get_func_name,
+ 	.get_function_groups	= rockchip_pmx_get_groups,
+ 	.set_mux		= rockchip_pmx_set,
+-	.gpio_set_direction	= rockchip_pmx_gpio_set_direction,
++	.gpio_request_enable	= rockchip_pmx_gpio_request_enable,
  };
  
-@@ -708,21 +709,15 @@ static int rk3506_init(struct rk_priv_data *bsp_priv)
- 	}
- }
- 
--static void rk3506_set_to_rmii(struct rk_priv_data *bsp_priv)
--{
--	unsigned int id = bsp_priv->id, offset;
--
--	offset = (id == 1) ? RK3506_GRF_SOC_CON11 : RK3506_GRF_SOC_CON8;
--	regmap_write(bsp_priv->grf, offset, RK3506_GMAC_RMII_MODE);
--}
--
- static const struct rk_gmac_ops rk3506_ops = {
- 	.init = rk3506_init,
--	.set_to_rmii = rk3506_set_to_rmii,
- 
- 	.clock.io_clksel_io_mask = BIT_U16(5),
- 	.clock.rmii_clk_sel_mask = BIT_U16(3),
- 	.clock.rmii_gate_en_mask = BIT_U16(2),
-+	.clock.rmii_mode_mask = BIT_U16(1),
-+
-+	.supports_rmii = true,
- 
- 	.regs_valid = true,
- 	.regs = {
-@@ -746,10 +741,6 @@ static const struct rk_gmac_ops rk3506_ops = {
- #define RK3528_GMAC_CLK_RX_DL_CFG(val)	GRF_FIELD(15, 8, val)
- #define RK3528_GMAC_CLK_TX_DL_CFG(val)	GRF_FIELD(7, 0, val)
- 
--#define RK3528_GMAC0_PHY_INTF_SEL_RMII	GRF_BIT(1)
--#define RK3528_GMAC1_PHY_INTF_SEL_RGMII	GRF_CLR_BIT(8)
--#define RK3528_GMAC1_PHY_INTF_SEL_RMII	GRF_BIT(8)
--
- static int rk3528_init(struct rk_priv_data *bsp_priv)
- {
- 	switch (bsp_priv->id) {
-@@ -757,6 +748,7 @@ static int rk3528_init(struct rk_priv_data *bsp_priv)
- 		bsp_priv->clock_grf_reg = RK3528_VO_GRF_GMAC_CON;
- 		bsp_priv->clock.rmii_clk_sel_mask = BIT_U16(3);
- 		bsp_priv->clock.rmii_gate_en_mask = BIT_U16(2);
-+		bsp_priv->clock.rmii_mode_mask = BIT_U16(1);
- 		bsp_priv->supports_rgmii = false;
- 		return 0;
- 
-@@ -766,6 +758,7 @@ static int rk3528_init(struct rk_priv_data *bsp_priv)
- 		bsp_priv->clock.gmii_clk_sel_mask = GENMASK_U16(11, 10);
- 		bsp_priv->clock.rmii_clk_sel_mask = BIT_U16(10);
- 		bsp_priv->clock.rmii_gate_en_mask = BIT_U16(9);
-+		bsp_priv->clock.rmii_mode_mask = BIT_U16(8);
- 		return 0;
- 
- 	default:
-@@ -776,9 +769,6 @@ static int rk3528_init(struct rk_priv_data *bsp_priv)
- static void rk3528_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 				int tx_delay, int rx_delay)
- {
--	regmap_write(bsp_priv->grf, RK3528_VPU_GRF_GMAC_CON5,
--		     RK3528_GMAC1_PHY_INTF_SEL_RGMII);
--
- 	regmap_write(bsp_priv->grf, RK3528_VPU_GRF_GMAC_CON5,
- 		     DELAY_ENABLE(RK3528, tx_delay, rx_delay));
- 
-@@ -787,16 +777,6 @@ static void rk3528_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 		     RK3528_GMAC_CLK_TX_DL_CFG(tx_delay));
- }
- 
--static void rk3528_set_to_rmii(struct rk_priv_data *bsp_priv)
--{
--	if (bsp_priv->id == 1)
--		regmap_write(bsp_priv->grf, RK3528_VPU_GRF_GMAC_CON5,
--			     RK3528_GMAC1_PHY_INTF_SEL_RMII);
--	else
--		regmap_write(bsp_priv->grf, RK3528_VO_GRF_GMAC_CON,
--			     RK3528_GMAC0_PHY_INTF_SEL_RMII);
--}
--
- static void rk3528_integrated_phy_powerup(struct rk_priv_data *bsp_priv)
- {
- 	rk_gmac_integrated_fephy_powerup(bsp_priv, RK3528_VO_GRF_MACPHY_CON0);
-@@ -810,9 +790,11 @@ static void rk3528_integrated_phy_powerdown(struct rk_priv_data *bsp_priv)
- static const struct rk_gmac_ops rk3528_ops = {
- 	.init = rk3528_init,
- 	.set_to_rgmii = rk3528_set_to_rgmii,
--	.set_to_rmii = rk3528_set_to_rmii,
- 	.integrated_phy_powerup = rk3528_integrated_phy_powerup,
- 	.integrated_phy_powerdown = rk3528_integrated_phy_powerdown,
-+
-+	.supports_rmii = true,
-+
- 	.regs_valid = true,
- 	.regs = {
- 		0xffbd0000, /* gmac0 */
-@@ -988,9 +970,6 @@ static const struct rk_gmac_ops rk3576_ops = {
- #define RK3588_GRF_GMAC_CON0			0X0008
- #define RK3588_GRF_CLK_CON1			0X0070
- 
--#define RK3588_GMAC_CLK_RMII_MODE(id)		GRF_BIT(5 * (id))
--#define RK3588_GMAC_CLK_RGMII_MODE(id)		GRF_CLR_BIT(5 * (id))
--
- static int rk3588_init(struct rk_priv_data *bsp_priv)
- {
- 	switch (bsp_priv->id) {
-@@ -1000,6 +979,7 @@ static int rk3588_init(struct rk_priv_data *bsp_priv)
- 		bsp_priv->clock.gmii_clk_sel_mask = GENMASK_U16(3, 2);
- 		bsp_priv->clock.rmii_clk_sel_mask = BIT_U16(2);
- 		bsp_priv->clock.rmii_gate_en_mask = BIT_U16(1);
-+		bsp_priv->clock.rmii_mode_mask = BIT_U16(0);
- 		return 0;
- 
- 	case 1:
-@@ -1008,6 +988,7 @@ static int rk3588_init(struct rk_priv_data *bsp_priv)
- 		bsp_priv->clock.gmii_clk_sel_mask = GENMASK_U16(8, 7);
- 		bsp_priv->clock.rmii_clk_sel_mask = BIT_U16(7);
- 		bsp_priv->clock.rmii_gate_en_mask = BIT_U16(6);
-+		bsp_priv->clock.rmii_mode_mask = BIT_U16(5);
- 		return 0;
- 
- 	default:
-@@ -1023,9 +1004,6 @@ static void rk3588_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 	offset_con = bsp_priv->id == 1 ? RK3588_GRF_GMAC_CON9 :
- 					 RK3588_GRF_GMAC_CON8;
- 
--	regmap_write(bsp_priv->php_grf, RK3588_GRF_CLK_CON1,
--		     RK3588_GMAC_CLK_RGMII_MODE(id));
--
- 	regmap_write(bsp_priv->grf, RK3588_GRF_GMAC_CON7,
- 		     RK3588_GMAC_RXCLK_DLY_ENABLE(id) |
- 		     RK3588_GMAC_TXCLK_DLY_ENABLE(id));
-@@ -1035,16 +1013,9 @@ static void rk3588_set_to_rgmii(struct rk_priv_data *bsp_priv,
- 		     RK3588_GMAC_CLK_TX_DL_CFG(tx_delay));
- }
- 
--static void rk3588_set_to_rmii(struct rk_priv_data *bsp_priv)
--{
--	regmap_write(bsp_priv->php_grf, RK3588_GRF_CLK_CON1,
--		     RK3588_GMAC_CLK_RMII_MODE(bsp_priv->id));
--}
--
- static const struct rk_gmac_ops rk3588_ops = {
- 	.init = rk3588_init,
- 	.set_to_rgmii = rk3588_set_to_rgmii,
--	.set_to_rmii = rk3588_set_to_rmii,
- 
- 	.gmac_grf_reg_in_php = true,
- 	.gmac_grf_reg = RK3588_GRF_GMAC_CON0,
-@@ -1052,6 +1023,8 @@ static const struct rk_gmac_ops rk3588_ops = {
- 	.clock_grf_reg_in_php = true,
- 	.clock_grf_reg = RK3588_GRF_CLK_CON1,
- 
-+	.supports_rmii = true,
-+
- 	.php_grf_required = true,
- 	.regs_valid = true,
- 	.regs = {
-@@ -1429,6 +1402,15 @@ static int rk_gmac_powerup(struct rk_priv_data *bsp_priv)
- 			return ret;
- 	}
- 
-+	if (bsp_priv->clock.rmii_mode_mask) {
-+		val = rk_encode_wm16(intf == PHY_INTF_SEL_RMII,
-+				     bsp_priv->clock.rmii_mode_mask);
-+
-+		ret = rk_write_clock_grf_reg(bsp_priv, val);
-+		if (ret < 0)
-+			return ret;
-+	}
-+
- 	/*rmii or rgmii*/
- 	switch (bsp_priv->phy_iface) {
- 	case PHY_INTERFACE_MODE_RGMII:
+ /*
 -- 
-2.47.3
+2.39.2.101.g768bb238c484.dirty
 
 
 _______________________________________________
