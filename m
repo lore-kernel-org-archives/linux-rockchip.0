@@ -4,87 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6957ED2FED9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 19:50:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B5AD2FEDD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 19:50:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n2/QXlnl2hCZnVtHjuZCjMp81VaB6y/NiBQfOQhqVAM=; b=ZQ+WZ1eLiRYhcYPjw1YGGeMQlw
-	N1Nsgjhd6NSW4R2XwGZ9GhqcwKquvYgeeVpgyPEKN3IEmHwofrWXsW1ARIi4ocfKj2BI74NakJIab
-	g8/xeIVd2C5EKvvBAY142DjqGyvt4jUINYNPDm8dNKdyDpOpsHLf1WD51DQyxRsjC7E+Dd6CHjUHJ
-	8+wva9KuMsxtXhJkGWP6NcMWHOmxbxEOzS5WIj39DnmSNKDf7CBxEJoOK0AX6WYnVXLKdVmw4gKAP
-	00RBdmfDyh7HQ+8JUyhjElMogGkXgZUu6nqB7M+o3janz9ZlPWjQXbgMMz0I0p58Bvox6U56C2wUA
-	zCh0dn/g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
+	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=j9CWczMBzyVrbZPhxM8sblJbrjf4LgfInvmhRVjjD9Y=; b=ktAJ4kYUYX/iD5
+	IW7jYOxzgRhv7+T65vnse/zruPq/G3YJ55dfhRsm5LX1AJRPnrjreiETpnSRJts/ZW/z2PW4ZIq7B
+	J+wt4xihLsSzz8sEZYVK/yzlTKYEMLjWBbRFBHegyMe06QOi9KEH2Sh1DN6CyDlS6E9tfjQ/RmPXE
+	24jqVv4hhN2DSX7bLzfQjduuWDcNnACuX25CZs+8riJjIv4jJ2W4D3vOj0cACjeAur6j7zLjvUw/z
+	wbwAan27/hOh1sLMEAO6ec8fnMWc/z0QtcQL2DJrS2Fklo/nfl7p98nkmEJnRwEsR5KNarWm5i8Fj
+	qYynqkRJw2FE9ApJ24Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkp5F-0000000Ey59-3Xmo;
-	Tue, 27 Jan 2026 19:50:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vkp5M-0000000Ey88-04y1;
+	Tue, 27 Jan 2026 19:50:48 +0000
+Received: from out-177.mta0.migadu.com ([91.218.175.177])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkp5A-0000000Ey4U-0KPq;
-	Tue, 27 Jan 2026 19:50:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2C45E43D75;
-	Tue, 27 Jan 2026 19:50:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAF5AC116C6;
-	Tue, 27 Jan 2026 19:50:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769543435;
-	bh=UaKGXBQECE0SDe7XXMs88ifMfoexM+bNNiVKCwxPry8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=kLQTvED4LlSKzw2nWBpeK5viX8ZbqC10mYv1QroLhWLVlCqz2iR1bg4yYnRhz/FNn
-	 UlXU0v6oTqeW3oYFDM8UA/Ntm5uOmB151/wgibG3XMZwTlzSCm3HoDhdp+9cTSuDAX
-	 jt9crfIprdiN//Qns45XzTb++v6Rc/OEHjxt157GG8V04Ct4M9GDnXgfXKn8fYBAIx
-	 Te3wrBDNMsAun6AI7V81/8dvy5LJ607YML0E+bJU//aMBkUrSL0mhN3XOOekOqHe9w
-	 y4AS+6Vynd0jQIuR1Mrpa4jR/rMBq0d/IxubsJkTUwkKRKqJGOqh+IXHAZ/qpZsJh/
-	 7WDwMYHNnLQxQ==
-Date: Tue, 27 Jan 2026 19:50:25 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?iso-8859-1?Q?Ma=EDra?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-sunxi@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org, Aishwarya.TCV@arm.com
-Subject: Re: [PATCH v4 05/10] drm/bridge: refactor HDMI InfoFrame callbacks
-Message-ID: <47619a02-c667-4fd0-afa9-f6cf7aba8dd4@sirena.org.uk>
-References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
- <20260107-limit-infoframes-2-v4-5-213d0d3bd490@oss.qualcomm.com>
-MIME-Version: 1.0
-In-Reply-To: <20260107-limit-infoframes-2-v4-5-213d0d3bd490@oss.qualcomm.com>
-X-Cookie: Send some filthy mail.
+	id 1vkp5J-0000000Ey50-3EhQ
+	for linux-rockchip@lists.infradead.org;
+	Tue, 27 Jan 2026 19:50:47 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1769543440;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=FIWz0cFC3kNnEI7/yXdApj0ciiRcwdKXj/WVen8D0bA=;
+	b=HIAQ+L2lkvYC5AwtPv7bhliGR3xmGTYTdFvJyZIfXOSgLayBWK2vOJzdCSBX/buFplVgHj
+	QAJqrnq4X8KxZgSSojNdbyOzVNVXfPfUuwmfI9Yjibfs8YZVL8H3etQ2TQiGCzs2bDav40
+	T2qPTGBdHBgdaP38vRLdtXgQLPu2gqM89K4uI5ILVFDrXLiMjYxnBZOwX/pLYJMIVb+da9
+	zWWJLevNNC/Vc/i1vfvIvGl4SVPs07m1euIEc0zUP9MSZwQ8W1pfHBEwwc0D6+7Q9t89Tl
+	+fF3FEGw/icDBAdU4r/yDuU3cm4cKSCl35DNn5FjrHL5i2tr90LCf8PCGKo/cQ==
+Date: Tue, 27 Jan 2026 20:50:37 +0100
+Message-Id: <DFZMSOLXYNIO.16HKO1E3C0Z2Y@cknow-tech.com>
+To: "Chris Morgan" <macroalpha82@gmail.com>,
+ <linux-rockchip@lists.infradead.org>
+Cc: <linux-pm@vger.kernel.org>, <jonas@kwiboo.se>, <pgwipeout@gmail.com>,
+ <finley.xiao@rock-chips.com>, <kever.yang@rock-chips.com>,
+ <shawn.lin@rock-chips.com>, <sebastian.reichel@collabora.com>,
+ <heiko@sntech.de>, <ulf.hansson@linaro.org>, "Chris Morgan"
+ <macromorgan@hotmail.com>
+Subject: Re: [PATCH] pmdomain: rockchip: quiet regulator error on
+ -EPROBE_DEFER
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+References: <20251119161250.60885-1-macroalpha82@gmail.com>
+In-Reply-To: <20251119161250.60885-1-macroalpha82@gmail.com>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_115036_189349_04510036 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20260127_115046_435816_A90C633F 
+X-CRM114-Status: GOOD (  17.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,135 +70,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0795612899589794593=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed Nov 19, 2025 at 5:12 PM CET, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+>
+> Change the dev_err() to dev_err_probe() under rockchip_pd_power_on()
+> to prevent errors early in the boot process when the requested
+> regulator is not yet available. This converts errors like the following
+> to debug messages:
+>
+> rockchip-pm-domain fd8d8000.power-management:power-controller: Failed to enable supply: -517
 
---===============0795612899589794593==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="sKQ7u6u6my6XlJTm"
-Content-Disposition: inline
+I noticed I had a LOT (33 to be exact) of these errors on my Rock 5B.
+After building a kernel with just this patch added, those were all gone.
+So feel free to add:
 
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # Rock 5B
 
---sKQ7u6u6my6XlJTm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I don't know if it's a logical consequence or just luck, but I'm no
+longer getting the following error either:
 
-On Wed, Jan 07, 2026 at 08:15:02PM +0200, Dmitry Baryshkov wrote:
-> Having only a single set of callbacks, hdmi_clear_infoframe and
-> hdmi_write_infoframe, bridge drivers don't have an easy way to signal to
-> the DRM framework, which InfoFrames are actually supported by the
-> hardware and by the driver and which are not. Also, it makes it
+  rockchip-pm-domain fd8d8000.power-management:power-controller: 
+    Failed to create device link (0x180) with supplier spi2.0 for
+    /power-management@fd8d8000/power-controller/power-domain@12
 
-We're seeing oopses on Qualcomm RB5 platforms in -next which bisect to
-this patch.  Looking at the patch I'm not immediately seeing what it
-might be getting wrong, though I do note that the board uses a LT9611
-which is updated by the patch.
+I'm still getting the following error though:
 
-Failure log:
+  rockchip-pm-domain fd8d8000.power-management:power-controller:
+    Failed to create device link (0x180) with supplier 1-0042 for
+    /power-management@fd8d8000/power-controller/power-domain@8
 
-3853 01:47:31.278489  <3>[   21.045573] msm_dpu ae01000.display-controller: [drm:msm_dsi_modeset_init [msm]] *ERROR* failed to create dsi connector: -22
-3854 01:47:31.280977  <3>[   21.057526] [drm:_dpu_kms_initialize_dsi:630] [dpu error]modeset_init failed for dsi[0], rc = -22
-3855 01:47:31.322994  <3>[   21.066927] [drm:_dpu_kms_setup_displays:766] [dpu error]initialize_dsi failed, rc = -22
-3856 01:47:31.323293  <3>[   21.075563] [drm:dpu_kms_hw_init:1283] [dpu error]modeset init failed: -22
-3857 01:47:31.323577  <3>[   21.083223] msm_dpu ae01000.display-controller: [drm:msm_drm_kms_init [msm]] *ERROR* kms hw init failed: -22
-3858 01:47:31.323809  <1>[   21.094033] Unable to handle kernel paging request at virtual address dead000000000108
+Those error msgs are broken up for readability, but they are on one line
+in dmesg.
 
-...
+Thanks!
+  Diederik
 
-3882 01:47:31.547579  <4>[   21.252828] Hardware name: Qualcomm Technologies, Inc. Robotics RB5 (DT)
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  drivers/pmdomain/rockchip/pm-domains.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> index 1955c6d453e4..3c84a65de1a5 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -688,7 +688,8 @@ static int rockchip_pd_power_on(struct generic_pm_domain *domain)
+>  
+>  	ret = rockchip_pd_regulator_enable(pd);
+>  	if (ret) {
+> -		dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
+> +		dev_err_probe(pd->pmu->dev, ret,
+> +			      "Failed to enable supply: %d\n", ret);
+>  		return ret;
+>  	}
+>  
 
-...
-
-3901 01:47:31.678351  <4>[   21.462030] Call trace:
-3902 01:47:31.721776  <4>[   21.464819]  drm_atomic_private_obj_fini+0x24/0x70 [drm] (P)
-3903 01:47:31.722072  <4>[   21.470924]  _dpu_kms_hw_destroy+0x4c/0x64 [msm]
-3904 01:47:31.722309  <4>[   21.475969]  dpu_kms_destroy+0x28/0xb0 [msm]
-3905 01:47:31.722528  <4>[   21.480650]  msm_drm_kms_uninit+0xac/0xd8 [msm]
-3906 01:47:31.722743  <4>[   21.485596]  msm_drm_uninit.isra.0+0x54/0xd4 [msm]
-3907 01:47:31.722968  <4>[   21.490816]  msm_drm_init+0x18c/0x1f0 [msm]
-3908 01:47:31.723228  <4>[   21.495409]  msm_drm_bind+0x30/0x3c [msm]
-3909 01:47:31.723442  <4>[   21.499824]  try_to_bring_up_aggregate_device+0x164/0x1d0
-3910 01:47:31.723646  <4>[   21.505635]  __component_add+0xa4/0x170
-3911 01:47:31.725046  <4>[   21.509851]  component_add+0x14/0x20
-3912 01:47:31.766295  <4>[   21.513793]  dsi_dev_attach+0x20/0x2c [msm]
-3913 01:47:31.766592  <4>[   21.518387]  dsi_host_attach+0x58/0x98 [msm]
-3914 01:47:31.766829  <4>[   21.523068]  devm_mipi_dsi_attach+0x34/0x90
-3915 01:47:31.767113  <4>[   21.527638]  lt9611uxc_attach_dsi.isra.0+0x84/0x100 [lontium_lt9611uxc]
-3916 01:47:31.767339  <4>[   21.534701]  lt9611uxc_probe+0x59c/0x62c [lontium_lt9611uxc]
-
-bisect log:
-
-git bisect start
-# status: waiting for both good and bad commits
-# good: [50814c5ce8d8f6751fd49c818abeb8853f8be2df] Merge branch 'for-linux-next-fixes' of https://gitlab.freedesktop.org/drm/misc/kernel.git
-git bisect good 50814c5ce8d8f6751fd49c818abeb8853f8be2df
-# status: waiting for bad commit, 1 good commit known
-# bad: [615aad0f61e0c7a898184a394dc895c610100d4f] Add linux-next specific files for 20260126
-git bisect bad 615aad0f61e0c7a898184a394dc895c610100d4f
-# good: [b047f48069330e050431e9ad762bd838af43337f] Merge branch 'mtd/next' of https://git.kernel.org/pub/scm/linux/kernel/git/mtd/linux.git
-git bisect good b047f48069330e050431e9ad762bd838af43337f
-# bad: [fe1e00e6f9fe8a160921f6a87f999075a1dfef0a] Merge branch 'for-mfd-next' of https://git.kernel.org/pub/scm/linux/kernel/git/lee/mfd.git
-git bisect bad fe1e00e6f9fe8a160921f6a87f999075a1dfef0a
-# good: [9d10cd526111a989eb353c3a4df9d4c79695ea8d] Merge tag 'drm-intel-next-2026-01-15' of https://gitlab.freedesktop.org/drm/i915/kernel into drm-next
-git bisect good 9d10cd526111a989eb353c3a4df9d4c79695ea8d
-# bad: [7260b161359d310b9a92513dbd73cd9a3a226c6f] Merge branch 'for-next' of https://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394.git
-git bisect bad 7260b161359d310b9a92513dbd73cd9a3a226c6f
-# bad: [d1968cd2a0ecab805106e5e60613dd45b63d52d9] Merge branch 'drm-next' of https://gitlab.freedesktop.org/drm/kernel.git
-git bisect bad d1968cd2a0ecab805106e5e60613dd45b63d52d9
-# good: [d2f618b8fe76b565f6bc0071b5eeee07a9012c6d] Merge tag 'drm-intel-next-fixes-2026-01-22' of https://gitlab.freedesktop.org/drm/i915/kernel into drm-next
-git bisect good d2f618b8fe76b565f6bc0071b5eeee07a9012c6d
-# good: [fc23163a7ca6cc0e6c3297aed3bdc9428aa8b1a9] Merge branch 'master' of https://git.kernel.org/pub/scm/linux/kernel/git/herbert/cryptodev-2.6.git
-git bisect good fc23163a7ca6cc0e6c3297aed3bdc9428aa8b1a9
-# skip: [00e6f8f60601b412e400873c8972f3e3802557f3] dt-bindings: vendor-prefixes: Add AlgolTek
-git bisect skip 00e6f8f60601b412e400873c8972f3e3802557f3
-# bad: [e5e1a0000746ded4d9fa16fceda0748aec2b6e6a] drm/bridge: samsung-dsim: samsung_dsim_host_attach: use a temporary variable for the next bridge
-git bisect bad e5e1a0000746ded4d9fa16fceda0748aec2b6e6a
-# bad: [0607052a6aee1e3d218a99fae70ba9f14b3b47ed] drm/hisilicon/hibmc: fix no showing problem with loading hibmc manually
-git bisect bad 0607052a6aee1e3d218a99fae70ba9f14b3b47ed
-# bad: [5a4e4e30f6dc4d2a68eec08257128906572f3346] drm/debug: don't register files for unsupported HDMI InfoFrames
-git bisect bad 5a4e4e30f6dc4d2a68eec08257128906572f3346
-# good: [638409979c5f7d3155afcded67532003e07a7d0e] drm/sun4i: hdmi_enc: implement clear_infoframe stub
-git bisect good 638409979c5f7d3155afcded67532003e07a7d0e
-# skip: [1d8847f457648ed4932019dcd3081bc27bcea936] drm/display: hdmi_state_helper: reject Audio IF updates if it's not supported
-git bisect skip 1d8847f457648ed4932019dcd3081bc27bcea936
-# bad: [e802c783be94bf71541a7e2ac8b1b5486aad10db] drm/display: hdmi_state_helper: split InfoFrame functions per type
-git bisect bad e802c783be94bf71541a7e2ac8b1b5486aad10db
-# good: [afc399f7a5ea7bf405b2ef85c7470529b1a9e47c] drm/connector: make clear_infoframe callback mandatory for HDMI connectors
-git bisect good afc399f7a5ea7bf405b2ef85c7470529b1a9e47c
-# bad: [b626b1a1c9ccadd8861870a2a450f02e0c61ab88] drm/bridge: refactor HDMI InfoFrame callbacks
-git bisect bad b626b1a1c9ccadd8861870a2a450f02e0c61ab88
-# first bad commit: [b626b1a1c9ccadd8861870a2a450f02e0c61ab88] drm/bridge: refactor HDMI InfoFrame callbacks
-
---sKQ7u6u6my6XlJTm
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAml5FwAACgkQJNaLcl1U
-h9B9Tgf/X2VdX2dj9e0HmnAWF7Z6YHcQwTv5vOPRR3TtPQ1f0IJF84ETF90P7M+z
-0r53d6IbwJsKLOX4qsB/rNQEI5N+CJmuM3AAwc2f6ATSDYXwfp7G82qqjy1yhIf5
-WTaqKV6iegc3pW6A+6AaU7mOqNBCm74S+28Yb07/FYYYI4CLJ1MZODAbjAHdKJMh
-3KgxmTu9nFANpwxnxf7J6KAVvq+V3AWackd3YyPPRJymtC/VP3hDf+YJdFA8hBV0
-aHaxFLCwzVkFfUutqrJ45IQS3wyDewkuIHBBWMfls4ORz6J+JAHSgoxHFLC+Xvwv
-0T8FfKnKWZSsk5IGJrkrvzX7z2NSgg==
-=rTj8
------END PGP SIGNATURE-----
-
---sKQ7u6u6my6XlJTm--
-
-
---===============0795612899589794593==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0795612899589794593==--
-
