@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E83BDD340A5
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 16:09:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 164A3D340A6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 16:09:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cJtH/kyGZUkBw62WKSeGH23+fY96pnAJWxIu/rKyRZA=; b=p0NS7CzkOfQTQx
-	lh0UTfj+b1qpSOCKuiAlpWFi7ieykXbySx5QjLy0csLIl/Wa/ESfiTzykEQXYumskjQP3RHu5ZhTH
-	EiW/JmFUJvhWd0tklGTRfFdxv10RsH8Qo5xIOcAoXQ/QtivXZvQTaareqG5HhjRaf0QfAu7VhcaHP
-	NR8f5Tka9aslJmy+amjos7giik+z+DONB75DopkBDaOGp8T8ffsskFpSEaZmvSXRd7qP/cxk5buN8
-	KQSbAb5ELqPlG5XlXGwqdta1pJqbt4XVIz3qTWn7f5JZxk5DkXa0j1KLscaqsIp+H8W3fYeDqFX+J
-	nAIymJc2VnXtbnrn+5fQ==;
+	List-Owner; bh=7cwMBi/aB759vceE/nOl+NoTqw8DLpQrwdkDxsXk1JY=; b=lO2YoRB9MIir/S
+	6oIPD7hWla8pxb070FFrYRS6pwBmTSJwsgFBOW+BSLz9/0l/C8xkvmIUlIjux0A8crIhlIxYlIrTK
+	J58zfOt0hCxpewHhrwfIXj2fafepjo3Vlcsumor70ZC0KRKJnsQi78DbMFN2JVs9jR+emjplb5dTI
+	hZtTfO9P9NYBU+3Qt7c7ZYBGDDeGnZppD1fdqQ7V3LJ0gqYiw2HJfTnno0dSKWoTupX5hDHwd9NGi
+	kX5PO8ukbObZXyFj/0wW9FmbQLis8A8AOsN+xslaYz0KBo5vHWaLlNq89REpiM0T/NJLtxQXxmxbG
+	jJAd9CAYE/IUQ1X5QBQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vklco-0000000Ec7e-074M;
-	Tue, 27 Jan 2026 16:09:06 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vklca-0000000Ebyo-37T0;
+	id 1vklcc-0000000Ec0V-3RSx;
 	Tue, 27 Jan 2026 16:08:54 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vklca-0000000Ebyp-1NeO;
+	Tue, 27 Jan 2026 16:08:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1769530129;
-	bh=0x70eJ6LqWibam6/8d2HJYajJ9736pFY/SKkVLmceOE=;
+	bh=kL9kNvqSXpOVHTWoVnZEkOBC5bbK790jsX9GDjm0yZg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=kU0YycuarDUL9LR/LyCP0fcxNKJshbllia2LgRX9fMXY1vFgTj1u/sTn2wxlyLi8o
-	 6ue4JuOnBk0hcVtRe/ybsPX0o2At9II+86aT46FDOOFsnBOJ+K/2tqw9FTZ2Mkn3QX
-	 P6N4wbr4q1k2UQru2twaYykAeLQau6nRk3U5qMhf+TlOcnEywLmeARH34Dp/qqigJS
-	 vPlNZfBjq8bCtezI9Ap+jMGJmwdvx+7av0PJZI48v5T6JAFAJ3QKP7Pf3GvpZot8k3
-	 8taIYb6j26zD/9Bq2GxXm+UEt1g05hXsFy9L4booybu29VU/+tKlbxAxxkbe10CUWx
-	 DoEAIzHQoLDVw==
+	b=ZhpQtmSczb3U82x8A+JD7eBWzDq/HSVJ8wuG8SD+ikRWHn0vTbv7dJPHSLYOekyzT
+	 HchLoXbEzJPJLOsAjXGQ7aY7zEIe+bh16n2dRPhWuMgnQk6LBwG7Qdz13WmV7i6Dnu
+	 yuLm3MK1bOD1QW6LJvh1mVuNZKNyZkQpXHrAtvt6Vw4HpjvqM8o4VCEsTi3Z6diZMm
+	 pRhrje6OO73sG92DrLB6tGsJSOuFffV9oh08YHYYJOE1w04TRZmE+DPevl2cfU0vu5
+	 RxrQLOulyoRcvs1XiUow8QD9YsSUpc8YSwPhO3GOjMoEapku2bQhBlur19MHFyOgS7
+	 I0Waf+HoHDkIQ==
 Received: from jupiter.universe (dyndsl-091-248-210-071.ewe-ip-backbone.de [91.248.210.71])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CDCC317E1513;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 78B2D17E00AC;
 	Tue, 27 Jan 2026 17:08:49 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 38B4E480062; Tue, 27 Jan 2026 17:08:49 +0100 (CET)
+	id 3486E480038; Tue, 27 Jan 2026 17:08:49 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 27 Jan 2026 17:08:25 +0100
-Subject: [PATCH 05/10] ASoC: rockchip: spdif: Improve sample rate support
+Date: Tue, 27 Jan 2026 17:08:22 +0100
+Subject: [PATCH 02/10] ASoC: rockchip: spdif: Move DT compatible table
 MIME-Version: 1.0
-Message-Id: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-5-a7c547072bbb@collabora.com>
+Message-Id: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-2-a7c547072bbb@collabora.com>
 References: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-0-a7c547072bbb@collabora.com>
 In-Reply-To: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-0-a7c547072bbb@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -59,29 +59,28 @@ Cc: Alexey Charkov <alchark@gmail.com>,
  Sjoerd Simons <sjoerd.simons@collabora.com>, linux-sound@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sugar Zhang <sugar.zhang@rock-chips.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=990;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3102;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=++BAbGfCLnkoMQgDrhj78qjcxu4mge2TSu9sa0rSBY4=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGl44xA4AU5OXfJcnO+2idQXFt9WnWkoUNOW1
- g2vZ7Fq7VsjFYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpeOMQAAoJENju1/PI
- O/qaNdcP/A1J+kjKpHlQwmp306nFDFNDrban4AhVnqoISWIwsPRF6YPtXHmczfa+tAGEtJ5PcZg
- Svz/vP13gQy/L2D5QtrQ85mCCcK3NjlPsofxPvvvG16b23c17r/7n63DrFUDIn4CigALnuuCUam
- J+rOygdve/iCme2a1sbHPvIOkIQxGGVRiU9ygg+E8imQVSxYQaZQCvtnuqvpvy8UqSvQ89/84NL
- EKOh3HeJ3Wsp1tLdSQlF3zsRR8ZQgolL4i3Wi3NtnHnYl07p0ZmXJvQtDEeEF4XiznXl7SB4UO0
- XIAIAGw4sC2qRMhFra2l5eKy4auGUc9TIV4d1hqHEr98/JagjBC+hwKIF5XRmskn1E97AwFgrgx
- q/in7pHxmDInh2WSdvuZw9R7uIWFXkA4eNP4lz8aBPWvOnCyF8kZAxQHpbSVsZ6M4wTBu+kA8dB
- NmM5yJmMHyT/D24DKBFrXAVqtolR3AkayzkqwT6JVozLyFTbjWIXn2CNsfLWVwQRYV1SUIPHvhO
- /NPv5UTXXFdMl6CSoZl+lXb0lqXEk7nzVz9tRI9jCqo6lGJsEroSkTfy+9c5qlbt8EvO2l6OVwX
- p2H3BMypkE7ddXbcWa3xmTgwuJJhpqx63jn0drUvLX1qbXQ7+LYSELO/8EikwcTFv9nwLdHAh0B
- orWg/BdWKeT2Wb+G48TEzeA==
+ bh=kL9kNvqSXpOVHTWoVnZEkOBC5bbK790jsX9GDjm0yZg=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGl44xCH0fJv0AZ5RtUF/UqPoZ+zg4liu6CLs
+ T0gTRftH9vVGYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpeOMQAAoJENju1/PI
+ O/qa0wUQAIoQ6OlvovSDSonbD5rIV0SKSWd48HMd7hysmB314iSkPvJxnFiIuchm9gf50qkuxWa
+ i5i+QeDCBpCdoxE9+ZgRyRWjQouiuqts0pD+eBl2jpm5AfPR1KzMFoHYJ4Z7aQMLmMDOefA75NR
+ 0IElaXk5ILY0ZrXtFfcg7H9Dgn5bzAJM6o/DglXYt+PPNmtEgzTQgZ1ErsqRQMkjbV/dKf+yJ4i
+ UolFsmtbat37eQPluZtIkdSffeqq9CrACak5lCli54Fw2sKKYat/4cQeRo0CLR6zfKFGR7/HUgz
+ +wOtdoJxZecq/gdrKTsmAh4GmR05EZ6cWxeCna8tWiSOFjwFODPAMXiu0V0nmcWwwNAz7tMLeOn
+ eHpU3aKQYCYEWxzIMla+zVgSXR6rZejyGalGGZxBnNziYuyBsEXsqGTFs6Lx2MktKtuVGLfeOGo
+ Bzv/Ym5t7lxS3mUIwsCIyy9oxX1tMobrv8/42hiMBuPP1Ik2+I6NuKbJAeOM/dn16RuraZWF0+q
+ HTuds55U/8IAuvgQ8mOtFnemv1EQ5W72+BVi0UzHZHudFY+2TY5BadiIMtClD+6aJO1UobUeUeq
+ Ix3Upe8vOZ+32oIAn/IUqjKtlV7Cw8hW+OfdKMy7kVlGOajl7QKuBbyvRFJvS5Y98DVxj3JcFBn
+ Hga+lAOSeWPrreFlGLWspIA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_080852_966478_683DBEFD 
-X-CRM114-Status: GOOD (  11.12  )
+X-CRM114-CacheID: sfid-20260127_080852_540230_16E9192E 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +97,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Move rk_spdif_match DT compatible table to the usual place before the
+platform-driver struct definition and drop the useless of_match_ptr(),
+since it is fine to reference the DT id table even when OF support is
+disabled (which makes the driver useless anyways).
 
-The hardware supports all typical sample rates from 8000 - 19200.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- sound/soc/rockchip/rockchip_spdif.c | 6 +-----
- 1 file changed, 1 insertion(+), 5 deletions(-)
+ sound/soc/rockchip/rockchip_spdif.c | 48 ++++++++++++++++++-------------------
+ 1 file changed, 24 insertions(+), 24 deletions(-)
 
 diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index 20ed64c1fa42..80fd8f53bb2b 100644
+index 23f14274a6e0..331a23d5173f 100644
 --- a/sound/soc/rockchip/rockchip_spdif.c
 +++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -188,11 +188,7 @@ static struct snd_soc_dai_driver rk_spdif_dai = {
- 		.stream_name = "Playback",
- 		.channels_min = 2,
- 		.channels_max = 2,
--		.rates = (SNDRV_PCM_RATE_32000 |
--			  SNDRV_PCM_RATE_44100 |
--			  SNDRV_PCM_RATE_48000 |
--			  SNDRV_PCM_RATE_96000 |
--			  SNDRV_PCM_RATE_192000),
-+		.rates = SNDRV_PCM_RATE_8000_192000,
- 		.formats = (SNDRV_PCM_FMTBIT_S16_LE |
- 			    SNDRV_PCM_FMTBIT_S20_3LE |
- 			    SNDRV_PCM_FMTBIT_S24_LE),
+@@ -40,29 +40,6 @@ struct rk_spdif_dev {
+ 	struct regmap *regmap;
+ };
+ 
+-static const struct of_device_id rk_spdif_match[] __maybe_unused = {
+-	{ .compatible = "rockchip,rk3066-spdif",
+-	  .data = (void *)RK_SPDIF_RK3066 },
+-	{ .compatible = "rockchip,rk3188-spdif",
+-	  .data = (void *)RK_SPDIF_RK3188 },
+-	{ .compatible = "rockchip,rk3228-spdif",
+-	  .data = (void *)RK_SPDIF_RK3366 },
+-	{ .compatible = "rockchip,rk3288-spdif",
+-	  .data = (void *)RK_SPDIF_RK3288 },
+-	{ .compatible = "rockchip,rk3328-spdif",
+-	  .data = (void *)RK_SPDIF_RK3366 },
+-	{ .compatible = "rockchip,rk3366-spdif",
+-	  .data = (void *)RK_SPDIF_RK3366 },
+-	{ .compatible = "rockchip,rk3368-spdif",
+-	  .data = (void *)RK_SPDIF_RK3366 },
+-	{ .compatible = "rockchip,rk3399-spdif",
+-	  .data = (void *)RK_SPDIF_RK3366 },
+-	{ .compatible = "rockchip,rk3568-spdif",
+-	  .data = (void *)RK_SPDIF_RK3366 },
+-	{},
+-};
+-MODULE_DEVICE_TABLE(of, rk_spdif_match);
+-
+ static int rk_spdif_runtime_suspend(struct device *dev)
+ {
+ 	struct rk_spdif_dev *spdif = dev_get_drvdata(dev);
+@@ -377,12 +354,35 @@ static const struct dev_pm_ops rk_spdif_pm_ops = {
+ 	RUNTIME_PM_OPS(rk_spdif_runtime_suspend, rk_spdif_runtime_resume, NULL)
+ };
+ 
++static const struct of_device_id rk_spdif_match[] = {
++	{ .compatible = "rockchip,rk3066-spdif",
++	  .data = (void *)RK_SPDIF_RK3066 },
++	{ .compatible = "rockchip,rk3188-spdif",
++	  .data = (void *)RK_SPDIF_RK3188 },
++	{ .compatible = "rockchip,rk3228-spdif",
++	  .data = (void *)RK_SPDIF_RK3366 },
++	{ .compatible = "rockchip,rk3288-spdif",
++	  .data = (void *)RK_SPDIF_RK3288 },
++	{ .compatible = "rockchip,rk3328-spdif",
++	  .data = (void *)RK_SPDIF_RK3366 },
++	{ .compatible = "rockchip,rk3366-spdif",
++	  .data = (void *)RK_SPDIF_RK3366 },
++	{ .compatible = "rockchip,rk3368-spdif",
++	  .data = (void *)RK_SPDIF_RK3366 },
++	{ .compatible = "rockchip,rk3399-spdif",
++	  .data = (void *)RK_SPDIF_RK3366 },
++	{ .compatible = "rockchip,rk3568-spdif",
++	  .data = (void *)RK_SPDIF_RK3366 },
++	{},
++};
++MODULE_DEVICE_TABLE(of, rk_spdif_match);
++
+ static struct platform_driver rk_spdif_driver = {
+ 	.probe = rk_spdif_probe,
+ 	.remove = rk_spdif_remove,
+ 	.driver = {
+ 		.name = "rockchip-spdif",
+-		.of_match_table = of_match_ptr(rk_spdif_match),
++		.of_match_table = rk_spdif_match,
+ 		.pm = pm_ptr(&rk_spdif_pm_ops),
+ 	},
+ };
 
 -- 
 2.51.0
