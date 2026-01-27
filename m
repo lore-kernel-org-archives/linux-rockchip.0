@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38646CA6CAC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 08:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 198C5CA6CBA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 08:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K++U111uXTgpAYHKozlPlnn8rt7YqO7kKA4TtiD+Vmo=; b=IKaqGAPXgG94Do
-	dqgzMjXi1AD7E/Dw2iiYRem2JByCpziigwjdtM2JsuBYLuL2Sdnz8JhGTQI2RMLaPFloB0/NEZon4
-	ZX/oqko+aGgLbUtIuCxF4Ensh0hS4SyTA/tb9rAVn/yZ+NSUvobFHewEXzbDb2c53EraXIwaMjmYO
-	MGYRhJNCpP7UwWyQyFt0CUmNvABVwhenTpV//KamQ88yVIsTGe1ap+5LTPPR+YHm8CzlAhCMLVWSH
-	M5Z8i7ijLyl7BblkGD+UE3yDYexWQYNTODQCpI/d4rdsHdZLpr88vUMJMgjocPGAEVlHM4qww1N3A
-	Zk0UfClziL3lJs+KzAJQ==;
+	List-Owner; bh=dEJ5hBVLcyI0uny53en3skvOgpq8PJ5Hm0H5FyKDxcQ=; b=WBm/GLtZMi2aad
+	1osxuH8Xwchu3B3AvWp56Ok24dBJBuVzLAPfLFqDlvwD9HN+HIkOCvqq2AfnG7yXFKnaw6T2zcgku
+	62ufrH2+62bM3StkDnvEfW0OgePU5joXI+cE3PwZAOqam29YdQYzIaj6ueGZB1Ta2MjvESWpGrx8M
+	1m4TY9o7b6/grpfkH6py/zGwejp7l6XrHB2df6T/ys/6zw+pxXE/Sv5Q3q1bIUB+djNMIdpWsxo4I
+	BasZg0ESf2eu0kmkC4qOVP08FlEmfxK36coyRjfFu22DT2pQ+JiDXSVLtFrM07M2KOLB+1gVk5pUl
+	Mo5l0hQTnwhVOFeYS/8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkeho-0000000DrBq-1SrJ;
-	Tue, 27 Jan 2026 08:45:48 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vkehw-0000000DrKF-3RtT;
+	Tue, 27 Jan 2026 08:45:56 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkehl-0000000Dr9b-3iRu;
-	Tue, 27 Jan 2026 08:45:47 +0000
+	id 1vkehp-0000000DrAv-0kZe;
+	Tue, 27 Jan 2026 08:45:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1769503543;
-	bh=LXx/D1nCkry29Rk9Vh351vGGsj2ZscF0eFlvEDYGTAo=;
+	s=mail; t=1769503546;
+	bh=9sBLQ6+LxN6NlEfzBjeADkyRzQDg9hdQyBWFSep6TOE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=AF1AWMx284BUM9NkDMtHyeoHEbX5ukimC4znlO1N7PYE/il5x+lhlr36ASxseYS+b
-	 61iYAYCoHzZykL2rrMUoA4UivT89gWproh36sS9/Jlv37DuDIozAgZV2ErM4uMiK6e
-	 I5Ww8fa4m2bd7QSZ7G7RDGPbgfJrn/Okj2t2acDjJ53IVvbBrHNtGyo8z3rKnf/CYn
-	 jFDOYw9t921/Nq179F+1lk0hBSE0MTntGTmLcfFN+ToSepRv4TNfOPfwkHiNl/I6mn
-	 AVjriDv2EH0crKZiTXYfe3DD15r+5bF6eW5iEnjhjAqs2yHlYFUTnQhYCZIIC6blGT
-	 4VsFvFu3PojDA==
+	b=XRrMrRh16i5c6ebN2vLjKyOiyCaS5SH+ShrEFbgY6ir48W+LPn2O6dbUUtGR5OxBW
+	 Fl3w8BMUJbCtrzfUko/YB87t8ZoOQijOAR0j4dAdFwe2By7PJF4BZRbRukTbTIi9A3
+	 4OZNfAikhXE4aStrUyGNCwXPfLq5lW3e7tdny9vx58juIeh0ncIf9lVxmPAmXgODHJ
+	 EZMh5MfbN/+cQnMllYa4aQ8bJ/W2bD4fnwHtnusHFT/7wnti2U/CqN3pbfFQkWTpz7
+	 cD/Y9hH8YteNB5AwtOGjjnYOI6ZuTz8yKmh8IFQJ0UvlSCbfx/kAqAUe9XMi0TRIVs
+	 48/A9ThNOSkEw==
 Received: from localhost (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 62D5317E1352;
-	Tue, 27 Jan 2026 09:45:43 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D6D5517E1513;
+	Tue, 27 Jan 2026 09:45:45 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 27 Jan 2026 10:45:33 +0200
-Subject: [PATCH v5 1/4] uapi: Provide DIV_ROUND_CLOSEST()
+Date: Tue, 27 Jan 2026 10:45:36 +0200
+Subject: [PATCH v5 4/4] drm/rockchip: vop2: Support setting custom
+ background color
 MIME-Version: 1.0
-Message-Id: <20260127-rk3588-bgcolor-v5-1-b25aa8613211@collabora.com>
+Message-Id: <20260127-rk3588-bgcolor-v5-4-b25aa8613211@collabora.com>
 References: <20260127-rk3588-bgcolor-v5-0-b25aa8613211@collabora.com>
 In-Reply-To: <20260127-rk3588-bgcolor-v5-0-b25aa8613211@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -62,12 +63,11 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
  Diederik de Haas <diederik@cknow-tech.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_004546_085255_275A5F29 
-X-CRM114-Status: GOOD (  11.39  )
+X-CRM114-CacheID: sfid-20260127_004549_405582_080D8FD5 
+X-CRM114-Status: GOOD (  13.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,55 +79,98 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Q3VycmVudGx5IERJVl9ST1VORF9DTE9TRVNUKCkgaXMgb25seSBhdmFpbGFibGUgZm9yIHRoZSBr
-ZXJuZWwgdmlhCmluY2x1ZGUvbGludXgvbWF0aC5oLgoKRXhwb3NlIGl0IHRvIHVzZXJsYW5kIGFz
-IHdlbGwgYnkgYWRkaW5nIF9fS0VSTkVMX0RJVl9ST1VORF9DTE9TRVNUKCkgYXMKYSBjb21tb24g
-ZGVmaW5pdGlvbiBpbiB1YXBpLgoKQWRkaXRpb25hbGx5LCBlbnN1cmUgaXQgYWxsb3dzIGJ1aWxk
-aW5nIElTTyBDIGFwcGxpY2F0aW9ucyBieSBzd2l0Y2hpbmcKZnJvbSB0aGUgJ3R5cGVvZicgR05V
-IGV4dGVuc2lvbiB0byB0aGUgSVNPLWZyaWVuZGx5IF9fdHlwZW9mX18uCgpSZXZpZXdlZC1ieTog
-TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgpUZXN0ZWQt
-Ynk6IERpZWRlcmlrIGRlIEhhYXMgPGRpZWRlcmlrQGNrbm93LXRlY2guY29tPgpTaWduZWQtb2Zm
-LWJ5OiBDcmlzdGlhbiBDaW9jYWx0ZWEgPGNyaXN0aWFuLmNpb2NhbHRlYUBjb2xsYWJvcmEuY29t
-PgotLS0KIGluY2x1ZGUvbGludXgvbWF0aC5oICAgICAgIHwgMTggKy0tLS0tLS0tLS0tLS0tLS0t
-CiBpbmNsdWRlL3VhcGkvbGludXgvY29uc3QuaCB8IDE3ICsrKysrKysrKysrKysrKysrCiAyIGZp
-bGVzIGNoYW5nZWQsIDE4IGluc2VydGlvbnMoKyksIDE3IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdp
-dCBhL2luY2x1ZGUvbGludXgvbWF0aC5oIGIvaW5jbHVkZS9saW51eC9tYXRoLmgKaW5kZXggNmRj
-MWQxZDMyZmJjLi4xZThmYjNlZmJjOGMgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvbGludXgvbWF0aC5o
-CisrKyBiL2luY2x1ZGUvbGludXgvbWF0aC5oCkBAIC04OSwyMyArODksNyBAQAogfQkJCQkJCQlc
-CiApCiAKLS8qCi0gKiBEaXZpZGUgcG9zaXRpdmUgb3IgbmVnYXRpdmUgZGl2aWRlbmQgYnkgcG9z
-aXRpdmUgb3IgbmVnYXRpdmUgZGl2aXNvcgotICogYW5kIHJvdW5kIHRvIGNsb3Nlc3QgaW50ZWdl
-ci4gUmVzdWx0IGlzIHVuZGVmaW5lZCBmb3IgbmVnYXRpdmUKLSAqIGRpdmlzb3JzIGlmIHRoZSBk
-aXZpZGVuZCB2YXJpYWJsZSB0eXBlIGlzIHVuc2lnbmVkIGFuZCBmb3IgbmVnYXRpdmUKLSAqIGRp
-dmlkZW5kcyBpZiB0aGUgZGl2aXNvciB2YXJpYWJsZSB0eXBlIGlzIHVuc2lnbmVkLgotICovCi0j
-ZGVmaW5lIERJVl9ST1VORF9DTE9TRVNUKHgsIGRpdmlzb3IpKAkJCVwKLXsJCQkJCQkJXAotCXR5
-cGVvZih4KSBfX3ggPSB4OwkJCQlcCi0JdHlwZW9mKGRpdmlzb3IpIF9fZCA9IGRpdmlzb3I7CQkJ
-XAotCSgoKHR5cGVvZih4KSktMSkgPiAwIHx8CQkJCVwKLQkgKCh0eXBlb2YoZGl2aXNvcikpLTEp
-ID4gMCB8fAkJCVwKLQkgKCgoX194KSA+IDApID09ICgoX19kKSA+IDApKSkgPwkJXAotCQkoKChf
-X3gpICsgKChfX2QpIC8gMikpIC8gKF9fZCkpIDoJXAotCQkoKChfX3gpIC0gKChfX2QpIC8gMikp
-IC8gKF9fZCkpOwlcCi19CQkJCQkJCVwKLSkKKyNkZWZpbmUgRElWX1JPVU5EX0NMT1NFU1QgX19L
-RVJORUxfRElWX1JPVU5EX0NMT1NFU1QKIC8qCiAgKiBTYW1lIGFzIGFib3ZlIGJ1dCBmb3IgdTY0
-IGRpdmlkZW5kcy4gZGl2aXNvciBtdXN0IGJlIGEgMzItYml0CiAgKiBudW1iZXIuCmRpZmYgLS1n
-aXQgYS9pbmNsdWRlL3VhcGkvbGludXgvY29uc3QuaCBiL2luY2x1ZGUvdWFwaS9saW51eC9jb25z
-dC5oCmluZGV4IGI4ZjYyOWVmMTM1Zi4uNDcxODc3MzIyZjQ3IDEwMDY0NAotLS0gYS9pbmNsdWRl
-L3VhcGkvbGludXgvY29uc3QuaAorKysgYi9pbmNsdWRlL3VhcGkvbGludXgvY29uc3QuaApAQCAt
-NTAsNCArNTAsMjEgQEAKIAogI2RlZmluZSBfX0tFUk5FTF9ESVZfUk9VTkRfVVAobiwgZCkgKCgo
-bikgKyAoZCkgLSAxKSAvIChkKSkKIAorLyoKKyAqIERpdmlkZSBwb3NpdGl2ZSBvciBuZWdhdGl2
-ZSBkaXZpZGVuZCBieSBwb3NpdGl2ZSBvciBuZWdhdGl2ZSBkaXZpc29yCisgKiBhbmQgcm91bmQg
-dG8gY2xvc2VzdCBpbnRlZ2VyLiBSZXN1bHQgaXMgdW5kZWZpbmVkIGZvciBuZWdhdGl2ZQorICog
-ZGl2aXNvcnMgaWYgdGhlIGRpdmlkZW5kIHZhcmlhYmxlIHR5cGUgaXMgdW5zaWduZWQgYW5kIGZv
-ciBuZWdhdGl2ZQorICogZGl2aWRlbmRzIGlmIHRoZSBkaXZpc29yIHZhcmlhYmxlIHR5cGUgaXMg
-dW5zaWduZWQuCisgKi8KKyNkZWZpbmUgX19LRVJORUxfRElWX1JPVU5EX0NMT1NFU1QoeCwgZGl2
-aXNvcikoCQlcCit7CQkJCQkJCVwKKwlfX3R5cGVvZl9fKHgpIF9feCA9IHg7CQkJCVwKKwlfX3R5
-cGVvZl9fKGRpdmlzb3IpIF9fZCA9IGRpdmlzb3I7CQlcCisJKCgoX190eXBlb2ZfXyh4KSktMSkg
-PiAwIHx8CQkJXAorCSAoKF9fdHlwZW9mX18oZGl2aXNvcikpLTEpID4gMCB8fAkJXAorCSAoKChf
-X3gpID4gMCkgPT0gKChfX2QpID4gMCkpKSA/CQlcCisJCSgoKF9feCkgKyAoKF9fZCkgLyAyKSkg
-LyAoX19kKSkgOglcCisJCSgoKF9feCkgLSAoKF9fZCkgLyAyKSkgLyAoX19kKSk7CVwKK30JCQkJ
-CQkJXAorKQogI2VuZGlmIC8qIF9VQVBJX0xJTlVYX0NPTlNUX0ggKi8KCi0tIAoyLjUyLjAKCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+The Rockchip VOP2 display controller allows configuring the background
+color of each video output port.
+
+Since a previous patch introduced the BACKGROUND_COLOR CRTC property,
+which defaults to solid black, make use of it when programming the
+hardware.
+
+Note the maximum precision allowed by the display controller is 10bpc,
+while the alpha component is not supported, hence ignored.
+
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 17 ++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index ec3b4fde10db..1cfd5e83e4da 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1552,6 +1552,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
+ 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+ 	struct vop2 *vop2 = vp->vop2;
+ 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
++	u64 bgcolor = crtc->state->background_color;
+ 	u16 vtotal = mode->crtc_vtotal;
+ 	u16 hdisplay = mode->crtc_hdisplay;
+ 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
+@@ -1597,7 +1598,15 @@ static void vop2_post_config(struct drm_crtc *crtc)
+ 		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
+ 	}
+ 
+-	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
++	/*
++	 * Background color is programmed with 10 bits of precision.
++	 * Since performance is more important than accuracy here,
++	 * do *not* make use of the DRM_ARGB64_GET*_BPC() helpers.
++	 */
++	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR(bgcolor) >> 6);
++	val |= FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_GREEN, DRM_ARGB64_GETG(bgcolor) >> 6);
++	val |= FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_BLUE, DRM_ARGB64_GETB(bgcolor) >> 6);
++	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
+ }
+ 
+ static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+@@ -1983,6 +1992,10 @@ static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
+ 		   drm_get_bus_format_name(vcstate->bus_format));
+ 	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
+ 	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
++	seq_printf(s, "\tbackground color (10bpc): r=0x%x g=0x%x b=0x%x\n",
++		   DRM_ARGB64_GETR(cstate->background_color) >> 6,
++		   DRM_ARGB64_GETG(cstate->background_color) >> 6,
++		   DRM_ARGB64_GETB(cstate->background_color) >> 6);
+ 	seq_printf(s, "    Display mode: %dx%d%s%d\n",
+ 		   mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
+ 		   drm_mode_vrefresh(mode));
+@@ -2472,6 +2485,8 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 			return dev_err_probe(drm->dev, ret,
+ 					     "crtc init for video_port%d failed\n", i);
+ 
++		drm_crtc_attach_background_color_property(&vp->crtc);
++
+ 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
+ 		if (vop2->lut_regs) {
+ 			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 9124191899ba..37722652844a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -658,6 +658,10 @@ enum dst_factor_mode {
+ #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
+ #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
+ 
++#define RK3568_VP_DSP_BG__DSP_BG_RED			GENMASK(29, 20)
++#define RK3568_VP_DSP_BG__DSP_BG_GREEN			GENMASK(19, 10)
++#define RK3568_VP_DSP_BG__DSP_BG_BLUE			GENMASK(9, 0)
++
+ #define RK3568_VP_POST_SCL_CTRL__VSCALEDOWN		BIT(1)
+ #define RK3568_VP_POST_SCL_CTRL__HSCALEDOWN		BIT(0)
+ 
+
+-- 
+2.52.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
