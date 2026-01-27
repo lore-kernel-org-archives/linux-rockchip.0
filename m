@@ -4,93 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A06B7CA6CBD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 09:11:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16BDED2D8DA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 10:01:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:From:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rbr0Xv5qcbv6PIeoSpnXwInHH7p5NxqubviwP0eprc4=; b=sJ6QDUaByDu5q6
-	4edTjSrwQ2wUJm2ErCtt5tMRn/o7rTII4VewkOofCqFIsZ6Ep89+r45aaSdNz0GRbKD2Zvy6OApUl
-	xVFguO9UU2Ldi0vyz33+54OsoicR1iUKvLTTHS1wN3/PZbpGtG1JR/F1vHW1LWVpsMPitWLMf/i1D
-	4vJHO64LQs0ArP8ngwvmleQFJMd2xv5lKvd/qjte7F8FWLSdOhnEyIHGkq5V7/F5bCOFlTtSvV6/K
-	A+JMmplnug+3ofI1Q7O2E+8msUkqEECw7B51cuziPFy90E4aZytNB3yYo0EmJ1kRh7f8njZgcQaiE
-	ABvpCGLdhnqP856QNvEg==;
+	List-Owner; bh=9YYEu4GdUhixKvBiOS7DuvCODC5C2kWy9OuUkbS8/DU=; b=EjkJHl9OMeLOEt
+	HfW0vwxFaREQev96XslSqN83L8gf/HGSMpl/2eHJiOdEE37LaPOF3Sln5eRV/2OxzN8mlXmjxt914
+	H/fI3gCAoYaAE9X+2lA9UrgGzsoNtIiZVCMwTbYvmMGnUWKD4w7cl4SGcHpxtIhejup+3MG+xz9b2
+	8mPGb+nbTSfLaoXr40HJdnb5mYo4DKeEEKD8d8YJsmdSWIWeQdAURYsD4iKoi96fNbmRPn1pg6XxW
+	OFfomodzquzV6R8qYhtbI4hj20Gz6o4pn2YLLFRZPe+rCDoyKsLkiMGDuXm0Ov/VLwVJpUB69hauj
+	ayF6cuuBWWvakRSX2wxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkf6t-0000000Dua2-2lQq;
-	Tue, 27 Jan 2026 09:11:43 +0000
-Received: from mailout1.w1.samsung.com ([210.118.77.11])
+	id 1vkfsc-0000000E0i4-2TrX;
+	Tue, 27 Jan 2026 10:01:02 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkf6o-0000000DuYu-3NmG;
-	Tue, 27 Jan 2026 09:11:41 +0000
-Received: from eucas1p1.samsung.com (unknown [182.198.249.206])
-	by mailout1.w1.samsung.com (KnoxPortal) with ESMTP id 20260127091130euoutp014c75f018134d9523a802741a4410d6be~Oi4Ej8mLk0793907939euoutp01d;
-	Tue, 27 Jan 2026 09:11:30 +0000 (GMT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.w1.samsung.com 20260127091130euoutp014c75f018134d9523a802741a4410d6be~Oi4Ej8mLk0793907939euoutp01d
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
-	s=mail20170921; t=1769505090;
-	bh=o3uYq+bvJ8IHWH6k2uOihpa6CKY0ItOKPXbc7h/Pz2g=;
-	h=Date:Subject:To:Cc:From:In-Reply-To:References:From;
-	b=ARDcksx7il7K+UJhL3qOUbJrzsCnWlDnWMyBKycHeHqFCGmyemgus6UZuDTSdf+bf
-	 sio+/WnMIcFH7Q4EvSeQJPsiIhXonBavFn5UetIdLJJLlTvKiDVGsd1YhwF3xweOeh
-	 qSQI7psb+mdS7QYSc32Br4lqAOSfjZL27eQp/MjQ=
-Received: from eusmtip1.samsung.com (unknown [203.254.199.221]) by
-	eucas1p1.samsung.com (KnoxPortal) with ESMTPA id
-	20260127091130eucas1p1440fbe9f7c4c663fa3a68f6fcb86470d~Oi4EUDQLX2294122941eucas1p1s;
-	Tue, 27 Jan 2026 09:11:30 +0000 (GMT)
-Received: from [106.210.134.192] (unknown [106.210.134.192]) by
-	eusmtip1.samsung.com (KnoxPortal) with ESMTPA id
-	20260127091128eusmtip12e05e437c03450178ad4e2539faa417e~Oi4CsG4iT0357803578eusmtip1P;
-	Tue, 27 Jan 2026 09:11:28 +0000 (GMT)
-Message-ID: <002704a5-9ccb-4abb-beaf-5a448c17ea39@samsung.com>
-Date: Tue, 27 Jan 2026 10:11:27 +0100
+	id 1vkfsZ-0000000E0h5-0Qhq
+	for linux-rockchip@lists.infradead.org;
+	Tue, 27 Jan 2026 10:01:00 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1148E43921
+	for <linux-rockchip@lists.infradead.org>; Tue, 27 Jan 2026 10:00:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2A8EC116C6
+	for <linux-rockchip@lists.infradead.org>; Tue, 27 Jan 2026 10:00:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769508057;
+	bh=60f8Q6hm2bOtEWad3lE65lnTlI/fT6nozEWfs0V1vWc=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=mCJWOChF9mdeXXM4bLVAnaHNJk85/0YmzljlxbEUftUowD64R9gPmonHLmyv+dkpD
+	 r2YSya9PMbR92ka9hNjsbZYSQwSmvACJ0bGIT7Mw2401BbjBWAFAb+VVtg6aovdBaY
+	 /pp5t/rY/gnVEXWpvu/cP5ModZdUp9ifJOyGGDDPP3X7amlhT9Yal2I9ZLVN/a9+eX
+	 LJqvJWSmrkgCJ9eKOA7fYU+SjLNhRJ0iEwugRvWx1IR6HcBiMjN4qalz6KB2iGMRrb
+	 8Zt9kG9mt8pCxQkjdy4CFTixQ9Yfp+v0WbQD/L4LrPOQJ8729s7grphO4D3APTAkER
+	 LyTX6ZKMBhTpQ==
+Received: by mail-yx1-f51.google.com with SMTP id 956f58d0204a3-649655f14d7so3063261d50.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 27 Jan 2026 02:00:57 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCWgF3WH93HwsdkOoaMmU9w7hnkaFtGGnTtpX3Xv8Esx/zK3dTmGzWw/3TzEeD8F19BnP0ybtDdQX499qT8jtw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwTWGonGJdCoooGUpNmUe8eoBkkZvlFdE8YcEpvkoPRlz4G2GX3
+	I8PXIbyxNCcJD3wfbDokTZgFOSa6odSq+ztvBdalIUMKMImTSN+zj6NQNdGytePtgPQ/LUAdPLy
+	1re9z+HSF8XhrglJmbuGBzO4D9bbsHcY=
+X-Received: by 2002:a05:690e:134f:b0:63c:f01e:f8a with SMTP id
+ 956f58d0204a3-6498fc46aa4mr569506d50.46.1769508057244; Tue, 27 Jan 2026
+ 02:00:57 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Betterbird (Windows)
-Subject: Re: [PATCH v4 02/10] drm/vc4: hdmi: implement clear_infoframe
-To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard
-	<mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie
-	<airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Dave Stevenson
-	<dave.stevenson@raspberrypi.com>, =?UTF-8?Q?Ma=C3=ADra_Canal?=
-	<mcanal@igalia.com>, Raspberry Pi Kernel Maintenance
-	<kernel-list@raspberrypi.com>, Chen-Yu Tsai <wens@kernel.org>, Jernej
-	Skrabec <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>,
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong
-	<neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Laurent
-	Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
-	<jonas@kwiboo.se>, Liu Ying <victor.liu@nxp.com>, Chun-Kuang Hu
-	<chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, Matthias
-	Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Rob Clark
-	<robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, Abhinav
-	Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>,
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>,
-	Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
-	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org
-Content-Language: en-US
-From: Marek Szyprowski <m.szyprowski@samsung.com>
-In-Reply-To: <jiq5ublhbfzuv3qsz3n6bve32wmto5hxc6mxppb2i2wagykafx@d235legi4r5o>
-X-CMS-MailID: 20260127091130eucas1p1440fbe9f7c4c663fa3a68f6fcb86470d
-X-Msg-Generator: CA
-X-RootMTR: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-X-EPHeader: CA
-X-CMS-RootMailID: 20260126174455eucas1p1f219202580a1033d3e881adc4f37f206
-References: <20260107-limit-infoframes-2-v4-0-213d0d3bd490@oss.qualcomm.com>
-	<20260107-limit-infoframes-2-v4-2-213d0d3bd490@oss.qualcomm.com>
-	<5c247393-b096-43ea-9ff4-9dd5fcdeec73@samsung.com>
-	<CGME20260126174455eucas1p1f219202580a1033d3e881adc4f37f206@eucas1p1.samsung.com>
-	<36278555-a01e-4c96-bb26-e170016e5f8c@samsung.com>
-	<jiq5ublhbfzuv3qsz3n6bve32wmto5hxc6mxppb2i2wagykafx@d235legi4r5o>
+References: <bddc0469f25843ca5ae0cf578ab3671435ae98a7.1769429546.git.robin.murphy@arm.com>
+ <CAMRc=MfQCrhgv7DcWrr3TWe8DtpZSRrkxb5KDHsGq1jPjUAHww@mail.gmail.com>
+In-Reply-To: <CAMRc=MfQCrhgv7DcWrr3TWe8DtpZSRrkxb5KDHsGq1jPjUAHww@mail.gmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Tue, 27 Jan 2026 11:00:46 +0100
+X-Gmail-Original-Message-ID: <CAD++jLk_ATHWwt_e+KN1+2sLYxqB4n-mdrbdxUHpHvnryeF+fg@mail.gmail.com>
+X-Gm-Features: AZwV_Qio_o-Mq2iM8scY0YLmPrOEH2sBCtjt6jzEPfeEfBoz7oFz9Fw0tU17ghY
+Message-ID: <CAD++jLk_ATHWwt_e+KN1+2sLYxqB4n-mdrbdxUHpHvnryeF+fg@mail.gmail.com>
+Subject: Re: [PATCH] gpio/rockchip: Stop calling pinctrl for set_direction
+To: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, heiko@sntech.de, sebastian.reichel@collabora.com, 
+	m.szyprowski@samsung.com, linux-rockchip@lists.infradead.org, 
+	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	stable@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_011139_447091_F35A27B0 
-X-CRM114-Status: GOOD (  11.21  )
+X-CRM114-CacheID: sfid-20260127_020059_163583_D6BB898E 
+X-CRM114-Status: GOOD (  14.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,38 +80,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26.01.2026 20:00, Dmitry Baryshkov wrote:
-> On Mon, Jan 26, 2026 at 06:44:52PM +0100, Marek Szyprowski wrote:
->> On 26.01.2026 18:42, Marek Szyprowski wrote:
->>> On 07.01.2026 19:14, Dmitry Baryshkov wrote:
->>>> Implement the clear_infoframe callback, disabling corresponding
->>>> InfoFrame type.
->>>>
->>>> Acked-by: Maxime Ripard <mripard@kernel.org>
->>>> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->>> This patch landed recently in linux-next as commit 3a4ceb89a972
->>> ("drm/vc4: hdmi: implement clear_infoframe"). In my tests I found that
->>> it causes the following regression on Qualcomm RB5 board:
->> Please ignore my report, it looks that automated bisecting got a bit
->> confused.
-> See https://lore.kernel.org/dri-devel/9ebc0582b0f7990d7df992a07ec8ef7f@kernel.org/T/#t
->
-> I'm going to push it to drm-misc-next-fixes.
-
-Thanks for pointing that patch! It fixed my issue.
-
-Best regards
--- 
-Marek Szyprowski, PhD
-Samsung R&D Institute Poland
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBKYW4gMjYsIDIwMjYgYXQgMjo0OOKAr1BNIEJhcnRvc3ogR29sYXN6ZXdza2kgPGJy
+Z2xAa2VybmVsLm9yZz4gd3JvdGU6Cj4gT24gTW9uLCBKYW4gMjYsIDIwMjYgYXQgMToxMuKAr1BN
+IFJvYmluIE11cnBoeSA8cm9iaW4ubXVycGh5QGFybS5jb20+IHdyb3RlOgo+ID4KPiA+IE1hcmtp
+bmcgdGhlIHdob2xlIGNvbnRyb2xsZXIgYXMgc2xlZXBpbmcgZHVlIHRvIHRoZSBwaW5jdHJsIGNh
+bGxzIGluIHRoZQo+ID4gLmRpcmVjdGlvbl97aW5wdXQsb3V0cHV0fSBjYWxsYmFja3MgaGFzIHRo
+ZSB1bmZvcnR1bmF0ZSBzaWRlIGVmZmVjdCB0aGF0Cj4gPiBsZWdpdGltYXRlIGludm9jYXRpb25z
+IG9mIC5nZXQgYW5kIC5zZXQsIHdoaWNoIGNhbm5vdCB0aGVtc2VsdmVzIHNsZWVwLAo+ID4gaW4g
+YXRvbWljIGNvbnRleHQgbm93IHNwZXcgV0FSTigpcyBmcm9tIGdwaW9saWIuCj4gPgo+ID4gSG93
+ZXZlciwgYXMgSGVpa28gcG9pbnRzIG91dCwgdGhlIGRyaXZlciBkb2luZyB0aGlzIGlzIGEgYml0
+IHNpbGx5IHRvCj4gPiBiZWdpbiB3aXRoLCBhcyB0aGUgcGluY3RybCAuZ3Bpb19zZXRfZGlyZWN0
+aW9uIGhvb2sgZG9lc24ndCBldmVuIGNhcmUKPiA+IGFib3V0IHRoZSBkaXJlY3Rpb24sIHRoZSBo
+b29rIGlzIG9ubHkgdXNlZCB0byBjbGFpbSB0aGUgbXV4LiBBbmQgc3VyZQo+ID4gZW5vdWdoLCB0
+aGUgLmdwaW9fcmVxdWVzdF9lbmFibGUgaG9vayBleGlzdHMgdG8gc2VydmUgdGhpcyB2ZXJ5IHB1
+cnBvc2UsCj4gPiBzbyBzd2l0Y2ggdG8gdGhhdCBhbmQgcmVtb3ZlIHRoZSBwcm9ibGVtYXRpYyBi
+dXNpbmVzcyBlbnRpcmVseS4KPiA+Cj4gPiBDYzogc3RhYmxlQHZnZXIua2VybmVsLm9yZwo+ID4g
+Rml4ZXM6IDIwY2YyYWVkODlhYyAoImdwaW86IHJvY2tjaGlwOiBtYXJrIHRoZSBHUElPIGNvbnRy
+b2xsZXIgYXMgc2xlZXBpbmciKQo+ID4gU3VnZ2VzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
+a29Ac250ZWNoLmRlPgo+ID4gU2lnbmVkLW9mZi1ieTogUm9iaW4gTXVycGh5IDxyb2Jpbi5tdXJw
+aHlAYXJtLmNvbT4KPiA+IC0tLQo+Cj4gTGludXMsCj4KPiBXaXRoIHlvdXIgQWNrIEkgY2FuIHF1
+ZXVlIHRoaXMgZm9yIHY2LjE5LXJjOC4KCkxhdGUgdG8gdGhlIHNob3cgOikKCkhlaWtvJ3MgQUNL
+IGlzIG1vcmUgdGhhbiBlbm91Z2ggZm9yIHRoaXMgZHJpdmVyLCBoZSBrbm93cwpSb2NrY2hpcCB3
+YXkgYmV0dGVyIHRoYW4gbWUuCgpZb3VycywKTGludXMgV2FsbGVpagoKX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBs
+aXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJh
+ZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
