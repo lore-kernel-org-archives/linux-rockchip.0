@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4958FD340B3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 16:42:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E3D1D2FEC0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 17:00:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TFoTl3tb8x0OgcKyfhP99baf6rp8f/7EIPftXm08ciI=; b=uXznUW1RPIN52/
-	nJ0cJ9vNwMlT5NY8TmoATdLar73Co4FMfer9V859bfrPgclwOek3klXm4bgyyMsNPUhGWCu3NOCRl
-	sDhQAaoYII5t5xfOq3+t/smyBRfOMlwuHBYzZaiUvms/Q1n2lLcQkk/xAhhzd7uLJOFN73HYAmQvG
-	rxieA3sggXWY7a7jSSuRn+FLqSNsBARzNpioqIOPEqM0BbnoiSQBYVUX64Rw9CHqus6TjEdWtvEPY
-	KcXkaKzGqLsnILlIHEOtncwSUWw8Ps3rPlXgqGkDelCkJSgLYheF8QDFdtocMeG/KmZHcmBoh3syF
-	O2qa9Q5FiF6owllpCY/A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v0aZsx4zjPiqDtHweEnQPRsY7sLTiDivi8VXTVAeJ+w=; b=HOfg5fPH7WhthbR+jZibmW4zvm
+	D3V6UFMoJFZXaTh1jvXzOsFS+BuL75wG2kLAN5oTvN9fTmrp0A4xzilfz9SR7lpBKkqOWGevh0nTV
+	YjD8jykpmEyGqHUiH9IjCEsyNidhLVIg7L3a+6byOMDyYTXvNUxv/u4THjQLwqFem+Qjxv7rnHSJI
+	BXyltnNCFi8BF1p1lDLt3KbDYIPIVUC4jHXpVINEJ1hXrIOfbT24CL/aWBTrmhMePnodez66T0W7o
+	Msm0i0rJywSKnxEROtpF5l8Eq7bcwEAlgZyokt6bkYiH/Mfcrrj89TLvTy2bkc4jf0To0Y/Gwb9WO
+	RoHvhjmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkm8s-0000000Eftl-3xcl;
-	Tue, 27 Jan 2026 16:42:14 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vkmQB-0000000EhFC-3UOe;
+	Tue, 27 Jan 2026 17:00:07 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkm8q-0000000Efsw-37TD;
-	Tue, 27 Jan 2026 16:42:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=fZVjX9lX2Ban4DpR6ZQBha73OP/uBEs+HGE3uJob2G0=; b=KbPTUWlI0Ai/lnyJd5LQFXag5m
-	RPxut20xgoSUWjrx2WhAzD6ZzGXmTjpWdr2zJRAWDtZLKLY4HV0vLac7PseH5dhhgUPlazoy607r9
-	l31Hve4O6cud7incPWsHHM7QQEV+s+VBKvLsDV6geL4aRmuhy28BeX6GdpIbRt7E5eurdqwyn2p7y
-	4JVDfAg0xj+DPo4zW7HmgBgzd9RPre+ApnOYpFmMwXy8eQbZQf9Tee7fGfWavXzHBXMEthhcBxogV
-	TmykISJ0fW9b2cb8MvlJAQmonT/RNBM6KgDQQzDj/izX92UboDEqEV25F60cUbDBM1A95ZM35YUA4
-	CooobalQ==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:57802)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vkm8m-000000006R4-0j8w;
-	Tue, 27 Jan 2026 16:42:08 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vkm8j-0000000064K-1Vtw;
-	Tue, 27 Jan 2026 16:42:05 +0000
-Date: Tue, 27 Jan 2026 16:42:05 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Jakub Kicinski <kuba@kernel.org>
-Cc: linux-stm32@st-md-mailman.stormreply.com, andrew+netdev@lunn.ch,
-	linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
-	pabeni@redhat.com, linux-rockchip@lists.infradead.org,
-	heiko@sntech.de, alexandre.torgue@foss.st.com, andrew@lunn.ch,
-	davem@davemloft.net, edumazet@google.com
-Subject: Re: [net-next,v2,06/22] net: stmmac: rk: add SoC specific ->init()
- method
-Message-ID: <aXjq3VisP4XjWYSi@shell.armlinux.org.uk>
-References: <E1vkL28-00000005usi-30YC@rmk-PC.armlinux.org.uk>
- <20260127004020.3785641-1-kuba@kernel.org>
- <aXgMIYPiL9JK-c_K@shell.armlinux.org.uk>
- <aXidBha0FahIS6Du@shell.armlinux.org.uk>
- <20260127081804.64841f65@kernel.org>
+	id 1vkmQ8-0000000EhDX-2g5V;
+	Tue, 27 Jan 2026 17:00:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1769533198; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=IvYTHi7s+e4M/AXPy86LDlyem7lHx3ZcV/ZDGPkb+JfIx0B/ireZWvcaK0TH8CvvCNR6sJpfhKnrTyLAgv+xRS92MbrZzHed2D0OceR1Q5HGNxoJlqCFDA1/QaMIJX6kcKdr+T5O+dY3qRdDjqW3OZM1PZbMvPXnae77DrOAp2I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1769533198; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=k/JszvMiIiD7raLAHEMZbMvUPwemPiehQnGnEHCgw6w=; 
+	b=HqAeofXH8cfRubZnMaastkCiKGKaPVv/yC55+S921YD7ApdyN1gEKzcArAybxmNE5eip0JnSBOJ21Qb7NcI//BXx8lLQfx3hxLoQv2FjmWeV9ML2uD0ahpDfTbROfyhex4tP7hicJma+LbGdySCn79j7OQ7zydTzISb86qiy/LQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769533198;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=k/JszvMiIiD7raLAHEMZbMvUPwemPiehQnGnEHCgw6w=;
+	b=AcPnDwIsmdn/qO1kNSQAAYVCg4uVtwGVGDypsbUC+6kBv6T18kUs8t3nykATSHRl
+	OR47GP6E61ba32Xtu9Y+Vdsmi79vniQFiy0fLYpnBufwoeA9WIaR0EiA5lXQeFvDFY4
+	Np7b8OVgulFv3ocxOQzmcU/DlBwL/47cA+Ydfk4I=
+Received: by mx.zohomail.com with SMTPS id 1769533196286377.2516394328777;
+	Tue, 27 Jan 2026 08:59:56 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 33D751807C4; Tue, 27 Jan 2026 17:59:51 +0100 (CET)
+Date: Tue, 27 Jan 2026 17:59:51 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+	Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Alexey Charkov <alchark@gmail.com>, Sjoerd Simons <sjoerd.simons@collabora.com>, 
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Sugar Zhang <sugar.zhang@rock-chips.com>
+Subject: Re: [PATCH 05/10] ASoC: rockchip: spdif: Improve sample rate support
+Message-ID: <aXjukfMRRIADB1mc@venus>
+References: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-0-a7c547072bbb@collabora.com>
+ <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-5-a7c547072bbb@collabora.com>
+ <0d7af11f-497f-4c12-b439-41c30f10e087@sirena.org.uk>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260127081804.64841f65@kernel.org>
+In-Reply-To: <0d7af11f-497f-4c12-b439-41c30f10e087@sirena.org.uk>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.1.1.4.3/269.526.30
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_084212_786187_86D9F953 
-X-CRM114-Status: GOOD (  36.39  )
+X-CRM114-CacheID: sfid-20260127_090004_740355_1656CDC0 
+X-CRM114-Status: GOOD (  10.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,98 +81,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5915640075953004576=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Jan 27, 2026 at 08:18:04AM -0800, Jakub Kicinski wrote:
-> On Tue, 27 Jan 2026 11:09:58 +0000 Russell King (Oracle) wrote:
-> > > > If ops->init() fails here, does bsp_priv->phy_reset need to be released?
-> > > > 
-> > > > Earlier in rk_gmac_setup(), at line 1610, the code calls:
-> > > > 
-> > > >     bsp_priv->phy_reset = of_reset_control_get(plat->phy_node, NULL);
-> > > > 
-> > > > of_reset_control_get() is not a devm-managed function, so the reset control
-> > > > would need to be explicitly released with reset_control_put() on error paths.
-> > > > 
-> > > > This new error return happens after phy_reset could have been acquired (when
-> > > > the device has an integrated PHY), but before the function successfully
-> > > > returns. If this path is taken, it appears the reset control would be leaked.
-> > > > 
-> > > > Currently no SoC sets ops->init so this path cannot trigger, but when a
-> > > > future SoC implements this callback, the leak would occur on init failure
-> > > > for devices with integrated PHYs.  
-> > > 
-> > > However, the driver does not release this resource when cleaning up, so
-> > > that's already a bug as the driver currently stands. I think this could
-> > > be converted to devm_reset_control_get(), which would resolve both
-> > > leakages, but not sure.  
-> > 
-> > Note that fixing this is going to add yet another patch to the series,
-> > because this is a pre-existing bug in the driver. It can't be replaced
-> > with devm_reset_control_get(), because this driver is getting resources
-> > for a foreign device (we don't have the struct device pointer.)
-> > 
-> > So, it isn't going to be a simple patch to fix this.
-> 
-> Would it work to make that plus patches 1-4,6 a separate series?
 
-The problem I have with that is the proximity of the merge window, and
-the likelyhood of conflicting changes making the _entire_ series very
-very very painful, because it changes all the individual SoC support.
-
-If I'm going to have to split it up just for the sake of reducing the
-cost of AI review, can I ask for a moritorium on other development
-changes to dwmac-rk until this is merged?
-
-As I see it, this is required _because_ of the introduction of AI
-review, not because something has actually changed. You have said in
-the past to me that the 15 patch limit is only advisory and can be
-exceeded where it makes sense to, and for this series, it does make
-sense.
-
-Note that fixing _this_ problem has added yet another patch to the
-series, as fixing the underlying issue (the lack of release of
-bsp_priv->phy_reset on remove) is a separate issue. I've not yet
-decided whether that needs to be submitted via the net tree or not,
-which will further complicate the submission of this series if it
-the fix needs to go through the net tree.
+--===============5915640075953004576==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zbyqyy2ee62cusqp"
+Content-Disposition: inline
 
 
-Author: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+--zbyqyy2ee62cusqp
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 05/10] ASoC: rockchip: spdif: Improve sample rate support
+MIME-Version: 1.0
 
-    net: stmmac: rk: fix missing reset_control_put()
+Hi,
 
-    rk_gmac_setup() delves into the PHY's DT node to retrieve its reset
-    control using of_reset_control_get(). However, it never releases it
-    when the driver is removed. Add reset_control_put() to rk_gmac_exit()
-    to clean this up.
+On Tue, Jan 27, 2026 at 04:28:30PM +0000, Mark Brown wrote:
+> On Tue, Jan 27, 2026 at 05:08:25PM +0100, Sebastian Reichel wrote:
+>=20
+> > The hardware supports all typical sample rates from 8000 - 19200.
+>=20
+> All sample rates up to 19.2kHz!  :P
 
-    Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Indeed; I will wait for more feedback before sending a fix.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethern
-et/stmicro/stmmac/dwmac-rk.c
-index 0e66252eb5ae..2237b09b50bb 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -1779,6 +1779,8 @@ static void rk_gmac_exit(struct device *dev, void *bsp_pri
-v_)
+Thanks,
 
-        if (priv->plat->phy_node && bsp_priv->integrated_phy)
-                clk_put(bsp_priv->clk_phy);
-+
-+       reset_control_put(bsp_priv->phy_reset);
- }
+-- Sebastian
 
- static int rk_gmac_probe(struct platform_device *pdev)
+--zbyqyy2ee62cusqp
+Content-Type: application/pgp-signature; name="signature.asc"
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAml47v8ACgkQ2O7X88g7
++poTbw/8D/tapoNf7C5G3rC2p0//Eew5HzP1yRcHa280Xpkqo5+alpMJcBvsCKi1
+J9C1tANe371RNE3f6A0mLEBDLA5sY8130QnGRYLO7FLw6i0A8v2xUcS4LQowoAWg
+ryIesztFaNnCfdZdki1siDiNG1wMF+4RkeU/CvcohKq0DJaUiGrfv01Emz2G3M6C
+WUY0W+F7WywxWIQLv2edjp0daCuivmlbzZ/ubgJUlK71Pb9aaUcNuT/ZcXgSlP3O
+iXPkYU0PQCIq+7Azt8F3VMRRhA2mCj/MMzJ5TUmpaKcDEWAUMc1TFXw3LzZzIGzm
+HERQrOjUBR2J9WIubR9j3d8j5E5EtTDZyFga4e3qG2zzTode7kWNz3nIyZTADOvL
+5Xs7gKX7P6qtsuGgyEABiNvjU+1weDob2oMvjP6eY93cuW/LNukh7Zj6TLzN2Wsz
+pNcbabRzVZ76kznnGMbob+uZG9tJ69VCZzLaBd39nXKQs8NYf60PGquJAZtQ/4G+
+5oumY5QIFcqW0AZbQMP23bmZf2nAHGmIqOiS3416Uz/UyCB6MwRH6Wx4M57xDzsh
+T+9s5CDapfkoTzhxuwIcxk3kUY/MgkH6x1Xe7aJWo4rPo++dq2oaqzW2AjzNhc1Z
+PwCsDd9opc52VTaKXNJn4PI1/xpMwzXYoIAECl83Vv7FdUvJnsM=
+=8OX+
+-----END PGP SIGNATURE-----
+
+--zbyqyy2ee62cusqp--
+
+
+--===============5915640075953004576==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5915640075953004576==--
+
