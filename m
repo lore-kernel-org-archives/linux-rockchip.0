@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5AD0D2FED9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 18:38:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55761D2FED9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 19:00:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3VPuspGv3T22wA8jeRBc+mtHxXnKKy0PFZxib3Vepro=; b=3/aix9UOKksBAt
-	T9NjxbfKIaseJ2rrZhvTIq0ChkChsaPJICRh7BU8c4vvBuIILS/6vjfHDaXgp1Pa/oLk9Gy7SicDP
-	0WBhOQsrRCJZ/WiCKk9uwwMcE2EMRE0um/I5R2xi2vAm7Vgz3Cxyl0lUpJvkugbkMrNpsE+51lMjy
-	OXGbF0kfRhCkPj3PvhA4+V1Liuc2P/alb38LogRm/2+bRcVfJqNqlaLozW/uTrVqO/b/xbMK0L6fv
-	sJE8rd0hwLR9D/sM68lqzhL2WtPcN7QjY/AbdJ5iI2pfn7iWVoajWe9Up6KUjKKNqMoxGfAtiCpAF
-	aQpJjN8woUroBtwwGA/g==;
+	List-Owner; bh=E7IoYJSW25I9uQWlViotU9I+hTebEUraEtvpKwqe0t4=; b=gmHO6Fb0FKErI9
+	l/3RWwToc0PK48rDRUfr9ixBRmGHiYA+/rvNRRYUgb5wt3bHUQmAJ4ge9Fl3LIHjNRabHtLCbn8kE
+	1PhM5+4SIK0BDNSBNjWA1VBfbYPkEyJaq6Pa8emwA4O/bfkjdI79HginXFs9KOIfuJ8TX58IDJL73
+	GZHcmaUABsQGxk99NLiFgXH+sPvMzv17v2tW9wl+MyJ5CRnb8UhmgCQ8mGNCInhUSKA4JFRZnjhn4
+	FLyzAQpg2D7JkZXxlmej8FjgFlRZ6q7WcBpnwefg+n0deBh5l7IsxQQhvoJZkitClkXc3+QVQlXt/
+	wVFkGcR715eQGkJ81XfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vknxS-0000000EpjU-2wTI;
-	Tue, 27 Jan 2026 18:38:34 +0000
+	id 1vkoIW-0000000EsH2-06yl;
+	Tue, 27 Jan 2026 19:00:20 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vknxM-0000000EphQ-1fju;
-	Tue, 27 Jan 2026 18:38:29 +0000
+	id 1vkoIT-0000000EsGS-1yZM;
+	Tue, 27 Jan 2026 19:00:18 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A184E40A65;
-	Tue, 27 Jan 2026 18:38:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2020C116C6;
-	Tue, 27 Jan 2026 18:38:26 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D679343EE0;
+	Tue, 27 Jan 2026 19:00:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE9F7C19422;
+	Tue, 27 Jan 2026 19:00:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769539107;
-	bh=xnxW/CWgie/RiC6ceA36oB6xfFtPTb0OHKlujCG/RnU=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=R5np0NK2ji0Bvsl4dkcDUf6Xv2tMqnpoJLp4Su5Tlndt1VH/kgo9IUEOMlFv3g9hf
-	 NWV0vMSiUt0Ty/+U6OkCTNW7gPzsWU9IOwm4NP/q5gZJ4Esj35k51DOxS3iV4/uDUI
-	 r0/gFI1VqGmeoEIcPLpLYMl6CMlt+j3gVMklN0OPTIDr57Yo8dQ/9w49avkrhqjMWe
-	 XNqSSCWoK8aqFKZcnqXAHKFmUxbuT0758wx7jjFn63jK8Ko/tcSEWTYyh9Lj4B0l5P
-	 lEjH0UyOmDHgFdhCsYpefGH9u4MZh4NhGRVvU6hty2mnsoQtj4rt0oK0ZJsPNFyc0I
-	 aQrFGI9h1BMXQ==
-Date: Tue, 27 Jan 2026 10:38:25 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: linux-stm32@st-md-mailman.stormreply.com, andrew+netdev@lunn.ch,
- linux-arm-kernel@lists.infradead.org, netdev@vger.kernel.org,
- pabeni@redhat.com, linux-rockchip@lists.infradead.org, heiko@sntech.de,
- alexandre.torgue@foss.st.com, andrew@lunn.ch, davem@davemloft.net,
- edumazet@google.com
-Subject: Re: [net-next,v2,06/22] net: stmmac: rk: add SoC specific ->init()
- method
-Message-ID: <20260127103825.7fcc86e3@kernel.org>
-In-Reply-To: <aXjq3VisP4XjWYSi@shell.armlinux.org.uk>
-References: <E1vkL28-00000005usi-30YC@rmk-PC.armlinux.org.uk>
-	<20260127004020.3785641-1-kuba@kernel.org>
-	<aXgMIYPiL9JK-c_K@shell.armlinux.org.uk>
-	<aXidBha0FahIS6Du@shell.armlinux.org.uk>
-	<20260127081804.64841f65@kernel.org>
-	<aXjq3VisP4XjWYSi@shell.armlinux.org.uk>
+	s=k20201202; t=1769540416;
+	bh=c1tXqNRpIYOMWP0VFHYLgja6KaJDZeX2rziUlYI6lDE=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=Kj6gRbXeAmfTn/JBCTT62O3iJ8jjNV0u8rFD8iC71YBpUat13frCXksenXJKLoz9g
+	 hRhUOkDar/NaTyShKpK5y49wYwlmswiVzimXTkUkX5BvROrEvODNBWyT44vKUuJoh5
+	 4xsX19vKoY4Apd9ByWqlwUnrBiocX76se2AxxVl/tBsiGItUtvkfm7s6xUQQRcLRrv
+	 Xj1bcXD04XTPLQDHbimStBP3TSOIaSlVwE0rY+24QkxvKPJYoQbcWv/Yz64lyAvfoa
+	 yDajGi5xBggK1h2IdV6VK6+43VhcO/MZfUQBYpm4oVAkd9TuOH9RPallLkOa+sRhpH
+	 3PgF9cTXkY3IQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id C8C95380AA58;
+	Tue, 27 Jan 2026 19:00:11 +0000 (UTC)
 MIME-Version: 1.0
+Subject: Re: [PATCH net-next v2 00/22] net: stmmac: rk: simplify per-SoC
+ configuration
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176954041060.1365394.14963614525906963591.git-patchwork-notify@kernel.org>
+Date: Tue, 27 Jan 2026 19:00:10 +0000
+References: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
+In-Reply-To: <aXdTi4ViCkhhXvFI@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, alexandre.torgue@foss.st.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, heiko@sntech.de, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+ pabeni@redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_103828_477159_8364244A 
-X-CRM114-Status: GOOD (  12.07  )
+X-CRM114-CacheID: sfid-20260127_110017_548687_9AC6E8AE 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,34 +77,74 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 27 Jan 2026 16:42:05 +0000 Russell King (Oracle) wrote:
-> If I'm going to have to split it up just for the sake of reducing the
-> cost of AI review,
+Hello:
 
-Incorrect, as previously stated do not worry about the cost.
-I was citing the cost as the reason we can't give people open 
-access to the AI bot.
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-> can I ask for a moritorium on other development changes to dwmac-rk
-> until this is merged?
+On Mon, 26 Jan 2026 11:44:11 +0000 you wrote:
+> [Please note: due to google's spam filtering, I can no longer send
+> patch series to @gmail.com addresses, and thus, to save being spammed
+> with failed deliveries, I'm dropping such addresses from my patch
+> series. Stop giving google so much power, use other email services.]
+> 
+> dwmac-rk has an excessive variability between each individual SoCs
+> which makes this file extremely large.
+> 
+> [...]
 
-Seems reasonable, as long as you're posting and making active progress
-we can prioritize merging this work.
+Here is the summary with links:
+  - [net-next,v2,01/22] net: stmmac: rk: avoid phy_power_on()
+    https://git.kernel.org/netdev/net-next/c/a0094edaf492
+  - [net-next,v2,02/22] net: stmmac: rk: get rid of rk_phy_power_ctl()
+    https://git.kernel.org/netdev/net-next/c/af6eaf701897
+  - [net-next,v2,03/22] net: stmmac: rk: convert rk3328 to use bsp_priv->id
+    https://git.kernel.org/netdev/net-next/c/cdb5fdfcf396
+  - [net-next,v2,04/22] net: stmmac: rk: group MACPHY register offset and fields together
+    https://git.kernel.org/netdev/net-next/c/a7ad67e9745d
+  - [net-next,v2,05/22] net: stmmac: rk: add GMAC_CLK_xx constants, simplify RGMII definitions
+    (no matching commit)
+  - [net-next,v2,06/22] net: stmmac: rk: add SoC specific ->init() method
+    (no matching commit)
+  - [net-next,v2,07/22] net: stmmac: rk: convert to mask-based interface mode configuration
+    (no matching commit)
+  - [net-next,v2,08/22] net: stmmac: rk: convert rk3588 to mask-based interface mode config
+    (no matching commit)
+  - [net-next,v2,09/22] net: stmmac: rk: move speed GRF register offset to private data
+    (no matching commit)
+  - [net-next,v2,10/22] net: stmmac: rk: convert rk3588 to rk_set_reg_speed()
+    (no matching commit)
+  - [net-next,v2,11/22] net: stmmac: rk: remove rk3528 RMII clock initialisation
+    (no matching commit)
+  - [net-next,v2,12/22] net: stmmac: rk: use rk_encode_wm16() for RGMII clocks
+    (no matching commit)
+  - [net-next,v2,13/22] net: stmmac: rk: use rk_encode_wm16() for RMII speed
+    (no matching commit)
+  - [net-next,v2,14/22] net: stmmac: rk: use rk_encode_wm16() for RMII clock
+    (no matching commit)
+  - [net-next,v2,15/22] net: stmmac: rk: remove need for ->set_speed() method
+    (no matching commit)
+  - [net-next,v2,16/22] net: stmmac: rk: convert px30
+    (no matching commit)
+  - [net-next,v2,17/22] net: stmmac: rk: introduce flags indicating support for RGMII/RMII
+    (no matching commit)
+  - [net-next,v2,18/22] net: stmmac: rk: replace empty set_to_rmii() with supports_rmii
+    (no matching commit)
+  - [net-next,v2,19/22] net: stmmac: rk: rk3328: gmac2phy only supports RMII
+    (no matching commit)
+  - [net-next,v2,20/22] net: stmmac: rk: rk3528: gmac0 only supports RMII
+    (no matching commit)
+  - [net-next,v2,21/22] net: stmmac: rk: use rk_encode_wm16() for clock selection
+    (no matching commit)
+  - [net-next,v2,22/22] net: stmmac: rk: rk3506, rk3528 and kk3588 have rmii_mode in clock register
+    (no matching commit)
 
-> As I see it, this is required _because_ of the introduction of AI
-> review, not because something has actually changed.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-Can't argue with how you feel.
 
-> You have said in the past to me that the 15 patch limit is only
-> advisory and can be exceeded where it makes sense to, and for this
-> series, it does make sense.
-
-Advisory is too weak. Unless there's a strong reason not to break up
-the series it should be under 15 patches.
-
-This conversation doesn't feel very productive. Let me just apply
-patches 1-4 and move on :|
 
 _______________________________________________
 Linux-rockchip mailing list
