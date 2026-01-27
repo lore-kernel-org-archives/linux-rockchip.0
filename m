@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A93ED2D8F7
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 10:44:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C11BD2D8FA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 10:44:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r+TyR3FRtH3vXJ7f2OPx+EJ5s4su+CLxwTItvnmkiJw=; b=L+mFzMe9h3mn6j
-	K+Lq3DDX1GO8gGcGrB4s7vNHC0Lia3moxOTkCH+cOvQ1sPpW4spbt+rRxSsZxxILHjgfGlXAgJNDf
-	hcbnKQG4nBxp4FNfmsbKCCJhTcbv3QYHjxTFt3fFG58NllDqfL3MpRi3PB/dmQqcpirO4PXDM42WY
-	lVf99suN0JkdVCrT9f6Rj5o1PZsZGIIdNR9KGOq9zBt75kamXPTOQsVL+44N44oToTDwFYKkTLn2P
-	x8nxi5FlT+oKeAOS4qPKZngNxFeYhexofc+i5Hr/22sKVw8oc/2F0wyfJSyv9CEAtgjyvY4GhNY20
-	Lm3kioW4k6e53L9vk0yw==;
+	List-Owner; bh=hvcbM0Fi/g+DylPMrwsc3IQLukeZbWkif6IL9rdWVio=; b=xSVFdXBqsnQCZ/
+	6eJ7yDxVt5K20VXFETYQxj+SqqSqMEdp9Tml75ECtcAICRl9Ecav5VGFYKIlqf5q7L8IEzoYw8irg
+	CiMM33ogxR/2cmKzB8LDkJY0Q4kpVK/tuxBQ8SYuWlm2ZN45Wro+Bov4vFvaEOy9hnXgXjbD/TRWy
+	3Y8/ztOf5b2PXoaGTOpd5KWfi8PYY5AL6Ubqi6TJhRhpHV2zEDLwkodoIi8eTiJ8B+5x4kt+Hq1cF
+	E/eOnRnY1tJOEya9LREor9Y0hopy8DKYaZsNET+QbTCI1lavC8q2VNbe7X21ip24+OzASu/lx0xZX
+	jfWMHAOG5xn7QbdVxk6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkgYm-0000000E57B-0obi;
-	Tue, 27 Jan 2026 10:44:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vkgYp-0000000E5AN-10AB;
+	Tue, 27 Jan 2026 10:44:39 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkgYg-0000000E505-0N3F;
-	Tue, 27 Jan 2026 10:44:31 +0000
+	id 1vkgYj-0000000E54p-3lXM;
+	Tue, 27 Jan 2026 10:44:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1769510667;
-	bh=8k1knDjmTySyw7ZGPkl+PripTkXl+ZQ0RVPekZtLf28=;
+	s=mail; t=1769510671;
+	bh=amghtbTgMVRqGK2Q18rOlkKA8D2jlojijDT68se66Bw=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=ovdPJImiDu34OGf0iZGBId/tNMCq2xrdk6D5or+cjMUx6afma9RK2n6bM/SvFBXyI
-	 +N1/JWv2Nmf4Jl7IC6bOLcEmrKT5ssCBLVYvSBmY9ZlgIEuTFey/Be1+/Tx70KY2If
-	 SdlFsAoUG1uBFeAEpu/0MyiUteaK0v4XVL2oaRguhlG4ZI/iWdbK9jgw3l0TejCnVz
-	 up+otSBFooml21DrmPxnQkhx4JpC7QKLiRe9PAXVgHzfOCt3eM6lSgqcDBiMl3gYzL
-	 YNEMDCaA3Q9P76QR1l3SqldotHEOpyDBRuiSzKMMHafD5lUZ21GxjlYliAKUK+z72V
-	 BH7HxHkUcu3PA==
+	b=AXD5bvGpt/F0r9E4jvJRKM/tuEXEAXbY0jvh9xi/Zvgeos+YVfF+94h52HzoRZhQS
+	 91hRoX7xzdoMrv7x3LiqU1KEjy/gChTcRQrfJNdXhzquRyiLVEQEw4kcb6x6WUtVDr
+	 3/lBoXrOZnJxp+EfqUi5dG6LaYmz4TXBp9jA6N+Hvi0rOrK30pdUuWGbsji3UPpyyi
+	 kB3ywe2pnUQziXBiANARrDK4qBCxNgWzFHanLHYhsOBN8M6IAoR/18vEeVwq01e6Xn
+	 NpJTOTS4Bmqt0VhsGKGXS4nQNdxTbROXlJbTu/mh5vD0ZS4twVggsXmO8TytBz3mnj
+	 aDiIS4MFBqzqg==
 Received: from vignesh-thinkpad.. (unknown [171.76.81.211])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: vignesh)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3120C17E0DB7;
-	Tue, 27 Jan 2026 11:44:23 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96B1217E1274;
+	Tue, 27 Jan 2026 11:44:27 +0100 (CET)
 From: Vignesh Raman <vignesh.raman@collabora.com>
 To: dri-devel@lists.freedesktop.org
 Cc: daniels@collabora.com,
@@ -64,17 +64,16 @@ Cc: daniels@collabora.com,
 	intel-gfx@lists.freedesktop.org,
 	virtualization@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v1 2/7] drm/ci: move qualcomm baremetal jobs to lava
-Date: Tue, 27 Jan 2026 16:13:57 +0530
-Message-ID: <20260127104406.200505-3-vignesh.raman@collabora.com>
+Subject: [PATCH v1 3/7] drm/ci: reduce sm8350-hdk parallel jobs from 4 to 2
+Date: Tue, 27 Jan 2026 16:13:58 +0530
+Message-ID: <20260127104406.200505-4-vignesh.raman@collabora.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260127104406.200505-1-vignesh.raman@collabora.com>
 References: <20260127104406.200505-1-vignesh.raman@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_024430_313572_0971BD7C 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260127_024435_931669_BDABAA69 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,156 +85,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Qualcomm apq8016 and apq8096 DUTS are moved to Collabora lava
-farm. So enable these jobs to use lava and update expectation
-files.
-
-Co-developed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
----
- drivers/gpu/drm/ci/arm64.config               |  1 +
- drivers/gpu/drm/ci/test.yml                   | 62 ++++++-------------
- .../gpu/drm/ci/xfails/msm-apq8016-fails.txt   |  4 ++
- .../gpu/drm/ci/xfails/msm-apq8096-fails.txt   |  2 +
- 4 files changed, 27 insertions(+), 42 deletions(-)
-
-diff --git a/drivers/gpu/drm/ci/arm64.config b/drivers/gpu/drm/ci/arm64.config
-index fddfbd4d2493..b850b88787ad 100644
---- a/drivers/gpu/drm/ci/arm64.config
-+++ b/drivers/gpu/drm/ci/arm64.config
-@@ -83,6 +83,7 @@ CONFIG_SC_DISPCC_7180=y
- CONFIG_SC_GPUCC_7180=y
- CONFIG_SM_GPUCC_8350=y
- CONFIG_QCOM_SPMI_ADC5=y
-+CONFIG_QCOM_SPMI_VADC=y
- CONFIG_DRM_PARADE_PS8640=y
- CONFIG_DRM_LONTIUM_LT9611UXC=y
- CONFIG_PHY_QCOM_USB_HS=y
-diff --git a/drivers/gpu/drm/ci/test.yml b/drivers/gpu/drm/ci/test.yml
-index 754db71049f0..84153aa2ad68 100644
---- a/drivers/gpu/drm/ci/test.yml
-+++ b/drivers/gpu/drm/ci/test.yml
-@@ -67,31 +67,6 @@
-     - testing:x86_64
-     - igt:x86_64
- 
--.baremetal-igt-arm64:
--  extends:
--    - .baremetal-test-arm64-gl
--    - .use-debian/baremetal_arm64_test-gl
--    - .allow_failure_lockdep
--  timeout: "1h30m"
--  rules:
--    - !reference [.scheduled_pipeline-rules, rules]
--    - !reference [.google-freedreno-farm-rules, rules]
--    - when: on_success
--  variables:
--    FDO_CI_CONCURRENT: 10
--    HWCI_TEST_SCRIPT: "/install/igt_runner.sh"
--    S3_ARTIFACT_NAME: "arm64/kernel-files"
--    BM_KERNEL: https://${PIPELINE_ARTIFACTS_BASE}/arm64/Image.gz
--    BM_CMDLINE: "ip=dhcp console=ttyMSM0,115200n8 $BM_KERNEL_EXTRA_ARGS root=/dev/nfs rw nfsrootdebug nfsroot=,tcp,nfsvers=4.2 init=/init $BM_KERNELARGS"
--    FARM: google
--  needs:
--    - debian/baremetal_arm64_test-gl
--    - job: testing:arm64
--      artifacts: false
--    - igt:arm64
--  tags:
--    - $RUNNER_TAG
--
- .software-driver:
-   stage: software-driver
-   extends:
-@@ -149,34 +124,37 @@ msm:sc7180-trogdor-kingoftown:
- 
- msm:apq8016:
-   extends:
--    - .baremetal-igt-arm64
-+    - .lava-igt:arm64
-   stage: msm
-+  parallel: 3
-   variables:
--    DEVICE_TYPE: apq8016-sbc-usb-host
-+    BOOT_METHOD: fastboot
-+    DEVICE_TYPE: dragonboard-410c
-     DRIVER_NAME: msm
--    BM_DTB: https://${PIPELINE_ARTIFACTS_BASE}/arm64/${DEVICE_TYPE}.dtb
-+    DTB: apq8016-sbc-usb-host
-+    FARM: collabora
-     GPU_VERSION: apq8016
--    # disabling unused clocks congests with the MDSS runtime PM trying to
--    # disable those clocks and causes boot to fail.
--    # Reproducer: DRM_MSM=y, DRM_I2C_ADV7511=m
--    BM_KERNEL_EXTRA_ARGS: clk_ignore_unused
--    RUNNER_TAG: google-freedreno-db410c
--  script:
--    - ./install/bare-metal/fastboot.sh || exit $?
-+    KERNEL_IMAGE_NAME: "Image.gz"
-+    KERNEL_IMAGE_TYPE: ""
-+    RUNNER_TAG: mesa-ci-x86-64-lava-dragonboard-410c
-+    LAVA_FIRMWARE: qcom-lava
- 
- msm:apq8096:
-   extends:
--    - .baremetal-igt-arm64
-+    - .lava-igt:arm64
-   stage: msm
-+  parallel: 3
-   variables:
--    DEVICE_TYPE: apq8096-db820c
-+    BOOT_METHOD: fastboot
-+    DEVICE_TYPE: dragonboard-820c
-     DRIVER_NAME: msm
--    BM_KERNEL_EXTRA_ARGS: maxcpus=2
--    BM_DTB: https://${PIPELINE_ARTIFACTS_BASE}/arm64/${DEVICE_TYPE}.dtb
-+    DTB: apq8096-db820c
-+    FARM: collabora
-     GPU_VERSION: apq8096
--    RUNNER_TAG: google-freedreno-db820c
--  script:
--    - ./install/bare-metal/fastboot.sh || exit $?
-+    KERNEL_IMAGE_NAME: "Image.gz"
-+    KERNEL_IMAGE_TYPE: ""
-+    RUNNER_TAG: mesa-ci-x86-64-lava-dragonboard-820c
-+    LAVA_FIRMWARE: qcom-lava
- 
- msm:sm8350-hdk:
-   extends:
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-index 72c469021b66..4546363447ff 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8016-fails.txt
-@@ -1,5 +1,9 @@
-+core_setmaster@master-drop-set-user,Fail
- kms_3d,Fail
-+kms_cursor_legacy@forked-move,Fail
-+kms_cursor_legacy@single-bo,Fail
- kms_force_connector_basic@force-edid,Fail
- kms_hdmi_inject@inject-4k,Fail
- kms_lease@lease-uevent,Fail
-+msm/msm_mapping@memptrs,Fail
- msm/msm_mapping@ring,Fail
-diff --git a/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt b/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
-index 2893f98a6b97..0d5cb2a87e67 100644
---- a/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
-+++ b/drivers/gpu/drm/ci/xfails/msm-apq8096-fails.txt
-@@ -1,2 +1,4 @@
-+core_setmaster@master-drop-set-user,Fail
- kms_3d,Fail
- kms_lease@lease-uevent,Fail
-+msm/msm_mapping@memptrs,Fail
--- 
-2.47.3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIHNtODM1MC1oZGsgam9icyBhcmUgc2hvcnQgYW5kIGVhY2ggdGVzdCB0YWtlcyBhcm91bmQg
+MuKAkzMgbWludXRlcyBhbmQKdGhlIGZ1bGwgam9iIGNvbXBsZXRlcyBpbiBhYm91dCAxMCBtaW51
+dGVzLiBSdW5uaW5nIDQgcGFyYWxsZWwgam9icyB1c2VzCjQgZGV2aWNlcyBhdCBvbmNlLCB3aGlj
+aCBpcyBub3QgbmVlZGVkLiBTZXQgcGFyYWxsZWwgdG8gMiB0byByZWR1Y2UKZGV2aWNlIHVzYWdl
+LgoKU2lnbmVkLW9mZi1ieTogVmlnbmVzaCBSYW1hbiA8dmlnbmVzaC5yYW1hbkBjb2xsYWJvcmEu
+Y29tPgotLS0KIGRyaXZlcnMvZ3B1L2RybS9jaS90ZXN0LnltbCB8IDIgKy0KIDEgZmlsZSBjaGFu
+Z2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMv
+Z3B1L2RybS9jaS90ZXN0LnltbCBiL2RyaXZlcnMvZ3B1L2RybS9jaS90ZXN0LnltbAppbmRleCA4
+NDE1M2FhMmFkNjguLjA1ZWNjZGE2YmI5ZSAxMDA2NDQKLS0tIGEvZHJpdmVycy9ncHUvZHJtL2Np
+L3Rlc3QueW1sCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9jaS90ZXN0LnltbApAQCAtMTYwLDcgKzE2
+MCw3IEBAIG1zbTpzbTgzNTAtaGRrOgogICBleHRlbmRzOgogICAgIC0gLmxhdmEtaWd0OmFybTY0
+CiAgIHN0YWdlOiBtc20KLSAgcGFyYWxsZWw6IDQKKyAgcGFyYWxsZWw6IDIKICAgdmFyaWFibGVz
+OgogICAgIEJPT1RfTUVUSE9EOiBmYXN0Ym9vdAogICAgIERFVklDRV9UWVBFOiBzbTgzNTAtaGRr
+Ci0tIAoyLjQ3LjMKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
+cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
+bnV4LXJvY2tjaGlwCg==
