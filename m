@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADA98D25B4D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 12:20:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE4FD25B76
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 13:28:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+Yd8B8UXFrGgHupb8q18HtAB+ERQr4MDZbW/BeRZjJ4=; b=KEtcwZkptAHY+A
-	vsU/D5+HL09qxfFuE0zQFJ5cWClarGPGlrr32t/gbuPcVUFHZ5ipnRfMkgdUvFfKKZqn13leBvpjp
-	GSp19BhGb1MvSklW0VIcxYW0LdFTIYSPNa0FnBYPArNsOHbLh4UJKsJighLFMpD9NDchnQfVXn0HF
-	Uo7eUcR8Igv7Um34mXC+QqDYNPiXmkuSNnEYF1IExID/6n8zgBHEJMA5cnbwyOoAr8TkT9ovY6GEu
-	+KAlcwDrTL8M33qRIHWbV9TSme3RyGIapCXHN9NTuJajAbgAweuVGLHwHqlqPRUbK4nfI19Um9t4C
-	cx3wjUo9sZ8ud/CGPzCA==;
+	List-Owner; bh=/pq34XA1ADkkJlePJitXGJMkrH+PDHRSzqahhefjfqE=; b=JhnoctLAGXJafJ
+	u4wCErnfxSXy9xnFf+/Ito6UNPY1VojVxF7Zt4waA/8rEeV2GxvUxpCYFamoTD+d3QPrDzlib/S6I
+	jid2R1RLWD/WVaYIyCWt2XxpZp/nV5bxPtvsPDytyJNK8ZNCjRe6P/4fYDKEPYoyOlEHX10vrrI09
+	PMv2WYwmzF6IItjHFIU00w0rnUXdcmEW4L1JXo71rcI8xLrw7+epEq/XAaWk0K/ulo8s9/oAJlh0/
+	shruaN/MWuA8/YTs2YSJekcQdLbD4nRIhP/+1aCr2NV4amUC9OQNoOFZ1+mjw7xDxr0Mvc1Sfclpi
+	08NR67PLEUuvinPty1Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl4Wp-0000000FzIV-2h2R;
-	Wed, 28 Jan 2026 12:20:11 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vl5ar-0000000G3z7-3uZP;
+	Wed, 28 Jan 2026 13:28:25 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl4Wn-0000000FzHc-0A0e;
-	Wed, 28 Jan 2026 12:20:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=ISotn7edf+IUTj82nvFY2R7E+1j0WbBkqwZTBvRb3ws=; b=Qzi+YIXHL/nhOP7tltKeGwXgJm
-	TDhTlh2TPDZxXVdv5t87t7vOJ8E4/MaWXYHiS3vl0HG23k3aakBDz6HFBXxIvKGrR4WDE1jFgF5e5
-	t09PWIRt76FZjpVYVe+bi6M32aA+UjIgGmzOO4wbHYUHTB1dcSgRkEdDjgGamVIVfGfxN973Z4BIZ
-	00yUAVQ48RWmURUaDLH8Wjkcu+8ZStYGULzBdOn8+AlwytvuLrmPYgTs6ywykk+O2ZFVpXoUEvGyN
-	1HWJpcMJxB8wD/nUk5PFF9scmXJwRH3P2Y7Cu3DkQZfsLvXIXci9UP6mTJwFfKwdInatD5diUFl4P
-	knpPGadA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:55194)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vl4We-000000007Lo-18uM;
-	Wed, 28 Jan 2026 12:20:00 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vl4Wa-000000006xo-3rF9;
-	Wed, 28 Jan 2026 12:19:56 +0000
-Date: Wed, 28 Jan 2026 12:19:56 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Andrew Lunn <andrew@lunn.ch>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 1/3] net: stmmac: rk: fix missing
- reset_control_put()
-Message-ID: <aXn-7LWRk5cZjno8@shell.armlinux.org.uk>
-References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
- <E1vl3Fv-00000006v3L-215v@rmk-PC.armlinux.org.uk>
- <c8a10b5355b750cfc83a7f746347175ab40b64d7.camel@pengutronix.de>
+	id 1vl5ao-0000000G3xM-35zi;
+	Wed, 28 Jan 2026 13:28:24 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id C7596C211E6;
+	Wed, 28 Jan 2026 13:28:09 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 3FD826071F;
+	Wed, 28 Jan 2026 13:28:07 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C8C84119A880E;
+	Wed, 28 Jan 2026 14:27:58 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1769606886; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=B5JCMMNEQztUBwudeMkHWDAcD2USZ9OKX/sG/bOWf9o=;
+	b=Ny2IcdL+0uvG2HzvmhoJYWRsybshnbCU63i6zoWkLe7lAy/SxM+3RQH3HuMhzcsKDzthvm
+	Ncv2bCC9ZuxwqZmSxakO1IxqCwaqG8nj9SyNQpC8rYdLiUHdnu9hfRub5Vp45wO3YD3F+P
+	+Lr5IXCVwi6ca6GQtkt2yTTywD/XoJXrSE4Adf1x/LYAylM0xnu1qKKN+sSk1LK7BT4NCF
+	J8N2tya1yRQYXmPCOCX7/zT9Id6idCLqeycnBAIvrq6hCKDBjUMqSKd9WNsBw3xU2W/zn6
+	y0EQm4XwXf4KECtIKvBgdUdcbPezhsRrgBgrYlfDGhgvDexOEjQkmSIbQ/zrWA==
+Message-ID: <0822e32a-3914-4678-af1b-f811a11ee2c8@bootlin.com>
+Date: Wed, 28 Jan 2026 14:27:57 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <c8a10b5355b750cfc83a7f746347175ab40b64d7.camel@pengutronix.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next 2/3] net: stmmac: rk: add GMAC_CLK_xx constants,
+ simplify RGMII definitions
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+ Andrew Lunn <andrew@lunn.ch>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>, Philipp Zabel <p.zabel@pengutronix.de>
+References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+ <E1vl3G0-00000006v3R-2ZBc@rmk-PC.armlinux.org.uk>
+From: Maxime Chevallier <maxime.chevallier@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <E1vl3G0-00000006v3R-2ZBc@rmk-PC.armlinux.org.uk>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_042009_075961_5F159658 
-X-CRM114-Status: GOOD (  25.36  )
+X-CRM114-CacheID: sfid-20260128_052822_978402_50A82EB6 
+X-CRM114-Status: UNSURE (   6.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,57 +84,22 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Jan 28, 2026 at 01:04:21PM +0100, Philipp Zabel wrote:
-> On Mi, 2026-01-28 at 10:58 +0000, Russell King (Oracle) wrote:
-> > rk_gmac_setup() delves into the PHY's DT node to retrieve its reset
-> > control using of_reset_control_get(). However, it never releases it
-> > when the driver is removed. Add reset_control_put() to rk_gmac_exit()
-> > to clean this up.
-> > 
-> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > ---
-> >  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 2 ++
-> >  1 file changed, 2 insertions(+)
-> > 
-> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > index 5f8d2031b97c..bc69cbb5a7d4 100644
-> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > @@ -1784,6 +1784,8 @@ static void rk_gmac_exit(struct device *dev, void *bsp_priv_)
-> >  
-> >  	if (priv->plat->phy_node && bsp_priv->integrated_phy)
-> >  		clk_put(bsp_priv->clk_phy);
-> > +
-> > +	reset_control_put(bsp_priv->phy_reset);
-> >  }
-> >  
-> >  static int rk_gmac_probe(struct platform_device *pdev)
+Hi,
+
+On 28/01/2026 11:58, Russell King (Oracle) wrote:
+> All the definitions of the RGMII related xxx_GMAC_CLK_xxx definitions
+> use the same field values to select the clock rate. Provide common
+> definitions for these field values, passing them in to a single macro
+> for each variant that generates the appropriate values for the speed
+> register.
 > 
-> This is fine because the driver sets plat_dat->suspend, and so
-> rk_gmac_exit() is never called via stmmac_pltfr_exit() during suspend.
+> No change to produced code on aarch64.
 > 
-> It does look a bit sketchy to release resources in the rk_gmac_exit()
-> counterpart to rk_gmac_init(), which never requested the resources,
-> though. Maybe use devm_add_action_or_reset() to register the release of
-> the reset during remove?
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
 
-Thanks, but I think a sense of proportion is required here. This
-patch is the result of introducing the ->init() method, and AI
-noticing that there was no cleanup of this resource. This was the
-simplest way to implement that cleanup.
+Maxime
 
-However, your review commit also applies to bsp_priv->clk_phy which
-has the same problem - this also isn't obtained in rk_gmac_init(),
-but in rk_gmac_clk_init().
-
-Given that, and the fact that this entire series is already
-considerably big (it was 21 patches, then 22, now 23, and with this
-it's going to become 24 patches) I'm going to say that this issue
-can be addressed at a later time.
-
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
