@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3763D25926
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 10:59:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B794ED25B49
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 12:04:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
-	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f2R6jA0FpBQzynVwo7m7AFOS7J+bRZtTYc8MlNh6jMY=; b=elwQiuRjYDsI13
-	hWoWDH6g5XiUj+lUqsmhk88og4+it5lrWVtOc7dt3k78kYJUIDbhwf2RZeiD9Zj7vQ4QCEIpaBpSf
-	ycOxX2e2QAw1UcFBbyGR0Q9AoFUd+XRQ91qInbXLYn8tCuKjsE53XDnsUqOQ7Jpoz1leVfMp4DTV2
-	9xi6MzNMBYsb1owr5kBGavmyJRsxNKY01rr/pxkIjgUOcx2Hnz39E2HUr5Gd4IQdL5uZUl7DXIxuw
-	w1xM/dY+DIx7crZsjZHXLbZlPHhSW/9oof/tPjTktzTl+093Ub5W4ELg1FtZsUcbQn4FVe9WTzEhZ
-	+PEmGQFKGevxLLGPW7dQ==;
+	List-Owner; bh=jQVsWD2eMEu+dv3wFvRMDbE5enCaUJJE8o9T79gC444=; b=vb+9G8TuIRrcPT
+	IIR3u0Cd4T8hJyTdGFt9gKIkJYhnPX6xzXUkE4k/F2KUljFsMRwlGa2i5wxtWgiWZ0MGS3FNPQFlf
+	D9zVapSFWZJOag58ys443htZG7xEmXO2+3b09CqZelvszLqEh5cMo1g6qfzBIUWV63I3XVv15oJZc
+	DZVlfFZOjrgWhwwtgbjRExEomUnwgpRu+NuQJrcVTbdNdXJKKxoeZzwKkClJK5GlHXIYVaxez0+62
+	EThtd7gnEAC1jnoyZIHTAm3tAu4X+v6+6zTJ+VFpKX0SKboAeIl5FNyEt72YG3zDtArIagpRbD37M
+	eF019v0MRBLNy1OOAYCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl3GG-0000000Fst5-46Rh;
-	Wed, 28 Jan 2026 10:59:00 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vl4Hl-0000000FyE1-08aI;
+	Wed, 28 Jan 2026 12:04:37 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl3GE-0000000Fspk-3UQL;
-	Wed, 28 Jan 2026 10:58:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=EGBTNGnmTxwMKDHsZMSMTT/mAkSrcZT730/nj1ps4ck=; b=sAs4uHaqj/eILKLiSvLRLGbGBw
-	lXuPAVJBPWgHm2vpJxoAlCbiWnYdTfuJhWQJ3y/pnwzodn/QhmW9we7R3mcN9iXjbSHIY2t87E/Xh
-	8DM0/dkS2L3/af1Cigcen5LhkRCq8bG/8bzuZ3eIg2mIep4jHPAKC/mpWgXhv32Hhk4L/CrAsF9A9
-	N5NJCFMVuPA/+oSfBycuiqhh+Kc4l8dHuIn2HRQLrc9WjY5bekltn2HnUNGBJf93cWYiyH0XMA6W2
-	hFHrvWyRD1iLhausbhXVCu/vgdvxFITS6uUmUK5m6/d+0dt/d7tLIi6gn+OPY8ADWAIPzzlEwsLTO
-	Terzf0wg==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:42812 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vl3G7-000000007GL-1MhJ;
-	Wed, 28 Jan 2026 10:58:51 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vl3G5-00000006v3X-2zfD;
-	Wed, 28 Jan 2026 10:58:49 +0000
-In-Reply-To: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
-References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
+	id 1vl4Hj-0000000FyD9-0Pw5
+	for linux-rockchip@lists.infradead.org;
+	Wed, 28 Jan 2026 12:04:36 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vl4HY-00024t-D5; Wed, 28 Jan 2026 13:04:24 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vl4HW-002uU7-0I;
+	Wed, 28 Jan 2026 13:04:21 +0100
+Received: from pza by lupine with local (Exim 4.98.2)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vl4HV-000000009ui-1PUo;
+	Wed, 28 Jan 2026 13:04:21 +0100
+Message-ID: <c8a10b5355b750cfc83a7f746347175ab40b64d7.camel@pengutronix.de>
+Subject: Re: [PATCH net-next 1/3] net: stmmac: rk: fix missing
+ reset_control_put()
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>, Andrew Lunn
+	 <andrew@lunn.ch>
+Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>, Andrew Lunn	
+ <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet	 <edumazet@google.com>, Heiko Stuebner <heiko@sntech.de>, Jakub
+ Kicinski	 <kuba@kernel.org>, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH net-next 3/3] net: stmmac: rk: add SoC specific ->init()
- method
+ linux-stm32@st-md-mailman.stormreply.com, 	netdev@vger.kernel.org, Paolo
+ Abeni <pabeni@redhat.com>
+Date: Wed, 28 Jan 2026 13:04:21 +0100
+In-Reply-To: <E1vl3Fv-00000006v3L-215v@rmk-PC.armlinux.org.uk>
+References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+	 <E1vl3Fv-00000006v3L-215v@rmk-PC.armlinux.org.uk>
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1vl3G5-00000006v3X-2zfD@rmk-PC.armlinux.org.uk>
-Date: Wed, 28 Jan 2026 10:58:49 +0000
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_025858_880985_A5D7F5BC 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20260128_040435_132331_47D1D174 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,44 +84,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add a SoC specific init method.
+On Mi, 2026-01-28 at 10:58 +0000, Russell King (Oracle) wrote:
+> rk_gmac_setup() delves into the PHY's DT node to retrieve its reset
+> control using of_reset_control_get(). However, it never releases it
+> when the driver is removed. Add reset_control_put() to rk_gmac_exit()
+> to clean this up.
+> 
+> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> index 5f8d2031b97c..bc69cbb5a7d4 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> @@ -1784,6 +1784,8 @@ static void rk_gmac_exit(struct device *dev, void *bsp_priv_)
+>  
+>  	if (priv->plat->phy_node && bsp_priv->integrated_phy)
+>  		clk_put(bsp_priv->clk_phy);
+> +
+> +	reset_control_put(bsp_priv->phy_reset);
+>  }
+>  
+>  static int rk_gmac_probe(struct platform_device *pdev)
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
----
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+This is fine because the driver sets plat_dat->suspend, and so
+rk_gmac_exit() is never called via stmmac_pltfr_exit() during suspend.
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 976d42fd90df..ea01c5965cbb 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -35,6 +35,7 @@ struct rk_reg_speed_data {
- };
- 
- struct rk_gmac_ops {
-+	int (*init)(struct rk_priv_data *bsp_priv);
- 	void (*set_to_rgmii)(struct rk_priv_data *bsp_priv,
- 			     int tx_delay, int rx_delay);
- 	void (*set_to_rmii)(struct rk_priv_data *bsp_priv);
-@@ -1618,6 +1619,15 @@ static struct rk_priv_data *rk_gmac_setup(struct platform_device *pdev,
- 
- 	bsp_priv->dev = dev;
- 
-+	if (ops->init) {
-+		ret = ops->init(bsp_priv);
-+		if (ret) {
-+			reset_control_put(bsp_priv->phy_reset);
-+			dev_err_probe(dev, ret, "failed to init BSP\n");
-+			return ERR_PTR(ret);
-+		}
-+	}
-+
- 	return bsp_priv;
- }
- 
--- 
-2.47.3
+It does look a bit sketchy to release resources in the rk_gmac_exit()
+counterpart to rk_gmac_init(), which never requested the resources,
+though. Maybe use devm_add_action_or_reset() to register the release of
+the reset during remove?
 
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
