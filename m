@@ -4,71 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAA03D25926
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 10:58:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7542BD35693
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 10:58:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ay4vX6hb8lO/6/NYHVW7Tekdwa/4YoZ0Y006rEm/etE=; b=4bTBYGVqt5tHp9
-	cJv9hhguffaR+xepHBibTGHtJKaDCzofctaqDPdwbf05pt5QnRwvoWVVMCm5SYXyn+WJIpnuKyssf
-	jNCWxIdgwyd3dddWKCcwB2OGMg5PdMNkx3ixMCLWsPCEeP4c0QQ0fDhRvrgYTuMItsu+xC92hr/V5
-	ynVUzuakEx1pkaCErPjpV1ZEvSvYlxCVqEPsLP12SnLeDbEa/VGgT00GKxBEeh5Iyy714XdTCAPYs
-	aeKUd8zllCH7s6qzFTZLkzC9qWxeCKJcHKChRfqx2u3ns2J7a4Gen4F5Tg+JNgI9XXrny6IRFGP8a
-	YbujipL5jyZNMYpoFu1A==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
+	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=B2UpGDndGEKbw1240eUXCiznQZB4ibThJvDMORwE3Hs=; b=v6NFlWkFnQTu4c
+	WRv8mnJm3DaOkIk/wnRI+ILNyJLT+rp/ezGMDcthbcx7XjEmqA6BijJob75J3V7MqwcXv7lDYT5v1
+	UPBi0SlDupbOPf5M7Ncsw1BMl3jO+vIzhmtbEVrQGjgjEGoT4rs5m6OewVIveN8A3pMWBt3hrOQyB
+	4ZmH4NQHfgApPxNPUstrsp8hcQnvlkUI/hCigb4YGfIma+m3fLjFTZc6U3RTqPRj4FiMh6jywQFly
+	bGfM+niIWiCPOK/yV5TrJgagerP/K4Bi/C/t5NxQ7TzcohswmXAFoKFvpCFTufUuC6yCqkM7YB1KI
+	IUShFB3PnEdhScXhuD9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl3Fp-0000000FsdA-0shY;
-	Wed, 28 Jan 2026 10:58:33 +0000
+	id 1vl3G4-0000000Fsjv-2Y4u;
+	Wed, 28 Jan 2026 10:58:48 +0000
 Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl3Fm-0000000Fsc7-1NJK;
-	Wed, 28 Jan 2026 10:58:31 +0000
+	id 1vl3G1-0000000Fsha-2qW4;
+	Wed, 28 Jan 2026 10:58:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:Content-Type:MIME-Version:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=WjAk+WsIgQye24hk1wlnOeBf4+qL7selZY8821b7xpk=; b=CwoFBNrI6o1EDsfMPyR06myCUu
-	3OPzbYpEHA8FfvNpBmhZDsAJCAivcsr1Pt9BOb+mv6zTqZNT5F6MUcJg+Ll3ZOkWJuOEU0YDTuRwM
-	CEaMX6pYUj6bPKQmu8/HfeqR67aM/d4dgdinQ1M44009JCDAYgLb6EjS5l270KcJs4NEdqBEeAcE2
-	UCft2R6RzQKHYSitLaZK4sPjDyKJ1mNWSDB6YI+uIOHk//b+3c5YhS/7TxiIy5wc2a3c2ji6BbUIY
-	oZ6duDd6MTcj21yywJOQtZ7ufI3ZuZH2EPgM9nIydXx+GcSdFPoCb0U8bS67o3eNopZ8Q5ZTpNXty
-	70PKtKtg==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:51056)
+	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
+	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=TQbhJic195icRH9DOBVb9n01Zo2c/1UpNVxdtJLDUFQ=; b=mfBPwzQbQzvTKMcS5/G0eCK4rz
+	rcDywclYF9VAv0s9JEq72l0epMmo74oiFqc46YpNDaEtuotCdWtWEEKsCFLAlW+9lU1ZKkbSX2Ts/
+	1BZ38F5KTEYdlWGGtejahfmDwc6CaLS6loCWdbUed+NpkLOrkqc3tYdXkG2WkX0wW7PAmp9kBsIHU
+	51YoIluLMukWdGn60Z/qcUz7n33B3CPiVIIk2zttQiHRW+AEqlppz8qFRP+HQgkmIGnq5t+4UkXvk
+	VEXUQmXZrMzSNKNabRMJutvyipQ4+LEmqDbzhd6B14FndGjYUpa/ker1ESK3DNXPOq8uKjVIrt76V
+	Jk8dRsBQ==;
+Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:42246 helo=rmk-PC.armlinux.org.uk)
 	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vl3Ff-000000007FI-0fEG;
-	Wed, 28 Jan 2026 10:58:23 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vl3Fc-000000006uY-1acE;
-	Wed, 28 Jan 2026 10:58:20 +0000
-Date: Wed, 28 Jan 2026 10:58:20 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+	(envelope-from <rmk@armlinux.org.uk>)
+	id 1vl3Fw-000000007Fm-0wVm;
+	Wed, 28 Jan 2026 10:58:40 +0000
+Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
+	id 1vl3Fv-00000006v3L-215v;
+	Wed, 28 Jan 2026 10:58:39 +0000
+In-Reply-To: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
 	Andrew Lunn <andrew+netdev@lunn.ch>,
 	"David S. Miller" <davem@davemloft.net>,
 	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jakub Kicinski <kuba@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	netdev@vger.kernel.org,
 	Paolo Abeni <pabeni@redhat.com>,
 	Philipp Zabel <p.zabel@pengutronix.de>
-Subject: [PATCH net-next 0/3] net: stmmac: rk: second chunk of cleanups
-Message-ID: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+Subject: [PATCH net-next 1/3] net: stmmac: rk: fix missing reset_control_put()
 MIME-Version: 1.0
 Content-Disposition: inline
+Message-Id: <E1vl3Fv-00000006v3L-215v@rmk-PC.armlinux.org.uk>
+Date: Wed, 28 Jan 2026 10:58:39 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_025830_371855_531FCAFE 
-X-CRM114-Status: UNSURE (   7.91  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260128_025845_721642_9FF2EE6C 
+X-CRM114-Status: GOOD (  10.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,20 +88,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+rk_gmac_setup() delves into the PHY's DT node to retrieve its reset
+control using of_reset_control_get(). However, it never releases it
+when the driver is removed. Add reset_control_put() to rk_gmac_exit()
+to clean this up.
 
-This series is a cut-down installment of the dwmac-rk cleanups, covering
-up to the point that the AI review had its first issue with the patches.
-Unfortunately, this means that we introduce ->init but do not add any
-users for it yet. That will be in the next round once this has got
-through AI review and merged.
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+---
+ drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
- drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 120 ++++++++++++-------------
- 1 file changed, 57 insertions(+), 63 deletions(-)
-
+diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+index 5f8d2031b97c..bc69cbb5a7d4 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
++++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+@@ -1784,6 +1784,8 @@ static void rk_gmac_exit(struct device *dev, void *bsp_priv_)
+ 
+ 	if (priv->plat->phy_node && bsp_priv->integrated_phy)
+ 		clk_put(bsp_priv->clk_phy);
++
++	reset_control_put(bsp_priv->phy_reset);
+ }
+ 
+ static int rk_gmac_probe(struct platform_device *pdev)
 -- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
