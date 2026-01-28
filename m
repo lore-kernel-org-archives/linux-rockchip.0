@@ -4,71 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81B4ED25B7F
-	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 13:53:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA1BD46BE7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 17:49:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+kzpvdlGCfKyDEQAAkKcqxyWIQzV8o7v1QnSycoKe4A=; b=lpyBH+Q1VWBPaA
-	7Zpr0pT/drdjKVhMQJSUVKSfIqnMsgrAmm4/Bi++vo+gMFsNkEp5M+qtsbVFHUb4aysv23MyrJXWU
-	O7nYa+murk6VaZ/jDhY1RzB4cm91QJ+IBuv1peTaBjlFDbwxeuULkoQ18OxnZEn7U8LM82KkQeyJ1
-	VkofPmqS9/6kin+dti9yMxionCNvDdpeZ1WWf6T/GuDlreLGD1mBSA3m8oxsEdFonQQHP2Ualbe7b
-	nEShZ2TpYTDxw4cjGDxel8/Iqno6jprztGlVfi5qFlV8jX9APS1YTX+VjrjsR315BRN0P8LVFya1X
-	yCTLWIlbdEc384lYsB6Q==;
+	List-Owner; bh=/Tlf0WkQlpk/OkX4uQSFAAZEL6qgEI7T1vo14ZIXJ0A=; b=g8bXLhPNpbJjwu
+	4jtqLDxZrQSBw7yjbcoERweaExc3LP9WXfSCFlIcrXEDNg+fo7XGfB1l2eMarAzYvZR99J5AAD1FG
+	0I9O9I0DDHRwC4Py/AumI9XBYxQxwCgze54W7uEm8x4Y+DTVzxhJvR3/Gy6GFo5k3nKES4IeHq0Kn
+	dAPWEBEHoPNlYS5ix3gXTHnNJ1AfQJMTR/eNncRELz8kcYBdhp7qLDwMu15GrneuLxq8XHyj8dDNt
+	HdPTxaTA+22m9Nhefk/k1EkIPSgiaXtUH1WFz5DQId9+6Ii5oUveKB9LxRLQNJX1lCGr0vPo0B8ib
+	txLHvPFJTVrgqaCGWC8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl5yr-0000000G6Pt-13JY;
-	Wed, 28 Jan 2026 13:53:13 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vl9ep-0000000GWS7-2aq0;
+	Wed, 28 Jan 2026 17:48:47 +0000
+Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl5yo-0000000G6Op-3b0O
+	id 1vl9en-0000000GWQR-0jhx
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Jan 2026 13:53:11 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vl5yd-000670-RO; Wed, 28 Jan 2026 14:52:59 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vl5yc-002vZ3-1y;
-	Wed, 28 Jan 2026 14:52:57 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vl5yb-00000000BPZ-3Yu7;
-	Wed, 28 Jan 2026 14:52:57 +0100
-Message-ID: <52ea6b98b27235f10008406de45cdcecc2a7b105.camel@pengutronix.de>
-Subject: Re: [PATCH net-next 1/3] net: stmmac: rk: fix missing
- reset_control_put()
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Alexandre Torgue	
- <alexandre.torgue@foss.st.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Heiko
- Stuebner <heiko@sntech.de>,  Jakub Kicinski	 <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, 	netdev@vger.kernel.org, Paolo
- Abeni <pabeni@redhat.com>
-Date: Wed, 28 Jan 2026 14:52:57 +0100
-In-Reply-To: <aXn-7LWRk5cZjno8@shell.armlinux.org.uk>
-References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
-	 <E1vl3Fv-00000006v3L-215v@rmk-PC.armlinux.org.uk>
-	 <c8a10b5355b750cfc83a7f746347175ab40b64d7.camel@pengutronix.de>
-	 <aXn-7LWRk5cZjno8@shell.armlinux.org.uk>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	Wed, 28 Jan 2026 17:48:46 +0000
+Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-4094fbd1808so38109fac.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Jan 2026 09:48:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1769622524; x=1770227324; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Z4g1rdqkzBN7E4k3DRb93C6Pz1pOJ7VGgwv2jByOH00=;
+        b=G9Fth0zBNQ0jfmftoF/QgR96OKw9zMqRNZhqxAEENQUqvRTARcrSPjqAg58VjSFD7W
+         bWol8zBoXtAQbu8fHQShcCBETN4F7riGxqJHQ48paMlJCWNOGp8sjqN1UtuNOmg8XlR3
+         3yG6e0awSSeycUCnlL8HZsdOXlLJPeuEZcNgRnhgsYIcnxz2uPN39/AkqrXLQmorW7ZJ
+         4h/76rxyhji3JVHqig7TV7W94XJEH5+sVSsWnqCi1SX0OUFfvgdR7Us6Wrft1kEntk2/
+         hDd4tUDvhKzeWe9VLKG6bzs/4ORoAmiq7daqw6YgIb27i+p9l4oGu7wvoTFluFmxNv+K
+         ns5Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769622524; x=1770227324;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=Z4g1rdqkzBN7E4k3DRb93C6Pz1pOJ7VGgwv2jByOH00=;
+        b=BjCn9Lpp9M6a1ev3sB1iNDsVTg4HkXWGa+ururqqr1XuaAI1LDn5uX/KP5JMfYmP1J
+         a+5twQXQ7MMGjHz9PNcixq3bvniBC2AhvV2qbEiVyc6vsXxsPPcxArPNLgITrPCrZQ5Y
+         CJlalOAGme/h7cRrVN47tdLDQEu5hVx1WOyqLPoCExnyr8Nl1MF/Z3SQHTHTA77u1NRk
+         edGmPe+mpiRMXqM4Xfm6hXHBfatlXDCheG4fg0tHlM8gQXCLAAv17gM+phcBAdhwWMhi
+         pL9kFUpQZMW7CJoj0HC2x2JELFeZpVyAz9MzogCvXUtUor6UNeD34/kJBpWcccptzoWV
+         +3sA==
+X-Forwarded-Encrypted: i=1; AJvYcCWDgFvt12fX/CWDbJopwIzNu8LZQ/kc1dDHVUBrcdz03p/dOEVvkWzl50I1PgjVxIkJAEpu7skpscD54IPVrg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxYj8Vdw2GdRIVzhVZCQ/WE3V6r7YxUpI+91yXG83IcXsJ7da5f
+	U7UF6AGLPhTqqW2cjBoJesVxXGOE118ra/oglYCxxE+H2czvtWTEBdn8zeWwNg==
+X-Gm-Gg: AZuq6aLQs0+YmVo/vvhO4sJja9QtBbNWRfsdkuUlxhZhP1BGEN8lU5YAwtJCEiqp2AT
+	EZpvbzBOhEQbEiZj4DcCJOLAFdTrHRi1T+ckNn2ZFEtwygfbqnwyXoXGCs4312rpwlZihrDN/uc
+	JGz4lwL61yCWifHRsbGq6B1qSLtplXVup07lej7c2s+t7zrtQ3G5Ogsdw3gV8/SXhbO/AapaYXq
+	ruRBHzHGrG1whljsXtoaauPV1f5zs3un0e1Tit/YHbxkHoEVBYeNIMYKBemdS2GsLp6DjR6a6N8
+	E4rukiCPV1MAQWbQyU+vgVTCVLTN/TZ43647u7sVb3ib+fR072GHp7YKxCQSXmMr56OtE5Ln3Ce
+	kNRcLg3Nx4DlOihQ6xt4PUm2VLBfurcl7IGQEvJSuVnNibwSuVjyrDp3+bt214t7AVjNq0yPS+X
+	sNrFwPG6qK
+X-Received: by 2002:a05:6870:b01b:b0:3f6:1e56:aad7 with SMTP id 586e51a60fabf-4093fce5f4emr3436398fac.15.1769622522315;
+        Wed, 28 Jan 2026 09:48:42 -0800 (PST)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-409575b0a89sm2187647fac.20.2026.01.28.09.48.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Jan 2026 09:48:41 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-sound@vger.kernel.org
+Cc: devicetree@vger.kernel.org,
+	wangweidong.a@awinic.com,
+	tiwai@suse.com,
+	perex@perex.cz,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	broonie@kernel.org,
+	lgirdwood@gmail.com,
+	heiko@sntech.de,
+	linux-rockchip@lists.infradead.org,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH V2 1/3] ASoC: dt-bindings: aw87390: Add Anbernic RG-DS Amplifier
+Date: Wed, 28 Jan 2026 11:46:06 -0600
+Message-ID: <20260128174608.1498-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260128174608.1498-1-macroalpha82@gmail.com>
+References: <20260128174608.1498-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_055310_891585_957BAD44 
-X-CRM114-Status: GOOD (  28.85  )
+X-CRM114-CacheID: sfid-20260128_094845_218791_7842D33F 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,62 +110,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mi, 2026-01-28 at 12:19 +0000, Russell King (Oracle) wrote:
-> On Wed, Jan 28, 2026 at 01:04:21PM +0100, Philipp Zabel wrote:
-> > On Mi, 2026-01-28 at 10:58 +0000, Russell King (Oracle) wrote:
-> > > rk_gmac_setup() delves into the PHY's DT node to retrieve its reset
-> > > control using of_reset_control_get(). However, it never releases it
-> > > when the driver is removed. Add reset_control_put() to rk_gmac_exit()
-> > > to clean this up.
-> > > 
-> > > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > > ---
-> > >  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 2 ++
-> > >  1 file changed, 2 insertions(+)
-> > > 
-> > > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > > index 5f8d2031b97c..bc69cbb5a7d4 100644
-> > > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > > @@ -1784,6 +1784,8 @@ static void rk_gmac_exit(struct device *dev, void *bsp_priv_)
-> > >  
-> > >  	if (priv->plat->phy_node && bsp_priv->integrated_phy)
-> > >  		clk_put(bsp_priv->clk_phy);
-> > > +
-> > > +	reset_control_put(bsp_priv->phy_reset);
-> > >  }
-> > >  
-> > >  static int rk_gmac_probe(struct platform_device *pdev)
-> > 
-> > This is fine because the driver sets plat_dat->suspend, and so
-> > rk_gmac_exit() is never called via stmmac_pltfr_exit() during suspend.
-> > 
-> > It does look a bit sketchy to release resources in the rk_gmac_exit()
-> > counterpart to rk_gmac_init(), which never requested the resources,
-> > though. Maybe use devm_add_action_or_reset() to register the release of
-> > the reset during remove?
-> 
-> Thanks, but I think a sense of proportion is required here. This
-> patch is the result of introducing the ->init() method, and AI
-> noticing that there was no cleanup of this resource. This was the
-> simplest way to implement that cleanup.
-> 
-> However, your review commit also applies to bsp_priv->clk_phy which
-> has the same problem - this also isn't obtained in rk_gmac_init(),
-> but in rk_gmac_clk_init().
->
+From: Chris Morgan <macromorgan@hotmail.com>
 
-> Given that, and the fact that this entire series is already
-> considerably big (it was 21 patches, then 22, now 23, and with this
-> it's going to become 24 patches) I'm going to say that this issue
-> can be addressed at a later time.
+Add a binding for the Anbernic RG-DS Amplifier, which is an Awinic
+aw87391 audio amplifier. This manufacturer did not provide firmware
+so we have to use a list of init commands instead, requiring device
+specific functionality rather than generic aw87391 functionality.
 
-No objection,
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+---
+ .../bindings/sound/awinic,aw87390.yaml        | 34 ++++++++++++++++---
+ 1 file changed, 29 insertions(+), 5 deletions(-)
 
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+diff --git a/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml b/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml
+index ba9d8767c5d5..9c1baae767c4 100644
+--- a/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml
++++ b/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml
+@@ -15,12 +15,15 @@ description:
+   sound quallity, which is a new high efficiency, low
+   noise, constant large volume, 6th Smart K audio amplifier.
+ 
+-allOf:
+-  - $ref: dai-common.yaml#
+-
+ properties:
+   compatible:
+-    const: awinic,aw87390
++    oneOf:
++      - enum:
++          - awinic,aw87390
++      - items:
++          - enum:
++              - anbernic,rgds-amp
++          - const: awinic,aw87391
+ 
+   reg:
+     maxItems: 1
+@@ -40,10 +43,31 @@ required:
+   - compatible
+   - reg
+   - "#sound-dai-cells"
+-  - awinic,audio-channel
+ 
+ unevaluatedProperties: false
+ 
++allOf:
++  - $ref: dai-common.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - awinic,aw87390
++    then:
++      required:
++        - awinic,audio-channel
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - anbernic,rgds-amp
++    then:
++      properties:
++        vdd-supply: true
++
+ examples:
+   - |
+     i2c {
+-- 
+2.43.0
 
-regards
-Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
