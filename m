@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA1BD46BE7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA57D46BE9
 	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 17:49:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Tlf0WkQlpk/OkX4uQSFAAZEL6qgEI7T1vo14ZIXJ0A=; b=g8bXLhPNpbJjwu
-	4jtqLDxZrQSBw7yjbcoERweaExc3LP9WXfSCFlIcrXEDNg+fo7XGfB1l2eMarAzYvZR99J5AAD1FG
-	0I9O9I0DDHRwC4Py/AumI9XBYxQxwCgze54W7uEm8x4Y+DTVzxhJvR3/Gy6GFo5k3nKES4IeHq0Kn
-	dAPWEBEHoPNlYS5ix3gXTHnNJ1AfQJMTR/eNncRELz8kcYBdhp7qLDwMu15GrneuLxq8XHyj8dDNt
-	HdPTxaTA+22m9Nhefk/k1EkIPSgiaXtUH1WFz5DQId9+6Ii5oUveKB9LxRLQNJX1lCGr0vPo0B8ib
-	txLHvPFJTVrgqaCGWC8w==;
+	List-Owner; bh=JTKAnis2yAKQB4fugnwanWHgSzwPVyMWBsOqAhgifiU=; b=g+RE9sqwfXzTzh
+	KAFhk00qwIyMwkZ0uSEkOJ3BjzYz+KsR9bKFbchR2aTeZ1sW3HdAlSnw40CooToDCG+giXGBR8brZ
+	yfGmVfZnokR8pck+ZNrCXeI532MCiSXEqXuXbEu1Uq1+zSPu385cIZV5oj3LlNoj8f3k1suUxjh5J
+	Xe+yOyNmS/QROh189FoBJ0P+MS8oAeVKdn/JzSSX1qfAPpkqhCf0p24oSqXBK8kthBpRi4fHb8+DD
+	ec5/VGWcAbXVEodzMx9tZNsZaY4Ed3uSSqThc47XJ2FvhzPqKkHugo32/VipgJiTq/zyn6gEotTOX
+	wjmQXc5devPsj5h/fjeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl9ep-0000000GWS7-2aq0;
+	id 1vl9ep-0000000GWSI-3h8t;
 	Wed, 28 Jan 2026 17:48:47 +0000
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vl9en-0000000GWQR-0jhx
+	id 1vl9en-0000000GWQh-2Ik2
 	for linux-rockchip@lists.infradead.org;
-	Wed, 28 Jan 2026 17:48:46 +0000
-Received: by mail-oa1-x29.google.com with SMTP id 586e51a60fabf-4094fbd1808so38109fac.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 28 Jan 2026 09:48:44 -0800 (PST)
+	Wed, 28 Jan 2026 17:48:47 +0000
+Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-4042f55de3aso75351fac.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 28 Jan 2026 09:48:45 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20230601; t=1769622524; x=1770227324; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Z4g1rdqkzBN7E4k3DRb93C6Pz1pOJ7VGgwv2jByOH00=;
-        b=G9Fth0zBNQ0jfmftoF/QgR96OKw9zMqRNZhqxAEENQUqvRTARcrSPjqAg58VjSFD7W
-         bWol8zBoXtAQbu8fHQShcCBETN4F7riGxqJHQ48paMlJCWNOGp8sjqN1UtuNOmg8XlR3
-         3yG6e0awSSeycUCnlL8HZsdOXlLJPeuEZcNgRnhgsYIcnxz2uPN39/AkqrXLQmorW7ZJ
-         4h/76rxyhji3JVHqig7TV7W94XJEH5+sVSsWnqCi1SX0OUFfvgdR7Us6Wrft1kEntk2/
-         hDd4tUDvhKzeWe9VLKG6bzs/4ORoAmiq7daqw6YgIb27i+p9l4oGu7wvoTFluFmxNv+K
-         ns5Q==
+        bh=IM1HgF8lQ5KCUPSngea1L4dZ9ovQlt8fHo3wYhN+zkM=;
+        b=UtuYFCH1oTqiWoTN47D6AvlLMlXaa1EMdsgRRHK7gRDE4eYpqrQPBRaW0nqPd865mr
+         EpakEzv406B2ah3Gi6gxoiBBHSN/iMQDAPU/OAgf2C839SsAbxzJEJZ/4GG8aggW9TqV
+         ixOKrlX7aETwx6R7pAiYkRtrT8FJChKH7HhOe4/NCYTJy6SB12xW6aDi7g3jePX3/p9w
+         CblDpW2vq/VwxMOobktE1XfbMiHTbgpzbOPjNemgNikKRA8iNIv+QH5hiSML9vTidlWi
+         ZqkgtwJoG/pAbX6Z6ArLEC1iTsbwrLOyvHUDDjlPBU7/e+uO4sHJOOqYnEe84krrjYJL
+         7WhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20230601; t=1769622524; x=1770227324;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=Z4g1rdqkzBN7E4k3DRb93C6Pz1pOJ7VGgwv2jByOH00=;
-        b=BjCn9Lpp9M6a1ev3sB1iNDsVTg4HkXWGa+ururqqr1XuaAI1LDn5uX/KP5JMfYmP1J
-         a+5twQXQ7MMGjHz9PNcixq3bvniBC2AhvV2qbEiVyc6vsXxsPPcxArPNLgITrPCrZQ5Y
-         CJlalOAGme/h7cRrVN47tdLDQEu5hVx1WOyqLPoCExnyr8Nl1MF/Z3SQHTHTA77u1NRk
-         edGmPe+mpiRMXqM4Xfm6hXHBfatlXDCheG4fg0tHlM8gQXCLAAv17gM+phcBAdhwWMhi
-         pL9kFUpQZMW7CJoj0HC2x2JELFeZpVyAz9MzogCvXUtUor6UNeD34/kJBpWcccptzoWV
-         +3sA==
-X-Forwarded-Encrypted: i=1; AJvYcCWDgFvt12fX/CWDbJopwIzNu8LZQ/kc1dDHVUBrcdz03p/dOEVvkWzl50I1PgjVxIkJAEpu7skpscD54IPVrg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxYj8Vdw2GdRIVzhVZCQ/WE3V6r7YxUpI+91yXG83IcXsJ7da5f
-	U7UF6AGLPhTqqW2cjBoJesVxXGOE118ra/oglYCxxE+H2czvtWTEBdn8zeWwNg==
-X-Gm-Gg: AZuq6aLQs0+YmVo/vvhO4sJja9QtBbNWRfsdkuUlxhZhP1BGEN8lU5YAwtJCEiqp2AT
-	EZpvbzBOhEQbEiZj4DcCJOLAFdTrHRi1T+ckNn2ZFEtwygfbqnwyXoXGCs4312rpwlZihrDN/uc
-	JGz4lwL61yCWifHRsbGq6B1qSLtplXVup07lej7c2s+t7zrtQ3G5Ogsdw3gV8/SXhbO/AapaYXq
-	ruRBHzHGrG1whljsXtoaauPV1f5zs3un0e1Tit/YHbxkHoEVBYeNIMYKBemdS2GsLp6DjR6a6N8
-	E4rukiCPV1MAQWbQyU+vgVTCVLTN/TZ43647u7sVb3ib+fR072GHp7YKxCQSXmMr56OtE5Ln3Ce
-	kNRcLg3Nx4DlOihQ6xt4PUm2VLBfurcl7IGQEvJSuVnNibwSuVjyrDp3+bt214t7AVjNq0yPS+X
-	sNrFwPG6qK
-X-Received: by 2002:a05:6870:b01b:b0:3f6:1e56:aad7 with SMTP id 586e51a60fabf-4093fce5f4emr3436398fac.15.1769622522315;
-        Wed, 28 Jan 2026 09:48:42 -0800 (PST)
+        bh=IM1HgF8lQ5KCUPSngea1L4dZ9ovQlt8fHo3wYhN+zkM=;
+        b=XXXRiu0M+mFyr/VdN/WivFnnxs6vVgfp6KKH3IWKBy49l75D4y+IqeK2n7RN1E8ou0
+         ewCCqdwI6VEGw3ecOsDBX12+ixCkBEnS3XBu2XLxT0IAR89o9axRua1pcHvDr/UDONsZ
+         gPJwEyYEPjb9BsU71Vcl/iiipdEsnnOSn3qYvaBDGq/vQCd8JxjjaMU9NV3cJF4a5r6L
+         i1u0DARasGyO02b/cLE0ThKsPU8NsYtMuECH2Iz2BbaWWgkqyVbYJOfIkaZ8NBeLSBGJ
+         T8k/U9fngX6MlH3GVJu5kYotXyIwACjfnZ3Fk1KltEe03Pap2strFGAu4BaHGf7uWmYt
+         fxlQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVANy2mdBVHZKS5bEUZuGAThjB3x9sK+vGYxa9kkB6/rdC6NurdlVQqmUXkyLdmNkYVxt+qDS0QTC2LcDIw4Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy/FcLKH+R8EMLF8NYJ6z/9Qs1HawC5dlUvUQCxaWPF7InlVf5c
+	QGVJJPeR8feUQyUqPTINjPC2CHm2+K4vj5Z3fYjIcTewf6BIQciE7leo
+X-Gm-Gg: AZuq6aLnjv7Zx3E/X2aEi3THtjQf18p9SRmIZtKx+aCg9TX+IhPRAc3+339dkYFaFvu
+	bYuXnQ4tFBldDW85AqGGPdjqg3Ve5D01iEYiwO6PpYYSs0/1cF03eOkc5ajujYc6Wy7h4H9YlsN
+	l6lHiOZIVX3Eo6pCcFMI4l77aliR5fK/mvtKXVbsK8W4V6jK0aM5gC3bUVVnRVLsvaXpx3gbBJG
+	bNTSZNCoeRs2I1hdQQdb7Zjrw32exi+e+2apHCscWpke44Y0kPwFDwBhSiSzvc2Jih2J+mq7Eat
+	NNLuGS2fL6f1r+ZpgKJjDDjwGU/Bu7RGF2NOoQhrewEEwjKbhwalC2jcdq3bVBRqCWjE9Yexe0s
+	fG/sux+w46Z2xBwb4seTxQtdfHABD72ANJDnM3WjWbmtXQ2ABnTEJ3t+p3BuJfqbK3H9f3Wmupg
+	opV4PWy0AC
+X-Received: by 2002:a05:6870:c6a0:b0:409:62ce:83f6 with SMTP id 586e51a60fabf-4097fb10886mr166968fac.5.1769622524344;
+        Wed, 28 Jan 2026 09:48:44 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-409575b0a89sm2187647fac.20.2026.01.28.09.48.40
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-409575b0a89sm2187647fac.20.2026.01.28.09.48.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Jan 2026 09:48:41 -0800 (PST)
+        Wed, 28 Jan 2026 09:48:43 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-sound@vger.kernel.org
 Cc: devicetree@vger.kernel.org,
@@ -82,18 +82,17 @@ Cc: devicetree@vger.kernel.org,
 	lgirdwood@gmail.com,
 	heiko@sntech.de,
 	linux-rockchip@lists.infradead.org,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Conor Dooley <conor.dooley@microchip.com>
-Subject: [PATCH V2 1/3] ASoC: dt-bindings: aw87390: Add Anbernic RG-DS Amplifier
-Date: Wed, 28 Jan 2026 11:46:06 -0600
-Message-ID: <20260128174608.1498-2-macroalpha82@gmail.com>
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V2 3/3] arm64: dts: rockchip: add Awinic aw87391 for Anbernic RG-DS
+Date: Wed, 28 Jan 2026 11:46:08 -0600
+Message-ID: <20260128174608.1498-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260128174608.1498-1-macroalpha82@gmail.com>
 References: <20260128174608.1498-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_094845_218791_7842D33F 
-X-CRM114-Status: GOOD (  10.06  )
+X-CRM114-CacheID: sfid-20260128_094845_594507_9DE2632C 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,74 +111,105 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add a binding for the Anbernic RG-DS Amplifier, which is an Awinic
-aw87391 audio amplifier. This manufacturer did not provide firmware
-so we have to use a list of init commands instead, requiring device
-specific functionality rather than generic aw87391 functionality.
+Add support for the two Awinic aw87391 audio amplifiers used in the
+Anbernic RG-DS. These amplifiers require a specific init sequence to
+start which is usually provided by a firmware file, but in our case
+the manufacturer only provided the sequence. As a result, we hard-code
+a device specific compatible.
+
+Additionally, add support for the VDD regulator used to power both
+amplifiers. Note that the amps can accept and respond to i2c commands
+even without regulator power (perhaps due to a secondary power source)
+but cannot play audio.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
- .../bindings/sound/awinic,aw87390.yaml        | 34 ++++++++++++++++---
- 1 file changed, 29 insertions(+), 5 deletions(-)
+ .../dts/rockchip/rk3568-anbernic-rg-ds.dts    | 44 +++++++++++++++++--
+ 1 file changed, 40 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml b/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml
-index ba9d8767c5d5..9c1baae767c4 100644
---- a/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml
-+++ b/Documentation/devicetree/bindings/sound/awinic,aw87390.yaml
-@@ -15,12 +15,15 @@ description:
-   sound quallity, which is a new high efficiency, low
-   noise, constant large volume, 6th Smart K audio amplifier.
- 
--allOf:
--  - $ref: dai-common.yaml#
--
- properties:
-   compatible:
--    const: awinic,aw87390
-+    oneOf:
-+      - enum:
-+          - awinic,aw87390
-+      - items:
-+          - enum:
-+              - anbernic,rgds-amp
-+          - const: awinic,aw87391
- 
-   reg:
-     maxItems: 1
-@@ -40,10 +43,31 @@ required:
-   - compatible
-   - reg
-   - "#sound-dai-cells"
--  - awinic,audio-channel
- 
- unevaluatedProperties: false
- 
-+allOf:
-+  - $ref: dai-common.yaml#
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - awinic,aw87390
-+    then:
-+      required:
-+        - awinic,audio-channel
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
+index 6ac1fe0d3c98..8d906ab02c5f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
+@@ -354,6 +354,7 @@ sound {
+ 		compatible = "simple-audio-card";
+ 		pinctrl-0 = <&hp_det>;
+ 		pinctrl-names = "default";
++		simple-audio-card,aux-devs = <&aw87391_pa_l>, <&aw87391_pa_r>;
+ 		simple-audio-card,format = "i2s";
+ 		simple-audio-card,hp-det-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_HIGH>;
+ 		simple-audio-card,mclk-fs = <256>;
+@@ -363,8 +364,10 @@ sound {
+ 			"MICL", "Mic Jack",
+ 			"Headphones", "HPOL",
+ 			"Headphones", "HPOR",
+-			"Internal Speakers", "HPOL",
+-			"Internal Speakers", "HPOR";
++			"Internal Speakers", "Left Amp OUT",
++			"Internal Speakers", "Right Amp OUT",
++			"Left Amp IN", "HPOL",
++			"Right Amp IN", "HPOR";
+ 		simple-audio-card,widgets =
+ 			"Microphone", "Mic Jack",
+ 			"Headphone", "Headphones",
+@@ -468,6 +471,18 @@ vcc_wifi: regulator-vcc-wifi {
+ 		regulator-max-microvolt = <3300000>;
+ 		regulator-name = "vcc_wifi";
+ 	};
 +
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - anbernic,rgds-amp
-+    then:
-+      properties:
-+        vdd-supply: true
++	vdd_amp: regulator-vcc-amp {
++		compatible = "regulator-fixed";
++		enable-active-high;
++		gpio = <&gpio4 RK_PC3 GPIO_ACTIVE_HIGH>;
++		pinctrl-0 = <&vdd_amp_h>;
++		pinctrl-names = "default";
++		regulator-min-microvolt = <3300000>;
++		regulator-max-microvolt = <3300000>;
++		vin-supply = <&vccio_acodec>;
++		regulator-name = "vdd_amp";
++	};
+ };
+ 
+ &cpu0 {
+@@ -840,8 +855,22 @@ &i2c2 {
+ 	pinctrl-names = "default";
+ 	status = "okay";
+ 
+-	/* awinic,aw87391 at 0x58 */
+-	/* awinic,aw87391 at 0x5b */
++	aw87391_pa_l: audio-codec@58 {
++		compatible = "anbernic,rgds-amp", "awinic,aw87391";
++		reg = <0x58>;
++		vdd-supply = <&vdd_amp>;
++		#sound-dai-cells = <0>;
++		sound-name-prefix = "Left Amp";
++	};
 +
- examples:
-   - |
-     i2c {
++	aw87391_pa_r: audio-codec@5b {
++		compatible = "anbernic,rgds-amp", "awinic,aw87391";
++		reg = <0x5b>;
++		vdd-supply = <&vdd_amp>;
++		#sound-dai-cells = <0>;
++		sound-name-prefix = "Right Amp";
++	};
++
+ 	/* invensense,icm42607p at 0x68 */
+ };
+ 
+@@ -1014,6 +1043,13 @@ touch1_irq: touch1-irq {
+ 		};
+ 	};
+ 
++	vdd-amp {
++		vdd_amp_h: vdd-amp-h {
++			rockchip,pins =
++				<4 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	vcc-lcd {
+ 		vdd_lcd0_h: vdd-lcd0-h {
+ 			rockchip,pins =
 -- 
 2.43.0
 
