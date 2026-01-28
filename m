@@ -4,70 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1313ED2FEF3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 27 Jan 2026 22:12:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 121A7D35671
+	for <linux-rockchip@archiver.kernel.org>; Wed, 28 Jan 2026 03:55:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZAtuOkLekbQs9N/fdI0Ynbhf0/b0BWzooFv9HIMlB6c=; b=sA1Ki4op6CtJzDjBmeiUrAuM6J
-	IXsK8j3/zr2VWWtxgPgCkNmBGqT1IRuJMMtdpbWJpz1givtB8NP7oqFxP1Hltm2ZgJTY9sxuuSmEM
-	BaSzbvPVprg1FtTo12id8OMzd16eel+aHQsg1I1HIUCvideZ0rCf/3zzoZB5ct85PgVK+0ZVd152n
-	ro0xaJcx9zF77E9nQuigrLVlR+VFfsABXTY/TMszFaAu6b/mxxIR7IY+00vZclepzToDecUwHgLsh
-	ncgoFrLQoFpei/g/HsqEJCWQ7GKpq7YXzUaTJk777jnfLseokl7OY5qZJAdixG7GsroCzhHkJav9J
-	V8ovhjwg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cL3l5hHnrUUfSjVQnjlXIP31u4cUh3Tr5Vz4dUs3DGY=; b=dhrB9c/KYrgCcR
+	ydwDa/1J6a+vUY1BwMWMNBoykj/A+ApFqwa2VE1n7VCSicgbdE1HTLH1oCk2BwCUeBBKrnVebwlce
+	2IK4H2emTVeQArPvrruFCERLeUEEGPufLkZV9tKS7s1fKcvduBtnH3hWEv0AlugUznPPCv9yKm6jr
+	SrauzaIfnkYrua2lDm36OOFD6HXeHB44wRWSDZ4uQVPYdNhdAK7FK2/fUCgNgmXlvhbL1qIzZNdjV
+	EtZdfh+A2ugAUedYmzHnFUM+Foa5zXWZOVgLF9UG2NYME0lLH7hgbvn3EvZfAvbkiOkHcI6JcLCw1
+	2k964picG7oXLJIH1hjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkrIL-0000000F5lw-2SmG;
-	Tue, 27 Jan 2026 22:12:21 +0000
-Received: from sender4-pp-e109.zoho.com ([136.143.188.109])
+	id 1vkweD-0000000FOpL-2UnI;
+	Wed, 28 Jan 2026 03:55:17 +0000
+Received: from mgamail.intel.com ([192.198.163.8])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vkrII-0000000F5kx-2qdB;
-	Tue, 27 Jan 2026 22:12:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1769551931; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=KWWGP3eQkiPTtzLBHpgVlyQavNZ+Eratv6VCREuHhGkd+yJ55INII+aCXslQf+O8tBA1yr4s+hK9J5R7a/FWXGZekbGPDdJ9a7kIMPILKgNmWynXNMaI9ZJ1xa025w6CsXtzA9GGwp9pfuDXieXVfpIv3uAamtwtlXKzh+aBfwY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1769551931; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=WlQt+ss1G8efG2qofo6jb6A9w0j4Ayb6P7iOr7JnFrA=; 
-	b=WVYweafi6F15VKpZgZt2+jpwkjmkdjU/wxswjMv0BB4LsWuHukg/m6JSDzr7Z2fSq+yJMb68F2Pg3FLHgugDBHerLSXA1YfLI4ui7DrVw2k0L9LJEPrfu1d3vAHZSy6YERIwHjODgQX9tWTVeEy7+WZEOJ1SSBvOzoZL7HP7xuQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1769551931;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=WlQt+ss1G8efG2qofo6jb6A9w0j4Ayb6P7iOr7JnFrA=;
-	b=jOaQpXakYiSid0wpQGxBiKmIkORxIDMIw7i1baza6GrPASuNvhwtlvU2AAx3NreE
-	WLwk9Y64V/yHOeXMYYsgae1kiqdVH8McECYk6cjxJw1JTldVJF2mGIKauCQpXrDJFmc
-	x8+BmDK/8RxTNTQIl1Fd8y/wuGdeBBG1TYzszUWI=
-Received: by mx.zohomail.com with SMTPS id 1769551930714470.1972618683276;
-	Tue, 27 Jan 2026 14:12:10 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 66C98180DC7; Tue, 27 Jan 2026 23:12:03 +0100 (CET)
-Date: Tue, 27 Jan 2026 23:12:03 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Alexey Charkov <alchark@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Sjoerd Simons <sjoerd.simons@collabora.com>, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 04/10] ASoC: rockchip: spdif: Use dev_err_probe
-Message-ID: <aXk31GTmK_5wUQ9t@venus>
-References: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-0-a7c547072bbb@collabora.com>
- <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-4-a7c547072bbb@collabora.com>
- <CABjd4YxVQfp=ZuovBhAzqX9pDBnBmntQoxkr5vXnToPc3pRARw@mail.gmail.com>
+	id 1vkweA-0000000FOot-07aP;
+	Wed, 28 Jan 2026 03:55:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1769572514; x=1801108514;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=gnHA1NlQw1mcHorufZdTT4X1PTF99NxQ5Mrf5GGTJ/I=;
+  b=hECn2+c27RwYmlgmnsk5MaT4GCV5kvEY15qPumh/5g34uvpcBsTkaRcU
+   dFoby/+CQcwISbscPrtakq/v5yys/6fWiWJ5n3doWCr/lAGKhYy60knZs
+   zYw8cpoKbmR3F6dQk4AYaC9u4P3cDueyTIQ6RX+/THjrH//GbJI9XIU7O
+   ECRY3U2HkfptZuhPZPXnMWdbjfD0jq88D05fCGNUdC7AChOeOPGWAZRcD
+   pHT3R8vhrvRKALgeCerHN4CjbxTF4ZAXHMYLMCikXTzJKgS6dVr5f31P4
+   l4BCQd9bmyncpZ1IKL8V9d6vXmXM3k1jHWEotnYzeJSfrC/Utyt9HyLmc
+   A==;
+X-CSE-ConnectionGUID: IhGckUqnS3iTKiUtln42Ng==
+X-CSE-MsgGUID: 3gLqK++AQfmMsTcKdHyLgQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11684"; a="88355691"
+X-IronPort-AV: E=Sophos;i="6.21,258,1763452800"; 
+   d="scan'208";a="88355691"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2026 19:55:13 -0800
+X-CSE-ConnectionGUID: 0hTreD+IT2aSiZskovpb/A==
+X-CSE-MsgGUID: XDqaFL56QMCgaXcPcW3djQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,258,1763452800"; 
+   d="scan'208";a="208390434"
+Received: from lkp-server01.sh.intel.com (HELO 765f4a05e27f) ([10.239.97.150])
+  by fmviesa008.fm.intel.com with ESMTP; 27 Jan 2026 19:55:10 -0800
+Received: from kbuild by 765f4a05e27f with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1vkwe4-00000000ZCy-12Kc;
+	Wed, 28 Jan 2026 03:55:08 +0000
+Date: Wed, 28 Jan 2026 11:54:54 +0800
+From: kernel test robot <lkp@intel.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>
+Cc: oe-kbuild-all@lists.linux.dev, Alexey Charkov <alchark@gmail.com>,
+	Sjoerd Simons <sjoerd.simons@collabora.com>,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: Re: [PATCH 10/10] ASoC: rockchip: spdif: Convert to FIELD_PREP
+Message-ID: <202601281116.z12yhNfr-lkp@intel.com>
+References: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-10-a7c547072bbb@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <CABjd4YxVQfp=ZuovBhAzqX9pDBnBmntQoxkr5vXnToPc3pRARw@mail.gmail.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.1.1.4.3/269.526.30
-X-ZohoMailClient: External
+Content-Disposition: inline
+In-Reply-To: <20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-10-a7c547072bbb@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260127_141218_774096_02A172D0 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20260127_195514_086984_1A0ADD32 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,78 +88,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5907515141615037291=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Sebastian,
 
---===============5907515141615037291==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zckbwwqnfppx2fwi"
-Content-Disposition: inline
+kernel test robot noticed the following build errors:
 
+[auto build test ERROR on 63804fed149a6750ffd28610c5c1c98cce6bd377]
 
---zckbwwqnfppx2fwi
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 04/10] ASoC: rockchip: spdif: Use dev_err_probe
-MIME-Version: 1.0
+url:    https://github.com/intel-lab-lkp/linux/commits/Sebastian-Reichel/ASoC-rockchip-spdif-Use-device_get_match_data/20260128-001701
+base:   63804fed149a6750ffd28610c5c1c98cce6bd377
+patch link:    https://lore.kernel.org/r/20260127-rockchip-spdif-cleanup-and-bsp-sync-v1-10-a7c547072bbb%40collabora.com
+patch subject: [PATCH 10/10] ASoC: rockchip: spdif: Convert to FIELD_PREP
+config: sh-allyesconfig (https://download.01.org/0day-ci/archive/20260128/202601281116.z12yhNfr-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260128/202601281116.z12yhNfr-lkp@intel.com/reproduce)
 
-Hello Alexey,
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202601281116.z12yhNfr-lkp@intel.com/
 
-On Tue, Jan 27, 2026 at 09:31:18PM +0400, Alexey Charkov wrote:
-> >         ret =3D devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-> > -       if (ret) {
-> > -               dev_err(&pdev->dev, "Could not register PCM\n");
-> > -               return ret;
-> > -       }
-> > +       if (ret)
-> > +               dev_err_probe(&pdev->dev, ret, "Could not register PCM\=
-n");
->=20
-> Shouldn't this one return the error code, instead of falling through
-> to 'return 0'?
+All errors (new ones prefixed by >>):
 
-Yes, good catch. I will fix that up in v2.
-
-Thanks,
-
--- Sebastian
-
---zckbwwqnfppx2fwi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAml5OC8ACgkQ2O7X88g7
-+poEWQ/+Px2Z+QDfvYva4Nx6YQX53SGZ5rb10Dyq8gZfaZ0jK2fV5/EADqsmV9kK
-PqTkajCE8T7S6VtsoaodMNlBNqJk4SkcGltYYW7op440nNaK4GG4s4eyWwluqiER
-F4U4X8vgNoOqhziacZOvgDtZeWPDwK9fVg1a9u8nlDBDpsXJusmnzmk0GMtd93Dg
-fPG2Dgi+gysuJvv52lm0/M47hgKH9jDhw8oDTBERlu/RLFsbjDuBQ4Q3Mfci75JK
-dVygcLJ+NNtNfVWpJWPtQ77eHTKSraZ+l90sJFKzj3+LBfTeU2lUqlxqU2AShEqE
-h579dBFVQXfaqnFmLPpxKtf1WF08/7cBLKtSugUuHHrNFQVzYpMy/LQpn/UXj1H+
-hEf5aRlVlHDIBaZcLjLvabN9ygVjgXtkdwjP1/0qQUVmQupQFOnmiInotZ+Hi0xG
-YhgOqJnGmB8AfYtnu95tGrBwGl9Cln4+q/Wvzr2kpQ+xPB6GZtq/vSCoMZ0ouROs
-UmkjUyMUYJ1R7Vy16O8p+Ip5te03mZydnfO9ROG8bBVL75bIUO5+nJHSU2PryhES
-OI2jw6JIQuHv0STZc8mnez5V51gwHgFClAegrgm7F/NN2096HhZmJ0062nm4OosA
-DMau/+v77SY6wLlB975j1bcGISNtkCBnR4LD8rrhw6L8cwq3Tnc=
-=T0r/
------END PGP SIGNATURE-----
-
---zckbwwqnfppx2fwi--
+   In file included from sound/soc/rockchip/rockchip_spdif.c:22:
+   sound/soc/rockchip/rockchip_spdif.c: In function 'rk_spdif_hw_params':
+>> sound/soc/rockchip/rockchip_spdif.h:33:41: error: implicit declaration of function 'FIELD_PREP' [-Wimplicit-function-declaration]
+      33 | #define SPDIF_CFGR_HALFWORD_ENABLE      FIELD_PREP(SPDIF_CFGR_HALFWORD_MASK, 1)
+         |                                         ^~~~~~~~~~
+   sound/soc/rockchip/rockchip_spdif.c:109:28: note: in expansion of macro 'SPDIF_CFGR_HALFWORD_ENABLE'
+     109 |         unsigned int val = SPDIF_CFGR_HALFWORD_ENABLE;
+         |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
---===============5907515141615037291==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+vim +/FIELD_PREP +33 sound/soc/rockchip/rockchip_spdif.h
+
+    30	
+    31	#define SPDIF_CFGR_HALFWORD_MASK	BIT(2)
+    32	#define SPDIF_CFGR_HALFWORD_DISABLE	FIELD_PREP(SPDIF_CFGR_HALFWORD_MASK, 0)
+  > 33	#define SPDIF_CFGR_HALFWORD_ENABLE	FIELD_PREP(SPDIF_CFGR_HALFWORD_MASK, 1)
+    34	
+
+-- 
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5907515141615037291==--
-
