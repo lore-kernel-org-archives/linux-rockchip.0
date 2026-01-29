@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 142CED46C01
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 01:14:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57047D46BED
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 01:30:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gbr1pf0MUtIhKKrg5b/Shg9KrdTdqRTJvjNzVO6XqLs=; b=c45qNNgdGkazpa
-	IViUlMy4v19bp05IaayRIN3J/n+mlI0Wy5pSMT5DQ+8tiC9qNU02A+tQDUxUWx6YfjqI1bBtg8O8W
-	MmwiR7h4KA4LIEZLoPHCY+ixJ/oGIgJcipOUphbpW6gM37w43aS/ZvMiHn1qx6HCZI1eXbfsfzSB3
-	4w71Zw+vQf4RxZdM7twvI7nAu4zEtytvuAuZvb3s+tkRv6LrLO6oCO2nxQXi7VmGedJm4vDDmALqD
-	WtbARk5Qrw9OERVZOQFMoAIvwPyQwhWPsbS9b/XHhErIv02KUUM0LY74heCp+77v7oGnFvjGwJgfr
-	+sgGlxYleWGKOtpws4Wg==;
+	List-Owner; bh=oQ6IcAh7WMw0OdMH6MiqqdtBrsBe8vQ+JzFGtQqECH8=; b=o2AWNkIaU9WoPi
+	tmaJT7hyBfYY8GifLJsyEC4rGEnCw9Jud2s5s+V0SRmQyU7fr1nua7m9DdXJTCNkCOA/QODSrqn6P
+	hjyNuDC5iEdfXNsrSw92PncdwA0NI8yc8bElWkG++izQPT0j7MmpmZKCy22a0KRBdsscTxnS4G/WB
+	tkNNzmLkrfN8mp9WpTD/sOaU2c/+Bk0a13L5VyK9gsiq+x+hblaSazYlja4/4ujevo7IRlAFlv/MB
+	VOUbA+J1aXeIqB1DvX18F8LDOetODIT1qMSB+j5NWb58MVBPUANyT71gfz95lk27wUoHBvBmxaF7o
+	nqndgU783anLQen8RS6Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlGcS-0000000H290-1vzH;
-	Thu, 29 Jan 2026 01:14:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vlGrC-0000000H3mL-2Thu;
+	Thu, 29 Jan 2026 01:30:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlGcP-0000000H27x-0xJU;
-	Thu, 29 Jan 2026 01:14:46 +0000
+	id 1vlGr7-0000000H3km-1slf;
+	Thu, 29 Jan 2026 01:29:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1769649282;
-	bh=gtoH8iXkfDnDeWMhk7HbyeV4YG1OQmXsw/axrAJnNUM=;
+	s=mail; t=1769650194;
+	bh=h0ecRNsfJ1Ube1J+JZXHXMdInIH2cgiRidIImkm0O+k=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hpzwVGm5nAyhlPywmD3XFVwVUogkLuoq48Zc5VZNyJhl8cZhXnwCda79We5iUXX/4
-	 zXCN1Z+sRzfV9twaA6swkac5NV5rkpRWG7lXF7/Ki9FAZSu+chuwxorlX7532prfeu
-	 VAJm1Q35aVWjUJONWd+Q6I2DqrFdA9K5w6DEuH/K5EVCBXTchz4V5smnfKoeOzMke1
-	 FoSmjgdXjcglOjVfAdLGRnENVLRg4aTObNzUQPrPZAv8e03rV2DuKIOe0KKudhP99P
-	 1AmoKo00CMkzgjAV4tnJmqa7LA5t1VbgnFdAMQPRPLfNgF3Vf9+kbWoLpTY8bSjbR/
-	 OE39XhQAcKF3g==
+	b=neCo575Z4Za2yqJAuvx89d1Q/6/2VLrejV3axS35SX0sKtOAqMqdtBPPXzeEmgLIu
+	 4CuXicCb/i5U7tRW3TxuhZvT6uTqJ/LlIFw5TylHXLAnNjj2OwHw+Old4hE3bXcvUt
+	 bKewde9m2KWTnFeWqVrI0b1OJdnMkllmby7/7s8YYXe+4+6hUJ8/2nskFYGY28uF8w
+	 F+ITG/7Cn6tql80E6DtFE+2bZ/h5N6sjJConXoAjjiJtS882mwFAWU+MGtVWQPwXCz
+	 Z6C3JUa4CSS5V8mE8Tff3WXtHdGHYuPh3qQpLVi0p/4+E59BZAG5HKBgSeVvg2346h
+	 lxbAKgCygUjtw==
 Received: from [192.168.1.90] (unknown [82.79.138.145])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 33FCB17E01E7;
-	Thu, 29 Jan 2026 02:14:42 +0100 (CET)
-Message-ID: <c9f51c59-c972-420e-89da-f42ab5a843c0@collabora.com>
-Date: Thu, 29 Jan 2026 03:14:41 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 274FB17E0699;
+	Thu, 29 Jan 2026 02:29:54 +0100 (CET)
+Message-ID: <64633be5-4be9-469c-9164-c1d584ea4c7b@collabora.com>
+Date: Thu, 29 Jan 2026 03:29:53 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 1/4] uapi: Provide DIV_ROUND_CLOSEST()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Jani Nikula <jani.nikula@linux.intel.com>
+Subject: Re: [PATCH v5 4/4] drm/rockchip: vop2: Support setting custom
+ background color
+To: Andy Shevchenko <andriy.shevchenko@intel.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
@@ -61,18 +61,16 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Diederik de Haas <diederik@cknow-tech.com>
 References: <20260127-rk3588-bgcolor-v5-0-b25aa8613211@collabora.com>
- <20260127-rk3588-bgcolor-v5-1-b25aa8613211@collabora.com>
- <baf075b2370a13cddd597a3d421b5f39290d87a4@intel.com>
- <aXjNyHaJDHoCPRJO@smile.fi.intel.com>
+ <20260127-rk3588-bgcolor-v5-4-b25aa8613211@collabora.com>
+ <aXjPjNWl3oVOVYxV@black.igk.intel.com>
 Content-Language: en-US
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <aXjNyHaJDHoCPRJO@smile.fi.intel.com>
+In-Reply-To: <aXjPjNWl3oVOVYxV@black.igk.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_171445_450160_00AB59B1 
-X-CRM114-Status: GOOD (  28.21  )
+X-CRM114-CacheID: sfid-20260128_172957_685503_95B7DFD1 
+X-CRM114-Status: GOOD (  17.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,100 +87,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Andy,
-
-On 1/27/26 4:38 PM, Andy Shevchenko wrote:
-> On Tue, Jan 27, 2026 at 03:58:13PM +0200, Jani Nikula wrote:
->> On Tue, 27 Jan 2026, Cristian Ciocaltea <cristian.ciocaltea@collabora.com> wrote:
->>> Currently DIV_ROUND_CLOSEST() is only available for the kernel via
->>> include/linux/math.h.
->>>
->>> Expose it to userland as well by adding __KERNEL_DIV_ROUND_CLOSEST() as
->>> a common definition in uapi.
->>>
->>> Additionally, ensure it allows building ISO C applications by switching
->>> from the 'typeof' GNU extension to the ISO-friendly __typeof__.
+On 1/27/26 4:45 PM, Andy Shevchenko wrote:
+> On Tue, Jan 27, 2026 at 10:45:36AM +0200, Cristian Ciocaltea wrote:
+>> The Rockchip VOP2 display controller allows configuring the background
+>> color of each video output port.
 >>
->> I am not convinced that it's a good idea to make the implementation of
->> kernel DIV_ROUND_CLOSEST() part of the kernel UAPI, which is what this
->> change effectively does.
+>> Since a previous patch introduced the BACKGROUND_COLOR CRTC property,
+>> which defaults to solid black, make use of it when programming the
+>> hardware.
 >>
->> I'd at least like to get an ack from Andy Shevchenko first (Cc'd).
-> 
-> Thanks for Cc'ing me!
-> 
-> So, the history of the DIV_ROUND_UP() to appear in UAPI is a response to
-> the ethtool change that missed the fact that this was a kernel internal macro.
-> Giving a precedent there is no technical issues to add DIV_ROUND_CLOSEST()
-> to UAPI as proposed. Main question here is: Does DRM headers in question
-> (that are going to use it) really need this?
-> 
-> Interestingly that DRM also started using __KERNEL_DIV_ROUND_UP() in UAPI
-> at some point, which kinda makes an argument for allowing the other one.
-> 
-> Also fun fact: this series plead for a new macro for division while ignoring
-> existing (UAPI) macros for masks and bits.
-
-Yeah, I initially planned to make use of those, but gave up after realizing the
-FIELD_{PREP|GET} were not exposed. I reconsidered my position now that you
-mentioned it. :-)
-
-> 
-> 0xffffU is effectively __GENMASK(15, 0). (And if you change the code, avoid
-> using variables inside GENMASK() macros, it may generate an awful code, the
-> GENMASK($HI, $LO) << foo is preferred over GENMASK(foo + $DELTA, foo) case.
-> GENMASK(foo - 1, 0) OTOH is fine, however be always careful against overflows
-> with left shifts, as BIT(foo) - 1 may not work for foo == 32, while GENMASK()
-> may not work for foo == 0).
-
-Thanks for the heads up!
-
-> 
-> So, I have no objections for either choice
-> Acked-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+>> Note the maximum precision allowed by the display controller is 10bpc,
+>> while the alpha component is not supported, hence ignored.
 > 
 > ...
 > 
-> But if you go that direction, please, fix up the style.
+>> +	/*
+>> +	 * Background color is programmed with 10 bits of precision.
+>> +	 * Since performance is more important than accuracy here,
+>> +	 * do *not* make use of the DRM_ARGB64_GET*_BPC() helpers.
+>> +	 */
+>> +	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR(bgcolor) >> 6);
+>> +	val |= FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_GREEN, DRM_ARGB64_GETG(bgcolor) >> 6);
+>> +	val |= FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_BLUE, DRM_ARGB64_GETB(bgcolor) >> 6);
 > 
->>> +/*
->>> + * Divide positive or negative dividend by positive or negative divisor
->>> + * and round to closest integer. Result is undefined for negative
->>> + * divisors if the dividend variable type is unsigned and for negative
->>> + * dividends if the divisor variable type is unsigned.
->>> + */
->>> +#define __KERNEL_DIV_ROUND_CLOSEST(x, divisor)(		\
->>> +{							\
-> 
-> Use ({ on this line together...
-> 
->>> +	__typeof__(x) __x = x;				\
->>> +	__typeof__(divisor) __d = divisor;		\
-> 
-> + blank line here.
-> 
->>> +	(((__typeof__(x))-1) > 0 ||			\
->>> +	 ((__typeof__(divisor))-1) > 0 ||		\
->>> +	 (((__x) > 0) == ((__d) > 0))) ?		\
->>> +		(((__x) + ((__d) / 2)) / (__d)) :	\
->>> +		(((__x) - ((__d) / 2)) / (__d));	\
->>> +}							\
->>> +)
-> 
-> ...as here join }) to be a single line.
-> 
-> + blank line.
-> 
->>>  #endif /* _UAPI_LINUX_CONST_H */
+> There is FIELD_MODIFY() for a few cycles already.
 
+I've been aware, but found it more appropriate when modifying an existing value
+(e.g. previously read from a register) rather than when computing one from
+scratch. 
 
-Thanks for the review! I've addressed all your comments (hopefully) in v6:
+> But here it probably makes no much difference.
 
-https://lore.kernel.org/all/20260129-rk3588-bgcolor-v6-0-c15f755a4055@collabora.com/
+Thinking again about this, it is actually handy when keeping the first
+FIELD_PREP (for initialization), and using it just for the subsequent
+operations.  Hence considered this approach in v6.
 
-Regards,
+> ...
+> 
+>> +	seq_printf(s, "\tbackground color (10bpc): r=0x%x g=0x%x b=0x%x\n",
+>> +		   DRM_ARGB64_GETR(cstate->background_color) >> 6,
+>> +		   DRM_ARGB64_GETG(cstate->background_color) >> 6,
+>> +		   DRM_ARGB64_GETB(cstate->background_color) >> 6);
+> 
+> Probably you want to have the alternative to the DRM_ARGB64_GETx() macros which
+> incorporates a right-shift. But it all in regard to DRM style and preferences.
+
+I tried to keep the API as simple as possible, but you're right, it's better to
+have those macros rather than open-coding the bit-shift all over.  Also handled
+in v6.
+
+Thanks again,
 Cristian
-
 
 _______________________________________________
 Linux-rockchip mailing list
