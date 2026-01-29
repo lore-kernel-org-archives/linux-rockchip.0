@@ -4,89 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E03D358EE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 10:01:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108F9D6101B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 14:07:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XyTqHqkK8nmQvWgDklOi8KqETZMUtTbJdTHfwFriRak=; b=juyMNzJE9YdAS/
-	dO0H5qXdSF2obOFD4s94NqKatVPF8trJggSG5BmZZHXb8oSnbLGArlDkhF5sZfifGs/ipKL+wSf8o
-	ff/BgCR+8Vc2t3VJA3tDqPG6Y0bJk++7f7k/9Y1LrMgq/gmkeVDT1Vtv4KeoMKnt9D4YDkdNxpbxo
-	eWajxZydvTQqxFTmImBX+CHziO06vJQSXxb1LFW3hqRxXl7rKibvorJvr6eL55HxjOUs7f/6HXZfD
-	TvWmxgC1OXOZsfL8H5cAJtSRZeWQzLMmsF22sa+loXt7kX01j24lXNTeme0RULGEvpmYJCuqgnY/K
-	JrOKs8XtHoPZqPIpXmZQ==;
+	List-Owner; bh=C8pd2b2xXbi6xEzrMycPvwZuivuDOlsV4gJxQhcB6DA=; b=HVBfVJEnFrk+cL
+	hpKbMxA0TB/pf0BeJdmhrbjPQHPRANAMQv4YxQW/JzW0Xjtk9JgWiqvpgeA253kLsvcMAPe9mznDY
+	8OmtOQonJRQ412TKEfRWnB1mzCgvEQ5My7jn4W9wbP7R/Wc5UdSdtF/boN+pgywO1LqkCnzmN8lmr
+	ad/z+Ymn7s9RxYb3QJNq5k5YirsQ5WV/gt2xvjOzpSlbAZ+V1kHsvn625vnnXui85Rke4rNhkbhkN
+	WU0YakDtfSbGPYCKfnaNfW9RRXH208cJXc2p0DikUbesXREtGZr+Na1sifcoyogJ56NlnvwDUmAEn
+	OqoU67OKmr7R907ZziMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlOps-0000000HY2k-1pb6;
-	Thu, 29 Jan 2026 10:01:12 +0000
-Received: from mgamail.intel.com ([198.175.65.20])
+	id 1vlSfv-00000000CQo-13mc;
+	Thu, 29 Jan 2026 14:07:11 +0000
+Received: from grimmauld.de ([84.247.166.235])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlOpp-0000000HY1z-3uUj;
-	Thu, 29 Jan 2026 10:01:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1769680870; x=1801216870;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=SqH9AdxR/lHB8viiJnIr2poCQMky6Igt6nCYuv99EBc=;
-  b=jlRZ6jumGnjMfJ2rdcSpinCwRdGjRlT8mgAYN/+Ihu1saDjrUVsZSEWL
-   RcSTnx0jp8+qszwvLYyYGgNqlApj1beztt8J7pTe18XVCiJxTgGkA0kbT
-   MaVjNBlitYoOKCdjX7BUyizzFrxLHCl+TMmW3UMt7oIxsK+kObWZMcHBd
-   zPdKOcWgwrchvtJ9x10ZsvWC7IIfCbz/vg/k4gXv8BQVvfz6+s2Pk8M3j
-   zSyInu2u5b5OFNsxqXdAm29Wy8PWPD6DsHEP4d2oEf0tv8KyDYDYCI0gI
-   KREmItdtgVX3NkMTL3HySowPDSsJCwaXEsHDc/A1EthiNxcLnDSMp4bat
-   g==;
-X-CSE-ConnectionGUID: OhnGIlBtReuqgAkGW6Wfdw==
-X-CSE-MsgGUID: Fm3e0OG+QbWIxY6lXL8NSA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11685"; a="70630037"
-X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; 
-   d="scan'208";a="70630037"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
-  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 02:01:07 -0800
-X-CSE-ConnectionGUID: q96kEhegQ5GodER4IxHUhQ==
-X-CSE-MsgGUID: n0Y7OLBCQQaoEMLmTpwHhw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; 
-   d="scan'208";a="213400871"
-Received: from klitkey1-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.155])
-  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 02:01:01 -0800
-Date: Thu, 29 Jan 2026 12:00:59 +0200
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Louis Chauvet <louis.chauvet@bootlin.com>,
-	Haneen Mohammed <hamohammed.sa@gmail.com>,
-	Melissa Wen <melissa.srw@gmail.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	id 1vlSfs-00000000CPv-1JeZ;
+	Thu, 29 Jan 2026 14:07:09 +0000
+Date: Thu, 29 Jan 2026 15:06:59 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=grimmauld.de;
+	s=mail; t=1769695621;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LDvw9Qfr4vqNELgD4bWuCdghWFw0Szb+OOKl9xxGUSs=;
+	b=H9Lk7PLfjvzxEPY2ckj6TV8xHEUfKCTQ9G9AOE5zTrFVnSXne65omKgxno1wUbeCjyDAT2
+	nKaMfq625YgEkQvSFyh2j+FfNB290TKowl3414NP6n8K5OGRTjWyI70JHKAHQTpSKPuky4
+	8WVcOvtFVpdcWx13hpXbDHI6Tw+gXi8=
+From: Grimmauld <grimmauld@grimmauld.de>
+To: Anand Moon <linux.amoon@gmail.com>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Matt Roper <matthew.d.roper@intel.com>,
-	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
-	Diederik de Haas <diederik@cknow-tech.com>
-Subject: Re: [PATCH v6 2/4] drm: Add CRTC background color property
-Message-ID: <aXsv200DLo6ssao2@smile.fi.intel.com>
-References: <20260129-rk3588-bgcolor-v6-0-c15f755a4055@collabora.com>
- <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
- <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
+Message-ID: <aXtpg0V_sifQEWHJ@grimm-nixos-ssd-2>
+References: <20240809073610.2517-1-linux.amoon@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+In-Reply-To: <20240809073610.2517-1-linux.amoon@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260129_020110_023516_237DA548 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20260129_060708_582452_117B7932 
+X-CRM114-Status: GOOD (  20.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,55 +70,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 29, 2026 at 11:37:33AM +0200, Andy Shevchenko wrote:
-> On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
+Hello Anand,
 
-...
+I have tested this patch.
+Hardware/Kernel information:
+- radxa rock 5c lite
+- rk3588s CPU, arm64
+- defconfig NixOS kernel
+- picked onto 6.18.7
+- DT: rockchip/rk3588s-rock-5c.dtb
+- tested both uboot (mainline) and edk2 (vendor)
 
-> > +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
-> > +	__u16 mask = __GENMASK((bpc) - 1, 0);				\
-> > +	__u16 conv = __KERNEL_DIV_ROUND_CLOSEST((mask & (c)) *		\
-> > +						__GENMASK(15, 0), mask);\
-> 
-> The whole point of the first patch is to use it in the divisions by 2^n - 1.
-> Can we transform this to make it "divisions" by power-of-two?
-> 
->      ...: def dbm2(c, bpc):
->      ...:     m = (1 << bpc) - 1
->      ...:     c1 = m & c
->      ...:     r = c1 << (16 - bpc)
->      ...:     for i in range(1, 16 // bpc):
->      ...:         r = r + (c1 << (16 - (i + 1) * bpc))
->      ...:     return r
+On Fri, Aug 09, 2024 at 01:06:09PM +0530, Anand Moon wrote:
+> Rockchip DWC PCIe driver currently waits for the combo PHY link
+> (PCIe 3.0, PCIe 2.0, and SATA 3.0) to be established link training
+> during boot, it also waits for the link to be up, which could consume
+> several milliseconds during boot.
 
-I noticed that on some inputs it gives off-by-small-number error.
-But you got the idea.
+I found that without this patch, USB 3 ports as well as the PCIe connector seemingly stay uninitialized during boot on my hardware. 
+This manifests in a bootable USB flash drive loading initrd from bootloader (both uboot and edk2) perfectly, but then fails to mount the rootfs from the drive.
+In effect, boot is not just slower than it should be, it just does not boot all the way at all.
+In that scenario, the devfs entries corresponding to the flash drive are simply missing, same for the sysfs where i would expect the USB device listed.
+Replugging the USB flash drive during initrd does seem to fix that, but is tedious and not viable for a server.
+Similarly, booting from m.2 SSD attached via PCIe fails the same way, with rootfs timing out despite the bootloader correctly reading initrd on the same drive.
+Fwiw, replugging the SSD does not work like it does for USB flash drives, and is even worse of an idea.
+USB 2 ports as well as SD card boots correctly, even without your patch.
+Without your patch, i am seeing "deferred probe pending" in dmesg before boot gets stuck, which was the hint which made me find your patch.
+I am not sure whether that is the actual cause or just a symptom for why drives are not recognized during boot, and am not quite sure how to debug this further.
 
-Taking this into account, perhaps we can share __KERNEL_DIV_ROUND_CLOSEST()
-anyway and leave it there and improve the situation later on. Up to DRM
-maintainers.
+> To optimize boot time, this commit allows asynchronous probing.
+> This change enables the PCIe link establishment to occur in the
+> background while other devices are being probed.
 
-> The above is a Python version of PoC of this approximation. Basically
-> we transform the fraction X / (2^n - 1) to a chained version of
-> X / 2^n + X / 2^2n + ... X / 2^kn as derived from recurrent formula
-> of i+1:th iteration as Xi+1 = Xi / 2^n + Xi / (2^n * (2^n - 1)).
-> 
-> So, maybe that one should be used instead? (It may be thought through
-> on how to collapse the for-loop to maybe some bitops, but even with
-> a for-loop it might be faster than real division.)
-> 
-> Note, we have some (for sure more than one, I remember the same Q appeared to
-> me a few years ago) of the examples which may avoid division at all. I would
-> like to have this macro to be kernel wide (and UAPI seems also okay).
+With this patch, booting from SSD or USB 3 port works flawlessly, and i have not seen any regressions with SD card or USB 2 boot, nor any other hardware component.
+This setup has worked for multiple boots without fail, both with traditional ext4 and zfs rootfs being loaded from USB 3 and PCIe.
+Because i require this patch to run my rock 5c from SSD, i am currently running a custom patched kernel, but would highly appreciate this patch making its way to mainline eventually.
+There might well be something else going on here. The proposed patch may not be the "proper" fix to the issues i am seeing, but it does at least work.
 
-> > +	__DRM_ARGB64_PREP(conv, shift);					\
-> > +})
+I have NOT tested boot from eMMC (either with or without this patch), though i have no reason to believe it would be impacted.
 
--- 
-With Best Regards,
-Andy Shevchenko
+I am happy to provide more info as needed. First time posting to the LKML, i hope i am doing this right...
 
+Tested-by: Grimmauld <grimmauld@grimmauld.de>
 
+Regards,
+Grimmauld
 
 _______________________________________________
 Linux-rockchip mailing list
