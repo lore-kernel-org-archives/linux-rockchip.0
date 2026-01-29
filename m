@@ -4,72 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E8A0D358D2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 07:24:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 007C4D358EC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 09:38:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=j1DWy0/dZnemN/b1l/Hqaf0O6WCBlvg/wL1WBnjev1w=; b=Zo15mG1adopn5c
-	e4XLMZ1JraCCYDkKCZbtBT+pqdGAqX4GQQLkuAcKOQQMHbU9At1/X85m8Anmw3wwYCIyTxDnNU1/3
-	221CgG1Mgvij7ktmHFS6ZEuaWtrbvRqV7A0VoAAjVOU29Dt3or0/xvMB5aDxCGVp/Wlh5kKoeqWVk
-	lg7CLnzUGWtVxn7OIgKGfGiDr+qV+00jdDjHuqaxKE5g7ijgHtjX5PYYsJQUXX37YRc5QAuywbf4L
-	mTMAc8A0qPrudDzH6lbjMu8Y3o2alQ69Ele0MKmRjuPYCW4RrGv7W0IyjhO/tzeKfFVn4ZL0riuu6
-	BBiScDf434wENvg+A5Hw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=+MG5VXP11LK6mhmevNe/+r9IB8BAaPjhL02h1bybnUw=; b=qXP5D5S0HUPmYw
+	EEfNhbkM3rM0vDrT9V8H3Gh9+wRCwO+frEYFVjPvzFJXQ+CcdqzNyKDCGGnpwDdNWQ+5gLIkbZT52
+	0bQGJen45Z1GqODh3zGpUX2nxvOp/7i2OgEEMv4g9rp9WTsf5RmFHg8WYfgmnZjN95vYeb6A17aUV
+	QwN5ewQAc0vIZNEJi1qFW+lYPH7lzVIFbONP5gYESlkgt0D3u0CRk4qAeEAhagOGIa8NgUKxnFkfL
+	JBldUToAW0uiZ2IRx7G6KzhnlFa9aZk2tT6ZWMVVOuGW729abCIWHJbTT/1AFBBB4sBqRs2h6cU7Z
+	ew5nFwGuO2K39xYKThcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlMOF-0000000HNza-0LuW;
-	Thu, 29 Jan 2026 07:24:31 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1vlOTL-0000000HWf0-1ZKY;
+	Thu, 29 Jan 2026 09:37:55 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlMOB-0000000HNz7-3hed;
-	Thu, 29 Jan 2026 07:24:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=To:Message-Id:Subject:Date:From; t=1769671447; bh=Y8BIl+9hJvYS8GnIBuao9nC
-	fnKSCoshmBlhJepfvE88=; b=a0GblCtH7y5x5Lu/BN3mDIkC/XKNh6+Q0V0oLRiK34jBcoBfs9
-	O917E64yn0SX0QhcnxJ5Mk/w32IC4TZmWmPH9Y3VRnIcN027yyt52DZvFJHD+1z6ecsfH7+3ClB
-	L/GYAPaEi0wzExVftOzg24jzllTvL9Od5fAkDUccxYcw1dMBfxePTz/uLXX1GOq3mYmK6y7fl1y
-	yz14YtkRBkLzozBMmj+i8FDqr1A8BPQHzJmfKWE4HoC5+JxZXv1d0mKv74Keqtcb35IMHJP/eDz
-	qVxDM/RQjhDT81qeA9IjC5HSOuF2yy0Z9tzc1aJYxPSG6ZASI7Gb3zxaZWaAajZf+eA==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=To:Message-Id:Subject:Date:From; t=1769671447; bh=Y8BIl+9hJvYS8GnIBuao9nC
-	fnKSCoshmBlhJepfvE88=; b=hsDGf2TPwVtVsSdDadxMDpJXWljSAbjl9KvzP4fHHviEuodXbG
-	0YXuV/bkOyGKxsfTP6L5nhk0wQVZi+oQu8BA==;
-From: Dang Huynh <dang.huynh@mainlining.org>
-Date: Thu, 29 Jan 2026 14:24:02 +0700
-Subject: [PATCH] media: rockchip: rkcif: Add missing MUST_CONNECT flag to
- pads
+	id 1vlOTI-0000000HWdz-2fKJ;
+	Thu, 29 Jan 2026 09:37:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1769679473; x=1801215473;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=fcH4mUDNyS5wydLrVZXUX/K4ZKaotkjSpo0HtMsk+1o=;
+  b=lVGPwfTSy0eOth5F5bjSFiLDm8t0sZOIEE8lC0BJmJ9fpuPGqZYiruTS
+   Xj1lM6ZGm6xdbTQoP2A0hcW6QvZdqcKE7KkUwPR1HJrPCqtgUns96JwmB
+   NAZCIv//SNVoJR9TG481GqUqmNW0qJttZ8F+YDCuyYqyjdbmMUFEUHaWN
+   inltHv94RieOdeNd8/x8BWiyIT/Iwj18FHejILHUmlNkfsXF/Zoz8yNXF
+   fZ7p0i9DCDKMJm0cEGaptg2j+M+e01bwyd+eqjyNItRfd0SkvKcza/ZjM
+   G/tLVwYqf8zl211U0Rmjg5e0OY4MwI1w/FQEvtkvAKqR/MyQ3dyewT64H
+   g==;
+X-CSE-ConnectionGUID: 8yTWqO0nQS6EGbu68HInPQ==
+X-CSE-MsgGUID: dW1SyljrRviCPMduZp953A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11685"; a="71074878"
+X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; 
+   d="scan'208";a="71074878"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 01:37:50 -0800
+X-CSE-ConnectionGUID: Q6oB1hS4RWCJLoDv2BxPDA==
+X-CSE-MsgGUID: vyc3EwQqRieVpm72pc7e7w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; 
+   d="scan'208";a="246133392"
+Received: from klitkey1-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.155])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 01:37:29 -0800
+Date: Thu, 29 Jan 2026 11:37:22 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Louis Chauvet <louis.chauvet@bootlin.com>,
+	Haneen Mohammed <hamohammed.sa@gmail.com>,
+	Melissa Wen <melissa.srw@gmail.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Matt Roper <matthew.d.roper@intel.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: Re: [PATCH v6 2/4] drm: Add CRTC background color property
+Message-ID: <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
+References: <20260129-rk3588-bgcolor-v6-0-c15f755a4055@collabora.com>
+ <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20260129-rkcif-null-v1-1-90788ec347f5@mainlining.org>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzMDQyNL3aLs5Mw03bzSnBzdtKRkg6RUE8M0C8NEJaCGgqLUtMwKsGHRsbW
- 1ANmOIxxcAAAA
-X-Change-ID: 20260129-rkcif-null-fbc0be41f81a
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Gerald Loacker <gerald.loacker@wolfvision.net>
-Cc: Hans Verkuil <hverkuil+cisco@kernel.org>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Dang Huynh <dang.huynh@mainlining.org>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1769671444; l=2767;
- i=dang.huynh@mainlining.org; s=20250917; h=from:subject:message-id;
- bh=zwuni1NIWLOUNldNum/29rw5wXcipncI+6TVU+dBqWE=;
- b=wIYtmlfqWWg2ZFw0aeA6yi4Nwjk2B1O9WhYjf/CXk8eUng2Drp7i2s187kErrM01VmJ5gVnz9
- 6oeeruMSQDpCIkM7O2k1A3nI+nAQs3f90h+rjygQO56JG64RmvqZnnX
-X-Developer-Key: i=dang.huynh@mainlining.org; a=ed25519;
- pk=RyzH4CL4YU/ItXYUurA51EVBidfx4lIy8/E4EKRJCUk=
+Content-Disposition: inline
+In-Reply-To: <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260128_232428_116333_3DF30750 
-X-CRM114-Status: GOOD (  10.24  )
+X-CRM114-CacheID: sfid-20260129_013752_752197_CA2E37FD 
+X-CRM114-Status: GOOD (  23.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,72 +102,83 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The pads missed checks for connected devices which may a null dereference
-when the stream is enabled.
+On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
+> Some display controllers can be hardware programmed to show non-black
+> colors for pixels that are either not covered by any plane or are
+> exposed through transparent regions of higher planes.  This feature can
+> help reduce memory bandwidth usage, e.g. in compositors managing a UI
+> with a solid background color while using smaller planes to render the
+> remaining content.
+> 
+> To support this capability, introduce the BACKGROUND_COLOR standard DRM
+> mode property, which can be attached to a CRTC through the
+> drm_crtc_attach_background_color_property() helper function.
+> 
+> Additionally, define a 64-bit ARGB format value to be built with the
+> help of a couple of dedicated DRM_ARGB64_PREP*() helpers.  Individual
+> color components can be extracted with desired precision using the
+> corresponding DRM_ARGB64_GET*() macros.
 
-Unable to handle kernel NULL pointer dereference at virtual address
-0000000000000020
-pc : rkcif_interface_enable_streams+0x48/0xf0
-lr : rkcif_interface_enable_streams+0x44/0xf0
-Call trace:
- rkcif_interface_enable_streams+0x48/0xf0
- v4l2_subdev_enable_streams+0x26c/0x3f0
- rkcif_stream_start_streaming+0x140/0x278
- vb2_start_streaming+0x74/0x188
- vb2_core_streamon+0xe0/0x1d8
- vb2_ioctl_streamon+0x60/0xa8
- v4l_streamon+0x2c/0x40
- __video_do_ioctl+0x34c/0x400
- video_usercopy+0x2d0/0x800
- video_ioctl2+0x20/0x60
- v4l2_ioctl+0x48/0x78
+...
 
-Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
-Fixes: 85411d17bee9 ("media: rockchip: rkcif: add abstraction for interface and crop blocks")
-Signed-off-by: Dang Huynh <dang.huynh@mainlining.org>
----
-The RKCIF driver missed MEDIA_PAD_FL_MUST_CONNECT, which causes a null
-dereference when the stream starts if the links are misconfigured.
----
- drivers/media/platform/rockchip/rkcif/rkcif-interface.c | 3 ++-
- drivers/media/platform/rockchip/rkcif/rkcif-stream.c    | 2 +-
- 2 files changed, 3 insertions(+), 2 deletions(-)
+> +/*
+> + * Put 16-bit ARGB values into a standard 64-bit representation that can be
+> + * used for ioctl parameters, inter-driver communication, etc.
+> + *
+> + * If the component values being provided contain less than 16 bits of
+> + * precision, use a conversion ratio to get a better color approximation.
+> + * The ratio is computed as (2^16 - 1) / (2^bpc - 1), where bpc and 16 are
+> + * the input and output precision, respectively.
 
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-interface.c b/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
-index 523103872b7a..414a9980cf2e 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
-@@ -378,7 +378,8 @@ int rkcif_interface_register(struct rkcif_device *rkcif,
- 		snprintf(sd->name, sizeof(sd->name), "rkcif-mipi%d",
- 			 interface->index - RKCIF_MIPI_BASE);
- 
--	pads[RKCIF_IF_PAD_SINK].flags = MEDIA_PAD_FL_SINK;
-+	pads[RKCIF_IF_PAD_SINK].flags = MEDIA_PAD_FL_SINK |
-+					MEDIA_PAD_FL_MUST_CONNECT;
- 	pads[RKCIF_IF_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE;
- 	ret = media_entity_pads_init(&sd->entity, RKCIF_IF_PAD_MAX, pads);
- 	if (ret)
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-index e00010a91e8b..201542b55f00 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-@@ -555,7 +555,7 @@ int rkcif_stream_register(struct rkcif_device *rkcif,
- 	vdev->vfl_dir = VFL_DIR_RX;
- 	video_set_drvdata(vdev, stream);
- 
--	stream->pad.flags = MEDIA_PAD_FL_SINK;
-+	stream->pad.flags = MEDIA_PAD_FL_SINK | MEDIA_PAD_FL_MUST_CONNECT;
- 
- 	stream->pix.height = CIF_MIN_HEIGHT;
- 	stream->pix.width = CIF_MIN_WIDTH;
+Not sure if you should explicitly mention that "bpc must not be 0"
+(it can be derived from the "division by 0" in the given formula,
+but still...).
 
----
-base-commit: 3f24e4edcd1b8981c6b448ea2680726dedd87279
-change-id: 20260129-rkcif-null-fbc0be41f81a
+> + */
+> +#define __DRM_ARGB64_PREP(c, shift)					\
+> +	(((__u64)(c) & __GENMASK(15, 0)) << (shift))
+> +
+> +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
 
-Best regards,
+Not sure if this is an accepted style in DRM, by I find it difficult
+to follow. I would expect the "({" be on a separate line.
+
+> +	__u16 mask = __GENMASK((bpc) - 1, 0);				\
+> +	__u16 conv = __KERNEL_DIV_ROUND_CLOSEST((mask & (c)) *		\
+> +						__GENMASK(15, 0), mask);\
+
+The whole point of the first patch is to use it in the divisions by 2^n - 1.
+Can we transform this to make it "divisions" by power-of-two?
+
+     ...: def dbm2(c, bpc):
+     ...:     m = (1 << bpc) - 1
+     ...:     c1 = m & c
+     ...:     r = c1 << (16 - bpc)
+     ...:     for i in range(1, 16 // bpc):
+     ...:         r = r + (c1 << (16 - (i + 1) * bpc))
+     ...:     return r
+
+The above is a Python version of PoC of this approximation. Basically
+we transform the fraction X / (2^n - 1) to a chained version of
+X / 2^n + X / 2^2n + ... X / 2^kn as derived from recurrent formula
+of i+1:th iteration as Xi+1 = Xi / 2^n + Xi / (2^n * (2^n - 1)).
+
+So, maybe that one should be used instead? (It may be thought through
+on how to collapse the for-loop to maybe some bitops, but even with
+a for-loop it might be faster than real division.)
+
+Note, we have some (for sure more than one, I remember the same Q appeared to
+me a few years ago) of the examples which may avoid division at all. I would
+like to have this macro to be kernel wide (and UAPI seems also okay).
+
+> +	__DRM_ARGB64_PREP(conv, shift);					\
+> +})
+
 -- 
-Dang Huynh <dang.huynh@mainlining.org>
+With Best Regards,
+Andy Shevchenko
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
