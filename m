@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 007C4D358EC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 09:38:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1E03D358EE
+	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 10:01:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+MG5VXP11LK6mhmevNe/+r9IB8BAaPjhL02h1bybnUw=; b=qXP5D5S0HUPmYw
-	EEfNhbkM3rM0vDrT9V8H3Gh9+wRCwO+frEYFVjPvzFJXQ+CcdqzNyKDCGGnpwDdNWQ+5gLIkbZT52
-	0bQGJen45Z1GqODh3zGpUX2nxvOp/7i2OgEEMv4g9rp9WTsf5RmFHg8WYfgmnZjN95vYeb6A17aUV
-	QwN5ewQAc0vIZNEJi1qFW+lYPH7lzVIFbONP5gYESlkgt0D3u0CRk4qAeEAhagOGIa8NgUKxnFkfL
-	JBldUToAW0uiZ2IRx7G6KzhnlFa9aZk2tT6ZWMVVOuGW729abCIWHJbTT/1AFBBB4sBqRs2h6cU7Z
-	ew5nFwGuO2K39xYKThcQ==;
+	List-Owner; bh=XyTqHqkK8nmQvWgDklOi8KqETZMUtTbJdTHfwFriRak=; b=juyMNzJE9YdAS/
+	dO0H5qXdSF2obOFD4s94NqKatVPF8trJggSG5BmZZHXb8oSnbLGArlDkhF5sZfifGs/ipKL+wSf8o
+	ff/BgCR+8Vc2t3VJA3tDqPG6Y0bJk++7f7k/9Y1LrMgq/gmkeVDT1Vtv4KeoMKnt9D4YDkdNxpbxo
+	eWajxZydvTQqxFTmImBX+CHziO06vJQSXxb1LFW3hqRxXl7rKibvorJvr6eL55HxjOUs7f/6HXZfD
+	TvWmxgC1OXOZsfL8H5cAJtSRZeWQzLMmsF22sa+loXt7kX01j24lXNTeme0RULGEvpmYJCuqgnY/K
+	JrOKs8XtHoPZqPIpXmZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlOTL-0000000HWf0-1ZKY;
-	Thu, 29 Jan 2026 09:37:55 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1vlOps-0000000HY2k-1pb6;
+	Thu, 29 Jan 2026 10:01:12 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlOTI-0000000HWdz-2fKJ;
-	Thu, 29 Jan 2026 09:37:53 +0000
+	id 1vlOpp-0000000HY1z-3uUj;
+	Thu, 29 Jan 2026 10:01:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1769679473; x=1801215473;
+  t=1769680870; x=1801216870;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=fcH4mUDNyS5wydLrVZXUX/K4ZKaotkjSpo0HtMsk+1o=;
-  b=lVGPwfTSy0eOth5F5bjSFiLDm8t0sZOIEE8lC0BJmJ9fpuPGqZYiruTS
-   Xj1lM6ZGm6xdbTQoP2A0hcW6QvZdqcKE7KkUwPR1HJrPCqtgUns96JwmB
-   NAZCIv//SNVoJR9TG481GqUqmNW0qJttZ8F+YDCuyYqyjdbmMUFEUHaWN
-   inltHv94RieOdeNd8/x8BWiyIT/Iwj18FHejILHUmlNkfsXF/Zoz8yNXF
-   fZ7p0i9DCDKMJm0cEGaptg2j+M+e01bwyd+eqjyNItRfd0SkvKcza/ZjM
-   G/tLVwYqf8zl211U0Rmjg5e0OY4MwI1w/FQEvtkvAKqR/MyQ3dyewT64H
+  bh=SqH9AdxR/lHB8viiJnIr2poCQMky6Igt6nCYuv99EBc=;
+  b=jlRZ6jumGnjMfJ2rdcSpinCwRdGjRlT8mgAYN/+Ihu1saDjrUVsZSEWL
+   RcSTnx0jp8+qszwvLYyYGgNqlApj1beztt8J7pTe18XVCiJxTgGkA0kbT
+   MaVjNBlitYoOKCdjX7BUyizzFrxLHCl+TMmW3UMt7oIxsK+kObWZMcHBd
+   zPdKOcWgwrchvtJ9x10ZsvWC7IIfCbz/vg/k4gXv8BQVvfz6+s2Pk8M3j
+   zSyInu2u5b5OFNsxqXdAm29Wy8PWPD6DsHEP4d2oEf0tv8KyDYDYCI0gI
+   KREmItdtgVX3NkMTL3HySowPDSsJCwaXEsHDc/A1EthiNxcLnDSMp4bat
    g==;
-X-CSE-ConnectionGUID: 8yTWqO0nQS6EGbu68HInPQ==
-X-CSE-MsgGUID: dW1SyljrRviCPMduZp953A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11685"; a="71074878"
+X-CSE-ConnectionGUID: OhnGIlBtReuqgAkGW6Wfdw==
+X-CSE-MsgGUID: Fm3e0OG+QbWIxY6lXL8NSA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11685"; a="70630037"
 X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; 
-   d="scan'208";a="71074878"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 01:37:50 -0800
-X-CSE-ConnectionGUID: Q6oB1hS4RWCJLoDv2BxPDA==
-X-CSE-MsgGUID: vyc3EwQqRieVpm72pc7e7w==
+   d="scan'208";a="70630037"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 02:01:07 -0800
+X-CSE-ConnectionGUID: q96kEhegQ5GodER4IxHUhQ==
+X-CSE-MsgGUID: n0Y7OLBCQQaoEMLmTpwHhw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,260,1763452800"; 
-   d="scan'208";a="246133392"
+   d="scan'208";a="213400871"
 Received: from klitkey1-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.155])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 01:37:29 -0800
-Date: Thu, 29 Jan 2026 11:37:22 +0200
+  by fmviesa004-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Jan 2026 02:01:01 -0800
+Date: Thu, 29 Jan 2026 12:00:59 +0200
 From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -75,17 +75,18 @@ Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
 	Diederik de Haas <diederik@cknow-tech.com>
 Subject: Re: [PATCH v6 2/4] drm: Add CRTC background color property
-Message-ID: <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
+Message-ID: <aXsv200DLo6ssao2@smile.fi.intel.com>
 References: <20260129-rk3588-bgcolor-v6-0-c15f755a4055@collabora.com>
  <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
+ <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
+In-Reply-To: <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260129_013752_752197_CA2E37FD 
-X-CRM114-Status: GOOD (  23.83  )
+X-CRM114-CacheID: sfid-20260129_020110_023516_237DA548 
+X-CRM114-Status: GOOD (  20.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,77 +103,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
-> Some display controllers can be hardware programmed to show non-black
-> colors for pixels that are either not covered by any plane or are
-> exposed through transparent regions of higher planes.  This feature can
-> help reduce memory bandwidth usage, e.g. in compositors managing a UI
-> with a solid background color while using smaller planes to render the
-> remaining content.
-> 
-> To support this capability, introduce the BACKGROUND_COLOR standard DRM
-> mode property, which can be attached to a CRTC through the
-> drm_crtc_attach_background_color_property() helper function.
-> 
-> Additionally, define a 64-bit ARGB format value to be built with the
-> help of a couple of dedicated DRM_ARGB64_PREP*() helpers.  Individual
-> color components can be extracted with desired precision using the
-> corresponding DRM_ARGB64_GET*() macros.
+On Thu, Jan 29, 2026 at 11:37:33AM +0200, Andy Shevchenko wrote:
+> On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
 
 ...
 
-> +/*
-> + * Put 16-bit ARGB values into a standard 64-bit representation that can be
-> + * used for ioctl parameters, inter-driver communication, etc.
-> + *
-> + * If the component values being provided contain less than 16 bits of
-> + * precision, use a conversion ratio to get a better color approximation.
-> + * The ratio is computed as (2^16 - 1) / (2^bpc - 1), where bpc and 16 are
-> + * the input and output precision, respectively.
+> > +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
+> > +	__u16 mask = __GENMASK((bpc) - 1, 0);				\
+> > +	__u16 conv = __KERNEL_DIV_ROUND_CLOSEST((mask & (c)) *		\
+> > +						__GENMASK(15, 0), mask);\
+> 
+> The whole point of the first patch is to use it in the divisions by 2^n - 1.
+> Can we transform this to make it "divisions" by power-of-two?
+> 
+>      ...: def dbm2(c, bpc):
+>      ...:     m = (1 << bpc) - 1
+>      ...:     c1 = m & c
+>      ...:     r = c1 << (16 - bpc)
+>      ...:     for i in range(1, 16 // bpc):
+>      ...:         r = r + (c1 << (16 - (i + 1) * bpc))
+>      ...:     return r
 
-Not sure if you should explicitly mention that "bpc must not be 0"
-(it can be derived from the "division by 0" in the given formula,
-but still...).
+I noticed that on some inputs it gives off-by-small-number error.
+But you got the idea.
 
-> + */
-> +#define __DRM_ARGB64_PREP(c, shift)					\
-> +	(((__u64)(c) & __GENMASK(15, 0)) << (shift))
-> +
-> +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
+Taking this into account, perhaps we can share __KERNEL_DIV_ROUND_CLOSEST()
+anyway and leave it there and improve the situation later on. Up to DRM
+maintainers.
 
-Not sure if this is an accepted style in DRM, by I find it difficult
-to follow. I would expect the "({" be on a separate line.
+> The above is a Python version of PoC of this approximation. Basically
+> we transform the fraction X / (2^n - 1) to a chained version of
+> X / 2^n + X / 2^2n + ... X / 2^kn as derived from recurrent formula
+> of i+1:th iteration as Xi+1 = Xi / 2^n + Xi / (2^n * (2^n - 1)).
+> 
+> So, maybe that one should be used instead? (It may be thought through
+> on how to collapse the for-loop to maybe some bitops, but even with
+> a for-loop it might be faster than real division.)
+> 
+> Note, we have some (for sure more than one, I remember the same Q appeared to
+> me a few years ago) of the examples which may avoid division at all. I would
+> like to have this macro to be kernel wide (and UAPI seems also okay).
 
-> +	__u16 mask = __GENMASK((bpc) - 1, 0);				\
-> +	__u16 conv = __KERNEL_DIV_ROUND_CLOSEST((mask & (c)) *		\
-> +						__GENMASK(15, 0), mask);\
-
-The whole point of the first patch is to use it in the divisions by 2^n - 1.
-Can we transform this to make it "divisions" by power-of-two?
-
-     ...: def dbm2(c, bpc):
-     ...:     m = (1 << bpc) - 1
-     ...:     c1 = m & c
-     ...:     r = c1 << (16 - bpc)
-     ...:     for i in range(1, 16 // bpc):
-     ...:         r = r + (c1 << (16 - (i + 1) * bpc))
-     ...:     return r
-
-The above is a Python version of PoC of this approximation. Basically
-we transform the fraction X / (2^n - 1) to a chained version of
-X / 2^n + X / 2^2n + ... X / 2^kn as derived from recurrent formula
-of i+1:th iteration as Xi+1 = Xi / 2^n + Xi / (2^n * (2^n - 1)).
-
-So, maybe that one should be used instead? (It may be thought through
-on how to collapse the for-loop to maybe some bitops, but even with
-a for-loop it might be faster than real division.)
-
-Note, we have some (for sure more than one, I remember the same Q appeared to
-me a few years ago) of the examples which may avoid division at all. I would
-like to have this macro to be kernel wide (and UAPI seems also okay).
-
-> +	__DRM_ARGB64_PREP(conv, shift);					\
-> +})
+> > +	__DRM_ARGB64_PREP(conv, shift);					\
+> > +})
 
 -- 
 With Best Regards,
