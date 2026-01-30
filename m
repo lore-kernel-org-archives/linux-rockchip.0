@@ -4,55 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3710E6BF39
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Jan 2026 20:35:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69293E6BF3F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Jan 2026 22:43:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:CC:To:Subject:From:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ajjX7pepSDBXz0YC1xp06cOR35JnIqZFpwlgXQEDbuw=; b=1PP/pPQYiZYlzs
-	lorH8jH0sTWbrqX+qr+FMusV8eouaLUcGFBDOpoFXvbzMJuujmqw/Cczkfq3c11Z46oPDHU3sk9lm
-	b4fLmBTePYtxg5hColEMX9woXxnmgy01Duz1GTh1SHCp4W5mMOaI24izkEhgYm8t0A+vOCzGOQ2bF
-	bcItzCx70iCeNXSlliCDXJ2IdqoEn4pF/X02OTNQuAX896JSAmnszwWQ2mBP4gC0vRLDB5btshZzM
-	tuaoSbmc1r51WVAE+H6+1kY8nNhe/Or1N381BFAV0zsLf9P2rBAC680KDf0+zD/utmBo0ggRVqngs
-	E5vjYOfFdIdETI/cOu6A==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=bholEcKmeeTSTt5IXUZxU402MXUWA5PVnqLTCdLFqAI=; b=Z3b30vAvih8kUv
+	/rCOd/IM9MjUVm5ektK/qm8ACmCbaf6hyjtYjZMTMSyQK3Ny9xIsUCH3f/znZBMuSS6ZNi+ojSs/e
+	DOdHMi2g0jCZjAanKBraH3+K3JQgJ2+QbxgrYWVw79Yi69oPBbqcJnhcFPu+rzFTi4ACHA4tXz6Wt
+	XK08Qm/j3eaKdw55ykvnU8OleNgdahtPg7/7n7DQsHeThKG30o5T8TYPNC2VRIXjTsn8efCQN9wjV
+	XS0ZVxDY6S/q8UdpUYXyEu8lIuyLCu8CaHN7FGUPisjeFpTWuNh9pZVKf8TtN2WwhKCxkpnII1m2H
+	WgV5AeEAt/T0dxGGx5fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlvDY-00000001wlh-2W74;
-	Fri, 30 Jan 2026 20:35:48 +0000
-Received: from [95.181.193.9] (helo=mail.auroraos.dev)
+	id 1vlxCp-000000024Nb-35bq;
+	Fri, 30 Jan 2026 22:43:11 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlvDW-00000001wlL-1GtD;
-	Fri, 30 Jan 2026 20:35:47 +0000
-Received: from [192.168.2.104] (213.87.133.239) by exch16.corp.auroraos.dev
- (10.189.209.38) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Fri, 30 Jan
- 2026 23:35:42 +0300
-Message-ID: <adf6b313-f7db-4d8f-9000-8c65446ba041@auroraos.dev>
-Date: Fri, 30 Jan 2026 23:35:42 +0300
+	id 1vlxCm-000000024Mh-27Ay;
+	Fri, 30 Jan 2026 22:43:10 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-703d-e500--2a1.rev.dnainternet.fi [IPv6:2001:14ba:703d:e500::2a1])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 13E5F22F;
+	Fri, 30 Jan 2026 23:42:24 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1769812944;
+	bh=9vt/KWf0ClAcghSMvVKAo3o70Sm0WkeC1kfJnzEifBs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fU6RJGSPKIlbpF/tLhXT5lSMw2jEyLRVAx3JYazvkzQVZTjjn2nnLhtg9pPH303Po
+	 CxdhqM9FawM8SJrtFHLdJKycX2jkGo2Fvr/DmWGqkVwiFP5bQh31do4Z3KpQQmDgB/
+	 10n4n3cwuri0Wftc//KNpfdQzX63yw8c6YgLANII=
+Date: Sat, 31 Jan 2026 00:43:01 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Dang Huynh <dang.huynh@mainlining.org>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Gerald Loacker <gerald.loacker@wolfvision.net>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: rockchip: rkcif: Add missing MUST_CONNECT flag to
+ pads
+Message-ID: <20260130224301.GS3374091@killaraus>
+References: <20260129-rkcif-null-v1-1-90788ec347f5@mainlining.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Sergey Shtylyov <s.shtylyov@auroraos.dev>
-Subject: [PATCH RESEND] drm/rockchip: cdn-dp: add missing check in
- cdn_dp_config_video()
-To: Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
-	<heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, Maarten Lankhorst
-	<maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>, <dri-devel@lists.freedesktop.org>,
-	<linux-rockchip@lists.infradead.org>
-CC: Sergey Shtylyov <s.shtylyov@auroraos.dev>,
-	<linux-arm-kernel@lists.infradead.org>, <stable@vger.kernel.org>
-Content-Language: en-US
-X-Originating-IP: [213.87.133.239]
-X-ClientProxiedBy: exch16.corp.auroraos.dev (10.189.209.38) To
- exch16.corp.auroraos.dev (10.189.209.38)
+Content-Disposition: inline
+In-Reply-To: <20260129-rkcif-null-v1-1-90788ec347f5@mainlining.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260130_123546_365556_17F88EF7 
-X-CRM114-Status: UNSURE (   7.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260130_144308_978015_D8260F4E 
+X-CRM114-Status: GOOD (  17.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,42 +75,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The result of cdn_dp_reg_write() is checked everywhere (with the error
-being logged by the callers) except one place in cdn_dp_config_video().
-Add the missing result check, bailing out early on error...
+On Thu, Jan 29, 2026 at 02:24:02PM +0700, Dang Huynh wrote:
+> The pads missed checks for connected devices which may a null dereference
+> when the stream is enabled.
+> 
+> Unable to handle kernel NULL pointer dereference at virtual address
+> 0000000000000020
+> pc : rkcif_interface_enable_streams+0x48/0xf0
+> lr : rkcif_interface_enable_streams+0x44/0xf0
+> Call trace:
+>  rkcif_interface_enable_streams+0x48/0xf0
+>  v4l2_subdev_enable_streams+0x26c/0x3f0
+>  rkcif_stream_start_streaming+0x140/0x278
+>  vb2_start_streaming+0x74/0x188
+>  vb2_core_streamon+0xe0/0x1d8
+>  vb2_ioctl_streamon+0x60/0xa8
+>  v4l_streamon+0x2c/0x40
+>  __video_do_ioctl+0x34c/0x400
+>  video_usercopy+0x2d0/0x800
+>  video_ioctl2+0x20/0x60
+>  v4l2_ioctl+0x48/0x78
+> 
+> Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
+> Fixes: 85411d17bee9 ("media: rockchip: rkcif: add abstraction for interface and crop blocks")
+> Signed-off-by: Dang Huynh <dang.huynh@mainlining.org>
+> ---
+> The RKCIF driver missed MEDIA_PAD_FL_MUST_CONNECT, which causes a null
+> dereference when the stream starts if the links are misconfigured.
 
-Found by Linux Verification Center (linuxtesting.org) with the Svace static
-analysis tool.
+The change looks fine,
 
-Fixes: 1a0f7ed3abe2 ("drm/rockchip: cdn-dp: add cdn DP support for rk3399")
-Signed-off-by: Sergey Shtylyov <s.shtylyov@auroraos.dev>
-Cc: stable@vger.kernel.org
----
-Either we need to add the check or drop the assignment to the ret variable
-as the value gets ignored anyway...
+Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 
-The patch is against the drm-misc-fixes branch of the DRM kernel.git repo
-on gitlab.freedesktop.org.
+I'd like a review from Michael though.
 
- drivers/gpu/drm/rockchip/cdn-dp-reg.c | 2 ++
- 1 file changed, 2 insertions(+)
+> ---
+>  drivers/media/platform/rockchip/rkcif/rkcif-interface.c | 3 ++-
+>  drivers/media/platform/rockchip/rkcif/rkcif-stream.c    | 2 +-
+>  2 files changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-interface.c b/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
+> index 523103872b7a..414a9980cf2e 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-interface.c
+> @@ -378,7 +378,8 @@ int rkcif_interface_register(struct rkcif_device *rkcif,
+>  		snprintf(sd->name, sizeof(sd->name), "rkcif-mipi%d",
+>  			 interface->index - RKCIF_MIPI_BASE);
+>  
+> -	pads[RKCIF_IF_PAD_SINK].flags = MEDIA_PAD_FL_SINK;
+> +	pads[RKCIF_IF_PAD_SINK].flags = MEDIA_PAD_FL_SINK |
+> +					MEDIA_PAD_FL_MUST_CONNECT;
+>  	pads[RKCIF_IF_PAD_SRC].flags = MEDIA_PAD_FL_SOURCE;
+>  	ret = media_entity_pads_init(&sd->entity, RKCIF_IF_PAD_MAX, pads);
+>  	if (ret)
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> index e00010a91e8b..201542b55f00 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> @@ -555,7 +555,7 @@ int rkcif_stream_register(struct rkcif_device *rkcif,
+>  	vdev->vfl_dir = VFL_DIR_RX;
+>  	video_set_drvdata(vdev, stream);
+>  
+> -	stream->pad.flags = MEDIA_PAD_FL_SINK;
+> +	stream->pad.flags = MEDIA_PAD_FL_SINK | MEDIA_PAD_FL_MUST_CONNECT;
+>  
+>  	stream->pix.height = CIF_MIN_HEIGHT;
+>  	stream->pix.width = CIF_MIN_WIDTH;
+> 
+> ---
+> base-commit: 3f24e4edcd1b8981c6b448ea2680726dedd87279
+> change-id: 20260129-rkcif-null-fbc0be41f81a
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-reg.c b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-index 0dc3804051a9..9b82b27770e5 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-reg.c
-@@ -685,6 +685,8 @@ int cdn_dp_config_video(struct cdn_dp_device *dp)
- 	val = div_u64(8 * (symbol + 1), bit_per_pix) - val;
- 	val += 2;
- 	ret = cdn_dp_reg_write(dp, DP_VC_TABLE(15), val);
-+	if (ret)
-+		goto err_config_video;
- 
- 	switch (video->color_depth) {
- 	case 6:
 -- 
-2.52.0
+Regards,
 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
