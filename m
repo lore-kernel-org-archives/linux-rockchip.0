@@ -4,72 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B96BD49C92
-	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Jan 2026 11:01:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC198E6BF20
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Jan 2026 16:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
-	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lAT3cC9aKkP2efUiI+Idh2f6P88ATnInth/XEjVQYZM=; b=NTsDSIb2p2RWPs
-	mF1A4MHSyW55nlzKHp5PfRcgasgdW2HI+e39Ikq09jmBS1//8rlGFS6+74ef5jwZNJXtbsPR2DGnm
-	rwUZTuGg2YFN5IA8eHenGkDlLBW5KW3+moqe/cQLmKwFbAHxaZ0NR0kR8IJACA+EyUF8hdz9kTBur
-	Nn5EryYoqjyPuYGoD0TPxi+9iOpIXFWRULvFUjTXCwtiHc7vRsCQOg/4QMk5qzSfWJpAyuig1dibU
-	7Mgpjdj4cvcAGA8IN16G4ffbxb56Ol1VkkhsTnaqlQgAqZm7s8lb5/vqdK/WcnRavhXnuEm8/kuGI
-	cZ4A8i+flgy7iQgC1VDQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=34SnKds7ssYdRNdHYTI5Xj/2ghGqbED02OxHdO8Jml4=; b=JdUWZqDx04PKuu
+	V2lxSr5uFLraIs7VbVsPeOggRmvCYXlnCFmd6hqrxSThnzRm+85rM9DANXbNdsPSPVGWCPKkK8Bg3
+	g+KdmMjEIzlvco/YmTvaM6pZreiYkkjSMSLkOQZzwyqy4QT2xkpTmKGLtUhb2vD2m4S+Sd6Y4JPQy
+	mXiR8IVtocYndoZ0LuNV9vFajLThmwZcqklZgQ6MiGcG1SUGkfjmyLpNvbMnznl6eeDDvyayBXMjZ
+	ruZQ6aCdusBDaydcGwRAD8clZWiTUsa9dIVqQlcAdaNxut6mGnvdn9TzEd1cfUv9zeXLILTkU0nok
+	SDZ2LM1i/DYlwWWptRQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlmFm-00000001MWD-1idh;
-	Fri, 30 Jan 2026 11:01:30 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vlrRG-00000001ip6-37vC;
+	Fri, 30 Jan 2026 16:33:42 +0000
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlmFe-00000001MLq-1NNI;
-	Fri, 30 Jan 2026 11:01:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=tfTRxGjJ/kyGo4D0QWUvesWuQhp2AjJ5l+CN0+Pv7XQ=; b=035RbAwfOreO0YRkrKIMxlIAuW
-	qEkYJgTzVKKbg23rMm5Tr8PUTu/iP98mVoYrZ9ck8jHvlSFxn0eKeovgToGtGDJLep85/Z42SGh2T
-	o9zUIRkNKcENDbNzflntNoBCIfwlKWy+974okKU/vt7Izi5T/SQpWYC+fvhF6ohoXgjVKJI/Lo7be
-	+11xHetiaWGLVGhdkKWHBMTAsHio1+HUKwqbNxGnQv0dokR/eoXdx2T32AgcweoAD7XXYJN+j6kbx
-	TPRpnqPXUsmH84iXtwiw22CGlbpkCjryfAWBxifF9/F7O/xO05ELP6whFO8iHzgV6Rcr8QjFq7Egb
-	nqeF6PXw==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:35620 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vlmFL-000000000zQ-42Kj;
-	Fri, 30 Jan 2026 11:01:04 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vlmFI-00000006zog-0a4B;
-	Fri, 30 Jan 2026 11:01:00 +0000
-In-Reply-To: <aXyPK9rlMt8h_fze@shell.armlinux.org.uk>
-References: <aXyPK9rlMt8h_fze@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next 10/10] net: stmmac: rk: convert px30
+	id 1vlrRE-00000001ioa-34PY
+	for linux-rockchip@lists.infradead.org;
+	Fri, 30 Jan 2026 16:33:41 +0000
+Received: by mail-oa1-x2e.google.com with SMTP id 586e51a60fabf-4096aab5521so1654024fac.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 30 Jan 2026 08:33:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1769790819; x=1770395619; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HRyJbPVKDYOcEx/uJfavPdGQ3FZcp74iFXGk3iA9oPM=;
+        b=OeSncTEyQCw/Cf6lJ9UrHOpWW+HRFpAAOShev78zCKxeECA3F3DJ6C4ffYLh9dm1fx
+         kW7cGEisEUcmXVzxgGH4R5ejUxR1i4ImmvIj2vCq6toWSDBXq5yNjhWiW4OCk6MoDA9k
+         plqB4fJvxKPxRVn1CsRGFn0MzRfkCt1B7akQGNqNDpZxQFWJlCdty5rke/8udw5uPLuN
+         H0cLul24oRZTCdTyF1X/ajXWO32BdjT/AvHWOWavfi25+9/VDGP9Jq+3nS4JH1Jxb0xq
+         3XACx+p4fZcTgE8lu98jC6UaA7NibQa7OQZYZesytVgxFjWtpkiBMvWTy5QdE2BCQbLL
+         OTHg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1769790819; x=1770395619;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HRyJbPVKDYOcEx/uJfavPdGQ3FZcp74iFXGk3iA9oPM=;
+        b=aiueut4c+JJMPtquXN/DYIzd0REE7+DPpMDwOgzaKUMYk5WJXOs+EjVuSr514lHf4L
+         PAP3anq3MHzu1xKyHiWVa3vjjqmUhMd3G3uwlFDtkdvDs/uU2a7Fjoi8hbz6B9hRgiA0
+         3G+GYoOQzcxAX2PUuPkqZCTHkZ3pfelmx6fLwRcRWHF5uOBULv2wjr6u8CSuM/9nynoy
+         JVTtAVOUs7UVrYZW37KQhq6kvTnRxVdlBEUbGqL45pWBY9LoZmlz6GBz2i52P6Mwwpnx
+         w4wWVR1OPbwba0fn+cJI6uy3JtL7ietKru7jURvdiBM0oZPnw+uO9mASMdBR9bW99dRY
+         y3Sw==
+X-Gm-Message-State: AOJu0YyBALlzwHv/VNVfYRTenRdMguzVruXQ+M8iLMGg7reSGoRj/VVZ
+	7kRweRchnu+9Q54Gt9yiKYnDebrN4UK9Aj7CCrqBW+U4VY+ltaekH2iJLlfHmQ==
+X-Gm-Gg: AZuq6aJC2Dvja7EenM2QU/bYDIxdGxBYDG+haxkVeBrNyo8A5SHYUZBcJVk2IGA0AzF
+	YEze3bYZXPK1POdEeUWiUfHp2N80QaAhrESpv1O1bd77wJjh+2XRI3tspdRJqPL/jMn+zEhObrD
+	PcjnBYi4k4ksnRsJjWWtcFKdVkR0zB4jZXiQR4zK5OVTcj+X9tZxZJhItWjlJIxyIL39D+Wek7v
+	v+0k0WqemKQIc66zDqsIyW9YTQaRwww/MlPzyD3rrAxsNv0ZbUUsa78NF5kCUaMURnwu40monIc
+	EZI5mztcjVyBv+2JS56v52uREd44KU7O06VdvTvophFwZJYpBcFaUSiBnVQt3JBs0c1lkernSZq
+	vGDNjRe1rFHwuTJURY1DSJGm9JzzNhHIIbjisQTYG5j/hbpLe8KZWZYoAOeH91nlhzwH3CnReNU
+	euKzkR8fF4
+X-Received: by 2002:a05:6820:1387:b0:662:f8a9:9ec with SMTP id 006d021491bc7-6630f3854a5mr1643640eaf.56.1769790818641;
+        Fri, 30 Jan 2026 08:33:38 -0800 (PST)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-662f99447b5sm5147524eaf.2.2026.01.30.08.33.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 30 Jan 2026 08:33:37 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: linux-pm@vger.kernel.org,
+	jonas@kwiboo.se,
+	pgwipeout@gmail.com,
+	finley.xiao@rock-chips.com,
+	kever.yang@rock-chips.com,
+	shawn.lin@rock-chips.com,
+	sebastian.reichel@collabora.com,
+	heiko@sntech.de,
+	ulf.hansson@linaro.org,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: [PATCH V2] pmdomain: rockchip: quiet regulator error on -EPROBE_DEFER
+Date: Fri, 30 Jan 2026 10:31:01 -0600
+Message-ID: <20260130163102.51757-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1vlmFI-00000006zog-0a4B@rmk-PC.armlinux.org.uk>
-Date: Fri, 30 Jan 2026 11:01:00 +0000
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260130_030122_496080_44553BCA 
+X-CRM114-CacheID: sfid-20260130_083340_797176_12BE49A7 
 X-CRM114-Status: GOOD (  10.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,74 +104,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use rk_set_clk_mac_speed() rather than px30 specific function for
-configuring RMII clock.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Change the dev_err() to dev_err_probe() under rockchip_pd_power_on()
+to prevent errors early in the boot process when the requested
+regulator is not yet available. This converts errors like the following
+to debug messages:
+
+rockchip-pm-domain fd8d8000.power-management:power-controller: Failed to enable supply: -517
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 38 ++-----------------
- 1 file changed, 4 insertions(+), 34 deletions(-)
+Changes since v1:
+ - Simplified return to single line
+---
+ drivers/pmdomain/rockchip/pm-domains.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index 424cb1b52626..fa97ce971477 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -264,49 +264,19 @@ static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 997e93c12951..6d3fb18f4ab3 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -705,10 +705,9 @@ static int rockchip_pd_power_on(struct generic_pm_domain *domain)
+ 	int ret;
  
- #define PX30_GRF_GMAC_CON1		0x0904
- 
--/* PX30_GRF_GMAC_CON1 */
--#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
--#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
--
- static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
- {
- }
- 
--static int px30_set_speed(struct rk_priv_data *bsp_priv,
--			  phy_interface_t interface, int speed)
--{
--	struct clk *clk_mac_speed = bsp_priv->clks[RK_CLK_MAC_SPEED].clk;
--	struct device *dev = bsp_priv->dev;
--	unsigned int con1;
--	long rate;
--
--	if (!clk_mac_speed) {
--		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
--		return -EINVAL;
+ 	ret = rockchip_pd_regulator_enable(pd);
+-	if (ret) {
+-		dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
+-		return ret;
 -	}
--
--	if (speed == 10) {
--		con1 = PX30_GMAC_SPEED_10M;
--		rate = 2500000;
--	} else if (speed == 100) {
--		con1 = PX30_GMAC_SPEED_100M;
--		rate = 25000000;
--	} else {
--		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
--		return -EINVAL;
--	}
--
--	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1, con1);
--
--	return clk_set_rate(clk_mac_speed, rate);
--}
--
- static const struct rk_gmac_ops px30_ops = {
- 	.set_to_rmii = px30_set_to_rmii,
--	.set_speed = px30_set_speed,
-+	.set_speed = rk_set_clk_mac_speed,
++	if (ret)
++		return dev_err_probe(pd->pmu->dev, ret,
++				     "Failed to enable supply: %d\n", ret);
  
- 	.gmac_grf_reg = PX30_GRF_GMAC_CON1,
- 	.gmac_phy_intf_sel_mask = GENMASK_U16(6, 4),
-+
-+	.clock_grf_reg = PX30_GRF_GMAC_CON1,
-+	.clock.mac_speed_mask = BIT_U16(2),
- };
- 
- #define RK3128_GRF_MAC_CON0	0x0168
+ 	ret = rockchip_pd_power(pd, true);
+ 	if (ret)
 -- 
-2.47.3
+2.43.0
 
 
 _______________________________________________
