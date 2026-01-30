@@ -4,56 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 108F9D6101B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 29 Jan 2026 14:07:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC138D73EB4
+	for <linux-rockchip@archiver.kernel.org>; Fri, 30 Jan 2026 02:51:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C8pd2b2xXbi6xEzrMycPvwZuivuDOlsV4gJxQhcB6DA=; b=HVBfVJEnFrk+cL
-	hpKbMxA0TB/pf0BeJdmhrbjPQHPRANAMQv4YxQW/JzW0Xjtk9JgWiqvpgeA253kLsvcMAPe9mznDY
-	8OmtOQonJRQ412TKEfRWnB1mzCgvEQ5My7jn4W9wbP7R/Wc5UdSdtF/boN+pgywO1LqkCnzmN8lmr
-	ad/z+Ymn7s9RxYb3QJNq5k5YirsQ5WV/gt2xvjOzpSlbAZ+V1kHsvn625vnnXui85Rke4rNhkbhkN
-	WU0YakDtfSbGPYCKfnaNfW9RRXH208cJXc2p0DikUbesXREtGZr+Na1sifcoyogJ56NlnvwDUmAEn
-	OqoU67OKmr7R907ZziMg==;
+	List-Owner; bh=+3Umqx0f8id1hV0/WnwfjDpHDDpCwia6JD3FhdEBHb0=; b=A7Y9vO4ksXWNWd
+	JVZArCdKY3QdXleea1F/tCl5YdlF7S80HiGahlZKEZtvSk5OMQsBlaiftdmmb/UR77/LB1gK1Kwb7
+	CEFNOzZh+8lGJY3ihe9P+m0cmFobYqtzZ9cP/k2ZLrVKK4B67lgqu6LbPyoPWNFROVHttB8ELL3W7
+	lnJ5iP7Bp83jzpzlTXrFi5/t9CAE30w7uupxm3yCweYSJB070haU4n9VDzzZkOOeecODLTOzimxou
+	jvlS2ST1VSm2ST4mmNISOO0y++z0RAght8UJ9VVb5MBrijwdavF1rFfnn7PKKiu/uyr5EYfDvpsJo
+	Ehp68gdlR2pMbJnpr7Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlSfv-00000000CQo-13mc;
-	Thu, 29 Jan 2026 14:07:11 +0000
-Received: from grimmauld.de ([84.247.166.235])
+	id 1vlebK-00000000up7-0rGR;
+	Fri, 30 Jan 2026 02:51:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vlSfs-00000000CPv-1JeZ;
-	Thu, 29 Jan 2026 14:07:09 +0000
-Date: Thu, 29 Jan 2026 15:06:59 +0100
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=grimmauld.de;
-	s=mail; t=1769695621;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=LDvw9Qfr4vqNELgD4bWuCdghWFw0Szb+OOKl9xxGUSs=;
-	b=H9Lk7PLfjvzxEPY2ckj6TV8xHEUfKCTQ9G9AOE5zTrFVnSXne65omKgxno1wUbeCjyDAT2
-	nKaMfq625YgEkQvSFyh2j+FfNB290TKowl3414NP6n8K5OGRTjWyI70JHKAHQTpSKPuky4
-	8WVcOvtFVpdcWx13hpXbDHI6Tw+gXi8=
-From: Grimmauld <grimmauld@grimmauld.de>
-To: Anand Moon <linux.amoon@gmail.com>
-Cc: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <aXtpg0V_sifQEWHJ@grimm-nixos-ssd-2>
-References: <20240809073610.2517-1-linux.amoon@gmail.com>
+	id 1vlebD-00000000uit-304c;
+	Fri, 30 Jan 2026 02:51:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2331B60129;
+	Fri, 30 Jan 2026 02:50:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D00D5C4CEF7;
+	Fri, 30 Jan 2026 02:50:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1769741436;
+	bh=4mP/h3GbYCa8J/6dvAXmJ6ho0qAayCfhutvBl6V6NfY=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=h6hO5yg6lf5vPq1Wlfxr6sBAyZcIHnKybPLZHh/9EhZCclmPxY9p0JbrJJkxQMPmx
+	 w0EZLHXoF2MF4Qxp6cIEURHhWBbv3G4CU3R3RZNia7Zuci1kLxPrbCuIXJZlwBlPKp
+	 NmZ1P3g9uJ+ynn0ScQqAPtlcJrgsPm5TgdKlBAWtD6VbqNqwnc51utlQ3qgj1OUtFt
+	 RZdkKLH9GjWdfg6kMNUWLr1wuQARPoHTAejBCTciyyIfYq/gtMYEPNye9EXazRVFus
+	 B+GfbJF3EWcG0l4ILS+LQfQ3QCKBzk32eDVNXjUqKGGPPYfL0QBHZT2uWP47Hixy5p
+	 IZ+oZsj2HUEtg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id C8D16380CEE0;
+	Fri, 30 Jan 2026 02:50:30 +0000 (UTC)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20240809073610.2517-1-linux.amoon@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260129_060708_582452_117B7932 
-X-CRM114-Status: GOOD (  20.72  )
+Subject: Re: [PATCH net-next 0/3] net: stmmac: rk: second chunk of cleanups
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <176974142934.3149010.15875331264465182185.git-patchwork-notify@kernel.org>
+Date: Fri, 30 Jan 2026 02:50:29 +0000
+References: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+In-Reply-To: <aXnrzIbZN-gaZTia@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, alexandre.torgue@foss.st.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, heiko@sntech.de, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+ pabeni@redhat.com, p.zabel@pengutronix.de
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,51 +73,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Anand,
+Hello:
 
-I have tested this patch.
-Hardware/Kernel information:
-- radxa rock 5c lite
-- rk3588s CPU, arm64
-- defconfig NixOS kernel
-- picked onto 6.18.7
-- DT: rockchip/rk3588s-rock-5c.dtb
-- tested both uboot (mainline) and edk2 (vendor)
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-On Fri, Aug 09, 2024 at 01:06:09PM +0530, Anand Moon wrote:
-> Rockchip DWC PCIe driver currently waits for the combo PHY link
-> (PCIe 3.0, PCIe 2.0, and SATA 3.0) to be established link training
-> during boot, it also waits for the link to be up, which could consume
-> several milliseconds during boot.
+On Wed, 28 Jan 2026 10:58:20 +0000 you wrote:
+> Hi,
+> 
+> This series is a cut-down installment of the dwmac-rk cleanups, covering
+> up to the point that the AI review had its first issue with the patches.
+> Unfortunately, this means that we introduce ->init but do not add any
+> users for it yet. That will be in the next round once this has got
+> through AI review and merged.
+> 
+> [...]
 
-I found that without this patch, USB 3 ports as well as the PCIe connector seemingly stay uninitialized during boot on my hardware. 
-This manifests in a bootable USB flash drive loading initrd from bootloader (both uboot and edk2) perfectly, but then fails to mount the rootfs from the drive.
-In effect, boot is not just slower than it should be, it just does not boot all the way at all.
-In that scenario, the devfs entries corresponding to the flash drive are simply missing, same for the sysfs where i would expect the USB device listed.
-Replugging the USB flash drive during initrd does seem to fix that, but is tedious and not viable for a server.
-Similarly, booting from m.2 SSD attached via PCIe fails the same way, with rootfs timing out despite the bootloader correctly reading initrd on the same drive.
-Fwiw, replugging the SSD does not work like it does for USB flash drives, and is even worse of an idea.
-USB 2 ports as well as SD card boots correctly, even without your patch.
-Without your patch, i am seeing "deferred probe pending" in dmesg before boot gets stuck, which was the hint which made me find your patch.
-I am not sure whether that is the actual cause or just a symptom for why drives are not recognized during boot, and am not quite sure how to debug this further.
+Here is the summary with links:
+  - [net-next,1/3] net: stmmac: rk: fix missing reset_control_put()
+    https://git.kernel.org/netdev/net-next/c/1c249fc1e19e
+  - [net-next,2/3] net: stmmac: rk: add GMAC_CLK_xx constants, simplify RGMII definitions
+    https://git.kernel.org/netdev/net-next/c/f7aaa6fb1193
+  - [net-next,3/3] net: stmmac: rk: add SoC specific ->init() method
+    https://git.kernel.org/netdev/net-next/c/1639ba67bfb5
 
-> To optimize boot time, this commit allows asynchronous probing.
-> This change enables the PCIe link establishment to occur in the
-> background while other devices are being probed.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-With this patch, booting from SSD or USB 3 port works flawlessly, and i have not seen any regressions with SD card or USB 2 boot, nor any other hardware component.
-This setup has worked for multiple boots without fail, both with traditional ext4 and zfs rootfs being loaded from USB 3 and PCIe.
-Because i require this patch to run my rock 5c from SSD, i am currently running a custom patched kernel, but would highly appreciate this patch making its way to mainline eventually.
-There might well be something else going on here. The proposed patch may not be the "proper" fix to the issues i am seeing, but it does at least work.
 
-I have NOT tested boot from eMMC (either with or without this patch), though i have no reason to believe it would be impacted.
-
-I am happy to provide more info as needed. First time posting to the LKML, i hope i am doing this right...
-
-Tested-by: Grimmauld <grimmauld@grimmauld.de>
-
-Regards,
-Grimmauld
 
 _______________________________________________
 Linux-rockchip mailing list
