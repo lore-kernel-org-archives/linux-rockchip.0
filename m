@@ -4,102 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610A7D7977D
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Jan 2026 16:36:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FA6DE7C6E8
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Jan 2026 20:27:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YYEtgXnzF5YfO4Et8vlZetmmokx5/fycHgOGT+kGeXY=; b=VHvEEQ2NI1bDyt
-	LkdZt4EQacQn0dtg5dzuSDJw6unQf3BYk1QUiV7pt1ONl4P8iW75J1dbWtR4kVo1hCq2XEZcBglUa
-	+oEAlsztRznhYgxdWBa5B/DSu9eQk3QruPDIsxC5Cw1miJzH7WTZ4RuUMfvCkvvPbWNKuAHXomIYa
-	6k5Mbyi0/ql4zQvhfMT26vLim9Cmg7NClTPHZ/hUYjnnddkryatazva/QdDSqqfl3Dre4DfD4tR9m
-	3uw3Fxd+cJGNJlHcG5o7Ddo9TnHYwLJcIvDbJz6SkhRbyWOQvcX8+FSKOgbgCtvD5I4ksV/Fi4vp6
-	ZQbnktWbvxvF9gn79bEA==;
+	List-Owner; bh=fZ/0FF6SKJrAShjCf8oUaCTSvS3PR0AUM22/WNXWE4U=; b=VdTYMZt6a8i3GN
+	s6drBk10FnUMe3qF1EOMqAThsC3cB/uR0dpUuoSNSn9moKCTh7FKwbnLRsWAiHWAPmS58DlKoW/nt
+	vnV4GBbnvRt7CUM9HFt9m4jwZ0UCW0NUYk8eUs39fUGTeDNZPoidNQH23hZ3uwlz6xhDKFvXtifyo
+	xEUJtYZfpEyIlL056HnUPQomifcCgKXp3cuGA/GmqfYPANuT8yh7snRKHFS6crm4OJta2kvNmzDIN
+	5WmUYp9X6WyNUZQoJIbTXg57TjVuFcLYNxGJeBiVWldq6apXBvJqmrLIfHCVyh+0XrEnxorD+ELhr
+	0L7ti9vJFE1zx+nCKqUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmDxY-00000002ooS-0KoT;
-	Sat, 31 Jan 2026 16:36:32 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1vmHZ4-00000002ym4-3A5V;
+	Sat, 31 Jan 2026 20:27:30 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmDxV-00000002oo5-3Qfm
-	for linux-rockchip@lists.infradead.org;
-	Sat, 31 Jan 2026 16:36:31 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-64d1ef53cf3so3882709a12.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 31 Jan 2026 08:36:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1769877386; cv=none;
-        d=google.com; s=arc-20240605;
-        b=aOnVX69ViHMpgNyRPvrTLzroDIVPfvrCYJSIesI7CiG0wXTfCg29EOpVGyAoZHZLj/
-         JXdIq6amou90HH26aC8H6W7kF1xPtFGZmBoyj3DCHkw/XDLkMqu/mBMzf8n0dyUKCXCG
-         Vh6WgXpcKGVLUaeXwti5gl5NhReYvcWwVkqqnhfCEFhYk+9O1mQyKK2+RJfnc2yqdUNF
-         JsyGVTtFIjcmdUz0X1h2qozCjawnbCtoPQntHyUf+vRVNjQp+h+ZdDijiVjcL4fpLHKw
-         dRBP5XD49lXprL+qZnX54PkH0yIAV56dLxntmM2t8kZ2r2flo+cNSZVWVnhflcf8LcMG
-         g23A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=JnoW4al0mNbaBdedUE9Qyqhu6YNYU462VTLyz16vIq8=;
-        fh=GgN72ksa4Y2sB+6AZn9QIrgkArC7+Cwy1QJxxdp4ScE=;
-        b=Do/jAEjbBd1jyez8mcRun5r08wyBj7TCJo3bFZt4kFA7SYjGo/y3pEGV+DssoG6zh1
-         0C6LEM27B5RKfKKB7Ozwh04PEpRk1pILI+RtbTNbhmmsRU1LePzwYyszcuL4H3onW7BH
-         9mYemTqoxhP/QCO+crxisZUdsSyjUnnCu/oJcjqoKx9EdVXBsrXbnonaMcAJQe2I09aR
-         TC3bb0dwjpnwwTkuwqZN9y+nLAkdDJ3rp47eF/Cws17FTngq1Deifb/tleS4nF8LphTe
-         iV6zaXxZlnJX4G4Ql+ezXiLMH5Br/2bUao1BruU8UCAgMXYWdOBVlaobhOfpm7E/7B9I
-         w6dA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1769877386; x=1770482186; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=JnoW4al0mNbaBdedUE9Qyqhu6YNYU462VTLyz16vIq8=;
-        b=OWxPuG0jJ0sQP5woOa5lYKpDuxb4OlOkMvDa4S3yqBazb3OUrTelPsYYMWCfUJM6rz
-         qKVBAo22xolh/NiitrxPCo81J91lGWfhnYXNh0VPI6i7s8SkA2Mx9fmMpfGlurQ/6T2/
-         0/CmOQJRahKez6n6VYpEGWn58xAGWOlhKlkQttNbhlb00cpCIhUiAgWHKYxtd2yEYIfD
-         xePNnfKG+Hx8Fg1NBAxsb+36TOVKZoMEPCKXi4CM7MQ9B0tAnIpyyQkZ7bBCDvNkfApH
-         hYz/xU5Bnu+8AfmnwCQlHwOY024eRAU3nOlQMhzk5jtzD/VT2sT98bnvwTquM1tYysx7
-         V5zA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1769877386; x=1770482186;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=JnoW4al0mNbaBdedUE9Qyqhu6YNYU462VTLyz16vIq8=;
-        b=QXnIaBQMnsNXNKoi6E4MCohCp6fULnlSX5pxjwtcChYGckQQ1Q3FF6yxobeLkmvJFp
-         H9F5IJgmMKWhkr63WFhMr+x6AdE7tR9BjaBv7bP5ce0jlB9rnulMm4igNPLNTHlQ9CNh
-         w/iemMc6j4U3sAJhoO9alxkEdw/gv6QeXLeJ4UwLaT6VoGhyMePpG7g2tBXOP7Y3vciq
-         IZiCSrWeRIjj17DIzQ8aihyvbJ4yIM5WDU5h3ZQ6DjUFcTYmwGsR8DGTeQ3gOjfA7w5J
-         Fi51ynIivVaMWEuGDTV4bPup04Ci873qg+nfx+TtZmx59iXVujVIV6O06sTFLXJNYYdU
-         pinA==
-X-Gm-Message-State: AOJu0YyacU765JkiRd1r4wZNp6IUECYI5leK1bVMP281ULf4V0GYe2VC
-	VDigkmFuZJ02oBJOq7jIFmqHJtOD8lGo4b8tOXQ44KcgInV4vvXOd2r6bydTnZFppbL1Yu/HZ4G
-	3P/YvRvyNZN/Hf3kMxMjppSMFJN+k0rM=
-X-Gm-Gg: AZuq6aJS8ptNrk+6UqFBuq2NSwSNof3+8bLQCd9Baz76/ct35x+KszVJFWkTbinSpOS
-	Ncp2LXZUe1w8g07q+vA84vDLYRGYeWGCKi3STfz/CpCxFLa/3JNF95G3SzEcnBX78LaQwx+Rm6H
-	HF6Pey6NWML+m3SYta3pHKa/l1KLP/lPjgqxMv/cAou8q0LOinPlu0d+OBw/er+6ntE8UsoShG2
-	Ys4jfFJZl1GLNvFLHSE729d066HKpcIscSMFeHXjZ3GZOUwo9vuq1xu6O1zJIsK888=
-X-Received: by 2002:a05:6402:2102:b0:658:177a:292 with SMTP id
- 4fb4d7f45d1cf-658de591688mr4030908a12.17.1769877386201; Sat, 31 Jan 2026
- 08:36:26 -0800 (PST)
+	id 1vmHYz-00000002ykf-2Ck3;
+	Sat, 31 Jan 2026 20:27:27 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 855EA41C15;
+	Sat, 31 Jan 2026 21:27:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1769891239; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=rGwHSkJZn2IHtl0VYuWdb593LJsaVvLLi0zc9pE7w4M=;
+	b=ZyqFDnDImliBIsUp4VykZflufnaQHVYRGy/rqwfzoKWPcQyhQFcSnPflhjZRJQFnKhJacu
+	YSOLR8EPflWQM7jcPniJUdaj7UMm6vNDrDJHz/s3u/9gD2tKGa9S1tpKiHjUEqt/sIiAGc
+	Eebkdhib4q0FS0TWnpHeZPjo3nopjTtje9Bzuv+AmWyLHiAwO01X9GHI08Wmb0g08NszXB
+	DF7WGRS5R6EVu4AVK5HO/BpM8jlCD3VuoSECH7ce670CtP9oZQLKL7ppkPrzhbAAwtWEjl
+	wau7sAQs0r+72mhm+aTXwXN6xJmZDU3P2qe3gxD4pMOX7AHSp31pRMVUTOXbrw==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <20260131153106.31723-4-jerrysteve1101@gmail.com>
+References: <20260131153106.31723-1-jerrysteve1101@gmail.com> <20260131153106.31723-4-jerrysteve1101@gmail.com>
+Date: Sat, 31 Jan 2026 21:27:13 +0100
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, alchark@gmail.com
+To: "Jun Yan" <jerrysteve1101@gmail.com>
 MIME-Version: 1.0
-References: <20260130163102.51757-1-macroalpha82@gmail.com>
-In-Reply-To: <20260130163102.51757-1-macroalpha82@gmail.com>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Sat, 31 Jan 2026 22:06:20 +0530
-X-Gm-Features: AZwV_QjchRCrYC_yJttjWPkEMkaWqVB5nZ0R-eksHarV0kTlv1jyKo_0fSMWdDU
-Message-ID: <CANAwSgRB7KfkBeniXypjS+p5U4=WfXpZyE5pk8vyMVQGX+Ev7w@mail.gmail.com>
-Subject: Re: [PATCH V2] pmdomain: rockchip: quiet regulator error on -EPROBE_DEFER
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
-	jonas@kwiboo.se, pgwipeout@gmail.com, finley.xiao@rock-chips.com, 
-	kever.yang@rock-chips.com, shawn.lin@rock-chips.com, 
-	sebastian.reichel@collabora.com, heiko@sntech.de, ulf.hansson@linaro.org, 
-	Chris Morgan <macromorgan@hotmail.com>, Diederik de Haas <diederik@cknow-tech.com>
+Message-ID: <d2005c66-536c-8c0c-658a-fb6ed7b5f3c6@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH 3/3] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= Add OneThing Edge Cube series
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260131_083629_881832_99EDB999 
-X-CRM114-Status: GOOD (  20.10  )
+X-CRM114-CacheID: sfid-20260131_122725_931594_C34156A0 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,58 +68,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+Hello Jun,
 
-On Fri, 30 Jan 2026 at 22:03, Chris Morgan <macroalpha82@gmail.com> wrote:
->
-> From: Chris Morgan <macromorgan@hotmail.com>
->
-> Change the dev_err() to dev_err_probe() under rockchip_pd_power_on()
-> to prevent errors early in the boot process when the requested
-> regulator is not yet available. This converts errors like the following
-> to debug messages:
->
-> rockchip-pm-domain fd8d8000.power-management:power-controller: Failed to enable supply: -517
->
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-Reviewed-by: Anand Moon <linux.amoon@gmail.com>
+Please, see a quick remark below, for now.
 
-Thanks
--Anand
+On Saturday, January 31, 2026 16:31 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
+> The OneThing Edge Cube (OEC) series features the RK3566 SoC, 8GB
+> eMMC storage, and supports one SATA interface, one Gigabit Ethernet
+> port, and one USB 3.0 port.
+> 
+> Other than the difference in RAM capacity, the OEC and OEC-turbo are
+> identical in all other specifications.
+> 
+>   Specification:
+>     - Rockchip RK3566
+>     - LPDDR4X 2GB (OEC) / 4GB (OEC-turbo)
+>     - eMMC 8GB
+>     - Gigabit Ethernet port x 1
+>     - USB 3.0 port x 1
+>     - USB-C 2.0 port x 1
+>     - 12V DC Power supply
+>     - SATA 3.0 connector x 1
+> 
+> Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
 > ---
-> Changes since v1:
->  - Simplified return to single line
-> ---
->  drivers/pmdomain/rockchip/pm-domains.c | 7 +++----
->  1 file changed, 3 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index 997e93c12951..6d3fb18f4ab3 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -705,10 +705,9 @@ static int rockchip_pd_power_on(struct generic_pm_domain *domain)
->         int ret;
->
->         ret = rockchip_pd_regulator_enable(pd);
-> -       if (ret) {
-> -               dev_err(pd->pmu->dev, "Failed to enable supply: %d\n", ret);
-> -               return ret;
-> -       }
-> +       if (ret)
-> +               return dev_err_probe(pd->pmu->dev, ret,
-> +                                    "Failed to enable supply: %d\n", ret);
->
->         ret = rockchip_pd_power(pd, true);
->         if (ret)
-> --
-> 2.43.0
->
->
-> _______________________________________________
-> Linux-rockchip mailing list
-> Linux-rockchip@lists.infradead.org
-> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+>  arch/arm64/boot/dts/rockchip/Makefile         |   2 +
+>  .../rockchip/rk3566-onething-oec-turbo.dts    |  10 +
+>  .../boot/dts/rockchip/rk3566-onething-oec.dts |  10 +
+>  .../dts/rockchip/rk3566-onething-oec.dtsi     | 309 ++++++++++++++++++
+>  4 files changed, 331 insertions(+)
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec-turbo.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec.dts
+>  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec.dtsi
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> index 4d384f153c13..ec57719e4573 100644
+> --- a/arch/arm64/boot/dts/rockchip/Makefile
+> +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> @@ -104,6 +104,8 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353v.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353vs.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-odroid-m1s.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-onething-oec.dtb
+> +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-onething-oec-turbo.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v1.1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v2.1.dtb
+>  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-turbo.dts b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-turbo.dts
+> new file mode 100644
+> index 000000000000..16d0cd0cf577
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-turbo.dts
+> @@ -0,0 +1,10 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3566-onething-oec.dtsi"
+> +
+> +/ {
+> +	model = "OneThing OEC-turbo";
+> +	compatible = "onething,oec-turbo", "rockchip,rk3566";
+> +};
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3566-onething-oec.dts b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec.dts
+> new file mode 100644
+> index 000000000000..81da771ad63d
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec.dts
+> @@ -0,0 +1,10 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +
+> +/dts-v1/;
+> +
+> +#include "rk3566-onething-oec.dtsi"
+> +
+> +/ {
+> +	model = "OneThing OEC";
+> +	compatible = "onething,oec", "rockchip,rk3566";
+> +};
+
+The only difference between the two OneThing OEC board variants is, as
+far as I can tell, the amount of LPDDR4X DRAM they have, so I don't think
+it's justified to have two separate board dts files that descend from the
+common dtsi ancestor.
+
+Having different amounts of DRAM on the same board design is present on
+virtually all boards from other manufacturers, and some kind of special
+DT treatment is needed only in some special cases, such as when different
+types of DRAM are used for different capacities.
+
+The different naming of the two board variants could be solved by having
+something like this is the single board dts file:
+
+  model = "OneThing OEC/OEC-turbo";
+
+Having two separate board dts files only makes it harder down the road,
+such as having to build and provide two separate U-Boot builds, with no
+real benefits.  Every user can run free(1) to check the amount of available
+DRAM on their board, which also tells them the board variant.
+
 
 _______________________________________________
 Linux-rockchip mailing list
