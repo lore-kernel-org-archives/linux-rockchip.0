@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C256DD79767
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Jan 2026 12:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D5FD79769
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Jan 2026 12:51:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:From:To:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EFtQ5eXh2BeiYuISsQ/+JMe6uvUm5ThCgFtmnoURLrY=; b=aDETLmloN03SuL
-	fBCnAUWcr2luq0/Jb5HDZK6mPEbPEqYFAjbOBj3+QulxQKKOPoUO7zkm/s4i6V1ZnmLfMjcvMCCEZ
-	1Yb1jccP16eGgtQ89Dg7Fx4J/2L3PLY2mtrIIspLmiXXGhcPp653F23jVGtzqFk0fdZgeB34Fs3WW
-	/f25vLPYlheo3lJXvtlhalm8wYxyGd+Qm35cs+ztPczeA3M0PdhhHl85tftR8vuXDEgfVVeIbcnU2
-	OXaWxFMON+IvYo29wVljkbiCUX0Vx/vTDP5H43vuZCXgxC9DuRuN6wE230Psy7sQz4QaZAbQK9il5
-	Gr32BR0RThvy2LEYdzxA==;
+	List-Owner; bh=Y5Dp7+3zBrobfh3VEiy5EJUW+3QrGAT0LSWQzpEhFwM=; b=wf6tBcFRGsau8Q
+	gQvwloHvMvtbVi4qa1dU4GfbYgR9sCGRQp+2CikIHVdTt5xhLk69bHnqA0eDWrzlzBDMFCLybDtpr
+	Ky51k1n7eGA4dtLYAS/DTVb5yTYRvxmvCujAi9Ih/kHDW2frTWiAS2hmzInPZlnkCgwQmCqg3BdFs
+	cSUUXR35W+L//t9o3r/JKwxz0xzQUPLGTwZ4dIe9teG5wBKf1FkXwaZiEh4+fDBwID6zkOjXC0/8x
+	9sPA1rAJ7KIbGsb0LiKauJwHz9uh7Ly5WP/UCs271e3l2Y96fC9ItNMtBcgVIc4GRKUU+QLK/e/5s
+	IMbKsqK7DV3kQ0gPfk9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmAAp-00000002ZnO-1tmW;
-	Sat, 31 Jan 2026 12:33:59 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1vmARf-00000002aKB-1Umn;
+	Sat, 31 Jan 2026 12:51:23 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmAAk-00000002ZmV-0lCo;
-	Sat, 31 Jan 2026 12:33:57 +0000
+	id 1vmARb-00000002aJZ-3wdm
+	for linux-rockchip@lists.infradead.org;
+	Sat, 31 Jan 2026 12:51:21 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id E4BD5C22F7C;
-	Sat, 31 Jan 2026 12:33:51 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id ADA744E42385;
+	Sat, 31 Jan 2026 12:51:16 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id EBC92606B6;
-	Sat, 31 Jan 2026 12:33:47 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 2DA53119A8886;
-	Sat, 31 Jan 2026 13:33:30 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 62646606B6;
+	Sat, 31 Jan 2026 12:51:16 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 35E56119A8886;
+	Sat, 31 Jan 2026 13:51:01 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1769862826; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1769863874; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=o1FArTjWb5fHnMv+cvCRxPx2Pce2+vtnbqLuhuuwGV4=;
-	b=oqTZJV0hSg/2X16nn9r8HEyNeDGFLcFLjeWYysi+mRl3B8Uj0JW9fvJs4Pxa4SClyr2qbA
-	ZQamRMUOLc7fAbjdchR/x04C2usO+abkffytpKYafkpjibIF1pJftgtdM9kZKNhgQWW+he
-	Qen3cNjQnXdCBvQixpQSw1Ina3DIgbzxdLPAVQB92wUkKnPYOXDdb5pSVOfSG8U1+7sEPT
-	TWjulhUlCGohNKQW8tAuhKiE+ww/5LNHvq8zRIVOMPOALjdXHIlWH0t2U92M+uIGCxbG8f
-	R5Uj2RBFaitVU2ZkJIq++Kvw1YgbCYmFH60kAjMd7q8SIjUMcalagEoEEfDdYw==
+	bh=/lxexy1NRGnGkNwTh+ZH9C7Afn1tu/sVb3g8M/zCZEQ=;
+	b=xUz4nJ3SqjGSb47/RdZbD7Mz4iocZu5Lg7WWrLX+Q3XjVIFvvhEyp/qZle3m+2QW+oTtkk
+	basmI5anMTEXc8TeVJSa7L+5cEIPDYB+Ahou91ptDdsT67GEcF/pyI1ogFHPEQVKO9HWaP
+	3M7vzhz1wVR1lbwQsrieEA2GjG0S0DJ7kPdxNIB7mmOVKhLpIrWbFvHGBVRexKSkV2EoVy
+	wvdeSCDukaZRYEZ/Z0r27A5wQWaX9jOq6N8+rNWHE59XfSqQTo1QLcUZjoQcbmcYDhSuTB
+	+r83Re64f6lxJ1tj8TXY8V7ROzULO4dxPEsrW6lQzc3mTI7rgSIyl2e/EifVOw==
 Mime-Version: 1.0
-Date: Sat, 31 Jan 2026 13:33:29 +0100
-Message-Id: <DG2S064XPGXL.1MQDAKWZEK50K@bootlin.com>
-Subject: Re: [PATCH v8 05/18] drm/bridge: Move legacy bridge driver out of
- imx directory for multi-platform use
+Date: Sat, 31 Jan 2026 13:50:59 +0100
+Message-Id: <DG2SDKH3BPGG.1IIH4ZHVY4M69@bootlin.com>
 Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
  <jernej.skrabec@gmail.com>, <maarten.lankhorst@linux.intel.com>,
  <mripard@kernel.org>, <tzimmermann@suse.de>, <airlied@gmail.com>,
@@ -65,14 +64,17 @@ Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
 To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
  <neil.armstrong@linaro.org>, <rfoss@kernel.org>
 From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v8 03/18] drm/bridge: analogix_dp: Move
+ &drm_bridge_funcs.mode_set to &drm_bridge_funcs.atomic_enable
 X-Mailer: aerc 0.20.1
 References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
- <20251217093321.3108939-6-damon.ding@rock-chips.com>
-In-Reply-To: <20251217093321.3108939-6-damon.ding@rock-chips.com>
+ <20251217093321.3108939-4-damon.ding@rock-chips.com>
+In-Reply-To: <20251217093321.3108939-4-damon.ding@rock-chips.com>
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260131_043355_273778_7C07C506 
-X-CRM114-Status: GOOD (  14.29  )
+X-CRM114-CacheID: sfid-20260131_045120_121689_832620BE 
+X-CRM114-Status: UNSURE (   5.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,51 +91,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Damon, Dmitry,
-
 On Wed Dec 17, 2025 at 10:33 AM CET, Damon Ding wrote:
-> As suggested by Dmitry, the DRM legacy bridge driver can be pulled
-> out of imx/ subdir for multi-platform use. The driver is also renamed
-> to make it more generic and suitable for platforms other than i.MX.
+> According to the include/drm/drm_bridge.h, the callback
+> &drm_bridge_funcs.mode_set is deprecated and it should be better to
+> include the mode setting in the &drm_bridge_funcs.atomic_enable instead.
 >
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 > Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
->
-> ---
->
-> Changes in v7:
-> - Rename legacy-bridge to of-display-mode-bridge.
-> - Remove unnecessary API drm_bridge_is_legacy().
 
-...
-
-> --- a/drivers/gpu/drm/bridge/Kconfig
-> +++ b/drivers/gpu/drm/bridge/Kconfig
-> @@ -244,6 +244,16 @@ config DRM_NXP_PTN3460
->  	help
->  	  NXP PTN3460 eDP-LVDS bridge chip driver.
->
-> +config DRM_OF_DISPLAY_MODE_BRIDGE
-> +	tristate
-> +	depends on DRM_BRIDGE && OF
-> +	help
-> +	  This is a DRM bridge implementation that uses of_get_drm_display_mode
-> +	  to acquire display mode.
-> +
-> +	  Newer designs should not use this bridge and should use proper panel
-> +	  driver instead.
-
-"Newer designs should not use this bridge", but in patch 8 you are
-introducing a new use ot devm_drm_of_display_mode_bridge(). Shouldn't you
-instead "use proper panel driver instead" in patch 8?
-
-Can you point to the conversation where the converstaion where Dmitry
-suggested this change? Maybe it already contains the answer to my
-qustion. Also adding a link to that conversation in the commit message
-woule be useful.
-
-Luca
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 --
 Luca Ceresoli, Bootlin
