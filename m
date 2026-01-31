@@ -4,71 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA24BD79741
-	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Jan 2026 06:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 340ECD79761
+	for <linux-rockchip@archiver.kernel.org>; Sat, 31 Jan 2026 08:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w9WdWaAAdeOsB1iVwogUfu6TeKgaVmsHvvyzULX9efA=; b=ElG0oh6N6x0Zbj
-	usl8VAbXWc2d9S5bMp5Ce3zOoNCO8R2kScN+KspiywYwbXFawUjGVYduQH72hehR+fYQboTEyinlB
-	D/0h/UTg82ksqJRKMLePfxNvvbzGcqFuM9xUJTM09AaLMUeWAo5j5NSng6+cHQGCTMXmAdvHdepAi
-	G8tNPLktm9yzQMVI85ELqHPPZy172dyynorcQW8QryoAcTIV1PLPf0fe6KX2pedAwYuf25VhNlgvH
-	QzVX0HhYzCncI0Oep9ADqgRxBV0ff3ugTq+J7CZTFOEEPoYxStshKifzasYlAIW7GmGrz4QriErnA
-	CuXxhYfPkpXjQe52AB0g==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1r44yaYKL/3Gq20iX+5AlaNhnNkXfLaxHqzMHAh8HGQ=; b=m+wJuucXy0TTGD
+	KepmO06dwCIX60uM7wbOq1jh5LkIAzmoB6CV1VNT48ZqG3ucxn0HXvAAGavuBmZnSlj891IvPRfiy
+	Al39lqPFTpW6R8O87tJfF2Mn+oxBsNZka6B4btZSCzJg9kMVn4iIoCR38sIL0ERmkg3PLZeVOZm3L
+	uDpK2gVPtW+nvqXUxTfro2o/+uFIi+oU6wbUl/vNxim76BOWVzkEYs+2g0m8re/o9tW7evOlGsSgR
+	DENhABTYc4NDhZwiKyP32I/vbYEQdjXVQlvhpOy11pETFiz21G52AgDcLzT8vPI4PnwPBdUaUSYD5
+	IdyRsXoYKaU3jtA4FyAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vm4RC-00000002MQG-2R0p;
-	Sat, 31 Jan 2026 06:26:30 +0000
-Received: from mail-m19731119.qiye.163.com ([220.197.31.119])
+	id 1vm68k-00000002PZg-3ZLZ;
+	Sat, 31 Jan 2026 08:15:36 +0000
+Received: from smtpbgau1.qq.com ([54.206.16.166])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vm4R9-00000002MPk-10T0;
-	Sat, 31 Jan 2026 06:26:29 +0000
-Received: from [127.0.0.1] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 32a366f45;
-	Sat, 31 Jan 2026 14:26:14 +0800 (GMT+08:00)
-Message-ID: <d552639a-331e-436d-8baf-62546253aa62@rock-chips.com>
-Date: Sat, 31 Jan 2026 14:26:05 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] arm64: dts: rockchip: Change gmac phy-mode to
- rgmii-id for rk3576 evb1
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Andrew Lunn <andrew@lunn.ch>
-Cc: Chaoyi Chen <kernel@airkyi.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Alexey Charkov <alchark@gmail.com>, Shawn Lin <shawn.lin@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Stephen Chen <stephen@radxa.com>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260121031548.402-1-kernel@airkyi.com>
- <20260121031548.402-2-kernel@airkyi.com>
- <b87d0c82-b8b7-4e14-85c3-c4ba88aa4000@lunn.ch>
- <81D509A8F65F0243+c7b58aef-95a4-4f2a-a423-7e8b2c0bbeab@airkyi.com>
- <55c9b522-e43d-4df3-9f7a-3f2976b72854@lunn.ch>
- <f5e79cfe-6ea3-44c5-bb86-41cccef1401f@rock-chips.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <f5e79cfe-6ea3-44c5-bb86-41cccef1401f@rock-chips.com>
-X-HM-Tid: 0a9c12bb0e0403abkunme89cdd3e6e3494
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0tLGFZOGkMfSU1OShgYTEtWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpOTE
-	9VSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=fPmlXqpYaif+Alwx00473YixZd4FG1mKGYUX0cT/qaI8GyodiABrpI65MUYvdc7WDSRBI+E9+twWsYX0iXCBU4kQRIFA1hKnBG+Eo4cruwJXzniNEii4oKN3HJbUNhlcXo0+bXg9DCU8D8l8cb/uygMBWfJzuU6B4eN6LILi7w0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=s0+sAGqB2yhj2oDmerbSlM2FR61cb3QdCFDcKvvINYo=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vm68i-00000002PXv-1MR9;
+	Sat, 31 Jan 2026 08:15:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1769847301;
+	bh=E+EsTuEHR174ouDai6pNiVFrO9AkbuLjvnwAftkox8M=;
+	h=From:To:Subject:Date:Message-Id;
+	b=nPCQ8KhyO2R7u/A8MZBV9XNgrHsHk35HVHY1qU/bKp07FJGdjr+QvD9Lw75f17/qQ
+	 5eQ0ptOUbvl5Gc4mkneb1P/DDltgS0FGUg5+Cd1JBpcEs1gcRAGG743JA93PX207TZ
+	 i/Hs2cudHZPhlrbNJ8wmwA2kY/r7vAFFLSCE/Ef0=
+X-QQ-mid: zesmtpsz2t1769847293t4e1f5b86
+X-QQ-Originating-IP: 0sgqZlXrDgZhvFh1jB4WEJqQhQYA8i7Qa4ClPeX9O+g=
+Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Sat, 31 Jan 2026 16:14:49 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 9155805342981546293
+EX-QQ-RecipientCnt: 22
+From: Chaoyi Chen <kernel@airkyi.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Hsun Lai <i@chainsx.cn>,
+	John Clark <inindev@gmail.com>,
+	Jimmy Hon <honyuenkwun@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Michael Riesch <michael.riesch@collabora.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Andrew Lunn <andrew@lunn.ch>
+Cc: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v5 0/2] arm64: dts: rockchip: Add rk3576 evb2 board
+Date: Sat, 31 Jan 2026 16:14:36 +0800
+Message-Id: <20260131081438.100-1-kernel@airkyi.com>
+X-Mailer: git-send-email 2.17.1
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: OXI3+eQbSeaRuvBfanxfX0KjpDdGTDhCFZoh+vWVCigc/c5dbU0Y/qOq
+	/L7ZJCQ5XSyFlfXRwkxx3XOI7mgHtcDLlQF3LlFqa6hM2JYounrxCjlMGbyWEIeeDvYgWNo
+	Gzx3q/z32DRbhgOndROx5dK2O+SWirh2sdA1ao58uleoI29my4QqWh5IKHePewEMOIQR6Mg
+	bv5tmYaIhXDuYsqcErzIa+27ktAlktrF5XmwwXsNoiKVKGzlQ70A3wSE14rEAJFsSJfd48E
+	sXfUEMFY8fMgcalqUNdkIu/NI7GZYfftDuwfIR/dtEEQGxjOILXfN0RRNc001hnlsKRcF2L
+	cwzyOWCOWLnxMsWGK8yyJ20nJwrZRqgNBfx9enbZqdpa3vwzHvkowgsHR+vqBkNpRz+zNgl
+	GiaSpUfn3vpLE2ZqKY2wUlde1c9FnmleDnx4/YfyqjF/NvMN5ipWAxSKe8rSu8Ec76plM0V
+	8G2OoNFxyYkNe4SZUQC6QFeENjLrvOdZmLH/ML5YxboBbutuR3X2uete7MtTBajZQkywE3j
+	jWBUjlObmlOc96AfoTYa+scJymz3hiBH3fqwnV7JYFlK0Q2PrzYZF1phxV+edPUJJyM4Tr7
+	kYpujyZnctmPkx9xQoMndzNZxXl7mlx+xegKCAWVeLLrJkH49jcXi3Y8b2xhpFHiU7gq4z0
+	sB/8dRwnlcyrsPwVT6+32A8K8dHHniJt7Ff6PvFeZgFzTe/nPGGLXlrOz6AR0PWDF9U/DJ5
+	tla2Kh8mRwjokI0nXSJ+IRq2M7xH731bCrmvt+GdK8Z+LB21PXoOebErFInKpULiBZrLoio
+	FuNOYm1SDLlAcf0Rv1UfTb0OGSmcyZdYkRnKre39MD+d3bBRIiuun3pdmvk0OFqGg98a6mK
+	DOPW4owNGWBEtpre+8vr6j6kFfP5psjBApAsaqlKOJKReizO89aTA3xPD5wiVeuprnYcw18
+	aDF3k7Dz6L+RtBK8/PtecoqGyvM1LCl+6pFi+ftnCt7cNDr+CHA5SOwM3iIKboSaqwDcu7x
+	uJBTv1VUglJvrg7CZU9zV+/uzggBiuap8xJLLxlznYgpkh+ZNZ
+X-QQ-XMRINFO: OWPUhxQsoeAVwkVaQIEGSKwwgKCxK/fD5g==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260130_222627_969295_75837398 
-X-CRM114-Status: GOOD (  15.63  )
+X-CRM114-CacheID: sfid-20260131_001532_750275_249E63B8 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,65 +103,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 1/22/2026 11:16 AM, Chaoyi Chen wrote:
-> Hi Andrew,
-> 
-> On 1/22/2026 10:40 AM, Andrew Lunn wrote:
->> On Thu, Jan 22, 2026 at 09:38:17AM +0800, Chaoyi Chen wrote:
->>> Hi Andrew,
->>>
->>> On 1/21/2026 8:55 PM, Andrew Lunn wrote:
->>>>> @@ -721,6 +719,7 @@ rgmii_phy0: ethernet-phy@1 {
->>>>>  		reset-assert-us = <20000>;
->>>>>  		reset-deassert-us = <100000>;
->>>>>  		reset-gpios = <&gpio2 RK_PB5 GPIO_ACTIVE_LOW>;
->>>>> +		tx-internal-delay-ps = <1950>;
->>>>
->>>> The PHY should add 2000ps, as required by the RGMII standard. The
->>>> difference is so small there is no need for tx-internal-delay.
->>>>
->>>
->>> Thank you for the clarification. I chose 1950 here because I find that
->>> the MotorComm yt8xxx Ethernet PHY binding only offer the options of 
->>> 1950 or 2100. 
->>>
->>>> In most cases, 'rmgii-id' should be sufficient, unless the PCB is
->>>> badly designed.
->>>>
->>>
->>> I suspect the ROCK 4D board might be an exception. Sebastian once
->>> reported that it wouldn't work properly under "rgmii-id". Well, I'm
->>> not sure what strategy to adopt in this case.
->>
->> Please check the report. And also, check what the PHY is doing for
->> delays if you don't specify the property. Is it defaulting to near
->> 2000ps?
->>
-> 
-> It is RTL8211F PHY. The origin report is here:
-> 
-> https://lore.kernel.org/all/20250724-rk3576-rock4d-phy-timings-v1-1-1cdce2b4aca4@kernel.org/
-> 
-> The RTL8211F binding doesn't provide any indication of the default
-> delay value. I'll checking datasheet to see if it's mentioned there.
-> 
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-If "rgmii-id" is set, the RTL8211F driver adds the 2ns delay:
+Hi,
 
-[0] https://elixir.bootlin.com/linux/v6.19-rc5/source/drivers/net/phy/realtek/realtek_main.c#L602
+This series add support for rk3576 evb2 board.
 
-Sebastian, could you try testing how much extra delay the GMAC still
-needs to add for the ROCK4D to work correctly, assuming the PHY
-already has a 2 ns delay when "rgmii-id" is set?
+General features for rk3576 evb2 board:
+    - Rockchip RK3576
+    - LPDDR4/4X
+    - eMMC5.1
+    - RK806-2x2pcs + DiscretePower
+    - 1x HDMI2.1 TX / HDMI2.0 RX
+    - 1x full size DP1.4 TX (Only 2 Lanes)
+    - 2x 10/100/1000M Ethernet
+    - 5x SATA3.0 7Pin Slot
+    - 2x USB3.2 Gen1 Host
+    - 3x USB2.0 Host
+    - WIFI/BT
+    - ...
+
+To make the USB hub work, the additional patch from usb-next is required:
+
+[0] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git/commit/?h=usb-next&id=00fcc9c86a134c488fd857b5460a7925228272c1
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb.git/commit/?h=usb-next&id=fa3bb5011f33cccd246072954e64d64483d0d774
+
+Changes in v5:
+- Link to v4: https://lore.kernel.org/all/20260121015357.291-1-kernel@airkyi.com/
+- Remove disable-wp for sdio.
+- Add vmmc-supply for sdmmc.
+- Remove tx-internal-delay-ps for RGMII PHY.
+
+Changes in v4:
+- Link to v3: https://lore.kernel.org/all/20260112022823.91-1-kernel@airkyi.com/
+- Move the USB hub code into a separate patch series, and that series have
+  already been merged into usb-next.
+- Fix supply and reset for usb hub.
+- Add cd-gpios for sdmmc.
+
+Changes in v3:
+- Link to v2: https://lore.kernel.org/all/20260107070322.323-1-kernel@airkyi.com/ 
+- Add binding for WCH CH334/CH335 hub controller.
+- Add alias for mmc.
+- Rename some usb vbus regulator.
+- Add DP regulator.
+- Change gmac phy-mode to rgmii-id.
+- Add target-supply for sata.
+- Change vcc-supply for ufshc.
+- Add usb hub.
+- ...
+
+Changes in v2:
+- Link to v1: https://lore.kernel.org/all/20260104023703.118-1-kernel@airkyi.com/
+- Enable hdmi_sound and sai6.
+- Add more cpu-supply.
+- Use regulator to control sata power.
+- Remove "cap-mmc-highspeed" prop in sdmmc.
+- Add regulator supply for ufshc.
+- Add the missing vcc3v3_hubreset regulator.
+- Add otg capability for usb_drd0_dwc3.
+
+Chaoyi Chen (2):
+  dt-bindings: arm: rockchip: Add rk3576 evb2 board
+  arm64: dts: rockchip: Add rk3576 evb2 board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    4 +-
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../boot/dts/rockchip/rk3576-evb2-v10.dts     | 1020 +++++++++++++++++
+ 3 files changed, 1024 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
 
 -- 
-Best, 
-Chaoyi
+2.51.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
