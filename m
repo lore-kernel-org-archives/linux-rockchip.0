@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAE1AE65298
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE0ABD172A0
 	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Feb 2026 19:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,49 +12,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qKaeqRTmNulz9KsRQ6l8oMpkHmxtGI5ebqSStGNoN8c=; b=q4hRXtrDGYsDMl
-	CRIu4fBLx6cKAlV/Cs140iH97cYuk6tXjWxaDY/j77F9hH4bda7wUiGmAwz02GAgkxnFq/6PuvIvl
-	/Ci03Owr+5Vy6gf1TRyvCIDGcN7hia3/R2uKPLixKrCQ7F5Ib4yeP0lBoez3nBiqEq1Q3KMWzdwH6
-	wZGxjmTfnXswKHgXCDrP+tlJXuoWRY9v1KivCjK0zjEb5UIYLRNXic1co80+RHSrDy4BIIUH6jqGJ
-	zDJN5LRqw+7ZgtEdeW0CdR0kRJUBQIAAoMrrZ0yYdSiPo/NA+EstXtW81dJosksKLcFet0irZNyGF
-	BYIdiI+vgFSiE8s5MxuA==;
+	List-Owner; bh=h3QC0y1yQ5pXWcPybGUOlr2MBxKbRnPWxKooR1LFyNQ=; b=EmNZNrkfmxHiK2
+	rM8XGhteO8shj57nvBk0EOcK2bTo8d6HWBbfl/LWMQdJ36Xx12GKdNCPDoX1ezQc2oOeDn0KW+tp4
+	eIjo9V718dTbeTrYw+2Mczri05ELjvGT7WB9L8wxRWs3llBclXB205aMtlaLgmuH+ALZTkjenHciB
+	KlK5WJ+sVC3KMNUtvw/OMARIvO10/EjrqGwclzpAI7sr0HuCXesqWZHhGeJnJ6Z0l8s0W9l/DN7y/
+	FyE8B3nrxdR7EmyftBSCqbaBY0Vk5v5NNkIoj6CCwGbbdNO5Lw1B4TG+tAt8rwWniN5BRkWt4EArN
+	AuNnEoYOoAfeql4OCQkw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmcxe-000000046i4-1UmP;
-	Sun, 01 Feb 2026 19:18:18 +0000
+	id 1vmcxb-000000046fQ-2uxy;
+	Sun, 01 Feb 2026 19:18:15 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmcxY-000000046dN-1tcL;
-	Sun, 01 Feb 2026 19:18:15 +0000
+	id 1vmcxY-000000046dO-0UPq;
+	Sun, 01 Feb 2026 19:18:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=oY9lKxk5AO/OIHyzqKioV0eS8+fpzb5n8emykS9njJM=; b=jdU90e/IR1JOqav8FIufAT2jmH
-	bWn2KNSIY565PRN8uJXaTZAMrcoFb6QUy12CWtz1I4Bn+6U+/vTWjzN4uL0JlwXEU7dE2e0IJtBZY
-	sqbRErmwenVCxxcH92V52Nf2nYTJaJIQriB+/3Nsi90v0MdJ35fW2yISrk4VPmVlCbW3JC0kBF41J
-	lyk3PjBWT+T+DamODQlHDG0kQmonfWBvF82SOeBNcsXGo3RpAqK6NEMZBDfchhQI49zPSWpZmUx19
-	DOTQpSKKBTI5OIG5wFJTfEOtIB6NMUsv25qonhYhjXQz/fJMyI0Q3+r6n1N7/rUa8/w8pVA7QGJLn
-	v26vCXDw==;
+	bh=hOlTR5Vmhuawmy3xBlNsvMhKofkPnUj5h5KWQYe85lE=; b=DQRjQcSA6GbaVcVDiMp5HWzFPZ
+	g/712uKRX512vYclwmigRxaGnElz9CUo01UMeAJYhSxBRjBxdoT3kDKSKnSq4XTQF3pyZIqVxTfg+
+	KO0DXQ84+HPhZHH/jq24hgxwhwYZb57FD5b4CLBlpGnd40wzGeW1Qbr0VZNLEkw8MMuN136vDVu5h
+	46iEWxfMsQ41dGWTJ2ECPvfixCwbAlqLIMGjaRQ6mYmHzRZGbXKwAdBngB1hKXZ+HfEyYFOxz+n5m
+	w41ct8yiyOU6JtOdeht5kspNcQ7OcGgUb7YN/9Lg3G7XUHZQzot/nB0irWwzEcTc8wfAeCF/4+NqY
+	wMjHVjMw==;
 Received: from [88.128.88.21] (helo=phil.t-mobile.de)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vmcxT-005wWz-3W; Sun, 01 Feb 2026 20:18:07 +0100
+	id 1vmcxT-005wWz-Ha; Sun, 01 Feb 2026 20:18:08 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/4] arm64: dts: rockchip: Add port subnodes to RK356x SATA controllers
-Date: Sun,  1 Feb 2026 20:18:01 +0100
-Message-ID: <20260201191804.41421-2-heiko@sntech.de>
+Subject: [PATCH 3/4] arm64: dts: rockchip: add overlay for qnap-ts233 device revision
+Date: Sun,  1 Feb 2026 20:18:03 +0100
+Message-ID: <20260201191804.41421-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20260201191804.41421-1-heiko@sntech.de>
 References: <20260201191804.41421-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260201_111812_498870_53778D8C 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20260201_111812_218322_CC73AF0C 
+X-CRM114-Status: GOOD (  17.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,77 +71,146 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The SATA controllers on RK356x are identical to the ones found on RK3588,
-but don't yet provide a port sub-node. Per the datasheet the RK356x also
-supports the fbscp capability and has the same queue maximums.
+TS233 devices received a board revision adding gpios for per hard-disk
+presence-detection and power-control. These boards have a PCB-id of at
+least 12 (mainboard) and 11 (backplane), which can be read from an EEPROM.
 
-So add port sub-nodes to both sata controllers on RK356x, and move the
-phy properties to it. Also add phandles to the ports, so that boards can
-add their target-supply when available.
+The presence detection is not really necessary and there are also no
+existing bindings for doing something with it. So add them as gpio hogs
+to at least document them and allow their state to be read from debugfs.
+
+The power-control is modelled as regulators, with the hdd1+hdd2 variants
+connected to the RK3568's SATA controllers as target-supplies.
 
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 27 ++++++++++++++++---
- 1 file changed, 23 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/rockchip/Makefile         |  5 +
+ .../rockchip/rk3568-qnap-ts233-pcb-12-11.dtso | 93 +++++++++++++++++++
+ 2 files changed, 98 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233-pcb-12-11.dtso
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index b84055a77ac5..c6bd051b6a25 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -3,6 +3,7 @@
-  * Copyright (c) 2021 Rockchip Electronics Co., Ltd.
-  */
+diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+index aafffecfb2ef..c5086aa9c427 100644
+--- a/arch/arm64/boot/dts/rockchip/Makefile
++++ b/arch/arm64/boot/dts/rockchip/Makefile
+@@ -144,6 +144,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-nanopi-r5s.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-odroid-m1.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-photonicat.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts233.dtb
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts233-pcb-12-11.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts433.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts433-pcb-12-10.dtbo
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-radxa-e25.dtb
+@@ -246,6 +247,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3399-rockpro64-v2-screen.dtb
+ rk3399-rockpro64-v2-screen-dtbs := rk3399-rockpro64-v2.dtb \
+ 	rk3399-rockpro64-screen.dtbo
  
-+#include <dt-bindings/ata/ahci.h>
- #include <dt-bindings/clock/rk3568-cru.h>
- #include <dt-bindings/interrupt-controller/arm-gic.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-@@ -234,11 +235,20 @@ sata1: sata@fc400000 {
- 			 <&cru CLK_SATA1_RXOOB>;
- 		clock-names = "sata", "pmalive", "rxoob";
- 		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
--		phys = <&combphy1 PHY_TYPE_SATA>;
--		phy-names = "sata-phy";
- 		ports-implemented = <0x1>;
- 		power-domains = <&power RK3568_PD_PIPE>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
- 		status = "disabled";
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts233-pcb-12-11.dtb
++rk3568-qnap-ts233-pcb-12-11-dtbs := rk3568-qnap-ts233.dtb \
++	rk3568-qnap-ts233-pcb-12-11.dtbo
 +
-+		sata1_port0: sata-port@0 {
-+			reg = <0>;
-+			hba-port-cap = <HBA_PORT_FBSCP>;
-+			phys = <&combphy1 PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			snps,rx-ts-max = <32>;
-+			snps,tx-ts-max = <32>;
-+		};
- 	};
- 
- 	sata2: sata@fc800000 {
-@@ -248,11 +258,20 @@ sata2: sata@fc800000 {
- 			 <&cru CLK_SATA2_RXOOB>;
- 		clock-names = "sata", "pmalive", "rxoob";
- 		interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
--		phys = <&combphy2 PHY_TYPE_SATA>;
--		phy-names = "sata-phy";
- 		ports-implemented = <0x1>;
- 		power-domains = <&power RK3568_PD_PIPE>;
-+		#address-cells = <1>;
-+		#size-cells = <0>;
- 		status = "disabled";
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3568-qnap-ts433-pcb-12-10.dtb
+ rk3568-qnap-ts433-pcb-12-10-dtbs := rk3568-qnap-ts433.dtb \
+ 	rk3568-qnap-ts433-pcb-12-10.dtbo
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233-pcb-12-11.dtso b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233-pcb-12-11.dtso
+new file mode 100644
+index 000000000000..c7987171644c
+--- /dev/null
++++ b/arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233-pcb-12-11.dtso
+@@ -0,0 +1,93 @@
++// SPDX-License-Identifier: (GPL-2.0-or-later OR MIT)
++/*
++ * Device tree overlay for TS233 board PCBs-12-11 revision.
++ *
++ * Copyright (C) 2025 Heiko Stuebner <heiko@sntech.de>
++ */
 +
-+		sata2_port0: sata-port@0 {
-+			reg = <0>;
-+			hba-port-cap = <HBA_PORT_FBSCP>;
-+			phys = <&combphy2 PHY_TYPE_SATA>;
-+			phy-names = "sata-phy";
-+			snps,rx-ts-max = <32>;
-+			snps,tx-ts-max = <32>;
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++
++&{/} {
++	/*
++	 * The default hardware-state of this gpio causes the drive
++	 * to be already running when entering the kernel.
++	 * regulator-boot-on is needed to prevent one additional
++	 * power-cycle on the drive.
++	 *
++	 * With regulator-boot-on we get the expected 1 cycle
++	 * per boot, without it we end up with 2 cycles as seen
++	 * via smartctl.
++	 */
++	hdd1_pwr: regulator-hdd1-power {
++		compatible = "regulator-fixed";
++		gpio = <&gpio0 RK_PC2 GPIO_ACTIVE_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&hdd1_power_pin>;
++		regulator-name = "hdd1-power";
++		regulator-boot-on;
++		vin-supply = <&dc_12v>;
++	};
++
++	hdd2_pwr: regulator-hdd2-power {
++		compatible = "regulator-fixed";
++		gpio = <&gpio0 RK_PC3 GPIO_ACTIVE_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&hdd2_power_pin>;
++		regulator-name = "hdd2-power";
++		regulator-boot-on;
++		vin-supply = <&dc_12v>;
++	};
++};
++
++&gpio2 {
++	hdd1-present-hog {
++		gpios = <RK_PA2 GPIO_ACTIVE_LOW>;
++		gpio-hog;
++		input;
++		line-name = "hdd1-present";
++	};
++
++	hdd2-present-hog {
++		gpios = <RK_PA1 GPIO_ACTIVE_LOW>;
++		gpio-hog;
++		input;
++		line-name = "hdd2-present";
++	};
++};
++
++&pinctrl {
++	pinctrl-names = "default";
++	pinctrl-0 = <&hdd1_present_pin &hdd2_present_pin>;
++
++	hdd-power {
++		hdd1_power_pin: hdd1-power-pin {
++			rockchip,pins = <0 RK_PC2 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
- 	};
- 
- 	usb_host0_xhci: usb@fcc00000 {
++
++		hdd2_power_pin: hdd2-power-pin {
++			rockchip,pins = <0 RK_PC3 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
++	hdd-present {
++		hdd1_present_pin: hdd1-present-pin {
++			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		hdd2_present_pin: hdd2-present-pin {
++			rockchip,pins = <2 RK_PA1 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++};
++
++&sata1_port0 {
++	target-supply = <&hdd2_pwr>;
++};
++
++&sata2_port0 {
++	target-supply = <&hdd1_pwr>;
++};
 -- 
 2.47.2
 
