@@ -4,65 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 518E5E7C6F9
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Feb 2026 00:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E945EE7C6FC
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Feb 2026 08:15:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DR79Yxgv1fkjmJeYk9C8ltEMz/15YaCgHAoR1XGVcdc=; b=x+W3nKGRSUBsp8
-	E9vp4bQxOVIUfGAeW/VE6PHQKM3WkWs/nN/g8N3udqYy6GcyWM1QNV1yLN2yWOpZ0o9UATxtWm4UK
-	RiyeemmpdYVfsHIF7s09CqC6soTShHjlfNP/uQX3Py00nuCstJJa8o2rYf8HwTHry5btUHfh0Gifg
-	WW1bUpwDQdaY2tCnhTKf0NHh+/BcOprolmwxJ1rvT5XD0ZEvJQ5SOtSHdjwmcXRabZgtuqOVEOsVK
-	vtduyXzTN6dYX3v+mhAL3eO2sqlc28z3RPLZWWGQrm4lzBFydoGoytaSsAjN3rVmpyagmoIuQlZ/6
-	Z44wMP96OSpmt0G6W64w==;
+	List-Owner; bh=nGQh/eH36jv00c3JU7ZoedbrqmR9enNBBoCU3YhgbJA=; b=wJtzZQCIQCEKT6
+	N0aW5Lp+liqvm96DjlXyWwtOjEMpFkJvSMxNjJqO724r1vcBLg/bG1qbQVkWxbDaQRFLxRL8iAWHQ
+	bM+ozPo9S97fyINROZrlFlYs+8ypEhFPfs8dDw5wYdmV3nwyL2Sda5hZLS3ymeedudStO+ofEQHjr
+	cwzIWk1NwvHu6bBDdpp+H9CLKNGSbGo45V87DAU31ToK6n4w2ZhGA/pWHApQOWxMeJ8Gh+PMhJEKV
+	po+O1C2IIKczxUuTSfZBUFlq/tRNGz776mCjK34huTW2cpglwCNJsLYmdCb18zRKzR6ETTx6fDByh
+	yyuSBcW/bahS67j00DAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmLZT-000000037z3-43kk;
-	Sun, 01 Feb 2026 00:44:11 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vmSbl-00000003Lbu-2ApG;
+	Sun, 01 Feb 2026 08:15:01 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmLZR-000000037yR-1ZAl;
-	Sun, 01 Feb 2026 00:44:10 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8F6E744285;
-	Sun,  1 Feb 2026 00:44:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC401C4CEF1;
-	Sun,  1 Feb 2026 00:44:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1769906648;
-	bh=OA7Q9YrHL2xoPfi2sklWNonwOgZc4d+Wx+DZIdbyklo=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=kvX99E3vssMYn5lQzJFdI61X61d3TmyvBziTkrjluG/VMSY5VbfgfqWvh7Dr/T2qv
-	 79LiipB/GXy/Z2Aj0XufJ2mmkQf4se1bK7Euv6n0KD2WKuuluVHJKp0LMXXP80v9fc
-	 1y7Da4yNqlUeXIcAieuPuzScx8WJOqa38oDGJSC15IixczeiWbRDJRAlJ5ScQttPcJ
-	 E2a0CUd5EeFHwV3uhfh9hgdwN5TRMUko5hSPRDtltc+xcaE3vsV1ReA0+1p81LpQCp
-	 5sQxBW/SIkA5PTMWeW3v2mmWD4EWoSZ7xA9ZDeOIbVqOBykw5djtK6SeSXir2HRYpo
-	 TlHHX1+CQHmSg==
-Date: Sat, 31 Jan 2026 16:44:06 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Andrew Lunn <andrew@lunn.ch>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Andrew Lunn <andrew+netdev@lunn.ch>, "David
- S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Heiko
- Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org, Paolo
- Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 01/10] net: stmmac: rk: convert to mask-based
- interface mode configuration
-Message-ID: <20260131164406.3c90587f@kernel.org>
-In-Reply-To: <aX6P9D99Xi4PnI2J@shell.armlinux.org.uk>
-References: <aXyPK9rlMt8h_fze@shell.armlinux.org.uk>
-	<E1vlmEY-00000006znn-0N0Q@rmk-PC.armlinux.org.uk>
-	<20260131140850.3c35f95a@kernel.org>
-	<aX6P9D99Xi4PnI2J@shell.armlinux.org.uk>
+	id 1vmSbj-00000003LaN-02nI;
+	Sun, 01 Feb 2026 08:15:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=m/
+	XW2LDrF07MmdRlAaEu9X1m0f7azZC8MoM77XmYfbo=; b=qBHsPxq7f25rNgkgbX
+	P+W4teQRngNu6RYgD02A6fj0pCgPb90yLSWW4FH8pEhRi4ZKLJR7Vn1r0jITE0ea
+	aACCc8yfIKrSL2jjyeqyRyhD/d1kfbSTDo/h87gtSfSlL8wv/bP9bN2532J9qMB5
+	f8GTAuMtVh22iWsJMFr+VQ9Iw=
+Received: from ProDesk-480.. (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wD3Hz40C39pmxGTKQ--.55310S6;
+	Sun, 01 Feb 2026 16:13:51 +0800 (CST)
+From: Andy Yan <andyshrk@163.com>
+To: dmitry.baryshkov@oss.qualcomm.com,
+	heiko@sntech.de
+Subject: [PATCH v2 4/5] drm/rockchip: dw_dp: Add DisplayPort support for rk3576
+Date: Sun,  1 Feb 2026 16:13:30 +0800
+Message-ID: <20260201081338.407999-5-andyshrk@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260201081338.407999-1-andyshrk@163.com>
+References: <20260201081338.407999-1-andyshrk@163.com>
 MIME-Version: 1.0
+X-CM-TRANSID: _____wD3Hz40C39pmxGTKQ--.55310S6
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Aw48Jr4rAr43uw1fCr45Wrg_yoW8JFW3pa
+	nrGryjqrWkWr4Yva4qyFWxuFsIk3ZrZay7Kr4UG343tws3KryfWryagw1UGr92q3W7ZF1a
+	krsrW34UJa1a9rDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jq38nUUUUU=
+X-Originating-IP: [58.22.7.114]
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxh8Maml-Cz-UIAAA3p
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260131_164409_461659_C6074E36 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20260201_001459_368578_AE299E24 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,42 +67,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, neil.armstrong@linaro.org, hjc@rock-chips.com, alchark@gmail.com, tzimmermann@suse.de, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 31 Jan 2026 23:27:48 +0000 Russell King (Oracle) wrote:
-> > > +	if (bsp_priv->gmac_phy_intf_sel_mask ||
-> > > +	    bsp_priv->gmac_rmii_mode_mask) {
-> > > +		/* If defined, encode the phy_intf_sel value */
-> > > +		val = rk_encode_wm16(intf, bsp_priv->gmac_phy_intf_sel_mask);
-> > > +
-> > > +		/* If defined, encode the RMII mode mask setting. */
-> > > +		val |= rk_encode_wm16(intf == PHY_INTF_SEL_RMII,
-> > > +				      bsp_priv->gmac_rmii_mode_mask);
-> > > +
-> > > +		ret = regmap_write(bsp_priv->grf, bsp_priv->gmac_grf_reg, val);
-> > > +		if (ret < 0)  
-> > 
-> > missing
-> > 	gmac_clk_enable(bsp_priv, false);
-> > here?  
-> 
-> Opinions vary on whether errors from regmap_write() should be handled.
-> See the recent thread:
-> 
-> https://lore.kernel.org/r/aXh9lcfw6D6KouI_@stanley.mountain
-> 
-> Seems that if regmap_write() fails, it's "buy a new computer" realms.
-> If that's case, is it worth cleaning up resources, or even checking the
-> return code from regmap_write() ?
+From: Andy Yan <andy.yan@rock-chips.com>
 
-I don't feel strongly, happy for you to make the call.
+The DisplayPort of the RK3576 is basically the same as that of the
+RK3588, but it operates in dual-pixel mode and also support MST.
 
-Just wanted to flag this now rather than Monday when it can be applied.
-(I try to give reviewers 24h of "non-weekend" time before applying so
-this series would have to wait until Mon, anyway.)
+This patch only enable the SST output now.
+
+Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+
+(no changes since v1)
+
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+index 89d614d53596..dac3d202971e 100644
+--- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+@@ -142,10 +142,18 @@ static const struct dw_dp_plat_data rk3588_dp_plat_data = {
+ 	.pixel_mode = DW_DP_MP_QUAD_PIXEL,
+ };
+ 
++static const struct dw_dp_plat_data rk3576_dp_plat_data = {
++	.max_link_rate = 810000,
++	.pixel_mode = DW_DP_MP_DUAL_PIXEL,
++};
++
+ static const struct of_device_id dw_dp_of_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3588-dp",
+ 		.data = &rk3588_dp_plat_data,
++	}, {
++		.compatible = "rockchip,rk3576-dp",
++		.data = &rk3576_dp_plat_data,
+ 	},
+ 	{}
+ };
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
