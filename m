@@ -4,93 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3B1BE7DEF3
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 15:05:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFC8E7DEEE
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 15:13:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QHOE03c7OSxoWF/gNn3yO+x/tan6rB+JtzzlmzVA6nY=; b=JpeDhCBJma9srr
-	JoQlpLc4znVETI1rAC3mgU12zzozH8b4FMZB7q/vudfmQboye6R4n8JcGzPqA6lhoyvGs0Zyi8F8n
-	UJGckp61l/4oIWbAYj3HhVi5x7RANoDU3qc5NrakdKPnYmqiQyw50SgLAGU7IWTRdrHDC68DPdJjf
-	gOd/JFAVuWqnHYLZSEN2wQM4pPVccGdKFk7E47pdhKz5RR8j7dxSAPZxRyJlNhhtbogSzsx2CUIgs
-	gHB1/PZd2yToq5fZjefOvr0akYYgplAHjuRCEH12ptO0DJZKYPRjM3xSMwZA6jrmJdsBq+6ADgkvh
-	ADPkn2GI3dcxi0gkB36w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aDftsAqkAMZqt47oR5tPQ/iV1m4dXfE9dQWTDlSe018=; b=H+OjjWmsVKtsGAaHznr1TszqIS
+	vVTwlYjxr8BAm80MsKkmPN9jvVkzrn3zhPvgn0Wwli0gjKGw1HUoznldUgqMypFr6sl7pmyMbLWnu
+	q0gAX4ZndiwEZ/wIwpxWn5jiKs+Qxu3Yo3qc5BYTfliYiupHDHogPtUz3Xj0D5XW2rsI0PpkccHG+
+	9U9aglWMDHdq5j8dinBRoR8yBrVRj/zn9ooPp+W0F+JrmsITzqKz+1seR537hTaewRfta2CuAYQdT
+	9e48b9oSv8w+yBhSDQOP5WfwbSwVzJB0H973UVEuzlp6EgD+yT9pnHtu6kArRQbkoyCxJhBFq75zq
+	KdPKkOKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmvU5-000000059jm-1tpJ;
-	Mon, 02 Feb 2026 15:05:02 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1vmvbu-00000005Ade-22qF;
+	Mon, 02 Feb 2026 15:13:06 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmvU1-000000059eE-0Rju
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Feb 2026 15:04:58 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-823f9f81da5so339791b3a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Feb 2026 07:04:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770044696; x=1770649496; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ixTCmReiLyskErYiBxLZpbB4M+pO9x9bToJ4KobbqCg=;
-        b=YdN9UFoyUC3Eb/5lrAkk/77+ZVyA/LC6onvnlhn3SG4eQ1U+6hXpAWcpx21NvRmKUU
-         GDBz0u0soIyoC/TA9yEPsjh+hKxN5PIc/UlvGuA/zrHs+79WojUfh/NqsC8cKAgF07Jd
-         ld/wXvxRahU9k8QVXVLPAAukdShkEHKMuTHMXWgBSBPS4uPdyolW4avSVKw0emtvpn7q
-         CBtw/xksei5lceXIsqxwtHsTjA3cJAPT8eonsXphXosKe4s0sZNwyPaJjWArAptceqgd
-         hKkpSaaM1NiLP23dHpdpaawDKpXuU4eGG9mAokZNxld6EkhwlR2Zy7/fatvEnNRkBxTc
-         x9pA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770044696; x=1770649496;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ixTCmReiLyskErYiBxLZpbB4M+pO9x9bToJ4KobbqCg=;
-        b=sC3ruijB17+oO5NW2AGQSv0FqL4/TY4pC48Hib/BlwxoW63/cDR3dYf5vAKt3A0P5E
-         S2Is0s+RpBOJw82rVPtAFAprhp66duHbVIWIO2+UWHjx6wS3U55EEzYSisZvkKDxyo/y
-         sE1hJizrt2hqK91lk2TINUSZ74GtaxysmGbv7b7BcMnmLCByym0TWnFR0dDO3JtcMbJy
-         8MouMxwlnaDQzcufPfJlyFn9yJcD3p3NmVt6O2Eu7RtvMFFbAKYdDDEQ28puZSXjMfwf
-         IV0o/PKxfzG1RwjB18qj9vEN6KuYmU3ueAp4jNhSjbyuS9ELt3+OKe+lA+z++CEGk7vY
-         0oxg==
-X-Forwarded-Encrypted: i=1; AJvYcCV1WnAEmtaoCENRWMijb8yTKp7NsMgODxQQ+ypzWUTfrC4pM+TUBhl5A5su+BHwtRvPl5eQESq97HEuuvHd5A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YypAFEmYVgLTsV1mu2rHa3Lqm6q6HKLypprvtZe0exzPzN3W9Hk
-	kN5GRJ6ovikqDGqUrxI1q+j+ygI0K9nWD+c764H+w4qzgrTgIRLHIQJK
-X-Gm-Gg: AZuq6aIE8GyHB7M5bJ0B5mYbHgnyW/dTHoYANdjDiMwNy8BTvx/pFW/Kwzk/1oiIlNw
-	r1ro61RUyaGsv0OUWtRwfhNzza6sSjh59lwiuQC1I8dp0JHJbzrFLFN9LtkrBaHTmtrLQ7XjCUq
-	gSC9WgDZdfxXBuhsatObHKpAcNLD8/mVvrZKMwrpLLFk1pYxWMthnJegku2RQy8S5QneZz1GBcF
-	jdn1/clyp0i8fwZAZJK9FRuw+2vaQJn1yBi1GOKK+F85WkGndVn+jPjYm4hywKWe701Iu5ABaZk
-	M3GZ4gj53qeWGO7R+cIiK36uKthU5f/vCej9xHRIlHM8PcokF/3FQGZNyfL4Kcg2npMBR8We3hD
-	Ha7mDCW4TY9GZZvLsCPTRON4o5uq596PQ/AN08r+tvcLLa33uehR+tIJEGt+BK/Rb+m0RFDtLN4
-	jgcQj66RZ1
-X-Received: by 2002:a05:6a00:1aca:b0:823:efa:a657 with SMTP id d2e1a72fcca58-823ab7204cdmr10985672b3a.40.1770044696053;
-        Mon, 02 Feb 2026 07:04:56 -0800 (PST)
-Received: from arch.localdomain ([2409:8a28:a52:d2b1::1004])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82379c21112sm15948480b3a.54.2026.02.02.07.04.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Feb 2026 07:04:55 -0800 (PST)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	alchark@gmail.com,
-	dsimic@manjaro.org,
-	andyshrk@163.com,
-	Jun Yan <jerrysteve1101@gmail.com>
-Subject: [PATCH v3 3/3] arm64: dts: rockchip: Add OneThing Edge Cube series
-Date: Mon,  2 Feb 2026 23:04:03 +0800
-Message-ID: <20260202150437.270567-4-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260202150437.270567-1-jerrysteve1101@gmail.com>
-References: <20260202150437.270567-1-jerrysteve1101@gmail.com>
+	id 1vmvbp-00000005Acg-0GVZ;
+	Mon, 02 Feb 2026 15:13:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770045177;
+	bh=fK0UNuTXnFjqKpqCbxl7apHrA2QHhXM8zAwjoqglbco=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=KiALrxnpXHJNOBviH4hrLAhS6g40n2NUloKgX4tpKeb/saL9oHnuoWZbyBS6VeRC5
+	 or2D8fcLMlSDWHBeJdkvBT83cb/rY17oyzpyxn+OjtC2SQNkm3gyWgkBwXlos4J+Fs
+	 vM+Tgb1DCy4bNdsp2MmUabrAQoQttJWuXBY+TdP3nC3LJXKE4UyyKKtfxKk47vKKEh
+	 RoI2rSZxSzJTmfjVqn6jzgukaCzf4yQAJNsML5wz3Cte1GGfikbzVM1bvdAFgCgwEa
+	 O2kkor0DIvKfAYRUF9DBUG2VO7OI3g0bsFg8p4LYuWKu9kLOl22b4mdZi0VegCTB7N
+	 Sk6RV6uwW8t3g==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7F23E17E1274;
+	Mon,  2 Feb 2026 16:12:55 +0100 (CET)
+Message-ID: <da9f044152383cacd50989b025fdce08a654bbe3.camel@collabora.com>
+Subject: Re: [PATCH 1/2] media: rkvdec: reduce excessive stack usage in
+ assemble_hw_pps()
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Arnd Bergmann <arnd@arndb.de>, Arnd Bergmann <arnd@kernel.org>, Detlev
+ Casanova <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Nathan Chancellor	 <nathan@kernel.org>, Hans Verkuil
+ <hverkuil+cisco@kernel.org>
+Cc: Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, Bill Wendling
+	 <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	llvm@lists.linux.dev
+Date: Mon, 02 Feb 2026 10:12:53 -0500
+In-Reply-To: <3b89635f-1c1c-4e4e-b0a9-2bbd0f21bc90@app.fastmail.com>
+References: <20260202094804.1231706-1-arnd@kernel.org>
+	 <16baade123f563ea92e6117bf78c56e8617daf14.camel@collabora.com>
+	 <3b89635f-1c1c-4e4e-b0a9-2bbd0f21bc90@app.fastmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_070457_160140_51D5A2D4 
-X-CRM114-Status: GOOD (  15.00  )
+X-CRM114-CacheID: sfid-20260202_071301_277357_2BCECFE7 
+X-CRM114-Status: GOOD (  38.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,380 +93,165 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5971098743764623708=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The OneThing Edge Cube (OEC) series features the RK3566 SoC, 8GB
-eMMC storage, and supports one SATA interface, one Gigabit Ethernet
-port, and one USB 3.0 port.
 
-Other than the difference in RAM capacity, the OEC and OEC-turbo are
-identical in all other specifications.
+--===============5971098743764623708==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-0n1upZ0VLiSy35LHgcM0"
 
-  Specification:
-    - Rockchip RK3566
-    - LPDDR4X 2GB (OEC) / 4GB (OEC-turbo)
-    - eMMC 8GB
-    - Gigabit Ethernet port x 1
-    - USB 3.0 port x 1
-    - USB-C 2.0 port x 1
-    - 12V DC Power supply
-    - SATA 3.0 connector x 1
 
-These devices do not have a PMIC, and their hardware circuit design
-is highly similar to that of the rk3566-box-demo[1]. Hardware schematics
-are not available at this time, with the vendor firmware dts available
-for reference[2].
+--=-0n1upZ0VLiSy35LHgcM0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Ethernet, USB 3.0 and SATA 3.0 ports tested, all working well.
+Hi Arnd,
 
-[1] https://elixir.bootlin.com/linux/v6.18.6/source/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-[2] https://archive.org/download/wxy-oec-RK3566-4G-dump/wxy-oec-RK3566-4G-dump.dts
+Le lundi 02 f=C3=A9vrier 2026 =C3=A0 15:09 +0100, Arnd Bergmann a =C3=A9cri=
+t=C2=A0:
+> On Mon, Feb 2, 2026, at 14:42, Nicolas Dufresne wrote:
+> > Le lundi 02 f=C3=A9vrier 2026 =C3=A0 10:47 +0100, Arnd Bergmann a =C3=
+=A9crit=C2=A0:
+> > > From: Arnd Bergmann <arnd@arndb.de>
+> > >=20
+> > > The rkvdec_pps had a large set of bitfields, all of which
+> > > as misaligned. This causes clang-21 and likely other versions to
+> > > produce absolutely awful object code and a warning about very
+> > > large stack usage, on targets without unaligned access:
+> > >=20
+> > > drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: st=
+ack frame size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-=
+Wframe-larger-than]
+> >=20
+> > We had already addressed and validated that on clang-21, which indicate=
+s me that
+> > we likely are missing an architecture (or a config) in our CI. Can you =
+document
+> > which architecture, configuration and flags was affected so we can add =
+it on our
+> > side ?
+> >=20
+> > Our media pipeline before sending to Linus and the clang builds trace a=
+re in the
+> > following link, in case it matters.
+> >=20
+> > https://gitlab.freedesktop.org/linux-media/media-committers/-/pipelines=
+/1588731
+> > https://gitlab.freedesktop.org/linux-media/media-committers/-/jobs/9160=
+4655
+>=20
+> The configuration that hit this for me was an ARMv7-M NOMMU build. I'm
+> doing 'randconfig' builds here, so I inevitably hit some corner cases
+> that all deterministic CI systems miss. I don't think that you should
+> add ARMv7-M here, since that would take up useful build resources
+> from something more important. There are no drviers/media/ actual
+> users on ARMv7-M, and next time it is going to be something else.
+>=20
+> > > Part of the problem here is how all the bitfield accesses are
+> > > inlined into a function that already has large structures on
+> > > the stack.
+> >=20
+> > Another observation is that you had to enable ASAN to make it miss-beha=
+ve on for
+> > loop unrolling (with complex bitfield writes).=C2=A0 All I've obtained =
+by visiting
+> > the Link: is that its armv7-a architecture.
+>=20
+> Right, this randconfig build likely got closer to the warning
+> limit because of the inherent overhead in KASAN, but the problem
+> with the unaligned bitfields was something that I could later
+> reproduce without KASAN, on ARMv5 and MIPS32r2.
+>=20
+> This is something we should fix in clang.
 
-Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
----
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../rockchip/rk3566-onething-oec-series.dts   | 312 ++++++++++++++++++
- 2 files changed, 313 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+All fair comments. I plan to take this into fixes (no changes needed), hope=
+fully
+for rc-2.
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index 4d384f153c13..234fa53abe17 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -104,6 +104,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353v.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353vs.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-odroid-m1s.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-onething-oec-series.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v1.1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v2.1.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
-new file mode 100644
-index 000000000000..2007b93e190e
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
-@@ -0,0 +1,312 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+#include "rk3566.dtsi"
-+
-+/ {
-+	model = "OneThing OEC/OEC-turbo";
-+	compatible = "onething,oec-turbo", "onething,oec", "rockchip,rk3566";
-+
-+	aliases {
-+		ethernet0 = &gmac1;
-+		mmc0 = &sdhci;
-+	};
-+
-+	chosen: chosen {
-+		stdout-path = "serial2:1500000n8";
-+	};
-+
-+	gmac1_clkin: external-gmac1-clock {
-+		compatible = "fixed-clock";
-+		clock-frequency = <125000000>;
-+		clock-output-names = "gmac1_clkin";
-+		#clock-cells = <0>;
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		rgb_led_b: led-0 {
-+			color = <LED_COLOR_ID_BLUE>;
-+			default-state = "off";
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio3 RK_PB3 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		rgb_led_g: led-1 {
-+			color = <LED_COLOR_ID_GREEN>;
-+			default-state = "on";
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio3 RK_PB4 GPIO_ACTIVE_LOW>;
-+		};
-+
-+		rgb_led_r: led-2 {
-+			color = <LED_COLOR_ID_RED>;
-+			default-state = "off";
-+			function = LED_FUNCTION_STATUS;
-+			gpios = <&gpio0 RK_PC3 GPIO_ACTIVE_LOW>;
-+		};
-+	};
-+
-+	vcc_1v8: regulator-vcc-1v8 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_1v8";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc_3v3: regulator-vcc-3v3 {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc_3v3";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vcc12v0_dcin: regulator-vcc12v0-dcin {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc12v0_dcin";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <12000000>;
-+		regulator-max-microvolt = <12000000>;
-+	};
-+
-+	vcc3v3_sys: regulator-vcc3v3-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc3v3_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <3300000>;
-+		regulator-max-microvolt = <3300000>;
-+		vin-supply = <&vcc12v0_dcin>;
-+	};
-+
-+	vcc5v0_sys: regulator-vcc5v0-sys {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vcc5v0_sys";
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc12v0_dcin>;
-+	};
-+
-+	vcc5v0_usb_host: regulator-vcc5v0-usb-host {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpio = <&gpio0 RK_PC6 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&vcc5v0_usb_host_en>;
-+		regulator-name = "vcc5v0_usb_host";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_cpu: regulator-vdd-cpu {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm0 0 5000 1>;
-+		regulator-name = "vdd_cpu";
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1200000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-settling-time-up-us = <250>;
-+		pwm-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_fixed: regulator-vdd-fixed {
-+		compatible = "regulator-fixed";
-+		regulator-name = "vdd_fixed";
-+		regulator-min-microvolt = <950000>;
-+		regulator-max-microvolt = <950000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	vdd_logic: regulator-vdd-logic {
-+		compatible = "pwm-regulator";
-+		pwms = <&pwm1 0 5000 1>;
-+		regulator-name = "vdd_logic";
-+		regulator-min-microvolt = <800000>;
-+		regulator-max-microvolt = <1100000>;
-+		regulator-always-on;
-+		regulator-boot-on;
-+		regulator-settling-time-up-us = <250>;
-+		pwm-supply = <&vcc5v0_sys>;
-+	};
-+};
-+
-+
-+/* No hardware video output port */
-+&display_subsystem {
-+	status = "disabled";
-+};
-+
-+&combphy1 {
-+	status = "okay";
-+};
-+
-+&combphy2 {
-+	status = "okay";
-+};
-+
-+&cpu0 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu1 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu2 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&cpu3 {
-+	cpu-supply = <&vdd_cpu>;
-+};
-+
-+&gmac1 {
-+	assigned-clocks = <&cru SCLK_GMAC1_RX_TX>, <&cru SCLK_GMAC1>;
-+	assigned-clock-parents = <&cru SCLK_GMAC1_RGMII_SPEED>, <&gmac1_clkin>;
-+	clock_in_out = "input";
-+	phy-handle = <&rgmii_phy1>;
-+	phy-mode = "rgmii-id";
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&gmac1m1_miim
-+		    &gmac1m1_tx_bus2
-+		    &gmac1m1_rx_bus2
-+		    &gmac1m1_rgmii_clk
-+		    &gmac1m1_rgmii_bus
-+		    &gmac1m1_clkinout>;
-+	rx_delay = <0x0>;
-+	tx_delay = <0x0>;
-+	status = "okay";
-+};
-+
-+&gpu {
-+	status = "okay";
-+};
-+
-+&mdio1 {
-+	rgmii_phy1: ethernet-phy@1 {
-+		compatible = "ethernet-phy-ieee802.3-c22";
-+		reg = <0x1>;
-+		reset-assert-us = <20000>;
-+		reset-deassert-us = <100000>;
-+		reset-gpios = <&gpio4 RK_PC2 GPIO_ACTIVE_LOW>;
-+	};
-+};
-+
-+&pinctrl {
-+	usb {
-+		vcc5v0_usb_host_en: vcc5v0-usb-host-en {
-+			rockchip,pins = <0 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&pmu_io_domains {
-+	pmuio1-supply = <&vcc_3v3>;
-+	pmuio2-supply = <&vcc_3v3>;
-+	vccio1-supply = <&vcc_1v8>;
-+	vccio3-supply = <&vcc_3v3>;
-+	vccio4-supply = <&vcc_1v8>;
-+	vccio5-supply = <&vcc_3v3>;
-+	vccio6-supply = <&vcc_1v8>;
-+	vccio7-supply = <&vcc_3v3>;
-+	status = "okay";
-+};
-+
-+&pwm0 {
-+	status = "okay";
-+};
-+
-+&pwm1 {
-+	status = "okay";
-+};
-+
-+&saradc {
-+	vref-supply = <&vcc_1v8>;
-+	status = "okay";
-+};
-+
-+&sata2 {
-+	status = "okay";
-+};
-+
-+&sdhci {
-+	bus-width = <8>;
-+	mmc-hs200-1_8v;
-+	non-removable;
-+	status = "okay";
-+};
-+
-+&tsadc {
-+	rockchip,hw-tshut-mode = <1>;
-+	rockchip,hw-tshut-polarity = <0>;
-+	status = "okay";
-+};
-+
-+&uart2 {
-+	status = "okay";
-+};
-+
-+&usb_host0_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ehci {
-+	status = "okay";
-+};
-+
-+&usb_host1_ohci {
-+	status = "okay";
-+};
-+
-+&usb_host1_xhci  {
-+	status = "okay";
-+};
-+
-+&usb2phy0 {
-+	status = "okay";
-+};
-+
-+&usb2phy0_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy0_otg {
-+	status = "okay";
-+};
-+
-+&usb2phy1 {
-+	status = "okay";
-+};
-+
-+&usb2phy1_host {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
-+
-+&usb2phy1_otg {
-+	phy-supply = <&vcc5v0_usb_host>;
-+	status = "okay";
-+};
--- 
-2.52.0
+Performance wise, this code is to replace read/mask/write into hardware
+registers which was significantly slower for this amount of registers (~200
+32bit integers) and this type of IP (its not sram). This is run once per fr=
+ame.
+In practice, if we hand code the read/mask/write, the performance should
+eventually converge to using bitfield and letting the compiler do this mask=
+ing,
+I was being optimistic on how the compiler would behave. If performance of =
+that
+is truly a problem, we can always just prepare the ram register ahead of th=
+e
+operation queue (instead of doing it in the executor).
 
+One thing to remind, you can't optimize the data structure layout, since th=
+ey
+need to match the register layout. But while fixing some of the stack repor=
+t
+previously, I did endup up moving few things out of loops (which is not cle=
+arly
+feasible in this patch). I did not checked all the code (only the failing o=
+ne).
+One of the bad pattern which costed stack (and overhead probably) was the u=
+se of
+switch() statement to pick one of the unaligned register location, with tha=
+t
+switch being part of an unrolled loop. If you ever spot these, and have tim=
+e,
+please just manually unroll the switch out of the loop (its actually less c=
+ode).
+
+> =C2=A0
+> > > Mark set_field_order_cnt() as noinline_for_stack, and split out
+> > > the following accesses in assemble_hw_pps() into another noinline
+> > > function, both of which now using around 800 bytes of stack in the
+> > > same configuration.
+> > >=20
+> > > There is clearly still something wrong with clang here, but
+> > > splitting it into multiple functions reduces the risk of stack
+> > > overflow.
+> >=20
+> > We've tried really hard to avoid this noninline_for_stack just because =
+compilers
+> > are buggy. I'll have a look again in case I find some ideas, but meanwh=
+ile, with
+> > failing architecture in the commit message:
+> >=20
+> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+>=20
+> Thanks!
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0 Arnd
+
+
+thanks to you,
+Nicolas
+
+--=-0n1upZ0VLiSy35LHgcM0
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaYC+9QAKCRDZQZRRKWBy
+9GSlAP98wAwsGZINllsCHn4BZIWdyEFzPQNWZpW54689SrMU7QD9GzjnPH5SIbIo
+XpCL/RFia9fph8ZEiB+jh8mL7sloZAc=
+=zvGH
+-----END PGP SIGNATURE-----
+
+--=-0n1upZ0VLiSy35LHgcM0--
+
+
+--===============5971098743764623708==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5971098743764623708==--
+
