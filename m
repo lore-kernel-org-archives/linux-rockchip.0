@@ -4,73 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EEA0E7314E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 10:05:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DE08E73157
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 10:27:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:Message-Id:MIME-Version:Subject:Cc
-	:To:From:References:In-Reply-To:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lRZ3IWOGGSCcAeCzM3AM3VOnSD4Pmm1oLxjNKxpj2P4=; b=VFQm26jHd1wo4G
-	7AUzMoMaSLdVU2pn4l2KAyopt/2IwrFOT7nWeEjx2g7H1lo+nsqi0OcguTy/juiKTfn+0aJ72yGzF
-	jif6X7DWXVE2J3RLb2JWX73sbTJ+i9pKqKHSToZDm5zm6xBgaCrfhj28Aa5Kb4cOULDLnhIhzL/XC
-	R9KSomahuCTeKdL9QRElx8xVuPp+dnrSXj00jN00nyBeL8DpXDjO+0mUU2MtkaVtbiau5+0cmlp18
-	NMur3J8p6WTWgfllJr4AyOC57eGIhy8UflC+WhprlLyMitBXlAOF327V7b+cCAmSP2zDCeJr6DYUY
-	rNgKjvZeQSu6PPyGpGxg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lApl3rsLIE7kGwatFrOBqT3rDSWumAP80TYn3H39MsU=; b=ROlEACzxClj5S4
+	4yr1kZDxe8ZFRa/ZnVYXRR1lvB0oBqzzo2ZLpSwf6wj/oUqZIXMaDUspii7RYINdBQfEpAPXvGp2A
+	7ZwmAsKm+Bee9bNFaOIdRFZr4D/UMTnzkqt6Xl6buEHziKFKB/z25Fbzr6uPOYsW3IM+JaLMSZQVt
+	FmwOtIfHmixcgfpSa6ymkL1Ic+l7RS5nZ9eKfrKeQ8bDFo3yF+CAN+Yn3wXH+QFCF9n07iDbBG34P
+	KlQaC41ddF4kM0FgbxD3fjHJsllWkkX3K42X30cX/yvZKHSirXK6HXSegfEfbs8GCr4JvddgNt5J6
+	eQ/A76m4FVUg2495XG7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmqnm-00000004mdT-3DDs;
-	Mon, 02 Feb 2026 10:05:02 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vmr9q-00000004p1k-3c6Z;
+	Mon, 02 Feb 2026 10:27:50 +0000
+Received: from smtp-190b.mail.infomaniak.ch ([185.125.25.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmqng-00000004mUY-3krO;
-	Mon, 02 Feb 2026 10:04:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Date:Sender:Message-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Subject:Cc:To:From:References:
-	In-Reply-To:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
-	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=u3V0uhd3GFGTLZW7cNDsJiAyDxAIjbyEm0qLQnrg6lM=; b=soW07ikRCrSl+9n5JvY+8ZefSA
-	F1DyKZeB/XL8Ax42lQNDRXC6WgetKkIu64TIthY49pO9j5BBtTicadTXlHrXZ9PU+9wWNk0tcHeOi
-	oAqLh2hM63q/GlEhQzWUMy/eZrtrC/J7cJTebmCQEy7XSQe3jioZHIW4YJYCstT5LwiDZyrB0Yfyi
-	FKXsVzMEhUiGNA/sqbAuPm4SI5yMf650x1mG2bVnMdBwc57bUPKC6svkrYr7/8zn5KHWW279/Sdh8
-	1I6LQpVNC6ZvJ5XhPVgM4MmaCFrEsQA7x2CJKKxr3X0I0tdifGuk3noZv2gqBFgN5DnYmC8Jg3qJC
-	MUpg+BHg==;
-Received: from e0022681537dd.dyn.armlinux.org.uk ([fd8f:7570:feb6:1:222:68ff:fe15:37dd]:45324 helo=rmk-PC.armlinux.org.uk)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <rmk@armlinux.org.uk>)
-	id 1vmqnU-000000003oh-431y;
-	Mon, 02 Feb 2026 10:04:45 +0000
-Received: from rmk by rmk-PC.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <rmk@rmk-PC.armlinux.org.uk>)
-	id 1vmqnR-00000007VDE-2fM1;
-	Mon, 02 Feb 2026 10:04:41 +0000
-In-Reply-To: <aYB2cKRu3DQh6yXK@shell.armlinux.org.uk>
-References: <aYB2cKRu3DQh6yXK@shell.armlinux.org.uk>
-From: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: [PATCH net-next v2 10/10] net: stmmac: rk: convert px30
+	id 1vmr9m-00000004oxi-32Sh
+	for linux-rockchip@lists.infradead.org;
+	Mon, 02 Feb 2026 10:27:49 +0000
+Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4f4N986l7Yz8n0;
+	Mon,  2 Feb 2026 11:27:40 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4f4N98059bz5sw;
+	Mon,  2 Feb 2026 11:27:39 +0100 (CET)
+From: Quentin Schulz <foss+kernel@0leil.net>
+Subject: [PATCH 0/2] arm64: dts: rockchip: fix Ethernet PHY on Theobroma
+ PX30 devices
+Date: Mon, 02 Feb 2026 11:27:24 +0100
+Message-Id: <20260202-px30-eth-phy-v1-0-ef365be64922@cherry.de>
 MIME-Version: 1.0
-Content-Disposition: inline
-Message-Id: <E1vmqnR-00000007VDE-2fM1@rmk-PC.armlinux.org.uk>
-Date: Mon, 02 Feb 2026 10:04:41 +0000
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqAIBAAvyJ7TnANLPpKdJBacy8mGmGIf0+6D
+ MxhpkKmxJRhERUSPZz5Cl1wELB7G06SfHQHrbRROCoZSwfdXkb/SjMZZ3FGQjTQk5jIcfl369b
+ aB+vsMXheAAAA
+X-Change-ID: 20260130-px30-eth-phy-676fa181e116
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Heiko Stuebner <heiko.stuebner@cherry.de>, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, 
+ stable@vger.kernel.org
+X-Mailer: b4 0.14.3
+X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_020457_241692_9B1DED83 
-X-CRM114-Status: GOOD (  11.30  )
+X-CRM114-CacheID: sfid-20260202_022746_894306_A69E86E9 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,74 +69,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use rk_set_clk_mac_speed() rather than px30 specific function for
-configuring RMII clock.
+This removes the reliance on the bootloader setting up the Ethernet PHY
+for the Linux kernel to be able to use Ethernet.
 
-Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+This is due to the HW default of the PHY reset line being active and the
+MDIO auto-detection mechanism not controlling a PHY's reset line such
+that we need to hardcode the PHY ID in the compatible property for it to
+be usable by the kernel, regardless of what the bootloader is doing.
+
+We only ever had one PHY (DP83825) for both devices, so it's fine to
+hardcode this way.
+
+Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 38 ++-----------------
- 1 file changed, 4 insertions(+), 34 deletions(-)
+Quentin Schulz (2):
+      arm64: dts: rockchip: fix Ethernet PHY not found on PX30 Cobra
+      arm64: dts: rockchip: fix Ethernet PHY not found on PX30 Ringneck
 
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-index d74c32365a33..c56cc40683a3 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-@@ -264,49 +264,19 @@ static void rk_gmac_integrated_fephy_powerdown(struct rk_priv_data *priv,
- 
- #define PX30_GRF_GMAC_CON1		0x0904
- 
--/* PX30_GRF_GMAC_CON1 */
--#define PX30_GMAC_SPEED_10M		GRF_CLR_BIT(2)
--#define PX30_GMAC_SPEED_100M		GRF_BIT(2)
--
- static void px30_set_to_rmii(struct rk_priv_data *bsp_priv)
- {
- }
- 
--static int px30_set_speed(struct rk_priv_data *bsp_priv,
--			  phy_interface_t interface, int speed)
--{
--	struct clk *clk_mac_speed = bsp_priv->clks[RK_CLK_MAC_SPEED].clk;
--	struct device *dev = bsp_priv->dev;
--	unsigned int con1;
--	long rate;
--
--	if (!clk_mac_speed) {
--		dev_err(dev, "%s: Missing clk_mac_speed clock\n", __func__);
--		return -EINVAL;
--	}
--
--	if (speed == 10) {
--		con1 = PX30_GMAC_SPEED_10M;
--		rate = 2500000;
--	} else if (speed == 100) {
--		con1 = PX30_GMAC_SPEED_100M;
--		rate = 25000000;
--	} else {
--		dev_err(dev, "unknown speed value for RMII! speed=%d", speed);
--		return -EINVAL;
--	}
--
--	regmap_write(bsp_priv->grf, PX30_GRF_GMAC_CON1, con1);
--
--	return clk_set_rate(clk_mac_speed, rate);
--}
--
- static const struct rk_gmac_ops px30_ops = {
- 	.set_to_rmii = px30_set_to_rmii,
--	.set_speed = px30_set_speed,
-+	.set_speed = rk_set_clk_mac_speed,
- 
- 	.gmac_grf_reg = PX30_GRF_GMAC_CON1,
- 	.gmac_phy_intf_sel_mask = GENMASK_U16(6, 4),
-+
-+	.clock_grf_reg = PX30_GRF_GMAC_CON1,
-+	.clock.mac_speed_mask = BIT_U16(2),
- };
- 
- #define RK3128_GRF_MAC_CON0	0x0168
+ arch/arm64/boot/dts/rockchip/px30-cobra.dtsi    | 2 +-
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+---
+base-commit: 4d310797262f0ddf129e76c2aad2b950adaf1fda
+change-id: 20260130-px30-eth-phy-676fa181e116
+
+Best regards,
 -- 
-2.47.3
+Quentin Schulz <quentin.schulz@cherry.de>
 
 
 _______________________________________________
