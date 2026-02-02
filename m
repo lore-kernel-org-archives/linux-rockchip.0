@@ -4,128 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD075E7DEF7
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 15:59:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 092D6E7DEF7
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 16:31:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
-	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=IO/0vTzU1df1wVkD0vIzMrhDhbGFSmzGkm6m87qHQ2Q=; b=Li8721+HwK4vqPvoUxJKC+cR3W
-	HqIqFFb+QzGoR89Dmk1U9u5nad6k8fph8GLze/oPY8PWIY/dxRJ9D9N5i2L3MKmjAi24t6vhH5wVY
-	bAlzQtRSBBKC5l5+4Te8k+s2yD/c7ErNI8NUrDUfrBCyDuaPy1XLcRsQVhNCSF1WZ3SyzjOjpB1H+
-	ATPYzhle+PrUNf0UcDI4ofAdJ6AXpOGCB8Y5c8Cmu0m6TiS2iGrQF4sORDQf6p/t7G05BNqYC7BA0
-	4w4PaGGYNNevugxRxzW8QAKW5DJ1OAQR01n29flsubigcEeeyj1g0Z7Qn3w7RSwFhgdRXNbZJ9TbI
-	3wdouh8Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TUJP+hMOghCxzCr5al+khIyQdPPZ9lwhr7lFmiJAeqw=; b=nqhXygzgFVTwXG0apRLhoqfQdt
+	mIVIBZKEJtp0RKeB0xcS/h7VJ6x5f/VtGQxDn0j4vPXefWOw6j7FwyJ/uRlwlj7nJ3r30vKHdB4LB
+	ZJMea4vkBRHDwBeO3p9X8AoL566/EI7yzMwUfQprVpr6pf4+acnDvFKtJsgO2HjjLEycrfz/5IRHA
+	Ya6GCAT6ciz5mWFDDt+JYi9iXY+6u9rTfvxU3qCMfT9DVPRA4bH1J4I7Rw4Lf3A15jqAAideGE8Aq
+	u2ROR2bQ3SWtS8FksabbMRfKaXns+LU4bIIhR/pQThJZTNYnam8nbCXAgBSkS/+VUsOnR700RFUcY
+	vk21lJkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmwKv-00000005FRe-1dgQ;
-	Mon, 02 Feb 2026 15:59:37 +0000
+	id 1vmwq9-00000005Iap-19rI;
+	Mon, 02 Feb 2026 16:31:53 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmwKt-00000005FQ3-0g66;
-	Mon, 02 Feb 2026 15:59:35 +0000
+	id 1vmwq7-00000005Ia3-3rxp;
+	Mon, 02 Feb 2026 16:31:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=CFuW6+SYNh7gkCorL0UhMyQbcABqAcuxQVYw4LykYQU=; b=MI45/1NJi5RFjkT562cU961Rdl
-	4XFkoTk48KHt3plWSsvkgMz/7yMVLskBdb9AMv+QlFg5OHbXbX1ZWpJVIOQHV1JfqhfvVvGoCWLZO
-	K0diZlxOgAVZrATfjVvJRUIWlqqiyIA4V0642g6jSgoyI4GHA+WTEiWBpU0+u5SaGwpUH7ySZh/h2
-	eZriloiH9TSoLHIiRLB4Db64ZbNa74moX1LfaTVGIGMoGvj0Gl7pbz8EQwcv4mpOFdcLCxl1Jy/ca
-	bgQMK0RJfDw74eChkqMJ0FtZCuQbL+VngDHwQtUo8BsWRHF6N1F/tGU1XS6s+It5BhwYkpHqcort/
-	ZYzxA1gg==;
-Received: from fhigh-b7-smtp.messagingengine.com ([202.12.124.158])
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
+	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=hYLkpRWaYV8x8z9MUU6UtC2OJd7fEAIyh74fGdqvB5o=; b=e8jYBKtwABmfwCKklvj3UVtznd
+	F9Bu+dC8Q5ySj5uMALXFZu0OJ6NZIQlxeuD40JHV19A0U2ptJCGW75vhXMlqZtbEQHApFZfVNaITq
+	PutdOG6xkvfJPa7Kv9n37xaIKpLPD1EUfndboSdC4ejo28rRSWPggNb163b+JcgjoDlAaUCREb+Hp
+	25nuMfkqQ48r+gsYn0cV3dG++HA/f0rlEjDYYUE0UkbaET0jBmiG+1OrnbMuO5argsVWwt+UtMccN
+	ta4+6132vcxM1qDOi+xyAMO9w7oFt72bV7toSNgQ3A0z/yA7PsfwOSBDD0NRpGC7Mc3wpsqJu0bDK
+	TkKL44zg==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmwKo-0000000EmL2-3cSB;
-	Mon, 02 Feb 2026 15:59:33 +0000
-Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
-	by mailfhigh.stl.internal (Postfix) with ESMTP id 7E5457A0068;
-	Mon,  2 Feb 2026 10:59:27 -0500 (EST)
-Received: from phl-imap-02 ([10.202.2.81])
-  by phl-compute-04.internal (MEProxy); Mon, 02 Feb 2026 10:59:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm2; t=1770047967;
-	 x=1770134367; bh=CFuW6+SYNh7gkCorL0UhMyQbcABqAcuxQVYw4LykYQU=; b=
-	orEsDRtU1gDGHSbdC5hdMI8RLoa1hDSnwJ594ntuXcpHjbfSFbvTWWiGYsP7SOW2
-	1xJFklUbN9F1reQLTNpRX8WVvy5EOSIqatqlsZ0jbs6TDMB1P7gbwy3+GU7ZSgCH
-	bwGcaCDcoChT8wVHuDBBF+RnqKFguVHScgKzuyEgsuAZ3jUfqeTAX366/q85JdoO
-	od0CvrJBgLy1TRsBk2Ez2i7csMmBE6iVpiSjeNJvDh7jhleLSpLZxYNnGnfzqvnJ
-	KsAdu3NdMoDCYbGaaR23nno1dxDEnaKzbclTuqO5bPKxh5bgtZOM36omeYQLAsfa
-	A0cwDZaVYyZSVIWb4lMecg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1770047967; x=
-	1770134367; bh=CFuW6+SYNh7gkCorL0UhMyQbcABqAcuxQVYw4LykYQU=; b=U
-	m6RrgXROEiISQIivZw8LODtYS7lSVOO4jz/w5k2cgunNYxvrORvxkfVX1/Pa9pwV
-	DDGtEkDuiT6IY3BnprS0TZcSMHwYl1TCml59W1vwNc16zJxgx+yIjpElQ2qIBNhM
-	tmrT3wnQ6Wi0ERg75mY8cWP7YxD4lNlcnDxMWfxk5B6Sp398xPpyqWkYWbBvqPuF
-	eg4V8xm7iqhbtjuyD7XUNybNynv+hKXV60sff0Rgw2uVIjtUIMnOMvLT6+4Nw4QE
-	zRFuxMgW5V0Czz7f7uER7YrXgWHoaNvxjNFNtOsrt3hKMM96YMFL6WL6ip855KZi
-	6YtsjV94hz8TCjkrrzikw==
-X-ME-Sender: <xms:3smAaVsA-DXhM0iN7KEj0HUttcdIp49754Nlk3PB_jXz83lQ6uCXnQ>
-    <xme:3smAaZS8XOQmdYSdzrV7ZvToN3NJfONYprIUhw_P4aMKOlu2JS3YADOO-k3hyE594
-    bvdcVtQpsStjb4R2bu1VQ-o8slAtHRkGLteyJ1xWpHrVLBxqIEbmsid>
-X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddujeektdeiucetufdoteggodetrf
-    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
-    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
-    gurhepofggfffhvfevkfgjfhfutgfgsehtqhertdertdejnecuhfhrohhmpedftehrnhgu
-    uceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrthhtvg
-    hrnhepvdfhvdekueduveffffetgfdvveefvdelhedvvdegjedvfeehtdeggeevheefleej
-    necuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghrnh
-    gusegrrhhnuggsrdguvgdpnhgspghrtghpthhtohepudeipdhmohguvgepshhmthhpohhu
-    thdprhgtphhtthhopeguvghtlhgvvhdrtggrshgrnhhovhgrsegtohhllhgrsghorhgrrd
-    gtohhmpdhrtghpthhtohepnhhitgholhgrshdrughufhhrvghsnhgvsegtohhllhgrsgho
-    rhgrrdgtohhmpdhrtghpthhtohepnhhitghkrdguvghsrghulhhnihgvrhhsodhlkhhmlh
-    esghhmrghilhdrtghomhdprhgtphhtthhopehjuhhsthhinhhsthhithhtsehgohhoghhl
-    vgdrtghomhdprhgtphhtthhopehmohhrsghosehgohhoghhlvgdrtghomhdprhgtphhtth
-    hopegrrhhnugeskhgvrhhnvghlrdhorhhgpdhrtghpthhtohephhhvvghrkhhuihhlodgt
-    ihhstghosehkvghrnhgvlhdrohhrghdprhgtphhtthhopehmtghhvghhrggssehkvghrnh
-    gvlhdrohhrghdprhgtphhtthhopehnrghthhgrnheskhgvrhhnvghlrdhorhhg
-X-ME-Proxy: <xmx:38mAadPIQbkXVjhXUP6FVvG4qEX1nPzoObNfxbzLSyO6ZtoP8qn6hQ>
-    <xmx:38mAacTddcWAcNjiYKqE7C8scRY_xtifCm_6kW6212CPazmRqIFmtA>
-    <xmx:38mAad4mExsk0iZ-3UNId6lpI-EVjYRdfv0Uyu8ViW3b2XNE0I7qng>
-    <xmx:38mAaW2__12zEA63PN0Lk2eLwD0b3oEdC95Tm2xhB1dXNEHSbwJ-tA>
-    <xmx:38mAaV4weXH7dTtfTqrQZdBXEgbLv2B6P6WsCwSk36Z0IwmLu_jeYjcJ>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
-	id DE73E700065; Mon,  2 Feb 2026 10:59:26 -0500 (EST)
-X-Mailer: MessagingEngine.com Webmail Interface
-MIME-Version: 1.0
-X-ThreadId: Ad03WE3-YZeR
-Date: Mon, 02 Feb 2026 16:59:05 +0100
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Nicolas Dufresne" <nicolas.dufresne@collabora.com>,
- "Arnd Bergmann" <arnd@kernel.org>,
- "Detlev Casanova" <detlev.casanova@collabora.com>,
- "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>,
- "Mauro Carvalho Chehab" <mchehab@kernel.org>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- "Nathan Chancellor" <nathan@kernel.org>,
- "Hans Verkuil" <hverkuil+cisco@kernel.org>
-Cc: "Nick Desaulniers" <nick.desaulniers+lkml@gmail.com>,
- "Bill Wendling" <morbo@google.com>, "Justin Stitt" <justinstitt@google.com>,
- linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev
-Message-Id: <070cebc8-3cab-4f32-a203-9456506dfcc5@app.fastmail.com>
-In-Reply-To: <da9f044152383cacd50989b025fdce08a654bbe3.camel@collabora.com>
-References: <20260202094804.1231706-1-arnd@kernel.org>
- <16baade123f563ea92e6117bf78c56e8617daf14.camel@collabora.com>
- <3b89635f-1c1c-4e4e-b0a9-2bbd0f21bc90@app.fastmail.com>
- <da9f044152383cacd50989b025fdce08a654bbe3.camel@collabora.com>
+	id 1vmwq4-0000000EqZt-3kHV;
+	Mon, 02 Feb 2026 16:31:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770049904;
+	bh=hYLkpRWaYV8x8z9MUU6UtC2OJd7fEAIyh74fGdqvB5o=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=IFTbcwoQUlzXLIER0BnmpPUbq5Ivhw4yhyeTrehH06PprPCTNA3FWQniH+f9QmVHA
+	 Q8TnY2cHvfoGD5W5iZPYeU4MX8lYFoJtVzFHkhjcWlIiJNkgn+iFUZbPJRwbngxZk1
+	 98G040CW+lorbnf09Q5g4hiB27Fd34MfQOIZVZxk9kc4Q2lDhr2YA5gh7Aq0RmOgjL
+	 HtzqGFMYOsY44WD7NA8eqc/tXPfeDaqd4AsVEQsPdyuokyNC5ytkSFII4ARzKfOmFW
+	 x3EaGol0df9Sloa+nJVQrg+N1GktyvSjjuc6ZtffHDhSp7lYl3OXU4zmNl6KGJ0rRE
+	 kFLpgiKDxcE8w==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EC77417E0182;
+	Mon,  2 Feb 2026 17:31:42 +0100 (CET)
+Message-ID: <5c1b6a5a5a10404e51bc281054d733dc78374994.camel@collabora.com>
 Subject: Re: [PATCH 1/2] media: rkvdec: reduce excessive stack usage in
  assemble_hw_pps()
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Arnd Bergmann <arnd@arndb.de>, Arnd Bergmann <arnd@kernel.org>, Detlev
+ Casanova <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Heiko =?ISO-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+ Nathan Chancellor	 <nathan@kernel.org>, Hans Verkuil
+ <hverkuil+cisco@kernel.org>
+Cc: Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, Bill Wendling
+	 <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+	linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	llvm@lists.linux.dev
+Date: Mon, 02 Feb 2026 11:31:40 -0500
+In-Reply-To: <070cebc8-3cab-4f32-a203-9456506dfcc5@app.fastmail.com>
+References: <20260202094804.1231706-1-arnd@kernel.org>
+	 <16baade123f563ea92e6117bf78c56e8617daf14.camel@collabora.com>
+	 <3b89635f-1c1c-4e4e-b0a9-2bbd0f21bc90@app.fastmail.com>
+	 <da9f044152383cacd50989b025fdce08a654bbe3.camel@collabora.com>
+	 <070cebc8-3cab-4f32-a203-9456506dfcc5@app.fastmail.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_155931_670064_7A23405D 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20260202_163149_097846_B18CE721 
+X-CRM114-Status: GOOD (  34.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,58 +109,144 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============7614168102081083017=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBGZWIgMiwgMjAyNiwgYXQgMTY6MTIsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4g
-TGUgbHVuZGkgMDIgZsOpdnJpZXIgMjAyNiDDoCAxNTowOSArMDEwMCwgQXJuZCBCZXJnbWFubiBh
-IMOpY3JpdMKgOgo+PiBPbiBNb24sIEZlYiAyLCAyMDI2LCBhdCAxNDo0MiwgTmljb2xhcyBEdWZy
-ZXNuZSB3cm90ZToKCj4+IFJpZ2h0LCB0aGlzIHJhbmRjb25maWcgYnVpbGQgbGlrZWx5IGdvdCBj
-bG9zZXIgdG8gdGhlIHdhcm5pbmcKPj4gbGltaXQgYmVjYXVzZSBvZiB0aGUgaW5oZXJlbnQgb3Zl
-cmhlYWQgaW4gS0FTQU4sIGJ1dCB0aGUgcHJvYmxlbQo+PiB3aXRoIHRoZSB1bmFsaWduZWQgYml0
-ZmllbGRzIHdhcyBzb21ldGhpbmcgdGhhdCBJIGNvdWxkIGxhdGVyCj4+IHJlcHJvZHVjZSB3aXRo
-b3V0IEtBU0FOLCBvbiBBUk12NSBhbmQgTUlQUzMycjIuCj4+IAo+PiBUaGlzIGlzIHNvbWV0aGlu
-ZyB3ZSBzaG91bGQgZml4IGluIGNsYW5nLgo+Cj4gQWxsIGZhaXIgY29tbWVudHMuIEkgcGxhbiB0
-byB0YWtlIHRoaXMgaW50byBmaXhlcyAobm8gY2hhbmdlcyBuZWVkZWQpLCBob3BlZnVsbHkKPiBm
-b3IgcmMtMi4KPgo+IFBlcmZvcm1hbmNlIHdpc2UsIHRoaXMgY29kZSBpcyB0byByZXBsYWNlIHJl
-YWQvbWFzay93cml0ZSBpbnRvIGhhcmR3YXJlCj4gcmVnaXN0ZXJzIHdoaWNoIHdhcyBzaWduaWZp
-Y2FudGx5IHNsb3dlciBmb3IgdGhpcyBhbW91bnQgb2YgcmVnaXN0ZXJzICh+MjAwCj4gMzJiaXQg
-aW50ZWdlcnMpIGFuZCB0aGlzIHR5cGUgb2YgSVAgKGl0cyBub3Qgc3JhbSkuIFRoaXMgaXMgcnVu
-IG9uY2UgcGVyIGZyYW1lLgo+IEluIHByYWN0aWNlLCBpZiB3ZSBoYW5kIGNvZGUgdGhlIHJlYWQv
-bWFzay93cml0ZSwgdGhlIHBlcmZvcm1hbmNlIHNob3VsZAo+IGV2ZW50dWFsbHkgY29udmVyZ2Ug
-dG8gdXNpbmcgYml0ZmllbGQgYW5kIGxldHRpbmcgdGhlIGNvbXBpbGVyIGRvIHRoaXMgbWFza2lu
-ZywKPiBJIHdhcyBiZWluZyBvcHRpbWlzdGljIG9uIGhvdyB0aGUgY29tcGlsZXIgd291bGQgYmVo
-YXZlLiBJZiBwZXJmb3JtYW5jZSBvZiB0aGF0Cj4gaXMgdHJ1bHkgYSBwcm9ibGVtLCB3ZSBjYW4g
-YWx3YXlzIGp1c3QgcHJlcGFyZSB0aGUgcmFtIHJlZ2lzdGVyIGFoZWFkIG9mIHRoZQo+IG9wZXJh
-dGlvbiBxdWV1ZSAoaW5zdGVhZCBvZiBkb2luZyBpdCBpbiB0aGUgZXhlY3V0b3IpLgoKSSB0aGlu
-ayB0aGVyZSBhcmUgbXVsdGlwbGUgdGhpbmdzIGdvaW5nIG9uIGhlcmUsIHNvbWUgb2Ygd2hpY2gg
-YXJlCm1vcmUgcmVsZXZhbnQgdGhhbiBvdGhlcnM6CgogLSBUaGUgcHJvYmxlbSBJJ20gYWRkcmVz
-c2luZyB3aXRoIG15IHBhdGNoIGlzIHB1cmVseSBhIGNsYW5nIGlzc3VlCiAgIGZvciBDUFUgYXJj
-aGl0ZWN0dXJlcyB3aXRoIGhpZ2ggcmVnaXN0ZXIgcHJlc3N1cmUgd2hlbiBhc3NlbWJsaW5nCiAg
-IHRoZSBzdHJ1Y3R1cmUgaW4gbWVtb3J5LiBBcyBhIGZpcnN0LW9yZGVyIGFwcHJveGltYXRpb24s
-IHlvdSBjYW4KICAgc2VlIHRoZSBsaW5lcyBpbiB0aGUgb3V0cHV0IGJlaW5nIDEyLjAwMCB3aXRo
-IGNsYW5nLCBidXQgb25seQogICA2MDAgd2l0aCBnY2MgaW4gdGhlIGdvZGJvbHQub3JnIG91dHB1
-dC4gVGhlIGdjYyB2ZXJzaW9uIGlzbid0IHRoYXQKICAgZ3JlYXQgZWl0aGVyLCBidXQgaXQgaXMg
-b3JkZXJzIG9mIG1hZ25pdHVkZSBmZXdlciBpbnN0cnVjdGlvbnMuCgotICBNTUlPIHJlYWRzIGFy
-ZSBjbGVhcmx5IGEgcGVyZm9ybWFuY2Uga2lsbGVyLCBzbyBhc3NlbWJsaW5nIHRoZQogICBzdHJ1
-Y3R1cmUgaW4gbWVtb3J5IGFuZCB1c2luZyBtZW1jcHlfdG9pbygpIHRvIGFjY2VzcyB0aGUKICAg
-cmVnaXN0ZXJzIGFzIHlvdSBhcHBlYXIgdG8gIGJlIGRvaW5nIGlzIHRoZSByaWdodCBpZGVhLgoK
-IC0gdXNpbmcgYml0ZmllbGRzIGZvciBoYXJkd2FyZSBzdHJ1Y3R1cmVzIGlzIG5vbi1wb3J0YWJs
-ZS4gSW4KICAgcGFydGljdWxhciwgdGhlIG9yZGVyIG9mIHRoZSBmaWVsZHMgd2l0aGluIGEgd29y
-ZCBkZXBlbmRzIG9uCiAgIGJ5dGVvcmRlciAoQ09ORklHX0NQVV9CSUdfRU5ESUFOKSwgYW5kIHRo
-ZSBhbGlnbm1lbnQgZGVwZW5kcwogICBvbiB0aGUgYXJjaGl0ZWN0dXJlLCBlLmcuICdzdHJ1Y3Qg
-eyB1MzIgYToxNjogdTMyIGI6IDMyOyB1MzIgYzoxNn07CiAgIGhhcyB0aGUgc2Vjb25kIG1lbWJl
-ciBjcm9zcyBhIHUzMiBib3VuZGFyeSwgd2hpY2ggbGVhZHMgdG8KICAgcGFkZGluZyBiZXR3ZWVu
-IGEgYW5kIGIsIGFzIHdlbGwgYXMgYWZ0ZXIgYyBvbiBzb21lIGFyY2hpdGVjdHVyZXMKICAgYnV0
-IG5vdCBvdGhlcnMuIEkgd291bGQgYWx3YXlzIHJlY29tbWVuZCBzcGxpdHRpbmcgdXAgYml0Zmll
-bGRzCiAgIG9uIHdvcmQgYm91bmRhcmllcyBhbmQgYWRkaW5nIGV4cGxpY2l0IHBhZGRpbmcgd2hl
-cmUgbmVjZXNzYXJ5LgoKIC0gU2luY2UgbW9zdCBvZiB0aGUgZmllbGRzIGFyZSBleGFjdGx5IDYg
-Yml0cyBvZmZzZXQgZnJvbSBhIHdvcmQKICAgYm91bmRhcnksIHlvdSBjYW4gdHJ5IGFzc2VtYmxp
-bmcgYWxsIHRoZSAgKl9maWVsZF9vcmRlcl9jbnQqCiAgIGZpZWxkcyBpbiBhbiBhcnJheSBmaXJz
-dCB0aGF0IGhhcyBhbGwgdGhlIGJpdHMgaW4gdGhlIGNvcnJlY3QKICAgb3JkZXIsIGJ1dCB0aGVu
-IHNoaWZ0IHRoZSBlbnRpcmUgYXJyYXkgc2l4IGJpdHMuCgogICAgICBBcm5kCgpfX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWls
-aW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMu
-aW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--===============7614168102081083017==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-a6XgCD27qq03YMrDQYTC"
+
+
+--=-a6XgCD27qq03YMrDQYTC
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le lundi 02 f=C3=A9vrier 2026 =C3=A0 16:59 +0100, Arnd Bergmann a =C3=A9cri=
+t=C2=A0:
+> On Mon, Feb 2, 2026, at 16:12, Nicolas Dufresne wrote:
+> > Le lundi 02 f=C3=A9vrier 2026 =C3=A0 15:09 +0100, Arnd Bergmann a =C3=
+=A9crit=C2=A0:
+> > > On Mon, Feb 2, 2026, at 14:42, Nicolas Dufresne wrote:
+>=20
+> > > Right, this randconfig build likely got closer to the warning
+> > > limit because of the inherent overhead in KASAN, but the problem
+> > > with the unaligned bitfields was something that I could later
+> > > reproduce without KASAN, on ARMv5 and MIPS32r2.
+> > >=20
+> > > This is something we should fix in clang.
+> >=20
+> > All fair comments. I plan to take this into fixes (no changes needed), =
+hopefully
+> > for rc-2.
+> >=20
+> > Performance wise, this code is to replace read/mask/write into hardware
+> > registers which was significantly slower for this amount of registers (=
+~200
+> > 32bit integers) and this type of IP (its not sram). This is run once pe=
+r frame.
+> > In practice, if we hand code the read/mask/write, the performance shoul=
+d
+> > eventually converge to using bitfield and letting the compiler do this =
+masking,
+> > I was being optimistic on how the compiler would behave. If performance=
+ of that
+> > is truly a problem, we can always just prepare the ram register ahead o=
+f the
+> > operation queue (instead of doing it in the executor).
+>=20
+> I think there are multiple things going on here, some of which are
+> more relevant than others:
+>=20
+> =C2=A0- The problem I'm addressing with my patch is purely a clang issue
+> =C2=A0=C2=A0 for CPU architectures with high register pressure when assem=
+bling
+> =C2=A0=C2=A0 the structure in memory. As a first-order approximation, you=
+ can
+> =C2=A0=C2=A0 see the lines in the output being 12.000 with clang, but onl=
+y
+> =C2=A0=C2=A0 600 with gcc in the godbolt.org output. The gcc version isn'=
+t that
+> =C2=A0=C2=A0 great either, but it is orders of magnitude fewer instructio=
+ns.
+>=20
+> -=C2=A0 MMIO reads are clearly a performance killer, so assembling the
+> =C2=A0=C2=A0 structure in memory and using memcpy_toio() to access the
+> =C2=A0=C2=A0 registers as you appear to=C2=A0 be doing is the right idea.
+>=20
+> =C2=A0- using bitfields for hardware structures is non-portable. In
+> =C2=A0=C2=A0 particular, the order of the fields within a word depends on
+> =C2=A0=C2=A0 byteorder (CONFIG_CPU_BIG_ENDIAN), and the alignment depends
+> =C2=A0=C2=A0 on the architecture, e.g. 'struct { u32 a:16: u32 b: 32; u32=
+ c:16};
+> =C2=A0=C2=A0 has the second member cross a u32 boundary, which leads to
+> =C2=A0=C2=A0 padding between a and b, as well as after c on some architec=
+tures
+> =C2=A0=C2=A0 but not others. I would always recommend splitting up bitfie=
+lds
+> =C2=A0=C2=A0 on word boundaries and adding explicit padding where necessa=
+ry.
+
+Ok, got it, clearly the registers bitfield (which is a set of 32bit bitfiel=
+d) is
+fine (appart from endian, but this is deliberatly ignored). These are the o=
+ne I
+had mind, and are optimized with copy_toio.
+
+For the SPS/PPS bistream, which is shared memory with the IP, I tend to agr=
+ee
+this might not have been the ideal choice, though the author did verify
+everything with pahole for the relevant architectures (in practice only two
+ARM64 SoC use this bitstream format). I'm happy to revisit this eventually.=
+ And
+would not hurt to share a common bitstream writer, that works with both end=
+ian
+in V4L2 (or use one from the core if that already exist).
+
+Nicolas
+
+>=20
+> =C2=A0- Since most of the fields are exactly 6 bits offset from a word
+> =C2=A0=C2=A0 boundary, you can try assembling all the=C2=A0 *_field_order=
+_cnt*
+> =C2=A0=C2=A0 fields in an array first that has all the bits in the correc=
+t
+> =C2=A0=C2=A0 order, but then shift the entire array six bits.
+
+
+
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Arnd
+
+--=-a6XgCD27qq03YMrDQYTC
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaYDRbAAKCRDZQZRRKWBy
+9BmnAP4v0H9AIDOJwkSt5nsCy1gJSeMTLHMTmG01wySik1NyDQD+Oxp+8Jhu76y/
+V7e6xCFUqnyj6/L/L8hQ8Ob/lQOZVgQ=
+=PulB
+-----END PGP SIGNATURE-----
+
+--=-a6XgCD27qq03YMrDQYTC--
+
+
+--===============7614168102081083017==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7614168102081083017==--
+
