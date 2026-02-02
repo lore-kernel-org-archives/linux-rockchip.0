@@ -4,53 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8360AE73158
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 10:27:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74E01E7316F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 13:43:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cIiE1QJJ/ZawLQZCSit3HBuP+/mq34c4cEBjzMLjSTc=; b=BvJ/IV34N/55p0
-	/CrRsa8eJ8+KKl5RWXEuONP3sYt8Ez0F6y2SwBvgYJbBUgeuG5wIHUnd9Asl7WGavLqFAeD+4gQa0
-	sFYkVcVTazgoCwuG4dN1BV9HdkEtCAHS1dk/1typlQ20BuB6irhLAmxRFwD5KdLJ0DyuqHbQ/2mh8
-	YzFnSfoih6VAPGQT9IsiIIYTGV7aSG/Gl4uWBj6IrasJ+MDpGAzapIWCV07xcyDRrfMwamxeQcHf8
-	VXfQtQywoGEB3MnmDZEf7gWGNgKYlosDeNpAPvccnWZdRoMaGAfsJeCeifwmGhbW+JvfE0YjnnNbM
-	7CEdKFFGy1zzGkbJsqDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Qj62Uz5ZSZ3k8yUmjNeGkrEq1c99Dq+9mujjcBiJfmc=; b=dadPrNutN2lZOxj1bFJef12rt8
+	3bDyOOh5l85TCXJIYWrteOCZUY+iS+8mfUTVXFDMqPY9HUHFeXg5ujH/HvzFW1+MIfUNUrQesbxWu
+	V3v8rPosCfe87vtBkT+xgNBZly9xmswzSUrqnplse9GPf3QYMfFPJ5Gw2jIdx8nT0nDGTbn8oUhyM
+	DgZeUhY4Wl+upCioYrO0sVgE2+frYsQ+xN+SR3yHrV7qi4byV5glsfe7VW8tkzkMmcwDqx02RBPky
+	5f8Qe1+UeWNL/J774WpQFnqWzPPY5EWNnnUrlGhLfi933CGiB+Ym+JtGttQ6NeSI2kcoUmiVTKRL6
+	Bd/vXorw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmr9p-00000004p13-3w7e;
-	Mon, 02 Feb 2026 10:27:50 +0000
-Received: from smtp-1909.mail.infomaniak.ch ([2001:1600:7:10::1909])
+	id 1vmuCb-000000051aY-2Owa;
+	Mon, 02 Feb 2026 13:42:53 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmr9m-00000004oxr-2u7n
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Feb 2026 10:27:48 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4f4N9B1XMVz9km;
-	Mon,  2 Feb 2026 11:27:42 +0100 (CET)
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4f4N993hzRz8V;
-	Mon,  2 Feb 2026 11:27:41 +0100 (CET)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Mon, 02 Feb 2026 11:27:26 +0100
-Subject: [PATCH 2/2] arm64: dts: rockchip: fix Ethernet PHY not found on
- PX30 Ringneck
+	id 1vmuCY-000000051a0-29dn;
+	Mon, 02 Feb 2026 13:42:52 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770039766;
+	bh=gcTfsdv162COO0lrMacW+zMoNiUg+aaJ2YIgxYnS0Ak=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Zc/+9uWqy6PXrqry3Avy/WE37bZfyD/pTm5q9Ynph2a/6aScihGzebs5+5kSDz7+3
+	 05WcpD/Di4+B7njXyzo93kx8snjSlJl53ze2eP21JZZu5aBVn68bc104nk5s4jkuhe
+	 isSWebCLRG40qe6Q6yEREZpZttyoQ+zv46BTFMNzbVqd/AP9ajkihBW2xLg6Z1k1GY
+	 uNB1cjS+IyCGMkLRnuqNtH86f+xXakrDkIfLptaHXPdJ6In/FXeYjsyOj8lOiUOCC4
+	 /v65MMm9hNU3CvoSdLyRnUzjIEzPkYCVk/wLEOwe2JkYXkOhswj/EuQ2eyhvpnCT2o
+	 7thn6xx70mQtg==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 96AA917E0927;
+	Mon,  2 Feb 2026 14:42:44 +0100 (CET)
+Message-ID: <16baade123f563ea92e6117bf78c56e8617daf14.camel@collabora.com>
+Subject: Re: [PATCH 1/2] media: rkvdec: reduce excessive stack usage in
+ assemble_hw_pps()
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Arnd Bergmann <arnd@kernel.org>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Nathan Chancellor	
+ <nathan@kernel.org>, Hans Verkuil <hverkuil+cisco@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Nick Desaulniers	
+ <nick.desaulniers+lkml@gmail.com>, Bill Wendling <morbo@google.com>, Justin
+ Stitt <justinstitt@google.com>, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, llvm@lists.linux.dev
+Date: Mon, 02 Feb 2026 08:42:41 -0500
+In-Reply-To: <20260202094804.1231706-1-arnd@kernel.org>
+References: <20260202094804.1231706-1-arnd@kernel.org>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
 MIME-Version: 1.0
-Message-Id: <20260202-px30-eth-phy-v1-2-ef365be64922@cherry.de>
-References: <20260202-px30-eth-phy-v1-0-ef365be64922@cherry.de>
-In-Reply-To: <20260202-px30-eth-phy-v1-0-ef365be64922@cherry.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Heiko Stuebner <heiko.stuebner@cherry.de>, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>, 
- stable@vger.kernel.org
-X-Mailer: b4 0.14.3
-X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_022746_878998_F7B1E881 
-X-CRM114-Status: GOOD (  15.56  )
+X-CRM114-CacheID: sfid-20260202_054250_711079_39922EA8 
+X-CRM114-Status: GOOD (  26.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,62 +90,206 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0416496730869265189=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
 
-When not passing the PHY ID with an ethernet-phy-idX.Y compatible
-property, the MDIO bus will attempt to auto-detect the PHY by reading
-its registers and then probing the appropriate driver. For this to work,
-the PHY needs to be in a working state.
+--===============0416496730869265189==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-7kpS3ryHRVhS3mBqQbB8"
 
-Unfortunately, the net subsystem doesn't control the PHY reset GPIO when
-attempting to auto-detect the PHY. This means the PHY needs to be in a
-working state when entering the Linux kernel. This historically has been
-the case for this device, but only because the bootloader was taking
-care of initializing the Ethernet controller even when not using it.
-We're attempting to support the removal of the network stack in the
-bootloader, which means the Linux kernel will be entered with the PHY
-still in reset and now Ethernet doesn't work anymore.
 
-The devices in the field only ever had a TI DP83825, so let's simply
-bypass the auto-detection mechanism entirely by passing the appropriate
-PHY IDs via the compatible.
+--=-7kpS3ryHRVhS3mBqQbB8
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Note that this is only an issue since commit e463625af7f9 ("arm64: dts:
-rockchip: move reset to dedicated eth-phy node on ringneck") as before
-that commit the reset was done by the MAC controller before starting the
-MDIO auto-detection mechanism, via the snps,reset-* properties.
+Hi Arnd,
 
-Cc: stable@vger.kernel.org
-Fixes: e463625af7f9 ("arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck")
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
----
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Le lundi 02 f=C3=A9vrier 2026 =C3=A0 10:47 +0100, Arnd Bergmann a =C3=A9cri=
+t=C2=A0:
+> From: Arnd Bergmann <arnd@arndb.de>
+>=20
+> The rkvdec_pps had a large set of bitfields, all of which
+> as misaligned. This causes clang-21 and likely other versions to
+> produce absolutely awful object code and a warning about very
+> large stack usage, on targets without unaligned access:
+>=20
+> drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: stack =
+frame size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-Wfra=
+me-larger-than]
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-index 4203b335a2633..973b4c5880e24 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-@@ -344,7 +344,7 @@ &io_domains {
- 
- &mdio {
- 	dp83825: ethernet-phy@0 {
--		compatible = "ethernet-phy-ieee802.3-c22";
-+		compatible = "ethernet-phy-id2000.a140";
- 		reg = <0x0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&phy_rst>;
+We had already addressed and validated that on clang-21, which indicates me=
+ that
+we likely are missing an architecture (or a config) in our CI. Can you docu=
+ment
+which architecture, configuration and flags was affected so we can add it o=
+n our
+side ?
 
--- 
-2.52.0
+Our media pipeline before sending to Linus and the clang builds trace are i=
+n the
+following link, in case it matters.
 
+https://gitlab.freedesktop.org/linux-media/media-committers/-/pipelines/158=
+8731
+https://gitlab.freedesktop.org/linux-media/media-committers/-/jobs/91604655
+
+>=20
+> Part of the problem here is how all the bitfield accesses are
+> inlined into a function that already has large structures on
+> the stack.
+
+Another observation is that you had to enable ASAN to make it miss-behave o=
+n for
+loop unrolling (with complex bitfield writes).  All I've obtained by visiti=
+ng
+the Link: is that its armv7-a architecture.
+
+>=20
+> Mark set_field_order_cnt() as noinline_for_stack, and split out
+> the following accesses in assemble_hw_pps() into another noinline
+> function, both of which now using around 800 bytes of stack in the
+> same configuration.
+>=20
+> There is clearly still something wrong with clang here, but
+> splitting it into multiple functions reduces the risk of stack
+> overflow.
+
+We've tried really hard to avoid this noninline_for_stack just because comp=
+ilers
+are buggy. I'll have a look again in case I find some ideas, but meanwhile,=
+ with
+failing architecture in the commit message:
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+>=20
+> Fixes: fde24907570d ("media: rkvdec: Add H264 support for the VDPU383 var=
+iant")
+> Link: https://godbolt.org/z/acP1eKeq9
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+> =C2=A0.../rockchip/rkvdec/rkvdec-vdpu383-h264.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
+ 50 ++++++++++---------
+> =C2=A01 file changed, 27 insertions(+), 23 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c=
+ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> index 6ab3167addc8..ef69f2a36478 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> @@ -130,7 +130,7 @@ struct rkvdec_h264_ctx {
+> =C2=A0	struct vdpu383_regs_h26x regs;
+> =C2=A0};
+> =C2=A0
+> -static void set_field_order_cnt(struct rkvdec_pps *pps, const struct v4l=
+2_h264_dpb_entry *dpb)
+> +static noinline_for_stack void set_field_order_cnt(struct rkvdec_pps *pp=
+s, const struct v4l2_h264_dpb_entry *dpb)
+> =C2=A0{
+> =C2=A0	pps->top_field_order_cnt0 =3D dpb[0].top_field_order_cnt;
+> =C2=A0	pps->bot_field_order_cnt0 =3D dpb[0].bottom_field_order_cnt;
+> @@ -166,6 +166,31 @@ static void set_field_order_cnt(struct rkvdec_pps *p=
+ps, const struct v4l2_h264_d
+> =C2=A0	pps->bot_field_order_cnt15 =3D dpb[15].bottom_field_order_cnt;
+> =C2=A0}
+> =C2=A0
+> +static noinline_for_stack void set_dec_params(struct rkvdec_pps *pps, co=
+nst struct v4l2_ctrl_h264_decode_params *dec_params)
+> +{
+> +	const struct v4l2_h264_dpb_entry *dpb =3D dec_params->dpb;
+> +
+> +	for (int i =3D 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
+> +		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> +			pps->is_longterm |=3D (1 << i);
+> +		pps->ref_field_flags |=3D
+> +		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)) << i;
+> +		pps->ref_colmv_use_flag |=3D
+> +		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) << i;
+> +		pps->ref_topfield_used |=3D
+> +		 (!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
+> +		pps->ref_botfield_used |=3D
+> +			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) << i;
+> +	}
+> +	pps->pic_field_flag =3D
+> +		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
+> +	pps->pic_associated_flag =3D
+> +		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
+> +
+> +	pps->cur_top_field =3D dec_params->top_field_order_cnt;
+> +	pps->cur_bot_field =3D dec_params->bottom_field_order_cnt;
+> +}
+> +
+> =C2=A0static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> =C2=A0			=C2=A0=C2=A0=C2=A0 struct rkvdec_h264_run *run)
+> =C2=A0{
+> @@ -177,7 +202,6 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> =C2=A0	struct rkvdec_h264_priv_tbl *priv_tbl =3D h264_ctx->priv_tbl.cpu;
+> =C2=A0	struct rkvdec_sps_pps *hw_ps;
+> =C2=A0	u32 pic_width, pic_height;
+> -	u32 i;
+> =C2=A0
+> =C2=A0	/*
+> =C2=A0	 * HW read the SPS/PPS information from PPS packet index by PPS id=
+.
+> @@ -261,28 +285,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> =C2=A0		!!(pps->flags & V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT);
+> =C2=A0
+> =C2=A0	set_field_order_cnt(&hw_ps->pps, dpb);
+> +	set_dec_params(&hw_ps->pps, dec_params);
+> =C2=A0
+> -	for (i =3D 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
+> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> -			hw_ps->pps.is_longterm |=3D (1 << i);
+> -
+> -		hw_ps->pps.ref_field_flags |=3D
+> -			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)) << i;
+> -		hw_ps->pps.ref_colmv_use_flag |=3D
+> -			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) << i;
+> -		hw_ps->pps.ref_topfield_used |=3D
+> -			(!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
+> -		hw_ps->pps.ref_botfield_used |=3D
+> -			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) << i;
+> -	}
+> -
+> -	hw_ps->pps.pic_field_flag =3D
+> -		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
+> -	hw_ps->pps.pic_associated_flag =3D
+> -		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
+> -
+> -	hw_ps->pps.cur_top_field =3D dec_params->top_field_order_cnt;
+> -	hw_ps->pps.cur_bot_field =3D dec_params->bottom_field_order_cnt;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static void rkvdec_write_regs(struct rkvdec_ctx *ctx)
+
+--=-7kpS3ryHRVhS3mBqQbB8
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaYCp0gAKCRDZQZRRKWBy
+9PKZAQDW2WJYqk6PvFuUHWBQTPBTqefBGs5IqpO8QwVWcBdQRwD/YxyoF4mjJmnc
+OGxL3bcdMp/Ib+/bvccOgrHz6b08vAE=
+=qu3H
+-----END PGP SIGNATURE-----
+
+--=-7kpS3ryHRVhS3mBqQbB8--
+
+
+--===============0416496730869265189==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0416496730869265189==--
+
