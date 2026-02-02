@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03328E73156
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8360AE73158
 	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Feb 2026 10:27:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,32 +12,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MZH/NjCe+ftQ4RZKd3nevQmlH8H2vf9ckmCuFx+eTls=; b=bQs+mWLllltVq+
-	M97Le1/Qk0zeMauFKjywluQz9Ug7wFnhUwI5gOw6BftjJBRgp4EVkIcE23D7v8n/MJm11pZHIkGNc
-	EjkPowvNz+tYhHlZfy79LX/oksr4xDyIRcX9+cNUVcWtwCNHZ16pR4G5BFZ/nPXbd3LN13DqkXP05
-	FcwBFhA/p5qJaG1C6Bbp3Is3zjUl/9kgptGAnXHNKHenad63XyL2NA/uOIPFGB6hmDXcHP6kHjitD
-	XEpIotSAHI0jp+p7LFQrq9V+nVxryaAEb/nBk/hPVroDzxnIDIZD0U6hjiBDCPwMNWzfY1rwzGgMs
-	EL933OTqYDV7LxsOYCPw==;
+	List-Owner; bh=cIiE1QJJ/ZawLQZCSit3HBuP+/mq34c4cEBjzMLjSTc=; b=BvJ/IV34N/55p0
+	/CrRsa8eJ8+KKl5RWXEuONP3sYt8Ez0F6y2SwBvgYJbBUgeuG5wIHUnd9Asl7WGavLqFAeD+4gQa0
+	sFYkVcVTazgoCwuG4dN1BV9HdkEtCAHS1dk/1typlQ20BuB6irhLAmxRFwD5KdLJ0DyuqHbQ/2mh8
+	YzFnSfoih6VAPGQT9IsiIIYTGV7aSG/Gl4uWBj6IrasJ+MDpGAzapIWCV07xcyDRrfMwamxeQcHf8
+	VXfQtQywoGEB3MnmDZEf7gWGNgKYlosDeNpAPvccnWZdRoMaGAfsJeCeifwmGhbW+JvfE0YjnnNbM
+	7CEdKFFGy1zzGkbJsqDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmr9r-00000004p3A-45ub;
-	Mon, 02 Feb 2026 10:27:52 +0000
-Received: from smtp-bc0b.mail.infomaniak.ch ([2001:1600:7:10::bc0b])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vmr9m-00000004oxg-3eqQ
-	for linux-rockchip@lists.infradead.org;
+	id 1vmr9p-00000004p13-3w7e;
 	Mon, 02 Feb 2026 10:27:50 +0000
+Received: from smtp-1909.mail.infomaniak.ch ([2001:1600:7:10::1909])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vmr9m-00000004oxr-2u7n
+	for linux-rockchip@lists.infradead.org;
+	Mon, 02 Feb 2026 10:27:48 +0000
 Received: from smtp-4-0000.mail.infomaniak.ch (smtp-4-0000.mail.infomaniak.ch [10.7.10.107])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4f4N993pdZz7Y0;
+	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4f4N9B1XMVz9km;
+	Mon,  2 Feb 2026 11:27:42 +0100 (CET)
+Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4f4N993hzRz8V;
 	Mon,  2 Feb 2026 11:27:41 +0100 (CET)
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4f4N986dlPz6vV;
-	Mon,  2 Feb 2026 11:27:40 +0100 (CET)
 From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Mon, 02 Feb 2026 11:27:25 +0100
-Subject: [PATCH 1/2] arm64: dts: rockchip: fix Ethernet PHY not found on
- PX30 Cobra
+Date: Mon, 02 Feb 2026 11:27:26 +0100
+Subject: [PATCH 2/2] arm64: dts: rockchip: fix Ethernet PHY not found on
+ PX30 Ringneck
 MIME-Version: 1.0
-Message-Id: <20260202-px30-eth-phy-v1-1-ef365be64922@cherry.de>
+Message-Id: <20260202-px30-eth-phy-v1-2-ef365be64922@cherry.de>
 References: <20260202-px30-eth-phy-v1-0-ef365be64922@cherry.de>
 In-Reply-To: <20260202-px30-eth-phy-v1-0-ef365be64922@cherry.de>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -49,8 +49,8 @@ Cc: Heiko Stuebner <heiko.stuebner@cherry.de>, devicetree@vger.kernel.org,
 X-Mailer: b4 0.14.3
 X-Infomaniak-Routing: alpha
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260202_022747_060768_608D8503 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20260202_022746_878998_F7B1E881 
+X-CRM114-Status: GOOD (  15.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,18 +87,23 @@ The devices in the field only ever had a TI DP83825, so let's simply
 bypass the auto-detection mechanism entirely by passing the appropriate
 PHY IDs via the compatible.
 
+Note that this is only an issue since commit e463625af7f9 ("arm64: dts:
+rockchip: move reset to dedicated eth-phy node on ringneck") as before
+that commit the reset was done by the MAC controller before starting the
+MDIO auto-detection mechanism, via the snps,reset-* properties.
+
 Cc: stable@vger.kernel.org
-Fixes: bb510ddc9d3e ("arm64: dts: rockchip: add px30-cobra base dtsi and board variants")
+Fixes: e463625af7f9 ("arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck")
 Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
 ---
- arch/arm64/boot/dts/rockchip/px30-cobra.dtsi | 2 +-
+ arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/px30-cobra.dtsi b/arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
-index b7e669d8ba4d1..add917af5de78 100644
---- a/arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-cobra.dtsi
-@@ -397,7 +397,7 @@ &io_domains {
+diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+index 4203b335a2633..973b4c5880e24 100644
+--- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
++++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
+@@ -344,7 +344,7 @@ &io_domains {
  
  &mdio {
  	dp83825: ethernet-phy@0 {
