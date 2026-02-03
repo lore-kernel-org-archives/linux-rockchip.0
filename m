@@ -4,73 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 527B7E7FDD6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 11:53:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73C0EE87821
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 12:05:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
 	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hLkY7xEukyvYysdduUwHNiNaOvo7cuaC06afZSJfESE=; b=nOGuaM0/K7Hr5a
-	B9HVgpxH8uwcoPP9puX5xcDoGYahkwb89axH6trBXEl79Fo0L126RiDqkio/3O/Z0iTn97F2hm/o4
-	bPuD7u5d/fIWK4UeSTo2BEkIJpQAsOCO5+CBaXu/CdpRdxgO+GAqcWgqjdTw2plrQxidXicyzXLA3
-	4+A9rcmQjI6m92i+HHwuUCh2pfaK/X7omaACq/oahfSJeuTWOcKNgnWU4niG5whgKfov3SarswcVQ
-	gocnZYWl7ABbwbn8wlpgsfd8aBa2S577XISORq6rUJHzxhs4v9eA8+GzrCNG9i2zApNJWlu7o76iP
-	4pYulzU/HYWLAtdx06iQ==;
+	List-Owner; bh=LcIyqwXvObH5uYpEdxN8iHh43sTnK4K9AhQ8laXnDuo=; b=m+ie0aHL2FsRsI
+	GeAp+2vy3Qwvf+gTSM6jaMeH2DuN5H7wuUMvpzKq5c30Hhuw8Z6Iqs7+xLoLYinbScewsEEf7U7CR
+	HHoZTMOEH5wP8F1Hi+3YmeGhOMkbvVwj6z8vlJEy+FlWDrHeitY8FRKecbaFmbbzZKKRAbgB4WwBV
+	mj50RdQCNjhIRXNiOnagqsKL6M/5h9neCOuKepW5RoWfNzW9XcbSidcP+05CYiFkQWWHgW3+6M67g
+	YDiBoKy3OiEu7eRBwpVmK2nllUMXKGCEkhZDDkDj59puQI9XA7UWnp6Tp5StkbJNUnn+AqHG42hgU
+	b/Pp+AAGnxKeVGckSMuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnEyX-00000006ZIP-2WjF;
-	Tue, 03 Feb 2026 11:53:45 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vnF9r-00000006Zxc-0t7L;
+	Tue, 03 Feb 2026 12:05:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnEyT-00000006ZHX-3Y5v;
-	Tue, 03 Feb 2026 11:53:43 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 4B3024E423DB;
-	Tue,  3 Feb 2026 11:53:38 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id EED3760728;
-	Tue,  3 Feb 2026 11:53:37 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 42835119A8888;
-	Tue,  3 Feb 2026 12:53:23 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1770119615; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=czGxAqtWlC7CiVBQnNcTBd7QV+mqCq2IlCe+hizwtH0=;
-	b=pGLrDq0FDlC6TZPzDwz+Q/LbCPms3wDALSsrNFAGRXrrJUMWn/+VlSWQN2QR1wDRN5t7R/
-	4dzoNl826W3u5sMZpiUnAdxPkKb84cPrxTMxNDLahXGpiwPNmn9eS5238/Jp+bC+ex8+vX
-	vbDhkjVeUStK9q7btu0T2fx76OX81Ua0754MhEjiyODMlnM/R7O8S56hvlNuX01P0qZM+G
-	nlwC3jJMJKjoHhH2sq8CMgGpUNdNEwPZhhN6u26MXXTEcHuZ+OoKdCgPnRYERLalsXIgXs
-	ne+a7qepIg13lOceMckrlU+BJr2gXQ4vfi5Pi4HuB/tssJGozFElfoz4tOiY2A==
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org, 
- Damon Ding <damon.ding@rock-chips.com>
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se, 
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com, 
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, 
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de, 
- festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com, 
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com, 
- jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com, 
- heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com, 
- dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com, 
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-In-Reply-To: <20251217093321.3108939-1-damon.ding@rock-chips.com>
-References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
-Subject: Re: (subset) [PATCH v8 00/18] Apply drm_bridge_connector and
- panel_bridge helper for the Analogix DP driver
-Message-Id: <177011960346.1855144.4866699055858398856.b4-ty@bootlin.com>
-Date: Tue, 03 Feb 2026 12:53:23 +0100
+	id 1vnF9p-00000006ZxW-3Yfz
+	for linux-rockchip@lists.infradead.org;
+	Tue, 03 Feb 2026 12:05:25 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E2A6C601E6;
+	Tue,  3 Feb 2026 12:05:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3E334C2BC87;
+	Tue,  3 Feb 2026 12:05:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770120324;
+	bh=kao7TbUlacMJNZsS+k0rXkPVIuTTFly/b1SFR9FwuYo=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=icHe28pzwl5/c2wAhmSHrTWGl/6O+r2a/PRrs/NiuDYb4ozYspISsafQzO00aBqcl
+	 ET24NflbQKZ9cZWBFZDL3MftVomlunmOmco0A7EeoVKxRJXDvM9TN9+LEyA1RXqnWW
+	 Sd/03pefvaLjjnAduq15OlICl7kPb4sLDrsAxiVnFhy1hWp7JFyWwUweWsoixODTgg
+	 QZPndtIe9r9nGuyuJ6Bc6qHNw/+owbRpfP/cKlc+9E2zHJ5XpB56ngQBSRFFbvbcrz
+	 k4vdneIMOnzaZs8xP8h+B/W312xvgYzgVpQcaLmB7UWBUpVF5QNc+iHfo0L+fV9HCu
+	 A5v3xiDYrJPxw==
+From: Mark Brown <broonie@kernel.org>
+To: linux-sound@vger.kernel.org, Chris Morgan <macroalpha82@gmail.com>
+Cc: devicetree@vger.kernel.org, wangweidong.a@awinic.com, tiwai@suse.com, 
+ perex@perex.cz, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
+ lgirdwood@gmail.com, heiko@sntech.de, linux-rockchip@lists.infradead.org, 
+ Chris Morgan <macromorgan@hotmail.com>
+In-Reply-To: <20260128174608.1498-1-macroalpha82@gmail.com>
+References: <20260128174608.1498-1-macroalpha82@gmail.com>
+Subject: Re: (subset) [PATCH V2 0/3] Anbernic RG-DS AW87391 Speaker Amps
+Message-Id: <177012032197.85387.2083007353460643930.b4-ty@kernel.org>
+Date: Tue, 03 Feb 2026 12:05:21 +0000
 MIME-Version: 1.0
-X-Mailer: b4 0.14.3
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_035342_042701_B10AA5C2 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-Mailer: b4 0.15-dev-47773
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,33 +71,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Wed, 17 Dec 2025 17:33:03 +0800, Damon Ding wrote:
-> PATCH 1 is to ensure the last bridge declares OP_EDID or OP_MODES or both.
-> PATCH 2 is a small format optimization for struct analogid_dp_device.
-> PATCH 3 is to perform mode setting in &drm_bridge_funcs.atomic_enable.
-> PATCH 4 is to add a new parameter to store the point of next bridge.
-> PATCH 5 is to make legacy bridge driver more universal.
-> PATCH 6-11 are preparations for apply drm_bridge_connector helper.
-> PATCH 12 is to apply the drm_bridge_connector helper.
-> PATCH 13-15 are to move the panel/bridge parsing to the Analogix side.
-> PATCH 16 is to attach the next bridge on Analogix side uniformly.
-> PATCH 17-18 are to apply the panel_bridge helper.
+On Wed, 28 Jan 2026 11:46:05 -0600, Chris Morgan wrote:
+> Add support for the Anbernic RG-DS Speaker Amplifiers. The Anbernic
+> RG-DS uses two AW87391 ICs at 0x58 and 0x5B on i2c2. However, the
+> manufacturer did not provide a firmware file, only a sequence of
+> register writes to each device to enable and disable them.
+> 
+> Add support for this *specific* configuration in the AW87390 driver.
+> Since we are relying on a device specific sequence I am using a
+> device specific compatible string. This driver does not currently
+> support the aw87391 for any other device as I have none to test
+> with valid firmware. Attempts to create firmware with the AwinicSCPv4
+> have not been successful.
 > 
 > [...]
 
-Applied, thanks!
+Applied to
 
-[01/18] drm/display: bridge_connector: Ensure last bridge determines EDID/modes detection capabilities
-        commit: 3c05e956b85e70cbd5042e03f615b23ca4635385
-[02/18] drm/bridge: analogix_dp: Formalize the struct analogix_dp_device
-        commit: 10a2694fde68ba214eca7d24229094fc2427fddd
-[03/18] drm/bridge: analogix_dp: Move &drm_bridge_funcs.mode_set to &drm_bridge_funcs.atomic_enable
-        commit: cff3f89ffbdd4b6c43a117c01aaf5b290ff80803
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-next
 
-Best regards,
--- 
-Luca Ceresoli <luca.ceresoli@bootlin.com>
+Thanks!
+
+[1/3] ASoC: dt-bindings: aw87390: Add Anbernic RG-DS Amplifier
+      commit: c26d6cdade6c2a96049f24fac64a8e3734188703
+[2/3] ASoC: codecs: aw87390: Add Anbernic RG-DS amp driver
+      commit: a145cfd0ffe7bd7d61ce25839cec737c449b0d2c
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
 _______________________________________________
