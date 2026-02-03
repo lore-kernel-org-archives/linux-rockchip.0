@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D383E8784D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7230AE87850
 	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 16:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8xo1ZJrvEYqbm5XRO9xYiJXF3JI/t3OcEn/CMcCL9Qs=; b=LBuiEjbRi7kz/O
-	i+3gShFxxFKrL6L6NEeaXiZSoV+PUKG/MuUnkZu3SnnqXA6sZCg6jaXkjiIgv3Yk/JwTR7zlOgoB4
-	oYtIhRc2LpMmgAXgib8HpiVwsk5UdzZ6BlFOMCI+eMTO2xkJK3luIPgewPKV/O+DqzrmmNPO2Ggvr
-	DQAVNYJKlErCK0C0OyBOTK+8quBGICIrKnLWqc0XJbKf1BwYQgL80ovbTEs1hWd1F/O81BXffSgw/
-	fR9dka6hTZyFUoSrpgFWEkeuLeXlzsBe5unYUHmiAMHyKzlTiAoUUe27t+L8N1BKqkTR1BOyD5UGQ
-	Lby0Ky8nPVRaRE2U6QnQ==;
+	List-Owner; bh=Gu1/arhzI3uO/NhPG4Yx9WETzZcBcANmJ4AamEdZWss=; b=IEbcNqrNeJVlhJ
+	AmL/nATzEKnXadXq9Q5j3c2CnqumE2MS2yPu+XhLC7xOfuy7uTSiC5N/E3JcZ9UoTlI56PjX91c88
+	jVAFVff98OHf5AHrKf62c50uFD/8SAgD5Q/tOj27GSxZS3IrlLQaH323SvXY5lsaKCQjs/NVkSR/l
+	gSWPtOu/AaG25xF6v1d7JAjDdP/2a2S/QGzqE8d3QUIvtDAN5EScV4s64RKSRCh6wx67ZfmptVoja
+	R5OyXzWtK/HUiJV+/Umb7dLXADCnsYCjWb2Lo+8ugrup9qHHBh37Gb4nEhPLqMC948XzV28DjUA6t
+	Z61Io74OPgMF5K8GRjRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnJY8-00000006y31-3uiu;
-	Tue, 03 Feb 2026 16:46:48 +0000
+	id 1vnJY0-00000006xti-0nM1;
+	Tue, 03 Feb 2026 16:46:40 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnJY1-00000006xtX-1WhM;
-	Tue, 03 Feb 2026 16:46:43 +0000
+	id 1vnJXx-00000006xsC-22AI;
+	Tue, 03 Feb 2026 16:46:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770137195;
-	bh=pi4TI7H4itbep8bOjPNJrdS5hAS2gdaa+bre7RTmdIA=;
+	s=mail; t=1770137194;
+	bh=Iq2VyvqCDRD+eOJzowyqd7ph1sHZmTOb8jsOzunp67A=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hcBdW37AA1exy5Hk8RiwjgF6LlTMaRjAvHBG8mXHz5BuUQff+Kv8U6LoJa4c2A9dq
-	 IYFDc47LIIbndj7cp+brSh4wl0CTfzHZQLLp0QGx6K5rwmFD+cGyaViIC2qRbGPwP3
-	 wFfJG8RWYyJQN+zshsim19kuSW2rIwAeJm9FbQJBHC9wagCu2CzBjK/eQh7oMJ+uG4
-	 Ga4Bud760RTgZX7GmhDdeGMmxkw7c4HFqlvYG0/HDMmRwMJUIoYz+XdTww54U4Xqvu
-	 9X/lynHkStcWiH+kJo8hkwUeTQ/GZ/Ui09wBhi/7Wnat9JHw6sphCGqU9s3Tyh80C6
-	 aut0OlbclfVOg==
+	b=Dvtt/hvmF9m49AHUiZkUYVyzzLE59Ff2jp98hHXz9CEk4Rp61HWm77xGc4xDqdF/g
+	 dyRtyZLK94tDmqvSETqYecxv4LVcETAZ/sS6NFFTEV8ux1ZyPQ2aTwYJNXIDB2Acrf
+	 /vgXSeg0fppNzkdoodywIgEixdiZm55FRr+6mGb8poYm3DaxXhvYNOX7CZaMMRV+u+
+	 tWtbU6WfmG3S/mmPYrK4AhnyWy6aJpAHfABQoiRaw3KdVXyVwMYtAccJ4+yR5ktZKm
+	 g8l+jexw3Jne4ZmmzSSFtwfTFou1I/zPZ6CYR82kL4SYaeo5lgCqWr1Cp+zM05/Ps1
+	 KO9rTEUyKAnCg==
 Received: from jupiter.universe (dyndsl-091-248-189-143.ewe-ip-backbone.de [91.248.189.143])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5A4517E1516;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6719217E1274;
 	Tue,  3 Feb 2026 17:46:34 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 199AB48002C; Tue, 03 Feb 2026 17:46:34 +0100 (CET)
+	id 12E3B480023; Tue, 03 Feb 2026 17:46:34 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 03 Feb 2026 17:46:29 +0100
-Subject: [PATCH v2 07/10] ASoC: rockchip: spdif: Add support for set mclk
- rate
+Date: Tue, 03 Feb 2026 17:46:23 +0100
+Subject: [PATCH v2 01/10] ASoC: rockchip: spdif: Use
+ device_get_match_data()
 MIME-Version: 1.0
-Message-Id: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-7-4412016cf577@collabora.com>
+Message-Id: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-1-4412016cf577@collabora.com>
 References: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
 In-Reply-To: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -60,29 +60,28 @@ Cc: Alexey Charkov <alchark@gmail.com>,
  Sjoerd Simons <sjoerd.simons@collabora.com>, linux-sound@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sugar Zhang <sugar.zhang@rock-chips.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2896;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1245;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=JfQt8iv01h3jUyWNHVEds69H5a+SlC3Qy6aZ/D87xHQ=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmCJmnlOWtXPSUXVegwfbJ81P++b3bpPfk2z
- SfDgcFZ4gt68okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpgiZpAAoJENju1/PI
- O/qaUbcP/jgzoVaKshqu3HLYM5MxNG8+T+vHpkI5z9RB5Ad5zErTRd8/a0x9z0O5p9Sa8Q5Fs5S
- MNml+Mcym/KXzSexxpGivxNl7HOjQVisqIBALZAiGACxAyWzjMhWt9kkduXApbNFh6ekpM8b7r1
- NdGTZFvdSSCEbOUXi7o/nVJsVTN2LGj0kDut/xt2YPE+kAIf79SIu47yoB2ee5tZ8HtMS4aFskf
- b+kPgMUW3vxxlg9+J6ND7XVV088AJD/Nkd1Xv/dIvyLhdTzMdlOwIhtLagXt6H0vWnRtpchJXpz
- tGzBavpyOjufaq1uqWOLtkF0jE6dvvB9nc3ACLItZGp6USjC6yF/W6hSkOnFPdnWjuK7ODxUr8c
- FdnEm2C1+XZk3FnsvXZqSMUf4y1jS4zZOMD0Uo4d17OHIsoxQHKr5bRkfgN/8NMN6kVEcrMIYB3
- /03W5lirAghbRThjZBaPY9Fc1oDFjnN2cRJ1u9o3yb/VaOT1WW9MDxcgoJomxyVEG+BSAcEx9mO
- HxcQVwUtZm0uAp6zOWOtZnQOttgNkzHDsHQB5ImO3Qc1mH8aVnP177WSdFn6jXbOEQ4Wg6gJfhr
- GcnCUgB51JvILOYXl0hXW21DmuVY2vUngcbs4CDwAfzQt7ieZmCe0yTDElU7rpNMW/6nq4bmcMZ
- Kjuky7USlTIDm1Z91w28wbw==
+ bh=Iq2VyvqCDRD+eOJzowyqd7ph1sHZmTOb8jsOzunp67A=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmCJmkgSHXAkdrHlb1P37EIIWW44+I3S9jvP
+ d0/OBDiR1M8s4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpgiZpAAoJENju1/PI
+ O/qao6AP/1K50SluzsdZygiemzGEhjxlWtrQkO8NJXlFk5U2t5XWLPuG8X5KSoaBDWoCuKG5Uex
+ e1x+rwPUnNIVxCBgriDfHXLWWktwyZcgLl43wqYetkJNq/2IqM3+nmH/XiSMBqIeeIdGMic2ebo
+ 8gT9W+56G0Rfp7/Nia01EqRr5Xg49aKBz+TperIdpifNCWHCQ2RQVDBb73caBAsMuj/odJl2hw+
+ fp7UND6lgpKY3Iqtl2/EA7bpOVUdheZF4oSDRqUo93Hv03sSlDDJP0G1l1qBQatwH5IK1FiOsNz
+ UqpG5/NsnhwERuvqgCftxS1dvsgB07w0fm0zkFfsA8F19f12VdURShyDfvspq5R2z0fJYwV36As
+ hO1rEF5ouImtjdu1kJ9aPi+ndH3SA4Q9VriQOLO7OQdkZqCBvTkfz85Bv9YiMvihJ5l4gTgQ9m4
+ TlnU58yg8Rjwo8Yoq2SqxZatFo0VPpDf4qB8a+YVEWxI/F5YZ4ZZtQu5egBGY/c7dZvokuTRTS/
+ gCbaUipT6MlWRT8psloUo/9gWiedGtFmIslFcb0S8zpO/mOm21FOsZq1zYEaFyGp82j8wU11glX
+ yYJk38FCub9HxirPmyOCqT7bCw2zhN+dV/COSSu+84kuIh8Bt2JtUZ9YJqy7o8A6a+ZgLgB/Hil
+ 1DqKqK1Dt/vqmxWe8gT8qsA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_084641_589279_1888C227 
-X-CRM114-Status: GOOD (  16.87  )
+X-CRM114-CacheID: sfid-20260203_084637_705130_6FABB279 
+X-CRM114-Status: GOOD (  14.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,93 +98,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
+Use device_get_match_data(), so that the probe routine does not
+directly reference the of_match_table. This allows moving the
+table at the end of the file where most recent drivers have it.
 
-Allow setting the mclk rate from the machine driver.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- sound/soc/rockchip/rockchip_spdif.c | 34 +++++++++++++++++++++++-----------
- sound/soc/rockchip/rockchip_spdif.h |  2 +-
- 2 files changed, 24 insertions(+), 12 deletions(-)
+ sound/soc/rockchip/rockchip_spdif.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index c1221ff00ed7..3b66d97f0582 100644
+index d365168934dc..23f14274a6e0 100644
 --- a/sound/soc/rockchip/rockchip_spdif.c
 +++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -86,12 +86,15 @@ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
- 			      struct snd_soc_dai *dai)
+@@ -283,14 +283,14 @@ static const struct regmap_config rk_spdif_regmap_config = {
+ static int rk_spdif_probe(struct platform_device *pdev)
  {
- 	struct rk_spdif_dev *spdif = snd_soc_dai_get_drvdata(dai);
-+	unsigned int mclk_rate = clk_get_rate(spdif->mclk);
- 	unsigned int val = SPDIF_CFGR_HALFWORD_ENABLE;
--	int srate, mclk;
-+	int bmc, div;
+ 	struct device_node *np = pdev->dev.of_node;
++	enum rk_spdif_type spdif_type;
+ 	struct rk_spdif_dev *spdif;
+-	const struct of_device_id *match;
+ 	struct resource *res;
+ 	void __iomem *regs;
  	int ret;
  
--	srate = params_rate(params);
--	mclk = srate * 128;
-+	/* bmc = 128fs */
-+	bmc = 128 * params_rate(params);
-+	div = DIV_ROUND_CLOSEST(mclk_rate, bmc);
-+	val |= SPDIF_CFGR_CLK_DIV(div);
+-	match = of_match_node(rk_spdif_match, np);
+-	if (match->data == (void *)RK_SPDIF_RK3288) {
++	spdif_type = (uintptr_t) device_get_match_data(&pdev->dev);
++	if (spdif_type == RK_SPDIF_RK3288) {
+ 		struct regmap *grf;
  
- 	switch (params_format(params)) {
- 	case SNDRV_PCM_FORMAT_S16_LE:
-@@ -107,14 +110,6 @@ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
- 		return -EINVAL;
- 	}
- 
--	/* Set clock and calculate divider */
--	ret = clk_set_rate(spdif->mclk, mclk);
--	if (ret != 0) {
--		dev_err(spdif->dev, "Failed to set module clock rate: %d\n",
--			ret);
--		return ret;
--	}
--
- 	ret = regmap_update_bits(spdif->regmap, SPDIF_CFGR,
- 				 SPDIF_CFGR_CLK_DIV_MASK |
- 				 SPDIF_CFGR_HALFWORD_ENABLE |
-@@ -177,7 +172,24 @@ static int rk_spdif_dai_probe(struct snd_soc_dai *dai)
- 	return 0;
- }
- 
-+static int rk_spdif_set_sysclk(struct snd_soc_dai *dai,
-+			       int clk_id, unsigned int freq, int dir)
-+{
-+	struct rk_spdif_dev *spdif = snd_soc_dai_get_drvdata(dai);
-+	int ret;
-+
-+	if (!freq)
-+		return 0;
-+
-+	ret = clk_set_rate(spdif->mclk, freq);
-+	if (ret)
-+		dev_err(spdif->dev, "Failed to set mclk: %d\n", ret);
-+
-+	return ret;
-+}
-+
- static const struct snd_soc_dai_ops rk_spdif_dai_ops = {
-+	.set_sysclk = rk_spdif_set_sysclk,
- 	.probe = rk_spdif_dai_probe,
- 	.hw_params = rk_spdif_hw_params,
- 	.trigger = rk_spdif_trigger,
-diff --git a/sound/soc/rockchip/rockchip_spdif.h b/sound/soc/rockchip/rockchip_spdif.h
-index d8be9aae5b19..fcc28b6c4f58 100644
---- a/sound/soc/rockchip/rockchip_spdif.h
-+++ b/sound/soc/rockchip/rockchip_spdif.h
-@@ -15,7 +15,7 @@
- */
- #define SPDIF_CFGR_CLK_DIV_SHIFT	(16)
- #define SPDIF_CFGR_CLK_DIV_MASK		(0xff << SPDIF_CFGR_CLK_DIV_SHIFT)
--#define SPDIF_CFGR_CLK_DIV(x)		(x << SPDIF_CFGR_CLK_DIV_SHIFT)
-+#define SPDIF_CFGR_CLK_DIV(x)		((x-1) << SPDIF_CFGR_CLK_DIV_SHIFT)
- 
- #define SPDIF_CFGR_HALFWORD_SHIFT	2
- #define SPDIF_CFGR_HALFWORD_DISABLE	(0 << SPDIF_CFGR_HALFWORD_SHIFT)
+ 		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
 
 -- 
 2.51.0
