@@ -4,83 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 441D4E87856
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 16:46:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6901AE8784E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 17:12:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CldsRayyGXzVn+NNA8jlIes0xDGuEzdxS3BWgjRy+rc=; b=G0U+rHCeIVKmXf
-	0DUheb2bGlVfXvpzXRx5e2cSstJDhkzdvZk89UaKivlUWG7FXvWpWonlflhP5dU29CecJWA0VbUBg
-	ZvRS7anKL2raGvaauAuFltidz8kq3BXKBMXgkfGCl/1THkIIIP2EGGV4I3aSpzHJlD26lIujtLlHU
-	41/YgPlannnBXS/L9l4oIT94/PHC21UxI2I99q3RDVfF/k1iThDM3bEGDg7oUt2dwn/4oxcrTBwDS
-	hyPqL8YwWgP2lyOG7PGENN+pOLJvtzZ+ECo+RlUhvUz7/8b15CScd6NJ56zdHVDSdh/OOjvm9AV6H
-	BvM7MceUHbFtmd+INV9A==;
+	List-Owner; bh=/IpL2UQYJg3YlrE7Obf76uSiGyrqqr9DhvK8yBeMhgg=; b=HnZ1HRiNhKZ9gp
+	uvlYOGsokqKDqFInlQkBl8AYojpYHTTGX04eNGGNJLVHaw0l3XMJSVGfLzFwMoBz8q0gq7cJP0RDE
+	zoRxjoxjENElCBobiy8piqkg3LwdXK84CHBs1Sq70eQaGZQVGOmLt3CkMewSP+XtEMGI8Yvf/tKPk
+	aQ23HSFLGfvg7iH9aDOBhJs6a8UsVqMyI5bXvtc2JwEM3bjK3YfaHR1G4vsaZTZMX8zHQkZjeWl9A
+	zuYB8C05vHQF3TpBIfQsJ2yF3tMU0Im839VE87bVcJVpGAMh8n1myclMrGlQ+Qde9FePnrd24vWJc
+	reqIEbcISKULGeiOx8tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnJYB-00000006y7L-0JO1;
-	Tue, 03 Feb 2026 16:46:51 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vnJxJ-000000071gX-3dcM;
+	Tue, 03 Feb 2026 17:12:49 +0000
+Received: from mail1.manjaro.org ([2a01:4f8:c010:b6e8::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnJY2-00000006xu9-2OJz;
-	Tue, 03 Feb 2026 16:46:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770137194;
-	bh=ZRxveFjuHAKz0N9JC6lifo8s63buu6Gdv4EOmOK0de8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=e1TsKTxFm2d1oUPJtrrrQPlcPL3VSKBI5Q75WYPIgOu+X6PiXI661JyrrASNic2ir
-	 4PNhsqMRAOyRqNAofs3BgZCf3EDS+aOYEywykqbhUbebm602ZZIu+tm2dkE6zb5ilJ
-	 +nqLUQioCbR+KYA+cajACXKnK4yNzC0V4P4xx9H20DVlLcR7vVH0QxgBfBr6pAsKeg
-	 Jm0dzuqeWTFR9Gae+6paKUQKpPM435tgYs10lUNkkYnTo7pizepj6qACo6f1945qFq
-	 V8A/gGiWV4RDs7TeE4kmF+Rrxv0XbxjyT5jJvwQsbQstzxjoZN4PpsggjVqYGxVRQx
-	 yd0ivz8MVHWmQ==
-Received: from jupiter.universe (dyndsl-091-248-189-143.ewe-ip-backbone.de [91.248.189.143])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7EB4E17E150C;
-	Tue,  3 Feb 2026 17:46:34 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 15755480029; Tue, 03 Feb 2026 17:46:34 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 03 Feb 2026 17:46:26 +0100
-Subject: [PATCH v2 04/10] ASoC: rockchip: spdif: Use dev_err_probe
+	id 1vnJxF-000000071ff-0SEY;
+	Tue, 03 Feb 2026 17:12:47 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id F2DB041C6B;
+	Tue,  3 Feb 2026 18:12:37 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1770138761; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=Q/RzIoETwq7EI8AtWKZybI6w+H5plu3IYaH4qKanRYc=;
+	b=NuUOa/tWVQA88Evlzzmypa+ZhmtZ9WD5NE3qkTSvFW9VDfzrlzWn/ica/Oh19ldTQOQex1
+	CG9Fzqx/MhWhIrx46uP60Hpriu/XwRWX0tUqFIbbDG19lngzHUuzJCSIS+GwVeQadyPf90
+	VxkSaSy9cqfGiwqZM3p0SoZDp1w/pOF25hTsRFUJ99YTCucmLrE+ehN97OzMwKkEm3Xq/f
+	ov+VWlccOepeSU/UKtDTG7Rom3SqhOaZgZr3a+oEmlU0ZQUEZdr69c7BNzN7k3IFODzDgL
+	FduwERu9VmRpfmuGf7o30rvVO61f3yK3rO1DnmotOQR50cKw3Q49+moMFBH42g==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <20260203151013.305032-1-jerrysteve1101@gmail.com>
+References: <705908c9-4552-d808-783e-3ce0cf45bbff@manjaro.org> <20260203151013.305032-1-jerrysteve1101@gmail.com>
+Date: Tue, 03 Feb 2026 18:12:37 +0100
+Cc: alchark@gmail.com, andyshrk@163.com, conor+dt@kernel.org, devicetree@vger.kernel.org, heiko@sntech.de, krzk+dt@kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, robh@kernel.org
+To: "Jun Yan" <jerrysteve1101@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-4-4412016cf577@collabora.com>
-References: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
-In-Reply-To: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: Alexey Charkov <alchark@gmail.com>, 
- Sjoerd Simons <sjoerd.simons@collabora.com>, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1609;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=ZRxveFjuHAKz0N9JC6lifo8s63buu6Gdv4EOmOK0de8=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmCJmlZLSvZNd4ggqytp70MbIaQgmk7mJCC4
- 5Rcm1NEyWbe6YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpgiZpAAoJENju1/PI
- O/qaS98QAIE/Z2Q7IpgGLLQqvceXzfwIkMGfA9C+vmXmuu73tq5diU1og1jHqNpau3c5mCZ7v5K
- 0hGIYiTrWmLKT6OirIUyHfw3iTXKGAUKeay+5szDNymUqmiekVlnhL1t+dFMAHRtVBJf5jskIxC
- 6VkCjhuR5ac28EIawNkG5FOMMSrJyd2Q7tuSF/x9G3o+iF17HZ3r3pMezrqbvpMy8H9oOqLyRVs
- 6vv+QcsckJe5hzORv/rPAQfCcg5ul5IQYZ5Gg4JHnTZeNhKkSVhfgfF6VwFkdzzRzXSlkomeO1t
- KUDNma+EpPnhFs5a6dqM+mzMWkfSzeM9LNYHLzXthkNl7+5OS/vrCZ6qT3piyIXgihXSODEZTdp
- mYm3jo5tymQMvFYXxQzRnh+uX3DYjS5qGPYtfhUdVBX0JdDj7b2ueSF+3mNzdp+KRqHby1sB+tp
- pHgrJ7USfYH7UvylNxAiruSzk3Bx79GdoGgJSUICN1tZqfg3nUS8DKe+0bXms2Glg7aJ6/alICJ
- RxL0hQRpPemBK4k3lL3BGzv78zfU7b++qFAvlDYSm/8ZUPK2UJRcWzqXiL+YPbG7Y6ActDnV92J
- t/9cMZo9WsrC95vDBseZn7vcTEAC6QGl3nXroXY6YoZkm2481P/IYh6QnUlzFNa9ewTZaROg8xM
- Lwnf8iAqBaAgyVo5bz3AvDA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+Message-ID: <f6eb572c-dd2c-9606-4fb5-b26b51bbbb06@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v3 3/3] =?utf-8?q?arm64=3A?==?utf-8?q?_dts=3A?=
+ =?utf-8?q?_rockchip=3A?= Add OneThing Edge Cube series
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
+X-Rspamd-Fuzzy: 4d8686c9e18ae259edcb18fbfd3b0c43d48bb8492706122afcdcffd3f170db1beae6de266bce58e1b5874c7e84fd60e44ae1a487be8ceb28d76f935daafaea6c
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_084642_819242_4226191D 
-X-CRM114-Status: GOOD (  12.88  )
+X-CRM114-CacheID: sfid-20260203_091245_560481_D68FCBA1 
+X-CRM114-Status: GOOD (  27.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,56 +69,101 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Cleanup the probe routine a little bit by using dev_err_probe
-instead of dev_err.
+Hello Jun,
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- sound/soc/rockchip/rockchip_spdif.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+On Tuesday, February 03, 2026 16:10 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
+> > On Monday, February 02, 2026 16:04 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
+> > > The OneThing Edge Cube (OEC) series features the RK3566 SoC, 8GB
+> > > eMMC storage, and supports one SATA interface, one Gigabit Ethernet
+> > > port, and one USB 3.0 port.
+> > > 
+> > > Other than the difference in RAM capacity, the OEC and OEC-turbo are
+> > > identical in all other specifications.
+> > > 
+> > >   Specification:
+> > >     - Rockchip RK3566
+> > >     - LPDDR4X 2GB (OEC) / 4GB (OEC-turbo)
+> > >     - eMMC 8GB
+> > >     - Gigabit Ethernet port x 1
+> > >     - USB 3.0 port x 1
+> > >     - USB-C 2.0 port x 1
+> > >     - 12V DC Power supply
+> > >     - SATA 3.0 connector x 1
+> > > 
+> > > These devices do not have a PMIC, and their hardware circuit design
+> > > is highly similar to that of the rk3566-box-demo[1]. Hardware schematics
+> > > are not available at this time, with the vendor firmware dts available
+> > > for reference[2].
+> > > 
+> > > Ethernet, USB 3.0 and SATA 3.0 ports tested, all working well.
+> > > 
+> > > [1] https://elixir.bootlin.com/linux/v6.18.6/source/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+> > > [2] https://archive.org/download/wxy-oec-RK3566-4G-dump/wxy-oec-RK3566-4G-dump.dts
+> > > 
+> > > Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+> > > ---
+> > >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> > >  .../rockchip/rk3566-onething-oec-series.dts   | 312 ++++++++++++++++++
+> > >  2 files changed, 313 insertions(+)
+> > >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+> > > 
+> > > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > > index 4d384f153c13..234fa53abe17 100644
+> > > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > > @@ -104,6 +104,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353v.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353vs.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-odroid-m1s.dtb
+> > > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-onething-oec-series.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v1.1.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v2.1.dtb
+> > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
+> > > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+> > > new file mode 100644
+> > > index 000000000000..2007b93e190e
+> > > --- /dev/null
+> > > +++ b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+> > > @@ -0,0 +1,312 @@
+> > > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > > +
+> > > +/dts-v1/;
+> > > +
+> > > +#include <dt-bindings/gpio/gpio.h>
+> > > +#include <dt-bindings/leds/common.h>
+> > > +#include <dt-bindings/pinctrl/rockchip.h>
+> > > +#include "rk3566.dtsi"
+> > > +
+> > > +/ {
+> > > +	model = "OneThing OEC/OEC-turbo";
+> > > +	compatible = "onething,oec-turbo", "onething,oec", "rockchip,rk3566";
+> > 
+> > Thanks for the v3!  After thinking a bit more about it, it would be better
+> > to name the board dtb "rk3566-onething-edge-cube.dtb" and omit the "series"
+> > part, because the only difference between the board variants is the amount
+> > of DRAM.  Also, "onething,oec-turbo" should be removed from the compatibles,
+> > and the single compatible renamed to "onething,edge-cube", because I see no
+> > need to have an additional compatible, which may be added later if really
+> > needed for some unforeseen differentiating purpose.
+> > 
+> > Also, it might be better to use "OneThing Edge Cube/Edge Cube Turbo" as the
+> > combined name, because "Edge Cube" is more self-descriptive than just "OEC",
+> > which may also help with various search engines down the road.
+> 
+> Sorry for the quick follow-up.
+> In official documentation (Most of it is in Chinese) from OneThing Tech[1], 
+> the designations "OEC/OEC-turbo" are more commonly and widely used.
+> for this reason, I propose retaining the "OEC/OEC-turbo" naming in the model 
+> property.
 
-diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index 841ef499ed7f..1c62fcb0d8d4 100644
---- a/sound/soc/rockchip/rockchip_spdif.c
-+++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -279,11 +279,9 @@ static int rk_spdif_probe(struct platform_device *pdev)
- 		struct regmap *grf;
- 
- 		grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
--		if (IS_ERR(grf)) {
--			dev_err(&pdev->dev,
-+		if (IS_ERR(grf))
-+			return dev_err_probe(&pdev->dev, PTR_ERR(grf),
- 				"rockchip_spdif missing 'rockchip,grf'\n");
--			return PTR_ERR(grf);
--		}
- 
- 		/* Select the 8 channel SPDIF solution on RK3288 as
- 		 * the 2 channel one does not appear to work
-@@ -334,16 +332,12 @@ static int rk_spdif_probe(struct platform_device *pdev)
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rk_spdif_component,
- 					      &rk_spdif_dai, 1);
--	if (ret) {
--		dev_err(&pdev->dev, "Could not register DAI\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Could not register DAI\n");
- 
- 	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
--	if (ret) {
--		dev_err(&pdev->dev, "Could not register PCM\n");
--		return ret;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Could not register PCM\n");
- 
- 	return 0;
- }
+I see, that's an interesting twist.  As some kind of a compromise, it would
+be best to have the board dtb named "rk3566-onething-edge-cube.dtb" and use
+"OneThing Edge Cube (OEC)/OEC Turbo" as the combined name.  That way the
+board dtb name isn't too short, while "OEC" is present in the model name,
+for search engines to pick it up, hopefully, and for people to see it in
+a few places. :)
 
--- 
-2.51.0
+> [1] https://help.onethingcloud.com/be81/OEC1/80c5
 
 
 _______________________________________________
