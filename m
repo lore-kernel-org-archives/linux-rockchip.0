@@ -4,93 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DB47E8783D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 15:10:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D383E8784D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 16:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NPQKgcv+62Pi8Uu5PTMVHf9T2/hItWXO/kiSnXl7wrQ=; b=AdOBV0E/uo+pyr
-	bhqsvwQ4ZdKdP/pfOzfXSosSH5/pG5I0K49jP2G9bCV8vrMlMZBNMyuPbexwz7xgc0jFg8UodlADy
-	l9esAu9zwjzVQVTRtjwomDDRJS+JjIg0On12+EbNaXkI+KNE2PySVcMxb544QiIFVimBxmIlLC0f8
-	b8vLYAqdv+5uia809v2H2rCDV7UJVSLhbUxG2IXRz0ElBC2IZlUSVzlacroaNf6MSdx38+UneUWFu
-	aIv7h9AZKVkgirFwJ6BpJ8GvFKP4P9V/46QPUNe5l6pgqFxwFCUsSMjxhr2RNexznuBEAVnoExd6s
-	86RkSyJCRcXjN/t6bpxw==;
+	List-Owner; bh=8xo1ZJrvEYqbm5XRO9xYiJXF3JI/t3OcEn/CMcCL9Qs=; b=LBuiEjbRi7kz/O
+	i+3gShFxxFKrL6L6NEeaXiZSoV+PUKG/MuUnkZu3SnnqXA6sZCg6jaXkjiIgv3Yk/JwTR7zlOgoB4
+	oYtIhRc2LpMmgAXgib8HpiVwsk5UdzZ6BlFOMCI+eMTO2xkJK3luIPgewPKV/O+DqzrmmNPO2Ggvr
+	DQAVNYJKlErCK0C0OyBOTK+8quBGICIrKnLWqc0XJbKf1BwYQgL80ovbTEs1hWd1F/O81BXffSgw/
+	fR9dka6hTZyFUoSrpgFWEkeuLeXlzsBe5unYUHmiAMHyKzlTiAoUUe27t+L8N1BKqkTR1BOyD5UGQ
+	Lby0Ky8nPVRaRE2U6QnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnI2u-00000006ot8-04tu;
-	Tue, 03 Feb 2026 15:10:28 +0000
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+	id 1vnJY8-00000006y31-3uiu;
+	Tue, 03 Feb 2026 16:46:48 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnI2q-00000006osQ-39rl
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Feb 2026 15:10:26 +0000
-Received: by mail-pl1-x631.google.com with SMTP id d9443c01a7336-29f102b013fso59678485ad.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Feb 2026 07:10:24 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770131423; x=1770736223; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=MK5oboaEkHiYwSTjLFoCDPQwjjJ04uX2RfYZ7bqzPwQ=;
-        b=N5ybamT47rzRDafkTZcFlwlXP4nljkf1uQhWvkGgKRkf33jp5bME/L6BjGkmFGgifR
-         Ear/Jb6KxrZ5nkVkvbD9+yaSYx3UQRzUBsMzeTms/HNM/YI8wyzXTFV0b9AiuC3Pswzi
-         Blgm01+ulAPZTqqwLGRuN5kR9LcJrxaMR+wW8Z/cUOB3Fcur5hZ2QMBp0JGFdrRH09Ny
-         56ZWcXX//bmhtMTHepwLwBn+Zb2N0W1QJ9QO5rRNXd++OH7UQ5IfTzCd/Yib8HRwVvNh
-         VoDtEJ8L8PDEgZZCTiDOYN6PlTVvtp7I98VdWTYnnae7ce+fEvQzJUDJv3ZXDO0aP5lm
-         MKHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770131423; x=1770736223;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=MK5oboaEkHiYwSTjLFoCDPQwjjJ04uX2RfYZ7bqzPwQ=;
-        b=b62WzqFyHbP7yUHg1e+WTwUUGJpdL1pT8U+Ngi6M5Xb96TqhkNDrkVLZjMXE71+fwp
-         o4YHqTVdzkgRJd+qE86N0QawWpO2HhBTuB6qM2sPSh0UX4VrgE/Git5Z+b8njb3lSFs0
-         goKv5r47vX9blIM5iYlI09Yhi4DNkTXAtFQtCElf3deV9f/E4I6uVE8mGlyeVkxsdJm6
-         1btiMCx3PWWVghAu2n0w9AWMBN+eR2sV+BvBC70rtJJ0K6Oqo2ts3MOSGhuQgchlu2c5
-         ZMeVW+QsRVH1PI3oE18nSzCT5OtEJnM/cxs4n+Rex2Qu2SKjjfL0pWzJgFK81gwGX6O3
-         Aw/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCWbzO7DJDeyIUamwb2GsWpOnpAsNbcbgpJPBy7qxP+K14sBiIfQmq7inubvBDEqpu5dEfTAP9wjWXbpq664Sg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzdIaptXpi5Ml1FpZ2ZGg8p4tIqSBNOhXVoxT5au4ywSGNxDTU+
-	mbs1We5mWCDdVg7998zsc2wW4FfRDIUSDHOcbx6BTfaWUmzH2bllkRVh
-X-Gm-Gg: AZuq6aKpCQqEkZ8oiiOPyBNfM1KOtvXQYVJM+knaDiShL2Aa9C3d8Imw8CoTlD+qnYv
-	AqTXIZYXnYh9vum0s+IV7TsthVLf0c0QUGf5MBsoYvbNGW9l3yhXotz8FoqkEYiH2XbULLNNOKt
-	/TOUb4zcN9Do/EnqoAucxuXxnus0MYXBPdaRn5xZIgX4tA2WoF/hyxuil+WjaiZ1NQ5YX30Zvm2
-	C7w5TU14BK8R9wC3eayRsJFbyk9ucJogOdGOjfVDmJ2lTNOMNhb1XXpH3o9ClKQ0AXv6KTJZp0t
-	DSDXtFtS1msAZCZcTNRR+grPhHGvcg0bcZlZa+kn9amFBNNCtiES5uN/IoiQ73s71J2B6kpPGu9
-	vMTVRZ43DRKp7rJULbqfVNcEAIKBgl2CvzY5PTyX7YyRAAkkdWt2ivOP3R9WZPk8IKdxGNOtHGE
-	ckKTUmNjfS
-X-Received: by 2002:a17:903:1112:b0:2a0:d33d:a8f0 with SMTP id d9443c01a7336-2a8d993d3b3mr134577365ad.50.1770131422758;
-        Tue, 03 Feb 2026 07:10:22 -0800 (PST)
-Received: from arch.localdomain ([2409:8a28:a52:d2b1::1004])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a88b4c3e04sm172196585ad.46.2026.02.03.07.10.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Feb 2026 07:10:22 -0800 (PST)
-From: Jun Yan <jerrysteve1101@gmail.com>
-To: dsimic@manjaro.org
-Cc: alchark@gmail.com,
-	andyshrk@163.com,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	jerrysteve1101@gmail.com,
-	krzk+dt@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	robh@kernel.org
-Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: Add OneThing Edge Cube series 
-Date: Tue,  3 Feb 2026 23:10:13 +0800
-Message-ID: <20260203151013.305032-1-jerrysteve1101@gmail.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <705908c9-4552-d808-783e-3ce0cf45bbff@manjaro.org>
-References: <705908c9-4552-d808-783e-3ce0cf45bbff@manjaro.org>
+	id 1vnJY1-00000006xtX-1WhM;
+	Tue, 03 Feb 2026 16:46:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770137195;
+	bh=pi4TI7H4itbep8bOjPNJrdS5hAS2gdaa+bre7RTmdIA=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=hcBdW37AA1exy5Hk8RiwjgF6LlTMaRjAvHBG8mXHz5BuUQff+Kv8U6LoJa4c2A9dq
+	 IYFDc47LIIbndj7cp+brSh4wl0CTfzHZQLLp0QGx6K5rwmFD+cGyaViIC2qRbGPwP3
+	 wFfJG8RWYyJQN+zshsim19kuSW2rIwAeJm9FbQJBHC9wagCu2CzBjK/eQh7oMJ+uG4
+	 Ga4Bud760RTgZX7GmhDdeGMmxkw7c4HFqlvYG0/HDMmRwMJUIoYz+XdTww54U4Xqvu
+	 9X/lynHkStcWiH+kJo8hkwUeTQ/GZ/Ui09wBhi/7Wnat9JHw6sphCGqU9s3Tyh80C6
+	 aut0OlbclfVOg==
+Received: from jupiter.universe (dyndsl-091-248-189-143.ewe-ip-backbone.de [91.248.189.143])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5A4517E1516;
+	Tue,  3 Feb 2026 17:46:34 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 199AB48002C; Tue, 03 Feb 2026 17:46:34 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Tue, 03 Feb 2026 17:46:29 +0100
+Subject: [PATCH v2 07/10] ASoC: rockchip: spdif: Add support for set mclk
+ rate
 MIME-Version: 1.0
+Message-Id: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-7-4412016cf577@collabora.com>
+References: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
+In-Reply-To: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Alexey Charkov <alchark@gmail.com>, 
+ Sjoerd Simons <sjoerd.simons@collabora.com>, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2896;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=JfQt8iv01h3jUyWNHVEds69H5a+SlC3Qy6aZ/D87xHQ=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmCJmnlOWtXPSUXVegwfbJ81P++b3bpPfk2z
+ SfDgcFZ4gt68okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpgiZpAAoJENju1/PI
+ O/qaUbcP/jgzoVaKshqu3HLYM5MxNG8+T+vHpkI5z9RB5Ad5zErTRd8/a0x9z0O5p9Sa8Q5Fs5S
+ MNml+Mcym/KXzSexxpGivxNl7HOjQVisqIBALZAiGACxAyWzjMhWt9kkduXApbNFh6ekpM8b7r1
+ NdGTZFvdSSCEbOUXi7o/nVJsVTN2LGj0kDut/xt2YPE+kAIf79SIu47yoB2ee5tZ8HtMS4aFskf
+ b+kPgMUW3vxxlg9+J6ND7XVV088AJD/Nkd1Xv/dIvyLhdTzMdlOwIhtLagXt6H0vWnRtpchJXpz
+ tGzBavpyOjufaq1uqWOLtkF0jE6dvvB9nc3ACLItZGp6USjC6yF/W6hSkOnFPdnWjuK7ODxUr8c
+ FdnEm2C1+XZk3FnsvXZqSMUf4y1jS4zZOMD0Uo4d17OHIsoxQHKr5bRkfgN/8NMN6kVEcrMIYB3
+ /03W5lirAghbRThjZBaPY9Fc1oDFjnN2cRJ1u9o3yb/VaOT1WW9MDxcgoJomxyVEG+BSAcEx9mO
+ HxcQVwUtZm0uAp6zOWOtZnQOttgNkzHDsHQB5ImO3Qc1mH8aVnP177WSdFn6jXbOEQ4Wg6gJfhr
+ GcnCUgB51JvILOYXl0hXW21DmuVY2vUngcbs4CDwAfzQt7ieZmCe0yTDElU7rpNMW/6nq4bmcMZ
+ Kjuky7USlTIDm1Z91w28wbw==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_071024_799934_57220DBC 
-X-CRM114-Status: GOOD (  27.65  )
+X-CRM114-CacheID: sfid-20260203_084641_589279_1888C227 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,96 +99,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-> Hello Jun,
-> 
-> On Monday, February 02, 2026 16:04 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
-> > The OneThing Edge Cube (OEC) series features the RK3566 SoC, 8GB
-> > eMMC storage, and supports one SATA interface, one Gigabit Ethernet
-> > port, and one USB 3.0 port.
-> > 
-> > Other than the difference in RAM capacity, the OEC and OEC-turbo are
-> > identical in all other specifications.
-> > 
-> >   Specification:
-> >     - Rockchip RK3566
-> >     - LPDDR4X 2GB (OEC) / 4GB (OEC-turbo)
-> >     - eMMC 8GB
-> >     - Gigabit Ethernet port x 1
-> >     - USB 3.0 port x 1
-> >     - USB-C 2.0 port x 1
-> >     - 12V DC Power supply
-> >     - SATA 3.0 connector x 1
-> > 
-> > These devices do not have a PMIC, and their hardware circuit design
-> > is highly similar to that of the rk3566-box-demo[1]. Hardware schematics
-> > are not available at this time, with the vendor firmware dts available
-> > for reference[2].
-> > 
-> > Ethernet, USB 3.0 and SATA 3.0 ports tested, all working well.
-> > 
-> > [1] https://elixir.bootlin.com/linux/v6.18.6/source/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
-> > [2] https://archive.org/download/wxy-oec-RK3566-4G-dump/wxy-oec-RK3566-4G-dump.dts
-> > 
-> > Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
-> > ---
-> >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
-> >  .../rockchip/rk3566-onething-oec-series.dts   | 312 ++++++++++++++++++
-> >  2 files changed, 313 insertions(+)
-> >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
-> > 
-> > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-> > index 4d384f153c13..234fa53abe17 100644
-> > --- a/arch/arm64/boot/dts/rockchip/Makefile
-> > +++ b/arch/arm64/boot/dts/rockchip/Makefile
-> > @@ -104,6 +104,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353v.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353vs.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-odroid-m1s.dtb
-> > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-onething-oec-series.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v1.1.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v2.1.dtb
-> >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
-> > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
-> > new file mode 100644
-> > index 000000000000..2007b93e190e
-> > --- /dev/null
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
-> > @@ -0,0 +1,312 @@
-> > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> > +
-> > +/dts-v1/;
-> > +
-> > +#include <dt-bindings/gpio/gpio.h>
-> > +#include <dt-bindings/leds/common.h>
-> > +#include <dt-bindings/pinctrl/rockchip.h>
-> > +#include "rk3566.dtsi"
-> > +
-> > +/ {
-> > +	model = "OneThing OEC/OEC-turbo";
-> > +	compatible = "onething,oec-turbo", "onething,oec", "rockchip,rk3566";
-> 
-> Thanks for the v3!  After thinking a bit more about it, it would be better
-> to name the board dtb "rk3566-onething-edge-cube.dtb" and omit the "series"
-> part, because the only difference between the board variants is the amount
-> of DRAM.  Also, "onething,oec-turbo" should be removed from the compatibles,
-> and the single compatible renamed to "onething,edge-cube", because I see no
-> need to have an additional compatible, which may be added later if really
-> needed for some unforeseen differentiating purpose.
-> 
-> Also, it might be better to use "OneThing Edge Cube/Edge Cube Turbo" as the
-> combined name, because "Edge Cube" is more self-descriptive than just "OEC",
-> which may also help with various search engines down the road.
+From: Sugar Zhang <sugar.zhang@rock-chips.com>
 
-Sorry for the quick follow-up.
-In official documentation (Most of it is in Chinese) from OneThing Tech[1], 
-the designations "OEC/OEC-turbo" are more commonly and widely used.
-for this reason, I propose retaining the "OEC/OEC-turbo" naming in the model 
-property.
+Allow setting the mclk rate from the machine driver.
 
-[1] https://help.onethingcloud.com/be81/OEC1/80c5
+Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ sound/soc/rockchip/rockchip_spdif.c | 34 +++++++++++++++++++++++-----------
+ sound/soc/rockchip/rockchip_spdif.h |  2 +-
+ 2 files changed, 24 insertions(+), 12 deletions(-)
 
-Best regards,
-Jun Yan
+diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
+index c1221ff00ed7..3b66d97f0582 100644
+--- a/sound/soc/rockchip/rockchip_spdif.c
++++ b/sound/soc/rockchip/rockchip_spdif.c
+@@ -86,12 +86,15 @@ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
+ 			      struct snd_soc_dai *dai)
+ {
+ 	struct rk_spdif_dev *spdif = snd_soc_dai_get_drvdata(dai);
++	unsigned int mclk_rate = clk_get_rate(spdif->mclk);
+ 	unsigned int val = SPDIF_CFGR_HALFWORD_ENABLE;
+-	int srate, mclk;
++	int bmc, div;
+ 	int ret;
+ 
+-	srate = params_rate(params);
+-	mclk = srate * 128;
++	/* bmc = 128fs */
++	bmc = 128 * params_rate(params);
++	div = DIV_ROUND_CLOSEST(mclk_rate, bmc);
++	val |= SPDIF_CFGR_CLK_DIV(div);
+ 
+ 	switch (params_format(params)) {
+ 	case SNDRV_PCM_FORMAT_S16_LE:
+@@ -107,14 +110,6 @@ static int rk_spdif_hw_params(struct snd_pcm_substream *substream,
+ 		return -EINVAL;
+ 	}
+ 
+-	/* Set clock and calculate divider */
+-	ret = clk_set_rate(spdif->mclk, mclk);
+-	if (ret != 0) {
+-		dev_err(spdif->dev, "Failed to set module clock rate: %d\n",
+-			ret);
+-		return ret;
+-	}
+-
+ 	ret = regmap_update_bits(spdif->regmap, SPDIF_CFGR,
+ 				 SPDIF_CFGR_CLK_DIV_MASK |
+ 				 SPDIF_CFGR_HALFWORD_ENABLE |
+@@ -177,7 +172,24 @@ static int rk_spdif_dai_probe(struct snd_soc_dai *dai)
+ 	return 0;
+ }
+ 
++static int rk_spdif_set_sysclk(struct snd_soc_dai *dai,
++			       int clk_id, unsigned int freq, int dir)
++{
++	struct rk_spdif_dev *spdif = snd_soc_dai_get_drvdata(dai);
++	int ret;
++
++	if (!freq)
++		return 0;
++
++	ret = clk_set_rate(spdif->mclk, freq);
++	if (ret)
++		dev_err(spdif->dev, "Failed to set mclk: %d\n", ret);
++
++	return ret;
++}
++
+ static const struct snd_soc_dai_ops rk_spdif_dai_ops = {
++	.set_sysclk = rk_spdif_set_sysclk,
+ 	.probe = rk_spdif_dai_probe,
+ 	.hw_params = rk_spdif_hw_params,
+ 	.trigger = rk_spdif_trigger,
+diff --git a/sound/soc/rockchip/rockchip_spdif.h b/sound/soc/rockchip/rockchip_spdif.h
+index d8be9aae5b19..fcc28b6c4f58 100644
+--- a/sound/soc/rockchip/rockchip_spdif.h
++++ b/sound/soc/rockchip/rockchip_spdif.h
+@@ -15,7 +15,7 @@
+ */
+ #define SPDIF_CFGR_CLK_DIV_SHIFT	(16)
+ #define SPDIF_CFGR_CLK_DIV_MASK		(0xff << SPDIF_CFGR_CLK_DIV_SHIFT)
+-#define SPDIF_CFGR_CLK_DIV(x)		(x << SPDIF_CFGR_CLK_DIV_SHIFT)
++#define SPDIF_CFGR_CLK_DIV(x)		((x-1) << SPDIF_CFGR_CLK_DIV_SHIFT)
+ 
+ #define SPDIF_CFGR_HALFWORD_SHIFT	2
+ #define SPDIF_CFGR_HALFWORD_DISABLE	(0 << SPDIF_CFGR_HALFWORD_SHIFT)
+
+-- 
+2.51.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
