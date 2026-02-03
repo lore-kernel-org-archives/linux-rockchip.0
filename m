@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 763D2E87858
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 16:46:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 924A2E87851
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Feb 2026 16:46:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PNOtgYVVSHLWiNOrG+30poEEryWG2A5K88zsYXpIT7U=; b=AINGTM6fqpYP1l
-	hV/ZQd4G3SCQsF7sPnW/r9Ki64bdKDVQVvaKVAUlPspQY9zoS4UL3+/7bvdum9julW/JFdl/aJUtF
-	i3G5bmtXjsWijoKCSqZgDB+aZWOlAtkz8+5qDqfoyXwpSWhtO+jT9FJgZo5wVAzv0wXWjvwnZV/7L
-	pWWYMCeafE9aJ0MknNO8VhtYwii4cG/qD4+QpHMhhT8HvQDM7zd/6l7laG0m/iS8dQgmVEo2rzHua
-	ZGmAV7oIuFWEkW1MXYndTQqDIqeFAIqM4+Qa2+ZPt9yqZX/gbvRHnlMLAJTNgRFlWkYsjS3sLjlnW
-	uB6k2270pcdsfQMYcNCQ==;
+	List-Owner; bh=QehRjQwkJTMy9W2OqxNME/Npy5oyJWaksKwYBfwVu14=; b=4AZW9wpjshVov4
+	W4Q0KmKsGutYRND8F+zYdTTpn25xNng5L3LHyoKcHoYAPpCeQ3olefmoPUPWXKshAd7kVcMdDnqa+
+	YUKvIyZAy64sbg6xxVpKppretI+2mr03+F/szuenvszxtKoqisWfBTj46dFm9E1DcVxC0Q5a0qYui
+	9HEC6z2rjovJfrWBLhShU7hP400uXtQGGrZau7xBmAGE4KZyUY6QeNQD8vGm6jnG6dGwHLQ/SS6Lm
+	CQ41+zZlAS7S+urcfML0cO3XddX8RJZ0BDMtuJGnVXi3Tv4eKO/P49qq7cCHe61F15m0HiB9ulm1g
+	s9OXrYrXmBFzGg2StmmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnJYC-00000006yAS-1hKo;
-	Tue, 03 Feb 2026 16:46:52 +0000
+	id 1vnJY5-00000006xz2-07o1;
+	Tue, 03 Feb 2026 16:46:45 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnJY2-00000006xu8-2ZbF;
-	Tue, 03 Feb 2026 16:46:44 +0000
+	id 1vnJXx-00000006xsF-3vKj;
+	Tue, 03 Feb 2026 16:46:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770137195;
-	bh=651DjgUT7OtElKAM6DhUOfu2PEBxukKfO/3KX0XDgEo=;
+	s=mail; t=1770137194;
+	bh=rwMMsbUCdGGDTM0SilCBE6mODEWndNITn0aSniMBH7Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MFflleT8ajGdXL83egRe2hQ+74C//3tfK5E8IlzFZKbJFcdYbr1r5dBh5cO38YPWi
-	 JvzTws7k4w1DbZTMyi7eNIEnn8MB7Twt7kIKeh6MWL9hWvSqEd5YQvQVqeQzlrfZP/
-	 vTw6NBldcxnekTnoH58mM8Ilb2NaXRPq97CpOxYeCddnd6a8rKVUcEJqhAX2DY7Rak
-	 GjfbiE7KHVlVHf4i8jDXrqx0FrfFkuLkvl7pTrzUljMqBQmqSWblEtvMvi7mZN2pD0
-	 ELAPeCxMjERLX/+g8Q/mOhfoRX4QxSZIYSz2m7ALMPWib+P+a8AYAwiDITYeIYqYei
-	 gCT5D0Gxsq2bQ==
+	b=pmprN5w75oipFVj1vkHikL5kpHDlp/8IozSFgEQJeYT2887bxNE+ILnV1iZruTVc4
+	 1j+UlKFM+zQBh511Kquv3iUui5aagoaQMmiHm8Yeu6pBoqwdPA7NF8Pt+XwkSm1xPI
+	 B43F4jhZ3mNUeDKm0fEBhBKtNahzvv05N0CZnSAZaiuNzjznFi+FL+MKpO/zwcxypA
+	 koOOf3YWGu3M24c6Kp6qqgN+e2mDz2+D7VFhC4p8SCmeeklRMBHlhs0qK062YvTsdk
+	 YNkHvCZ87v144IYJEotFAgE2gwUrxb2CPPCrPkq6FVQpnaU3stZRPEIkFvrtUxePVD
+	 G8FfJOub4PSew==
 Received: from jupiter.universe (dyndsl-091-248-189-143.ewe-ip-backbone.de [91.248.189.143])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E377217E35D9;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7B32F17E14F5;
 	Tue,  3 Feb 2026 17:46:34 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 1829C48002B; Tue, 03 Feb 2026 17:46:34 +0100 (CET)
+	id 14224480028; Tue, 03 Feb 2026 17:46:34 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 03 Feb 2026 17:46:28 +0100
-Subject: [PATCH v2 06/10] ASoC: rockchip: spdif: Swap PCM and DAI component
- registration order
+Date: Tue, 03 Feb 2026 17:46:25 +0100
+Subject: [PATCH v2 03/10] ASoC: rockchip: spdif: Fully convert to device
+ managed resources
 MIME-Version: 1.0
-Message-Id: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-6-4412016cf577@collabora.com>
+Message-Id: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-3-4412016cf577@collabora.com>
 References: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
 In-Reply-To: <20260203-rockchip-spdif-cleanup-and-bsp-sync-v2-0-4412016cf577@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -60,29 +60,28 @@ Cc: Alexey Charkov <alchark@gmail.com>,
  Sjoerd Simons <sjoerd.simons@collabora.com>, linux-sound@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Sugar Zhang <sugar.zhang@rock-chips.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1197;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2785;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=odke1hDY5a4eAB6A6L1moDVakX/wjeSZrUFRtUZjIjk=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmCJmmBL0deZQgaga5PhJ4UNNNbnfNJgsiK0
- ciM9yyZiL5W4IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpgiZpAAoJENju1/PI
- O/qac+0QAKixPPhYunfCteZZoTxmKQtICZSEyrb+tQ5h+QtKulk4WVsW1duvvdVWRvrMRxir4UK
- i8gYvJayDoClHO1POC2ofOAplPhPsUt2E8C3LO2SglbJX2q0egcUSrJwbw5V+bdrpDsGhJYbjkB
- uBA7GLT9OqNaIEj0/yKMs25GYBZnP5FFzFCFhcIR/r1XymmRvPfKbfsrvdUr5clzerbaIEZVwCN
- W/axp68aT2WcACFtkJ7Y7PiahGrVoiKJNP4zTmEhnoazBsSHW28XOLKBgyQwJkScXQ6SZDeSaI0
- D8ma9wUpnKMsDbk711MKiLlBIpqOjoXnONetWdwtNTDbZJshw9BcSUJzswnDRPln1ucBYlrh2oh
- 1sTbNU1vutIBDPNWJMh98ABqwuHOkpgegX5PSp9l+3P9iBMccq5lB55Sm35QaIOhwpf/ENa0aLa
- XS7BsRKIbu0Ji7xZ1NZ1RBEPQPwpUzJYxi+Jrt94YMwMl6koZ7jjfiSq2OFRmKx9YQMOq7oOn+o
- K0TWu2xD1jRsFHI4TgqivKTlsJikL+MO8RIMTSMz4CUZ0mtCW6793lBETO6mgGjef4/YhTUfJfL
- RuBj/HwVEKIaJzNAUjoPwB1f5LvttkGuT8baMrtDA5VzGAu9uPXflAwk3KX+nHisGqzZtf1uwaL
- LFRw78txTSxhuKIthMNArNg==
+ bh=rwMMsbUCdGGDTM0SilCBE6mODEWndNITn0aSniMBH7Q=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmCJmmX8PJRFPV3YzuO97jWFDcsxO+D17Qqh
+ UJ8i6FhXBD0bYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpgiZpAAoJENju1/PI
+ O/qaS/QP/RtK2mrjYHXnWUAAJnBza2Oji43ti8QpEtuUhtxnoQSukxvugAj/1lgXgzvGmUeAdwo
+ 7/5WKSKaM/uTyF8DdR5MFl7BYezLUuLcUdMZrjBGdXyxleL3lsFi4msT6rrpdDgeeA4rHtx1iYY
+ kcNSu3kXt0CDkne8+30hDKUuQP/y245XgW03b4imjn9H+/eGAlcxf3mSZgDbtAgFYCPTybIx+ML
+ uUbcGyAZARHZWnMokHGzzxB7r9sha7pMRpT62PSQH5GLea+Yi2/dD9zybFCMuVRN1Fu1SOq7tl9
+ XV9yTo9mtVVu5OkijkdRetKSZniWJyp46nXmVMtQnLrxNYQ+KnrCXxDpRP3K9/3McuhnbaHjleD
+ iejOWvYemVb6jegTwKLab8baS1hIAHYM1Q8p6LbtGYCjTcGrmshmAsIO6DmdQA+umZofsuQsGuG
+ 3DfUSNMVzSuRsLZ+X4wUJ0lKLaq2PNquivFTv9pf1EUjLDor3dxDu8N2h/616ypfESc7Dq8GeXL
+ efxC0vDaxcGf9Ln3K59SWkvSgyEaLn3fc+3/zGrgmVhKAsCNU0nf1mPbVz9FQYHe76zycfQTS3f
+ T69/49/hXxOXmT+Gk8Ab33s0UJtBhrZFGsnT6VdX9pXNtaY0ggC4KysH3ZULJQm9KKYg3Yqagbx
+ RELGYMtwpqEAwQ42CnCUv0w==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_084643_355640_3B2150AF 
-X-CRM114-Status: GOOD (  12.15  )
+X-CRM114-CacheID: sfid-20260203_084638_785902_5A74BAD1 
+X-CRM114-Status: GOOD (  17.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,42 +98,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Sugar Zhang <sugar.zhang@rock-chips.com>
+This driver mixes device managed resources with unmanaged ones
+and (as a lot of them do) gets the order wrong resulting in
+potential race condition problems at module removal time. Let's
+go to full device managed resources to cleanup the code and get
+rid of the potential race condition.
 
-PCM should be registered before the DAI component, as the second one
-triggers snd_soc_try_rebind_card.
-
-Signed-off-by: Sugar Zhang <sugar.zhang@rock-chips.com>
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- sound/soc/rockchip/rockchip_spdif.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ sound/soc/rockchip/rockchip_spdif.c | 37 +++++++++++++++++--------------------
+ 1 file changed, 17 insertions(+), 20 deletions(-)
 
 diff --git a/sound/soc/rockchip/rockchip_spdif.c b/sound/soc/rockchip/rockchip_spdif.c
-index 55d64fd4c93b..c1221ff00ed7 100644
+index 331a23d5173f..841ef499ed7f 100644
 --- a/sound/soc/rockchip/rockchip_spdif.c
 +++ b/sound/soc/rockchip/rockchip_spdif.c
-@@ -325,16 +325,16 @@ static int rk_spdif_probe(struct platform_device *pdev)
- 			return ret;
+@@ -257,6 +257,14 @@ static const struct regmap_config rk_spdif_regmap_config = {
+ 	.cache_type = REGCACHE_FLAT,
+ };
+ 
++static void rk_spdif_suspend(void *data)
++{
++	struct device *dev = data;
++
++	if (!pm_runtime_status_suspended(dev))
++		rk_spdif_runtime_suspend(dev);
++}
++
+ static int rk_spdif_probe(struct platform_device *pdev)
+ {
+ 	struct device_node *np = pdev->dev.of_node;
+@@ -311,11 +319,16 @@ static int rk_spdif_probe(struct platform_device *pdev)
+ 	spdif->dev = &pdev->dev;
+ 	dev_set_drvdata(&pdev->dev, spdif);
+ 
+-	pm_runtime_enable(&pdev->dev);
++	ret = devm_add_action_or_reset(&pdev->dev, rk_spdif_suspend, &pdev->dev);
++	if (ret)
++		return ret;
++
++	devm_pm_runtime_enable(&pdev->dev);
++
+ 	if (!pm_runtime_enabled(&pdev->dev)) {
+ 		ret = rk_spdif_runtime_resume(&pdev->dev);
+ 		if (ret)
+-			goto err_pm_runtime;
++			return ret;
  	}
  
-+	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "Could not register PCM\n");
-+
  	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &rk_spdif_component,
+@@ -323,31 +336,16 @@ static int rk_spdif_probe(struct platform_device *pdev)
  					      &rk_spdif_dai, 1);
- 	if (ret)
- 		return dev_err_probe(&pdev->dev, ret, "Could not register DAI\n");
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Could not register DAI\n");
+-		goto err_pm_suspend;
++		return ret;
+ 	}
  
--	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
--	if (ret)
--		return dev_err_probe(&pdev->dev, ret, "Could not register PCM\n");
--
+ 	ret = devm_snd_dmaengine_pcm_register(&pdev->dev, NULL, 0);
+ 	if (ret) {
+ 		dev_err(&pdev->dev, "Could not register PCM\n");
+-		goto err_pm_suspend;
++		return ret;
+ 	}
+ 
  	return 0;
+-
+-err_pm_suspend:
+-	if (!pm_runtime_status_suspended(&pdev->dev))
+-		rk_spdif_runtime_suspend(&pdev->dev);
+-err_pm_runtime:
+-	pm_runtime_disable(&pdev->dev);
+-
+-	return ret;
+-}
+-
+-static void rk_spdif_remove(struct platform_device *pdev)
+-{
+-	pm_runtime_disable(&pdev->dev);
+-	if (!pm_runtime_status_suspended(&pdev->dev))
+-		rk_spdif_runtime_suspend(&pdev->dev);
  }
  
+ static const struct dev_pm_ops rk_spdif_pm_ops = {
+@@ -379,7 +377,6 @@ MODULE_DEVICE_TABLE(of, rk_spdif_match);
+ 
+ static struct platform_driver rk_spdif_driver = {
+ 	.probe = rk_spdif_probe,
+-	.remove = rk_spdif_remove,
+ 	.driver = {
+ 		.name = "rockchip-spdif",
+ 		.of_match_table = rk_spdif_match,
 
 -- 
 2.51.0
