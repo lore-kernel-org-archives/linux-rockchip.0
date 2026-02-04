@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE199EA7946
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 20:32:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57DE4EA7946
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 21:10:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qSLE/dyLk7f4jPQvxUdnXJrIXsPcbaZaNFp60Z9BcfM=; b=1aPQKU+HgdmDYX
-	bmi1SC5apzAJ1KYFpvJO/M9p5ERwIU64iIxv4waxNurV6bnYSrXOiHmZnGbQZ35XyK96K92ZRahNB
-	lwNTOSpaTa91CAImlfSIDFkow+pypI2uztqUFXtpSHJZNnFaJlGvrFPPr0/Nb+Vb0ek29LpbgHlUh
-	1uwh+TNQp9/OxgwWlLxnZbucZoH+JcZeCGhEZvwxllpbGsDkmYjiafQCR/xeKc3z7alCQcIYhJr9w
-	qy6YGieRZ09+z1L0s6oqi+OO/z9YW/PWvJ25V01V9uBbz4aC6NkuWmdYAuA4iL1Ic2fLTV1asmcY3
-	i0U0Tqv42Q1Ctmv9diPw==;
+	List-Owner; bh=fYjj2uRMwRLtzR6vom3tstfjrBLLKUrGNbSebxSr6Tk=; b=xLLFUs1Nhfrrbn
+	6nPqTtXaDfRlQFuJBUcu7NRezqG/l7nr20NxdR6YNteImLSMuTJOU+NRf5iLzjVeDKHmLaE9iWbPp
+	/BojXzQ8HWBrOounRZfoC8ObjaRKqUTXofKl7/lb1Iq3FjITCpuW4LmEJV9zu0o7A00quD5qXTWlh
+	db+SwwKrdhwTiI0q0GmxshxVLZby6XeZaDCQX0ofXXPwD3lMH7HGDtIBc2XBxmn6HPp7BZtSm5rtT
+	GOaPAAhiu+FU/6rvlml78I74HYnJw/t1gjBjEfiv6DW4r1+f8qfevZ/t/aMGGxbasJDCz+cKeeA8K
+	pT77RhdGjhyFjYu5cecg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnjY7-000000093T3-2B6a;
-	Wed, 04 Feb 2026 20:32:31 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vnk8h-000000095N4-3pOZ;
+	Wed, 04 Feb 2026 21:10:19 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnjY4-000000093SU-1lk2;
-	Wed, 04 Feb 2026 20:32:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770237145;
-	bh=a5HSgzMe6JzpxSmMVQbxrnjFpksd7486GnNw1YVR+nc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cs3rpa8Fe3jTdxyppmsK8KRRNbyqKWp39e7A/bIbO5JqbczcCVOE67fj8m7N/Muud
-	 3nH7ZY734SEWfGASW7iONGl1Bx/QN12mv2OOxhybhJ5GIINJL81uQwmaf678/YsHLn
-	 1Qooo+akVTa1j5ujmGUdNs27RrNZHUbR0Uo6IwcK1Fq2ZKWs5iCGYbTUoOLeKFa4AR
-	 R0n2pLbJS3KCcuvZEuscTuR2UXOlAH9DAbgNPz1f16tAe8E/YFYfn9fziP8Ub7OhWN
-	 FYXiuE6HedPjNyTwyJXelCkZ2VpsFg5zlGG2vLRDJYcu6kzi8cxfTvHKit1cZ9okUp
-	 1kFu9OA8PMARw==
-Received: from [192.168.1.90] (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4863917E12C6;
-	Wed,  4 Feb 2026 21:32:24 +0100 (CET)
-Message-ID: <97a4fd2d-62e2-41ad-8ee9-d2551c3ab312@collabora.com>
-Date: Wed, 4 Feb 2026 22:32:23 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 2/4] drm: Add CRTC background color property
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+	id 1vnk8f-000000095Ma-1AtM;
+	Wed, 04 Feb 2026 21:10:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1770239417; x=1801775417;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=8BGUP+Fh8sJoIk+wDhGM6z4Q5hkH9tUOVqzPdwjSySk=;
+  b=ByZyaTLGeLve+sVkxvNfGvuSBRx4NhWLSHuXdoznVcAvRrB7M0hbIWM+
+   yMq+bB+y5gt8GaYcCzHRtapEhWY+PbaSB9CFcDCyFjKqbMvcYiQi7+aUA
+   8+/wBRTLwUh9eIAs4zEaSJO7+buK0sBCpjWOoYA5Ylzi8b7KXMugGIId6
+   Q6bnto97FeuNsXqJ0iK0TA0gfGppqQbss5vXgTKYrBwxQvyqk83hphjhl
+   po5oQRzcnkz0c8bgG9Bg+ghmlNjvL5JzwUWtXb8Fxi8MZf11Rk0WZYYvY
+   0IJH2LHcQVGF9rDmbRw1M7G2NvHDJPEKWAVzH53vzePxYKa1vpvIWFfyP
+   g==;
+X-CSE-ConnectionGUID: RV7I4O9JSwOkxprv4iBMwg==
+X-CSE-MsgGUID: S8bBE2m+Qt2o2rxP5+agAQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11691"; a="81748681"
+X-IronPort-AV: E=Sophos;i="6.21,273,1763452800"; 
+   d="scan'208";a="81748681"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Feb 2026 13:10:17 -0800
+X-CSE-ConnectionGUID: 7aeGqPOERc25kyYZt88EPg==
+X-CSE-MsgGUID: iAE4JCIoS9+oWNVbTP0NyQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,273,1763452800"; 
+   d="scan'208";a="214806959"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.188])
+  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Feb 2026 13:10:12 -0800
+Date: Wed, 4 Feb 2026 23:10:09 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Louis Chauvet <louis.chauvet@bootlin.com>,
- Haneen Mohammed <hamohammed.sa@gmail.com>,
- Melissa Wen <melissa.srw@gmail.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Matt Roper <matthew.d.roper@intel.com>,
- =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
- Diederik de Haas <diederik@cknow-tech.com>
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Louis Chauvet <louis.chauvet@bootlin.com>,
+	Haneen Mohammed <hamohammed.sa@gmail.com>,
+	Melissa Wen <melissa.srw@gmail.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Matt Roper <matthew.d.roper@intel.com>,
+	=?iso-8859-1?Q?N=EDcolas_F=2E_R=2E_A=2E?= Prado <nfraprado@collabora.com>,
+	Diederik de Haas <diederik@cknow-tech.com>
+Subject: Re: [PATCH v6 2/4] drm: Add CRTC background color property
+Message-ID: <aYO1sY0DAkI00uDx@smile.fi.intel.com>
 References: <20260129-rk3588-bgcolor-v6-0-c15f755a4055@collabora.com>
  <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
  <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
+ <97a4fd2d-62e2-41ad-8ee9-d2551c3ab312@collabora.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <97a4fd2d-62e2-41ad-8ee9-d2551c3ab312@collabora.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_123228_635772_2DB8F75B 
-X-CRM114-Status: GOOD (  18.59  )
+X-CRM114-CacheID: sfid-20260204_131017_363242_0DC1AD80 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,75 +104,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 1/29/26 11:37 AM, Andy Shevchenko wrote:
-> On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
->> Some display controllers can be hardware programmed to show non-black
->> colors for pixels that are either not covered by any plane or are
->> exposed through transparent regions of higher planes.  This feature can
->> help reduce memory bandwidth usage, e.g. in compositors managing a UI
->> with a solid background color while using smaller planes to render the
->> remaining content.
->>
->> To support this capability, introduce the BACKGROUND_COLOR standard DRM
->> mode property, which can be attached to a CRTC through the
->> drm_crtc_attach_background_color_property() helper function.
->>
->> Additionally, define a 64-bit ARGB format value to be built with the
->> help of a couple of dedicated DRM_ARGB64_PREP*() helpers.  Individual
->> color components can be extracted with desired precision using the
->> corresponding DRM_ARGB64_GET*() macros.
+On Wed, Feb 04, 2026 at 10:32:23PM +0200, Cristian Ciocaltea wrote:
+> On 1/29/26 11:37 AM, Andy Shevchenko wrote:
+> > On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
+
+...
+
+> >> +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
+> > 
+> > Not sure if this is an accepted style in DRM, by I find it difficult
+> > to follow. I would expect the "({" be on a separate line.
 > 
-> ...
+> I initially got confused by the plethora of different styles, e.g. in
+> "include/linux/math.h" we can find:
 > 
->> +/*
->> + * Put 16-bit ARGB values into a standard 64-bit representation that can be
->> + * used for ioctl parameters, inter-driver communication, etc.
->> + *
->> + * If the component values being provided contain less than 16 bits of
->> + * precision, use a conversion ratio to get a better color approximation.
->> + * The ratio is computed as (2^16 - 1) / (2^bpc - 1), where bpc and 16 are
->> + * the input and output precision, respectively.
+>   #define rounddown(x, y) (				\
+>   [...]
 > 
-> Not sure if you should explicitly mention that "bpc must not be 0"
-> (it can be derived from the "division by 0" in the given formula,
-> but still...).
-
-Comment section updated in v7 [1], though I somehow missed to mention it in the
-changelog. :-(
-
+>   #define DIV_ROUND_CLOSEST_ULL(x, divisor)(		\
+>   [...]
 > 
->> + */
->> +#define __DRM_ARGB64_PREP(c, shift)					\
->> +	(((__u64)(c) & __GENMASK(15, 0)) << (shift))
->> +
->> +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
+>   #define mult_frac(x, n, d)	\
+>   ({				\
+>   [...]
 > 
-> Not sure if this is an accepted style in DRM, by I find it difficult
-> to follow. I would expect the "({" be on a separate line.
+>   #define abs_diff(a, b) ({			\
+>   [...]
 
-I initially got confused by the plethora of different styles, e.g. in
-"include/linux/math.h" we can find:
 
-  #define rounddown(x, y) (				\
-  [...]
+math.h is a collection of APIs from the past from different years and code,
+that's why the style is inconsistent (a lot!). So better not to take that
+as an example.
 
-  #define DIV_ROUND_CLOSEST_ULL(x, divisor)(		\
-  [...]
+> I agree your option is the most readable one, hence I used it consistently in
+> v7.
 
-  #define mult_frac(x, n, d)	\
-  ({				\
-  [...]
+Thanks!
 
-  #define abs_diff(a, b) ({			\
-  [...]
+-- 
+With Best Regards,
+Andy Shevchenko
 
-I agree your option is the most readable one, hence I used it consistently in
-v7.
-
-Thanks,
-Cristian
-
-[1] https://lore.kernel.org/all/20260204-rk3588-bgcolor-v7-0-78d1d01c5ca1@collabora.com/
 
 
 _______________________________________________
