@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C399FEA794B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 20:02:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE199EA7946
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 20:32:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PrktVGgOxWdKfcYK07sJHEbJ9WBYZEor5RebKlCBkWk=; b=mFMX/UCcKp6pzm
-	BvFf2u3jAGMciXupK2/1zsaAmvNiGf8TlBxYuvvkeJz/DIHcrXeG0GvgS5trNXf9D9RqdO9hPcBRK
-	sPHWVVlYcZJnESvTFKSIl0OU8Lf3hDxm8Fmng4UljAR73sIQ2Sv4wKF0108QgWQZXH89Urd9qqudJ
-	KsO7/8trTpc65iwnLfxtXcfSgvRXA5R8rnGOtBwKdIO9K/hYka3evxoviad1exqcGPgNS/iyFPToO
-	ZpFXzdkhravrsfFHRpTtUkzNE3r55YgvercrdDcb2rLAZZ54qV5QwtVE22EckyGsS8bWFwE70vtAi
-	Iykq1S8DXoUFRzUdc8pw==;
+	List-Owner; bh=qSLE/dyLk7f4jPQvxUdnXJrIXsPcbaZaNFp60Z9BcfM=; b=1aPQKU+HgdmDYX
+	bmi1SC5apzAJ1KYFpvJO/M9p5ERwIU64iIxv4waxNurV6bnYSrXOiHmZnGbQZ35XyK96K92ZRahNB
+	lwNTOSpaTa91CAImlfSIDFkow+pypI2uztqUFXtpSHJZNnFaJlGvrFPPr0/Nb+Vb0ek29LpbgHlUh
+	1uwh+TNQp9/OxgwWlLxnZbucZoH+JcZeCGhEZvwxllpbGsDkmYjiafQCR/xeKc3z7alCQcIYhJr9w
+	qy6YGieRZ09+z1L0s6oqi+OO/z9YW/PWvJ25V01V9uBbz4aC6NkuWmdYAuA4iL1Ic2fLTV1asmcY3
+	i0U0Tqv42Q1Ctmv9diPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnj5P-0000000925s-0qnb;
-	Wed, 04 Feb 2026 20:02:51 +0000
+	id 1vnjY7-000000093T3-2B6a;
+	Wed, 04 Feb 2026 20:32:31 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnj5J-000000091yW-3xw7;
-	Wed, 04 Feb 2026 20:02:47 +0000
+	id 1vnjY4-000000093SU-1lk2;
+	Wed, 04 Feb 2026 20:32:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770235363;
-	bh=amFnri11i2h/V8EBwlIzxK8P0NaPKaUHqPlVcDaTJYc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oc+R7ikQR6NfwwpzhIqOw3389KhKicKGuDNPDXsxrvedHYWzWiQf6eppZv0tgM7Rj
-	 n3/uJNyOn9YQh670wasFQ9qu9mvfEqHkpFnylIZBG2CcznWc3mGkF5I+U2O2GZEmvY
-	 L/fyHzH9coTxeMKrNAE0t4c0yuL0aWyCZ8HeE2T2UPBCMlElJdY9yZUHsOm3ZBZEFM
-	 BB6gTVmAjTmNo1IZBwl5nQvCNxeLJO5/6Jz53WOa+u7ZmSFtAjT7kzsXaUyonCg1Ua
-	 jrGhW04yWjzs9+BrADBGtr3jSpY5u+CchSZbN9w5tFFAcfhPQ3laU/d/R7gHDryFCf
-	 9hx29Arxn+IAQ==
-Received: from localhost (unknown [82.79.138.145])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1770237145;
+	bh=a5HSgzMe6JzpxSmMVQbxrnjFpksd7486GnNw1YVR+nc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cs3rpa8Fe3jTdxyppmsK8KRRNbyqKWp39e7A/bIbO5JqbczcCVOE67fj8m7N/Muud
+	 3nH7ZY734SEWfGASW7iONGl1Bx/QN12mv2OOxhybhJ5GIINJL81uQwmaf678/YsHLn
+	 1Qooo+akVTa1j5ujmGUdNs27RrNZHUbR0Uo6IwcK1Fq2ZKWs5iCGYbTUoOLeKFa4AR
+	 R0n2pLbJS3KCcuvZEuscTuR2UXOlAH9DAbgNPz1f16tAe8E/YFYfn9fziP8Ub7OhWN
+	 FYXiuE6HedPjNyTwyJXelCkZ2VpsFg5zlGG2vLRDJYcu6kzi8cxfTvHKit1cZ9okUp
+	 1kFu9OA8PMARw==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 364DC17E15F5;
-	Wed,  4 Feb 2026 21:02:43 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 04 Feb 2026 22:02:31 +0200
-Subject: [PATCH v7 4/4] drm/rockchip: vop2: Support setting custom
- background color
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4863917E12C6;
+	Wed,  4 Feb 2026 21:32:24 +0100 (CET)
+Message-ID: <97a4fd2d-62e2-41ad-8ee9-d2551c3ab312@collabora.com>
+Date: Wed, 4 Feb 2026 22:32:23 +0200
 MIME-Version: 1.0
-Message-Id: <20260204-rk3588-bgcolor-v7-4-78d1d01c5ca1@collabora.com>
-References: <20260204-rk3588-bgcolor-v7-0-78d1d01c5ca1@collabora.com>
-In-Reply-To: <20260204-rk3588-bgcolor-v7-0-78d1d01c5ca1@collabora.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, 
- Haneen Mohammed <hamohammed.sa@gmail.com>, 
- Melissa Wen <melissa.srw@gmail.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 2/4] drm: Add CRTC background color property
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Louis Chauvet <louis.chauvet@bootlin.com>,
+ Haneen Mohammed <hamohammed.sa@gmail.com>,
+ Melissa Wen <melissa.srw@gmail.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Robert Mader <robert.mader@collabora.com>, kernel@collabora.com,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Matt Roper <matthew.d.roper@intel.com>,
+ =?UTF-8?B?TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8=?= <nfraprado@collabora.com>,
  Diederik de Haas <diederik@cknow-tech.com>
-X-Mailer: b4 0.14.3
+References: <20260129-rk3588-bgcolor-v6-0-c15f755a4055@collabora.com>
+ <20260129-rk3588-bgcolor-v6-2-c15f755a4055@collabora.com>
+ <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <aXsp2s5a7sJL7Itp@smile.fi.intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_120246_152515_87373FA9 
-X-CRM114-Status: GOOD (  13.24  )
+X-CRM114-CacheID: sfid-20260204_123228_635772_2DB8F75B 
+X-CRM114-Status: GOOD (  18.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,90 +89,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip VOP2 display controller allows configuring the background
-color of each video output port.
+On 1/29/26 11:37 AM, Andy Shevchenko wrote:
+> On Thu, Jan 29, 2026 at 02:58:52AM +0200, Cristian Ciocaltea wrote:
+>> Some display controllers can be hardware programmed to show non-black
+>> colors for pixels that are either not covered by any plane or are
+>> exposed through transparent regions of higher planes.  This feature can
+>> help reduce memory bandwidth usage, e.g. in compositors managing a UI
+>> with a solid background color while using smaller planes to render the
+>> remaining content.
+>>
+>> To support this capability, introduce the BACKGROUND_COLOR standard DRM
+>> mode property, which can be attached to a CRTC through the
+>> drm_crtc_attach_background_color_property() helper function.
+>>
+>> Additionally, define a 64-bit ARGB format value to be built with the
+>> help of a couple of dedicated DRM_ARGB64_PREP*() helpers.  Individual
+>> color components can be extracted with desired precision using the
+>> corresponding DRM_ARGB64_GET*() macros.
+> 
+> ...
+> 
+>> +/*
+>> + * Put 16-bit ARGB values into a standard 64-bit representation that can be
+>> + * used for ioctl parameters, inter-driver communication, etc.
+>> + *
+>> + * If the component values being provided contain less than 16 bits of
+>> + * precision, use a conversion ratio to get a better color approximation.
+>> + * The ratio is computed as (2^16 - 1) / (2^bpc - 1), where bpc and 16 are
+>> + * the input and output precision, respectively.
+> 
+> Not sure if you should explicitly mention that "bpc must not be 0"
+> (it can be derived from the "division by 0" in the given formula,
+> but still...).
 
-Since a previous patch introduced the BACKGROUND_COLOR CRTC property,
-which defaults to solid black, make use of it when programming the
-hardware.
+Comment section updated in v7 [1], though I somehow missed to mention it in the
+changelog. :-(
 
-Note the maximum precision allowed by the display controller is 10bpc,
-while the alpha component is not supported, hence ignored.
+> 
+>> + */
+>> +#define __DRM_ARGB64_PREP(c, shift)					\
+>> +	(((__u64)(c) & __GENMASK(15, 0)) << (shift))
+>> +
+>> +#define __DRM_ARGB64_PREP_BPC(c, shift, bpc)({				\
+> 
+> Not sure if this is an accepted style in DRM, by I find it difficult
+> to follow. I would expect the "({" be on a separate line.
 
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 17 ++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
- 2 files changed, 20 insertions(+), 1 deletion(-)
+I initially got confused by the plethora of different styles, e.g. in
+"include/linux/math.h" we can find:
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index ec3b4fde10db..8f22e90a23dd 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1552,6 +1552,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
- 	struct vop2 *vop2 = vp->vop2;
- 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
-+	u64 bgcolor = crtc->state->background_color;
- 	u16 vtotal = mode->crtc_vtotal;
- 	u16 hdisplay = mode->crtc_hdisplay;
- 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
-@@ -1597,7 +1598,15 @@ static void vop2_post_config(struct drm_crtc *crtc)
- 		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
- 	}
- 
--	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
-+	/*
-+	 * Background color is programmed with 10 bits of precision.
-+	 * Since performance is more important than accuracy here,
-+	 * make use of the DRM_ARGB64_GET*_BPCS() helpers.
-+	 */
-+	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR_BPCS(bgcolor, 10));
-+	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, DRM_ARGB64_GETG_BPCS(bgcolor, 10));
-+	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, DRM_ARGB64_GETB_BPCS(bgcolor, 10));
-+	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
- }
- 
- static int us_to_vertical_line(struct drm_display_mode *mode, int us)
-@@ -1983,6 +1992,10 @@ static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
- 		   drm_get_bus_format_name(vcstate->bus_format));
- 	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
- 	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
-+	seq_printf(s, "\tbackground color (10bpc): r=0x%x g=0x%x b=0x%x\n",
-+		   DRM_ARGB64_GETR_BPCS(cstate->background_color, 10),
-+		   DRM_ARGB64_GETG_BPCS(cstate->background_color, 10),
-+		   DRM_ARGB64_GETB_BPCS(cstate->background_color, 10));
- 	seq_printf(s, "    Display mode: %dx%d%s%d\n",
- 		   mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
- 		   drm_mode_vrefresh(mode));
-@@ -2472,6 +2485,8 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 			return dev_err_probe(drm->dev, ret,
- 					     "crtc init for video_port%d failed\n", i);
- 
-+		drm_crtc_attach_background_color_property(&vp->crtc);
-+
- 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
- 		if (vop2->lut_regs) {
- 			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 9124191899ba..37722652844a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -658,6 +658,10 @@ enum dst_factor_mode {
- #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
- #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
- 
-+#define RK3568_VP_DSP_BG__DSP_BG_RED			GENMASK(29, 20)
-+#define RK3568_VP_DSP_BG__DSP_BG_GREEN			GENMASK(19, 10)
-+#define RK3568_VP_DSP_BG__DSP_BG_BLUE			GENMASK(9, 0)
-+
- #define RK3568_VP_POST_SCL_CTRL__VSCALEDOWN		BIT(1)
- #define RK3568_VP_POST_SCL_CTRL__HSCALEDOWN		BIT(0)
- 
+  #define rounddown(x, y) (				\
+  [...]
 
--- 
-2.52.0
+  #define DIV_ROUND_CLOSEST_ULL(x, divisor)(		\
+  [...]
+
+  #define mult_frac(x, n, d)	\
+  ({				\
+  [...]
+
+  #define abs_diff(a, b) ({			\
+  [...]
+
+I agree your option is the most readable one, hence I used it consistently in
+v7.
+
+Thanks,
+Cristian
+
+[1] https://lore.kernel.org/all/20260204-rk3588-bgcolor-v7-0-78d1d01c5ca1@collabora.com/
 
 
 _______________________________________________
