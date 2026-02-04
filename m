@@ -4,51 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B63E95396
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 13:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA977E9D3FB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 15:29:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d2dmXMTrsePLEVdLor0gh61Nddx7r64sGRtMc7kkspQ=; b=i6jh5yZs/rvEw3
-	yQwPWN2v/N1X6XSlfQZ0nYNC6EyDpSaUhR/Cbu/xnDIg5Obwp340bVyLvsrMpfm/CkZjJ5aMJ69E6
-	26ILuXzBgMAuY5JhxZE3nqdpE20WhFAZXd6gAU13Go03ZfXB47VmL3CNUIcdZBBP5MskK2wUANy8D
-	fDgFxr8aAzLg5LTGUpmpoIaUVB4lJaQI6ZkjgZlowY0OPtefOAIEUg0JmW3pot0d1W2PGNb2PIv8e
-	v//Pt/vO1Mfq6oJB62LiEnczT/N6TySVnU+RjubB/lBW/B3/6SHsSu+yo4ISt/JOfHO+qLO9aSCP2
-	fkmDLWAfkaZUeANxMrwQ==;
+	List-Owner; bh=F6fFZPk9L+A4F88zdbabn17l3ilKuZoyRX7Rn8z9+6U=; b=4xXrAyAeT4vkje
+	LULzAfRsl6dzEO29cdYCV+lJzFHRn3lrloLDtUBmk2ZFQOqbqEjidE1d+I5HUOp6RH4Go/nqX5OSR
+	DC7DSa8ItHgyJ6+MMwK1IEIdXL10VoYQxycu5OwuKOjTbtpjafGCtAyn67oiDmQ8sRCTlFaNhz6O5
+	IH5uYh7NjMH0hj1kNOOkUTB5+lruZsKc8MHT6T2fNhBf9W40o59Ja4yylRFVJmK1sHHvS294k36Q1
+	iMTNjwz+XXd8MvF0eef9VJ9dek9HhxVE4iXnIFxGYarTOVZjomsPL9pu6Z0cWyS9nxjxv5GZBTdY/
+	VpZt1Kc33RIz++cDhmUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vncvj-00000008W2D-0BW9;
-	Wed, 04 Feb 2026 13:28:27 +0000
+	id 1vneo6-00000008f2Q-0FoX;
+	Wed, 04 Feb 2026 15:28:42 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vncvg-00000008W1N-1XVA;
-	Wed, 04 Feb 2026 13:28:25 +0000
-Received: from thinkpad.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 7E385833;
-	Wed,  4 Feb 2026 14:27:40 +0100 (CET)
+	id 1vneo2-00000008f0b-2xoW;
+	Wed, 04 Feb 2026 15:28:40 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-703d-e500--ff4.rev.dnainternet.fi [IPv6:2001:14ba:703d:e500::ff4])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 5C1325B2;
+	Wed,  4 Feb 2026 16:27:51 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1770211660;
-	bh=N7u+XCuPg7ooZrjh/omtH2eXFLHztWNIiAKaMOIHINs=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=S/MilP8496uV47zy5etQsOQ8A/t2OeFeRCLJY75Bs1RTYIRWoSN5/tGuzPU+F00kO
-	 rQdT83agQrysXHwyRZFCOzEjAhzRelxztWx5t+IXmn1jOjXm4zFSNail7heqAcwlXr
-	 4Y04R+hkNPcdT6kEcQMN9K6IhcLPJ9s+W2thFYDY=
+	s=mail; t=1770218871;
+	bh=8b7NEE0pg/AHJ7XBOifwnvN2QzfrWc6nJZvHlB+YsXo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=b0Vm94fLIs+83Fk6V4H4NAhZAPn8f+D8O3tIrhgLiGgziGvTVnCBLJjqUJVW3rzSI
+	 cS/XrjCViIC+KBTsZ/XitinuPNHB6CFjOGE06d/F/0PZEozrslR+1EXU0o4F4CbGM/
+	 eiASLTINLyyFKJ/kWY66M7R67dgsc0KH1iarS8MY=
+Date: Wed, 4 Feb 2026 17:28:31 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Isaac Scott <isaac.scott@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, dafna@fastmail.com, mchehab@kernel.org,
+	heiko@sntech.de, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v1 4/6] media: rkisp1-isp: Propagate sink -> source
+ format in YUV passthough
+Message-ID: <20260204152831.GA170964@killaraus>
+References: <20260204112506.3706049-1-isaac.scott@ideasonboard.com>
+ <20260204112506.3706049-5-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
-In-Reply-To: <20260204113710.GA156228@killaraus>
-References: <20260204112506.3706049-1-isaac.scott@ideasonboard.com> <20260204112506.3706049-4-isaac.scott@ideasonboard.com> <20260204113710.GA156228@killaraus>
-Subject: Re: [PATCH v1 3/6] media: rkisp1-isp: Add target_format
-From: Isaac Scott <isaac.scott@ideasonboard.com>
-Cc: linux-media@vger.kernel.org, dafna@fastmail.com, mchehab@kernel.org, heiko@sntech.de, linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Date: Wed, 04 Feb 2026 13:28:19 +0000
-Message-ID: <177021169954.3716406.14336965804921334134@isaac-ThinkPad-T16-Gen-2>
-User-Agent: alot/0.10
+Content-Disposition: inline
+In-Reply-To: <20260204112506.3706049-5-isaac.scott@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_052824_578914_421BA98B 
-X-CRM114-Status: GOOD (  22.15  )
+X-CRM114-CacheID: sfid-20260204_072838_880113_69AA6265 
+X-CRM114-Status: GOOD (  17.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,72 +69,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
-
-Thank you for the review!
-
-Quoting Laurent Pinchart (2026-02-04 11:37:10)
-> On Wed, Feb 04, 2026 at 11:25:03AM +0000, Isaac Scott wrote:
-> > In passthough mode, we want to make sure the output format of the ISP is
-> > identical to the input format. Add logic to ensure the format we
-> > configure the output of the ISP with is the sink format when we are in
-> > bypass, and the source format if we are not.
+On Wed, Feb 04, 2026 at 11:25:04AM +0000, Isaac Scott wrote:
+> If we are in bypass mode, we should propagate the sink format of the ISP
+> to the source format to ensure the pipeline is valid. Ensure the source
+> pad format of the ISP is configured to the same format as the sink pad.
 > 
-> I don't think that's right. In bypass mode, userspace needs to configure
-> the same format on the image sink and image source pads of the ISP, and
-> not set any cropping. The crop rectangle on the source pad should
-> contain the information you need.
+> Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 > 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index 716bd7f3c66d..c457593526c5 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -630,6 +630,11 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+>  	 */
+>  	sink_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
+>  
 
-Yes, that makes sense. I suppose the idea here was to "enforce" it, but
-perhaps we shouldn't be potentially overwriting a format userspace is
-setting. I'll take another look for v2.
+A comment would be useful here, or maybe better a rework of the comment
+block just above.
 
-Best wishes,
-Isaac
+> +	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> +		format->code = sink_fmt->code;
+> +		dev_dbg(isp->rkisp1->dev, "ISP sink pad is YUV");
 
-> > Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
-> > ---
-> >  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 13 +++++++------
-> >  1 file changed, 7 insertions(+), 6 deletions(-)
-> > 
-> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> > index f636d738b7e8..716bd7f3c66d 100644
-> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> > @@ -175,9 +175,10 @@ static void rkisp1_gasket_disable(struct rkisp1_device *rkisp1)
-> >  static void rkisp1_config_ism(struct rkisp1_isp *isp,
-> >                             const struct v4l2_subdev_state *sd_state)
-> >  {
-> > -     const struct v4l2_rect *src_crop =
-> > +     const struct v4l2_rect *target_crop =
-> >               v4l2_subdev_state_get_crop(sd_state,
-> > -                                        RKISP1_ISP_PAD_SOURCE_VIDEO);
-> > +                     (isp->rkisp1->in_bypass ?
-> > +                             RKISP1_ISP_PAD_SINK_VIDEO : RKISP1_ISP_PAD_SOURCE_VIDEO));
-> >       struct rkisp1_device *rkisp1 = isp->rkisp1;
-> >       u32 val;
-> >  
-> > @@ -185,10 +186,10 @@ static void rkisp1_config_ism(struct rkisp1_isp *isp,
-> >       rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_MAX_DX, 0);
-> >       rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_MAX_DY, 0);
-> >       rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_DISPLACE, 0);
-> > -     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_OFFS, src_crop->left);
-> > -     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_OFFS, src_crop->top);
-> > -     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_SIZE, src_crop->width);
-> > -     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_SIZE, src_crop->height);
-> > +     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_OFFS, target_crop->left);
-> > +     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_OFFS, target_crop->top);
-> > +     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_H_SIZE, target_crop->width);
-> > +     rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_V_SIZE, target_crop->height);
-> >  
-> >       /* IS(Image Stabilization) is always on, working as output crop */
-> >       rkisp1_write(rkisp1, RKISP1_CIF_ISP_IS_CTRL, 1);
-> 
-> -- 
-> Regards,
-> 
-> Laurent Pinchart
+Drop the debug message.
+
+> +	}
+> +
+>  	src_fmt->code = format->code;
+>  	src_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
+>  	if (!src_info || !(src_info->direction & RKISP1_ISP_SD_SRC)) {
+
+-- 
+Regards,
+
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
