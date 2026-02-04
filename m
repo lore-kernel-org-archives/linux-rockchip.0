@@ -4,71 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6646EE95363
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 09:44:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67100E9537B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 11:25:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0gp9Mk77HXAGYEirmNZYnXOGEGdo1gYia+zGtdVMl5I=; b=gCqJvTXNgoW+KA
-	aq0+CbUsou2ncCgJdfe5FigkMJRikqJ+Ji5Fz8Pj/5zCt9+zb92TYpcKtPv59f9PEPz84alHbdlSm
-	w7caRz6rBHByr0KgavoqhPpJg24b5RQWGfwnCpLemupda/eT9okJ1Il0HcnxAJLwLB4/yb20nW8Za
-	NImLYS+i6/Kv6Nd+BUPvG38yWOqbUaS2WaGG2C1QzMGHXcYYzWjxc8WjssaVbKvot6Te9iAchqLP/
-	w76KQa6oA440Ny8P0QEYEU121u9sI/KG04cw0DkLS6JLAUrGWmi/8tRDjsCb90if6j+lYWTunGr3r
-	NkZmRqLnx1jB7ryziyPg==;
+	List-Owner; bh=OmT3Bp9b6ID3fcgVN9dUaCTSgEDhHoa3tGHkMqEOln4=; b=eJXdOA0jCzbbgg
+	snikXQZVD2nAAi/rqCc31WWlnOD+IdpX6cVGQjDDzyjLA+OyIjgKwTRVVFVH6janWmt0104gE79DA
+	SZQymPnM2qOKHeBp8EdURThKen49NDFqoz6A1L0aZapDI1Irk3EoIJT8LTxuQhF6TXTddnk8rlUtV
+	IMoUMTEdZjC5GkBO/N/jz6IcaxJxMF0sbNei3xLLeev/bN9S7y+JOGpyqqD/VuKemwfTRnzUzjqbP
+	UqgZhlAoL6Jt0jvAZIUgfVrUmKgdPGP1uqV4efx/D4T7vR1kyooUB1TUFpz1v978NzQbshyPGP6Gs
+	0QLksU8p1L9EI3kQSjdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnZQd-00000008EsZ-2Hyo;
-	Wed, 04 Feb 2026 09:44:07 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vnb0e-00000008M6B-0Ig4;
+	Wed, 04 Feb 2026 11:25:24 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnZQa-00000008EqN-0Rya
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Feb 2026 09:44:05 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 9653C4E423D9;
-	Wed,  4 Feb 2026 09:44:02 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 6AEAC60745;
-	Wed,  4 Feb 2026 09:44:02 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7198D119A865B;
-	Wed,  4 Feb 2026 10:43:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1770198241; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=w9cK/S9VEg5Sj6NGREX0/AmF5Y2Mv59DI4D5BpBMKuI=;
-	b=cDoWAubzmtE494ajM22ZR5dtQKaregG2Oz6hx9eWKztWaIPgbqhnYeBOwwuscFqHhvw/dh
-	36uj6EFKs4tuJFqlGS6/Pn16v3oKVAb8THaVRY0Nfty8zgxe8nkv5QwaDZhiqtxHBOa5Yb
-	ZMLAdc1/6kvqS8b+l2dhyeeyBAPUhHZbPhAds3k0ZNBEQ26HPKucYKDNVi57o585r9KNwv
-	/E3G8wS33Iq7VhXOei4h2ZAoCsYCynKF0UR6deJHot1QRtW773kvjs8jo7rctauMUJAmG9
-	IKaInstq8V0+ra+sx3Pp/ysxnvJTBtGVCjLd3zjoKuKwME+HWydQolwpmpGK4A==
-Message-ID: <bc094312-8671-432a-ac16-1b1a4d052efd@bootlin.com>
-Date: Wed, 4 Feb 2026 10:43:59 +0100
+	id 1vnb0a-00000008M0W-2Kkw;
+	Wed, 04 Feb 2026 11:25:21 +0000
+Received: from t16.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 8580013CA;
+	Wed,  4 Feb 2026 12:24:36 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1770204277;
+	bh=UusNAsGsuADFh1LH6Jjf0gCE90ONPblIBTQZe3RyvTY=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=pYTgLfH4dCqrkwTHh3DyTlB/tVpX+dr3Bj6rgebnkyOdUQg9ljmR6905Ya0RlILki
+	 7qwVR4wA2Liz1HfhBSL4WxU2krZd9hBbY2O1bPNJER5m93VuXDz8BMiPEd5REw0a57
+	 b8J+P8fnFPQ7fjbWvkxL9ahytugVAVLKdH4SRWEc=
+From: Isaac Scott <isaac.scott@ideasonboard.com>
+To: linux-media@vger.kernel.org
+Cc: dafna@fastmail.com,
+	laurent.pinchart@ideasonboard.com,
+	mchehab@kernel.org,
+	heiko@sntech.de,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Isaac Scott <isaac.scott@ideasonboard.com>
+Subject: [PATCH v1 5/6] media: rkisp1: Give buffers back instead of dropping in bypass mode
+Date: Wed,  4 Feb 2026 11:25:05 +0000
+Message-ID: <20260204112506.3706049-6-isaac.scott@ideasonboard.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260204112506.3706049-1-isaac.scott@ideasonboard.com>
+References: <20260204112506.3706049-1-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next 4/6] net: stmmac: rk: rk3528: gmac0 only supports
- RMII
-To: "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
- Andrew Lunn <andrew@lunn.ch>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>
-References: <aYMN2gZMfLPKuukG@shell.armlinux.org.uk>
- <E1vnYy1-00000007hp3-0hKm@rmk-PC.armlinux.org.uk>
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Content-Language: en-US
-In-Reply-To: <E1vnYy1-00000007hp3-0hKm@rmk-PC.armlinux.org.uk>
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_014404_283697_40647A54 
-X-CRM114-Status: UNSURE (   5.43  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260204_032520_737312_619E181B 
+X-CRM114-Status: GOOD (  12.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,32 +72,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+In the data mode used for YUV passthrough, falling VSYNC events are used
+to determine when a buffer is complete. This means there is no 'Frame
+End' signal.
 
+Previously, all buffers would be dropped when bypass mode was active.
+Instead of dropping every frame, we should return the buffer to user
+space if it is marked as complete by a falling VSYNC signal.
 
-On 04/02/2026 10:14, Russell King (Oracle) wrote:
-> RK3528 gmac0 dtsi contains:
-> 
->                 gmac0: ethernet@ffbd0000 {
->                         phy-handle = <&rmii0_phy>;
->                         phy-mode = "rmii";
-> 
->                         mdio0: mdio {
->                                 rmii0_phy: ethernet-phy@2 {
->                                         phy-is-integrated;
->                                 };
->                         };
->                 };
-> 
-> This follows the same pattern as rk3328, where this gmac instance
-> only supports RMII. Disable RGMII in phylink's supported_interfaces
-> mask for this gmac instance.
-> 
-> Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
+---
+ drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-
-Maxime
-
+diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+index 867cdddf9f89..2753be39ab33 100644
+--- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
++++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+@@ -832,6 +832,11 @@ irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+ 	for (i = 0; i < dev_count; ++i) {
+ 		struct rkisp1_capture *cap = &rkisp1->capture_devs[i];
+ 
++		if (rkisp1->in_bypass) {
++			rkisp1_handle_buffer(cap);
++			continue;
++		}
++
+ 		if (!(status & RKISP1_CIF_MI_FRAME(cap)))
+ 			continue;
+ 		if (!cap->is_stopping) {
+-- 
+2.43.0
 
 
 _______________________________________________
