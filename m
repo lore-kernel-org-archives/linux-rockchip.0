@@ -4,70 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EA61E8B387
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 01:52:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 578B2E8B393
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 03:20:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
+	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qib9BushlUb9fnSlsrWxq1OA3vpZi53YMTaknVdmalo=; b=fN/gnZYgwjkYi6
-	egjX8ypkkg9WspL6AQAWbHy6R/zcIegbAy+dFAc43rqTbuSy9vSv7PDGY9iGK94QWgITUr41WOZXB
-	2lU8nGsUeph7jVEkFz+ayAZ+hPLm87sBk782WgF/i4Fiq9Hxe19jCsRoBoa3Sn5iLq5W7VY0FdjOJ
-	LXyCfe5UXdovNqo9qqdoEL7jvHFkYNI87DTVxrxphE8Wu+yjSx9nP/1UDALC63VJC0INxVIXfbdxi
-	rc/dXbjBIpmlDZTLYXYCYvDWIQIJAe9hn34/J90GjQoDP4MUBN4Qw9g0MuBWerBb6483waixFhuNm
-	HnkzHc8u/to2x2cUBd8w==;
+	List-Owner; bh=w2w6o4WXB8o4+11MBrzufVTumjaGfDMoVT3jfpvF4Cc=; b=yt6wToexqc4nuC
+	Zvgo1VaG4EcvSnT7C/rF3zw+ydEsVPS8kwXdCtsoK7VTvjrMunkltFpdYI+qZhI/os2zaN1A7P1BA
+	dH3DYyyEnCqg8+8qpIrKnsW4e4saE+xnxaOkEElSS7V83aq2uShiebgIZXZSkAiD+Y9oNlSCQozHS
+	c7hzjUlZH+ROQ1ip9DJamVKckS33ru0alOhMvpMpHKDKXC7PveCvTrSWkouvvu+wiwrk+/FAw/xOh
+	K/EON+YZnVTnROGwoxZo6eWRSI2tp3dM28rx3Q7pXB5/tjo/CNaJh8iRI+2noiQJ13if5Tqx3eUwM
+	ZtBKDf+6qzTHvHGSROLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnS4A-00000007ixd-29AT;
-	Wed, 04 Feb 2026 01:52:26 +0000
-Received: from mail-m3286.qiye.163.com ([220.197.32.86])
+	id 1vnTRU-00000007oYn-127M;
+	Wed, 04 Feb 2026 03:20:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnS47-00000007ixA-27IB;
-	Wed, 04 Feb 2026 01:52:25 +0000
-Received: from [172.16.12.43] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 330683486;
-	Wed, 4 Feb 2026 09:52:14 +0800 (GMT+08:00)
-Message-ID: <0b7e39bd-a403-45e4-93fd-701ab092525c@rock-chips.com>
-Date: Wed, 4 Feb 2026 09:52:14 +0800
+	id 1vnTRQ-00000007oYJ-16vH;
+	Wed, 04 Feb 2026 03:20:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4F89940ABA;
+	Wed,  4 Feb 2026 03:20:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B528C116D0;
+	Wed,  4 Feb 2026 03:20:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770175230;
+	bh=gHmM2ZjEnro/lzlK6i3SYqm0I447P+5N5u36K6NBE74=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
+	b=f1wYf+14b9gipvn5gApCoaFoofSrRCcAIpPqhc4t8SWqgaGlq3poYYuJC44mEUltH
+	 XH2Dp4Ix+weI4Rsih59lSfkfZ3lguVBhUYNraPz5l8Xk418NhHWudJSgNOVyr+jT1p
+	 esxkHWU9Iew4U7gib8v+puHX9RFNCI6IsznnOZlwpc4EIkDlYzHy8E0Frcz+yqiJl0
+	 mCo0v+qif36W7m3z/1/k+vfR/twXPpWBN2DIKBXdEbQhfRCLDwtRTxBKzqQKa7QWje
+	 4ywzjUrOpyMsqf+G8ASrrCbjw1ZQTrQMgI0yPbuRzsTJtvu4XqllZwlMtt/DlcBzvu
+	 qW+xQvLRLPamQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 910193808200;
+	Wed,  4 Feb 2026 03:20:27 +0000 (UTC)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 00/18] Apply drm_bridge_connector and panel_bridge
- helper for the Analogix DP driver
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
- rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
- andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
- dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20251217093321.3108939-1-damon.ding@rock-chips.com>
- <6571983.R56niFO833@diego> <DG5A5BNULPQX.HRWTJLN9UQ2W@bootlin.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <DG5A5BNULPQX.HRWTJLN9UQ2W@bootlin.com>
-X-HM-Tid: 0a9c2659a20003a3kunme960d4ef73ad41
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkwZGVYaGR1NSE9NTE4ZTkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=KgtiUAp3ditdHJKw+YuPPmNedi6wR8b12xUSPp9hcUoCRAF7xNzEH3nZxGzbDeVSwJ93E6fDJ4Vl+9dnwKTJZG+vl+h1p5MWiMW8N/vLgv/Gn6vfD3J5HwbqagBHelnTeZk/XowaXaNkj1TqDjoeCz7JqI3qjrAMILEPUybjYuI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=qDNxEGFKLTcQaAxSN3kPzeWr8ZRpCLzvyWFyoP3CJgQ=;
-	h=date:mime-version:subject:message-id:from;
+Subject: Re: [PATCH net-next v2 00/10] net: stmmac: rk: cleanups v3: mode and
+ speed for most
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <177017522608.2163463.14435686221837710351.git-patchwork-notify@kernel.org>
+Date: Wed, 04 Feb 2026 03:20:26 +0000
+References: <aYB2cKRu3DQh6yXK@shell.armlinux.org.uk>
+In-Reply-To: <aYB2cKRu3DQh6yXK@shell.armlinux.org.uk>
+To: Russell King (Oracle) <linux@armlinux.org.uk>
+Cc: andrew@lunn.ch, alexandre.torgue@foss.st.com, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, heiko@sntech.de, kuba@kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+ pabeni@redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260203_175224_027254_9384208E 
-X-CRM114-Status: GOOD (  13.11  )
+X-CRM114-CacheID: sfid-20260203_192032_323991_F9314C33 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,40 +73,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTHVjYSwKCk9uIDIvMy8yMDI2IDc6MTEgUE0sIEx1Y2EgQ2VyZXNvbGkgd3JvdGU6Cj4gSGVs
-bG8gSGVpa28sIERhbW9uLAo+IAo+IE9uIE1vbiBKYW4gMTksIDIwMjYgYXQgNTowNiBQTSBDRVQs
-IEhlaWtvIFN0w7xibmVyIHdyb3RlOgo+PiBIaSBEYW1vbiwKPj4KPj4gQW0gTWl0dHdvY2gsIDE3
-LiBEZXplbWJlciAyMDI1LCAxMDozMzowMyBNaXR0ZWxldXJvcMOkaXNjaGUgTm9ybWFsemVpdCBz
-Y2hyaWViIERhbW9uIERpbmc6Cj4+PiBQQVRDSCAxIGlzIHRvIGVuc3VyZSB0aGUgbGFzdCBicmlk
-Z2UgZGVjbGFyZXMgT1BfRURJRCBvciBPUF9NT0RFUyBvciBib3RoLgo+Pj4gUEFUQ0ggMiBpcyBh
-IHNtYWxsIGZvcm1hdCBvcHRpbWl6YXRpb24gZm9yIHN0cnVjdCBhbmFsb2dpZF9kcF9kZXZpY2Uu
-Cj4+PiBQQVRDSCAzIGlzIHRvIHBlcmZvcm0gbW9kZSBzZXR0aW5nIGluICZkcm1fYnJpZGdlX2Z1
-bmNzLmF0b21pY19lbmFibGUuCj4+PiBQQVRDSCA0IGlzIHRvIGFkZCBhIG5ldyBwYXJhbWV0ZXIg
-dG8gc3RvcmUgdGhlIHBvaW50IG9mIG5leHQgYnJpZGdlLgo+Pj4gUEFUQ0ggNSBpcyB0byBtYWtl
-IGxlZ2FjeSBicmlkZ2UgZHJpdmVyIG1vcmUgdW5pdmVyc2FsLgo+Pj4gUEFUQ0ggNi0xMSBhcmUg
-cHJlcGFyYXRpb25zIGZvciBhcHBseSBkcm1fYnJpZGdlX2Nvbm5lY3RvciBoZWxwZXIuCj4+PiBQ
-QVRDSCAxMiBpcyB0byBhcHBseSB0aGUgZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVscGVyLgo+Pj4g
-UEFUQ0ggMTMtMTUgYXJlIHRvIG1vdmUgdGhlIHBhbmVsL2JyaWRnZSBwYXJzaW5nIHRvIHRoZSBB
-bmFsb2dpeCBzaWRlLgo+Pj4gUEFUQ0ggMTYgaXMgdG8gYXR0YWNoIHRoZSBuZXh0IGJyaWRnZSBv
-biBBbmFsb2dpeCBzaWRlIHVuaWZvcm1seS4KPj4+IFBBVENIIDE3LTE4IGFyZSB0byBhcHBseSB0
-aGUgcGFuZWxfYnJpZGdlIGhlbHBlci4KPj4KPj4gT24gdG9wIG9mIGFsbCB0aGUgcmVjZW50IGJy
-aWRnZS1yZWxhdGVkIGNvbW1pdHMsIHRoaXMgc2VyaWVzIHN0aWxsIHdvcmtzCj4+IG9uIG15IHJr
-MzU4OC1lRFAgYm9hcmQgLSB3aGVuIHRoZSBkaXNwbGF5IGlzIHBsdWdnZWQgaW4gb24gYm9vdC4K
-Pj4KPj4gQXMgdGhhdCBpcyB0aGUgY3VycmVudCBzdGF0ZSB3ZSBhbHNvIGhhZCBiZWZvcmUsIHRo
-aXMgc2VyaWVzOgo+PiBUZXN0ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+
-IG9uIHJrMzU4OAo+IAo+IEknbSBhcHBwbHlpbmcgcGF0Y2hlcyAxLTMgYW5kIGdvdCBhIGNoZWNr
-cGF0Y2ggd2FybmluZyBmb3IgZWFjaCBwYXRjaDoKPiAKPiAgICBXQVJOSU5HOiBVbmV4cGVjdGVk
-IGNvbnRlbnQgYWZ0ZXIgZW1haWw6ICdIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiBv
-biByazM1ODgnLCBzaG91bGQgYmU6ICdIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiAo
-b24gcmszNTg4KScKPiAKPiBJJ20gZml4aW5nIGl0IHdoaWxlIGFwcGx5aW5nIHRob3NlIDMgcGF0
-Y2hlcy4KPiAKPiBEYW1vbiwgY2FuIHlvdSBmaXggdGhhdCBmb3IgdGhlIHJlbWFpbmluZyBwYXRj
-aGVzIGJlZm9yZSBzZW5kaW5nIGEgbmV3Cj4gaXRlcmF0aW9uPwo+IAoKWWVzLCB3aWxsIGZpeCBp
-biB2OS4KCkJlc3QgcmVnYXJkcywKRGFtb24KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hello:
+
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
+
+On Mon, 2 Feb 2026 10:03:28 +0000 you wrote:
+> Hi,
+> 
+> Third installment in the rk cleanups, this converts the interface mode
+> and speed configuration for most RK SoCs.
+> 
+> --
+> v2: disable clocks on regmap_write() failure
+> 
+> [...]
+
+Here is the summary with links:
+  - [net-next,v2,01/10] net: stmmac: rk: convert to mask-based interface mode configuration
+    https://git.kernel.org/netdev/net-next/c/31d28d062aa8
+  - [net-next,v2,02/10] net: stmmac: rk: convert rk3588 to mask-based interface mode config
+    https://git.kernel.org/netdev/net-next/c/600fe01e947a
+  - [net-next,v2,03/10] net: stmmac: rk: move speed GRF register offset to private data
+    https://git.kernel.org/netdev/net-next/c/82d1df4b4143
+  - [net-next,v2,04/10] net: stmmac: rk: convert rk3588 to rk_set_reg_speed()
+    https://git.kernel.org/netdev/net-next/c/8e4b4004e847
+  - [net-next,v2,05/10] net: stmmac: rk: remove rk3528 RMII clock initialisation
+    https://git.kernel.org/netdev/net-next/c/0c8107dbe720
+  - [net-next,v2,06/10] net: stmmac: rk: use rk_encode_wm16() for RGMII clocks
+    https://git.kernel.org/netdev/net-next/c/b9544c128c30
+  - [net-next,v2,07/10] net: stmmac: rk: use rk_encode_wm16() for RMII speed
+    https://git.kernel.org/netdev/net-next/c/4dc66f93b419
+  - [net-next,v2,08/10] net: stmmac: rk: use rk_encode_wm16() for RMII clock
+    https://git.kernel.org/netdev/net-next/c/33c5c9473a23
+  - [net-next,v2,09/10] net: stmmac: rk: remove need for ->set_speed() method
+    https://git.kernel.org/netdev/net-next/c/3cf4dfa7b040
+  - [net-next,v2,10/10] net: stmmac: rk: convert px30
+    https://git.kernel.org/netdev/net-next/c/5031e35f3499
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
