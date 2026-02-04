@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA977E9D3FB
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 15:29:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7165AE9D3FB
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 15:40:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F6fFZPk9L+A4F88zdbabn17l3ilKuZoyRX7Rn8z9+6U=; b=4xXrAyAeT4vkje
-	LULzAfRsl6dzEO29cdYCV+lJzFHRn3lrloLDtUBmk2ZFQOqbqEjidE1d+I5HUOp6RH4Go/nqX5OSR
-	DC7DSa8ItHgyJ6+MMwK1IEIdXL10VoYQxycu5OwuKOjTbtpjafGCtAyn67oiDmQ8sRCTlFaNhz6O5
-	IH5uYh7NjMH0hj1kNOOkUTB5+lruZsKc8MHT6T2fNhBf9W40o59Ja4yylRFVJmK1sHHvS294k36Q1
-	iMTNjwz+XXd8MvF0eef9VJ9dek9HhxVE4iXnIFxGYarTOVZjomsPL9pu6Z0cWyS9nxjxv5GZBTdY/
-	VpZt1Kc33RIz++cDhmUg==;
+	List-Owner; bh=BDYCDWL252UXs4LSjq/csjDYvi9VNe5ZbB61gsnXOBs=; b=0ETRh2GOlFvMSX
+	ax5tzj3xB5j3y8bqNdnZJyjIR92vN49TwLpwdpA4Ire5wtuQkvrra3KywgH2Q6fRV4hxUff1n6lT3
+	OJvSpuYQY4LaDKGG/KPCgCV1yJ5J1CJwne+2QaE8lYKpshmjag07m7+FvvzrTWZ+g48BaScBWySQ2
+	Fzaxjy093Ezh/h393kbxJgwOmKPFmSu6Q1FQonkimzyQOQu8xariK/8FGMvGL9mndIruG7vMlac80
+	0MqjEU9ctoZ3Wrm7rsPzhfIBslG2tQVw0hE+hSGBmRHVYG0r0hx2Z5Z7LWLg4ijMkJXUFj0Z5sLJr
+	I/lTJXtixsGimyRECoAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vneo6-00000008f2Q-0FoX;
-	Wed, 04 Feb 2026 15:28:42 +0000
+	id 1vnezC-00000008gX2-2e8M;
+	Wed, 04 Feb 2026 15:40:10 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vneo2-00000008f0b-2xoW;
-	Wed, 04 Feb 2026 15:28:40 +0000
+	id 1vnezA-00000008gVl-1EmA;
+	Wed, 04 Feb 2026 15:40:09 +0000
 Received: from killaraus.ideasonboard.com (2001-14ba-703d-e500--ff4.rev.dnainternet.fi [IPv6:2001:14ba:703d:e500::ff4])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 5C1325B2;
-	Wed,  4 Feb 2026 16:27:51 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id AB6EA5B2;
+	Wed,  4 Feb 2026 16:39:23 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1770218871;
-	bh=8b7NEE0pg/AHJ7XBOifwnvN2QzfrWc6nJZvHlB+YsXo=;
+	s=mail; t=1770219563;
+	bh=k/NqlQg5q0j9YmWqv6NdYnAWug6KE79uSpKt3AsYqMg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=b0Vm94fLIs+83Fk6V4H4NAhZAPn8f+D8O3tIrhgLiGgziGvTVnCBLJjqUJVW3rzSI
-	 cS/XrjCViIC+KBTsZ/XitinuPNHB6CFjOGE06d/F/0PZEozrslR+1EXU0o4F4CbGM/
-	 eiASLTINLyyFKJ/kWY66M7R67dgsc0KH1iarS8MY=
-Date: Wed, 4 Feb 2026 17:28:31 +0200
+	b=uWZeAAhP9Sj3M9Mf6WsEu7TsPgU72Mj6rpeR0OighCytzTbtbchisuVFpkx8wDMiN
+	 J9Md0fUp+ibtdUR8DFZ5ndSX3s+7gMuO+NOeNxJgfqkc6KN7ya+n6CN78ltq7hPwE2
+	 z9MJtZNjqKtEyDbl8LCa1lO5KbpmPgXPlPbdr1/U=
+Date: Wed, 4 Feb 2026 17:40:04 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
 To: Isaac Scott <isaac.scott@ideasonboard.com>
 Cc: linux-media@vger.kernel.org, dafna@fastmail.com, mchehab@kernel.org,
 	heiko@sntech.de, linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1 4/6] media: rkisp1-isp: Propagate sink -> source
- format in YUV passthough
-Message-ID: <20260204152831.GA170964@killaraus>
+Subject: Re: [PATCH v1 5/6] media: rkisp1: Give buffers back instead of
+ dropping in bypass mode
+Message-ID: <20260204154004.GB170964@killaraus>
 References: <20260204112506.3706049-1-isaac.scott@ideasonboard.com>
- <20260204112506.3706049-5-isaac.scott@ideasonboard.com>
+ <20260204112506.3706049-6-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260204112506.3706049-5-isaac.scott@ideasonboard.com>
+In-Reply-To: <20260204112506.3706049-6-isaac.scott@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_072838_880113_69AA6265 
-X-CRM114-Status: GOOD (  17.42  )
+X-CRM114-CacheID: sfid-20260204_074008_474054_1748AD7E 
+X-CRM114-Status: GOOD (  23.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,39 +69,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 04, 2026 at 11:25:04AM +0000, Isaac Scott wrote:
-> If we are in bypass mode, we should propagate the sink format of the ISP
-> to the source format to ensure the pipeline is valid. Ensure the source
-> pad format of the ISP is configured to the same format as the sink pad.
+On Wed, Feb 04, 2026 at 11:25:05AM +0000, Isaac Scott wrote:
+> In the data mode used for YUV passthrough, falling VSYNC events are used
+> to determine when a buffer is complete. This means there is no 'Frame
+> End' signal.
+> 
+> Previously, all buffers would be dropped when bypass mode was active.
+> Instead of dropping every frame, we should return the buffer to user
+> space if it is marked as complete by a falling VSYNC signal.
 > 
 > Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
 > ---
->  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 5 +++++
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c | 5 +++++
 >  1 file changed, 5 insertions(+)
 > 
-> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> index 716bd7f3c66d..c457593526c5 100644
-> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
-> @@ -630,6 +630,11 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
->  	 */
->  	sink_info = rkisp1_mbus_info_get_by_code(sink_fmt->code);
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> index 867cdddf9f89..2753be39ab33 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-capture.c
+> @@ -832,6 +832,11 @@ irqreturn_t rkisp1_capture_isr(int irq, void *ctx)
+>  	for (i = 0; i < dev_count; ++i) {
+>  		struct rkisp1_capture *cap = &rkisp1->capture_devs[i];
 >  
-
-A comment would be useful here, or maybe better a rework of the comment
-block just above.
-
-> +	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
-> +		format->code = sink_fmt->code;
-> +		dev_dbg(isp->rkisp1->dev, "ISP sink pad is YUV");
-
-Drop the debug message.
-
-> +	}
+> +		if (rkisp1->in_bypass) {
+> +			rkisp1_handle_buffer(cap);
+> +			continue;
+> +		}
 > +
->  	src_fmt->code = format->code;
->  	src_info = rkisp1_mbus_info_get_by_code(src_fmt->code);
->  	if (!src_info || !(src_info->direction & RKISP1_ISP_SD_SRC)) {
+
+You're completing the buffer if *any* interrupt bit is set, this doesn't
+seem right. At the moment we may not enable interrupts other than the
+one you expect, but that may change later, and this will misbehave.
+You're also not handling the stopping logic, which also seems wrong.
+
+Finally, what interrupt bit do you expect to see ? There's no VSYNC
+interrupt in the RKISP1_CIF_MI_MIS register. Are you relying on the fact
+that your platform has a single interrupt line for the three interrupt
+sources (CSI2, ISP and MI), and react to the VSYNC interrupt from the
+ISP interrupt here ? That's not right either, not only will it not work
+on platforms that have three separate interrupt lines, but it will also
+cause rkisp1_handle_buffer() to be called for *any* ISP interrupt.
+
+I'm surprised that the frame end interrupt doesn't fire. It's part of
+the MI, not the ISP, so it shouldn't be affected by bypass mode. You
+should investigate that.
+
+>  		if (!(status & RKISP1_CIF_MI_FRAME(cap)))
+>  			continue;
+>  		if (!cap->is_stopping) {
 
 -- 
 Regards,
