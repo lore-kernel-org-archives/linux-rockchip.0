@@ -4,62 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 913B4EA7946
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 22:04:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AB2EA7948
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 22:26:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yfFGomG9DJN+wnW2B8JXDH33llUdbyyjdlNOfCDvFPY=; b=eV3jrNS52zgVi6
-	JSWeko90hHXY/eecHOMNJk29P8DsEyXjP1Obk3COPsOgianl3toiLKTs1O0Korto8IdjmQf+LzNII
-	tqAV3fyVMP9ZiZwFkksWxHD1gwZQH6QBjFiFVHHC+Zx4NOgA6DgmQt4eNo3gfFlk8ivCU14FfF9qh
-	R52WLbOMhkzHyaOkqODAVuv54V6kFxeaNyH0nbn0apdtEkKBO0lQ8rS8VGcq9vsBcRQcMEd8jsDQg
-	uDxgZ9gXBrTgDaKe68JsJ9FclJexXpCPG7YrMH8KePQZMbKILN1nJRZ9Xi0pYVlV2MFZovepgeclP
-	BwL+BnclzYbguQjurYjQ==;
+	List-Owner; bh=aw8Y+Twv5r85cE8fi5DpNTrfTWJNCJCv2YHSv1i5mc8=; b=dGtpfFBtKN5pNV
+	U/03JHmpphKEk6p0rYgZG6/3gxsbC4MZ+mk36nR5m3iDu3oAYgcBn0kVaCMA5OBg0cGQ2MFjfwUQs
+	MkvqEldGLUQKKCFy267Xdyqf7lpPpx3lT2hYPGpenKJsHcdsWQhX5nxzlLw3hZZ3nze++8NFgpGhe
+	/AfL0O5QXw3ZNQq/uIVHKqfmgw3Vx6gqIgUA3+zzXSEpzlew+8Z8JLhtemo21lD6gONudDWwT4pJu
+	JBaOfaknjJiqkTWOjblS3zkofbUeJuk/4VbhWLVmjx4pbvMxwKaWSIB2N8ysNEQOP1lmXFP1ZXE6Q
+	F8K+N16F2avwf2APnG7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnkyh-000000097lj-00ht;
-	Wed, 04 Feb 2026 22:04:03 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vnlKa-000000098KN-0ZyE;
+	Wed, 04 Feb 2026 22:26:40 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnkye-000000097lE-0Mb3;
-	Wed, 04 Feb 2026 22:04:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=sjPwyNGA9xy8POgiuW0Tq0QzH0cSNVPVKMgCL48PxsA=; b=QX8FJnswsoHYefLJ2uxQ9cSJdv
-	Ct7M/Ce3CQEZOx/pMyy8ZhYfHLFD5QUUNGFRvi3xXcRIFiN1o8D0V1cOhCKgfc31bzbLOxMRiM0cv
-	rNEgb3KmbBBE+QrZtzh6+pVAoW5d43BCoKPCc+dni1OQfT7Kd+/jro0rbIt8ZNSvrebbDjIyVVX6y
-	Q9MpyLZo95PnPlSFE3bePul4W5Uo+DZ0v+3AQqyIXgkGYpclY4FgxQBEMkhQOj5hjQ/Gi7NvaKneT
-	FKh93TtRfz00xQZY6kCekx9qcI3QW/pyqyCtMRvNX3jtbc+5AC5+LPgtv7LGGYj9B+M0Ouq+2Nu47
-	pTQ5b9FQ==;
-Received: from i53875ac7.versanet.de ([83.135.90.199] helo=diego.localnet)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vnkyV-0071Wm-Sl; Wed, 04 Feb 2026 23:03:52 +0100
-From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
-To: Andrew Lunn <andrew@lunn.ch>,
- "Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>
-Cc: Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
- Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 5/6] net: stmmac: rk: use rk_encode_wm16() for clock
- selection
-Date: Wed, 04 Feb 2026 23:03:51 +0100
-Message-ID: <20297648.sWSEgdgrri@diego>
-In-Reply-To: <E1vnYy6-00000007hp9-1AJM@rmk-PC.armlinux.org.uk>
+	id 1vnlKU-000000098Jv-3dSG;
+	Wed, 04 Feb 2026 22:26:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=YBb76XbTs10K5UGRcrXyjymL5gOXGKQMYpuyBZHPFXk=; b=jOu0LD/BkldhAJq+u9wKjguWef
+	ZFm0IBCkNyDdOBVt1B85H0vb/6JVrJokFjjKGrVtPS/tf0atzMvL338oM4gQxhlDjOYN4k5YSa9it
+	qxkGwKlGFdcYmCQob7xbVtFvLgf+peJ7cXRsXHKfNckjQJ4PJcyCFhfeiHsaM9HXVPdWMXwLEoldk
+	E7wl/EHPCIf274H7XC+Iz6Po0crHg96G/2YPm0m8wIsEfidXx2p/ewWAFyEKxZmbmzySZ/fizE2eC
+	/7jxc8HtUx2VLYG0C/wBm8mJKrGoNVUl1mcZDBVYXwGFtNrrmdqzGAkR2pFUxEJEpaUVoee6VHk2J
+	ZlsAPnUA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56420)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1vnlKN-000000006kE-07W2;
+	Wed, 04 Feb 2026 22:26:27 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1vnlKI-000000005kv-0AB7;
+	Wed, 04 Feb 2026 22:26:22 +0000
+Date: Wed, 4 Feb 2026 22:26:21 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+Cc: Andrew Lunn <andrew@lunn.ch>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+	Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH net-next 5/6] net: stmmac: rk: use rk_encode_wm16() for
+ clock selection
+Message-ID: <aYPHjS0wrtXlRb1a@shell.armlinux.org.uk>
 References: <aYMN2gZMfLPKuukG@shell.armlinux.org.uk>
  <E1vnYy6-00000007hp9-1AJM@rmk-PC.armlinux.org.uk>
+ <20297648.sWSEgdgrri@diego>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20297648.sWSEgdgrri@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_140400_178621_BB6A9066 
-X-CRM114-Status: GOOD (  25.38  )
+X-CRM114-CacheID: sfid-20260204_142634_908327_0E0F4FB5 
+X-CRM114-Status: GOOD (  26.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,56 +84,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDQuIEZlYnJ1YXIgMjAyNiwgMTA6MTQ6MzggTWl0dGVsZXVyb3DDpGlzY2hl
-IE5vcm1hbHplaXQgc2NocmllYiBSdXNzZWxsIEtpbmcgKE9yYWNsZSk6Cj4gVXNlIHJrX2VuY29k
-ZV93bTE2KCkgZm9yIFJNSUkgY2xvY2sgZ2F0aW5nIGNvbnRyb2wsIGFuZCBhbHNvIGZvciB0aGUK
-PiBpb19jbGtzZWwgYml0IHVzZWQgdG8gc2VsZWN0IHRoZSB0cmFuc21pdCBjbG9jayBiZXR3ZWVu
-IENSVS1kZXJpdmVkCj4gYW5kIElPLWRlcml2ZWQgY2xvY2sgc291cmNlcy4KPiAKPiBCb3RoIG9m
-IHRoZXNlIHdlcmUgY29uZmlndXJlZCB2aWEgdGhlICJzZXRfY2xvY2tfc2VsZWN0aW9uIiBtZXRo
-b2QgaW4KPiB0aGUgU29DIHNwZWNpZmljIG9wZXJhdGlvbnMsIGJ1dCB0aGVyZSBpcyBubyByZXF1
-aXJlbWVudCB0byBjaGFuZ2UgdGhlCj4gaW9fY2xrc2VsIGV4Y2VwdCB3aGVuIGVuYWJsaW5nIGNs
-b2Nrcy4KPiAKPiBJdCBpcyBhbHNvIHBvc3NpYmxlIHRoYXQgd2UgZG9uJ3QgbmVlZCB0byB1bmdh
-dGUgdGhlIFJNSUkgY2xvY2sgaWYgd2UKPiBhcmUgb3BlcmF0aW5nIGluIFJHTUlJIG1vZGUsIGJ1
-dCB0aGlzIGNvbW1pdCBtYWtlcyBubyBjaGFuZ2UgdGhlcmUuCj4gCj4gU3BsaXQgdXAgdGhlIGNv
-bmZpZ3VyYXRpb24gb2YgdGhlc2UgYXMgc2VwYXJhdGUgZnVuY3Rpb25zLCBhbmQgcmVtb3ZlCj4g
-dGhlIHNldF9jbG9ja19zZWxlY3Rpb24oKSBtZXRob2QuIFNpbmNlIHRoZXNlIGNsb2NraW5nIGJp
-dHMgYXJlIGluIHRoZQo+IHNhbWUgcmVnaXN0ZXIgdGhhdCB3ZSBjYWxsIHRoZSAic3BlZWQiIHJl
-Z2lzdGVyLCBtb3ZlIHRoZSBsb2dpYyBmb3IKPiB3cml0aW5nIHRoYXQgcmVnaXN0ZXIgaW50byBy
-a193cml0ZV9zcGVlZF9ncmZfcmVnKCkuCj4gCj4gU2lnbmVkLW9mZi1ieTogUnVzc2VsbCBLaW5n
-IChPcmFjbGUpIDxybWsra2VybmVsQGFybWxpbnV4Lm9yZy51az4KPiAtLS0KPiAgLi4uL25ldC9l
-dGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jICAgIHwgMTc0ICsrKysrKysrLS0tLS0t
-LS0tLQo+ICAxIGZpbGUgY2hhbmdlZCwgNzUgaW5zZXJ0aW9ucygrKSwgOTkgZGVsZXRpb25zKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3
-bWFjLXJrLmMgYi9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5j
-Cj4gaW5kZXggNDA5OWNiYzVkMGRlLi5lZDlhZGFjNzBmMGEgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYwo+ICsrKyBiL2RyaXZlcnMv
-bmV0L2V0aGVybmV0L3N0bWljcm8vc3RtbWFjL2R3bWFjLXJrLmMKPiBAQCAtMjcsOCArMjcsMTcg
-QEAKPiAgc3RydWN0IHJrX3ByaXZfZGF0YTsKPiAgCj4gIHN0cnVjdCBya19jbG9ja19maWVsZHMg
-ewo+ICsJLyogaW9fY2xrc2VsX2NydV9tYXNrIC0gaW9fY2xrc2VsIGJpdCBpbiBjbG9jayBHUkYg
-cmVnaXN0ZXIgd2hpY2gsCj4gKwkgKiB3aGVuIHNldCwgc2VsZWN0cyB0aGUgdHggY2xvY2sgZnJv
-bSBDUlUuCj4gKwkgKi8KPiArCXUxNiBpb19jbGtzZWxfY3J1X21hc2s7Cj4gKwkvKiBpb19jbGtz
-ZWxfaW9fbWFzayAtIGlvX2Nsa3NlbCBiaXQgaW4gY2xvY2sgR1JGIHJlZ2lzdGVyIHdoaWNoLAo+
-ICsJICogd2hlbiBzZXQsIHNlbGVjdHMgdGhlIHR4IGNsb2NrIGZyb20gSU8uCj4gKwkgKi8KCm5p
-dDogY29tbWVudCBzdGlsZSBkb2VzIG5vdCBzZWVtIHRvIGZvbGxvdyB0aGUga2VybmVsIGNvZGlu
-ZyBzdHlsZQpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90
-b3J2YWxkcy9saW51eC5naXQvdHJlZS9Eb2N1bWVudGF0aW9uL3Byb2Nlc3MvY29kaW5nLXN0eWxl
-LnJzdCNuNjIyCgo+ICsJdTE2IGlvX2Nsa3NlbF9pb19tYXNrOwo+ICAJdTE2IGdtaWlfY2xrX3Nl
-bF9tYXNrOwo+ICAJdTE2IHJtaWlfY2xrX3NlbF9tYXNrOwo+ICsJdTE2IHJtaWlfZ2F0ZV9lbl9t
-YXNrOwo+ICAJdTE2IG1hY19zcGVlZF9tYXNrOwo+ICB9OwoKWy4uLl0KCj4gKwkvKiBUaGUgaW9f
-Y2xrc2VsIGNvbmZpZ3VyYXRpb24gY2FuIGJlIGVpdGhlcjoKPiArCSAqICAwPUNSVSwgMT1JTyAo
-cmszNTA2LCByazM1MjAsIHJrMzU3Nikgb3IKPiArCSAqICAwPUlPLCAxPUNSVSAocmszNTg4KQo+
-ICsJICogd2hlcmUgQ1JVIG1lYW5zIHRoZSB0cmFuc21pdCBjbG9jayBjb21lcyBmcm9tIHRoZSBD
-UlUgYW5kIElPCj4gKwkgKiBtZWFucyB0aGUgdHJhbnNtaXQgY2xvY2sgY29tZXMgZnJvbSBJTy4K
-PiArCSAqCj4gKwkgKiBIYW5kbGUgdGhpcyBieSBoYXZpbmcgdHdvIG1hc2tzLgo+ICsJICovCgpu
-aXQ6IHNhbWUgYXMgYWJvdmUKCk90aGVyIHRoYW4gdGhlc2UgMiBuaXRzLCB0aGlzIGxvb2tzIGdv
-b2QgdG8gbWUuCgpSZXZpZXdlZC1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4K
-VGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiAjcHgzMCxyazMzMjgs
-cmszNTY4LHJrMzU4OAoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+On Wed, Feb 04, 2026 at 11:03:51PM +0100, Heiko St=FCbner wrote:
+> Am Mittwoch, 4. Februar 2026, 10:14:38 Mitteleurop=E4ische Normalzeit sch=
+rieb Russell King (Oracle):
+> > Use rk_encode_wm16() for RMII clock gating control, and also for the
+> > io_clksel bit used to select the transmit clock between CRU-derived
+> > and IO-derived clock sources.
+> > =
+
+> > Both of these were configured via the "set_clock_selection" method in
+> > the SoC specific operations, but there is no requirement to change the
+> > io_clksel except when enabling clocks.
+> > =
+
+> > It is also possible that we don't need to ungate the RMII clock if we
+> > are operating in RGMII mode, but this commit makes no change there.
+> > =
+
+> > Split up the configuration of these as separate functions, and remove
+> > the set_clock_selection() method. Since these clocking bits are in the
+> > same register that we call the "speed" register, move the logic for
+> > writing that register into rk_write_speed_grf_reg().
+> > =
+
+> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+> > ---
+> >  .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 174 ++++++++----------
+> >  1 file changed, 75 insertions(+), 99 deletions(-)
+> > =
+
+> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/n=
+et/ethernet/stmicro/stmmac/dwmac-rk.c
+> > index 4099cbc5d0de..ed9adac70f0a 100644
+> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+> > @@ -27,8 +27,17 @@
+> >  struct rk_priv_data;
+> >  =
+
+> >  struct rk_clock_fields {
+> > +	/* io_clksel_cru_mask - io_clksel bit in clock GRF register which,
+> > +	 * when set, selects the tx clock from CRU.
+> > +	 */
+> > +	u16 io_clksel_cru_mask;
+> > +	/* io_clksel_io_mask - io_clksel bit in clock GRF register which,
+> > +	 * when set, selects the tx clock from IO.
+> > +	 */
+> =
+
+> nit: comment stile does not seem to follow the kernel coding style
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/D=
+ocumentation/process/coding-style.rst#n622
+
+netdev has historically had this style which is separate from the rest
+of the kernel. The file already uses this comment style, so it is
+entirely correct to keep to the style which already exists in this
+file, rather than mixing styles and turning it into a mess.
+
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Tested-by: Heiko Stuebner <heiko@sntech.de> #px30,rk3328,rk3568,rk3588
+
+-- =
+
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
