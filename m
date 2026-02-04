@@ -4,68 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0997EE95393
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 12:10:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F2CCE9539B
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 13:21:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ixW5jgtV6qAPuJHsL8K/uOOE+Xycr2eAcS9P6KvEoTM=; b=YdczvuRItrLshp
-	9LTOyWmuF3ZDr7DFzQQwsfOzTHRBhXs00XBAZbqp3CXcKxRfrN9mfbxWX/iP351ot3Pm25O1BDSK2
-	tXlhVv9HY45uq6Z+Hd+sfuo7UXzKpVWUmybqc/fPGHIDUldv1YxfGFx2SjhbRieh7+wC0OJNd6TVw
-	Hwa3SzQiCei5mSfIc10id/oDL9Ftondf+WugfJGeD0ds/jWcdo9KnOrjEMCREPpqOjuiQlJRNIgHm
-	TEexUhSfJnrqX4B/0nazit0Iw3HF05aryc1HIUMM7mKeYPBlN7ecLER80MfxOwxNTYZ8mrB8Lm7jC
-	xLYfP3wXG9sRgJt+/V6g==;
+	List-Owner; bh=y9pzXP+vnFRScrEaG3g7DB5cjvBZWcgtQKNv0SzSCEY=; b=Hd0SV065yyIUHF
+	4xPQCR3R/391XBHObB++Nf4Q3lWM+ijH1Ihz9KiQxxbBfnogKP0kYsQdDcJGZ1s+kHrJd21xcSsap
+	wpoGKvcZW5sAW2EZhspZsk+Xnx4Jwa34kyyICt7Ut+c/L8GzE4OZadJniuroQONBxRzaIcL/X4gUZ
+	iNKTTkW7qxsXhf59P79W2i2DCI1k9x2f0epqxgCrZouS08WxXpIjqCjKw83HiFGxlJMmG+X8moLGt
+	ym2OXQmiiSxbDce8TDK1VY3k91IPA9SXI5zVqKrOZGOuDJu2dgdEF3y6C4F2koJSNYB7/XfmY9Poa
+	I1TwZqOyad3kZjGvkkiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnbhq-00000008PqE-19m2;
-	Wed, 04 Feb 2026 12:10:02 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1vncoU-00000008Ub4-3pv3;
+	Wed, 04 Feb 2026 13:20:58 +0000
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnbhm-00000008PpL-1lxc;
-	Wed, 04 Feb 2026 12:10:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=mZKfDIWgt6SWspXtBQt29ZPVq1v2bRTo1fLl0CTF4lA=; b=N
-	RUcstIlLkGCI9jltb61geGOzjQla0DOstNJvN20J9d9TWMlCRwwoQIoe9xrmD7Ro
-	GzD53IdA4X3U4hZHuroncf3F/etzfL702ITooOnyCA0e2x3VLgSZj0wfoUIy1qw3
-	ZPgMUHgWoYFEw19RnMaXFcDx/7wMvZecQeEXy0xC2k=
-Received: from andyshrk$163.com ( [58.22.7.114] ) by
- ajax-webmail-wmsvr-40-139 (Coremail) ; Wed, 4 Feb 2026 20:09:22 +0800 (CST)
-X-Originating-IP: [58.22.7.114]
-Date: Wed, 4 Feb 2026 20:09:22 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Sebastian Reichel" <sebastian.reichel@collabora.com>
-Cc: "Vinod Koul" <vkoul@kernel.org>,
-	"Neil Armstrong" <neil.armstrong@linaro.org>,
-	"Heiko Stuebner" <heiko@sntech.de>,
-	"Andy Yan" <andy.yan@rock-chips.com>,
-	"Yubing Zhang" <yubing.zhang@rock-chips.com>,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	kernel@collabora.com, "Frank Wang" <frank.wang@rock-chips.com>,
-	"William Wu" <william.wu@rock-chips.com>
-Subject: Re:[PATCH 0/7] phy: rockchip: usbdp: Fixes, DP 1-lane support and
- cleanups
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20251222(83accb85) Copyright (c) 2002-2026 www.mailtech.cn 163com
-In-Reply-To: <20260203-rockchip-usbdp-cleanup-v1-0-16a6f92ed176@collabora.com>
-References: <20260203-rockchip-usbdp-cleanup-v1-0-16a6f92ed176@collabora.com>
-X-CM-CTRLMSGS: I/zP9XBsdXM9MTc3MDIwNjk2MTk1Nl9mMDBiMmM3YzkzZmI5MzI2MzYzNjBiN
- mY2NDRkZGNmOA==
-X-NTES-SC: AL_Qu2cAv6buUEt5CGdZekfmUgWjuw/WsG1v/Ul1YBSP556jBHo4C0yVmFdIkDxzMWlMBiMlDaNbBx+ycVecYByUb01EtG1L3hZ5b9d9XGBE0mlig==
+	id 1vncoS-00000008UZE-09vT
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Feb 2026 13:20:57 +0000
+Received: by mail-pl1-x630.google.com with SMTP id d9443c01a7336-2a78e381fc1so4388895ad.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 04 Feb 2026 05:20:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770211255; x=1770816055; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=rKC9479RtmvQxjIDGbP/TybkiDx+Ouj854nFtYQtJb4=;
+        b=Enx13wlIHk3qLXgyVJN3jfjCYQPdsI2J0SE4hBO5BhngP4ao/Uz56lM7EAhZbh/Z5C
+         JzqLK/zwFBWhyHD/hjman+OTLLrYexNvAJdUUycozmNIuwTBHNJr8wwoCcKX4rAL3gDD
+         c1TNffkilaqmWA1jyB889PaCf6mck4hcmGjFK6pswB6CPKgT44YcW0Ad1HFjeN75yzaH
+         VOhGxK+RrF/5bQTtRIFP9eZveUMVI+ZOKo6W/heQoOUxE5sltHbGJptCwI+qJ3nwNaMr
+         9WWHM86QEKlW8RKy7ohV6EV/6X8zJy0jbJDW0+bugZj+t5ibD6XDv5HIEXdErR+ou5rn
+         5IXA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770211255; x=1770816055;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=rKC9479RtmvQxjIDGbP/TybkiDx+Ouj854nFtYQtJb4=;
+        b=AiCrT3ETAVPnOrFynDbdzsHuJ/w/qNz+TLWr8TtEYVuqsUUYbuVOYabv/nGZRFzeC7
+         RlTJdHPqdyCx0/2wTfcQ4yH4+Y9koHY6p3hF9CUIMAxGDhVa/SLjLbThVQb5WYlm/icQ
+         ZpVCdwYZXe1dod9D3TJzHXRZ1C8OApy7o9llqnZc1G8VQWc8OtaHApdsGBRUX91RUWpv
+         BDeTvVvoDt049micPeLtgDV+9mz94w+H0Wq/PVFuAK/JHU8dTj3wANRpa+IL+vCGcNZX
+         UxHONzV5FzeGF/OFGtmdD5tnUa9l1puXmdkTeiBgXokvTyeaHbfg3T0JNzIelHjshApi
+         lcOA==
+X-Forwarded-Encrypted: i=1; AJvYcCVppwVNWUTkLX9Ey4W56lzPTj/SdQNBO8BloFHqqBKYhtSw7GQkCvWygTHrbiro47OJK6Bd73w3t0n/ooV9Qw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxko4FwrJwdZzT8VD4UxDQYXD7hRwRdXB7Qmf7XbJOEbelwCRX5
+	3xbAnmFeZty+BJDSt4Ky0QIK0d4fWLNQj75joh06XYwQ4OWc5ynAuksm
+X-Gm-Gg: AZuq6aJkkr9863DyfYvKJijuhv7qb3uyqAc7g+MhNeIDByCgky8v2Ra5kD7st3HE4Q4
+	7oYOC30Glip9BIxaRhz+wEjSqSrTNVbN8k95x+rSpq3uYB9W8GqCACh088ApAHvkPQurp9ynM4v
+	sp6S7wR8V1+O4OFWoCdumqFbwLWw6WJQB75GViWA+4XGyXfV+58w0gI6Ru7L9op79xmNvF0vwjT
+	XsSiJJU6zLDzYTB0obj/gZZRGlOCNmmEnuo4JuCptEs5qfWUaeHf3/mgm1hbLDNrQ08d7wg/ogg
+	8OUUwW3CGlpOi3tW13DtYLBJA0qZgEd/T39zWEJdkGl3Ii0zz8yN8ezJch3BwIRELENLak1pTBL
+	FZXsngk3m+9v1naWoqcW0X5ha59TmqI19U8ToE6fTQPrp/SlU3vZl6arZyKYlQZq+49ISKT1QqN
+	OlE4d2SeSu
+X-Received: by 2002:a17:902:ec82:b0:29b:e512:752e with SMTP id d9443c01a7336-2a933fad904mr38729415ad.47.1770211254785;
+        Wed, 04 Feb 2026 05:20:54 -0800 (PST)
+Received: from arch.localdomain ([2409:8a28:a52:d2b1::1004])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2a93397cd43sm24287045ad.91.2026.02.04.05.20.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Feb 2026 05:20:54 -0800 (PST)
+From: Jun Yan <jerrysteve1101@gmail.com>
+To: dsimic@manjaro.org
+Cc: alchark@gmail.com,
+	andyshrk@163.com,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jerrysteve1101@gmail.com,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: Re: [PATCH v3 3/3] arm64: dts: rockchip: Add OneThing Edge Cube series
+Date: Wed,  4 Feb 2026 21:20:49 +0800
+Message-ID: <20260204132049.327451-1-jerrysteve1101@gmail.com>
+X-Mailer: git-send-email 2.52.0
+In-Reply-To: <f6eb572c-dd2c-9606-4fb5-b26b51bbbb06@manjaro.org>
+References: <f6eb572c-dd2c-9606-4fb5-b26b51bbbb06@manjaro.org>
 MIME-Version: 1.0
-Message-ID: <4a7a30c4.8848.19c288ea1f3.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: iygvCgD3H4nyNoNp24llAA--.23899W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7hIFY2mDNvKnbQAA3+
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_040959_005157_8D74090C 
-X-CRM114-Status: GOOD (  10.25  )
+X-CRM114-CacheID: sfid-20260204_052056_102604_DA00D291 
+X-CRM114-Status: GOOD (  35.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,120 +102,121 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvIFNlYmFzdGlhbu+8jAoKCkF0IDIwMjYtMDItMDQgMDI6NDE6MjYsICJTZWJhc3RpYW4g
-UmVpY2hlbCIgPHNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+QXMgdGhl
-cmUgYXJlIHNvbWUgaXNzdWVzIHdpdGggdGhlIERpc3BsYXlQb3J0IHN1cHBvcnQsIEkgd2VudAo+
-dGhvdWdoIFJvY2tjaGlwJ3MgQlNQIGtlcm5lbCB0cmVlIGFuZCBsb29rZWQgZm9yIGZpeGVzLiBJ
-IGZvdW5kCj50d28gc21hbGwgY2hhbmdlcyBmb3IgdGhlIGluaXRpYWwgcmVnaXN0ZXIgc2V0dXAs
-IHdoaWNoIGRvIG5vdAo+aGVscCB3aXRoIHRoZSBEUCBpc3N1ZSBidXQgc2VlbSBzZW5zaWJsZSBp
-biBnZW5lcmFsLiBBZnRlcndhcmRzCj5JIGFkZGVkIG9uZSBtb3JlIGZpeCwgd2hpY2ggY29ycmVj
-dHMgYW4gaXNzdWUgdGhhdCBlZmZlY3RpdmVseQo+cmVzdWx0cyBpbiBVU0ItQyBhZGFwdGVycyB3
-aXRoIGNvbWJpbmVkIFVTQjMrRFAgY2FwYWJpbGl0aWVzCj5ub3QgYmVpbmcgYWJsZSB0byB1c2Ug
-dGhlIERQIHBhcnQuCj4KPkFmdGVyd2FyZHMgSSBhZGRlZCBvbmUgbW9yZSBwYXRjaCBhZGRpbmcg
-c2luZ2xlLWxhbmUgRFAgc3VwcG9ydAo+KGZvdW5kIGluIFJvY2tjaGlwIEJTUCBrZXJuZWwpIGFu
-ZCBhIGNvdXBsZSBvZiBjbGVhbnVwcyBmcm9tIG15Cj5zaWRlLiBUaGVzZSBhcmUgbG9naWNhbGx5
-IGluZGVwZW5kZW50IGZyb20gdGhlIGZpeGVzLCBidXQgSSBwdXQKPmFsbCB0b2dldGhlciBpbiBh
-IHNpbmdsZSBzZXJpZXMgYmVjYXVzZSB0aGV5IG5lZWQgdG8gYmUgYXBwbGllZAo+aW4gdGhlIHJp
-Z2h0IG9yZGVyIHRvIGF2b2lkIGNvbmZsaWN0cy4KPgo+U2lnbmVkLW9mZi1ieTogU2ViYXN0aWFu
-IFJlaWNoZWwgPHNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+Cj4tLS0KPkZyYW5rIFdh
-bmcgKDEpOgo+ICAgICAgcGh5OiByb2NrY2hpcDogdXNiZHA6IEFtZW5kIFNTQyBtb2R1bGF0aW9u
-IGRldmlhdGlvbgo+Cj5TZWJhc3RpYW4gUmVpY2hlbCAoNCk6Cj4gICAgICBwaHk6IHJvY2tjaGlw
-OiB1c2JkcDogQWRkIG1pc3NpbmcgbW9kZV9jaGFuZ2UgdXBkYXRlCj4gICAgICBwaHk6IHJvY2tj
-aGlwOiB1c2JkcDogUmVuYW1lIERQIGxhbmUgZnVuY3Rpb25zCj4gICAgICBwaHk6IHJvY2tjaGlw
-OiB1c2JkcDogVXNlIEZJRUxEX1BSRVBfV00xNl9DT05TVAo+ICAgICAgcGh5OiByb2NrY2hpcDog
-dXNiZHA6IENsZWFudXAgRFAgbGFuZSBzZWxlY3Rpb24gZnVuY3Rpb24KPgo+V2lsbGlhbSBXdSAo
-MSk6Cj4gICAgICBwaHk6IHJvY2tjaGlwOiB1c2JkcDogRml4IExGUFMgZGV0ZWN0IHRocmVzaG9s
-ZCBjb250cm9sCj4KPlpoYW5nIFl1YmluZyAoMSk6Cj4gICAgICBwaHk6IHJvY2tjaGlwOiB1c2Jk
-cDogU3VwcG9ydCBzaW5nbGUtbGFuZSBEUAo+Cj4gZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJv
-Y2tjaGlwLXVzYmRwLmMgfCAxMTQgKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLS0tCj4gMSBm
-aWxlIGNoYW5nZWQsIDQ4IGluc2VydGlvbnMoKyksIDY2IGRlbGV0aW9ucygtKQoKCgpBZnRlciBh
-cHBseWluZyB0aGlzIHNlcmllcyBvZiBwYXRjaGVzLCB0aGUgaHViIHRoYXQgcHJldmlvdXNseSBj
-b3VsZG7igJl0IHJlY29nbml6ZSBBbHQgTW9kZSBjYW4gbm93IGRldGVjdCBpdCBhbmQgd29yayBw
-cm9wZXJseSwgCmJ1dCBpdCBhbHNvIHRyaWdnZXJzIGEgVVNCLXJlbGF0ZWQgU0VSUiDigJQgZGlk
-IEkgbWlzcyBzb21ldGhpbmfvvJ8KCgpbICAgIDIuNjM5ODQyXVsgIFQyNDRdIDgwMjFxOiBhZGRp
-bmcgVkxBTiAwIHRvIEhXIGZpbHRlciBvbiBkZXZpY2UgZXRoMQpbICAgIDMuODcyOTM2XVsgICBU
-MjNdIHVzYiAzLTE6IG5ldyBoaWdoLXNwZWVkIFVTQiBkZXZpY2UgbnVtYmVyIDIgdXNpbmcgeGhj
-aS1oY2QKWyAgICA0LjAxMTIzMl1bICAgVDIzXSB1c2IgMy0xOiBOZXcgVVNCIGRldmljZSBmb3Vu
-ZCwgaWRWZW5kb3I9MjEwOSwgaWRQcm9kdWN0PTI4MTcsIGJjZERldmljZT0gNS41NApbICAgIDQu
-MDEyMTAyXVsgICBUMjNdIHVzYiAzLTE6IE5ldyBVU0IgZGV2aWNlIHN0cmluZ3M6IE1mcj0xLCBQ
-cm9kdWN0PTIsIFNlcmlhbE51bWJlcj0zClsgICAgNC4wMTI5MDhdWyAgIFQyM10gdXNiIDMtMTog
-UHJvZHVjdDogVVNCMi4wIEh1YiAgICAgICAgICAgICAKWyAgICA0LjAxMzQ2OV1bICAgVDIzXSB1
-c2IgMy0xOiBNYW51ZmFjdHVyZXI6IFZJQSBMYWJzLCBJbmMuICAgICAgICAgClsgICAgNC4wMTQw
-NjRdWyAgIFQyM10gdXNiIDMtMTogU2VyaWFsTnVtYmVyOiAwMDAwMDAwMDAKWyAgICA0LjA3MTE1
-NF1bICAgVDIzXSBodWIgMy0xOjEuMDogVVNCIGh1YiBmb3VuZApbICAgIDQuMDcxODc2XVsgICBU
-MjNdIGh1YiAzLTE6MS4wOiA1IHBvcnRzIGRldGVjdGVkClsgICAgNC4zODU1NTRdWyAgICBDMV0g
-U0Vycm9yIEludGVycnVwdCBvbiBDUFUxLCBjb2RlIDB4MDAwMDAwMDBiZjAwMDAwMiAtLSBTRXJy
-b3IKWyAgICA0LjM4NTU5Ml1bICAgIEMxXSBDUFU6IDEgVUlEOiAwIFBJRDogOTYgQ29tbToga3dv
-cmtlci8xOjEgVGFpbnRlZDogRyAgIE0gICAgICAgICAgICAgICAgNi4xOS4wLXJjNCsgIzIyMyBQ
-UkVFTVBUIApbICAgIDQuMzg1NjIzXVsgICAgQzFdIFRhaW50ZWQ6IFtNXT1NQUNISU5FX0NIRUNL
-ClsgICAgNC4zODU2MzJdWyAgICBDMV0gSGFyZHdhcmUgbmFtZTogQXJtU29NIFNpZ2U1IChEVCkK
-WyAgICA0LjM4NTY0NF1bICAgIEMxXSBXb3JrcXVldWU6IHVzYl9odWJfd3EgaHViX2V2ZW50Clsg
-ICAgNC4zODU2ODBdWyAgICBDMV0gcHN0YXRlOiAwMDAwMDBjNSAobnpjdiBkYUlGIC1QQU4gLVVB
-TyAtVENPIC1ESVQgLVNTQlMgQlRZUEU9LS0pClsgICAgNC4zODU3MDFdWyAgICBDMV0gcGMgOiBl
-bDFfYWJvcnQrMHgzNC8weDY4ClsgICAgNC4zODU3MjhdWyAgICBDMV0gbHIgOiBlbDFfYWJvcnQr
-MHgyNC8weDY4ClsgICAgNC4zODU3NDldWyAgICBDMV0gc3AgOiBmZmZmODAwMDgzM2EzNmMwClsg
-ICAgNC4zODU3NThdWyAgICBDMV0geDI5OiBmZmZmODAwMDgzM2EzNmMwIHgyODogZmZmZjAwMDBj
-MzU2ODAwMCB4Mjc6IGZmZmYwMDAwYzNkNzBjNDgKWyAgICA0LjM4NTc5Ml1bICAgIEMxXSB4MjY6
-IGZmZmYwMDAwYzEzYzhkNzggeDI1OiAwMDAwMDAwMDAwMDAwMDA0IHgyNDogMDAwMDAwMDAwMDAw
-MDAwMQpbICAgIDQuMzg1ODIzXVsgICAgQzFdIHgyMzogMDAwMDAwMDA2MDAwMDBjNSB4MjI6IGZm
-ZmY4MDAwODQwODg0MzAgeDIxOiAwMDAwMDAwMDk2MDAwMjEwClsgICAgNC4zODU4NTRdWyAgICBD
-MV0geDIwOiAwMDAwMDAwMDAwMDAwMDAwIHgxOTogZmZmZjgwMDA4MzNhMzcwMCB4MTg6IDAwMDAw
-MDAwZmZmZmZmZmYKWyAgICA0LjM4NTg4NV1bICAgIEMxXSB4MTc6IGZmZmY4MDAwODMxNzkwMDAg
-eDE2OiBmZmZmZmZmZmZmZmZmZmZmIHgxNTogZmZmZjAwMDBjMTFiYTEyOApbICAgIDQuMzg1OTE2
-XVsgICAgQzFdIHgxNDogMDAwMDAwMDAwMDAwMDM3NiB4MTM6IDAwMDAwMDAwMDAwMDAzNzYgeDEy
-OiAwMDAwMDAwMDAwMDAwMDAwClsgICAgNC4zODU5NDZdWyAgICBDMV0geDExOiAwMDAwMDAwMDAw
-MDAwMGMwIHgxMDogMDAwMDAwMDAwMDAwMGFmMCB4OSA6IDAwMDAwMDAwMDAwMDIzMDMKWyAgICA0
-LjM4NTk3Nl1bICAgIEMxXSB4OCA6IGZmZmY4MDAwODMzYTM3NDAgeDcgOiBmZmZmODAwMDgzM2Ez
-ODMwIHg2IDogZmZmZjgwMDA4MzNhMzgwMApbICAgIDQuMzg2MDA2XVsgICAgQzFdIHg1IDogZmZm
-ZjgwMDA4MzNhMzc4MCB4NCA6IGZmZmY4MDAwODMzYTQwMDAgeDMgOiBmZmZmODAwMDgxMmM5ODZj
-ClsgICAgNC4zODYwMzddWyAgICBDMV0geDIgOiBmZmZmODAwMDgxMmM5ODZjIHgxIDogMDAwMDAw
-MDAwMDAwMDBjMCB4MCA6IDAwMDAwMDAwMDAwMDAwMDAKWyAgICA0LjM4NjA3MV1bICAgIEMxXSBL
-ZXJuZWwgcGFuaWMgLSBub3Qgc3luY2luZzogQXN5bmNocm9ub3VzIFNFcnJvciBJbnRlcnJ1cHQK
-WyAgICA0LjM4NjA4NV1bICAgIEMxXSBDUFU6IDEgVUlEOiAwIFBJRDogOTYgQ29tbToga3dvcmtl
-ci8xOjEgVGFpbnRlZDogRyAgIE0gICAgICAgICAgICAgICAgNi4xOS4wLXJjNCsgIzIyMyBQUkVF
-TVBUIApbICAgIDQuMzg2MTEzXVsgICAgQzFdIFRhaW50ZWQ6IFtNXT1NQUNISU5FX0NIRUNLClsg
-ICAgNC4zODYxMjFdWyAgICBDMV0gSGFyZHdhcmUgbmFtZTogQXJtU29NIFNpZ2U1IChEVCkKWyAg
-ICA0LjM4NjEzMV1bICAgIEMxXSBXb3JrcXVldWU6IHVzYl9odWJfd3EgaHViX2V2ZW50ClsgICAg
-NC4zODYxNTZdWyAgICBDMV0gQ2FsbCB0cmFjZToKWyAgICA0LjM4NjE2NF1bICAgIEMxXSAgc2hv
-d19zdGFjaysweDE4LzB4MjQgKEMpClsgICAgNC4zODYyMDJdWyAgICBDMV0gIGR1bXBfc3RhY2tf
-bHZsKzB4NjAvMHg4MApbICAgIDQuMzg2MjM2XVsgICAgQzFdICBkdW1wX3N0YWNrKzB4MTgvMHgy
-NApbICAgIDQuMzg2MjY2XVsgICAgQzFdICB2cGFuaWMrMHhmOC8weDJhYwpbICAgIDQuMzg2Mjkw
-XVsgICAgQzFdICB0cmFjZV9zdXNwZW5kX3Jlc3VtZSsweDAvMHg3YwpbICAgIDQuMzg2MzE0XVsg
-ICAgQzFdICBhZGRfdGFpbnQrMHgwLzB4YmMKWyAgICA0LjM4NjM0Ml1bICAgIEMxXSAgYXJtNjRf
-c2Vycm9yX3BhbmljKzB4NzAvMHg4MApbICAgIDQuMzg2MzY0XVsgICAgQzFdICBkb19zZXJyb3Ir
-MHgzYy8weDc0ClsgICAgNC4zODYzODRdWyAgICBDMV0gIGVsMWhfNjRfZXJyb3JfaGFuZGxlcisw
-eDM0LzB4NTAKWyAgICA0LjM4NjQxNF1bICAgIEMxXSAgZWwxaF82NF9lcnJvcisweDZjLzB4NzAK
-WyAgICA0LjM4NjQzNl1bICAgIEMxXSAgZWwxX2Fib3J0KzB4MzQvMHg2OCAoUCkKWyAgICA0LjM4
-NjQ2Ml1bICAgIEMxXSAgZWwxaF82NF9zeW5jX2hhbmRsZXIrMHg1MC8weGFjClsgICAgNC4zODY0
-OTBdWyAgICBDMV0gIGVsMWhfNjRfc3luYysweDZjLzB4NzAKWyAgICA0LjM4NjUxMV1bICAgIEMx
-XSAgeGhjaV9wb3J0c2NfcmVhZGwrMHg0LzB4MWMgKFApClsgICAgNC4zODY1MzhdWyAgICBDMV0g
-IHVzYl9oY2Rfc3VibWl0X3VyYisweDQ4Yy8weGEzYwpbICAgIDQuMzg2NTY1XVsgICAgQzFdICB1
-c2Jfc3VibWl0X3VyYisweDFlMC8weDY1MApbICAgIDQuMzg2NTkzXVsgICAgQzFdICB1c2Jfc3Rh
-cnRfd2FpdF91cmIrMHg3NC8weDE3YwpbICAgIDQuMzg2NjIxXVsgICAgQzFdICB1c2JfY29udHJv
-bF9tc2crMHhjNC8weDE0MApbICAgIDQuMzg2NjQ4XVsgICAgQzFdICBodWJfcG9ydF9yZXNldCsw
-eDExOC8weDljMApbICAgIDQuMzg2NjcyXVsgICAgQzFdICBodWJfcG9ydF9pbml0KzB4YjQvMHhk
-ODQKWyAgICA0LjM4NjY5NF1bICAgIEMxXSAgaHViX2V2ZW50KzB4MTBlNC8weDFhNWMKWyAgICA0
-LjM4NjcxOF1bICAgIEMxXSAgcHJvY2Vzc19vbmVfd29yaysweDE2Yy8weDNkNApbICAgIDQuMzg2
-NzUyXVsgICAgQzFdICB3b3JrZXJfdGhyZWFkKzB4MmM0LzB4M2Y0ClsgICAgNC4zODY3NzNdWyAg
-ICBDMV0gIGt0aHJlYWQrMHgxMzAvMHgxZWMKWyAgICA0LjM4NjgwM11bICAgIEMxXSAgcmV0X2Zy
-b21fZm9yaysweDEwLzB4MjAKWyAgICA0LjM4NjgyOV1bICAgIEMxXSBTTVA6IHN0b3BwaW5nIHNl
-Y29uZGFyeSBDUFVzClsgICAgNC4zODY4NTRdWyAgICBDMV0gS2VybmVsIE9mZnNldDogZGlzYWJs
-ZWQKWyAgICA0LjM4Njg2MV1bICAgIEMxXSBDUFUgZmVhdHVyZXM6IDB4MjAwMDAwLDEwNDEwMDAx
-LDAwMDA4MDAwLDA0MDA0MjBiClsgICAgNC4zODY4NzZdWyAgICBDMV0gTWVtb3J5IExpbWl0OiBu
-b25lClsgICAgNC40MTQyMzhdWyAgICBDMV0gLS0tWyBlbmQgS2VybmVsIHBhbmljIC0gbm90IHN5
-bmNpbmc6IEFzeW5jaHJvbm91cyBTRXJyb3IgSW50ZXJydXB0IF0tLS0KCgo+LS0tCj5iYXNlLWNv
-bW1pdDogMThmN2ZjZDVlNjlhMDRkZjU3YjU2MzM2MGI4OGJlNzI0NzFkNmI2Mgo+Y2hhbmdlLWlk
-OiAyMDI2MDIwMy1yb2NrY2hpcC11c2JkcC1jbGVhbnVwLTViNTlkZmI1NjFhMwo+Cj5CZXN0IHJl
-Z2FyZHMsCj4tLSAKPlNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBjb2xsYWJv
-cmEuY29tPgo+Cj4KPl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCj5MaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKPmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+Hello,
+
+> Hello Jun,
+> 
+> On Tuesday, February 03, 2026 16:10 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
+> > > On Monday, February 02, 2026 16:04 CET, Jun Yan <jerrysteve1101@gmail.com> wrote:
+> > > > The OneThing Edge Cube (OEC) series features the RK3566 SoC, 8GB
+> > > > eMMC storage, and supports one SATA interface, one Gigabit Ethernet
+> > > > port, and one USB 3.0 port.
+> > > > 
+> > > > Other than the difference in RAM capacity, the OEC and OEC-turbo are
+> > > > identical in all other specifications.
+> > > > 
+> > > >   Specification:
+> > > >     - Rockchip RK3566
+> > > >     - LPDDR4X 2GB (OEC) / 4GB (OEC-turbo)
+> > > >     - eMMC 8GB
+> > > >     - Gigabit Ethernet port x 1
+> > > >     - USB 3.0 port x 1
+> > > >     - USB-C 2.0 port x 1
+> > > >     - 12V DC Power supply
+> > > >     - SATA 3.0 connector x 1
+> > > > 
+> > > > These devices do not have a PMIC, and their hardware circuit design
+> > > > is highly similar to that of the rk3566-box-demo[1]. Hardware schematics
+> > > > are not available at this time, with the vendor firmware dts available
+> > > > for reference[2].
+> > > > 
+> > > > Ethernet, USB 3.0 and SATA 3.0 ports tested, all working well.
+> > > > 
+> > > > [1] https://elixir.bootlin.com/linux/v6.18.6/source/arch/arm64/boot/dts/rockchip/rk3566-box-demo.dts
+> > > > [2] https://archive.org/download/wxy-oec-RK3566-4G-dump/wxy-oec-RK3566-4G-dump.dts
+> > > > 
+> > > > Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+> > > > ---
+> > > >  arch/arm64/boot/dts/rockchip/Makefile         |   1 +
+> > > >  .../rockchip/rk3566-onething-oec-series.dts   | 312 ++++++++++++++++++
+> > > >  2 files changed, 313 insertions(+)
+> > > >  create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+> > > > 
+> > > > diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
+> > > > index 4d384f153c13..234fa53abe17 100644
+> > > > --- a/arch/arm64/boot/dts/rockchip/Makefile
+> > > > +++ b/arch/arm64/boot/dts/rockchip/Makefile
+> > > > @@ -104,6 +104,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353v.dtb
+> > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg353vs.dtb
+> > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-anbernic-rg503.dtb
+> > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-odroid-m1s.dtb
+> > > > +dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-onething-oec-series.dtb
+> > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v1.1.dtb
+> > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-orangepi-3b-v2.1.dtb
+> > > >  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3566-pinenote-v1.1.dtb
+> > > > diff --git a/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+> > > > new file mode 100644
+> > > > index 000000000000..2007b93e190e
+> > > > --- /dev/null
+> > > > +++ b/arch/arm64/boot/dts/rockchip/rk3566-onething-oec-series.dts
+> > > > @@ -0,0 +1,312 @@
+> > > > +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> > > > +
+> > > > +/dts-v1/;
+> > > > +
+> > > > +#include <dt-bindings/gpio/gpio.h>
+> > > > +#include <dt-bindings/leds/common.h>
+> > > > +#include <dt-bindings/pinctrl/rockchip.h>
+> > > > +#include "rk3566.dtsi"
+> > > > +
+> > > > +/ {
+> > > > +	model = "OneThing OEC/OEC-turbo";
+> > > > +	compatible = "onething,oec-turbo", "onething,oec", "rockchip,rk3566";
+> > > 
+> > > Thanks for the v3!  After thinking a bit more about it, it would be better
+> > > to name the board dtb "rk3566-onething-edge-cube.dtb" and omit the "series"
+> > > part, because the only difference between the board variants is the amount
+> > > of DRAM.  Also, "onething,oec-turbo" should be removed from the compatibles,
+> > > and the single compatible renamed to "onething,edge-cube", because I see no
+> > > need to have an additional compatible, which may be added later if really
+> > > needed for some unforeseen differentiating purpose.
+> > > 
+> > > Also, it might be better to use "OneThing Edge Cube/Edge Cube Turbo" as the
+> > > combined name, because "Edge Cube" is more self-descriptive than just "OEC",
+> > > which may also help with various search engines down the road.
+> > 
+> > Sorry for the quick follow-up.
+> > In official documentation (Most of it is in Chinese) from OneThing Tech[1], 
+> > the designations "OEC/OEC-turbo" are more commonly and widely used.
+> > for this reason, I propose retaining the "OEC/OEC-turbo" naming in the model 
+> > property.
+> 
+> I see, that's an interesting twist.  As some kind of a compromise, it would
+> be best to have the board dtb named "rk3566-onething-edge-cube.dtb" and use
+> "OneThing Edge Cube (OEC)/OEC Turbo" as the combined name.  That way the
+> board dtb name isn't too short, while "OEC" is present in the model name,
+> for search engines to pick it up, hopefully, and for people to see it in
+> a few places. :)
+> 
+I appreciate the compromise and fully agree with it: naming the dtb 
+"rk3566-onething-edge-cube.dtb" and using "OneThing Edge Cube (OEC)/OEC Turbo" 
+as the combined name.
+
+The V4 patch will follow shortly.
+
+Best regards,
+
+Jun Yan
+
+> > [1] https://help.onethingcloud.com/be81/OEC1/80c5
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
