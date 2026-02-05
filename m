@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A8AFECD9A9
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E576ECD9AA
 	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 21:20:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,34 +12,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WmDhU4jwxuRcX7gLWFsLniM8hTUmdasTv2Lw5F8R4OQ=; b=4zVTFLqzB8sVe0
-	L8XCwtnc8KzJ1O0Fi+SmuXPtLT3mTrOYXCFd6gyji6OzXWPcgS2iJZHOGM6+z8HKonnZa22dJJb5p
-	jlm4lEmhQ0DHiEJ2M2CP/cqLtoVK+hAjPkIp8wjajM3jMZzEVnISJfQuYGASpO61zgdJouUENawYC
-	XE+K8HK7uncUdo0R7iVKsSDYMzwUhZMg1Xd1o6iEvNiKZiroNVx7MOCBhv1nf/wz15b0nqsZ5ethK
-	3sfiXmUIbwnVMhcf/h0nbHxYI1+g2J8zHRYMSHOsaMYIjrAbQ/RY1exLowPMLVGDqct4M1wwHg5MX
-	AjVGJI6WAcy2EC7rigtA==;
+	List-Owner; bh=GBSDHzPSJM8QQ2xfAxqKsCtrE+NzS7bxbBVZ/w1kedU=; b=H5RvoNQyQ23NMh
+	UovFbgdXjsM4e76ukcAmUwKGVRwiS/mvXFLv32+LJXPFDaycMDF0vga2cudy2ZWX5tKL+m9eIVDEp
+	jIJCoCyzj8/AleYv5F7K+36dVJAhPVR1v3ePEAh8tvsa8Ui0GZIYQ+0GNL8Bf0kq1lqUvUecuEbSo
+	Xh9KpUHhlQiS9HsvW51bn8v0cYkl/Srvj1ivbi1xPN+HiOYlsjsMxOYS7f9Rv6Pg72mVlx89PURsc
+	fYlL8uuaOyHrg3Svacg7j1xAMDL9db97esP/ws+IPW7a/q8622cmPdZGDWpVFbywL0Me6iv3PkZW1
+	f8UzKFp/tO9u41OG30Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo6lb-0000000AV5k-0PGX;
-	Thu, 05 Feb 2026 21:19:59 +0000
+	id 1vo6la-0000000AV58-22Yi;
+	Thu, 05 Feb 2026 21:19:58 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo6lV-0000000AV2H-1GWi;
+	id 1vo6lV-0000000AV2D-0xAQ;
 	Thu, 05 Feb 2026 21:19:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=1U5hhK+rQlR00/k3EtSMrklWPqzzU+7KvzJRyjKH+Zg=; b=cDljldwEFYTs2Gusti/WLTPfYX
-	xY3TJrU6MsZA2uo/gMKOJ7dMtHRuqxMOH1XwindDtM7V/VN3j5YUdiF4fbDyxTEA2X8DXMRa91L6u
-	emicl+h30laRj2WDwa6se9v3U41ZRwtR1ekc0ogO9jNiRAJIKiA3mpCiu6W5Q64o9YCoQBE4+GcWL
-	L8CzdlBPiXi612hrn+vOEV8U2rwq80WimyPNSjyXsYnIQFIunQGSfLzUH3rVuiiqTO6zuhwKTuzLz
-	SAuDXC/x88a55OxR5fDzgwo9qguKel0PExUiiaPtEwwl3xrO8wB7gbP58ThYnALYQXHZfjZLp6hmV
-	NTivuDiA==;
+	bh=ZSOvELGA2EuKRZ+dcy6xv6vUM0tTuySjHGPM8Fdt7Cg=; b=FXspVDJkdinxtd5OLNoypx0bDB
+	/4j7Rr9t5C9Jp+248IwBpFD9XNEYx3ouJptrP92ycZ8be+CE7V80aG7P5rX3GqgWFvrxXdBlkT8UG
+	LPG3GgwXZUYX3Nm9cTrn+o1k04+8+rQcTKldsLp9FfXBOw5PIhslcdugNcDt607R6Oss4lX5uSXKE
+	yiGsYqTIEaXvcHq48A7UjletnmO9gwl26T5UAJ4+VpGrjOAUI8e/ZF36vMYiVnERMzkssxmQ9/n4L
+	9LgpbPk5Z8Rz7e1ZyFraMpQ76/1RbcvOQBCOjKMafvauAnrF8EGyTD0uEBMR5rmnfTcZ7iIAij5Ap
+	H56z7jCw==;
 Received: from i53875afe.versanet.de ([83.135.90.254] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vo6lO-007GGK-7W; Thu, 05 Feb 2026 22:19:46 +0100
+	id 1vo6lN-007GGK-Mb; Thu, 05 Feb 2026 22:19:46 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srini@kernel.org
 Cc: robh@kernel.org,
@@ -54,16 +54,16 @@ Cc: robh@kernel.org,
 	finley.xiao@rock-chips.com,
 	w@1wt.eu,
 	jonas@kwiboo.se
-Subject: [PATCH v4 2/6] dt-bindings: nvmem: rockchip,otp: Add compatible for RK3528
-Date: Thu,  5 Feb 2026 22:18:57 +0100
-Message-ID: <20260205211901.490181-3-heiko@sntech.de>
+Subject: [PATCH v4 1/6] dt-bindings: nvmem: rockchip,otp: Add support for RK3562 and RK3568
+Date: Thu,  5 Feb 2026 22:18:56 +0100
+Message-ID: <20260205211901.490181-2-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20260205211901.490181-1-heiko@sntech.de>
 References: <20260205211901.490181-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_131953_346300_BD929E4D 
-X-CRM114-Status: GOOD (  10.23  )
+X-CRM114-CacheID: sfid-20260205_131953_276437_8521772B 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,30 +80,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+From: Kever Yang <kever.yang@rock-chips.com>
 
-Add compatible string for the OTP controller in RK3528. Compared to the
-RK3562 and RK3568 the OTP in RK3528 does not have a phy clock or reset.
+Add compatible entry for the otp controller in RK3562 and RK3568, add
+schema for different clock names for new entry.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../bindings/nvmem/rockchip,otp.yaml          | 25 +++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ .../bindings/nvmem/rockchip,otp.yaml          | 58 +++++++++++++++----
+ 1 file changed, 48 insertions(+), 10 deletions(-)
 
 diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-index e90136f7dcfb..7e4d5e1c4ced 100644
+index dc89020b0950..e90136f7dcfb 100644
 --- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
 +++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-@@ -14,6 +14,7 @@ properties:
+@@ -14,6 +14,8 @@ properties:
      enum:
        - rockchip,px30-otp
        - rockchip,rk3308-otp
-+      - rockchip,rk3528-otp
-       - rockchip,rk3562-otp
-       - rockchip,rk3568-otp
++      - rockchip,rk3562-otp
++      - rockchip,rk3568-otp
        - rockchip,rk3576-otp
-@@ -72,6 +73,30 @@ allOf:
+       - rockchip,rk3588-otp
+ 
+@@ -26,19 +28,15 @@ properties:
+ 
+   clock-names:
+     minItems: 3
+-    items:
+-      - const: otp
+-      - const: apb_pclk
+-      - const: phy
+-      - const: arb
++    maxItems: 4
+ 
+   resets:
+     minItems: 1
+-    maxItems: 3
++    maxItems: 4
+ 
+   reset-names:
+     minItems: 1
+-    maxItems: 3
++    maxItems: 4
+ 
+ required:
+   - compatible
+@@ -64,13 +62,44 @@ allOf:
+         clocks:
+           maxItems: 3
+         clock-names:
+-          maxItems: 3
++          items:
++            - const: otp
++            - const: apb_pclk
++            - const: phy
+         resets:
+           maxItems: 1
+         reset-names:
            items:
              - const: phy
  
@@ -112,28 +148,62 @@ index e90136f7dcfb..7e4d5e1c4ced 100644
 +        compatible:
 +          contains:
 +            enum:
-+              - rockchip,rk3528-otp
++              - rockchip,rk3562-otp
++              - rockchip,rk3568-otp
 +    then:
 +      properties:
 +        clocks:
-+          maxItems: 3
++          minItems: 4
++          maxItems: 4
 +        clock-names:
 +          items:
 +            - const: otp
 +            - const: apb_pclk
++            - const: phy
 +            - const: sbpi
 +        resets:
-+          minItems: 3
-+          maxItems: 3
++          minItems: 4
++          maxItems: 4
 +        reset-names:
 +          items:
 +            - const: otp
 +            - const: apb
++            - const: phy
 +            - const: sbpi
 +
    - if:
        properties:
          compatible:
+@@ -82,7 +111,10 @@ allOf:
+         clocks:
+           maxItems: 3
+         clock-names:
+-          maxItems: 3
++          items:
++            - const: otp
++            - const: apb_pclk
++            - const: phy
+         resets:
+           minItems: 2
+           maxItems: 2
+@@ -101,10 +133,16 @@ allOf:
+       properties:
+         clocks:
+           minItems: 4
++          maxItems: 4
+         clock-names:
+-          minItems: 4
++          items:
++            - const: otp
++            - const: apb_pclk
++            - const: phy
++            - const: arb
+         resets:
+           minItems: 3
++          maxItems: 3
+         reset-names:
+           items:
+             - const: otp
 -- 
 2.47.2
 
