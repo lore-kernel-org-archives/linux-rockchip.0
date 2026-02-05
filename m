@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43206ECD993
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 17:30:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B62AECD997
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 21:20:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Date:
-	Message-Id:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dhSBv/lKIQOSq91GXqdwws9+47dOQTjyJO2XFZ0R1Sk=; b=vZ3ALGBLT/MER6
-	CPzD4OBtl8R0/yQ7gFojy0nykFk9+mcvcTYdOXGqbwa8eFggu752BJV3IQJh4wOJdnUEWKjIFwOua
-	37cmD3htnXNisg/UCk98ZW6gianDSNirqWKK9P9HWmku94BZZb2NwSOwzDTp4ZPURjgYWCiyX0KpM
-	v86KOpB2MxfKMUuTrOgO/jJBdmeaGBzSnY0dCeo953KwX8iKnqdSUAv2m5/bj8S65/j1zib/2NO6n
-	cWnGPlmTxdxkMyzdQfF7jVq5Yp4/jQLGShQTQVvwHdjtx74m5GnAEmpO4sfMaBKciY0HJDzE4/2eO
-	hrrU04NI40yf+PQqfKZw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ogkS1mUPxpuYjuyq66ASWplQgvBTD9PozM7+J6HB1Mo=; b=PZR4uU07u5WuNT
+	P0qxWPY3se/XZbJ17sYRDZerq+Mhq98NpSPvnxg60PZyMhAFQF6aV7941XzxOT9svqyJhd8MZHRPK
+	QNpSDC4az8/kPCsGF0otbtbjG9SlYmcTAjil4O2C/dr6vAacWrh/zd7hHRTjbljmzc1XqDJikWAm8
+	6VZDbA8ekMP7foK5aGZW17D5W77BsdMjavvVs3M9meeW+klYGabBSA8Y/nSVTLcuWYh8ktGRj+U1M
+	S2mKLY3vyR+HU1JJe9iv1MBlEKzQ63j05mhx7UADL8BXt/GUP3ga0iiVrwJ2Qzvae8Bbp1xMxLH6q
+	KcvwTahp7/qz1FiJPMmA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo3BM-0000000AIDG-1j7d;
-	Thu, 05 Feb 2026 17:30:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vo6lb-0000000AV6K-2ktq;
+	Thu, 05 Feb 2026 21:19:59 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo3BJ-0000000AICP-2Nlb;
-	Thu, 05 Feb 2026 17:30:18 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B56A14448A;
-	Thu,  5 Feb 2026 17:30:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 946A2C2BC87;
-	Thu,  5 Feb 2026 17:30:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770312616;
-	bh=nmhl7oJPwOQKGhvS5Y0LaKirKo62bY/yf4EL+9kA0OA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc:From;
-	b=F/StjmdvehKAzGGyVRuefB9Wz8w4AvzGJhIV2ZSFJQgxLah7OT3B2RVmRNjpfXNEM
-	 91aaioJzFFMtuYgrQP+Yiy428mYEoz0jqtTmtpXWSrP6FtS0EDDKKWo0O6OPR+agZF
-	 PQsGxIlsMk0K4omsx2ch1cJEiOBc0TsAiBNFutCVn4AxMXvKD9Jf3PYItHezUrH4Dk
-	 VOSiYNAdBTmNzJjHcQ2kznnntFWjwpg3qbU9b/a//4GekZak5knSCATNl3m6VQzTn+
-	 KpymdsP2FvnP2lnGrZeDISkhfhjxLkraW6ZPMq1e+GtO1sE10Pa8l+qiKxczb2LUs8
-	 upXQlFpC7haaw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 8534B3808200;
-	Thu,  5 Feb 2026 17:30:15 +0000 (UTC)
+	id 1vo6lV-0000000AV2G-1QKX;
+	Thu, 05 Feb 2026 21:19:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
+	bh=H6YnkpYDKXhiFVLlVHgZQ6m/aKsIAX0AUzy5h11UG4A=; b=Q1M9CrJuw3KB2QgWcNL35CLbLB
+	+J/SRaLXsXF0SNU8ixr++tA7fAX918fB+ioJQ4RXvo8x82lAoGkzJEEl0zqvrw2E8YNY6gX/NWipp
+	MboYlXt5FNb0nVBgWrYzM4MV6aBvGPQyAyLMC7VhVwUm0XxDuEpZnxMUA9j43AJLuzEBgj9/oAlF2
+	OBCC+Q0HVCQIf9mTK7pg4l18MHEuczRRauX1xnoko/bTGyjgJZWUAf0wIh3+3sgww5ekJoB1bjovR
+	8VctrMmIgqk+LBQfQ1BHVXLztzuuhmL/r9fKgcOHU3BvC0IWpC3UD/Z72mDOLi5jpcjR0nFbhLdiD
+	9WvP3UKg==;
+Received: from i53875afe.versanet.de ([83.135.90.254] helo=localhost.localdomain)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vo6lN-007GGK-4s; Thu, 05 Feb 2026 22:19:45 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: srini@kernel.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	kever.yang@rock-chips.com,
+	finley.xiao@rock-chips.com,
+	w@1wt.eu,
+	jonas@kwiboo.se
+Subject: [PATCH v4 0/6] rockchip,otp: Support for RK3528, RK3562 and RK3568
+Date: Thu,  5 Feb 2026 22:18:55 +0100
+Message-ID: <20260205211901.490181-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Subject: Re: [PATCH net-next 0/6] net: stmmac: rk: final cleanups part
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <177031261432.500992.15994609944563824228.git-patchwork-notify@kernel.org>
-Date: Thu, 05 Feb 2026 17:30:14 +0000
-References: <aYMN2gZMfLPKuukG@shell.armlinux.org.uk>
-In-Reply-To: <aYMN2gZMfLPKuukG@shell.armlinux.org.uk>
-To: Russell King (Oracle) <linux@armlinux.org.uk>
-Cc: andrew@lunn.ch, alexandre.torgue@foss.st.com, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@google.com, heiko@sntech.de, kuba@kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
- pabeni@redhat.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_093017_635782_EFE2C1B8 
-X-CRM114-Status: UNSURE (   9.54  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260205_131953_378948_E61341F3 
+X-CRM114-Status: GOOD (  13.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +78,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello:
+This is a continuation of Kever's from april 2025 [0] - hence the v4
+The original patches seem to have fallen through the cracks.
 
-This series was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Additionally this directly inclues the interal word-size patch [1],
+that was previously listed as an external dependency.
 
-On Wed, 4 Feb 2026 09:14:02 +0000 you wrote:
-> Hi,
-> 
-> This is the last part of my current dwmac-rk cleanups.
-> 
->  drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c | 361 ++++++++++---------------
->  1 file changed, 150 insertions(+), 211 deletions(-)
+And finally meanwhile patches for the RK3528 SoC from Jonas have appeared,
+so I've included those too, to get the support for all not-yet supported
+SoCs done
 
-Here is the summary with links:
-  - [net-next,1/6] net: stmmac: rk: introduce flags indicating support for RGMII/RMII
-    https://git.kernel.org/netdev/net-next/c/d323769d64f2
-  - [net-next,2/6] net: stmmac: rk: replace empty set_to_rmii() with supports_rmii
-    https://git.kernel.org/netdev/net-next/c/a9d4aff670ed
-  - [net-next,3/6] net: stmmac: rk: rk3328: gmac2phy only supports RMII
-    https://git.kernel.org/netdev/net-next/c/f365541bf7b6
-  - [net-next,4/6] net: stmmac: rk: rk3528: gmac0 only supports RMII
-    https://git.kernel.org/netdev/net-next/c/d7d92037cbd8
-  - [net-next,5/6] net: stmmac: rk: use rk_encode_wm16() for clock selection
-    https://git.kernel.org/netdev/net-next/c/5c1fc7cb81df
-  - [net-next,6/6] net: stmmac: rk: rk3506, rk3528 and rk3588 have rmii_mode in clock register
-    https://git.kernel.org/netdev/net-next/c/b10d56b0db3a
 
-You are awesome, thank you!
+Changes in v4:
+- rebase onto 6.18-rc8 - the rockchip-otp driver did no receive
+  additional comments in the meantime
+- include the dependency patch about word-sizes
+- add support for RK3528
+
+Changes in v3:
+- update the clock name from "usr" to "otp" and re-order to sync with
+ other soc.
+- rebase on rk3576 and rk3528, changes suggest by Jonas
+- Use rk3568 data structure for rk3562
+
+Changes in v2:
+- Update the commit message and add maxItems in schema.
+
+[0] https://patch.msgid.link/20250415103203.82972-1-kever.yang@rock-chips.com
+[1] https://patch.msgid.link/20250316191900.1858944-1-jonas@kwiboo.se
+
+
+Finley Xiao (2):
+  nvmem: rockchip-otp: Add support for RK3568
+  nvmem: rockchip-otp: Add support for RK3562
+
+Jonas Karlman (3):
+  dt-bindings: nvmem: rockchip,otp: Add compatible for RK3528
+  nvmem: rockchip-otp: Handle internal word_size in main reg_read op
+  nvmem: rockchip-otp: Add support for RK3528
+
+Kever Yang (1):
+  dt-bindings: nvmem: rockchip,otp: Add support for RK3562 and RK3568
+
+ .../bindings/nvmem/rockchip,otp.yaml          |  83 +++++++--
+ drivers/nvmem/rockchip-otp.c                  | 161 ++++++++++++++----
+ 2 files changed, 202 insertions(+), 42 deletions(-)
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.47.2
 
 
 _______________________________________________
