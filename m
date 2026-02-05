@@ -4,42 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E576ECD9AA
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 21:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADF3ECD9AD
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 21:20:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GBSDHzPSJM8QQ2xfAxqKsCtrE+NzS7bxbBVZ/w1kedU=; b=H5RvoNQyQ23NMh
-	UovFbgdXjsM4e76ukcAmUwKGVRwiS/mvXFLv32+LJXPFDaycMDF0vga2cudy2ZWX5tKL+m9eIVDEp
-	jIJCoCyzj8/AleYv5F7K+36dVJAhPVR1v3ePEAh8tvsa8Ui0GZIYQ+0GNL8Bf0kq1lqUvUecuEbSo
-	Xh9KpUHhlQiS9HsvW51bn8v0cYkl/Srvj1ivbi1xPN+HiOYlsjsMxOYS7f9Rv6Pg72mVlx89PURsc
-	fYlL8uuaOyHrg3Svacg7j1xAMDL9db97esP/ws+IPW7a/q8622cmPdZGDWpVFbywL0Me6iv3PkZW1
-	f8UzKFp/tO9u41OG30Hg==;
+	List-Owner; bh=buXzElO4UVSdHh6Xotb1/R+6cN69VKdnDjpxAuplWZs=; b=ggembOM0bqxLZN
+	y+mHgi39Cym+u0CeN2ZaKyxZVAAtjte3uAM05/eUy0bYH+OGiZZH8HGq8dSHpEPih08mgz4c7cpdX
+	DomWoiy0DyKFEs/MkPhNsnsvytJVXQAQtQzumhXp27pclphbOhdn7OhuCT0f70gdYeQOjm6r49K0e
+	jRpggvb0PybsAGZ6s/SlCY6ZwTJ1gCTAFYxzC50CsA9zgO5QJQ+3zZvmGyfXot9sPSGEUjHGdFnLL
+	izEWqnDnh04i2BN5v25hrFDkIoTslgFNZ6Iu9QJUOqlZDLAxkmrPlGafoX8XFDW+4fSPbJ+pSoVeJ
+	IAvAaBBPBOsUbM1zBY2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo6la-0000000AV58-22Yi;
-	Thu, 05 Feb 2026 21:19:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vo6le-0000000AV91-06L1;
+	Thu, 05 Feb 2026 21:20:02 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo6lV-0000000AV2D-0xAQ;
-	Thu, 05 Feb 2026 21:19:55 +0000
+	id 1vo6lZ-0000000AV4V-0Ivd;
+	Thu, 05 Feb 2026 21:19:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=ZOF//ASirxT4IYkkrfdpjk6ayaCFhALsQsVAb+Q9UIA=; b=IIazkHn0usGcsklkdf5nFrEu19
+	gATPRxyDq9EAcElk8AH9anjFVK/UDc5ErVt6WDKU/TkP8orT89AGfei14m/cnEiZK5GVolMh/XD80
+	xFCLy0qCbGPtb79kVvTE9VCKW4EbIPK64aeg6KxFU2wOYxSsPpFHoiPYRKdEyJ8uh416nk6Nuu5dV
+	FCFfYtO0sVnn+gdjAzvmHJ0Rl1Pal5eFDwsiWIaQ9QsGC5DbMPbuX63R2e0D3GJVhS9Wnn9NGxB9C
+	kgtS1dvyfnxIyUX8X5xpg92DsVX21Q8z+c1aKGGE2Ir2VA7Uv0iLElZ0oANMnG8SN5J8VtFL9MKK0
+	cB6p23tQ==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vo6lT-00000002oX8-16Za;
+	Thu, 05 Feb 2026 21:19:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=ZSOvELGA2EuKRZ+dcy6xv6vUM0tTuySjHGPM8Fdt7Cg=; b=FXspVDJkdinxtd5OLNoypx0bDB
-	/4j7Rr9t5C9Jp+248IwBpFD9XNEYx3ouJptrP92ycZ8be+CE7V80aG7P5rX3GqgWFvrxXdBlkT8UG
-	LPG3GgwXZUYX3Nm9cTrn+o1k04+8+rQcTKldsLp9FfXBOw5PIhslcdugNcDt607R6Oss4lX5uSXKE
-	yiGsYqTIEaXvcHq48A7UjletnmO9gwl26T5UAJ4+VpGrjOAUI8e/ZF36vMYiVnERMzkssxmQ9/n4L
-	9LgpbPk5Z8Rz7e1ZyFraMpQ76/1RbcvOQBCOjKMafvauAnrF8EGyTD0uEBMR5rmnfTcZ7iIAij5Ap
-	H56z7jCw==;
+	bh=ZOF//ASirxT4IYkkrfdpjk6ayaCFhALsQsVAb+Q9UIA=; b=eaSMbcqwVMt9yjzpsxTrnAkLIZ
+	bS8/943Z8NMb4IKV652gDM6lHm9YRf7qhsIVdIo1DaFMH+gj1UASpJfuGXpYPz30y9dV3yUCDWBIU
+	eJVE+tMqDYUgl+ctF7Pe4+haiBuiW7bXYAXN3VXBQOP+gWw2Osj7Wln+p9giBPJMPP7ceGwc8tViB
+	1WzmqOf9yd2mtrJ/q+o7RoHvUprDjEjKZBox0lHdVLzL8PHgkKfxZsdqD0rWorZMiEzzM5qKWVkL8
+	CWscPJlLnpayL/EDRM9xU6heCP6bb9TG0o4YBOxjURo4ZokEWF2YOrNgTjx/JnJaAlv5Bkkckojx4
+	8FwiH1Vg==;
 Received: from i53875afe.versanet.de ([83.135.90.254] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vo6lN-007GGK-Mb; Thu, 05 Feb 2026 22:19:46 +0100
+	id 1vo6lO-007GGK-OW; Thu, 05 Feb 2026 22:19:47 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: srini@kernel.org
 Cc: robh@kernel.org,
@@ -54,16 +68,16 @@ Cc: robh@kernel.org,
 	finley.xiao@rock-chips.com,
 	w@1wt.eu,
 	jonas@kwiboo.se
-Subject: [PATCH v4 1/6] dt-bindings: nvmem: rockchip,otp: Add support for RK3562 and RK3568
-Date: Thu,  5 Feb 2026 22:18:56 +0100
-Message-ID: <20260205211901.490181-2-heiko@sntech.de>
+Subject: [PATCH v4 3/6] nvmem: rockchip-otp: Handle internal word_size in main reg_read op
+Date: Thu,  5 Feb 2026 22:18:58 +0100
+Message-ID: <20260205211901.490181-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20260205211901.490181-1-heiko@sntech.de>
 References: <20260205211901.490181-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_131953_276437_8521772B 
-X-CRM114-Status: GOOD (  10.99  )
+X-CRM114-CacheID: sfid-20260205_211952_716271_3ACD99C0 
+X-CRM114-Status: GOOD (  20.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,130 +94,176 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Kever Yang <kever.yang@rock-chips.com>
+From: Jonas Karlman <jonas@kwiboo.se>
 
-Add compatible entry for the otp controller in RK3562 and RK3568, add
-schema for different clock names for new entry.
+Rockchip SoCs RK3576 and RK3588 read data from the OTP using 32-bit
+words instead of normal 8-bit bytes. Similar RK3506, RK3528, RK3562 and
+RK3568 will read data from OTP using 16-bit words.
 
-Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+The nvmem core stride and word_size cannot fully be used as cells is not
+always aligned. Continue to report a stride=1 and word_size=1 in
+nvmem_config and instead handle use of SoC specific word_size internally
+in the driver.
+
+Move current SoC specific word_size handling from the RK3588 read_reg
+operation to the main read_reg operation to help simplify the SoC
+specific read_reg operation and allow code reuse in a future RK3568
+reg_read operation.
+
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Tested-by: Willy Tarreau <w@1wt.eu>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../bindings/nvmem/rockchip,otp.yaml          | 58 +++++++++++++++----
- 1 file changed, 48 insertions(+), 10 deletions(-)
+ drivers/nvmem/rockchip-otp.c | 72 ++++++++++++++++++++----------------
+ 1 file changed, 40 insertions(+), 32 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-index dc89020b0950..e90136f7dcfb 100644
---- a/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-+++ b/Documentation/devicetree/bindings/nvmem/rockchip,otp.yaml
-@@ -14,6 +14,8 @@ properties:
-     enum:
-       - rockchip,px30-otp
-       - rockchip,rk3308-otp
-+      - rockchip,rk3562-otp
-+      - rockchip,rk3568-otp
-       - rockchip,rk3576-otp
-       - rockchip,rk3588-otp
+diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
+index d88f12c53242..45bbb6147fb7 100644
+--- a/drivers/nvmem/rockchip-otp.c
++++ b/drivers/nvmem/rockchip-otp.c
+@@ -59,7 +59,6 @@
+ #define RK3588_OTPC_AUTO_EN		0x08
+ #define RK3588_OTPC_INT_ST		0x84
+ #define RK3588_OTPC_DOUT0		0x20
+-#define RK3588_NBYTES			4
+ #define RK3588_BURST_NUM		1
+ #define RK3588_BURST_SHIFT		8
+ #define RK3588_ADDR_SHIFT		16
+@@ -69,6 +68,7 @@
+ struct rockchip_data {
+ 	int size;
+ 	int read_offset;
++	int word_size;
+ 	const char * const *clks;
+ 	int num_clks;
+ 	nvmem_reg_read_t reg_read;
+@@ -185,48 +185,28 @@ static int px30_otp_read(void *context, unsigned int offset,
+ }
  
-@@ -26,19 +28,15 @@ properties:
+ static int rk3588_otp_read(void *context, unsigned int offset,
+-			   void *val, size_t bytes)
++			   void *val, size_t count)
+ {
+ 	struct rockchip_otp *otp = context;
+-	unsigned int addr_start, addr_end, addr_len;
+-	int ret, i = 0;
+-	u32 data;
+-	u8 *buf;
+-
+-	addr_start = round_down(offset, RK3588_NBYTES) / RK3588_NBYTES;
+-	addr_end = round_up(offset + bytes, RK3588_NBYTES) / RK3588_NBYTES;
+-	addr_len = addr_end - addr_start;
+-	addr_start += otp->data->read_offset / RK3588_NBYTES;
+-
+-	buf = kzalloc(array_size(addr_len, RK3588_NBYTES), GFP_KERNEL);
+-	if (!buf)
+-		return -ENOMEM;
++	u32 *buf = val;
++	int ret;
  
-   clock-names:
-     minItems: 3
--    items:
--      - const: otp
--      - const: apb_pclk
--      - const: phy
--      - const: arb
-+    maxItems: 4
+-	while (addr_len--) {
+-		writel((addr_start << RK3588_ADDR_SHIFT) |
++	while (count--) {
++		writel((offset++ << RK3588_ADDR_SHIFT) |
+ 		       (RK3588_BURST_NUM << RK3588_BURST_SHIFT),
+ 		       otp->base + RK3588_OTPC_AUTO_CTRL);
+ 		writel(RK3588_AUTO_EN, otp->base + RK3588_OTPC_AUTO_EN);
  
-   resets:
-     minItems: 1
--    maxItems: 3
-+    maxItems: 4
+ 		ret = rockchip_otp_wait_status(otp, RK3588_OTPC_INT_ST,
+ 					       RK3588_RD_DONE);
+-		if (ret < 0) {
++		if (ret) {
+ 			dev_err(otp->dev, "timeout during read setup\n");
+-			goto read_end;
++			return ret;
+ 		}
  
-   reset-names:
-     minItems: 1
--    maxItems: 3
-+    maxItems: 4
+-		data = readl(otp->base + RK3588_OTPC_DOUT0);
+-		memcpy(&buf[i], &data, RK3588_NBYTES);
+-
+-		i += RK3588_NBYTES;
+-		addr_start++;
++		*buf++ = readl(otp->base + RK3588_OTPC_DOUT0);
+ 	}
  
- required:
-   - compatible
-@@ -64,13 +62,44 @@ allOf:
-         clocks:
-           maxItems: 3
-         clock-names:
--          maxItems: 3
-+          items:
-+            - const: otp
-+            - const: apb_pclk
-+            - const: phy
-         resets:
-           maxItems: 1
-         reset-names:
-           items:
-             - const: phy
+-	memcpy(val, buf + offset % RK3588_NBYTES, bytes);
+-
+-read_end:
+-	kfree(buf);
+-
+ 	return ret;
+ }
  
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - rockchip,rk3562-otp
-+              - rockchip,rk3568-otp
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 4
-+          maxItems: 4
-+        clock-names:
-+          items:
-+            - const: otp
-+            - const: apb_pclk
-+            - const: phy
-+            - const: sbpi
-+        resets:
-+          minItems: 4
-+          maxItems: 4
-+        reset-names:
-+          items:
-+            - const: otp
-+            - const: apb
-+            - const: phy
-+            - const: sbpi
+@@ -234,7 +214,7 @@ static int rockchip_otp_read(void *context, unsigned int offset,
+ 			     void *val, size_t bytes)
+ {
+ 	struct rockchip_otp *otp = context;
+-	int ret;
++	int ret, word_size;
+ 
+ 	if (!otp->data || !otp->data->reg_read)
+ 		return -EINVAL;
+@@ -245,8 +225,34 @@ static int rockchip_otp_read(void *context, unsigned int offset,
+ 		return ret;
+ 	}
+ 
+-	ret = otp->data->reg_read(context, offset, val, bytes);
++	offset += otp->data->read_offset;
++	word_size = otp->data->word_size;
 +
-   - if:
-       properties:
-         compatible:
-@@ -82,7 +111,10 @@ allOf:
-         clocks:
-           maxItems: 3
-         clock-names:
--          maxItems: 3
-+          items:
-+            - const: otp
-+            - const: apb_pclk
-+            - const: phy
-         resets:
-           minItems: 2
-           maxItems: 2
-@@ -101,10 +133,16 @@ allOf:
-       properties:
-         clocks:
-           minItems: 4
-+          maxItems: 4
-         clock-names:
--          minItems: 4
-+          items:
-+            - const: otp
-+            - const: apb_pclk
-+            - const: phy
-+            - const: arb
-         resets:
-           minItems: 3
-+          maxItems: 3
-         reset-names:
-           items:
-             - const: otp
++	if (word_size > 1) {
++		unsigned int addr_start, addr_end;
++		size_t count;
++		u8 *buf;
++
++		addr_start = offset / word_size;
++		addr_end = DIV_ROUND_UP(offset + bytes, word_size);
++		count = addr_end - addr_start;
++
++		buf = kzalloc(array_size(count, word_size), GFP_KERNEL);
++		if (!buf) {
++			ret = -ENOMEM;
++			goto err;
++		}
++
++		ret = otp->data->reg_read(context, addr_start, buf, count);
++		if (!ret)
++			memcpy(val, buf + (offset % word_size), bytes);
++
++		kfree(buf);
++	} else {
++		ret = otp->data->reg_read(context, offset, val, bytes);
++	}
+ 
++err:
+ 	clk_bulk_disable_unprepare(otp->data->num_clks, otp->clks);
+ 
+ 	return ret;
+@@ -259,7 +265,7 @@ static struct nvmem_config otp_config = {
+ 	.type = NVMEM_TYPE_OTP,
+ 	.read_only = true,
+ 	.stride = 1,
+-	.word_size = 1,
++	.word_size = sizeof(u8),
+ 	.reg_read = rockchip_otp_read,
+ };
+ 
+@@ -277,6 +283,7 @@ static const struct rockchip_data px30_data = {
+ static const struct rockchip_data rk3576_data = {
+ 	.size = 0x100,
+ 	.read_offset = 0x700,
++	.word_size = sizeof(u32),
+ 	.clks = px30_otp_clocks,
+ 	.num_clks = ARRAY_SIZE(px30_otp_clocks),
+ 	.reg_read = rk3588_otp_read,
+@@ -289,6 +296,7 @@ static const char * const rk3588_otp_clocks[] = {
+ static const struct rockchip_data rk3588_data = {
+ 	.size = 0x400,
+ 	.read_offset = 0xc00,
++	.word_size = sizeof(u32),
+ 	.clks = rk3588_otp_clocks,
+ 	.num_clks = ARRAY_SIZE(rk3588_otp_clocks),
+ 	.reg_read = rk3588_otp_read,
 -- 
 2.47.2
 
