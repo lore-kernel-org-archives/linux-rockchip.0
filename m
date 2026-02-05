@@ -4,63 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD6C6EC1EB2
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 13:28:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B6B5EC1EB6
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 13:31:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8cNVQVQYPY449OVEt0VJuWAV7Dp9en6EPy27FxXXoDw=; b=MUn6Il395/hGat
-	uF74/3ja+O+Ewo0Ky+HDH3VW5ffrh/YYQhQyB8Ca7knPUn2FMnsoiVGeH8X7UCQRSVbazfn8f4KwG
-	E2Fsdz7l/RiWiHgAANyD3U0s1wDYXPIUket9L2CPVJnDd0NBJ7rhmqgoG2dUYOvsVhXJsQYNlAKxX
-	uz2ScqXQq2WfmoSQTs/gdCS3QpO/9fNP0Xp6fflagDjbYGZOIm8rRNFbdncjQ/TW9hx1f/FYU3GFy
-	qyPK+iRw8PGEqN0Cg/f35fdx0m/q8XihgeVo0a1OykcRi0gefLplzzigjhvJsF7CXBERbfe77YcJ2
-	aB7PvHpxqCRlATLoVhRA==;
+	List-Owner; bh=8jVSl6tyZ4bwEX0H8BxEdqCtQm+nSZLP4+fKoisvpHI=; b=CyqjKUlrlKz/Mn
+	m0jzhv8qw5LGwYySmWxhN2JtPo9Q98cq1nG4hzFVMNW1G9r1dUQHKxwr+yEd16uU53Wb0qTproTjg
+	x3iiMFDGCaTHz7vtNc3yHRjCm9YkB1w9IZv6PwwSEhG58U1HcrpE3dSHSZomHwT/NB1lbDrSKtIrI
+	qRkBMrWA7zKi0+UlMzFqpaTAs+31jb8nvl0CdFU9vrDTNWhsttTrUnlBRcJeBnrG4sivguxyOIal4
+	ObTvnLB18x21b/urrQd+YTYqOTPcW7K7VyCRF0uuHGARQXXfLirSgBC10o4RY38fEmgz9PvdzAW8i
+	avAj3wS3blvX7GDB6cFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnzPC-00000009wsI-2beo;
-	Thu, 05 Feb 2026 13:28:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vnzSS-00000009x7X-00N4;
+	Thu, 05 Feb 2026 13:31:44 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnzPB-00000009wrm-05kh;
-	Thu, 05 Feb 2026 13:28:21 +0000
+	id 1vnzSQ-00000009x6i-0rkN;
+	Thu, 05 Feb 2026 13:31:42 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 71CBE60010;
-	Thu,  5 Feb 2026 13:28:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 10184C4CEF7;
-	Thu,  5 Feb 2026 13:28:15 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1E70B60010;
+	Thu,  5 Feb 2026 13:31:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2DD79C4CEF7;
+	Thu,  5 Feb 2026 13:31:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770298100;
-	bh=RVwIHojJPFtR1L6mECLDirnCU93wad5+Ug+yqXZvlGY=;
+	s=k20201202; t=1770298300;
+	bh=AUQFfU1fkfkYPuW5V8T6xoRa8uZPnGIai8orsPwhtOk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hCy9lXRU7VwFbtpEzZC8tJW3BxP0Y+kkOtXRSjO0Y/EbAqe2ZZTbmD3BTi+LY6IvV
-	 3VDoNHBAthurR5saMIBgCknSgSKPY2kGtXATsfjShk+vrtTpIeuOCp/3+PRWt4h+7V
-	 NfsIGMCSL9N8FHQWjGcnLmRfl9x363lCi8STV4b2xUCDb+V5S7N4RZFBFOyHW5eVAh
-	 p+nrJ0Y1mgPjQ2mbhzLmSLjkiqokuvr17PC7JJzYeMGiQeTE4nPNaH4ako1HCiqwT/
-	 303Cny++W7VOs+ai2NNL3LA5Vh9EvxCBWwE1HqldlEbOWmjNfjQjG11uvFZZKfRlIm
-	 Z5WIAf475MuMg==
-Date: Thu, 5 Feb 2026 14:28:13 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: Ricardo Pardini <ricardo@pardini.net>, lpieralisi@kernel.org,
-	kwilczynski@kernel.org, bhelgaas@google.com, helgaas@kernel.org,
-	heiko@sntech.de, mani@kernel.org, yue.wang@amlogic.com,
-	pali@kernel.org, neil.armstrong@linaro.org, robh@kernel.org,
-	jingoohan1@gmail.com, khilman@baylibre.com, jbrunet@baylibre.com,
-	martin.blumenstingl@googlemail.com, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-amlogic@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v7 0/2] PCI: Configure Root Port MPS during host probing
-Message-ID: <aYSa7d8G1adGho0z@ryzen>
-References: <20251127170908.14850-1-18255117159@163.com>
- <f5322597-c6dd-494a-863b-2caf24363f2d@pardini.net>
- <1ff0d069-14f0-439a-afca-4ecc1b569834@163.com>
+	b=M6eYmqV7WCmThEk7wZK3ZffIxf7rs/+OjSNoi+Fqwrb8lUVp8teCejpP7msvpLvAC
+	 4im2YokdR2XeIVsdFhKS1AMFgnaIUEqaqEgAAlGFXaVd+WDqO2Y/XlvNY/GjsWgBnE
+	 cJlxzesSJytLbOvjG0uVxaiRaFTcllpsD70oqQ3RrXAOjzXFeHRLwCVwe3LWlZwL+U
+	 AMdJNOZqkoYM4tVUhoblnUENgUYy1Ql1+RUyRKPKItRDopgGlDABE21jldTeh9W6//
+	 hr30x04VDIuYazXVMRJWmckA+1f3sKHc2sn5/BdAXrVKHgVKcUDxSM1cHzF1VxyhBQ
+	 UONJYSp0vSOhw==
+Date: Thu, 5 Feb 2026 14:31:38 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2 1/5] dt-bindings: display: rockchip: Add rk3576
+ DisplayPort
+Message-ID: <20260205-shrewd-honeybee-of-diversity-f3e9c6@quoll>
+References: <20260201081338.407999-1-andyshrk@163.com>
+ <20260201081338.407999-2-andyshrk@163.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1ff0d069-14f0-439a-afca-4ecc1b569834@163.com>
+In-Reply-To: <20260201081338.407999-2-andyshrk@163.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,66 +63,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: heiko@sntech.de, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, alchark@gmail.com, tzimmermann@suse.de, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBKYW4gMTgsIDIwMjYgYXQgMDk6MjY6NDVQTSArMDgwMCwgSGFucyBaaGFuZyB3cm90
-ZToKPiBPbiAyMDI1LzEyLzMxIDEwOjU4LCBSaWNhcmRvIFBhcmRpbmkgd3JvdGU6Cj4gPiBPbiAy
-Ny8xMS8yMDI1IDE4OjA5LCBIYW5zIFpoYW5nIHdyb3RlOgo+ID4gPiBDdXJyZW50IFBDSWUgaW5p
-dGlhbGl6YXRpb24gZXhoaWJpdHMgYSBrZXkgb3B0aW1pemF0aW9uIGdhcDogUm9vdCBQb3J0cwo+
-ID4gPiBtYXkgb3BlcmF0ZSB3aXRoIG5vbi1vcHRpbWFsIE1heGltdW0gUGF5bG9hZCBTaXplIChN
-UFMpIHNldHRpbmdzLiBXaGlsZQo+ID4gPiBkb3duc3RyZWFtIGRldmljZSBjb25maWd1cmF0aW9u
-IGlzIGhhbmRsZWQgZHVyaW5nIGJ1cyBlbnVtZXJhdGlvbiwgUm9vdAo+ID4gPiBQb3J0IE1QUyB2
-YWx1ZXMgaW5oZXJpdGVkIGZyb20gZmlybXdhcmUgb3IgaGFyZHdhcmUgZGVmYXVsdHMgb2Z0ZW4g
-ZmFpbAo+ID4gPiB0byB1dGlsaXplIHRoZSBmdWxsIGNhcGFiaWxpdGllcyBzdXBwb3J0ZWQgYnkg
-Y29udHJvbGxlciBoYXJkd2FyZS4gVGhpcwo+ID4gPiByZXN1bHRzIGluIHN1Ym9wdGltYWwgZGF0
-YSB0cmFuc2ZlciBlZmZpY2llbmN5IHRocm91Z2hvdXQgdGhlIFBDSWUKPiA+ID4gaGllcmFyY2h5
-Lgo+ID4gPiAKPiA+ID4gVGhpcyBwYXRjaCBzZXJpZXMgYWRkcmVzc2VzIHRoaXMgYnk6Cj4gPiA+
-IAo+ID4gPiAxLiBDb3JlIFBDSSBlbmhhbmNlbWVudCAoUGF0Y2ggMSk6Cj4gPiA+IC0gUHJvYWN0
-aXZlbHkgY29uZmlndXJlcyBSb290IFBvcnQgTVBTIGR1cmluZyBob3N0IGNvbnRyb2xsZXIgcHJv
-YmluZwo+ID4gPiAtIFNldHMgaW5pdGlhbCBNUFMgdG8gaGFyZHdhcmUgbWF4aW11bSAoMTI4IDw8
-IGRldi0+cGNpZV9tcHNzKQo+ID4gPiAtIENvbmRpdGlvbmFsIG9uIFBDSWUgYnVzIHR1bmluZyBi
-ZWluZyBlbmFibGVkIChQQ0lFX0JVU19UVU5FX09GRiB1bnNldCkKPiA+ID4gwqDCoCBhbmQgbm90
-IGluIFBDSUVfQlVTX1BFRVIyUEVFUiBtb2RlICh3aGljaCByZXF1aXJlcyBkZWZhdWx0IDEyOCBi
-eXRlcykKPiA+ID4gLSBNYWludGFpbnMgYmFja3dhcmQgY29tcGF0aWJpbGl0eSB2aWEgUENJRV9C
-VVNfVFVORV9PRkYgY2hlY2sKPiA+ID4gLSBQcmVzZXJ2ZXMgc3RhbmRhcmQgTVBTIG5lZ290aWF0
-aW9uIGR1cmluZyBkb3duc3RyZWFtIGVudW1lcmF0aW9uCj4gPiA+IAo+ID4gPiAyLiBEcml2ZXIg
-Y2xlYW51cCAoUGF0Y2ggMik6Cj4gPiA+IC0gUmVtb3ZlcyByZWR1bmRhbnQgTVBTIGNvbmZpZ3Vy
-YXRpb24gZnJvbSBNZXNvbiBQQ0llIGNvbnRyb2xsZXIgZHJpdmVyCj4gPiA+IC0gRnVuY3Rpb25h
-bGl0eSBpcyBub3cgY2VudHJhbGl6ZWQgaW4gUENJIGNvcmUKPiA+ID4gLSBTaW1wbGlmaWVzIGRy
-aXZlciBtYWludGVuYW5jZSBsb25nLXRlcm0KPiA+ID4gCj4gPiA+IC0tLQo+ID4gPiBDaGFuZ2Vz
-IGluIHY3Ogo+ID4gPiAtIEV4Y2x1ZGUgUENJRV9CVVNfUEVFUjJQRUVSIG1vZGUgZnJvbSBSb290
-IFBvcnQgTVBTIGNvbmZpZ3VyYXRpb24KPiA+ID4gLSBSZW1vdmUgcmVkdW5kYW50IGNoZWNrIGZv
-ciB1cHN0cmVhbSBicmlkZ2UgKFJvb3QgUG9ydHMgZG9uJ3QgaGF2ZSBvbmUpCj4gPiA+IC0gSW1w
-cm92ZSBjb21taXQgbWVzc2FnZSBhbmQgY29kZSBjb21tZW50cyBhcyBwZXIgQmpvcm4uCj4gPiBI
-aSBIYW5zLAo+ID4gCj4gPiBJJ3ZlIHRlc3RlZCBvbiBhbiBPZHJvaWQtSEM0IHdpdGggYSBTQVRB
-IFNTRCAodmlhIGFuIEFTTTEwNjEpIGJ5Cj4gPiBhcHBseWluZyB5b3VyIHY3IG9uIHY2LjE5LXJj
-MyArIEJqb3JuJ3MgMjAyNTExMDMyMjE5MzAuMTgzMTM3Ni0xLQo+ID4gaGVsZ2Fhc0BrZXJuZWwu
-b3JnICgiUENJOiBtZXNvbjogUmVtb3ZlIG1lc29uX3BjaWVfbGlua191cCgpIHRpbWVvdXQsCj4g
-PiBtZXNzYWdlLCBzcGVlZCBjaGVjayIgd2hpY2ggaXMgcmVxdWlyZWQgdG8gZ2V0IHRoZSBtZXNv
-biBQQ0llIHRvIHdvcmsgYXQKPiA+IGFsbCBzaW5jZSA2LjE4KS4gV2l0aCB0aGF0IHNldHVwIEkg
-Z2V0Ogo+ID4gCj4gPiAjIGhkcGFybSAtLWRpcmVjdCAtdCAvZGV2L3NkYQo+ID4gIMKgVGltaW5n
-IE9fRElSRUNUIGRpc2sgcmVhZHM6IDgzMiBNQiBpbsKgIDMuMDAgc2Vjb25kcyA9IDI3Ny4zMyBN
-Qi9zZWMKPiA+IAo+ID4gSSd2ZSBhbiBpZGVudGljYWwgbWFjaGluZSwgd2l0aCBhIHNpbWlsYXIg
-ZGlzayAoZXZlbiBzbGlnaHRseSBmYXN0ZXIsIG9uCj4gPiBwYXBlciksIHJ1bm5pbmcgcGxhaW4g
-Ni4xMi55IGFuZCB0aGVyZSBJIGdldDoKPiA+IAo+ID4gIyBoZHBhcm0gLS1kaXJlY3QgLXQgL2Rl
-di9zZGEKPiA+ICDCoFRpbWluZyBPX0RJUkVDVCBkaXNrIHJlYWRzOiA3NjQgTUIgaW7CoCAzLjAw
-IHNlY29uZHMgPSAyNTQuMjYgTUIvc2VjCj4gPiAKPiA+IEkgcmVwZWF0ZWQgdGhvc2UgYSBmZXcg
-dGltZXMsIG5vdCB2ZXJ5IHNjaWVudGlmaWMsIEkga25vdzsgYnV0IGFueXdheToKPiA+IAo+ID4g
-VGVzdGVkLWJ5OiBSaWNhcmRvIFBhcmRpbmkgPHJpY2FyZG9AcGFyZGluaS5uZXQ+ICMgb24gT2Ry
-b2lkLUhDNAo+ID4gCj4gPiBJJ3ZlIGFsc28gZmVlZGJhY2sgZnJvbSBhbm90aGVyIHVzZXIgcnVu
-bmluZyB3aXRoIHRoaXMgc2VyaWVzIHdpdGgKPiA+IHN1Y2Nlc3Mgb24gYSBkaWZmZXJlbnQgbWVz
-b24gUENJZSBtYWNoaW5lLCB3aWxsIGFzayB0aGVtIHRvIFRCIGFzIHdlbGw7Cj4gPiB0aGV5IGhh
-ZCByZXBvcnRlZCBhIHNpZ25pZmljYW50IGRyb3AgaW4gcGVyZm9ybWFuY2Ugc2luY2UgdjYuMTgg
-d2l0aG91dAo+ID4gdGhpcy4KPiBIaSwKPiAKPiBUaGFuayB5b3UgdmVyeSBtdWNoIGZvciB5b3Vy
-IHRlc3QuIExldCdzIHdhaXQgZm9yIEJqb3JuJ3MgcmVwbHkuCgpQcm9iYWJseSB0b28gbGF0ZSBm
-b3IgdGhlIDYuMjAgLyA3LjAgbWVyZ2Ugd2luZG93Li4uCgpCdXQuLiBpdCB3b3VsZCBiZSBuaWNl
-IHdpdGggc29tZSBraW5kIG9mIGZlZWRiYWNrIGZyb20gQmpvcm4uCgpJcyB0aGVyZSBhbnkgY2hh
-bmNlIHRoYXQgdGhpcyBnZXRzIGFwcGxpZWQgZm9yIDYuMjEvNy4xIG9yIGlzIHRoZXJlCmFueSBm
-dW5kYW1lbnRhbCBvYmplY3Rpb24gYWdhaW5zdCB0aGlzIHNlcmllcz8KCgpLaW5kIHJlZ2FyZHMs
-Ck5pa2xhcwoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+On Sun, Feb 01, 2026 at 04:13:27PM +0800, Andy Yan wrote:
+> From: Andy Yan <andy.yan@rock-chips.com>
+> 
+> The DisplayPort found on RK3576 is very similar to that of RK3588,
+> but work in dual pixel mode. And itself does not depend on the I2S
+> clock or the SPDIF clock when transmit audio.
+> 
+> Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Remove unnecessary maxItems
+> 
+>  .../display/rockchip/rockchip,dw-dp.yaml      | 27 ++++++++++++++++---
+>  1 file changed, 24 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> index 6345f0132d43..8a5299755abf 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,dw-dp.yaml
+> @@ -27,13 +27,11 @@ description: |
+>    * Pixel clock up to 594MHz
+>    * I2S, SPDIF audio interface
+>  
+> -allOf:
+> -  - $ref: /schemas/sound/dai-common.yaml#
+> -
+>  properties:
+>    compatible:
+>      enum:
+>        - rockchip,rk3588-dp
+> +      - rockchip,rk3576-dp
+
+Wrongly orderd. 76 < 88.
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
