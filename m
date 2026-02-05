@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A035AECD9AA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB2DDECD9AB
 	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 21:24:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,34 +12,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HlMZAcxEOu6XTwHci4/HYGfD4G/HYv6oR0jeCMDcrjY=; b=DqW/Lz1J69TQhn
-	Go8/arimF87CRClhVCnKTaDK2iYRSSUgp7VWQAwyhMq/yTV874vBrPmcnbsI//tu+O8b1Dlnxh3Sx
-	gE/B6G5cBFcw0ocPHM8ugqHr7nabxsl1WfM5h+K+7gc0gMxFXkjRjTnEYA04kZE2o+cmTCQ82SgHK
-	4I4BAjr3wNVB6yXXj14I/+ctCMJXI/wyWrNve3MsDSgIqNrZDkgkx/ZMC4nj7UNH6RRVjGFPmTmlP
-	qHKhQnCmcYacUC7Pp2Lq6YEjqdrsj3KLpXgfwKzfONGNFjgFU3X2dnBU4hCHr/QkEQh/8KKk7+392
-	hQaBy/B4mJtsi8s8jUiQ==;
+	List-Owner; bh=UvjP4eWO5hcaqgkUh+S1amW9YXEV4UptqWV8nJO7uLM=; b=nMFyMnsAOFUfPh
+	Ebd/5m5Au+xF8zgTn9ljr2jR8/FOwA0GwuyZhHszE/+hZXSe7F8bVnirQRhhAVoEmQCg0CbtXLvy4
+	yt67q00NkYpj0DGZVlspwrcNkaNswCV4Hz83QW+Kw5H3fAzRYUXWnvjpWtAWp/79ZhCBzLuIcsmhs
+	EZ+OLQfKXYTANTsaY95gDGb1bQeIBb++SdTJnSM7qC+f2ZpIWcaNlZCI1Wz+sYZ6cS57Mz1apx5JU
+	VP8f7xCATGYEWIOK4xH+uG3TSKC+xGY3F52kM7WM2KJf9QR+km94W65Nzp9FocD0pPEnke+E+34ys
+	O/VZUADElxoJSS/vYw/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo6pl-0000000AVsD-1wcG;
+	id 1vo6pl-0000000AVsf-38oq;
 	Thu, 05 Feb 2026 21:24:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo6pf-0000000AVno-0Ygz;
+	id 1vo6pf-0000000AVnp-2fgX;
 	Thu, 05 Feb 2026 21:24:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=WRPya6AIFwDaMGiHsseB8k3Ge2ToLgr+LbHZKiorHIg=; b=D3ZZlSqC/V8jGbUYAe/9aTMTok
-	5dPOQSyFo7SoiefracTnJHYvnbe2WapAnhcNCudSRqSh9pwL4sG7jJ1WU3Nl5qy+n6SsHnzmFpXf+
-	NO0+H1h7chE5OjauXcUYwK3fthUDC2DND2bCK5ujILnxZJwjp3xOUeZuV01NrKSmLCL+ynlKrrSB4
-	6vPfmOUO66zijmms6b+6unOadVdSM+nHxf/fBt2xjwYvay+UF6332JC8cEsLSse1DTRhyJRKjiQQ0
-	Wfjop5RafwGNimx7K31lEObm7Uu+CgYOzNdTSy/rwhzAZXsHULNELVaqlTtGrVwT/zWjxXgeJIsjb
-	p2DOJsAw==;
+	bh=5vvatJcVDYv2jsixz0CF+35CybVqCxF1N7tYF0/veLg=; b=sL4JlmT2/cM/n+LPn05/JVHtXq
+	h+UlWA6Q8AWMbBNCIvHKpjlSfXW+TKhUJP5vTvbXbABjbNQHTg3Al2W7NpouIeVbwzSj5KXwx+zrg
+	bs8nktdyZNDjCimlwku+IK1hYd9QjPDCmWeLomQCqVC4ammvLPVDBtFTGwgauqDhjFU9/1758FrZl
+	n9KQEfUx0Tg+1nnc2NgdAVRlbwtH5Q1ZxPvuSabmCf9MbInpFyoRQmA+5nL8l15TjZ3eSwX1UvVLG
+	4UfGvJyBcGKYg6xLvbE2rOyoufQqr8S/FY5EcH30GSxXiGLQXJGzyTcnS2LgnsEBk2S+Ae3/FaAaq
+	Khwblq9g==;
 Received: from i53875afe.versanet.de ([83.135.90.254] helo=localhost.localdomain)
 	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.94.2)
 	(envelope-from <heiko@sntech.de>)
-	id 1vo6pc-007GK0-Ma; Thu, 05 Feb 2026 22:24:09 +0100
+	id 1vo6pd-007GK0-1z; Thu, 05 Feb 2026 22:24:09 +0100
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: linux-arm-kernel@lists.infradead.org,
@@ -49,16 +49,16 @@ Cc: linux-arm-kernel@lists.infradead.org,
 	finley.xiao@rock-chips.com,
 	w@1wt.eu,
 	jonas@kwiboo.se
-Subject: [PATCH 2/3] arm64: dts: rockchip: Enable OTP controller for RK356x
-Date: Thu,  5 Feb 2026 22:23:46 +0100
-Message-ID: <20260205212347.490636-3-heiko@sntech.de>
+Subject: [PATCH 3/3] arm64: dts: rockchip: Enable OTP controller for RK3528
+Date: Thu,  5 Feb 2026 22:23:47 +0100
+Message-ID: <20260205212347.490636-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20260205212347.490636-1-heiko@sntech.de>
 References: <20260205212347.490636-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_132411_190979_51434CA5 
-X-CRM114-Status: GOOD (  10.70  )
+X-CRM114-CacheID: sfid-20260205_132412_288758_3CEC410B 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,71 +75,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Enable the One Time Programmable Controller (OTPC) in RK356x and add
+From: Jonas Karlman <jonas@kwiboo.se>
+
+Enable the One Time Programmable Controller (OTPC) in RK3528 and add
 an initial nvmem fixed layout.
 
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 46 +++++++++++++++++++
- 1 file changed, 46 insertions(+)
+ arch/arm64/boot/dts/rockchip/rk3528.dtsi | 47 ++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 8893b7b6cc9f..72c98337f359 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -1104,6 +1104,52 @@ rng: rng@fe388000 {
- 		status = "disabled";
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+index d402f2828814..171b48c9cdb7 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
+@@ -1190,6 +1190,53 @@ sdmmc: mmc@ffc30000 {
+ 			status = "disabled";
+ 		};
  
-+	otp: otp@fe38c000 {
-+		compatible = "rockchip,rk3568-otp";
-+		reg = <0x0 0xfe38c000 0x0 0x4000>;
-+		clocks = <&cru CLK_OTPC_NS_USR>, <&cru PCLK_OTPC_NS>,
-+			 <&cru PCLK_OTPPHY>, <&cru CLK_OTPC_NS_SBPI>;
-+		clock-names = "otp", "apb_pclk", "phy", "sbpi";
-+		resets = <&cru SRST_OTPC_NS_USR>, <&cru SRST_P_OTPC_NS>,
-+			 <&cru SRST_OTPPHY>, <&cru SRST_OTPC_NS_SBPI>;
-+		reset-names = "otp", "apb", "phy", "sbpi";
++		otp: nvmem@ffce0000 {
++			compatible = "rockchip,rk3528-otp";
++			reg = <0x0 0xffce0000 0x0 0x4000>;
++			clocks = <&cru CLK_USER_OTPC_NS>, <&cru PCLK_OTPC_NS>,
++				 <&cru CLK_SBPI_OTPC_NS>;
++			clock-names = "otp", "apb_pclk", "sbpi";
++			resets = <&cru SRST_USER_OTPC_NS>, <&cru SRST_P_OTPC_NS>,
++				 <&cru SRST_SBPI_OTPC_NS>;
++			reset-names = "otp", "apb", "sbpi";
 +
-+		nvmem-layout {
-+			compatible = "fixed-layout";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
++			nvmem-layout {
++				compatible = "fixed-layout";
++				#address-cells = <1>;
++				#size-cells = <1>;
 +
-+			cpu_code: cpu-code@2 {
-+				reg = <0x02 0x2>;
-+			};
++				cpu_code: cpu-code@2 {
++					reg = <0x02 0x2>;
++				};
 +
-+			otp_cpu_version: cpu-version@8 {
-+				reg = <0x08 0x1>;
-+				bits = <3 3>;
-+			};
++				otp_cpu_version: cpu-version@8 {
++					reg = <0x08 0x1>;
++					bits = <3 3>;
++				};
 +
-+			otp_id: id@a {
-+				reg = <0x0a 0x10>;
-+			};
++				otp_id: id@a {
++					reg = <0x0a 0x10>;
++				};
 +
-+			cpu_leakage: cpu-leakage@1a {
-+				reg = <0x1a 0x1>;
-+			};
++				cpu_leakage: cpu-leakage@1a {
++					reg = <0x1a 0x1>;
++				};
 +
-+			log_leakage: log-leakage@1b {
-+				reg = <0x1b 0x1>;
-+			};
++				logic_leakage: logic-leakage@1b {
++					reg = <0x1b 0x1>;
++				};
 +
-+			npu_leakage: npu-leakage@1c {
-+				reg = <0x1c 0x1>;
-+			};
++				gpu_leakage: gpu-leakage@1c {
++					reg = <0x1c 0x1>;
++				};
 +
-+			gpu_leakage: gpu-leakage@1d {
-+				reg = <0x1d 0x1>;
++				tsadc_trim: tsadc-trim@44 {
++					reg = <0x44 0x2>;
++					bits = <0 10>;
++				};
 +			};
 +		};
-+	};
 +
- 	i2s0_8ch: i2s@fe400000 {
- 		compatible = "rockchip,rk3568-i2s-tdm";
- 		reg = <0x0 0xfe400000 0x0 0x1000>;
+ 		dmac: dma-controller@ffd60000 {
+ 			compatible = "arm,pl330", "arm,primecell";
+ 			reg = <0x0 0xffd60000 0x0 0x4000>;
 -- 
 2.47.2
 
