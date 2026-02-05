@@ -4,75 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13AB2EA7948
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Feb 2026 22:26:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0685CE9128B
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 07:44:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aw8Y+Twv5r85cE8fi5DpNTrfTWJNCJCv2YHSv1i5mc8=; b=dGtpfFBtKN5pNV
-	U/03JHmpphKEk6p0rYgZG6/3gxsbC4MZ+mk36nR5m3iDu3oAYgcBn0kVaCMA5OBg0cGQ2MFjfwUQs
-	MkvqEldGLUQKKCFy267Xdyqf7lpPpx3lT2hYPGpenKJsHcdsWQhX5nxzlLw3hZZ3nze++8NFgpGhe
-	/AfL0O5QXw3ZNQq/uIVHKqfmgw3Vx6gqIgUA3+zzXSEpzlew+8Z8JLhtemo21lD6gONudDWwT4pJu
-	JBaOfaknjJiqkTWOjblS3zkofbUeJuk/4VbhWLVmjx4pbvMxwKaWSIB2N8ysNEQOP1lmXFP1ZXE6Q
-	F8K+N16F2avwf2APnG7Q==;
+	List-Owner; bh=ktq4Sk8Yj6n5eu72EbW0caL8ulz+v+T8p9qtpsbytcM=; b=kJV6j4bCEb89Hv
+	wZ5IHggHUIvucvkxnouLYVsG4fwt+PHuonaPvYW/vC+88DBCsG41Q/o8i12PcctRQK9VulHMMD4r8
+	5FvCHyaqK+UFhMCONUhNAJ/nKu1KS4OM5zZ6nWkRwtyeUjp1V6IkRvQY3yR9E09noy3STjhTR2wkI
+	f4Pw4MTRFvPxdFzl8VZEuI8CtwBQjILFDdOex5wLFMzfzXxf/+8oqCm7pWo2ryMFyIXBG8I/MsW8y
+	vLqPJ/ABKPR/qVL4J+p0KPPIZs7ZRjji2TTu123hcOAqfs9tmZ9Kbvy+2YuB/sI/MPGnZ4SpO04DV
+	rgkc3i4Chmc0x2XoHsTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnlKa-000000098KN-0ZyE;
-	Wed, 04 Feb 2026 22:26:40 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1vnu2N-00000009Zos-2Mmh;
+	Thu, 05 Feb 2026 07:44:27 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vnlKU-000000098Jv-3dSG;
-	Wed, 04 Feb 2026 22:26:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=YBb76XbTs10K5UGRcrXyjymL5gOXGKQMYpuyBZHPFXk=; b=jOu0LD/BkldhAJq+u9wKjguWef
-	ZFm0IBCkNyDdOBVt1B85H0vb/6JVrJokFjjKGrVtPS/tf0atzMvL338oM4gQxhlDjOYN4k5YSa9it
-	qxkGwKlGFdcYmCQob7xbVtFvLgf+peJ7cXRsXHKfNckjQJ4PJcyCFhfeiHsaM9HXVPdWMXwLEoldk
-	E7wl/EHPCIf274H7XC+Iz6Po0crHg96G/2YPm0m8wIsEfidXx2p/ewWAFyEKxZmbmzySZ/fizE2eC
-	/7jxc8HtUx2VLYG0C/wBm8mJKrGoNVUl1mcZDBVYXwGFtNrrmdqzGAkR2pFUxEJEpaUVoee6VHk2J
-	ZlsAPnUA==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:56420)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1vnlKN-000000006kE-07W2;
-	Wed, 04 Feb 2026 22:26:27 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1vnlKI-000000005kv-0AB7;
-	Wed, 04 Feb 2026 22:26:22 +0000
-Date: Wed, 4 Feb 2026 22:26:21 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
+	id 1vnu2I-00000009ZnJ-3xk6;
+	Thu, 05 Feb 2026 07:44:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=Ntdpc/kmU25S8F1eDNB57650TuUB4jKAVLcNz3WP428=; b=JD9cFskb0ndPxsKG6mTXNaig4G
+	AjzKOFM/uI2N0j2aUVwUgcC3SwPYbKsfsc1pabUNvUYnLLVx209LS6nhZAnvXY5BX8ICUrdVb19fB
+	wewmjBHYAs1usCTPHRkN+XodwpBydq99GjSElbGrZ60yAKYLCsDkDcI2lDDLpJbL4ceI7O3CDkc9e
+	gcwDxAN6xJeO50QVSckVR8cfFj13SswOLKmnJ2uunwIVKPVIny+RCf1Dqu85I4ryNCdQe+UbEhdnH
+	/3DMcq2+DuBck+ZT3iQb9/jkiVArfTRJLr/lktcrqnP/yb2Z08mPU/+Yf0zqn1Ed+RylgHGgzBWXu
+	ch73Pyqg==;
+Received: from i53875afe.versanet.de ([83.135.90.254] helo=diego.localnet)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vnu28-0074Ju-66; Thu, 05 Feb 2026 08:44:12 +0100
+From: Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>
+To: "Russell King (Oracle)" <linux@armlinux.org.uk>
 Cc: Andrew Lunn <andrew@lunn.ch>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
-	Paolo Abeni <pabeni@redhat.com>
-Subject: Re: [PATCH net-next 5/6] net: stmmac: rk: use rk_encode_wm16() for
- clock selection
-Message-ID: <aYPHjS0wrtXlRb1a@shell.armlinux.org.uk>
-References: <aYMN2gZMfLPKuukG@shell.armlinux.org.uk>
- <E1vnYy6-00000007hp9-1AJM@rmk-PC.armlinux.org.uk>
- <20297648.sWSEgdgrri@diego>
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
+ Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+ Paolo Abeni <pabeni@redhat.com>
+Subject: Re: [PATCH net-next 5/6] net: stmmac: rk: use rk_encode_wm16() for clock
+ selection
+Date: Thu, 05 Feb 2026 08:44:11 +0100
+Message-ID: <3561842.ZfL8zNpBrT@diego>
+In-Reply-To: <aYPHjS0wrtXlRb1a@shell.armlinux.org.uk>
+References: <aYMN2gZMfLPKuukG@shell.armlinux.org.uk> <20297648.sWSEgdgrri@diego>
+ <aYPHjS0wrtXlRb1a@shell.armlinux.org.uk>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20297648.sWSEgdgrri@diego>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260204_142634_908327_0E0F4FB5 
-X-CRM114-Status: GOOD (  26.30  )
+X-CRM114-CacheID: sfid-20260204_234423_041382_0C7AA8C4 
+X-CRM114-Status: GOOD (  33.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,77 +71,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 04, 2026 at 11:03:51PM +0100, Heiko St=FCbner wrote:
-> Am Mittwoch, 4. Februar 2026, 10:14:38 Mitteleurop=E4ische Normalzeit sch=
-rieb Russell King (Oracle):
-> > Use rk_encode_wm16() for RMII clock gating control, and also for the
-> > io_clksel bit used to select the transmit clock between CRU-derived
-> > and IO-derived clock sources.
-> > =
-
-> > Both of these were configured via the "set_clock_selection" method in
-> > the SoC specific operations, but there is no requirement to change the
-> > io_clksel except when enabling clocks.
-> > =
-
-> > It is also possible that we don't need to ungate the RMII clock if we
-> > are operating in RGMII mode, but this commit makes no change there.
-> > =
-
-> > Split up the configuration of these as separate functions, and remove
-> > the set_clock_selection() method. Since these clocking bits are in the
-> > same register that we call the "speed" register, move the logic for
-> > writing that register into rk_write_speed_grf_reg().
-> > =
-
-> > Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
-> > ---
-> >  .../net/ethernet/stmicro/stmmac/dwmac-rk.c    | 174 ++++++++----------
-> >  1 file changed, 75 insertions(+), 99 deletions(-)
-> > =
-
-> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c b/drivers/n=
-et/ethernet/stmicro/stmmac/dwmac-rk.c
-> > index 4099cbc5d0de..ed9adac70f0a 100644
-> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
-> > @@ -27,8 +27,17 @@
-> >  struct rk_priv_data;
-> >  =
-
-> >  struct rk_clock_fields {
-> > +	/* io_clksel_cru_mask - io_clksel bit in clock GRF register which,
-> > +	 * when set, selects the tx clock from CRU.
-> > +	 */
-> > +	u16 io_clksel_cru_mask;
-> > +	/* io_clksel_io_mask - io_clksel bit in clock GRF register which,
-> > +	 * when set, selects the tx clock from IO.
-> > +	 */
-> =
-
-> nit: comment stile does not seem to follow the kernel coding style
-> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/D=
-ocumentation/process/coding-style.rst#n622
-
-netdev has historically had this style which is separate from the rest
-of the kernel. The file already uses this comment style, so it is
-entirely correct to keep to the style which already exists in this
-file, rather than mixing styles and turning it into a mess.
-
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Tested-by: Heiko Stuebner <heiko@sntech.de> #px30,rk3328,rk3568,rk3588
-
--- =
-
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgUnVzc2VsbCwKCkFtIE1pdHR3b2NoLCA0LiBGZWJydWFyIDIwMjYsIDIzOjI2OjIxIE1pdHRl
+bGV1cm9ww6Rpc2NoZSBOb3JtYWx6ZWl0IHNjaHJpZWIgUnVzc2VsbCBLaW5nIChPcmFjbGUpOgo+
+IE9uIFdlZCwgRmViIDA0LCAyMDI2IGF0IDExOjAzOjUxUE0gKzAxMDAsIEhlaWtvIFN0w7xibmVy
+IHdyb3RlOgo+ID4gQW0gTWl0dHdvY2gsIDQuIEZlYnJ1YXIgMjAyNiwgMTA6MTQ6MzggTWl0dGVs
+ZXVyb3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBSdXNzZWxsIEtpbmcgKE9yYWNsZSk6Cj4g
+PiA+IFVzZSBya19lbmNvZGVfd20xNigpIGZvciBSTUlJIGNsb2NrIGdhdGluZyBjb250cm9sLCBh
+bmQgYWxzbyBmb3IgdGhlCj4gPiA+IGlvX2Nsa3NlbCBiaXQgdXNlZCB0byBzZWxlY3QgdGhlIHRy
+YW5zbWl0IGNsb2NrIGJldHdlZW4gQ1JVLWRlcml2ZWQKPiA+ID4gYW5kIElPLWRlcml2ZWQgY2xv
+Y2sgc291cmNlcy4KPiA+ID4gCj4gPiA+IEJvdGggb2YgdGhlc2Ugd2VyZSBjb25maWd1cmVkIHZp
+YSB0aGUgInNldF9jbG9ja19zZWxlY3Rpb24iIG1ldGhvZCBpbgo+ID4gPiB0aGUgU29DIHNwZWNp
+ZmljIG9wZXJhdGlvbnMsIGJ1dCB0aGVyZSBpcyBubyByZXF1aXJlbWVudCB0byBjaGFuZ2UgdGhl
+Cj4gPiA+IGlvX2Nsa3NlbCBleGNlcHQgd2hlbiBlbmFibGluZyBjbG9ja3MuCj4gPiA+IAo+ID4g
+PiBJdCBpcyBhbHNvIHBvc3NpYmxlIHRoYXQgd2UgZG9uJ3QgbmVlZCB0byB1bmdhdGUgdGhlIFJN
+SUkgY2xvY2sgaWYgd2UKPiA+ID4gYXJlIG9wZXJhdGluZyBpbiBSR01JSSBtb2RlLCBidXQgdGhp
+cyBjb21taXQgbWFrZXMgbm8gY2hhbmdlIHRoZXJlLgo+ID4gPiAKPiA+ID4gU3BsaXQgdXAgdGhl
+IGNvbmZpZ3VyYXRpb24gb2YgdGhlc2UgYXMgc2VwYXJhdGUgZnVuY3Rpb25zLCBhbmQgcmVtb3Zl
+Cj4gPiA+IHRoZSBzZXRfY2xvY2tfc2VsZWN0aW9uKCkgbWV0aG9kLiBTaW5jZSB0aGVzZSBjbG9j
+a2luZyBiaXRzIGFyZSBpbiB0aGUKPiA+ID4gc2FtZSByZWdpc3RlciB0aGF0IHdlIGNhbGwgdGhl
+ICJzcGVlZCIgcmVnaXN0ZXIsIG1vdmUgdGhlIGxvZ2ljIGZvcgo+ID4gPiB3cml0aW5nIHRoYXQg
+cmVnaXN0ZXIgaW50byBya193cml0ZV9zcGVlZF9ncmZfcmVnKCkuCj4gPiA+IAo+ID4gPiBTaWdu
+ZWQtb2ZmLWJ5OiBSdXNzZWxsIEtpbmcgKE9yYWNsZSkgPHJtaytrZXJuZWxAYXJtbGludXgub3Jn
+LnVrPgo+ID4gPiAtLS0KPiA+ID4gIC4uLi9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdt
+YWMtcmsuYyAgICB8IDE3NCArKysrKysrKy0tLS0tLS0tLS0KPiA+ID4gIDEgZmlsZSBjaGFuZ2Vk
+LCA3NSBpbnNlcnRpb25zKCspLCA5OSBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1n
+aXQgYS9kcml2ZXJzL25ldC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jIGIvZHJp
+dmVycy9uZXQvZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYwo+ID4gPiBpbmRleCA0
+MDk5Y2JjNWQwZGUuLmVkOWFkYWM3MGYwYSAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9uZXQv
+ZXRoZXJuZXQvc3RtaWNyby9zdG1tYWMvZHdtYWMtcmsuYwo+ID4gPiArKysgYi9kcml2ZXJzL25l
+dC9ldGhlcm5ldC9zdG1pY3JvL3N0bW1hYy9kd21hYy1yay5jCj4gPiA+IEBAIC0yNyw4ICsyNywx
+NyBAQAo+ID4gPiAgc3RydWN0IHJrX3ByaXZfZGF0YTsKPiA+ID4gIAo+ID4gPiAgc3RydWN0IHJr
+X2Nsb2NrX2ZpZWxkcyB7Cj4gPiA+ICsJLyogaW9fY2xrc2VsX2NydV9tYXNrIC0gaW9fY2xrc2Vs
+IGJpdCBpbiBjbG9jayBHUkYgcmVnaXN0ZXIgd2hpY2gsCj4gPiA+ICsJICogd2hlbiBzZXQsIHNl
+bGVjdHMgdGhlIHR4IGNsb2NrIGZyb20gQ1JVLgo+ID4gPiArCSAqLwo+ID4gPiArCXUxNiBpb19j
+bGtzZWxfY3J1X21hc2s7Cj4gPiA+ICsJLyogaW9fY2xrc2VsX2lvX21hc2sgLSBpb19jbGtzZWwg
+Yml0IGluIGNsb2NrIEdSRiByZWdpc3RlciB3aGljaCwKPiA+ID4gKwkgKiB3aGVuIHNldCwgc2Vs
+ZWN0cyB0aGUgdHggY2xvY2sgZnJvbSBJTy4KPiA+ID4gKwkgKi8KPiA+IAo+ID4gbml0OiBjb21t
+ZW50IHN0aWxlIGRvZXMgbm90IHNlZW0gdG8gZm9sbG93IHRoZSBrZXJuZWwgY29kaW5nIHN0eWxl
+Cj4gPiBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2
+YWxkcy9saW51eC5naXQvdHJlZS9Eb2N1bWVudGF0aW9uL3Byb2Nlc3MvY29kaW5nLXN0eWxlLnJz
+dCNuNjIyCj4gCj4gbmV0ZGV2IGhhcyBoaXN0b3JpY2FsbHkgaGFkIHRoaXMgc3R5bGUgd2hpY2gg
+aXMgc2VwYXJhdGUgZnJvbSB0aGUgcmVzdAo+IG9mIHRoZSBrZXJuZWwuIFRoZSBmaWxlIGFscmVh
+ZHkgdXNlcyB0aGlzIGNvbW1lbnQgc3R5bGUsIHNvIGl0IGlzCj4gZW50aXJlbHkgY29ycmVjdCB0
+byBrZWVwIHRvIHRoZSBzdHlsZSB3aGljaCBhbHJlYWR5IGV4aXN0cyBpbiB0aGlzCj4gZmlsZSwg
+cmF0aGVyIHRoYW4gbWl4aW5nIHN0eWxlcyBhbmQgdHVybmluZyBpdCBpbnRvIGEgbWVzcy4KCnRo
+YW5rcyBmb3IgdGhlIGNsYXJpZmljYXRpb24uIFRoZW4gdGhlIGNvbW1lbnQgc3R5bGUgaXMgb2J2
+aW91c2x5IGZpbmUuCgpSZWdhcmRzCkhlaWtvCgoKPiA+IFJldmlld2VkLWJ5OiBIZWlrbyBTdHVl
+Ym5lciA8aGVpa29Ac250ZWNoLmRlPgo+ID4gVGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
+a29Ac250ZWNoLmRlPiAjcHgzMCxyazMzMjgscmszNTY4LHJrMzU4OAo+IAo+IAoKCgoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
