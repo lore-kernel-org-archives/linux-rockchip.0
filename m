@@ -4,56 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F7AEECD980
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 15:37:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88AABECD983
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 15:58:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aKPyh+sQOjdF+LDd6BVOZ1EkySHIjWaRPk7o6cBrY3M=; b=eR6CLfpDuQQuOr
-	vP8enz+opj1lbo0kYMBbl8km6IwvpMa+apsUlW7+gsQLXD4RgMyLV25iCIX5UtHH8tZEqW14SlEX1
-	K8ijD2SYr4WKi2TAYtEVc6tqB7KofVulLqos7wcvJYnUST8Uk5L4gTG24qXOwm3aPiy4AkS+8Ex+c
-	cD283TvdsGtZiPsZr7zCGwSxP5mJWYN2+EUmZPaBajpVZe2Tadtctz5N4yqKefPusfmZAH9b6W4I6
-	aH5R4sz0jZbEeaLdYilV7omnwbAxygNcr/8+tSLg4wH0+cZms0nPzwdPom4x1quRWvQeGoJ2n+BOT
-	+lYnuOYQvPEslA5cAXcQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6lFcd1pTEXbns6TITrokEjTlAP0dPafcl+0SSJvMAoo=; b=fYf8Lu/Z/qcWpCdjug/3aSgXrN
+	9m7h2MEujUJOJs76aGYt8o0K0yrEiDV74b8dMqKBiZ3V5AVV+MS6d7QILSS6HgIAVEjt9KS0wSiT/
+	xrYLz2sAdaOW6Y6wOvV9upaCY/o/mR1C45+V+KQ2JTaUW2/n+a4d/MAo7oqTzkfHZL4wsfEukq53r
+	3vqwu/Xse+Ov/09y44kYJWrOyGjomBSJV0AHZhizymuIz8fPBGGXhzmE1UuwTBqz0sYl+eVeCadGz
+	CiadGB2+cSX8hTiS5lTP1ACBGrq1wWQSq6aq9b4fT+YUk8h8bEZAIB5RivZ+s5NyIAMbMBIw77SP5
+	Wov19mwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo1PT-0000000A9CJ-1Cwd;
-	Thu, 05 Feb 2026 15:36:47 +0000
-Received: from mta1.formilux.org ([51.159.59.229])
+	id 1vo1kk-0000000ABqZ-0VKU;
+	Thu, 05 Feb 2026 15:58:46 +0000
+Received: from mail-northeuropeazon11011056.outbound.protection.outlook.com ([52.101.65.56] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo1PN-0000000A9BF-005F;
-	Thu, 05 Feb 2026 15:36:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=1wt.eu; s=mail;
-	t=1770305795; bh=bDG6JUw0vcIRR0kyBBhmEXyGARwRCtNfBmiWb++p9+c=;
-	h=From:Message-ID:From;
-	b=X5TWe283hcU9qCzxp/Q8l1S2heYWS4UvpZ6MAqfiSS9O9rEO9mxN8lVFR6YG2Zrfi
-	 wb482IoVIPe7SxK1BtPivi3SeI9sSfF3h8TUZ3GT58VGHo+uPhztYPXnWlB7UDHj34
-	 pEODenMJvaTT2kEdaFUgC9rCSqKHQT9jst0ouAMs=
-Received: from 1wt.eu (ded1.1wt.eu [163.172.96.212])
-	by mta1.formilux.org (Postfix) with ESMTP id 26F58C0BAA;
-	Thu, 05 Feb 2026 16:36:35 +0100 (CET)
-Date: Thu, 5 Feb 2026 16:36:33 +0100
-From: Willy Tarreau <w@1wt.eu>
-To: Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>
-Cc: Kever Yang <kever.yang@rock-chips.com>, linux-rockchip@lists.infradead.org,
-        Finley Xiao <finley.xiao@rock-chips.com>,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        Srinivas Kandagatla <srinivas.kandagatla@linaro.org>
-Subject: Re: [PATCH v3 3/3] nvmem: rockchip-otp: Add support for rk3562
-Message-ID: <aYS5ATObatoDnKFs@1wt.eu>
-References: <20250415103203.82972-1-kever.yang@rock-chips.com>
- <20250415103203.82972-4-kever.yang@rock-chips.com>
- <20250728190154.GA24527@1wt.eu>
- <3080333.vCJZsxu672@diego>
+	id 1vo1ke-0000000ABow-3uKY;
+	Thu, 05 Feb 2026 15:58:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=yfGKuwQCJkw94X2y/a9OHg1uG+sCq215/uEii7WYL5mXgtaNe6vkVer7mwQFkq7zS3By0rvPCtFzM4mJGQV0aiH24V+7HvfsCUchMO3s9AoB7F1X5E2t/Z/I/RJ3EMMb7bP2JrSfBPTL1C47N3HegP7YEJn03p/+GwqoNA8HwKukuLxHqUl0jbJDm6+1zjXZQDop7VKHs/hAVWki1v0Se8C9K7HDtjMN4iBKizCoNK4ZJmnC1g8/e2Eih6DnS1a7IH5DVuCxXw0YBOCSFbJhKehvFYhoywLSQsym2pbTaNyXsOqrGl0OLEeUDZ5j37Els3eobH0WqnGSUEajzZiygg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=oqnl5GL594nigq8Vfkv2OZYRaWjTIehVAKPRRukvfj4=;
+ b=K9oYYFNOSk9X/5oNa7K4KC/VJQtuU0A3g4MJkRnwUnLgX2fjImP6J/m060YJfsfCYBKirLg5KFLTobjB81NXiWRFrxkMsL0gtaXm49L/hTIQE9+GbwZL3XX11tz9pJsVw5pP4r/MMawyDWCBKU1FMQd4Ca5TLznLvJE0J7nJd3ZtxGr1ZU/9zibepVBtR4MyAVIWVZfvoh6zjd6jUOtgsS0L1ILa6ra5TQWjn0z7/1smhGxHpeeb208O2yCt4CjgfBiqCRTqHr1NSzLN6fgg7S7378OqpxZng2Z0egQzf89tn2ziIpmvTOa3sv4pgW3/yd5ty0PUzBdPqruaGCROpQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=cherry.de; dmarc=pass action=none header.from=cherry.de;
+ dkim=pass header.d=cherry.de; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cherry.de;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=oqnl5GL594nigq8Vfkv2OZYRaWjTIehVAKPRRukvfj4=;
+ b=fhpeESFgKdFxNhsfCuDFFTPSu5cqFbt1WWFT9S8dVrfHU/5NRbl3aZmHcdj/znr+ATeddjAQCYDAt+Pg35qMGgxGhzAKQZ4NEyiIG3RM6uJOsON8nKTt0c5B0PK+IxlfZMrLU2Ci6LBrwdo2TAqXQyhiCEU4yIvz9rUhncaWvC4=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=cherry.de;
+Received: from GVXPR04MB12038.eurprd04.prod.outlook.com (2603:10a6:150:2be::5)
+ by PAXPR04MB9185.eurprd04.prod.outlook.com (2603:10a6:102:231::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.14; Thu, 5 Feb
+ 2026 15:58:25 +0000
+Received: from GVXPR04MB12038.eurprd04.prod.outlook.com
+ ([fe80::6c04:8947:f2f0:5e78]) by GVXPR04MB12038.eurprd04.prod.outlook.com
+ ([fe80::6c04:8947:f2f0:5e78%6]) with mapi id 15.20.9587.013; Thu, 5 Feb 2026
+ 15:58:25 +0000
+Message-ID: <5cdd1a69-e28d-4869-958d-cc83f331578d@cherry.de>
+Date: Thu, 5 Feb 2026 16:58:21 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] arm64: dts: rockchip: use gated-fixed-clock for
+ pcie-refclk on rk3588-jaguar
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Heiko Stuebner <heiko.stuebner@cherry.de>
+References: <20260205102104.394991-1-heiko@sntech.de>
+ <20260205102104.394991-2-heiko@sntech.de>
+Content-Language: en-US
+From: Quentin Schulz <quentin.schulz@cherry.de>
+In-Reply-To: <20260205102104.394991-2-heiko@sntech.de>
+X-ClientProxiedBy: WA2P291CA0022.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1e::24) To GVXPR04MB12038.eurprd04.prod.outlook.com
+ (2603:10a6:150:2be::5)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <3080333.vCJZsxu672@diego>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GVXPR04MB12038:EE_|PAXPR04MB9185:EE_
+X-MS-Office365-Filtering-Correlation-Id: f4e2d6a9-a7ca-40a5-0a23-08de64cf6536
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|366016|1800799024;
+X-Microsoft-Antispam-Message-Info: =?utf-8?B?aVZVTUNhUktsTjFmMGFxMzZyTTBRa3J2WUZSVGZHNGp4d2oySWMxK1dHdjRq?=
+ =?utf-8?B?V3VCUWF5clgxOUp0ZlppNThCNG5EdVl3VnJFNnRia0N4WGkrSVlDUDlNMzJQ?=
+ =?utf-8?B?Z3lIMXZ5TzNkZmNLRExaT2k5TkFYdFBWUzVkOVJOaFhoTUpaWEpnS2xoYjhp?=
+ =?utf-8?B?elBoQmNBUm1PUFNqUXpra2FzRzQwc0dTRDNQTjJKK0REalA1S3krcDVhNVVV?=
+ =?utf-8?B?aGh1RXV0cVNRNEYwN3VzRVpxbzlDd0hYUTlGWlJRYndCbksvd3dXQ095aWM4?=
+ =?utf-8?B?US94dUl2aDZQc1AzRnJIRjhxQ0JRRHBHc0V1b1A2cWdiZ1J1NGZPbHFqV0lZ?=
+ =?utf-8?B?aHVIKzl4aVJFRHpBOWp2aDM3VUZTRlJmaTNGK2Rxck1zNU9DOE1IMkdvK3hJ?=
+ =?utf-8?B?bEgxUDV5UXJTdDNYekR6RlM3elBHTHJTV0hFaVZ4WlhJWTlwaFg5S3JJaC9G?=
+ =?utf-8?B?TG50RFFNODFacmFnK3pMeS82dktqOEV1RC9VSG5wK3VqcmVYOTd2eGlEZnd3?=
+ =?utf-8?B?REJpdDVPMCtYUmxhcTFpZzdqR0YwUzN0L3ptRlRaSHUxSVF3M2RBNXNhYzhs?=
+ =?utf-8?B?ZTEyTGVnSzNFS0pRUEc0QS9yb1RQM3NzSFY3ZFRjbWRBY1J6cjRUQml5L2RK?=
+ =?utf-8?B?cnl2MUF1d0YyeXZ1bnZUdlNZNVlRRklvLytLOXJKK2xpdXVvUjlrMGc4Y1ZM?=
+ =?utf-8?B?Uyt4UFlwQWZLeFV0ZnR2NTJ5YlRIclVGaGZFUVYwZ0N2dy9DTTIvSzZjR0M1?=
+ =?utf-8?B?K3JEYkowVUdXaEh0dW1PUUtFaVVVS3BDMXpqbkxUSVBFenJGRmxaR0RPRUxz?=
+ =?utf-8?B?VHNnd1cwS09RY1F6VEIra3k0dUdnK2I0THY0QmcrZkRleVRkOEp5QUNxclE3?=
+ =?utf-8?B?aGRmVGRnbVFGM3NaTmtOQ1p3Q3RtZ09QaFc3OEJTek1oU09qakV3VDc5OExk?=
+ =?utf-8?B?TkV3VFAyekVyZkNUbjVncnlyaVJiTmk5QkgydmZvV3dpK0lGUzBxUFlHaXJ5?=
+ =?utf-8?B?WUlUQUNRZm5QR1V4K3VkOFgyMkx1QWJvc0o5Q1NGR1ArYnJuRGVDVnpKbXRF?=
+ =?utf-8?B?dzN5K3F2MjRMS3pnZm1wYUt6OGw3bkxpdE5ydHZIZlZIdU5oTFdsUzhnL2di?=
+ =?utf-8?B?N0hkZDFwOTBKb3gvNXk3OXFWak1HVjA0d2tGSWZoOHNnT2YwS0JsN0xYYkVq?=
+ =?utf-8?B?aTZYRXZrV2VleW5ldGl0dWlvb3pCZjhveWtJTklQSWo4RTBraVAwNVZieVo3?=
+ =?utf-8?B?YjY3dVVyZFEyeXp4VXFDSDlZazI2QXhqYnN0S1F1ZzJPR3UvMVRwbUh0NXlv?=
+ =?utf-8?B?a3JaNWV2RUZQSTRrNHQxcVVUQnB1WGQ3VmxQZE0ySUUzNlBNQmVhQno1d1l6?=
+ =?utf-8?B?RXFJL09GSHNveDFmeFdHemVCL1NkMlZQNU8wUVJmMDFVM2NTSFU1N1I1WWxM?=
+ =?utf-8?B?V2dVbzZubGp1c2lZc2t1MmpXcmhwS2JMSTkzbE4yZG0zTmw3Y2NQNW5jT0hE?=
+ =?utf-8?B?Szc1dTc5S1hoYitqdmtodit3bDE1NVgyVCtVejJrY0M2QWNoeEgzL3RFMFBj?=
+ =?utf-8?B?TXllbXp2eTYrRE1uTk1WQjhmSEU5a3JFQ1JCMFpJWVJ0a2hvVWkxbkg0enBD?=
+ =?utf-8?B?bS93Ly9YaEtLUEVmRHV0Nnk1M3VubGdRS1IvUCtnSmJHSlIzaEM1QkR5cExT?=
+ =?utf-8?B?SGhvWFJySXJ5ZEp6MDhqZUR3QXk4T3BBb0hLV2pYR00vZ243SXg4Um1XL0Z6?=
+ =?utf-8?B?enBwa1B6dmtxdXZBS1JNTjBNNC9PbVdTd0dMMExBbzZONk1RMGFQUVNPRUU4?=
+ =?utf-8?B?S0dxZkY4UzJ0SGN4WHJ1UGZta1pCY2F0M0gySUltMHRNSjFLVUhJdStEM2lC?=
+ =?utf-8?B?WnZsR1FYNUdxUEl3TFdhbDlxVlZyMkh2Q0cvM1JLZkQ4ZjRoY0Vlcm1BVXBP?=
+ =?utf-8?B?M2VBTTRHNTNKR3QzUU9GaHNoM3BrYUJITWdoWHlMb3Y5bHAxbzY1OWVyTk1Z?=
+ =?utf-8?B?Mll4N1poSndQa25KNkRJYnd1YkowdHc0eFRla2FXTEJ0bTRmdkU4ZWZES0oz?=
+ =?utf-8?B?U0Y4M2Y1N05DekdZeEhNcS9aY3pJajZxdEtUVHpOVEY1V1QreXpZTTVvbkxU?=
+ =?utf-8?Q?79ZU=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GVXPR04MB12038.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(366016)(1800799024);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?L1p3eGdDYzRzakF4aFBYelMyM09mR2I5U0NadFVhalJ6aERmSHJkakErdTln?=
+ =?utf-8?B?dE1rUUxIYzZMZ3VEeHNGY3JaUzdJWDZJY1loalRNdGlOZEJiY1E1TzJ6enBu?=
+ =?utf-8?B?QTVjQWcyc3VnQm9iVVpwRGJGRkN3bzhXZ2xiK3FiZ1hyTDZTU3NhZW9FT2R1?=
+ =?utf-8?B?aVRkUEhWcnVxNERIMmdYaVAvaE1hTW9VU3BvSm1rNjFNZi9pT1Qva0tKb05m?=
+ =?utf-8?B?Ui9sdmpqQzV6NjVOcWRTL3Avam1VaXNrZTQ4OWZUZW4zMEpHcUNMcllSV2hM?=
+ =?utf-8?B?cnB6RzRKUCsrdEhWS3oyV0p3cmxaUGQ0N1VZdE9TYWNaMG5uLzJPSHVlYjMy?=
+ =?utf-8?B?SjlZTkdEeHVweDd1OVN5RmIyV2ZLWjVMdCtWREFRbjlRUTR1cStzVzFZYVdR?=
+ =?utf-8?B?NkdxbXFCRmNCOXNvTDkxWW0rbE9hN1NSZVpaczBBbi8wSi9mY3VqdlpjWXMw?=
+ =?utf-8?B?RmNnZEt2ZDgxb25nTDFweHh0a2tUc20yZkFRcEdjYjJ3SkU4S0grdm9DZVBN?=
+ =?utf-8?B?YzM0TWZ0S2JPL1RSbk9FTjQwZnFUZEd1eVhWTDdLWVpaYUlqVUNqaDgwZmo5?=
+ =?utf-8?B?aFFCZk5MejBDNHcrSTloL3dFaSsvbVFBQXkrc3c0cmprcW9yR0l0RmN4L2pL?=
+ =?utf-8?B?TnVCbDZ0Mk1PcEJXRFVXSFlhV3l2Zk5qWWhnL0lzWE5WbjRjTEhwS1BMVWNz?=
+ =?utf-8?B?b3NGVnlUOXhvY0RnV2dVbzNLZnA2NENBREUvbzRuVjBDZHVwMmVTWGZMUzl1?=
+ =?utf-8?B?UmxnaEZucG94emFjOUk1bTJyOXNUVFAyUUpKblJXb2xiYkgyQlZDdFg4Sktj?=
+ =?utf-8?B?UjgrRnFXUU9xVkZ5SFdhR1pNeko3Vk0yVE14dVNMb2Z1MkdlK2xjN1JPY211?=
+ =?utf-8?B?K280dzVRTXpWM0pQZzh4ckhvT0w0cndqd1laR2RYOTVXK2g1bmtyb1QyMGNs?=
+ =?utf-8?B?b1FVZ3JoZUViT1U2RjlaK21YRzJvUnBqVDhSTmxvNXkwbHpMS29FdFNoL29i?=
+ =?utf-8?B?elowSFpwWWk1Q1FxeSsxeW80c3dqSjlqMDlOZnlYb0RyMmpMdkIrMFcrT2Zy?=
+ =?utf-8?B?WFoxNnh2VDVocHFrTnhzSXhpdi9Fck1MUEdseFpqUDhJRzlQYXUvbVhsUmIv?=
+ =?utf-8?B?REtjMUJ6ZjlEbnM4YnJraDJuKzhDaEhxNVdacmU0WGhCbTk0N1E5TDRJZFFP?=
+ =?utf-8?B?bmRxWkZVM2duQ2hDWU9JMzlma3RBaGFmSWRPSllxREpuaXBldmN3eW9VWkF3?=
+ =?utf-8?B?VWpPN0ZCZ1NNQmRyYmp6b2tvcFN0K0crOWdhaC8vV0IvWTdMTE5nWTVlTVNy?=
+ =?utf-8?B?VUx0NlRKbXFyOW45ckVxbEZIc2lMdVZmWEVWTlJnR1V0d2RYWDhENUlFbkRy?=
+ =?utf-8?B?Qm1wMlkyWDV0MDRoUWYvcXlQc2FUNmFpTTF6ZnFWNnlZRytwVGExV3h6MktL?=
+ =?utf-8?B?MDdMV3RMbTFCbGM3RHQ4OENGUHRnN1E3YklkM3BsV1hNcUhoeWYrT1dCUHpZ?=
+ =?utf-8?B?U05aRGxTRjhUMEdLakJBdXlLYVRqbEltdzBUTXprdmF0ckcybElZbTFXV24x?=
+ =?utf-8?B?eGR3RExNa1lDNjFsM0h5NUZBNHlzT1BxUkZUTVVrU2c4TTVMVG9rOHlRS1Zk?=
+ =?utf-8?B?bXgrRWxxelQydWIxOXpFd2FxZHkxTDdHN2lDTXdZM0xDWnYvbW91OWpsUW1T?=
+ =?utf-8?B?VUgxVlV1dkNJM0piMGlIQlFtQ0k0cVFQWEtzOGJMRDdkR3pmWEtXenN1ZjNw?=
+ =?utf-8?B?L0UzZklINEpRQVEwLzIxdy9BR0VkTHNjS0xad2lBNUJ3NnNaeGdWSVpDcVpX?=
+ =?utf-8?B?MktsN2ZNMW9CcFY5YjRoTS8ycU51UCtWRXlGSHBPM1d6L0hKVTA3bC9SRXNj?=
+ =?utf-8?B?NWs1SkhzRnNndGl1Y0xoekhmbW8ySVlHTXhHaFovL3J3bjRJM2pablMrdkth?=
+ =?utf-8?B?c1NUMm9WOFJQNzFwMjl3SzhGandSQUgxVjhGSng4bW1QeGlOaDQvbnZDOUE5?=
+ =?utf-8?B?L2VPSzFkRjVVYytRUzZnMUlKZVoyOFljVk1nNlNqQnljaFIrZmtCY20yckJI?=
+ =?utf-8?B?SWF4MFN1bVl6aTlabS93Ky9Qa3ZuVGxwTDRvZVJuaDZvRFlyNXVMK3RVMXJ3?=
+ =?utf-8?B?ejh4N29BM3hRYzlLTFJWdTcxQW9IMzFkaSt5Nm9xUnRSbERCRHNsZEd6cmo4?=
+ =?utf-8?B?VEJsTVN3R2EvZ3hLaCtJR1R2VEIwS0V1QW9yZUxXNWszSU00MFk2S05pc1p5?=
+ =?utf-8?B?VE1qV1ovWkRvOXh0U3lOaW9MRWxXZjdEcGU0MHFZRHZ5NE5zT08xVXl5UlBZ?=
+ =?utf-8?B?a3h2RERiUmV0V1RaaUdlLzhuU2lScHhOV1pXcGtpSXJISk81ZmxXdz09?=
+X-OriginatorOrg: cherry.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: f4e2d6a9-a7ca-40a5-0a23-08de64cf6536
+X-MS-Exchange-CrossTenant-AuthSource: GVXPR04MB12038.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Feb 2026 15:58:25.3346
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 5e0e1b52-21b5-4e7b-83bb-514ec460677e
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ynOH+WEVpZEFnAYWJF+BB8zIvXiDrWEF9HSyn8WP+cTEi31a8LTu7r6JHyNYKAkdEXvgaf+v6NIp/yC7HlRLK4dvRuNxHbiEqgMTlF1mgvs=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB9185
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_073641_470878_F7376986 
-X-CRM114-Status: GOOD (  22.13  )
+X-CRM114-CacheID: sfid-20260205_075841_090615_B0830E27 
+X-CRM114-Status: GOOD (  18.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,108 +177,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Hi Heiko,
 
-On Thu, Feb 05, 2026 at 01:50:34PM +0100, Heiko St=FCbner wrote:
-> Hi Willy,
-> =
+On 2/5/26 11:21 AM, Heiko Stuebner wrote:
+> From: Heiko Stuebner <heiko.stuebner@cherry.de>
+> 
+> Using a combination of fixed clock and gpio-gate clock works but does
+> not describe the actual hardware. Use the gated-fixed-clock binding
+> to describe this in a nicer way.
+> 
 
-> Am Montag, 28. Juli 2025, 21:01:54 Mitteleurop=E4ische Normalzeit schrieb=
- Willy Tarreau:
-> > On Tue, Apr 15, 2025 at 06:32:03PM +0800, Kever Yang wrote:
-> > > From: Finley Xiao <finley.xiao@rock-chips.com>
-> > > =
+You also add a regulator as supply :)
 
-> > > This adds the necessary data for handling otp on the rk3562.
-> > > =
+> Signed-off-by: Heiko Stuebner <heiko.stuebner@cherry.de>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts | 13 ++++---------
+>   1 file changed, 4 insertions(+), 9 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+> index 952affaf455c..6eea4e0b6ca4 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts
+> @@ -90,21 +90,16 @@ led-1 {
+>   	 * 100MHz reference clock for PCIe peripherals from PI6C557-05BLE
+>   	 * clock generator.
+>   	 * The clock output is gated via the OE pin on the clock generator.
+> -	 * This is modeled as a fixed-clock plus a gpio-gate-clock.
+>   	 */
 
-> > > Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-> > > Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-> > =
+I'm assuming the whole comment can be removed as it was just the 
+reasoning behind two clocks and now we only have one which is pretty 
+self explanatory?
 
-> > Successfully tested with Jonas' patches on top of it on my
-> > Radxa E20C (RK3528):
-> > =
+> -	pcie_refclk_gen: pcie-refclk-gen-clock {
+> -		compatible = "fixed-clock";
+> +	pcie_refclk: pcie-clock-generator {
+> +		compatible = "gated-fixed-clock";
+>   		#clock-cells = <0>;
+>   		clock-frequency = <100000000>;
+> -	};
+> -
+> -	pcie_refclk: pcie-refclk-clock {
+> -		compatible = "gpio-gate-clock";
+> -		clocks = <&pcie_refclk_gen>;
+> -		#clock-cells = <0>;
+> +		clock-output-names = "pcie3_refclk";
 
-> > Tested-by: Willy Tarreau <w@1wt.eu>
-> =
+Why change the name? I'm also wondering if we cannot have free backward 
+compatibility by setting this to pcie-refclk-clock to match the old name?
 
-> as you replied to the rk3562 variant, does that mean the rk3528
-> uses the same variant data?
+Same remarks for Tiger (patch 2).
 
-Now you make me doubt, I'll have to recheck the original message
-in its series and the patches that I had applied. I seem to
-rememeber there were certain common patches between the two but
-I don't remember which ones, and it's also possibly that I replied
-by accident to the wrong message in the series or that I mistook
-one patch for another when comparing them :-/
+Change looks fine though.
 
-Ah, I seem to have found it, there's indeed the 3562 in my local
-patches and the 3528 as well, both of which rely on the 3568 one:
-
-  commit a68433c468c8a9d4789641eb6a40ae571fb7f01f
-  Author: Finley Xiao <finley.xiao@rock-chips.com>
-  Date:   Tue Apr 15 18:32:03 2025 +0800
-
-    nvmem: rockchip-otp: Add support for RK3562
-    =
-
-    This adds the necessary data for handling otp on the rk3562.
-    =
-
-    Signed-off-by: Finley Xiao <finley.xiao@rock-chips.com>
-    Signed-off-by: Kever Yang <kever.yang@rock-chips.com>
-    Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-    Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-
-and:
-
-  commit 249b07e24d3d1d47b7ec23d5f09a56837b66d7f5
-  Author: Jonas Karlman <jonas@kwiboo.se>
-  Date:   Sun Mar 16 00:05:45 2025 +0000
-
-    nvmem: rockchip-otp: Add support for RK3528
-    =
-
-    Add support for the OTP controller in RK3528. The OTPC is similar to the
-    OTPC in RK3562 and RK3568, exept for a missing phy clock and reset.
-    =
-
-    Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-
-It's very possible that I visually mistook one for the other when
-responding to the series, and if so, I'm really sorry about that!
-
-The former relies on rk3568_data and the latter on rk3528_data, which
-is defined like this:
-
-+static const char * const rk3528_otp_clocks[] =3D {
-+       "otp", "apb_pclk", "sbpi",
-+};
-+
-+static const struct rockchip_data rk3528_data =3D {
-+       .size =3D 0x80,
-+       .word_size =3D sizeof(u16),
-+       .clks =3D rk3528_otp_clocks,
-+       .num_clks =3D ARRAY_SIZE(rk3528_otp_clocks),
-+       .reg_read =3D rk3568_otp_read,
-+};
-
-Looks like the patches originally come from this branch that I
-manually cherry-picked:
-
-  https://github.com/Kwiboo/linux-rockchip/commits/next-20250620-rk3528
-
-I have one extra E20C that's not yet in prod if you're interested in
-me running some specific tests. It will not happen quickly but just let
-me know if I can help, as it's a nice little machine.
-
-Willy
+Cheers,
+Quentin
 
 _______________________________________________
 Linux-rockchip mailing list
