@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52366EE20A0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 13:39:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08997EE20A0
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 13:41:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=bIkOoZRS64XVxDU3OQE3Cec1eacoPlaDbZ54nCxHfqQ=; b=C6xuGmAGJilX1h
-	iw5cCPz7r7iMabDlo2qJmGfkJIZeyGNwEvJrBYnL4/YrsUDkgXM3XP9+iKnrU5qzP4BquWc7/POV/
-	ZjHI/6W212g3Va19NHxoN45858KBeMJQJGE5ydzTTJMD7nz3C9KxRQkKNkHrl4Sd2u+eSmF0pdc1D
-	epV5F/GDiJPUE4bLObySbeQtnlzOD8TtXN+LFszMM0V7HJHJ0xkgm/BCW0FsgI5I0kB0B5Mg7fkW7
-	dOZs/LDdBpIN2OnfKMR+n32v1+Bl1iTYdnDaFZKvRNXjZgS64xGcgNYJ5iEc79++Nn93kWiZyNz0/
-	UeF76CKsDEty1GzAJaNg==;
+	List-Owner; bh=S8wKpLFYmWxB07w4sGKjYft3djeAp4P9Y2q126XR3sg=; b=mBQl84jpmLvWrN
+	EwAumq+8A+MhGySrYckj7JmHAeTdu8sG/RTWxoJYdTMoLnDwYu/jAsgTlwnCAI+y53XfK/vOp0ZwG
+	1Z/f5T1AkqrXbNVtole8BIwESFx0+Hu4uzAu2l1GaRPHrFtR/dQ/16bZSv2oRkYnyq+5sJGFs4/v1
+	21lqp3Eh+/s9YbB0UnMnZ2ckVSMADmZD2BCyeLv+OSrFvQGkftcNJQMpov6tUllfCQJCjZmO7VLsh
+	H4/QO5xOQqVFO+MI7v+l8sh2yqq6iOaYU/ScbV4ejMw+85YLdJZ9KOA9uCpo3q1JP7Ao1Tju5aShd
+	/DmwCtplEsg7+o2j2a6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voM3Z-0000000BNNB-1o0X;
-	Fri, 06 Feb 2026 13:39:33 +0000
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+	id 1voM5R-0000000BNfY-1lsk;
+	Fri, 06 Feb 2026 13:41:29 +0000
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voM3W-0000000BNM0-4BQp
+	id 1voM5O-0000000BNeA-2YxV
 	for linux-rockchip@lists.infradead.org;
-	Fri, 06 Feb 2026 13:39:33 +0000
-Received: by mail-wm1-x341.google.com with SMTP id 5b1f17b1804b1-480706554beso7545555e9.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 06 Feb 2026 05:39:30 -0800 (PST)
+	Fri, 06 Feb 2026 13:41:27 +0000
+Received: by mail-wr1-x443.google.com with SMTP id ffacd0b85a97d-43284ed32a0so1401622f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Feb 2026 05:41:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1770385169; x=1770989969; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1770385285; x=1770990085; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rgkdoioUU+RhOWyr0UvEiFmF3wCxL0ED61NZyLKRXMw=;
-        b=x8JBZXBPMngpVjN2iGhgwWnZxhI4dYPWVhjO1K9NIOiJJ2I/EjIOyXQw8uRlc/HwTt
-         J4WQt3OvlXyAJuzYc5OX/0ZBDhwyRAtKF9KdjmPYzbQ8FbHPWV8+k6R96lzhj7lfMyUm
-         A/9SS6pdq2InEjmmKBEzp0EPxjHDrO89nI0qPTu821RcckQ9PBAfkhUpqZ+VgkpcytVn
-         XFo7Fotw5j3VD8ksPdnkYZXJ45PfhxI6BmQrRWie17KswBTSfQu7jaD+ReegMwLuhLYB
-         Axj06DoDJ6jtQ2GQVdsMZWhczkvlqWaAIuMnMM7Xdx42vD2WxjDbbSE9hs/c25j/YCIp
-         jMwQ==
+        bh=LCL1DbowgJz3KhWgEdjSYavXvn767FPhfGqyYV8f3No=;
+        b=Ni6Xv+rsQVtfn6dygkXcDxZOrUto0dhQWCzhdG8oJI8lb7MBmFY3Mxs41DhNG9TeTK
+         fy9W+/4j/S6auU7kzwmqGaEOnCvJtNbjm1GyjnJ6FRa+pqvlaBoNUWFagj5uQjX0Nk9e
+         ekBHZs+vQnT9OPjJ5G49b2CfDjVh6Rq6sZv4bRwg+LpEjFAuZKq5BeT2MBCTzXiw4Wpc
+         jZV6YfO0OMyJZwhkeZu2uq33oUuwYq6jCjlz7mDW4oeyR885K70UnrjZnGPoleReWbJv
+         j56+T5yuSdcW83zOxRJ0QuWbNmsCVrvJe8yh04V3MhBzbxrJnUseqxjwrLJ0HbGOflW/
+         ONbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770385169; x=1770989969;
+        d=1e100.net; s=20230601; t=1770385285; x=1770990085;
         h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=rgkdoioUU+RhOWyr0UvEiFmF3wCxL0ED61NZyLKRXMw=;
-        b=ULcqp6ccDFaRAGAFDujQExDRWboGqMH6sD/FS/omMjlZs5K8NtFYH7/kgManYGF+K6
-         75GmjA2z3i17cbnKwIT8rtudGwx4q5bG8QlsE2/HWi24/j9llvXlDQJlueKn3GHe50ub
-         x5ZEXm1ZqV5iny18Iq9vuEU7gI9z66Wdf1bk8lipdPkZ3EkekfrN/zfMfEpnjq8vLnuu
-         2LO1cuYJAa0dd28coLDWH9IHrWeD1QEpZFnZA1XI4uUj4/flr5Ss2esFH8it5o9DH+MK
-         KFrJH5MeT6rZt0fEUMU2VQXr/v4oZj1jJ6LmQLb8qPkh5JsRG/nVlS/kk2cSjfy2kqP0
-         SNFA==
-X-Forwarded-Encrypted: i=1; AJvYcCU1ksGMV5QdxaXVfxERz+sgtMXEaDV3dfgZKveIEfwW1tObgohk6F2KO1pWcpLz2gNN2eufTlIH/4mhSUOegA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxynxOhZopaGY2/WPd5Kjyd1cQMhihs1OP75M/D8+W01KJkOr+f
-	OjQfjIo7yO97dIf0SPCEpCeRIDrNBV7Q/WzlgJXztb7l66HYFJS3hKEuWKLWxsIXdAE=
-X-Gm-Gg: AZuq6aIzjIfct0x5VJzj985cNOj4LNnYh1efBfzv4LwhaUHv62EF7ahBXccxwS8fojt
-	1Gg6yFLn5eLaqCr5KbAyFiMUL1rtvi0VzgGc/gWF7+jUTcM3SfS8GIN0wjyJvb4f6Cge5vpyuLH
-	FJNcnlavmaX31NzJVfHDJfHH7zpeR9ajGjpLC7rtftOhTJWnUk7888atVV0qs129E7pJRV5iG9j
-	Qkuv8/wAg+82QSSnY6upgcLlPgBD0a3slEK5KSO7LiySKghZfyGnElwYNcfMoppGkGJ6YeguiCL
-	XSHT5cQe+rCfSnulWKizwSLvzaYzEzqPg6X3VF7kVv7QYWtkEO8KcbGIOaJfglYZ7WQTB7tcooj
-	HSxGX4cjUb4hsxZVsZK1Hr2Z8Vj9Fy1sIHa/F7eAktE64LyFwMRa9NdylBpZ8g+AEu+79Lcyb+G
-	GXMayx7rq7VT0lRO/m
-X-Received: by 2002:a05:600c:3f12:b0:477:b734:8c53 with SMTP id 5b1f17b1804b1-483201e476emr39967365e9.12.1770385168829;
-        Fri, 06 Feb 2026 05:39:28 -0800 (PST)
+        bh=LCL1DbowgJz3KhWgEdjSYavXvn767FPhfGqyYV8f3No=;
+        b=CVLxlT9ag7j6Cf2tkaJI69dQx3Ynfl38OHMx6CyRo8utubBce78q1OiQkrushjvLrA
+         9BaXGLwvXgNQqwRDz0VO8vcml2B69HZRA3z7ERbj3+70gxc/NwyDlF5LicghVi8zDzYN
+         bun4RYNWl8i7eCkh8FjH9Q5eoJ7tR8Br5VqzOyeh7x/hy+bqwzd8vyCrjjdSbzZHQfTi
+         yPhP5hGV4ts+KCOS5w5kfJm5Hz2WLLAkytTsuot8DNiSEZnSfIIAvhfdArFTTC1Iq0hu
+         4JgNW+z4RtR0/9bPzOtMmTTmEav69vA6trtmTP9AmDc8cgUi7L48Ow0LZBtq+Sh+mVS8
+         QonA==
+X-Forwarded-Encrypted: i=1; AJvYcCU5wl7VuU5OveqLjuDmAnkB6+GP78bgB74k3vVRYnyyOZ07mk/tfl6aZlbaHXzkS+WNbkDgr/eiIRSLfgwQwQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyPiHP615sE6uS3N7eJSr3qaUZ7EVbuvvJ2j77nZu8kQFDeAZot
+	34mT65zdfc3IIVR8GDw2yAvTj8nqFyBfn89jgLtkJzY9drLlahnLi+Q8i+AtMZrtt/o+ACqhTXK
+	6nNg2
+X-Gm-Gg: AZuq6aIYca10c8mQYGl57U2nJR4tWBIUtHsP8+f6UtI4c7JbBD2jTDAFepIH1HktAM4
+	HhzyOykiyRZ+ez4BB2kJi3GTtIo5wf3l+YFuiW/lUDpIhuEaKW9fNpQxAv0CI69arD0UNcIHUNB
+	dNHg6X3dPGl4bVeGl5o7vZUGj5O/t/NxCwwZ/dktv3d/1dQgHVWSKqo5nafRH8QsdzYoW/4pA+j
+	3lS29eHWSvGP05NabW8QNUpTYqCfGyJikhIP0CeurS/XbLQZ9UE+fDTp5zXj24f6D5XTRMoairP
+	HQKhktZrc9hiBfm6BolgjvZLMXxuXg24JOeps/SAaMapAi2qKO5Axr1BsqNjkWnDVurKno1el9F
+	8yFXkNORwRfVmt2GM3kka7TJr+gzlNCDsSms6n1R9OZcjSOMNz+YvyFx8ix0b/K25EQkSkg0jMS
+	llpXt5cCEKSqKHwmdF
+X-Received: by 2002:a05:6000:240e:b0:431:752:671e with SMTP id ffacd0b85a97d-436293422d4mr4829014f8f.15.1770385284981;
+        Fri, 06 Feb 2026 05:41:24 -0800 (PST)
 Received: from localhost ([196.207.164.177])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48317d7a924sm192988315e9.10.2026.02.06.05.39.28
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43629730992sm5455993f8f.21.2026.02.06.05.41.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Feb 2026 05:39:28 -0800 (PST)
-Date: Fri, 6 Feb 2026 16:39:25 +0300
+        Fri, 06 Feb 2026 05:41:24 -0800 (PST)
+Date: Fri, 6 Feb 2026 16:41:21 +0300
 From: Dan Carpenter <dan.carpenter@linaro.org>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
 	linux-kernel <linux-kernel@vger.kernel.org>
-Subject: [bug report] media: rockchip: rkcif: add support for rk3568 vicap
- mipi capture
-Message-ID: <aYXvDURNPu_5NILk@stanley.mountain>
+Subject: [bug report] soc: rockchip: grf: Support multiple grf to be handled
+Message-ID: <aYXvgTcUJWQL2can@stanley.mountain>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <caa37f28-a2e8-4e0a-a9ce-a365ce805e4b@stanley.mountain>
 X-Bad-Reply: In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_053931_694649_7CF3EE38 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20260206_054126_666531_E40F82BA 
+X-CRM114-Status: UNSURE (   7.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,45 +104,58 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 [ Smatch checking is paused while we raise funding.  #SadFace
   https://lore.kernel.org/all/aTaiGSbWZ9DJaGo7@stanley.mountain/ -dan ]
 
-Hello Michael Riesch,
+Hello Shawn Lin,
 
-Commit 1f2353f5a1af ("media: rockchip: rkcif: add support for rk3568
-vicap mipi capture") from Nov 14, 2025 (linux-next), leads to the
-following Smatch static checker warning:
+Commit 75fb63ae0312 ("soc: rockchip: grf: Support multiple grf to be
+handled") from Jan 16, 2026 (linux-next), leads to the following
+Smatch static checker warning:
 
-drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c:519 rkcif_mipi_id_get_reg()
-index hardmax out of bounds 'rkcif->match_data->mipi->regs_id[id]' size=4 max='4' rl='0-u32max'
+	drivers/soc/rockchip/grf.c:249 rockchip_grf_init()
+	warn: inconsistent refcounting 'np->kobj.kref.refcount.refs.counter':
 
-drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c:519 rkcif_mipi_id_get_reg()
-index hardmax out of bounds 'rkcif->match_data->mipi->regs_id[id][index]' size=11 max='11' rl='0-11'
+drivers/soc/rockchip/grf.c
+   212  static int __init rockchip_grf_init(void)
+   213  {
+   214          const struct rockchip_grf_info *grf_info;
+   215          const struct of_device_id *match;
+   216          struct device_node *np;
+   217          struct regmap *grf;
+   218          int ret, i;
+   219  
+   220          for_each_matching_node_and_match(np, rockchip_grf_dt_match, &match) {
+   221                  if (!of_device_is_available(np))
+   222                          continue;
+   223                  if (!match || !match->data) {
+   224                          pr_err("%s: missing grf data\n", __func__);
+   225                          of_node_put(np);
+   226                          return -EINVAL;
+   227                  }
+   228  
+   229                  grf_info = match->data;
+   230  
+   231                  grf = syscon_node_to_regmap(np);
+   232                  if (IS_ERR(grf)) {
+   233                          pr_err("%s: could not get grf syscon\n", __func__);
+   234                          return PTR_ERR(grf);
 
-drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
-    504 static inline unsigned int rkcif_mipi_id_get_reg(struct rkcif_stream *stream,
-    505                                                  unsigned int index)
-    506 {
-    507         struct rkcif_device *rkcif = stream->rkcif;
-    508         unsigned int block, id, offset, reg;
-    509 
-    510         block = stream->interface->index - RKCIF_MIPI_BASE;
-    511         id = stream->id;
-    512 
-    513         if (WARN_ON_ONCE(block > RKCIF_MIPI_MAX - RKCIF_MIPI_BASE) ||
-    514             WARN_ON_ONCE(id > RKCIF_ID_MAX) ||
-    515             WARN_ON_ONCE(index > RKCIF_MIPI_ID_REGISTER_MAX))
+Missing of_node_put(np) before returning.
 
-
-The id and index checks should be >=.  Not sure about block but I assume
-it's off by one as well.
-
-    516                 return RKCIF_REGISTER_NOTSUPPORTED;
-    517 
-    518         offset = rkcif->match_data->mipi->blocks[block].offset;
---> 519         reg = rkcif->match_data->mipi->regs_id[id][index];
-    520         if (reg == RKCIF_REGISTER_NOTSUPPORTED)
-    521                 return reg;
-    522 
-    523         return offset + reg;
-    524 }
+   235                  }
+   236  
+   237                  for (i = 0; i < grf_info->num_values; i++) {
+   238                          const struct rockchip_grf_value *val = &grf_info->values[i];
+   239  
+   240                          pr_debug("%s: adjusting %s in %#6x to %#10x\n", __func__,
+   241                                  val->desc, val->reg, val->val);
+   242                          ret = regmap_write(grf, val->reg, val->val);
+   243                          if (ret < 0)
+   244                                  pr_err("%s: write to %#6x failed with %d\n",
+   245                                          __func__, val->reg, ret);
+   246                  }
+   247          }
+   248  
+   249          return 0;
+   250  }
 
 regards,
 dan carpenter
