@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A17DEE6B49
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F709EE6B43
 	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 18:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2mkm5XGBAsW1qDLGeqjDQB9wKdlcMJuY0fgSmYO3TJg=; b=SSj3UfZgSxtwtt
-	RQ6yRrqxgbZ2yXuTXHMg4LrctXyKiVk3TA/sIas1iP1+ptRejnjNqPaM/QQgrFpmzEpefUvCA0+Pr
-	p7n3fpywmkzCk2jgWsj+4CE3rD/D+b6jlmQgayWyMmIsiFbEo93B81V2rHw0fPpG4oNu1dBH3T0hC
-	WU7CyIXDMFhmUZHwMxBMOJQYUe7Ci1NL4Ndm7tqmPfMSDypskgSWKj1uy/feow+IvoXksgY71HTw+
-	8l3FhVIYH5V70moLGRBJLPkZLjXuDQ/R+yxloWh5AxnpzyxVnBYOpQcNnBr5bngNFfj1NzA8JYTvA
-	BDXX8NB5FI+/nTiPiN3A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FKmdoyYAPSK/Rd9H0kq30fKwmDSIhLhRVibDlxEvbiA=; b=vu7jS9o2Kq3+bn
+	6r6WDb6flr6oqOU6j/lMs8GK+uHikxQYUKQuNjxdDau4Qjv6Xh90MsR4aFtiVwiuT1bEQMUhTqnng
+	Pq3Z8zz8oVcJR9xEwLpqtgMjokxZ6JKF0fweasxaiVTDTTozBSGGXMLRnjLvKjH299Gicp7qb3vXD
+	L9MQ1puK/cUHd2R36HP8UxShtTCMv748UKh/vHZy6OAR0fCJvVp8VNWYTQR+Yzw7aQxba003FX+aY
+	WOD3dp8Z1JvxupC+cLeMYTwrEueP8J5yq2xDsFcDuN3niyxQQ0fKGeAMrkJ+o7YJtYVu7K5BXFuKo
+	yvjhbtHtaVJi55oiZLAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voQKm-0000000BesV-48kn;
-	Fri, 06 Feb 2026 18:13:36 +0000
-Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
+	id 1voQKa-0000000Behk-0wMj;
+	Fri, 06 Feb 2026 18:13:24 +0000
+Received: from mail-dl1-x122b.google.com ([2607:f8b0:4864:20::122b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voQKk-0000000Beno-0A3n
+	id 1voQKY-0000000Beh6-1WN8
 	for linux-rockchip@lists.infradead.org;
-	Fri, 06 Feb 2026 18:13:35 +0000
-Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-2b4520f6b32so3625208eec.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 06 Feb 2026 10:13:33 -0800 (PST)
+	Fri, 06 Feb 2026 18:13:23 +0000
+Received: by mail-dl1-x122b.google.com with SMTP id a92af1059eb24-1249b9f5703so1321702c88.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Feb 2026 10:13:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770401613; x=1771006413; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=/NTx5jVt3nnO6451xdzF23y8UlccdoPc3a8t65hXHOs=;
-        b=cWVFEpBVKTeZNHCtiSmx+SqsDl636XyEs9gR6TmuHVMzZru35zbE4mjB3GMijDBFcW
-         Iw4L+mcFeUvPTuP1LZlM+AJIZC/7UeKAhDu9SGrT+77f2oCJB6tIyXFT8eAvcPemQCDc
-         tBo5jKhx2Q0yyIPtqaDrnQwhQ8tvAy/FIUUUxT1Owv2s/5axTVA0+qXq0md/LFJEU3TL
-         nzfK47Wojf++9eXQZzkzG3UJtc7V+VwN7IztlhXQpa9373mHqx+xsBO52cVE0Qj0f8eF
-         HgED7J1tdVrK7T6rlxjCfyS20Fk9rzdC/x/BWUN+oFjBZKcVeNS0krsrYumfDAKUAVqS
-         THiQ==
+        d=gmail.com; s=20230601; t=1770401601; x=1771006401; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Wt243DaEXQsr8P+AufdGik9IHnyievMbf7evNvSL7pc=;
+        b=NBLKiTdz+zxlEuAF6YGxmuzbKntcjLGuP1zSu/QADYfX8bvT3clLa7qRSl/GRhLYjn
+         NFp1rsK/pQ75bHA/wUCMPet0ZBJSpK8dFYG/nJ4Y+dPIRLdxpw0bl7V6ruvqjGIVXS+0
+         0YMGg3cxzRrBsBW2csS2phc2qfHoRpiwrtYYkoZDyI2RYNd7YCaW2KVQupio3mmPKd4Z
+         y3DEibB9MYbuKY2VsQbefBFDW9iuTaPE1p9KQ680BcBFWJfJ0vahYZ7dfpX8IyBozf98
+         2X0cihHzLlsSIP3bhSf/1399BouKCqQSC7rZjfuokW03pKpfdT3eO4ie96O0IbxlbUBN
+         0eXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770401613; x=1771006413;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=/NTx5jVt3nnO6451xdzF23y8UlccdoPc3a8t65hXHOs=;
-        b=VfOhipgxz/elu3w/tpv87A8l6fTG09i7SEH4/6IOWv4JGTT8u0JiQMtWagw6lCVtrO
-         OLqTyMXEGAKwWOIPNw6ygJAjr+pCvYPwLEqJZvWQxy13lCSaNhdUbjHgT54pz+04Zi6q
-         ZRSyZtetPA4vFaBzaUkbWv4eB8V/K9bDfnYl2LjZcCnAOsqwi2H3pIVw/A6uNvQWKiJO
-         sx9pyLVqh816ADL+PRuO+8GE/Z0EyYPLJ3s5Qv9pA7hOtgmbjD5EENuOPN9CkGff+JqA
-         Ckx7My6siZzrLLqbB+9NcjCehsE8PX5J1L2GcPCiNWd0TzxF6piLrGOnNff+UOjMsGP6
-         hV/Q==
-X-Forwarded-Encrypted: i=1; AJvYcCUKT8aTZysgI7omblSlCP/m29tagSCO8wJ1nJQIGyywIwmfoHRuKrI9bgTISGFcS2IgGkiSonz/tpf09CgiWA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyqDgf0q9ti5pOFZSdlXPlnZUVrx7JgnHcelctr2KTcU7+FlPaK
-	j/xH9LRr+m7FwzibmNgiLkESlXtDmt1w1gkBRouPeYYgKUebqsJ5dq1U
-X-Gm-Gg: AZuq6aI8jVrETawltW2qReBO6Y5TDXEAHxEbk9G4wB1CJzDox2ATT3vRq985R6V0ht8
-	1/ILUBorEFoyWPKHVl7+BppIrpdNnARUbAQ2mQlzjeyHVf5kukGw85lkFb9/IlxxHa08Nv1dULG
-	2+Xl07/0sPBQ8eveKgNfuvNgOxT4AJcXgrEMV5OMdA81AzccY6cETWeHxGFHW6bvwF/ZzmmObu/
-	BnnOLPZXjO9mufBICiikchs80QqzkQRWHPvByQPZkHhbfA2TU54MvP94pahh1/s5f5cem1UNNrC
-	29soUymdFEX2PmUe3XYzJ2q2d4N+DgaGwZsjtT5JLfQG50RrH019uM9Qyu5PqE4A5vufTbzf96c
-	bi90SEiKPyA1F0O/x6u8kqcHbYeF7UFEGxj/FAfrxyG1vo7xa+gaQqyaBXSv7SXmTxBNMykveIW
-	NKJ0UeUMAKe7XxwppmHHf8hXdA
-X-Received: by 2002:a05:7300:f602:b0:2b8:209d:596c with SMTP id 5a478bee46e88-2b85683104amr1413189eec.29.1770401613072;
-        Fri, 06 Feb 2026 10:13:33 -0800 (PST)
+        d=1e100.net; s=20230601; t=1770401601; x=1771006401;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Wt243DaEXQsr8P+AufdGik9IHnyievMbf7evNvSL7pc=;
+        b=lyx7IkTHNdyamZKGs20r9bIln5vLnqDs38nJq50PZH8GnqwyaKbfodlbBmrw02IwnP
+         Gny6ETosXzX7fA6S5078bj6mzirnNK4hU/WQBFQyd9fcuAswANu+XjeOg54XYWyiGopt
+         sbtOjIjg8vpt+XLMhnf1QICZRP6LtDxQy249+Nb2BqMBD103lsCN0KKxzlodrm4CNP6r
+         gT//D+KCdVs34Fgukk/LlusOlCjV1SGuur8U2EqqHaK2WIxt7+H8tQErsO2u7/cG9Mah
+         WrLeED2ShEVFm0uczWee7Zody2TJmAx6mdZpnd/+dRgDl/nCyixdBDZxLQhyQOJFmnWG
+         bVHw==
+X-Forwarded-Encrypted: i=1; AJvYcCXJUmfg7S2L3oANk2zkB2gTzs7UqFcKdBFcExO4zSCTQLdKotXQTJLDA2gHiyHan6I2D7lV5RD8D+mkbjpPAQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzQmpmDfcHGVHVIq2RH9FXgB6JX7O+dSk3S4J4Yb4+z32eHRp7z
+	+P0N+yg5aJR+wzjjNTdLl+dKU5jOh1whp1VJiRZVJuY10FIeA55uYB+o
+X-Gm-Gg: AZuq6aKVzbM2al35dcUyJAxXN6WSvMm8q440mRM8U+1BgHAF/5thn6YWi9hti1aWjGz
+	WXEKvE0iEKNgHhekwokEkAeBEx52vMAJCrxQNnluNYZJ7wjdzQ2YXKYHwrww1uYrhV2LZrpErGP
+	TDcHwpBiSM2aLylGX7Nfv5jk0yYqSCYmwyc7HIegy/KaeHe0q7SWl6PZ3O0oEy/7GZKmRl+G1lD
+	vijruMdtXVuttnNWPCRTiAgziLMqG3rFhJa2meyo5Cgl1BRq8lDQm4VyboajlRyPpgcdEjF8cJE
+	lu4lvZlS/fY4oWJFsm8CD1bZwu6YeM+T5unH5A2VFn8Khx1S95Jt2PYn/OjwjqS758rWiFkmOp1
+	5ZOTLUUbMtEVvSrp237Sl2Dg2q4A16EIFiqqe/nvey1S8ZA/Rklapq68mD3e+ygdLpp7JEpnqlW
+	WyOFeQVEKa77zul7xacfCSirFR
+X-Received: by 2002:a05:7022:622:b0:124:b11f:67ec with SMTP id a92af1059eb24-12703fec508mr1446023c88.39.1770401600840;
+        Fri, 06 Feb 2026 10:13:20 -0800 (PST)
 Received: from fabio-Precision-3551.. ([2804:14c:485:4b61:44a3:2bb7:a035:fd7e])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1270433ab31sm2782500c88.11.2026.02.06.10.13.30
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1270433ab31sm2782500c88.11.2026.02.06.10.13.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Feb 2026 10:13:32 -0800 (PST)
+        Fri, 06 Feb 2026 10:13:20 -0800 (PST)
 From: Fabio Estevam <festevam@gmail.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org,
@@ -77,20 +76,15 @@ Cc: robh@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	Fabio Estevam <festevam@nabladev.com>,
-	Linus Walleij <linusw@kernel.org>,
-	linux-gpio@vger.kernel.org
-Subject: [PATCH 04/11] dt-bindings: pinctrl: Add RV1103B pinctrl support
-Date: Fri,  6 Feb 2026 15:13:02 -0300
-Message-Id: <20260206181309.2696095-5-festevam@gmail.com>
+	Fabio Estevam <festevam@nabladev.com>
+Subject: [PATCH 00/11] ARM: rockchip: Add initial RV1103B and Omega4 board support
+Date: Fri,  6 Feb 2026 15:12:58 -0300
+Message-Id: <20260206181309.2696095-1-festevam@gmail.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260206181309.2696095-1-festevam@gmail.com>
-References: <20260206181309.2696095-1-festevam@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_101334_087912_2A571656 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260206_101322_427253_D06B8F61 
+X-CRM114-Status: GOOD (  12.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,27 +103,74 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Fabio Estevam <festevam@nabladev.com>
 
-Document the compatible string for the RV1103B SoC.
+This series adds initial support for the Rockchip RV1103B SoC and
+the Omega4 board.
 
-Cc: Linus Walleij <linusw@kernel.org>
-Cc: linux-gpio@vger.kernel.org
-Signed-off-by: Fabio Estevam <festevam@nabladev.com>
----
- Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml | 1 +
- 1 file changed, 1 insertion(+)
+The goal of this series is to provide the minimal device tree and
+platform support required to boot the Omega4 board into Linux
+userspace with the root filesystem located on SPI NAND.
 
-diff --git a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-index 76e607281716..9b3cbeb54fed 100644
---- a/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/rockchip,pinctrl.yaml
-@@ -50,6 +50,7 @@ properties:
-       - rockchip,rk3568-pinctrl
-       - rockchip,rk3576-pinctrl
-       - rockchip,rk3588-pinctrl
-+      - rockchip,rv1103b-pinctrl
-       - rockchip,rv1108-pinctrl
-       - rockchip,rv1126-pinctrl
- 
+The series includes:
+
+  - Base RV1103B SoC device tree description
+  - Omega4 board device tree
+  - Required pinctrl and clock definitions
+  - Basic peripheral enablement required for boot
+
+With this series applied, the Omega4 board is able to:
+
+  - Initialize DRAM
+  - Boot the kernel
+  - Access SPI NAND
+  - Mount the root filesystem from SPI NAND
+  - Reach userspace successfully
+
+This submission intentionally focuses on minimal bring-up support.
+Additional peripheral enablement and feature support will be
+submitted separately.
+
+Tested on Omega4 hardware based on the RV1103B SoC.
+
+Boot verified with root filesystem stored on SPI NAND.
+
+Fabio Estevam (11):
+  dt-bindings: clock: rockchip: Add RV1103B clock and reset unit
+  dt-bindings: clk: rockchip: Add RV1103B clock header
+  clk: rockchip: Add clock controller for the RV1103B
+  dt-bindings: pinctrl: Add RV1103B pinctrl support
+  pinctrl: rockchip: Add RV1103B pinctrl support
+  dt-bindings: mmc: rockchip-dw-mshc: Add compatible string for R1103B
+  dt-bindings: serial: snps-dw-apb-uart: Add support for RV1103B
+  dt-bindings: soc: rockchip: Add RV1103B IOC and GRF entries
+  ARM: dts: rockchip: Add support for RV1103B
+  dt-bindings: arm: rockchip: Add Onion RV1103B Omega4
+  ARM: dts: rockchip: Add Onion RV1103B Omega4
+
+ .../devicetree/bindings/arm/rockchip.yaml     |   5 +
+ .../bindings/clock/rockchip,rv1103b-cru.yaml  |  63 ++
+ .../bindings/mmc/rockchip-dw-mshc.yaml        |   1 +
+ .../bindings/pinctrl/rockchip,pinctrl.yaml    |   1 +
+ .../bindings/serial/snps-dw-apb-uart.yaml     |   1 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml |   2 +
+ arch/arm/boot/dts/rockchip/Makefile           |   1 +
+ arch/arm/boot/dts/rockchip/rv1103b-omega4.dts |  92 ++
+ .../boot/dts/rockchip/rv1103b-pinctrl.dtsi    | 831 ++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1103b.dtsi       | 266 ++++++
+ drivers/clk/rockchip/Kconfig                  |   7 +
+ drivers/clk/rockchip/Makefile                 |   1 +
+ drivers/clk/rockchip/clk-rv1103b.c            | 670 ++++++++++++++
+ drivers/clk/rockchip/clk.h                    |  49 ++
+ drivers/pinctrl/pinctrl-rockchip.c            | 313 ++++++-
+ drivers/pinctrl/pinctrl-rockchip.h            |   1 +
+ .../dt-bindings/clock/rockchip,rv1103b-cru.h  | 488 ++++++++++
+ 17 files changed, 2791 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/clock/rockchip,rv1103b-cru.yaml
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b.dtsi
+ create mode 100644 drivers/clk/rockchip/clk-rv1103b.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1103b-cru.h
+
 -- 
 2.34.1
 
