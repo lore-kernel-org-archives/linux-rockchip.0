@@ -4,66 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B96BECD9A9
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Feb 2026 21:51:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C61EECD9B5
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 00:17:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UeCmlnymSwl7W0eknEhO2ywMRJVJgpuk6TJ9Xf2NhsU=; b=iSew+q5oBjo8yr
-	OHm6okdz3wokVIH2XMl5dwW/96T6MVGLMPW70RS8MeyS3ZsmlLwC6Cmsqfi6vYbCK+HaO91QWscJf
-	cq9/CrZTluSE/wC/5m/KBvDUX/Sso09P0PgvxjJL7YRW0Q27kCYoEo+r9coMi6su//sb0urzKxtlr
-	XwyXlC9vpKc9DZXqJBu0WH3f43pnBbrNmmM2ilxoOpH32Kajue4Zo2qrY142wzm+p4bOHQk9TBzZm
-	pzbpPFP3cfI/XzQ2TwuI0e0nwOpMTyqP+73iWFb+u/2DCo8daApwvuh++3xBBtYBYvTt3dh3UkNLI
-	pDgEecnXFIy+lUI1FSlw==;
+	List-Owner; bh=XqaKDLY9rC3GVAxZCjUzQUUoYiaxSA7xBbItNPzHaJM=; b=LTi4jpOi/8KTUy
+	RZuBinG/lQwy9Hx+nY4Litn/GkwRQ2IZuUWZDsYe/ciN0XG1VaXKBO78c8EnHQ3RpnjkvtFDtehtN
+	0Sx3lZLg/HPvJRsUhYQ9qFeO46zDpHW2Xe45oyHfd2Gv/XVvD0MPBLHH9MDXtFA3gVQnvAMybrUw+
+	5TDjszBEzfKyCgvgGndfWl6mRWXrPd7Pjc859t3J8YXNtHR74Ph37zWek7Q1NQ7Z/5IBB+GMOERju
+	URCMR4KMzA38n+GxRCWODlWVTUf8Q/YsZzAZingiepFzzb7hABn4/7JXGQgCFDs/NITyBWfhVrhWD
+	z6S9aQ/zykkp44w8PCOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo7GP-0000000AY7x-1eSj;
-	Thu, 05 Feb 2026 21:51:49 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vo9XD-0000000AdFf-3YQw;
+	Fri, 06 Feb 2026 00:17:19 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vo7GL-0000000AY7I-0kWo;
-	Thu, 05 Feb 2026 21:51:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=1hNV9IUB5w5au3NsTLYYRa1ygl6b7jhZ/NpWWlTkpJI=; b=EYyfYt4wodonT7h7+8rY+/oC0I
-	gBJ8FScAIPK9+39RLp1mRgx34ddagBLoY5NHqkI+JGgFD+HF4boH3ltEQgPNRWeNlibc9URsr1QUz
-	d6fYCQC77CoCXGgAG8szMJT/GCaHtT6zUnH7PPib21HcIIr6gVA525F43T1947jF3kQ+7/VOlCBlh
-	C1kqmuXG+1+OUfUdvGTEYBgjvm0mj3uw7bYchs4+rS1Zp5mwkxeISUEYYPugaY15/qjfOp7NCwOns
-	2nrW5xlWik4Fu622bSBcM4CIgVw3JmVQF8ccp4FMireukQSZIb3YUVo3Y9VVPblh28FZ8+NQOQiNc
-	PV8RZtbQ==;
-Received: from i53875afe.versanet.de ([83.135.90.254] helo=localhost.localdomain)
-	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.94.2)
-	(envelope-from <heiko@sntech.de>)
-	id 1vo6lQ-007GGK-Aq; Thu, 05 Feb 2026 22:19:48 +0100
-From: Heiko Stuebner <heiko@sntech.de>
-To: srini@kernel.org
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	heiko@sntech.de,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kever.yang@rock-chips.com,
-	finley.xiao@rock-chips.com,
-	w@1wt.eu,
-	jonas@kwiboo.se
-Subject: [PATCH v4 6/6] nvmem: rockchip-otp: Add support for RK3528
-Date: Thu,  5 Feb 2026 22:19:01 +0100
-Message-ID: <20260205211901.490181-7-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260205211901.490181-1-heiko@sntech.de>
-References: <20260205211901.490181-1-heiko@sntech.de>
+	id 1vo9XA-0000000AdFB-099b;
+	Fri, 06 Feb 2026 00:17:17 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-703d-e500--2a1.rev.dnainternet.fi [IPv6:2001:14ba:703d:e500::2a1])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 46BB22E0;
+	Fri,  6 Feb 2026 01:16:27 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1770336987;
+	bh=+zx3CcSOxbuZHtxc0X/7I7ZXqnSEJs5fHZ7SfchUkVg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lDU34SVI83VfuujXi7Jgc/2zUau+FtyYoWl97hWYp0ZfASVbP6vI36yoQ6HfREtTG
+	 JmsifRHAd6tdUoBasOdn+V5ScTmDke8CqmeD+9yAxLiGT0OHDZ3utHiG/5aVXSI5vj
+	 Tclzixnxx05QksDcSk2lm5vOuzPhbQzpSdD0LRTM=
+Date: Fri, 6 Feb 2026 02:17:08 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Isaac Scott <isaac.scott@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, dafna@fastmail.com, mchehab@kernel.org,
+	heiko@sntech.de, linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 1/2] media: rkisp1-isp: Set correct data mode for YUV
+ bypass
+Message-ID: <20260206001708.GD1376807@killaraus.ideasonboard.com>
+References: <20260205103207.4020959-1-isaac.scott@ideasonboard.com>
+ <20260205103207.4020959-2-isaac.scott@ideasonboard.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260205103207.4020959-2-isaac.scott@ideasonboard.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_135146_668377_29FFCE03 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20260205_161716_514055_E0C1640B 
+X-CRM114-Status: GOOD (  21.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,54 +69,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+Hi Isaac,
 
-Add support for the OTP controller in RK3528. The OTPC is similar to the
-OTPC in RK3562 and RK3568, exept for a missing phy clock and reset.
+Thank you for the patch.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/nvmem/rockchip-otp.c | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+On Thu, Feb 05, 2026 at 10:32:06AM +0000, Isaac Scott wrote:
+> The rkisp1 features a 'bypass' mode for RAW and YUV formats. This
+> disables all ISP blocks, and makes the rkisp1 display input data from
+> the MIPI CSI receiver at the output, unmodified.
+> 
+> To determine whether we can activate bypass, we can detect whether both
+> the source and sink formats are YUV. If they are, we must configure the
+> ISP to expect a YUV input, interpreting H/VSYNC signals as data
+> enable / disable.
+> 
+> Signed-off-by: Isaac Scott <isaac.scott@ideasonboard.com>
+> 
+> ---
+> 
+> Changelog since v1:
+> - Removed in_bypass flag
+> - Renamed the patch to better represent the functionality of the patch
+> 
+> ---
+>  drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> index 2311672cedb1..21bfa0edbaf1 100644
+> --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> @@ -240,7 +240,9 @@ static int rkisp1_config_isp(struct rkisp1_isp *isp,
+>  		}
+>  	} else if (sink_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+>  		acq_mult = 2;
+> -		if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
+> +		if (src_fmt->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> +			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_DATA_MODE;
+> +		} else if (mbus_type == V4L2_MBUS_CSI2_DPHY) {
+>  			isp_ctrl = RKISP1_CIF_ISP_CTRL_ISP_MODE_ITU601;
+>  		} else {
+>  			if (mbus_type == V4L2_MBUS_BT656)
 
-diff --git a/drivers/nvmem/rockchip-otp.c b/drivers/nvmem/rockchip-otp.c
-index 62ce22d72586..0ec78b5e19e7 100644
---- a/drivers/nvmem/rockchip-otp.c
-+++ b/drivers/nvmem/rockchip-otp.c
-@@ -333,6 +333,18 @@ static const struct rockchip_data px30_data = {
- 	.reg_read = px30_otp_read,
- };
- 
-+static const char * const rk3528_otp_clocks[] = {
-+	"otp", "apb_pclk", "sbpi",
-+};
-+
-+static const struct rockchip_data rk3528_data = {
-+	.size = 0x80,
-+	.word_size = sizeof(u16),
-+	.clks = rk3528_otp_clocks,
-+	.num_clks = ARRAY_SIZE(rk3528_otp_clocks),
-+	.reg_read = rk3568_otp_read,
-+};
-+
- static const char * const rk3568_otp_clocks[] = {
- 	"otp", "apb_pclk", "phy", "sbpi",
- };
-@@ -376,6 +388,10 @@ static const struct of_device_id rockchip_otp_match[] = {
- 		.compatible = "rockchip,rk3308-otp",
- 		.data = &px30_data,
- 	},
-+	{
-+		.compatible = "rockchip,rk3528-otp",
-+		.data = &rk3528_data,
-+	},
- 	{
- 		.compatible = "rockchip,rk3562-otp",
- 		.data = &rk3568_data,
+This doesn't seem right. If the sink format is YUV, then the source
+format has to be YUV too (the ISP can't produce Bayer from YUV). The
+source pixel encoding condition will always be true, the other branches
+will never be taken, most likely breaking parallel inputs.
+
+Also, the documentation states that in YCbCr bypass mode, ISP_MODE
+should be set to 2 (ITU-R BT.601), not 4 (data mode).
+
 -- 
-2.47.2
+Regards,
 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
