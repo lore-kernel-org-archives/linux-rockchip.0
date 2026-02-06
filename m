@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC7B1EE20A6
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 14:08:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A75EE20AA
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 14:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=oTtKO+g4X7Gdo7yIdubh+J0H+xDJKvUS8+OM9tCNeWc=; b=TocPF2GIjPmHwuFBq/FnXP+dRK
-	ek932Q4WK0Im4fVAdi9roIyap9tra7DibpofxYSsk+gYRZXSoBSfE0E2FXP2AZMQt1n7I1sp5WBhk
-	UAprAWc/rk1Xo4lJ44PikRvUkpVNLa9U4AG1504AGbs2AjpHdSQn6TB6PO1dRc1vI7fOwr2z5WPvc
-	mcu5grEPeTqZm5Iiv2R0SY7gHcJ1iL9+UUW8A2YQP+4s/iRM+e7vMKKB2qulwt02qEv/jAxJU1NLC
-	AZ/fJy3y3d40Ef3yhLNfCKSLfjF4gwMS6vZkIm8qtz4/PruoP3CuvP120mwuD7CQpdt4hOmTi7kA1
-	n0BaAuPw==;
+	bh=LonvxC3/Xnd9bqKFGvcaYxTzRXKQei2+bMKTXbFK88E=; b=EOrFagMyRy18R4dcELkIk3VqFl
+	eLc/TwyvuLUSM6IMUAaLQiWrON6xA9nZfosm7Q1nd807xlcraKmwNSU5Js/Oh1hJ8s30rqW+STtsp
+	ZtXmU0bMoRYYlU+0jemZlrVu5WxiEovli/HUO2UlC54k/XSVWxkzB8axs4NZIHUlsfEEuor9Wfq15
+	DUPuYKiZirI3/WfKWF081xcojwKDDWuLOwJJZQza755ae2pANq4HAcosgdlBgqN5m+baUojW4/L25
+	WYhnq46dEeUhgfy9N8hI3REUNJyIPzuil1VB/egRWhEvA9UCPgCOy2GF7sMfhIemdAb0zrnfj45mr
+	JMsdhvGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMVx-0000000BPnu-3ADM;
-	Fri, 06 Feb 2026 14:08:53 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1voMde-0000000BQTy-48L2;
+	Fri, 06 Feb 2026 14:16:50 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMVu-0000000BPnK-3cH4;
-	Fri, 06 Feb 2026 14:08:50 +0000
+	id 1voMdd-0000000BQTk-0AHq;
+	Fri, 06 Feb 2026 14:16:49 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 59BB960122;
-	Fri,  6 Feb 2026 14:08:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 831ACC19421;
-	Fri,  6 Feb 2026 14:08:48 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 50F406001A;
+	Fri,  6 Feb 2026 14:16:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 809F7C19422;
+	Fri,  6 Feb 2026 14:16:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770386929;
-	bh=+lIi82NYDZHy3722msFtnCnh1tdb9jn2hqegryuZsv4=;
+	s=k20201202; t=1770387408;
+	bh=MfIveAnEmTvNIhWdwWFVHgbqL0PUK4fowKip9CXPScQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=m4RMr14qRzstPqItXkr/5OrxYDpSQG71tOjhHOic63cYTk2SvrNErOgO5dHJfp3e+
-	 w7mK5YUkXGNJsdh25Qt6kj+8LUHS80HPi0P5lONF4st4Nco+/Sofu1DKJuGM4rIyVK
-	 ++miMRAzAaKZ+aYUde9ZK/SSUFkNgF7GDYMJGbJidLXVGRq/X/9SvV68gm3Mm1OolL
-	 UQxfwaFyVy1yBltxH4sPXnnMsuuaLmfTlQtUHylW1jIt+1zqA6J+LKbJolNgvTMPSR
-	 kCEyA7JrZKZFYDLSIcn+HvgY63cZPo4nIIpoFQ/M8EaON7rZbm/BPoEFaso2y0rDs2
-	 OB1otDCYh9zwQ==
-Date: Fri, 6 Feb 2026 15:08:46 +0100
+	b=RqAG13Ki/PxUK25l81q/gCxQQUhF5YZLzbsMjFAd9AD62JjQ0BP4KF/yQjIX1pCdj
+	 GEaQc7Vw3zC0OiUbJZUYWogj3DZDZaY7ZHRZxuuEaT0F20SQkdBr6bqqoAZD6KXEmr
+	 Wc6+06DvEl0ohNgz4FIOLKxMElgkIKBq/+RQI/LdpQlO9eZgvYsOPSJ4FML292n3gl
+	 LyfPybUivMrshDxho9PbqZN6QpaabH12EvmoeDA0pkcYcKqBkqIB6MT6EeavTbEmVk
+	 O3FEK0j8xWWU+OrFhnHZuetsvL99aeJAZPSb2JTanjNSNDGHESoZ35ZcvCaDeZkG6h
+	 zZ586z4h/v/lQ==
+Date: Fri, 6 Feb 2026 15:16:45 +0100
 From: Maxime Ripard <mripard@kernel.org>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -59,15 +59,14 @@ Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
 	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com, 
 	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	Marius Vlad <marius.vlad@collabora.com>
-Subject: Re: [PATCH v7 03/22] drm: Add enum conversions between
- DRM_COLOR_FORMAT and HDMI_COLORSPACE
-Message-ID: <20260206-angelic-crimson-bug-aaab40@houat>
+	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v7 05/22] drm/display: hdmi-state-helper: Act on color
+ format DRM property
+Message-ID: <20260206-accurate-wealthy-badger-45b4a8@houat>
 References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
- <20260121-color-format-v7-3-ef790dae780c@collabora.com>
+ <20260121-color-format-v7-5-ef790dae780c@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260121-color-format-v7-3-ef790dae780c@collabora.com>
+In-Reply-To: <20260121-color-format-v7-5-ef790dae780c@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,129 +78,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1516695024757955369=="
+Content-Type: multipart/mixed; boundary="===============3263839440369363606=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1516695024757955369==
+--===============3263839440369363606==
 Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="7kyo6gozxaybulie"
+	protocol="application/pgp-signature"; boundary="2cbwiwfic3gmdzk2"
 Content-Disposition: inline
 
 
---7kyo6gozxaybulie
+--2cbwiwfic3gmdzk2
 Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 03/22] drm: Add enum conversions between
- DRM_COLOR_FORMAT and HDMI_COLORSPACE
+Subject: Re: [PATCH v7 05/22] drm/display: hdmi-state-helper: Act on color
+ format DRM property
 MIME-Version: 1.0
 
-On Wed, Jan 21, 2026 at 03:45:10PM +0100, Nicolas Frattaroli wrote:
-> While the two enums have similar values, they're not identical, and
-> HDMI's enum is defined as per the HDMI standard.
+On Wed, Jan 21, 2026 at 03:45:12PM +0100, Nicolas Frattaroli wrote:
+> With the introduction of the "color format" DRM property, which allows
+> userspace to request a specific color format, the HDMI state helper
+> should implement this.
 >=20
-> Add a simple conversion function from DRM to HDMI. Unexpected inputs
-> aren't handled in any clever way, DRM_COLOR_FORMAT_AUTO and any other
-> value that doesn't cleanly map to HDMI just gets returned as
-> HDMI_COLORSPACE_RGB.
+> Implement it by checking whether the property is set and set to
+> something other than auto. If so, pass the requested color format, and
+> otherwise set RGB.
 >=20
-> Add a second conversion function that gets a DRM_COLOR_FORMAT from an
-> HDMI_COLORSPACE as well. In this case, reserved HDMI values that can't
-> be converted will result in an -EINVAL return value.
->=20
-> Co-developed-by: Marius Vlad <marius.vlad@collabora.com>
-> Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  include/drm/drm_connector.h | 54 +++++++++++++++++++++++++++++++++++++++=
-++++++
->  1 file changed, 54 insertions(+)
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 12 +++++++++++-
+>  1 file changed, 11 insertions(+), 1 deletion(-)
 >=20
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index b5604dca728a..ffeb42f3b4a3 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -2612,6 +2612,60 @@ int drm_connector_attach_color_format_property(str=
-uct drm_connector *connector);
+> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
+u/drm/display/drm_hdmi_state_helper.c
+> index a1d16762ac7a..1ea3b9c93aa5 100644
+> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
+> @@ -649,11 +649,21 @@ hdmi_compute_config(const struct drm_connector *con=
+nector,
+>  	unsigned int max_bpc =3D clamp_t(unsigned int,
+>  				       conn_state->max_bpc,
+>  				       8, connector->max_bpc);
+> +	enum hdmi_colorspace hdmi_colorspace =3D
+> +		drm_color_format_to_hdmi_colorspace(conn_state->color_format);
+>  	int ret;
 > =20
->  const char *drm_get_color_format_name(enum drm_color_format color_fmt);
-> =20
-> +/**
-> + * drm_color_format_to_hdmi_colorspace - convert DRM color format to HDMI
-> + * @fmt: the &enum drm_color_format to convert
-> + *
-> + * Convert a given &enum drm_color_format to an equivalent
-> + * &enum hdmi_colorspace. For non-representable values and
-> + * %DRM_COLOR_FORMAT_AUTO, the value %HDMI_COLORSPACE_RGB is returned.
-> + *
-> + * Returns: the corresponding &enum hdmi_colorspace value
-> + */
-> +static inline enum hdmi_colorspace __pure
-> +drm_color_format_to_hdmi_colorspace(enum drm_color_format fmt)
-> +{
-> +	switch (fmt) {
-> +	default:
-> +	case DRM_COLOR_FORMAT_AUTO:
-> +	case DRM_COLOR_FORMAT_RGB444:
-> +		return HDMI_COLORSPACE_RGB;
+>  	ret =3D hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
+> -				      HDMI_COLORSPACE_RGB);
+> +				      hdmi_colorspace);
 
-I don't think that's correct. What auto ends up as totally depends on
-the atomic state it comes with.
+I still think we shoud be more explicit there, with something like
 
-At the very least, you should output a warning there, because that case
-should never happen.
+if (conn_state->color_format !=3D DRM_COLOR_FORMAT_AUTO) {
+	return hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc, drm_c=
+olor_format_to_hdmi_colorspace(conn_state->color_format))
+}
 
-> +	case DRM_COLOR_FORMAT_YCBCR444:
-> +		return HDMI_COLORSPACE_YUV444;
-> +	case DRM_COLOR_FORMAT_YCBCR422:
-> +		return HDMI_COLORSPACE_YUV422;
-> +	case DRM_COLOR_FORMAT_YCBCR420:
-> +		return HDMI_COLORSPACE_YUV420;
-> +	}
-> +}
-> +
-> +/**
-> + * drm_color_format_from_hdmi_colorspace - convert HDMI color format to =
-DRM
-> + * @fmt: the &enum hdmi_colorspace to convert
-> + *
-> + * Convert a given &enum hdmi_colorspace to an equivalent
-> + * &enum drm_color_format. For non-representable values,
-> + * %-EINVAL is returned.
-> + *
-> + * Returns: the corresponding &enum drm_color_format value, or %-EINVAL
-> + */
-> +static inline enum drm_color_format __pure
-> +drm_color_format_from_hdmi_colorspace(enum hdmi_colorspace fmt)
-> +{
-> +	switch (fmt) {
-> +	default:
-> +		return -EINVAL;
+ret =3D hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
+    			      HDMI_COLORSPACE_RGB);
 
-Wait, what?
+Otherwise, it's pretty easy to get confused between the behaviour
+drm_color_format_to_hdmi_colorspace() to return RGB when it get AUTO...
 
--EINVAL is not a valid value for your enum.
+>  	if (ret) {
+> +		/* If a color format was explicitly requested, don't fall back */
+> +		if (conn_state->color_format) {
+
+=2E.. or that auto is actually 0 in that enum.
+
+Or between the auto and non-auto code path.
 
 Maxime
 
---7kyo6gozxaybulie
+--2cbwiwfic3gmdzk2
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaYX17QAKCRAnX84Zoj2+
-dhqKAX9uCw/1iLG+7nCh7iWCwrhqxfm0JVwIRRQh/zjRf8Wet9GKZ9b66ZGwYC8M
-tXJZuowBgKH3e2XNrltRlENhX1pPWeDhYlezTP12g5E34y5OGMYep2YcNBUO0/Ck
-6YOwGJvwTQ==
-=PPqS
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaYX3zAAKCRAnX84Zoj2+
+drVqAYD2nzrDJAH0F0tKkx6Xcr+H2Zmy7gmPm/i9E/xOmEWV2OyB+eO07FcK6njD
+RjLDZpQBgMFQ9IdOGUZJR8znQp3cHRX9Aenj9f8l6mh6cJupKXlHogjQrki2a8Ft
+pLSQR3GN1A==
+=LCPG
 -----END PGP SIGNATURE-----
 
---7kyo6gozxaybulie--
+--2cbwiwfic3gmdzk2--
 
 
---===============1516695024757955369==
+--===============3263839440369363606==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -212,5 +178,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1516695024757955369==--
+--===============3263839440369363606==--
 
