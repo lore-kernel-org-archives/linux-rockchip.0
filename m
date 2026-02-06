@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8223FECD9AA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 01:05:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8532EECD9B8
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 01:05:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=05nrM3yvkFMtPsO0ffL9U9v/3A0wsba1kvO4b1TKJ/Q=; b=rz8umj+ClWyDoA
-	yNe+6cbP86N3uJq9BLKxagyLf7B4f6v7LURl6eraBljT+rN9bYU0A+SlVGJS8EmGmrmbUate6wUdg
-	N9F6Ju5JsFCeT4z+wCW0ihsBPMNbn2P+B7xs/31V1HFZ1zuIIKaa/lhibaGC1vhSZg9syc93h+TkA
-	cnfWGiCFDLHrFiAR57LWwTqqG+mmeR5rJQgELcUifHTdFRWDLbAxDvFk9BUsUfj9lsjDjqXPA09/9
-	4kvYCRAgGXAGY2YcEru+EfUv/ajheHn7QD7a8bf64gGIBBPfh1VV1g/c/HPpjfQ336Ff/WWW29FVg
-	KnB/2BozfuHuqXPsxhwg==;
+	List-Owner; bh=nGQh/eH36jv00c3JU7ZoedbrqmR9enNBBoCU3YhgbJA=; b=Ymq0Jcrc91dC50
+	2iqbIVWZWTQadpEFs3cza64zh1Si1NNjmMlJ9Uj0D0oZFakeT04fp7e4n5Qqyzm59b8oSa+wDIpzZ
+	EtAp1Ssim33MkUt6dSlUUT4Gb7T23ONYCc1vjh5keHorlwW98IuMqX7xQNlWhT2x4K/gStqvasar/
+	SCGVd2tOe0qK9h9m1sWWJQ5Cly3evZX3nlcSnFS/ZJ4aaxRLaAFQS865h852XokBEiqUv1p6b8A9a
+	c1egsqlVUugaFvVgCia3JOKSXoXk/cOQU4GN9+8zWkz3eW7Om3Ywunz4ipbEmeOec3SNSV/ZIP6CU
+	Hh8os31dVeN8NERYWlZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voAHy-0000000Agr2-1Hwy;
-	Fri, 06 Feb 2026 01:05:38 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1voAHz-0000000AgsM-28Ke;
+	Fri, 06 Feb 2026 01:05:39 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voAHr-0000000Agn2-1cqf;
-	Fri, 06 Feb 2026 01:05:33 +0000
+	id 1voAHs-0000000AgnF-1JgC;
+	Fri, 06 Feb 2026 01:05:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=Wz
-	wM2ArMD64npYqUjIHiP47mOx5vlp8sCjNTdzEO+7c=; b=CCUr0na3TV3VM/2yCl
-	C5rRfusXn5L/goqO+TuFfCcEjrcx5VTt7ozl/Razj4rBCRZj5kuZBBH4HDQw9JwY
-	5JXDC2td+hc8r0lFYd2f8vxhdyRtHUeBsNsj6oTNk2XewMncvra5eJekj1aLeUqD
-	w0miGe8Cqy9wClEzR3hDAkSZg=
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=m/
+	XW2LDrF07MmdRlAaEu9X1m0f7azZC8MoM77XmYfbo=; b=Eu57EWPdOVOGn3S1S8
+	RrgODHIUF7l58O6uDNJxVnm6a2bjQnmMaoqey+GQBGulXmbm48Iq0xBuIjtw9S9/
+	Kzp6G4ArOu7T5cKEW2e8dEw69jn5wEqH0PV9z7AnaIXNjP4GMvXrBMW5/lcZqLAB
+	fS1Giz50xXCUUT6yWO4e/FwRE=
 Received: from ProDesk-480.. (unknown [])
-	by gzsmtp2 (Coremail) with SMTP id PSgvCgD3_+0XPoVpQ5VfQQ--.20291S7;
-	Fri, 06 Feb 2026 09:04:35 +0800 (CST)
+	by gzsmtp2 (Coremail) with SMTP id PSgvCgD3_+0XPoVpQ5VfQQ--.20291S6;
+	Fri, 06 Feb 2026 09:04:33 +0800 (CST)
 From: Andy Yan <andyshrk@163.com>
 To: dmitry.baryshkov@oss.qualcomm.com,
 	heiko@sntech.de
-Subject: [PATCH v3 5/5] arm64: dts: rockchip: Add DisplayPort dt node for rk3576
-Date: Fri,  6 Feb 2026 09:04:15 +0800
-Message-ID: <20260206010421.443605-6-andyshrk@163.com>
+Subject: [PATCH v3 4/5] drm/rockchip: dw_dp: Add DisplayPort support for rk3576
+Date: Fri,  6 Feb 2026 09:04:14 +0800
+Message-ID: <20260206010421.443605-5-andyshrk@163.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260206010421.443605-1-andyshrk@163.com>
 References: <20260206010421.443605-1-andyshrk@163.com>
 MIME-Version: 1.0
-X-CM-TRANSID: PSgvCgD3_+0XPoVpQ5VfQQ--.20291S7
-X-Coremail-Antispam: 1Uf129KBjvJXoW7uw4fZFWkAryfAryDZFW5Jrb_yoW8Wr13p3
-	ZrC395X3y8Wr12qwnxt34vvrZ5Jan5JFs0kr17JFyUtr4Sqry7Kr13Krn3A34DJr47Z3ya
-	vFsavry7KFs0y3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jSrWrUUUUU=
+X-CM-TRANSID: PSgvCgD3_+0XPoVpQ5VfQQ--.20291S6
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Aw48Jr4rAr43uw1fCr45Wrg_yoW8JFW3pa
+	nrGryjqrWkWr4Yva4qyFWxuFsIk3ZrZay7Kr4UG343tws3KryfWryagw1UGr92q3W7ZF1a
+	krsrW34UJa1a9rDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jSoGQUUUUU=
 X-Originating-IP: [58.22.7.114]
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7QNTsWmFPiNuBQAA3W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7QJTsWmFPiJt0AAA3A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260205_170531_755505_4F8928B6 
-X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-CacheID: sfid-20260205_170532_725029_A2FADCC5 
+X-CRM114-Status: UNSURE (   9.43  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,9 +75,10 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Andy Yan <andy.yan@rock-chips.com>
 
-The DisplayPort on rk3576 is compliant with DisplayPort Specification
-Version 1.4 with MST support, and share the USBDP combo PHY with USB 3.1
-OTG0 controller.
+The DisplayPort of the RK3576 is basically the same as that of the
+RK3588, but it operates in dual-pixel mode and also support MST.
+
+This patch only enable the SST output now.
 
 Signed-off-by: Andy Yan <andy.yan@rock-chips.com>
 Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
@@ -86,48 +87,32 @@ Tested-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
 (no changes since v1)
 
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 28 ++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index a86fc6b4e8c4..a153c3976cb3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1446,6 +1446,34 @@ hdmi_out: port@1 {
- 			};
- 		};
+diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+index 89d614d53596..dac3d202971e 100644
+--- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+@@ -142,10 +142,18 @@ static const struct dw_dp_plat_data rk3588_dp_plat_data = {
+ 	.pixel_mode = DW_DP_MP_QUAD_PIXEL,
+ };
  
-+		dp: dp@27e40000 {
-+			compatible = "rockchip,rk3576-dp";
-+			reg = <0x0 0x27e40000 0x0 0x30000>;
-+			interrupts = <GIC_SPI 337 IRQ_TYPE_LEVEL_HIGH>;
-+			assigned-clocks = <&cru CLK_AUX16MHZ_0>;
-+			assigned-clock-rates = <16000000>;
-+			clocks = <&cru PCLK_DP0>, <&cru CLK_AUX16MHZ_0>,
-+				 <&cru ACLK_DP0>;
-+			clock-names = "apb", "aux", "hdcp";
-+			resets = <&cru SRST_DP0>;
-+			phys = <&usbdp_phy PHY_TYPE_DP>;
-+			power-domains = <&power RK3576_PD_VO1>;
-+			status = "disabled";
++static const struct dw_dp_plat_data rk3576_dp_plat_data = {
++	.max_link_rate = 810000,
++	.pixel_mode = DW_DP_MP_DUAL_PIXEL,
++};
 +
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				dp0_in: port@0 {
-+					reg = <0>;
-+				};
-+
-+				dp0_out: port@1 {
-+					reg = <1>;
-+				};
-+			};
-+		};
-+
- 		sai7: sai@27ed0000 {
- 			compatible = "rockchip,rk3576-sai";
- 			reg = <0x0 0x27ed0000 0x0 0x1000>;
+ static const struct of_device_id dw_dp_of_match[] = {
+ 	{
+ 		.compatible = "rockchip,rk3588-dp",
+ 		.data = &rk3588_dp_plat_data,
++	}, {
++		.compatible = "rockchip,rk3576-dp",
++		.data = &rk3576_dp_plat_data,
+ 	},
+ 	{}
+ };
 -- 
 2.43.0
 
