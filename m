@@ -4,69 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67A75EE20AA
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 14:16:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F1FEEE20AB
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 15:28:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LonvxC3/Xnd9bqKFGvcaYxTzRXKQei2+bMKTXbFK88E=; b=EOrFagMyRy18R4dcELkIk3VqFl
-	eLc/TwyvuLUSM6IMUAaLQiWrON6xA9nZfosm7Q1nd807xlcraKmwNSU5Js/Oh1hJ8s30rqW+STtsp
-	ZtXmU0bMoRYYlU+0jemZlrVu5WxiEovli/HUO2UlC54k/XSVWxkzB8axs4NZIHUlsfEEuor9Wfq15
-	DUPuYKiZirI3/WfKWF081xcojwKDDWuLOwJJZQza755ae2pANq4HAcosgdlBgqN5m+baUojW4/L25
-	WYhnq46dEeUhgfy9N8hI3REUNJyIPzuil1VB/egRWhEvA9UCPgCOy2GF7sMfhIemdAb0zrnfj45mr
-	JMsdhvGg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mtEW3k2uCTnilOnjTyUwH1E9QsB4XQi82Rl3dEy9eqs=; b=LQUqmzIjFZ8RDF
+	vGB59WW45JCR1oXFyY29S/d4LDwATCUMQXIHK/9kdXGcFxGhAzRJnLfj/bWt4CG73SA2csnooFYid
+	KzlHJ/2xwp+0nWNfaTPNddhe8hA+t/rfa6olUlASLJnrTs2NHjHXM0QAtvHD1EQpcnK1PeN6LBC0F
+	uZK7qwh9qGykX+cuLwjTPhKYQWHqEZJVRhiVpl/cxOh7iKZtwGll/Xblxfj/9y6S5O8lbWuRHwURT
+	92Tp/OQ9zNsFNGqUa5HRuKFs9NpmjTOy+KVVKv7X/y6bu8+jJBm5ADLwcmKu+ANjTUrgSoYa6VjN5
+	COsle5CvGEcdjfMcJFpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMde-0000000BQTy-48L2;
-	Fri, 06 Feb 2026 14:16:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1voNkW-0000000BVND-2Ngh;
+	Fri, 06 Feb 2026 15:28:00 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voMdd-0000000BQTk-0AHq;
-	Fri, 06 Feb 2026 14:16:49 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 50F406001A;
-	Fri,  6 Feb 2026 14:16:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 809F7C19422;
-	Fri,  6 Feb 2026 14:16:47 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770387408;
-	bh=MfIveAnEmTvNIhWdwWFVHgbqL0PUK4fowKip9CXPScQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RqAG13Ki/PxUK25l81q/gCxQQUhF5YZLzbsMjFAd9AD62JjQ0BP4KF/yQjIX1pCdj
-	 GEaQc7Vw3zC0OiUbJZUYWogj3DZDZaY7ZHRZxuuEaT0F20SQkdBr6bqqoAZD6KXEmr
-	 Wc6+06DvEl0ohNgz4FIOLKxMElgkIKBq/+RQI/LdpQlO9eZgvYsOPSJ4FML292n3gl
-	 LyfPybUivMrshDxho9PbqZN6QpaabH12EvmoeDA0pkcYcKqBkqIB6MT6EeavTbEmVk
-	 O3FEK0j8xWWU+OrFhnHZuetsvL99aeJAZPSb2JTanjNSNDGHESoZ35ZcvCaDeZkG6h
-	 zZ586z4h/v/lQ==
-Date: Fri, 6 Feb 2026 15:16:45 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com, 
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v7 05/22] drm/display: hdmi-state-helper: Act on color
- format DRM property
-Message-ID: <20260206-accurate-wealthy-badger-45b4a8@houat>
+	id 1voNkT-0000000BVMg-2ZQL;
+	Fri, 06 Feb 2026 15:27:59 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1770391628; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=a4h+OMbk0iyCauZRGyFmaHiVxh6Yugm4f32aGLbFhazNxk2AM6aEzKSFJrvmbCkDa1kHpArrcDG9eOr9eKpkJn9go19QxTKOfOKPavc5QP1VZYj/GcgVI6YH6osbBQ4tzee6Ic2DfhF+KQUDs1tmYsAkCdpua4wS0c2x/ZR4Zos=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1770391628; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vqntc3mGZhsTFj2qn0IsTeoSdqqAdPY47w81CjtIRcU=; 
+	b=WhmsIoXPknI/ZfuAJvjw/L+iIZm5YOJgtxfxsCHunsPD5aWHpevT5NdsNfEsw2dpwijkoc7oTtOsPAla8d0ob3+jULGNzZxNoS5vf9OI5QrhioFduAh/oLPT6249tPWOGt2YjRWyWFMe9duEZryJd/xA+ugNdJb9pJso95K6M50=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1770391628;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=vqntc3mGZhsTFj2qn0IsTeoSdqqAdPY47w81CjtIRcU=;
+	b=g1rsV09NZVeVjM8t7+ErxmMNzCf1eyjSqe3YVJSgOOy2VOoOdHNMsYj8XQqpHLWU
+	3nZeRaIXnrlgW9G2ES7zouFMyDRjfDplLgvXSGV33v+UHedcPcFRcrdeC2lBx7/vEqB
+	6+UL8ghWEGrqLdtKZUlfBYCyJY/EQ/LEvY4xFERo=
+Received: by mx.zohomail.com with SMTPS id 1770391626411181.8997983206183;
+	Fri, 6 Feb 2026 07:27:06 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org,
+ Andri Yngvason <andri@yngvason.is>, Werner Sembach <wse@tuxedocomputers.com>,
+ Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v7 02/22] drm: Add new general DRM property "color format"
+Date: Fri, 06 Feb 2026 16:26:56 +0100
+Message-ID: <6318997.lOV4Wx5bFT@workhorse>
+In-Reply-To: <20260206-deft-provocative-perch-6ca9bf@houat>
 References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
- <20260121-color-format-v7-5-ef790dae780c@collabora.com>
+ <20260121-color-format-v7-2-ef790dae780c@collabora.com>
+ <20260206-deft-provocative-perch-6ca9bf@houat>
 MIME-Version: 1.0
-In-Reply-To: <20260121-color-format-v7-5-ef790dae780c@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260206_072757_739927_405613AC 
+X-CRM114-Status: GOOD (  20.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,105 +96,71 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3263839440369363606=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello,
 
---===============3263839440369363606==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="2cbwiwfic3gmdzk2"
-Content-Disposition: inline
+On Friday, 6 February 2026 15:05:08 Central European Standard Time Maxime Ripard wrote:
+> Hi,
+> 
+> On Wed, Jan 21, 2026 at 03:45:09PM +0100, Nicolas Frattaroli wrote:
+> > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > index 7eaec37ae1c7..b5604dca728a 100644
+> > --- a/include/drm/drm_connector.h
+> > +++ b/include/drm/drm_connector.h
+> > @@ -556,6 +556,16 @@ enum drm_colorspace {
+> >  	DRM_MODE_COLORIMETRY_COUNT
+> >  };
+> >  
+> > +enum drm_color_format {
+> > +	DRM_COLOR_FORMAT_AUTO			= 0,
+> > +	DRM_COLOR_FORMAT_RGB444			= BIT(0),
+> > +	DRM_COLOR_FORMAT_YCBCR444		= BIT(1),
+> > +	DRM_COLOR_FORMAT_YCBCR422		= BIT(2),
+> > +	DRM_COLOR_FORMAT_YCBCR420		= BIT(3),
+> > +};
+> > +
+> > +#define DRM_COLOR_FORMAT_COUNT 5
+> > +
+> 
+> I don't really see a reason to expose an enum, with a bunch of values
+> that are all mutually exclusive, as a bitmask. It's pretty inconsistent
+> with most (all?) the other similar properties we have.
+> 
+> I appreciate you did that to avoid fixing up every driver using those
+> values, but then maybe we don't have to? We could create a userspace
+> facing enum, and convert to DRM_COLOR_FORMAT internally.
 
+This is what the series did at v5 and earlier. IMHO it was kind of
+counter-productive, because we then had two different things for the
+same purpose, and some conversion logic between them. I think it's more
+error prone to do it that way (think: mixing up the two), and doesn't
+have a clear benefit. Just to give a picture of how bad things get:
 
---2cbwiwfic3gmdzk2
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 05/22] drm/display: hdmi-state-helper: Act on color
- format DRM property
-MIME-Version: 1.0
+1. we have the HDMI color format (aka "HDMI_COLORSPACE")
+2. we have driver specific output color formats, e.g. the intel ones
+3. we have DRM_COLOR_FORMAT
+4. we have the bus formats (multiple per color format)
+5. we have the DRM plane formats (again, multiple per color format)
 
-On Wed, Jan 21, 2026 at 03:45:12PM +0100, Nicolas Frattaroli wrote:
-> With the introduction of the "color format" DRM property, which allows
-> userspace to request a specific color format, the HDMI state helper
-> should implement this.
->=20
-> Implement it by checking whether the property is set and set to
-> something other than auto. If so, pass the requested color format, and
-> otherwise set RGB.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 12 +++++++++++-
->  1 file changed, 11 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
-u/drm/display/drm_hdmi_state_helper.c
-> index a1d16762ac7a..1ea3b9c93aa5 100644
-> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> @@ -649,11 +649,21 @@ hdmi_compute_config(const struct drm_connector *con=
-nector,
->  	unsigned int max_bpc =3D clamp_t(unsigned int,
->  				       conn_state->max_bpc,
->  				       8, connector->max_bpc);
-> +	enum hdmi_colorspace hdmi_colorspace =3D
-> +		drm_color_format_to_hdmi_colorspace(conn_state->color_format);
->  	int ret;
-> =20
->  	ret =3D hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
-> -				      HDMI_COLORSPACE_RGB);
-> +				      hdmi_colorspace);
+Adding a sixth into the mix feels a bit bad because we'll then need to
+justify why we should have another layer of switch-case statements.
 
-I still think we shoud be more explicit there, with something like
+Kind regards,
+Nicolas Frattaroli
 
-if (conn_state->color_format !=3D DRM_COLOR_FORMAT_AUTO) {
-	return hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc, drm_c=
-olor_format_to_hdmi_colorspace(conn_state->color_format))
-}
-
-ret =3D hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
-    			      HDMI_COLORSPACE_RGB);
-
-Otherwise, it's pretty easy to get confused between the behaviour
-drm_color_format_to_hdmi_colorspace() to return RGB when it get AUTO...
-
->  	if (ret) {
-> +		/* If a color format was explicitly requested, don't fall back */
-> +		if (conn_state->color_format) {
-
-=2E.. or that auto is actually 0 in that enum.
-
-Or between the auto and non-auto code path.
-
-Maxime
-
---2cbwiwfic3gmdzk2
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaYX3zAAKCRAnX84Zoj2+
-drVqAYD2nzrDJAH0F0tKkx6Xcr+H2Zmy7gmPm/i9E/xOmEWV2OyB+eO07FcK6njD
-RjLDZpQBgMFQ9IdOGUZJR8znQp3cHRX9Aenj9f8l6mh6cJupKXlHogjQrki2a8Ft
-pLSQR3GN1A==
-=LCPG
------END PGP SIGNATURE-----
-
---2cbwiwfic3gmdzk2--
+> 
+> Maxime
+> 
 
 
---===============3263839440369363606==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3263839440369363606==--
-
