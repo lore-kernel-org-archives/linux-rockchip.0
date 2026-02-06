@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76916EE6B4C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 18:13:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FBA9EE6B47
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Feb 2026 18:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rtXiaKbf9JN1v3OOpY6aJXh2YmJBLrkpTsdcafJXn+c=; b=itCy3oSStZcX9O
-	g1cGO2+0eKJVMNQXPdmjYPcFfFX2q1tvnJEBYvoajnKNaVHQAuxRiRLCBjXm6M2wPQp3u39tWu49l
-	BcKIR5uX51NchWKE5XOKxSC5jfUuSKXhOXn3Ye+03YJXCZfPaDYwuhchvDO7EUtmSIjxg17qW5gA0
-	lUCvqjb+DiBdHLIdxOa12oP+xtRPxA18Y8M5ZReUd+nUC9MLgBr8/HDKtqn70AB2a3fNo5JEuZj9c
-	uMjX2L+xyyvzpQBVehZOXbSxwIO7UtVGxM2dHawQ/2rzwwWlY1Ngxj2aNFJcb818qFEN8xIJzLXiP
-	WnAHjLY9r53cCmneow/A==;
+	List-Owner; bh=eLfGhO0ID8uQENpxbRgpXlvB4S7MZmMZ6cPot3ODEVY=; b=U7gm3VxKapcaqi
+	N2J0XJsY9dwdqF8oxgr2nXxM87fpWMFAokXx9B15QNFThk4bzQtiHWlXUYyApqdGwvwSx4BZZDecb
+	Sf0nHfsoYmwK02Abv9MvQlrq7m42IGBFMMcClzIpeQh4MTHCjSbyDF5dbNfwc3A72BU+vLdG21BZV
+	U0lDB9BWkhYHCNHwzIy6I0tWUQx5wfHQppuU8NeU4bCrt07BUXpAxg72NJ8BAmWunLQV4on5QzEPi
+	6kcGZQPIxLKFf/vt5386zhNmQnsF+ctoCRIo3wkDuqxKKf0u5XAasr+TV+siPbz4sIa44S0ZWKXUy
+	7n3iREevqFIkHuSTkS9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voQKq-0000000BewA-15CC;
-	Fri, 06 Feb 2026 18:13:40 +0000
-Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
+	id 1voQKg-0000000Beks-1NbO;
+	Fri, 06 Feb 2026 18:13:30 +0000
+Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voQKn-0000000BesX-0dBw
+	id 1voQKd-0000000Bej1-3XXR
 	for linux-rockchip@lists.infradead.org;
-	Fri, 06 Feb 2026 18:13:38 +0000
-Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-124a677c9afso1717327c88.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 06 Feb 2026 10:13:37 -0800 (PST)
+	Fri, 06 Feb 2026 18:13:28 +0000
+Received: by mail-dy1-x132b.google.com with SMTP id 5a478bee46e88-2b6b0500e06so2529262eec.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 06 Feb 2026 10:13:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770401616; x=1771006416; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1770401607; x=1771006407; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=uNoIv4GR7TzgzReFnrFhQpAiiK0LF7Idur8j5KUiL5g=;
-        b=GCGngmdHlntJAjMm7mCjiZp02OewIX0Pdbu2e67JDj0gj+KygRzWe3iGSlpZQXO0Jk
-         PbZaLgIJn/0MB4Ebox3tN2RAGFC0PxSFdeRgNahiivCiJXMUsaMdUmH25iuy6iWxzU3C
-         HgVD1diLp9Mw09DUQpM2QjX5nTrmYA+licgJ/t9i/0NOjmP3C0tY4IEt8Gywev/s2QUF
-         CySAOU3E1ycvfbo/+KtxwGAvlNRC6GyRPilU8Qd0pJYXDu5qFDrKrYjNnwgawLTPvjbO
-         nPMqkzPOGGCqxklQcWSxNVa+9XB3aknn9pHITWZmskGHAxxNAmWJgkvJy7sa7yRJdB7O
-         hCQA==
+        bh=d2ofjIyvWI7SYrlV1RzeV2oUOz3gOrrE6AU6yxfprIc=;
+        b=aZaYmiO7G+OA8NhteCE0cCSOhjCAOCI+gODgkh+VZTc6tYT672d+FCB4UmiZjBYJ5r
+         JT7QpOPOqtDaKvbHyZiDWi8ImAkIY/Lbj7KbdEfmNqgn2rq+FZw3riTA5eZofk6SjTk2
+         Fn3/ztozc9HZNeCjt4jpjKOU/ZxZs3kESflrtwIlefxJnKeyda3l+Khuozgr1D6V6GB0
+         H0qPLEJtjABtPaIc3dQmRmYk1f04ech4hHxGvm1nN8pz58+uD6+qikyGHgzXcrmDYwxX
+         d+bZPkeqS2gpqDKUAzu65aNPE8eNuTBMlnD8xFnKg7Bg9iEDifWRGdWTyT6H216l+aeG
+         IdyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770401616; x=1771006416;
+        d=1e100.net; s=20230601; t=1770401607; x=1771006407;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=uNoIv4GR7TzgzReFnrFhQpAiiK0LF7Idur8j5KUiL5g=;
-        b=q+PTrzXT6ITkxrnbGLTMqXpg5uHVv3xqNJHY4oh2a7fPQ0XAkJ2jYmjlgVf1ZHJYJG
-         R1idNOEhQe0Fai4oRm/P6oDVL4cW0bTXsiqXb64ED8CKgleWUcKCJS3jJOVpvHsTcHOA
-         BppA3Wfwd+uPnfp3Bce2c4ffLF5G2HycMnuA0Ra1wuUeyUHnbY8Oz+yUhsYpCTbplMSK
-         AVdVHpXWPmjsAxLIFRTBUlNWb4uMLeDNsyoNf+c16MVcV+G6npHNMN+GQRrroJdmAHqo
-         2P9nKAcEpotc3UKiT05J5r2HWiqQO28SygpAWtcaSdlsqweBQRd8AEgMGzajukP/hSWO
-         DwxQ==
-X-Forwarded-Encrypted: i=1; AJvYcCXCi/7zAK0teiZd8JLaMMyYLO2VmJOjZBvC3lcvLNiKgqSjczyz3U+6qO3BPlKNSsTBU1Hh2yzsWsBv5TkF4A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyLYF0yexz6yjWrYg59mEbYB2d0eQYOEhwGDtJmjv3LyVBDvJNd
-	HYd9RXUJxKCe8q48HA6SsqicVMnuQSTGcDd3eKAhkJpoBvmsFlCDZXoc
-X-Gm-Gg: AZuq6aIThugeeIHireWstaqqamTZ9tlGu8sf9BaXUEeOO4df8B38jJywgurUng04g1b
-	+HJyq/wwcjGCa3qWuFo7/stmUHAMpoRgMIL/XSuRJYMi0HcuQFrnwpF/u97/z7qVd30zNgu8bO/
-	hcFBekW/x4RTCxp4DoCQG4I45SCPT5FEgqZaU5dTzxJ7rNnO7AxP6uUIIMBd4FZG8uWafgck/hY
-	Gp5P1CAAU3vaFpKyynwgefR4NTyhuXWXrOvVxMDfnzKukuG3+aFcC/2Cza6na52RBlXd6mq/3gI
-	SUN7ab1OBslyB7bBhsHkIipiTtHytEudAiYam+kRCtT8vZD+rmIK5dY2ZNEMMhzbwIkZTY7CK2v
-	+ivsONK/1W+1jlXHkAFMRjQ223548fBf49LLjVkjbmvT6nqKWJUrZH4tvLeWZMrrKdTXLpUTPSz
-	z0TOYJixxDU9eIt7RA2Xz4f/IeWJOw8rXPWKE=
-X-Received: by 2002:a05:7022:45a0:b0:11e:528:4185 with SMTP id a92af1059eb24-127040884demr1544351c88.38.1770401616243;
-        Fri, 06 Feb 2026 10:13:36 -0800 (PST)
+        bh=d2ofjIyvWI7SYrlV1RzeV2oUOz3gOrrE6AU6yxfprIc=;
+        b=sJIvpzAMu63f5VUYdHTvbBt2RzVmmsKjcUvV0Tn2gazsjQuYkDHhC5Y/ttGKlpyNQO
+         eBGgHhu+r5eR1OMkRm3rs0TuvVH2/p4em4LkCStZF2i8XawAsTqfIUcTlO3oVer1fP/G
+         Gy7exzcq0rfmzzdyc/iPw1n2FOpuZWUGVbhzT7jNBVERP7l/uWbUq6ysZvQqwFbjfPaG
+         VLUH4tz+E9VvZtXWMXlvelMaydedO/errExE6Zy+EYXbEYNwkc0jeSPs+lpursY8p2nY
+         bbnLrawNVBaf9A2lkf5/f2qPI2oJyDP9vVuSfilmzRXE8mWDKJnWEIfjWOaYaXvTXs/W
+         tamA==
+X-Forwarded-Encrypted: i=1; AJvYcCUQSOrOyGYoN7XQ7TqPdKOCkonjo8Qx5L+tvilmaD1DExMcbQi/RrcZkjJ7QssRoEMwM0ZlslO81QELtO5WIw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxeCsyS8wu9S0ROVNCfSCJEH3kUl64TaJtBW8C9y71DPI51GH1x
+	zWvuKj5PHQJzV5LMagrSubRaydaUZ0oDJlY4OvM5X8ZmO2gxANb8P3uVloLDBA==
+X-Gm-Gg: AZuq6aLHr8c55hyAkpOoiqQSBfD851qGNVKXT7MVvMBwrY1P5GeOfnKFXgFN+I7U15Z
+	j2rTRhBkuor6ZOxjQPdaZO94GB+TCi5X3AG77alFcZaBWxdGFJcDyR4Ro+/9fWxYgnlFEPXGQ/M
+	skKpgk/unaCWMNcK3Q/n3ZE58n+4/D4RrlW7rfOS7/+kVS7+tZOmmSslZHsowpi2lahsNA7Uz8A
+	OaThohRdCslKBZenC0t2Mc3jDFzAbsTbITA3PVl6gStXYX59FrFxQ5TAN+xukalLCcqkERkRDhI
+	QBJgiQpfOSRZUqU+TfQmcXjYsknRe9/uhVLkxX4eCEGQBmi2UKsrgkAEeUXagJ2Sxa92urExVSM
+	pGzpstkH0WHNW+MuCY/YxBDL+vguC9RoZF9TDmt7KbNMokgAjKZDu1ffIXgadxahTzbu8OMYqSq
+	wT/wPEuCnEa9U3OcpMNbudoGFc
+X-Received: by 2002:a05:7300:d705:b0:2b7:30a4:8ce6 with SMTP id 5a478bee46e88-2b856722da2mr1562770eec.38.1770401606715;
+        Fri, 06 Feb 2026 10:13:26 -0800 (PST)
 Received: from fabio-Precision-3551.. ([2804:14c:485:4b61:44a3:2bb7:a035:fd7e])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1270433ab31sm2782500c88.11.2026.02.06.10.13.33
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1270433ab31sm2782500c88.11.2026.02.06.10.13.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Feb 2026 10:13:35 -0800 (PST)
+        Fri, 06 Feb 2026 10:13:26 -0800 (PST)
 From: Fabio Estevam <festevam@gmail.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org,
@@ -78,18 +78,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Fabio Estevam <festevam@nabladev.com>,
-	Linus Walleij <linusw@kernel.org>,
-	linux-gpio@vger.kernel.org
-Subject: [PATCH 05/11] pinctrl: rockchip: Add RV1103B pinctrl support
-Date: Fri,  6 Feb 2026 15:13:03 -0300
-Message-Id: <20260206181309.2696095-6-festevam@gmail.com>
+	Stephen Boyd <sboyd@kernel.org>
+Subject: [PATCH 02/11] dt-bindings: clk: rockchip: Add RV1103B clock header
+Date: Fri,  6 Feb 2026 15:13:00 -0300
+Message-Id: <20260206181309.2696095-3-festevam@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260206181309.2696095-1-festevam@gmail.com>
 References: <20260206181309.2696095-1-festevam@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260206_101337_220843_25781EA3 
-X-CRM114-Status: GOOD (  22.13  )
+X-CRM114-CacheID: sfid-20260206_101327_928869_1B052013 
+X-CRM114-Status: GOOD (  10.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,466 +107,509 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Fabio Estevam <festevam@nabladev.com>
 
-Add pinctrl support for the RV1103B.
+Add the RV1103B clock and reset IDs.
 
-Based on the 5.10 Rockchip vendor kernel driver.
-
-Cc: Linus Walleij <linusw@kernel.org>
-Cc: linux-gpio@vger.kernel.org
+Cc: Stephen Boyd <sboyd@kernel.org>
 Signed-off-by: Fabio Estevam <festevam@nabladev.com>
 ---
- drivers/pinctrl/pinctrl-rockchip.c | 313 ++++++++++++++++++++++++++++-
- drivers/pinctrl/pinctrl-rockchip.h |   1 +
- 2 files changed, 313 insertions(+), 1 deletion(-)
+ .../dt-bindings/clock/rockchip,rv1103b-cru.h  | 488 ++++++++++++++++++
+ 1 file changed, 488 insertions(+)
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1103b-cru.h
 
-diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-index 816823403e97..527548354c0f 100644
---- a/drivers/pinctrl/pinctrl-rockchip.c
-+++ b/drivers/pinctrl/pinctrl-rockchip.c
-@@ -467,6 +467,22 @@ static const struct pinctrl_ops rockchip_pctrl_ops = {
-  * Hardware access
-  */
- 
-+static struct rockchip_mux_recalced_data rv1103b_mux_recalced_data[] = {
-+	{
-+		.num = 1,
-+		.pin = 6,
-+		.reg = 0x10024,
-+		.bit = 8,
-+		.mask = 0xf
-+	}, {
-+		.num = 1,
-+		.pin = 7,
-+		.reg = 0x10024,
-+		.bit = 12,
-+		.mask = 0xf
-+	},
-+};
+diff --git a/include/dt-bindings/clock/rockchip,rv1103b-cru.h b/include/dt-bindings/clock/rockchip,rv1103b-cru.h
+new file mode 100644
+index 000000000000..92c994185354
+--- /dev/null
++++ b/include/dt-bindings/clock/rockchip,rv1103b-cru.h
+@@ -0,0 +1,488 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR MIT) */
++/*
++ * Copyright (c) 2024 Rockchip Electronics Co. Ltd.
++ * Author: Elaine Zhang <zhangqing@rock-chips.com>
++ */
 +
- static struct rockchip_mux_recalced_data rv1108_mux_recalced_data[] = {
- 	{
- 		.num = 1,
-@@ -1172,6 +1188,9 @@ static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
- 	else
- 		regmap = info->regmap_base;
- 
-+	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin >= 12)
-+		return 0;
++#ifndef _DT_BINDINGS_CLK_ROCKCHIP_RV1103B_H
++#define _DT_BINDINGS_CLK_ROCKCHIP_RV1103B_H
 +
- 	if (ctrl->type == RK3506) {
- 		if (bank->bank_num == 1)
- 			regmap = info->regmap_ioc1;
-@@ -1298,6 +1317,9 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
- 	else
- 		regmap = info->regmap_base;
- 
-+	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin >= 12)
-+		return 0;
++/* pll clocks */
++#define PLL_GPLL				1
++#define ARMCLK					2
++#define PLL_DPLL				3
 +
- 	if (ctrl->type == RK3506) {
- 		if (bank->bank_num == 1)
- 			regmap = info->regmap_ioc1;
-@@ -1495,6 +1517,214 @@ static int px30_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
- 	return 0;
- }
- 
-+#define RV1103B_DRV_BITS_PER_PIN		8
-+#define RV1103B_DRV_PINS_PER_REG		2
-+#define RV1103B_DRV_GPIO0_A_OFFSET		0x40100
-+#define RV1103B_DRV_GPIO0_B_OFFSET		0x50110
-+#define RV1103B_DRV_GPIO1_A01_OFFSET		0x140
-+#define RV1103B_DRV_GPIO1_A67_OFFSET		0x1014C
-+#define RV1103B_DRV_GPIO2_OFFSET		0x30180
-+#define RV1103B_DRV_GPIO2_SARADC_OFFSET		0x3080C
++/* clk (clocks) */
++#define XIN_OSC0_HALF				5
++#define CLK_GPLL_DIV24				6
++#define CLK_GPLL_DIV12				7
++#define CLK_GPLL_DIV6				8
++#define CLK_GPLL_DIV4				9
++#define CLK_GPLL_DIV3				10
++#define CLK_GPLL_DIV2P5				11
++#define CLK_GPLL_DIV2				12
++#define CLK_UART0_SRC				13
++#define CLK_UART1_SRC				14
++#define CLK_UART2_SRC				15
++#define CLK_UART0_FRAC				16
++#define CLK_UART1_FRAC				17
++#define CLK_UART2_FRAC				18
++#define CLK_SAI_SRC				19
++#define CLK_SAI_FRAC				20
++#define LSCLK_NPU_SRC				21
++#define CLK_NPU_SRC				22
++#define ACLK_VEPU_SRC				23
++#define CLK_VEPU_SRC				24
++#define ACLK_VI_SRC				25
++#define CLK_ISP_SRC				26
++#define DCLK_VICAP				27
++#define CCLK_EMMC				28
++#define CCLK_SDMMC0				29
++#define SCLK_SFC_2X				30
++#define LSCLK_PERI_SRC				31
++#define ACLK_PERI_SRC				32
++#define HCLK_HPMCU				33
++#define SCLK_UART0				34
++#define SCLK_UART1				35
++#define SCLK_UART2				36
++#define CLK_I2C_PMU				37
++#define CLK_I2C_PERI				38
++#define CLK_SPI0				39
++#define CLK_PWM0_SRC				40
++#define CLK_PWM1				41
++#define CLK_PWM2				42
++#define DCLK_DECOM_SRC				43
++#define CCLK_SDMMC1				44
++#define CLK_CORE_CRYPTO				45
++#define CLK_PKA_CRYPTO				46
++#define CLK_CORE_RGA				47
++#define MCLK_SAI_SRC				48
++#define CLK_FREQ_PWM0_SRC			49
++#define CLK_COUNTER_PWM0_SRC			50
++#define PCLK_TOP_ROOT				51
++#define CLK_REF_MIPI0				52
++#define CLK_MIPI0_OUT2IO			53
++#define CLK_REF_MIPI1				54
++#define CLK_MIPI1_OUT2IO			55
++#define MCLK_SAI_OUT2IO				56
++#define ACLK_NPU_ROOT				57
++#define HCLK_RKNN				58
++#define ACLK_RKNN				59
++#define LSCLK_VEPU_ROOT				60
++#define HCLK_VEPU				61
++#define ACLK_VEPU				62
++#define CLK_CORE_VEPU				63
++#define PCLK_IOC_VCCIO3				64
++#define PCLK_ACODEC				65
++#define PCLK_USBPHY				66
++#define LSCLK_VI_100M				67
++#define LSCLK_VI_ROOT				68
++#define HCLK_ISP				69
++#define ACLK_ISP				70
++#define CLK_CORE_ISP				71
++#define ACLK_VICAP				72
++#define HCLK_VICAP				73
++#define ISP0CLK_VICAP				74
++#define PCLK_CSI2HOST0				75
++#define PCLK_CSI2HOST1				76
++#define HCLK_EMMC				77
++#define HCLK_SFC				78
++#define HCLK_SFC_XIP				79
++#define HCLK_SDMMC0				80
++#define PCLK_CSIPHY				81
++#define PCLK_GPIO1				82
++#define DBCLK_GPIO1				83
++#define PCLK_IOC_VCCIO47			84
++#define LSCLK_DDR_ROOT				85
++#define CLK_TIMER_DDRMON			86
++#define LSCLK_PMU_ROOT				87
++#define PCLK_PMU				88
++#define XIN_RC_DIV				89
++#define CLK_32K					90
++#define PCLK_PMU_GPIO0				91
++#define DBCLK_PMU_GPIO0				92
++#define CLK_DDR_FAIL_SAFE			93
++#define PCLK_PMU_HP_TIMER			94
++#define CLK_PMU_32K_HP_TIMER			95
++#define PCLK_PWM0				96
++#define CLK_PWM0				97
++#define CLK_OSC_PWM0				98
++#define CLK_RC_PWM0				99
++#define CLK_FREQ_PWM0				100
++#define CLK_COUNTER_PWM0			101
++#define PCLK_I2C0				102
++#define CLK_I2C0				103
++#define PCLK_UART0				104
++#define PCLK_IOC_PMUIO0				105
++#define CLK_REFOUT				106
++#define CLK_PREROLL				107
++#define CLK_PREROLL_32K				108
++#define CLK_LPMCU_PMU				109
++#define PCLK_SPI2AHB				110
++#define HCLK_SPI2AHB				111
++#define SCLK_SPI2AHB				112
++#define PCLK_WDT_LPMCU				113
++#define TCLK_WDT_LPMCU				114
++#define HCLK_SFC_PMU1				115
++#define HCLK_SFC_XIP_PMU1			116
++#define SCLK_SFC_2X_PMU1			117
++#define CLK_LPMCU				118
++#define CLK_LPMCU_RTC				119
++#define PCLK_LPMCU_MAILBOX			120
++#define PCLK_IOC_PMUIO1				121
++#define PCLK_CRU_PMU1				122
++#define PCLK_PERI_ROOT				123
++#define PCLK_RTC_ROOT				124
++#define CLK_TIMER_ROOT				125
++#define PCLK_TIMER				126
++#define CLK_TIMER0				127
++#define CLK_TIMER1				128
++#define CLK_TIMER2				129
++#define CLK_TIMER3				130
++#define CLK_TIMER4				131
++#define CLK_TIMER5				132
++#define PCLK_STIMER				133
++#define CLK_STIMER0				134
++#define CLK_STIMER1				135
++#define PCLK_WDT_NS				136
++#define TCLK_WDT_NS				137
++#define PCLK_WDT_S				138
++#define TCLK_WDT_S				139
++#define PCLK_WDT_HPMCU				140
++#define TCLK_WDT_HPMCU				141
++#define PCLK_I2C1				142
++#define CLK_I2C1				143
++#define PCLK_I2C2				144
++#define CLK_I2C2				145
++#define PCLK_I2C3				146
++#define CLK_I2C3				147
++#define PCLK_I2C4				148
++#define CLK_I2C4				149
++#define PCLK_SPI0				150
++#define PCLK_PWM1				151
++#define CLK_OSC_PWM1				152
++#define PCLK_PWM2				153
++#define CLK_OSC_PWM2				154
++#define PCLK_UART2				155
++#define PCLK_UART1				156
++#define ACLK_RKDMA				157
++#define PCLK_TSADC				158
++#define CLK_TSADC				159
++#define CLK_TSADC_TSEN				160
++#define PCLK_SARADC				161
++#define CLK_SARADC				162
++#define PCLK_GPIO2				163
++#define DBCLK_GPIO2				164
++#define PCLK_IOC_VCCIO6				165
++#define ACLK_USBOTG				166
++#define CLK_REF_USBOTG				167
++#define HCLK_SDMMC1				168
++#define HCLK_SAI				169
++#define MCLK_SAI				170
++#define ACLK_CRYPTO				171
++#define HCLK_CRYPTO				172
++#define HCLK_RK_RNG_NS				173
++#define HCLK_RK_RNG_S				174
++#define PCLK_OTPC_NS				175
++#define CLK_OTPC_ROOT_NS			176
++#define CLK_SBPI_OTPC_NS			177
++#define CLK_USER_OTPC_NS			178
++#define PCLK_OTPC_S				179
++#define CLK_OTPC_ROOT_S				180
++#define CLK_SBPI_OTPC_S				181
++#define CLK_USER_OTPC_S				182
++#define CLK_OTPC_ARB				183
++#define PCLK_OTP_MASK				184
++#define HCLK_RGA				185
++#define ACLK_RGA				186
++#define ACLK_MAC				187
++#define PCLK_MAC				188
++#define CLK_MACPHY				189
++#define ACLK_SPINLOCK				190
++#define HCLK_CACHE				191
++#define PCLK_HPMCU_MAILBOX			192
++#define PCLK_HPMCU_INTMUX			193
++#define CLK_HPMCU				194
++#define CLK_HPMCU_RTC				195
++#define DCLK_DECOM				196
++#define ACLK_DECOM				197
++#define PCLK_DECOM				198
++#define ACLK_SYS_SRAM				199
++#define PCLK_DMA2DDR				200
++#define ACLK_DMA2DDR				201
++#define PCLK_DCF				202
++#define ACLK_DCF				203
++#define MCLK_ACODEC_TX				204
++#define SCLK_UART0_SRC				205
++#define SCLK_UART1_SRC				206
++#define SCLK_UART2_SRC				207
++#define XIN_RC_SRC				208
++#define CLK_UTMI_USBOTG				209
++#define CLK_REF_USBPHY				230
 +
-+static int rv1103b_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-+				       int pin_num, struct regmap **regmap,
-+				       int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+	int ret = 0;
++// PERICRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_ARESETN_PERI_BIU			0x00000002
++#define SRST_HRESETN_HPMCU_BIU			0x00000003
++#define SRST_LSRESETN_PERI_BIU			0x00000004
++#define SRST_PRESETN_PERI_BIU			0x00000005
++#define SRST_PRESETN_RTC_BIU			0x00000006
++#define SRST_HRESETN_BOOTROM			0x00000007
 +
-+	*regmap = info->regmap_base;
-+	switch (bank->bank_num) {
-+	case 0:
-+		if (pin_num < 7)
-+			*reg = RV1103B_DRV_GPIO0_A_OFFSET;
-+		else if (pin_num > 7 && pin_num < 14)
-+			*reg = RV1103B_DRV_GPIO0_B_OFFSET - 0x10;
-+		else
-+			ret = -EINVAL;
-+		break;
++// PERICRU_SOFTRST_CON01(Offset:0xA04)
++#define SRST_PRESETN_TIMER			0x00000010
++#define SRST_RESETN_TIMER0			0x00000011
++#define SRST_RESETN_TIMER1			0x00000012
++#define SRST_RESETN_TIMER2			0x00000013
++#define SRST_RESETN_TIMER3			0x00000014
++#define SRST_RESETN_TIMER4			0x00000015
++#define SRST_RESETN_TIMER5			0x00000016
++#define SRST_PRESETN_STIMER			0x00000017
++#define SRST_RESETN_STIMER0			0x00000018
++#define SRST_RESETN_STIMER1			0x00000019
 +
-+	case 1:
-+		if (pin_num < 6)
-+			*reg = RV1103B_DRV_GPIO1_A01_OFFSET;
-+		else if (pin_num >= 6 && pin_num < 23)
-+			*reg = RV1103B_DRV_GPIO1_A67_OFFSET - 0xc;
-+		else if (pin_num >= 24 && pin_num < 30)
-+			*reg = RV1103B_DRV_GPIO1_A67_OFFSET - 0xc;
-+		else
-+			ret = -EINVAL;
-+		break;
++// PERICRU_SOFTRST_CON02(Offset:0xA08)
++#define SRST_PRESETN_WDT_NS			0x00000020
++#define SRST_TRESETN_WDT_NS			0x00000021
++#define SRST_PRESETN_WDT_S			0x00000022
++#define SRST_TRESETN_WDT_S			0x00000023
++#define SRST_PRESETN_WDT_HPMCU			0x00000024
++#define SRST_TRESETN_WDT_HPMCU			0x00000025
++#define SRST_PRESETN_I2C1			0x00000026
++#define SRST_RESETN_I2C1			0x00000027
++#define SRST_PRESETN_I2C2			0x00000028
++#define SRST_RESETN_I2C2			0x00000029
++#define SRST_PRESETN_I2C3			0x0000002A
++#define SRST_RESETN_I2C3			0x0000002B
++#define SRST_PRESETN_I2C4			0x0000002C
++#define SRST_RESETN_I2C4			0x0000002D
 +
-+	case 2:
-+		if (pin_num < 12) {
-+			*reg = RV1103B_DRV_GPIO2_OFFSET;
-+		} else if (pin_num >= 16) {
-+			ret = -EINVAL;
-+		} else {
-+			*reg = RV1103B_DRV_GPIO2_SARADC_OFFSET;
-+			*bit = 10;
++// PERICRU_SOFTRST_CON03(Offset:0xA0C)
++#define SRST_PRESETN_UART2			0x00000030
++#define SRST_SRESETN_UART2			0x00000031
++#define SRST_PRESETN_UART1			0x00000032
++#define SRST_SRESETN_UART1			0x00000033
++#define SRST_PRESETN_SPI0			0x0000003A
++#define SRST_RESETN_SPI0			0x0000003B
 +
-+			return 0;
-+		}
-+		break;
++// PERICRU_SOFTRST_CON04(Offset:0xA10)
++#define SRST_PRESETN_PWM1			0x00000046
++#define SRST_RESETN_PWM1			0x00000047
++#define SRST_PRESETN_PWM2			0x0000004C
++#define SRST_RESETN_PWM2			0x0000004D
 +
-+	default:
-+		ret = -EINVAL;
-+		break;
-+	}
++// PERICRU_SOFTRST_CON05(Offset:0xA14)
++#define SRST_ARESETN_RKDMA			0x00000058
++#define SRST_PRESETN_TSADC			0x00000059
++#define SRST_RESETN_TSADC			0x0000005A
++#define SRST_PRESETN_SARADC			0x0000005C
++#define SRST_RESETN_SARADC			0x0000005D
 +
-+	if (ret) {
-+		dev_err(info->dev, "unsupported bank_num %d pin_num %d\n", bank->bank_num, pin_num);
++// PERICRU_SOFTRST_CON06(Offset:0xA18)
++#define SRST_RESETN_SARADC_PHY			0x00000060
++#define SRST_PRESETN_RTC_TEST			0x00000061
++#define SRST_PRESETN_GPIO2			0x00000063
++#define SRST_DBRESETN_GPIO2			0x00000064
++#define SRST_PRESETN_IOC_VCCIO6			0x00000065
++#define SRST_PRESETN_PERI_SGRF			0x00000066
++#define SRST_PRESETN_PERI_GRF			0x00000067
++#define SRST_PRESETN_CRU_PERI			0x00000068
++#define SRST_ARESETN_USBOTG			0x00000069
 +
-+		return ret;
-+	}
++// PERICRU_SOFTRST_CON07(Offset:0xA1C)
++#define SRST_HRESETN_SDMMC1			0x00000070
++#define SRST_HRESETN_SAI			0x00000071
++#define SRST_MRESETN_SAI			0x00000072
 +
-+	*reg += ((pin_num / RV1103B_DRV_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1103B_DRV_PINS_PER_REG;
-+	*bit *= RV1103B_DRV_BITS_PER_PIN;
++// PERICRU_SOFTRST_CON08(Offset:0xA20)
++#define SRST_RESETN_CORE_CRYPTO			0x00000080
++#define SRST_RESETN_PKA_CRYPTO			0x00000081
++#define SRST_ARESETN_CRYPTO			0x00000082
++#define SRST_HRESETN_CRYPTO			0x00000083
++#define SRST_HRESETN_RK_RNG_NS			0x00000084
++#define SRST_HRESETN_RK_RNG_S			0x00000085
++#define SRST_PRESETN_OTPC_NS			0x00000086
++#define SRST_RESETN_SBPI_OTPC_NS		0x00000088
++#define SRST_RESETN_USER_OTPC_NS		0x00000089
++#define SRST_PRESETN_OTPC_S			0x0000008A
++#define SRST_RESETN_SBPI_OTPC_S			0x0000008C
++#define SRST_RESETN_USER_OTPC_S			0x0000008D
++#define SRST_RESETN_OTPC_ARB			0x0000008E
++#define SRST_PRESETN_OTP_MASK			0x0000008F
 +
-+	return 0;
-+}
++// PERICRU_SOFTRST_CON09(Offset:0xA24)
++#define SRST_HRESETN_RGA			0x00000090
++#define SRST_ARESETN_RGA			0x00000091
++#define SRST_RESETN_CORE_RGA			0x00000092
++#define SRST_ARESETN_MAC			0x00000093
++#define SRST_RESETN_MACPHY			0x0000009B
 +
-+#define RV1103B_PULL_BITS_PER_PIN		2
-+#define RV1103B_PULL_PINS_PER_REG		8
-+#define RV1103B_PULL_GPIO0_A_OFFSET		0x40200
-+#define RV1103B_PULL_GPIO0_B_OFFSET		0x50204
-+#define RV1103B_PULL_GPIO1_A01_OFFSET		0x210
-+#define RV1103B_PULL_GPIO1_A67_OFFSET		0x10210
-+#define RV1103B_PULL_GPIO2_OFFSET		0x30220
-+#define RV1103B_PULL_GPIO2_SARADC_OFFSET	0x3080C
++// PERICRU_SOFTRST_CON10(Offset:0xA28)
++#define SRST_ARESETN_SPINLOCK			0x000000A0
++#define SRST_HRESETN_CACHE			0x000000A1
++#define SRST_PRESETN_HPMCU_MAILBOX		0x000000A2
++#define SRST_PRESETN_HPMCU_INTMUX		0x000000A3
++#define SRST_RESETN_HPMCU_FULL_CLUSTER		0x000000A4
++#define SRST_RESETN_HPMCU_PWUP			0x000000A5
++#define SRST_RESETN_HPMCU_ONLY_CORE		0x000000A6
++#define SRST_TRESETN_HPMCU_JTAG			0x000000A7
 +
-+static int rv1103b_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-+					int pin_num, struct regmap **regmap,
-+					int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+	int ret = 0;
++// PERICRU_SOFTRST_CON11(Offset:0xA2C)
++#define SRST_DRESETN_DECOM			0x000000B0
++#define SRST_ARESETN_DECOM			0x000000B1
++#define SRST_PRESETN_DECOM			0x000000B2
++#define SRST_ARESETN_SYS_SRAM			0x000000B3
++#define SRST_PRESETN_DMA2DDR			0x000000B4
++#define SRST_ARESETN_DMA2DDR			0x000000B5
++#define SRST_PRESETN_DCF			0x000000B6
++#define SRST_ARESETN_DCF			0x000000B7
++#define SRST_RESETN_USBPHY_POR			0x000000BC
++#define SRST_RESETN_USBPHY_OTG			0x000000BD
 +
-+	*regmap = info->regmap_base;
-+	switch (bank->bank_num) {
-+	case 0:
-+		if (pin_num < 7)
-+			*reg = RV1103B_PULL_GPIO0_A_OFFSET;
-+		else if (pin_num > 7 && pin_num < 14)
-+			*reg = RV1103B_PULL_GPIO0_B_OFFSET - 0x4;
-+		else
-+			ret = -EINVAL;
-+		break;
++// ======================= VEPUCRU module definition bank=1 =======================
++// VEPUCRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_ARESETN_VEPU_BIU			0x00040001
++#define SRST_LSRESETN_VEPU_BIU			0x00040002
++#define SRST_RESETN_REF_PVTPLL_VEPU		0x00040003
++#define SRST_HRESETN_VEPU			0x00040004
++#define SRST_ARESETN_VEPU			0x00040005
++#define SRST_RESETN_CORE_VEPU			0x00040006
++#define SRST_PRESETN_VEPU_PVTPLL		0x00040007
++#define SRST_PRESETN_CRU_VEPU			0x00040008
++#define SRST_PRESETN_VEPU_GRF			0x0004000A
++#define SRST_PRESETN_IOC_VCCIO3			0x0004000B
++#define SRST_PRESETN_ACODEC			0x0004000D
++#define SRST_PRESETN_USBPHY			0x0004000E
 +
-+	case 1:
-+		if (pin_num < 6)
-+			*reg = RV1103B_PULL_GPIO1_A01_OFFSET;
-+		else if (pin_num >= 6 && pin_num < 23)
-+			*reg = RV1103B_PULL_GPIO1_A67_OFFSET;
-+		else if (pin_num >= 24 && pin_num < 30)
-+			*reg = RV1103B_PULL_GPIO1_A67_OFFSET;
-+		else
-+			ret = -EINVAL;
-+		break;
++// ======================= NPUCRU module definition bank=2 ========================
++// NPUCRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_RESETN_REF_PVTPLL_NPU		0x00080000
++#define SRST_ARESETN_NPU_BIU			0x00080002
++#define SRST_LSRESETN_NPU_BIU			0x00080003
++#define SRST_HRESETN_RKNN			0x00080004
++#define SRST_ARESETN_RKNN			0x00080005
++#define SRST_PRESETN_NPU_PVTPLL			0x00080006
++#define SRST_PRESETN_CRU_NPU			0x00080007
++#define SRST_PRESETN_NPU_GRF			0x00080009
 +
-+	case 2:
-+		if (pin_num < 12) {
-+			*reg = RV1103B_PULL_GPIO2_OFFSET;
-+		} else if (pin_num >= 16) {
-+			ret = -EINVAL;
-+		} else {
-+			*reg = RV1103B_PULL_GPIO2_SARADC_OFFSET;
-+			*bit = 13;
++// ======================== VICRU module definition bank=3 ========================
++// VICRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_LSRESETN_VI_BIU			0x000c0001
++#define SRST_ARESETN_VI_BIU			0x000c0002
++#define SRST_RESETN_REF_PVTPLL_ISP		0x000c0003
++#define SRST_RESETN_CORE_ISP			0x000c0006
 +
-+			return 0;
-+		}
-+		break;
++// VICRU_SOFTRST_CON01(Offset:0xA04)
++#define SRST_DRESETN_VICAP			0x000c0010
++#define SRST_ARESETN_VICAP			0x000c0012
++#define SRST_HRESETN_VICAP			0x000c0013
++#define SRST_ISP0RESETN_VICAP			0x000c0018
++#define SRST_PRESETN_CSI2HOST0			0x000c0019
++#define SRST_PRESETN_CSI2HOST1			0x000c001B
++#define SRST_SRESETN_SFC_2X			0x000c001C
++#define SRST_HRESETN_EMMC			0x000c001D
++#define SRST_HRESETN_SFC			0x000c001E
++#define SRST_HRESETN_SFC_XIP			0x000c001F
 +
-+	default:
-+		ret = -EINVAL;
-+		break;
-+	}
++// VICRU_SOFTRST_CON02(Offset:0xA08)
++#define SRST_HRESETN_SDMMC0			0x000c0020
++#define SRST_PRESETN_CSIPHY			0x000c0022
++#define SRST_PRESETN_GPIO1			0x000c0023
++#define SRST_DBRESETN_GPIO1			0x000c0024
++#define SRST_PRESETN_IOC_VCCIO47		0x000c0025
++#define SRST_PRESETN_VI_GRF			0x000c0026
++#define SRST_PRESETN_CRU_VI			0x000c0028
++#define SRST_PRESETN_VI_PVTPLL			0x000c0029
 +
-+	if (ret) {
-+		dev_err(info->dev, "unsupported bank_num %d pin_num %d\n", bank->bank_num, pin_num);
++// ======================= CORECRU module definition bank=4 =======================
++// CORECRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_RESETN_REF_PVTPLL_CORE		0x00100000
++#define SRST_NCOREPORESET			0x00100001
++#define SRST_NCORESET				0x00100002
++#define SRST_NDBGRESET				0x00100003
++#define SRST_NL2RESET				0x00100004
++#define SRST_ARESETN_CORE_BIU			0x00100005
++#define SRST_PRESETN_CORE_BIU			0x00100006
++#define SRST_HRESETN_CORE_BIU			0x00100007
++#define SRST_PRESETN_DBG			0x00100008
++#define SRST_POTRESETN_DBG			0x00100009
++#define SRST_NTRESETN_DBG			0x0010000A
 +
-+		return ret;
-+	}
++// ======================= DDRCRU module definition bank=5 ========================
++// DDRCRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_LSRESETN_DDR_BIU			0x00140001
++#define SRST_PRESETN_DDRC			0x00140002
++#define SRST_PRESETN_DDRMON			0x00140003
++#define SRST_RESETN_TIMER_DDRMON		0x00140004
++#define SRST_PRESETN_DFICTRL			0x00140005
++#define SRST_PRESETN_DDR_GRF			0x00140006
++#define SRST_PRESETN_CRU_DDR			0x00140007
++#define SRST_HRESETN_DDRPHY			0x00140008
 +
-+	*reg += ((pin_num / RV1103B_PULL_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1103B_PULL_PINS_PER_REG;
-+	*bit *= RV1103B_PULL_BITS_PER_PIN;
++// ====================== SUBDDRCRU module definition bank=6 ======================
++// SUBDDRCRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_RESETN_DDR_BIU			0x00160001
++#define SRST_ARESETN_DDRSCH_CPU			0x00160002
++#define SRST_ARESETN_DDRSCH_VI			0x00160004
++#define SRST_ARESETN_DDRSCH_NPVD		0x00160005
++#define SRST_RESETN_CORE_DDRC			0x00160006
++#define SRST_RESETN_DDRMON			0x00160007
++#define SRST_RESETN_DFICTRL			0x00160008
++#define SRST_RESETN_DFI_SCRAMBLE		0x00160009
 +
-+	return 0;
-+}
++// ======================= TOPCRU module definition bank=7 ========================
++// TOPCRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_PRESETN_CRU			0x00180000
++#define SRST_PRESETN_CRU_BIU			0x00180001
++#define SRST_RESETN_DDRPHY			0x0018000C
 +
-+#define RV1103B_SMT_BITS_PER_PIN		1
-+#define RV1103B_SMT_PINS_PER_REG		8
-+#define RV1103B_SMT_GPIO0_A_OFFSET		0x40400
-+#define RV1103B_SMT_GPIO0_B_OFFSET		0x50404
-+#define RV1103B_SMT_GPIO1_A01_OFFSET		0x410
-+#define RV1103B_SMT_GPIO1_A67_OFFSET		0x10410
-+#define RV1103B_SMT_GPIO2_OFFSET		0x30420
-+#define RV1103B_SMT_GPIO2_SARADC_OFFSET		0x3080C
++//======================= PMUCRU module definition bank=8 ========================
++// PMUCRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_PRESETN_PMU_GPIO0			0x001c0004
++#define SRST_DBRESETN_PMU_GPIO0			0x001c0005
++#define SRST_RESETN_DDR_FAIL_SAFE		0x001c0008
++#define SRST_PRESETN_PMU_HP_TIMER		0x001c0009
++#define SRST_RESETN_PMU_HP_TIMER		0x001c000A
++#define SRST_RESETN_PMU_32K_HP_TIMER		0x001c000B
++#define SRST_PRESETN_I2C0			0x001c000C
++#define SRST_RESETN_I2C0			0x001c000D
++#define SRST_PRESETN_UART0			0x001c000E
++#define SRST_SRESETN_UART0			0x001c000F
 +
-+static int rv1103b_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-+					   int pin_num,
-+					   struct regmap **regmap,
-+					   int *reg, u8 *bit)
-+{
-+	struct rockchip_pinctrl *info = bank->drvdata;
-+	int ret = 0;
++// PMUCRU_SOFTRST_CON01(Offset:0xA04)
++#define SRST_PRESETN_IOC_PMUIO0			0x001c0010
++#define SRST_PRESETN_CRU_PMU			0x001c0011
++#define SRST_PRESETN_PMU_GRF			0x001c0012
++#define SRST_PRESETN_PMU_SGRF			0x001c0013
++#define SRST_PRESETN_PMU_SGRF_REMAP		0x001c0014
++#define SRST_RESETN_PREROLL			0x001c0016
++#define SRST_RESETN_PREROLL_32K			0x001c0017
++#define SRST_HRESETN_PMU_SRAM			0x001c0018
++#define SRST_PRESETN_PWM0			0x001c0019
++#define SRST_RESETN_PWM0			0x001c001A
 +
-+	*regmap = info->regmap_base;
-+	switch (bank->bank_num) {
-+	case 0:
-+		if (pin_num < 7)
-+			*reg = RV1103B_SMT_GPIO0_A_OFFSET;
-+		else if (pin_num > 7 && pin_num < 14)
-+			*reg = RV1103B_SMT_GPIO0_B_OFFSET - 0x4;
-+		else
-+			ret = -EINVAL;
-+		break;
++// PMUCRU_SOFTRST_CON02(Offset:0xA08)
++#define SRST_RESETN_LPMCU			0x001c0020
++#define SRST_RESETN_LPMCU_PWRUP			0x001c0021
++#define SRST_RESETN_LPMCU_CPU			0x001c0022
++#define SRST_TRESETN_LPMCU_CPU			0x001c0023
 +
-+	case 1:
-+		if (pin_num < 6)
-+			*reg = RV1103B_SMT_GPIO1_A01_OFFSET;
-+		else if (pin_num >= 6 && pin_num < 23)
-+			*reg = RV1103B_SMT_GPIO1_A67_OFFSET;
-+		else if (pin_num >= 24 && pin_num < 30)
-+			*reg = RV1103B_SMT_GPIO1_A67_OFFSET;
-+		else
-+			ret = -EINVAL;
-+		break;
++// ======================= PMU1CRU module definition bank=9 =======================
++// PMU1CRU_SOFTRST_CON00(Offset:0xA00)
++#define SRST_PRESETN_SPI2AHB			0x00200000
++#define SRST_HRESETN_SPI2AHB			0x00200001
++#define SRST_SRESETN_SPI2AHB			0x00200002
++#define SRST_LSRESETN_PMU_BIU			0x00200003
++#define SRST_PRESETN_WDT_LPMCU			0x00200009
++#define SRST_TRESETN_WDT_LPMCU			0x0020000A
++#define SRST_HRESETN_SFC_PMU1			0x0020000C
++#define SRST_HRESETN_SFC_XIP_PMU1		0x0020000D
++#define SRST_SRESETN_SFC_2X_PMU1		0x0020000E
 +
-+	case 2:
-+		if (pin_num < 12) {
-+			*reg = RV1103B_SMT_GPIO2_OFFSET;
-+		} else if (pin_num >= 16) {
-+			ret = -EINVAL;
-+		} else {
-+			*reg = RV1103B_SMT_GPIO2_SARADC_OFFSET;
-+			*bit = 8;
++// PMU1CRU_SOFTRST_CON01(Offset:0xA04)
++#define SRST_PRESETN_LPMCU_MAILBOX		0x00200018
++#define SRST_PRESETN_IOC_PMUIO1			0x00200019
++#define SRST_PRESETN_CRU_PMU1			0x0020001A
 +
-+			return 0;
-+		}
-+		break;
++#define CLK_NR_SRST				(SRST_PRESETN_CRU_PMU1 + 1)
 +
-+	default:
-+		ret = -EINVAL;
-+		break;
-+	}
-+
-+	if (ret) {
-+		dev_err(info->dev, "unsupported bank_num %d pin_num %d\n", bank->bank_num, pin_num);
-+
-+		return ret;
-+	}
-+
-+	*reg += ((pin_num / RV1103B_SMT_PINS_PER_REG) * 4);
-+	*bit = pin_num % RV1103B_SMT_PINS_PER_REG;
-+	*bit *= RV1103B_SMT_BITS_PER_PIN;
-+
-+	return 0;
-+}
-+
- #define RV1108_PULL_PMU_OFFSET		0x10
- #define RV1108_PULL_OFFSET		0x110
- #define RV1108_PULL_PINS_PER_REG	8
-@@ -2982,6 +3212,9 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
- 	u8 bit;
- 	int drv_type = bank->drv[pin_num / 8].drv_type;
- 
-+	if (ctrl->type == RV1103B && pin_num >= 12)
-+		drv_type = DRV_TYPE_IO_LEVEL_2_BIT;
-+
- 	ret = ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
- 	if (ret)
- 		return ret;
-@@ -3043,6 +3276,11 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
- 	if (ret)
- 		return ret;
- 
-+	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-+		data = data >> 10;
-+		return data & 0x3;
-+	}
-+
- 	data >>= bit;
- 	data &= (1 << rmask_bits) - 1;
- 
-@@ -3071,7 +3309,8 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 		rmask_bits = RK3588_DRV_BITS_PER_PIN;
- 		ret = strength;
- 		goto config;
--	} else if (ctrl->type == RK3506 ||
-+	} else if (ctrl->type == RV1103B ||
-+		   ctrl->type == RK3506 ||
- 		   ctrl->type == RK3528 ||
- 		   ctrl->type == RK3562 ||
- 		   ctrl->type == RK3568) {
-@@ -3182,6 +3421,12 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
- 			ret = strength;
- 		}
- 	}
-+
-+	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-+		rmask_bits = 2;
-+		ret = strength;
-+	}
-+
- 	/* enable the write to the equivalent lower bits */
- 	data = ((1 << rmask_bits) - 1) << (bit + 16);
- 	rmask = data | (data >> 16);
-@@ -3236,6 +3481,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 				? PIN_CONFIG_BIAS_PULL_PIN_DEFAULT
- 				: PIN_CONFIG_BIAS_DISABLE;
- 	case PX30:
-+	case RV1103B:
- 	case RV1108:
- 	case RK3188:
- 	case RK3288:
-@@ -3251,6 +3497,9 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
- 		pull_type = bank->pull_type[pin_num / 8];
- 		data >>= bit;
- 		data &= (1 << RK3188_PULL_BITS_PER_PIN) - 1;
-+
-+		if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12)
-+			pull_type = 1;
- 		/*
- 		 * In the TRM, pull-up being 1 for everything except the GPIO0_D3-D6,
- 		 * where that pull up value becomes 3.
-@@ -3297,6 +3546,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 		ret = regmap_write(regmap, reg, data);
- 		break;
- 	case PX30:
-+	case RV1103B:
- 	case RV1108:
- 	case RV1126:
- 	case RK3188:
-@@ -3312,6 +3562,8 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
- 	case RK3576:
- 	case RK3588:
- 		pull_type = bank->pull_type[pin_num / 8];
-+		if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12)
-+			pull_type = 1;
- 		ret = -EINVAL;
- 		for (i = 0; i < ARRAY_SIZE(rockchip_pull_list[pull_type]);
- 			i++) {
-@@ -3417,6 +3669,11 @@ static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
- 	if (ret)
- 		return ret;
- 
-+	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-+		data >>= 8;
-+		return data & 0x3;
-+	}
-+
- 	data >>= bit;
- 	switch (ctrl->type) {
- 	case RK3562:
-@@ -3473,6 +3730,12 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
- 		}
- 	}
- 
-+	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-+		data = 0x3 << (bit + 16);
-+		rmask = data | (data >> 16);
-+		data |= ((enable ? 0x3 : 0) << bit);
-+	}
-+
- 	return regmap_update_bits(regmap, reg, rmask, data);
- }
- 
-@@ -3579,6 +3842,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
- 	case RK3066B:
- 		return pull ? false : true;
- 	case PX30:
-+	case RV1103B:
- 	case RV1108:
- 	case RV1126:
- 	case RK3188:
-@@ -4318,6 +4582,51 @@ static struct rockchip_pin_ctrl px30_pin_ctrl = {
- 		.schmitt_calc_reg	= px30_calc_schmitt_reg_and_bit,
- };
- 
-+static struct rockchip_pin_bank rv1103b_pin_banks[] = {
-+	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(0, 32, "gpio0",
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    0x40000, 0x50008, 0x50010, 0x50018,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT),
-+	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(1, 32, "gpio1",
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    0x20, 0x10028, 0x10030, 0x10038,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT),
-+	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(2, 32, "gpio2",
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    IOMUX_WIDTH_4BIT,
-+				    0x30040, 0x30048, 0x30050, 0x30058,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT,
-+				    DRV_TYPE_IO_LEVEL_8_BIT),
-+};
-+
-+static struct rockchip_pin_ctrl rv1103b_pin_ctrl __maybe_unused = {
-+	.pin_banks		= rv1103b_pin_banks,
-+	.nr_banks		= ARRAY_SIZE(rv1103b_pin_banks),
-+	.label			= "RV1103B-GPIO",
-+	.type			= RV1103B,
-+	.iomux_recalced		= rv1103b_mux_recalced_data,
-+	.niomux_recalced	= ARRAY_SIZE(rv1103b_mux_recalced_data),
-+	.pull_calc_reg		= rv1103b_calc_pull_reg_and_bit,
-+	.drv_calc_reg		= rv1103b_calc_drv_reg_and_bit,
-+	.schmitt_calc_reg	= rv1103b_calc_schmitt_reg_and_bit,
-+};
-+
- static struct rockchip_pin_bank rv1108_pin_banks[] = {
- 	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
- 					     IOMUX_SOURCE_PMU,
-@@ -4954,6 +5263,8 @@ static struct rockchip_pin_ctrl rk3588_pin_ctrl = {
- static const struct of_device_id rockchip_pinctrl_dt_match[] = {
- 	{ .compatible = "rockchip,px30-pinctrl",
- 		.data = &px30_pin_ctrl },
-+	{ .compatible = "rockchip,rv1103b-pinctrl",
-+		.data = &rv1103b_pin_ctrl },
- 	{ .compatible = "rockchip,rv1108-pinctrl",
- 		.data = &rv1108_pin_ctrl },
- 	{ .compatible = "rockchip,rv1126-pinctrl",
-diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-index 4f4aff42a80a..bb0e803e3b8a 100644
---- a/drivers/pinctrl/pinctrl-rockchip.h
-+++ b/drivers/pinctrl/pinctrl-rockchip.h
-@@ -185,6 +185,7 @@
- 
- enum rockchip_pinctrl_type {
- 	PX30,
-+	RV1103B,
- 	RV1108,
- 	RV1126,
- 	RK2928,
++#endif
 -- 
 2.34.1
 
