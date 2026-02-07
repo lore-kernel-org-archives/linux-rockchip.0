@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9399BEE0AE4
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Feb 2026 13:11:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC535EE0AE4
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Feb 2026 13:18:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SwDMWNglF2IktfWMtpu1Eg1AdKBIx2EE90Dkx4YBCdA=; b=JRs8/26c4hfgMu
-	ua/gjlRbBET284OAQx3NPWUxzYLIrbAea0vVhtRvDd7pgS7S2It4v061bTJq6RAp8eZFYVvfyLZ13
-	n9OCzsJUOteFWaCweM30BfdR2xyQ8wqubv1GXrqqruegcHidJNYg0NoTnKAt8uZaUbvayildMezHQ
-	O5dVhqxP1+ibzp/skU/YYS+jQGw5U0joTrmAhzggURj98fwxGfQlwGPW6A194CikjBwegSkktg5Fg
-	KnZv9e3FIEmlKerqVB+HjqVEQM+ls7Yy/G90yKGhwMcVbsqSvx/M6sTR4/VcfA2USJaWgw7X8ekmp
-	BlFRw86qncsegqp5W8hA==;
+	List-Owner; bh=iTjzAzwPnhXresG6r/0BKwl1ruQifye+tWLAo+NWfaA=; b=XPnjCpDzB4lGEA
+	ClhEa5NWqQwp+s7BUjbhwaWvsB/5YQCctLv344VhYXbruBpLDWR8ZT0j65EfJZMjhxgpq6EMPrZGv
+	G/z7/mBa2Xlgoc5WhjizLEJKTDmq0yJKUF/Eum0T09y+bYb33jG7fhSSvF1beFoP6dwL/t92lhGkl
+	x5iFB7C6oB1LDNB3WtjCObGoeaLrsEsRqESrMc6pyjvVq/SSvHWX1eiXZkKtIFBR75nIRFX5hoTfz
+	O+YDsxS0ZtX/wE8kcoBnXeqVhQ/sk+UuoyS2+JKNymt1nt58IFUsWd1D8W/D897U3DMMzBrm94aqF
+	WM1HGN3TjMUeynqz0zsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voi5R-0000000CSek-1Fq9;
-	Sat, 07 Feb 2026 13:10:59 +0000
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+	id 1voiCW-0000000CT92-2k6T;
+	Sat, 07 Feb 2026 13:18:16 +0000
+Received: from mail-dl1-x1235.google.com ([2607:f8b0:4864:20::1235])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1voi5M-0000000CSe2-3G2W
+	id 1voiCT-0000000CT5W-2tNL
 	for linux-rockchip@lists.infradead.org;
-	Sat, 07 Feb 2026 13:10:53 +0000
-Received: by mail-yx1-xb135.google.com with SMTP id 956f58d0204a3-64ad79dfb6eso448117d50.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 07 Feb 2026 05:10:52 -0800 (PST)
+	Sat, 07 Feb 2026 13:18:15 +0000
+Received: by mail-dl1-x1235.google.com with SMTP id a92af1059eb24-1270ac5d3efso1154639c88.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 07 Feb 2026 05:18:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770469852; x=1771074652; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1770470292; x=1771075092; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=QBpsIzCCQeoZZ/GNnpHx2ANdVkIKBFfRNNmEzWBceUc=;
-        b=BgT1Irsh7WN4MUMM4r3nfjHEBd7j92fWLgupAdieBcHFPFal2E/yiYWCAQmQW73UYG
-         MzD2q734r/VtUBO9sKF0Js8XwuOmgCYblJUA8RHvSJxI4/3IqFsoPABKlF9EPK4fJAsO
-         /5at2rnjCBsjy4sCjauyxPlP/hNFuZXLQ+V/YeklO32G7kxivS6zvnfKFwKobeBvCGqx
-         dX+hfuj7eryRCGv22DBX1evz6CONjWGH2GURdA9bzkB3qhpvSWdIYgw89hoHACPYm9l5
-         VblrJSqmEzNcHDypyWqDL+Tuxk5IywRqLFdD95za0tCVNFh4pdTU76S38kREY8LdvfIL
-         eZKg==
+        bh=+9W9/g77jOrUZY4Vom1pwr4e+Jb98dvCscwpobNoHak=;
+        b=P+DL4Pde/AYUpL4YqdyMWfJ6EnmDeL/BsUHjYT9jW+SyDpNAQSjgnsfecVuxE99BYI
+         vghXtbrRVd/PwmZ9VIl0UUEfKwgNk2iqjsCPWoj/cTGOeK8hFTumkD0yR2YFBdNTNwUU
+         0pY77bzbM9hPeVBs0tQTuheIHLyrGboBr82mbdI3PXnuELjCwclUICo3vHzcfOTcFAuB
+         MH+BEbwYgl2aYIMZ+16pFExFQQupqhmgq1VfCLChsPy77kdYdr0/hPGfJ/gspuTT1U28
+         6ZNXMO4cT1kYjl/OPKYy2qYJgo6mFBwjyV6jTq0KMbSotqwGwS81LvUpwUuFFZT0d7nR
+         sfmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770469852; x=1771074652;
+        d=1e100.net; s=20230601; t=1770470292; x=1771075092;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QBpsIzCCQeoZZ/GNnpHx2ANdVkIKBFfRNNmEzWBceUc=;
-        b=PwFHKJigOjIPD/Qqvme6aAaNkrT2f6Kk3O/Eg9msfx3klPPj7K3n1ltZDPP39BNGpN
-         ONsubPhmFzRVWIDJl3nDT0FkFToAngoIZGqJ8ucOj3OBA8lC8Om5M1uY9xBot7aGGBpv
-         EqXwVc3q5Ag5i1iksPx2FsaCQOur/2QZfWvagk6sJoXoThXAsiVp4LGgjYsGGbBh7j1B
-         GUljbWig98jLg/zsY5tLWYlri89F/2vcLG4MtL7hz3nfo/pVqnLr7yhIJen0LN6QSz8g
-         JOlulCHvK+YjOQT0fT91pcGEhN1rXy4tdhVpXacYhIVQ6lnKa8VWenaf2UnBGvlaPt77
-         esaw==
-X-Forwarded-Encrypted: i=1; AJvYcCXygJCEXvIIfYPFK+vzfD+IZ1g13Fkn7HLWt3Yhq/38Rt+A1FrSIpZ2mu3UDamGlgEaWrDluyJVQhSb1zj27w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyZZsSY0oEvbxif2oqscFhvu5IgMKYgFepT33DLIIPYbSXi5Vdy
-	LS7nzNmwXSKNUKrAiu0Y1N8k9HFY67V+sXUmxGdoPxwOoqduOdQshuy+
-X-Gm-Gg: AZuq6aKeMBAUTqjJaHjgOm9QRdZ8iMVChO8WmY6/4GYYQq2KHMlG2PgWU4Pe4z3MEh2
-	zO9A8nPGbqFUT66EkhCYEyPRTOgp49+sZXutEPonNdNsUEC/iLJRJdPeJlSajP+hubqkCl2XS7o
-	j92B1dG2FgS58ZedFGDhJZfx2lK6aH7SXxvlDSwUocgl4y8svyova5R+R98fidj1LO3iMKHmMGt
-	z9DJY+cMv6YB1YDNaXp2U1TojrqbLmOM7mIC2YPAId46tYPMSoDA0VPf8Lr5IoQe9/1YPeT2qug
-	0NiB9YbZ0M0mW/k2q1s71D8An8eqYZpeOsvLWOzp1gbEPhqsuBj6VZRtPb8TrkjLEspPKq9Cdop
-	ST7nLY2ISbWWGq5UxpEJkjN31idPUKiYqCqdzARw/6Y50o/5v+jx+Le672rnXHCfWSsRI3SqOHA
-	/pqi1NZ2zb+LF3EyeYTf/bpx3T
-X-Received: by 2002:a05:690e:418b:b0:649:b851:4ad with SMTP id 956f58d0204a3-649f1ee4aa4mr5307230d50.42.1770469851708;
-        Sat, 07 Feb 2026 05:10:51 -0800 (PST)
+        bh=+9W9/g77jOrUZY4Vom1pwr4e+Jb98dvCscwpobNoHak=;
+        b=lGlGh0kbOBf8qO9rsITOgmKuLi6/MpVMjSZbtHdEbIal8oKsXy4809db3cL8Wi+hOt
+         HNSsqm1UwJXPdHIoFf9GXsbVBmOmc4RGjVup9C595QsBolELm5WHeuHmWJT3FistMufn
+         qYEw7PEjMpm+x2JLZbgJtfRprSN93SL54wYfv4+SR8gz0nR1O+TyaH//X1TNMaJlTI3O
+         6dpBeU7hI+5PS9CuH/sSsEv1Zz8YITbTfE5oywQfZgqLFKdfU2exagYIy4XtoPuzekZz
+         8/f4/UUaKE4lMWCGejmFmLF02x7w6XRb4MvWWOjbXsO7c4r+LEUMuV+zFHwJiCJd66oH
+         0Asw==
+X-Forwarded-Encrypted: i=1; AJvYcCU1tufcE8KjWyedQHJ5JYY/epQTqQDT+0nFrv8OmXy8V5yZKcX29v9MdLxxb8C618ssbXPPwp50er7Njk1ctA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxMLc7aLNmN6yUiv0ZU84grIlYLTSx06rKLkjab11+ldICUKQn5
+	A80+mIUYIMjkXtIyP3bCZc7P++atdMjAhFuE7kWZOTd427L0uS7SYJCy
+X-Gm-Gg: AZuq6aIdF0hrF3/Zz/Ub92V/XFIH0wwdOmHW2IIvLYoIyxz8H/R3HMgw8lY1QJ1My+3
+	U4Gu7LP7oIz9FLx4G++KGVW/NttStDPEoEXutJAlAQcqqG2pQru9ZPOz1PxRlV9clRLsHj9qMyp
+	0FMVw/+tdfK7F8IYWHqymjVgIiGDP8o94H9xfxdsmOMpBV7yjVyAN1ZF1GFUgn4nDBCYDY27xG4
+	ZoxxNY+vtQrfrrNBwC9vycWrDo8PGDZBjBNqdGAVrdqI67tRfwhLPsQ2J05QpEftkHj2D87F2Rw
+	wipDoQWoT7LyHcHgzpdbbY/f9G8cWGH35HjcYXObuYg0dk+1AA3fJBl6DRqBDNFnJwkhDz2sowN
+	b6IbQFgdoSR5CVwzDD/E8wpQanU9CZj7hjMfwZGPo5ZhtNE/dQZAlwux/W4JOMlnGtzi+DOYJIL
+	WLOqUGZRngBCdAkDlb7OKr2Of6
+X-Received: by 2002:a05:7022:f8e:b0:11a:51a8:eca with SMTP id a92af1059eb24-12703f84c42mr3550846c88.18.1770470292497;
+        Sat, 07 Feb 2026 05:18:12 -0800 (PST)
 Received: from fabio-Precision-3551.. ([2804:14c:485:4b61:b1ab:5cb0:a2f8:764b])
-        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-649f255ea25sm4965466d50.17.2026.02.07.05.10.48
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2b855c7f5fcsm3688627eec.29.2026.02.07.05.18.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Feb 2026 05:10:51 -0800 (PST)
+        Sat, 07 Feb 2026 05:18:10 -0800 (PST)
 From: Fabio Estevam <festevam@gmail.com>
-To: ulf.hansson@linaro.org
-Cc: robh@kernel.org,
+To: heiko@sntech.de
+Cc: jonas@kwiboo.se,
+	robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
-	heiko@sntech.de,
-	linux-mmc@vger.kernel.org,
 	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	Fabio Estevam <festevam@nabladev.com>
-Subject: [PATCH v2] dt-bindings: mmc: rockchip-dw-mshc: Add RV1103B compatible
-Date: Sat,  7 Feb 2026 10:10:41 -0300
-Message-Id: <20260207131041.2833840-1-festevam@gmail.com>
+Subject: [PATCH v2 1/4] dt-bindings: soc: rockchip: grf: Add RV1103B compatibles
+Date: Sat,  7 Feb 2026 10:18:00 -0300
+Message-Id: <20260207131803.2834749-1-festevam@gmail.com>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260207_051052_824444_7F82EF54 
-X-CRM114-Status: UNSURE (   6.85  )
+X-CRM114-CacheID: sfid-20260207_051813_753687_15A243B5 
+X-CRM114-Status: UNSURE (   7.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,30 +105,44 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Fabio Estevam <festevam@nabladev.com>
 
-The RV1103B uses the DesignWare MSHC controller compatible with the
-existing Rockchip RK3288 variant. Add the rockchip,rv1103b-dw-mshc
-compatible string.
+Add the GRF and IOC compatible strings for the RV1103B SoC.
 
 Signed-off-by: Fabio Estevam <festevam@nabladev.com>
 ---
 Changes since v1:
-- Make commit log more concise.
+-  Update to the list of children.
 
- Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-index acb9fb9a92cd..a75209bd2710 100644
---- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-+++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-@@ -43,6 +43,7 @@ properties:
-               - rockchip,rk3562-dw-mshc
-               - rockchip,rk3568-dw-mshc
-               - rockchip,rk3588-dw-mshc
-+              - rockchip,rv1103b-dw-mshc
-               - rockchip,rv1108-dw-mshc
-               - rockchip,rv1126-dw-mshc
-           - const: rockchip,rk3288-dw-mshc
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 0b8e3294c83e..4fc01a450139 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -63,6 +63,7 @@ properties:
+               - rockchip,rk3588-vo0-grf
+               - rockchip,rk3588-vo1-grf
+               - rockchip,rk3588-vop-grf
++              - rockchip,rv1103b-ioc
+               - rockchip,rv1108-usbgrf
+           - const: syscon
+       - items:
+@@ -98,6 +99,7 @@ properties:
+               - rockchip,rk3576-pmu0-grf
+               - rockchip,rk3576-usb2phy-grf
+               - rockchip,rk3588-usb2phy-grf
++              - rockchip,rv1103b-grf
+               - rockchip,rv1108-grf
+               - rockchip,rv1108-pmugrf
+               - rockchip,rv1126-grf
+@@ -231,6 +233,7 @@ allOf:
+               - rockchip,rk3036-grf
+               - rockchip,rk3308-grf
+               - rockchip,rk3368-pmugrf
++              - rockchip,rv1103b-grf
+ 
+     then:
+       properties:
 -- 
 2.34.1
 
