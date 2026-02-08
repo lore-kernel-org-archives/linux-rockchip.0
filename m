@@ -4,110 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A4E3EF06E2
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Feb 2026 10:31:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D69C6EF06E2
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Feb 2026 13:52:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ofQ1tWWFmMIoKus91Ik/uSQGMYN4IQ/dzuEar+G6oBY=; b=KPmtTfE1/9zK9O
-	SrrWB1kP6kk/VoqtLh9q6UO4E8x356a6I9QjIpfRqEPIVOD0sF4Byajqpfgh1n7ZoyH7GhgYcKeQd
-	mQ5wk3LF1pKzBfLD4V7ep+HjlrehOYvUV6Lrdj8HTR+3zzciikIRWiVe6NY1O3LULl1AlZjAP+hbS
-	dcx7CJLhDqVmswMlDc7YB3qT2GrtoJf3xZ7cHaDTjle40UcFMPmNElg4Opk3LoaIITVdjeo+xGI0h
-	Vqugd9a3RsgqN11L88LaAbbLUF9f0SQlYOZfA0E3mwGdl+lZGJnZlxs298ndpU7q2ZXLZXWiZqiIs
-	d13VyVFu/MvUeKve0rYw==;
+	List-Owner; bh=eeiS1cgxzbUILwRHs2rUY+cnTc4r3mw62sYfPal7i2E=; b=gf+opWvnxlRyNr
+	MNP69K/ruiAoQwpsKR0d4osPcTxc0FVudNozzc58p8nyJAuLXYOdvcg6XU3caF37Id1OOWDtcSDtK
+	7R9dB7CaztNQCtHhkCu+PS6SWtPsZnofw74Vf2JkPcBVOirkd/I2QGQPdV+qizD67JfhbbTYjgDkP
+	Topvf2X5t89bSBDdfc7EdCkAlLWP9yyYVE2r4OHsZzC40nR6pLm5RBzj/M2eYMBHN7xD9zC+WjLGq
+	ZAlIr9wYAvG88OxUVzkLs3tkxsYbG3is0fqzGI/7JnFeSZ4HOo85phL7mjx08gfvxCWWfMpvtzn9e
+	mEj3d8elfiq0Uf9EpnFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vp24t-0000000DEBI-1ftj;
-	Sun, 08 Feb 2026 10:31:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vp5Cz-0000000DMZp-2oYe;
+	Sun, 08 Feb 2026 13:52:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vp24q-0000000DEAl-2LC4;
-	Sun, 08 Feb 2026 10:31:41 +0000
+	id 1vp5Cx-0000000DMYk-1bEV;
+	Sun, 08 Feb 2026 13:52:15 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7385341E40;
-	Sun,  8 Feb 2026 10:31:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DB49C4CEF7;
-	Sun,  8 Feb 2026 10:31:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 51880600BB;
+	Sun,  8 Feb 2026 13:52:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0CE1C4CEF7;
+	Sun,  8 Feb 2026 13:52:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770546699;
-	bh=GUAXOcrm41ITrljNUEdNmAemB4EIj2N7q4Z7fBaiNO8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=cMW9J1f39HYiWlkvSNw8muEYC99v3zB8fCt98m2AF4bS1RHuIaBoxB1iwdQmbI/Pz
-	 RswStGsi0Y0GXhMOfRZHCj01Tw0stq5JXpLVZTUEoBy6QaIyimCZWQssKYHeP5DuE3
-	 R2nn1C/Hu+a3vqAybQLNCEegdNHEdqzD1bwJHinEugAf8v6QHwn58FUlQ8TmfokVAc
-	 kk8a36xFCZqHoymsmUgfkC2nLtFoEeIJPcJB+t2JzhN3gLvJ0gAV9jtnDdHSzGyjRk
-	 ysaP+eeR1pJ+12hOm9m/pB1qhacEkZwBUX/qlj7XiLiuYE1PR0B4nbzgwsinEYf7kf
-	 EOOkFCKoGsKDg==
-Message-ID: <b9e275cf-7c16-47cf-9699-82bc79aa7f90@kernel.org>
-Date: Sun, 8 Feb 2026 11:31:34 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 7/7] ARM: dts: rockchip: rk3506: Add pinctrl and rmio
- dtsi for rk3506
-To: Ye Zhang <ye.zhang@rock-chips.com>,
- Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, linux-gpio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- tao.huang@rock-chips.com
-References: <20251227114957.3287944-1-ye.zhang@rock-chips.com>
- <20251227114957.3287944-8-ye.zhang@rock-chips.com>
- <ebb720f6-4756-437f-a71a-d94f45d732e8@kernel.org>
- <543e7200-2126-490a-a7a8-4898362a910d@rock-chips.com>
+	s=k20201202; t=1770558734;
+	bh=UDs0kVTj4IDI4L0y96iofpybYkZsWZPDP8BPk2cVUjE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Ivbuju1ad5UAtUFWwVn6FU+VShKQOhNoQu+79H9uHr5GX+VzEncTzKXlMS1ZxivVz
+	 QDBM7N+rXT74htGLVISw94X1SHhRobgeE1TlHsxlNEZHaSp+oixv3EYHNJIp4cT3LY
+	 aX23bjqr7trdy9t4824PF+zDAevdGc7NqQVbnTerJbVbpyWfforT4mUyRp8Xz0UxPz
+	 x0zYKOnvWRRIDC90RCGcBLfsUqjEfGGBzZB6xbUvBgz89xEJremxXXc5t1U+IU+RB+
+	 YpU6R87ny4sFhQhsk6IbQpSPo6T442Su798GCFtv1O2brtHJnQjhKhkr2cBHEn3RtB
+	 k3zPxbPKfOM+g==
+Date: Sun, 8 Feb 2026 14:52:11 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <543e7200-2126-490a-a7a8-4898362a910d@rock-chips.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260208_023140_788135_478A1E19 
-X-CRM114-Status: GOOD (  13.86  )
+To: Fabio Estevam <festevam@gmail.com>
+Cc: heiko@sntech.de, jonas@kwiboo.se, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, Fabio Estevam <festevam@nabladev.com>
+Subject: Re: [PATCH v2 3/4] dt-bindings: arm: rockchip: Add Onion RV1103B
+ Omega4
+Message-ID: <20260208-pearl-ammonite-of-warranty-2c9212@quoll>
+References: <20260207131803.2834749-1-festevam@gmail.com>
+ <20260207131803.2834749-3-festevam@gmail.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260207131803.2834749-3-festevam@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,34 +71,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 29/12/2025 10:00, Ye Zhang wrote:
->>> +
->>> +		/omit-if-no-ref/
->>> +		rm_io28_sai0_sdi0: rm-io28-sai0-sdi0 {
->>> +			rockchip,pins =
->>> +				<1 RK_PC3 7 &pcfg_pull_none>;
->>> +			rockchip,rmio-pins =
->>> +				<0 28 54>;
->>> +		};
->> Why are you defining all pins? This is wrong, your driver has to do it,
->> not DTS. All these definitions when not used are just pointless.
+On Sat, Feb 07, 2026 at 10:18:02AM -0300, Fabio Estevam wrote:
+> From: Fabio Estevam <festevam@nabladev.com>
 > 
-> This file is auto-generated to provide a complete set of RMIO configurations.   Our intention is to offer a generic library for all future board developers, so they can simply pick the needed nodes by phandle without manually looking up register values in the datasheet every time.   This improves usability and standardization.
+> Onion Omega4 board is a board based on the RV1103B SoC.
 > 
-> We also used the /omit-if-no-ref/ tag, so this will strictly not increase the size of the compiled DTB binary at all.
+> Document its compatible.
 > 
-> Could you please reconsider if this  approach is acceptable given the usability benefits?
+> Signed-off-by: Fabio Estevam <festevam@nabladev.com>
+> ---
+> Changes since v1:
+> - Fixed sorting.
 
-What usability benefits? This is review and maintenance nightmare.
-
-> 
-> If you still consider the ~25k lines of source code bloat unacceptable for upstream, we will have to drop this generic dtsi file and let users (and ourselves) manually define only the required nodes when adding board support."
-> 
-
-I see no point in having such code. Upstream is not your SDK.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
 Best regards,
 Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
