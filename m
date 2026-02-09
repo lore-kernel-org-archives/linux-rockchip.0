@@ -4,64 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 373ADEF06E8
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Feb 2026 23:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27E4FEF06ED
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Feb 2026 03:45:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vGgZv9aMtst2IUF5Zwmk3LP7Da4IDYWHyTqLywcTD8g=; b=qxsZmRLjjQU4lq
-	lmY37CZi7yN3CA35cd3G5hiQNgxVUx10QgKlihK3hsSceDlbLBo0uqxEj37HPH580xJ/nOsV7EeSp
-	tWcw/G85zu+i8cFXrVR5WjQtWM3sotyUy3e1Sa2n5l5mjbmw6mIz6EpeV/jhIhVqtFppM/FRMeq3R
-	Ev6XTYfICZtN3oU242sU/6aLS+VgBRMoMdPEnXqXLzN/8bl0nTTwoa8WaLRNkobgwaEZ1OTUV7pOp
-	Nq6I6QRwQb6pqDVjA76Ax8qdgGSHgjbbzSfsJxOYc3mpgkr4oMGOCjzFBkFXaUi2RxSKJH/Pd9V82
-	at47bILvEYoAW7SetaGQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NQtx+J6XaPcZAZvu7ef2ErOViu5uwfawxWXo+qEeFMw=; b=rNiGcAB2Dp7DmJ
+	b90fhHawC2ByK/X//hh8tQu1eqVq3TbeN5OHyqZMYwlrYOTtiFzFuHdBbxqRIiK67DpJMd6Jl6zB7
+	yKQV0Qi8uVXGao2gPJG6bOE/D0Wh7wSKvEPQXXAObUUhO3IN1vruePs2jNk1FvAJdNoLZte3qqeUa
+	wRHmeLVTuek6hPPWEr8C5FPE96f93EUPU7XBVytlT8yTsZHPb4tz81z9/OJPbIxsmSpRVvfeorzCN
+	cuu3+Shc9jiD90bBtLGyyLmFwiEbUeNPZUMxa3pp0R1Q3RY+39YUt7Sv0s3SLxRnhHp9w06TvnQEj
+	Ufo+EpDHKv2JR42UDUjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpE3n-0000000EYfw-0pqq;
-	Sun, 08 Feb 2026 23:19:23 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1vpID7-0000000EmtA-3QfT;
+	Mon, 09 Feb 2026 03:45:17 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpE3j-0000000EYfJ-2aIl
-	for linux-rockchip@lists.infradead.org;
-	Sun, 08 Feb 2026 23:19:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1770592758;
- bh=6DVcU5BMCxLiztutJKgnnqr8rLk1m/R23lPUOG4D52A=;
- b=hXn9oCmSEWeCMKPZnJqi88oBDTHRMweaLz+CtF+F/bB1cD+13Fgv8dlJPT65Rs3+wIYMcOduD
- RJ/XaXh8MCqjGFIdr2bgFFN2CEkc8qsb7By90ZIQ8k/LbfdX7KhskuAK+bqrKTUPnbMp3SmTECj
- tStism7Wa6d46pCWcswY8ZeYJg8RWMJKwMGdbk1X5OM1qrGNSdxELVBKmTz71P/NLErEgkNk7t+
- UOMoDn6vClxGR56v8kUFa51MRY1rU8H5XbqLP1EYG/RC+BHGUL6eucZ3aJKyDch4WeVuI4BZUyf
- 0vUZ/KmiAUkayq5/yeDBT4JLrebfZB85z8DDgw2DQlEg==
-X-Forward-Email-ID: 698919f1a6487c2810b1e73c
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.6.2
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <b2990fff-1b93-4a6a-9bfb-fae71ae72a33@kwiboo.se>
-Date: Mon, 9 Feb 2026 00:19:10 +0100
+	id 1vpICw-0000000Emrr-48H6;
+	Mon, 09 Feb 2026 03:45:16 +0000
+Received: from localhost (unknown [124.16.138.129])
+	by APP-05 (Coremail) with SMTP id zQCowABX7A85WIlpzTDbBw--.62243S2;
+	Mon, 09 Feb 2026 11:44:57 +0800 (CST)
+From: Chen Ni <nichen@iscas.ac.cn>
+To: dsimic@manjaro.org
+Cc: airlied@gmail.com,
+	andy.yan@rock-chips.com,
+	damon.ding@rock-chips.com,
+	dri-devel@lists.freedesktop.org,
+	heiko@sntech.de,
+	hjc@rock-chips.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	simona@ffwll.ch,
+	tzimmermann@suse.de,
+	Chen Ni <nichen@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH v2] drm/rockchip: analogix_dp: Add missing error check for platform_get_resource()
+Date: Mon,  9 Feb 2026 11:31:23 +0800
+Message-Id: <20260209033123.1089370-1-nichen@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/2] pinctrl: rockchip: Add RV1103B pinctrl support
-To: Fabio Estevam <festevam@gmail.com>
-Cc: linusw@kernel.org, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Fabio Estevam <festevam@nabladev.com>
-References: <20260207130642.2833312-1-festevam@gmail.com>
- <20260207130642.2833312-2-festevam@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260207130642.2833312-2-festevam@gmail.com>
+X-CM-TRANSID: zQCowABX7A85WIlpzTDbBw--.62243S2
+X-Coremail-Antispam: 1UD129KBjvdXoWrtF43GFWDAw15AFWrKF4rXwb_yoWkGrX_K3
+	WxXr45Wr18ZrnYkw43Aw43uFZav3ZI9r4kWa10qFZ3tF1DJF15XFyFvr4Fva4Uta1xAFsx
+	G3WDXr4qgFnxAjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbf8FF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Xr0_Ar1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_
+	Gr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVWxJr
+	0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
+	2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r1j6r4UMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
+	Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFylc2xSY4AK67AK6r48MxAIw28IcxkI7VAKI4
+	8JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xv
+	wVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVW8ZVWrXwCIc40Y0x0EwIxGrwCI42IY6xIIjx
+	v20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20E
+	Y4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267
+	AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7VUjm9aPUUUUU==
+X-Originating-IP: [124.16.138.129]
+X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260208_151920_077892_F45AC087 
-X-CRM114-Status: GOOD (  36.51  )
+X-CRM114-CacheID: sfid-20260208_194507_402743_5AD0F345 
+X-CRM114-Status: UNSURE (   9.26  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,532 +90,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Fabio,
+Add missing error check for platform_get_resource() return value to
+prevent NULL pointer dereference when memory resource is not available.
 
-On 2/7/2026 2:06 PM, Fabio Estevam wrote:
-> From: Fabio Estevam <festevam@nabladev.com>
-> 
-> Add pinctrl support for the RV1103B.
-> 
-> Based on the 5.10 Rockchip vendor kernel driver.
-> 
-> Signed-off-by: Fabio Estevam <festevam@nabladev.com>
-> ---
-> Changes since v1:
->  - None.
->  
->  drivers/pinctrl/pinctrl-rockchip.c | 313 ++++++++++++++++++++++++++++-
->  drivers/pinctrl/pinctrl-rockchip.h |   1 +
->  2 files changed, 313 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
-> index 2fc67aeafdb3..092ce4cac9cf 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.c
-> +++ b/drivers/pinctrl/pinctrl-rockchip.c
-> @@ -467,6 +467,22 @@ static const struct pinctrl_ops rockchip_pctrl_ops = {
->   * Hardware access
->   */
->  
-> +static struct rockchip_mux_recalced_data rv1103b_mux_recalced_data[] = {
-> +	{
-> +		.num = 1,
-> +		.pin = 6,
-> +		.reg = 0x10024,
-> +		.bit = 8,
-> +		.mask = 0xf
-> +	}, {
-> +		.num = 1,
-> +		.pin = 7,
-> +		.reg = 0x10024,
-> +		.bit = 12,
-> +		.mask = 0xf
-> +	},
-> +};
-> +
->  static struct rockchip_mux_recalced_data rv1108_mux_recalced_data[] = {
->  	{
->  		.num = 1,
-> @@ -1172,6 +1188,9 @@ static int rockchip_get_mux(struct rockchip_pin_bank *bank, int pin)
->  	else
->  		regmap = info->regmap_base;
->  
-> +	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin >= 12)
-> +		return 0;
+Fixes: 718b3bb9c0ab ("drm/rockchip: analogix_dp: Expand device data to support multiple edp display")
+Cc: stable@vger.kernel.org
+Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+---
+Changes in v2:
+- Add Reviewed-by tag from Dragan Simic
+- Add Cc stable tag as suggested
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-There should not be any need for this special handling here, please use
-e.g. IOMUX_UNROUTED or IOMUX_GPIO_ONLY flags for the gpio2 bank.
-
-It also only looks like up to 12 or 13 pins are usable/routed so that
-should also be properly described in the bank info.
-
-> +
->  	if (ctrl->type == RK3506) {
->  		if (bank->bank_num == 1)
->  			regmap = info->regmap_ioc1;
-> @@ -1298,6 +1317,9 @@ static int rockchip_set_mux(struct rockchip_pin_bank *bank, int pin, int mux)
->  	else
->  		regmap = info->regmap_base;
->  
-> +	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin >= 12)
-> +		return 0;
-
-Same here, existing flags and/or limit the number of pins exposed for
-the bank.
-
-> +
->  	if (ctrl->type == RK3506) {
->  		if (bank->bank_num == 1)
->  			regmap = info->regmap_ioc1;
-> @@ -1495,6 +1517,214 @@ static int px30_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
->  	return 0;
->  }
->  
-> +#define RV1103B_DRV_BITS_PER_PIN		8
-> +#define RV1103B_DRV_PINS_PER_REG		2
-> +#define RV1103B_DRV_GPIO0_A_OFFSET		0x40100
-> +#define RV1103B_DRV_GPIO0_B_OFFSET		0x50110
-> +#define RV1103B_DRV_GPIO1_A01_OFFSET		0x140
-> +#define RV1103B_DRV_GPIO1_A67_OFFSET		0x1014C
-> +#define RV1103B_DRV_GPIO2_OFFSET		0x30180
-> +#define RV1103B_DRV_GPIO2_SARADC_OFFSET		0x3080C
-> +
-> +static int rv1103b_calc_drv_reg_and_bit(struct rockchip_pin_bank *bank,
-> +				       int pin_num, struct regmap **regmap,
-> +				       int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +	int ret = 0;
-> +
-> +	*regmap = info->regmap_base;
-> +	switch (bank->bank_num) {
-> +	case 0:
-> +		if (pin_num < 7)
-> +			*reg = RV1103B_DRV_GPIO0_A_OFFSET;
-> +		else if (pin_num > 7 && pin_num < 14)
-> +			*reg = RV1103B_DRV_GPIO0_B_OFFSET - 0x10;
-
-Why define a constant and then substract another constant from it?
-
-> +		else
-> +			ret = -EINVAL;
-> +		break;
-> +
-> +	case 1:
-> +		if (pin_num < 6)
-> +			*reg = RV1103B_DRV_GPIO1_A01_OFFSET;
-> +		else if (pin_num >= 6 && pin_num < 23)
-> +			*reg = RV1103B_DRV_GPIO1_A67_OFFSET - 0xc;
-> +		else if (pin_num >= 24 && pin_num < 30)
-> +			*reg = RV1103B_DRV_GPIO1_A67_OFFSET - 0xc;
-> +		else
-> +			ret = -EINVAL;
-
-The bank should probably only report up to 29 pins?
-
-> +		break;
-> +
-> +	case 2:
-> +		if (pin_num < 12) {
-> +			*reg = RV1103B_DRV_GPIO2_OFFSET;
-> +		} else if (pin_num >= 16) {
-> +			ret = -EINVAL;
-
-Similar here, gpio2 only seem to support up to 16 pins.
-
-> +		} else {
-> +			*reg = RV1103B_DRV_GPIO2_SARADC_OFFSET;
-> +			*bit = 10;
-> +
-> +			return 0;
-> +		}
-> +		break;
-> +
-> +	default:
-> +		ret = -EINVAL;
-> +		break;
-> +	}
-> +
-> +	if (ret) {
-> +		dev_err(info->dev, "unsupported bank_num %d pin_num %d\n", bank->bank_num, pin_num);
-> +
-> +		return ret;
-> +	}
-> +
-> +	*reg += ((pin_num / RV1103B_DRV_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RV1103B_DRV_PINS_PER_REG;
-> +	*bit *= RV1103B_DRV_BITS_PER_PIN;
-> +
-> +	return 0;
-> +}
-> +
-> +#define RV1103B_PULL_BITS_PER_PIN		2
-> +#define RV1103B_PULL_PINS_PER_REG		8
-> +#define RV1103B_PULL_GPIO0_A_OFFSET		0x40200
-> +#define RV1103B_PULL_GPIO0_B_OFFSET		0x50204
-> +#define RV1103B_PULL_GPIO1_A01_OFFSET		0x210
-> +#define RV1103B_PULL_GPIO1_A67_OFFSET		0x10210
-> +#define RV1103B_PULL_GPIO2_OFFSET		0x30220
-> +#define RV1103B_PULL_GPIO2_SARADC_OFFSET	0x3080C
-> +
-> +static int rv1103b_calc_pull_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					int pin_num, struct regmap **regmap,
-> +					int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +	int ret = 0;
-> +
-> +	*regmap = info->regmap_base;
-> +	switch (bank->bank_num) {
-> +	case 0:
-> +		if (pin_num < 7)
-> +			*reg = RV1103B_PULL_GPIO0_A_OFFSET;
-> +		else if (pin_num > 7 && pin_num < 14)
-> +			*reg = RV1103B_PULL_GPIO0_B_OFFSET - 0x4;
-> +		else
-> +			ret = -EINVAL;
-> +		break;
-> +
-> +	case 1:
-> +		if (pin_num < 6)
-> +			*reg = RV1103B_PULL_GPIO1_A01_OFFSET;
-> +		else if (pin_num >= 6 && pin_num < 23)
-> +			*reg = RV1103B_PULL_GPIO1_A67_OFFSET;
-> +		else if (pin_num >= 24 && pin_num < 30)
-> +			*reg = RV1103B_PULL_GPIO1_A67_OFFSET;
-> +		else
-> +			ret = -EINVAL;
-> +		break;
-> +
-> +	case 2:
-> +		if (pin_num < 12) {
-> +			*reg = RV1103B_PULL_GPIO2_OFFSET;
-> +		} else if (pin_num >= 16) {
-> +			ret = -EINVAL;
-> +		} else {
-> +			*reg = RV1103B_PULL_GPIO2_SARADC_OFFSET;
-> +			*bit = 13;
-> +
-> +			return 0;
-> +		}
-> +		break;
-> +
-> +	default:
-> +		ret = -EINVAL;
-> +		break;
-> +	}
-> +
-> +	if (ret) {
-> +		dev_err(info->dev, "unsupported bank_num %d pin_num %d\n", bank->bank_num, pin_num);
-> +
-> +		return ret;
-> +	}
-> +
-> +	*reg += ((pin_num / RV1103B_PULL_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RV1103B_PULL_PINS_PER_REG;
-> +	*bit *= RV1103B_PULL_BITS_PER_PIN;
-> +
-> +	return 0;
-> +}
-> +
-> +#define RV1103B_SMT_BITS_PER_PIN		1
-> +#define RV1103B_SMT_PINS_PER_REG		8
-> +#define RV1103B_SMT_GPIO0_A_OFFSET		0x40400
-> +#define RV1103B_SMT_GPIO0_B_OFFSET		0x50404
-> +#define RV1103B_SMT_GPIO1_A01_OFFSET		0x410
-> +#define RV1103B_SMT_GPIO1_A67_OFFSET		0x10410
-> +#define RV1103B_SMT_GPIO2_OFFSET		0x30420
-> +#define RV1103B_SMT_GPIO2_SARADC_OFFSET		0x3080C
-> +
-> +static int rv1103b_calc_schmitt_reg_and_bit(struct rockchip_pin_bank *bank,
-> +					   int pin_num,
-> +					   struct regmap **regmap,
-> +					   int *reg, u8 *bit)
-> +{
-> +	struct rockchip_pinctrl *info = bank->drvdata;
-> +	int ret = 0;
-> +
-> +	*regmap = info->regmap_base;
-> +	switch (bank->bank_num) {
-> +	case 0:
-> +		if (pin_num < 7)
-> +			*reg = RV1103B_SMT_GPIO0_A_OFFSET;
-> +		else if (pin_num > 7 && pin_num < 14)
-> +			*reg = RV1103B_SMT_GPIO0_B_OFFSET - 0x4;
-> +		else
-> +			ret = -EINVAL;
-> +		break;
-> +
-> +	case 1:
-> +		if (pin_num < 6)
-> +			*reg = RV1103B_SMT_GPIO1_A01_OFFSET;
-> +		else if (pin_num >= 6 && pin_num < 23)
-> +			*reg = RV1103B_SMT_GPIO1_A67_OFFSET;
-> +		else if (pin_num >= 24 && pin_num < 30)
-> +			*reg = RV1103B_SMT_GPIO1_A67_OFFSET;
-> +		else
-> +			ret = -EINVAL;
-> +		break;
-> +
-> +	case 2:
-> +		if (pin_num < 12) {
-> +			*reg = RV1103B_SMT_GPIO2_OFFSET;
-> +		} else if (pin_num >= 16) {
-> +			ret = -EINVAL;
-> +		} else {
-> +			*reg = RV1103B_SMT_GPIO2_SARADC_OFFSET;
-> +			*bit = 8;
-> +
-> +			return 0;
-> +		}
-> +		break;
-> +
-> +	default:
-> +		ret = -EINVAL;
-> +		break;
-> +	}
-> +
-> +	if (ret) {
-> +		dev_err(info->dev, "unsupported bank_num %d pin_num %d\n", bank->bank_num, pin_num);
-> +
-> +		return ret;
-> +	}
-> +
-> +	*reg += ((pin_num / RV1103B_SMT_PINS_PER_REG) * 4);
-> +	*bit = pin_num % RV1103B_SMT_PINS_PER_REG;
-> +	*bit *= RV1103B_SMT_BITS_PER_PIN;
-> +
-> +	return 0;
-> +}
-> +
->  #define RV1108_PULL_PMU_OFFSET		0x10
->  #define RV1108_PULL_OFFSET		0x110
->  #define RV1108_PULL_PINS_PER_REG	8
-> @@ -2982,6 +3212,9 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
->  	u8 bit;
->  	int drv_type = bank->drv[pin_num / 8].drv_type;
->  
-> +	if (ctrl->type == RV1103B && pin_num >= 12)
-> +		drv_type = DRV_TYPE_IO_LEVEL_2_BIT;
-
-Why is this not properly handled with correct drv_type
-
-> +
->  	ret = ctrl->drv_calc_reg(bank, pin_num, &regmap, &reg, &bit);
->  	if (ret)
->  		return ret;
-> @@ -3043,6 +3276,11 @@ static int rockchip_get_drive_perpin(struct rockchip_pin_bank *bank,
->  	if (ret)
->  		return ret;
->  
-> +	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-> +		data = data >> 10;
-> +		return data & 0x3;
-
-This is only for gpio2 pin 12 and 13 if I read code correct.
-
-Maybe using drv_calc_reg ops and possible a new DRV_TYPE flag could
-remove all the soc-specific hacks/workarounds?
-
-> +	}
-> +
->  	data >>= bit;
->  	data &= (1 << rmask_bits) - 1;
->  
-> @@ -3071,7 +3309,8 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
->  		rmask_bits = RK3588_DRV_BITS_PER_PIN;
->  		ret = strength;
->  		goto config;
-> -	} else if (ctrl->type == RK3506 ||
-> +	} else if (ctrl->type == RV1103B ||
-> +		   ctrl->type == RK3506 ||
->  		   ctrl->type == RK3528 ||
->  		   ctrl->type == RK3562 ||
->  		   ctrl->type == RK3568) {
-> @@ -3182,6 +3421,12 @@ static int rockchip_set_drive_perpin(struct rockchip_pin_bank *bank,
->  			ret = strength;
->  		}
->  	}
-> +
-> +	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-> +		rmask_bits = 2;
-> +		ret = strength;
-> +	}
-> +
->  	/* enable the write to the equivalent lower bits */
->  	data = ((1 << rmask_bits) - 1) << (bit + 16);
->  	rmask = data | (data >> 16);
-> @@ -3236,6 +3481,7 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
->  				? PIN_CONFIG_BIAS_PULL_PIN_DEFAULT
->  				: PIN_CONFIG_BIAS_DISABLE;
->  	case PX30:
-> +	case RV1103B:
->  	case RV1108:
->  	case RK3188:
->  	case RK3288:
-> @@ -3251,6 +3497,9 @@ static int rockchip_get_pull(struct rockchip_pin_bank *bank, int pin_num)
->  		pull_type = bank->pull_type[pin_num / 8];
->  		data >>= bit;
->  		data &= (1 << RK3188_PULL_BITS_PER_PIN) - 1;
-> +
-> +		if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12)
-> +			pull_type = 1;
-
-Please include comment similar to below descibing why these pins differs.
-
->  		/*
->  		 * In the TRM, pull-up being 1 for everything except the GPIO0_D3-D6,
->  		 * where that pull up value becomes 3.
-> @@ -3297,6 +3546,7 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
->  		ret = regmap_write(regmap, reg, data);
->  		break;
->  	case PX30:
-> +	case RV1103B:
->  	case RV1108:
->  	case RV1126:
->  	case RK3188:
-> @@ -3312,6 +3562,8 @@ static int rockchip_set_pull(struct rockchip_pin_bank *bank,
->  	case RK3576:
->  	case RK3588:
->  		pull_type = bank->pull_type[pin_num / 8];
-> +		if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12)
-> +			pull_type = 1;
-
-Same here as the RK3568 workaround, please include a comment why this is
-needed.
-
->  		ret = -EINVAL;
->  		for (i = 0; i < ARRAY_SIZE(rockchip_pull_list[pull_type]);
->  			i++) {
-> @@ -3417,6 +3669,11 @@ static int rockchip_get_schmitt(struct rockchip_pin_bank *bank, int pin_num)
->  	if (ret)
->  		return ret;
->  
-> +	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-> +		data >>= 8;
-> +		return data & 0x3;
-
-This workaround should probably be moved into the switch and use
-schmitt_calc_reg ops to return correct bit=8.
-
-> +	}
-> +
->  	data >>= bit;
->  	switch (ctrl->type) {
->  	case RK3562:
-> @@ -3473,6 +3730,12 @@ static int rockchip_set_schmitt(struct rockchip_pin_bank *bank,
->  		}
->  	}
->  
-> +	if (ctrl->type == RV1103B && bank->bank_num == 2 && pin_num >= 12) {
-> +		data = 0x3 << (bit + 16);
-> +		rmask = data | (data >> 16);
-> +		data |= ((enable ? 0x3 : 0) << bit);
-> +	}
-
-Similar here, please move to the switch.
-
-Looks like there are some RK3506 code that also should be cleaned up
-here :-)
-
-> +
->  	return regmap_update_bits(regmap, reg, rmask, data);
->  }
->  
-> @@ -3579,6 +3842,7 @@ static bool rockchip_pinconf_pull_valid(struct rockchip_pin_ctrl *ctrl,
->  	case RK3066B:
->  		return pull ? false : true;
->  	case PX30:
-> +	case RV1103B:
->  	case RV1108:
->  	case RV1126:
->  	case RK3188:
-> @@ -4319,6 +4583,51 @@ static struct rockchip_pin_ctrl px30_pin_ctrl = {
->  		.schmitt_calc_reg	= px30_calc_schmitt_reg_and_bit,
->  };
->  
-> +static struct rockchip_pin_bank rv1103b_pin_banks[] = {
-> +	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(0, 32, "gpio0",
-
-The code above and the 32 here does not seem to match, how many pins are
-routed? It does not seem to be more than 12-14.
-
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    0x40000, 0x50008, 0x50010, 0x50018,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT),
-> +	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(1, 32, "gpio1",
-
-Here it is possible all are routed but there are some checks for < 30
-above.
-
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    0x20, 0x10028, 0x10030, 0x10038,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT),
-> +	PIN_BANK_IOMUX_FLAGS_OFFSET_DRV_FLAGS(2, 32, "gpio2",
-
-This should likely only be 16 pins.
-
-Regards,
-Jonas
-
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    IOMUX_WIDTH_4BIT,
-> +				    0x30040, 0x30048, 0x30050, 0x30058,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT,
-> +				    DRV_TYPE_IO_LEVEL_8_BIT),
-> +};
-> +
-> +static struct rockchip_pin_ctrl rv1103b_pin_ctrl __maybe_unused = {
-> +	.pin_banks		= rv1103b_pin_banks,
-> +	.nr_banks		= ARRAY_SIZE(rv1103b_pin_banks),
-> +	.label			= "RV1103B-GPIO",
-> +	.type			= RV1103B,
-> +	.iomux_recalced		= rv1103b_mux_recalced_data,
-> +	.niomux_recalced	= ARRAY_SIZE(rv1103b_mux_recalced_data),
-> +	.pull_calc_reg		= rv1103b_calc_pull_reg_and_bit,
-> +	.drv_calc_reg		= rv1103b_calc_drv_reg_and_bit,
-> +	.schmitt_calc_reg	= rv1103b_calc_schmitt_reg_and_bit,
-> +};
-> +
->  static struct rockchip_pin_bank rv1108_pin_banks[] = {
->  	PIN_BANK_IOMUX_FLAGS(0, 32, "gpio0", IOMUX_SOURCE_PMU,
->  					     IOMUX_SOURCE_PMU,
-> @@ -4955,6 +5264,8 @@ static struct rockchip_pin_ctrl rk3588_pin_ctrl = {
->  static const struct of_device_id rockchip_pinctrl_dt_match[] = {
->  	{ .compatible = "rockchip,px30-pinctrl",
->  		.data = &px30_pin_ctrl },
-> +	{ .compatible = "rockchip,rv1103b-pinctrl",
-> +		.data = &rv1103b_pin_ctrl },
->  	{ .compatible = "rockchip,rv1108-pinctrl",
->  		.data = &rv1108_pin_ctrl },
->  	{ .compatible = "rockchip,rv1126-pinctrl",
-> diff --git a/drivers/pinctrl/pinctrl-rockchip.h b/drivers/pinctrl/pinctrl-rockchip.h
-> index 4f4aff42a80a..bb0e803e3b8a 100644
-> --- a/drivers/pinctrl/pinctrl-rockchip.h
-> +++ b/drivers/pinctrl/pinctrl-rockchip.h
-> @@ -185,6 +185,7 @@
->  
->  enum rockchip_pinctrl_type {
->  	PX30,
-> +	RV1103B,
->  	RV1108,
->  	RV1126,
->  	RK2928,
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index fdab71d51e2a..3f5be14010c1 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -461,6 +461,8 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 		return -ENOMEM;
+ 
+ 	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
++	if (!res)
++		return -EINVAL;
+ 
+ 	i = 0;
+ 	while (dp_data[i].reg) {
+-- 
+2.25.1
 
 
 _______________________________________________
