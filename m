@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75BAFEB26E9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 16:54:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D664CEB26EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 17:03:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6L9KpQsnsLO/cgPcL0fX8AamZScEfOoAnDORmUOxzfU=; b=RavFH9UJ6NBaSb
-	f/zF9XtjdBsxuR3zBobykcVdf5HljJqTjC1gR87489NoAby/hHgGxtxkor72jOe0oYSj3oY+CgSBP
-	KEm3vQhgBmpuAjbl86J7OzVpD9cFtzDsVkgqwZ408Ea7nHGK2wVkE3i5u0iHKgn8C2Qpc3O+CvRde
-	tk+cWT5lMFL7YWtlcN06xaT53323uaMaUMHhrpdAaAniHoXX+o6JQBN7inkO/9AZ9g+TJ7/Y5Uf85
-	Ryor/WeXlHlKg0ybmy3oLHGCKSsgmJ4AQypBY//2DFzFos1/5IsKpXq/LpYxM6Bf7B9W3ZobXyurb
-	9FrKT4WdzS4IMEVTbu/w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n8Wkr4dmM8sA1CJ6t5lYakBw20tTTabGPVZlFP87wDE=; b=qhehIBP54IJJMJfZOIn9GD7BQR
+	Qoc8nziZIka03OiYmuJJ84ZopzBlXIGVZtfShbUqn8tOJnGRHIO332ylOj+rxpkRiSYUZueRXWRg/
+	2NCOjLDD+TZxmO31Fd6U+hVIsXUT5zDAnDuaL+qQ2WY95hjZUfe/+0ZCYLcHkdKN940NbaShSyim+
+	ahhT74b0ONj5DGJBCSzwSxU1UezxENOvOnUueJkkyTxzELP5lRPVQ6WbBhLQkNKOlc84+KkfDkFmZ
+	JgD0aiGu5d6TxkNHtJ6gI8LpM9MebGRplYYrfEDZ22w0S6U0xQxyd98aB6HeunkuyWTfL6cZNySa4
+	6HRtg9pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpqzw-0000000HH1B-0KfO;
-	Tue, 10 Feb 2026 16:54:00 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1vpr96-0000000HIDc-3YWM;
+	Tue, 10 Feb 2026 17:03:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpqzs-0000000HH0O-3oSR
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Feb 2026 16:53:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1770742434;
- bh=OQXwaNe4psr2XNmq2suhAylWK2H2KTRKcPx7MaB8l+g=;
- b=QQr2juHE2IYEiPCUbCf2imB8FGKCEnEmIBJE7a2W/SAKXqC9ulGcOafqnf+FtLAgyzVlpMq/s
- KQol6Y+yeJomAt9nK+M4B2qk0wJ39sJhcxiIub9q33l+gxE6g6wLFrFcn6m/NIqqyk/PrdzeMGB
- a1XNjvSI7gdu6riNJDcT7MssArDvtE5pYNWC8skhdSEwpZTi5dtAvliWRihdCuie4cVK4VwQHaf
- oxDABBkzZWhdVj6bOE2DkS73mJo1rrB/2/6ybn30oFSV3UOrQt6nBjc9RdcyrL5nykeKrLkaX1g
- ZOsxqEr1uTFEQ1D3RZD6fQkp2dKfsGkPuQ1WnDTRa8cw==
-X-Forward-Email-ID: 698b629fe8cd0604c09e7484
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.6.3
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <a8c1bac7-9f67-4476-81ad-5271ff239b91@kwiboo.se>
-Date: Tue, 10 Feb 2026 17:53:46 +0100
+	id 1vpr94-0000000HICe-1BBi;
+	Tue, 10 Feb 2026 17:03:27 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 54B7343C5F;
+	Tue, 10 Feb 2026 17:03:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAFE9C116C6;
+	Tue, 10 Feb 2026 17:03:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1770743005;
+	bh=YLgcpRDnWTHgN5iEvcrgGHQykKQfZ6+q//x2uAoTL2Q=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=UbiQl67KXho6dNAGklbzIoKY/CuPlIJmYXE2CfYzHTIJToITEXD9N+eJzfXKt3SHM
+	 lSwwfms3XZg5cG1604q/3nRhYxZODV132zqUHy30bF0Dh0anrvl14BTtczFIKaSiYm
+	 zJTXSfV6rqXSV50GwWyl6vA1rVF3ciiUruOnRDGq6DnYFjeRsSyoJqUWBM3Pbtn2jn
+	 LJJWnwEsxMQrAdj/juSXJYCtctRajep/Kh0DdrCh6UAdgmSTLXq5zrsB5ZVAJneeZu
+	 VtIJfcfdhuQmgZ/ahhSGGz/a0V5r6TH0Q5Q+pRphfFKzqvrlRShcEj+B874bueM1vH
+	 ii6vUvQ94znzA==
+Date: Tue, 10 Feb 2026 18:03:22 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com, 
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+	Andri Yngvason <andri@yngvason.is>, Werner Sembach <wse@tuxedocomputers.com>, 
+	Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v7 02/22] drm: Add new general DRM property "color format"
+Message-ID: <20260210-imported-ant-of-defiance-7cdb42@houat>
+References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
+ <20260121-color-format-v7-2-ef790dae780c@collabora.com>
+ <20260206-deft-provocative-perch-6ca9bf@houat>
+ <6318997.lOV4Wx5bFT@workhorse>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/4] ARM: dts: rockchip: Add Onion Omega4 Evaluation
- Board
-To: Fabio Estevam <festevam@gmail.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Fabio Estevam <festevam@nabladev.com>
-References: <20260210144845.317048-1-festevam@gmail.com>
- <20260210144845.317048-4-festevam@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260210144845.317048-4-festevam@gmail.com>
+In-Reply-To: <6318997.lOV4Wx5bFT@workhorse>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_085357_032783_C08A8C2A 
-X-CRM114-Status: GOOD (  21.80  )
+X-CRM114-CacheID: sfid-20260210_090326_361163_BB4846A3 
+X-CRM114-Status: GOOD (  32.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,201 +84,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7164533283199967923=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Fabio,
 
-On 2/10/2026 3:48 PM, Fabio Estevam wrote:
-> From: Fabio Estevam <festevam@nabladev.com>
-> 
-> The Onion Omega4 Evaluation Board is based on the RV1103B SoC and has:
-> 
->  - 256 MB of RAM
->  - 256 MB of SPI-NAND
->  - Ethernet
->  - USB OTG
->  - Wifi
->  - SD card
->  - Camera connector
-> 
-> The details can be found at:
-> https://documentation.onioniot.com/omega4/getting-started/
-> 
-> Add the initial support for this board so that it can fully boot into
-> Linux with the root file system stored in the SPI NAND.
-> 
-> Signed-off-by: Fabio Estevam <festevam@nabladev.com>
-> ---
-> Changes since v3:
-> - Split it in the EVB and SoM dtsi.
-> 
->  arch/arm/boot/dts/rockchip/Makefile           |  1 +
->  .../boot/dts/rockchip/rv1103b-omega4-evb.dts  | 94 +++++++++++++++++++
->  .../arm/boot/dts/rockchip/rv1103b-omega4.dtsi | 21 +++++
->  3 files changed, 116 insertions(+)
->  create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
->  create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
-> 
-> diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
-> index 716f5540e438..d0154fd7ff24 100644
-> --- a/arch/arm/boot/dts/rockchip/Makefile
-> +++ b/arch/arm/boot/dts/rockchip/Makefile
-> @@ -1,5 +1,6 @@
->  # SPDX-License-Identifier: GPL-2.0
->  dtb-$(CONFIG_ARCH_ROCKCHIP) += \
-> +	rv1103b-omega4-evb.dtb \
->  	rv1108-elgin-r1.dtb \
->  	rv1108-evb.dtb \
->  	rv1109-relfor-saib.dtb \
-> diff --git a/arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts b/arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
-> new file mode 100644
-> index 000000000000..686f2dd28eab
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
-> @@ -0,0 +1,94 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
-> + * Copyright (c) 2025 plan44.ch/luz
-> + * Copyright (c) 2025 Onion Corporation
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include <dt-bindings/gpio/gpio.h>
-> +#include <dt-bindings/leds/common.h>
-> +#include "rv1103b-omega4.dtsi"
-> +
-> +/ {
-> +	model = "Onion Omega4 Evaluation Board";
-> +	compatible = "onion,rv1103b-omega4-evb", "onion,rv1103b-omega4", "rockchip,rv1103b";
+--===============7164533283199967923==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="bzvkctnspkvgvs72"
+Content-Disposition: inline
 
-nit: Is rv1103b needed in all three compatible strings? The last one is
-already pointing out that this is the rv1103b soc, also the other Onion
-Omega boards in-tree use onion,omega and onion,omega2+.
 
-> +
-> +	aliases {
-> +		serial0 = &uart0;
-> +	};
-> +
-> +	chosen {
-> +		stdout-path = "serial0:115200n8";
-> +	};
-> +
-> +	leds {
-> +		compatible = "gpio-leds";
-> +
-> +		led-0	{
-> +			pinctrl-names = "default";
-> +			pinctrl-0 = <&led>;
-> +			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-> +			function = LED_FUNCTION_STATUS;
-> +			color = <LED_COLOR_ID_BLUE>;
-> +			label = "sys";
-> +			default-state = "on";
-> +		};
-> +	};
-> +};
-> +
-> +&fspi0 {
-> +	status = "okay";
-> +
-> +	spi_nand: flash@0 {
-> +		compatible = "spi-nand";
-> +		reg = <0>;
-> +		bootph-pre-ram;
-> +		bootph-some-ram;
-> +		spi-max-frequency = <75000000>;
-> +		spi-rx-bus-width = <4>;
-> +		spi-tx-bus-width = <1>;
-> +
-> +		partitions {
-> +			compatible = "fixed-partitions";
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +
-> +			partition@0 {
-> +				label = "env";
-> +				reg = <0x00000000 0x00040000>;
-> +			};
-> +
-> +			partition@40000 {
-> +				label = "idblock";
-> +				reg = <0x00040000 0x00100000>;
-> +				read-only;
-> +			};
-> +
-> +			partition@140000 {
-> +				label = "uboot";
-> +				reg = <0x00140000 0x00100000>;
-> +				read-only;
-> +			};
-> +
-> +			partition@240000 {
-> +				label = "boot";
-> +				reg = <0x00240000 0x00800000>;
-> +			};
-> +
-> +			partition@a40000 {
-> +				label = "ubi";
-> +				reg = <0x00a40000 0x0f5c0000>;
-> +			};
-> +		};
-> +	};
-> +};
+--bzvkctnspkvgvs72
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v7 02/22] drm: Add new general DRM property "color format"
+MIME-Version: 1.0
 
-The getting started guide [1] list the NAND Flash as part of SOM, should
-probably be moved to som dtsi.
+Hi,
 
-[1] https://documentation.onioniot.com/omega4/getting-started/
+On Fri, Feb 06, 2026 at 04:26:56PM +0100, Nicolas Frattaroli wrote:
+> On Friday, 6 February 2026 15:05:08 Central European Standard Time Maxime=
+ Ripard wrote:
+> > On Wed, Jan 21, 2026 at 03:45:09PM +0100, Nicolas Frattaroli wrote:
+> > > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > > index 7eaec37ae1c7..b5604dca728a 100644
+> > > --- a/include/drm/drm_connector.h
+> > > +++ b/include/drm/drm_connector.h
+> > > @@ -556,6 +556,16 @@ enum drm_colorspace {
+> > >  	DRM_MODE_COLORIMETRY_COUNT
+> > >  };
+> > > =20
+> > > +enum drm_color_format {
+> > > +	DRM_COLOR_FORMAT_AUTO			=3D 0,
+> > > +	DRM_COLOR_FORMAT_RGB444			=3D BIT(0),
+> > > +	DRM_COLOR_FORMAT_YCBCR444		=3D BIT(1),
+> > > +	DRM_COLOR_FORMAT_YCBCR422		=3D BIT(2),
+> > > +	DRM_COLOR_FORMAT_YCBCR420		=3D BIT(3),
+> > > +};
+> > > +
+> > > +#define DRM_COLOR_FORMAT_COUNT 5
+> > > +
+> >=20
+> > I don't really see a reason to expose an enum, with a bunch of values
+> > that are all mutually exclusive, as a bitmask. It's pretty inconsistent
+> > with most (all?) the other similar properties we have.
+> >=20
+> > I appreciate you did that to avoid fixing up every driver using those
+> > values, but then maybe we don't have to? We could create a userspace
+> > facing enum, and convert to DRM_COLOR_FORMAT internally.
+>=20
+> This is what the series did at v5 and earlier. IMHO it was kind of
+> counter-productive, because we then had two different things for the
+> same purpose, and some conversion logic between them. I think it's more
+> error prone to do it that way (think: mixing up the two), and doesn't
+> have a clear benefit. Just to give a picture of how bad things get:
+>=20
+> 1. we have the HDMI color format (aka "HDMI_COLORSPACE")
+> 2. we have driver specific output color formats, e.g. the intel ones
+> 3. we have DRM_COLOR_FORMAT
+> 4. we have the bus formats (multiple per color format)
+> 5. we have the DRM plane formats (again, multiple per color format)
+>=20
+> Adding a sixth into the mix feels a bit bad because we'll then need to
+> justify why we should have another layer of switch-case statements.
 
-> +&pinctrl {
-> +	leds {
-> +		led: led {
-> +			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-> +		};
-> +	};
-> +};
-> diff --git a/arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi b/arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
-> new file mode 100644
-> index 000000000000..bf245b547ea2
-> --- /dev/null
-> +++ b/arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
-> @@ -0,0 +1,21 @@
-> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-> +/*
-> + * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
-> + * Copyright (c) 2025 plan44.ch/luz
-> + * Copyright (c) 2025 Onion Corporation
-> + */
-> +
-> +/dts-v1/;
-> +
-> +#include "rv1103b.dtsi"
-> +
-> +&uart0 {
-> +	pinctrl-names = "default";
-> +	pinctrl-0 = <&uart0m0_xfer>;
-> +	bootph-all;
+Yeah, but they are all semantically different:
 
-nit: Please sort bootph before pinctrl.
+* The userspace one you want to introduce is going to be a superset of
+  all the valid output format for all the output busses we support (so,
+  HDMI + DP + etc.)
 
-Regards,
-Jonas
+* plane formats are the input format, we have much more variation there,
+  and we will never output these. We can ignore these.
 
-> +	status = "okay";
-> +};
-> +
-> +&wdt {
-> +	status = "okay";
-> +};
+* bus formats are somewhat similar, they are more about the wiring
+  between bridges than anything else, and they are not exposed to
+  userspace. We can ignore these too.
 
+* DRM_COLOR_FORMAT are definitely redundant.
+
+* The intel color formats are also redundant, but also internal. I would
+  expect them to converge to whatever we come up here eventually (but
+  really don't expect you to do that work).
+
+* And HDMI_COLORSPACE is really mandated by the HDMI spec, and is only
+  about HDMI connectors. It will never fully overlap with what we come
+  up with here, if only because HDMI cares about things we don't.
+
+So we really have two formats in my opinion: the one exposed through the
+uapi, and the internal one exposed to driver.
+
+In my view, the internal -> uapi conversion is trivial because the uapi
+one is a superset of the internal one (if only for auto). The uapi ->
+internal one needs to deal and resolve what auto means, but your code
+already does that.
+
+I don't really care about the internal format, as long as drivers don't
+have to be smart about it, so auto shouldn't be exposed to drivers. As
+far as I'm concerned, DRM_COLOR_FORMAT would fit that bill if it wasn't
+for the fact that it's both a bitmask and an enum depending on the
+context, which makes it pretty weird and error prone to deal with.
+
+Maxime
+
+--bzvkctnspkvgvs72
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaYtk1QAKCRAnX84Zoj2+
+dtH+AX9icXQp+NxFc1ZKirTjKLdjN/aWcl/dtMD8J4ci+mTqPt3KkSi4+FSK/s7a
+WNYTGwkBgOD8I055eaRKcNaaDGxQykXaPnfDkqAkw+xuNqdU6H6Fu+Om0bh+yw2H
+icXSLJ4gYw==
+=puI2
+-----END PGP SIGNATURE-----
+
+--bzvkctnspkvgvs72--
+
+
+--===============7164533283199967923==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7164533283199967923==--
+
