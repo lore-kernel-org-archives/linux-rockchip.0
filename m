@@ -4,66 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F8BEA8138
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 15:52:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CDBAEA813A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 16:00:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UuMiVXm5ndIcB1PHgm57XTkNNON5V/Z04/G2AVc3CVU=; b=ST4xF2Qyl2b76a
-	0qol1Gcd4s9RBEbBk5g8Y3mylDMlaAlb8dxfrBvh119q7jksKK6zzwg4jM2faFL7pKqg7r3567m0H
-	syOh5x6yAfhM9cqUW45V1aCpDP8jQauUBGS0DPNXcLxEyA+hzMQ4RaNIFZd5CMebUGY9r/XgO2pG8
-	W55U2/Hu/ywCHDCvNH1q/BjELMv+MbWgjjkVCj+9ieeYJY9A+UcaidWZkeXC+DvMb6CD7PV/kWzQi
-	r7KNGGL12gnNMgGFWpC8Cb5uw/gZXC+vVz2/V7ZmFUQv2cRfr18D7IHtGZwEXq8Hf1jYvrpEOH82t
-	wVBOMilVUBNrUYT11pGw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sYCOrhj9S+vDT9jRctR+iL+3lP+ZHpXeeNTWtqSBjqc=; b=hSNb6GeNFMW8RFoo8qFQK0kpm7
+	tpRjIwi/5qEXrEu5pdhg7tfbJ+LaieWuKRsqAdCQLmH2BXPOjKzfsRSCYqSGsFpqzg3dk+C3nSImu
+	9yV9oJyRk/bwf9rjwkFHbodu0dlXvSw0ewXQqy6945+I5AgAC1DptxycuALoEAq8457eP18PNclMD
+	F7do+cIditWEuKBQczLpME7YipDq19SsAVJOpFBcgiKYPp8/w/unFvdf++amP4gPz/xingUUBM3QR
+	mU/nZrm0YYnO08e039x/KYelBl2s9XyrxpZd1RX00SDjKUXHSaeqh+cJrFiWvZHrKzzC5LL29qFja
+	fFYGelmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpq2G-0000000H9gj-11NN;
-	Tue, 10 Feb 2026 15:52:20 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vpqA6-0000000HAoV-3CLZ;
+	Tue, 10 Feb 2026 16:00:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpq2E-0000000H9fj-25pz;
-	Tue, 10 Feb 2026 15:52:18 +0000
+	id 1vpq9p-0000000HAf7-0aa7;
+	Tue, 10 Feb 2026 16:00:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83C9760137;
-	Tue, 10 Feb 2026 15:52:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ACB61C116C6;
-	Tue, 10 Feb 2026 15:52:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 374C843EC3;
+	Tue, 10 Feb 2026 16:00:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8A011C116C6;
+	Tue, 10 Feb 2026 16:00:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770738737;
-	bh=RQCwNCcBeQU5tvcCgLx7gzzyD5u89C/R0Ffzky3epSg=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=L59I9SaTtdMvZlOhb5jGb3izQPshIAAA5N0NwrHQ9OHzFRKT2N2aTHa6mubs/+8fT
-	 Fd8ClyLKa2PSEiACbqV/S/q35ydzv8P72f6fDEDz7fmEgXd9mNOlAV4RUKfXafs2Pi
-	 W3f7efLT91mlI5d8Z2t8uaGyffr+UL9jMyEDKDFRyB2IdVElXspukJmAsg/0p211AK
-	 nczKveQhsTZSu7CzRB0lD0yApoKULmjqz0i3Cb+5+0RCtBPgq3lLfFmhAnDXrLoWAV
-	 HNBBL+Dh6OWzv8FeSN+ajGyLHIu+c5etcJmxfpXoV80OQf4OewLWzMvnVySHkLp9IR
-	 +14wAkevYkQfA==
-Message-ID: <6650ab0f95871398568f6f2c3d2f3e56@kernel.org>
-Date: Tue, 10 Feb 2026 15:52:14 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>
-Subject: Re: [PATCH v7 19/22] drm/tests: hdmi: Add tests for HDMI helper's
- mode_valid
-In-Reply-To: <20260121-color-format-v7-19-ef790dae780c@collabora.com>
-References: <20260121-color-format-v7-19-ef790dae780c@collabora.com>
-Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, "Alex
- Deucher" <alexander.deucher@amd.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, =?utf-8?b?Q2hyaXN0aWFuIEvDtm5pZw==?= <christian.koenig@amd.com>, "David
- Airlie" <airlied@gmail.com>, "Dmitry Baryshkov" <lumag@kernel.org>, "Harry
- Wentland" <harry.wentland@amd.com>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jani
- Nikula" <jani.nikula@linux.intel.com>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Jonathan Corbet" <corbet@lwn.net>, "Joonas
- Lahtinen" <joonas.lahtinen@linux.intel.com>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Leo
- Li" <sunpeng.li@amd.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime
- Ripard" <mripard@kernel.org>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Rob
- Herring" <robh@kernel.org>, "Robert Foss" <rfoss@kernel.org>, "Rodrigo
- Siqueira" <siqueira@igalia.com>, "Rodrigo Vivi" <rodrigo.vivi@intel.com>, "Sandy
- Huang" <hjc@rock-chips.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Simona
- Vetter" <simona@ffwll.ch>, "Thomas Zimmermann" <tzimmermann@suse.de>, "Tvrtko
- Ursulin" <tursulin@ursulin.net>
+	s=k20201202; t=1770739208;
+	bh=zldcbNbjmj+RA7A3DZ3ZkdfjMPm277Yz7u9u9p4QqjQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RMyQYHYNpszMSJqmidkGX2NoEYtO7xOazdfZO2Q5iGJNTMCgJ+znXKLHV3wU+w5mU
+	 81P544GiPydpylxVo/SCUj9yY6feDstrxgJOuMw/pWJJz9ndZsgEC2zR4EHbObdpi4
+	 pfHL1KTzKa1NeezI3wv7aGc81F9plh/aKvv2RW9s5nFZ6rCp0yQ9DhjqSHhHQUn6L/
+	 vVP41AcOWSjY2uwX18XpLxfND6DbM5L4o9zj0y/UV6PtcPdBVM3ih+N1X0kYONwg9e
+	 3ymEssncp804w6MMxkU2DI6GfIPLf5S0gp9wgoKnhCAqL5W9wEcjZ0WXGGTtj4CcEz
+	 EB95D+CLtTCiQ==
+Date: Tue, 10 Feb 2026 17:00:05 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com, 
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
+Subject: Re: [PATCH v7 20/22] drm/tests: edid: Add __maybe_unused attribute
+ to EDID definitions
+Message-ID: <20260210-didactic-okapi-of-modernism-ff00d9@houat>
+References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
+ <20260121-color-format-v7-20-ef790dae780c@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <20260121-color-format-v7-20-ef790dae780c@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260210_080009_220319_BD4BFB9E 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,27 +81,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7153983418260115083=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, 21 Jan 2026 15:45:26 +0100, Nicolas Frattaroli wrote:
-> Add some KUnit tests to verify that the HDMI state helper's mode_valid
-> implementation does not improperly reject chroma subsampled modes on the
-> basis of their clock rate not being satisfiable in RGB.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> 
-> [ ... ]
 
+--===============7153983418260115083==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="km3cw6v2t5aytgoz"
+Content-Disposition: inline
+
+
+--km3cw6v2t5aytgoz
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v7 20/22] drm/tests: edid: Add __maybe_unused attribute
+ to EDID definitions
+MIME-Version: 1.0
+
+Hi,
+
+On Wed, Jan 21, 2026 at 03:45:27PM +0100, Nicolas Frattaroli wrote:
+> It's normal for a test suite to need an EDID, but not all EDIDs across
+> every test. Silence compiler warnings caused by unused definitions by
+> using the appropriate attribute.
+>=20
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+It's not clear to me when the EDIDs could be compiled but the tests
+wouldn't, and as far as I know it's all part of the same module.
+Expanding a bit on how you can trigger that warning would be great.
+
+With that fixed,
 Reviewed-by: Maxime Ripard <mripard@kernel.org>
 
-Thanks!
 Maxime
+
+--km3cw6v2t5aytgoz
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaYtWAAAKCRAnX84Zoj2+
+dt2nAX0UsXzuusEYCVBCqgJwtZ264lcQWo9yWUlALQWTVuR932yQyPhy8y6N7uQn
+emUBNQgBf2NvmzdJa+lE7RXY5eWBX5awNF8H76g5vlBxZXvOQkVir9drD30JTaPa
+AhXIei7HvQ==
+=9Hue
+-----END PGP SIGNATURE-----
+
+--km3cw6v2t5aytgoz--
+
+
+--===============7153983418260115083==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7153983418260115083==--
+
