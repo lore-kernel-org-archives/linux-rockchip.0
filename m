@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D664CEB26EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 17:03:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B220AEB26ED
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 17:05:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=n8Wkr4dmM8sA1CJ6t5lYakBw20tTTabGPVZlFP87wDE=; b=qhehIBP54IJJMJfZOIn9GD7BQR
-	Qoc8nziZIka03OiYmuJJ84ZopzBlXIGVZtfShbUqn8tOJnGRHIO332ylOj+rxpkRiSYUZueRXWRg/
-	2NCOjLDD+TZxmO31Fd6U+hVIsXUT5zDAnDuaL+qQ2WY95hjZUfe/+0ZCYLcHkdKN940NbaShSyim+
-	ahhT74b0ONj5DGJBCSzwSxU1UezxENOvOnUueJkkyTxzELP5lRPVQ6WbBhLQkNKOlc84+KkfDkFmZ
-	JgD0aiGu5d6TxkNHtJ6gI8LpM9MebGRplYYrfEDZ22w0S6U0xQxyd98aB6HeunkuyWTfL6cZNySa4
-	6HRtg9pA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=X5a7XsunW3l+K3GSCPXqv102GF1rFbpRJsF+0uQTiJg=; b=Pc2V1TGQpxAyMs
+	y6V6/gFp2UlPbKfOHJIW+PfMH/zaS/MF1fIToxqlT+bKFvijO4k7Nj2HZT3EZMNNQhZs9QPdZxJUO
+	+qTE4mxZVrQJNxHAl6x4W7C5ipLm5psyOmCyyTMQ4ah3KICuZudxxNNllT2kBICl5cltFhr+gTkDy
+	S5vTv3cYkE9+GWGouUF0enDSiDbov9pDTA/FcG8MKJmyQw3gDI7SMMgR4b3ZIGhIxOZ/I7NyqLpc9
+	VyrrsxntMuvd/kKmJKKXAd9StklabvXl7j+WS5zgqgYxozQ+2NvslS31E1TASaLeV3rgwEM465aPN
+	rK47+AP7NypJb+jf7SCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpr96-0000000HIDc-3YWM;
-	Tue, 10 Feb 2026 17:03:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vprBK-0000000HIYH-10dU;
+	Tue, 10 Feb 2026 17:05:46 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpr94-0000000HICe-1BBi;
-	Tue, 10 Feb 2026 17:03:27 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 54B7343C5F;
-	Tue, 10 Feb 2026 17:03:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAFE9C116C6;
-	Tue, 10 Feb 2026 17:03:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770743005;
-	bh=YLgcpRDnWTHgN5iEvcrgGHQykKQfZ6+q//x2uAoTL2Q=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=UbiQl67KXho6dNAGklbzIoKY/CuPlIJmYXE2CfYzHTIJToITEXD9N+eJzfXKt3SHM
-	 lSwwfms3XZg5cG1604q/3nRhYxZODV132zqUHy30bF0Dh0anrvl14BTtczFIKaSiYm
-	 zJTXSfV6rqXSV50GwWyl6vA1rVF3ciiUruOnRDGq6DnYFjeRsSyoJqUWBM3Pbtn2jn
-	 LJJWnwEsxMQrAdj/juSXJYCtctRajep/Kh0DdrCh6UAdgmSTLXq5zrsB5ZVAJneeZu
-	 VtIJfcfdhuQmgZ/ahhSGGz/a0V5r6TH0Q5Q+pRphfFKzqvrlRShcEj+B874bueM1vH
-	 ii6vUvQ94znzA==
-Date: Tue, 10 Feb 2026 18:03:22 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com, 
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	Andri Yngvason <andri@yngvason.is>, Werner Sembach <wse@tuxedocomputers.com>, 
-	Marius Vlad <marius.vlad@collabora.com>
-Subject: Re: [PATCH v7 02/22] drm: Add new general DRM property "color format"
-Message-ID: <20260210-imported-ant-of-defiance-7cdb42@houat>
-References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
- <20260121-color-format-v7-2-ef790dae780c@collabora.com>
- <20260206-deft-provocative-perch-6ca9bf@houat>
- <6318997.lOV4Wx5bFT@workhorse>
+	id 1vprBF-0000000HIVv-2vcH
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Feb 2026 17:05:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1770743139;
+ bh=9MVkB8lrQ34cNgWh1QfFiJOeYfoOLDuP+neEVhfWzFg=;
+ b=wAl6ZGw1vdb/n3rOzDXKcRf9RYcYX1LUdsU4UAUXTt82maywGFjAL2Zb9efVGPmQ2I8gh9iWh
+ t3sGK1t17SRGaMEXixsYpS5ud3AxyCFTNjRUAb9DuAQcrWSmsSZ5K0jIc03ZcxMZfBCnKy0/ehX
+ wuXx87ekNYTjskrYilDQ7xuKwv6P4DI8eKLXHr53nBdTw9DZvz+ak6HphKITFBjTmjUwM2ISnry
+ WqfRT7KNCG5+cYJ+uF70vZPt9j3j5LMsddiIjhP64spEisHxSF5ZkQuBnWXqeUFJURAqnsuw++O
+ ibsNitIUkUhyin7h7AioPlPtA2I9zdFBbQpsTfcSGLEg==
+X-Forward-Email-ID: 698b6562e8cd0604c09e962b
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 2.6.3
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <5952b842-2ff5-4843-bf40-72364e2e4bec@kwiboo.se>
+Date: Tue, 10 Feb 2026 18:05:34 +0100
 MIME-Version: 1.0
-In-Reply-To: <6318997.lOV4Wx5bFT@workhorse>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/4] ARM: dts: rockchip: Add support for RV1103B
+To: Fabio Estevam <festevam@gmail.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Fabio Estevam <festevam@nabladev.com>
+References: <20260210144845.317048-1-festevam@gmail.com>
+ <20260210144845.317048-2-festevam@gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260210144845.317048-2-festevam@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_090326_361163_BB4846A3 
-X-CRM114-Status: GOOD (  32.20  )
+X-CRM114-CacheID: sfid-20260210_090541_823465_8BEE1C3A 
+X-CRM114-Status: GOOD (  22.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,136 +74,373 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7164533283199967923=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Fabio,
 
---===============7164533283199967923==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="bzvkctnspkvgvs72"
-Content-Disposition: inline
+On 2/10/2026 3:48 PM, Fabio Estevam wrote:
+> From: Fabio Estevam <festevam@nabladev.com>
+> 
+> Add the initial RV1103B devicetree.
+> 
+> Based on the 5.10 Rockchip vendor kernel.
+> 
+> Signed-off-by: Fabio Estevam <festevam@nabladev.com>
+> ---
+> The <dt-bindings/clock/rockchip,rv1103b-cru.h> header comes from another
+> series:
+> 
+> https://lore.kernel.org/linux-devicetree/20260210022620.172570-1-festevam@gmail.com/
+> 
+> Maybe Heiko could apply the clock series as well?
+> 
+> Changes since v1:
+> - Pass /omit-if-no-ref/
+> - Removed redundant _pins suffix.
+> - Dd not merge all GRF region.
+> - Removed unnecessary clock rate from the UART nodes.
+> - Removed "normal" and "idle" pinctrl entries and used "default" instead.
+> - Added missing default pinctrl entries for emmc, sd and fspi.
+> - Removed gpio-ranges.
+>  
+>  .../boot/dts/rockchip/rv1103b-pinctrl.dtsi    | 962 ++++++++++++++++++
+>  arch/arm/boot/dts/rockchip/rv1103b.dtsi       | 250 +++++
+>  2 files changed, 1212 insertions(+)
+>  create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+>  create mode 100644 arch/arm/boot/dts/rockchip/rv1103b.dtsi
+> 
+> diff --git a/arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi b/arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+> new file mode 100644
+> index 000000000000..d859df6b6a97
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+> @@ -0,0 +1,962 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <arm64/rockchip/rockchip-pinconf.dtsi>
+> +
+> +/*
+> + * This file is auto generated by pin2dts tool, please keep these code
+> + * by adding changes at end of this file.
+> + */
+> +&pinctrl {
+> +	cam_clk0 {
 
+Node names should not contain _ (underscore), same for more pinctrl
+groups.
 
---bzvkctnspkvgvs72
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v7 02/22] drm: Add new general DRM property "color format"
-MIME-Version: 1.0
+> +		/omit-if-no-ref/
+> +		cam_clk0: cam-clk0 {
+> +			rockchip,pins =
+> +				/* cam_clk0_out */
+> +				<1 RK_PB5 1 &pcfg_pull_none>;
+> +		};
+> +	};
 
-Hi,
+[snip]
 
-On Fri, Feb 06, 2026 at 04:26:56PM +0100, Nicolas Frattaroli wrote:
-> On Friday, 6 February 2026 15:05:08 Central European Standard Time Maxime=
- Ripard wrote:
-> > On Wed, Jan 21, 2026 at 03:45:09PM +0100, Nicolas Frattaroli wrote:
-> > > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> > > index 7eaec37ae1c7..b5604dca728a 100644
-> > > --- a/include/drm/drm_connector.h
-> > > +++ b/include/drm/drm_connector.h
-> > > @@ -556,6 +556,16 @@ enum drm_colorspace {
-> > >  	DRM_MODE_COLORIMETRY_COUNT
-> > >  };
-> > > =20
-> > > +enum drm_color_format {
-> > > +	DRM_COLOR_FORMAT_AUTO			=3D 0,
-> > > +	DRM_COLOR_FORMAT_RGB444			=3D BIT(0),
-> > > +	DRM_COLOR_FORMAT_YCBCR444		=3D BIT(1),
-> > > +	DRM_COLOR_FORMAT_YCBCR422		=3D BIT(2),
-> > > +	DRM_COLOR_FORMAT_YCBCR420		=3D BIT(3),
-> > > +};
-> > > +
-> > > +#define DRM_COLOR_FORMAT_COUNT 5
-> > > +
-> >=20
-> > I don't really see a reason to expose an enum, with a bunch of values
-> > that are all mutually exclusive, as a bitmask. It's pretty inconsistent
-> > with most (all?) the other similar properties we have.
-> >=20
-> > I appreciate you did that to avoid fixing up every driver using those
-> > values, but then maybe we don't have to? We could create a userspace
-> > facing enum, and convert to DRM_COLOR_FORMAT internally.
->=20
-> This is what the series did at v5 and earlier. IMHO it was kind of
-> counter-productive, because we then had two different things for the
-> same purpose, and some conversion logic between them. I think it's more
-> error prone to do it that way (think: mixing up the two), and doesn't
-> have a clear benefit. Just to give a picture of how bad things get:
->=20
-> 1. we have the HDMI color format (aka "HDMI_COLORSPACE")
-> 2. we have driver specific output color formats, e.g. the intel ones
-> 3. we have DRM_COLOR_FORMAT
-> 4. we have the bus formats (multiple per color format)
-> 5. we have the DRM plane formats (again, multiple per color format)
->=20
-> Adding a sixth into the mix feels a bit bad because we'll then need to
-> justify why we should have another layer of switch-case statements.
+> +};
+> +
+> +/*
+> + * This part is edited manually.
 
-Yeah, but they are all semantically different:
+Why not merged with above? What is the pin2dts tool, is it some vendor
+script/tool?
 
-* The userspace one you want to introduce is going to be a superset of
-  all the valid output format for all the output busses we support (so,
-  HDMI + DP + etc.)
+> + */
+> +&pinctrl {
+> +	sdmmc0 {
+> +		/omit-if-no-ref/
+> +		sdmmc0_bus1: sdmmc0-bus1 {
+> +			rockchip,pins =
+> +				/* sdmmc0_d0 */
+> +				<1 RK_PB0 1 &pcfg_pull_up_drv_level_2>;
+> +		};
+> +	};
+> +
+> +	sdmmc1 {
+> +		sdmmc1_bus1: sdmmc1-bus1 {
+> +			rockchip,pins =
+> +				/* sdmmc1_d0 */
+> +				<2 RK_PA1 1 &pcfg_pull_up_drv_level_2>;
+> +		};
+> +	};
+> +};
+> diff --git a/arch/arm/boot/dts/rockchip/rv1103b.dtsi b/arch/arm/boot/dts/rockchip/rv1103b.dtsi
+> new file mode 100644
+> index 000000000000..c3de700ade46
+> --- /dev/null
+> +++ b/arch/arm/boot/dts/rockchip/rv1103b.dtsi
+> @@ -0,0 +1,250 @@
+> +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+> +/*
+> + * Copyright (c) 2024 Rockchip Electronics Co., Ltd.
+> + */
+> +
+> +#include <dt-bindings/clock/rockchip,rv1103b-cru.h>
+> +#include <dt-bindings/gpio/gpio.h>
+> +#include <dt-bindings/interrupt-controller/irq.h>
+> +#include <dt-bindings/interrupt-controller/arm-gic.h>
+> +#include <dt-bindings/pinctrl/rockchip.h>
+> +#include <dt-bindings/soc/rockchip,boot-mode.h>
+> +
+> +/ {
+> +	#address-cells = <1>;
+> +	#size-cells = <1>;
+> +
+> +	compatible = "rockchip,rv1103b";
+> +
+> +	interrupt-parent = <&gic>;
+> +
+> +	arm-pmu {
+> +		compatible = "arm,cortex-a7-pmu";
+> +		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_HIGH>;
+> +		interrupt-affinity = <&cpu0>;
+> +	};
+> +
+> +	xin32k: oscillator-32k {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <32768>;
+> +		clock-output-names = "xin32k";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	xin24m: oscillator-24m {
+> +		compatible = "fixed-clock";
+> +		clock-frequency = <24000000>;
+> +		clock-output-names = "xin24m";
+> +		#clock-cells = <0>;
+> +	};
+> +
+> +	cpus {
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +
+> +		cpu0: cpu@0 {
+> +			device_type = "cpu";
+> +			compatible = "arm,cortex-a7";
+> +			reg = <0x0>;
+> +			clocks = <&cru ARMCLK>;
+> +		};
+> +	};
+> +
+> +	timer {
+> +		compatible = "arm,armv7-timer";
+> +		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
+> +			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
+> +		clock-frequency = <24000000>;
+> +	};
+> +
+> +	cru: clock-controller@20000000 {
+> +		compatible = "rockchip,rv1103b-cru";
+> +		reg = <0x20000000 0x81000>;
+> +		#clock-cells = <1>;
+> +		#reset-cells = <1>;
+> +		bootph-all;
+> +	};
 
-* plane formats are the input format, we have much more variation there,
-  and we will never output these. We can ignore these.
+As mentioned in prior review, this and other nodes should be grouped
+under a soc node, please see e.g. rk3528, rk3562 or rk3576.dtsi.
 
-* bus formats are somewhat similar, they are more about the wiring
-  between bridges than anything else, and they are not exposed to
-  userspace. We can ignore these too.
+> +	pmu_grf: syscon@20160000 {
+> +		compatible = "rockchip,rv1103b-pmu-grf", "syscon", "simple-mfd";
+> +		reg = <0x20160000 0x1000>;
+> +
+> +		reboot_mode: reboot-mode {
+> +			compatible = "syscon-reboot-mode";
+> +			offset = <0x200>;
+> +			mode-normal = <BOOT_NORMAL>;
+> +			mode-recovery = <BOOT_RECOVERY>;
+> +			mode-bootloader = <BOOT_FASTBOOT>;
+> +			mode-loader = <BOOT_BL_DOWNLOAD>;
+> +		};
+> +	};
+> +
+> +	ioc: syscon@20170000 {
+> +		compatible = "rockchip,rv1103b-ioc", "syscon";
+> +		reg = <0x20170000 0x60000>;
+> +	};
+> +
+> +	gic: interrupt-controller@20411000 {
+> +		compatible = "arm,gic-400";
+> +		interrupt-controller;
+> +		#interrupt-cells = <3>;
+> +		#address-cells = <0>;
+> +
+> +		reg = <0x20411000 0x1000>,
+> +		      <0x20412000 0x2000>,
+> +		      <0x20414000 0x2000>,
+> +		      <0x20416000 0x2000>;
+> +		interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
+> +	};
+> +
+> +	uart0: serial@20540000 {
+> +		compatible = "rockchip,rv1103b-uart", "snps,dw-apb-uart";
+> +		reg = <0x20540000 0x100>;
+> +		interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart0m0_xfer>;
+> +		status = "disabled";
+> +	};
+> +
+> +	sdmmc1: mmc@20650000 {
+> +		compatible = "rockchip,rv1103b-dw-mshc", "rockchip,rk3288-dw-mshc";
+> +		reg = <0x20650000 0x4000>;
+> +		interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru HCLK_SDMMC1>, <&cru CCLK_SDMMC1>;
+> +		clock-names = "biu", "ciu";
+> +		fifo-depth = <0x100>;
+> +		max-frequency = <150000000>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&sdmmc1_clk &sdmmc1_cmd &sdmmc1_bus4>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart1: serial@20870000 {
+> +		compatible = "rockchip,rv1103b-uart", "snps,dw-apb-uart";
+> +		reg = <0x20870000 0x100>;
+> +		interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart1m0_xfer>;
+> +		status = "disabled";
+> +	};
+> +
+> +	uart2: serial@20880000 {
+> +		compatible = "rockchip,rv1103b-uart", "snps,dw-apb-uart";
+> +		reg = <0x20880000 0x100>;
+> +		interrupts = <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
+> +		reg-shift = <2>;
+> +		reg-io-width = <4>;
+> +		clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
+> +		clock-names = "baudclk", "apb_pclk";
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&uart2m0_xfer>;
+> +		status = "disabled";
+> +	};
+> +
+> +	wdt: watchdog@208d0000 {
+> +		compatible = "snps,dw-wdt";
+> +		reg = <0x208d0000 0x100>;
+> +		clocks = <&cru TCLK_WDT_NS>, <&cru PCLK_WDT_NS>;
+> +		clock-names = "tclk", "pclk";
+> +		interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
+> +		status = "disabled";
+> +	};
+> +
+> +	sdmmc0: mmc@20d20000 {
+> +		compatible = "rockchip,rv1103b-dw-mshc", "rockchip,rk3288-dw-mshc";
+> +		reg = <0x20d20000 0x4000>;
+> +		interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru HCLK_SDMMC0>, <&cru CCLK_SDMMC0>;
+> +		clock-names = "biu", "ciu";
+> +		fifo-depth = <0x100>;
+> +		max-frequency = <150000000>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&sdmmc0_det &sdmmc0_clk &sdmmc0_cmd &sdmmc0_bus4>;
+> +		status = "disabled";
+> +	};
+> +
+> +	emmc: mmc@20d30000 {
+> +		compatible = "rockchip,rv1103b-dw-mshc", "rockchip,rk3288-dw-mshc";
+> +		reg = <0x20d30000 0x4000>;
+> +		interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru HCLK_EMMC>, <&cru CCLK_EMMC>;
+> +		clock-names = "biu", "ciu";
+> +		fifo-depth = <0x100>;
+> +		max-frequency = <150000000>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus4>;
+> +		status = "disabled";
+> +	};
+> +
+> +	fspi0: spi@20d40000 {
+> +		compatible = "rockchip,sfc";
+> +		reg = <0x20d40000 0x4000>;
+> +		interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
+> +		clocks = <&cru SCLK_SFC_2X>, <&cru HCLK_SFC>;
+> +		clock-names = "clk_sfc", "hclk_sfc";
+> +		#address-cells = <1>;
+> +		#size-cells = <0>;
+> +		pinctrl-names = "default";
+> +		pinctrl-0 = <&fspi_bus4 &fspi_cs0 &fspi_clk>;
+> +		status = "disabled";
+> +	};
 
-* DRM_COLOR_FORMAT are definitely redundant.
+All nodes above should be grouped under the soc node. Unsure about the
+sram and pinctrl, check the other most recent RK SoCs dtsi files.
 
-* The intel color formats are also redundant, but also internal. I would
-  expect them to converge to whatever we come up here eventually (but
-  really don't expect you to do that work).
+Regards,
+Jonas
 
-* And HDMI_COLORSPACE is really mandated by the HDMI spec, and is only
-  about HDMI connectors. It will never fully overlap with what we come
-  up with here, if only because HDMI cares about things we don't.
+> +	system_sram: sram@210f6000 {
+> +		compatible = "mmio-sram";
+> +		reg = <0x210f6000 0x8000>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges = <0 0x210f6000 0x8000>;
+> +	};
+> +
+> +	pinctrl: pinctrl {
+> +		compatible = "rockchip,rv1103b-pinctrl";
+> +		rockchip,grf = <&ioc>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
+> +		ranges;
+> +
+> +		gpio0: gpio@20520000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x20520000 0x200>;
+> +			interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_PMU_GPIO0>, <&cru DBCLK_PMU_GPIO0>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		gpio1: gpio@20d80000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x20d80000 0x200>;
+> +			interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO1>, <&cru DBCLK_GPIO1>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +
+> +		gpio2: gpio@20840000 {
+> +			compatible = "rockchip,gpio-bank";
+> +			reg = <0x20840000 0x200>;
+> +			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
+> +			clocks = <&cru PCLK_GPIO2>, <&cru DBCLK_GPIO2>;
+> +			gpio-controller;
+> +			#gpio-cells = <2>;
+> +			interrupt-controller;
+> +			#interrupt-cells = <2>;
+> +		};
+> +	};
+> +};
+> +
+> +#include "rv1103b-pinctrl.dtsi"
 
-So we really have two formats in my opinion: the one exposed through the
-uapi, and the internal one exposed to driver.
-
-In my view, the internal -> uapi conversion is trivial because the uapi
-one is a superset of the internal one (if only for auto). The uapi ->
-internal one needs to deal and resolve what auto means, but your code
-already does that.
-
-I don't really care about the internal format, as long as drivers don't
-have to be smart about it, so auto shouldn't be exposed to drivers. As
-far as I'm concerned, DRM_COLOR_FORMAT would fit that bill if it wasn't
-for the fact that it's both a bitmask and an enum depending on the
-context, which makes it pretty weird and error prone to deal with.
-
-Maxime
-
---bzvkctnspkvgvs72
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaYtk1QAKCRAnX84Zoj2+
-dtH+AX9icXQp+NxFc1ZKirTjKLdjN/aWcl/dtMD8J4ci+mTqPt3KkSi4+FSK/s7a
-WNYTGwkBgOD8I055eaRKcNaaDGxQykXaPnfDkqAkw+xuNqdU6H6Fu+Om0bh+yw2H
-icXSLJ4gYw==
-=puI2
------END PGP SIGNATURE-----
-
---bzvkctnspkvgvs72--
-
-
---===============7164533283199967923==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7164533283199967923==--
-
