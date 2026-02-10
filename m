@@ -4,89 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FA34EA3F14
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 07:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B811EA3F15
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 07:20:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9oTnDAXYMmjLKLp0rejjje+U8BvEdi/kXE/my9bvpSI=; b=uhzyJxHiK+31G8
-	qmfZqDyGLAGy8dDw4vFMFQrj4tT0y5LhKbtuck+oVSc2OduYPmJnmnH0iQ9MSehQxzcOnV4zUzNrK
-	F3NqG5/J/oQRjf9f6rxJf0MrHqSpTdwii7uSJWGJLmCVIEGVaFC1BsFGtis7jB6piKQ4PGsVcaCeU
-	2ghAT0MrpTIaAXs3BBZtCg8Y3TXl5jdB+Wl0n4SuLuI8QUXhQsmEmeeRNGRPO+kdCJnFlvj7/emAd
-	Z6ILtc8b8nh0kw4kjYNCh+8PL9Kh+iPTssZbXQCZLZl9yaqiJcGkQF0+JcalLAsq8TC6t5+EaLJAT
-	COY7OEPTc9uBuN8I5+Mg==;
+	List-Owner; bh=+xRFZ6xHMHuHPq/PRxX5MBBLb33iM5TIM4ywZj3LYVU=; b=MznPc2i4pRUCSI
+	fPpKLqwR2rFzGg20CBkR+MdChosawph2vVXfY1akdW6/VaQifimYpoJLnPe5EaVBaYn4LN+GF1TSP
+	xf8J9/tHYjolgJaYapvCOjEQNpLeZVH1hDgaRJaqubwC4CLbIhpKUSyi42g2zusmnO8HDRnfYYR3O
+	YaevQvU+1xahlE5oABWdtawDT59QsFJha27XZ0TTJ340Z8qy5Of/bDxSz0AUzOwFq9zJl2FGhf1RS
+	y65dkqCck2xTL825UFsvyIjkskWvc1OyJ5eI4+NG4eci55zCkFve8yAixJ69UlRXi28gOKN7bjiRm
+	BiL1toY0y7Xp4IGJgbCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vphw5-0000000Gb9S-1PI8;
-	Tue, 10 Feb 2026 07:13:25 +0000
-Received: from mail-m3284.qiye.163.com ([220.197.32.84])
+	id 1vpi2T-0000000GcZG-3DyO;
+	Tue, 10 Feb 2026 07:20:01 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vphvs-0000000GarQ-48rj;
-	Tue, 10 Feb 2026 07:13:14 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 33b530bce;
-	Tue, 10 Feb 2026 15:13:08 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com,
-	jonas@kwiboo.se,
-	jernej.skrabec@gmail.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	shawnguo@kernel.org,
-	s.hauer@pengutronix.de,
-	kernel@pengutronix.de,
-	festevam@gmail.com,
-	inki.dae@samsung.com,
-	sw0312.kim@samsung.com,
-	kyungmin.park@samsung.com,
-	krzk@kernel.org,
-	alim.akhtar@samsung.com,
-	jingoohan1@gmail.com,
-	p.zabel@pengutronix.de,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	dianders@chromium.org,
-	m.szyprowski@samsung.com,
-	luca.ceresoli@bootlin.com,
-	jani.nikula@intel.com,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v9 13/15] drm/bridge: analogix_dp: Attach the next bridge in analogix_dp_bridge_attach()
-Date: Tue, 10 Feb 2026 15:12:23 +0800
-Message-Id: <20260210071225.2566099-14-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260210071225.2566099-1-damon.ding@rock-chips.com>
-References: <20260210071225.2566099-1-damon.ding@rock-chips.com>
+	id 1vpi2Q-0000000GcYD-0hLZ;
+	Tue, 10 Feb 2026 07:19:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770707995;
+	bh=mXytY2lL2wi8cjZeNB2IcAirtUMY2l1nJ77qqr3eRgI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cORE1bB6JiXPP7MxYMEIB9mnMgtmqwgQWX81FlF2vw5eQto+1TUUuWBeugjetaSV8
+	 Hj+Ua2UaDoaOn3wzQBLNmooz3DV7UbKMkaVOSRxOlRZWasCebnpSw3TCi3wavrMIPR
+	 VAF1c/3QFj1yh3vT9Abs/Xzwp/B9+EPUKy3EkSI0xnN/DW0r3RvRro0opIMTKzU4E4
+	 uhPC1u5cw0mgJG1qxpa3eSkS6XE0xImmDJtUcFxDzPlTvUnhr6AmuPM35XvHS2uN1u
+	 0lUvIGnc7IC+qf+frLWojZ/ioO6Fx2k2K1yWxtkXE4ChKnpDTrOx/y6p8Yjiev5gZL
+	 PDXhRtW/OBwxg==
+Received: from [192.168.50.190] (unknown [171.76.81.211])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: vignesh)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 36D1717E13A6;
+	Tue, 10 Feb 2026 08:19:49 +0100 (CET)
+Message-ID: <5ed6508c-78ab-4606-b503-9bc54f5cdea9@collabora.com>
+Date: Tue, 10 Feb 2026 12:49:46 +0530
 MIME-Version: 1.0
-X-HM-Tid: 0a9c466594fc03a3kunm1f53a888aefabb
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxpMQlZOTk5JHhkdSxlJQktWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=EclEo2y74XGqlN6A+fdjR/YK2FVMMCeH8KFE4aMUE/maUi5jYDbMaB3Nu7M+wpYvFnVdBKytXY+Y5EdEOwQBd0OsSsQYMNWGfJqWjvGM1UHmws+a62KyUUNko4/akKrfUDzz5QRlbYhNWmbo14bbXfuUgRzP5Tr2gnI3RHDZkLw=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=T0KlNYyqUubH/0N39BJghe8vq1lbkdg01jB78NvFgVw=;
-	h=date:mime-version:subject:message-id:from;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1 6/7] drm/ci: uprev IGT
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: dri-devel@lists.freedesktop.org, daniels@collabora.com,
+ helen.fornazier@gmail.com, airlied@gmail.com, simona.vetter@ffwll.ch,
+ lumag@kernel.org, robdclark@gmail.com, robin.clark@oss.qualcomm.com,
+ guilherme.gallo@collabora.com, sergi.blanch.torne@collabora.com,
+ valentine.burley@collabora.com, linux-mediatek@lists.infradead.org,
+ linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ amd-gfx@lists.freedesktop.org, linux-arm-msm@vger.kernel.org,
+ intel-gfx@lists.freedesktop.org, virtualization@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20260127104406.200505-1-vignesh.raman@collabora.com>
+ <20260127104406.200505-7-vignesh.raman@collabora.com>
+ <zi7frtnecrzyei4fl4nmwmth3icnsyycxxobbrcwovbqfsfq4z@eh25dyfrjkqz>
+ <9949e82b-6ec2-4975-939b-d6a709ecf43f@collabora.com>
+ <5vxrhiilcsaull2airasmc3pjqazvswrtojozz264i5vk3m6zl@pgkdwq46p4ho>
+Content-Language: en-US
+From: Vignesh Raman <vignesh.raman@collabora.com>
+In-Reply-To: <5vxrhiilcsaull2airasmc3pjqazvswrtojozz264i5vk3m6zl@pgkdwq46p4ho>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260209_231313_305565_76ADF2AB 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20260209_231958_392761_A72DEFF1 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,104 +80,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Uniformly, move the next bridge attachment to the Analogix side
-rather than scattered on Rockchip and Exynos sides. It can also
-help get rid of the callback &analogix_dp_plat_data.attach() and
-make codes more concise.
+Hi Dmitry,
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
+On 27/01/26 19:55, Dmitry Baryshkov wrote:
+> On Tue, Jan 27, 2026 at 06:26:11PM +0530, Vignesh Raman wrote:
+>> Hi Dmitry,
+>>
+>> On 27/01/26 18:01, Dmitry Baryshkov wrote:
+>>> On Tue, Jan 27, 2026 at 04:14:01PM +0530, Vignesh Raman wrote:
+>>>> Recent IGT [1] seems to be broken on MSM hardware, with many tests
+>>>> failing due to the old_primary->index != 0 assertion. Uprev IGT to
+>>>> the last known good revision where the tests pass, and update the
+>>>> expectation files accordingly.
+>>>>
+>>>> [1] https://gitlab.freedesktop.org/drm/igt-gpu-tools/-/commit/a909ab05
+>>>>
+>>>> Signed-off-by: Vignesh Raman <vignesh.raman@collabora.com>
+>>>> Signed-off-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+>>>
+>>> It is not clear, which parts here are due to Mesa uprev (yes, there are
+>>> some of those) and which are due to the IGT uprev. Please split into two
+>>> commits and make sure that Mesa-uprev passes more or less clearly.
+>>
+>> The mesa uprev and the IGT uprev are already split into two separate
+>> commits. The IGT uprev only updates the IGT version in gitlab-ci.yml and
+>> xfails.
+> 
+> I think I was not clear enough: Mesa uprev also causes some of the
+> xfails. Those needs to be a part of the Mesa uprev commit.
 
-------
+I have created v2 where the mesa uprev commit also includes the updated 
+xfails. I will send IGT uprev as a separate commit/series.
 
-Changes in v6:
-- Move the next bridge attachment to the Analogix side rather than
-  scattered on Rockchip and Exynos sides.
+https://lore.kernel.org/dri-devel/20260210071138.2256773-1-vignesh.raman@collabora.com/T/#t
 
-Changes in v9:
-- Add Tested-by tag.
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c |  7 ++++---
- drivers/gpu/drm/exynos/exynos_dp.c             | 18 ------------------
- include/drm/bridge/analogix_dp.h               |  1 -
- 3 files changed, 4 insertions(+), 22 deletions(-)
+Regards,
+Vignesh
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 933f1843777f..a6c5601e16ff 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -930,10 +930,11 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
- 		return -EINVAL;
- 	}
- 
--	if (dp->plat_data->attach) {
--		ret = dp->plat_data->attach(dp->plat_data, bridge);
-+	if (dp->plat_data->next_bridge) {
-+		ret = drm_bridge_attach(dp->encoder, dp->plat_data->next_bridge, bridge,
-+					DRM_BRIDGE_ATTACH_NO_CONNECTOR);
- 		if (ret) {
--			DRM_ERROR("Failed at platform attach func\n");
-+			dev_err(dp->dev, "failed to attach following panel or bridge (%d)\n", ret);
- 			return ret;
- 		}
- 	}
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 6126820aad3b..6884ea6d04eb 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -68,23 +68,6 @@ static int exynos_dp_poweroff(struct analogix_dp_plat_data *plat_data)
- 	return exynos_dp_crtc_clock_enable(plat_data, false);
- }
- 
--static int exynos_dp_bridge_attach(struct analogix_dp_plat_data *plat_data,
--				   struct drm_bridge *bridge)
--{
--	struct exynos_dp_device *dp = to_dp(plat_data);
--	int ret;
--
--	/* Pre-empt DP connector creation if there's a bridge */
--	if (plat_data->next_bridge) {
--		ret = drm_bridge_attach(&dp->encoder, plat_data->next_bridge, bridge,
--					DRM_BRIDGE_ATTACH_NO_CONNECTOR);
--		if (ret)
--			return ret;
--	}
--
--	return 0;
--}
--
- static void exynos_dp_mode_set(struct drm_encoder *encoder,
- 			       struct drm_display_mode *mode,
- 			       struct drm_display_mode *adjusted_mode)
-@@ -195,7 +178,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
- 	dp->plat_data.dev_type = EXYNOS_DP;
- 	dp->plat_data.power_on = exynos_dp_poweron;
- 	dp->plat_data.power_off = exynos_dp_poweroff;
--	dp->plat_data.attach = exynos_dp_bridge_attach;
- 	dp->plat_data.ops = &exynos_dp_ops;
- 
- out:
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index bae969dec63a..854af692229b 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -34,7 +34,6 @@ struct analogix_dp_plat_data {
- 
- 	int (*power_on)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
--	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *);
- };
- 
- int analogix_dp_resume(struct analogix_dp_device *dp);
--- 
-2.34.1
+> 
+> 
 
 
 _______________________________________________
