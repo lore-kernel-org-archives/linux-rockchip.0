@@ -4,68 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA7A3EA3F2A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 09:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C85CEA8106
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Feb 2026 12:02:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:From:To:
-	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/QdmiGh6TS281MWt/gNj+EOpwQ3jEYgCq5MyXQ2yVMc=; b=fEt7RMlRBj5UEp
-	XFis/mJyXqJbOnpdBRkDpL/Xe5qQDw5rglZ8wS9RWn3gSUAu0QA1aYsqzXNFneb/3EYTqfh7WtxJM
-	i7uGFdYjQYQWfilrY3i2ejNyoyBHWj9RcK69oRxwgBVHBfBwFw9fclpu5/1geITaWKn4jOPclZYVk
-	rbrgJ/kQZY9Jj5ZzjiUaZCVaB82hPbLgVY9NWnwHzAtkXsgNRm6675+tCBSGsQvCruN6txBCQo6oP
-	NnwaBXJVfn+eEqZzJg2CnNbVApDsbwpB10SkjP2CEPLl/Cr2QQCo9oO04hezf9FUMK3G72JXY0UjM
-	Nwo2DEOtUQ8mfqJzywlw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5NQutHN//wPN58s39dvKkPLXmt3V8QzwhU5Al/W86Tc=; b=D3u4V97kYcMv8Z
+	OuhTdBHmpFVxCoR8PnFdfLjFMFTb+SyzP68+HSEN1ZtxRdRZl2d2jJc6ILPpnSeU1pgbOU+VvrbzO
+	xLccmGv+dCfZmqTccX3qhRNrIP1Z3xgthBtMP3IBK7vXmIi2agqYhLEp49tu8lAxh8dn2fHlekCC0
+	B+08vyOtY1O0U/smr+P8cDNQOx+OM/gYwoBcumKMHnnmcGxsOmQlbv1qKN9gIg2gE/VfnK054TKHN
+	hlLYk22kH7SRCuLM17EfmM7kUJhy2kiiHPTKrpwY4NVBT11W/mcJQNxivVgfBTG0cOd/6PoA3zMuu
+	cmP8eR6WVsT+GqA4TBGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpkRo-0000000Gmio-12MA;
-	Tue, 10 Feb 2026 09:54:20 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vpmRe-0000000Gums-3Fhm;
+	Tue, 10 Feb 2026 12:02:18 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vpkRk-0000000GmiI-20X2
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Feb 2026 09:54:19 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 43E0A4E40BB4;
-	Tue, 10 Feb 2026 09:54:11 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 0877A606BD;
-	Tue, 10 Feb 2026 09:54:11 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B9975119D10B8;
-	Tue, 10 Feb 2026 10:54:05 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1770717250; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=xiRrYJ72zQo1WMZ9lVj3XZTV0dKHYq/gmc5+HrpHpm8=;
-	b=sh26Rq50pKO+hha3iylHdSe9ifBNiwrXtydKZ0jYK1V4jUREnbZoVLnl5pjvCqXKadU6Yw
-	OFHVH0UNkPJcGDbg2lcsrYmJnnU1jXsf9jPFu8XmKZ30omHJ05jfTAa7epIkHzSCP1p7hq
-	qLqYjeQ+1jtj35e/IB585nBYhHvbr4m1zgD2bkk8q8wwHr0d76DoLgtmiWWjxk0UZVuew5
-	ziioJ8kH1/FTcIg9y9aWTpy7C+P144MWiVh/Tz4vP80hf9iSHgtXTw8JN4ZOkLPdT3VhMH
-	yG7HIvhQgu7zni/fAtyYLmGRX4GsBjn6htrF1RZtT82PrL0ZvW7g0xu6RVDTzQ==
-Mime-Version: 1.0
-Date: Tue, 10 Feb 2026 10:54:04 +0100
-Message-Id: <DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com>
-Cc: "Nicolas Frattaroli" <frattaroli.nicolas@gmail.com>, "Liam Girdwood"
- <lgirdwood@gmail.com>, "Mark Brown" <broonie@kernel.org>, "Jaroslav Kysela"
- <perex@perex.cz>, "Takashi Iwai" <tiwai@suse.com>, "Heiko Stuebner"
- <heiko@sntech.de>, <linux-rockchip@lists.infradead.org>,
- <linux-sound@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <kernel@collabora.com>, <alexandre.belloni@bootlin.com>,
- <thomas.petazzoni@bootlin.com>
-To: "Detlev Casanova" <detlev.casanova@collabora.com>,
- <linux-kernel@vger.kernel.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: [REGRESSION] Re: [PATCH v1] ASoC: rockchip: i2s_tdm: Re-add the
- set_sysclk callback
-X-Mailer: aerc 0.20.1
-References: <20250117163102.65807-1-detlev.casanova@collabora.com>
-In-Reply-To: <20250117163102.65807-1-detlev.casanova@collabora.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vpmRb-0000000GumA-2cuC;
+	Tue, 10 Feb 2026 12:02:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
+	bh=MA8XtkyTeXl7r9NYADWLTbBNblgwxWj94nMGkruZhVo=; b=Pz/kwafXMpzn18HUjhM6RMkhj6
+	L52/VJwnl7fwM/YF93KhyrTRBjSOkP5odXCCUy0ymCtlyynt+8hd5xGgByI9BJjWL2gd6/aLtZPVV
+	N8APRQ1nVr0MYDw86JVuT3t1zK9cKE6/AHnlUNbF493OIkM2mefUYPiON/vMw34/mYVIPf8BTxwso
+	BjhvlIMEIEU6RPlLJWQlAMrzZ36j3Wlaq5UKD0CMNB3LgEELABTxsAZrd6Edhyzwp5BsyNh/akF3c
+	rSX8cn2kzH2eJyVPFFDd0eulKChVb8uL7qFw7WleQmFQNpwiRQftP+h1YkjKI5eexSTPM8QVx2DeP
+	f9HdBcMA==;
+Received: from i53875a81.versanet.de ([83.135.90.129] helo=phil..)
+	by gloria.sntech.de with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.94.2)
+	(envelope-from <heiko@sntech.de>)
+	id 1vpmRY-007wxR-CX; Tue, 10 Feb 2026 13:02:12 +0100
+From: Heiko Stuebner <heiko@sntech.de>
+To: heiko@sntech.de
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jan Palus <jpalus@fastmail.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Thorsten Leemhuis <regressions@leemhuis.info>,
+	stable@vger.kernel.org
+Subject: [PATCH] Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro"
+Date: Tue, 10 Feb 2026 13:01:42 +0100
+Message-ID: <20260210120142.698512-1-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.2
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260210_015416_934651_B7B9C549 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20260210_040215_722903_FE78380A 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,70 +73,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Detlev,
+This reverts commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d.
 
-On Fri Jan 17, 2025 at 5:31 PM CET, Detlev Casanova wrote:
-> In commit
-> 9e2ab4b18ebd ("ASoC: rockchip: i2s-tdm: Fix inaccurate sampling rates"),
-> the set_sysclk callback was removed as considered unused as the mclk rate
-> can be set in the hw_params callback.
-> The difference between hw_params and set_sysclk is that the former is
-> called with the audio sampling rate set in the params (e.g.: 48000 Hz)
-> while the latter is called with a clock rate already computed with
->   sampling_rate * mclk-fs (e.g.: 48000 * 256)
->
-> For HDMI audio using the Rockchip I2S TDM driver, the mclk-fs value must
-> be set to 128 instead of the default 256, and that value is set in the
-> device tree at the machine driver level (like a simple-audio-card
-> compatible node).
-> Therefore, the i2s_tdm driver has no idea that another mclk-fs value can
-> be configured and simply computes the mclk rate in the hw_params callback
-> with DEFAULT_MCLK_FS * params_rate(params), which is wrong for HDMI
-> audio.
->
-> Re-add the set_sysclk callback so that the mclk rate is computed by the
-> machine driver which has the correct mclk-fs value set in its device tree
-> node.
+It seems there are different variants of the Wifi chipset in use on the
+Pinebook Pro. And according to the reported regression - see Closes
+below, the reverted change causes issues with one Wifi chipset.
 
-I'm afraid I just found this commit breaks audio capture on the RK3308.
+The original commit message indicates a "further description" only and
+does not indicate this would fix an actual problem, so a revert should
+not cause further problems.
 
-Using 'arecord -Vmono -d 2 -c 8 -f S16_LE -r 96000 /dev/null' I get:
+Fixes: 6d54d935062e ("arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro")
+Cc: Jan Palus <jpalus@fastmail.com>
+Cc: Peter Robinson <pbrobinson@gmail.com>
+Cc: Thorsten Leemhuis <regressions@leemhuis.info>
+Cc: stable@vger.kernel.org
+Closes: https://lore.kernel.org/r/aUKOlj-RvTYlrpiS@rock.grzadka/
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts  | 18 ------------------
+ 1 file changed, 18 deletions(-)
 
-  rockchip-i2s-tdm ff320000.i2s: ASoC error (-22): at snd_soc_dai_hw_params() on ff320000.i2s
-   ff320000.i2s-rk3308-hifi: ASoC error (-22): at __soc_pcm_hw_params() on ff320000.i2s-rk3308-hifi
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index 810ab6ff4e67..7c23971920f0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -883,12 +883,6 @@ vcc5v0_host_en_pin: vcc5v0-host-en-pin {
+ 		};
+ 	};
+ 
+-	wifi {
+-		wifi_host_wake_l: wifi-host-wake-l {
+-			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+-		};
+-	};
+-
+ 	wireless-bluetooth {
+ 		bt_wake_pin: bt-wake-pin {
+ 			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -946,19 +940,7 @@ &sdio0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+ 	sd-uhs-sdr104;
+-	#address-cells = <1>;
+-	#size-cells = <0>;
+ 	status = "okay";
+-
+-	brcmf: wifi@1 {
+-		compatible = "brcm,bcm4329-fmac";
+-		reg = <1>;
+-		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
+-		interrupt-names = "host-wake";
+-		pinctrl-names = "default";
+-		pinctrl-0 = <&wifi_host_wake_l>;
+-	};
+ };
+ 
+ &sdhci {
+-- 
+2.47.2
 
-Tested on:
-
- * Radxa Rock Pi S
- * Upstream kernel
- * arm64 defconfig
-
-Tested kernel versions:
-
- * v6.12 works
- * 5323186e2e8d (this commit) fails
- * 5323186e2e8d^ works
- * 21cfbeae7d7c (same patch on stable/linux-6.12.y) fails
- * 21cfbeae7d7c^ works
- * v6.19 fails
- * v6.19 + 'git revert 5323186e2e8d' works
-
-I don't have more information at the moment.
-
-> Fixes: 9e2ab4b18ebd ("ASoC: rockchip: i2s-tdm: Fix inaccurate sampling rates")
-
-I'm the author of commit 9e2ab4b18ebd mentioned in the 'Fixes:' tag, so it
-would have been good to Cc me. I would have had the option of testing your
-patch and this regression could have been solved before getting in
-mainline. I think b4 does it automatically (and perhaps get_maintainers
-with appropriate flags).
-
-Luca
-
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
