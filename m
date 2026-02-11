@@ -4,61 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64C03E9E31B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Feb 2026 15:40:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BDAECD6C1
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Feb 2026 17:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yxQ/pu64yDq1WhusM4Wyy+Nmv+zh/S4wem7A/GbnNN0=; b=JnenEAShJ1R4Z/
-	oGCqkbZWSxms/igoc0FFz73YUzWAjEQycoCJ1JKyUhWIKPvPaTkUXOP4G/y4d6EZH2DjapEUFLAq8
-	VJZj6XxpN4Z6135FAQA0bZHWnYRnrfv65mLaFmVirHGQIJ8Jco2x+tmUHQ7IZBHWxxjGQu2i8d8/1
-	J8ZBlU2lEFBRHGqy2/vK7LWX38zMEqpkfM44PR6OPAw+kXVdJDEAvV4/lZ12Lz9sIwR+1GjvLtZyb
-	YfRgVvlK5Tt1+J0I2y/5MUi2DZcfJp/rpz1xwSMfiYLb9oTb00SYb3ysV1hPuhHFTvL5wphOZ11KE
-	Xfgy9DFt8dLcjN+d/hKA==;
+	List-Owner; bh=MJGz1++BXcO+FkKn+hMFOSd81eiJkUDkfF6SkXMK6ow=; b=eFaaq5CuAdDYfp
+	X4AIGbNym82Mi34ADpgSAPRP5MVJP/GEwBMD3YKyhjEptwrJJ6aTBnLPzkLG3UrkwguKtSvSWs3Jk
+	YFooGMaJZyhKReHFuoig3Wf5LMhqyTu9ZT9ejuC9e+az2nlyzyxKbe4xpklZHSryA2U3cDl9kKizJ
+	a+Q2WRCaV0GGSTjzQMdUaiwRfetXKZgwaHk8yopEvaI97p67caIRt/Bc7V34Fep0LtF9Z6vK0cjTy
+	9g6k81t09775i89xG0q4EDHTaucyTn67QUhKR9ev7jLXP1aXOYiEJaPFTdIy78hZbbWuQE5FBhOWm
+	fB3wxbPd/GlgaCCluSDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqCKV-00000000niQ-1vt7;
-	Wed, 11 Feb 2026 15:40:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vqDkF-00000000sUh-3S8c;
+	Wed, 11 Feb 2026 17:11:19 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqCKS-00000000nhu-2bAw
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Feb 2026 15:40:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8AF5344308;
-	Wed, 11 Feb 2026 15:40:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E6D8C4CEF7;
-	Wed, 11 Feb 2026 15:40:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1770824435;
-	bh=4XK13jjYLred8II2iFJoWFOdf1Y9k6sr2e/uAGf5JAY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Osf1+sonyielfcfujsc2iqg2UF+lVBoIHnyPSvXNLhEj+wiJlUY7u3mDE0d93zCzE
-	 zBpVIqAZfadRZsH27h80LwM9BD0DSwj5cnui9xvD9fUafzn7f0owQ9Uq1ji2Owlwpo
-	 Z4s8PcmJBy8StkHpDAil94og0/4FRu5S+tbUBlzhwRuWJxa79omP4GgLLrh+kRBlYH
-	 0oU2c8wRD5ooc9cUjEyj4ly0fTzufA5SbP4ZpE4vLJxNYiGci+frhgviGdMTK5BCa8
-	 Huv/5f4XXc6H66h5N4v3lOaLSO49WYhSRPqQD61EimKM8C6aQodJSCEI2ajsqeGca8
-	 M7AnWKSbXHOIg==
-Date: Wed, 11 Feb 2026 21:10:26 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, 
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
-	linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>, 
-	Masami Hiramatsu <mhiramat@kernel.org>
-Subject: Re: [PATCH v4 0/3] PCI Controller event and LTSSM tracepoint support
-Message-ID: <u3es7h4mgzdqfhvpl52s3x4vcisrpazcm4qb6x7lu4srmagxpn@hca2begqypeu>
-References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com>
- <9e06e69c-d10a-1f21-cbf7-204319549612@rock-chips.com>
+	id 1vqDkC-00000000sUF-3KKC;
+	Wed, 11 Feb 2026 17:11:17 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1770829830; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=GR7lKyC+ozaWg05oGsrqz0Z7rDS9ZIOYDtgmfUS9yF8SGsv5hLRBebSLLDot9wWTiPzrScyHd1uc1cH6tCAqkEaDLVlhG/9q//xhGaCZM5na149IiIrTOSzqQdfzSK0uZAQjX1MaL0OC2MNTBjUnA2K5ISt7h8ZObYSjndqEqQ0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1770829830; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=0Dl0Z2RybvDxucJFvyk0rYh+K+gwu9CR8COPAfPaa6E=; 
+	b=NKYhL+OqEH99ViXECN4WyH9CMsuK1vCMRqR2WtwAdscA0R8g5M0y0c2e3RfqDb9jUC5IZaPlkG/OstQPMWZNl7RkNL1pI8qGhYOURVBChPmks2lej2W0Mt6+0hrkM+6nVTD4V5Is57RwzMY7Vx0JTTOawjmXP0WHC61ax4qiFQk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1770829830;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=0Dl0Z2RybvDxucJFvyk0rYh+K+gwu9CR8COPAfPaa6E=;
+	b=YQqrxTW8kGhGYrH+a120mKUsZ4yMJMBXI1KYvdR3zSb+MvINyxPnAaGAThZTRNtV
+	XNtcgjNA6v8n4VOAUn7uY/ttvmgO3lGGIh1q9ZIZGdAsVHJuwFL7uzAIPH0SqdU3PgO
+	x6yJHpRLXjsytia4XH7HYMs7925RGM+XxwbVKn0A=
+Received: by mx.zohomail.com with SMTPS id 1770829827913685.3686734865292;
+	Wed, 11 Feb 2026 09:10:27 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com,
+ amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org,
+ Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v7 03/22] drm: Add enum conversions between DRM_COLOR_FORMAT and
+ HDMI_COLORSPACE
+Date: Wed, 11 Feb 2026 18:10:18 +0100
+Message-ID: <4732908.LvFx2qVVIh@workhorse>
+In-Reply-To: <20260210-prophetic-elk-of-superiority-b0ab03@houat>
+References: <20260121-color-format-v7-0-ef790dae780c@collabora.com>
+ <2028270.PYKUYFuaPT@workhorse>
+ <20260210-prophetic-elk-of-superiority-b0ab03@houat>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <9e06e69c-d10a-1f21-cbf7-204319549612@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260211_074036_697473_74C630E7 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20260211_091116_897101_D4E1D1D1 
+X-CRM114-Status: GOOD (  47.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,146 +96,131 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBGZWIgMTEsIDIwMjYgYXQgMDk6MTM6NTBQTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
-Ogo+IOWcqCAyMDI2LzAxLzIyIOaYn+acn+WbmyAxMDowMiwgU2hhd24gTGluIOWGmemBkzoKPiA+
-IFRoaXMgcGF0Y2gtc2V0IGFkZHMgbmV3IHBjaSBjb250cm9sbGVyIGV2ZW50IGFuZCBMVFNTTSB0
-cmFjZXBvaW50IHVzZWQgYnkgaG9zdCBkcml2ZXJzCj4gPiB3aGljaCBwcm92aWRlIExUU1NNIHRy
-YWNlIGZ1bmN0aW9uYWxpdHkuIFRoZSBmaXJzdCB1c2VyIGlzIHBjaWUtZHctcm9ja2NoaXAgd2l0
-aCBhIDI1Ngo+ID4gQnl0ZXMgRklGTyBmb3IgcmVjb3JkaW5nIExUU1NNIHRyYW5zaXRpb24uCj4g
-PiAKPiAKPiBHZW50bGUgcGluZy4uLgo+IAoKTWVyZ2Ugd2luZG93IGlzIG9wZW4gbm93LCBzbyB3
-ZSBjYW4ndCBhY2NlcHQgYW55IHBhdGNoZXMgdW50aWwgLXJjMS4gQW5kIEknbQphbHNvIHdhaXRp
-bmcgZm9yIGFuIEFjayBmcm9tIFN0ZXZlbiBmb3IgdGhlIHRyYWNpbmcgcGFydC4KCi0gTWFuaQoK
-PiA+IFRlc3RpbmcKPiA+ID09PT09PT09PQo+ID4gCj4gPiBUaGlzIHNlcmllcyB3YXMgdGVzdGVk
-IG9uIFJLMzU4OC9SSzM1ODhzIEVWQjEgd2l0aCBOVk1lIFNTRCBjb25uZWN0ZWQgdG8gUENJZTMg
-YW5kIFBDSWUyCj4gPiByb290IHBvcnRzLgo+ID4gCj4gPiBlY2hvIDEgPiAvc3lzL2tlcm5lbC9k
-ZWJ1Zy90cmFjaW5nL2V2ZW50cy9wY2lfY29udHJvbGxlci9wY2llX2x0c3NtX3N0YXRlX3RyYW5z
-aXRpb24vZW5hYmxlCj4gPiBjYXQgL3N5cy9rZXJuZWwvZGVidWcvdHJhY2luZy90cmFjZV9waXBl
-Cj4gPiAKPiA+ICAgIyB0cmFjZXI6IG5vcAo+ID4gICAjCj4gPiAgICMgZW50cmllcy1pbi1idWZm
-ZXIvZW50cmllcy13cml0dGVuOiA2NC82NCAgICNQOjgKPiA+ICAgIwo+ID4gICAjICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICBfLS0tLS09PiBpcnFzLW9mZi9CSC1kaXNhYmxlZAo+ID4g
-ICAjICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC8gXy0tLS09PiBuZWVkLXJlc2NoZWQK
-PiA+ICAgIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgLyBfLS0tPT4gaGFyZGlycS9z
-b2Z0aXJxCj4gPiAgICMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8fCAvIF8tLT0+IHBy
-ZWVtcHQtZGVwdGgKPiA+ICAgIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHx8fCAvIF8t
-PT4gbWlncmF0ZS1kaXNhYmxlCj4gPiAgICMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8
-fHx8IC8gICAgIGRlbGF5Cj4gPiAgICMgICAgICAgICAgIFRBU0stUElEICAgICBDUFUjICB8fHx8
-fCAgVElNRVNUQU1QICBGVU5DVElPTgo+ID4gICAjICAgICAgICAgICAgICB8IHwgICAgICAgICB8
-ICAgfHx8fHwgICAgIHwgICAgICAgICB8Cj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBb
-MDAwXSAuLi4uLiAgICAgNS42MDAxOTQ6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2
-OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogREVURUNUX0FDVCByYXRlOiBVbmtub3duCj4gPiAgICAg
-ICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAxOTg6IHBjaWVfbHRz
-c21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogREVURUNUX1dB
-SVQgcmF0ZTogVW5rbm93bgo+ID4gICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4u
-Li4gICAgIDUuNjAwMTk5OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAw
-MDAwLnBjaWUgc3RhdGU6IERFVEVDVF9BQ1QgcmF0ZTogVW5rbm93bgo+ID4gICAgICAgIGt3b3Jr
-ZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjAxOiBwY2llX2x0c3NtX3N0YXRl
-X3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFBPTExfQUNUSVZFIHJhdGU6
-IFVua25vd24KPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1
-LjYwMDIwMjogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2ll
-IHN0YXRlOiBQT0xMX0NPTkZJRyByYXRlOiBVbmtub3duCj4gPiAgICAgICAga3dvcmtlci8wOjAt
-OSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMDQ6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNp
-dGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogQ0ZHX0xJTktXRF9TVEFSVCByYXRlOiBV
-bmtub3duCj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42
-MDAyMDY6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBz
-dGF0ZTogQ0ZHX0xJTktXRF9BQ0VQVCByYXRlOiBVbmtub3duCj4gPiAgICAgICAga3dvcmtlci8w
-OjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMDc6IHBjaWVfbHRzc21fc3RhdGVfdHJh
-bnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogQ0ZHX0xBTkVOVU1fV0FJIHJhdGU6
-IFVua25vd24KPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1
-LjYwMDIwODogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2ll
-IHN0YXRlOiBDRkdfTEFORU5VTV9BQ0VQVCByYXRlOiBVbmtub3duCj4gPiAgICAgICAga3dvcmtl
-ci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMTA6IHBjaWVfbHRzc21fc3RhdGVf
-dHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogQ0ZHX0NPTVBMRVRFIHJhdGU6
-IFVua25vd24KPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1
-LjYwMDIxMjogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2ll
-IHN0YXRlOiBDRkdfSURMRSByYXRlOiBVbmtub3duCj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAg
-ICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMTM6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlv
-bjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogTDAgcmF0ZTogMi41IEdUL3MKPiA+ICAgICAg
-ICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIxNDogcGNpZV9sdHNz
-bV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9MT0NL
-IHJhdGU6IFVua25vd24KPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4u
-ICAgICA1LjYwMDIxNjogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAw
-MC5wY2llIHN0YXRlOiBSQ1ZSWV9SQ1ZSQ0ZHIHJhdGU6IFVua25vd24KPiA+ICAgICAgICBrd29y
-a2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIxNzogcGNpZV9sdHNzbV9zdGF0
-ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9TUEVFRCByYXRl
-OiBVbmtub3duCj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAg
-NS42MDAyMTg6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNp
-ZSBzdGF0ZTogUkNWUllfTE9DSyByYXRlOiBVbmtub3duCj4gPiAgICAgICAga3dvcmtlci8wOjAt
-OSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMjA6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNp
-dGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogUkNWUllfRVExIHJhdGU6IFVua25vd24K
-PiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIyMTog
-cGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBS
-Q1ZSWV9FUTIgcmF0ZTogOC4wIEdUL3MKPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFsw
-MDBdIC4uLi4uICAgICA1LjYwMDIyMjogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6
-IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9FUTMgcmF0ZTogOC4wIEdUL3MKPiA+ICAgICAg
-ICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIyNDogcGNpZV9sdHNz
-bV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9MT0NL
-IHJhdGU6IDguMCBHVC9zCj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4u
-LiAgICAgNS42MDAyMjU6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAw
-MDAucGNpZSBzdGF0ZTogUkNWUllfUkNWUkNGRyByYXRlOiA4LjAgR1Qvcwo+ID4gICAgICAgIGt3
-b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjI2OiBwY2llX2x0c3NtX3N0
-YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFJDVlJZX0lETEUgcmF0
-ZTogOC4wIEdUL3MKPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAg
-ICA1LjYwMDIyNzogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5w
-Y2llIHN0YXRlOiBMMCByYXRlOiA4LjAgR1Qvcwo+ID4gICAgICAgIGt3b3JrZXIvMDowLTkgICAg
-ICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjI4OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246
-IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFJDVlJZX0xPQ0sgcmF0ZTogOC4wIEdUL3MKPiA+
-ICAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIyOTogcGNp
-ZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZS
-WV9SQ1ZSQ0ZHIHJhdGU6IDguMCBHVC9zCj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBb
-MDAwXSAuLi4uLiAgICAgNS42MDAyMzE6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2
-OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogUkNWUllfSURMRSByYXRlOiA4LjAgR1Qvcwo+ID4gICAg
-ICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjMyOiBwY2llX2x0
-c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IEwwIHJhdGU6
-IDguMCBHVC9zCj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAg
-NS42MDAyMzM6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNp
-ZSBzdGF0ZTogTDEyM19TRU5EX0VJRExFIHJhdGU6IDguMCBHVC9zCj4gPiAgICAgICAga3dvcmtl
-ci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMzQ6IHBjaWVfbHRzc21fc3RhdGVf
-dHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogTDFfSURMRSByYXRlOiA4LjAg
-R1Qvcwo+ID4gICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAw
-MjM2OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3Rh
-dGU6IFJDVlJZX0xPQ0sgcmF0ZTogOC4wIEdUL3MKPiA+ICAgICAgICBrd29ya2VyLzA6MC05ICAg
-ICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIzNzogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9u
-OiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9SQ1ZSQ0ZHIHJhdGU6IDguMCBHVC9z
-Cj4gPiAgICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMzg6
-IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTog
-UkNWUllfSURMRSByYXRlOiA4LjAgR1Qvcwo+ID4gICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAg
-WzAwMF0gLi4uLi4gICAgIDUuNjAwMjM5OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRl
-djogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IEwwIHJhdGU6IDguMCBHVC9zCj4gPiAKPiA+IAo+ID4g
-Q2hhbmdlcyBpbiB2NDoKPiA+IC0gdXNlIFRSQUNFX0VWRU5UX0ZOIHRvIG5vdGlmeSB3aGVuIHRv
-IHN0YXJ0IGFuZCBzdG9wIHRoZSB0cmFjZXBvaW50LAo+ID4gICAgYW5kIGV4cG9ydCBwY2lfbHRz
-c21fdHBfZW5hYmxlZCgpIGZvciBob3N0IGRyaXZlcnMgdG8gdXNlCj4gPiAtIHNraXAgdHJhY2Ug
-aWYgcGNpX2x0c3NtX3RwX2VuYWJsZWQoKSBpcyBmYWxzZS4oU3RldmVuKQo+ID4gLSB3cmFwIGlu
-dG8gODAgY29sdW1ucyhCam9ybikKPiA+IAo+ID4gQ2hhbmdlcyBpbiB2MzoKPiA+IC0gYWRkIFRS
-QUNFX0RFRklORV9FTlVNIGZvciBhbGwgZW51bXMoU3RldmVuIFJvc3RlZHQpCj4gPiAtIEFkZCB0
-b2N0cmVlIGVudHJ5IGluIERvY3VtZW50YXRpb24vdHJhY2UvaW5kZXgucnN0KEJhZ2FzIFNhbmph
-eWEpCj4gPiAtIGZpeCBtaXNtYXRjaCBzZWN0aW9uIHVuZGVybGluZSBsZW5ndGgoQmFnYXMgU2Fu
-amF5YSkKPiA+IC0gTWFrZSBleGFtcGxlIHNuaXBwZXRzIGluIGNvZGUgYmxvY2soQmFnYXMgU2Fu
-amF5YSkKPiA+IC0gd2FycCBjb250ZXh0IGludG8gODAgY29sdW1ucyBhbmQgZml4IHRoZSBmaWxl
-IG5hbWUoQmpvcm4pCj4gPiAtIHJlb3JkZXIgdmFyaWFibGVzKE1hbmkpCj4gPiAtIHJlbmFtZSBs
-b29wIHRvIGk7IHJlbmFtZSBlbiB0byBlbmFibGUoTWFuaSkKPiA+IC0gdXNlIEZJRUxEX0dFVChN
-YW5pKQo+ID4gLSBhZGQgY29tbWVudCBhYm91dCBob3cgdGhlIEZJRk8gd29ya3MoTWFuaSkKPiA+
-IAo+ID4gQ2hhbmdlcyBpbiB2MjoKPiA+IC0gdXNlIHRyYWNlcG9pbnQKPiA+IAo+ID4gU2hhd24g
-TGluICgzKToKPiA+ICAgIFBDSTogdHJhY2U6IEFkZCBQQ0kgY29udHJvbGxlciBMVFNTTSB0cmFu
-c2l0aW9uIHRyYWNlcG9pbnQKPiA+ICAgIERvY3VtZW50YXRpb246IHRyYWNpbmc6IEFkZCBQQ0kg
-Y29udHJvbGxlciBldmVudCBkb2N1bWVudGF0aW9uCj4gPiAgICBQQ0k6IGR3LXJvY2tjaGlwOiBB
-ZGQgcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uIHRyYWNlIHN1cHBvcnQKPiA+IAo+ID4gICBE
-b2N1bWVudGF0aW9uL3RyYWNlL2V2ZW50cy1wY2ktY29udHJvbGxlci5yc3QgfCAgNDIgKysrKysr
-KysrKwo+ID4gICBEb2N1bWVudGF0aW9uL3RyYWNlL2luZGV4LnJzdCAgICAgICAgICAgICAgICAg
-fCAgIDEgKwo+ID4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWR3LXJvY2tjaGlw
-LmMgfCAxMTEgKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICAgZHJpdmVycy9wY2kvdHJh
-Y2UuYyAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgIDIwICsrKysrCj4gPiAgIGluY2x1ZGUv
-bGludXgvcGNpLmggICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAgNCArCj4gPiAgIGluY2x1
-ZGUvdHJhY2UvZXZlbnRzL3BjaV9jb250cm9sbGVyLmggICAgICAgICB8ICA1NyArKysrKysrKysr
-KysrCj4gPiAgIDYgZmlsZXMgY2hhbmdlZCwgMjM1IGluc2VydGlvbnMoKykKPiA+ICAgY3JlYXRl
-IG1vZGUgMTAwNjQ0IERvY3VtZW50YXRpb24vdHJhY2UvZXZlbnRzLXBjaS1jb250cm9sbGVyLnJz
-dAo+ID4gICBjcmVhdGUgbW9kZSAxMDA2NDQgaW5jbHVkZS90cmFjZS9ldmVudHMvcGNpX2NvbnRy
-b2xsZXIuaAo+ID4gCgotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCu
-muCuv+CuteCuruCvjQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmlu
-ZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9s
-aW51eC1yb2NrY2hpcAo=
+On Tuesday, 10 February 2026 18:24:46 Central European Standard Time Maxime Ripard wrote:
+> Hi,
+> 
+> On Sat, Feb 07, 2026 at 08:55:16PM +0100, Nicolas Frattaroli wrote:
+> > On Friday, 6 February 2026 15:08:46 Central European Standard Time Maxime Ripard wrote:
+> > > On Wed, Jan 21, 2026 at 03:45:10PM +0100, Nicolas Frattaroli wrote:
+> > > > While the two enums have similar values, they're not identical, and
+> > > > HDMI's enum is defined as per the HDMI standard.
+> > > > 
+> > > > Add a simple conversion function from DRM to HDMI. Unexpected inputs
+> > > > aren't handled in any clever way, DRM_COLOR_FORMAT_AUTO and any other
+> > > > value that doesn't cleanly map to HDMI just gets returned as
+> > > > HDMI_COLORSPACE_RGB.
+> > > > 
+> > > > Add a second conversion function that gets a DRM_COLOR_FORMAT from an
+> > > > HDMI_COLORSPACE as well. In this case, reserved HDMI values that can't
+> > > > be converted will result in an -EINVAL return value.
+> > > > 
+> > > > Co-developed-by: Marius Vlad <marius.vlad@collabora.com>
+> > > > Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
+> > > > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > > > ---
+> > > >  include/drm/drm_connector.h | 54 +++++++++++++++++++++++++++++++++++++++++++++
+> > > >  1 file changed, 54 insertions(+)
+> > > > 
+> > > > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> > > > index b5604dca728a..ffeb42f3b4a3 100644
+> > > > --- a/include/drm/drm_connector.h
+> > > > +++ b/include/drm/drm_connector.h
+> > > > @@ -2612,6 +2612,60 @@ int drm_connector_attach_color_format_property(struct drm_connector *connector);
+> > > >  
+> > > >  const char *drm_get_color_format_name(enum drm_color_format color_fmt);
+> > > >  
+> > > > +/**
+> > > > + * drm_color_format_to_hdmi_colorspace - convert DRM color format to HDMI
+> > > > + * @fmt: the &enum drm_color_format to convert
+> > > > + *
+> > > > + * Convert a given &enum drm_color_format to an equivalent
+> > > > + * &enum hdmi_colorspace. For non-representable values and
+> > > > + * %DRM_COLOR_FORMAT_AUTO, the value %HDMI_COLORSPACE_RGB is returned.
+> > > > + *
+> > > > + * Returns: the corresponding &enum hdmi_colorspace value
+> > > > + */
+> > > > +static inline enum hdmi_colorspace __pure
+> > > > +drm_color_format_to_hdmi_colorspace(enum drm_color_format fmt)
+> > > > +{
+> > > > +	switch (fmt) {
+> > > > +	default:
+> > > > +	case DRM_COLOR_FORMAT_AUTO:
+> > > > +	case DRM_COLOR_FORMAT_RGB444:
+> > > > +		return HDMI_COLORSPACE_RGB;
+> > > 
+> > > I don't think that's correct. What auto ends up as totally depends on
+> > > the atomic state it comes with.
+> > > 
+> > > At the very least, you should output a warning there, because that case
+> > > should never happen.
+> > 
+> > Yeah, my hope was to keep this function __pure so that the compiler
+> > has maximum freedom to do whatever. With a WARN, it's got side-effects
+> > now, and we're no longer pure. With a status return value and an output
+> > parameter, it's no longer pure either, because the output parameter is
+> > not local memory.
+> > 
+> > The limiting factor here is that as I understand correctly, I can't
+> > really extend the hdmi_colorspace enum, as it's basically 1:1 from
+> > the standard. Doing this would be the ideal solution, because we'd
+> > keep the function pure and without surprise conversions happening.
+> 
+> I feel like this kind of loops back into the other two reviews I did:
+> you paint yourself into a corner by having auto in the enum, and by
+> passing it directly to that function.
+> 
+> If, instead, you don't allow auto in the drm_color_format enum, and
+> resolve auto in the hdmi_compute_config function instead of passing it
+> directly, then we don't have to deal with it here.
+
+You're right. Though that means I need to figure out how I'll handle
+the conversion from enum to bitfield for !HDMI cases. I guess for DP,
+I can do this in drm_dp_helper or something. I don't know if i915 or
+amdgpu call into that at all though, but it's as good of a time as any
+to start doing so now if not. Just also learned about the existence of
+`enum dp_pixelformat`, which imho has the best naming out of all of
+these enums. (I hope "HDMI Colorspace" to describe pixel formats is
+straight from the standard because if it's something we in the kernel
+came up with then I will put renaming it on my list of long-term
+kernel tasks to get around to some day.)
+
+And yes I will add the necessary KUnit tests for the DP helper side of
+things as well. :)
+
+Nothing registers the property for DSI so we should be good on that front
+for now.
+
+Thanks for the reviews.
+
+Kind regards,
+Nicolas Frattaroli
+
+> > Looking at hdmi_colorspace_get_name in drivers/video/hdmi.c, it returns
+> > "Invalid" for any value not in the enum itself. Would it be allowable
+> > to tack an HDMI_COLORSPACE_INVALID at the end of the enum with perhaps
+> > a negative value, or is there a different approach you'd prefer?
+> 
+> And again, if we only ever have to deal with RGB, YUV420, 444 or 422,
+> then we always have valid values for HDMI_COLORSPACE.
+> 
+> Plus, the hdmi_colorspace enum matches what the hdmi spec defines, so we
+> can't really extend it, and most importantly, hdmi_colorspace_get_name()
+> is only ever used for debugging / logging purposes, it's never in the
+> "functional" path.
+> 
+> Maxime
+> 
+
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
