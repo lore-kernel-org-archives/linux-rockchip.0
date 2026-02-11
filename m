@@ -4,92 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D7B3E9E2E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Feb 2026 11:06:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F38CE9E2E9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Feb 2026 11:46:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=E5MV+iORyj8FyxkXN9J+jvSUyUsXdxvHHQMaYa751jY=; b=vWzclsRjgKr+yE
-	QT5SoyjYjQkvjr2RHyZlrdhUeWkFi5ke87adv9odgu5DgazZuBN+oJPYHzR+3FCO0C/qZE+jG9qVF
-	wgBdi4GsbZnEgdrwHLGL9GN75+9pR9PnDnMkknYoPIHDDOWL4gWz4vIdEVlCfAwloLjgfQAm08XbG
-	jRFEQyKyU7/xfNbhsgvIbY+1TpmkGSJN3U7dY3GVYwivzjdM0RlfrcXTQoV1JR0dkVWzB6yAPgSdu
-	SnhgIGfKXTR1cUUqA6Ji4b0jP/DdN7o/zz3jTawD8pVEd+6Wd7L50uzYY0Mz/rKtbkSXk7c3/eCNN
-	Y53mTEVtIzaDuuZg44Dw==;
+	List-Owner; bh=4L4xIPjpKkDVq4agQ/LkQvHso96pi/w2ZeNM3U35Xk0=; b=jOXgdGc47dnO/r
+	0wi4YpCUTOZQbEmvSNfxBGbaCCTyU1tsLih4jkgXvWmMRLPCxtCR0Kc4oDs6/ckfzVzopwB8luLdz
+	5VMhyYI2nL50VtzqHir7TQGNOJ/xPOGIDNKvdyo56+MzluIKX93/p+VM7PZJEYOkagnUCSD4xydjf
+	nCQqK8Oha6Sr7KLhEjDh55IzuSqdRGs2yElsJR2gErhaX8mj2UThDPkG1adXO+UoZjp5WainDNX1U
+	Ptl8XBujFyBRXdz2wt8KA9aKNukiMhQ0ZfSLquCGVfWsesWsEPrtB6XC+OqQ0NCSNrL7RiHKXXSol
+	cM8IVK8ezHcJ4uedtvAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vq836-00000000Yb1-2DNC;
-	Wed, 11 Feb 2026 11:06:24 +0000
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+	id 1vq8fd-00000000aac-01on;
+	Wed, 11 Feb 2026 11:46:13 +0000
+Received: from fout-b3-smtp.messagingengine.com ([202.12.124.146])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vq833-00000000YXx-46CD
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Feb 2026 11:06:23 +0000
-Received: by mail-yx1-xb12e.google.com with SMTP id 956f58d0204a3-649dbff9727so4482214d50.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Feb 2026 03:06:21 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1770807981; x=1771412781; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=d9tdadWMEAjs2MsQfFbeN/61LVoitAwCN0EJqEzhips=;
-        b=ivfUJfgjnETb3mBxSF5WXBdWUovvoLaqKBZvFP9m8cMfcP0DJN/H+5Q7MjbuwxfNVP
-         LblDG/vda8DDg/mWAr8i9i2/JfHqX0Z01f0RriYXqjLSZXnsfMjE7TxJEvTsAB3nMPVU
-         ynoJfMMEiW5wU+HEbHsTNs7N7h++LlHHlyO2G9FHS0C/C0NFSs3QtcH/qqB0h2ibXca2
-         vTSTijx3DdzPwqo6rwe8XL+8X8nJxoRWW8Ie4B0mH59BXlRY422CcVKKWMUqZPZarzYO
-         A5FH/wOQL0BPnnu2RJnSvs6QUd7n56bhZhYZC1X/i3FqErTuiId10WUqhSUgJNHF4NZh
-         M2HA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1770807981; x=1771412781;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=d9tdadWMEAjs2MsQfFbeN/61LVoitAwCN0EJqEzhips=;
-        b=LYfhoVcFZ/CdGDh2sXeMMIGLePIRivoEphBdUnxMuzne15lU1IW8DODlVIgCOW5YKp
-         F4VnGsItKVL4Wo38gClsCumZCU4KrM831Dty+WFealWe5bNkVokGxQ9+MnoNEHjVdQI7
-         /4jq3kAoBOocqwFfGZUoI6T8LjzVArfm08PIceEMMpWYG8ly5h/gOjIdV/LAPMscZj2u
-         Ln8vlvvIoUI7DeSi7gkwgMp7mCQi4D5GmIG48OtZyr7+EKLPVhsx89QK5X3A5qn3uR/3
-         NtSONWI1op7dAMY4IVhNfFedelUR4hwhzNIe4lXgEz4k//xm+0s8yDxvMiBnD6WlYzEt
-         E4Dg==
-X-Forwarded-Encrypted: i=1; AJvYcCUknOk5h06Xcm5/Yma4wOGeTaqhsVVtMG78ukDWHwAwBI50Exe5TJPAFIm4UaoAJ/CoPMGHEupndoeQd690YQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxpZQvKTNmTt5/8VQpAAEYRh7pSFdA52AWysqBdrQQ+ymUQxdZV
-	Oq7MS9htThJWTmpxueLWXb2vw+8Zz2JckEHNPDSFFVkzjuzukv4L52vN
-X-Gm-Gg: AZuq6aKHWBOldvfqDBkmVI5WZc3Go0o9kBjZ8FtNlcsK+VB0eiSUhF00nIo7vVOFjwd
-	yPXkLqPyroaVRd2+okAQSslmOt10s2lS+noRF2HevhVKEnfyos04SHTPTtCE5gslCbVXeUPuf6/
-	JDDkPuSG2v3MP3EpCPPHEUFvh5ADG6kG3HZksWGU3h5VT8GYbljgyriOIzJAPtIFSOE2U/iU9hb
-	rhutdxfCg1IPKgX7X/PBX7evsNkCKt2uZ/s1BpOBy4mSwRkQYEpvKe0GNrZpscrUn1kPeGH9ndF
-	kiKvD7gaohsi332Bp3rMwtpMTBUn6523QIFd9qd1cqAVB2ydrSUF/dlMuTzRmyQeH82lHR2hf0Y
-	mBkDSdr5alpZWF1Nau1GDRIpY7bgi1xLOWt6xpT8mrYVK1MLXhPIUEAjnjknaYSTdDLUYWzIJG0
-	sKmkUIq73IJX60Xq82dvWRKXZGeir2FB8Ku3I=
-X-Received: by 2002:a05:690e:2502:10b0:649:b2cd:eb7d with SMTP id 956f58d0204a3-64afba1b9b1mr1234054d50.68.1770807980742;
-        Wed, 11 Feb 2026 03:06:20 -0800 (PST)
-Received: from localhost.localdomain ([2804:14c:485:4ffb:e36d:8763:a188:5dcb])
-        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-64afc87ff20sm1533719d50.10.2026.02.11.03.06.16
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Feb 2026 03:06:20 -0800 (PST)
-From: Fabio Estevam <festevam@gmail.com>
-To: heiko@sntech.de
-Cc: jonas@kwiboo.se,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@nabladev.com>
-Subject: [PATCH v4 4/4] ARM: dts: rockchip: Add Onion Omega4 Evaluation Board
-Date: Wed, 11 Feb 2026 08:05:50 -0300
-Message-Id: <20260211110550.580474-4-festevam@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260211110550.580474-1-festevam@gmail.com>
-References: <20260211110550.580474-1-festevam@gmail.com>
+	id 1vq8fZ-00000000aZw-16y9;
+	Wed, 11 Feb 2026 11:46:11 +0000
+Received: from phl-compute-08.internal (phl-compute-08.internal [10.202.2.48])
+	by mailfout.stl.internal (Postfix) with ESMTP id 21BD41D00183;
+	Wed, 11 Feb 2026 06:46:04 -0500 (EST)
+Received: from phl-frontend-03 ([10.202.2.162])
+  by phl-compute-08.internal (MEProxy); Wed, 11 Feb 2026 06:46:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fastmail.com; h=
+	cc:cc:content-type:content-type:date:date:from:from:in-reply-to
+	:in-reply-to:message-id:mime-version:references:reply-to:subject
+	:subject:to:to; s=fm3; t=1770810363; x=1770896763; bh=ukbEN640sL
+	CWjepQ3oOy/19KEzPFUeSNtmy3J6LTRuw=; b=D6P9gLkfxYzKfsUf0CAG8VmOmc
+	eJbuwBPDfvJYEDMb2oulNIqbvtpsrgFFuHJ4tOfjjecFZGZ5mLbn6TBLYgV/6Sjv
+	skPR67hPYHcWxpgA7VD+1o1GkWLv9GFPl2wdK24aQM6iT/87Wo7X9Xj///a6ilMH
+	/6vbIRJlMOwyD8R5YRWVl8UrEp6gZMBYAYv5SHpBLm3ES210Hhv7kurNtwbW6SVW
+	wmX+5N39X+0Yr4VgIUd93pZpfvCwqHNG3jsk+jviHLzlf/9Dv3mtulWr2Qd6c+V6
+	wv8PgDJLaxgJKxcpWnWlrk7oWdamcch8NTV/oO/l0TAKCkXLOv+v6GbJAqtQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-type:content-type:date:date
+	:feedback-id:feedback-id:from:from:in-reply-to:in-reply-to
+	:message-id:mime-version:references:reply-to:subject:subject:to
+	:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=
+	1770810363; x=1770896763; bh=ukbEN640sLCWjepQ3oOy/19KEzPFUeSNtmy
+	3J6LTRuw=; b=u1YJ5WapTnOO51LbuXW87gB9hcscNuECThY7V6wxz90dm115w7c
+	K7cYdhXPPy9vJGVPvZRt84jkpeR8kfnyjERL7YQxRyk8veqImnEVJ0MFkzrms8e4
+	Kr4/bzXZIzG5CHId/McTed7M8gyjqid5M6L/4adY9F/m+O7gba2CLnB/L+etMiL/
+	96d02g4THzrHOl/mSRH2mRvbgvOMCaFje/0t4KmE9MBcvDNK5o19TcoQJszcDmW9
+	oS+/qZEbDg9DRQirz+CPrQZfWCkJjXtr1kX8tAr5Ti3c4Oz695oLjwMkHKZkIdMN
+	SGMAItjkFgMhmC7n6JE3QWjG0kMUJWn9Xcw==
+X-ME-Sender: <xms:-2uMaVBCbfr859cGEbq5QpG7w_o81C00UlHrFHns-aDa7_Y4aeU-CQ>
+    <xme:-2uMaSkXQtqXsj36Y7Kk5Dr_7dWnVUlIF13FaOWYChiX4W9WU990fZni76g6o5ep-
+    89sUhxhJDv656qa1o6RU3zUlSefJWQQoLdAHWH03KCSxoUMLiQuHWc>
+X-ME-Received: <xmr:-2uMaWxwS8pLkK2QTg-yaSmu99IAdBF6VRf2r5Xj3rlnmYSVMVZ34YF8bIxnlvHpF98GHcaVFdI-sU2p3N-y7z6b7ijKT5A>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddvtddvgeejucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
+    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
+    gurhepfffhvfevuffkfhggtggujggfsehttdortddtreejnecuhfhrohhmpeflrghnucfr
+    rghluhhsuceojhhprghluhhssehfrghsthhmrghilhdrtghomheqnecuggftrfgrthhtvg
+    hrnhepvefgtdejgfeugefgffethedvueeigfegteduffeftdeihfduuefgieelteekheeg
+    necuffhomhgrihhnpehkvghrnhgvlhdrohhrghenucevlhhushhtvghrufhiiigvpedtne
+    curfgrrhgrmhepmhgrihhlfhhrohhmpehjphgrlhhushesfhgrshhtmhgrihhlrdgtohhm
+    pdhnsggprhgtphhtthhopeejpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopehhvg
+    hikhhosehsnhhtvggthhdruggvpdhrtghpthhtoheplhhinhhugidqrghrmhdqkhgvrhhn
+    vghlsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthhtoheplhhinhhugi
+    dqrhhotghktghhihhpsehlihhsthhsrdhinhhfrhgruggvrggurdhorhhgpdhrtghpthht
+    oheplhhinhhugidqkhgvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhgpdhrtghpth
+    htohepphgsrhhosghinhhsohhnsehgmhgrihhlrdgtohhmpdhrtghpthhtoheprhgvghhr
+    vghsshhiohhnsheslhgvvghmhhhuihhsrdhinhhfohdprhgtphhtthhopehsthgrsghlvg
+    esvhhgvghrrdhkvghrnhgvlhdrohhrgh
+X-ME-Proxy: <xmx:-2uMacQDmam6Ndluo90DoSSA864FB_o7xtOYntFtqf0478uILqnJ7A>
+    <xmx:-2uMae9Ad0hpCRjGR50u68RSJo8aR50evKXYSrIMLK6rbTHJXIcwJw>
+    <xmx:-2uMaatdKf6p6Cy-_xx49pF4AkcKypYFnHsTXozPWg7lht9t7SvK1Q>
+    <xmx:-2uMaWPUK4iBXdUci29oRFj4fciIDYs-kLRBr_JDKASAnGUmAAdZDQ>
+    <xmx:-2uMaUsoCZr9j0XuJpu1tJMAcY6fId3JDlqUQWUbeVEP8CzFyi-Z0N7R>
+Feedback-ID: i01894241:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 11 Feb 2026 06:46:02 -0500 (EST)
+Date: Wed, 11 Feb 2026 12:46:01 +0100
+From: Jan Palus <jpalus@fastmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	Peter Robinson <pbrobinson@gmail.com>, Thorsten Leemhuis <regressions@leemhuis.info>, 
+	stable@vger.kernel.org
+Subject: Re: [PATCH] Revert "arm64: dts: rockchip: Further describe the WiFi
+ for the Pinebook Pro"
+Message-ID: <aYxrhXSLHcAHavAd@rock.grzadka>
+References: <20260210120142.698512-1-heiko@sntech.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260210120142.698512-1-heiko@sntech.de>
+User-Agent: NeoMutt/20251211
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260211_030622_029263_7903A9CF 
-X-CRM114-Status: GOOD (  17.93  )
+X-CRM114-CacheID: sfid-20260211_034610_102710_DF2B452B 
+X-CRM114-Status: GOOD (  17.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,182 +115,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Fabio Estevam <festevam@nabladev.com>
+On 10.02.2026 13:01, Heiko Stuebner wrote:
+> This reverts commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d.
+> 
+> It seems there are different variants of the Wifi chipset in use on the
+> Pinebook Pro. And according to the reported regression - see Closes
+> below, the reverted change causes issues with one Wifi chipset.
+> 
+> The original commit message indicates a "further description" only and
+> does not indicate this would fix an actual problem, so a revert should
+> not cause further problems.
+> 
+> Fixes: 6d54d935062e ("arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro")
+> Cc: Jan Palus <jpalus@fastmail.com>
+> Cc: Peter Robinson <pbrobinson@gmail.com>
+> Cc: Thorsten Leemhuis <regressions@leemhuis.info>
+> Cc: stable@vger.kernel.org
+> Closes: https://lore.kernel.org/r/aUKOlj-RvTYlrpiS@rock.grzadka/
+> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+> ---
+>  .../boot/dts/rockchip/rk3399-pinebook-pro.dts  | 18 ------------------
+>  1 file changed, 18 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> index 810ab6ff4e67..7c23971920f0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> @@ -883,12 +883,6 @@ vcc5v0_host_en_pin: vcc5v0-host-en-pin {
+>  		};
+>  	};
+>  
+> -	wifi {
+> -		wifi_host_wake_l: wifi-host-wake-l {
+> -			rockchip,pins = <0 RK_PA3 RK_FUNC_GPIO &pcfg_pull_none>;
+> -		};
+> -	};
+> -
+>  	wireless-bluetooth {
+>  		bt_wake_pin: bt-wake-pin {
+>  			rockchip,pins = <2 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
+> @@ -946,19 +940,7 @@ &sdio0 {
+>  	pinctrl-names = "default";
+>  	pinctrl-0 = <&sdio0_bus4 &sdio0_cmd &sdio0_clk>;
+>  	sd-uhs-sdr104;
+> -	#address-cells = <1>;
+> -	#size-cells = <0>;
+>  	status = "okay";
+> -
+> -	brcmf: wifi@1 {
+> -		compatible = "brcm,bcm4329-fmac";
+> -		reg = <1>;
+> -		interrupt-parent = <&gpio0>;
+> -		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_HIGH>;
+> -		interrupt-names = "host-wake";
+> -		pinctrl-names = "default";
+> -		pinctrl-0 = <&wifi_host_wake_l>;
+> -	};
+>  };
+>  
+>  &sdhci {
 
-The Onion Omega4 Evaluation Board is based on the Omega4 SoM and has:
+Although it's pretty much obvious feel free to include:
 
- - 256 MB of RAM
- - 256 MB of SPI-NAND
- - Ethernet
- - USB OTG
- - Wifi
- - SD card
- - Camera connector
-
-The details can be found at:
-https://documentation.onioniot.com/omega4/getting-started/
-
-Add the initial support for this board so that it can fully boot into
-Linux with the root file system stored in the SPI NAND.
-
-Signed-off-by: Fabio Estevam <festevam@nabladev.com>
----
-Changes since v3:
-- Split into SoM and base board.
-
- arch/arm/boot/dts/rockchip/Makefile           |  1 +
- .../boot/dts/rockchip/rv1103b-omega4-evb.dts  | 55 ++++++++++++++++
- .../arm/boot/dts/rockchip/rv1103b-omega4.dtsi | 65 +++++++++++++++++++
- 3 files changed, 121 insertions(+)
- create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
- create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
-
-diff --git a/arch/arm/boot/dts/rockchip/Makefile b/arch/arm/boot/dts/rockchip/Makefile
-index 716f5540e438..d0154fd7ff24 100644
---- a/arch/arm/boot/dts/rockchip/Makefile
-+++ b/arch/arm/boot/dts/rockchip/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0
- dtb-$(CONFIG_ARCH_ROCKCHIP) += \
-+	rv1103b-omega4-evb.dtb \
- 	rv1108-elgin-r1.dtb \
- 	rv1108-evb.dtb \
- 	rv1109-relfor-saib.dtb \
-diff --git a/arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts b/arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
-new file mode 100644
-index 000000000000..c42e99841be4
---- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
-@@ -0,0 +1,55 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2025 plan44.ch/luz
-+ * Copyright (c) 2025 Onion Corporation
-+ */
-+
-+/dts-v1/;
-+
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/leds/common.h>
-+#include "rv1103b-omega4.dtsi"
-+
-+/ {
-+	model = "Onion Omega4 Evaluation Board";
-+	compatible = "onion,rv1103b-omega4-evb", "onion,rv1103b-omega4", "rockchip,rv1103b";
-+
-+	aliases {
-+		serial0 = &uart0;
-+	};
-+
-+	chosen {
-+		stdout-path = "serial0:115200n8";
-+	};
-+
-+	leds {
-+		compatible = "gpio-leds";
-+
-+		led-0	{
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&led>;
-+			gpios = <&gpio0 RK_PA2 GPIO_ACTIVE_HIGH>;
-+			function = LED_FUNCTION_STATUS;
-+			color = <LED_COLOR_ID_BLUE>;
-+			label = "sys";
-+			default-state = "on";
-+		};
-+	};
-+};
-+
-+&fspi0 {
-+	status = "okay";
-+};
-+
-+&uart0 {
-+	status = "okay";
-+};
-+
-+&pinctrl {
-+	leds {
-+		led: led {
-+			rockchip,pins = <0 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-diff --git a/arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi b/arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
-new file mode 100644
-index 000000000000..58aebffda9cd
---- /dev/null
-+++ b/arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
-@@ -0,0 +1,65 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Copyright (c) 2022 Rockchip Electronics Co., Ltd.
-+ * Copyright (c) 2025 plan44.ch/luz
-+ * Copyright (c) 2025 Onion Corporation
-+ */
-+
-+/dts-v1/;
-+
-+#include "rv1103b.dtsi"
-+
-+&uart0 {
-+	bootph-all;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0m0_xfer>;
-+};
-+
-+&fspi0 {
-+	spi_nand: flash@0 {
-+		compatible = "spi-nand";
-+		reg = <0>;
-+		bootph-pre-ram;
-+		bootph-some-ram;
-+		spi-max-frequency = <75000000>;
-+		spi-rx-bus-width = <4>;
-+		spi-tx-bus-width = <1>;
-+
-+		partitions {
-+			compatible = "fixed-partitions";
-+			#address-cells = <1>;
-+			#size-cells = <1>;
-+
-+			partition@0 {
-+				label = "env";
-+				reg = <0x00000000 0x00040000>;
-+			};
-+
-+			partition@40000 {
-+				label = "idblock";
-+				reg = <0x00040000 0x00100000>;
-+				read-only;
-+			};
-+
-+			partition@140000 {
-+				label = "uboot";
-+				reg = <0x00140000 0x00100000>;
-+				read-only;
-+			};
-+
-+			partition@240000 {
-+				label = "boot";
-+				reg = <0x00240000 0x00800000>;
-+			};
-+
-+			partition@a40000 {
-+				label = "ubi";
-+				reg = <0x00a40000 0x0f5c0000>;
-+			};
-+		};
-+	};
-+};
-+
-+&wdt {
-+	status = "okay";
-+};
--- 
-2.34.1
-
+Tested-by: Jan Palus <jpalus@fastmail.com>
 
 _______________________________________________
 Linux-rockchip mailing list
