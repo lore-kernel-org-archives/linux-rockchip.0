@@ -4,82 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79FC8EE3698
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Feb 2026 16:24:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D28FFEE36A9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Feb 2026 16:56:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=H43q7BKBUYDWp1fBfT2000urRBzIKiN1Gx8ONPv/xM4=; b=XOVALA9Xva+8gI
-	YwgPNrP6mZqU8FOKOrg/3Gjn9HUs57T0zrQcIDx1RXSWfxnkimqpg3rX4yEjvGOZViLQz/5e7Qv6P
-	Gd4x+QPecsnpamx3BRb0kqPs58nirX/W1fnSUdSg62rRVMUMHRX10dUan1vaCSvsrSeAjuXM4yQAl
-	SrsA7LhG99jkr5qGyiHu6GN+1G1vNV1PGJOCq29iyZi8JBuT8/jH57mvDLzocXPzDPhH4abm/8Btx
-	nyzQzKQIpTa3vXDNGSv/5ycmQ/rQj8Aml28rGkyOWyGmg7HxonPeASY88+NDWwfYch7Q1eiAWDXOS
-	n53aQYNC44uRELlV2ZiA==;
+	List-Owner; bh=YRNLFen32AHKiUvKajvwEooQmZOKE2mn935ycsI+TD0=; b=FfGCKR+6fc/zSF
+	U7z8hbIblWiveNwpzkpvCs/1HEaZ36K1SbZdPXz4azQH/Elk2CWFQM/l8WcyoEPPkwEzQQTEQDoEX
+	qfrQoSGOgx90NvRW/lvbDW7/9N/J6RZO3qKYJvRiAnlBPbbII3sjbhzLAb0IS6r/6MBU5U0aMSCyM
+	KrFaYEIA1kGGFRNodqZtI/BmNRWPPlsUF4tl54EJpo255vWRApyMJ3CKmp3L4Vd+pVpVsxz8KGnPl
+	8LKvxp4DKBrFZmMhYNujnJppupsLdBRB9LR2Q+q6lY/mHNJ0K2JT8KHl3s3Z0jXdrW166d+dHHjs3
+	tuUmhU4D2SXmILxi1I2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqZUQ-00000002LvF-0d5X;
-	Thu, 12 Feb 2026 16:24:26 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vqZyx-00000002PGz-2HwG;
+	Thu, 12 Feb 2026 16:55:59 +0000
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqZUG-00000002LgN-3YbN;
-	Thu, 12 Feb 2026 16:24:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1770913453;
-	bh=EgY6rRozA0nftZszqOZUvhTiePvvlTkScGicAmL6ngk=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=I/El3T4P0xovkgMTWcwcUXRdgkb5x/Jtnuc437sudcJIWdnjlnXYE41volTkySBfe
-	 g7jQRcLsGl/6alBEVCexl9s9fNPtON5QVNL73QcPbYHGdDtI2xmR/0NTAl9fXhJD97
-	 qFgkabxP+3rZGcrSj/VLHSKhIhAq7nLVYZzkjHJ1vCw1IqG+/MV1hueucPtyb6z0Ib
-	 6JJCp4vP4H9d182O5pN+LiOzLutxAzCRJr2Iv2W1tiEb3dXrCcmuYPMCgXKDOukGs9
-	 CiNst9RRZQqTFC8aF46h8zMFj8HeWJ7xWZO/9c9oit/M9SXY9Hz5RaDDX0zYuBPuZD
-	 0q/HX4jCb7KJw==
-Received: from trenzalore (modemcable014.2-22-96.mc.videotron.ca [96.22.2.14])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A672017E0A49;
-	Thu, 12 Feb 2026 17:24:10 +0100 (CET)
-From: Detlev Casanova <detlev.casanova@collabora.com>
-To: linux-kernel@vger.kernel.org
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Daniel Almeida <daniel.almeida@collabora.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
-	Ricardo Ribalda <ribalda@chromium.org>,
-	Yunke Cao <yunkec@google.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Pavan Bobba <opensource206@gmail.com>,
-	James Cowgill <james.cowgill@blaize.com>,
-	Ma Ke <make24@iscas.ac.cn>,
-	Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
-	Daniel Scally <dan.scally@ideasonboard.com>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-trace-kernel@vger.kernel.org,
-	kernel@collabora.com
-Subject: [PATCH 11/11] media: hantro: Add fdinfo callback
-Date: Thu, 12 Feb 2026 11:23:28 -0500
-Message-ID: <20260212162328.192217-12-detlev.casanova@collabora.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260212162328.192217-1-detlev.casanova@collabora.com>
-References: <20260212162328.192217-1-detlev.casanova@collabora.com>
+	id 1vqZyt-00000002PEn-45WU
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Feb 2026 16:55:58 +0000
+Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4836fc075d2so52785e9.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 12 Feb 2026 08:55:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770915354; x=1771520154; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=EWH52hHDoZsOt/pe7QFROJLUmHx4Nch/byKXwRcnIQ8=;
+        b=bqt9e6d8l0/6erekakBfnTsF1YwxJCcgo1vADajOPT5fpO9AAkdD6AkFveH4LTV79l
+         x4O8+BrPP6RQ0072KU/lIGvYAgrjySDBtR4yNjgr7f2fD9vdQdoMpx0O1xDEf6mdcQC9
+         dA4A1ATCqj2og64UpuV045UDHoXxou8lDPRGpeLyTmQFl8hY70YzIZWl+6mwXSmvSdVp
+         km78M/kreNupTffUn7K2NVvEtB6tZHAo8vdsG5ikxTwthjyY2D4tP3/q171E5nEhYjoJ
+         ksKW57M1sdb5hLE+H4w88ueMut0JtgV9HTdTF4YpKjJZWh46joHmvOyUSmaewg74jSa3
+         tOmg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770915354; x=1771520154;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=EWH52hHDoZsOt/pe7QFROJLUmHx4Nch/byKXwRcnIQ8=;
+        b=fMG4xeC5hsGdzNMmDmJ9+y+V0zbio/3VfjZeiT6YXJ+pAP5zas475KIUZre38bbslp
+         0Cprf3sSNMIG6hVURmu1j7wAPxyswBHOX6VGUJLmAuDicDU2Qs6BvTwCM4ZbYLwWmnlm
+         4QXVNkRBCdXo7eI93/NKJaEOcgudQMXSXQVgZ/KFLLur9H99YOyzflLxKTzKyrtOMaGw
+         FcmZLVdIX7O4nXPunppnRCoTXE9bojMa0oKQqRp20LzsWmEvdyU3+FUjDW/9eCCcActT
+         YvjY79HshJo7M1uVNeaK91Qn9ReBTcHIM7Vow209Z1Y74DW7Jqimd2IK9Ro2mJrm6wVA
+         tBiQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUB9utY3BIpqtRiRp3d+5xiw8pO3L5/d1TNrALexZDTKfyS6DqUhK6kA5mVS8s7aFaFGmRB6agI2BCtpmMceA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxB8iaIbTNYmIepaCxFu1xc9xRq27r57ka918bAe78/HcjjB2IR
+	8SZzrOT0/z25prkqY39rP6UReSq61r67OJHJ+f4NLMxrkh+gZ/cNm5Yw
+X-Gm-Gg: AZuq6aIImVoe4VDaj72qn7VNqeOa4C1oka4Hog6tiTECZ+KOqBXDWZDTvtpOlNbO7hO
+	pknMlV2oZlZmO/kWOUQiEuYzcp/kqP2ESM/xAlTJ6P6RGatj5jww7DiLecZroaykiKoYQKvCbR/
+	Hjxgoy3zkicDtCmAWiYCDM9xVn8am9CQuretFQ6qMykgdrR0LT+H7dQv70jM/jGSbGGOwVundxb
+	blKfyzyXEpkzUjmJgI6GGtHx/hn+lzhyauivmK+/3Yt6GZv9jd1PJueWMyxQPPSU/XLygIKqiFg
+	RRv10tWprw9Ria7V6/ldraDDZq5/ynUpKETN2DJVW3U8ItWi5Yn6SHLmZYelZcOYUpLjFIJ3TZv
+	lGHo0QiA+0SyjIV7bUALJngZs63o4MLieYN/oVXYEAcBvVCYWsCCfKECyDXikuHJjxuqm98aFLh
+	xnHx9jMrekRZIc4Zo=
+X-Received: by 2002:a05:600c:a09:b0:477:9fa8:bc99 with SMTP id 5b1f17b1804b1-4836570e260mr29901335e9.4.1770915353815;
+        Thu, 12 Feb 2026 08:55:53 -0800 (PST)
+Received: from skbuf ([2a02:2f04:d501:d900:2f75:bf70:f0b9:4586])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4835dd20519sm222156105e9.15.2026.02.12.08.55.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Feb 2026 08:55:53 -0800 (PST)
+Date: Thu, 12 Feb 2026 18:55:50 +0200
+From: Vladimir Oltean <olteanv@gmail.com>
+To: WeiHao Li <cn.liweihao@gmail.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: Add USB2.0 PHY for RK3368
+Message-ID: <20260212165550.mju3377fvphdsqoe@skbuf>
+References: <20250909132958.26423-1-cn.liweihao@gmail.com>
+ <20250909132958.26423-3-cn.liweihao@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250909132958.26423-3-cn.liweihao@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260212_082417_149520_5F5D2D7D 
-X-CRM114-Status: GOOD (  16.17  )
+X-CRM114-CacheID: sfid-20260212_085556_065243_183E8933 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,103 +101,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The fdinfo shows the number of buffers in each queue and the total amount
-of video buffer memory.
+On Tue, Sep 09, 2025 at 09:29:56PM +0800, WeiHao Li wrote:
+> RK3368 has one USB2.0 PHY with two ports, This adds device tree node for
+> it.
+> 
+> Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
+> ---
+>  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 29 ++++++++++++++++++++++++
+>  1 file changed, 29 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> index 1b21787269..b09e431a64 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+> @@ -766,11 +766,40 @@ cru: clock-controller@ff760000 {
+>  	grf: syscon@ff770000 {
+>  		compatible = "rockchip,rk3368-grf", "syscon", "simple-mfd";
+>  		reg = <0x0 0xff770000 0x0 0x1000>;
+> +		#address-cells = <1>;
+> +		#size-cells = <1>;
 
-Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
----
- drivers/media/platform/verisilicon/hantro.h      |  1 +
- drivers/media/platform/verisilicon/hantro_drv.c  | 15 +++++++++++++++
- drivers/media/platform/verisilicon/hantro_v4l2.c | 10 +++++++++-
- 3 files changed, 25 insertions(+), 1 deletion(-)
+This introduces a device tree warning. You cannot mix nodes with no unit
+address (io-domains) with nodes with a unit address (usb2-phy@700) on
+the same hierarchical level. You have to pick a format and stick to it.
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index d5cddc783688..9e9fc0658586 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -268,6 +268,7 @@ struct hantro_ctx {
- 	const struct hantro_codec_ops *codec_ops;
- 	struct hantro_postproc_ctx postproc;
- 	bool need_postproc;
-+	u64 stats_buf_memory;
- 
- 	/* Specific for particular codec modes. */
- 	union {
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 8dd26ca32459..86d316a8a3e8 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -17,6 +17,7 @@
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/pm_runtime.h>
-+#include <linux/seq_file.h>
- #include <linux/slab.h>
- #include <linux/videodev2.h>
- #include <linux/workqueue.h>
-@@ -711,6 +712,19 @@ static int hantro_release(struct file *filp)
- 	return 0;
- }
- 
-+static void hantro_show_fdinfo(struct seq_file *m, struct file *filp)
-+{
-+	struct hantro_ctx *ctx =
-+		container_of(filp->private_data, struct hantro_ctx, fh);
-+
-+	struct vb2_queue *src_q = v4l2_m2m_get_src_vq(ctx->fh.m2m_ctx);
-+	struct vb2_queue *dst_q = v4l2_m2m_get_dst_vq(ctx->fh.m2m_ctx);
-+
-+	seq_printf(m, "src-queued-count: %04u\n", src_q->queued_count);
-+	seq_printf(m, "dst-queued-count: %04u\n", dst_q->queued_count);
-+	seq_printf(m, "buf-size: %llu\n", ctx->stats_buf_memory);
-+}
-+
- static const struct v4l2_file_operations hantro_fops = {
- 	.owner = THIS_MODULE,
- 	.open = hantro_open,
-@@ -718,6 +732,7 @@ static const struct v4l2_file_operations hantro_fops = {
- 	.poll = v4l2_m2m_fop_poll,
- 	.unlocked_ioctl = video_ioctl2,
- 	.mmap = v4l2_m2m_fop_mmap,
-+	.show_fdinfo = hantro_show_fdinfo,
- };
- 
- static const struct of_device_id of_hantro_match[] = {
-diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
-index fcf3bd9bcda2..6d129613ea3d 100644
---- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-+++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-@@ -820,18 +820,26 @@ hantro_queue_setup(struct vb2_queue *vq, unsigned int *num_buffers,
- 		return -EINVAL;
- 	}
- 
-+	ctx->stats_buf_memory = 0;
-+
- 	if (*num_planes) {
- 		if (*num_planes != pixfmt->num_planes)
- 			return -EINVAL;
--		for (i = 0; i < pixfmt->num_planes; ++i)
-+		for (i = 0; i < pixfmt->num_planes; ++i) {
- 			if (sizes[i] < pixfmt->plane_fmt[i].sizeimage)
- 				return -EINVAL;
-+			ctx->stats_buf_memory += pixfmt->plane_fmt[i].sizeimage;
-+		}
-+
-+		ctx->stats_buf_memory *= *num_buffers;
-+
- 		return 0;
- 	}
- 
- 	*num_planes = pixfmt->num_planes;
- 	for (i = 0; i < pixfmt->num_planes; ++i)
- 		sizes[i] = pixfmt->plane_fmt[i].sizeimage;
-+
- 	return 0;
- }
- 
--- 
-2.53.0
-
+>  
+>  		io_domains: io-domains {
+>  			compatible = "rockchip,rk3368-io-voltage-domain";
+>  			status = "disabled";
+>  		};
+> +
+> +		u2phy: usb2-phy@700 {
+> +			compatible = "rockchip,rk3368-usb2phy";
+> +			reg = <0x700 0x2c>;
+> +			clocks = <&cru SCLK_OTGPHY0>;
+> +			clock-names = "phyclk";
+> +			clock-output-names = "usb480m_phy";
+> +			#clock-cells = <0>;
+> +			status = "disabled";
+> +
+> +			u2phy_otg: otg-port {
+> +				interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
+> +					     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
+> +					     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
+> +				interrupt-names = "otg-bvalid", "otg-id",
+> +						  "linestate";
+> +				#phy-cells = <0>;
+> +				status = "disabled";
+> +			};
+> +
+> +			u2phy_host: host-port {
+> +				interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+> +				interrupt-names = "linestate";
+> +				#phy-cells = <0>;
+> +				status = "disabled";
+> +			};
+> +		};
+>  	};
+>  
+>  	wdt: watchdog@ff800000 {
+> -- 
+> 2.47.2
+> 
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
