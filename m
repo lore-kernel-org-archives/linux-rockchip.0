@@ -4,72 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56D34EDF16F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 14:37:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 028A8EDF170
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 14:39:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1Pj9NfggtoDJiD9O+V3V3R1JXAWZjBQW4+7FyZV/vwE=; b=GE+EAOZoSty/OAtR/VR/mIYz89
-	X6yaOMc1J916P1Ma3JdNh7Ey1FOeVVFsR5CZr2JxS5Qbx3JstA2B72BpHNI2L4wWHGO8LhsaWwwsr
-	3ssRRLw3mn6JaiaIJ/gLGONwI/fLjPIYciqyKBLOW593mqLMBdHxGzQboY5th/18LD/4NpdA8vCfz
-	dRAD0Cp4hdyg9n+wqOLhL8pdZ+rvYpkSSKRK4ifW0jeelDyoy6KODmVcWhr5v9RcoL5ahSJFz2Ygr
-	+NTe2JZ/eZQhKorPZ8wtYKIvl4psjgvSihP4/rHerSbEOVEK6fjveHpmjBghWR9MqrjoMMV0vcvSJ
-	ppM64Vow==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=IdZ8HcvIJ8jdfiCI64990aAOW37YHWsmvjb8sB4AV28=; b=X2fk/HmOqtqn9u
+	6a8u3tAwiddGy3D6pafVbAl+Q30oJ28EJ/eDQeHoyqne1+cDK/ChEdsf5tHqi4Nvdt9kDm4qNxKER
+	SuS5RnCFXgZFp2ffOzP7cjgSxVLXAbXD8uNeemKeMO89wMzL9+U3tHXdBB6G41Yt5PLM1YovyG2Xr
+	Pqjj8T9FXr1lOtbfmxaVZRFouvs2g4pONpiFWwoJg1RjbSZaYe8SPfbUz6JKIiN31r4zoyozSct5S
+	URU+K6V5v1fPQK8X0YYbhQyB64MsCn3Ct1OcU+Uk6OLbvSN6RJusPSjUbg9n88ZzwSiSNGIvrYKbV
+	L+aQOsMAAoYxHyUAcM7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vquIT-00000003XkB-0nqw;
-	Fri, 13 Feb 2026 14:37:29 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vquKd-00000003YTy-2CdD;
+	Fri, 13 Feb 2026 14:39:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vquIQ-00000003XjF-0Ecl;
-	Fri, 13 Feb 2026 14:37:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1770993431; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=NVCxn5dkyb5CqLLEY73qeZN+f2AqZndkyy09kpUGozULkqUpln17vdvx+aRlLN56b+oppXd8ZdIMSbd+GTp1FjdLt7fO9SRKRdTrz8AlEmlpZQNacYMbyOsSythICJpnNgkxF+MGIBbvEKPLQ5cPTJMA6hfMFhEUN0svO5G3uSQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1770993431; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=2EhD5ARQ8TNV7FJPQTkx5mhW0z5ojGhz+tn+MBPMaXs=; 
-	b=YsuhunsD70pLhylOzSl2JxIWckbRiXlLobgGa9DubriF4sf87y3zklMZ8G7aNlfLOBpUV3Nx+XlOuVB5J4lV3P+jkiiGu8gWkCZeNJVfjF3XO+Qh1rewUgmxwXj8oSBeAl3Z6z7XUPeRu5zLZ2w/69pcZ7AZ6JJby30FJHmlD4E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1770993431;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=2EhD5ARQ8TNV7FJPQTkx5mhW0z5ojGhz+tn+MBPMaXs=;
-	b=TiiKj1YWqbnZYGQUfCXekYux2PEx3HUPTB8myE09Bf25xmVMMenSEJpDIbtlCg/C
-	Dswds/yHPFUc6QqvngTiKXxCosXvDbi7quUk6HUkcN7yWpI36C8txyeu5qhVNYH04Pw
-	ukq6pRqQESjMBSgIyufeEbMTBwsEj3BGjyZeh2y8=
-Received: by mx.zohomail.com with SMTPS id 1770993430367305.83315708574753;
-	Fri, 13 Feb 2026 06:37:10 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 2883D180716; Fri, 13 Feb 2026 15:37:06 +0100 (CET)
-Date: Fri, 13 Feb 2026 15:37:06 +0100
+	id 1vquKU-00000003YLF-0Gip;
+	Fri, 13 Feb 2026 14:39:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1770993571;
+	bh=AFv/3KVzIinIaZVoV9/X3xfLJqoXvuiVXD2r4mVIsww=;
+	h=From:Subject:Date:To:Cc:From;
+	b=AuscEqkAFwbiqXbgf+PzpkqZFbrRO6l4t9hTpwv4v8MDtt2jLwVE1yPO5Q4YN1s8p
+	 lEDaaBTZ1S37HOxmy/jNSzPB2MOz703hPpGAN/O3qy6/Tj5GWCnhtOWWQutuS2lpXT
+	 WnTJehRfFshhGdzxlL7KuVk6+1lT1DUeLtfJywrQ//bwpz/txS/EFWBPCLSFQ8tXR9
+	 R90xTQxxCuAn05G36GDh/dACx3RQhzktyOtpOuf++YY1LJ+XIVd9T5UW9KOZo3FQ6C
+	 aqNA42Z6wKnykR/r53vtFFYSCvEYVjKEfKQElxbMlpB+8cl8cIbqn4fcZqbio/eXMd
+	 pEeVxUnSF/ftQ==
+Received: from jupiter.universe (dyndsl-091-248-188-214.ewe-ip-backbone.de [91.248.188.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F3B3917E35C4;
+	Fri, 13 Feb 2026 15:39:30 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id A13DC480024; Fri, 13 Feb 2026 15:39:30 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Andy Yan <andyshrk@163.com>
-Cc: Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Yubing Zhang <yubing.zhang@rock-chips.com>, 
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com, 
-	Frank Wang <frank.wang@rock-chips.com>, William Wu <william.wu@rock-chips.com>
-Subject: Re: [PATCH 0/7] phy: rockchip: usbdp: Fixes, DP 1-lane support and
+Subject: [PATCH v2 0/9] phy: rockchip: usbdp: Fixes, DP 1-lane support and
  cleanups
-Message-ID: <aY82Lv1rth6fiTJE@venus>
-References: <20260203-rockchip-usbdp-cleanup-v1-0-16a6f92ed176@collabora.com>
- <4a7a30c4.8848.19c288ea1f3.Coremail.andyshrk@163.com>
+Date: Fri, 13 Feb 2026 15:39:23 +0100
+Message-Id: <20260213-rockchip-usbdp-cleanup-v2-0-b67ec225f96e@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <4a7a30c4.8848.19c288ea1f3.Coremail.andyshrk@163.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.1.0.1.4.3/270.955.72
-X-ZohoMailClient: External
+X-B4-Tracking: v=1; b=H4sIAJs3j2kC/4WNTQ6CMBBGr0Jm7Zi2hBpceQ/Coj+DTETatEI0h
+ LtbuYDL95LvfRtkSkwZrtUGiVbOHOYC6lSBG818J2RfGJRQWihRYwru4UaOuGTrI7qJzLxEbGz
+ T+sE2WpoayjgmGvh9hLu+8Mj5FdLn+Fnlz/5NrhIFSm300Cry8qJvLkyTsSGZswtP6Pd9/wIUl
+ HzYwAAAAA==
+X-Change-ID: 20260203-rockchip-usbdp-cleanup-5b59dfb561a3
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>
+Cc: Andy Yan <andy.yan@rock-chips.com>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ William Wu <william.wu@rock-chips.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1899;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=AFv/3KVzIinIaZVoV9/X3xfLJqoXvuiVXD2r4mVIsww=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmPN6J4T1TA/ICcgouv1OxcjiqS8Pv6r3wbM
+ dgCSVEyjFgI6YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpjzeiAAoJENju1/PI
+ O/qaqykQAKGhSPK9pjC9N+Oe0fRcmlv8QW7GGWXRmWY9U1GCPL+0Jilz+40w3VLjBZsknJJhwI+
+ 0fhDtAfk0F+1fVeDWp3N06h2l5ohmmda3z2Y6oQUNiD/nMfHSTwLcaPA9XdAvbwuW0CskvdSsS9
+ NnnEJDjhQiC/vRNXe6T2Da+/HDmew0Qh9nc4Q0mIfgMN8UykQiwW1uYJjtvumPhiKaAr8ujWhbc
+ RsjjbWayMmo8W+s+GCRIbwQog1quEVD5euxpqD6yiquzFgqZVzwEpQmAr5XFLyvgIm0502wApBe
+ AWEetO6iHFVv8PDkR3BOV8IQb9pRJYn/F1qQ1lBeiGYlZbrgfiIJtKyL7CupFlB94u6G9PhjKHO
+ Gk3NWksgB3zDc2hfPFwcmtUgl6uPvbp8t5o3cYOKSTENq2S12PzLyrNLW2CtYSDezWQiYcGEgAB
+ QthSHebniKwWZobCoI2btRX9eZOtLsOhWZ0+pi2b2xZNdb1eKJctkEMqafmoA6pfTqps9CNTP10
+ tFBkGtw6f/NF3AaEb4jZEzY1uq5EVssuY5f8c/U0BU5+ZuGfk502UZSWoG0dvJJT51Y9HkohC/z
+ IHX+oBSFLKSPT+uZWDQlTK4m+bfZLe4kwEjZ+s50eu73uEgpl8N8YCJJgLcrpSqlK7X81gC4kUp
+ 4/PDrJmXMLclkEJkB1281VQ==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_063726_120026_1B317701 
-X-CRM114-Status: GOOD (  23.40  )
+X-CRM114-CacheID: sfid-20260213_063934_258189_F7921F75 
+X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,114 +99,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6237507128061583571=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+As there are some issues with the DisplayPort support, I went
+though Rockchip's BSP kernel tree and looked for fixes. I found
+two small changes for the initial register setup, which do not
+help with the DP issue but seem sensible in general. Afterwards
+I added one more fix, which corrects an issue that effectively
+results in USB-C adapters with combined USB3+DP capabilities
+not being able to use the DP part.
 
---===============6237507128061583571==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="pyai57wb77urqxjr"
-Content-Disposition: inline
+Afterwards I added one more patch adding single-lane DP support
+(found in Rockchip BSP kernel) and a couple of cleanups from my
+side. These are logically independent from the fixes, but I put
+all together in a single series because they need to be applied
+in the right order to avoid conflicts.
 
+Changes in v2:
+- Link to v1: https://lore.kernel.org/r/20260203-rockchip-usbdp-cleanup-v1-0-16a6f92ed176@collabora.com
+- Added new patches to fix USB3 SError
 
---pyai57wb77urqxjr
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 0/7] phy: rockchip: usbdp: Fixes, DP 1-lane support and
- cleanups
-MIME-Version: 1.0
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Frank Wang (1):
+      phy: rockchip: usbdp: Amend SSC modulation deviation
 
-Hi,
+Sebastian Reichel (6):
+      phy: rockchip: usbdp: Do not loose USB3 PHY status
+      phy: rockchip: usbdp: Keep clocks running on PHY re-init
+      phy: rockchip: usbdp: Add missing mode_change update
+      phy: rockchip: usbdp: Rename DP lane functions
+      phy: rockchip: usbdp: Use FIELD_PREP_WM16_CONST
+      phy: rockchip: usbdp: Cleanup DP lane selection function
 
-On Wed, Feb 04, 2026 at 08:09:22PM +0800, Andy Yan wrote:
-> Hello Sebastian=EF=BC=8C
->=20
-> At 2026-02-04 02:41:26, "Sebastian Reichel" <sebastian.reichel@collabora.=
-com> wrote:
-> >As there are some issues with the DisplayPort support, I went
-> >though Rockchip's BSP kernel tree and looked for fixes. I found
-> >two small changes for the initial register setup, which do not
-> >help with the DP issue but seem sensible in general. Afterwards
-> >I added one more fix, which corrects an issue that effectively
-> >results in USB-C adapters with combined USB3+DP capabilities
-> >not being able to use the DP part.
-> >
-> >Afterwards I added one more patch adding single-lane DP support
-> >(found in Rockchip BSP kernel) and a couple of cleanups from my
-> >side. These are logically independent from the fixes, but I put
-> >all together in a single series because they need to be applied
-> >in the right order to avoid conflicts.
-> >
-> >Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> >---
-> >Frank Wang (1):
-> >      phy: rockchip: usbdp: Amend SSC modulation deviation
-> >
-> >Sebastian Reichel (4):
-> >      phy: rockchip: usbdp: Add missing mode_change update
-> >      phy: rockchip: usbdp: Rename DP lane functions
-> >      phy: rockchip: usbdp: Use FIELD_PREP_WM16_CONST
-> >      phy: rockchip: usbdp: Cleanup DP lane selection function
-> >
-> >William Wu (1):
-> >      phy: rockchip: usbdp: Fix LFPS detect threshold control
-> >
-> >Zhang Yubing (1):
-> >      phy: rockchip: usbdp: Support single-lane DP
-> >
-> > drivers/phy/rockchip/phy-rockchip-usbdp.c | 114 +++++++++++++----------=
--------
-> > 1 file changed, 48 insertions(+), 66 deletions(-)
->=20
-> After applying this series of patches, the hub that previously
-> couldn=E2=80=99t recognize Alt Mode can now detect it and work properly,
-> but it also triggers a USB-related SERR =E2=80=94 did I miss something=EF=
-=BC=9F
+William Wu (1):
+      phy: rockchip: usbdp: Fix LFPS detect threshold control
 
-I thought this was from a different patch that I needed to get DP
-working. I've spent the last week debugging this and I'm just about
-to send v2 with a workaround. FWIW the SError is not introduced by
-this series, but before it was much harder to run into it.
+Zhang Yubing (1):
+      phy: rockchip: usbdp: Support single-lane DP
 
-Greetings,
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 120 +++++++++++++-----------------
+ 1 file changed, 50 insertions(+), 70 deletions(-)
+---
+base-commit: 05f7e89ab9731565d8a62e3b5d1ec206485eeb0b
+change-id: 20260203-rockchip-usbdp-cleanup-5b59dfb561a3
 
--- Sebastian
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
---pyai57wb77urqxjr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmmPNwoACgkQ2O7X88g7
-+ppjZg/7ByGTasj1iMKoHN/SsfWXN5HMjVWOI9LP5Mnk6WWAq75c5fQsRbN5pGXf
-N4amUcoJQMdqtscF1nBL7Zr7VpMuckiaznIMtVZ5tJADKmGiZYFOVmX9pYrEtyBZ
-gBbDlwbGeSLGuyqRfIT5Qwk6yfRCp28UBI1TMDGZ9Tmpr1bXRrerxhQA4nmNgO8/
-PVbC+o708Jq/wA6N94wUuiSWfO8E2uoXT34jxxXlpafyd5CjRjig9YhTy8Hlx4FG
-74gJh6E+60pjd97VTYyHGQCUEeGfpdhssoXqMyKu/2PyKMq0IlOxA5+rfmy1fBrB
-LOn19SocAf8tvvHRYfxPy/ZAsITDPyaHNaDJXVm5ncy/zms7HxcXAj9BRcEhhmt+
-nQKoJHtO55H7ujYlFHFDNtHhTArE65KiE2N2vSpy5hj4aTfSf7bYKrpjBA7OKrDU
-eF6kGsnLU2zYbeC+gMnSH3KShJeX9oHljmLbb1UGNbhK065FdTcZfrRw0WPJFi5T
-s6tQeoUvrNB6Fcu3eGgx1itGLsyJtSKyIA+VA6NJuM5mlQqIeCHq+DjSQFAPRqpc
-RwoNmYmbVmoFIu80Zs21UAANl4AUdLPrkUBix7WA2pUrsaqCZz7ER1vt9FadYF7A
-ASn0UsvDpe0c/r+I2Kr2uNBRyY62qfRDBIHxK0nv68imoGOrE1o=
-=h3lh
------END PGP SIGNATURE-----
-
---pyai57wb77urqxjr--
-
-
---===============6237507128061583571==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6237507128061583571==--
-
