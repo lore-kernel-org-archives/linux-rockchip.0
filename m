@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89765EF99CF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02157EF99CD
 	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 19:23:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kDMm6G7L5/63meRdAS/svRSIAe9HHvSRB/EDiZNQ+NM=; b=Z9O04v0NMmCqxi
-	AIFdSpQE1M6sGOv+B8P+PG7cy02UkbFmy5BJKXZ47l7idKp7Yq94QutGiRE3CsJygowPI/gfyTN7K
-	PlgdMpjgdsd4W9alaf1rbCFvt+/D6FUD5UcuwX622R33fHjqPPgIcGjPhKrfGi6GmCC9gO/iDGTT8
-	m2eL8csmWpxOGMMMpVr3X83tb3jWzf9yiWltFFxUW9KXXYivuk8ypcZ7mbkhC1zM4K3naAy3D6hE0
-	RuRltwT3wWvI6xCsxFGh+v1DheEMCCUZvGu8uOlkJJl4+QllO0yazORqVqI+El41gMZhIqT/+G0sz
-	aXrnJPbhkeD+BkQni0jQ==;
+	List-Owner; bh=LRvZo5d8xom4NiKYF4eRg3Wy6Rl0MNUL4lhDPm16l+M=; b=vTD5sULRKBgMV6
+	YDZ+AKjY0QXKBQDFvB9l7o/K1xm76Svagdiec4PHQQSN+o559vVAXPZ6d5/6Pf3s4UquMfmYGOdVR
+	zZR1DMS+xRrism8HZjFYulLX3cGtlx7/Qrjbb6m8RJd12WJ9yFidwuXyc03xrRbjxcQf6Vr/yXUBI
+	bpkU9Fbx+6zsktDao1ty9E3qdKppcRcZtN5AcAzWLCPSk+Y0W5cvmOEenSTovEiereTbl4QqxCu8c
+	WG81Nu8XNjEsd6ZkY9zY3ah7ayyDitDbxKukVWuB6dEbEkFSRA132Ck23lVdpNrfpxDvK7Z/1PWCO
+	ahHstH1ukX2JMhNJVTCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqylL-00000003qfJ-2fLh;
-	Fri, 13 Feb 2026 19:23:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vqylM-00000003qfZ-3jo9;
+	Fri, 13 Feb 2026 19:23:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqylJ-00000003qe7-24Qg
+	id 1vqylJ-00000003qe5-21sz
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Feb 2026 19:23:34 +0000
+	Fri, 13 Feb 2026 19:23:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1771010610;
-	bh=lrQE9yMTiCZJMvErc9Qumch/oyi82L9FeVKRfh89GgM=;
+	bh=M+WLPqbnlvkdrK7+r+T1xzP3XzAmnVGjqP9vT+jSuFY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=VWdYdc6jfF1afbkLFPRUALMAktACqGzcst4rtJHyo1vA+NCuiqHz8qKniPLwvyZIE
-	 yvAjLe1h1XF4ciK+lGw4jN/NXW4aDKYx9jHVpBc/7TnQp1Gbx3/v1c9JDyYNn/TmGa
-	 v3ITujqozNY+onXRFCAZQrTBvuFL3UkbRMJBh4hoZmCmDrkpUsUjxRVDtLSibioMLf
-	 eYnA3VzyMb/3pwvqvaAwzWt7rydI+04hpqKZ+wbSwA1RB7KRedQgZ+/OStSfCTggW+
-	 lQR53VyQ/xcs1fDVAV/0Xa4Tfpu10fyjEpQo3JMgGloS3JlXD7keHbzSLxRONhu6mx
-	 luK78e5TWafJA==
+	b=qrk9arAqOKjfK7Zoo6GBGaLw7yCzoeMpkyz8oNfRsfuo0GYGPRo1L5nGDVi3LObvP
+	 CEHBEJj1IvBxAixS2Ghb95JNFTgHPYmJOVtnW4U12bKtr8+k/ShgqCeDUCMsY2l1NH
+	 PtzznVd4AdFeL2Eo7kTR11Lifjwfx+I9BE3ZcL55d48dmQPBY5r/HqHhBxp/h8yDoR
+	 K6LaHPnID8k14+RikeePOJ7K126AdEwPKS2c6e1tb9Z0koQChX9LChmIhhjA7vcpJ7
+	 hot1Vd/Uxb2N27gtbUlrcQ0BMGCOcQ+rKnGorldnrq+tqL09rJ3yBfRvf3CCG+N65z
+	 fbpmKp499jEiw==
 Received: from jupiter.universe (dyndsl-091-248-188-214.ewe-ip-backbone.de [91.248.188.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3ACAD17E1352;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 23A7517E0C21;
 	Fri, 13 Feb 2026 20:23:30 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id D0387480023; Fri, 13 Feb 2026 20:23:29 +0100 (CET)
+	id D0DB6480026; Fri, 13 Feb 2026 20:23:29 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 13 Feb 2026 20:23:28 +0100
-Subject: [PATCH 1/2] usb: typec: mux: avoid duplicated orientation switches
+Date: Fri, 13 Feb 2026 20:23:29 +0100
+Subject: [PATCH 2/2] usb: typec: mux: avoid duplicated mux switches
 MIME-Version: 1.0
-Message-Id: <20260213-typec-mux-duplication-fix-v1-1-70076a7c5691@collabora.com>
+Message-Id: <20260213-typec-mux-duplication-fix-v1-2-70076a7c5691@collabora.com>
 References: <20260213-typec-mux-duplication-fix-v1-0-70076a7c5691@collabora.com>
 In-Reply-To: <20260213-typec-mux-duplication-fix-v1-0-70076a7c5691@collabora.com>
 To: Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
@@ -59,26 +59,26 @@ Cc: linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org,
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1450;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1443;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=lrQE9yMTiCZJMvErc9Qumch/oyi82L9FeVKRfh89GgM=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmPejGtfmdy8ijV3DWGAAoO4KHY/762ZVR8W
- iIqFDnF9Aovt4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpj3oxAAoJENju1/PI
- O/qaQbMQAIZFL4Lnr6H6UO66I2PbRZ8aS0XnmqkyXJsTZ+BhoISC98HMSd5tzb0bqbdBlMlzgzX
- wljqeozzBSdveosjo8jH/vWjzhKcxi69fabR42WwKo9ju23qJ1UtzztBmXJksJ7/CbnF/bLUT2U
- Q+fb1HDJLo6NoxLKfHgbM/f7T5eUnbzLJAFRbp34UEwibBGxlsCw9IdhxZhaDSTYueDhZltimzq
- 4jQTqYQD2GWhsMc3/UH17pk/ped+P0ZyJQhUcQO1FKFPr4Vpy1rpR2Wn1ZVJ8z3g2e7balzY6Qq
- 60v1Qmp1VLmImX4khpgmCgDd+aQf335l/WX+tBIhKgvtEf7YZUyjvsYIZx3KdZEcAZIRYZTpdB+
- lXZKDqlFhCa0We8RPPiOV51WkcccxsxAxd8Wyy6lPzGpPaJOv+av9SlrZi8MrwJYtFC+tG/dIXx
- 5CyqZ2J+UzP64rgJzUC8+4nh9gtJw20nvOqrp+9tkyNLMa0cPoJ7j7X+6yDNn1nLfTOQRKWcNlh
- v/0cWQxHKgi2RqfdWd6t4VHGrfyFdT/JjRWu6BUWI73smh3csCuCl+Y41hfXctQFQ6AUm0luH/U
- dEs5AEfIdoBYQ6G99HB+Ye0pbARXcRrznPVH6f/6NQbAExtZ73tpCq/UOCPmohjO9K25RqKAq4p
- aRXTogUDIhbXNxXuv0FoyWg==
+ bh=M+WLPqbnlvkdrK7+r+T1xzP3XzAmnVGjqP9vT+jSuFY=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmPejHBuJRulD+JZiy2b436nL5C+jYNipJI6
+ C64SuRIuwsoQIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpj3oxAAoJENju1/PI
+ O/qa+CIP+wRvR/qbmvwsKYSI7kEiJsh8df74ID+xdDyHxh8L04nzMXYrXSMAxVqkph2eBPJPDua
+ 0IcUptWZaLi7OYAwwj4W7hIgyYVCKaycqwmBnKVLcAYV6GFnkUguiW8WrwMetNs4TXd4dtC+sJS
+ T5RAXD/djc02/a+YRQ5A0fnm00nC4qMXioDCWVsG25WWmHMF2T93870JRAWDKnsBGBSTFuu4mA0
+ q274mySLQS3z4L2OF/92WdIywGMeXzGtRlUGpY8q3dWD86EKSAOJuHQsPn94XPKmSs5viCPFP8A
+ maTW+uAUXROYY0FfHUKLZoww1BZ+s5XV0gHDEOCuiWWJIAnM0wtH03GjEbtQODFRImdgEmPZX/j
+ TXBPwkYy8io9AA/jqSHNNmrvrrcqoKru/Sl8YeBHwRvzQmPMlAv9qD3YBCemGvLmj4ZK2y/3kW+
+ EHhd46W9VrRcpXe4mQRB2I8LkfYTI5u6YoNijQG8nWT5Sb7esozip7bquZcoe6pwLB7v4Tkwqcx
+ jSJrr7toyFRj0X/tpj50+OpwDqJlraqNMefELsRluY4fM4UoMktwNZQRoAFRWcVUPAcl36G9jfJ
+ 0juSjXe1IFje+7/HeRQLUqb1+Kq/2tgnAT3c+UgZx4rkVFwup+jFeoId3XWkAvSlHZqgf0MiNZi
+ aNImpOpaQ5Geq+rWhRYAt+w==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_112333_678791_9C64DBA7 
-X-CRM114-Status: GOOD (  11.89  )
+X-CRM114-CacheID: sfid-20260213_112333_695331_A9B4EF05 
+X-CRM114-Status: GOOD (  11.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,9 +96,9 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 Some devices use combo PHYs (i.e. USB3 + DisplayPort), which also
-handle the orientation mux. These PHYs are referenced twice from
+handle the lane muxing. These PHYs are referenced twice from
 the USB-C connector (USB super-speed lines and SBU/AUX lines)
-resulting in the switch being configured twice. Avoid this by
+resulting in the mux being configured twice. Avoid this by
 dropping duplicates.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
@@ -107,39 +107,39 @@ Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
  1 file changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/usb/typec/mux.c b/drivers/usb/typec/mux.c
-index 182c902c42f6..db35b7398343 100644
+index db35b7398343..6a394326f236 100644
 --- a/drivers/usb/typec/mux.c
 +++ b/drivers/usb/typec/mux.c
-@@ -72,9 +72,9 @@ struct typec_switch *fwnode_typec_switch_get(struct fwnode_handle *fwnode)
+@@ -309,9 +309,9 @@ struct typec_mux *fwnode_typec_mux_get(struct fwnode_handle *fwnode)
  {
- 	struct typec_switch_dev *sw_devs[TYPEC_MUX_MAX_DEVS];
- 	struct typec_switch *sw;
+ 	struct typec_mux_dev *mux_devs[TYPEC_MUX_MAX_DEVS];
+ 	struct typec_mux *mux;
 +	int i, j, k;
  	int count;
  	int err;
 -	int i;
  
- 	sw = kzalloc(sizeof(*sw), GFP_KERNEL);
- 	if (!sw)
-@@ -96,6 +96,18 @@ struct typec_switch *fwnode_typec_switch_get(struct fwnode_handle *fwnode)
+ 	mux = kzalloc(sizeof(*mux), GFP_KERNEL);
+ 	if (!mux)
+@@ -333,6 +333,18 @@ struct typec_mux *fwnode_typec_mux_get(struct fwnode_handle *fwnode)
  		}
  	}
  
 +	/* eliminate duplicates */
 +	for (i = 0; i < count; i++) {
 +		for (j = i + 1; j < count; j++) {
-+			if (sw_devs[j] == sw_devs[i]) {
-+				put_device(&sw_devs[j]->dev);
++			if (mux_devs[j] == mux_devs[i]) {
++				put_device(&mux_devs[j]->dev);
 +				for (k = j; k < count; k++)
-+					sw_devs[k] = sw_devs[k+1];
++					mux_devs[k] = mux_devs[k+1];
 +				count--;
 +			}
 +		}
 +	}
 +
  	for (i = 0; i < count; i++) {
- 		WARN_ON(!try_module_get(sw_devs[i]->dev.parent->driver->owner));
- 		sw->sw_devs[i] = sw_devs[i];
+ 		WARN_ON(!try_module_get(mux_devs[i]->dev.parent->driver->owner));
+ 		mux->mux_devs[i] = mux_devs[i];
 
 -- 
 2.51.0
