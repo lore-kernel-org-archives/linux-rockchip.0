@@ -4,54 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28841EDF17E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 17:34:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A23D2EF99C6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 18:27:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:To:Subject:From:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=B1euSJP8UKgDw/SVpIwiyQh94tzkFmj0FY93OLeQt+8=; b=u4Uz43wj0X9eeT71srb/oRtJAZ
-	NCNmO49MElbUBIKOJ3M80fs6OCamtiDAFty4zPS6flaQQRlBaHdq1lszZW7g6193my5cDaySRCb5/
-	iNczz1D5q4xfLhT67khCPIJb+oNPRuBeOlOwCrm2CmXVY2OGnhSDX9RqiWviaFVqLpgjAilknqcRp
-	6DLVTb1+CtnGlMMOpanfvN3KthrBzjw1suiOtdIsxx3ZAtzfkDPgisOqz9rTTfXfQ5JL7foWxcwp2
-	AHUTxcVNXbpnjungAziXKLJAKsxK8KKaeIRutfLbYoJOArgtrMyjUvt29fKniAoGUbEsClb1WbEUH
-	urgY2HFA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=1R0eKs/GIZFVXi6uEDOdC82RUFp7KLDdNiwPN7wTYdo=; b=tmfeOimSJuwhfG
+	OsxHj1HZpKqtsLI1AD8ktq4h8V9RvaMNjb2Xhrxl+rU2FauHkV6dGDWxw6iBJrhnRGhobZvb4J6+7
+	Tb+eHk+GNazbSBcvhzjpnA4U6WjHR79N2RDvk9kRqoI759AyAwBj8tty8CuGyPEWHklIStIURZ1BY
+	KecLQfMzoVsr6NTV1fGkahOb7g437U5PAoI9p5KZXcUBRJXf+AlTvcNUt4UhujSiABh0N5Dxvt1Fz
+	+NjwIBUUa5Dqy5b5NepolFQ3qmC+EEybZGM/mozKGcbGNHqyiYXQjal+1WOyJV9KMB3VBO1t+Ay0I
+	roQYeTkHFA4du79g4Asw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqx3M-00000003keW-3vkV;
-	Fri, 13 Feb 2026 17:34:04 +0000
-Received: from mtafr.prnet.org ([54.38.152.168])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqx3K-00000003ke9-3700
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Feb 2026 17:34:04 +0000
-Received: from secure.prnet.org (unknown [10.1.0.1])
-	by mtafr.prnet.org (Postfix) with ESMTP id ADB912004B;
-	Fri, 13 Feb 2026 18:34:27 +0100 (CET)
-Received: from [IPV6:2001:7e8:cf00:bc01:8cac:7fff:fe9e:52] (unknown [IPv6:2001:7e8:cf00:bc01:8cac:7fff:fe9e:52])
-	by secure.prnet.org (Postfix) with ESMTPSA id 6A687100057;
-	Fri, 13 Feb 2026 18:34:01 +0100 (CET)
-Message-ID: <3b704f26-8a4b-445f-a404-456051ceb234@prnet.org>
-Date: Fri, 13 Feb 2026 18:34:00 +0100
+	id 1vqxt5-00000003n5H-16h9;
+	Fri, 13 Feb 2026 18:27:31 +0000
+Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vqxt3-00000003n4h-05IT;
+	Fri, 13 Feb 2026 18:27:30 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1771007223; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=AzE9jYI3jHPtw3O8eJ+jhLILfMg2IbWH8pow8bZ7nAtg7VUBUjCGEBgnQqdpXWEZ9bvCm48cwwmaNEI+N1W8zAFHorCk55GA0dqo55mPy3sEDbX4WfYW5IwwDnKRffBjrAzv4rFdybZZNJfBJhPAcl48O3V+TwEZ3E6cBI9bN+I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1771007223; h=Content-Type:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mY3KvVQTMdhlwCwGfxZ8paH0e/fwTPQdmCblgG7lpwo=; 
+	b=I2lNyBs2W6XPUaVCHM7VGzGgWmN2+prqvI786acCyDDdxTOP9xfTFPEI7WcZLsTtMXE3ZsgFx1YDhILEfGiC0qAxoKXmOYX3yQP6BgmtQvcW6Kc/SU97u2rTxhJPt15zQ/IASDLo6ioP1aBN5wUk/VBQwYcxwfDFvkFhISXKhGc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=ziyao.cc;
+	spf=pass  smtp.mailfrom=me@ziyao.cc;
+	dmarc=pass header.from=<me@ziyao.cc>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771007223;
+	s=zmail; d=ziyao.cc; i=me@ziyao.cc;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:MIME-Version:Content-Type:Message-Id:Reply-To;
+	bh=mY3KvVQTMdhlwCwGfxZ8paH0e/fwTPQdmCblgG7lpwo=;
+	b=emu0VDIbvKpft0jaGTu82LjXNrUP9yxq0fM/SdxZsQcUHRK1EQKRKGlF7QIKpL/B
+	C5NrAoTaCsc6Nxdsi2O8aU/l61uGAfFLq4E6sDl86ZPvj6ECJwnnbOrOYAdXgAuQeCU
+	IdS3AeASN4s9jsHbzjC0jnYhIKk4RKk7WKwpw11k=
+Received: by mx.zohomail.com with SMTPS id 1771007221343248.33202963816166;
+	Fri, 13 Feb 2026 10:27:01 -0800 (PST)
+Date: Fri, 13 Feb 2026 18:26:44 +0000
+From: Yao Zi <me@ziyao.cc>
+To: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>
+Cc: Yao Zi <me@ziyao.cc>, netdev@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Problematic understanding of phy-mode in Rockchip DWMAC driver
+Message-ID: <aY9s5PXP4zZ7R6fa@pie>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: David Arendt <admin@prnet.org>
-Subject: Re: Orange PI 5 MAX: very unstable using kernel 6.19.0 and 6.18.10,
- 6.18.9 perfectly stable (could eventually be iscsi related)
-To: Qu Wenruo <quwenruo.btrfs@gmx.com>, Qu Wenruo <wqu@suse.com>,
- LKML <linux-kernel@vger.kernel.org>, linux-rockchip@lists.infradead.org,
- Btrfs BTRFS <linux-btrfs@vger.kernel.org>, linux-scsi@vger.kernel.org
-References: <8ebe4d76-eb07-499b-b140-1f300c1b8d7e@prnet.org>
- <f95f0d27-5bee-4363-b0f0-75e95b2a470d@suse.com>
- <de166323-bb9d-4240-bc42-08ae32067284@prnet.org>
- <1ccd1b09-3a08-4cb0-8155-2cd4ac21c640@gmx.com>
-Content-Language: en-US
-In-Reply-To: <1ccd1b09-3a08-4cb0-8155-2cd4ac21c640@gmx.com>
+Content-Disposition: inline
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_093402_963709_E2119E72 
-X-CRM114-Status: GOOD (  31.42  )
+X-CRM114-CacheID: sfid-20260213_102729_138769_94EDFB36 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,107 +79,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMi8xMi8yNiAxMTo0OCBQTSwgUXUgV2VucnVvIHdyb3RlOgo+Cj4KPiDlnKggMjAyNi8yLzEz
-IDA4OjUzLCBEYXZpZCBBcmVuZHQg5YaZ6YGTOgo+PiBPbiAyLzEyLzI2IDEwOjA1IFBNLCBRdSBX
-ZW5ydW8gd3JvdGU6Cj4+Pgo+Pj4KPj4+IOWcqCAyMDI2LzIvMTMgMDY6NDEsIERhdmlkIEFyZW5k
-dCDlhpnpgZM6Cj4+Pj4gSGVsbG8sCj4+Pj4KPj4+PiBJIGFtIHVzaW5nIGEgS3ViZXJuZXRlcyBD
-bHVzdGVyIHdpdGggMyBPcmFuZ2UgUEk1IE1BWCBub2Rlcy4gVGhlIAo+Pj4+IGRhdGEgaXMgc3Rv
-cmVkIHVzaW5nIGEgYnRyZnMgZmlsZXN5c3RlbSBhcyBiYWNrZW5kLiBJZiB1c2luZyBrZXJuZWwg
-Cj4+Pj4gNi4xOS4wIG9yIGtlcm5lbCA2LjE4LjEwIEkgaGF2ZSBleHBlcmllbmNlZCBtYW55IGNy
-YXNoZXMgZHVyaW5nIAo+Pj4+IGhpZ2ggSU8gbG9hZCBvbiBhbGwgMyBub2Rlcy4gUmV2ZXJ0aW5n
-IGJhY2sgdG8gNi4xOC45IHNvbHZlcyB0aGUgCj4+Pj4gcHJvYmxlbXMgY29tcGxldGVseS4gVW5m
-b3J0dW5hdGVseSB0aGUgY3Jhc2hlcyBhcmUgc3BvbnRhbmVvdXMgCj4+Pj4gcmVib290cyB3aXRo
-b3V0IGxlYXZpbmcgYSB0cmFjZSBpbiBhbnkgbG9nZmlsZSwgc28gSSBoYXZlIG5vIAo+Pj4+IHN0
-YWNrdHJhY2Ugb2YgdGhlbS4gQWZ0ZXIgdGhlIGNyYXNoZXMgSSBoYXZlIHNvbWV0aW1lcyBpbmNv
-cnJlY3QgCj4+Pj4gYnRyZnMgY3N1bXMgZm9yIGEgZmlsZSBidXQgdGhlc2UgbWF5IGFsc28gYmUg
-YSByZXN1bHQgb2YgYSBwYXJ0aWFsIAo+Pj4+IHdyaXRlIGR1ZSB0byB0aGUgY3Jhc2guIE9uIG9u
-ZSBub2RlIEkgaGFkIGEgYnRyZnMgZXJyb3IgbG9nZ2VkIAo+Pj4+IHdpdGhvdXQgY3Jhc2hpbmcs
-IGJ1dCBJIGFtIG5vdCBzdXJlIGlmIHRoaXMgaXMgdGhlIHJvb3QgY2F1c2Ugb3IgYSAKPj4+PiBy
-ZXN1bHQgb2YgYSBwcmlvciBjcmFzaC4gQSBzY3J1YiBhZnRlciByZWJvb3QgcmV0dXJuZWQgbm8g
-ZXJyb3IgCj4+Pj4gd2l0aCA2LjE5LjAuCj4+Pgo+Pj4gVGhlIG9mZmVuZGluZyB0cmVlIGR1bXAg
-aXRlbXMgYXJlOgo+Pj4KPj4+IEZlYiAxMCAxMzozMTowNyBvcGkwMiBrZXJuZWw6wqAgaXRlbSA5
-MiBrZXkgKDEzMjE4MzU2MTAxMTIwCj4+PiBGZWIgMTAgMTM6MzE6MDcgb3BpMDIga2VybmVsOsKg
-IGl0ZW0gOTMga2V5ICgxMzIxNjIwODY0MjA0OAo+Pj4gRmViIDEwIDEzOjMxOjA3IG9waTAyIGtl
-cm5lbDrCoCBpdGVtIDk0IGtleSAoMTMyMTgzNTYxNjI1NjAKPj4+Cj4+PiBPYnZpb3VzbHkgaXRl
-bSA5MyBpcyBzbWFsbGVyIHRoYW4gYWxsIGl0cyBwcmV2aW91cyBhbmQgbmV4dCBpdGVtIGtleXMu
-Cj4+Pgo+Pj4gaGV4KDEzMjE4MzU2MTAxMTIwKSA9IDB4YzA1YTM2YjgwMDAKPj4+IGhleCgxMzIx
-NjIwODY0MjA0OCkgPSAweGMwNTIzNmJlMDAwCj4+PiBoZXgoMTMyMTgzNTYxNjI1NjApID0gMHhj
-MDVhMzZjNzAwMAo+Pj4KPj4+IEl0IGxvb2tzIGxpa2Ugc29tZXRoaW5nIGZsaXBlZCwgIjB4YzA1
-YTMiIC0+ICIweGMwNTIzIgo+Pj4KPj4+IDB4YSAtPiAweDIgaXMgZXhhY3RseSBvbmUgYml0IGZs
-aXBwZWQuCj4+Pgo+Pj4gU28gZWl0aGVyIHRoZSBtZW1vcnkgaGFyZHdhcmUgaGFzIHNvbWV0aGlu
-ZyB3cm9uZyBhbmQgcmVzdWx0aW5nIGEgCj4+PiBzdGlja2luZyBiaXQgKGFsd2F5cyAwKSwgb3Ig
-dGhlcmUgaXMgc29tZXRoaW5nIGluc2lkZSB0aGUga2VybmVsIAo+Pj4gdG91Y2hpbmcgbWVtb3J5
-IGl0IHNob3VsZG4ndC4KPj4+Cj4+PiBBbmQgdGhpcyBleGFjdGx5IG1hdGNoZXMgdGhlIHN5bXB0
-b20sIGNoYW5naW5nIHJhbmRvbSBiaXQgb2YgeW91ciAKPj4+IGtlcm5lbCwgY3Jhc2ggYWx3YXlz
-IGV4cGVjdGVkLgo+Pj4KPj4+Cj4+PiBDYW4geW91IHJ1biBhIG1lbXRlc3QgdG8gbWFrZSBzdXJl
-IGl0IGlzIG5vdCBoYXJkd2FyZSBwcm9ibGVtcyBmaXJzdD8KPj4KPj4gSGVsbG8sCj4+Cj4+IEkg
-ZG9uJ3Qga25vdyBvZiBhbnl0aGluZyBsaWtlIG1lbXRlc3Q4NiBmb3IgdGhlIGFybTY0IHBsYXRm
-b3JtIGZvciAKPj4gdGVzdGluZyB0aGUgd2hvbGUgbWVtb3J5LCBzbyBJIHVzZWQgdGhlIHVzZXIg
-c3BhY2UgbWVtdGVzdGVyIHRvIGNoZWNrIAo+PiB0aGUgMTRHIG9mIHVudXNlZCByYW0gb24gYWxs
-IDMgbWFjaGluZXMgd2hpbGUgdXNpbmcga2VybmVsIDYuMTguMTAuCj4+Cj4+IEhlcmUgaXMgdGhl
-IHJlc3VsdCBvZiB0aGUgZmlyc3QgaXRlcmF0aW9uIChzYW1lIG9uIGV2ZXJ5IG1hY2hpbmUpOgo+
-Pgo+PiBtZW10ZXN0ZXIgdmVyc2lvbiA0LjcuMSAoNjQtYml0KQo+PiBDb3B5cmlnaHQgKEMpIDIw
-MDEtMjAyNCBDaGFybGVzIENhemFib24uCj4+IExpY2Vuc2VkIHVuZGVyIHRoZSBHTlUgR2VuZXJh
-bCBQdWJsaWMgTGljZW5zZSB2ZXJzaW9uIDIgKG9ubHkpLgo+Pgo+PiBwYWdlc2l6ZSBpcyA0MDk2
-Cj4+IHBhZ2VzaXplbWFzayBpcyAweGZmZmZmZmZmZmZmZmYwMDAKPj4gd2FudCAxNDAwME1CICgx
-NDY4MDA2NDAwMCBieXRlcykKPj4gZ290wqAgMTQwMDBNQiAoMTQ2ODAwNjQwMDAgYnl0ZXMpLCB0
-cnlpbmcgbWxvY2sgLi4ubG9ja2VkLgo+PiBMb29wIDE6Cj4+IMKgwqAgU3R1Y2sgQWRkcmVzc8Kg
-IMKgIMKgIMKgOiBvawo+PiDCoMKgIFJhbmRvbSBWYWx1ZcKgIMKgIMKgIMKgIDogb2sKPj4gwqDC
-oCBDb21wYXJlIFhPUsKgIMKgIMKgIMKgIMKgOiBvawo+PiDCoMKgIENvbXBhcmUgU1VCwqAgwqAg
-wqAgwqAgwqA6IG9rCj4+IMKgwqAgQ29tcGFyZSBNVUzCoCDCoCDCoCDCoCDCoDogb2sKPj4gwqDC
-oCBDb21wYXJlIERJVsKgIMKgIMKgIMKgIMKgOiBvawo+PiDCoMKgIENvbXBhcmUgT1LCoCDCoCDC
-oCDCoCDCoCA6IG9rCj4+IMKgwqAgQ29tcGFyZSBBTkTCoCDCoCDCoCDCoCDCoDogb2sKPj4gwqDC
-oCBTZXF1ZW50aWFsIEluY3JlbWVudDogb2sKPj4gwqDCoCBTb2xpZCBCaXRzwqAgwqAgwqAgwqAg
-wqAgOiBvawo+PiDCoMKgIEJsb2NrIFNlcXVlbnRpYWzCoCDCoCA6IG9rCj4+IMKgwqAgQ2hlY2tl
-cmJvYXJkwqAgwqAgwqAgwqAgOiBvawo+PiDCoMKgIEJpdCBTcHJlYWTCoCDCoCDCoCDCoCDCoCA6
-IG9rCj4+IMKgwqAgQml0IEZsaXDCoCDCoCDCoCDCoCDCoCDCoCA6IG9rCj4+IMKgwqAgV2Fsa2lu
-ZyBPbmVzwqAgwqAgwqAgwqAgOiBvawo+PiDCoMKgIFdhbGtpbmcgWmVyb2VzwqAgwqAgwqAgOiBv
-awo+Pgo+PiBJIGRvbid0IHRoaW5rIGl0IGlzIGhhcmR3YXJlIGEgZmFpbHVyZSBhcyBpdCBpcyBo
-YXBwZW5pbmcgb24gMyAKPj4gZGlmZmVyZW50IG1hY2hpbmVzLiBDcmFzaGVzIG9jY3VyIHNvbWV3
-aGVyZSBiZXR3ZWVuIDMwIG1pbnV0ZXMgYW5kIDEyIAo+PiBob3VycyBvbiBhbGwgMyBtYWNoaW5l
-cyB0aGF0IGhhdmUgYmVlbiBydW5uaW5nIHdpdGhvdXQgYSBzaW5nbGUgY3Jhc2ggCj4+IGZvciBt
-b3JlIHRoYW4gYSB5ZWFyIG5vdyB3aXRoIG9sZGVyIGtlcm5lbCB2ZXJzaW9ucyBpbmNsdWRpbmcg
-NCBkYXlzIAo+PiB3aXRoIDYuMTguOSBhbmQgYWxsIHZlcnNpb24gZnJvbSA2LjE4LjAgdG8gNi4x
-OC45LCBzbyBpdCBzZWVtcyB0byBiZSAKPj4gY2F1c2VkIGJ5IHNvbWV0aGluZyB0aGF0IGhhcyBj
-aGFuZ2VkIGJldHdlZW4gNi4xOC45IGFuZCA2LjE4LjEwLgo+Cj4gVGhlbiBJJ20gYWZyYWlkIHlv
-dSBoYXZlIHRvIHRyeSBiaXNlY3RpbmcuCj4KPiBPbiB0aGUgb3RoZXIgaGFuZCwgSSBhbHNvIGhh
-dmUgYSBhcm02NCBib2FyZCAoT3Jpb24gTzYpIGFzIGEgVk0gaG9zdC4KPiBUaGUgdGVzdGluZyBh
-cm02NCBWTSBpcyBydW5uaW5nIGEga2VybmVsIHZlcnkgY2xvc2UgdG8gdjYuMTkuMCwgYnV0IAo+
-IG5ldmVyIGhpdCBzdWNoIGEgY3Jhc2gvY29ycnVwdGlvbi4KPgo+IFNvIEknbSB3b25kZXJpbmcg
-aXQgbWF5IGJlIHNvbWUgZHJpdmVyLCBzcGVjaWZpYyB0byBSSzM1ODgsIHRoYXQgaXMgCj4gY29y
-cnVwdGluZyBtZW1vcnkgcmFuZG9tbHkgdGhhdCBjYXVzZWQgdGhlIHByb2JsZW0uCj4KPiBJbiB0
-aGUgcGFzdCAoc2V2ZXJhbCB5ZWFycyBhZ28pLCB3ZSBoYWQgYW1kIHNmaCBkcml2ZXIgY2F1c2lu
-ZyByYW5kb20gCj4gY29ycnVwdGlvbnMgaW4geDg2XzY0LCBhbmQgbGVkIHRvIHRoZSBleGFjdGx5
-IHNhbWUgcHJvYmxlbSAocmFuZG9tIAo+IGNyYXNoLCBidHJmcyBjb3JydXB0aW9uIGRldGVjdGVk
-IGV0YykuCj4gU28gSSBndWVzcyBpdCBjYW4gYmUgdGhlIHNhbWUgc2l0dWF0aW9uLgo+Cj4gVGhh
-bmtzLAo+IFF1Cj4KSGVsbG8sCgpOb3cgYWZ0ZXIgMyBkYXlzIG9mIHJ1bm5pbmcgNi4xOSBvbiBJ
-bnRlbCBzZXJ2ZXJzLCBJIGhhZCB0aGUgc2FtZSBjcmFzaCAKaGFwcGVuIGluIGFuIGFtZDY0IGt2
-bSB2bSBydW5uaW5nIG9uIGFuIEludGVsIFhlb24gc2VydmVyIHdpdGggRUNDIAptZW1vcnkuIFNv
-IEkgZG9lc24ndCBzZWVtIHRvIGJlIHB1cmVseSBhcm0gcmVsYXRlZC4KClNvIGlmIEkgcmVzdW1l
-LCB1bnRpbCBub3cgSSBoYWQgNCBrdWJlcm5ldGVzIG5vZGVzIGNyYXNoaW5nLCAzIGFybSwgMSAK
-YW1kNjQgYWxsIHJ1bm5pbmcgNi4xOC4xMCBvcmQgNi4xOS4gQWxsIHRoZXNlIG5vZGVzIGhhZCBi
-ZWVuIHJ1bm5pbmcgCmZsYXdsZXNzbHkgb24gNi4xOC45LiBJIGhhdmUgMyBvdGhlciB4ZW9uIHNl
-cnZlcnMgd2l0aG91dCBrdWJlcm5ldGVzIAp3aXRob3V0IGEgc2luZ2xlIGNyYXNoLiBUaGUga3Vi
-ZXJuZXRlcyBub2RlcyB1c2UgbG9uZ2hvcm4gYXMgc3RvcmFnZS4gCkxvbmdob3JuIHZvbHVtZXMg
-YXJlIG1vdW50ZWQgdXNpbmcgaXNjc2kgbW91bnRzLiBTbyB0aGUgdXNlIG9mIGlzY3NpIApzZWVt
-cyB0byBiZSBpbiBjb21tb24gd2l0aCB0aGUgbWFjaGluZXMgY3Jhc2hpbmcuIEluIGNoYW5nZWxv
-ZyBmcm9tIAo2LjE4LjkgdG8gNi4xOC4xMCB0aGVyZSBoYXZlIGJlZW4gc2FtZSBpc2NzaSByZWxh
-dGVkIGNvbW1pdHMsIHNvIEkgYW0gCndvbmRlcmluZyBpZiBubyBtZW1vcnkgY29ycnVwdGlvbiBp
-cyBjb21pbmcgZnJvbSB0aGVzZSBjb21taXRzLgoKQXMgZGVzY3JpYmVkIGluIHByZXZpb3VzIG1h
-aWwsIEkgd2lsbCBub3cgcmVjb21waWxlIDYuMTguOSBqdXN0IHRvIGJlIApzdXJlIG5vIGdsaWJj
-NC4xMy9sbHZtIGlzc3VlIGlzIGdvaW5nIG9uIGhlcmUgYW5kIGxldCBpdCBydW4gZm9yIHNvbWUg
-CmRheXMgdG8gc2VlIGlmIGl0IGlzIHJ1bm5pbmcgc3RhYmxlLgoKQWZ0ZXJ3YXJkcyBJIHdpbGwg
-YXBwbHkgNi4xOC4xMCB3aXRoIHRoZSBpc2NzaSByZWxhdGVkIHBhdGNoZXMgb21pdHRlZCwgCnRv
-IHNlZSBpZiB0aGlzIHdpbGwgY2hhbmdlIGFueXRoaW5nLgoKVGhhbmtzIGluIGFkdmFuY2UsCgpE
-YXZpZCBBcmVuZHQKCgoKPj4KPj4gVGhhbmtzLAo+Pgo+PiBEYXZpZCBBcmVuZHQKPj4KPj4+Cj4+
-PiBUaGFua3MsCj4+PiBRdQo+Pj4KPj4+Cj4+Pj4KPj4+PiBVbmZvcnR1bmF0ZWx5IEkgZG9uJ3Qg
-aGF2ZSBtb3JlIGluZm9ybWF0aW9uIGF0IHRoZSBtb21lbnQuCj4+Pj4KPj4+PiBUaGFua3MgaW4g
-YWR2YW5jZSwKPj4+Pgo+Pj4+IERhdmlkIEFyZW5kdAo+Pj4+Cj4+Pj4KPj4+Cj4+Cj4+Cj4KCgpf
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
-Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
-Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi folks,
+
+I was looking through the RGMII delay setup logic found in
+rk_gmac_powerup() of dwmac-rk.c, and found its behavior is strange,
+
+	switch (bsp_priv->phy_iface) {
+	case PHY_INTERFACE_MODE_RGMII:
+		dev_info(dev, "init for RGMII\n");
+		if (bsp_priv->ops->set_to_rgmii)
+			bsp_priv->ops->set_to_rgmii(bsp_priv,
+						    bsp_priv->tx_delay,
+						    bsp_priv->rx_delay);
+		break;
+	case PHY_INTERFACE_MODE_RGMII_ID:
+		dev_info(dev, "init for RGMII_ID\n");
+		if (bsp_priv->ops->set_to_rgmii)
+			bsp_priv->ops->set_to_rgmii(bsp_priv, 0, 0);
+		break;
+	case PHY_INTERFACE_MODE_RGMII_RXID:
+		dev_info(dev, "init for RGMII_RXID\n");
+		if (bsp_priv->ops->set_to_rgmii)
+			bsp_priv->ops->set_to_rgmii(bsp_priv,
+						    bsp_priv->tx_delay, 0);
+		break;
+	case PHY_INTERFACE_MODE_RGMII_TXID:
+		dev_info(dev, "init for RGMII_TXID\n");
+		if (bsp_priv->ops->set_to_rgmii)
+			bsp_priv->ops->set_to_rgmii(bsp_priv,
+						    0, bsp_priv->rx_delay);
+		break;
+	case PHY_INTERFACE_MODE_RMII:
+		dev_info(dev, "init for RMII\n");
+		if (bsp_priv->ops->set_to_rmii)
+			bsp_priv->ops->set_to_rmii(bsp_priv);
+		break;
+	default:
+		dev_err(dev, "NO interface defined!\n");
+	}
+
+I don't think dwmac-rk.c does any fixup for phy_interface, so the MAC
+driver always connects the PHY with unmodified phy-mode.
+
+ethernet-controller.yaml states,
+
+> # Device Tree describes hardware, and in this case, it describes the
+> # PCB between the MAC and the PHY, if the PCB implements delays or
+> # not.
+
+So let's assume this is true for Rockchip's DWMAC glue, then the
+driver's behavior could be summarized as,
+
+phy-mode	PCB delay	Rockchip MAC delay	PHY delay[1]
+rgmii		TX & RX		TX & RX			TX & RX
+rgmii-id	None		None			TX & RX
+rgmii-rxid	TX		TX			RX
+rgmii-txid	RX		RX			TX
+[1]: if available
+
+where only the "rgmii-id" case makes sense. Other cases come with 2ns
+delays added more than once, and would cause broken link.
+
+It looks like dwmac-rk.c considers "phy-mode" to represent MAC's delay
+configuration. If so, the table would look like,
+
+phy-mode	PCB delay	Rockchip MAC delay	PHY delay[1]
+rgmii		N/A		TX & RX			None
+rgmii-id	N/A		None			TX & RX
+rgmii-txid	N/A		TX			RX
+rgmii-rxid	N/A		RX			TX
+
+all cases have the necessary 2ns delay provided for both TX and RX
+signals, however on-PCB delays made by traces couldn't be described
+at all. This idea is also proved by comments in Rockchip devicetrees,
+for example, rk3576-roc-pc.dts,
+
+	&gmac0 {
+		...
+		/* Use rgmii-rxid mode to disable rx delay inside Soc */
+		phy-mode = "rgmii-rxid";
+	};
+
+It seems for Rockchip DWMAC driver, "phy-mode" doesn't follow the
+generic definition. Should we annotate in rockchip-dwmac.yaml to mention
+the different usage of the property, or update both the driver and
+devicetrees to align with ethernet-controller.yaml? The later would
+break compatibility with existing devicetrees since there are already 15
+instances of "rgmii-rxid" found in arch/arm64/boot/dts/rockchip, but
+luckily most boards make use of "rgmii-id".
+
+I only did a brief search in lore but find no related discussion, please
+point out if there has already been messages around it, thanks.
+
+Best regards,
+Yao Zi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
