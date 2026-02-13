@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D2B5EF99D1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 19:23:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD08EEF99DB
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 20:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=zwohpelXoOAktNBaJNplWOY1NQpGJl7hdBJBz8uwfmk=; b=oEedGFHoHDkEs1
-	TVC0I8zS1DvxxDCGQWMQipu9YSMaBZjqSu9kM4q6c/Ovq6RtpzCBN8fpf1GIwrXr4fYunIWzKrtRB
-	WlFbb8bJS3je9IZlU1GQF2gHUlTClMiMeMBEpDeWa/2CDu10QWniNmSO6KU2vuYTzJKVCMfS1fpBH
-	Xrs7hftlWEVolDz9SNeZMqr5tuRSXwsuK1uJwSOGp2ApTBVNiFaRSxZdO+B0+apvOQBqBtF1kgwRP
-	JRqgg3qclHhcm6yyYfVogVoHbRedz5kOEH/AXllXnM2QXD6v7MQ1CL/avLgqEVE7RXy74hLUF/H+j
-	cYdVJJXtDLXPNLJPm18A==;
+	List-Owner; bh=uBuDDvcQluPfi/fDmvYWowg8kMvn5b/qCwbVLvXpQGo=; b=hXeWMyK+mRnN3d
+	5etcau+HW6i20la72su7VmMu3/UNOQJEwM1mUMqliQd66M2RT/d8zD6PdOp6qzjldU3SkODuWXR2T
+	7JvUzbaPL7r8Pqwe0DPa0Z8VUaQmFGaViOmMI5WxXyzG/oTKD1N7M5XkB/PUBE157cVWEkcOpBzSs
+	S5ZSkMhCs8NPrMia8GRz0wDY9iffgYHv8ZgHxcypUwooEk3eyMEd3Oj3dfFQHbLwe/kSmVZFpIhDZ
+	m0QtQDNaTZDc7KTuZCVgLy2nYBfwHtbMmN3JIwSRfdhWCODr+HF4Ja1TNu49D1xEL6/KRP7LTRuwl
+	0ehGM85+dZ8oaxijuEAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqylL-00000003qfE-1bOX;
-	Fri, 13 Feb 2026 19:23:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vqzUd-00000003shn-2kt8;
+	Fri, 13 Feb 2026 20:10:23 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vqylJ-00000003qe6-1DqP
-	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Feb 2026 19:23:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771010610;
-	bh=UUt9Bamssw0YZAyTUGt298k89CMX7q5m5QrH1EuyyiE=;
-	h=From:Subject:Date:To:Cc:From;
-	b=Cmw3Gith9nxzDknrxgs+S29iZXNMKFNw+sXSB92H3Q4QGP6XAxr+JyODHo+vs10uf
-	 94AWs3XGTqN0nW7Xr4OErvMEI2d8X4byJ/pKUFOgWCM8ij1I/g+52o80v6Pmy3iTWF
-	 tqdaNRZaJ06bfmuj+1pPNjsOkAwkXPX9nqt035JKLzjFyI14HLYRVv4zxUBwA4I3yx
-	 zrYSKmVuVzMz/JLN7WA1JT+ebk0QQULaVV6MxqQkCejPBvqZx4dQGcM9fH4bURSg4F
-	 OJp2EuTuuIf013V8TOSzT99kjR/clXdX7RSgWRR3mxLLs4wDI2q/XGsB+HYHcaUPA1
-	 OkcoMTpWRM3wg==
-Received: from jupiter.universe (dyndsl-091-248-188-214.ewe-ip-backbone.de [91.248.188.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 53C7617E35C9;
-	Fri, 13 Feb 2026 20:23:30 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id CF0E6480024; Fri, 13 Feb 2026 20:23:29 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH 0/2] usb: typec: mux: avoid duplicated mux switches
-Date: Fri, 13 Feb 2026 20:23:27 +0100
-Message-Id: <20260213-typec-mux-duplication-fix-v1-0-70076a7c5691@collabora.com>
+	id 1vqzUZ-00000003shG-2M25;
+	Fri, 13 Feb 2026 20:10:21 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E3E3943C51;
+	Fri, 13 Feb 2026 20:10:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 250C5C116C6;
+	Fri, 13 Feb 2026 20:10:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771013417;
+	bh=pVof8kYi5TBM1veFEGpbU5buAtwo0G0WsbuQoPnTTdA=;
+	h=From:Date:Subject:To:Cc:From;
+	b=bSv/TQgTtYNg04mDsZBq5U9hEOQkr09Dkl2lmbH+XIdU+VIOtPTDbBHo81pZqskpy
+	 WI5TD4GknYX1uNu5WPjeNkRcFxeF+7p9SOgKBWhRIO6CR/jWiO8L8mPgt8/e4+w5DA
+	 IoaspK03KkoRcfvmfPnF8WlUz8sdQbcgQYZ0mC61YikCC2/W708qlXSPctWv8qP7qY
+	 8SdySELTd+eBxAebjL0OdGvC0w67974T2giFn4Pm80Bx0zd2al8kvCTuuxyYCw3cGX
+	 k/4uslX7qFOxFXzhjxZhe6pMdVeBtLGTsNAnry90RYvOExggXdrc1Z1LLJ+gUiwSy+
+	 D5lopHupfApsg==
+From: Nathan Chancellor <nathan@kernel.org>
+Date: Fri, 13 Feb 2026 15:10:06 -0500
+Subject: [PATCH] media: rockchip: Disable VIDEO_ROCKCHIP_VDEC when compile
+ testing for Hexagon
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAC96j2kC/x2MWw5AMBAAryL7bRMqLXEV8VG12MSjaREi7m7jc
- yaZeSBSYIpQJw8EOjnytgrkaQJusutIyL0wqEyZTOUF7rcnh8txYX/4mZ3dpcCBL+ysJl0NRpf
- GgvQ+kOj/3bTv+wGRpzMnawAAAA==
-X-Change-ID: 20260213-typec-mux-duplication-fix-ba5e58f6576a
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1289;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=UUt9Bamssw0YZAyTUGt298k89CMX7q5m5QrH1EuyyiE=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmPejEi486DyXdZg6xGy1AkAKbtKpi/oAF5I
- 7mJIuP4OVhTqokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpj3oxAAoJENju1/PI
- O/qayaUP/0v00gN55b+lysGI/H7BxsJw3AJt33EPJhBuvWSpyOr45K74sVFCMGem7LB1jP4cGTi
- pROKmJA7XKIasl0dOCIy0Yu9KUvz4cG/rfeEslKlDOfNWa4Uao40fQe37V+oiYMZcFjm0tc1ezO
- zZUkFF0BVHkP41zQSZ9WhDU4XAzFKJG19kAGzztQE2oP8mbLEX45Lt0IjPxn2rjHJi14IW5wiN3
- B0f8ZI8orR70MqN7BLwbY9kvhTgeCk2hgplTo1QM695xrbpDr8xkpHig0xotsMHA8lp0PmDzFuO
- qmu+tI3cZrUwF7QtGCFDwyEoWYSaVKAIu3ReHqp5XlSVcSbyq1UDZ3lTDnv6QfBjym3/sriwwsl
- xhWi3k01Kge8HNalCXw02FBAVHIKzK+YWJYr5QfirhhRwFPvGBM3VTtA+NKu0KNMdllEDS2+7rE
- GmxwBpDU4g+TuNozxUR6sHBY6Fo3ywZH/JL959BMhhx0tdkCfAoCZ24mExFDIuB1Ud5OagFFOeL
- PzbAF468xVqY8FSTC0H9k7fMybpOknsyy/3bADVP1Zgq/VM7+AIY4FQd6P9d0XeZjnKnBN4ep2h
- cQzitT738WF44AdMTEW5pQFRs6htdi/S4zgE1/OHP45GKQ21PdEFX7FcLgtrx/og7dATDK70K55
- ndvnIJKBxAJ6HwaXVzBQq3w==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+Message-Id: <20260213-media-disable-rockchip-vdec-hexagon-v1-1-3f903398cc83@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNyw6CMBBG4Vchs3YSqArRVzEs2ukvHS+FtEpIC
+ O9u1eW3OWeljKTIdK5WSpg16xgLml1FEmwcwOqLydSmrU2z5ye8WvaarXuA0yh3CTrx7CEcsNh
+ hjAzXdnLozMnIkUppSrjq8rtc+r/z290gr2+atu0D3JQphYcAAAA=
+X-Change-ID: 20260213-media-disable-rockchip-vdec-hexagon-eb67c47292c5
+To: Detlev Casanova <detlev.casanova@collabora.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>
+Cc: Brian Cain <bcain@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+ linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-hexagon@vger.kernel.org, llvm@lists.linux.dev, 
+ Nathan Chancellor <nathan@kernel.org>
+X-Mailer: b4 0.15-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1338; i=nathan@kernel.org;
+ h=from:subject:message-id; bh=pVof8kYi5TBM1veFEGpbU5buAtwo0G0WsbuQoPnTTdA=;
+ b=owGbwMvMwCUmm602sfCA1DTG02pJDJn9rWrexu3C+xVWM38NO2R3ZN6a4ulBmfEX5/r+Vzr3Z
+ u23iW+VOkpZGMS4GGTFFFmqH6seNzScc5bxxqlJMHNYmUCGMHBxCsBEoj0Y/odlaYq8zJlgdLyK
+ 9/WC7xdzCjNKBcU1DVPjpX9Ildiuf8zIcOv6vcv22SHzfnCzt7N+vl+58277upbbyUu2PQ3bfeR
+ jJDsA
+X-Developer-Key: i=nathan@kernel.org; a=openpgp;
+ fpr=2437CB76E544CB6AB3D9DFD399739260CB6CB716
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_112333_492943_852AD16F 
-X-CRM114-Status: UNSURE (   7.66  )
+X-CRM114-CacheID: sfid-20260213_121020_266523_F894A0A6 
+X-CRM114-Status: UNSURE (   8.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,37 +91,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Recent Rockchip SoCs (e.g. RK3588, RK3576) have a PHY, which
-handles USB3 and DisplayPort as well as orientation and lane
-muxing. By setting up the DT graph from the USB-C connector
-for the Superspeed and DP lanes to the PHY all mux/orientation
-operations are applied twice.
+Building rkvdec-vdpu383-h264.c can take a few hours to finish building
+with Clang 20.1.0 or newer when compile testing for Hexagon. While this
+is further investigated and understood on the LLVM side [1], disable
+CONFIG_VIDEO_ROCKCHIP_VDEC when compile testing for Hexagon.
 
-I did not add any Fixes tag, since applying the settings twice
-is not breaking anything. But it's confusing when debugging
-USB-C issues and obviously wastes some CPU cycles.
-
-Also I'm not super happy with the implementation I came up with
-to do the actual duplicate elimination. In the end I figured
-it does not matter to much considering the array size is 3 and
-is not expected to become much bigger as the amount of muxes
-on a single USB-C connector should be quite low :)
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Link: https://github.com/llvm/llvm-project/issues/178535 [1]
+Signed-off-by: Nathan Chancellor <nathan@kernel.org>
 ---
-Sebastian Reichel (2):
-      usb: typec: mux: avoid duplicated orientation switches
-      usb: typec: mux: avoid duplicated mux switches
+ drivers/media/platform/rockchip/rkvdec/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
- drivers/usb/typec/mux.c | 28 ++++++++++++++++++++++++++--
- 1 file changed, 26 insertions(+), 2 deletions(-)
+diff --git a/drivers/media/platform/rockchip/rkvdec/Kconfig b/drivers/media/platform/rockchip/rkvdec/Kconfig
+index 5f3bdd848a2c..d03689464206 100644
+--- a/drivers/media/platform/rockchip/rkvdec/Kconfig
++++ b/drivers/media/platform/rockchip/rkvdec/Kconfig
+@@ -1,7 +1,8 @@
+ # SPDX-License-Identifier: GPL-2.0
+ config VIDEO_ROCKCHIP_VDEC
+ 	tristate "Rockchip Video Decoder driver"
+-	depends on ARCH_ROCKCHIP || COMPILE_TEST
++	# !HEXAGON: https://github.com/llvm/llvm-project/issues/178535
++	depends on ARCH_ROCKCHIP || (COMPILE_TEST && !HEXAGON)
+ 	depends on VIDEO_DEV
+ 	select MEDIA_CONTROLLER
+ 	select VIDEOBUF2_DMA_CONTIG
+
 ---
-base-commit: 05f7e89ab9731565d8a62e3b5d1ec206485eeb0b
-change-id: 20260213-typec-mux-duplication-fix-ba5e58f6576a
+base-commit: c824345288d11e269ce41b36c105715bc2286050
+change-id: 20260213-media-disable-rockchip-vdec-hexagon-eb67c47292c5
 
 Best regards,
--- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
+--  
+Nathan Chancellor <nathan@kernel.org>
 
 
 _______________________________________________
