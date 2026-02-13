@@ -4,53 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25A00EDF16E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 14:39:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45475EDF170
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Feb 2026 14:39:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3vvbh4377O9JnQCWc2acWdttz5vRR2Iz4PAimzUJUOg=; b=YpuGXKvkmzddCC
-	hPNPJC0ku6cl3LjKVMCVtLaPrZPOxT94nQvd12jWhoAMuZWqNzI7PGAJanMqHe/O2GFd7V7MS9hzq
-	862FBaO0bNV0oKjN/za58MXdLwhWUZg7PlO1lFu54fWq7/gelot8A2xEiP4nD9zg8eX0fud9j1N4P
-	iAsEnjtMZiLriGSKfe1BcW5kZ30UdLj7V07AdmKj9kY6iiKh4kJ03N2UauuQVs+i7oqqxU/ISvaoV
-	4gSQi2yvOCrdaDCw0LwgnUPgN6IFeF+r1hb0fCtjRFemaEskJlot7WY1vipBmpoVP5doKAShbwehq
-	LyBLYH8pwD2Hi9xjl7yw==;
+	List-Owner; bh=BW4SmPWe/ba8X2qkX/xCoWP2ZJJfX4YyO07A7WW2d2Q=; b=ZoQmbFZpJT9KJ/
+	6/YJqsyEX6TDX5UXXeiKLFvkzXMvzXyuVTZ3lkzpmx/Ocqy0eghrGKEfl9dxGH68oUDmNhGgFM4Md
+	LgLaVxWxP4giZX0Qw5rmq3XV2LHm3KG6lc4+mXmRLOH7M1Gw3A4UHIXVl8xhGi03l2h84aKrSnAbS
+	YinXv7acZD9j6XiaumoZekXGyfY75Nei6vomF1dlKuS5YlGH1KY8unkERdp+r95KAG8ecTjbNy22n
+	bWwGMgdiNa5+mkplNuJiTLeyqwIm2jZE3x8HM8GtjRQHZ3Dd/vVGF3KvizMnCvyDKYovWxHX/Zv7q
+	/Wc049C7DQxhoOAN2Naw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vquKi-00000003YYH-0Dmq;
-	Fri, 13 Feb 2026 14:39:48 +0000
+	id 1vquKg-00000003YVp-1urc;
+	Fri, 13 Feb 2026 14:39:46 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vquKV-00000003YLQ-00K9;
-	Fri, 13 Feb 2026 14:39:37 +0000
+	id 1vquKU-00000003YLR-3qNv;
+	Fri, 13 Feb 2026 14:39:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1770993571;
-	bh=dbmD73BoFx8n8ji9c8pKJSP2kyDhGv8dKwkqGb0zmWo=;
+	bh=nkXYQxPq+lB3vzjnwGcNOGOuenfLKxQwMSun5YGuw0M=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pzB+xnEDEuPr/TFEiOu4rkMCXIkKAPHkB/0K2Gb3cm/zHwLBGeIjECq5PtNCizOmc
-	 CfWXI0BwZV7bd+UlMjpu5oH14BmLVOdglfpFrfFWcN4iEMRgWXm1HEB5juX0P+y/kU
-	 TgO2z+zIyi2MsRy3G9rpze0MTKcwr+V6iaR2NUtNRKPaiDvXi8LMhwWaxHeQ+DsfIn
-	 MreL/EKE8Q/sdEIZkPhLbveFrrh5UMW7pyFkFwvHoOcEMMOHPumklCKEvoish+twEt
-	 p8O3sRDeAoSf89kfd+yGln0DYYvGEppWi1vuMlrBW63SYUiijUAeUix7CDgjZd2LZ7
-	 sEjD772b/ILJg==
+	b=WjPWzo80zImLgGFoMw6PLU9crMiXM1rmf0/zYICM/d4ST5SrXaS/RS91Oadv3QP/f
+	 AOpBdSsq2t8zMkFl1Se1IuJYzvsUnp8YZQmZoiJSHAr+hFShXNtmUctUO8CObV6fmV
+	 8w6z1jBx6pkE2OSj4x0R9jLLs8Pf46N1nt8v1Kok3hw5EQLd1nboqEbOgieQHHqNs/
+	 cm5ZfbT15ileraeqnckGxGVNXM1kPIUNT1SkY1ryk5rxVvVw3pBfB8ZBm51wUloeqV
+	 mTcOY7hDGpuP+4iwCUcC+JDFMYEd5XzV1X7WX4jOyUq4tO07HHnIs7s7S640c52UvQ
+	 JCWyaUjT7UxUw==
 Received: from jupiter.universe (dyndsl-091-248-188-214.ewe-ip-backbone.de [91.248.188.214])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 00E6A17E35C9;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F125017E0C21;
 	Fri, 13 Feb 2026 15:39:30 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id A3769480026; Fri, 13 Feb 2026 15:39:30 +0100 (CET)
+	id A5D1E480029; Fri, 13 Feb 2026 15:39:30 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 13 Feb 2026 15:39:25 +0100
-Subject: [PATCH v2 2/9] phy: rockchip: usbdp: Keep clocks running on PHY
- re-init
+Date: Fri, 13 Feb 2026 15:39:27 +0100
+Subject: [PATCH v2 4/9] phy: rockchip: usbdp: Fix LFPS detect threshold
+ control
 MIME-Version: 1.0
-Message-Id: <20260213-rockchip-usbdp-cleanup-v2-2-b67ec225f96e@collabora.com>
+Message-Id: <20260213-rockchip-usbdp-cleanup-v2-4-b67ec225f96e@collabora.com>
 References: <20260213-rockchip-usbdp-cleanup-v2-0-b67ec225f96e@collabora.com>
 In-Reply-To: <20260213-rockchip-usbdp-cleanup-v2-0-b67ec225f96e@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -61,28 +61,29 @@ Cc: Andy Yan <andy.yan@rock-chips.com>,
  Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ William Wu <william.wu@rock-chips.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2058;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1464;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=dbmD73BoFx8n8ji9c8pKJSP2kyDhGv8dKwkqGb0zmWo=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmPN6IKL3g9Xg4uHD3m3XJ4FYx+rjvoxp8Nn
- PZI4qPvLtn/sokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpjzeiAAoJENju1/PI
- O/qamMIP/1SyV/tn5Qk3Iz0vOkqblDl1EZk0ZLi9R4wyaPyHRTr9lmiNSJqGPzMK+HzUCbw7PDn
- V3mJB/qw95Jb2vC4HPlMVFUpsa0QcdAxszqQp4/qAKqwUnN9LC4FICd0GsK8w8flwDDq6+C8tvL
- dAsOgnkfmWyBAAp0474Xl/ha3ODBcgVF/pl0XX/SPOQIs4P4slvL74DxDkTvcaN9bRkM9O0crDP
- C3HGS+6rdtC9QKDc2WYxL6N8YXrkEZOm9e3GG6GZdPPgOR0hLUZNddHzKC0nsKThJYPS0+iPdCR
- mlGNVzUxx7Lqmb/YtrrvGY5w0IzU9iid5Z3y6Bew4q2OLQN5AdDMwTkIi/z2lvf7J9FOinfoEDs
- Vze5uMhZrKbBBaWmeKNvFhVc2GXK0HTrjPozzioFxZ3hyQ41PRM6VN5vZ3srwsfJ2kDhz2lcrvt
- KBepDgcB5UUrHxHEDtfOGpNbnxKmP3Kgxa8mW4I/i/oGyew5NMig6T2ZlpkVetlsJ9cxDQpVTjZ
- JBuknTXMUAXPVNpjk+ZyVl/C2rrtssydnsnNeOY4I+OzIt9WIEE6BtD+so0I5JED8ZOBuulwd+M
- pZuiGaCs7/cIqutYDIuncAlr8QgAEd0/aFB8CsPte8WWxEqz5E5tYWjSSneMxDqKXQ26T01aEJN
- kcwsy825ypADI6SVMCWYwjQ==
+ bh=idTUPP5e91uhF/EzTIc6KkaVZGLtsNP2d+inYWbkKyo=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmPN6IqwDxfz1aUT1ZBR3lZSM3/i+R6o6LJV
+ XktVQhWf3UviYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpjzeiAAoJENju1/PI
+ O/qaquYP/2TJwLaJlvW6UKYe+deia1zmDIUc5QiD1iJppCMfer4jkB2ei33ZsFyKz68Y0iFFTS6
+ W64TT4VVxZvgmBEeU539QrxLJvdpnRH/jGY92dpK7RKELS6I6hFE/88fdPy9Q0EE/9EA5Hthtrk
+ K4yJ57Gli3uwbe+dPGP0aE5p8jX3D2rR0ZDqJmWOJa7zSTJF4TCpVRpcUBD4TBFy+iyrHMfk2kH
+ XO/noYoDV6/oqIfgrtO/7pFgQZb+yGElU5W8OIP9aRMikCJtyVe7OmVA0TTPK2qcBMsAUnzYOLb
+ 69hQsPGMghqHXXkfe5RJzC8iJGm09XILBn8eRSR99MNtDJRzbuVj3hiHDMKFUii16MNzaXT5VI2
+ D7YKcd4qub//to4XKmYW4ymXXT17N6lu6qytOrJS+qTioebgorK/lUlFlWNs+spUsf9in2Fw+ym
+ ViSTI7VqZ2RPElcyGw9+MLBXBRmseAVSrvfvgdrOueGnvoabukupm/5gfr8hCXwXCFUkMDiPE6b
+ aWxGmbBjcsF/vnQou9q7oRBq6idjfvkeplw6Kg7r0BpinTzp6337peJISzd8L8u0y+fWL8cPSCV
+ 9BDfcO2X0abcM+R1QV8P1d3QQ/lS5RQMw9QuIHoko3BiJX/Gy58iwEY1Lm1sDXbameGAWYqKn72
+ AlWiUr3m5ajzX1EZOBuY1tw==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_063935_223327_D2094F03 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20260213_063935_112288_ED3CB8FF 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,49 +100,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When a mode change is required rk_udphy_power_on() disables the clocks
-and then calls rk_udphy_setup(), which then enables all the clocks again
-before continuing with rk_udphy_init().
+From: William Wu <william.wu@rock-chips.com>
 
-Considering that rk_udphy_init() does assert the reset lines, re-enabling
-the clocks is just delaying things. Avoid it by directly calling
-rk_udphy_init() and skip the clock restart.
+According to the LFPS Tx Low Power/LFPS Rx Detect Threshold [1],
+the device under test(DUT) must not respond if LFPS below the
+minimum LFPS Rx Detect Threshold 100mV. Test fail on Rockchip
+platforms, because the default LFPS detect threshold is set to
+65mV.
 
-Keeping the time with non-working PHY on re-init as short as possible
-helps (but does not fix!) a race-condition: The USB3 controller needs
-the PHY running to access its registers. With the PHY stopped, accessing
-the USB3 registers results in an SError. The re-init is usually
-triggered by the DisplayPort controller driver requesting the DP's side
-of the PHY. If the USB controller is already running at that point
-(which is usually the case), the system can run into the SError.
+The USBDP PHY LFPS detect threshold voltage could be set to
+30mV ~ 140mV, and since there could be 10-20% PVT variation,
+we set LFPS detect threshold voltage to 110mV.
 
-A proper fix requires some API to lock/pause the USB controller from
-the PHY side, which is a bigger change. Luckily this workaround, whichis
-sensible anyways, I didn't manage to run into the SError. This is
-most likely due to the fact that the DP driver will enable the DP PHY
-directly after the USB-C cable is plugged in, before the USB driver is
-aware of new devices being available.
+[1] https://compliance.usb.org/resources/LFPS_Rx_Tx_Low_Power_Compliance_Update_Rev5.pdf
 
-Fixes: 2f70bbddeb45 ("phy: rockchip: add usbdp combo phy driver")
+Signed-off-by: William Wu <william.wu@rock-chips.com>
+[Taken over from rockchip's kernel tree; the registers are not described
+in the TRM]
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 744cc7c642f4..98562a888b42 100644
+index 1f686844c337..97e53b933225 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -1012,8 +1012,7 @@ static int rk_udphy_power_on(struct rk_udphy *udphy, u8 mode)
- 		if (udphy->mode == UDPHY_MODE_DP)
- 			rk_udphy_u3_port_disable(udphy, true);
+@@ -413,7 +413,8 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x0024, 0x6e}
++	{0x20d4, 0x08}, {0x0024, 0x6e},
++	{0x09c0, 0x0a}, {0x19c0, 0x0a}
+ };
  
--		rk_udphy_disable(udphy);
--		ret = rk_udphy_setup(udphy);
-+		ret = rk_udphy_init(udphy);
- 		if (ret)
- 			return ret;
- 	}
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
 -- 
 2.51.0
