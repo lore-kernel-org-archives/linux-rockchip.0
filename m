@@ -4,70 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A3DEF99E5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Feb 2026 01:04:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37FDEF99F0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Feb 2026 02:17:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ilX+BnbF5ja8BNq9xl9+CcFUhJDEIP08zGKMVQRQ1dE=; b=I5BYsmpXKo2SDZ
-	zzs+/fSIh3vnED2M9Z6wJxfk3afp6zBCirVxWrlVUkHX4kqjSHuFnP8cathqRe9saG0COA8IpzTGp
-	1fNRu1hRn8mdobKTod8I0Pc4UwUkHkGqB3Mx5yiABexIyV4DW2VvpCcDwz5lS3j7zxBDf/ZOJxj3m
-	rxH/jvzPfd24lCBVoDE+mfSOYHhmDlTD1hOr6bGEytMz2k6+nHFkyc/1dQMdO3G7wMiZYxHLjSTfM
-	BnHLBHpU3l193QqpVUtyAco3VPqC/tSNVcbHw7vJU+fAssVbJ91u5h40ezWYTX4pc72C43hJqILbP
-	ZqTvOvCTOcySe8BfA3Tw==;
+	List-Owner; bh=+0zabwkbO2gM58RBwj/5gqlX4elRfl5DG9/jfaG022o=; b=ZTugDqDEO+7CXx
+	W1aekHJv5XoboRtEbwfPYNILBEucNvqg9x5Y4No36Zu6Rrn842ttvbwODaT5xybutdL8rZzF9RmtJ
+	TzqehJoivICmQV1BkHMph88IFm4J98+tw8aJ3OLaJ3fu1S1M96/UhxlMNbHuln/jOjph7B3oyj9/K
+	Ny+Xswcn5wxdnL59y1CZqgopSbJK0US6W2y2roCE3cqq7WbeKob/184PJzi2cWJeZYTHlrqp109ml
+	hy5im9Pk09r8WJQwBdt96xMCjClE8+EbRpKg23FqBaUxR2ZwRnkbZnfRfncBdghc2NC+1AYtdr9yD
+	kmfGIGUuRw+Mo5To2Dog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vr45A-000000046JB-20Xr;
-	Sat, 14 Feb 2026 01:04:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vr5EE-000000049Wz-3gKz;
+	Sat, 14 Feb 2026 02:17:50 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vr456-000000046HH-2Aoj;
-	Sat, 14 Feb 2026 01:04:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 21AED402AA;
-	Sat, 14 Feb 2026 01:04:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5881C116C6;
-	Sat, 14 Feb 2026 01:04:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771031060;
-	bh=GiusAiiS+GPxOFmE3BRGJnNd58WMBNvMSuk6l3z+MTA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gS6IKkCnl9sPMDvptb5+vbL7DFL0clPBuMXwQWCKeCp0Vy4eIqyR2GUnCwY02u+nx
-	 RvCYzLbS+ay4gGXiJ/SLHem3CW2QmiIhaOO21kjSY4LVX7XM5Ltah22A51QvSG8K2F
-	 GEhWbj71z5pcOSvWQihgXENLsejYEyXOuVrsn8SpP2kYYgYNdrbUNfiVWqYRR+OxVE
-	 C4WX1Hx+1gM6O9h6BRrxjtY37AGE/7SOKpg4bSCCxubTBMxNv+vDkhVD5n13y0j4HJ
-	 07ii/GT7kVW7LWRC9stjHlavQLZC85lccEt1KzStE1yt33gAyFsXEdG7+1wI2+s6Bv
-	 uN7kppHrzpN5w==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Rui Wang <rui.wang@ideasonboard.com>,
-	Stefan Klug <stefan.klug@ideasonboard.com>,
-	Kieran Bingham <kieran.bingham@ideasonboard.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	dafna@fastmail.com,
+	id 1vr5EA-000000049UL-3or1
+	for linux-rockchip@lists.infradead.org;
+	Sat, 14 Feb 2026 02:17:47 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-4376acce52eso1008778f8f.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Feb 2026 18:17:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771035465; x=1771640265; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=TzRCi/w8UauYNvGrp56yDPR9f/IQ83oBSYIApP5ggfc=;
+        b=KMarYU4EMGbUmLE2srmcCn1Fs+RaF1svZSTV/l/ZSUtbdNLv7seXfB0+h4qiaRjVc5
+         eenPVYUH7TaWPGy5C/B3af0wQZbiWY1YFXZk4BdAxvur5kbG3rO+yXrUEugsUVTjnPoy
+         0uXZ2CHVZH2wQNhVzYthQ4+Hf7BJmbj7JjFg9G6TLKHd0zHShHig2+4USGs0jLKYR+y4
+         JCEwMtnI18FZYnu8Xi1BT+muFwHx5XmWzfaZheoDV0xHu2VxuqAIua7CVky8cJtqoXe5
+         c1yq3Xkt+PLJKkz5fXAUppodgBvk+Qn7fFawQj/wlHTyFqO8/PvvXmp/50w4WHDpeUh6
+         5wBA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771035465; x=1771640265;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=TzRCi/w8UauYNvGrp56yDPR9f/IQ83oBSYIApP5ggfc=;
+        b=E5nyZDU0dKdR6qA/bfn+FGrPZz3iVXmeueQROLjXHFJK9hS1RSAYFy7YlcxSBbpTUA
+         xpK7TXsIcXcJGyiJ+dSKVoRftu3faIf2ippS/uok30cin2jQxjk01DSzpAjKCQeGHkpi
+         tpO0sk2y8t+9rax2277kv+qShz6yrFlUGV20QcgoH07jbVH+n3FfSsWoq0dqBQhj6QXF
+         +wBOc8Mp8teBT2i9QGtyoFPukVbugV9mSegQQIJRazkZfAajbXZFCIJKwsWTS+YGXa96
+         /8gFaCtnfoz/8M3xj793UJZx7J8Clz7Y7cThShAGpC7HUy+Bnbs/aKGFYK7aQHFz9jz2
+         R3tA==
+X-Forwarded-Encrypted: i=1; AJvYcCVGTA8UVDKt1jpSrYeRRctWo6sh/UZr2DhBMMtS4PhcuvhkoNGYkKjoHjXqbqYO5oMysIkPMYmjHS6FUg8jxA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyEibxO7HFoIUIwV9Q1vxfVIsjQUb3SMePg5+gMXOzUoTRwcDzY
+	nmybvejBttwPDKAVFnx5+2vdVaRJRx/i3Gli4b5Xe9gCKYIY9WfjaNbv
+X-Gm-Gg: AZuq6aIyNL1Yz0wtpfMbQOaZMDXFncVxIX7k770Ibrkh3FEO0B2cASl5NOzQPNfKe9K
+	pxelTFQJhHo2EoGN4UL+fi7TA4rogcCRmC9QxR6PUOFEiDqscgM8zJqBf0bQ6e1/iAbuJW9xT27
+	X5myTXrw4ZI2+vxgI49sHsPB2RG9o2jV5mkPv+UykZbW9GMYwdm9QKMD1Ccu7ICvedt8DU/ka1h
+	vmSUjDg8kBjNeFyabIgoecug8vDHjSglHI4IJ/YH790co+H0a8JLLwrcwluB8xD2+2gnNsiTM0i
+	21dKEW6jSDi28wyEclWg/IZujZxaOzFACePt8yjx1O4EPPBOnd31O2UoK7lbuohmboA/oQ4WXp6
+	JmWvxr1rXi7VnA/aWC5A4eDhugQ3wd2ks6FCHsuPLHXV5mEjUWYc01zdnooV1hWPGMT36fpxByu
+	isK8NnStsY6TDew8hxrhXu
+X-Received: by 2002:a05:6000:1a8b:b0:435:dba0:736c with SMTP id ffacd0b85a97d-43797927177mr8537551f8f.56.1771035464830;
+        Fri, 13 Feb 2026 18:17:44 -0800 (PST)
+Received: from arch.localdomain ([2409:8a28:a53:6b71::1002])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43796acffcesm8608308f8f.37.2026.02.13.18.17.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 13 Feb 2026 18:17:44 -0800 (PST)
+From: Jun Yan <jerrysteve1101@gmail.com>
+To: devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
 	heiko@sntech.de,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.19-6.1] media: rkisp1: Fix filter mode register configuration
-Date: Fri, 13 Feb 2026 19:58:44 -0500
-Message-ID: <20260214010245.3671907-44-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260214010245.3671907-1-sashal@kernel.org>
-References: <20260214010245.3671907-1-sashal@kernel.org>
+	alchark@gmail.com,
+	dsimic@manjaro.org,
+	andyshrk@163.com,
+	jonas@kwiboo.se,
+	Jun Yan <jerrysteve1101@gmail.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v5 1/3] dt-bindings: vendor-prefixes: Add Shenzhen OneThing Technologies Co., Ltd.
+Date: Sat, 14 Feb 2026 10:17:14 +0800
+Message-ID: <20260214021719.620752-2-jerrysteve1101@gmail.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260214021719.620752-1-jerrysteve1101@gmail.com>
+References: <20260214021719.620752-1-jerrysteve1101@gmail.com>
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.19
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260213_170420_597063_7F0EB61A 
-X-CRM114-Status: GOOD (  14.94  )
+X-CRM114-CacheID: sfid-20260213_181746_953419_C482BD4F 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,158 +110,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Rui Wang <rui.wang@ideasonboard.com>
+OneThing is a company engaged in edge computing.
 
-[ Upstream commit 5a50f2b61104d0d351b59ec179f67abab7870453 ]
-
-The rkisp1_flt_config() function performs an initial direct write to
-RKISP1_CIF_ISP_FILT_MODE without including the RKISP1_CIF_ISP_FLT_ENA
-bit, which clears the filter enable bit in the hardware.
-
-The subsequent read/modify/write sequence then reads back the register
-with the enable bit already cleared and cannot restore it, resulting in
-the filter being inadvertently disabled.
-
-Remove the redundant direct write. The read/modify/write sequence alone
-correctly preserves the existing enable bit state while updating the
-DNR mode and filter configuration bits.
-
-Signed-off-by: Rui Wang <rui.wang@ideasonboard.com>
-Reviewed-by: Stefan Klug <stefan.klug@ideasonboard.com>
-Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
-Reviewed-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Link: https://patch.msgid.link/20260105171142.147792-2-rui.wang@ideasonboard.com
-Signed-off-by: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
+Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-LLM Generated explanations, may be completely bogus:
-
-## Analysis
-
-### Commit Message Analysis
-
-The commit message clearly describes a **bug fix**: the
-`rkisp1_flt_config()` function performs an initial direct write to the
-`RKISP1_CIF_ISP_FILT_MODE` register that **clears the filter enable
-bit** (`RKISP1_CIF_ISP_FLT_ENA`). The subsequent read/modify/write
-sequence reads back the register with the enable bit already cleared and
-cannot restore it. This results in the **ISP filter being inadvertently
-disabled** whenever its configuration is updated.
-
-The fix removes the redundant direct write, leaving only the
-read/modify/write sequence that correctly preserves the enable bit.
-
-### Code Change Analysis
-
-The diff is straightforward:
-
-**Removed code (the bug):**
-```c
-rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE,
-     (arg->mode ? RKISP1_CIF_ISP_FLT_MODE_DNR : 0) |
-     RKISP1_CIF_ISP_FLT_CHROMA_V_MODE(arg->chr_v_mode) |
-     RKISP1_CIF_ISP_FLT_CHROMA_H_MODE(arg->chr_h_mode) |
-     RKISP1_CIF_ISP_FLT_GREEN_STAGE1(arg->grn_stage1));
-```
-
-This write sets the mode register but does **not** include the
-`RKISP1_CIF_ISP_FLT_ENA` bit, effectively disabling the filter in
-hardware.
-
-**Preserved code (the correct path):**
-```c
-filt_mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE);
-filt_mode &= RKISP1_CIF_ISP_FLT_ENA;
-// ... build up new mode value preserving enable bit ...
-rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE, filt_mode);
-```
-
-The read/modify/write sequence correctly reads the current register
-value, preserves only the enable bit, then OR's in the new
-configuration. But because the direct write above already cleared the
-enable bit, reading it back gets a 0 for the enable bit - defeating the
-entire purpose of the read/modify/write pattern.
-
-### Bug Mechanism
-
-1. Filter is enabled (FLT_ENA bit = 1 in hardware register)
-2. User updates filter configuration parameters
-3. `rkisp1_flt_config()` is called
-4. Direct write clears FLT_ENA bit (writes mode without enable)
-5. Read/modify/write reads back register with FLT_ENA = 0
-6. Final write does not have FLT_ENA set
-7. **Filter is now disabled** even though user only wanted to change
-   configuration
-
-This is a real functional bug that affects image processing quality on
-Rockchip platforms using the ISP (Image Signal Processor).
-
-### Scope and Risk
-
-- **Size**: Removal of 5 lines of code. Extremely small and surgical.
-- **Files**: Single file change (`rkisp1-params.c`)
-- **Risk**: Very low. The removed code is entirely redundant - the
-  read/modify/write sequence that follows does everything the direct
-  write did, plus correctly preserves the enable bit. Removing the
-  direct write can only improve behavior.
-- **Subsystem**: Media/camera driver for Rockchip ISP - well-defined
-  scope, won't affect other subsystems.
-
-### Review Quality
-
-The commit has been reviewed by three experienced media subsystem
-developers:
-- Stefan Klug (Reviewed-by)
-- Kieran Bingham (Reviewed-by)
-- Laurent Pinchart (Reviewed-by, also signed off as maintainer)
-
-Merged by Hans Verkuil, the V4L2 subsystem maintainer.
-
-### User Impact
-
-This bug affects anyone using the Rockchip ISP filter (noise reduction,
-sharpening) on platforms like RK3399 and similar SoCs. When the filter
-configuration is updated, the filter gets inadvertently disabled,
-leading to degraded image quality. This is particularly relevant for
-embedded systems and cameras that use stable kernels.
-
-### Stable Criteria Assessment
-
-- **Obviously correct**: Yes - removing a redundant write that defeats
-  the read/modify/write pattern is clearly correct
-- **Fixes a real bug**: Yes - filter being disabled when reconfigured is
-  a real functional bug
-- **Small and contained**: Yes - 5 lines removed from a single function
-  in a single file
-- **No new features**: Correct - pure bug fix
-- **Tested**: Multiple reviews from domain experts
-
-**YES**
-
- drivers/media/platform/rockchip/rkisp1/rkisp1-params.c | 6 ------
- 1 file changed, 6 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-index c9f88635224cc..6442436a5e428 100644
---- a/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-+++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-params.c
-@@ -411,12 +411,6 @@ static void rkisp1_flt_config(struct rkisp1_params *params,
- 	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_LUM_WEIGHT,
- 		     arg->lum_weight);
- 
--	rkisp1_write(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE,
--		     (arg->mode ? RKISP1_CIF_ISP_FLT_MODE_DNR : 0) |
--		     RKISP1_CIF_ISP_FLT_CHROMA_V_MODE(arg->chr_v_mode) |
--		     RKISP1_CIF_ISP_FLT_CHROMA_H_MODE(arg->chr_h_mode) |
--		     RKISP1_CIF_ISP_FLT_GREEN_STAGE1(arg->grn_stage1));
--
- 	/* avoid to override the old enable value */
- 	filt_mode = rkisp1_read(params->rkisp1, RKISP1_CIF_ISP_FILT_MODE);
- 	filt_mode &= RKISP1_CIF_ISP_FLT_ENA;
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index c7591b2aec2a..484df0b7723b 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -1187,6 +1187,8 @@ patternProperties:
+     description: One Laptop Per Child
+   "^oneplus,.*":
+     description: OnePlus Technology (Shenzhen) Co., Ltd.
++  "^onething,.*":
++    description: Shenzhen OneThing Technologies Co., Ltd.
+   "^onie,.*":
+     description: Open Network Install Environment group
+   "^onion,.*":
 -- 
-2.51.0
+2.53.0
 
 
 _______________________________________________
