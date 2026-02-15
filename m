@@ -4,68 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 136FEEF5852
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Feb 2026 21:26:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61B77EF5871
+	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Feb 2026 10:02:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Oo2Zyxc+7hXCsMl+eyRLkkjdxJ+/mSoWHRDuGE0mwoI=; b=kHlzn7PenZCTrB
-	uPdjCY1E22BOJxZHtcX2COnqFJDzQWQ4im5jcBJrOkZ8+k8lc+/6SldvUKgObdQstU3FsOzmc6/ds
-	ID80Fc1rYca8Y8PX7fHpBn4WCqGX6P+6NW5FhRYJEgwCSBmjNp6psrlB7EchqyiI6Ou9kYSyDuNKi
-	j9qLBeFBbwhu6oTJhnCwOMpNTlVr3KCq1TywnHJtvm7Lwz/GdtnrZnfLz5wNvKpiukYb054Q+HCVR
-	gaKgM9q8tsZXxmk4ZTG3AoexuRraBj4tzb+KfgtKpckNrZVrE3afUPMLbpSGT6LcerolRMgOfrPTG
-	RoyeosgzYsiq1lVoxHQw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OAc8Z1lCaIotgZg+T/z9Mz8bO8APkbdx1A0Ic7rZBXI=; b=Xz/8zviMVwtUN2
+	RPM3pWOlokW6CggKpr2c4FAKwI1OtHHgQax409mlTNvR8plUOpb+VkQYtK+XD71WNffeTq7y1iImL
+	SOlPzOeHY2zzw9/V0S7if+Cqw4mXNmiwY4chlgPdGcafZYCCV6/9JZRSr7h4b+gYZfe9LmFsJPTtw
+	oH03pGLFwAnx7kGdUnQgabGpJ2CtsUfeLMMCtmq95kg3M+ybFLcnnwEyglIzsYkpNqNdESP+gxUS5
+	RR2E0ideLCFqNJPC9b2S5ehcZC+UCIqQfzIU92Cy7M+tL8VmVCaAb3DDRgKz63fHhDzEp3BRLV+/F
+	Zi6h4bWeB0H7GQ/1K+lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrNAE-00000004xM1-05CW;
-	Sat, 14 Feb 2026 21:26:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vrYxd-00000005JZr-0IaK;
+	Sun, 15 Feb 2026 10:02:41 +0000
+Received: from forward101a.mail.yandex.net ([2a02:6b8:c0e:500:1:45:d181:d101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrNAC-00000004xLJ-2mdA;
-	Sat, 14 Feb 2026 21:26:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1C927600BB;
-	Sat, 14 Feb 2026 21:26:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76B97C19422;
-	Sat, 14 Feb 2026 21:26:50 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771104411;
-	bh=spBe1UGw1ARs3IgEvRYC5YF/E9lmPPeTNpVViA6Fnso=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=nWr7AfVPmprttSt+USWUPrqGCX3tmWTVeMrFEOY6HPamGPxjqDCLFYwspQ/FSRn3i
-	 BI0DuJOlELKE+r28nR9JNRz893j5tp30EE4QkIFVFINPpr6CGZdzxwekKbrBo2TER0
-	 /axbeQxDsaUUFIzUXyaTmsdvam/CsJYflY+J6KkBJm0F+D5PTNAX79S+yPSodgEaL4
-	 DVLw6Dzpu+28n7DBpN8BljxhM+uzA04xcNVQ81txIKwuyS2LWsWQq2h9XXzUzc9ATc
-	 YjNFi0ZZb7DFHEq1QkOA5rCipapEMo/jv9PSdnWYbqVNSGq1dnAb/2qNPnFbJ4830X
-	 JV4J+0bBk3m4A==
-From: Sasha Levin <sashal@kernel.org>
-To: patches@lists.linux.dev,
-	stable@vger.kernel.org
-Cc: Shawn Lin <shawn.lin@rock-chips.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Sasha Levin <sashal@kernel.org>,
-	heiko@sntech.de,
-	cassel@kernel.org,
-	18255117159@163.com,
-	bhelgaas@google.com,
-	yelangyan@huaqin.corp-partner.google.com,
-	linux.amoon@gmail.com,
-	nicolas.frattaroli@collabora.com,
+	id 1vrYxX-00000005JYq-2phw;
+	Sun, 15 Feb 2026 10:02:38 +0000
+Received: from mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net [IPv6:2a02:6b8:c17:2010:0:640:2180:0])
+	by forward101a.mail.yandex.net (Yandex) with ESMTPS id C762280C19;
+	Sun, 15 Feb 2026 13:02:25 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 02U6OQUG14Y0-rqjbwYxY;
+	Sun, 15 Feb 2026 13:02:25 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=onurozkan.dev;
+	s=mail; t=1771149745;
+	bh=EK56X4yUyK6p90PJP+pf1u3MX2f+sfz3TRR04+2G4T8=;
+	h=Message-ID:Date:Cc:Subject:To:From;
+	b=B9UjE9SzXK5scnpObCqr7CuifSEFqaFsMpm86WX89Sf1FM6OjeTWgWmEl5Uc/IX/1
+	 k2hRFfCdjZ6yTOm17+R2SxqNFY3wsYET9Rtzh6lN3nbUrIIBAEkPKKRLRc3/anF3jw
+	 YpvpfGJW/Y6mrAB3bLVLw0tpe6E+UurPtKGuJEks=
+Authentication-Results: mail-nwsmtp-smtp-production-main-54.vla.yp-c.yandex.net; dkim=pass header.i=@onurozkan.dev
+From: =?UTF-8?q?Onur=20=C3=96zkan?= <work@onurozkan.dev>
+To: Alim Akhtar <alim.akhtar@samsung.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Boris Brezillon <boris.brezillon@collabora.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	David Airlie <airlied@gmail.com>,
+	devicetree@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.19-6.1] PCI: dw-rockchip: Disable BAR 0 and BAR 1 for Root Port
-Date: Sat, 14 Feb 2026 16:23:34 -0500
-Message-ID: <20260214212452.782265-69-sashal@kernel.org>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260214212452.782265-1-sashal@kernel.org>
-References: <20260214212452.782265-1-sashal@kernel.org>
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Samuel Holland <samuel@sholland.org>,
+	Simona Vetter <simona@ffwll.ch>,
+	Steven Price <steven.price@arm.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>
+Cc: =?UTF-8?q?Onur=20=C3=96zkan?= <work@onurozkan.dev>
+Subject: [PATCH v1 0/2] arm64: dts + drm/panthor: require explicit GPU sram-supply
+Date: Sun, 15 Feb 2026 13:01:56 +0300
+Message-ID: <20260215100156.135374-1-work@onurozkan.dev>
+X-Mailer: git-send-email 2.51.2
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-stable-base: Linux 6.19
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260215_020235_904110_A460A207 
+X-CRM114-Status: UNSURE (   8.68  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,156 +91,175 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Shawn Lin <shawn.lin@rock-chips.com>
-
-[ Upstream commit b5d712e5b87fc56ff838684afb1bae359eb8069f ]
-
-Some Rockchip PCIe Root Ports report bogus size of 1GiB for the BAR
-memories and they cause below resource allocation issue during probe.
-
-  pci 0000:00:00.0: [1d87:3588] type 01 class 0x060400 PCIe Root Port
-  pci 0000:00:00.0: BAR 0 [mem 0x00000000-0x3fffffff]
-  pci 0000:00:00.0: BAR 1 [mem 0x00000000-0x3fffffff]
-  pci 0000:00:00.0: ROM [mem 0x00000000-0x0000ffff pref]
-	...
-  pci 0000:00:00.0: BAR 0 [mem 0x900000000-0x93fffffff]: assigned
-  pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: can't assign; no space
-  pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: failed to assign
-  pci 0000:00:00.0: ROM [mem 0xf0200000-0xf020ffff pref]: assigned
-  pci 0000:00:00.0: BAR 0 [mem 0x900000000-0x93fffffff]: releasing
-  pci 0000:00:00.0: ROM [mem 0xf0200000-0xf020ffff pref]: releasing
-  pci 0000:00:00.0: BAR 0 [mem 0x900000000-0x93fffffff]: assigned
-  pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: can't assign; no space
-  pci 0000:00:00.0: BAR 1 [mem size 0x40000000]: failed to assign
-
-Since there is no use of the Root Port BAR memories, disable both of them.
-
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-[mani: reworded the description and comment]
-Signed-off-by: Manivannan Sadhasivam <mani@kernel.org>
-Link: https://patch.msgid.link/1766570461-138256-1-git-send-email-shawn.lin@rock-chips.com
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
-
-LLM Generated explanations, may be completely bogus:
-
-### Key Findings from Investigation
-
-1. **`dw_pcie_writel_dbi2`** is a well-established helper available
-   since 2023 (the static inline wrapper) with the underlying
-   `dw_pcie_write_dbi2` available since 2019. It should be present in
-   recent stable kernels.
-
-2. **`dbi_base2` setup pattern**: The standard DWC code has a default
-   fallback of `pci->dbi_base + SZ_4K` (4KB offset). However, the
-   Rockchip hardware uses a different offset of `0x100000` (1MB). This
-   commit explicitly sets `pci->dbi_base2 = pci->dbi_base +
-   PCIE_TYPE0_HDR_DBI2_OFFSET` because the generic fallback would use
-   the wrong offset for this hardware.
-
-3. **The rockchip DWC driver** has been present since 2021, so it exists
-   in all active stable trees.
-
-### Risk vs. Benefit
-
-**Benefit**: Fixes a real resource allocation failure during PCIe probe
-on Rockchip platforms (RK3588 and potentially others). Without this fix,
-BAR allocation consumes 2GiB of address space needlessly, potentially
-causing downstream device BAR allocation failures. The log output
-clearly shows "can't assign; no space" errors.
-
-**Risk**: Very low. The fix:
-- Only affects Rockchip DWC PCIe in host (Root Port) mode
-- Disables BARs that are not used by the Root Port
-- Uses well-established DWC infrastructure (`dw_pcie_writel_dbi2`)
-- The DBI2 offset is hardware-specific and correct for this platform
-
-### Potential Concern
-
-One thing to verify is whether `dbi_base2` might already be set by the
-generic DWC code before `rockchip_pcie_host_init` is called. If the
-generic code sets it to `dbi_base + SZ_4K` first, this override to
-`dbi_base + 0x100000` is essential for correctness. If it's not set at
-all, then both the setup AND the BAR disable writes are needed.
-
-### User Impact
-
-- **Moderate-High**: RK3588 is a widely used ARM SoC in Single Board
-  Computers (SBCs), NAS devices, and embedded systems. PCIe resource
-  allocation failures directly impact users trying to use PCIe devices
-  (NVMe SSDs, network cards, etc.) on these platforms.
-
-### Stable Criteria Assessment
-
-| Criteria | Assessment |
-|----------|------------|
-| Obviously correct and tested | Yes - simple BAR disable using standard
-DWC mechanism |
-| Fixes a real bug | Yes - bogus BAR sizes cause resource allocation
-failures |
-| Important issue | Yes - PCIe device failures on popular ARM platform |
-| Small and contained | Yes - ~10 lines in one file |
-| No new features | Correct - this is a hardware workaround |
-| Applies cleanly | Likely yes for recent stable trees |
-
-### Conclusion
-
-This is a hardware quirk/workaround that fixes a real resource
-allocation problem on Rockchip RK3588 PCIe Root Ports. The bogus 1GiB
-BAR sizes waste address space and cause downstream device allocation
-failures. The fix is small, well-scoped, uses existing infrastructure,
-and only affects Rockchip platforms. It clearly falls into the "hardware
-quirks" exception category that is explicitly appropriate for stable
-backporting.
-
-**YES**
-
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
-
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index f8605fe61a415..c5f3c8935098f 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -80,6 +80,8 @@
- #define  PCIE_LINKUP_MASK		GENMASK(17, 16)
- #define  PCIE_LTSSM_STATUS_MASK		GENMASK(5, 0)
- 
-+#define PCIE_TYPE0_HDR_DBI2_OFFSET      0x100000
-+
- struct rockchip_pcie {
- 	struct dw_pcie pci;
- 	void __iomem *apb_base;
-@@ -292,6 +294,8 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	if (irq < 0)
- 		return irq;
- 
-+	pci->dbi_base2 = pci->dbi_base + PCIE_TYPE0_HDR_DBI2_OFFSET;
-+
- 	ret = rockchip_pcie_init_irq_domain(rockchip);
- 	if (ret < 0)
- 		dev_err(dev, "failed to init irq domain\n");
-@@ -302,6 +306,10 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
- 	rockchip_pcie_configure_l1ss(pci);
- 	rockchip_pcie_enable_l0s(pci);
- 
-+	/* Disable Root Ports BAR0 and BAR1 as they report bogus size */
-+	dw_pcie_writel_dbi2(pci, PCI_BASE_ADDRESS_0, 0x0);
-+	dw_pcie_writel_dbi2(pci, PCI_BASE_ADDRESS_1, 0x0);
-+
- 	return 0;
- }
- 
--- 
-2.51.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgYWxsLAoKVGhpcyBzZXJpZXMgZm9sbG93cyB0aGUgZGlzY3Vzc2lvbiBhcm91bmQgcGFudGhv
+cidzIFNSQU0gcmVndWxhdG9yIGhhbmRsaW5nCmFuZCB0aGUgRFQgZXhwZWN0YXRpb25zIGZvciBt
+YWxpIEdQVSBub2Rlcy4KClRvZGF5LCBpZiBzcmFtLXN1cHBseSBpcyBtaXNzaW5nIGluIHRoZSBE
+VCBmaWxlLCBwYW50aG9yIGZhbGxzIGJhY2sgdG8KYSBkdW1teSByZWd1bGF0b3Igd2l0aCBhIHdh
+cm5pbmcuIFRoaXMgaW1wbGljaXQgYmVoYXZpb3IgaGlkZXMgbWlzc2luZwpEVCB3aXJpbmcgYmVo
+aW5kIHJlZ3VsYXRvciBjb3JlIGZhbGxiYWNrLgoKQXMgZGlzY3Vzc2VkIGluIFsxXSwgdGhlIGFn
+cmVlZCBkaXJlY3Rpb24gaXM6Ci0gVXBkYXRlIERUcyB0byBleHBsaWNpdGx5IHByb3ZpZGUgc3Jh
+bS1zdXBwbHksIHdoZW4gbm8gc2VwYXJhdGUgU1JBTQogIHJhaWwgZXhpc3RzLCB1c2UgdGhlIHNh
+bWUgcmVndWxhdG9yIGFzIG1hbGktc3VwcGx5LgotIE1ha2UgcGFudGhvciB0byB0cmVhdCBzcmFt
+LXN1cHBseSBhcyBtYW5kYXRvcnkgZm9yIGFsbCBjb21wYXRpYmxlcwogIGV4Y2VwdCBtdDgxOTYt
+bWFsaSAoYXMgdGhhdCBTb0MgbWFuYWdlcyBTUkFNIG91dHNpZGUgcGFudGhvcikuCgoKLSBGaXJz
+dCBwYXRjaCBhcHBsaWVzIHRoZSBEVCB1cGRhdGVzIGFjcm9zcyBhZmZlY3RlZCBmaWxlcy4KLSBT
+ZWNvbmQgcGF0Y2ggbWFrZXMgcGFudGhvciB0byB0cmVhdCBzcmFtLXN1cHBseSBhcyBtYW5kYXRv
+cnkKICBleGNlcHQgbXQ4MTk2LW1hbGkuCgpbMV06IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2Fs
+bC8yMDI2MDIxMzE1NTkzNy42YWY3NTc4NkBuaW1kYS8KCkJSLApPbnVyCgpPbnVyIMOWemthbiAo
+Mik6CiAgYXJtNjQ6IGR0czogYWRkIG1pc3Npbmcgc3JhbS1zdXBwbHkgdG8gbWFsaSBncHUgbm9k
+ZXMKICBkcm0vcGFudGhvcjogdHJlYXQgc3JhbSBhcyBtYW5kYXRvcnkgZXhjZXB0IG10ODE5NgoK
+IC4uLi9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTBpLWgzMTMtdGFuaXgtdHgxLmR0cyAgICB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvYWxsd2lubmVyL3N1bjUwaS1oMzEzLXg5NnEuZHRzICB8
+ICAxICsKIC4uLi9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTBpLWg2LWJlZWxpbmstZ3MxLmR0cyAg
+ICB8ICAxICsKIC4uLi9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTBpLWg2LW9yYW5nZXBpLTMuZHRz
+ICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTBpLWg2LW9yYW5nZXBpLmR0
+c2kgICAgICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTBpLWg2LXBp
+bmUtaDY0LmR0cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvYWxsd2lubmVyL3N1bjUwaS1o
+Ni10YW5peC5kdHNpICB8ICAxICsKIC4uLi9kdHMvYWxsd2lubmVyL3N1bjUwaS1oNjE2LWJpZ3Ry
+ZWV0ZWNoLWNiMS5kdHNpICB8ICAxICsKIC4uLi9kdHMvYWxsd2lubmVyL3N1bjUwaS1oNjE2LW9y
+YW5nZXBpLXplcm8yLmR0cyAgICB8ICAxICsKIC4uLi9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTBp
+LWg2MTYteDk2LW1hdGUuZHRzICAgICB8ICAxICsKIC4uLi9kdHMvYWxsd2lubmVyL3N1bjUwaS1o
+NjE4LWxvbmdhbi1tb2R1bGUtM2guZHRzaSB8ICAxICsKIC4uLi9kdHMvYWxsd2lubmVyL3N1bjUw
+aS1oNjE4LW9yYW5nZXBpLXplcm8ydy5kdHMgICB8ICAxICsKIC4uLi9kdHMvYWxsd2lubmVyL3N1
+bjUwaS1oNjE4LW9yYW5nZXBpLXplcm8zLmR0cyAgICB8ICAxICsKIC4uLi9kdHMvYWxsd2lubmVy
+L3N1bjUwaS1oNjE4LXRyYW5zcGVlZC04azYxOC10LmR0cyB8ICAxICsKIC4uLi9hbGx3aW5uZXIv
+c3VuNTBpLWg3MDAtYW5iZXJuaWMtcmczNXh4LTIwMjQuZHRzICB8ICAxICsKIC4uLi9ib290L2R0
+cy9hbGx3aW5uZXIvc3VuNTVpLWE1MjctY3ViaWUtYTVlLmR0cyAgICB8ICAxICsKIC4uLi9ib290
+L2R0cy9hbGx3aW5uZXIvc3VuNTVpLWg3MjgteDk2cXBybysuZHRzICAgICB8ICAxICsKIC4uLi9i
+b290L2R0cy9hbGx3aW5uZXIvc3VuNTVpLXQ1MjctYXZhb3RhLWExLmR0cyAgICB8ICAxICsKIC4u
+Li9ib290L2R0cy9hbGx3aW5uZXIvc3VuNTVpLXQ1Mjctb3JhbmdlcGktNGEuZHRzICB8ICAxICsK
+IC4uLi9ib290L2R0cy9leHlub3MvZXh5bm9zNTQzMy10bTItY29tbW9uLmR0c2kgICAgICB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvZXh5bm9zL2V4eW5vczctZXNwcmVzc28uZHRzICAgICB8
+ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWV2Yi5kdHMgICAgICAg
+ICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLWt1a3VpLmR0c2kg
+ICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTgzLXB1bXBraW4u
+ZHRzICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTg2LWNvcnNv
+bGEuZHRzaSAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTg4LWdl
+cmFsdC5kdHNpICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4MTky
+LWFzdXJhZGEuZHRzaSAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsvbXQ4
+MTk1LWNoZXJyeS5kdHNpICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvbWVkaWF0ZWsv
+bXQ4MzY1LWV2ay5kdHMgICAgICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9tZWRpYXRlay9tdDgz
+OTAtZ2VuaW8tY29tbW9uLmR0c2kgICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9tZWRpYXRlay9t
+dDgzOTAtZ3Jpbm4tZ2VuaW8tc2JjLmR0c2kgICB8ICAxICsKIC4uLi9ib290L2R0cy9tZWRpYXRl
+ay9tdDgzOTUtZ2VuaW8tY29tbW9uLmR0c2kgICAgICB8ICAxICsKIC4uLi9kdHMvbWVkaWF0ZWsv
+bXQ4Mzk1LWtvbnRyb24tMy01LXNiYy1pMTIwMC5kdHMgICB8ICAxICsKIC4uLi9ib290L2R0cy9t
+ZWRpYXRlay9tdDgzOTUtcmFkeGEtbmlvLTEybC5kdHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQv
+Ym9vdC9kdHMvcmVuZXNhcy9yOWEwN2cwNDRsMi1yZW1pLXBpLmR0cyB8ICAxICsKIC4uLi9ib290
+L2R0cy9yZW5lc2FzL3I5YTA5ZzA1Nm40OC1yenYybi1ldmsuZHRzICAgICB8ICAxICsKIC4uLi9i
+b290L2R0cy9yZW5lc2FzL3I5YTA5ZzA1N2g0NC1yenYyaC1ldmsuZHRzICAgICB8ICAxICsKIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvcmVuZXNhcy9yemcybC1zbWFyYy1zb20uZHRzaSAgICB8ICAxICsK
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcmVuZXNhcy9yemcybGMtc21hcmMtc29tLmR0c2kgICB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcmVuZXNhcy9yemczZS1zbWFyYy1zb20uZHRzaSAgICB8
+ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcHgzMC1jb2JyYS5kdHNpICAgICAg
+ICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcHgzMC1ldmIuZHRzICAgICAg
+ICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9weDMwLWZpcmVmbHktamQ0LWNvcmUu
+ZHRzaSAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcHgzMC1wcDE1MTYu
+ZHRzaSAgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzE4LWE5
+NXgtejIuZHRzICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzMjYtYW5iZXJu
+aWMtcmczNTFtLmR0c2kgICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzMjYtZ2Ft
+ZWZvcmNlLWNoaS5kdHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszMzI2LW9kcm9pZC1nby5kdHNpICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzI4LWExLmR0cyAgICAgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzI4LXJvYy5kdHNpICAgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszMzI4LXJvY2s2NC5kdHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszMzk5LWVhaWRrLTYxMC5kdHMgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszMzk5LWV2Yi1pbmQuZHRzICAgICB8ICAxICsKIGFyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWZpcmVmbHkuZHRzICAgICB8ICAxICsKIGFyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWdydS5kdHNpICAgICAgICB8ICAxICsKIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWh1Z3N1bi14OTkuZHRzICB8ICAxICsKIC4u
+Li9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkta2hhZGFzLWVkZ2UuZHRzaSB8ICAxICsK
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LWxlZXotcDcxMC5kdHMgICB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9waTQuZHRzaSAgICB8
+ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW9yYW5nZXBpLmR0cyAg
+ICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZWJvb2stcHJv
+LmR0cyB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktcGluZXBob25lLXByby5k
+dHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXB1bWEu
+ZHRzaSAgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LXJv
+Yy1wYy5kdHNpICAgICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTkt
+cm9jay00Yy1wbHVzLmR0cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+Mzk5LXJvY2stcGktNC5kdHNpICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszMzk5LXJvY2s5NjAuZHRzaSAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszMzk5LXJvY2twcm82NC5kdHNpICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszMzk5LXNhcHBoaXJlLmR0c2kgICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9yazM1MjgtYXJtc29tLXNpZ2UxLmR0cyB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazM1MjgtbmFub3BpLXplcm8yLmR0cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTI4LXJhZHhhLWUyMGMuZHRzICB8ICAxICsKIGFyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LXJvY2stMi5kdHNpICAgICB8ICAxICsKIC4uLi9ib290
+L2R0cy9yb2NrY2hpcC9yazM1NjYtYW5iZXJuaWMtcmd4eDMuZHRzaSAgICB8ICAxICsKIC4uLi9i
+b290L2R0cy9yb2NrY2hpcC9yazM1NjYtYmlndHJlZXRlY2gtY2IyLmR0c2kgICB8ICAxICsKIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LWxja2ZiLXRzcGkuZHRzICB8ICAxICsK
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LWx1YmFuY2F0LTEuZHRzICB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LW5hbm9waS1yM3MuZHRzICB8
+ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LW9kcm9pZC1tMXMuZHRz
+ICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtb3JhbmdlcGktM2Iu
+ZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2LXBpbmV0YWIy
+LmR0c2kgICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcG93a2lkZHktcmsy
+MDIzLmR0c2kgICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjYtcG93
+a2lkZHkteDU1LmR0cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY2
+LXF1YXJ0ejY0LWEuZHRzICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+NTY2LXF1YXJ0ejY0LWIuZHRzICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTY2LXJhZHhhLWNtMy5kdHNpICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1
+NjYtcmFkeGEtemVyby0zLmR0c2kgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszNTY2LXJvYy1wYy5kdHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTY2LXJvY2stM2MuZHRzICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszNTY2LXNvcXVhcnR6LmR0c2kgICB8ICAxICsKIC4uLi9ib290L2R0cy9y
+b2NrY2hpcC9yazM1NjgtOXRyaXBvZC14MzU2OC12NC5kdHMgICB8ICAxICsKIGFyY2gvYXJtNjQv
+Ym9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWJwaS1yMi1wcm8uZHRzICB8ICAxICsKIGFyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWVhc2VwaS1yMS5kdHMgICB8ICAxICsKIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWV2YjEtdjEwLmR0cyAgICB8ICAxICsKIC4u
+Li9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtZmFzdHJoaW5vLXI2NnMuZHRzaSAgICB8ICAxICsK
+IC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjgtaGlubGluay1vcGMuZHRzaSB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LWx1YmFuY2F0LTIuZHRzICB8
+ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LW1lY3NiYy5kdHMgICAg
+ICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LW5hbm9waS1yNXMu
+ZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LW9kcm9pZC1t
+MS5kdHMgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXBob3Rv
+bmljYXQuZHRzICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXFu
+YXAtdHN4MzMuZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4
+LXJhZHhhLWNtM2kuZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+NTY4LXJvYy1wYy5kdHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTY4LXJvY2stM2EuZHRzICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTY4LXJvY2stM2IuZHRzICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9y
+azM1Njgtd29sZnZpc2lvbi1wZjUuZHRzICAgICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hp
+cC9yazM1NzYtMTAwYXNrLWRzaGFucGktYTEuZHRzICB8ICAxICsKIC4uLi9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazM1NzYtYXJtc29tLXNpZ2U1LmR0cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTc2LWV2YjEtdjEwLmR0cyAgICB8ICAxICsKIC4uLi9ib290L2R0
+cy9yb2NrY2hpcC9yazM1NzYtbHVja2ZveC1jb3JlMzU3Ni5kdHNpICB8ICAxICsKIGFyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LW5hbm9waS1tNS5kdHMgICB8ICAxICsKIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LW5hbm9waS1yNzZzLmR0cyB8ICAxICsKIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LXJvYy1wYy5kdHMgICAgICB8ICAxICsK
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTc2LXJvY2stNGQuZHRzICAgICB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWFybXNvbS1sbTcuZHRzaSB8
+ICAxICsKIC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtYXJtc29tLXNpZ2U3LmR0
+cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWNvb2xwaS1jbTUu
+ZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWg5Ni1tYXgt
+djU4LmR0cyB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWphZ3Vh
+ci5kdHMgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LW5h
+bm9wYy10Ni5kdHNpICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4
+LW9rMzU4OC1jLmR0cyAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmsz
+NTg4LW9yYW5nZXBpLTUuZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAv
+cmszNTg4LXJvY2stNS1pdHguZHRzICB8ICAxICsKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1
+ODgtcm9jay01Yi01YnAtNXQuZHRzaSAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9j
+a2NoaXAvcmszNTg4LXRpZ2VyLmR0c2kgICAgICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMv
+cm9ja2NoaXAvcmszNTg4LXR1cmluZy1yazEuZHRzaSB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9k
+dHMvcm9ja2NoaXAvcmszNTg4cy1jb29scGktNGIuZHRzICB8ICAxICsKIC4uLi9ib290L2R0cy9y
+b2NrY2hpcC9yazM1ODhzLWdhbWVmb3JjZS1hY2UuZHRzICAgICB8ICAxICsKIC4uLi9ib290L2R0
+cy9yb2NrY2hpcC9yazM1ODhzLWluZGllZHJvaWQtbm92YS5kdHMgICB8ICAxICsKIC4uLi9ib290
+L2R0cy9yb2NrY2hpcC9yazM1ODhzLWtoYWRhcy1lZGdlMi5kdHMgICAgICB8ICAxICsKIGFyY2gv
+YXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1uYW5vcGktcjYuZHRzaSB8ICAxICsKIGFy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1vZHJvaWQtbTIuZHRzICB8ICAxICsK
+IC4uLi9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODhzLW9yYW5nZXBpLTUuZHRzaSB8ICAx
+ICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yb2MtcGMuZHRzICAgICB8
+ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yb2NrLTVhLmR0cyAg
+ICB8ICAxICsKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1yb2NrLTVjLmR0
+cyAgICB8ICAxICsKIGRyaXZlcnMvZ3B1L2RybS9wYW50aG9yL3BhbnRob3JfZGV2ZnJlcS5jICAg
+ICAgICAgICB8IDEzICsrKysrKysrKy0tLS0KIDEzOCBmaWxlcyBjaGFuZ2VkLCAxNDYgaW5zZXJ0
+aW9ucygrKSwgNCBkZWxldGlvbnMoLSkKCi0tIAoyLjUxLjIKCgpfX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QK
+TGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFk
+Lm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
