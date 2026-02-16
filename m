@@ -4,104 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACE0E81A2B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 15:16:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E119E81A3A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 15:22:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fRiTJSUlc7VjzsoS7fAVmjSguALq4Li8BgehyKXGJqE=; b=LGZzQRMafx0DGM
-	IbxJbD0iNUha1zf8QbNmk3UpnhPtTI4ggyOC/93xnjycfih8nT90P/bYX0pR38PbmLPCVbzyKJVwB
-	pPPlad42mdRdHi2zBwBmdLVM0HvWvuvPp+Y2EVYWqHaud2MkaezqH2wVxhf3zJn9et6iGR/KWGOcK
-	Dnh+P7nTf24Zw3/H43cAvleCZrMk0pSG+OO8ItRkO+KPcTRFzfnEfHprUwEuZIiDepReLpg/As9jL
-	pNtR6ytlWXFjWu9qYR/HGinv7rw49T1x4JzbYzPvXtaUNVmXvaDj4g/GXWyKkco5ngaa5bpgLUZUx
-	bUPKAg3W3AVpPZ0YEQJQ==;
+	List-Owner; bh=dUzauhDOZLY2X+4Kk2qq7mkrDrljGhPGuYvpfrs6+MI=; b=scfTCImsmmJScX
+	DPwuQer9ZxVRuGkzkjGQULmmuslz69oULQNz5UA3xfTzVYmb4l1oKIgrBoxhUA940/uxHXM7/pr41
+	1WeHGf5kLAokR9f6BFG5x8lvD7WhWKkunXIGxdIcuSBaOz4QdV3VRkwUAwo+/XD6DBhGQw/CLDV52
+	EHZw5RLUGqfZRphK5Ub8ANzO4FoZRPCzKH0D1rSkz2bKFZA82V2N9hsfygJxUdOjsHS73XdtyG/ej
+	sam5jaVJsLOD89QXh0fWddE+IkOadZL4k6DK7LHfqWKqD38s3SLfJkELcWeMcq8MvS2RGbjIjIhnM
+	5Zdrz0jfe2PkP9GfEXyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0L1-00000006rgr-2bjn;
-	Mon, 16 Feb 2026 15:16:39 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vs0QY-00000006shg-1XN4;
+	Mon, 16 Feb 2026 15:22:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0L0-00000006rgB-0DSS;
-	Mon, 16 Feb 2026 15:16:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 367F86012B;
-	Mon, 16 Feb 2026 15:16:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 510B6C116C6;
-	Mon, 16 Feb 2026 15:16:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771254996;
-	bh=XLZILfh8Wpv03rEvDuXVJeOgNvka6GITqW8xD13QNAw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SmVKhhtcCQ2tfnX+EV7YsvBRe+ncegb/36IDW8zD2ZCnp3AABmvpYl2S5fcXdJYnV
-	 vZvj7l4gyttKtw0ZpT/gNhxXZjQOecxjEwbWHX8LAh8mdfBlAFMO8Qljx94GvJGIWe
-	 1hCKISFncvS+6i4m3CUlz7EV9y3ucaUtWReZYEHvlDbQJV95bcalnubu1Ee2aaNau0
-	 1wNExlDJL4OMmyTbt2fO6pEeNTlmhzDpKMAc7zzgwgc3Ytji/M7/VpvMnA6NCt27kW
-	 Vp6TGOgak7Xogop/Nabj/AA/fTzP2F5rDB3fw7y90qVp+HwjLxyQiqR1u938uhjF0z
-	 0we0LFxljzTYg==
-Message-ID: <07b62f39-d27b-4439-a60e-42fd47f49b13@kernel.org>
-Date: Mon, 16 Feb 2026 16:16:31 +0100
+	id 1vs0QV-00000006sfR-01Zb;
+	Mon, 16 Feb 2026 15:22:20 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771255334;
+	bh=rO5pvMpoFmL8Fx9NoSnLv4h+94kVFJV6QpMLCSMKBYY=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=VGp0ddLiK3M75iH7slbP42Pf/2drvgeo7I2GaYWx/+Myyou9z+e7TCwWnvR7CzAGf
+	 EY51OJSso1SO642glioZJgYN+GTdR4PtW+OvdpHVPJecniKapCxvtZRDSYbS/RJLLU
+	 WZmPL0Wx37NdMhvuN0EU17NMgPGG0DypPlvmZtQSP3FI6q4EUVvjwfinuOvE3MLpSV
+	 5eLPr6my7g1iyVfEeuTmtgH+9hVOOFGLQREN+6S21DwbVGbjKQZ0R5B9J3FGZB67yM
+	 S76+lNXDz2EGmNuGCdt1yWO1C7zFamE414YxxtoMy0ySguT8eQjunWNWALdtQCCdHh
+	 MVfgifyFu4OYQ==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DADEB17E01E7;
+	Mon, 16 Feb 2026 16:22:13 +0100 (CET)
+Message-ID: <e06feb9d-47cd-40e6-8c43-b24ff8a3e800@collabora.com>
+Date: Mon, 16 Feb 2026 16:22:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v13 6/6] arm64: defconfig: enable Verisilicon IOMMU for
- Rockchip RK3588
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, joro@8bytes.org,
- will@kernel.org, robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de, nicolas.dufresne@collabora.com,
- p.zabel@pengutronix.de, mchehab@kernel.org
-Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
-References: <20260216095144.107356-1-benjamin.gaignard@collabora.com>
- <20260216095144.107356-7-benjamin.gaignard@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v2 5/6] media: dt-bindings: add NXP i.MX93 compatible
+ string
+From: Michael Riesch <michael.riesch@collabora.com>
+To: Frank Li <Frank.Li@nxp.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, imx@lists.linux.dev,
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+References: <20260213-imx93-dw-csi2-v2-0-8be6039f44c6@nxp.com>
+ <20260213-imx93-dw-csi2-v2-5-8be6039f44c6@nxp.com>
+ <50a82e17-1666-4ef6-ab6e-c0be3c780a0d@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260216095144.107356-7-benjamin.gaignard@collabora.com>
+In-Reply-To: <50a82e17-1666-4ef6-ab6e-c0be3c780a0d@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260216_072219_221299_9F5A1641 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,19 +83,140 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 16/02/2026 10:51, Benjamin Gaignard wrote:
-> Enable Verisilicon IOMMU used by Rockchip RK3588 AV1 hardware codec.
-> This hardware block could be found in Radxa Rock 5B board.
+Hi Frank,
 
-I could not find such board. I even git grepped for some variants... It
-seems you are adding it earlier to a known DTSI, so it will reach some
-board, so the point is to use here REAL name of the board we do support.
+On 2/16/26 09:31, Michael Riesch wrote:
+> Hi Frank,
+> 
+> On 2/13/26 21:25, Frank Li wrote:
+>> The i.MX93 uses the DW CSI-2 RX controller, which is similar to the
+>> Rockchip RK3568 implementation.
+>>
+>> The i.MX93 variant provides one IRQ, two clocks, and no resets. Add the
+>> "fsl,imx93-mipi-csi2" compatible string and keep the same constraints for
+>> rk3568.
+> 
+> RK3568.
+> 
+>>
+>> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+>> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> 
+> With that cosmetic fix,
+> 
+> Acked-by: Michael Riesch <michael.riesch@collabora.com>
+
+I just recalled a conversation with Heiko we had off-list a while ago,
+and back then we kind of decided against a snps binding document and
+compatible, since the integration in the respective SoC (family) varies.
+Thus, we went for a Rockchip document (which shall be extended with the
+RK3588 variant of this block, for example) and thought that any other
+variant (e.g., the one of the imx93) could be documented in a separate
+document fsl,somethingsomething.
+
+Seeing that interrupts, clocks, and resets are different, I would
+recommend that you add a new fsl,... document.
+
+What do you think?
+
+Best regards,
+Michael
+
 
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-Best regards,
-Krzysztof
+> Best regards,
+> Michael
+> 
+> 
+>> ---
+>>  .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 47 +++++++++++++++++++++-
+>>  1 file changed, 45 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+>> index 2c2bd87582eb8bfdd13720edd62a5f00dda958ba..4ac4a3b6f406408b9524c795e6cdeb117d3353da 100644
+>> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+>> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+>> @@ -17,6 +17,7 @@ description:
+>>  properties:
+>>    compatible:
+>>      enum:
+>> +      - fsl,imx93-mipi-csi2
+>>        - rockchip,rk3568-mipi-csi2
+>>  
+>>    reg:
+>> @@ -26,14 +27,23 @@ properties:
+>>      items:
+>>        - description: Interrupt that signals changes in CSI2HOST_ERR1.
+>>        - description: Interrupt that signals changes in CSI2HOST_ERR2.
+>> +    minItems: 1
+>>  
+>>    interrupt-names:
+>>      items:
+>>        - const: err1
+>>        - const: err2
+>> +    minItems: 1
+>>  
+>>    clocks:
+>> -    maxItems: 1
+>> +    minItems: 1
+>> +    maxItems: 2
+>> +
+>> +  clock-names:
+>> +    items:
+>> +      - const: per
+>> +      - const: pixel
+>> +    minItems: 1
+>>  
+>>    phys:
+>>      maxItems: 1
+>> @@ -88,10 +98,43 @@ required:
+>>    - phys
+>>    - ports
+>>    - power-domains
+>> -  - resets
+>>  
+>>  additionalProperties: false
+>>  
+>> +allOf:
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            const: rockchip,rk3568-mipi-csi2
+>> +    then:
+>> +      properties:
+>> +        interrupts:
+>> +          minItems: 2
+>> +        interrupt-names:
+>> +          minItems: 2
+>> +        clocks:
+>> +          maxItems: 1
+>> +        clock-names:
+>> +          maxItems: 1
+>> +      required:
+>> +        - resets
+>> +
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            const: fsl,imx93-mipi-csi2
+>> +    then:
+>> +      properties:
+>> +        interrupts:
+>> +          maxItems: 1
+>> +        interrupt-names: false
+>> +        clocks:
+>> +          minItems: 2
+>> +        clock-names:
+>> +          minItems: 2
+>> +
+>>  examples:
+>>    - |
+>>      #include <dt-bindings/clock/rk3568-cru.h>
+>>
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
