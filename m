@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E00E6E81A23
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 13:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACFF2E81A27
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 13:50:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3utze4Jdyzq7shSuehe0GoAX3xbtKaSqchtvUPQH/ik=; b=L6COWnW65QCmYo
-	uvCyx5Ys+xAHaf8ly3ckiTCehNnazOAXmsTdX41OH6XimksSvoWfc7Y57fv3FRDP/Tg1EEg8esKzT
-	CYYLnIHYufpYTToQmejJiRfikLmytd913iXJOCHujjRLGXp4ZZw2SKTllDkLrWsT/SY3JO2Fn8w+8
-	im6NKXjYC+N4FMhJEj0G5iuyL2880vFg2uyvSusi+Zr6pxGWaF5ME7fNY01bOkclCzMFTNN7VloLX
-	C8enBe99ZsKe1cbaUjNTNn3e1h/oyZe+MKT8lrF0lejGyGYYEg5UJZGJhEl03X3XcsHjyW4BkAH1r
-	37EVNP8vVrdCKoMpIyAQ==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=v8knyDiREDz4HLY8hpZNl5+RddFQWbDtRjJSBE0mI80=; b=kTGMD4K/+qF3vY
+	alEJg/aR55LnCFt5jFMypCwWufp1D/wqSkmY1nZEfU6HGbbCNComnHNUB5VH0TbYyBVl59c0uYqVP
+	7KKNvI6OR8nxj3zEKGF6v5FhGYnZ0L63SKzDbEn0mQUJPOvhIOhYbMmS2lzDV3fnJSgLdWoasHSab
+	bOiUGUqSE66htS792V6uzSHmGFPH2qK7C5ZQzSBdMBzaXiruAAcofcB6soGelE3/QFZe1p1QKdLEZ
+	cb9ANLbqI8MOaZhUbU10hsLIAMONzqoUelQUMmkOl4V9fK8d3UxtV+WWPZy4TyAZAxe8AEjX5Bm9/
+	Cy1r6vqOhrvNwEbYI1Xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vryzG-00000006imh-1XO4;
-	Mon, 16 Feb 2026 13:50:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vryzJ-00000006ioA-0nrE;
+	Mon, 16 Feb 2026 13:50:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vryzD-00000006ilN-03US;
-	Mon, 16 Feb 2026 13:50:03 +0000
+	id 1vryzD-00000006ilM-157Z;
+	Mon, 16 Feb 2026 13:50:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1F771600B0;
+	by sea.source.kernel.org (Postfix) with ESMTP id 34E2B43E73;
 	Mon, 16 Feb 2026 13:50:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id ACD1FC116C6;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E2FCDC2BC86;
 	Mon, 16 Feb 2026 13:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771249801;
-	bh=msfTh03NG07ETuEWGU73Tj/AyEz3fvIWOKO1VC6wmzE=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=YWgcmzEPxuAOSiMBIghN5Q2kSbmw7OnF9MnW7aS9NexM9ZZb/sMvPuCphE2l8TwV9
-	 j3kBvQuDCexDS5hdh9WkP+0Tx5yNkMc1qgn+K4gxu3HJWucRtbI2Lldec2aQ+Stw4r
-	 lL+coehGOfCoCOzCrSbCDdjiClU4WBqJXzBiX9yNy2YAl09hUZC1Spq6jWUzsAkbN6
-	 UhAXSYCJar4X1w+knbUvnsqal3i1Q/vhLfOWvPMfa6Vd32js8e27cTxsVnXonAEz3m
-	 pGRfoIyP3DJE02Ypfe90YG64wwTPFyYmSC94B2LP9rdMWaV6FyfcrpQwAOZ0FqQT5u
-	 iJPut3MnMi8OQ==
+	s=k20201202; t=1771249802;
+	bh=Q1h/qyky6FFnfESCLb5k3aJdZMs2M0rnG3N0gR+NtuI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=RgmjHTmKsG5jgvrk5Hjqf+NjQLoG7y10p1StS07yZiSdQhjcFtfqFSniojND6xMLQ
+	 PjQDsZeXamt9srZC8A/nHERWiEQvZLKCKXaq3jXuF7VyzFXN5bMKRFrhu10zF0JbyA
+	 5ZkB8gZ3YSKajW39zefhg1NdutBb2zmepFr1smYvHeCUYZoW4t0eiwzWxiEYeJbxNa
+	 e0927yRPCTj6mN+WKbch4IyCwRjvR6wfyDbK4H0y6KXuen0ctnm+Rih5mp3zbJtEI0
+	 xuG1dVsDuJhCe02W0i9NILeTTVM6jwFfsbsn0IEmPP5oJCxUi/XL8rT/Cbm1GoyQtW
+	 ItTcpAOCu7hQQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 962F8E81A22;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id CFA82E81A23;
 	Mon, 16 Feb 2026 13:50:01 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Subject: [PATCH 0/2] media: rockchip: rkcif: various fixes
-Date: Mon, 16 Feb 2026 14:49:55 +0100
-Message-Id: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
+Date: Mon, 16 Feb 2026 14:49:57 +0100
+Subject: [PATCH 2/2] media: rockchip: rkcif: comply with minimum number of
+ buffers requirement
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAIMgk2kC/x2LywqDQAwAf0VybmDdikV/RXrYR6xBWSVBEcR/b
- /A4w8wFSsKk0FcXCB2svBaD+lVBmkL5EXI2Bu9863zdosyJRxz5JMWYc5ff6UNNdGBHDEoYJZQ
- 02VP2ZTG5CT21meF73388YpNjcgAAAA==
+Message-Id: <20260216-rkcif-fixes-v1-2-b16db20b6d68@collabora.com>
+References: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
+In-Reply-To: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
 To: Dan Carpenter <dan.carpenter@linaro.org>, 
  Paul Elder <paul.elder@ideasonboard.com>, 
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
@@ -66,16 +66,19 @@ Cc: Collabora Kernel Team <kernel@collabora.com>, stable@kernel.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1771249800; l=962;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1771249800; l=2607;
  i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=msfTh03NG07ETuEWGU73Tj/AyEz3fvIWOKO1VC6wmzE=;
- b=EzemGU4WwwrerpyJyqtpwSkZEMGm+gNFMXztnVatpUldXQTDeZsDGZ8MxfWnBm7/R1bLPh0hI
- h8+KZIwF77YAolHH+0o2kfeiOq61M+Yi/24IZffM9j2nE7HAw/rB8pd
+ bh=0nRPaVD70VE4M5NIdqK3Pzeq8YDn4uwgLWyViuJm8KU=;
+ b=PaJdJYi6MOVQOq+Mixf3SunaFC7vawj7W5FBzXafHeZ23AACayRw4D3n7m1b0c8PsgOgrB4Pp
+ nTkIZhDVb6oBfS4slcjeb076DEEEkqVTUe+Lsx2lWilt0/nxjLXSxCs
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
  with auth_id=371
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260216_055003_346517_B26D50F7 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,37 +96,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Habidere,
+From: Michael Riesch <michael.riesch@collabora.com>
 
-This series contains
+Each stream requires CIF_REQ_BUFS_MIN=1 buffers to enable streaming.
+However, it failed with only one buffer provided.
 
- 1) a re-spin of Dan's patch that fixes some more stupid off-by-one issues.
-    This patch has been around on the list for some time, but apparently
-    has not been applied yet.
- 2) a fix that makes the DMA abstraction respect the minimum number of
-    buffers requirement
+Comply with the minimum number of buffers requirement and accept
+exactly one buffer.
 
-Best regards,
-Michael
-
+Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
+Cc: stable@kernel.org
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
-Dan Carpenter (1):
-      media: rockchip: rkcif: fix off by one bugs
-
-Michael Riesch (1):
-      media: rockchip: rkcif: comply with minimum number of buffers requirement
-
- .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 10 +++---
  .../media/platform/rockchip/rkcif/rkcif-stream.c   | 41 +++++++++++-----------
- 2 files changed, 26 insertions(+), 25 deletions(-)
----
-base-commit: c824345288d11e269ce41b36c105715bc2286050
-change-id: 20260216-rkcif-fixes-bdd9d3c7e4b0
+ 1 file changed, 21 insertions(+), 20 deletions(-)
 
-Best regards,
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+index e00010a91e8b..5a5ab9e7e86e 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+@@ -106,19 +106,6 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
+ {
+ 	struct v4l2_pix_format_mplane *pix = &stream->pix;
+ 
+-	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
+-	if (!stream->buffers[0])
+-		goto err_buff_0;
+-
+-	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
+-	if (!stream->buffers[1])
+-		goto err_buff_1;
+-
+-	if (stream->queue_buffer) {
+-		stream->queue_buffer(stream, 0);
+-		stream->queue_buffer(stream, 1);
+-	}
+-
+ 	stream->dummy.size = pix->num_planes * pix->plane_fmt[0].sizeimage;
+ 	stream->dummy.vaddr =
+ 		dma_alloc_attrs(stream->rkcif->dev, stream->dummy.size,
+@@ -132,16 +119,30 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
+ 			stream->dummy.buffer.buff_addr[i - 1] +
+ 			pix->plane_fmt[i - 1].bytesperline * pix->height;
+ 
+-	return 0;
++	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
++	if (!stream->buffers[0])
++		goto err_buff_0;
+ 
+-err_dummy:
+-	rkcif_stream_return_buffer(stream->buffers[1], VB2_BUF_STATE_QUEUED);
+-	stream->buffers[1] = NULL;
++	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
++	if (!stream->buffers[1]) {
++		stream->buffers[stream->frame_phase] = &stream->dummy.buffer;
++		stream->buffers[stream->frame_phase]->is_dummy = true;
++	}
++
++	if (stream->queue_buffer) {
++		stream->queue_buffer(stream, 0);
++		stream->queue_buffer(stream, 1);
++	}
++
++	return 0;
+ 
+-err_buff_1:
+-	rkcif_stream_return_buffer(stream->buffers[0], VB2_BUF_STATE_QUEUED);
+-	stream->buffers[0] = NULL;
+ err_buff_0:
++	dma_free_attrs(stream->rkcif->dev, stream->dummy.size,
++		       stream->dummy.vaddr,
++		       stream->dummy.buffer.buff_addr[0],
++		       DMA_ATTR_NO_KERNEL_MAPPING);
++	stream->dummy.vaddr = NULL;
++err_dummy:
+ 	return -EINVAL;
+ }
+ 
+
 -- 
-Michael Riesch <michael.riesch@collabora.com>
+2.39.5
 
 
 
