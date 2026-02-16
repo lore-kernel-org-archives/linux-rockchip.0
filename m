@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED8E9E63F2A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 04:45:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BAA6E63F38
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 08:12:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lwI5PTuA3NowGEpWXI5ZMRNigmZRo0Sh8/pkKtKonHI=; b=YzDvkL5DnpTYWP
-	xjnFvOGY+MNBaQi52R4p1bGRVFXT4d7I2GeHbG0ox3A4ETHlI5drXz9k/Mb7ZlqQThEhI0Cp37M3v
-	rGtnbd5VXUouDguEIq3BrshiRCqP4iKxtyrzrsukXpKSOXlNV9ESwHuELXNfB4e3NwXpbRdeYwN9D
-	pvVRXRfSjq1KBFkn6C0MJerZ8Dnveod5TPTdcXtfRF6hByiRFSTLz3SVOe7BckPV7BpE8OJbc+iaP
-	pCK4gEINllKeDBBH4HwKh9EBZG1pTVgikBtGDdN/beTS/FpYE3n0Rv3Mt1chULtwIb+Wwa4yk6Imi
-	hdD2ktfz8Uh9OYl4FfIw==;
+	List-Owner; bh=Vp9o1H/FH7NooW1+SQ61j0RrPOE6fBirPIhkM0CyBYQ=; b=h6kBfBBUiK7H47
+	m/0qNWSWEjFi3P/XUgH/2YpwDn9aFnmRomf6VzE2amrL6aNmVmi04y0SDV64/5AHV5SPQbAvWfu7Y
+	nzBhD5jzgYKD15c2hopY8AKyD13rGogCTfZB+FJHlyX9bEFl7GMDpK/sS/nWATuN3gqxBYJbJqPbx
+	viyByJfOD5KQlwqPhI/JtOPSixcGULCq+qNRwQJww6/2ErailjarUyUohaQyfE7TLkdzAQDfJV7Gq
+	tSAUlrlLo/HiZ6PASfh837wToJOqHnzvhgOd0u16qz9Fiag5waS37R2fpkx/BiqqDFW3VI3v+cwIe
+	Jb6Us5eBqSNGTJiL8icw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrqTo-00000005xQc-3zWN;
-	Mon, 16 Feb 2026 04:45:04 +0000
-Received: from sender4-op-o15.zoho.com ([136.143.188.15])
+	id 1vrtiC-000000067Ro-2isk;
+	Mon, 16 Feb 2026 08:12:08 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrqTm-00000005xQD-2BVz;
-	Mon, 16 Feb 2026 04:45:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1771217081; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=B7wCwXOO1D7g0K+7R5ASkP5b3rvxhtu5zZxL8YqVpQFt1/JZ0OGfTEvtEhSvZ1aG9kzbcuyqRKjnrFiKzDTa1D6As2i02L5aF3EGxVt4I9o78gOelgMF8pM6sBw+iyy8hJiZq6gYg1rV20YRQVOBiKThhEWsQIDzQegXKAbQSMY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1771217081; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=mlee/apZf5PJS46oj3LoJC3aGU8uMTOOND+HuontO9M=; 
-	b=dplu+3QZvL7/81pGX2ryCEfkAGq6mlrKFOaZeiFG//OurBZ8Uqc5PGxtrF7/HlodlIydn7QFlPrXT/SvAmP6M5rsqw62Qw2FGcZSvtxzaA5bHjIiEUsle5GGq5B9lXnACv666S9z3iBNE/mp6hEijEQTvFglYPkiAo898Hw24VA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=ziyao.cc;
-	spf=pass  smtp.mailfrom=me@ziyao.cc;
-	dmarc=pass header.from=<me@ziyao.cc>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771217081;
-	s=zmail; d=ziyao.cc; i=me@ziyao.cc;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=mlee/apZf5PJS46oj3LoJC3aGU8uMTOOND+HuontO9M=;
-	b=bjyVvXSlGZiyFG6yYoHm9AktJOZNCeprYLUxXM/NS63tlxpFiaDSAVLC5FMVjqVB
-	YeHyDUJPkr+EIwpzIhvu1Gs/0dwaYQMJZ6UJI6UErZdBEkgTxZ7ER9u6McAe5Eyz6ws
-	/tGSrhTmCseqKZbrvvx7+WAmQxNMrSBxn2Xy4Gko=
-Received: by mx.zohomail.com with SMTPS id 1771217079900392.5437106229082;
-	Sun, 15 Feb 2026 20:44:39 -0800 (PST)
-Date: Mon, 16 Feb 2026 04:44:27 +0000
-From: Yao Zi <me@ziyao.cc>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>
-Cc: Heiko Stuebner <heiko@sntech.de>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, netdev@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
-Subject: Re: Problematic understanding of phy-mode in Rockchip DWMAC driver
-Message-ID: <aZKgq0-aptu-PnsB@pie>
-References: <aY9s5PXP4zZ7R6fa@pie>
- <aY9xsslT56D9LGLe@shell.armlinux.org.uk>
+	id 1vrti8-000000067Qs-3K0b;
+	Mon, 16 Feb 2026 08:12:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771229518;
+	bh=3HYqKGUDU9JGeXZAcBF46can3OoH/CCNNOhHTr/xDHE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=SqF8Smib7nHdDc32RttjOuPwKqz4BLw1OCQwXYrdq2AGpmvo/C6HNk6IK7MGvcm+m
+	 jydz1JyhssE5o8cEMkUzIBCdHluxaCRisFF5xIHoy3gQjgvD0U1UJPJ5FRTtni62lD
+	 x+2CJO0rMWo42vedhE9z9llD9GcDuFVBmx21BtfVXWeM3zGo9/fLeBl+Y4I3IxX792
+	 ZL2XFXFDbM5ELc/7kax9yJ4eGvyVQT4ApOl55AYMaIE41N79vT86tP8lDhLmLbMj/h
+	 3rCoyOw/T5z8khP+MJEWr2kHWpLcvskOzKSmV68HvMXCt+MWp43r8XucmgwPXhEEe8
+	 cwed7IEOhWRJw==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8A80217E1406;
+	Mon, 16 Feb 2026 09:11:57 +0100 (CET)
+Message-ID: <eef04746-00cf-4971-8e65-37a2a3e60672@collabora.com>
+Date: Mon, 16 Feb 2026 09:11:56 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <aY9xsslT56D9LGLe@shell.armlinux.org.uk>
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/6] media: synopsys: csi2rx: Use enum and u32 array
+ for register offsets
+To: Frank Li <Frank.Li@nxp.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, imx@lists.linux.dev
+References: <20260213-imx93-dw-csi2-v2-0-8be6039f44c6@nxp.com>
+ <20260213-imx93-dw-csi2-v2-4-8be6039f44c6@nxp.com>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <20260213-imx93-dw-csi2-v2-4-8be6039f44c6@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260215_204502_607208_58D1D399 
-X-CRM114-Status: GOOD (  15.75  )
+X-CRM114-CacheID: sfid-20260216_001205_211354_7B374296 
+X-CRM114-Status: GOOD (  31.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,32 +81,240 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 13, 2026 at 06:47:14PM +0000, Russell King (Oracle) wrote:
-> On Fri, Feb 13, 2026 at 06:26:44PM +0000, Yao Zi wrote:
-> > Hi folks,
-> > 
-> > I was looking through the RGMII delay setup logic found in
-> > rk_gmac_powerup() of dwmac-rk.c, and found its behavior is strange,
+Hi Frank,
+
+Thanks for the update.
+
+Some minor nitpicks, but it already looks good.
+
+On 2/13/26 21:25, Frank Li wrote:
+> Use enum dw_mipi_csi2rx_regs_index together with a u32 array to describe
+> register offsets. This allows supporting new IP versions with different
+> register layouts in a structured way.
 > 
-> dwmac-rk is very broken and is unfixable thanks to Rockchip not
-> understanding the RGMII interface modes used by the kernel.
+> Add rk3568_regs matching the previous macro definitions and pass it as
+> driver data during probe.
 > 
-> It is what it is, we can't change it without causing regressions.
-> Please do not try to fix it.
+> No functional change intended.
+> 
+> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> ---
+> change in v2
+> - change to use enum and u32 array method
+> - use order
+>  - #includes
+>  - #defines
+>  - enum and struct definitions
+>  - the rest
+> ---
+>  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 91 ++++++++++++++++++++----
+>  1 file changed, 78 insertions(+), 13 deletions(-)
+> 
+> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> index a6d251ca5ad14c5138a6fd0202a970460e64c68f..b00ae5fb328da4cc78fe36b629d6661d438e124a 100644
+> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> @@ -24,15 +24,6 @@
+>  #include <media/v4l2-mc.h>
+>  #include <media/v4l2-subdev.h>
+>  
+> -#define DW_MIPI_CSI2RX_N_LANES		0x04
+> -#define DW_MIPI_CSI2RX_RESETN		0x10
+> -#define DW_MIPI_CSI2RX_PHY_STATE	0x14
+> -#define DW_MIPI_CSI2RX_ERR1		0x20
+> -#define DW_MIPI_CSI2RX_ERR2		0x24
+> -#define DW_MIPI_CSI2RX_MSK1		0x28
+> -#define DW_MIPI_CSI2RX_MSK2		0x2c
+> -#define DW_MIPI_CSI2RX_CONTROL		0x40
+> -
+>  #define SW_CPHY_EN(x)		((x) << 0)
+>  #define SW_DSI_EN(x)		((x) << 4)
+>  #define SW_DATATYPE_FS(x)	((x) << 8)
+> @@ -40,12 +31,33 @@
+>  #define SW_DATATYPE_LS(x)	((x) << 20)
+>  #define SW_DATATYPE_LE(x)	((x) << 26)
+>  
+> +/* Help check wrong access unexisted register at difference IP version */
 
-Thanks for confirming. I understand concerns about regressions and
-agree keeping the driver/dts as-is is better.
+Maybe
 
-However, should we mention the difference between "phy-mode" defined
-ethernet-controller.yaml and "phy-mode" understood by dwmac-rk
-driver in rockchip-dwmac.yaml to avoid confusion in the future?
+/* helper for checking whether register exists */
 
-Regards,
-Yao Zi
+? However, I think the naming speaks for itself and you can leave the
+comment away.
 
-> -- 
-> RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-> FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+> +#define DW_REG_EXIST		BIT(31)
+> +#define DW_REG(x)		(DW_REG_EXIST | (x))
+> +
+> +enum dw_mipi_csi2rx_regs_index {
+> +	DW_MIPI_CSI2RX_N_LANES,
+> +	DW_MIPI_CSI2RX_RESETN,
+> +	DW_MIPI_CSI2RX_PHY_STATE,
+> +	DW_MIPI_CSI2RX_ERR1,
+> +	DW_MIPI_CSI2RX_ERR2,
+> +	DW_MIPI_CSI2RX_MSK1,
+> +	DW_MIPI_CSI2RX_MSK2,
+> +	DW_MIPI_CSI2RX_CONTROL,
+> +
+> +	DW_MIPI_CSI2RX_MAX,
+> +};
+> +
+>  enum {
+>  	DW_MIPI_CSI2RX_PAD_SINK,
+>  	DW_MIPI_CSI2RX_PAD_SRC,
+>  	DW_MIPI_CSI2RX_PAD_MAX,
+>  };
+>  
+> +struct dw_mipi_csi2rx_drvdata {
+> +	const u32 *regs;
+> +};
+> +
+>  struct dw_mipi_csi2rx_format {
+>  	u32 code;
+>  	u8 depth;
+> @@ -72,6 +84,23 @@ struct dw_mipi_csi2rx_device {
+>  
+>  	enum v4l2_mbus_type bus_type;
+>  	u32 lanes_num;
+> +
+> +	const struct dw_mipi_csi2rx_drvdata *drvdata;
+> +};
+> +
+> +static const u32 rk3568_regs[DW_MIPI_CSI2RX_MAX] = {
+> +	[DW_MIPI_CSI2RX_N_LANES] = DW_REG(0x4),
+> +	[DW_MIPI_CSI2RX_RESETN] = DW_REG(0x10),
+> +	[DW_MIPI_CSI2RX_PHY_STATE] = DW_REG(0x14),
+> +	[DW_MIPI_CSI2RX_ERR1] = DW_REG(0x20),
+> +	[DW_MIPI_CSI2RX_ERR2] = DW_REG(0x24),
+> +	[DW_MIPI_CSI2RX_MSK1] = DW_REG(0x28),
+> +	[DW_MIPI_CSI2RX_MSK2] = DW_REG(0x2c),
+> +	[DW_MIPI_CSI2RX_CONTROL] = DW_REG(0x40),
+> +};
+> +
+> +static const struct dw_mipi_csi2rx_drvdata rk3568_drvdata = {
+> +	.regs = rk3568_regs,
+>  };
+>  
+>  static const struct v4l2_mbus_framefmt default_format = {
+> @@ -186,16 +215,46 @@ static inline struct dw_mipi_csi2rx_device *to_csi2(struct v4l2_subdev *sd)
+>  	return container_of(sd, struct dw_mipi_csi2rx_device, sd);
+>  }
+>  
+> +static bool dw_mipi_csi2rx_is_exist(struct dw_mipi_csi2rx_device *csi2,
+
+Sounds a bit weird to me, maybe "dw_mipi_csi2rx_has_reg(ister)" or
+"dw_mipi_csi2rx_reg(ister)_exists?
+
+> +				    enum dw_mipi_csi2rx_regs_index index)
+> +{
+> +	if (index < DW_MIPI_CSI2RX_MAX &&
+> +	    (csi2->drvdata->regs[index] & DW_REG_EXIST))
+> +		return true;
+> +
+> +	return false;
+> +}
+> +
+> +static void __iomem *
+> +dw_mipi_csi2rx_get_regaddr(struct dw_mipi_csi2rx_device *csi2,
+> +			   enum dw_mipi_csi2rx_regs_index index)
+> +{
+> +	u32 off = (~DW_REG_EXIST) & csi2->drvdata->regs[index];
+> +
+> +	return csi2->base_addr + off;
+> +}
+> +
+>  static inline void dw_mipi_csi2rx_write(struct dw_mipi_csi2rx_device *csi2,
+> -					unsigned int addr, u32 val)
+> +					enum dw_mipi_csi2rx_regs_index index,
+> +					u32 val)
+>  {
+> -	writel(val, csi2->base_addr + addr);
+> +	if (dw_mipi_csi2rx_is_exist(csi2, index))
+> +		writel(val, dw_mipi_csi2rx_get_regaddr(csi2, index));
+> +
+> +	dev_err_once(csi2->dev,
+> +		     "write to non-existent register index: %d\n", index);
+
+Not sure about to control flow here, as the error message is shown in
+any case. Do you mean
+
+{
+	if (!dw_mipi_csi2rx_is_exist(csi2, index)) {
+		dev_err_once(csi2->dev,
+			"write to non-existent register index: %d\n",
+			index);
+		return;
+	}
+
+	writel(val, dw_mipi_csi2rx_get_regaddr(csi2, index));
+}
+
+?
+
+>  }
+>  
+>  static inline u32 dw_mipi_csi2rx_read(struct dw_mipi_csi2rx_device *csi2,
+> -				      unsigned int addr)
+> +				      enum dw_mipi_csi2rx_regs_index index)
+>  {
+> -	return readl(csi2->base_addr + addr);
+> +	if (dw_mipi_csi2rx_is_exist(csi2, index))
+> +		return readl(dw_mipi_csi2rx_get_regaddr(csi2, index));
+
+Here it seems to be correct, but personally I'd prefer
+
+{
+	if (!dw_mipi_csi2rx_is_exist(csi2, index)) {
+		// print error
+		return 0;
+	}
+
+	return readl(...);
+}
+Anyway, it should match the write method.
+
+> +
+> +	dev_err_once(csi2->dev,
+> +		     "read non-existent register index: %d\n", index);
+> +	/* Return 0 for unexisted registers */
+
+/* return 0 for non-existent registers */
+
+or leave away altogether.
+
+> +	return 0;
+>  }
+>  
+>  static const struct dw_mipi_csi2rx_format *
+> @@ -631,6 +690,7 @@ static void dw_mipi_csi2rx_unregister(struct dw_mipi_csi2rx_device *csi2)
+>  static const struct of_device_id dw_mipi_csi2rx_of_match[] = {
+>  	{
+>  		.compatible = "rockchip,rk3568-mipi-csi2",
+> +		.data = &rk3568_drvdata,
+>  	},
+>  	{}
+>  };
+> @@ -652,6 +712,11 @@ static int dw_mipi_csi2rx_probe(struct platform_device *pdev)
+>  	if (IS_ERR(csi2->base_addr))
+>  		return PTR_ERR(csi2->base_addr);
+>  
+> +	csi2->drvdata = device_get_match_data(dev);
+> +	if (!csi2->drvdata)
+> +		return dev_err_probe(dev, -EINVAL,
+> +				     "failed to get driver data\n");
+> +
+>  	ret = devm_clk_bulk_get_all(dev, &csi2->clks);
+>  	if (ret < 0)
+>  		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
+> 
+
+With the comments above addressed,
+
+Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
+
+Best regards,
+Michael
+
 
 _______________________________________________
 Linux-rockchip mailing list
