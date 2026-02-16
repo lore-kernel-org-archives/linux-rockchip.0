@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E119E81A3A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 15:22:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F8D6E81A3B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 15:30:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:Subject:From:References:Cc:To:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dUzauhDOZLY2X+4Kk2qq7mkrDrljGhPGuYvpfrs6+MI=; b=scfTCImsmmJScX
-	DPwuQer9ZxVRuGkzkjGQULmmuslz69oULQNz5UA3xfTzVYmb4l1oKIgrBoxhUA940/uxHXM7/pr41
-	1WeHGf5kLAokR9f6BFG5x8lvD7WhWKkunXIGxdIcuSBaOz4QdV3VRkwUAwo+/XD6DBhGQw/CLDV52
-	EHZw5RLUGqfZRphK5Ub8ANzO4FoZRPCzKH0D1rSkz2bKFZA82V2N9hsfygJxUdOjsHS73XdtyG/ej
-	sam5jaVJsLOD89QXh0fWddE+IkOadZL4k6DK7LHfqWKqD38s3SLfJkELcWeMcq8MvS2RGbjIjIhnM
-	5Zdrz0jfe2PkP9GfEXyA==;
+	List-Owner; bh=fCOK5YCpIzNEcvxE+LsfLDqkAfyZ506lMIzxhSw71qE=; b=KJEh3oS6ACrm0C
+	5KzWz/7kPvj8p8S4Ny3tGsdczb9aPgXe4pzwDzL984uzS35qM+2h14TGqeYOh5qZ3LLcPn+yHZ2Pe
+	WSlFWICSMUkJ9lPbmcuvYpblY+OJrBv9B4g61VcUopAMZNyDnfKB+03C+TWQhn8rtyd5yvS7KAQQH
+	MW4BNw3TGE/7LPsO3dRIRsgVhcsWDpKs8lZCAsCbkWsZF6ygha+onwR+jrj75FPTuKkKNx3Yzh68V
+	xIltmp3PeZs1uGHbCvFgwtQxW4s8o4ftB64x+V3mYUq2pTBrdmHKw3sMhyOsx+hYIjZFR8Ol6ug28
+	Uy0wh9vt/q6sHUhob7ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0QY-00000006shg-1XN4;
-	Mon, 16 Feb 2026 15:22:22 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vs0Yh-00000006u54-2ycL;
+	Mon, 16 Feb 2026 15:30:47 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0QV-00000006sfR-01Zb;
-	Mon, 16 Feb 2026 15:22:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771255334;
-	bh=rO5pvMpoFmL8Fx9NoSnLv4h+94kVFJV6QpMLCSMKBYY=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=VGp0ddLiK3M75iH7slbP42Pf/2drvgeo7I2GaYWx/+Myyou9z+e7TCwWnvR7CzAGf
-	 EY51OJSso1SO642glioZJgYN+GTdR4PtW+OvdpHVPJecniKapCxvtZRDSYbS/RJLLU
-	 WZmPL0Wx37NdMhvuN0EU17NMgPGG0DypPlvmZtQSP3FI6q4EUVvjwfinuOvE3MLpSV
-	 5eLPr6my7g1iyVfEeuTmtgH+9hVOOFGLQREN+6S21DwbVGbjKQZ0R5B9J3FGZB67yM
-	 S76+lNXDz2EGmNuGCdt1yWO1C7zFamE414YxxtoMy0ySguT8eQjunWNWALdtQCCdHh
-	 MVfgifyFu4OYQ==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DADEB17E01E7;
-	Mon, 16 Feb 2026 16:22:13 +0100 (CET)
-Message-ID: <e06feb9d-47cd-40e6-8c43-b24ff8a3e800@collabora.com>
-Date: Mon, 16 Feb 2026 16:22:13 +0100
+	id 1vs0Yf-00000006u4J-1ok1;
+	Mon, 16 Feb 2026 15:30:46 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1771255838; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=TvcWoI1Uy75QsBx2SWl+GJ7QfpFv3dQVyYATezKi9ECZSn1FJE8BRIbEjrm2sye70WTW3Cj08vlCoUgdiugN4I9V144gbgxWRkC1KGP9lX629DEkHxAn0//ryMSghYVshYKeiBedDzZxt3o+uCzJ9AEBb3EWfUJSFPgbyNuw1N8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1771255838; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=xTKzSo0m4MUPpEAgib4DKtRAuR0nDfthFRJAVbg5eIQ=; 
+	b=g5+0CSpTrkqKwti0l+aGUjKhbJI44WlzDyAlYW4koe+v4TyIVlBoGGD8DjBQYzXAW/7Wyn86wiFxpNnvz6OFfgid6zaGrNqbxGO+UJHTO0qpMakyqLnkpmNJPYuDhUgnOZ5SvFvywcHeeNWnH/lslrl50k86J/hKRHkq8jycfJM=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=benjamin.gaignard@collabora.com;
+	dmarc=pass header.from=<benjamin.gaignard@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771255838;
+	s=zohomail; d=collabora.com; i=benjamin.gaignard@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:To:To:Cc:Cc:References:From:From:Subject:Subject:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=xTKzSo0m4MUPpEAgib4DKtRAuR0nDfthFRJAVbg5eIQ=;
+	b=ajPNtAFwzTNbO+oplWBn2oy1PNrd4ALkhk/OBecJl3vOoEQ8oCF604lbpUNrpoTB
+	OkjCsG4jP4STtkPOYROnFWVvu4KKVV8wSOvzU0DHzKnLLnuPDxHgDKB2vUhj+LW2VTf
+	DdQxj3Qu30YOV1l5grp3w7bkOsxymvq34uZBg3tk=
+Received: by mx.zohomail.com with SMTPS id 1771255836497792.8581418577553;
+	Mon, 16 Feb 2026 07:30:36 -0800 (PST)
+Message-ID: <16e32780-07bb-42c9-a5c8-aa61f2366efa@collabora.com>
+Date: Mon, 16 Feb 2026 16:30:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/6] media: dt-bindings: add NXP i.MX93 compatible
- string
-From: Michael Riesch <michael.riesch@collabora.com>
-To: Frank Li <Frank.Li@nxp.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, imx@lists.linux.dev,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-References: <20260213-imx93-dw-csi2-v2-0-8be6039f44c6@nxp.com>
- <20260213-imx93-dw-csi2-v2-5-8be6039f44c6@nxp.com>
- <50a82e17-1666-4ef6-ab6e-c0be3c780a0d@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, joro@8bytes.org, will@kernel.org,
+ robin.murphy@arm.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, heiko@sntech.de, nicolas.dufresne@collabora.com,
+ p.zabel@pengutronix.de, mchehab@kernel.org
+Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
+References: <20260216095144.107356-1-benjamin.gaignard@collabora.com>
+ <20260216095144.107356-7-benjamin.gaignard@collabora.com>
+ <07b62f39-d27b-4439-a60e-42fd47f49b13@kernel.org>
 Content-Language: en-US
-In-Reply-To: <50a82e17-1666-4ef6-ab6e-c0be3c780a0d@collabora.com>
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Subject: Re: [PATCH v13 6/6] arm64: defconfig: enable Verisilicon IOMMU for
+ Rockchip RK3588
+In-Reply-To: <07b62f39-d27b-4439-a60e-42fd47f49b13@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_072219_221299_9F5A1641 
-X-CRM114-Status: GOOD (  16.64  )
+X-CRM114-CacheID: sfid-20260216_073045_515356_70FF192E 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,147 +79,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
-
-On 2/16/26 09:31, Michael Riesch wrote:
-> Hi Frank,
-> 
-> On 2/13/26 21:25, Frank Li wrote:
->> The i.MX93 uses the DW CSI-2 RX controller, which is similar to the
->> Rockchip RK3568 implementation.
->>
->> The i.MX93 variant provides one IRQ, two clocks, and no resets. Add the
->> "fsl,imx93-mipi-csi2" compatible string and keep the same constraints for
->> rk3568.
-> 
-> RK3568.
-> 
->>
->> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> 
-> With that cosmetic fix,
-> 
-> Acked-by: Michael Riesch <michael.riesch@collabora.com>
-
-I just recalled a conversation with Heiko we had off-list a while ago,
-and back then we kind of decided against a snps binding document and
-compatible, since the integration in the respective SoC (family) varies.
-Thus, we went for a Rockchip document (which shall be extended with the
-RK3588 variant of this block, for example) and thought that any other
-variant (e.g., the one of the imx93) could be documented in a separate
-document fsl,somethingsomething.
-
-Seeing that interrupts, clocks, and resets are different, I would
-recommend that you add a new fsl,... document.
-
-What do you think?
-
-Best regards,
-Michael
-
-
-> 
-> Best regards,
-> Michael
-> 
-> 
->> ---
->>  .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 47 +++++++++++++++++++++-
->>  1 file changed, 45 insertions(+), 2 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
->> index 2c2bd87582eb8bfdd13720edd62a5f00dda958ba..4ac4a3b6f406408b9524c795e6cdeb117d3353da 100644
->> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
->> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
->> @@ -17,6 +17,7 @@ description:
->>  properties:
->>    compatible:
->>      enum:
->> +      - fsl,imx93-mipi-csi2
->>        - rockchip,rk3568-mipi-csi2
->>  
->>    reg:
->> @@ -26,14 +27,23 @@ properties:
->>      items:
->>        - description: Interrupt that signals changes in CSI2HOST_ERR1.
->>        - description: Interrupt that signals changes in CSI2HOST_ERR2.
->> +    minItems: 1
->>  
->>    interrupt-names:
->>      items:
->>        - const: err1
->>        - const: err2
->> +    minItems: 1
->>  
->>    clocks:
->> -    maxItems: 1
->> +    minItems: 1
->> +    maxItems: 2
->> +
->> +  clock-names:
->> +    items:
->> +      - const: per
->> +      - const: pixel
->> +    minItems: 1
->>  
->>    phys:
->>      maxItems: 1
->> @@ -88,10 +98,43 @@ required:
->>    - phys
->>    - ports
->>    - power-domains
->> -  - resets
->>  
->>  additionalProperties: false
->>  
->> +allOf:
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            const: rockchip,rk3568-mipi-csi2
->> +    then:
->> +      properties:
->> +        interrupts:
->> +          minItems: 2
->> +        interrupt-names:
->> +          minItems: 2
->> +        clocks:
->> +          maxItems: 1
->> +        clock-names:
->> +          maxItems: 1
->> +      required:
->> +        - resets
->> +
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            const: fsl,imx93-mipi-csi2
->> +    then:
->> +      properties:
->> +        interrupts:
->> +          maxItems: 1
->> +        interrupt-names: false
->> +        clocks:
->> +          minItems: 2
->> +        clock-names:
->> +          minItems: 2
->> +
->>  examples:
->>    - |
->>      #include <dt-bindings/clock/rk3568-cru.h>
->>
-> 
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDE2LzAyLzIwMjYgw6AgMTY6MTYsIEtyenlzenRvZiBLb3psb3dza2kgYSDDqWNyaXTCoDoK
+PiBPbiAxNi8wMi8yMDI2IDEwOjUxLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4gRW5hYmxl
+IFZlcmlzaWxpY29uIElPTU1VIHVzZWQgYnkgUm9ja2NoaXAgUkszNTg4IEFWMSBoYXJkd2FyZSBj
+b2RlYy4KPj4gVGhpcyBoYXJkd2FyZSBibG9jayBjb3VsZCBiZSBmb3VuZCBpbiBSYWR4YSBSb2Nr
+IDVCIGJvYXJkLgo+IEkgY291bGQgbm90IGZpbmQgc3VjaCBib2FyZC4gSSBldmVuIGdpdCBncmVw
+cGVkIGZvciBzb21lIHZhcmlhbnRzLi4uIEl0Cj4gc2VlbXMgeW91IGFyZSBhZGRpbmcgaXQgZWFy
+bGllciB0byBhIGtub3duIERUU0ksIHNvIGl0IHdpbGwgcmVhY2ggc29tZQo+IGJvYXJkLCBzbyB0
+aGUgcG9pbnQgaXMgdG8gdXNlIGhlcmUgUkVBTCBuYW1lIG9mIHRoZSBib2FyZCB3ZSBkbyBzdXBw
+b3J0LgoKQW55IHJrMzU1OCBiYXNlZCBib2FyZCBoYXZlIHRoaXMgaGFyZHdhcmUgYmxvY2sKYW5k
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIuZHRzIGRlc2NyaWJl
+cyBSYWR4YSBSb2NrIDVCIGJvYXJkLgoKQnV0IG1heWJlIEkgbWlzcyB1bmRlcnN0b29kIHlvdXIg
+cG9pbnQgPwoKUmVnYXJkcywKQmVuamFtaW4KCj4KPj4gU2lnbmVkLW9mZi1ieTogQmVuamFtaW4g
+R2FpZ25hcmQgPGJlbmphbWluLmdhaWduYXJkQGNvbGxhYm9yYS5jb20+Cj4+IC0tLQo+IEJlc3Qg
+cmVnYXJkcywKPiBLcnp5c3p0b2YKPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
+QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
+aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
