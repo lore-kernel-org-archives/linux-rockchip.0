@@ -4,67 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7BD9E63F3D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 09:04:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59DB6E63F3D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 09:52:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=V/Zc1/3HefK7Tgr0+Q6p79nW9IYH+HJosVmOMs6zI0M=; b=OcgUt94wjpL+zk
-	AKlCc+mf2f2ShDcFvuenzqokMYNx9txUShDckZkY1ROM3j8OLkn7aO2ZHLPBxagfGZvZt5mkj2Ni9
-	BuOyxnEQqiYE4ojlGsN9M43w+Bd0A3h7P7pkuzeZVhVrT9ZctH2G6WHm1sSGkbv1ae/LfVFLXFIur
-	SS/JotBFL3vkthI0PZDpZtxb1yV1LOFdeXYcPExAwLNEju1dE14N1v91Z4WMqTULVxHLJEtUHnSc7
-	SgHp5dIZ9Ax4f80mDw451wiMZucvgvPMyxE+d1E04YrHNDwxNxVOJxC+xEr5gsDHg3aRgYsiR8q6F
-	pX8MUL1ORwviIrb0qS6A==;
+	List-Owner; bh=ZD5YxcedcLOYWu7ldqWNPAKHwgbrqcBm7TJ5+hw4beg=; b=PvFKLzigRLoa5l
+	/a+Gnr4fZYdmsN625a6+OURCanoHv+g4KPWynS8B21NxSnEgjwYx9eF3/YxuTF7uf2TwSfNXpPlPF
+	PL5wSd4wuR7JcSU1nltFbfugH1edm305tzcaenQXcHrMdKQRZouzey9R4xAuhUKTBoJRVt2JgbwnS
+	q7JAbcaN4uIveZL239P91/6v63mfwaXzV6RaNlae649XJDcQ5RKDIdDhGjbkg+T6xjMmqhjbwp2O1
+	wHe6wFEgXFD8zcV+R4rHYjCFk+K+8YRvpkXKtZQrSH+58h/iPbigF6nOrFTqEyFN3k88P0oqWlc3L
+	LddhwDeVvop+ITfxAAEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vruWK-00000006DP2-2PYI;
-	Mon, 16 Feb 2026 09:03:56 +0000
+	id 1vrvGp-00000006Ikc-2uye;
+	Mon, 16 Feb 2026 09:51:59 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vruWH-00000006DOS-1HXF;
-	Mon, 16 Feb 2026 09:03:54 +0000
+	id 1vrvGj-00000006Ifx-3tgL;
+	Mon, 16 Feb 2026 09:51:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771232630;
-	bh=egyZNlVxOKps8c+uu05c+5nto53qJQKuDG16P33A490=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PxqPN+nj4/xel63axAnL+UABpl+Xy88tyLF+48q1YvuE0TXc+PQjjdnay1cPPdYqY
-	 XTLhup0YYmEnJtlUWYS8IweQuB16PAAGl1tR0HAhPoYEQlmU3C48xpUpt0aMa4eHNN
-	 bWYLMV9Jdf/tk56we0+mJVDhn8zMt/f1z5jMCdRCfOsU+BD1/+OtXN2uCfwZd3y52A
-	 4xiwjrNMvfiziZLcfoNDbGWbq8CpMOkhJ+wJVXejKBjiX20RYc5+T4PNkvJhKJqxLI
-	 +KRR8Kp5tchL5SO5PMhfPoRbbZwSYgdenbCxtWRqzOqUceNNjeyNhImTI6mY7LwD2A
-	 OYKJHXuvfkL6A==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	s=mail; t=1771235510;
+	bh=kzz1stJ/eG8rdi6weyOcBPC+8rDtte6uRtWAAV5e9pQ=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=kyohw4lIUiO3Vxhq7eB7WujZXVn0wRlfBIKmVfo992VdRgts8OklHX7TSAJjH/dGs
+	 OhH2BDMzdqTibs7OZQYXuq+MzFkbpWqV9Uph4PT4gOPPaMXrDXik3y6XNX1JQId2++
+	 5v6yIR9mkgPAO2wFS5aTECSWJrejsmSaVq83U108BT6v5LeRgcGezrS7JNXHTdeVjs
+	 9k6YINUMPbQQx40L10Bj7a+LUzQp+E5vdYSMdrCrGsiRjGxoqNhnQrSQJunmUAjCn8
+	 l8BiPBjZxN/SPA8g3oU88QfM/g+wdhHxx30uP9QSnEGg3id2CJDFvD37Z1wovuichm
+	 PPfQhxFqxs+dQ==
+Received: from benjamin-XPS-13-9310.. (unknown [IPv6:2a01:e0a:120:3210:f6d2:8ed9:560e:4f27])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B5D7717E137B;
-	Mon, 16 Feb 2026 10:03:49 +0100 (CET)
-Message-ID: <75abd9eb-6141-46cc-b2d7-0c4d112e2ca5@collabora.com>
-Date: Mon, 16 Feb 2026 10:03:49 +0100
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 33D3817E137B;
+	Mon, 16 Feb 2026 10:51:50 +0100 (CET)
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+To: joro@8bytes.org,
+	will@kernel.org,
+	robin.murphy@arm.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	nicolas.dufresne@collabora.com,
+	p.zabel@pengutronix.de,
+	mchehab@kernel.org
+Cc: iommu@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-media@vger.kernel.org,
+	Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v13 1/6] dt-bindings: vendor-prefixes: Add Verisilicon
+Date: Mon, 16 Feb 2026 10:51:33 +0100
+Message-ID: <20260216095144.107356-2-benjamin.gaignard@collabora.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260216095144.107356-1-benjamin.gaignard@collabora.com>
+References: <20260216095144.107356-1-benjamin.gaignard@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/6] media: synopsys: csi2rx: implement
- .get_frame_desc() callback
-To: Frank Li <Frank.Li@nxp.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, imx@lists.linux.dev
-References: <20260213-imx93-dw-csi2-v2-0-8be6039f44c6@nxp.com>
- <20260213-imx93-dw-csi2-v2-3-8be6039f44c6@nxp.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260213-imx93-dw-csi2-v2-3-8be6039f44c6@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_010353_557611_BDE614C9 
-X-CRM114-Status: GOOD (  18.70  )
+X-CRM114-CacheID: sfid-20260216_015154_171429_E1B36631 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,83 +89,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
+Verisilicon Microelectronics is a company based in Shanghai, China,
+developping hardware blocks for SoC.
 
-On 2/13/26 21:25, Frank Li wrote:
-> Implement the .get_frame_desc() callback to fetch information from the
-> remote endpoint.
-> 
-> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> ---
-> change in v2
-> - add csi2rx in subject
-> ---
->  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 25 ++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
-> 
-> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> index f03fe01280013bf9a832433c6b06dab691bf8f4c..a6d251ca5ad14c5138a6fd0202a970460e64c68f 100644
-> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> @@ -68,6 +68,8 @@ struct dw_mipi_csi2rx_device {
->  	struct v4l2_async_notifier notifier;
->  	struct v4l2_subdev sd;
->  
-> +	struct v4l2_subdev *remote_source;
-> +
->  	enum v4l2_mbus_type bus_type;
->  	u32 lanes_num;
->  };
-> @@ -429,10 +431,31 @@ static int dw_mipi_csi2rx_disable_streams(struct v4l2_subdev *sd,
->  	return ret;
->  }
->  
-> +static int
-> +dw_mipi_csi2rx_get_frame_desc(struct v4l2_subdev *sd, unsigned int pad,
-> +			      struct v4l2_mbus_frame_desc *fd)
-> +{
-> +	struct dw_mipi_csi2rx_device *csi2 = to_csi2(sd);
-> +	struct media_pad *remote_pad;
-> +
-> +	if (!csi2->remote_source)
-> +		return -ENODEV;
-> +
-> +	remote_pad = media_pad_remote_pad_unique(&csi2->pads[DW_MIPI_CSI2RX_PAD_SINK]);
-> +	if (IS_ERR(remote_pad)) {
-> +		dev_err(csi2->dev, "can't get source pad of %s (%pe)\n",
-> +			csi2->remote_source->name, remote_pad);
-> +		return PTR_ERR(remote_pad);
-> +	}
+https://verisilicon.com/
 
-You can get the remote subdevice with
-	remote_sd = media_entity_to_v4l2_subdev(remote_pad->entity);
-instead of storing it in the device data.
+Add their name to the list of vendors.
 
-Best regards,
-Michael
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-> +	return v4l2_subdev_call(csi2->remote_source, pad, get_frame_desc,
-> +				remote_pad->index, fd);
-> +}
-> +
->  static const struct v4l2_subdev_pad_ops dw_mipi_csi2rx_pad_ops = {
->  	.enum_mbus_code = dw_mipi_csi2rx_enum_mbus_code,
->  	.get_fmt = v4l2_subdev_get_fmt,
->  	.set_fmt = dw_mipi_csi2rx_set_fmt,
-> +	.get_frame_desc = dw_mipi_csi2rx_get_frame_desc,
->  	.set_routing = dw_mipi_csi2rx_set_routing,
->  	.enable_streams = dw_mipi_csi2rx_enable_streams,
->  	.disable_streams = dw_mipi_csi2rx_disable_streams,
-> @@ -485,6 +508,8 @@ static int dw_mipi_csi2rx_notifier_bound(struct v4l2_async_notifier *notifier,
->  		return ret;
->  	}
->  
-> +	csi2->remote_source = sd;
-> +
->  	return 0;
->  }
->  
-> 
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index c7591b2aec2a..ce5c413948b1 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -1745,6 +1745,8 @@ patternProperties:
+     description: Variscite Ltd.
+   "^vdl,.*":
+     description: Van der Laan b.v.
++  "^verisilicon,.*":
++    description: VeriSilicon Microelectronics
+   "^vertexcom,.*":
+     description: Vertexcom Technologies, Inc.
+   "^via,.*":
+-- 
+2.43.0
 
 
 _______________________________________________
