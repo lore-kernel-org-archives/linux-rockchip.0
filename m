@@ -4,66 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA272E63F15
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 17:21:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D17C6E81A5D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 17:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:Subject:Cc:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l5SeW/DlUojxsq0aTwwRf73mq9hdc+FHfGO14aZUO1U=; b=sKcZwHzbPjw8DL
-	euklboswenP4mLjhzwsHYiWcasa2Z/k3WDGUfoX/al1vd3+QrOcFjuLnrs/rXUL3kzf3fgRnxZXB8
-	GMMxfShTeG2OltKI796jxEGed9IrqHk6yH8Ug+sLre7Dw06LXvtS/6kFaQ0Upph8xaFu8jND6oEJO
-	LGgQKYlKdOBjPh8wQ3aWtEmtNSPrZzKZgzy5Sx4li0gDskiloeSVQodnjTBHGKld4N4+ZUyQh8sza
-	OSdghI2Z0UjJFhEBTVRcXxse9VppsWTx6WL71SZwGC33dWn2j6/+rObAxBHEuVgDl2jk8Jo3S35J/
-	yG9tZl24RU4rRsRJiMUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DgicqXsB+prwnebVgZ/oiosRTFWcY7+VZ98dJSmeg5A=; b=j/ByOVJsAtjNalq6ZE2nWA9lef
+	WDxAWbyZQc51+M52FEkxGiNS0LkRHoedqelRsXGRaj8q0ZbEWLF5ILZDgpTWJ/sBOcep67MqoGBag
+	yUSFdLTa+/hHUVV/d+D/bhngzk3TKGcb5F7hiKYLVuDYorF87YGRw3CaLcJ2UDwnzf7GQ3TR5rXvD
+	5KP8jgYv+zxxNBfXunWGCVO1CDsDagjid7duIyvpkMHj6vlK7FPv/90lFlwT4WPQwh/N6w/vGSaBp
+	qLOo9zcNmqKUUAnsBAfASaPZKF0L1CoAykeRhd8drMo9Ne3kXy6DKtiThTIPwKVkvFCzcgFvbLqvU
+	TG3i/dPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs2Hl-000000075hC-1P2p;
-	Mon, 16 Feb 2026 17:21:25 +0000
-Received: from out-173.mta0.migadu.com ([91.218.175.173])
+	id 1vs2h8-000000076sC-2Kts;
+	Mon, 16 Feb 2026 17:47:38 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs2Hh-000000075g9-3D6p;
-	Mon, 16 Feb 2026 17:21:23 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1771262476;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=bT2fiqRkjI9axK4fJtClgUV/TJc6YLz7YhqPHByH0kk=;
-	b=cjOgiwYl2zixY+bjimSYCRXIK8VH45q1zpZ1bCPWBn6AL3obFgYyxLF/iACRf63TTAktFJ
-	AEPwW/vgIDKy/zZwcOJ8dAr9pFBaV7VzA5IMFMD02K3WfN2dAHj8VDBdyzAVYBwdwFv896
-	xbeNmH0OqheYp6HHoLu25WAtADiCWSZOj/ajeIZyJt4H85EYm1UzPuGfk6pe+Bl+TcSk/t
-	h1JmbrHDLXfjIeoKWwFmhoJmcf/yF7TtQCAdk4+u5+joiz80eZ1Qnm2FmwfVcVHRpPALy6
-	R06ZFyGXSo09DlUZpFifiVeEfgTcum63vNhsQldwCRxfARIGMEDAncFyEq5m8Q==
-Date: Mon, 16 Feb 2026 18:21:13 +0100
-Message-Id: <DGGK56T574F0.TJSLQL9P1SM@cknow-tech.com>
-To: "Russell King (Oracle)" <linux@armlinux.org.uk>, "Andrew Lunn"
- <andrew@lunn.ch>
-Cc: "Yao Zi" <me@ziyao.cc>, "Heiko Stuebner" <heiko@sntech.de>, "Heiner
- Kallweit" <hkallweit1@gmail.com>, "David S. Miller" <davem@davemloft.net>,
- "Eric Dumazet" <edumazet@google.com>, "Jakub Kicinski" <kuba@kernel.org>,
- "Paolo Abeni" <pabeni@redhat.com>, "Rob Herring" <robh@kernel.org>,
- "Krzysztof Kozlowski" <krzk+dt@kernel.org>, "Conor Dooley"
- <conor+dt@kernel.org>, <netdev@vger.kernel.org>,
- <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <devicetree@vger.kernel.org>
-Subject: Re: Problematic understanding of phy-mode in Rockchip DWMAC driver
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-References: <aY9s5PXP4zZ7R6fa@pie> <aY9xsslT56D9LGLe@shell.armlinux.org.uk>
- <f1e047e1-3f1c-4562-ab43-af2fe358fe04@lunn.ch>
- <aZDGsJNLZIty0242@shell.armlinux.org.uk>
- <a4aebacc-c273-4e42-97ff-0cdd88d771dd@lunn.ch>
- <aZMxKdkl2Qa7e1WU@shell.armlinux.org.uk>
-In-Reply-To: <aZMxKdkl2Qa7e1WU@shell.armlinux.org.uk>
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_092122_440711_5173E430 
-X-CRM114-Status: GOOD (  12.45  )
+	id 1vs2h6-000000076rf-3xta;
+	Mon, 16 Feb 2026 17:47:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1128E6013F;
+	Mon, 16 Feb 2026 17:47:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 963BFC116C6;
+	Mon, 16 Feb 2026 17:47:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771264055;
+	bh=j93na8FLOL3895jJG5DZA+RZcY/VeiFp2De8Ka15h70=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=fK9LIA3nEpKdQPrQKF3x8MLHU96xt8iF5s6U859nXxsFS7Js+YlAEK10CocfsEWn2
+	 YeIn5XIvOs3T9sWX9cltMA8CyzBuWHPDgET1jCfH1iW1lgtosBpn/VRZxGut7yoXcX
+	 OZhjU0a4Wv8sWweJn6vmGKMZhRVFu0qV4W+U43+lGH+J/K3xdgFDa4W6TuCq6PQ+VZ
+	 mTJMTN2BtETDxCCvdVdYfixrVF06EAeL7Xyd5JB/69GM40vFG70/z0prwWsjGyh0VY
+	 TUOYCjyxF0BIZEcqcNYfwr4xIo8AkJA7PQ/nrOY+uVnbpMqcz2NSoA1PmGfhHKKfLK
+	 bg0rjHNRiPN1A==
+Date: Mon, 16 Feb 2026 17:47:31 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Fabio Estevam <festevam@gmail.com>
+Cc: heiko@sntech.de, jonas@kwiboo.se, robh@kernel.org, krzk+dt@kernel.org,
+	conor+dt@kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Fabio Estevam <festevam@nabladev.com>
+Subject: Re: [PATCH v5 3/4] dt-bindings: arm: rockchip: Add Omega4 Evaluation
+ board
+Message-ID: <20260216-eraser-jackknife-7601a311ef95@spud>
+References: <20260216010219.2131484-1-festevam@gmail.com>
+ <20260216010219.2131484-3-festevam@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <20260216010219.2131484-3-festevam@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,30 +67,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4623122067211405488=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon Feb 16, 2026 at 4:00 PM CET, Russell King (Oracle) wrote:
-> On Mon, Feb 16, 2026 at 02:57:48AM +0100, Andrew Lunn wrote:
->> On Sat, Feb 14, 2026 at 07:02:08PM +0000, Russell King (Oracle) wrote:
->> > On Sat, Feb 14, 2026 at 05:50:15PM +0100, Andrew Lunn wrote:
->> > > Rockchip have recently started adding support for a new version, and
->> > > appear to of listened to what we have been saying. So it could be the
->> > > next generation of chips get this correct.
->> > 
->> > Have you seen any proposed code from Rockchip for their new scheme?
->> 
->> There was a patch, including a rather odd formulae to convert register
->> value to delay. I gave some feedback, but it has been silence
->> afterwards.
->
-> Searching lore's netdev archive doesn't seem to bring anything up.
 
-https://patch.msgid.link/b25d6eb2-e105-4060-86fa-c1a06396ca92@lunn.ch/
+--===============4623122067211405488==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3I8sHYZ/0gQFmROk"
+Content-Disposition: inline
+
+
+--3I8sHYZ/0gQFmROk
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
+
+--3I8sHYZ/0gQFmROk
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaZNYMwAKCRB4tDGHoIJi
+0t4rAP4guLBQgACJeZ1fnrpi3I7ZH+vDSfqfluLPl313Ouw/JgEAgp98VmsR+uO3
+qCMO17BPQhs3JwzT7UltlfIISPg1OwY=
+=qg3+
+-----END PGP SIGNATURE-----
+
+--3I8sHYZ/0gQFmROk--
+
+
+--===============4623122067211405488==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4623122067211405488==--
+
