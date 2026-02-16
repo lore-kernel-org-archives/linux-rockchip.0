@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BAA6E63F38
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 08:12:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FE5BE63F3C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 08:29:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Vp9o1H/FH7NooW1+SQ61j0RrPOE6fBirPIhkM0CyBYQ=; b=h6kBfBBUiK7H47
-	m/0qNWSWEjFi3P/XUgH/2YpwDn9aFnmRomf6VzE2amrL6aNmVmi04y0SDV64/5AHV5SPQbAvWfu7Y
-	nzBhD5jzgYKD15c2hopY8AKyD13rGogCTfZB+FJHlyX9bEFl7GMDpK/sS/nWATuN3gqxBYJbJqPbx
-	viyByJfOD5KQlwqPhI/JtOPSixcGULCq+qNRwQJww6/2ErailjarUyUohaQyfE7TLkdzAQDfJV7Gq
-	tSAUlrlLo/HiZ6PASfh837wToJOqHnzvhgOd0u16qz9Fiag5waS37R2fpkx/BiqqDFW3VI3v+cwIe
-	Jb6Us5eBqSNGTJiL8icw==;
+	List-Owner; bh=QB7E97FDSexbFPkBUMSZ9V5nH4VLYcAf9hwY641t3Qk=; b=qcTBeOxIoQFU5K
+	s2JIwn71Max4mtARDbYuU5OQcdJzXze/adKCBTsoZqqmS+4y9c3Y8bqE9rVQ5A66HD04owr8xXSlK
+	DgRyKavsL1dQiSAj/siYw/LKZs/oBsagy6TsqEfIUMmEjsBoafMSKbhCbPjMoaRuH2lJdfC9nVqAY
+	Yuyplwu+70ry72krWfDXktH5XsRh9YWPAbR/pgk3Ki6Pdu48RVyA4Ahd5tey3MagJW/Yhl/xK2jSU
+	npKrEaLrTE0zAcAJSSxCxOdMevoRlzgDTyOSRFCAQlMCsEvVzEn+7vbsN0C9WVq7CbEeyCBwQYpsr
+	IJAf1kA7tGz5nPHmp2jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrtiC-000000067Ro-2isk;
-	Mon, 16 Feb 2026 08:12:08 +0000
+	id 1vrtzC-0000000692b-3HpS;
+	Mon, 16 Feb 2026 08:29:42 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrti8-000000067Qs-3K0b;
-	Mon, 16 Feb 2026 08:12:06 +0000
+	id 1vrtz8-0000000690c-0Ehe;
+	Mon, 16 Feb 2026 08:29:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771229518;
-	bh=3HYqKGUDU9JGeXZAcBF46can3OoH/CCNNOhHTr/xDHE=;
+	s=mail; t=1771230574;
+	bh=aNdNJwsBi7HLicoOA5R3/iM476r6CjPzn0ksu8G7ON8=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SqF8Smib7nHdDc32RttjOuPwKqz4BLw1OCQwXYrdq2AGpmvo/C6HNk6IK7MGvcm+m
-	 jydz1JyhssE5o8cEMkUzIBCdHluxaCRisFF5xIHoy3gQjgvD0U1UJPJ5FRTtni62lD
-	 x+2CJO0rMWo42vedhE9z9llD9GcDuFVBmx21BtfVXWeM3zGo9/fLeBl+Y4I3IxX792
-	 ZL2XFXFDbM5ELc/7kax9yJ4eGvyVQT4ApOl55AYMaIE41N79vT86tP8lDhLmLbMj/h
-	 3rCoyOw/T5z8khP+MJEWr2kHWpLcvskOzKSmV68HvMXCt+MWp43r8XucmgwPXhEEe8
-	 cwed7IEOhWRJw==
+	b=RtWHVrZdNkX7ZzsjUDe7HId6/GAfmW45yVY438DnH65a8Ef4FgZ+va5/2qChR1Jbt
+	 g6TyXV/uqFju83WRvVeTEznnU5Xo9s860r6an0sNeiXtGSXLHiFNMBZaCk+0FMZqK9
+	 /gOUyUh109mFsfxXyppQDeZ8vYHb2w63eApz8c5g4KlI3sS+siKIK+DJFm8R13h9NT
+	 0eG526e95TpDzb2yK+13JwPO92hqYGM5qT8ohvjEwcRpSNmIS9qy3Ob40UkCBL36mO
+	 agtW/Uho/uiBtjHVQSFkVEJqMVC8PInuiXS/ZU2502coCoHfjRM60IAjzizBnjPAjd
+	 dDukQb6S3Vz6Q==
 Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8A80217E1406;
-	Mon, 16 Feb 2026 09:11:57 +0100 (CET)
-Message-ID: <eef04746-00cf-4971-8e65-37a2a3e60672@collabora.com>
-Date: Mon, 16 Feb 2026 09:11:56 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 37E5417E150E;
+	Mon, 16 Feb 2026 09:29:34 +0100 (CET)
+Message-ID: <bfb98074-b256-4ed8-bca1-22a4dd4bf474@collabora.com>
+Date: Mon, 16 Feb 2026 09:29:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/6] media: synopsys: csi2rx: Use enum and u32 array
- for register offsets
+Subject: Re: [PATCH v2 6/6] media: synopsys: csi2rx: add i.MX93 support
 To: Frank Li <Frank.Li@nxp.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
  Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -58,13 +57,13 @@ Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org, Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
  Laurent Pinchart <laurent.pinchart@ideasonboard.com>, imx@lists.linux.dev
 References: <20260213-imx93-dw-csi2-v2-0-8be6039f44c6@nxp.com>
- <20260213-imx93-dw-csi2-v2-4-8be6039f44c6@nxp.com>
+ <20260213-imx93-dw-csi2-v2-6-8be6039f44c6@nxp.com>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260213-imx93-dw-csi2-v2-4-8be6039f44c6@nxp.com>
+In-Reply-To: <20260213-imx93-dw-csi2-v2-6-8be6039f44c6@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_001205_211354_7B374296 
-X-CRM114-Status: GOOD (  31.34  )
+X-CRM114-CacheID: sfid-20260216_002940_266738_9A8059FD 
+X-CRM114-Status: GOOD (  29.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,230 +84,276 @@ Hi Frank,
 
 Thanks for the update.
 
-Some minor nitpicks, but it already looks good.
-
 On 2/13/26 21:25, Frank Li wrote:
-> Use enum dw_mipi_csi2rx_regs_index together with a u32 array to describe
-> register offsets. This allows supporting new IP versions with different
-> register layouts in a structured way.
+> The i.MX93 uses a newer version of the DW CSI-2 controller with a changed
+> register layout and included an Image Pixel Interface (IPI), which convert
+
+and an integrated Image Pixel Interface (IPI), which converts
+
+> the received CSI-2 packets, from byte to pixel format, and  produces a
+
+remove both ","
+remove extra space between "and" and "produces"
+
+> pixel data bus containing vertical and horizontal synchronism information.
+
+synchronization information?
+
 > 
-> Add rk3568_regs matching the previous macro definitions and pass it as
-> driver data during probe.
-> 
-> No functional change intended.
+> The reset flow also differs, so add the .assert_reset(), .deassert_reset(),
+> and .idi_enable() callbacks to support it.
 > 
 > Signed-off-by: Frank Li <Frank.Li@nxp.com>
 > ---
 > change in v2
-> - change to use enum and u32 array method
-> - use order
->  - #includes
->  - #defines
->  - enum and struct definitions
->  - the rest
+> - move macro define to header
+> - use new register access method
+> - Keep check register exist to avoid print error message. keep slicence to
+> access unexisting register may hide problem.
 > ---
->  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 91 ++++++++++++++++++++----
->  1 file changed, 78 insertions(+), 13 deletions(-)
+>  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 163 ++++++++++++++++++++++-
+>  1 file changed, 159 insertions(+), 4 deletions(-)
 > 
 > diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> index a6d251ca5ad14c5138a6fd0202a970460e64c68f..b00ae5fb328da4cc78fe36b629d6661d438e124a 100644
+> index b00ae5fb328da4cc78fe36b629d6661d438e124a..ff617a38e8e9ffed4701c15f59aebeca8e4c5553 100644
 > --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
 > +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> @@ -24,15 +24,6 @@
->  #include <media/v4l2-mc.h>
->  #include <media/v4l2-subdev.h>
+> @@ -35,6 +35,22 @@
+>  #define DW_REG_EXIST		BIT(31)
+>  #define DW_REG(x)		(DW_REG_EXIST | (x))
 >  
-> -#define DW_MIPI_CSI2RX_N_LANES		0x04
-> -#define DW_MIPI_CSI2RX_RESETN		0x10
-> -#define DW_MIPI_CSI2RX_PHY_STATE	0x14
-> -#define DW_MIPI_CSI2RX_ERR1		0x20
-> -#define DW_MIPI_CSI2RX_ERR2		0x24
-> -#define DW_MIPI_CSI2RX_MSK1		0x28
-> -#define DW_MIPI_CSI2RX_MSK2		0x2c
-> -#define DW_MIPI_CSI2RX_CONTROL		0x40
-> -
->  #define SW_CPHY_EN(x)		((x) << 0)
->  #define SW_DSI_EN(x)		((x) << 4)
->  #define SW_DATATYPE_FS(x)	((x) << 8)
-> @@ -40,12 +31,33 @@
->  #define SW_DATATYPE_LS(x)	((x) << 20)
->  #define SW_DATATYPE_LE(x)	((x) << 26)
+> +#define DPHY_TEST_CTRL0_TEST_CLR	BIT(0)
+> +
+> +#define IPI_VCID_VC(x)			FIELD_PREP(GENMASK(1, 0), (x))
+> +#define IPI_VCID_VC_0_1(x)		FIELD_PREP(GENMASK(3, 2), (x))
+> +#define IPI_VCID_VC_2			BIT(4)
+> +
+> +#define IPI_DATA_TYPE_DT(x)		FIELD_PREP(GENMASK(5, 0), (x))
+> +#define IPI_DATA_TYPE_EMB_DATA_EN	BIT(8)
+> +
+> +#define IPI_MODE_CONTROLLER		BIT(1)
+> +#define IPI_MODE_COLOR_MODE16		BIT(8)
+> +#define IPI_MODE_CUT_THROUGH		BIT(16)
+> +#define IPI_MODE_ENABLE			BIT(24)
+> +
+> +#define IPI_MEM_FLUSH_AUTO		BIT(8)
+> +
+>  enum dw_mipi_csi2rx_regs_index {
+>  	DW_MIPI_CSI2RX_N_LANES,
+>  	DW_MIPI_CSI2RX_RESETN,
+> @@ -44,6 +60,16 @@ enum dw_mipi_csi2rx_regs_index {
+>  	DW_MIPI_CSI2RX_MSK1,
+>  	DW_MIPI_CSI2RX_MSK2,
+>  	DW_MIPI_CSI2RX_CONTROL,
+> +	/* imx93 (v150) new register */
+> +	DW_MIPI_CSI2RX_DPHY_RSTZ,
+> +	DW_MIPI_CSI2RX_PHY_TST_CTRL0,
+> +	DW_MIPI_CSI2RX_PHY_TST_CTRL1,
+> +	DW_MIPI_CSI2RX_PHY_SHUTDOWNZ,
+> +	DW_MIPI_CSI2RX_IPI_DATATYPE,
+> +	DW_MIPI_CSI2RX_IPI_MEM_FLUSH,
+> +	DW_MIPI_CSI2RX_IPI_MODE,
+> +	DW_MIPI_CSI2RX_IPI_SOFTRSTN,
+> +	DW_MIPI_CSI2RX_IPI_VCID,
 >  
-> +/* Help check wrong access unexisted register at difference IP version */
-
-Maybe
-
-/* helper for checking whether register exists */
-
-? However, I think the naming speaks for itself and you can leave the
-comment away.
-
-> +#define DW_REG_EXIST		BIT(31)
-> +#define DW_REG(x)		(DW_REG_EXIST | (x))
-> +
-> +enum dw_mipi_csi2rx_regs_index {
-> +	DW_MIPI_CSI2RX_N_LANES,
-> +	DW_MIPI_CSI2RX_RESETN,
-> +	DW_MIPI_CSI2RX_PHY_STATE,
-> +	DW_MIPI_CSI2RX_ERR1,
-> +	DW_MIPI_CSI2RX_ERR2,
-> +	DW_MIPI_CSI2RX_MSK1,
-> +	DW_MIPI_CSI2RX_MSK2,
-> +	DW_MIPI_CSI2RX_CONTROL,
-> +
-> +	DW_MIPI_CSI2RX_MAX,
-> +};
-> +
->  enum {
->  	DW_MIPI_CSI2RX_PAD_SINK,
->  	DW_MIPI_CSI2RX_PAD_SRC,
+>  	DW_MIPI_CSI2RX_MAX,
+>  };
+> @@ -54,8 +80,13 @@ enum {
 >  	DW_MIPI_CSI2RX_PAD_MAX,
 >  };
 >  
-> +struct dw_mipi_csi2rx_drvdata {
-> +	const u32 *regs;
-> +};
+> +struct dw_mipi_csi2rx_device;
 > +
->  struct dw_mipi_csi2rx_format {
->  	u32 code;
->  	u8 depth;
-> @@ -72,6 +84,23 @@ struct dw_mipi_csi2rx_device {
->  
->  	enum v4l2_mbus_type bus_type;
->  	u32 lanes_num;
-> +
-> +	const struct dw_mipi_csi2rx_drvdata *drvdata;
-> +};
-> +
-> +static const u32 rk3568_regs[DW_MIPI_CSI2RX_MAX] = {
-> +	[DW_MIPI_CSI2RX_N_LANES] = DW_REG(0x4),
-> +	[DW_MIPI_CSI2RX_RESETN] = DW_REG(0x10),
-> +	[DW_MIPI_CSI2RX_PHY_STATE] = DW_REG(0x14),
-> +	[DW_MIPI_CSI2RX_ERR1] = DW_REG(0x20),
-> +	[DW_MIPI_CSI2RX_ERR2] = DW_REG(0x24),
-> +	[DW_MIPI_CSI2RX_MSK1] = DW_REG(0x28),
-> +	[DW_MIPI_CSI2RX_MSK2] = DW_REG(0x2c),
-> +	[DW_MIPI_CSI2RX_CONTROL] = DW_REG(0x40),
-> +};
-> +
-> +static const struct dw_mipi_csi2rx_drvdata rk3568_drvdata = {
-> +	.regs = rk3568_regs,
+>  struct dw_mipi_csi2rx_drvdata {
+>  	const u32 *regs;
+> +	void (*dphy_assert_reset)(struct dw_mipi_csi2rx_device *csi2);
+> +	void (*dphy_deassert_reset)(struct dw_mipi_csi2rx_device *csi2);
+> +	void (*ipi_enable)(struct dw_mipi_csi2rx_device *csi2);
 >  };
 >  
+>  struct dw_mipi_csi2rx_format {
+> @@ -103,6 +134,21 @@ static const struct dw_mipi_csi2rx_drvdata rk3568_drvdata = {
+>  	.regs = rk3568_regs,
+>  };
+>  
+> +static const u32 imx93_regs[DW_MIPI_CSI2RX_MAX] = {
+> +	[DW_MIPI_CSI2RX_N_LANES] = DW_REG(0x4),
+> +	[DW_MIPI_CSI2RX_RESETN] = DW_REG(0x8),
+> +	[DW_MIPI_CSI2RX_PHY_SHUTDOWNZ] = DW_REG(0x40),
+> +	[DW_MIPI_CSI2RX_DPHY_RSTZ] = DW_REG(0x44),
+> +	[DW_MIPI_CSI2RX_PHY_STATE] = DW_REG(0x48),
+> +	[DW_MIPI_CSI2RX_PHY_TST_CTRL0] = DW_REG(0x50),
+> +	[DW_MIPI_CSI2RX_PHY_TST_CTRL1] = DW_REG(0x54),
+> +	[DW_MIPI_CSI2RX_IPI_MODE] = DW_REG(0x80),
+> +	[DW_MIPI_CSI2RX_IPI_VCID] = DW_REG(0x84),
+> +	[DW_MIPI_CSI2RX_IPI_DATATYPE] = DW_REG(0x88),
+> +	[DW_MIPI_CSI2RX_IPI_MEM_FLUSH] = DW_REG(0x8c),
+> +	[DW_MIPI_CSI2RX_IPI_SOFTRSTN] = DW_REG(0xa0),
+> +};
+> +
 >  static const struct v4l2_mbus_framefmt default_format = {
-> @@ -186,16 +215,46 @@ static inline struct dw_mipi_csi2rx_device *to_csi2(struct v4l2_subdev *sd)
->  	return container_of(sd, struct dw_mipi_csi2rx_device, sd);
->  }
+>  	.width = 3840,
+>  	.height = 2160,
+> @@ -319,14 +365,32 @@ static int dw_mipi_csi2rx_start(struct dw_mipi_csi2rx_device *csi2)
+>  		return -EINVAL;
+>  	}
 >  
-> +static bool dw_mipi_csi2rx_is_exist(struct dw_mipi_csi2rx_device *csi2,
-
-Sounds a bit weird to me, maybe "dw_mipi_csi2rx_has_reg(ister)" or
-"dw_mipi_csi2rx_reg(ister)_exists?
-
-> +				    enum dw_mipi_csi2rx_regs_index index)
-> +{
-> +	if (index < DW_MIPI_CSI2RX_MAX &&
-> +	    (csi2->drvdata->regs[index] & DW_REG_EXIST))
-> +		return true;
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_RESETN, 0);
 > +
-> +	return false;
-> +}
+> +	if (csi2->drvdata->dphy_assert_reset)
+> +		csi2->drvdata->dphy_assert_reset(csi2);
 > +
-> +static void __iomem *
-> +dw_mipi_csi2rx_get_regaddr(struct dw_mipi_csi2rx_device *csi2,
-> +			   enum dw_mipi_csi2rx_regs_index index)
-> +{
-> +	u32 off = (~DW_REG_EXIST) & csi2->drvdata->regs[index];
-> +
-> +	return csi2->base_addr + off;
-> +}
-> +
->  static inline void dw_mipi_csi2rx_write(struct dw_mipi_csi2rx_device *csi2,
-> -					unsigned int addr, u32 val)
-> +					enum dw_mipi_csi2rx_regs_index index,
-> +					u32 val)
->  {
-> -	writel(val, csi2->base_addr + addr);
-> +	if (dw_mipi_csi2rx_is_exist(csi2, index))
-> +		writel(val, dw_mipi_csi2rx_get_regaddr(csi2, index));
-> +
-> +	dev_err_once(csi2->dev,
-> +		     "write to non-existent register index: %d\n", index);
-
-Not sure about to control flow here, as the error message is shown in
-any case. Do you mean
-
-{
-	if (!dw_mipi_csi2rx_is_exist(csi2, index)) {
-		dev_err_once(csi2->dev,
-			"write to non-existent register index: %d\n",
-			index);
-		return;
-	}
-
-	writel(val, dw_mipi_csi2rx_get_regaddr(csi2, index));
-}
-
-?
-
->  }
+>  	control |= SW_DATATYPE_FS(0x00) | SW_DATATYPE_FE(0x01) |
+>  		   SW_DATATYPE_LS(0x02) | SW_DATATYPE_LE(0x03);
 >  
->  static inline u32 dw_mipi_csi2rx_read(struct dw_mipi_csi2rx_device *csi2,
-> -				      unsigned int addr)
-> +				      enum dw_mipi_csi2rx_regs_index index)
->  {
-> -	return readl(csi2->base_addr + addr);
-> +	if (dw_mipi_csi2rx_is_exist(csi2, index))
-> +		return readl(dw_mipi_csi2rx_get_regaddr(csi2, index));
-
-Here it seems to be correct, but personally I'd prefer
-
-{
-	if (!dw_mipi_csi2rx_is_exist(csi2, index)) {
-		// print error
-		return 0;
-	}
-
-	return readl(...);
-}
-Anyway, it should match the write method.
-
+>  	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_N_LANES, lanes - 1);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_CONTROL, control);
 > +
-> +	dev_err_once(csi2->dev,
-> +		     "read non-existent register index: %d\n", index);
-> +	/* Return 0 for unexisted registers */
-
-/* return 0 for non-existent registers */
-
-or leave away altogether.
-
+> +	if (dw_mipi_csi2rx_is_exist(csi2, DW_MIPI_CSI2RX_CONTROL))
+> +		dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_CONTROL, control);
+> +
+> +	ret = phy_power_on(csi2->phy);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (csi2->drvdata->dphy_deassert_reset)
+> +		csi2->drvdata->dphy_deassert_reset(csi2);
+> +
+>  	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_RESETN, 1);
+>  
+> -	return phy_power_on(csi2->phy);
+> +	if (csi2->drvdata->ipi_enable)
+> +		csi2->drvdata->ipi_enable(csi2);
+> +
 > +	return 0;
 >  }
 >  
->  static const struct dw_mipi_csi2rx_format *
-> @@ -631,6 +690,7 @@ static void dw_mipi_csi2rx_unregister(struct dw_mipi_csi2rx_device *csi2)
+>  static void dw_mipi_csi2rx_stop(struct dw_mipi_csi2rx_device *csi2)
+> @@ -334,8 +398,12 @@ static void dw_mipi_csi2rx_stop(struct dw_mipi_csi2rx_device *csi2)
+>  	phy_power_off(csi2->phy);
+>  
+>  	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_RESETN, 0);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_MSK1, ~0);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_MSK2, ~0);
+> +
+> +	if (dw_mipi_csi2rx_is_exist(csi2, DW_MIPI_CSI2RX_MSK1))
+> +		dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_MSK1, ~0);
+> +
+> +	if (dw_mipi_csi2rx_is_exist(csi2, DW_MIPI_CSI2RX_MSK2))
+> +		dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_MSK2, ~0);
+>  }
+>  
+>  static const struct media_entity_operations dw_mipi_csi2rx_media_ops = {
+> @@ -687,7 +755,94 @@ static void dw_mipi_csi2rx_unregister(struct dw_mipi_csi2rx_device *csi2)
+>  	v4l2_async_nf_cleanup(&csi2->notifier);
+>  }
+>  
+> +static void imx93_csi2rx_dphy_assert_reset(struct dw_mipi_csi2rx_device *csi2)
+> +{
+> +	u32 val;
+> +
+> +	/* Release synopsis DPHY test codes from reset */
+
+Synopsys
+
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_DPHY_RSTZ, 0);
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_PHY_SHUTDOWNZ, 0);
+> +
+> +	val = dw_mipi_csi2rx_read(csi2, DW_MIPI_CSI2RX_PHY_TST_CTRL0);
+> +	val &= ~DPHY_TEST_CTRL0_TEST_CLR;
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_PHY_TST_CTRL0, val);
+> +
+> +	/*
+> +	 * ndelay is not necessary have MMIO operation, need dummy read to make
+> +	 * sure above write reach target.
+
+/* use read to ensure that the write operation above reaches its target */
+?
+
+(Technically it's not a dummy read, as you use the result after the ndelay)
+
+> +	 */
+> +	val = dw_mipi_csi2rx_read(csi2, DW_MIPI_CSI2RX_PHY_TST_CTRL0);
+> +	/* Wait for at least 15ns */
+> +	ndelay(15);
+> +	val |= DPHY_TEST_CTRL0_TEST_CLR;
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_PHY_TST_CTRL0, val);
+> +}
+> +
+> +static void imx93_csi2rx_dphy_deassert_reset(struct dw_mipi_csi2rx_device *csi2)
+> +{
+> +	/* Release PHY from reset */
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_PHY_SHUTDOWNZ, 0x1);
+> +	/*
+> +	 * ndelay is not necessary have MMIO operation, need dummy read to make
+> +	 * sure above write reach target.
+> +	 */
+
+Adjust comment accordingly.
+
+> +	dw_mipi_csi2rx_read(csi2, DW_MIPI_CSI2RX_PHY_SHUTDOWNZ);
+> +	ndelay(5);
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_DPHY_RSTZ, 0x1);
+> +
+> +	dw_mipi_csi2rx_read(csi2, DW_MIPI_CSI2RX_DPHY_RSTZ);
+> +	ndelay(5);
+> +}
+> +
+> +static void imx93_csi2rx_dphy_ipi_enable(struct dw_mipi_csi2rx_device *csi2)
+> +{
+> +	int dt = csi2->formats->csi_dt;
+> +	u32 val;
+> +
+> +	/* Do IPI soft reset */
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_SOFTRSTN, 0x0);
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_SOFTRSTN, 0x1);
+> +
+> +	/* Select virtual channel and data type to be processed by IPI */
+> +	val = IPI_DATA_TYPE_DT(dt);
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_DATATYPE, val);
+> +
+> +	/* Set virtual channel 0 as default */
+> +	val  = IPI_VCID_VC(0);
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_VCID, val);
+> +
+> +	/*
+> +	 * Select IPI camera timing mode and allow the pixel stream
+> +	 * to be non-continuous when pixel interface FIFO is empty
+> +	 */
+> +	val = dw_mipi_csi2rx_read(csi2, DW_MIPI_CSI2RX_IPI_MODE);
+> +	val &= ~IPI_MODE_CONTROLLER;
+> +	val &= ~IPI_MODE_COLOR_MODE16;
+> +	val |= IPI_MODE_CUT_THROUGH;
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_MODE, val);
+> +
+> +	/* Memory is automatically flushed at each Frame Start */
+> +	val = IPI_MEM_FLUSH_AUTO;
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_MEM_FLUSH, val);
+> +
+> +	/* Enable IPI */
+> +	val = dw_mipi_csi2rx_read(csi2, DW_MIPI_CSI2RX_IPI_MODE);
+> +	val |= IPI_MODE_ENABLE;
+> +	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_IPI_MODE, val);
+> +}
+> +
+> +static const struct dw_mipi_csi2rx_drvdata imx93_drvdata = {
+> +	.regs = imx93_regs,
+> +	.dphy_assert_reset = imx93_csi2rx_dphy_assert_reset,
+> +	.dphy_deassert_reset = imx93_csi2rx_dphy_deassert_reset,
+> +	.ipi_enable = imx93_csi2rx_dphy_ipi_enable,
+> +};
+> +
 >  static const struct of_device_id dw_mipi_csi2rx_of_match[] = {
+> +	{
+> +		.compatible = "fsl,imx93-mipi-csi2",
+> +		.data = &imx93_drvdata,
+> +	},
 >  	{
 >  		.compatible = "rockchip,rk3568-mipi-csi2",
-> +		.data = &rk3568_drvdata,
->  	},
->  	{}
->  };
-> @@ -652,6 +712,11 @@ static int dw_mipi_csi2rx_probe(struct platform_device *pdev)
->  	if (IS_ERR(csi2->base_addr))
->  		return PTR_ERR(csi2->base_addr);
->  
-> +	csi2->drvdata = device_get_match_data(dev);
-> +	if (!csi2->drvdata)
-> +		return dev_err_probe(dev, -EINVAL,
-> +				     "failed to get driver data\n");
-> +
->  	ret = devm_clk_bulk_get_all(dev, &csi2->clks);
->  	if (ret < 0)
->  		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
+>  		.data = &rk3568_drvdata,
 > 
 
-With the comments above addressed,
+With the nitpicks addressed,
 
 Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
 
