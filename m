@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5380E81A3B
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 15:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76B2AE81A3B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 15:33:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N986+xnk+TPr28VaxLFw/2X4Aq4Gzlaui3CCEGs5mQE=; b=E+wpHyd2LZ1vBp
-	IR0dZfy7bCoBjIYNggShxJFvRpFMwqne+pQ8GNI5c1tEcQcbn768mIZTvGDi2psy6JbkvolqWisBC
-	5lp6JJx3s+rIVTFxva0CYVKEhi0XgNJprEHDev0Xzz4zljRr5ggcXeouZSbRGH3Qf1nRlkNye/Z0y
-	sdk0VdNQ7PNVHc/iBkHFEzITlOOohMCsssAyN9gA/VMc4RqeMH+KqYGUVZMesQmng3NdkvYKjOh2Q
-	QUfJ82wI4iZbREoacpoAYpIc7UeHJRMpi0VFbKWQLuVu+i3RQpGSMe9SIU4tvucR/etd5NRhJp3J5
-	3/yMr/s2PenVLrMLlSMw==;
+	List-Owner; bh=4f0tIyL+ou/BNgrkZw643zm3Ktkpet0Ear0E4eEbZGo=; b=VXCRhpRBUeLe7T
+	jA8exKx5hljcHgy7eLI/x/4qDHc1LscGIcme4U58nMFR8CoP2uaYTReCnLFd43j9daNdMoyNCbs7H
+	5lTWhBsswH7KGwOy3ts+u0QP34C3AT3IKvPBLtR1FtNQAJlGB0B2VLXN3uBtzr9keV83kjdR07tWS
+	wU16hqF4R6SF6MiH8LVWrru0euBUkduSp7541WqDBjmWh+YYmeOnzJQ1rzY9bNcovVl290rfIMu4v
+	gwJRA/c+glth6lOlJuTiyqqb8LvOiYmkkLGGS6e0Q1SFqnOjTH/3HJU4y/AGLN4eZ3sVyChA5IsyT
+	psJl6cNHepfpIDXemxBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0aN-00000006uKZ-2RLK;
-	Mon, 16 Feb 2026 15:32:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vs0bQ-00000006uYL-0e9e;
+	Mon, 16 Feb 2026 15:33:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs0aL-00000006uK3-0rOp;
-	Mon, 16 Feb 2026 15:32:30 +0000
+	id 1vs0bN-00000006uXD-1fS4;
+	Mon, 16 Feb 2026 15:33:34 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6F8E84444A;
-	Mon, 16 Feb 2026 15:32:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B15E2C19423;
-	Mon, 16 Feb 2026 15:32:24 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 94620409A4;
+	Mon, 16 Feb 2026 15:33:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2C11C116C6;
+	Mon, 16 Feb 2026 15:33:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771255948;
-	bh=7sRFqvjn3E+nvWZqWiYbrCnM/0H2C7500YPYQf5MdUw=;
+	s=k20201202; t=1771256012;
+	bh=61uYWKiO7+LywWObabpStY25JntBKV1HX3TroV33siM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mFNV879SEjrojsot7pd6RHAXpCv0ObK4N9FaCpjv4dK59fg7DIukGosv0++Uac8hV
-	 eLhgE5dwlyGsva6hw2ypv+UP+GwkC1hAR4gHurA6GrjkxUOfMYhSc73urEHhXmPufP
-	 jimSyceyqBtBtkFL0q8HX2d2rS6zNOkCnD2o0TrQHqE2l54OYscOZkEHBaWsVxFome
-	 2GSiZ/624D4qCIT0gIV1OrmjZ5HTJE2+NJ53ceDV8X3SBsCgCHIk7OEItyWUdnczxB
-	 El9yvNlUAIueVW2VMRgRNNmWqTqTxl7GOIc+LC+I0exE/JoCWh/0HkQYVnu9BQzBdk
-	 uG7P/vlwXuOmA==
-Message-ID: <867cd496-0b7b-4a99-97e1-5926ffaa5eed@kernel.org>
-Date: Mon, 16 Feb 2026 16:32:23 +0100
+	b=e8GivwXEdlBa/Teuzah3FojvquEgo1U/gIiXt156s6ndwyMgTMvmwAmBTjdexA8s7
+	 nDn/srx6/4CQr85xw2WHCyWJT8UzQkPyYjd4R4tC7ICjXUob5kXNGZbcnYr75WNVn5
+	 ndVkZ2qG0GpuI32ruKW1XV2/kLUUTB1bnKGIn53Gtz1X6sF4hBcW/AJkSUfcbJ3cBc
+	 i2PiMf6oERjwl+QFRooOVkv1DAMP+LPz6o1URr1IUoGLy2VlcA28Mv6FSyKgzwEGwV
+	 Dg1EFqLHYEtcH6keB69DzdU7fBX4blMVFMzEgb35R5626/4WS2yUcYPvJ392odOh5C
+	 peKkcZodaCwnQ==
+Message-ID: <75b60a26-5a3e-4db7-accd-994c8de427b7@kernel.org>
+Date: Mon, 16 Feb 2026 16:33:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v13 6/6] arm64: defconfig: enable Verisilicon IOMMU for
@@ -56,8 +56,6 @@ Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-media@vger.kernel.org
 References: <20260216095144.107356-1-benjamin.gaignard@collabora.com>
  <20260216095144.107356-7-benjamin.gaignard@collabora.com>
- <07b62f39-d27b-4439-a60e-42fd47f49b13@kernel.org>
- <16e32780-07bb-42c9-a5c8-aa61f2366efa@collabora.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -103,10 +101,11 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <16e32780-07bb-42c9-a5c8-aa61f2366efa@collabora.com>
+In-Reply-To: <20260216095144.107356-7-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_073229_287594_60ECBF91 
-X-CRM114-Status: GOOD (  10.38  )
+X-CRM114-CacheID: sfid-20260216_073333_490398_6E0EC44D 
+X-CRM114-Status: UNSURE (   5.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,25 +117,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTYvMDIvMjAyNiAxNjozMCwgQmVuamFtaW4gR2FpZ25hcmQgd3JvdGU6Cj4gCj4gTGUgMTYv
-MDIvMjAyNiDDoCAxNjoxNiwgS3J6eXN6dG9mIEtvemxvd3NraSBhIMOpY3JpdMKgOgo+PiBPbiAx
-Ni8wMi8yMDI2IDEwOjUxLCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4+IEVuYWJsZSBWZXJp
-c2lsaWNvbiBJT01NVSB1c2VkIGJ5IFJvY2tjaGlwIFJLMzU4OCBBVjEgaGFyZHdhcmUgY29kZWMu
-Cj4+PiBUaGlzIGhhcmR3YXJlIGJsb2NrIGNvdWxkIGJlIGZvdW5kIGluIFJhZHhhIFJvY2sgNUIg
-Ym9hcmQuCj4+IEkgY291bGQgbm90IGZpbmQgc3VjaCBib2FyZC4gSSBldmVuIGdpdCBncmVwcGVk
-IGZvciBzb21lIHZhcmlhbnRzLi4uIEl0Cj4+IHNlZW1zIHlvdSBhcmUgYWRkaW5nIGl0IGVhcmxp
-ZXIgdG8gYSBrbm93biBEVFNJLCBzbyBpdCB3aWxsIHJlYWNoIHNvbWUKPj4gYm9hcmQsIHNvIHRo
-ZSBwb2ludCBpcyB0byB1c2UgaGVyZSBSRUFMIG5hbWUgb2YgdGhlIGJvYXJkIHdlIGRvIHN1cHBv
-cnQuCj4gCj4gQW55IHJrMzU1OCBiYXNlZCBib2FyZCBoYXZlIHRoaXMgaGFyZHdhcmUgYmxvY2sK
-PiBhbmQgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtcm9jay01Yi5kdHMgZGVz
-Y3JpYmVzIFJhZHhhIFJvY2sgNUIgYm9hcmQuCj4gCj4gQnV0IG1heWJlIEkgbWlzcyB1bmRlcnN0
-b29kIHlvdXIgcG9pbnQgPwoKUGxlYXNlIHVzZSBncmVwcGFibGUgbmFtZXMsIHNvIG5hbWUgaXMg
-Uk9DSywgbm90IFJvY2suIDovCgpCZXN0IHJlZ2FyZHMsCktyenlzenRvZgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 16/02/2026 10:51, Benjamin Gaignard wrote:
+> Enable Verisilicon IOMMU used by Rockchip RK3588 AV1 hardware codec.
+> This hardware block could be found in Radxa Rock 5B board.
+
+After correcting this to Radxa ROCK 5B, as written in DTS and bindings:
+
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
