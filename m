@@ -4,164 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C871E63F03
-	for <linux-rockchip@archiver.kernel.org>; Sun, 15 Feb 2026 16:39:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F3C2E63F22
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 01:02:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fF5pZ5EJq6jOORpsdeIKtfpa0Ed9GPWBwM4koHbwpOA=; b=MVnG1wxrcxlz8Z
-	kQkleikZuLJM5KbMoZrPXOgBJJtHOb1KqHeWBCbqsGD67UWvA/N6fvMSHpcr2rJUR/LGxvMSLRUJn
-	fJjEd7Jx1XP6UEIi5pIr1vEWADMDVPIOZhoGZetsP3M0PyL3qH3dEhv+9qISrkC6MDbHwT7rZH/HJ
-	7Bd0CIJCs/lApf2gnrGpqVtjtHLSTarTRIHTIm0H7law33RAa06KhjIq4+9UKGHc7pHMCoXMP31JR
-	sm0ToaBPGW+S1tw+sBDDQDzySRBLM0EdLCIu79WsOcy675ZpGq2WWRRo0QB0MiU4zKJv3C2H3hsDT
-	CNFkbsILHFNXktP+uiWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zWIJ57DqWHRu8m565fOkkfYxit6kq/gzt/+l4EFnL3c=; b=zTzokbqAHMsKtA
+	kPeNb67DZO7ABPQOoR0Hrqz97sY7Uf+CnKt41qTUzB0IbR/OIkj1ToHrbxn28+xBwm10X8Wqu0Qiw
+	qZwTuTIRjkobsowDkj+4BgK776fwDZZVkKQG5959locUNQfUx9YzCLl/6204AkbnFO+1+Vjg02sX0
+	g/hD8AAdy+uGQxYVKuIKVM5FgL84yqwlXJpr03WoqstWPV7OdmgKu4MLSAXOD/yMxy3fzzxj09cTu
+	nNwkJl2GkkwLCmNS5yUfio1wTkb3yN8fc4hvEXyvO9MPISomn7T7aw+x3dzNDtDC4+6J52ioVSpxS
+	OQFZex0ZwFiTfY8WjLuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrf9e-00000005Vop-0QWH;
-	Sun, 15 Feb 2026 16:39:30 +0000
-Received: from mail-japaneastazlp170100000.outbound.protection.outlook.com ([2a01:111:f403:c405::] helo=TY3P286CU002.outbound.protection.outlook.com)
+	id 1vrn0U-00000005pUM-3Ihw;
+	Mon, 16 Feb 2026 01:02:34 +0000
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vrf9V-00000005VVA-0JLM;
-	Sun, 15 Feb 2026 16:39:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=JKal6C3wLQbwth065WEvWjVUdnc9O1JxAuiNsr+kCbmoyK4km7xsDjX1NS2A9gzcavIG4d6kQ6gabAI9v+O2ARI/RFx1G1ctqfMkRLgyTojaciC5YUVavnyHPwpxm/FT6+QHWRdGL824ZP31awo6OrKE84FDyPybRvXt0/vSADOlfTeEicN9XxJfZ5UXihzaVVbXDsdjrrYOQQYI96kNmllWCU1GV6Us7WWK6jDBDiJoLR9Fiw1cUytrXNMUc6SqpR7j3ACHfednuZDZyGUPBx/492XDatynatdc5pS54VXT8gfdo/nTKAi9cEGztQM8oFYvlEofZmRTbbsqMOE7ZA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=5D+zbTEgpTS5UZZwzogOf7rstvVJhCWU92vys06J65A=;
- b=uqPCZ+3TViInKxNV53o97J1CX39ZZwcfAc7NZ+lE4ZLOZzlBLUikUg1sRtCx1y5hhtyt9EGeg9Q4pRsQXG8yjEocqfWunbZsdozxc5dZ5VAfTPHpX+/CnzTwHFKjHyRuzJ/iLzgEFzO7zr7/1WZDF/Ff4aRS4quLxTCZ2LFIHRIjgpCiZpWCY+Ui5PtCgvAWObEP5ivV8bWEP81168TcWgOF4l9bgmeLoFPD+U/yEaox49eC+UMKS74cTb51zvnJpNlBwrvudfBEr/x/ymIKIV+h+kesmAPGGqdQ/fWyND1azRsuX9lfTLo7qNuZ2cKuno99kjp52C7ZY8p0EJEnVw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
- header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=valinux.co.jp;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5D+zbTEgpTS5UZZwzogOf7rstvVJhCWU92vys06J65A=;
- b=WZOFhmwvXxC3eclllp7unooNyT/5X5R983pK+mIh7W/3SJLrFKU7f9hftPQp7buPwurOJZ32fwuk3ll4DcyDx+Eu5/cF/K/NKzl4X738oHs9Sq0r6BXeoAwvKw8ICZv8z6+2zadv88IonfrkyDhfE/U72JQl5Q28Wf+B75Bg+uQ=
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=valinux.co.jp;
-Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:38f::10)
- by OSCP286MB5196.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:34b::5) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9611.16; Sun, 15 Feb
- 2026 16:39:09 +0000
-Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- ([fe80::2305:327c:28ec:9b32]) by TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- ([fe80::2305:327c:28ec:9b32%5]) with mapi id 15.20.9611.013; Sun, 15 Feb 2026
- 16:39:09 +0000
-From: Koichiro Den <den@valinux.co.jp>
-To: jingoohan1@gmail.com,
-	mani@kernel.org,
-	lpieralisi@kernel.org,
-	kwilczynski@kernel.org,
+	id 1vrn0R-00000005pTT-2Lgd
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Feb 2026 01:02:33 +0000
+Received: by mail-dl1-x1236.google.com with SMTP id a92af1059eb24-127380532eeso7102382c88.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 15 Feb 2026 17:02:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771203750; x=1771808550; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=0uUVQPbhvB6NSi3mbkZ1qXyVTFOD4aa4pfphYcfbKPU=;
+        b=gXJbMuNsAIRWGAIZ6GlE3FSXnMyX3Bv161S0D6Q2N8xWnh30UObegegSAgNqUfOlWl
+         YTf8DQp/5ve+mhfG1Vi0FX8JElRRSeXpt6mxbeUzwbf35TR+euugy9sZbmhhoJ2/bIYz
+         uFEVn1nKPIwzVtMlvpByI2n2Ak2e2/OD4jZ1rRysv651kh9UbaDupH6sbg0FgrqAPCWM
+         L7bkHeJFNuKipw+5plqgiXxgC3RYCT82jX+ywqjirD0H2UI79IDMsYt0Cz3VFMZKYYKk
+         ha2CNyLZSqhFAeOSh7V7EjGiLjxxPHPxxifaEsKb30En0PvFM8D4QGyIRt2PEmwhpKd4
+         oSVg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771203750; x=1771808550;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=0uUVQPbhvB6NSi3mbkZ1qXyVTFOD4aa4pfphYcfbKPU=;
+        b=S00hCHv4IAzUL0C+SjTn2CjjYtiCPuTeEUS+SeRKcJGRDZPbMfRLNg7qc3aj4GHCt4
+         9N8XzhbBxiSAvYYZCaC8fqRTJ5ojhaYyKifHKmWeVhKFM7K/lF/ByvqQ1DwXTJeM/Cs1
+         MGQg1wEU60frjE0ZXt7Ebu/yHfw05fVz2hpwNeDH70qO96BrVGvv+yBa07Dx+3RCnLJC
+         iQJKjK0geT6qFDblEx4512HGlU+JnfWaKgazDLqPBAOmjUtfZygT+reOYUEWK6/E6LRD
+         /oWCcEGGgO+AjN/7B6eTWMYaFJY1ZcTm+KvpT6HvwSkbx2QVqBaqIPpf1SY0L+pdvwQ7
+         oMFA==
+X-Forwarded-Encrypted: i=1; AJvYcCV/HVFILXSHRk5Njppj/5GvCJHtfnL5MntGnLcGDGQdiWnVpfyqzE9rOg+ZOFnSmWJLJX6lnfIZ7yPEuvZdOw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyB7qz6QefbxVa3OrXbZHdgCP3MU2zLK6olJc+B8Lhmjp2rFk2H
+	x3duy/m1pO/XbaH6Hwf6OdqBhSghco0K3vE8cmLdCG4CL7Q9X42BQoER
+X-Gm-Gg: AZuq6aKOysv+QUEy5XoP3jGczshMMogWZefOZ8sfmiyRHKRVo0u+PtLBWfdfscE5JdO
+	rZ4X8kyOGHb/fbWrIGV7Pkt9U87B6KV38JSJWBysOCDkYB5RezhBtStnci9QloFZ+aDwU6YRU4j
+	t7nShq6dZxFisSrOnmWwgw3aagfAtF/C72OlpTLsYl7UtcWjc3xNmUEkB7xFvbYv6gBNhPuTFKB
+	VkQ7e/3ioFBqRuvxBoJ70N/5R+unOdL+FO/OnDQgAJdCvDnpePtEGKY6KMY/IkVj72QWQmpl4jb
+	KfE4Go+AV3b9pGoBjgzBhzocxUXOcH3vjvPNCZaG3RmMIGpUwsoAbeWegdRegjhS1X5JkaYTAfk
+	ouzdMJ36Y1SZy0EIHKAiKzTZgy6xV2JURobeqEVEd/JsbOCq/+MIs3o7FLYzJpXjBNul5a7FfRw
+	rAYOsqWFFE5x7JMpJGF7f2i97MmWM3uCuRxNFyiEnYFyAVLzh4jv/ZMivKPQIEmqLULA==
+X-Received: by 2002:a05:701b:418a:10b0:127:3b1b:c816 with SMTP id a92af1059eb24-1273b1bc8e9mr3216897c88.20.1771203749797;
+        Sun, 15 Feb 2026 17:02:29 -0800 (PST)
+Received: from localhost.localdomain ([2804:14c:485:4ffb:cd7:e7e8:c526:2074])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-12742cadb25sm9158160c88.10.2026.02.15.17.02.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 15 Feb 2026 17:02:29 -0800 (PST)
+From: Fabio Estevam <festevam@gmail.com>
+To: heiko@sntech.de
+Cc: jonas@kwiboo.se,
 	robh@kernel.org,
-	bhelgaas@google.com,
-	heiko@sntech.de,
-	kishon@kernel.org,
-	jdmason@kudzu.us,
-	dave.jiang@intel.com,
-	allenbh@gmail.com,
-	cassel@kernel.org,
-	shawn.lin@rock-chips.com,
-	Frank.Li@nxp.com
-Cc: linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	ntb@lists.linux.dev
-Subject: [PATCH v7 9/9] PCI: endpoint: pci-ep-msi: Add embedded eDMA doorbell fallback
-Date: Mon, 16 Feb 2026 01:38:47 +0900
-Message-ID: <20260215163847.3522572-10-den@valinux.co.jp>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260215163847.3522572-1-den@valinux.co.jp>
-References: <20260215163847.3522572-1-den@valinux.co.jp>
-X-ClientProxiedBy: TY4P301CA0089.JPNP301.PROD.OUTLOOK.COM
- (2603:1096:405:37a::10) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
- (2603:1096:405:38f::10)
+	linux-kernel@vger.kernel.org,
+	Fabio Estevam <festevam@nabladev.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v5 1/4] dt-bindings: soc: rockchip: grf: Add RV1103B compatibles
+Date: Sun, 15 Feb 2026 22:02:16 -0300
+Message-Id: <20260216010219.2131484-1-festevam@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: TY7P286MB7722:EE_|OSCP286MB5196:EE_
-X-MS-Office365-Filtering-Correlation-Id: a78af44e-447d-4ce1-383d-08de6cb0be0e
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|10070799003|7416014|376014|366016|921020;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?srR/A+YLBEL6dfM+bKjdq1KPFwceVs/GVxy2FtpTanJrhrG3Q/9h6mlE95GR?=
- =?us-ascii?Q?swi2/47vn/cYKiW2HCI3iXc+qjzLNrOjQ/JnAjFM5SPTpFnK1mFqAjwC0tY+?=
- =?us-ascii?Q?nv7cS80FKWHof7Ktc7GGiQTfv1643PeSKT3yqt9+TE93FtS/ahUX2dBfTT5y?=
- =?us-ascii?Q?BN6BaQTlN3DUAi4KT523DP2f3AYF5Mk1mcCag+cYKrI9I7fiY6wzj9Brpnmz?=
- =?us-ascii?Q?j105SjrrB3seAWq/zc6PBfRbmoE8I6yhe9BJvO9q3MgmV78/jUrU2h23DM9k?=
- =?us-ascii?Q?W0gLXRZZf3l47zK4WF7OFDp6VI1UO1VRccc8GQAJv2G/Y04e+jj88GMMPt5o?=
- =?us-ascii?Q?lIM916Om2krgJAmRLVkRCLCaUX6D2JTutpd7rfAMZwAHtTnHjrd7JA1Y21RW?=
- =?us-ascii?Q?99AHxuDtreMe105Fyky5kftK1CuEtGPUNUNl+07UrQM+nIT1MQ8gHdxGLU5U?=
- =?us-ascii?Q?tK/+yFDiVEY/ZYOXkDHWZ7iH9UTA6oe0WZvEDPWPDZJIOpzCFHiH11589Z3R?=
- =?us-ascii?Q?P2gURIwa6O9iBr4kLuOqIu7h+er5eHSyxVVcYQIF43S/fUmX8hiwrgQgU3+Y?=
- =?us-ascii?Q?0SwGmbZ6/nTEsTy0EoomuesDxkraKcnTPEcRzuo9AmVrorKoyigIeIXbD4E1?=
- =?us-ascii?Q?5AMHDjenAiqeO6fnpcWlnSt6AYj9CJF92HCR5CR7UT53xem/mwlbHuRxxRm7?=
- =?us-ascii?Q?h2sPuAPMeydnXmW+5YWRKGA835d0X9XsHymYYBgFtFNhopq8YU4cwUlUG58H?=
- =?us-ascii?Q?bP8FOwTn7FN1eaeGeyN6kjYG/t6pCuIdQRUjBIM+EyqgHTU6g3MiOaPZONhO?=
- =?us-ascii?Q?Q+HTUBMCXTYG4/wukmQNlubnh9DnFmIDxcMHkk8yWrM5ZmHQ6EfJ7PnCZuZ0?=
- =?us-ascii?Q?1jPCWdGCfCVDRMZIW+kx2+SyuGXpPpa5zm68W3z6ORuGuiZc8zbv+PbIznGd?=
- =?us-ascii?Q?EP6/cbLXJDyoTHAiEw4bouZ0ZGTw9G8/T3TZd/EXfX/muOeiBwmbCpoxdk1u?=
- =?us-ascii?Q?oElLUb+nqngGTBvrg0gx7bMhNnNkRu233gIAy/JdyTNVGJlWiWcaqRR3Ou0q?=
- =?us-ascii?Q?ajpx3+DxJaxYUsDLAS+IWAIbZ3a7Mh6JGbi5XZQbYPYwfaNyAq0SBJzFZ4Yt?=
- =?us-ascii?Q?NytaLx8Ykx9xns0R4OEDbZja9wGwhTCdu4b0WTvksvvJP1yPfX6gHcCd0+8q?=
- =?us-ascii?Q?uYz13ASnnyn6IgXxwnz3CHvPT2jE8hoH6A1kkwy+alemk1QAHsR3B+gvs/qy?=
- =?us-ascii?Q?sPXxr7fmQ1rBB63av+bjPzBJiqYvDp4vVCXwiiYTd7R0Udl1RmTI0TcSW+nL?=
- =?us-ascii?Q?vvSulVuNUNqL0duCe8FiiY/ukKv3Bgm5usnNLeH1gf3nZpOb/9BuCG97lY29?=
- =?us-ascii?Q?v+8R5gldMuKuR/VdLVRGX+Lu0MqFbaMQGfBmgoq5iZgRFl9YGqM1lwNLQPqN?=
- =?us-ascii?Q?eqLqrnTNTyzmJx4GAoJ/y3YIM5ybE420hjqz1LACEPodT0jY2psZ3LHoAvpg?=
- =?us-ascii?Q?hr0yVa20kKEWVN3eVODg8HSzZKyJ+6kubsoshgicfyHPEq149fbcStbw6kcq?=
- =?us-ascii?Q?2JtyKfBm9YiDbk2WZ1lua3gJmUB02lirzmyJeaxjsAMndEFiUTaByxzASYzD?=
- =?us-ascii?Q?jA=3D=3D?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(10070799003)(7416014)(376014)(366016)(921020);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?MvX0mjQKhr9/jNYb0+txVA7Y3nZbJtfaPizUcG+Y5j8OAkN+XALPXoefro3n?=
- =?us-ascii?Q?pk4w3fUxj0Vaq5PPcvrbbl2mIKHVXwNkb7+9zMYtN1UmUReVh9UkH3XRzYTh?=
- =?us-ascii?Q?UFBERBytRiskZZ74fhnqiGgqJjBnNrFfcPy7JOobKSsTvlZ20Tw6WLz8PNsy?=
- =?us-ascii?Q?esyXHjWRFu1C6mg0SmlBXsz+CnjMf7Yr+W5ga8aJOB/1Yn6FxRN2g6Itnz7N?=
- =?us-ascii?Q?Pv7gnZi/+q5NsLQbG2mEPeDQKWGHVmAPtk7PTYxfds9a1ZGQssk0nI5wEGer?=
- =?us-ascii?Q?OYD+UwfVI9HuqyHO1qylhoXZipQduxG6lkNkxGP+xqWNTFKuvnFi+kZWKSQH?=
- =?us-ascii?Q?exO1TP8YFPXSvf5oxPfxEjViU526Y1BkIjmMWzkGwxfdCRqz3HeAG/dA1jhC?=
- =?us-ascii?Q?43fW7NNQzkamA/o+hTxmOvYYHmgMnvhv2EGtE6/0Eqav8R8FFq/7y3TdAJPh?=
- =?us-ascii?Q?Zcw0rzWO53RhUJYRfncQ51UtSe0XwB9sQc7nOm5hbYYVt0I/mOOOgrg+2I2p?=
- =?us-ascii?Q?7gELFcGAgxnd+7X+TYtapeScCeyCR3yJ/REsRwLHrqRI5DpALVoZYW2avfZv?=
- =?us-ascii?Q?j5CYnaPKPw/hRh37fNm/itKj3Rr9TDrU/kcoaR9IWEa/FjXdX9gvL8gQW/fw?=
- =?us-ascii?Q?YzvCvYy7jCSrzVDYW4g9RqZvD/HXD84ZeRJMfrZp+KyoSYW2RpTkTCwdnuyT?=
- =?us-ascii?Q?T16T7WopEpVeM7UvpY23yFK9ynCXe05tK335oybaLcFNoEHvkmdqpcNCDCE+?=
- =?us-ascii?Q?vxWoac8jFawb4RBxDgBuIRuo8hPJPAvDIuSiehajkg5eB7s1MKbsTr+RWTzT?=
- =?us-ascii?Q?mNoy4FJbPJXnp1zLw6FGnDoCEkdVFpqBIv5EqTxULzut+ulPhraE89U6oVqG?=
- =?us-ascii?Q?upyLlor9IH/zXpCH8wS1DZnN9iPHuxc9AoKSqK3Wv3xW3NNOLJ8sRR7tOHbI?=
- =?us-ascii?Q?0+k0+3twPP773lM6IdPySoc0bmAcNIOJrlVX1sNX0xoYvJwo9EVxvIpqou+N?=
- =?us-ascii?Q?sD8DtVWK7WQ8HHVNOXN6sH+vT4YL+SulWOp+Nvi7CpVnwf+JrQqu1Tkp240m?=
- =?us-ascii?Q?+pzytQX+Icp9FS0QGLcr26XVvUrJj48C+d785KWu4I3VEHI1RxJW3oWRs+X2?=
- =?us-ascii?Q?PWYHSe1oPY4rfzWBJ9y0n6X9Fl2tjR7ohe7qghJVGVPv+8caBsnwJJhaQu2n?=
- =?us-ascii?Q?+dhuuSZpQjW1up5k91JqcDBiOfPWiVHfQukm8R81lsb+3eFig1EoJ1vNvuKT?=
- =?us-ascii?Q?nwcRGKE+ZUWHdfWOhN++2Zfuta7XHMx00X96dK1EDzoK7gK43yCSpbffNFWO?=
- =?us-ascii?Q?HtNDvBEvo79J12IA86pVSt5g1s13rokYRdhXVaDHfWILpL8mqW6tkLQT82oF?=
- =?us-ascii?Q?en44uR1f/OwCxBEOInUg/7NUVv2SjNFMIdRu0CFbE+Y+NQlbTzW/JGHQMRTX?=
- =?us-ascii?Q?kR0ffByoD6uCirb6EwhwGxZWNjd9uYwIg9volgRGHo7kC6eJsjMkzu8lpBb6?=
- =?us-ascii?Q?w/iCfoOZmVoTYiJpbTTyafM/K0rxSDajMjNN021SSSCnAjHp8TY8iGzWQazG?=
- =?us-ascii?Q?xVNlJlWIWc9nacKlTvZZE44KCinC7mCnjiGOPHMNHc1l2VeIa2v94ZjWNCqA?=
- =?us-ascii?Q?fAlq7C0req34PFR7TrxMcLpwtVL+hCn3UyWMOdvSju/W6+WDZaOGCubIdUW0?=
- =?us-ascii?Q?/j4A3HeZa6ockKKw76fJy29vfHywzOw0/ttA8MIAjcskYDwDGV3t6D1Tx6OR?=
- =?us-ascii?Q?rRSvKK1iv/Q03Hd90WiVJ1H2+bDw+RpaQd6aMFAY97tyAgYwPSTM?=
-X-OriginatorOrg: valinux.co.jp
-X-MS-Exchange-CrossTenant-Network-Message-Id: a78af44e-447d-4ce1-383d-08de6cb0be0e
-X-MS-Exchange-CrossTenant-AuthSource: TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Feb 2026 16:39:09.2379
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hTYq4Iivc/zW1APdbFHkpBWVlAXSO6i+Rad8ivWWDj/DOzmUEkj9aTB2gxCtB3WpRvwcHXRdwpkVLhIlJGi+pQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSCP286MB5196
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260215_083921_154407_3D418D22 
-X-CRM114-Status: GOOD (  17.70  )
+X-CRM114-CacheID: sfid-20260215_170231_607412_44367B8C 
+X-CRM114-Status: UNSURE (   7.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -178,144 +105,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some endpoint platforms cannot use platform MSI / GIC ITS to implement
-EP-side doorbells. In those cases, EPF drivers cannot provide an
-interrupt-driven doorbell and often fall back to polling.
+From: Fabio Estevam <festevam@nabladev.com>
 
-Add an "embedded" doorbell backend that uses a controller-integrated
-doorbell target (e.g. DesignWare integrated eDMA interrupt-emulation
-doorbell).
+Add the PMU GRF and IOC compatible strings for the RV1103B SoC.
 
-The backend locates the doorbell register and a corresponding Linux IRQ
-via the EPC aux-resource API. If the doorbell register is already
-exposed via a fixed BAR mapping, provide BAR+offset. Otherwise provide
-the physical address so EPF drivers can map it into BAR space.
-
-When MSI doorbell allocation fails with -ENODEV,
-pci_epf_alloc_doorbell() falls back to this embedded backend.
-
-Signed-off-by: Koichiro Den <den@valinux.co.jp>
+Signed-off-by: Fabio Estevam <festevam@nabladev.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
- drivers/pci/endpoint/pci-ep-msi.c | 90 +++++++++++++++++++++++++++++++
- 1 file changed, 90 insertions(+)
+Changes since v4:
+- None.
 
-diff --git a/drivers/pci/endpoint/pci-ep-msi.c b/drivers/pci/endpoint/pci-ep-msi.c
-index a42f69ad24ad..6e1524c2d891 100644
---- a/drivers/pci/endpoint/pci-ep-msi.c
-+++ b/drivers/pci/endpoint/pci-ep-msi.c
-@@ -6,6 +6,7 @@
-  * Author: Frank Li <Frank.Li@nxp.com>
-  */
+ Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+index 0b8e3294c83e..2cc43742b8e3 100644
+--- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
++++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
+@@ -63,6 +63,7 @@ properties:
+               - rockchip,rk3588-vo0-grf
+               - rockchip,rk3588-vo1-grf
+               - rockchip,rk3588-vop-grf
++              - rockchip,rv1103b-ioc
+               - rockchip,rv1108-usbgrf
+           - const: syscon
+       - items:
+@@ -98,6 +99,7 @@ properties:
+               - rockchip,rk3576-pmu0-grf
+               - rockchip,rk3576-usb2phy-grf
+               - rockchip,rk3588-usb2phy-grf
++              - rockchip,rv1103b-pmu-grf
+               - rockchip,rv1108-grf
+               - rockchip,rv1108-pmugrf
+               - rockchip,rv1126-grf
+@@ -231,6 +233,7 @@ allOf:
+               - rockchip,rk3036-grf
+               - rockchip,rk3308-grf
+               - rockchip,rk3368-pmugrf
++              - rockchip,rv1103b-pmu-grf
  
-+#include <linux/cleanup.h>
- #include <linux/device.h>
- #include <linux/export.h>
- #include <linux/interrupt.h>
-@@ -36,6 +37,82 @@ static void pci_epf_write_msi_msg(struct msi_desc *desc, struct msi_msg *msg)
- 	pci_epc_put(epc);
- }
- 
-+static int pci_epf_alloc_doorbell_embedded(struct pci_epf *epf, u16 num_db)
-+{
-+	const struct pci_epc_aux_resource *doorbell = NULL;
-+	struct pci_epf_doorbell_msg *msg;
-+	struct pci_epc *epc = epf->epc;
-+	struct device *dev = &epf->dev;
-+	int count, ret, i;
-+	u64 addr;
-+
-+	count = pci_epc_get_aux_resources(epc, epf->func_no, epf->vfunc_no,
-+					  NULL, 0);
-+	if (count == -EOPNOTSUPP || count == 0)
-+		return -ENODEV;
-+	if (count < 0)
-+		return count;
-+
-+	struct pci_epc_aux_resource *res __free(kfree) =
-+				kcalloc(count, sizeof(*res), GFP_KERNEL);
-+	if (!res)
-+		return -ENOMEM;
-+
-+	ret = pci_epc_get_aux_resources(epc, epf->func_no, epf->vfunc_no,
-+					res, count);
-+	if (ret == -EOPNOTSUPP || ret == 0)
-+		return -ENODEV;
-+	if (ret < 0)
-+		return ret;
-+
-+	count = ret;
-+
-+	for (i = 0; i < count; i++) {
-+		if (res[i].type == PCI_EPC_AUX_DOORBELL_MMIO) {
-+			if (doorbell) {
-+				dev_warn(dev,
-+					 "Duplicate DOORBELL_MMIO resource found\n");
-+				continue;
-+			}
-+			doorbell = &res[i];
-+		}
-+	}
-+	if (!doorbell)
-+		return -ENODEV;
-+
-+	msg = kcalloc(num_db, sizeof(*msg), GFP_KERNEL);
-+	if (!msg)
-+		return -ENOMEM;
-+
-+	addr = doorbell->phys_addr;
-+
-+	/*
-+	 * Embedded doorbell backends (e.g. DesignWare eDMA interrupt emulation)
-+	 * typically provide a single IRQ and do not offer per-doorbell
-+	 * distinguishable address/data pairs. The EPC aux resource therefore
-+	 * exposes one DOORBELL_MMIO entry (u.db_mmio.irq).
-+	 *
-+	 * Still, pci_epf_alloc_doorbell() allows requesting multiple doorbells.
-+	 * For such backends we replicate the same address/data for each entry
-+	 * and mark the IRQ as shared (IRQF_SHARED). Consumers must treat them
-+	 * as equivalent "kick" doorbells.
-+	 */
-+	for (i = 0; i < num_db; i++) {
-+		msg[i].msg.address_lo = (u32)addr;
-+		msg[i].msg.address_hi = (u32)(addr >> 32);
-+		msg[i].msg.data = 0;
-+		msg[i].virq = doorbell->u.db_mmio.irq;
-+		msg[i].irq_flags = IRQF_SHARED;
-+		msg[i].type = PCI_EPF_DOORBELL_EMBEDDED;
-+		msg[i].bar = doorbell->bar;
-+		msg[i].offset = (doorbell->bar == NO_BAR) ? 0 : doorbell->bar_offset;
-+	}
-+
-+	epf->num_db = num_db;
-+	epf->db_msg = msg;
-+	return 0;
-+}
-+
- static int pci_epf_alloc_doorbell_msi(struct pci_epf *epf, u16 num_db)
- {
- 	struct pci_epf_doorbell_msg *msg;
-@@ -110,6 +187,19 @@ int pci_epf_alloc_doorbell(struct pci_epf *epf, u16 num_db)
- 	if (!ret)
- 		return 0;
- 
-+	/*
-+	 * Fall back to embedded doorbell only when platform MSI is unavailable
-+	 * for this EPC.
-+	 */
-+	if (ret != -ENODEV)
-+		return ret;
-+
-+	ret = pci_epf_alloc_doorbell_embedded(epf, num_db);
-+	if (!ret) {
-+		dev_info(dev, "Using embedded (DMA) doorbell fallback\n");
-+		return 0;
-+	}
-+
- 	dev_err(dev, "Failed to allocate doorbell: %d\n", ret);
- 	return ret;
- }
+     then:
+       properties:
 -- 
-2.51.0
+2.34.1
 
 
 _______________________________________________
