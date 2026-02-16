@@ -4,105 +4,153 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6ED84E81A3C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 16:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F9FE81A3C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 16:19:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PwpWcpTBfbz8jlkpbKED94Q9fJifS+IcEc3lECexgK0=; b=VBMoJQEvudw9Vld0UxsnfudqXm
-	fhJwoO4yFc+w4fybSe1oS8UdlTu341Q9rxGC+BVTU7HYaiXNkCsz1JKgEp9kD6sgCoSWuTV7NzpHJ
-	QdEzKA1DBNPx5edXjB7/aZ+EqyHbkn7/j+MeQiLefENets3NqZDObAqbXgN3vuf9RziQaxGNGfeST
-	odX9E2a4wqh8uETUPYcJueGF6SqGkNJsoYtNYiJi8DieIBYy57sknBGc5ZUmBJYl0QbIB9scW4pyQ
-	xPwZyjEMdsT+p5VPJbZ5izdQYV7fwxu5By3/keoN6hY45Sd+TynK9o+SvUvrtk25XBpzfZ9yBFAbv
-	IS1qlk6Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=e1YVFz1L+VwF3jt/xraUIHvUv3fUmSJa4cIcbaky7IE=; b=iz3DZY8WxBUNeH
+	Q+pzoOZB1mz6Zf5/GzCJQi0NoKnWKhzANQpCayRYX9cws4MMzIJq5mKGIv2B6f7cmHqWeswAXzZJ2
+	b/FCn24zhpYcCcLDiB5A3O2CbCGvARU8I36vH4ZrIssv3478QFx3po/MZtY6MQO+hed7lTLS4o6PW
+	ivsxBWzU6oFiPYAElW2HxTXUkTRiAJFB7GLewJN8giTGd6g+JLXfkaY5BIxaKbN2GCpFYA13P1QtO
+	pkA2YyHfigGHke8LMOLoLiKUvnx2dtZovJoyYEbboPBg43d+QRTp4EdKGfhp9zUy+aKxoaHMoTYcu
+	XH76mxif0GsTSQ3Fn1aQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs1I3-00000006zSC-05zH;
-	Mon, 16 Feb 2026 16:17:39 +0000
-Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
+	id 1vs1JM-00000006zgI-0rPn;
+	Mon, 16 Feb 2026 16:19:00 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs1Hz-00000006zR1-2umV
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Feb 2026 16:17:37 +0000
-Received: by mail-qk1-x733.google.com with SMTP id af79cd13be357-8cb3bae8d3eso353897985a.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 16 Feb 2026 08:17:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1771258654; x=1771863454; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=yx5A2gw99GEH72oJ5J3K3NBwM48Lr9vgSpEF2S1mSc0=;
-        b=mMTteU2Ewpuw7RLnCU9QGkRU3K1EzI75oTIHseK2nbMsxyptI2bd7ZJhJ1qMdyHo5W
-         T73gsoxEHeby/EIKj7cyQfwFjYKJJDTAGj+hOHzshhhsCLQNvLxDZXcve8fp5v8pNtAR
-         94VYnAagO5/5yhHsngpYvL/nwwDVfdxszMIvFCYx5SSbWx9Q+h941Gq/H4feTni6jmDV
-         T+exB2XQUJofKClZO3CwyOE795R7i3FnYooZ+2+QHuguOrvbNcGYchNiXrhrXCRSjXqw
-         yTCnK4wAwdh7F+kyhR9ePsYkfqn6JwXefrBuzDyxLHCoVkqaEKK5UrkEAqXyJiLHhiSY
-         sDjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771258654; x=1771863454;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=yx5A2gw99GEH72oJ5J3K3NBwM48Lr9vgSpEF2S1mSc0=;
-        b=cKibycLc0Ltsx4+IP4S2L/tUODM9D6S8WHxa1gRogHjy+qIoFSH9uETmbfZ+Wsp9q4
-         VADhOhAQ7+UH17U7WthvAtV/QZ416pGhOq0ErgL06mBGQRLsNU18QG8Y/4mFRKV699kY
-         a7HJRwFWVV6wVi8jko7H5Je9jYgk7PnpUTZJgWMGmfYKBMpaB6t7slqhQmiU80WDLjME
-         sKJsg3QnbSRDrmJ69iD2z4kL+mPTy7wpZJLWclFApAGAAbsQ2Awz/64FE8L25cFKPE0T
-         JyqVXVkGTItKt31TcE6A7Du4jbULXNZ7mjklnnGu1GU24VOkNKzOf+SUvjrYhOTE4fxk
-         c2Ng==
-X-Forwarded-Encrypted: i=1; AJvYcCXjwVzfU3sx4h+X7wjZUi2pzdQbvPrw7lAsQ6NmdBWnTK8y6ojOBji2gaWKwIdFYei2z97V9QH7NcLV8M4Uvw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yybp6Lpyqc05ghNrd8AOIA53WsoJ+uLEVRZJz4kujI660fImZ68
-	ShyEsenp3DiDQ3JkMIZaRPY0PDYPGBWWXBe//diMyHMV1yuuHDWw3ri/j4ylkhlNFhk=
-X-Gm-Gg: AZuq6aKFp90m/QmQyNKEk6dIsHWBQD7C8dg8shBtPPS6hHPTK7EnmdJL5zr6tyRa/Hu
-	3vN0n+UADo88FnywsRmB4GxvhLFDdiJYh84ZJ6h55XfYEdn74MjNS+8DQz7wxczM9bLjGCEG2jR
-	R568JUD31WrJDzPnof5rGLFzarbXffIMuiGZKNRonmUm7HiZ7zjaC/r+MV9zW3Bog9SdND7HI7n
-	113g42Zz+tfdLDC2iOe5aSDsVE2t/X6A0KxaiLoqiOv2Iwk/W7/q2NQcbcEzijQ30eBvmBwNXWU
-	IMxxlIvSZAzJmpb52nAKLEergDo26CHTa3TWbmGB60ojTadnlREXw+YYjPFLbjKPYEt5XoLSTRB
-	//h4YpQX6m39wA3kWasopBRw6NjD1JcwE/hStIHK3Jyhi0LTRDX6gLKrkaBps+P73k2tO5B8g+b
-	8MsHNVkxnjCsJtaFLZT/r5tbmC2FlH
-X-Received: by 2002:a05:620a:40c9:b0:8ca:105b:86b6 with SMTP id af79cd13be357-8cb409219e2mr1421526385a.88.1771258653567;
-        Mon, 16 Feb 2026 08:17:33 -0800 (PST)
-Received: from ?IPv6:2606:6d00:15:210e::5ac? ([2606:6d00:15:210e::5ac])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cb4120f939sm883143485a.44.2026.02.16.08.17.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Feb 2026 08:17:32 -0800 (PST)
-Message-ID: <90e62bf797b0532e5556adaf9e15cc7b73e18411.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: rockchip: Disable VIDEO_ROCKCHIP_VDEC when
- compile testing for Hexagon
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Nathan Chancellor <nathan@kernel.org>, Detlev Casanova	
- <detlev.casanova@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Brian Cain <bcain@kernel.org>, Nick Desaulniers	
- <nick.desaulniers+lkml@gmail.com>, Bill Wendling <morbo@google.com>, Justin
- Stitt <justinstitt@google.com>, linux-media@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-hexagon@vger.kernel.org, 
-	llvm@lists.linux.dev
-Date: Mon, 16 Feb 2026 11:17:30 -0500
-In-Reply-To: <20260213-media-disable-rockchip-vdec-hexagon-v1-1-3f903398cc83@kernel.org>
-References: <20260213-media-disable-rockchip-vdec-hexagon-v1-1-3f903398cc83@kernel.org>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-User-Agent: Evolution 3.58.2 (3.58.2-1.fc43) 
+	id 1vs1JI-00000006zfB-2Kgb;
+	Mon, 16 Feb 2026 16:18:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=YAhihLBgI7pV6g/p6N7Q3hHnpv/8ZBc7dNpnCWF3fb5t0Ir8JrtYBIH8FNFffaWDRp3VuhrCbyz+dconVDJupvmmcBn4k6oeqFqOLc9UmmbLByZl4mMFHXY8F82Jeread6mwCqJg/hXHQykMQp0y5WUr3xPcZqSvBcEbvBfEcqtNCazdE3ed58XWcaoWQKLq1hNsBQWh8uyBx+nCPpRMuEPz9FJtwZODgf/USKscuQy0fXpeKKxvUJ7xtt2XwU8cXBMpxplMiAUhqP3IAe7CfYfyN6g1lYcMEc5teV0T9eJesUvX+jU38+nzhQOaTxysY8VbYF2vKfvkhTjQ8YPu7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=rneGX/PSSUMPn7240h3nCwFepU3s4NXdBaGM18NIOiI=;
+ b=p0ZPuj1Dtqc3CbHfx9o7ruDbBg8WXQdlNfDynBQBJna4vJhFBU3zLDNU49JpkYbijK3owewV0/Yym4wjT5/UmJ8zs/gm8p3pCfvWds6GoWHl4XbCYKXyNIwrktlvkkV0k+McewFszX5BmdEZ5VyWwEmA5NKyTqkG0N+w6msF3FLJezLeynNmIuQZGDfaxWUlbMFLm3FEHKbL0HdI++qcqqcesVplL3Ot0v9jWZ4mbtHAWOtw+BV6paAJr8lfPW2cHyL6rmWrrqDFGuv+5HyarqkazK6umkZQkq3XHdaXo6SjIz7zmsYNVRo7f7hLhGlIw3KEQZ9uDxtFAkUf62SZ/w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=rneGX/PSSUMPn7240h3nCwFepU3s4NXdBaGM18NIOiI=;
+ b=Jgz5AwS3ltO5abVkIvlwTnSvI74oNXkmKPPzi2lJnBNXik60FdR+XpL353h1r07v4132oMCuQ0EEh7q6+kCNj2G5zp6wrYFBSJsJVe8Vkx3PBuEJSUzXAcdmydtOgvwObCPDk0y/Tj5Q/k1JvvcPUUJMWhQBRzQNDOGg8YIT4yT0zWFLtEcmT1PHNO5h11IWbaLxYHcdXzn9VMe80L1jilzxGtOGEGepabJ34kPVvEWuEFCb0j0bJRXjBigVFq5lXZRxNc4xNQE6IDIC5T0Nfj38wW6DBEYw90h4FxUqOG0UR3GcvEVKWOtAqg/pswHYKI0H7Ui1cQXUubEE1g5iBg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by AM8PR04MB7858.eurprd04.prod.outlook.com (2603:10a6:20b:237::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9611.11; Mon, 16 Feb
+ 2026 16:18:52 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9611.013; Mon, 16 Feb 2026
+ 16:18:51 +0000
+Date: Mon, 16 Feb 2026 11:18:42 -0500
+From: Frank Li <Frank.li@nxp.com>
+To: Koichiro Den <den@valinux.co.jp>
+Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org,
+	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com,
+	heiko@sntech.de, kishon@kernel.org, jdmason@kudzu.us,
+	dave.jiang@intel.com, allenbh@gmail.com, cassel@kernel.org,
+	shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, ntb@lists.linux.dev
+Subject: Re: [PATCH v7 8/9] PCI: endpoint: pci-epf-test: Reuse pre-exposed
+ doorbell targets
+Message-ID: <aZNDYmR3e2z-VnZA@lizhi-Precision-Tower-5810>
+References: <20260215163847.3522572-1-den@valinux.co.jp>
+ <20260215163847.3522572-9-den@valinux.co.jp>
+Content-Disposition: inline
+In-Reply-To: <20260215163847.3522572-9-den@valinux.co.jp>
+X-ClientProxiedBy: PH7P220CA0167.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:510:33b::9) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|AM8PR04MB7858:EE_
+X-MS-Office365-Filtering-Correlation-Id: ee585d58-e606-4ab5-fc12-08de6d7712c8
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|7416014|376014|19092799006|1800799024|7053199007|38350700014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?tIczgJlWpoTP6eJmcs4QvqF8m/gw/+Jn7GAaw0jPQAIMv50+0u3bcyFKhLEQ?=
+ =?us-ascii?Q?ENsTZnWm5u63I6HRcHbk4z6uk8EsWCSJbf5mR1lqunPMUxqCtdV9Fi3KLJga?=
+ =?us-ascii?Q?hTDnbppzTxsNtmD55BpUhmhf6K34k46hvDRdWYO8wwUmGbAq0DY3xWVg33mj?=
+ =?us-ascii?Q?TwQM+YdKlGjXFumVZ5NvoUuDU6tzmGHr0TN5SiPkhOkjHzkeHaGml+/Gg7Hw?=
+ =?us-ascii?Q?+PsmA40bt3cKNQkBZKWto6zLpBHghUj7WOCQ+6XBqgo1KTqPB7NapriDRYtE?=
+ =?us-ascii?Q?MxJ99IuXUK4OSdI8pe2WhqVRzfVYeXQrHsYZzAa20ozXdXKERFd/cVP0m/bp?=
+ =?us-ascii?Q?EGXdjUvBLfQXrx+QW8gc2iOjCfCzx9tRZ1PFH5KEgYhlv34b0eE51n6bTtPh?=
+ =?us-ascii?Q?97Zj5CjY+ANeO6vD/CMbqvhAcD2E28arfdCa7n85c3HvyrcziCXRZaYom1n3?=
+ =?us-ascii?Q?AEi4jw1LNrBWlzTD3srTFCVwr7SfGy5omGhjpodHdDB2y5Ii+dVHHTEr3vbA?=
+ =?us-ascii?Q?taQO8lDJOCUaULDyaHYcGlnnnLfJ5jFSOWuJ/hFpnSs3AZHc7OLN8/KHOFZB?=
+ =?us-ascii?Q?xJPNidFKkGcF9WjMgxpibgTkZCNXf5YKu8OIHs7nVoBUcjzAthOWMeUEgmZh?=
+ =?us-ascii?Q?Am/1Bmd17WqizYVbM+mSWiO5iUmuv/Y7d5ZGLjg4HDzktW93mD7JYEOouci+?=
+ =?us-ascii?Q?RToXt1w4Pi2ToLpd5srzJQR/rkYUOMYjm3c2a1bMws4HJzcL610DA3rJ9VMU?=
+ =?us-ascii?Q?rHQXzR/GggEOjqFFE6S7jhbj2N0GZiud8KTH/PpxpJOjT/jqatFBrEp8pf4Y?=
+ =?us-ascii?Q?dS1+njr6B86Y7WOnmyJU3p9Y6NokfQN0t0Nn3e+hMoyymoFsap9D8tke4uH8?=
+ =?us-ascii?Q?1cP3wyrWfYQBdJUYc2RxmO5mHPP0Z5kpmLhumogNNN+21VZEkb1dgQTe16VC?=
+ =?us-ascii?Q?fPrwZaswTtbPpu5+oFR0Zq7s75lY2N2JqGqL4oyQV2tZGsDfihYd/G/oH+d7?=
+ =?us-ascii?Q?O4LpAN0jRNKYVhmeVUw9kGKFQUT3YyMbqATM4nzsVLj4gdejOj/Oa0pnd5do?=
+ =?us-ascii?Q?Ou6DUbxBpa7fLfw2MiWzQSRjoY1yBKil0bj/2m8SiFW/k8B6QlBmtop8fJDw?=
+ =?us-ascii?Q?upbnwQW1jVZJaEMRmU8yCCy8fZ1ZsRkDJYk1lafA1SSDyWSY2jEalwNQEU4s?=
+ =?us-ascii?Q?DQHSNyNH8rXwdC/dd7U6ZpKyPNYW+95uuE9WwFSUdfWfqsSVLLnU4eP+vTgT?=
+ =?us-ascii?Q?QRgaBMUTEhzx0aeA9/QstgMpuSY+NvBaAk9qT5+iFQKukWEQL2vkbP15MKUW?=
+ =?us-ascii?Q?uqRf/j2FCkLEnQVsAI1OE4EZEVkhv+818MbzepSCNjJDa5pqSMy7iFWJ37ji?=
+ =?us-ascii?Q?NEPb1cLbrAimcsmyZJeYxluuDlvRq0RvlXopmilDKqkAu1QNNvui7euwQq4s?=
+ =?us-ascii?Q?5hsAeeZDDmWGv9tKxDg5iyrCT+gRyr0Rk4mcsm8qq8nyb+Fxuj3pUaEuF9Jz?=
+ =?us-ascii?Q?d8HgyFH7NjaosepCxvylbWJ8ps/kwYX8/LBIE8h2PiCS3I/P5NJOGIJn0i0t?=
+ =?us-ascii?Q?U2Cb+3A3f8skSsaGbdNTNi4ejtMM797nKcBSmLpByX+CexGHoGJDE7UDfORc?=
+ =?us-ascii?Q?nGjoHGEDDABo0RHhcMEB8/M=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(7416014)(376014)(19092799006)(1800799024)(7053199007)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?dzvXA2GtVCXdDAhXumBfIP6gClCt8F9vEJbFjnZa/owXtMXZTHsnVoJMeAuZ?=
+ =?us-ascii?Q?K85M6icvt1C3tKLdpFH/M4VZvww3DuJdf1MK17cQ+i8j4deOXS74wEvMnV/O?=
+ =?us-ascii?Q?PS730yg9qhLhR/N5WJbowHtxLbD5P+b3nxz5/m7yt2LJEdj4yhFGOdHMxPuq?=
+ =?us-ascii?Q?SSgwJ6vXM2GWC7rlmFgZaWjpqwxk58LOAJWOk2Ho8QXrfR9feDXEXLf0mTvv?=
+ =?us-ascii?Q?cH7xT6ijxHs8XoeSVd/WjH1v4OprwB4+q0u3Dss/0u9rNkMY4L7XpoGC4Yu/?=
+ =?us-ascii?Q?eZbrNo4lZeYto2iTeWBMJeJ/X9BIKx4+3nHXzxpF9FWwbc4eOQcFX1zrt9tt?=
+ =?us-ascii?Q?gFPO1fD6PJyDHjO4HMSepU7apbTS6hGzOPzXC4xqaei23BlfRGFYO95ZtdGe?=
+ =?us-ascii?Q?hF5qzCAr20V9lhea6ox16TXkOClSG6DkxnoOfnGr+eUcXXyLuZJ7HHALEHJf?=
+ =?us-ascii?Q?Wi0HiwMLyyJQ++eUNkWEWg1NV9zIMZ4tsL6P4DicuBRDBlV3tiGtwDfq/h8t?=
+ =?us-ascii?Q?fEMiDUKo8qcernmQdohWcgn2fhXTdMRwxm52IaWHiaUAXozJusH5QYfXq8aa?=
+ =?us-ascii?Q?imKEi3/Ht8qNYrFbwHLkg7aCIixxoLtYUGLbJn+FAcYxsYvl8vxtLbelR368?=
+ =?us-ascii?Q?vaHwv/zt+sib1dN3Qlbjpxw8vkFrRUDZypXYLLMv0PbH3ps5InPq5Ydr3jR6?=
+ =?us-ascii?Q?Zhav87WoEGun5P1KcaJoYONe1PL9JqpORW9QSqSc4wH6EoAKESXMZuI09Nm4?=
+ =?us-ascii?Q?93eN89oJHYC5ndqe/ATxsWohRbZk8kQdWYMrfYY1eF5/HNMXalZAq/Bo9xo0?=
+ =?us-ascii?Q?NHmQIi2L5eF/046aVbPqT39ahew+CRd9OlcksAn1nYn0LPXbUhZvQO2C07Cc?=
+ =?us-ascii?Q?DaCdwVZeAw41/WOg2Wt13LC/7u/fpMy0q+JIr4bdCOi6KV/8RJ/APrKekhsK?=
+ =?us-ascii?Q?TRrsCfuRqdm1gaBRM2+sisGl95c3kCWiaH/r6TP79u8G0VeMBL2LmIBRv3g0?=
+ =?us-ascii?Q?00RgyCH4UnrXCliAAx2HW2s1ZvqRo0LaIld9NatChUSYeI3wUKZ3cmnpALog?=
+ =?us-ascii?Q?2Ov/W4wc8MNxjywfogjQf0bmE1wTJ6o2Z6A+QVBhWw1Xf9SOVZi7/PLhyjgP?=
+ =?us-ascii?Q?kJEA9sBVTXEJRItP2XAxGzbw/4WdBqFEcSKVnVJj2e5p2kpM1dGyR8VzQF/f?=
+ =?us-ascii?Q?DtZSv3mWo3MUXLAjr82LS3jz9SjiV+ILRBnZ5TXhdi52DamFKLKxj04uQIGX?=
+ =?us-ascii?Q?YbPMFacpncescmmrfW848y7SzFpkq8IJZD+kWmDplr7avckSFB68VQ/qTUS9?=
+ =?us-ascii?Q?n6LvQw7C1C7de5UuFLOxsIJMkK7lKEV0HnRPSVoPGgyvS86X306AxBSX/Onz?=
+ =?us-ascii?Q?9DXNmVeGJYltaWE2KfhkKUMjDv/qKE2jhD38SrgZkpYs8X+1A5E9cv1v5q6i?=
+ =?us-ascii?Q?lSt8+aC7LAKgZiCpzqzyCt15dbX5rZfW6HfXrvQd88XorQlGGG3LOHrNlmUA?=
+ =?us-ascii?Q?EjJ6Gc6I2Uo31lxDydamjZ8RTwV/dlMPE1OXUaoURC3OYgPMD3cMgYe8qfyf?=
+ =?us-ascii?Q?to5BOcGsyDuLxz014IqPULoqKYL5pGe8/rnS1X6DWsxf1fVpsE+LiRWWQdEA?=
+ =?us-ascii?Q?lM3WgVkBtI5qkDUIeSjU1sfmgvd0znTHkC88apDTGmHmYdfhXiBRKnNwzMMn?=
+ =?us-ascii?Q?Euz2zJkV4eid17f3Uqfhzk1oqGD4F33ICbuw4QwZOos7wOS6?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ee585d58-e606-4ab5-fc12-08de6d7712c8
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Feb 2026 16:18:51.8565
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: E7p1C6DvPh7lNKnRfoJC5ZUUg6aA3Ko/tpPjuo44NzbQo/cgr9VWe7eBzpg0eTpxzvBieuQrv8QfJfUL/aFsyw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7858
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260216_081735_993451_1769086A 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20260216_081857_451625_D3287B63 
+X-CRM114-Status: GOOD (  26.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,99 +162,170 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5967132649575778366=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============5967132649575778366==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-g0IOH3/wXifty34RwVB5"
-
-
---=-g0IOH3/wXifty34RwVB5
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi Nathan,
-
-Le vendredi 13 f=C3=A9vrier 2026 =C3=A0 15:10 -0500, Nathan Chancellor a =
-=C3=A9crit=C2=A0:
-> Building rkvdec-vdpu383-h264.c can take a few hours to finish building
-> with Clang 20.1.0 or newer when compile testing for Hexagon. While this
-> is further investigated and understood on the LLVM side [1], disable
-> CONFIG_VIDEO_ROCKCHIP_VDEC when compile testing for Hexagon.
->=20
-> Link: https://github.com/llvm/llvm-project/issues/178535=C2=A0[1]
-> Signed-off-by: Nathan Chancellor <nathan@kernel.org>
+On Mon, Feb 16, 2026 at 01:38:46AM +0900, Koichiro Den wrote:
+> pci-epf-test advertises the doorbell target to the RC as a BAR number
+> and an offset, and the RC rings the doorbell with a single DWORD MMIO
+> write.
+>
+> Some doorbell backends may report that the doorbell target is already
+> exposed via a platform-owned fixed BAR (db_msg[0].bar/offset). In that
+> case, reuse the pre-exposed window and do not reprogram the BAR with
+> pci_epc_set_bar().
+>
+> Also honor db_msg[0].irq_flags when requesting the doorbell IRQ, and
+> only restore the original BAR mapping on disable if pci-epf-test
+> programmed it.
+>
+> Signed-off-by: Koichiro Den <den@valinux.co.jp>
 > ---
-> =C2=A0drivers/media/platform/rockchip/rkvdec/Kconfig | 3 ++-
-> =C2=A01 file changed, 2 insertions(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/Kconfig b/drivers/med=
-ia/platform/rockchip/rkvdec/Kconfig
-> index 5f3bdd848a2c..d03689464206 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/Kconfig
-> +++ b/drivers/media/platform/rockchip/rkvdec/Kconfig
-> @@ -1,7 +1,8 @@
-> =C2=A0# SPDX-License-Identifier: GPL-2.0
-> =C2=A0config VIDEO_ROCKCHIP_VDEC
-> =C2=A0	tristate "Rockchip Video Decoder driver"
-> -	depends on ARCH_ROCKCHIP || COMPILE_TEST
-> +	# !HEXAGON: https://github.com/llvm/llvm-project/issues/178535
-> +	depends on ARCH_ROCKCHIP || (COMPILE_TEST && !HEXAGON)
-
-This is clearly not a pleasing change to make. As this specific data struct=
-ure
-and usage of bitfield has been discussed (along with the numerous issues in
-clang/llvm around these). We also agreed to move away from bitfield for thi=
-s
-data structure and use a bitwriter. I would favour delaying this change to =
-give
-devs the time to port instead. Ping again if nothing moves within few weeks=
-.
-
-best regards,
-Nicolas
-
-> =C2=A0	depends on VIDEO_DEV
-> =C2=A0	select MEDIA_CONTROLLER
-> =C2=A0	select VIDEOBUF2_DMA_CONTIG
->=20
-> ---
-> base-commit: c824345288d11e269ce41b36c105715bc2286050
-> change-id: 20260213-media-disable-rockchip-vdec-hexagon-eb67c47292c5
->=20
-> Best regards,
-> --=C2=A0=20
-> Nathan Chancellor <nathan@kernel.org>
->=20
-
---=-g0IOH3/wXifty34RwVB5
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaZNDGwAKCRDZQZRRKWBy
-9PhBAPwMxt2qHIuuv8Re3nGYyjxclF1akWrq8joXpNiryhAGZQD8DZ31iVeXv3Jn
-qIdzhD88lbsc2tAt4dDx0Aynb0/hEQw=
-=AYDo
------END PGP SIGNATURE-----
-
---=-g0IOH3/wXifty34RwVB5--
-
-
---===============5967132649575778366==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
+>  drivers/pci/endpoint/functions/pci-epf-test.c | 84 +++++++++++++------
+>  1 file changed, 57 insertions(+), 27 deletions(-)
+>
+> diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+> index defe1e2ea427..7b0955b4c703 100644
+> --- a/drivers/pci/endpoint/functions/pci-epf-test.c
+> +++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+> @@ -87,6 +87,7 @@ struct pci_epf_test {
+>  	const struct pci_epc_features *epc_features;
+>  	struct pci_epf_bar	db_bar;
+>  	bool			db_irq_requested;
+> +	bool			db_bar_programmed;
+>  	size_t			bar_size[PCI_STD_NUM_BARS];
+>  };
+>
+> @@ -730,7 +731,9 @@ static void pci_epf_test_enable_doorbell(struct pci_epf_test *epf_test,
+>  {
+>  	u32 status = le32_to_cpu(reg->status);
+>  	struct pci_epf *epf = epf_test->epf;
+> +	struct pci_epf_doorbell_msg *db;
+>  	struct pci_epc *epc = epf->epc;
+> +	unsigned long irq_flags;
+>  	struct msi_msg *msg;
+>  	enum pci_barno bar;
+>  	size_t offset;
+> @@ -742,13 +745,28 @@ static void pci_epf_test_enable_doorbell(struct pci_epf_test *epf_test,
+>  	if (ret)
+>  		goto set_status_err;
+>
+> -	msg = &epf->db_msg[0].msg;
+> -	bar = pci_epc_get_next_free_bar(epf_test->epc_features, epf_test->test_reg_bar + 1);
+> -	if (bar < BAR_0)
+> -		goto err_doorbell_cleanup;
+> +	db = &epf->db_msg[0];
+> +	msg = &db->msg;
+> +	epf_test->db_bar_programmed = false;
+> +
+> +	if (db->bar != NO_BAR) {
+> +		/*
+> +		 * The doorbell target is already exposed via a platform-owned
+> +		 * fixed BAR
+> +		 */
+> +		bar = db->bar;
+> +		offset = db->offset;
+> +	} else {
+> +		bar = pci_epc_get_next_free_bar(epf_test->epc_features,
+> +						epf_test->test_reg_bar + 1);
+> +		if (bar < BAR_0)
+> +			goto err_doorbell_cleanup;
+> +	}
+> +
+> +	irq_flags = epf->db_msg[0].irq_flags | IRQF_ONESHOT;
+>
+>  	ret = request_threaded_irq(epf->db_msg[0].virq, NULL,
+> -				   pci_epf_test_doorbell_handler, IRQF_ONESHOT,
+> +				   pci_epf_test_doorbell_handler, irq_flags,
+>  				   "pci-ep-test-doorbell", epf_test);
+>  	if (ret) {
+>  		dev_err(&epf->dev,
+> @@ -761,25 +779,33 @@ static void pci_epf_test_enable_doorbell(struct pci_epf_test *epf_test,
+>  	reg->doorbell_data = cpu_to_le32(msg->data);
+>  	reg->doorbell_bar = cpu_to_le32(bar);
+>
+> -	msg = &epf->db_msg[0].msg;
+> -	ret = pci_epf_align_inbound_addr(epf, bar, ((u64)msg->address_hi << 32) | msg->address_lo,
+> -					 &epf_test->db_bar.phys_addr, &offset);
+> +	if (db->bar == NO_BAR) {
+> +		ret = pci_epf_align_inbound_addr(epf, bar,
+> +						 ((u64)msg->address_hi << 32) |
+> +						 msg->address_lo,
+> +						 &epf_test->db_bar.phys_addr,
+> +						 &offset);
+>
+> -	if (ret)
+> -		goto err_doorbell_cleanup;
+> +		if (ret)
+> +			goto err_doorbell_cleanup;
+> +	}
+>
+>  	if (size_add(offset, sizeof(u32)) > epf->bar[bar].size)
+>  		goto err_doorbell_cleanup;
+>
+>  	reg->doorbell_offset = cpu_to_le32(offset);
+>
+> -	epf_test->db_bar.barno = bar;
+> -	epf_test->db_bar.size = epf->bar[bar].size;
+> -	epf_test->db_bar.flags = epf->bar[bar].flags;
+> +	if (db->bar == NO_BAR) {
+> +		epf_test->db_bar.barno = bar;
+> +		epf_test->db_bar.size = epf->bar[bar].size;
+> +		epf_test->db_bar.flags = epf->bar[bar].flags;
+>
+> -	ret = pci_epc_set_bar(epc, epf->func_no, epf->vfunc_no, &epf_test->db_bar);
+> -	if (ret)
+> -		goto err_doorbell_cleanup;
+> +		ret = pci_epc_set_bar(epc, epf->func_no, epf->vfunc_no, &epf_test->db_bar);
+> +		if (ret)
+> +			goto err_doorbell_cleanup;
+> +
+> +		epf_test->db_bar_programmed = true;
+> +	}
+>
+>  	status |= STATUS_DOORBELL_ENABLE_SUCCESS;
+>  	reg->status = cpu_to_le32(status);
+> @@ -806,17 +832,21 @@ static void pci_epf_test_disable_doorbell(struct pci_epf_test *epf_test,
+>
+>  	pci_epf_test_doorbell_cleanup(epf_test);
+>
+> -	/*
+> -	 * The doorbell feature temporarily overrides the inbound translation
+> -	 * to point to the address stored in epf_test->db_bar.phys_addr, i.e.,
+> -	 * it calls set_bar() twice without ever calling clear_bar(), as
+> -	 * calling clear_bar() would clear the BAR's PCI address assigned by
+> -	 * the host. Thus, when disabling the doorbell, restore the inbound
+> -	 * translation to point to the memory allocated for the BAR.
+> -	 */
+> -	ret = pci_epc_set_bar(epc, epf->func_no, epf->vfunc_no, &epf->bar[bar]);
+> -	if (ret)
+> -		goto set_status_err;
+> +	if (epf_test->db_bar_programmed) {
+> +		/*
+> +		 * The doorbell feature temporarily overrides the inbound translation
+> +		 * to point to the address stored in epf_test->db_bar.phys_addr, i.e.,
+> +		 * it calls set_bar() twice without ever calling clear_bar(), as
+> +		 * calling clear_bar() would clear the BAR's PCI address assigned by
+> +		 * the host. Thus, when disabling the doorbell, restore the inbound
+> +		 * translation to point to the memory allocated for the BAR.
+> +		 */
+> +		ret = pci_epc_set_bar(epc, epf->func_no, epf->vfunc_no, &epf->bar[bar]);
+> +		if (ret)
+> +			goto set_status_err;
+> +
+> +		epf_test->db_bar_programmed = false;
+> +	}
+>
+>  	status |= STATUS_DOORBELL_DISABLE_SUCCESS;
+>  	reg->status = cpu_to_le32(status);
+> --
+> 2.51.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5967132649575778366==--
-
