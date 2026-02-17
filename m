@@ -4,64 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 221E1E83830
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Feb 2026 20:36:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 469C3E8384B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Feb 2026 01:39:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F2lLPWsrUEQqlWFO3uxofMFEQWFJR2R+5XaV+QD4x0o=; b=QW9IicXImcU6Hu
-	F3gb7qDy7yYxaRxXSo2qjh/bjj27TpeYeKIbPbTQtSJAT0lOvdiWxjXYhfgrMkg/bXAQ3IbHe9xR5
-	1uO8KScnZTxwemdxQ0tPpfsb9sWHNeCwFS7B4C/mibUrSI+CsLr9NvLYEIU8WWvLhrNDEqPD/QQPU
-	VOyFEbF18Ir4KH0Pa6uJbFOpNM1DBGERwt3P5S6zRhgQ/Y6buXNMfMQvyF7YAumK1SfYVfyMJ7lSo
-	ebQh57eZXQzPTi0xufsPq1kgJS8nffbyF/ikbPQjVZDYkiqOs7j1sYoMwoFZb1IcW9IzN0AZjIWIC
-	miPbnUTKD/JXD8+Hi1Yg==;
+	List-Owner; bh=wGZsEZNKW3WGK+mm1NhcitsQ+jcn1lmPPNVRxB0fcss=; b=e8+jMTGE2F3pkJ
+	cANYYS3lCIEPYsi7tnTBpxF0vkjVifcR4mvOkb3m1RhOuTHH32kSJZBkoRVVAvhJrz1LQU9dwNfv1
+	IYEipBcTt2TvTy3IG0xc3ZPmgSBqZbv34NURlS2l75Zc47UWNzhjWh/UxqKtjbIuuBcAe00KZ2Z/w
+	L7hlW8eloxmH7aZ/eDpSS+JG1Bc2P+rJpEcQJSLPgkAGTa9VjULF9pikHa2FsBDv/OCvOgHfkqMLi
+	c3VaqRIwolQDEsOOrgHECXqFcs0NFNItn3XUHBgSF0d2K3AMfQGjzvDjOQ9IpIUwhcXVZxRcQ0Dle
+	dNzzKAHhwq6IGd6FVToA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs5Km-00000007GAi-0OJ7;
-	Mon, 16 Feb 2026 20:36:44 +0000
-Received: from [50.53.43.113] (helo=[192.168.254.34])
-	by bombadil.infradead.org with esmtpsa (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vs5Kg-00000007GA9-3C2d;
-	Mon, 16 Feb 2026 20:36:38 +0000
-Message-ID: <e80c212c-9220-4621-8b21-5ce382ed92e5@infradead.org>
-Date: Mon, 16 Feb 2026 12:36:36 -0800
+	id 1vsA3c-00000007U1K-499i;
+	Tue, 17 Feb 2026 01:39:20 +0000
+Received: from mail-japanwestazlp170110001.outbound.protection.outlook.com ([2a01:111:f403:c407::1] helo=OS0P286CU010.outbound.protection.outlook.com)
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vsA3Y-00000007U0r-3ftM;
+	Tue, 17 Feb 2026 01:39:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=l5XFj8Muln0GUFsqWqr0oGjmYUFfeVly9iVJxMqBhiDFI5Khm2UtQXNSWzSQLjXX5FyXY8c0x8IVoZOrozM5/bLM5F3klX0mFKXt0fT4Sw19ZRCqlNIAhQlGGlw39nNav06afBKPlwc4uyA/2Tedktl1q6NDL7Nnc9ctLibgBtUQpoU/OQidRYPnyz2x6hia4yPJdjPSeqMv9+TzsceFQt4hUjmbaB00SgjGR7YtXC2dKbNuozkTOFc3XxQpaCcFyrwhQvUBheGplAhzZt6mnqqozRr+8Mlr2DqZ1K/V82aWxVkPks15P6Ve8N5sR/dTSuved6kT4sSMPsA7zEldSg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=t8ZKfe7PpUxteoITbeefg/uEzXwMhzH44KvNiwdMwto=;
+ b=XNdBVRF3i7xdMT2XFzRhm9620CeDdUHtTBA+sWE2sUHIBy+IIZ4x6DvjxgoH32AvPdfT2wdG1LELvAXVJycMIpSvhm6mj51zVqKi6/70XxQmZ4gCkhgk+WFiNJYbtQKygv6Dpz21rjNhfnmY2riIS1JiLMQXFUAxIQ7KSvtT7MzEP8COPVBeupm07fXaZVMkMeKHALkZm1U8gixVPmXRqmj28clnm9SFLXOCTijEG7GIyQkz2AHR68v8m2I6vd2gCkRiFTQvwRFar56LSRXrDVP1eDQ5V0kVqzz0ht4xda3qzdwC1fB+DzysL4YU3Fp55BCi0yZQwXZlwjtoCOr8yQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=valinux.co.jp; dmarc=pass action=none
+ header.from=valinux.co.jp; dkim=pass header.d=valinux.co.jp; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=valinux.co.jp;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=t8ZKfe7PpUxteoITbeefg/uEzXwMhzH44KvNiwdMwto=;
+ b=NJEMSSztj1mp/kitgX8YykAFk7bbB8v9pVIewVXYUMSk/kwqduKLfXVjxoMnxf9fc3IwpWLMVhI2U10oFRfUkthr3r5rBBoP01aOMtP29Bb4CYk8wIJicyIO98xiTMWxaE7xX+wTLTpuasjaARED/7yi+3nCIuINh9MP1XDPfkQ=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=valinux.co.jp;
+Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM (2603:1096:405:38f::10)
+ by OS9P286MB6903.JPNP286.PROD.OUTLOOK.COM (2603:1096:604:412::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9611.16; Tue, 17 Feb
+ 2026 01:39:08 +0000
+Received: from TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::2305:327c:28ec:9b32]) by TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
+ ([fe80::2305:327c:28ec:9b32%5]) with mapi id 15.20.9611.013; Tue, 17 Feb 2026
+ 01:39:06 +0000
+Date: Tue, 17 Feb 2026 10:39:05 +0900
+From: Koichiro Den <den@valinux.co.jp>
+To: Frank Li <Frank.li@nxp.com>
+Cc: jingoohan1@gmail.com, mani@kernel.org, lpieralisi@kernel.org, 
+	kwilczynski@kernel.org, robh@kernel.org, bhelgaas@google.com, heiko@sntech.de, 
+	kishon@kernel.org, jdmason@kudzu.us, dave.jiang@intel.com, allenbh@gmail.com, 
+	cassel@kernel.org, shawn.lin@rock-chips.com, linux-pci@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, ntb@lists.linux.dev
+Subject: Re: [PATCH v7 7/9] PCI: endpoint: pci-epf-vntb: Reuse pre-exposed
+ doorbells and IRQ flags
+Message-ID: <6yjsrg55aqnxvdotyhjalx5uwytizjxsh3xk44smdm3f46zyc6@zwk25sgezz5n>
+References: <20260215163847.3522572-1-den@valinux.co.jp>
+ <20260215163847.3522572-8-den@valinux.co.jp>
+ <aZNCgkddVkDbtO_c@lizhi-Precision-Tower-5810>
+Content-Disposition: inline
+In-Reply-To: <aZNCgkddVkDbtO_c@lizhi-Precision-Tower-5810>
+X-ClientProxiedBy: TY4P301CA0059.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:405:36a::12) To TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:405:38f::10)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 20/20] drm/bridge: Document bridge chain format
- selection
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-doc@vger.kernel.org
-References: <20260216-color-format-v8-0-5722ce175dd5@collabora.com>
- <20260216-color-format-v8-20-5722ce175dd5@collabora.com>
-Content-Language: en-US
-From: Randy Dunlap <rdunlap@infradead.org>
-In-Reply-To: <20260216-color-format-v8-20-5722ce175dd5@collabora.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: TY7P286MB7722:EE_|OS9P286MB6903:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2570a7f0-057b-4b17-2337-08de6dc556f1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|10070799003|366016|376014|7416014;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Iq91L6MvPvTQed0ZW+AEBEpZzWcJ8ElE/J2XMVBUOsopE73FcTbcN0SThT+A?=
+ =?us-ascii?Q?8VbiW8KWRk5Dfi0f0rBz150MuLfYi9i+OG3c7NtV74T0p7AOpRzhnWUJmbLF?=
+ =?us-ascii?Q?ZfbuIlX7CxchXdeJ1uqP/gH3QCZj3I+43SWs/wQIzd8QEx6+D07bdUzohwiF?=
+ =?us-ascii?Q?DV5YBWh0jbkXB8bH/7HgNxb6qClbk5kwNSBxdOnTdefmkYlpBnv3HyXU0eDf?=
+ =?us-ascii?Q?jUGMlxs59IfUi9ObM7SIxEKRe7p02b1FRG5ryIW+SlK5Ch2PHjyESINfxlPo?=
+ =?us-ascii?Q?BrpL9Hze3MK7m8fmQeocQt+1dwctF22bUE5IAGlj+NjRzfswTuI/f7uAbAjm?=
+ =?us-ascii?Q?kJKrN23kx6FPPtyWUywYTF7tsPtzSw9QzaJ2fJaBBEfYQqdvENS/7Nvfzqsp?=
+ =?us-ascii?Q?ppX/H4mdmJxqdpB88jGIzZfj0eh+vv7mFWCWsPkzPVQmXe5mIQ39BBA6Kp62?=
+ =?us-ascii?Q?m7OFQECs2rO1+yuHXpuQzYTRDnhXJXZinsUX4nRPrT+TBRAd+TblV1x2pmm6?=
+ =?us-ascii?Q?bqpejdsTQSIloTY7QvDKDF8aGwjPLPDMNP52azmEC+gESHH7RqRgYpA2bf3o?=
+ =?us-ascii?Q?ZMMyTukVtbMWt86mZGcwvYSHf4KhvW+fKynzbJLCaqQG8f/lwO6IS3suRaXG?=
+ =?us-ascii?Q?Ax6SU2m8eF5vgydf16N5TR6FjZOJuzx6/jg7XoiXw43kGEQzQak12pDNjblX?=
+ =?us-ascii?Q?bs6hPI7PUFsTlQn28afc2vf8UqVh3DfuVUOfhBr87jXU7hnNA1gYATeUFkws?=
+ =?us-ascii?Q?bjlOuXOHLU+6xXR6EiKuq9n9pZEVh7fL8ypbtsl9MIeIbdxsPL6QFyLmz7Cc?=
+ =?us-ascii?Q?iK6RABtl+1pMfq63Rm03QiOW2NPP/BeVBxIp/7qWqtUkoUqWauLsEbJ1wESV?=
+ =?us-ascii?Q?tGXpl7qdADXVv6orU2xVTIOtwB9brQ1ZC+B4QrmmyPd4KgwnY1tNNHL4BLxD?=
+ =?us-ascii?Q?uE4vCqdD4I765BedoWyDQeTLiSQVMsuTdXjEhILcNM1us4FMEU5dvIxV/Wcw?=
+ =?us-ascii?Q?rdwa6D6kguiFMoJltYnAdt+XSdiU3mHlsaHBX7Zdlwbm/QEeifHj9CRaFvjF?=
+ =?us-ascii?Q?WcC/uRn4DqLY0K/Wk/4TeBJJNjTjhVB7jxdZAYH2U6V2XYDXuQOhVFHANizC?=
+ =?us-ascii?Q?Vv90o8X09FW1hSycWH/za5mnengSIx4ilo3/UwbV8PuOul9XlVl7eBWfci7l?=
+ =?us-ascii?Q?JFnU+CXoiaJYKhOZLUjWN+hOlCaohXW8j6sJnx9y5Bv0FCXAr+zUX0gnh3LM?=
+ =?us-ascii?Q?+2aDzdgzGhll81sdFRLDxVLVoccp3gkL+7hfOudg4W0L730353DBFBCBx5kn?=
+ =?us-ascii?Q?NhzUaC8x7AzLolGnHGXV+jVDvRR7uZB1P2jyQeHhB4Wgc2OABWdLz8pCo3Ne?=
+ =?us-ascii?Q?euJNiY/KNuk8qMYv6c4Xrc8NCTnNxAe4euZr/jWW1oRg7TVJEbsVV5C9vPSA?=
+ =?us-ascii?Q?HjDCnH1nmAC75PNV2k9vCg7j9mPRQwrS/z5kFtMFXpExj9Hh5kap2ehAC6Qh?=
+ =?us-ascii?Q?h/+HDpu50wS5F7UGYfJ8fPW6LmIeiq5ZWsDxWeVP8OMiVbebfhCS1hwaE4mX?=
+ =?us-ascii?Q?pm79V1vnLqiBYO+lEPM=3D?=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(10070799003)(366016)(376014)(7416014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?lxJsVtxjtAHqtcIj4Wb+s472/b5Tot8iAA/9z+exseozT4wUkp+rviKyue5b?=
+ =?us-ascii?Q?Y0p90aVESH+TbENFJXdRNsx0/z/WHcbeCbDzuMcuhZl6QyZSBePDI1zU04WK?=
+ =?us-ascii?Q?NhxYlZ/CiostsTECIdw7IcKnCTYo2lWN7lV8Z2SY1iuIMEjgFrFr+Sk/rekh?=
+ =?us-ascii?Q?IWU6yKSKsZD+IVsNPtoAbPvLOvfVkKeme/kn9F1gpyJAhhB9Ak6lysH4EaaL?=
+ =?us-ascii?Q?NUd8l7+A4nCi/juIKPF/WN144kwt7tvO9MGCyKUjIGDujvE9oESOZoiVwrGV?=
+ =?us-ascii?Q?Fg9qAFMV06F2Ch0Tu0iZgTo94vCTtJoPJeqs0Mqwg8NX/yhTrMJtMA1jHxaV?=
+ =?us-ascii?Q?4hzIlbDhhgVtt07mdY2+ui6eJr9sHvPVk3QRMu1zytjrXH5Bn/3t3NDp6P26?=
+ =?us-ascii?Q?ymV7LMe9a8qzEC7QWLOEWeyi1t+TW49M/XlDiPK1IZTwthLKdAGQUeM6iAo+?=
+ =?us-ascii?Q?FKrx1lyEBOvpGQNViL1h5iHzq9zkJXKfFzmPfBXYixKTj3II6cxWe4jzcvj0?=
+ =?us-ascii?Q?tsn1lWHngO+IKMAe8QdCEdtVqdf8EiU21YPWrswND90U3pXyv2/ybWs+aK4v?=
+ =?us-ascii?Q?mSBVHIyud4Q1tu9FTP7thToHMKXhQUxgQNPNgTAfRnW8Aes3Ay1FCSH5d9ei?=
+ =?us-ascii?Q?VHyImvTpDY0DS3txM5yHOF5m63CJ6TdtNavGocpIlLhmFMUGo9kNbz14cesg?=
+ =?us-ascii?Q?VU50RSHXdugNWcOx/llfl7YR/O1DbfBeB4/xW+WlbX7vzIqvfIyEems88N4A?=
+ =?us-ascii?Q?80VVFGD1x68qUO0x0NgF0FeZGkIE78n1YnG6pBSs2a18/j+2mTOTJAJ0agaX?=
+ =?us-ascii?Q?rfZ3B9xFB5kg2aZ0RyTspYEfNtsx+6FXk6yA44lgEPZkqbJ8yub0JLao2T8v?=
+ =?us-ascii?Q?yCudwrmuzMN4JanveuTHFaLk6gwcUgX/uFKnAtyCBsSYbAyJZS5Dtctmm/Bk?=
+ =?us-ascii?Q?q3kVW/AjDMqSRGHgGi2mdtUPK+fGQARFVy2LcLbQIc6faQSi7IBquAMd1jYi?=
+ =?us-ascii?Q?BpoAAp3jllJ1zrf1DWPPKo5Z2o9HY2sbj4W9s5yI3gjMX58QoqPv75pQXIX5?=
+ =?us-ascii?Q?S48NQne6KR3Qe5/z2Bt4oJP2jeP+b8WYsE6oKu010fgWH6deM/xo/DIkgVJK?=
+ =?us-ascii?Q?TzQLmvdYjOQN1yMSG0VnYyNIej4XFuu22/1S5iON9MOiGkqFHO+ET6ORu4st?=
+ =?us-ascii?Q?vG3ha8SsqkjARWzdIo/7Ep9Zl+I4kERXkZBf17N9brTPIIhIGNcMIJxGoyHn?=
+ =?us-ascii?Q?wg9XkG0giIgO9DvwhrNFgSUBATmmOvuwS8x2+1KBSp7aJdLYfpaVXaPMeoYE?=
+ =?us-ascii?Q?M5mdZXrjXDjvaNt8NIwr3plvN11SaWr1Up+TmP6LCywL5DDAusGZYZLptSAG?=
+ =?us-ascii?Q?2howjUFiV7SJ1XKde5z0AcRKzz0J1KHDSpJpweXY6RFFqO6aTVpBUP6m+56D?=
+ =?us-ascii?Q?/QvzIRTtQ3MUzVD3xW22qIZrrKe9ZzsrfdD/Tiv/CrxVqXUHKBUeWzFS0ZXM?=
+ =?us-ascii?Q?fSGBdRpp83B9sInvg7bvnEhAw183/BmVg2d2dDTyqhL8zBcGs57NtRjx1zer?=
+ =?us-ascii?Q?t3f/bjQ/rJLTTItmsqF3vwrJ+yUUWDKl/I+iOCUG6dAX8pmuE472QcIbTFV5?=
+ =?us-ascii?Q?Z9uSQoIXhERn0IseN0xf7aglwC+UC4dGsq1jNuhQJBXVW0AgfInoDlncb07J?=
+ =?us-ascii?Q?kmAuCTJ+RCUJ7xG5TSMPCD1qHmXTE30pIoS0oeiSFoOZHoofvfHR7z8dUnTd?=
+ =?us-ascii?Q?9BVNj+7byF6NfXEY7AIToA6ah4QAa8b0ekEXFIrgSnJdJVrrAk1M?=
+X-OriginatorOrg: valinux.co.jp
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2570a7f0-057b-4b17-2337-08de6dc556f1
+X-MS-Exchange-CrossTenant-AuthSource: TY7P286MB7722.JPNP286.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Feb 2026 01:39:06.8562
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 7a57bee8-f73d-4c5f-a4f7-d72c91c8c111
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HvkGuWspdSVoPVKdNG4n+YqwRP12jmPaw4OPqt8nfh5i/PAx9CClYoOmcHPc06Du7elfdIlxuEgEjYb+/YzOKA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OS9P286MB6903
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260216_173917_102748_85CDA6CB 
+X-CRM114-Status: GOOD (  28.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,101 +168,154 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-
-On 2/16/26 5:01 AM, Nicolas Frattaroli wrote:
-> The bridge chain format selection behaviour was, until now,
-> undocumented. With the addition of the "color format" DRM property, it's
-> not sufficiently complex enough that documentation is warranted,
-> especially for driver authors trying to do the right thing.
+On Mon, Feb 16, 2026 at 11:14:58AM -0500, Frank Li wrote:
+> On Mon, Feb 16, 2026 at 01:38:45AM +0900, Koichiro Den wrote:
+> > Support doorbell backends where the doorbell target is already exposed
+> > via a platform-owned fixed BAR mapping and/or where the doorbell IRQ
+> > must be requested with specific flags.
+> >
+> > When pci_epf_alloc_doorbell() provides db_msg[].bar/offset, reuse the
+> > pre-exposed BAR window and skip programming a new inbound mapping. Also
+> > honor db_msg[].irq_flags when requesting the doorbell IRQ.
+> >
+> > For embedded doorbells (e.g. interrupt-emulation), multiple doorbells
+> > may share a single address/data pair and a single Linux IRQ. Avoid
+> > requesting duplicate handlers by requesting only one IRQ in that case.
+> >
+> > Signed-off-by: Koichiro Den <den@valinux.co.jp>
+> > ---
+> >  drivers/pci/endpoint/functions/pci-epf-vntb.c | 57 +++++++++++++++++--
+> >  1 file changed, 52 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/drivers/pci/endpoint/functions/pci-epf-vntb.c b/drivers/pci/endpoint/functions/pci-epf-vntb.c
+> > index 20efa27325f1..39ba4d6b7d8d 100644
+> > --- a/drivers/pci/endpoint/functions/pci-epf-vntb.c
+> > +++ b/drivers/pci/endpoint/functions/pci-epf-vntb.c
+> > @@ -134,6 +134,11 @@ struct epf_ntb {
+> >  	u16 vntb_vid;
+> >
+> >  	bool linkup;
+> > +
+> > +	/*
+> > +	 * True when doorbells are interrupt-driven (MSI or embedded), false
+> > +	 * when polled.
+> > +	 */
+> >  	bool msi_doorbell;
+> >  	u32 spad_size;
+> >
+> > @@ -523,7 +528,7 @@ static int epf_ntb_db_bar_init_msi_doorbell(struct epf_ntb *ntb,
+> >  					    enum pci_barno barno)
+> >  {
+> >  	struct pci_epf *epf = ntb->epf;
+> > -	unsigned int req;
+> > +	unsigned int req, cnt;
+> >  	dma_addr_t low, high;
+> >  	struct msi_msg *msg;
+> >  	size_t sz;
+> > @@ -534,9 +539,29 @@ static int epf_ntb_db_bar_init_msi_doorbell(struct epf_ntb *ntb,
+> >  	if (ret)
+> >  		return ret;
+> >
+> > -	for (req = 0; req < ntb->db_count; req++) {
+> > +	/*
+> > +	 * The doorbell target may already be exposed by a platform-owned fixed
+> > +	 * BAR. In that case, we must reuse it and the requested db_bar must
+> > +	 * match.
+> > +	 */
+> > +	if (epf->db_msg[0].bar != NO_BAR && epf->db_msg[0].bar != barno) {
+> > +		ret = -EINVAL;
+> > +		goto err_free_doorbell;
+> > +	}
+> > +
+> > +	/*
+> > +	 * For PCI_EPF_DOORBELL_EMBEDDED, the backend may provide a single MMIO
+> > +	 * address/data pair and a single Linux IRQ even if multiple doorbells
+> > +	 * were requested. Avoid requesting duplicate handlers in that case.
+> > +	 */
+> > +	cnt = ntb->db_count;
+> > +	if (epf->db_msg[0].type == PCI_EPF_DOORBELL_EMBEDDED)
+> > +		cnt = 1;
 > 
-> Add a high-level overview of how the process is supposed to work, and
-> mention what the display driver is supposed to do if it wants to make
-> use of this functionality.
+> Most SoC combine all DMA channel to one irqs. But it should be not
+> neccessary for SoC design. It is possible each DMA channel have dedicate
+> irq number. I suggest check irq, instead of type.
+
+Sounds reasonable. I was trying to keep the code minimal, but your suggestion
+makes it more future-proof and avoids exposing PCI_EPF_DOORBELL_EMBEDDED details
+to this consumer layer. I'll adjust this part accordingly.
+
+THanks for the review,
+Koichiro
+
 > 
-> Reviewed-by: Maxime Ripard <mripard@kernel.org>
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> ---
->  Documentation/gpu/drm-kms-helpers.rst |  6 ++++++
->  drivers/gpu/drm/drm_bridge.c          | 39 +++++++++++++++++++++++++++++++++++
->  2 files changed, 45 insertions(+)
-> 
-> diff --git a/Documentation/gpu/drm-kms-helpers.rst b/Documentation/gpu/drm-kms-helpers.rst
-> index 781129f78b06..47c4f593cf9d 100644
-> --- a/Documentation/gpu/drm-kms-helpers.rst
-> +++ b/Documentation/gpu/drm-kms-helpers.rst
-> @@ -181,6 +181,12 @@ Bridge Operations
->  .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
->     :doc: bridge operations
->  
-> +Bridge Chain Format Selection
-> +-----------------------------
-> +
-> +.. kernel-doc:: drivers/gpu/drm/drm_bridge.c
-> +   :doc: bridge chain format selection
-> +
->  Bridge Connector Helper
->  -----------------------
->  
-> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> index 36a5158f0554..93ef52c37e2c 100644
-> --- a/drivers/gpu/drm/drm_bridge.c
-> +++ b/drivers/gpu/drm/drm_bridge.c
-> @@ -198,6 +198,45 @@
->   * driver.
->   */
->  
-> +/**
-> + * DOC: bridge chain format selection
-> + *
-> + * A bridge chain, from display output processor to connector, may contain
-> + * bridges capable of converting between bus formats on their inputs, and
-> + * output formats on their outputs. For example, a bridge may be able to convert
-> + * from RGB to YCbCr 4:4:4, and pass through YCbCr 4:2:0 as-is, but not convert
-> + * from RGB to YCbCr 4:2:0. This means not all input formats map to all output
-> + * formats.
-> + *
-> + * Further adding to this, a desired output color format, as specified with the
-> + * "color format" DRM property, might not correspond to what the display driver
-> + * should set at its output 1:1. The bridge chain it feeds into may only be able
-
-Preferably put "1:1" after "might not correspond".
-
-> + * to reach the desired output format, if a conversion from a different starting
-> + * format is performed.
-> + *
-> + * To deal with this complexity, the recursive bridge chain bus format selection
-> + * logic starts with the last bridge in the chain, usually the connector, and
-> + * then recursively walks the chain of bridges backwards to the first bridge,
-> + * trying to find a path.
-> + *
-> + * For a display driver to work in such a scenario, it should read the first
-> + * bridge's bridge state to figure out which bus format the chain resolved to.
-> + * If the first bridge's input format resolved to %MEDIA_BUS_FMT_FIXED, then its
-> + * output format should be used.
-> + *
-> + * Special handling is done for HDMI as it relates to format selection. Instead
-> + * of directly using the "color format" DRM property for bridge chains that end
-> + * in HDMI bridges, the bridge chain format selection logic will trust the logic
-> + * that set the HDMI output format. For the common HDMI state helper
-> + * functionality, this means that %DRM_COLOR_FORMAT_ENUM_AUTO will allow
-> + * fallbacks to YCBCr 4:2:0 if the bandwidth requirements would otherwise be too
-> + * high but the mode and connector allow it.
-> + *
-> + * For bridge chains that do not end in an HDMI bridge,
-> + * %DRM_COLOR_FORMAT_ENUM_AUTO will be satisfied with the first output format on
-> + * the last bridge for which it can find a path back to the first bridge.
-> + */
-> +
->  /* Protect bridge_list and bridge_lingering_list */
->  static DEFINE_MUTEX(bridge_lock);
->  static LIST_HEAD(bridge_list);
-> 
-
-Thanks.
--- 
-~Randy
-
+> Frank
+> > +
+> > +	for (req = 0; req < cnt; req++) {
+> >  		ret = request_irq(epf->db_msg[req].virq, epf_ntb_doorbell_handler,
+> > -				  0, "pci_epf_vntb_db", ntb);
+> > +				  epf->db_msg[req].irq_flags, "pci_epf_vntb_db",
+> > +				  ntb);
+> >
+> >  		if (ret) {
+> >  			dev_err(&epf->dev,
+> > @@ -546,6 +571,22 @@ static int epf_ntb_db_bar_init_msi_doorbell(struct epf_ntb *ntb,
+> >  		}
+> >  	}
+> >
+> > +	if (epf->db_msg[0].bar != NO_BAR) {
+> > +		for (i = 0; i < ntb->db_count; i++) {
+> > +			msg = &epf->db_msg[i].msg;
+> > +
+> > +			if (epf->db_msg[i].bar != barno) {
+> > +				ret = -EINVAL;
+> > +				goto err_free_irq;
+> > +			}
+> > +
+> > +			ntb->reg->db_data[i] = msg->data;
+> > +			ntb->reg->db_offset[i] = epf->db_msg[i].offset;
+> > +		}
+> > +		goto out;
+> > +	}
+> > +
+> > +	/* Program inbound mapping for the doorbell */
+> >  	msg = &epf->db_msg[0].msg;
+> >
+> >  	high = 0;
+> > @@ -592,6 +633,7 @@ static int epf_ntb_db_bar_init_msi_doorbell(struct epf_ntb *ntb,
+> >  		ntb->reg->db_offset[i] = offset;
+> >  	}
+> >
+> > +out:
+> >  	ntb->reg->db_entry_size = 0;
+> >
+> >  	ntb->msi_doorbell = true;
+> > @@ -602,6 +644,7 @@ static int epf_ntb_db_bar_init_msi_doorbell(struct epf_ntb *ntb,
+> >  	while (req)
+> >  		free_irq(epf->db_msg[--req].virq, ntb);
+> >
+> > +err_free_doorbell:
+> >  	pci_epf_free_doorbell(ntb->epf);
+> >  	return ret;
+> >  }
+> > @@ -665,9 +708,13 @@ static void epf_ntb_db_bar_clear(struct epf_ntb *ntb)
+> >  	enum pci_barno barno;
+> >
+> >  	if (ntb->msi_doorbell) {
+> > -		int i;
+> > +		unsigned int cnt = ntb->db_count;
+> > +		unsigned int i;
+> >
+> > -		for (i = 0; i < ntb->db_count; i++)
+> > +		if (ntb->epf->db_msg[0].type == PCI_EPF_DOORBELL_EMBEDDED)
+> > +			cnt = 1;
+> > +
+> > +		for (i = 0; i < cnt; i++)
+> >  			free_irq(ntb->epf->db_msg[i].virq, ntb);
+> >  	}
+> >
+> > --
+> > 2.51.0
+> >
 
 _______________________________________________
 Linux-rockchip mailing list
