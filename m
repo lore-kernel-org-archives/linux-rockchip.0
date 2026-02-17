@@ -4,63 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0956AE9A031
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Feb 2026 19:23:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7B0E9A03E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Feb 2026 21:27:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5ztVgBwk00Bzq2D75ipV2Qb55pxwFCHSFscoWKvIPuo=; b=GXQRk99aJ3WYl+TGxV7CWcQJSm
-	aQGC1Ao/8ttkqNFsMPCbEuBkD3qzJqTE5pYXwgKkLvL86CpLinCqg4RzMDcnfuHT25DT+YiFFbftw
-	3JRkIWMUxW4dj7XUnxqzZSTa1vgu7gj2oHO+wfm8OTZtnHmWYqXOu1mUkJLWV3LdQyKHwyII5pFEd
-	aq5WN6Zb4Hw2GV5o0rEjkn3p0dDrsi72VfB6nn8X8NX1jWu5eQzPDdJstkfUtn5pL/jYNjDLI0KIT
-	Bi7SgVVuZSSHT8Uwf3oq/0uh3uDxhLZuSPVLb6IVxWVKgexc3A/TdipPDxLmi2FodtZ9PICTpQ6sk
-	zKEvuV3w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PzLcrUa5tIeNKnX+SXNUEEsApchy75xpIszX0egLYpM=; b=T+xwf0ltYRAiEu
+	fTF5oNA+vk49Fh9+rIuHfvSJVa3fvKQD0L9xSdQ3pKVWMXwED6wjrxQfg3ktZB86lA7noq/6yweeu
+	1m1kXVKf6dc39JtKaStLO11L7yXKtVBuO0Q7gpYXnO0/4YtNOzjG/W+VJ7wPQPpGubH4EFGpinEen
+	5OcJDozr2pgUoyablZpXjhbq/nxre+UBlV0IqyFQJQtp/fh22+IHApY42z91mqzXYooaPQnKechz9
+	5H8wjjofgHZ3VDV2xfo9VclgJZdkZQJl+OeKg4OCVnK+VoSQu7MjxDQBsW6UkCJoYDyn6wSuqJgMl
+	I++K/4xGnOibzX2qTF6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsQf3-00000008nno-2mri;
-	Tue, 17 Feb 2026 19:23:06 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vsSbf-00000008uXZ-230j;
+	Tue, 17 Feb 2026 21:27:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsQf1-00000008nnK-4C6q;
-	Tue, 17 Feb 2026 19:23:04 +0000
+	id 1vsSbd-00000008uXQ-1Qpt;
+	Tue, 17 Feb 2026 21:27:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 189A460053;
-	Tue, 17 Feb 2026 19:23:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 297B1C4CEF7;
-	Tue, 17 Feb 2026 19:23:00 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 048B761850;
+	Tue, 17 Feb 2026 21:27:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 434F1C19425;
+	Tue, 17 Feb 2026 21:27:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771356182;
-	bh=AuzP1RjH2J93oglEEmMjAhLwguv68kNmitEf4HtcFgE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ZkvlKQ1sAlkJX0vA8Tfn/Qm6cXriGO4FcK4Iq+24smpf4EOQUndrJZuiEfBUsvDTb
-	 8f5oygBZtahKpGeWEtE9ucsZrCF9lp2nOLIPJrr2qGUAYQlxS1ON62M5jFt0LdlJ20
-	 m8NrK2gPPqO/16qTZ2SatXHf3a2dTo20wfa+LvXccSrpz+UjlDMi9Z1V68l8Evv9NF
-	 GfGTL8E+sRfYbyO9Wkru7Lv3HYqvO1ANbgDyxKXtfwCRSbOX7VJZKA0QyBplFI+i9w
-	 kkkKZE3VVU4vbv0aw/OFHK6tZh8BF65PofnAs6fFBBJJt3yIvKPjyhrZPe7o2yrY7Z
-	 AZC0uat5+b0Rw==
-Date: Tue, 17 Feb 2026 19:22:57 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	s=k20201202; t=1771363659;
+	bh=qNdMPHb96ahPcc/FeBg2GRFGtCGsjvYyDufUCB6E5Ho=;
+	h=From:To:Cc:Subject:Date:From;
+	b=HZ+UvMiPz7y6Wfbsg5SRIDmn+CDWDBq3WDUKPIFYPfrmgDfHjQ7tHHZYvBxWMJPsB
+	 c/PD0XktfttvuKxs+WJlENDTRUP8uJUYdvpCSgzgXvAFzPfb1B0rOK7s3NAuWfL7OM
+	 PDp3ZyEtU/CFNB0WzAkeTuWX12cuXeEN250jg2mphb4+0a1UOP9URjezN/AWag41Q0
+	 roA2SWQuJbNqVoB7NWp23sapC1Dm1S393B1Qqcg98UxhXC9rBuSiwP8ArfAEkppYLo
+	 6sj4h5uEjhL1y9XxP5IphJD17zDcGD3gK+k+4gZR6DYzXHK6BRPDR/D2adYfFq7DLA
+	 JcoQPGf6g5NxA==
+From: Niklas Cassel <cassel@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Minghuan Lian <minghuan.Lian@nxp.com>,
+	Mingkai Hu <mingkai.hu@nxp.com>,
+	Roy Zang <roy.zang@nxp.com>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-	alexandre.belloni@bootlin.com, thomas.petazzoni@bootlin.com
-Subject: Re: [REGRESSION] Re: [PATCH v1] ASoC: rockchip: i2s_tdm: Re-add the
- set_sysclk callback
-Message-ID: <49e43733-1366-4a4a-a787-f7221b9612d2@sirena.org.uk>
-References: <20250117163102.65807-1-detlev.casanova@collabora.com>
- <DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com>
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Christian Bruel <christian.bruel@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Shuah Khan <shuah@kernel.org>
+Cc: Manikanta Maddireddy <mmaddireddy@nvidia.com>,
+	Koichiro Den <den@valinux.co.jp>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-omap@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-arm-kernel@axis.com,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org,
+	linux-kselftest@vger.kernel.org
+Subject: [PATCH 0/9] PCI: endpoint differentiate between disabled and reserved BARs
+Date: Tue, 17 Feb 2026 22:27:06 +0100
+Message-ID: <20260217212707.2450423-11-cassel@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-In-Reply-To: <DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com>
-X-Cookie: I'm into SOFTWARE!
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4061; i=cassel@kernel.org; h=from:subject; bh=qNdMPHb96ahPcc/FeBg2GRFGtCGsjvYyDufUCB6E5Ho=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDKn3NV+yyX95M1+T1HDqxGLE9Ks+cRk7p+2exh8+ZCxj pjCijkGHaUsDGJcDLJiiiy+P1z2F3e7TzmueMcGZg4rE8gQBi5OAZhI+E5GhguPHi2/Xb/y3DHB AIf6hAuN+VPmNN0usdy7vDq+avG27bYM/5S3MBlKbLy8vGB/jfcrobctfIebJrjrnqw9slP/atc TAw4A
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,57 +111,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2694119700733715700=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello all,
 
---===============2694119700733715700==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="r2QkDNKpLEvUVJ3W"
-Content-Disposition: inline
+This series is written in response to the patch series from
+Manikanta Maddireddy that was posted here:
+https://lore.kernel.org/linux-pci/291dab65-3fa6-4fc8-90a2-4ad608ca015c@nvidia.com/T/#t
 
+The reasons why I decided to post this a new series was because the series
+above:
 
---r2QkDNKpLEvUVJ3W
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+1) Adds PCI device and vendor specific code to
+drivers/misc/pci_endpoint_test.c. We've worked hard to make sure that
+device specific quirks/limitations are communicated via the Capabilities
+register, so let's do the same for reserved BARs.
 
-On Tue, Feb 10, 2026 at 10:54:04AM +0100, Luca Ceresoli wrote:
+2) My review comment which suggested to convert all uses of BAR_RESERVED
+to BAR_DISABLED (except for pci-keystone.c) was ignored.
 
-> I'm afraid I just found this commit breaks audio capture on the RK3308.
+3) Koichiro has posted a series that allows an EPC driver to define exactly
+which hardware backed resources are provided in a BAR_RESERVED BAR. Yet,
+this nice improvement was not incorporated. (While Mankata was part of the
+discussion, he was not CC:d on the patches that actually implemented this.)
 
-Can you please send a revert explaining the issue so we can drop the
-patch (unless a fix is forthcoming which doesn't seem likely right now,
-we can always re-add the support later)?
+4) The selftests should return skip instead of silent success for a
+reserved BAR.
 
---r2QkDNKpLEvUVJ3W
-Content-Type: application/pgp-signature; name="signature.asc"
+5) As Mankata points out, but did not address, BAR_RESERVED is quite
+ambiguous, so it is better to introduce a new BAR_64BIT_UPPER to more
+clearly mark the upper part of a 64-bit BAR as this, rather than reuse
+BAR_RESERVED.
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmUwBAACgkQJNaLcl1U
-h9Dd2Af9HGtRQCrve806p8Dm1UkaY3VZUZSB8RwkclUugeGfGhNUiOQJuarjCy6n
-U5Nh1vijddpOuXxHlFWzj3QXeCLnbnHixhdua3InE577kp6SYrV+B+DQQecLtRHe
-jy6zRPH/HsN3147BbqLYuAeAP3Zo+fwGxbhcvkIOUqmergCqBXHTSbRbI8E1C2iW
-YaBHlV/HR3J6kAwjKK6a739hGCWzS4D21f3TE5trL/+buFSstLcki67zTBJDnKVZ
-z09GrxLYVcmTcILzSUplO0s9kWzfRbbjcdid1OnYH+vyO0Q+GOWRav7jnL77C1ip
-u19vZSXZGcCE+wzi9nh6cE1A4gLUfQ==
-=wiOT
------END PGP SIGNATURE-----
-
---r2QkDNKpLEvUVJ3W--
+6) It is possible to remove all the dw_pcie_ep_reset_bar() calls in the
+DWC based glue drivers and move it to DWC common code.
 
 
---===============2694119700733715700==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Because of all of the above, I thought it was just easier to post a series
+with all of the above addressed, as it seemed easier to just show what I
+meant rather than to try to explain things with words.
+
+The thing that is missing is to add a patch for pcie-tegra194.c which
+converts the BARs to BAR_RESERVED.
+Please see patch "PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl window"
+and do something similar to pcie-tegra194.c.
+
+If we are missing some resources (right now we only have
+PCI_EPC_BAR_RSVD_DMA_CTRL_MMIO), then I think we should simple add that
+(e.g. PCI_EPC_BAR_RSVD_MSIX).
+
+Mankata, it would be nice if you could test this series, and if you could
+provide a pcie-tegra194.c patch that adds the sizes of the eDMA regs +
+MSI-X table in BAR_2 and BAR_4.
+
+
+Kind regards,
+Niklas
+
+
+Koichiro Den (2):
+  PCI: endpoint: Describe reserved subregions within BARs
+  PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl window
+
+Niklas Cassel (7):
+  PCI: endpoint: Introduce pci_epc_bar_type BAR_64BIT_UPPER
+  PCI: endpoint: Introduce pci_epc_bar_type BAR_DISABLED
+  PCI: dwc: Replace BAR_RESERVED with BAR_DISABLED in glue drivers
+  PCI: dwc: Disable BARs in common code instead of in each glue driver
+  PCI: endpoint: pci-epf-test: Advertise reserved BARs
+  misc: pci_endpoint_test: Give reserved BARs a distinct error code
+  selftests: pci_endpoint: Skip reserved BARs
+
+ drivers/misc/pci_endpoint_test.c              | 32 ++++++++++++-
+ drivers/pci/controller/dwc/pci-dra7xx.c       |  4 --
+ drivers/pci/controller/dwc/pci-imx6.c         | 22 +++------
+ .../pci/controller/dwc/pci-layerscape-ep.c    |  8 +---
+ drivers/pci/controller/dwc/pcie-artpec6.c     |  4 --
+ .../pci/controller/dwc/pcie-designware-ep.c   | 24 ++++++++++
+ .../pci/controller/dwc/pcie-designware-plat.c | 10 -----
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 19 +++++---
+ drivers/pci/controller/dwc/pcie-keembay.c     |  6 +--
+ drivers/pci/controller/dwc/pcie-qcom-ep.c     | 14 +-----
+ drivers/pci/controller/dwc/pcie-rcar-gen4.c   | 16 ++-----
+ drivers/pci/controller/dwc/pcie-stm32-ep.c    | 10 -----
+ drivers/pci/controller/dwc/pcie-tegra194.c    | 20 +++------
+ drivers/pci/controller/dwc/pcie-uniphier-ep.c | 24 +++-------
+ drivers/pci/controller/pcie-rcar-ep.c         |  6 +--
+ drivers/pci/endpoint/functions/pci-epf-test.c | 24 ++++++++++
+ drivers/pci/endpoint/pci-epc-core.c           |  6 ++-
+ include/linux/pci-epc.h                       | 45 +++++++++++++++++--
+ .../pci_endpoint/pci_endpoint_test.c          |  4 ++
+ 19 files changed, 173 insertions(+), 125 deletions(-)
+
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2694119700733715700==--
-
