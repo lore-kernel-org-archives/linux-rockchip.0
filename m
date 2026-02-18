@@ -4,74 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1C7EE9A03B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 07:51:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7F5AE9A03B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 12:11:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date
-	:From:In-Reply-To:References:MIME-Version:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a215gUnYHWawoMP2r7a3KCeOuJ1ss1Yyc+sZZDKtbCs=; b=Qm9VezJnwGFsfa
-	rNOTuYz8v/Hl6IT+Pkb7zkkBeVQY96bdLqXPJP4ZU/mP/9fsDmaGwpKt6RlR1o6ZLe6C9hZ1umJwU
-	N4NHaXw77d+UYObOs2khDTpNl4EajbLeDwCDm83BIIdAbnnPXFgHGFQuekYskuTzcCE/ttJbaVPgy
-	JzhhmqBprzSkZxUbUCvz5akIxRoGwtg61WTKX/5xRKQllOPsrQqZFDZ5i/NfFl9VGMLltL/wozKtQ
-	PzG5YX2x7j2MDfI4YoQzx9+s1JVDx5lFNGdYDYaxLTdU3wDl+ypTBSqbrhQVFto/W9HVPJ+kEt4at
-	goQrC2tDUVUEkCnlnJdw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=r7rpCrFkZB+Bpq/QLWQ34FmA1aBw1qdZSG/O6bmnLJ4=; b=W4GYrfViC1W6OM
+	D4mprnzCax+hE8a7bW2iVzYMR5umzl0LMJV4k3Z9tfz5IvO2buqVukW7QmvgAzdv0Dchg2T17EPTG
+	lkk42BevfD0VOF84MBkARc9+Fb4C38HCIkCTvW+e3T9xS6Sz3QC3tGcE5VtUbGB3d4x6lUdF4Ygng
+	LjY8pGIe1DOo+HhUF8LL38s1PhHhkwaK6I/N8iJiQGYzCXFwPXtUJw/Y8BiYYnr0p5LDNBOE+G1Fq
+	/Cob8gUhdEh2Aj8c3VH923OjjslQNfA7aseD94FdvHDXOElmACIy8Sobu1Iksl5/LnBe95aHbY9OL
+	Wb+Wm50zrhQdEvifw8pQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vscLW-00000009QaN-0awS;
-	Wed, 18 Feb 2026 07:51:42 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vsgP9-00000009kpj-2wB5;
+	Wed, 18 Feb 2026 12:11:43 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vscLT-00000009QZ9-48KB
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Feb 2026 07:51:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id F280A444E5
-	for <linux-rockchip@lists.infradead.org>; Wed, 18 Feb 2026 07:51:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D5125C19421
-	for <linux-rockchip@lists.infradead.org>; Wed, 18 Feb 2026 07:51:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771401098;
-	bh=4iOIMJwTfTlhk2X+SSFRPxdpOOMqvgJljSOYKrmpsX0=;
-	h=References:In-Reply-To:Reply-To:From:Date:Subject:To:Cc:From;
-	b=poCnTeb0EiRLHjnZHKa3OTdzzF0Lor2Dktc8/g+0fzCK21yY785y2j78TDy0ydbAG
-	 4atxiINHsZ/XtLw1bOnH9CMZ92SytlY9EwvvUIWnkbiGRDqynwvYGq7BDvluwnqZEY
-	 W5PzOaVduDO6ZCZLchIfQdTTvAdh8zPxEcyhUkeOeTH7H6LRpXhEXQL+a3fmp2Y/eF
-	 pu8uxTfsWrKLFEdaDn/WUEhtIELUzVd57DoXrbhkULNbQlk2+cysxvc4aQul5XxLDM
-	 aVhAqENG+/zXyQoBomqTBZwhLMICyAmGGmsJjaZZph1pPuJdp2piYY+QA1epHg8WZL
-	 /up+Yi62llWxA==
-Received: by mail-lj1-f174.google.com with SMTP id 38308e7fff4ca-388126f79bcso35911941fa.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Feb 2026 23:51:38 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCWttKF2K+eGbodsV9zLBCemUFSrnd4lobIopSb/rQiiMFdjzANn5PCn1P49gytYN3XKNwivmlzCvDqV16CRvg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxbZ+RYAtV41M+FqDPSbb5PtHvd2nY/AznleDlD9FNLM8z8ttok
-	TOTKwpN22dMHpa0w0MjQEO3IZzgAnP0PX3ctymA5AVjE9EHjSIWXUeZC2y9oyyYgeYgx7fHXlwp
-	Mp9Csvx6exp/NmM6sw4I4YBNUBh+a8EQ=
-X-Received: by 2002:a2e:b896:0:b0:382:f78d:a0c with SMTP id
- 38308e7fff4ca-38846df21a4mr3400331fa.21.1771401097098; Tue, 17 Feb 2026
- 23:51:37 -0800 (PST)
+	id 1vsgP5-00000009kpA-3B1y;
+	Wed, 18 Feb 2026 12:11:42 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 97944C111A3;
+	Wed, 18 Feb 2026 12:11:46 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id AD63F60738;
+	Wed, 18 Feb 2026 12:11:34 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4017710368B5D;
+	Wed, 18 Feb 2026 13:11:29 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1771416693; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=SZ+4RuppPKjR3qQWfgPnGLn2XDy90FMtkHwzrPksBgw=;
+	b=c1zF88olfwh1e55esZHyUrYZ+A3rMtmzliwOZXO+KyGGXeKaDqg40ijVi9lrUnuqFiEk/4
+	Xi3uoRvk8S3j2gnY8aMHuHqFYJWFVN+KuYtCy1Ug9gtujt5He178rzVmmxt56zf2K4Fmzm
+	1BJJStUSs22nNRBxxiBMsTOKuc7lbAxZ8N1WLNDYwBGXPJVR2wkVL3rwTcEJ7bsvKRTwhf
+	L7VLCoDqloOcMw85Leht4X/Pfy0sVCiWiVaGpxk0dc0NbOBtNTMnM6F7Bs5E+JnRhITVt0
+	lGE7T/Dhc6y2erlYRpYaGMOw0pd5tai0rtChvut1WSMk6GpzK5UOSlAkvsvw8A==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Date: Wed, 18 Feb 2026 13:11:24 +0100
+Subject: [PATCH] Revert "ASoC: rockchip: i2s_tdm: Re-add the set_sysclk
+ callback"
 MIME-Version: 1.0
-References: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
-In-Reply-To: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
-From: Chen-Yu Tsai <wens@kernel.org>
-Date: Wed, 18 Feb 2026 15:51:24 +0800
-X-Gmail-Original-Message-ID: <CAGb2v65F9OHNdLA2e3HXNiHEUQyW3-zjQGRZE_w5jU6+w5TbMw@mail.gmail.com>
-X-Gm-Features: AaiRm51oWyNatKqHz1nRPBR6_xQMPfJe9Uf0NpOZA7cz-bzmXYkXqyvq3n9ru28
-Message-ID: <CAGb2v65F9OHNdLA2e3HXNiHEUQyW3-zjQGRZE_w5jU6+w5TbMw@mail.gmail.com>
-Subject: Re: [PATCH 0/2] media: rockchip: rkcif: various fixes
-To: michael.riesch@collabora.com
-Cc: Dan Carpenter <dan.carpenter@linaro.org>, Paul Elder <paul.elder@ideasonboard.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Mehdi Djait <mehdi.djait@linux.intel.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	Hans Verkuil <hverkuil+cisco@kernel.org>, "Bryan O'Donoghue" <bryan.odonoghue@linaro.org>, 
-	Collabora Kernel Team <kernel@collabora.com>, stable@kernel.org, linux-media@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+Message-Id: <20260218-snd-rk3308-i2s-revert-set_sysclk-v1-1-79ab787f88ac@bootlin.com>
+X-B4-Tracking: v=1; b=H4sIAGuslWkC/x2NwQqDMBAFf0X23IUkFtH+SimiyWtdlLTsSqmI/
+ 27ocQ4zs5NBBUa3aifFV0zeuYC/VBSnIb/AkgpTcKFxwbdsObHOde1almBcHOjKhrW3zeIyM5L
+ rYtP5K/xIJfNRPOX3X9wfx3EC2kzycnIAAAA=
+X-Change-ID: 20260218-snd-rk3308-i2s-revert-set_sysclk-ed09c6914e1b
+To: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Luca Ceresoli <luca.ceresoli@bootlin.com>
+X-Mailer: b4 0.14.3
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260217_235140_059001_C284DA6A 
-X-CRM114-Status: GOOD (  16.60  )
+X-CRM114-CacheID: sfid-20260218_041140_131932_59F557E3 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,36 +77,136 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: wens@kernel.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBGZWIgMTYsIDIwMjYgYXQgOTo1MOKAr1BNIE1pY2hhZWwgUmllc2NoIHZpYSBCNCBS
-ZWxheQo8ZGV2bnVsbCttaWNoYWVsLnJpZXNjaC5jb2xsYWJvcmEuY29tQGtlcm5lbC5vcmc+IHdy
-b3RlOgo+Cj4gSGFiaWRlcmUsCj4KPiBUaGlzIHNlcmllcyBjb250YWlucwo+Cj4gIDEpIGEgcmUt
-c3BpbiBvZiBEYW4ncyBwYXRjaCB0aGF0IGZpeGVzIHNvbWUgbW9yZSBzdHVwaWQgb2ZmLWJ5LW9u
-ZSBpc3N1ZXMuCj4gICAgIFRoaXMgcGF0Y2ggaGFzIGJlZW4gYXJvdW5kIG9uIHRoZSBsaXN0IGZv
-ciBzb21lIHRpbWUsIGJ1dCBhcHBhcmVudGx5Cj4gICAgIGhhcyBub3QgYmVlbiBhcHBsaWVkIHll
-dC4KPiAgMikgYSBmaXggdGhhdCBtYWtlcyB0aGUgRE1BIGFic3RyYWN0aW9uIHJlc3BlY3QgdGhl
-IG1pbmltdW0gbnVtYmVyIG9mCj4gICAgIGJ1ZmZlcnMgcmVxdWlyZW1lbnQKPgo+IEJlc3QgcmVn
-YXJkcywKPiBNaWNoYWVsCj4KPiBTaWduZWQtb2ZmLWJ5OiBNaWNoYWVsIFJpZXNjaCA8bWljaGFl
-bC5yaWVzY2hAY29sbGFib3JhLmNvbT4KClRoaXMgc2VyaWVzLCBhbG9uZyB3aXRoIHRoZSBtaW5v
-ciBmaXh1cCBmb3IgcGF0Y2ggMiwgbWFrZXMgdmlkZW8gY2FwdHVyZQpvbiBteSBSb2NrIDNBIHcv
-IElNWDIxOSBmcm9tIGEgUmFzcGJlcnJ5IFBpIHYyIGNhbWVyYSBtb2R1bGUgcnVuLgpQcmV2aW91
-c2x5IGl0IHdvdWxkIGZhaWwgdG8gcXVldWUgYnVmZmVycy4KCgpUZXN0ZWQtYnk6IENoZW4tWXUg
-VHNhaSA8d2Vuc0BrZXJuZWwub3JnPgoKPiAtLS0KPiBEYW4gQ2FycGVudGVyICgxKToKPiAgICAg
-ICBtZWRpYTogcm9ja2NoaXA6IHJrY2lmOiBmaXggb2ZmIGJ5IG9uZSBidWdzCj4KPiBNaWNoYWVs
-IFJpZXNjaCAoMSk6Cj4gICAgICAgbWVkaWE6IHJvY2tjaGlwOiBya2NpZjogY29tcGx5IHdpdGgg
-bWluaW11bSBudW1iZXIgb2YgYnVmZmVycyByZXF1aXJlbWVudAo+Cj4gIC4uLi9wbGF0Zm9ybS9y
-b2NrY2hpcC9ya2NpZi9ya2NpZi1jYXB0dXJlLW1pcGkuYyAgIHwgMTAgKysrLS0tCj4gIC4uLi9t
-ZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2NpZi9ya2NpZi1zdHJlYW0uYyAgIHwgNDEgKysrKysr
-KysrKystLS0tLS0tLS0tLQo+ICAyIGZpbGVzIGNoYW5nZWQsIDI2IGluc2VydGlvbnMoKyksIDI1
-IGRlbGV0aW9ucygtKQo+IC0tLQo+IGJhc2UtY29tbWl0OiBjODI0MzQ1Mjg4ZDExZTI2OWNlNDFi
-MzZjMTA1NzE1YmMyMjg2MDUwCj4gY2hhbmdlLWlkOiAyMDI2MDIxNi1ya2NpZi1maXhlcy1iZGQ5
-ZDNjN2U0YjAKPgo+IEJlc3QgcmVnYXJkcywKPiAtLQo+IE1pY2hhZWwgUmllc2NoIDxtaWNoYWVs
-LnJpZXNjaEBjb2xsYWJvcmEuY29tPgo+Cj4KPgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+This reverts commit 5323186e2e8d33c073fad51e24f18e2d6dbae2da.
+
+The reverted commit broke this driver for the RK3308 I2S.
+
+The 'arecord -Vmono -d 2 -c 8 -f S16_LE -r 96000 /dev/null' command on
+RK3308 now results in:
+
+  rockchip-i2s-tdm ff320000.i2s: ASoC error (-22): at snd_soc_dai_hw_params() on ff320000.i2s
+   ff320000.i2s-rk3308-hifi: ASoC error (-22): at __soc_pcm_hw_params() on ff320000.i2s-rk3308-hifi
+
+Tested on:
+
+ * Radxa Rock Pi S
+ * Upstream Linux kernel
+ * arm64 defconfig
+
+Tested kernel versions:
+
+ * v6.12: OK
+ * 5323186e2e8d (commit being reverted): FAIL
+ * 5323186e2e8d^: OK
+ * 21cfbeae7d7c (commit being reverted, on stable/linux-6.12.y): FAIL
+ * 21cfbeae7d7c^: OK
+ * v6.19: FAIL
+ * v6.19 + 'git revert 5323186e2e8d': OK
+ * v6.19-11566-g254edc893f3a (current master as of today): FAIL
+ * v6.19-11566-g254edc893f3a (current master as of today) + this revert: OK
+
+Fixes: 5323186e2e8d ("ASoC: rockchip: i2s_tdm: Re-add the set_sysclk callback")
+Cc: stable@vger.kernel.org
+Link: https://lore.kernel.org/lkml/DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com/
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 31 ++-----------------------------
+ 1 file changed, 2 insertions(+), 29 deletions(-)
+
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index 770b9bfbb384..b056d72e61ff 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -22,6 +22,7 @@
+ 
+ #define DRV_NAME "rockchip-i2s-tdm"
+ 
++#define DEFAULT_MCLK_FS				256
+ #define CH_GRP_MAX				4  /* The max channel 8 / 2 */
+ #define MULTIPLEX_CH_MAX			10
+ 
+@@ -69,8 +70,6 @@ struct rk_i2s_tdm_dev {
+ 	bool has_playback;
+ 	bool has_capture;
+ 	struct snd_soc_dai_driver *dai;
+-	unsigned int mclk_rx_freq;
+-	unsigned int mclk_tx_freq;
+ };
+ 
+ static int to_ch_num(unsigned int val)
+@@ -618,27 +617,6 @@ static int rockchip_i2s_trcm_mode(struct snd_pcm_substream *substream,
+ 	return 0;
+ }
+ 
+-static int rockchip_i2s_tdm_set_sysclk(struct snd_soc_dai *cpu_dai, int stream,
+-				       unsigned int freq, int dir)
+-{
+-	struct rk_i2s_tdm_dev *i2s_tdm = to_info(cpu_dai);
+-
+-	if (i2s_tdm->clk_trcm) {
+-		i2s_tdm->mclk_tx_freq = freq;
+-		i2s_tdm->mclk_rx_freq = freq;
+-	} else {
+-		if (stream == SNDRV_PCM_STREAM_PLAYBACK)
+-			i2s_tdm->mclk_tx_freq = freq;
+-		else
+-			i2s_tdm->mclk_rx_freq = freq;
+-	}
+-
+-	dev_dbg(i2s_tdm->dev, "The target mclk_%s freq is: %d\n",
+-		stream ? "rx" : "tx", freq);
+-
+-	return 0;
+-}
+-
+ static int rockchip_i2s_tdm_hw_params(struct snd_pcm_substream *substream,
+ 				      struct snd_pcm_hw_params *params,
+ 				      struct snd_soc_dai *dai)
+@@ -653,19 +631,15 @@ static int rockchip_i2s_tdm_hw_params(struct snd_pcm_substream *substream,
+ 
+ 		if (i2s_tdm->clk_trcm == TRCM_TX) {
+ 			mclk = i2s_tdm->mclk_tx;
+-			mclk_rate = i2s_tdm->mclk_tx_freq;
+ 		} else if (i2s_tdm->clk_trcm == TRCM_RX) {
+ 			mclk = i2s_tdm->mclk_rx;
+-			mclk_rate = i2s_tdm->mclk_rx_freq;
+ 		} else if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
+ 			mclk = i2s_tdm->mclk_tx;
+-			mclk_rate = i2s_tdm->mclk_tx_freq;
+ 		} else {
+ 			mclk = i2s_tdm->mclk_rx;
+-			mclk_rate = i2s_tdm->mclk_rx_freq;
+ 		}
+ 
+-		err = clk_set_rate(mclk, mclk_rate);
++		err = clk_set_rate(mclk, DEFAULT_MCLK_FS * params_rate(params));
+ 		if (err)
+ 			return err;
+ 
+@@ -825,7 +799,6 @@ static const struct snd_soc_dai_ops rockchip_i2s_tdm_dai_ops = {
+ 	.hw_params = rockchip_i2s_tdm_hw_params,
+ 	.set_bclk_ratio	= rockchip_i2s_tdm_set_bclk_ratio,
+ 	.set_fmt = rockchip_i2s_tdm_set_fmt,
+-	.set_sysclk = rockchip_i2s_tdm_set_sysclk,
+ 	.set_tdm_slot = rockchip_dai_tdm_slot,
+ 	.trigger = rockchip_i2s_tdm_trigger,
+ };
+
+---
+base-commit: 2961f841b025fb234860bac26dfb7fa7cb0fb122
+change-id: 20260218-snd-rk3308-i2s-revert-set_sysclk-ed09c6914e1b
+
+Best regards,
+-- 
+Luca Ceresoli <luca.ceresoli@bootlin.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
