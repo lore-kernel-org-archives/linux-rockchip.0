@@ -4,70 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79267E9A04B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 21:03:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41234E9A04D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 22:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l/fAsL/uAcer9yCMkW3vw2Pk648IMRKJWpbuoL0D/mQ=; b=dmYIDzIZonCMHZ
-	v6nce+HTzQSWU+By4OGyBvzUrs1F8K/p2f6CuSttIUPV6fLQdP/x4euUxOaFrbNlba3i7YY/jBGPp
-	PwWyPvisUBc+g5BKUfhdDYL+yEvJxtFt9JglP4IctsCUl810yt9HcWH+eMRw5eTTtQdVleKVM0Hvl
-	+204IbMkrvPGZPEh9mcSSYFi7y1OBKMegKXR4DaaHP3pQ4u7IwvzTWgdFCFCi2DZBTeVdXAWSZRgk
-	Ll1HAAYst/2fisSVBn5OaFPahQ5XM07cLCcp+Ico/QuJUrhCjZ1Pgot4GngaPyYcIgIo0JMW7Aqcc
-	RNDCaJtgtVWG+QbXZbCA==;
+	List-Owner; bh=Ym0uVOxwwwHK4HjflRk6MHSHxhC8xNATVfh/fanP9iI=; b=ohz110REJWObLZ
+	ITO0/Z4j698GR1MPdfJ30EZg3+OJai071L+ng68q90vEBfJ/UVixIrji0wobCWw9bz/yw3p0SRs8I
+	MYW8+SqODAmRkKxRvO57mNV7h3/8mr0e50+Ndp932cyVcGLAbz6ehIMP6zzsdOXKx407I/wR3DtNc
+	U0tSBmv2sfVNJWDmZnCiI80BGKEd+Kr+flAm0Kf0X5rT8m03NfX5fklqbvyeECpL/6I+zgohy+KZ+
+	4vYuyfWLWuRdliRdXjonsTUEZlQXfx4rkU3Ym/DrL36jKgU7YoP4V9C8PzgxJk8f5xfIsa02kzsaw
+	bWN+WlSoP6gX2y7lc8cQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsohL-0000000AQ5A-0HJF;
-	Wed, 18 Feb 2026 21:03:03 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1vsqP5-0000000AYHw-1KKE;
+	Wed, 18 Feb 2026 22:52:19 +0000
+Received: from forward502a.mail.yandex.net ([178.154.239.82])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsohH-0000000AQ4h-3D6Q;
-	Wed, 18 Feb 2026 21:03:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1771448560; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=fLoug58uduz4BkdTeT08qTKsz+09n3ggNU7/yF1jCzugZqnDAmbZSRS605Ad9XWsvkSKaTMe4P73VaI812fDDUc0kfjkzVZdxnusgYtowZyive0jhivO1QsiIxbeKysISTT/xE5CF5nNf/LAfxe4B4P7dW0c4sjhRCwioaI/JEw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1771448560; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=CZvRA+oMFDnzO5kJBkporl84uyLR6ayPPrDSuzdNaAg=; 
-	b=Hif/eRewK5dy0bS6Qgqbu635Nl49HbwU4pxTyKN7IzvVef/N280A+y2hxPZ0/EKLx6RbLn+XUES1zjo4OQMHmbQtaUvUXlnhoMQ86AGUhnY6y23/TFGdpFmmNBDCoEWxctqczEQxIt7ruoL6tk4eetr6SXYBSN0rkj5gHmKRHtg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771448560;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=CZvRA+oMFDnzO5kJBkporl84uyLR6ayPPrDSuzdNaAg=;
-	b=Dhb/M57IaKINfTxPYAnPQ7yyHqmL9cQsoQWtbn2mu22+Uk0B1CzhVAOFLOq7i0vb
-	EmExVJc/J6Ky4OuC5uGXv4ijrD5n5Pyo9kaeUiJpWWI5JmBJ/H0OHmGWrH2LertUAhL
-	GHOJGN/acIzBCPVrLIYNoZB5U6H40xHpAjChwH0Q=
-Received: by mx.zohomail.com with SMTPS id 1771448557465284.83992249039545;
-	Wed, 18 Feb 2026 13:02:37 -0800 (PST)
-Message-ID: <a024ba9c-f2d3-4bba-93d3-33c0d0bd868b@collabora.com>
-Date: Wed, 18 Feb 2026 16:02:35 -0500
+	id 1vsqP0-0000000AYGU-0cDF;
+	Wed, 18 Feb 2026 22:52:17 +0000
+Received: from mail-nwsmtp-smtp-production-main-94.vla.yp-c.yandex.net (mail-nwsmtp-smtp-production-main-94.vla.yp-c.yandex.net [IPv6:2a02:6b8:c15:290e:0:640:f317:0])
+	by forward502a.mail.yandex.net (Yandex) with ESMTPS id 8729889CF4;
+	Thu, 19 Feb 2026 01:52:05 +0300 (MSK)
+Received: by mail-nwsmtp-smtp-production-main-94.vla.yp-c.yandex.net (smtp/Yandex) with ESMTPSA id 1qjcVXSGC4Y0-8pHEunKh;
+	Thu, 19 Feb 2026 01:52:04 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.com; s=mail;
+	t=1771455124; bh=CKsYIBP1nS9baNuNPf0y7xcvIP54RWOTm98i27xusoI=;
+	h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
+	b=O66KIAXFmfXw8rz4pI+7zzue0DPxJrPIy0aeyjkO+U5tkkEkgxOltbJc9noMwz41e
+	 3f9Up+VtsxkvBYrT3f+TEddoOWmDlbun1b1OcoveKDg3YfFMn5/gAYkLLgE9rUkEba
+	 fu98ukhOnyvr9PBN86WEp1TJGPNRinIP2W3AmBaw=
+Authentication-Results: mail-nwsmtp-smtp-production-main-94.vla.yp-c.yandex.net; dkim=pass header.i=@yandex.com
+Message-ID: <bd10ba64-2e56-4f1b-ba82-73ef59c87e2a@yandex.com>
+Date: Wed, 18 Feb 2026 23:52:01 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ASoC: rockchip: i2s-tdm: Use param rate if not provided
- by set_sysclk
-To: linux-kernel@vger.kernel.org, Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com, Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Thomas Petazzoni <thomas.petazzoni@bootlin.com>
-References: <20260218201834.924358-1-detlev.casanova@collabora.com>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <20260218201834.924358-1-detlev.casanova@collabora.com>
-X-ZohoMailClient: External
+Subject: Re: [PATCH v2 2/4] arm64: dts: rockchip: Add USB2.0 PHY for RK3368
+To: Vladimir Oltean <olteanv@gmail.com>, WeiHao Li <cn.liweihao@gmail.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250909132958.26423-1-cn.liweihao@gmail.com>
+ <20250909132958.26423-3-cn.liweihao@gmail.com>
+ <20260212165550.mju3377fvphdsqoe@skbuf>
+Content-Language: en-US, ar-EG
+From: Johan Jonker <jbx6244@yandex.com>
+In-Reply-To: <20260212165550.mju3377fvphdsqoe@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260218_130259_861552_C9D6ABAF 
-X-CRM114-Status: GOOD (  19.38  )
+X-CRM114-CacheID: sfid-20260218_145214_738081_93112A09 
+X-CRM114-Status: GOOD (  17.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +69,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-This could also use a
 
-Reported-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+On 2/12/26 17:55, Vladimir Oltean wrote:
+> On Tue, Sep 09, 2025 at 09:29:56PM +0800, WeiHao Li wrote:
+>> RK3368 has one USB2.0 PHY with two ports, This adds device tree node for
+>> it.
+>>
+>> Signed-off-by: WeiHao Li <cn.liweihao@gmail.com>
+>> ---
+>>  arch/arm64/boot/dts/rockchip/rk3368.dtsi | 29 ++++++++++++++++++++++++
+>>  1 file changed, 29 insertions(+)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3368.dtsi b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+>> index 1b21787269..b09e431a64 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3368.dtsi
+>> @@ -766,11 +766,40 @@ cru: clock-controller@ff760000 {
+>>  	grf: syscon@ff770000 {
+>>  		compatible = "rockchip,rk3368-grf", "syscon", "simple-mfd";
+>>  		reg = <0x0 0xff770000 0x0 0x1000>;
+>> +		#address-cells = <1>;
+>> +		#size-cells = <1>;
+> 
 
-Luca, feel free to add your Tested-by as well :)
+> This introduces a device tree warning. You cannot mix nodes with no unit
+> address (io-domains) with nodes with a unit address (usb2-phy@700) on
+> the same hierarchical level. You have to pick a format and stick to it.
 
-Detlev.
+nope
 
-On 2/18/26 15:18, Detlev Casanova wrote:
-> Drivers will not always call set_sysclk() for all clocks, especially when
-> default mclk-fs can be used.
-> When that is the case, use the clock rate set in the params multiplied by the
-> default mclk-fs.
->
-> Fixes: 5323186e2e8d ("ASoC: rockchip: i2s_tdm: Re-add the set_sysclk callback")
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
-> ---
->   sound/soc/rockchip/rockchip_i2s_tdm.c | 10 ++++++++++
->   1 file changed, 10 insertions(+)
->
-> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> index 770b9bfbb384..fc52149ed6ae 100644
-> --- a/sound/soc/rockchip/rockchip_i2s_tdm.c
-> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
-> @@ -22,6 +22,7 @@
->   
->   #define DRV_NAME "rockchip-i2s-tdm"
->   
-> +#define DEFAULT_MCLK_FS				256
->   #define CH_GRP_MAX				4  /* The max channel 8 / 2 */
->   #define MULTIPLEX_CH_MAX			10
->   
-> @@ -665,6 +666,15 @@ static int rockchip_i2s_tdm_hw_params(struct snd_pcm_substream *substream,
->   			mclk_rate = i2s_tdm->mclk_rx_freq;
->   		}
->   
-> +		/*
-> +		 * When the dai/component driver doesn't need to set mclk-fs for a specific
-> +		 * clock, it can skip the call to set_sysclk() for that clock.
-> +		 * In that case, simply use the clock rate from the params and multiply it by
-> +		 * the default mclk-fs value.
-> +		 */
-> +		if (!mclk_rate)
-> +			mclk_rate = DEFAULT_MCLK_FS * params_rate(params);
-> +
->   		err = clk_set_rate(mclk, mclk_rate);
->   		if (err)
->   			return err;
+Please add rockchip,rk3368-usb2phy to the list in grf.yaml in the same patch that you change rockchip,inno-usb2phy.yaml
+Requires a bit of SOC and PHY maintainers coordination.
+
+Place dt-binding compatible change patches before the patch that uses it. (patch 3 before patch 1)
+due to: ./scripts/checkpatch.pl --strict 
+
+https://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git/tree/Documentation/devicetree/bindings/soc/rockchip/grf.yaml#n244
+
+> 
+>>  
+>>  		io_domains: io-domains {
+>>  			compatible = "rockchip,rk3368-io-voltage-domain";
+>>  			status = "disabled";
+>>  		};
+>> +
+>> +		u2phy: usb2-phy@700 {
+>> +			compatible = "rockchip,rk3368-usb2phy";
+>> +			reg = <0x700 0x2c>;
+>> +			clocks = <&cru SCLK_OTGPHY0>;
+>> +			clock-names = "phyclk";
+>> +			clock-output-names = "usb480m_phy";
+>> +			#clock-cells = <0>;
+>> +			status = "disabled";
+>> +
+>> +			u2phy_otg: otg-port {
+>> +				interrupts = <GIC_SPI 94 IRQ_TYPE_LEVEL_HIGH>,
+>> +					     <GIC_SPI 93 IRQ_TYPE_LEVEL_HIGH>,
+>> +					     <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH>;
+>> +				interrupt-names = "otg-bvalid", "otg-id",
+>> +						  "linestate";
+>> +				#phy-cells = <0>;
+>> +				status = "disabled";
+>> +			};
+>> +
+>> +			u2phy_host: host-port {
+>> +				interrupts = <GIC_SPI 96 IRQ_TYPE_LEVEL_HIGH>;
+>> +				interrupt-names = "linestate";
+>> +				#phy-cells = <0>;
+>> +				status = "disabled";
+>> +			};
+>> +		};
+>>  	};
+>>  
+>>  	wdt: watchdog@ff800000 {
+>> -- 
+>> 2.47.2
+>>
+>>
+> 
+> _______________________________________________
+> Linux-rockchip mailing list
+> Linux-rockchip@lists.infradead.org
+> http://lists.infradead.org/mailman/listinfo/linux-rockchip
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
