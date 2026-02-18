@@ -4,75 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927EDE9A047
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 17:17:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF067E9A02C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 17:19:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n5oWoVRhjRAzwmt64Wh7rjRZmkvXMHuC7VgbgIxqiZw=; b=OatIDh+hcPPT6r
-	R4G+8oW34ZRfWDTrnnLtFgebyGG8tT3ObtNbZlp+kao89d+UFEYoEgTZGhX1HYZTs73ti4N8oiQyU
-	ZnJnOm1E/YdLZ0QnkTM2HEh8kBgrAi/UxbHfeDLhdh8Yo9M8K7PVp6sXzw46g9RTRP7A8wKNaLgmZ
-	SEgHllYV/GKlh3zGBAXu0Z08BQm7/joth/g5eTGWOHhEsOARnJ7IeppgwsJ+j61wRbiz7RefyFUb6
-	Nh98fSxk3jcDG75cst1LiyCh8t9xazJYiLu2mg3S5q7m7y3Ti0c2vk0ANV6BqciiuWzONMzMD8LbP
-	48umksN+X8/hYZDdjAMQ==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eQiTK4NUrefuzt9eFBKtDAgMi7/hijcAyEF/ZyawQBc=; b=NzknRe5My9VeFIln6kirzS8rxY
+	gi0kkJ3g+NfDTC+gZc2QKmXGMrOVVijO8Wblxuvxhsj+yXf8Mfz2/9fbws09oUve6j0lU/h/CXrq7
+	63dEdIuGs81Kg0ReAWftiIDhXfztlDQy5NDNlPrR86JBkUw2sRvdDvI7nnFut5f90UMZ5GK4odJx8
+	1mL28pHmHDOJlejPKnRZc3SctrRW53vqYFvsM57HZhrjqweIyL1M9Y5pBksvztImjmit2KdxRJJ4n
+	IFBJc9Nn9EdhwquEyg+4M5CauNHfmpzQHAOflYrnFrptx7OVfpwECDvTlrlyhLinPMHE8xFg/RRsj
+	2/6XJTfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vslB0-0000000A9f0-3WmB;
-	Wed, 18 Feb 2026 17:17:26 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1vslCf-0000000AAD1-2gZj;
+	Wed, 18 Feb 2026 17:19:09 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vslAy-0000000A9bz-0JVU;
-	Wed, 18 Feb 2026 17:17:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1771435028; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=hi5kGH6lyRdefVCwuBY9IIWF3vRopGJ8dV4E5SNT06hNIRk/kTJTW/h/0TOaEO+XIiLGlbH5ezNwAIpoqUOJj+jexBAXl0VYR869ZXtBzFAWpjBPFRivz3tMbcrthvHdTZkZI0PmMCjkN9MtHHivG2VZdCpR92BWcYAXwET02e0=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1771435028; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=H2xxKVmqo/G9RIHRWeTC2HYdGopJIE+Mth9Uo0KlJd4=; 
-	b=gHQSfD74rF1+ApPqyaT6nYIIeC0UO7PVxocbaxzW1QRqUSrvAF0jdSliGN9F6Bl7rkH54Ar6Nnly3oFCyIwdDCgqoNBqcgF3Q7inYDXcI5MJ6DmDQOWiTP4FcYJmoF6ppfRuElMzqiSunzFyCLy8PmvgtsAI2P/o6ZpSIBnJo5E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771435028;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=H2xxKVmqo/G9RIHRWeTC2HYdGopJIE+Mth9Uo0KlJd4=;
-	b=UnJCmaEQFt5FpIqdLUI9xhfIfn4rUuheKM2nLAAz5YcEyAhgA2qx32H6kGkl6CG0
-	QStucyzTOtBqDfcganCPT9F6CJtrX8VAQzu3tZqscRCBRiJ9vFKuvd0JRMIJn+b1pPo
-	gtkDX47ldxCghBDUH/p7utuSAVlKgL8Z+UUeOLf8=
-Received: by mx.zohomail.com with SMTPS id 1771435025979786.7325301917416;
-	Wed, 18 Feb 2026 09:17:05 -0800 (PST)
-Message-ID: <86644ac4-6ffd-48c6-a79d-8e8144f18e2e@collabora.com>
-Date: Wed, 18 Feb 2026 12:17:04 -0500
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1vslCd-0000000AAC9-0Kk1;
+	Wed, 18 Feb 2026 17:19:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4494940604;
+	Wed, 18 Feb 2026 17:19:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5DFC2C116D0;
+	Wed, 18 Feb 2026 17:19:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771435146;
+	bh=S0fTBAhDNi30ZiveNSC2Lpo/JAJCaVSZ9YnuZFTHPKM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=L7dSoJuCxUkPsEncIh897UzPAaTgj1+/9sw+f0UWptWSgk2VGG7CKRoBIvbcWGyWR
+	 RgZXi4zzsS/ytujZ5iR3gnuqAs1ekYEwh64va5fkV5WsRDI7kuZ+IP5UaPGZ8xET1j
+	 rAGEpkWa7u6BV2BorFFU+tZwo8gnXAlPqDyTCIBS/h8nuCtcoBu6ClKsyp4+ltD5NS
+	 O576T1IM+yb+llkuJxPj7m6l9wcavmru99wUA915+y7mgtkuwzKFf05jY7k5M787br
+	 JsqJHARQmpyOzf1wOZ0jVgkkVdb/5232cl7yP13Fhmv9+PnSE0j54YXmru0a7+uA+Z
+	 ReXM9Y9SjjxqQ==
+Date: Wed, 18 Feb 2026 17:19:00 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-kernel@vger.kernel.org,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+	alexandre.belloni@bootlin.com, thomas.petazzoni@bootlin.com
 Subject: Re: [REGRESSION] Re: [PATCH v1] ASoC: rockchip: i2s_tdm: Re-add the
  set_sysclk callback
-To: Mark Brown <broonie@kernel.org>, Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: linux-kernel@vger.kernel.org,
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>,
- linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- alexandre.belloni@bootlin.com, thomas.petazzoni@bootlin.com
+Message-ID: <e8e910a4-9aef-4bc3-be74-b4f5bea34b74@sirena.org.uk>
 References: <20250117163102.65807-1-detlev.casanova@collabora.com>
  <DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com>
  <DGI2YVYBECUM.3O0UN9VMKF7FJ@bootlin.com>
  <34f61d25-607c-4967-bc67-3c7517c7fe14@collabora.com>
  <DGI8RSUWQ7W8.MDY7YGXPA5LX@bootlin.com>
  <e1cea076-fb1e-475e-b6a5-383370a69722@sirena.org.uk>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <e1cea076-fb1e-475e-b6a5-383370a69722@sirena.org.uk>
-X-ZohoMailClient: External
+ <86644ac4-6ffd-48c6-a79d-8e8144f18e2e@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <86644ac4-6ffd-48c6-a79d-8e8144f18e2e@collabora.com>
+X-Cookie: Avoid contact with eyes.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260218_091724_186994_A1D4880F 
-X-CRM114-Status: GOOD (  10.16  )
+X-CRM114-CacheID: sfid-20260218_091907_142143_ABC4CD97 
+X-CRM114-Status: GOOD (  12.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,28 +79,59 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============3434550237382882739=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
 
-On 2/18/26 12:10, Mark Brown wrote:
-> On Wed, Feb 18, 2026 at 05:51:51PM +0100, Luca Ceresoli wrote:
->> On Wed Feb 18, 2026 at 5:01 PM CET, Detlev Casanova wrote:
->> +		if (!mclk_rate)
->> +			mclk_rate = DEFAULT_MCLK_FS * params_rate(params);
->> With this, and DEFAULT_MCLK_FS defined to 256, arecord is working again.
-> I did have the revert queued, but a fix would be even better if the
-> patch could be sent?
+--===============3434550237382882739==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="/ClagwaMKz6Owmro"
+Content-Disposition: inline
 
-A fix will follow a bit later today, then.
 
-Detlev.
+--/ClagwaMKz6Owmro
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
+On Wed, Feb 18, 2026 at 12:17:04PM -0500, Detlev Casanova wrote:
+> On 2/18/26 12:10, Mark Brown wrote:
+
+> > I did have the revert queued, but a fix would be even better if the
+> > patch could be sent?
+
+> A fix will follow a bit later today, then.
+
+Fantastic!
+
+--/ClagwaMKz6Owmro
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmV9IMACgkQJNaLcl1U
+h9A7gwf/RtuvltR1mZBShBgbGCsz9B2aFV+qgtr2HIqmXkCpAZpdxP+2Ap7NYtiL
+JXLLlTWhfLTpXTLqgtd72JAygDIk7qosUlpO7Jhq5Lw9gb7LKjoVRXah6kKVbkXk
+ichk8Co/qpwWOzmZDCAMufb4QoAeqh12oJgYq/80/f4rHdEVAlWpuW6cNSHtQ1am
+MViCp5PxhfSdRJl9hFGCppL0XcWSSS1cmp9EwR0PxI9OCDb6G5lr9K21Ew7MtCxr
+cFFjGW0zNFrnE+fNyduMukolN83waE+jXM14g10IMcPhcOOV7wcJm/cLvnmbU7eZ
+twjYnbmQ3+M9RVvkt465azbx83WnWw==
+=XIQV
+-----END PGP SIGNATURE-----
+
+--/ClagwaMKz6Owmro--
+
+
+--===============3434550237382882739==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3434550237382882739==--
+
