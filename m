@@ -4,71 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A74CE9A03B
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 12:14:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E9C4E9A03B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 12:15:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Qz1CqBF0en2PKCeMNLXcKGYFKSZh5bdfBdhgsqzhcqA=; b=CJQrqPzNUHBA54
-	tQ5A3pCiWaxpWT931WhHaLgvUDXIrOE7UyxYlxge1JXEJNpnOVxkvr0S0bWPvnbm/v/OGKrvEElC7
-	D7Qn+L0EAP+MVwoMtKdDfN6ixaONlL0Hf55HU0bPFWuTr81D0K6NQ4BtSvp3U2Xgb7qMo29HwRd3Q
-	dIUzt15VY7axVhGeWJWDGZ4q0aUGPJtACdsSI8uQfZvpvey/j8kwICppv+6Vwh1jpw64zd0bf9kul
-	pvGzBFPybEywOvdy+aD/CruFwJne0wLSwFPqu/sfN/dfdxQORGd8USqxpzRFGrPu6nSBFuPkl2ClI
-	81RH6ZltgNwTk5egmssA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=pm4GDk1eayMZjjV9EvWxbCdisxlqNR64TjP4SXBSq50=; b=y9vYadXsEeq6h6Ni2GSu08RfFI
+	F+40hPgr5NlkUzqV5VuSvf8dXvLdohBHZzmqtW/WOhQ5wLaT7kBwJWPy1BunVcAMGJgu/GzaZRXH/
+	dqUj4NwxU0zP7arZL7IJNXf/cp8BV6QxXTYwyVgLEwOHssSfG/6IvxdQUmcok77IbjU3hYQ+0uvcm
+	hMspW1s0l3nPvhxwftFFha6TZZ9TOq+roonkpICdmhv92tcNEESRkmV2jHOwuoJKIMex4zcZVAmnZ
+	brFv63hKVD/vp7WC8n619MGY3MSCjPFLjCNhhhcHUUklJhppop6unMZrWl8ci5KNW329yrffoi1zv
+	tKG8oofg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsgS5-00000009l9n-0KCm;
-	Wed, 18 Feb 2026 12:14:45 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1vsgT7-00000009lVN-47mA;
+	Wed, 18 Feb 2026 12:15:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsgS2-00000009l8A-2jKq
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Feb 2026 12:14:44 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id CFBD64E40F58;
-	Wed, 18 Feb 2026 12:14:39 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 8B45F60738;
-	Wed, 18 Feb 2026 12:14:39 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BB03810368B5D;
-	Wed, 18 Feb 2026 13:14:36 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1771416878; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=H1SEXdCn6Ivy44E3s/UlBooYRFgSXnmehGPBAK+5r7w=;
-	b=HYTBvtLMo0ZI1vTmR3shXPdXnQSaLhlps7FOcyorYrgRXMTUk3zc08EhkeCDdsPXDollAH
-	wUscZMnh7Z2pdfMI0cNNN3NGXBn0pRc6R4BIwenYaV7G62cZOFca+FqCGHGf6foul7WObY
-	GgJtZWzZim0ZGTnRsJYoQlMW2q06dXb9ee3f1CwSYfehu0pnlJEa5VKn7/W7t4wX0ByweI
-	kiB/LFKr8WFqi8AKUaDvl5Az/3bxmfZTrRKkMiTwhjc9R4x1Vp0aKL0olbGxn2zAa+E3It
-	z1Y9JKzH8DUP5ybferD/yQqjdn00yhKc4qx9g4UBWcUcQkkYhP0ifv5Zwh7Tvg==
-Mime-Version: 1.0
-Date: Wed, 18 Feb 2026 13:14:36 +0100
-Message-Id: <DGI2VIKQYD6Y.2R4TM6UD58OSU@bootlin.com>
-Subject: Re: [REGRESSION] Re: [PATCH v1] ASoC: rockchip: i2s_tdm: Re-add the
- set_sysclk callback
-Cc: "Detlev Casanova" <detlev.casanova@collabora.com>,
- <linux-kernel@vger.kernel.org>, "Nicolas Frattaroli"
- <frattaroli.nicolas@gmail.com>, "Liam Girdwood" <lgirdwood@gmail.com>,
- "Jaroslav Kysela" <perex@perex.cz>, "Takashi Iwai" <tiwai@suse.com>, "Heiko
- Stuebner" <heiko@sntech.de>, <linux-rockchip@lists.infradead.org>,
- <linux-sound@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <kernel@collabora.com>, <alexandre.belloni@bootlin.com>,
- <thomas.petazzoni@bootlin.com>
-To: "Mark Brown" <broonie@kernel.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.20.1
-References: <20250117163102.65807-1-detlev.casanova@collabora.com>
- <DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com>
- <49e43733-1366-4a4a-a787-f7221b9612d2@sirena.org.uk>
-In-Reply-To: <49e43733-1366-4a4a-a787-f7221b9612d2@sirena.org.uk>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1vsgT4-00000009lUQ-42w9;
+	Wed, 18 Feb 2026 12:15:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BF13C407E7;
+	Wed, 18 Feb 2026 12:15:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 31118C19421;
+	Wed, 18 Feb 2026 12:15:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771416945;
+	bh=CMfoICr25vJULHXEU9DptywfEfHQ/EWd11ZFFXA3TZ4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=CS2hMCuaN/8Ioi7cWg7F/BI7xAIrCVt7pqw22ip7EXsHh2HkOngNgTItqKBdBKSZN
+	 PuvEUOGJhMDa7zf4Szyar2n3kXf+EDRiK8cLNWFEln3rI5tN11fW/5VxvYJoUQzU6K
+	 ULN1P75IFUJw1hpYwA3c0+v8mhYWR6iZ5/h/GEWoWkHLkDx07oXM6YVmOH9DyX4/EC
+	 pPaX3vwMTxii9k1A5s0KXFEB0pD8G9ZmG0nW3FC1VHuhujA/PHXqC/qtxJ8EfVm4ip
+	 lSM7LyG7bEUuuhPmjSh+ucBzjSSncoLAwMDchIVoNtjzUnRJ4yxSGHCwEZpY4CZTuv
+	 8xiRO/BnZ5Acg==
+Date: Wed, 18 Feb 2026 12:15:40 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] Revert "ASoC: rockchip: i2s_tdm: Re-add the set_sysclk
+ callback"
+Message-ID: <6ffc8939-147f-4b2f-a8cb-63a388d3dad4@sirena.org.uk>
+References: <20260218-snd-rk3308-i2s-revert-set_sysclk-v1-1-79ab787f88ac@bootlin.com>
+MIME-Version: 1.0
+In-Reply-To: <20260218-snd-rk3308-i2s-revert-set_sysclk-v1-1-79ab787f88ac@bootlin.com>
+X-Cookie: They just buzzed and buzzed...buzzed.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260218_041443_128713_6EAAFFEF 
-X-CRM114-Status: UNSURE (   9.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260218_041547_022073_7386AAC1 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,33 +74,66 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5205478478452715373=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mark,
 
-On Tue Feb 17, 2026 at 8:22 PM CET, Mark Brown wrote:
-> On Tue, Feb 10, 2026 at 10:54:04AM +0100, Luca Ceresoli wrote:
->
->> I'm afraid I just found this commit breaks audio capture on the RK3308.
->
-> Can you please send a revert explaining the issue so we can drop the
-> patch (unless a fix is forthcoming which doesn't seem likely right now,
-> we can always re-add the support later)?
+--===============5205478478452715373==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tN0IzqP3xmtYQ7S/"
+Content-Disposition: inline
 
-Thanks for the feedback! Revert patch sent.
 
-Best regards,
-Luca
+--tN0IzqP3xmtYQ7S/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+On Wed, Feb 18, 2026 at 01:11:24PM +0100, Luca Ceresoli wrote:
+
+> This reverts commit 5323186e2e8d33c073fad51e24f18e2d6dbae2da.
+
+Please include human readable descriptions of things like commits and
+issues being discussed in e-mail in your mails, this makes them much
+easier for humans to read especially when they have no internet access.
+I do frequently catch up on my mail on flights or while otherwise
+travelling so this is even more pressing for me than just being about
+making things a bit easier to read.
+
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
+
+--tN0IzqP3xmtYQ7S/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmVrWsACgkQJNaLcl1U
+h9CiRwf/b/PyM6sh+/IY6KcTy577bNhqdqaZ3r+FuOqbpZngqzuc09sJKu284k1Q
+vuU3JJ3he28hEUSwkazGVpEiLAWvGxNP3MPFuCgDGqtKb5fYCXORj8EX4ilVBiTE
+dYC9oAab3VILGDf3lHQlPG3B/ZunIYQGdITIdmgHHsJ2Uet9TLEGEm7uhUZQybCp
+jXzXTlRRh4Vx5oArEOWKIZdUw4IxtGQD7iLwG+N6Pt3L13d/8WG+XVgIdTzpMU78
+SqviGJyfrH05JA4w3vlg1IXf/K9UYQ361nHhkCI2YQVlI6IokGh7eqr3LAzwQx/3
+bkKavE7823h5HkFxYwH0lviYWdSTUA==
+=y9au
+-----END PGP SIGNATURE-----
+
+--tN0IzqP3xmtYQ7S/--
+
+
+--===============5205478478452715373==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5205478478452715373==--
+
