@@ -4,66 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F93BE9A04A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 17:10:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 927EDE9A047
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Feb 2026 17:17:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WhSA5MSdBupYvjOIF2EanyTTODg3wxmBeM0+NX9k8dY=; b=VNkQ1JM2E7BeWkr3sPtDUeV1S1
-	FDrVC8RXdalL9xDNz2SM0oCSB7DEsJ2UY8d7A4FvcVzMMl16hJtbNAQFigIAPM14FW2kDnXIBQ1wK
-	PC5kfZlbizRLb2hjZrul+PDqOVHxp9XbGGqDj8vIFqcnM6dyTp6iKPD9JTfgvZgaGXeGX+EBFrOw/
-	zTF9bZU04Od4IvpA2mn81GaUw6mEI/jwk3xfYQtNA6xofhTEQnKGcUzlsT1OqFPGWXEvQL5g2kr7z
-	yZ3ev7asQxtoAgmotb255rgvtW1DIhVkSUAmLESN6nxAEmWDr3gl+DVxqFiuYAPb0ng/XjwwsbtYI
-	vnZoI3Fg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=n5oWoVRhjRAzwmt64Wh7rjRZmkvXMHuC7VgbgIxqiZw=; b=OatIDh+hcPPT6r
+	R4G+8oW34ZRfWDTrnnLtFgebyGG8tT3ObtNbZlp+kao89d+UFEYoEgTZGhX1HYZTs73ti4N8oiQyU
+	ZnJnOm1E/YdLZ0QnkTM2HEh8kBgrAi/UxbHfeDLhdh8Yo9M8K7PVp6sXzw46g9RTRP7A8wKNaLgmZ
+	SEgHllYV/GKlh3zGBAXu0Z08BQm7/joth/g5eTGWOHhEsOARnJ7IeppgwsJ+j61wRbiz7RefyFUb6
+	Nh98fSxk3jcDG75cst1LiyCh8t9xazJYiLu2mg3S5q7m7y3Ti0c2vk0ANV6BqciiuWzONMzMD8LbP
+	48umksN+X8/hYZDdjAMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsl3x-0000000A98o-3YE0;
-	Wed, 18 Feb 2026 17:10:09 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vslB0-0000000A9f0-3WmB;
+	Wed, 18 Feb 2026 17:17:26 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vsl3w-0000000A98b-1kIz;
-	Wed, 18 Feb 2026 17:10:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83CC16132F;
-	Wed, 18 Feb 2026 17:10:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 800B4C116D0;
-	Wed, 18 Feb 2026 17:10:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771434607;
-	bh=vrf31UGQC7sMN9Bk+WuN/fZZA5/1kvKQF2i8RKcU5yQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=a51d1zNwz1POKc4pDTtQf1eSurysdgjW4USBKHRNkWN5NWDL4O12xpFHC4QNXdo+e
-	 AtPIH6yg4AafDwg5IWuPV41L+/o0/kSWq2DimzAum7w/80/XeuM+vSgzYaiYZHr+J7
-	 GQvSCXHRR3bAisqevcFki5EHjv6zPqnPAwv+ZC92Xdw4rQXwjZfwN80YvpMtt/+0l4
-	 oL+hi3siKlhRHK+1/Ard8Yvp01bvO4L3KDcyInir179EYz2enOg2/WPMjDNuEQLudX
-	 C6p0hM1QHZE7WzQIKA3rIjbxT/IVcNzpPMhr4cSGC/3rSpC9LmrqbqfQCj5zisXJsA
-	 rKV04kWTP/H0Q==
-Date: Wed, 18 Feb 2026 17:10:01 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Detlev Casanova <detlev.casanova@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
-	alexandre.belloni@bootlin.com, thomas.petazzoni@bootlin.com
+	id 1vslAy-0000000A9bz-0JVU;
+	Wed, 18 Feb 2026 17:17:25 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1771435028; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=hi5kGH6lyRdefVCwuBY9IIWF3vRopGJ8dV4E5SNT06hNIRk/kTJTW/h/0TOaEO+XIiLGlbH5ezNwAIpoqUOJj+jexBAXl0VYR869ZXtBzFAWpjBPFRivz3tMbcrthvHdTZkZI0PmMCjkN9MtHHivG2VZdCpR92BWcYAXwET02e0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1771435028; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=H2xxKVmqo/G9RIHRWeTC2HYdGopJIE+Mth9Uo0KlJd4=; 
+	b=gHQSfD74rF1+ApPqyaT6nYIIeC0UO7PVxocbaxzW1QRqUSrvAF0jdSliGN9F6Bl7rkH54Ar6Nnly3oFCyIwdDCgqoNBqcgF3Q7inYDXcI5MJ6DmDQOWiTP4FcYJmoF6ppfRuElMzqiSunzFyCLy8PmvgtsAI2P/o6ZpSIBnJo5E=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
+	dmarc=pass header.from=<detlev.casanova@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771435028;
+	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=H2xxKVmqo/G9RIHRWeTC2HYdGopJIE+Mth9Uo0KlJd4=;
+	b=UnJCmaEQFt5FpIqdLUI9xhfIfn4rUuheKM2nLAAz5YcEyAhgA2qx32H6kGkl6CG0
+	QStucyzTOtBqDfcganCPT9F6CJtrX8VAQzu3tZqscRCBRiJ9vFKuvd0JRMIJn+b1pPo
+	gtkDX47ldxCghBDUH/p7utuSAVlKgL8Z+UUeOLf8=
+Received: by mx.zohomail.com with SMTPS id 1771435025979786.7325301917416;
+	Wed, 18 Feb 2026 09:17:05 -0800 (PST)
+Message-ID: <86644ac4-6ffd-48c6-a79d-8e8144f18e2e@collabora.com>
+Date: Wed, 18 Feb 2026 12:17:04 -0500
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [REGRESSION] Re: [PATCH v1] ASoC: rockchip: i2s_tdm: Re-add the
  set_sysclk callback
-Message-ID: <e1cea076-fb1e-475e-b6a5-383370a69722@sirena.org.uk>
+To: Mark Brown <broonie@kernel.org>, Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: linux-kernel@vger.kernel.org,
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+ Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>,
+ linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ alexandre.belloni@bootlin.com, thomas.petazzoni@bootlin.com
 References: <20250117163102.65807-1-detlev.casanova@collabora.com>
  <DGB6VK7LC8N7.322SYGWZXPL5W@bootlin.com>
  <DGI2YVYBECUM.3O0UN9VMKF7FJ@bootlin.com>
  <34f61d25-607c-4967-bc67-3c7517c7fe14@collabora.com>
  <DGI8RSUWQ7W8.MDY7YGXPA5LX@bootlin.com>
-MIME-Version: 1.0
-In-Reply-To: <DGI8RSUWQ7W8.MDY7YGXPA5LX@bootlin.com>
-X-Cookie: Avoid contact with eyes.
+ <e1cea076-fb1e-475e-b6a5-383370a69722@sirena.org.uk>
+Content-Language: en-US
+From: Detlev Casanova <detlev.casanova@collabora.com>
+In-Reply-To: <e1cea076-fb1e-475e-b6a5-383370a69722@sirena.org.uk>
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260218_091724_186994_A1D4880F 
+X-CRM114-Status: GOOD (  10.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,60 +84,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6388967468130139916=="
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Mark,
 
---===============6388967468130139916==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Sg2fNopepba5YOFW"
-Content-Disposition: inline
+On 2/18/26 12:10, Mark Brown wrote:
+> On Wed, Feb 18, 2026 at 05:51:51PM +0100, Luca Ceresoli wrote:
+>> On Wed Feb 18, 2026 at 5:01 PM CET, Detlev Casanova wrote:
+>> +		if (!mclk_rate)
+>> +			mclk_rate = DEFAULT_MCLK_FS * params_rate(params);
+>> With this, and DEFAULT_MCLK_FS defined to 256, arecord is working again.
+> I did have the revert queued, but a fix would be even better if the
+> patch could be sent?
 
+A fix will follow a bit later today, then.
 
---Sg2fNopepba5YOFW
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Detlev.
 
-On Wed, Feb 18, 2026 at 05:51:51PM +0100, Luca Ceresoli wrote:
-> On Wed Feb 18, 2026 at 5:01 PM CET, Detlev Casanova wrote:
-
-> +		if (!mclk_rate)
-> +			mclk_rate = DEFAULT_MCLK_FS * params_rate(params);
-
-> With this, and DEFAULT_MCLK_FS defined to 256, arecord is working again.
-
-I did have the revert queued, but a fix would be even better if the
-patch could be sent?
-
---Sg2fNopepba5YOFW
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmV8mgACgkQJNaLcl1U
-h9B48gf/d+VlDiIQX8LVKF3Pt5LLWdaLDPBQPRcJUMtlQ3Gq527LeYabfnGZzMxW
-c7XCtu6ZCsfeslgZ9bXWWUQOEQSOfccHBVZe/OdwDhnosl6/w4ZJgtwiFKRdgFgF
-EQnD5U3CAtJdxsVsWTwZHubB3aW5wGACbckm1r3VQCAA2dz9CH9XAsm90Cc5Gk72
-Sx9vIqBBdlh/dRaI+J6d3zPJ4PHzskknUMBdfMSXafQAyGF2LCxNZ+isYxjiCKK1
-Ely+fHBIqUSpj3Z2uUetG7jqvRLr0XYjPXel3pl96RXulhkKXuu1rX6SRpGhoXMq
-/GEAda+ItwVRTta9P2EIXFwPqN5cHA==
-=3Is/
------END PGP SIGNATURE-----
-
---Sg2fNopepba5YOFW--
-
-
---===============6388967468130139916==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6388967468130139916==--
-
