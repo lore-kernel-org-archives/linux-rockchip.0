@@ -4,63 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E04AFE9A03B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Feb 2026 09:13:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC3F4E9A03B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Feb 2026 09:37:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LoYJuLQsukKnE7l3Nw0tbGx1W4MSOCH3Hkf3gAmf1uI=; b=tSSiwVgRHwwvZT
-	yKait0GlaeyHkKcYK+JJAFxR/WMDS66JC8WnSTSvixPxhQaqE5MhGgU7U3K4UrUcPFcMMNy2n+b+8
-	SaBPlPZAC7tS2Lqk+D4hzwrmdJqfvMzpbuEJFP1QmOJb/Oy02az3Ueg5aYlVh6AmoAuiqQwoRbyIs
-	dMC0YzQM4vGdfc8R6LrYiB+RpEv3SsHUs7hAOsjOU5rewzW51w8R2AXPTvffXdTbAsBHcea/1G0g2
-	lZmtR9CeuByaFD+UzWydYLUxv0M7UZWDBs/S0AhBPJ7OcakrbMFU+i14GgYGgeWRtc9IolOVaAyEh
-	4BhtEvs6JXohqXx/+/kA==;
+	List-Owner; bh=An5mu1FWnjZOgf3BGWZtWxU6XTVVe+/zBr5/W8TejQs=; b=cDmSvY8pCy4NwR
+	Xj0Zz/nk1ZBJ/nWQ8LUVX2pBiM9cJPvogowT5GludtR6NAX4iZYOSsDzmUj5jJLWTZsa8+YjYWcyZ
+	jWaYlEWDyKJ2VuLr6WBns4V444KsuGXZSKiz1uZNkADP+NRetzEjkftCkADOOnf7u5jD41DzhUpdy
+	vLNrekYlQc7cpAxF7w6PQw367rcv85Nd7633EAS70NxqHtDCV8S4exWl3BvKtAWCLt4ogpKYGUwZM
+	YCu/ICm4IywHNV7pIn6aAm+/TgUd+9jj2lSKtUKr7oI0TLdxvISQoPTZMG2KEChYTXg7kqtrV+4LZ
+	TEs9JWL+bouCbTlLGUsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt05u-0000000B9lV-3XAR;
-	Thu, 19 Feb 2026 09:13:10 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1vt0TT-0000000BBGa-00CD;
+	Thu, 19 Feb 2026 09:37:31 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt05s-0000000B9ki-0ERp;
-	Thu, 19 Feb 2026 09:13:09 +0000
-Received: from killaraus.ideasonboard.com (unknown [83.245.237.175])
-	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 542E2673;
-	Thu, 19 Feb 2026 10:12:12 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1771492332;
-	bh=HSw2h+PZEBOcIa2i7rTmCujXGFzGYpL5hEUHndKzeRQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=HszjY5/rLUzrykPGKIPj1SgQOmYuEhYgV3T4IEkVnLwJIeAbNYAs4QbThIoAl2BIy
-	 U/3Znrgq7n3AvNy2REVaTYa4cAcnBgJaWR3WZjQiIeSiTw98QYl4nyV67sm+VIl2Y3
-	 rqjBLKuZTQObnUI94nmkGXUS79sj/23DLxbFbHww=
-Date: Thu, 19 Feb 2026 10:13:01 +0100
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: michael.riesch@collabora.com
-Cc: Dan Carpenter <dan.carpenter@linaro.org>,
-	Paul Elder <paul.elder@ideasonboard.com>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Collabora Kernel Team <kernel@collabora.com>, stable@kernel.org,
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] media: rockchip: rkcif: comply with minimum number
- of buffers requirement
-Message-ID: <20260219091301.GF520738@killaraus.ideasonboard.com>
-References: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
- <20260216-rkcif-fixes-v1-2-b16db20b6d68@collabora.com>
+	id 1vt0TP-0000000BBFQ-3KfM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Feb 2026 09:37:30 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 1A9471A0649;
+	Thu, 19 Feb 2026 09:37:23 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id E33805FB45;
+	Thu, 19 Feb 2026 09:37:22 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A23EF103687B9;
+	Thu, 19 Feb 2026 10:37:18 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1771493842; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 in-reply-to:references; bh=7lDuxuhfvhyYj9DmohVZkkBnQY63QlxYeSYRoTS+Ns0=;
+	b=Qs7xBkjojWvKSegG56N80vX1+QzwYAIXimUmRsF/s0TS99jdUnoogsbA5NP//I1GCAQqp3
+	VSoHLgSRu2M6OIOMffopO5HwVljvbBgD8R5Ja+U5gzdvbe/rIGIGOGXZcduJVf3WUe1CbA
+	AFZ82ON8jDPV18CAzchq8isc2CMcAndYTcLUBvlsVkc0ltDhNpuPLZZ9C7F91YWQWuplwH
+	ttScovBRCuqDRb3yUz//S5eiqkDq61n/5PIe2L99QulQQ58VHS8a3Bik4ciBL7VxczIR8M
+	0SrwDH9E80uCB0Aw6GMiiNqhe3FK3GuW9wy8FogHz1IUqCqUSuO0knB73KeKsQ==
+Date: Thu, 19 Feb 2026 10:37:18 +0100
+From: Alexandre Belloni <alexandre.belloni@bootlin.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH] ASoC: rockchip: i2s-tdm: Use param rate if not provided
+ by set_sysclk
+Message-ID: <20260219093718b7d29076@mail.local>
+References: <20260218201834.924358-1-detlev.casanova@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260216-rkcif-fixes-v1-2-b16db20b6d68@collabora.com>
+In-Reply-To: <20260218201834.924358-1-detlev.casanova@collabora.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260219_011308_242461_AC3DE82C 
-X-CRM114-Status: GOOD (  19.33  )
+X-CRM114-CacheID: sfid-20260219_013728_119746_5AEEE227 
+X-CRM114-Status: GOOD (  20.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,98 +82,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 16, 2026 at 02:49:57PM +0100, Michael Riesch via B4 Relay wrote:
-> From: Michael Riesch <michael.riesch@collabora.com>
+Hello,
+
+On 18/02/2026 15:18:34-0500, Detlev Casanova wrote:
+> Drivers will not always call set_sysclk() for all clocks, especially when
+> default mclk-fs can be used.
+> When that is the case, use the clock rate set in the params multiplied by the
+> default mclk-fs.
 > 
-> Each stream requires CIF_REQ_BUFS_MIN=1 buffers to enable streaming.
-> However, it failed with only one buffer provided.
-> 
-> Comply with the minimum number of buffers requirement and accept
-> exactly one buffer.
-> 
-> Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
-> Cc: stable@kernel.org
-> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> Fixes: 5323186e2e8d ("ASoC: rockchip: i2s_tdm: Re-add the set_sysclk callback")
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 > ---
->  .../media/platform/rockchip/rkcif/rkcif-stream.c   | 41 +++++++++++-----------
->  1 file changed, 21 insertions(+), 20 deletions(-)
+>  sound/soc/rockchip/rockchip_i2s_tdm.c | 10 ++++++++++
+>  1 file changed, 10 insertions(+)
 > 
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> index e00010a91e8b..5a5ab9e7e86e 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> @@ -106,19 +106,6 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
->  {
->  	struct v4l2_pix_format_mplane *pix = &stream->pix;
+> diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+> index 770b9bfbb384..fc52149ed6ae 100644
+> --- a/sound/soc/rockchip/rockchip_i2s_tdm.c
+> +++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+> @@ -22,6 +22,7 @@
 >  
-> -	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
-> -	if (!stream->buffers[0])
-> -		goto err_buff_0;
-> -
-> -	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
-> -	if (!stream->buffers[1])
-> -		goto err_buff_1;
-> -
-> -	if (stream->queue_buffer) {
-> -		stream->queue_buffer(stream, 0);
-> -		stream->queue_buffer(stream, 1);
-> -	}
-> -
->  	stream->dummy.size = pix->num_planes * pix->plane_fmt[0].sizeimage;
->  	stream->dummy.vaddr =
->  		dma_alloc_attrs(stream->rkcif->dev, stream->dummy.size,
-> @@ -132,16 +119,30 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
->  			stream->dummy.buffer.buff_addr[i - 1] +
->  			pix->plane_fmt[i - 1].bytesperline * pix->height;
+>  #define DRV_NAME "rockchip-i2s-tdm"
 >  
-> -	return 0;
-> +	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
-> +	if (!stream->buffers[0])
-> +		goto err_buff_0;
-
-Why do you move this after allocation of the dummy buffer, to then add
-dma_free_attrs() in the err_buff_0 error path ?
-
+> +#define DEFAULT_MCLK_FS				256
+>  #define CH_GRP_MAX				4  /* The max channel 8 / 2 */
+>  #define MULTIPLEX_CH_MAX			10
 >  
-> -err_dummy:
-> -	rkcif_stream_return_buffer(stream->buffers[1], VB2_BUF_STATE_QUEUED);
-> -	stream->buffers[1] = NULL;
-> +	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
-> +	if (!stream->buffers[1]) {
-> +		stream->buffers[stream->frame_phase] = &stream->dummy.buffer;
-> +		stream->buffers[stream->frame_phase]->is_dummy = true;
-> +	}
+> @@ -665,6 +666,15 @@ static int rockchip_i2s_tdm_hw_params(struct snd_pcm_substream *substream,
+>  			mclk_rate = i2s_tdm->mclk_rx_freq;
+>  		}
+>  
+> +		/*
+> +		 * When the dai/component driver doesn't need to set mclk-fs for a specific
+> +		 * clock, it can skip the call to set_sysclk() for that clock.
+> +		 * In that case, simply use the clock rate from the params and multiply it by
+> +		 * the default mclk-fs value.
+> +		 */
+> +		if (!mclk_rate)
+> +			mclk_rate = DEFAULT_MCLK_FS * params_rate(params);
 > +
-> +	if (stream->queue_buffer) {
-> +		stream->queue_buffer(stream, 0);
-> +		stream->queue_buffer(stream, 1);
-> +	}
-> +
-> +	return 0;
->  
-> -err_buff_1:
-> -	rkcif_stream_return_buffer(stream->buffers[0], VB2_BUF_STATE_QUEUED);
-> -	stream->buffers[0] = NULL;
->  err_buff_0:
-> +	dma_free_attrs(stream->rkcif->dev, stream->dummy.size,
-> +		       stream->dummy.vaddr,
-> +		       stream->dummy.buffer.buff_addr[0],
-> +		       DMA_ATTR_NO_KERNEL_MAPPING);
-> +	stream->dummy.vaddr = NULL;
-> +err_dummy:
->  	return -EINVAL;
 
-You can drop the err_dummy label and return -EINVAL directly. Except you
-should probably return -ENOMEM as the failure comes from
-dma_alloc_attrs().
-
->  }
->  
+Maybe this could be set as the default value of i2s_tdm->mclk_rx_freq
+and i2s_tdm->mclk_tx_freq in rockchip_i2s_tdm_probe instead of relying
+on it being 0 and testing later on?
 
 -- 
-Regards,
-
-Laurent Pinchart
+Alexandre Belloni, co-owner and COO, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
