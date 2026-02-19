@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED39CE9A03B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Feb 2026 16:20:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04338E9A04E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Feb 2026 16:51:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a6ZXCnKo/olBPq8y/lEKNM65OvRNRABaxVGTddpI6ig=; b=Xo2uvyU9B0cSg/
-	C8OIk9XyD+GuO6hRMLrpn/qDU2UoR1BXX9fTsaMjavPk3mGV6hEY8B+SdNL1+h795PXJHzwYa6IOw
-	DZuT1s+F/bvdVPeLI9ftVATLgoe7Y+J4aPjVretaEX7/Sxz4hVwbEawAwJPmsvCQUuah4eyF/aGZM
-	/jANyYw2jafl5yOE2++XzdBxCQok9Tji5EScS4WwJT5Qx+UTa5i3/Mga/LNDQFfy86eAYBCME+4aj
-	9o6QW5wZIyJnmh8Og4vH6yzU5hTNZP7njaHYvmb4BvfXbP2dXe8qHMHJXY9turQNlov7UGRwPi05W
-	zjLJdhi2OHHlJPv+K+WA==;
+	List-Owner; bh=1QJt52P/hxT02rILepIR/lPFBLy+ZkVUQhCPeedgWHU=; b=w1Ebl9SKMWU5/I
+	EYnnHxRCOu9FpMos/uuTIx1FFPfnER+bOCcZQZ8Rse596IUKuvYavpYQ9MeYRq3MmKbZTnCo944wM
+	YQofoOoBSicH3aHAsCJ7IUCe2rvuSm6bC+1pLsMvkNpnduw+vU1jDK3yDGAI8tuZdEdcb8SzYhJNp
+	YojT+lQn5KvXzVwZy/ujGO3u5Pwo7qx5SNDTTF0DsZ+Mo6n6bi8C4ivF6lCvL2m3tCeCdNm11BtDC
+	vKypJI+n9rp+B6pMLxTf/l3PdPmelx7gYkyVw+MKvT4Kn50dzzJpJdYkmadIRq178uUhcg0Flwvzr
+	6mBh//ceYMK1MP5+ygWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt6ku-0000000Bck4-0Tmr;
-	Thu, 19 Feb 2026 16:19:56 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vt7FR-0000000BedB-3PhU;
+	Thu, 19 Feb 2026 16:51:29 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vt6kq-0000000BcjN-1eoW;
-	Thu, 19 Feb 2026 16:19:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771517988;
-	bh=kzoF1Sqejd9zm0QrGdiWY9BZ2fRayBCXMiqLyljXYf8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ivdDN6lXI5+8KO+M99OJHAg3uoRp42TeaXM0Zk/FQWS88eFNOkikiBAkikq0C7fu/
-	 EhJei0NVFdpLlxEyUueq43Ya/n8QHz70Dzbq02Dmc9UNWhlq9E9G8BF5lxyVYJK4yS
-	 EDeqGrFhTtql2XqTYIxh/AL6Zl3RRH4KnBNsmdw0nAoX/z/g3xRR5ZzYcKxmYZEP9n
-	 FAjzWhkAaeWYEPWkQ15uISMinbQ5qEgpCLLIhP9/UXD8aHaOH8gi3TJEhvous/GwbE
-	 u/9Kxqang4wdDydjvm0rZn/19ADOzr5owlxoqKBM580xevXv++N31EvQX6JPLNCHqY
-	 jize3nbd2kOtQ==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B1D9017E01B1;
-	Thu, 19 Feb 2026 17:19:47 +0100 (CET)
-Message-ID: <d701a97d-6051-4a32-ada6-bf014e385c68@collabora.com>
-Date: Thu, 19 Feb 2026 17:19:46 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] media: rockchip: rkcif: comply with minimum number of
- buffers requirement
-To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-Cc: Dan Carpenter <dan.carpenter@linaro.org>,
- Paul Elder <paul.elder@ideasonboard.com>,
- Mehdi Djait <mehdi.djait@linux.intel.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Sakari Ailus <sakari.ailus@linux.intel.com>,
- Hans Verkuil <hverkuil+cisco@kernel.org>,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
- Collabora Kernel Team <kernel@collabora.com>, stable@kernel.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260216-rkcif-fixes-v1-0-b16db20b6d68@collabora.com>
- <20260216-rkcif-fixes-v1-2-b16db20b6d68@collabora.com>
- <20260219091301.GF520738@killaraus.ideasonboard.com>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260219091301.GF520738@killaraus.ideasonboard.com>
+	id 1vt7FN-0000000BecU-3pOx;
+	Thu, 19 Feb 2026 16:51:29 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 66CE6C2F4F6;
+	Thu, 19 Feb 2026 16:51:33 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id DD6DD5FA72;
+	Thu, 19 Feb 2026 16:51:20 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 02A3810368C89;
+	Thu, 19 Feb 2026 17:51:14 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1771519880; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=KtWJUFwr2nejLGtWeMnXg73B+n8sSCwVl1nqee/L/AE=;
+	b=emtHyDpfSn0flo7E/zC9a7V+yot9ZrKtLFqruZ5xew9UH6/ln5wq1OuzAPYQwdOIxuGiHe
+	D2nzLEMxgwWQNLHvzGw9ixeEtY5HqSEc+O+MWR8eKEV5HTgGWBJ36X2oqHlo4ZTN+QPNzw
+	HxAFPmnv7P/U2jkK25lI1LBfajwlm5POrE3OcJSASiWAPgS2McXGoJHa3GKfRp05Ek+b44
+	6/NhetLuCM8D7Usm6fjGtvZXDqprcw3FTXaKphcjkubAdOofDlDW5ON+4TtVMbEZJXeofT
+	3RTx/ElcBrj5Hw4kjVdt2eg2F8lXoGlYsq3bB5SRj/nrp3aRlp17exxC3kopPw==
+Mime-Version: 1.0
+Date: Thu, 19 Feb 2026 17:51:13 +0100
+Message-Id: <DGJ3DV155EFE.143J88CZKWBN4@bootlin.com>
+Subject: Re: [PATCH] ASoC: rockchip: i2s-tdm: Use param rate if not provided
+ by set_sysclk
+Cc: "Nicolas Frattaroli" <frattaroli.nicolas@gmail.com>, "Liam Girdwood"
+ <lgirdwood@gmail.com>, "Mark Brown" <broonie@kernel.org>, "Jaroslav Kysela"
+ <perex@perex.cz>, "Takashi Iwai" <tiwai@suse.com>, "Heiko Stuebner"
+ <heiko@sntech.de>, <linux-rockchip@lists.infradead.org>,
+ <linux-sound@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <kernel@collabora.com>, "Alexandre Belloni"
+ <alexandre.belloni@bootlin.com>, "Thomas Petazzoni"
+ <thomas.petazzoni@bootlin.com>
+To: "Detlev Casanova" <detlev.casanova@collabora.com>,
+ <linux-kernel@vger.kernel.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.20.1
+References: <20260218201834.924358-1-detlev.casanova@collabora.com>
+ <a024ba9c-f2d3-4bba-93d3-33c0d0bd868b@collabora.com>
+In-Reply-To: <a024ba9c-f2d3-4bba-93d3-33c0d0bd868b@collabora.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260219_081952_620063_0F020F2D 
-X-CRM114-Status: GOOD (  20.23  )
+X-CRM114-CacheID: sfid-20260219_085126_386505_F5935A3C 
+X-CRM114-Status: UNSURE (   9.32  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,109 +84,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Laurent,
+Hello Detlev, all,
 
-On 2/19/26 10:13, Laurent Pinchart wrote:
-> On Mon, Feb 16, 2026 at 02:49:57PM +0100, Michael Riesch via B4 Relay wrote:
->> From: Michael Riesch <michael.riesch@collabora.com>
->>
->> Each stream requires CIF_REQ_BUFS_MIN=1 buffers to enable streaming.
->> However, it failed with only one buffer provided.
->>
->> Comply with the minimum number of buffers requirement and accept
->> exactly one buffer.
->>
->> Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
->> Cc: stable@kernel.org
->> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
->> ---
->>  .../media/platform/rockchip/rkcif/rkcif-stream.c   | 41 +++++++++++-----------
->>  1 file changed, 21 insertions(+), 20 deletions(-)
->>
->> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
->> index e00010a91e8b..5a5ab9e7e86e 100644
->> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
->> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
->> @@ -106,19 +106,6 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
->>  {
->>  	struct v4l2_pix_format_mplane *pix = &stream->pix;
->>  
->> -	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
->> -	if (!stream->buffers[0])
->> -		goto err_buff_0;
->> -
->> -	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
->> -	if (!stream->buffers[1])
->> -		goto err_buff_1;
->> -
->> -	if (stream->queue_buffer) {
->> -		stream->queue_buffer(stream, 0);
->> -		stream->queue_buffer(stream, 1);
->> -	}
->> -
->>  	stream->dummy.size = pix->num_planes * pix->plane_fmt[0].sizeimage;
->>  	stream->dummy.vaddr =
->>  		dma_alloc_attrs(stream->rkcif->dev, stream->dummy.size,
->> @@ -132,16 +119,30 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
->>  			stream->dummy.buffer.buff_addr[i - 1] +
->>  			pix->plane_fmt[i - 1].bytesperline * pix->height;
->>  
->> -	return 0;
->> +	stream->buffers[0] = rkcif_stream_pop_buffer(stream);
->> +	if (!stream->buffers[0])
->> +		goto err_buff_0;
-> 
-> Why do you move this after allocation of the dummy buffer, to then add
-> dma_free_attrs() in the err_buff_0 error path ?
+On Wed Feb 18, 2026 at 10:02 PM CET, Detlev Casanova wrote:
+> Hi,
+>
+> This could also use a
+>
+> Reported-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+>
+> Luca, feel free to add your Tested-by as well :)
 
-To keep the two rkcif_stream_pop_buffer calls together. We need to
-allocate the dummy in any case, but in case the second pop fails we use
-it -- this was not the case before.
+Ouch, too late, patch applied already.
 
-> 
->>  
->> -err_dummy:
->> -	rkcif_stream_return_buffer(stream->buffers[1], VB2_BUF_STATE_QUEUED);
->> -	stream->buffers[1] = NULL;
->> +	stream->buffers[1] = rkcif_stream_pop_buffer(stream);
->> +	if (!stream->buffers[1]) {
->> +		stream->buffers[stream->frame_phase] = &stream->dummy.buffer;
->> +		stream->buffers[stream->frame_phase]->is_dummy = true;
->> +	}
->> +
->> +	if (stream->queue_buffer) {
->> +		stream->queue_buffer(stream, 0);
->> +		stream->queue_buffer(stream, 1);
->> +	}
->> +
->> +	return 0;
->>  
->> -err_buff_1:
->> -	rkcif_stream_return_buffer(stream->buffers[0], VB2_BUF_STATE_QUEUED);
->> -	stream->buffers[0] = NULL;
->>  err_buff_0:
->> +	dma_free_attrs(stream->rkcif->dev, stream->dummy.size,
->> +		       stream->dummy.vaddr,
->> +		       stream->dummy.buffer.buff_addr[0],
->> +		       DMA_ATTR_NO_KERNEL_MAPPING);
->> +	stream->dummy.vaddr = NULL;
->> +err_dummy:
->>  	return -EINVAL;
-> 
-> You can drop the err_dummy label and return -EINVAL directly. Except you
-> should probably return -ENOMEM as the failure comes from
-> dma_alloc_attrs().
+Anyway, it looks correct, but I'm going to triple check in a couple days
+and get back in the remote case there is any issue.
 
-Makes sense, will fix.
+Thanks for the responsiveness in sending the fix!
 
-Best regards,
-Michael
+Luca
 
-> 
->>  }
->>  
-> 
-
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
