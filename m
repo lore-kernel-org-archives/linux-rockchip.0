@@ -4,71 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D523C5CFF1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Feb 2026 00:41:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 618A5C61DE2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Feb 2026 13:29:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	List-Archive:List-Unsubscribe:List-Id:To:From:Subject:Cc:Message-Id:Date:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4Gxz+nSkoBnnabPCkuOPGc0e9Tqewt8KZHzOuUMj/Y8=; b=3xW56AALmQR0BX
-	mucLAqlCoKGrHGnqX98tDkG4EpZwq10FjHTyB8dZVW0CvpPVeTR1Wy+J+D5ZPb5o5ByvDQzYOtuZp
-	UbPuzPMiUfFbW5/J4OTAfLR0l2pLcj4f6nKV9ojuw0xXe4hs0pB5wY1n5O9y0SkZh8XapTQbHKjYx
-	RGiWrUCTwNvN/6m5pz2eiyVxWjK2EvDX3Ru83vOnYu1GtJWPvHX5r6FYrh0A0pc4i8A+VAQwbpTmq
-	hHb8s2/2kIhVxuN3vvcKp949b7DqvgPuQV07mgtTYZCQ+iJfmhWRB2og00lxXczqGhI8mA4BCW9OQ
-	V3Rn2Nc4acqqTsD/ZTeA==;
+	List-Owner; bh=h3KWBv427Bb8SkI9f/qcinymGGTi8LYDzWCUAjc9cw0=; b=2xq3AGrxc9Ik9J
+	nzAaxIZ1NERIDqbdjS4yxkzjlGu0HVt+zVBeQt9UlZQ92+GnEyyW47lfQd9lbF32+xt/+8kwUaEHP
+	KJeGcoRAvYfVi8vAQ9V9VUgB9iyZYdz+W8CN+Ob0xveq6hY6a4MRDp9vz4zKmIgQWLqH/PQHnVgAL
+	rh5ZFY/SVh/RLbctnLxdFkvUncJEXw+M/d8jmAT5E3FY0aWyOn28dppBcYB1wVieyT3v/pKqOmERg
+	tdkqNqI6dQlXl8uaGzJjBAZrcawwha3l1tpkdegwn+dPQJjfNP8r2IfQny9B3ru5K69IZaU8oAaoD
+	1ML+2NPZU4VIUzinKFwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtb3Q-0000000Fj2w-2AE8;
-	Sat, 21 Feb 2026 00:41:04 +0000
-Received: from out162-62-57-87.mail.qq.com ([162.62.57.87])
+	id 1vtn2d-0000000G4A4-12vi;
+	Sat, 21 Feb 2026 13:29:03 +0000
+Received: from fout-b6-smtp.messagingengine.com ([202.12.124.149])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtb3N-0000000Fj2S-1V3Z;
-	Sat, 21 Feb 2026 00:41:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foxmail.com;
-	s=s201512; t=1771634451;
-	bh=NAjjqrpCSMYNy0iR2NzdrBAGVZVg+6SRsGa23R59QU4=;
-	h=From:To:Cc:Subject:Date;
-	b=aWYxrxrlK0RUK19kH4veSzMgUo8H6LLefLdiUqMQUSsAnP/yr5QYZR4qOa5zLfxFb
-	 XISYSQJekWxIul3HlHyAr4EGjPVNxpEnaYToAr45+S2yslHZXG/ajAwHAxG1QkmpKi
-	 YpR8jE3PGC3KVdV/IoRJSPeht5R5tPFMlr+RGeY4=
-Received: from localhost.localdomain ([116.128.244.169])
-	by newxmesmtplogicsvrsza56-0.qq.com (NewEsmtp) with SMTP
-	id A3113C4E; Sat, 21 Feb 2026 08:40:49 +0800
-X-QQ-mid: xmsmtpt1771634449tgvbkue5o
-Message-ID: <tencent_BE953AE4AA17D089CF5C87EB6F4400F70206@qq.com>
-X-QQ-XMAILINFO: M2SvzgchpLqfQUcwL5mx/2ncuwZeU0ZIlWpp7GxF80nJnN/ZRJ6bKNsRwnF7uE
-	 btOfFY3OD6VUHSZlGAXLa7ZCoxBvHE/t92MDAR/x5I9T7PNtl5uVh0OvI9JNFNEdLe3S8uHJHbdL
-	 2UNjKcjtrnqqo3WJm+oO+erCr2V0Zr5M13zODGHBY9d6aKDF9J5QTtBKDoaJqoiNgw4laVKIsBO9
-	 tACEdeWJec0p73Rv2sUyR8P0iLr/6ivOfIMqKxvAGqQcUROp55w2A8b3LZI590Yjn96J5uIhiSYp
-	 eMgPQ0pEIOocicTXlN7pkFmFwW9R2Sd7LxUZ6fCNZcUox7fju13WKvLhxXiT1UPGHoS3j7w5qF+1
-	 d3gG0Nod287ROHI3wAYIyHXd8VdOF36ZP5OlK7Xe1rEj9sp0OZp0n8psLZSYeo3O4/yI3ntNaTkg
-	 gTcU3sWzpNHkGDm69uGcJQRiJv7CYsTZ8cEzQDnOtPlYq/p0p4TwLrKkbTWOG3YrYpSEzXNfwCBi
-	 mtSXz6QSg8w9wKTL7g9dtQIlrtql81ttERlLTafkdpaCrqQvATncca8Mz2XJZ0f0UX6W/u2i2jT2
-	 z86JfHTr5nBSRu5wBj0OFk4u42PCtZWUxpDAnpG48+WwqaZvXWkxH8EBIAfzy8d0fhMjtArRifXS
-	 ntjs/Y8sXSMdN4VsJNJ53WU5jcsv2HWtngpaN7I+3pO54pXHAA5hasnIk1vU2tvaMltuM8uveGYQ
-	 8BGG6TBZsUHV6kZFn/zbjf584i2c3ayGM+1Px/xLhWjqGPXxMOcIjJbqKNlEXF970PHDGTLw1MxO
-	 v2YO4xJ2UWWC6CfLQM3Z8OMvzDjb8R9eDpjzKlnf1CZnmKG4yKnslNkYqpVwp/1omFV9AWcFJB1y
-	 LMKGOjt426GNmGJjlSVTrObegCYijQ4nZmVk84gedIVHf0PzLZim5D0OXBVbCQ/SPuEUoyX6Adii
-	 Va+QApeZt9krzp6vDViMa2pHAitRe1uyW8iiE0WfY7qqxoOPH2HIcViTBJeblkuf2rjbzBDL5sTZ
-	 RqReYtVHl5k8x4GXOi
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
-From: xiaopeitux@foxmail.com
-To: heiko@sntech.de,
-	shawn.lin@rock-chips.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH] soc: rockchip: grf: fix device node refcount leak in error path
-Date: Sat, 21 Feb 2026 08:40:27 +0800
-X-OQ-MSGID: <9016222c067613870e8e3fd89ba0b15adc523fcd.1771634299.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
+	id 1vtn2Z-0000000G49C-1kKW;
+	Sat, 21 Feb 2026 13:29:01 +0000
+Received: from phl-compute-03.internal (phl-compute-03.internal [10.202.2.43])
+	by mailfout.stl.internal (Postfix) with ESMTP id 52CE31D00162;
+	Sat, 21 Feb 2026 08:28:55 -0500 (EST)
+Received: from phl-imap-11 ([10.202.2.101])
+  by phl-compute-03.internal (MEProxy); Sat, 21 Feb 2026 08:28:55 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arthurfabre.com;
+	 h=cc:cc:content-transfer-encoding:content-type:content-type
+	:date:date:from:from:in-reply-to:message-id:mime-version
+	:reply-to:subject:subject:to:to; s=fm2; t=1771680535; x=
+	1771766935; bh=BBj1XSAnS+Z287mBk9hbl2WDrmiTfMoFaCX9+RKfTME=; b=c
+	bX17CU2Fq4MMMz6yVtFS4sMExbYG6qsU4Mb63Tqk8r3OtQW+DSGSL0gdMcATWU58
+	TjD2vz8+a+xDsomIajF/XPLGHygmwDS5O3A7djjmzeyPwqxTQvW/ttpIjM2IrMhi
+	6Ux/ZeVtmBwIzgK4fNoDPEmTaTM5vSo0SwVw/4Vw+PsX6N+hdeZ9vXgTCHH2nfsE
+	+epkpxXbfIX9OxREqyjM+J7vEw5/sGVFCJOYBLPRKRuOY/FNTM/iyI2xHNC6yFVo
+	ZYA8NXxD+OYB4qUuEl2XtpZyZD4z79vhzpasigmyf+Jnfu6BHE6ZE6vkFtGrQ5jW
+	/0U0Cwdm3cfztQNMn8H1A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:message-id:mime-version:reply-to:subject
+	:subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
+	fm3; t=1771680535; x=1771766935; bh=BBj1XSAnS+Z287mBk9hbl2WDrmiT
+	fMoFaCX9+RKfTME=; b=blicYLlY20c9/9UW+KoKBA3KdTmPV0h3QIM1PM0n0bDB
+	QqgSQzOxNaaDEn1Uk6j2gV3yO3a5FwkdxoubzlRaf5aGshjkeRc3rjR8la6KQ2+Q
+	/wApRtpW2g6Nv+kpTWYbdj5Ale7FOtj3Fcu2cgHSFPoKzyBf5kmnZSTg3cUWROf/
+	dISAxyOhb4Ve3NQqPBDB8V1MXI7OtJw7TfhyKRgO3nKCeLdjNusl0LnalU+TGxyE
+	RaLAnJuWqF4yvm9g/G5kVP4eIYA66Idtiaqm+htndTjobPosOypT7a/ppdXpXm40
+	Xh9Vt6hEmYDUnyZy4OmYJRImnlKrkx8/B0RPOiZdWA==
+X-ME-Sender: <xms:FbOZaWmc2ZBZNZWHbFdApIsvGbX9Kdr1hXUuvaPinmmBk_aJWz7qMA>
+    <xme:FbOZaYrCiEmHc3FR5LqvqICgIqPlx-5IpIxxV3KjSqACj8AFNbBHqi4AfbfWluwZH
+    83-GZVMX_bJ8jpIzRTaz5ama8wUMd7Wa8VSNQmVm8vWGo4UqJuxjng>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddvfedugeekucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
+    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
+    gurhepofgggfgtfffkvefuhffvofesthhqredtredtjeenucfhrhhomhepfdetrhhthhhu
+    rhcuhfgrsghrvgdfuceorghrthhhuhhrsegrrhhthhhurhhfrggsrhgvrdgtohhmqeenuc
+    ggtffrrghtthgvrhhnpeekhfegieegkeetuedvveefledvieeiheffkeethffffffgiedv
+    gefhveehieeileenucffohhmrghinhepghhithhhuhgsrdgtohhmnecuvehluhhsthgvrh
+    fuihiivgeptdenucfrrghrrghmpehmrghilhhfrhhomheprghrthhhuhhrsegrrhhthhhu
+    rhhfrggsrhgvrdgtohhmpdhnsggprhgtphhtthhopeejpdhmohguvgepshhmthhpohhuth
+    dprhgtphhtthhopegrmhgruggvuhhssehjmhhurdgvughurdgtnhdprhgtphhtthhopehl
+    ihhnuhigqdgrrhhmqdhkvghrnhgvlheslhhishhtshdrihhnfhhrrgguvggrugdrohhrgh
+    dprhgtphhtthhopehlihhnuhigqdhphhihsehlihhsthhsrdhinhhfrhgruggvrggurdho
+    rhhgpdhrtghpthhtoheplhhinhhugidqrhhotghktghhihhpsehlihhsthhsrdhinhhfrh
+    gruggvrggurdhorhhgpdhrtghpthhtohepnhgrohhkihesrhgrugigrgdrtghomhdprhgt
+    phhtthhopehhvghikhhosehsnhhtvggthhdruggvpdhrtghpthhtoheplhhinhhugidqkh
+    gvrhhnvghlsehvghgvrhdrkhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:FrOZabEf3Y8Chhc961V8imLlFRymBtEZI6K2qSsYBAlHZ3WLnwsdmA>
+    <xmx:FrOZaUWCg4FHHhOjqpL5oFRCEtvwU5vprqXxh3sSyeZQLzasOiJ3zw>
+    <xmx:FrOZafXFZ7x8QPGqRYALU0DxbLCGfCWHmB06us3nQAQ97FKZmjeRcQ>
+    <xmx:FrOZaaJHmZrJeMaK_T8IRnnBnxtnI0Ub2hBpbSbbU1JlRDo1xPMCoQ>
+    <xmx:F7OZaYGREhgpY864gTO7ucFrD0AvrSIxc47ITD6fWdWyxJUlOXtW8Eq8>
+Feedback-ID: i25f1493c:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id DB51A1B4006F; Sat, 21 Feb 2026 08:28:53 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
+Mime-Version: 1.0
+Date: Sat, 21 Feb 2026 14:28:53 +0100
+Message-Id: <DGKOC0Y8UWRH.3TVFOP2ND9W9J@arthurfabre.com>
+Cc: <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "FUKAUMI Naoki" <naoki@radxa.com>
+Subject: PROBLEM: Raxda Rock 5 ITX shared SATA broken by "phy: rockchip:
+ naneng-combphy: fix phy reset"
+From: "Arthur Fabre" <arthur@arthurfabre.com>
+To: "Heiko Stuebner" <heiko@sntech.de>, "Chukun Pan" <amadeus@jmu.edu.cn>
+X-Mailer: aerc 0.21.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260220_164101_923425_668CC824 
-X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-CacheID: sfid-20260221_052859_991973_9B34CA42 
+X-CRM114-Status: UNSURE (   4.76  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,37 +113,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Pei Xiao <xiaopei01@kylinos.cn>
+Hello,
 
-The for_each_matching_node_and_match() macro automatically manages device
-node reference counts during normal iteration. However, when breaking out
-of the loop early with return, the current iteration's node is not
-automatically released, leading to a reference count leak.
+I have a Raxda Rock 5 ITX, with a device-tree overlay to enable
+the shared SATA port:
 
-Fix this by adding of_node_put() before returning from the loop
-when fails.
+// ROCK 5 ITX M.2 E-Key Sata
+/dts-v1/;
+/plugin/;
 
-Fixes: 75fb63ae0312 ("soc: rockchip: grf: Support multiple grf to be handled")
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
----
- drivers/soc/rockchip/grf.c | 1 +
- 1 file changed, 1 insertion(+)
+/ {
+	fragment@0 {
+		target = <&pcie2x1l0>;
 
-diff --git a/drivers/soc/rockchip/grf.c b/drivers/soc/rockchip/grf.c
-index 04937c40da47..b459607c118a 100644
---- a/drivers/soc/rockchip/grf.c
-+++ b/drivers/soc/rockchip/grf.c
-@@ -231,6 +231,7 @@ static int __init rockchip_grf_init(void)
- 		grf = syscon_node_to_regmap(np);
- 		if (IS_ERR(grf)) {
- 			pr_err("%s: could not get grf syscon\n", __func__);
-+			of_node_put(np);
- 			return PTR_ERR(grf);
- 		}
- 
--- 
-2.25.1
+		__overlay__ {
+			status = "disabled";
+		};
+	};
 
+	fragment@1 {
+		target = <&sata1>;
+
+		__overlay__ {
+			status = "okay";
+		};
+	};
+};
+
+This worked fine, with the kernel normally logging:
+
+[    0.754425] ata1: SATA max UDMA/133 abar m8192@0xf1282000 port 0xf1282100 irq 70 lpm-pol 0
+[    1.692424] ata1: SATA link up 6.0 Gbps (SStatus 133 SControl 300)
+
+However this stopped working after a kernel update:
+
+[    2.687755] ata1: SATA max UDMA/133 mmio [mem 0xfe220000-0xfe220fff] port 0x100 irq 79 lpm-pol 0
+[    4.893204] ata1: SATA link down (SStatus 1 SControl 300)
+[    7.111503] ata1: SATA link down (SStatus 1 SControl 300)
+[    7.111993] ata1: limiting SATA link speed to 1.5 Gbps
+
+I've reliably bisected it to commit:
+fbcbffbac994 "phy: rockchip: naneng-combphy: fix phy reset".
+
+Unfortunately coming up with a patch is out of my depth.
+Happy to test any suggestions.
+
+If it matters I'm using the EDK2 UEFI firmware v1.1:
+https://github.com/edk2-porting/edk2-rk3588
+
+Thank you,
+
+Arthur
 
 _______________________________________________
 Linux-rockchip mailing list
