@@ -4,50 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48CE8C624A1
-	for <linux-rockchip@archiver.kernel.org>; Sat, 21 Feb 2026 22:18:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ADCCC624DA
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 10:42:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=86jawqyipB9kqpZYHQkvDobvskv1rVY/n/+qw98/uvQ=; b=kPsjWUxoVieDbj
-	ZAvIZOU9DgFBs1IJ0LwTvudFBg2GeEQ47ctm+blgdLXtpSlMvYfe5q4UcJhxZAG8bM5tmfjDbn9vi
-	E2wRDtx5Pv3pakc5N3wuyfhTDKsBFJO9JC1XWcupWeljIwxhHwOQ4xS/8TpNFLGTjDFY1XaH5CTYw
-	xu418y7LbCwM2JFgRnknvmLhlcNFcAJirgVoDuBSqFaFvkJ7YoXP9Zh6LGmoBLPyHn7C4c2qWJ8Nc
-	4SUQgn+OdOyC8HcZHJMr+9aWShqiHiq9EYeYvOzLnJ7ZN9ZGfZTkRdvwY6TMMbZNxTuG6ppXAjtfc
-	wr+21WilCSIjtBKy3Svw==;
+	List-Owner; bh=jia1DCMr2IAYAUJhp0b0TcW/b3MiIP5OSxYs3MWV2NM=; b=NNNUU6k3bezkDR
+	2wi1IAsaIvBdiuAMi7L0YbNT5eQBEatoALXKgZR5josm9md016wXVQ2h2IokBeJs3aCxTxBxpTMJs
+	XvgQRjE+1S3Jqxr5Q0vrh8qMILpnLkV5DiAQjIuxrLRrprIzIWEqDg3117ppgikOPy4JFnZUSEc/I
+	HB7P9cGb/R7qOB1sZ8sjmXgLPFfgjbc9MGZqCIu0iXrYQ4gY1ti9dkDcmtEpexzQ4HeUGKjHVn80J
+	Bl9cHBZREdiw/Df+Z+UPYLi0ME4wO1u3dTYGhG929qDK6HXoAF69LiaKAfH0GX5gnyl6zNk84qXwe
+	kL9ha3n+mX2mc0o5GWWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtvIx-0000000GLRj-0eY9;
-	Sat, 21 Feb 2026 22:18:27 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vu6vK-0000000GejM-3NWW;
+	Sun, 22 Feb 2026 10:42:50 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vtvIt-0000000GLQf-3ml6;
-	Sat, 21 Feb 2026 22:18:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=wmPg3krCGLYxqdO1s2V7OVlTQkXVv33YeZdELw95jYM=; b=WVQs//KY+NXeAo+Dvue1fb9wQc
-	DIsj5/8yTFxBYQJbaM3qvfi25vwvM5BRljDrQp12BKMkC+nTc4hAWsB5UkJiSqoA0HC4WoBqOhPDr
-	Wlq0QiUIkOc352X2M0Rwzoe+sTXM0lWC6J0v3wua7o56zEy/o2ay8CXS6VP8OTBdFIeVrESTUsJrI
-	b8E9Vq7jmghyeELDjJh4/qjQMsnlun9/CccB75HZnVCvSzGR58GiTLx8EOrxnNjbeBMnsptJA/UMo
-	gG8IMpHIBuarUK3B165gmG+FGiU1td1d12W+zqRFpJDXNfErvtsb2vgmsa3LBhWvj8zcgFINiRDuL
-	SrKqTYGQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: dmitry.baryshkov@oss.qualcomm.com,
-	Andy Yan <andyshrk@163.com>
-Subject: Re: (subset) [PATCH v3 0/5] Add DisplayPort support for rk3576
-Date: Sat, 21 Feb 2026 23:17:56 +0100
-Message-ID: <177171224758.1745786.7493605269440201268.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260206010421.443605-1-andyshrk@163.com>
-References: <20260206010421.443605-1-andyshrk@163.com>
+	id 1vu6vH-0000000Gei4-0LcX;
+	Sun, 22 Feb 2026 10:42:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771756960;
+	bh=DrCoid4Pafm2Wd5d5/Z36uNtrGzmCQLSkgqHZBWbMWI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kcnQaRIhmB0uGgwiB08nORlre5NuxRsoB2FhWkbTA0uYMYf6QSacBs7MCbQdRvNPi
+	 JeHfk7mQs6ptHQEPHkfOwLlIPtkpiKCsUiq/ngOee4OWEUe1yGzLtMRQW1Ts5UKPJQ
+	 tEbZJmMJvGuK/9DvFT1UfvlwokAAI5MS4W4yCnlUnAIusVd4I+kyR0WJhDunTD95H0
+	 8+dXODsnj4+199XZxBN4G9F3JNclal+PiE6fwmSiFxwAHdj/J7Anv9khultrTWZ0ZP
+	 YUVii9sUyN07jhIf8Hq+9Y6865ccLndCOa5nJCSwfhuZ+mufH+HZi+vtiVcerihvP/
+	 /B/uM1nFumzpQ==
+Received: from [192.168.1.90] (unknown [82.79.138.145])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B2D3C17E1274;
+	Sun, 22 Feb 2026 11:42:39 +0100 (CET)
+Message-ID: <ff7b531a-77c1-4c7d-b09d-47779b640193@collabora.com>
+Date: Sun, 22 Feb 2026 12:42:39 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 13/20] drm/bridge: dw-hdmi-qp: Implement
+ atomic_get_output_bus_fmts
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ linux-doc@vger.kernel.org
+References: <20260216-color-format-v8-0-5722ce175dd5@collabora.com>
+ <20260216-color-format-v8-13-5722ce175dd5@collabora.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260216-color-format-v8-13-5722ce175dd5@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260221_141823_943233_AFBCAC6A 
-X-CRM114-Status: GOOD (  12.77  )
+X-CRM114-CacheID: sfid-20260222_024247_311588_DCB419BA 
+X-CRM114-Status: GOOD (  25.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,39 +93,166 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Heiko Stuebner <heiko@sntech.de>, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, neil.armstrong@linaro.org, hjc@rock-chips.com, alchark@gmail.com, tzimmermann@suse.de, Andy Yan <andy.yan@rock-chips.com>, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Nicolas,
 
-On Fri, 06 Feb 2026 09:04:10 +0800, Andy Yan wrote:
-> The DisplayPort found on RK3576 is very similar to that of RK3588,
-> but work in dual pixel mode and support for MST.
+On 2/16/26 3:01 PM, Nicolas Frattaroli wrote:
+> The atomic_get_output_bus_fmts callback is used by the DRM bridge layer
+> to recursively select a suitable output format in a bridge chain.
 > 
-> This patch series aims to add basic display output, not include audio
-> and MST, which will be the work for the next stage.
+> As a bridge that outputs to HDMI, dw-hdmi-qp will have its output
+> formats determined by which formats the platform-specific integration of
+> the hardware supports, and the chosen HDMI output bit depth.
 > 
-> Tested with 2 lane standard DP port and USB-C Alt mode output now.
-> For those who want to give it a try, I have a reference branch here[0].
+> Implement this callback. The returned u32* buffer is supposed to be
+> freed by the caller of this callback, as specified by the callback's
+> documentation.
 > 
-> [...]
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 178 +++++++++++++++++++++++++++
+>  1 file changed, 178 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> index d649a1cf07f5..4c00218e5fd7 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> @@ -11,6 +11,7 @@
+>  #include <linux/export.h>
+>  #include <linux/i2c.h>
+>  #include <linux/irq.h>
+> +#include <linux/media-bus-format.h>
+>  #include <linux/minmax.h>
+>  #include <linux/module.h>
+>  #include <linux/mutex.h>
+> @@ -749,6 +750,182 @@ static struct i2c_adapter *dw_hdmi_qp_i2c_adapter(struct dw_hdmi_qp *hdmi)
+>  	return adap;
+>  }
+>  
+> +static int dw_hdmi_qp_config_avi_infoframe(struct dw_hdmi_qp *hdmi,
+> +					   const u8 *buffer, size_t len)
+> +{
+> +	u32 val, i, j;
+> +
+> +	if (len != HDMI_INFOFRAME_SIZE(AVI)) {
+> +		dev_err(hdmi->dev, "failed to configure avi infoframe\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	/*
+> +	 * DW HDMI QP IP uses a different byte format from standard AVI info
+> +	 * frames, though generally the bits are in the correct bytes.
+> +	 */
+> +	val = buffer[1] << 8 | buffer[2] << 16;
+> +	dw_hdmi_qp_write(hdmi, val, PKT_AVI_CONTENTS0);
+> +
+> +	for (i = 0; i < 4; i++) {
+> +		for (j = 0; j < 4; j++) {
+> +			if (i * 4 + j >= 14)
+> +				break;
+> +			if (!j)
+> +				val = buffer[i * 4 + j + 3];
+> +			val |= buffer[i * 4 + j + 3] << (8 * j);
+> +		}
+> +
+> +		dw_hdmi_qp_write(hdmi, val, PKT_AVI_CONTENTS1 + i * 4);
+> +	}
+> +
+> +	dw_hdmi_qp_mod(hdmi, 0, PKTSCHED_AVI_FIELDRATE, PKTSCHED_PKT_CONFIG1);
+> +
+> +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AVI_TX_EN | PKTSCHED_GCP_TX_EN,
+> +		       PKTSCHED_AVI_TX_EN | PKTSCHED_GCP_TX_EN, PKTSCHED_PKT_EN);
+> +
+> +	return 0;
+> +}
+> +
+> +static int dw_hdmi_qp_config_drm_infoframe(struct dw_hdmi_qp *hdmi,
+> +					   const u8 *buffer, size_t len)
+> +{
+> +	u32 val, i;
+> +
+> +	if (len != HDMI_INFOFRAME_SIZE(DRM)) {
+> +		dev_err(hdmi->dev, "failed to configure drm infoframe\n");
+> +		return -EINVAL;
+> +	}
+> +
+> +	dw_hdmi_qp_mod(hdmi, 0, PKTSCHED_DRMI_TX_EN, PKTSCHED_PKT_EN);
+> +
+> +	val = buffer[1] << 8 | buffer[2] << 16;
+> +	dw_hdmi_qp_write(hdmi, val, PKT_DRMI_CONTENTS0);
+> +
+> +	for (i = 0; i <= buffer[2]; i++) {
+> +		if (i % 4 == 0)
+> +			val = buffer[3 + i];
+> +		val |= buffer[3 + i] << ((i % 4) * 8);
+> +
+> +		if ((i % 4 == 3) || i == buffer[2])
+> +			dw_hdmi_qp_write(hdmi, val,
+> +					 PKT_DRMI_CONTENTS1 + ((i / 4) * 4));
+> +	}
+> +
+> +	dw_hdmi_qp_mod(hdmi, 0, PKTSCHED_DRMI_FIELDRATE, PKTSCHED_PKT_CONFIG1);
+> +	dw_hdmi_qp_mod(hdmi, PKTSCHED_DRMI_TX_EN, PKTSCHED_DRMI_TX_EN,
+> +		       PKTSCHED_PKT_EN);
+> +
+> +	return 0;
+> +}
+> +
+> +/*
+> + * Static values documented in the TRM
+> + * Different values are only used for debug purposes
+> + */
+> +#define DW_HDMI_QP_AUDIO_INFOFRAME_HB1	0x1
+> +#define DW_HDMI_QP_AUDIO_INFOFRAME_HB2	0xa
+> +
+> +static int dw_hdmi_qp_config_audio_infoframe(struct dw_hdmi_qp *hdmi,
+> +					     const u8 *buffer, size_t len)
+> +{
+> +	/*
+> +	 * AUDI_CONTENTS0: { RSV, HB2, HB1, RSV }
+> +	 * AUDI_CONTENTS1: { PB3, PB2, PB1, PB0 }
+> +	 * AUDI_CONTENTS2: { PB7, PB6, PB5, PB4 }
+> +	 *
+> +	 * PB0: CheckSum
+> +	 * PB1: | CT3    | CT2  | CT1  | CT0  | F13  | CC2 | CC1 | CC0 |
+> +	 * PB2: | F27    | F26  | F25  | SF2  | SF1  | SF0 | SS1 | SS0 |
+> +	 * PB3: | F37    | F36  | F35  | F34  | F33  | F32 | F31 | F30 |
+> +	 * PB4: | CA7    | CA6  | CA5  | CA4  | CA3  | CA2 | CA1 | CA0 |
+> +	 * PB5: | DM_INH | LSV3 | LSV2 | LSV1 | LSV0 | F52 | F51 | F50 |
+> +	 * PB6~PB10: Reserved
+> +	 *
+> +	 * AUDI_CONTENTS0 default value defined by HDMI specification,
+> +	 * and shall only be changed for debug purposes.
+> +	 */
+> +	u32 header_bytes = (DW_HDMI_QP_AUDIO_INFOFRAME_HB1 << 8) |
+> +			  (DW_HDMI_QP_AUDIO_INFOFRAME_HB2 << 16);
+> +
+> +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS0, &header_bytes, 1);
+> +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &buffer[3], 1);
+> +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS2, &buffer[4], 1);
+> +
+> +	/* Enable ACR, AUDI, AMD */
+> +	dw_hdmi_qp_mod(hdmi,
+> +		       PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
+> +		       PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
+> +		       PKTSCHED_PKT_EN);
+> +
+> +	/* Enable AUDS */
+> +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AUDS_TX_EN, PKTSCHED_AUDS_TX_EN, PKTSCHED_PKT_EN);
+> +
+> +	return 0;
+> +}
 
-Applied, thanks!
+Something's wrong with this patch as all the functions above have been dropped
+since the HDMI VSI & SPD InfoFrames series [1] got merged.  The previous
+revision was fine though, hence that's likely an unexpected artifact of the
+latest rebase.
 
-[1/5] dt-bindings: display: rockchip: Add rk3576 DisplayPort
-      commit: 3410ab9fbd642e24f21d2fe6db6e995fa14991de
-[2/5] drm/bridge: synopsys: dw-dp: Set pixel mode by platform data
-      commit: 77ae37018a2705f5abe8cc428e3496651258901d
-[3/5] drm/bridge: synopsys: dw-dp: Make i2s/spdif clk optional
-      commit: 388bb0899bc9acdb6e4eeaad9eb9dce3427ceca4
-[4/5] drm/rockchip: dw_dp: Add DisplayPort support for rk3576
-      commit: 70ad4780431e3936e9cb0cf13e286d304b418f94
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+[1] https://lore.kernel.org/all/20260129-dw-hdmi-qp-iframe-v2-0-0157ad05232c@collabora.com/
 
 _______________________________________________
 Linux-rockchip mailing list
