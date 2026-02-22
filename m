@@ -4,60 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12103C636C1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:39:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9C78C636C1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:40:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yLQVGvFKJlBrGFuOiZuIC1qqykpq7O1B/Zg0MxJxOH8=; b=RyH8GmC2K762St
-	0jpo3UvJMn+aXsqdXckHArAUxKylcwGABMha2HFos/1+Qo6VLx3ji6sHSLWyvbujgcdz/5Try6USH
-	Z6g3S7gjHnDBFT+7nhjlceuo+nNCikdh6jEtBmrSsgfguYZNyOKEoCZJ85pQX4t4mcJqQBMmXBG57
-	ig52xLChNMK2epikzIY+AfgVtJ53gPT7kq2onIXxCCGNZ+GFG3XxVa8iSvkGqPLmWmiZbNSLaMZR0
-	fnhqY7itkxZnM5jbUiiv53BGPEJKsxNHCqRZf4rLK6Aj3mgJov3xeUU1t5e5OtOpgzUg8VhCZmUd5
-	E7OjsBbeIikkTlLmeTaw==;
+	List-Owner; bh=5+Ku8CTw57NmD4EpdseEazZji3ERsi6MU168ueYW0Xc=; b=17mMipcspCkgqK
+	Nzy4KMPS1Sss4jkw8Xc/k9XGT1yWhf++7VcVHd4yxJ9PGG7hRL6OKV87y6yu0/7v3tDddWkia+IN/
+	0yHMc/hzoeXHIG+J5VI063T5+FNw95P+bkI12XI7iwpGqgAwJQ0RAgPTLLtcyRzYnetktbToB+Fe3
+	W2Mjk5HblGr0T3bgjXW7NKUul+OQbRSsEezoN2W6ABfJ1d0e/dRQy1Y5rkF9w164TplFCOII7ghH/
+	08ZNBn4wkjl9vEba1uVsVUinavCYVjKHGFjjpULV9mF3OCXVncgQRtl78sGed2/VlyQR9RGU/sGKq
+	JWjIxau0SUz4VWtvW8sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI7C-0000000H09P-0THh;
-	Sun, 22 Feb 2026 22:39:50 +0000
+	id 1vuI7K-0000000H0HP-2VHj;
+	Sun, 22 Feb 2026 22:39:58 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI6o-0000000Gztq-1ZoW;
-	Sun, 22 Feb 2026 22:39:27 +0000
+	id 1vuI6p-0000000Gzuh-25IB;
+	Sun, 22 Feb 2026 22:39:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=0Z9xezpx4Phocc3z49S/RTcZDdi8MtPGSIseFj+H+WI=; b=PjGiZXczcRvMuzBnyR0qutXjlg
-	ZuM6z8HsuDpGt7un3ggVnZUjFvddb0jH+n9CIzpRbPXujP9wbbWFMdYWRPCzMxw5ZbdRDLwx+vsc3
-	A/56tdNPz7eEdeH260sZIpFz6bxm5iuqHe+LrjQZID5dL17/QHrVol09s3GkOZOJN9RtxtGLbzre+
-	IaH3xY0XOaudJIvDfVSCs6RSiu3VYAEENc/aNW31acG7z+tLzVFdBoaoLSkg3FvYzxnBfd6u80/5/
-	XMV/KYo6VgaGGMydaosdPWiC4AKGjAavaVW8GHVwSvPKQbg0aXnwbS8gmulgZHIYLHvWm+2Vpm6A2
-	XsCNYm7w==;
+	bh=HkoheiRsOgkGH0y6gauMEvPaM5M/sNlnyx5re4y4PJs=; b=gpaeyFySadCynK+2NX5d3KON33
+	L95Z3MH8w0BPO8BTXwJxg5JcQmaqKkwslXa4Cb+4UX3aGg/vujLXU1HtWnsSpqeWdw9/yQQgFQ/uE
+	ITNwh4ipkA1rq+y6vdWFmeHCwg3Bl23pOBNGEEfnWJhjwu4mjEAHz5F1Q1XC5QYtaYUCB+gTqZMKn
+	WbFcS90JweO9+FwHt7WoFBXkrH6ttcdXxCkgzeCCTWbXCf8St4Lu3gFB+6ugPdlXwwhOZbZIhXJds
+	1Y+BZiMc6V7/iyd2UwGEP6jG0h4DCk2TbHajeYUt9jVwsgZ4M14KeyAlf1QMYDCgS9y+rKB/TuY8h
+	UHbSvr4Q==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Jun Yan <jerrysteve1101@gmail.com>
+To: neil.armstrong@linaro.org,
+	dianders@chromium.org,
+	thierry.reding@gmail.com,
+	sam@ravnborg.org,
+	Robin Murphy <robin.murphy@arm.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	alchark@gmail.com,
-	dsimic@manjaro.org,
-	andyshrk@163.com,
-	jonas@kwiboo.se
-Subject: Re: [PATCH v5 0/3] board: rockchip: add OneThing Edge Cube series
-Date: Sun, 22 Feb 2026 23:39:05 +0100
-Message-ID: <177179992292.1861430.2391320215739051093.b4-ty@sntech.de>
+	jesszhan0024@gmail.com,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: (subset) [PATCH v2 0/4] Properly support FriendlyElec HD702E
+Date: Sun, 22 Feb 2026 23:39:11 +0100
+Message-ID: <177179992303.1861430.2329914012385519373.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260214021719.620752-1-jerrysteve1101@gmail.com>
-References: <20260214021719.620752-1-jerrysteve1101@gmail.com>
+In-Reply-To: <cover.1769191673.git.robin.murphy@arm.com>
+References: <cover.1769191673.git.robin.murphy@arm.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_143926_410557_B0155EF4 
-X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-CacheID: sfid-20260222_143927_554150_AF1F73E6 
+X-CRM114-Status: UNSURE (   8.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,24 +74,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 14 Feb 2026 10:17:13 +0800, Jun Yan wrote:
-> This series adds support for the OneThing Edge Cube series, Rockchip
-> RK3566-based PCDN (P2P Content Delivery Network) devices originally
-> marketed by OneThing Tech.
+On Fri, 23 Jan 2026 19:22:19 +0000, Robin Murphy wrote:
+> v1: https://lore.kernel.org/linux-rockchip/cover.1767111804.git.robin.murphy@arm.com/
 > 
-> The V5 patch inlcudes some device tree adjustments, following Kwiboo's
-> suggestions.
+> Changelogs in the patches - fingers crossed this is good to go now,
+> thanks all for the acks and reviews.
+> 
+> Cheers,
+> Robin.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/3] dt-bindings: vendor-prefixes: Add Shenzhen OneThing Technologies Co., Ltd.
-      commit: c6d26a9425631c69087a407d3cf8372db0afee09
-[2/3] dt-bindings: arm: rockchip: Add OneThing Edge Cube series
-      commit: d49566ff47e7748b291ba82d0620a5c93f30e310
-[3/3] arm64: dts: rockchip: Add OneThing Edge Cube series
-      commit: 53ec6d21fe1ec0677f9db56a23dda8d145eda102
+[3/4] arm64: dts: rockchip: Move RK3399 eDP pinctrl to boards
+      commit: 638fa970ac669e5d0fb2c5cc0bea3d4443299ac6
+[4/4] arm64: dts: rockchip: Add overlay for FriendlyElec HD702E
+      commit: 25afddad23b8e91fcff625756e51a805e288ab38
 
 Best regards,
 -- 
