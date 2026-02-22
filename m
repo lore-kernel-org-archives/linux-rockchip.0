@@ -4,54 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 157CBC636C1
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:39:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04F14C636C4
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:39:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UBgbEIA23zYMQfq9PWE+CRh7x+G9XF48I0dJUorExUk=; b=ASdh5o/o3HBLom
-	6Wcoj5xkcKqoPEwNpukQ/ZeUMubGEv+ke8WyHjig+4pGRW0AmNH/qYqHInSon7vKJswkpCpR0DRKI
-	ElDl+nBNVdywSYiTFhYhkMRGMFDJP5eXACoRn5pqwRpm8I861kzuzwUM07dXRU26K+Kux0PXsWKza
-	xLu8x4CyFRre8T+4vEhvx3zZ9ZJiG76BePW5h6fjvqxgxu+FfSukjH0XtJk2W3XhyNeWAYTNdzC9U
-	0Vn5NZZduqnHsYZG+7+w4ebiwZmDMtwEZjJakz/z/zJEOxssTXlVIc5QfMvSKaAjOLRng3wKr42ar
-	iau9/ehJW6C5tfmlWQlA==;
+	List-Owner; bh=fWZkvq+Eqc0cG4vV5099fTPV4IOosq7PV5jGYYvRxe0=; b=w+X76hJbqg5Yxf
+	xIVVJjwcGYDM4B5RFPSjPpkFYR3VLQIyH/5RcJnFqF+TOMdWYG89YOhEtTgGtf4EC9JZzEw/hsKUq
+	dlNWYsbXYVrQPdbREdMM4GxCJMZ0JdDjt3nPMntaRYtLcNK7AQALCVQqjUZkfIrLVNMo323Df7u27
+	hPItJskxxtkNnJQJqX8FPL8uK4TeFDuB/Q/jDuNT/L4BUBbBypesnYaUg/Yl5SYlipqPA5FUiKaUD
+	pkDrrUZ84y2vcStKTsJaGr6BIg3ZAnQdU6YSl9jHONWFjjtXQq9Cg38NN5ydFCWk8ndbwhy/gMg6t
+	oNtCtt+v/SWr2+3PJ0aA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI6t-0000000Gzx9-07dC;
-	Sun, 22 Feb 2026 22:39:31 +0000
+	id 1vuI6q-0000000Gzw1-04sa;
+	Sun, 22 Feb 2026 22:39:28 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI6n-0000000Gztt-3OzY;
-	Sun, 22 Feb 2026 22:39:27 +0000
+	id 1vuI6n-0000000Gztl-2Alw;
+	Sun, 22 Feb 2026 22:39:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=LCxy7nPmXcHGLakXz3lC+/2LUTI/Fcg3Ywa2YZdLljw=; b=yE5qHB98H27TW9vtWTEyFM/LNQ
-	MZ4AMVdaDCDfRoD+yTGx6wqLscafQ7gj9Ia1bCm+M5Py2YFNQYzMDT8a3VKtoZRi//NgAzr3HZo6Q
-	pT0Ipzid/gZp2jOR2txbPyDwy0DrNzx5bdMwrvtUo7EBo7JB0Q3B/2K8FEZQH90+wK9sc5LDYR8kW
-	KFjQSu7A9EhihKfxFBdqSNqkwrwYpphUzgTKKgr2D5fDrUv9kHyRKSeZ8n3xsVXfs759kU1lxxIZ5
-	DOIHqEFmu11O9Okg4vPhBgTRQwftlO4cgPatPt4nHAlXpgLwCQYCvVo/XvnDaASlffWdTmm6BMlPm
-	8VYxxd3w==;
+	bh=KxYpxXyzJEe+f3oGErlsZuy9sNLZi1GyKm1CzsPdpME=; b=Y3GYoehRWgcxBMDU4i9ObAKG67
+	O5vcnRJAw4YMJDl+B/ctef8FPG/GUmoIMTkOTjmy81H6NvRkq09pL3kc3WZBX9dW/XpdQ4rILUSkn
+	xbpJXVC9o5654VFo35EhBaji7utR9228dTaEzmQk/vqERnbGU3cYCE2MoE6JRTawfnZCFhnnQotAH
+	/AD3ktVjFHtGemnKrmY7LsoQaDrj4OmcmjA7JHgWHxebC8HCKveG4VRZO8iX8qJSL7cfhplzWISn7
+	wFM659WMJSmcvZEdANjXx1D/tS7XU9kApY4zk/ToaeBJDJVUOsoiE8S+/luHMMbX/oLKTXQMOLYxf
+	xwkPHAqA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	linux-rockchip@lists.infradead.org,
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
-	Christian Hewitt <christianshewitt@gmail.com>,
-	Alex Bee <knaerzche@gmail.com>
-Subject: Re: [PATCH] Revert "arm64: dts: rockchip: add SPDIF audio to Beelink A1"
-Date: Sun, 22 Feb 2026 23:39:10 +0100
-Message-ID: <177179992309.1861430.17263056064282547963.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/4] Revision overlays for QNAP TSx33 devices
+Date: Sun, 22 Feb 2026 23:39:03 +0100
+Message-ID: <177179992301.1861430.8466238325458221648.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <0af77a02c2b0806d4ca72066392a5453fcc89a8f.1767111968.git.robin.murphy@arm.com>
-References: <0af77a02c2b0806d4ca72066392a5453fcc89a8f.1767111968.git.robin.murphy@arm.com>
+In-Reply-To: <20260201191804.41421-1-heiko@sntech.de>
+References: <20260201191804.41421-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_143925_862908_73C23C46 
-X-CRM114-Status: UNSURE (   8.30  )
+X-CRM114-CacheID: sfid-20260222_143925_552660_89EF8F74 
+X-CRM114-Status: UNSURE (   9.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -70,20 +68,26 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 26 Jan 2026 12:32:04 +0000, Robin Murphy wrote:
-> This reverts commit bdc4d388c6452498ab62ef2564589f40e0c8c262.
+On Sun, 01 Feb 2026 20:18:00 +0100, Heiko Stuebner wrote:
+> The QNAP NAS devices actually got device revisions at some point,
+> so there are different board variants in the wild.
 > 
-> While Beelink A1 mostly follows the high-end RK3328 reference design,
-> it does not in fact have the S/PDIF connector, only HDMI and a 3.5mm
-> jack for the analog audio/TV codecs - the tiny form factor literally
-> doesn't have room to fit more!
+> Above certain PCB revisions, the devices gained additional GPIOs
+> for controlling individual power to the sata ports and also could
+> detect the presence via GPIOs.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] Revert "arm64: dts: rockchip: add SPDIF audio to Beelink A1"
-      commit: 696d0082956cac2df3f27fee75cf2c8d4a2c2cfb
+[1/4] arm64: dts: rockchip: Add port subnodes to RK356x SATA controllers
+      commit: 5918bf2a17f4689abfb94d341c5240088f8bd16e
+[2/4] arm64: dts: rockchip: add overlay for qnap-ts433 device revision
+      commit: 406c5515eb62fe6837fc1257855024b1ac6c52e1
+[3/4] arm64: dts: rockchip: add overlay for qnap-ts233 device revision
+      commit: a12bd8d24f2f942a6684431af9f885b4a4ae84fe
+[4/4] arm64: dts: rockchip: add overlay for qnap-ts133 device revision
+      commit: 5fdd6701fad197d0dfe21de3beed8ac45343aa73
 
 Best regards,
 -- 
