@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8306E7BDA2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23209E68179
 	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:39:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VqaagXsStLJ8e6Br3SlO16DNSxeh/wXLVXg3tgbCkRo=; b=r02VrhZFpmI2eJ
-	YfxBWCODBsFzbZWuKpyCxt6rql9JbibcFp7upGOclnSkSnaJCTUqWUPj8SmFzXuANqLPkqgp9axJi
-	dCuUTrYVkHtCf7pn6g3hjod9qU6xTj3E7+dfgzOugko0zkf0jeU6leobVGyrmfBKCByELrl4oI5W0
-	IENYN5HnH/SwvZMobUU5hmOYaLa/QuAeqX1h4Xnk7ih5KRN18WkaZsXaMv8e32YnllzJEYP8/1B8j
-	bGiN/qLkQnkTRJYnQ6re0D/5szyZfDyeFdZI+uTq0yGrhwvNSsy+b7JT0YGAg1bERRK0b4aT8Izla
-	HHgwSd7qX2C5RgV4bzzA==;
+	List-Owner; bh=lotKysUDE7SzwmSFWxW/p1H8Ym4DJexsl5Mxf6v+/wk=; b=gRv+Am4S7uTbwu
+	4zqX8Cm1WGC9Ii6003JiG14+9AkrRCOkwU/Smf6wsIgubsKWDB3truZhy6Kxaw0WcZkjtBjmoXddR
+	S2AZptCZEGAq0wj+Hpjfc2Zw/lxZdMOQ839eqs1Jus7IZ+mp2K/e+SqMzI3uLlq1Qw+1wkNnu7f5V
+	wrZpBN6LpZKGrsZ2qH9sfhM1ykwmuoNS17IiQGCqRuzAPVgAUhpvMgnPq87x38Ooc0iHq1jV309T9
+	qnL/szCxgJBaEKVWdp0fTHK2t3xwwFTsNO7jYbGdHyBx6R66iZSLb7tuEBcEu+8uBpc82i7E1hjpb
+	pfalNolF5ct2UCehjMcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI6t-0000000Gzxs-3sUN;
-	Sun, 22 Feb 2026 22:39:31 +0000
+	id 1vuI6r-0000000Gzwf-2uIf;
+	Sun, 22 Feb 2026 22:39:29 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI6o-0000000Gzts-1nMJ;
-	Sun, 22 Feb 2026 22:39:27 +0000
+	id 1vuI6n-0000000Gztm-1sNX;
+	Sun, 22 Feb 2026 22:39:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=8FR6aRRNDgHmvF9VbyRy1R5NhPhdZwyQ7h4RicWaFHQ=; b=cLQ/0pFSts499AqKxk/JdNVHsX
-	jRjjZCTyxlcw7TSgh4Mtg+Obi0LYEFqK9McahiSGRmtswB8EGZwY66CS55zJC4M+8/C4vg55nTndv
-	GxMeOILAE1PB+KKGbMoS5mrM0faJc/68uG2tT9PNNZzbSwZ4zir0kfI40jn//IzLKUBkr6/kiNVKV
-	aq4uYRBTV8AMM8OKYyG7LLQfUW8zKKY5OKJtNxHVoMdAFguilq/soaZ8of0HJfipsxuW56CVpitP4
-	YOUlWQdyDOI3BIjiIY9kumqjBdVNV0ldw4g0bwEIRAEU+ovStClQ+97f9tTrpG9wEUfMka+aeRKMS
-	188g284A==;
+	bh=xCbFUq1gz5ivzs3NGEktR0CddjRjW7flgd1V8byi/98=; b=bpXAbppBRntuOXTB91zOXoUrzU
+	FcBQNixaiLIAJ+hynP0b2tfS0bPDIZ0RhEVtui818OlSsTXA0Tb2QIWpSbMlyOh85Is+GSTRJ7BI3
+	rQu6Tco63lQMXAav3HivByrywzSxx0BsyRUMhc8ai64yxr9KlqBYWTguc0NvZphhUF/6YAPaldUZH
+	I+XfISQyU8LrnuBHNp/023T1Iwp2dHQ690ek76WlFgvVNSpR7BlB73Emedc9sLEOmFZqMb0miTCyd
+	iM5UyVbMjJOsuZt/6+LPbYz3ucb6Tn/YlRDKOZCFXaBinzHlCjDhb9cYsvf9bhxGLyGnpHGTQt8RD
+	dBTxt1wg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Describe HDMI supplies for nanopi4 boards
-Date: Sun, 22 Feb 2026 23:39:09 +0100
-Message-ID: <177179992308.1861430.9894023788574826966.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	Jan Palus <jpalus@fastmail.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	Thorsten Leemhuis <regressions@leemhuis.info>,
+	stable@vger.kernel.org
+Subject: Re: [PATCH] Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro"
+Date: Sun, 22 Feb 2026 23:39:04 +0100
+Message-ID: <177179992296.1861430.12010317621406351425.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <8c1837976937a0ef03811109ca12f353c4d5e67d.1767111968.git.robin.murphy@arm.com>
-References: <8c1837976937a0ef03811109ca12f353c4d5e67d.1767111968.git.robin.murphy@arm.com>
+In-Reply-To: <20260210120142.698512-1-heiko@sntech.de>
+References: <20260210120142.698512-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_143926_471069_847F7469 
-X-CRM114-Status: UNSURE (   8.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260222_143925_552666_36C13354 
+X-CRM114-Status: GOOD (  11.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,16 +71,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 26 Jan 2026 12:32:05 +0000, Robin Murphy wrote:
-> We already describe the 0v9 and 1v8 rails used for analog supplies on
-> the nanopi4 boards, so hook them up to make the HDMI driver happy too.
+On Tue, 10 Feb 2026 13:01:42 +0100, Heiko Stuebner wrote:
+> This reverts commit 6d54d935062e2d4a7d3f779ceb9eeff108d0535d.
 > 
+> It seems there are different variants of the Wifi chipset in use on the
+> Pinebook Pro. And according to the reported regression - see Closes
+> below, the reverted change causes issues with one Wifi chipset.
 > 
+> The original commit message indicates a "further description" only and
+> does not indicate this would fix an actual problem, so a revert should
+> not cause further problems.
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Describe HDMI supplies for nanopi4 boards
-      commit: 99372d2430c07476e36a1964cb6f21334183db44
+[1/1] Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro"
+      commit: 29d1f56c4f3001b7f547123e0a307c009ac717f8
 
 Best regards,
 -- 
