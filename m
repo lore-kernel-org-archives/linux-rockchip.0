@@ -4,71 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB9EE6817A
-	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:40:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 898B9C636C1
+	for <linux-rockchip@archiver.kernel.org>; Sun, 22 Feb 2026 22:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PKu5FwvytRfjnfScA0ibhdU0aoio/AYc1QPQEiVpdYY=; b=HtesfjWb1YGgMv
-	lJUPP9+irLz6A21BLm+8fazcAHWS5a7fPyAAJmc+KdCjYDh3KoxN/Te6+8w4gmoO70osWOwk+jPvg
-	171wbDxeVDSlyezHcHJcMIp3EwVTn7F2yB6ra8wtIbs14mC5K+rv6cwk1xTvc41gOOiSu38YcRchR
-	Z0ELd2vymwmW9dDiB+e7OqktEQ/jiVtjWATDCg8gT4s8sSNzgj2xK0zwXCrJrCQGi7yN6KpIUvoPM
-	d5nwnpxnVQu0JKVEX9WFWPE1jooEXWjhipaWaJ4rgpFVfs8Z2bm14gdjhEzjk6OuSYhBdGYCLl6yQ
-	T94RtB4vgupF3o2RexFQ==;
+	List-Owner; bh=KyOv7fCS1ec7/6krVigAJ/m1Hw6dPrv2OmEjVCXEGF0=; b=zEj8LbDJfCy/Bv
+	ynmaVkaJztX50AMtRwk0j/MFbS6rUtEjEm9FUo+Tt7lcBY5iKz8NNsKjbVpXos0h+ZAx8uzq64zI0
+	5n2EamyLrlQ9cscPp1Ohoi9HxEEQp1xmTq+tIbyi9BvPmCBd8NWXrDJABxooSO1l9l0oDNbsnRX3d
+	2yyalzLh1TcL4lNOKWsJQVhBdYjFpYjW2PG4cuzDbePDZxoSGLnO8u2a4eRTC2IxEg4ICJktm+Vgs
+	hexKOGcDGrOEFpwAx2kmXi/2GiMwygKEVXaEvi1NH6g4yxpRxzj3Vv5czycFzesiq+rgDDOwZ6ul+
+	YMFr60QiRdPHEt4CkzVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI7R-0000000H0OR-0OzC;
-	Sun, 22 Feb 2026 22:40:05 +0000
+	id 1vuIAf-0000000H1CP-0TqZ;
+	Sun, 22 Feb 2026 22:43:25 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuI79-0000000H06r-3USN;
-	Sun, 22 Feb 2026 22:39:49 +0000
+	id 1vuIAc-0000000H1Bd-3q8w
+	for linux-rockchip@lists.infradead.org;
+	Sun, 22 Feb 2026 22:43:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=/+5/rg89Fynsrq3dTn5BxRg8XV+0EU4hxQSafZyOwYs=; b=ySjJLJEKDAEfZhqhYEYJjh2t8K
-	Ha37ThJ4DYJ/zdQvHg7Dn3B4g6IGUkZWHFwKaEMErSLmAbvqxtiAwGMU7KBOeMx4vUX37zl74B4ku
-	dRwBeXL76nOxMzhl18CaYbNFF5pMopE4c3GVHq7poGyqey3sFhtnCNO83YOGclsIwE2HJPNoikE+g
-	EQXMWNvj2i37U//bwDztVCK3TKBANuytPykre8Beg2RxohBMbaBUtfKjhI2LMpeYTGoZzrBqx3NFb
-	zo0HU+BXaTxJsi58A8ITyrWl2zs8g7UaUcuRzE5iJgvuSlHxYIaQvIFbZnaXYiwN6Ifo/agUVgDmO
-	z90sXDHg==;
+	bh=vPnzKeqDtSLcd+XN/YDb/op46Z3sRIkA6g+cZGGcXB0=; b=zzPaJjAbzqjCT2oQ/oBz7M3gqN
+	FxZtJambbUM4cwVUacRj6PAtFOjVXmPJD+n+mMKNcYS3+UUK2EsCQEHC2972HvIPZaHWApTlYa1mI
+	yG75yxMxNTPTpnI27ExmiWMH2y/NvF7MweA23Z2FCbLcUpVogtWfk5hm5FVC0lDIBlken9W7S8HwP
+	FsWmvCymSMYjW5GdXBO0E8EESR281fJy+JD5nkbdXx29TkiyMVY069LTPijXX+ZYX7rUWMgA2bOUw
+	uyVbBayB7A8XksXZx8QDoFLw4xQ8f8wmPWju5ecV45KN92/KIyiAQoqiGy1i8tr8ZWRsdAxIkZpCZ
+	Ram+7Dxw==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Hsun Lai <i@chainsx.cn>,
-	John Clark <inindev@gmail.com>,
-	Jimmy Hon <honyuenkwun@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Alexey Charkov <alchark@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Chaoyi Chen <kernel@airkyi.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 0/2] arm64: dts: rockchip: Add rk3576 evb2 board
-Date: Sun, 22 Feb 2026 23:39:06 +0100
-Message-ID: <177179992305.1861430.8217804356106146651.b4-ty@sntech.de>
+	Dan Carpenter <dan.carpenter@linaro.org>
+Subject: Re: [PATCH] soc: rockchip: grf: Add missing of_node_put() when returning
+Date: Sun, 22 Feb 2026 23:39:13 +0100
+Message-ID: <177179992294.1861430.822278416959246824.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.2
-In-Reply-To: <20260131081438.100-1-kernel@airkyi.com>
-References: <20260131081438.100-1-kernel@airkyi.com>
+In-Reply-To: <1770814957-17762-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1770814957-17762-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260222_143947_948229_E2B55864 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20260222_144322_954047_21946C75 
+X-CRM114-Status: UNSURE (   6.06  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,31 +69,17 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Sat, 31 Jan 2026 16:14:36 +0800, Chaoyi Chen wrote:
-> This series add support for rk3576 evb2 board.
+On Wed, 11 Feb 2026 21:02:37 +0800, Shawn Lin wrote:
+> Fix the smatch checking:
+> drivers/soc/rockchip/grf.c:249 rockchip_grf_init()
+> warn: inconsistent refcounting 'np->kobj.kref.refcount.refs.counter':
 > 
-> General features for rk3576 evb2 board:
->     - Rockchip RK3576
->     - LPDDR4/4X
->     - eMMC5.1
->     - RK806-2x2pcs + DiscretePower
->     - 1x HDMI2.1 TX / HDMI2.0 RX
->     - 1x full size DP1.4 TX (Only 2 Lanes)
->     - 2x 10/100/1000M Ethernet
->     - 5x SATA3.0 7Pin Slot
->     - 2x USB3.2 Gen1 Host
->     - 3x USB2.0 Host
->     - WIFI/BT
->     - ...
 > 
-> [...]
 
 Applied, thanks!
 
-[1/2] dt-bindings: arm: rockchip: Add rk3576 evb2 board
-      commit: 912fe17d0a524b571e8aab57de643c5fb5cb6376
-[2/2] arm64: dts: rockchip: Add rk3576 evb2 board
-      commit: 86a82f7a7eeda451ce1a34425133163b5b581edb
+[1/1] soc: rockchip: grf: Add missing of_node_put() when returning
+      commit: 24ed11ee5bacf9a9aca18fc6b47667c7f38d578b
 
 Best regards,
 -- 
