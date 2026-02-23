@@ -4,87 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E12C9EA4FAE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 11:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 830CAEA4FB5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 12:25:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5hp7cFoxePNs46xD/8dUa318/K4VTGXps3HLEkk5j3g=; b=Z6Yovl6Clllv7X
-	tTY/aZjTTZp7XU4KoiYXik690dbTa0ZApOeJT/FUY2vEoSa0WKlf88W+K+sAY8trWXqXAZYrnUa8g
-	Evdz7CJO5dYd8/2K77igWyUOdYCAketJ3MATEpRcQ3Lke2qYVDgiCXwRw0VOlNM4NMkc7R2dNdhxw
-	SYsovpE/5+tomXHjGZGyHV97RpLMRB2Ldfj2IGzCgKu/sQbLBugn45HvYQkvzNw31NdBGKCjAG6oc
-	f5HC1TJhbN4HXAo20UHSh+71N2zPyVv9CiiOOz0eFb443tRPn/4U9GAWCMgrILfHTEqw9M9Mj5QaV
-	33mPemsOOqbjH1CUACHA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BEHN1BR6VHuS/OoAGFhC0hreCtL1Y5YDV6/eiJ8HogQ=; b=P1lt8fqCSHCFTe
+	vqo0krTsPLKxz5t5v7qlIkndtFbPA2oVScQHa4b2l2tyK77oahi5eesUU7d9HFAYojfX7pk1nSqnQ
+	/LvgpIc4ilcjXwOcFbDutAm4XIbc9P78uQSB+lEyf8KNnsO/fVuywP05vL2lINqbiwBEvHtRPlJtT
+	1mKZMvL9vykWbqhhUWu0OxlP+PK/mfDk0Sl4+exJ7GVr+A3NAJA9vSfCr2Tg+vwWPUnqldJg9wX0a
+	hACxlXrsStH6w8Oc4TPAFtCv6wOrC/MWwrbHXuxx25CWfl56vz2Un7EfKo1lqQ1N+1p/A8/0g5H/w
+	i490Kklh4Ln/KsIrzFBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuU1e-00000000AcO-3nEU;
-	Mon, 23 Feb 2026 11:22:54 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vuV03-00000000H5h-4AeY;
+	Mon, 23 Feb 2026 12:25:19 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuU1c-00000000AbZ-1XM7;
-	Mon, 23 Feb 2026 11:22:53 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1771845726; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=S2IB7ZD6DSdp0K9Cc0NBmF40o2LhuWVfCMBxDrxcFijbXLcaH0Lyf5O+2kZkLiznNdkANWcE+BWKHonsRq9KrsrbjcrODuvcKSNxIqKHvtuAbvhQuY8SR2HXpfIgKNQxPAR0kwT3+1adyLsr7+PsZ0/XmR6FDUPRTzuOt2Q3rRg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1771845726; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=zE1zLu6pL3uqgPGPzZfTY/83E+cY4Cd10iRFX9/SaOs=; 
-	b=Po53vDPX65HL6NClbbr3hhqP5yF7v8feEJRZ4aacu/eltttbeEFv2plJ6LJDIZFQ3ye/Yf/DnnD0kAORtkCD42bluLAxEQFl4MrlEVKBONaQE3/CtleL1546UG23I8FrPP7I7OKil6TwHw40C4Q84Y58qH6kwlEbMoRxjwnYajw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771845726;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=zE1zLu6pL3uqgPGPzZfTY/83E+cY4Cd10iRFX9/SaOs=;
-	b=ey8Oc4N/ijwyIwISAsnqyuzxwVpaDXPyWdOQrkVUmuNLUqcBICMAqwTs8Zyvf7Uk
-	V3SFa2egcB4yao+jcsR4TTgjiNmrdjggG0klVO2zrceXcT92E/POQQ6LygQdb1+w9tA
-	wV1bodCAlzCCpYR9uF+d/exsYpJDZf2sbF9djF+0=
-Received: by mx.zohomail.com with SMTPS id 1771845725129427.58768335061166;
-	Mon, 23 Feb 2026 03:22:05 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>,
- Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-doc@vger.kernel.org
-Subject: Re: [PATCH v8 13/20] drm/bridge: dw-hdmi-qp: Implement
- atomic_get_output_bus_fmts
-Date: Mon, 23 Feb 2026 12:21:56 +0100
-Message-ID: <5968719.DvuYhMxLoT@workhorse>
-In-Reply-To: <ff7b531a-77c1-4c7d-b09d-47779b640193@collabora.com>
-References: <20260216-color-format-v8-0-5722ce175dd5@collabora.com>
- <20260216-color-format-v8-13-5722ce175dd5@collabora.com>
- <ff7b531a-77c1-4c7d-b09d-47779b640193@collabora.com>
+	id 1vuV00-00000000H5F-49DO;
+	Mon, 23 Feb 2026 12:25:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771849513;
+	bh=hBnRS2Vgsup6aTou/EApEN4AdIi0x4IXbfdkCfQHpM4=;
+	h=From:Date:Subject:To:Cc:From;
+	b=Ju9VsvSiGjPvdaiWB9QKmuS5OuvLzUC9fzHF52Vzn8uG2wziMZCk6rYTSdfTZ0ba3
+	 be3SafH0cvPssDuOdNTeZd9Hi387ItDcHJtqS0SEMcNZ3d1UT1WLeTS1q+zzf2eL0/
+	 Unh1Nox00xUQwVlPWLvoojtKK91V/mXoF+SdcLcuUOAlo8k0V/rCBPW59VP05cX1EG
+	 Y7ZylPW8Wzfxe18KLbSEgNsnpNNbNzbhWPZxqqMvIhOK1nYAhdxMNVevkRz18vPiHI
+	 i99ecuAvPbiiKpyGuTuV5pIQJciW33dtQADzn3EJ9kepDh3AlRvIJeFCzf/RN1EpAa
+	 hZnLLSYFJNMBA==
+Received: from localhost (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E4A5217E04C4;
+	Mon, 23 Feb 2026 13:25:12 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 23 Feb 2026 14:25:05 +0200
+Subject: [PATCH] arm64: dts: rockchip: Fix vdec register blocks order on
+ RK3576
 MIME-Version: 1.0
+Message-Id: <20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3MQQqDQAxG4atI1gbGyExrryIuSubXhoKWDIgg3
+ t2hy2/x3kkFbij0ak5y7FZsWyu6tiH9vNcFbLmaJEgKIj3vGcqOhTfPcPZvHx+JVQWaECKGJ9X
+ 255jt+H/H6bpuIKjICGcAAAA=
+X-Change-ID: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_032252_446539_EA388327 
-X-CRM114-Status: GOOD (  29.95  )
+X-CRM114-CacheID: sfid-20260223_042517_213245_B6C801F4 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,169 +80,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sunday, 22 February 2026 11:42:39 Central European Standard Time Cristian Ciocaltea wrote:
-> Hi Nicolas,
-> 
-> On 2/16/26 3:01 PM, Nicolas Frattaroli wrote:
-> > The atomic_get_output_bus_fmts callback is used by the DRM bridge layer
-> > to recursively select a suitable output format in a bridge chain.
-> > 
-> > As a bridge that outputs to HDMI, dw-hdmi-qp will have its output
-> > formats determined by which formats the platform-specific integration of
-> > the hardware supports, and the chosen HDMI output bit depth.
-> > 
-> > Implement this callback. The returned u32* buffer is supposed to be
-> > freed by the caller of this callback, as specified by the callback's
-> > documentation.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 178 +++++++++++++++++++++++++++
-> >  1 file changed, 178 insertions(+)
-> > 
-> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > index d649a1cf07f5..4c00218e5fd7 100644
-> > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> > @@ -11,6 +11,7 @@
-> >  #include <linux/export.h>
-> >  #include <linux/i2c.h>
-> >  #include <linux/irq.h>
-> > +#include <linux/media-bus-format.h>
-> >  #include <linux/minmax.h>
-> >  #include <linux/module.h>
-> >  #include <linux/mutex.h>
-> > @@ -749,6 +750,182 @@ static struct i2c_adapter *dw_hdmi_qp_i2c_adapter(struct dw_hdmi_qp *hdmi)
-> >  	return adap;
-> >  }
-> >  
-> > +static int dw_hdmi_qp_config_avi_infoframe(struct dw_hdmi_qp *hdmi,
-> > +					   const u8 *buffer, size_t len)
-> > +{
-> > +	u32 val, i, j;
-> > +
-> > +	if (len != HDMI_INFOFRAME_SIZE(AVI)) {
-> > +		dev_err(hdmi->dev, "failed to configure avi infoframe\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	/*
-> > +	 * DW HDMI QP IP uses a different byte format from standard AVI info
-> > +	 * frames, though generally the bits are in the correct bytes.
-> > +	 */
-> > +	val = buffer[1] << 8 | buffer[2] << 16;
-> > +	dw_hdmi_qp_write(hdmi, val, PKT_AVI_CONTENTS0);
-> > +
-> > +	for (i = 0; i < 4; i++) {
-> > +		for (j = 0; j < 4; j++) {
-> > +			if (i * 4 + j >= 14)
-> > +				break;
-> > +			if (!j)
-> > +				val = buffer[i * 4 + j + 3];
-> > +			val |= buffer[i * 4 + j + 3] << (8 * j);
-> > +		}
-> > +
-> > +		dw_hdmi_qp_write(hdmi, val, PKT_AVI_CONTENTS1 + i * 4);
-> > +	}
-> > +
-> > +	dw_hdmi_qp_mod(hdmi, 0, PKTSCHED_AVI_FIELDRATE, PKTSCHED_PKT_CONFIG1);
-> > +
-> > +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AVI_TX_EN | PKTSCHED_GCP_TX_EN,
-> > +		       PKTSCHED_AVI_TX_EN | PKTSCHED_GCP_TX_EN, PKTSCHED_PKT_EN);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +static int dw_hdmi_qp_config_drm_infoframe(struct dw_hdmi_qp *hdmi,
-> > +					   const u8 *buffer, size_t len)
-> > +{
-> > +	u32 val, i;
-> > +
-> > +	if (len != HDMI_INFOFRAME_SIZE(DRM)) {
-> > +		dev_err(hdmi->dev, "failed to configure drm infoframe\n");
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	dw_hdmi_qp_mod(hdmi, 0, PKTSCHED_DRMI_TX_EN, PKTSCHED_PKT_EN);
-> > +
-> > +	val = buffer[1] << 8 | buffer[2] << 16;
-> > +	dw_hdmi_qp_write(hdmi, val, PKT_DRMI_CONTENTS0);
-> > +
-> > +	for (i = 0; i <= buffer[2]; i++) {
-> > +		if (i % 4 == 0)
-> > +			val = buffer[3 + i];
-> > +		val |= buffer[3 + i] << ((i % 4) * 8);
-> > +
-> > +		if ((i % 4 == 3) || i == buffer[2])
-> > +			dw_hdmi_qp_write(hdmi, val,
-> > +					 PKT_DRMI_CONTENTS1 + ((i / 4) * 4));
-> > +	}
-> > +
-> > +	dw_hdmi_qp_mod(hdmi, 0, PKTSCHED_DRMI_FIELDRATE, PKTSCHED_PKT_CONFIG1);
-> > +	dw_hdmi_qp_mod(hdmi, PKTSCHED_DRMI_TX_EN, PKTSCHED_DRMI_TX_EN,
-> > +		       PKTSCHED_PKT_EN);
-> > +
-> > +	return 0;
-> > +}
-> > +
-> > +/*
-> > + * Static values documented in the TRM
-> > + * Different values are only used for debug purposes
-> > + */
-> > +#define DW_HDMI_QP_AUDIO_INFOFRAME_HB1	0x1
-> > +#define DW_HDMI_QP_AUDIO_INFOFRAME_HB2	0xa
-> > +
-> > +static int dw_hdmi_qp_config_audio_infoframe(struct dw_hdmi_qp *hdmi,
-> > +					     const u8 *buffer, size_t len)
-> > +{
-> > +	/*
-> > +	 * AUDI_CONTENTS0: { RSV, HB2, HB1, RSV }
-> > +	 * AUDI_CONTENTS1: { PB3, PB2, PB1, PB0 }
-> > +	 * AUDI_CONTENTS2: { PB7, PB6, PB5, PB4 }
-> > +	 *
-> > +	 * PB0: CheckSum
-> > +	 * PB1: | CT3    | CT2  | CT1  | CT0  | F13  | CC2 | CC1 | CC0 |
-> > +	 * PB2: | F27    | F26  | F25  | SF2  | SF1  | SF0 | SS1 | SS0 |
-> > +	 * PB3: | F37    | F36  | F35  | F34  | F33  | F32 | F31 | F30 |
-> > +	 * PB4: | CA7    | CA6  | CA5  | CA4  | CA3  | CA2 | CA1 | CA0 |
-> > +	 * PB5: | DM_INH | LSV3 | LSV2 | LSV1 | LSV0 | F52 | F51 | F50 |
-> > +	 * PB6~PB10: Reserved
-> > +	 *
-> > +	 * AUDI_CONTENTS0 default value defined by HDMI specification,
-> > +	 * and shall only be changed for debug purposes.
-> > +	 */
-> > +	u32 header_bytes = (DW_HDMI_QP_AUDIO_INFOFRAME_HB1 << 8) |
-> > +			  (DW_HDMI_QP_AUDIO_INFOFRAME_HB2 << 16);
-> > +
-> > +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS0, &header_bytes, 1);
-> > +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &buffer[3], 1);
-> > +	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS2, &buffer[4], 1);
-> > +
-> > +	/* Enable ACR, AUDI, AMD */
-> > +	dw_hdmi_qp_mod(hdmi,
-> > +		       PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
-> > +		       PKTSCHED_ACR_TX_EN | PKTSCHED_AUDI_TX_EN | PKTSCHED_AMD_TX_EN,
-> > +		       PKTSCHED_PKT_EN);
-> > +
-> > +	/* Enable AUDS */
-> > +	dw_hdmi_qp_mod(hdmi, PKTSCHED_AUDS_TX_EN, PKTSCHED_AUDS_TX_EN, PKTSCHED_PKT_EN);
-> > +
-> > +	return 0;
-> > +}
-> 
-> Something's wrong with this patch as all the functions above have been dropped
-> since the HDMI VSI & SPD InfoFrames series [1] got merged.  The previous
-> revision was fine though, hence that's likely an unexpected artifact of the
-> latest rebase.
+When building device trees for the RK3576 based boards, DTC shows the
+following complaint:
 
-Oops, yeah, I think I messed this up during rebase. Thanks for letting me know!
+  rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b00000: simple-bus unit address format error, expected "27b00100"
 
-> 
-> [1] https://lore.kernel.org/all/20260129-dw-hdmi-qp-iframe-v2-0-0157ad05232c@collabora.com/
-> 
+Provide the register blocks in the expected address-based order.
 
+Fixes: da0de806d8b4 ("arm64: dts: rockchip: Add the vdpu383 Video Decoder on rk3576")
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 49ccdf12ef7e..45eb0d053a6f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1281,10 +1281,10 @@ gpu: gpu@27800000 {
+ 
+ 		vdec: video-codec@27b00000 {
+ 			compatible = "rockchip,rk3576-vdec";
+-			reg = <0x0 0x27b00100 0x0 0x500>,
+-			      <0x0 0x27b00000 0x0 0x100>,
++			reg = <0x0 0x27b00000 0x0 0x100>,
++			      <0x0 0x27b00100 0x0 0x500>,
+ 			      <0x0 0x27b00600 0x0 0x100>;
+-			reg-names = "function", "link", "cache";
++			reg-names = "link", "function", "cache";
+ 			interrupts = <GIC_SPI 308 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru ACLK_RKVDEC_ROOT>, <&cru HCLK_RKVDEC>,
+ 				 <&cru ACLK_RKVDEC_ROOT_BAK>, <&cru CLK_RKVDEC_CORE>,
 
+---
+base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
+change-id: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
 
 
 _______________________________________________
