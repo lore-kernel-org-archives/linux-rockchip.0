@@ -4,82 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E3DEEC111E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 18:28:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43BACEC111E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 18:29:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=a+mbx72Yr728SFkMGhmq79ufSVw8NhXGseOq7/6/0hg=; b=gAeu7DQzKj4Jv7
-	Ccv4EPsRg6Km/5k/h9Mmxs/+pbc6mV6NhemzVsIje2izaJynFTaA1gCDh1u+NM4Nzp5xlRwHjDkPz
-	D4f7foK9yLg0Pu67T+PXPMsVE2CnkyJIE1ebC0KP8DUru08+PtdnIPQrSP7s0Al1dTHBkKzczMlow
-	19C2ciyJGLfu7ZcpaJ8qHNbDhMioglpSwxqFGLw7iEzZHg13UPEA3ZgLCAq+s/gSs/UHsb8Q5Kjp4
-	Ej064RWfohRpRpGOMKwHZ7mbfHWPZvpfThZ8Cd4LPefHWC8TuCN32DM84wxgqk8ZDpiNnt3yQyftp
-	zviA1yIGG56ds1euO/8Q==;
+	List-Owner; bh=syD6D1GfP6QEwIa/GNkL1y1gg1+SdVZDqFYVuYW3dLk=; b=pPUbI4zTXfrehn
+	Zu8JdfO3+ZrpsCYEMqxj8vHiJqjM/ECBOYq2jRKe2rcgddRIqkgH5ITu/ZcDuR4hekr4kqia0aegL
+	f1JF7fiFVpjUmWbPC17RovtiDVbX2lllz6L1QjNhfypkYOoGz38EdANJz8rWbilDNy+VtoskQZLMq
+	DL+6yCm2DapehlmbizmfdZUTFsiVPWyObR5OjRo219BC2op+YiJNnNiM8eCmCQqoqStEWQ3ADNlk5
+	wa3EH2Q6ZyTFt5xglL7/Rmase3X8wq2gXGiK/SSR+GLQVMn7uX1XAWBBo2rQnAEG6NN4GA6hcWCPz
+	B2IsRjvG7Q94rhamlojg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuaf1-00000000rqz-0TtF;
-	Mon, 23 Feb 2026 18:27:59 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vuagT-00000000s3z-3Ei5;
+	Mon, 23 Feb 2026 18:29:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuaew-00000000rpL-2rJG
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Feb 2026 18:27:57 +0000
+	id 1vuagR-00000000s3T-0nUH;
+	Mon, 23 Feb 2026 18:29:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771871271;
-	bh=Wz4vdsfnheRUMn1NJPAKeUGfoRavSQrri5sfE8QYfdE=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=WyNIyzmZ/X4XUurgK4i4TOkb78mh7o+nRhZhVJTCrU0W/hgDQ2ob9oqWFdAcK+CSf
-	 bGQjwrONU4x2uOvglGCny1BOdPpXUQCaUkc1dUjBmVx4CEx8YOuEf3DxdhEzwCwyTK
-	 sp3aZ2uBmmEsTUesk9+6TpS/HC85X7QGmqZw4BAcYn9SUTn1/oDo92KN6VWljdFwfD
-	 uo7jRWjdS4YfFwVYRQHpaL+ZKMckYHskW4Az8Ro3FbGH/UC4nWppiz2TeJJI5beFLy
-	 j4ZryKe3PMm+eE9nZN8Qr4Van6SyxCNm2XmB+AN+9c41daRXqNa184yxAIn/HYtQTd
-	 FRycn4FqQKSeA==
-Received: from jupiter.universe (dyndsl-091-248-208-033.ewe-ip-backbone.de [91.248.208.33])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1771871364;
+	bh=f8Y9T7jUIRJHt52mwSlo+OZGMV3OmtVt1CFMimMKfhk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D+ZEZns8k6dR0nXRDqaipPSO0rIkEfbGuUR4zYwNKoBDA2u71/+fwR0FcCn6cZBR0
+	 G+NiNTIP+KZvtw+frCTb2F4TRxkJ7FYobhJalUWzUPrh/l7x3tlt2ZF9XlHK+glzAN
+	 fsyBke84OLf5/KutIll9hq6Q89kpj/xenVBre5nnYx6QkeKKCTD0myMMP2fAxn11N3
+	 +XhDfmf14+T84ZN2FRn1cB5cVFpygQyGRPKJMxx34y2+BOItmho/C/yzzgJMZ5n82W
+	 7abWKLVv2LHgGKT8VXiD2GpPhWUkDwme217BFdcPd+OT6gVPeGMJLmcsK9TejLOqir
+	 3r8fNnypcMfFw==
+Received: from [192.168.1.90] (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3FE5417E05E8;
-	Mon, 23 Feb 2026 19:27:51 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id E53A9480023; Mon, 23 Feb 2026 19:27:50 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 23 Feb 2026 19:27:38 +0100
-Subject: [PATCH v2 1/2] usb: typec: mux: avoid duplicated orientation
- switches
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 48DE117E003F;
+	Mon, 23 Feb 2026 19:29:24 +0100 (CET)
+Message-ID: <e0d7da4c-e779-43e9-bf0f-c2a0224114df@collabora.com>
+Date: Mon, 23 Feb 2026 20:29:23 +0200
 MIME-Version: 1.0
-Message-Id: <20260223-typec-mux-duplication-fix-v2-1-0402fefc222e@collabora.com>
-References: <20260223-typec-mux-duplication-fix-v2-0-0402fefc222e@collabora.com>
-In-Reply-To: <20260223-typec-mux-duplication-fix-v2-0-0402fefc222e@collabora.com>
-To: Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1831;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=Wz4vdsfnheRUMn1NJPAKeUGfoRavSQrri5sfE8QYfdE=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGmcnCaBWimLuXHxcBpFaiErYcWKIDL4Eyma8
- mRYvgjWbUp554kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpnJwmAAoJENju1/PI
- O/qadVIQAJ6YZd4th8kIg1eQFpweAdS6jAwP02zIJ6IGRDN5P8UAxHgsq/xJGBoui58INu4/FHs
- OHJdZ5P2WSIEyvsLicoZsOZtRE2i94CkZPLlJB5fr1W3yc6fngrgyFyjLRiqImzo9KcDElCyny+
- mHXCPafxdhlC3hOZ2DW2A5qekxt6LfRJNQXAg9zSI3GOEu6xNKbtf/D9rhehszQ7KZOTEmpHuZq
- wPtHnMWoi2YwuGgtpCH10ffwdtG8QLqgT6gZ6Mm4pCuKTJeHjnI5jtujRnfDlrVp1XDxgLfwJiJ
- GmMrVBf4JNdRIXvy5PmPkMBdy/9xNGL9QEaCMd4K0vHI4gAMH0tuCECxN0vN6szHLErQ3OcM4DC
- BwqMLY9p5/h3IJS+GB4xKJV39hVQ1tElkbGAOZ51XRwHKExf4hjJZWXG7x/1fjPEVnStf0zxFTD
- Cc2j5nZ+Bs6kp7J9TE0ZitkabrgBuQD+oomQH2QKGTbh4ICmXj57MIDVPTB3OJZMfTQCqgLpL/U
- OhAOwojkRrdF4ePrdtnlKD+VgazSnR0yseNBDnm8RtcnqbFyjDxi1G2DjD+jBHNfctuKJRHAFoM
- 1MmDOgHCD06AA8pIk6H0l/4oNE9pl7oJkjH/sm3DvJL44V/WyZsvTc4CKpzP49oXDWy3XFpX1JH
- 41Kr6wYQw/nUfla6noBYj4A==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdec register blocks order on
+ RK3576
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Diederik de Haas <diederik@cknow-tech.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com>
+ <aZxkDGzEQCCLKR-M@venus> <DGMF3IX3J3BP.1XT41P0G8P5OD@cknow-tech.com>
+ <b4eb3031-69e8-4a73-b4f1-91dd4192bb21@collabora.com> <aZyaLG0lYao6_xxb@venus>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <aZyaLG0lYao6_xxb@venus>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_102754_883829_3B438674 
-X-CRM114-Status: GOOD (  13.56  )
+X-CRM114-CacheID: sfid-20260223_102927_411180_6170A85E 
+X-CRM114-Status: GOOD (  10.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,58 +81,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some devices use combo PHYs (i.e. USB3 + DisplayPort), which also
-handle the orientation mux. These PHYs are referenced twice from
-the USB-C connector (USB super-speed lines and SBU/AUX lines)
-resulting in the switch being configured twice. Avoid this by
-dropping duplicates.
+Hi Sebastian,
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/usb/typec/mux.c | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+On 2/23/26 8:21 PM, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Mon, Feb 23, 2026 at 07:07:42PM +0200, Cristian Ciocaltea wrote:
+>> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>> @@ -34,10 +34,12 @@ properties:
+>>        - description: The cache configuration registers base
+>>
+>>    reg-names:
+>> -    items:
+>> +    oneOf:
+>>        - const: function
+>> -      - const: link
+>> -      - const: cache
+>> +      - items:
+>> +          - const: link
+>> +          - const: function
+>> +          - const: cache
+>>
+>>    interrupts:
+>>      maxItems: 1
+>>
+> 
+> With that change the descriptions in the reg section are wrong.
 
-diff --git a/drivers/usb/typec/mux.c b/drivers/usb/typec/mux.c
-index 58fb97ea6877..9b908c46bd7d 100644
---- a/drivers/usb/typec/mux.c
-+++ b/drivers/usb/typec/mux.c
-@@ -35,7 +35,9 @@ static int switch_fwnode_match(struct device *dev, const void *fwnode)
- static void *typec_switch_match(const struct fwnode_handle *fwnode,
- 				const char *id, void *data)
- {
-+	struct typec_switch_dev **sw_devs = data;
- 	struct device *dev;
-+	int i;
- 
- 	/*
- 	 * Device graph (OF graph) does not give any means to identify the
-@@ -56,6 +58,13 @@ static void *typec_switch_match(const struct fwnode_handle *fwnode,
- 	dev = class_find_device(&typec_mux_class, NULL, fwnode,
- 				switch_fwnode_match);
- 
-+	/* Skip duplicates */
-+	for (i = 0; i < TYPEC_MUX_MAX_DEVS; i++)
-+		if (to_typec_switch_dev(dev) == sw_devs[i]) {
-+			put_device(dev);
-+			return NULL;
-+		}
-+
- 	return dev ? to_typec_switch_dev(dev) : ERR_PTR(-EPROBE_DEFER);
- }
- 
-@@ -80,7 +89,8 @@ struct typec_switch *fwnode_typec_switch_get(struct fwnode_handle *fwnode)
- 	if (!sw)
- 		return ERR_PTR(-ENOMEM);
- 
--	count = fwnode_connection_find_matches(fwnode, "orientation-switch", NULL,
-+	count = fwnode_connection_find_matches(fwnode, "orientation-switch",
-+					       (void **)sw_devs,
- 					       typec_switch_match,
- 					       (void **)sw_devs,
- 					       ARRAY_SIZE(sw_devs));
+Yeah, I assumed it'd be acceptable for the description to document just once all
+possible items, to avoid repeating this for all possible combinations.
 
--- 
-2.51.0
+E.g. this is from Documentation/devicetree/bindings/net/snps,dwmac.yaml:
+
+  resets:
+    minItems: 1
+    items:
+      - description: GMAC stmmaceth reset
+      - description: AHB reset
+
+  reset-names:
+    oneOf:
+      - items:
+          - enum: [stmmaceth, ahb]
+      - items:
+          - const: stmmaceth
+          - const: ahb
+
+Thanks,
+Cristian
 
 
 _______________________________________________
