@@ -4,102 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A975CEA4FC7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 14:13:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAB44EA4FC3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 14:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xhS95YCs06bJzjVpKLgafPKS/xx3upAn2paXwUNZrAU=; b=15/DDmLL0YmPBX
-	BAq0pC6x+NBTJ87XIHR1dmAB8pYuVJl47gxYRfsRDrsUqyzH0XzdSMapoIsCsKPvkmRHC2SoiIUgk
-	hP8Qnl3blhaWVI4MRNRc6PhvX/CcS+sNZhHXIJbyB+9qX3+Zmej+RgpJCUMKo94VAVJTU4lsgr6vb
-	2DU2BBpOH0Rqwu49V0ccgq8bcoeeqTkqAg2qNUpNCu7qgM7Q426xnsv7AHcYwwYOoCGPrMcTLp4AF
-	z1UiwqV2DMy74pusEm36h1eYsXwI2GQPovCp5azFozxCgxYk64d8tTwLbT0/lIQGmn5xUfWttbu0m
-	ApZonerxoPqDonsYOUHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nPLkfdvMvTHzQ+TtrYB1/oE0xfSD8QDV33WUCCi8bUw=; b=VwYwUd5RG8aPiDOG+vcPLYhAX/
+	iQ7W3fV6/HKXaZYsKPTFzWZpiDlwMVI5S93JWDYyTyyk5XBsj8OrvVGAipBfzEcRQnxfcVcRYnEVc
+	PjfjmKftZIKnTVWydOyyAdoFJv3B8bBVo8O80KTmZNdVElILR1BGjJS5wlPmtBFjBjaZYO2JOXwWa
+	6t072oqhS40rLZ8DmtFG1xvGVnRDvKEdVXzNJptrMJNGFdJHRNGu1hkZHdCU+iCAg6nF1002+3ist
+	drnfdLLShRRbE1faCZhYDjN5xYGR45FZhDw3QCa/FSKEDugPPSJzfDZQlw65De+ERMCEKW96YONVH
+	czTIG0OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuWgr-00000000Rw5-1Nvq;
-	Mon, 23 Feb 2026 14:13:37 +0000
-Received: from mail-lf1-x131.google.com ([2a00:1450:4864:20::131])
+	id 1vuWyy-00000000TGx-2T5s;
+	Mon, 23 Feb 2026 14:32:20 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuWgn-00000000Rut-2thp
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Feb 2026 14:13:35 +0000
-Received: by mail-lf1-x131.google.com with SMTP id 2adb3069b0e04-59e4a04f059so5622022e87.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 06:13:33 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1771856012; cv=none;
-        d=google.com; s=arc-20240605;
-        b=EhsYYz9L7hgZzqwXK6BtDbEZ0YXmAW8MFJ/xFFjcSYw09qzsiQFLdeH5KU3TzO0xW6
-         HzvYDDGJhtw1jKPCUELF76AHTi01B/woEWbf9s46WoajXG+nrmnxdmg0KoU1hx/el91z
-         GbwnAfA/LBaq55xkEioCJa0xDFfr443+BxiH/esfMnzWbImgKeoggoKJU8V8tL4p1Ode
-         2KaQSnmKFCFzAYpE1oxuhtCQrusUDfeOKLEX/8pyxJq+6HvFKv/rAtr3Y4hfHzBVB2JI
-         lqJPbT9xVZbARdni783zlDGbLw5XjZeyd8k9ftnj4b8zMnF5cqTpsbkDyeP5oWRDddBC
-         BtxQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=597mQmEUNbkIDS8qk+5/zMm26WxivzZ2OThkmt6poH8=;
-        fh=RmYg1WkI/jfP4oRnRdsMhF+yjJWza4187wm9SWqwMNI=;
-        b=a5ztOWT4v3CkpbgMvVKhyP75X88EQLquL5JdOMGkCYPn+ReL6l+v/fRodhwtazHOyz
-         NX7sG4FLQ5mg1y4snOKphmFYFFc7b+2KjZyu/3lFWuI5w01Zu93BW4pVsBCMiULYhKAT
-         aK4jxPvLW29sU5yNOGKZCymxlWaD3awAcvVt1kO2k1rFsssiIlWbBcU9nyIwc74CLCyp
-         CDwGWsX4V6WGP6qm4+I86vqwpLnSyONMjT4o6Bp6MHeU9oV6HNRHWsAMSveQYoBYgHY/
-         tRjB3TLEeVuQ145kh/ZvnkuXTOqHepqiYnJaRu3SVeAancWLlb4D4MSvruSrqADU3JfG
-         RQnQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1771856012; x=1772460812; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=597mQmEUNbkIDS8qk+5/zMm26WxivzZ2OThkmt6poH8=;
-        b=Qf0tutqW/Kr8TsMMo6/BG23XE4ico1d5EdY7a6uuZmsV6NBMnWcXrSmYFCamlMaRy6
-         75pIX/RJWJ7NimHcAOTha0ASEZ4UlYskylkWXlP0fPdtb1bn6uc0osyigK15PlB+G3NT
-         rz8S1LKzlX16C1VKw3uGhU7tGT0Ng5YDWlv7zDV40u+1D/CbomMYnjcQqFjl88DKb+xJ
-         iPzXJaiYrDGHcL7HzQVwEH+Z8nKxfpxNqQmQQcWTFueAUblP0FBUD0tLMCs5lCvVzsxd
-         l2mQdh+qaziVe5VEFGVv09zZH0O8xfrQKu4Sb29XoOvnzGQV32xtHoymC8VQ3HFb0LN0
-         NsDw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771856012; x=1772460812;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=597mQmEUNbkIDS8qk+5/zMm26WxivzZ2OThkmt6poH8=;
-        b=t+KKdEeikM0OMei1V1Ixv5VMi7K7+EOp6w/stYDMlXMtCToo7JPcqmDMM2pkQF9mHG
-         NBpauxAKxJntMfbx4zutmUc1dXeBhTUPf5j5+U8pe8pBIw6EpuK7gl4ZBEPz2yMvrej3
-         CHyV72eQOQpEP9IPz0PfZtzwTAb9fJO2qaTxR+7jTptmzLVYdljusiHbZ+jZEO1hdATK
-         JXJxZMNOU6aybutJdqNkFsz5S5C5ywk0hk9EUGBF7MKUMwyxHT5PaN2Lf3iTovbSFR7L
-         3glfwaATiidhtNfSWi9SeT5b3EuVmZZ2hFN+9sIn9p5zU0Sul/7dDcs/y2ACqOAR5tNT
-         Odjg==
-X-Forwarded-Encrypted: i=1; AJvYcCVo+FDXZmgdeskye5OgQSUCJtGawEX7GPPRwuhMcqb6z0D0zaDEwN9XcqRECmMz9xAnpU5RVVh+hK1LlODbKQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxcZRunmHYoccsu7TvUKGiDC8PRVTg2J5Fli+sG7lU2FFgdULnM
-	Jc+Q/DX/n0drJwwPwp/M1CigWAywgi/R320qqQZK/HtV4EH1JDxo4++WR+hCc1zlJSRg8vAmngn
-	dYG95RrA10eNtlLggVrVWHNxsq6dnHdu/FXMHvZ22TyIPv5rT11+f
-X-Gm-Gg: AZuq6aIa4HowvMCzRmCpuQuyZnkCcoCSfa4q4u25OLMTkOy22ZoLVUeOWGAicJzzZHY
-	29HKp3OpzFA2UBxxVJ4WieDQhr3vminH6eXULwP1DcMZKgZleaABcEvGNhkxYN/+d9hov8M4p3T
-	+8tB045copZAbW33iFPLin+cunV1ZM10si5RZvSC76iXo3QTY3Ff+lZfCoR8PyyIISKE6uXDN4w
-	nJHH2PqfvVM7nDvh7+wPj9bwanwcOJBxYzD63Rji13CsnXBLdnMM1R3nuBF3gJCBesvUa/tj7Ho
-	m8LNfX7c
-X-Received: by 2002:a05:6512:64c1:b0:5a0:ee0b:c263 with SMTP id
- 2adb3069b0e04-5a0ee0bc30emr1881073e87.3.1771856011225; Mon, 23 Feb 2026
- 06:13:31 -0800 (PST)
+	id 1vuWyv-00000000TFg-3XaU;
+	Mon, 23 Feb 2026 14:32:18 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1771857124; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Qnp/tCfWMy+Zx6gDf+oqRIG2FxJ0247p2dyKPTCpkJWTcbKzmUlCUX8KyDnh7BZrzS9qp+vDvl3ys9bG0uorBDg7YMn6PajDnxt++ghsHBoz4vCXXj+VviP4CQdZgr3dRI7dE2YMv0vuRrX71XIqz6HePG6SCzAVgqR9vPS24uY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1771857124; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Y9Ky2tikbQrXH6nE/bcaFG4UkGoK8WeG4CEzg6RRfEk=; 
+	b=foI0fE6w/20v43NcW+nCTQwTKtHnm7M00j/anLPoFP0DMlzwta7ybQAoV/j4U0rU2iQIfBRIebB+kdORfzeIQuvKso7ln2Gcl9Sn4tyKmEX94M7rbIZ+4QQuutPFEeU0EENyUZ0916M+70uAZdgPzDJlw1k3K8XXKJgjX/5cnVs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1771857124;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=Y9Ky2tikbQrXH6nE/bcaFG4UkGoK8WeG4CEzg6RRfEk=;
+	b=OKA4VPxJsdY02OUBQGgv2Elz5PuMdu/o7VZ3a+eCBRTcKDty7avuyOkkqola6gZv
+	q/3q3FLa4wyVcOByHVP4L45VMrFs4hwgVBRoC/SnFGoZ+mOyj2B/TztIsZIBrKFcE7y
+	BFvkVPf620BSHkuG/ZAJzzC2OevP1PWuWM+I+9qw=
+Received: by mx.zohomail.com with SMTPS id 1771857121477746.2205484461174;
+	Mon, 23 Feb 2026 06:32:01 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id 964D91806CB; Mon, 23 Feb 2026 15:31:56 +0100 (CET)
+Date: Mon, 23 Feb 2026 15:31:56 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, 
+	kernel@collabora.com, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdec register blocks order on
+ RK3576
+Message-ID: <aZxkDGzEQCCLKR-M@venus>
+References: <20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com>
 MIME-Version: 1.0
-References: <20260207131041.2833840-1-festevam@gmail.com>
-In-Reply-To: <20260207131041.2833840-1-festevam@gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 23 Feb 2026 15:12:55 +0100
-X-Gm-Features: AaiRm51IoOEGcQThAZL7Wz9Wjj3_Ac4tq7Xg58f_oxy_-Jx4aKch58W-NfM592A
-Message-ID: <CAPDyKFqmO0DEnmYO4uZEYjDErk+sjH1D8S-djvc83KCETf+ooA@mail.gmail.com>
-Subject: Re: [PATCH v2] dt-bindings: mmc: rockchip-dw-mshc: Add RV1103B compatible
-To: Fabio Estevam <festevam@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-	linux-mmc@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, Fabio Estevam <festevam@nabladev.com>
+In-Reply-To: <20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.1.1.4.3/271.848.75
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_061334_973276_20456378 
-X-CRM114-Status: GOOD (  12.38  )
+X-CRM114-CacheID: sfid-20260223_063217_934898_65D7B739 
+X-CRM114-Status: GOOD (  18.94  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,51 +79,122 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7754466218956825812=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, 7 Feb 2026 at 14:10, Fabio Estevam <festevam@gmail.com> wrote:
->
-> From: Fabio Estevam <festevam@nabladev.com>
->
-> The RV1103B uses the DesignWare MSHC controller compatible with the
-> existing Rockchip RK3288 variant. Add the rockchip,rv1103b-dw-mshc
-> compatible string.
->
-> Signed-off-by: Fabio Estevam <festevam@nabladev.com>
 
-Applied for next, thanks!
-
-Kind regards
-Uffe
+--===============7754466218956825812==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="itcbjeav5ybt5pwy"
+Content-Disposition: inline
 
 
+--itcbjeav5ybt5pwy
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdec register blocks order on
+ RK3576
+MIME-Version: 1.0
+
+Hi,
+
+On Mon, Feb 23, 2026 at 02:25:05PM +0200, Cristian Ciocaltea wrote:
+> When building device trees for the RK3576 based boards, DTC shows the
+> following complaint:
+>=20
+>   rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@=
+27b00000: simple-bus unit address format error, expected "27b00100"
+>=20
+> Provide the register blocks in the expected address-based order.
+>=20
+> Fixes: da0de806d8b4 ("arm64: dts: rockchip: Add the vdpu383 Video Decoder=
+ on rk3576")
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
-> Changes since v1:
-> - Make commit log more concise.
->
->  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> index acb9fb9a92cd..a75209bd2710 100644
-> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> @@ -43,6 +43,7 @@ properties:
->                - rockchip,rk3562-dw-mshc
->                - rockchip,rk3568-dw-mshc
->                - rockchip,rk3588-dw-mshc
-> +              - rockchip,rv1103b-dw-mshc
->                - rockchip,rv1108-dw-mshc
->                - rockchip,rv1126-dw-mshc
->            - const: rockchip,rk3288-dw-mshc
-> --
-> 2.34.1
->
+
+This fixes this warning, but instead creates a new one, because the
+reg-names order is fixed in the DT binding:
+
+   reg:
+     minItems: 1
+     items:
+       - description: The function configuration registers base
+       - description: The link table configuration registers base
+       - description: The cache configuration registers base
+ =20
+   reg-names:
+     items:
+       - const: function
+       - const: link
+       - const: cache
+
+Greetings,
+
+-- Sebastian
+
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/d=
+ts/rockchip/rk3576.dtsi
+> index 49ccdf12ef7e..45eb0d053a6f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -1281,10 +1281,10 @@ gpu: gpu@27800000 {
+> =20
+>  		vdec: video-codec@27b00000 {
+>  			compatible =3D "rockchip,rk3576-vdec";
+> -			reg =3D <0x0 0x27b00100 0x0 0x500>,
+> -			      <0x0 0x27b00000 0x0 0x100>,
+> +			reg =3D <0x0 0x27b00000 0x0 0x100>,
+> +			      <0x0 0x27b00100 0x0 0x500>,
+>  			      <0x0 0x27b00600 0x0 0x100>;
+> -			reg-names =3D "function", "link", "cache";
+> +			reg-names =3D "link", "function", "cache";
+>  			interrupts =3D <GIC_SPI 308 IRQ_TYPE_LEVEL_HIGH>;
+>  			clocks =3D <&cru ACLK_RKVDEC_ROOT>, <&cru HCLK_RKVDEC>,
+>  				 <&cru ACLK_RKVDEC_ROOT_BAK>, <&cru CLK_RKVDEC_CORE>,
+>=20
+> ---
+> base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
+> change-id: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+>=20
+
+--itcbjeav5ybt5pwy
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmmcZNkACgkQ2O7X88g7
++pqeDhAAlYxBRUJxwv8eUtRISXOS4Uo/uuzeb2WoFPuk7Mn7UFi1cw4E2+9vmXjj
+Yia6EeAig3c3DkMkDZf3Gc+9fsRsiKXNFf/fvTk35cmwVdDjwfqJMAk6kCDUNSKZ
+reaJdFUjfadD7ON92dxDDEyw81Pg6eqEaCYGwKwx+/mzLlsRWlgxWuB8sFsaCAK6
+exiSCUb4hb5SWmV9GeYRmQe8BWRlM4LvZfupk9G7zoq4C6ztKIeZxH7Dr9DgGrIX
+ElTngR7vjsnTmUM5FNnawPTM5S36t8Gy0JZXtNx4W1b5aL7T7mkzLaZPuDF46+pt
+FsXGmyMM7J2kSX+MSMNeIgjwWpV2xG10/Q4RmXCCjatIyKLO8r2cvrPtADBi7Ag4
+O+zxuM4gj5b7fW+2braOXPLv62ElzAx/g8LAWSQ8rdnvTbfmCivxU2u+RiM+epTr
+Mi1ydpkI3KrpYS6WzyOpSqCTkD9eITQSCkbHXh7ycb4g5oD1AVcjl7Y7anuZB/vx
+QYo1mqUsmwsOeeOGHDU+LWdIDbs6HS+XbTYCitmnnx4U8sUdR2SmvZidQ4G+c4OZ
+gV9WC0pmwwPgMVvlwZcG80kpvggzj9fLNQr/ULljSc7TLZ/5OUnXaY9GWywAhZUZ
+6OMBsq1Y/JSSS2UEx++9h0G1MsIwtcboxOBnJ5aVXb/Ua6cJTjI=
+=uZOK
+-----END PGP SIGNATURE-----
+
+--itcbjeav5ybt5pwy--
+
+
+--===============7754466218956825812==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7754466218956825812==--
+
