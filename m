@@ -4,56 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B061EEC1128
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 19:50:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79220EC112B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 19:50:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=LRbi0xXBRyEqI2mDZ0fhKVfetcRNExCgXdcOzJqVEAI=; b=U9s4HrUxH4dkNo
-	Xc3uf12vcENZkp/BrYn++ZIzlIpY4GqKSOy+fNfKt9adK8+v7qKvHXuRnC7nxD4iGkwLgO3JSTbo1
-	heqlpWxuaSMU3TM7hW2eGa26kwNaTtp4FR39o94Hb9TgttC6Xt96uNAeMJsd5klZHDpVGhnxcPWyG
-	VD3dYpPwebIqRl1cQ81ivxsmX771S5ECIKqz7Y26tCyrr8QCGZ3Y5Y9CW6hupMN6CktKFln2m68Xy
-	ZoHCHOvR2KpvG/xfo49Y/ZAVHIDgHbgzqYE7vTyAFzPGgLATfxN+WFWEujhVFXltqoNQ1bDlNAxfE
-	I6pAjki7ws6ELAxO2rSQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xyb27Y2JRvWxzd3lntH3yxEnuxTG6IChmR/tsJDH1Hw=; b=Vjitjav09vg3+x
+	B2QiAAHHZbrA+K2RCBiVbtNYJaN2jZxdUe7bQZAc4CvMP4NtFrY5BAfyYigDIoEjr+XwK8hTzYiw6
+	W2k6/PW1mPkV+BTZRWJh7Pfc7XzUIGPBb7nMsnfb7jrQE1lUixlmu99ejJCyUgb7wd5Xo9HTP65Ul
+	AF3WcijNe1nUXCvRX+dWV17BOF1DG6dUsvxf5zjrYiN9eS2+RYkK2WUA+R1gy7zk4EX4tTPKBj1Bk
+	dgtxnHU6kTM/L332lS9LPFhDppOtvqHc8xwfQiixYmoiKgU6S2ujhTuuHLNpkBsdsu7SYPOgGPi4X
+	CIVe2s9RUNzLoBmlbRBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vubwx-00000000x8E-2Un5;
-	Mon, 23 Feb 2026 19:50:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vubwy-00000000x9L-29Db;
+	Mon, 23 Feb 2026 19:50:36 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vubwq-00000000x4r-3clU;
-	Mon, 23 Feb 2026 19:50:30 +0000
+	id 1vubws-00000000x4v-0Nvh;
+	Mon, 23 Feb 2026 19:50:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771876225;
-	bh=pmlCVWrD6zzpD0XAFf/2KubQeFmeVtw7tfmAEuw6iFg=;
-	h=From:Subject:Date:To:Cc:From;
-	b=WfMA7Kz28LNuScL6IHmh7H7FGI4n1uLGMKXNPd+iip6YdUjhWU7+LFX4jIKiSX6s+
-	 3HaEYwnpLY+goX/JGZTv0PKwZos8y0cUqjOUNyb7JBvPBDPtKQFxVCgOIhRSx0CPbH
-	 N5MlL2J5r+2+MkMTmuNHZMLRJW6QnNaNbdjTX9duMMmvL3po10GGBMO/JraihBTbNu
-	 1bu28GeXpPxDxGED5eXfEnurcHIR/km6fULpjuSu8UyNJrkuE5AAf6SFIxVCZ4QPgB
-	 aT8jQy/v5aIj4fx+QhF4yB6AOOwvPp/DWvoxU0rLc+0KMBgqJEDw/uGEajYmtwEYCP
-	 1WgIMFC8rMf8g==
+	s=mail; t=1771876226;
+	bh=DVqWHhO2vekM/Lyr+DkEFvD5OTdKFK/9NQLT0FSko0E=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=pMrZvIuwZhI/VHfogPLlmsh6PUF16Q2b10JvZZV9h1Poqy8sKo22jH15uWwln4kGi
+	 HMolNQmg64Q7QIknqLlOKpjQipkehJVXzMYCpg+riLGQEACa3U3+JEDcKjnmQ+wq/7
+	 xpxjVhkWL2SgR1P+byAUY6zU/k/SaB0/tLZUkPRBbrLLQqapAtvMLJW1INaUMs49EU
+	 5atn8hZatNNAem6r9069NkMN/mRe1XtDSzv2MJVUiy7xXvOO+mJL74R3c+n6l2JZAI
+	 pjDAI+qu/kosGW+eJhj6D9KqYcaOCkFKdqm8QikI8xndM+AtuPJVu/2ysQ5aONC+u9
+	 wDZqv+0YPU8iQ==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D982117E03E5;
-	Mon, 23 Feb 2026 20:50:24 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BD72817E0844;
+	Mon, 23 Feb 2026 20:50:26 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v2 0/3] arm64: dts: rockchip: Fix vdec register blocks
- order on RK3576/RK3588
-Date: Mon, 23 Feb 2026 21:49:48 +0200
-Message-Id: <20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com>
+Date: Mon, 23 Feb 2026 21:49:50 +0200
+Subject: [PATCH v2 2/3] arm64: dts: rockchip: Fix vdec register blocks
+ order on RK3576
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNQQ6CMBBFr0Jm7ZhS0kFceQ/DAtoRGpGaqWk0p
- He3cgGX7yX//Q0ii+cI52oD4eSjD2sBfajAzsM6MXpXGLTSpLRuMDm2KDxhEMeCcm9MS2itZku
- sDHcnKNun8M2/9+61Lzz7+Ary2W9S/bP/iqnGGg2priVDNLrmYsOyDGOQ4WjDA/qc8xehj4Jyv
- gAAAA==
-X-Change-ID: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+Message-Id: <20260223-vdec-reg-order-rk3576-v2-2-daf4942dfc02@collabora.com>
+References: <20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com>
+In-Reply-To: <20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
  Detlev Casanova <detlev.casanova@collabora.com>, 
@@ -67,8 +64,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-media@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_115029_054608_F233BBB1 
-X-CRM114-Status: UNSURE (   7.90  )
+X-CRM114-CacheID: sfid-20260223_115030_281448_7B25E238 
+X-CRM114-Status: UNSURE (   9.95  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,31 +88,35 @@ following complaint:
 
   rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b00000: simple-bus unit address format error, expected "27b00100"
 
-The first patch updates 'reg-names' property in rockchip,vdec.yaml to
-allow providing the register blocks in the expected address-based order
-for RK3576 & RK3588 video decoder, while the following two patches
-correct 'reg' and 'reg-names' accordingly for the impacted vdec DT nodes.
+Provide the register blocks in the expected address-based order.
 
+Fixes: da0de806d8b4 ("arm64: dts: rockchip: Add the vdpu383 Video Decoder on rk3576")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Changes in v2:
-- Added patch for updating rockchip,vdec.yaml binding
-- Added patch for updating RK3588 vdec nodes
-- Link to v1: https://lore.kernel.org/r/20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
----
-Cristian Ciocaltea (3):
-      media: dt-bindings: rockchip,vdec: Correct reg-names order for RK35{76,88}
-      arm64: dts: rockchip: Fix vdec register blocks order on RK3576
-      arm64: dts: rockchip: Fix vdec register blocks order on RK3588
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 49ccdf12ef7e..45eb0d053a6f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1281,10 +1281,10 @@ gpu: gpu@27800000 {
+ 
+ 		vdec: video-codec@27b00000 {
+ 			compatible = "rockchip,rk3576-vdec";
+-			reg = <0x0 0x27b00100 0x0 0x500>,
+-			      <0x0 0x27b00000 0x0 0x100>,
++			reg = <0x0 0x27b00000 0x0 0x100>,
++			      <0x0 0x27b00100 0x0 0x500>,
+ 			      <0x0 0x27b00600 0x0 0x100>;
+-			reg-names = "function", "link", "cache";
++			reg-names = "link", "function", "cache";
+ 			interrupts = <GIC_SPI 308 IRQ_TYPE_LEVEL_HIGH>;
+ 			clocks = <&cru ACLK_RKVDEC_ROOT>, <&cru HCLK_RKVDEC>,
+ 				 <&cru ACLK_RKVDEC_ROOT_BAK>, <&cru CLK_RKVDEC_CORE>,
 
- Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 13 ++++++-------
- arch/arm64/boot/dts/rockchip/rk3576.dtsi                   |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi              | 12 ++++++------
- 3 files changed, 15 insertions(+), 16 deletions(-)
----
-base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
-change-id: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+-- 
+2.52.0
 
 
 _______________________________________________
