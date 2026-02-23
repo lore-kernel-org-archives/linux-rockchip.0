@@ -4,197 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E73D8E98E10
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 09:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EC2DEF5862
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 10:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FuCy0L0GMxsMJJfuRRpWSbQhguAvFRX1VBBkiLpHwwY=; b=SWct+PaD2SVjc2
-	l7BjXbn9sEZjlw0O77r2kpoOpvfUooD8hUUuoep4mbRdYZ93hyAms39cE7sbEGUx9XI/gYZIbIceu
-	kHncBQgHCQyID2s5+x1jniItmiBXIoQYrK5BRcdePdWQERWif356aCdOvDII8W8ZginJ+IafzorOd
-	i4V6p0mWZxq2RlGOKK/MKrI5F5/ThiNxAWYdzHlT76IHWD3n3uo+mBUWgdD9nSUGRqJNkQSpjj9Ro
-	xuBVMfnflYztgL9NQUa0YUxOpoMqUaCNeGGm2rLS6rKAvuu+X5y8tI8lzhzMWR3AycDUlIZivEsOv
-	yIzWNKx4AuNf0GsJGHTg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Pdv4ajCTj8U7LBk/Qgfpy4vC+VCRedywKX5q5npl0zg=; b=WC9822V7Hr+DH2
+	+4z8lyxy5LcJTSi/7hp2aApdGgwVg+X4Xl68DW/CD1cD+VbguBPiP8wSAnIoKjnINdeYlwHj9kYKl
+	V3LEndU10FZ1EgsMZSpndvtLErvCqiHi6v13UCE7W4pCPfMgYfWzZtdrkqK7u3Krz1byRzKYeDOWz
+	UrfbAts8i0NW/2BRhyleFt3g3uIAaoDne1sWstylQoB2N4VysTvWbFkwrHVU9zaAFm1TUAQVkC2VG
+	D/oMnKiJzBVC5axseDeLgWUEneBRelf0NIjVfqKXyCcJLLCWEsr2ujMFOSatOXXqYrAe6HyXjUqI3
+	iv5M6MV+qegOgAtYI6Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuSYQ-0000000HZNw-1PCA;
-	Mon, 23 Feb 2026 09:48:38 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1vuTd3-000000006h5-2imG;
+	Mon, 23 Feb 2026 10:57:29 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuSYO-0000000HZMw-0hzz
+	id 1vuTd0-000000006f3-0WG0
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Feb 2026 09:48:37 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61N9a4DZ2926616
-	for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 09:48:35 GMT
+	Mon, 23 Feb 2026 10:57:27 +0000
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61N8hSH5766639
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 10:57:25 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	5iEM8cMdtJNGkyfS6uG+d6iaU5XdbvHNbxCiohXcTZI=; b=OroHNi22lccLAVQK
-	nJZ2qGAu+APmq7aHe+SfJiBUPhHzXwPFKzGBYBjtqbvLsiR38MQTWBtLfDdwiXPW
-	YXbMDHumwqPvtvy9YUJTgusdcpnFDlR/tT2DuxGrQfb5Fl/aHYpoYk/0pueXMqe5
-	HPPOhogDrj0AzoSRw9dFD4s5CDSs5V0wg3S8gwSWP5hHIJm8nVO6hrwPpyqxfuGD
-	Vmss0gofubgX7joXjX1kxO6wJVRZg2jpmqoB9KvpD+/RUUlQ40Il3vo5tSUNqR61
-	w6n5GTa52A8kVjgIfcfG1xiORjje5OiIu3J6bM9s1s60lrzKOlkaR9lgI8TRN/u4
-	RfPUaA==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cf5wk463k-1
+	cc:content-transfer-encoding:date:from:message-id:mime-version
+	:subject:to; s=qcppdkim1; bh=jUC9TlWmv0obtpzoHHcT8WkjssvqQiRshIt
+	uq7Tbwls=; b=LvfWpcdMprHhI2Bo7zpuR5/qRf4NuIUS7FpexbRdIVN4kuNvcm0
+	Sl2rzjY/5uPjs0u1+suzqyjkPYx8Ure+n61lQXGb2WDPswxNwKNZ2Z+U4qM9iou/
+	Lc0u0tw3TvZMpHCxabxgEArC08BIpTV8RhW/qzmtLEpzfqkRGgZxAmd2czhbHcNA
+	xaCbyWIDYLlcDVxT5pr+IAbkIJHj8Wbb7bkGpiON7D4PG2hIge0lc+Roz1ZBvGaY
+	VPusb3G94vP45nqmzSaOO/RxusYA+EGfT38G2Nm4v++nZoRFgOov2KYO08vu2kGN
+	REUIv1001T26ZJVTAJ6GQzmAFC1XALJcZQw==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cf5x7vf0j-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 09:48:35 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-8c882774f0dso3952671185a.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 01:48:35 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 10:57:25 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8cb6291d95aso2791732985a.1
+        for <linux-rockchip@lists.infradead.org>; Mon, 23 Feb 2026 02:57:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1771840114; x=1772444914; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=5iEM8cMdtJNGkyfS6uG+d6iaU5XdbvHNbxCiohXcTZI=;
-        b=KWWZc0y4V9m+S54BjROxFekK6/BEPnq70YOSqnfmHzEo395UMMkBiXEot5vpBQmKAx
-         iyE4kdaq8U7xKOEyOH3T1JqeltFlAgg3iEMC53xrXOc1A4mVoLWpYDeiKOMeoJbePiYn
-         NgF0YVb5663OOzTdF27LMPpGDmzF6ZH99yNWEJl8HOQeuaSM5Asf9JGr5xo7FW2c7dZ7
-         DGwsk9FkLnIwsFIQ1Rc5GZd5vdIBov4VfxNrqtxykx/TQAmhmR6WJ0STtT47w7FGm+JI
-         TSGKgMOZY8phXA7nso8dN4TCPr6st+ka/xTtW8FXML6Odrj5AHq6mmNQ8OPVE9rrWQST
-         3gOQ==
+        d=oss.qualcomm.com; s=google; t=1771844244; x=1772449044; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=jUC9TlWmv0obtpzoHHcT8WkjssvqQiRshItuq7Tbwls=;
+        b=iDBkWOdOg+neqXqh/km+IIKcpNp9IN/t78kz1aOp74C2oNW+fl151C2NzJGhUWxuM0
+         nj05w0E4cVk8RW/ceUlM+d/7V/939tiUJiQ+btkaNgSA7UjMimpGoh4mEeURKPKK/Ppg
+         KzqEoi6q2kiKmg/Kggt5liauLOfOaXukwCX1HwfZ0No8i/LzOeHiqmMZJJpOAjZB4LnR
+         To2vW3ISwtAAdZqVRj74YOZsW/oLCmdLV5pbYL0ELeeZUpZeH6TFsLdyIO1SaoqLnCpk
+         hegFvlaXVuXRMXnsBTMxbn0ggXm/1e3GwEnisWoWds8bUe2Ct8gZxlIFhzLDd6b8myvM
+         gWnA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771840114; x=1772444914;
-        h=content-transfer-encoding:in-reply-to:autocrypt:content-language
-         :from:references:cc:to:subject:user-agent:mime-version:date
-         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=1e100.net; s=20230601; t=1771844244; x=1772449044;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=5iEM8cMdtJNGkyfS6uG+d6iaU5XdbvHNbxCiohXcTZI=;
-        b=qpM22ljFkpXAC/UKUIwGMtVWJHbGFXENG7TfiRTOxL6Roit6am70DmUl8xNSWpJuQJ
-         L8UKmIGciZPFonfWgrmlVtBqrOvOwVujdDMZERXtRN9yhOol1oEyRrchdYWRDQ1TBf/7
-         42O/zcd4y3lgkwr8DBGW0Yom5uGHkbyIcDy3jtzwR3VjtbD9vpMsmPiK5BTKWdhz0rAh
-         lQ3Fbt0YAkkvnABoaMvf3W35Sdr7l/BkzFTGM0hBhzU/ZndtFkVwIvuKpeWDAvFyd2ME
-         rVohQb3xnNrBRvg47ukpUIJtrtMOjcpR9BDJAQcTbHwIQ+rCLkK/4mbnw2FAeABomYRu
-         Fq7A==
-X-Forwarded-Encrypted: i=1; AJvYcCVbYZUnZ1bJJhzH9kOAQhwMG9mkSqkdTu1UFoWkNZxZH3WNPc2wpwceIaHibLil2dAf2VFU8agbasJu1mvJZw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxnMOIqLtVgsFvjhBez+ocoNXi4aFIEHVQGIrqJze/aNaEqjc6F
-	/yTRIsbd9f079wO67hSAb23Lt7RK5/5TLYbEXsKWS7M3N7g9Cg27021jV98NxiOL7hSG3kTE/rz
-	QIKTrFJyaSWMLi8NKWZsH4+W9B/Pxklbj/RgYFt6spZCcqbAxax9C9EbJ+lP5e8BBVk0d60y5CU
-	Q=
-X-Gm-Gg: AZuq6aJK7uiaeHb0KRE01ia6ZanexWxcZKslmQAb/csOghErZttadWq0fSakIVcfYCG
-	qGBa76x3FTppm6WJbP9GZWmwq59Lg7wg7v48jB2bIeHfC8P5dE01jGnjJMJmTylZXVHBLtRZkK9
-	AcupUgUC0zgnaGPeNQ3TWy0txXP6baVQOhZmAvnBO70/d8dcLa4ALsJQoq6P+MIxDLGgL8iglSP
-	KxqiJ5/hdtvUEBs6eyAJ6QbjFRBWpzs8xEhsnHR1ZjvswNOGTZfWhsxNjh0c4SE+8TlqOM545T+
-	B1qpHbUmrbYmmPJM9G451VSQWx1uhmiUVldTDNdxMvG4qYnAusKjNrOhWK8Kj37HebYGmBHwZlf
-	5cb3PrDwmvcUeVjVXY56eAvbL4CTOM6VvraiUaYEXM/bwyyz0cQ==
-X-Received: by 2002:a05:620a:294f:b0:8cb:54d6:7ba with SMTP id af79cd13be357-8cb8c9d1e69mr946022885a.7.1771840114348;
-        Mon, 23 Feb 2026 01:48:34 -0800 (PST)
-X-Received: by 2002:a05:620a:294f:b0:8cb:54d6:7ba with SMTP id af79cd13be357-8cb8c9d1e69mr946019285a.7.1771840113787;
-        Mon, 23 Feb 2026 01:48:33 -0800 (PST)
-Received: from [192.168.1.29] ([178.197.223.140])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483a9b668f3sm186879935e9.3.2026.02.23.01.48.31
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Feb 2026 01:48:33 -0800 (PST)
-Message-ID: <63d4562c-13b0-4f91-b15c-a1ec03799842@oss.qualcomm.com>
-Date: Mon, 23 Feb 2026 10:48:30 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/11] pinctrl: rockchip: Simplify locking with
- scoped_guard()
-To: David Lechner <dlechner@baylibre.com>,
-        Andrew Jeffery <andrew@codeconstruct.com.au>,
-        Linus Walleij <linusw@kernel.org>, Joel Stanley <joel@jms.id.au>,
-        Emil Renner Berthing <kernel@esmil.dk>,
-        Hal Feng
- <hal.feng@starfivetech.com>,
-        Chen Wang <unicorn_wang@outlook.com>,
-        Inochi Amaoto <inochiama@gmail.com>,
-        Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
-        Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
-        Bartosz Golaszewski <brgl@kernel.org>,
-        Steen Hegelund <Steen.Hegelund@microchip.com>,
-        Daniel Machon <daniel.machon@microchip.com>,
-        UNGLinuxDriver@microchip.com,
-        Thierry Reding <thierry.reding@gmail.com>,
-        Jonathan Hunter <jonathanh@nvidia.com>,
-        Heiko Stuebner <heiko@sntech.de>,
-        Patrice Chotard <patrice.chotard@foss.st.com>
-Cc: linux-aspeed@lists.ozlabs.org, openbmc@lists.ozlabs.org,
-        linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-kernel@vger.kernel.org, sophgo@lists.linux.dev,
-        linux-tegra@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20260118-pinctrl-cleanup-guard-v2-0-bd36f681bdc0@oss.qualcomm.com>
- <20260118-pinctrl-cleanup-guard-v2-10-bd36f681bdc0@oss.qualcomm.com>
- <f5b38942-a584-4e78-a893-de4a219070b2@baylibre.com>
+        bh=jUC9TlWmv0obtpzoHHcT8WkjssvqQiRshItuq7Tbwls=;
+        b=d+MHsLQcTRRCwM6GlPWapoEfz3r5dVAXNQXc393erAcjBIcnR1egyqNNdF4C1APZHZ
+         eFyr+/grkTov2/iRIavQ3UkQnb2aIaK2YWhx5cTmg+7NARW8vwMQWv25hR3HAHIHhjUD
+         /P/MNPxdABotwIwk8kjJIdbAQkieear+cBueCIE7K0x1nLWsEI8TH7O+uB7Xr7n2Sib9
+         Bre6B5J8sPMumJQsq0jPp1TCqqy8Pb5PD6SF4wLsscpDZ/XEYCfS0RKyZl3KN/jYQVvA
+         jNszLrRLvQd1h8PDXgQoVYuHGXaQjEK8T84/VmOA4pHrKI5o+ktbI9NadIOYbh/Kscwp
+         0E7Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXV++XK7q00jpZ1WXX8D1ObBZflj5mCgF7lNJS11tlpWchJB809Vt/49fUnvHVuOnlsQKFWUQapYCnCXdKh5Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAuyinHLtvIqVM/qLmWEPugc3oSpGEbBxpVKIGb6s+B6aLotKR
+	eJKvA0fodrv7pdEW0tNCPKcYRkK5XIJ1J0T/JLh7hnaLPaupUwao6T0gngK3oANLtkGPgra4vy/
+	IUyyOTFoelxHulFgWWsDFJSTtYhoWkT0wDlzX+KwOnz6yF9TgiDoyvNlSOcneZyDCcEvRdb340d
+	4+6C+NoTU=
+X-Gm-Gg: AZuq6aLpqI69Q9UbJ2AgB08asNY4o+7pxI9chKB4YDIQYctyRC7J6C8funiCp9RSdO2
+	I42YQoeuyE30Cglnp/VVgBpHZ7wzK+aX3Ui1nclrPexYbQWuJU6+a0v6Xxp8fkmuJsZBOmOCrIE
+	8jYvnDV7ZoeSWJDDn1+/KUjJTu3x64x7u5HV9Lpstp+jw2Ul37QsjcDfWZZVocOzQxNpb5NngsP
+	lFkopxBqSlYFIPI4Wlr+qtMue5n+yLJVb8eKug/+TX/ox08mPvDt1PCKG3z7jbQBLFHhuQ2WInl
+	QLonsqtBWaXdEiJyuMTCGiIDj2T7hQ4AjlahUpmNobFgqqPQVIF1ocLISf2tkbDDEz+i+IyslMg
+	Muf7XKYrHx3ZDKasnxf795KvwCbvgNhSl267k8w==
+X-Received: by 2002:a05:620a:d8d:b0:8c9:f4eb:ac71 with SMTP id af79cd13be357-8cb8c9e00a7mr906245185a.10.1771844244232;
+        Mon, 23 Feb 2026 02:57:24 -0800 (PST)
+X-Received: by 2002:a05:620a:d8d:b0:8c9:f4eb:ac71 with SMTP id af79cd13be357-8cb8c9e00a7mr906242785a.10.1771844243651;
+        Mon, 23 Feb 2026 02:57:23 -0800 (PST)
+Received: from quoll ([178.197.223.140])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43970d4c60bsm18140215f8f.27.2026.02.23.02.57.22
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 23 Feb 2026 02:57:23 -0800 (PST)
 From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Content-Language: en-US
-Autocrypt: addr=krzysztof.kozlowski@oss.qualcomm.com; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzTpLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQG9zcy5xdWFsY29tbS5jb20+wsGXBBMB
- CgBBFiEEm9B+DgxR+NWWd7dUG5NDfTtBYpsFAmkknB4CGwMFCRaWdJoFCwkIBwICIgIGFQoJ
- CAsCBBYCAwECHgcCF4AACgkQG5NDfTtBYpuCRw/+J19mfHuaPt205FXRSpogs/WWdheqNZ2s
- i50LIK7OJmBQ8+17LTCOV8MYgFTDRdWdM5PF2OafmVd7CT/K4B3pPfacHATtOqQFHYeHrGPf
- 2+4QxUyHIfx+Wp4GixnqpbXc76nTDv+rX8EbAB7e+9X35oKSJf/YhLFjGOD1Nl/s1WwHTJtQ
- a2XSXZ2T9HXa+nKMQfaiQI4WoFXjSt+tsAFXAuq1SLarpct4h52z4Zk//ET6Xs0zCWXm9HEz
- v4WR/Q7sycHeCGwm2p4thRak/B7yDPFOlZAQNdwBsnCkoFE1qLXI8ZgoWNd4TlcjG9UJSwru
- s1WTQVprOBYdxPkvUOlaXYjDo2QsSaMilJioyJkrniJnc7sdzcfkwfdWSnC+2DbHd4wxrRtW
- kajTc7OnJEiM78U3/GfvXgxCwYV297yClzkUIWqVpY2HYLBgkI89ntnN95ePyTnLSQ8WIZJk
- ug0/WZfTmCxX0SMxfCYt36QwlWsImHpArS6xjTvUwUNTUYN6XxYZuYBmJQF9eLERK2z3KUeY
- 2Ku5ZTm5axvlraM0VhUn8yv7G5Pciv7oGXJxrA6k4P9CAvHYeJSTXYnrLr/Kabn+6rc0my/l
- RMq9GeEUL3LbIUadL78yAtpf7HpNavYkVureuFD8xK8HntEHySnf7s2L28+kDbnDi27WR5kn
- u/POwU0EVUNcNAEQAM2StBhJERQvgPcbCzjokShn0cRA4q2SvCOvOXD+0KapXMRFE+/PZeDy
- fv4dEKuCqeh0hihSHlaxTzg3TcqUu54w2xYskG8Fq5tg3gm4kh1Gvh1LijIXX99ABA8eHxOG
- mLPRIBkXHqJYoHtCvPc6sYKNM9xbp6I4yF56xVLmHGJ61KaWKf5KKWYgA9kfHufbja7qR0c6
- H79LIsiYqf92H1HNq1WlQpu/fh4/XAAaV1axHFt/dY/2kU05tLMj8GjeQDz1fHas7augL4ar
- gt4e+jum3NwtyupodQBxncKAUbzwKcDrPqUFmfRbJ7ARw8491xQHZDsP82JRj4cOJX32sBg8
- nO2N5OsFJOcd5IE9v6qfllkZDAh1Rb1h6DFYq9dcdPAHl4zOj9EHq99/CpyccOh7SrtWDNFF
- knCmLpowhct95ZnlavBrDbOV0W47gO33WkXMFI4il4y1+Bv89979rVYn8aBohEgET41SpyQz
- 7fMkcaZU+ok/+HYjC/qfDxT7tjKXqBQEscVODaFicsUkjheOD4BfWEcVUqa+XdUEciwG/SgN
- yxBZepj41oVqFPSVE+Ni2tNrW/e16b8mgXNngHSnbsr6pAIXZH3qFW+4TKPMGZ2rZ6zITrMi
- p+12jgw4mGjy5y06JZvA02rZT2k9aa7i9dUUFggaanI09jNGbRA/ABEBAAHCwXwEGAEKACYC
- GwwWIQSb0H4ODFH41ZZ3t1Qbk0N9O0FimwUCaBdQXwUJFpZbKgAKCRAbk0N9O0Fim07TD/92
- Vcmzn/jaEBcqyT48ODfDIQVvg2nIDW+qbHtJ8DOT0d/qVbBTU7oBuo0xuHo+MTBp0pSTWbTh
- LsSN1AuyP8wFKChC0JPcwOZZRS0dl3lFgg+c+rdZUHjsa247r+7fvm2zGG1/u+33lBJgnAIH
- 5lSCjhP4VXiGq5ngCxGRuBq+0jNCKyAOC/vq2cS/dgdXwmf2aL8G7QVREX7mSl0x+CjWyrpF
- c1D/9NV/zIWBG1NR1fFb+oeOVhRGubYfiS62htUQjGLK7qbTmrd715kH9Noww1U5HH7WQzeP
- t/SvC0RhQXNjXKBB+lwwM+XulFigmMF1KybRm7MNoLBrGDa3yGpAkHMkJ7NM4iSMdSxYAr60
- RtThnhKc2kLIzd8GqyBh0nGPIL+1ZVMBDXw1Eu0/Du0rWt1zAKXQYVAfBLCTmkOnPU0fjR7q
- VT41xdJ6KqQMNGQeV+0o9X91X6VBeK6Na3zt5y4eWkve65DRlk1aoeBmhAteioLZlXkqu0pZ
- v+PKIVf+zFKuh0At/TN/618e/QVlZPbMeNSp3S3ieMP9Q6y4gw5CfgiDRJ2K9g99m6Rvlx1q
- wom6QbU06ltbvJE2K9oKd9nPp1NrBfBdEhX8oOwdCLJXEq83vdtOEqE42RxfYta4P3by0BHp
- cwzYbmi/Et7T2+47PN9NZAOyb771QoVr8A==
-In-Reply-To: <f5b38942-a584-4e78-a893-de4a219070b2@baylibre.com>
-X-Authority-Analysis: v=2.4 cv=a6k9NESF c=1 sm=1 tr=0 ts=699c2273 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=6nO30s3o7FuWeffXwhKHTA==:17
- a=IkcTkHD0fZMA:10 a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=EUspDBNiAAAA:8 a=Lrcc1p6bT1NFpwlYX9oA:9 a=QEXdDO2ut3YA:10
- a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA4NCBTYWx0ZWRfXyaYe6RUBtPV5
- QZQkpHlx4hrxCLPDxpauRbWa28EYIG6OzhDaGti5RoeyaNU7AsQEveX/zZdDBGPxn2+iEXzK4kA
- Au92HECrzWtjycDxllsCMZueysiVw1oiWlmjTzVspDCNhFsceAy6qR0foZ0vZjHDAIKSKG1n7LK
- 6YZ2Nhbyy71SQObEPEmil0ygp8Y5efN68xrF3OgSOBvvtAjUVIMx71ai2LJ2S/6tuZME+xDK/6V
- pRd9lz9GatliQ89/dMVjQuSsrloA05mi8Wvuw+TarEr+mSeNy5plk61xZ6+Wpj9CksgYwCNKUbt
- r/zDOdqfqCS8n1l/5wut5gHDmItxi6Jhv/eoIqFmPcuBI8yrL3+y9bnhKxUg9MDO3+D981W2OvQ
- /IMZ/uZAYVhdxiVjz7+h3ByS+swzzW6bxf011h8U+jz9eOXGkj8yI6Z/llMRBwQh9tPWkA4lIna
- qe686jPoIxljRgMs3dg==
-X-Proofpoint-ORIG-GUID: 1ZxcFk9utkAHcB2rYeZkY6HnCa6F5YJk
-X-Proofpoint-GUID: 1ZxcFk9utkAHcB2rYeZkY6HnCa6F5YJk
+To: Linus Walleij <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+        linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Cc: David Lechner <dlechner@baylibre.com>
+Subject: [PATCH] pinctrl: rockchip: Fix configuring a deferred pin
+Date: Mon, 23 Feb 2026 11:57:18 +0100
+Message-ID: <20260223105717.48779-2-krzysztof.kozlowski@oss.qualcomm.com>
+X-Mailer: git-send-email 2.51.0
+MIME-Version: 1.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1886; i=krzysztof.kozlowski@oss.qualcomm.com;
+ h=from:subject; bh=G3uoQqzwbhwMv3rHo8CzAGVUUhUj+DhmlQdTwenR1nU=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBpnDKNtoQe5GdE1EfxYH3cWP7j5g7W2fBZbQJ1f
+ M1XdzvUygGJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaZwyjQAKCRDBN2bmhouD
+ 1wHGD/9gOeDdNWNQGaIjTJ1BjcIplUgUa679M6zz4l7YF/MEDewvDNgHyTbQGKfp9FuPF87jP9W
+ yY1adjL4z9CMML1N1Q3darmmdoeiKkKlbmM3Pn5Qh825I/eQ6J9JJ5WREUrwhp9wPuLb5MOkWxd
+ +IL+6P72pYU5pVecdI0qkS6KPyashiEHVmK7Z6h8K0BaavFKp6w57iCEF9AF5PCIt78C3lyNcZW
+ fNRAaeXk3RF/2Zw0i+o0Br1M2MCPjQGWQS1kvm8fLGvUOLvOmM+1S+7fu59X5htauWtaITthriJ
+ NJh/1UfVosuobC5H3FrzvzyYtQIipzbkc6Ply3pjEMCEruUaghTSvOudTw96+VRJzQANOLQjj4l
+ RDzrz+Mlc6BUhT03htNS7oxyZ4k3iH7J7HQ6EXe/HWomB/GeBOIHpssgdQlOxDVs33SnTFnplX9
+ yVqtd928i7HgQJPhggJ5x3GhHBUe4huxIcx0MthHSC/Dkq6q6XWXwas6SDsP23kElujRqAfvXDg
+ NdYu4cqiD0no1pSWCitq3IeL0jLCGKWid7SILla8eJ+sR5ufRobefLmWht/Kzi6lf3Ls3rpAoia
+ eNZRZ6Sn1auRE1Df8+bAqrbUHfLkTs+XVzU9Nhek3Wm8bUEFgI/uv8D+My+84RwH1SVrz4eO1fZ 6GXs2LZxL2pQE/A==
+X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp; fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMjIzMDA5NCBTYWx0ZWRfX36uDCogB2o/K
+ Y1s4decWppqY2YnBBnEQeUpQ9Qi0xzDoDHyvHi7tlv1ywHBE5t+ZIG+P9LdHhhFz0t6oiAtR9TS
+ tmpApIYAgxth8BlUREHHydTkhadRtXhDHI4H7gZzF2U/1qCqkxr4/jbuaL7CJu0tU4DZhmiwHR2
+ e0HGIFTjG8OZRJwnU/Fzj8b1XUQ/UjAp6PEYsLhFvbJAmvdjWP7uReviMuNTlCBZYpcxcEnGtR8
+ z2i+tPe5cx83K7FAudN7lJYT/+nMvsDHb4doVSQU+pYAAOmGhQCUKpuEhyjvZuc64vdv0UVq4A9
+ v3fYNg5BvQ7fpWnv7nn3li98Ve3aA+qu3Nq8o+cXp2vXQx4W77qPyWKOY6WuShox6UKdQyPDe0M
+ MnYvIthmXHh2eNqR/ulBpJ0B85lrs1m7TBIYpz5+gnNVKS6zgsytBT4OJAexABg25bRsUIho80G
+ csQzGJCpC3jG1b+VYnw==
+X-Proofpoint-GUID: 6NpsMSfCbzKVQwk3j_B-HRTlbSi2TmJ0
+X-Authority-Analysis: v=2.4 cv=X71f6WTe c=1 sm=1 tr=0 ts=699c3295 cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=6nO30s3o7FuWeffXwhKHTA==:17
+ a=HzLeVaNsDn8A:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22 a=VwQbUJbxAAAA:8
+ a=IpJZQVW2AAAA:8 a=EUspDBNiAAAA:8 a=wq2r3B8GeWDWek6aAFgA:9
+ a=IoWCM6iH3mJn3m4BftBB:22 a=IawgGOuG5U0WyFbmm1f5:22
+X-Proofpoint-ORIG-GUID: 6NpsMSfCbzKVQwk3j_B-HRTlbSi2TmJ0
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-02-23_01,2026-02-20_04,2025-10-01_01
+ definitions=2026-02-23_02,2026-02-20_04,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0 phishscore=0 impostorscore=0 priorityscore=1501
- bulkscore=0 lowpriorityscore=0 adultscore=0 spamscore=0 clxscore=1015
+ impostorscore=0 clxscore=1015 priorityscore=1501 adultscore=0 bulkscore=0
+ lowpriorityscore=0 suspectscore=0 malwarescore=0 spamscore=0 phishscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2602230084
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2602230094
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_014836_222498_1BCFC90E 
-X-CRM114-Status: GOOD (  22.36  )
+X-CRM114-CacheID: sfid-20260223_025726_323577_26C0F2CE 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -211,68 +155,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 23/02/2026 01:12, David Lechner wrote:
-> On 1/18/26 12:09 PM, Krzysztof Kozlowski wrote:
->> Simplify error handling by removing two mutex_unlock() calls with
->> scoped_guard().
->>
->> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->> ---
->>  drivers/pinctrl/pinctrl-rockchip.c | 19 +++++++++----------
->>  1 file changed, 9 insertions(+), 10 deletions(-)
->>
->> diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
->> index e44ef262beec..bbe1cf712965 100644
->> --- a/drivers/pinctrl/pinctrl-rockchip.c
->> +++ b/drivers/pinctrl/pinctrl-rockchip.c
->> @@ -3640,17 +3640,16 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
-> 
-> Filling in some context from the existing code...
-> 
-> 	for (i = 0; i < num_configs; i++) {
-> 		param = pinconf_to_config_param(configs[i]);
-> 		arg = pinconf_to_config_argument(configs[i]);
-> 
-> 		if (param == PIN_CONFIG_LEVEL || param == PIN_CONFIG_INPUT_ENABLE) {
-> 			/*
-> 			 * Check for gpio driver not being probed yet.
-> 
->>  			 * The lock makes sure that either gpio-probe has completed
->>  			 * or the gpio driver hasn't probed yet.
->>  			 */
->> -			mutex_lock(&bank->deferred_lock);
->> -			if (!gpio || !gpio->direction_output) {
->> -				rc = rockchip_pinconf_defer_pin(bank, pin - bank->pin_base, param,
->> -								arg);
->> -				mutex_unlock(&bank->deferred_lock);
->> -				if (rc)
->> -					return rc;
->> -
->> -				break;
->> +			scoped_guard(mutex, &bank->deferred_lock) {
->> +				if (!gpio || !gpio->direction_output) {
->> +					rc = rockchip_pinconf_defer_pin(bank,
->> +									pin - bank->pin_base,
->> +									param, arg);
->> +					if (rc)
->> +						return rc;
->> +					break;
-> 
-> I think there is an unintentional change here.
-> 
-> scoped_guard() is implemented by a for loop. So the break statement is now
-> breaking out of the scoped_guard() scope rather than breaking out of the
-> outer for loop.
+Commit e2c58cbe3aff ("pinctrl: rockchip: Simplify locking with
+scoped_guard()") added a scoped_guard() over existing code containing a
+"break" instruction.  That "break" was for the outer (existing)
+for-loop, which now exits inner, scoped_guard() loop.  If GPIO driver
+did not probe, then driver will not bail out, but instead continue to
+configure the pin.
 
-Yes, you are right, thanks for catching this. I think the code can be
-fixed with "return 0".
+Fix the issue by simplifying the code - the break in original code was
+leading directly to end of the function returning 0, thus we can simply
+return here rockchip_pinconf_defer_pin status.
 
-I need to check my other patches as well.
+Reported-by: David Lechner <dlechner@baylibre.com>
+Closes: https://lore.kernel.org/r/f5b38942-a584-4e78-a893-de4a219070b2@baylibre.com/
+Fixes: e2c58cbe3aff ("pinctrl: rockchip: Simplify locking with scoped_guard()")
+Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
+---
 
-Best regards,
-Krzysztof
+Offending commit was introduced in v7.0-rc1
+
+I also checked few other of my commits for similar error.
+---
+ drivers/pinctrl/pinctrl-rockchip.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/drivers/pinctrl/pinctrl-rockchip.c b/drivers/pinctrl/pinctrl-rockchip.c
+index 816823403e97..4f2e02322508 100644
+--- a/drivers/pinctrl/pinctrl-rockchip.c
++++ b/drivers/pinctrl/pinctrl-rockchip.c
+@@ -3640,14 +3640,10 @@ static int rockchip_pinconf_set(struct pinctrl_dev *pctldev, unsigned int pin,
+ 			 * or the gpio driver hasn't probed yet.
+ 			 */
+ 			scoped_guard(mutex, &bank->deferred_lock) {
+-				if (!gpio || !gpio->direction_output) {
+-					rc = rockchip_pinconf_defer_pin(bank,
+-									pin - bank->pin_base,
+-									param, arg);
+-					if (rc)
+-						return rc;
+-					break;
+-				}
++				if (!gpio || !gpio->direction_output)
++					return rockchip_pinconf_defer_pin(bank,
++									  pin - bank->pin_base,
++									  param, arg);
+ 			}
+ 		}
+ 
+-- 
+2.51.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
