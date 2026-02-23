@@ -4,68 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B48AEC1128
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 20:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36F72EC1128
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Feb 2026 20:03:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nPj3T+KXKYa4wNu46chUzlpNVskHAqtfzBU0Ndfkz8E=; b=mAiAIryPLAyix+
-	uGT/oFQ3Ua77Pne8xEs1B1MOro+yY10BMTFCjCYw9qouugfXGtQAGrIAHjjE7fB7CYnVrRUZzEWpu
-	Of5RQnFOJSU/n9KZkPCbd9/llNIDJojPicqAaIEgjwygUK3yFOZu9n/UfBnGlqVpermywG31q1W6i
-	9BXka+OwtKLe3SDPiE+7rgLuqzyhYcb8N6rX/qOT1HeBkSs/wQmNehLvhie3NXrJI9v+7eMe8kIYI
-	paSZlDxozj2MM+54BzfltuR7PAqB3oJUIWq+s8Zeh0P1nfM810RSm0ZZsxpWUVJ6P0+Nt5x9zvVEQ
-	+CqZJLV8QPlNdthWL/qw==;
+	List-Owner; bh=xzSk9i4r3hZZYNgmUV71n0eq99XeXBRJpq1RelxijjY=; b=jKkyNaMNyXD7we
+	2gU+X4QZmZdiRv9/9kh8x2rVULoHVdJ7sUuI5AGc0on3iOQMLcB5HFp5x/s5SoDEUxRson8bxT7ga
+	fLO0gBYWWBhgjaxvhA9gYxhncZMQ/GPLCOM6MsVu7IXecq3s4xOecIptW63KkPIgGT3aax63IGDT4
+	Ha8pTr1OAZWL/EE3ldHHEOrcSRl6LKizIdY/FqTR92D5rzqLZ+5d46xomV+DEK7sAgMwhDudB/HOs
+	YmYqBdUOLnFhGgS4kgC/tCnftwPp5/Xh4q21zHl1dNJM2uvrWUVdQJEpzW39WkoN9fIXWzaCI1DQC
+	72htX11SgL7Wo+U5VdeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuc8a-00000000yP5-0RT7;
-	Mon, 23 Feb 2026 20:02:36 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vuc9d-00000000yam-2xlF;
+	Mon, 23 Feb 2026 20:03:41 +0000
+Received: from [95.181.193.9] (helo=mail.auroraos.dev)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuc8W-00000000yOQ-3Eq9;
-	Mon, 23 Feb 2026 20:02:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771876950;
-	bh=g5AaOwZ6430GnKveqeW2Yxjh239E7tqluKKLDlFqEyM=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=AnbE91aJ/Ot5On9xelhK2wPWwn6D9ZiG8NOs5dToMUwOqtFvNL0clajxOGHvpmvSZ
-	 9ru2YSNil6K3oVuGfaf13MOtXIUPKMEgU3xooTLntyhBgjvCsqVJvAj7b1VcG/q9fm
-	 DyjvbbHG1efuXQz+8Atdjz9ekqj9nt361iM/L52VlFe5o5OIRJPRz+4GfeLk9RBM6L
-	 /0Vd/84QCR7dhhLVK8dyOgkm68t0ZKyD0h3lDu4u7JveFuUhHDgLIwkdBI7LPFpF4/
-	 xdlIj6wHa+P2AlShoZaas/dePcsU4hI1EWkg9vKPMGYe9g2Nyb1IMY+8rFbIVzQbic
-	 +/dkaHFeC4KYQ==
-Received: from [192.168.1.90] (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1CC2A17E05B5;
-	Mon, 23 Feb 2026 21:02:30 +0100 (CET)
-Message-ID: <c6078b0d-cd88-40a8-9cc7-2e7b135be980@collabora.com>
-Date: Mon, 23 Feb 2026 22:02:29 +0200
+	id 1vuc9a-00000000yZA-2zwD;
+	Mon, 23 Feb 2026 20:03:40 +0000
+Received: from [192.168.2.104] (213.87.162.218) by exch16.corp.auroraos.dev
+ (10.189.209.38) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Mon, 23 Feb
+ 2026 23:03:33 +0300
+Message-ID: <ecf6e7c5-31a7-4e43-8ec9-c6afb0122e03@auroraos.dev>
+Date: Mon, 23 Feb 2026 23:03:32 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix vdec register blocks order on
- RK3576
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Diederik de Haas <diederik@cknow-tech.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova <detlev.casanova@collabora.com>, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com>
- <aZxkDGzEQCCLKR-M@venus> <DGMF3IX3J3BP.1XT41P0G8P5OD@cknow-tech.com>
- <b4eb3031-69e8-4a73-b4f1-91dd4192bb21@collabora.com> <aZyaLG0lYao6_xxb@venus>
- <e0d7da4c-e779-43e9-bf0f-c2a0224114df@collabora.com>
+Subject: Re: [PATCH] pinctrl: rockchip: use *enum* properly in
+ rockchip_pinconf_pull_valid()
+To: Linus Walleij <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	<linux-gpio@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
+CC: <linux-arm-kernel@lists.infradead.org>
+References: <20260223194424.19251-1-s.shtylyov@auroraos.dev>
 Content-Language: en-US
-In-Reply-To: <e0d7da4c-e779-43e9-bf0f-c2a0224114df@collabora.com>
+From: Sergey Shtylyov <s.shtylyov@auroraos.dev>
+In-Reply-To: <20260223194424.19251-1-s.shtylyov@auroraos.dev>
+X-Originating-IP: [213.87.162.218]
+X-ClientProxiedBy: exch16.corp.auroraos.dev (10.189.209.38) To
+ exch16.corp.auroraos.dev (10.189.209.38)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260223_120232_962768_01606478 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260223_120338_753521_9F92F77E 
+X-CRM114-Status: UNSURE (   6.31  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,58 +66,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/23/26 8:29 PM, Cristian Ciocaltea wrote:
-> Hi Sebastian,
-> 
-> On 2/23/26 8:21 PM, Sebastian Reichel wrote:
->> Hi,
->>
->> On Mon, Feb 23, 2026 at 07:07:42PM +0200, Cristian Ciocaltea wrote:
->>> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
->>> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
->>> @@ -34,10 +34,12 @@ properties:
->>>        - description: The cache configuration registers base
->>>
->>>    reg-names:
->>> -    items:
->>> +    oneOf:
->>>        - const: function
->>> -      - const: link
->>> -      - const: cache
->>> +      - items:
->>> +          - const: link
->>> +          - const: function
->>> +          - const: cache
->>>
->>>    interrupts:
->>>      maxItems: 1
->>>
->>
->> With that change the descriptions in the reg section are wrong.
-> 
-> Yeah, I assumed it'd be acceptable for the description to document just once all
-> possible items, to avoid repeating this for all possible combinations.
-> 
-> E.g. this is from Documentation/devicetree/bindings/net/snps,dwmac.yaml:
-> 
->   resets:
->     minItems: 1
->     items:
->       - description: GMAC stmmaceth reset
->       - description: AHB reset
-> 
->   reset-names:
->     oneOf:
->       - items:
->           - enum: [stmmaceth, ahb]
->       - items:
->           - const: stmmaceth
->           - const: ahb
+On 2/23/26 10:44 PM, Sergey Shtylyov wrote:
 
-I dropped the descriptions in v2, as we discussed they don't provide much value
-anyway:
+> In rockchip_pinconf_pull_valid(), the pull parameter has *enum* type that
+> is not isomorphic with boolean type but it's used as a boolean expression
+> in the ?: operator.  Compare pull with PIN_CONFIG_BIAS_BUS_HOLD instead,
+> dropping the unnecessary ?: operator as well...
+> 
+> Found by Linux Verification Center (linuxtesting.org) with the Svace static
+> analysis tool.
+> 
+> Signed-off-by: Sergey Shtylyov <s.shtylyov@auroraos.dev>
+[...]
 
-https://lore.kernel.org/all/20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com/
+   Forgot to add that the patch wass against the for-next branch of Linus W.'s
+linux-pinctrl.git repo.
+
+MBR, Sergey
 
 
 _______________________________________________
