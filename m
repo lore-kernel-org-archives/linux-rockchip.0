@@ -4,74 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 059D2F3C99E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 15:46:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D93C5F3C9B9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 16:33:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W1uEWMy64RzQgtYmFtr397pZ1Z+TCmsNC56aQqayhDo=; b=juWtP+IPzppfKy9bh6VqTr1i8o
-	h13el5iAzIaz0/KkUWkH9Zzl7S1oGF8sKKm++FrRD0eITWN5JViLgfnpg6isFxFosToWeOvxKwRub
-	s1ojeO5Dy5JPJ4o37+3HFu3UuShwHNuL07pjdWN//kgfQALA5hr08qU+sHE6gz67sclmdITfRlC/5
-	AKhSBdyLRJXSqQzZpuXZJAm6EsbSMfh1Wz60M40fCK0kwAYlhll0PMm1Yiw8+U2WFjrS12NB8w2jx
-	ICILCbLnHOUypASipQRjnIvfCd+bfJMlLsIvNM0yyFxhk2QiG48pMe1hgsdadAFN0LJa61M8qLa6X
-	7QNPXXfw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MkQZl3eyDPjXKM505gjJ4bxSFj/rrC7ZPDRJJ/ClsWY=; b=a9f6uVeeH7EIQR
+	mMvTBQnwvZIRC/odzaGWblFqgRY4UTrn4qPzK25yZQUksDh1l1ouZtOowSqDVTqj6ljP8hmpyfzJA
+	cr2eXBEOWVcSUtl4pgNL1vJltZ5UaO7syUAonIod63XBlJt15hiX5SmMkPgMj2ydVRMrarMZfygaa
+	p1ekuE76TO5ANLQNquGrepOdZnGvn0oKflLuNVgFX6x/5iZmQ8JDZQh3nZxJF/CZgCUoYiX8cQtOI
+	PquXAHHNuy+ljO1MWM6b+XKb9sk/RSL6Cg9foYRDwjpXKUXOayzxXscjKwHubV+8mwAWJUDAfMThC
+	TCbP5I36W1kDDMyP7rzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuucR-00000002Kz5-247L;
-	Tue, 24 Feb 2026 15:46:39 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1vuvLr-00000002PO6-0LgL;
+	Tue, 24 Feb 2026 16:33:35 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuucP-00000002Kya-0VeX
+	id 1vuvLp-00000002PN6-1D4S
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Feb 2026 15:46:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1771947997; x=1803483997;
-  h=from:date:to:cc:subject:in-reply-to:message-id:
-   references:mime-version;
-  bh=VYN04sJprWrkFA4cwUj5TgFvwHyMtnyDZDD0bnLfwhg=;
-  b=NW3fRI93nuNY7Kks8YOZQlZ0wQNgG5GtQVKth7yLPgE+l9na8V8Va3+j
-   VILq85nTwTDdMDwtdVT6Y8oA6jVs4Qie82sgjXxVBzdXSXS65ruVHZEst
-   dN/TxBHdC0dipZ0Bmr73ip4LjbA+hL3EIAaCsIt/m9sFH3cDJ/5k/o3Ud
-   ePwYDaLp35SyxS1Xs3G3JEIoKE9jy8En7FUmxHEmrNUZTLudK94yADddN
-   igZ4+zfzYheni/FCXtdU/kMwTpw1xWdGsimtrsXzJhRzQ+7v+6kS8m0FN
-   UXQ+mNG8NBHnt0pDwl/Df/aTOYKCu6p8sGv9gFc8tCUVFScPN+NO96oKb
-   g==;
-X-CSE-ConnectionGUID: vQ9SDQEkQ7S5s2l0oJzpyA==
-X-CSE-MsgGUID: LZMQEZ+qR3OZ4tltxm/jmQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="90385395"
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
-   d="scan'208";a="90385395"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 07:46:36 -0800
-X-CSE-ConnectionGUID: +Wgeobq1QgyikKD6DWFKzw==
-X-CSE-MsgGUID: UtSYK39EQ+a8HtZY7FpQHA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
-   d="scan'208";a="215954220"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.133])
-  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 07:46:32 -0800
-From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
-Date: Tue, 24 Feb 2026 17:46:29 +0200 (EET)
-To: Manivannan Sadhasivam <mani@kernel.org>
-cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, 
-    linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, 
-    linux-trace-kernel@vger.kernel.org, linux-doc@vger.kernel.org, 
-    Steven Rostedt <rostedt@goodmis.org>, 
-    Masami Hiramatsu <mhiramat@kernel.org>
-Subject: Re: [PATCH v4 1/3] PCI: trace: Add PCI controller LTSSM transition
- tracepoint
-In-Reply-To: <2sgfbgsgrbztqadhzz6wf6b7j2lmyzmhwugr3tycsjeaik5xdz@ncehsafpi2y5>
-Message-ID: <75b206bb-7fcd-2f59-4181-1839ba5aa8e4@linux.intel.com>
-References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com> <1769047340-113287-2-git-send-email-shawn.lin@rock-chips.com> <7d195f03-978a-2d0d-acdf-e583e68377f2@linux.intel.com> <2sgfbgsgrbztqadhzz6wf6b7j2lmyzmhwugr3tycsjeaik5xdz@ncehsafpi2y5>
+	Tue, 24 Feb 2026 16:33:34 +0000
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-7d556c1a79eso2177121a34.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Feb 2026 08:33:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1771950811; x=1772555611; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=bU5k+6sNB0KTbcFvy5Ke25ujYH5KIYZfLNb1U8JEui0=;
+        b=ira/srWSXT0+S0pRIajIQjnRPzx0n5xJZtGs1XPwQ2Q8On10cU8ZfKL5h2v2nKi6yS
+         hooM2lzeUSloc4/CDyIeM5T1ywOez38YuH8X/iE46BMmy9FT1NiQMyuNU3QQZDYAOf7Z
+         y3Kn4nxSBfEumJsaKXSsQ71h9y5pL2QNEhYfG6JYA2u/APt/NUbDeioePW2jwzMC2fh+
+         T0xcZu4L+WoCLUejIGqvQwrT/K32rUndWKw485B7CyTI4QldZKXwD4sfgikGHQkOEmz+
+         pX50b8kCBtH7eBkzJqd166wGtCVcCMdVV6nUxBP2OA0Y7dZwkM/8i5CsvnOzR/4ehKd9
+         9hVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1771950811; x=1772555611;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=bU5k+6sNB0KTbcFvy5Ke25ujYH5KIYZfLNb1U8JEui0=;
+        b=RZIKsxIRWgihaphmkRmW/8/2x+HnL8zNEifNzdGdoZohjfidDIdq+7SswHGMt4uw+9
+         5zFw49gtUcU19+y/rhAHsbzo5RIoQ/R2N4qIq8xQk7Cfu4/ABGIIQRSkQR/UcnXUmbha
+         xOTUthKUkrUsoPlBgmnPEyyeJ6d1h3AIhlOMXJjL+SASs1iTVONBLWhuVlVjWHIj5guc
+         vypXf2FC/SZjT/52QV4vr9B+MLDNRnbgr1bKbtW/4YNUViSNL7ZOWShogxbpkEHTkqyB
+         SaUjsPKz9kikkai4QgsA1fP/1y4w6IQrlsq0qL2Rrz1Pm8v0qkequbVB6ChMM2CCNryC
+         ZICA==
+X-Forwarded-Encrypted: i=1; AJvYcCXQT3Tf+Htmyh9tg+mElcJFPMC5no9x1Q1CP20EHwT71iMdHxEykSt/ZrwHyx6lZ94Zl6F+kXNPl147Ao0z2w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YynN9H2nOsBRRfijnN7qrmkN67hxZvA5pANK2mc0Wcys0Bp8MDT
+	1dh5eioy5DcawsmATk1ze9vfWWzwuhk2k7rpiRWHSlzx3lkee0OoN9Bh
+X-Gm-Gg: AZuq6aI+VlX+QGtrqLG4NgYTReZAl9JoQoPYY3wPOfrz7Vstnk5XFqZtCZGQwMsYvBY
+	fOtDgmwcJ5wdhItyCkZ+M4caqFQhE1Ed8Bd9lu8HDPgWjSBAjVSjfbFZfDJrRP2OoTxLogpEa6W
+	UIKY3nHfh7lzys1iWypadapLczqwudUHqf6b7dPAPAkGTha3yNE15Yb2i+nbo6TqFZkClxMnr+q
+	WfIByrsNeudzt+40iN+nBBuQX3cUGQ/21ChDdyX2p3JuzG7eRvk05mPQp8+gZsQEAcVb7eBsbPN
+	s862BCJnD3znfrNVpdTmkxjaEODbtXKmOulyG/x7bMmH5AHxWjkYgYd4ifjA/1XTKT8BG4WNQf4
+	xFY34/80SRn8X8QvH7VbjD5jiw96bI9MjTVeME/F4RYR2x6iC2XR8laP1hSs6jvXC12eVjCWeIB
+	SuZis+VBeEkpokmoklY158
+X-Received: by 2002:a05:6830:7317:b0:7c7:62d0:b462 with SMTP id 46e09a7af769-7d52bdf6f21mr8759906a34.6.1771950811307;
+        Tue, 24 Feb 2026 08:33:31 -0800 (PST)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d52d0725c4sm11060130a34.25.2026.02.24.08.33.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Feb 2026 08:33:30 -0800 (PST)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-iio@vger.kernel.org
+Cc: andy@kernel.org,
+	nuno.sa@analog.com,
+	dlechner@baylibre.com,
+	jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH 0/3] Add Invensense ICM42607
+Date: Tue, 24 Feb 2026 10:31:02 -0600
+Message-ID: <20260224163109.370930-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="8323328-630235247-1771947989=:1751"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_074637_259343_DC4CA1B5 
-X-CRM114-Status: GOOD (  30.48  )
+X-CRM114-CacheID: sfid-20260224_083333_331304_4B8D1946 
+X-CRM114-Status: GOOD (  10.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,209 +101,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+From: Chris Morgan <macromorgan@hotmail.com>
 
---8323328-630235247-1771947989=:1751
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: QUOTED-PRINTABLE
+Add support for the ICM42607 IMU. This sensor shares the same
+functionality but a different register layout with the existing
+ICM42600.
 
-On Tue, 24 Feb 2026, Manivannan Sadhasivam wrote:
+This driver should work with the ICM42607 and ICM42607P over both I2C
+and SPI, however only the ICM42607P over I2C could be tested.
 
-> On Tue, Feb 24, 2026 at 05:22:35PM +0200, Ilpo J=C3=A4rvinen wrote:
-> > On Thu, 22 Jan 2026, Shawn Lin wrote:
-> >=20
-> > > Some platforms may provide LTSSM trace functionality, recording histo=
-rical
-> > > LTSSM state transition information. This is very useful for debugging=
-, such
-> > > as when certain devices cannot be recognized or link broken during te=
-st.
-> > > Implement the pci controller tracepoint for recording LTSSM and rate.
-> > >=20
-> > > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> > > ---
-> > >=20
-> > > Changes in v4:
-> > > - use TRACE_EVENT_FN to notify when to start and stop the tracepoint,
-> > >   and export pci_ltssm_tp_enabled() for host drivers to use
-> > >=20
-> > > Changes in v3:
-> > > - add TRACE_DEFINE_ENUM for all enums(Steven Rostedt)
-> > >=20
-> > > Changes in v2: None
-> > >=20
-> > >  drivers/pci/trace.c                   | 20 ++++++++++++
-> > >  include/linux/pci.h                   |  4 +++
-> > >  include/trace/events/pci_controller.h | 57 +++++++++++++++++++++++++=
-++++++++++
-> > >  3 files changed, 81 insertions(+)
-> > >  create mode 100644 include/trace/events/pci_controller.h
-> > >=20
-> > > diff --git a/drivers/pci/trace.c b/drivers/pci/trace.c
-> > > index cf11abc..d351a51 100644
-> > > --- a/drivers/pci/trace.c
-> > > +++ b/drivers/pci/trace.c
-> > > @@ -9,3 +9,23 @@
-> > > =20
-> > >  #define CREATE_TRACE_POINTS
-> > >  #include <trace/events/pci.h>
-> > > +#include <trace/events/pci_controller.h>
-> > > +
-> > > +static atomic_t pcie_ltssm_tp_enabled =3D ATOMIC_INIT(0);
-> > > +
-> > > +bool pci_ltssm_tp_enabled(void)
-> > > +{
-> > > +=09return atomic_read(&pcie_ltssm_tp_enabled) > 0;
-> > > +}
-> > > +EXPORT_SYMBOL(pci_ltssm_tp_enabled);
-> > > +
-> > > +int pci_ltssm_tp_reg(void)
-> > > +{
-> > > +=09atomic_inc(&pcie_ltssm_tp_enabled);
-> > > +=09return 0;
-> > > +}
-> > > +
-> > > +void pci_ltssm_tp_unreg(void)
-> > > +{
-> > > +=09atomic_dec(&pcie_ltssm_tp_enabled);
-> > > +}
-> > > diff --git a/include/linux/pci.h b/include/linux/pci.h
-> > > index e7cb527..ac25a3e 100644
-> > > --- a/include/linux/pci.h
-> > > +++ b/include/linux/pci.h
-> > > @@ -2770,6 +2770,10 @@ static inline struct eeh_dev *pci_dev_to_eeh_d=
-ev(struct pci_dev *pdev)
-> > >  }
-> > >  #endif
-> > > =20
-> > > +#ifdef CONFIG_TRACING
-> > > +bool pci_ltssm_tp_enabled(void);
-> > > +#endif
-> > > +
-> > >  void pci_add_dma_alias(struct pci_dev *dev, u8 devfn_from, unsigned =
-nr_devfns);
-> > >  bool pci_devs_are_dma_aliases(struct pci_dev *dev1, struct pci_dev *=
-dev2);
-> > >  int pci_for_each_dma_alias(struct pci_dev *pdev,
-> > > diff --git a/include/trace/events/pci_controller.h b/include/trace/ev=
-ents/pci_controller.h
-> > > new file mode 100644
-> > > index 0000000..db4a960
-> > > --- /dev/null
-> > > +++ b/include/trace/events/pci_controller.h
-> > > @@ -0,0 +1,57 @@
-> > > +/* SPDX-License-Identifier: GPL-2.0 */
-> > > +#undef TRACE_SYSTEM
-> > > +#define TRACE_SYSTEM pci_controller
-> >=20
-> > I find putting this into "pci_controller" little odd as LTSSM is relate=
-d=20
-> > to PCIe links/ports. To me looks something that belongs to the existing=
-=20
-> > include/trace/events/pci.h.
->=20
-> I suggested 'pci_controller.h' since these tracepoints are only going to =
-be used
-> by the controller drivers. Putting it under 'pci.h' will imply that these=
- can be
-> used by the client drivers also.
+Chris Morgan (3):
+  dt-bindings: iio: imu: icm42607: Add devicetree binding
+  iio: imu: inv_icm42607: add new inv_icm42607 driver
+  arm64: dts: rockchip: Add icm42607p IMU for RG-DS
 
-PCIe r7 spec has Flit Performance Measurement Extended Capability that=20
-seems to have something for LTSSM tracking and those seem more generic=20
-than just for controllers (I've not spent much time on trying to fully=20
-understand those capabilities, just recalled seeing them earlier).
+ .../bindings/iio/imu/invensense,icm42607.yaml |   92 ++
+ .../dts/rockchip/rk3568-anbernic-rg-ds.dts    |   20 +-
+ drivers/iio/imu/Kconfig                       |    1 +
+ drivers/iio/imu/Makefile                      |    1 +
+ drivers/iio/imu/inv_icm42607/Kconfig          |   30 +
+ drivers/iio/imu/inv_icm42607/Makefile         |   14 +
+ drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  472 ++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_accel.c | 1025 +++++++++++++++++
+ .../imu/inv_icm42607/inv_icm42607_buffer.c    |  566 +++++++++
+ .../imu/inv_icm42607/inv_icm42607_buffer.h    |  100 ++
+ .../iio/imu/inv_icm42607/inv_icm42607_core.c  |  811 +++++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_gyro.c  |  578 ++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   93 ++
+ .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |  100 ++
+ .../iio/imu/inv_icm42607/inv_icm42607_temp.c  |   82 ++
+ .../iio/imu/inv_icm42607/inv_icm42607_temp.h  |   30 +
+ 16 files changed, 4014 insertions(+), 1 deletion(-)
+ create mode 100644 Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
+ create mode 100644 drivers/iio/imu/inv_icm42607/Kconfig
+ create mode 100644 drivers/iio/imu/inv_icm42607/Makefile
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_temp.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_temp.h
 
---
- i.
+-- 
+2.43.0
 
-> > > +#if !defined(_TRACE_HW_EVENT_PCI_CONTROLLER_H) || defined(TRACE_HEAD=
-ER_MULTI_READ)
-> > > +#define _TRACE_HW_EVENT_PCI_CONTROLLER_H
-> > > +
-> > > +#include <uapi/linux/pci_regs.h>
-> > > +#include <linux/tracepoint.h>
-> > > +
-> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_2_5GT);
-> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_5_0GT);
-> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_8_0GT);
-> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_16_0GT);
-> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_32_0GT);
-> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_64_0GT);
-> > > +TRACE_DEFINE_ENUM(PCI_SPEED_UNKNOWN);
-> > > +
-> > > +extern int pci_ltssm_tp_reg(void);
-> > > +extern void pci_ltssm_tp_unreg(void);
-> > > +
-> > > +TRACE_EVENT_FN(pcie_ltssm_state_transition,
-> > > +=09TP_PROTO(const char *dev_name, const char *state, u32 rate),
-> > > +=09TP_ARGS(dev_name, state, rate),
-> > > +
-> > > +=09TP_STRUCT__entry(
-> > > +=09=09__string(dev_name, dev_name)
-> > > +=09=09__string(state, state)
-> > > +=09=09__field(u32, rate)
-> > > +=09),
-> > > +
-> > > +=09TP_fast_assign(
-> > > +=09=09__assign_str(dev_name);
-> > > +=09=09__assign_str(state);
-> > > +=09=09__entry->rate =3D rate;
-> > > +=09),
-> > > +
-> > > +=09TP_printk("dev: %s state: %s rate: %s",
-> > > +=09=09__get_str(dev_name), __get_str(state),
-> > > +=09=09__print_symbolic(__entry->rate,
-> > > +=09=09=09{ PCIE_SPEED_2_5GT,  "2.5 GT/s" },
-> > > +=09=09=09{ PCIE_SPEED_5_0GT,  "5.0 GT/s" },
-> > > +=09=09=09{ PCIE_SPEED_8_0GT,  "8.0 GT/s" },
-> > > +=09=09=09{ PCIE_SPEED_16_0GT, "16.0 GT/s" },
-> > > +=09=09=09{ PCIE_SPEED_32_0GT, "32.0 GT/s" },
-> > > +=09=09=09{ PCIE_SPEED_64_0GT, "64.0 GT/s" },
-> > > +=09=09=09{ PCI_SPEED_UNKNOWN, "Unknown" }
-> >=20
-> > Why are these done inline instead of using EM/EMe()? Or simply with
-> > pci_speed_string()?
-> >=20
-> >=20
-> > Unrelated to this, sadly I failed to notice Shuai's version of=20
-> > pcie_link_event() did not translate link speeds (my own version used=20
-> > pci_speed_string()).
-> >=20
-> > > +=09=09)
-> > > +=09),
-> > > +
-> > > +=09pci_ltssm_tp_reg, pci_ltssm_tp_unreg
-> > > +);
-> > > +
-> > > +#endif /* _TRACE_HW_EVENT_PCI_CONTROLLER_H */
-> > > +
-> > > +/* This part must be outside protection */
-> > > +#include <trace/define_trace.h>
-> > >=20
-> >=20
-> > --=20
-> >  i.
-> >=20
->=20
->=20
-
---=20
- i.
-
---8323328-630235247-1771947989=:1751
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---8323328-630235247-1771947989=:1751--
-
