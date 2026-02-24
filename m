@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3415EF3C998
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 14:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3579FF3C995
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 15:22:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w6Rw/gqkuH40ue0zujsp2JyTsmMQ7Ikm3Jzudw2qXD8=; b=A8+yJetVbpM0EYreChQkJvNm9I
-	Ddot/OTl4WS8Hc7veGFC1xb45KnDpIV/TidmpLBgfrYGSGYNylaxSp5RsTU9EMot+NGQiTEbHp5hC
-	Y+xU3e1Qm8lH3JKYxm7qI8H3bZBMu5pSRYcU1XbRhYo461WDUpB9dEooWec8rrQ22xWr8y6KWESDZ
-	zHlHnrutrrhijEvKPJ5HzInHVC3ohZ+swcG58YJSCtfY1lZiMLD1kot8CGAobGaVHpr+1dBQrBQCq
-	rSMtW0QyHlChmpaZ8/jp6KqnAyZdKj2h1tlE1XChhHM+5oI0BCX6tWXF3/M80C1tO+NG2yAPFrsY4
-	kK5pprjQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:Message-ID:
+	In-Reply-To:Subject:cc:To:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=U0/vEwhMF3P2nLRbCHqH+0pUrCcnXc/uewxsQ+ph5pQ=; b=lIZq1vwyxptRDi
+	K2wO06LfZCgswvVCjqco8SxZUIwqgJUu3bjHcYQm1nrCGESsgFAAyl9A7FQzTK8b15PliJn0xePK0
+	23equ/xy60I8xacQPsRw1NquL7wM2p+w7d1O9/IfoWzc6iDqHbONI828V0IC8xvdnnKMRgjlKjBtI
+	FZQkPHV4s8Ie0Fwnw7saKG9agMAbMtms6laD2d3ez0t5FeNac9hGRBYs8bgu22RvXpifKqsCVZtyE
+	PpfJTsmqlsSd1P2LaN6VOk5Oy40XQM4XRmpQBCBguhC0sWxCrdyCPpeReuIfqB59rQC5CBAdBIC5T
+	GzRMvFwXhzR42Q7J8i8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vutb5-00000002Fda-1eOH;
-	Tue, 24 Feb 2026 14:41:11 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vuuFK-00000002Iqr-1W2n;
+	Tue, 24 Feb 2026 15:22:46 +0000
+Received: from mgamail.intel.com ([198.175.65.21])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vutb1-00000002Fc9-2t2Q;
-	Tue, 24 Feb 2026 14:41:08 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B7CFB41791;
-	Tue, 24 Feb 2026 14:41:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 125EFC116D0;
-	Tue, 24 Feb 2026 14:41:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771944066;
-	bh=dCGqyI+rHlM3XyQ2QUXSu5nZVqUPyjQmE2WK/m+d8es=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gA+g57QadLSgYtZf5xm7d+YH2vzWtEJsVtb2Yjxr294TnnPP+klHUGgRSnbPFMw4x
-	 vN4u/6wEExddpZypJjzNjT69Biz0S7GhYqq6J0L/D89mD25k39ddaOwSfiHZFcORpB
-	 MHAPLNeeqHAbnixkSvJidVV++YvN2rxpS7uIXzEFvqc3bY9BP8iOs2FUowmNn8CRfI
-	 s/uC/D5eHcKGqEVAipY4dqrtOP1JEAMVx/Cvtg+rY5lZdhIuEVymyUaO3aPbTphh/1
-	 0Aa45VuNgSw1tFOaTKc4DSFTJ5elMVbaSEJ5PHaSLECpTUgsK5Gs42ik0H0ntIdmDW
-	 VG5P3hlMYHljA==
-Date: Tue, 24 Feb 2026 15:41:04 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, kernel@collabora.com, 
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v8 05/20] drm/display: hdmi-state-helper: Act on color
- format DRM property
-Message-ID: <20260224-hot-adaptable-sawfish-dd0f7a@houat>
-References: <20260216-color-format-v8-0-5722ce175dd5@collabora.com>
- <20260216-color-format-v8-5-5722ce175dd5@collabora.com>
+	id 1vuuFH-00000002IqT-49Pj
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Feb 2026 15:22:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1771946564; x=1803482564;
+  h=from:date:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=9F21oVqzbvLNHIWD/OjKzGXyzUqKNTyNYw5SNri/3QY=;
+  b=gbB4qA8cbbsGR7XaPCPZ1rBdCDuS/OFQaPkXRGCwUTDSjueBRgdDaebB
+   hKsWGVC4JFoYCopc2+SkooN6wYtjxliXOa8XD4Sxsfig5rkyvECIhuKK1
+   p/iCE8qkv3S86q0QINUGzHU/CBLfHS+o/E3KQrhjfawmig0RQPvuyI8tN
+   wKyX9W7/fsOK/BaaaYFXSBYrPBKgPHZq82zQO9HKBW+liUZHsh7PgrjpS
+   hq1Ryyq3GnAX1YTL2t/dChMHzixz6rRm8b+FegYBANbrc62lYJNS9+tz1
+   0ODsPcSJCAxfAow2ycL94IbPmQVmIXNBuPIsLYBnoknfWNd/8DpMJgjkR
+   Q==;
+X-CSE-ConnectionGUID: oH8UUdiyTDC+giPRDkMOQw==
+X-CSE-MsgGUID: LTQNi059RQ25QklIj5nulQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="72839088"
+X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
+   d="scan'208";a="72839088"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 07:22:42 -0800
+X-CSE-ConnectionGUID: xBpYYwWcTnKhslgK8BYInQ==
+X-CSE-MsgGUID: w9D/pvx7Romiu0gepzECYQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
+   d="scan'208";a="238928420"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.133])
+  by fmviesa002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 07:22:38 -0800
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Date: Tue, 24 Feb 2026 17:22:35 +0200 (EET)
+To: Shawn Lin <shawn.lin@rock-chips.com>
+cc: Manivannan Sadhasivam <mani@kernel.org>, 
+    Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org, 
+    linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
+    linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>, 
+    Masami Hiramatsu <mhiramat@kernel.org>
+Subject: Re: [PATCH v4 1/3] PCI: trace: Add PCI controller LTSSM transition
+ tracepoint
+In-Reply-To: <1769047340-113287-2-git-send-email-shawn.lin@rock-chips.com>
+Message-ID: <7d195f03-978a-2d0d-acdf-e583e68377f2@linux.intel.com>
+References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com> <1769047340-113287-2-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20260216-color-format-v8-5-5722ce175dd5@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_064107_784835_1BC8E68B 
-X-CRM114-Status: GOOD (  21.60  )
+X-CRM114-CacheID: sfid-20260224_072244_120560_65E27DEE 
+X-CRM114-Status: GOOD (  21.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,114 +82,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4861873187390659732=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, 22 Jan 2026, Shawn Lin wrote:
 
---===============4861873187390659732==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="5cwb2y5kukdqwgqq"
-Content-Disposition: inline
-
-
---5cwb2y5kukdqwgqq
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 05/20] drm/display: hdmi-state-helper: Act on color
- format DRM property
-MIME-Version: 1.0
-
-On Mon, Feb 16, 2026 at 02:01:19PM +0100, Nicolas Frattaroli wrote:
-> With the introduction of the "color format" DRM property, which allows
-> userspace to request a specific color format, the HDMI state helper
-> should implement this.
->=20
-> Implement it by translating the requested drm_color_format_enum to an
-> hdmi_colorspace enum value. Auto is translated to RGB, and a fallback to
-> YUV420 is only performed if the original color format was auto.
->=20
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Some platforms may provide LTSSM trace functionality, recording historical
+> LTSSM state transition information. This is very useful for debugging, such
+> as when certain devices cannot be recognized or link broken during test.
+> Implement the pci controller tracepoint for recording LTSSM and rate.
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 > ---
->  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 28 +++++++++++++++++++=
-++++--
->  1 file changed, 26 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gp=
-u/drm/display/drm_hdmi_state_helper.c
-> index a1d16762ac7a..3ba752200984 100644
-> --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> @@ -649,10 +649,34 @@ hdmi_compute_config(const struct drm_connector *con=
-nector,
->  	unsigned int max_bpc =3D clamp_t(unsigned int,
->  				       conn_state->max_bpc,
->  				       8, connector->max_bpc);
-> +	enum hdmi_colorspace fmt;
->  	int ret;
-> =20
-> -	ret =3D hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
-> -				      HDMI_COLORSPACE_RGB);
-> +	switch (conn_state->color_format) {
-> +	case DRM_COLOR_FORMAT_ENUM_AUTO:
-> +	case DRM_COLOR_FORMAT_ENUM_RGB444:
-> +		fmt =3D HDMI_COLORSPACE_RGB;
-> +		break;
-> +	case DRM_COLOR_FORMAT_ENUM_YCBCR444:
-> +		fmt =3D HDMI_COLORSPACE_YUV444;
-> +		break;
-> +	case DRM_COLOR_FORMAT_ENUM_YCBCR422:
-> +		fmt =3D HDMI_COLORSPACE_YUV422;
-> +		break;
-> +	case DRM_COLOR_FORMAT_ENUM_YCBCR420:
-> +		fmt =3D HDMI_COLORSPACE_YUV420;
-> +		break;
-> +	default:
-> +		drm_dbg_kms(connector->dev, "HDMI does not support color format '%s'.\=
-n",
-> +			    drm_get_color_format_name(conn_state->color_format));
-> +		return -EINVAL;
-> +	}
+> 
+> Changes in v4:
+> - use TRACE_EVENT_FN to notify when to start and stop the tracepoint,
+>   and export pci_ltssm_tp_enabled() for host drivers to use
+> 
+> Changes in v3:
+> - add TRACE_DEFINE_ENUM for all enums(Steven Rostedt)
+> 
+> Changes in v2: None
+> 
+>  drivers/pci/trace.c                   | 20 ++++++++++++
+>  include/linux/pci.h                   |  4 +++
+>  include/trace/events/pci_controller.h | 57 +++++++++++++++++++++++++++++++++++
+>  3 files changed, 81 insertions(+)
+>  create mode 100644 include/trace/events/pci_controller.h
+> 
+> diff --git a/drivers/pci/trace.c b/drivers/pci/trace.c
+> index cf11abc..d351a51 100644
+> --- a/drivers/pci/trace.c
+> +++ b/drivers/pci/trace.c
+> @@ -9,3 +9,23 @@
+>  
+>  #define CREATE_TRACE_POINTS
+>  #include <trace/events/pci.h>
+> +#include <trace/events/pci_controller.h>
 > +
-> +	ret =3D hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc, f=
-mt);
+> +static atomic_t pcie_ltssm_tp_enabled = ATOMIC_INIT(0);
 > +
-> +	if (conn_state->color_format !=3D DRM_COLOR_FORMAT_ENUM_AUTO)
-> +		return ret;
+> +bool pci_ltssm_tp_enabled(void)
+> +{
+> +	return atomic_read(&pcie_ltssm_tp_enabled) > 0;
+> +}
+> +EXPORT_SYMBOL(pci_ltssm_tp_enabled);
 > +
+> +int pci_ltssm_tp_reg(void)
+> +{
+> +	atomic_inc(&pcie_ltssm_tp_enabled);
+> +	return 0;
+> +}
+> +
+> +void pci_ltssm_tp_unreg(void)
+> +{
+> +	atomic_dec(&pcie_ltssm_tp_enabled);
+> +}
+> diff --git a/include/linux/pci.h b/include/linux/pci.h
+> index e7cb527..ac25a3e 100644
+> --- a/include/linux/pci.h
+> +++ b/include/linux/pci.h
+> @@ -2770,6 +2770,10 @@ static inline struct eeh_dev *pci_dev_to_eeh_dev(struct pci_dev *pdev)
+>  }
+>  #endif
+>  
+> +#ifdef CONFIG_TRACING
+> +bool pci_ltssm_tp_enabled(void);
+> +#endif
+> +
+>  void pci_add_dma_alias(struct pci_dev *dev, u8 devfn_from, unsigned nr_devfns);
+>  bool pci_devs_are_dma_aliases(struct pci_dev *dev1, struct pci_dev *dev2);
+>  int pci_for_each_dma_alias(struct pci_dev *pdev,
+> diff --git a/include/trace/events/pci_controller.h b/include/trace/events/pci_controller.h
+> new file mode 100644
+> index 0000000..db4a960
+> --- /dev/null
+> +++ b/include/trace/events/pci_controller.h
+> @@ -0,0 +1,57 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +#undef TRACE_SYSTEM
+> +#define TRACE_SYSTEM pci_controller
 
-This should also be greatly simplified since you don't need to deal with
-hdmi_colorspace anymore, and thus you'll just be able to use the
-construct I hinted at in the previous version.
+I find putting this into "pci_controller" little odd as LTSSM is related 
+to PCIe links/ports. To me looks something that belongs to the existing 
+include/trace/events/pci.h.
 
-Maxime
+> +#if !defined(_TRACE_HW_EVENT_PCI_CONTROLLER_H) || defined(TRACE_HEADER_MULTI_READ)
+> +#define _TRACE_HW_EVENT_PCI_CONTROLLER_H
+> +
+> +#include <uapi/linux/pci_regs.h>
+> +#include <linux/tracepoint.h>
+> +
+> +TRACE_DEFINE_ENUM(PCIE_SPEED_2_5GT);
+> +TRACE_DEFINE_ENUM(PCIE_SPEED_5_0GT);
+> +TRACE_DEFINE_ENUM(PCIE_SPEED_8_0GT);
+> +TRACE_DEFINE_ENUM(PCIE_SPEED_16_0GT);
+> +TRACE_DEFINE_ENUM(PCIE_SPEED_32_0GT);
+> +TRACE_DEFINE_ENUM(PCIE_SPEED_64_0GT);
+> +TRACE_DEFINE_ENUM(PCI_SPEED_UNKNOWN);
+> +
+> +extern int pci_ltssm_tp_reg(void);
+> +extern void pci_ltssm_tp_unreg(void);
+> +
+> +TRACE_EVENT_FN(pcie_ltssm_state_transition,
+> +	TP_PROTO(const char *dev_name, const char *state, u32 rate),
+> +	TP_ARGS(dev_name, state, rate),
+> +
+> +	TP_STRUCT__entry(
+> +		__string(dev_name, dev_name)
+> +		__string(state, state)
+> +		__field(u32, rate)
+> +	),
+> +
+> +	TP_fast_assign(
+> +		__assign_str(dev_name);
+> +		__assign_str(state);
+> +		__entry->rate = rate;
+> +	),
+> +
+> +	TP_printk("dev: %s state: %s rate: %s",
+> +		__get_str(dev_name), __get_str(state),
+> +		__print_symbolic(__entry->rate,
+> +			{ PCIE_SPEED_2_5GT,  "2.5 GT/s" },
+> +			{ PCIE_SPEED_5_0GT,  "5.0 GT/s" },
+> +			{ PCIE_SPEED_8_0GT,  "8.0 GT/s" },
+> +			{ PCIE_SPEED_16_0GT, "16.0 GT/s" },
+> +			{ PCIE_SPEED_32_0GT, "32.0 GT/s" },
+> +			{ PCIE_SPEED_64_0GT, "64.0 GT/s" },
+> +			{ PCI_SPEED_UNKNOWN, "Unknown" }
 
---5cwb2y5kukdqwgqq
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaZ24fwAKCRAnX84Zoj2+
-dh+wAXwKmT5KayIifDoxyitEKWs6EiYUCC2SA4Bg4ruLTVA9Xs//EiWw+hYVo/kQ
-7bFTr10BgODaA1IvjwBbTyIPz0upLTeNeVbfqL/ghdTyMm5jaRR3hNM7V9lXYvtY
-SsWWbJGYdQ==
-=YUqC
------END PGP SIGNATURE-----
-
---5cwb2y5kukdqwgqq--
+Why are these done inline instead of using EM/EMe()? Or simply with
+pci_speed_string()?
 
 
---===============4861873187390659732==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Unrelated to this, sadly I failed to notice Shuai's version of 
+pcie_link_event() did not translate link speeds (my own version used 
+pci_speed_string()).
+
+> +		)
+> +	),
+> +
+> +	pci_ltssm_tp_reg, pci_ltssm_tp_unreg
+> +);
+> +
+> +#endif /* _TRACE_HW_EVENT_PCI_CONTROLLER_H */
+> +
+> +/* This part must be outside protection */
+> +#include <trace/define_trace.h>
+> 
+
+-- 
+ i.
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4861873187390659732==--
-
