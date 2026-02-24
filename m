@@ -4,60 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB2BF4BB64
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 17:29:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5124AF4BB65
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 17:41:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Mb1h+oBf/0g/sqeRXIzI7YkcDYqsBBsyfO8KgV9bW1A=; b=j3V1wRINrNRD342SK6wiNeINaf
-	7ENsLJ6TwKHz9OvEfIguB91Uo5lyS1Wv1N5M2WG7RbhrzIiH9KD7vaUSa74+FeGvn9CoCZAgmwMX9
-	Eu4uQNigG3jkgKZDeX1pcXAUXKzA6Nlh0UwOUuEB572MMekjn9Uf+Zxx0XsFANAacbOf9XUhBzqCL
-	WgTNMneAjbpHrM/YCPPQ2POQ2f2wjiHNXGHL52XdS8G27tnACflWqSpf8tcRq+PPF4poiZps7bqU1
-	c7DwHTcDiSxlPBg9gMunY8M8UAhH9VVek7ExFyO1g1Iv5fuy6VRGzL3FXkQkEi/OloEoZnSjF7Z8v
-	g0WQvRuA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=wm9EyyDsxo/Tq4cZnXf7FLDsPIsWnMMqhW9lveaZoyI=; b=UrvzSHty3c4x9F
+	y0DXzBq6yET65yHGwJ2xWdM1wysTJ08GuIz3GIzRRT6L2spA0BH/EolLfxFgoelQN1E1T/OsUrLy+
+	15ttIUIRuj/uJzGH+NkzT+yaW+pmobfQEHgcyk9bwwRg88p726vQZubqTxuM2ImU3ojPdw4yxa2XK
+	i4NiV7a7rNrLLuc+z71ddhgWXF6VEAOB3cdODM58J4hLcWy42eW0ExusJkkO5g8ZG3LXLBdI1X6XA
+	BXCZc0CgraHTRCqc3aBHlr4nmxiXMVBYPu+rZhEVqQtagJPLlNAZrGqEpD6k4js5pPR+XTLffOTd0
+	uM57ZS7zUs2G795iiSIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuwDh-00000002UXe-2EnT;
-	Tue, 24 Feb 2026 17:29:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vuwPp-00000002VK3-1Zxn;
+	Tue, 24 Feb 2026 17:41:45 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuwDf-00000002UXU-3PFF
+	id 1vuwPm-00000002VJj-42ZV
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Feb 2026 17:29:11 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D2157600AD;
-	Tue, 24 Feb 2026 17:29:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60BE9C116D0;
-	Tue, 24 Feb 2026 17:29:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771954150;
-	bh=pSGqZebvO3+aycQMfeI64m0G/5UvaBKl7jRANx8yJ/I=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=jZM9d1J8DoyrvyLJ0oc1B+mv3rXFoGSMx0ZL3qxSurA0IMb1iCGNbasMU7Ihcpbf7
-	 Gh0NfjeXVW5Jh0doKiPA2bpKQV3MlKSYZ+Ak3ta/zu7Y79pw/dUzkLSzem6ZLidtB7
-	 yOtCLmuDeMaPv1/ahTuGAyGo/1vM6dOC3Pq2cbDZxqal5eljxbwQ7USfRrA35Geo/t
-	 qql40er/LOfMqZv3KhZa556pFWxmtAW6UxzGfbfeGWcOSQDqs+RAzeCDCea1D4C1IA
-	 gZ2CYXex1uiADBx42P/ZwoIZYNXRdTcMh+6UT9kGQy+RuXDbdqfBGhmAdVUr8Eoj2Z
-	 MMM5rAjOUks8A==
-Date: Tue, 24 Feb 2026 11:29:09 -0600
-MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, krzk+dt@kernel.org, 
- linux-iio@vger.kernel.org, jic23@kernel.org, 
- Chris Morgan <macromorgan@hotmail.com>, devicetree@vger.kernel.org, 
- dlechner@baylibre.com, conor+dt@kernel.org, nuno.sa@analog.com, 
- jean-baptiste.maneyrol@tdk.com, heiko@sntech.de, andy@kernel.org
+	Tue, 24 Feb 2026 17:41:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1771954903; x=1803490903;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=36cqExmJ+xVEA46VvhswCFGe7wEAzemfq3PU9IFvDFY=;
+  b=cE7whtBj00/qHQKNe+voXe8S+gqkZSDai33JYwdXAOZKp66+f4uEzBQL
+   Zs6+ZSKtaUBsoytudcCjNV7zmV+1UPKdrCu4WVRWyIjvTdx3eNzhWe3xc
+   Ktf/roFvipYirHa1PvZc3TV2jEhPePUuu9y2wMh+QtLLf769Gnt2aK/R/
+   NXcqrZV8au8WigSvTv3p6faLnxLW4UA/8+sZ+Xkut8Z/Y6SfNIBhvMEWa
+   JsKkVWLQ9yzFCZpRngoOxfvHCiZZoA6AXksQqKyQovXam3Td0I4p1vHx9
+   iVvULoNKVHPviHNQfGUSwuHMuvHt4o+HwBDdmAzu6KEBK5i1ww+E+LibF
+   w==;
+X-CSE-ConnectionGUID: Eg0fRkyqQ62LyyUAlbGgBA==
+X-CSE-MsgGUID: KwLTN1C4SJGhw4RxDcgCig==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="73048868"
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; 
+   d="scan'208";a="73048868"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 09:41:42 -0800
+X-CSE-ConnectionGUID: nkutu3TqRFWpMN82IReoBQ==
+X-CSE-MsgGUID: hmwbiwOxSJOEXuUGE1Hn5w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; 
+   d="scan'208";a="215208062"
+Received: from egrumbac-mobl6.ger.corp.intel.com (HELO localhost) ([10.245.244.146])
+  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 09:41:39 -0800
+Date: Tue, 24 Feb 2026 19:41:35 +0200
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: Chris Morgan <macroalpha82@gmail.com>
-In-Reply-To: <20260224163109.370930-2-macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+	dlechner@baylibre.com, jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 0/3] Add Invensense ICM42607
+Message-ID: <aZ3iz18O3UEDTDqm@smile.fi.intel.com>
 References: <20260224163109.370930-1-macroalpha82@gmail.com>
- <20260224163109.370930-2-macroalpha82@gmail.com>
-Message-Id: <177195414948.3145595.4265112692565898282.robh@kernel.org>
-Subject: Re: [PATCH 1/3] dt-bindings: iio: imu: icm42607: Add devicetree
- binding
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260224163109.370930-1-macroalpha82@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260224_094143_014231_1BCB34C5 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,54 +86,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, Feb 24, 2026 at 10:31:02AM -0600, Chris Morgan wrote:
 
-On Tue, 24 Feb 2026 10:31:03 -0600, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add devicetree binding for the Invensense ICM42607 and Invensense
-> ICM42607P inertial measurement unit. This unit is a combined
-> accelerometer, gyroscope, and thermometer available via I2C or SPI.
-> 
-> This device is functionally very similar to the icm42600 series with a
-> very different register layout.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../bindings/iio/imu/invensense,icm42607.yaml | 92 +++++++++++++++++++
->  1 file changed, 92 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
-> 
+> Add support for the ICM42607 IMU. This sensor shares the same
+> functionality but a different register layout with the existing
+> ICM42600.
+> =
 
-My bot found errors running 'make dt_binding_check' on your patch:
+> This driver should work with the ICM42607 and ICM42607P over both I2C
+> and SPI, however only the ICM42607P over I2C could be tested.
 
-yamllint warnings/errors:
+Thanks for your contribution, but...
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml: 'maintainers' is a required property
-	hint: Metaschema for devicetree binding documentation
-	from schema $id: http://devicetree.org/meta-schemas/base.yaml
+NAK.
 
-doc reference errors (make refcheckdocs):
+It's unreviewable bulk out of 4kLoC! I even won't bother looking at any oth=
+er
+messages in this (too mini) series.
 
-See https://patchwork.kernel.org/project/devicetree/patch/20260224163109.370930-2-macroalpha82@gmail.com
+TL;DR: reviewable code is limited at ~750 (or less) =B1 150 LoC per patch.
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+-- =
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+With Best Regards,
+Andy Shevchenko
 
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
