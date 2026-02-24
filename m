@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FD18EFB818
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 09:03:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6E19EFB7F9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 09:31:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/i3BOHxSL6d8mCRsm42w0yO4ng9kuA4YY5EkODVqmcc=; b=xqcXyjmr6FSUjFOT+9IXYqeA44
-	GsiT2k5LFmz5f5DasgboakPX5C8sWlCYxXNllF/5kCi76GLnH8LKZJXwA29eqyX9zaJ69MtH6vk66
-	/boqbCFflWd1WiXasQK4l0nLEr8OzT74EAD3ZGqAxJ5AokwjYqPM/ovVUojWsuTOJUEi+rHZ4haq8
-	mRdC49smwOom951dZokjqZQYvH7xlkaFrPp6q0Z7tSiTtsZk7FfCJRu6ol7ICb62TRxzMNf85MNTV
-	68522CM5HCx/JrfDWVM9E3ks02YfblP6Lp7rAWtnxhWru6e5jC9X318msExPPVPlUNGlNxgnR13+i
-	e5CIg/aw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cA71HkhoYOR0AOEsNnNJtnEkvaPFzUGKMcQfM5vxJbc=; b=bF55wOXBoYWms8
+	k1K7+hhSLirVMJW2uoQ77ER5K45HRrhhAqjjvLQZmnNTJqt5G/ZGMYsANhCb7O+CX9h7t/8ZSZf//
+	9301HUmR9HuN4xrWvgCT9Nwg8/wIcFKwsQ4OVOso2tlolddWDatBLNIA44kukk0PCNGbBGuDB1OlP
+	+eOmHlTnvZt/tHpJANguZzHotHZXOSA6DnxKGeB6x2R627naZQyzvs7GpKxLznsEAvz+DabszFR8R
+	KkWVVpfcmFuFPjTcpu7P9LXiehqzo8X8hYw4qnn02yS+nmX0S8dnkxMxjDeQSDYDCqJkTEJmhpHaQ
+	dB1bHT/pxTtsNIM1BRhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuoKV-00000001hyy-1AXH;
-	Tue, 24 Feb 2026 09:03:43 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vuoky-00000001l3G-3ZcB;
+	Tue, 24 Feb 2026 09:31:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuoKT-00000001hyW-3wgc;
-	Tue, 24 Feb 2026 09:03:42 +0000
+	id 1vuokt-00000001l1K-2ktH
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Feb 2026 09:31:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EE51A60145;
-	Tue, 24 Feb 2026 09:03:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18FFBC116D0;
-	Tue, 24 Feb 2026 09:03:40 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F097D43FC9
+	for <linux-rockchip@lists.infradead.org>; Tue, 24 Feb 2026 09:30:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2C66C4AF09
+	for <linux-rockchip@lists.infradead.org>; Tue, 24 Feb 2026 09:30:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771923820;
-	bh=F66MvL8Ia7cFuSm/xIyKma6BJNqk8VAV91xYEJfDrVg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=EY0o15rcNpeohXzKzHiT9RXLl5kMeW1SU7uJP4j5vdBXUrNRY6a5C+/OcAjng08uR
-	 Rl6JkyaqdyQznw5IFlCczaP7rRSb8iAqrPn5VodGC6D/C1Z16P2UZmpcXL3BtEl3ze
-	 uenoEDKvbAopscHS02nSxIqf2ehtR7UtybzG2acv1jVBwJ8MQ4Ic1c6hxkhoiQTLSk
-	 IYPylxg2vmsIcFlPlIsnXjJ+NOrY3JIC5tvlamDn1EO6oFOtX7+PvItdWwHjUn9V7+
-	 FWNB14pxkA4x1NJNVz5TN6leROlqjT+1c+FYkRVroInPqD8Vumk+fEYE2ycDMpBREq
-	 E4Qsy059s6ndQ==
-Date: Tue, 24 Feb 2026 10:03:37 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Jani Nikula <jani.nikula@linux.intel.com>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Rodrigo Vivi <rodrigo.vivi@intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
-	Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	kernel@collabora.com, amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
-	linux-doc@vger.kernel.org, Andri Yngvason <andri@yngvason.is>, 
-	Werner Sembach <wse@tuxedocomputers.com>, Marius Vlad <marius.vlad@collabora.com>
-Subject: Re: [PATCH v8 02/20] drm: Add new general DRM property "color format"
-Message-ID: <20260224-rustling-provocative-lemming-b2ed2f@houat>
-References: <20260216-color-format-v8-0-5722ce175dd5@collabora.com>
- <20260216-color-format-v8-2-5722ce175dd5@collabora.com>
- <3b5e5af4219671c5b4ffdcb09bd22679332244ac@intel.com>
+	s=k20201202; t=1771925458;
+	bh=qFoSCUCgWPxot+zyIzeYtu7f0ut9mFHpqgCHWGjjgGM=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=mIdQGvENKyirm0I0WbhQANOO+Z0g5OknRWpF+j5J1bW0bYVbY2b57HH5fyJi15/yN
+	 iekaDjeGMnDnx5eMOKOQF3S4VCE5O0eLumRtHBW2QFyOBwau0DApAQspVvdjvVmFvQ
+	 Gf5DNTW95ovOUWqHDYU0B6vudj6h0PeECfX/fnMqU7WH5DFSrLEboKW/fjZKOwe2iB
+	 +b5Jse5UWkDXGlfq1yruRFq9QtW6tx2/7jmnzOL3ZYN9aCwkmBPBhkVkA6rMEmx/8J
+	 XXRZdK1pclyWrd3j/aBxiO7mqoipsfC1JgPYdl41wA4fnLCWGj4o43kdTiKpuNr93p
+	 rEZucbdiVpEOA==
+Received: by mail-yw1-f169.google.com with SMTP id 00721157ae682-79495b1aaa7so47004077b3.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Feb 2026 01:30:58 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AJvYcCX0dcbJTX4gXzMVS34+L86hUSOEgtzP5V0y8o1MndsgQuQf7eqH9J47wyiGXJrlkfUHz6hZb2tOddPIRE2D+Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxhWuZeEKdKCkv3ULCxeT/ne/szO2k7ZzH0YpLa8nxvdhgCymTR
+	dKSkE+3jxg1SjKlKtjbG9CRdtL4f9qp1rAywV/xDFnT6aO8bnkqgosvxwe3/w9teoQ7Q8+bME8N
+	OY7tB38hDjp5GWgtmZFEYsoJAzJwbwqs=
+X-Received: by 2002:a05:690c:2701:b0:794:7866:263a with SMTP id
+ 00721157ae682-79828ef26a8mr110201917b3.10.1771925458159; Tue, 24 Feb 2026
+ 01:30:58 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <3b5e5af4219671c5b4ffdcb09bd22679332244ac@intel.com>
+References: <20260223105717.48779-2-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260223105717.48779-2-krzysztof.kozlowski@oss.qualcomm.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Tue, 24 Feb 2026 10:30:47 +0100
+X-Gmail-Original-Message-ID: <CAD++jLmow3f-_W9hCRDHBjxUkVbS96ssnPchPfGxXNbSgrJyWg@mail.gmail.com>
+X-Gm-Features: AaiRm50enX858ywcuPInWGfUc9Lmz7V_abesy4_4DNC9RBPnw7kMzwtulXV191A
+Message-ID: <CAD++jLmow3f-_W9hCRDHBjxUkVbS96ssnPchPfGxXNbSgrJyWg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: rockchip: Fix configuring a deferred pin
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, David Lechner <dlechner@baylibre.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260224_013101_517191_C256A5F0 
+X-CRM114-Status: GOOD (  10.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,185 +78,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6295648195332876523=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6295648195332876523==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="36zlw2efj76bnmz3"
-Content-Disposition: inline
-
-
---36zlw2efj76bnmz3
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v8 02/20] drm: Add new general DRM property "color format"
-MIME-Version: 1.0
-
-Hi Jani,
-
-On Mon, Feb 23, 2026 at 06:17:23PM +0200, Jani Nikula wrote:
-> On Mon, 16 Feb 2026, Nicolas Frattaroli <nicolas.frattaroli@collabora.com=
-> wrote:
-> > +/**
-> > + * enum drm_color_format_enum - color model description
-> > + *
-> > + * This enum is a high-level description of the component makeup of th=
-e image
-> > + * data. It says nothing about how the components are ordered or how m=
-any bits
-> > + * they take up (i.e. is unlike MEDIA_BUS_FMT\_ or DRM_FORMAT\_), but
-> > + * describes the type of components (Luminance-Chrominance vs. RGB) an=
-d the
-> > + * sub-sampling.
-> > + *
-> > + * &enum drm_color_format_enum makes statements about the same attribu=
-te of
-> > + * an image as the DRM_COLOR_FORMAT\_ bitfields do. Its purpose is to =
-inform
-> > + * choices made by display protocol specific implementations when it c=
-omes to
-> > + * translating it to e.g. &enum hdmi_colorspace or &enum dp_pixelforma=
-t, both
-> > + * of which also describe the same attribute of the image at the same =
-level of
-> > + * specificity.
-> > + *
-> > + * In precise terms, this enum describes a color model. It makes no st=
-atements
-> > + * about the primaries, gamma, or current phase of the moon used in co=
-nversion
-> > + * from one to the other. Furthermore, it also makes no statements abo=
-ut the
-> > + * order of components (e.g. RGB vs. BGR), their depth in bits, or the=
-ir binary
-> > + * packing.
-> > + */
-> > +enum drm_color_format_enum {
->=20
-> The enum name should not have "enum" in it. That's just not a style
-> that's being used.
->=20
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_AUTO: The choice of format is left up to the
-> > +	 * display protocol implementation. All implementations of the same
-> > +	 * display protocol (e.g. HDMI) are supposed to behave the same way,
-> > +	 * though display protocols may choose to behave differently compared=
- to
-> > +	 * each other (e.g. HDMI's "AUTO" does not have to match DP's "AUTO").
-> > +	 *
-> > +	 * Implementations may rely on @DRM_COLOR_FORMAT_ENUM_AUTO to be fals=
-y.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_AUTO =3D 0,
->=20
-> Ditto for the enumeration names, no ENUM in them please.
->=20
-> > +
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_RGB444: Image components are encoded as RGB
-> > +	 * values of equal resolution.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_RGB444,
-> > +
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_YCBCR444: Image components are encoded as
-> > +	 * luminance and chrominance of equal resolution.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_YCBCR444,
-> > +
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_YCBCR422: Image components are encoded as
-> > +	 * luminance and chrominance with the chrominance components having h=
-alf
-> > +	 * the horizontal resolution.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_YCBCR422,
-> > +
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_YCBCR420: Image components are encoded as
-> > +	 * luminance and chrominance with the chrominance components having h=
-alf
-> > +	 * the horizontal and vertical resolution.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_YCBCR420,
-> > +
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_NUM: The number of valid color format values
-> > +	 * in this enum. Itself not a valid color format.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_NUM,
-> > +
-> > +	/**
-> > +	 * @DRM_COLOR_FORMAT_ENUM_INVALID: Error return value for conversion
-> > +	 * functions encountering unexpected inputs.
-> > +	 */
-> > +	DRM_COLOR_FORMAT_ENUM_INVALID =3D -EINVAL,
->=20
-> Please don't hide negative error codes inside enums. If you need to
-> return one from a function, please return the negative error code
-> directly instead.
->=20
-> > +};
-> > +
-> > +/*
-> > + * Constants for specifying bit masks for e.g. providing a list of sup=
-ported
-> > + * color formats as a single integer.
-> > + */
-> > +#define DRM_COLOR_FORMAT_RGB444		BIT(0)
-> > +#define DRM_COLOR_FORMAT_YCBCR444	BIT(1)
-> > +#define DRM_COLOR_FORMAT_YCBCR422	BIT(2)
-> > +#define DRM_COLOR_FORMAT_YCBCR420	BIT(3)
->=20
-> I don't think we should define both enum and mask. One or the
-> other. Moreover, now you have two independent definitions for the same
-> thing, with nothing to ensure they keep matching. It's a bug waiting to
-> happen.
->=20
-> I think the problem is that they were originally defined as bits even
-> though most places actually use them as single values only. It's
-> confusing. It would probably have been better to just use enums and
-> BIT(DRM_COLOR_FORMAT_*) where a mask is needed.
->=20
-> Maybe that's what should be done as the first step anyway.
-
-I largely agree with the sentiment, and can extend it to the
-HDMI_COLORSPACE used in drm_connector_hdmi_state.
-
-I've been working since yesterday on fixing that up to make Nicolas'
-life easier. I'll post it sometime today.
-
-Maxime
-
---36zlw2efj76bnmz3
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaZ1paQAKCRAnX84Zoj2+
-dhj+AYCJxRTvr7o7P0A0JR9ICn8LRGV7zoUZ6CpFzW+1A23VNzGrMHwlhRmfhyfX
-tIXqxK4BgKdTepytTJVLjkyW62yHxmDFSIGl3zjxOOEMlvvU+yKc/TvA/GTUDyqw
-nc1ZuwKhKg==
-=86U0
------END PGP SIGNATURE-----
-
---36zlw2efj76bnmz3--
-
-
---===============6295648195332876523==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6295648195332876523==--
-
+T24gTW9uLCBGZWIgMjMsIDIwMjYgYXQgMTE6NTfigK9BTSBLcnp5c3p0b2YgS296bG93c2tpCjxr
+cnp5c3p0b2Yua296bG93c2tpQG9zcy5xdWFsY29tbS5jb20+IHdyb3RlOgoKPiBDb21taXQgZTJj
+NThjYmUzYWZmICgicGluY3RybDogcm9ja2NoaXA6IFNpbXBsaWZ5IGxvY2tpbmcgd2l0aAo+IHNj
+b3BlZF9ndWFyZCgpIikgYWRkZWQgYSBzY29wZWRfZ3VhcmQoKSBvdmVyIGV4aXN0aW5nIGNvZGUg
+Y29udGFpbmluZyBhCj4gImJyZWFrIiBpbnN0cnVjdGlvbi4gIFRoYXQgImJyZWFrIiB3YXMgZm9y
+IHRoZSBvdXRlciAoZXhpc3RpbmcpCj4gZm9yLWxvb3AsIHdoaWNoIG5vdyBleGl0cyBpbm5lciwg
+c2NvcGVkX2d1YXJkKCkgbG9vcC4gIElmIEdQSU8gZHJpdmVyCj4gZGlkIG5vdCBwcm9iZSwgdGhl
+biBkcml2ZXIgd2lsbCBub3QgYmFpbCBvdXQsIGJ1dCBpbnN0ZWFkIGNvbnRpbnVlIHRvCj4gY29u
+ZmlndXJlIHRoZSBwaW4uCj4KPiBGaXggdGhlIGlzc3VlIGJ5IHNpbXBsaWZ5aW5nIHRoZSBjb2Rl
+IC0gdGhlIGJyZWFrIGluIG9yaWdpbmFsIGNvZGUgd2FzCj4gbGVhZGluZyBkaXJlY3RseSB0byBl
+bmQgb2YgdGhlIGZ1bmN0aW9uIHJldHVybmluZyAwLCB0aHVzIHdlIGNhbiBzaW1wbHkKPiByZXR1
+cm4gaGVyZSByb2NrY2hpcF9waW5jb25mX2RlZmVyX3BpbiBzdGF0dXMuCj4KPiBSZXBvcnRlZC1i
+eTogRGF2aWQgTGVjaG5lciA8ZGxlY2huZXJAYmF5bGlicmUuY29tPgo+IENsb3NlczogaHR0cHM6
+Ly9sb3JlLmtlcm5lbC5vcmcvci9mNWIzODk0Mi1hNTg0LTRlNzgtYTg5My1kZTRhMjE5MDcwYjJA
+YmF5bGlicmUuY29tLwo+IEZpeGVzOiBlMmM1OGNiZTNhZmYgKCJwaW5jdHJsOiByb2NrY2hpcDog
+U2ltcGxpZnkgbG9ja2luZyB3aXRoIHNjb3BlZF9ndWFyZCgpIikKPiBTaWduZWQtb2ZmLWJ5OiBL
+cnp5c3p0b2YgS296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQG9zcy5xdWFsY29tbS5jb20+
+CgpQYXRjaCBhcHBsaWVkIGZvciBmaXhlcyEKCllvdXJzLApMaW51cyBXYWxsZWlqCgpfX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBt
+YWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlz
+dHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
