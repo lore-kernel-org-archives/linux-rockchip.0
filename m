@@ -4,63 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AC4DF3C99B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 15:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 059D2F3C99E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 15:46:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TcufZ/o6NXlR92la2Zvv+kRksYjSN8sB9/O4XXw2uz0=; b=1dHkjEK2kLHS8y
-	9N3Z29lJsv/Mo/CW8mIMHC26OHB+vKvXom0880ElbpB4c+2em8933BeCLgrPK0w+oATULIEPZu4xM
-	ReAF0VG1Ob+CAbPMiPaqBX//+N/lQVcgCQYtBygwxnsP751KvmKuLzcINrjKx3Iw4BnO0PO7FnFPj
-	NDUmJCYFSlbRmgBelVsRwMZCRQAxKeVaFTbJ84813+eAvWDn7fo4tP7CP9gz8GaQR+uBD8x5s9SrZ
-	Las8syDkH4T26KMA7xFVqKIjplCboyXp/Yz3vmPrHNSh7a9MzEPmLaYC0Ekqi54el6v6mqq0KU8Hb
-	XR8Dew6mQYzRK00c4/ag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	References:Message-ID:In-Reply-To:Subject:cc:To:Date:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=W1uEWMy64RzQgtYmFtr397pZ1Z+TCmsNC56aQqayhDo=; b=juWtP+IPzppfKy9bh6VqTr1i8o
+	h13el5iAzIaz0/KkUWkH9Zzl7S1oGF8sKKm++FrRD0eITWN5JViLgfnpg6isFxFosToWeOvxKwRub
+	s1ojeO5Dy5JPJ4o37+3HFu3UuShwHNuL07pjdWN//kgfQALA5hr08qU+sHE6gz67sclmdITfRlC/5
+	AKhSBdyLRJXSqQzZpuXZJAm6EsbSMfh1Wz60M40fCK0kwAYlhll0PMm1Yiw8+U2WFjrS12NB8w2jx
+	ICILCbLnHOUypASipQRjnIvfCd+bfJMlLsIvNM0yyFxhk2QiG48pMe1hgsdadAFN0LJa61M8qLa6X
+	7QNPXXfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuuS0-00000002KS4-0fdQ;
-	Tue, 24 Feb 2026 15:35:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vuucR-00000002Kz5-247L;
+	Tue, 24 Feb 2026 15:46:39 +0000
+Received: from mgamail.intel.com ([198.175.65.10])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuuRx-00000002KQu-3vaJ
+	id 1vuucP-00000002Kya-0VeX
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Feb 2026 15:35:51 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 52EC344431;
-	Tue, 24 Feb 2026 15:35:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82233C19424;
-	Tue, 24 Feb 2026 15:35:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771947348;
-	bh=WpwKlaebWR4y1cwdjQe0HmE8Po31GkU2s9iBWz5Mo3w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pb6SSlpU/FL6ZiVfH47AMvEyY9JBb0VyStQ+G6W8MKza+URnRQ0MHEQykvKaP6rit
-	 NMuoGmoQ9SyH7bfbRQXK3lg4bYynaIOdC5Od+jqR8FG5UPvN+Hi15IcEagJp/Mmn4f
-	 54FgI+San7AQ0MJVJspyDaOM7+u5bvWW1X/Z9lqP9CMpp2sBzdGVItRmMx4Fgayqs2
-	 P5Z6v4f8yFN7gEj3si80cEQlmcJ+0tWXQly38Qe6a4TGJA+j+GSt35y3H3IMJZhCd7
-	 iJiTzEBEgU5ugXZyGeeVsX0qFymgKQz7uF8LUO5v1q76uPQHTx+uFU5d9VI0WzRqWx
-	 vELZoAdVAGRYA==
-Date: Tue, 24 Feb 2026 21:05:38 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, 
-	linux-trace-kernel@vger.kernel.org, linux-doc@vger.kernel.org, Steven Rostedt <rostedt@goodmis.org>, 
-	Masami Hiramatsu <mhiramat@kernel.org>
+	Tue, 24 Feb 2026 15:46:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1771947997; x=1803483997;
+  h=from:date:to:cc:subject:in-reply-to:message-id:
+   references:mime-version;
+  bh=VYN04sJprWrkFA4cwUj5TgFvwHyMtnyDZDD0bnLfwhg=;
+  b=NW3fRI93nuNY7Kks8YOZQlZ0wQNgG5GtQVKth7yLPgE+l9na8V8Va3+j
+   VILq85nTwTDdMDwtdVT6Y8oA6jVs4Qie82sgjXxVBzdXSXS65ruVHZEst
+   dN/TxBHdC0dipZ0Bmr73ip4LjbA+hL3EIAaCsIt/m9sFH3cDJ/5k/o3Ud
+   ePwYDaLp35SyxS1Xs3G3JEIoKE9jy8En7FUmxHEmrNUZTLudK94yADddN
+   igZ4+zfzYheni/FCXtdU/kMwTpw1xWdGsimtrsXzJhRzQ+7v+6kS8m0FN
+   UXQ+mNG8NBHnt0pDwl/Df/aTOYKCu6p8sGv9gFc8tCUVFScPN+NO96oKb
+   g==;
+X-CSE-ConnectionGUID: vQ9SDQEkQ7S5s2l0oJzpyA==
+X-CSE-MsgGUID: LZMQEZ+qR3OZ4tltxm/jmQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="90385395"
+X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
+   d="scan'208";a="90385395"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 07:46:36 -0800
+X-CSE-ConnectionGUID: +Wgeobq1QgyikKD6DWFKzw==
+X-CSE-MsgGUID: UtSYK39EQ+a8HtZY7FpQHA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
+   d="scan'208";a="215954220"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.133])
+  by orviesa008-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 07:46:32 -0800
+From: =?UTF-8?q?Ilpo=20J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>
+Date: Tue, 24 Feb 2026 17:46:29 +0200 (EET)
+To: Manivannan Sadhasivam <mani@kernel.org>
+cc: Shawn Lin <shawn.lin@rock-chips.com>, Bjorn Helgaas <bhelgaas@google.com>, 
+    linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, 
+    linux-trace-kernel@vger.kernel.org, linux-doc@vger.kernel.org, 
+    Steven Rostedt <rostedt@goodmis.org>, 
+    Masami Hiramatsu <mhiramat@kernel.org>
 Subject: Re: [PATCH v4 1/3] PCI: trace: Add PCI controller LTSSM transition
  tracepoint
-Message-ID: <2sgfbgsgrbztqadhzz6wf6b7j2lmyzmhwugr3tycsjeaik5xdz@ncehsafpi2y5>
-References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com>
- <1769047340-113287-2-git-send-email-shawn.lin@rock-chips.com>
- <7d195f03-978a-2d0d-acdf-e583e68377f2@linux.intel.com>
+In-Reply-To: <2sgfbgsgrbztqadhzz6wf6b7j2lmyzmhwugr3tycsjeaik5xdz@ncehsafpi2y5>
+Message-ID: <75b206bb-7fcd-2f59-4181-1839ba5aa8e4@linux.intel.com>
+References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com> <1769047340-113287-2-git-send-email-shawn.lin@rock-chips.com> <7d195f03-978a-2d0d-acdf-e583e68377f2@linux.intel.com> <2sgfbgsgrbztqadhzz6wf6b7j2lmyzmhwugr3tycsjeaik5xdz@ncehsafpi2y5>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <7d195f03-978a-2d0d-acdf-e583e68377f2@linux.intel.com>
+Content-Type: multipart/mixed; boundary="8323328-630235247-1771947989=:1751"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_073550_033058_AEB43639 
-X-CRM114-Status: GOOD (  28.97  )
+X-CRM114-CacheID: sfid-20260224_074637_259343_DC4CA1B5 
+X-CRM114-Status: GOOD (  30.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,102 +83,209 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBGZWIgMjQsIDIwMjYgYXQgMDU6MjI6MzVQTSArMDIwMCwgSWxwbyBKw6RydmluZW4g
-d3JvdGU6Cj4gT24gVGh1LCAyMiBKYW4gMjAyNiwgU2hhd24gTGluIHdyb3RlOgo+IAo+ID4gU29t
-ZSBwbGF0Zm9ybXMgbWF5IHByb3ZpZGUgTFRTU00gdHJhY2UgZnVuY3Rpb25hbGl0eSwgcmVjb3Jk
-aW5nIGhpc3RvcmljYWwKPiA+IExUU1NNIHN0YXRlIHRyYW5zaXRpb24gaW5mb3JtYXRpb24uIFRo
-aXMgaXMgdmVyeSB1c2VmdWwgZm9yIGRlYnVnZ2luZywgc3VjaAo+ID4gYXMgd2hlbiBjZXJ0YWlu
-IGRldmljZXMgY2Fubm90IGJlIHJlY29nbml6ZWQgb3IgbGluayBicm9rZW4gZHVyaW5nIHRlc3Qu
-Cj4gPiBJbXBsZW1lbnQgdGhlIHBjaSBjb250cm9sbGVyIHRyYWNlcG9pbnQgZm9yIHJlY29yZGlu
-ZyBMVFNTTSBhbmQgcmF0ZS4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3
-bi5saW5Acm9jay1jaGlwcy5jb20+Cj4gPiAtLS0KPiA+IAo+ID4gQ2hhbmdlcyBpbiB2NDoKPiA+
-IC0gdXNlIFRSQUNFX0VWRU5UX0ZOIHRvIG5vdGlmeSB3aGVuIHRvIHN0YXJ0IGFuZCBzdG9wIHRo
-ZSB0cmFjZXBvaW50LAo+ID4gICBhbmQgZXhwb3J0IHBjaV9sdHNzbV90cF9lbmFibGVkKCkgZm9y
-IGhvc3QgZHJpdmVycyB0byB1c2UKPiA+IAo+ID4gQ2hhbmdlcyBpbiB2MzoKPiA+IC0gYWRkIFRS
-QUNFX0RFRklORV9FTlVNIGZvciBhbGwgZW51bXMoU3RldmVuIFJvc3RlZHQpCj4gPiAKPiA+IENo
-YW5nZXMgaW4gdjI6IE5vbmUKPiA+IAo+ID4gIGRyaXZlcnMvcGNpL3RyYWNlLmMgICAgICAgICAg
-ICAgICAgICAgfCAyMCArKysrKysrKysrKysKPiA+ICBpbmNsdWRlL2xpbnV4L3BjaS5oICAgICAg
-ICAgICAgICAgICAgIHwgIDQgKysrCj4gPiAgaW5jbHVkZS90cmFjZS9ldmVudHMvcGNpX2NvbnRy
-b2xsZXIuaCB8IDU3ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrCj4gPiAgMyBm
-aWxlcyBjaGFuZ2VkLCA4MSBpbnNlcnRpb25zKCspCj4gPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGlu
-Y2x1ZGUvdHJhY2UvZXZlbnRzL3BjaV9jb250cm9sbGVyLmgKPiA+IAo+ID4gZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvcGNpL3RyYWNlLmMgYi9kcml2ZXJzL3BjaS90cmFjZS5jCj4gPiBpbmRleCBjZjEx
-YWJjLi5kMzUxYTUxIDEwMDY0NAo+ID4gLS0tIGEvZHJpdmVycy9wY2kvdHJhY2UuYwo+ID4gKysr
-IGIvZHJpdmVycy9wY2kvdHJhY2UuYwo+ID4gQEAgLTksMyArOSwyMyBAQAo+ID4gIAo+ID4gICNk
-ZWZpbmUgQ1JFQVRFX1RSQUNFX1BPSU5UUwo+ID4gICNpbmNsdWRlIDx0cmFjZS9ldmVudHMvcGNp
-Lmg+Cj4gPiArI2luY2x1ZGUgPHRyYWNlL2V2ZW50cy9wY2lfY29udHJvbGxlci5oPgo+ID4gKwo+
-ID4gK3N0YXRpYyBhdG9taWNfdCBwY2llX2x0c3NtX3RwX2VuYWJsZWQgPSBBVE9NSUNfSU5JVCgw
-KTsKPiA+ICsKPiA+ICtib29sIHBjaV9sdHNzbV90cF9lbmFibGVkKHZvaWQpCj4gPiArewo+ID4g
-KwlyZXR1cm4gYXRvbWljX3JlYWQoJnBjaWVfbHRzc21fdHBfZW5hYmxlZCkgPiAwOwo+ID4gK30K
-PiA+ICtFWFBPUlRfU1lNQk9MKHBjaV9sdHNzbV90cF9lbmFibGVkKTsKPiA+ICsKPiA+ICtpbnQg
-cGNpX2x0c3NtX3RwX3JlZyh2b2lkKQo+ID4gK3sKPiA+ICsJYXRvbWljX2luYygmcGNpZV9sdHNz
-bV90cF9lbmFibGVkKTsKPiA+ICsJcmV0dXJuIDA7Cj4gPiArfQo+ID4gKwo+ID4gK3ZvaWQgcGNp
-X2x0c3NtX3RwX3VucmVnKHZvaWQpCj4gPiArewo+ID4gKwlhdG9taWNfZGVjKCZwY2llX2x0c3Nt
-X3RwX2VuYWJsZWQpOwo+ID4gK30KPiA+IGRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L3BjaS5o
-IGIvaW5jbHVkZS9saW51eC9wY2kuaAo+ID4gaW5kZXggZTdjYjUyNy4uYWMyNWEzZSAxMDA2NDQK
-PiA+IC0tLSBhL2luY2x1ZGUvbGludXgvcGNpLmgKPiA+ICsrKyBiL2luY2x1ZGUvbGludXgvcGNp
-LmgKPiA+IEBAIC0yNzcwLDYgKzI3NzAsMTAgQEAgc3RhdGljIGlubGluZSBzdHJ1Y3QgZWVoX2Rl
-diAqcGNpX2Rldl90b19lZWhfZGV2KHN0cnVjdCBwY2lfZGV2ICpwZGV2KQo+ID4gIH0KPiA+ICAj
-ZW5kaWYKPiA+ICAKPiA+ICsjaWZkZWYgQ09ORklHX1RSQUNJTkcKPiA+ICtib29sIHBjaV9sdHNz
-bV90cF9lbmFibGVkKHZvaWQpOwo+ID4gKyNlbmRpZgo+ID4gKwo+ID4gIHZvaWQgcGNpX2FkZF9k
-bWFfYWxpYXMoc3RydWN0IHBjaV9kZXYgKmRldiwgdTggZGV2Zm5fZnJvbSwgdW5zaWduZWQgbnJf
-ZGV2Zm5zKTsKPiA+ICBib29sIHBjaV9kZXZzX2FyZV9kbWFfYWxpYXNlcyhzdHJ1Y3QgcGNpX2Rl
-diAqZGV2MSwgc3RydWN0IHBjaV9kZXYgKmRldjIpOwo+ID4gIGludCBwY2lfZm9yX2VhY2hfZG1h
-X2FsaWFzKHN0cnVjdCBwY2lfZGV2ICpwZGV2LAo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUvdHJh
-Y2UvZXZlbnRzL3BjaV9jb250cm9sbGVyLmggYi9pbmNsdWRlL3RyYWNlL2V2ZW50cy9wY2lfY29u
-dHJvbGxlci5oCj4gPiBuZXcgZmlsZSBtb2RlIDEwMDY0NAo+ID4gaW5kZXggMDAwMDAwMC4uZGI0
-YTk2MAo+ID4gLS0tIC9kZXYvbnVsbAo+ID4gKysrIGIvaW5jbHVkZS90cmFjZS9ldmVudHMvcGNp
-X2NvbnRyb2xsZXIuaAo+ID4gQEAgLTAsMCArMSw1NyBAQAo+ID4gKy8qIFNQRFgtTGljZW5zZS1J
-ZGVudGlmaWVyOiBHUEwtMi4wICovCj4gPiArI3VuZGVmIFRSQUNFX1NZU1RFTQo+ID4gKyNkZWZp
-bmUgVFJBQ0VfU1lTVEVNIHBjaV9jb250cm9sbGVyCj4gCj4gSSBmaW5kIHB1dHRpbmcgdGhpcyBp
-bnRvICJwY2lfY29udHJvbGxlciIgbGl0dGxlIG9kZCBhcyBMVFNTTSBpcyByZWxhdGVkIAo+IHRv
-IFBDSWUgbGlua3MvcG9ydHMuIFRvIG1lIGxvb2tzIHNvbWV0aGluZyB0aGF0IGJlbG9uZ3MgdG8g
-dGhlIGV4aXN0aW5nIAo+IGluY2x1ZGUvdHJhY2UvZXZlbnRzL3BjaS5oLgo+IAoKSSBzdWdnZXN0
-ZWQgJ3BjaV9jb250cm9sbGVyLmgnIHNpbmNlIHRoZXNlIHRyYWNlcG9pbnRzIGFyZSBvbmx5IGdv
-aW5nIHRvIGJlIHVzZWQKYnkgdGhlIGNvbnRyb2xsZXIgZHJpdmVycy4gUHV0dGluZyBpdCB1bmRl
-ciAncGNpLmgnIHdpbGwgaW1wbHkgdGhhdCB0aGVzZSBjYW4gYmUKdXNlZCBieSB0aGUgY2xpZW50
-IGRyaXZlcnMgYWxzby4KCi0gTWFuaQoKPiA+ICsjaWYgIWRlZmluZWQoX1RSQUNFX0hXX0VWRU5U
-X1BDSV9DT05UUk9MTEVSX0gpIHx8IGRlZmluZWQoVFJBQ0VfSEVBREVSX01VTFRJX1JFQUQpCj4g
-PiArI2RlZmluZSBfVFJBQ0VfSFdfRVZFTlRfUENJX0NPTlRST0xMRVJfSAo+ID4gKwo+ID4gKyNp
-bmNsdWRlIDx1YXBpL2xpbnV4L3BjaV9yZWdzLmg+Cj4gPiArI2luY2x1ZGUgPGxpbnV4L3RyYWNl
-cG9pbnQuaD4KPiA+ICsKPiA+ICtUUkFDRV9ERUZJTkVfRU5VTShQQ0lFX1NQRUVEXzJfNUdUKTsK
-PiA+ICtUUkFDRV9ERUZJTkVfRU5VTShQQ0lFX1NQRUVEXzVfMEdUKTsKPiA+ICtUUkFDRV9ERUZJ
-TkVfRU5VTShQQ0lFX1NQRUVEXzhfMEdUKTsKPiA+ICtUUkFDRV9ERUZJTkVfRU5VTShQQ0lFX1NQ
-RUVEXzE2XzBHVCk7Cj4gPiArVFJBQ0VfREVGSU5FX0VOVU0oUENJRV9TUEVFRF8zMl8wR1QpOwo+
-ID4gK1RSQUNFX0RFRklORV9FTlVNKFBDSUVfU1BFRURfNjRfMEdUKTsKPiA+ICtUUkFDRV9ERUZJ
-TkVfRU5VTShQQ0lfU1BFRURfVU5LTk9XTik7Cj4gPiArCj4gPiArZXh0ZXJuIGludCBwY2lfbHRz
-c21fdHBfcmVnKHZvaWQpOwo+ID4gK2V4dGVybiB2b2lkIHBjaV9sdHNzbV90cF91bnJlZyh2b2lk
-KTsKPiA+ICsKPiA+ICtUUkFDRV9FVkVOVF9GTihwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb24s
-Cj4gPiArCVRQX1BST1RPKGNvbnN0IGNoYXIgKmRldl9uYW1lLCBjb25zdCBjaGFyICpzdGF0ZSwg
-dTMyIHJhdGUpLAo+ID4gKwlUUF9BUkdTKGRldl9uYW1lLCBzdGF0ZSwgcmF0ZSksCj4gPiArCj4g
-PiArCVRQX1NUUlVDVF9fZW50cnkoCj4gPiArCQlfX3N0cmluZyhkZXZfbmFtZSwgZGV2X25hbWUp
-Cj4gPiArCQlfX3N0cmluZyhzdGF0ZSwgc3RhdGUpCj4gPiArCQlfX2ZpZWxkKHUzMiwgcmF0ZSkK
-PiA+ICsJKSwKPiA+ICsKPiA+ICsJVFBfZmFzdF9hc3NpZ24oCj4gPiArCQlfX2Fzc2lnbl9zdHIo
-ZGV2X25hbWUpOwo+ID4gKwkJX19hc3NpZ25fc3RyKHN0YXRlKTsKPiA+ICsJCV9fZW50cnktPnJh
-dGUgPSByYXRlOwo+ID4gKwkpLAo+ID4gKwo+ID4gKwlUUF9wcmludGsoImRldjogJXMgc3RhdGU6
-ICVzIHJhdGU6ICVzIiwKPiA+ICsJCV9fZ2V0X3N0cihkZXZfbmFtZSksIF9fZ2V0X3N0cihzdGF0
-ZSksCj4gPiArCQlfX3ByaW50X3N5bWJvbGljKF9fZW50cnktPnJhdGUsCj4gPiArCQkJeyBQQ0lF
-X1NQRUVEXzJfNUdULCAgIjIuNSBHVC9zIiB9LAo+ID4gKwkJCXsgUENJRV9TUEVFRF81XzBHVCwg
-ICI1LjAgR1QvcyIgfSwKPiA+ICsJCQl7IFBDSUVfU1BFRURfOF8wR1QsICAiOC4wIEdUL3MiIH0s
-Cj4gPiArCQkJeyBQQ0lFX1NQRUVEXzE2XzBHVCwgIjE2LjAgR1QvcyIgfSwKPiA+ICsJCQl7IFBD
-SUVfU1BFRURfMzJfMEdULCAiMzIuMCBHVC9zIiB9LAo+ID4gKwkJCXsgUENJRV9TUEVFRF82NF8w
-R1QsICI2NC4wIEdUL3MiIH0sCj4gPiArCQkJeyBQQ0lfU1BFRURfVU5LTk9XTiwgIlVua25vd24i
-IH0KPiAKPiBXaHkgYXJlIHRoZXNlIGRvbmUgaW5saW5lIGluc3RlYWQgb2YgdXNpbmcgRU0vRU1l
-KCk/IE9yIHNpbXBseSB3aXRoCj4gcGNpX3NwZWVkX3N0cmluZygpPwo+IAo+IAo+IFVucmVsYXRl
-ZCB0byB0aGlzLCBzYWRseSBJIGZhaWxlZCB0byBub3RpY2UgU2h1YWkncyB2ZXJzaW9uIG9mIAo+
-IHBjaWVfbGlua19ldmVudCgpIGRpZCBub3QgdHJhbnNsYXRlIGxpbmsgc3BlZWRzIChteSBvd24g
-dmVyc2lvbiB1c2VkIAo+IHBjaV9zcGVlZF9zdHJpbmcoKSkuCj4gCj4gPiArCQkpCj4gPiArCSks
-Cj4gPiArCj4gPiArCXBjaV9sdHNzbV90cF9yZWcsIHBjaV9sdHNzbV90cF91bnJlZwo+ID4gKyk7
-Cj4gPiArCj4gPiArI2VuZGlmIC8qIF9UUkFDRV9IV19FVkVOVF9QQ0lfQ09OVFJPTExFUl9IICov
-Cj4gPiArCj4gPiArLyogVGhpcyBwYXJ0IG11c3QgYmUgb3V0c2lkZSBwcm90ZWN0aW9uICovCj4g
-PiArI2luY2x1ZGUgPHRyYWNlL2RlZmluZV90cmFjZS5oPgo+ID4gCj4gCj4gLS0gCj4gIGkuCj4g
-CgotLSAK4K6u4K6j4K6/4K614K6j4K+N4K6j4K6p4K+NIOCumuCupOCuvuCumuCuv+CuteCuruCv
-jQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
-cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
-aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
-cAo=
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--8323328-630235247-1771947989=:1751
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: QUOTED-PRINTABLE
+
+On Tue, 24 Feb 2026, Manivannan Sadhasivam wrote:
+
+> On Tue, Feb 24, 2026 at 05:22:35PM +0200, Ilpo J=C3=A4rvinen wrote:
+> > On Thu, 22 Jan 2026, Shawn Lin wrote:
+> >=20
+> > > Some platforms may provide LTSSM trace functionality, recording histo=
+rical
+> > > LTSSM state transition information. This is very useful for debugging=
+, such
+> > > as when certain devices cannot be recognized or link broken during te=
+st.
+> > > Implement the pci controller tracepoint for recording LTSSM and rate.
+> > >=20
+> > > Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> > > ---
+> > >=20
+> > > Changes in v4:
+> > > - use TRACE_EVENT_FN to notify when to start and stop the tracepoint,
+> > >   and export pci_ltssm_tp_enabled() for host drivers to use
+> > >=20
+> > > Changes in v3:
+> > > - add TRACE_DEFINE_ENUM for all enums(Steven Rostedt)
+> > >=20
+> > > Changes in v2: None
+> > >=20
+> > >  drivers/pci/trace.c                   | 20 ++++++++++++
+> > >  include/linux/pci.h                   |  4 +++
+> > >  include/trace/events/pci_controller.h | 57 +++++++++++++++++++++++++=
+++++++++++
+> > >  3 files changed, 81 insertions(+)
+> > >  create mode 100644 include/trace/events/pci_controller.h
+> > >=20
+> > > diff --git a/drivers/pci/trace.c b/drivers/pci/trace.c
+> > > index cf11abc..d351a51 100644
+> > > --- a/drivers/pci/trace.c
+> > > +++ b/drivers/pci/trace.c
+> > > @@ -9,3 +9,23 @@
+> > > =20
+> > >  #define CREATE_TRACE_POINTS
+> > >  #include <trace/events/pci.h>
+> > > +#include <trace/events/pci_controller.h>
+> > > +
+> > > +static atomic_t pcie_ltssm_tp_enabled =3D ATOMIC_INIT(0);
+> > > +
+> > > +bool pci_ltssm_tp_enabled(void)
+> > > +{
+> > > +=09return atomic_read(&pcie_ltssm_tp_enabled) > 0;
+> > > +}
+> > > +EXPORT_SYMBOL(pci_ltssm_tp_enabled);
+> > > +
+> > > +int pci_ltssm_tp_reg(void)
+> > > +{
+> > > +=09atomic_inc(&pcie_ltssm_tp_enabled);
+> > > +=09return 0;
+> > > +}
+> > > +
+> > > +void pci_ltssm_tp_unreg(void)
+> > > +{
+> > > +=09atomic_dec(&pcie_ltssm_tp_enabled);
+> > > +}
+> > > diff --git a/include/linux/pci.h b/include/linux/pci.h
+> > > index e7cb527..ac25a3e 100644
+> > > --- a/include/linux/pci.h
+> > > +++ b/include/linux/pci.h
+> > > @@ -2770,6 +2770,10 @@ static inline struct eeh_dev *pci_dev_to_eeh_d=
+ev(struct pci_dev *pdev)
+> > >  }
+> > >  #endif
+> > > =20
+> > > +#ifdef CONFIG_TRACING
+> > > +bool pci_ltssm_tp_enabled(void);
+> > > +#endif
+> > > +
+> > >  void pci_add_dma_alias(struct pci_dev *dev, u8 devfn_from, unsigned =
+nr_devfns);
+> > >  bool pci_devs_are_dma_aliases(struct pci_dev *dev1, struct pci_dev *=
+dev2);
+> > >  int pci_for_each_dma_alias(struct pci_dev *pdev,
+> > > diff --git a/include/trace/events/pci_controller.h b/include/trace/ev=
+ents/pci_controller.h
+> > > new file mode 100644
+> > > index 0000000..db4a960
+> > > --- /dev/null
+> > > +++ b/include/trace/events/pci_controller.h
+> > > @@ -0,0 +1,57 @@
+> > > +/* SPDX-License-Identifier: GPL-2.0 */
+> > > +#undef TRACE_SYSTEM
+> > > +#define TRACE_SYSTEM pci_controller
+> >=20
+> > I find putting this into "pci_controller" little odd as LTSSM is relate=
+d=20
+> > to PCIe links/ports. To me looks something that belongs to the existing=
+=20
+> > include/trace/events/pci.h.
+>=20
+> I suggested 'pci_controller.h' since these tracepoints are only going to =
+be used
+> by the controller drivers. Putting it under 'pci.h' will imply that these=
+ can be
+> used by the client drivers also.
+
+PCIe r7 spec has Flit Performance Measurement Extended Capability that=20
+seems to have something for LTSSM tracking and those seem more generic=20
+than just for controllers (I've not spent much time on trying to fully=20
+understand those capabilities, just recalled seeing them earlier).
+
+--
+ i.
+
+> > > +#if !defined(_TRACE_HW_EVENT_PCI_CONTROLLER_H) || defined(TRACE_HEAD=
+ER_MULTI_READ)
+> > > +#define _TRACE_HW_EVENT_PCI_CONTROLLER_H
+> > > +
+> > > +#include <uapi/linux/pci_regs.h>
+> > > +#include <linux/tracepoint.h>
+> > > +
+> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_2_5GT);
+> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_5_0GT);
+> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_8_0GT);
+> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_16_0GT);
+> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_32_0GT);
+> > > +TRACE_DEFINE_ENUM(PCIE_SPEED_64_0GT);
+> > > +TRACE_DEFINE_ENUM(PCI_SPEED_UNKNOWN);
+> > > +
+> > > +extern int pci_ltssm_tp_reg(void);
+> > > +extern void pci_ltssm_tp_unreg(void);
+> > > +
+> > > +TRACE_EVENT_FN(pcie_ltssm_state_transition,
+> > > +=09TP_PROTO(const char *dev_name, const char *state, u32 rate),
+> > > +=09TP_ARGS(dev_name, state, rate),
+> > > +
+> > > +=09TP_STRUCT__entry(
+> > > +=09=09__string(dev_name, dev_name)
+> > > +=09=09__string(state, state)
+> > > +=09=09__field(u32, rate)
+> > > +=09),
+> > > +
+> > > +=09TP_fast_assign(
+> > > +=09=09__assign_str(dev_name);
+> > > +=09=09__assign_str(state);
+> > > +=09=09__entry->rate =3D rate;
+> > > +=09),
+> > > +
+> > > +=09TP_printk("dev: %s state: %s rate: %s",
+> > > +=09=09__get_str(dev_name), __get_str(state),
+> > > +=09=09__print_symbolic(__entry->rate,
+> > > +=09=09=09{ PCIE_SPEED_2_5GT,  "2.5 GT/s" },
+> > > +=09=09=09{ PCIE_SPEED_5_0GT,  "5.0 GT/s" },
+> > > +=09=09=09{ PCIE_SPEED_8_0GT,  "8.0 GT/s" },
+> > > +=09=09=09{ PCIE_SPEED_16_0GT, "16.0 GT/s" },
+> > > +=09=09=09{ PCIE_SPEED_32_0GT, "32.0 GT/s" },
+> > > +=09=09=09{ PCIE_SPEED_64_0GT, "64.0 GT/s" },
+> > > +=09=09=09{ PCI_SPEED_UNKNOWN, "Unknown" }
+> >=20
+> > Why are these done inline instead of using EM/EMe()? Or simply with
+> > pci_speed_string()?
+> >=20
+> >=20
+> > Unrelated to this, sadly I failed to notice Shuai's version of=20
+> > pcie_link_event() did not translate link speeds (my own version used=20
+> > pci_speed_string()).
+> >=20
+> > > +=09=09)
+> > > +=09),
+> > > +
+> > > +=09pci_ltssm_tp_reg, pci_ltssm_tp_unreg
+> > > +);
+> > > +
+> > > +#endif /* _TRACE_HW_EVENT_PCI_CONTROLLER_H */
+> > > +
+> > > +/* This part must be outside protection */
+> > > +#include <trace/define_trace.h>
+> > >=20
+> >=20
+> > --=20
+> >  i.
+> >=20
+>=20
+>=20
+
+--=20
+ i.
+
+--8323328-630235247-1771947989=:1751
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--8323328-630235247-1771947989=:1751--
+
