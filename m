@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0704E9B247
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 09:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCA3CE9B251
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 10:59:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Glj6MdA9ZOOiFc3V7BsES35ZOSW7pgPr/FPVy2qHxE8=; b=Xy/yyCewozC6yy
-	ZG+tHYThA59XoLsWoYsyvKfwxHSgU2oqhK37EUodV8BL0kpn2s4t3wJv5HILdzelXVRZu6vaF6qQg
-	flnZp3hqGczQuAjF1XschaUOYAq9XZzglHZTEL2QIWT2bj7ZXDXXrB0gv7yN2/bQVjBJu4F5/X9bO
-	hKUcZS/BqNn4a5WiccKoWvtVv8g/bXFjlkEWX9gZNwE4GEsCPnTwOmLhfOUinyZxM4sOoYc0KFg7z
-	QRFfj/KBzUthcKYPJyBUWuZHi79buArhugZRcDioMWblBr5X0JvtPGUY7pDATaHHlqIEmw7nzHLzh
-	g09VVXp12XqeBJ5w4P9A==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=FnlJYeajBtFf6Mnl7q9POw6bDrvaE/eITM9HKtt71DE=; b=olmZcOvs52/xn1
+	QpzF0iswr7HBaqHvxoL5NVceQWO1OOsAj0SCsKpmDczkwABzg5fJdGEFdLa/fJlISRORwY3NoUJgz
+	prs2qvxNMsEvsv504IpJPCV10QcrgabYCHzdk0rhiWIEwN2hY8SjkmIuOhGXANrhsjQh2IBBMZgKB
+	gJKbvUgxTQ473CEMiro11xTefVqYh/gVt3nVqIZDQn2KGTIQewF8VkFE9ehOo1BqkBVb6Ozw9sqnW
+	/CMfLZopkmCwPn/YyAPIFbHt0z1nAPgI1EPoOIg/sZMVOe5prhVxV3liEjRl5PThj1Km7DCasm65S
+	WSkjLosuYSO+n9RWwd3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vup5P-00000001nis-1hSf;
-	Tue, 24 Feb 2026 09:52:11 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1vuq7y-00000001tfS-2icK;
+	Tue, 24 Feb 2026 10:58:54 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vup5N-00000001niY-3ECF
-	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Feb 2026 09:52:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1771926730; x=1803462730;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=6pRu6zq62WMN+WyuOARkXhLVVqohePZFybaoMP30tgE=;
-  b=V6P7jZjXOp7dGq2bPPUvn76MJrS+PBiWRfeb4K0oFENkKYRLFwFzszzF
-   L6uSyCqTvkbO+mkiboBbv2Lt5DlRtmuShbuG54EIbVrJyl1xN63+0bKtb
-   V4HhROTvWqkBS2ivVqL88F3dqg2SlMYijZuY8TpIRooIjHakBE0NvLPMd
-   CnMyopWR+FU8rq/MF4e0RnsiZoUDSSeCuekO6Y7KSVD0dzLJCLSC4O55j
-   sDMF42r/kjh9N0YafRpyqDsAhhEzEuZ8ReHo+rwWPj48xH6vLFCrxGHDH
-   zub6S1e31PnO+q/WYyeCxMnQFvMnpkVlQzTa/rPSL+/qGoA0x6j6oz+Wr
-   g==;
-X-CSE-ConnectionGUID: vw5nhNhfRe+B+/TrT2f2dQ==
-X-CSE-MsgGUID: 10nAo3FWSfqCL4YlVAyFrg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11710"; a="72839845"
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
-   d="scan'208";a="72839845"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 01:52:09 -0800
-X-CSE-ConnectionGUID: gAL2aXsLSUO2SshtxEY5qA==
-X-CSE-MsgGUID: N2EPebGQTo+YHb65fFnqkw==
-X-ExtLoop1: 1
-Received: from aschofie-mobl2.amr.corp.intel.com (HELO kuha) ([10.124.222.187])
-  by fmviesa003.fm.intel.com with SMTP; 24 Feb 2026 01:52:06 -0800
-Received: by kuha (sSMTP sendmail emulation); Tue, 24 Feb 2026 11:51:31 +0200
-Date: Tue, 24 Feb 2026 11:51:31 +0200
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-rockchip@lists.infradead.org, linux-usb@vger.kernel.org,
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH v2 2/2] usb: typec: mux: avoid duplicated mux switches
-Message-ID: <aZ10o7G_9yjYmiQL@kuha>
-References: <20260223-typec-mux-duplication-fix-v2-0-0402fefc222e@collabora.com>
- <20260223-typec-mux-duplication-fix-v2-2-0402fefc222e@collabora.com>
+	id 1vuq7x-00000001tej-25mP;
+	Tue, 24 Feb 2026 10:58:53 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 4EF376132D;
+	Tue, 24 Feb 2026 10:58:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6BDBEC116D0;
+	Tue, 24 Feb 2026 10:58:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1771930732;
+	bh=4lUO/V6PMTwBVuKtBzHhWs/9Z6o8abbgH7ftoV2jBig=;
+	h=From:Subject:Date:To:Cc:From;
+	b=Mq5EemhtxP4fdcnHfwI6OPiBN1gV0ecp0xd5f2KaC09It8FK32pITZ1xHILSp51C6
+	 YSaWpuQYY6HhCHr1MPzfOb6w9UXIbx4/Z35HAq/g8gK/kPb1TfUj+eIw5kfWpIksn8
+	 T+ataYqh5wLl+NMyxJ45rRvqFJe0KXBGpoGPDbatkTon3oE5/9faLHnIG2/j9VaGct
+	 /GIasKVO33Y2yrnXXY1DM6fxhSl/7lLU9IkFD+vdGqLWsAP664+xa4qsoCAcEgih6h
+	 SATWacBLav7lvkNRDE99gvw4oXTI1TRFqiO6PKk3OW1BzMuQyKvHX8vRQWb47dGt36
+	 Krdz57DzbwK1g==
+From: Maxime Ripard <mripard@kernel.org>
+Subject: [PATCH 00/14] drm: Create drm_output_color_format enum
+Date: Tue, 24 Feb 2026 11:58:39 +0100
+Message-Id: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260223-typec-mux-duplication-fix-v2-2-0402fefc222e@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_015209_877438_0FA9562F 
-X-CRM114-Status: GOOD (  21.16  )
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MQQqDMBAAvxL23IVkW0T6ldKDJKsummzZFBXEv
+ zd0bnOYOaGyCVd4uhOMN6mipUm4OYjzUCZGSc2BPHWe6IHJMhrvagtGXdVwVMvDt2JPKTbCPYY
+ ALf8Yj3L816/3df0AC+cZM2oAAAA=
+X-Change-ID: 20260224-drm-rework-color-formats-82dcccc13c11
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3233; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=4lUO/V6PMTwBVuKtBzHhWs/9Z6o8abbgH7ftoV2jBig=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDJlzW5JkRFb27W20sL9ZF2ngdULgz41fK/Yvd8qrkaw/8
+ eaZh29Ax1QWBmFOBlkxRZYnMmGnl7cvrnKwX/kDZg4rE8gQBi5OAZhIqh9jQ2/6Z9UFAqost5nu
+ N/4wnZ62KYzp5+s9bfm8Jmu94jlEP8TtY5P/ZWVVkj5r4i2j7G3ejA0vX/zKdV75/mUMT+LBOP0
+ tHm9Lb70MZuetVWm3P+7OwqJtfHEhY0/xhXWiMW9bZGyiVgMA
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,66 +104,73 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Mon, Feb 23, 2026 at 07:27:39PM +0100, Sebastian Reichel wrote:
-> Some devices use combo PHYs (i.e. USB3 + DisplayPort), which also
-> handle the lane muxing. These PHYs are referenced twice from
-> the USB-C connector (USB super-speed lines and SBU/AUX lines)
-> resulting in the mux being configured twice. Avoid this by
-> dropping duplicates.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+Hi,
 
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+This series creates an enum to represent the output color format as an
+enum instead of a bitmask, and consolidate the HDMI helpers to use the
+new enum.
 
-> ---
->  drivers/usb/typec/mux.c | 13 ++++++++++++-
->  1 file changed, 12 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/usb/typec/mux.c b/drivers/usb/typec/mux.c
-> index 9b908c46bd7d..db5e4a4c0a99 100644
-> --- a/drivers/usb/typec/mux.c
-> +++ b/drivers/usb/typec/mux.c
-> @@ -275,7 +275,9 @@ static int mux_fwnode_match(struct device *dev, const void *fwnode)
->  static void *typec_mux_match(const struct fwnode_handle *fwnode,
->  			     const char *id, void *data)
->  {
-> +	struct typec_mux_dev **mux_devs = data;
->  	struct device *dev;
-> +	int i;
->  
->  	/*
->  	 * Device graph (OF graph) does not give any means to identify the
-> @@ -291,6 +293,14 @@ static void *typec_mux_match(const struct fwnode_handle *fwnode,
->  	dev = class_find_device(&typec_mux_class, NULL, fwnode,
->  				mux_fwnode_match);
->  
-> +	/* Skip duplicates */
-> +	for (i = 0; i < TYPEC_MUX_MAX_DEVS; i++)
-> +		if (to_typec_mux_dev(dev) == mux_devs[i]) {
-> +			put_device(dev);
-> +			return NULL;
-> +		}
-> +
-> +
->  	return dev ? to_typec_mux_dev(dev) : ERR_PTR(-EPROBE_DEFER);
->  }
->  
-> @@ -316,7 +326,8 @@ struct typec_mux *fwnode_typec_mux_get(struct fwnode_handle *fwnode)
->  		return ERR_PTR(-ENOMEM);
->  
->  	count = fwnode_connection_find_matches(fwnode, "mode-switch",
-> -					       NULL, typec_mux_match,
-> +					       (void **)mux_devs,
-> +					       typec_mux_match,
->  					       (void **)mux_devs,
->  					       ARRAY_SIZE(mux_devs));
->  	if (count <= 0) {
-> 
-> -- 
-> 2.51.0
+This should make Nicolas' work easier.
 
+It has been build tested, and passes kunit tests.
+
+Let me know what you think,
+Maxime
+
+---
+Maxime Ripard (14):
+      drm/connector: Introduce drm_output_color_format enum
+      drm/edid: Convert to drm_output_color_format enum
+      drm/display: hdmi: Convert to drm_output_color_format
+      drm/amdgpu: display: Convert to drm_output_color_format
+      drm/bridge: adv7511: Convert to drm_output_color_format
+      drm/bridge: analogix: Convert to drm_output_color_format
+      drm/bridge: cadence: Convert to drm_output_color_format
+      drm/bridge: synopsys: dw-dp: Convert to drm_output_color_format
+      drm/bridge: synopsys: dw-hdmi: Convert to drm_output_color_format
+      drm/arm: komeda: Convert to drm_output_color_format
+      drm/mediatek: dp: Convert to drm_output_color_format
+      drm/rockchip: analogix: Convert to drm_output_color_format
+      drm/connector: Remove DRM_COLOR_FORMAT defines
+      drm/display: hdmi: Use drm_output_color_format instead of hdmi_colorspace
+
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c  |   4 +-
+ .../gpu/drm/arm/display/komeda/d71/d71_component.c |  14 +-
+ drivers/gpu/drm/arm/display/komeda/komeda_crtc.c   |   2 +-
+ .../gpu/drm/arm/display/komeda/komeda_pipeline.h   |   5 +-
+ .../drm/arm/display/komeda/komeda_pipeline_state.c |   2 +-
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |   2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |   4 +-
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    |  24 +--
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.h    |   2 +-
+ drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+ drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c            |  71 ++++----
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  16 +-
+ drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  60 ++++---
+ drivers/gpu/drm/drm_bridge.c                       |   2 +-
+ drivers/gpu/drm/drm_connector.c                    |  14 +-
+ drivers/gpu/drm/drm_edid.c                         |  18 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |   4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |   4 +-
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+ drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+ drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+ drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+ include/drm/display/drm_hdmi_helper.h              |   3 +-
+ include/drm/drm_connector.h                        |  46 ++++--
+ 28 files changed, 326 insertions(+), 278 deletions(-)
+---
+base-commit: 3a2ffb469faa8240fe87e7d5f3533d14fdcc69f3
+change-id: 20260224-drm-rework-color-formats-82dcccc13c11
+
+Best regards,
 -- 
-heikki
+Maxime Ripard <mripard@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
