@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22FB6F3C9BC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 16:33:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA73F3C9BE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 16:33:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YtY829K3wbhQun+CoYoZRl27uQhx39ekkuBf8HaXFng=; b=mki0/Sah3ZJCbZ
-	0vG8q3DvIISlF/iYoTbOlm+AODRLpFhaUbwuPvvmti+RIk+sgQaLKvZkNFSg1fO74DvFR2eIo8E1q
-	o3FtMGt/8t2ZAVTeGo4GxxQkJeTtCXiwDwJ5MRIrLpg+k77aD9CdZ/K2fSiYqRpxaQYsAZrdvr9b5
-	9NNlO2oYnsXyjEUOZ4Z4sxAaH7kxPJ5xUMow6qfKqKyIgG0te7DhJJIl3lUSu6V55R2508Nx7XG6n
-	/ZX9bxvDlJpQlXJofdF0O9ivmIrxPAMAMTinsfglFJ+v9hakwpz22Ll1VoH+1GLBe7qlGZB67K3sM
-	xaPmKu15cx1Gd71rpnZg==;
+	List-Owner; bh=IZeQuRcmP90X4omELK5Bpy2Ln3hDmLCnvWGM+dilNmc=; b=3BfvJ4Y54nqZSa
+	raRqPwB8pCtmXi4/k9J3IvF9OiNBXWQGM6AgxJsD/MLrPa0CrgkV80D6tdMu+5O/RH0OiJSVndOC5
+	CPwAoU8KowGVbG4UOXaAN1kR1GUNTBhoJLVLYfyvrceYw9n4X6LFvNrnlPyd4nrW17zGNHhiMa/8k
+	CHGjIShAMG31WfNQ9asMIk3IU7uUo0vE8KuNg/tqgRfHQrZfKajRk1396ivIDbcbGaKeSXlmpnozK
+	fTtupjAS52LZ31N3Yrjwo3AiCmeJaMzo5Bz/6/0G60Na1sd08UKn/A/N1fA3JHQeEFfsCF4t8Y9l0
+	2rbKoPiwifAt9ihOyFag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuvLt-00000002POd-1UyS;
-	Tue, 24 Feb 2026 16:33:37 +0000
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
+	id 1vuvLu-00000002PPN-0ViI;
+	Tue, 24 Feb 2026 16:33:38 +0000
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuvLp-00000002PN8-2vgD
+	id 1vuvLs-00000002POB-0WsS
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Feb 2026 16:33:35 +0000
-Received: by mail-oi1-x235.google.com with SMTP id 5614622812f47-45f18e8f2f5so4019882b6e.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 24 Feb 2026 08:33:33 -0800 (PST)
+	Tue, 24 Feb 2026 16:33:37 +0000
+Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7d4c85307b2so3640418a34.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 24 Feb 2026 08:33:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1771950812; x=1772555612; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1771950815; x=1772555615; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=QUsICOMvXTU5rjy5Y1VVi2FLx1XR69GqWTxj0tN8RHA=;
-        b=gpxCI9mq5rJiSWQagQgvJz/duE379GKMRUfLGOTBBkLZHBfKKR0hKkj/D+AoMlp64U
-         apTAUlo6a9Uni3PsxK0rw8yH3SuloRhPJp/NWPC50Gntp2XHe6FGcpob48knf2KOePZ4
-         dFSIuH6P7qMkAgHqa5dRPT3kWcE2prLVxOUPzm/xsLJn/bsiXp+cwJ0vwDiGIB18wz6q
-         Mmt1jjFQuiehfHGYDQ+27ugjp8xxQVF13UTFEFMWoteOXWoI5moM4V7ndr/NiGtxSURc
-         w5l8TyL5NGZbTs611qzvPLu0NNt9tI/iy9Qt9vlBUGuzccuadV0DYRMTRYkLf3R6c1gm
-         SEqA==
+        bh=5QZMGPSayDx6CXME04ten6dFk9tjtVuD/jHId3mdxWg=;
+        b=N8ukysnXuPDvathltJQNkQZuTykNFT8kpT2I2/j17b8WvHQaCFbaHTXgRyFfPYSJWb
+         5HlpG3HFenfdyhq235tZ1ftqpcd7VdETarXv/PFvxUD7XXCrl48X/cwMVhvPI/rA9L4r
+         JjLm+Kn6dYCEOM/MovlHEyME0B6MxSUn9iFb87SOPd6bMFJiWiv2snjMGOFqHITpwFNO
+         WD1Cs+FYVuwKxUZVTho7J4JL40HZrQd54cAvK/u8e2aaAQevu5qIGMOuVRSm8vcgh+7A
+         TLpXl1Abjv854bbZKDJiJMf5+hS1s3WVGVAnkPOdKm4xluZhPfycnDQpFdLgnl6cqmjM
+         sr4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1771950812; x=1772555612;
+        d=1e100.net; s=20230601; t=1771950815; x=1772555615;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=QUsICOMvXTU5rjy5Y1VVi2FLx1XR69GqWTxj0tN8RHA=;
-        b=XzbbHSnKUkQ2/MvGF5pDuOWmY01wI7VishSVT9NEImJlNLTh2x+nmVU9uL9z9nkarh
-         /wOw4ZQbXmt5hTOuIuNN/d3qbb5W9rIgakzP7YyCIIcsRhK4+e57MfwoZ9oLzGGyI7An
-         GRyvdNx3cBIQtLTtTqZZy8/JALCzA8OEc6P8e6RUM4UEsZoWwIARaK7xx3wSBkzy3LBh
-         r8rfLKcgKdumkMV/KKpg+/svs3Zaql7LgPsvnIFMytUs9nhQ56yXikRxx2hgWKhaXfcY
-         43iKTOIZyWXItsw3DBiei4lieN2TzieU2UEsZtZB06jxfzFXPuyd9cFfMJHNIVoZNVTM
-         P3Ew==
-X-Forwarded-Encrypted: i=1; AJvYcCW7VI545eNxVlU9i5dl6i1ATcLiyFreZrGmmE0608yjCrQVQFcxAiMhg7i6Gfmn1goyVjXN1VF/QbYRuMR+ow==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzVXfJu7D3Hwtabdt7OHHzjsSUTOgtbcVmIMX0IFg8H43Ko0zPB
-	EaJdhOteLPMYkVgg6L1eh0spXUx+hU5a0QP8ZOmELOzPfLCDSWeMUDvp
-X-Gm-Gg: AZuq6aIKvOOb/YuHGJoionIknI73aaiNf24lRc4fxS+FNpel023qEHmTqKNTrWZVmEt
-	OnnykWw4/+A5+uogQnCm91QM4bABfaK2xUFdmJVMrOfKIklh4K5W8MtcY8fZjWAQE2nnjEnJ9tf
-	Dt0T3q4c179k1zUxnrcKgJdQvF8YfVtZl+0tDqjcMBVmjX2Y931uHmP8KDtdFOZSg0ze2dcMjfF
-	ZnteW+9wfRvriN+YzO/my6qlOQAQ8wCIjtCwdvwQ7Xd5bbAgUUQv5MUduPFMIYTwiFdg0pxenGR
-	IH4SDaiRQY8wnR70qigTpBk0HE5UgW3T8Ec9rJBW1VitlmpCYrHF1JbDKxyMbL3xFxBe3FT91rX
-	TH2G9hv3o3uZXOoqe6sbky4mFfIcrI1bOAR1tnaW3Q0QFcFvrop3iOWqLD94MpfrxVKnv0KSDht
-	EmutJ8zUNLMCJHK3bfHXKd
-X-Received: by 2002:a05:6808:4fd4:b0:45f:727:8fdf with SMTP id 5614622812f47-4644638d060mr7303360b6e.48.1771950811989;
-        Tue, 24 Feb 2026 08:33:31 -0800 (PST)
+        bh=5QZMGPSayDx6CXME04ten6dFk9tjtVuD/jHId3mdxWg=;
+        b=XOC6WCcMcSVQSdTYLrNUqXxG0WApMDmPCLEnx9zVnuGefU4UYm14HVvNaLrWYGjnm6
+         ha+pD+G21z38azu4ugFUc1wYBby5yaVbASP7ZLan6jZeL+NboXPxYBrM2Q1iy+spGC5e
+         2/RAX4wCIHa5Y/0BoU1CnGmNd9YFqyNDKqCb7EZYRaUG+cNdviYEsG8jApSGqHORvxun
+         NvPDCLPcSnysf91Jinh6bWATjGvzCnP7iLsKdDmLd+hs4ZrvKKtQzjtpxajkKoWGjWXY
+         uruDXwe4D7ZDM8WWxfw5k1RLEkVEDXI7RphuUINS6dlVZU9dzghO86zaHIhNW1NYzvvb
+         sJAw==
+X-Forwarded-Encrypted: i=1; AJvYcCWrcAqzTPRsu3ecCcecbPMxvEDmINzM4S5WZLpZeQ1HpTV6D+3yuSUHgTeF2CC+2qVROAs/Qjqz0UDiK4ATJA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzSORF5GQzgUFTtW0uFJVeZjIVQapZRs6mZkfoGNJ0f5M7/fVUO
+	BU9ODEpFapjcM/qbBlGAlQTYz62iqYRPjAYeW40cX/1Lhi6wKpw9DrdIgCJclA==
+X-Gm-Gg: AZuq6aJLyuzq2e8KQg7rJ5oNiPtn2J2lsDQn96cZRzmCKIYVF/ArlLVHY0VDgFpRQU+
+	0HVPKkEhWrCumyaYx5wClJWJS3F0rOWQf5TDnrV+4iLI0nnsQwysfgrTP21Hb4aZYItNUlgJE5m
+	PJnNuqz94RxK6uL2JDnnEw5eF1WNv8c82dcSI1Rw7FE6RzekrDH7ztCXjqaLNkuU8b355MocZUu
+	HvvhtYuA1Xmu96IKiOFT2P8Q+Fco+oDj/kH/dqd18y9/ASVHeLwS2wbftQ1CxmZNJnWWFmHoBFb
+	xwlJ2WAQdhGEcAuhu77lZeABJ1Mcgc55Hn2n4KymDOkurwuknKZvoWeimjqeoVN6mgr7895c17C
+	kDs2F/xnDburlvYEV6PSCuubSL4WX68kug+4pA/7sHLungJ6qmdEv/JyQlIaBpN+4tA57XCY9/V
+	W6AiUT9vbaMWmU2Kq9l1zc
+X-Received: by 2002:a05:6830:6603:b0:7d1:91c9:9e5a with SMTP id 46e09a7af769-7d52beab9camr7144263a34.8.1771950814470;
+        Tue, 24 Feb 2026 08:33:34 -0800 (PST)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d52d0725c4sm11060130a34.25.2026.02.24.08.33.31
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d52d0725c4sm11060130a34.25.2026.02.24.08.33.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 24 Feb 2026 08:33:31 -0800 (PST)
+        Tue, 24 Feb 2026 08:33:33 -0800 (PST)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -83,16 +83,16 @@ Cc: andy@kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH 1/3] dt-bindings: iio: imu: icm42607: Add devicetree binding
-Date: Tue, 24 Feb 2026 10:31:03 -0600
-Message-ID: <20260224163109.370930-2-macroalpha82@gmail.com>
+Subject: [PATCH 3/3] arm64: dts: rockchip: Add icm42607p IMU for RG-DS
+Date: Tue, 24 Feb 2026 10:31:05 -0600
+Message-ID: <20260224163109.370930-4-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260224163109.370930-1-macroalpha82@gmail.com>
 References: <20260224163109.370930-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_083333_740141_5F3807B0 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20260224_083336_187618_0636A04D 
+X-CRM114-Status: GOOD (  11.10  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,117 +111,52 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add devicetree binding for the Invensense ICM42607 and Invensense
-ICM42607P inertial measurement unit. This unit is a combined
-accelerometer, gyroscope, and thermometer available via I2C or SPI.
-
-This device is functionally very similar to the icm42600 series with a
-very different register layout.
+Add the Invensense ICM42607P IMU for the Anbernic RG-DS. Mount-matrix
+was tested with iio-sensor-proxy and reports correct orientation.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- .../bindings/iio/imu/invensense,icm42607.yaml | 92 +++++++++++++++++++
- 1 file changed, 92 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
+ .../dts/rockchip/rk3568-anbernic-rg-ds.dts    | 20 ++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
-new file mode 100644
-index 000000000000..d783ef063f5c
---- /dev/null
-+++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
-@@ -0,0 +1,92 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/iio/imu/invensense,icm42607.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
+index 8d906ab02c5f..dca270abc475 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
+@@ -871,7 +871,18 @@ aw87391_pa_r: audio-codec@5b {
+ 		sound-name-prefix = "Right Amp";
+ 	};
+ 
+-	/* invensense,icm42607p at 0x68 */
++	icm42607p: imu@68 {
++		compatible = "invensense,icm42607p";
++		reg = <0x68>;
++		interrupt-names = "INT1";
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PD6 IRQ_TYPE_EDGE_FALLING>;
++		mount-matrix = "-1", "0", "0",
++				"0", "1", "0",
++				"0", "0", "-1";
++		pinctrl-0 = <&accel_irq>;
++		pinctrl-names = "default";
++	};
+ };
+ 
+ &i2c3 {
+@@ -932,6 +943,13 @@ &i2s1_8ch {
+ };
+ 
+ &pinctrl {
++	accel {
++		accel_irq: accel-irq {
++			rockchip,pins =
++				<0 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
 +
-+title: InvenSense ICM-42607 Inertial Measurement Unit
-+
-+description: |
-+  6-axis MotionTracking device that combines a 3-axis gyroscope and a 3-axis
-+  accelerometer.
-+
-+properties:
-+  compatible:
-+    enum:
-+      - invensense,icm42607
-+      - invensense,icm42607p
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    minItems: 1
-+    maxItems: 2
-+
-+  interrupt-names:
-+    minItems: 1
-+    maxItems: 2
-+    items:
-+      enum:
-+        - INT1
-+        - INT2
-+
-+  drive-open-drain:
-+    type: boolean
-+
-+  mount-matrix: true
-+
-+  spi-cpha: true
-+  spi-cpol: true
-+
-+  vdd-supply:
-+    description: Regulator that provides power to the sensor
-+
-+  vddio-supply:
-+    description: Regulator that provides power to the bus
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+
-+allOf:
-+  - $ref: /schemas/spi/spi-peripheral-props.yaml#
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    i2c {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        icm42607p@68 {
-+            compatible = "invensense,icm42607p";
-+            reg = <0x68>;
-+            interrupt-parent = <&gpio2>;
-+            interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
-+            interrupt-names = "INT1";
-+            vdd-supply = <&vdd>;
-+            vddio-supply = <&vddio>;
-+        };
-+    };
-+  - |
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    spi {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        icm42607p@0 {
-+            compatible = "invensense,icm42607p";
-+            reg = <0>;
-+            spi-max-frequency = <24000000>;
-+            spi-cpha;
-+            spi-cpol;
-+            interrupt-parent = <&gpio1>;
-+            interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
-+            interrupt-names = "INT1";
-+            vdd-supply = <&vdd>;
-+            vddio-supply = <&vddio>;
-+        };
-+    };
+ 	gpio-keys {
+ 		vol_keys_l: vol-keys_l {
+ 			rockchip,pins =
 -- 
 2.43.0
 
