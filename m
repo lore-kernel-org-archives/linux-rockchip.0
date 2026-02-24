@@ -4,93 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2882E9B258
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 12:45:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A6AE9B260
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 13:14:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
-	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aA2FjINqrBX2EuSlbgB5YNKQOzHJ7inja/pr4NY0l54=; b=0bni/ziAv1C44L
-	uLDRXwSQWDNnGirxuPVYG5Cb08+JDqSW7tt+Euk/tUfP4saHi3iZkuwBbvRXpoJOYoRVk9FIt/v9E
-	7/EY3G8/hYyCA0zDJQlwzYgwYbKekaqjsfA1ab9wSkr3UbnYavu4CGj8/06hzPzyyUlr97oVxVwP6
-	BifTDUzfUsOEy7l0iOeRiTZDk1gE1fN+reAZSVNA94doVbpzAzgGiGJOCKYGVfIz3C8K2UXkcWF6F
-	PUlaoX+aHMgzfgejjWwZTMA4dkfec3fGZGau2nZzIjzQIfvcCOeRLOxiXtqhphWGrgwN5iVzA8pIj
-	ODKpQVTuQJx7jRS8OMQA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TaFV4Oq/FvnLxYiSQfOk2S0P5BtIQVQa5/Anm+AHEnY=; b=DSzH4a2yTb0dvZqOjPoecV+4MW
+	NPnprKA3y+MDUhXmtSwx3q9pEUEJTfWon5ZtNBVT/RKFAcmMNl4ybuP2WH+5+u683NVvcNYV9p7zh
+	c+f4Q26/QbQMiu3EXFX0KCZY+TdoX4cl4WOhEUqQUBctFy5rWrowWU6Hk2DS6kNwJue8bitUCFKKC
+	Gih13GO68YCcop6+ktTDLQhI70Y+27RCIdaQ8pyAiV4lerzixkR/OC4scYlH1yckK+LlDuMXGfVUI
+	fH/2U71+yx/YBNnD/CICPKnUL1Vxpj6l03lAs7vD6smXyWpDfLukXGHAFBdfwtMOzaaBWx+65oRQH
+	xeeZMFcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vurmv-000000024nw-03pP;
-	Tue, 24 Feb 2026 12:45:17 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1vusFT-000000026jl-2Fq4;
+	Tue, 24 Feb 2026 13:14:47 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vurmr-000000024mP-2mUa;
-	Tue, 24 Feb 2026 12:45:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1771937114; x=1803473114;
-  h=from:to:cc:subject:in-reply-to:references:date:
-   message-id:mime-version;
-  bh=W7iFt2fkt7YDpfXHd4Koz7uX1w/SnCnrgCNowt9OOFg=;
-  b=IeTDMNcAwD40mzY1+plh0CDE5hq1sc5k0Hknx5cfiGqgnxwWbhXZ7rOu
-   al3pRfq+DrAQpYa9bDjFKocYyHp7T2kIdGa6LW5unDX5n0WVQRxSlRgFf
-   iONXvKvTmZSn8zOdDgBYreI7ANCZQXypV5kCJZPok50OVkTjt9l7No8vg
-   +bZC2LgcImj1SQBLirT5W7gYRGFO+0eW2mIk02xZh7mxmh17A0oa3df4V
-   NOYQDhAnvhwq4PhefnlYKNqsCk+Dpg/xnLKDPvMeMJrSMk+ox7Zvliqzp
-   ZWxsiwuqo3sZc/GLa6DNSroskskNNVzR1L3qFKHy2LWSmzMVWDorDwStR
-   w==;
-X-CSE-ConnectionGUID: T4r4+zXBQ7q/FedOdDegYw==
-X-CSE-MsgGUID: i45Is2zDTSmtmzlo1YvyTA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11710"; a="73128805"
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
-   d="scan'208";a="73128805"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 04:45:13 -0800
-X-CSE-ConnectionGUID: hR5Tp+z0SeiMexLEVtwNdg==
-X-CSE-MsgGUID: RMgpOpjdSHuKzcfGeOggUA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,308,1763452800"; 
-   d="scan'208";a="215752727"
-Received: from ettammin-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.246.20])
-  by orviesa009-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 04:45:00 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>, Nicolas Frattaroli
- <nicolas.frattaroli@collabora.com>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>,
- Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>, Alex
- Deucher <alexander.deucher@amd.com>, Christian =?utf-8?Q?K=C3=B6nig?=
- <christian.koenig@amd.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Andy Yan
- <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>, Chun-Kuang
- Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Sandy Huang
- <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Liu
- Ying
- <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>, Samuel Holland
- <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?utf-8?Q?Ma=C3=ADra?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel
- Maintenance
- <kernel-list@raspberrypi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 00/14] drm: Create drm_output_color_format enum
-In-Reply-To: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
- 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
-Date: Tue, 24 Feb 2026 14:44:57 +0200
-Message-ID: <f8e02ae7d60814d3d0540ab81ebccbe46eaf5e29@intel.com>
+	id 1vusFQ-000000026jG-2Tsb;
+	Tue, 24 Feb 2026 13:14:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1771938880;
+	bh=QDBlBOY6T+mWEXrv/m/BROi/PGkVajgTbGo7PUZjJMg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=fnnGBmGLTE4IUyu2V2/CREu3eVMNtGRq2xiualZ+Noh87rNDNu780b8X71o4+5WlO
+	 3aq3coOJY30fPW6222dYPTxbgAgwx3i+mur/r/bVV53BCOLTf97bYh2OvJNSq64zkb
+	 s5PD1f4BGMwVQ6Dms1ufK+Bl/tsKlpwwX5dUU2kHmmpHJ/41JP7h2OiLeDdr8tERUt
+	 hkXmQzilMM87TiRc2J1tytsMgGsE/6bQUgBgRF4/ad6Fpv1TwxPbhjDgYeqD2Ih4rT
+	 T9zU4ywLdh/Po2ukB9jVWdgTmok9pBdCxwixg8ebEKrRjwXhyqdNPNqcX2SnXCSD7/
+	 onO/oj0bRcuRg==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B671617E03E5;
+	Tue, 24 Feb 2026 14:14:37 +0100 (CET)
+Message-ID: <244b22d3be77047163b4e47c4ed33b5b1befb4b4.camel@collabora.com>
+Subject: Re: [PATCH v2 1/3] media: dt-bindings: rockchip,vdec: Correct
+ reg-names order for RK35{76,88}
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Cristian Ciocaltea
+	 <cristian.ciocaltea@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova	 <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>,
+ kernel@collabora.com, 	devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Conor Dooley	 <conor.dooley@microchip.com>,
+ linux-media@vger.kernel.org
+Date: Tue, 24 Feb 2026 08:14:35 -0500
+In-Reply-To: <20260224-saffron-peccary-from-heaven-2d5e6e@quoll>
+References: <20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com>
+	 <20260223-vdec-reg-order-rk3576-v2-1-daf4942dfc02@collabora.com>
+	 <20260224-saffron-peccary-from-heaven-2d5e6e@quoll>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_044513_755465_FE733B76 
-X-CRM114-Status: GOOD (  10.69  )
+X-CRM114-CacheID: sfid-20260224_051444_784141_D12205A7 
+X-CRM114-Status: GOOD (  22.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,34 +93,135 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============0126893994963731752=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 24 Feb 2026, Maxime Ripard <mripard@kernel.org> wrote:
-> Hi,
->
-> This series creates an enum to represent the output color format as an
-> enum instead of a bitmask, and consolidate the HDMI helpers to use the
-> new enum.
->
-> This should make Nicolas' work easier.
->
-> It has been build tested, and passes kunit tests.
->
-> Let me know what you think,
 
-I like this. I eyeballed through the series, but did not spend enough
-time to call it detailed review.
-
-Acked-by: Jani Nikula <jani.nikula@intel.com>
+--===============0126893994963731752==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-6vdVUmvCeNcE+MD7yuOO"
 
 
--- 
-Jani Nikula, Intel
+--=-6vdVUmvCeNcE+MD7yuOO
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le mardi 24 f=C3=A9vrier 2026 =C3=A0 08:17 +0100, Krzysztof Kozlowski a =C3=
+=A9crit=C2=A0:
+> On Mon, Feb 23, 2026 at 09:49:49PM +0200, Cristian Ciocaltea wrote:
+> > Update 'reg-names' property to allow providing the register blocks in
+> > the expected address-based order for RK3576 & RK3588 video decoder and,
+>=20
+> What? The register blocks SHOULD NOT be provided in address-based order.
+> There was never such coding style, never ever we gave such hint and if
+> you found Qcom discussions you would see me and Rob objecting to it.
+
+Would be nice to make a suggestion to how to fix this warning differently.
+
+rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b0=
+0000: simple-bus unit address format error, expected "27b00100"
+
+
+>=20
+> > consequently, fix some DTC warnings.
+> >=20
+> > Additionally, drop the 'reg' description items as the order is not fixe=
+d
+> > anymore, while the information they offer is not very relevant anyway.
+> >=20
+> > Fixes: c6ffb7e1fb90 ("media: dt-bindings: rockchip: Document RK3588 Vid=
+eo Decoder bindings")
+> > Fixes: a5c4a6526476 ("media: dt-bindings: rockchip: Add RK3576 Video De=
+coder bindings")
+>=20
+> No, nothing to be fixed here. Describe the bug, because missing order
+> to address-based is for sure not a bug.
+
+The warning should be part of this this commit message, since the cover let=
+ter
+is not going into git.
+
+>=20
+> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > ---
+> > =C2=A0Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 13 +=
++++++-------
+> > =C2=A01 file changed, 6 insertions(+), 7 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml=
+ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > index 809fda45b3bd..2d3164a2882b 100644
+> > --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > @@ -28,16 +28,15 @@ properties:
+> > =C2=A0
+> > =C2=A0=C2=A0 reg:
+> > =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> > -=C2=A0=C2=A0=C2=A0 items:
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The function configurati=
+on registers base
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The link table configura=
+tion registers base
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The cache configuration =
+registers base
+> > +=C2=A0=C2=A0=C2=A0 maxItems: 3
+> > =C2=A0
+> > =C2=A0=C2=A0 reg-names:
+> > -=C2=A0=C2=A0=C2=A0 items:
+> > +=C2=A0=C2=A0=C2=A0 oneOf:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
+on
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+>=20
+> No, ABI break without point.
+
+Its not released yet, otherwise both order would need to be allowed.
+
+Nicolas
+
+>=20
+> > =C2=A0
+> > =C2=A0=C2=A0 interrupts:
+> > =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
+> >=20
+> > --=20
+> > 2.52.0
+> >=20
+
+--=-6vdVUmvCeNcE+MD7yuOO
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaZ2kOwAKCRDZQZRRKWBy
+9BqXAP0WLFO+Ad1TiY32B/5I/dn3cBQsJKE069cW8NysidEIsgEAh/wL1hMjh63+
+oRsi0fbu/sIfKsL636Wv6YG3zrhkKQY=
+=HW9Q
+-----END PGP SIGNATURE-----
+
+--=-6vdVUmvCeNcE+MD7yuOO--
+
+
+--===============0126893994963731752==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0126893994963731752==--
+
