@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF206EFB7F9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 07:18:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06DC5EFB7F9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 07:22:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3PHci29eRsqWya01o6WVbvTu7abfQE5RxjIQv1Q5mjE=; b=CA5CGOaJkEB1jU
-	WDH3YfG7DxVg9bE55A2/cyAp1cUPIgZKwWKOsH4Eh6WnnPmjJHdQtwcPnGQOcnQk0iriJX9RoBZfz
-	bBpqpTLP1AGzFKD5vfvTv0rSd1IIG/IOmsQrgdxCX/jDE9yuIZjxWl6krAuIAS/WQw+kKzy2lKmJZ
-	ve0NSLGJ9dWBGovXoiig4VFZ1O+OoTxR0mjPyEmvchwwgr9Q7jXTcGjCDc/xGlLXc9YLZaGLQNcCa
-	GF7An8Brw0Luieh5H210oXNCYaTdAtlDa80SQsHJD6N/Q0tOKQ70iyv8Nco0xCAq6uP4cZzT23Ikh
-	gs68KpzJvJBVTbcpCSnA==;
+	List-Owner; bh=nGkW6rt2rWlLKtxiNCQuchUYoe7lGSCO3KZZcbmVSl4=; b=ERcEu2vNSjQHjO
+	jcleNljmuxsruye86OrT7ND4L+W94JDU6fdmmIKMeUKOZfY9oForSz4yXZY9qXYGRFAzN209v8f1Q
+	jvHdWrvLNZz+TS2HAY6G71rK8hl10GVhBnJ3A6ScEzFebYqRxnBmdabl8EwoteeR3LMFbQaS/Hzm5
+	K2Wil2CtB5y5i3dzUtzeuNDfxtq9fWOV7R/kAZGccc/WVxrhuhA8QSUJ1ZTjNr2GFb/pvezt3B1ye
+	cymNe1BPrt34cBaWxAiZ6scUFT0bvH4j6x7pgDQUK8r41d1dJmeMAcxwQ+GnZz9dqYVEgRwMG4tN6
+	xPBUGYpdRcxkeL9KDG8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vumh7-00000001ZmR-1xiq;
-	Tue, 24 Feb 2026 07:18:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vumkV-00000001aFn-2PmS;
+	Tue, 24 Feb 2026 07:22:27 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vumh5-00000001ZkN-3Xhk;
-	Tue, 24 Feb 2026 07:18:55 +0000
+	id 1vumkS-00000001aF7-3wYH;
+	Tue, 24 Feb 2026 07:22:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 13ABA600C4;
-	Tue, 24 Feb 2026 07:18:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36135C116D0;
-	Tue, 24 Feb 2026 07:18:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8F3F743A5F;
+	Tue, 24 Feb 2026 07:22:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC75EC116D0;
+	Tue, 24 Feb 2026 07:22:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1771917533;
-	bh=sFluk2eGI1W3PJqITBVgNfyYqxuSd712xdTbU3mm0ao=;
+	s=k20201202; t=1771917743;
+	bh=8sYxib13fUYmbRr8GN0ErWAgBVzMRPr1YYVyj9V9drg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uPcCf2iLfv2sxBENzOpEkV2r/3y5OqlFS27BZZVNYSsEwu9H6INImRvEfLs6gMfSM
-	 ODp4+SX77RDBGtqUa8uhbEhaxg1Enr0P8rqGgbqdZwI+psYwtOxHzibg34WRKtEH7c
-	 a6ClA/CpMHCUs8C59So3PsEZXBT98nO9VDJuVv50Ihd+RJMAaQFzeFxOysubC5Ut1M
-	 qTwyr68eD5oi052iu54QedFz+j2UResYOobkzMCDL5YihJeNCzk4hiwYPmQkv6OQTm
-	 vBmXjLUKEMO4nclSNvo+Aiir2QOkf0xV7LX/2gnvU0HLnqwUFsO66hjcKXDgs1Q/Be
-	 9sEX5p7ugJGAA==
-Date: Tue, 24 Feb 2026 08:18:51 +0100
+	b=eWFIBFTFfD96BBFjZyhR8OqD6QzhH3cB5oEsh8Ydkk3OcGGvYH3mF8alU7drTiAjB
+	 xgDVCDtq4TsWk5y1w2IwFngLZzSTL+UWH+P4j3n1wm/2kw6fy9maApDpWFcuhzQnqK
+	 mtFLm0d1vQJGT+GhjbTJ432c6aiQBQq5YY5XGr1K7xt0ZTQ/m6zM9FaLcL+hcoK7Vo
+	 n/rVIzUck7mJAFLj8YmZslzSZsDHBXAQgGwdAPE0it1BJTFL9t3HEgbbDL9BskqhQE
+	 1UJJ6cKy2uqC8Ev/SjRA1yZPwr172Ffv+Fdd998t/UYZqZ19WyBHwHg+7OgDn0cf1C
+	 B0tBsqlycriLg==
+Date: Tue, 24 Feb 2026 08:22:20 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Rob Herring <robh@kernel.org>, 
@@ -52,14 +52,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
-Subject: Re: [PATCH v2 3/3] arm64: dts: rockchip: Fix vdec register blocks
- order on RK3588
-Message-ID: <20260224-enchanted-scallop-of-art-f442c2@quoll>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Fix vdec register blocks
+ order on RK3576
+Message-ID: <20260224-glaring-poetic-goshawk-b44d7b@quoll>
 References: <20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com>
- <20260223-vdec-reg-order-rk3576-v2-3-daf4942dfc02@collabora.com>
+ <20260223-vdec-reg-order-rk3576-v2-2-daf4942dfc02@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260223-vdec-reg-order-rk3576-v2-3-daf4942dfc02@collabora.com>
+In-Reply-To: <20260223-vdec-reg-order-rk3576-v2-2-daf4942dfc02@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260223_232225_007592_BE141956 
+X-CRM114-Status: GOOD (  18.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,38 +79,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Feb 23, 2026 at 09:49:51PM +0200, Cristian Ciocaltea wrote:
-> Provide the register blocks in the expected address-based order for
-
-No, there is NO such convention. Don't make up rules.
-
-> vdec0 & vdec1 nodes.  This aligns with a similar fix for RK3576 where
-> DTC complained about the bus address format.
+On Mon, Feb 23, 2026 at 09:49:50PM +0200, Cristian Ciocaltea wrote:
+> When building device trees for the RK3576 based boards, DTC shows the
+> following complaint:
 > 
-> Fixes: f61731bd6062 ("arm64: dts: rockchip: Add the vdpu381 Video Decoders on RK3588")
+>   rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b00000: simple-bus unit address format error, expected "27b00100"
 
-Not true, otherwise explain user-visible bug.
+So you need to fix the unit address. This is what the warning tells you.
 
+> 
+> Provide the register blocks in the expected address-based order.
+> 
+> Fixes: da0de806d8b4 ("arm64: dts: rockchip: Add the vdpu383 Video Decoder on rk3576")
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
->  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 12 ++++++------
->  1 file changed, 6 insertions(+), 6 deletions(-)
+>  arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 > 
-> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> index 7fe9593d8c19..b95129f85aba 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-> @@ -1355,10 +1355,10 @@ vepu121_3_mmu: iommu@fdbac800 {
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> index 49ccdf12ef7e..45eb0d053a6f 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> @@ -1281,10 +1281,10 @@ gpu: gpu@27800000 {
 >  
->  	vdec0: video-codec@fdc38000 {
->  		compatible = "rockchip,rk3588-vdec";
-> -		reg = <0x0 0xfdc38100 0x0 0x500>,
-> -		      <0x0 0xfdc38000 0x0 0x100>,
-> +		reg = <0x0 0xfdc38000 0x0 0x100>,
-> +		      <0x0 0xfdc38100 0x0 0x500>,
->  		      <0x0 0xfdc38600 0x0 0x100>;
+>  		vdec: video-codec@27b00000 {
+>  			compatible = "rockchip,rk3576-vdec";
+> -			reg = <0x0 0x27b00100 0x0 0x500>,
+> -			      <0x0 0x27b00000 0x0 0x100>,
+> +			reg = <0x0 0x27b00000 0x0 0x100>,
+> +			      <0x0 0x27b00100 0x0 0x500>,
+>  			      <0x0 0x27b00600 0x0 0x100>;
 
-NAK, impacts DTS users without any reason.
+The main block, so probably the lowest address as in unit address,
+should be used, but this ship has sailed. You shipped this DTS, because
+the order of items is FIXED. Your binding change is clearly incorrect
+and ABI break without explanation and without reason, so you cannot use
+such as an argument here.
+
+You cannot change it without impact, so just fix the unit address.
 
 Best regards,
 Krzysztof
