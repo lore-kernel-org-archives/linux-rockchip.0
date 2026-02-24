@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9A6AE9B260
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 13:14:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0047E9B260
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 13:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TaFV4Oq/FvnLxYiSQfOk2S0P5BtIQVQa5/Anm+AHEnY=; b=DSzH4a2yTb0dvZqOjPoecV+4MW
-	NPnprKA3y+MDUhXmtSwx3q9pEUEJTfWon5ZtNBVT/RKFAcmMNl4ybuP2WH+5+u683NVvcNYV9p7zh
-	c+f4Q26/QbQMiu3EXFX0KCZY+TdoX4cl4WOhEUqQUBctFy5rWrowWU6Hk2DS6kNwJue8bitUCFKKC
-	Gih13GO68YCcop6+ktTDLQhI70Y+27RCIdaQ8pyAiV4lerzixkR/OC4scYlH1yckK+LlDuMXGfVUI
-	fH/2U71+yx/YBNnD/CICPKnUL1Vxpj6l03lAs7vD6smXyWpDfLukXGHAFBdfwtMOzaaBWx+65oRQH
-	xeeZMFcQ==;
+	bh=Lpg7lmrzVxyHA153xR2euvuVBVob4qFPMSO8WxEBG3E=; b=MjLW5WXMPCgVqNbMRAuzJEQHHh
+	V4dDUTCU0q6wj2vMqznzZgYi35iUHHnTU/Z82I/IN/9y4LGX8/hm6d6v9icEZDmh4PEuIVHxxtblH
+	2ONj6cQ7YiGRyt1kPegVxg+/EdDqQhggBenacHL8GYVS3g0SysUW1tS37BxzkaoJUWHPRXaxhcDcG
+	BBsFKFloAkPPjqU3Ope2V6NqQGFJ8sShUIlsDoge4m/dQogQsgN2g8xWsUPp/lFHigUpagBrYs7iZ
+	G+6oR2PSun0gmyJgZDN6Kng3dgKySTnz2xfSNzuwuTIPFl7cEtD8O9wglziGJntR9DX6sHfAdYDYV
+	fjf9Fc8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vusFT-000000026jl-2Fq4;
-	Tue, 24 Feb 2026 13:14:47 +0000
+	id 1vusIU-000000027Ua-1hoj;
+	Tue, 24 Feb 2026 13:17:54 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vusFQ-000000026jG-2Tsb;
-	Tue, 24 Feb 2026 13:14:45 +0000
+	id 1vusIQ-000000027Tp-3u6s;
+	Tue, 24 Feb 2026 13:17:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1771938880;
-	bh=QDBlBOY6T+mWEXrv/m/BROi/PGkVajgTbGo7PUZjJMg=;
+	s=mail; t=1771939067;
+	bh=2VI6nOomYDX8EwYV4/q49oHhrG90jmgi4U/LV+aBRts=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=fnnGBmGLTE4IUyu2V2/CREu3eVMNtGRq2xiualZ+Noh87rNDNu780b8X71o4+5WlO
-	 3aq3coOJY30fPW6222dYPTxbgAgwx3i+mur/r/bVV53BCOLTf97bYh2OvJNSq64zkb
-	 s5PD1f4BGMwVQ6Dms1ufK+Bl/tsKlpwwX5dUU2kHmmpHJ/41JP7h2OiLeDdr8tERUt
-	 hkXmQzilMM87TiRc2J1tytsMgGsE/6bQUgBgRF4/ad6Fpv1TwxPbhjDgYeqD2Ih4rT
-	 T9zU4ywLdh/Po2ukB9jVWdgTmok9pBdCxwixg8ebEKrRjwXhyqdNPNqcX2SnXCSD7/
-	 onO/oj0bRcuRg==
+	b=Hg0MsWYRo/nnvj4o5r/xu7+v8czkfssXjeEjlmBwtEvjGLSCITtFB7giuIOjn9eWs
+	 1WKxIduihoa/Nr7zJHkcEWGIxCPOngp3qlkCOO4lp2yjdAmD5E5DElXdkY+plHdVVQ
+	 vEFaYBO6mhoRqEaDQ67LYNSZcy9ypHUKn3WVEmePzShqasb61nrfSBczdTHue/Ie7S
+	 WdYZ6DzZMmjc0WR9jNT8wCgvNf7as9K0Z/KNC93vMymfmbTs5KDYOYkXuvwN4bzBkY
+	 fQWjGvAbYHFnduLhlBf2+EQFCKPfJLEiONB0zF+Ltpma4vsX8IZ8xexAlSFaLlbnzh
+	 d9q4/vrK5Rqew==
 Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B671617E03E5;
-	Tue, 24 Feb 2026 14:14:37 +0100 (CET)
-Message-ID: <244b22d3be77047163b4e47c4ed33b5b1befb4b4.camel@collabora.com>
-Subject: Re: [PATCH v2 1/3] media: dt-bindings: rockchip,vdec: Correct
- reg-names order for RK35{76,88}
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C976517E01E7;
+	Tue, 24 Feb 2026 14:17:45 +0100 (CET)
+Message-ID: <366daf706b5dc3942e3340f29151ece1f49460e0.camel@collabora.com>
+Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Fix vdec register blocks
+ order on RK3576
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Cristian Ciocaltea
 	 <cristian.ciocaltea@collabora.com>
@@ -58,11 +58,11 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, Conor Dooley	 <conor.dooley@microchip.com>,
  linux-media@vger.kernel.org
-Date: Tue, 24 Feb 2026 08:14:35 -0500
-In-Reply-To: <20260224-saffron-peccary-from-heaven-2d5e6e@quoll>
+Date: Tue, 24 Feb 2026 08:17:44 -0500
+In-Reply-To: <20260224-glaring-poetic-goshawk-b44d7b@quoll>
 References: <20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com>
-	 <20260223-vdec-reg-order-rk3576-v2-1-daf4942dfc02@collabora.com>
-	 <20260224-saffron-peccary-from-heaven-2d5e6e@quoll>
+	 <20260223-vdec-reg-order-rk3576-v2-2-daf4942dfc02@collabora.com>
+	 <20260224-glaring-poetic-goshawk-b44d7b@quoll>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -80,8 +80,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_051444_784141_D12205A7 
-X-CRM114-Status: GOOD (  22.35  )
+X-CRM114-CacheID: sfid-20260224_051751_141699_89DD3660 
+X-CRM114-Status: GOOD (  24.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,126 +93,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0126893994963731752=="
+Content-Type: multipart/mixed; boundary="===============6341885176574819748=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0126893994963731752==
+--===============6341885176574819748==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-6vdVUmvCeNcE+MD7yuOO"
+	protocol="application/pgp-signature"; boundary="=-cvvz0gfg/4oyTxCxnCsz"
 
 
---=-6vdVUmvCeNcE+MD7yuOO
+--=-cvvz0gfg/4oyTxCxnCsz
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
-Le mardi 24 f=C3=A9vrier 2026 =C3=A0 08:17 +0100, Krzysztof Kozlowski a =C3=
+Le mardi 24 f=C3=A9vrier 2026 =C3=A0 08:22 +0100, Krzysztof Kozlowski a =C3=
 =A9crit=C2=A0:
-> On Mon, Feb 23, 2026 at 09:49:49PM +0200, Cristian Ciocaltea wrote:
-> > Update 'reg-names' property to allow providing the register blocks in
-> > the expected address-based order for RK3576 & RK3588 video decoder and,
->=20
-> What? The register blocks SHOULD NOT be provided in address-based order.
-> There was never such coding style, never ever we gave such hint and if
-> you found Qcom discussions you would see me and Rob objecting to it.
-
-Would be nice to make a suggestion to how to fix this warning differently.
-
-rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b0=
-0000: simple-bus unit address format error, expected "27b00100"
-
-
->=20
-> > consequently, fix some DTC warnings.
+> On Mon, Feb 23, 2026 at 09:49:50PM +0200, Cristian Ciocaltea wrote:
+> > When building device trees for the RK3576 based boards, DTC shows the
+> > following complaint:
 > >=20
-> > Additionally, drop the 'reg' description items as the order is not fixe=
-d
-> > anymore, while the information they offer is not very relevant anyway.
+> > =C2=A0 rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video=
+-codec@27b00000: simple-bus unit address format error, expected "27b00100"
+>=20
+> So you need to fix the unit address. This is what the warning tells you.
+
+The unit address is where the register range starts. Picking a random point
+inside the range is just bad idea. For anyone that uses spec to develop the=
+se
+drivers and device tree, its just plain difficult and error prone.
+
+>=20
 > >=20
-> > Fixes: c6ffb7e1fb90 ("media: dt-bindings: rockchip: Document RK3588 Vid=
-eo Decoder bindings")
-> > Fixes: a5c4a6526476 ("media: dt-bindings: rockchip: Add RK3576 Video De=
-coder bindings")
->=20
-> No, nothing to be fixed here. Describe the bug, because missing order
-> to address-based is for sure not a bug.
-
-The warning should be part of this this commit message, since the cover let=
-ter
-is not going into git.
-
->=20
+> > Provide the register blocks in the expected address-based order.
+> >=20
+> > Fixes: da0de806d8b4 ("arm64: dts: rockchip: Add the vdpu383 Video Decod=
+er on rk3576")
 > > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > > ---
-> > =C2=A0Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 13 +=
-+++++-------
-> > =C2=A01 file changed, 6 insertions(+), 7 deletions(-)
+> > =C2=A0arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 +++---
+> > =C2=A01 file changed, 3 insertions(+), 3 deletions(-)
 > >=20
-> > diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml=
- b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > index 809fda45b3bd..2d3164a2882b 100644
-> > --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > @@ -28,16 +28,15 @@ properties:
+> > diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot=
+/dts/rockchip/rk3576.dtsi
+> > index 49ccdf12ef7e..45eb0d053a6f 100644
+> > --- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+> > @@ -1281,10 +1281,10 @@ gpu: gpu@27800000 {
 > > =C2=A0
-> > =C2=A0=C2=A0 reg:
-> > =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
-> > -=C2=A0=C2=A0=C2=A0 items:
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The function configurati=
-on registers base
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The link table configura=
-tion registers base
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The cache configuration =
-registers base
-> > +=C2=A0=C2=A0=C2=A0 maxItems: 3
-> > =C2=A0
-> > =C2=A0=C2=A0 reg-names:
-> > -=C2=A0=C2=A0=C2=A0 items:
-> > +=C2=A0=C2=A0=C2=A0 oneOf:
-> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
-on
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> > =C2=A0		vdec: video-codec@27b00000 {
+> > =C2=A0			compatible =3D "rockchip,rk3576-vdec";
+> > -			reg =3D <0x0 0x27b00100 0x0 0x500>,
+> > -			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <0x0 0x27b00000 0x0 0x100>,
+> > +			reg =3D <0x0 0x27b00000 0x0 0x100>,
+> > +			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <0x0 0x27b00100 0x0 0x500>,
+> > =C2=A0			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 <0x0 0x27b00600 0x0 0x100>;
 >=20
-> No, ABI break without point.
+> The main block, so probably the lowest address as in unit address,
+> should be used, but this ship has sailed. You shipped this DTS, because
+> the order of items is FIXED. Your binding change is clearly incorrect
+> and ABI break without explanation and without reason, so you cannot use
+> such as an argument here.
 
-Its not released yet, otherwise both order would need to be allowed.
+Its not released yet.
+
+
+> You cannot change it without impact, so just fix the unit address.
+
+I completely disagree with that.
 
 Nicolas
 
->=20
-> > =C2=A0
-> > =C2=A0=C2=A0 interrupts:
-> > =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> >=20
-> > --=20
-> > 2.52.0
-> >=20
 
---=-6vdVUmvCeNcE+MD7yuOO
+--=-cvvz0gfg/4oyTxCxnCsz
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaZ2kOwAKCRDZQZRRKWBy
-9BqXAP0WLFO+Ad1TiY32B/5I/dn3cBQsJKE069cW8NysidEIsgEAh/wL1hMjh63+
-oRsi0fbu/sIfKsL636Wv6YG3zrhkKQY=
-=HW9Q
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaZ2k+AAKCRDZQZRRKWBy
+9B7vAP47G+wCvT4HAirrFY7mJS0pSbKTNPlDGG+sbMVBZF5jogD/aFs4ud4Gi6SX
+DRuI6CS3MlRp1ywT1oYN5ozDVKoBig4=
+=UcYd
 -----END PGP SIGNATURE-----
 
---=-6vdVUmvCeNcE+MD7yuOO--
+--=-cvvz0gfg/4oyTxCxnCsz--
 
 
---===============0126893994963731752==
+--===============6341885176574819748==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -223,5 +194,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0126893994963731752==--
+--===============6341885176574819748==--
 
