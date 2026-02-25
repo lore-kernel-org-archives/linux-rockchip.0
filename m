@@ -4,90 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C48FD3779
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 17:22:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79DBBFD45EF
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 20:24:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+rMfafU0Tys30LatYuZyLN8jK7+ZgrNHC94qfLMz2Yk=; b=tPQRDruer9WKDV
-	1pLE7mvCzAJryUDUW0jX1oGGT2ySbfRT9D4vEwaF26+on5rUGxIbGkSHO1VqVksA1vs9OxVdQiD3r
-	d0U4LS/aFvqPKdw4SK0W50CSIreHhZCVzWDH6GPw0UKR/gp/19XVHqobtJWVzAH1uEh0vCg4CzbDZ
-	0J26SWI0u5gkXVnOFoXVL4H110OnqO0vES4BZa1OmFMWl+GgECqI/uBsB0H4e0uMGLuERb6dV6EH9
-	0CK8Iwwc1fJCQUvGr7ebdNjSeq7HcmCqaqG5f+PetjGox57bw7xlvg3Ol9M3IOtofIXGW8MFYFXYq
-	tGsM2wHBbp/UhO4av+bw==;
+	List-Owner; bh=5QfWJYg4xchAZoMmsTvxzXS3C01PcgfufwwiVBvZn7w=; b=ZnxwvE8TmYJTb6
+	/PDlvNP2akzHZWeMJAujyJMtgQn//LCOUi0ro9cLtRX0wNmyNCdxG4ZugGTzAU7seRLG7gOC6NBx4
+	gCcvZ2BJN9wQdIYLCRWFCW/efRZTFxLBvPxJoESQESs1yxam4iEeBe0D6Hpiz07wBLHbkrfZEC+/q
+	zxPayANQKA6rehmhS58ZVVgroiUzMuOwFfV6MpfdGdIfz9JNOSHVNYwD73srbFVhOgmASjfgixP6T
+	P0HBtTSbL48/cZPbzA6r33buPkIJp+vwp4CWW91TvTQA8L/EG7Radh+9k6Iwcr+AMSP/vGuuRS+wL
+	tmJimt9ANsDaHSScNIWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvIax-00000004doj-2AAi;
-	Wed, 25 Feb 2026 17:22:43 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vvLQc-00000004r1X-3pNs;
+	Wed, 25 Feb 2026 20:24:15 +0000
+Received: from mail-norwayeastazon11013045.outbound.protection.outlook.com ([40.107.159.45] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvIau-00000004dnX-304e;
-	Wed, 25 Feb 2026 17:22:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772040118; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MIpYrwNHTEw1tzZw977bIojdnx+74FWfwIXNhnMSYlTbsSYdvxH+g+QrY4zGMoh0X/3DZPjW1oer4HYTWBAn3lHZ9vLlIC3a8s4C7BO5iCugtzNhaFJrnUwkM4F1mExYqN8mBQfAqYu79QXEyyAM+uYUflDsTia6C1LizlG0obI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772040118; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=uYQZEmr31PuQ1YWmsWAZzNu809ry9o0BpCJyD6e+hII=; 
-	b=DKXVLTbsR+l5XSAncNafwzlzKwZJFdTzPP+h8McRV7E6gSiuqKAo0gab2+6Otdbc1isGUCYTJhxZGjcI7vh1AKsaUvskimpYwdXSRNnYQtDyLKFoTUrS8qniU722QaJ0PXBYYRRWbog7c79LA+nOvzfEoo9YVcVTtTTZ1JP99N8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772040117;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=uYQZEmr31PuQ1YWmsWAZzNu809ry9o0BpCJyD6e+hII=;
-	b=ErAUL623uvHeppqsgHQm+m4bSxj92drF5CKI08sbgfF9ao4z5nFAf0OhjrZ2uhfe
-	0v2t1b+qb/J6N/g3FbcMj9+VjuVo7d9MRM3n8M4cbxm+P7AbP4Ia+AVf6vI7b8b0tHG
-	1mpKX6ssj7z59PMyMJjE6UKb4r8TkFnimhIKEEf0=
-Received: by mx.zohomail.com with SMTPS id 1772040115678826.0329473998504;
-	Wed, 25 Feb 2026 09:21:55 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jani Nikula <jani.nikula@linux.intel.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
- Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
- Samuel Holland <samuel@sholland.org>,
- Dave Stevenson <dave.stevenson@raspberrypi.com>,
- =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Maxime Ripard <mripard@kernel.org>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
- hdmi_colorspace
-Date: Wed, 25 Feb 2026 18:21:46 +0100
-Message-ID: <3999997.iIbC2pHGDl@workhorse>
-In-Reply-To: <8234454.EvYhyI6sBW@workhorse>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
- <8234454.EvYhyI6sBW@workhorse>
+	id 1vvLQa-00000004r0t-1kNL;
+	Wed, 25 Feb 2026 20:24:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=r9S5SAlhl3++wy7IyHAsv3x87Ztvy4yzxZjqONA9vD/v4ASKmeVWtP+OGX03U2ZJFvtKGQ3pm9kGJ1RhzIlx2zJZbZWaRHLdPC7P6cBB7Kt0VGbz9n+/znsXAFmwi55r7Fx0XpH2MEchR+be3ZykKcAI32T3wEPzjSwHX7HBb2iP8mczkvYCxkh7f89sFHvgNJ1/cYN+XvRCa3CjTmJmmDtciiaWtjyUSdSttHn6d2he3VcJH5+Z0ihxgfomH/QqTSSO0ZlBwZR559Vx8WB5D8lXRjctPW4nESmC+YypKWJMhxMT7xBaFAQfZb0uc9KWnNq4uFV3xF1r6osXAvxyhg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UuMlvDhJcfVbXLAuUyEvxwJePaJUIlz+oQD/CCzXYvw=;
+ b=jFiHWKf1qtiHk3jdkltCS0tEtKvEdVLd0MbkxHUcWp1P3U0v4fO3/I5idZZv/Tvb89+afDhsnLCwN2KVk8cwF0e/SzPXcOuFkklqdmF/uDAGh6uVemPeCRhs0L3lw9ccdrWHSCaxYTkKnTvCyFhcpv32dUhOMJWVP6p013WaCJkrxPskN1HolGLmLH4IOc7n0Xr9ZwlGP0wjOPb6T7GanaZ8qWUgps/scOhmvB55kOEQMYU4tvMl6hR2g/S1fPW1JM19hLlN6AFw90J9j4iyGUjED+b/LhLCorp+M/wSAckZqg5jx+SN8NnaHZdOfYmclGcgCpB0d/ltYpOcYLxfuw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UuMlvDhJcfVbXLAuUyEvxwJePaJUIlz+oQD/CCzXYvw=;
+ b=O0CvgWZd/8fbEhUlVqgOF4NZHQ2uXCgUhMZH1TdQ63xTf4zk9Si9NaaIhtfMs8o3jmVk4EHa2L5y23V1Dz2ge96dfbBawFjFElmOX9U9lqb6Webkvx7myErNVvDkFJaE26oPGTpbq2IRIs0r32siZPTbL4jLVIVvmXmjztXSYfW4/MUlMugoeh1kzR5xFFfRR9Mk9vZit3kciAej6s7SLvMPpj/O+uGr2trbqhsvAUlZPUNFJq/8zXBZ9UZdMROT8jwlPxkbQoOojmpKykjfv8QnEnYkuuhG8eeFDyIOed/mWEgjL0PAZ6e6I24XExp2KqoNo8cpbgM+72W+GbzSlg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by AM0PR04MB7172.eurprd04.prod.outlook.com (2603:10a6:208:192::16) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.13; Wed, 25 Feb
+ 2026 20:24:06 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9632.017; Wed, 25 Feb 2026
+ 20:24:06 +0000
+Date: Wed, 25 Feb 2026 15:23:59 -0500
+From: Frank Li <Frank.li@nxp.com>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Manikanta Maddireddy <mmaddireddy@nvidia.com>,
+	Koichiro Den <den@valinux.co.jp>,
+	Damien Le Moal <dlemoal@kernel.org>, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 3/9] PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl
+ window
+Message-ID: <aZ9aX2ZzEWb3YuUt@lizhi-Precision-Tower-5810>
+References: <20260225170324.4033466-11-cassel@kernel.org>
+ <20260225170324.4033466-14-cassel@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20260225170324.4033466-14-cassel@kernel.org>
+X-ClientProxiedBy: PH5P220CA0010.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:510:34a::13) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|AM0PR04MB7172:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5db5b2dd-a172-4b90-5589-08de74abd2e9
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|366016|1800799024|19092799006|38350700014|7053199007;
+X-Microsoft-Antispam-Message-Info: fceCNGuQLMS9oDZKVzUiZ++DTrXwzfu0xp2IzGFY/eWc5UjiPUoaX1Ibe7+XsCG/seW5EJX5fy26Oozw6XZlF7qszCzRu7Eg0SOXT0iDZ4rqWlz/KjkrmxwlqrS/epBXgU9LulnAj2a6SHaVLZMKmibcufpyMzqWQpTdEDmd0uSwPRZR2tiawBCFZVHQWFRgjL5nNihe/VICG3BODFMJtHHlp1/3P4owXd4OOsbD3SrFFooJIVBhIOM9ZrIhu016nytRo9/l/NQxvpRd8yg8aMSz9vv7l+ZfWMq4LKIoeH3Ud7a64ZyzElU7edN03p+f8PWx5Qrvwkhijhol4XBA4tJIUMaVneY7igyae8b5SrcjQd9LZDUz4/dmA/vqJtDCfL4i4PzrNCl+eWLGQL+RD/wG+uOMIIjwJLebh6TJUOAYLZWF8JH4vJ2S8qcmOGhhL7ZNR4jsITNLtvNDvPJbVdUPgiq4WHutDGeKNGqcyUu3eIPQK/LPwanXMyAOPDefeipT8hjmCS77EPvg5gDqRly0kAAN1vxb+FWGVVJowNvn45ZByFmuczJwmhpnhCSxnyADyf88RArP+A9A5uMWTdUkRF0QeUSwNSrb306D+q4UeLdVyllgylFoqYTm12Nrnr2bIlJrRkv4Z3jEILlQggEDHKwlyNjRBEo6GvCZXteGhYGOmMih6c1nd9y0IKc1DOb2Oruh50wdVy7yNJTKXN9ODZreoAXmCWPsU8xRLHQtajLo09YzIBQ717sYcwPJm2jksopch5qGBviPmH1vZ/1X3LolpSsmSz6NvklvmqE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(366016)(1800799024)(19092799006)(38350700014)(7053199007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?uvz6EiCQD8CGq57N5Mou07Ig9oTssBTnfpfyWQlbolNJhyhFm7U3kKs3s7AR?=
+ =?us-ascii?Q?cI9Hb7uU2dUEzMxRysvnMDYdKCOb1Cprn2QvQOOENXw7U/wrfQzKC2m+FmxD?=
+ =?us-ascii?Q?gZb5rKdtdugp7WSf53P5JGzGAqo1B+zxogpdLuaa7SV7mE5HJXIAz+UtoYAq?=
+ =?us-ascii?Q?oeCNJhJQM2UoScNAuUDw4bWSET1o2SvL5LoATfFmrTIW4Rx+zp+G+xhPzhsi?=
+ =?us-ascii?Q?z1WxSWfMwAl+m6iDOvijUao57A2HvW0nytj0o1Rphk3hXKqZcZvhwIeyMC67?=
+ =?us-ascii?Q?2X2aLkfJSiOgL7R4gnXhkK0OXdhl672K+eXVbCOJN1bOB/F2niD6MzHImUcj?=
+ =?us-ascii?Q?GlsuTTQIFJT1ctsRI8xtv1YoJxsXMxwNtltB6/CB2tRTMUle6PWUDX0s65Im?=
+ =?us-ascii?Q?b2hmNP3yTs+mfAXtNv2j+EBLCQpXsieN9EjT8Im5Wx8QbMm39nhAQHCeLn11?=
+ =?us-ascii?Q?cL/4/5NAUabWJHJKdzNsMnkBKay1vs9Q3eqS4oA5YhBDcXaldC6m2ZEDeUI7?=
+ =?us-ascii?Q?hhbZuBmLoxlRWIOmgIDZH9i2Wh0Os859UQXVx0UB6WncUcb57gzggoEBHFw2?=
+ =?us-ascii?Q?Tg5rj/Il/62S66sdRvutJ0A5NvKYZYbJwPh8q681UTkW1Flwk84ksuAD680B?=
+ =?us-ascii?Q?hMvT8yN/XUDpOvNeREYjNnSG2SiTgZ2CjFolAlSy0b+LGJx0xAop1xRA9+ok?=
+ =?us-ascii?Q?2yzBl7//9OSFPPAf21odB3xiXvj3wqd+mO6m/v5yRXFhvhP7bU7w/IFAoj58?=
+ =?us-ascii?Q?bLrb36t5bJtRCB5hELFEF9tmIJTTsPe2z8RP/2oKkw5TBcUGGuhDI1OX6ACQ?=
+ =?us-ascii?Q?65PLdK8cnYvQjYwl21+ek2i00SbD1Bwa29C2kVNi9EwGsu91pNGANPHHDufW?=
+ =?us-ascii?Q?8gzEoTEB6tH8s3mZrlTSxMWe1eqmEImVRVr7w45dnN1nSt5+Uv2MDDFtikaD?=
+ =?us-ascii?Q?eHjToXimj180w9c2E7RWFtOGGS4uxv9qJMLbXOm2gupTA3oXw3yQBOUc3Wmf?=
+ =?us-ascii?Q?BL8GrTBquEeZws635fGeV1j8jNReJ0ZiIZA8o6Tp0Rd4Dm3bQVbyJybJMKgR?=
+ =?us-ascii?Q?7WWHCXiXTH2TcmL62qyNzDcMvH+nYu2imc1b2FH1YtxIv6gVbHwq9/hB1Opy?=
+ =?us-ascii?Q?sJbjy9UwebYKY5nGpHcm/iMBcsuUPoXyOm0GR6qfdT3blCI+PaqVqGqeaRU6?=
+ =?us-ascii?Q?+0lP7HZ8U71ThB02gyL3l+c8hpzVdXrEIlHojMFy4zAt3Kz6J5zOlNadsVUO?=
+ =?us-ascii?Q?3GXnKm3nsdQCrOk2Z4lyDwD74xMg06b4wqqHRGcUchrfPhcXNM68E0afZPC7?=
+ =?us-ascii?Q?fEO7vZtHS57jZbwdbLAbUSaCrinShGDrg7o2YYAEnl/rOQzWoi4xA8zfcNks?=
+ =?us-ascii?Q?l73mdCGWE/WQ7O1YZqTBJj647lUAwaW/KSotdmya1ny1nVEmVejoEG12bhBl?=
+ =?us-ascii?Q?1oRZyLvq9AfBPjB8DH6bAsj/6rRotgnlsykFXHOTMxK4tS5ErutJugLGmt8X?=
+ =?us-ascii?Q?WF4abrUBG1XtZSeteahvOzn4EWCveOrnEmvg8woBd22mE/or0uPl5l1Mkn97?=
+ =?us-ascii?Q?bUnx8QejWetctpyvcYORM+kcJzWFLWagp8Hx5M9OaZepF92FYg5I+bAJ3KyR?=
+ =?us-ascii?Q?xNFMYkGAVMQoHypPvtj4mXwXmmmSDNio1xYS2KrvxnxtPfDFYuPCT3MzrFIM?=
+ =?us-ascii?Q?vaY3ccznYS8oLDlYwQanyWtqVZX8ns6d+C8L5b7R32KM8uNL?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5db5b2dd-a172-4b90-5589-08de74abd2e9
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2026 20:24:06.3831
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: xf5Ykqm3Zq4wbGuHhCociGYb5ra+lP9uatRXExEMazo7MRZ4vUaebDA2r3YPoxDwvVy/XSdWSI19HZf2rOyk1g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB7172
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_092240_788394_4FCAFAE6 
-X-CRM114-Status: GOOD (  30.62  )
+X-CRM114-CacheID: sfid-20260225_122412_476430_62238EFB 
+X-CRM114-Status: GOOD (  22.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,109 +143,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 25 February 2026 18:03:00 Central European Standard Time Nicolas Frattaroli wrote:
-> On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
-> > The hdmi_colorspace enum was defined to represent the colorspace value
-> > of the HDMI infoframes. It was later used by some HDMI drivers to
-> > express the output format they should be setting up.
-> > 
-> > During the introduction of the HDMI helpers, it then was used to
-> > represent it in the drm_connector_hdmi_state structure.
-> > 
-> > However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
-> > defines, and now with the drm_output_color_format enum. Let's
-> > consolidate around drm_output_color_format in drm_connector_hdmi_state
-> > to facilitate the current effort to provide a global output format
-> > selection mechanism.
-> > 
-> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> > ---
-> >  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
-> >  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
-> >  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
-> >  drivers/gpu/drm/drm_bridge.c                       |   2 +-
-> >  drivers/gpu/drm/drm_connector.c                    |  14 +-
-> >  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
-> >  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
-> >  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
-> >  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
-> >  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
-> >  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
-> >  include/drm/display/drm_hdmi_helper.h              |   3 +-
-> >  include/drm/drm_connector.h                        |   7 +-
-> >  14 files changed, 205 insertions(+), 180 deletions(-)
-> > 
-> > [... snip ...]
-> >
-> > diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-> > index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
-> > --- a/drivers/gpu/drm/drm_connector.c
-> > +++ b/drivers/gpu/drm/drm_connector.c
-> > [... snip ...]
-> >  
-> > @@ -1424,25 +1424,25 @@ drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb broadcast_
-> >  	return broadcast_rgb_names[broadcast_rgb].name;
-> >  }
-> >  EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
-> >  
-> >  static const char * const output_format_str[] = {
-> > -	[HDMI_COLORSPACE_RGB]		= "RGB",
-> > -	[HDMI_COLORSPACE_YUV420]	= "YUV 4:2:0",
-> > -	[HDMI_COLORSPACE_YUV422]	= "YUV 4:2:2",
-> > -	[HDMI_COLORSPACE_YUV444]	= "YUV 4:4:4",
-> > +	[DRM_OUTPUT_COLOR_FORMAT_RGB444]	= "RGB",
-> > +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR420]	= "YUV 4:2:0",
-> > +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR422]	= "YUV 4:2:2",
-> > +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR444]	= "YUV 4:4:4",
-> >  };
-> >  
-> >  /*
-> >   * drm_hdmi_connector_get_output_format_name() - Return a string for HDMI connector output format
-> >   * @fmt: Output format to compute name of
-> >   *
-> >   * Returns: the name of the output format, or NULL if the type is not
-> >   * valid.
-> >   */
-> >  const char *
-> > -drm_hdmi_connector_get_output_format_name(enum hdmi_colorspace fmt)
-> > +drm_hdmi_connector_get_output_format_name(enum drm_output_color_format fmt)
-> >  {
-> >  	if (fmt >= ARRAY_SIZE(output_format_str))
-> >  		return NULL;
-> 
-> Almost unrelated nit: we might want to also `fmt < 0 ||` here, since the
-> base type of enums is a signed int. I almost caught myself using this function
-> as a way to quickly check if a supplied color format property from userspace
-> was valid, which would've had some unpleasant consequences for the kernel's
-> memory.
-> 
-> Alternatively, I make my own switch-case based "is this a valid enum value"
-> function. I probably should do that actually, but my laziness lead me to
-> make sure we only have a single source of truth of what counts as a valid
-> enum value.
+On Wed, Feb 25, 2026 at 06:03:26PM +0100, Niklas Cassel wrote:
+> From: Koichiro Den <den@valinux.co.jp>
+>
+> On RK3588 PCIe3_4L in EP mode, the integrated DMA controller registers
+> are permanently mapped to BAR4 and must not be repurposed by EPF
+> drivers.
+>
+> When the remote peer needs to access these registers, it must use the
+> fixed BAR4 window instead of creating another inbound mapping in a
+> different BAR. Mixing the fixed window with an additional mapping can
+> lead to incorrect behavior.
+>
+> Advertise the DMA controller MMIO window as a reserved BAR subregion so
+> EPF drivers can reuse it safely.
+>
+> Reviewed-by: Manikanta Maddireddy <mmaddireddy@nvidia.com>
+> Signed-off-by: Koichiro Den <den@valinux.co.jp>
+> Signed-off-by: Niklas Cassel <cassel@kernel.org>
+> ---
 
-Gah, disregard this, I just realised that this enum shouldn't be used as
-the one in the property anyway, because of AUTO, as you already pointed out
-in your reply to my series as well.
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
 
-> 
-> >  
-> >  	return output_format_str[fmt];
-> > [... snip ...]
-> 
-> Thanks for your work on this series, I was afraid of getting rid of
-> DRM_COLOR_FORMAT_* myself because I suspected it was going to be a
-> fairly large refactor across every driver. Guess I was both right
-> and wrong: it touches many files, but all the replacements are
-> fairly simple. :)
-> 
-> Kind regards,
-> Nicolas Frattaroli
-
-
-
-
+>  drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++++-
+>  1 file changed, 14 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> index 5b17da63151d..ecc28093c589 100644
+> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+> @@ -403,6 +403,15 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
+>  	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
+>  };
+>
+> +static const struct pci_epc_bar_rsvd_region rk3588_bar4_rsvd[] = {
+> +	{
+> +		/* DMA_CAP (BAR4: DMA Port Logic Structure) */
+> +		.type = PCI_EPC_BAR_RSVD_DMA_CTRL_MMIO,
+> +		.offset = 0x0,
+> +		.size = 0x2000,
+> +	},
+> +};
+> +
+>  /*
+>   * BAR4 on rk3588 exposes the ATU Port Logic Structure to the host regardless of
+>   * iATU settings for BAR4. This means that BAR4 cannot be used by an EPF driver,
+> @@ -420,7 +429,11 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
+>  	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
+>  	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
+>  	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
+> -	.bar[BAR_4] = { .type = BAR_RESERVED, },
+> +	.bar[BAR_4] = {
+> +		.type = BAR_RESERVED,
+> +		.nr_rsvd_regions = ARRAY_SIZE(rk3588_bar4_rsvd),
+> +		.rsvd_regions = rk3588_bar4_rsvd,
+> +	},
+>  	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
+>  };
+>
+> --
+> 2.53.0
+>
 
 _______________________________________________
 Linux-rockchip mailing list
