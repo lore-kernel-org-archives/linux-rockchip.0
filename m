@@ -4,62 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C4FEFB7F0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 06:52:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30C29F4BB72
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 10:35:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
+	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vKAxKo1bNADLQB4d/Vw79nm7TpFOnpjoofKBK301/j4=; b=c2Pf8KpodT8hy+
-	28kFOwHFVRvksdXo0euKfbsOHz0fk7vOmFkYqr7rU7dSgkcPnnw3QRHu0R4uFheCLNkMmzplAk2Ql
-	QX+r5w7jhRz0UOAihaqJbxOvX7OhXFdfNQKrIAuNqpkFC5Dbdu1wilX9F3LeIpAOeBeoQclad6cmt
-	j9Jtk7nR4ohxeUWnULoJro5Gs4WLs0l+rwTZpp1eraIxIcp90VD6PZOp7SD5+MTh/4U8sEsZdUlyy
-	dqem5j/jGKWESGq52KIR8ecY5DepUeo6aaqJQ8d3VaoOY432Ya/7WqB28HqpPZBx0a4slI2JNaC0r
-	EaQDHUR6qVsoWMUq9JSA==;
+	List-Owner; bh=+o9St2hgSua4FeBe8OlWqAM1kpbODVXYYrhecp/zJio=; b=1Gpa12bV/IrbBa
+	/snwrNIGW4GamK8wR9aDQ1t/wRjENB/Hal8l81WsSkF8aQUcXkw8V5AII058L6kLv9j0ZHofqhFV9
+	OoK9ztdLXnQ+UdYAhfImdc7/zvlQwZluDvkfKJrKzbO1+JNeSPzl42DYMLVbGESzICtc3RSZ7B7Km
+	RLDyZbcsn/wdSy4b0yzPvLD2FxLanD8SciHtQJMbk3QEQp8GDxnmYMl9hZ6z/it/Hjjs/U67HPb7h
+	N2UFQCftcgvuWk/kzL6IhMWO0dT1Z0oEyFH71N6IghCelWz1M/ux/kWs0kzdJLkWYn+7PIOy5xvev
+	3IBcJtjzAwLukHdHNOEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv8kV-00000003N2x-45WC;
-	Wed, 25 Feb 2026 06:51:55 +0000
-Received: from mail-m49251.qiye.163.com ([45.254.49.251])
+	id 1vvCF7-00000003noF-1Vyy;
+	Wed, 25 Feb 2026 10:35:45 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv8kR-00000003N23-0yN9
-	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Feb 2026 06:51:54 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 34e3ed4ec;
-	Wed, 25 Feb 2026 14:51:40 +0800 (GMT+08:00)
-Message-ID: <cab6d03b-ac80-427e-ad9a-b810843bd799@rock-chips.com>
-Date: Wed, 25 Feb 2026 14:51:39 +0800
+	id 1vvCF4-00000003nmC-43n0;
+	Wed, 25 Feb 2026 10:35:44 +0000
+Received: from thinkpad.ideasonboard.com (cpc89244-aztw30-2-0-cust6594.18-1.cable.virginm.net [86.31.185.195])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id A2C62E47;
+	Wed, 25 Feb 2026 11:34:37 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1772015677;
+	bh=hb+mpvmmToFRkdvmVoWvD1xELlIkq++a/igkCkZJ9Ro=;
+	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
+	b=aX/17CgY4joVLDvgjjJ5YXF+cQlxeL3kTLkK/yJX17BwyxYvJTr454m+HOspTjnYX
+	 AXeHJ+kSKWufBQI5IZxl17A0HsHjl+w8h29UXtRSt1LeCndIPhpO1qA2GLVahsB7II
+	 bJ4KQ7W3eY7Pw6L27zs5YLXh+cXT8JWYKaT/8aU4=
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] pmdomain: rockchip: Fix PD_VCODEC for RK3588
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
- Finley Xiao <finley.xiao@rock-chips.com>, Frank Zhang <rmxpzlb@gmail.com>,
- linux-pm@vger.kernel.org, Sebastian Reichel
- <sebastian.reichel@collabora.com>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
- stable@vger.kernel.org
-References: <1771988101-49877-1-git-send-email-shawn.lin@rock-chips.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <1771988101-49877-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9c939152ae03abkunm10db2a44ff4e3b
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUMaS1YdHxoYSE9NTx9PTUJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=hV1fxuBl5PKXPMBDCx3/0yAxIU51Xl1kJ0Ou4qWnXfOBkWTKSQyTeaJO6dNYHV8zOb667myoCloTiluAYjX7hzax3LBU/FqQyiS8mBGTMGRIXVbyY49Np7zOWGnmjgH4yKPX8QpP7+G4ESnVjlV7WBH6IwTAK3GG9GE0TX8pwZQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=B2G6fQQyc1a7ftJ4+MnugTUyTCSAbk2IAEWneviu7SE=;
-	h=date:mime-version:subject:message-id:from;
+In-Reply-To: <20260216-rkcif-fixes-v2-2-ee40931fe0ff@collabora.com>
+References: <20260216-rkcif-fixes-v2-0-ee40931fe0ff@collabora.com> <20260216-rkcif-fixes-v2-2-ee40931fe0ff@collabora.com>
+Subject: Re: [PATCH v2 2/2] media: rockchip: rkcif: comply with minimum number of buffers requirement
+From: Isaac Scott <isaac.scott@ideasonboard.com>
+Cc: Collabora Kernel Team <kernel@collabora.com>, stable@kernel.org, linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>, Chen-Yu Tsai <wens@kernel.org>
+To: Bryan O'Donoghue <bryan.odonoghue@linaro.org>, Dan Carpenter <dan.carpenter@linaro.org>, Hans Verkuil <hverkuil+cisco@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Mehdi Djait <mehdi.djait@linux.intel.com>, Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>, Paul Elder <paul.elder@ideasonboard.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, michael.riesch@collabora.com
+Date: Wed, 25 Feb 2026 10:35:32 +0000
+Message-ID: <177201573211.1569069.5955260325057590452@t16>
+User-Agent: alot/0.10
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_225153_533901_8D0944F3 
-X-CRM114-Status: GOOD (  15.61  )
+X-CRM114-CacheID: sfid-20260225_023543_143841_BDAB6736 
+X-CRM114-Status: GOOD (  18.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,89 +65,108 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2/25/2026 10:55 AM, Shawn Lin wrote:
-> From the RK3588 TRM Table 7-1 RK3588 Voltage Domain and Power Domain Summary,
-> PD_RKVDEC0/1 and PD_VENC0/1 rely on VD_VCODEC which require extra voltages to
-> be applied, otherwise it breaks RK3588-evb1-v10 board after vdec support landed[1].
-> The panic looks like below:
+Hi Michael,
+
+Thank you for the patch!
+
+Quoting Michael Riesch via B4 Relay (2026-02-20 08:15:08)
+> From: Michael Riesch <michael.riesch@collabora.com>
 > 
->   rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'rkvdec0' on, val=0
->   rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'rkvdec1' on, val=0
->   ...
->   Hardware name: Rockchip RK3588S EVB1 V10 Board (DT)
->   Workqueue: pm genpd_power_off_work_fn
->   Call trace:
->   show_stack+0x18/0x24 (C)
->   dump_stack_lvl+0x40/0x84
->   dump_stack+0x18/0x24
->   vpanic+0x1ec/0x4fc
->   vpanic+0x0/0x4fc
->   check_panic_on_warn+0x0/0x94
->   arm64_serror_panic+0x6c/0x78
->   do_serror+0xc4/0xcc
->   el1h_64_error_handler+0x3c/0x5c
->   el1h_64_error+0x6c/0x70
->   regmap_mmio_read32le+0x18/0x24 (P)
->   regmap_bus_reg_read+0xfc/0x130
->   regmap_read+0x188/0x1ac
->   regmap_read+0x54/0x78
->   rockchip_pd_power+0xcc/0x5f0
->   rockchip_pd_power_off+0x1c/0x4c
->   genpd_power_off+0x84/0x120
->   genpd_power_off+0x1b4/0x260
->   genpd_power_off_work_fn+0x38/0x58
->   process_scheduled_works+0x194/0x2c4
->   worker_thread+0x2ac/0x3d8
->   kthread+0x104/0x124
->   ret_from_fork+0x10/0x20
->   SMP: stopping secondary CPUs
->   Kernel Offset: disabled
->   CPU features: 0x3000000,000e0005,40230521,0400720b
->   Memory Limit: none
->   ---[ end Kernel panic - not syncing: Asynchronous SError Interrupt ]---
+> Each stream requires CIF_REQ_BUFS_MIN=1 buffers to enable streaming.
+> However, it failed with only one buffer provided.
 > 
-> Chaoyi pointed out the PD_VCODEC is the parent of PD_RKVDEC0/1 and PD_VENC0/1, so checking
-> the PD_VCODEC is enough.
+> Comply with the minimum number of buffers requirement and accept
+> exactly one buffer.
 > 
-> [1] https://lore.kernel.org/linux-rockchip/20251020212009.8852-2-detlev.casanova@collabora.com/
-> Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
-> Cc: stable@vger.kernel.org
-> Suggested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> 
+> Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
+> Cc: stable@kernel.org
+> Tested-by: Paul Elder <paul.elder@ideasonboard.com>
+> Tested-by: Chen-Yu Tsai <wens@kernel.org>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 > ---
+>  .../media/platform/rockchip/rkcif/rkcif-stream.c   | 44 +++++++++++-----------
+>  1 file changed, 22 insertions(+), 22 deletions(-)
 > 
-> Changes in v3:
-> - drop tags
-> - rework it for just changing PD_VCODEC(chaoyi)
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> index e00010a91e8b..f15bee4f7cd7 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> @@ -106,42 +106,42 @@ static int rkcif_stream_init_buffers(struct rkcif_stream *stream)
+>  {
+>         struct v4l2_pix_format_mplane *pix = &stream->pix;
+>  
+> -       stream->buffers[0] = rkcif_stream_pop_buffer(stream);
+> -       if (!stream->buffers[0])
+> -               goto err_buff_0;
+> -
+> -       stream->buffers[1] = rkcif_stream_pop_buffer(stream);
+> -       if (!stream->buffers[1])
+> -               goto err_buff_1;
+> -
+> -       if (stream->queue_buffer) {
+> -               stream->queue_buffer(stream, 0);
+> -               stream->queue_buffer(stream, 1);
+> -       }
+> -
+>         stream->dummy.size = pix->num_planes * pix->plane_fmt[0].sizeimage;
+>         stream->dummy.vaddr =
+>                 dma_alloc_attrs(stream->rkcif->dev, stream->dummy.size,
+>                                 &stream->dummy.buffer.buff_addr[0], GFP_KERNEL,
+>                                 DMA_ATTR_NO_KERNEL_MAPPING);
+>         if (!stream->dummy.vaddr)
+> -               goto err_dummy;
+> +               return -ENOMEM;
+>  
+>         for (unsigned int i = 1; i < pix->num_planes; i++)
+>                 stream->dummy.buffer.buff_addr[i] =
+>                         stream->dummy.buffer.buff_addr[i - 1] +
+>                         pix->plane_fmt[i - 1].bytesperline * pix->height;
+>  
+> -       return 0;
+> +       stream->buffers[0] = rkcif_stream_pop_buffer(stream);
+> +       if (!stream->buffers[0])
+> +               goto err_dummy_free;
+> +
+> +       stream->buffers[1] = rkcif_stream_pop_buffer(stream);
+> +       if (!stream->buffers[1]) {
+> +               stream->buffers[1] = &stream->dummy.buffer;
+> +               stream->buffers[1]->is_dummy = true;
+> +       }
+
+Looks good to me!
+
+Reviewed-by: Isaac Scott <isaac.scott@ideasonboard.com>
+
+>  
+> -err_dummy:
+> -       rkcif_stream_return_buffer(stream->buffers[1], VB2_BUF_STATE_QUEUED);
+> -       stream->buffers[1] = NULL;
+> +       if (stream->queue_buffer) {
+> +               stream->queue_buffer(stream, 0);
+> +               stream->queue_buffer(stream, 1);
+> +       }
+> +
+> +       return 0;
+>  
+> -err_buff_1:
+> -       rkcif_stream_return_buffer(stream->buffers[0], VB2_BUF_STATE_QUEUED);
+> -       stream->buffers[0] = NULL;
+> -err_buff_0:
+> +err_dummy_free:
+> +       dma_free_attrs(stream->rkcif->dev, stream->dummy.size,
+> +                      stream->dummy.vaddr,
+> +                      stream->dummy.buffer.buff_addr[0],
+> +                      DMA_ATTR_NO_KERNEL_MAPPING);
+> +       stream->dummy.vaddr = NULL;
+>         return -EINVAL;
+>  }
+>  
 > 
-> Changes in v2:
-> - collect tags
-> - correct TRM section(Sebastian)
+> -- 
+> 2.39.5
 > 
->  drivers/pmdomain/rockchip/pm-domains.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 >
-
-Reviewed-by: Chaoyi Chen <chaoyi.chen@rock-chips.com> 
-
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index 997e93c..44d3484 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -1311,7 +1311,7 @@ static const struct rockchip_domain_info rk3576_pm_domains[] = {
->  static const struct rockchip_domain_info rk3588_pm_domains[] = {
->  	[RK3588_PD_GPU]		= DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false, true),
->  	[RK3588_PD_NPU]		= DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x0, 0,       0,       0x0, 0,       0,       false, true),
-> -	[RK3588_PD_VCODEC]	= DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  0x0, 0,       0,       0x0, 0,       0,       false, false),
-> +	[RK3588_PD_VCODEC]	= DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  0x0, 0,       0,       0x0, 0,       0,       false, true),
->  	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false, false),
->  	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false, false),
->  	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false, false),
-
--- 
-Best, 
-Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
