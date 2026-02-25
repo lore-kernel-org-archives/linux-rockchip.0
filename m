@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D5EFF4BB7F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Feb 2026 20:06:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C20C6F55425
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 00:05:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fVRJNZlwWvDPmKncpuW3hmZ/NlgGQNYmYiOI7zLutBw=; b=U0GTkLwrcejQtE
-	Ve/YNJ5+hO6M2417WSJqGIvqt5s9PolA5JXz2qFJFpdPstxzMKVIRgD1fNeMvbJMMHP73QJai9YzO
-	E5v0F2knbrbcF2dkz2E4TISZoO/otFRPg38hZ1QsBXeSgbVdHcXDCI2B+fS9vt+gYjRht7+GDlEoy
-	R22DjUplExXztAnr/7byeT0dr/W3BQMi/DbQrXjquYO38w3IePf6lZv2bbbYfEzCHTPh+Gnk1hMKb
-	qaBQZczHvfxJmlQkwIWS7zptBth8XEXiavKTsH+bcHgxY9R5w6wlHbaHl4ym0I2KB4zSIKuA+JKnT
-	xC7N4r0vPfr9h0nJFrbA==;
+	List-Owner; bh=KPr5qjQ6KAIKsHkHucItI1zg6Kzy3nTqz8pKaS2zkQc=; b=m5DW32KnDf0lne
+	4QbrII6/2G0FGJCe2GGK3wxNwhqFHKTLdBCVhbh3ZHM5YZkjmPoc3YXG4VGRRW8G80kW2WTodad51
+	Kpbx01++4wc3eNffd3Wn+QCUL/FO1KXf69np11sNS+liX6eoHK3Z4Qoh8VpJ+iTWRow9N5XR6j+/l
+	I4eYaQ8VFFrnxbYnEoihZzAyDvbx/WjLmRmSHSepxCkT0BGHuMIOPSk54vjgLifrc6jEDmzKwTJKm
+	RIIwJDlzwKpHBe4UgIDKgMZKNE7wT4H2HgfSGYQAWpNG3dZ36K76YIoFptlLT3fCA1aOUG/TT+vGD
+	HiCNLJKiqZU0nqoyu5AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuygG-00000002jU9-0LyO;
-	Tue, 24 Feb 2026 20:06:52 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1vv2Oa-00000002xjc-1JqX;
+	Wed, 25 Feb 2026 00:04:52 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vuygD-00000002jTm-1SAp
+	id 1vv2OX-00000002xii-155Z
 	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Feb 2026 20:06:50 +0000
+	Wed, 25 Feb 2026 00:04:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1771963609; x=1803499609;
+  t=1771977887; x=1803513887;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=JnvyvrTWhs4gFCNCDWjVlJ4krK6pLc/diQs0NadNI9s=;
-  b=EvsV5gMgJGWp2nk0ToO2iA9tmDfST3njyucuwZr3jez+9eFF2nSurrqk
-   tNhSkr9qM63uQOusCjcL8TAAdrqI80gv5WHTQ8ukhY15TU0IS5aXdeQ6P
-   qJ3UpE/8WCCWIIg957tpi12xNEjwyunkRWhjZjZTb2sASz6cNgGiqt2UJ
-   dqvbD4cSpewlDX8oYG9VQC2XpNyc6WvsBGo84T/ERWfesC2h5QqDXqCDd
-   aHGRmRVvkwoWH8vnGH/yiIFUosoofNQkeVAr/aJaOSQhwS4ubUGX5Otsm
-   qS2PwceBdp3XpF7dof8MWi8PMvWf9qiDan1op20qYWp6tL/JMtai4RpVW
-   A==;
-X-CSE-ConnectionGUID: XtXp9ExJT0y0iAB7MpWpBw==
-X-CSE-MsgGUID: Ukfbg2RmRsmFxGNy9b0Gow==
-X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="84358375"
+  bh=Myv8Eg4qd8hYFHZFEYgoZT6YbrxhedjbG6iZlTRMA44=;
+  b=g46n92SjoioT7GyEKk1Qq3GjRHb48hdZKgr66xPVslwLNRXV3QbuOPPd
+   /jJGmFXhhehjpwcIrWO5hnARZDz6PhPZ7R+/td3Wkx80lakAnggMpoB8U
+   Os9pClRQuqnOuyjWE+KlNd2Fwp1MCgbSFqOHr1IyYZeVOHmBKZvpFOwwc
+   lWQyajgGzApBH74tEA09tZbgKqJD4a/Mk7omU40I2w7pJGT5C2D7jQI4e
+   /4nmJYf9DvhbQ/69tbtvRU5oi/F35XE5WEht0jvN/bixTrHrSXx63GoCX
+   mQYAzzZtowZ5DsEYGbZWNEPaNNHuGV4QlQHVsTkW7hG7GHt1HQa9lZ89+
+   g==;
+X-CSE-ConnectionGUID: SQPhOG3WR+KM0TCVpHYNzw==
+X-CSE-MsgGUID: F2gGIAO1R8WpYZ2NmDxVGw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11711"; a="73186823"
 X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; 
-   d="scan'208";a="84358375"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 12:06:48 -0800
-X-CSE-ConnectionGUID: bK9mMWaGTraCoEuV+coDig==
-X-CSE-MsgGUID: MZ747D+jSy2qFNh4LBrWrA==
+   d="scan'208";a="73186823"
+Received: from orviesa009.jf.intel.com ([10.64.159.149])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Feb 2026 16:04:47 -0800
+X-CSE-ConnectionGUID: eEHTq/9QSeCkUWjyx07BzQ==
+X-CSE-MsgGUID: qVFCXw3SReiVsAGeUBCz+w==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.21,309,1763452800"; 
-   d="scan'208";a="214347483"
+   d="scan'208";a="215946493"
 Received: from lkp-server02.sh.intel.com (HELO a3936d6a266d) ([10.239.97.151])
-  by fmviesa007.fm.intel.com with ESMTP; 24 Feb 2026 12:06:44 -0800
+  by orviesa009.jf.intel.com with ESMTP; 24 Feb 2026 16:04:45 -0800
 Received: from kbuild by a3936d6a266d with local (Exim 4.98.2)
 	(envelope-from <lkp@intel.com>)
-	id 1vuyfo-000000002P3-1Mez;
-	Tue, 24 Feb 2026 20:06:30 +0000
-Date: Wed, 25 Feb 2026 04:05:37 +0800
+	id 1vv2OQ-000000002bh-1Kzk;
+	Wed, 25 Feb 2026 00:04:42 +0000
+Date: Wed, 25 Feb 2026 08:04:10 +0800
 From: kernel test robot <lkp@intel.com>
 To: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org
-Cc: oe-kbuild-all@lists.linux.dev, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, andy@kernel.org,
+	nuno.sa@analog.com, dlechner@baylibre.com, jic23@kernel.org,
 	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
 	krzk+dt@kernel.org, robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
 Subject: Re: [PATCH 2/3] iio: imu: inv_icm42607: add new inv_icm42607 driver
-Message-ID: <202602250331.RTQ00zxY-lkp@intel.com>
+Message-ID: <202602250851.I3vE5ldR-lkp@intel.com>
 References: <20260224163109.370930-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20260224163109.370930-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_120649_428400_C128C9DA 
-X-CRM114-Status: GOOD (  14.70  )
+X-CRM114-CacheID: sfid-20260224_160449_393634_793FE3D4 
+X-CRM114-Status: GOOD (  11.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,87 +107,34 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Morgan/dt-bindings-
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
 patch link:    https://lore.kernel.org/r/20260224163109.370930-3-macroalpha82%40gmail.com
 patch subject: [PATCH 2/3] iio: imu: inv_icm42607: add new inv_icm42607 driver
-config: sh-allyesconfig (https://download.01.org/0day-ci/archive/20260225/202602250331.RTQ00zxY-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 15.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260225/202602250331.RTQ00zxY-lkp@intel.com/reproduce)
+config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20260225/202602250851.I3vE5ldR-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260225/202602250851.I3vE5ldR-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202602250331.RTQ00zxY-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202602250851.I3vE5ldR-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
-   drivers/iio/imu/inv_icm42607/inv_icm42607_core.c: In function 'inv_icm42607_suspend':
->> drivers/iio/imu/inv_icm42607/inv_icm42607_core.c:670:13: warning: variable 'accel_conf' set but not used [-Wunused-but-set-variable]
-     670 |         int accel_conf;
-         |             ^~~~~~~~~~
---
->> drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c:200:36: warning: 'inv_icm42607_motion_events' defined but not used [-Wunused-const-variable=]
+>> drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c:200:36: warning: unused variable 'inv_icm42607_motion_events' [-Wunused-const-variable]
      200 | static const struct iio_event_spec inv_icm42607_motion_events[] = {
          |                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~
+   1 warning generated.
 
 
-vim +/accel_conf +670 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+vim +/inv_icm42607_motion_events +200 drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
 
-   660	
-   661	/*
-   662	 * Suspend saves sensors state and turns everything off.
-   663	 * Check first if runtime suspend has not already done the job.
-   664	 */
-   665	static int inv_icm42607_suspend(struct device *dev)
-   666	{
-   667		struct inv_icm42607_state *st = dev_get_drvdata(dev);
-   668		struct device *accel_dev;
-   669		bool wakeup;
- > 670		int accel_conf;
-   671		int ret = 0;
-   672	
-   673		guard(mutex)(&st->lock);
-   674	
-   675		st->suspended.gyro = st->conf.gyro.mode;
-   676		st->suspended.accel = st->conf.accel.mode;
-   677		st->suspended.temp = st->conf.temp_en;
-   678		if (pm_runtime_suspended(dev))
-   679			return 0;
-   680	
-   681		if (st->fifo.on) {
-   682			ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
-   683					   INV_ICM42607_FIFO_CONFIG1_BYPASS);
-   684			if (ret)
-   685				return ret;
-   686		}
-   687	
-   688		/* keep chip on and wake-up capable if APEX and wakeup on */
-   689		accel_dev = &st->indio_accel->dev;
-   690		wakeup = st->apex.on && device_may_wakeup(accel_dev);
-   691		if (wakeup) {
-   692			/* keep accel on and setup irq for wakeup */
-   693			accel_conf = st->conf.accel.mode;
-   694			enable_irq_wake(st->irq);
-   695			disable_irq(st->irq);
-   696		} else {
-   697			/* disable APEX features and accel if wakeup disabled */
-   698			if (st->apex.wom.enable) {
-   699				ret = inv_icm42607_disable_wom(st);
-   700				if (ret)
-   701					return ret;
-   702			}
-   703			accel_conf = INV_ICM42607_SENSOR_MODE_OFF;
-   704		}
-   705	
-   706		ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
-   707						 INV_ICM42607_SENSOR_MODE_OFF, false,
-   708						 NULL);
-   709		if (ret)
-   710			return ret;
-   711	
-   712		if (!wakeup)
-   713			regulator_disable(st->vddio_supply);
-   714	
-   715		return 0;
-   716	}
-   717	
+   199	
+ > 200	static const struct iio_event_spec inv_icm42607_motion_events[] = {
+   201		{
+   202			.type = IIO_EV_TYPE_THRESH,
+   203			.dir = IIO_EV_DIR_EITHER,
+   204			.mask_separate = BIT(IIO_EV_INFO_ENABLE) | BIT(IIO_EV_INFO_VALUE),
+   205		},
+   206	};
+   207	
 
 -- 
 0-DAY CI Kernel Test Service
