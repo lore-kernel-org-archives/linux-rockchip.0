@@ -4,79 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7582AFD3770
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 16:14:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA5EBFD3774
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 17:03:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1aXrdYdvvBcoJJP6dssR8Cq2ck6rotvK4Grm4hzOmB4=; b=w7z3NbgzcJnjQb
-	HC789Z7bVTWoeoIP5LnwgI6ubRctEZi7o2Z/ctpNP6ZHaTOtJTOvg8Y5HBWU++7OXFO7F4N/C75rx
-	aHCnRFKnKHvi9MkX8eL+BH8vbYIJ36qoxhyxtD19WHeiB0xBDHeDTahRmWU4jyaYJ8q4jMTfCi/py
-	VxGOExAE1SgbWAf/jdRZec8R/Oi93P46M0kvbylrgw7mIji/0KctJl0e3qEEmKuVYYG97vIrlidG4
-	kHdfQ+hF4g02qQ4RF9sOSHPK8dzFppGCB8KG0z1ynpAiLZHbIo5VmxB5a+VCzMobCE5PY8etxvaIX
-	0lCmuXEpAMhMXv7Epw+w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=jg7ps4FRPHdU26DLDIhHdei07/C/9fGoMTEUKsTJwdE=; b=u4V6G3N99CO2NY
+	ZNKlv8zhw7sj937B3ghy7Gebn03FIebXdbHpl6iBPhSs6dJ/UCCCcG2bCcYtgyYpvlVWaSCGErPuP
+	EMuAh3dOE9RZuay9vp5RfbMv0Xwhjs1jcws3thLvw+Ifw+UghG4kv3m6H+kqziu+HNjxEzfTx2j4g
+	fVUiLFSyWD0ZniMFMn97jcX/IUBgafGYtZdRwxxT6nN3DZSqHwixTt/nS0xcmEWLlayfxwM7cTf+b
+	XiLPZCrL2MrOyMZfXtupUyAXE5MBVlNcjvbZR2Sr2VFgjgGHZ59XRW7+21sbrHEZ0mnERox4yCBii
+	nnaZv1eEcdRE+RfM+Lfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvHXD-00000004U3K-25Oe;
-	Wed, 25 Feb 2026 16:14:47 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvHX8-00000004Twj-439G
-	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Feb 2026 16:14:44 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 990C91758
-	for <linux-rockchip@lists.infradead.org>; Wed, 25 Feb 2026 08:14:34 -0800 (PST)
-Received: from [192.168.0.1] (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id BCF7C3F73B
-	for <linux-rockchip@lists.infradead.org>; Wed, 25 Feb 2026 08:14:40 -0800 (PST)
-Date: Wed, 25 Feb 2026 16:12:08 +0000
-From: Liviu Dudau <liviu.dudau@arm.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-	Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
-	Samuel Holland <samuel@sholland.org>,
-	Dave Stevenson <dave.stevenson@raspberrypi.com>,
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
-	Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+	id 1vvIIl-00000004b61-18zX;
+	Wed, 25 Feb 2026 17:03:55 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vvIIk-00000004b5J-1wUA;
+	Wed, 25 Feb 2026 17:03:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5D39160053;
+	Wed, 25 Feb 2026 17:03:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A24FBC116D0;
+	Wed, 25 Feb 2026 17:03:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772039033;
+	bh=dHsr+tHFlCnPRl24N4jA2w27y8fJLi3JtyQervzLoTQ=;
+	h=From:To:Cc:Subject:Date:From;
+	b=XD1ozh1SBNkGjQqCe22FFfFv2+gNvPm+I1u1m6ZhzTUDqGpLTv2Fu/wbGHD02fBVU
+	 XkGSy7vfsi+9gp45XYK/2MWbz2etIJ3aW9cGxmnam+HNf8z2+fKZZ4Hg9JNPDy5uVo
+	 JZ9vqgsKdRVcR25jm3QOkTrCPkI9hWJJM7XsXuHn+jgBRHqMHwwM/7qr3DfGocYGQH
+	 +U3BcG/S1rHQFbyzH87U+PYRVhhEGLykjSr8HQP3gB3P2XN1LKuVukI9YFIf8qR4jF
+	 5+TJYcjly/VB9//ZEWQQaFRsDdUNfXknBSm4FMQa7BYhhKYVEGeb4rEo0LrJY+cYjc
+	 LpH7w9lZea3SA==
+From: Niklas Cassel <cassel@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Kishon Vijay Abraham I <kishon@kernel.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Richard Zhu <hongxing.zhu@nxp.com>,
+	Lucas Stach <l.stach@pengutronix.de>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Minghuan Lian <minghuan.Lian@nxp.com>,
+	Mingkai Hu <mingkai.hu@nxp.com>,
+	Roy Zang <roy.zang@nxp.com>,
+	Jesper Nilsson <jesper.nilsson@axis.com>,
+	Jingoo Han <jingoohan1@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Srikanth Thokala <srikanth.thokala@intel.com>,
+	Marek Vasut <marek.vasut+renesas@gmail.com>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Christian Bruel <christian.bruel@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	Shuah Khan <shuah@kernel.org>
+Cc: Manikanta Maddireddy <mmaddireddy@nvidia.com>,
+	Koichiro Den <den@valinux.co.jp>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>,
+	linux-pci@vger.kernel.org,
+	linux-omap@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 10/14] drm/arm: komeda: Convert to drm_output_color_format
-Message-ID: <aZ8fWNYrwyxr0vqC@e142607>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-10-bebc76604ada@kernel.org>
+	imx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-arm-kernel@axis.com,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	linux-tegra@vger.kernel.org,
+	linux-kselftest@vger.kernel.org
+Subject: [PATCH v2 0/9] PCI: endpoint: Differentiate between disabled and reserved BARs
+Date: Wed, 25 Feb 2026 18:03:23 +0100
+Message-ID: <20260225170324.4033466-11-cassel@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260224-drm-rework-color-formats-v1-10-bebc76604ada@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_081443_083542_0B030BD5 
-X-CRM114-Status: GOOD (  28.23  )
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2520; i=cassel@kernel.org; h=from:subject; bh=dHsr+tHFlCnPRl24N4jA2w27y8fJLi3JtyQervzLoTQ=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDLna8dsbxV8dXNj3bUlHarWmRVfz39m+h2yu0tNyOvyR u3tYde8OkpZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjCRlpkM/xSbLh6yCFXUrWnR 0Tsc9j7zY5+nwJY/i2tKpgqqhDyxmMvwv8g/WuGMyGxLHe6jOaotEnufVLNGPAhjSJpx4oKM2/8 sfgA=
+X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,116 +111,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBGZWIgMjQsIDIwMjYgYXQgMTE6NTg6NDlBTSArMDEwMCwgTWF4aW1lIFJpcGFyZCB3
-cm90ZToKPiBOb3cgdGhhdCB3ZSBpbnRyb2R1Y2VkIGEgbmV3IGRybV9vdXRwdXRfY29sb3JfZm9y
-bWF0IGVudW0gdG8gcmVwcmVzZW50Cj4gd2hhdCBEUk1fQ09MT1JfRk9STUFUXyogYml0cyB3ZXJl
-IHJlcHJlc2VudGluZywgd2UgY2FuIHN3aXRjaCB0byB0aGUgbmV3Cj4gZW51bS4KPiAKPiBUaGUg
-bWFpbiBkaWZmZXJlbnQgaXMgdGhhdCB3aGlsZSBEUk1fQ09MT1JfRk9STUFUXyB3YXMgYSBiaXRt
-YXNrLAo+IGRybV9vdXRwdXRfY29sb3JfZm9ybWF0IGlzIGEgcHJvcGVyIGVudW0uIEhvd2V2ZXIs
-IHRoZSBlbnVtIHdhcyBkb25lIGlzCj4gc3VjaCBhIHdheSB0aGFuIERSTV9DT0xPUl9GT1JNQVRf
-WCA9IEJJVChEUk1fT1VUUFVUX0NPTE9SX0ZPUk1BVF9YKSBzbwo+IHRoZSB0cmFuc2l0aXRpb24g
-aXMgZWFzaWVyLgo+IAo+IFRoZSBvbmx5IHRoaW5nIHdlIG5lZWQgdG8gY29uc2lkZXIgaXMgaWYg
-dGhlIG9yaWdpbmFsIGNvZGUgbWVhbnQgdG8gdXNlCj4gdGhhdCB2YWx1ZSBhcyBhIGJpdG1hc2ss
-IGluIHdoaWNoIGNhc2Ugd2UgZG8gbmVlZCB0byBrZWVwIHRoZSBiaXQgc2hpZnQsCj4gb3IgYXMg
-YSBkaXNjcmltaW5hbnQgaW4gd2hpY2ggY2FzZSB3ZSBkb24ndC4KPiAKPiBTaWduZWQtb2ZmLWJ5
-OiBNYXhpbWUgUmlwYXJkIDxtcmlwYXJkQGtlcm5lbC5vcmc+CgpGb3IgdGhlIGZpcnN0IHBhdGNo
-IGluIHRoZSBzZXJpZXMgdGhhdCBpbnRyb2R1Y2VzIHRoZSBlbnVtIGFuZCB0aGlzIG9uZToKClJl
-dmlld2VkLWJ5OiBMaXZpdSBEdWRhdSA8bGl2aXUuZHVkYXVAYXJtLmNvbT4KCkJlc3QgcmVnYXJk
-cywKTGl2aXUKCj4gLS0tCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEvZDcx
-L2Q3MV9jb21wb25lbnQuYyAgICAgfCAxNCArKysrKysrLS0tLS0tLQo+ICBkcml2ZXJzL2dwdS9k
-cm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9jcnRjLmMgICAgICAgICAgIHwgIDIgKy0KPiAg
-ZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfcGlwZWxpbmUuaCAgICAg
-ICB8ICA1ICsrKy0tCj4gIGRyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRh
-X3BpcGVsaW5lX3N0YXRlLmMgfCAgMiArLQo+ICA0IGZpbGVzIGNoYW5nZWQsIDEyIGluc2VydGlv
-bnMoKyksIDExIGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-YXJtL2Rpc3BsYXkva29tZWRhL2Q3MS9kNzFfY29tcG9uZW50LmMgYi9kcml2ZXJzL2dwdS9kcm0v
-YXJtL2Rpc3BsYXkva29tZWRhL2Q3MS9kNzFfY29tcG9uZW50LmMKPiBpbmRleCA2N2U1ZDNiNDE5
-MGY2MjU0OWJjOGRhNzAwZGViNGIxNWUxMzhiNTE1Li4yN2NhMjkzMGNkYWM2ZTc2YTA1ODEwMmVh
-MmMxZDgzMDZkODVlNzUxIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvZ3B1L2RybS9hcm0vZGlzcGxh
-eS9rb21lZGEvZDcxL2Q3MV9jb21wb25lbnQuYwo+ICsrKyBiL2RyaXZlcnMvZ3B1L2RybS9hcm0v
-ZGlzcGxheS9rb21lZGEvZDcxL2Q3MV9jb21wb25lbnQuYwo+IEBAIC0xMDc4LDE1ICsxMDc4LDE1
-IEBAIHN0YXRpYyB2b2lkIGQ3MV9pbXByb2NfdXBkYXRlKHN0cnVjdCBrb21lZGFfY29tcG9uZW50
-ICpjLAo+ICAJfQo+ICAKPiAgCW1hc2sgfD0gSVBTX0NUUkxfWVVWIHwgSVBTX0NUUkxfQ0hENDIy
-IHwgSVBTX0NUUkxfQ0hENDIwOwo+ICAKPiAgCS8qIGNvbmZpZyBjb2xvciBmb3JtYXQgKi8KPiAt
-CWlmIChzdC0+Y29sb3JfZm9ybWF0ID09IERSTV9DT0xPUl9GT1JNQVRfWUNCQ1I0MjApCj4gKwlp
-ZiAoc3QtPmNvbG9yX2Zvcm1hdCA9PSBEUk1fT1VUUFVUX0NPTE9SX0ZPUk1BVF9ZQ0JDUjQyMCkK
-PiAgCQljdHJsIHw9IElQU19DVFJMX1lVViB8IElQU19DVFJMX0NIRDQyMiB8IElQU19DVFJMX0NI
-RDQyMDsKPiAtCWVsc2UgaWYgKHN0LT5jb2xvcl9mb3JtYXQgPT0gRFJNX0NPTE9SX0ZPUk1BVF9Z
-Q0JDUjQyMikKPiArCWVsc2UgaWYgKHN0LT5jb2xvcl9mb3JtYXQgPT0gRFJNX09VVFBVVF9DT0xP
-Ul9GT1JNQVRfWUNCQ1I0MjIpCj4gIAkJY3RybCB8PSBJUFNfQ1RSTF9ZVVYgfCBJUFNfQ1RSTF9D
-SEQ0MjI7Cj4gLQllbHNlIGlmIChzdC0+Y29sb3JfZm9ybWF0ID09IERSTV9DT0xPUl9GT1JNQVRf
-WUNCQ1I0NDQpCj4gKwllbHNlIGlmIChzdC0+Y29sb3JfZm9ybWF0ID09IERSTV9PVVRQVVRfQ09M
-T1JfRk9STUFUX1lDQkNSNDQ0KQo+ICAJCWN0cmwgfD0gSVBTX0NUUkxfWVVWOwo+ICAKPiAgCW1h
-bGlkcF93cml0ZTMyX21hc2socmVnLCBCTEtfQ09OVFJPTCwgbWFzaywgY3RybCk7Cj4gIH0KPiAg
-Cj4gQEAgLTExNDMsMTYgKzExNDMsMTYgQEAgc3RhdGljIGludCBkNzFfaW1wcm9jX2luaXQoc3Ry
-dWN0IGQ3MV9kZXYgKmQ3MSwKPiAgCQlyZXR1cm4gUFRSX0VSUihjKTsKPiAgCX0KPiAgCj4gIAlp
-bXByb2MgPSB0b19pbXByb2MoYyk7Cj4gIAlpbXByb2MtPnN1cHBvcnRlZF9jb2xvcl9kZXB0aHMg
-PSBCSVQoOCkgfCBCSVQoMTApOwo+IC0JaW1wcm9jLT5zdXBwb3J0ZWRfY29sb3JfZm9ybWF0cyA9
-IERSTV9DT0xPUl9GT1JNQVRfUkdCNDQ0IHwKPiAtCQkJCQkgIERSTV9DT0xPUl9GT1JNQVRfWUNC
-Q1I0NDQgfAo+IC0JCQkJCSAgRFJNX0NPTE9SX0ZPUk1BVF9ZQ0JDUjQyMjsKPiArCWltcHJvYy0+
-c3VwcG9ydGVkX2NvbG9yX2Zvcm1hdHMgPSBCSVQoRFJNX09VVFBVVF9DT0xPUl9GT1JNQVRfUkdC
-NDQ0KSB8Cj4gKwkJCQkJICBCSVQoRFJNX09VVFBVVF9DT0xPUl9GT1JNQVRfWUNCQ1I0NDQpIHwK
-PiArCQkJCQkgIEJJVChEUk1fT1VUUFVUX0NPTE9SX0ZPUk1BVF9ZQ0JDUjQyMik7Cj4gIAl2YWx1
-ZSA9IG1hbGlkcF9yZWFkMzIocmVnLCBCTEtfSU5GTyk7Cj4gIAlpZiAodmFsdWUgJiBJUFNfSU5G
-T19DSEQ0MjApCj4gLQkJaW1wcm9jLT5zdXBwb3J0ZWRfY29sb3JfZm9ybWF0cyB8PSBEUk1fQ09M
-T1JfRk9STUFUX1lDQkNSNDIwOwo+ICsJCWltcHJvYy0+c3VwcG9ydGVkX2NvbG9yX2Zvcm1hdHMg
-fD0gQklUKERSTV9PVVRQVVRfQ09MT1JfRk9STUFUX1lDQkNSNDIwKTsKPiAgCj4gIAlpbXByb2Mt
-PnN1cHBvcnRzX2NzYyA9IHRydWU7Cj4gIAlpbXByb2MtPnN1cHBvcnRzX2dhbW1hID0gdHJ1ZTsK
-PiAgCj4gIAlyZXR1cm4gMDsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNw
-bGF5L2tvbWVkYS9rb21lZGFfY3J0Yy5jIGIvZHJpdmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tv
-bWVkYS9rb21lZGFfY3J0Yy5jCj4gaW5kZXggNWE2Njk0OGZmZDI0MzQzY2ZjMTQ0ZTliNTAwNjc5
-ZmQwYzZiZjQzYi4uZTc4NjA0NDY5ZWY3NDgwMGE0Y2FjMWU4NTQ4MjE1NzhiN2U3YmNlOCAxMDA2
-NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9jcnRj
-LmMKPiArKysgYi9kcml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9jcnRj
-LmMKPiBAQCAtMzgsMTEgKzM4LDExIEBAIHZvaWQga29tZWRhX2NydGNfZ2V0X2NvbG9yX2NvbmZp
-ZyhzdHJ1Y3QgZHJtX2NydGNfc3RhdGUgKmNydGNfc3QsCj4gIAkJCW1pbl9icGMgPSBjb25uX2Jw
-YzsKPiAgCX0KPiAgCj4gIAkvKiBjb25uZWN0b3IgZG9lc24ndCBjb25maWcgYW55IGNvbG9yX2Zv
-cm1hdCwgdXNlIFJHQjQ0NCBhcyBkZWZhdWx0ICovCj4gIAlpZiAoIWNvbm5fY29sb3JfZm9ybWF0
-cykKPiAtCQljb25uX2NvbG9yX2Zvcm1hdHMgPSBEUk1fQ09MT1JfRk9STUFUX1JHQjQ0NDsKPiAr
-CQljb25uX2NvbG9yX2Zvcm1hdHMgPSBCSVQoRFJNX09VVFBVVF9DT0xPUl9GT1JNQVRfUkdCNDQ0
-KTsKPiAgCj4gIAkqY29sb3JfZGVwdGhzID0gR0VOTUFTSyhtaW5fYnBjLCAwKTsKPiAgCSpjb2xv
-cl9mb3JtYXRzID0gY29ubl9jb2xvcl9mb3JtYXRzOwo+ICB9Cj4gIAo+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9waXBlbGluZS5oIGIvZHJp
-dmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfcGlwZWxpbmUuaAo+IGluZGV4
-IGFjODcyNWUyNDg1MzdlNTczN2QxNmNkMzY4NjA0MDFjNDIwNzM1MDAuLmRiZTkzODk0YjJmNmEx
-OTNlMjQ5NjNkNDk3ZWJiN2I3MTdjZTNlYmIgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9ncHUvZHJt
-L2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfcGlwZWxpbmUuaAo+ICsrKyBiL2RyaXZlcnMvZ3B1
-L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX3BpcGVsaW5lLmgKPiBAQCAtMzE1LDIwICsz
-MTUsMjEgQEAgc3RydWN0IGtvbWVkYV9zcGxpdHRlcl9zdGF0ZSB7Cj4gIAl1MTYgb3ZlcmxhcDsK
-PiAgfTsKPiAgCj4gIHN0cnVjdCBrb21lZGFfaW1wcm9jIHsKPiAgCXN0cnVjdCBrb21lZGFfY29t
-cG9uZW50IGJhc2U7Cj4gLQl1MzIgc3VwcG9ydGVkX2NvbG9yX2Zvcm1hdHM7ICAvKiBEUk1fUkdC
-L1lVVjQ0NC9ZVVY0MjAqLwo+ICsJdTMyIHN1cHBvcnRlZF9jb2xvcl9mb3JtYXRzOyAgLyogQklU
-KERSTV9PVVRQVVRfQ09MT1JfRk9STUFUX1JHQjQ0NC9ZVVY0NDQvWVVWNDIwKSAqLwo+ICAJdTMy
-IHN1cHBvcnRlZF9jb2xvcl9kZXB0aHM7IC8qIEJJVCg4KSB8IEJJVCgxMCkqLwo+ICAJdTggc3Vw
-cG9ydHNfZGVnYW1tYSA6IDE7Cj4gIAl1OCBzdXBwb3J0c19jc2MgOiAxOwo+ICAJdTggc3VwcG9y
-dHNfZ2FtbWEgOiAxOwo+ICB9Owo+ICAKPiAgc3RydWN0IGtvbWVkYV9pbXByb2Nfc3RhdGUgewo+
-ICAJc3RydWN0IGtvbWVkYV9jb21wb25lbnRfc3RhdGUgYmFzZTsKPiAtCXU4IGNvbG9yX2Zvcm1h
-dCwgY29sb3JfZGVwdGg7Cj4gKwllbnVtIGRybV9vdXRwdXRfY29sb3JfZm9ybWF0IGNvbG9yX2Zv
-cm1hdDsKPiArCXU4IGNvbG9yX2RlcHRoOwo+ICAJdTE2IGhzaXplLCB2c2l6ZTsKPiAgCXUzMiBm
-Z2FtbWFfY29lZmZzW0tPTUVEQV9OX0dBTU1BX0NPRUZGU107Cj4gIAl1MzIgY3RtX2NvZWZmc1tL
-T01FREFfTl9DVE1fQ09FRkZTXTsKPiAgfTsKPiAgCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
-L2RybS9hcm0vZGlzcGxheS9rb21lZGEva29tZWRhX3BpcGVsaW5lX3N0YXRlLmMgYi9kcml2ZXJz
-L2dwdS9kcm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9waXBlbGluZV9zdGF0ZS5jCj4gaW5k
-ZXggZjRlNzZiNDZjYTMyN2ExYzVkYjliZGJkZDk1NTBiNDUxOTBiMzBkOC4uNmY5YjEwY2M4MzFm
-Zjc0ODI5NmI5ZWQzMGI2ZGUzOThjOTBjNDc4NiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwdS9k
-cm0vYXJtL2Rpc3BsYXkva29tZWRhL2tvbWVkYV9waXBlbGluZV9zdGF0ZS5jCj4gKysrIGIvZHJp
-dmVycy9ncHUvZHJtL2FybS9kaXNwbGF5L2tvbWVkYS9rb21lZGFfcGlwZWxpbmVfc3RhdGUuYwo+
-IEBAIC03OTcsMTEgKzc5NywxMSBAQCBrb21lZGFfaW1wcm9jX3ZhbGlkYXRlKHN0cnVjdCBrb21l
-ZGFfaW1wcm9jICppbXByb2MsCj4gIAkJCQkJIGltcHJvYy0+c3VwcG9ydGVkX2NvbG9yX2Zvcm1h
-dHMpOwo+ICAJCQlyZXR1cm4gLUVJTlZBTDsKPiAgCQl9Cj4gIAo+ICAJCXN0LT5jb2xvcl9kZXB0
-aCA9IF9fZmxzKGF2YWlsX2RlcHRocyk7Cj4gLQkJc3QtPmNvbG9yX2Zvcm1hdCA9IEJJVChfX2Zm
-cyhhdmFpbF9mb3JtYXRzKSk7Cj4gKwkJc3QtPmNvbG9yX2Zvcm1hdCA9IF9fZmZzKGF2YWlsX2Zv
-cm1hdHMpOwo+ICAJfQo+ICAKPiAgCWlmIChrY3J0Y19zdC0+YmFzZS5jb2xvcl9tZ210X2NoYW5n
-ZWQpIHsKPiAgCQlkcm1fbHV0X3RvX2ZnYW1tYV9jb2VmZnMoa2NydGNfc3QtPmJhc2UuZ2FtbWFf
-bHV0LAo+ICAJCQkJCSBzdC0+ZmdhbW1hX2NvZWZmcyk7Cj4gCj4gLS0gCj4gMi41Mi4wCj4gCgot
-LSAKPT09PT09PT09PT09PT09PT09PT0KfCBJIHdvdWxkIGxpa2UgdG8gfAp8IGZpeCB0aGUgd29y
-bGQsICB8CnwgYnV0IHRoZXkncmUgbm90IHwKfCBnaXZpbmcgbWUgdGhlICAgfAogXCBzb3VyY2Ug
-Y29kZSEgIC8KICAtLS0tLS0tLS0tLS0tLS0KICAgIMKvXF8o44OEKV8vwq8KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hello all,
+
+This series was originally written in response to the patch series from
+Manikanta Maddireddy that was posted here:
+https://lore.kernel.org/linux-pci/291dab65-3fa6-4fc8-90a2-4ad608ca015c@nvidia.com/T/#t
+
+Manikanta has reviewed V1 and will send a small series on top of this one.
+
+
+Changes since v1:
+-Rebased on latest pci/endpoint branch
+-Picked up tags
+-Fixed review comments from Frank and Manikanta (thank you)
+-Simplified function bar_is_reserved()
+
+Link to v1:
+https://lore.kernel.org/linux-pci/20260217212707.2450423-11-cassel@kernel.org/
+
+
+Koichiro Den (2):
+  PCI: endpoint: Describe reserved subregions within BARs
+  PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl window
+
+Niklas Cassel (7):
+  PCI: endpoint: Introduce pci_epc_bar_type BAR_64BIT_UPPER
+  PCI: endpoint: Introduce pci_epc_bar_type BAR_DISABLED
+  PCI: dwc: Replace certain BAR_RESERVED with BAR_DISABLED in glue
+    drivers
+  PCI: dwc: Disable BARs in common code instead of in each glue driver
+  PCI: endpoint: pci-epf-test: Advertise reserved BARs
+  misc: pci_endpoint_test: Give reserved BARs a distinct error code
+  selftests: pci_endpoint: Skip reserved BARs
+
+ drivers/misc/pci_endpoint_test.c              | 21 ++++++++-
+ drivers/pci/controller/dwc/pci-dra7xx.c       |  4 --
+ drivers/pci/controller/dwc/pci-imx6.c         | 22 +++------
+ drivers/pci/controller/dwc/pci-keystone.c     | 12 +++++
+ .../pci/controller/dwc/pci-layerscape-ep.c    |  8 +---
+ drivers/pci/controller/dwc/pcie-artpec6.c     |  4 --
+ .../pci/controller/dwc/pcie-designware-ep.c   | 24 ++++++++++
+ .../pci/controller/dwc/pcie-designware-plat.c | 10 -----
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 19 +++++---
+ drivers/pci/controller/dwc/pcie-keembay.c     |  6 +--
+ drivers/pci/controller/dwc/pcie-qcom-ep.c     | 14 +-----
+ drivers/pci/controller/dwc/pcie-rcar-gen4.c   | 16 ++-----
+ drivers/pci/controller/dwc/pcie-stm32-ep.c    | 10 -----
+ drivers/pci/controller/dwc/pcie-tegra194.c    | 20 +++------
+ drivers/pci/controller/dwc/pcie-uniphier-ep.c | 24 +++-------
+ drivers/pci/controller/pcie-rcar-ep.c         |  6 +--
+ drivers/pci/endpoint/functions/pci-epf-test.c | 24 ++++++++++
+ drivers/pci/endpoint/pci-epc-core.c           |  6 ++-
+ include/linux/pci-epc.h                       | 45 +++++++++++++++++--
+ .../pci_endpoint/pci_endpoint_test.c          |  4 ++
+ 20 files changed, 174 insertions(+), 125 deletions(-)
+
+
+base-commit: 8eaff52fc101c1f6b3215db93bba02c815155806
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
