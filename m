@@ -4,102 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA5EBFD3774
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 17:03:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57826FD3777
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 17:04:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jg7ps4FRPHdU26DLDIhHdei07/C/9fGoMTEUKsTJwdE=; b=u4V6G3N99CO2NY
-	ZNKlv8zhw7sj937B3ghy7Gebn03FIebXdbHpl6iBPhSs6dJ/UCCCcG2bCcYtgyYpvlVWaSCGErPuP
-	EMuAh3dOE9RZuay9vp5RfbMv0Xwhjs1jcws3thLvw+Ifw+UghG4kv3m6H+kqziu+HNjxEzfTx2j4g
-	fVUiLFSyWD0ZniMFMn97jcX/IUBgafGYtZdRwxxT6nN3DZSqHwixTt/nS0xcmEWLlayfxwM7cTf+b
-	XiLPZCrL2MrOyMZfXtupUyAXE5MBVlNcjvbZR2Sr2VFgjgGHZ59XRW7+21sbrHEZ0mnERox4yCBii
-	nnaZv1eEcdRE+RfM+Lfg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Hqh/5HwdpCfbEuF5v1xDT7im567xRwn6P0C40nG9mFA=; b=QP5jzvUQ00iwLE
+	/F2Uit2o1p4Pv++iid6RiqS6ey/bchZmeVq2xgFeuxGMHWXqwy2QlVjP8qySJwHu9XcWLTr30Nhy1
+	+u7dik7s2QSbN3yVW7a/ScwfcPtM/467S06Cfa+LWMwsZbHG/XMENfeCsR06/ZygHVOzrYXzOa6N0
+	hlCUFXy8MOmAzhaWTYCZdMEendK2vocO3eiywGOcOOEHRC5lv9UPKjWmEU/2Kfe9skJbpKVihssIh
+	4KdmYAQGfnB1iBRXBXwpi/wjEkrQglyNTlkezN+SpFLslIJ5xOP9Jf+YmHtUAwOnfwXkPT4sAN+9E
+	DtIbtFViZzwItNo7ggVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvIIl-00000004b61-18zX;
-	Wed, 25 Feb 2026 17:03:55 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vvIIv-00000004bCE-1zJd;
+	Wed, 25 Feb 2026 17:04:05 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvIIk-00000004b5J-1wUA;
-	Wed, 25 Feb 2026 17:03:54 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5D39160053;
-	Wed, 25 Feb 2026 17:03:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A24FBC116D0;
-	Wed, 25 Feb 2026 17:03:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772039033;
-	bh=dHsr+tHFlCnPRl24N4jA2w27y8fJLi3JtyQervzLoTQ=;
-	h=From:To:Cc:Subject:Date:From;
-	b=XD1ozh1SBNkGjQqCe22FFfFv2+gNvPm+I1u1m6ZhzTUDqGpLTv2Fu/wbGHD02fBVU
-	 XkGSy7vfsi+9gp45XYK/2MWbz2etIJ3aW9cGxmnam+HNf8z2+fKZZ4Hg9JNPDy5uVo
-	 JZ9vqgsKdRVcR25jm3QOkTrCPkI9hWJJM7XsXuHn+jgBRHqMHwwM/7qr3DfGocYGQH
-	 +U3BcG/S1rHQFbyzH87U+PYRVhhEGLykjSr8HQP3gB3P2XN1LKuVukI9YFIf8qR4jF
-	 5+TJYcjly/VB9//ZEWQQaFRsDdUNfXknBSm4FMQa7BYhhKYVEGeb4rEo0LrJY+cYjc
-	 LpH7w9lZea3SA==
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Minghuan Lian <minghuan.Lian@nxp.com>,
-	Mingkai Hu <mingkai.hu@nxp.com>,
-	Roy Zang <roy.zang@nxp.com>,
-	Jesper Nilsson <jesper.nilsson@axis.com>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Christian Bruel <christian.bruel@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Shuah Khan <shuah@kernel.org>
-Cc: Manikanta Maddireddy <mmaddireddy@nvidia.com>,
-	Koichiro Den <den@valinux.co.jp>,
-	Damien Le Moal <dlemoal@kernel.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	linux-pci@vger.kernel.org,
-	linux-omap@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org,
-	linux-kselftest@vger.kernel.org
-Subject: [PATCH v2 0/9] PCI: endpoint: Differentiate between disabled and reserved BARs
-Date: Wed, 25 Feb 2026 18:03:23 +0100
-Message-ID: <20260225170324.4033466-11-cassel@kernel.org>
-X-Mailer: git-send-email 2.53.0
+	id 1vvIIr-00000004b8i-3YBx;
+	Wed, 25 Feb 2026 17:04:03 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772038990; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Stq7NiyxW5CF/ZYpj1nqvMDannoyZwlnMzQ/PgyeF0NaxkMVUlI68eDs/afuHnbr2+WHFmRQZxfJTlYWlLd0zyLWqjjWUVTxJnumFxAofhYeOXCqmvKvqp555F7wVXsQumH5tw1GduK4PpZ5MrE99aPbOnBScVHIW5+7cxFCsaM=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772038990; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=; 
+	b=a5Oe0Ndnnz06KHDJo5Dq3J6MK/1KLjOuG3mwgwqqqQbKovJWasZ2MCpjlf8ey6OnHnCH4SKGA2z2D1avhxLtcyK+FRyYoZXnSih4UZM7quz5VNvfSBEPZ9pvoY+A2AMBB4eNwEzhaTesQui5FtYM0obtGOLyxS312/LjUHkL7vg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772038990;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=3RYgv+ynJj3S1QIru3Hn9dqc29aPNWjUzmoSLU7r5Kw=;
+	b=V3jgCVhIW8MxRWz+GFV+y8JHyIm3dWD68I3G+7EGdF+br4N512+++HwmFH7XXJyX
+	VTX84XBJmyiXwt+qxWxRcDszqGbmzTaLyzaROG7CcMhxb7bXr21EUYFCQsl2vZalyv8
+	FARjC/W5DW9MnsdktyO2a03wVkp5f4pro6xFBbTQ=
+Received: by mx.zohomail.com with SMTPS id 1772038989356790.0109700812275;
+	Wed, 25 Feb 2026 09:03:09 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
+ hdmi_colorspace
+Date: Wed, 25 Feb 2026 18:03:00 +0100
+Message-ID: <8234454.EvYhyI6sBW@workhorse>
+In-Reply-To: <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
+ <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2520; i=cassel@kernel.org; h=from:subject; bh=dHsr+tHFlCnPRl24N4jA2w27y8fJLi3JtyQervzLoTQ=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDLna8dsbxV8dXNj3bUlHarWmRVfz39m+h2yu0tNyOvyR u3tYde8OkpZGMS4GGTFFFl8f7jsL+52n3Jc8Y4NzBxWJpAhDFycAjCRlpkM/xSbLh6yCFXUrWnR 0Tsc9j7zY5+nwJY/i2tKpgqqhDyxmMvwv8g/WuGMyGxLHe6jOaotEnufVLNGPAhjSJpx4oKM2/8 sfgA=
-X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260225_090401_924473_64CEDFDA 
+X-CRM114-Status: GOOD (  24.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,65 +103,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello all,
+On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
+> The hdmi_colorspace enum was defined to represent the colorspace value
+> of the HDMI infoframes. It was later used by some HDMI drivers to
+> express the output format they should be setting up.
+> 
+> During the introduction of the HDMI helpers, it then was used to
+> represent it in the drm_connector_hdmi_state structure.
+> 
+> However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
+> defines, and now with the drm_output_color_format enum. Let's
+> consolidate around drm_output_color_format in drm_connector_hdmi_state
+> to facilitate the current effort to provide a global output format
+> selection mechanism.
+> 
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+>  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+>  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
+>  drivers/gpu/drm/drm_bridge.c                       |   2 +-
+>  drivers/gpu/drm/drm_connector.c                    |  14 +-
+>  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+>  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+>  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+>  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+>  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+>  include/drm/display/drm_hdmi_helper.h              |   3 +-
+>  include/drm/drm_connector.h                        |   7 +-
+>  14 files changed, 205 insertions(+), 180 deletions(-)
+> 
+> [... snip ...]
+>
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> [... snip ...]
+>  
+> @@ -1424,25 +1424,25 @@ drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb broadcast_
+>  	return broadcast_rgb_names[broadcast_rgb].name;
+>  }
+>  EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
+>  
+>  static const char * const output_format_str[] = {
+> -	[HDMI_COLORSPACE_RGB]		= "RGB",
+> -	[HDMI_COLORSPACE_YUV420]	= "YUV 4:2:0",
+> -	[HDMI_COLORSPACE_YUV422]	= "YUV 4:2:2",
+> -	[HDMI_COLORSPACE_YUV444]	= "YUV 4:4:4",
+> +	[DRM_OUTPUT_COLOR_FORMAT_RGB444]	= "RGB",
+> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR420]	= "YUV 4:2:0",
+> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR422]	= "YUV 4:2:2",
+> +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR444]	= "YUV 4:4:4",
+>  };
+>  
+>  /*
+>   * drm_hdmi_connector_get_output_format_name() - Return a string for HDMI connector output format
+>   * @fmt: Output format to compute name of
+>   *
+>   * Returns: the name of the output format, or NULL if the type is not
+>   * valid.
+>   */
+>  const char *
+> -drm_hdmi_connector_get_output_format_name(enum hdmi_colorspace fmt)
+> +drm_hdmi_connector_get_output_format_name(enum drm_output_color_format fmt)
+>  {
+>  	if (fmt >= ARRAY_SIZE(output_format_str))
+>  		return NULL;
 
-This series was originally written in response to the patch series from
-Manikanta Maddireddy that was posted here:
-https://lore.kernel.org/linux-pci/291dab65-3fa6-4fc8-90a2-4ad608ca015c@nvidia.com/T/#t
+Almost unrelated nit: we might want to also `fmt < 0 ||` here, since the
+base type of enums is a signed int. I almost caught myself using this function
+as a way to quickly check if a supplied color format property from userspace
+was valid, which would've had some unpleasant consequences for the kernel's
+memory.
 
-Manikanta has reviewed V1 and will send a small series on top of this one.
+Alternatively, I make my own switch-case based "is this a valid enum value"
+function. I probably should do that actually, but my laziness lead me to
+make sure we only have a single source of truth of what counts as a valid
+enum value.
 
+>  
+>  	return output_format_str[fmt];
+> [... snip ...]
 
-Changes since v1:
--Rebased on latest pci/endpoint branch
--Picked up tags
--Fixed review comments from Frank and Manikanta (thank you)
--Simplified function bar_is_reserved()
+Thanks for your work on this series, I was afraid of getting rid of
+DRM_COLOR_FORMAT_* myself because I suspected it was going to be a
+fairly large refactor across every driver. Guess I was both right
+and wrong: it touches many files, but all the replacements are
+fairly simple. :)
 
-Link to v1:
-https://lore.kernel.org/linux-pci/20260217212707.2450423-11-cassel@kernel.org/
+Kind regards,
+Nicolas Frattaroli
 
-
-Koichiro Den (2):
-  PCI: endpoint: Describe reserved subregions within BARs
-  PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl window
-
-Niklas Cassel (7):
-  PCI: endpoint: Introduce pci_epc_bar_type BAR_64BIT_UPPER
-  PCI: endpoint: Introduce pci_epc_bar_type BAR_DISABLED
-  PCI: dwc: Replace certain BAR_RESERVED with BAR_DISABLED in glue
-    drivers
-  PCI: dwc: Disable BARs in common code instead of in each glue driver
-  PCI: endpoint: pci-epf-test: Advertise reserved BARs
-  misc: pci_endpoint_test: Give reserved BARs a distinct error code
-  selftests: pci_endpoint: Skip reserved BARs
-
- drivers/misc/pci_endpoint_test.c              | 21 ++++++++-
- drivers/pci/controller/dwc/pci-dra7xx.c       |  4 --
- drivers/pci/controller/dwc/pci-imx6.c         | 22 +++------
- drivers/pci/controller/dwc/pci-keystone.c     | 12 +++++
- .../pci/controller/dwc/pci-layerscape-ep.c    |  8 +---
- drivers/pci/controller/dwc/pcie-artpec6.c     |  4 --
- .../pci/controller/dwc/pcie-designware-ep.c   | 24 ++++++++++
- .../pci/controller/dwc/pcie-designware-plat.c | 10 -----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 19 +++++---
- drivers/pci/controller/dwc/pcie-keembay.c     |  6 +--
- drivers/pci/controller/dwc/pcie-qcom-ep.c     | 14 +-----
- drivers/pci/controller/dwc/pcie-rcar-gen4.c   | 16 ++-----
- drivers/pci/controller/dwc/pcie-stm32-ep.c    | 10 -----
- drivers/pci/controller/dwc/pcie-tegra194.c    | 20 +++------
- drivers/pci/controller/dwc/pcie-uniphier-ep.c | 24 +++-------
- drivers/pci/controller/pcie-rcar-ep.c         |  6 +--
- drivers/pci/endpoint/functions/pci-epf-test.c | 24 ++++++++++
- drivers/pci/endpoint/pci-epc-core.c           |  6 ++-
- include/linux/pci-epc.h                       | 45 +++++++++++++++++--
- .../pci_endpoint/pci_endpoint_test.c          |  4 ++
- 20 files changed, 174 insertions(+), 125 deletions(-)
-
-
-base-commit: 8eaff52fc101c1f6b3215db93bba02c815155806
--- 
-2.53.0
 
 
 _______________________________________________
