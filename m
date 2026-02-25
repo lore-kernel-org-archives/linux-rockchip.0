@@ -4,62 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AA63F55434
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 01:25:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A073F55425
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 01:38:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Cc:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2dnrBJ0jzPgZB4iEtiTZn2Fs5FlCmqCQ8m8KiaFgQNI=; b=ClQqzoDNAXLRbMPF1nJ6DL+VWG
-	AUVLs+h7fsjQMsqZlpW6M6Dw7mOWwDC6M2iHVhk8YxHcycC8akEsc/RALYcbv7QlPTGNxqyuQWjNN
-	1CH9kIYN64nae01IiXorYMF+a/IW2kFEktvEvGuOvk/Y0hD7VZacfCn1pEBTGWSsy4P4ct3mKa3lP
-	6HrRsx1/nMdW8cFTjZU3OQk3FHnWqmzRidhbq58UoC1MTdxg8blU+i7Eiu5+On36RshNxmz94wkqB
-	4a+Xiji1Iohjx3P8GgjV5mB5J3cb07HS6ISjzhKaVSOMumhin4JLAWIshZ7AaJzPT72ux48qTSz7B
-	ebthICcA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7OF+qiL2/BqmIv0PUf489eTedrfdPCazthHIrNpTmNw=; b=itEHwYNV+okLQw
+	+1Nt5+f6NsCmF9pLXJWaW5paSAFmq+GvQvo7blbb5inOiRODa6uSB2l/gujEWLkUa35RVuwsmj7iw
+	m1E/XT0fXbaBkacqb7/Q5dh43FezciEf1zenhXEe6KtozUQGJZUBpgZwcCZXqqjPGsmSEVrBzEGHz
+	kJF6BI8SNtBHS8e6mE4H3gSMaYleEwvv0+GLL3eXN4XmQaEGsB4I7K2H2ucxsjTs1xWXOTA4aY8qg
+	mteKlyrKOOqRZJQ9PNrBMtuU5itXQaFBpvi3FiD3rDnLZinPlru9UomxmRI8gPRlR69rHQd4zXVMp
+	ejw/HF1Aj4htz0vqzrtg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv3eh-000000032GP-0oAc;
-	Wed, 25 Feb 2026 01:25:35 +0000
-Received: from mail-m32107.qiye.163.com ([220.197.32.107])
+	id 1vv3qo-000000032lw-0EoZ;
+	Wed, 25 Feb 2026 01:38:10 +0000
+Received: from mail-m104.netease.com ([154.81.10.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv3ee-000000032G0-3ilv
+	id 1vv3qj-000000032lZ-258d
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Feb 2026 01:25:34 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 34da72a41;
-	Wed, 25 Feb 2026 09:25:19 +0800 (GMT+08:00)
-Cc: shawn.lin@rock-chips.com, Manivannan Sadhasivam <mani@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, linux-rockchip@lists.infradead.org,
- linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org,
- linux-doc@vger.kernel.org, Masami Hiramatsu <mhiramat@kernel.org>
-Subject: Re: [PATCH v4 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition
- trace support
-To: Steven Rostedt <rostedt@goodmis.org>
-References: <1769047340-113287-1-git-send-email-shawn.lin@rock-chips.com>
- <1769047340-113287-4-git-send-email-shawn.lin@rock-chips.com>
- <20260224091115.6e32c38e@fedora> <20260224091601.48a7b3c0@fedora>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Message-ID: <6177ba1f-c89e-486a-fdb5-9344c6551d72@rock-chips.com>
-Date: Wed, 25 Feb 2026 09:25:16 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+	Wed, 25 Feb 2026 01:38:05 +0000
+Received: from [172.16.12.51] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 34dae9247;
+	Wed, 25 Feb 2026 09:37:56 +0800 (GMT+08:00)
+Message-ID: <612e44b1-7747-4b47-820c-2262186e6e97@rock-chips.com>
+Date: Wed, 25 Feb 2026 09:37:55 +0800
 MIME-Version: 1.0
-In-Reply-To: <20260224091601.48a7b3c0@fedora>
-X-HM-Tid: 0a9c92668ac109cckunmeceb3770aa21f8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] pmdomain: rockchip: Fix rkvdec0/1 and venc0/1 for
+ RK3588
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+ Finley Xiao <finley.xiao@rock-chips.com>, Frank Zhang <rmxpzlb@gmail.com>,
+ linux-pm@vger.kernel.org, Sebastian Reichel
+ <sebastian.reichel@collabora.com>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
+ stable@vger.kernel.org
+References: <1771904879-243163-1-git-send-email-shawn.lin@rock-chips.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <1771904879-243163-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0a9c9272153603abkunm013e53b3fa2024
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGklLH1YaTk8aTEoeHx5PTxlWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR0aSVZPGhoYS09NSx4aSx1WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=RiMeCrvRtgt2dVUqWRNBLAEdv/gUkM8HUNynK7JgMxgcbJgnI6ZKCOOx73UIwBa1xRky8AyaFrhrH9CDX8pr5HST31qHk2zWxCEZGGMYFnnbVr5zTq+YlNDlYdI5XB3g7ro7PPjsgC0GPfHPxC1n9BdiS+07+yxSACr+MNIAboE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=0CtRRU86YFrtubdwShhQPgmlG8739fPgSVh2JLGIN0w=;
+	b=a3jgbfYbcgq9nzGrEfsmDpAoK143uGrOroM2FZuYhxQgEJOUZ8plknuMdkrK2Kn1c9L489wdzs3W8FAnYaMOgcww4A+CW18/4nPTavOzaf8kQw+MRLG5nGBbkSYyQPZM8oDBxfHkfo3s4Cbhit1VulfnEXh77Aj0GbSljmuKZS4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=ZooWjJGThdRe881/8hoL4AfsxTeuU6UCGQsPBmxDADY=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_172533_431036_EBF2E0E8 
-X-CRM114-Status: GOOD (  19.75  )
+X-CRM114-CacheID: sfid-20260224_173803_242916_A5D45F29 
+X-CRM114-Status: GOOD (  14.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,58 +72,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU3RldmVuLAoK1NogMjAyNi8wMi8yNCDQx8batv4gMjI6MTYsIFN0ZXZlbiBSb3N0ZWR0INC0
-tcA6Cj4gT24gVHVlLCAyNCBGZWIgMjAyNiAwOToxMToxNSAtMDUwMAo+IFN0ZXZlbiBSb3N0ZWR0
-IDxyb3N0ZWR0QGdvb2RtaXMub3JnPiB3cm90ZToKPiAKPj4+ICsjaWZkZWYgQ09ORklHX1RSQUNJ
-TkcKPj4+ICtzdGF0aWMgdm9pZCByb2NrY2hpcF9wY2llX2x0c3NtX3RyYWNlX3dvcmsoc3RydWN0
-IHdvcmtfc3RydWN0ICp3b3JrKQo+Pj4gK3sKPj4+ICsJc3RydWN0IHJvY2tjaGlwX3BjaWUgKnJv
-Y2tjaGlwID0gY29udGFpbmVyX29mKHdvcmssCj4+PiArCQkJCQkJc3RydWN0IHJvY2tjaGlwX3Bj
-aWUsCj4+PiArCQkJCQkJdHJhY2Vfd29yay53b3JrKTsKPj4+ICsJc3RydWN0IGR3X3BjaWUgKnBj
-aSA9ICZyb2NrY2hpcC0+cGNpOwo+Pj4gKwllbnVtIGR3X3BjaWVfbHRzc20gc3RhdGU7Cj4+PiAr
-CXUzMiBpLCBsMXNzLCBwcmV2X3ZhbCA9IERXX1BDSUVfTFRTU01fVU5LTk9XTiwgcmF0ZSwgdmFs
-Owo+Pj4gKwo+Pj4gKwlpZiAoIXBjaV9sdHNzbV90cF9lbmFibGVkKCkpCj4+PiArCQlnb3RvIHNr
-aXBfdHJhY2U7Cj4+Cj4+IFlvdSBjYW4gdXNlOgo+Pgo+PiAJaWYgKCF0cmFjZV9wY2llX2x0c3Nt
-X3N0YXRlX3RyYW5zaXRpb25fZW5hYmxlZCgpKQo+PiAJCWdvdG8gc2tpcF90cmFjZTsKPj4KPj4g
-VGhlIGFib3ZlIGlzIGEgc3RhdGljIGJyYW5jaC4gVGhhdCBtZWFucyB3aGVuIHRyYWNpbmcgaXMg
-ZGlzYWJsZWQsIGl0IGlzCj4+IGJhc2ljYWxseToKPj4KPj4gCWdvdG8gc2tpcF90cmFjZTsKPj4K
-Pj4gYW5kIHdoZW4gdHJhY2luZyBpcyBlbmFibGVkIGl0IGlzIGEgbm9wLgoKSSBtdXN0IGFkbWl0
-IEkgYm9ycm93IGl0IGZyb20gYXJjaC9wb3dlcnBjL2luY2x1ZGUvYXNtL3RyYWNlLmggYW5kCmlu
-Y2x1ZGUvdHJhY2UvZXZlbnRzL2kyYy5oIGZvciByZWZlcmVuY2UsIHdoZXJlIHRoZSByZWcgYW5k
-IHVucmVnCmp1c3QgaW5jcmVhc2UgYW5kIGRlY3JlYXNlIHRoZSByZWYgY291bnQgdG8gaW5kaWNh
-dGUgaWYgdGhlIHRwCnNob3VsZCBiZSBjb250aW51ZWQuIFN1cmUsIHRoZSBzdGF0aWMgYnJhbmNo
-IGNvdWxkIGJlIHVzZWQgaW5zdGVhZCwKZXZlbiB3aXRob3V0IHJlZyBhbmQgdW5yZWcgaW1wbGVt
-ZW50YXRpb24uCgo+PgoKLi4KCj4+PiArfQo+Pj4gKwo+IAo+IEhtbSwgc28gYmFzaWNhbGx5IHlv
-dSBvbmx5IHdhbnQgdG8gY2FsbCB0aGUgd29yayB3aGVuIHRyYWNpbmcgaXMKPiBlbmFibGVkPyBU
-aGF0J3Mgd2hhdCBJIHdhcyB0aGlua2luZyBzaG91bGQgYmUgZW5hYmxlZCBieSB0aGUgcmVnIGFu
-ZAo+IHVucmVnIGZ1bmN0aW9ucy4gVGhhdCBpcywgdGhlIHJlZyBzaG91bGQgZW5hYmxlZCB0aGUg
-ZGVsYXllZCB3b3JrLCBhbmQKPiB0aGUgdW5yZWcgc2hvdWxkIGRpc2FibGUgaXQgZnJvbSBiZWlu
-ZyBjYWxsZWQuCj4gCj4gVGhpcyBsb29rcyBsaWtlIGl0IGNhbGxzIHRoZSB3b3JrIHJlZ2FyZGxl
-c3Mgb2YgaWYgdHJhY2luZyBpcyBlbmFibGVkCj4gb3Igbm90LiBXaHkgd2FzdGUgdGhlIGN5Y2xl
-cyB3aGVuIHRyYWNpbmcgaXMgZGlzYWJsZWQ/CgpJIGxvb2tlZCBpbnRvIGltcGxlbWVudGluZyBy
-ZWcgYW5kIHVucmVnIGNhbGxiYWNrcyB0byBkaXJlY3RseSBzY2hlZHVsZQphbmQgY2FuY2VsIHRo
-ZSBkZWxheWVkIHdvcmsuIFRoZSBjaGFsbGVuZ2UgaXMgdGhhdCB0aGlzIHRyYWNlcG9pbnQKYmVs
-b25ncyB0byB0aGUgc2hhcmVkIFBDSSBzdWJzeXN0ZW0gdHJhY2UgaGllcmFyY2h5LCB3aGlsZSB0
-aGUgcG9sbGluZwp3b3JrIGl0c2VsZiBpcyBwZXItY29udHJvbGxlci4gSSBoYXZlbid0IGZvdW5k
-IGEgY2xlYW4gd2F5IHRvIHJlZ2lzdGVyCnBlci1kcml2ZXIgY2FsbGJhY2tzIGluIHRoaXMgY29t
-bW9uIGNvbnRleHQuCgpDcmVhdGluZyBhIHNlcGFyYXRlIFJvY2tjaGlwLXNwZWNpZmljIHRyYWNl
-cG9pbnQgdmlhCnRyYWNlcG9pbnRfcHJvYmVfcmVnaXN0ZXIoKSB3b3VsZCBkZXRhY2ggaXQgZnJv
-bSB0aGUgc3RhbmRhcmQgUENJZSB0cmFjZQpldmVudCBoaWVyYXJjaHksIHdoaWNoIHNlZW1zIHVu
-ZGVzaXJhYmxlLgoKQXMgYSBwcmFjdGljYWwgbWlkZGxlIGdyb3VuZCwgSSBpbXBsZW1lbnQgcmVn
-IGFuZCB1bnJlZyB0byBtYWludGFpbiBhCnVzZXIgY291bnQgbGlrZSB0aGlzIHY0LiBBbGwgZHJp
-dmVycyB1c2luZyB0aGlzIHRyYWNlcG9pbnQgd291bGQgdGhlbgpyZWx5IG9uIHRoZSBjb3VudCB0
-byBnYXRlIHRoZWlyIHdvcmsgZXhlY3V0aW9uLCBtYWtpbmcgdGhlIGRlbGF5ZWQgd29yawplc3Nl
-bnRpYWxseSBhIG5vLW9wIHdoZW4gdHJhY2luZyBpcyBkaXNhYmxlZC4KCkFsdGVybmF0aXZlbHks
-IHdlIGNvdWxkIHNpbXBseSByZXZlcnQgdG8gdGhlIFYzIGFwcHJvYWNoIGFuZCByZWx5CmVudGly
-ZWx5IG9uIHRoZSB0cmFjZV9wY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb25fZW5hYmxlZCgpIHN0
-YXRpYwpicmFuY2ggY2hlY2ssIHdoaWNoIHdvdWxkIHJlbW92ZSB0aGUgbmVlZCBmb3IgcmVnIGFu
-ZCB1bnJlZyBhbHRvZ2V0aGVyLgoKSWYgeW91IGhhdmUgYmV0dGVyIHN1Z2dlc3Rpb25zIG9yIGNh
-biBwb2ludCBtZSB0byBhIHByZWZlcnJlZCBwYXR0ZXJuIApmb3IgdGhpcywgSSdkIGFwcHJlY2lh
-dGUgeW91ciBhZHZpY2UuCgo+IAo+IC0tIFN0ZXZlCj4gCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Shawn,
+
+On 2/24/2026 11:47 AM, Shawn Lin wrote:
+> Per the RK3588 TRM Table 7-1 RK3588 Voltage Domain and Power Domain Summary,
+> PD_RKVDEC0/1 and PD_VENC0/1 rely on VD_VCODEC which require extra voltages to
+> be applied, otherwise it breaks RK3588-evb1-v10 board after vdec support landed[1].
+> The panic looks like below:
+> 
+>   rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'rkvdec0' on, val=0
+>   rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'rkvdec1' on, val=0
+>   ...
+>   Hardware name: Rockchip RK3588S EVB1 V10 Board (DT)
+>   Workqueue: pm genpd_power_off_work_fn
+>   Call trace:
+>   show_stack+0x18/0x24 (C)
+>   dump_stack_lvl+0x40/0x84
+>   dump_stack+0x18/0x24
+>   vpanic+0x1ec/0x4fc
+>   vpanic+0x0/0x4fc
+>   check_panic_on_warn+0x0/0x94
+>   arm64_serror_panic+0x6c/0x78
+>   do_serror+0xc4/0xcc
+>   el1h_64_error_handler+0x3c/0x5c
+>   el1h_64_error+0x6c/0x70
+>   regmap_mmio_read32le+0x18/0x24 (P)
+>   regmap_bus_reg_read+0xfc/0x130
+>   regmap_read+0x188/0x1ac
+>   regmap_read+0x54/0x78
+>   rockchip_pd_power+0xcc/0x5f0
+>   rockchip_pd_power_off+0x1c/0x4c
+>   genpd_power_off+0x84/0x120
+>   genpd_power_off+0x1b4/0x260
+>   genpd_power_off_work_fn+0x38/0x58
+>   process_scheduled_works+0x194/0x2c4
+>   worker_thread+0x2ac/0x3d8
+>   kthread+0x104/0x124
+>   ret_from_fork+0x10/0x20
+>   SMP: stopping secondary CPUs
+>   Kernel Offset: disabled
+>   CPU features: 0x3000000,000e0005,40230521,0400720b
+>   Memory Limit: none
+>   ---[ end Kernel panic - not syncing: Asynchronous SError Interrupt ]---
+> 
+> [1] https://lore.kernel.org/linux-rockchip/20251020212009.8852-2-detlev.casanova@collabora.com/
+> Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
+> Cc: stable@vger.kernel.org
+> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+> Changes in v2:
+> - collect tags
+> - correct TRM section(Sebastian)
+> 
+>  drivers/pmdomain/rockchip/pm-domains.c | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+> index 997e93c..040aa5f 100644
+> --- a/drivers/pmdomain/rockchip/pm-domains.c
+> +++ b/drivers/pmdomain/rockchip/pm-domains.c
+> @@ -1315,10 +1315,10 @@ static const struct rockchip_domain_info rk3588_pm_domains[] = {
+>  	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false, false),
+>  	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false, false),
+>  	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false, false),
+> -	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false, false),
+> -	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false, false),
+> -	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false, false),
+> -	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false, false),
+> +	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false, true),
+> +	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false, true),
+> +	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false, true),
+> +	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false, true),
+>  	[RK3588_PD_VDPU]	= DOMAIN_RK3588("vdpu",    0x0, BIT(10), 0,       0x0, BIT(18), BIT(9),  0x0, BIT(8),  BIT(8),  false, false),
+>  	[RK3588_PD_RGA30]	= DOMAIN_RK3588("rga30",   0x0, BIT(11), 0,       0x0, BIT(19), BIT(10), 0x0, 0,       0,       false, false),
+>  	[RK3588_PD_AV1]		= DOMAIN_RK3588("av1",     0x0, BIT(12), 0,       0x0, BIT(20), BIT(11), 0x0, BIT(9),  BIT(9),  false, false),
+
+Perhaps you could try modifying only RK3588_PD_VCODEC. 
+VCODEC is the parent of these PDs, so you won't need to modify too
+much code and devicetree. BTW I have tried it before, but with an 
+internal MPP driver. Maybe you can give it another try :)
+
+-- 
+Best, 
+Chaoyi
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
