@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 136A9FD3762
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 14:11:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2307FD3760
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 14:27:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qvxkIt74fSpWfRsIxbpErbyAwoaf5ZT+nSz9F9T9Br4=; b=lg5iYbk8MqhGLe
-	1Efq2Jxc8k4pIaC210utySRhub2rLoHqFk60iIqb3wYR0XqnOJ6Jq22D2hWTnBjSievY4Si43eQKO
-	7VGihaSHgqee0VbgRitOJZFUDN4ChDw54wQ0lEhGm4X11IwnSr0CYbvZTZhsX7IEVRRMylH23SCnh
-	b12isokWTvjlvVxLuElH2hnoyQiKHUIMqTjX0Ai6q2pH1DD6aAyJcghWk5Y09MV15UZqvwCelAGu9
-	FvVOIzBykUFxV3oVe7YTvEKszs5gz5WFhVbB9TYYMTm7N7B7V11vedJL1mkQB3wCGzFOep2PU6dH8
-	Yn5C8TCoov0jia8rlHHA==;
+	List-Owner; bh=FAPzulrWHkDdtQD3nFw1zj9OHYWeqj1rsHB1n5CxvZk=; b=dr8Fik4HR26itG
+	eyfKTeQbc+UlgC4aV1HahAWWlNa+k8rLsurCpBCIWq23OZGTUPdUr4Mn9lECup7P446HfeuTKEldo
+	nVRJWVc8E8k9283zkpoq7P7gXkIE1fDnh8PMlIKFHXrq9uOc0QomN86Z1LR2KJctrg1ZhVDlJEgcC
+	PPWhCR1vWHzLsHkFCzuqOyOsbkWQB+YEh/y9Ykz9K+6DsYwY26w2AkIKIQhr7bKrTs/w8P8nXpfOD
+	SEzvy8/K3S2ZRxDdqEuLuirF3salTMnXCktKfcdGkty4zWzzXkL+8fg75qL9CZogDvnW4QRDUv8S8
+	w5RTWLNZdahlchLMpB9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvFc1-00000004Abf-2mR4;
-	Wed, 25 Feb 2026 14:11:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vvFra-00000004D0T-0U3o;
+	Wed, 25 Feb 2026 14:27:42 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvFbo-00000004AZd-2yaT;
-	Wed, 25 Feb 2026 14:11:25 +0000
+	id 1vvFrX-00000004D01-05PR;
+	Wed, 25 Feb 2026 14:27:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EED59444E7;
-	Wed, 25 Feb 2026 14:11:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C094C2BC86;
-	Wed, 25 Feb 2026 14:11:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 640C240274;
+	Wed, 25 Feb 2026 14:27:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B86ECC116D0;
+	Wed, 25 Feb 2026 14:27:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772028683;
-	bh=SjklxF5P1ukWq1BdzFbfzWWtsg3DlSbDa9GVYCTfBao=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B3ivDnBnOfYCqWXOyOu+/9HdePS1rKGtYvm03h40GTUFPLcP2JpCzl2IQ1ByV0DwE
-	 Z7+ITwCMl2tD4W57SVN9g1RujPJIx6cyy/NwFhM0gomZcQ4vrMfzHuJDa6rFGQ55Cd
-	 rmkIOeo5l0cy8isgwOJ0GMwOvMoEXQLCJWZ2BEioD5AtCyIRQYj83/9d+Gqg6YcL4H
-	 D0oEkp9azfV0rCPDmuV9Vo4TcWYve+f0CnvgssNeBaPTv35f+79+PP467+orGSZOmQ
-	 b2idEes6l5kywJrNei3PLGIcH3L2cR5p/8o+eJU0rZAfiwJEDe2BjLgstjmAro4svs
-	 R2DBFCUDzNW+g==
-Message-ID: <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
-Date: Wed, 25 Feb 2026 15:11:18 +0100
+	s=k20201202; t=1772029658;
+	bh=U9E2ZLZ0JLTenLJ3Y/BpGghxxT+1M6o7BfxH/hbK7+Y=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=Bx31QDeCwTuAv0aIQC96Gk1GVeLTBS/5yg+8jPkfcS6e3IMl75T4NlxJ9G0tryUnN
+	 IwmSR2rhnZlVpi+VkmtVWjkx4gzFs89OMpzBIsLk+CUBSRt60CZOz5jkucToy+6Sy5
+	 7Z1DuPVuIRdvs6+DkD57hD3DGA4lBu8w5RUi08PhT/KC36hxERT9AY49nRZhUNY74E
+	 dFiNO6MTyDJV36oCsckH8LDrJuPy5CAqFWm37LxF741OCI3k0rNhjuDk0U1hOsozit
+	 CUDNjbCW43/zEuIr97h/ZIiTlqJgnGf2zej+VK1OiDdgff9TGrhbDjdaxhRvu8cIpu
+	 NYdsnDPkkZKcA==
+Message-ID: <d460c40a-c0cc-41d3-999d-bead4e688a34@kernel.org>
+Date: Wed, 25 Feb 2026 15:27:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add alternative
  reg-names order for RK35{76,88}
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -63,7 +64,7 @@ References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
  <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
  <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
  <d5a244f3-5f1b-4bcb-8042-646320a47b6c@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -108,10 +109,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <d5a244f3-5f1b-4bcb-8042-646320a47b6c@collabora.com>
+In-Reply-To: <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_061124_796940_6875604B 
-X-CRM114-Status: GOOD (  27.13  )
+X-CRM114-CacheID: sfid-20260225_062739_124528_CFA0ACBF 
+X-CRM114-Status: GOOD (  26.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,98 +129,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/02/2026 14:36, Cristian Ciocaltea wrote:
-> On 2/25/26 2:26 PM, Krzysztof Kozlowski wrote:
->> On 25/02/2026 13:19, Cristian Ciocaltea wrote:
->>> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
->>> 'link' and 'cache' register blocks have been provided for the video
->>> decoder unit in addition to the existing 'function' one, which now shows
->>> up in between them (from address-based ordering point of view).
+On 25/02/2026 15:11, Krzysztof Kozlowski wrote:
+> On 25/02/2026 14:36, Cristian Ciocaltea wrote:
+>> On 2/25/26 2:26 PM, Krzysztof Kozlowski wrote:
+>>> On 25/02/2026 13:19, Cristian Ciocaltea wrote:
+>>>> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
+>>>> 'link' and 'cache' register blocks have been provided for the video
+>>>> decoder unit in addition to the existing 'function' one, which now shows
+>>>> up in between them (from address-based ordering point of view).
+>>>>
+>>>> However, the binding does not properly describe this hardware layout, as
+>>>> the new blocks are listed after the old one.  Therefore it breaks the
+>>>> convention expecting the unit address to indicate the first register
+>>>> range.
+>>>>
+>>>> Since the binding changes have been already released and a fix would
+>>>> bring up an ABI break, mark the current 'reg-names' listing as
+>>>> deprecated and introduce an alternative 'link,function,cache' one.
+>>>>
+>>>> Additionally, drop the 'reg' description items as the order is not fixed
+>>>> anymore, while the information they offer is not very relevant anyway.
+>>>>
+>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>> ---
+>>>>  .../devicetree/bindings/media/rockchip,vdec.yaml      | 19 ++++++++++++-------
+>>>>  1 file changed, 12 insertions(+), 7 deletions(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>>>> index 809fda45b3bd..3f6072e8baa5 100644
+>>>> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>>>> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>>>> @@ -28,16 +28,21 @@ properties:
+>>>>  
+>>>>    reg:
+>>>>      minItems: 1
+>>>> -    items:
+>>>> -      - description: The function configuration registers base
+>>>> -      - description: The link table configuration registers base
+>>>> -      - description: The cache configuration registers base
+>>>> +    maxItems: 3
+>>>>  
+>>>>    reg-names:
+>>>> -    items:
+>>>> +    oneOf:
+>>>>        - const: function
 >>>
->>> However, the binding does not properly describe this hardware layout, as
->>> the new blocks are listed after the old one.  Therefore it breaks the
->>> convention expecting the unit address to indicate the first register
->>> range.
->>>
->>> Since the binding changes have been already released and a fix would
->>> bring up an ABI break, mark the current 'reg-names' listing as
->>> deprecated and introduce an alternative 'link,function,cache' one.
->>>
->>> Additionally, drop the 'reg' description items as the order is not fixed
->>> anymore, while the information they offer is not very relevant anyway.
->>>
->>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->>> ---
->>>  .../devicetree/bindings/media/rockchip,vdec.yaml      | 19 ++++++++++++-------
->>>  1 file changed, 12 insertions(+), 7 deletions(-)
->>>
->>> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
->>> index 809fda45b3bd..3f6072e8baa5 100644
->>> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
->>> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
->>> @@ -28,16 +28,21 @@ properties:
->>>  
->>>    reg:
->>>      minItems: 1
->>> -    items:
->>> -      - description: The function configuration registers base
->>> -      - description: The link table configuration registers base
->>> -      - description: The cache configuration registers base
->>> +    maxItems: 3
->>>  
->>>    reg-names:
->>> -    items:
->>> +    oneOf:
->>>        - const: function
+>>> This is confusing, I think I missed that in previous patch because it
+>>> did not leave that part or I misread the diff hunk - why do you allow
+>>> one entry?
 >>
->> This is confusing, I think I missed that in previous patch because it
->> did not leave that part or I misread the diff hunk - why do you allow
->> one entry?
+>> That's for the older SoCs, e.g. RK3288, RK3399, as the 'link' and 'cache' blocks
+>> are only available for RK3576 & RK3588.
 > 
-> That's for the older SoCs, e.g. RK3288, RK3399, as the 'link' and 'cache' blocks
-> are only available for RK3576 & RK3588.
-
-Yeah, I see in the bottom of the binding
-
+> Yeah, I see in the bottom of the binding
 > 
 >>
->> If the first entry is function, then all others MUST built on top, thus
->> this:
+>>>
+>>> If the first entry is function, then all others MUST built on top, thus
+>>> this:
+>>>
+>>>> +          - const: link
+>>>> +          - const: function
+>>>> +          - const: cache
+>>>
+>>> is not correct.
+>>>
+>>> No, you don't change the orders. So again, if you have such binding,
+>>> then you just fix the unit address leaving the binding as is.
 >>
->>> +          - const: link
->>> +          - const: function
->>> +          - const: cache
->>
->> is not correct.
->>
->> No, you don't change the orders. So again, if you have such binding,
->> then you just fix the unit address leaving the binding as is.
+>> Changing the unit address would mean it will point inside the register range,
+>> rather than at the beginning of it.
 > 
-> Changing the unit address would mean it will point inside the register range,
-> rather than at the beginning of it.
-
-First, not true. If this was one register range, you would have one
-entry. You cannot split entries. Split entries means you have two
-SEPARATE register ranges.
-Second, it does not matter because main rule stays - the unit address
-describes the main address space. The main address space in other device
-was called "function", so I assume the main address space is also here
-the "function". Which makes sense, because link feels secondary to
-functioning of the device.
-
+> First, not true. If this was one register range, you would have one
+> entry. You cannot split entries. Split entries means you have two
+> SEPARATE register ranges.
+> Second, it does not matter because main rule stays - the unit address
+> describes the main address space. The main address space in other device
+> was called "function", so I assume the main address space is also here
+> the "function". Which makes sense, because link feels secondary to
+> functioning of the device.
 > 
-> Sorry, but I don't quite get why would this be a better approach than just
-> properly list the items according to the HW layout, i.e. following the
-> address-based ordering?
+>>
+>> Sorry, but I don't quite get why would this be a better approach than just
+>> properly list the items according to the HW layout, i.e. following the
+>> address-based ordering?
 
-We always expect the list to grow, to have common set. That's rule given
-during reviews multiple times. For multiple reasons, also explained
-(consistency, maintenance and actually proper description of hardware
-like the main reg address space).
-
-Probably this was also given to that binding during discussions when it
-was upstream, so your change reverts previous discussion and to that I
-do not agree.
+One more comment here, actually repeating Rob, because this awfully
+reminds me discussions with Linaro folks around media/iris/camss where
+they came with terrible idea of sorting everything by value
+(reg+clocks+interrupts) - because binding does not know anything about
+addresses, thus you cannot sort/order this list in the binding by
+address. There is simple no "key" to sort with.
 
 Best regards,
 Krzysztof
