@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F08FFD374E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 12:26:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78AC6FD374E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 12:27:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+btMtnqHDHYsv94z4EwBMNBtKczeJY0ejuRWQJGpBcE=; b=IMjnLr997vms6U
-	oRXnzPzAFaxNWvEZLJrho1PduIPEeEZUSvCjOeweEEtAN2Ty55/m4TcTgUSSNrR5Lzo8NjdrSW7WF
-	ynXcLuDRYSlItNmyLVdemsiaKtFPwMILlz0SKG/xU1X41hWoxG6xHIJMC3/BCY0EyKgZzMxqPxUvh
-	qde6RBI0PZa8G96AkbjoTHYtG2RHyAxOIQ4+riQUudqcdVsDvh7QyUS0BmDJiYGo0D13PWKRyMYxD
-	1oMdl6bKf53GSGwwWHzroqrSLaKk5aZLsmBrw+0/Du5X6/FBdEBTMziOmqh7ivTNPHffPNTxFQO/K
-	4zqARUo5Vz0HY1Ux6Tjg==;
+	List-Owner; bh=BjQygugp6/I4dscPMH2ThF6ioaHj0hjTCMA3pEEwb2s=; b=wXZjOlLfmcX+8l
+	E7/LRZoE38TAdsqd9A8+zrAIlXIg3dvYZ7nnnLO4PI+cPx4qCDyDGdn9Hou5/ke0LqBHuzhbJBIiM
+	Kvl5mJTPOXzRrAsTj1te5k34cQMAS7qQ+sOafs+PlLrZgD8beVejbArCJuus2sUnR/aHHBvT6uRpG
+	REagX1lktnZAm5jQYh+kiJnvH0wJTwq1UUGEeaDDSHUcWnwwcZyMIaaZdzELcUMIGPZylvKco74Ja
+	qKks1QUes+kYmpgxtsPWYNiDxzJUi0IxNkKm5dszyg993NaenIis61je/e+e1LAuVGtoZaqCAIbpo
+	IQq/eIQiqbUYUJS+wLRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvDyR-0000000402L-3mTn;
-	Wed, 25 Feb 2026 12:26:39 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vvDzf-000000040JO-0UF5;
+	Wed, 25 Feb 2026 12:27:55 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvDyQ-00000004011-2CDW;
-	Wed, 25 Feb 2026 12:26:38 +0000
+	id 1vvDzb-000000040Ic-3dI9;
+	Wed, 25 Feb 2026 12:27:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 83A6A600AE;
-	Wed, 25 Feb 2026 12:26:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A84BDC116D0;
-	Wed, 25 Feb 2026 12:26:33 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1A87443B97;
+	Wed, 25 Feb 2026 12:27:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 721D0C116D0;
+	Wed, 25 Feb 2026 12:27:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772022397;
-	bh=ku//C0HXfvmJOEr1hs9KBjnJ+EB6f62HY39EOsCWCME=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=OnMSlue6sLcP2TzFxgazJrbaHKBIypLT5s/xSdj8eT+y8P+1Hxnh3BX2i/62J+qrI
-	 rugZD2wJWFuqUU26rNcGaIbwsxJi0Vn3A1ILiP+KJdkbqq39In0iGn0095Gcf9/kOo
-	 H8BzX/FUBrthf2/pwAigiwoxBgibzVF6omcqeHUml4I1DNTShbAmbC3Ne8F+40D1M0
-	 tO7Xl3BkqHYLOzSvcAY0OGUYy3Q2KyWQd6W+eeX0w3+gtnpCQkoz0HPb83L6NBgQow
-	 JLvuiIPCuAkFdzdL4l/kAFJikDk2ioTpdYa9UPXMEoor8aebBcWxRFEKiDKeD+WK9W
-	 +psS3QNHlLaug==
-Message-ID: <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
-Date: Wed, 25 Feb 2026 13:26:32 +0100
+	s=k20201202; t=1772022471;
+	bh=gf6i6MUQ7Ft3mdcBnXb0lPEF0Yd88FAI57ADlhufGMo=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=dyiwnpBRFkzCCiXWC4ciC7Ko1dcOb3w2mBZKGNmNrj8Zmpc4AsV7c+5W084jXS76s
+	 GohdRZr6PzMVLREexhSbE7MXRC3YaMHUmybGup4uOIPK2A0CkH8vkyzZ1Tda6djAmY
+	 gtltNpHQKLg2NErvWNt+fyQc7CWJCLWvtDiX05lB0EfWshtTgFtsjix1KF8AmZaUO2
+	 rG7z6aMI2R4gi6ZHwr10/t4NyzFN40deXdOx2dQ0ahPZD6fGxAq4f7or2wOfNlr8iP
+	 GOzBia9m/LBrhUgBfDpmucM85MWmw4uhbdKgDB97QnRVUeYas774LXlQ64uX6nQZWy
+	 31J+Wi7HN6zTA==
+Message-ID: <e23f62a6-8546-430c-b616-1208e43b0698@kernel.org>
+Date: Wed, 25 Feb 2026 13:27:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add alternative
  reg-names order for RK35{76,88}
+From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
@@ -61,7 +62,7 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-media@vger.kernel.org
 References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
  <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+ <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
  xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
@@ -106,7 +107,10 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+In-Reply-To: <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260225_042751_949240_09C856C5 
+X-CRM114-Status: GOOD (  22.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,78 +127,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 25/02/2026 13:19, Cristian Ciocaltea wrote:
-> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
-> 'link' and 'cache' register blocks have been provided for the video
-> decoder unit in addition to the existing 'function' one, which now shows
-> up in between them (from address-based ordering point of view).
+On 25/02/2026 13:26, Krzysztof Kozlowski wrote:
+> On 25/02/2026 13:19, Cristian Ciocaltea wrote:
+>> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
+>> 'link' and 'cache' register blocks have been provided for the video
+>> decoder unit in addition to the existing 'function' one, which now shows
+>> up in between them (from address-based ordering point of view).
+>>
+>> However, the binding does not properly describe this hardware layout, as
+>> the new blocks are listed after the old one.  Therefore it breaks the
+>> convention expecting the unit address to indicate the first register
+>> range.
+>>
+>> Since the binding changes have been already released and a fix would
+>> bring up an ABI break, mark the current 'reg-names' listing as
+>> deprecated and introduce an alternative 'link,function,cache' one.
+>>
+>> Additionally, drop the 'reg' description items as the order is not fixed
+>> anymore, while the information they offer is not very relevant anyway.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  .../devicetree/bindings/media/rockchip,vdec.yaml      | 19 ++++++++++++-------
+>>  1 file changed, 12 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>> index 809fda45b3bd..3f6072e8baa5 100644
+>> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>> @@ -28,16 +28,21 @@ properties:
+>>  
+>>    reg:
+>>      minItems: 1
+>> -    items:
+>> -      - description: The function configuration registers base
+>> -      - description: The link table configuration registers base
+>> -      - description: The cache configuration registers base
+>> +    maxItems: 3
+>>  
+>>    reg-names:
+>> -    items:
+>> +    oneOf:
+>>        - const: function
 > 
-> However, the binding does not properly describe this hardware layout, as
-> the new blocks are listed after the old one.  Therefore it breaks the
-> convention expecting the unit address to indicate the first register
-> range.
+> This is confusing, I think I missed that in previous patch because it
+> did not leave that part or I misread the diff hunk - why do you allow
+> one entry?
 > 
-> Since the binding changes have been already released and a fix would
-> bring up an ABI break, mark the current 'reg-names' listing as
-> deprecated and introduce an alternative 'link,function,cache' one.
+> If the first entry is function, then all others MUST built on top, thus
+> this:
 > 
-> Additionally, drop the 'reg' description items as the order is not fixed
-> anymore, while the information they offer is not very relevant anyway.
+>> +          - const: link
+>> +          - const: function
+>> +          - const: cache
 > 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  .../devicetree/bindings/media/rockchip,vdec.yaml      | 19 ++++++++++++-------
->  1 file changed, 12 insertions(+), 7 deletions(-)
+> is not correct.
 > 
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 809fda45b3bd..3f6072e8baa5 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -28,16 +28,21 @@ properties:
->  
->    reg:
->      minItems: 1
-> -    items:
-> -      - description: The function configuration registers base
-> -      - description: The link table configuration registers base
-> -      - description: The cache configuration registers base
-> +    maxItems: 3
->  
->    reg-names:
-> -    items:
-> +    oneOf:
->        - const: function
+> No, you don't change the orders. So again, if you have such binding,
+> then you just fix the unit address leaving the binding as is.
+> 
 
-This is confusing, I think I missed that in previous patch because it
-did not leave that part or I misread the diff hunk - why do you allow
-one entry?
+I just now checked v2 - it had this first "function" left, so I missed
+that part. I would give different review at v2, so you would not waste
+time. Apologies for that.
 
-If the first entry is function, then all others MUST built on top, thus
-this:
-
-> +          - const: link
-> +          - const: function
-> +          - const: cache
-
-is not correct.
-
-No, you don't change the orders. So again, if you have such binding,
-then you just fix the unit address leaving the binding as is.
-
-
-> -      - const: link
-> -      - const: cache
-> +      - items:
-> +          - const: link
-> +          - const: function
-> +          - const: cache
-> +      - items:
-> +          - const: function
-> +          - const: link
-> +          - const: cache
-> +        deprecated: true
-> +        description: Use link,function,cache block order instead.
->  
 Best regards,
 Krzysztof
 
