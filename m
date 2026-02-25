@@ -4,155 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27EC4FD45F1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 20:28:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1318BFD45F6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 22:26:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ikcjY/Fj3GSJ211gaoDash2nbByRO9S89gxJ8WRDn0A=; b=yXjE9PKYCm+7PD
-	jkmgGJCsH9wYT+gYhKmHFk7Idl91p+25x0D3kXJ8IcIaDE86YPvDj433VkMVvCB/L4k6vjgmHsXap
-	f99khNTcFSizUWVNFPXvVf9DqBKPpftS76iRgG74/IrZ5BqJIdIK+AIWLPF9/TfpYgBiXv8KzJCRF
-	0E1Mpi00D8NdSyhpfxE3C6nfPkl6o86bv1ow+IE7nxFZIUlnjRk+pkfQ1V0PvY9/JDpi30oLKLvxI
-	Olgi4ABg6w9mZ8Nm/oWR6WvmiQ071z1psYn+I8XcG5J2zG6CYHoNrI8exHbuLXLfjd1ar1/of/C95
-	r6OJMgc2+ZbOz3UyCOAw==;
+	List-Owner; bh=gCLL2ySNjOuWZb0JPhs9XawvyOWTLecPodWSto+OGZE=; b=AeZTaTxp4VE1Z1
+	oqqpFGpNI58HJnL1dbUtvIhEP0BNYIPQe1YZWJn8+pjtZ7WDTRdcnY2pnEty5WYcpJoXOf8clxLd2
+	H3TSPp9yBZwOOP3L6Ubo90B/RQAswrwTeIfMpvQmu6b8TicaYYottjHCJ5jAilTXpr36Alx81TrfG
+	rR9AV95ECsBaBOvHwMIQyunauVjt4QeWUUOaxv+V1xw193GcsKTbKwyuyDp5VhcsOVzW6c6H7MpQE
+	LvpI9x3PV1K29nvDPCzlORR2p2RzvqqjNGX3WLxfGtCEmWpeami4ZvVCZ7tejLEEqxDZ/3tV24P9h
+	yP5/WD0tXSxSc/6ybTjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvLUL-00000004rWt-04H0;
-	Wed, 25 Feb 2026 20:28:05 +0000
-Received: from mail-norwayeastazon11013064.outbound.protection.outlook.com ([40.107.159.64] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1vvNLA-00000004zrm-0oEK;
+	Wed, 25 Feb 2026 22:26:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvLUI-00000004rVL-164H;
-	Wed, 25 Feb 2026 20:28:03 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Z24G9kGwawNQCIwsSVAlfgybb/9ahyhvwL09Jd8Rk5kacjp3Vfju+j26tkounZFw+YsAs8fleFX0vjMpKhyyaiF0Lw6xzRoPxAQfCeZThm4W8Q6CEzGL/bmy19h7ASB5deKmDBrm8LsYdcNAhMOETeFveP/ahD/M7hz8F8iOgZEwQYaKZus6fZy7RPCmPHVcDZJMfDzexkXxteKPtXtcdCjrV/WUDLegUYf7ejofRl6JRo7Y2HFfoLYXZTK6+lygsa4dworRa2Sv8D3DW6bzvL7iiwyiyTDkwhEV792hBASxDKiCPUqoS2vweq6oBfzDpL2gjIrJNfCSP+kj0kfWjg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=F83qY5mizs2GrmsmNbSCJntICQQNrwFUxwBYmpReT1k=;
- b=rkb8WFTg34nyOl9VdiUW+zPeJ9vIvuMSeh418yrIbgeA/TUxzNcbllwbqGM63J59beii+EovF1cyQFfpnZRWzd8rdPDmmzC0uPwrocgi4OQ653+i52NUpFnFUakKe773H2DexhDtscU/ZqKRHlzZcltF9eoFKGtsmqWcxiLnLCcvdu/44i2EJvXn6JwLFTIpCT0mqU1R1E2MVY18e//U4qTdOFHdpev93udH7I4orEOfHsJVGS5+t8n8QlYvpQSMFNSl1dqg0mH+3e9tC5XidU9aIavoUNzi0A54YK6fk8Rbrbw4C3Lj+q1g81I93Nll2T3SHfAzEDaZn6ITuQnyGQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F83qY5mizs2GrmsmNbSCJntICQQNrwFUxwBYmpReT1k=;
- b=I3bbEXPjUCMd2YSEEkS4cGOX+plMTPTY82r5cKDmGKd2xJRFFlF/M/Rdl/K9E7vxKRetr38McBzbjejfe7zHhcGtzwh0Oy3IsEkC37sjOSLTa5wdXk/BiowN2NIEG3irT3o/5wmAlzP0hFL63U0vR3M2bMFCmHLom113eUZK5vi9GC8zUZpK+YPQjywpmBNtgyDuS0vvMQAuuwunN6FCUHBtmUsFLRGb82u+lfYoAVrWSZWWYSdCFs8dG+1w+4HG4287KD9vEAai2Jtp6+tebbZpmlrE0d2WXMS327eJKP8C1nYkFUO+TEfSJg04ml0oH4UHkRA0VEg46cjMyVYDoA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
- by AM0PR04MB7172.eurprd04.prod.outlook.com (2603:10a6:208:192::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.13; Wed, 25 Feb
- 2026 20:27:57 +0000
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9632.017; Wed, 25 Feb 2026
- 20:27:57 +0000
-Date: Wed, 25 Feb 2026 15:27:46 -0500
-From: Frank Li <Frank.li@nxp.com>
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Vignesh Raghavendra <vigneshr@ti.com>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Minghuan Lian <minghuan.Lian@nxp.com>,
-	Mingkai Hu <mingkai.hu@nxp.com>, Roy Zang <roy.zang@nxp.com>,
-	Jesper Nilsson <jesper.nilsson@axis.com>,
-	Jingoo Han <jingoohan1@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Christian Bruel <christian.bruel@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Manikanta Maddireddy <mmaddireddy@nvidia.com>,
-	Koichiro Den <den@valinux.co.jp>,
-	Damien Le Moal <dlemoal@kernel.org>, linux-omap@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@axis.com, linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v2 6/9] PCI: dwc: Disable BARs in common code instead of
- in each glue driver
-Message-ID: <aZ9bQozWjS_ZcxK1@lizhi-Precision-Tower-5810>
-References: <20260225170324.4033466-11-cassel@kernel.org>
- <20260225170324.4033466-17-cassel@kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20260225170324.4033466-17-cassel@kernel.org>
-X-ClientProxiedBy: SA0PR11CA0018.namprd11.prod.outlook.com
- (2603:10b6:806:d3::23) To PA4PR04MB9366.eurprd04.prod.outlook.com
- (2603:10a6:102:2a9::8)
+	id 1vvNL7-00000004zqp-1htL;
+	Wed, 25 Feb 2026 22:26:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772058398;
+	bh=k0xNHmg+Rg6PlS1Wra/0RI+5j9ZASPAy6uL892tIiMs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=DLPQZ1qKtw0UPrCiH2oVW0xmo2GRHB9P+bSqPaE3iHm8F6eBR7XvhpIfEjh3pBidG
+	 tmE3bOZ8btb+Vq1Z9DzXcObYLgjLIHlA9tCrVsNQhy886X754qzz6KZogPIQyOFufM
+	 fGwKqVnhPWDd7+dt3t3VyHSuXjPXk0G2fyROFV4dgNlNjRmSLxeUReHAOrYF9zWZ0T
+	 DbkDx4mCDmCCXHFaIXiDXOXGVu8yaRgEOOEUT5mW0MDS5hbbhQRA7W1cY8674oR0zl
+	 VTpL/+73warn2Svdh10gyq2gMHAIcGcpi1r0ep8wCRtPOVWcYlcDsJN9aAmkFvZwY8
+	 OSl5n1LiErqKA==
+Received: from [192.168.1.90] (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 959D617E03E5;
+	Wed, 25 Feb 2026 23:26:37 +0100 (CET)
+Message-ID: <72a72c50-4816-47d4-b533-be4b7feee027@collabora.com>
+Date: Thu, 26 Feb 2026 00:26:37 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|AM0PR04MB7172:EE_
-X-MS-Office365-Filtering-Correlation-Id: 44a1b415-f625-4f2e-5329-08de74ac5cc0
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|19092799006|52116014|7416014|376014|38350700014|7053199007;
-X-Microsoft-Antispam-Message-Info: J+Kw6gcV8eo+GX7fK4DrMq0n9BGcj4fBuRjsy6y/qxXtxbbApLv4gB7uiUdG0qDUpCPPlDaWay2VULfs7KDxukL4gFCMxA5J4c9HmhSth9svUlG45K0EiAtDtByE4IKRZSkv8k52ClUBVEHumfDmYfOvFJb5YHDGp8mGcVJAd40AV8k75KJU8ZlvVgfTGghbVC+BJ449nQPqCMGimMxtYztOz3RlAzXhGsQKlcXyE0tkTKBEjbGErsd6CEBp1tnLrmhYaUIzmQM6L9R2LTh73FJSd2xkqKvn/4vToncV/6i58POsNREh+tqlmjrQfNtwgsjxfdZS2h78PBxCNxywBhmKngT5uYSzOiQkzCA7YMvO8BMpWll+cA6pWK63OImSbP7HiLBKT0P7QpM5HJMFO5r1qqqCcu2+Vmvw0TDRghwlv3bNBdKN/f7o7yddrckd03WZCitQ/UcgcZmKIivsROTHPOv3H3C31PYb/C4GGWfNkC08h0x5KUSDyJEzhcpnTz8yU2Fjk8q0O+n4FRi53kdz8UMoLmTtRQI1ZaVKXeiKeOKMziEkUNViYVgbyvGy2XGe9cOp/bBkFl5cAIYual+UjlSVvSLXusgeL2y0znKp0PwS0N26/bvjuH+AajHBv0KQN6qIU8TMb8OzdSVObSBD0r9LwiYPcdhP1eoYB7di8E2FZERDCfQo3jzNSn3uVpGF9EWplerdsCxnNDcMK4oKdNlJ87wdlIl7ASUTbYih5dMbjK4AESk6y2ZqwYQU5i59cZAuXhCaZ/pmksOda9+XSrKSy44nyeguw0phGs8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(19092799006)(52116014)(7416014)(376014)(38350700014)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?4FnlcFzmSyuhBt7xWMLmrtw8ooq54DmXxnHbGvUbbCrv7I1C5oqSzwyPeqJO?=
- =?us-ascii?Q?ITWEDsZpMUiwZMs1nWtp3X9xH/3wE9LzRf4IR9LX8ih9dRCmh/896647K6hx?=
- =?us-ascii?Q?1subRPxi4M89M5zW0+V5KBO2uEnZ1roKSufZkQ7HbtiYSTPOm0AMHUMtlk6M?=
- =?us-ascii?Q?ipPnUe5YaZelXuB/5qmncuyZ0ityz/WuHTJsxiXyCLFC1tUyz0g/p0tj9y+6?=
- =?us-ascii?Q?k5d14rZ4RaHgtvWLrLzk0v1VD0giyxORM7vou4shFX9LVmD92fx0YMn0Ja5U?=
- =?us-ascii?Q?vwIZe2IVcAcuaTVPU4n6I7D3YdLk0vHePox7m20TdUOi/bKlnxDxLhlufdEA?=
- =?us-ascii?Q?FKihUpv6wpYu24btc/pKdoBqLLnPOWy0Vs8jpVjo6f6VrsC4hdB7JRCm5l8N?=
- =?us-ascii?Q?KfKjbrnBZBP/C/YPIQlmzhpidAvhuCC2c3CVCShKS7+nd6Yx9MUsDYYV0Sho?=
- =?us-ascii?Q?eloNV0GMFDXavEDRMkR7pIxtUYeyq4fjFElbKhOBsQSQDsYLCaDH/BMlEAah?=
- =?us-ascii?Q?EIoNpxdmfauJBoJ7O9PFMxzbbepxGvongQzdM92CX2TXTA+5Fb1JM5qij/08?=
- =?us-ascii?Q?//yRhEMXyRvM3/xlwlbGPoEw4HagGPMgK8BJDHnAIYzPxMFF/5CDxVEgsX7E?=
- =?us-ascii?Q?MJDKtflvkC24OKcumqpTFwgfmgvZ5I4qd71pBeWHK6wlkeMz9vgzttSePk+k?=
- =?us-ascii?Q?BnIuTmt6AETFF1b1bo/fimCBlTWkrEu1S3XiETZeFuLaQh2NDLi1hy8ldJU0?=
- =?us-ascii?Q?8aUIqDM8ynNFwuWuMHYg2mjzOc2E7xh6yhOR6iqpXTR83Ih+V7X4PgpPgFzv?=
- =?us-ascii?Q?RAHvUg94FThMhVDo/Y0T3EGcrOb+rWJyVtQNOolV75bDUvXPDVlGUXVGuKie?=
- =?us-ascii?Q?wlD7+uYi7PdbsYgZ1ycRQ/soh2ulzoDNgd0URgUGYt8OM1TH9cqfTNMYKKDq?=
- =?us-ascii?Q?ine76L4mc/dV4z1dk4Yh0r5LqHrs90aV2YCYRq5RFAlIk+7rZpdufZoRX9gS?=
- =?us-ascii?Q?btGi+FpFOYkhlU8D+nW/GQIAOu6phsPIxRFMw/wbT2UnM+41LlUu46W+qIVa?=
- =?us-ascii?Q?9kd008WXjdvGQgOVjShsPD67/sZu7O/b6JgEQWtEaf7H8+NC2mvndfPbNuiz?=
- =?us-ascii?Q?diFi/O3OGEOVWA4u3tz+2YHRMj14xoZionATSQ4Jr1HVhhDYCEmOSVJ6Unmo?=
- =?us-ascii?Q?4/Qb5JfZFDPcuZKuxM0HamrhDyzHaKxyvKclo/iZK4wE9WztUqAXCLF3nFz3?=
- =?us-ascii?Q?LMI0Pqb31ec+/W4a7a0ODKjEhbBORVw5X8XLiqwZHsFS27S7+z/Lc0zuSbXp?=
- =?us-ascii?Q?jujJUbZEmmPwtCPTG+MWWNen3lAVW7vxb02C8X2Lu3J0XOXMnqiFClXzGZz2?=
- =?us-ascii?Q?sk1bpFuTOd0t/vmSBo+O6FacMoPWVpz5fxaGCpHgPzpIwfQL4P8ByZ00JLoP?=
- =?us-ascii?Q?oOZqIOfFxkVko1q9Vj5DSBlekUDA80gWv5NRpaQ8oH4jPnDKQTbq3GuNAx5G?=
- =?us-ascii?Q?8y5PiGrs3sRYQ0osS7wPc0KgeeLa7KMzkwMgcpXbmmAKI7nW2pYL/M7+9oot?=
- =?us-ascii?Q?0uL1OL1tE5D5FkKjZaKGOU/3AYKwYQQGL5vojWVFyzDGy0oOCihAPuXFzP/A?=
- =?us-ascii?Q?OpmL7VUuf416ydpl5sx9fWdIiK6/GtwEIqaOrm8YgpQyuA0XirsZ4SJx3yKh?=
- =?us-ascii?Q?MMZcwtsYtJPmwvBrOzvuoOfT64we8EnEqHm/1cQsRzUtuHAdhtuDtdrybTwA?=
- =?us-ascii?Q?gfkuVnBCAA=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 44a1b415-f625-4f2e-5329-08de74ac5cc0
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Feb 2026 20:27:57.4033
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: CG68UbHBy1QcL1vhcBwDlkq04Ksb2cAn0NQ2WybozgKHskcVGvFNr9qrkurtvWG76LqJV/rnJZGbQe7LN4hY0g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB7172
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add alternative
+ reg-names order for RK35{76,88}
+To: Krzysztof Kozlowski <krzk@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil@kernel.org>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>,
+ linux-media@vger.kernel.org
+References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
+ <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+ <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
+ <d5a244f3-5f1b-4bcb-8042-646320a47b6c@collabora.com>
+ <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_122802_465528_03C73C7C 
-X-CRM114-Status: GOOD (  30.87  )
+X-CRM114-CacheID: sfid-20260225_142641_610495_39D2867D 
+X-CRM114-Status: GOOD (  32.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,360 +88,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 25, 2026 at 06:03:29PM +0100, Niklas Cassel wrote:
-> The current EPC core design relies on an EPC driver disabling all BARs by
-> default. An EPF driver will then enable the BARs that it wants to enabled.
->
-> This design is there because there is no epc->ops->disable_bar().
-> (There is a epc->ops->clear_bar(), but that is only to disable a BAR that
-> has been enabled using epc->ops->set_bar() first.)
->
-> By default, an EPF driver will not be able to get/enable BARs that are
-> marked as BAR_RESERVED or BAR_DISABLED (see pci_epc_get_next_free_bar()).
->
-> Since the current EPC code design requires an EPC driver to disable all
-> BARs by default, let's move this to DWC common code from each glue driver.
->
-> BAR_RESERVED BARs are not disabled by default because these BARs are
-> hardware backed, and should only be disabled explicitly by an EPF driver
-> if absolutely necessary for the EPF driver to function correctly.
-> (This is similar to how e.g. NVMe may have vendor specific BARs outside of
-> the mandatory BAR0 which contains the NVMe registers.)
->
-> Note that there is currently no EPC operation to disable a BAR that has not
-> first been programmed using pci_epc_set_bar(). If an EPF driver ever wants
-> to disable a BAR marked as BAR_RESERVED, a disable_bar() operation would
-> have to be added first.
->
-> No functional changes intended.
->
-> Tested-by: Manikanta Maddireddy <mmaddireddy@nvidia.com>
-> Reviewed-by: Manikanta Maddireddy <mmaddireddy@nvidia.com>
-> Signed-off-by: Niklas Cassel <cassel@kernel.org>
-> ---
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
->  drivers/pci/controller/dwc/pci-dra7xx.c       |  4 ----
->  drivers/pci/controller/dwc/pci-imx6.c         | 10 --------
->  .../pci/controller/dwc/pci-layerscape-ep.c    |  4 ----
->  drivers/pci/controller/dwc/pcie-artpec6.c     |  4 ----
->  .../pci/controller/dwc/pcie-designware-ep.c   | 24 +++++++++++++++++++
->  .../pci/controller/dwc/pcie-designware-plat.c | 10 --------
->  drivers/pci/controller/dwc/pcie-dw-rockchip.c |  4 ----
->  drivers/pci/controller/dwc/pcie-qcom-ep.c     | 10 --------
->  drivers/pci/controller/dwc/pcie-rcar-gen4.c   | 10 --------
->  drivers/pci/controller/dwc/pcie-stm32-ep.c    | 10 --------
->  drivers/pci/controller/dwc/pcie-tegra194.c    | 10 --------
->  drivers/pci/controller/dwc/pcie-uniphier-ep.c | 10 --------
->  12 files changed, 24 insertions(+), 86 deletions(-)
->
-> diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
-> index d5d26229063f..cd904659c321 100644
-> --- a/drivers/pci/controller/dwc/pci-dra7xx.c
-> +++ b/drivers/pci/controller/dwc/pci-dra7xx.c
-> @@ -378,10 +378,6 @@ static void dra7xx_pcie_ep_init(struct dw_pcie_ep *ep)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->  	struct dra7xx_pcie *dra7xx = to_dra7xx_pcie(pci);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
->
->  	dra7xx_pcie_enable_wrapper_interrupts(dra7xx);
->  }
-> diff --git a/drivers/pci/controller/dwc/pci-imx6.c b/drivers/pci/controller/dwc/pci-imx6.c
-> index ec1e3557ca53..f5fe5cfc46c7 100644
-> --- a/drivers/pci/controller/dwc/pci-imx6.c
-> +++ b/drivers/pci/controller/dwc/pci-imx6.c
-> @@ -1401,15 +1401,6 @@ static const struct dw_pcie_ops dw_pcie_ops = {
->  	.stop_link = imx_pcie_stop_link,
->  };
->
-> -static void imx_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	enum pci_barno bar;
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -
-> -	for (bar = BAR_0; bar <= BAR_5; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -}
-> -
->  static int imx_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
->  				  unsigned int type, u16 interrupt_num)
->  {
-> @@ -1478,7 +1469,6 @@ imx_pcie_ep_get_features(struct dw_pcie_ep *ep)
->  }
->
->  static const struct dw_pcie_ep_ops pcie_ep_ops = {
-> -	.init = imx_pcie_ep_init,
->  	.raise_irq = imx_pcie_ep_raise_irq,
->  	.get_features = imx_pcie_ep_get_features,
->  };
-> diff --git a/drivers/pci/controller/dwc/pci-layerscape-ep.c b/drivers/pci/controller/dwc/pci-layerscape-ep.c
-> index 5a03a8f895f9..1f5fccdb4ff4 100644
-> --- a/drivers/pci/controller/dwc/pci-layerscape-ep.c
-> +++ b/drivers/pci/controller/dwc/pci-layerscape-ep.c
-> @@ -152,15 +152,11 @@ static void ls_pcie_ep_init(struct dw_pcie_ep *ep)
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->  	struct ls_pcie_ep *pcie = to_ls_pcie_ep(pci);
->  	struct dw_pcie_ep_func *ep_func;
-> -	enum pci_barno bar;
->
->  	ep_func = dw_pcie_ep_get_func_from_ep(ep, 0);
->  	if (!ep_func)
->  		return;
->
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -
->  	pcie->ls_epc->msi_capable = ep_func->msi_cap ? true : false;
->  	pcie->ls_epc->msix_capable = ep_func->msix_cap ? true : false;
->  }
-> diff --git a/drivers/pci/controller/dwc/pcie-artpec6.c b/drivers/pci/controller/dwc/pcie-artpec6.c
-> index e994b75986c3..55cb957ae1f3 100644
-> --- a/drivers/pci/controller/dwc/pcie-artpec6.c
-> +++ b/drivers/pci/controller/dwc/pcie-artpec6.c
-> @@ -340,15 +340,11 @@ static void artpec6_pcie_ep_init(struct dw_pcie_ep *ep)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->  	struct artpec6_pcie *artpec6_pcie = to_artpec6_pcie(pci);
-> -	enum pci_barno bar;
->
->  	artpec6_pcie_assert_core_reset(artpec6_pcie);
->  	artpec6_pcie_init_phy(artpec6_pcie);
->  	artpec6_pcie_deassert_core_reset(artpec6_pcie);
->  	artpec6_pcie_wait_for_phy(artpec6_pcie);
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
->  }
->
->  static int artpec6_pcie_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
-> diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> index 295076cf70de..386bfb7b2bf6 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> @@ -1114,6 +1114,28 @@ static void dw_pcie_ep_init_non_sticky_registers(struct dw_pcie *pci)
->  	dw_pcie_dbi_ro_wr_dis(pci);
->  }
->
-> +static void dw_pcie_ep_disable_bars(struct dw_pcie_ep *ep)
-> +{
-> +	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> +	enum pci_epc_bar_type bar_type;
-> +	enum pci_barno bar;
-> +
-> +	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++) {
-> +		bar_type = dw_pcie_ep_get_bar_type(ep, bar);
-> +
-> +		/*
-> +		 * Reserved BARs should not get disabled by default. All other
-> +		 * BAR types are disabled by default.
-> +		 *
-> +		 * This is in line with the current EPC core design, where all
-> +		 * BARs are disabled by default, and then the EPF driver enables
-> +		 * the BARs it wishes to use.
-> +		 */
-> +		if (bar_type != BAR_RESERVED)
-> +			dw_pcie_ep_reset_bar(pci, bar);
-> +	}
-> +}
-> +
->  /**
->   * dw_pcie_ep_init_registers - Initialize DWC EP specific registers
->   * @ep: DWC EP device
-> @@ -1196,6 +1218,8 @@ int dw_pcie_ep_init_registers(struct dw_pcie_ep *ep)
->  	if (ep->ops->init)
->  		ep->ops->init(ep);
->
-> +	dw_pcie_ep_disable_bars(ep);
-> +
->  	/*
->  	 * PCIe r6.0, section 7.9.15 states that for endpoints that support
->  	 * PTM, this capability structure is required in exactly one
-> diff --git a/drivers/pci/controller/dwc/pcie-designware-plat.c b/drivers/pci/controller/dwc/pcie-designware-plat.c
-> index 8530746ec5cb..d103ab759c4e 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware-plat.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-plat.c
-> @@ -32,15 +32,6 @@ struct dw_plat_pcie_of_data {
->  static const struct dw_pcie_host_ops dw_plat_pcie_host_ops = {
->  };
->
-> -static void dw_plat_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -}
-> -
->  static int dw_plat_pcie_ep_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
->  				     unsigned int type, u16 interrupt_num)
->  {
-> @@ -73,7 +64,6 @@ dw_plat_pcie_get_features(struct dw_pcie_ep *ep)
->  }
->
->  static const struct dw_pcie_ep_ops pcie_ep_ops = {
-> -	.init = dw_plat_pcie_ep_init,
->  	.raise_irq = dw_plat_pcie_ep_raise_irq,
->  	.get_features = dw_plat_pcie_get_features,
->  };
-> diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> index ecc28093c589..4e9b813c3afb 100644
-> --- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> +++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-> @@ -361,13 +361,9 @@ static void rockchip_pcie_ep_hide_broken_ats_cap_rk3588(struct dw_pcie_ep *ep)
->  static void rockchip_pcie_ep_init(struct dw_pcie_ep *ep)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
->
->  	rockchip_pcie_enable_l0s(pci);
->  	rockchip_pcie_ep_hide_broken_ats_cap_rk3588(ep);
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
->  };
->
->  static int rockchip_pcie_raise_irq(struct dw_pcie_ep *ep, u8 func_no,
-> diff --git a/drivers/pci/controller/dwc/pcie-qcom-ep.c b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-> index e55675b3840a..e8c8ba1659fd 100644
-> --- a/drivers/pci/controller/dwc/pcie-qcom-ep.c
-> +++ b/drivers/pci/controller/dwc/pcie-qcom-ep.c
-> @@ -861,17 +861,7 @@ qcom_pcie_epc_get_features(struct dw_pcie_ep *pci_ep)
->  	return &qcom_pcie_epc_features;
->  }
->
-> -static void qcom_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = BAR_0; bar <= BAR_5; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -}
-> -
->  static const struct dw_pcie_ep_ops pci_ep_ops = {
-> -	.init = qcom_pcie_ep_init,
->  	.raise_irq = qcom_pcie_ep_raise_irq,
->  	.get_features = qcom_pcie_epc_get_features,
->  };
-> diff --git a/drivers/pci/controller/dwc/pcie-rcar-gen4.c b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
-> index 9dd05bac22b9..1198ddc1752c 100644
-> --- a/drivers/pci/controller/dwc/pcie-rcar-gen4.c
-> +++ b/drivers/pci/controller/dwc/pcie-rcar-gen4.c
-> @@ -386,15 +386,6 @@ static void rcar_gen4_pcie_ep_pre_init(struct dw_pcie_ep *ep)
->  	writel(PCIEDMAINTSTSEN_INIT, rcar->base + PCIEDMAINTSTSEN);
->  }
->
-> -static void rcar_gen4_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -}
-> -
->  static void rcar_gen4_pcie_ep_deinit(struct rcar_gen4_pcie *rcar)
->  {
->  	writel(0, rcar->base + PCIEDMAINTSTSEN);
-> @@ -449,7 +440,6 @@ static unsigned int rcar_gen4_pcie_ep_get_dbi2_offset(struct dw_pcie_ep *ep,
->
->  static const struct dw_pcie_ep_ops pcie_ep_ops = {
->  	.pre_init = rcar_gen4_pcie_ep_pre_init,
-> -	.init = rcar_gen4_pcie_ep_init,
->  	.raise_irq = rcar_gen4_pcie_ep_raise_irq,
->  	.get_features = rcar_gen4_pcie_ep_get_features,
->  	.get_dbi_offset = rcar_gen4_pcie_ep_get_dbi_offset,
-> diff --git a/drivers/pci/controller/dwc/pcie-stm32-ep.c b/drivers/pci/controller/dwc/pcie-stm32-ep.c
-> index c1944b40ce02..a7988dff1045 100644
-> --- a/drivers/pci/controller/dwc/pcie-stm32-ep.c
-> +++ b/drivers/pci/controller/dwc/pcie-stm32-ep.c
-> @@ -28,15 +28,6 @@ struct stm32_pcie {
->  	unsigned int perst_irq;
->  };
->
-> -static void stm32_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -}
-> -
->  static int stm32_pcie_start_link(struct dw_pcie *pci)
->  {
->  	struct stm32_pcie *stm32_pcie = to_stm32_pcie(pci);
-> @@ -82,7 +73,6 @@ stm32_pcie_get_features(struct dw_pcie_ep *ep)
->  }
->
->  static const struct dw_pcie_ep_ops stm32_pcie_ep_ops = {
-> -	.init = stm32_pcie_ep_init,
->  	.raise_irq = stm32_pcie_raise_irq,
->  	.get_features = stm32_pcie_get_features,
->  };
-> diff --git a/drivers/pci/controller/dwc/pcie-tegra194.c b/drivers/pci/controller/dwc/pcie-tegra194.c
-> index 9f9453e8cd23..3a6bffaff9ea 100644
-> --- a/drivers/pci/controller/dwc/pcie-tegra194.c
-> +++ b/drivers/pci/controller/dwc/pcie-tegra194.c
-> @@ -1923,15 +1923,6 @@ static irqreturn_t tegra_pcie_ep_pex_rst_irq(int irq, void *arg)
->  	return IRQ_HANDLED;
->  }
->
-> -static void tegra_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = 0; bar < PCI_STD_NUM_BARS; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -};
-> -
->  static int tegra_pcie_ep_raise_intx_irq(struct tegra_pcie_dw *pcie, u16 irq)
->  {
->  	/* Tegra194 supports only INTA */
-> @@ -2008,7 +1999,6 @@ tegra_pcie_ep_get_features(struct dw_pcie_ep *ep)
->  }
->
->  static const struct dw_pcie_ep_ops pcie_ep_ops = {
-> -	.init = tegra_pcie_ep_init,
->  	.raise_irq = tegra_pcie_ep_raise_irq,
->  	.get_features = tegra_pcie_ep_get_features,
->  };
-> diff --git a/drivers/pci/controller/dwc/pcie-uniphier-ep.c b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
-> index 5bde3ee682b5..494376d1812d 100644
-> --- a/drivers/pci/controller/dwc/pcie-uniphier-ep.c
-> +++ b/drivers/pci/controller/dwc/pcie-uniphier-ep.c
-> @@ -203,15 +203,6 @@ static void uniphier_pcie_stop_link(struct dw_pcie *pci)
->  	uniphier_pcie_ltssm_enable(priv, false);
->  }
->
-> -static void uniphier_pcie_ep_init(struct dw_pcie_ep *ep)
-> -{
-> -	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> -	enum pci_barno bar;
-> -
-> -	for (bar = BAR_0; bar <= BAR_5; bar++)
-> -		dw_pcie_ep_reset_bar(pci, bar);
-> -}
-> -
->  static int uniphier_pcie_ep_raise_intx_irq(struct dw_pcie_ep *ep)
->  {
->  	struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
-> @@ -283,7 +274,6 @@ uniphier_pcie_get_features(struct dw_pcie_ep *ep)
->  }
->
->  static const struct dw_pcie_ep_ops uniphier_pcie_ep_ops = {
-> -	.init = uniphier_pcie_ep_init,
->  	.raise_irq = uniphier_pcie_ep_raise_irq,
->  	.get_features = uniphier_pcie_get_features,
->  };
-> --
-> 2.53.0
->
+On 2/25/26 4:11 PM, Krzysztof Kozlowski wrote:
+> On 25/02/2026 14:36, Cristian Ciocaltea wrote:
+>> On 2/25/26 2:26 PM, Krzysztof Kozlowski wrote:
+>>> On 25/02/2026 13:19, Cristian Ciocaltea wrote:
+>>>> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
+>>>> 'link' and 'cache' register blocks have been provided for the video
+>>>> decoder unit in addition to the existing 'function' one, which now shows
+>>>> up in between them (from address-based ordering point of view).
+>>>>
+>>>> However, the binding does not properly describe this hardware layout, as
+>>>> the new blocks are listed after the old one.  Therefore it breaks the
+>>>> convention expecting the unit address to indicate the first register
+>>>> range.
+>>>>
+>>>> Since the binding changes have been already released and a fix would
+>>>> bring up an ABI break, mark the current 'reg-names' listing as
+>>>> deprecated and introduce an alternative 'link,function,cache' one.
+>>>>
+>>>> Additionally, drop the 'reg' description items as the order is not fixed
+>>>> anymore, while the information they offer is not very relevant anyway.
+>>>>
+>>>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>>>> ---
+>>>>  .../devicetree/bindings/media/rockchip,vdec.yaml      | 19 ++++++++++++-------
+>>>>  1 file changed, 12 insertions(+), 7 deletions(-)
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>>>> index 809fda45b3bd..3f6072e8baa5 100644
+>>>> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>>>> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+>>>> @@ -28,16 +28,21 @@ properties:
+>>>>  
+>>>>    reg:
+>>>>      minItems: 1
+>>>> -    items:
+>>>> -      - description: The function configuration registers base
+>>>> -      - description: The link table configuration registers base
+>>>> -      - description: The cache configuration registers base
+>>>> +    maxItems: 3
+>>>>  
+>>>>    reg-names:
+>>>> -    items:
+>>>> +    oneOf:
+>>>>        - const: function
+>>>
+>>> This is confusing, I think I missed that in previous patch because it
+>>> did not leave that part or I misread the diff hunk - why do you allow
+>>> one entry?
+>>
+>> That's for the older SoCs, e.g. RK3288, RK3399, as the 'link' and 'cache' blocks
+>> are only available for RK3576 & RK3588.
+> 
+> Yeah, I see in the bottom of the binding
+> 
+>>
+>>>
+>>> If the first entry is function, then all others MUST built on top, thus
+>>> this:
+>>>
+>>>> +          - const: link
+>>>> +          - const: function
+>>>> +          - const: cache
+>>>
+>>> is not correct.
+>>>
+>>> No, you don't change the orders. So again, if you have such binding,
+>>> then you just fix the unit address leaving the binding as is.
+>>
+>> Changing the unit address would mean it will point inside the register range,
+>> rather than at the beginning of it.
+> 
+> First, not true. If this was one register range, you would have one
+> entry. You cannot split entries. Split entries means you have two
+> SEPARATE register ranges.
+> Second, it does not matter because main rule stays - the unit address
+> describes the main address space. The main address space in other device
+> was called "function", so I assume the main address space is also here
+> the "function". Which makes sense, because link feels secondary to
+> functioning of the device.
+> 
+>>
+>> Sorry, but I don't quite get why would this be a better approach than just
+>> properly list the items according to the HW layout, i.e. following the
+>> address-based ordering?
+> 
+> We always expect the list to grow, to have common set. That's rule given
+> during reviews multiple times. For multiple reasons, also explained
+> (consistency, maintenance and actually proper description of hardware
+> like the main reg address space).
+> 
+> Probably this was also given to that binding during discussions when it
+> was upstream, so your change reverts previous discussion and to that I
+> do not agree.
+
+Thank you for detailing this, I get your point now.
+
+After digging a bit further, it looks like the "function" naming has been
+introduced as part of the RK3588 support via commit c6ffb7e1fb90 ("media:
+dt-bindings: rockchip: Document RK3588 Video Decoder bindings").
+
+Morever, it also sets `reg-names: false` for all the SoCs other than RK3588 -
+sorry for missing this initially.
+
+Hence "function" wasn't used at all in the context of the older SoCs, while on
+RK3588 & RK3576 there is no indication that "function" should be treated as the
+main address space or anything like that.  E.g. RK3588 TRM clearly shows the
+"link" range at the top of the listing, starting at video decoder unit base
+address:
+
+--------------------------------------------------------------------------------
+Config Register                         |   Base addr
+--------------------------------------------------------------------------------
+VDPU381 core0/1 link table config base  |   VDPU381_core0/1_base+0x000
+VDPU381 core0/1 function config base    |   VDPU381_core0/1_base+0x100
+--------------------------------------------------------------------------------
+                                        |   VDPU381_core0/1_base+0x600 for Y channel
+VDPU381 core0/1 cache config base       |   VDPU381_core0/1_base+0x640 for C channel
+                                        |   VDPU381_core0/1_base+0x680 for head channel
+--------------------------------------------------------------------------------
+
+Assuming the reasoning above is now good enough to move further with the
+proposed approach, I can prepare a new revision dropping the unnecessary
+one-entry item from the reg-names, while keeping all the rest in the series as
+is.
+
+Regards,
+Cristian
+
 
 _______________________________________________
 Linux-rockchip mailing list
