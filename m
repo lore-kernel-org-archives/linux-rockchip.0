@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A073F55425
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 01:38:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 576FDF5543B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 02:25:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7OF+qiL2/BqmIv0PUf489eTedrfdPCazthHIrNpTmNw=; b=itEHwYNV+okLQw
-	+1Nt5+f6NsCmF9pLXJWaW5paSAFmq+GvQvo7blbb5inOiRODa6uSB2l/gujEWLkUa35RVuwsmj7iw
-	m1E/XT0fXbaBkacqb7/Q5dh43FezciEf1zenhXEe6KtozUQGJZUBpgZwcCZXqqjPGsmSEVrBzEGHz
-	kJF6BI8SNtBHS8e6mE4H3gSMaYleEwvv0+GLL3eXN4XmQaEGsB4I7K2H2ucxsjTs1xWXOTA4aY8qg
-	mteKlyrKOOqRZJQ9PNrBMtuU5itXQaFBpvi3FiD3rDnLZinPlru9UomxmRI8gPRlR69rHQd4zXVMp
-	ejw/HF1Aj4htz0vqzrtg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Cc:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QECXWyQRYKdXjPa3awFyrSAknRMwRwRihKBdLApYBbg=; b=Rnfi3NxOYdt0x1ZKdGI8sEGtUT
+	KJaKlQn4n8nL8RMbEtSX3WPi716Dec+ut7P08XFwsDzWx4BH0PvnNvi5QIMeL2M1VlBChqa+FtDGA
+	LxNnqiMJ6RP26H8okCtCaSzNGlvdK0oiyZCUxAdUUoBJ5JZdcF+Y6TMReU4LMRtqgGVqZUSyMOrVX
+	S8AFWq1Ehqd2KFxBDFGPeMXdcUiKTdX0JssbV94rt4XyDxn/7OQgGtQrDAs6rVYnWYMU+6/R2E6jA
+	FSHgDkA2HhqVQukDPTMoc0TbUUkNTaIEj7YDzF9aFuwYEEoNf2z+ZyUtTiUBRxU+Qb0PMk3ug/DRW
+	4QLKYgYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv3qo-000000032lw-0EoZ;
-	Wed, 25 Feb 2026 01:38:10 +0000
-Received: from mail-m104.netease.com ([154.81.10.4])
+	id 1vv4aq-0000000364P-1CuM;
+	Wed, 25 Feb 2026 02:25:40 +0000
+Received: from mail-m822136170.xmail.ntesmail.com ([8.221.36.170])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vv3qj-000000032lZ-258d
+	id 1vv4al-00000003645-1yhp
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Feb 2026 01:38:05 +0000
-Received: from [172.16.12.51] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 34dae9247;
-	Wed, 25 Feb 2026 09:37:56 +0800 (GMT+08:00)
-Message-ID: <612e44b1-7747-4b47-820c-2262186e6e97@rock-chips.com>
-Date: Wed, 25 Feb 2026 09:37:55 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] pmdomain: rockchip: Fix rkvdec0/1 and venc0/1 for
- RK3588
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>,
+	Wed, 25 Feb 2026 02:25:39 +0000
+Received: from [172.16.12.14] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 34dc7e637;
+	Wed, 25 Feb 2026 10:25:25 +0800 (GMT+08:00)
+Cc: shawn.lin@rock-chips.com, Ulf Hansson <ulf.hansson@linaro.org>,
  Finley Xiao <finley.xiao@rock-chips.com>, Frank Zhang <rmxpzlb@gmail.com>,
  linux-pm@vger.kernel.org, Sebastian Reichel
  <sebastian.reichel@collabora.com>,
  Detlev Casanova <detlev.casanova@collabora.com>,
  Heiko Stuebner <heiko@sntech.de>, linux-rockchip@lists.infradead.org,
  stable@vger.kernel.org
+Subject: Re: [PATCH v2] pmdomain: rockchip: Fix rkvdec0/1 and venc0/1 for
+ RK3588
+To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 References: <1771904879-243163-1-git-send-email-shawn.lin@rock-chips.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <1771904879-243163-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9c9272153603abkunm013e53b3fa2024
+ <612e44b1-7747-4b47-820c-2262186e6e97@rock-chips.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Message-ID: <741f556c-f325-0783-d78b-2976a07628db@rock-chips.com>
+Date: Wed, 25 Feb 2026 10:25:25 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <612e44b1-7747-4b47-820c-2262186e6e97@rock-chips.com>
+X-HM-Tid: 0a9c929d916c09cckunm18eb6294aae34a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGR0aSVZPGhoYS09NSx4aSx1WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhhKHlZMTE1OS09CTB8fQhhWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=a3jgbfYbcgq9nzGrEfsmDpAoK143uGrOroM2FZuYhxQgEJOUZ8plknuMdkrK2Kn1c9L489wdzs3W8FAnYaMOgcww4A+CW18/4nPTavOzaf8kQw+MRLG5nGBbkSYyQPZM8oDBxfHkfo3s4Cbhit1VulfnEXh77Aj0GbSljmuKZS4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=ZooWjJGThdRe881/8hoL4AfsxTeuU6UCGQsPBmxDADY=;
+	b=XVdfgYdKOyBDuQOJoYJrgoBnOrP24HcyjRKh65OPFsR2Ek8ug8z7Aoeb/nz1pGqAizAqxqS8+Veo2/AmUTMKnkSN4/G2YJ8dGU3blJkosW4HwGWOvUHzY1qCJBweXpprrSGD5WN8HA1yXyBavJfxgBmlOiN5Y/BAI9YD1tUXH4A=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=W71tffjipz9IsOHmoYSHyedNnKPdfXKBp2Yf6wGNbvM=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260224_173803_242916_A5D45F29 
-X-CRM114-Status: GOOD (  14.57  )
+X-CRM114-CacheID: sfid-20260224_182537_148538_6C971133 
+X-CRM114-Status: GOOD (  18.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,99 +73,124 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Shawn,
-
-On 2/24/2026 11:47 AM, Shawn Lin wrote:
-> Per the RK3588 TRM Table 7-1 RK3588 Voltage Domain and Power Domain Summary,
-> PD_RKVDEC0/1 and PD_VENC0/1 rely on VD_VCODEC which require extra voltages to
-> be applied, otherwise it breaks RK3588-evb1-v10 board after vdec support landed[1].
-> The panic looks like below:
-> 
->   rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'rkvdec0' on, val=0
->   rockchip-pm-domain fd8d8000.power-management:power-controller: failed to set domain 'rkvdec1' on, val=0
->   ...
->   Hardware name: Rockchip RK3588S EVB1 V10 Board (DT)
->   Workqueue: pm genpd_power_off_work_fn
->   Call trace:
->   show_stack+0x18/0x24 (C)
->   dump_stack_lvl+0x40/0x84
->   dump_stack+0x18/0x24
->   vpanic+0x1ec/0x4fc
->   vpanic+0x0/0x4fc
->   check_panic_on_warn+0x0/0x94
->   arm64_serror_panic+0x6c/0x78
->   do_serror+0xc4/0xcc
->   el1h_64_error_handler+0x3c/0x5c
->   el1h_64_error+0x6c/0x70
->   regmap_mmio_read32le+0x18/0x24 (P)
->   regmap_bus_reg_read+0xfc/0x130
->   regmap_read+0x188/0x1ac
->   regmap_read+0x54/0x78
->   rockchip_pd_power+0xcc/0x5f0
->   rockchip_pd_power_off+0x1c/0x4c
->   genpd_power_off+0x84/0x120
->   genpd_power_off+0x1b4/0x260
->   genpd_power_off_work_fn+0x38/0x58
->   process_scheduled_works+0x194/0x2c4
->   worker_thread+0x2ac/0x3d8
->   kthread+0x104/0x124
->   ret_from_fork+0x10/0x20
->   SMP: stopping secondary CPUs
->   Kernel Offset: disabled
->   CPU features: 0x3000000,000e0005,40230521,0400720b
->   Memory Limit: none
->   ---[ end Kernel panic - not syncing: Asynchronous SError Interrupt ]---
-> 
-> [1] https://lore.kernel.org/linux-rockchip/20251020212009.8852-2-detlev.casanova@collabora.com/
-> Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
-> Cc: stable@vger.kernel.org
-> Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-> Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
-> 
-> Changes in v2:
-> - collect tags
-> - correct TRM section(Sebastian)
-> 
->  drivers/pmdomain/rockchip/pm-domains.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-> index 997e93c..040aa5f 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -1315,10 +1315,10 @@ static const struct rockchip_domain_info rk3588_pm_domains[] = {
->  	[RK3588_PD_NPUTOP]	= DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false, false),
->  	[RK3588_PD_NPU1]	= DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false, false),
->  	[RK3588_PD_NPU2]	= DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false, false),
-> -	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false, false),
-> -	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false, false),
-> -	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false, false),
-> -	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false, false),
-> +	[RK3588_PD_VENC0]	= DOMAIN_RK3588("venc0",   0x0, BIT(6),  0,       0x0, BIT(14), BIT(5),  0x0, BIT(4),  BIT(4),  false, true),
-> +	[RK3588_PD_VENC1]	= DOMAIN_RK3588("venc1",   0x0, BIT(7),  0,       0x0, BIT(15), BIT(6),  0x0, BIT(5),  BIT(5),  false, true),
-> +	[RK3588_PD_RKVDEC0]	= DOMAIN_RK3588("rkvdec0", 0x0, BIT(8),  0,       0x0, BIT(16), BIT(7),  0x0, BIT(6),  BIT(6),  false, true),
-> +	[RK3588_PD_RKVDEC1]	= DOMAIN_RK3588("rkvdec1", 0x0, BIT(9),  0,       0x0, BIT(17), BIT(8),  0x0, BIT(7),  BIT(7),  false, true),
->  	[RK3588_PD_VDPU]	= DOMAIN_RK3588("vdpu",    0x0, BIT(10), 0,       0x0, BIT(18), BIT(9),  0x0, BIT(8),  BIT(8),  false, false),
->  	[RK3588_PD_RGA30]	= DOMAIN_RK3588("rga30",   0x0, BIT(11), 0,       0x0, BIT(19), BIT(10), 0x0, 0,       0,       false, false),
->  	[RK3588_PD_AV1]		= DOMAIN_RK3588("av1",     0x0, BIT(12), 0,       0x0, BIT(20), BIT(11), 0x0, BIT(9),  BIT(9),  false, false),
-
-Perhaps you could try modifying only RK3588_PD_VCODEC. 
-VCODEC is the parent of these PDs, so you won't need to modify too
-much code and devicetree. BTW I have tried it before, but with an 
-internal MPP driver. Maybe you can give it another try :)
-
--- 
-Best, 
-Chaoyi
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQ2hhb3lpCgrlnKggMjAyNi8wMi8yNSDmmJ/mnJ/kuIkgOTozNywgQ2hhb3lpIENoZW4g5YaZ
+6YGTOgo+IEhpIFNoYXduLAo+IAo+IE9uIDIvMjQvMjAyNiAxMTo0NyBBTSwgU2hhd24gTGluIHdy
+b3RlOgo+PiBQZXIgdGhlIFJLMzU4OCBUUk0gVGFibGUgNy0xIFJLMzU4OCBWb2x0YWdlIERvbWFp
+biBhbmQgUG93ZXIgRG9tYWluIFN1bW1hcnksCj4+IFBEX1JLVkRFQzAvMSBhbmQgUERfVkVOQzAv
+MSByZWx5IG9uIFZEX1ZDT0RFQyB3aGljaCByZXF1aXJlIGV4dHJhIHZvbHRhZ2VzIHRvCj4+IGJl
+IGFwcGxpZWQsIG90aGVyd2lzZSBpdCBicmVha3MgUkszNTg4LWV2YjEtdjEwIGJvYXJkIGFmdGVy
+IHZkZWMgc3VwcG9ydCBsYW5kZWRbMV0uCj4+IFRoZSBwYW5pYyBsb29rcyBsaWtlIGJlbG93Ogo+
+Pgo+PiAgICByb2NrY2hpcC1wbS1kb21haW4gZmQ4ZDgwMDAucG93ZXItbWFuYWdlbWVudDpwb3dl
+ci1jb250cm9sbGVyOiBmYWlsZWQgdG8gc2V0IGRvbWFpbiAncmt2ZGVjMCcgb24sIHZhbD0wCj4+
+ICAgIHJvY2tjaGlwLXBtLWRvbWFpbiBmZDhkODAwMC5wb3dlci1tYW5hZ2VtZW50OnBvd2VyLWNv
+bnRyb2xsZXI6IGZhaWxlZCB0byBzZXQgZG9tYWluICdya3ZkZWMxJyBvbiwgdmFsPTAKPj4gICAg
+Li4uCj4+ICAgIEhhcmR3YXJlIG5hbWU6IFJvY2tjaGlwIFJLMzU4OFMgRVZCMSBWMTAgQm9hcmQg
+KERUKQo+PiAgICBXb3JrcXVldWU6IHBtIGdlbnBkX3Bvd2VyX29mZl93b3JrX2ZuCj4+ICAgIENh
+bGwgdHJhY2U6Cj4+ICAgIHNob3dfc3RhY2srMHgxOC8weDI0IChDKQo+PiAgICBkdW1wX3N0YWNr
+X2x2bCsweDQwLzB4ODQKPj4gICAgZHVtcF9zdGFjaysweDE4LzB4MjQKPj4gICAgdnBhbmljKzB4
+MWVjLzB4NGZjCj4+ICAgIHZwYW5pYysweDAvMHg0ZmMKPj4gICAgY2hlY2tfcGFuaWNfb25fd2Fy
+bisweDAvMHg5NAo+PiAgICBhcm02NF9zZXJyb3JfcGFuaWMrMHg2Yy8weDc4Cj4+ICAgIGRvX3Nl
+cnJvcisweGM0LzB4Y2MKPj4gICAgZWwxaF82NF9lcnJvcl9oYW5kbGVyKzB4M2MvMHg1Ywo+PiAg
+ICBlbDFoXzY0X2Vycm9yKzB4NmMvMHg3MAo+PiAgICByZWdtYXBfbW1pb19yZWFkMzJsZSsweDE4
+LzB4MjQgKFApCj4+ICAgIHJlZ21hcF9idXNfcmVnX3JlYWQrMHhmYy8weDEzMAo+PiAgICByZWdt
+YXBfcmVhZCsweDE4OC8weDFhYwo+PiAgICByZWdtYXBfcmVhZCsweDU0LzB4NzgKPj4gICAgcm9j
+a2NoaXBfcGRfcG93ZXIrMHhjYy8weDVmMAo+PiAgICByb2NrY2hpcF9wZF9wb3dlcl9vZmYrMHgx
+Yy8weDRjCj4+ICAgIGdlbnBkX3Bvd2VyX29mZisweDg0LzB4MTIwCj4+ICAgIGdlbnBkX3Bvd2Vy
+X29mZisweDFiNC8weDI2MAo+PiAgICBnZW5wZF9wb3dlcl9vZmZfd29ya19mbisweDM4LzB4NTgK
+Pj4gICAgcHJvY2Vzc19zY2hlZHVsZWRfd29ya3MrMHgxOTQvMHgyYzQKPj4gICAgd29ya2VyX3Ro
+cmVhZCsweDJhYy8weDNkOAo+PiAgICBrdGhyZWFkKzB4MTA0LzB4MTI0Cj4+ICAgIHJldF9mcm9t
+X2ZvcmsrMHgxMC8weDIwCj4+ICAgIFNNUDogc3RvcHBpbmcgc2Vjb25kYXJ5IENQVXMKPj4gICAg
+S2VybmVsIE9mZnNldDogZGlzYWJsZWQKPj4gICAgQ1BVIGZlYXR1cmVzOiAweDMwMDAwMDAsMDAw
+ZTAwMDUsNDAyMzA1MjEsMDQwMDcyMGIKPj4gICAgTWVtb3J5IExpbWl0OiBub25lCj4+ICAgIC0t
+LVsgZW5kIEtlcm5lbCBwYW5pYyAtIG5vdCBzeW5jaW5nOiBBc3luY2hyb25vdXMgU0Vycm9yIElu
+dGVycnVwdCBdLS0tCj4+Cj4+IFsxXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2Nr
+Y2hpcC8yMDI1MTAyMDIxMjAwOS44ODUyLTItZGV0bGV2LmNhc2Fub3ZhQGNvbGxhYm9yYS5jb20v
+Cj4+IEZpeGVzOiBkYjZkZjJlM2ZjMTYgKCJwbWRvbWFpbjogcm9ja2NoaXA6IGFkZCByZWd1bGF0
+b3Igc3VwcG9ydCIpCj4+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnCj4+IFJldmlld2VkLWJ5
+OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+PiBSZXZpZXdlZC1ieTogU2ViYXN0
+aWFuIFJlaWNoZWwgPHNlYmFzdGlhbi5yZWljaGVsQGNvbGxhYm9yYS5jb20+Cj4+IFNpZ25lZC1v
+ZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+PiAtLS0KPj4KPj4g
+Q2hhbmdlcyBpbiB2MjoKPj4gLSBjb2xsZWN0IHRhZ3MKPj4gLSBjb3JyZWN0IFRSTSBzZWN0aW9u
+KFNlYmFzdGlhbikKPj4KPj4gICBkcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlwL3BtLWRvbWFpbnMu
+YyB8IDggKysrKy0tLS0KPj4gICAxIGZpbGUgY2hhbmdlZCwgNCBpbnNlcnRpb25zKCspLCA0IGRl
+bGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9w
+bS1kb21haW5zLmMgYi9kcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlwL3BtLWRvbWFpbnMuYwo+PiBp
+bmRleCA5OTdlOTNjLi4wNDBhYTVmIDEwMDY0NAo+PiAtLS0gYS9kcml2ZXJzL3BtZG9tYWluL3Jv
+Y2tjaGlwL3BtLWRvbWFpbnMuYwo+PiArKysgYi9kcml2ZXJzL3BtZG9tYWluL3JvY2tjaGlwL3Bt
+LWRvbWFpbnMuYwo+PiBAQCAtMTMxNSwxMCArMTMxNSwxMCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0
+IHJvY2tjaGlwX2RvbWFpbl9pbmZvIHJrMzU4OF9wbV9kb21haW5zW10gPSB7Cj4+ICAgCVtSSzM1
+ODhfUERfTlBVVE9QXQk9IERPTUFJTl9SSzM1ODgoIm5wdXRvcCIsICAweDAsIEJJVCgzKSwgIDAs
+ICAgICAgIDB4MCwgQklUKDExKSwgQklUKDIpLCAgMHgwLCBCSVQoMSksICBCSVQoMSksICBmYWxz
+ZSwgZmFsc2UpLAo+PiAgIAlbUkszNTg4X1BEX05QVTFdCT0gRE9NQUlOX1JLMzU4OCgibnB1MSIs
+ICAgIDB4MCwgQklUKDQpLCAgMCwgICAgICAgMHgwLCBCSVQoMTIpLCBCSVQoMyksICAweDAsIEJJ
+VCgyKSwgIEJJVCgyKSwgIGZhbHNlLCBmYWxzZSksCj4+ICAgCVtSSzM1ODhfUERfTlBVMl0JPSBE
+T01BSU5fUkszNTg4KCJucHUyIiwgICAgMHgwLCBCSVQoNSksICAwLCAgICAgICAweDAsIEJJVCgx
+MyksIEJJVCg0KSwgIDB4MCwgQklUKDMpLCAgQklUKDMpLCAgZmFsc2UsIGZhbHNlKSwKPj4gLQlb
+UkszNTg4X1BEX1ZFTkMwXQk9IERPTUFJTl9SSzM1ODgoInZlbmMwIiwgICAweDAsIEJJVCg2KSwg
+IDAsICAgICAgIDB4MCwgQklUKDE0KSwgQklUKDUpLCAgMHgwLCBCSVQoNCksICBCSVQoNCksICBm
+YWxzZSwgZmFsc2UpLAo+PiAtCVtSSzM1ODhfUERfVkVOQzFdCT0gRE9NQUlOX1JLMzU4OCgidmVu
+YzEiLCAgIDB4MCwgQklUKDcpLCAgMCwgICAgICAgMHgwLCBCSVQoMTUpLCBCSVQoNiksICAweDAs
+IEJJVCg1KSwgIEJJVCg1KSwgIGZhbHNlLCBmYWxzZSksCj4+IC0JW1JLMzU4OF9QRF9SS1ZERUMw
+XQk9IERPTUFJTl9SSzM1ODgoInJrdmRlYzAiLCAweDAsIEJJVCg4KSwgIDAsICAgICAgIDB4MCwg
+QklUKDE2KSwgQklUKDcpLCAgMHgwLCBCSVQoNiksICBCSVQoNiksICBmYWxzZSwgZmFsc2UpLAo+
+PiAtCVtSSzM1ODhfUERfUktWREVDMV0JPSBET01BSU5fUkszNTg4KCJya3ZkZWMxIiwgMHgwLCBC
+SVQoOSksICAwLCAgICAgICAweDAsIEJJVCgxNyksIEJJVCg4KSwgIDB4MCwgQklUKDcpLCAgQklU
+KDcpLCAgZmFsc2UsIGZhbHNlKSwKPj4gKwlbUkszNTg4X1BEX1ZFTkMwXQk9IERPTUFJTl9SSzM1
+ODgoInZlbmMwIiwgICAweDAsIEJJVCg2KSwgIDAsICAgICAgIDB4MCwgQklUKDE0KSwgQklUKDUp
+LCAgMHgwLCBCSVQoNCksICBCSVQoNCksICBmYWxzZSwgdHJ1ZSksCj4+ICsJW1JLMzU4OF9QRF9W
+RU5DMV0JPSBET01BSU5fUkszNTg4KCJ2ZW5jMSIsICAgMHgwLCBCSVQoNyksICAwLCAgICAgICAw
+eDAsIEJJVCgxNSksIEJJVCg2KSwgIDB4MCwgQklUKDUpLCAgQklUKDUpLCAgZmFsc2UsIHRydWUp
+LAo+PiArCVtSSzM1ODhfUERfUktWREVDMF0JPSBET01BSU5fUkszNTg4KCJya3ZkZWMwIiwgMHgw
+LCBCSVQoOCksICAwLCAgICAgICAweDAsIEJJVCgxNiksIEJJVCg3KSwgIDB4MCwgQklUKDYpLCAg
+QklUKDYpLCAgZmFsc2UsIHRydWUpLAo+PiArCVtSSzM1ODhfUERfUktWREVDMV0JPSBET01BSU5f
+UkszNTg4KCJya3ZkZWMxIiwgMHgwLCBCSVQoOSksICAwLCAgICAgICAweDAsIEJJVCgxNyksIEJJ
+VCg4KSwgIDB4MCwgQklUKDcpLCAgQklUKDcpLCAgZmFsc2UsIHRydWUpLAo+PiAgIAlbUkszNTg4
+X1BEX1ZEUFVdCT0gRE9NQUlOX1JLMzU4OCgidmRwdSIsICAgIDB4MCwgQklUKDEwKSwgMCwgICAg
+ICAgMHgwLCBCSVQoMTgpLCBCSVQoOSksICAweDAsIEJJVCg4KSwgIEJJVCg4KSwgIGZhbHNlLCBm
+YWxzZSksCj4+ICAgCVtSSzM1ODhfUERfUkdBMzBdCT0gRE9NQUlOX1JLMzU4OCgicmdhMzAiLCAg
+IDB4MCwgQklUKDExKSwgMCwgICAgICAgMHgwLCBCSVQoMTkpLCBCSVQoMTApLCAweDAsIDAsICAg
+ICAgIDAsICAgICAgIGZhbHNlLCBmYWxzZSksCj4+ICAgCVtSSzM1ODhfUERfQVYxXQkJPSBET01B
+SU5fUkszNTg4KCJhdjEiLCAgICAgMHgwLCBCSVQoMTIpLCAwLCAgICAgICAweDAsIEJJVCgyMCks
+IEJJVCgxMSksIDB4MCwgQklUKDkpLCAgQklUKDkpLCAgZmFsc2UsIGZhbHNlKSwKPiAKPiBQZXJo
+YXBzIHlvdSBjb3VsZCB0cnkgbW9kaWZ5aW5nIG9ubHkgUkszNTg4X1BEX1ZDT0RFQy4KPiBWQ09E
+RUMgaXMgdGhlIHBhcmVudCBvZiB0aGVzZSBQRHMsIHNvIHlvdSB3b24ndCBuZWVkIHRvIG1vZGlm
+eSB0b28KClRoYW5rcyBmb3IgeW91ciBzdWdnZXN0aW9uISBJIG9uY2UgdG9vayBhIHF1aWNrIGxv
+b2sgYXQgcmszNTg4LWJhc2UuZHRzaQphbmQgaW5kZWVkIG5vdGljZWQgdGhhdCB0aGVzZSBQRHMg
+KFBEX1JLVkRFQzAvMSBhbmQgUERfVkVOQzAvMSkgYXJlIGFsbApwbGFjZWQgdW5kZXIgUERfVkNP
+REVDLiBBdCB0aGF0IHRpbWUsIEkgY29uc2lkZXJlZCBQRF9WQ09ERUMgdG8gYmUgYQoiZmFrZSIg
+cG93ZXIgZG9tYWluLCB0aGlzIHdhcywgYmVjYXVzZSBhbGwgbXkgcmVmZXJlbmNlIG1hdGVyaWFs
+cyBjYW1lIApmcm9tIHRoZSByZWxldmFudCBjaGFwdGVycyBvZiB0aGUgUkszNTg4IFRSTSwgd2hl
+cmUgdGhlIHN0cnVjdHVyZSBpcyAKaWxsdXN0cmF0ZWQgYXMgZm9sbG93czoKCuKUjOKUgOKUgOKU
+gOKUgOKUrOKUgOKUgOKUgOKUgOKUgOKUgOKUrOKUgOKUgOKUgOKUgOKUgOKUgOKUkArilIIgICAg
+ICAgIOKUgiAgICAgICAgICAgIOKUgkJJVV9SS1ZERUMwIOKUggrilIIgICAgICAgIOKUglBEX1JL
+VkRFQzAgIOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKUpArilIIgICAgICAgIOKUgiAgICAgICAgICAg
+IOKUglJLVkRFQzAmQ0NVIOKUggrilIIgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKUvOKU
+gOKUgOKUgOKUgOKUgOKUgOKUpArilIIgICAgICAgIOKUgiAgICAgICAgICAgIOKUgkJJVV9SS1ZE
+RUMxIOKUggrilIJWRF9WQ09ERUPilIJQRF9SS1ZERUMxIOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKU
+pArilIIgICAgICAgIOKUgiAgICAgICAgICAgIOKUglJLVkRFQzEgICAgIOKUggrilIIgICAgICAg
+IOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKUvOKUgOKUgOKUgOKUgOKUgOKUgOKUpArilIIgICAgICAg
+IOKUgiAgICAgICAgICAgIOKUgkJJVV9WRU5DMCAgIOKUggrilIIgICAgICAgIOKUglBEX1ZFTkMw
+ICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKUpArilIIgICAgICAgIOKUgiAgICAgICAgICAgIOKU
+glJLVkVOQ08gICAgIOKUggrilIIgICAgICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKUvOKUgOKU
+gOKUgOKUgOKUgOKUgOKUpArilIIgICAgICAgIOKUgiAgICAgICAgICAgIOKUgkJJVV9WRU5DMSAg
+IOKUggrilIIgICAgICAgIOKUglBEX1ZFTkMxICAgIOKUnOKUgOKUgOKUgOKUgOKUgOKUgOKUpAri
+lIIgICAgICAgIOKUgiAgICAgICAgICAgIOKUglJLVkVOQzEgICAgIOKUggrilJTilIDilIDilIDi
+lIDilLTilIDilIDilIDilIDilIDilIDilLTilIDilIDilIDilIDilIDilIDilJgKClBEX1ZDT0RF
+QyBkb2VzIG5vdCBzaG93IHVwIGluIGFueSBvZiB0aGVzZSBkaWFncmFtcyBmcm9tIHRoZSBUUk0u
+IExvb2tzCmxpa2UgdGhlIHBlb3BsZSB3aG8gd3JvdGUgdGhlIFRSTSB0aG91Z2h0IFBEX1ZDT0RF
+QyB3YXMgYSBodWdlIHNlY3JldCB0CnRoYXQgdGhleSBqdXN0IHdvdWxkbuKAmXQgcHV0IGl0IGlu
+IHRoZSBmaWd1cmUsIGZvciBmZWFyIG9mIGJlaW5nCmRpc2NvdmVyZWQgOikKCk9mIGNvdXJzZSwg
+eW91IGFyZSByaWdodCwgdGhlcmUgaXMgc29tZSByZWdpc3RlcnMgY2FsbGVkCnBkX3Zjb2RlY19m
+b28uLmJhciB3aGljaCBzZWVtcyBpdCBkb2VzIGV4aXN0LiBTbyBJIGdhdmUgaXQgYSB0cnkKYW5k
+IGl0IHdvcmtlZCB0b28uIFdpbGwgdXBkYXRlIHYzLCB0aGFua3MgZm9yIGhlbHAuCgoKPiBtdWNo
+IGNvZGUgYW5kIGRldmljZXRyZWUuIEJUVyBJIGhhdmUgdHJpZWQgaXQgYmVmb3JlLCBidXQgd2l0
+aCBhbgo+IGludGVybmFsIE1QUCBkcml2ZXIuIE1heWJlIHlvdSBjYW4gZ2l2ZSBpdCBhbm90aGVy
+IHRyeSA6KQo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
+ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
+eC1yb2NrY2hpcAo=
