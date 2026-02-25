@@ -4,78 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39721FD3774
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 17:13:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C48FD3779
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Feb 2026 17:22:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CvxYClrUi12Co17Mmgx/ycbKl368G/9yhkBDYu2D52Q=; b=i1P/FybXqOiKlC
-	aSAwEMMSe2CEGB1sLXgk/zS0bQVPUZ0DHkkiYh5lqzgjLVY9JEi9q+6wAvX8PpYA3lfOTlF0RYYTV
-	EigSjOINUYxu1TZvKbvH/2r4n9478keGKu2nA1KAJLyfEoLxEI/rupoXaThed2d3Ysgz8Z6+Klmzq
-	zCZVZp7xCc9uyDAw7QtiFciSZ5GHPZBsX4WQeTFwzu3D1F03iSdeyJBKGTLVImVgTBfcvwWVRYMkN
-	b63cxUqCQX+X6IxyXKMheoRxYfn7XvGV4PJcRg6NQh0hxYvXuJFnqSFldiEoRozQlqntDbZSp+lLf
-	nVjhwunpDYLDIRKTWbdA==;
+	List-Owner; bh=+rMfafU0Tys30LatYuZyLN8jK7+ZgrNHC94qfLMz2Yk=; b=tPQRDruer9WKDV
+	1pLE7mvCzAJryUDUW0jX1oGGT2ySbfRT9D4vEwaF26+on5rUGxIbGkSHO1VqVksA1vs9OxVdQiD3r
+	d0U4LS/aFvqPKdw4SK0W50CSIreHhZCVzWDH6GPw0UKR/gp/19XVHqobtJWVzAH1uEh0vCg4CzbDZ
+	0J26SWI0u5gkXVnOFoXVL4H110OnqO0vES4BZa1OmFMWl+GgECqI/uBsB0H4e0uMGLuERb6dV6EH9
+	0CK8Iwwc1fJCQUvGr7ebdNjSeq7HcmCqaqG5f+PetjGox57bw7xlvg3Ol9M3IOtofIXGW8MFYFXYq
+	tGsM2wHBbp/UhO4av+bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvISN-00000004ctK-2RHc;
-	Wed, 25 Feb 2026 17:13:51 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1vvIax-00000004doj-2AAi;
+	Wed, 25 Feb 2026 17:22:43 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvISL-00000004cso-01MA
-	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Feb 2026 17:13:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1772039629; x=1803575629;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=/Gqyh0/nROjZdEErOmjcElyMoyoJM+EqiBL5hfjIf5U=;
-  b=PkgtfdXyS6gijnRTuii5mrJhKP/baPUx2I4f/SklXipv5AIFlAXFM3dk
-   xy1aPovRmU3tklsra0BBmh9i4Vkg9stn5VBFCKO5ZoPqZYKvRTmujr3ac
-   +iBBQkKpy4AUCqY+W2CqVNL6WCbyVpKfbGmAQwnDlPXAd2WUOv5HhOvF5
-   uGSUvWZ4XrAnBVf2+SX2P4EIuRFO73Ij4O7InNBNRjb7ANmbPVxch8rWT
-   s8mNJk7roYZ3OvfA2IryDKnnplcOLgUSdX+i3Pld2z4SB3uuAsWqsOONc
-   wLtuPK4u687Yk+wAs/3K1YVSAtG2bQCh7S203Olan2hImBShJYkCnmgZW
-   A==;
-X-CSE-ConnectionGUID: e77npRAYQnyXwoqyWNcaTQ==
-X-CSE-MsgGUID: 3tHpf1CjSguG7Zl96xk9xg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11712"; a="75692642"
-X-IronPort-AV: E=Sophos;i="6.21,310,1763452800"; 
-   d="scan'208";a="75692642"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 09:13:48 -0800
-X-CSE-ConnectionGUID: iaM9isGdRpGdTGSl0xuW4A==
-X-CSE-MsgGUID: BApimQ8/Q5+X44MTu77xGA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.21,310,1763452800"; 
-   d="scan'208";a="221285069"
-Received: from vpanait-mobl.ger.corp.intel.com (HELO localhost) ([10.245.244.71])
-  by orviesa005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Feb 2026 09:13:45 -0800
-Date: Wed, 25 Feb 2026 19:13:42 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jic23@kernel.org, jean-baptiste.maneyrol@tdk.com,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
-	robh@kernel.org
-Subject: Re: [PATCH 0/3] Add Invensense ICM42607
-Message-ID: <aZ8txsLe6GJcya8B@smile.fi.intel.com>
-References: <20260224163109.370930-1-macroalpha82@gmail.com>
- <aZ3iz18O3UEDTDqm@smile.fi.intel.com>
- <SN6PR1901MB465422A4BAFD469CD6966E0BA575A@SN6PR1901MB4654.namprd19.prod.outlook.com>
+	id 1vvIau-00000004dnX-304e;
+	Wed, 25 Feb 2026 17:22:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772040118; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=MIpYrwNHTEw1tzZw977bIojdnx+74FWfwIXNhnMSYlTbsSYdvxH+g+QrY4zGMoh0X/3DZPjW1oer4HYTWBAn3lHZ9vLlIC3a8s4C7BO5iCugtzNhaFJrnUwkM4F1mExYqN8mBQfAqYu79QXEyyAM+uYUflDsTia6C1LizlG0obI=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772040118; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=uYQZEmr31PuQ1YWmsWAZzNu809ry9o0BpCJyD6e+hII=; 
+	b=DKXVLTbsR+l5XSAncNafwzlzKwZJFdTzPP+h8McRV7E6gSiuqKAo0gab2+6Otdbc1isGUCYTJhxZGjcI7vh1AKsaUvskimpYwdXSRNnYQtDyLKFoTUrS8qniU722QaJ0PXBYYRRWbog7c79LA+nOvzfEoo9YVcVTtTTZ1JP99N8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772040117;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=uYQZEmr31PuQ1YWmsWAZzNu809ry9o0BpCJyD6e+hII=;
+	b=ErAUL623uvHeppqsgHQm+m4bSxj92drF5CKI08sbgfF9ao4z5nFAf0OhjrZ2uhfe
+	0v2t1b+qb/J6N/g3FbcMj9+VjuVo7d9MRM3n8M4cbxm+P7AbP4Ia+AVf6vI7b8b0tHG
+	1mpKX6ssj7z59PMyMJjE6UKb4r8TkFnimhIKEEf0=
+Received: by mx.zohomail.com with SMTPS id 1772040115678826.0329473998504;
+	Wed, 25 Feb 2026 09:21:55 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
+ hdmi_colorspace
+Date: Wed, 25 Feb 2026 18:21:46 +0100
+Message-ID: <3999997.iIbC2pHGDl@workhorse>
+In-Reply-To: <8234454.EvYhyI6sBW@workhorse>
+References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
+ <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+ <8234454.EvYhyI6sBW@workhorse>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <SN6PR1901MB465422A4BAFD469CD6966E0BA575A@SN6PR1901MB4654.namprd19.prod.outlook.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_091349_309988_BE708450 
-X-CRM114-Status: GOOD (  16.88  )
+X-CRM114-CacheID: sfid-20260225_092240_788394_4FCAFAE6 
+X-CRM114-Status: GOOD (  30.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,53 +99,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Feb 25, 2026 at 08:20:13AM -0600, Chris Morgan wrote:
-> On Tue, Feb 24, 2026 at 07:41:35PM +0200, Andy Shevchenko wrote:
-> > On Tue, Feb 24, 2026 at 10:31:02AM -0600, Chris Morgan wrote:
-> > =
+On Wednesday, 25 February 2026 18:03:00 Central European Standard Time Nicolas Frattaroli wrote:
+> On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
+> > The hdmi_colorspace enum was defined to represent the colorspace value
+> > of the HDMI infoframes. It was later used by some HDMI drivers to
+> > express the output format they should be setting up.
+> > 
+> > During the introduction of the HDMI helpers, it then was used to
+> > represent it in the drm_connector_hdmi_state structure.
+> > 
+> > However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
+> > defines, and now with the drm_output_color_format enum. Let's
+> > consolidate around drm_output_color_format in drm_connector_hdmi_state
+> > to facilitate the current effort to provide a global output format
+> > selection mechanism.
+> > 
+> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> > ---
+> >  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+> >  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+> >  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
+> >  drivers/gpu/drm/drm_bridge.c                       |   2 +-
+> >  drivers/gpu/drm/drm_connector.c                    |  14 +-
+> >  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+> >  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+> >  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+> >  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+> >  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+> >  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+> >  include/drm/display/drm_hdmi_helper.h              |   3 +-
+> >  include/drm/drm_connector.h                        |   7 +-
+> >  14 files changed, 205 insertions(+), 180 deletions(-)
+> > 
+> > [... snip ...]
+> >
+> > diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> > index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
+> > --- a/drivers/gpu/drm/drm_connector.c
+> > +++ b/drivers/gpu/drm/drm_connector.c
+> > [... snip ...]
+> >  
+> > @@ -1424,25 +1424,25 @@ drm_hdmi_connector_get_broadcast_rgb_name(enum drm_hdmi_broadcast_rgb broadcast_
+> >  	return broadcast_rgb_names[broadcast_rgb].name;
+> >  }
+> >  EXPORT_SYMBOL(drm_hdmi_connector_get_broadcast_rgb_name);
+> >  
+> >  static const char * const output_format_str[] = {
+> > -	[HDMI_COLORSPACE_RGB]		= "RGB",
+> > -	[HDMI_COLORSPACE_YUV420]	= "YUV 4:2:0",
+> > -	[HDMI_COLORSPACE_YUV422]	= "YUV 4:2:2",
+> > -	[HDMI_COLORSPACE_YUV444]	= "YUV 4:4:4",
+> > +	[DRM_OUTPUT_COLOR_FORMAT_RGB444]	= "RGB",
+> > +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR420]	= "YUV 4:2:0",
+> > +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR422]	= "YUV 4:2:2",
+> > +	[DRM_OUTPUT_COLOR_FORMAT_YCBCR444]	= "YUV 4:4:4",
+> >  };
+> >  
+> >  /*
+> >   * drm_hdmi_connector_get_output_format_name() - Return a string for HDMI connector output format
+> >   * @fmt: Output format to compute name of
+> >   *
+> >   * Returns: the name of the output format, or NULL if the type is not
+> >   * valid.
+> >   */
+> >  const char *
+> > -drm_hdmi_connector_get_output_format_name(enum hdmi_colorspace fmt)
+> > +drm_hdmi_connector_get_output_format_name(enum drm_output_color_format fmt)
+> >  {
+> >  	if (fmt >= ARRAY_SIZE(output_format_str))
+> >  		return NULL;
+> 
+> Almost unrelated nit: we might want to also `fmt < 0 ||` here, since the
+> base type of enums is a signed int. I almost caught myself using this function
+> as a way to quickly check if a supplied color format property from userspace
+> was valid, which would've had some unpleasant consequences for the kernel's
+> memory.
+> 
+> Alternatively, I make my own switch-case based "is this a valid enum value"
+> function. I probably should do that actually, but my laziness lead me to
+> make sure we only have a single source of truth of what counts as a valid
+> enum value.
 
-> > > Add support for the ICM42607 IMU. This sensor shares the same
-> > > functionality but a different register layout with the existing
-> > > ICM42600.
-> > > =
+Gah, disregard this, I just realised that this enum shouldn't be used as
+the one in the property anyway, because of AUTO, as you already pointed out
+in your reply to my series as well.
 
-> > > This driver should work with the ICM42607 and ICM42607P over both I2C
-> > > and SPI, however only the ICM42607P over I2C could be tested.
-> > =
+> 
+> >  
+> >  	return output_format_str[fmt];
+> > [... snip ...]
+> 
+> Thanks for your work on this series, I was afraid of getting rid of
+> DRM_COLOR_FORMAT_* myself because I suspected it was going to be a
+> fairly large refactor across every driver. Guess I was both right
+> and wrong: it touches many files, but all the replacements are
+> fairly simple. :)
+> 
+> Kind regards,
+> Nicolas Frattaroli
 
-> > Thanks for your contribution, but...
-> > =
 
-> > NAK.
-> > =
-
-> > It's unreviewable bulk out of 4kLoC! I even won't bother looking at any=
- other
-> > messages in this (too mini) series.
-> > =
-
-> > TL;DR: reviewable code is limited at ~750 (or less) =B1 150 LoC per pat=
-ch.
-> =
-
-> Please disregard this series then, I will do my best to split it apart
-> into smaller pieces and resubmit.
-
-Please do!
-
-Also keep in mind that from the beginning the driver should work, so the sp=
-lit
-mustn't be by-file, it should be by-feature / documentation.
-
--- =
-
-With Best Regards,
-Andy Shevchenko
 
 
 
