@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80462FC5913
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 09:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68417FC5926
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 10:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mwRS/Kh/zkipqZQJZu3sBXPkttVRkIL2WaFqiGvhCKg=; b=pCFFV8G3C9bub4
-	Hcg1/cvIye/tiyqmsIaJkOOJtC16sQNHR8NXC5j9HvDvH5CeKNHT8A52xqLRN6i9goRLXcB6nV9Ro
-	C+mReScAmgk0bP16HrqJIrfdaaBDe1+CVYpd4/LC2I+4AnW+ZN7zZX+sRJliVcqZXLi4JZCvgWsva
-	+HvO1AgeQb3ea7pLSZ9kljFAYSvmZmYdp44xCdrSvscYzbmkAFGvlV1hqBO5LZrTrDQ1Xdkxpu7uL
-	HanMX0sOotlLae7SvccCBX6WJ96pb9Vo5VxWeu514oxhTql334XzdbKtcd2kNEEcURdGELOD6uzQc
-	SRZJGt2aK9kr8rGSZOMw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2hkW7cwgxQ6Kgmd4fwfar3bwH4OPABUA6ovSFT962Is=; b=tVywzwg8JqFSdU
+	StmL6mDQlWd9SEkWipi66j2Y8aJC26JlmJe1wG5sYKIxzrwrr8uNgzD86zMweSH3DGX2vIa8usu6Q
+	G5xLBgei2TFhB06cMNImb8AmD9CofZIGLHXIPy7U4lvK/kDpjZGiHmeKbX4kmE/X/OUnkNth8EZP2
+	j3UoysPqQQQT0GilApTazyJSXSaPhQNdw+GSiTuEMK3JutGvGiUqRFdtlhmnc8HcVFBiDSd3sCN+b
+	PBQCiCZ1eVYKkzHI1t0Xp0biYXqZtD/Sf1t1Ro73m6KvbJP6+eSxUMZ4ro3+AZKUFX4358GqMeHL4
+	3UBQ9i+v18CTPnGqhnJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvXDL-00000005jmd-0dMD;
-	Thu, 26 Feb 2026 08:59:19 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vvYtd-00000005x4R-2OGq;
+	Thu, 26 Feb 2026 10:47:05 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvXDI-00000005jiw-0gR2
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Feb 2026 08:59:17 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvXCY-0006mh-AZ; Thu, 26 Feb 2026 09:58:30 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvXCR-002hWl-1x;
-	Thu, 26 Feb 2026 09:58:24 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvXCS-000000004Cy-3TL6;
-	Thu, 26 Feb 2026 09:58:24 +0100
-Message-ID: <f6807ac0f40dbcb87278f6339c4f2b5f715eb359.camel@pengutronix.de>
-Subject: Re: [PATCH 11/14] drm/mediatek: dp: Convert to
- drm_output_color_format
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Maxime Ripard <mripard@kernel.org>, Nicolas Frattaroli	
- <nicolas.frattaroli@collabora.com>, Jani Nikula
- <jani.nikula@linux.intel.com>,  Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
- <tzimmermann@suse.de>, David Airlie	 <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Harry Wentland	 <harry.wentland@amd.com>, Leo Li
- <sunpeng.li@amd.com>, Rodrigo Siqueira	 <siqueira@igalia.com>, Alex Deucher
- <alexander.deucher@amd.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
- <christian.koenig@amd.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Andy Yan
- <andy.yan@rock-chips.com>, Liviu Dudau	 <liviu.dudau@arm.com>, Chun-Kuang
- Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,  Heiko =?ISO-8859-1?Q?St=FCbner?=	
- <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai
- <wens@kernel.org>,  Samuel Holland <samuel@sholland.org>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>,  =?ISO-8859-1?Q?Ma=EDra?= Canal	
- <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance	
- <kernel-list@raspberrypi.com>
-Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-sunxi@lists.linux.dev
-Date: Thu, 26 Feb 2026 09:58:24 +0100
-In-Reply-To: <20260224-drm-rework-color-formats-v1-11-bebc76604ada@kernel.org>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
-	 <20260224-drm-rework-color-formats-v1-11-bebc76604ada@kernel.org>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1vvYta-00000005x1Q-0bmr;
+	Thu, 26 Feb 2026 10:47:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772102819;
+	bh=7evQl1U56Y+krUyCkNdBkF6YOqsOl19RT9juFbdoLd4=;
+	h=From:Subject:Date:To:Cc:From;
+	b=nK37pX3+Bu77wQctTzYR5DPioPJHbtf5abNjJBP0UmSpt20WOP03SST/Xr6prB9pG
+	 fTwdFyMkZ/OZf2QeHHtCYYp0loVroydVoxW8l9nWPh86RM4AUPV/q9A4uItjpooAML
+	 iTI6XU8laft8oUy1AOIy09RFjtBvsuSmeiRDLTpS30PKG8D7urpP/vjR9XIWkbCZrn
+	 NXMpQ4CeIoolKAAKp+nTNbgmU20uzHC4cggz4J5E0bEdj+XpV1nM7QpP+M9gl7ezkz
+	 ApsgjPwmRO2ymIMKZTbPgDF6t/gxaJbQP4XWXB6ueBNdRGoTiZKhx0mNQuG0iaKqgM
+	 ySx0yw2gzVg1Q==
+Received: from localhost (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9DC6F17E0029;
+	Thu, 26 Feb 2026 11:46:59 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH v4 0/3] arm64: dts: rockchip: Fix vdec register blocks
+ order on RK3576/RK3588
+Date: Thu, 26 Feb 2026 12:46:52 +0200
+Message-Id: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43NQQrCMBCF4atI1o4kkya1rryHuEiTqQa1kakER
+ Xp3Y1ciii7/B/PNXQzEkQaxmt0FU45DTH2Jaj4Tfu/6HUEMpQVKtBJRQw7kgWkHiQMx8EGb2oL
+ 3SN6SNNQsRbk9M3XxOrmbbel9HC6Jb9ObrJ7rLzErUGCsbGprrG2DXvt0PLo2sVv4dBJPNeNfE
+ oKE4LqqqTB0XuInSb9K5puki2QcUkuqVcot36VxHB9aQDjQUgEAAA==
+X-Change-ID: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Hans Verkuil <hverkuil@kernel.org>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+ linux-media@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_005916_203667_48CD84E4 
-X-CRM114-Status: GOOD (  12.13  )
+X-CRM114-CacheID: sfid-20260226_024702_542925_C34FBC0F 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,29 +85,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Di, 2026-02-24 at 11:58 +0100, Maxime Ripard wrote:
-> Now that we introduced a new drm_output_color_format enum to represent
-> what DRM_COLOR_FORMAT_* bits were representing, we can switch to the new
-> enum.
-> 
-> The main different is that while DRM_COLOR_FORMAT_ was a bitmask,
+When building device trees for the RK3576 based boards, DTC shows the
+following complaint:
 
-s/different/difference/
+  rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b00000: simple-bus unit address format error, expected "27b00100"
 
-> drm_output_color_format is a proper enum. However, the enum was done is
-> such a way than DRM_COLOR_FORMAT_X = BIT(DRM_OUTPUT_COLOR_FORMAT_X) so
-> the transitition is easier.
-> 
-> The only thing we need to consider is if the original code meant to use
-> that value as a bitmask, in which case we do need to keep the bit shift,
-> or as a discriminant in which case we don't.
-> 
-> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+The first patch updates 'reg-names' property in rockchip,vdec binding to
+allow providing the register blocks following the address-based order
+and, consequently, ensure the video decoder unit address points to the
+first register range.
 
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
+The next two patches reorder 'reg' and 'reg-names' for the impacted
+RK3576 & RK3588 vdec nodes.
 
-regards
-Philipp
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v4:
+- Removed the unnecessary one-entry item from the reg-names oneOf clause
+- Minor adjustment of the commit descriptions as 'function' naming was
+  not used in the context of the older SoCs
+- Link to v3: https://lore.kernel.org/r/20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com
+
+Changes in v3:
+- Mark the current 'reg-names' listing in the binding as deprecated and
+  introduce an alternative 'link,function,cache' one
+- Drop the Fixes tags from all patches and updated commit descriptions
+- Link to v2: https://lore.kernel.org/r/20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com
+
+Changes in v2:
+- Added patch for updating rockchip,vdec.yaml binding
+- Added patch for updating RK3588 vdec nodes
+- Link to v1: https://lore.kernel.org/r/20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com
+
+---
+Cristian Ciocaltea (3):
+      media: dt-bindings: rockchip,vdec: Add alternative reg-names order for RK35{76,88}
+      arm64: dts: rockchip: Fix vdec register blocks order on RK3576
+      arm64: dts: rockchip: Update vdec register blocks order on RK3588
+
+ .../devicetree/bindings/media/rockchip,vdec.yaml     | 20 ++++++++++++--------
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi             |  6 +++---
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi        | 12 ++++++------
+ 3 files changed, 21 insertions(+), 17 deletions(-)
+---
+base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
+change-id: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+
 
 _______________________________________________
 Linux-rockchip mailing list
