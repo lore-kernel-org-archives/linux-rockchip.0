@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FA38FD8FC2
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 14:59:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9ADF4FD8FD3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 16:25:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=toV8/AN+PZWcymHoARRYD++NO9s2cM28Z7/cR1bbFCk=; b=2/4v8ra0FJ1rC7
-	ztVymwlJcwqy8yuQ/mEeEdiL6ZBdEMv0Y4sugXQduyeVFOj2t04xeRa/kKeygbB42bJFVY8G77F+/
-	Je9xp9cqpd9seNzLGA4JUNjg4tkkhW1xNdvWZy4gWE8SRjzJd/0L2BNXzfvy4v3lKcPXDjcgJE+vf
-	xXlOmeD9Esm/yGWxSjHV1/+NodZZSz8VbSxuc+HZw0h6zAfYHbbk7dzMvGKKY3zwQFY8dBpeOgJK9
-	Ecgq7wX8cIRbxyouricSpOYdKRPM16/HE/f/RI0XZ/Xdsq7zWVOPx7nzvP3tV3RHeavn20TyP41VU
-	ZF8uVh5MaipRQdHhVckw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=spCM2X0r04ugv0GPjuuI9G1nSh0IguespDnfdl60K04=; b=nP+QB84IdVgcW3
+	aCuwBzxsN741c0oHNjgPUP/HDZid4ZmfREyundOKO8esHcnVFUctHpuKqNwm5U9lK5WGAmvaD8QS0
+	XxgvhL0xosJLv47oGEyG1ETahzdMxR5LoejehliqJk/NLLrEJ12hKRZkDA3J5H5XJgyANEAUcKDKk
+	l8Eayn8vHM0M9kza0ipwXrA4chCZPYE2sBrUes5JHX8GGdCmUkUJG9lbKZgeX+9Pj1zZMEmIqA446
+	0OP/YOKb8LajrSj4DJKR9P8uwlrNHOwsekZulIas5LLIvw6pO/1w3GcCV8yosLjprDMEgsZhyri1G
+	AhYq0M83sMdEJCu9m1gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvcq3-00000006ORJ-0q05;
-	Thu, 26 Feb 2026 14:59:39 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1vveAv-00000006jCM-0NXI;
+	Thu, 26 Feb 2026 16:25:17 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvcq0-00000006OQZ-1Fi2
-	for linux-rockchip@lists.infradead.org;
-	Thu, 26 Feb 2026 14:59:37 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-48372efa020so8255995e9.2
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Feb 2026 06:59:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772117974; x=1772722774; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=Tnnm+dYZ95GHWrygSFjI8gwx36ZKSldeg1Xff84VKQE=;
-        b=A/q2lchzmDrt2G+gXkSL4sdcd1ggGQgtKktwrFpfep9ixHTLgdi8OM+gGK0B+B0TML
-         sh8tOMCyTphK0jpjJlYB7vCT8BID9w0mvQ2eaDCBTtnd3al5vUUF5uRWgL0C5z0VHuky
-         cfIB2wCs3xIyO5ls0dlpTUVths+FYle1t/TloNmiYbtRyCnQmBajVFeG4NZRTvIdxX+y
-         csGfR7DqQXxn6zyAym13V22du1iDrpkeQdpbcCUpzgJKxrSdCIBi4g97F88CyOIROgLr
-         lu4/cbguzp9Ol4nNcWiNbFbBOhHdzsZ7mQcCNcJYHMH9BYERsnIeviNwxkuA+bqWl83t
-         LDMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772117974; x=1772722774;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Tnnm+dYZ95GHWrygSFjI8gwx36ZKSldeg1Xff84VKQE=;
-        b=NQJwxrsYVTrwKYctuKYxl7qE0Rbtp4RaQ8XnZlSIRbKN2Fldk9XZQQ6WC1wSxj4s1l
-         ishwqDf9fdID0Ww1kQbWWBl9TTctucLD5vDiNYpWxWC08aJnfOewkwasxN5GP+xcGKB4
-         ovjEk1v0/O4OqImeIdPi5y4/kSIjp+f8NS/vAaJdvToK0TiLD/GIqqL2s+S2+tlba7FL
-         86tb5yhBoZHgJoAzq1FnzYGrhmd0KDiBtdDHKFgagcI5CFJg3qeOLk+TMbtr7iIUyNaN
-         FKH6WbVHXwQ3vPg4TxxLrtXJ1BPwYngnSySsPfNHJqI+AmrKFIrLskavJgwcHCwxz5H0
-         wKFQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVqVpH+Nk5PtD2Woiw4bAjEzlcuZLUkdFWEQRKfTYeWajawT8V/VJk/veHQvUk7XcBKL2fFlFGrSj3jgttgiw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YykbTELN1f2z68BYutmzjYuNndNGzoXN7Vu26cWbQc/Ls3WZTzs
-	1ua6SChPM0RBTBGQ6vvHYyvYQFd/VzISejqPD0KI26bTMfHZtGKTatmg
-X-Gm-Gg: ATEYQzxGOSFmOy616Kcssgk/wSWoRzmea9NsAZu2NP33W3bY1SKl2QnloWBpUwIuC67
-	QIe4lJhJAI+J4GoRHxZRT6Ar4cBE8qHJGTZ+klrzdgECAEsBu6zl2Ny3vTYW/hsbm2yaYRudIQs
-	Fb3WrqoOpvno5TWdMAMfbwqN1IJmN7njPb77B6TNPdZN4bYnh2VtYTSC1gVtxSfbb0GJvsDzYQg
-	PYqsTE89X/ta6AHM8j1ga1OvRUBNO5KCHWxd9wLy5uMB3cdu5ZGfVvlDNnBkQL4ewZnhlXsRr3K
-	6omRpX+6w4GWYssQ+WHa0MMcPFsMBsw9c4mVX5BIVUsSjZ+MPAtic1S+IeRCvucx3Vs4DtQKawJ
-	hdVlAyvRDrjrB2YWV7chYPB2pOfFPMno3W5qb8BZZI1WCwp7GleX8J6ny1R7ZXNkkij/msAUYtR
-	PHk+xF+aBd326fEOeT2mUTAiFh9ep6Q8WxxGJzPG6IzzhMC8nhRqLpCBLcyMuA8m/1n9pA
-X-Received: by 2002:a05:600c:a44:b0:47d:586e:2fea with SMTP id 5b1f17b1804b1-483c217e8a9mr93249395e9.15.1772117974116;
-        Thu, 26 Feb 2026 06:59:34 -0800 (PST)
-Received: from fabio-Precision-3551.. ([2804:14c:485:4766:6506:d16b:e2d5:7fdc])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483bfbb465bsm92018865e9.3.2026.02.26.06.59.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Feb 2026 06:59:33 -0800 (PST)
-From: Fabio Estevam <festevam@gmail.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: rk3188-bqedison2qc: Use mount-matrix
-Date: Thu, 26 Feb 2026 11:59:16 -0300
-Message-Id: <20260226145916.2729492-1-festevam@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	id 1vveAs-00000006jBf-2Uib;
+	Thu, 26 Feb 2026 16:25:15 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772123057; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=N3OLfKBmkYO933URbrFu8+uXKn2ij+6WUXq71kEBTO4Nu4LcTpRcQZjphpUAwyqNRHGQAP2cDjEaDUq70au60Jh8aFdxv+OKp5d6P4QL+GJp6jNsd7xL1veJ3YFZQO7pHANe9yQFb6fIoYHki3Vv16IWve2sbM8I/MyTbBaWS0A=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772123057; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=; 
+	b=j8gKxdMDGurJreehgySCvuU/3qEdLoYmbBq2Ahq8cRm2sLFBW7OAExJNJb34Oycb2zYaxG0/8idwbu5Qe85W6l8PzVVm6lYKE+Jgba1uyWKm58OoY77QAZvdSEsox2hv5yEfJgByhZ0f6R20rl1Rrv8ORwBaeVUnb0L5sRbHkzw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772123057;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=txv6vQDrf8TvuXaw8FFr2/au2yNyfaaMtDMt+HBRQ0U=;
+	b=WIldgH/0a6NjbWUpy/KVeZjrvqxYggRojCnNIaaDT6piQoyNjIDfQdgQS9G78G3v
+	1m7YlCA/zRt0Oc22zrGr3RJZVs8P6yRXB04+Zoya4VZhWuPao2Y4SJeAx0PQXsaZiIa
+	6JMWI/E18LL044fdeDRbnMfcUoXpZ0MeeyiIDx98=
+Received: by mx.zohomail.com with SMTPS id 1772123055193953.572434392059;
+	Thu, 26 Feb 2026 08:24:15 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Samuel Holland <samuel@sholland.org>,
+ Dave Stevenson <dave.stevenson@raspberrypi.com>,
+ =?UTF-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>,
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
+ Maxime Ripard <mripard@kernel.org>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-sunxi@lists.linux.dev
+Subject: Re: [PATCH 14/14] drm/display: hdmi: Use drm_output_color_format instead of
+ hdmi_colorspace
+Date: Thu, 26 Feb 2026 17:24:05 +0100
+Message-ID: <5558942.31r3eYUQgx@workhorse>
+In-Reply-To: <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
+References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
+ <20260224-drm-rework-color-formats-v1-14-bebc76604ada@kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_065936_332471_D09DFF56 
-X-CRM114-Status: GOOD (  10.82  )
+X-CRM114-CacheID: sfid-20260226_082514_669451_06E31DAF 
+X-CRM114-Status: GOOD (  19.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,39 +103,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-'rotation-matrix' is not a valid property.
+On Tuesday, 24 February 2026 11:58:53 Central European Standard Time Maxime Ripard wrote:
+> The hdmi_colorspace enum was defined to represent the colorspace value
+> of the HDMI infoframes. It was later used by some HDMI drivers to
+> express the output format they should be setting up.
+> 
+> During the introduction of the HDMI helpers, it then was used to
+> represent it in the drm_connector_hdmi_state structure.
+> 
+> However, it's always been somewhat redundant with the DRM_COLOR_FORMAT_*
+> defines, and now with the drm_output_color_format enum. Let's
+> consolidate around drm_output_color_format in drm_connector_hdmi_state
+> to facilitate the current effort to provide a global output format
+> selection mechanism.
+> 
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+>  drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+>  drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  52 ++++--
+>  drivers/gpu/drm/drm_bridge.c                       |   2 +-
+>  drivers/gpu/drm/drm_connector.c                    |  14 +-
+>  drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+>  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+>  drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+>  drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+>  drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+>  drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+>  include/drm/display/drm_hdmi_helper.h              |   3 +-
+>  include/drm/drm_connector.h                        |   7 +-
+>  14 files changed, 205 insertions(+), 180 deletions(-)
+> 
+> [... snip ...]
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
+> index 4f5b27fab475c7c733622eb8727927571f3fb8fe..171cd495976a3e16f201fd339d3d42a09dc3b63f 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> @@ -589,14 +589,14 @@ int drmm_connector_hdmi_init(struct drm_device *dev,
+>  
+>  	if (!(connector_type == DRM_MODE_CONNECTOR_HDMIA ||
+>  	      connector_type == DRM_MODE_CONNECTOR_HDMIB))
+>  		return -EINVAL;
+>  
+> -	if (!supported_formats || !(supported_formats & BIT(HDMI_COLORSPACE_RGB)))
+> +	if (!supported_formats || !(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444)))
+>  		return -EINVAL;
+>  
+> -	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(HDMI_COLORSPACE_YUV420)))
+> +	if (connector->ycbcr_420_allowed != !!(supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420)))
+>  		return -EINVAL;
 
-Use the documented 'mount-matrix' property instead.
+I don't think this will work as-is. drm_bridge_connector_init calls this
+function assuming hdmi_colorspace bitmasks in supported_formats.
 
-This fixes the following dt-schema warning:
+This may have slipped through the conversion; the synopsys dw-hdmi-qp core
+(separate from synopsys dw-hdmi) also assumes hdmi_colorspace, see e.g.
+dw_hdmi_qp_plat_data::supported_formats in include/drm/bridge/dw_hdmi_qp.h
 
-accelerometer@29 (st,lis3de): 'rotation-matrix' does not match any of the
-regexes: '^pinctrl-[0-9]+$'
+So should be a simple fix I hope.
 
-accelerometer@29 (st,lis3de): rotation-matrix:
-b'1\x000\x000\x000\x00-1\x000\x000\x000\x001\x00' is not of type 'object',
-'integer', 'array', 'boolean', 'null'
+>  
+>  	if (!(max_bpc == 8 || max_bpc == 10 || max_bpc == 12))
+>  		return -EINVAL;
+>  
+> [... snip ...]
 
-Signed-off-by: Fabio Estevam <festevam@gmail.com>
----
- arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Kind regards,
+Nicolas Frattaroli
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts b/arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts
-index edc2b7f9112d..b56095fc2441 100644
---- a/arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts
-@@ -262,7 +262,7 @@ lis3de: accelerometer@29 {
- 		interrupts = <RK_PB7 IRQ_TYPE_EDGE_RISING>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&gsensor_int>;
--		rotation-matrix = "1", "0", "0",
-+		mount-matrix = "1", "0", "0",
- 				  "0", "-1", "0",
- 				  "0", "0", "1";
- 		vdd-supply = <&vcc_io>;
--- 
-2.34.1
+
+
 
 
 _______________________________________________
