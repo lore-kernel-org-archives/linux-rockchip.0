@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EB39FC5926
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 10:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50D24FC591F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 10:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kNaLwGebyxta9xBFAI0jxz1F+C8uIxsbV7Dsq8NGohQ=; b=Kz/IdzSTaaViRV
-	E+wuWbVZ92b9/XCw0YX1G3esdSVULCeC/WLYAoYXq5nBd5AvfgZB4TStx5kgJmvmc2fSzU3ajR8tR
-	iECvZ38LPnmxN+FxRun6OaArTIUUm8SXlWucT8TTM14waK8IietLTfXBMIY6FrQ70qnM4TKnnYxJT
-	jnYtYs1fz0V8uHF/kMfh0ZkcBJ+TSq1B04Wt6odNg9tg6RZLkJ160/1YJHLu0Icf8bmkzh5xI1UdY
-	QzGFZZyaRA4DKMR2crRt11gHWyrL3z5+rj4bFx/B8O4j+Ylt3rszkFAoQefauPtuTqBRS03bH4OXv
-	UglOPvVF7TV3T6WoL+qQ==;
+	List-Owner; bh=SnEWhOGkoOIr3fQgwlfk0uwBL7xqkYiws+kRH6cwrXc=; b=hgPk1TSkRo5wLv
+	FZdnObIkNOLATo6cgf7S23nSZeT9nigXcSalknm6tnezxAjY4IwkJ24jq8cfZlMnYMKTEcnxDma1O
+	hcwzkUSQNyLu7J98a9+HJ8qXYSeFjxa5aTBs7/O8qYv5vilmllQdx3/CuRNYq9MJ4D+U/r0n0ZeFd
+	YHTaaaNReuoodc44CPQbztRzt+fE/qRIWRmq3q74B9LTxsuYeoM5WoIcz5a+4GDFIigUuc0YT9QkS
+	SmBvKPkB5cwJepzrrDIeDd/8o3lO7hrg+Qjp8qnTmlAqK5rrIAcXVzKmR0zFgtKLcwSggvFPPdwpw
+	3KBql88qkUEj8oFT5xGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYtl-00000005xCA-2H2l;
-	Thu, 26 Feb 2026 10:47:13 +0000
+	id 1vvYyZ-00000005xyv-0UVd;
+	Thu, 26 Feb 2026 10:52:11 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYtd-00000005x34-0We4;
-	Thu, 26 Feb 2026 10:47:06 +0000
+	id 1vvYyV-00000005xwz-3Y7F;
+	Thu, 26 Feb 2026 10:52:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772102822;
-	bh=fWQKaJ3KVVTMepHRQE9cVCUJU/NMZyu4U07A0PswQIs=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FaVEoMU5JblM+IP7PbzUZJIk4S6+eTzoE5mbvJODDyg0EXbiefhFxjlcdfoxmUjI2
-	 haCFSP3+r2Yw+31niF2Ab++VdI5anXEn2B81+TsJXgzekGzg2FsD/bcsOkLbY+AXp7
-	 ltH9fVpZnHO44grqEts+YdDvkSlzjYjD3kLkD0ekS7cyNCuyXNBstEDIWQ0K3ihPoP
-	 Dfp/FqKWgTA/QMKOw9x2KjjZ8JUcK6OUBz1z5V/4oeBXIHaeZ2v0QpM0uK5cDOL+b3
-	 XM+R8/hPYkcztEmbD/5b0YxoWpsG0ZcCBQDnAcv/R94oh9g6oVO151ILDYNjQ9R+oX
-	 cfIHjS+8cdBiw==
-Received: from localhost (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1772103125;
+	bh=XzneIRZzyc+1SaJw/OACAJR1d66oV8Ny3EVQs5tDFCQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WDwZD6SaRD40fYYK7SgVaH//kDPOuKUXdNhL6CeX0W1O8CqQS8++FSoIRJt1KJsrq
+	 3jhwzkmVW5Us7ek5ZlYoexfZrzGZrcAvdrCbAV1Qu9Aeke8q5EdEDrO4wVxB6AwFxP
+	 Z1ALASrmZVO93Jlm5J5k1XhbWG972TU8HRLrZnidgYKkVKOmjOwnThyy3LDtw6QUiV
+	 dtcov3qY9GGwFgqvnLoV+dYfD3va5XTLjMLVcQo0pq6Ta4o2trF1xQkYLVJR6brM9D
+	 s1qDinkKTpprPOgkFvCYhgeotAbhpNGm4jKjJoucg3zoM1Tk7tvoP2nH3K/I6NsYmB
+	 Xxx69l0hzZSfw==
+Received: from [192.168.1.90] (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A4E4217E0E91;
-	Thu, 26 Feb 2026 11:47:02 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Thu, 26 Feb 2026 12:46:55 +0200
-Subject: [PATCH v4 3/3] arm64: dts: rockchip: Update vdec register blocks
- order on RK3588
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D82D817E03E5;
+	Thu, 26 Feb 2026 11:52:04 +0100 (CET)
+Message-ID: <1748aeb6-8504-4acb-afd0-ac1d2cb46937@collabora.com>
+Date: Thu, 26 Feb 2026 12:52:04 +0200
 MIME-Version: 1.0
-Message-Id: <20260226-vdec-reg-order-rk3576-v4-3-b8d72dc75250@collabora.com>
-References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
-In-Reply-To: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Hans Verkuil <hverkuil@kernel.org>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
- linux-media@vger.kernel.org
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add alternative
+ reg-names order for RK35{76,88}
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
+References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
+ <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+ <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
+ <d5a244f3-5f1b-4bcb-8042-646320a47b6c@collabora.com>
+ <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
+ <72a72c50-4816-47d4-b533-be4b7feee027@collabora.com>
+ <20260226-screeching-manatee-of-amplitude-6dfbf6@quoll>
+ <12b30229-1c55-429d-8a3c-0d831c4d33ab@kernel.org>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <12b30229-1c55-429d-8a3c-0d831c4d33ab@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_024705_329440_08BC218D 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20260226_025208_057969_2C75021B 
+X-CRM114-Status: GOOD (  14.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,55 +90,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Provide the register blocks for RK3588 vdec0 & vdec1 nodes using the
-'link,function,cache' listing, which follows the address-based ordering
-and, implicitly, ensures the unit address points to the first register
-range.
+On 2/26/26 9:26 AM, Krzysztof Kozlowski wrote:
+> On 26/02/2026 08:25, Krzysztof Kozlowski wrote:
+>> On Thu, Feb 26, 2026 at 12:26:37AM +0200, Cristian Ciocaltea wrote:
+>>>>> Sorry, but I don't quite get why would this be a better approach than just
+>>>>> properly list the items according to the HW layout, i.e. following the
+>>>>> address-based ordering?
+>>>>
+>>>> We always expect the list to grow, to have common set. That's rule given
+>>>> during reviews multiple times. For multiple reasons, also explained
+>>>> (consistency, maintenance and actually proper description of hardware
+>>>> like the main reg address space).
+>>>>
+>>>> Probably this was also given to that binding during discussions when it
+>>>> was upstream, so your change reverts previous discussion and to that I
+>>>> do not agree.
+>>>
+>>> Thank you for detailing this, I get your point now.
+>>>
+>>> After digging a bit further, it looks like the "function" naming has been
+>>> introduced as part of the RK3588 support via commit c6ffb7e1fb90 ("media:
+>>> dt-bindings: rockchip: Document RK3588 Video Decoder bindings").
+>>>
+>>> Morever, it also sets `reg-names: false` for all the SoCs other than RK3588 -
+>>> sorry for missing this initially.
+>>>
+>>> Hence "function" wasn't used at all in the context of the older SoCs, while on
+>>> RK3588 & RK3576 there is no indication that "function" should be treated as the
+>>> main address space or anything like that.  E.g. RK3588 TRM clearly shows the
+>>> "link" range at the top of the listing, starting at video decoder unit base
+>>> address:
+>>>
+>>> --------------------------------------------------------------------------------
+>>> Config Register                         |   Base addr
+>>> --------------------------------------------------------------------------------
+>>> VDPU381 core0/1 link table config base  |   VDPU381_core0/1_base+0x000
+>>> VDPU381 core0/1 function config base    |   VDPU381_core0/1_base+0x100
+>>> --------------------------------------------------------------------------------
+>>>                                         |   VDPU381_core0/1_base+0x600 for Y channel
+>>> VDPU381 core0/1 cache config base       |   VDPU381_core0/1_base+0x640 for C channel
+>>>                                         |   VDPU381_core0/1_base+0x680 for head channel
+>>> --------------------------------------------------------------------------------
+>>>
+>>> Assuming the reasoning above is now good enough to move further with the
+>>> proposed approach, I can prepare a new revision dropping the unnecessary
+>>> one-entry item from the reg-names, while keeping all the rest in the series as
+>>> is.
+>>
+>> Yes, with drop of the oneOf this would be fine.
+> 
+> I meant, the "one item option" in oneOf.
 
-This aligns with a similar fix for RK3576 where DTC complained about the
-bus address format.
+Yes, handled in v4:
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+https://lore.kernel.org/all/20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com/
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 7fe9593d8c19..b95129f85aba 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1355,10 +1355,10 @@ vepu121_3_mmu: iommu@fdbac800 {
- 
- 	vdec0: video-codec@fdc38000 {
- 		compatible = "rockchip,rk3588-vdec";
--		reg = <0x0 0xfdc38100 0x0 0x500>,
--		      <0x0 0xfdc38000 0x0 0x100>,
-+		reg = <0x0 0xfdc38000 0x0 0x100>,
-+		      <0x0 0xfdc38100 0x0 0x500>,
- 		      <0x0 0xfdc38600 0x0 0x100>;
--		reg-names = "function", "link", "cache";
-+		reg-names = "link", "function", "cache";
- 		interrupts = <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA>,
- 			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
-@@ -1387,10 +1387,10 @@ vdec0_mmu: iommu@fdc38700 {
- 
- 	vdec1: video-codec@fdc40000 {
- 		compatible = "rockchip,rk3588-vdec";
--		reg = <0x0 0xfdc40100 0x0 0x500>,
--		      <0x0 0xfdc40000 0x0 0x100>,
-+		reg = <0x0 0xfdc40000 0x0 0x100>,
-+		      <0x0 0xfdc40100 0x0 0x500>,
- 		      <0x0 0xfdc40600 0x0 0x100>;
--		reg-names = "function", "link", "cache";
-+		reg-names = "link", "function", "cache";
- 		interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH 0>;
- 		clocks = <&cru ACLK_RKVDEC1>, <&cru HCLK_RKVDEC1>, <&cru CLK_RKVDEC1_CA>,
- 			 <&cru CLK_RKVDEC1_CORE>, <&cru CLK_RKVDEC1_HEVC_CA>;
-
--- 
-2.52.0
-
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
