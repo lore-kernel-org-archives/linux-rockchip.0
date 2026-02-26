@@ -4,65 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70B8EFD8FF5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 18:43:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDB5BFD8FF5
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 19:25:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dq/VpyMn57hkFcovLUuDjNBMcGUNEK+FFM5AXEAheH4=; b=1hbbhIRnjY5utbDOQwNSj57IZ4
-	txEZeh1eqP/f/hhRtHo4sOYh5LqzxANS62ldsk8TkKmJcnxNQFh+D30Lc3FOZytm3A7642r7pKIzv
-	e/fOSI+zuqLcx+Qg+oR5inZCPaAJBXyme3ZHsYpqGaFa7FY+QNs39r7iUNwFZO/lAqvhovSFAOst/
-	2WqIsbw7Zc2EfIinnQECHgrqi7uzOqzMfoXmUqK/axepaiZX3/6ymREUPBNe+nFrh9EH7bZMiEICS
-	2p7Zdy+UHvyqAhMscVPC/fSLrsnWXRiIuSs9Xpp2vhpS4JpcfmdwP8XIae07lESDfTLGvthapDrPV
-	ozu7USlg==;
+	bh=7jJWtCcE9vr9aLamXw9E6/fzjIvvMYuKYu8Us6JcQdo=; b=aSG8iTAEXsMIUYO+tCCOE8UgPy
+	PTD7edNUA6jpmiTTQsXSRidqaTRr4sU0y3Cjysr1Upd4EBRYt4DFOqZOfD/60Fb1b0yrbjaMbTKZJ
+	7iPOUGio771iBGVYwO4SLkp9IswYbZYNPoWnnHCNqnpHQdlXhvAFtJq+SX/NvhaJZ2WvAfSY7JqYw
+	v+IWnCYD8utlwzHzaDZY1xUlVqXZvbNcf1Uqh+QSYr9eqRmlnPJrlDekWwQ/tP/IdW1OD6l1GqzUl
+	Ha4TBQsXilwoUESeebzOEWKsXw1EJAX2/AIdHrZPeD6QBnXn0BLXeDVVKHBRh2jQGPb6nrVnsvZ8h
+	ww7Ye9Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvgKs-00000006zOg-45oH;
-	Thu, 26 Feb 2026 18:43:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vvgzf-0000000739s-17qU;
+	Thu, 26 Feb 2026 19:25:51 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvgKq-00000006zOR-2meV;
-	Thu, 26 Feb 2026 18:43:40 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0BC9860126;
-	Thu, 26 Feb 2026 18:43:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8C4F2C116C6;
-	Thu, 26 Feb 2026 18:43:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772131418;
-	bh=GgM263nGANWRLKxVMqunt8Sam3YSqtNlhozBs8g55Gw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=VFAVns0x9ryCBzjBY15Zb1+kXYi1Esaw1OUp/2iu0fBekK7EodMBq4NpO9PiSZRI6
-	 86t+6Mqw4HLFI2DOCC2NyE8TP/yKJDAbQfr/1yARXFNymcvEGGy/XTta3dpTfElrtK
-	 kOIg4/CPgIRjXAZk2av4DaMinmXFwuehEMMW9alvxXyPb7IAlJhQSW8QEJEYIXzuOI
-	 vZR4RO5tqEOLRqluJ72TA4Y9r+Av264PenJv7tnsm24L0h+4swTxuiUM9fIrFo6OG4
-	 eTtEBmi+GfRZp3UsleGDy0NB8jJ2Rwp5hhbxz1syGbzjRmdsqhfiFEvMJpXg8tEvfW
-	 aqpI8DW/Dj/ug==
-Date: Thu, 26 Feb 2026 18:43:31 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Conor Dooley <conor.dooley@microchip.com>,
-	linux-media@vger.kernel.org
-Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
+	id 1vvgzY-0000000739B-3Zca;
+	Thu, 26 Feb 2026 19:25:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772133940;
+	bh=b9CvPoj/OtYglTXhUk/6DhyMwP9/PO1MO0jnGKsTsQ0=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=C6hv5SOEnGEyc4i5YDQElhLZZq/FiXxc2KIFBXihMkdim925S8EvIKUFysmfABL8O
+	 +FBmB87uICQCxiYTwJ1dm1vLrYdglFHnE9Iv4b/OR1batQ8rToFwedPo2FBNwfgWLO
+	 NaTp/rjULbDhfKEwVh56CRp7P09hq68tTbbB3Q+4hcDQTASXNG9KI8LgYoD+Kn4Ans
+	 tUUjEoAiMQpi+enQ9gq69HD8Tid1qAp6ZMFEsE7gBmAlzktojsEAmHJqQK/z7CzRsj
+	 wbQCOaIZq6DXTRon5mNXUZ86oFag4bxQvy5xeT+IrnaErssD/AeU2FZk96WNYBVFUq
+	 +oh4CZwTctFKw==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB74017E005F;
+	Thu, 26 Feb 2026 20:25:37 +0100 (CET)
+Message-ID: <e8ed4c2bb4f1543a4d2cf75b28fab157332a3e17.camel@collabora.com>
+Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add
  alternative reg-names order for RK35{76,88}
-Message-ID: <20260226-salute-threaten-a3eabb232396@spud>
-References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
- <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Rob Herring	
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
+	linux-media@vger.kernel.org
+Date: Thu, 26 Feb 2026 14:25:35 -0500
+In-Reply-To: <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
+	 <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-In-Reply-To: <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260226_112545_102206_8114E4CD 
+X-CRM114-Status: GOOD (  17.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,115 +91,105 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8779862154932938250=="
+Content-Type: multipart/mixed; boundary="===============1012648018719214213=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8779862154932938250==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="kkAJ0O2ZXkCJsI6/"
-Content-Disposition: inline
+--===============1012648018719214213==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-oG/QpE1zaXLEWLDnfuQm"
 
 
---kkAJ0O2ZXkCJsI6/
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--=-oG/QpE1zaXLEWLDnfuQm
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
-> With the introduction of the RK3588 SoC, and RK3576 afterwards, two more
-> register blocks have been provided for the video decoder unit.
+Le mercredi 25 f=C3=A9vrier 2026 =C3=A0 14:19 +0200, Cristian Ciocaltea a =
+=C3=A9crit=C2=A0:
+> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
+> 'link' and 'cache' register blocks have been provided for the video
+> decoder unit in addition to the existing 'function' one, which now shows
+> up in between them (from address-based ordering point of view).
 >=20
-> However, the binding does not properly describe the new hardware layout,
-> as it breaks the convention expecting the unit address to indicate the
-> start of the first register range, i.e. 'function' block is listed
-> before 'link' instead of the opposite.
-
-I don't understand this commit message or rationale for an ABI break.
-Changing the unit address seems like a "free" fix to your problem,
-especially when reg-names is not a required property that you can rely
-on. Actually, there may be a bug in the driver - it expects reg-names
-for rk3576-vdec and rk3588-vdec but the binding doesn't mandate their
-presence for those devices.
-
-Deprecating the order also makes little sense to me, given that some of
-these devices only have one reg entry, which as far as I can tell from
-looking at the driver *is* the "function" region, so it can never be
-entirely deprecated.
-
-Confused,
-Conor.
-
+> However, the binding does not properly describe this hardware layout, as
+> the new blocks are listed after the old one.=C2=A0 Therefore it breaks th=
+e
+> convention expecting the unit address to indicate the first register
+> range.
 >=20
 > Since the binding changes have been already released and a fix would
-> bring up an ABI break, mark the current 'reg-names' ordering as
-> deprecated and introduce an alternative 'link,function,cache' listing
-> which follows the address-based ordering according to the TRM.
+> bring up an ABI break, mark the current 'reg-names' listing as
+> deprecated and introduce an alternative 'link,function,cache' one.
 >=20
 > Additionally, drop the 'reg' description items as the order is not fixed
 > anymore, while the information they offer is not very relevant anyway.
 >=20
 > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 > ---
->  .../devicetree/bindings/media/rockchip,vdec.yaml     | 20 ++++++++++++--=
-------
->  1 file changed, 12 insertions(+), 8 deletions(-)
+> =C2=A0.../devicetree/bindings/media/rockchip,vdec.yaml=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 | 19 ++++++++++++-------
+> =C2=A01 file changed, 12 insertions(+), 7 deletions(-)
 >=20
 > diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b=
 /Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 809fda45b3bd..c513b68d2c72 100644
+> index 809fda45b3bd..3f6072e8baa5 100644
 > --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
 > +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -28,16 +28,20 @@ properties:
-> =20
->    reg:
->      minItems: 1
-> -    items:
-> -      - description: The function configuration registers base
-> -      - description: The link table configuration registers base
-> -      - description: The cache configuration registers base
-> +    maxItems: 3
-> =20
->    reg-names:
-> -    items:
-> -      - const: function
-> -      - const: link
-> -      - const: cache
-> +    oneOf:
-> +      - items:
-> +          - const: link
-> +          - const: function
-> +          - const: cache
-> +      - items:
-> +          - const: function
-> +          - const: link
-> +          - const: cache
-> +        deprecated: true
-> +        description: Use link,function,cache block order instead.
-> =20
->    interrupts:
->      maxItems: 1
->=20
-> --=20
-> 2.52.0
->=20
+> @@ -28,16 +28,21 @@ properties:
+> =C2=A0
+> =C2=A0=C2=A0 reg:
+> =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> -=C2=A0=C2=A0=C2=A0 items:
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The function configuration=
+ registers base
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The link table configurati=
+on registers base
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The cache configuration re=
+gisters base
+> +=C2=A0=C2=A0=C2=A0 maxItems: 3
+> =C2=A0
+> =C2=A0=C2=A0 reg-names:
+> -=C2=A0=C2=A0=C2=A0 items:
+> +=C2=A0=C2=A0=C2=A0 oneOf:
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deprecated: true
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 description: Use link,functio=
+n,cache block order instead.
+> =C2=A0
+> =C2=A0=C2=A0 interrupts:
+> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
 
---kkAJ0O2ZXkCJsI6/
+--=-oG/QpE1zaXLEWLDnfuQm
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaaCUUwAKCRB4tDGHoIJi
-0vUsAQC17KEoZ4NbwOQnXNQ7UeOV0pTQwc+PR0gNyi8SJ+okYwEA8EvoMZh0U7oE
-B2SzgGvfagw4afxHel577llDgMmhfAg=
-=GLLI
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaCeLwAKCRDZQZRRKWBy
+9IvUAQDfqcrOLtwQ1nyL9R5heMbr1tHkRWWhLf61QA2aJxBUdwD/XaDwTxRmRLzV
+6if3ujVa9dS6lCQLPv5IU64T9qq/sQw=
+=t0d/
 -----END PGP SIGNATURE-----
 
---kkAJ0O2ZXkCJsI6/--
+--=-oG/QpE1zaXLEWLDnfuQm--
 
 
---===============8779862154932938250==
+--===============1012648018719214213==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -193,5 +200,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8779862154932938250==--
+--===============1012648018719214213==--
 
