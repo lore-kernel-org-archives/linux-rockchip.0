@@ -4,84 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CE4DFD9E0A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 19:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F4C9FD9E0A
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 20:59:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cIU798/e5LwhHpO3Q4CUXhQKjJjcArCNRAAR3iFM4Dc=; b=QohtlYwldr70I8H5GvGNPjbkWk
-	rvZoStRjJfSnMz7vmWDORI6/yZ2hyjnMeATPFWqvy4LfM2LU+/3W3m5V8IxHvAhJ6NCWe4lMg3R7f
-	b2IryETaylXvVswmfRkXkLP4n0P4l85HP10FpnfhnYwkMR7Q3GXwsY/TUHk/YAiuNaG7HPy9jzy5s
-	8YlRC7d4oDQSTnf9CeyEdK0uyvKnjtwnP94CHzK6o3Mg0W80r8Fj7GGXfysBFrzxFVelkVxw4MCSC
-	azUtjEo1Lv+tkNlSZbsHU6/hfqzDRTPFldKHfc18F2hSOG8LT2wK6fOtle6w67TkJs/nNScKLgLGG
-	xaZbZ9wQ==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P+7vaDqw5Rl0VihJhZTfB5tDAwSJiHPtcSHaNbRqjic=; b=P5185Cc4O5taRjh+0A9hZFGWAp
+	4wkPDlIbw6pdJogICX45gge6n5d7byhyH5TITF5yPwZjQPV+9DquxoX/hnyr7ERLKuiJvtVLQXK8l
+	3lcC7jpk9HnfhtgxeAA1mRoTOsmRkKrnoq7S6fof9r9Lfn4No3cQ2lxGeZrQ0l46hnoB3RTM0AZYv
+	jZD2ltt7RrYJ6gEdeyvLU5DQZoD81bKdGeU0PcZaPu9MK7opHWM4WiR8CAk9MRRK7zB/iCDThHHqq
+	J04n9Io3ybxafXfwhrnFnRwwZukCMCTIIEGZHgPEW3UTXZVXLnezWiqMLpVNNL/cFK4j7n7K0xyP2
+	qH2pnXqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvhIb-000000076FM-0BsB;
-	Thu, 26 Feb 2026 19:45:25 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vviS5-00000007BlM-0O2B;
+	Thu, 26 Feb 2026 20:59:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvhIV-000000076Eg-0nAX;
-	Thu, 26 Feb 2026 19:45:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772135116;
-	bh=Htt6VCrCH3vnq7s4qMqPAlg58/6Hv1w1mILXYmV4QWQ=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=WgS5S/ZO7TSdqprtgR6bQsf4WDSFyI3gKW842oS+BDmb2aSoxhJ8bHRhe7gYSgD48
-	 P9fRWTgB/6xaMAdt5rahzBB/Q6xzvZxKl9VNzettz97gPfSLwzFR6z4wlJeVhuJlUD
-	 exJiPc/iFvlVB+sHms6+1RIf3D18aDqy330yz6+b2LFpDyvj/3FYjbjM5Q+RYSMySg
-	 pIIj4sxpAD+QgtbpegyP9PUelLixra7m5Xjk+6M69sXi3md49fMZaZXlIu7JXHkRtN
-	 tQUTUbm84a+z+MfeHpVtHkpbn73TY3IK1ygZN5rZpJDDtbMbJ3CDzAD2oCukD8EWt6
-	 AZLkzEIWDFuLg==
-Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AFEED17E0948;
-	Thu, 26 Feb 2026 20:45:13 +0100 (CET)
-Message-ID: <429f3c7aa22eccffedbf8db6aa91bee3dd13814a.camel@collabora.com>
+	id 1vviS3-00000007Bl7-1VqB;
+	Thu, 26 Feb 2026 20:59:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 97C0960054;
+	Thu, 26 Feb 2026 20:59:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 287D0C116C6;
+	Thu, 26 Feb 2026 20:59:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772139554;
+	bh=cKcN2V29V13koNaaY/Nhem64w71cAay19I8PFL1jhi8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WC2QrcXJ1AQanIDOsmn+YKZ7wGHFs9oPx6b9VwtF0WgjGtvbgicPwBaatIuAGGPS7
+	 +KqX0TAHuV5Qd9ZdHpmM/ZvbTReoXZqWLmOi/rT5QoSMD7WheVJIZ6JOtUdtkNsWrj
+	 yRifcLVIJDbJ0Gk5/bRyvfXNGM1DLTFC7qzCrAE5NqbjhNQ1aBkwrA/EJnu58b8BAL
+	 EaLA0DaAPhFA8RH3pTyMnVSw+FaZgIIutFVJ0hKeoVgY4cU4rPEIqeUSALZK2h00A/
+	 vZopphsOuJJKk3Y2R5R5OBSYwh2+G8NkoyibQg3JlrSAk/tLkJfQbqdvfCX99fexAa
+	 EYDmeCaCARX4Q==
+Date: Thu, 26 Feb 2026 20:59:08 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
  alternative reg-names order for RK35{76,88}
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Conor Dooley <conor@kernel.org>, Cristian Ciocaltea
-	 <cristian.ciocaltea@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova	 <detlev.casanova@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>,
- kernel@collabora.com, 	devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Conor Dooley	 <conor.dooley@microchip.com>,
- linux-media@vger.kernel.org
-Date: Thu, 26 Feb 2026 14:45:11 -0500
-In-Reply-To: <20260226-salute-threaten-a3eabb232396@spud>
+Message-ID: <20260226-snide-foil-a05e1aa156a8@spud>
 References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
-	 <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
-	 <20260226-salute-threaten-a3eabb232396@spud>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+ <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+ <20260226-salute-threaten-a3eabb232396@spud>
+ <429f3c7aa22eccffedbf8db6aa91bee3dd13814a.camel@collabora.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_114519_437602_0E6E09B1 
-X-CRM114-Status: GOOD (  34.94  )
+In-Reply-To: <429f3c7aa22eccffedbf8db6aa91bee3dd13814a.camel@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,159 +64,199 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3883979399540666508=="
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Conor Dooley <conor.dooley@microchip.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============3084455183503459865=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3883979399540666508==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-6UGd8Ri2+YJO1QGD5T1b"
+--===============3084455183503459865==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="TI6MRG6jfhf7gfkz"
+Content-Disposition: inline
 
 
---=-6UGd8Ri2+YJO1QGD5T1b
-Content-Type: text/plain; charset="UTF-8"
+--TI6MRG6jfhf7gfkz
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Le jeudi 26 f=C3=A9vrier 2026 =C3=A0 18:43 +0000, Conor Dooley a =C3=A9crit=
-=C2=A0:
-> On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
-> > With the introduction of the RK3588 SoC, and RK3576 afterwards, two mor=
-e
-> > register blocks have been provided for the video decoder unit.
+On Thu, Feb 26, 2026 at 02:45:11PM -0500, Nicolas Dufresne wrote:
+> Le jeudi 26 f=E9vrier 2026 =E0 18:43 +0000, Conor Dooley a =E9crit=A0:
+> > On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
+> > > With the introduction of the RK3588 SoC, and RK3576 afterwards, two m=
+ore
+> > > register blocks have been provided for the video decoder unit.
+> > >=20
+> > > However, the binding does not properly describe the new hardware layo=
+ut,
+> > > as it breaks the convention expecting the unit address to indicate the
+> > > start of the first register range, i.e. 'function' block is listed
+> > > before 'link' instead of the opposite.
 > >=20
-> > However, the binding does not properly describe the new hardware layout=
-,
-> > as it breaks the convention expecting the unit address to indicate the
-> > start of the first register range, i.e. 'function' block is listed
-> > before 'link' instead of the opposite.
+> > I don't understand this commit message or rationale for an ABI break.
+> > Changing the unit address seems like a "free" fix to your problem,
+> > especially when reg-names is not a required property that you can rely
+> > on. Actually, there may be a bug in the driver - it expects reg-names
+> > for rk3576-vdec and rk3588-vdec but the binding doesn't mandate their
+> > presence for those devices.
 >=20
-> I don't understand this commit message or rationale for an ABI break.
-> Changing the unit address seems like a "free" fix to your problem,
-> especially when reg-names is not a required property that you can rely
-> on. Actually, there may be a bug in the driver - it expects reg-names
-> for rk3576-vdec and rk3588-vdec but the binding doesn't mandate their
-> presence for those devices.
+> If the bindings had been held instead of released early, the order would =
+be what
+> is done in this patch for sure, and no one would have complained. These b=
+inding
+> have never been used by anyone so far, and what you are asking is to crea=
+te a
 
-If the bindings had been held instead of released early, the order would be=
- what
-is done in this patch for sure, and no one would have complained. These bin=
-ding
-have never been used by anyone so far, and what you are asking is to create=
+20:35:32 conor /stuff/linux$ rg "rk3576-vdec"
+
+arch/arm64/boot/dts/rockchip/rk3576.dtsi
+1283:			compatible =3D "rockchip,rk3576-vdec";
+
+20:35:34 conor /stuff/linux$ rg rk3588-vdec
+
+arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
+1357:		compatible =3D "rockchip,rk3588-vdec";
+1389:		compatible =3D "rockchip,rk3588-vdec";
+
+These look like users, at least at first look. Some elaboration on that
+would be good - impact on users definitely should be covered in the
+commit message of an ABI break.
+
+> DTS that deviate from the vendor provided documentation for the IP base a=
+ddress.
+> I know you have all technical fancy reasoning, but I like when things are
+> functional and effective to work with.
+
+FWIW, I don't think you were trying to be dismissive, just trying to
+make a valid point about usability being important, but providing clear
+justifications for why the order of properties should be changed (or
+other similar ABI breaks) is really important. This is v4, and the
+rationale you've given here about the documentation, which is the actual
+motivation for changing things around, doesn't appear in the commit
+message, even after a back and forth with Krzysztof in an earlier
+version.
+
+> > Deprecating the order also makes little sense to me, given that some of
+> > these devices only have one reg entry, which as far as I can tell from
+> > looking at the driver *is* the "function" region, so it can never be
+> > entirely deprecated.
+>=20
+> What I'd like to see, is a binding expression that behave like a set, not=
  a
-DTS that deviate from the vendor provided documentation for the IP base add=
-ress.
-I know you have all technical fancy reasoning, but I like when things are
-functional and effective to work with.
-
+> list, and leave the ordering open. As people keep repeating, there is not=
+hing in
+> a binding that assist to define the right ordering (its not address or ba=
+se
+> addres aware). That basically means, we can't as reviewer see that orderi=
+ng is
+> going to imposing using a base address in the unit name (which is a conve=
+nience,
+> not a rule I suppose) that differ from the vendor documented base address.
 >=20
-> Deprecating the order also makes little sense to me, given that some of
-> these devices only have one reg entry, which as far as I can tell from
-> looking at the driver *is* the "function" region, so it can never be
-> entirely deprecated.
-
-What I'd like to see, is a binding expression that behave like a set, not a
-list, and leave the ordering open. As people keep repeating, there is nothi=
-ng in
-a binding that assist to define the right ordering (its not address or base
-addres aware). That basically means, we can't as reviewer see that ordering=
- is
-going to imposing using a base address in the unit name (which is a conveni=
-ence,
-not a rule I suppose) that differ from the vendor documented base address.
-
-By explicitly removing the ordering in the binding, we create a strict rule=
- that
-driver should retrieve this by name, and never assume the ordering, which I
-personally like.
-
-thoughts ?
-
-Nicolas
-
+> By explicitly removing the ordering in the binding, we create a strict ru=
+le that
+> driver should retrieve this by name, and never assume the ordering, which=
+ I
+> personally like.
 >=20
-> Confused,
-> Conor.
->=20
-> >=20
-> > Since the binding changes have been already released and a fix would
-> > bring up an ABI break, mark the current 'reg-names' ordering as
-> > deprecated and introduce an alternative 'link,function,cache' listing
-> > which follows the address-based ordering according to the TRM.
-> >=20
-> > Additionally, drop the 'reg' description items as the order is not fixe=
-d
-> > anymore, while the information they offer is not very relevant anyway.
-> >=20
-> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> > ---
-> > =C2=A0.../devicetree/bindings/media/rockchip,vdec.yaml=C2=A0=C2=A0=C2=
-=A0=C2=A0 | 20 ++++++++++++-----
-> > ---
-> > =C2=A01 file changed, 12 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > index 809fda45b3bd..c513b68d2c72 100644
-> > --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> > @@ -28,16 +28,20 @@ properties:
-> > =C2=A0
-> > =C2=A0=C2=A0 reg:
-> > =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
-> > -=C2=A0=C2=A0=C2=A0 items:
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The function configurati=
-on registers base
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The link table configura=
-tion registers base
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The cache configuration =
-registers base
-> > +=C2=A0=C2=A0=C2=A0 maxItems: 3
-> > =C2=A0
-> > =C2=A0=C2=A0 reg-names:
-> > -=C2=A0=C2=A0=C2=A0 items:
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> > +=C2=A0=C2=A0=C2=A0 oneOf:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
-on
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
-on
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deprecated: true
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 description: Use link,funct=
-ion,cache block order instead.
-> > =C2=A0
-> > =C2=A0=C2=A0 interrupts:
-> > =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> >=20
-> > --=20
-> > 2.52.0
-> >=20
+> thoughts ?
 
---=-6UGd8Ri2+YJO1QGD5T1b
+Yeah, you can do this, but to avoid potential breaks you have to do it
+=66rom the start, not after the fact. Probably there's bindings that get
+acked every day that do do this. Even the retcon is okay to do when
+reg-names is mandated by the binding and the users use reg-names in my
+opinion.
+
+In this case, the driver is currently buggy, because, as I mentioned, it
+uses reg-names without reg-names being required on the platforms with
+more than 1 reg property. Probably the binding should make reg-names
+mandatory for these platforms even without this patch, but it *has* to
+IMO for this proposed change to be applicable.
+
+But anyway, the takeaway from my original mail should be "Conor is not
+happy with the rationale the commit message provides for this change,
+as it doesn't explain why you want to do it". I necessarily object to
+the change itself.
+
+Conor.
+
+> > > Since the binding changes have been already released and a fix would
+> > > bring up an ABI break, mark the current 'reg-names' ordering as
+> > > deprecated and introduce an alternative 'link,function,cache' listing
+> > > which follows the address-based ordering according to the TRM.
+> > >=20
+> > > Additionally, drop the 'reg' description items as the order is not fi=
+xed
+> > > anymore, while the information they offer is not very relevant anyway.
+> > >=20
+> > > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > > ---
+> > > =A0.../devicetree/bindings/media/rockchip,vdec.yaml=A0=A0=A0=A0 | 20 =
+++++++++++++-----
+> > > ---
+> > > =A01 file changed, 12 insertions(+), 8 deletions(-)
+> > >=20
+> > > diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.ya=
+ml
+> > > b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > > index 809fda45b3bd..c513b68d2c72 100644
+> > > --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > > +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > > @@ -28,16 +28,20 @@ properties:
+> > > =A0
+> > > =A0=A0 reg:
+> > > =A0=A0=A0=A0 minItems: 1
+> > > -=A0=A0=A0 items:
+> > > -=A0=A0=A0=A0=A0 - description: The function configuration registers =
+base
+> > > -=A0=A0=A0=A0=A0 - description: The link table configuration register=
+s base
+> > > -=A0=A0=A0=A0=A0 - description: The cache configuration registers base
+> > > +=A0=A0=A0 maxItems: 3
+> > > =A0
+> > > =A0=A0 reg-names:
+> > > -=A0=A0=A0 items:
+> > > -=A0=A0=A0=A0=A0 - const: function
+> > > -=A0=A0=A0=A0=A0 - const: link
+> > > -=A0=A0=A0=A0=A0 - const: cache
+> > > +=A0=A0=A0 oneOf:
+> > > +=A0=A0=A0=A0=A0 - items:
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - const: link
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - const: function
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - const: cache
+> > > +=A0=A0=A0=A0=A0 - items:
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - const: function
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - const: link
+> > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - const: cache
+> > > +=A0=A0=A0=A0=A0=A0=A0 deprecated: true
+> > > +=A0=A0=A0=A0=A0=A0=A0 description: Use link,function,cache block ord=
+er instead.
+> > > =A0
+> > > =A0=A0 interrupts:
+> > > =A0=A0=A0=A0 maxItems: 1
+> > >=20
+> > > --=20
+> > > 2.52.0
+> > >=20
+
+
+
+--TI6MRG6jfhf7gfkz
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaCixwAKCRDZQZRRKWBy
-9JiHAP4os7RdZaABz35jtFTqxJdGRCHiZ2JyeJsCH7Yj8wqZ1gEAs/hIPqsAIIGJ
-I/RUZ0zI4YsAWeThrjFOkFlZA7v8NwE=
-=jF9G
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaaC0HAAKCRB4tDGHoIJi
+0jkhAQCTkpi7tlZesS47tglTMIqrlcicor6nxmHd+4N/0T2JAgEAjirK8v2PqsXy
+RSXj7VKrwxp+VuNFypnzfUONfv11Wgc=
+=jxXf
 -----END PGP SIGNATURE-----
 
---=-6UGd8Ri2+YJO1QGD5T1b--
+--TI6MRG6jfhf7gfkz--
 
 
---===============3883979399540666508==
+--===============3084455183503459865==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -256,5 +267,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3883979399540666508==--
+--===============3084455183503459865==--
 
