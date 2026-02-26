@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDB5BFD8FF5
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 19:25:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E11FC5921
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 19:32:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7jJWtCcE9vr9aLamXw9E6/fzjIvvMYuKYu8Us6JcQdo=; b=aSG8iTAEXsMIUYO+tCCOE8UgPy
-	PTD7edNUA6jpmiTTQsXSRidqaTRr4sU0y3Cjysr1Upd4EBRYt4DFOqZOfD/60Fb1b0yrbjaMbTKZJ
-	7iPOUGio771iBGVYwO4SLkp9IswYbZYNPoWnnHCNqnpHQdlXhvAFtJq+SX/NvhaJZ2WvAfSY7JqYw
-	v+IWnCYD8utlwzHzaDZY1xUlVqXZvbNcf1Uqh+QSYr9eqRmlnPJrlDekWwQ/tP/IdW1OD6l1GqzUl
-	Ha4TBQsXilwoUESeebzOEWKsXw1EJAX2/AIdHrZPeD6QBnXn0BLXeDVVKHBRh2jQGPb6nrVnsvZ8h
-	ww7Ye9Mw==;
+	bh=Mf+y3obNwUlUksQ4reGISTTw+L819MFSNKKnCbc+raw=; b=GJ/fyyMqkKtKbkCxt4GbD1sMLk
+	l5pswTrVwIKGgLU1CxPULcxWJYYUWnGAJA+9c3eYtbI66MYyIIELFcYykKAKUsLTGBPhvLJ+Egrc8
+	3jTfMGzQXesRDzxoyuSYl+OJtF8VtlkJalV7ipDoE5MAY9jMgJah0HZQg4sbyb/S0AidNp1RTNZ17
+	tb+YnhHwqRMgjqpNAwWbmOAqSaGGnN7Ohh7T6YmcOHbr7y6jtU4OI3vXbLxCxwHOpH73mK2JRchW+
+	BZZlPigpTU2pF5afJpsVpLk99bYZRWrrQiNOPGV/VqXWNPGzsg2RgIQDOlWedaurxZinZitDwJm6O
+	oLWO6JXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvgzf-0000000739s-17qU;
-	Thu, 26 Feb 2026 19:25:51 +0000
+	id 1vvh62-0000000745M-2p6r;
+	Thu, 26 Feb 2026 19:32:26 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvgzY-0000000739B-3Zca;
-	Thu, 26 Feb 2026 19:25:47 +0000
+	id 1vvh5z-0000000744a-0Ugd;
+	Thu, 26 Feb 2026 19:32:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772133940;
-	bh=b9CvPoj/OtYglTXhUk/6DhyMwP9/PO1MO0jnGKsTsQ0=;
+	s=mail; t=1772134336;
+	bh=9MBr5ZPC2TE/CDy6F2FbkOZokAWc7FQXeYBCGXJxNM4=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=C6hv5SOEnGEyc4i5YDQElhLZZq/FiXxc2KIFBXihMkdim925S8EvIKUFysmfABL8O
-	 +FBmB87uICQCxiYTwJ1dm1vLrYdglFHnE9Iv4b/OR1batQ8rToFwedPo2FBNwfgWLO
-	 NaTp/rjULbDhfKEwVh56CRp7P09hq68tTbbB3Q+4hcDQTASXNG9KI8LgYoD+Kn4Ans
-	 tUUjEoAiMQpi+enQ9gq69HD8Tid1qAp6ZMFEsE7gBmAlzktojsEAmHJqQK/z7CzRsj
-	 wbQCOaIZq6DXTRon5mNXUZ86oFag4bxQvy5xeT+IrnaErssD/AeU2FZk96WNYBVFUq
-	 +oh4CZwTctFKw==
+	b=GcbB9sEt4Bx/JKfh6yi5lpJSxUjdin5mim370TLL/pXYmlKpkZJuLx6vey2IObdx0
+	 fLuW+TZ7Wm4fQBIlFsnvA4fBnRgrFRnKUuGms5mH9qAxmBkYyuaTY9LJ/c5tzOCXJO
+	 thyOCV1mX9ioU9xCJSdsObxwr16ylyi55T09zERdgCTuJ8g6nfFY7EXg4NtQe2U//V
+	 ktys/7HcgU93cnKRx6KnMHKAdvT0zcRqY06UK3YybJATWRPJjFQhdjxC9mZgq1XVmg
+	 XeXzgI8v0UpjUiWAxplEfSRFQNdZ7rxtnt46GjwAxXxTYgNQRiDFrsV1EB5mVSiC7l
+	 ok8115Ft+RcJA==
 Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id EB74017E005F;
-	Thu, 26 Feb 2026 20:25:37 +0100 (CET)
-Message-ID: <e8ed4c2bb4f1543a4d2cf75b28fab157332a3e17.camel@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE3BF17E005F;
+	Thu, 26 Feb 2026 20:32:13 +0100 (CET)
+Message-ID: <7ebcdc0200ad9ac0802e4839207e52d72f9af9aa.camel@collabora.com>
 Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add
  alternative reg-names order for RK35{76,88}
 From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, Rob Herring	
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova	
+To: Krzysztof Kozlowski <krzk@kernel.org>, Cristian Ciocaltea	
+ <cristian.ciocaltea@collabora.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,  Detlev Casanova
  <detlev.casanova@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
  <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>
 Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
 	linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
 	linux-media@vger.kernel.org
-Date: Thu, 26 Feb 2026 14:25:35 -0500
-In-Reply-To: <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+Date: Thu, 26 Feb 2026 14:32:11 -0500
+In-Reply-To: <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
 References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
 	 <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
+	 <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
 Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -78,8 +80,8 @@ Organization: Collabora Canada
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_112545_102206_8114E4CD 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20260226_113223_992424_FF335731 
+X-CRM114-Status: GOOD (  29.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,105 +93,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1012648018719214213=="
+Content-Type: multipart/mixed; boundary="===============8228547714180950061=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============1012648018719214213==
+--===============8228547714180950061==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-oG/QpE1zaXLEWLDnfuQm"
+	protocol="application/pgp-signature"; boundary="=-GomJ4AQ9DRoD/qLotM0n"
 
 
---=-oG/QpE1zaXLEWLDnfuQm
+--=-GomJ4AQ9DRoD/qLotM0n
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le mercredi 25 f=C3=A9vrier 2026 =C3=A0 14:19 +0200, Cristian Ciocaltea a =
+Le mercredi 25 f=C3=A9vrier 2026 =C3=A0 13:26 +0100, Krzysztof Kozlowski a =
 =C3=A9crit=C2=A0:
-> With the introduction of the RK3588 SoC, and RK3576 afterwards, the
-> 'link' and 'cache' register blocks have been provided for the video
-> decoder unit in addition to the existing 'function' one, which now shows
-> up in between them (from address-based ordering point of view).
->=20
-> However, the binding does not properly describe this hardware layout, as
-> the new blocks are listed after the old one.=C2=A0 Therefore it breaks th=
-e
-> convention expecting the unit address to indicate the first register
-> range.
->=20
-> Since the binding changes have been already released and a fix would
-> bring up an ABI break, mark the current 'reg-names' listing as
-> deprecated and introduce an alternative 'link,function,cache' one.
->=20
-> Additionally, drop the 'reg' description items as the order is not fixed
-> anymore, while the information they offer is not very relevant anyway.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-> ---
-> =C2=A0.../devicetree/bindings/media/rockchip,vdec.yaml=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 | 19 ++++++++++++-------
-> =C2=A01 file changed, 12 insertions(+), 7 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b=
-/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 809fda45b3bd..3f6072e8baa5 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -28,16 +28,21 @@ properties:
-> =C2=A0
-> =C2=A0=C2=A0 reg:
-> =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
-> -=C2=A0=C2=A0=C2=A0 items:
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The function configuration=
- registers base
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The link table configurati=
+> On 25/02/2026 13:19, Cristian Ciocaltea wrote:
+> > With the introduction of the RK3588 SoC, and RK3576 afterwards, the
+> > 'link' and 'cache' register blocks have been provided for the video
+> > decoder unit in addition to the existing 'function' one, which now show=
+s
+> > up in between them (from address-based ordering point of view).
+> >=20
+> > However, the binding does not properly describe this hardware layout, a=
+s
+> > the new blocks are listed after the old one.=C2=A0 Therefore it breaks =
+the
+> > convention expecting the unit address to indicate the first register
+> > range.
+> >=20
+> > Since the binding changes have been already released and a fix would
+> > bring up an ABI break, mark the current 'reg-names' listing as
+> > deprecated and introduce an alternative 'link,function,cache' one.
+> >=20
+> > Additionally, drop the 'reg' description items as the order is not fixe=
+d
+> > anymore, while the information they offer is not very relevant anyway.
+> >=20
+> > Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> > ---
+> > =C2=A0.../devicetree/bindings/media/rockchip,vdec.yaml=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | 19 ++++++++++++-------
+> > =C2=A01 file changed, 12 insertions(+), 7 deletions(-)
+> >=20
+> > diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml=
+ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > index 809fda45b3bd..3f6072e8baa5 100644
+> > --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+> > @@ -28,16 +28,21 @@ properties:
+> > =C2=A0
+> > =C2=A0=C2=A0 reg:
+> > =C2=A0=C2=A0=C2=A0=C2=A0 minItems: 1
+> > -=C2=A0=C2=A0=C2=A0 items:
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The function configurati=
 on registers base
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The cache configuration re=
-gisters base
-> +=C2=A0=C2=A0=C2=A0 maxItems: 3
-> =C2=A0
-> =C2=A0=C2=A0 reg-names:
-> -=C2=A0=C2=A0=C2=A0 items:
-> +=C2=A0=C2=A0=C2=A0 oneOf:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deprecated: true
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 description: Use link,functio=
-n,cache block order instead.
-> =C2=A0
-> =C2=A0=C2=A0 interrupts:
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The link table configura=
+tion registers base
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - description: The cache configuration =
+registers base
+> > +=C2=A0=C2=A0=C2=A0 maxItems: 3
+> > =C2=A0
+> > =C2=A0=C2=A0 reg-names:
+> > -=C2=A0=C2=A0=C2=A0 items:
+> > +=C2=A0=C2=A0=C2=A0 oneOf:
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: function
+>=20
+> This is confusing, I think I missed that in previous patch because it
+> did not leave that part or I misread the diff hunk - why do you allow
+> one entry?
+>=20
+> If the first entry is function, then all others MUST built on top, thus
+> this:
+>=20
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
+on
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+>=20
+> is not correct.
+>=20
+> No, you don't change the orders. So again, if you have such binding,
+> then you just fix the unit address leaving the binding as is.
 
---=-oG/QpE1zaXLEWLDnfuQm
+We need a better solution, its really helpful for the base address in these=
+ unit
+name matches the documentation. And specially with this version of the hard=
+ware,
+the link register is where you program the IP, the function registers are f=
+illed
+by the IP when the previous job completes (but can be access when there is =
+no
+running jobs for various reason too, hence exposing it).
+
+Nicolas
+
+p.s. I didn't read this message first, don't read by Rb as offending, I'll =
+hold
+as long as needed.
+>=20
+>=20
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> > -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
+on
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: functi=
+on
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: link
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: cache
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 deprecated: true
+> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 description: Use link,funct=
+ion,cache block order instead.
+> > =C2=A0
+> Best regards,
+> Krzysztof
+
+--=-GomJ4AQ9DRoD/qLotM0n
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 Content-Transfer-Encoding: 7bit
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaCeLwAKCRDZQZRRKWBy
-9IvUAQDfqcrOLtwQ1nyL9R5heMbr1tHkRWWhLf61QA2aJxBUdwD/XaDwTxRmRLzV
-6if3ujVa9dS6lCQLPv5IU64T9qq/sQw=
-=t0d/
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaCfvAAKCRDZQZRRKWBy
+9HpqAQDbpHxivpnNbaiKNBB2Wj7baGgUmfo4W5g7rJEyVOf2KwEArpUAgEYU4HGR
+tS7JVtGMiecpsCfIcEQ5zFoUMXMvFwQ=
+=7ewP
 -----END PGP SIGNATURE-----
 
---=-oG/QpE1zaXLEWLDnfuQm--
+--=-GomJ4AQ9DRoD/qLotM0n--
 
 
---===============1012648018719214213==
+--===============8228547714180950061==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -200,5 +240,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============1012648018719214213==--
+--===============8228547714180950061==--
 
