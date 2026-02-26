@@ -4,116 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BAE6FC5907
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 07:26:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2DEFFC5916
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 09:21:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kJt5Vcy43JjCzUx6mkFJ70OEVdItjoSMlbS6hxPgx1s=; b=IZjoRaeeWR6KZf
-	xqaTLEt991IElpJh5E6ZE8Zya3UQ6h1/oqa6whiIeJs3JimD17BNYr587IVShUG/dSmL9q2heh0l8
-	Px9GRMZmT87krHLxVZylDd/MAYiYuVHEcp8R+R5DtPCUA7uSVvwHDkIvrR5GchtAR5bw0hsRZOMYo
-	ZGmi8yhNUdn7dK8hFjzVohIzDA8JRy0hKULBPqDC2JN3g4moUnH2gfFnSKQfu/JeCB0ULG9JSZyZb
-	olrUmZoSOZMF6hh81n0jKtOJjc9K6r4Iqsn5VKE61HYZc6XWlRQmJhv3y178b3EE8kg1QYm2QN3O3
-	snQpQSqIKTtcatf1NnxA==;
+	List-Owner; bh=9E00uE19C6LJ3LQJpn9R/CZJAB5t8deWaQy1lHgNB/E=; b=3kbbCc5ZCJspfv
+	VfjLoKifAzzA6bocWXRbmQBnQGKm6sI+bO24luqoVOoqEdngeAmsdRnOFzhQc6Q9uyRYOuWyZjybb
+	mjDvf4o5cZtXipzhba6JEFaZ/OjXwChAxnM3oNN59307X8reXC2cRHvlRrtAPzJvWqmU5LkYSXLUs
+	KAR0DpK6Cv5Z6yEYMOVEeYUzVswOZiPmfc7dBrSlf/Se05Cs27B5yt00+JVaVPaus6QqPQZ/GtJUW
+	QaklX4cMw0ikwBrfxk1MuCZLWSIiFJ3rgCj8savPFsSxKazKPlCodhoQjADdQ793wFiyBULVmmC8O
+	FTYbDVvnXvmpgDK8f6nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvVlb-00000005ZaM-1ATy;
-	Thu, 26 Feb 2026 07:26:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vvXQJ-00000005l93-0sDA;
+	Thu, 26 Feb 2026 09:12:43 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvVlU-00000005ZZ0-48KO;
-	Thu, 26 Feb 2026 07:26:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C6A5B407CB;
-	Thu, 26 Feb 2026 07:26:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 39EEDC19422;
-	Thu, 26 Feb 2026 07:26:24 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772090787;
-	bh=d1ekx1O5rk7AZ28cppYV6jduPZz+ymIMOkMNMxR+F0c=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=fWZw6IPQAcBhOy3gZVNfFG1YmojfNnGVLmSd2X3yl+O0qQ3C4ees5x8un4OndWu79
-	 zuvzGS0L0S3Pxl3upIepa7hUrdZKqjdU9NBJWYSQbpeorj2njazwv7Swzj97xtw+Me
-	 3VZQ9V/0Nr0Yds/czAlIlbbxAGHMptEpOpCLVVuxu6bTBGnTxslyVokNq4Kp9xa6rJ
-	 /WoSq6Q4OL3xFkOZtapF2y4n0tt3H0QwLkS8YXCIghTXdbYdyM0vSI7PtahiPpMTYE
-	 oRXwXVzZdyoz9l/lGuN4Miisg8y+k9vgw/QtHnDw8ywC2Dwb4cqol7fJFgHwqUmdGN
-	 JrNgaol/63YXw==
-Message-ID: <12b30229-1c55-429d-8a3c-0d831c4d33ab@kernel.org>
-Date: Thu, 26 Feb 2026 08:26:22 +0100
+	id 1vvXQH-00000005l75-1voM
+	for linux-rockchip@lists.infradead.org;
+	Thu, 26 Feb 2026 09:12:42 +0000
+Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
+	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
+	(Exim 4.92)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vvXPh-0002CZ-Q5; Thu, 26 Feb 2026 10:12:05 +0100
+Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
+	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vvXPd-002hoS-2a;
+	Thu, 26 Feb 2026 10:12:03 +0100
+Received: from pza by lupine with local (Exim 4.98.2)
+	(envelope-from <p.zabel@pengutronix.de>)
+	id 1vvXPf-000000004RI-04J7;
+	Thu, 26 Feb 2026 10:12:03 +0100
+Message-ID: <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
+Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
+ enum
+From: Philipp Zabel <p.zabel@pengutronix.de>
+To: Maxime Ripard <mripard@kernel.org>, Nicolas Frattaroli	
+ <nicolas.frattaroli@collabora.com>, Jani Nikula
+ <jani.nikula@linux.intel.com>,  Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
+ <tzimmermann@suse.de>, David Airlie	 <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>, Harry Wentland	 <harry.wentland@amd.com>, Leo Li
+ <sunpeng.li@amd.com>, Rodrigo Siqueira	 <siqueira@igalia.com>, Alex Deucher
+ <alexander.deucher@amd.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
+ <christian.koenig@amd.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Andy Yan
+ <andy.yan@rock-chips.com>, Liviu Dudau	 <liviu.dudau@arm.com>, Chun-Kuang
+ Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>,  Heiko =?ISO-8859-1?Q?St=FCbner?=	
+ <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai
+ <wens@kernel.org>,  Samuel Holland <samuel@sholland.org>, Dave Stevenson
+ <dave.stevenson@raspberrypi.com>,  =?ISO-8859-1?Q?Ma=EDra?= Canal	
+ <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance	
+ <kernel-list@raspberrypi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-sunxi@lists.linux.dev
+Date: Thu, 26 Feb 2026 10:12:02 +0100
+In-Reply-To: <20260224-drm-rework-color-formats-v1-1-bebc76604ada@kernel.org>
+References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
+	 <20260224-drm-rework-color-formats-v1-1-bebc76604ada@kernel.org>
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] media: dt-bindings: rockchip,vdec: Add alternative
- reg-names order for RK35{76,88}
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
-References: <20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com>
- <20260225-vdec-reg-order-rk3576-v3-1-5a2ebe1b11a8@collabora.com>
- <9bb74438-e759-46a7-9fa1-2c6b1fced76b@kernel.org>
- <d5a244f3-5f1b-4bcb-8042-646320a47b6c@collabora.com>
- <85793250-425d-40da-b382-ada9fc7b50e1@kernel.org>
- <72a72c50-4816-47d4-b533-be4b7feee027@collabora.com>
- <20260226-screeching-manatee-of-amplitude-6dfbf6@quoll>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <20260226-screeching-manatee-of-amplitude-6dfbf6@quoll>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
+X-SA-Exim-Mail-From: p.zabel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260225_232632_172637_378D77A2 
-X-CRM114-Status: GOOD (  16.02  )
+X-CRM114-CacheID: sfid-20260226_011241_493000_0A43ED47 
+X-CRM114-Status: GOOD (  26.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,58 +100,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 26/02/2026 08:25, Krzysztof Kozlowski wrote:
-> On Thu, Feb 26, 2026 at 12:26:37AM +0200, Cristian Ciocaltea wrote:
->>>> Sorry, but I don't quite get why would this be a better approach than just
->>>> properly list the items according to the HW layout, i.e. following the
->>>> address-based ordering?
->>>
->>> We always expect the list to grow, to have common set. That's rule given
->>> during reviews multiple times. For multiple reasons, also explained
->>> (consistency, maintenance and actually proper description of hardware
->>> like the main reg address space).
->>>
->>> Probably this was also given to that binding during discussions when it
->>> was upstream, so your change reverts previous discussion and to that I
->>> do not agree.
->>
->> Thank you for detailing this, I get your point now.
->>
->> After digging a bit further, it looks like the "function" naming has been
->> introduced as part of the RK3588 support via commit c6ffb7e1fb90 ("media:
->> dt-bindings: rockchip: Document RK3588 Video Decoder bindings").
->>
->> Morever, it also sets `reg-names: false` for all the SoCs other than RK3588 -
->> sorry for missing this initially.
->>
->> Hence "function" wasn't used at all in the context of the older SoCs, while on
->> RK3588 & RK3576 there is no indication that "function" should be treated as the
->> main address space or anything like that.  E.g. RK3588 TRM clearly shows the
->> "link" range at the top of the listing, starting at video decoder unit base
->> address:
->>
->> --------------------------------------------------------------------------------
->> Config Register                         |   Base addr
->> --------------------------------------------------------------------------------
->> VDPU381 core0/1 link table config base  |   VDPU381_core0/1_base+0x000
->> VDPU381 core0/1 function config base    |   VDPU381_core0/1_base+0x100
->> --------------------------------------------------------------------------------
->>                                         |   VDPU381_core0/1_base+0x600 for Y channel
->> VDPU381 core0/1 cache config base       |   VDPU381_core0/1_base+0x640 for C channel
->>                                         |   VDPU381_core0/1_base+0x680 for head channel
->> --------------------------------------------------------------------------------
->>
->> Assuming the reasoning above is now good enough to move further with the
->> proposed approach, I can prepare a new revision dropping the unnecessary
->> one-entry item from the reg-names, while keeping all the rest in the series as
->> is.
+On Di, 2026-02-24 at 11:58 +0100, Maxime Ripard wrote:
+> The EDID parsing code initially introduced the DRM_COLOR_FORMAT_*
+> defines to represent the sink capabilities. Since a given sink could
+> support multiple formats, it was first defined as a bitmask.
 > 
-> Yes, with drop of the oneOf this would be fine.
+> However, the core and drivers have since leveraged those defines to
+> represent both the supported formats but also the current format being
+> used.
+> 
+> Considering the latter case, the more natural, and consistent, thing to
+> do would be to create an enum of all the possible formats, and then list
+> the supported formats using a bitmask of the individual enum values.
+> 
+> Let's create a new enum following that pattern, drm_output_color_format,
+> while maintaining the DRM_COLOR_FORMAT_* compatibility to make the
+> transition easier.
+> 
+> Signed-off-by: Maxime Ripard <mripard@kernel.org>
+> ---
+>  include/drm/drm_connector.h | 42 ++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 34 insertions(+), 8 deletions(-)
+> 
+> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> index 7eaec37ae1c735334afa7dad15a38cf0c8b761b8..c67539708f636ae3905bb8424c63799bd1811f28 100644
+> --- a/include/drm/drm_connector.h
+> +++ b/include/drm/drm_connector.h
+> @@ -554,10 +554,35 @@ enum drm_colorspace {
+>  	DRM_MODE_COLORIMETRY_RGB_WIDE_FLOAT	= 14,
+>  	DRM_MODE_COLORIMETRY_BT601_YCC		= 15,
+>  	DRM_MODE_COLORIMETRY_COUNT
+>  };
+>  
+> +/**
+> + * enum drm_output_color_format - Output Color Format
+> + *
+> + * This enum is a consolidated color format list supported by
+> + * connectors. It's only ever really been used for HDMI and DP so far,
+> + * so it's not exhaustive and can be extended to represent other formats
+> + * in the future.
+> + *
+> + *
+> + * @DRM_OUTPUT_COLOR_FORMAT_RGB444:
+> + *   RGB output format
+> + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR444:
+> + *   YCbCr 4:4:4 output format (ie. not subsampled)
+> + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR422:
+> + *   YCbCr 4:2:2 output format (ie. with horizontal subsampling)
+> + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
+> + *   YCbCr 4:2:0 output format (ie. with horizontal and vertical subsampling)
+> + */
+> +enum drm_output_color_format {
+> +	DRM_OUTPUT_COLOR_FORMAT_RGB444 = 0,
+> +	DRM_OUTPUT_COLOR_FORMAT_YCBCR444,
+> +	DRM_OUTPUT_COLOR_FORMAT_YCBCR422,
+> +	DRM_OUTPUT_COLOR_FORMAT_YCBCR420,
+> +};
+> +
+>  /**
+>   * enum drm_bus_flags - bus_flags info for &drm_display_info
+>   *
+>   * This enum defines signal polarities and clock edge information for signals on
+>   * a bus as bitmask flags.
+> @@ -697,14 +722,14 @@ struct drm_display_info {
+>  	/**
+>  	 * @subpixel_order: Subpixel order of LCD panels.
+>  	 */
+>  	enum subpixel_order subpixel_order;
+>  
+> -#define DRM_COLOR_FORMAT_RGB444		(1<<0)
+> -#define DRM_COLOR_FORMAT_YCBCR444	(1<<1)
+> -#define DRM_COLOR_FORMAT_YCBCR422	(1<<2)
+> -#define DRM_COLOR_FORMAT_YCBCR420	(1<<3)
+> +#define DRM_COLOR_FORMAT_RGB444		(1 << DRM_OUTPUT_COLOR_FORMAT_RGB444)
+> +#define DRM_COLOR_FORMAT_YCBCR444	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR444)
+> +#define DRM_COLOR_FORMAT_YCBCR422	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR422)
+> +#define DRM_COLOR_FORMAT_YCBCR420	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR420)
 
-I meant, the "one item option" in oneOf.
+Can we move this? Either up, directly after drm_output_color_format, or
+down, directly before color_formats.
 
-Best regards,
-Krzysztof
+I think 8d70f395e6cb ("drm: Add support for a panel-orientation
+connector property, v6") didn't separate the two on purpose.
+
+>  	/**
+>  	 * @panel_orientation: Read only connector property for built-in panels,
+>  	 * indicating the orientation of the panel vs the device's casing.
+>  	 * drm_connector_init() sets this to DRM_MODE_PANEL_ORIENTATION_UNKNOWN.
+> @@ -712,14 +737,15 @@ struct drm_display_info {
+>  	 * fb to compensate and gets exported as prop to userspace.
+>  	 */
+>  	int panel_orientation;
+>  
+>  	/**
+> -	 * @color_formats: HDMI Color formats, selects between RGB and YCrCb
+> -	 * modes. Used DRM_COLOR_FORMAT\_ defines, which are _not_ the same ones
+> -	 * as used to describe the pixel format in framebuffers, and also don't
+> -	 * match the formats in @bus_formats which are shared with v4l.
+> +	 * @color_formats: HDMI Color formats, selects between RGB and
+> +	 * YCrCb modes. Uses a bitmask of DRM_OUTPUT_COLOR_FORMAT\_
+
+Maybe s/YCrCb/YCbCr/ for consistency?
+
+> +	 * defines, which are _not_ the same ones as used to describe
+> +	 * the pixel format in framebuffers, and also don't match the
+> +	 * formats in @bus_formats which are shared with v4l.
+>  	 */
+>  	u32 color_formats;
+>  
+>  	/**
+>  	 * @bus_formats: Pixel data format on the wire, somewhat redundant with
+
+regards
+Philipp
 
 _______________________________________________
 Linux-rockchip mailing list
