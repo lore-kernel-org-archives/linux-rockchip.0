@@ -4,85 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9912FFC5931
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 11:18:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DB7EFC592F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 11:20:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=l9JccbzxTUDYrSii6gE4GBs60XwH0bnd6qPrMhTphXA=; b=dVSIPvdaQG9kBL
-	RRu34DnlcTJeEL9CYk0KJxDFv+V6ghhzbKIJuvJx5EsH5G8nmsip7Sqfjj20Zr77/9kxl/+upoXvK
-	72RprKu2j4Cvrezs5BbdzourBNYk5Q7e1+eLzjiigpTkF72dOkiDPwdVS728mGlDryMeziH9QaOvC
-	weiXLlUQkc/JbWQU/pG2gAZ1Nxa4l0AHbavyONmT4C7IIOlrvb7q+7LJsVY915vBSGcahLD1Rysnr
-	KXFW5uzLYCghfq6RWRZ8pUtGOdTa60XsQQlODeS6F2W8EEQEiqptVELUqTC0kwZ7llQZ12cmSCvam
-	W/gt8p9sjCZ6l8fu3JyA==;
+	List-Owner; bh=5jrNDvSVLq+i2A13LNjeuhPS0ZXpgODSzJ+90gKIE9I=; b=UPZeY1k5A9wh3J
+	gtgOyNGdFODTXRFOLGSyRm4PfJZCsceJdRMRrSv1GNb9wmEm2f8TXI1MgRA+uWyyFs8+m5CR+Ma6w
+	1GHcgEyK9xaL1upcanF97+3SJFyxQX+HKEAiL+MCVLxK5aqtX8XccrH61Jm4dBxWro0S/YodRkMZd
+	GJELFem9nSp12k4JqHHBkXpKVewe6ewK9KXdkfRDsZaffc3jshriT5YFRYfpF857gQpYUmnUTo0LL
+	FTZy+nZDxKLEz6OoFFqIEAaS7h24aEzse2u04I5HFkeVNA0nstjx6OezqtLdhWAr+dFlfnS7Ki2/l
+	PbJrfyrnakwDeQshddGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYVf-00000005td6-1vVI;
-	Thu, 26 Feb 2026 10:22:19 +0000
-Received: from smtpbgau1.qq.com ([54.206.16.166])
+	id 1vvYKc-00000005rJg-1R4Y;
+	Thu, 26 Feb 2026 10:10:54 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvYVc-00000005tMJ-2Qxh;
-	Thu, 26 Feb 2026 10:22:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1772101267;
-	bh=DgV+mvUm8IpJAe3V6psRYsqd1U0j6hMyB1pSTvra9qo=;
-	h=From:To:Subject:Date:Message-Id;
-	b=p2qigWXHVToOrq5yAWU+jXL34ZD65EnL2BCJW/55cIqspm8WvKStsWBIODNBnPZ68
-	 NGQTbgxTysX0VW3bvGNBN86OWpVku9QMaCi5jUqt8V2ci3MmRGmPqRfuVqNGXNfygG
-	 ub+ftJOlve56kJdQPPBeOHVaqWHPX0jvCduBYvWY=
-X-QQ-mid: zesmtpsz3t1772101259tc37fa72a
-X-QQ-Originating-IP: XUt32+iXhT/CTaIUR8BrzXoFV26VlyMPKSo76kiWS8o=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 26 Feb 2026 18:20:56 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 16148220032706749095
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1vvYKU-00000005rI5-3Xgk
+	for linux-rockchip@lists.infradead.org;
+	Thu, 26 Feb 2026 10:10:53 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-824c9da9928so407384b3a.3
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 Feb 2026 02:10:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772100644; x=1772705444; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=gkELXJ9KhXHMT5a1efTvXnueLkeN4tzHP27QeEGUl9c=;
+        b=bEETp4FXE5Y9lqUGA+23vKDNIltflaJpvoLQHPeUSvqVmV86JwzFJ9ssvGLb+R8hrr
+         qnu88/Hb1PmEgcpbYGRuGZE/6sny3RM24IYLMhUu8uY0zD78bMgoy4NbCWtLVsf5TBmU
+         qNvoLeUEFr96rfe5nE95bkXyVw3LhI0sXv6ut6MfPJBIuYGT9WvzbjTq51hMMfw483uJ
+         +lifg8B7qm97kUcDOsNlTHgzsxDO4NNuSwC7wi4EeTkafNLvIxrCuj3n/aPEQxORUuk/
+         RuZBm5SyFvuyG2seWLhnnD568CLf8RntFT0JTOlZmBCCqxT+/qfNfkcMSofCLO8SE165
+         vW1g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772100644; x=1772705444;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=gkELXJ9KhXHMT5a1efTvXnueLkeN4tzHP27QeEGUl9c=;
+        b=E2Wan8cHS0OHg513MOmGQD0fHwKjfdkVknoDIqttSLfDcChqeCTM5FMLuDUXU5VCkA
+         9nQL3JdhPAsK7/ksykAdysOJ4WwcCumX4VFwl+awNmIP3TqHEu7KGdlXxLVTTAbqt3cQ
+         JXWuBXCfMh5YTPec2UxwSSUUr1x1kDJ7x42sXGR1gyevkfGGE4QZH9IfNyLkO/G3/8ZY
+         i7Aojj73f2/SykvZXvKEdP1iPNzn8z+KgXlW5Psx+16S2fIy87AttoUvjcVvjYreQf7i
+         zH4t8eUtq9y7NuP4DvmFztAdjjX8fOZM4aNhzxEeTgInQONz7XC/EITAUrHr1OMhgD93
+         aBxQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVCWx55TCSuqB2ry4NHV4iCR2P3kpMWCAWC05vR4YdHb9LBj/3vuPNN4SHkWGWYlOV5Mkj6jTJ7Mvy4ApeL0w==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yy4FUQkDAfA7bbZzebBX9beLRatbdAc+7Sj62ew85jdaHYaoK9Z
+	xbuVf89XKrw0ZsVQHzeB69m8gmu5E8QoewvSDMeND/KMM1iwoeez8Nr4
+X-Gm-Gg: ATEYQzwe+BcVrcr3YdV8Prp5zoimHckw6Mynj6VvGIqOE+tu2E81wjpPnrBVt+VpPuv
+	br1EBesRMdMsiG0UP+DgxhZKPXkQLDRXuITRug4ZIF9E3HTO+tYuuvR6XyRk4NLmOW7wwJL7eVj
+	VkEi/HwUNHEKy/h9fR57PvaUfcB+9Dni4uJOTbE+n5YPSbTM+EUAm+fnj2p4k8b9A573Kg1QhFQ
+	zgP3Dohh9ZRHUjb1Bft1NIB28XEx1f0hKmcZPz0tbk8VKsirRht0NSeMX6HPW1HA4TwUJtrwVPT
+	n1FP6lUePGM/LwqKnkzVKOd2CqXtk1szBRdX8OpUeF8WxTUTcjfx+NONBgXtaRg9z0Xh1qw24vk
+	3neJSDoZRrzz0nRi256Y5sv6/PzHOy3OC82/WE6FI3r1HCZ+kkG7WRzBoNd/WkQeRDgrseOc7o9
+	WSqrJdHb282Eiaa8HgUKs=
+X-Received: by 2002:a05:6a00:748d:b0:81f:4943:b853 with SMTP id d2e1a72fcca58-826daa0cdc6mr13672752b3a.38.1772100643876;
+        Thu, 26 Feb 2026 02:10:43 -0800 (PST)
+Received: from rockpi-5b ([45.112.0.78])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82739dabd43sm2252704b3a.25.2026.02.26.02.10.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Feb 2026 02:10:43 -0800 (PST)
+From: Anand Moon <linux.amoon@gmail.com>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Alexey Charkov <alchark@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>,
 	Shawn Lin <shawn.lin@rock-chips.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Fix sdmmc pwren pinctrl for rk3576-evb2
-Date: Thu, 26 Feb 2026 18:20:52 +0800
-Message-Id: <20260226102052.63-1-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MxdW4jxL6NvXtbscdy2cNxr11uxIvhz3KVTIttkwLxU6wTFpLvIv6Xyj
-	W6wBSW5kwjjJ01piLqQ9N0MMVyKo3PN+Rz+jwjFfDCyjNg+EABTLRE3AnKLguCeFkwTVtWO
-	O8yxKE5Uu3nEoMdJSPgX5+7X0iy8ZlpKdyA6W8fNb26lLHEtR4NvqZfBqPzeEquRCRjtW6X
-	ga7QjruX1S7/60jTVf4ruJxAtA+v4WSERt79tW11rB54+qji2Q3GpL/oukJt79Rq6CEZL3m
-	UiipNEY87ejrGpnmVyO3qTZRp8r+4RxCHMFs6Q7FmCksmowgZch3pGc4c6XBeKNUZirk6RP
-	h2xqcdlSQjhxxQ4RtrHaCG1Wj+cPeMjtPqyDmgX4HhCGG+Cuja77wrd6RkRuEiRDogX6lpb
-	62YP41CU4QQAR87knathLMnbR1v9SS15RfIZnfSXHSSPyq+vWs0YPhU9u3JcVQLRsPUn76Q
-	siaF8pk89flJoIuZFDURLSHalHt+wC7QMpbDp54USPbR9ZhPtA+8jSAxQHmFVC09K3M0pYQ
-	a4lMoBWdd+zPu082NglpM3HpU5+B2vqeTDSZp7eZGNNyTZQo3T9CEWkzqrx6A7FGs9JoRTe
-	Ynn+zGA9v1HTHkn1mgOIEYTE9WiLNJy8JWsvJEZWMYKvI6b6mozeNO5IpDfy2/Mcag6rYiv
-	ziSxq07WDSfNz0Xaxk3piGBCb/CqKyI8E/tKWlkFOboGf3TCUJrVvIOlW46Ew7QnZLQYJp9
-	BcdJjkPvrnimfwu5v/wgVoT6wPdPUaFUpw6+7lJly7BRj6y8FPDVhnDkxR7HB8px0ackaxO
-	K6qZNa6tVqd0vbACYZOIxxMqzt1O7yZEmSfzRB1LloUKFAjFdualZxsX/uh1zsMROaherTH
-	7AOsDfgnqCjmG7ZvvQiu2hD4Z/rN4bax9SCgUdVxD2TH15cIaCQJ985rRymMwxwQFPLWBGs
-	zguzUujTdVIjxwOwsrlvd6ipnIiGkiy8it8delPd9lwOoZUaDPH2QaEW4xy8v+Lvro4+VGV
-	VyL8H8QQ==
-X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
-X-QQ-RECHKSPAM: 0
+	Hans Zhang <18255117159@163.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	linux-pci@vger.kernel.org (open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	Grimmauld <grimmauld@grimmauld.de>
+Subject: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+Date: Thu, 26 Feb 2026 15:40:23 +0530
+Message-ID: <20260226101032.1042-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.50.1
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_022217_025455_79FD82DC 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260226_021046_904160_905832FC 
+X-CRM114-Status: GOOD (  12.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,41 +105,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Rockchip DWC PCIe driver currently performs synchronous link training for
+combo PHYs (PCIe 3.0/2.0 and SATA 3.0) during boot. This process waits for
+the link to be fully established, adding several milliseconds to the boot
+sequence. To optimize boot time, this change enables asynchronous probing,
+allowing link establishment to proceed in the background while the kernel
+continues probing other devices.
 
-In rk3576.dtsi, sdmmc0_pwren is configured as part of the sdmmc pinctrl.
-However, on the rk3576 evb2 board, sdmmc0_pwren is used as the regulator
-for vmmc-supply. Therefore, we need to reassign the sdmmc pinctrl and
-remove sdmmc0_pwren to avoid conflicts.
-
-Cc: Shawn Lin <shawn.lin@rock-chips.com>
-Fixes: 86a82f7a7eed ("arm64: dts: rockchip: Add rk3576 evb2 board")
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Cc: Grimmauld <grimmauld@grimmauld.de>
+Cc: Niklas Cassel <cassel@kernel.org>
+Tested-by: Grimmauld <grimmauld@grimmauld.de>
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts | 2 ++
- 1 file changed, 2 insertions(+)
+v3: update the commit message to describe the changs.
+    added tested by Grimmauld.
+    https://lore.kernel.org/all/20240809073610.2517-1-linux.amoon@gmail.com/
+v2: update the commit message to describe the changs.
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
-index 6bdc232ab267..98d5d00d63b5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
-@@ -951,6 +951,8 @@ &sdmmc {
- 	disable-wp;
- 	no-sdio;
- 	no-mmc;
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sdmmc0_clk &sdmmc0_cmd &sdmmc0_det &sdmmc0_bus4>;
- 	sd-uhs-sdr104;
- 	vmmc-supply = <&vcc3v3_sd>;
- 	vqmmc-supply = <&vccio_sd_s0>;
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 5b17da63151d5..c31e0e9848327 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -746,6 +746,7 @@ static struct platform_driver rockchip_pcie_driver = {
+ 		.name	= "rockchip-dw-pcie",
+ 		.of_match_table = rockchip_pcie_of_match,
+ 		.suppress_bind_attrs = true,
++		.probe_type = PROBE_PREFER_ASYNCHRONOUS,
+ 	},
+ 	.probe = rockchip_pcie_probe,
+ };
+
+base-commit: f4d0ec0aa20d49f09dc01d82894ce80d72de0560
 -- 
-2.51.1
+2.50.1
 
 
 _______________________________________________
