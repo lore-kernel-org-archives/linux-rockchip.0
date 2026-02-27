@@ -4,78 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4690FFD9E19
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Feb 2026 22:41:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4179BFD9E3C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 05:35:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F/Umvxomi1WxAnzodnUfx5yr+VcJbiFNDUsU2dvnZHc=; b=F31O2BwG+APjQevQt0XZpF56Tq
-	D73BNW0EWmYyG4OA4fgaAJoXh3W3qPJU9nJczk0z41EwAsGKOqdilNIN+wVaU2vvdzRpc16OOC2LF
-	2WEYMKLpiWmrIWv/YOx6ScCrceTgzR+WtgdXNFGQpLAEqb2QnFSxgxsYl9k6nH0LmPQI9dnG8/wB+
-	Idp8P3HcuRwKB3+U+rkndEeLAPTUyBYexniaXX9luTPHc7NV/Ha14MKwYLXAT9CSlrPqh1vDlhNdt
-	uF71IvOY87Z+DomDnePACyh87f0OF9Lu/9jBc8TD9xMChs6CSdhpYzaiPvQIaeb+zEjo8Kt0gVJtT
-	d9O15aEw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=2bAJ6X2szfsejthmqHayR7W91w0YaE3aHtZWBZlbw/8=; b=dhkTGv2ATrOU9z
+	eFBmAooy3kMk6YK7fOHzqAZtIUpOumtBSWYd8x7GCqqqioI95TkxwoDmULBHaNo/4YWkafEmXAXTk
+	O1FsJYrGmnz3ZWMZYwXX6VmfKgqtNJXVP9bXg0IZGT2+Cav1m2tyX7aeC4B7nh5arfeG7NLhN5TI0
+	rQQfST+DXnGkno2R7k8FCnvhfnjVpznKzjHY0oVhNY5pWYwilgwgcnA2YA9oESo7JwYvyFSHWDvtw
+	8YeTBxTGf+dLL2UOsY4d4C6iBmc4rK0t15bYsm/coKCq7g+eE9LpJxbwi+pPflYx7r9YIiYNaEQOg
+	UbN/Xzan65QfFGEfTeEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvk30-00000007Jy2-3vZW;
-	Thu, 26 Feb 2026 22:41:30 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vvqVy-00000007j1A-3UyS;
+	Fri, 27 Feb 2026 05:35:50 +0000
+Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvk2x-00000007JxM-2NjB;
-	Thu, 26 Feb 2026 22:41:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772145684;
-	bh=8qI83zGvdJ8aCzsFj2jHkPE3OSgD7zlBFk/sa+h+2G8=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=gjbHlz8+ivSHsLj9rNGB2zF93SkUpQT2E+OpxeCK+Edh8oYUvOAWmWhH+C3w5pEjq
-	 kMaBqfu5xT9pjh86XKrdzgwFfyfEeRiZ1HzKfHxn0lgJvA8Cvs2YrsU4W+wjpkizj2
-	 L+Ir/66LNl7rA0jcO6UbGMv5/RwCG/6QbnsDm+lKfNnO7QMy1B8HY51PSkLbOwgd12
-	 frNZKl5BhbUU66ViCjgUk6W5gkQ/ZcJM408JUb9fLYMlP+KLaUMb2GECbMDitCgI2l
-	 m2Ped3yrRnckUKFtPgZe/M/8wvFBcJeswPhZ46zKOx2X3yl4uGQihAbVpK/ZgX/ciZ
-	 lmSyO8xwAdXXA==
-Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CA5BD17E0029;
-	Thu, 26 Feb 2026 23:41:22 +0100 (CET)
-Message-ID: <328f330b4316f60241eb8a9935a46cc148fb4ae8.camel@collabora.com>
-Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
- alternative reg-names order for RK35{76,88}
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Conor Dooley <conor@kernel.org>
-Date: Thu, 26 Feb 2026 17:41:20 -0500
-In-Reply-To: <20260226-ferocious-saturday-0e1f9bb28ec5@spud>
-References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
-	 <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
-	 <20260226-salute-threaten-a3eabb232396@spud>
-	 <429f3c7aa22eccffedbf8db6aa91bee3dd13814a.camel@collabora.com>
-	 <20260226-snide-foil-a05e1aa156a8@spud>
-	 <3d28c699e47f606bad46bb6447785badace37793.camel@collabora.com>
-	 <20260226-ferocious-saturday-0e1f9bb28ec5@spud>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1vvqVw-00000007j0W-106N
+	for linux-rockchip@lists.infradead.org;
+	Fri, 27 Feb 2026 05:35:49 +0000
+Received: by mail-vk1-xa2e.google.com with SMTP id 71dfb90a1353d-56a8584e3a2so1680914e0c.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 26 Feb 2026 21:35:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772170546; x=1772775346; darn=lists.infradead.org;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=cPTGvYA/GKdj9wqcQAjT8fmJEQ+pcQdfunMA1ORun7I=;
+        b=RGlJufTQvdjhlNKEhunc+8uI470eIad73/62dyrbP2/FTSeoa8esJKImTse0geMHtO
+         uBLW+U9LyIzZV8Fh1UV2vgednwYREh2Zebc7PX+/q0HpnFmKWU3XOZrnqd0hYa62UAnM
+         k20xC+K0/YfNUXe0u4THsdgiMbl0Abmip6NAkIEjcnCxY51dR7Uwd+GkluvKdXWAEql6
+         gSnZhOuLc9lmyiIGE+juniaL+sHgApglaVd3u1grEnNrgEVwW4obYuga5BZznUxHLJRh
+         5OQrHCMF01icXAc47GvlHB54QsN0VTmI0rje8Z6RJLA1zp0a9ctSWQLV7N/Uty/nc2We
+         sfkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772170546; x=1772775346;
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=cPTGvYA/GKdj9wqcQAjT8fmJEQ+pcQdfunMA1ORun7I=;
+        b=akk9aGIHM7YlgpRyaOHmgdfkMxUwt0fqEZgJM/Wcx3iOvIai9mjIz2ZeESrtC9zHfT
+         59ADw4xV9h0F07MRqFaFgDQW7JiZg8j4RqyrJNxtJCMLr02O/6rJDCTYbba1gcSwJmCs
+         JijLYklm5KGsfQ+RTmZAXMObQk0u/KNZSFzRgUE2tN0E7lARRw/7P9xL/p4GJ4TFrHdX
+         MZwZXvh1I98PKhm2BDWLY6tnhTW2a5koHKfrEi7D9CmWBQpS7k5JO8pv6lDN1Mue9iiF
+         lSoaJKkS4PKo+zsIYLpu+79vSRRMzZdYhJad1DXRrpAn3QeJORRmTm50XnEWjsZhyiH3
+         c5Fw==
+X-Gm-Message-State: AOJu0YxJqSHkwefUoYqfYT6HCza/2KWK2woXS47n7BDJMN07WL8C7Uu9
+	89Cb/zhUm6HrkALTtPAwEq0ljypBbaZxP+yeirBRQG8t+RlxdxXfq6pC
+X-Gm-Gg: ATEYQzzmqyj81nf9q5eeeyaRoOVSks69EtwI5fQKZhMkESJ5pNJKtGlPZK2SkwSvtBx
+	LMe0pzjCVnA4bjloFXKV438fGFwaOPEBa40ARGxKydR+Pk73u1HBiA4sDImf9alH+cCewB9Ake8
+	xROI49bJGABvtDc9FrGiIHkNVJtuXZXqduS1NykXLudwGZWmRoDWsw5wPX8c93G7MzTtOPYIl8S
+	Nd8VWCv4cYo0ZlUxurza3++RGo9eLy42nz/PkhSRWo9+VA6OM1C2rE5txy3DGEZCeh/egZSGUy6
+	+78hoCUgU+G4B2IGIP1d3DxP/PQlOAMRZERYa9zmS5NVE5eFYY8MfDk6soHvZxyFwIk4GGOgQav
+	dhq59litgX9Q+GRNL/PBS9hiP10FL4A9ofD4vAJwwG+Amy0cgDyyr1Ik9MckFyhesqXtm9IXlSJ
+	F+fmRGdFC1+g==
+X-Received: by 2002:a05:6122:4219:b0:566:2fc9:6c89 with SMTP id 71dfb90a1353d-56aa0a890a1mr1063240e0c.10.1772170546147;
+        Thu, 26 Feb 2026 21:35:46 -0800 (PST)
+Received: from geday ([2804:7f2:800b:feb1::dead:c001])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-56a9204b91esm5028673e0c.11.2026.02.26.21.35.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 26 Feb 2026 21:35:44 -0800 (PST)
+Date: Fri, 27 Feb 2026 02:35:31 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Geraldo Nascimento <geraldogabriel@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>
+Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v4 0/4] PCI: rockchip: 5.0 GT/s speed discouraged by Rockchip
+Message-ID: <cover.1772169998.git.geraldogabriel@gmail.com>
 MIME-Version: 1.0
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_144127_929828_2BEDED33 
-X-CRM114-Status: GOOD (  26.45  )
+X-CRM114-CacheID: sfid-20260226_213548_308601_3298B02E 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,119 +97,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Conor Dooley <conor.dooley@microchip.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
-Content-Type: multipart/mixed; boundary="===============7173054311323096419=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Dragan Simic already had warned me of potential issues with 5.0 GT/s
+speed operation in Rockchip PCIe. However, in recent interactions
+with Shawn Lin from Rockchip it came to my attention there's grave
+danger in the unknown errata regarding 5.0 GT/s operational speed
+of their PCIe core.
 
---===============7173054311323096419==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-4Y4hasR1gEd+E/ddVt4V"
+Drop all code related to 5.0 GT/s operational speed from this driver.
 
+Endpoint Mode driver was not tested. There's a bit of redundancy in the
+commit messages but it's the best I could do to ensure people will
+actually understand why perfectly working code is being dropped.
 
---=-4Y4hasR1gEd+E/ddVt4V
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+---
 
-Le jeudi 26 f=C3=A9vrier 2026 =C3=A0 22:15 +0000, Conor Dooley a =C3=A9crit=
-=C2=A0:
-> On Thu, Feb 26, 2026 at 04:56:30PM -0500, Nicolas Dufresne wrote:
-> > Le jeudi 26 f=C3=A9vrier 2026 =C3=A0 20:59 +0000, Conor Dooley a =C3=A9=
-crit=C2=A0:
-> > > On Thu, Feb 26, 2026 at 02:45:11PM -0500, Nicolas Dufresne wrote:
-> > > > Le jeudi 26 f=C3=A9vrier 2026 =C3=A0 18:43 +0000, Conor Dooley a =
-=C3=A9crit=C2=A0:
-> > > In this case, the driver is currently buggy, because, as I mentioned,=
- it
-> > > uses reg-names without reg-names being required on the platforms with
-> > > more than 1 reg property. Probably the binding should make reg-names
-> > > mandatory for these platforms even without this patch, but it *has* t=
-o
-> > > IMO for this proposed change to be applicable.
-> >=20
-> > That forced me to check the driver. So for RK33xx and older, there is o=
-nly
-> > one
-> > range, and the driver will just pick the one entry expected:
-> >=20
-> >=20
-> > 	if (rkvdec->variant->has_single_reg_region) {
-> > 		rkvdec->regs =3D devm_platform_ioremap_resource(pdev, 0);
-> > 		if (IS_ERR(rkvdec->regs))
-> > 			return PTR_ERR(rkvdec->regs);
-> > 	} else {
-> > 		rkvdec->regs =3D devm_platform_ioremap_resource_byname(pdev,
-> > "function");
-> > 		if (IS_ERR(rkvdec->regs))
-> > 			return PTR_ERR(rkvdec->regs);
-> >=20
-> > 		rkvdec->link =3D devm_platform_ioremap_resource_byname(pdev,
-> > "link");
-> > 		if (IS_ERR(rkvdec->link))
-> > 			return PTR_ERR(rkvdec->link);
-> > 	}
-> >=20
-> >=20
-> > Where for RK35xx variants, it only pick the resources by name. I don't =
-see
-> > the
-> > bug that you see, but I believe this was just a supposition, that you d=
-idn't
-> > check the code.
->=20
-> Busy reading path of exile patch notes, so sniping this comment only...
->=20
-> This is a bug, not a supposition, and it's that snippet from the
-> driver that prompted my comment.. That code requires that if
-> ->has_single_reg_region is set that the dts provides reg-names, but the
-> binding does not mandate reg-names for rk3576-vdec and rk3588-vdec, so
-> the driver will fail to probe on a dts that the binding says is valid.
+Changes in v4:
+- Incorporate suggestion by Bjorn and refined by Dragan to drop the
+  "catastrophic" code
+- Link to v3: https://lore.kernel.org/linux-rockchip/cover.1772057799.git.geraldogabriel@gmail.com/T/
 
-Got it, to me nothing in the binding is intentional, just a big lack of
-understanding what the syntax meant. So if we agree to make the binding enf=
-orce
-having names for rk3576-vdec and rk3588-vdec (and keep RK33 and older the s=
-ame),
-It would make me more happy to maintain it.
+Changes in v3:
+- Clarify warning message even though Rockchip won't disclose details
+- Drop DT changes as they were applied as subset by Heiko
+- Link to v2: https://lore.kernel.org/all/cover.1763415705.git.geraldogabriel@gmail.com/T/
 
-It also better highlight why adding a second order simply creates an ambigu=
-ity.
-
-Let me know, if we can go forward with that, I'll help documenting known us=
-ers,
-their introduction into 7.0-rc1 only and why this incident and fix should h=
-ave
-no impact on anyone.
-
-Nicolas
-
---=-4Y4hasR1gEd+E/ddVt4V
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaDMEAAKCRDZQZRRKWBy
-9NBKAQClyqb+9nOYzRNJx8qMWWPMGjst8feZTaXkF2MxsSbhrAEA/83RqiaTJO9w
-VGV5b7smraEoxWFECJxsBiy9Uek1WgY=
-=Fr9Z
------END PGP SIGNATURE-----
-
---=-4Y4hasR1gEd+E/ddVt4V--
+Changes in v2:
+- hard limit to 2.5 GT/s, not just warn
+- add Reported-by: and Reviewed-by: Dragan Simic
+- remove redundant declaration of max-link-speed from helios64 dts
+- fix Link: of helios64 patch
+- simplify RC mode comment
+- Link to v1: https://lore.kernel.org/all/aRhR79u5BPtRRFw3@geday/T/
 
 
---===============7173054311323096419==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+---
+
+Geraldo Nascimento (4):
+  PCI: rockchip: drop 2.5 GT/s defines
+  PCI: rockchip: drive at 2.5 GT/s only and error out other speeds
+  PCI: rockchip-host: do not attempt 5.0 GT/s retraining
+  PCI: rockchip-ep: do not attempt 5.0 GT/s retraining
+
+ drivers/pci/controller/pcie-rockchip-ep.c   | 13 -------------
+ drivers/pci/controller/pcie-rockchip-host.c | 20 --------------------
+ drivers/pci/controller/pcie-rockchip.c      | 13 +++++--------
+ drivers/pci/controller/pcie-rockchip.h      |  3 ---
+ 4 files changed, 5 insertions(+), 44 deletions(-)
+
+-- 
+2.52.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7173054311323096419==--
-
