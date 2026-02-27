@@ -4,88 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4655CFEFB5D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 15:11:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E78FFEFB6D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 16:53:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:References
+	:In-Reply-To:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Th7NYSjlT08sDGiUHd8d96YUQ3yCjf8GUAbOJWV+oAI=; b=rCatJ8Fm+DCA/a
-	cInH24q73wxpH8uRIoey0cLoMVz8n0GkUq1aSwZXVdvU9SxAl91DvZxdW/TGfmvGajVn7UW0xyEGe
-	Z+i8J1IBo4TNMaQ+JOKJzl6QCVYqwgr96n3dzEuidYVCj7ehpxQR6MYlkBcePMtX+LXGjmNqfh9hZ
-	1HqiLE0WV6t1H1aLGUJ/Nu1V4SNFIORygaiVv9hCKY/PvcaNZMCz6cGSVb7hw1h6dS4G++QfFdKsg
-	QvMZzsMga/4UZ+zoxSx3ppFasNUxTD7J1iERHHQSfb+5BgQyKDJc/8/yTHtlL6yHxz859pdPhIN6V
-	nzQMFqoIzf4zf73Jkfuw==;
+	List-Owner; bh=lPZ4wza1/qA01bVo+R7xkjxKZHs8rhWZ1pxRSmjzosw=; b=eM/bitg3vD/nSX
+	kYMHAeuDu2+FUw7zkPnvxpM2BHxO32w8sUiY2FVJzanEBApFSoRUiAZnTTTMtULX/PEKHt2yJ+PPR
+	ypj9s3FzliqZEULiBFwpPjFFKFZDhz2HHzy8qtuc0nEZWbo5F2Om1V1AVdXU882pE+ffXYo5evXMM
+	rcwuPd/AVWnvznkrYZN0yULInqiVGHQstqsFH5v5GyZUvyxXziEs5dSXYLgHIs4QPUeXfpxziGAsG
+	mut290HTTz7d8TbCuvwIJCPrXQCwk2WhuVweJPFLPeGDTOhYz/8KEe2jWWg2rNdSJh2i2d5rgJl7Y
+	kJxAL6RLiS1kr4UOKW6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvzVL-00000008Yfc-0Q4A;
-	Fri, 27 Feb 2026 15:11:47 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1vw15S-00000008lBb-2gXy;
+	Fri, 27 Feb 2026 16:53:10 +0000
+Received: from mout01.posteo.de ([185.67.36.65])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvzVI-00000008YeS-3Nk5
+	id 1vw15P-00000008lAZ-3Rsv
 	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Feb 2026 15:11:45 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvzUN-0006Py-1Q; Fri, 27 Feb 2026 16:10:47 +0100
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvzUE-002ujh-08;
-	Fri, 27 Feb 2026 16:10:39 +0100
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1vvzUF-00000000Fpg-136n;
-	Fri, 27 Feb 2026 16:10:39 +0100
-Message-ID: <28096f2a0ff3fb3163dd19f2ff483f3f2415180f.camel@pengutronix.de>
-Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
- enum
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Jani Nikula	
- <jani.nikula@linux.intel.com>, Maarten Lankhorst	
- <maarten.lankhorst@linux.intel.com>, Thomas Zimmermann
- <tzimmermann@suse.de>,  David Airlie <airlied@gmail.com>, Simona Vetter
- <simona@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>,  Leo Li
- <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher	
- <alexander.deucher@amd.com>, Christian =?ISO-8859-1?Q?K=F6nig?=	
- <christian.koenig@amd.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
- Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart	 <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
- <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, Andy Yan
- <andy.yan@rock-chips.com>, Liviu Dudau	 <liviu.dudau@arm.com>, Chun-Kuang
- Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>,  Heiko =?ISO-8859-1?Q?St=FCbner?=	
- <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai
- <wens@kernel.org>,  Samuel Holland <samuel@sholland.org>, Dave Stevenson
- <dave.stevenson@raspberrypi.com>,  =?ISO-8859-1?Q?Ma=EDra?= Canal	
- <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance	
- <kernel-list@raspberrypi.com>, dri-devel@lists.freedesktop.org, 
-	linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Date: Fri, 27 Feb 2026 16:10:39 +0100
-In-Reply-To: <20260227-overjoyed-glaring-dogfish-89effa@houat>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
-	 <20260224-drm-rework-color-formats-v1-1-bebc76604ada@kernel.org>
-	 <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
-	 <20260227-overjoyed-glaring-dogfish-89effa@houat>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	Fri, 27 Feb 2026 16:53:09 +0000
+Received: from submission (posteo.de [185.67.36.169]) 
+	by mout01.posteo.de (Postfix) with ESMTPS id 76612240027
+	for <linux-rockchip@lists.infradead.org>; Fri, 27 Feb 2026 17:53:01 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=posteo.net; s=2017;
+	t=1772211181; bh=hg3ftxRVP2o0Fqsn83GKQdV8U57RiZh6rSnr3Ja80i4=;
+	h=From:To:Cc:Subject:Date:Message-ID:MIME-Version:Content-Type:
+	 From;
+	b=iYv35PHXitvDLrydbkqRnuU71kNKDdIuRJq1NUqBWYwWJQ7Hc0nR4WON/ET8eZ/r0
+	 +gWF/6fphL7evBjX5Sj4tRPGOGyiTVGaZjplx39iaVCF/7v3qDlt5rXw+5oTxgbkvJ
+	 uvPS0wsOxuDMlva7/s1qp1y+4/DSzdJETVFRM6fwu5stvWWpcvb6MnooOMGdFCaIP9
+	 2vdIiOipCDLFJQRU3ui4Q9QZwXkbWMSYehB+kMYe8Yggi+PEfADKczU5spZpeBBM/N
+	 wAmDFB1/SOLdQMbTIug6QOVLKlieRGM774H50lxaSBvZaeC3SJc1As6NL8gTUUm7q/
+	 rh0rc8KD1EILg==
+Received: from customer (localhost [127.0.0.1])
+	by submission (posteo.de) with ESMTPSA id 4fMvX95LGlz6txq;
+	Fri, 27 Feb 2026 17:52:57 +0100 (CET)
+From: Charalampos Mitrodimas <charmitro@posteo.net>
+To: Geraldo Nascimento <geraldogabriel@gmail.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,  Lorenzo Pieralisi
+ <lpieralisi@kernel.org>,  Krzysztof =?utf-8?Q?Wilczy=C5=84ski?=
+ <kwilczynski@kernel.org>,
+  Manivannan Sadhasivam <mani@kernel.org>,  Rob Herring <robh@kernel.org>,
+  Bjorn Helgaas <bhelgaas@google.com>,  Heiko Stuebner <heiko@sntech.de>,
+  Dragan Simic <dsimic@manjaro.org>,  linux-rockchip@lists.infradead.org,
+  linux-pci@vger.kernel.org,  linux-arm-kernel@lists.infradead.org,
+  linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 1/4] PCI: rockchip: drop 2.5 GT/s defines
+In-Reply-To: <5172389ba8d291fe05bc0887bc97fe73f110c5c0.1772169998.git.geraldogabriel@gmail.com>
+References: <cover.1772169998.git.geraldogabriel@gmail.com>
+	<5172389ba8d291fe05bc0887bc97fe73f110c5c0.1772169998.git.geraldogabriel@gmail.com>
+Date: Fri, 27 Feb 2026 16:53:00 +0000
+Message-ID: <878qceku1j.fsf@posteo.net>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_071144_839171_2C2317E6 
-X-CRM114-Status: UNSURE (   8.01  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260227_085308_152234_744C5875 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,20 +79,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
+Geraldo Nascimento <geraldogabriel@gmail.com> writes:
 
-On Fr, 2026-02-27 at 09:38 +0100, Maxime Ripard wrote:
-[...]
-> > Can we move this?
-[...]
-> 
-> I'm not sure it's worth it, the last patch in this series will remove
-> these so it's not going to stick around either.
+> Drop the 2.5 GT/s Link Speed defines from Rockchip PCIe header
+> definitions. The reason is that Shawn Lin from Rockchip has
+> reiterated that there may be danger of "catastrophic failure"
+> in using their PCIe with 5.0 GT/s speeds.
+>
+> While Rockchip has done so informally without issuing a proper
+> errata, and the particulars are thus unknown, this may cause
+> data loss or worse.
+>
+> This change is corroborated by RK3399 official datasheet [1], which
+> states maximum link speed for this platform is 2.5 GT/s.
+>
+> [1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+>
+> Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
+> Cc: stable@vger.kernel.org
+> Reported-by: Dragan Simic <dsimic@manjaro.org>
+> Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+> ---
+>  drivers/pci/controller/pcie-rockchip.h | 3 ---
+>  1 file changed, 3 deletions(-)
+>
+> diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+> index 3e82a69b9c00..b5da15601b58 100644
+> --- a/drivers/pci/controller/pcie-rockchip.h
+> +++ b/drivers/pci/controller/pcie-rockchip.h
+> @@ -42,7 +42,6 @@
+>  #define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
+>  #define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
+>  #define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
+> -#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
 
-I agree it's not, I just didn't look as far as patch 13.
+This commit alone won't compile right? PCIE_CLIENT_GEN_SEL_2 is still
+referenced by rockchip_pcie_init_port():
 
-regards
-Philipp
+         if (rockchip->link_gen == 2)
+                 rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
+                                     PCIE_CLIENT_CONFIG);
+
+This reference is removed by the next patch in the series but not sure
+if we want to do it here instead.
+
+>  #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
+>  #define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
+>  #define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
+> @@ -197,8 +196,6 @@
+>  	(((x) & PCIE_CORE_PL_CONF_LS_MASK) == PCIE_CORE_PL_CONF_LS_READY)
+>  #define PCIE_LINK_UP(x) \
+>  	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
+> -#define PCIE_LINK_IS_GEN2(x) \
+> -	(((x) & PCIE_CORE_PL_CONF_SPEED_MASK) == PCIE_CORE_PL_CONF_SPEED_5G)
+
+Same for this, references elsewhere tho.
+
+>  
+>  #define RC_REGION_0_ADDR_TRANS_H		0x00000000
+>  #define RC_REGION_0_ADDR_TRANS_L		0x00000000
 
 _______________________________________________
 Linux-rockchip mailing list
