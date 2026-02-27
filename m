@@ -4,90 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EF28FD9E3C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 05:36:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71FA1FD530B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 07:38:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3eysTRDJvfbBz2OQnLKBFx7A138I3h3XVn6JWFyHJVo=; b=BdVYe8k693SSXG
-	Ah5lU1/iAed/3XjDh8JnjwAgiCN8pnRuHQLel39MzgejwYi50ZqcLze65mn9UhMMP91u9Tj/5A/BX
-	UZxwl18y4+j6lmTyHraNXyLCTX4WUr4eBLGJRv+aYfLS9f6gMgTg5iTFYTgZcC2NOF3g0epNxRUUm
-	BfmH0+fj1ni6skIg1gjsqVQzLmn9GEwsEekQ5clSDP+4xkLzvYEUvVbIxYXpJW7l6IhbKF8Ger27i
-	+eVOiEvbnpYfhv7DPJxuvic+X3n7cAhpA9xE6R3O4Hxd7sFssXgK70bSlYMtMB4HcNIq+qTy2QWdl
-	5Kiu53wtbyQBwDhhiA7Q==;
+	List-Owner; bh=m2keYQuDxoaXPoLsNYeIwTPZKH4jn6zYdISHVcBTLmw=; b=Kv7DIfD6LP7oaG
+	MgWAYexDSKTtT/ANAoLXBQqaHcRh6yBXC9x2n/qZCar9Xwyd7ZNCPPr56j7zWUhk1ff/K0bJfu93J
+	kC04mR4W3ruKcCQnQOYNiUKLa8Hp76wxZ741Q6ZBarYIjRAxdxjN47F3JH72iTfpuNrrJoV57IuQd
+	7ct3gtxbBCQlqe6xs0toZ68jkLrDbzsw/jOE+gZ2++qlxOBc1AQNfRYYstqfNfK7svWjDXlml8o+q
+	w/3Ba/hbvHUWuqE+PZbXkvvXhf0nIPko0Eof9dZ1eFIF2C8orCEyfuxCs+fckc7NTjCPFzOyw7A7G
+	3onRBN3f7AeNtQ5iR94w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvqX1-00000007jQA-1l6r;
-	Fri, 27 Feb 2026 05:36:55 +0000
-Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
+	id 1vvsQV-00000007tw3-1mcb;
+	Fri, 27 Feb 2026 07:38:19 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvqWy-00000007jNr-3U0e
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Feb 2026 05:36:54 +0000
-Received: by mail-vk1-xa34.google.com with SMTP id 71dfb90a1353d-56a86f0a23bso1476002e0c.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 26 Feb 2026 21:36:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772170611; x=1772775411; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=TmPKR2Yyu/CowlCAVgHjCUwCb1vpQWAYSrI2qG/n3xg=;
-        b=SufqiQniOnBMdLVMSGaWjsPGEW9StLfiyEaf0GpP5Pp2/bSE3Y/NxGlLkL/ErGwAT3
-         E3DHGR4AIMxXANtSxbxqg3sIMmX4ZDB0eyjfCocCnzTQqs1LmZqlwVAA6InovpWLL7Ze
-         mzaurMIeiKhqQ7Zhocjxf5LdWibh4JIBAinsAsf1iBPLlj79KDVn7Oi6uHgSDggOAnIz
-         1Nw2vzwyo6BMjthWr+I/9lG+rWjZxuiTkr2ZTKFa4RQESBgJprI18678VCHFGaH6+kGi
-         WOzSIwusYHEtLcJrAoi11ScV38y5urqRY9S7afTDh4RWLiqbqGgHBT7GweSVq+zdFoY/
-         u8fA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772170611; x=1772775411;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=TmPKR2Yyu/CowlCAVgHjCUwCb1vpQWAYSrI2qG/n3xg=;
-        b=nNFplvfF5ozQg1bP6MXfXx4gPPwF5FG2wsGIoEfXY24Uj1zZJJ3O0YjTOMrwPdnP09
-         VH5+Glg/e6r+2hbvSzFeDDwcBu3PPRoDzbJFiKfcyuqxhnPov8y4nm0tv2J45YNo6Z2A
-         wGH1Ww20rcYNWQ6gThhUh4JbSyii+6MFaxXNMsohY31RFCg9X6ZBKYRgRbUqlH02Sod9
-         bPZRyEVol6UWzul+dBex0Mjzrpmw8cQTarMdnzsTxdt4VbbkHKILuLeFR4iyvBbsZEu4
-         cqGo53eQLkcRRAopuNcLhRw6itU/2Muqg4/+qHqniYHZDo9CSg+tAwxNG4AkStAP7pdm
-         AKMw==
-X-Gm-Message-State: AOJu0YzsmAizH6jBfZoKuEzFkmMapfT4WRlVEvTnJ4Z4DXfXmuBjBqYv
-	/nASl2cZDGdUfVibMj1sycYnSvYJzwd9UYZPKrZWaL1/l8IG//ILKBmF
-X-Gm-Gg: ATEYQzxx/mg32bdxDcyV+VNmoymD4GtOo+e2liutls1+xzEIIt+K8BRoDsAW74pzZjK
-	RWENgsDhZwFjQ30s+hpMUs4R7kS5n/dR6jh7e9MyKiqOzP5hftfVUwnjufvWSPPlulDgWkJ42L2
-	P4mk+236tlzEsuAJI4HzqI3AsTvwYkymlPlqLSAsRPumRys+LRmTe+jFEkmfc97N+XW3uRMyQU1
-	hLz3xH3LzZY3EpvyeKh9BKNn3TrRNzKoupKwZCIwQGVtI3tzpktmMpqZsPEBreFrm/CIcZ3Cnfp
-	3fk1UrIQghPKimsU5HKGjbt4c0zxMgsdIfZ3/ypYUfUwGz57gdEw4wN6qzJCjKzmP2mIbZUZezS
-	yIYmWV33SI9xRgcLutEwjJhxRtWq1mV6vXjy4nG8YjFysT3wq+q3XjwmRtTreGask6UzDF6JOIj
-	4gVQ0BnFNkcmhQxzChstQc
-X-Received: by 2002:a05:6102:32d1:b0:5ff:a1e:ee66 with SMTP id ada2fe7eead31-5ff32271334mr1111779137.2.1772170611497;
-        Thu, 26 Feb 2026 21:36:51 -0800 (PST)
-Received: from geday ([2804:7f2:800b:feb1::dead:c001])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-5ff1e3e6013sm4496101137.0.2026.02.26.21.36.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Feb 2026 21:36:51 -0800 (PST)
-Date: Fri, 27 Feb 2026 02:36:44 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Geraldo Nascimento <geraldogabriel@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v4 4/4] PCI: rockchip-ep: do not attempt 5.0 GT/s retraining
-Message-ID: <c51c804bea56d772a59fd29fcb080541b7a367d2.1772169998.git.geraldogabriel@gmail.com>
-References: <cover.1772169998.git.geraldogabriel@gmail.com>
+	id 1vvsQT-00000007tvN-1elu;
+	Fri, 27 Feb 2026 07:38:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9B3A241B6C;
+	Fri, 27 Feb 2026 07:38:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EA227C116C6;
+	Fri, 27 Feb 2026 07:38:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772177896;
+	bh=Q+w9iIKwnNfTEdjsizTb6il87jj7/Nj0WRQOQEUYSUw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=rDziY4WcgDjwUQmVDTEC3X0QsdqWl6v+x2lGYMke6XDP2lfa8pNOLPX+2YYpl5DY7
+	 LvSUqYV+o3T6b9XqKOX4DsMN5FPdcj0U/rTkvT7k+AVDkuUjJ+GWtsCvUOFEWMRuhB
+	 iYQxDJSRcJTmXKIOsEl16Up0WJjHYbJJ1ONFk0y5mlreKP7jXmH5nUtl6GViJIqg/Q
+	 3fIrIBI3oi0IlvTkhq7GOOb2XbXmZ/UYb2uhNKG98iwtzdI8ZpcWdHJla2H64C4YGS
+	 RxTtw8XUS9UcWrMo9+XSsKDyuRYgiWh1CKMUgz4M9L7fx4aVLUMLpclfB4Gsv06Ugn
+	 v73gb8Opb+95A==
+Date: Fri, 27 Feb 2026 08:38:13 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Conor Dooley <conor@kernel.org>
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
+ alternative reg-names order for RK35{76,88}
+Message-ID: <20260227-overjoyed-unyielding-mosquito-7bfbe3@quoll>
+References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
+ <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+ <20260226-salute-threaten-a3eabb232396@spud>
+ <429f3c7aa22eccffedbf8db6aa91bee3dd13814a.camel@collabora.com>
+ <20260226-snide-foil-a05e1aa156a8@spud>
+ <3d28c699e47f606bad46bb6447785badace37793.camel@collabora.com>
+ <20260226-ferocious-saturday-0e1f9bb28ec5@spud>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <cover.1772169998.git.geraldogabriel@gmail.com>
+In-Reply-To: <20260226-ferocious-saturday-0e1f9bb28ec5@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260226_213652_877265_912860ED 
-X-CRM114-Status: GOOD (  14.19  )
+X-CRM114-CacheID: sfid-20260226_233817_458549_887F5CFC 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,60 +71,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Conor Dooley <conor.dooley@microchip.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Drop the 5.0 GT/s Link Speed retraining code block from Rockchip PCIe
-header definitions. The reason is that Shawn Lin from Rockchip has
-reiterated that there may be danger of "catastrophic failure" in
-using their PCIe with 5.0 GT/s speeds.
+On Thu, Feb 26, 2026 at 10:15:49PM +0000, Conor Dooley wrote:
+> > 
+> > 
+> > 	if (rkvdec->variant->has_single_reg_region) {
+> > 		rkvdec->regs = devm_platform_ioremap_resource(pdev, 0);
+> > 		if (IS_ERR(rkvdec->regs))
+> > 			return PTR_ERR(rkvdec->regs);
+> > 	} else {
+> > 		rkvdec->regs = devm_platform_ioremap_resource_byname(pdev, "function");
+> > 		if (IS_ERR(rkvdec->regs))
+> > 			return PTR_ERR(rkvdec->regs);
+> > 
+> > 		rkvdec->link = devm_platform_ioremap_resource_byname(pdev, "link");
+> > 		if (IS_ERR(rkvdec->link))
+> > 			return PTR_ERR(rkvdec->link);
+> > 	}
+> > 
+> > 
+> > Where for RK35xx variants, it only pick the resources by name. I don't see the
+> > bug that you see, but I believe this was just a supposition, that you didn't
+> > check the code.
+> 
+> Busy reading path of exile patch notes, so sniping this comment only...
+> 
+> This is a bug, not a supposition, and it's that snippet from the
+> driver that prompted my comment.. That code requires that if
+> ->has_single_reg_region is set that the dts provides reg-names, but the
 
-While Rockchip has done so informally without issuing a proper
-errata, and the particulars are thus unknown, this may cause data
-loss or worse.
+No, the opposite. With has_single_reg_region you take first entry and
+ignore names.
 
-This change is corroborated by RK3399 official datasheet [1], which
-states maximum link speed for this platform is 2.5 GT/s.
+> binding does not mandate reg-names for rk3576-vdec and rk3588-vdec, so
 
-[1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
-
-Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
-Cc: stable@vger.kernel.org
-Reported-by: Dragan Simic <dsimic@manjaro.org>
-Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
----
- drivers/pci/controller/pcie-rockchip-ep.c | 13 -------------
- 1 file changed, 13 deletions(-)
-
-diff --git a/drivers/pci/controller/pcie-rockchip-ep.c b/drivers/pci/controller/pcie-rockchip-ep.c
-index 799461335762..9ebc227a1ef8 100644
---- a/drivers/pci/controller/pcie-rockchip-ep.c
-+++ b/drivers/pci/controller/pcie-rockchip-ep.c
-@@ -553,19 +553,6 @@ static void rockchip_pcie_ep_link_training(struct work_struct *work)
- 	if (ret)
- 		goto again;
- 
--	/*
--	 * Check the current speed: if gen2 speed was requested and we are not
--	 * at gen2 speed yet, retrain again for gen2.
--	 */
--	val = rockchip_pcie_read(rockchip, PCIE_CORE_CTRL);
--	if (!PCIE_LINK_IS_GEN2(val) && rockchip->link_gen == 2) {
--		/* Enable retrain for gen2 */
--		rockchip_pcie_ep_retrain_link(rockchip);
--		readl_poll_timeout(rockchip->apb_base + PCIE_CORE_CTRL,
--				   val, PCIE_LINK_IS_GEN2(val), 50,
--				   LINK_TRAIN_TIMEOUT);
--	}
--
- 	/* Check again that the link is up */
- 	if (!rockchip_pcie_ep_link_up(rockchip))
- 		goto again;
--- 
-2.52.0
+Best regards,
+Krzysztof
 
 
 _______________________________________________
