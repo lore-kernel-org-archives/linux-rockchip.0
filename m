@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F11810398AD
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 20:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E60F81039894
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 20:49:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RshtnfRuCnUSGp/9KJW5+Y6CWOxY2UAgUqZZxcK/cbw=; b=0tivTGyGuPcEtp
-	wvXrALlKiKKCIdh8zC6Vz7Ico/+H7sfE8lp2puCP1qUABv5ucT4cbJnpBgLISW2WCp3jy5Ic8WuiF
-	O/ZRy9/IJU2aNnP7vBB8eSFG6ZHsuLIN/3i2fmE3NM2HT6pqHQCWE3nmErv0kNuyEMgUDFsuuR+1F
-	h0i26V2qNi6+o4YFIJ0cYgH8bQmevROz3xFHmGydgq1r1qfgvaerPGboS1wrBicyVZ8VkmoROsXZa
-	WbBaOVxv+SrlnpmWnVO8vi/8V4IozEj9SbW3kKuIKIiKmEl9GNVgIRnpi/s84RxVH+PmAcOP/SNsW
-	RquxXMZyG5+/iAD4id0Q==;
+	List-Owner; bh=16d+3fpSeXSQ8oYffl3IImoqBCMK0djEivv7ivMcyxM=; b=vei1uVraIXtkpA
+	nIufxcQrQv5Nv9Gz+bEvaDkeYc3YU/WQiJY/IbRvSYqc4llg4WE2G8KexdUBilcix/15Ru6Sr99j2
+	a6n9oQsgVw4/fmObMROANWJ9SjOSj/+p3Gg1RFIwmKjwzaC8kZQdY2KIf6iofNgAT1W8X4X5XWh/0
+	ASA+KkViy7zNgc6NFXqeDO/z7C33zOT49cVBaKNCCTSY26C1xdWA+MDejXt6WlDc2DMNa16EnBfH/
+	hSN8VVF4GY64gLF0AJxzJ5F/Pb2yWUo02NNYp9LIPzcRUh3aP1YOQ4ZG4cKsQ4OQEIqPxIL3uBPiQ
+	uWnm9RTIf6qwzzcQCeWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw4ls-000000098jF-2tTe;
-	Fri, 27 Feb 2026 20:49:12 +0000
+	id 1vw4lx-000000098oS-2ki2;
+	Fri, 27 Feb 2026 20:49:17 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw4le-000000098Za-0uYu;
-	Fri, 27 Feb 2026 20:48:59 +0000
+	id 1vw4lf-000000098aj-3Rcd;
+	Fri, 27 Feb 2026 20:49:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772225335;
-	bh=jAV1rL/dLM95YP1sZnfa/b90+uXslqsIMfLbW9A3ld4=;
+	s=mail; t=1772225336;
+	bh=6VdwbDzh9c5THmToHLBg9iEmO9d1dcL9v7l56XWwBcI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=g0nLWeX5eCO2JrJCAx/PrNGwvGj0sU0A38oCfihWu6JalsrLXTjp+v1bZ2HjoxM1u
-	 Y4fvkcr1riHVLCaTNv8dc1HAOOUSZ1T7RmNiUvMNcg36PVfBXImZr4V+c7jAGai/tB
-	 jd6Ry/jCWIZ7qDHD9FruxapFXPnr5ztb8F0lsdCyPRj8ZxXDboErkgKYKpI3AY6r60
-	 rK/8n0XS0b4ecj1nYrVbaaLxaLpe03Cq+DzZpm5QVJu3P8kHK1n3V8PQlbiKpFK19r
-	 WzaMyityV8CKPvjCzAmql/ufYAxWRTbC5I4FiDDgnCuyxU7Pbk36y0PYK3B7sjR4da
-	 LnygPPAeg5UbA==
+	b=g+J95y9gDuFntS6xe2QP3zXvHCoZCtEY4JT7Y4BXVVFYSihpXkEuqtfWFQKfju30z
+	 fXMHZ+QK256ZT3ftf0RfsDD5byNI/KzlkBhxcMDzYBLgxCX6gQTle2v5PZokciXRr3
+	 D8kU2cM0xNytVd9P/tFwMSaCahlhiGNlCkzblISQQsRg/nyiczwTm3+IVNtf3cg6cd
+	 EU2apc2MfOoG3WpAkawqhyHWbmhQkr/OJF8uPIpy5W6sxNE0oMIPXq6u1myVHyIHTb
+	 x9RbHNIEA8JyU/mDJJWsUrEWITGJTGTWXK+fwGinTbMoAy8U65v9BOwLcRKBgLXPU7
+	 jZmlUoxyEBpqw==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1397E17E1004;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D581217E1005;
 	Fri, 27 Feb 2026 21:48:55 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 27 Feb 2026 22:48:48 +0200
-Subject: [PATCH 4/6] phy: rockchip: samsung-hdptx: Drop
- restrict_rate_change handling
+Date: Fri, 27 Feb 2026 22:48:49 +0200
+Subject: [PATCH 5/6] phy: rockchip: samsung-hdptx: Simplify GRF access with
+ FIELD_PREP_WM16()
 MIME-Version: 1.0
-Message-Id: <20260227-hdptx-clk-fixes-v1-4-f998f2762d0f@collabora.com>
+Message-Id: <20260227-hdptx-clk-fixes-v1-5-f998f2762d0f@collabora.com>
 References: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
 In-Reply-To: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -60,8 +60,8 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_124858_433273_99460ADF 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20260227_124900_025114_8150BDE6 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,92 +78,184 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since commit 6efbd0f46dd8 ("phy: rockchip: samsung-hdptx: Restrict
-altering TMDS char rate via CCF"), adjusting the rate via the Common
-Clock Framework API has been disallowed.
+The 16 most significant bits of the general-purpose register (GRF) are
+used as a write-enable mask for the remaining 16 bits.
 
-To avoid breaking existing users until switching to the PHY config API,
-it introduced a temporary exception to the rule, controlled via the
-'restrict_rate_change' flag.
-
-As the API transition completed, remove the now deprecated exception
-logic.
+Make use of the recently introduced FIELD_PREP_WM16() macro to avoid
+open-coding the bit shift operations and improve code readability.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 42 +++++------------------
- 1 file changed, 8 insertions(+), 34 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 52 +++++++++++------------
+ 1 file changed, 25 insertions(+), 27 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index b56360b5df78..e5c8bc95a416 100644
+index e5c8bc95a416..baa6916331be 100644
 --- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
 +++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -414,7 +414,6 @@ struct rk_hdptx_phy {
- 	/* clk provider */
- 	struct clk_hw hw;
- 	bool pll_config_dirty;
--	bool restrict_rate_change;
+@@ -1,7 +1,7 @@
+ // SPDX-License-Identifier: GPL-2.0+
+ /*
+  * Copyright (c) 2021-2022 Rockchip Electronics Co., Ltd.
+- * Copyright (c) 2024 Collabora Ltd.
++ * Copyright (c) 2024-2026 Collabora Ltd.
+  *
+  * Author: Algea Cao <algea.cao@rock-chips.com>
+  * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+@@ -10,6 +10,7 @@
+ #include <linux/clk.h>
+ #include <linux/clk-provider.h>
+ #include <linux/delay.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
+@@ -949,7 +950,9 @@ static void rk_hdptx_pre_power_up(struct rk_hdptx_phy *hdptx)
+ 	reset_control_assert(hdptx->rsts[RST_CMN].rstc);
+ 	reset_control_assert(hdptx->rsts[RST_INIT].rstc);
  
- 	atomic_t usage_count;
- 
-@@ -2069,7 +2068,6 @@ static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opt
- 		if (ret) {
- 			dev_err(hdptx->dev, "invalid hdmi params for phy configure\n");
- 		} else {
--			hdptx->restrict_rate_change = true;
- 			hdptx->pll_config_dirty = true;
- 
- 			dev_dbg(hdptx->dev, "%s %s rate=%llu bpc=%u\n", __func__,
-@@ -2296,41 +2294,17 @@ static int rk_hdptx_phy_clk_determine_rate(struct clk_hw *hw,
- 	struct rk_hdptx_phy *hdptx = to_rk_hdptx_phy(hw);
- 
- 	/*
--	 * Invalidate current clock rate to ensure rk_hdptx_phy_clk_set_rate()
--	 * will be invoked to commit PLL configuration.
-+	 * For uncommitted PLL configuration, invalidate the current clock rate
-+	 * to ensure rk_hdptx_phy_clk_set_rate() will be always invoked.
-+	 * Otherwise, restrict the rate according to the PHY link setup.
- 	 */
--	if (hdptx->pll_config_dirty) {
-+	if (hdptx->pll_config_dirty)
- 		req->rate = 0;
--		return 0;
--	}
--
--	if (hdptx->hdmi_cfg.mode == PHY_HDMI_MODE_FRL) {
-+	else if (hdptx->hdmi_cfg.mode == PHY_HDMI_MODE_FRL)
- 		req->rate = hdptx->hdmi_cfg.rate;
--		return 0;
--	}
--
--	/*
--	 * FIXME: Temporarily allow altering TMDS char rate via CCF.
--	 * To be dropped as soon as the RK DW HDMI QP bridge driver
--	 * switches to make use of phy_configure().
--	 */
--	if (!hdptx->restrict_rate_change && req->rate != hdptx->hdmi_cfg.rate) {
--		struct phy_configure_opts_hdmi hdmi = {
--			.tmds_char_rate = req->rate,
--		};
--
--		int ret = rk_hdptx_phy_verify_hdmi_config(hdptx, &hdmi, &hdptx->hdmi_cfg);
--
--		if (ret)
--			return ret;
--	}
--
--	/*
--	 * The TMDS char rate shall be adjusted via phy_configure() only,
--	 * hence ensure rk_hdptx_phy_clk_set_rate() won't be invoked with
--	 * a different rate argument.
--	 */
--	req->rate = DIV_ROUND_CLOSEST_ULL(hdptx->hdmi_cfg.rate * 8, hdptx->hdmi_cfg.bpc);
-+	else
-+		req->rate = DIV_ROUND_CLOSEST_ULL(hdptx->hdmi_cfg.rate * 8,
-+						  hdptx->hdmi_cfg.bpc);
- 
- 	return 0;
+-	val = (HDPTX_I_PLL_EN | HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN) << 16;
++	val = (FIELD_PREP_WM16(HDPTX_I_PLL_EN, 0) |
++	       FIELD_PREP_WM16(HDPTX_I_BIAS_EN, 0) |
++	       FIELD_PREP_WM16(HDPTX_I_BGR_EN, 0));
+ 	regmap_write(hdptx->grf, GRF_HDPTX_CON0, val);
  }
+ 
+@@ -960,8 +963,8 @@ static int rk_hdptx_post_enable_lane(struct rk_hdptx_phy *hdptx)
+ 
+ 	reset_control_deassert(hdptx->rsts[RST_LANE].rstc);
+ 
+-	val = (HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN) << 16 |
+-	       HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN;
++	val = (FIELD_PREP_WM16(HDPTX_I_BIAS_EN, 1) |
++	       FIELD_PREP_WM16(HDPTX_I_BGR_EN, 1));
+ 	regmap_write(hdptx->grf, GRF_HDPTX_CON0, val);
+ 
+ 	/* 3 lanes FRL mode */
+@@ -990,16 +993,15 @@ static int rk_hdptx_post_enable_pll(struct rk_hdptx_phy *hdptx)
+ 	u32 val;
+ 	int ret;
+ 
+-	val = (HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN) << 16 |
+-	       HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN;
++	val = (FIELD_PREP_WM16(HDPTX_I_BIAS_EN, 1) |
++	       FIELD_PREP_WM16(HDPTX_I_BGR_EN, 1));
+ 	regmap_write(hdptx->grf, GRF_HDPTX_CON0, val);
+ 
+ 	usleep_range(10, 15);
+ 	reset_control_deassert(hdptx->rsts[RST_INIT].rstc);
+ 
+ 	usleep_range(10, 15);
+-	val = HDPTX_I_PLL_EN << 16 | HDPTX_I_PLL_EN;
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0, val);
++	regmap_write(hdptx->grf, GRF_HDPTX_CON0, FIELD_PREP_WM16(HDPTX_I_PLL_EN, 1));
+ 
+ 	usleep_range(10, 15);
+ 	reset_control_deassert(hdptx->rsts[RST_CMN].rstc);
+@@ -1037,7 +1039,9 @@ static void rk_hdptx_phy_disable(struct rk_hdptx_phy *hdptx)
+ 	reset_control_assert(hdptx->rsts[RST_CMN].rstc);
+ 	reset_control_assert(hdptx->rsts[RST_INIT].rstc);
+ 
+-	val = (HDPTX_I_PLL_EN | HDPTX_I_BIAS_EN | HDPTX_I_BGR_EN) << 16;
++	val = (FIELD_PREP_WM16(HDPTX_I_PLL_EN, 0) |
++	       FIELD_PREP_WM16(HDPTX_I_BIAS_EN, 0) |
++	       FIELD_PREP_WM16(HDPTX_I_BGR_EN, 0));
+ 	regmap_write(hdptx->grf, GRF_HDPTX_CON0, val);
+ }
+ 
+@@ -1135,7 +1139,7 @@ static int rk_hdptx_frl_lcpll_cmn_config(struct rk_hdptx_phy *hdptx)
+ 
+ 	rk_hdptx_pre_power_up(hdptx);
+ 
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0, LC_REF_CLK_SEL << 16);
++	regmap_write(hdptx->grf, GRF_HDPTX_CON0, FIELD_PREP_WM16(LC_REF_CLK_SEL, 0));
+ 
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_cmn_init_seq);
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_frl_lcpll_cmn_init_seq);
+@@ -1178,8 +1182,7 @@ static int rk_hdptx_frl_lcpll_ropll_cmn_config(struct rk_hdptx_phy *hdptx)
+ 	rk_hdptx_pre_power_up(hdptx);
+ 
+ 	/* ROPLL input reference clock from LCPLL (cascade mode) */
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     (LC_REF_CLK_SEL << 16) | LC_REF_CLK_SEL);
++	regmap_write(hdptx->grf, GRF_HDPTX_CON0, FIELD_PREP_WM16(LC_REF_CLK_SEL, 1));
+ 
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_cmn_init_seq);
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_frl_lcpll_ropll_cmn_init_seq);
+@@ -1218,7 +1221,7 @@ static int rk_hdptx_tmds_ropll_cmn_config(struct rk_hdptx_phy *hdptx)
+ 
+ 	rk_hdptx_pre_power_up(hdptx);
+ 
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0, LC_REF_CLK_SEL << 16);
++	regmap_write(hdptx->grf, GRF_HDPTX_CON0, FIELD_PREP_WM16(LC_REF_CLK_SEL, 0));
+ 
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_common_cmn_init_seq);
+ 	rk_hdptx_multi_reg_write(hdptx, rk_hdptx_tmds_cmn_init_seq);
+@@ -1336,11 +1339,9 @@ static void rk_hdptx_dp_reset(struct rk_hdptx_phy *hdptx)
+ 			   FIELD_PREP(LN_TX_DRV_EI_EN_MASK, 0));
+ 
+ 	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_PLL_EN << 16 | FIELD_PREP(HDPTX_I_PLL_EN, 0x0));
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_BIAS_EN << 16 | FIELD_PREP(HDPTX_I_BIAS_EN, 0x0));
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_BGR_EN << 16 | FIELD_PREP(HDPTX_I_BGR_EN, 0x0));
++		     FIELD_PREP_WM16(HDPTX_I_PLL_EN, 0) |
++		     FIELD_PREP_WM16(HDPTX_I_BIAS_EN, 0) |
++		     FIELD_PREP_WM16(HDPTX_I_BGR_EN, 0));
+ }
+ 
+ static int rk_hdptx_phy_consumer_get(struct rk_hdptx_phy *hdptx)
+@@ -1611,9 +1612,8 @@ static int rk_hdptx_dp_aux_init(struct rk_hdptx_phy *hdptx)
+ 			   FIELD_PREP(OVRD_SB_VREG_EN_MASK, 0x1));
+ 
+ 	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_BGR_EN << 16 | FIELD_PREP(HDPTX_I_BGR_EN, 0x1));
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_BIAS_EN << 16 | FIELD_PREP(HDPTX_I_BIAS_EN, 0x1));
++		     FIELD_PREP_WM16(HDPTX_I_BGR_EN, 1) |
++		     FIELD_PREP_WM16(HDPTX_I_BIAS_EN, 1));
+ 	usleep_range(20, 25);
+ 
+ 	reset_control_deassert(hdptx->rsts[RST_INIT].rstc);
+@@ -1660,7 +1660,7 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
+ 
+ 	if (mode == PHY_MODE_DP) {
+ 		regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-			     HDPTX_MODE_SEL << 16 | FIELD_PREP(HDPTX_MODE_SEL, 0x1));
++			     FIELD_PREP_WM16(HDPTX_MODE_SEL, 1));
+ 
+ 		for (lane = 0; lane < 4; lane++) {
+ 			regmap_update_bits(hdptx->regmap, LANE_REG(031e) + 0x400 * lane,
+@@ -1688,7 +1688,7 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
+ 
+ 		if (!ret) {
+ 			regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-				     HDPTX_MODE_SEL << 16 | FIELD_PREP(HDPTX_MODE_SEL, 0x0));
++				     FIELD_PREP_WM16(HDPTX_MODE_SEL, 0));
+ 
+ 			if (hdptx->hdmi_cfg.mode == PHY_HDMI_MODE_FRL)
+ 				ret = rk_hdptx_frl_lcpll_mode_config(hdptx);
+@@ -1823,8 +1823,7 @@ static int rk_hdptx_phy_set_rate(struct rk_hdptx_phy *hdptx,
+ 	u32 bw, status;
+ 	int ret;
+ 
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_PLL_EN << 16 | FIELD_PREP(HDPTX_I_PLL_EN, 0x0));
++	regmap_write(hdptx->grf, GRF_HDPTX_CON0, FIELD_PREP_WM16(HDPTX_I_PLL_EN, 0));
+ 
+ 	switch (dp->link_rate) {
+ 	case 1620:
+@@ -1880,8 +1879,7 @@ static int rk_hdptx_phy_set_rate(struct rk_hdptx_phy *hdptx,
+ 	regmap_update_bits(hdptx->regmap, CMN_REG(0095), DP_TX_LINK_BW_MASK,
+ 			   FIELD_PREP(DP_TX_LINK_BW_MASK, bw));
+ 
+-	regmap_write(hdptx->grf, GRF_HDPTX_CON0,
+-		     HDPTX_I_PLL_EN << 16 | FIELD_PREP(HDPTX_I_PLL_EN, 0x1));
++	regmap_write(hdptx->grf, GRF_HDPTX_CON0, FIELD_PREP_WM16(HDPTX_I_PLL_EN, 1));
+ 
+ 	ret = regmap_read_poll_timeout(hdptx->grf, GRF_HDPTX_STATUS,
+ 				       status, FIELD_GET(HDPTX_O_PLL_LOCK_DONE, status),
 
 -- 
 2.52.0
