@@ -4,76 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B7B2FEFB7C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 19:35:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29BBFFD7F9C
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 19:39:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6h2gQtpjdNfMxFpOXC8fAPlzP2cwlsbqN0gFSJK1GSQ=; b=2Q5nlNS7fBmhFh
-	zhnQKfISMrg6z3Zi5hUvdJth30oEa0gJaLERbMmKLcBJozvdMbGnWWw7h0fhTZ+iTf6y8jaFc6ZI8
-	4D/thfVL9WddYV90kbS2HYo05XT7r64bm/koNcdcwAAlOWBU4fQpVpbuEcwQtXxbub4hDRXtwrwPT
-	4PCGRq78+JEhTJhFfnQXFL4oHmtvKN9KlZNqR057UYTcgEOHpQHFkcLNhUJ1eAequBXzzaRBXD0AR
-	Mq5BCvUjp+qYjlim+SnN5XTjfVYfTpWm8GkQqI9IYKgNTsOKyh6Jw4cn8n9RJaDhvc8b+z8E1re91
-	RgveujEFMdLokStj5Skg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OKNiL5P0NdKRtz3BEVSXtobWMDXnkvPmfkNqVPggtM0=; b=QTjECvSRyek4wKrcpqRtr6bI+q
+	HtzGST3Ow4yMrmOWPPO6aLSL54pbVIA4ZiH5KJO/Vgdt2JFIUSkxH6ljKSU5MXpBWc3smiPurmnnO
+	CXzKkz0hFUpaQeeNMgaKWklIsSGJfy898bXyJm4qcuLWfXEC+NSc/nBtQcPPBWp5TYLPQV23PFAxj
+	Ud9IeAfjFoLD4RqP3Y7LM58pkVn1EbKpKamoEPhcvyNGnV0Pxf8CWoHOXbTFMVA/CXAv2F3Ok/CTm
+	e2uSaRFp82v49yHIq0KxcIgupBxWpyArYdyjQ0wDTFCDBCK6LPYEllMlROTawCn0pNq7z000oZBBD
+	MOx0l51A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw3cI-000000091tw-0MMW;
-	Fri, 27 Feb 2026 19:35:14 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vw3ge-000000092GZ-3gAp;
+	Fri, 27 Feb 2026 19:39:44 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw3cG-000000091tV-21xj;
-	Fri, 27 Feb 2026 19:35:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Pd2l+JTyDm5qt4ZPcX8V0lrEq9wdUKoWy5MeIE+NzpQ=; b=cHRBAgM/KlAZr7BjsdGkHsIrMC
-	T4htGQPLsNzcEvmdnClPDGIMmmBMvZUSwElQBTtLTJ9iONgGpswg91N5oP+tg0/USJXWHuFYa2Qq7
-	d1JxkFr5GSkJ4GX2yuK+U+m9Zn4IVJAglyooWQb6ydZRzGJvJlXqSKpZm+xdAG+raxBXdEAX3k5XH
-	PFRooQRAwHtQdNfX18g5Av05jVWf6HsadB4cS8CMMMwwuM6/qVuFeJw6Lp+GATPRlBXvd+o6dTa0Q
-	qkiz0Rd11QuinS4DaIswbV8ir6Mvw4vaNdycyg+d1JMQKWoqO5Z9Xl6PEZeANFVepMCwaCr3NO+rj
-	QgN/m2wQ==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw3cD-0000000Dmim-1vl6;
-	Fri, 27 Feb 2026 19:35:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772220903;
-	bh=Sg54OHilyAiTowHFweIO6TJCUr6DyO95/X7Kg56nUng=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SNHJkD4qc1tUROyxSAmioCvtFHdr+ptpOsexJkTIm6QkjAfpJ2L15X1kLH+fGLs5g
-	 7ndaE5+jAT+zJsOJOvlTe8YovpNQMVAzjC5J95Jhr+2oUXzydiKA4ejk2u39Y0039t
-	 XUXJfi32zXzLQzrJpu+Sj1ekJg2493LqPBx+wLIl0LempNsx8HJMjMvCUA8UsAASJK
-	 2X3k1aroMu5TApfnb+oh+lsqPgeNM3JKm5wjUk4rPn6SQJJf88gzRejBHyc/J8GkZ+
-	 kV7mS0xFGj/ejS3CxAxVOBm8KeVwRTLkE9oEo78yTpAOQaj+xW7h4Mn6UNfMHg9pSe
-	 Oh2jitFB7ccNg==
-Received: from [192.168.1.90] (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6C39217E03E5;
-	Fri, 27 Feb 2026 20:35:02 +0100 (CET)
-Message-ID: <9cf5677d-8b90-4ccc-9b70-3e05a5a4a1c7@collabora.com>
-Date: Fri, 27 Feb 2026 21:35:01 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add alternative
- reg-names order for RK35{76,88}
-To: Conor Dooley <conor@kernel.org>
+	id 1vw3gc-000000092Fu-0VK3;
+	Fri, 27 Feb 2026 19:39:43 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7111D42CB8;
+	Fri, 27 Feb 2026 19:39:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A234C116C6;
+	Fri, 27 Feb 2026 19:39:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772221181;
+	bh=O+WgI2+lvkCcEXyjLwH9WcugXMqBc51MClSIi5cbpU8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=WGxoRRbTq5HmoPfWWmjM8VkM5jC9a9tIwebQMRE7aiqMXtR94apjmlmg7ROCdlX0y
+	 1jj4BMbstJrAcOXMlpfHvA0Kx7IE6U4Ck/Q3KxD9kfoBwVOnaA9rHtBUULICbrAYVZ
+	 vjmHETAgZ4OJt8keha+2DbffXBQ15rU7me72PzBT83ARMh7+ZlakJmTQoDaU/CUco+
+	 4WHyVhq2OrwPoHc59OtXi8qWnmwKD2NYoqIvB7PhI21LvkIEkxWIijnzG/1AjEI/03
+	 DNZH3VbjLcH8XbnNdZGlRD0KpYgC87RZBgNBkJ3KuIA2LyX7LLWm32jxJn1crHzsmh
+	 v7XnGsJuwp/HA==
+Date: Fri, 27 Feb 2026 19:39:35 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Conor Dooley <conor.dooley@microchip.com>,
+	linux-media@vger.kernel.org
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
+ alternative reg-names order for RK35{76,88}
+Message-ID: <20260227-urologist-gratitude-7984733f2d41@spud>
 References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
  <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
  <20260226-salute-threaten-a3eabb232396@spud>
@@ -83,12 +69,12 @@ References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
  <20260227-atonable-glamorous-920cfd832bc1@spud>
  <86f4e4ee-cf49-4ebe-8cc6-0a9763ade36a@collabora.com>
  <20260227-wreckage-cozily-200175c6efce@spud>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260227-wreckage-cozily-200175c6efce@spud>
+ <9cf5677d-8b90-4ccc-9b70-3e05a5a4a1c7@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <9cf5677d-8b90-4ccc-9b70-3e05a5a4a1c7@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_193509_697553_E4AD964A 
-X-CRM114-Status: GOOD (  28.35  )
+X-CRM114-CacheID: sfid-20260227_113942_203175_1E168162 
+X-CRM114-Status: GOOD (  41.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,77 +86,150 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6800507384921113630=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMi8yNy8yNiA4OjEwIFBNLCBDb25vciBEb29sZXkgd3JvdGU6Cj4gT24gRnJpLCBGZWIgMjcs
-IDIwMjYgYXQgMDc6NDk6MzNQTSArMDIwMCwgQ3Jpc3RpYW4gQ2lvY2FsdGVhIHdyb3RlOgo+PiBP
-biAyLzI3LzI2IDc6MTggUE0sIENvbm9yIERvb2xleSB3cm90ZToKPj4+IE9uIFRodSwgRmViIDI2
-LCAyMDI2IGF0IDA0OjU2OjMwUE0gLTA1MDAsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4+Pj4g
-TGUgamV1ZGkgMjYgZsOpdnJpZXIgMjAyNiDDoCAyMDo1OSArMDAwMCwgQ29ub3IgRG9vbGV5IGEg
-w6ljcml0IDoKPj4+Pj4gT24gVGh1LCBGZWIgMjYsIDIwMjYgYXQgMDI6NDU6MTFQTSAtMDUwMCwg
-Tmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPj4+Pj4+IExlIGpldWRpIDI2IGbDqXZyaWVyIDIwMjYg
-w6AgMTg6NDMgKzAwMDAsIENvbm9yIERvb2xleSBhIMOpY3JpdCA6Cj4+Pgo+Pj4+Pj4+IERlcHJl
-Y2F0aW5nIHRoZSBvcmRlciBhbHNvIG1ha2VzIGxpdHRsZSBzZW5zZSB0byBtZSwgZ2l2ZW4gdGhh
-dCBzb21lIG9mCj4+Pj4+Pj4gdGhlc2UgZGV2aWNlcyBvbmx5IGhhdmUgb25lIHJlZyBlbnRyeSwg
-d2hpY2ggYXMgZmFyIGFzIEkgY2FuIHRlbGwgZnJvbQo+Pj4+Pj4+IGxvb2tpbmcgYXQgdGhlIGRy
-aXZlciAqaXMqIHRoZSAiZnVuY3Rpb24iIHJlZ2lvbiwgc28gaXQgY2FuIG5ldmVyIGJlCj4+Pj4+
-Pj4gZW50aXJlbHkgZGVwcmVjYXRlZC4KPj4+Pj4+Cj4+Pj4+PiBXaGF0IEknZCBsaWtlIHRvIHNl
-ZSwgaXMgYSBiaW5kaW5nIGV4cHJlc3Npb24gdGhhdCBiZWhhdmUgbGlrZSBhIHNldCwgbm90IGEK
-Pj4+Pj4+IGxpc3QsIGFuZCBsZWF2ZSB0aGUgb3JkZXJpbmcgb3Blbi4gQXMgcGVvcGxlIGtlZXAg
-cmVwZWF0aW5nLCB0aGVyZSBpcyBub3RoaW5nIGluCj4+Pj4+PiBhIGJpbmRpbmcgdGhhdCBhc3Np
-c3QgdG8gZGVmaW5lIHRoZSByaWdodCBvcmRlcmluZyAoaXRzIG5vdCBhZGRyZXNzIG9yIGJhc2UK
-Pj4+Pj4+IGFkZHJlcyBhd2FyZSkuIFRoYXQgYmFzaWNhbGx5IG1lYW5zLCB3ZSBjYW4ndCBhcyBy
-ZXZpZXdlciBzZWUgdGhhdCBvcmRlcmluZyBpcwo+Pj4+Pj4gZ29pbmcgdG8gaW1wb3NpbmcgdXNp
-bmcgYSBiYXNlIGFkZHJlc3MgaW4gdGhlIHVuaXQgbmFtZSAod2hpY2ggaXMgYSBjb252ZW5pZW5j
-ZSwKPj4+Pj4+IG5vdCBhIHJ1bGUgSSBzdXBwb3NlKSB0aGF0IGRpZmZlciBmcm9tIHRoZSB2ZW5k
-b3IgZG9jdW1lbnRlZCBiYXNlIGFkZHJlc3MuCj4+Pj4+Pgo+Pj4+Pj4gQnkgZXhwbGljaXRseSBy
-ZW1vdmluZyB0aGUgb3JkZXJpbmcgaW4gdGhlIGJpbmRpbmcsIHdlIGNyZWF0ZSBhIHN0cmljdCBy
-dWxlIHRoYXQKPj4+Pj4+IGRyaXZlciBzaG91bGQgcmV0cmlldmUgdGhpcyBieSBuYW1lLCBhbmQg
-bmV2ZXIgYXNzdW1lIHRoZSBvcmRlcmluZywgd2hpY2ggSQo+Pj4+Pj4gcGVyc29uYWxseSBsaWtl
-Lgo+Pj4+Pj4KPj4+Pj4+IHRob3VnaHRzID8KPj4+Pj4KPj4+Pj4gWWVhaCwgeW91IGNhbiBkbyB0
-aGlzLCBidXQgdG8gYXZvaWQgcG90ZW50aWFsIGJyZWFrcyB5b3UgaGF2ZSB0byBkbyBpdAo+Pj4+
-PiBmcm9tIHRoZSBzdGFydCwgbm90IGFmdGVyIHRoZSBmYWN0LiBQcm9iYWJseSB0aGVyZSdzIGJp
-bmRpbmdzIHRoYXQgZ2V0Cj4+Pj4+IGFja2VkIGV2ZXJ5IGRheSB0aGF0IGRvIGRvIHRoaXMuIEV2
-ZW4gdGhlIHJldGNvbiBpcyBva2F5IHRvIGRvIHdoZW4KPj4+Pj4gcmVnLW5hbWVzIGlzIG1hbmRh
-dGVkIGJ5IHRoZSBiaW5kaW5nIGFuZCB0aGUgdXNlcnMgdXNlIHJlZy1uYW1lcyBpbiBteQo+Pj4+
-PiBvcGluaW9uLgo+Pj4+Cj4+Pj4gSSB0aGluayBmcm9tIHRoZSBhYm92ZSBhbmFseXNlcywgc2lu
-Y2UgdGhlIHVzYWdlIG9ubHkgc3RhcnRzIGluIHJjMSwgd2UgaGF2ZQo+Pj4+IHJvb20gZm9yIGlt
-cHJvdmluZyBpdCBrbm93aW5nIHdlIGFyZW4ndCBjcmVhdGluZyBwcm9ibGVtIGZvciBhbnlvbmUu
-IE5vdGUgdGhhdCBJCj4+Pj4gaGF2ZSBubyBpZGVhIHdoYXQgdGhlIHN5bnRheCBpcyB0byAiZG8g
-dGhpcyIsIGFuZCBJIGRvdWJ0IGVpdGhlciBEZXRsZXYgb3IKPj4+PiBDcmlzdGlhbiBoYXZlIGEg
-Y2x1ZS4KPj4+Cj4+PiBJIHRoaW5rIHRoaXMgaXMgdGhlIG9ubHkgYml0IHRoYXQgcmVhbGx5IHN0
-aWxsIG5lZWRzIGEgcmVwbHksIHRoaXMgY2FuCj4+PiBiZSBzb2x2ZWQgYnkgYWRkaW5nIHJlZy1u
-YW1lcyBhcyAicmVxdWlyZWQiIHRvIHRoZSBleGlzdGluZyBjb25kaXRpb25hbAo+Pj4gcG9ydGlv
-biBvZiB0aGUgYmluZGluZy4gVGhlcmUncyBwcm9iYWJseSBodW5kcmVkcyBvZiBleGFtcGxlcyBp
-ZiBvbmUKPj4+IGRvZXMgYSBzZWFyY2ggZm9yICJ0aGVuOlxuLipyZXF1aXJlZDoiIHRvIHVzZSBh
-IGJhc2lzIGZvciB0aGUgY2hhbmdlCj4+PiBoZXJlLiBQcm9iYWJseSBzaG91bGQgYmUgYW4gaW5k
-ZXBlbmRlbnQgY2hhbmdlLCBzaW5jZSBpdCBpcyBuZWVkZWQgZXZlbgo+Pj4gd2l0aG91dCB0aGUg
-cmUtb3JkZXIgZ2l2ZW4gdGhlIGJ1ZyBJIGJyb3VnaHQgdXAuCj4+Cj4+IEFzIG1lbnRpb25lZCBp
-biBteSBwcmV2aW91cyByZXBseSwgdGhlIGFjdHVhbCBwcm9ibGVtIGlzIHRoYXQgdGhlIGJpbmRp
-bmcgaGFzCj4+IGJlZW4gYWxyZWFkeSByZWxlYXNlZCwgYW5kIEknbSBub3Qgc3VyZSB3ZSBjYW4g
-Y2hhbmdlIHRoaXMgd2l0aG91dCBicmVha2luZyB0aGUKPj4gQUJJLgogClsuLi5dCgo+IFNvIHll
-cywgd2hpbGUgd2hhdCBJIHByb3Bvc2UgaXMgYW4gQUJJIGJyZWFrLCB0aGUgZHJpdmVyIGN1cnJl
-bnRseQo+IGV4cGVjdHMgcmVnLW5hbWVzIHRvIGJlIG1hbmRhdG9yeSBmb3IgdGhlIHJrMzU4OC12
-ZGVjLiBBZGRpdGlvbmFsbHksIG5ldwo+IHJlcXVpcmVkIHByb3BlcnRpZXMgYXJlIG9ubHkgcmVh
-bGx5IGEgbWVhbmluZ2Z1bCBBQkkgYnJlYWsgaWYgdGhlIGRyaXZlcgo+IGlzIGNoYW5nZWQgdG8g
-cmVxdWlyZWQgdGhlbSwgc2luY2UgdGhhdCB3b3VsZCByZW5kZXIgb2xkIGRldmljZXRyZWVzCj4g
-bm9uLWZ1bmN0aW9uYWwuIFRoZSBkcml2ZXIgaW4gcXVlc3Rpb24gYWxyZWFkeSByZXF1aXJlcyB0
-aGVtLCBzbyB0aGF0J3MKPiBwcmV0dHkgbW9vdCEgCgpJIHRoaW5rIHRoYXQncyBwcmVjaXNlbHkg
-dGhlIGluZm9ybWF0aW9uIEkgd2FzIGxvb2tpbmcgZm9yLCBpLmUuIGJyZWFraW5nIEFCSQppbiB0
-aGlzIGNhc2UgaXMgZnVsbHkganVzdGlmaWVkIHNpbmNlIHdlIGNhbm5vdCByZWFsbHkgZml4IHRo
-ZSBkcml2ZXIuICBJIG1lYW4gCndlIHdvdWxkIGhhdmUgdGltZSB0byBkbyB0aGlzLCBzaW5jZSB0
-aGUgcmszNTg4IHJlbGF0ZWQgY2hhbmdlcyBsYW5kZWQgaW4KdjcuMC1yYzEsIGJ1dCBpdCdzIG5v
-dCBmZWFzaWJsZSB0byBhY2NvbW1vZGF0ZSB0byB0aGUgY3VycmVudCBzdGF0ZSBvZiB0aGUKYmlu
-ZGluZywgYXMgeW91IGNsZWFybHkgcG9pbnRlZCBvdXQuCgo+IEhvcGVmdWxseSBJJ3ZlIG1hZGUg
-bXkgcG9pbnQgYWJvdXQgcmVnLW5hbWVzIGJlaW5nIG1hbmRhdG9yeSB0aGlzIHRpbWUKPiBhcm91
-bmQ/CgpUb3RhbGx5LCB0aGFua3MgZm9yIHlvdXIgdGltZSBhbmQgc29ycnkgZm9yIHRoZSBjb25m
-dXNpb24gYXJvdW5kIHRoZSB0b3BpYyEKCk15IG9ubHkgcXVlc3Rpb24gbm93IGlzIGhvdyBzaG91
-bGQgd2UgcHJvY2VlZCB3aXRoIHRoaXMgcGFydGljdWxhciBjaGFuZ2UgLSBJJ2QKaGFuZGxlIGl0
-IGluIGEgZGVkaWNhdGVkIHBhdGNoLCBwcmVjZWRpbmcgdGhpcyBvbmUuCgpSZWdhcmRzLApDcmlz
-dGlhbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+
+--===============6800507384921113630==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="KNbYRtnhIM3FHQeV"
+Content-Disposition: inline
+
+
+--KNbYRtnhIM3FHQeV
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Feb 27, 2026 at 09:35:01PM +0200, Cristian Ciocaltea wrote:
+> On 2/27/26 8:10 PM, Conor Dooley wrote:
+> > On Fri, Feb 27, 2026 at 07:49:33PM +0200, Cristian Ciocaltea wrote:
+> >> On 2/27/26 7:18 PM, Conor Dooley wrote:
+> >>> On Thu, Feb 26, 2026 at 04:56:30PM -0500, Nicolas Dufresne wrote:
+> >>>> Le jeudi 26 f=E9vrier 2026 =E0 20:59 +0000, Conor Dooley a =E9crit :
+> >>>>> On Thu, Feb 26, 2026 at 02:45:11PM -0500, Nicolas Dufresne wrote:
+> >>>>>> Le jeudi 26 f=E9vrier 2026 =E0 18:43 +0000, Conor Dooley a =E9crit=
+ :
+> >>>
+> >>>>>>> Deprecating the order also makes little sense to me, given that s=
+ome of
+> >>>>>>> these devices only have one reg entry, which as far as I can tell=
+ from
+> >>>>>>> looking at the driver *is* the "function" region, so it can never=
+ be
+> >>>>>>> entirely deprecated.
+> >>>>>>
+> >>>>>> What I'd like to see, is a binding expression that behave like a s=
+et, not a
+> >>>>>> list, and leave the ordering open. As people keep repeating, there=
+ is nothing in
+> >>>>>> a binding that assist to define the right ordering (its not addres=
+s or base
+> >>>>>> addres aware). That basically means, we can't as reviewer see that=
+ ordering is
+> >>>>>> going to imposing using a base address in the unit name (which is =
+a convenience,
+> >>>>>> not a rule I suppose) that differ from the vendor documented base =
+address.
+> >>>>>>
+> >>>>>> By explicitly removing the ordering in the binding, we create a st=
+rict rule that
+> >>>>>> driver should retrieve this by name, and never assume the ordering=
+, which I
+> >>>>>> personally like.
+> >>>>>>
+> >>>>>> thoughts ?
+> >>>>>
+> >>>>> Yeah, you can do this, but to avoid potential breaks you have to do=
+ it
+> >>>>> from the start, not after the fact. Probably there's bindings that =
+get
+> >>>>> acked every day that do do this. Even the retcon is okay to do when
+> >>>>> reg-names is mandated by the binding and the users use reg-names in=
+ my
+> >>>>> opinion.
+> >>>>
+> >>>> I think from the above analyses, since the usage only starts in rc1,=
+ we have
+> >>>> room for improving it knowing we aren't creating problem for anyone.=
+ Note that I
+> >>>> have no idea what the syntax is to "do this", and I doubt either Det=
+lev or
+> >>>> Cristian have a clue.
+> >>>
+> >>> I think this is the only bit that really still needs a reply, this can
+> >>> be solved by adding reg-names as "required" to the existing condition=
+al
+> >>> portion of the binding. There's probably hundreds of examples if one
+> >>> does a search for "then:\n.*required:" to use a basis for the change
+> >>> here. Probably should be an independent change, since it is needed ev=
+en
+> >>> without the re-order given the bug I brought up.
+> >>
+> >> As mentioned in my previous reply, the actual problem is that the bind=
+ing has
+> >> been already released, and I'm not sure we can change this without bre=
+aking the
+> >> ABI.
+> =20
+> [...]
+>=20
+> > So yes, while what I propose is an ABI break, the driver currently
+> > expects reg-names to be mandatory for the rk3588-vdec. Additionally, new
+> > required properties are only really a meaningful ABI break if the driver
+> > is changed to required them, since that would render old devicetrees
+> > non-functional. The driver in question already requires them, so that's
+> > pretty moot!=20
+>=20
+> I think that's precisely the information I was looking for, i.e. breaking=
+ ABI
+> in this case is fully justified since we cannot really fix the driver.  I=
+ mean=20
+> we would have time to do this, since the rk3588 related changes landed in
+> v7.0-rc1, but it's not feasible to accommodate to the current state of the
+> binding, as you clearly pointed out.
+>=20
+> > Hopefully I've made my point about reg-names being mandatory this time
+> > around?
+>=20
+> Totally, thanks for your time and sorry for the confusion around the topi=
+c!
+
+No worries. I as kinda wondering if I had someone gone nuts and
+misunderstaood what the driver was doing!
+
+> My only question now is how should we proceed with this particular change=
+ - I'd
+> handle it in a dedicated patch, preceding this one.
+
+I would do it in a dedicated patch yeah, since it is independently
+justifiable.
+
+--KNbYRtnhIM3FHQeV
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaaHy9wAKCRB4tDGHoIJi
+0tK7AQCzlsxi7/2yPN6ZSV/qJFQ14fb1yJTyOOCqm57kOJpOygD8DJX6ftXfY1YT
+2D9L4lqHhfRS8DyY6H2walzOQPY8sgQ=
+=Hg14
+-----END PGP SIGNATURE-----
+
+--KNbYRtnhIM3FHQeV--
+
+
+--===============6800507384921113630==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6800507384921113630==--
+
