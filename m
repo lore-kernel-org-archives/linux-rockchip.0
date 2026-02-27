@@ -4,75 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42121FD530E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 08:38:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 511A2FD5314
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 09:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZlJAhuhZZSOvxuezjEvDN/PTzoX5LQyCEgWSJIynvbc=; b=qaNbDoVb9P/UQVCi4n+JO33eXj
-	pSP3sr4YkuvnQBtsXzgFYT1mhimzZGiVAdx6dkoaJ8SeHW7HCfZD+7knx7T/Pu9g9Z5Bb5/HVNA2j
-	mDhLrqb6//c4IPJiBAl/ETm7Ee9OdazWlz7l32NAtbm79KmtSeiVHW4Lgfar2twtG5JEUOd+PL/T7
-	QOdMi/OiGVgq9KCL520vfM1RgqCDyFvvMfv4SjWnLcYvotUk6O1JpEnvmNtkD6hYG6GtWqxZcbqtx
-	SRnk4z0jkie767CqIP+wWHz7pxszSEm5ywYmMO6ZUdwtvIcDFql3BvrJuftkGp83V88RqatwDxTFl
-	1Pnr5i2w==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=KwYcNELqu1kCBhfKX3F9vm2Lr0p5RFSLrsjdCQ1U2iM=; b=L6wy0776hQ9qkZ8gNqjDk3nfhd
+	mGoBW8sy6TEO8m/X5SdxL5KDr1QGXaromAcKmhzUoqlhQrSsCJFtzSTYb5RLHFRrjMvowgCtfzXzs
+	m+jgCW2QV/RfuPrtseBNj4EYIGher5QARKK7QZ6K7CuOs3vZOb7b3MCTePIq5eDz3yV/cToa3zKUm
+	iEvjVPOnAsTbljeA93ZC7XsuK0DzG46fCLTImSlzf+G6vVDG3V9ynha6eP5PuoYuAWivVSQnIS4em
+	erc/6trYdZuHxEnGo+xjmYzthuQNPaNIls0DqmLV07dha9+INOEs73G2cjlLhOfrmfqLUFRo0nSun
+	wJxQM89g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvtN4-000000080Gf-0ifh;
-	Fri, 27 Feb 2026 08:38:50 +0000
+	id 1vvtrB-000000083c4-1dca;
+	Fri, 27 Feb 2026 09:09:57 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vvtMX-00000007zf4-3twZ;
-	Fri, 27 Feb 2026 08:38:18 +0000
+	id 1vvtr8-000000083bR-3RF7;
+	Fri, 27 Feb 2026 09:09:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E753644498;
-	Fri, 27 Feb 2026 08:38:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 48D05C116C6;
-	Fri, 27 Feb 2026 08:38:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 25EB3404A4;
+	Fri, 27 Feb 2026 09:09:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1B3BC116C6;
+	Fri, 27 Feb 2026 09:09:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772181496;
-	bh=JxFRQuyAOAtMYqF/3/WfzrGOV/lulPZh3R/a6BPJ3vU=;
+	s=k20201202; t=1772183394;
+	bh=x286f3Mp4XCBrFvPbHHuGFDa6SzN+2L0b/Rah4ouQhU=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=h2SN9TPW9+50N0x4JTYDj0MPTo3reFNOXXZeruZ+d0HOF5CtwriLkf9ctOzcUy60t
-	 13Feqf/5Npq87ed9DNpqG9guPAWnIAmlD16H7f7SeY6Q69svSmdcBaXIhh6rhSyUIt
-	 uc0J5aRplddQ7ExJ9QC3a+DkscYbtDYEZ01johDHFF2z5IXT2geVk2iJ+h6wiIt6Gk
-	 ceDmlX7k2ActitGzwsNBQMueaa05EMQ4QbGNtTh1FRVmQt7f8JwhxmsfwDq8YJ7A6G
-	 Z4tzkS0lq+PsoWpZ/z8LWj/fjGxcTPtLRYGb8b3cWISUtpDUSuK0Lf2WdXEzs8Jmx2
-	 ww7eZk+XsqYcQ==
-Date: Fri, 27 Feb 2026 09:38:13 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Harry Wentland <harry.wentland@amd.com>, 
-	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>, 
-	Alex Deucher <alexander.deucher@amd.com>, Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>, 
-	Samuel Holland <samuel@sholland.org>, Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	=?utf-8?B?TWHDrXJh?= Canal <mcanal@igalia.com>, Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, amd-gfx@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-sunxi@lists.linux.dev
-Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
- enum
-Message-ID: <20260227-overjoyed-glaring-dogfish-89effa@houat>
-References: <20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org>
- <20260224-drm-rework-color-formats-v1-1-bebc76604ada@kernel.org>
- <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
+	b=Embk+7Be8h3rgcr/CwJ58R7uBXxt/TiEvB2SxDRm4a036pbPnfGPvM77gZrFm5bwj
+	 9lJpfLiqvue+mPulypgz6yrFfG+Cr8lNfWRvRqMGvdDk4kwe4IkeWYyeRZJeG3ji43
+	 KSONJiLoUKmOQbdE9wOeb9oKTd2Be4vt+4MAj5kYsqNMP+Q4BNVGujtwEtTu6vgApG
+	 JD9xSc2RVodMAK3qNxVvKnTnoZDNslqukt+7l2nfLYUzfirnCIPQz7ZZjqFw4a3VIR
+	 QTKfp9uDdnd0gq2ZtraLMlR6GQlyh1tRJjKFWNc9a6QSrtntGjQxWgDtUFSNcqfwby
+	 hAMsVymVOcQRg==
+Date: Fri, 27 Feb 2026 09:09:48 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
+ alternative reg-names order for RK35{76,88}
+Message-ID: <20260227-talisman-confused-ce08d476acd5@spud>
+References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
+ <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+ <20260226-salute-threaten-a3eabb232396@spud>
+ <429f3c7aa22eccffedbf8db6aa91bee3dd13814a.camel@collabora.com>
+ <20260226-snide-foil-a05e1aa156a8@spud>
+ <3d28c699e47f606bad46bb6447785badace37793.camel@collabora.com>
+ <20260226-ferocious-saturday-0e1f9bb28ec5@spud>
+ <20260227-overjoyed-unyielding-mosquito-7bfbe3@quoll>
 MIME-Version: 1.0
-In-Reply-To: <4ea869750681f5eee3bbb2978f4ff0ace70310a9.camel@pengutronix.de>
+In-Reply-To: <20260227-overjoyed-unyielding-mosquito-7bfbe3@quoll>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_003818_014000_BD086AAD 
-X-CRM114-Status: GOOD (  32.86  )
+X-CRM114-CacheID: sfid-20260227_010954_926721_5E80DCAC 
+X-CRM114-Status: GOOD (  20.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,165 +71,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2997313090939855606=="
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Mauro Carvalho Chehab <mchehab@kernel.org>, kernel@collabora.com, Heiko Stuebner <heiko@sntech.de>, Detlev Casanova <detlev.casanova@collabora.com>, Conor Dooley <conor.dooley@microchip.com>, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Hans Verkuil <hverkuil@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
+Content-Type: multipart/mixed; boundary="===============0063393842535795965=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============2997313090939855606==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="4g2ghndtsljakowa"
+--===============0063393842535795965==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="x2dlAfuzH1dyuK2M"
 Content-Disposition: inline
 
 
---4g2ghndtsljakowa
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+--x2dlAfuzH1dyuK2M
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 01/14] drm/connector: Introduce drm_output_color_format
- enum
-MIME-Version: 1.0
 
-Hi Philipp
-
-On Thu, Feb 26, 2026 at 10:12:02AM +0100, Philipp Zabel wrote:
-> On Di, 2026-02-24 at 11:58 +0100, Maxime Ripard wrote:
-> > The EDID parsing code initially introduced the DRM_COLOR_FORMAT_*
-> > defines to represent the sink capabilities. Since a given sink could
-> > support multiple formats, it was first defined as a bitmask.
+On Fri, Feb 27, 2026 at 08:38:13AM +0100, Krzysztof Kozlowski wrote:
+> On Thu, Feb 26, 2026 at 10:15:49PM +0000, Conor Dooley wrote:
+> > >=20
+> > >=20
+> > > 	if (rkvdec->variant->has_single_reg_region) {
+> > > 		rkvdec->regs =3D devm_platform_ioremap_resource(pdev, 0);
+> > > 		if (IS_ERR(rkvdec->regs))
+> > > 			return PTR_ERR(rkvdec->regs);
+> > > 	} else {
+> > > 		rkvdec->regs =3D devm_platform_ioremap_resource_byname(pdev, "funct=
+ion");
+> > > 		if (IS_ERR(rkvdec->regs))
+> > > 			return PTR_ERR(rkvdec->regs);
+> > >=20
+> > > 		rkvdec->link =3D devm_platform_ioremap_resource_byname(pdev, "link"=
+);
+> > > 		if (IS_ERR(rkvdec->link))
+> > > 			return PTR_ERR(rkvdec->link);
+> > > 	}
+> > >=20
+> > >=20
+> > > Where for RK35xx variants, it only pick the resources by name. I don'=
+t see the
+> > > bug that you see, but I believe this was just a supposition, that you=
+ didn't
+> > > check the code.
 > >=20
-> > However, the core and drivers have since leveraged those defines to
-> > represent both the supported formats but also the current format being
-> > used.
+> > Busy reading path of exile patch notes, so sniping this comment only...
 > >=20
-> > Considering the latter case, the more natural, and consistent, thing to
-> > do would be to create an enum of all the possible formats, and then list
-> > the supported formats using a bitmask of the individual enum values.
-> >=20
-> > Let's create a new enum following that pattern, drm_output_color_format,
-> > while maintaining the DRM_COLOR_FORMAT_* compatibility to make the
-> > transition easier.
-> >=20
-> > Signed-off-by: Maxime Ripard <mripard@kernel.org>
-> > ---
-> >  include/drm/drm_connector.h | 42 ++++++++++++++++++++++++++++++++++---=
------
-> >  1 file changed, 34 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> > index 7eaec37ae1c735334afa7dad15a38cf0c8b761b8..c67539708f636ae3905bb84=
-24c63799bd1811f28 100644
-> > --- a/include/drm/drm_connector.h
-> > +++ b/include/drm/drm_connector.h
-> > @@ -554,10 +554,35 @@ enum drm_colorspace {
-> >  	DRM_MODE_COLORIMETRY_RGB_WIDE_FLOAT	=3D 14,
-> >  	DRM_MODE_COLORIMETRY_BT601_YCC		=3D 15,
-> >  	DRM_MODE_COLORIMETRY_COUNT
-> >  };
-> > =20
-> > +/**
-> > + * enum drm_output_color_format - Output Color Format
-> > + *
-> > + * This enum is a consolidated color format list supported by
-> > + * connectors. It's only ever really been used for HDMI and DP so far,
-> > + * so it's not exhaustive and can be extended to represent other forma=
-ts
-> > + * in the future.
-> > + *
-> > + *
-> > + * @DRM_OUTPUT_COLOR_FORMAT_RGB444:
-> > + *   RGB output format
-> > + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR444:
-> > + *   YCbCr 4:4:4 output format (ie. not subsampled)
-> > + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR422:
-> > + *   YCbCr 4:2:2 output format (ie. with horizontal subsampling)
-> > + * @DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
-> > + *   YCbCr 4:2:0 output format (ie. with horizontal and vertical subsa=
-mpling)
-> > + */
-> > +enum drm_output_color_format {
-> > +	DRM_OUTPUT_COLOR_FORMAT_RGB444 =3D 0,
-> > +	DRM_OUTPUT_COLOR_FORMAT_YCBCR444,
-> > +	DRM_OUTPUT_COLOR_FORMAT_YCBCR422,
-> > +	DRM_OUTPUT_COLOR_FORMAT_YCBCR420,
-> > +};
-> > +
-> >  /**
-> >   * enum drm_bus_flags - bus_flags info for &drm_display_info
-> >   *
-> >   * This enum defines signal polarities and clock edge information for =
-signals on
-> >   * a bus as bitmask flags.
-> > @@ -697,14 +722,14 @@ struct drm_display_info {
-> >  	/**
-> >  	 * @subpixel_order: Subpixel order of LCD panels.
-> >  	 */
-> >  	enum subpixel_order subpixel_order;
-> > =20
-> > -#define DRM_COLOR_FORMAT_RGB444		(1<<0)
-> > -#define DRM_COLOR_FORMAT_YCBCR444	(1<<1)
-> > -#define DRM_COLOR_FORMAT_YCBCR422	(1<<2)
-> > -#define DRM_COLOR_FORMAT_YCBCR420	(1<<3)
-> > +#define DRM_COLOR_FORMAT_RGB444		(1 << DRM_OUTPUT_COLOR_FORMAT_RGB444)
-> > +#define DRM_COLOR_FORMAT_YCBCR444	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR4=
-44)
-> > +#define DRM_COLOR_FORMAT_YCBCR422	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR4=
-22)
-> > +#define DRM_COLOR_FORMAT_YCBCR420	(1 << DRM_OUTPUT_COLOR_FORMAT_YCBCR4=
-20)
+> > This is a bug, not a supposition, and it's that snippet from the
+> > driver that prompted my comment.. That code requires that if
+> > ->has_single_reg_region is set that the dts provides reg-names, but the
 >=20
-> Can we move this? Either up, directly after drm_output_color_format, or
-> down, directly before color_formats.
->
-> I think 8d70f395e6cb ("drm: Add support for a panel-orientation
-> connector property, v6") didn't separate the two on purpose.
+> No, the opposite. With has_single_reg_region you take first entry and
+> ignore names.
 
-I'm not sure it's worth it, the last patch in this series will remove
-these so it's not going to stick around either.
+Right, that's of course what I meant, I just a word ;)
 
-> >  	/**
-> >  	 * @panel_orientation: Read only connector property for built-in pane=
-ls,
-> >  	 * indicating the orientation of the panel vs the device's casing.
-> >  	 * drm_connector_init() sets this to DRM_MODE_PANEL_ORIENTATION_UNKNO=
-WN.
-> > @@ -712,14 +737,15 @@ struct drm_display_info {
-> >  	 * fb to compensate and gets exported as prop to userspace.
-> >  	 */
-> >  	int panel_orientation;
-> > =20
-> >  	/**
-> > -	 * @color_formats: HDMI Color formats, selects between RGB and YCrCb
-> > -	 * modes. Used DRM_COLOR_FORMAT\_ defines, which are _not_ the same o=
-nes
-> > -	 * as used to describe the pixel format in framebuffers, and also don=
-'t
-> > -	 * match the formats in @bus_formats which are shared with v4l.
-> > +	 * @color_formats: HDMI Color formats, selects between RGB and
-> > +	 * YCrCb modes. Uses a bitmask of DRM_OUTPUT_COLOR_FORMAT\_
+> > binding does not mandate reg-names for rk3576-vdec and rk3588-vdec, so
 >=20
-> Maybe s/YCrCb/YCbCr/ for consistency?
+> Best regards,
+> Krzysztof
+>=20
 
-Yep, definitely. I'll update it.
-
-Maxime
-
---4g2ghndtsljakowa
+--x2dlAfuzH1dyuK2M
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaaFX9QAKCRAnX84Zoj2+
-dmxcAYCTnPEWQk0d2T09EPqIDncreEtsxUKKkoZBhMXxCZHvYGuTLjKpiG5d9DVP
-bimDyVcBf1TU/oK/YyoR5WUGp2e2wBBKJslWjyZOy1Ng07mJWV9f+13k42kP7JzN
-5oCetRCy+w==
-=Anpu
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaaFfXAAKCRB4tDGHoIJi
+0hv5AP4/TGZbOVeZ0Wp1eV5S4zHnzu5a4AU6VfD/n3/sb9IhvQEAyl00zdxwl4vi
+Sm+5PkjtLK5aV4wt1kV3QbcZQ1yKcg0=
+=dqra
 -----END PGP SIGNATURE-----
 
---4g2ghndtsljakowa--
+--x2dlAfuzH1dyuK2M--
 
 
---===============2997313090939855606==
+--===============0063393842535795965==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -253,5 +157,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============2997313090939855606==--
+--===============0063393842535795965==--
 
