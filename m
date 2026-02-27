@@ -4,78 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD83C1039894
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 20:50:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6D63104891D
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 22:42:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=azot2d3Ky98fyzgd+kcSKrnwqN4nhxlog5qnGdO2TWs=; b=ggAMX7/7xUzNcR
-	VSIkfwOw8FXq0/9vWuKT35PPnYd5u3qvgfkXfmvFcp45O0KacIrx8wGbFpHGIVoGOhK8K7WzEVW7v
-	TRCCg9K+fm5fhc6ltSHxJ461oscWdIArVL+r1fgzOTAEYH4qXiv8mTjVUO8ZftHHqj30/mX6NHJLW
-	P+3Fwh4FEHy0YU1ZG/GgFr8SlWCiXLMyUDX0rYl/Ns5q7FiPgDV0fZAxiRB+V0hBVT9Rz7GnqUaAE
-	HEAqbwOJxfNgzxUalf41kHZYbL/ErcXmDfUzj+3ikehk77RiVu9rxYm++8Q5D776n8/mEwt+ndcTK
-	6s9Wv4+v5ezw7oHxpYBg==;
+	List-Owner; bh=E6KWt3rocvLM/Ajn33HEct1YWewhZiwpczAsWtS0ktw=; b=ouQ6/tepXmMEM/
+	iyIcEYl7MixFLBPcfBnIgneVjiMU6K2bhUaMNkOCOMOvns0Ygu5sDZXeq8Ck0N5AZeyNEmAyRAgCm
+	UmM/M3WbRDHPXVKh/sVk0PUTFvIAJEUf33R8HPQKmePQslPEQ8NsZ/daPmXYdB6C5vwEOVzBFZ5ec
+	SXhNxOkMS+k1731N80YXHgaWe+hp8HQ6qJ0cQRPHz7OI+6V1JXgp9uqhOjeD9rNG++nhIY+y0Gz0J
+	BtsFanSrnKdwApJiBAu7Bq8X0/lIMFzeXdCjvZ61AvJRF4wuMKO7ZTu/N7Hzdm4B7w6Q8jlXXdlPD
+	9s1syVwk0UDEovFl+FHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw4nZ-000000099MC-0Eft;
-	Fri, 27 Feb 2026 20:50:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vw6XE-00000009EZ0-1TKg;
+	Fri, 27 Feb 2026 22:42:12 +0000
+Received: from mail-vs1-xe32.google.com ([2607:f8b0:4864:20::e32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw4nV-000000099KW-0ASY;
-	Fri, 27 Feb 2026 20:50:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=3TwZAMuNIpLCxf3ZWns0zlIhb2rVNHxflR4h2MvcdK8=; b=djXWOB4OOX89Ic61x5an9J+OJx
-	oxtsm0oJVRx1nvbz6+oUdKYNKgUFEA858Iml3QLXBLl0341LYXekzHSj539uiW56JMXhWLlTaDjvU
-	AQRwZD72vMp0Yx5bXfDX0AwjgFvIjRx2VzLOjIQ6YoALbtbewPmayzJFfPt3ywe4SoyNzocCZ1QT3
-	+sOc2tS3kGNWBU3Cj+sk4I75AEdJIjHXSMg3qluuNXm0iEKf/mF+zV5rCbEsjKv+VK0AfM1LmjVq1
-	FBewfZ9DTDSKDhH+h6Lu+ma1dOwgOyObpJDHzrsWzirX1YZTORg/a/knX5HpkwfSOuf8iG7vBTyoD
-	JQGQDxtA==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw4m5-0000000Duuh-2awn;
-	Fri, 27 Feb 2026 20:50:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772225334;
-	bh=l4Su0pklR2T7HnDbslEWlVekgDffWEurFlItFSCNEBU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Lr76XhgT3pF22ZlPP7xtJKrksTgBCAOAvyQRjFushgXOO8GTQByozohUp4P8//dlS
-	 TK8rjDL+z+2MvfKWE7ZF45rptLv3RNRnDSkFKSuM0JPWmtekEvBRx76/GuVjrhnnTE
-	 4mRkHMiS14gsWnEbaETtfzw/vAYJvcYQ5tB/QVAf3nbCyOb/EsQ+bXR0HcTZIOTBds
-	 J+14uE+23WhFsxQOysRYl1n/y9E5RDFNPj+wNq2Sy9+8fNwgybc2YCcT2tzShFDQxD
-	 efPFG8nF/6pQ4Qg3urnSZORpaKa2ryHZNG5uw05E40iTS98fDYDLGTb7AVYMhkn2Wh
-	 dI/KkSAwrct0w==
-Received: from localhost (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F16817E0F33;
-	Fri, 27 Feb 2026 21:48:54 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 27 Feb 2026 22:48:47 +0200
-Subject: [PATCH 3/6] phy: rockchip: samsung-hdptx: Drop TMDS rate setup
- workaround
+	id 1vw6XB-00000009EYI-2kn7
+	for linux-rockchip@lists.infradead.org;
+	Fri, 27 Feb 2026 22:42:10 +0000
+Received: by mail-vs1-xe32.google.com with SMTP id ada2fe7eead31-5fdb47d6131so710438137.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 27 Feb 2026 14:42:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772232128; x=1772836928; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=mSRwxud/Sjz5N6XXPU8dLJmT5Ixl2X0gYrwgt+M20jE=;
+        b=ODNmOM+BK7hv+pvQLHSDgyC0R2cAMX8SxnO7KTvke3F+bwcFzk5dVjDfQFbIW5GEFU
+         29RmnivU4amuNcr6DWciwQGD3mAfbdWYa0wZOByit8MKxbblQFAzrPfdLuZTKrDyfMNR
+         eW6ZvCTt+VRFouvVy5En27pjMxolekNTUkVGEAsYjw0UBv1ZmrMpbrDHQ6gA9iiSMfAW
+         kOtSWah6AUS2ifUu3C+Cr1YEIOV/KT5e/7iYJuRnKhyI3Bwrl7xEDkltg9YmFasmX/LV
+         tOuGIKVpf48uxZHA/7Qc1NC46UvusngLtMD98NBkAPEzFqfdjyTMJ39PPM5g+xXV4QHZ
+         TSMA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772232128; x=1772836928;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=mSRwxud/Sjz5N6XXPU8dLJmT5Ixl2X0gYrwgt+M20jE=;
+        b=OzyVZWv6f14sWyKWZH+MQG6A4i2oZbozmO1M1AG7wjivkIzqFYQSJGTr1TncMP1VjV
+         RErh2R19cmP5S+gwKkUiZQJWrVsSJhRYDtH9XbagzE/7upjknjrDSxZRI+v5Cn3+vHK0
+         sN/d5KwvsqtP7+mSyRE3UFXYe04bKIrYOugMh5nXY/pUexWwDduhY3xTbNXuNsj4+dIG
+         2tADbsoVLowjSPUafZTaq3hUNwH6FvkxGxYnVaylNYCw7O8kt7RYYrC+r/nTGQv/6gOQ
+         O81pIPJnJN2A40zZU6IHBU/vax94pCMIpO8c45B5kFQCoICNFrnsrj06OSfjyHgE46dP
+         F9Yw==
+X-Forwarded-Encrypted: i=1; AJvYcCXDh6IFa79BGnEKLM2X1qiHS2CQgar1YYWbbFjJjjG9dioj9vekf/GBxFc0MM5tVZyY+Nfleur8CtzIuqafng==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz4TfAs9/khLbtdK16rujCvrLDQRNYSsx1uIJNX/XVkJAfOjszs
+	8Yblxs/Yzs0Nd6/4F1X+QFDJCaRV7CXovcYUiV2L4/M1mfP0ivZVERWd
+X-Gm-Gg: ATEYQzzcrQsMVbs+YLOW8Mgl2/IgNUnT3aLchX8fVihmKrnEE5P0iEnhKr+s6e6+DsU
+	+WphgzLLSLXOsnhe/bLIztRiuB+OJRrXLv4cqJrS64D8QZdpuYjUBEBt6ZinXNRpiRwzaPxdC8D
+	ntkwPpDPgiQbdzwq+gx0cDn7Oy2mdPDGF7qvlNj5nabfh90m1y1CqcX/orAdZSfW9HzARFacNy9
+	UYeLaJ5Hvn903Kv1LR/VvEEfQfk9C+yhOIE3lzAhaJ5ba8M4BdZhycZf+v/n99wIovhAkL44hRi
+	F9QnUpkgmiBO/tCwkCBsQJe/uGKqBO3uU1BZpoJ25kYxe258LEWDGz8wtDZgF3zrUB4mTsDxt59
+	LDDehpjf+vWN5kWuufTLikQmsnpv3pZi7SUT5zWCFaPH8KFFI5vfmJLKsQZ5EuG1zWhkNR40a1Y
+	KCiULX3MYeNA==
+X-Received: by 2002:a05:6102:3f42:b0:5ef:b3fa:c89a with SMTP id ada2fe7eead31-5ff32537f8amr2390137137.32.1772232128028;
+        Fri, 27 Feb 2026 14:42:08 -0800 (PST)
+Received: from geday ([2804:7f2:800b:feb1::dead:c001])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-94df6577a4fsm6403120241.10.2026.02.27.14.42.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Feb 2026 14:42:07 -0800 (PST)
+Date: Fri, 27 Feb 2026 19:42:01 -0300
+From: Geraldo Nascimento <geraldogabriel@gmail.com>
+To: Charalampos Mitrodimas <charmitro@posteo.net>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Heiko Stuebner <heiko@sntech.de>, Dragan Simic <dsimic@manjaro.org>,
+	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v4 1/4] PCI: rockchip: drop 2.5 GT/s defines
+Message-ID: <aaIduRsXvcUZrj8E@geday>
+References: <cover.1772169998.git.geraldogabriel@gmail.com>
+ <5172389ba8d291fe05bc0887bc97fe73f110c5c0.1772169998.git.geraldogabriel@gmail.com>
+ <878qceku1j.fsf@posteo.net>
 MIME-Version: 1.0
-Message-Id: <20260227-hdptx-clk-fixes-v1-3-f998f2762d0f@collabora.com>
-References: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
-In-Reply-To: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>, 
- Dmitry Baryshkov <lumag@kernel.org>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.3
+Content-Disposition: inline
+In-Reply-To: <878qceku1j.fsf@posteo.net>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_205021_806925_D40E121E 
-X-CRM114-Status: GOOD (  12.29  )
+X-CRM114-CacheID: sfid-20260227_144209_740548_8DC80363 
+X-CRM114-Status: GOOD (  24.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,81 +106,78 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since commit ba9c2fe18c17 ("drm/rockchip: dw_hdmi_qp: Switch to
-phy_configure()") the TMDS rate setup doesn't rely anymore on the
-unconventional usage of the bus width, instead it is managed exclusively
-through the HDMI PHY configuration API.
+Hi Charalampos,
 
-Drop the now obsolete workaround to retrieve the TMDS character rate via
-phy_get_bus_width() during power_on().
+On Fri, Feb 27, 2026 at 04:53:00PM +0000, Charalampos Mitrodimas wrote:
+> Geraldo Nascimento <geraldogabriel@gmail.com> writes:
+> 
+> > Drop the 2.5 GT/s Link Speed defines from Rockchip PCIe header
+> > definitions. The reason is that Shawn Lin from Rockchip has
+> > reiterated that there may be danger of "catastrophic failure"
+> > in using their PCIe with 5.0 GT/s speeds.
+> >
+> > While Rockchip has done so informally without issuing a proper
+> > errata, and the particulars are thus unknown, this may cause
+> > data loss or worse.
+> >
+> > This change is corroborated by RK3399 official datasheet [1], which
+> > states maximum link speed for this platform is 2.5 GT/s.
+> >
+> > [1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+> >
+> > Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> > Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
+> > Cc: stable@vger.kernel.org
+> > Reported-by: Dragan Simic <dsimic@manjaro.org>
+> > Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
+> > Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+> > ---
+> >  drivers/pci/controller/pcie-rockchip.h | 3 ---
+> >  1 file changed, 3 deletions(-)
+> >
+> > diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
+> > index 3e82a69b9c00..b5da15601b58 100644
+> > --- a/drivers/pci/controller/pcie-rockchip.h
+> > +++ b/drivers/pci/controller/pcie-rockchip.h
+> > @@ -42,7 +42,6 @@
+> >  #define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
+> >  #define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
+> >  #define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
+> > -#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
+> 
+> This commit alone won't compile right? PCIE_CLIENT_GEN_SEL_2 is still
+> referenced by rockchip_pcie_init_port():
 
-While at it, get rid of the extra call to rk_hdptx_phy_consumer_put() by
-moving the statement at the end of the function.
+You are correct, thanks for catching it.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 26 ++++++-----------------
- 1 file changed, 6 insertions(+), 20 deletions(-)
+> 
+>          if (rockchip->link_gen == 2)
+>                  rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
+>                                      PCIE_CLIENT_CONFIG);
+> 
+> This reference is removed by the next patch in the series but not sure
+> if we want to do it here instead.
+> 
+> >  #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
+> >  #define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
+> >  #define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
+> > @@ -197,8 +196,6 @@
+> >  	(((x) & PCIE_CORE_PL_CONF_LS_MASK) == PCIE_CORE_PL_CONF_LS_READY)
+> >  #define PCIE_LINK_UP(x) \
+> >  	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
+> > -#define PCIE_LINK_IS_GEN2(x) \
+> > -	(((x) & PCIE_CORE_PL_CONF_SPEED_MASK) == PCIE_CORE_PL_CONF_SPEED_5G)
+> 
+> Same for this, references elsewhere tho.
+> 
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-index 14d266c8df5c..b56360b5df78 100644
---- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-+++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
-@@ -1655,22 +1655,6 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 	enum phy_mode mode = phy_get_mode(phy);
- 	int ret, lane;
- 
--	if (mode != PHY_MODE_DP) {
--		if (!hdptx->hdmi_cfg.rate && hdptx->hdmi_cfg.mode != PHY_HDMI_MODE_FRL) {
--			/*
--			 * FIXME: Temporary workaround to setup TMDS char rate
--			 * from the RK DW HDMI QP bridge driver.
--			 * Will be removed as soon the switch to the HDMI PHY
--			 * configuration API has been completed on both ends.
--			 */
--			hdptx->hdmi_cfg.rate = phy_get_bus_width(hdptx->phy) & 0xfffffff;
--			hdptx->hdmi_cfg.rate *= 100;
--		}
--
--		dev_dbg(hdptx->dev, "%s rate=%llu bpc=%u\n", __func__,
--			hdptx->hdmi_cfg.rate, hdptx->hdmi_cfg.bpc);
--	}
--
- 	ret = rk_hdptx_phy_consumer_get(hdptx);
- 	if (ret)
- 		return ret;
-@@ -1696,9 +1680,10 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 		rk_hdptx_dp_pll_init(hdptx);
- 
- 		ret = rk_hdptx_dp_aux_init(hdptx);
--		if (ret)
--			rk_hdptx_phy_consumer_put(hdptx, true);
- 	} else {
-+		dev_dbg(hdptx->dev, "%s rate=%llu bpc=%u\n", __func__,
-+			hdptx->hdmi_cfg.rate, hdptx->hdmi_cfg.bpc);
-+
- 		if (hdptx->pll_config_dirty)
- 			ret = rk_hdptx_pll_cmn_config(hdptx);
- 
-@@ -1710,11 +1695,12 @@ static int rk_hdptx_phy_power_on(struct phy *phy)
- 				ret = rk_hdptx_frl_lcpll_mode_config(hdptx);
- 			else
- 				ret = rk_hdptx_tmds_ropll_mode_config(hdptx);
--		} else {
--			rk_hdptx_phy_consumer_put(hdptx, true);
- 		}
- 	}
- 
-+	if (ret)
-+		rk_hdptx_phy_consumer_put(hdptx, true);
-+
- 	return ret;
- }
- 
+Thanks for pointing this out. I'll do better for v5.
 
--- 
-2.52.0
+Geraldo Nascimento
 
+> >  
+> >  #define RC_REGION_0_ADDR_TRANS_H		0x00000000
+> >  #define RC_REGION_0_ADDR_TRANS_L		0x00000000
 
 _______________________________________________
 Linux-rockchip mailing list
