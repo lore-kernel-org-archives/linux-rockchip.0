@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184DFFEFB6E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 17:49:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19B25FEFB72
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Feb 2026 18:10:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zP8d/9MUap/v4Ytvnxq5ySozDUIQUqaHtP7/Eri6DRo=; b=rsQ4TXSTFm4R25
-	RHcm75KoRKLOwU7Ro09QdbTEj/nhrpKhix3WoPK1Ax0CRnLQ0fUkK8F+H0DzOX9pW4AOCH4ktmXFS
-	oIrXy8eiXwrcSkw5tzRKZVNCGJSdCyetrVsxGw1fkiTPtM3zUgsylztcZRa62fDY0y8Fwo1sMwEFK
-	J7vc0B/N7hgTcfh1ROtW1wMkpnHlBfMCRrAftW3snXtlIj6l0lspMBhdjeuQsUO8iNSWQ4RNrvnpz
-	xJfBpPHod0XCNk8SQn33dLg0/Az0uLsyozoALlrUqAl+iMgJubRTavA9D/nNLxmPCw5MnEFRiDutR
-	w8/pSs7Nzd0AADcNgVVg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EC24TIthqrak+rKEjxg4/NrCJq6zYtf9gb6RzqEMHGQ=; b=HVAq8GSFMyyw5qG5pcCh6PiSDK
+	p9IsZBX3ZWz16oNpTdcOK7r6wpk8NIQvHzHUWySBBGMVwKCdy6XedD6U7YKGCmeVGJzBjn1xhKoiL
+	dHmYAgQ0UE++38kP7zqghl0U3iHunBQjmTc0NvPLHNYFimGv4vJRgV/lDU9CFy9kKmMHoPhMibSbl
+	ANfF3RcZwdrzXLhHK1+5NYDfs7paW0ZBcf8/3KlS9dpfISELW5sN6AbKY9HWjHwg0puOVUdoQl+QI
+	cXArAuK7+4GRB1dOtOuOaHgZdL2sUDpe5mrMNX4miJ/CsxVWSHkixbQSPRHj4UB7oAvCiWnxFh9wr
+	HmbozwjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw1yB-00000008pWo-08cD;
-	Fri, 27 Feb 2026 17:49:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vw2IO-00000008tjZ-0pPd;
+	Fri, 27 Feb 2026 18:10:36 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw1y5-00000008pWA-38UF;
-	Fri, 27 Feb 2026 17:49:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772214574;
-	bh=SpE+cfNaP1TFrPzaUFYC0O9H8FoRYo0yR/OZFLjxALo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DVaKcqErMmK37/uJXaKthCMiluQqJM7uAJYCmJcrnFscZ4q+4KopoQJ+kelS7x7jw
-	 3YaldOMsay/sDkvHIHQw6Iuqmw9XDH7+TMWuetAm5rW9kgUOntjSJE2nBUc85SDs81
-	 0M88Z1csETPWYBba9DmoDjZReGL9fo7PGZRYiz6dJDQ4byM9jWuMTSyqdg6e/dBMYP
-	 RpbzOwsS3E4AqG9TY+jcdS+m9Ha9taIcgFm8H084/xiGRq7zaKvANQEfCzgOOlvQlS
-	 v62oXqNpUmHncmwHovx9ANNPB7XIxEo4rdRaFNSvqLqX/8KXty5Ccb72vCQAoXoRfb
-	 yOGMqWMxIf7TQ==
-Received: from [192.168.1.90] (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C587C17E03E5;
-	Fri, 27 Feb 2026 18:49:33 +0100 (CET)
-Message-ID: <86f4e4ee-cf49-4ebe-8cc6-0a9763ade36a@collabora.com>
-Date: Fri, 27 Feb 2026 19:49:33 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add alternative
- reg-names order for RK35{76,88}
-To: Conor Dooley <conor@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
+	id 1vw2IL-00000008tit-1tHq;
+	Fri, 27 Feb 2026 18:10:34 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2718C43D47;
+	Fri, 27 Feb 2026 18:10:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D4084C116C6;
+	Fri, 27 Feb 2026 18:10:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772215833;
+	bh=+7qcDgN76clpfkPEQ7toWJQgeAFbmTue8JQioohY3Qk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=gTXU7wbLlsKzNEdiWj3SBc6qFHGrf0uK0+CoKA7YF/AWIVQhoHzdelgz9eVHaxO47
+	 Jxk41tU0Pdvg2vB4ha7J7PBolwFC+ZfAFpUi4Et0r5xxnxSXCxzEiu+7KSBrkJUSAk
+	 0r40EzShDAgrIMFtvLEthHEzcAgtCMislSehrrOrYu+A4CXIdLs8bvFjSmK12h16PO
+	 sFwu0tPOAY/jXi6XycrE3orEi864hBodGUmNRNwEzKsSqKBXAZL58Q/6BQA7UhRhXH
+	 TClc0499OQWoWD8OV1K/1+Oq60ciaYxdOxLs3nE3QS7iCzOkQLU2eGRQIRJ95T5AGd
+	 Wj/wTWo8XdFhw==
+Date: Fri, 27 Feb 2026 18:10:27 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Conor Dooley <conor.dooley@microchip.com>,
+	linux-media@vger.kernel.org
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
+ alternative reg-names order for RK35{76,88}
+Message-ID: <20260227-wreckage-cozily-200175c6efce@spud>
 References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
  <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
  <20260226-salute-threaten-a3eabb232396@spud>
@@ -67,12 +67,12 @@ References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
  <20260226-snide-foil-a05e1aa156a8@spud>
  <3d28c699e47f606bad46bb6447785badace37793.camel@collabora.com>
  <20260227-atonable-glamorous-920cfd832bc1@spud>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260227-atonable-glamorous-920cfd832bc1@spud>
+ <86f4e4ee-cf49-4ebe-8cc6-0a9763ade36a@collabora.com>
+MIME-Version: 1.0
+In-Reply-To: <86f4e4ee-cf49-4ebe-8cc6-0a9763ade36a@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_094937_936524_8FE9F395 
-X-CRM114-Status: GOOD (  21.68  )
+X-CRM114-CacheID: sfid-20260227_101033_534575_7171F1F5 
+X-CRM114-Status: GOOD (  46.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,55 +84,239 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============0009730849282208003=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMi8yNy8yNiA3OjE4IFBNLCBDb25vciBEb29sZXkgd3JvdGU6Cj4gT24gVGh1LCBGZWIgMjYs
-IDIwMjYgYXQgMDQ6NTY6MzBQTSAtMDUwMCwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPj4gTGUg
-amV1ZGkgMjYgZsOpdnJpZXIgMjAyNiDDoCAyMDo1OSArMDAwMCwgQ29ub3IgRG9vbGV5IGEgw6lj
-cml0IDoKPj4+IE9uIFRodSwgRmViIDI2LCAyMDI2IGF0IDAyOjQ1OjExUE0gLTA1MDAsIE5pY29s
-YXMgRHVmcmVzbmUgd3JvdGU6Cj4+Pj4gTGUgamV1ZGkgMjYgZsOpdnJpZXIgMjAyNiDDoCAxODo0
-MyArMDAwMCwgQ29ub3IgRG9vbGV5IGEgw6ljcml0IDoKPiAKPj4+Pj4gRGVwcmVjYXRpbmcgdGhl
-IG9yZGVyIGFsc28gbWFrZXMgbGl0dGxlIHNlbnNlIHRvIG1lLCBnaXZlbiB0aGF0IHNvbWUgb2YK
-Pj4+Pj4gdGhlc2UgZGV2aWNlcyBvbmx5IGhhdmUgb25lIHJlZyBlbnRyeSwgd2hpY2ggYXMgZmFy
-IGFzIEkgY2FuIHRlbGwgZnJvbQo+Pj4+PiBsb29raW5nIGF0IHRoZSBkcml2ZXIgKmlzKiB0aGUg
-ImZ1bmN0aW9uIiByZWdpb24sIHNvIGl0IGNhbiBuZXZlciBiZQo+Pj4+PiBlbnRpcmVseSBkZXBy
-ZWNhdGVkLgo+Pj4+Cj4+Pj4gV2hhdCBJJ2QgbGlrZSB0byBzZWUsIGlzIGEgYmluZGluZyBleHBy
-ZXNzaW9uIHRoYXQgYmVoYXZlIGxpa2UgYSBzZXQsIG5vdCBhCj4+Pj4gbGlzdCwgYW5kIGxlYXZl
-IHRoZSBvcmRlcmluZyBvcGVuLiBBcyBwZW9wbGUga2VlcCByZXBlYXRpbmcsIHRoZXJlIGlzIG5v
-dGhpbmcgaW4KPj4+PiBhIGJpbmRpbmcgdGhhdCBhc3Npc3QgdG8gZGVmaW5lIHRoZSByaWdodCBv
-cmRlcmluZyAoaXRzIG5vdCBhZGRyZXNzIG9yIGJhc2UKPj4+PiBhZGRyZXMgYXdhcmUpLiBUaGF0
-IGJhc2ljYWxseSBtZWFucywgd2UgY2FuJ3QgYXMgcmV2aWV3ZXIgc2VlIHRoYXQgb3JkZXJpbmcg
-aXMKPj4+PiBnb2luZyB0byBpbXBvc2luZyB1c2luZyBhIGJhc2UgYWRkcmVzcyBpbiB0aGUgdW5p
-dCBuYW1lICh3aGljaCBpcyBhIGNvbnZlbmllbmNlLAo+Pj4+IG5vdCBhIHJ1bGUgSSBzdXBwb3Nl
-KSB0aGF0IGRpZmZlciBmcm9tIHRoZSB2ZW5kb3IgZG9jdW1lbnRlZCBiYXNlIGFkZHJlc3MuCj4+
-Pj4KPj4+PiBCeSBleHBsaWNpdGx5IHJlbW92aW5nIHRoZSBvcmRlcmluZyBpbiB0aGUgYmluZGlu
-Zywgd2UgY3JlYXRlIGEgc3RyaWN0IHJ1bGUgdGhhdAo+Pj4+IGRyaXZlciBzaG91bGQgcmV0cmll
-dmUgdGhpcyBieSBuYW1lLCBhbmQgbmV2ZXIgYXNzdW1lIHRoZSBvcmRlcmluZywgd2hpY2ggSQo+
-Pj4+IHBlcnNvbmFsbHkgbGlrZS4KPj4+Pgo+Pj4+IHRob3VnaHRzID8KPj4+Cj4+PiBZZWFoLCB5
-b3UgY2FuIGRvIHRoaXMsIGJ1dCB0byBhdm9pZCBwb3RlbnRpYWwgYnJlYWtzIHlvdSBoYXZlIHRv
-IGRvIGl0Cj4+PiBmcm9tIHRoZSBzdGFydCwgbm90IGFmdGVyIHRoZSBmYWN0LiBQcm9iYWJseSB0
-aGVyZSdzIGJpbmRpbmdzIHRoYXQgZ2V0Cj4+PiBhY2tlZCBldmVyeSBkYXkgdGhhdCBkbyBkbyB0
-aGlzLiBFdmVuIHRoZSByZXRjb24gaXMgb2theSB0byBkbyB3aGVuCj4+PiByZWctbmFtZXMgaXMg
-bWFuZGF0ZWQgYnkgdGhlIGJpbmRpbmcgYW5kIHRoZSB1c2VycyB1c2UgcmVnLW5hbWVzIGluIG15
-Cj4+PiBvcGluaW9uLgo+Pgo+PiBJIHRoaW5rIGZyb20gdGhlIGFib3ZlIGFuYWx5c2VzLCBzaW5j
-ZSB0aGUgdXNhZ2Ugb25seSBzdGFydHMgaW4gcmMxLCB3ZSBoYXZlCj4+IHJvb20gZm9yIGltcHJv
-dmluZyBpdCBrbm93aW5nIHdlIGFyZW4ndCBjcmVhdGluZyBwcm9ibGVtIGZvciBhbnlvbmUuIE5v
-dGUgdGhhdCBJCj4+IGhhdmUgbm8gaWRlYSB3aGF0IHRoZSBzeW50YXggaXMgdG8gImRvIHRoaXMi
-LCBhbmQgSSBkb3VidCBlaXRoZXIgRGV0bGV2IG9yCj4+IENyaXN0aWFuIGhhdmUgYSBjbHVlLgo+
-IAo+IEkgdGhpbmsgdGhpcyBpcyB0aGUgb25seSBiaXQgdGhhdCByZWFsbHkgc3RpbGwgbmVlZHMg
-YSByZXBseSwgdGhpcyBjYW4KPiBiZSBzb2x2ZWQgYnkgYWRkaW5nIHJlZy1uYW1lcyBhcyAicmVx
-dWlyZWQiIHRvIHRoZSBleGlzdGluZyBjb25kaXRpb25hbAo+IHBvcnRpb24gb2YgdGhlIGJpbmRp
-bmcuIFRoZXJlJ3MgcHJvYmFibHkgaHVuZHJlZHMgb2YgZXhhbXBsZXMgaWYgb25lCj4gZG9lcyBh
-IHNlYXJjaCBmb3IgInRoZW46XG4uKnJlcXVpcmVkOiIgdG8gdXNlIGEgYmFzaXMgZm9yIHRoZSBj
-aGFuZ2UKPiBoZXJlLiBQcm9iYWJseSBzaG91bGQgYmUgYW4gaW5kZXBlbmRlbnQgY2hhbmdlLCBz
-aW5jZSBpdCBpcyBuZWVkZWQgZXZlbgo+IHdpdGhvdXQgdGhlIHJlLW9yZGVyIGdpdmVuIHRoZSBi
-dWcgSSBicm91Z2h0IHVwLgoKQXMgbWVudGlvbmVkIGluIG15IHByZXZpb3VzIHJlcGx5LCB0aGUg
-YWN0dWFsIHByb2JsZW0gaXMgdGhhdCB0aGUgYmluZGluZyBoYXMKYmVlbiBhbHJlYWR5IHJlbGVh
-c2VkLCBhbmQgSSdtIG5vdCBzdXJlIHdlIGNhbiBjaGFuZ2UgdGhpcyB3aXRob3V0IGJyZWFraW5n
-IHRoZQpBQkkuCgpSZWdhcmRzLApDcmlzdGlhbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1y
-b2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21h
-aWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============0009730849282208003==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="tog0ews7lACG9O5/"
+Content-Disposition: inline
+
+
+--tog0ews7lACG9O5/
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Fri, Feb 27, 2026 at 07:49:33PM +0200, Cristian Ciocaltea wrote:
+> On 2/27/26 7:18 PM, Conor Dooley wrote:
+> > On Thu, Feb 26, 2026 at 04:56:30PM -0500, Nicolas Dufresne wrote:
+> >> Le jeudi 26 f=E9vrier 2026 =E0 20:59 +0000, Conor Dooley a =E9crit :
+> >>> On Thu, Feb 26, 2026 at 02:45:11PM -0500, Nicolas Dufresne wrote:
+> >>>> Le jeudi 26 f=E9vrier 2026 =E0 18:43 +0000, Conor Dooley a =E9crit :
+> >=20
+> >>>>> Deprecating the order also makes little sense to me, given that som=
+e of
+> >>>>> these devices only have one reg entry, which as far as I can tell f=
+rom
+> >>>>> looking at the driver *is* the "function" region, so it can never be
+> >>>>> entirely deprecated.
+> >>>>
+> >>>> What I'd like to see, is a binding expression that behave like a set=
+, not a
+> >>>> list, and leave the ordering open. As people keep repeating, there i=
+s nothing in
+> >>>> a binding that assist to define the right ordering (its not address =
+or base
+> >>>> addres aware). That basically means, we can't as reviewer see that o=
+rdering is
+> >>>> going to imposing using a base address in the unit name (which is a =
+convenience,
+> >>>> not a rule I suppose) that differ from the vendor documented base ad=
+dress.
+> >>>>
+> >>>> By explicitly removing the ordering in the binding, we create a stri=
+ct rule that
+> >>>> driver should retrieve this by name, and never assume the ordering, =
+which I
+> >>>> personally like.
+> >>>>
+> >>>> thoughts ?
+> >>>
+> >>> Yeah, you can do this, but to avoid potential breaks you have to do it
+> >>> from the start, not after the fact. Probably there's bindings that get
+> >>> acked every day that do do this. Even the retcon is okay to do when
+> >>> reg-names is mandated by the binding and the users use reg-names in my
+> >>> opinion.
+> >>
+> >> I think from the above analyses, since the usage only starts in rc1, w=
+e have
+> >> room for improving it knowing we aren't creating problem for anyone. N=
+ote that I
+> >> have no idea what the syntax is to "do this", and I doubt either Detle=
+v or
+> >> Cristian have a clue.
+> >=20
+> > I think this is the only bit that really still needs a reply, this can
+> > be solved by adding reg-names as "required" to the existing conditional
+> > portion of the binding. There's probably hundreds of examples if one
+> > does a search for "then:\n.*required:" to use a basis for the change
+> > here. Probably should be an independent change, since it is needed even
+> > without the re-order given the bug I brought up.
+>=20
+> As mentioned in my previous reply, the actual problem is that the binding=
+ has
+> been already released, and I'm not sure we can change this without breaki=
+ng the
+> ABI.
+
+I feel like I am losing my mind here lol. Forget about this patch for a
+moment and consider the driver right now. The code currently looks like
+this:
+	if (rkvdec->variant->has_single_reg_region) {
+		rkvdec->regs =3D devm_platform_ioremap_resource(pdev, 0);
+		if (IS_ERR(rkvdec->regs))
+			return PTR_ERR(rkvdec->regs);
+	} else {
+		rkvdec->regs =3D devm_platform_ioremap_resource_byname(pdev, "function");
+		if (IS_ERR(rkvdec->regs))
+			return PTR_ERR(rkvdec->regs);
+
+		rkvdec->link =3D devm_platform_ioremap_resource_byname(pdev, "link");
+		if (IS_ERR(rkvdec->link))
+			return PTR_ERR(rkvdec->link);
+	}
+This means you will fail to probe on any platform that does not have
+has_single_reg_region set if the reg-names property is not present.
+rk3588-vdec uses:
+	static const struct rkvdec_variant vdpu381_variant =3D {
+		.coded_fmts =3D vdpu381_coded_fmts,
+		.num_coded_fmts =3D ARRAY_SIZE(vdpu381_coded_fmts),
+		.rcb_sizes =3D vdpu381_rcb_sizes,
+		.num_rcb_sizes =3D ARRAY_SIZE(vdpu381_rcb_sizes),
+		.ops =3D &vdpu381_variant_ops,
+	};
+The binding does not currently require rk3588-vdec use reg-names. This
+means that the driver will fail to probe if someone provides what the
+binding considers to be a valid devicetree.
+
+There are two ways to resolve this. The first is to do the following:
+| diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/me=
+dia/platform/rockchip/rkvdec/rkvdec.c
+| index 967c452ab61f7..f508fc4746a87 100644
+| --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+| +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+| @@ -1800,11 +1800,11 @@ static int rkvdec_probe(struct platform_device *p=
+dev)
+|  		if (IS_ERR(rkvdec->regs))
+|  			return PTR_ERR(rkvdec->regs);
+|  	} else {
+| -		rkvdec->regs =3D devm_platform_ioremap_resource_byname(pdev, "function=
+");
+| +		rkvdec->regs =3D devm_platform_ioremap_resource(pdev, 0);
+|  		if (IS_ERR(rkvdec->regs))
+|  			return PTR_ERR(rkvdec->regs);
+| =20
+| -		rkvdec->link =3D devm_platform_ioremap_resource_byname(pdev, "link");
+| +		rkvdec->link =3D devm_platform_ioremap_resource(pdev, 1);
+|  		if (IS_ERR(rkvdec->link))
+|  			return PTR_ERR(rkvdec->link);
+|  	}
+
+The second is to make the reg-names property mandatory.
+
+The first way does not constitute an ABI break. The second way is an ABI
+break, as you rightly point out.
+
+Now thinking about your patch here. Without it, the following is a valid
+vdec node on rk3588.
+	video-codec@fdc38000 {
+		compatible =3D "rockchip,rk3588-vdec";
+		reg =3D <0x0 0xfdc38100 0x0 0x500>,
+		      <0x0 0xfdc38000 0x0 0x100>,
+		      <0x0 0xfdc38600 0x0 0x100>;
+		interrupts =3D <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
+		clocks =3D <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA=
+>,
+			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
+		clock-names =3D "axi", "ahb", "cabac", "core", "hevc_cabac";
+		assigned-clocks =3D <&cru ACLK_RKVDEC0>, <&cru CLK_RKVDEC0_CORE>,
+				  <&cru CLK_RKVDEC0_CA>, <&cru CLK_RKVDEC0_HEVC_CA>;
+		assigned-clock-rates =3D <800000000>, <600000000>,
+				       <600000000>, <1000000000>;
+		iommus =3D <&vdec0_mmu>;
+		power-domains =3D <&power RK3588_PD_RKVDEC0>;
+		resets =3D <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>, <&cru SRST_RKVDE=
+C0_CA>,
+			 <&cru SRST_RKVDEC0_CORE>, <&cru SRST_RKVDEC0_HEVC_CA>;
+		reset-names =3D "axi", "ahb", "cabac", "core", "hevc_cabac";
+		sram =3D <&vdec0_sram>;
+	};
+Ignore the fact that this will not currently probe for a moment, assuming
+we applied my diff above to the driver, and look at what will be a valid
+node after your patch:
+	video-codec@fdc38000 {
+		compatible =3D "rockchip,rk3588-vdec";
+		reg =3D <0x0 0xfdc38000 0x0 0x100>,
+		      <0x0 0xfdc38100 0x0 0x500>,
+		      <0x0 0xfdc38600 0x0 0x100>;
+		interrupts =3D <GIC_SPI 95 IRQ_TYPE_LEVEL_HIGH 0>;
+		clocks =3D <&cru ACLK_RKVDEC0>, <&cru HCLK_RKVDEC0>, <&cru CLK_RKVDEC0_CA=
+>,
+			 <&cru CLK_RKVDEC0_CORE>, <&cru CLK_RKVDEC0_HEVC_CA>;
+		clock-names =3D "axi", "ahb", "cabac", "core", "hevc_cabac";
+		assigned-clocks =3D <&cru ACLK_RKVDEC0>, <&cru CLK_RKVDEC0_CORE>,
+				  <&cru CLK_RKVDEC0_CA>, <&cru CLK_RKVDEC0_HEVC_CA>;
+		assigned-clock-rates =3D <800000000>, <600000000>,
+				       <600000000>, <1000000000>;
+		iommus =3D <&vdec0_mmu>;
+		power-domains =3D <&power RK3588_PD_RKVDEC0>;
+		resets =3D <&cru SRST_A_RKVDEC0>, <&cru SRST_H_RKVDEC0>, <&cru SRST_RKVDE=
+C0_CA>,
+			 <&cru SRST_RKVDEC0_CORE>, <&cru SRST_RKVDEC0_HEVC_CA>;
+		reset-names =3D "axi", "ahb", "cabac", "core", "hevc_cabac";
+		sram =3D <&vdec0_sram>;
+	};
+Driver is going to break here, cos it will pick up the link region and
+set rkvdec->regs to it!
+
+So, the only way to accommodate the deprecated scheme and the new scheme
+is to use the reg-names property (as the driver currently does).
+
+So yes, while what I propose is an ABI break, the driver currently
+expects reg-names to be mandatory for the rk3588-vdec. Additionally, new
+required properties are only really a meaningful ABI break if the driver
+is changed to required them, since that would render old devicetrees
+non-functional. The driver in question already requires them, so that's
+pretty moot! Were it not for your patch here, I would say that my diff
+should be applied to the driver instead of making the property required.
+
+reg-names is a dependency for your ABI-annihilation, as my example above
+demonstrates, so I find it really bemusing that you're worried about its
+impact!
+
+Hopefully I've made my point about reg-names being mandatory this time
+around?
+
+Cheers,
+Conor.
+
+--tog0ews7lACG9O5/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaaHeEwAKCRB4tDGHoIJi
+0h+NAP4wvw68BaqcFHVHj48rD2Vnv9LSwbppWEC2vOaFAP95HAEA5WPKJx6VQARw
+oqJ6yXzhKxmRsV9FyXNxhTx5TORXhw4=
+=FGCk
+-----END PGP SIGNATURE-----
+
+--tog0ews7lACG9O5/--
+
+
+--===============0009730849282208003==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0009730849282208003==--
+
