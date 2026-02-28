@@ -4,86 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E27CF1048925
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 01:12:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED13C1048925
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 01:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/dsHava0MqmHjnr0J1ceJyLMCbRh2aUUIsRqZITO0fg=; b=jKsP/TEJd6t1h3KJqT4Jb47wep
-	cklUeIR1ef2YmnFzkChV4MMbdxUGdYzSVjkDKlOCVyTwafIjjltI90B4Ycn4cC28KaeO1X9TPAZY6
-	VDHj9QgZMgqrimxZrlG1gfQny+bWCzH1M86hwcndtJnXs+31AEeZdP8idzOPT7pSMVOpgAbARBDNm
-	jwOGeLk2ohBbHcID3QMqhwEFtqN14qbF//8/6etHsmdLE+GbNJJ42N2Oxg0FQKyoqLzjQP6jRuT/P
-	sXcf0ieewsrwO4FvSjgsx+0lTQOHBacMNVVVFLKj0tqm7nwL6n36UUZm3s2Lk4WEgyidQrQ8G+K1n
-	HW0wCbrQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Dr83JONfB0+LOZ92lWYKmWNNGF6PDJ+lQnSImVcbXDI=; b=0EXE1H7Rc/u9iy
+	99Xh3iMlbTiTKcATMJgHiBaKxKHnye38pfOOK38UEv1UIrVSF1+HpeH4TdSpTWyVRQa9obx1yZ4dY
+	OMZ42g2QRNyg4qAIUcuM6NTWn3Y6UXmdk/6UyxpEfClTIAWaLdDFZTjD1FO2PcFGk6+BPkrFYUcaL
+	YBUC2/bnJ2ceh/n8j/HjqOBUEAeHuF+G5lxgYlRonazEHM/2mylNRQKo+Y1ASM2NFiNA4i/+YH9Mu
+	FQRje/bFSpX2TVwkRiGVR0n9RdhcP7b6VKgakvBa0aviqicJqZKA63WlrIW9N7Vwio28YW28s+qX8
+	M0TIzAk8mvkm2nzVM4xg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw8sM-00000009NAt-0H6w;
-	Sat, 28 Feb 2026 01:12:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vw9Ch-00000009OUt-20xH;
+	Sat, 28 Feb 2026 01:33:11 +0000
+Received: from mail-vk1-xa30.google.com ([2607:f8b0:4864:20::a30])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw8sJ-00000009N9l-0uQq;
-	Sat, 28 Feb 2026 01:12:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772241124;
-	bh=FTpFrrnmK4vqnqZPNlbSmsvAtJAjaotCdfMV7I/jZ7s=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=lz/LW1LuOvvEBhbmXEg/YAcmk5SAaMQFyl8PRNds/r8U50ytwDoyvwU94Z74oLaGb
-	 z4hrejurcVQ28QoicDRpwUJNbtIMrXGGhmezXKhTBhJii34j8ASqYO0q5rduJUbsty
-	 9ZVBTDijFucEkvdQjPlOxjRoPuAP4elPr6+CaDwAXIgYYaB1WFQBu3CeRlF0s0HtoO
-	 IKh/aYbBR3fiIIIJGauHyuzEFdu+KdR6rtzZfrN8j5Xt8LKQ/FTxYA+3VzfmC9/FSt
-	 6zt6JueETqyV+9sEGTn9pCToUbUeQwUQSnoY+NYRL/HoqKWXjAlQT/1IBUE3iY+JqY
-	 iu1czmZkLqZeA==
-Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A43E717E027A;
-	Sat, 28 Feb 2026 02:12:01 +0100 (CET)
-Message-ID: <da7a9990e3a10de809f8109a5c2ae69715bee2b2.camel@collabora.com>
-Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
- alternative reg-names order for RK35{76,88}
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Cristian Ciocaltea
-	 <cristian.ciocaltea@collabora.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova	 <detlev.casanova@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>,
- kernel@collabora.com, 	devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Conor Dooley	 <conor.dooley@microchip.com>,
- linux-media@vger.kernel.org
-Date: Fri, 27 Feb 2026 20:11:58 -0500
-In-Reply-To: <dc2e9e13-165f-4ca1-be29-aabdbf133856@kernel.org>
-References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
-	 <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
-	 <20260227-observant-roaring-ara-ef7eb0@quoll>
-	 <adbbdbb1-b126-4807-821c-c9850befd695@collabora.com>
-	 <dc2e9e13-165f-4ca1-be29-aabdbf133856@kernel.org>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1vw9Ce-00000009OTu-05jp
+	for linux-rockchip@lists.infradead.org;
+	Sat, 28 Feb 2026 01:33:09 +0000
+Received: by mail-vk1-xa30.google.com with SMTP id 71dfb90a1353d-5637886c92aso1391803e0c.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 27 Feb 2026 17:33:07 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772242386; x=1772847186; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ypXMFVhzt8vhHA0jPR3q8crLwJ28xwCmkdh+GFTjYb0=;
+        b=ZI3MIlIiQfCNgv93iou30TYCshej//yYkDu1YIRTAFOKFp8mMIFdWTgIBdkoMEewHv
+         Cbyb5/9meKy8Fay7qI16dqWvSbaQStu9YoLJ8dZBWmwbVOs2MLO0jW9ef14Ya2AXWSms
+         bT1Ly/MkJbrZM68HGL/NBeVTocMJ1co5vX4fQbTQz2UU8rTW1RZU+cdtD/snUw7cxOIH
+         k2+V7jytXnH3SMgDzPWef0T6mBbuBiR3aLFlU/Uprhp6iViYT1nO8zO5GvAJ+NG+V2Cb
+         49HXwNXfR+ZMoS8fI3GYPzDK/ckhatxSNVwpu/gw+U7GNg2f/YxmVZD4kxQJRdIgdpE3
+         MHCQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772242386; x=1772847186;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ypXMFVhzt8vhHA0jPR3q8crLwJ28xwCmkdh+GFTjYb0=;
+        b=LjCYZFG0RzFO0+xu7WwMrGhcl+5OZqlvMh9PQgSKhDNUhgFhkyJzMqVO2Cttymuwwk
+         exnQLgN1BOAaWYGixSjtXGd/u7tZ7+MbNdj2B/ve29EaPWsIb1u16t/O3n0s/ky0w8Z+
+         UPn4rmmI8kAQJq83mBwuJwsEu+TC6m3L843mTUA9YXspuJIwAYAIjapT+hWVWVswMv/E
+         WAImODHnYRrtMptWDqz0+0sQYu6GM3CucgxjyfYsHsAD/JFHNTTywNHk507ZzNnkj3n7
+         a+2y9rLCik69dREbyvDU8plmIpPzVIrEhNDmxUJLJnd4uA2P/QZPJGa9fMxZP/VrLyQy
+         d3CA==
+X-Forwarded-Encrypted: i=1; AJvYcCXmu1xURyNVjxZ9J8Ia8CgBPKyM+nrQv87jjGLW6WelbxajNVx9FVfvT3s03znDAuBgn3zZPUbkfoH/zPoKvg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyKO9/9r3E4cHPt3T+b7SEjywD2qeAMC1ryt43st4S9zFm+hEQt
+	J510dv+SUf3Ca3YP9Im8L3tNobVfK6nZPyv5gucKDukK87hqie6H/Mjx
+X-Gm-Gg: ATEYQzxp+G6vyyImrKf3y0UVUoLJP/1byJJ+XaE52uNoTfdOaLCzrJKCH3GoM+qBJ10
+	sqCT5lLQNUNJav2zBJ0YGBYtroAOsQM1kqCRDPM+Aa32/yx8ovjAbUkbijulS8ecB9MMoG0KR2f
+	qywyMBNTO+D2910apF2FAPlnA5uyDHA6YLoXvXdrHtY1/vQ3dGVTJ6EZA8RcRbe9oHsRczxkrwN
+	zMygT7G1M+73O20XpwMsdtZnuHKpIiMiMZm6Jg9H9zXK44KXRIWmgulrppYG3SEFKNSqNif7qzj
+	G9lS2NB1/99e107Q5KuT9RbUKdfDhZDMLJ0h6VmTuGist9S/RBSusbCqyukV1535/kHHM7M6cU7
+	OUlBqVuGAhnhpDSXzJ+YoqqgfuKekPyxLrXP3OWaefZNJ5xaPTKeMxadPQGOPWfZFwT5lRnVVNu
+	oSJ++y8rgETw+VeCt6Mjnwwc1RdeUkCXTORdthBAA3iucI8Ie8lirl3BKj/yis54Nk1hp5
+X-Received: by 2002:a05:6122:e145:b0:563:702b:e2a7 with SMTP id 71dfb90a1353d-56aa0ab1c3bmr2230694e0c.19.1772242386359;
+        Fri, 27 Feb 2026 17:33:06 -0800 (PST)
+Received: from fabio-Precision-3551.. ([2804:1b3:a802:8875:2e2b:437e:ccf6:b644])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-56a91b8c7a8sm8950597e0c.4.2026.02.27.17.33.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 27 Feb 2026 17:33:05 -0800 (PST)
+From: Fabio Estevam <festevam@gmail.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Fabio Estevam <festevam@gmail.com>
+Subject: [PATCH 1/2] ARM: dts: rockchip: rk3036: Move PHY reset to ethernet-phy node
+Date: Fri, 27 Feb 2026 22:32:56 -0300
+Message-Id: <20260228013257.256973-1-festevam@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_171207_410924_D0AA6C80 
-X-CRM114-Status: GOOD (  31.64  )
+X-CRM114-CacheID: sfid-20260227_173308_076219_7E67D3B6 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,159 +97,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3094294097564020526=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+According to rockchip,emac.yaml, 'phy-reset-duration' and 'phy-reset-gpios'
+are not valid properties.
 
---===============3094294097564020526==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-upWNrmByhbR1y4m3hEOj"
+Use the valid 'reset-gpios' and 'reset-assert-us' properties under
+the etherne-phy node.
 
+This fixes the following dt-schema warning:
 
---=-upWNrmByhbR1y4m3hEOj
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Unevaluated properties are not allowed ('phy-reset-duration',
+'phy-reset-gpios' were unexpected)
 
-Le vendredi 27 f=C3=A9vrier 2026 =C3=A0 14:03 +0100, Krzysztof Kozlowski a =
-=C3=A9crit=C2=A0:
-> On 27/02/2026 12:37, Cristian Ciocaltea wrote:
-> > Hi Krzysztof, Conor,
-> >=20
-> > On 2/27/26 9:46 AM, Krzysztof Kozlowski wrote:
-> > > On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
-> > > > With the introduction of the RK3588 SoC, and RK3576 afterwards, two=
- more
-> > > > register blocks have been provided for the video decoder unit.
-> > > >=20
-> > > > However, the binding does not properly describe the new hardware la=
-yout,
-> > >=20
-> > > As you shown me last time with excerpt of address spaces from
-> > > datasheet/manual, the binding correctly describes the hardware and ab=
-ove
-> > > sentence is not true.
-> > >=20
-> > > > as it breaks the convention expecting the unit address to indicate =
-the
-> > > > start of the first register range, i.e. 'function' block is listed
-> > >=20
-> > > Imprecise wording. "start of the main or primary register range"
-> > >=20
-> > > (if you have 0x1000 with one reg and 0x20000000 with everything, the
-> > > unit address will be 0x20000000).
-> > >=20
-> > > > before 'link' instead of the opposite.
-> > > >=20
-> > > > Since the binding changes have been already released and a fix woul=
-d
-> > > > bring up an ABI break, mark the current 'reg-names' ordering as
-> > > > deprecated and introduce an alternative 'link,function,cache' listi=
-ng
-> > > > which follows the address-based ordering according to the TRM.
-> > > >=20
-> > > > Additionally, drop the 'reg' description items as the order is not =
-fixed
-> > > > anymore, while the information they offer is not very relevant anyw=
-ay.
-> > >=20
-> > > This is fine for me.
-> >=20
-> > Thanks for the additional feedback!
-> >=20
-> > If I'm not mistaken (please correct me), the only remaining (hard)
-> > blocker for the series would be to improve this commit message.
-> >=20
-> > How about the following:
-> >=20
-> > =C2=A0=C2=A0=C2=A0 With the introduction of the RK3588 SoC, and RK3576 =
-afterwards, three
-> > =C2=A0=C2=A0=C2=A0 register blocks have been provided for the video dec=
-oder unit instead of
-> > =C2=A0=C2=A0=C2=A0 just one, which are further referenced in the datash=
-eet by 'link table',
-> > =C2=A0=C2=A0=C2=A0 'function' and 'cache'.=C2=A0 The former is present =
-at the top of the
-> > =C2=A0=C2=A0=C2=A0 listing, starting at video decoder unit base address=
-.
-> >=20
-> > =C2=A0=C2=A0=C2=A0 However, while documenting RK3588, the binding broke=
- the convention
-> > =C2=A0=C2=A0=C2=A0 expecting the unit address to indicate the start of =
-the primary register
-> > =C2=A0=C2=A0=C2=A0 range, i.e. the 'function' block got listed before t=
-he 'link' one.
-> >=20
-> > =C2=A0=C2=A0=C2=A0 Since the binding changes have been already released=
- and a fix would
-> > =C2=A0=C2=A0=C2=A0 bring up an ABI break, mark the current 'reg-names' =
-ordering as
-> > =C2=A0=C2=A0=C2=A0 deprecated and introduce an alternative 'link,functi=
-on,cache' listing
+Signed-off-by: Fabio Estevam <festevam@gmail.com>
+---
+ arch/arm/boot/dts/rockchip/rk3036-evb.dts   | 4 ++--
+ arch/arm/boot/dts/rockchip/rk3036-kylin.dts | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-I would suggest something around:
+diff --git a/arch/arm/boot/dts/rockchip/rk3036-evb.dts b/arch/arm/boot/dts/rockchip/rk3036-evb.dts
+index becdc0b664bf..c8100dc4c7ce 100644
+--- a/arch/arm/boot/dts/rockchip/rk3036-evb.dts
++++ b/arch/arm/boot/dts/rockchip/rk3036-evb.dts
+@@ -16,8 +16,6 @@ memory@60000000 {
+ 
+ &emac {
+ 	phy = <&phy0>;
+-	phy-reset-duration = <10>; /* millisecond */
+-	phy-reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>; /* PHY_RST */
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>;
+ 	status = "okay";
+@@ -28,6 +26,8 @@ mdio {
+ 
+ 		phy0: ethernet-phy@0 {
+ 			reg = <0>;
++			reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>;
++			reset-assert-us = <10000>;
+ 		};
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
+index ae2f84a4e922..bc6e6468fcc4 100644
+--- a/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
++++ b/arch/arm/boot/dts/rockchip/rk3036-kylin.dts
+@@ -102,8 +102,6 @@ &acodec {
+ 
+ &emac {
+ 	phy = <&phy0>;
+-	phy-reset-duration = <10>; /* millisecond */
+-	phy-reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>; /* PHY_RST */
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&emac_xfer>, <&emac_mdio>;
+ 	status = "okay";
+@@ -114,6 +112,8 @@ mdio {
+ 
+ 		phy0: ethernet-phy@0 {
+ 			reg = <0>;
++			reset-gpios = <&gpio2 RK_PC6 GPIO_ACTIVE_LOW>;
++			reset-assert-us = <10000>;
+ 		};
+ 	};
+ };
+-- 
+2.34.1
 
-		   and introduce the actual hardware order "link, function,  =20
-=C2=A0
-                   cache" ...
-
-The rationale is that there is no alternative, if you use the deprecated or=
-der,
-a hypothetical driver maybe interpret the offsets wrong. There is no possib=
-le
-backward compatibility with a new order, and you can't have two possible or=
-der
-in this syntax.
-
-Though, the rational to break ABI and backward compatibility is something w=
-e all
-agreed on.
-
-> > =C2=A0=C2=A0=C2=A0 which follows the address-based ordering according t=
-o the TRM.
-> >=20
-> > =C2=A0=C2=A0=C2=A0 Additionally, drop the 'reg' description items as th=
-e order is not fixed
-> > =C2=A0=C2=A0=C2=A0 anymore, while the information they offer is not ver=
-y relevant anyway.
->=20
-> Yes, it's fine. My comments were actually not blocking, I just wanted to
-> wait if discussion with Conor resolves somehow.
->=20
-> But for me anyway:
->=20
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->=20
->=20
-> Best regards,
-> Krzysztof
-
---=-upWNrmByhbR1y4m3hEOj
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaJA3wAKCRDZQZRRKWBy
-9E7eAQD7eBKuRWQizFQXyLJYdA2O0SdCieGgFYeAuhPz4TNfvwEA+qq94TAEmNy2
-274VsKH25GkqEIFDufTIZrfBHRxBuww=
-=JQoX
------END PGP SIGNATURE-----
-
---=-upWNrmByhbR1y4m3hEOj--
-
-
---===============3094294097564020526==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3094294097564020526==--
-
