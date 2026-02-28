@@ -4,105 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FECC1048925
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 00:56:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E27CF1048925
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 01:12:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SmXjYEdqZWpq28lfW9h8Ju31OXIi2pdQ0TdkDELyu0o=; b=uTv31P1BGyI6wG
-	PYsQtcB/LYafqHMA0sTbuU2ohxcnNWCH5peUY+qc+bS70/xLI8HNmIGhHkxnhE4MvjxwdMiNgai6s
-	P2RYUDknaY8vQ4aEWdbe/Xf6eUUnIcw8XpRN5rlUVr9Z0UnH2CkcNkDSBvCeesIu8hVl1V9KPxGzi
-	cs7MGGB19/0oelund759HBEQnVe/MTxMHM5FOgKWjhhxvQ/tnxlBugcvdblEc9tESEPDJkSg7ydGT
-	htENIXOyY+rkAQDDa+W3b9BcgxOqnIFH7kiELGwqhgzndPPzYJnOuj6HWgUTbwGUNgJzqBKTmBS3F
-	MgNDPcauby9tymCRv2aA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/dsHava0MqmHjnr0J1ceJyLMCbRh2aUUIsRqZITO0fg=; b=jKsP/TEJd6t1h3KJqT4Jb47wep
+	cklUeIR1ef2YmnFzkChV4MMbdxUGdYzSVjkDKlOCVyTwafIjjltI90B4Ycn4cC28KaeO1X9TPAZY6
+	VDHj9QgZMgqrimxZrlG1gfQny+bWCzH1M86hwcndtJnXs+31AEeZdP8idzOPT7pSMVOpgAbARBDNm
+	jwOGeLk2ohBbHcID3QMqhwEFtqN14qbF//8/6etHsmdLE+GbNJJ42N2Oxg0FQKyoqLzjQP6jRuT/P
+	sXcf0ieewsrwO4FvSjgsx+0lTQOHBacMNVVVFLKj0tqm7nwL6n36UUZm3s2Lk4WEgyidQrQ8G+K1n
+	HW0wCbrQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw8ck-00000009MBy-3NeB;
-	Sat, 28 Feb 2026 00:56:02 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vw8sM-00000009NAt-0H6w;
+	Sat, 28 Feb 2026 01:12:10 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw8ci-00000009M9P-1zyj
-	for linux-rockchip@bombadil.infradead.org;
-	Sat, 28 Feb 2026 00:56:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=Vjfco02/smFUClEsqTheeyjpW86+y48auZFweZaaMU4=; b=lncIZBRJf8PEcgP2UCbMJI9PRr
-	zU7scc5G+EbvT7U9qEXSmLFp0iDMYoAz75eCSCoC9SxheA9N5qoasZ6f/NqL+aOymeleTeKgHQfWD
-	nvKYPKD9qRoTAdLOvTXtNQs5rFqcDmtMMnRPgF/BP57x//shQqe7HObfj6hPXxc6V/R9JhRWe6qdd
-	DCQvSqTpf/94NheCRvmLJa55ppuOcVG+wN50fDVScbzZjZiixv+oqxNhK+/J49lethH2M7X13MHYm
-	ECkpr+icWlpg9ci68w1XAz99OnsOltvLnGnmrDHcyYU1jNXb4Uxs1tp0YcmddDTlynlkpAR8XM/4e
-	RcqzPQnQ==;
-Received: from mail-vk1-xa2b.google.com ([2607:f8b0:4864:20::a2b])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw8ce-0000000E8Wi-3aPz
-	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Feb 2026 00:55:59 +0000
-Received: by mail-vk1-xa2b.google.com with SMTP id 71dfb90a1353d-56a88bfd470so1992555e0c.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Feb 2026 16:55:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772240154; x=1772844954; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Vjfco02/smFUClEsqTheeyjpW86+y48auZFweZaaMU4=;
-        b=QqyO2Bsqa7vdVuyUReQZARmT/vqjiFKP5AO0APEtfzlsoBx1j8C2zvJF8vCF3nlqlI
-         m/Je6I0l51SaoYIVjT/70oaCK4TS2CUHuyYRrcdvKZOy5U0U02pj7ymKhyvgB0hFM01x
-         sP5jUKcjTMaedNKpR4Ip2bgDbW183X9f1l15tZdRIF5m55PeUct5ICsXwWePocLA5tGX
-         FwciZB1HWQQz4AwB0vYB/HNIW2ZqzMaxT58PTZuOyYIXnfKyqIYj6Of9CvEgvGdT10h/
-         Iv4QI35W3lrjzyuSTZFIkz+l9N6rku73lVKzW06CDrMQhNjCAi0gwP7DAHgw3BBY4/NE
-         DC5A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772240154; x=1772844954;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=Vjfco02/smFUClEsqTheeyjpW86+y48auZFweZaaMU4=;
-        b=Qyh6nMW65SSz0FvqKb7yf33fW0BFTjdHwtLUAvkaPkV6GJdqNcJNqetEGwyNtJDS0J
-         sGUGZUsdKg/EEZUmif8ErWwHFJZvBu98sYzjHWrjCdK0x1tAiuFLaGlcBmlQK5kuQ8Hl
-         htpr8qKsVyEZTPWnKlLLEx8VtZxW4ImiXgYumKAoEI0GyC/ycJsQ+5jHrefKOQV19dJ6
-         qSSkU05OdLcKPEODye5ZJ6mgEBiVJIPKnVzVvETroaHE62cwzO3yCkWmJldwbq1moQuh
-         v+j5SMdbpawpHRZKYII30galgW3SNOPm8G0eGyyP/tlvL2L8ZhNwetirs+LQnVZ82mP3
-         slmA==
-X-Gm-Message-State: AOJu0YzATxiZxlayYv3CZUoFtco2aqyYP6hfsUA3X3DJTa1DB4tp4mv5
-	FfLq+MwCqT81u0USQDbZHXv29Tq5ZlEKsyeTh3olnmvWb1Qc9g88c2ZF
-X-Gm-Gg: ATEYQzzJuwgyjwlFDHo4CRlk8HrKiobe43Z+fkr3oWxpJdreTQXjcdT0FkdUPTTTKpZ
-	l/8odUth7ekuIQeYsEk0eMOQmbcfZikIt4PiD7djItFZCv/WXSavzTTsoHHMZefIbFrpUsL1YcL
-	E2td++kzUeJRz09joTklgbqxEUeNPXHrVCmU6wVD+QXvoyp1MKuDCY4TJ6mzxI7wBdp6PwPPf6r
-	Ky07ljh2bS/8VGKJlYssJxV1boyRkL7Q100XAk4RtmK9vFGg9QYr+FaI8oOMHJAOO5KaVnGoN+d
-	lRWF4luuIvFLRpaSkgvmZNPsXyai0OLdVawPU8ick+F37buxzUv1esb5tn0B4JFgg7glYxvzp/0
-	BWHxYtChMH3MIMZo5iCGU4+tPm37aNep4q8KoMdOjUlWFnOS1wgE/+lRkmaCj1SgDYycxFYJcAk
-	fHTOXuMYoJbg==
-X-Received: by 2002:a05:6122:1da0:b0:567:4838:8e4c with SMTP id 71dfb90a1353d-56aa10046d4mr2709747e0c.8.1772240154391;
-        Fri, 27 Feb 2026 16:55:54 -0800 (PST)
-Received: from geday ([2804:7f2:800b:feb1::dead:c001])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-56a91bb4fbesm8368019e0c.5.2026.02.27.16.55.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Feb 2026 16:55:54 -0800 (PST)
-Date: Fri, 27 Feb 2026 21:55:47 -0300
-From: Geraldo Nascimento <geraldogabriel@gmail.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Geraldo Nascimento <geraldogabriel@gmail.com>,
-	Dragan Simic <dsimic@manjaro.org>
-Cc: linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v5 4/4] PCI: rockchip: drop 5.0 GT/s defines
-Message-ID: <d0ccf2b80715e956f15720ebe45880705272ba43.1772239598.git.geraldogabriel@gmail.com>
-References: <cover.1772239598.git.geraldogabriel@gmail.com>
+	id 1vw8sJ-00000009N9l-0uQq;
+	Sat, 28 Feb 2026 01:12:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772241124;
+	bh=FTpFrrnmK4vqnqZPNlbSmsvAtJAjaotCdfMV7I/jZ7s=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=lz/LW1LuOvvEBhbmXEg/YAcmk5SAaMQFyl8PRNds/r8U50ytwDoyvwU94Z74oLaGb
+	 z4hrejurcVQ28QoicDRpwUJNbtIMrXGGhmezXKhTBhJii34j8ASqYO0q5rduJUbsty
+	 9ZVBTDijFucEkvdQjPlOxjRoPuAP4elPr6+CaDwAXIgYYaB1WFQBu3CeRlF0s0HtoO
+	 IKh/aYbBR3fiIIIJGauHyuzEFdu+KdR6rtzZfrN8j5Xt8LKQ/FTxYA+3VzfmC9/FSt
+	 6zt6JueETqyV+9sEGTn9pCToUbUeQwUQSnoY+NYRL/HoqKWXjAlQT/1IBUE3iY+JqY
+	 iu1czmZkLqZeA==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A43E717E027A;
+	Sat, 28 Feb 2026 02:12:01 +0100 (CET)
+Message-ID: <da7a9990e3a10de809f8109a5c2ae69715bee2b2.camel@collabora.com>
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add
+ alternative reg-names order for RK35{76,88}
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Cristian Ciocaltea
+	 <cristian.ciocaltea@collabora.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova	 <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Hans Verkuil <hverkuil@kernel.org>,
+ kernel@collabora.com, 	devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Conor Dooley	 <conor.dooley@microchip.com>,
+ linux-media@vger.kernel.org
+Date: Fri, 27 Feb 2026 20:11:58 -0500
+In-Reply-To: <dc2e9e13-165f-4ca1-be29-aabdbf133856@kernel.org>
+References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
+	 <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+	 <20260227-observant-roaring-ara-ef7eb0@quoll>
+	 <adbbdbb1-b126-4807-821c-c9850befd695@collabora.com>
+	 <dc2e9e13-165f-4ca1-be29-aabdbf133856@kernel.org>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <cover.1772239598.git.geraldogabriel@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_005556_992545_FF8BADA2 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20260227_171207_410924_D0AA6C80 
+X-CRM114-Status: GOOD (  31.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,61 +95,159 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3094294097564020526=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Drop the 5.0 GT/s Link Speed defines from Rockchip PCIe header.
-The reason is that Shawn Lin from Rockchip has reiterated that there
-may be danger of "catastrophic failure" in using their PCIe with
-5.0 GT/s speeds.
 
-While Rockchip has done so informally without issuing a proper errata,
-and the particulars are thus unknown, this may cause data loss or
-worse.
+--===============3094294097564020526==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-upWNrmByhbR1y4m3hEOj"
 
-This change is corroborated by RK3399 official datasheet [1], which
-states maximum link speed for this platform is 2.5 GT/s.
 
-[1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+--=-upWNrmByhbR1y4m3hEOj
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
-Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
-Cc: stable@vger.kernel.org
-Reported-by: Dragan Simic <dsimic@manjaro.org>
-Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
----
- drivers/pci/controller/pcie-rockchip.h | 3 ---
- 1 file changed, 3 deletions(-)
+Le vendredi 27 f=C3=A9vrier 2026 =C3=A0 14:03 +0100, Krzysztof Kozlowski a =
+=C3=A9crit=C2=A0:
+> On 27/02/2026 12:37, Cristian Ciocaltea wrote:
+> > Hi Krzysztof, Conor,
+> >=20
+> > On 2/27/26 9:46 AM, Krzysztof Kozlowski wrote:
+> > > On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
+> > > > With the introduction of the RK3588 SoC, and RK3576 afterwards, two=
+ more
+> > > > register blocks have been provided for the video decoder unit.
+> > > >=20
+> > > > However, the binding does not properly describe the new hardware la=
+yout,
+> > >=20
+> > > As you shown me last time with excerpt of address spaces from
+> > > datasheet/manual, the binding correctly describes the hardware and ab=
+ove
+> > > sentence is not true.
+> > >=20
+> > > > as it breaks the convention expecting the unit address to indicate =
+the
+> > > > start of the first register range, i.e. 'function' block is listed
+> > >=20
+> > > Imprecise wording. "start of the main or primary register range"
+> > >=20
+> > > (if you have 0x1000 with one reg and 0x20000000 with everything, the
+> > > unit address will be 0x20000000).
+> > >=20
+> > > > before 'link' instead of the opposite.
+> > > >=20
+> > > > Since the binding changes have been already released and a fix woul=
+d
+> > > > bring up an ABI break, mark the current 'reg-names' ordering as
+> > > > deprecated and introduce an alternative 'link,function,cache' listi=
+ng
+> > > > which follows the address-based ordering according to the TRM.
+> > > >=20
+> > > > Additionally, drop the 'reg' description items as the order is not =
+fixed
+> > > > anymore, while the information they offer is not very relevant anyw=
+ay.
+> > >=20
+> > > This is fine for me.
+> >=20
+> > Thanks for the additional feedback!
+> >=20
+> > If I'm not mistaken (please correct me), the only remaining (hard)
+> > blocker for the series would be to improve this commit message.
+> >=20
+> > How about the following:
+> >=20
+> > =C2=A0=C2=A0=C2=A0 With the introduction of the RK3588 SoC, and RK3576 =
+afterwards, three
+> > =C2=A0=C2=A0=C2=A0 register blocks have been provided for the video dec=
+oder unit instead of
+> > =C2=A0=C2=A0=C2=A0 just one, which are further referenced in the datash=
+eet by 'link table',
+> > =C2=A0=C2=A0=C2=A0 'function' and 'cache'.=C2=A0 The former is present =
+at the top of the
+> > =C2=A0=C2=A0=C2=A0 listing, starting at video decoder unit base address=
+.
+> >=20
+> > =C2=A0=C2=A0=C2=A0 However, while documenting RK3588, the binding broke=
+ the convention
+> > =C2=A0=C2=A0=C2=A0 expecting the unit address to indicate the start of =
+the primary register
+> > =C2=A0=C2=A0=C2=A0 range, i.e. the 'function' block got listed before t=
+he 'link' one.
+> >=20
+> > =C2=A0=C2=A0=C2=A0 Since the binding changes have been already released=
+ and a fix would
+> > =C2=A0=C2=A0=C2=A0 bring up an ABI break, mark the current 'reg-names' =
+ordering as
+> > =C2=A0=C2=A0=C2=A0 deprecated and introduce an alternative 'link,functi=
+on,cache' listing
 
-diff --git a/drivers/pci/controller/pcie-rockchip.h b/drivers/pci/controller/pcie-rockchip.h
-index 3e82a69b9c00..b5da15601b58 100644
---- a/drivers/pci/controller/pcie-rockchip.h
-+++ b/drivers/pci/controller/pcie-rockchip.h
-@@ -42,7 +42,6 @@
- #define   PCIE_CLIENT_MODE_RC			HWORD_SET_BIT(0x0040)
- #define   PCIE_CLIENT_MODE_EP			HWORD_CLR_BIT(0x0040)
- #define   PCIE_CLIENT_GEN_SEL_1			HWORD_CLR_BIT(0x0080)
--#define   PCIE_CLIENT_GEN_SEL_2			HWORD_SET_BIT(0x0080)
- #define PCIE_CLIENT_LEGACY_INT_CTRL	(PCIE_CLIENT_BASE + 0x0c)
- #define   PCIE_CLIENT_INT_IN_ASSERT		HWORD_SET_BIT(0x0002)
- #define   PCIE_CLIENT_INT_IN_DEASSERT		HWORD_CLR_BIT(0x0002)
-@@ -197,8 +196,6 @@
- 	(((x) & PCIE_CORE_PL_CONF_LS_MASK) == PCIE_CORE_PL_CONF_LS_READY)
- #define PCIE_LINK_UP(x) \
- 	(((x) & PCIE_CLIENT_LINK_STATUS_MASK) == PCIE_CLIENT_LINK_STATUS_UP)
--#define PCIE_LINK_IS_GEN2(x) \
--	(((x) & PCIE_CORE_PL_CONF_SPEED_MASK) == PCIE_CORE_PL_CONF_SPEED_5G)
- 
- #define RC_REGION_0_ADDR_TRANS_H		0x00000000
- #define RC_REGION_0_ADDR_TRANS_L		0x00000000
--- 
-2.52.0
+I would suggest something around:
 
+		   and introduce the actual hardware order "link, function,  =20
+=C2=A0
+                   cache" ...
+
+The rationale is that there is no alternative, if you use the deprecated or=
+der,
+a hypothetical driver maybe interpret the offsets wrong. There is no possib=
+le
+backward compatibility with a new order, and you can't have two possible or=
+der
+in this syntax.
+
+Though, the rational to break ABI and backward compatibility is something w=
+e all
+agreed on.
+
+> > =C2=A0=C2=A0=C2=A0 which follows the address-based ordering according t=
+o the TRM.
+> >=20
+> > =C2=A0=C2=A0=C2=A0 Additionally, drop the 'reg' description items as th=
+e order is not fixed
+> > =C2=A0=C2=A0=C2=A0 anymore, while the information they offer is not ver=
+y relevant anyway.
+>=20
+> Yes, it's fine. My comments were actually not blocking, I just wanted to
+> wait if discussion with Conor resolves somehow.
+>=20
+> But for me anyway:
+>=20
+> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+>=20
+>=20
+> Best regards,
+> Krzysztof
+
+--=-upWNrmByhbR1y4m3hEOj
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaaJA3wAKCRDZQZRRKWBy
+9E7eAQD7eBKuRWQizFQXyLJYdA2O0SdCieGgFYeAuhPz4TNfvwEA+qq94TAEmNy2
+274VsKH25GkqEIFDufTIZrfBHRxBuww=
+=JQoX
+-----END PGP SIGNATURE-----
+
+--=-upWNrmByhbR1y4m3hEOj--
+
+
+--===============3094294097564020526==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3094294097564020526==--
+
