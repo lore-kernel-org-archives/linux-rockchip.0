@@ -4,91 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90EB61048922
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 01:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 829DBFEE4CC
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 06:16:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
+	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NKW33QQGp1J3hRIFLpv7y972cgVUq4a8B8X8I1D0fgc=; b=DZ3xZRPY4uEsfH
-	AvXU7d3VC3/xSQbQlJqXhwwwItgIKJiizauiqvcSkb71s7oQCJlC+JratVydzrte1T4zQ7UYLlMy4
-	eunbyq5ERyc2hFU489jlgjSpdJXMCC2VAjDJf8myxtpDOu2DabWHSySbXdD07+P4vFipHvjvBqQ0N
-	3VZRuzwhjSHFmt0YR0V1gfGs/Hrg6h/q7ccY6HDizlF9LaViKjwUFkytpI1OreRqR1I47z6w15rJc
-	8I/49G1NF2ozRtdH/zsvdxgu6xUPj/rWXzOZQH0z7G1SA05VwgD410P3JsjB+rqcB3a1jAkum7w2Q
-	jJv6YeNAKmLk1iuKQ6ug==;
+	List-Owner; bh=beXV7zlu5BGD7aqemqB0eQ7ka9nLS6D9AoLSapFTolg=; b=Cd8DJfjEuIGVvd
+	uWGx5EGQC8G5K/DvD8RtKdVCrqtDMQVMGsJkqhIrO98fuEUdOzZpn2CR6vhIm3QvFB4VWWNkF0VaJ
+	CzOAkHmOoyWNtEByKLTXBCR4a/lysuJkhs5IiBkmxqaE1e6h9KDHmuOryktIozc1VtzGG+sBJ/dYr
+	qGLbTsHeCW7U4BaVj18L6isyyY8k6oLve91GO4N3Kfiv4YaPQQmnw4U9XseYB3dU58SL+DmD7fPHM
+	Xjdcm6SuWEF7Se10zUdQ+6YoFM0aSZ8RKzVoDljfVq9DCj4jzTQLC15R+idLfFp52FRYWFUdlK6fa
+	wHocz+7i4b441MNH9RLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw9Cl-00000009OWd-0BOQ;
-	Sat, 28 Feb 2026 01:33:15 +0000
-Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
+	id 1vwDdD-00000009XRm-38ZK;
+	Sat, 28 Feb 2026 06:16:51 +0000
+Received: from mail1.manjaro.org ([142.132.176.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vw9Ci-00000009OV1-2oB8
-	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Feb 2026 01:33:13 +0000
-Received: by mail-vk1-xa2e.google.com with SMTP id 71dfb90a1353d-56a9a7e762bso1972898e0c.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Feb 2026 17:33:12 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772242391; x=1772847191; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=yacvo8FTXmtUK6kvMPHtNgDomN8fLaxrnZj3UqvDkYk=;
-        b=bMPFuyl7MuDvLFgD7ZKxjb19ja1zz9O/0/3yDrq821T/I83g1VhWta5EUymjpGo6PM
-         JQ9JOlOfxQxr/hOzXHzg5Rwq5Iv/ltdEbxIO8KkbXDYS+qnzBM85MsuOVYVGyC6GB7f/
-         jMwRH22W9DxqZYCMFvNMGLa7DK6iWQjvjpZls8hYxTzUs+T57cLNzmnC7I81GyqLriao
-         +wGL5hab8uPBl1lRPxytv3InFxtnWYF5V/Hw1ZL5PS2tfKA4ZQ+cUOfnKXNINd15QQj/
-         ViJLFMeuJ30a/eG2x7p9qp8nLwBBWXQTer1vCOKGJCTEwiW9wQ2GdX/yVsQF4rZjrfwP
-         rq+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772242391; x=1772847191;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=yacvo8FTXmtUK6kvMPHtNgDomN8fLaxrnZj3UqvDkYk=;
-        b=hMQfZN5uee36mKNOrPS4QL+i4mLbimWqJngnswHueRpFIZbKL4N34EEwR8imhbtGJw
-         uPqTtq9kd2tYY1o/1dC6Jr9mAW77MkgY72sbnvDKgHVkEBHmpXu0GrKhmN5angLFrd+R
-         t+SVfl8ckGhmwcctwkm/on1kKYoASabuX7U2Dl5hy5CRRzLSs2gCZmP/vEmkvdgkJp+I
-         vnRQ5o1t7tsxQiyIznPHSCHWGsqtM5uUcNJ9NbJJaho9P9IL/srOSZiM7izCfSBIW/r7
-         OWc65ro3CpRAB3HqeQ42bZyjUZyGIeki3InIvJQ07MOOkKB0Z178SkCwcYtsOWLRwNvB
-         A4wQ==
-X-Forwarded-Encrypted: i=1; AJvYcCU/Hos4rZ9ANzmLvgf/+R4Go+Bbq7OeR2/zCsPASYnMTScqnhgbpu6elG+5RZgY2Ec/kPiCZRNjb+CCAsE2BA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwKcSWgx7WlnS4jXLgr9N1x2/1eNVjUELxC+6nruG7nJNe9IsBz
-	YbmCYc2scvNQ86Ps/OM2vQiEm7rUtshvxGg1MhlhqRDH4IIQ28NXgl3i
-X-Gm-Gg: ATEYQzzTMXm9dovuacshrNbIv/58h9J1QG4v961hlhFzxtfCxe8rfWIxVnAvk+aZLfK
-	tVeZDPXTVbJkqsdzby5u4jSVAdOb7HCC/PbPoGwVzT66o29JKBSyoPTy7bZROZ/lmJtr5bHmBph
-	WioNAhhu1ta5K+Xx/TtUIbfQzzTUvK+0YWbmxK+jY2V3xtQwlYNsv53X5ptGn/NlAWclFg3sAO1
-	5vBxJOm/5hDX7rFxGKBNUznb5vAhtU9cu2fVsL1vBPiW1C6eNWfO5Bm/M4l6gSnuK6QzMQjpYPe
-	oF3j59EusSv2ggkKv0699z2v99obr2ms6MQjTuZo2B6ZoX8bEnpZHFjbvWTggaNmH5ubp3Nwwqi
-	l4+cF9+cYbsx9OgqI/QuF5zi+dbFPpkFJ2Pyjpjdi2/hE1oKFPppbKEXQ8vYCAaXblYfmRH41mU
-	hobOaqJYWKe4BIfnhptFaJPM6wqZPRPmsBOXdesTSXplmj2/X4KJvTt9fNx2phXFG8XAPo
-X-Received: by 2002:a05:6122:4d85:b0:56a:8c20:2d9b with SMTP id 71dfb90a1353d-56aa08dabd3mr2771676e0c.0.1772242391379;
-        Fri, 27 Feb 2026 17:33:11 -0800 (PST)
-Received: from fabio-Precision-3551.. ([2804:1b3:a802:8875:2e2b:437e:ccf6:b644])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-56a91b8c7a8sm8950597e0c.4.2026.02.27.17.33.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 27 Feb 2026 17:33:10 -0800 (PST)
-From: Fabio Estevam <festevam@gmail.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@gmail.com>
-Subject: [PATCH 2/2] ARM: dts: rockchip: rk3288: Remove rockchip,grf from tsadc
-Date: Fri, 27 Feb 2026 22:32:57 -0300
-Message-Id: <20260228013257.256973-2-festevam@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260228013257.256973-1-festevam@gmail.com>
-References: <20260228013257.256973-1-festevam@gmail.com>
+	id 1vwDdA-00000009XQq-3NW5;
+	Sat, 28 Feb 2026 06:16:50 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id DD03E41FA1;
+	Sat, 28 Feb 2026 07:16:41 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
+	t=1772259405; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=oCnDQ+Cgo3/mYIp2xchNf+7hSQRwKXW3o25K0mtFwcg=;
+	b=mifTh5yIJLK1ISJhkH0iQu8WWSc8bdFeddn4Bp5PB7nMjY9UEFnsVtKWrT9n/hsh0rne8i
+	Q1yNpcyfqlgTB/53328QujCxxaH7fzv40A1VNIE89O768UOfgljFJgqGzidJ29diO9PQsS
+	Ye7udeuU/vN67DmhhUc5gEvXgFhzjVSSvuh2VomTnA+m9wsgCaYLCxKBsXTNL8bKr+FHcI
+	5HuHwxB35suC08+u8pJ+s/f+7uvZypjgz+jAyCmawmiil56itFfTWuffodL8OjsFlq/nw8
+	SjCs+hwYo0VRKnpGXrXwCOgSZym6l56fcwJ4aVijGMKkw3/ROO5hbaFaK/pgBA==
+From: "Dragan Simic" <dsimic@manjaro.org>
+In-Reply-To: <2a0a4aa97bb8b0cb511cb651c5d66c9ec8bab97a.1772239598.git.geraldogabriel@gmail.com>
+References: <cover.1772239598.git.geraldogabriel@gmail.com> <2a0a4aa97bb8b0cb511cb651c5d66c9ec8bab97a.1772239598.git.geraldogabriel@gmail.com>
+Date: Sat, 28 Feb 2026 07:16:41 +0100
+Cc: "Shawn Lin" <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Manivannan Sadhasivam" <mani@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+To: "Geraldo Nascimento" <geraldogabriel@gmail.com>
 MIME-Version: 1.0
+Message-ID: <d2b91260-7666-3606-69ec-0e7cb7a48c02@manjaro.org>
+Subject: =?utf-8?q?Re=3A?= [PATCH v5 3/4] =?utf-8?q?PCI=3A?==?utf-8?q?_rockchip=3A?= 
+ drive at =?utf-8?q?2=2E5?==?utf-8?q?_GT/s=2C?= error other speeds
+User-Agent: SOGoMail 5.12.3
+X-Last-TLS-Session-Version: None
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260227_173312_715699_21AB50E6 
-X-CRM114-Status: GOOD (  10.39  )
+X-CRM114-CacheID: sfid-20260227_221649_229683_0EBA2D7E 
+X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,36 +68,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to rockchip-thermal.yaml, RK3288 does not require rockchip,grf,
-so remove this invalid property.
+Hello Geraldo,
 
-This fixes the following dt-schema warning:
+On Saturday, February 28, 2026 01:55 CET, Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
+> Configure the core to be driven at 2.5 GT/s Link Speed and ignore
+> any other speed with a warning. The reason is that Shawn Lin from
+> Rockchip has reiterated that there may be danger of "catastrophic
+> failure" in using their PCIe with 5.0 GT/s speeds.
+> 
+> While Rockchip has done so informally without issuing a proper errata,
+> and the particulars are thus unknown, this may cause data loss or
+> worse.
+> 
+> This change is corroborated by RK3399 official datasheet [1], which
+> states maximum link speed for this platform is 2.5 GT/s.
+> 
+> [1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
+> 
+> Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
+> Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
+> Cc: stable@vger.kernel.org
+> Reported-by: Dragan Simic <dsimic@manjaro.org>
+> Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
+> Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
+> ---
+>  drivers/pci/controller/pcie-rockchip.c | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
+> index 0f88da378805..2f211d1f4c7c 100644
+> --- a/drivers/pci/controller/pcie-rockchip.c
+> +++ b/drivers/pci/controller/pcie-rockchip.c
+> @@ -66,8 +66,10 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
+>  	}
+>  
+>  	rockchip->link_gen = of_pci_get_max_link_speed(node);
+> -	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
+> -		rockchip->link_gen = 2;
+> +	if (rockchip->link_gen < 0 || rockchip->link_gen >= 2) {
+> +		rockchip->link_gen = 1;
+> +		dev_warn(dev, "invalid max-link-speed, fix your DT\n");
+> +	}
 
-tsadc@ff280000 (rockchip,rk3288-tsadc): False schema does not allow [[53]]
+I'd suggest using a bit more formal message here, like the one below,
+which would also avoid addressing the user directly:
 
-The rockchip_thermal driver also confirms that grf is not needed as
-the rk3288_tsadc_data contains:
- .grf_required = false,
+  "Invalid max-link-speed found, limited to Gen1 to avoid data corruption"
 
-Signed-off-by: Fabio Estevam <festevam@gmail.com>
----
- arch/arm/boot/dts/rockchip/rk3288.dtsi | 1 -
- 1 file changed, 1 deletion(-)
+>  	for (i = 0; i < ROCKCHIP_NUM_PM_RSTS; i++)
+>  		rockchip->pm_rsts[i].id = rockchip_pci_pm_rsts[i];
+> @@ -147,12 +149,13 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
+>  		goto err_exit_phy;
+>  	}
+>  
+> -	if (rockchip->link_gen == 2)
+> -		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
+> -				    PCIE_CLIENT_CONFIG);
+> -	else
+> +	if (rockchip->link_gen == 2) {
+> +		/* 5.0 GT/s may cause catastrophic failure for this core */
+> +		dev_warn(dev, "5.0 GT/s may cause data loss or worse\n");
+> +	} else {
+>  		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
+>  				    PCIE_CLIENT_CONFIG);
+> +	}
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288.dtsi b/arch/arm/boot/dts/rockchip/rk3288.dtsi
-index 4e5e7509de48..4f2c048aee54 100644
---- a/arch/arm/boot/dts/rockchip/rk3288.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3288.dtsi
-@@ -551,7 +551,6 @@ tsadc: tsadc@ff280000 {
- 		pinctrl-1 = <&otp_out>;
- 		pinctrl-2 = <&otp_pin>;
- 		#thermal-sensor-cells = <1>;
--		rockchip,grf = <&grf>;
- 		rockchip,hw-tshut-temp = <95000>;
- 		status = "disabled";
- 	};
--- 
-2.34.1
+I don't think we need to emit a warning here, because, as we've already
+established through earlier discussions, the rockchip_pcie_init_port()
+function should never receive an invalid speed value.
+
+>  	regs = PCIE_CLIENT_ARI_ENABLE |
+>  	       PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes);
+
+It would make most sense to squash all three patches in this series
+into a single patch, because they all form a single logical unit, which
+introduces changes that are just going to be harder to track down later
+if it's all scattered into multiple separate patches.
+
+The only possible issue with the squashing comes from the inability to
+have different patch subject prefixes for different driver changes, but
+I think that's actually not an issue.  The long-term benefits of having
+everything as a single patch outweighs the benefits of having different
+patch subjects with separate patches.
 
 
 _______________________________________________
