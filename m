@@ -4,117 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD5D9FEE4E8
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 09:58:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60033FEE4ED
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Feb 2026 11:28:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Wqg8wtIyvbegHBcYVsZRz4M4ycvJCQaoJ/n9aXTyrLo=; b=T+gMmnvW3XxZBC
-	38yy15lDGRnCif+TRmpue5yqFstUsSwEV1VuAPOIdqX5T83lfFdInmQ69YNkpkzKyVCwVnIqpEpzv
-	iJqteKYYezxu9XTY8UCwlmOesf8OYQ9KA8iJke7djlv1dyIcJTPCsFuqY4dlIPH2P7ZTfIateGf23
-	b2Ks3cFO6e171TyCXWt6MTnYs20m05e2W0Tyl/NzElPrc/UuBitdrOSEOFmaoyjPe+RCum8kvF2vY
-	Bi8iQgA5kLoG/VcRk+idgloA3MKjIMUqzTjBj2/lb42ArZBZ2HY5oblrXz7MHINExfbFLMZW3I4hR
-	Ds+06Ecixexf9hEtvpyw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ZxwTnUVIcgoauYrOWUgcZQFJIdAKdrrqdQdlLAaRkV0=; b=oY4L6Dda6fGEJ9
+	9+F91DyEhYld9/kDGpDNLXXPy0w4GM2k8T32JiDQRCOHDBsPFY5azbhmbLi/8qQr1kje9loR1PUSJ
+	SCb34OspbBVLWdURaj8Vok+sofIYsi2AJBPQOkBB1/uzZ+RLZBo8oR7/K/PiG/NkIehbagG2ssPC1
+	Yqc3kZ1/A/vMcgAHJuH+H6ppvtkVhjkWUr1+myudpdqT6yUkui3tzxcXBIIEeBnd7TLPM3QJONFTm
+	EwGjXgdZuCTz2XIsybjHqzVNySzffqTXJFfFusFGfhnhnsotgQCaznWfMmrFUO7dcjwgjVqPWkl6p
+	+pUPp5fP5TJBr/mgr9Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwH5w-00000009i4l-4B6b;
-	Sat, 28 Feb 2026 09:58:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwIUr-00000009n5S-1esh;
+	Sat, 28 Feb 2026 11:28:33 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwH5u-00000009i3h-1lYO;
-	Sat, 28 Feb 2026 09:58:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3574D41959;
-	Sat, 28 Feb 2026 09:58:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6576DC116D0;
-	Sat, 28 Feb 2026 09:58:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772272720;
-	bh=M1ZVXAgdI+k2ver4Oogh4cCDb9JUYzaaPcG1HU2vtUU=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=T3Dp89SJj0XANR2+ltQcNAKjCca/I83gUhAUzfSr+JGlTWrsuJ1H3pdbKWueDJiWK
-	 rkc3keGVQFygcL4LNmcUN02q4M/qNtgPTUmPxDfmLFwmpobNV2jNnFudMToJgz6U6J
-	 YgEov3D2Ar4L56aVbPPzyK0Zyn3LodINo2uvWbJGwHx1Npcu3xpzwjw8rkx3Nmv8KW
-	 KCMFBpeBPjpmDoj8P/nQgjpdXd+p4MjL57I2SVimUfQLCItVKtfBFT+PQE686GTAc0
-	 4zw96YkelQWqkOrvXbvr3fxFkOLelPhlQRqBzI01XvoYo/OHMmWlKf+tEY6So+ycY6
-	 rbf7YyLDJctpQ==
-Message-ID: <59b442c8-da2a-40a8-b9db-1609a8eee744@kernel.org>
-Date: Sat, 28 Feb 2026 10:58:34 +0100
+	id 1vwIUo-00000009n55-1dA4
+	for linux-rockchip@lists.infradead.org;
+	Sat, 28 Feb 2026 11:28:31 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4837634de51so12183095e9.1
+        for <linux-rockchip@lists.infradead.org>; Sat, 28 Feb 2026 03:28:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772278108; x=1772882908; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to;
+        bh=lPMQsCRzdgUsnGe3LplGdHC9I0aaGaZ1j+ZQBXbed9c=;
+        b=cfKJmWHUAVGIucd1XRgO3pJtwlpOfpCvyx4rKBLYsNZKwksdpevBXnSkg0sxEaYZZF
+         4zsHCdk8WLhxZH7aouI5+CcI6OKCff+D8av5MXNDdlVd8quyku7RxST+Vgk6kM+rGrq/
+         nK9pwV3svI3c7DQlrCPJG5PL35rtGnwJXzNroL8Tem3P0IJaJxoehQq9aQtd9Ba39PcJ
+         klRuNFSIUq02qR1m9o9DZhs/TSFrI0u4WqVGOdBrPjA+FHqpGxbWpdajNVGVdRUE98jQ
+         zjsRR2YRvng8/k+SywVVLiPRcpmYqGBOd0z2/8btrFssi+GP8lKOpsf9TM10ZC2JJ8vW
+         1kFg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772278108; x=1772882908;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=lPMQsCRzdgUsnGe3LplGdHC9I0aaGaZ1j+ZQBXbed9c=;
+        b=GEsHjJhDTjvjTdrtxWXsWEns/9EeMV9F9ndLR5AYHZb6M83VsjyOAPnooaif/lpsiT
+         3CmuWe4cp/n1X2pBCERXBRW2oquN3s7Ikean0QpNMtGTK2JqRH8/p7QGXlG5yXPUbK9U
+         uB10OKB31oTX0faGhwUF5WQxOQktrR8kYILOFIt7/kX4OE+eoJiCrxYnBWYsai4SDhOY
+         cXk7VP8M8W41Ra3kOG3OeD6MPtQerDXR/4HS++jrO6DWDIRgAbv7eUQ6RAI5TOZ3B/Bz
+         Ta8V2mv7WZpsi/FEDHbWWuwf6ufFTVEjr1Z2ESlyhRGK5QKvIf2yA0b70XUCIdzjmmEa
+         1cGQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWUiZ7EEvNnDXdWur7uIjTLg6OUC++FuRdbXlDHasstZkRbamAvqLRIzGItbMisX4L34Nu7E+578gL7zMHaKQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzaOyUGR9RpMH80uHVZa48RSjZP86TQ78BdSW3Wzir35zlyLQWk
+	k074aj0y2XGjgbuNE1fFwFpW8/rosQ1wr1He6mrnnrFxW3NdIpNhutiR
+X-Gm-Gg: ATEYQzyT8aCguV7QGqlHefZZEyTK6l95m6+6bgsrgQeolxtCM2aBUs/UKh4E+m+pw3d
+	OwbqPldkMEbsvRULBm6dfo+536tADoWUsEi4oMWHK3LmAIuw5D6EFe4W+EGuRcaKxWv98fn9/bZ
+	2/GQUlkoqHcSwCVhAZ/VhnY5kajd0A1tESHFIM8HNRE93ZfhGFcSXnRpuLpO0LSMKUTTcwBRkol
+	wpfeoSVa7ZAiB2JaBV2fDl8aus03ejd1xNc49vBRodmYyFj+ef818R2YbtAbC/vaKwvxUX6TFHl
+	hsXiFZzE5lZj/K9uGaA/AVVo110YQFH4hsQXPbwzX1GUbU6CMJwuiTLpru+mUJB6v0XZchYmrTa
+	MdAudb1LtNNVTT583CSqAeDMSaQlRl6ro+zjmmsEaI66dw2VjVKlcLU5edT6e/y35wTJv3ehXo2
+	HUSp3aGkSewHYfOlCumaQhzoJV/fc=
+X-Received: by 2002:a05:600c:5308:b0:483:c490:8c0 with SMTP id 5b1f17b1804b1-483c9bdb6d6mr93362665e9.11.1772278107808;
+        Sat, 28 Feb 2026 03:28:27 -0800 (PST)
+Received: from toolbox.. ([87.200.95.144])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-483bd702e7bsm310980275e9.5.2026.02.28.03.28.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 28 Feb 2026 03:28:27 -0800 (PST)
+From: Christian Hewitt <christianshewitt@gmail.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Douglas Anderson <dianders@chromium.org>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sugar Zhang <sugar.zhang@rock-chips.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	dri-devel@lists.freedesktop.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v2] drm/bridge: dw-hdmi-qp: fix multi-channel audio output
+Date: Sat, 28 Feb 2026 11:28:22 +0000
+Message-ID: <20260228112822.4056354-1-christianshewitt@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add alternative
- reg-names order for RK35{76,88}
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Conor Dooley <conor@kernel.org>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Detlev Casanova <detlev.casanova@collabora.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
-References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
- <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
- <20260227-observant-roaring-ara-ef7eb0@quoll>
- <adbbdbb1-b126-4807-821c-c9850befd695@collabora.com>
- <20260227-omission-stoic-417d7109ad4d@spud>
- <3ab4f91e-37d0-4950-af88-01920705d31a@collabora.com>
- <1fe5529f-cd9f-4960-b6dd-96a2d02b8d86@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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 a/A=
-In-Reply-To: <1fe5529f-cd9f-4960-b6dd-96a2d02b8d86@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_015842_536588_9ECFF397 
-X-CRM114-Status: GOOD (  20.52  )
+X-CRM114-CacheID: sfid-20260228_032830_639653_F64DEB8C 
+X-CRM114-Status: GOOD (  11.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,71 +115,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 28/02/2026 10:54, Krzysztof Kozlowski wrote:
-> On 27/02/2026 18:42, Cristian Ciocaltea wrote:
->> On 2/27/26 7:13 PM, Conor Dooley wrote:
->>> On Fri, Feb 27, 2026 at 01:37:17PM +0200, Cristian Ciocaltea wrote:
->>>> Hi Krzysztof, Conor,
->>>>
->>>> On 2/27/26 9:46 AM, Krzysztof Kozlowski wrote:
->>>>> On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
->>>>>> With the introduction of the RK3588 SoC, and RK3576 afterwards, two more
->>>>>> register blocks have been provided for the video decoder unit.
->>>>>>
->>>>>> However, the binding does not properly describe the new hardware layout,
->>>>>
->>>>> As you shown me last time with excerpt of address spaces from
->>>>> datasheet/manual, the binding correctly describes the hardware and above
->>>>> sentence is not true.
->>>>>
->>>>>> as it breaks the convention expecting the unit address to indicate the
->>>>>> start of the first register range, i.e. 'function' block is listed
->>>>>
->>>>> Imprecise wording. "start of the main or primary register range"
->>>>>
->>>>> (if you have 0x1000 with one reg and 0x20000000 with everything, the
->>>>> unit address will be 0x20000000).
->>>>>
->>>>>> before 'link' instead of the opposite.
->>>>>>
->>>>>> Since the binding changes have been already released and a fix would
->>>>>> bring up an ABI break, mark the current 'reg-names' ordering as
->>>>>> deprecated and introduce an alternative 'link,function,cache' listing
->>>>>> which follows the address-based ordering according to the TRM.
->>>>>>
->>>>>> Additionally, drop the 'reg' description items as the order is not fixed
->>>>>> anymore, while the information they offer is not very relevant anyway.
->>>>>
->>>>> This is fine for me.
->>>>
->>>> Thanks for the additional feedback!
->>>>
->>>> If I'm not mistaken (please correct me), the only remaining (hard)
->>>> blocker for the series would be to improve this commit message.
->>>
->>> No, you also need to fix the problem I pointed out about reg-names being
->>> optional on the devices you're relying on reg-names for. 
->>
->> My only concern is that by marking reg-names as required we would break the ABI,
-> 
-> You are ALREADY BREAKING the ABI. Really, for absolutely non-important
-> cosmetic change in unit address, where I asked you repeatedly to fix the
-> unit address, you change the ABI affecting kernel and DTS users.
-> 
-> This is barely acceptable, but I am just annoyed already explain it to
-> you multiple times.
-> 
-> But now you claim, you can break ABI for cosmetic unimportant change,
-> but actually doing something meaningful is a no-go?
-> 
-> At least use correct arguments if you want to discuss.
+From: Jonas Karlman <jonas@kwiboo.se>
 
-And I double checked now with Conor - your binding and drivers are
-broken here and THIS you must fix. Not the unit address you are so
-focused about.
+Channel Allocation (PB4) and Level Shift Information (PB5) are
+configured with values from PB1 and PB2 due to the wrong offset
+being used. This results in missing audio channels or incorrect
+speaker placement when playing multi-channel audio.
 
-Best regards,
-Krzysztof
+Use the correct offset to fix multi-channel audio output.
+
+Fixes: fd0141d1a8a2 ("drm/bridge: synopsys: Add audio support for dw-hdmi-qp")
+Reported-by: Christian Hewitt <christianshewitt@gmail.com>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+Changes in v2:
+- Add my SoB as requested in v1 [0]
+- Add Cristians review
+[0] https://patchwork.kernel.org/project/dri-devel/patch/20251206072718.2039874-1-christianshewitt@gmail.com/
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index ab7fed6214e0..facfb7526928 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -848,7 +848,7 @@ static int dw_hdmi_qp_config_audio_infoframe(struct dw_hdmi_qp *hdmi,
+ 
+ 	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS0, &header_bytes, 1);
+ 	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS1, &buffer[3], 1);
+-	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS2, &buffer[4], 1);
++	regmap_bulk_write(hdmi->regm, PKT_AUDI_CONTENTS2, &buffer[7], 1);
+ 
+ 	/* Enable ACR, AUDI, AMD */
+ 	dw_hdmi_qp_mod(hdmi,
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
