@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C39A4FD0049
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:30:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5975EFD004A
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:31:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6JQcNpxvbpXs46HApsqter9xpxQJ+sqCkKcIcOJdIeQ=; b=TLSQOtwKxDB232
-	PpROUndq0RmzwrR1DSNmKyFJ5Gh8TLLxYZ8CWdtS4Eka1WlJ2nXVbP82sBxqVh+jpnAwWnV0V7zTs
-	IRf5l/d2tgf2oLajK+zADKYA8StRUi2acw4Z01KT+zuCwdaeo1ycYMjN2KMWM/PpEmTRnYjD81fwq
-	GTK4A2OzvwUHOaBDR/VE3lfO+a6us8deAjvQAlQLmaqW9d+ZG3775OC5sO3UJIwEvoGlWm4b3DDWv
-	T8+FV4x/Mxi6pWDOHFd2xNrkqWyqylwOlMR12k0ARlq+2NuBglPwlfUkJE3kNpgnuM5aIO96xfCgZ
-	wv7laE4zzf11igYMl/UQ==;
+	List-Owner; bh=KDmQvxz83jUvTnQkow9S0oh8C88wIsOjaU3wpHfop0E=; b=sx+5KBU0XE3/IZ
+	T29m3NrjYSSVRhSw28BSDJYvDOVF7wHZBdflYovv/PhTjeaVKhAlXkw8ROjBU9azIOR+Y6HBmJkz9
+	hJAnbA/2eL+YxtO0SQEXrbRS497bhSdYXlEOLFPP8YteisMfTaaK0WOaV/OmnRCytka9d/m3jXwuC
+	GWO3XrX0lydi3KY0K9cgQTWukwLzSOp/VOO5I1NlTGDYriSDxoLuYyWFfCXpRqIHkecDNgq66LAZn
+	yyoRphmBuy9nmI2l17/abWYu3wQ8DTObLfCAqedyJ8uyB0s8TOJWf9dtmCZSC815TIQcxLCGOsrZ9
+	CCE3w9srVXNsvnFIcp3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVdo-0000000AXiD-3QD3;
-	Sun, 01 Mar 2026 01:30:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vwVe7-0000000AXvl-2nPz;
+	Sun, 01 Mar 2026 01:30:59 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVdh-0000000AXcW-1RD6;
-	Sun, 01 Mar 2026 01:30:36 +0000
+	id 1vwVe4-0000000AXsA-1wMA;
+	Sun, 01 Mar 2026 01:30:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E7E5B40C17;
-	Sun,  1 Mar 2026 01:30:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 12470C19421;
-	Sun,  1 Mar 2026 01:30:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E1C2260126;
+	Sun,  1 Mar 2026 01:30:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA02FC19421;
+	Sun,  1 Mar 2026 01:30:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772328632;
-	bh=/VhN8GU+Mw62usEIN9s/rViCE+wDUCcRwUVYiL46/mM=;
+	s=k20201202; t=1772328655;
+	bh=/DA37+Hf7sJ+rlGkNUToe112J/LF9yM23uSueEqaDgc=;
 	h=From:To:Cc:Subject:Date:From;
-	b=afDIxng/AFbffXcXMCZQdSdVgupaAj+SDiUrqMb/ztqV1NZdWd4bCeWe360hVpXIv
-	 z4EugaZmecVzdiKf/yl7pOWXxwlbUdnaL0A8Xl7KnNF8SpQ+2lz52YopupTG4b6P8q
-	 hDc9IxEIfrOsFCM+mEV+CFldRTb2lDON9/nvM9aJU7AHrXefojUcDwmY+/iBjMXf1W
-	 ZJOjk25psfMyo/AHdjwPMmbATNsLrbckiajrZPGQGr6nOopCJkFrcXr3oZ03mcI+Eb
-	 T3LMgDx3oIU5WOUXOSsJxA8M0vZ7SR5aPa7oO1De8JGjAR88m9EiROPf/RBKkeLBYp
-	 XbKIOHmz6e52Q==
+	b=NPaW/rhNn49j8onPmXHHz49DbT9mpmNI07Cq6Bc3cCF9j3ANsPpQaivvUdhd4smZA
+	 onbbHfq1CoB4DtFnXdO5ZqO+JDX9NPV/3yk7rPKVkuJfOVkAfMhDbyrrTlKsR0M8sE
+	 cbRhAApex+1bwh7hJr8d2CWEm0J8ED3aTKdL+ILR9akHvcf1FZLmapdzXt/WG+fGWL
+	 DR5xpeTijKLHa+fukoNF10ScQtmHXqMeUsvK9bQQ0Sx63YHM4kYV++yqRaTtgWeyTD
+	 Si9DnSEH4Q4YXtmJ9fcXqBIny/zrJCM/D46i23UDxklKh/shtlqEVJzxgA2+7oxLdI
+	 /XQBdyLDYO2/w==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	cassel@kernel.org
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: FAILED: Patch "Revert "PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ"" failed to apply to 6.6-stable tree
-Date: Sat, 28 Feb 2026 20:30:30 -0500
-Message-ID: <20260301013030.1688700-1-sashal@kernel.org>
+	benjamin.gaignard@collabora.com
+Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: FAILED: Patch "media: verisilicon: AV1: Fix tx mode bit setting" failed to apply to 6.6-stable tree
+Date: Sat, 28 Feb 2026 20:30:53 -0500
+Message-ID: <20260301013053.1689229-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_173035_347417_746174DE 
-X-CRM114-Status: GOOD (  22.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,161 +82,82 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From 180c3cfe36786d261a55da52a161f9e279b19a6f Mon Sep 17 00:00:00 2001
-From: Niklas Cassel <cassel@kernel.org>
-Date: Mon, 22 Dec 2025 07:42:09 +0100
-Subject: [PATCH] Revert "PCI: dw-rockchip: Enumerate endpoints based on
- dll_link_up IRQ"
+From cb3f945c012ab152fd2323e0df34c2b640071738 Mon Sep 17 00:00:00 2001
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Date: Tue, 9 Dec 2025 11:34:17 +0100
+Subject: [PATCH] media: verisilicon: AV1: Fix tx mode bit setting
 
-This reverts commit 0e0b45ab5d770a748487ba0ae8f77d1fb0f0de3e.
+AV1 specification describes 3 possibles tx modes: 4x4 only, largest and
+select. The hardware allows 5 possibles tx modes: 4x4 only, 8x8, 16x16,
+32x32 and select. Since the both aren't exactly matching we need to add
+a mapping function to set the correct mode on hardware.
 
-While this fake hotplugging was a nice idea, it has shown that this feature
-does not handle PCIe switches correctly:
-pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
-
-During the initial scan, PCI core doesn't see the switch and since the Root
-Port is not hot plug capable, the secondary bus number gets assigned as the
-subordinate bus number. This means, the PCI core assumes that only one bus
-will appear behind the Root Port since the Root Port is not hot plug
-capable.
-
-This works perfectly fine for PCIe endpoints connected to the Root Port,
-since they don't extend the bus. However, if a PCIe switch is connected,
-then there is a problem when the downstream busses starts showing up and
-the PCI core doesn't extend the subordinate bus number and bridge resources
-after initial scan during boot.
-
-The long term plan is to migrate this driver to the upcoming pwrctrl APIs
-that are supposed to handle this problem elegantly.
-
-Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Manivannan Sadhasivam <mani@kernel.org>
-Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
 Cc: stable@vger.kernel.org
-Link: https://patch.msgid.link/20251222064207.3246632-10-cassel@kernel.org
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 59 +------------------
- 1 file changed, 3 insertions(+), 56 deletions(-)
+ .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 27 ++++++++++++++++++-
+ 1 file changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index ca808d8f79753..352f513ebf036 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -508,34 +508,6 @@ static const struct dw_pcie_ops dw_pcie_ops = {
- 	.get_ltssm = rockchip_pcie_get_ltssm,
- };
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index f4f7cb45b1f1b..f52b8208e6b93 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -72,6 +72,14 @@
+ 		: AV1_DIV_ROUND_UP_POW2((_value_), (_n_)));		\
+ })
  
--static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
--{
--	struct rockchip_pcie *rockchip = arg;
--	struct dw_pcie *pci = &rockchip->pci;
--	struct dw_pcie_rp *pp = &pci->pp;
--	struct device *dev = pci->dev;
--	u32 reg;
--
--	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
--	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
--
--	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
--	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm_reg(rockchip));
--
--	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
--		if (rockchip_pcie_link_up(pci)) {
--			msleep(PCIE_RESET_CONFIG_WAIT_MS);
--			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
--			/* Rescan the bus to enumerate endpoint devices */
--			pci_lock_rescan_remove();
--			pci_rescan_bus(pp->bridge->bus);
--			pci_unlock_rescan_remove();
--		}
--	}
--
--	return IRQ_HANDLED;
--}
--
- static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- {
- 	struct rockchip_pcie *rockchip = arg;
-@@ -568,29 +540,14 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
- 	return IRQ_HANDLED;
++enum rockchip_av1_tx_mode {
++	ROCKCHIP_AV1_TX_MODE_ONLY_4X4	= 0,
++	ROCKCHIP_AV1_TX_MODE_8X8	= 1,
++	ROCKCHIP_AV1_TX_MODE_16x16	= 2,
++	ROCKCHIP_AV1_TX_MODE_32x32	= 3,
++	ROCKCHIP_AV1_TX_MODE_SELECT	= 4,
++};
++
+ struct rockchip_av1_film_grain {
+ 	u8 scaling_lut_y[256];
+ 	u8 scaling_lut_cb[256];
+@@ -1935,11 +1943,26 @@ static void rockchip_vpu981_av1_dec_set_reference_frames(struct hantro_ctx *ctx)
+ 	rockchip_vpu981_av1_dec_set_other_frames(ctx);
  }
  
--static int rockchip_pcie_configure_rc(struct platform_device *pdev,
--				      struct rockchip_pcie *rockchip)
-+static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
++static int rockchip_vpu981_av1_get_hardware_tx_mode(enum v4l2_av1_tx_mode tx_mode)
++{
++	switch (tx_mode) {
++	case V4L2_AV1_TX_MODE_ONLY_4X4:
++		return ROCKCHIP_AV1_TX_MODE_ONLY_4X4;
++	case V4L2_AV1_TX_MODE_LARGEST:
++		return ROCKCHIP_AV1_TX_MODE_32x32;
++	case V4L2_AV1_TX_MODE_SELECT:
++		return ROCKCHIP_AV1_TX_MODE_SELECT;
++	}
++
++	return ROCKCHIP_AV1_TX_MODE_32x32;
++}
++
+ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
  {
--	struct device *dev = &pdev->dev;
- 	struct dw_pcie_rp *pp;
--	int irq, ret;
- 	u32 val;
+ 	struct hantro_dev *vpu = ctx->dev;
+ 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+ 	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
++	int tx_mode;
  
- 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
- 		return -ENODEV;
- 
--	irq = platform_get_irq_byname(pdev, "sys");
--	if (irq < 0)
--		return irq;
--
--	ret = devm_request_threaded_irq(dev, irq, NULL,
--					rockchip_pcie_rc_sys_irq_thread,
--					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
--	if (ret) {
--		dev_err(dev, "failed to request PCIe sys IRQ\n");
--		return ret;
--	}
--
- 	/* LTSSM enable control mode */
- 	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
- 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
-@@ -602,17 +559,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
- 
--	ret = dw_pcie_host_init(pp);
--	if (ret) {
--		dev_err(dev, "failed to initialize host\n");
--		return ret;
--	}
--
--	/* unmask DLL up/down indicator */
--	val = FIELD_PREP_WM16(PCIE_RDLH_LINK_UP_CHGED, 0);
--	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
--
--	return ret;
-+	return dw_pcie_host_init(pp);
- }
- 
- static int rockchip_pcie_configure_ep(struct platform_device *pdev,
-@@ -731,7 +678,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
- 
- 	switch (data->mode) {
- 	case DW_PCIE_RC_TYPE:
--		ret = rockchip_pcie_configure_rc(pdev, rockchip);
-+		ret = rockchip_pcie_configure_rc(rockchip);
- 		if (ret)
- 			goto deinit_clk;
- 		break;
+ 	hantro_reg_write(vpu, &av1_skip_mode,
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_SKIP_MODE_PRESENT));
+@@ -2005,7 +2028,9 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_ALLOW_HIGH_PRECISION_MV));
+ 	hantro_reg_write(vpu, &av1_comp_pred_mode,
+ 			 (ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_REFERENCE_SELECT) ? 2 : 0);
+-	hantro_reg_write(vpu, &av1_transform_mode, (ctrls->frame->tx_mode == 1) ? 3 : 4);
++
++	tx_mode = rockchip_vpu981_av1_get_hardware_tx_mode(ctrls->frame->tx_mode);
++	hantro_reg_write(vpu, &av1_transform_mode, tx_mode);
+ 	hantro_reg_write(vpu, &av1_max_cb_size,
+ 			 (ctrls->sequence->flags
+ 			  & V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK) ? 7 : 6);
 -- 
 2.51.0
 
