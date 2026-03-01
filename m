@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0EE4FD0045
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:31:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59FC6FD0049
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:31:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=jzQEkq4Qbo3dks3l4rFqXT79iLqxsgMuTphmcmO/VfU=; b=uKEavpRecKAntv
-	IKYze/gh88rhibEq5Du6gHYFy7AF18DZa2LLsa1Wax4XVVRHAVb06RnYunshxyYU5puukK/meOy7V
-	zrO4Qyq/am8h0j3MEuHdS2pdm0/mMp8PyjmE1W3uP5HRR0/T0GH9VSyHovpn8uJMN6AmqEuBmMDqy
-	Is5scTMV+7swLIFIFQixduR7h3M0dz9KkV9cTinSatxMTqt5zEk5M8uTnmDjfOrpV/MaSc9YkBc4V
-	P27BpXEKILIOVG59Q7wDp+SFF/63QqcAmk8OPts6aV9YywfihDUjkU0fRQEGcwwz28SCCYTEc8hW/
-	RogyLSu0JFa89hZUbokw==;
+	List-Owner; bh=7HiuGrFgIHAqdTqTp161T1t0ZWKXoHXkOPqTzKgvhhk=; b=u8OlngmAQPwa7i
+	HnaJ8JqY4pD4PMbzW48eObwVJZyBj8FsWSD58/760oSrAlxxl6QmS2FuVpHc/kb3+WmU35PKffG5F
+	eGHr7osmn+g6ozg/DrI9urkeqfJsFISzdxnr/0EJvGZwEr/z5OCnCUJw3YzbLvWVXT+4ItE/abB7b
+	hBNuiyo0+8u3xN63lhB5ELZ/ncb9hKxT2xaB8CdIHMLXvenMmo9Tf9QLqCcqOLCINNdfliRMSDWFd
+	ItXT/GgMXHuOlPUHwwIYCekaaQSZRUwVLTvnippMbR5nSU4x/0D+NwgXVTKoK+fF8wRD8Pqw4NZGM
+	ll/t4CghsEnLbCMX2Z4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVeW-0000000AYM7-1BrV;
-	Sun, 01 Mar 2026 01:31:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vwVez-0000000AYnQ-3dy7;
+	Sun, 01 Mar 2026 01:31:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVeC-0000000AY1R-07X5;
-	Sun, 01 Mar 2026 01:31:06 +0000
+	id 1vwVed-0000000AYTY-3FhF;
+	Sun, 01 Mar 2026 01:31:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A56CF40215;
-	Sun,  1 Mar 2026 01:31:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CA46C19421;
-	Sun,  1 Mar 2026 01:31:02 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7B688441FF;
+	Sun,  1 Mar 2026 01:31:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82511C19424;
+	Sun,  1 Mar 2026 01:31:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772328663;
-	bh=eIy4xYvF+6Ey9qxNrv5/glse+CDh4uKJU1zyGB8WMIQ=;
+	s=k20201202; t=1772328691;
+	bh=xqc4gsm8IC0WC7G53rVc9zNa8yoUy6KC05pSWFVjjIQ=;
 	h=From:To:Cc:Subject:Date:From;
-	b=sZNmqIHG27M9889XRX3VYa17aLTl0tcHEusnxQ5mAwLREzMHJQlkqW6rIIvBLpork
-	 COjJrQDU+d1IwzZXNy06DBrweDaJtdOco4aJwMQJVW+p+mxCqc5ArA+i3e6neMdLO2
-	 ExFzrkLyuwW3/W59RBF4Zr7bC+lUcXBXfDPfWT/fm8hkZ+ootHPmDKVsKUpjqspCF/
-	 smY+gXIm/3bepr3O/wO+uCphJqmEkdHL7EyoaEBx0ZjEzpwpEtg/zKrvoj/dKAxRIc
-	 8FQbNeIseF/bBPNSTeC9oEP4/Wmlb+PM3v9l8tVlFVO5wIPRRChVOGD1OysFkL9Xhi
-	 1UurR2je+MIgA==
+	b=PFsCIFKTI5DKoXC3sdXhdC8EznW31HisGSPiw+Lk3x4vK38XOL8MKhrL/Plw7rb2i
+	 S7yOHrpsrFG63rOTFA0RWYHsHuNAlfsn+RUFNrjxZuCly5AlX453MQfUd+4pVuoM5V
+	 reR70ja1v5Pk0FLb3xHwFSLyDUF8sp9GSO84tJXvI5V9M4ZV6hUqtDQ+rRtS9EfbmH
+	 1wrgqzV8SaZp3kapZCYKp+GJsroyv2Ge5gEimrhTqaX5iqE4CrxOk/sQz/hozHUJOY
+	 im9gEi222fG7BK9WCrljb7VED8jKWjFCl6HsetA2uyf0ix7gl8RzVRJXmTOGuuvUCX
+	 qR9w6dKsKLaLg==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	ming.qian@oss.nxp.com
-Cc: Frank Li <Frank.Li@nxp.com>,
+	benjamin.gaignard@collabora.com
+Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
 	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Hans Verkuil <hverkuil+cisco@kernel.org>,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	imx@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org
-Subject: FAILED: Patch "media: verisilicon: Avoid G2 bus error while decoding H.264 and HEVC" failed to apply to 6.6-stable tree
-Date: Sat, 28 Feb 2026 20:31:01 -0500
-Message-ID: <20260301013101.1689386-1-sashal@kernel.org>
+Subject: FAILED: Patch "media: verisilicon: AV1: Set IDR flag for intra_only frame type" failed to apply to 6.6-stable tree
+Date: Sat, 28 Feb 2026 20:31:29 -0500
+Message-ID: <20260301013129.1690008-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_173104_172272_9A96DA10 
-X-CRM114-Status: GOOD (  19.89  )
+X-CRM114-CacheID: sfid-20260228_173133_174667_838529BC 
+X-CRM114-Status: GOOD (  12.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,172 +86,39 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From e0203ddf9af7c8e170e1e99ce83b4dc07f0cd765 Mon Sep 17 00:00:00 2001
-From: Ming Qian <ming.qian@oss.nxp.com>
-Date: Fri, 5 Dec 2025 09:54:26 +0800
-Subject: [PATCH] media: verisilicon: Avoid G2 bus error while decoding H.264
- and HEVC
+From 1c1b79f40ee4444fa1ac96079751608b724c6b2b Mon Sep 17 00:00:00 2001
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Date: Thu, 8 Jan 2026 14:29:46 +0100
+Subject: [PATCH] media: verisilicon: AV1: Set IDR flag for intra_only frame
+ type
 
-For the i.MX8MQ platform, there is a hardware limitation: the g1 VPU and
-g2 VPU cannot decode simultaneously; otherwise, it will cause below bus
-error and produce corrupted pictures, even potentially lead to system hang.
+Intra_only frame could be considered as a key frame so Instantaneous
+Decoding Refresh (IDR) flag must be set of the both case and not only
+for key frames.
 
-[  110.527986] hantro-vpu 38310000.video-codec: frame decode timed out.
-[  110.583517] hantro-vpu 38310000.video-codec: bus error detected.
-
-Therefore, it is necessary to ensure that g1 and g2 operate alternately.
-This allows for successful multi-instance decoding of H.264 and HEVC.
-
-To achieve this, g1 and g2 share the same v4l2_m2m_dev, and then the
-v4l2_m2m_dev can handle the scheduling.
-
-Fixes: cb5dd5a0fa518 ("media: hantro: Introduce G2/HEVC decoder")
+Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Reported-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
 Cc: stable@vger.kernel.org
-Signed-off-by: Ming Qian <ming.qian@oss.nxp.com>
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
-Co-developed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 ---
- drivers/media/platform/verisilicon/hantro.h   |  2 +
- .../media/platform/verisilicon/hantro_drv.c   | 42 +++++++++++++++++--
- .../media/platform/verisilicon/imx8m_vpu_hw.c |  8 ++++
- 3 files changed, 49 insertions(+), 3 deletions(-)
+ drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index e0fdc4535b2d7..0353de154a1ec 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -77,6 +77,7 @@ struct hantro_irq {
-  * @double_buffer:		core needs double buffering
-  * @legacy_regs:		core uses legacy register set
-  * @late_postproc:		postproc must be set up at the end of the job
-+ * @shared_devices:		an array of device ids that cannot run concurrently
-  */
- struct hantro_variant {
- 	unsigned int enc_offset;
-@@ -101,6 +102,7 @@ struct hantro_variant {
- 	unsigned int double_buffer : 1;
- 	unsigned int legacy_regs : 1;
- 	unsigned int late_postproc : 1;
-+	const struct of_device_id *shared_devices;
- };
+diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+index f52b8208e6b93..500e94bcb0293 100644
+--- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
++++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+@@ -2018,7 +2018,7 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+ 			 !!(ctrls->frame->quantization.flags
+ 			    & V4L2_AV1_QUANTIZATION_FLAG_DELTA_Q_PRESENT));
  
- /**
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 60b95b5d8565f..94f58f4e4a4e5 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -13,6 +13,7 @@
- #include <linux/clk.h>
- #include <linux/module.h>
- #include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/pm_runtime.h>
-@@ -1035,6 +1036,41 @@ static int hantro_disable_multicore(struct hantro_dev *vpu)
- 	return 0;
- }
- 
-+static struct v4l2_m2m_dev *hantro_get_v4l2_m2m_dev(struct hantro_dev *vpu)
-+{
-+	struct device_node *node;
-+	struct hantro_dev *shared_vpu;
-+
-+	if (!vpu->variant || !vpu->variant->shared_devices)
-+		goto init_new_m2m_dev;
-+
-+	for_each_matching_node(node, vpu->variant->shared_devices) {
-+		struct platform_device *pdev;
-+		struct v4l2_m2m_dev *m2m_dev;
-+
-+		pdev = of_find_device_by_node(node);
-+		if (!pdev)
-+			continue;
-+
-+		shared_vpu = platform_get_drvdata(pdev);
-+		if (IS_ERR_OR_NULL(shared_vpu) || shared_vpu == vpu) {
-+			platform_device_put(pdev);
-+			continue;
-+		}
-+
-+		v4l2_m2m_get(shared_vpu->m2m_dev);
-+		m2m_dev = shared_vpu->m2m_dev;
-+		platform_device_put(pdev);
-+
-+		of_node_put(node);
-+
-+		return m2m_dev;
-+	}
-+
-+init_new_m2m_dev:
-+	return v4l2_m2m_init(&vpu_m2m_ops);
-+}
-+
- static int hantro_probe(struct platform_device *pdev)
- {
- 	const struct of_device_id *match;
-@@ -1186,7 +1222,7 @@ static int hantro_probe(struct platform_device *pdev)
- 	}
- 	platform_set_drvdata(pdev, vpu);
- 
--	vpu->m2m_dev = v4l2_m2m_init(&vpu_m2m_ops);
-+	vpu->m2m_dev = hantro_get_v4l2_m2m_dev(vpu);
- 	if (IS_ERR(vpu->m2m_dev)) {
- 		v4l2_err(&vpu->v4l2_dev, "Failed to init mem2mem device\n");
- 		ret = PTR_ERR(vpu->m2m_dev);
-@@ -1225,7 +1261,7 @@ static int hantro_probe(struct platform_device *pdev)
- 	hantro_remove_enc_func(vpu);
- err_m2m_rel:
- 	media_device_cleanup(&vpu->mdev);
--	v4l2_m2m_release(vpu->m2m_dev);
-+	v4l2_m2m_put(vpu->m2m_dev);
- err_v4l2_unreg:
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- err_clk_unprepare:
-@@ -1248,7 +1284,7 @@ static void hantro_remove(struct platform_device *pdev)
- 	hantro_remove_dec_func(vpu);
- 	hantro_remove_enc_func(vpu);
- 	media_device_cleanup(&vpu->mdev);
--	v4l2_m2m_release(vpu->m2m_dev);
-+	v4l2_m2m_put(vpu->m2m_dev);
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
- 	reset_control_assert(vpu->resets);
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index 5be0e2e76882f..6f8e43b7f1575 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -343,6 +343,12 @@ const struct hantro_variant imx8mq_vpu_variant = {
- 	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
- };
- 
-+static const struct of_device_id imx8mq_vpu_shared_resources[] __initconst = {
-+	{ .compatible = "nxp,imx8mq-vpu-g1", },
-+	{ .compatible = "nxp,imx8mq-vpu-g2", },
-+	{ /* sentinel */ }
-+};
-+
- const struct hantro_variant imx8mq_vpu_g1_variant = {
- 	.dec_fmts = imx8m_vpu_dec_fmts,
- 	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
-@@ -356,6 +362,7 @@ const struct hantro_variant imx8mq_vpu_g1_variant = {
- 	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
- 	.clk_names = imx8mq_g1_clk_names,
- 	.num_clocks = ARRAY_SIZE(imx8mq_g1_clk_names),
-+	.shared_devices = imx8mq_vpu_shared_resources,
- };
- 
- const struct hantro_variant imx8mq_vpu_g2_variant = {
-@@ -371,6 +378,7 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
- 	.num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
- 	.clk_names = imx8mq_g2_clk_names,
- 	.num_clocks = ARRAY_SIZE(imx8mq_g2_clk_names),
-+	.shared_devices = imx8mq_vpu_shared_resources,
- };
- 
- const struct hantro_variant imx8mm_vpu_g1_variant = {
+-	hantro_reg_write(vpu, &av1_idr_pic_e, !ctrls->frame->frame_type);
++	hantro_reg_write(vpu, &av1_idr_pic_e, IS_INTRA(ctrls->frame->frame_type));
+ 	hantro_reg_write(vpu, &av1_quant_base_qindex, ctrls->frame->quantization.base_q_idx);
+ 	hantro_reg_write(vpu, &av1_bit_depth_y_minus8, ctx->bit_depth - 8);
+ 	hantro_reg_write(vpu, &av1_bit_depth_c_minus8, ctx->bit_depth - 8);
 -- 
 2.51.0
 
