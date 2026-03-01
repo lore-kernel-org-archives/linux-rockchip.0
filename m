@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB38DFD0058
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 16:42:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 707FDFD006D
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 16:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RBIj69oaMcwmJEICZKsGmrlNjg7WziL2uExwo3C6Hls=; b=rAUitKOEULsZaQ
-	3ToCFbD37uAgFVSa4XK/dioHTY0/Djon6yN8F3LtnyDkCZdiMqQEoEOS+VUnmTDnvUH+utoq5Aq/0
-	JXs58yZBXtjFKRj2rQLL+usx7+MTjZ8ENF4k7Us/CmR5rW2m11Gd/YjxZjaoeb0pFwHSTemPYEn2k
-	jesM23sCKZyyb/jRSTUyrUIE6PoKEhMFLx7gMRF9QdSDTWdRpgVUdU9im/E8Ev5Mq5FaWZ+uGpPIT
-	pL2oZbI7ICzq/3U7qzhuSy8M9Dfy4X0sfQHEKY9BYyrsNtFp9yI6ATEf/DX6CcfQeeBfeHjzCx0Cz
-	cvQ8xJnsJJDgHUMpoTCg==;
+	List-Owner; bh=95mdYArkvrL+fwsD+p3VdE+fAVxtq6TV/i7pcfPfmUo=; b=DQyeNGZPot5KZ8
+	5sGsHx+T4Rqr58/iwjEqsCKpdlIA44Uuwm1PS3nupquV4iCbg/iuS9bGNFxwExIIRLPj1vZpd9IPO
+	zyhom4+Yf3ddSyg6VcgRF7unRlqoWnbQDvfzIlf67RuLXHg4TcACWsnH4JB9Gd6gnxhXCrFmyJCWY
+	i05cptd1VH/BbHLffmJ3oQypNX01B/YXn4EeDAeMKICTzFCrQl10N9vsAPCmgg+rZhOblj7PGgi/V
+	ppkt+2RIs4DYxsJTAeLNjvHUkHKV4GEm9IiClyOUDurStbRXo8yq750QlTxbLj3JZl5B69C2qBO3Q
+	MfO45eALz5XEOt94sjSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwjsW-0000000BfpC-3MXi;
-	Sun, 01 Mar 2026 16:42:48 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1vwjxT-0000000Bg9v-0a78;
+	Sun, 01 Mar 2026 16:47:55 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwjsU-0000000BfoR-1Gaq
+	id 1vwjxQ-0000000Bg9A-2mi6
 	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Mar 2026 16:42:47 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6219NLnI2572669
-	for <linux-rockchip@lists.infradead.org>; Sun, 1 Mar 2026 16:42:45 GMT
+	Sun, 01 Mar 2026 16:47:53 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 61SMt1pS2907742
+	for <linux-rockchip@lists.infradead.org>; Sun, 1 Mar 2026 16:47:52 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=UUK6gQUiNTqa63dauhB4oNrf
-	uTLkXg9Yv5hlRkbvUf4=; b=He8pARc8xKIWQNSUN5iKpE5loEd11TA19/vijzUy
-	CYWHw9Xaap0rWw4bWeDfmBphXjBNU8zWqkLN0XTsTFglTLJRWiXYf7jqZnnW+NXb
-	bE7DV5GnSj7UFtEJXNVoI/V8AkgNAOOfa8AS8aXm3UPmIjCkq1IvovuIL8iR56GT
-	HRJ3BdNAUBEeqwYnPCAapQzOa8+GpTl7+m4P3BikpDnkGNGJzkOtqB0piXklqmXN
-	BpoJDnESMWRskJpZaShiXRIapbYJ7FzjH3VJbf0wPkAje0oqUMrHemOdFsakXWe8
-	VFIVqmFmDzPzK9WZ6poJpgk3/7NVdg6uXmSnFPyYJ7aewg==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cksf6jx1d-1
+	:references:subject:to; s=qcppdkim1; bh=23yFjRakNDMv9z7eHrnsMfwG
+	zCe1oBIgBUxRG3B4w9c=; b=j9k43y29AY/jcOBaZs4hjILMyf4NJhXj35Ds8fPf
+	WOCMUgc83CYIceqbax3lqKhzX79Ko+iYQC1kKbPZDfsyqOkPtQI1g5VEsX7Lu/qL
+	AxtlMsFmktCzVSbsiJI69w0rNrE7ejK0npefurmC+7ixrdHK1PUZe8EUs5aAClT2
+	0dCCX8KR5It6Pr5VJ5vpuJH+eFms1e653wLTIIoz6kdz/S1wGb/5T+JN6GgqOTHL
+	S+SDKd8+NufyC2a2lQuyvzgeT7eO/Frd6HF6ueEq71KVMYEsRIOilY3LgMv7z3FW
+	WkVeV3lPmX4qJcZAkupTCrsicOZk0I+o6inqX9bWQ9NUlw==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com [209.85.222.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cksn430c9-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 16:42:45 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-506bfa0441aso673459661cf.3
-        for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 08:42:45 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 16:47:52 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id af79cd13be357-8cb3d11b913so3144887285a.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 08:47:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1772383365; x=1772988165; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1772383671; x=1772988471; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=UUK6gQUiNTqa63dauhB4oNrfuTLkXg9Yv5hlRkbvUf4=;
-        b=PW23beknQrYSRF8h8A8HvUdyCKDfYYU95yvXzURHr3mBMmR9Pt974cpURtISiExBh+
-         wl/SMCaX+ExRopcWfgqgoMh0PIlgNtkg03MRH5R1GIOcH895g94C1IhhNhbZy6KAWDZM
-         19NPO92c8b2vq4BL9URAnZlALavVuFGc+LqUa49SzZW7w7XBqs+QhT13Au2mBvMP+jg7
-         VPNlIIYfmx0zbQlpHlDchw8DbnnnGSjndVfzccB2QQinj1zB7mRwaMkXDuQicwx1w3+X
-         R4u9s5W0FmW5s26Hf0pzLPUDXjEq61czJll/s9kRmtm4T/MnG3wpr35UeNCGDoIgMjTu
-         FC9g==
+        bh=23yFjRakNDMv9z7eHrnsMfwGzCe1oBIgBUxRG3B4w9c=;
+        b=ehyn7NUg0f4AuyooJFb1Y2LL2QiXKUIEQSmGN2bxnR1Y8A6tLdJwnn8AdaR+OHWkDq
+         YSgEFIo0ChS301M1BrsREulStIkU/QgtvzFKJGM1SCQeGFfxvDiRKzVaTpL5u3VeFs0y
+         4YLo0LAxrhKAqfbBdAExpLoCXxJ6cvUYLzWVuc2Lr0MBggDUnd72L/zPmKiLdy0V1mX1
+         EwGycKPsc6GzzVVUK//exVDV5U1QfBuaBDkqGopekOB1579kSLE0Uv3uyHKkaOqk/CUg
+         C9F3RmmZTSTdN9vixXV4yqW5W1hNySPuyf3YrKepOjgFl8owoyBh+wa3gjXs83zDlawR
+         r84g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772383365; x=1772988165;
+        d=1e100.net; s=20230601; t=1772383671; x=1772988471;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=UUK6gQUiNTqa63dauhB4oNrfuTLkXg9Yv5hlRkbvUf4=;
-        b=cr5GC6G6/R9MXjlfGScIflvWhN+5yuzt4GOBr1V///KQ6qztlu9M6NqBILUuhe/Bs0
-         L/LUda9Wwq0S9QbPcvjp9QrD9a5ojr4YoXlnH3c8KnLZui0CcMTctEVTfPCz0kDRszha
-         u9RVjAAi4v3iP2tiDpOloJubgnfObkjcX382FIr91fqihYM/8U1JMB5wwHndtir5a36G
-         BnbWJTBX1zweXSzhO6JHtdG8hJk6r8SF9CUC2isBZ1yBnYgadq/72vHciJKf2+JNZNVe
-         Zi4Hq7jzrkRTwWm2LMasHh7JKrG3KsS/g35ij+Eekc3XHAJzD6/OQS2ewFq9zt27dRfK
-         3lzw==
-X-Forwarded-Encrypted: i=1; AJvYcCXwkKQ3mUIeCmqHAJc8KyvIYq7Sq97AZ+BnVAjFGyZqq8hF3ueyMLt6AbA3pU9hYcqMQ/uIc6g+wu0rJzZVgA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YydQmfwqiXnTLDwrYcIRyhSTjueyj+6AFOeINsU4CKOMoIzoBsA
-	uE/7BiGUMo0TsU4DtB4zwgAFJ2ga3kOcpj8w8rs0JYqAmrBD6CIJ7QKvILaCijxfb7ueVEqZo3c
-	fPEg8EHwcvbo7n2msHPtXc5yr+wRgS4HRqtN5QrBkWTK6y0gnfH4kfuJr6EHVv19UeRvkThde3s
-	8=
-X-Gm-Gg: ATEYQzx1v14mXiMkBsCq/J5SzMGKDhUv+lFPPVBPExQb7ZiYWh6mM+2v2m110EtzWVn
-	s/hzPrIgDWna+AhmTwmCJUUcPMCOk5q/VzyICL0KhKfubXrKoOjRFnRtB1i+VY1H5k07BNkoddK
-	nIPUL2kPzP9oebSgcVT1Taf3eGEo869NaEdrwoQt/+bX3xu0f80nBrPsKViLCMEge2PNOHl9346
-	pcyKGZnq7BhmivK+erp+ZNhA+IDQULtEwQ96zCLyrLHJTuq5+BsQuYWo9vgVY72Ks/xsJZ97rmV
-	BJDXwbPNqzXjRe+4CZGPDDnX0CquklOUOAZa1U+52ABeFHQ4uKyWouGGka6xob8gThSwDp7qzBJ
-	C9N2yNj+fbb/oZHRXtBruoxqCkLAbMrwTV2iLWZu62khKC5zJbOBO+yb8fiqpg5dWJiZ0/R3BVj
-	imYFtgYTI7afu+vj50BIs5KsyjqKGuaThBgQ4=
-X-Received: by 2002:a05:620a:40c4:b0:8c5:32b7:210e with SMTP id af79cd13be357-8cbc8ead9f6mr1058571385a.82.1772383364328;
-        Sun, 01 Mar 2026 08:42:44 -0800 (PST)
-X-Received: by 2002:a05:620a:40c4:b0:8c5:32b7:210e with SMTP id af79cd13be357-8cbc8ead9f6mr1058568585a.82.1772383363834;
-        Sun, 01 Mar 2026 08:42:43 -0800 (PST)
+        bh=23yFjRakNDMv9z7eHrnsMfwGzCe1oBIgBUxRG3B4w9c=;
+        b=EvMqPSDd/G/uubMVjl7/O9J20HxcpZyEvlT4x1lOcdc9RoJopWniECalpO5zhTfLmX
+         43cr3fHvQFWbCmtrt493SoDayMzgSQZ+zDDoIBNYJK5t2wn1MUF5dNmhCOuCSKmfKw0B
+         GDSha3YgfPu9sZRX8cZiJmecPQzBPF7zEmFAIbRD7Om1n1+HInsWDrotniWi/gvPAX2l
+         gtae2UupKBBhdclwblwWtWezhcVrXom4QL245RW6bX08v4ZGgeAlVcFd8gRdtSAnSKzv
+         ocpj3jpCHlu1ie9/voeShGLaTtVGM78RDh96RtxHAJwrvXxsHRKXPyrGJ9Ib2RIlkDND
+         BCgQ==
+X-Forwarded-Encrypted: i=1; AJvYcCU4oA7wHSTm+E3lx4V7Peug4nc7iMav1Q+IT2aLTXNZ5D/AU2Uiz1MWLBi2WwfXX6iSAWgbVJGK2ww1eiP83g==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxG010K4/PfQ6TqfE5jCjcoX00/KPMOT5j78OxZc8aMzInEv7S0
+	Csl0WxAJbwiJDdkPJv0JU5HAVRZd/SbZefpabdAH0GhWIJlHi6yWbfNVfjm+RhX5T5kbAyIdRiX
+	P6jOPPo2vOTv9Y2uXgd+7sCsH++ThQaUBz4LhIybfvusxozwS4+EbKJgiZ6DG/IUgLCxc9Ev/pV
+	I=
+X-Gm-Gg: ATEYQzxgj2kaa1Cbv8071szl20wQmg8OA1LJfjk1x7RnX1HKm0rp5eHDZBnmFpIa4xB
+	l6Q7q91N9jXFnhtwfnYPf8KM+EsKA+il2ZTHNfBzw6PuHVDN3DGUrZbXlsv3IkGzMfJ+D9aVh89
+	GL0paqMyJEixzrCYyYKXktYVTpFKj1U1d4YGxsa8HuJOsC0lrv1VoiaVmVl3ABSZqXgVVyVmTcu
+	HqKIzG+XTB5KujGRL9HGJzFwtxmgpNONSltuW5aZbFu7bLGFpj9bssSQEBueXM53XR0OdVVMqcd
+	93WXXROvqWLWuaj+IL0R6fQzqNmyJ3D3rKH4CWrgSkmqO9xXUIW+3jZIR0DhNpNl82rfII58RMg
+	EW29ygrfN3himEMLl/7rHwUPWSUD6s4WqZhNIGPeUYHcAKr3JSDJ0i82hKAHrUSF1G2/r5zKKk4
+	vhNffnv4P+f59IRD4LMhjVWTUgDrbtgcKb8TI=
+X-Received: by 2002:a05:620a:4801:b0:8cb:4066:7acc with SMTP id af79cd13be357-8cbc8e4b74fmr1215341785a.50.1772383671051;
+        Sun, 01 Mar 2026 08:47:51 -0800 (PST)
+X-Received: by 2002:a05:620a:4801:b0:8cb:4066:7acc with SMTP id af79cd13be357-8cbc8e4b74fmr1215338985a.50.1772383670575;
+        Sun, 01 Mar 2026 08:47:50 -0800 (PST)
 Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a115bca1e5sm1139257e87.26.2026.03.01.08.42.42
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a115bca083sm1146993e87.31.2026.03.01.08.47.49
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Mar 2026 08:42:43 -0800 (PST)
-Date: Sun, 1 Mar 2026 18:42:41 +0200
+        Sun, 01 Mar 2026 08:47:49 -0800 (PST)
+Date: Sun, 1 Mar 2026 18:47:48 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
@@ -119,43 +119,44 @@ Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
         amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
         linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
         linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
-        intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v9 12/19] drm/bridge: dw-hdmi-qp: Implement
- atomic_get_output_bus_fmts
-Message-ID: <hocqjcusieyqmsai4bxtgjon446yae6m43dmvqzk34ul44pvfg@ithgwadiwx2j>
+        intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org,
+        Andri Yngvason <andri@yngvason.is>,
+        Werner Sembach <wse@tuxedocomputers.com>,
+        Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v9 02/19] drm: Add new general DRM property "color format"
+Message-ID: <y5ybjitphwydvtcjdtrmpcx7t7hwevjszpktcnmyvjqkgzinmu@hoitkl7lghxh>
 References: <20260227-color-format-v9-0-658c3b9db7ef@collabora.com>
- <20260227-color-format-v9-12-658c3b9db7ef@collabora.com>
+ <20260227-color-format-v9-2-658c3b9db7ef@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260227-color-format-v9-12-658c3b9db7ef@collabora.com>
-X-Proofpoint-ORIG-GUID: kcXR72gZODoBKGPR5O05Kg9Bh8lqfqx0
-X-Authority-Analysis: v=2.4 cv=JoL8bc4C c=1 sm=1 tr=0 ts=69a46c85 cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+In-Reply-To: <20260227-color-format-v9-2-658c3b9db7ef@collabora.com>
+X-Authority-Analysis: v=2.4 cv=Tq3rRTXh c=1 sm=1 tr=0 ts=69a46db8 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
  a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=QX4gbG5DAAAA:8
- a=J_biHfMZ8pKUvqPgpkYA:9 a=CjuIK1q_8ugA:10 a=uxP6HrT_eTzRwkO_Te1X:22
- a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAxMDE1MiBTYWx0ZWRfX/ILyMKBzJelm
- Rcod1buX5zvafRaE4bR/x6hWEsDQPvlYVjAxOIML65zA8Xcxo82u9OWGd5GRIuDRb6nfjdtVkT4
- UJ+rKpiO1yrkbqC8BEXYE5Al3j8cTNYnBWOvxuVwlSYOgMbAEXzSupJgU5S/KU2EpD1R30+qjhn
- I5B+X3as9bGB0+SNS845vv8v1/btDHTd3/5rfNKJJgBWQ0buEEzbVcSKi/mQSL4r9hsfCHfg9nj
- ETb3pjvS/IYahr2/D+TL5qLiYqSNMyuxXp4TJtdIXNaRgO/LcZQZhvoWFFWFbPjnSwaWG9OeMMT
- U07tloPtvkHp951Fux8LgeLOhYqkzU11kLbJKlS8XbQlh0npSOax9YP+/gTEnAzWBYcs2oEH5u+
- Dueg2gGWBHDs5WRadRZgzIxo3H0Ktio4UcLlRUZe8pNehNx7ckFsiquloOX+mf6I1hxqvIfqjxZ
- 6hYxaKIAQlI4oWU8TTg==
-X-Proofpoint-GUID: kcXR72gZODoBKGPR5O05Kg9Bh8lqfqx0
+ a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22 a=yDUiu3_GAAAA:8
+ a=QX4gbG5DAAAA:8 a=bDwM_fcg3tGIVG_HqXcA:9 a=CjuIK1q_8ugA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22 a=gafEeHOdjwYkg5oUpzAY:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-ORIG-GUID: sRIxHpo5HPLUTk1WKdqGaXqfINntCGzJ
+X-Proofpoint-GUID: sRIxHpo5HPLUTk1WKdqGaXqfINntCGzJ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAxMDE1MyBTYWx0ZWRfX15Wr5zUL2zgp
+ +rA55Y8Lnvgr9O6WSx97DAcZB2dJOH+8DztJKIhmnsnMeE2SplM9zQCnEqS5ku/R8O+yfN3b9Ph
+ 3XjxPgEBqw0p6q52VK4OJHCEFYpWGg4dmgtq2JvYqUtEPJVD7uWhR5qzLqDePD4HNN2rzKgSj8B
+ SZsCDf/AQwR1sVFPgrfc+xxwKxmfRhsWNG+aPeyLPobJxniCkF6GmRNmEUOuIFq0iRtf6mwijQk
+ NpS5bgNyt+5Sc1ZEFldg9EvCkOa4+y/TlFDNv75Y6BV1VNW1qpib4XVWtJHhI2iaajh8YWQvMwi
+ S+cDWemI0LugfzC/tdDmgeIBUxw1WKJC4UvThBMByjM4XgNzQLxW5KxsbyMIRkZMnmjYdg4u9Fu
+ N85doEQDQxt/k05ZpdlUsz+YvWetQFpLpAf8rQfvg2EmpDaijPjK4jOuAmOoalDuRaCSuZhpXsG
+ HHopuZmvvc6XG2dDWDA==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-01_03,2026-02-27_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 suspectscore=0 malwarescore=0 priorityscore=1501
- adultscore=0 bulkscore=0 clxscore=1015 impostorscore=0 spamscore=0
- phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
- definitions=main-2603010152
+ clxscore=1015 bulkscore=0 suspectscore=0 impostorscore=0 lowpriorityscore=0
+ adultscore=0 priorityscore=1501 malwarescore=0 phishscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603010153
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260301_084246_483821_5F1ABFE3 
-X-CRM114-Status: GOOD (  31.48  )
+X-CRM114-CacheID: sfid-20260301_084752_699645_6974EBD6 
+X-CRM114-Status: GOOD (  19.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -172,120 +173,44 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 27, 2026 at 08:20:17PM +0100, Nicolas Frattaroli wrote:
-> The atomic_get_output_bus_fmts callback is used by the DRM bridge layer
-> to recursively select a suitable output format in a bridge chain.
+On Fri, Feb 27, 2026 at 08:20:07PM +0100, Nicolas Frattaroli wrote:
+> From: Andri Yngvason <andri@yngvason.is>
 > 
-> As a bridge that outputs to HDMI, dw-hdmi-qp will have its output
-> formats determined by which formats the platform-specific integration of
-> the hardware supports, and the chosen HDMI output bit depth.
+> Add a new general DRM property named "color format" which can be used by
+> userspace to request the display driver to output a particular color
+> format.
 > 
-> Implement this callback. The returned u32* buffer is supposed to be
-> freed by the caller of this callback, as specified by the callback's
-> documentation.
+> Possible options are:
+>     - auto (setup by default, driver internally picks the color format)
+>     - rgb
+>     - ycbcr444
+>     - ycbcr422
+>     - ycbcr420
 > 
+> Drivers should advertise from this list which formats they support.
+> Together with this list and EDID data from the sink we should be able
+> to relay a list of usable color formats to users to pick from.
+> 
+> Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+> Signed-off-by: Andri Yngvason <andri@yngvason.is>
+> Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 64 ++++++++++++++++++++++++++++
->  1 file changed, 64 insertions(+)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> index d649a1cf07f5..4556494f9bb1 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> @@ -11,6 +11,7 @@
->  #include <linux/export.h>
->  #include <linux/i2c.h>
->  #include <linux/irq.h>
-> +#include <linux/media-bus-format.h>
->  #include <linux/minmax.h>
->  #include <linux/module.h>
->  #include <linux/mutex.h>
-> @@ -749,6 +750,68 @@ static struct i2c_adapter *dw_hdmi_qp_i2c_adapter(struct dw_hdmi_qp *hdmi)
->  	return adap;
->  }
->  
-> +static u32*
-> +dw_hdmi_qp_bridge_get_output_bus_fmts(struct drm_bridge *bridge,
-> +				      struct drm_bridge_state *bridge_state,
-> +				      struct drm_crtc_state *crtc_state,
-> +				      struct drm_connector_state *conn_state,
-> +				      unsigned int *num_output_fmts)
-> +{
-> +	unsigned int num_fmts = 0;
-> +	u32 *out_fmts;
-> +
-> +	/*
-> +	 * bridge->supported_formats is a bit field of the HDMI_COLORSPACE_* enums.
-> +	 * These enums are defined by the HDMI standard, and currently top out at
-> +	 * 7. Consequently, BIT(7) is the highest bit that will be set here, unless
-> +	 * the standard runs out of reserved pixel formats. Therefore, hweight8()
-> +	 * will give an accurate count of how many bus formats we'll output.
-> +	 */
-> +	out_fmts = kmalloc_array(hweight8(bridge->supported_formats), sizeof(u32),
-> +				 GFP_KERNEL);
-> +	if (!out_fmts) {
-> +		*num_output_fmts = 0;
-> +		return NULL;
-> +	}
-> +
-> +	switch (conn_state->hdmi.output_bpc) {
-> +	case 12:
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_RGB121212_1X36;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_YUV12_1X36;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_UYVY12_1X24;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_UYYVYY12_0_5X36;
+>  drivers/gpu/drm/drm_atomic_helper.c |   5 ++
+>  drivers/gpu/drm/drm_atomic_uapi.c   |  11 ++++
+>  drivers/gpu/drm/drm_connector.c     | 124 ++++++++++++++++++++++++++++++++++++
+>  include/drm/drm_connector.h         | 103 ++++++++++++++++++++++++++++++
+>  4 files changed, 243 insertions(+)
 
-This looks like very generic code. It uses bridge->supported_formats
-only. Can we move this to the helpers library?
+It seems and feels that the common code to be used (almost?) everywhere
+would be:
 
-> +		break;
-> +	case 10:
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_RGB101010_1X30;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_YUV10_1X30;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_UYVY10_1X20;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_UYYVYY10_0_5X30;
-> +		break;
-> +	default:
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_RGB888_1X24;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_YUV8_1X24;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_UYVY8_1X16;
-> +		if (bridge->supported_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420))
-> +			out_fmts[num_fmts++] = MEDIA_BUS_FMT_UYYVYY8_0_5X24;
-> +		break;
-> +	}
-> +
-> +	*num_output_fmts = num_fmts;
-> +
-> +	return out_fmts;
-> +}
-> +
->  static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
->  					    struct drm_atomic_state *state)
->  {
-> @@ -1192,6 +1255,7 @@ static int dw_hdmi_qp_cec_transmit(struct drm_bridge *bridge, u8 attempts,
->  #endif /* CONFIG_DRM_DW_HDMI_QP_CEC */
->  
->  static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
-> +	.atomic_get_output_bus_fmts = dw_hdmi_qp_bridge_get_output_bus_fmts,
->  	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
->  	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
->  	.atomic_reset = drm_atomic_helper_bridge_reset,
-> 
-> -- 
-> 2.53.0
-> 
+if (!drm_mode_create_color_format_property(connector, supported_formats))
+	drm_connector_attach_color_format_property(connector);
+
+
+Please mention somewhere the reason to split that into two functions.
+
 
 -- 
 With best wishes
