@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE707FD0048
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:59:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2CAFFD0048
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 02:01:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=3VWDmGzMnaeewh75Os0ykEqGTmarnOMQwkwN4Ww+JeA=; b=ssD6SVIAMKdpZT
-	p/V1UKhXQXb2IU7igLsdGdZiPFrucO7ROHAjnUm8JfMqM7lvLtpN5jDYQYUQgt2mdTxJq9im4IQIN
-	GRzYopHqRsgGKUREHHpQ4qBq+wxeOmgo5kVveltPuP821dcoHPfrYvmJNr4Cn8NuGri5vQ53qcTv+
-	uW1MFr1Q5vfXMvORwoGx8ZjvTClai9MhpwQ5Ed+I6auHuQxXYRgpv7sntTnwjwyveJpoQeFBQBkQR
-	XEVMQNaSsuea4y3tnbsGSb0UhaScm2MXc5yGaSSu6pSpFy4rZKAyxsVRh+E7rPf2DfEKubTbcJg3N
-	myUbMHUj+onHpzHEAEOg==;
+	List-Owner; bh=Wh/qcGD5Dfg5py5LMmK2M+CmDBuxWmh/0wcP9AEft6s=; b=Ee6wzydxXOWqnI
+	XVHEBp4BsTU6/AzsvKRPScGY5F3J2nnRzPDV9TkbVgxORnP2I7rowl46MsRhm+iK4h27e+1RE6f+P
+	RIbqyHOu0h8Op3kl6VgeQ4in3UBBK5uwf7sAKdDapMwyo4n3gvaDRyoMx/dlIKQLojZsgPRNOWPVa
+	JDGhJSoKPgohnbyskypicGmfrcukAQV2A/GyK2oE1grB9qLuZ3Adkbuj1v+6YpRq9h0cI4Hcu29jC
+	TrLilep/CJg5FBHqsIpoKYm2qFhcy+wFVF3mBOYwWz8jZebioVaN9MEYP3gukX5AXa8n6MegHssCR
+	X+QVOVYK5vQoQeK+x3rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwW5U-0000000AhVh-00nf;
-	Sun, 01 Mar 2026 01:59:16 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vwW7G-0000000AiYv-0jtr;
+	Sun, 01 Mar 2026 02:01:06 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwW5S-0000000AhUR-2aHH;
-	Sun, 01 Mar 2026 01:59:14 +0000
+	id 1vwW7D-0000000AiXV-3QAV;
+	Sun, 01 Mar 2026 02:01:05 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C031860141;
-	Sun,  1 Mar 2026 01:59:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B648CC19421;
-	Sun,  1 Mar 2026 01:59:12 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6F083438F8;
+	Sun,  1 Mar 2026 02:01:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75DA5C19421;
+	Sun,  1 Mar 2026 02:01:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772330353;
-	bh=WIiQ/sa2uMPuiI9RmHUWRzxFKt6TudvEFRLr3xCE33U=;
+	s=k20201202; t=1772330463;
+	bh=dyxHGjJI8DjxC6R5BVOEZ5pjv5AkreDImFcN1oum+pg=;
 	h=From:To:Cc:Subject:Date:From;
-	b=YTre0b0rDZumQQkxBniVr4JO4smOa+HBruZ8HT0qkZ3hkJwa9csvSF24lln+oW+XA
-	 ot6646b1vOgP4Y4TxKlLZepYsuy+NBYiKWMUIJ9x+SyHgK3o+1aMOpUSVZLvY3PlNR
-	 PQ6+Fm7x79+0aq6klAXUjoDDlCfSzDUdVE1pnhkp9jcQwyFlu4rmpNiFm9TT6NpNqt
-	 9RLAIsw9tfzSgJT83b5ylz/xAa84mK7et87LjkAcxkgt0/+S3gcnAxmB4c3QFbg2A9
-	 5DJgqxvnRtpocr3VP+lYNPsngOJc5iNJC/uM/q4+6UXISfeRUEIE5CPvCXoAsGecH5
-	 vvvmOL3dmMBhw==
+	b=frswDLhTPIIQlnudDHnWQXOc5M6P6/VXzxVLDKLtQZg/d/rHlMEvPKUQjZoc3F5zi
+	 AUwuHvPvMTF+yb54w8yNVyN5O0pqUQU9o86F2dOKyn4gjHEdU1Yyo8uiuowJmwidGw
+	 G+oEG/docMbdBihbv89K9x7WYnyrPrRMOncQx7yv2i9L9wXV1c67qn4rfw/nzk8wBV
+	 XoudCFi1SuOKqL7mmAWf2tQwnw832vpuVNECLwkTQYfW/RBqLRi8D5Mp2ceuc58s77
+	 bDo0+05TsTggc8Q6AC9dzBPe0f3YisMnqeRLLvrqNUGTAuB079T08N5wHDPMFSvjoh
+	 vgrgk80ahzUQA==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	cassel@kernel.org
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-pci@vger.kernel.org,
+	jerrysteve1101@gmail.com
+Cc: Peter Robinson <pbrobinson@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: FAILED: Patch "Revert "PCI: dw-rockchip: Don't wait for link since we can detect Link Up"" failed to apply to 5.10-stable tree
-Date: Sat, 28 Feb 2026 20:59:09 -0500
-Message-ID: <20260301015909.1724835-1-sashal@kernel.org>
+Subject: FAILED: Patch "arm64: dts: rockchip: Do not enable hdmi_sound node on Pinebook Pro" failed to apply to 5.10-stable tree
+Date: Sat, 28 Feb 2026 21:01:00 -0500
+Message-ID: <20260301020101.1728010-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260228_180103_866506_DA271986 
+X-CRM114-Status: GOOD (  13.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,75 +86,50 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From fc6298086bfacaa7003b0bd1da4e4f42b29f7d77 Mon Sep 17 00:00:00 2001
-From: Niklas Cassel <cassel@kernel.org>
-Date: Mon, 22 Dec 2025 07:42:08 +0100
-Subject: [PATCH] Revert "PCI: dw-rockchip: Don't wait for link since we can
- detect Link Up"
+From b18247f9dab735c9c2d63823d28edc9011e7a1ad Mon Sep 17 00:00:00 2001
+From: Jun Yan <jerrysteve1101@gmail.com>
+Date: Fri, 16 Jan 2026 23:12:53 +0800
+Subject: [PATCH] arm64: dts: rockchip: Do not enable hdmi_sound node on
+ Pinebook Pro
 
-This reverts commit ec9fd499b9c60a187ac8d6414c3c343c77d32e42.
+Remove the redundant enabling of the hdmi_sound node in the Pinebook Pro
+board dts file, because the HDMI output is unused on this device. [1][2]
 
-While this fake hotplugging was a nice idea, it has shown that this feature
-does not handle PCIe switches correctly:
-pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+This change also eliminates the following kernel log warning, which is
+caused by the unenabled dependent node of hdmi_sound that ultimately
+results in the node's probe failure:
 
-During the initial scan, PCI core doesn't see the switch and since the Root
-Port is not hot plug capable, the secondary bus number gets assigned as the
-subordinate bus number. This means, the PCI core assumes that only one bus
-will appear behind the Root Port since the Root Port is not hot plug
-capable.
+  platform hdmi-sound: deferred probe pending: asoc-simple-card: parse error
 
-This works perfectly fine for PCIe endpoints connected to the Root Port,
-since they don't extend the bus. However, if a PCIe switch is connected,
-then there is a problem when the downstream busses starts showing up and
-the PCI core doesn't extend the subordinate bus number and bridge resources
-after initial scan during boot.
+[1] https://files.pine64.org/doc/PinebookPro/pinebookpro_v2.1_mainboard_schematic.pdf
+[2] https://files.pine64.org/doc/PinebookPro/pinebookpro_schematic_v21a_20220419.pdf
 
-The long term plan is to migrate this driver to the upcoming pwrctrl APIs
-that are supposed to handle this problem elegantly.
-
-Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Manivannan Sadhasivam <mani@kernel.org>
-Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: stable@vger.kernel.org
-Link: https://patch.msgid.link/20251222064207.3246632-9-cassel@kernel.org
+Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
+Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+Reviewed-by: Peter Robinson <pbrobinson@gmail.com>
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+Link: https://patch.msgid.link/20260116151253.9223-1-jerrysteve1101@gmail.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 -
- 1 file changed, 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 8c1c922088023..ca808d8f79753 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -601,7 +601,6 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index eaaca08a76018..a6ac89567bafe 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -421,10 +421,6 @@ &gpu {
+ 	status = "okay";
+ };
  
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
--	pp->use_linkup_irq = true;
- 
- 	ret = dw_pcie_host_init(pp);
- 	if (ret) {
+-&hdmi_sound {
+-	status = "okay";
+-};
+-
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	i2c-scl-falling-time-ns = <4>;
 -- 
 2.51.0
 
