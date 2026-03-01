@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F404FD0049
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:40:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6ECDFD0045
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:40:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=UPxpJk/atrvbp9dGC1/48AoQKNHsRR2brq6nl4T6jnc=; b=E/FZj8rjCPiQbK
-	MypYCy7dhsLCtw7PrvHNZdTHiP8a6HIm6bMC8mWlhzgFAQ3LzLje9+FG4oCkzTAb+bKGIDiLMsLCi
-	M4KBFbCtUJvVOx2PyY7RmJCxy8WGtUO6KUkeeFn7ueX5d11HQDT3giibK4THKIpcvs8PTBtO1k+W0
-	JdOV3t9cqPS7tX+QZNgKVt6MADX8fOR8AVEal9+cfHWfxLzT88JoyAcG89Wxdunkgu0ngSbV1KCaK
-	bE+VaIYv5lbL2TtnfgQ0I75ebumfEnJMcyeJp4D6iD/Cm+npWuSMx2UsayCEkA2nDCvWTzgPTcllS
-	02RqeAYYOVvfUQKLtZIA==;
+	List-Owner; bh=o7Dq1jEAkNb3FWWGiYMJqeIlXC8ZN+tDPlnIDAnzEmg=; b=kb+ZErrg3zKemn
+	HuXDJEoay760pAsYpjvbHt3q/38STdr6haGsXoocnNBpPsWWnnQaBohyOHK8GWdQe1oa9HW8eK7An
+	NOtYocWRLFxiirX5x97FjQkrpOaNlxo6ROzE6taubhKZF4pfFM32p2wxp9hsPXHLm4VMzoJsH1lAf
+	/qfD0qku8AaRz4LroZUAqjWJMjPRyO7sng/boq6JGRuBCh+FfXOjn2wvoIfgKbQS10NHK3Zvqeptj
+	Oa78Gf4BQFVdOBC57Vpb81M5VWKMILxouzMPHKK2WEJuCEMw4jsVpiftcIxHwytEiVolV2npqhBpD
+	kA8LSjDkxnfpibzghrdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVnE-0000000AbZ1-0jOH;
-	Sun, 01 Mar 2026 01:40:24 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vwVnZ-0000000Absd-2pCx;
+	Sun, 01 Mar 2026 01:40:45 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVnC-0000000AbXJ-1PaB;
-	Sun, 01 Mar 2026 01:40:22 +0000
+	id 1vwVnR-0000000AblH-3iTk;
+	Sun, 01 Mar 2026 01:40:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AF39F6012A;
-	Sun,  1 Mar 2026 01:40:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A57E9C19424;
-	Sun,  1 Mar 2026 01:40:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7272540B63;
+	Sun,  1 Mar 2026 01:40:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6767EC19421;
+	Sun,  1 Mar 2026 01:40:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772329221;
-	bh=HOR70tu412dDpRqy858lbiCFaCJ6RxS/Co8VPlOdhf4=;
+	s=k20201202; t=1772329237;
+	bh=ecKpFc9fIy1HVQqhcdPxzC1oFWutX43fQsOkcNpoNYU=;
 	h=From:To:Cc:Subject:Date:From;
-	b=ZXDlx1V88itZpL6HJcPl56JMwV8gtT2IBvWc8JoqJIRcOYh5+Wlp+WOmFRXOBq770
-	 pGm2pVDqjitf/Q1BAFEdhNLUD6Pxk1PJMkNaNkkLypF6nX0ZPk7XE9qME1K3XDfN8n
-	 9FS7/qt9+IastN0Mbg33NscKnTxdrA/2c1HrOxl1Rcbs+fY55Org7v6ALQGZ+fszLr
-	 jqzWParZPW+g8+M2zhB/h3zwy5n/B1j5nwB2bBgCPrKYXYWlXZecOFKZDhI6negY9F
-	 in+bienldJw+ZRJBAdqTzxx2HIAs534wG7ZJaxhaUmG0e2m/p9Zc5yK2YXS3OM6V8y
-	 AcJAjK/9FDv/w==
+	b=uEP1y9p3hwUsLaJtOgJG2xD40ak2FwekfIlUbsOmbrTywu+zYKXkyjD4ze9yUEK2M
+	 fthgj/NK9bHwwP/O/1pA5DT3YIEASxf/a5Qj8TmrQTfsnY0C6fP0CukZGED0e2fF/q
+	 ERYDmGDQ0wCtBImvmjxhzKytyK9YAbgXpOHeUa/UKZlBaDG2TNE1LVV5P3CE8K9MH9
+	 zQRskYB1A1H8azLb+BfVn9Hm8QHnYlEUu0HnwOuMIJsnEmDkCh8MLXe0hr36OCh+GH
+	 dnmqOYlGfLuKKtl1YowlMsiPc8Ck4AcPxRuerpYmv+H2VS6wK91jY2m4/6ZmxLBUsd
+	 B8IwQyYRTLSyA==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	cassel@kernel.org
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	linux-pci@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: FAILED: Patch "Revert "PCI: dw-rockchip: Don't wait for link since we can detect Link Up"" failed to apply to 6.1-stable tree
-Date: Sat, 28 Feb 2026 20:40:19 -0500
-Message-ID: <20260301014019.1701545-1-sashal@kernel.org>
+	ming.qian@oss.nxp.com
+Cc: Frank Li <Frank.Li@nxp.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org
+Subject: FAILED: Patch "media: verisilicon: Avoid G2 bus error while decoding H.264 and HEVC" failed to apply to 6.1-stable tree
+Date: Sat, 28 Feb 2026 20:40:34 -0500
+Message-ID: <20260301014035.1701848-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260228_174037_976972_E109299E 
+X-CRM114-Status: GOOD (  19.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,75 +87,172 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From fc6298086bfacaa7003b0bd1da4e4f42b29f7d77 Mon Sep 17 00:00:00 2001
-From: Niklas Cassel <cassel@kernel.org>
-Date: Mon, 22 Dec 2025 07:42:08 +0100
-Subject: [PATCH] Revert "PCI: dw-rockchip: Don't wait for link since we can
- detect Link Up"
+From e0203ddf9af7c8e170e1e99ce83b4dc07f0cd765 Mon Sep 17 00:00:00 2001
+From: Ming Qian <ming.qian@oss.nxp.com>
+Date: Fri, 5 Dec 2025 09:54:26 +0800
+Subject: [PATCH] media: verisilicon: Avoid G2 bus error while decoding H.264
+ and HEVC
 
-This reverts commit ec9fd499b9c60a187ac8d6414c3c343c77d32e42.
+For the i.MX8MQ platform, there is a hardware limitation: the g1 VPU and
+g2 VPU cannot decode simultaneously; otherwise, it will cause below bus
+error and produce corrupted pictures, even potentially lead to system hang.
 
-While this fake hotplugging was a nice idea, it has shown that this feature
-does not handle PCIe switches correctly:
-pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
-pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
-pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
-pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
-pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
-pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
-pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
-pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
-pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
-pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
-pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
-pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
-pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+[  110.527986] hantro-vpu 38310000.video-codec: frame decode timed out.
+[  110.583517] hantro-vpu 38310000.video-codec: bus error detected.
 
-During the initial scan, PCI core doesn't see the switch and since the Root
-Port is not hot plug capable, the secondary bus number gets assigned as the
-subordinate bus number. This means, the PCI core assumes that only one bus
-will appear behind the Root Port since the Root Port is not hot plug
-capable.
+Therefore, it is necessary to ensure that g1 and g2 operate alternately.
+This allows for successful multi-instance decoding of H.264 and HEVC.
 
-This works perfectly fine for PCIe endpoints connected to the Root Port,
-since they don't extend the bus. However, if a PCIe switch is connected,
-then there is a problem when the downstream busses starts showing up and
-the PCI core doesn't extend the subordinate bus number and bridge resources
-after initial scan during boot.
+To achieve this, g1 and g2 share the same v4l2_m2m_dev, and then the
+v4l2_m2m_dev can handle the scheduling.
 
-The long term plan is to migrate this driver to the upcoming pwrctrl APIs
-that are supposed to handle this problem elegantly.
-
-Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
-Signed-off-by: Niklas Cassel <cassel@kernel.org>
-Signed-off-by: Manivannan Sadhasivam <mani@kernel.org>
-Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
-Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
+Fixes: cb5dd5a0fa518 ("media: hantro: Introduce G2/HEVC decoder")
 Cc: stable@vger.kernel.org
-Link: https://patch.msgid.link/20251222064207.3246632-9-cassel@kernel.org
+Signed-off-by: Ming Qian <ming.qian@oss.nxp.com>
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Co-developed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 ---
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/media/platform/verisilicon/hantro.h   |  2 +
+ .../media/platform/verisilicon/hantro_drv.c   | 42 +++++++++++++++++--
+ .../media/platform/verisilicon/imx8m_vpu_hw.c |  8 ++++
+ 3 files changed, 49 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-index 8c1c922088023..ca808d8f79753 100644
---- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-+++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
-@@ -601,7 +601,6 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
+index e0fdc4535b2d7..0353de154a1ec 100644
+--- a/drivers/media/platform/verisilicon/hantro.h
++++ b/drivers/media/platform/verisilicon/hantro.h
+@@ -77,6 +77,7 @@ struct hantro_irq {
+  * @double_buffer:		core needs double buffering
+  * @legacy_regs:		core uses legacy register set
+  * @late_postproc:		postproc must be set up at the end of the job
++ * @shared_devices:		an array of device ids that cannot run concurrently
+  */
+ struct hantro_variant {
+ 	unsigned int enc_offset;
+@@ -101,6 +102,7 @@ struct hantro_variant {
+ 	unsigned int double_buffer : 1;
+ 	unsigned int legacy_regs : 1;
+ 	unsigned int late_postproc : 1;
++	const struct of_device_id *shared_devices;
+ };
  
- 	pp = &rockchip->pci.pp;
- 	pp->ops = &rockchip_pcie_host_ops;
--	pp->use_linkup_irq = true;
+ /**
+diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
+index 60b95b5d8565f..94f58f4e4a4e5 100644
+--- a/drivers/media/platform/verisilicon/hantro_drv.c
++++ b/drivers/media/platform/verisilicon/hantro_drv.c
+@@ -13,6 +13,7 @@
+ #include <linux/clk.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
++#include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm.h>
+ #include <linux/pm_runtime.h>
+@@ -1035,6 +1036,41 @@ static int hantro_disable_multicore(struct hantro_dev *vpu)
+ 	return 0;
+ }
  
- 	ret = dw_pcie_host_init(pp);
- 	if (ret) {
++static struct v4l2_m2m_dev *hantro_get_v4l2_m2m_dev(struct hantro_dev *vpu)
++{
++	struct device_node *node;
++	struct hantro_dev *shared_vpu;
++
++	if (!vpu->variant || !vpu->variant->shared_devices)
++		goto init_new_m2m_dev;
++
++	for_each_matching_node(node, vpu->variant->shared_devices) {
++		struct platform_device *pdev;
++		struct v4l2_m2m_dev *m2m_dev;
++
++		pdev = of_find_device_by_node(node);
++		if (!pdev)
++			continue;
++
++		shared_vpu = platform_get_drvdata(pdev);
++		if (IS_ERR_OR_NULL(shared_vpu) || shared_vpu == vpu) {
++			platform_device_put(pdev);
++			continue;
++		}
++
++		v4l2_m2m_get(shared_vpu->m2m_dev);
++		m2m_dev = shared_vpu->m2m_dev;
++		platform_device_put(pdev);
++
++		of_node_put(node);
++
++		return m2m_dev;
++	}
++
++init_new_m2m_dev:
++	return v4l2_m2m_init(&vpu_m2m_ops);
++}
++
+ static int hantro_probe(struct platform_device *pdev)
+ {
+ 	const struct of_device_id *match;
+@@ -1186,7 +1222,7 @@ static int hantro_probe(struct platform_device *pdev)
+ 	}
+ 	platform_set_drvdata(pdev, vpu);
+ 
+-	vpu->m2m_dev = v4l2_m2m_init(&vpu_m2m_ops);
++	vpu->m2m_dev = hantro_get_v4l2_m2m_dev(vpu);
+ 	if (IS_ERR(vpu->m2m_dev)) {
+ 		v4l2_err(&vpu->v4l2_dev, "Failed to init mem2mem device\n");
+ 		ret = PTR_ERR(vpu->m2m_dev);
+@@ -1225,7 +1261,7 @@ static int hantro_probe(struct platform_device *pdev)
+ 	hantro_remove_enc_func(vpu);
+ err_m2m_rel:
+ 	media_device_cleanup(&vpu->mdev);
+-	v4l2_m2m_release(vpu->m2m_dev);
++	v4l2_m2m_put(vpu->m2m_dev);
+ err_v4l2_unreg:
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ err_clk_unprepare:
+@@ -1248,7 +1284,7 @@ static void hantro_remove(struct platform_device *pdev)
+ 	hantro_remove_dec_func(vpu);
+ 	hantro_remove_enc_func(vpu);
+ 	media_device_cleanup(&vpu->mdev);
+-	v4l2_m2m_release(vpu->m2m_dev);
++	v4l2_m2m_put(vpu->m2m_dev);
+ 	v4l2_device_unregister(&vpu->v4l2_dev);
+ 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
+ 	reset_control_assert(vpu->resets);
+diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+index 5be0e2e76882f..6f8e43b7f1575 100644
+--- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
++++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
+@@ -343,6 +343,12 @@ const struct hantro_variant imx8mq_vpu_variant = {
+ 	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
+ };
+ 
++static const struct of_device_id imx8mq_vpu_shared_resources[] __initconst = {
++	{ .compatible = "nxp,imx8mq-vpu-g1", },
++	{ .compatible = "nxp,imx8mq-vpu-g2", },
++	{ /* sentinel */ }
++};
++
+ const struct hantro_variant imx8mq_vpu_g1_variant = {
+ 	.dec_fmts = imx8m_vpu_dec_fmts,
+ 	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
+@@ -356,6 +362,7 @@ const struct hantro_variant imx8mq_vpu_g1_variant = {
+ 	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
+ 	.clk_names = imx8mq_g1_clk_names,
+ 	.num_clocks = ARRAY_SIZE(imx8mq_g1_clk_names),
++	.shared_devices = imx8mq_vpu_shared_resources,
+ };
+ 
+ const struct hantro_variant imx8mq_vpu_g2_variant = {
+@@ -371,6 +378,7 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
+ 	.num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
+ 	.clk_names = imx8mq_g2_clk_names,
+ 	.num_clocks = ARRAY_SIZE(imx8mq_g2_clk_names),
++	.shared_devices = imx8mq_vpu_shared_resources,
+ };
+ 
+ const struct hantro_variant imx8mm_vpu_g1_variant = {
 -- 
 2.51.0
 
