@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC2B5FD006D
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 16:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7ECD8FD006D
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 16:56:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rV+sZ3vmRzIWPah8eNLr+WPCeiUKIvnD5y38qxveUn0=; b=B3PUKFAXdiHrgY
-	TuXIhU2UwN4ph8xsWAJ5ePl/8oawVqb+qVA5bephPSgunbnbR5K93T68Ivatl6liYivNvS/ancWEr
-	+J+Qf21nx70o5dxBbH0CJ9IZZCYtNbacYVkCJtTV08cQhJ2glNZfGxESipY69RUWIT8ogZWOcJgZM
-	2a9W9hjC0Xv6XZX8vKYC7B4PPmOcbnKrlCULB1R0Zog698dDxOoQWPuL3Njtw4KehdaVEN8znOjt0
-	BTZTDH4LXq6y2vCvz2iFcQYVuqfrvbWbjuYPYjONbfcuzYEKSah2aZUyXeU3gRg5NUOuS05zN4k4v
-	XQCn0hxX9eJ/Ex70570A==;
+	List-Owner; bh=mt1kmlsBYISNoCkvaeewyAp6MkYhRHyh+HhsbnB2qTs=; b=laZGV9bgFbMGiy
+	tt5ckZ3NHkWPh9nHlDhFnG72DPa5HK2+avCHo4l4NiC67ItsCKlUSXaqdQLflXx8/oJJr9DKRyUzM
+	G4d15HsUEdDBhsq8ZtERBx2LpjA3tiZibmE27hn8Cw9D5YAx40mZEubR40Xdgqz+saN3K+JjmwhUL
+	TvLHR3icnbpXWHKqgKkh6tlIQlc70WGN3ymwBQZnaRWdML16TrwKnanThVu0uh5pZCxX5jr1o5Gt1
+	ZDGxmhFly0QAJiFATWGv6+RCs41/OvhR5OXUsAGKlR1c1zr6U1Jni3PUq2ZWUEAkHFSej5yd/+sba
+	yIPS7Tug/HtZIIfgN2+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwk5Z-0000000BgiO-3CmI;
-	Sun, 01 Mar 2026 16:56:17 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1vwk64-0000000Bgst-04Ae;
+	Sun, 01 Mar 2026 16:56:48 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwk5W-0000000BghO-0agB
+	id 1vwk61-0000000BgrE-1E9M
 	for linux-rockchip@lists.infradead.org;
-	Sun, 01 Mar 2026 16:56:15 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6217jVnl511531
-	for <linux-rockchip@lists.infradead.org>; Sun, 1 Mar 2026 16:56:13 GMT
+	Sun, 01 Mar 2026 16:56:46 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6214lolK298796
+	for <linux-rockchip@lists.infradead.org>; Sun, 1 Mar 2026 16:56:45 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=bK9Rayioe0UgWRcACzhZoK7I
-	9TYxOeFDSz/Gu0Nylic=; b=mBjnrffDDHvSCmAVgxFFuKtFmYIuk6135iS7R1sa
-	d62AmumryokGk1gEDgvyDte2rkIz16lW88SVM+gS11Q4Q969cpNiKFz/FanyPAFJ
-	ygPSXB4j3xoNMHKwnKlwL58ywMYPOFYmC253/4AgwN277sOnSw+ZaUwf0As4P5q/
-	6cuGmkwIJMWnEumD8+ERFq+iS9AoA8bKJlnnFgLWJx9AfCwdBQrJHRP914lCmpPj
-	J+MJCp0F8rdxZwoISkLcapOSOcjA4PONIlMFUAwG8humnOhcl6ADnctIzHZLVE5C
-	QNv4ikVgM1coU7Ge7vQ2V/bjPT597E+erkxI3g9XSzHvOw==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cksg72wrv-1
+	:references:subject:to; s=qcppdkim1; bh=eOVsPPjRSHguluqilN+Kykf3
+	N9M3bR0DVUL4ZH0XYBg=; b=g7bYISNYlH4zm8Xc8NmJw+M0K5jMvJ5cjPbQXgbm
+	bGMeZQy7zp6MKJDjrHG1fpDIjml8NhjImDmfW+kEkNkuk8P3xFLHN90IqHo373cM
+	RW5Ndm3pzApXW5silQHbujFxwqjOsi7o42PFypVLnjOlH32AAIGkMYcU1z4FAhXh
+	n9bbyOltX81FKyM+Ec7S4fznCBe/RqQqafp0KNFl6kNigll5bQBsL0XwZxmm1AH7
+	5OYkZGlfPKuqgshdIAdW+rO0jDOUncXt3YNu1bSO5WZY4Kl1DWo/wmKwpwLodB6R
+	uuIKygv9NTamdvEIi7PH5LbqSED44L5RgmBIIQyUW0La4A==
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com [209.85.222.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cksgq318q-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 16:56:12 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-8c70b6a5821so2658642785a.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 08:56:12 -0800 (PST)
+	for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 16:56:44 +0000 (GMT)
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8c70ef98116so3603643185a.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 01 Mar 2026 08:56:44 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1772384172; x=1772988972; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1772384204; x=1772989004; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=bK9Rayioe0UgWRcACzhZoK7I9TYxOeFDSz/Gu0Nylic=;
-        b=NrrJZtJLv+qMiIq6Qnl6yb4iHXUS3+PTDy1UC+KO5RLlzMe0ANBf9ha85wOFUH/D/I
-         MyX9xyqaJbdbw/oiO5Ckvet1WMguvIOASJBE4oPG3RJwRQL8S1SjA9XhWEWUc9oiZugl
-         oH9VSFxuK66lejbGyXN4xPaazLKwD1PiB2sYSmF2sYPgb40bRQ2W6J89evWxGqs1hbyT
-         ZngZZplyzZW/TDYhCGtc4+IOT+y0nX+/SSn6iREJ4kQeb/10vdpQk/ffH4BypC/2zthO
-         y/11/iUWV7r/7h9yyu0kdT88fKtQVV6+NALwv4Q0gDBoBi97kR9tNJygdILqJkiwOzMl
-         dpJw==
+        bh=eOVsPPjRSHguluqilN+Kykf3N9M3bR0DVUL4ZH0XYBg=;
+        b=IN/XpQgjDNBZe1Zfnsezh5GeJn7PY9fwiYraSIv+5GhcETK7r6yeMeJ1tbExi3pCLr
+         YCLNXjsZDblq0a38vztj/TIDspKFFQRcvXQkSTBO1fBDKIcdHiNRshwaTT9NnXs/GKqa
+         83FqjYlzgYrzQ+ek1kagm8hVvPM7sUiHtAxzInP9KEehH5hKZxDBrKofnnos5CGGJR4J
+         brPWTRKQMwMPJMqG7sb2dqCuQzTAioRo6oJKkg6UOmq3EFw9xBj5CTAnx6dO3zn94jQI
+         /s8L0igEZK/SuJKYIFyCCd87hCj/sj0j6nqxraQlp6lcV+49JsgnfiBLiiCrXyFATv2/
+         iBZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772384172; x=1772988972;
+        d=1e100.net; s=20230601; t=1772384204; x=1772989004;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=bK9Rayioe0UgWRcACzhZoK7I9TYxOeFDSz/Gu0Nylic=;
-        b=bSNGZpq+rTuzjR8WJrEA/3ohOBq/ud0+xkZu6rJ9VK2tB1gKwHeHVuswMl+ZUSCf3R
-         mGyRaAc7zg2JXKKITrTL5aUT9sgeaVVFEr9Ucxhl6SgTGQNP1fSx41aOvzsokcek43BY
-         MIgdpDu+ppZzo3Ih2S8E53aLIL9bZFYtVPLe5uo2yUxe0O7trc4wmzkEjuxKRp2nOVEb
-         KfmKL+1XvJEBBSr1n0j8RVBKcQvJ5rwo2Wai1bBGmXZCdC4b6K/9/LQq1T4YFdy+Fk0y
-         Y/vcQWtK0Ql2GDT134Y8zLORU0YtKBCzMKuUBwbEq59YkSwdtDa5N4y2UmtR5kUV14Vc
-         pP1g==
-X-Forwarded-Encrypted: i=1; AJvYcCULEEor9AiSsaHlsWbZ2lGT3IPfxRA8mBDjE9fQ5sSanjWI1wgJ5IOaWbSDtHpO6r8vFDvD+y1h1kdG0aS28g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz19Pk0AgQgQSNxaYo9SfmJslBSDVxLD5JmOf/y8JgF3OWpf25S
-	mpHIJqiOhM12XPHdGDMNRf50Y+3wCFX+Vk5S/UEo9nC/bUP1VfVhp6LOhn24apP1GCqsY7VQYPT
-	bCAnGd7As6Bl2Sovd9/owiXnf8oQaWKNkAanDp0H426ULHS+R7oNVv45CxUD5L7grNrjVzJBysr
-	w=
-X-Gm-Gg: ATEYQzyr/tmKf3fXQLdmnzXuFs9kzbtshj9ZBLtRSnaToYkSAJMYoeB/Ymf/lr18g+c
-	dUxOB6REJ5IBO0d0eJ7nxknXLsS/lg2jwAkJcvLSy0diaVELFzFBn7Rz4M3nntTn/TAJsrS9gfH
-	CxwCXbIGxqWz/LlBWQbYLen7vCBdMhENNfXz6qyqHY2NyJip7hyJDy+Qa5Me+d8XigJ9jCjg+4T
-	M0r+cKkg8vaYQGvZuC2D3B8bNR6iE4/OsEmyiumP7Oku83fmVCSg6bQhN54ETu6b2j6ATROx0+u
-	0foyyRi+vxsNrzzDAniTwOsiMffGVxjav4+IU+ZjCDFaY6Dba7oeEgvmfzoS3vbRC1xhs+SAMOi
-	ycR6UCzQb/mOdubH6qhu2ogzn3BcNGgyC4NDXcOEPvXJVpznOIP2pxvw2wEv9CcQW5zXl+JAvvz
-	dw6rWcnQRydpTXms3yuHXe1Hc1yktW3QFPaGM=
-X-Received: by 2002:a05:620a:28c2:b0:8ca:3c67:890f with SMTP id af79cd13be357-8cbc8e1b535mr1288642985a.76.1772384172049;
-        Sun, 01 Mar 2026 08:56:12 -0800 (PST)
-X-Received: by 2002:a05:620a:28c2:b0:8ca:3c67:890f with SMTP id af79cd13be357-8cbc8e1b535mr1288637485a.76.1772384171446;
-        Sun, 01 Mar 2026 08:56:11 -0800 (PST)
+        bh=eOVsPPjRSHguluqilN+Kykf3N9M3bR0DVUL4ZH0XYBg=;
+        b=pL/0+CT9BYMk7sYmTiLLhfLzc7zyQEl4yqlUp+G2ucmO33eujLEw9+9gazPeZSh7OG
+         /xYzRiCA7ieOtAdzC+vlvA8pVie5xos21+ThnCYnaPEWfvW0hbZIW3D8NZCGjzZZF9R9
+         s/HQmkKoIzNZDOcRuKXAOti7sj2e4L4ZqLmtqNYKcruM9wCVhxQs+V+OqemZEjRnppqJ
+         JU5hkU79pqELRFggOoNQ8sNrvh8EhBVJz6lt3xXfeBWeN3+4U9696+e2gA1XJjqptt71
+         K34uWlrXhyNrdGIrr46EPZ2tvZHR57dNjxfdmXqwlQYVCebc6L+8//3umrQBOq863HIR
+         a9bA==
+X-Forwarded-Encrypted: i=1; AJvYcCUelvg4FZrYLLr16lDbvg3RWI9vDjoxGMjReEK+hovoIX1EqN2ZyxO9xyAxVYLzQ/hgwT40soKrK5mYHugk9Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz3yNWiK5jfYGIpSKP1QRLqk/GjvucKV0EfzmGERoXX9egn8GVJ
+	4yHWl+YEQ6+l54WJFaaNVygdPtJ080W1Qfp4ZlW0/cxYSfO2nmqV1YJ0voVDonnsuU8D12vj+gP
+	cynFNkHvCK2kcGWD+qGui5Q+txlXvnAC9y3c5yWQgGfKzLOrpbVuwvKAJnQ28ZOMPxRJVjwtb39
+	k=
+X-Gm-Gg: ATEYQzyX2jBXIMfck1nJh3gxRvf5/rvetXMsb3Ew7jPvBOiBC1uWIds/wG5vsVZykEv
+	DJfW/a0s1+YXIf270U+EUR8B++zDvEK1kV/izXCvr22M/W38zll6mTqWvCSQ46rcir7cPEGHrMg
+	dDUC+tdtSApheS3hiJrbvz/NP0alglvFGIxZ4U/VsYuew9/AyzZ94rgDTVlXEGa51hvCar0+ni5
+	c2N+29wrXD2WT+0z0Og/UQSHafUJve8rInNyR17YYQ0MujsNXyrR0ygX1fFh/T5KM3XL4pROi2t
+	z79B4YSCqmV0rH/7ZLEwY8gemdecYXuINASqQvPRvbzyXeStX1IwTjiwZxoMENTtYdSRWYksoVA
+	wXj5JtkjibOZIwYX/epgL+yhLJ6nfehnSruRMCd+UpSfy9RiBS3Nw2IslK6SWDv4UbDNqdeC7y9
+	uJgj2Fd9H4i6LDbZZ/ewTfppPscaJ4Hoy1ldE=
+X-Received: by 2002:a05:620a:40c5:b0:8cb:1c3a:90d6 with SMTP id af79cd13be357-8cbc8d6719cmr1207726885a.7.1772384203884;
+        Sun, 01 Mar 2026 08:56:43 -0800 (PST)
+X-Received: by 2002:a05:620a:40c5:b0:8cb:1c3a:90d6 with SMTP id af79cd13be357-8cbc8d6719cmr1207721785a.7.1772384203394;
+        Sun, 01 Mar 2026 08:56:43 -0800 (PST)
 Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a116022215sm1093411e87.52.2026.03.01.08.56.10
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a115bd9996sm1161185e87.2.2026.03.01.08.56.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Mar 2026 08:56:10 -0800 (PST)
-Date: Sun, 1 Mar 2026 18:56:08 +0200
+        Sun, 01 Mar 2026 08:56:42 -0800 (PST)
+Date: Sun, 1 Mar 2026 18:56:41 +0200
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
@@ -120,41 +120,42 @@ Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
         linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
         linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
         intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v9 03/19] drm/bridge: Act on the DRM color format property
-Message-ID: <unfsi4t4t4wl74zudkq3oeiryvm2xgyiplugcaxhyvjmtn7s2l@72xhl5vrtyt3>
+Subject: Re: [PATCH v9 04/19] drm/display: hdmi-state-helper: Act on color
+ format DRM property
+Message-ID: <ylcczadyx5ovc7lbb57ehux62x6zbawf2k2pd23ymkp2meaqci@fvrf5gserw7j>
 References: <20260227-color-format-v9-0-658c3b9db7ef@collabora.com>
- <20260227-color-format-v9-3-658c3b9db7ef@collabora.com>
+ <20260227-color-format-v9-4-658c3b9db7ef@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260227-color-format-v9-3-658c3b9db7ef@collabora.com>
-X-Proofpoint-ORIG-GUID: wwnW1LLMSppz5QX3mO9eVD-pgMxpPLf0
-X-Proofpoint-GUID: wwnW1LLMSppz5QX3mO9eVD-pgMxpPLf0
-X-Authority-Analysis: v=2.4 cv=FaA6BZ+6 c=1 sm=1 tr=0 ts=69a46fac cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+In-Reply-To: <20260227-color-format-v9-4-658c3b9db7ef@collabora.com>
+X-Proofpoint-GUID: M0J7qdvqEvIX3rLeMmq9jFOwwtI4DRr4
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAxMDE1NSBTYWx0ZWRfXxyvP661EJ6Nu
+ AEAfVZJOVGHSiIdO8dBF/OhkmD38q8SEoPksEUB+8CAAtsm56ZD/ptCjpq4NrNfwrMFVmvpgd+F
+ jMgtGFpSokE2xetPFSO7XXbhaXysP9y5CuqEiGPPcuJ/4juXkbHoBZiTobjoXJR98OjsTXi7WoO
+ XpcbTvet4st2w6mciwpyoFjSbZqI/AxADFI0TQFMQxAMgJUiIZGbn43e+YzQKaQNqSbvJOSbdMR
+ Itc46HIuByUCaCK1uonctQ7X1EHycQLiJnGY5Z0LaEbJmidzvq2h0NvSSqbKx0/0UGlIHx14DmY
+ HN8VOO9duVZQSx+MS1fGs/q2MM2OdBF8Xdg45WBmWgOYD5nDRsjIL+5ilsGql762/VG2t+t14ix
+ QMcvYqFeY1ROsDUtqW8nk5dGskxe51wazm1jynPwuxYg6/3a1EgQOjFeDBoV/MvC2I3eNYoEGfx
+ SNUTboTWrez4ujiB/6g==
+X-Authority-Analysis: v=2.4 cv=bdRmkePB c=1 sm=1 tr=0 ts=69a46fcc cx=c_pps
+ a=50t2pK5VMbmlHzFWWp8p/g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
  a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22 a=QX4gbG5DAAAA:8
- a=yKAVQKaA_AwziBLyn1oA:9 a=CjuIK1q_8ugA:10 a=PEH46H7Ffwr30OY-TuGO:22
- a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzAxMDE1NSBTYWx0ZWRfX3UHDGGXxXKGD
- cKV1JtKi4Y60i5Hc8CDtOiC1zYdEOVz7HbuYcRtd/jGXV3uJ/oAUIbhKy6xhtXJkIJNk0gD2HQX
- 6r9qcZCooj6d314MHYB6/1c7WtCrdcHXX2NgxxUy/rQ3jjf7Cc+4fJHHWMDTOLe0pB33dPpapaN
- MMnvw7eUsfn66oIhTAjKF00CpUQkb6LSERII3TDmCPopvv0zf7mYZOKuDBC5OxBg2Hyqt6cD7py
- oaesg1Gi+7u0uR5bQtLbqnn6ClvzvfjSrry3ahT5nkrIhweyHWyE5TvljpP6ju7NXGTFhwwpYxc
- ezfolCiWX/dcUXwyzqGzPMaQMIl+ml8MdThvNvkXCa9uVZXkA4vs2YDmW9Qr9Ue+rXyyovd+4Fl
- zB/L7gD3ozBmxn0m6d1c63ZKK9Evv+DjJPsma6RvTpCSmRAOo8S8flkx7CwFsnGrGzvnOTn1/uY
- /bd92EltvvvG9i3vPtA==
+ a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22 a=QX4gbG5DAAAA:8
+ a=EUspDBNiAAAA:8 a=RMrH-QTV4azj2PXgkmEA:9 a=CjuIK1q_8ugA:10 a=ZXulRonScM0A:10
+ a=IoWCM6iH3mJn3m4BftBB:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-ORIG-GUID: M0J7qdvqEvIX3rLeMmq9jFOwwtI4DRr4
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-01_03,2026-02-27_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1015 phishscore=0 lowpriorityscore=0
- priorityscore=1501 spamscore=0 bulkscore=0 adultscore=0 malwarescore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ lowpriorityscore=0 bulkscore=0 priorityscore=1501 clxscore=1015
+ malwarescore=0 impostorscore=0 suspectscore=0 adultscore=0 spamscore=0
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2602130000
  definitions=main-2603010155
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260301_085614_293592_963D2DD0 
-X-CRM114-Status: GOOD (  34.67  )
+X-CRM114-CacheID: sfid-20260301_085645_366299_0BBA3AB7 
+X-CRM114-Status: GOOD (  17.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,158 +172,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Feb 27, 2026 at 08:20:08PM +0100, Nicolas Frattaroli wrote:
-> The new DRM color format property allows userspace to request a specific
-> color format on a connector. In turn, this fills the connector state's
-> color_format member to switch color formats.
+On Fri, Feb 27, 2026 at 08:20:09PM +0100, Nicolas Frattaroli wrote:
+> With the introduction of the "color format" DRM property, which allows
+> userspace to request a specific color format, the HDMI state helper
+> should implement this.
 > 
-> Make drm_bridges consider the color_format set in the connector state
-> during the atomic bridge check. For bridges that represent HDMI bridges,
-> rely on whatever format the HDMI logic set. Reject any output bus
-> formats that do not correspond to the requested color format.
-> 
-> Non-HDMI last bridges with DRM_CONNECTOR_COLOR_FORMAT_AUTO set will end
-> up choosing the first output format that functions to make a whole
-> recursive bridge chain format selection succeed.
+> Implement it by translating the requested drm_connector_color_format to
+> a drm_output_color_format enum value as per the logic HDMI should use
+> for this: Auto is translated to RGB, and a fallback to YUV420 is only
+> performed if the original color format was auto.
 > 
 > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 > ---
->  drivers/gpu/drm/drm_bridge.c | 89 +++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 88 insertions(+), 1 deletion(-)
+>  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 28 +++++++++++++++++++++++--
+>  1 file changed, 26 insertions(+), 2 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-> index 6d8947419940..5938fba0a983 100644
-> --- a/drivers/gpu/drm/drm_bridge.c
-> +++ b/drivers/gpu/drm/drm_bridge.c
-> @@ -1117,6 +1117,47 @@ static int select_bus_fmt_recursive(struct drm_bridge *first_bridge,
->  	return ret;
->  }
->  
-> +static bool __pure bus_format_is_color_fmt(u32 bus_fmt, enum drm_connector_color_format fmt)
-> +{
-> +	if (fmt == DRM_CONNECTOR_COLOR_FORMAT_AUTO)
-> +		return true;
-> +
-> +	switch (bus_fmt) {
-> +	case MEDIA_BUS_FMT_FIXED:
-> +		return true;
-> +	case MEDIA_BUS_FMT_RGB888_1X24:
-> +	case MEDIA_BUS_FMT_RGB101010_1X30:
-> +	case MEDIA_BUS_FMT_RGB121212_1X36:
-> +	case MEDIA_BUS_FMT_RGB161616_1X48:
-> +		return fmt == DRM_CONNECTOR_COLOR_FORMAT_RGB444;
-> +	case MEDIA_BUS_FMT_YUV8_1X24:
-> +	case MEDIA_BUS_FMT_YUV10_1X30:
-> +	case MEDIA_BUS_FMT_YUV12_1X36:
-> +	case MEDIA_BUS_FMT_YUV16_1X48:
-> +		return fmt == DRM_CONNECTOR_COLOR_FORMAT_YCBCR444;
-> +	case MEDIA_BUS_FMT_UYVY8_1X16:
-> +	case MEDIA_BUS_FMT_VYUY8_1X16:
-> +	case MEDIA_BUS_FMT_YUYV8_1X16:
-> +	case MEDIA_BUS_FMT_YVYU8_1X16:
-> +	case MEDIA_BUS_FMT_UYVY10_1X20:
-> +	case MEDIA_BUS_FMT_YUYV10_1X20:
-> +	case MEDIA_BUS_FMT_VYUY10_1X20:
-> +	case MEDIA_BUS_FMT_YVYU10_1X20:
-> +	case MEDIA_BUS_FMT_UYVY12_1X24:
-> +	case MEDIA_BUS_FMT_VYUY12_1X24:
-> +	case MEDIA_BUS_FMT_YUYV12_1X24:
-> +	case MEDIA_BUS_FMT_YVYU12_1X24:
-> +		return fmt == DRM_CONNECTOR_COLOR_FORMAT_YCBCR422;
-> +	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-> +	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
-> +	case MEDIA_BUS_FMT_UYYVYY12_0_5X36:
-> +	case MEDIA_BUS_FMT_UYYVYY16_0_5X48:
-> +		return fmt == DRM_CONNECTOR_COLOR_FORMAT_YCBCR420;
-> +	default:
-> +		return false;
-> +	}
-> +}
-> +
->  /*
->   * This function is called by &drm_atomic_bridge_chain_check() just before
->   * calling &drm_bridge_funcs.atomic_check() on all elements of the chain.
-> @@ -1160,6 +1201,7 @@ drm_atomic_bridge_chain_select_bus_fmts(struct drm_bridge *bridge,
->  	struct drm_encoder *encoder = bridge->encoder;
->  	struct drm_bridge_state *last_bridge_state;
->  	unsigned int i, num_out_bus_fmts = 0;
-> +	enum drm_connector_color_format fmt;
->  	u32 *out_bus_fmts;
->  	int ret = 0;
->  
-> @@ -1201,13 +1243,58 @@ drm_atomic_bridge_chain_select_bus_fmts(struct drm_bridge *bridge,
->  			out_bus_fmts[0] = MEDIA_BUS_FMT_FIXED;
->  	}
->  
-> +	/*
-> +	 * On HDMI connectors, use the output format chosen by whatever does the
-> +	 * HDMI logic. For everyone else, just trust that the bridge out_bus_fmts
-> +	 * are sorted by preference for %DRM_CONNECTOR_COLOR_FORMAT_AUTO, as
-> +	 * bus_format_is_color_fmt() always returns true for AUTO.
-> +	 */
-> +	if (last_bridge->ops & DRM_BRIDGE_OP_HDMI) {
 
-This will break the logic if there is anything after the HDMI bridge.
-For example, if the board has hdmi-connector (yep, it's a bridge without
-DRM_BRIDGE_OP_HDMI, because HDMI connectors don't implement any of the
-HDMI functionality), then the function will go to the second clause.
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 
-This probably needs to be moved to drm_bridge_connector. There is is
-natural to check for bridge_connector->bridge_hdmi.
-
-> +		drm_dbg_kms(last_bridge->dev,
-> +			    "HDMI bridge requests format %s\n",
-> +			    drm_hdmi_connector_get_output_format_name(
-> +				    conn_state->hdmi.output_format));
-> +		switch (conn_state->hdmi.output_format) {
-> +		case DRM_OUTPUT_COLOR_FORMAT_RGB444:
-> +			fmt = DRM_CONNECTOR_COLOR_FORMAT_RGB444;
-> +			break;
-> +		case DRM_OUTPUT_COLOR_FORMAT_YCBCR444:
-> +			fmt = DRM_CONNECTOR_COLOR_FORMAT_YCBCR444;
-> +			break;
-> +		case DRM_OUTPUT_COLOR_FORMAT_YCBCR422:
-> +			fmt = DRM_CONNECTOR_COLOR_FORMAT_YCBCR422;
-> +			break;
-> +		case DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
-> +			fmt = DRM_CONNECTOR_COLOR_FORMAT_YCBCR420;
-> +			break;
-> +		default:
-> +			ret = -EINVAL;
-> +			goto out_free_bus_fmts;
-> +		}
-> +	} else {
-> +		fmt = conn_state->color_format;
-> +		drm_dbg_kms(last_bridge->dev, "Non-HDMI bridge requests format %d\n", fmt);
-> +	}
-> +
->  	for (i = 0; i < num_out_bus_fmts; i++) {
-> +		if (!bus_format_is_color_fmt(out_bus_fmts[i], fmt)) {
-> +			drm_dbg_kms(last_bridge->dev,
-> +				    "Skipping bus format 0x%04x as it doesn't match format %d\n",
-> +				    out_bus_fmts[i], fmt);
-> +			ret = -ENOTSUPP;
-> +			continue;
-> +		}
->  		ret = select_bus_fmt_recursive(bridge, last_bridge, crtc_state,
->  					       conn_state, out_bus_fmts[i]);
-> -		if (ret != -ENOTSUPP)
-> +		if (ret != -ENOTSUPP) {
-> +			drm_dbg_kms(last_bridge->dev,
-> +				    "Found bridge chain ending with bus format 0x%04x\n",
-> +				    out_bus_fmts[i]);
->  			break;
-> +		}
->  	}
->  
-> +out_free_bus_fmts:
->  	kfree(out_bus_fmts);
->  
->  	return ret;
-> 
-> -- 
-> 2.53.0
-> 
 
 -- 
 With best wishes
