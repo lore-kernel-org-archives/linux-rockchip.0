@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E500FD0045
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:49:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75FA1FD0045
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=l4MAL010D29f2iAtAnqzRmWm0riWF+sAm8TXAHdVklc=; b=fyvjXCrHGrp+UW
-	kGmO84OTh4Ny7rpDshkkqHMw2anJ0ubhcoOiWym90y/DMASoLEi9zC6G86G/z3NYIYE9QSkZDG2XZ
-	Q8iGsdKXS1qYyLHBWacraoe5bJCopp6whCKXMGToQZmbec+Bt0QbYeiiWX8FqJLFBNy1YGX5BcjQb
-	6VsRmD8Bk0SlnQzXFPTEBHOUaCon0ecVwtBA9/DR+rBM7K+J+whGZ6R/IFN33gtaQCV516QmjJDAy
-	otbEN5aXddrbKz/ClhVr9BmqTMZD1Abk6IJgA2Gz40WZcPwMxDsHHSXGlUDgL2R1k+/bm+iKSr0JO
-	8QtFFvnsOOzqI8rWTyeg==;
+	List-Owner; bh=LeSB9gtvzVbVW+T/TWkAwEGmaO7VYeDNMVL+BWl+NzA=; b=SKbH2QCGEpUvmj
+	3QscELxD5/kFtc7LpXUBF03RLy2TIKfQun62qbLQ97hRxI8ZeIzsAKIYAK4irh/+g9nDdQZx0v4gD
+	cvrUbI7JyaZbUHeo5u00VuoQ3OsulJR166Ok9V5P8sqeUAOVFdMhJ/2WJw8G69bhSqRC8nEDRSJxK
+	sMg0yMdghx1eOMftSJxKgmursa2q386yrIJGEnqcED4t3OQ7Ul9ZE1OEidBVW5lvSaneI11l6/i6h
+	J4TusVNCoMCGOwbZttI+NHJhjJfTOAPqJO2tY/e5GdzRZmLk84us/5fILWJdghqD+9frSnOdY0L0v
+	HtxpGPe0F+vfhpfCr/FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVvn-0000000Af8P-2wNm;
-	Sun, 01 Mar 2026 01:49:15 +0000
+	id 1vwVxk-0000000Afxc-3F91;
+	Sun, 01 Mar 2026 01:51:16 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVvf-0000000AezL-3MG9;
-	Sun, 01 Mar 2026 01:49:07 +0000
+	id 1vwVxi-0000000Afwz-3Dia;
+	Sun, 01 Mar 2026 01:51:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AEE8B6013E;
-	Sun,  1 Mar 2026 01:49:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74740C19425;
-	Sun,  1 Mar 2026 01:49:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 3AE326013A;
+	Sun,  1 Mar 2026 01:51:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 19FCEC19424;
+	Sun,  1 Mar 2026 01:51:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772329746;
-	bh=LAiMzjBIXOgYMRHbuDHSdHhjMjfU2b0SIZZSJjVe++M=;
+	s=k20201202; t=1772329873;
+	bh=sQqpm7oWk232Md4X4fWSKvhuEGjWOzCk1UZ5A7Gfr98=;
 	h=From:To:Cc:Subject:Date:From;
-	b=kx2Xx67Ki5l9/Dkk3om6kERDCCGVIe/k6Dar1U1ZoHv+ROWjMac+w/YVWM5eT93eB
-	 AGvkAM7ihMVKEH4bABRcp8f7/3e86SA25xqObPLa2b079V2wqXNn19IpAeqEZuC92i
-	 UDzthcMOmUALZGQ4qENaYAGO+PRkBw3X5bV1RC2KZn0j4WHiV7Bgkr6hV2xXBlDyle
-	 e/jFKh1cGxnEoT7RZenjYYTf8Z0PhqIWZZUFz2G4srg47oBvTX5fDZv/4SyvJUbSDF
-	 wuYEWqQrZ0Pyz8nfKmjF8YA+z4idBoZGETlVsJjvZVNjkjpgHZDddJ7O2QccBbgeZB
-	 B4GlzJa+1hFZQ==
+	b=Ppc1Ktt0jIHI5lXZmKk7EoG3hhhPDj4xlbWhAqziEI0b8euDvt1I11yuSW0s5EhF0
+	 lcsCuVqIEqI9ETgMIC2rGZNKW6A5/WZH3uz1kbkO7nBmSYt2j/xD/09MDYH3m2cqbw
+	 xcFv1fIRLQhzO3Cq7i5V/2zpxgJehP7lwbvleiAOs8QMeLkyhjphsHtGFOq0xY9YLv
+	 GoFqPjrgSNzsl8iQom2kLREdg3SVhhrCnG3TkGVneNMfvvMTmrAAiIDMQb2CvPf6bB
+	 /A30sD6VIVQ+kTCruM6qqDAT6U18xxzA2jyQPKqnX2cbRS2FRH9HKy8GyvFULzUIJK
+	 6JQUNgawO93aA==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	ming.qian@oss.nxp.com
-Cc: Frank Li <Frank.Li@nxp.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org
-Subject: FAILED: Patch "media: verisilicon: Avoid G2 bus error while decoding H.264 and HEVC" failed to apply to 5.15-stable tree
-Date: Sat, 28 Feb 2026 20:49:03 -0500
-Message-ID: <20260301014904.1713392-1-sashal@kernel.org>
+	jerrysteve1101@gmail.com
+Cc: Peter Robinson <pbrobinson@gmail.com>,
+	Dragan Simic <dsimic@manjaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: FAILED: Patch "arm64: dts: rockchip: Do not enable hdmi_sound node on Pinebook Pro" failed to apply to 5.15-stable tree
+Date: Sat, 28 Feb 2026 20:51:11 -0500
+Message-ID: <20260301015112.1717437-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
@@ -84,172 +83,50 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From e0203ddf9af7c8e170e1e99ce83b4dc07f0cd765 Mon Sep 17 00:00:00 2001
-From: Ming Qian <ming.qian@oss.nxp.com>
-Date: Fri, 5 Dec 2025 09:54:26 +0800
-Subject: [PATCH] media: verisilicon: Avoid G2 bus error while decoding H.264
- and HEVC
+From b18247f9dab735c9c2d63823d28edc9011e7a1ad Mon Sep 17 00:00:00 2001
+From: Jun Yan <jerrysteve1101@gmail.com>
+Date: Fri, 16 Jan 2026 23:12:53 +0800
+Subject: [PATCH] arm64: dts: rockchip: Do not enable hdmi_sound node on
+ Pinebook Pro
 
-For the i.MX8MQ platform, there is a hardware limitation: the g1 VPU and
-g2 VPU cannot decode simultaneously; otherwise, it will cause below bus
-error and produce corrupted pictures, even potentially lead to system hang.
+Remove the redundant enabling of the hdmi_sound node in the Pinebook Pro
+board dts file, because the HDMI output is unused on this device. [1][2]
 
-[  110.527986] hantro-vpu 38310000.video-codec: frame decode timed out.
-[  110.583517] hantro-vpu 38310000.video-codec: bus error detected.
+This change also eliminates the following kernel log warning, which is
+caused by the unenabled dependent node of hdmi_sound that ultimately
+results in the node's probe failure:
 
-Therefore, it is necessary to ensure that g1 and g2 operate alternately.
-This allows for successful multi-instance decoding of H.264 and HEVC.
+  platform hdmi-sound: deferred probe pending: asoc-simple-card: parse error
 
-To achieve this, g1 and g2 share the same v4l2_m2m_dev, and then the
-v4l2_m2m_dev can handle the scheduling.
+[1] https://files.pine64.org/doc/PinebookPro/pinebookpro_v2.1_mainboard_schematic.pdf
+[2] https://files.pine64.org/doc/PinebookPro/pinebookpro_schematic_v21a_20220419.pdf
 
-Fixes: cb5dd5a0fa518 ("media: hantro: Introduce G2/HEVC decoder")
 Cc: stable@vger.kernel.org
-Signed-off-by: Ming Qian <ming.qian@oss.nxp.com>
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
-Co-developed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+Fixes: 5a65505a69884 ("arm64: dts: rockchip: Add initial support for Pinebook Pro")
+Signed-off-by: Jun Yan <jerrysteve1101@gmail.com>
+Reviewed-by: Peter Robinson <pbrobinson@gmail.com>
+Reviewed-by: Dragan Simic <dsimic@manjaro.org>
+Link: https://patch.msgid.link/20260116151253.9223-1-jerrysteve1101@gmail.com
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/media/platform/verisilicon/hantro.h   |  2 +
- .../media/platform/verisilicon/hantro_drv.c   | 42 +++++++++++++++++--
- .../media/platform/verisilicon/imx8m_vpu_hw.c |  8 ++++
- 3 files changed, 49 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro.h b/drivers/media/platform/verisilicon/hantro.h
-index e0fdc4535b2d7..0353de154a1ec 100644
---- a/drivers/media/platform/verisilicon/hantro.h
-+++ b/drivers/media/platform/verisilicon/hantro.h
-@@ -77,6 +77,7 @@ struct hantro_irq {
-  * @double_buffer:		core needs double buffering
-  * @legacy_regs:		core uses legacy register set
-  * @late_postproc:		postproc must be set up at the end of the job
-+ * @shared_devices:		an array of device ids that cannot run concurrently
-  */
- struct hantro_variant {
- 	unsigned int enc_offset;
-@@ -101,6 +102,7 @@ struct hantro_variant {
- 	unsigned int double_buffer : 1;
- 	unsigned int legacy_regs : 1;
- 	unsigned int late_postproc : 1;
-+	const struct of_device_id *shared_devices;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+index eaaca08a76018..a6ac89567bafe 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+@@ -421,10 +421,6 @@ &gpu {
+ 	status = "okay";
  };
  
- /**
-diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/media/platform/verisilicon/hantro_drv.c
-index 60b95b5d8565f..94f58f4e4a4e5 100644
---- a/drivers/media/platform/verisilicon/hantro_drv.c
-+++ b/drivers/media/platform/verisilicon/hantro_drv.c
-@@ -13,6 +13,7 @@
- #include <linux/clk.h>
- #include <linux/module.h>
- #include <linux/of.h>
-+#include <linux/of_platform.h>
- #include <linux/platform_device.h>
- #include <linux/pm.h>
- #include <linux/pm_runtime.h>
-@@ -1035,6 +1036,41 @@ static int hantro_disable_multicore(struct hantro_dev *vpu)
- 	return 0;
- }
- 
-+static struct v4l2_m2m_dev *hantro_get_v4l2_m2m_dev(struct hantro_dev *vpu)
-+{
-+	struct device_node *node;
-+	struct hantro_dev *shared_vpu;
-+
-+	if (!vpu->variant || !vpu->variant->shared_devices)
-+		goto init_new_m2m_dev;
-+
-+	for_each_matching_node(node, vpu->variant->shared_devices) {
-+		struct platform_device *pdev;
-+		struct v4l2_m2m_dev *m2m_dev;
-+
-+		pdev = of_find_device_by_node(node);
-+		if (!pdev)
-+			continue;
-+
-+		shared_vpu = platform_get_drvdata(pdev);
-+		if (IS_ERR_OR_NULL(shared_vpu) || shared_vpu == vpu) {
-+			platform_device_put(pdev);
-+			continue;
-+		}
-+
-+		v4l2_m2m_get(shared_vpu->m2m_dev);
-+		m2m_dev = shared_vpu->m2m_dev;
-+		platform_device_put(pdev);
-+
-+		of_node_put(node);
-+
-+		return m2m_dev;
-+	}
-+
-+init_new_m2m_dev:
-+	return v4l2_m2m_init(&vpu_m2m_ops);
-+}
-+
- static int hantro_probe(struct platform_device *pdev)
- {
- 	const struct of_device_id *match;
-@@ -1186,7 +1222,7 @@ static int hantro_probe(struct platform_device *pdev)
- 	}
- 	platform_set_drvdata(pdev, vpu);
- 
--	vpu->m2m_dev = v4l2_m2m_init(&vpu_m2m_ops);
-+	vpu->m2m_dev = hantro_get_v4l2_m2m_dev(vpu);
- 	if (IS_ERR(vpu->m2m_dev)) {
- 		v4l2_err(&vpu->v4l2_dev, "Failed to init mem2mem device\n");
- 		ret = PTR_ERR(vpu->m2m_dev);
-@@ -1225,7 +1261,7 @@ static int hantro_probe(struct platform_device *pdev)
- 	hantro_remove_enc_func(vpu);
- err_m2m_rel:
- 	media_device_cleanup(&vpu->mdev);
--	v4l2_m2m_release(vpu->m2m_dev);
-+	v4l2_m2m_put(vpu->m2m_dev);
- err_v4l2_unreg:
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- err_clk_unprepare:
-@@ -1248,7 +1284,7 @@ static void hantro_remove(struct platform_device *pdev)
- 	hantro_remove_dec_func(vpu);
- 	hantro_remove_enc_func(vpu);
- 	media_device_cleanup(&vpu->mdev);
--	v4l2_m2m_release(vpu->m2m_dev);
-+	v4l2_m2m_put(vpu->m2m_dev);
- 	v4l2_device_unregister(&vpu->v4l2_dev);
- 	clk_bulk_unprepare(vpu->variant->num_clocks, vpu->clocks);
- 	reset_control_assert(vpu->resets);
-diff --git a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-index 5be0e2e76882f..6f8e43b7f1575 100644
---- a/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-+++ b/drivers/media/platform/verisilicon/imx8m_vpu_hw.c
-@@ -343,6 +343,12 @@ const struct hantro_variant imx8mq_vpu_variant = {
- 	.num_regs = ARRAY_SIZE(imx8mq_reg_names)
- };
- 
-+static const struct of_device_id imx8mq_vpu_shared_resources[] __initconst = {
-+	{ .compatible = "nxp,imx8mq-vpu-g1", },
-+	{ .compatible = "nxp,imx8mq-vpu-g2", },
-+	{ /* sentinel */ }
-+};
-+
- const struct hantro_variant imx8mq_vpu_g1_variant = {
- 	.dec_fmts = imx8m_vpu_dec_fmts,
- 	.num_dec_fmts = ARRAY_SIZE(imx8m_vpu_dec_fmts),
-@@ -356,6 +362,7 @@ const struct hantro_variant imx8mq_vpu_g1_variant = {
- 	.num_irqs = ARRAY_SIZE(imx8mq_irqs),
- 	.clk_names = imx8mq_g1_clk_names,
- 	.num_clocks = ARRAY_SIZE(imx8mq_g1_clk_names),
-+	.shared_devices = imx8mq_vpu_shared_resources,
- };
- 
- const struct hantro_variant imx8mq_vpu_g2_variant = {
-@@ -371,6 +378,7 @@ const struct hantro_variant imx8mq_vpu_g2_variant = {
- 	.num_irqs = ARRAY_SIZE(imx8mq_g2_irqs),
- 	.clk_names = imx8mq_g2_clk_names,
- 	.num_clocks = ARRAY_SIZE(imx8mq_g2_clk_names),
-+	.shared_devices = imx8mq_vpu_shared_resources,
- };
- 
- const struct hantro_variant imx8mm_vpu_g1_variant = {
+-&hdmi_sound {
+-	status = "okay";
+-};
+-
+ &i2c0 {
+ 	clock-frequency = <400000>;
+ 	i2c-scl-falling-time-ns = <4>;
 -- 
 2.51.0
 
