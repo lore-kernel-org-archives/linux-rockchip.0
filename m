@@ -4,61 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B869CFD0049
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:17:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6236FD0049
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:18:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+RthjZhD0ObYV5JG3lFV0jSLOaetW1IlQWR0vQpi7Hk=; b=tvUO2QBPXovCYs
-	hV3SWYpUjxTTF0JJy62UW29ntROWOmLhidsnQw4x7w1iHYX0zCpItp9bHO3UtXuLvIuPyWzZxEgKO
-	iprOt0lRzWsxtN0m/mIOJi97mYaHpRoJKL900UP7D3HnVJOClnNjqFOfKd9LMJh1ZJ07hEeSTf0rM
-	gHDPcckyXS+zoCYJeo6jthTf2PbUZvUjwOIwGLOm3Owkb3z5L4tK7Ia+SV+M7scEgOJXnBV2BYtxM
-	+Xz4ktgOzSq6Kts5QzXTwGL4r9okI9c58EEFcxb3zN0XgIHNJKV18RFUrORXiFkf5H+z9+XDmYejr
-	NQ2HtzEGiMwS8fpcZgaw==;
+	List-Owner; bh=MrPznbapNX0HWkBvED7ZSCpU7HHEiTZEuJRO7NwIheo=; b=fJ1A3yxCCFsbOt
+	R/FRLNpGxku0AMl05fvpZ1QH+eH0iSw7Ujst7zK71IbpIxiyavo+ANrQ11HgpGC+5JBLR+xCj9fD5
+	31KfTMC8W7FxhC/ac4L5YGNdDQARPdPRAd4WOx0tQGOd2FfZEYrxBXPoxiz2CFbNPvHl9Co7agsC7
+	Hz2ZL6khKewG7K3Ubkny3Aua4ov3D0zrOUtgmRb3iU9JvYqQH43CJpj1k8u0Gt6hriG3I9o1a9Ot8
+	OqACBck0/pJ73pAYzrwhzWhPgrkvdVyvKNJmCN/4K50ZjHfHJJKM+Ays8/mkYeH6/E2EDGeySKu0j
+	P+2kcMzs6w8uC3zjz8fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVQg-0000000ASXb-2X2W;
-	Sun, 01 Mar 2026 01:17:06 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1vwVS7-0000000ASq3-08Y2;
+	Sun, 01 Mar 2026 01:18:35 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVQd-0000000ASWk-24rs;
-	Sun, 01 Mar 2026 01:17:05 +0000
+	id 1vwVS4-0000000ASoT-2QRK;
+	Sun, 01 Mar 2026 01:18:32 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2980041B5D;
-	Sun,  1 Mar 2026 01:17:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41D22C19421;
-	Sun,  1 Mar 2026 01:17:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CFAC3600AD;
+	Sun,  1 Mar 2026 01:18:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C08EBC19425;
+	Sun,  1 Mar 2026 01:18:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772327823;
-	bh=WFjBZmZT8Ljz8xNlXhLMjkBe3KDvvU4/6E+qmB7lTmg=;
+	s=k20201202; t=1772327911;
+	bh=aD5MZEiryuJA6g6rIbaPN1U57ewDcb4MLGf6dc/rBBE=;
 	h=From:To:Cc:Subject:Date:From;
-	b=QoTfRMyp3X/aIwEnj/E1zl/3vUBy/vr4/0t4OB4UJuh47eAs3yYmhW2Uyji9Z8my8
-	 2ZGx7BugGPVAOqfIdGfrmMuDnI6hNWGHZMWV/4/3DOuVAa5OGtRWGczHKKTpiohOcv
-	 a26VLvEuYNQU4EdmGeHrsYjp8xlkuvdzC6ccxYPnqjlN4zpKjGTaWaH/FOB52phaLO
-	 a9XcocwGcqugFe++sLGKQig2OP0wNgUNX8alAh7fObGGbt/BtjvKJ1PKXlltMHUB9q
-	 mtx/LwB0mi3tkQUbbrfmCBzf30wgSjHesapl2ODhtyU+FiB/laMDng/shJthQ8KDVq
-	 9Zy0D49aFNBMg==
+	b=SROKabUKoRCGymKh+A2Ui5CYBkamSazDB+g1NjrRZ4ulVmA0x/SUctFyQTBw/xoSq
+	 cKQQD6APx085/+/AkQ/XjvTz22JLTp6f5QHClD06onvbALVXFkRkKm90e+0mJUu6H5
+	 103dAIko0uPQyMIlc+D4/R7yIR2jlMjDCLWqhZEYAO5PNQ4AEmDPxZKN9C7ZEFZp+x
+	 vdTWyoC3QL3kqtKsK7FMdJRXbu9V/AIyMKl2WmYaAU+hNPvbOAQCc4xVJDUEIUPWGc
+	 r+l57VYDuNnvdh9wa6SX6TrpY6J5XZsPCexsHdhd4VHGnwSaR+KMjmzulEnX+zPqKq
+	 Qa1Khn8XLkjVg==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
-	shawn.lin@rock-chips.com
-Cc: Andrew Powers-Holmes <aholmes@omnom.net>,
-	Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
+	cassel@kernel.org
+Cc: Manivannan Sadhasivam <mani@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	linux-pci@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org
-Subject: FAILED: Patch "arm64: dts: rockchip: Fix rk356x PCIe range mappings" failed to apply to 6.18-stable tree
-Date: Sat, 28 Feb 2026 20:17:00 -0500
-Message-ID: <20260301011701.1670793-1-sashal@kernel.org>
+Subject: FAILED: Patch "Revert "PCI: dw-rockchip: Enumerate endpoints based on dll_link_up IRQ"" failed to apply to 6.12-stable tree
+Date: Sat, 28 Feb 2026 20:18:29 -0500
+Message-ID: <20260301011829.1672885-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260228_171704_433547_EE56CD8E 
-X-CRM114-Status: GOOD (  14.73  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,7 +72,7 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The patch below does not apply to the 6.18-stable tree.
+The patch below does not apply to the 6.12-stable tree.
 If someone wants it applied there, or to any other stable or longterm
 tree, then please email the backport, including the original git commit
 id to <stable@vger.kernel.org>.
@@ -85,63 +82,161 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From f63ea193a404481f080ca2958f73e9f364682db9 Mon Sep 17 00:00:00 2001
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Date: Mon, 5 Jan 2026 16:15:28 +0800
-Subject: [PATCH] arm64: dts: rockchip: Fix rk356x PCIe range mappings
+From 180c3cfe36786d261a55da52a161f9e279b19a6f Mon Sep 17 00:00:00 2001
+From: Niklas Cassel <cassel@kernel.org>
+Date: Mon, 22 Dec 2025 07:42:09 +0100
+Subject: [PATCH] Revert "PCI: dw-rockchip: Enumerate endpoints based on
+ dll_link_up IRQ"
 
-The pcie bus address should be mapped 1:1 to the cpu side MMIO address, so
-that there is no same address allocated from normal system memory. Otherwise
-it's broken if the same address assigned to the EP for DMA purpose.Fix it to
-sync with the vendor BSP.
+This reverts commit 0e0b45ab5d770a748487ba0ae8f77d1fb0f0de3e.
 
-Fixes: 568a67e742df ("arm64: dts: rockchip: Fix rk356x PCIe register and range mappings")
-Fixes: 66b51ea7d70f ("arm64: dts: rockchip: Add rk3568 PCIe2x1 controller")
+While this fake hotplugging was a nice idea, it has shown that this feature
+does not handle PCIe switches correctly:
+pci_bus 0004:43: busn_res: can not insert [bus 43-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:43: busn_res: [bus 43-41] end is updated to 43
+pci_bus 0004:43: busn_res: can not insert [bus 43] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:00.0: devices behind bridge are unusable because [bus 43] cannot be assigned for them
+pci_bus 0004:44: busn_res: can not insert [bus 44-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:44: busn_res: [bus 44-41] end is updated to 44
+pci_bus 0004:44: busn_res: can not insert [bus 44] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:02.0: devices behind bridge are unusable because [bus 44] cannot be assigned for them
+pci_bus 0004:45: busn_res: can not insert [bus 45-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:45: busn_res: [bus 45-41] end is updated to 45
+pci_bus 0004:45: busn_res: can not insert [bus 45] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:06.0: devices behind bridge are unusable because [bus 45] cannot be assigned for them
+pci_bus 0004:46: busn_res: can not insert [bus 46-41] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci_bus 0004:46: busn_res: [bus 46-41] end is updated to 46
+pci_bus 0004:46: busn_res: can not insert [bus 46] under [bus 42-41] (conflicts with (null) [bus 42-41])
+pci 0004:42:0e.0: devices behind bridge are unusable because [bus 46] cannot be assigned for them
+pci_bus 0004:42: busn_res: [bus 42-41] end is updated to 46
+pci_bus 0004:42: busn_res: can not insert [bus 42-46] under [bus 41] (conflicts with (null) [bus 41])
+pci 0004:41:00.0: devices behind bridge are unusable because [bus 42-46] cannot be assigned for them
+pcieport 0004:40:00.0: bridge has subordinate 41 but max busn 46
+
+During the initial scan, PCI core doesn't see the switch and since the Root
+Port is not hot plug capable, the secondary bus number gets assigned as the
+subordinate bus number. This means, the PCI core assumes that only one bus
+will appear behind the Root Port since the Root Port is not hot plug
+capable.
+
+This works perfectly fine for PCIe endpoints connected to the Root Port,
+since they don't extend the bus. However, if a PCIe switch is connected,
+then there is a problem when the downstream busses starts showing up and
+the PCI core doesn't extend the subordinate bus number and bridge resources
+after initial scan during boot.
+
+The long term plan is to migrate this driver to the upcoming pwrctrl APIs
+that are supposed to handle this problem elegantly.
+
+Suggested-by: Manivannan Sadhasivam <mani@kernel.org>
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+Signed-off-by: Manivannan Sadhasivam <mani@kernel.org>
+Tested-by: Shawn Lin <shawn.lin@rock-chips.com>
+Acked-by: Shawn Lin <shawn.lin@rock-chips.com>
 Cc: stable@vger.kernel.org
-Cc: Andrew Powers-Holmes <aholmes@omnom.net>
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-Link: https://patch.msgid.link/1767600929-195341-1-git-send-email-shawn.lin@rock-chips.com
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Link: https://patch.msgid.link/20251222064207.3246632-10-cassel@kernel.org
 ---
- arch/arm64/boot/dts/rockchip/rk3568.dtsi      | 4 ++--
- arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 59 +------------------
+ 1 file changed, 3 insertions(+), 56 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568.dtsi b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-index e719a3df126c5..658097ed69714 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3568.dtsi
-@@ -185,7 +185,7 @@ pcie3x1: pcie@fe270000 {
- 		      <0x0 0xf2000000 0x0 0x00100000>;
- 		ranges = <0x01000000 0x0 0xf2100000 0x0 0xf2100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf2200000 0x0 0xf2200000 0x0 0x01e00000>,
--			 <0x03000000 0x0 0x40000000 0x3 0x40000000 0x0 0x40000000>;
-+			 <0x03000000 0x3 0x40000000 0x3 0x40000000 0x0 0x40000000>;
- 		reg-names = "dbi", "apb", "config";
- 		resets = <&cru SRST_PCIE30X1_POWERUP>;
- 		reset-names = "pipe";
-@@ -238,7 +238,7 @@ pcie3x2: pcie@fe280000 {
- 		      <0x0 0xf0000000 0x0 0x00100000>;
- 		ranges = <0x01000000 0x0 0xf0100000 0x0 0xf0100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf0200000 0x0 0xf0200000 0x0 0x01e00000>,
--			 <0x03000000 0x0 0x40000000 0x3 0x80000000 0x0 0x40000000>;
-+			 <0x03000000 0x3 0x80000000 0x3 0x80000000 0x0 0x40000000>;
- 		reg-names = "dbi", "apb", "config";
- 		resets = <&cru SRST_PCIE30X2_POWERUP>;
- 		reset-names = "pipe";
-diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-index 8893b7b6cc9ff..a2c4957a58992 100644
---- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-@@ -1022,7 +1022,7 @@ pcie2x1: pcie@fe260000 {
- 		power-domains = <&power RK3568_PD_PIPE>;
- 		ranges = <0x01000000 0x0 0xf4100000 0x0 0xf4100000 0x0 0x00100000>,
- 			 <0x02000000 0x0 0xf4200000 0x0 0xf4200000 0x0 0x01e00000>,
--			 <0x03000000 0x0 0x40000000 0x3 0x00000000 0x0 0x40000000>;
-+			 <0x03000000 0x3 0x00000000 0x3 0x00000000 0x0 0x40000000>;
- 		resets = <&cru SRST_PCIE20_POWERUP>;
- 		reset-names = "pipe";
- 		#address-cells = <3>;
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index ca808d8f79753..352f513ebf036 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -508,34 +508,6 @@ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.get_ltssm = rockchip_pcie_get_ltssm,
+ };
+ 
+-static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
+-{
+-	struct rockchip_pcie *rockchip = arg;
+-	struct dw_pcie *pci = &rockchip->pci;
+-	struct dw_pcie_rp *pp = &pci->pp;
+-	struct device *dev = pci->dev;
+-	u32 reg;
+-
+-	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
+-	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
+-
+-	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
+-	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm_reg(rockchip));
+-
+-	if (reg & PCIE_RDLH_LINK_UP_CHGED) {
+-		if (rockchip_pcie_link_up(pci)) {
+-			msleep(PCIE_RESET_CONFIG_WAIT_MS);
+-			dev_dbg(dev, "Received Link up event. Starting enumeration!\n");
+-			/* Rescan the bus to enumerate endpoint devices */
+-			pci_lock_rescan_remove();
+-			pci_rescan_bus(pp->bridge->bus);
+-			pci_unlock_rescan_remove();
+-		}
+-	}
+-
+-	return IRQ_HANDLED;
+-}
+-
+ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ {
+ 	struct rockchip_pcie *rockchip = arg;
+@@ -568,29 +540,14 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+-				      struct rockchip_pcie *rockchip)
++static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
+ {
+-	struct device *dev = &pdev->dev;
+ 	struct dw_pcie_rp *pp;
+-	int irq, ret;
+ 	u32 val;
+ 
+ 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
+ 		return -ENODEV;
+ 
+-	irq = platform_get_irq_byname(pdev, "sys");
+-	if (irq < 0)
+-		return irq;
+-
+-	ret = devm_request_threaded_irq(dev, irq, NULL,
+-					rockchip_pcie_rc_sys_irq_thread,
+-					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
+-	if (ret) {
+-		dev_err(dev, "failed to request PCIe sys IRQ\n");
+-		return ret;
+-	}
+-
+ 	/* LTSSM enable control mode */
+ 	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+@@ -602,17 +559,7 @@ static int rockchip_pcie_configure_rc(struct platform_device *pdev,
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
+ 
+-	ret = dw_pcie_host_init(pp);
+-	if (ret) {
+-		dev_err(dev, "failed to initialize host\n");
+-		return ret;
+-	}
+-
+-	/* unmask DLL up/down indicator */
+-	val = FIELD_PREP_WM16(PCIE_RDLH_LINK_UP_CHGED, 0);
+-	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
+-
+-	return ret;
++	return dw_pcie_host_init(pp);
+ }
+ 
+ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+@@ -731,7 +678,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 
+ 	switch (data->mode) {
+ 	case DW_PCIE_RC_TYPE:
+-		ret = rockchip_pcie_configure_rc(pdev, rockchip);
++		ret = rockchip_pcie_configure_rc(rockchip);
+ 		if (ret)
+ 			goto deinit_clk;
+ 		break;
 -- 
 2.51.0
 
