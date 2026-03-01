@@ -4,58 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5975EFD004A
-	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6A48FD0049
+	for <linux-rockchip@archiver.kernel.org>; Sun,  1 Mar 2026 01:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KDmQvxz83jUvTnQkow9S0oh8C88wIsOjaU3wpHfop0E=; b=sx+5KBU0XE3/IZ
-	T29m3NrjYSSVRhSw28BSDJYvDOVF7wHZBdflYovv/PhTjeaVKhAlXkw8ROjBU9azIOR+Y6HBmJkz9
-	hJAnbA/2eL+YxtO0SQEXrbRS497bhSdYXlEOLFPP8YteisMfTaaK0WOaV/OmnRCytka9d/m3jXwuC
-	GWO3XrX0lydi3KY0K9cgQTWukwLzSOp/VOO5I1NlTGDYriSDxoLuYyWFfCXpRqIHkecDNgq66LAZn
-	yyoRphmBuy9nmI2l17/abWYu3wQ8DTObLfCAqedyJ8uyB0s8TOJWf9dtmCZSC815TIQcxLCGOsrZ9
-	CCE3w9srVXNsvnFIcp3w==;
+	List-Owner; bh=zNMIIC2Z8wbz8/WuuXWptvKUnXr0dSVZe/vE4gsdq5w=; b=j+il3q7SromE2N
+	F3WR1DDvfdq+5bPoR9Tw7EYNi6u8woT4VdFyfuRWzAhvBju3kqE729+/49+OAKSw8SPl7dARwjGnd
+	XgRJ4tWasPu5tlwf6E+/u8A/0qC14DTYuyu04j2gmFfqP0DhDtzSV0nEzQLEy5tYQhJ5Jv3Vcjtt8
+	Mn0IHbUqLWAEy2s2uNFFd8dLbzGtA7Oz9yiTWovto7ZLY3fMTS6qX46VoolKTSvRYIdqwNzspSsWh
+	8FPs1cfOw4cyaKVxY6u3OCc6GPmGZuZuL2FhfEmvlYFqKOKxsp7FskSEwSye4lgpM+5xh0Zg0uHlc
+	WhJUFA65uRwpDTe85WyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVe7-0000000AXvl-2nPz;
-	Sun, 01 Mar 2026 01:30:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vwVeM-0000000AYBI-075t;
+	Sun, 01 Mar 2026 01:31:14 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vwVe4-0000000AXsA-1wMA;
-	Sun, 01 Mar 2026 01:30:57 +0000
+	id 1vwVe9-0000000AXxd-1cdb;
+	Sun, 01 Mar 2026 01:31:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E1C2260126;
-	Sun,  1 Mar 2026 01:30:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA02FC19421;
-	Sun,  1 Mar 2026 01:30:54 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D4F1243FDD;
+	Sun,  1 Mar 2026 01:31:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D73DBC19424;
+	Sun,  1 Mar 2026 01:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772328655;
-	bh=/DA37+Hf7sJ+rlGkNUToe112J/LF9yM23uSueEqaDgc=;
+	s=k20201202; t=1772328660;
+	bh=mpiC9xljl7dj+601z18lVm9ShfISnfT4pIJ29B2acow=;
 	h=From:To:Cc:Subject:Date:From;
-	b=NPaW/rhNn49j8onPmXHHz49DbT9mpmNI07Cq6Bc3cCF9j3ANsPpQaivvUdhd4smZA
-	 onbbHfq1CoB4DtFnXdO5ZqO+JDX9NPV/3yk7rPKVkuJfOVkAfMhDbyrrTlKsR0M8sE
-	 cbRhAApex+1bwh7hJr8d2CWEm0J8ED3aTKdL+ILR9akHvcf1FZLmapdzXt/WG+fGWL
-	 DR5xpeTijKLHa+fukoNF10ScQtmHXqMeUsvK9bQQ0Sx63YHM4kYV++yqRaTtgWeyTD
-	 Si9DnSEH4Q4YXtmJ9fcXqBIny/zrJCM/D46i23UDxklKh/shtlqEVJzxgA2+7oxLdI
-	 /XQBdyLDYO2/w==
+	b=nmUgo1jrgE6ezDtGclVlzEy9aJZneCVoVOJrCgxOp2CPKovVnqq/qSHWUnIKdVPT6
+	 /frf8toJP6sc6jOJkMYux61u4m9rKRUY0qqAMKB3D8M2YUJzTD3QMpMBMw+Z5MBO6l
+	 ab8SjAKPhsZcIDT7au9Uh7Iv6Qz5jw1bHjdB6hJIieqicr5cj+W6By805ZW2Mw5acr
+	 880nDjGLr5ljV383rWwvU3PeyNf+NseDAW1iLa5UVGSFK6a93Qb8T7acTob3IRFAW5
+	 L82rjYu4cZnq1vxusMwnRgdbdWyICd056XEnIwv+Ws3x8uO7/dXWeOr6j6Kb5HAmU1
+	 trsAt6EHJXkhg==
 From: Sasha Levin <sashal@kernel.org>
 To: stable@vger.kernel.org,
 	benjamin.gaignard@collabora.com
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+Cc: Jianfeng Liu <liujianfeng1994@gmail.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
 	Hans Verkuil <hverkuil+cisco@kernel.org>,
 	linux-media@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: FAILED: Patch "media: verisilicon: AV1: Fix tx mode bit setting" failed to apply to 6.6-stable tree
-Date: Sat, 28 Feb 2026 20:30:53 -0500
-Message-ID: <20260301013053.1689229-1-sashal@kernel.org>
+Subject: FAILED: Patch "media: verisilicon: AV1: Fix enable cdef computation" failed to apply to 6.6-stable tree
+Date: Sat, 28 Feb 2026 20:30:58 -0500
+Message-ID: <20260301013058.1689335-1-sashal@kernel.org>
 X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
 X-Patchwork-Hint: ignore
 X-stable: review
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260228_173101_724070_0DEA8A91 
+X-CRM114-Status: GOOD (  13.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,82 +86,58 @@ Sasha
 
 ------------------ original commit in Linus's tree ------------------
 
-From cb3f945c012ab152fd2323e0df34c2b640071738 Mon Sep 17 00:00:00 2001
+From e0f99b810e1181374370f91cd996d761549e147f Mon Sep 17 00:00:00 2001
 From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-Date: Tue, 9 Dec 2025 11:34:17 +0100
-Subject: [PATCH] media: verisilicon: AV1: Fix tx mode bit setting
+Date: Tue, 9 Dec 2025 11:34:01 +0100
+Subject: [PATCH] media: verisilicon: AV1: Fix enable cdef computation
 
-AV1 specification describes 3 possibles tx modes: 4x4 only, largest and
-select. The hardware allows 5 possibles tx modes: 4x4 only, 8x8, 16x16,
-32x32 and select. Since the both aren't exactly matching we need to add
-a mapping function to set the correct mode on hardware.
+If all the fields of the CDEF parameters are zero (which is the default),
+then av1_enable_cdef register needs to be unset
+(despite the V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF possibly being set).
 
 Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
 Fixes: 727a400686a2c ("media: verisilicon: Add Rockchip AV1 decoder")
 Cc: stable@vger.kernel.org
+Reported-by: Jianfeng Liu <liujianfeng1994@gmail.com>
+Closes: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/issues/4786
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 Signed-off-by: Hans Verkuil <hverkuil+cisco@kernel.org>
+[hverkuil: dropped Link tag since it just duplicated the Closes: URL]
 ---
- .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 27 ++++++++++++++++++-
- 1 file changed, 26 insertions(+), 1 deletion(-)
+ .../platform/verisilicon/rockchip_vpu981_hw_av1_dec.c  | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-index f4f7cb45b1f1b..f52b8208e6b93 100644
+index e4703bb6be7c1..f4f7cb45b1f1b 100644
 --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
 +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
-@@ -72,6 +72,14 @@
- 		: AV1_DIV_ROUND_UP_POW2((_value_), (_n_)));		\
- })
+@@ -1396,8 +1396,16 @@ static void rockchip_vpu981_av1_dec_set_cdef(struct hantro_ctx *ctx)
+ 	u16 luma_sec_strength = 0;
+ 	u32 chroma_pri_strength = 0;
+ 	u16 chroma_sec_strength = 0;
++	bool enable_cdef;
+ 	int i;
  
-+enum rockchip_av1_tx_mode {
-+	ROCKCHIP_AV1_TX_MODE_ONLY_4X4	= 0,
-+	ROCKCHIP_AV1_TX_MODE_8X8	= 1,
-+	ROCKCHIP_AV1_TX_MODE_16x16	= 2,
-+	ROCKCHIP_AV1_TX_MODE_32x32	= 3,
-+	ROCKCHIP_AV1_TX_MODE_SELECT	= 4,
-+};
-+
- struct rockchip_av1_film_grain {
- 	u8 scaling_lut_y[256];
- 	u8 scaling_lut_cb[256];
-@@ -1935,11 +1943,26 @@ static void rockchip_vpu981_av1_dec_set_reference_frames(struct hantro_ctx *ctx)
- 	rockchip_vpu981_av1_dec_set_other_frames(ctx);
- }
++	enable_cdef = !(cdef->bits == 0 &&
++			cdef->damping_minus_3 == 0 &&
++			cdef->y_pri_strength[0] == 0 &&
++			cdef->y_sec_strength[0] == 0 &&
++			cdef->uv_pri_strength[0] == 0 &&
++			cdef->uv_sec_strength[0] == 0);
++	hantro_reg_write(vpu, &av1_enable_cdef, enable_cdef);
+ 	hantro_reg_write(vpu, &av1_cdef_bits, cdef->bits);
+ 	hantro_reg_write(vpu, &av1_cdef_damping, cdef->damping_minus_3);
  
-+static int rockchip_vpu981_av1_get_hardware_tx_mode(enum v4l2_av1_tx_mode tx_mode)
-+{
-+	switch (tx_mode) {
-+	case V4L2_AV1_TX_MODE_ONLY_4X4:
-+		return ROCKCHIP_AV1_TX_MODE_ONLY_4X4;
-+	case V4L2_AV1_TX_MODE_LARGEST:
-+		return ROCKCHIP_AV1_TX_MODE_32x32;
-+	case V4L2_AV1_TX_MODE_SELECT:
-+		return ROCKCHIP_AV1_TX_MODE_SELECT;
-+	}
-+
-+	return ROCKCHIP_AV1_TX_MODE_32x32;
-+}
-+
- static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
- {
- 	struct hantro_dev *vpu = ctx->dev;
- 	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
- 	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
-+	int tx_mode;
- 
- 	hantro_reg_write(vpu, &av1_skip_mode,
- 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_SKIP_MODE_PRESENT));
-@@ -2005,7 +2028,9 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
- 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_ALLOW_HIGH_PRECISION_MV));
- 	hantro_reg_write(vpu, &av1_comp_pred_mode,
- 			 (ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_REFERENCE_SELECT) ? 2 : 0);
--	hantro_reg_write(vpu, &av1_transform_mode, (ctrls->frame->tx_mode == 1) ? 3 : 4);
-+
-+	tx_mode = rockchip_vpu981_av1_get_hardware_tx_mode(ctrls->frame->tx_mode);
-+	hantro_reg_write(vpu, &av1_transform_mode, tx_mode);
- 	hantro_reg_write(vpu, &av1_max_cb_size,
- 			 (ctrls->sequence->flags
- 			  & V4L2_AV1_SEQUENCE_FLAG_USE_128X128_SUPERBLOCK) ? 7 : 6);
+@@ -1953,8 +1961,6 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_SHOW_FRAME));
+ 	hantro_reg_write(vpu, &av1_switchable_motion_mode,
+ 			 !!(ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_IS_MOTION_MODE_SWITCHABLE));
+-	hantro_reg_write(vpu, &av1_enable_cdef,
+-			 !!(ctrls->sequence->flags & V4L2_AV1_SEQUENCE_FLAG_ENABLE_CDEF));
+ 	hantro_reg_write(vpu, &av1_allow_masked_compound,
+ 			 !!(ctrls->sequence->flags
+ 			    & V4L2_AV1_SEQUENCE_FLAG_ENABLE_MASKED_COMPOUND));
 -- 
 2.51.0
 
