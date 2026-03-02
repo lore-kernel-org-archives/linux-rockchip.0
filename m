@@ -4,87 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47416E9B375
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 12:54:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7269AE9B377
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 12:58:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ztz7/IZUbQWmhCPaot7ZCf4NSNDqZFnWj2mbNOZmYgs=; b=zhxr4Bty+bFv71
-	2UkB7J6Yv5R/25Umq0ExcuLjyrnag4xYieZQtOyBX09eZry2IuSmif4snl8LvHadRDwzga5+Kvr0Y
-	bJ8eLRM5tC+1Qokskc304CQOTgmJ1sUMbwQpGKRQ7IZo31UWkmPsX2nG+2xKY/0flL6ErrMCUIxtm
-	r+nWQfiPsRwC3qIcY0VTV9SluZlJbBu7fpa//tgaGXnwkvSNLS7k2zFQ4oym/skoE0YAqM+k1LN0B
-	oZZlcsH3uOpOc06fQWLQTi2kkDZbkRX+U+/7SEIx5fXVyQHlbYUxfkZT1HOZmjaVSMad2vUnm2pt6
-	tm9H640kgGcZ84sBP4Ww==;
+	List-Owner; bh=IWU+2Y5eQY3KwEkUHUYZOxLpStVBYqubm3L3KcAHU6c=; b=LdpMvY11tdp/a1
+	xEfRZpRWBk164CWck0mSxjrqgvACcEK5iU+yCdoDnXG18tD0isrTHKAhqOqGMIJj5tsRPfl/Qnx4Z
+	jqPCqi/Atfg2jrIaGRN/NR2joIYNHy97f6SqMV/YMbdwC5Iax9Ye6HXbUKGva9DqaS9bORFB4OvlO
+	YQrYW26mhqXmVp4xRMoa0rmqqHDlns8Gl2IlAHyeXZsEgHZBojnOcpCIdOzm4xeMRXbfsR70wrYzU
+	P5eNeMeksAk1jGl48Xjyp+43CPb4x+utY9tOmT9X4ipbJ9J3QQu4B2gWh5yfmvA+TOSuUA5DctGF3
+	RUM/SZzsSn7atqJENiiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx2n6-0000000D2at-1lKU;
-	Mon, 02 Mar 2026 12:54:28 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vx2qn-0000000D2zY-2BIJ;
+	Mon, 02 Mar 2026 12:58:17 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx2n3-0000000D2aF-3m12;
-	Mon, 02 Mar 2026 12:54:26 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772456025; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=GMp6+xRMNwgsTM8iGKy0G8y6GkFeXPgakJzLr4g7v95spFf1QZd6gihYWQLeJL3rhTD72V5ksZSGquVESfiNqgKeGzY50/q6h8v1bi60drZGMwODJVl5oWq2gscFuxM8XEzd0q5iQhjpvN7xPzvuZds5ioTLzjp+OL7gf+moM5U=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772456025; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=lPQKUxtVjexxEX4A7XuYCfJhBt0aFJEhGTj3wOuGAak=; 
-	b=A8n4m9TSHOWSTtoNn2W97tLnoFen+A2T+MHjlMc1Fy2Osrzwbvz5wXokklGhxewaXenze4bkNrKTYl8owJrBUJ5XF9C1NhbLaSeq6TvYARrjCjqRSAlPfwuHpfzYaBKPOAlJuENarffaJUdtReMw0Vc+oQzIvMJ9+Pn+0UGA/IA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772456025;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=lPQKUxtVjexxEX4A7XuYCfJhBt0aFJEhGTj3wOuGAak=;
-	b=czCH1PwnW/CNSDoAUO7w4zjpsIwnu75I4YmbkTsbzGgEvfX7ryNg9YU9rmvgEoUo
-	y3p5/qdnQXH9dJ1dsu7mEMvGlvt+UzU3mJRc0wVN7PDPDV0PuEoHXkeE5lIglxjq8Ht
-	E9oAQ8KmXt0DU/LN72eVoyq0jW1mxhcUOCti0jF4=
-Received: by mx.zohomail.com with SMTPS id 1772456023924351.0985024371805;
-	Mon, 2 Mar 2026 04:53:43 -0800 (PST)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>,
- Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- kernel@collabora.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-doc@vger.kernel.org
-Subject: Re: [PATCH v9 04/19] drm/display: hdmi-state-helper: Act on color format DRM
- property
-Date: Mon, 02 Mar 2026 13:53:34 +0100
-Message-ID: <8648916.T7Z3S40VBb@workhorse>
-In-Reply-To: <20260302-literate-shrew-of-health-ec19d2@houat>
-References: <20260227-color-format-v9-0-658c3b9db7ef@collabora.com>
- <20260227-color-format-v9-4-658c3b9db7ef@collabora.com>
- <20260302-literate-shrew-of-health-ec19d2@houat>
+	id 1vx2ql-0000000D2xe-0DQc;
+	Mon, 02 Mar 2026 12:58:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=lT5NQqsicG6ABoJmYL6EdmPvEbABWHfZTIa8jFOUPog=; b=mioHnMNL8r+Wzc4SO/igJI0iSX
+	TiKjeLeYK+8HVZtos1BFDoS/n/6NoYWw550vlBh5ScksgMThdmzUxMOq2c93Bu3r0wfPdwY9eoofx
+	fZlXd3GWHwFfufYaBQB+ZgtCnT9ysYE/rQ5T0J4T+AYqbAvG45raojij2vPGBfr3iotGVoIa7iujQ
+	zqOycyv46mVGuDGJJzaTtcH8Sc9A9idKvC94T+kXm4/aW9GLEVWqvnPoFO7l1r4RQUE3T4k2cLFuI
+	5msKbDpKAfpGUXqMWEhTkjYtkfr3X2D4fH/FEyxQ2/An/ac/EZlnxXJmym0ZlMe3MlnNuEKlfdk5n
+	h34bD57A==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Diederik de Haas <diederik@cknow-tech.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	Samuel Holland <samuel@sholland.org>,
+	Maximilian Weigand <mweigand@mweigand.net>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	hrdl <git@hrdl.eu>,
+	phantomas <phantomas@phantomas.xyz>
+Subject: Re: [PATCH] arm64: dts: rockchip: Add battery and charger on rk3566-pinenote
+Date: Mon,  2 Mar 2026 13:58:04 +0100
+Message-ID: <177245624810.813665.10426528140221538980.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260224170531.516392-1-diederik@cknow-tech.com>
+References: <20260224170531.516392-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_045426_009904_B32C4F13 
-X-CRM114-Status: GOOD (  28.99  )
+X-CRM114-CacheID: sfid-20260302_045815_131516_D8F59519 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,113 +77,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Monday, 2 March 2026 09:46:06 Central European Standard Time Maxime Ripard wrote:
-> Hi,
-> 
-> On Fri, Feb 27, 2026 at 08:20:09PM +0100, Nicolas Frattaroli wrote:
-> > With the introduction of the "color format" DRM property, which allows
-> > userspace to request a specific color format, the HDMI state helper
-> > should implement this.
-> > 
-> > Implement it by translating the requested drm_connector_color_format to
-> > a drm_output_color_format enum value as per the logic HDMI should use
-> > for this: Auto is translated to RGB, and a fallback to YUV420 is only
-> > performed if the original color format was auto.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/display/drm_hdmi_state_helper.c | 28 +++++++++++++++++++++++--
-> >  1 file changed, 26 insertions(+), 2 deletions(-)
-> > 
-> > diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > index 9f3b696aceeb..31c6d55fa995 100644
-> > --- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > +++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-> > @@ -669,10 +669,34 @@ hdmi_compute_config(const struct drm_connector *connector,
-> >  	unsigned int max_bpc = clamp_t(unsigned int,
-> >  				       conn_state->max_bpc,
-> >  				       8, connector->max_bpc);
-> > +	enum drm_output_color_format fmt;
-> >  	int ret;
-> >  
-> > -	ret = hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
-> > -				      DRM_OUTPUT_COLOR_FORMAT_RGB444);
-> > +	switch (conn_state->color_format) {
-> > +	case DRM_CONNECTOR_COLOR_FORMAT_AUTO:
-> > +	case DRM_CONNECTOR_COLOR_FORMAT_RGB444:
-> > +		fmt = DRM_OUTPUT_COLOR_FORMAT_RGB444;
-> > +		break;
-> > +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR444:
-> > +		fmt = DRM_OUTPUT_COLOR_FORMAT_YCBCR444;
-> > +		break;
-> > +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR422:
-> > +		fmt = DRM_OUTPUT_COLOR_FORMAT_YCBCR422;
-> > +		break;
-> > +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR420:
-> > +		fmt = DRM_OUTPUT_COLOR_FORMAT_YCBCR420;
-> > +		break;
-> > +	default:
-> > +		drm_dbg_kms(connector->dev, "HDMI does not support color format '%d'.\n",
-> > +			    conn_state->color_format);
-> > +		return -EINVAL;
-> > +	}
-> > +
-> > +	ret = hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc, fmt);
-> > +
-> > +	if (conn_state->color_format != DRM_CONNECTOR_COLOR_FORMAT_AUTO)
-> > +		return ret;
-> > +
-> 
-> We discussed it before, and it wasn't as trivial as it should have been,
-> but now, I really feel something like the following would be simpler:
-> 
-> if (conn_state->color_format != DRM_CONNECTOR_COLOR_FORMAT_AUTO) {
-> 	enum drm_output_color_format fmt;
-> 
-> 	switch (conn_state->color_format) {
-> 	case DRM_CONNECTOR_COLOR_FORMAT_AUTO:
-> 	     drm_warn(connector->dev, "The format shouldn't be auto here"); // or any better message
-> 	     fallthrough;
 
-Why shouldn't it be auto there? This is the function where the auto->rgb
-mapping is explicitly handled.
-
-> 	case DRM_CONNECTOR_COLOR_FORMAT_RGB444:
-> 	     fmt = DRM_OUTPUT_COLOR_FORMAT_RGB444;
-> 	     break;
-> 	....
-> 	}
+On Tue, 24 Feb 2026 18:04:51 +0100, Diederik de Haas wrote:
+> The PineNote has a single cell 4000mAh battery which can be charged via
+> the rk817 PMIC.
 > 
-> 	return hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc, fmt);
-> }
-> 
-> ret = hdmi_compute_format_bpc(connector, conn_state, mode, max_bpc,
-> 			      DRM_OUTPUT_COLOR_FORMAT_RGB444);
-> 
-> It makes it much clearer what the two branches are, and we don't have to
-> test for auto multiple times.
-
-Testing for auto multiple times is done for the "4:2:0 fallback on
-AUTO only" case. If you fall through from AUTO to RGB and then return
-the result of hdmi_compute_format_bpc on RGB, then you will not let
-AUTO fall back to 4:2:0. hdmi_compute_format_bpc only does a fallback
-for lower bit depths, not different color formats.
-
-As far as I can tell, you're requesting a change of behaviour here that
-would require me to adjust the behaviour of every single other HDMI
-implementation and modify all the tests that you already gave a reviewed-by,
-so I assume this wasn't the intent?
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> Maxime
 > 
 
+Applied, thanks!
 
+[1/1] arm64: dts: rockchip: Add battery and charger on rk3566-pinenote
+      commit: 1d608a269e24285eb399e08f0b47c2020b8c719a
 
-
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
