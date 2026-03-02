@@ -4,67 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1814AE9B376
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 12:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B366E9B377
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 12:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nmAARjd+3tlCTDHdbNoziJ0a/qqzcs2V1Y1ZGC0Xa3I=; b=vI3Lo1BkEnKIBz
-	b3XaLac6MKl6tb8SlXbhtaLsAM6L2JUCRc7JU2IsuFK/zX4dyyaB8dqjf6EhjBYNoBpaf8CAXph+c
-	UiDc8tgGP3/wXJpmLebzkM4HM476MrLd/SvhE1egnO0tsXy1kEOdOxab6ObHv1yDTMv1xmfFb7V5b
-	s/fKpcOyCrk7iDLF5jJ0/IvF5ZpX3ck2OH+WZDy3kIuSLk1WMkW53g4zv198Wbw+n4XPCJWqfsj2w
-	uFMIOz9HzvNfI17WZDGzTFj3gljzn6N83fbqqeMfpD6Doy/9QoKK9z7HVNsqboeileGfNdXIr1QgJ
-	ni9ltu/BNkmVqLUm54Ow==;
+	List-Owner; bh=VKIk6xOzWqhonO6JdezbYef9pj9kmXTtV9qR8+2/JaY=; b=F4TZO5JMeYsVNS
+	rweF45tPoClyfK8LAbXengmfcGqdF2vjxz96IrYsLgZNEBs88QJMiaI17i1abKjCLSIkBHGp7CGox
+	nL04IEHZ0SmVjGzfblnX42K1B2hZasY/0og3qzwqC9UtwMGPiyh48O3yRTMv9Oi1rDNnT8Da/YFoF
+	5fNh/5tsTs0CR3kJN3sCqNePaOMJdlC9cMHx45IduDWqgCTyFvzNY277ixf4h2vATmA8pVYDFF7qH
+	YXbZXjzeL36GVPtlQjwPV1leKFnsfdyrRbcRnPJUp3ElnBv56R8H/0+rCAR99g/UQvdu0C8Kb7RqM
+	ekekRskRL8pXxy0r5O/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx2ql-0000000D2yG-3fuR;
-	Mon, 02 Mar 2026 12:58:15 +0000
+	id 1vx2qy-0000000D34f-0kyy;
+	Mon, 02 Mar 2026 12:58:28 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx2qj-0000000D2xd-3uyM;
-	Mon, 02 Mar 2026 12:58:14 +0000
+	id 1vx2qw-0000000D33H-1SkF;
+	Mon, 02 Mar 2026 12:58:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
 	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=HXsMf62eNb3NtaWUWcNrXii8Eu5f2t7yjT8fDj2jThA=; b=cojYfMiPYOHHU50Q5tBW8fOcQ2
-	qTxO+Tq1tEl4yMfeHAL8UlWKwr0WvRFKCYqBgjLQghoR0r/T69S8QIrAXrNyJT6AnRRVqAmWNtLJJ
-	PTZP7xXpur5U8aaOH2BNou6vHx6DeTlHAhoRCPMNuSv5ZutIZw0NyQAeCwOjHeI49+pYZd0zr+LWA
-	MY3ykYSs4GZbu0nZDlKS2n4z1om8NLty99zxSUeT7GkPQiXGUUPmJ/ATo8qDCWm0Tkilw2t0LXfLZ
-	RL+BBFzwX3Vs3xJBD+cw/sUXgzs3r1aZpuTxdcKNsNFRJQ2qzhC+5HyQLkFhXjy1YYVBJ4wiGL6ji
-	iBLW8TYg==;
+	bh=9NPsjemStQ87n0xUjwDCJNEh55URKvMtZw+KVT5SDx0=; b=BfG10oUVxmvixMXPcoRYSIphoJ
+	cL3DU2ZcPPSWnDPuw5ckVMmFkiP81EoqJ9KUx2MiylA4eOW4ZEY+h+wCfd4PruczlsoBDiIRrshds
+	C5FVq9xtxcv6ufjWhWOsxBcH2m/pS8S3FedR4nSj0/YqZZBNk6qBF09NrFrwu059PxJR9ZxUCEIpM
+	7mVPomu30ssMCVYe1QLbanY9yMcGrzy6YH84a3CubYIF+Z9MNgsbcrU5IBgLNVqlJHll3zdJ2+BNX
+	7Yewb++FSFH0sGVZa5+1BKBuRz+cdfEIKlNyhlxgwVXCUXVPHcb9SbixH8W6CXcwpq06W8brRunge
+	57TmQVdQ==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx2qh-000000005sw-0nqe;
-	Mon, 02 Mar 2026 12:58:12 +0000
+	id 1vx2qt-000000005v4-2w61;
+	Mon, 02 Mar 2026 12:58:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=HXsMf62eNb3NtaWUWcNrXii8Eu5f2t7yjT8fDj2jThA=; b=pNWb7zehfTdjDqNIR8cfTnUeOK
-	4iBe9FeKmmC6TShFE3PqVQqRBzExO9gpBhLdT7RnR7pEAd/2R8VNV/MJzir5Dw03owY1TaNl2+wZx
-	sv7fBiqR3Tvp2rc8LqT1OJrr1EvSn+GJYQTtFt1OFZ3MypeE0HMwdBzemO3hynT68dGorsgQLDvkE
-	IfWLqd8pJzzhYY1jxtDwJ+jXq/ZKt68hvb7s9i3pewy0MQue+tUVjrDP+p+4wlT1tMrkNi9XnqnLP
-	aVU49Cq6OGBrQJwuM7pmvjiZ/CnyEPqo4Zhql3mEHWaVQmWzhdb3kAKg5XZ76g7onkl5hSQLGlTKg
-	fcT9E5IQ==;
+	bh=9NPsjemStQ87n0xUjwDCJNEh55URKvMtZw+KVT5SDx0=; b=giKMICpIVVMtUJ7eUGhWu5ZoNr
+	ZcznH5niLHXn0lCKWuTZSvatyoDDo1tb1wvqEGI+2W95/4tDvRYNn7M9eoGyzolAlSYRZr/6x0af4
+	0deMKAeMr9QU9u/1auQ6PrFf+qhegSgB6VoccPI8by3bx9V0eoWqSRNkja7CIqAhB8F44Cz5id54f
+	1zTnX6s2hKsrZy1g2d6VCRXdqZBat2EnfSOogHdAT4tSzAvDKY07Y5WcNfI+MiRAGii2Knipsr/fo
+	XZPNSNFnSNln7NZWuabigIdoKUTHEKSTu+yw9tPQ8C6zNgksYJ9vgdPRSP12kPOwH+657RYuR+4ku
+	VExNP+fA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: quentin.schulz@cherry.de,
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Chaoyi Chen <kernel@airkyi.com>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/4] Move to gated-fixed-clock for Theobroma/Cherry boards
-Date: Mon,  2 Mar 2026 13:58:05 +0100
-Message-ID: <177245624815.813665.2146568980747439524.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Enable displayport for rk3576 evb2
+Date: Mon,  2 Mar 2026 13:58:06 +0100
+Message-ID: <177245624813.813665.16227743247073713111.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260210080303.680403-1-heiko@sntech.de>
-References: <20260210080303.680403-1-heiko@sntech.de>
+In-Reply-To: <20260224083818.109-1-kernel@airkyi.com>
+References: <20260224083818.109-1-kernel@airkyi.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_125811_327031_55EB8282 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20260302_125823_797339_244CE054 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,29 +92,15 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 10 Feb 2026 09:02:58 +0100, Heiko Stuebner wrote:
-> Both Tiger and Jaguar currently use a fixed-clock and gpio-gate-clock
-> to model the PCIe clock generator they have.
+On Tue, 24 Feb 2026 16:38:18 +0800, Chaoyi Chen wrote:
+> The rk3576 evb2 has a full size displayport connector. Enable it.
 > 
-> Ever since I wrote the gated-fixed-clock binding + driver, I carry
-> around conversion patches for those boards to use the new binding
-> and describe actual hardware.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/4] arm64: dts: rockchip: use gated-fixed-clock for pcie-refclk on rk3588-jaguar
-      commit: f5e52701725c5c5c54d6511ca633a7566d1661a8
-[2/4] arm64: dts: rockchip: use gated-fixed-clock for pcie-refclk on rk3588-tiger
-      commit: cfe2d65332eff95ac7308478897760888f957aeb
-[3/4] arm64: dts: rockchip: add pinctrl for clk-generator GPIO on rk3588-tiger
-      commit: 603921cf88952c456bff8f22e48a822a077341b8
-[4/4] arm64: dts: rockchip: Make Jaguar PCIe-refclk pin use pull-up config
-      commit: f45d4356feeba1c8dac3414b688f59292ddfc9f9
-
-Reworded commit description in patch4, as suggested by Quentin.
-
+[1/1] arm64: dts: rockchip: Enable displayport for rk3576 evb2
+      commit: 35dad33703e8b40090e964257eafdd66e53f38eb
 
 Best regards,
 -- 
