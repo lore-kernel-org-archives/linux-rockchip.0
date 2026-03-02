@@ -4,105 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24B86E9B351
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 10:00:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91BFBE9B34D
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 10:00:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ctITw8waceKhJy6MjRySFOLQIor7V9gk4g07dz/aCRQ=; b=bABjGT4Xo46KuZ
-	SovXCVHXb8PqLpaxmxIFZmsawfoJJ8FgVy/EUfcJIbMfI+5La/KzAObm/864Ly0aHVyVCa3Uqcndo
-	14XHpwwGYknFJpK7FI39QDpBSCRkNZI+mEBKQFZYeMoZhlj14Hrft//a1FjkFs6+gLXWhLL0+kSYn
-	WOG5BQpsSu4faflGiEgXNsmFfdnFlhA+wHtREpucyDHFZc8p/r8BAPwEowLJWsULnUYBhyx4+A5OU
-	gLvRLRYmiZVgxDaS37D7n2JEf9/v0yW1UUxA2yIO4HUaBOoUaqre30WCyX1Y596MMIhMxi3/UH+8/
-	adDxiCWdZWg9OICZBkuw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Yn2nIHd6Ui6R6ICRlFPyKDG5X5g5iAejwDuCjo2ds8w=; b=WmwRfRGi+7kM7A
+	PSAlvepjtk91KCQhBrZY1KAqVjcoj9QY7rmsbzh/kppld8jdpBkXqej5j1Lfs+p9vbMJQUggupbnH
+	gSwoueuFhVukma/QpZQ05LyByV0sfKy4Pp9YuutWNkQw8Cw2YWuhxPHRyUcgcxLoblY/BQ0tG9tHO
+	H3QpnpZlQHjDeAABgjGMqzLzkejt7/8P/2j40ZG7eWD6Ztu9HEdAa0fzqyBp5QsTQB0nwyBv9+fsr
+	/BzMdR1GUBwb75uAh9huDtOXOJYpy6oP5Q2koDKPYlH5iSvh259eXgy21ZFtB/qdaeb6oRVMeqQAD
+	lZT9RKMsRKsg006wGkSA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx04M-0000000CdXC-1mum;
-	Mon, 02 Mar 2026 10:00:06 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1vx04Y-0000000CdbA-1v2W;
+	Mon, 02 Mar 2026 10:00:18 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx04J-0000000CdWE-1f7F;
-	Mon, 02 Mar 2026 10:00:04 +0000
+	id 1vx04V-0000000CdZq-3PRD;
+	Mon, 02 Mar 2026 10:00:16 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8664143FE1;
-	Mon,  2 Mar 2026 10:00:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F1A15C19423;
-	Mon,  2 Mar 2026 09:59:52 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 75BCC4176A;
+	Mon,  2 Mar 2026 10:00:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82B26C2BCAF;
+	Mon,  2 Mar 2026 10:00:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772445602;
-	bh=IoPwRnzhcjgMfGxBVDJ5aughrS0y6ra32/Xy0hY7TLw=;
-	h=From:To:Cc:Subject:Date:From;
-	b=c+MpGq1dnuTjUI7f0FrIbg04S4ve5/201mDbKqansVCUw6ROye6c/d1QelKslSjbF
-	 nba0cVLK3eHGlu7U4FA/t8bBHPJoMpo73cDxG0l8/SCtcSRTaEkNqbuzWgwdMpTYRZ
-	 Lg/THWXWHObfMlWayI3hhx+JkkDlWbVyNZyrBMWUSnXauUHohb7Y878keSZs/kSMUM
-	 48PxGoCsSYXBKycQxMj0s4ihGAHFiYZxyv2Ki8nhknqS7avD0DtBgGwMAJOw7zi0tC
-	 8vlwUS9HXOWiK1eYWUSuxV1u1QJgKxdXP1R9e4c0vILJtRJUDRweH2sW7Q7QOaigUI
-	 4V9PxzbbkBD/Q==
+	s=k20201202; t=1772445615;
+	bh=cEWEtVNxn7YA4HCPF4joB80toxgCA1BCz1lWZNuQ6rw=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=hTDwAe1v2ZkW2nGqpCTCuPNlC9C9ftx3HPlAgFZlwnGGJDyszFY7SIDaybSjtq7Nf
+	 XZ7gEmHZYhzDReIGLEAtuEF6+CALvINSnJoQZB4nwfkQiG/jh6+WTs6YRQCPpy+3Up
+	 WplMbb/rQWLR2nalka98Hl3k7hiNin8D78E+u/EfD0N5FczRMsDVUniR+xaNM3KrlJ
+	 j/XfuyjzOSsnW1eEQISptXJ/eEWdGMLdmLTdcgmG6TqfR9LAcGYli48laBbAOB2+/Y
+	 I0Zo5eUhfGGi/srYgTotctdrdHthT4YbomzJgzlZtAT2MSCmSOM8/JYfZgBrqocFy4
+	 v3xTW4hduua5A==
 From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>,
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
 	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Kishon Vijay Abraham I <kishon@kernel.org>,
-	Arnd Bergmann <arnd@arndb.de>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Siddharth Vadapalli <s-vadapalli@ti.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>,
-	Richard Zhu <hongxing.zhu@nxp.com>,
-	Lucas Stach <l.stach@pengutronix.de>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Minghuan Lian <minghuan.Lian@nxp.com>,
-	Mingkai Hu <mingkai.hu@nxp.com>,
-	Roy Zang <roy.zang@nxp.com>,
-	Jesper Nilsson <jesper.nilsson@axis.com>,
-	Jingoo Han <jingoohan1@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Srikanth Thokala <srikanth.thokala@intel.com>,
-	Marek Vasut <marek.vasut+renesas@gmail.com>,
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Christian Bruel <christian.bruel@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>,
-	Shuah Khan <shuah@kernel.org>
+	Heiko Stuebner <heiko@sntech.de>
 Cc: Manikanta Maddireddy <mmaddireddy@nvidia.com>,
 	Koichiro Den <den@valinux.co.jp>,
 	Damien Le Moal <dlemoal@kernel.org>,
+	Frank Li <Frank.Li@nxp.com>,
 	Niklas Cassel <cassel@kernel.org>,
 	linux-pci@vger.kernel.org,
-	linux-omap@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org,
-	linux-kselftest@vger.kernel.org
-Subject: [PATCH v3 0/9] PCI: endpoint: Differentiate between disabled and reserved BARs
-Date: Mon,  2 Mar 2026 10:59:12 +0100
-Message-ID: <20260302095913.48155-11-cassel@kernel.org>
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v3 3/9] PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl window
+Date: Mon,  2 Mar 2026 10:59:15 +0100
+Message-ID: <20260302095913.48155-14-cassel@kernel.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260302095913.48155-11-cassel@kernel.org>
+References: <20260302095913.48155-11-cassel@kernel.org>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2516; i=cassel@kernel.org; h=from:subject; bh=IoPwRnzhcjgMfGxBVDJ5aughrS0y6ra32/Xy0hY7TLw=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDKXxheqFho7TVV4vZNPP2u59rS1LzakLTaM+X7/asqxv n3T7iV86yhlYRDjYpAVU2Tx/eGyv7jbfcpxxTs2MHNYmUCGMHBxCsBElIMYGd7tY5/em1zZdO3m KzvfZ+eOlx/NEF/1eubppbbZQi1PLHgY/mmxcaU+WXH5k4/jHZ8DVSILb83YIv9r9unVb5p6300 KuckHAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2154; i=cassel@kernel.org; h=from:subject; bh=f1LYtE3q/j0+VWpsNcU5CJsbxfsJPELN/5WncWLOpCY=; b=owGbwMvMwCV2MsVw8cxjvkWMp9WSGDKXxlesbHV73Xgm5fYcaz7h7pg4tVkiActWCTh/DT7oc 9XAjUuuo5SFQYyLQVZMkcX3h8v+4m73KccV79jAzGFlAhnCwMUpABOJmc7wP6TojyyTYvr2VRHK uyYKLdXo3FQ0x4415cIGjfyLvDtbLjEyvOWcGbtW03epg7v61AdXTz98uv2OlzjXwT/B23+ecWZ zZwUA
 X-Developer-Key: i=cassel@kernel.org; a=openpgp; fpr=5ADE635C0E631CBBD5BE065A352FE6582ED9B5DA
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_020003_474760_A4BD7174 
-X-CRM114-Status: GOOD (  11.08  )
+X-CRM114-CacheID: sfid-20260302_020015_902441_B791F7FF 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,62 +84,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello all,
+From: Koichiro Den <den@valinux.co.jp>
 
-This series was originally written in response to the patch series from
-Manikanta Maddireddy that was posted here:
-https://lore.kernel.org/linux-pci/291dab65-3fa6-4fc8-90a2-4ad608ca015c@nvidia.com/T/#t
+On RK3588 PCIe3_4L in EP mode, the integrated DMA controller registers
+are permanently mapped to BAR4 and must not be repurposed by EPF
+drivers.
 
-Manikanta has reviewed V1 and will send a small series on top of this one.
+When the remote peer needs to access these registers, it must use the
+fixed BAR4 window instead of creating another inbound mapping in a
+different BAR. Mixing the fixed window with an additional mapping can
+lead to incorrect behavior.
 
+Advertise the DMA controller MMIO window as a reserved BAR subregion so
+EPF drivers can reuse it safely.
 
-Changes since v2:
--Picked up tags from Frank and Koichiro (thank you)
--Fixed a comment in pcie-dw-rockchip.c to no longer reflect the old
- definition of BAR_RESERVED.
+Reviewed-by: Manikanta Maddireddy <mmaddireddy@nvidia.com>
+Signed-off-by: Koichiro Den <den@valinux.co.jp>
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Tested-by: Koichiro Den <den@valinux.co.jp>
+Signed-off-by: Niklas Cassel <cassel@kernel.org>
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 15 ++++++++++++++-
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
-Link to v2:
-https://lore.kernel.org/linux-pci/20260225170324.4033466-11-cassel@kernel.org/
-
-
-Koichiro Den (2):
-  PCI: endpoint: Describe reserved subregions within BARs
-  PCI: dw-rockchip: Describe RK3588 BAR4 DMA ctrl window
-
-Niklas Cassel (7):
-  PCI: endpoint: Introduce pci_epc_bar_type BAR_64BIT_UPPER
-  PCI: endpoint: Introduce pci_epc_bar_type BAR_DISABLED
-  PCI: dwc: Replace certain BAR_RESERVED with BAR_DISABLED in glue
-    drivers
-  PCI: dwc: Disable BARs in common code instead of in each glue driver
-  PCI: endpoint: pci-epf-test: Advertise reserved BARs
-  misc: pci_endpoint_test: Give reserved BARs a distinct error code
-  selftests: pci_endpoint: Skip reserved BARs
-
- drivers/misc/pci_endpoint_test.c              | 21 ++++++++-
- drivers/pci/controller/dwc/pci-dra7xx.c       |  4 --
- drivers/pci/controller/dwc/pci-imx6.c         | 22 +++------
- drivers/pci/controller/dwc/pci-keystone.c     | 12 +++++
- .../pci/controller/dwc/pci-layerscape-ep.c    |  8 +---
- drivers/pci/controller/dwc/pcie-artpec6.c     |  4 --
- .../pci/controller/dwc/pcie-designware-ep.c   | 24 ++++++++++
- .../pci/controller/dwc/pcie-designware-plat.c | 10 -----
- drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++----
- drivers/pci/controller/dwc/pcie-keembay.c     |  6 +--
- drivers/pci/controller/dwc/pcie-qcom-ep.c     | 14 +-----
- drivers/pci/controller/dwc/pcie-rcar-gen4.c   | 16 ++-----
- drivers/pci/controller/dwc/pcie-stm32-ep.c    | 10 -----
- drivers/pci/controller/dwc/pcie-tegra194.c    | 20 +++------
- drivers/pci/controller/dwc/pcie-uniphier-ep.c | 24 +++-------
- drivers/pci/controller/pcie-rcar-ep.c         |  6 +--
- drivers/pci/endpoint/functions/pci-epf-test.c | 24 ++++++++++
- drivers/pci/endpoint/pci-epc-core.c           |  6 ++-
- include/linux/pci-epc.h                       | 45 +++++++++++++++++--
- .../pci_endpoint/pci_endpoint_test.c          |  4 ++
- 20 files changed, 175 insertions(+), 128 deletions(-)
-
-
-base-commit: 36bfc3642b19a98f1302aed4437c331df9b481f0
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 5b17da63151d..ecc28093c589 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -403,6 +403,15 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3568 = {
+ 	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
+ };
+ 
++static const struct pci_epc_bar_rsvd_region rk3588_bar4_rsvd[] = {
++	{
++		/* DMA_CAP (BAR4: DMA Port Logic Structure) */
++		.type = PCI_EPC_BAR_RSVD_DMA_CTRL_MMIO,
++		.offset = 0x0,
++		.size = 0x2000,
++	},
++};
++
+ /*
+  * BAR4 on rk3588 exposes the ATU Port Logic Structure to the host regardless of
+  * iATU settings for BAR4. This means that BAR4 cannot be used by an EPF driver,
+@@ -420,7 +429,11 @@ static const struct pci_epc_features rockchip_pcie_epc_features_rk3588 = {
+ 	.bar[BAR_1] = { .type = BAR_RESIZABLE, },
+ 	.bar[BAR_2] = { .type = BAR_RESIZABLE, },
+ 	.bar[BAR_3] = { .type = BAR_RESIZABLE, },
+-	.bar[BAR_4] = { .type = BAR_RESERVED, },
++	.bar[BAR_4] = {
++		.type = BAR_RESERVED,
++		.nr_rsvd_regions = ARRAY_SIZE(rk3588_bar4_rsvd),
++		.rsvd_regions = rk3588_bar4_rsvd,
++	},
+ 	.bar[BAR_5] = { .type = BAR_RESIZABLE, },
+ };
+ 
 -- 
 2.53.0
 
