@@ -4,62 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC9DE9B36B
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 11:40:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80773E9B371
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 12:36:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RmIMN8IewBqmuP/t5x47++I3FBBZoV4SUi9IEsBd3SU=; b=TnNpSXUuLq9HRf
-	sV3wUPQEE05cJWDod3ck3w4DNoc+X/bTgnCz7nPuyhyaGIlGW6gUK148woThtauI6YLC4d2pRYkXE
-	dVuqWsNXlUpaFTKDTYhnB7OtaWvETFqsYCuaeHmo1M3nRRLnxcxuA3g8D9ojK0CKWBck0hIIb5CWc
-	xIAroaz8FvbfuUMUNhPkJifFRvnHkUrl9AA2OVksyA7Yw/azd9BeGHiVxOKxeE0oDxXnYvtCNehk/
-	jeE3plTJTY3RC08YGogUBX+vU+yCjV7aUw2cNGrDlmirdzgYXX4tiIAb6YirFFLSpyVKx4Gdjduzp
-	Wgu7/Aa9enoEBMkjerkg==;
+	List-Owner; bh=qsGbYEMVssXbxc0oOiDeLlzXbyjmzWtfphFs2JA7l44=; b=IVTMk4g6sXd4J9
+	R8/D3cY491yfpwo6f6NLgFAyH9Oc0dJ+RUXnjFrjbnHGQrageDdx/mPUAS6KpGOYGnHcMljHMMc+L
+	zIOUGVDk9RO6W9Mq8l0GUHozb5V6JuAY4zNBdzELfp9kEO1zt59DHqAj9bqsT0i5A0oYz+3BI0JFd
+	P0EZGufc62wSonEw4OCYWdqKaJGKydrCSu7Ips2IT/34inHo4iOgBuHq2TAs4ufPOTFDqJv/T/1dB
+	H6OjkoTe5R+fvY83Ap6nK7DZCg0XA1306PwbwvGChH+88NeNHDwuxymCr78m6rp8R6CxRlyQZoVZN
+	Jcm8S2IUwkK7NXXfr8JA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx1dD-0000000CqRY-49aA;
-	Mon, 02 Mar 2026 11:40:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vx2VZ-0000000Czu2-0OVA;
+	Mon, 02 Mar 2026 12:36:21 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx1dB-0000000CqM7-2kyZ;
-	Mon, 02 Mar 2026 11:40:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=cNcvX7o0uACaqfGQIHmPD7RzV0GRL2BHct2k8eJvLpk=; b=QEONd7IlIdN7v6YzOiC7ar8qr6
-	avGFh2Mu2OE+NFXZaph7AIUBosUCY0CzSyKAfAfrfk6Mf/2gCOzVvb2aT3QQWYmC1ZzYhPys33Zv2
-	7gsrxn7GAEtFmLpNA2GPzWYeLj7LlZ3O7SE+FaE5Qzd/S7lvFhMisau4TrjtgKqX61VYjlbdMvo0Q
-	tZMGf4lxIJ5iAkfNUBJSYw/KGxqJcgeGYPXM5RSz3tWILBViWr4fueqiRYdTCI6UIDQGOp5gtDyAN
-	Nlm8GnX06LgCkOSoAMu+RVav60Pp43pwN5QlFqjkyoGtQlZLxHT6rVITa0esEhqAaFQWNL9rrSdfC
-	b+QqR81Q==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Alexey Charkov <alchark@gmail.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Chaoyi Chen <kernel@airkyi.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: Fix sdmmc pwren pinctrl for rk3576-evb2
-Date: Mon,  2 Mar 2026 12:39:56 +0100
-Message-ID: <177245158240.769695.7263646798737263068.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260226102052.63-1-kernel@airkyi.com>
-References: <20260226102052.63-1-kernel@airkyi.com>
+	id 1vx2VW-0000000Czt9-1zUw;
+	Mon, 02 Mar 2026 12:36:19 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1772454928; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=EdM6kuDOOrBMjnk82Ujo+bVjEAXNVDAZBqVU/C5AIUuCTCpiFxwCZcpe03EWauXknbjeD766XJC5tJXnzS73vS3HbLrIVgx4rI/i1umJU3RCWVf4cWtY31b9OEOnDlRP22zfC84VoMNE73XFwNmWC4jeftCBL06vVeerlFo1Mxg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1772454928; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=3BG6NbMJZCakv4h2SAqH1WDhyhJOxLlkoG0+u/X9t+w=; 
+	b=TiGFuMZyrE5Ol/sLoQp+n0ByX0Xz2NUfj2Wbg/OGQXHHc+WHNgMxrth2sK/DXaQUgopkpXqtj73ZFd4FpvtZVvJsUOXn5b909FImg8PufyEmX3POJt6RtJLYu6HzjrzyRCD24SyHVJo7YW4IT+h4B294hCJ/oza3vNm3PR0QHA8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772454928;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=3BG6NbMJZCakv4h2SAqH1WDhyhJOxLlkoG0+u/X9t+w=;
+	b=B7iz3Bd6S3S9gUGiY3IxUc2MxIUugQu7iDZrJ/yyGxTlAtxwtsUGr5Xe5CLIXEGc
+	4z1rqx/G6PEKW5Q98G92SaBOZWk7fscOfqGNo1g8UGj3WiRlrlT4fxUNnQkh/ltgEPS
+	YLQ2mrmefuTXI3ooJRzKjrWdygiygyjjnqNTQ15g=
+Received: by mx.zohomail.com with SMTPS id 1772454925950111.09737166746925;
+	Mon, 2 Mar 2026 04:35:25 -0800 (PST)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+ Rodrigo Siqueira <siqueira@igalia.com>,
+ Alex Deucher <alexander.deucher@amd.com>,
+ Christian =?UTF-8?B?S8O2bmln?= <christian.koenig@amd.com>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Sandy Huang <hjc@rock-chips.com>,
+ Heiko =?UTF-8?B?U3TDvGJuZXI=?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+ kernel@collabora.com, amd-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
+ linux-doc@vger.kernel.org, Andri Yngvason <andri@yngvason.is>,
+ Werner Sembach <wse@tuxedocomputers.com>,
+ Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v9 02/19] drm: Add new general DRM property "color format"
+Date: Mon, 02 Mar 2026 13:35:16 +0100
+Message-ID: <5081457.31r3eYUQgx@workhorse>
+In-Reply-To: <y5ybjitphwydvtcjdtrmpcx7t7hwevjszpktcnmyvjqkgzinmu@hoitkl7lghxh>
+References: <20260227-color-format-v9-0-658c3b9db7ef@collabora.com>
+ <20260227-color-format-v9-2-658c3b9db7ef@collabora.com>
+ <y5ybjitphwydvtcjdtrmpcx7t7hwevjszpktcnmyvjqkgzinmu@hoitkl7lghxh>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_034009_726262_C9985151 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20260302_043618_543534_09C17AD7 
+X-CRM114-Status: GOOD (  23.59  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,23 +102,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 26 Feb 2026 18:20:52 +0800, Chaoyi Chen wrote:
-> In rk3576.dtsi, sdmmc0_pwren is configured as part of the sdmmc pinctrl.
-> However, on the rk3576 evb2 board, sdmmc0_pwren is used as the regulator
-> for vmmc-supply. Therefore, we need to reassign the sdmmc pinctrl and
-> remove sdmmc0_pwren to avoid conflicts.
+On Sunday, 1 March 2026 17:47:48 Central European Standard Time Dmitry Baryshkov wrote:
+> On Fri, Feb 27, 2026 at 08:20:07PM +0100, Nicolas Frattaroli wrote:
+> > From: Andri Yngvason <andri@yngvason.is>
+> > 
+> > Add a new general DRM property named "color format" which can be used by
+> > userspace to request the display driver to output a particular color
+> > format.
+> > 
+> > Possible options are:
+> >     - auto (setup by default, driver internally picks the color format)
+> >     - rgb
+> >     - ycbcr444
+> >     - ycbcr422
+> >     - ycbcr420
+> > 
+> > Drivers should advertise from this list which formats they support.
+> > Together with this list and EDID data from the sink we should be able
+> > to relay a list of usable color formats to users to pick from.
+> > 
+> > Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+> > Signed-off-by: Andri Yngvason <andri@yngvason.is>
+> > Signed-off-by: Marius Vlad <marius.vlad@collabora.com>
+> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> > ---
+> >  drivers/gpu/drm/drm_atomic_helper.c |   5 ++
+> >  drivers/gpu/drm/drm_atomic_uapi.c   |  11 ++++
+> >  drivers/gpu/drm/drm_connector.c     | 124 ++++++++++++++++++++++++++++++++++++
+> >  include/drm/drm_connector.h         | 103 ++++++++++++++++++++++++++++++
+> >  4 files changed, 243 insertions(+)
+> 
+> It seems and feels that the common code to be used (almost?) everywhere
+> would be:
+> 
+> if (!drm_mode_create_color_format_property(connector, supported_formats))
+> 	drm_connector_attach_color_format_property(connector);
 > 
 > 
+> Please mention somewhere the reason to split that into two functions.
+> 
 
-Applied, thanks!
+There isn't one I can think of, I kept it as-is since I inherited
+the code like this and figured this was the expected convention based
+on drm_mode_create_hdmi_colorspace_property ->
+drm_connector_attach_colorspace_property.
 
-[1/1] arm64: dts: rockchip: Fix sdmmc pwren pinctrl for rk3576-evb2
-      commit: 7d939032bd7e203e1c907a8c35e3672eeee08246
+Quite possibly, the idea is that callers can choose to probe whether
+a certain set of parameters would allow the property to be created
+without attaching it during said probing, but that's speculation on
+my part.
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
+Having it work like drm_connector_attach_max_bpc_property may make
+more sense here, and I'll refactor it to do this in the next revision
+unless anyone has any objections.
+
+Kind regards,
+Nicolas Frattaroli
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
