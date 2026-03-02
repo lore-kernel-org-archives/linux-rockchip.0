@@ -4,67 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C2C3EB362C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 20:25:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12FC4EB3637
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 20:55:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DAKbbTk99xCYbiPpTaKFt3E6IKW2UuuMRSg4flxHUzM=; b=YsJOfsMOzFC/YR
-	a3ZTjSm6NzpSkdgPxp+Tx/vH4BiANdI/PxBdB7npWqgiCTnMcYgRxJNEb5qxJa5391qFyTebSU02U
-	zM5JJhrBOnmZYq7lEXmuMBlgPWY/BV4EyHtz/gNou8etWHAL1lP/hlqio6BpMDvQ5/qK9NcoAHAGL
-	aI08+jmBzl+0WFxZo8RCXUtwbNaxAzvwtvsnVQMnsOay+Telz4BlrTHYZSMeXOLVQ8L3DgHRk37l3
-	WJOsuM/prsxjDrwNtapqZG8K0K16S04vPdN5pI7/lXTSkoAJmV0MzK1V/pTlFuGyT6z4YyOZG5rLH
-	LEzob9nWhKZdxs27d8VA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=A7q4B+/lGfBIkQJhUDeDrfI3YY2Yhh8RDyOlZuRHT4c=; b=GAq6H8qD2XcAnA
+	zzEFuUFcBq1TYubimijzck66Zc2d0hya+UgBBdQU5MS+8SwpTXQU3+xHT54qy3423E9nkDOBCMWl2
+	nzXNmBcqVaBYUKQZPHnpPRsmy2NH08g+yNee2XbWNtMMD0g6tiULZtPOjbh0HZ4Kjije5FR1gtppV
+	4xzcjaRNkoDFlGfzeER4AEYdAxSD2UZXjVpRGvWUcaDBkQPrLuc2UqUoVgjPAk1jrSyIxfT2CUf4A
+	1gibADAz7VGhBTUkqNL0JOjB4SajbTlaCvXzj0/EnXKMFhbdYgaypf/tR4BTZPuvACdnMytll6zlY
+	xV4WTDMMtV2lTCFUM1mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx9pI-0000000DnPZ-2zem;
-	Mon, 02 Mar 2026 20:25:12 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vxAIG-0000000DyVP-1td9;
+	Mon, 02 Mar 2026 20:55:08 +0000
+Received: from tika.stderr.nl ([94.142.244.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx9pF-0000000DnOJ-3Fu5;
-	Mon, 02 Mar 2026 20:25:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772483106;
-	bh=j8C1DSiSsbLi3cNhCq6PK862abqoa5luMjGyDLs7LpU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NsHI334R2Nhzn/eAQvAmbuv2NUvAeI4ppyOkretq4D8UJ7VHwfVDFNBNdYgol9D4c
-	 thQ8HkveUWAR20DmANTnqLJZWy6qnawfA6YEFzn1z/olHCvjDhu46Y2YsoRg4axmWw
-	 Adp8KXvO8fDVcqJWhXLJSHQFIzlM1OYJJ+jVLkKlmnl2JG3M6h6NehpgBy+ZyNHLgg
-	 evOv+1r8KH1DBU5oZ10Yh2Hwlti626spVndBbklYJi5/G3LneJFHDhqdFBFxN0bKrX
-	 Q2Teqf9GfusR3Vszaqr5HY0YbjBwwDMrqk32CDb3hdNCL9nvUP8f9DtMkFVbD0+xua
-	 ntJ7fuU/rdvHg==
-Received: from [192.168.1.90] (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B7CDD17E0D90;
-	Mon,  2 Mar 2026 21:25:05 +0100 (CET)
-Message-ID: <e1a0d7e0-2432-401c-80af-8195a21a9d1f@collabora.com>
-Date: Mon, 2 Mar 2026 22:25:05 +0200
+	id 1vxAIE-0000000DyUO-1Nqk
+	for linux-rockchip@lists.infradead.org;
+	Mon, 02 Mar 2026 20:55:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=mail.tikatika.nl; s=201709.tika; h=Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Odw8qkydcdNF0JVOnHyMy9rrHQVoIN8FWe5q008qLtI=; b=Zr+rutCeoUTf+JGh7kHhJpB6Hm
+	4NETxmCx1BbMqh59mLNTXmTgKkApSlVGMvz0WsS+LjGwAJEUtBPXM8CFmPxSGml64My1puOXuuuPw
+	MVexNMJhAUyGZiDgQ1a2FEJfDUKrOP1vpE4bCfWmHUHq4KTv1lMqpfjeiqNDQwpWlknU=;
+X-Preliminary-Spam-Score: -4.2 (----)
+Received: from [45.142.19.84] (helo=zozo)
+	by tika.stderr.nl with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <matthijs@tika.stderr.nl>)
+	id 1vx9ls-00HGgr-16;
+	Mon, 02 Mar 2026 21:21:42 +0100
+Received: (nullmailer pid 198545 invoked by uid 1000);
+	Mon, 02 Mar 2026 20:21:39 -0000
+From: Matthijs Kooijman <matthijs@stdin.nl>
+To: Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>
+Cc: matthijs@stdin.nl, linux-kernel@vger.kernel.org, linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [PATCH RESEND] rockchip: Make gpiod pin control work and add gpio-ranges
+Date: Mon,  2 Mar 2026 21:17:12 +0100
+Message-ID: <20260302202121.197288-1-matthijs@stdin.nl>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/6] phy: rockchip: samsung-hdptx: Clock fixes and API
- transition cleanups
-To: dubito@online.de, Vinod Koul <vkoul@kernel.org>,
- Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner
- <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>,
- Dmitry Baryshkov <lumag@kernel.org>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
- <88436a35a3197393b5eb4fc49962a3b5906bf147.camel@online.de>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <88436a35a3197393b5eb4fc49962a3b5906bf147.camel@online.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_122509_967221_DF18FF9E 
-X-CRM114-Status: UNSURE (   9.85  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260302_125506_363315_170381B7 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,27 +67,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgVGhvbWFzLAoKT24gMy8yLzI2IDk6NDYgUE0sIDF1bmQxIHdyb3RlOgo+IEhpIENyaXN0aWFu
-LAo+IAo+IEFtIEZyZWl0YWcsIGRlbSAyNy4wMi4yMDI2IHVtIDIyOjQ4ICswMjAwIHNjaHJpZWIg
-Q3Jpc3RpYW4gQ2lvY2FsdGVhOgo+PiBUaGlzIHNlcmllcyBwcm92aWRlcyBhIHNldCBvZiBidWcg
-Zml4ZXMgYW5kIGNsZWFudXBzIGZvciB0aGUgUm9ja2NoaXAKPj4gU2Ftc3VuZyBIRFBUWCBQSFkg
-ZHJpdmVyLgo+Pgo+PiBUaGUgZmlyc3QgcGFydCBvZiB0aGUgc2VyaWVzIChpLmUuIFBBVENIIDEg
-JiAyKSBhZGRyZXNzZXMgY2xvY2sgcmF0ZQo+PiBjYWxjdWxhdGlvbiBhbmQgc3luY2hyb25pemF0
-aW9uIGlzc3Vlcy7CoCBTcGVjaWZpY2FsbHksIGl0IGZpeGVzIGVkZ2UKPj4gY2FzZXMgd2hlcmUg
-dGhlIFBIWSBQTEwgaXMgcHJlLXByb2dyYW1tZWQgYnkgYW4gZXh0ZXJuYWwgY29tcG9uZW50IChs
-aWtlCj4+IGEgYm9vdGxvYWRlcikgb3Igd2hlbiBjaGFuZ2luZyB0aGUgY29sb3IgZGVwdGggKGJw
-Yykgd2hpbGUga2VlcGluZyB0aGUKPj4gbW9kZWxpbmUgY29uc3RhbnQuwqAKPiAKPiBhcyBJIGJy
-b3VnaHQgdXAgb25lIG9mIHRoZSBtZW50aW9uZWQgZWRnZSBjYXNlc8Kgd2l0aCBteSBSYWR4YSBS
-b2NrIDViIGJvb3RpbmcKPiBsaW51eCBmcm9tIEVESzIgWzFdLCBJIHdhbnRlZCB0byByZXBvcnQg
-dGhhdCB3aXRoIHRoaXMgc2VyaWVzIGFwcGxpZWQsCj4gZXZlcnl0aGluZyB3b3JrcyBhcyBleHBl
-Y3RlZCBhbmQgbXkgaXNzdWVzIGFyZSBmaXhlZC4KPiAKPiBUaHVzLCBmZWVsIGZyZWUgdG8gYWRk
-IG15Cj4gCj4gVGVzdGVkLWJ5OiBUaG9tYXMgTmllZGVycHLDvG0gPGR1Yml0b0BvbmxpbmUuZGU+
-CgpUaGFua3MgZm9yIChyZSl0ZXN0aW5nIQoKUmVnYXJkcywKQ3Jpc3RpYW4KCl9fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
-bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi folks,
+
+This is a resend of a two patches I submitted last december. Lacking any
+replies, I'm resending it (and also explicitly sending it to the GPIO
+subsystem maintainers Linus and Bartosz this time - I'm still a bit
+unsure whom to address exactly).
+
+The first patch fixes pin config (e.g. bias) done by userspace via the
+gpiod interface, which was not implemented for all rockchip boards.
+
+The second patch is just because I was messing with this code already
+and had a test setup ready. It makes gpio-ranges explicit for the rk3308
+instead of relying on the (possibly fragile) legacy workaround in
+gpio-rockchip to add them automatically. I tested this be removing the
+legacy workaround from the code during my testing.
+
+I think the first patch might be a good candidate to backport to the
+stable releases, since it makes a userspace interface functional that
+currently silently fails. However, it is not a clear bugfix and I am not
+super familiar with the rules for -stable, so I left out any stable Cc
+tags. Feel free to add them if this seems appropriate.
+
+Both patches were tested on a rock pi s with a rk3308.
+
+Gr.
+
+Matthijs
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
