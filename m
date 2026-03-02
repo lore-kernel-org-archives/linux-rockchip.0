@@ -4,57 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EC60E9B370
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 11:40:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EC9DE9B36B
+	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 11:40:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pQqVQV+eDPfzYTkczC5KiwpolfByPti5zGzZzipJGU8=; b=H6GDptRlOB2bSp
-	ONaYkBOO0eoFsG0mY4x9W19OGKG/dT8Z2mYuCZWt9ZrKMRWY+luUfQkd8bGHS2ldrkoYXQKjxDVoO
-	e/EL+PajicL+bFFCdhz4NZyyRU8ZZrg/atQb0bSvDhlMlvTFuZaLT00Wd0fCdhoV460GErk3x5kEY
-	k/mFBWSvor1GuPymqiRUImBBwZf2841Z155AfPknY1VWO/UxRB657H2jvovRwpWVZRRcMLCMlitmP
-	EQvXQ0Ap5UBFaaqf++ke8sRL+7er6WjR8VVbm3kj4Kt+hKdN4kFSMi876Oxt81MsSF3H2WMujtXem
-	J2yHJDaysfL1TOxCwRJw==;
+	List-Owner; bh=RmIMN8IewBqmuP/t5x47++I3FBBZoV4SUi9IEsBd3SU=; b=TnNpSXUuLq9HRf
+	sV3wUPQEE05cJWDod3ck3w4DNoc+X/bTgnCz7nPuyhyaGIlGW6gUK148woThtauI6YLC4d2pRYkXE
+	dVuqWsNXlUpaFTKDTYhnB7OtaWvETFqsYCuaeHmo1M3nRRLnxcxuA3g8D9ojK0CKWBck0hIIb5CWc
+	xIAroaz8FvbfuUMUNhPkJifFRvnHkUrl9AA2OVksyA7Yw/azd9BeGHiVxOKxeE0oDxXnYvtCNehk/
+	jeE3plTJTY3RC08YGogUBX+vU+yCjV7aUw2cNGrDlmirdzgYXX4tiIAb6YirFFLSpyVKx4Gdjduzp
+	Wgu7/Aa9enoEBMkjerkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx1dB-0000000CqOS-3pRM;
-	Mon, 02 Mar 2026 11:40:09 +0000
+	id 1vx1dD-0000000CqRY-49aA;
+	Mon, 02 Mar 2026 11:40:11 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vx1d4-0000000CqHK-3n73;
-	Mon, 02 Mar 2026 11:40:05 +0000
+	id 1vx1dB-0000000CqM7-2kyZ;
+	Mon, 02 Mar 2026 11:40:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=ROqmfpiP9UxR05NUIHfXDOcphLtJmZRpXBnqjdcQAEc=; b=TeRlkJ2T5GkuZjK8NaJcC3fc2I
-	BLkjoQF/9EvWEdImkMNcusobbMDhiL5wiLWKvSF82aQjsuXu0/5y2BzpNuLsXbv+VJkGQY48yZenb
-	VDWQ7pqThqd/Z2mqDwu79rp56iRAp+3unyvYTUSNte2gPPOEIGijDb5/AfPzSdaxT9DBotceIohBL
-	eygIlDm/qt+cUHD4EqmFpSK5D4cPhSOajranmmCwVWdBi9rPbj4pxY1a/p9Qlt6XIRJ0yFDvIBK2u
-	+V4PvjaKNviypepisxRWkyOPmW9S3l56Ag1iaejgJkTPp6Qku31H3fwI0HZ07JtEgIBIIBvgTRPX+
-	1nExo0Jw==;
+	bh=cNcvX7o0uACaqfGQIHmPD7RzV0GRL2BHct2k8eJvLpk=; b=QEONd7IlIdN7v6YzOiC7ar8qr6
+	avGFh2Mu2OE+NFXZaph7AIUBosUCY0CzSyKAfAfrfk6Mf/2gCOzVvb2aT3QQWYmC1ZzYhPys33Zv2
+	7gsrxn7GAEtFmLpNA2GPzWYeLj7LlZ3O7SE+FaE5Qzd/S7lvFhMisau4TrjtgKqX61VYjlbdMvo0Q
+	tZMGf4lxIJ5iAkfNUBJSYw/KGxqJcgeGYPXM5RSz3tWILBViWr4fueqiRYdTCI6UIDQGOp5gtDyAN
+	Nlm8GnX06LgCkOSoAMu+RVav60Pp43pwN5QlFqjkyoGtQlZLxHT6rVITa0esEhqAaFQWNL9rrSdfC
+	b+QqR81Q==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@gmail.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Chaoyi Chen <kernel@airkyi.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ARM: dts: rockchip: rk3188-bqedison2qc: Use mount-matrix
-Date: Mon,  2 Mar 2026 12:39:55 +0100
-Message-ID: <177245158236.769695.5354203962089996196.b4-ty@sntech.de>
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix sdmmc pwren pinctrl for rk3576-evb2
+Date: Mon,  2 Mar 2026 12:39:56 +0100
+Message-ID: <177245158240.769695.7263646798737263068.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260226145916.2729492-1-festevam@gmail.com>
-References: <20260226145916.2729492-1-festevam@gmail.com>
+In-Reply-To: <20260226102052.63-1-kernel@airkyi.com>
+References: <20260226102052.63-1-kernel@airkyi.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_034002_988005_F63AE016 
-X-CRM114-Status: GOOD (  11.55  )
+X-CRM114-CacheID: sfid-20260302_034009_726262_C9985151 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,22 +77,18 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 26 Feb 2026 11:59:16 -0300, Fabio Estevam wrote:
-> 'rotation-matrix' is not a valid property.
+On Thu, 26 Feb 2026 18:20:52 +0800, Chaoyi Chen wrote:
+> In rk3576.dtsi, sdmmc0_pwren is configured as part of the sdmmc pinctrl.
+> However, on the rk3576 evb2 board, sdmmc0_pwren is used as the regulator
+> for vmmc-supply. Therefore, we need to reassign the sdmmc pinctrl and
+> remove sdmmc0_pwren to avoid conflicts.
 > 
-> Use the documented 'mount-matrix' property instead.
 > 
-> This fixes the following dt-schema warning:
-> 
-> accelerometer@29 (st,lis3de): 'rotation-matrix' does not match any of the
-> regexes: '^pinctrl-[0-9]+$'
-> 
-> [...]
 
 Applied, thanks!
 
-[1/1] ARM: dts: rockchip: rk3188-bqedison2qc: Use mount-matrix
-      commit: 6916fbb419b3fcd2275e658e1c29b3a29d550338
+[1/1] arm64: dts: rockchip: Fix sdmmc pwren pinctrl for rk3576-evb2
+      commit: 7d939032bd7e203e1c907a8c35e3672eeee08246
 
 Best regards,
 -- 
