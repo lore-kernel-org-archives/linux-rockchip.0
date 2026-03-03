@@ -4,65 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2F0BE67A8A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 07:36:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F85E67A9F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 08:53:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:From:To:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ekXUvEOkjLwaNPYhTRCIqzaQDkaZQ9LxaZ96lCVAv0M=; b=BE9ZAXJRkobAmS
-	G0ueC+yetmcw30JsYRE7wuz2QQWtTVWLRnx/R20ZFMz84Kq1KBEPMWXkNShNJNucJidoFbSLr19cV
-	GK6k+pKuvP+/pBU9A+79FFAbFZMkSDbPbZFLk3t5vK+22lTsQw1FhZ4LhjMNKy4MIfb0pkPj/MhBM
-	eOe5pnKi5LoJgsnH3YRhQp1AnPyOsMmEif95r2a6eNcK4HJPPT6/rEh4psYsVhJH+gwWa6XAUQ/Y2
-	z/nEtzdYmF3t1y9LLt8eK26qy6R/LAKrq+/IixNhDlda32Yu2Kupjf7ZPIDaqHmCUgkUZuPTbLXUD
-	OKA1bplfZsJHNRbkB+Fg==;
+	List-Owner; bh=yB2IE+dySS9mQXHX09ntX45HuprRMcFBl5241gZrOaA=; b=yX20FaVho5mSGv
+	4ZU/s3IDDH2lXKhuhFP4jd6v5n3jaRnVPyqrNvEtM+PqTDqdjNsHpGg5SF0jD4pQksLAfAOpRGDi7
+	ZS+tFbd3+O/Ur4FuveG6MXkjBpZGhQyqoiZY7u+UXelwfm60z79JSVG8kpKDDzquEuN4zDEGIRgcC
+	AKDfWJsG+yW6JmUYXjArwVZnVGFCXxCfm5orjhyxLy+POlsufyw0e+Txkkh43r7q8+vBGfrOfoJXr
+	vCFF9meHMW6mj75YemH5yuG/xcO1lAQiMoIUrJDR93kMNqLUqZIgb9tnan1HhVz7hCXddG1WaBxgQ
+	is8pEIweSglQJI5KDfXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxKIn-0000000EhC8-21Z7;
-	Tue, 03 Mar 2026 07:36:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vxLV6-0000000EpAb-05gX;
+	Tue, 03 Mar 2026 08:53:08 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxKIl-0000000EhBX-3hTd
-	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Mar 2026 07:36:19 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 56394600AE
-	for <linux-rockchip@lists.infradead.org>; Tue,  3 Mar 2026 07:36:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BDE2C2BC87
-	for <linux-rockchip@lists.infradead.org>; Tue,  3 Mar 2026 07:36:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772523377;
-	bh=ysUU86+hk8VMdhuf7L5Kyqho/5jCGSODvWrJZzPYzqY=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Y0TkiP4MvyRgjxz9+uwHQ/XKgASMG4o7JhqcTcgE8iACu+ncUs3CD9400ClPKUta7
-	 xa/E4bWWVBa8FMQE5/1RF2vVbOUoN6dEeJ3fAl/KTNSVtdqU14pyRBsynx+Ts30e41
-	 m8e7Rb0RjHcryOtcNK6bVwVTly5sV09olQ4o6mwZsxxNbNPFRkVKirf19RqKAMZ7lf
-	 1dD3MaELzZAdWBCIO8sYm4QaN3WI5yadVO/tQ8rRmyWlBFzyz3S466OlFEKi6x6qCT
-	 qaxF3CvODdtRgktG6yssbsEVi9e48gOJSsR/HqldenlpQYWKTzHABaNpMJbL2PG5TO
-	 a223GySvp3GdQ==
-Received: by mail-yx1-f52.google.com with SMTP id 956f58d0204a3-64c97997b0fso3638581d50.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 02 Mar 2026 23:36:17 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCXEDET7BrnbTiGy4GT65rSaq7UyYXsRbZQeXqGTUscTrFVqjgqyhh7/ffOp+h9llZImxxwlNoW5QsBVk5jKVQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyv57Tz4RZS/2u5szx63xWpMbp8ledeIWe5ZyBfi6rPLT3Fk9Mh
-	Lqhcka4thZ4wZ+ng8frBFB7zWBuXL0VevWfcJrvj/rcVbyGHno/LDPQCxCODNzQR+60swlvPBp2
-	LX9PHOCbRw+AsQLj2/4scY2uTugRZKTk=
-X-Received: by 2002:a53:ee65:0:b0:649:b4cd:b539 with SMTP id
- 956f58d0204a3-64cc20e44c6mr9939462d50.35.1772523376334; Mon, 02 Mar 2026
- 23:36:16 -0800 (PST)
-MIME-Version: 1.0
-References: <20260302202121.197288-1-matthijs@stdin.nl> <20260302202121.197288-6-matthijs@stdin.nl>
-In-Reply-To: <20260302202121.197288-6-matthijs@stdin.nl>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 3 Mar 2026 08:36:05 +0100
-X-Gmail-Original-Message-ID: <CAD++jLnc_QQTJEXg+Ni4TMUOs1WqyQbxCZEaMS1OM4Gc5L8K6Q@mail.gmail.com>
-X-Gm-Features: AaiRm5143h4ct3A_F4_UOrUD05wVxmCxLMdDce85bBMpXerr7LbAQDDVfsP6ozA
-Message-ID: <CAD++jLnc_QQTJEXg+Ni4TMUOs1WqyQbxCZEaMS1OM4Gc5L8K6Q@mail.gmail.com>
-Subject: Re: [PATCH RESEND 2/2] gpio: rockchip: Call pinctrl for gpio config
-To: Matthijs Kooijman <matthijs@stdin.nl>
-Cc: Heiko Stuebner <heiko@sntech.de>, Bartosz Golaszewski <brgl@kernel.org>, linux-kernel@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org
+	id 1vxLV2-0000000Ep9H-3WXv;
+	Tue, 03 Mar 2026 08:53:06 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 0C6914E424F4;
+	Tue,  3 Mar 2026 08:53:02 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id CF6105FF29;
+	Tue,  3 Mar 2026 08:53:01 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B877610368535;
+	Tue,  3 Mar 2026 09:52:49 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1772527980; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=dHzjooMLjEqCTLZkR7Emb0dRbrH9mQHksD/dLPxL7GM=;
+	b=WRRhIhW7vgeQlUBtRYy3lSHT0g7ssIR9CeRQtfoaN7OdZZdWE5SukFGsLLbCIdZ9Rvk5P5
+	x3YGBf1y7LiWXgLFbXOctHmnCPnz6MEz3JcxtoJgT292PBQcgsZgMb67LDJ4ygTtonXGHl
+	NptOg5QWRQocFJ+rT7Ew6sQ0KYNhopPIv/Sav8VfDWGHMf3N+Fwfq3dDYHpRN0lgFNsuS4
+	Ag/RcE50VgDX70ljiGOuXWmZFxz47/OxtST229tGXoP+k/sbo+ZIeYJPL0S9DBPiU1pXDO
+	7lRXVgu2hOg0vCWsWnhBaS9gdwTuafASl358/MHiepvPTdxf4JFQsgDLCDOXbQ==
+Mime-Version: 1.0
+Date: Tue, 03 Mar 2026 09:52:49 +0100
+Message-Id: <DGT0Q3TGTG26.KD9DBZYH63DY@bootlin.com>
+Cc: "Heikki Krogerus" <heikki.krogerus@linux.intel.com>, "Greg
+ Kroah-Hartman" <gregkh@linuxfoundation.org>, "Dmitry Baryshkov"
+ <dmitry.baryshkov@oss.qualcomm.com>, "Peter Chen" <hzpeterchen@gmail.com>,
+ "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
+ <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Vinod Koul"
+ <vkoul@kernel.org>, "Kishon Vijay Abraham I" <kishon@kernel.org>, "Heiko
+ Stuebner" <heiko@sntech.de>, "Sandy Huang" <hjc@rock-chips.com>, "Andy Yan"
+ <andy.yan@rock-chips.com>, "Yubing Zhang" <yubing.zhang@rock-chips.com>,
+ "Frank Wang" <frank.wang@rock-chips.com>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
+ <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Amit Sunil Dhamne"
+ <amitsd@google.com>, "Dragan Simic" <dsimic@manjaro.org>, "Johan Jonker"
+ <jbx6244@gmail.com>, "Diederik de Haas" <didi.debian@cknow.org>, "Peter
+ Robinson" <pbrobinson@gmail.com>, <linux-usb@vger.kernel.org>,
+ <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+ <linux-phy@lists.infradead.org>, <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <dri-devel@lists.freedesktop.org>
+To: "Chaoyi Chen" <chaoyi.chen@rock-chips.com>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v14 7/9] drm/rockchip: cdn-dp: Add multiple bridges to
+ support PHY port selection
+X-Mailer: aerc 0.20.1
+References: <20260119073100.143-1-kernel@airkyi.com>
+ <20260119073100.143-8-kernel@airkyi.com>
+ <DGSHIQOB2YTB.1559SD1YLGT7P@bootlin.com>
+ <601a8b51-7411-429d-91a1-0633cabce9ee@rock-chips.com>
+In-Reply-To: <601a8b51-7411-429d-91a1-0633cabce9ee@rock-chips.com>
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260303_005305_018602_5144B9D0 
+X-CRM114-Status: GOOD (  13.27  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,19 +93,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBNYXIgMiwgMjAyNiBhdCA5OjIy4oCvUE0gTWF0dGhpanMgS29vaWptYW4gPG1hdHRo
-aWpzQHN0ZGluLm5sPiB3cm90ZToKCj4gUGluY3RybCBpcyByZXNwb25zaWJsZSBmb3IgYmlhcyBz
-ZXR0aW5ncyBhbmQgcG9zc2libHkgb3RoZXIgcGluIGNvbmZpZywKPiBzbyBjYWxsIGdwaW9jaGlw
-X2dlbmVyaWNfY29uZmlnIHRvIGFwcGx5IHN1Y2ggY29uZmlnIHZhbHVlcy4gVGhpcyBtaWdodAo+
-IGFsc28gaW5jbHVkZSBzZXR0aW5ncyB0aGF0IHBpbmN0cmwgZG9lcyBub3Qgc3VwcG9ydCwgYnV0
-IHRoZW4gaXQgY2FuCj4gcmV0dXJuIEVOT1RTVVBQIGFzIGFwcHJvcHJpYXRlLgo+Cj4gU2lnbmVk
-LW9mZi1ieTogTWF0dGhpanMgS29vaWptYW4gPG1hdHRoaWpzQHN0ZGluLm5sPgoKVGhpcyBwYXRj
-aCAyLzIgYXBwbGllZCB0byB0aGUgcGluY3RybCB0cmVlLgoKWW91cnMsCkxpbnVzIFdhbGxlaWoK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hello Chaoyi,
+
+On Tue Mar 3, 2026 at 1:44 AM CET, Chaoyi Chen wrote:
+>>> +static int cdn_dp_parse_next_bridge_dt(struct cdn_dp_device *dp)
+>>> +{
+>>> +	struct device_node *np = dp->dev->of_node;
+>>> +	struct device_node *port __free(device_node) = of_graph_get_port_by_id(np, 1);
+>>> +	struct drm_bridge *bridge;
+>>> +	int count = 0;
+>>> +	int ret = 0;
+>>> +	int i;
+>>> +
+>>> +	/* If device use extcon, do not use hpd bridge */
+>>> +	for (i = 0; i < dp->ports; i++) {
+>>> +		if (dp->port[i]->extcon) {
+>>> +			dp->bridge_count = 1;
+>>> +			return 0;
+>>> +		}
+>>> +	}
+>>> +
+>>> +	/* One endpoint may correspond to one next bridge. */
+>>> +	for_each_of_graph_port_endpoint(port, dp_ep) {
+>>> +		struct device_node *next_bridge_node __free(device_node) =
+>>> +			of_graph_get_remote_port_parent(dp_ep);
+>>> +
+>>> +		bridge = of_drm_find_bridge(next_bridge_node);
+>>> +		if (!bridge) {
+>>> +			ret = -EPROBE_DEFER;
+>>> +			goto out;
+>>> +		}
+>>> +
+>>> +		drm_bridge_get(bridge);
+>>> +		dp->next_bridge_valid = true;
+>>> +		dp->next_bridge_list[count] = bridge;
+>>
+>> Correct, but the drm_bridge_get() slightly far away from the assignement is
+>> a bit misleading. I hadn't seen it initially so I suspected a missing get.
+>>
+>> I suggest to do it in a single statement, for clarity:
+>>
+>> 		dp->next_bridge_list[count] = bridgedrm_bridge_get(bridge);
+>>
+>
+> I think the bridgedrm_bridge_get here seems to be a typo?
+
+Oops, of course! :)
+
+As you probably guessed, I was meaning:
+
+		dp->next_bridge_list[count] = drm_bridge_get(bridge);
+
+
+> Anyway, thank you very much for your efforts on the bridge lifetime.
+> I will fix this in the next version :)
+
+Thanks!
+
+Luca
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
