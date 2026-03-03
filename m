@@ -4,68 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17C21EB364A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 01:01:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFF1EB364A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 01:38:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Cc:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8OD5RZ44TMAD/zoumGBzbh4o59SypbXuLQZYpsjmZjg=; b=TcW85Hj0AR3kBXGKMpgX2HA7HS
-	l94hnScaGIAGma9LirsKJ6/5Aq7mhqIJEARDiNQ5usiywnmkDUqMi7KAogpUrrQmIL1b2fLJW5FRH
-	YhM8tm6KKUqoq7FQajPit5n9uogi2EiAy2SaQb3DCKXeWyiec3effDqfjK2ZKRAU5kji4p63iCM33
-	///L7OLx2ZY3guLMLp6xLDOfvEDIRLTz6oNs/f9kiAZcbdJjuYDYk7JW9LeG4nw3BqXc8TBgixghk
-	O+Adga0ZkUluNkpr+Jhs1ZOWGWEYhv08dAUJmjei9FTj5+OwcPedqnjsQvS3IFMAMcDrfRvgvCvVu
-	yBi0eVaA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=aWDicwjdgdWvDud8Cv/XGm81IaKKA4NuVvlHg3llSEM=; b=4Cs5/Rxw+QrBcj
+	DmjMQLdFFs+PAFnX6iQU/yZVsl+P3Pdx10SnCqLBJTw97S/zpMsRDZGjzZIQl3+b/zMKDx1AUaqcn
+	MaRJ8wD5dJZBYFMfWHGMMFlWkwkl9DlWUtFZpXbq8rWnAd1FBIZwXhsFd/QJUnpSJgBhTZ2KJlf9C
+	eLqIiOlVRmfW1G4+jZe+OnblJZJGJqPaa3DyJnKsW4+xcXM08Lbw8fvEvXd+FgBPxBj8kBiiOHGUZ
+	egbNCuOKsG9JtEfwz8SnYo9uhy5uow/+U8WCefI+zGLag0+TWWe+GceJBXk2UeAHy90kmqTj/d01e
+	XlIy1KG2A86WrDbV1MGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxE8Q-0000000EIW6-0oPi;
-	Tue, 03 Mar 2026 01:01:14 +0000
-Received: from mail-m3290.qiye.163.com ([220.197.32.90])
+	id 1vxEiV-0000000EM1W-2fBQ;
+	Tue, 03 Mar 2026 01:38:31 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxE8N-0000000EIVN-395X;
-	Tue, 03 Mar 2026 01:01:13 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3581f17ca;
-	Tue, 3 Mar 2026 09:01:06 +0800 (GMT+08:00)
-Cc: shawn.lin@rock-chips.com, Grimmauld <grimmauld@grimmauld.de>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-To: Anand Moon <linux.amoon@gmail.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>,
- Niklas Cassel <cassel@kernel.org>, Hans Zhang <18255117159@163.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Wilfred Mallawa <wilfred.mallawa@wdc.com>,
- "open list:PCI NATIVE HOST BRIDGE AND ENDPOINT DRIVERS"
- <linux-pci@vger.kernel.org>,
- "moderated list:ARM/Rockchip SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
- open list <linux-kernel@vger.kernel.org>
-References: <20260226101032.1042-1-linux.amoon@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Message-ID: <560f75f3-e82c-4825-554d-5ead1ae353ee@rock-chips.com>
-Date: Tue, 3 Mar 2026 09:01:05 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+	id 1vxEiS-0000000ELxi-0PyK;
+	Tue, 03 Mar 2026 01:38:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772501906;
+	bh=RlXgUeG6ILKXHZT+XMRADRMmrFnvGfSMeH4tJx9lZbU=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=FRoqzzqY+aSZoO/W1lwklPn+Y6BtVnwboznO7KPMyVVTdGaEXP7nA3UBsEewbVSJ0
+	 Q3PEOrNwMteSWWLEBsLWCDeE7htWd2U8IqS/3L2KQU8xc+n5bn80Q7Ji9cSjQMdn/A
+	 UTAJdRqFpqmJOUhWXnDVmT2MLdMsBmE/ZByR8P13bmQm5+dm/al6alP0tJlgTRg35n
+	 03NABPqogFfKj7tNhUC5uQLpC8mCpNocYT8XyQK7dCWPNtZluoezHM/X1I/rNpGZFB
+	 HfL/ciQtf/epNh5LOzfAusWUn2e1tCzeWFBBWA9BFdp2NEIWN43hvz3LUqpd8zh97u
+	 aWOMf+vnE7IOw==
+Received: from localhost (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 19B5517E129E;
+	Tue,  3 Mar 2026 02:38:26 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 03 Mar 2026 03:38:09 +0200
+Subject: [PATCH v4 3/4] drm/bridge: dw-hdmi-qp: Add high TMDS clock ratio
+ and scrambling support
 MIME-Version: 1.0
-In-Reply-To: <20260226101032.1042-1-linux.amoon@gmail.com>
-X-HM-Tid: 0a9cb136851009cckunmdf53aed31047c16
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGk5OGVZJQkgeThgfSR0eQh5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=EJ2lQYLnZonrbwDR82koQeFF/FTrJdyirHy0znOoWno2PaizrLLmn9wiRPAorVoGNm5aMOGr51u90sWqjI18XzoPbg0uPGF/OQs5cXl1vmH5IMww5arnP+YNG7hzp0Lhr6/hR6egU1kwA2q1TjO6vH1WwFenyNGHI1NOLoA9EPw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=Mjquj/FOs/2Zx2idcFz2Tunmyq43QxK3eJDgddxDoi8=;
-	h=date:mime-version:subject:message-id:from;
+Message-Id: <20260303-dw-hdmi-qp-scramb-v4-3-317d3b8bd219@collabora.com>
+References: <20260303-dw-hdmi-qp-scramb-v4-0-317d3b8bd219@collabora.com>
+In-Reply-To: <20260303-dw-hdmi-qp-scramb-v4-0-317d3b8bd219@collabora.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Maud Spierings <maud_spierings@hotmail.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_170112_305741_6EBE8021 
-X-CRM114-Status: GOOD (  18.58  )
+X-CRM114-CacheID: sfid-20260302_173828_303658_38D4F17E 
+X-CRM114-Status: GOOD (  23.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,40 +81,304 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1NogMjAyNi8wMi8yNiDQx8bay8QgMTg6MTAsIEFuYW5kIE1vb24g0LS1wDoKPiBSb2NrY2hpcCBE
-V0MgUENJZSBkcml2ZXIgY3VycmVudGx5IHBlcmZvcm1zIHN5bmNocm9ub3VzIGxpbmsgdHJhaW5p
-bmcgZm9yCj4gY29tYm8gUEhZcyAoUENJZSAzLjAvMi4wIGFuZCBTQVRBIDMuMCkgZHVyaW5nIGJv
-b3QuIFRoaXMgcHJvY2VzcyB3YWl0cyBmb3IKPiB0aGUgbGluayB0byBiZSBmdWxseSBlc3RhYmxp
-c2hlZCwgYWRkaW5nIHNldmVyYWwgbWlsbGlzZWNvbmRzIHRvIHRoZSBib290Cj4gc2VxdWVuY2Uu
-IFRvIG9wdGltaXplIGJvb3QgdGltZSwgdGhpcyBjaGFuZ2UgZW5hYmxlcyBhc3luY2hyb25vdXMg
-cHJvYmluZywKPiBhbGxvd2luZyBsaW5rIGVzdGFibGlzaG1lbnQgdG8gcHJvY2VlZCBpbiB0aGUg
-YmFja2dyb3VuZCB3aGlsZSB0aGUga2VybmVsCj4gY29udGludWVzIHByb2Jpbmcgb3RoZXIgZGV2
-aWNlcy4KClJldmlld2VkLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4K
-Cj4gCj4gQ2M6IEdyaW1tYXVsZCA8Z3JpbW1hdWxkQGdyaW1tYXVsZC5kZT4KPiBDYzogTmlrbGFz
-IENhc3NlbCA8Y2Fzc2VsQGtlcm5lbC5vcmc+Cj4gVGVzdGVkLWJ5OiBHcmltbWF1bGQgPGdyaW1t
-YXVsZEBncmltbWF1bGQuZGU+Cj4gU2lnbmVkLW9mZi1ieTogQW5hbmQgTW9vbiA8bGludXguYW1v
-b25AZ21haWwuY29tPgo+IC0tLQo+IHYzOiB1cGRhdGUgdGhlIGNvbW1pdCBtZXNzYWdlIHRvIGRl
-c2NyaWJlIHRoZSBjaGFuZ3MuCj4gICAgICBhZGRlZCB0ZXN0ZWQgYnkgR3JpbW1hdWxkLgo+ICAg
-ICAgaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjQwODA5MDczNjEwLjI1MTctMS1saW51
-eC5hbW9vbkBnbWFpbC5jb20vCj4gdjI6IHVwZGF0ZSB0aGUgY29tbWl0IG1lc3NhZ2UgdG8gZGVz
-Y3JpYmUgdGhlIGNoYW5ncy4KPiAtLS0KPiAgIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3Bj
-aWUtZHctcm9ja2NoaXAuYyB8IDEgKwo+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCsp
-Cj4gCj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9j
-a2NoaXAuYyBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHctcm9ja2NoaXAuYwo+
-IGluZGV4IDViMTdkYTYzMTUxZDUuLmMzMWUwZTk4NDgzMjcgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVy
-cy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCj4gKysrIGIvZHJpdmVycy9w
-Y2kvY29udHJvbGxlci9kd2MvcGNpZS1kdy1yb2NrY2hpcC5jCj4gQEAgLTc0Niw2ICs3NDYsNyBA
-QCBzdGF0aWMgc3RydWN0IHBsYXRmb3JtX2RyaXZlciByb2NrY2hpcF9wY2llX2RyaXZlciA9IHsK
-PiAgIAkJLm5hbWUJPSAicm9ja2NoaXAtZHctcGNpZSIsCj4gICAJCS5vZl9tYXRjaF90YWJsZSA9
-IHJvY2tjaGlwX3BjaWVfb2ZfbWF0Y2gsCj4gICAJCS5zdXBwcmVzc19iaW5kX2F0dHJzID0gdHJ1
-ZSwKPiArCQkucHJvYmVfdHlwZSA9IFBST0JFX1BSRUZFUl9BU1lOQ0hST05PVVMsCj4gICAJfSwK
-PiAgIAkucHJvYmUgPSByb2NrY2hpcF9wY2llX3Byb2JlLAo+ICAgfTsKPiAKPiBiYXNlLWNvbW1p
-dDogZjRkMGVjMGFhMjBkNDlmMDlkYzAxZDgyODk0Y2U4MGQ3MmRlMDU2MAo+IAoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Add support for HDMI 2.0 display modes, e.g. 4K@60Hz, by permitting TMDS
+character rates above the 340 MHz limit of HDMI 1.4b.
+
+Hence, provide the required SCDC management, including the high TMDS
+clock ratio and scrambling setup, and filter out the HDMI 2.1 modes.
+
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 167 ++++++++++++++++++++++++---
+ 1 file changed, 150 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index d649a1cf07f5..e40f16a364ed 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -2,6 +2,7 @@
+ /*
+  * Copyright (c) 2021-2022 Rockchip Electronics Co., Ltd.
+  * Copyright (c) 2024 Collabora Ltd.
++ * Copyright (c) 2025 Amazon.com, Inc. or its affiliates.
+  *
+  * Author: Algea Cao <algea.cao@rock-chips.com>
+  * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+@@ -21,9 +22,11 @@
+ #include <drm/display/drm_hdmi_helper.h>
+ #include <drm/display/drm_hdmi_cec_helper.h>
+ #include <drm/display/drm_hdmi_state_helper.h>
++#include <drm/display/drm_scdc_helper.h>
+ #include <drm/drm_atomic.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_bridge.h>
++#include <drm/drm_bridge_helper.h>
+ #include <drm/drm_connector.h>
+ #include <drm/drm_edid.h>
+ #include <drm/drm_modes.h>
+@@ -39,8 +42,10 @@
+ #define DDC_SEGMENT_ADDR	0x30
+ 
+ #define HDMI14_MAX_TMDSCLK	340000000
++#define HDMI20_MAX_TMDSRATE	600000000
+ 
+-#define SCRAMB_POLL_DELAY_MS	3000
++#define SCDC_MIN_SOURCE_VERSION	0x1
++#define SCRAMB_POLL_DELAY_MS	5000
+ 
+ /*
+  * Unless otherwise noted, entries in this table are 100% optimization.
+@@ -164,6 +169,11 @@ struct dw_hdmi_qp {
+ 	} phy;
+ 
+ 	unsigned long ref_clk_rate;
++
++	struct drm_connector *curr_conn;
++	struct delayed_work scramb_work;
++	bool scramb_enabled;
++
+ 	struct regmap *regm;
+ 	int main_irq;
+ 
+@@ -749,28 +759,98 @@ static struct i2c_adapter *dw_hdmi_qp_i2c_adapter(struct dw_hdmi_qp *hdmi)
+ 	return adap;
+ }
+ 
++static bool dw_hdmi_qp_supports_scrambling(struct drm_display_info *display)
++{
++	if (!display->is_hdmi)
++		return false;
++
++	return display->hdmi.scdc.supported &&
++		display->hdmi.scdc.scrambling.supported;
++}
++
++static void dw_hdmi_qp_set_scramb(struct dw_hdmi_qp *hdmi)
++{
++	dev_dbg(hdmi->dev, "set scrambling\n");
++
++	drm_scdc_set_high_tmds_clock_ratio(hdmi->curr_conn, true);
++	drm_scdc_set_scrambling(hdmi->curr_conn, true);
++
++	schedule_delayed_work(&hdmi->scramb_work,
++			      msecs_to_jiffies(SCRAMB_POLL_DELAY_MS));
++}
++
++static void dw_hdmi_qp_scramb_work(struct work_struct *work)
++{
++	struct dw_hdmi_qp *hdmi = container_of(to_delayed_work(work),
++					       struct dw_hdmi_qp,
++					       scramb_work);
++	if (!drm_scdc_get_scrambling_status(hdmi->curr_conn))
++		dw_hdmi_qp_set_scramb(hdmi);
++}
++
++static void dw_hdmi_qp_enable_scramb(struct dw_hdmi_qp *hdmi)
++{
++	u8 ver;
++
++	if (!dw_hdmi_qp_supports_scrambling(&hdmi->curr_conn->display_info))
++		return;
++
++	drm_scdc_readb(hdmi->bridge.ddc, SCDC_SINK_VERSION, &ver);
++	drm_scdc_writeb(hdmi->bridge.ddc, SCDC_SOURCE_VERSION,
++			min_t(u8, ver, SCDC_MIN_SOURCE_VERSION));
++
++	dw_hdmi_qp_set_scramb(hdmi);
++	dw_hdmi_qp_write(hdmi, 1, SCRAMB_CONFIG0);
++
++	hdmi->scramb_enabled = true;
++
++	/* Wait at least 1 ms before resuming TMDS transmission */
++	usleep_range(1000, 5000);
++}
++
++static void dw_hdmi_qp_disable_scramb(struct dw_hdmi_qp *hdmi)
++{
++	if (!hdmi->scramb_enabled)
++		return;
++
++	dev_dbg(hdmi->dev, "disable scrambling\n");
++
++	hdmi->scramb_enabled = false;
++	cancel_delayed_work_sync(&hdmi->scramb_work);
++
++	dw_hdmi_qp_write(hdmi, 0, SCRAMB_CONFIG0);
++
++	if (hdmi->curr_conn->status == connector_status_connected) {
++		drm_scdc_set_scrambling(hdmi->curr_conn, false);
++		drm_scdc_set_high_tmds_clock_ratio(hdmi->curr_conn, false);
++	}
++}
++
+ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 					    struct drm_atomic_state *state)
+ {
+ 	struct dw_hdmi_qp *hdmi = bridge->driver_private;
+ 	struct drm_connector_state *conn_state;
+-	struct drm_connector *connector;
+ 	unsigned int op_mode;
+ 
+-	connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
+-	if (WARN_ON(!connector))
++	hdmi->curr_conn = drm_atomic_get_new_connector_for_encoder(state,
++								   bridge->encoder);
++	if (WARN_ON(!hdmi->curr_conn))
+ 		return;
+ 
+-	conn_state = drm_atomic_get_new_connector_state(state, connector);
++	conn_state = drm_atomic_get_new_connector_state(state, hdmi->curr_conn);
+ 	if (WARN_ON(!conn_state))
+ 		return;
+ 
+-	if (connector->display_info.is_hdmi) {
++	if (hdmi->curr_conn->display_info.is_hdmi) {
+ 		dev_dbg(hdmi->dev, "%s mode=HDMI %s rate=%llu bpc=%u\n", __func__,
+ 			drm_hdmi_connector_get_output_format_name(conn_state->hdmi.output_format),
+ 			conn_state->hdmi.tmds_char_rate, conn_state->hdmi.output_bpc);
+ 		op_mode = 0;
+ 		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
++
++		if (conn_state->hdmi.tmds_char_rate > HDMI14_MAX_TMDSCLK)
++			dw_hdmi_qp_enable_scramb(hdmi);
+ 	} else {
+ 		dev_dbg(hdmi->dev, "%s mode=DVI\n", __func__);
+ 		op_mode = OPMODE_DVI;
+@@ -781,7 +861,7 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
+ 	dw_hdmi_qp_mod(hdmi, HDCP2_BYPASS, HDCP2_BYPASS, HDCP2LOGIC_CONFIG0);
+ 	dw_hdmi_qp_mod(hdmi, op_mode, OPMODE_DVI, LINK_CONFIG0);
+ 
+-	drm_atomic_helper_connector_hdmi_update_infoframes(connector, state);
++	drm_atomic_helper_connector_hdmi_update_infoframes(hdmi->curr_conn, state);
+ }
+ 
+ static void dw_hdmi_qp_bridge_atomic_disable(struct drm_bridge *bridge,
+@@ -791,13 +871,56 @@ static void dw_hdmi_qp_bridge_atomic_disable(struct drm_bridge *bridge,
+ 
+ 	hdmi->tmds_char_rate = 0;
+ 
++	dw_hdmi_qp_disable_scramb(hdmi);
++
++	hdmi->curr_conn = NULL;
+ 	hdmi->phy.ops->disable(hdmi, hdmi->phy.data);
+ }
+ 
+-static enum drm_connector_status
+-dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
++static int dw_hdmi_qp_reset_crtc(struct dw_hdmi_qp *hdmi,
++				 struct drm_connector *connector,
++				 struct drm_modeset_acquire_ctx *ctx)
++{
++	u8 config;
++	int ret;
++
++	ret = drm_scdc_readb(hdmi->bridge.ddc, SCDC_TMDS_CONFIG, &config);
++	if (ret < 0) {
++		dev_err(hdmi->dev, "Failed to read TMDS config: %d\n", ret);
++		return ret;
++	}
++
++	if (!!(config & SCDC_SCRAMBLING_ENABLE) == hdmi->scramb_enabled)
++		return 0;
++
++	drm_atomic_helper_connector_hdmi_hotplug(connector,
++						 connector_status_connected);
++	/*
++	 * Conform to HDMI 2.0 spec by ensuring scrambled data is not sent
++	 * before configuring the sink scrambling, as well as suspending any
++	 * TMDS transmission while changing the TMDS clock rate in the sink.
++	 */
++
++	dev_dbg(hdmi->dev, "resetting crtc\n");
++
++retry:
++	ret = drm_bridge_helper_reset_crtc(&hdmi->bridge, ctx);
++	if (ret == -EDEADLK) {
++		drm_modeset_backoff(ctx);
++		goto retry;
++	} else if (ret) {
++		dev_err(hdmi->dev, "Failed to reset crtc: %d\n", ret);
++	}
++
++	return ret;
++}
++
++static int dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge,
++				    struct drm_connector *connector,
++				    struct drm_modeset_acquire_ctx *ctx)
+ {
+ 	struct dw_hdmi_qp *hdmi = bridge->driver_private;
++	enum drm_connector_status status;
+ 	const struct drm_edid *drm_edid;
+ 
+ 	if (hdmi->no_hpd) {
+@@ -808,7 +931,15 @@ dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connec
+ 			return connector_status_disconnected;
+ 	}
+ 
+-	return hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
++	status = hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
++
++	dev_dbg(hdmi->dev, "%s status=%d scramb=%d\n", __func__,
++		status, hdmi->scramb_enabled);
++
++	if (status == connector_status_connected && hdmi->scramb_enabled)
++		dw_hdmi_qp_reset_crtc(hdmi, connector, ctx);
++
++	return status;
+ }
+ 
+ static const struct drm_edid *
+@@ -832,12 +963,12 @@ dw_hdmi_qp_bridge_tmds_char_rate_valid(const struct drm_bridge *bridge,
+ {
+ 	struct dw_hdmi_qp *hdmi = bridge->driver_private;
+ 
+-	/*
+-	 * TODO: when hdmi->no_hpd is 1 we must not support modes that
+-	 * require scrambling, including every mode with a clock above
+-	 * HDMI14_MAX_TMDSCLK.
+-	 */
+-	if (rate > HDMI14_MAX_TMDSCLK) {
++	if (hdmi->no_hpd && rate > HDMI14_MAX_TMDSCLK) {
++		dev_dbg(hdmi->dev, "Unsupported TMDS char rate in no_hpd mode: %lld\n", rate);
++		return MODE_CLOCK_HIGH;
++	}
++
++	if (rate > HDMI20_MAX_TMDSRATE) {
+ 		dev_dbg(hdmi->dev, "Unsupported TMDS char rate: %lld\n", rate);
+ 		return MODE_CLOCK_HIGH;
+ 	}
+@@ -1197,7 +1328,7 @@ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
+ 	.atomic_reset = drm_atomic_helper_bridge_reset,
+ 	.atomic_enable = dw_hdmi_qp_bridge_atomic_enable,
+ 	.atomic_disable = dw_hdmi_qp_bridge_atomic_disable,
+-	.detect = dw_hdmi_qp_bridge_detect,
++	.detect_ctx = dw_hdmi_qp_bridge_detect,
+ 	.edid_read = dw_hdmi_qp_bridge_edid_read,
+ 	.hdmi_tmds_char_rate_valid = dw_hdmi_qp_bridge_tmds_char_rate_valid,
+ 	.hdmi_clear_avi_infoframe = dw_hdmi_qp_bridge_clear_avi_infoframe,
+@@ -1287,6 +1418,8 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 	if (IS_ERR(hdmi))
+ 		return ERR_CAST(hdmi);
+ 
++	INIT_DELAYED_WORK(&hdmi->scramb_work, dw_hdmi_qp_scramb_work);
++
+ 	hdmi->dev = dev;
+ 
+ 	regs = devm_platform_ioremap_resource(pdev, 0);
+
+-- 
+2.52.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
