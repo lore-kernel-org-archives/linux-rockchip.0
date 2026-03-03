@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70039EC047D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 09:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1052FEC047E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 09:54:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
 	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z9dTq84xrXH2stEboP8uDh9thtKKs6M6yGrHh4J5hG8=; b=ayEO5gJgG/9cuo
-	VNjeDENXgiONjmUlrx/ZWA/w+YQ0VgxlSG1mLQruUB0UYeEZP3evWDV21NCMhHKwr5+yfxPgQl1tc
-	tCx5jp6/1yuEZRXaanzXmcK2LMA54jY5FQneJ/qwjIuFS7ILfNFMEA3llro0TIjKsO1ExPPh0Iidt
-	IjUmrddX9yzhYVo8HA7E9xMHHnnZLGZtuBFnv7Z5k2nsz1VRIRPRuSHJQAVpNhcg+zlYTA5aSSWjg
-	ycGrve3DAlp+ELZAnVG9nrEIslCSGUMD7cq5Byjosqdz6lwXvX3RKYA7eUbMaUUplnZrAIRH+J+to
-	+7Moq7RveBjgJ+RYd6aA==;
+	List-Owner; bh=3ImWO9Hjkv69AdAlvRSwBRVdgrseGY3UdRFDsP5k7Bc=; b=cKYGloozbOdqcn
+	QTgW9jbnQ1YgLQ0Isp6EgLPhw+6Uha6w18Jfxja6GY9NAIJoeznSJyOzsxY6mRX5p6c6GANllTXQb
+	r8yneycsIs9v/hFbDOFajiktxWtLOc+cXhvNeyPcrdf/F0r8eFfrm6t4VPRHeGqWV3sNzqz8kznGn
+	I2cWdcwk72R+lDNrfIy+CP3hKxtE/NVZ2ugJar5C5MN3Mo30/NOMs33losicHeSolHEh53RDikwq0
+	T2puDdN/0zOrxy6Yj+n+kYP/sFsKlAf07EUkwspfQMP3lyoddqKzfv+XpcLrT0SUGhDndlJIbpfCq
+	m4Gu4bmtLR7ohTzNJTRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxMH2-0000000EtS9-0z93;
-	Tue, 03 Mar 2026 09:42:40 +0000
+	id 1vxMSN-0000000EunM-0TU0;
+	Tue, 03 Mar 2026 09:54:23 +0000
 Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxMGw-0000000EtKP-2mkC
+	id 1vxMSJ-0000000Eulr-3CK1
 	for linux-rockchip@lists.infradead.org;
-	Tue, 03 Mar 2026 09:42:36 +0000
+	Tue, 03 Mar 2026 09:54:21 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 1E995C40FB0;
-	Tue,  3 Mar 2026 09:42:50 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 54373C40FA4;
+	Tue,  3 Mar 2026 09:54:34 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7D5085FF29;
-	Tue,  3 Mar 2026 09:42:32 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6472F103682E0;
-	Tue,  3 Mar 2026 10:42:26 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 7E5205FF29;
+	Tue,  3 Mar 2026 09:54:16 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A0481103695F3;
+	Tue,  3 Mar 2026 10:54:03 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1772530950; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1772531654; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=b4FnwUyggxbhER6+JVaL2FhJxctsR5DXdCcHIQG0bqY=;
-	b=iH5gkeS8EZnmbrNwNRBfYKZfDj2+6dd92LdeVnRYQEQmt43nZ0slJ3kwfCRyYzBwnuQ0zi
-	pYo/JLluMaAiNz8ZATi9AOBiCaz7D4rKgBt5dgvjyVdIfdXGXrf2U0TiMXhVoV0I9ITfic
-	e6yms5btiQDbmY+cEXAiC05DC2JxL4OVgt4w6oxlr11HpEguqvvs7r+lriNP2HjrviKk8/
-	g3WtTxiJespsFV8mqBkic79SaORNJjLrGUMJGXgGY4s7wwCBCj5MLEGY2tSl0vV564NlBF
-	aT6wn+7sdS1AU6gCtYoqjK+adzSy3+x1vWXVknLbN0AXkcXg6RPuafs+U9Hv3A==
+	bh=D4B+fqv1Q4afrFn9HAZJqj6Nm/zmdWDCD9AzHRpLCIw=;
+	b=yHIp9qbLWNRM7L5uL0cVbKgUvYxtLjY07FFZee+XHhU87qlGyOf/Wl0Jl0SmOlQo9Xj4O8
+	JrpFG1OpxJpXIyrPSPKvXXMdy8oJi2/NfP9MfAuFTTCqRINrXOE+WvebbLJSDNkCIAfTQm
+	CIV5U72GuO05+L8eUIjWkdTHnSuMyMBPogbwauxcOoslNwkxh2yY9kYxEl9M+2zXM3Z4tL
+	KcypOlo6T5fTDAfdPd3PR2IaImE8gF1mH6TDjRJdZvd/o0rQPy9GTQU/h/9bTeXrdGzGby
+	sP1FFCi3BGPc9xts2phfbOFkqwsKMg/DDdbgwn4vyExKtFojI9gRWU6xa8ca0Q==
 Mime-Version: 1.0
-Date: Tue, 03 Mar 2026 10:42:25 +0100
-Message-Id: <DGT1S368J0BK.3UA75JNEA1AB8@bootlin.com>
-Subject: Re: [PATCH v9 09/15] drm/bridge: analogix_dp: Apply
- drm_bridge_connector helper
+Date: Tue, 03 Mar 2026 10:54:03 +0100
+Message-Id: <DGT20ZJ3Q4WP.3OTQJYWGSYGUD@bootlin.com>
+Subject: Re: [PATCH v9 10/15] drm/bridge: analogix_dp: Add new API
+ analogix_dp_finish_probe()
 Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
  <jernej.skrabec@gmail.com>, <maarten.lankhorst@linux.intel.com>,
  <mripard@kernel.org>, <tzimmermann@suse.de>, <airlied@gmail.com>,
@@ -68,12 +68,12 @@ To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
 From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
 X-Mailer: aerc 0.20.1
 References: <20260210071225.2566099-1-damon.ding@rock-chips.com>
- <20260210071225.2566099-10-damon.ding@rock-chips.com>
-In-Reply-To: <20260210071225.2566099-10-damon.ding@rock-chips.com>
+ <20260210071225.2566099-11-damon.ding@rock-chips.com>
+In-Reply-To: <20260210071225.2566099-11-damon.ding@rock-chips.com>
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_014234_915670_7E119358 
-X-CRM114-Status: GOOD (  15.16  )
+X-CRM114-CacheID: sfid-20260303_015420_005245_F83A4E16 
+X-CRM114-Status: GOOD (  22.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,71 +93,104 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Hello Damon,
 
 On Tue Feb 10, 2026 at 8:12 AM CET, Damon Ding wrote:
-> Apply drm_bridge_connector helper for Analogix DP driver.
->
-> The following changes have been made:
-> - Apply drm_bridge_connector helper to get rid of &drm_connector_funcs
->   and &drm_connector_helper_funcs.
-> - Remove unnecessary parameter struct drm_connector* for callback
->   &analogix_dp_plat_data.attach.
-> - Remove &analogix_dp_device.connector.
-> - Convert analogix_dp_atomic_check()/analogix_dp_detect() to
->   &drm_bridge_funcs.atomic_check()/&drm_bridge_funcs.detect().
-> - Split analogix_dp_get_modes() into &drm_bridge_funcs.get_modes() and
->   &drm_bridge_funcs.edid_read().
-> - Set flag DRM_BRIDGE_ATTACH_NO_CONNECTOR for bridge attachment while
->   binding. Meanwhile, make DRM_BRIDGE_ATTACH_NO_CONNECTOR unsuppported
-                             ^
-
-Do you mean "!DRM_BRIDGE_ATTACH_NO_CONNECTOR" here (i.e. missing '!')?
-
-Also, unsuppported -> unsupported (typo)
-
->   in analogix_dp_bridge_attach().
-> - Set &drm_bridge.ops according to different cases.
+> Since the panel/bridge should logically be positioned behind the
+> Analogix bridge in the display pipeline, it makes sense to handle
+> the panel/bridge parsing on the Analogix side. Therefore, we add
+> a new API analogix_dp_finish_probe(), which combines the panel/bridge
+> parsing with component addition, to do it.
 >
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 > Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
 > Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
 
-I had a quick look, looks good overall, for the moment I have only a
-question, see below.
+...
 
-I aim at reviewing this patch in depth, but it's not an easy one to
-digest. Would it be feasible to split it in smaller logical steps? If it
-is, please do, it would be very helpful for reviewing.
-
-> @@ -1532,6 +1481,7 @@ EXPORT_SYMBOL_GPL(analogix_dp_resume);
+> @@ -1581,6 +1583,52 @@ struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
+>  }
+>  EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
 >
->  int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->  {
-> +	struct drm_bridge *bridge = &dp->bridge;
->  	int ret;
->
->  	dp->drm_dev = drm_dev;
-> @@ -1545,7 +1495,18 @@ int analogix_dp_bind(struct analogix_dp_device *dp, struct drm_device *drm_dev)
->  		return ret;
->  	}
->
-> -	ret = drm_bridge_attach(dp->encoder, &dp->bridge, NULL, 0);
-> +	if (dp->plat_data->panel)
-> +		bridge->ops = DRM_BRIDGE_OP_MODES | DRM_BRIDGE_OP_DETECT;
-> +	else
-> +		bridge->ops = DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_DETECT;
+> +static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
+> +{
+> +	struct analogix_dp_device *dp = to_dp(aux);
+> +	struct analogix_dp_plat_data *plat_data = dp->plat_data;
+> +	int port = plat_data->dev_type == EXYNOS_DP ? 0 : 1;
+> +	int ret;
 > +
-> +	bridge->of_node = dp->dev->of_node;
-> +	bridge->type = DRM_MODE_CONNECTOR_eDP;
-> +	ret = devm_drm_bridge_add(dp->dev, &dp->bridge);
-
-Can devm_drm_bridge_add() be added to analogix_dp_probe() instead?
-
-> +	if (ret)
-> +		goto err_unregister_aux;
+> +	/*
+> +	 * If drm_of_find_panel_or_bridge() returns -ENODEV, there may be no valid panel
+> +	 * or bridge nodes. The driver should go on for the driver-free bridge or the DP
+> +	 * mode applications.
+> +	 */
+> +	ret = drm_of_find_panel_or_bridge(dp->dev->of_node, port, 0,
+> +					  &plat_data->panel, &plat_data->next_bridge);
+> +	if (ret && ret != -ENODEV)
+> +		return ret;
 > +
-> +	ret = drm_bridge_attach(dp->encoder, bridge, NULL, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
->  	if (ret) {
->  		DRM_ERROR("failed to create bridge (%d)\n", ret);
->  		goto err_unregister_aux;
+> +	return component_add(dp->dev, plat_data->ops);
+> +}
+> +
+> +int analogix_dp_finish_probe(struct analogix_dp_device *dp)
+> +{
+> +	int ret;
+> +
+> +	ret = devm_of_dp_aux_populate_bus(&dp->aux, analogix_dp_aux_done_probing);
+> +	if (ret) {
+> +		/*
+> +		 * If devm_of_dp_aux_populate_bus() returns -ENODEV, the done_probing() will
+> +		 * not be called because there are no EP devices. Then the callback function
+> +		 * analogix_dp_aux_done_probing() will be called directly in order to support
+> +		 * the other valid DT configurations.
+> +		 *
+> +		 * NOTE: The devm_of_dp_aux_populate_bus() is allowed to return -EPROBE_DEFER.
+
+Uhm, if it is allowed to return -EPROBE_DEFER...
+
+> +		 */
+> +		if (ret != -ENODEV) {
+> +			dev_err(dp->dev, "failed to populate aux bus\n");
+> +			return ret;
+> +		}
+
+...then you shouldn't dev_err() when -EPROBE_DEFER is returned.
+
+Either use dev_err_probe() (which would also simplify your code) or check
+for if (ret != -ENODEV && ret != -EPROBE_DEFER).
+
+> +
+> +		return analogix_dp_aux_done_probing(&dp->aux);
+> +	}
+> +
+> +	return 0;
+> +}
+> +EXPORT_SYMBOL_GPL(analogix_dp_finish_probe);
+> +
+>  MODULE_AUTHOR("Jingoo Han <jg1.han@samsung.com>");
+>  MODULE_DESCRIPTION("Analogix DP Core Driver");
+>  MODULE_LICENSE("GPL v2");
+> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+> index 3428ffff24c5..bae969dec63a 100644
+> --- a/include/drm/bridge/analogix_dp.h
+> +++ b/include/drm/bridge/analogix_dp.h
+> @@ -30,6 +30,7 @@ struct analogix_dp_plat_data {
+>  	struct drm_bridge *next_bridge;
+>  	struct drm_encoder *encoder;
+>  	struct drm_connector *connector;
+> +	const struct component_ops *ops;
+
+Is adding a new stored field a good idea? Can it be instead passed as an
+argument to analogix_dp_finish_probe()?
+
+Note I don't have a strong opinion here, just the added struct field seems
+overkill for being used just once.
+
+> @@ -49,5 +50,6 @@ int analogix_dp_stop_crc(struct drm_connector *connector);
+>
+>  struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux);
+>  struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp);
+> +int analogix_dp_finish_probe(struct analogix_dp_device *dp);
+>
+>  #endif /* _ANALOGIX_DP_H_ */
 
 Luca
 
