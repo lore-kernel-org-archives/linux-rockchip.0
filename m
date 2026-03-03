@@ -4,69 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55B20EB363C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  2 Mar 2026 22:56:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 136E9EB3643
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 00:26:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sRLhAZ9ZlzA7XsvdYESaWQyxrFMrW3K6qj9AXyTTM5s=; b=qkAJT4JABa7Se7w8LIANdGs4yK
-	EHa5fpJbnKFCuluHlbZsHcouesVdTiC2R7YhVjNxArkEYsC3CJhCVfTP55PiOOLvqF7osbBMFy4+T
-	ve+mJzFfEEBl3YcTPdefe8oUPFQTOLtcoDA6yUjLQVeCY/ck9skEeMXRvLP3UvBXQedVltL8bycRS
-	s8ObS7iaazZlEdExxGdiZrG14MDyZ4WmsWHBkJhpp1JnW8TWh95ZsfAOWialfNKZrtJq8XqUFs4fI
-	0m//HEH2p+zOb3btGL2lM7sxgrZlAAPtxZ9ev3CUfgz7Fv34KyIZgl/m/urwKZyNWSChvyVz4EETw
-	3iHYCdwg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=P+Ab551TErDi2KiZngol0OgYEJ9qtpG0kt+x8Cwtpd4=; b=J2FW+R8eyQGVU5
+	y4uugAXLP9ia36bg/0kpKdEIFRWZXkV773dpiKFdlz7R43LLrdIjapZTgEy8N2J97ixFqaCdOHosk
+	NFzA9YRWTemQ/VGPY6Bo0xDc2xgirUAATK9AcPQf8RcWnx88pe0QPkS/M16wv4OXeDP/o1siOuVOS
+	4TLqw9dklii8U82pm2N+CfUkmxDYPd7P+8DDpB4+ikkR6emexRMyQBfoJqz5KuIuUtEd6roLVtaM1
+	Yt/fHyNa8jCmDt/+U+gvx6KFkknqRPMcEoCJUw38BsNeh4vGvpyU+nBeb64iXR7wp48KgDA3Eh/Pf
+	UDorljuxNFyqW+JIV/mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxCBF-0000000E9iv-2gPe;
-	Mon, 02 Mar 2026 22:56:01 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1vxDaW-0000000EGB8-3s6o;
+	Tue, 03 Mar 2026 00:26:12 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxCBC-0000000E9hi-0xpu
-	for linux-rockchip@lists.infradead.org;
-	Mon, 02 Mar 2026 22:55:59 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772492149; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=PA5Vyg5JJ1o6mkYIZByEs94sAGp8NKHm8ncmEqH5HF7vxyOiD4eUTr4pLSVQpca/hkrmEvuCT3+8h4EJYR44S3yLiJ20IE2x1RXW6UW4NrhfSwadyvOiX5PZo4jnrKiAVyqsoGhduspSb6k6fNZxu5VZyfHr1p26D6sathwn5oY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772492149; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=/zdY8KHrZuIUijPdIoSdoYLMGu+rk0Tb9iREEpfohNo=; 
-	b=lI7YhxZOD31+07z7vfs0KsXrAJ0I1W+9Yg0sHaPZtjwIvfSYrv8Ftqn7sMV0Q4rty/IYdyNUaf6ISQyB8FVJ4EF4RREGR0COEHPsRBYHnk0la/pwoFIlTdh7IX3bHJ4XmOT2Jb0kCGNCH8I9MWLSeCzGLkMqqpkCnEQjyqlYj2Q=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772492149;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=/zdY8KHrZuIUijPdIoSdoYLMGu+rk0Tb9iREEpfohNo=;
-	b=LLW0fW+n6DCCwrKRfbBtuS2n8xKR/023CjQ2eKRWWHSd2RYMNkal4Lzk0CtZsG+Y
-	cM4+wJ2JzSIdt5mT7gZkrU1EUnM53fGRklsruE6Qggj0UHHorYCu4aXcwJ8Bi/BWPXh
-	H56omdqdNVlGCCGqs872JfF1hBrja8zgsUm261ss=
-Received: by mx.zohomail.com with SMTPS id 1772492147652172.17855840863865;
-	Mon, 2 Mar 2026 14:55:47 -0800 (PST)
-Received: by venus (Postfix, from userid 1000)
-	id 0804C180411; Mon, 02 Mar 2026 23:55:44 +0100 (CET)
-Date: Mon, 2 Mar 2026 23:55:44 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, 
-	Finley Xiao <finley.xiao@rock-chips.com>, Frank Zhang <rmxpzlb@gmail.com>, linux-pm@vger.kernel.org, 
-	Detlev Casanova <detlev.casanova@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
-	linux-rockchip@lists.infradead.org, stable@vger.kernel.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: [PATCH v3] pmdomain: rockchip: Fix PD_VCODEC for RK3588
-Message-ID: <aaYVOClMqnXIUvjf@venus>
-References: <1771988101-49877-1-git-send-email-shawn.lin@rock-chips.com>
+	id 1vxDaT-0000000EG9z-2Bne;
+	Tue, 03 Mar 2026 00:26:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772497567;
+	bh=nvbePl0CEYS4+L/6FTUnYwtO7w+lj1CwvH0QATF0abw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=l2TquD5CV5jD/gLJ3IBBpxsFsPaNM0jbvYXpMcVZB+R6GX2G5hZSDjH1TLO/VvqWh
+	 LiLMLOQiXb8Q/7TkVbjWoEUtEEnHZNn+goDvA7scw/ghQfNgkLuC406bTduv7svO2p
+	 y84SqoWMUmMtAkfSkOkZM+zI5m+b2Q1QzjzszNV7rf2JOXPr4LTpyicI1y3PCybrF5
+	 k31wAmOAY3snxOHJfwiYXA7xYIyaFI0jz8PDnwpCTYWLXEVbFfuFQEBuZtDmeBx1LS
+	 QoMS9mHsMi3WvHbYsKJcHZPzriAbinthd0KzI7NeYRRCye7m8DuqZukQ4SWdKrDHi1
+	 qvIKnj+ewDlGQ==
+Received: from [192.168.1.90] (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B36A17E0EA0;
+	Tue,  3 Mar 2026 01:26:06 +0100 (CET)
+Message-ID: <a70731e8-375a-4ba9-b142-600b92ae1087@collabora.com>
+Date: Tue, 3 Mar 2026 02:26:05 +0200
 MIME-Version: 1.0
-In-Reply-To: <1771988101-49877-1-git-send-email-shawn.lin@rock-chips.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.1.1.4.3/272.480.55
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add alternative
+ reg-names order for RK35{76,88}
+To: Krzysztof Kozlowski <krzk@kernel.org>, Conor Dooley <conor@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
+References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
+ <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+ <20260227-observant-roaring-ara-ef7eb0@quoll>
+ <adbbdbb1-b126-4807-821c-c9850befd695@collabora.com>
+ <20260227-omission-stoic-417d7109ad4d@spud>
+ <3ab4f91e-37d0-4950-af88-01920705d31a@collabora.com>
+ <1fe5529f-cd9f-4960-b6dd-96a2d02b8d86@kernel.org>
+ <59b442c8-da2a-40a8-b9db-1609a8eee744@kernel.org>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <59b442c8-da2a-40a8-b9db-1609a8eee744@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260302_145558_326313_99977C05 
-X-CRM114-Status: GOOD (  19.04  )
+X-CRM114-CacheID: sfid-20260302_162609_736744_1BA634DE 
+X-CRM114-Status: GOOD (  24.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,163 +85,112 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8484400808877639883=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Krzysztof,
 
---===============8484400808877639883==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="4zfusrcm7v6ffvo5"
-Content-Disposition: inline
+On 2/28/26 11:58 AM, Krzysztof Kozlowski wrote:
+> On 28/02/2026 10:54, Krzysztof Kozlowski wrote:
+>> On 27/02/2026 18:42, Cristian Ciocaltea wrote:
+>>> On 2/27/26 7:13 PM, Conor Dooley wrote:
+>>>> On Fri, Feb 27, 2026 at 01:37:17PM +0200, Cristian Ciocaltea wrote:
+>>>>> Hi Krzysztof, Conor,
+>>>>>
+>>>>> On 2/27/26 9:46 AM, Krzysztof Kozlowski wrote:
+>>>>>> On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
+>>>>>>> With the introduction of the RK3588 SoC, and RK3576 afterwards, two more
+>>>>>>> register blocks have been provided for the video decoder unit.
+>>>>>>>
+>>>>>>> However, the binding does not properly describe the new hardware layout,
+>>>>>>
+>>>>>> As you shown me last time with excerpt of address spaces from
+>>>>>> datasheet/manual, the binding correctly describes the hardware and above
+>>>>>> sentence is not true.
+>>>>>>
+>>>>>>> as it breaks the convention expecting the unit address to indicate the
+>>>>>>> start of the first register range, i.e. 'function' block is listed
+>>>>>>
+>>>>>> Imprecise wording. "start of the main or primary register range"
+>>>>>>
+>>>>>> (if you have 0x1000 with one reg and 0x20000000 with everything, the
+>>>>>> unit address will be 0x20000000).
+>>>>>>
+>>>>>>> before 'link' instead of the opposite.
+>>>>>>>
+>>>>>>> Since the binding changes have been already released and a fix would
+>>>>>>> bring up an ABI break, mark the current 'reg-names' ordering as
+>>>>>>> deprecated and introduce an alternative 'link,function,cache' listing
+>>>>>>> which follows the address-based ordering according to the TRM.
+>>>>>>>
+>>>>>>> Additionally, drop the 'reg' description items as the order is not fixed
+>>>>>>> anymore, while the information they offer is not very relevant anyway.
+>>>>>>
+>>>>>> This is fine for me.
+>>>>>
+>>>>> Thanks for the additional feedback!
+>>>>>
+>>>>> If I'm not mistaken (please correct me), the only remaining (hard)
+>>>>> blocker for the series would be to improve this commit message.
+>>>>
+>>>> No, you also need to fix the problem I pointed out about reg-names being
+>>>> optional on the devices you're relying on reg-names for. 
+>>>
+>>> My only concern is that by marking reg-names as required we would break the ABI,
+>>
+>> You are ALREADY BREAKING the ABI. Really, for absolutely non-important
+>> cosmetic change in unit address, where I asked you repeatedly to fix the
+>> unit address, you change the ABI affecting kernel and DTS users.
 
+I thought we've already reached consensus to allow extending the binding and
+keep both lists, precisely to avoid breaking the ABI.  At least this was my
+understanding according to your reply [1]:
 
---4zfusrcm7v6ffvo5
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v3] pmdomain: rockchip: Fix PD_VCODEC for RK3588
-MIME-Version: 1.0
+  You can have also oneOf with older list "deprecated: true", if want to
+  keep any users unaffected.
 
-Hi,
+And this patch was meant to do exactly that.  Did I miss something?
 
-On Wed, Feb 25, 2026 at 10:55:01AM +0800, Shawn Lin wrote:
-> From the RK3588 TRM Table 7-1 RK3588 Voltage Domain and Power Domain Summ=
-ary,
-> PD_RKVDEC0/1 and PD_VENC0/1 rely on VD_VCODEC which require extra voltage=
-s to
-> be applied, otherwise it breaks RK3588-evb1-v10 board after vdec support =
-landed[1].
-> The panic looks like below:
->=20
->   rockchip-pm-domain fd8d8000.power-management:power-controller: failed t=
-o set domain 'rkvdec0' on, val=3D0
->   rockchip-pm-domain fd8d8000.power-management:power-controller: failed t=
-o set domain 'rkvdec1' on, val=3D0
->   ...
->   Hardware name: Rockchip RK3588S EVB1 V10 Board (DT)
->   Workqueue: pm genpd_power_off_work_fn
->   Call trace:
->   show_stack+0x18/0x24 (C)
->   dump_stack_lvl+0x40/0x84
->   dump_stack+0x18/0x24
->   vpanic+0x1ec/0x4fc
->   vpanic+0x0/0x4fc
->   check_panic_on_warn+0x0/0x94
->   arm64_serror_panic+0x6c/0x78
->   do_serror+0xc4/0xcc
->   el1h_64_error_handler+0x3c/0x5c
->   el1h_64_error+0x6c/0x70
->   regmap_mmio_read32le+0x18/0x24 (P)
->   regmap_bus_reg_read+0xfc/0x130
->   regmap_read+0x188/0x1ac
->   regmap_read+0x54/0x78
->   rockchip_pd_power+0xcc/0x5f0
->   rockchip_pd_power_off+0x1c/0x4c
->   genpd_power_off+0x84/0x120
->   genpd_power_off+0x1b4/0x260
->   genpd_power_off_work_fn+0x38/0x58
->   process_scheduled_works+0x194/0x2c4
->   worker_thread+0x2ac/0x3d8
->   kthread+0x104/0x124
->   ret_from_fork+0x10/0x20
->   SMP: stopping secondary CPUs
->   Kernel Offset: disabled
->   CPU features: 0x3000000,000e0005,40230521,0400720b
->   Memory Limit: none
->   ---[ end Kernel panic - not syncing: Asynchronous SError Interrupt ]---
->=20
-> Chaoyi pointed out the PD_VCODEC is the parent of PD_RKVDEC0/1 and PD_VEN=
-C0/1, so checking
-> the PD_VCODEC is enough.
->=20
-> [1] https://lore.kernel.org/linux-rockchip/20251020212009.8852-2-detlev.c=
-asanova@collabora.com/
-> Fixes: db6df2e3fc16 ("pmdomain: rockchip: add regulator support")
-> Cc: stable@vger.kernel.org
-> Suggested-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
->=20
-> ---
+>> This is barely acceptable, but I am just annoyed already explain it to
+>> you multiple times.
 
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+There is no need to explain it again, we've got your point.  We've also brought our
+arguments and I had the impression that we eventually agreed to keep the unit
+address unchanged, based on your comments [2]:
 
-Greetings,
+  Yes, with drop of the oneOf this would be fine.
+  I meant, the "one item option" in oneOf.
 
--- Sebastian
+Is this not applicable anymore?
 
->=20
-> Changes in v3:
-> - drop tags
-> - rework it for just changing PD_VCODEC(chaoyi)
->=20
-> Changes in v2:
-> - collect tags
-> - correct TRM section(Sebastian)
->=20
->  drivers/pmdomain/rockchip/pm-domains.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/ro=
-ckchip/pm-domains.c
-> index 997e93c..44d3484 100644
-> --- a/drivers/pmdomain/rockchip/pm-domains.c
-> +++ b/drivers/pmdomain/rockchip/pm-domains.c
-> @@ -1311,7 +1311,7 @@ static const struct rockchip_domain_info rk3576_pm_=
-domains[] =3D {
->  static const struct rockchip_domain_info rk3588_pm_domains[] =3D {
->  	[RK3588_PD_GPU]		=3D DOMAIN_RK3588("gpu",     0x0, BIT(0),  0,       0x=
-0, 0,       BIT(1),  0x0, BIT(0),  BIT(0),  false, true),
->  	[RK3588_PD_NPU]		=3D DOMAIN_RK3588("npu",     0x0, BIT(1),  BIT(1),  0x=
-0, 0,       0,       0x0, 0,       0,       false, true),
-> -	[RK3588_PD_VCODEC]	=3D DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  =
-0x0, 0,       0,       0x0, 0,       0,       false, false),
-> +	[RK3588_PD_VCODEC]	=3D DOMAIN_RK3588("vcodec",  0x0, BIT(2),  BIT(2),  =
-0x0, 0,       0,       0x0, 0,       0,       false, true),
->  	[RK3588_PD_NPUTOP]	=3D DOMAIN_RK3588("nputop",  0x0, BIT(3),  0,       =
-0x0, BIT(11), BIT(2),  0x0, BIT(1),  BIT(1),  false, false),
->  	[RK3588_PD_NPU1]	=3D DOMAIN_RK3588("npu1",    0x0, BIT(4),  0,       0x=
-0, BIT(12), BIT(3),  0x0, BIT(2),  BIT(2),  false, false),
->  	[RK3588_PD_NPU2]	=3D DOMAIN_RK3588("npu2",    0x0, BIT(5),  0,       0x=
-0, BIT(13), BIT(4),  0x0, BIT(3),  BIT(3),  false, false),
-> --=20
-> 2.7.4
->=20
->=20
+>> But now you claim, you can break ABI for cosmetic unimportant change,
 
---4zfusrcm7v6ffvo5
-Content-Type: application/pgp-signature; name="signature.asc"
+No, breaking ABI wasn't our intention here.  If we put the issue with reg-names
+being optional aside for a moment (as that one will be handled separately), is
+there still a problem with the current revision?
 
------BEGIN PGP SIGNATURE-----
+>> but actually doing something meaningful is a no-go?
 
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmmmFWwACgkQ2O7X88g7
-+prm0w//c/OObis4A9+I6pXVvUB0m0bE1+Jpj/1KGWaM9zA+Y7wpeE2w3GaWPdN+
-UgbQ3oH/0+1QL4zZ173YeiLf8h7VqseZF+S2+6YzjWnDsEpWRBwncXrw5e0MoAPN
-8L/QfhrxUOD4RDLo6rBVsA+p+y61+mEGJrNKwbTqXQn7EATEQnHzIGLcF7xIKIaB
-HKiX0tQ5yspsZ3SsjeEkUfteyS2+t4g2CIoDbOv2s5gv+N4+Os2WdlbzOrew5d3c
-l0NQ0wH/OOVmGR9U2YWg/tu/O65+BlXMpE7iXexJ0xynkYwzVRiTAiI8lDTJ1wbb
-HivXw6EKQjbihbV9IWGkbfActInVuGVUAn494yyNBNr0F6Ro1r+JR2Fm4sDwBEHi
-yH3ZAShn0sPmrxi0lZ4+5QD+PDtrkyBfYMAQXHJJwoWs8hf3pDZ8k2uJei5sjCne
-QXmIJlalS3cv7Kxhq09V46NiMSFhB7aPweQUj8oZFTmIhXzQIPZMI/sp0zoi2Ztr
-J9vmq1bNsyGI5hFIedF4ZJ5CilQqmSHbedzXEgVcJCRXAeqI0yQyTzL6L4+BJVg7
-CVIQLNdXdI+FM89hITqgD3fYjhFXrlCelppNeSit9RtuOoJhaYbrS4MdkfbDj7FX
-W592zfgPsMbHVkxj4AwGm4AOl6VVvCPtm7UAFFSP5iMQJeYBs20=
-=Wz7p
------END PGP SIGNATURE-----
+Making reg-names mandatory has been already clarified with Conor and agreed [3]
+to be handled in a dedicated patch.  And that one will indeed break the ABI, but
+it's unavoidable, unfortunately. 
 
---4zfusrcm7v6ffvo5--
+>> At least use correct arguments if you want to discuss.
 
+Sorry, I'm not sure what do you mean.  I really believed that we managed to
+address all the open topics by now.
 
---===============8484400808877639883==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Thanks,
+Cristian
+
+[1] https://lore.kernel.org/all/1cdc36f2-6e51-492a-9063-7d0a784f5118@kernel.org/
+[2] https://lore.kernel.org/all/12b30229-1c55-429d-8a3c-0d831c4d33ab@kernel.org/
+[3] https://lore.kernel.org/all/20260227-urologist-gratitude-7984733f2d41@spud/
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8484400808877639883==--
-
