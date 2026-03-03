@@ -4,108 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44DD7EDEBE3
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 18:15:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9640EDEBE6
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 19:25:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A3bJdaSWhGCSADyir1bSVNhfslyPBaSqaTyIkRFN+h4=; b=MOD4dSzaOjjgOA
-	DH7r9lHca1Iet2YlRtKB4oGQpV3nj0/vme/CLdech6bDjXdGDIV4hNUgN15le9vjBLLSoDjAi344m
-	y9BbivfC3vUVg2llE1efh9URPZqcgHHAJU7CS6D2QAI05eI13YlnaOgvi1M1zB1C514ttXsA9HRNB
-	BkTwYhe8tb+tfM99Dt22nbo/fXpDhresle2cHCA2P7eZlN0TMTlDdo6ayRl9aTdV7tDRbGO/bB1V4
-	rvT0LJrL47bmrk0XTYEXN162UAaRfAXt67YjSFT3aSjoEdp9Aa45xPgZU9/S+cIHZD+zprD5qSlkY
-	oaxxk4ON/DqqcdzccofQ==;
+	List-Owner; bh=F2UhEH/9IfURPYUv33/jmIHo4y+xbsI2wniLyXkwSIw=; b=r34CFfP9iNFLPL
+	kDon2M/yOrBpd2y/3mwktB5vEYNd7LQmG85gGWI/JGYiNSVgXM1G/tgPO3YVMU5sVL6gSPZpFzxql
+	S45uW7AQbqZo82R2qKFxF2tNpsetfsGLbl4bCNyUCacWTiK2ar/pZHQy01ZaJeLMKHJLR63tyChlo
+	X7hkArM5S/uatLS971Fhfp9Xzz4edPRp2qkEHQCYRvjPGTlsi8YRUDH0wi0CwMlE1WXk1UUSXhrrh
+	iSIeTMi4tZYaynigzipGHJbuTcQBNv56ACjE1lvaBWgOyyftYNleAp2cLou/TJDUx9q32B3U+u/ar
+	9EMDZ6JriaZ1yeJhlUPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxUHD-0000000FhCW-0Y3E;
-	Tue, 03 Mar 2026 18:15:23 +0000
-Received: from ixit.cz ([185.100.197.86])
+	id 1vxVMa-0000000Fmji-3NGT;
+	Tue, 03 Mar 2026 19:25:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxUH8-0000000FhBx-37Ao;
-	Tue, 03 Mar 2026 18:15:20 +0000
-Received: from [IPV6:2a02:f000:10bd:e301::1d7] (unknown [IPv6:2a02:f000:10bd:e301::1d7])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	id 1vxVMU-0000000Fmdl-49gA;
+	Tue, 03 Mar 2026 19:24:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772565892;
+	bh=qYvReqSB6UJn7rr3CRBtQrUk86GQPHVbFJQGJ77D43c=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ozTA86d4habLb2jqTJQA/c+1lSV8NTtOWrp5nqdJUwdBCgd1NIH8s/zhtKCdFN175
+	 w5e0oswWtdGpACDI4U7fD1GDZZUSJGWeZVuVTMwXLfFFHS8JIY53a5gXpPOf3zZBr7
+	 d8AMOJDw0iSCo7Mbns3s52X3ugPy9xvh8cBDE3XiBvalc/K6FXT3akrD3jZ2UnG+ZY
+	 ZYS7NnjkXjRCHBHwZLun/niYVKiuxCcotCnxu6IJjXtAfh/Pe7JFka3yIppqjagxRr
+	 2HVHeN8WEESA6wplLbn4fNp+T8Yi0tzTvDUeCdGCA3xV/LB2ndXcQ1LrfDUJMxUcHJ
+	 jQVQtaXRRiWdA==
+Received: from localhost (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by ixit.cz (Postfix) with ESMTPSA id 68CD35341816;
-	Tue, 03 Mar 2026 19:15:01 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ixit.cz; s=dkim;
-	t=1772561701;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=zRSFB+Kow30kkyNQlPlB1H4dALbfz4Gh6BYXFVdhCK4=;
-	b=hQAbXY4ZflAn48ecmR/w9PncxD6iQM73aeR+ItGW2FGeaCdaYE3p0zAweg7Qpz7/ytG3yS
-	WkL5bYLQd4aKRxO5UI+yBG5jJ1xjZA46iMZF7naSJAmHQMaogdPEazlyKdh4Mol7P5ZRPs
-	YWNnr4Kka+DrEHXh9zf0Z9TejKx68Gg=
-Message-ID: <7bccfc13-de1b-4464-b97f-ee9e98a8713a@ixit.cz>
-Date: Tue, 3 Mar 2026 19:14:59 +0100
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 509EC17E1004;
+	Tue,  3 Mar 2026 20:24:52 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 03 Mar 2026 21:24:20 +0200
+Subject: [PATCH v8 4/4] drm/rockchip: vop2: Support setting custom
+ background color
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Use reference PCIe clock
- generator for BPI-R2-Pro
-To: Charalampos Mitrodimas <charmitro@posteo.net>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Martin Filla <freebsd@sysctl.cz>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260303-rk3568-bri-r2-pro-fix-pcie-v2-0-04665e55d5a8@ixit.cz>
- <20260303-rk3568-bri-r2-pro-fix-pcie-v2-2-04665e55d5a8@ixit.cz>
- <87fr6gn780.fsf@posteo.net>
-Content-Language: en-US
-From: David Heidelberg <david@ixit.cz>
-Autocrypt: addr=david@ixit.cz; keydata=
- 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
-In-Reply-To: <87fr6gn780.fsf@posteo.net>
+Message-Id: <20260303-rk3588-bgcolor-v8-4-fee377037ad1@collabora.com>
+References: <20260303-rk3588-bgcolor-v8-0-fee377037ad1@collabora.com>
+In-Reply-To: <20260303-rk3588-bgcolor-v8-0-fee377037ad1@collabora.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, 
+ Haneen Mohammed <hamohammed.sa@gmail.com>, 
+ Melissa Wen <melissa.srw@gmail.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>, Andy Yan <andyshrk@163.com>
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_101518_988064_070AA729 
-X-CRM114-Status: GOOD (  19.49  )
+X-CRM114-CacheID: sfid-20260303_112455_202978_52E63F07 
+X-CRM114-Status: GOOD (  15.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,130 +81,111 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 03/03/2026 18:38, Charalampos Mitrodimas wrote:
-> David Heidelberg via B4 Relay <devnull+david.ixit.cz@kernel.org> writes:
-> 
->> From: David Heidelberg <david@ixit.cz>
->>
->> Describe properly PCIe clock, which allows us correct the
->> toplogy (removing the vcc3v3-{minipcie,ngff} dependency on pi6c as
->> supply) and adding the clock dependency in the PCIe nodes.
->>
->> Suggested-by: Heiko Stuebner <heiko@sntech.de>
->> Tested-by: Martin Filla <freebsd@sysctl.cz>
->> Signed-off-by: David Heidelberg <david@ixit.cz>
->> ---
->>   arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts | 45 +++++++++++++++-------
->>   1 file changed, 31 insertions(+), 14 deletions(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
->> index d02b82c5f979a..a071cb67579c4 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3568-bpi-r2-pro.dts
->> @@ -120,18 +120,13 @@ pcie_refclk_gen: pcie-refclk-gen-clock {
->>   		clock-frequency = <100000000>;
->>   	};
->>   
->> -	vcc3v3_pi6c_05: regulator-vcc3v3-pi6c-05 {
->> -		compatible = "regulator-fixed";
->> -		regulator-name = "vcc3v3_pcie";
->> -		regulator-min-microvolt = <3300000>;
->> -		regulator-max-microvolt = <3300000>;
->> -		enable-active-high;
->> -		gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
->> -		startup-delay-us = <200000>;
->> -		vin-supply = <&vcc5v0_sys>;
->> +	pcie_refclk: pcie-refclk-clock {
->> +		compatible = "gpio-gate-clock";
->> +		clocks = <&pcie_refclk_gen>;
->> +		#clock-cells = <0>;
->> +		enable-gpios = <&gpio0 RK_PD4 GPIO_ACTIVE_HIGH>;
->>   	};
->>   
->> -	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
->>   	vcc3v3_minipcie: regulator-vcc3v3-minipcie {
->>   		compatible = "regulator-fixed";
->>   		regulator-name = "vcc3v3_minipcie";
->> @@ -142,10 +137,9 @@ vcc3v3_minipcie: regulator-vcc3v3-minipcie {
->>   		pinctrl-names = "default";
->>   		pinctrl-0 = <&minipcie_enable_h>;
->>   		startup-delay-us = <50000>;
->> -		vin-supply = <&vcc3v3_pi6c_05>;
->> +		vin-supply = <&vcc3v3_sys>;
->>   	};
->>   
->> -	/* actually fed by vcc3v3_sys, dependent on pi6c clock generator */
->>   	vcc3v3_ngff: regulator-vcc3v3-ngff {
->>   		compatible = "regulator-fixed";
->>   		regulator-name = "vcc3v3_ngff";
->> @@ -156,7 +150,7 @@ vcc3v3_ngff: regulator-vcc3v3-ngff {
->>   		pinctrl-names = "default";
->>   		pinctrl-0 = <&ngffpcie_enable_h>;
->>   		startup-delay-us = <50000>;
->> -		vin-supply = <&vcc3v3_pi6c_05>;
->> +		vin-supply = <&vcc3v3_sys>;
->>   	};
->>   
->>   	vcc5v0_usb: regulator-vcc5v0-usb {
->> @@ -586,12 +580,23 @@ rgmii_phy1: ethernet-phy@0 {
->>   
->>   &pcie30phy {
->>   	data-lanes = <1 2>;
->> -	phy-supply = <&vcc3v3_pi6c_05>;
->> +
->>   	status = "okay";
->>   };
->>   
->>   &pcie3x1 {
->>   	/* M.2 slot */
->> +	/*
->> +	 * The board has a gpio-controlled "pcie_refclk" generator,
->> +	 * so add it to the list of clocks.
->> +	 */
->> +	clocks = <&cru ACLK_PCIE30X1_MST>, <&cru ACLK_PCIE30X1_SLV>,
->> +		 <&cru ACLK_PCIE30X1_DBI>, <&cru PCLK_PCIE30X1>,
->> +		 <&cru CLK_PCIE30X1_AUX_NDFT>,
->> +		 <&pcie_refclk>;
->> +	clock-names = "aclk_mst", "aclk_slv",
->> +		      "aclk_dbi", "pclk", "aux",
->> +		      "ref";
-> 
-> Hi,
-> 
-> The DT binding in rockchip-dw-pcie-common.yaml defines clock-names as a
-> positional array:
-> 
->      items:
->        - const: aclk_mst
->        - const: aclk_slv
->        - const: aclk_dbi
->        - const: pclk
->        - const: aux
->        - const: pipe   <-- position 5
->        - const: ref    <-- position 6
-> 
-> With "ref" at position 5, this would fail dtbs_check because the schema
-> expects "pipe" there.
-> 
-> Other boards that include the ref clock (rk3588-rock-5-itx,
-> rk3588-jaguar) include "pipe" at position 5 and "ref" at position 6. The
-> rk3568 has CLK_PCIE30X1_PIPE_DFT available in the CRU header.
-> 
-> Should the pipe clock be included before ref to match the binding
-> schema?
+The Rockchip VOP2 display controller allows configuring the background
+color of each video output port.
 
-Good catch, I'll put pipe  before the ref addition.
+Since a previous patch introduced the BACKGROUND_COLOR CRTC property,
+which defaults to solid black, make use of it when programming the
+hardware.
 
-I'll let my friend test these changes and I'll submit another version incl the pipe.
+Note the maximum precision allowed by the display controller is 10bpc,
+while the alpha component is not supported, hence ignored.
 
-David
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Reviewed-by: Andy Yan <andyshrk@163.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 24 +++++++++++++++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
+ 2 files changed, 27 insertions(+), 1 deletion(-)
 
-[...]
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index a195f5c819a2..843c7ef979b2 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1080,6 +1080,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
+ 		return -EINVAL;
+ 	}
+ 
++	if ((cstate->background_color << 16) &&
++	    (fb->format->has_alpha || pstate->alpha != 0xffff)) {
++		drm_dbg_kms(vop2->drm,
++			    "Alpha-blending with background color is unsupported\n");
++		return -EINVAL;
++	}
++
+ 	return 0;
+ }
+ 
+@@ -1552,6 +1559,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
+ 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+ 	struct vop2 *vop2 = vp->vop2;
+ 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
++	u64 bgcolor = crtc->state->background_color;
+ 	u16 vtotal = mode->crtc_vtotal;
+ 	u16 hdisplay = mode->crtc_hdisplay;
+ 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
+@@ -1597,7 +1605,15 @@ static void vop2_post_config(struct drm_crtc *crtc)
+ 		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
+ 	}
+ 
+-	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
++	/*
++	 * Background color is programmed with 10 bits of precision.
++	 * Since performance is more important than accuracy here,
++	 * make use of the DRM_ARGB64_GET*_BPCS() helpers.
++	 */
++	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR_BPCS(bgcolor, 10));
++	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, DRM_ARGB64_GETG_BPCS(bgcolor, 10));
++	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, DRM_ARGB64_GETB_BPCS(bgcolor, 10));
++	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
+ }
+ 
+ static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+@@ -1983,6 +1999,10 @@ static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
+ 		   drm_get_bus_format_name(vcstate->bus_format));
+ 	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
+ 	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
++	seq_printf(s, "\tbackground color (10bpc): r=0x%x g=0x%x b=0x%x\n",
++		   DRM_ARGB64_GETR_BPCS(cstate->background_color, 10),
++		   DRM_ARGB64_GETG_BPCS(cstate->background_color, 10),
++		   DRM_ARGB64_GETB_BPCS(cstate->background_color, 10));
+ 	seq_printf(s, "    Display mode: %dx%d%s%d\n",
+ 		   mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
+ 		   drm_mode_vrefresh(mode));
+@@ -2471,6 +2491,8 @@ static int vop2_create_crtcs(struct vop2 *vop2)
+ 			return dev_err_probe(drm->dev, ret,
+ 					     "crtc init for video_port%d failed\n", i);
+ 
++		drm_crtc_attach_background_color_property(&vp->crtc);
++
+ 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
+ 		if (vop2->lut_regs) {
+ 			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 9124191899ba..37722652844a 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -658,6 +658,10 @@ enum dst_factor_mode {
+ #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
+ #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
+ 
++#define RK3568_VP_DSP_BG__DSP_BG_RED			GENMASK(29, 20)
++#define RK3568_VP_DSP_BG__DSP_BG_GREEN			GENMASK(19, 10)
++#define RK3568_VP_DSP_BG__DSP_BG_BLUE			GENMASK(9, 0)
++
+ #define RK3568_VP_POST_SCL_CTRL__VSCALEDOWN		BIT(1)
+ #define RK3568_VP_POST_SCL_CTRL__HSCALEDOWN		BIT(0)
+ 
+
+-- 
+2.52.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
