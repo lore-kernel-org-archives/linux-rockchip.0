@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9640EDEBE6
-	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 19:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B8ECEDEBEE
+	for <linux-rockchip@archiver.kernel.org>; Tue,  3 Mar 2026 19:25:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F2UhEH/9IfURPYUv33/jmIHo4y+xbsI2wniLyXkwSIw=; b=r34CFfP9iNFLPL
-	kDon2M/yOrBpd2y/3mwktB5vEYNd7LQmG85gGWI/JGYiNSVgXM1G/tgPO3YVMU5sVL6gSPZpFzxql
-	S45uW7AQbqZo82R2qKFxF2tNpsetfsGLbl4bCNyUCacWTiK2ar/pZHQy01ZaJeLMKHJLR63tyChlo
-	X7hkArM5S/uatLS971Fhfp9Xzz4edPRp2qkEHQCYRvjPGTlsi8YRUDH0wi0CwMlE1WXk1UUSXhrrh
-	iSIeTMi4tZYaynigzipGHJbuTcQBNv56ACjE1lvaBWgOyyftYNleAp2cLou/TJDUx9q32B3U+u/ar
-	9EMDZ6JriaZ1yeJhlUPg==;
+	List-Owner; bh=U2DOdCPx7xlOgEpsa5Ds4ymgJB0e/s60fcQ5LbTuHEM=; b=dgUKF8Q4ieD4wH
+	FlVCs8ehe7CL2+qP9zgmij1U7W5UJ6rUGdE12P4dIEbljWhvQFFwrI4JTnHNZ8+USc+AIgzLw+1G/
+	e/JFLEy5T4Ut0g+luUHe+Svmno5nMIj7XgldD17/aWNnBV+CmgJtPX2X5PeZpJQWGmBfa0BwKZzDQ
+	PzsgyPfxco/L1QXhkInsv/V4Etoqe7wfznnsagGhkcJWzjcE53L+0jUYOFbCJVrfjHE1/s/LvaQ8v
+	S8QG0UpQmb1QtvLz1iFxdsbesBXW5PjcLxLlIy3RpT1cKF99clQGAWwsI6XOH1u9RqEe1C+jxcSU8
+	BUjhptu36zaOwvVBmTKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxVMa-0000000Fmji-3NGT;
-	Tue, 03 Mar 2026 19:25:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vxVMV-0000000FmeZ-19FK;
+	Tue, 03 Mar 2026 19:24:55 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxVMU-0000000Fmdl-49gA;
-	Tue, 03 Mar 2026 19:24:56 +0000
+	id 1vxVMS-0000000Fmd1-0FJt;
+	Tue, 03 Mar 2026 19:24:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772565892;
-	bh=qYvReqSB6UJn7rr3CRBtQrUk86GQPHVbFJQGJ77D43c=;
+	s=mail; t=1772565889;
+	bh=xeVIe8cmrntR0enuK392UB2SXROYBNmtYamPiBlWwyw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ozTA86d4habLb2jqTJQA/c+1lSV8NTtOWrp5nqdJUwdBCgd1NIH8s/zhtKCdFN175
-	 w5e0oswWtdGpACDI4U7fD1GDZZUSJGWeZVuVTMwXLfFFHS8JIY53a5gXpPOf3zZBr7
-	 d8AMOJDw0iSCo7Mbns3s52X3ugPy9xvh8cBDE3XiBvalc/K6FXT3akrD3jZ2UnG+ZY
-	 ZYS7NnjkXjRCHBHwZLun/niYVKiuxCcotCnxu6IJjXtAfh/Pe7JFka3yIppqjagxRr
-	 2HVHeN8WEESA6wplLbn4fNp+T8Yi0tzTvDUeCdGCA3xV/LB2ndXcQ1LrfDUJMxUcHJ
-	 jQVQtaXRRiWdA==
+	b=hDTgpViRIzjWpaz1Mps9ZjamKCPPNQHP0C88T3U0lWKkoj9BA8x1d3Rajzzdr3Lvl
+	 LkhuzDgvqNhUgpOmmK9kxRLhJpybSLauyctDOMNvEP3LdphzPkiHfvHv0l9EOfL9q0
+	 z9iHtlv6l236IN/NSmesqHI9VEYLYuhX90Ocu4beSlF9BexmHg29ncS986NLQcBOLx
+	 +d4uvye0w6FzKiM8S56yQjxiQU1l4yNcrI1+nF81YSnVDuctygRNwfyyv7hC/GrkBQ
+	 eszX/23EeXOgdt+bj63HRn5UlZhnXw63izI3VR69LgFknCzdyxRlu3fTSjwuEEpJXB
+	 RqLxk9vtr04uQ==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 509EC17E1004;
-	Tue,  3 Mar 2026 20:24:52 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B0A7417E0EB2;
+	Tue,  3 Mar 2026 20:24:49 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 03 Mar 2026 21:24:20 +0200
-Subject: [PATCH v8 4/4] drm/rockchip: vop2: Support setting custom
- background color
+Date: Tue, 03 Mar 2026 21:24:17 +0200
+Subject: [PATCH v8 1/4] uapi: Provide DIV_ROUND_CLOSEST()
 MIME-Version: 1.0
-Message-Id: <20260303-rk3588-bgcolor-v8-4-fee377037ad1@collabora.com>
+Message-Id: <20260303-rk3588-bgcolor-v8-1-fee377037ad1@collabora.com>
 References: <20260303-rk3588-bgcolor-v8-0-fee377037ad1@collabora.com>
 In-Reply-To: <20260303-rk3588-bgcolor-v8-0-fee377037ad1@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -65,11 +64,13 @@ To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 Cc: Robert Mader <robert.mader@collabora.com>, kernel@collabora.com, 
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- Diederik de Haas <diederik@cknow-tech.com>, Andy Yan <andyshrk@163.com>
+ =?utf-8?q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_112455_202978_52E63F07 
-X-CRM114-Status: GOOD (  15.09  )
+X-CRM114-CacheID: sfid-20260303_112452_268433_07D72CE0 
+X-CRM114-Status: GOOD (  11.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,113 +82,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The Rockchip VOP2 display controller allows configuring the background
-color of each video output port.
-
-Since a previous patch introduced the BACKGROUND_COLOR CRTC property,
-which defaults to solid black, make use of it when programming the
-hardware.
-
-Note the maximum precision allowed by the display controller is 10bpc,
-while the alpha component is not supported, hence ignored.
-
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-Reviewed-by: Andy Yan <andyshrk@163.com>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 24 +++++++++++++++++++++++-
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  4 ++++
- 2 files changed, 27 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index a195f5c819a2..843c7ef979b2 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1080,6 +1080,13 @@ static int vop2_plane_atomic_check(struct drm_plane *plane,
- 		return -EINVAL;
- 	}
- 
-+	if ((cstate->background_color << 16) &&
-+	    (fb->format->has_alpha || pstate->alpha != 0xffff)) {
-+		drm_dbg_kms(vop2->drm,
-+			    "Alpha-blending with background color is unsupported\n");
-+		return -EINVAL;
-+	}
-+
- 	return 0;
- }
- 
-@@ -1552,6 +1559,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
- 	struct vop2 *vop2 = vp->vop2;
- 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
-+	u64 bgcolor = crtc->state->background_color;
- 	u16 vtotal = mode->crtc_vtotal;
- 	u16 hdisplay = mode->crtc_hdisplay;
- 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
-@@ -1597,7 +1605,15 @@ static void vop2_post_config(struct drm_crtc *crtc)
- 		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
- 	}
- 
--	vop2_vp_write(vp, RK3568_VP_DSP_BG, 0);
-+	/*
-+	 * Background color is programmed with 10 bits of precision.
-+	 * Since performance is more important than accuracy here,
-+	 * make use of the DRM_ARGB64_GET*_BPCS() helpers.
-+	 */
-+	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR_BPCS(bgcolor, 10));
-+	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, DRM_ARGB64_GETG_BPCS(bgcolor, 10));
-+	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, DRM_ARGB64_GETB_BPCS(bgcolor, 10));
-+	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
- }
- 
- static int us_to_vertical_line(struct drm_display_mode *mode, int us)
-@@ -1983,6 +1999,10 @@ static int vop2_crtc_state_dump(struct drm_crtc *crtc, struct seq_file *s)
- 		   drm_get_bus_format_name(vcstate->bus_format));
- 	seq_printf(s, "\toutput_mode[%x]", vcstate->output_mode);
- 	seq_printf(s, " color_space[%d]\n", vcstate->color_space);
-+	seq_printf(s, "\tbackground color (10bpc): r=0x%x g=0x%x b=0x%x\n",
-+		   DRM_ARGB64_GETR_BPCS(cstate->background_color, 10),
-+		   DRM_ARGB64_GETG_BPCS(cstate->background_color, 10),
-+		   DRM_ARGB64_GETB_BPCS(cstate->background_color, 10));
- 	seq_printf(s, "    Display mode: %dx%d%s%d\n",
- 		   mode->hdisplay, mode->vdisplay, interlaced ? "i" : "p",
- 		   drm_mode_vrefresh(mode));
-@@ -2471,6 +2491,8 @@ static int vop2_create_crtcs(struct vop2 *vop2)
- 			return dev_err_probe(drm->dev, ret,
- 					     "crtc init for video_port%d failed\n", i);
- 
-+		drm_crtc_attach_background_color_property(&vp->crtc);
-+
- 		drm_crtc_helper_add(&vp->crtc, &vop2_crtc_helper_funcs);
- 		if (vop2->lut_regs) {
- 			const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 9124191899ba..37722652844a 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -658,6 +658,10 @@ enum dst_factor_mode {
- #define RK3588_VP_CLK_CTRL__DCLK_OUT_DIV		GENMASK(3, 2)
- #define RK3588_VP_CLK_CTRL__DCLK_CORE_DIV		GENMASK(1, 0)
- 
-+#define RK3568_VP_DSP_BG__DSP_BG_RED			GENMASK(29, 20)
-+#define RK3568_VP_DSP_BG__DSP_BG_GREEN			GENMASK(19, 10)
-+#define RK3568_VP_DSP_BG__DSP_BG_BLUE			GENMASK(9, 0)
-+
- #define RK3568_VP_POST_SCL_CTRL__VSCALEDOWN		BIT(1)
- #define RK3568_VP_POST_SCL_CTRL__HSCALEDOWN		BIT(0)
- 
-
--- 
-2.52.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Q3VycmVudGx5IERJVl9ST1VORF9DTE9TRVNUKCkgaXMgb25seSBhdmFpbGFibGUgZm9yIHRoZSBr
+ZXJuZWwgdmlhCmluY2x1ZGUvbGludXgvbWF0aC5oLgoKRXhwb3NlIGl0IHRvIHVzZXJsYW5kIGFz
+IHdlbGwgYnkgYWRkaW5nIF9fS0VSTkVMX0RJVl9ST1VORF9DTE9TRVNUKCkgYXMKYSBjb21tb24g
+ZGVmaW5pdGlvbiBpbiB1YXBpLgoKQWRkaXRpb25hbGx5LCBlbnN1cmUgaXQgYWxsb3dzIGJ1aWxk
+aW5nIElTTyBDIGFwcGxpY2F0aW9ucyBieSBzd2l0Y2hpbmcKZnJvbSB0aGUgJ3R5cGVvZicgR05V
+IGV4dGVuc2lvbiB0byB0aGUgSVNPLWZyaWVuZGx5IF9fdHlwZW9mX18uCgpSZXZpZXdlZC1ieTog
+TsOtY29sYXMgRi4gUi4gQS4gUHJhZG8gPG5mcmFwcmFkb0Bjb2xsYWJvcmEuY29tPgpUZXN0ZWQt
+Ynk6IERpZWRlcmlrIGRlIEhhYXMgPGRpZWRlcmlrQGNrbm93LXRlY2guY29tPgpBY2tlZC1ieTog
+QW5keSBTaGV2Y2hlbmtvIDxhbmRyaXkuc2hldmNoZW5rb0BsaW51eC5pbnRlbC5jb20+ClJldmll
+d2VkLWJ5OiBBbmdlbG9HaW9hY2NoaW5vIERlbCBSZWdubyA8YW5nZWxvZ2lvYWNjaGluby5kZWxy
+ZWdub0Bjb2xsYWJvcmEuY29tPgpTaWduZWQtb2ZmLWJ5OiBDcmlzdGlhbiBDaW9jYWx0ZWEgPGNy
+aXN0aWFuLmNpb2NhbHRlYUBjb2xsYWJvcmEuY29tPgotLS0KIGluY2x1ZGUvbGludXgvbWF0aC5o
+ICAgICAgIHwgMTggKy0tLS0tLS0tLS0tLS0tLS0tCiBpbmNsdWRlL3VhcGkvbGludXgvY29uc3Qu
+aCB8IDE4ICsrKysrKysrKysrKysrKysrKwogMiBmaWxlcyBjaGFuZ2VkLCAxOSBpbnNlcnRpb25z
+KCspLCAxNyBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9pbmNsdWRlL2xpbnV4L21hdGguaCBi
+L2luY2x1ZGUvbGludXgvbWF0aC5oCmluZGV4IDZkYzFkMWQzMmZiYy4uMWU4ZmIzZWZiYzhjIDEw
+MDY0NAotLS0gYS9pbmNsdWRlL2xpbnV4L21hdGguaAorKysgYi9pbmNsdWRlL2xpbnV4L21hdGgu
+aApAQCAtODksMjMgKzg5LDcgQEAKIH0JCQkJCQkJXAogKQogCi0vKgotICogRGl2aWRlIHBvc2l0
+aXZlIG9yIG5lZ2F0aXZlIGRpdmlkZW5kIGJ5IHBvc2l0aXZlIG9yIG5lZ2F0aXZlIGRpdmlzb3IK
+LSAqIGFuZCByb3VuZCB0byBjbG9zZXN0IGludGVnZXIuIFJlc3VsdCBpcyB1bmRlZmluZWQgZm9y
+IG5lZ2F0aXZlCi0gKiBkaXZpc29ycyBpZiB0aGUgZGl2aWRlbmQgdmFyaWFibGUgdHlwZSBpcyB1
+bnNpZ25lZCBhbmQgZm9yIG5lZ2F0aXZlCi0gKiBkaXZpZGVuZHMgaWYgdGhlIGRpdmlzb3IgdmFy
+aWFibGUgdHlwZSBpcyB1bnNpZ25lZC4KLSAqLwotI2RlZmluZSBESVZfUk9VTkRfQ0xPU0VTVCh4
+LCBkaXZpc29yKSgJCQlcCi17CQkJCQkJCVwKLQl0eXBlb2YoeCkgX194ID0geDsJCQkJXAotCXR5
+cGVvZihkaXZpc29yKSBfX2QgPSBkaXZpc29yOwkJCVwKLQkoKCh0eXBlb2YoeCkpLTEpID4gMCB8
+fAkJCQlcCi0JICgodHlwZW9mKGRpdmlzb3IpKS0xKSA+IDAgfHwJCQlcCi0JICgoKF9feCkgPiAw
+KSA9PSAoKF9fZCkgPiAwKSkpID8JCVwKLQkJKCgoX194KSArICgoX19kKSAvIDIpKSAvIChfX2Qp
+KSA6CVwKLQkJKCgoX194KSAtICgoX19kKSAvIDIpKSAvIChfX2QpKTsJXAotfQkJCQkJCQlcCi0p
+CisjZGVmaW5lIERJVl9ST1VORF9DTE9TRVNUIF9fS0VSTkVMX0RJVl9ST1VORF9DTE9TRVNUCiAv
+KgogICogU2FtZSBhcyBhYm92ZSBidXQgZm9yIHU2NCBkaXZpZGVuZHMuIGRpdmlzb3IgbXVzdCBi
+ZSBhIDMyLWJpdAogICogbnVtYmVyLgpkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBpL2xpbnV4L2Nv
+bnN0LmggYi9pbmNsdWRlL3VhcGkvbGludXgvY29uc3QuaAppbmRleCBiOGY2MjllZjEzNWYuLjU2
+NWYzMDliOWRmOCAxMDA2NDQKLS0tIGEvaW5jbHVkZS91YXBpL2xpbnV4L2NvbnN0LmgKKysrIGIv
+aW5jbHVkZS91YXBpL2xpbnV4L2NvbnN0LmgKQEAgLTUwLDQgKzUwLDIyIEBACiAKICNkZWZpbmUg
+X19LRVJORUxfRElWX1JPVU5EX1VQKG4sIGQpICgoKG4pICsgKGQpIC0gMSkgLyAoZCkpCiAKKy8q
+CisgKiBEaXZpZGUgcG9zaXRpdmUgb3IgbmVnYXRpdmUgZGl2aWRlbmQgYnkgcG9zaXRpdmUgb3Ig
+bmVnYXRpdmUgZGl2aXNvcgorICogYW5kIHJvdW5kIHRvIGNsb3Nlc3QgaW50ZWdlci4gUmVzdWx0
+IGlzIHVuZGVmaW5lZCBmb3IgbmVnYXRpdmUKKyAqIGRpdmlzb3JzIGlmIHRoZSBkaXZpZGVuZCB2
+YXJpYWJsZSB0eXBlIGlzIHVuc2lnbmVkIGFuZCBmb3IgbmVnYXRpdmUKKyAqIGRpdmlkZW5kcyBp
+ZiB0aGUgZGl2aXNvciB2YXJpYWJsZSB0eXBlIGlzIHVuc2lnbmVkLgorICovCisjZGVmaW5lIF9f
+S0VSTkVMX0RJVl9ST1VORF9DTE9TRVNUKHgsIGRpdmlzb3IpCQlcCisoewkJCQkJCQlcCisJX190
+eXBlb2ZfXyh4KSBfX3ggPSB4OwkJCQlcCisJX190eXBlb2ZfXyhkaXZpc29yKSBfX2QgPSBkaXZp
+c29yOwkJXAorCQkJCQkJCVwKKwkoKChfX3R5cGVvZl9fKHgpKS0xKSA+IDAgfHwJCQlcCisJICgo
+X190eXBlb2ZfXyhkaXZpc29yKSktMSkgPiAwIHx8CQlcCisJICgoKF9feCkgPiAwKSA9PSAoKF9f
+ZCkgPiAwKSkpID8JCVwKKwkJKCgoX194KSArICgoX19kKSAvIDIpKSAvIChfX2QpKSA6CVwKKwkJ
+KCgoX194KSAtICgoX19kKSAvIDIpKSAvIChfX2QpKTsJXAorfSkKKwogI2VuZGlmIC8qIF9VQVBJ
+X0xJTlVYX0NPTlNUX0ggKi8KCi0tIAoyLjUyLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
