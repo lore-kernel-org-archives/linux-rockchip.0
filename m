@@ -4,144 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3178EFCE4D
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 22:34:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08B69EFCE53
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 23:53:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n2zUHW9j1GCHQ2+wyI5ZRFFiEhw3vi/KQAu6knMTExM=; b=s7/GlPxTuMgLcg
-	2N8Qtu9wQNvZBQtjtrrRCl7D2T7wudJl8cgW3F9eU4aW6Yrtdwr8urY6w303NLRBMbSvDS+454SeP
-	+zp3JVYU93MDTQbZ1h50+8PIkns4shBw3bNbDO9Kvd3O3lIcgzmHpl60Lj0SOBlBCeswiaLq0x97C
-	huJRAumR0COKLBruouXvjVknysFDSgpokztaWW41ZAt3Wl6i/RGLJQTZ8HlPFgeIJTEriwT5IB8xB
-	GRh3b3FoGFM6FAxPqW1/L7moERneUvSeNGmI3rOrBfdW3cKKFdOS/V+6bmBj0DyX4CJhlIMR7DVaV
-	bjdYTDooWZdjZb01neow==;
+	List-Owner; bh=/2rlWuL5FXtu4CjrKHOvr634R+Uej1C1y2wZC4A+8+o=; b=emjld5vL+QFwks
+	mKhXi5KPzyX0JFWu/0Km+8F6Y3kLFr/2/mVRwXWm53aQjQIXD0i2WJt7m4E11z+S2k7AzVqcha5na
+	JjHuGOVhGyxN5vfpqcti3RyY0FVaA0hxOCz4zRqJoup0ChoKsPIYY0RIjxyicXpMp9DOWlAqICyOq
+	4xKu4GqLJWmOs2M9QsI6PLrU8BusYx9U0DY9mQcNS0ypbRjqjZBdjyv9bSdm925ZHX8MW+2ZEUEqi
+	Ryk5uzn5Ujb7bPJVrCtYgj4cEYr0AczKgzZstlYrorGRl0DxufnhCVN2sn4RuhqNPx0iLmVmJAQr+
+	GKl+ICS3osJoyTAIrlLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxung-00000000ayh-3tR9;
-	Wed, 04 Mar 2026 22:34:40 +0000
-Received: from mail-northeuropeazon11010058.outbound.protection.outlook.com ([52.101.84.58] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1vxw2E-00000000eUY-1Lty;
+	Wed, 04 Mar 2026 23:53:46 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxund-00000000axj-2Kv0;
-	Wed, 04 Mar 2026 22:34:39 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=AzPLJK80uR2+uzgdBGD8p0jpObU5dSZNFV3wAePQgiMz93x35gT7bNUzBQcOAZqlpSJSYYerUZFSS1Titk0rMm7JzFFs0LsfVMxa9kCl3f2DLsyRgqsvhGO/JpgBu45c21wfn6/kfdxabhUIIaI+VUgs4avk5uP8NVSa3LVSYqcT+U5RKFsdGd8qwlcAbNlPVOUPtYZz1u5kV3S2++K+qSQDGU9YKhTBoSpmHlD03+K7VHN5AbtDlkkg7dVMG4BCHeWZMrxVwqpJ9vA1K5gRztVJL7F0qYOdgNXgTFkKRNigSosBn90eNtckVUSqvo+vQ5optFmcrBlnGuTrGCj1Og==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=JXrErA0sMeKWmsOp3wui/g3AkoTupSMFZLHGNvdpKz0=;
- b=c1jW/pJKuqzPuMqRHBH1MK6xtragAz2dTL9LBPxl+R5NGLzanJBkNvCZ0jI0PxSyFruQlqpmdifzeTb7HN+aXjMNHd/xa3EiUDUj/bvtQrgVmyNrtdkxhUBk5yX72Gq7rp5eCZsPDIsYb+JsBO0aPJb5DieMONJ75Wo2BtNwhm4Q5ktHZZgwvUx7FgAj9ZItoSYUvX+oHKGoWzMY5ZngCGMAf8A9YLb6iWT9EydzuWxqUC/BdbTyD/JOuqfaD5suZmUO6HnmYnK1pPafg4xNqMDPO778SenSFlGAKOL9WrrUzbM0HYD7AaSOc8YuVvFsYo8rZ1ClVoxnklYfu4cEiQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JXrErA0sMeKWmsOp3wui/g3AkoTupSMFZLHGNvdpKz0=;
- b=ku9gb9XWLdEYu3J2MGZQ/GqPLS1ufQRkGJ2Cc4feC05GfUqZLD75O411Vd9tBrTvC4bvftiiXHlQiUQtcIVlzdkKw5D8uW4pb6JCfy2cTeenbIvv5SwykHDHbKrNdEvVJTT+vRiB67YaHEKtJ9pGuk3dR+ArCBMu/NrJnqC0NilSjk2hfZiO+TOwU+Ky48MbMoDrHeSh4fs/B5T0eTL4X/C0SHAwHKVF9ApnNXvIm1CTRyO80uHwFk/79rVWyPiUSLlMLe7zjFUgobKEQbS7XQTQl6mmBFvQ3VNAyolDmE7xkNoL3kkqAysIUR7urH5+8ravyl4GEM1zhy0EP9i2JQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by AM8PR04MB7859.eurprd04.prod.outlook.com (2603:10a6:20b:24c::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.21; Wed, 4 Mar
- 2026 22:34:32 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9678.016; Wed, 4 Mar 2026
- 22:34:32 +0000
-Date: Thu, 5 Mar 2026 00:34:27 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Bjorn Helgaas <helgaas@kernel.org>
+	id 1vxw26-00000000eQ3-2m4C
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Mar 2026 23:53:44 +0000
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 624MBoA51203575
+	for <linux-rockchip@lists.infradead.org>; Wed, 4 Mar 2026 23:53:38 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=V50tlCURGOSWEpUNVC/f5JBG
+	lAu9WVw1+uCs3+cXy8Q=; b=bHnTZhnFYn/tiIi8J4ULThpsgbab7UrmgW5OOJJi
+	m7XwaAv8gzL5i/PPJCFmKWpARNfKhBWcj2eQ98Jty0ias+PktBjqdKCkXAPaELNj
+	a0Gl+BUEEowrMPAKllx/ORmbxKvdbnv06gsWNMRC4vNwMWDRsN+/Umbybcd+e88B
+	r/+5sfU/Jr5rGByjhLIWV29LUZnpLgy3RQf4wS6C8MkG2aHm4Hpng0Hc/lXMymq8
+	+xAymHfPQW0I/zSIuwudwEu/Xyt9EGrksONWTgra0NIIeQgGca3xHZntcQ/B1uyx
+	S9yybI9F7OtwJgszxO8ID4FgfjHXJVcqqpvfDRNL7lu1yA==
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com [209.85.219.69])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cpf9c36x0-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 04 Mar 2026 23:53:38 +0000 (GMT)
+Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-8950562d351so702982846d6.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 04 Mar 2026 15:53:38 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1772668417; x=1773273217; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=V50tlCURGOSWEpUNVC/f5JBGlAu9WVw1+uCs3+cXy8Q=;
+        b=J9wd2uZWy5gz4IoBFr9hzd30sSQmVfnpABgYEshS5i7mAGrqQRmgj+AZ85/5uW4mhF
+         FMhI+CuRrw3Ah1E+50Aq0Su3VVY1mcD89uueMdQibZXWG6xsybzjXoqbJANSs0dskjv4
+         V9VhSUACbpxZ6lQKatwtw52qFPny3q5FxpNueabHOM5sQ6VWBDOFS2aiDNzmkD3u4mxf
+         IsxLbi8wtMG3gzAPa8CgcAG0obDJeuomuCUGfbYTXS5Hac3HpvCZyknKhXZnMqo177NZ
+         jtb6Tghxr41mCphqhY0jgAGrFq/CDToRWzMTo1XCTm4DHjpT4DnUAQsMy50VTxTo3dd/
+         tvTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772668417; x=1773273217;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=V50tlCURGOSWEpUNVC/f5JBGlAu9WVw1+uCs3+cXy8Q=;
+        b=e3SfmgdbMIIlfpm7RqirCwGvHIRKhSXdRP21TDeonOjO2aVqAcBFRRjif8x5UeXfbg
+         /9HBbxG7KkL72e+zYe5CUdInZAypUwgv7Ui65w8LpRGoyFQqSLssmoEd/sQEaqTmOMy2
+         extrlUxMGNZ5tcn4rnj3oVWC/xL+KdThEKZSVGg/VUVZeBQdAkUWhgjfYd1aTvmsvPHE
+         MeqScw83XyAZUZs3LUfcPefiekXOpRlDVawF+gi/wlKFuTsX/cV+jKIsHclXpBrXNcpE
+         HEYUpAfPGx8bLX4+NodEJjhMZs4w7aI60GFMecEBSwxKHoVwr6kbtwrRjqLlU6lh02Rz
+         3tcg==
+X-Forwarded-Encrypted: i=1; AJvYcCV9BoS+koX9le2Tm3cDKzFt2ywE2WUhcUYVxaERn063JqNcbLXEDBGDN//Dxn0vSsKCda6F/kBhiAQDq/gFzw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxAUF0qSs7GmYHfrxEa4kuQMS8NvvpCMyweZAZ+Wg53GS+NkQBD
+	j9v/XWi9M1Jmx6kI8hg+xl4RU/yGjv/QHUekSt7xrV0WEjtA9fpXlaWATwovMUmRwNDd4cEqYz6
+	yE8LiSRZc4MTnvpACaCiMsq7lRdYRnZ4v2j6f36MRZPyL8xdzRwS8UdUwZ9Iw92XXIzAxzU10od
+	g=
+X-Gm-Gg: ATEYQzzDTLWtnMwonv3YKGloQ3fM2t7lhBRZzwuwfrvcnL9DjUc5mHYgrXLhazVwswQ
+	p20Ac0dNRBjHzgori3v1o/bDvCmPPUbH4/igYgfKhrmirLFQBZCwDLYs7QIqq46wYnc7dQzz2g8
+	V3PcM82h+XKCMCyvb85si1uS85fVDIWz/E4/lzkhbkudp+BlEFIPmyz0g3wzu41328+Nh7nHviv
+	gvlnkHGe4wRmHl+eqkVpiaM3kF5W3Bc6YDs5IIKpyk7Kiyg4CP5jLIL862Dg7JesfyzFfRdCwf3
+	DCght1zd1iIU4Lg2vRREjv18q0UE/UWQqhSj6F8r7JPVNqTIJ6GJaqmuEYBxtkH4kTggi6qXxYX
+	KJ0gPWClfNdLwsEi+sstdhF0BUSwPxtmYkIrlBplcCJueSfaw1Mui/pMvmTeky4vGo3VEuQ7Hr0
+	az8GZWnlgGo70nOaQYdXN/Al+GhPw9Yn4C6Qk=
+X-Received: by 2002:a05:620a:3727:b0:8c7:c25:9e53 with SMTP id af79cd13be357-8cd5afa6707mr498608085a.59.1772668417050;
+        Wed, 04 Mar 2026 15:53:37 -0800 (PST)
+X-Received: by 2002:a05:620a:3727:b0:8c7:c25:9e53 with SMTP id af79cd13be357-8cd5afa6707mr498604985a.59.1772668416537;
+        Wed, 04 Mar 2026 15:53:36 -0800 (PST)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a1296993a0sm933837e87.31.2026.03.04.15.53.35
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Mar 2026 15:53:35 -0800 (PST)
+Date: Thu, 5 Mar 2026 01:53:34 +0200
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
 Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org, spacemit@lists.linux.dev,
-	UNGLinuxDriver@microchip.com,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
-	Heiko Stuebner <heiko@sntech.de>, Shawn Guo <shawn.guo@linaro.org>,
-	Yixun Lan <dlan@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>,
-	Kevin Xie <kevin.xie@starfivetech.com>
-Subject: Re: [PATCH phy-next 02/22] PCI: add missing headers transitively
- included by <linux/phy/phy.h>
-Message-ID: <20260304223427.scaf27g25creiryo@skbuf>
-References: <20260304175735.2660419-3-vladimir.oltean@nxp.com>
- <20260304222408.GA40990@bhelgaas>
-Content-Disposition: inline
-In-Reply-To: <20260304222408.GA40990@bhelgaas>
-X-ClientProxiedBy: WA0P291CA0022.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1::22) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+        linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
+        linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
+        linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
+        linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+        linux-usb@vger.kernel.org, netdev@vger.kernel.org,
+        spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Subject: Re: [PATCH phy-next 11/22] drm/msm/dp: remove debugging prints with
+ internal struct phy state
+Message-ID: <esbforcln7bi4e5enmgwqj7d63usdyoobxyo3hwd4paou56aoc@kjlizz3ubksd>
+References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
+ <20260304175735.2660419-12-vladimir.oltean@nxp.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AM8PR04MB7859:EE_
-X-MS-Office365-Filtering-Correlation-Id: d42453c5-5530-4e99-d982-08de7a3e34b9
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|10070799003|7416014|1800799024|366016|19092799006;
-X-Microsoft-Antispam-Message-Info: T2j0ynHVVUYIV9sAgspMauLSM7QGiEPxOPUXg+mSaegq9CE1l0ne6LdiBpt1z8hrW1uF9bcn8qvt7FeOuonKdUtFLaSjvsdSMPqkiL1Tp0dSeYXvfS8rUyv5cK1tFOrsGxhKo36XAsG0qvgDDwswKIxtBxXzNynfzcIvLXyeiq/n6DErGMzL+j+kCVGVMQY768KQuFS+AHxP+NwMQv62u1Qz85PI/OFsemxFaVGQJJckxq5LIEP+TDiYC4PjbNOIFTmedk+8KmjqgUm76f6xZz1sySPMHf1lrUoahF9eZ4SAtlmvhYf+kIk0uyzbBCZDocetqGoqdoTdbYfPscP2wHfBNnATsvp4XSMXMIgSLLJGOf5Qt4oWjsKhD1YBxElKd74+pMw6A2H6kY/nnpyiY8RjRt3c/VFVT+x/exFd/9YNKAiINCiQcOoxNUAScDKuNWDtjaorxJnFXDwvDDn1l0KFz9povdJMq0XYrSXf2bnGWECKwREb/8RT+jsCc2mJpJKQBNds+YtrAVEZsBN+xUBSjBnFYKCPteUuykqhsItqyBQgkCm3VT03d1s7v24jm1hrLnhlMsose24Ye+3iXvBMxba8W+OH8eag0cu//mYU/SN7AbD7blt3PXkkrLjahALJ/J7B8PgyFCjW2xx54K5Yr98rQCPyhZk1yO50zipV4WXi8+CU0F0mUeUpV49vi82Qr6v0qedgI64Hx4wrvA59Qy5BkCzgcn4/Dd7nx/I=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(10070799003)(7416014)(1800799024)(366016)(19092799006);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?RRVR5C/RocM+30f+wt84C9y6nmWaq/vKT8ZEDg3Vkw/B6kcy6USWfA2ua7nD?=
- =?us-ascii?Q?78rTEUiXq2QQNzYghPQLNqYi1PNm8eUibz/ugen0Sh9pyqFiFeWJsWbHxq59?=
- =?us-ascii?Q?La8aaYZqcOgPbEO94wi/XmsQF/8Q+iJhd+6s3t3yviFpyrj/eoEf2o8yRZtT?=
- =?us-ascii?Q?UwVWLqB6039oAYNXdPYmVOV/L5y/wJjg0m4qHEk1mrbJKjAoCKGmFXMAWzuP?=
- =?us-ascii?Q?JjuCBuolxr0vFVpA+cvDti6YAdP/CwBWii5vWhdZJyUE88+u+3GJ3KFMMhEV?=
- =?us-ascii?Q?sFGfZ6THXZbxpamvbrIbKZ+7S/VjIw1t9JjYJVez7MmCVnMfVwMVqXSRyUNZ?=
- =?us-ascii?Q?B/Xl5hVcbhUusJ5kemudV2EjMrYmhNc/ABzUDGw+4nxUAxmKVt3yYkwZZh4T?=
- =?us-ascii?Q?Hx4aZ9TK51tpVhbcNaAgtp32taYAN+Zxsxj+OgI7+zIVkn+QO0JPxZU8Gwdv?=
- =?us-ascii?Q?vCIl/i75ruO2J3IppM9kCK16em4paTOumi16X/+/+uDflj3nAxDbYkMZYrFw?=
- =?us-ascii?Q?9x47d85BmUr+slx/v7Z2f2BSbi8gyRkpAnsB52KzajetmfVGhgF6atxd8znX?=
- =?us-ascii?Q?bGIs3QsrUvshvbtj0sjz4algeVAH0PSn04MEfJX2jzv3hiMB4cHC/O+0mScE?=
- =?us-ascii?Q?0ZJ6EGcl/ryLVA8TQ5y9GcTh51EwlkdWVI3+jnbFC+7LodhRWq87sUU6fqA+?=
- =?us-ascii?Q?JaDboRGutF83vBFb6HcbpGnr60aAabzxCRQYzHBlEU/NDTZIROrG8JNocO5K?=
- =?us-ascii?Q?3DwIe+d6NavoapFS3D52ImcCC6Kyveve8tlTEsN3yak5rJH1TattvIC8jIR6?=
- =?us-ascii?Q?OTVg/rdBkUA776gO6qOv6duWw2MVHsfwq0BRzVz7NhlIpB+fHqJWtvEEIx0X?=
- =?us-ascii?Q?xVN9Y3dXMQQUyGTPwwbn4SzY7bYm1BcAbqBT2FMkZkHCezgWkiWTyRr2qKUT?=
- =?us-ascii?Q?nxKtoQ8Vmf5Vur/qa0ipbXNyox4Bnyyh1f7rXQUxveS3Y51PK0CuhAKKXlis?=
- =?us-ascii?Q?ZJS8Rb7RgwkECLydkCCIOlaCtdTtogKTN5vJ3WGB0DwsJ8gQptz6emZyvdo7?=
- =?us-ascii?Q?JYk9FJy3DqOo/bbmLweMKKNMwoAO1dwkFagveHhyGLktK7gofKPAb1uqSng3?=
- =?us-ascii?Q?AQBYODKnp2CQLs26umveBOYHiAS8gsqamnvLlhZ0InCtLCDW1Zg2PpWpSptm?=
- =?us-ascii?Q?2JsMV4PQ7/KFE3TaxezYa65DDUa0/hcQkXzMn1HO3BclloEADcxe24ICDj4R?=
- =?us-ascii?Q?rAzZslyVg9Nhhb8ixFGfwbDVrjGzCMe/nDL/vusqlbdcvWHoYq0HDz5lU0BA?=
- =?us-ascii?Q?N/O/VL8ujI4GS1QxhHuG0u15lOYsf7BMkP4Nqoc9OVmHZH+mcjoUkqx1F3y3?=
- =?us-ascii?Q?rcaA6UeToxHirSYVh+sEENgdEJErvLCTFPOHyAc8BOlrcWmEb31kZ4QksDqp?=
- =?us-ascii?Q?9V/o7x2nFJKDRhf0bV2bbokMpWTLpQw6C3NjmObSgDHX+Hdwmg2EdfWWlGYA?=
- =?us-ascii?Q?ZBrjLR2nlTE9piLkJXed/q0RoZjPIVOpfLUYKq0sd1Ed+2f5MgCBkorA7Y4w?=
- =?us-ascii?Q?KQbvnPvUSuKB+mha50Een23p/wR7azT5QFTETiYE3ii4818pHG7BKDfFruCB?=
- =?us-ascii?Q?RRetR+lsw+0mrwINwn7mm5sLq2KkQS4q8MKKzbxYUDESOyPZHWbuyqnHG9wu?=
- =?us-ascii?Q?fcj/Wux5kj1ZmsEeM1/K9uVJ/QooyXU4lKsCquqgNz3FVKsZuRINgRKm5FvU?=
- =?us-ascii?Q?s071hqwGW8BEoA2c3NkI3LBaAktbrL2u6kxoDHd3Co2GGmx+5+D9IR+nYL6N?=
-X-MS-Exchange-AntiSpam-MessageData-1: pf5ZiVDe1d6vJ1IBJK/L6Nb9wj//e7IIlXA=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d42453c5-5530-4e99-d982-08de7a3e34b9
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2026 22:34:32.5473
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +PcMVcOV3Ik6ptoE4VsCcvoQ2sjRW8sUQ7x3sTlEGffiS/HBjAc2+VhWf33xxqwko6TTz2bjvVPHe6kHiGGwCw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM8PR04MB7859
+Content-Disposition: inline
+In-Reply-To: <20260304175735.2660419-12-vladimir.oltean@nxp.com>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA0MDE5NiBTYWx0ZWRfXzRW6l+yG10gh
+ apWrZRm3mn6x3AVP1KLfc7Ne1ugGgvxKT/+5oGRosmAWkGbkDDetdaxS9EGjL3F5Qdm1aRu20ke
+ BK+fxgXemqSBeAxFboygEz255dZm8vDtOFjI3NMRaURa1hrf7MhovkhY8f/TqsPq5ean+Sf53vH
+ 9kwpXetvqWCPosE7jRhh7tt1KsWzMpHjgZBmB92Co3PNV1tgJx76/a8LDdJezv5nPSH4s9UMhDd
+ TLABQDbF6v3ZCLJAO2iEWRsXaBCG7aQsdT9VPt3PvxoVpwbqCra2fKQaBjMW7FPxMIMBxgSjxRS
+ MGIP3DlK1DEhLNT8sSOaryzw092soLMPlb1rmGoc5CEsqtzPLawusWV63g/38etxXKataI1/Dlz
+ T/5Y6L0Iw2bJFThBfq26lIpjbCIDjHQGJdBl0BqdePS6eIlupNpDcU7Z+fBMBiVzQvKL/YVGrI6
+ lk4nlyjpGZe9Gv63ylw==
+X-Proofpoint-GUID: hb8GLKVjHEWokmvqd2at858hdBAUHIEq
+X-Authority-Analysis: v=2.4 cv=S4LUAYsP c=1 sm=1 tr=0 ts=69a8c602 cx=c_pps
+ a=wEM5vcRIz55oU/E2lInRtA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22 a=8AirrxEcAAAA:8
+ a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=pGLkceISAAAA:8 a=tVI0ZWmoAAAA:8
+ a=3ogKHO_BN1K2bhpmqR8A:9 a=CjuIK1q_8ugA:10 a=OIgjcC2v60KrkQgK7BGD:22
+ a=ST-jHhOKWsTCqRlWije3:22 a=-BPWgnxRz2uhmvdm1NTO:22
+X-Proofpoint-ORIG-GUID: hb8GLKVjHEWokmvqd2at858hdBAUHIEq
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-04_09,2026-03-04_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 adultscore=0 impostorscore=0 spamscore=0 priorityscore=1501
+ lowpriorityscore=0 malwarescore=0 clxscore=1015 phishscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603040196
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_143438_354903_14A37917 
-X-CRM114-Status: GOOD (  13.26  )
+X-CRM114-CacheID: sfid-20260304_155338_697449_5D71D141 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -158,36 +161,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 04, 2026 at 04:24:08PM -0600, Bjorn Helgaas wrote:
-> Update subject line to match history:
+On Wed, Mar 04, 2026 at 07:57:24PM +0200, Vladimir Oltean wrote:
+> These do not provide much value, and will become hard to maintain once
+> the Generic PHY framework starts hiding the contents of struct phy from
+> consumers.
 > 
->   PCI: Add missing headers transitively included by <linux/phy/phy.h>
-
-My case-insensitive brain didn't understand what you mean by this.
-I had to power on my case-sensitive part :-/
-
-> On Wed, Mar 04, 2026 at 07:57:15PM +0200, Vladimir Oltean wrote:
-> > The tegra as well as a few dwc PCI controller drivers uses PM runtime
-> > operations without including the required <linux/pm_runtime.h> header.
-> > 
-> > Similarly, pcie-rockchip-host, pcie-starfive as well as a few dwc PCI
-> > controllers use the regulator consumer API without including
-> > <linux/regulator/consumer.h>.
-> > 
-> > It seems these function prototypes were indirectly provided by
-> > <linux/phy/phy.h>, mostly by mistake (none of the functions it exports
-> > need it).
-> > 
-> > Before the PHY header can drop the unnecessary includes, make sure the
-> > PCI controller drivers include what they use.
-> > 
-> > Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> ---
+> Cc: Rob Clark <robin.clark@oss.qualcomm.com>
+> Cc: Dmitry Baryshkov <lumag@kernel.org>
+> Cc: Abhinav Kumar <abhinav.kumar@linux.dev>
+> Cc: Jessica Zhang <jesszhan0024@gmail.com>
+> Cc: Sean Paul <sean@poorly.run>
+> Cc: Marijn Suijten <marijn.suijten@somainline.org>
+> Cc: David Airlie <airlied@gmail.com>
+> Cc: Simona Vetter <simona@ffwll.ch>
+> ---
+>  drivers/gpu/drm/msm/dp/dp_ctrl.c | 18 ------------------
+>  1 file changed, 18 deletions(-)
 > 
-> With the subject line update:
-> 
-> Acked-by: Bjorn Helgaas <bhelgaas@google.com>
 
-Thanks for looking!
+Acked-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+
+
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
