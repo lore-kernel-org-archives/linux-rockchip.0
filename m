@@ -4,68 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D305EFCE47
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 21:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7E2BEFCE4C
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 21:26:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/GwrZ7ciqjTK/2TA6Dm4wUT4yu5FFyO1IXQmDYQS6Bk=; b=q6/u8Ds2Obr0Tz
-	jdOJxQ5Bmvz1Eo8DurgRGqy8l43Faqq/jokTiyeY1KLJILt09ddqvlF7uonJM2PAeJ5BPZCymli+E
-	q7BLevUHklUDZewqW7iWuLtZNRUm3gHd3j9SaAt/ueBnouSWwZpHxoNksYqttih0p8nG6uZhhEYYR
-	kg4QO9spJVWRhqe+7t6Bd72hlOG3mgXiB6cPTVdidbQ7HZU1irv+a5XCHv/UvBWogjMroRSlzWT7p
-	6RgbZiQ7zrskCMYUoCXedLlex67BARZMROsbXtsuwd4IMxuvVD+rD7pgs6YaXdLxXJe+V7jYnnaR9
-	9DnKboAh6ef/4Et+MzDQ==;
+	List-Owner; bh=yVjK6lROawic1vH7D/rf+OphEFHt9j0jAm06l4Ibh70=; b=Do69OtGu/e/BMl
+	qABaixy/zurGFAHX0wUdhiXsKoRUUHHfZu/uMzy4XP1HvcEewHc9Wow1N4fiElmeGHSklECxwfJZm
+	m4HEOOqDpdsFjYF/waOpMum7urp+CtXz49WuXsBibdBme22A/DK4l2m4yttYXSAqpvVMfFnDTQxGd
+	X/hskoiouHE60i0W8Yu+NNx4VKvPhIibQ0kk9RTXQnzhArEdYsPG6mrtfPmyYD+5AjGwGsVOM3fL/
+	DdfYT6sqCUSG9mj9rxAz+pGu81lESyQRGewio6S4BAhHVsGH4gA2M2+yJu2/u0waBs9YGpT1zuV3f
+	EpEkq/r4EULot7oArhcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxtLb-00000000UAR-1SmX;
-	Wed, 04 Mar 2026 21:01:35 +0000
+	id 1vxtjp-00000000W2P-2ydE;
+	Wed, 04 Mar 2026 21:26:37 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxtLV-00000000U3j-0eF8;
-	Wed, 04 Mar 2026 21:01:30 +0000
+	id 1vxtjm-00000000W1q-2Mp3;
+	Wed, 04 Mar 2026 21:26:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772658084;
-	bh=8eJ22plX2MZ8pc5rrDZ6oinNv/HYJGA7/2+Vl7H8TGI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Qqemr+ZNL+WlDOj6us4JYFRAEPWVgcmZKChAkADbXlpr2BJycmSvZ1g7MxGsgMWUX
-	 oqeJodNjomJugLkjJINbu8OLlgcRvVNyBr3f4eAH40ajAk4n2RKongSfmN3DCm/C3H
-	 ZDQD6Z9Fq/y89rJpaJGUvk3N7HjUaE0VdyjnZ7hGMVNKLisAam8fAqMTCXaw5BgowO
-	 ENWXf05HkUeVdI3xIfvh6CWN66Arv/Upr5/rNPjYKEM8KwulkEcdMoPPu2lTLFKtv1
-	 iSgWGqtrPJJDas4sHkBDPJSv4UTI77VcYUiqghUvIBfA2YplrdhQOeGM8sJ1wYhYp2
-	 E/Yr5KY3JUXBA==
-Received: from localhost (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1772659591;
+	bh=4Xnncoe1im22Gd++O66NN0sXnUSV5WQx7hFdbwwMeuE=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=hwVg+qqtO823WxAJrDdekGg0chWwLiX4jglTnkBf8EftMdLJo3X0ERvFktguk0FuT
+	 5Myz8LO83G8etw3Kf1o65DY6ajSnktkLk0SVxlNFOV4eXoTEgsyKegFYlrVMaxsqQN
+	 ceibHgPOPhD5De4U5ydFOuWo19kTV4oCkD+AjoAwBk52ZNiDYsPmtsel9tz+lv2sD4
+	 JUzY1dbGd55uTyFIdCs/RzD+9z9nUCPdFzqO8i0ryksDCvMcOmxENb5hrkUtNYeG5s
+	 z6J49eU0YAnrQ9oHoMN1CK934sTfUJGBEpwpCO7DLs8NV4VcVJAwNryRyZggEgMjHA
+	 qbTvF6TUanEyQ==
+Received: from [192.168.1.90] (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A86E317E128A;
-	Wed,  4 Mar 2026 22:01:24 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 04 Mar 2026 23:00:42 +0200
-Subject: [PATCH v5 3/4] arm64: dts: rockchip: Fix vdec register blocks
- order on RK3576
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C3EFB17E0A2D;
+	Wed,  4 Mar 2026 22:26:30 +0100 (CET)
+Message-ID: <cce68679-8dcf-4c8d-8a66-df426c037f6c@collabora.com>
+Date: Wed, 4 Mar 2026 23:26:30 +0200
 MIME-Version: 1.0
-Message-Id: <20260304-vdec-reg-order-rk3576-v5-3-7006fad42c3a@collabora.com>
-References: <20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com>
-In-Reply-To: <20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Detlev Casanova <detlev.casanova@collabora.com>, 
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Hans Verkuil <hverkuil@kernel.org>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
- linux-media@vger.kernel.org
-X-Mailer: b4 0.14.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/3] media: dt-bindings: rockchip,vdec: Add alternative
+ reg-names order for RK35{76,88}
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>, Conor Dooley <conor@kernel.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Detlev Casanova <detlev.casanova@collabora.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Hans Verkuil <hverkuil@kernel.org>, kernel@collabora.com,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Conor Dooley <conor.dooley@microchip.com>, linux-media@vger.kernel.org
+References: <20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com>
+ <20260226-vdec-reg-order-rk3576-v4-1-b8d72dc75250@collabora.com>
+ <20260227-observant-roaring-ara-ef7eb0@quoll>
+ <adbbdbb1-b126-4807-821c-c9850befd695@collabora.com>
+ <20260227-omission-stoic-417d7109ad4d@spud>
+ <3ab4f91e-37d0-4950-af88-01920705d31a@collabora.com>
+ <1fe5529f-cd9f-4960-b6dd-96a2d02b8d86@kernel.org>
+ <59b442c8-da2a-40a8-b9db-1609a8eee744@kernel.org>
+ <a70731e8-375a-4ba9-b142-600b92ae1087@collabora.com>
+Content-Language: en-US
+In-Reply-To: <a70731e8-375a-4ba9-b142-600b92ae1087@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_130129_423527_B099F6AC 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20260304_132634_978089_614AA6E2 
+X-CRM114-Status: GOOD (  35.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,45 +91,115 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When building device trees for the RK3576 based boards, DTC shows the
-following complaint:
+On 3/3/26 2:26 AM, Cristian Ciocaltea wrote:
+> Hi Krzysztof,
+> 
+> On 2/28/26 11:58 AM, Krzysztof Kozlowski wrote:
+>> On 28/02/2026 10:54, Krzysztof Kozlowski wrote:
+>>> On 27/02/2026 18:42, Cristian Ciocaltea wrote:
+>>>> On 2/27/26 7:13 PM, Conor Dooley wrote:
+>>>>> On Fri, Feb 27, 2026 at 01:37:17PM +0200, Cristian Ciocaltea wrote:
+>>>>>> Hi Krzysztof, Conor,
+>>>>>>
+>>>>>> On 2/27/26 9:46 AM, Krzysztof Kozlowski wrote:
+>>>>>>> On Thu, Feb 26, 2026 at 12:46:53PM +0200, Cristian Ciocaltea wrote:
+>>>>>>>> With the introduction of the RK3588 SoC, and RK3576 afterwards, two more
+>>>>>>>> register blocks have been provided for the video decoder unit.
+>>>>>>>>
+>>>>>>>> However, the binding does not properly describe the new hardware layout,
+>>>>>>>
+>>>>>>> As you shown me last time with excerpt of address spaces from
+>>>>>>> datasheet/manual, the binding correctly describes the hardware and above
+>>>>>>> sentence is not true.
+>>>>>>>
+>>>>>>>> as it breaks the convention expecting the unit address to indicate the
+>>>>>>>> start of the first register range, i.e. 'function' block is listed
+>>>>>>>
+>>>>>>> Imprecise wording. "start of the main or primary register range"
+>>>>>>>
+>>>>>>> (if you have 0x1000 with one reg and 0x20000000 with everything, the
+>>>>>>> unit address will be 0x20000000).
+>>>>>>>
+>>>>>>>> before 'link' instead of the opposite.
+>>>>>>>>
+>>>>>>>> Since the binding changes have been already released and a fix would
+>>>>>>>> bring up an ABI break, mark the current 'reg-names' ordering as
+>>>>>>>> deprecated and introduce an alternative 'link,function,cache' listing
+>>>>>>>> which follows the address-based ordering according to the TRM.
+>>>>>>>>
+>>>>>>>> Additionally, drop the 'reg' description items as the order is not fixed
+>>>>>>>> anymore, while the information they offer is not very relevant anyway.
+>>>>>>>
+>>>>>>> This is fine for me.
+>>>>>>
+>>>>>> Thanks for the additional feedback!
+>>>>>>
+>>>>>> If I'm not mistaken (please correct me), the only remaining (hard)
+>>>>>> blocker for the series would be to improve this commit message.
+>>>>>
+>>>>> No, you also need to fix the problem I pointed out about reg-names being
+>>>>> optional on the devices you're relying on reg-names for. 
+>>>>
+>>>> My only concern is that by marking reg-names as required we would break the ABI,
+>>>
+>>> You are ALREADY BREAKING the ABI. Really, for absolutely non-important
+>>> cosmetic change in unit address, where I asked you repeatedly to fix the
+>>> unit address, you change the ABI affecting kernel and DTS users.
+> 
+> I thought we've already reached consensus to allow extending the binding and
+> keep both lists, precisely to avoid breaking the ABI.  At least this was my
+> understanding according to your reply [1]:
+> 
+>   You can have also oneOf with older list "deprecated: true", if want to
+>   keep any users unaffected.
+> 
+> And this patch was meant to do exactly that.  Did I miss something?
+> 
+>>> This is barely acceptable, but I am just annoyed already explain it to
+>>> you multiple times.
+> 
+> There is no need to explain it again, we've got your point.  We've also brought our
+> arguments and I had the impression that we eventually agreed to keep the unit
+> address unchanged, based on your comments [2]:
+> 
+>   Yes, with drop of the oneOf this would be fine.
+>   I meant, the "one item option" in oneOf.
+> 
+> Is this not applicable anymore?
+> 
+>>> But now you claim, you can break ABI for cosmetic unimportant change,
+> 
+> No, breaking ABI wasn't our intention here.  If we put the issue with reg-names
+> being optional aside for a moment (as that one will be handled separately), is
+> there still a problem with the current revision?
+> 
+>>> but actually doing something meaningful is a no-go?
+> 
+> Making reg-names mandatory has been already clarified with Conor and agreed [3]
+> to be handled in a dedicated patch.  And that one will indeed break the ABI, but
+> it's unavoidable, unfortunately. 
+> 
+>>> At least use correct arguments if you want to discuss.
+> 
+> Sorry, I'm not sure what do you mean.  I really believed that we managed to
+> address all the open topics by now.
 
-  rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b00000: simple-bus unit address format error, expected "27b00100"
+I've just submitted v5.  For some reason the link to the cover letter [1]
+doesn't seem to work, I'm getting:
 
-Since the video decoder support for the aforementioned SoC in mainline
-driver and devicetrees hasn't been released yet (just landed in
-v7.0-rc1), fix the issue by providing the register blocks using the
-'link,function,cache' listing, which follows the address-based order as
-shown in the vendor's datasheet and, implicitly, ensures the unit
-address points to the primary register range.
+  Message-ID <20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com>
+  not found
 
-Fixes: da0de806d8b4 ("arm64: dts: rockchip: Add the vdpu383 Video Decoder on rk3576")
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+But all the others are just fine, e.g. [2] is the for the 1st patch.  I've never
+encountered something similar before.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 49ccdf12ef7e..45eb0d053a6f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1281,10 +1281,10 @@ gpu: gpu@27800000 {
- 
- 		vdec: video-codec@27b00000 {
- 			compatible = "rockchip,rk3576-vdec";
--			reg = <0x0 0x27b00100 0x0 0x500>,
--			      <0x0 0x27b00000 0x0 0x100>,
-+			reg = <0x0 0x27b00000 0x0 0x100>,
-+			      <0x0 0x27b00100 0x0 0x500>,
- 			      <0x0 0x27b00600 0x0 0x100>;
--			reg-names = "function", "link", "cache";
-+			reg-names = "link", "function", "cache";
- 			interrupts = <GIC_SPI 308 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&cru ACLK_RKVDEC_ROOT>, <&cru HCLK_RKVDEC>,
- 				 <&cru ACLK_RKVDEC_ROOT_BAK>, <&cru CLK_RKVDEC_CORE>,
+Regards,
+Cristian
 
--- 
-2.52.0
+[1] https://lore.kernel.org/all/20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com/
+[2] https://lore.kernel.org/all/20260304-vdec-reg-order-rk3576-v5-1-7006fad42c3a@collabora.com/
+
+
 
 
 _______________________________________________
