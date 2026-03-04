@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22976EDEBFF
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 02:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0380EDEBFF
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 02:55:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=fgLrc6cVRX2Psv3Wb/RbwQXj7RpDK46Uk30oIq7DB1c=; b=HCGxGXHanhlWpt
-	YFucWkA/0LBhspZYM2LLkt0YWstovXqcP9u3dAjn8XIWgjNvElUKOJy3C6x9HvWhGTfg9BAyxxLJB
-	nQ0dgMYOvD08D+8NVjL/kalCn/Q4B6SDAjBH4+lh1MF/lTdz/TQyerlIQKqa4khOazwfKKaLFJcvZ
-	b/oIUeD43+mTGQESvxWvp6tIzd9/z6R0T5xlMmrbs9y8Sjxe6enA43w8MDXDF9ZPuBGWx+DkJsYaY
-	Fe9Enj3/hMzYkftXV4xNgYrlIhL57OCG7EjD0innW4kgAmMh3G68krJnOw6K1LfPmnuLuDDZMkeeD
-	Sz1ucRwh6HKE+x9lsYkw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=rkZpDJjSuKENtdvyFxoEWNvi+fzCPvVp/p0BM4zrZgI=; b=Tj2ZpAIW62lkRC
+	Aie4l0rF3TnFsutsWzZS3Riimjjkd0W1SkCnNpEca3sp+dx3UDfEJkiTj98Kx+omE3YL2rjL1dXQj
+	j/cEv0RmWuBDBqIqPnNB3g0bVelH+aeEDZZjb8M6OTJOs6JNxmeRWU6lLt4g1svqTKbYrv/jmdNDB
+	DtYuIKCM+vhKwqbnM9dmHzGgP36roGGQgMh8awBGyrsNdhaTfY+3/4RPcq/sQwNBp2N97SERBXTHv
+	wKzzMSmtJ+qAisyrHt4gkP5Q9ZCwOX5RXMUNL6QTp8auuBq8TJeRyb4ChBhtxFlQN0gLAhVPSlR+/
+	ts0YPEFmZRnKi9835nxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxcOd-0000000GKaK-3xAz;
-	Wed, 04 Mar 2026 02:55:35 +0000
-Received: from mail-pg1-x563.google.com ([2607:f8b0:4864:20::563])
+	id 1vxcOg-0000000GKc3-0Tg2;
+	Wed, 04 Mar 2026 02:55:38 +0000
+Received: from mail-pf1-x463.google.com ([2607:f8b0:4864:20::463])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxcOW-0000000GKXY-2cB2
+	id 1vxcOX-0000000GKY5-2YHN
 	for linux-rockchip@lists.infradead.org;
 	Wed, 04 Mar 2026 02:55:35 +0000
-Received: by mail-pg1-x563.google.com with SMTP id 41be03b00d2f7-c737d3a51bdso12922a12.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Mar 2026 18:55:27 -0800 (PST)
+Received: by mail-pf1-x463.google.com with SMTP id d2e1a72fcca58-824a829f9bbso2959419b3a.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Mar 2026 18:55:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ausil.us; s=google; t=1772592927; x=1773197727; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DugOzDqbwinV7rPcwrpaaCcBBfm3VhhJmZ52z51QrV8=;
-        b=FxndjjUj/bZLq1nJS9nTgL6bsGi2y11v5F19UjAW18+wQdGKx/8d+0IiDwtR+1+Vm5
-         YmMpvsdF0y1wouTOaAciXZ5FIe/4qhpIdPSH1rA497kxnAToNs7i5ZRGOc7x7f95AP4S
-         ECDR7CjyzXQMRbK82e4+5bwHWQil4LlDsTNCA3esHK7bEhD0iljl0wuo7HcTb7ar+MV5
-         SRUVTz4vRmbu5T8m1COyO/+Bn82iPWujZZdt2YrHWn2NqabRxE9r60ztIfG3td8KWBUc
-         nqZuu2nht7Ck73S+15L2eVVo96LEzmEoDqU6evqewQ9vLlFWv4TjO1N9YZXhRuIZN344
-         Epuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772592927; x=1773197727;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=ausil.us; s=google; t=1772592929; x=1773197729; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=DugOzDqbwinV7rPcwrpaaCcBBfm3VhhJmZ52z51QrV8=;
-        b=bFD1tqFyiO+IyWLmU3+A09GjIr92QXuIdXDFSDwLfvu5UrwWfAQSd3hTrEH5AYej0M
-         8w7TSWdKsdZYr/MNUzDyIQUBILRq0wYo0yuaVGO4kIbZKrdal+RR8mC1GDUCQ1qYYXs3
-         Z10UxiQxXM07Kl3yrze251VX+ctcmXp+zleG+0VPKjCcVJ+ZhTk/pOOPjaWG2WGChf8Q
-         qMTEDTgHSArMA8ZbuF44x/p7HCusE45u7vOZ0dfFcEd1GwaoUfk6LSVnAtv0kvopxjUn
-         iYXr0VGILcxn0S+TytFxT0U+WkBriCbBFTk+mUrGz76cHVOxa6IdSoOQIzfYJMbCsKZ9
-         uixA==
-X-Forwarded-Encrypted: i=1; AJvYcCXwogLvGD3ICiHrqy1CBC+gLE1Sy8gLb8bTjtQkP+3mv4UD/HUWURKhmy0lK3CY/nXYYMsXVj1DmgYp34FooQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyzX1cNe2JsuW0hDMGuOggn9wyluLZXcRb/B4j0ViiKNTR48upG
-	Q9GuZA/J2P/cT7MMheSd44IH2T0EmJaYqQ4ahVZUa+TDgCdhoGMt7UAuARJuR0IVm/z6X3dEZwl
-	+Nr2YDeL/BrUtTk7mPipnzN+qCVwIHf7rYFuJ
-X-Gm-Gg: ATEYQzyEhL0svhOWc113zUuZ6vV+/oM2og1Nuzl9pdVZ5GsJ8B+ahrjloSKqdj4h08V
-	H0SqsdEs2Vp2KxTvd3x9qAO2670ipkikVzaMKsvaQ81mhyx9oZNNd08gfXNi1+Q2um/Xz5FO3gp
-	e9pS8KpvjbDbKCf4CmXXJeXHMAcfpMz/xpVVsJQm0GqmZkXdGmM+vAzRucTcvCTpaL+DoBhju7O
-	2yoQ2EKoSCn0lhcK7/o29LLjSpDZ2uu7/6SYIUdHi9Qv7PgZDi6nY+JdyXWa4rcyUgP3t3PNYi8
-	AzZZjTPFmB13zz0mEzzRCugD8Xql/tmC6v/7u880ZcfNwAZPyij3AjGQA/Fq5LBZar04wZnZwzK
-	PRKHxBW/4jF7TgKLbv+idUP16g/JP/pJpox1pWG0bPsja
-X-Received: by 2002:a17:90b:1b0d:b0:359:8dc0:428d with SMTP id 98e67ed59e1d1-359a6a531acmr599029a91.25.1772592926872;
-        Tue, 03 Mar 2026 18:55:26 -0800 (PST)
+        bh=C8HDblj7fRKJtovg4Bo+ljGQF5b9QTgQki2w/2Xqdco=;
+        b=a0sOukJWssjcDdHpaIWWXNkqa84fTUNUJSxtVekTFyu8flwqOGLN0MzFKagGH7SrLl
+         aPF6FVls88rDDkqqnxJRnARhdvjO1pZU2ma4OC8erebvxqJ/EKfiY1+O+c+gfkZ4n/Uh
+         BsxN7td9CfSkIM9LABm65yXDUR+VQScdE/ofTnukRKrU2hRiLxL2kSaKUteIrvoksfWL
+         y9GlNZYF8iG2j4dGJgpmtq+s2OQ6qwwFOoAs7I31e5T6NZ4PmWxxVmH54FWljHcmBkWR
+         /25gHgZzqi57K++BZvmSIIpXWol5MiBpnC+CehgGWBeZSBM8lW2byaPojB2XD/2r1yJi
+         a5uA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772592929; x=1773197729;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=C8HDblj7fRKJtovg4Bo+ljGQF5b9QTgQki2w/2Xqdco=;
+        b=ZiK9P9EK3wsesO8fD1EpC+Vjpz9+l/RQk+c9Ysft9JeOfD54WMgNXRN9iuvyApCgu3
+         mJUsEWj3JS1oB8EhiW2S/T+dMqz1K6dPiTWJBxk8pHzrtQDmb5n/eT3zi46QC8sICFmv
+         CFkqLrpoMyNzkV7Kp/PVyEMQe4onjXavuRVffskdXthh2rBMv3MLB1kxNaSa1+8qj411
+         5cov0I1oumkkkjoJQjBQYNjICnQvkoIjJnQFFx5hWrJ++oTUezl2SiBc67w46+BGGY8j
+         lfNdyjTRkanq2vkVl5UsjXMvua0lItsed1NbXi3w7dAKsEKhuhluPMKFfLbJ58UqjYGv
+         GZrA==
+X-Forwarded-Encrypted: i=1; AJvYcCXYy4hlpI4+BCPTdYrWX8TMTX+q/TCM7mnNeS9ywpZjiByDy9FLHfDhHJOGAFauwygSy4OMSPWBkdE4vLuHjw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwprxuaPs8dQQ3lq9OxWT+ZKBJusTSuCo0zGHzNQXoOLpLhhsng
+	6KF3GJK9urQzwLIrWcyhgfXKYiCKLXaXfNY9h1Emzyv1G0RHrtX0TgqyYzZdc1qa7KnyW4OFP95
+	ecLXNs7FC086z+Tm57xOksNAf4zvYVxl6K0rp
+X-Gm-Gg: ATEYQzxKbTx1Lb6z4KXgxEppyYjalp+zqxBtZ0Y81RnPfmVNeG7r01HdqlUs3Ogdc4i
+	gTwf7ZS+8wPOU88hUJBJtMMNZ+6UlVv9+vE/xpuK14cmO8zh82svH+uZNfYZLZCay1EXvBg4LKC
+	Pg8kuEwn2NxYozX3a9nMgbxpVct3VjUTz4CJPHp5iJwtZCEJ/VSmktUgzX7FQFOPRFJrmeL6irx
+	zsQeIEwoSX9I4E9c16pDIRVNjq3HWKldx24dkyhzy2dWr3FlqjWesF3UGdkiou1aeFHmgEZSAmP
+	DY4qYIb+f/4HubkkkOtdd8yNS7HU8HCdyDuSE/ykWtwDOABp3VQIK8sODVaZC9aRqgukj6qpXWF
+	6GYUkACZeqFHuWk6UgawT4GjEzq1eJCASnujvzVr8GPYx
+X-Received: by 2002:a05:6300:2109:b0:366:14ac:e20a with SMTP id adf61e73a8af0-3982e215fe1mr450654637.72.1772592928735;
+        Tue, 03 Mar 2026 18:55:28 -0800 (PST)
 Received: from ryac.ausil.us (207-179-239-100.mtco.net. [207.179.239.100])
-        by smtp-relay.gmail.com with ESMTPS id 41be03b00d2f7-c70fa7d59b3sm1374096a12.7.2026.03.03.18.55.25
+        by smtp-relay.gmail.com with ESMTPS id 41be03b00d2f7-c70fa7d59b3sm1374096a12.7.2026.03.03.18.55.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Mar 2026 18:55:26 -0800 (PST)
+        Tue, 03 Mar 2026 18:55:28 -0800 (PST)
 X-Relaying-Domain: ausil.us
 From: dennis@ausil.us
 To: Rob Herring <robh@kernel.org>,
@@ -88,15 +89,18 @@ Cc: FUKAUMI Naoki <naoki@radxa.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Dennis Gilmore <dennis@ausil.us>
-Subject: [PATCH V2 0/3] Add support for Orange Pi 5 Pro
-Date: Tue,  3 Mar 2026 20:55:17 -0600
-Message-ID: <20260304025521.210377-1-dennis@ausil.us>
+	Dennis Gilmore <dennis@ausil.us>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH V2 1/3] dt-bindings: arm: rockchip: Add Orange Pi 5 Pro
+Date: Tue,  3 Mar 2026 20:55:18 -0600
+Message-ID: <20260304025521.210377-2-dennis@ausil.us>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260304025521.210377-1-dennis@ausil.us>
+References: <20260304025521.210377-1-dennis@ausil.us>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_185528_655867_AB152526 
-X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-CacheID: sfid-20260303_185529_647109_330660ED 
+X-CRM114-Status: UNSURE (   7.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -116,40 +120,26 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Dennis Gilmore <dennis@ausil.us>
 
-This series adds initial support for Orange Pi 5 Pro. The network
-driver was just added. The only thing missing is the second HDMI port
-that is connected via a DP to HDMI adaptor
+Add compatible string for the Orange Pi 5 Pro.
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Dennis Gilmore <dennis@ausil.us>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-The series was tested against Linux 7.0-rc2
-
-Please take a look.
-
-Thank you,
-
-Dennis Gilmore
-
-Changes in v2:
-- moved items not shared by orangepi 5/5b/5 Pro from dtsi to 5 and 5b
-  dts files
-- removed all the comments and deleted properties from 5 Pro dts
-- Link to v1 https://lore.kernel.org/linux-devicetree/20260228205418.2944620-1-dennis@ausil.us/
-
-Dennis Gilmore (3):
-  dt-bindings: arm: rockchip: Add Orange Pi 5 Pro
-  arm64: dts: rockchip: refactor items from Orange Pi 5/b to prep for
-    Pro
-  arm64: dts: rockchip: Add Orange Pi 5 Pro board support
-
- .../devicetree/bindings/arm/rockchip.yaml     |   1 +
- arch/arm64/boot/dts/rockchip/Makefile         |   1 +
- .../dts/rockchip/rk3588s-orangepi-5-pro.dts   | 376 ++++++++++++++++++
- .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 184 +++++++++
- .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi | 202 +---------
- .../boot/dts/rockchip/rk3588s-orangepi-5b.dts | 181 +++++++++
- 6 files changed, 756 insertions(+), 189 deletions(-)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5-pro.dts
-
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index ae77ded9fe47..3c6b83a84463 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -1320,6 +1320,7 @@ properties:
+         items:
+           - enum:
+               - xunlong,orangepi-5
++              - xunlong,orangepi-5-pro
+               - xunlong,orangepi-5b
+           - const: rockchip,rk3588s
+ 
 -- 
 2.53.0
 
