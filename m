@@ -4,57 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D65AEFCE49
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 21:01:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5AD2EFCE47
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 21:01:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Nvgk3zEg4gLvR3fmmwWHPrvfcEsFRDkC0T7LDILdD88=; b=oFXcGzRyDrLTJG
-	HyU+ILUq4Xe+s9AutT/1LlS2Q9O0ZyNgnMbixzDDBMAa+yuGBzWfElF0yNkYHnlDA4pZC7YR8fP7O
-	JrMHXOhGGZZdWR2dDkW3c7Z5aYXEIKnXXorZX4PexxrKrP1jEwy1OypdOYLceC2Mj2ARN8Dh7Plm4
-	zdCysVnNljBnMv1xrfFec3nLdHQbSm7nr6Vxwnhe70cIv/dEVHKhMVjnp2j0RI2hhTapj4tlhH2P6
-	TadfGoLgxdZW41OL1JqiYXWlZBUga9FMFXmRUnPfCj2xlYjcaInp1P5CktRVI9cCXk2jmgW6GW9wW
-	8o42/oPy5f5CO51FueKQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=a5x5opkipeP3hSuVm3Z8LgifWnRIvh0q+eAxUnKlkFQ=; b=Y4iKbSOXoiju53
+	kBg3BA0bjv/WiKdasmPrw/PaP+msh1zecxlyNRPjW/v2Kg4HR5qdDkYeLX4Sn+UWZituafHRCaQ9Z
+	u/nz/NXSUz8k0ZKHXZ3cwSyYiuDtZYHajpnA85uKDBdeZiJtw2gQKDu6vmd49EQSOXY0rrX13Unkb
+	rNcrVrGe3TbUGgfYokoWtxJBw8tyD2Y6B7iw7ppFRP0rIRGIPMxGuzVJvPfQNfth5/GjZ+p+8SlXW
+	xuo3t3tHHLI/5W56K6arAN534r1xgJzh2bSlBZEYWnKVh8dsb36UfI2fsQGVIox0VYgW0JIhapB0A
+	sE/17x8IhJvln156l3Vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxtLU-00000000U4g-3rHu;
-	Wed, 04 Mar 2026 21:01:28 +0000
+	id 1vxtLX-00000000U6a-2ZiW;
+	Wed, 04 Mar 2026 21:01:31 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxtLR-00000000U39-0cP2;
+	id 1vxtLR-00000000U3A-0cRh;
 	Wed, 04 Mar 2026 21:01:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1772658082;
-	bh=NHH8SBtZtWB7oWeNE/nBz0iDxmUAd/1nD1eoFs5xpMo=;
-	h=From:Subject:Date:To:Cc:From;
-	b=d7zhqCPR2H904v31dWDKFETKjTzLVAdJNlokaggb0/y86gvLCYDEiaT4eCDLeEk/z
-	 hna1M7B16kbB8OUR8ba6md9Xrb3vF9WGaEorHd42S/onyJYp5BKyuw65WqP3Br9+VZ
-	 tsSuPyDq4zBBixeX7k5710chLolNBrTp7HpwFbWAUR99siCjH9fMZXNm1nFwFGQUiE
-	 t09ek7dodB76scI+XmTXkHGwfs4ZCoYEThw6yNPMys2sBxVEdlMNFoo6DR8evqJ7uG
-	 aTTgZwP+7bkT/vJO5fpdphkqC90Uoj7QMaxUSZKetnVfzMsJ1Wl8N1z/+BxzzVTQN+
-	 f1/FS29V2qM+w==
+	bh=W18nID6Ds1IUWT7XQqyotdnw5GBHgdabgbB7Y0/D6ts=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=ZTaEiEib96XOisoUpNam8xd6cwaQ940kp9/BrUyNgvG4tdjK5o8ALs0V84yJiISKG
+	 TpfI3JE8tif2OcO5KxjoyJfCV9lnupWKy+G5KCJtJSlY2pWH8DSk3RwGkIIEQ0pzJI
+	 OJFjzPeIOcq9BW1EvblTSC4olb8koaN+dj3oKXFW3rcOlzDs59j/KRVZssyCmug64j
+	 KbtAqHtVLM0oxoXOVd3rEVh9qY+ekPLTefNsW2v6kqrdKdkXqQ0ruRSInHgBZFoIan
+	 27tEBhP8NKWn+k/mFsv0vtb+KG3Ed7Ew4XisfJqcN/uaLHBFxfipgnfHhK/Zu3Z/4R
+	 jhrfjXQVZuFng==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id CE5A017E0DC0;
-	Wed,  4 Mar 2026 22:01:21 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BFEBB17E1005;
+	Wed,  4 Mar 2026 22:01:22 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v5 0/4] arm64: dts: rockchip: Fix vdec register blocks
- order on RK3576/RK3588
-Date: Wed, 04 Mar 2026 23:00:39 +0200
-Message-Id: <20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com>
+Date: Wed, 04 Mar 2026 23:00:40 +0200
+Subject: [PATCH v5 1/4] media: dt-bindings: rockchip,vdec: Mark reg-names
+ required for RK35{76,88}
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43NwW7CMAzG8VdBOc9T4tRpu9PeA3FIHBeiMTKlU
- wRCffcFTgiB2PH/Sf75rGYpSWb1sTqrIjXNKR9a0NtK8c4ftgIptlao0WlECzUKQ5Et5BKlQPm
- y1DtgRmEnmmQcVLv9KTKl49Vdb1rv0vyby+n6pprL+kqsBgyQ02PvyLkQ7Sfn/d6HXPw75291U
- Sv+S0LQEP3UjR3GiTU+kuytRM8k2yTyKEFMMMYPj6TuVnLPpK5JYYg9Ru4JSd9Ly7L8ARiBtoq
- cAQAA
-X-Change-ID: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+Message-Id: <20260304-vdec-reg-order-rk3576-v5-1-7006fad42c3a@collabora.com>
+References: <20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com>
+In-Reply-To: <20260304-vdec-reg-order-rk3576-v5-0-7006fad42c3a@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
  Detlev Casanova <detlev.casanova@collabora.com>, 
@@ -65,12 +61,11 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
- linux-media@vger.kernel.org, Conor Dooley <conor@kernel.org>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ linux-media@vger.kernel.org, Conor Dooley <conor@kernel.org>
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_130125_344436_9798D456 
-X-CRM114-Status: GOOD (  13.41  )
+X-CRM114-CacheID: sfid-20260304_130125_344484_07195BEE 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,68 +82,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When building device trees for the RK3576 based boards, DTC shows the
-following complaint:
+The Rockchip Video Decoder driver expects reg-names to be mandatory for
+RK3576 and RK3588 SoCs, however the binding does not currently require
+the use of them.
 
-  rk3576.dtsi:1282.30-1304.5: Warning (simple_bus_reg): /soc/video-codec@27b00000: simple-bus unit address format error, expected "27b00100"
+As a consequence, driver would fail to probe with a hypothetical
+devicetree that doesn't provide the reg-names for these SoCs, but which
+is otherwise a perfectly valid DT from the binding perspective.
 
-The first two patches updates 'reg-names' property in rockchip,vdec
-binding to make it mandatory for RK3576 & RK3588, since this is what the
-driver expects, as well as to allow providing the register blocks
-following the address-based order and, consequently, ensure the video
-decoder unit address points to the primary register range.
-
-The next two patches reorder 'reg' and 'reg-names' for the impacted
-RK3576 & RK3588 vdec nodes.
-
-While the binding changes introduce an ABI break, the expected impact on
-potential users should be minimal, if any, since the old SoCs are
+Update the binding and make reg-names required for the aforementioned
+SoCs.  While this change introduces an ABI break, the expected impact on
+potential users would be minimal, if any, since the old SoCs are
 unaffected, while the video decoder support for these newer variants in
-mainline driver and devicetrees hasn't been released yet, it just landed
-in v7.0-rc1.  Therefore this series is intended to be part of upcoming
-v7.0 kernel release.
+mainline driver and devicetrees hasn't been released yet.
 
+Moreover, this is also a prerequisite for a subsequent binding update
+introducing an alternative reg-names order, according to the
+address-based listing in the vendor's datasheet.
+
+Reported-by: Conor Dooley <conor@kernel.org>
+Closes: https://lore.kernel.org/all/20260227-urologist-gratitude-7984733f2d41@spud/
+Fixes: c6ffb7e1fb90 ("media: dt-bindings: rockchip: Document RK3588 Video Decoder bindings")
+Fixes: a5c4a6526476 ("media: dt-bindings: rockchip: Add RK3576 Video Decoder bindings")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Changes in v5:
-- Addressed feedback from Krzysztof and Conor resulting in further
-  updates to the commit descriptions, as well as marking reg-names
-  required for RK35{76,88}, handled in a dedicated (prerequisite) patch
-- Collected R-b and (re)added Fixes tags indicating patches should land
-  as part of the upcoming v7.0 release
-- Link to v4: https://lore.kernel.org/r/20260226-vdec-reg-order-rk3576-v4-0-b8d72dc75250@collabora.com
+ Documentation/devicetree/bindings/media/rockchip,vdec.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v4:
-- Removed the unnecessary one-entry item from the reg-names oneOf clause
-- Minor adjustment of the commit descriptions as 'function' naming was
-  not used in the context of the older SoCs
-- Link to v3: https://lore.kernel.org/r/20260225-vdec-reg-order-rk3576-v3-0-5a2ebe1b11a8@collabora.com
+diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+index 809fda45b3bd..dc4ebb50b316 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
+@@ -123,6 +123,8 @@ allOf:
+           minItems: 5
+         reset-names:
+           minItems: 5
++      required:
++        - reg-names
+     else:
+       properties:
+         reg:
 
-Changes in v3:
-- Mark the current 'reg-names' listing in the binding as deprecated and
-  introduce an alternative 'link,function,cache' one
-- Drop the Fixes tags from all patches and updated commit descriptions
-- Link to v2: https://lore.kernel.org/r/20260223-vdec-reg-order-rk3576-v2-0-daf4942dfc02@collabora.com
-
-Changes in v2:
-- Added patch for updating rockchip,vdec.yaml binding
-- Added patch for updating RK3588 vdec nodes
-- Link to v1: https://lore.kernel.org/r/20260223-vdec-reg-order-rk3576-v1-1-560976566bd3@collabora.com
-
----
-Cristian Ciocaltea (4):
-      media: dt-bindings: rockchip,vdec: Mark reg-names required for RK35{76,88}
-      media: dt-bindings: rockchip,vdec: Add alternative reg-names order for RK35{76,88}
-      arm64: dts: rockchip: Fix vdec register blocks order on RK3576
-      arm64: dts: rockchip: Update vdec register blocks order on RK3588
-
- .../devicetree/bindings/media/rockchip,vdec.yaml   | 22 ++++++++++++++--------
- arch/arm64/boot/dts/rockchip/rk3576.dtsi           |  6 +++---
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 12 ++++++------
- 3 files changed, 23 insertions(+), 17 deletions(-)
----
-base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
-change-id: 20260223-vdec-reg-order-rk3576-cc2ec6e05e98
+-- 
+2.52.0
 
 
 _______________________________________________
