@@ -4,109 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAA95EDEC06
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 03:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 257CFEDEC16
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 06:49:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0OT4sfDTvtEqB5qNHFdiWn1dqIW9HKqq3Ce/2worhGg=; b=SEk0VNfWeM6JeS
-	1MOFkf4E7NXI3RSSl7mnblR1WklDhiYeBD9QJnoW8/BtIXh1sSjbwzXTLhkLJw59xBXx0eQIRAuoE
-	15SeaB1YeyhfnEGZjaNSe4+s1w8g78peCUEDqe2z0l0J1apkYTtOhClg6lEy06QL1RstK57cKeIZx
-	Uo0rM5nxAZw6LyoePU8WswVQi/I8IJ/KAl81rwitp+IFVpigoUEeniwvSpx3dhIWN9AEHy6w0hqXU
-	poeEnOsY00J3ujgSF/VsMlSe7cww7WT3/bBI4PjRfhK4CzN0aToxeODs488CNHO0njKwrdysmlKfD
-	xWvza6g53lRK+ODOewPQ==;
+	List-Owner; bh=LJxU8bHW3Cvn8vzOkbgn3xiTRG8PapFgQTNcm6zekps=; b=UC+XySnRHt18Xx
+	ZQySu56ZGbtV5UjAcJ9RjRt925Lq7eJFC3a7y6QxHK7EpchtOJKMWcxAsDOcs+3s2TLxJX4SM13Ax
+	+GuJTFbQXdVqg3gl2dZDUhQxqInaQo825h/iQ1JJ3n65c/MRQmIoevLFzmkwU71Boe7q7eiusLB0H
+	CB3P3MbeTDdOOoNPGHDrFGVjiN5CJHiv0052PvVTYqCp6rrul4j/XsYVcXtfsaxxMtZwvU1Z2tJBS
+	e1PvLQJPNoc4iQMQfqWS4gghmz4KCQmtfhU1L/uE6uAg/WX9apbjiydzEn4dyA17hUVRUwuRCgYNz
+	ExU/7JoQGf8vWMfZcZRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxdBJ-0000000GOar-27zp;
-	Wed, 04 Mar 2026 03:45:53 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1vxg2g-0000000GXUc-1lBN;
+	Wed, 04 Mar 2026 06:49:10 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxdBH-0000000GOZr-0LOp
+	id 1vxg2d-0000000GXTq-3InY
 	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Mar 2026 03:45:52 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-439c5b40f60so458824f8f.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 03 Mar 2026 19:45:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1772595949; cv=none;
-        d=google.com; s=arc-20240605;
-        b=MO7O5g+sRewuuhnn4lXIyiZmLwA0dkRFJFjLsSHz9iZZDfqmd5ZEXJMhVhFQ+dqxkJ
-         8CLIi0yIlGkC3kfVf5PIoZOVKYoMRf8Rk7tx2jn0XNK7P9HnClWWohUOAHL6cdHz0wG/
-         puQYJnZut+8k/KmIERTSqDkDus5KFJ3a3Z14USgQx9UP4EqDB1rKXg0b6xlv9WV3ORAs
-         h2nsGBfpOuuNA+X1FUCPXvScMRIhs94jGB186tIpfkJNjT+Ld4TSK3e8snIhc+7lLAg2
-         n2O8PEZmNIsnOL/F5JrbnzoFvi2sQtA74QisXKyAs9d7cmbnQp1EkDdfGppNq1AFKXjP
-         nM6g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0ck0SxwPDcv+Zqhqz8cZVKiShWiiww33rNFdcafCJLs=;
-        fh=rjyAcvKC7elUY6+d9iLSswG5LSLu13ubvuuaK6gIzRQ=;
-        b=D3UN5TxYEZpY6Bnh8NyGy4dQYWeO+IAPhJNes70nmJvUO637VbITjXvhqOuwPupxLs
-         xLkXjgHhoxJoYsK48B0tGyFFlffP+bjfAJJV9ul2Lm1L+0icy7FKgCyRfidow7CBG0N1
-         SaRxls7ILM7kKNFSb0GgPMU7YkQr1t0weep38smyBKIB6T2WRK0Hfvz+eRYEy7PhwRUl
-         NqwQM/HSXQZ8kO3XarXIUwD+n+sfIuXITKQ2QTye3pVnM5K58ModwIltRgCkQFVqI0aP
-         aaoGM9qYGLoJGsWiSoV8P+EK3UIp8v4EexxXxmdDnimD8zb8xaCsmr7r78HT92/n/umg
-         kybA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 04 Mar 2026 06:49:09 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6245SOIv2306023
+	for <linux-rockchip@lists.infradead.org>; Wed, 4 Mar 2026 06:49:06 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	mICino5nH4L36s9MqQ2N08OYmrnyuBSpHkGBIndzUbc=; b=XM1dsbhtVZQz3NdC
+	zO87XJXxXvS0aLlPQwjRyYfm1KNnfKiCU3C6Ge++M033q2OtHEeZT31WV8e0DLQD
+	IPS11eFCoWg7kUYFM63n8a1ucUmasFgXfYlSx/UYSRIMGcsNw2SHNJl5szWEgYVk
+	sapuv8Xn7YP22CB9otpwgMkqBKc3tdgIKexEx6Jwb+aIEJNObe7sTr20aTqeL/l/
+	SeDgC/TNmNSamrurdWk6t9dfln2bZvDf89EVToGJ0ZTJkwyyM5wJXWpn/lp1Priw
+	YAe2kaQzyKmE8o4cvmPMvsASrRZ54TL61RIlZWOwAx33ENgoa9u8ae5PRg5CMs9b
+	PajDGw==
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com [209.85.210.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4cpau8ry34-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 04 Mar 2026 06:49:06 +0000 (GMT)
+Received: by mail-pf1-f197.google.com with SMTP id d2e1a72fcca58-824b42b8a81so23230975b3a.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 03 Mar 2026 22:49:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772595949; x=1773200749; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
+        d=oss.qualcomm.com; s=google; t=1772606946; x=1773211746; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=0ck0SxwPDcv+Zqhqz8cZVKiShWiiww33rNFdcafCJLs=;
-        b=fmIg1UnY30p6424AtdjLHzjf2vm2idkPPHNkjaYnu4CskTcthrz8znblfHelSiJNlA
-         KNYggQvyos7T3qu5HptC93dngcBsZ7ygaCQt7cu51hKshwy2PY7IVVKacCOJnqCQYBWT
-         9eQ3CcTA0jsf7tit95P0goTJh+XjgtQBPPBeMTZtbN9bw5O8VLgI2SJhinTp4XRTWarD
-         k0yQXPYt+Me5IWeykfxMM7XM+SOMKTzV2UkBLpvEgYXsbLI4tl5uXNV2v/z1LsLpG+OJ
-         f3YFZ4+S7Yvx7COTQaJauXtldEowOtqF62K1fJIB/sKx5J0U8bBCe5kFgHYb4TqKvijp
-         NNJQ==
+        bh=mICino5nH4L36s9MqQ2N08OYmrnyuBSpHkGBIndzUbc=;
+        b=DEU7ITw7Y6vGn72sYq/VlvMdd/lQ3zhri2C7LFs8YqhPdO8SlAdjI2zx6p51o+NAK+
+         q3e32DnVreJKtWe6+zUernUcO9unKxjAgbgDIfjIk/xLXdTn+ED9uie93h+tG2T3XaGm
+         VGA3bJdtCqz8cofFzMfZtjW3ilakYHQpoOwTmg+mP7eBkNOJqsqtD7M/uXlEvjp74AfV
+         Zp1j1uG233+/Kr6QLwKn2oeeTOTJeLXGhFwD5l5YJlHmFqBFUsTHVs2oL4IIqay6I3jn
+         c+tOcK303zUFLwjO5DGJOY77FBDsx6IkhSeyLbHsndl0ShXRvduEYCXg8wV30lUjEAce
+         7jcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772595949; x=1773200749;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+        d=1e100.net; s=20230601; t=1772606946; x=1773211746;
+        h=content-transfer-encoding:mime-version:date:message-id:subject
+         :references:in-reply-to:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=0ck0SxwPDcv+Zqhqz8cZVKiShWiiww33rNFdcafCJLs=;
-        b=k6cnisbzT/mcHPJEnimNBipUAh7+61zwbEWu+yjMetVqbxBtaEPwlwcdf/UHOE7LGS
-         XuoRNPUppxYS1ddVRmPjVA3+MbypgR16s7Zdmb5sWlYwFruK+94dbRxGipovSI4aMuE0
-         BSVXx+We3ILMu5Gqoz2jj1P6UEgcoM4V0HyqmPPRMlV1tgQkOkJ3DtDEIykaV5kasnqP
-         r22494pFU6PoLfLxM1doSBPlrH9BqW5cwK4nOSrmRAL3UQVFaPeB3Nbu29EVXVaF0PQz
-         rT5h3nUh2eyKUjVfjmzx+vWc11+B5F4BTxC+b1DW5D0ZtyRPyoyUQ4/p5ricJGNBYWh8
-         gtog==
-X-Forwarded-Encrypted: i=1; AJvYcCXNr0df/anR7pj4SJm9hNm0Z0KyByNTkbSrXVWIPzQvB/BeesuBIiNjhjmWXhfiai64pUnasANa+oFUMZiBRA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx+DncKYyK+AaTkUkAnZeVFxlHPiP8TuFGYOX3R5RMNOFc8T8h7
-	VjgQZeSD6nLRhSW88pFj0xuLxJZZPlmzHw01iuUdPDE1x47sTSptQpXpmMiNZcl/7jwcoZqNhlT
-	j1nMABg+n8REVQNwz41kdnXyg3f/y31s=
-X-Gm-Gg: ATEYQzzI8o4jWOznC5+csFsBNf64ulldvFX1yEj4xF1AohKGkLiZ4DHbsUPI4QguIa1
-	WZMr8nRT2KO+gdQjM43mefphTDOpTkoE1IduT4PP4g4rharx59aBSNZwClvaRbOd4n3x4RrefXm
-	e3wIImYtLWdEsan2punqSq/Y35bjVybMwagmPrSxmIIu57HbXYOivQAdbq2uYqLXQbgcS7rokoR
-	qHhPvVN8Th7XEQtx6Nfnwi5SI6SW8f8T+SwCDs4ZWnc1nH7VJRYIEa6Kv9vXEIJvjKqr93h1ZFZ
-	2BJY2BZyuzJSwCYx3+xggC8w6YMEP69gWMYiKqI=
-X-Received: by 2002:a05:6000:1acc:b0:439:ac53:a94d with SMTP id
- ffacd0b85a97d-439c80005a2mr1016259f8f.29.1772595949061; Tue, 03 Mar 2026
- 19:45:49 -0800 (PST)
+        bh=mICino5nH4L36s9MqQ2N08OYmrnyuBSpHkGBIndzUbc=;
+        b=k9eUogdy/PfeHd6IoFNwUcglw9umVIPcxBJK1eRLWKfFKpPem/0s0/sAoHKlnlg6Nj
+         qXMmIp5qU2qBdBJqdJe5kJOHBe46wCOxA3B9wbqpc+m01O3NmBUBjA0yPS5RkGPbikIc
+         KPF8XFyUH2QZ+ruVQXdUybNx3J4RXNnFQWyuImr6lCJogPlFR4KQ74aj7bU1lLlKQ1UA
+         Mz4BwpadTOyWd8k4MENCy9huhups4o/4ckBrQoNuh1jY/2KVtMR/BIMHEmuvHptHIZwE
+         rp/PTIqItJi9iWnbFo74VwYYCUmlIs4D7PeF6z2KKlfBpl82uQtxns3POfCi8RIJ1mLs
+         XMqQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWt6KtLFLq8D0g39WmcUzEAtzo1npBS22kmOt4HHheg255bNbob2ixVpnwuvoDn97UXX7DXNqj9/j1+yO5mzg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxtNcsYJqzq/Gi2gADTZhEWczXrkqfmymS9gj2NcSKlnYUGf+3X
+	uA3ba2nPhTJ0FTuF/PCG2FIfudh0+d/4G99Aetf2bBZNekbRZh9UIGXOsPJ/uzfgIpELNcsK4nT
+	wHNA35OUnekEPJSibSR3DI5aASo3SEHHxNDTj3xh1nnmBDVdvjU73OaFhCGBfR+jptWvhXjYLQH
+	c=
+X-Gm-Gg: ATEYQzyGnaznaW+2Yu4zwJMN8UlNCiJT0pIc2BXA83se+gesUbXKTrZuLReXhAyr5ri
+	plWfYklCLjtZLgHu2S8+O836WFTFiBAMqSpRilDGTaFB2ayqYrOTHSC/W8maBcY/PqZkB/vazW+
+	xSwyxk54QArikCziU+on947F0w5xQ1bimjyp+/IBYB+yk9QousLf3aM75W6aQZTTuCerohe3gn0
+	ABScez8V93QNZgAeEiHJbua+zH17BRkjaKl1MkJrX2Yiq+sxwetYJEtfWGKSlA/WHgZr/xQjB0N
+	LzljwmmIlM31SJIW2EiBNEhcze+N7OJBO1ofrno6rtNcRJ9Y1dOEjWe7hnwW3BzM5pwCt0L5M7W
+	+KOnvItKjnjeE17yT41kFpQ==
+X-Received: by 2002:a05:6a00:138c:b0:827:32ea:5307 with SMTP id d2e1a72fcca58-8297290ec8fmr1047525b3a.3.1772606945570;
+        Tue, 03 Mar 2026 22:49:05 -0800 (PST)
+X-Received: by 2002:a05:6a00:138c:b0:827:32ea:5307 with SMTP id d2e1a72fcca58-8297290ec8fmr1047501b3a.3.1772606945084;
+        Tue, 03 Mar 2026 22:49:05 -0800 (PST)
+Received: from [192.168.1.2] ([2401:4900:88da:227d:6548:57ab:a3a:47f6])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82739dabd43sm21015522b3a.25.2026.03.03.22.48.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Mar 2026 22:49:04 -0800 (PST)
+From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+X-Google-Original-From: Manivannan Sadhasivam <mani@kernel.org>
+To: Lorenzo Pieralisi <lpieralisi@kernel.org>,
+        =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+        Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+        Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>,
+        Shawn Lin <shawn.lin@rock-chips.com>, Hans Zhang <18255117159@163.com>,
+        Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+        Wilfred Mallawa <wilfred.mallawa@wdc.com>, linux-pci@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Anand Moon <linux.amoon@gmail.com>
+Cc: Grimmauld <grimmauld@grimmauld.de>
+In-Reply-To: <20260226101032.1042-1-linux.amoon@gmail.com>
+References: <20260226101032.1042-1-linux.amoon@gmail.com>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+Message-Id: <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
+Date: Wed, 04 Mar 2026 12:18:59 +0530
 MIME-Version: 1.0
-References: <20260228205418.2944620-1-dennis@ausil.us> <20260228205418.2944620-3-dennis@ausil.us>
- <CALWfF7LZV07x7zAgufE_aa58s7x6e_ODAM2LgZqjbEakDticpA@mail.gmail.com> <CAABkxwsJ2ZnytCcHEvXWzNkjwzNThoTR23FAeHJLdf4JjXJEMg@mail.gmail.com>
-In-Reply-To: <CAABkxwsJ2ZnytCcHEvXWzNkjwzNThoTR23FAeHJLdf4JjXJEMg@mail.gmail.com>
-From: Jimmy Hon <honyuenkwun@gmail.com>
-Date: Tue, 3 Mar 2026 21:45:37 -0600
-X-Gm-Features: AaiRm510_muOP2trKshqRAe1MQ9prhJ4qP0ttHmvpYHaggzE4klTOIJdcnDBxLM
-Message-ID: <CALWfF7+gdNqSgzk4uAnVRkG8vT9FwJDV46VXpb26hd7BzdaGcw@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Orange Pi 5 Pro board support
-To: Dennis Gilmore <dennis@ausil.us>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, FUKAUMI Naoki <naoki@radxa.com>, 
-	Hsun Lai <i@chainsx.cn>, Jonas Karlman <jonas@kwiboo.se>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
-	John Clark <inindev@gmail.com>, Michael Opdenacker <michael.opdenacker@rootcommit.com>, 
-	Quentin Schulz <quentin.schulz@cherry.de>, Andrew Lunn <andrew@lunn.ch>, 
-	Alexey Charkov <alchark@gmail.com>, Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.3
+X-Authority-Analysis: v=2.4 cv=AJS1/0o2 c=1 sm=1 tr=0 ts=69a7d5e2 cx=c_pps
+ a=rEQLjTOiSrHUhVqRoksmgQ==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22 a=VwQbUJbxAAAA:8
+ a=SMwnmUEIIvgHDjHqlWcA:9 a=QEXdDO2ut3YA:10 a=2VI0MkxyNR6bbpdq8BZq:22
+X-Proofpoint-ORIG-GUID: dOlahQCfZTPYYfPTVFQb5u4jqMI8r4wZ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzA0MDA1MyBTYWx0ZWRfXx90VEpqqWCBu
+ F8Tz2P+ytVEGeccAbEvuKfGffJC/kC9j4XoH9I18nN+YFVoVK5pc05kYtyn9Y4Ng6zpqodD/bii
+ kQgPQIwoTtNCZW0u27ag0v1bjxTy+MHp+gWJymaG/WhscdZjTVJhwsErLhdDqv6d7+Q/AXRfonY
+ BN5P95IC8cJ0at4X5xYCfIFr21vH5IFkmWGeezOES2NW4NphbwuUOHridy6kcq7Ccrw3M//y5AL
+ zIvbgiCHiEIAKWAr5KyMsCy6P8xD9QxvIMl2rurCanNkIOZoH2WekThjA9jNQB3jK4it5lyyBz8
+ jh3CfcP98DyoDI8htUMVOGpChW2Uf/0m1CUrVystMDtZ944qk7G34Q0tAiUqhmRTTPfQ8JLLHVM
+ eepk+EwbdCAIuJnDhKv0/hNGZ0az4RQnqtl//81/Kv2CBOv4IGYL+UZ1OEppT00unehgFBj2ZCD
+ R71H4CkzuH+PoJinU3A==
+X-Proofpoint-GUID: dOlahQCfZTPYYfPTVFQb5u4jqMI8r4wZ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-04_02,2026-03-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 lowpriorityscore=0 malwarescore=0 suspectscore=0 spamscore=0
+ phishscore=0 adultscore=0 priorityscore=1501 clxscore=1015 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603040053
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260303_194551_172274_7B93E79B 
-X-CRM114-Status: GOOD (  13.97  )
+X-CRM114-CacheID: sfid-20260303_224907_861481_374CDBD0 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,39 +146,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBNYXIgMywgMjAyNiBhdCAxOjQz4oCvUE0gRGVubmlzIEdpbG1vcmUgPGRlbm5pc0Bh
-dXNpbC51cz4gd3JvdGU6Cj4KPiBPbiBNb24sIE1hciAyLCAyMDI2IGF0IDExOjU34oCvUE0gSmlt
-bXkgSG9uIDxob255dWVua3d1bkBnbWFpbC5jb20+IHdyb3RlOgo+ID4KPiA+IEhpIERlbm5pcywK
-PiA+Cj4gPiBTb21lIGN1cmlvc2l0aWVzIGJlbG93LAo+ID4KPiA+IE9uIFNhdCwgRmViIDI4LCAy
-MDI2IGF0IDI6NTTigK9QTSA8ZGVubmlzQGF1c2lsLnVzPiB3cm90ZToKPiA+IDxzbmlwPgo+ID4g
-PiArCj4gPiA+ICsgICAgICAgLyogUHJvIHVzZXMgZ3Bpby1sZWRzIGluc3RlYWQ7IHB3bTAgTEVE
-IGlzIG5vdCB3aXJlZCB1cCAqLwo+ID4gPiArICAgICAgIC9kZWxldGUtbm9kZS8gcHdtLWxlZHM7
-Cj4gPiA8c25pcD4KPiA+ID4gKwo+ID4gPiArICAgICAgIGdwaW8tbGVkcyB7Cj4gPiA+ICsgICAg
-ICAgICAgICAgICBjb21wYXRpYmxlID0gImdwaW8tbGVkcyI7Cj4gPiA+ICsgICAgICAgICAgICAg
-ICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ID4gPiArICAgICAgICAgICAgICAgcGluY3Ry
-bC0wID0gPCZsZWRzX3JnYj47Cj4gPiA+ICsKPiA+ID4gKyAgICAgICAgICAgICAgIGJsdWUtbGVk
-IHsKPiA+ID4gKyAgICAgICAgICAgICAgICAgICAgICAgY29sb3IgPSA8TEVEX0NPTE9SX0lEX0JM
-VUU+Owo+ID4gPiArICAgICAgICAgICAgICAgICAgICAgICBmdW5jdGlvbiA9IExFRF9GVU5DVElP
-Tl9TVEFUVVM7Cj4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGdwaW9zID0gPCZncGlvMSBS
-S19QQzYgR1BJT19BQ1RJVkVfSElHSD47Cj4gPiBIb3cgY29tZSB5b3UgZGVjaWRlZCBncGlvLWxl
-ZHMgaW5zdGVhZCBvZiBwd20tbGVkcyBmb3IgdGhpcz8gR1BJTzEgQzYKPiA+IGlzIG11eGVkIHdp
-dGggUFdNMTVfSVJfTTIKPgo+IHRoZSBkb3duc3RyZWFtIGR0cyB1c2VzIGdwaW8tbGVkcyAgdGhl
-IEdQSU8gY29tZXMgZnJvbSB0aGUgc2NoZW1hdGljCkl0IHNob3VsZCBiZSBmaW5lIHRvIHVwZ3Jh
-ZGUgdG8gcHdtLWxlZHMgd2hlbiBhZGRpbmcgaW50byBtYWlubGluZS4KVGhlIE9yYW5nZSA1IFBs
-dXMgZGlkLgpJbiB0aGUgZG93bnN0cmVhbSBEVFMsIHRoZXkgdXNlZCBncGlvLWxlZCBmb3IgdGhl
-IGdyZWVuIGxlZApodHRwczovL2dpdGh1Yi5jb20vb3JhbmdlcGkteHVubG9uZy9saW51eC1vcmFu
-Z2VwaS9ibG9iLzIzMmVkNGI5N2I2NWRhMmI3YjY0N2M0ZTNjNDk2Zjg1OTRiOWYzZjEvYXJjaC9h
-cm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtb3JhbmdlcGktNS1wbHVzLmR0cyNMMzEtTDM2
-CkJ1dCBpbiB0aGUgbWFpbmxpbmUga2VybmVsLCBpdCB3YXMgY29udmVydGVkIHRvIHVzZSBwd20t
-bGVkLgpodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGludXgva2VybmVsL2dpdC90b3J2
-YWxkcy9saW51eC5naXQvY29tbWl0L2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4
-LW9yYW5nZXBpLTUtcGx1cy5kdHM/aWQ9MjM2ZDIyNWUxZWU3MmEyOGFhN2MyYjFlMzk4OTRlNDM5
-MGJiZjUxYwoKSmltbXkKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+
+On Thu, 26 Feb 2026 15:40:23 +0530, Anand Moon wrote:
+> Rockchip DWC PCIe driver currently performs synchronous link training for
+> combo PHYs (PCIe 3.0/2.0 and SATA 3.0) during boot. This process waits for
+> the link to be fully established, adding several milliseconds to the boot
+> sequence. To optimize boot time, this change enables asynchronous probing,
+> allowing link establishment to proceed in the background while the kernel
+> continues probing other devices.
+> 
+> [...]
+
+Applied, thanks!
+
+[1/1] PCI: dw-rockchip: Enable async probe by default
+      commit: ec392abc95932838bf7e3d659d358f4df9ff5a0a
+
+Best regards,
+-- 
+Manivannan Sadhasivam <mani@kernel.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
