@@ -4,89 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE815EF9003
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 16:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A955DEFCE36
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 18:00:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=sxDn1PVc0gEb5S+7z74ZP6+pH2tDK8FzOBQUFxAmZ10=; b=Bk6svMNrYvoFdJ
-	DFavWRT0FDofOPBGLJSIb6ezMd5CjKJCZQ7SiBsj1BmhBki2DvOvK0EscUTOXCEj/ncYss52dyb3D
-	NtSTbhfxNioMhaBjc+HaGlcWr8Tbxz1po9K6OJH04MJENhVTdgSZnLWuCRjlIZusB9icsOCmR1DqT
-	ku8/vdo/wrVRmBgukQnfx/i3F92DjR+DLIKfdAIbNwP7TjHOBheEA6jss4Z5KOk65t6z1U/pZqxQr
-	8g+OEw7JhWcbkbVLbrIk+Be46QyJ7b4TmTfFjiuCZQIOlUyYCnZQmlPNUyAV/KR3btGXjV+SXa8h1
-	S4jgIzflhJ5Zddi7miBA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ajKJgPInkur+ZrvU3FjmZUciajDok04jIe88oLTEw/Y=; b=KD7tlE15MdGy9P
+	BcZ5Sb6SslmhpfOLLz6XxqtnZmhEL2VswvC8jyLvZEZczsIDDLkK1cxB50CPdRwq0uiEQKRZdeVqq
+	uKHgbuwULvS5u4CTdWyB0Fq5LnoXt+dRSIkVOFBko3MBl78TVsrnbSMEeL7OQn1iUNoV+mYxgCyXg
+	8jgBicP5f7161pegxcfiPmkDa2DPgZSeRkIj17oU2LIBES/OvMIkWh7A8Tzukj9ORRPSGpPpsBpOS
+	WeQOaiNWsfDO2Bn+cPrqqXMxruxw3urYpYBUQvwaJj3kCPObZrbm5KvmKe5PHwWz6qXC4fPk8zlc2
+	HSdeDLiPiZTVB3tNflXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxpLV-000000006Jz-3pjy;
-	Wed, 04 Mar 2026 16:45:13 +0000
-Received: from mail-vk1-xa32.google.com ([2607:f8b0:4864:20::a32])
+	id 1vxqVu-00000000DY2-2eZ3;
+	Wed, 04 Mar 2026 18:00:02 +0000
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxpLS-000000006J5-2Xji
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Mar 2026 16:45:12 +0000
-Received: by mail-vk1-xa32.google.com with SMTP id 71dfb90a1353d-56a987683baso7032216e0c.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 04 Mar 2026 08:45:10 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1772642709; x=1773247509; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=vSqwphXV0lntnfqs2BswODSP2JF/VYqeGhd0vIuj4qw=;
-        b=E1BBjCzUNyMfOHqZ+inChVfIfeL77+xsaQDVU/6ULTm4M4wHS4hXvYLZYmMr1FKSL+
-         Trw29xzmZ7IZj20tQjI5fZrKw0SE5xlwNAh4bQI8oE/JqRlgapgS5xySygZSqqoJ6SqO
-         zJ3kV8BxLlhkTL8Nzv6q6/c/W0cQ0221HOWDzwKBi8ipJhb+2/BPxG339SPRq1Fe7cYc
-         hmLey9f7d+i+Sd7sUVdR9SQ3qI0o5Tz3x+Pvt3MRPoSTjWiYK5FYEebnKWNhNseOw9f9
-         yDzvB2iLpMkQ5blUTT/cNTZ7lr54wyNWLOZahgcMRJKv3z5eRL+v7AGdp9PVt0KfqYsx
-         sCew==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1772642709; x=1773247509;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=vSqwphXV0lntnfqs2BswODSP2JF/VYqeGhd0vIuj4qw=;
-        b=ubOP0X/o77GGZgJj5mgXMTSe40kYgPPnmrzw3PDATOZy3cMko4HpvqqYnsnYceW5D3
-         9iIYMNm2+8KmngC3QniS2tknfYgxBLKvozW0zvCxzuwKEHPRYPxe7sAfVn+dNoFuZN4Z
-         G08NYkJWIedEN8DdiJEcV5lLNh5sCM6QHsInJy6r83ALuWJ3VsbEbIQe7ZcNiHWEWzlF
-         F9Zaihpu7lb8QXXX/o4H7MjJM7JCCJIUbGNoNAeh2KNKkAa5veHko0C61CVsVULqIjoF
-         UWcP5/a6pCjWzd7Yj2y3KTtohulqcYj8+MeLbJEr2oHD8n2voEjv0M/R957eSdLpVYU3
-         Sd6g==
-X-Forwarded-Encrypted: i=1; AJvYcCUw1RXNHDDLjqgmE4rLyFS0/YpmC/ab2aLCgyeRoDF+urnLo6JkmGjfB+ArR2lR1jch1ZmUWER2Ev5Bm+c1zQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Ywww7k2l5cz3idQQodKBoiUOcyPw2DvUiuBje/iWBhbNKZehNnS
-	/tJERiuAKywYsGkOJdG2bnNGUFdqTNRLf+Jfj/7AKnqDNcPOgsc/BGqv
-X-Gm-Gg: ATEYQzydeCzZ4W2p/1Uk8ApDMa3NJJ3PuVdpn1+Nx9Lg6R1MpK1zMWh9nacLuXZnAyf
-	MxLeoqvIYeVt4DsGNAGuDjoFjbhQo6PBct8qxCPVdH4+GtUsOlA3adZDMCOkWjc38oQyz0QQR67
-	EOHuYDlq6vC4vOmxwTPGpEC2OowQEgIiJc6R4H3dZbEcTHAbkmDqGKN+bIXxexuElTC0NiXIcJb
-	cogVW3tFee2XacgygxTpaK/7LLU7tblYcOkoRJYNVAP6swJhbcK5GBJtnZqhPIXZcqj9F+0JN1o
-	e11xENlFJe9L1Yyr+pDeQgZubo/s4UkY7eXkHFRZJW4cIFbl00wg1GLxYu58ojRV2SH5BIHGaGt
-	ZuRorWSLSaCLajbLbDl6MdsFC9fhFo7bUv0jVCOMXCzEiTSc0T49E+C2gDwy7nBoDAywrmo9qdr
-	8E83+UAZZR+zP6ABgOG0p3IrpEHQFsj7ohsIDjx3TctNTao/+68DJo8T1f5oosiKCv1mX07XIgX
-	DfM+AQ=
-X-Received: by 2002:a05:6102:c8c:b0:5fe:f14:e701 with SMTP id ada2fe7eead31-5ffaaf11d15mr1217828137.24.1772642708940;
-        Wed, 04 Mar 2026 08:45:08 -0800 (PST)
-Received: from fabio-Precision-3551.. ([2804:1b3:a802:8875:aef4:cbcc:b059:892f])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-5ff1e845aabsm20613914137.7.2026.03.04.08.45.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Mar 2026 08:45:08 -0800 (PST)
-From: Fabio Estevam <festevam@gmail.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
+	id 1vxqVr-00000000DWN-3Xwi;
+	Wed, 04 Mar 2026 18:00:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=eh9o8Ax5gwgAAA4QfsTmyMbH22KSLZUUl97SPbtKA6+dv1ohdIo0rE1iIngQt5GYZ4iHH/Na+1TEnWsvfkTSkuRbVtxr3xS3K0h0rchDalfDQfwFCfQwQwTkc1T45PuBo5fCv8KJtrEdEmyRjWaruSaA5bQKNWiNk8bsrD5CTRmmv8TEbtPJMlzqQmGZ60CBko/D0CWIRZUwCi+9vY23sNYdI6RtIVrHwxp+f5pN6znug+pYc9QiwlBnUOnYxPfgXDWqlg7G3DE9o/UEZ8BfzRYL3xF36rz9Z8VG6FfDLooaFOYqh2qEC/KTsHOOv/U0d6C0xA5PyBUnoBvHMF13Kg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=c4JQ/bII+MvgEezVtqKdJAly6M8oIo8qsWEW6EZQTuc=;
+ b=jsJUkLoW0G3Ist1zyaQ5VhNSpRa8TA8ihDmTCqZ9Zsyw93EvTYgZ8k1BEm0cniFN5G/dawisJdbee/Z1YzgUh9k0UEK0njN9TeAzJFXY2Vw+rA0nzIfpNvE6nFpD8RXDTfkHETvwzYZntWmg53wkyeRzvcGjRi2xhKZURD0IPYzUoByFPkNyOQz91XhicHbqKtqwsp5p54k9lKdsfG9pZOjXi0kK/k68gQjmeInOPd6xb+BilMBvijoD1/VaNhMCEmcNeXLrWo8lGcC6BnNESkgoJ87/TDDVtGCF6eyDGmzpoeso+jULvEcurYugMDq48LMpTDAF7h1gMIILAzTd+Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=c4JQ/bII+MvgEezVtqKdJAly6M8oIo8qsWEW6EZQTuc=;
+ b=cJqDHM8gkHh6AKdymHl15hlOQj0sVk37T6SxNwLHcRUB5/C10WYfmlmJX9z27qWRYkyJPXQZBJHeXqE/EtJucw15FlIGGAamxHIMadAXYibYuuADkq2hDKqDhQEJOGszVA9DGKkjYo76zYWGQTYmiYgPy+ootvzptq2rQArkzXIk+T0HaVFaQeZ5n9YjvQly6X5eCWJX+c6/tSGJ4ZXbJqnaDFEgCPRX14L2q4FYcQUlAT4NMhIRzUxTTL4sq9aHXR8lieS65zSh3d9Xfu+cjeAg79ZOQoEfJiWG4Fxc+NMzStNYznbmFTz3O2/kmTMiw7AMJQVZmXDi3pLE+fdH5Q==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by AM9PR04MB8778.eurprd04.prod.outlook.com (2603:10a6:20b:409::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.22; Wed, 4 Mar
+ 2026 17:59:53 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9678.016; Wed, 4 Mar 2026
+ 17:59:53 +0000
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: linux-phy@lists.infradead.org
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	dri-devel@lists.freedesktop.org,
+	freedreno@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-can@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
+	linux-ide@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@gmail.com>
-Subject: [PATCH] ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
-Date: Wed,  4 Mar 2026 13:44:48 -0300
-Message-Id: <20260304164448.1024410-1-festevam@gmail.com>
-X-Mailer: git-send-email 2.34.1
+	linux-media@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-sunxi@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-usb@vger.kernel.org,
+	netdev@vger.kernel.org,
+	spacemit@lists.linux.dev,
+	UNGLinuxDriver@microchip.com,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH phy-next 01/22] ata: add <linux/pm_runtime.h> where missing
+Date: Wed,  4 Mar 2026 19:57:14 +0200
+Message-ID: <20260304175735.2660419-2-vladimir.oltean@nxp.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
+References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
+X-ClientProxiedBy: VI1P195CA0030.EURP195.PROD.OUTLOOK.COM
+ (2603:10a6:802:5a::19) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AM9PR04MB8778:EE_
+X-MS-Office365-Filtering-Correlation-Id: f4c3b229-4756-4d63-628a-08de7a17d629
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|7416014|52116014|376014|366016|1800799024|10070799003;
+X-Microsoft-Antispam-Message-Info: KjgH9F4RKGrzJMwDWFwXCfVbul+ILGB1iW3tXewH5XnhrR9GcEAB4yQzHm/lh+x0NS7aKafythMCJVYr2WQrmvYNkAOmWyRAfM2JnwZDkvXPZd3SN+mJIXtVAGugkpMcHcRrQ8ZcBdJS4adY+2SHeZvMcsXTqC1Cz3kVUg1uEol6OBUXPFpSUNMxmMggUmUR2yDceKx2NsphORlmSjunsNS+oXPHudryoa3twSbOZvv+0WjuxbCeBc5tZkuKH2Pc17epQmWT81qmunnpsLCf25IbGXGLABefEhb+EJds8sp1+dY3rb5aGfXic0bnpyP9ceucGld9yKmaX+29kNuz/VmsznAopeVGin2ERwEYt+ymMdInxeTfI8+jf7lohqOfYWhCbcSSYnTmtwAbKl5GUncQKL187A5KEhNTj8XeQVLoMmS037xzqokj5g/ygRWFf4POw3KkiQT4ImAcS3dcH8uJrbd1UdFPnOKv5Ygv9G3i3HpVptVIqLol8D7WD/OJ5uzyS1YMtInhdVZ8XixPsT6eAk9mnBNs9CcXLf57e8xb9QmGC4Tl6QECDl0mb2Mne0UK/TAbWzIyZSWAPrGyJWcyRG8m9RqsWg3b0kKn11ruH4sV8kfvq6o/dTwQPeFeRrKCG2AXEWpX/f4xCfwiVhQYYdeYO/RTrit+YWYv3aaPtNvkTLOks5IekhDGRLpHJKXE3FtCJYjiBowNSyRkvSTj1Beej8UEBnxNyrwJMn8=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(7416014)(52116014)(376014)(366016)(1800799024)(10070799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PMUBawlHTNAC/3xBbE/zFISgGNLHtdZVv4rh9A5moFleu0Eqg9BpkQUvgJXk?=
+ =?us-ascii?Q?o+IELdXQiE+4J+ky+iIzMbIqg6ck1kNMutg/c58AscsOjybi7sX+YTbc2LeC?=
+ =?us-ascii?Q?kO2RpCPEytVMZ/KuUACeQcI5gkuFCNReLJ6IsbHfGbVsjgOFc9A+u5P+AGI8?=
+ =?us-ascii?Q?r5MmRuRayQ5dUmJXZzaYdjKMpdrlSHed5iyUb+gUSfyRmX8ZvHIS15M6Pykr?=
+ =?us-ascii?Q?IO9WPXn9XklcMbxtXN7hjdPdP0XGKruwW7wTFYwysbGcpZ0LHZT40rRGe7FF?=
+ =?us-ascii?Q?rE5GDhpAa1tc6L0rbHmzry2eaR2bV5iTptpZpTOXN2nMkds8LZjuMn6WLXtt?=
+ =?us-ascii?Q?W9z6tCC8GhJi6hpYSTm14EzHAiXRt12SF7mSidKYOKsyeFGUtpuUAgpN+cSB?=
+ =?us-ascii?Q?vvpSO6WQHmegV1B6AeCVsi3FXyoSZ5U6dskhTtp6OIW45Xk6nfiDad5COMEF?=
+ =?us-ascii?Q?3UtPUUjnCERQJMHv8WdBadtsD+aUBEwKOCcp8+hoCtpcOESyajn0ZPw/mSG/?=
+ =?us-ascii?Q?ajAzg4sfDZeXPz1srzHR3dWuOa4iCCUlWjBmE50Y3QomV6vw8hK5sByH10wD?=
+ =?us-ascii?Q?yYizx2x7/Q1K2Gr4cHUBb/VqU5rJaehoYobzYpmMIyB0eOrRlbXHLvC6NPno?=
+ =?us-ascii?Q?9R5RSXHVtrrDTlcJetFfJ9kunlsL+PtQnQuYKkjOgJr0QsBc0r+GMqRjNE7g?=
+ =?us-ascii?Q?PSDOKf19721GIK3YHahLbRnCdvY9c3YDIT61Ltxg+mZP0adOMC0sOPRp16Yd?=
+ =?us-ascii?Q?gmqHuMhFUQQCz1DNIK++K8X6DDf6ZAYdHzMqUkOgZ2DzdZxVuG9ndzhUF1fx?=
+ =?us-ascii?Q?HKlRfGmmYi83hPgA/MBSACphIcRWWxdQrG/QfzChFbswPeCh1ktIbUs/Bjp8?=
+ =?us-ascii?Q?C5GGHZqbFgnvnP6Ko1VfYlfnQ8KvPw0OfrIUqqyH/xypghyQS7HXCZv/IOzz?=
+ =?us-ascii?Q?LWDW2tMGbb7dgCmLXl+tVUNIsuXgyPHoQInZuyXWgOGmE8iiBUCbbfxVrEne?=
+ =?us-ascii?Q?i4Hf3MXTdt47Al8S9oBv5UX5sEF7EH+b2SrDKRLRF4Ne7vsd9WSp5VRX9sFn?=
+ =?us-ascii?Q?whCCiveenDyDlI3mC8RSYstLIhvlds7kjYI9r1cF/DFHFQrYBLnn6V4Ev0kJ?=
+ =?us-ascii?Q?pbErQUwgjL5kfvw/kR2I19Trpxc9IhFLomvR14plJ82XNUAMuSbKiX4qbJNA?=
+ =?us-ascii?Q?ZqjU9UYkWrS2e0ZA1jwEEdfilW2RWk+73nEfJsuoLL3eRzh9Lrqm9OZ+I0Im?=
+ =?us-ascii?Q?nd1Wr45YRiXLg2xk99qvq033sFjqqSXt6t+LbhB0KQLvFRsGaDgypL1cK4SU?=
+ =?us-ascii?Q?ACNs0240xDmMTIW3LvH4HtegXlFvLASl0XE2S12GdI2nkRski6Zu1H/gevos?=
+ =?us-ascii?Q?aeWHo+IApH8Lb4d1jGFZtZTz9alRS7NC+8uwbe+YzZaAk/ghOuvVEBkpa56I?=
+ =?us-ascii?Q?q16wMutFo/U7YZWgpq+xa8CBjpP6um10/wcGmNACwE1Vi0OxvmwLlyGoygFJ?=
+ =?us-ascii?Q?6DXWFmPYMq2QBGzGGUVMpRuiSJ7w/Ir+ClJvW0Tehuh/RckPox4JhaSuAOc8?=
+ =?us-ascii?Q?xzdDTu/rhJNyNkHvtG38C/7HzMFWoDp60ZRwstjSTTnJ23UJNqLYKLVH+H1A?=
+ =?us-ascii?Q?P0YOjIa8MKA+6FQusPS3X6eo1o0bQNqIeE0jMSvvY9iK+VsBzdMiP9XLDas7?=
+ =?us-ascii?Q?S7Y8g2vswVL95WhIQ5nx+HO5yhKMMdefVA3Z7uCp1rJ9kjnBZgPY3nBMpUKU?=
+ =?us-ascii?Q?c72iyzyBvqbTZOsieK4LhxzuQzBgNq/y1L6kPAVHorUSF7rHotZ6JZb51Jvm?=
+X-MS-Exchange-AntiSpam-MessageData-1: 9aHoSPXB1S7V9A2H1kliwV7ETBg39rsUKms=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f4c3b229-4756-4d63-628a-08de7a17d629
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Mar 2026 17:59:53.1166
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 4z1xmuOCObrSvaoxNu2cEXDTfbztWiRvwYNA1Z0/9WTrLNwnkRAt/oUqobA6yuc9wgUAAOZSwEzt0XrgVr2REg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8778
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_084510_650247_30AFE630 
-X-CRM114-Status: GOOD (  11.86  )
+X-CRM114-CacheID: sfid-20260304_095959_895457_E8CE0718 
+X-CRM114-Status: GOOD (  10.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,35 +157,86 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-According to hid-over-i2c.yaml, the correct name for the 3.3V supply
-is 'vdd-supply'.
+It appears that libahci.c, ahci.c as well as the ahci_brcm, ahci_ceva
+and ahci_qoriq drivers are using runtime PM operations without including
+<linux/pm_runtime.h>. This header is somehow being indirectly provided
+by <linux/phy/phy.h>, which would like to drop it (none of the functions
+it exports need it).
 
-Fix it accordingly.
-
-This fixes the following dt-schema warning:
-
-'vcc-supply' does not match any of the regexes: '^pinctrl-[0-9]+$'
-
-Signed-off-by: Fabio Estevam <festevam@gmail.com>
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 ---
- arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Cc: Damien Le Moal <dlemoal@kernel.org>
+Cc: Niklas Cassel <cassel@kernel.org>
+---
+ drivers/ata/ahci.c       | 1 +
+ drivers/ata/ahci_brcm.c  | 1 +
+ drivers/ata/ahci_ceva.c  | 1 +
+ drivers/ata/ahci_qoriq.c | 1 +
+ drivers/ata/libahci.c    | 1 +
+ 5 files changed, 5 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts b/arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts
-index 6894763979f0..0bf03b1ff2ab 100644
---- a/arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts
-@@ -488,7 +488,7 @@ trackpad@2c {
- 		interrupts = <RK_PA3 IRQ_TYPE_EDGE_FALLING>;
- 		reg = <0x2c>;
- 		hid-descr-addr = <0x0020>;
--		vcc-supply = <&vcc33_io>;
-+		vdd-supply = <&vcc33_io>;
- 		wakeup-source;
- 	};
- };
+diff --git a/drivers/ata/ahci.c b/drivers/ata/ahci.c
+index 931d0081169b..aa3c4949c4ab 100644
+--- a/drivers/ata/ahci.c
++++ b/drivers/ata/ahci.c
+@@ -26,6 +26,7 @@
+ #include <linux/device.h>
+ #include <linux/dmi.h>
+ #include <linux/gfp.h>
++#include <linux/pm_runtime.h>
+ #include <scsi/scsi_host.h>
+ #include <scsi/scsi_cmnd.h>
+ #include <linux/libata.h>
+diff --git a/drivers/ata/ahci_brcm.c b/drivers/ata/ahci_brcm.c
+index 29be74fedcf0..48460e515722 100644
+--- a/drivers/ata/ahci_brcm.c
++++ b/drivers/ata/ahci_brcm.c
+@@ -16,6 +16,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+ #include <linux/string.h>
+ 
+diff --git a/drivers/ata/ahci_ceva.c b/drivers/ata/ahci_ceva.c
+index 2d6a08c23d6a..3938bf378341 100644
+--- a/drivers/ata/ahci_ceva.c
++++ b/drivers/ata/ahci_ceva.c
+@@ -12,6 +12,7 @@
+ #include <linux/module.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+ #include "ahci.h"
+ 
+diff --git a/drivers/ata/ahci_qoriq.c b/drivers/ata/ahci_qoriq.c
+index 0dec1a17e5b1..409152bfefb6 100644
+--- a/drivers/ata/ahci_qoriq.c
++++ b/drivers/ata/ahci_qoriq.c
+@@ -14,6 +14,7 @@
+ #include <linux/device.h>
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
++#include <linux/pm_runtime.h>
+ #include <linux/libata.h>
+ #include "ahci.h"
+ 
+diff --git a/drivers/ata/libahci.c b/drivers/ata/libahci.c
+index c79abdfcd7a9..e0de4703a4f2 100644
+--- a/drivers/ata/libahci.c
++++ b/drivers/ata/libahci.c
+@@ -30,6 +30,7 @@
+ #include <scsi/scsi_cmnd.h>
+ #include <linux/libata.h>
+ #include <linux/pci.h>
++#include <linux/pm_runtime.h>
+ #include "ahci.h"
+ #include "libata.h"
+ 
 -- 
-2.34.1
+2.43.0
 
 
 _______________________________________________
