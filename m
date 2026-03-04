@@ -4,76 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB83CEFCE42
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 20:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D673EFCE42
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 20:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3ahdsRLGXzELkzycRE7DFeEJxk+AhXQn28C6NPyakxU=; b=mdUbCVz6kUhJ2l
-	dBodARBIjnb4o3ZxnR8xvQMXkybrE5goCHazugvoCjU1gT/WQfoRBb03gPyj47CNsMjJnWkj7FoWW
-	Ik5cpUHPIanSX+8T3fjaZgYRGZd/i03l8PYTUhD73Qc/aT4nx37NYcEV0na7PW+1azfk/y8//aQth
-	rBjWfRizvSQFoHvYdXBIPpi2cvG8LsoPZVPFJbOUwpYOmpUdpkdZONWms72m1JZ5/4PRijPnFxwnt
-	E/2R7lYChIrMXDfq1OwFyBGoULmjUD7tfRzNDgWPINcOQvzAxQJfU4rvk8SUrQ49+5xoqzDkS6nGE
-	oOLBEmGVMH3xTdCYawJw==;
+	List-Owner; bh=k6o1n5xpWYH8erxJ7zJxT9gSdF3yv5mpbwWI3icvk9w=; b=puvU4bURBAExA+
+	ZVJ3FVTXeKn1D1YBuBZeDfqu+Ng7SWY+RK19pk3UHtgAf58cvZ8evx6K9erUItaUMW8NKydCkAlI2
+	Zocx6AmFOYl4Sm+Hz+iBQcQXCtEyfw9ZQkj/nbdBWGbpOJSKnFcHa9IhSjBrJA/u0Kpmz3KWdqKnd
+	iqm4Uxv/FCap17cYonjl84O5t5t75iXR92B90/Qc+OneNPhhq2JB6X88H4T5kzMpIjJyZ6N/4SPZC
+	WTHtb4v7QMWDSV4rNcgFJVsAyL+l+u0C7Z696Sws+AVlFzZDZMG4QPaY6A2NZTGXkpmSQr5SOXJT1
+	P+jxybD05Hq/qlZQ50gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxsU6-00000000R4U-2QPQ;
-	Wed, 04 Mar 2026 20:06:18 +0000
-Received: from sender4-of-o56.zoho.com ([136.143.188.56])
+	id 1vxsbx-00000000RV7-2Wx1;
+	Wed, 04 Mar 2026 20:14:25 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxsU4-00000000R3s-0xJX
-	for linux-rockchip@lists.infradead.org;
-	Wed, 04 Mar 2026 20:06:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1772654767; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=c5K66uliHzk7CGpi8n5aExhKsMDeoU90n2QaTiYviOAKp4G9lCEFcHztxFKdds/mn0OY1JeyKQKTHmqwSAdctXkE+KFHGEdc6GP7p+PZ40VmvnPGzIvCy4X99n2fAc/bm8AhPV0/+QhnVDIShfb5y/mVb74ORV4ywWaW6qBkUPA=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1772654767; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=KxxzOa2h0b95iP3Xk5WWWLQcyEoyNoD/1Y6h01FV4K8=; 
-	b=Sb1adAzpwBtNOrEhOmIiofyghlc+EJJ2BbRyQaVGzpOW62S0zu6X0Gyz0Thv9xTW3xowOnY2gxE6w5zkbM3YgMzWo9/qVw+Aj59cbhXU/J4NTcdbX5C8FJTv9gaNlB6AmTEwa63eZTIGf8IMyYM1SBl5hI+b2QH5YHvyI+KYyuQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=pta2002.com;
-	spf=pass  smtp.mailfrom=pta2002@pta2002.com;
-	dmarc=pass header.from=<pta2002@pta2002.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1772654767;
-	s=zoho; d=pta2002.com; i=pta2002@pta2002.com;
-	h=MIME-Version:References:In-Reply-To:From:From:Date:Date:Message-ID:Subject:Subject:To:To:Cc:Cc:Content-Type:Message-Id:Reply-To;
-	bh=KxxzOa2h0b95iP3Xk5WWWLQcyEoyNoD/1Y6h01FV4K8=;
-	b=hJiO9lCjT0uMu80sgo23W5lxl3egQAhfpU+tgR0JuDv0VKylV2IRFmxOfXflverg
-	3jQFxAv+sc49cEKruWwcWFZSqyLgtizPyaS0R/pocYMVsge7+ShdtTyunW2IvlbWEC1
-	Uym91j1sicQ/9kX8MNwUW/QNQlgRCA87Zq78qmtc=
-Received: by mx.zohomail.com with SMTPS id 1772654764949379.21299158913473;
-	Wed, 4 Mar 2026 12:06:04 -0800 (PST)
-Received: by mail-qv1-f48.google.com with SMTP id 6a1803df08f44-89a1347051aso30644746d6.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 04 Mar 2026 12:06:04 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AJvYcCVp6frGpik6og+jJltn784zR478GYimlJEWQbaItBrHPCccgrPA4g4/RZAM6tnk7z6Yfa99PaWB46ELTVmnEw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxb1+TZXXhqBaYR5iF4fhGyH97Mf2/uPJep3qURl77RRJeqrna6
-	U7m4mii0HcIjMVkYc2IYddpoyzHM/HSfH5anO+uX6C0a1h6NmxwqyrdDopy1Yd2TdBBxmTCqp3X
-	Fp2rQBEKz7Yfw1pQukgTZ3xJHAKfDiyM=
-X-Received: by 2002:a05:6214:da6:b0:899:fecd:30d6 with SMTP id
- 6a1803df08f44-89a19af7521mr44089846d6.30.1772654763973; Wed, 04 Mar 2026
- 12:06:03 -0800 (PST)
+	id 1vxsbt-00000000RU2-2unJ;
+	Wed, 04 Mar 2026 20:14:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 69FD2402F4;
+	Wed,  4 Mar 2026 20:14:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B5684C4CEF7;
+	Wed,  4 Mar 2026 20:14:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772655260;
+	bh=7LbZg6skQwe1JIVxe4uIFooiyh42caVjXi8zFEyCeHA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=vOSWAYP0ASIUMPrNsRctEnLesB/qOpdMCrQy6ahbi4pLYMii7O8IIBA8F63PZsyg0
+	 ZcCnF1kj3cVmc84Vx9h9Kq96VZaMCMHxuCArllf1CYolj2oqppgnv3vXM3w6laZHlz
+	 NOtq23rucRl5IE/Bb02Fai9gX/5ewV1hAPdziT8RA9B2ev0oqJbQtiikHUnSW5L9q5
+	 Uk7uAI6xqy1wRgSUh7h36AH8oidWLE77AQilsTltHa4bvKQfckiIg6DJMG3yRydPNA
+	 OvbzcQS3k3wio6bMSaigTPS0yMDQddq1Qx4b83K8C3Iv2VNsdfZAH1Ox9lzB5Wl3zL
+	 iEzLjD3XL6GFw==
+Message-ID: <679dbfdd-9e46-4265-a01c-faf163924ec3@kernel.org>
+Date: Thu, 5 Mar 2026 05:14:14 +0900
 MIME-Version: 1.0
-References: <20260304-radxa-r5-itx-hdmirx-v1-1-f77bf1f7ce03@pta2002.com> <DGU7SPZQMZR5.1506XM8RO4EHE@cknow-tech.com>
-In-Reply-To: <DGU7SPZQMZR5.1506XM8RO4EHE@cknow-tech.com>
-From: Pedro Alves <pta2002@pta2002.com>
-Date: Wed, 4 Mar 2026 20:05:52 +0000
-X-Gmail-Original-Message-ID: <CAAEXfUVBVMmT3i+10F3uvmGOtMMLoQK4WXM7_0G88aL5DntOuw@mail.gmail.com>
-X-Gm-Features: AaiRm522NeKVPT_NuMI8MroNRdXzBN2oEYdWCpnVvfjbm98xzQHscRW9QI3Jbck
-Message-ID: <CAAEXfUVBVMmT3i+10F3uvmGOtMMLoQK4WXM7_0G88aL5DntOuw@mail.gmail.com>
-Subject: Re: [PATCH] arm64: dts: rockchip: configure hdmirx in Rock 5 ITX
-To: Diederik de Haas <diederik@cknow-tech.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-X-ZohoMailClient: External
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH phy-next 01/22] ata: add <linux/pm_runtime.h> where
+ missing
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, linux-phy@lists.infradead.org
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org,
+ freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
+ netdev@vger.kernel.org, spacemit@lists.linux.dev,
+ UNGLinuxDriver@microchip.com, Niklas Cassel <cassel@kernel.org>
+References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
+ <20260304175735.2660419-2-vladimir.oltean@nxp.com>
+Content-Language: en-US
+From: Damien Le Moal <dlemoal@kernel.org>
+Organization: Western Digital Research
+In-Reply-To: <20260304175735.2660419-2-vladimir.oltean@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_120616_321998_B56E690B 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20260304_121421_781953_4C994118 
+X-CRM114-Status: UNSURE (   6.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,28 +86,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 04/03/2026 18:38, Diederik de Haas wrote:
-> I have a strong suspicion that it was named 'hdmirx_det' because in the
-> schema its label is 'HDMIIRX_DET_L' where the extra 'I' was probably
-> dropped as that seems to be a spelling issue and the '_L' suffix is
-> quite often dropped.
->
-> FWIW: The label in the schematic for Rock 5B, Rock 5B+, Rock 5T and Rock
-> 5 ITX+ are all 'HDMIIRX_DET_L', yet none of them follow the convention
-> to use the label from the schematics.
+On 3/5/26 02:57, Vladimir Oltean wrote:
+> It appears that libahci.c, ahci.c as well as the ahci_brcm, ahci_ceva
+> and ahci_qoriq drivers are using runtime PM operations without including
+> <linux/pm_runtime.h>. This header is somehow being indirectly provided
+> by <linux/phy/phy.h>, which would like to drop it (none of the functions
+> it exports need it).
+> 
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
 
-That's a good point, and the other boards all have the hdmirx_det
-naming in the downstream kernel, so I guess that would be the most
-"correct" name to use.
+Acked-by: Damien Le Moal <dlemoal@kernel.org>
 
-> So now the 'problem' is indeed: make it consistent with the other boards
-> or keep the one where the convention was followed.
-
-Also a third option of changing the other boards to all match. Either
-way, I can do those changes, just let me know what would be desirable.
-
-Best regards,
-Pedro Alves
+-- 
+Damien Le Moal
+Western Digital Research
 
 _______________________________________________
 Linux-rockchip mailing list
