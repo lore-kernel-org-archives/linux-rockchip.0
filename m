@@ -4,59 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16AD9EF8FE5
-	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 13:57:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E75EF8FE7
+	for <linux-rockchip@archiver.kernel.org>; Wed,  4 Mar 2026 14:00:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Cc:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=8zCE/w5WdHJAkkwLEmvrZpKYYRznb/R8DnARLHgYHc8=; b=plQjAYsMlC5JqNIzKXn1tXw3/H
-	6Rbr7hi2Q7Q203+GBKH1i9HKazrmhToXzKla1jzGE5fJWc6qC9t55YfToH4eWuZoBR+fOOoh2qCN3
-	DmijJajYoIRH6UgxJ76BJOcf7h2PTGNBqptpAylIc/WQUqrVseD891TfL7Wu8+EDmZTTS9KKoNRYX
-	vC0kXSWIdSW2Vpdy8DBSppGa1a7Pz3sMEDNUgH+CvtBkXkv2OqbiTPXQwB4fH0oVnLTWCmBbnYo86
-	ExH3KtsQiNzeLD6PL4+3CkACotAZA/Gfuh0FW0QytZ/c069/mOhoSBzNZfXiV9i+0KSp7G8UXNDF8
-	qzFR6SEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-id:MIME-version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lEFpHRVO5JPquKcjOGmlwgjenJgf+d69g3KZar/1Bec=; b=B2E1hqKzr+PTkn
+	IgfTJ9jhre22NoOe5d8Qh3o/PHCM9EAZPYVdm3mMDx4mdcQHEvgQPgZnniFehi9T0FM6b6TbiJ/1b
+	wwC2PreDE93/fHCtXJWHb8ytigQ28XA0NOyU5N9P4Nur522nW/jugCqAnNi/1RsQq5e+GSlVXYvAZ
+	2lbEQ6lilpr3FoKCaBd9nY17UYHmOnaJiEyKVmqgLasOtGyZElwutw54Ux6QYZKdNUcSRmNLkuXgh
+	7GFgSThCpTLFW6chUeTwrO5pnmMsWXhFSLVUrsD8gUJWMFfngVmvmDmlkJw8Z0A2zqufhLDcjA45d
+	7dM6Q0ex3ukPOg1R3/Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxmjH-0000000HHr4-1Gxf;
-	Wed, 04 Mar 2026 13:57:35 +0000
-Received: from mail-m3268.qiye.163.com ([220.197.32.68])
+	id 1vxmlc-0000000HI5U-2EE2;
+	Wed, 04 Mar 2026 14:00:00 +0000
+Received: from abi149ajj126.mrs1.oracleemaildelivery.com ([129.149.100.126])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vxmjF-0000000HHqX-084e;
-	Wed, 04 Mar 2026 13:57:34 +0000
-Received: from [172.16.12.14] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 35bf2f09e;
-	Wed, 4 Mar 2026 21:57:28 +0800 (GMT+08:00)
-Cc: shawn.lin@rock-chips.com, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, heiko@sntech.de, jonas@kwiboo.se,
- Claude <noreply@anthropic.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: rock-3b: Model PI6C20100 as
- gated-fixed-clock
-To: MidG971 <midgy971@gmail.com>, linux-rockchip@lists.infradead.org
-References: <20260213151452.535527-1-midgy971@gmail.com>
- <20260304132957.684616-1-midgy971@gmail.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Message-ID: <7008e941-e4b0-a060-1cd7-55070fd5831f@rock-chips.com>
-Date: Wed, 4 Mar 2026 21:57:26 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
-MIME-Version: 1.0
-In-Reply-To: <20260304132957.684616-1-midgy971@gmail.com>
-X-HM-Tid: 0a9cb923aba109cckunm391357bd122b677
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhhOTFYdHhpLTx9PQ0IfShlWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	xVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=Ktf65g5fYYif+jmoKTPl+TFmIitwgG8hTrUcgGlxKEahlcwdTROmEuIxYNX4z1HYZJf8N5bUku/XmysBMoLD/Ox5/h7rzbSo/hKOOXLnXdL7nhB7tAGBmz3hsTRmQbu0MwVUTDAx1HSE1zegxhhNvLc984dud6RVqTaRnFuzGJA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=wnGfWYNz/B8Z/STQ+nxDMrIaxkLZdCmgqwbc8lykD5c=;
-	h=date:mime-version:subject:message-id:from;
+	id 1vxmla-0000000HI4l-3y2j
+	for linux-rockchip@lists.infradead.org;
+	Wed, 04 Mar 2026 14:00:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=pta2002-202603;
+ d=pta2002.com;
+ h=Date:To:From:Subject:Message-Id:MIME-Version:Sender:List-Unsubscribe:List-Unsubscribe-Post;
+ bh=f8nmjH0o71gVTcBoCc9bpsGh59DT0B52MUM4FwYNG4o=;
+ b=GV6sEf0ZJBN9bTv8O/UuEXjttneC4p/qM9YAK4nPX9UImQ/lDwzsRPd0gI/bp+tw3UHrd2/FkczH
+   ul6QjCJKqxKGbkjsuo1s7ixlgMWhfCUhqrRTb92vrSf1wIpzZcxWr1UIwePenXKhsgb/pDG8YSwI
+   9cs4lM6sLIg2wk/O2Xd1f9CKHF60mWRtWJRQB7tvtOvgwEOYuf42gIcxzF+x2EU3kF3mZ8j8+IAP
+   KGFZl36D2MDttxScEbAIin52fEg/GCLX9ooIEGrkpJ2Ddl+o7JgcFyvuRqSmO/6jq13zX3iiSMKA
+   55CnK4FAIWfYMI4nBhQXic5YDbqPLCQBzXb/MA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=prod-mrs-20211019;
+ d=mrs1.rp.oracleemaildelivery.com;
+ h=Date:To:From:Subject:Message-Id:MIME-Version:Sender:List-Unsubscribe:List-Unsubscribe-Post;
+ bh=f8nmjH0o71gVTcBoCc9bpsGh59DT0B52MUM4FwYNG4o=;
+ b=tSWGqoDUG2pRxHLOi3Hf15QRoTL1/NeoXaOfGX/50C/BklcR2JpTfM9i0biOPclZD+MKWsaA1+9J
+   78h/lc8z6eHWGbFKi8h6siq+0CO7xdS37A0/MPGU1p4eprSgEwmLy7xFwJuRH67FzCMi3Ly5dbHx
+   qG84hElSmn9YyQys6UJpuJ0CbiuUs7kE3lKqJg+fVvip4WTLZzXm/39hiGg2NjVPNLxAk9HJCbSa
+   A+C7oAwWC7UY2RbBtyMmFUeP2iyj2yobFvwhldTTiFFdRGMOuhSqpGEULgzGAEVpE9TmW6PnBiTB
+   XlgfwnTpn72FHIqIkk4oY/fH0pr+sSHZa6MxJw==
+Received: by omta-ad1-fd2-401-eu-marseille-1.omtaad1.vcndpmrs.oraclevcn.com
+ (Oracle Communications Messaging Server 8.1.0.1.20260212 64bit (built Feb 12
+ 2026))
+ with ESMTPS id <0TBD00DORNZACF40@omta-ad1-fd2-401-eu-marseille-1.omtaad1.vcndpmrs.oraclevcn.com>
+ for linux-rockchip@lists.infradead.org; Wed, 04 Mar 2026 13:54:46 +0000 (GMT)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+From: Pedro Alves <pta2002@pta2002.com>
+Date: Wed, 04 Mar 2026 13:54:45 +0000
+Subject: [PATCH] arm64: dts: rockchip: configure hdmirx in Rock 5 ITX
+MIME-version: 1.0
+Message-id: <20260304-radxa-r5-itx-hdmirx-v1-1-f77bf1f7ce03@pta2002.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Pedro Alves <pta2002@pta2002.com>
+X-Mailer: b4 0.14.3
+X-B4-Tracking: v=1; b=H4sIAKQ5qGkC/x3MSQqAMAxA0atI1gaqHRCvIi6KTW0WDqQiBfHuF
+ pdv8f8DmYQpw9g8IHRz5mOv6NoGluT3lZBDNfSqd0orjeJD8SgW+SqYwsZSMBpnLDkTh0VDLU+
+ hyOW/TvP7fnnBuFVlAAAA
+X-Change-ID: 20260303-radxa-r5-itx-hdmirx-f4645e64f8c3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1772632485; l=2284;
+ i=pta2002@pta2002.com; s=20260304; h=from:subject:message-id;
+ bh=a20VMlDpaLH9AXgrhdHoV4Pssvg7BkUbHXan6awwzQ8=;
+ b=T4+sgz4tWkB8i0u16hTDGjXuLsMdrYYl15JeSAdNb40ze7ydGmZe+dJlrjHy11G8r2aDvoAc4
+ FfEVkl+3sLQB8E2pj3XSkQVo40wODZC7G/oYYxB7dVSAMTzUJNzTgrJ
+X-Developer-Key: i=pta2002@pta2002.com; a=ed25519;
+ pk=leagPTMCtYIB9nQJfoZ5+TYiuZUercAQHfGnFVTTaiQ=
+Reporting-Meta: AAFw+0CP0PnaoJ46S1wWgOjfMw4kceiZ7uqB5ClL97jTJ2qLoufiwQIhvJ3NQU+T
+ V33OC6+yp86+syDj7IVN2dZaJCEsMkOjKhk1XcD92j+fCvUGIzo/HUyKKmaKKuQp
+ rRQrj6f7OPmCn1vOBS7hH8srCZVnvlJp4AW7KFuhf26syAeA8Uqtwc8zGyklVl2w
+ JO9DEF0zWrAec41etrqk6uPS8fLgYJ5W1PMwMMVoQYwIfWox/fZDcZbyPjpMW9hJ
+ heTYxCBZBCQnFV8oObteZzIW9sAQcJf3+42QQryaYTxjSwMMjahBslrQX5J/PdNV
+ KQosLveuHFcIIsl9CSJbBqUDU//jWW19kTMdLcyFk2R+8/nJ2IQdXkd484PlyfrW
+ y5ZBAwFlAcU/tObvjkvsW8GedhswbX4JWv4z1Ny2Cf8vGke9K3HGAI5dWisLoAcn dh/laZi2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_055733_291306_FB53B3A5 
-X-CRM114-Status: GOOD (  23.77  )
+X-CRM114-CacheID: sfid-20260304_055959_002418_17CB6B64 
+X-CRM114-Status: GOOD (  12.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,71 +94,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1NogMjAyNi8wMy8wNCDQx8bayP0gMjE6MjksIE1pZEc5NzEg0LS1wDoKPiBUaGUgUmFkeGEgUk9D
-SyAzQiB1c2VzIGEgUEk2QzIwMTAwIFBDSWUgcmVmZXJlbmNlIGNsb2NrIGJ1ZmZlciB0bwo+IHBy
-b3ZpZGUgYSAxMDBNSHogcmVmZXJlbmNlIGNsb2NrIHRvIHRoZSBQQ0llIDMuMCBQSFkgYW5kIGNv
-bnRyb2xsZXJzLgo+IFRoaXMgY2hpcCBpcyBjdXJyZW50bHkgbW9kZWxlZCBvbmx5IGFzIGEgZml4
-ZWQgcmVndWxhdG9yCj4gKHZjYzN2M19waTZjXzAzKSwgd2l0aCBubyBjbG9jayBvdXRwdXQgcmVw
-cmVzZW50YXRpb24uCj4gCj4gVGhlIFBJNkMyMDEwMCBpcyBhIGNsb2NrIGdlbmVyYXRvciwgbm90
-IGEgcG93ZXIgc3VwcGx5LiBNb2RlbCBpdAo+IHByb3Blcmx5IGFzIGEgZ2F0ZWQtZml4ZWQtY2xv
-Y2ssIGZvbGxvd2luZyB0aGUgcGF0dGVybiBlc3RhYmxpc2hlZAo+IGZvciB0aGUgUm9jayA1IElU
-WCBhbmQgb3RoZXIgYm9hcmRzIHdpdGggc2ltaWxhciBQQ0llIGNsb2NrIGJ1ZmZlcgo+IGNoaXBz
-Lgo+IAo+IFRoZSByZWd1bGF0b3Igbm9kZSBpcyBrZXB0IGFzLWlzIHNpbmNlIGl0IGNvbnRyb2xz
-IHRoZSBwb3dlciBzdXBwbHkKPiB0byB0aGUgUEk2QzIwMTAwIGNoaXAgdmlhIEdQSU8wX0Q0LiBU
-aGUgbmV3IGdhdGVkLWZpeGVkLWNsb2NrIG5vZGUKPiByZWZlcmVuY2VzIHRoaXMgcmVndWxhdG9y
-IGFzIGl0cyB2ZGQtc3VwcGx5IGFuZCBwcm92aWRlcyBhIHByb3Blcgo+IDEwME1IeiBjbG9jayBv
-dXRwdXQuIFRoZSBwY2llM3gyIG5vZGUgaXMgdXBkYXRlZCB0byBpbmNsdWRlIHRoZQo+IHJlZmVy
-ZW5jZSBjbG9jaywgbWF0Y2hpbmcgdGhlIGFwcHJvYWNoIHVzZWQgaW4gcmszNTg4LXJvY2stNS1p
-dHguZHRzLgo+IAo+IFNpZ25lZC1vZmYtYnk6IENsYXVkZSA8bm9yZXBseUBhbnRocm9waWMuY29t
-PgoKSUlVQywgeW91IGFyZSB1c2luZyBDbGF1ZGUgdG8gaGVscCBnZW5lcmF0ZSB0aGlzIHBhdGNo
-LCBwbGVhc2UKZGVzY3JpYmUgaXQgcHJvcGVybHksIGZvciBleGFtcGxlLAoKQ28tZGV2ZWxvcGVk
-LWJ5OiBDbGF1ZGUgY2xhdWRlLW9wdXMtNC0yMDI1MDUxNCAgWzFdCm9yCkFzc2lzdGVkLWJ5OiBD
-bGF1ZGU6Y2xhdWRlLTMtb3B1cyBbMl0KClsxXSBodHRwczovL2x3bi5uZXQvQXJ0aWNsZXMvMTAz
-MTQ3My8KWzJdIGh0dHBzOi8vZG9jcy5rZXJuZWwub3JnL3Byb2Nlc3MvY29kaW5nLWFzc2lzdGFu
-dHMuaHRtbAkKCj4gU2lnbmVkLW9mZi1ieTogTWlkRzk3MSA8bWlkZ3k5NzFAZ21haWwuY29tPgo+
-IC0tLQo+IAo+IENoYW5nZXMgc2luY2UgdjEgWzFdOgo+ICAgLSBEcm9wIHBoeS1zdXBwbHkgYXBw
-cm9hY2ggZW50aXJlbHkgKEpvbmFzLCBTaGF3bikKPiAgIC0gTW9kZWwgUEk2QzIwMTAwIGFzIGdh
-dGVkLWZpeGVkLWNsb2NrIGluc3RlYWQKPiAgIC0gV2lyZSByZWZlcmVuY2UgY2xvY2sgdG8gcGNp
-ZTN4MiBjb250cm9sbGVyCj4gICAtIEZvbGxvdyBwYXR0ZXJuIGZyb20gcmszNTg4LXJvY2stNS1p
-dHguZHRzCj4gCj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwLzIw
-MjYwMjEzMTUxNDUyLjUzNTUyNy0xLW1pZGd5OTcxQGdtYWlsLmNvbS8KPiAKPiAgIC4uLi9hcm02
-NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0zYi5kdHMgfCAxOCArKysrKysrKysrKysr
-KysrKy0KPiAgIDEgZmlsZSBjaGFuZ2VkLCAxNyBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9uKC0p
-Cj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJv
-Y2stM2IuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0zYi5k
-dHMKPiBpbmRleCA2OTAwMWU0Li4yNGJlZmM5IDEwMDY0NAo+IC0tLSBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2IuZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290
-L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0zYi5kdHMKPiBAQCAtNTYsNyArNTYsMTYgQEAKPiAg
-IAkJfTsKPiAgIAl9Owo+IAo+IC0JLyogcGk2YyBwY2llIGNsb2NrIGdlbmVyYXRvciAqLwo+ICsJ
-LyogUEk2QzIwMTAwIFBDSWUgcmVmZXJlbmNlIGNsb2NrIGJ1ZmZlciAoMTAwTUh6KSAqLwo+ICsJ
-cGNpZTMwX3JlZmNsazogcGNpZS1jbG9jay1nZW5lcmF0b3Igewo+ICsJCWNvbXBhdGlibGUgPSAi
-Z2F0ZWQtZml4ZWQtY2xvY2siOwo+ICsJCSNjbG9jay1jZWxscyA9IDwwPjsKPiArCQljbG9jay1m
-cmVxdWVuY3kgPSA8MTAwMDAwMDAwPjsKPiArCQljbG9jay1vdXRwdXQtbmFtZXMgPSAicGNpZTMw
-X3JlZmNsayI7Cj4gKwkJdmRkLXN1cHBseSA9IDwmdmNjM3YzX3BpNmNfMDM+Owo+ICsJfTsKPiAr
-Cj4gKwkvKiBQSTZDMjAxMDAgcG93ZXIgc3VwcGx5IC0gYWN0aXZlLWhpZ2ggR1BJTzBfRDQgKi8K
-PiAgIAl2Y2MzdjNfcGk2Y18wMzogcmVndWxhdG9yLTN2My12Y2MtcGk2Yy0wMyB7Cj4gICAJCWNv
-bXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiAgIAkJZW5hYmxlLWFjdGl2ZS1oaWdoOwo+
-IEBAIC01NTMsNiArNTYyLDEzIEBACj4gICB9Owo+IAo+ICAgJnBjaWUzeDIgewo+ICsJY2xvY2tz
-ID0gPCZjcnUgQUNMS19QQ0lFMzBYMl9NU1Q+LCA8JmNydSBBQ0xLX1BDSUUzMFgyX1NMVj4sCj4g
-KwkJIDwmY3J1IEFDTEtfUENJRTMwWDJfREJJPiwgPCZjcnUgUENMS19QQ0lFMzBYMj4sCj4gKwkJ
-IDwmY3J1IENMS19QQ0lFMzBYMl9BVVhfTkRGVD4sCj4gKwkJIDwmcGNpZTMwX3JlZmNsaz47Cj4g
-KwljbG9jay1uYW1lcyA9ICJhY2xrX21zdCIsICJhY2xrX3NsdiIsCj4gKwkJICAgICAgImFjbGtf
-ZGJpIiwgInBjbGsiLCAiYXV4IiwKPiArCQkgICAgICAicmVmIjsKClRoZXJlIGlzIGEgbWlzc2lu
-ZyBwaXBlIGNsb2NrIHdoaWNoIHNob3VsZCBiZSBmaXhlZC4gUGxlYXNlCnJlZmVyIHRvIERhdmlk
-J3MgcGF0Y2hbM10uCgpbM10gCmh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlw
-L2Q5ODFmYTg0LWJkMDUtYWM5ZC05OGNhLTg5ZWU0NzE3NzgyOUByb2NrLWNoaXBzLmNvbS9ULyNt
-NmE4Mjg5NjA5ZTZhNjA2OTFkM2MwNjM1OGI2MzIyYzdhYTVlNDNkMQoKPiAgIAlwaW5jdHJsLW5h
-bWVzID0gImRlZmF1bHQiOwo+ICAgCXBpbmN0cmwtMCA9IDwmcGNpZTMweDJtMV9waW5zPjsKPiAg
-IAlyZXNldC1ncGlvcyA9IDwmZ3BpbzIgUktfUEQ2IEdQSU9fQUNUSVZFX0hJR0g+Owo+IC0tCj4g
-Mi4zOS41Cj4gCj4gCj4gX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX18KPiBMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKPiBMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCj4gaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
-aW5mby9saW51eC1yb2NrY2hpcAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The Radxa Rock 5 ITX board exposes an HDMI input exactly the same way as
+the Rock 5B, but this was not reflected in its DTS.
+
+Change the rk3588-rock-5-itx to configure and enable the hdmi_receiver
+and hdmi_receiver_cma nodes.
+
+One of the existing pinctrl labels, hdmirx_det, was renamed into
+hdmirx_hpd to match the other boards. The _det name seems to have come
+from the downstream kernel sources, where the other boards also have
+that name. Changing it to hdmirx_hpd in order to be consistent with the
+other rk3588 boards in the kernel.
+
+The configurations were confirmed to be identical on the downstream
+Radxa kernel, and this has been tested to work on a Rock 5 ITX board
+running kernel 6.19.3.
+
+Signed-off-by: Pedro Alves <pta2002@pta2002.com>
+---
+Tested with the following commands:
+
+v4l2-ctl --verbose -d /dev/video4 \
+  --set-fmt-video=width=3840,height=2160,pixelformat='BGR3' \
+  --stream-mmap=4 --stream-skip=3 --stream-count=20 \
+  --stream-to=hdmiin.raw --stream-poll
+
+ffmpeg -f rawvideo -vcodec rawvideo -s 3840x2160 -r 30 -pix_fmt bgr24 \
+  -i hdmiin.raw output.mp4
+---
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+index 172aeabba72a..9f4f31d1ca94 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
+@@ -349,6 +349,18 @@ &hdmi1_sound {
+ 	status = "okay";
+ };
+ 
++&hdmi_receiver_cma {
++	status = "okay";
++};
++
++&hdmi_receiver {
++	pinctrl-0 = <&hdmim1_rx_cec &hdmim1_rx_hpdin &hdmim1_rx_scl &hdmim1_rx_sda &hdmirx_hpd>;
++	pinctrl-names = "default";
++
++	hpd-gpios = <&gpio1 RK_PC6 GPIO_ACTIVE_LOW>;
++	status = "okay";
++};
++
+ &hdptxphy1 {
+ 	status = "okay";
+ };
+@@ -746,7 +758,7 @@ vbus5v0_typec_en: vbus5v0-typec-en {
+ 	};
+ 
+ 	hdmirx {
+-		hdmirx_det: hdmirx-det {
++		hdmirx_hpd: hdmirx-5v-detection {
+ 			rockchip,pins = <1 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
+ 		};
+ 	};
+
+---
+base-commit: 05f7e89ab9731565d8a62e3b5d1ec206485eeb0b
+change-id: 20260303-radxa-r5-itx-hdmirx-f4645e64f8c3
+
+Best regards,
+-- 
+Pedro Alves <pta2002@pta2002.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
