@@ -4,82 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3567CF3D32A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 16:37:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA7ACF3D338
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 17:10:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MM5/rUz9fKwll4MRt4ayu7WMyLwbNNOWsfdqgJl+L9U=; b=IrfJ4kQ0n+APQZHprcEYV/UfD3
-	p/qUerEgibGwd4W9qkczg5ciY01Tl6xaoI1YzKDRSr9XMypyQp0nYSKDMCIX1BQY9rzRi1JN2KEKi
-	jCfov9Buwe50+HvM1F1kSDnDF0kQ4BMDNdm/YLQl3hE7XOGFJ3XaKoDQnM5ue7ConBlnnXzRUHSUW
-	+AOnf5hCj21wBSjPTLH9Bh6CpDq21fIR+LHYAjtpKNvFxhAOT7mBpQm003paocmabLDlDVJmNosAh
-	1S40Zy+7vUYk1PXkgca6lHQ947g1sW+aJ8WtKRsjv0zrvF54tqEJK4bgb8g88Ay9ircq/WgHBzSEd
-	FX2XBuqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:References:In-Reply-To:
+	Message-Id:Cc:To:From:Date:MIME-Version:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=fIDzcGyvBuqvFeSCBFYRL1V8jJW+zXVShXqxQUDUNcM=; b=D1NnNJux5gMrdMlg0RCNnT0Nmw
+	rxxxHFe3BI+EHcB/UzEMvW6sd8QMiDU3aux7T9rer5JphRJkX+FwVD0YmkYHO+GdvJbILI0MgkmXb
+	Gka+kP5IC5h509RD1plSqMouISrZ5eVUIQcC5i/yyd/MebNMot0hW4W820GVdu41e5seihEPlZziu
+	nOSWXn7ItwdGECZ6iL1FrXtsCDF4d79+O1E9hMbyVGm5yymUk1FPrQ0xsEXXKz+U7gNEVYYb/3F1i
+	PZyGPa57ttH8ISm6nuvc5aCvDYcP/x+mgGSUCT14I7+mF70PgYkQ3GEbfTPIbTUUDIFGp6jjmwT1Z
+	Eip3P7ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyBhm-00000002DbV-3PeX;
-	Thu, 05 Mar 2026 16:37:42 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vyCDh-00000002GFJ-01KM;
+	Thu, 05 Mar 2026 17:10:41 +0000
+Received: from fhigh-a6-smtp.messagingengine.com ([103.168.172.157])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyBhj-00000002Day-2ZDV;
-	Thu, 05 Mar 2026 16:37:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772728653;
-	bh=hkK2ONkPprV4u/cqSq86tL9InejtreePpSRQTnb8PLU=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=EsfXpCSmuZhSHchk4H9dKF8uIWDrS/h/Rs9mSwFrC6/wam7h4Hom+k4X+lSVYNWmk
-	 FOrNXbQ9o5D50NzH/9Ny8x6y8baD6773xdiWvIms1qe+RxqWa5MZH3hHF9x3lMwYck
-	 wSJFCtQh3hFk4dIoeYyN1k2C6T/xopVoemStz+U4w6PQIhqdZjI9J7FjU0GV+YGaEq
-	 ZmPp8b93LYfRkfLYnGKKsFaAUPlT+H7zOGlZ7p3u8ZHvTZJpp5ljhkDG4hhSpszzz+
-	 3PohMDDYlyXYjQ2QzTu7h4n2xHjjv86LaLv0GSCMFmbEBt9mn9CdskePr4K6jpm1LM
-	 mvqUhHG1bragA==
-Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8025F17E027A;
-	Thu,  5 Mar 2026 17:37:31 +0100 (CET)
-Message-ID: <1621b56864cb186f1e5433b73b56afc00aa83452.camel@collabora.com>
-Subject: Re: [PATCH 1/2] [RESEND] media: rkvdec: reduce excessive stack
- usage in assemble_hw_pps()
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Arnd Bergmann <arnd@kernel.org>, Detlev Casanova	
- <detlev.casanova@collabora.com>, Ezequiel Garcia
- <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Nathan Chancellor	
- <nathan@kernel.org>, Hans Verkuil <hverkuil+cisco@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>, Nick Desaulniers	
- <nick.desaulniers+lkml@gmail.com>, Bill Wendling <morbo@google.com>, Justin
- Stitt <justinstitt@google.com>, Kees Cook <kees@kernel.org>,
- linux-media@vger.kernel.org, 	linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, 	linux-kernel@vger.kernel.org,
- llvm@lists.linux.dev
-Date: Thu, 05 Mar 2026 11:37:28 -0500
-In-Reply-To: <20260305152644.791897-1-arnd@kernel.org>
-References: <20260305152644.791897-1-arnd@kernel.org>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1vyCDW-00000002GDx-1TlJ;
+	Thu, 05 Mar 2026 17:10:32 +0000
+Received: from phl-compute-04.internal (phl-compute-04.internal [10.202.2.44])
+	by mailfhigh.phl.internal (Postfix) with ESMTP id 630911400206;
+	Thu,  5 Mar 2026 12:10:28 -0500 (EST)
+Received: from phl-imap-02 ([10.202.2.81])
+  by phl-compute-04.internal (MEProxy); Thu, 05 Mar 2026 12:10:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
+	:cc:content-transfer-encoding:content-type:content-type:date
+	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to; s=fm3; t=1772730628;
+	 x=1772817028; bh=2YKLoA2IsMyTZEip4KGxzGcQ7ltn5puWK4jv6MRs+MY=; b=
+	P8WGtwp7/r9ecL8ojq0bCFXSAb2bhnspxmBcRm5Lc6wWdrOiGSpET36q4taVtN6e
+	szAQqifYwuybpDdqTagrlAusetiB8SzWuckaIxuh7M/CEw6al2vwwQpB648np4xf
+	wAf/TTl0pfqq7QbFrxsX/VM7YY7iuvjiZ9YrXZcga2nzVbWCzSKkiCRrQYqo9GbU
+	A08fys5olDwWaIQxZiJoVOKktDPTsj1dHQ3YdwaBzMdiznyQ4YouWR7DPnziijWw
+	H3QJldkZsWDI0TS8jgt/rUgAg5s10pvMbm8l2nc2/y7o5OauQBmrnyNHgaLuwUJe
+	CXtVoumyPmSs2RFKqmpV+Q==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+	messagingengine.com; h=cc:cc:content-transfer-encoding
+	:content-type:content-type:date:date:feedback-id:feedback-id
+	:from:from:in-reply-to:in-reply-to:message-id:mime-version
+	:references:reply-to:subject:subject:to:to:x-me-proxy
+	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1772730628; x=
+	1772817028; bh=2YKLoA2IsMyTZEip4KGxzGcQ7ltn5puWK4jv6MRs+MY=; b=X
+	4Rcymrp9oHYxlfcXIC7+z/4IIn9T6NUKsS5CxxlKyN9L8omcwKRuF6y0E0g0rNav
+	0lxN/SLlffca2W0F99Djyz6Bdx2vWevbKOIDrubzZ75tDuUXMlNTQRFgm66YuO8O
+	WYyeps1v+5umVNyUIbNgo/N655+kJO83BkmtlY60HcrK1kacWamKGp1IU+4cO5Os
+	dziOnMYaIsajTJPg0oJjTXHYsrLDUwAlzpRmI9dvQGCLpVfKbAZspvnVcsoNwMyl
+	95jJ+VNFrpA0ksgNMEBouLFiMcNcP8G4oJ2ng83EMgGvuiZRugONBupl8kPKWrkG
+	Wyv3VA4dN10GIx6pvhpTg==
+X-ME-Sender: <xms:A7mpaYN9pitvwkGxHyqmSyxgRER8PgRRC3rI47vIgx2K6tFj9Db73g>
+    <xme:A7mpaZz2-VQApGDRdpT-u83lBiPb0o0pf4aU0H-T0M1bZX_odwHNSiyve67OBxQ3p
+    tsKDN7jB2rgva5Msgr02BTzM1-R27QMNCPjPq3XvDmZAE_H1-AWwII>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefgedrtddtgddvieeileegucetufdoteggodetrf
+    dotffvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdfurfetoffkrfgpnffqhgenuceu
+    rghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujf
+    gurhepofggfffhvfevkfgjfhfutgfgsehtqhertdertdejnecuhfhrohhmpedftehrnhgu
+    uceuvghrghhmrghnnhdfuceorghrnhgusegrrhhnuggsrdguvgeqnecuggftrfgrthhtvg
+    hrnhepheelteetueehudelgeejhefgieeigfetvefgudduledthfegjeekleeuheefteeu
+    necuffhomhgrihhnpehlihhnuhigthhvrdhorhhgnecuvehluhhsthgvrhfuihiivgeptd
+    enucfrrghrrghmpehmrghilhhfrhhomheprghrnhgusegrrhhnuggsrdguvgdpnhgspghr
+    tghpthhtohepudejpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopeguvghtlhgvvh
+    drtggrshgrnhhovhgrsegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepnhhitgho
+    lhgrshdrughufhhrvghsnhgvsegtohhllhgrsghorhgrrdgtohhmpdhrtghpthhtohepnh
+    hitghkrdguvghsrghulhhnihgvrhhsodhlkhhmlhesghhmrghilhdrtghomhdprhgtphht
+    thhopehjuhhsthhinhhsthhithhtsehgohhoghhlvgdrtghomhdprhgtphhtthhopehmoh
+    hrsghosehgohhoghhlvgdrtghomhdprhgtphhtthhopegrrhhnugeskhgvrhhnvghlrdho
+    rhhgpdhrtghpthhtohephhhvvghrkhhuihhlodgtihhstghosehkvghrnhgvlhdrohhrgh
+    dprhgtphhtthhopehkvggvsheskhgvrhhnvghlrdhorhhgpdhrtghpthhtohepmhgthhgv
+    hhgrsgeskhgvrhhnvghlrdhorhhg
+X-ME-Proxy: <xmx:A7mpaZw2A0swRreIUfNUbkJ-KM0TyDHXf5aF9ETg-pzrZVQVs-ge3w>
+    <xmx:A7mpaSAEZxCAXlZMphEwNfHJ7Ld-ylDRCFhl5Edpsjfmdqy__vo3Kw>
+    <xmx:A7mpaSChsGG1x8lH_xhwF7G2c1V2RWemoPGaPsqLiIIDR1kTrmCwgQ>
+    <xmx:A7mpad7xkfTA3dpIDyfi5NRqeUtR1Q1My_ZvpEti-YKAR3VcYo4skg>
+    <xmx:BLmpaU2-yg903Rc8Bnm0rbyb3LtfMggq61VMKVlCGmH54KUoOdEqYWl1>
+Feedback-ID: i56a14606:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+	id C0DBA700065; Thu,  5 Mar 2026 12:10:27 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
+X-ThreadId: AlPWkszDc-o7
+Date: Thu, 05 Mar 2026 18:10:06 +0100
+From: "Arnd Bergmann" <arnd@arndb.de>
+To: "Nicolas Dufresne" <nicolas.dufresne@collabora.com>,
+ "Arnd Bergmann" <arnd@kernel.org>,
+ "Detlev Casanova" <detlev.casanova@collabora.com>,
+ "Ezequiel Garcia" <ezequiel@vanguardiasur.com.ar>,
+ "Mauro Carvalho Chehab" <mchehab@kernel.org>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ "Nathan Chancellor" <nathan@kernel.org>,
+ "Hans Verkuil" <hverkuil+cisco@kernel.org>
+Cc: "Nick Desaulniers" <nick.desaulniers+lkml@gmail.com>,
+ "Bill Wendling" <morbo@google.com>, "Justin Stitt" <justinstitt@google.com>,
+ "Kees Cook" <kees@kernel.org>, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, llvm@lists.linux.dev
+Message-Id: <e907e900-073f-4aa6-b4fe-36b87e312f62@app.fastmail.com>
+In-Reply-To: <1621b56864cb186f1e5433b73b56afc00aa83452.camel@collabora.com>
+References: <20260305152644.791897-1-arnd@kernel.org>
+ <1621b56864cb186f1e5433b73b56afc00aa83452.camel@collabora.com>
+Subject: Re: [PATCH 1/2] [RESEND] media: rkvdec: reduce excessive stack usage in
+ assemble_hw_pps()
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_083739_835647_027FA62D 
-X-CRM114-Status: GOOD (  27.76  )
+X-CRM114-CacheID: sfid-20260305_091031_332140_C306FEC3 
+X-CRM114-Status: GOOD (  13.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,203 +122,37 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4238129336424944739=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============4238129336424944739==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-ayQMGRIiYYjBgQDHqjjE"
-
-
---=-ayQMGRIiYYjBgQDHqjjE
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-Le jeudi 05 mars 2026 =C3=A0 16:26 +0100, Arnd Bergmann a =C3=A9crit=C2=A0:
-> From: Arnd Bergmann <arnd@arndb.de>
->=20
-> The rkvdec_pps had a large set of bitfields, all of which
-> as misaligned. This causes clang-21 and likely other versions to
-> produce absolutely awful object code and a warning about very
-> large stack usage, on targets without unaligned access:
-
-I'm a bit surprised you felt the need for resend. Perhaps you can help us
-understand what made you think your patch wasn't being processed ?
-
-My PR:
-https://patchwork.linuxtv.org/project/linux-media/patch/2074ba5a5d05e239f43=
-2d176eb051105f7e692f9.camel@collabora.com/
-
-And Hans/Mauro did logistic on the #linux-maint IRC channel this morning. I
-believe I've marked all the relevant patches on patchwork our of "New" stat=
-e and
-you have my Rb. What else would help you ?
-
-Nicolas
-
->=20
-> drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: stack =
-frame
-> size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-Wframe-
-> larger-than]
->=20
-> Part of the problem here is how all the bitfield accesses are
-> inlined into a function that already has large structures on
-> the stack.
->=20
-> Mark set_field_order_cnt() as noinline_for_stack, and split out
-> the following accesses in assemble_hw_pps() into another noinline
-> function, both of which now using around 800 bytes of stack in the
-> same configuration.
->=20
-> There is clearly still something wrong with clang here, but
-> splitting it into multiple functions reduces the risk of stack
-> overflow.
->=20
-> Fixes: fde24907570d ("media: rkvdec: Add H264 support for the VDPU383
-> variant")
-> Link: https://godbolt.org/z/acP1eKeq9
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
-> ---
-> Resending this along with the other patch mainly to point out that
-> this one is still pending as well.
-> ---
-> =C2=A0.../rockchip/rkvdec/rkvdec-vdpu383-h264.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
- 50 ++++++++++---------
-> =C2=A01 file changed, 27 insertions(+), 23 deletions(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
-> b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
-> index 97f1efde2e47..fb4f849d7366 100644
-> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
-> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
-> @@ -130,7 +130,7 @@ struct rkvdec_h264_ctx {
-> =C2=A0	struct vdpu383_regs_h26x regs;
-> =C2=A0};
-> =C2=A0
-> -static void set_field_order_cnt(struct rkvdec_pps *pps, const struct
-> v4l2_h264_dpb_entry *dpb)
-> +static noinline_for_stack void set_field_order_cnt(struct rkvdec_pps *pp=
-s,
-> const struct v4l2_h264_dpb_entry *dpb)
-> =C2=A0{
-> =C2=A0	pps->top_field_order_cnt0 =3D dpb[0].top_field_order_cnt;
-> =C2=A0	pps->bot_field_order_cnt0 =3D dpb[0].bottom_field_order_cnt;
-> @@ -166,6 +166,31 @@ static void set_field_order_cnt(struct rkvdec_pps *p=
-ps,
-> const struct v4l2_h264_d
-> =C2=A0	pps->bot_field_order_cnt15 =3D dpb[15].bottom_field_order_cnt;
-> =C2=A0}
-> =C2=A0
-> +static noinline_for_stack void set_dec_params(struct rkvdec_pps *pps, co=
-nst
-> struct v4l2_ctrl_h264_decode_params *dec_params)
-> +{
-> +	const struct v4l2_h264_dpb_entry *dpb =3D dec_params->dpb;
-> +
-> +	for (int i =3D 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
-> +		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> +			pps->is_longterm |=3D (1 << i);
-> +		pps->ref_field_flags |=3D
-> +		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)) << i;
-> +		pps->ref_colmv_use_flag |=3D
-> +		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) << i;
-> +		pps->ref_topfield_used |=3D
-> +		 (!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
-> +		pps->ref_botfield_used |=3D
-> +			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) <<
-> i;
-> +	}
-> +	pps->pic_field_flag =3D
-> +		!!(dec_params->flags &
-> V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
-> +	pps->pic_associated_flag =3D
-> +		!!(dec_params->flags &
-> V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
-> +
-> +	pps->cur_top_field =3D dec_params->top_field_order_cnt;
-> +	pps->cur_bot_field =3D dec_params->bottom_field_order_cnt;
-> +}
-> +
-> =C2=A0static void assemble_hw_pps(struct rkvdec_ctx *ctx,
-> =C2=A0			=C2=A0=C2=A0=C2=A0 struct rkvdec_h264_run *run)
-> =C2=A0{
-> @@ -177,7 +202,6 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
-> =C2=A0	struct rkvdec_h264_priv_tbl *priv_tbl =3D h264_ctx->priv_tbl.cpu;
-> =C2=A0	struct rkvdec_sps_pps *hw_ps;
-> =C2=A0	u32 pic_width, pic_height;
-> -	u32 i;
-> =C2=A0
-> =C2=A0	/*
-> =C2=A0	 * HW read the SPS/PPS information from PPS packet index by PPS id=
-.
-> @@ -261,28 +285,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
-> =C2=A0		!!(pps->flags & V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT);
-> =C2=A0
-> =C2=A0	set_field_order_cnt(&hw_ps->pps, dpb);
-> +	set_dec_params(&hw_ps->pps, dec_params);
-> =C2=A0
-> -	for (i =3D 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
-> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
-> -			hw_ps->pps.is_longterm |=3D (1 << i);
-> -
-> -		hw_ps->pps.ref_field_flags |=3D
-> -			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD))
-> << i;
-> -		hw_ps->pps.ref_colmv_use_flag |=3D
-> -			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
-> << i;
-> -		hw_ps->pps.ref_topfield_used |=3D
-> -			(!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
-> -		hw_ps->pps.ref_botfield_used |=3D
-> -			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) <<
-> i;
-> -	}
-> -
-> -	hw_ps->pps.pic_field_flag =3D
-> -		!!(dec_params->flags &
-> V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
-> -	hw_ps->pps.pic_associated_flag =3D
-> -		!!(dec_params->flags &
-> V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
-> -
-> -	hw_ps->pps.cur_top_field =3D dec_params->top_field_order_cnt;
-> -	hw_ps->pps.cur_bot_field =3D dec_params->bottom_field_order_cnt;
-> =C2=A0}
-> =C2=A0
-> =C2=A0static void rkvdec_write_regs(struct rkvdec_ctx *ctx)
-
---=-ayQMGRIiYYjBgQDHqjjE
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaamxSQAKCRDZQZRRKWBy
-9ABOAQCelVLDB2BDEu/lz95fCXShra2NCxpj8lLTj+SppYTgMQEA/RTLk5CjmWVI
-lwRwZRetjCIJCD0IU/MonDof26WGwwg=
-=sLJA
------END PGP SIGNATURE-----
-
---=-ayQMGRIiYYjBgQDHqjjE--
-
-
---===============4238129336424944739==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4238129336424944739==--
-
+T24gVGh1LCBNYXIgNSwgMjAyNiwgYXQgMTc6MzcsIE5pY29sYXMgRHVmcmVzbmUgd3JvdGU6Cj4K
+PiBMZSBqZXVkaSAwNSBtYXJzIDIwMjYgw6AgMTY6MjYgKzAxMDAsIEFybmQgQmVyZ21hbm4gYSDD
+qWNyaXTCoDoKPj4gRnJvbTogQXJuZCBCZXJnbWFubiA8YXJuZEBhcm5kYi5kZT4KPj4gCj4+IFRo
+ZSBya3ZkZWNfcHBzIGhhZCBhIGxhcmdlIHNldCBvZiBiaXRmaWVsZHMsIGFsbCBvZiB3aGljaAo+
+PiBhcyBtaXNhbGlnbmVkLiBUaGlzIGNhdXNlcyBjbGFuZy0yMSBhbmQgbGlrZWx5IG90aGVyIHZl
+cnNpb25zIHRvCj4+IHByb2R1Y2UgYWJzb2x1dGVseSBhd2Z1bCBvYmplY3QgY29kZSBhbmQgYSB3
+YXJuaW5nIGFib3V0IHZlcnkKPj4gbGFyZ2Ugc3RhY2sgdXNhZ2UsIG9uIHRhcmdldHMgd2l0aG91
+dCB1bmFsaWduZWQgYWNjZXNzOgo+Cj4gSSdtIGEgYml0IHN1cnByaXNlZCB5b3UgZmVsdCB0aGUg
+bmVlZCBmb3IgcmVzZW5kLiBQZXJoYXBzIHlvdSBjYW4gaGVscCB1cwo+IHVuZGVyc3RhbmQgd2hh
+dCBtYWRlIHlvdSB0aGluayB5b3VyIHBhdGNoIHdhc24ndCBiZWluZyBwcm9jZXNzZWQgPwoKSSB1
+cGRhdGVkIHRoZSBzZWNvbmQgcGF0Y2ggdG9kYXkgYWZ0ZXIgSSBmb3VuZCBhIGNvcm5lciBjYXNl
+IHRoYXQKd2Fzbid0IGFkZHJlc3NlZCBieSB0aGUgZmlyc3QgdmVyc2lvbi4gQXMgSSBoYWQgc2Vu
+dCBib3RoIGFzIGEgc2VyaWVzCmEgbW9udGggYWdvLCBhbmQgbmVpdGhlciB3YXMgaW4gbGludXgt
+bmV4dCB5ZXQsIGl0IHNlZW1lZCBtb3JlIGhlbHBmdWwKdG8gc2VuZCBhbiB1cGRhdGVkIHNlcmll
+cyByYXRoZXIgdGhhbiByZXBsYWNlIG9ubHkgb25lIG9mIHRoZSB0d28uCgo+IE15IFBSOgo+IGh0
+dHBzOi8vcGF0Y2h3b3JrLmxpbnV4dHYub3JnL3Byb2plY3QvbGludXgtbWVkaWEvcGF0Y2gvMjA3
+NGJhNWE1ZDA1ZTIzOWY0MzJkMTc2ZWIwNTExMDVmN2U2OTJmOS5jYW1lbEBjb2xsYWJvcmEuY29t
+Lwo+Cj4gQW5kIEhhbnMvTWF1cm8gZGlkIGxvZ2lzdGljIG9uIHRoZSAjbGludXgtbWFpbnQgSVJD
+IGNoYW5uZWwgdGhpcyBtb3JuaW5nLiBJCj4gYmVsaWV2ZSBJJ3ZlIG1hcmtlZCBhbGwgdGhlIHJl
+bGV2YW50IHBhdGNoZXMgb24gcGF0Y2h3b3JrIG91ciBvZiAiTmV3IiBzdGF0ZSBhbmQKPiB5b3Ug
+aGF2ZSBteSBSYi4gV2hhdCBlbHNlIHdvdWxkIGhlbHAgeW91ID8KClRoYXQncyBmaW5lIHRoZW4s
+IEkgZGlkIG5vdCBtZWFuIHRvIHNlZW0gaW1wYXRpZW50LiBJIGFzc3VtZQp0aGUgb3JpZ2luYWwg
+cGF0Y2hlcyB3aWxsIGJlIGluIGxpbnV4LW5leHQgdGhlbiwgYW5kIFt2MiAyLzJdCndpbGwgY29u
+ZmxpY3QuIEknbGwgbGV0IHlvdSByZXZpZXcgdGhhdCBvbmUgZmlyc3QsIGJ1dCBjYW4Kc2VuZCBh
+IHJlYmFzZWQgdmVyc2lvbiBpZiB5b3UgdGhpbmsgd2Ugc2hvdWxkIG1lcmdlIGl0IG9uIHRvcC4K
+CiAgICAgIEFybmQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
