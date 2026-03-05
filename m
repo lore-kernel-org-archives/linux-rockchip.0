@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6361F33A8E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 15:27:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D904F3D302
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 15:36:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+1D/Ia1v6iH5FXfMhnM7jmbnbNTPXfDHXgoiTyK1YoY=; b=eFlpYjbh0HKkkC
-	P+TgHZQgV/u1AJCmrGkmd8ULbeeF7MPxHOMzaEKjFENrvCr0FRASOn3GaYT8D5xoayEA9nQtkDmd9
-	rlC6EQ17kGMYijnMrYPn4MUvWA0u3pCSwUSTPhkX9bijnlg4BjA6hajjlzz4xlSfVyfOd7k98mpvA
-	audqLQZTg1hV16VwNdbUg1t7tX+2+0g90zoc0+ofkra8ZUcbCbImbPwNPy5XBk/HuRTNYKLOiM/78
-	mLczb3HsDJ+FCeUYCzEIz1XkUqqn+6ZIbofVTw7oaeZlGNb2XgrDBU0UTBPiskhZtfGFcYqVWjSya
-	yoodMvnYzHCNPvvUyvsA==;
+	List-Owner; bh=WKec4XfR7JJ6n2Adb7KBDXIxC5h6DaINYk7p91Wi+io=; b=055qbHo4WsRT/S
+	ztSjsZncS4fqkAYfjeG3pKoJN1VJLOcK/aSe4WJdXpLEFpHEN9ZglLzNakpvdbgTGsQUPWlx1dYln
+	SWM7NJmzBhQFx1sJD86jqvH0PJ3wqmBXFh1LK1rqvyTizMg83chfMddaLZnyXWc35n2x8vb2RJocu
+	7QC6f/Zhjy1/nKI3ASUhzGrqjR/DWBXmGNuG6mtLBJt78+sLULhHv2ahUVUlCUOcyjB+LMd/SPrcy
+	dS84mS7xWCcUgKi4AZqXp0M6aFlidrix0EBGR/KRaV+JMI2XlR3P6kO2r3GvCmZZiOuPW63O/ZOSP
+	KM5A4wYm24GbFQ8BaSiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyAbP-0000000276O-3AXd;
-	Thu, 05 Mar 2026 15:27:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vyAkE-000000027t7-3Z7v;
+	Thu, 05 Mar 2026 15:36:10 +0000
+Received: from smtprelay0011.hostedemail.com ([216.40.44.11] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyAbO-0000000275a-25UJ;
-	Thu, 05 Mar 2026 15:27:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8EEF8600C4;
-	Thu,  5 Mar 2026 15:27:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 86731C19423;
-	Thu,  5 Mar 2026 15:26:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772724421;
-	bh=9che9S/rfD6SJcfVDz2SXnU+7MBs/hKF8MhWtpvGqig=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=IWiqRWLbDF94tCasvan1T3MoT25tOqEQkcz2TfW2kmEyKjFyzSCCCJ1pf4Fg+oiGc
-	 Kvn6Oc7nCZ5oxJpvT3tYbKQHSNu27DF8jvm7mglAxodFk7mVbnTDOk+tfr6TpoOktl
-	 nEr0kndNA06XG2HZahfe32ZqmvLHBiqUB/sWfSnGVaTwgf4OD6XzGmSjf5PMjJyhA1
-	 sS0DgbPR/h7cH41OJYAu1Isx0Hv/8z1BkChrPxUHgqpGHfALXptkLCm0e/NbGQELI7
-	 pPcidjKrhH4P4g4gbevtk+rLC4rkFY1Eb5uZqvmk64mRAFLQawZzkgWzfHj+YRVESP
-	 LgSEUjZOpch9g==
-From: Arnd Bergmann <arnd@kernel.org>
-To: Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Nathan Chancellor <nathan@kernel.org>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Alex Bee <knaerzche@gmail.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Kees Cook <kees@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	llvm@lists.linux.dev
-Subject: [PATCH 2/2] [v2] media: rkvdec: reduce stack usage in rkvdec_init_v4l2_vp9_count_tbl()
-Date: Thu,  5 Mar 2026 16:26:17 +0100
-Message-Id: <20260305152644.791897-2-arnd@kernel.org>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20260305152644.791897-1-arnd@kernel.org>
-References: <20260305152644.791897-1-arnd@kernel.org>
+	id 1vyAkB-000000027rr-2x7G;
+	Thu, 05 Mar 2026 15:36:08 +0000
+Received: from omf17.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay08.hostedemail.com (Postfix) with ESMTP id 9322C14014F;
+	Thu,  5 Mar 2026 15:36:02 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf17.hostedemail.com (Postfix) with ESMTPA id E35031C;
+	Thu,  5 Mar 2026 15:35:55 +0000 (UTC)
+Message-ID: <21e84301a7c37f9d5ce6f0ddcaed7846174d2a4d.camel@perches.com>
+Subject: Re: [PATCH phy-next 22/22] MAINTAINERS: add regex for linux-phy
+From: Joe Perches <joe@perches.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
+	linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, Neil
+ Armstrong	 <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org, 
+	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
+ netdev@vger.kernel.org, 	spacemit@lists.linux.dev,
+ UNGLinuxDriver@microchip.com
+Date: Thu, 05 Mar 2026 07:35:54 -0800
+In-Reply-To: <20260305114352.2f7btqixg4tu5bzl@skbuf>
+References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
+	 <20260304175735.2660419-23-vladimir.oltean@nxp.com>
+	 <a8fee1cd-1e69-4a9e-8533-c0988c480fb9@oss.qualcomm.com>
+	 <20260305085148.7cwo3yflp7vcfldf@skbuf>
+	 <f3a5aa3df78553ffc0fd0024f5fd36a4e2158c88.camel@perches.com>
+	 <20260305114352.2f7btqixg4tu5bzl@skbuf>
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
+X-Stat-Signature: hdghxtayq5bkfzsomxmnfbydyyebzipf
+X-Rspamd-Server: rspamout08
+X-Rspamd-Queue-Id: E35031C
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX19f3I+nQL7Hl0m6eSD18a/IIsXK9f3qkJo=
+X-HE-Tag: 1772724955-671908
+X-HE-Meta: U2FsdGVkX1/X7uxRzGLN+IX8WCZcO8p7ZTfkKmYNWBtz0ybputMaHEYE9yjxoGJ588aNvqlmxPrL8260emaV8dmXUI0e+INEtvEJY25I/Ej/PwqlxILke5yF3tqaj6xtvov8nI2F5oYM0uwbLv+6+skyh/sdJqBRUfJJKxLUzixxjwVPNZYZfPXpcC3lGcz5BMW1nsCCc9lzUvpFfMAODgtiRdX4Al8waTK8ABKVHmTqbt8uPB5EPbopscO3f/XucT2DdozpyI3LxZQRIQw7tIxAWEpzWgj98RYMI3rQa9CVBr40+v4Qte7+qYx1OCa5
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260305_073607_798133_0753C9FB 
+X-CRM114-Status: UNSURE (   3.81  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,108 +85,15 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Thu, 2026-03-05 at 13:43 +0200, Vladimir Oltean wrote:
 
-The deeply nested loop in rkvdec_init_v4l2_vp9_count_tbl() needs a lot
-of registers, so when the clang register allocator runs out, it ends up
-spilling countless temporaries to the stack:
+> K:	(?:struct\s+)?phy(?:_ops|_attrs|_lookup|_provider)?\b
 
-drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: stack frame size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-Wframe-larger-than]
+You have (?:...)?phy(?:...)?\b
 
-Split out the innermost loop into a separate function that is marked
-noinline_for_stack. I tried out all combinations of having some of
-the inner loops inside of the separate function, but this was the only
-veriant that creates reasonable code with clang-22 on arm64.
+I rather doubt you want anything that ends in phy
 
-Link: https://lore.kernel.org/linux-media/20260202094804.1231706-1-arnd@kernel.org/T/
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
---
-v2: rework after sering more of the same warning with v1 applied.
-
-My earlier version was much simpler but still exceeded 1280 bytes of
-stack space in some configurations for unnecessary variable spills.
----
- .../platform/rockchip/rkvdec/rkvdec-vp9.c     | 48 ++++++++++---------
- 1 file changed, 26 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
-index e4cdd2122873..ecb2819bd566 100644
---- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
-+++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
-@@ -893,12 +893,36 @@ static void rkvdec_vp9_done(struct rkvdec_ctx *ctx,
- 	update_ctx_last_info(vp9_ctx);
- }
- 
-+/* noinline to ensure clang's register allocator doesn't run out of registers */
-+static noinline void
-+rkvdec_init_v4l2_vp9_count_tbl_loop(struct rkvdec_vp9_ctx *vp9_ctx, int i, int j, int k, int l)
-+{
-+	struct rkvdec_vp9_intra_frame_symbol_counts *intra_cnts = vp9_ctx->count_tbl.cpu;
-+	struct rkvdec_vp9_inter_frame_symbol_counts *inter_cnts = vp9_ctx->count_tbl.cpu;
-+
-+	for (int m = 0; m < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0][0]); ++m) {
-+		vp9_ctx->inter_cnts.coeff[i][j][k][l][m] =
-+			&inter_cnts->ref_cnt[k][i][j][l][m].coeff;
-+		vp9_ctx->inter_cnts.eob[i][j][k][l][m][0] =
-+			&inter_cnts->ref_cnt[k][i][j][l][m].eob[0];
-+		vp9_ctx->inter_cnts.eob[i][j][k][l][m][1] =
-+			&inter_cnts->ref_cnt[k][i][j][l][m].eob[1];
-+										\
-+		vp9_ctx->intra_cnts.coeff[i][j][k][l][m] =
-+			&intra_cnts->ref_cnt[k][i][j][l][m].coeff;
-+		vp9_ctx->intra_cnts.eob[i][j][k][l][m][0] =
-+			&intra_cnts->ref_cnt[k][i][j][l][m].eob[0];
-+		vp9_ctx->intra_cnts.eob[i][j][k][l][m][1] =
-+			&intra_cnts->ref_cnt[k][i][j][l][m].eob[1];
-+	}
-+}
-+
- static void rkvdec_init_v4l2_vp9_count_tbl(struct rkvdec_ctx *ctx)
- {
- 	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
- 	struct rkvdec_vp9_intra_frame_symbol_counts *intra_cnts = vp9_ctx->count_tbl.cpu;
- 	struct rkvdec_vp9_inter_frame_symbol_counts *inter_cnts = vp9_ctx->count_tbl.cpu;
--	int i, j, k, l, m;
-+	int i, j, k, l;
- 
- 	vp9_ctx->inter_cnts.partition = &inter_cnts->partition;
- 	vp9_ctx->inter_cnts.skip = &inter_cnts->skip;
-@@ -936,31 +960,11 @@ static void rkvdec_init_v4l2_vp9_count_tbl(struct rkvdec_ctx *ctx)
- 	vp9_ctx->inter_cnts.class0_hp = &inter_cnts->class0_hp;
- 	vp9_ctx->inter_cnts.hp = &inter_cnts->hp;
- 
--#define INNERMOST_LOOP \
--	do {										\
--		for (m = 0; m < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0][0]); ++m) {\
--			vp9_ctx->inter_cnts.coeff[i][j][k][l][m] =			\
--				&inter_cnts->ref_cnt[k][i][j][l][m].coeff;		\
--			vp9_ctx->inter_cnts.eob[i][j][k][l][m][0] =			\
--				&inter_cnts->ref_cnt[k][i][j][l][m].eob[0];		\
--			vp9_ctx->inter_cnts.eob[i][j][k][l][m][1] =			\
--				&inter_cnts->ref_cnt[k][i][j][l][m].eob[1];		\
--											\
--			vp9_ctx->intra_cnts.coeff[i][j][k][l][m] =			\
--				&intra_cnts->ref_cnt[k][i][j][l][m].coeff;		\
--			vp9_ctx->intra_cnts.eob[i][j][k][l][m][0] =			\
--				&intra_cnts->ref_cnt[k][i][j][l][m].eob[0];		\
--			vp9_ctx->intra_cnts.eob[i][j][k][l][m][1] =			\
--				&intra_cnts->ref_cnt[k][i][j][l][m].eob[1];		\
--		}									\
--	} while (0)
--
- 	for (i = 0; i < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff); ++i)
- 		for (j = 0; j < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0]); ++j)
- 			for (k = 0; k < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0]); ++k)
- 				for (l = 0; l < ARRAY_SIZE(vp9_ctx->inter_cnts.coeff[0][0][0]); ++l)
--					INNERMOST_LOOP;
--#undef INNERMOST_LOOP
-+					rkvdec_init_v4l2_vp9_count_tbl_loop(vp9_ctx, i, j, k, l);
- }
- 
- static int rkvdec_vp9_start(struct rkvdec_ctx *ctx)
--- 
-2.39.5
-
+That matches words like cryptography and way too many dts/yaml files
 
 _______________________________________________
 Linux-rockchip mailing list
