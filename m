@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BF6EF33A78
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 14:47:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5015DF33A90
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 15:27:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:References:In-Reply-To:
-	Subject:To:From:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EMFXz0TymZgKux11L3h4katmZCiW5KA0UMCe+25g4/s=; b=wE9y+X6gLInnP5
-	oDBZmX2LfI3X+zgrmRh0qcJ9KibXBo0XiuMgd52Ox7JhxoS9AfGxCmS9MYUIK0Q8naQQhf+nifHX1
-	9feyABaRcl66TosfGQbHcbkTwo3ERx+rXIuBoh3NodyU5ArpCutwCp8qrn3Tnbq+6BVUAsKt2Hr/u
-	Og6v2t/ujfzHmi6R+qafl+6pvVwB5YduFCcDi7frhR1jovTf3kKUXvM+ddf/4xEEoQypEDlSlqxGr
-	/v4VdFG7Z/Lcag0vtLqL6t+cfVDn/TuMF3euOJiyKxa02tdQykCpujKajM7iBvDJM7h/GieEnVD/6
-	EqWbXtuHpYCha3eamxfg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bnlIlTTKPxsmKx5SImnZKH/8SG5oq6zXfGODADvz+Js=; b=ixLVCL7z27f3mT
+	CZj9Kmh7O3HxgikznkouBxEzfV+PAcJGT5fGB25xo2Zj8zW/u8QuvyizXhmDaME8Es5NGsR+nQ3PR
+	F9kEKuTWeN/ya3tC4nWhKlVqfrmAHXrxgplETWTkcCFqnaDZKz82XWlEuOKLLKYWVGV7xb+uj34Wx
+	8PIucmYiki8SEs9q1QYwVjfZtxke6W25DN5tIasQ+9mHTby4hWZx7i0fKsMtvUo9tcdy8Bb/ZCNRi
+	4swsC4rhfWA4GLFIpKvxnFhq9/no/7T9JP/ZskfAP2uRs0M5iQ7KREJaExac4vpqGKAraT2hRY8xs
+	DtJuJkrh4gVXYC+HPnZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy9yb-000000023oy-2K7q;
-	Thu, 05 Mar 2026 14:46:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vyAbH-0000000273b-2Wr8;
+	Thu, 05 Mar 2026 15:26:55 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy9yZ-000000023ml-1f5V;
-	Thu, 05 Mar 2026 14:46:55 +0000
+	id 1vyAbF-0000000272i-0mtn;
+	Thu, 05 Mar 2026 15:26:54 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id AF6386184F;
-	Thu,  5 Mar 2026 14:46:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D781BC116C6;
-	Thu,  5 Mar 2026 14:46:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id CF6C6435AF;
+	Thu,  5 Mar 2026 15:26:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53A04C19423;
+	Thu,  5 Mar 2026 15:26:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772722014;
-	bh=+vyyNXwbVKSALuloOGJ/u3XQdbK2QU/tneBRUrk0GPg=;
-	h=Date:From:To:Subject:In-Reply-To:References:Cc:From;
-	b=Dtp4EoErGT5rmyC8XF590dGA+1fJwq3ailHWMacH5ErbUV+V1olQJF0gWKHFogu0X
-	 BS6BWuhIKpEF8bh0LvV+cqOW1xT56JIqFWU6kgMkxpYrJtZIQj2zJYo4NETaHbFvir
-	 H7q8e8sCROgU5De7vFaYkHpe5SBoFyZ2kXGiubH8BVWWjpCVMn6WZJrSdmBblj+JfY
-	 3QJLSw282cXQGFqC9c4Yqoj8DvGpn3osMVMUdJULiALh0LhbcxoeHYNUDGXthpqT1t
-	 2lJZ8L1MpOzPvXV2y/6wfRJ35EnJ/sfrhKG+Tixtl7ZwK3UmPTVA9jsaF/w6p9Xr0B
-	 jpKoTIypQBWrw==
-Message-ID: <0d4b2eb4691010abf43dcafb96b3694e@kernel.org>
-Date: Thu, 05 Mar 2026 14:46:51 +0000
-From: "Maxime Ripard" <mripard@kernel.org>
-To: "Nicolas Frattaroli" <nicolas.frattaroli@collabora.com>
-Subject: Re: [PATCH v10 06/22] drm/display: hdmi-state-helper: Act on color
- format DRM property
-In-Reply-To: <20260305-color-format-v10-6-a58c68a11868@collabora.com>
-References: <20260305-color-format-v10-6-a58c68a11868@collabora.com>
-Cc: amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, kernel@collabora.com, linux-arm-kernel@lists.infradead.org, linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, "Alex
- Deucher" <alexander.deucher@amd.com>, "Andrzej Hajda" <andrzej.hajda@intel.com>, "Andy
- Yan" <andy.yan@rock-chips.com>, =?utf-8?b?Q2hyaXN0aWFuIEvDtm5pZw==?= <christian.koenig@amd.com>, "David
- Airlie" <airlied@gmail.com>, "Dmitry Baryshkov" <lumag@kernel.org>, "Harry
- Wentland" <harry.wentland@amd.com>, =?utf-8?b?SGVpa28gU3TDvGJuZXI=?= <heiko@sntech.de>, "Jani
- Nikula" <jani.nikula@linux.intel.com>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Jonas
- Karlman" <jonas@kwiboo.se>, "Jonathan Corbet" <corbet@lwn.net>, "Joonas
- Lahtinen" <joonas.lahtinen@linux.intel.com>, "Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>, "Leo
- Li" <sunpeng.li@amd.com>, "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime
- Ripard" <mripard@kernel.org>, "Neil Armstrong" <neil.armstrong@linaro.org>, "Rob
- Herring" <robh@kernel.org>, "Robert Foss" <rfoss@kernel.org>, "Rodrigo
- Siqueira" <siqueira@igalia.com>, "Rodrigo Vivi" <rodrigo.vivi@intel.com>, "Sandy
- Huang" <hjc@rock-chips.com>, "Sascha Hauer" <s.hauer@pengutronix.de>, "Shuah
- Khan" <skhan@linuxfoundation.org>, "Simona Vetter" <simona@ffwll.ch>, "Thomas
- Zimmermann" <tzimmermann@suse.de>, "Tvrtko Ursulin" <tursulin@ursulin.net>
+	s=k20201202; t=1772724411;
+	bh=4Ph21YNHCyEvjo/bKXsJPUwpBDx3Z0UNvaVUS93jta4=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Lk41FGwK+FS+12m6ve1kB+572nNh9e3n0pHZe3KCtpj8K13JaGUU1r10n3KoWImzB
+	 GRbs/hhlO3fxTSSP7+FMqBXsv0Uz12FNZnIWBUtogJLKvSN34j981H4kjlVGDjC783
+	 8D0A5rKf3nw/utRvuZ16dvWGAZ7cwA8Xy8lR3vIpin0/vk7v4x2IpZh+4VsA/pJfxK
+	 QQWzEcGfa8SleV/azMcKC/jF3GUTBSY7BfIp/hNTpEUEw5ZCD3Pa+STYcv6B8RAYoz
+	 fPC5oY1IwSi5wfiZsnaPWBVeJcGNlxcxES40ztC+5lUqMEtrD40Z9HoKgQqg+afifj
+	 tURebJhKNOf8g==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Nathan Chancellor <nathan@kernel.org>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>,
+	Kees Cook <kees@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	llvm@lists.linux.dev
+Subject: [PATCH 1/2] [RESEND] media: rkvdec: reduce excessive stack usage in assemble_hw_pps()
+Date: Thu,  5 Mar 2026 16:26:16 +0100
+Message-Id: <20260305152644.791897-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.39.5
+MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260305_072653_267704_CAC385B7 
+X-CRM114-Status: GOOD (  17.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,25 +78,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 5 Mar 2026 15:19:32 +0100, Nicolas Frattaroli wrote:
-> With the introduction of the "color format" DRM property, which allows
-> userspace to request a specific color format, the HDMI state helper
-> should implement this.
-> 
-> Implement it by translating the requested drm_connector_color_format to
-> 
-> [ ... ]
+From: Arnd Bergmann <arnd@arndb.de>
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
+The rkvdec_pps had a large set of bitfields, all of which
+as misaligned. This causes clang-21 and likely other versions to
+produce absolutely awful object code and a warning about very
+large stack usage, on targets without unaligned access:
 
-Thanks!
-Maxime
+drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: stack frame size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-Wframe-larger-than]
+
+Part of the problem here is how all the bitfield accesses are
+inlined into a function that already has large structures on
+the stack.
+
+Mark set_field_order_cnt() as noinline_for_stack, and split out
+the following accesses in assemble_hw_pps() into another noinline
+function, both of which now using around 800 bytes of stack in the
+same configuration.
+
+There is clearly still something wrong with clang here, but
+splitting it into multiple functions reduces the risk of stack
+overflow.
+
+Fixes: fde24907570d ("media: rkvdec: Add H264 support for the VDPU383 variant")
+Link: https://godbolt.org/z/acP1eKeq9
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+---
+Resending this along with the other patch mainly to point out that
+this one is still pending as well.
+---
+ .../rockchip/rkvdec/rkvdec-vdpu383-h264.c     | 50 ++++++++++---------
+ 1 file changed, 27 insertions(+), 23 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+index 97f1efde2e47..fb4f849d7366 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+@@ -130,7 +130,7 @@ struct rkvdec_h264_ctx {
+ 	struct vdpu383_regs_h26x regs;
+ };
+ 
+-static void set_field_order_cnt(struct rkvdec_pps *pps, const struct v4l2_h264_dpb_entry *dpb)
++static noinline_for_stack void set_field_order_cnt(struct rkvdec_pps *pps, const struct v4l2_h264_dpb_entry *dpb)
+ {
+ 	pps->top_field_order_cnt0 = dpb[0].top_field_order_cnt;
+ 	pps->bot_field_order_cnt0 = dpb[0].bottom_field_order_cnt;
+@@ -166,6 +166,31 @@ static void set_field_order_cnt(struct rkvdec_pps *pps, const struct v4l2_h264_d
+ 	pps->bot_field_order_cnt15 = dpb[15].bottom_field_order_cnt;
+ }
+ 
++static noinline_for_stack void set_dec_params(struct rkvdec_pps *pps, const struct v4l2_ctrl_h264_decode_params *dec_params)
++{
++	const struct v4l2_h264_dpb_entry *dpb = dec_params->dpb;
++
++	for (int i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
++		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
++			pps->is_longterm |= (1 << i);
++		pps->ref_field_flags |=
++		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)) << i;
++		pps->ref_colmv_use_flag |=
++		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) << i;
++		pps->ref_topfield_used |=
++		 (!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
++		pps->ref_botfield_used |=
++			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) << i;
++	}
++	pps->pic_field_flag =
++		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
++	pps->pic_associated_flag =
++		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
++
++	pps->cur_top_field = dec_params->top_field_order_cnt;
++	pps->cur_bot_field = dec_params->bottom_field_order_cnt;
++}
++
+ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 			    struct rkvdec_h264_run *run)
+ {
+@@ -177,7 +202,6 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 	struct rkvdec_h264_priv_tbl *priv_tbl = h264_ctx->priv_tbl.cpu;
+ 	struct rkvdec_sps_pps *hw_ps;
+ 	u32 pic_width, pic_height;
+-	u32 i;
+ 
+ 	/*
+ 	 * HW read the SPS/PPS information from PPS packet index by PPS id.
+@@ -261,28 +285,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+ 		!!(pps->flags & V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT);
+ 
+ 	set_field_order_cnt(&hw_ps->pps, dpb);
++	set_dec_params(&hw_ps->pps, dec_params);
+ 
+-	for (i = 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
+-		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+-			hw_ps->pps.is_longterm |= (1 << i);
+-
+-		hw_ps->pps.ref_field_flags |=
+-			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)) << i;
+-		hw_ps->pps.ref_colmv_use_flag |=
+-			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) << i;
+-		hw_ps->pps.ref_topfield_used |=
+-			(!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
+-		hw_ps->pps.ref_botfield_used |=
+-			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) << i;
+-	}
+-
+-	hw_ps->pps.pic_field_flag =
+-		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
+-	hw_ps->pps.pic_associated_flag =
+-		!!(dec_params->flags & V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
+-
+-	hw_ps->pps.cur_top_field = dec_params->top_field_order_cnt;
+-	hw_ps->pps.cur_bot_field = dec_params->bottom_field_order_cnt;
+ }
+ 
+ static void rkvdec_write_regs(struct rkvdec_ctx *ctx)
+-- 
+2.39.5
+
 
 _______________________________________________
 Linux-rockchip mailing list
