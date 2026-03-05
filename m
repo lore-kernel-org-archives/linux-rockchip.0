@@ -4,140 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C51F3D311
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 15:39:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3567CF3D32A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 16:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=maBn0/jqmWRP/3u/aM0tiLqzkNkwzJlq9m0HKLoDGYg=; b=JUL4cfGJ9GUw0m
-	DXphRlPl0U1VQRmVgEjRHGCTuUliVDTQIQ+V4D7M4e9xxBjUTczOto5bRtYInEeeTiRPP/t0nB3Ut
-	+WODcpa/D/Loqhm2ofu4Ln7kx5d1n1O4g2vR3Q/DcepxPVfCUGYFjG3IdbeaIPBWzWKYbJByNMFeo
-	3Ankddb1/0Aa2N+PB+KJi3G9zN+r0y/OV6CSkdHrerKMATUFHFI13m269q2TuwEQxc2bHGyBtnDzz
-	GDHkjG7pYD5UzfyCuZRnHy/cI0X0Gg+3z+4cBiM7PRQGWO5wGX7FcjRt4oHOiOSUCer6JwCNEcNMS
-	0TZ4OTo5qyWdfnOCUkkQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MM5/rUz9fKwll4MRt4ayu7WMyLwbNNOWsfdqgJl+L9U=; b=IrfJ4kQ0n+APQZHprcEYV/UfD3
+	p/qUerEgibGwd4W9qkczg5ciY01Tl6xaoI1YzKDRSr9XMypyQp0nYSKDMCIX1BQY9rzRi1JN2KEKi
+	jCfov9Buwe50+HvM1F1kSDnDF0kQ4BMDNdm/YLQl3hE7XOGFJ3XaKoDQnM5ue7ConBlnnXzRUHSUW
+	+AOnf5hCj21wBSjPTLH9Bh6CpDq21fIR+LHYAjtpKNvFxhAOT7mBpQm003paocmabLDlDVJmNosAh
+	1S40Zy+7vUYk1PXkgca6lHQ947g1sW+aJ8WtKRsjv0zrvF54tqEJK4bgb8g88Ay9ircq/WgHBzSEd
+	FX2XBuqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyAnC-000000028Vw-3Aq1;
-	Thu, 05 Mar 2026 15:39:14 +0000
-Received: from mail-northeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c200::3] helo=DU2PR03CU002.outbound.protection.outlook.com)
+	id 1vyBhm-00000002DbV-3PeX;
+	Thu, 05 Mar 2026 16:37:42 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyAnA-000000028Us-0b2m;
-	Thu, 05 Mar 2026 15:39:13 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=c5Qe0XYvuKejclY5c1ac+RsV1LOU/59br7thbS3kOpXUv1w/9zS9yCkC3IFPbI9SgJHeD67ONHqwGbUwDR4cG5OxFjr8YOFDMgbEVZ1Gz3ASzfhOOx/6zU/tDXZgxBeX+bEnHz30lUkOAZXO5vRL6gD7DYMJ3DBAIhAeA74iGJyW83db/oBzCbVmwfQjDDmw+qiJBw81sfGDx+dtAnQ9kJm9Y754v0h7NP9N7ru/ZYnEQUuxU6np3f8V+nqzAiToG4XGAANFR3UA4bmHSlf+cOclSuDtFDd0ApbNLYnj7oDK5GiVF6IM1v+Anbr43iS0LvsV80JwdR0Fh/5cxfv/eA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=6VxRin8KysyhCj02YvmusAAvE6mSgs4Oip/SOYxQ0OE=;
- b=PF34aEwM5bomFdJQn0UBl3NmHxZh3OvN+rSfhmyFUZN3py+PEu6hgGxwOoSSR3WloKKzcUWN8NkwoZxjsAb5txrS7xeFxNTiIWAxYJTzkOZLNKRnYkG61R8ybp7Q9SkPRcLvz1g/sTBqIqgSiBtIZM55+qa1/moRGZV30b6XvscnXXbc7WZHwBRZgUjX69Km7gnKEiOJsC9lQRfIphdx2/uTqnBe1Vi7APqE1V6a8OKCeWt3Uvv2WAD/iQzgt1u+mcXUE09SrIWR1x6qj+CCYMlGF8rSNLehko5NYqgCD7KWOf8bBq3e5tw+Cb+3v3/T/KnSr69v/SyorBMFZedObQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6VxRin8KysyhCj02YvmusAAvE6mSgs4Oip/SOYxQ0OE=;
- b=CtQ1dr6G+1B+9JaFSczGV3pSFQJDk7i6UeTlyZ0CDD0T+kVfE6vTeB3L9lIyjsVs1yLoXRWByvI7NU7ioyQKacpOTYabKQhrfvEWt+XwaSzpYjbH5RGxgXz9UTNUhuNqeJl5Nxa2JzE5G6o+M+UG//OkeBHd+YJOoc3jU3XRiUWH1MmMhrml43oFB+zXgx3xx4qi7WFPlXsz6jvvT/X7m1vudklv5EymLOi0C4NmWNfJK8CsTfsyXr2uoqreWqucz0P05rAJ2XvSTg/2QbeaUcxc4WOnw24nAONJQcBqAlVWCUhQqtCU2jCNaLZJ+uQ+G+ZXhI/3BqP1ewbmdZ7O3w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by GVXPR04MB10921.eurprd04.prod.outlook.com (2603:10a6:150:227::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9654.22; Thu, 5 Mar
- 2026 15:39:05 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9678.016; Thu, 5 Mar 2026
- 15:39:05 +0000
-Date: Thu, 5 Mar 2026 17:39:00 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Joe Perches <joe@perches.com>
-Cc: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org, spacemit@lists.linux.dev,
-	UNGLinuxDriver@microchip.com
-Subject: Re: [PATCH phy-next 22/22] MAINTAINERS: add regex for linux-phy
-Message-ID: <20260305153900.uyqqux2t42xr3n7y@skbuf>
-References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
- <20260304175735.2660419-23-vladimir.oltean@nxp.com>
- <a8fee1cd-1e69-4a9e-8533-c0988c480fb9@oss.qualcomm.com>
- <20260305085148.7cwo3yflp7vcfldf@skbuf>
- <f3a5aa3df78553ffc0fd0024f5fd36a4e2158c88.camel@perches.com>
- <20260305114352.2f7btqixg4tu5bzl@skbuf>
- <21e84301a7c37f9d5ce6f0ddcaed7846174d2a4d.camel@perches.com>
-Content-Disposition: inline
-In-Reply-To: <21e84301a7c37f9d5ce6f0ddcaed7846174d2a4d.camel@perches.com>
-X-ClientProxiedBy: BE1P281CA0483.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:b10:7e::25) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	id 1vyBhj-00000002Day-2ZDV;
+	Thu, 05 Mar 2026 16:37:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1772728653;
+	bh=hkK2ONkPprV4u/cqSq86tL9InejtreePpSRQTnb8PLU=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=EsfXpCSmuZhSHchk4H9dKF8uIWDrS/h/Rs9mSwFrC6/wam7h4Hom+k4X+lSVYNWmk
+	 FOrNXbQ9o5D50NzH/9Ny8x6y8baD6773xdiWvIms1qe+RxqWa5MZH3hHF9x3lMwYck
+	 wSJFCtQh3hFk4dIoeYyN1k2C6T/xopVoemStz+U4w6PQIhqdZjI9J7FjU0GV+YGaEq
+	 ZmPp8b93LYfRkfLYnGKKsFaAUPlT+H7zOGlZ7p3u8ZHvTZJpp5ljhkDG4hhSpszzz+
+	 3PohMDDYlyXYjQ2QzTu7h4n2xHjjv86LaLv0GSCMFmbEBt9mn9CdskePr4K6jpm1LM
+	 mvqUhHG1bragA==
+Received: from [IPv6:2606:6d00:15:210e::5ac] (unknown [IPv6:2606:6d00:15:210e::5ac])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8025F17E027A;
+	Thu,  5 Mar 2026 17:37:31 +0100 (CET)
+Message-ID: <1621b56864cb186f1e5433b73b56afc00aa83452.camel@collabora.com>
+Subject: Re: [PATCH 1/2] [RESEND] media: rkvdec: reduce excessive stack
+ usage in assemble_hw_pps()
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Arnd Bergmann <arnd@kernel.org>, Detlev Casanova	
+ <detlev.casanova@collabora.com>, Ezequiel Garcia
+ <ezequiel@vanguardiasur.com.ar>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Nathan Chancellor	
+ <nathan@kernel.org>, Hans Verkuil <hverkuil+cisco@kernel.org>
+Cc: Arnd Bergmann <arnd@arndb.de>, Nick Desaulniers	
+ <nick.desaulniers+lkml@gmail.com>, Bill Wendling <morbo@google.com>, Justin
+ Stitt <justinstitt@google.com>, Kees Cook <kees@kernel.org>,
+ linux-media@vger.kernel.org, 	linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-kernel@vger.kernel.org,
+ llvm@lists.linux.dev
+Date: Thu, 05 Mar 2026 11:37:28 -0500
+In-Reply-To: <20260305152644.791897-1-arnd@kernel.org>
+References: <20260305152644.791897-1-arnd@kernel.org>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|GVXPR04MB10921:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2ff15b9e-df10-4470-ef76-08de7acd5591
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|376014|7416014|366016|1800799024|10070799003;
-X-Microsoft-Antispam-Message-Info: FkyR3+2d8pwLLbtASKz2BTgqEsbJZvyd4GL0UGrUhNc0uOLPRsCW+b+q0hrHr4epSD5rTHOz6p4UhHgsqoe3CTRO7Ofb04Awpv5qUmutwDpw+aujIj3iNFNuIN9mv6Nhza7vgdGf6jg44RU06GEzs2MjSYblRu2/q9QCG0slYBkjtPJ06a27WmveKJ38GUILSJEbBPilYAcLmmWT32gx1xujFsbNANqCkXck6zUFVT+FX081wROqyA28XrSr6V6Ms+1gFX3cZbhKAfo45px6isfWMw2U+U3IRbk6wkmygice5DZQurzgA3OfMXx5H7sMUEapFvSbJbC1CDBYCV9UbKiL1SGP1NN3Dz4++aO/ooKk/tKdjmjV04FhJ1R26zW2keEwrgJitR558It6j30sb+W7yUilcgr4kjI5twd9iwCr0vSnzqDJCQWYjuLHg6nVe5Ha3IIyyiTd0SvIKM+kh7uofQJkbqteZYYoW5teSlb0Pfs0vSMvZb9nFCInxiGYgluOhPlZ+3y1mCuqD6NlTrrgU/Ruv5rq2XqjmBRasOOwCBx1jYxEw8WAT9MFzTCzkR21QFR7VMZ9ZFf7gy3e6qcmXIc7e0ILc9tCkf39aEJ4GMHkWb+Th+yaFyz1rGM/vhgM1pWRslseBeYBnEPYwsQH2erWvGm12+lJTjV29uecJ4nBrXERjZoI6cmeD+TeQlnOUwL2BrxXFTQJCbB1DV4QarOrS8En2uR1L0hwmzU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(376014)(7416014)(366016)(1800799024)(10070799003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?iV0lPw0y46EBJuYnuG2g8xGBML+rAX4quNQ1LeoxLBVd5d4+dkFezDUjMy6v?=
- =?us-ascii?Q?q6eE6JSimNM2h1PhpYS7V4MdA6cimUjcV7PuUoRfr8+HuZSx2bwrUixEjDXv?=
- =?us-ascii?Q?U2uoz1AlanH3dbKDQO55Rg1QbNv/NNoMEXqWKJNGtP4zmmcCUMoGnXptHEEt?=
- =?us-ascii?Q?+7HelXIleaW7iP3S4oyZmKxZKansAdagtb5EAE2dHMUiPj2gwzDVt4wL2Wdd?=
- =?us-ascii?Q?7ovQX8qOKqG9YV/m10UtzzHBr6U6cqFTm7sSmsYHZQQergp5b3tH1XtjpInk?=
- =?us-ascii?Q?gcTILtAESx+UcStHv7II6vjAnrlNecFZDjdcEjebyl+eFelz08QgbJFfOlTG?=
- =?us-ascii?Q?Mcy9k4yoWkI8R8jeJHnSXP/BDMQGSpAIfs9c5z3ugHl62lwfq5Vju+vp965R?=
- =?us-ascii?Q?tcQnJ9PgSMbRxb4O3mATrf5+YaAVl84Nsj7r/Ft8o+lj9tCyWEdBqI+Ym2Mi?=
- =?us-ascii?Q?vWC81HLz1JeA/hG2Ipz02GVftqAbC/JrAQiV3RenDAiZqFxfp7oU5H9F2YTh?=
- =?us-ascii?Q?sFf3x6u/lN6LD6lPadZ6MgefdNABC60OfjWoEkHd78KKVQVHcfvafVYCdQAt?=
- =?us-ascii?Q?HNWLzzK3lor09ZnTGYK//ojg/+Rh0L7dYQKM+BXtlXxHy+m9v/s7/vjDr2iD?=
- =?us-ascii?Q?BIv90byvKLhaoMUB8VjU722mNjoUJP6LwHM6f0xKqWzmJ6P+fVGXjs/G4Miy?=
- =?us-ascii?Q?wE100jUSpIbV5Fdw7oZRW4bk7xgbdbAPdcJavJ0X40CtuAr3m8C1GSr4gm3b?=
- =?us-ascii?Q?yo9AIfK61JyUBdpmSOJVs+a/yXz6ygGxTV3WqNTWR0zSpELG1tHxsnX40Caj?=
- =?us-ascii?Q?rgbLz4JVvhBUJk6RN8C2oSMoXCFHMyyeSFcGKw01U/8X6ePWNZZ5Qui5p4mZ?=
- =?us-ascii?Q?EV929FRG1565Qm++3OEUR8GUBVESbdRi+LspUdV6uawV7TeS2EYfMtVlunHl?=
- =?us-ascii?Q?UD5dKrSpZfh68n2q6/EpCi4499FzICqumeuoePQIWnFgEWb1ZF4OTJb2cmKt?=
- =?us-ascii?Q?PpE/qpdbt4lwvCCRmuPxRETgZL4CFdc/UKDIIsE+zuj3CQ8X64hu5qEJigGI?=
- =?us-ascii?Q?fS3OZ5x/8bcXubjRqCL0ibYcR8PGUqesezdF0bZtPDpl3ld3pP77151FwWVV?=
- =?us-ascii?Q?RfzP8lSpfQxyqwk1h+xz08dFfWkEbk4sqIxkP/DKbvLYdZDaTTUsj+daglIv?=
- =?us-ascii?Q?Y6jKjBXWCBvlr0nw3gWZXy9HRtU7dpAZDI2AjIayJf6YBVtck9pkl9MLPgQ3?=
- =?us-ascii?Q?P0CAxTixPEoroxpcmX6VOziXPwKKQGEMA3CT8LVdpNJsX8oTEiAkTGf9ncwg?=
- =?us-ascii?Q?d5j/YVmEDPvFTVtc7fQz97pfRrX3BCNvyHSq+rAamhE5q5g3YnZLc1MyZqLY?=
- =?us-ascii?Q?thckLqDOt9+0dHivIMm7jRkilWQh4PXybPbiPVg1qonghlWfu7kKlBO1aFdN?=
- =?us-ascii?Q?Yvh+2Ayl8UBzScFUs/PLW7klA4ojHnoNuUr67ESXughzM0aI7AE6UP2nZAJ9?=
- =?us-ascii?Q?YM1VVmFwe4RFOUpxRqXJtn0HKYF4T6MwQhEIrNq6Y/vEm9zXF5hZoIPigxPK?=
- =?us-ascii?Q?txotDVaGinvPHGMW7vAFfrcSi0ApGdA3K9Abl0Ur6hYJE9xwjypUPDOhwLua?=
- =?us-ascii?Q?lcTQYplKK3p0Z520OWGgoO3j4TMi9ESaA+oTdrucEil3/hwPp0QTw2FJATcw?=
- =?us-ascii?Q?38DB+I+lN60zFVfNV9mBC3MMxVnPfAIrv22TxV2Ix8EwPI1exGBuUkbDZ/hA?=
- =?us-ascii?Q?qppDUW9FGh04jO9HwcRJvk/J6te6dknqGGFEUuuJo/u8D0S4ZOKcOhAinQUc?=
-X-MS-Exchange-AntiSpam-MessageData-1: L42KdJAWL42DGwfzmwW450MSH2j1Ny5hY1o=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2ff15b9e-df10-4470-ef76-08de7acd5591
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Mar 2026 15:39:05.6675
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: H0Yub7kxEcJrbEz1l8Gc6U27EDpqI+zxMjw6lOfytBUufdrLeSxaBwjSX4BXpzXEg0Ibc6hdOLn6hASyKt3c9Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB10921
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_073912_829530_8AB242F5 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260305_083739_835647_027FA62D 
+X-CRM114-Status: GOOD (  27.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -149,27 +91,203 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4238129336424944739=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 05, 2026 at 07:35:54AM -0800, Joe Perches wrote:
-> On Thu, 2026-03-05 at 13:43 +0200, Vladimir Oltean wrote:
-> 
-> > K:	(?:struct\s+)?phy(?:_ops|_attrs|_lookup|_provider)?\b
-> 
-> You have (?:...)?phy(?:...)?\b
-> 
-> I rather doubt you want anything that ends in phy
-> 
-> That matches words like cryptography and way too many dts/yaml files
 
-Yeah, the struct was meant to be non-optional, thanks for pointing it out.
+--===============4238129336424944739==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-ayQMGRIiYYjBgQDHqjjE"
 
-K:	\bstruct\s+phy(?:_ops|_attrs|_lookup|_provider)?\b
+
+--=-ayQMGRIiYYjBgQDHqjjE
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi,
+
+Le jeudi 05 mars 2026 =C3=A0 16:26 +0100, Arnd Bergmann a =C3=A9crit=C2=A0:
+> From: Arnd Bergmann <arnd@arndb.de>
+>=20
+> The rkvdec_pps had a large set of bitfields, all of which
+> as misaligned. This causes clang-21 and likely other versions to
+> produce absolutely awful object code and a warning about very
+> large stack usage, on targets without unaligned access:
+
+I'm a bit surprised you felt the need for resend. Perhaps you can help us
+understand what made you think your patch wasn't being processed ?
+
+My PR:
+https://patchwork.linuxtv.org/project/linux-media/patch/2074ba5a5d05e239f43=
+2d176eb051105f7e692f9.camel@collabora.com/
+
+And Hans/Mauro did logistic on the #linux-maint IRC channel this morning. I
+believe I've marked all the relevant patches on patchwork our of "New" stat=
+e and
+you have my Rb. What else would help you ?
+
+Nicolas
+
+>=20
+> drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: stack =
+frame
+> size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-Wframe-
+> larger-than]
+>=20
+> Part of the problem here is how all the bitfield accesses are
+> inlined into a function that already has large structures on
+> the stack.
+>=20
+> Mark set_field_order_cnt() as noinline_for_stack, and split out
+> the following accesses in assemble_hw_pps() into another noinline
+> function, both of which now using around 800 bytes of stack in the
+> same configuration.
+>=20
+> There is clearly still something wrong with clang here, but
+> splitting it into multiple functions reduces the risk of stack
+> overflow.
+>=20
+> Fixes: fde24907570d ("media: rkvdec: Add H264 support for the VDPU383
+> variant")
+> Link: https://godbolt.org/z/acP1eKeq9
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+> ---
+> Resending this along with the other patch mainly to point out that
+> this one is still pending as well.
+> ---
+> =C2=A0.../rockchip/rkvdec/rkvdec-vdpu383-h264.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
+ 50 ++++++++++---------
+> =C2=A01 file changed, 27 insertions(+), 23 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> index 97f1efde2e47..fb4f849d7366 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c
+> @@ -130,7 +130,7 @@ struct rkvdec_h264_ctx {
+> =C2=A0	struct vdpu383_regs_h26x regs;
+> =C2=A0};
+> =C2=A0
+> -static void set_field_order_cnt(struct rkvdec_pps *pps, const struct
+> v4l2_h264_dpb_entry *dpb)
+> +static noinline_for_stack void set_field_order_cnt(struct rkvdec_pps *pp=
+s,
+> const struct v4l2_h264_dpb_entry *dpb)
+> =C2=A0{
+> =C2=A0	pps->top_field_order_cnt0 =3D dpb[0].top_field_order_cnt;
+> =C2=A0	pps->bot_field_order_cnt0 =3D dpb[0].bottom_field_order_cnt;
+> @@ -166,6 +166,31 @@ static void set_field_order_cnt(struct rkvdec_pps *p=
+ps,
+> const struct v4l2_h264_d
+> =C2=A0	pps->bot_field_order_cnt15 =3D dpb[15].bottom_field_order_cnt;
+> =C2=A0}
+> =C2=A0
+> +static noinline_for_stack void set_dec_params(struct rkvdec_pps *pps, co=
+nst
+> struct v4l2_ctrl_h264_decode_params *dec_params)
+> +{
+> +	const struct v4l2_h264_dpb_entry *dpb =3D dec_params->dpb;
+> +
+> +	for (int i =3D 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
+> +		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> +			pps->is_longterm |=3D (1 << i);
+> +		pps->ref_field_flags |=3D
+> +		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD)) << i;
+> +		pps->ref_colmv_use_flag |=3D
+> +		 (!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE)) << i;
+> +		pps->ref_topfield_used |=3D
+> +		 (!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
+> +		pps->ref_botfield_used |=3D
+> +			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) <<
+> i;
+> +	}
+> +	pps->pic_field_flag =3D
+> +		!!(dec_params->flags &
+> V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
+> +	pps->pic_associated_flag =3D
+> +		!!(dec_params->flags &
+> V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
+> +
+> +	pps->cur_top_field =3D dec_params->top_field_order_cnt;
+> +	pps->cur_bot_field =3D dec_params->bottom_field_order_cnt;
+> +}
+> +
+> =C2=A0static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> =C2=A0			=C2=A0=C2=A0=C2=A0 struct rkvdec_h264_run *run)
+> =C2=A0{
+> @@ -177,7 +202,6 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> =C2=A0	struct rkvdec_h264_priv_tbl *priv_tbl =3D h264_ctx->priv_tbl.cpu;
+> =C2=A0	struct rkvdec_sps_pps *hw_ps;
+> =C2=A0	u32 pic_width, pic_height;
+> -	u32 i;
+> =C2=A0
+> =C2=A0	/*
+> =C2=A0	 * HW read the SPS/PPS information from PPS packet index by PPS id=
+.
+> @@ -261,28 +285,8 @@ static void assemble_hw_pps(struct rkvdec_ctx *ctx,
+> =C2=A0		!!(pps->flags & V4L2_H264_PPS_FLAG_SCALING_MATRIX_PRESENT);
+> =C2=A0
+> =C2=A0	set_field_order_cnt(&hw_ps->pps, dpb);
+> +	set_dec_params(&hw_ps->pps, dec_params);
+> =C2=A0
+> -	for (i =3D 0; i < ARRAY_SIZE(dec_params->dpb); i++) {
+> -		if (dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_LONG_TERM)
+> -			hw_ps->pps.is_longterm |=3D (1 << i);
+> -
+> -		hw_ps->pps.ref_field_flags |=3D
+> -			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_FIELD))
+> << i;
+> -		hw_ps->pps.ref_colmv_use_flag |=3D
+> -			(!!(dpb[i].flags & V4L2_H264_DPB_ENTRY_FLAG_ACTIVE))
+> << i;
+> -		hw_ps->pps.ref_topfield_used |=3D
+> -			(!!(dpb[i].fields & V4L2_H264_TOP_FIELD_REF)) << i;
+> -		hw_ps->pps.ref_botfield_used |=3D
+> -			(!!(dpb[i].fields & V4L2_H264_BOTTOM_FIELD_REF)) <<
+> i;
+> -	}
+> -
+> -	hw_ps->pps.pic_field_flag =3D
+> -		!!(dec_params->flags &
+> V4L2_H264_DECODE_PARAM_FLAG_FIELD_PIC);
+> -	hw_ps->pps.pic_associated_flag =3D
+> -		!!(dec_params->flags &
+> V4L2_H264_DECODE_PARAM_FLAG_BOTTOM_FIELD);
+> -
+> -	hw_ps->pps.cur_top_field =3D dec_params->top_field_order_cnt;
+> -	hw_ps->pps.cur_bot_field =3D dec_params->bottom_field_order_cnt;
+> =C2=A0}
+> =C2=A0
+> =C2=A0static void rkvdec_write_regs(struct rkvdec_ctx *ctx)
+
+--=-ayQMGRIiYYjBgQDHqjjE
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaamxSQAKCRDZQZRRKWBy
+9ABOAQCelVLDB2BDEu/lz95fCXShra2NCxpj8lLTj+SppYTgMQEA/RTLk5CjmWVI
+lwRwZRetjCIJCD0IU/MonDof26WGwwg=
+=sLJA
+-----END PGP SIGNATURE-----
+
+--=-ayQMGRIiYYjBgQDHqjjE--
+
+
+--===============4238129336424944739==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4238129336424944739==--
+
