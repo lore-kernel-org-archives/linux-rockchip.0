@@ -4,57 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D6F2EEF30A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 06:54:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60DF6EEF313
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 07:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-ID:MIME-Version:To:Cc:
-	Date:References:In-Reply-To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JuVXke0OHZipla8HQkxQF7+zant4v3F3LlWPSz17Koc=; b=XtHNxW4IY6YlRt
-	3KNnte7aPPDkaU4SSdPwGxLlsuX/gGNRYGqeMw+JgiMgkLoKvY1+EOE7mNSW4eUMdwQtTV74rifj+
-	NKt+6BY4Fkcx5NTnBVDJZ7rJa0wLfalD76QlREomwzCs5INUHGt9BfDlXuytvMvUiwfZ3RpFduT0A
-	nVK3yssX5mJO/k80+NzZQIFmoFNUxg85P8qV7OwjuL1+v7GODoFm+ODyGstGcMYRIyg6xhjjJCjLz
-	ewztDcoSrFCfY63x6HBZQMEMtezWmAO/ebB+Rixo4dRqfsfO0+r+06+tZytx7CM4I5ymf/AcsSTCo
-	3Pyl2J5FJGisn748tGDg==;
+	List-Owner; bh=Hnxq1d+lgPioPMakGL6rm7Iy6v2ZFIbga1jMDfPJOsk=; b=F3YfbygYYjdAdQ
+	tEVdMK5obYj4Z5vDAGARd1JBgp8x0sWIUPFXdBn7apHZyQYL0Ydp8g5GofT43kA+XMSuD7cd2ufPl
+	aVjvriYu/zzoML8M61gh/Xsd1CjbOQCHnk0Xp3gOE/cB8iizbsoUnEBhqc6ZKnJbbtDWqOONBV+J1
+	44Libnv5mHRYSkFJhh0rq2B6AYzVro+PnIEAINlQcxjc3dxtASQzGrObOt+KgPzJzMrR0bbIBxVW1
+	36LH3R3ZOPNB7M8PZtGf2h3t5gpCnvw1Wyy6E/XBUB788d2DatOZuJvTaGUjxW95/FYyK+qoCR0od
+	VsP6JkZcLGbxjyH0heeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy2bj-0000000135a-0FDu;
-	Thu, 05 Mar 2026 06:54:51 +0000
-Received: from mail1.manjaro.org ([142.132.176.110])
+	id 1vy33K-000000015NV-2ts7;
+	Thu, 05 Mar 2026 07:23:22 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy2bf-0000000133w-3k9h;
-	Thu, 05 Mar 2026 06:54:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPA id 199BF4211B;
-	Thu,  5 Mar 2026 07:54:39 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=manjaro.org; s=dkim;
-	t=1772693683; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=dErXW1Jpzv3QJs1jd2FdC9ztVSxwa/zpnT9DC9MGvBE=;
-	b=oy5bvIDW2Sp5DqZl+Y6XZL9oslOctdG42e1H2jUw7REGuEZTv5+udzyBMdK1cwkxGtrr8o
-	idK5lp2XAr9PCRrOcomg7q33vZxI+XSWPs/IZUEqtAnaFq1S7DFuePb12tNjrhNibroCQ3
-	guGgsMgu2CrQfdvJyslI5x84U312jgp9sXpwFNP3NW1qExG8lKtsXmWB0Pv/CS+Y8RsTsB
-	WDetmyBplXVUTvH4JYu24g7AVW8e6hMWanoqOTYw5TyNynDQR8c7wMUYGdK4bEb3fIC+Bc
-	5t7XFzBqzU+YLDozg635lQuo9cWbqwSCMvElG0x5Pp0L2T4vun3ZTQyf1Saplg==
-From: "Dragan Simic" <dsimic@manjaro.org>
-In-Reply-To: <aakEQ_qtBbYCaUsA@geday>
-References: <cover.1772239598.git.geraldogabriel@gmail.com>
- <2a0a4aa97bb8b0cb511cb651c5d66c9ec8bab97a.1772239598.git.geraldogabriel@gmail.com>
- <d2b91260-7666-3606-69ec-0e7cb7a48c02@manjaro.org> <aakEQ_qtBbYCaUsA@geday>
-Date: Thu, 05 Mar 2026 07:54:39 +0100
-Cc: "Shawn Lin" <shawn.lin@rock-chips.com>, "Lorenzo Pieralisi" <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, "Manivannan Sadhasivam" <mani@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas" <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-To: "Geraldo Nascimento" <geraldogabriel@gmail.com>
+	id 1vy33H-000000015MC-0SVV
+	for linux-rockchip@lists.infradead.org;
+	Thu, 05 Mar 2026 07:23:20 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-439af00d33cso4435014f8f.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 04 Mar 2026 23:23:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1772695397; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Lq+TiWny8Z9kxlnGTirHw6HAz45H+bHsHfHpAZro0MRivbtz0VSi5sv7TDCUzwYDWV
+         AYwfuZXdBcNI8aSDHgydXpj5jYR9Tj+8QEOcqQ4Lx3UnEsZKNP9bWMeFFKksKYxaCmek
+         kcbbbpbr58mg9nzH4AqUv0I4NzBCU9mAT1ZKoDeklZs8QMe4iYBgoXVt3ywY/dVrrdet
+         HEknxRN7KnK5Mf1PuRlphKq6PMS0oNqk6OnotgICQd+OTvI0iWyJ9HDYvRaHIH2gMWjx
+         p/jDHGNhxZPvnyCUEIsP5kqACYRj10dmQplFfRzXZD9nqrfsJxxhcmMh3n5/SDqd/bc/
+         d8Ig==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=DfTie6sjjRqoc8VvjGkPKWkDcR9MnH5s+DJKluUMEqw=;
+        fh=/wo+N+Df/tfpiJbuf7KgWT8jCVuTXiaIujGkNVCAzkQ=;
+        b=O+4K0vxB4lE5sMwqy9aKwnATpzuQ/5pacJ9+n+fC8b+7mae4bPmdaWfPJrFBH0rOkB
+         DtCg0Sj7j20BJbnH770GRUGQDwPAqtwW0TrXLEXALq86bnnIalGDJN46vPKPeanrCUmT
+         uN/aUJ69zIdLo8gczdoAhEPoekCtkeeHeTLDGK6TSAx21gwwYvNZrRdem7fxAuUZd3WP
+         3lLri4NwcI3BVhIBl/O3qDaEblR2CTS8C86EfN1SFpF2m8mXDAY5cqhG+cQj+f08z7PT
+         DrHrsRjNyFGgQ7TnL4L6sGLb0uCUiPCbiGFSEOst+lJwBPNY2mK30jQ4Hk4kshbuc47e
+         ds5A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1772695397; x=1773300197; darn=lists.infradead.org;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=DfTie6sjjRqoc8VvjGkPKWkDcR9MnH5s+DJKluUMEqw=;
+        b=Rtua5nYzH9tmiQwdQbQhv8rKX1kFdMWOVwVKwPznak+rngJOBRwS9wY1wn2tkupwQC
+         bW2jO61OBcpZF9htvasheehXweDswXs4Ey8z70UqT7Ug38FPG6ZKqCnQOVCOckDTUilv
+         kAplVZ1oWGpCJmZeutjK4VqoQbKEbrN26JR/PMDEtE/S6uTXcXC36xNZdRCeHUHAI+tp
+         2/BsQxZptfjEKI/tIYMt05fh8qizXHsrUPXyh3g/QnYNakrm+lopKK7dj7OURMP6hGQV
+         3XF+/KM1ajP1aBWd+ApADam3h/xEOlVhtNvrP0mq9yhGz9T8RsgLGUR2dn8G1Vrl99Gl
+         neIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1772695397; x=1773300197;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=DfTie6sjjRqoc8VvjGkPKWkDcR9MnH5s+DJKluUMEqw=;
+        b=EmPM4C0DWjiaiJujhWcbtiw+ovl/njekPBXbiHSkKuM1cF4rrXx9sCPxmbj5lH6qyM
+         6VkQsHzZsh6D9V+Nl+hz3bif3n3Eanp+klFjZRcpfBasy5wYBlGybXidk3AgwDd59FRi
+         TfmSga5PJDt/etMdjg7vVkttCirnMC8fFh9hMEIzh41lieijdgckXxWnnuKsxEYHw0kt
+         1NxXu+uCbmCmE/WRmXUygPenxbVLNenJw1y4sPxZm8t4pd5fvFKnu34bEKc9t/gpUwuY
+         87HhI+bboTm/oMMXsJoU7zchcNYqndEOpNjBKM/9qt0pomUDbRwlkJ7pdSGTLs0/kl14
+         NU2Q==
+X-Forwarded-Encrypted: i=1; AJvYcCXDn03Dk0DJG1T4oHHfPADa1jSN96it5eWD+EneG2c2IXZOb2Q+YeJMuJxPHibublkLjknPuL/qHUEyibAFOA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwpgzBGeGG8e0FkSXADBZBozqb67VJgSEiFc6dclfvtSXYfZCBb
+	SIeQeZMsGVYRc3E26QnoIVSiltYQXmgra1Qbx4livIF/NAcnULAfoL6JOjfdyVHlMV6M5f83SQ7
+	CsMuUg000vlxSSUXcsmpKS1duX4Qm7oQ=
+X-Gm-Gg: ATEYQzxo+LAD3MCfkPulT/GTGoscwhWGGkB08UkEC+9jEXxAif03PcS81h96L17Mk8h
+	QKcgdiD5Fneu8XyyYv0XLcTsstrRRMmoQlUyLKuI4OhmkiUhpf3haHn3dEEo7hXT20Pu3AVdrbS
+	jyU9sBxjRgPNsnd1y+Na1UhSHeCVYLSrMZdIY0xbrBsoBBuzZDU+HiVbBXo+sOpYZOPr6qMpSLi
+	Sv7RvS3u7BdT/Xv1QKuYDMiOsbEzudCnl8M4/XeNRimn1PvQDoWoA0VU8Jo9S4S50QSALZ8Lrz+
+	SBeeJrRoBgPfV/ix0fRerSTy+XDJcTtdmzWU5KU=
+X-Received: by 2002:a05:6000:430e:b0:439:b791:f91b with SMTP id
+ ffacd0b85a97d-439c7fad55cmr8856048f8f.13.1772695396641; Wed, 04 Mar 2026
+ 23:23:16 -0800 (PST)
 MIME-Version: 1.0
-Message-ID: <5299c7c8-7593-6b0b-5def-8f0bdaecd8f9@manjaro.org>
-Subject: =?utf-8?q?Re=3A?= [PATCH v5 3/4] =?utf-8?q?PCI=3A?==?utf-8?q?_rockchip=3A?= 
- drive at =?utf-8?q?2=2E5?==?utf-8?q?_GT/s=2C?= error other speeds
-User-Agent: SOGoMail 5.12.3
-X-Last-TLS-Session-Version: None
-X-Rspamd-Fuzzy: 92c42003f999b2e674c87b253aa06c9cc4c940f5231e4605c1cd9f8098bf9aa98d30a83a9928210ba715e9c0d2880cee688bb95b719aaf896ecda919cea7cf50
+References: <20260228205418.2944620-1-dennis@ausil.us> <20260228205418.2944620-3-dennis@ausil.us>
+ <CALWfF7LZV07x7zAgufE_aa58s7x6e_ODAM2LgZqjbEakDticpA@mail.gmail.com>
+ <CAABkxwsJ2ZnytCcHEvXWzNkjwzNThoTR23FAeHJLdf4JjXJEMg@mail.gmail.com>
+ <CALWfF7+gdNqSgzk4uAnVRkG8vT9FwJDV46VXpb26hd7BzdaGcw@mail.gmail.com> <CAABkxwtG2e5LpjS-sScmn46DY3eXd6tyNCc1oNHKqoaO+PVwuA@mail.gmail.com>
+In-Reply-To: <CAABkxwtG2e5LpjS-sScmn46DY3eXd6tyNCc1oNHKqoaO+PVwuA@mail.gmail.com>
+From: Jimmy Hon <honyuenkwun@gmail.com>
+Date: Thu, 5 Mar 2026 01:23:05 -0600
+X-Gm-Features: AaiRm51FK2TekjfReO5yyq_AsAFtqk-i8QQCiDNrxrloJyJp6EjAnYYZQPYBnc0
+Message-ID: <CALWfF7+_wRDW1UpV-Z05OOqQYDH=mS50aqKf46WvdHJubg7gKA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Orange Pi 5 Pro board support
+To: Dennis Gilmore <dennis@ausil.us>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, FUKAUMI Naoki <naoki@radxa.com>, 
+	Hsun Lai <i@chainsx.cn>, Jonas Karlman <jonas@kwiboo.se>, Chaoyi Chen <chaoyi.chen@rock-chips.com>, 
+	John Clark <inindev@gmail.com>, Michael Opdenacker <michael.opdenacker@rootcommit.com>, 
+	Quentin Schulz <quentin.schulz@cherry.de>, Andrew Lunn <andrew@lunn.ch>, 
+	Alexey Charkov <alchark@gmail.com>, Peter Robinson <pbrobinson@gmail.com>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260304_225448_297779_2D7C8C10 
-X-CRM114-Status: GOOD (  38.08  )
+X-CRM114-CacheID: sfid-20260304_232319_178319_2412DA30 
+X-CRM114-Status: GOOD (  18.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,118 +120,47 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Geraldo,
-
-On Thursday, March 05, 2026 05:19 CET, Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
-> On Sat, Feb 28, 2026 at 07:16:41AM +0100, Dragan Simic wrote:
-> > On Saturday, February 28, 2026 01:55 CET, Geraldo Nascimento <geraldogabriel@gmail.com> wrote:
-> > > Configure the core to be driven at 2.5 GT/s Link Speed and ignore
-> > > any other speed with a warning. The reason is that Shawn Lin from
-> > > Rockchip has reiterated that there may be danger of "catastrophic
-> > > failure" in using their PCIe with 5.0 GT/s speeds.
-> > > 
-> > > While Rockchip has done so informally without issuing a proper errata,
-> > > and the particulars are thus unknown, this may cause data loss or
-> > > worse.
-> > > 
-> > > This change is corroborated by RK3399 official datasheet [1], which
-> > > states maximum link speed for this platform is 2.5 GT/s.
-> > > 
-> > > [1] https://opensource.rock-chips.com/images/d/d7/Rockchip_RK3399_Datasheet_V2.1-20200323.pdf
-> > > 
-> > > Fixes: 956cd99b35a8 ("PCI: rockchip: Separate common code from RC driver")
-> > > Link: https://lore.kernel.org/all/ffd05070-9879-4468-94e3-b88968b4c21b@rock-chips.com/
-> > > Cc: stable@vger.kernel.org
-> > > Reported-by: Dragan Simic <dsimic@manjaro.org>
-> > > Reported-by: Shawn Lin <shawn.lin@rock-chips.com>
-> > > Signed-off-by: Geraldo Nascimento <geraldogabriel@gmail.com>
-> > > ---
-> > >  drivers/pci/controller/pcie-rockchip.c | 15 +++++++++------
-> > >  1 file changed, 9 insertions(+), 6 deletions(-)
-> > > 
-> > > diff --git a/drivers/pci/controller/pcie-rockchip.c b/drivers/pci/controller/pcie-rockchip.c
-> > > index 0f88da378805..2f211d1f4c7c 100644
-> > > --- a/drivers/pci/controller/pcie-rockchip.c
-> > > +++ b/drivers/pci/controller/pcie-rockchip.c
-> > > @@ -66,8 +66,10 @@ int rockchip_pcie_parse_dt(struct rockchip_pcie *rockchip)
-> > >  	}
-> > >  
-> > >  	rockchip->link_gen = of_pci_get_max_link_speed(node);
-> > > -	if (rockchip->link_gen < 0 || rockchip->link_gen > 2)
-> > > -		rockchip->link_gen = 2;
-> > > +	if (rockchip->link_gen < 0 || rockchip->link_gen >= 2) {
-> > > +		rockchip->link_gen = 1;
-> > > +		dev_warn(dev, "invalid max-link-speed, fix your DT\n");
-> > > +	}
-> > 
-> > I'd suggest using a bit more formal message here, like the one below,
-> > which would also avoid addressing the user directly:
-> > 
-> >   "Invalid max-link-speed found, limited to Gen1 to avoid data corruption"
-> 
-> We really should spare on characters here, but I see your point and will
-> try to cook up a better way.
-
-Makes sense, so perhaps just "Limited to Gen1 to avoid data corruption"
-should be fine for the purpose, because anyone attempting to get rid
-of that warning should search for what emitted it in the kernel source,
-which would provide them with further information.
-
-> > >  	for (i = 0; i < ROCKCHIP_NUM_PM_RSTS; i++)
-> > >  		rockchip->pm_rsts[i].id = rockchip_pci_pm_rsts[i];
-> > > @@ -147,12 +149,13 @@ int rockchip_pcie_init_port(struct rockchip_pcie *rockchip)
-> > >  		goto err_exit_phy;
-> > >  	}
-> > >  
-> > > -	if (rockchip->link_gen == 2)
-> > > -		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_2,
-> > > -				    PCIE_CLIENT_CONFIG);
-> > > -	else
-> > > +	if (rockchip->link_gen == 2) {
-> > > +		/* 5.0 GT/s may cause catastrophic failure for this core */
-> > > +		dev_warn(dev, "5.0 GT/s may cause data loss or worse\n");
-> > > +	} else {
-> > >  		rockchip_pcie_write(rockchip, PCIE_CLIENT_GEN_SEL_1,
-> > >  				    PCIE_CLIENT_CONFIG);
-> > > +	}
-> > 
-> > I don't think we need to emit a warning here, because, as we've already
-> > established through earlier discussions, the rockchip_pcie_init_port()
-> > function should never receive an invalid speed value.
-> 
-> Just as a lame excuse, those messages were everywhere in the mid of my
-> development, this is one that escaped deletion, will drop.
-
-Thanks.
-
-> > >  	regs = PCIE_CLIENT_ARI_ENABLE |
-> > >  	       PCIE_CLIENT_CONF_LANE_NUM(rockchip->lanes);
-> > 
-> > It would make most sense to squash all three patches in this series
-> > into a single patch, because they all form a single logical unit, which
-> > introduces changes that are just going to be harder to track down later
-> > if it's all scattered into multiple separate patches.
-> 
-> I agree, having all drops in one big patch is the better tactic here.
-> 
-> > The only possible issue with the squashing comes from the inability to
-> > have different patch subject prefixes for different driver changes, but
-> > I think that's actually not an issue.  The long-term benefits of having
-> > everything as a single patch outweighs the benefits of having different
-> > patch subjects with separate patches.
-> 
-> Sure, will do so for v6.
-
-Thanks, but as Manivannan pointed out, having the changes split across
-a couple of patches actually comes with benefits.
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVGh1LCBNYXIgNSwgMjAyNiBhdCAxMjo1MOKAr0FNIERlbm5pcyBHaWxtb3JlIDxkZW5uaXNA
+YXVzaWwudXM+IHdyb3RlOgo+Cj4gT24gVHVlLCBNYXIgMywgMjAyNiBhdCA5OjQ14oCvUE0gSmlt
+bXkgSG9uIDxob255dWVua3d1bkBnbWFpbC5jb20+IHdyb3RlOgo+ID4KPiA+IE9uIFR1ZSwgTWFy
+IDMsIDIwMjYgYXQgMTo0M+KAr1BNIERlbm5pcyBHaWxtb3JlIDxkZW5uaXNAYXVzaWwudXM+IHdy
+b3RlOgo+ID4gPgo+ID4gPiBPbiBNb24sIE1hciAyLCAyMDI2IGF0IDExOjU34oCvUE0gSmltbXkg
+SG9uIDxob255dWVua3d1bkBnbWFpbC5jb20+IHdyb3RlOgo+ID4gPiA+Cj4gPiA+ID4gSGkgRGVu
+bmlzLAo+ID4gPiA+Cj4gPiA+ID4gU29tZSBjdXJpb3NpdGllcyBiZWxvdywKPiA+ID4gPgo+ID4g
+PiA+IE9uIFNhdCwgRmViIDI4LCAyMDI2IGF0IDI6NTTigK9QTSA8ZGVubmlzQGF1c2lsLnVzPiB3
+cm90ZToKPiA+ID4gPiA8c25pcD4KPiA+ID4gPiA+ICsKPiA+ID4gPiA+ICsgICAgICAgLyogUHJv
+IHVzZXMgZ3Bpby1sZWRzIGluc3RlYWQ7IHB3bTAgTEVEIGlzIG5vdCB3aXJlZCB1cCAqLwo+ID4g
+PiA+ID4gKyAgICAgICAvZGVsZXRlLW5vZGUvIHB3bS1sZWRzOwo+ID4gPiA+IDxzbmlwPgo+ID4g
+PiA+ID4gKwo+ID4gPiA+ID4gKyAgICAgICBncGlvLWxlZHMgewo+ID4gPiA+ID4gKyAgICAgICAg
+ICAgICAgIGNvbXBhdGlibGUgPSAiZ3Bpby1sZWRzIjsKPiA+ID4gPiA+ICsgICAgICAgICAgICAg
+ICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+ID4gPiA+ID4gKyAgICAgICAgICAgICAgIHBp
+bmN0cmwtMCA9IDwmbGVkc19yZ2I+Owo+ID4gPiA+ID4gKwo+ID4gPiA+ID4gKyAgICAgICAgICAg
+ICAgIGJsdWUtbGVkIHsKPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGNvbG9yID0g
+PExFRF9DT0xPUl9JRF9CTFVFPjsKPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIGZ1
+bmN0aW9uID0gTEVEX0ZVTkNUSU9OX1NUQVRVUzsKPiA+ID4gPiA+ICsgICAgICAgICAgICAgICAg
+ICAgICAgIGdwaW9zID0gPCZncGlvMSBSS19QQzYgR1BJT19BQ1RJVkVfSElHSD47Cj4gPiA+ID4g
+SG93IGNvbWUgeW91IGRlY2lkZWQgZ3Bpby1sZWRzIGluc3RlYWQgb2YgcHdtLWxlZHMgZm9yIHRo
+aXM/IEdQSU8xIEM2Cj4gPiA+ID4gaXMgbXV4ZWQgd2l0aCBQV00xNV9JUl9NMgo+ID4gPgo+ID4g
+PiB0aGUgZG93bnN0cmVhbSBkdHMgdXNlcyBncGlvLWxlZHMgIHRoZSBHUElPIGNvbWVzIGZyb20g
+dGhlIHNjaGVtYXRpYwo+ID4gSXQgc2hvdWxkIGJlIGZpbmUgdG8gdXBncmFkZSB0byBwd20tbGVk
+cyB3aGVuIGFkZGluZyBpbnRvIG1haW5saW5lLgo+ID4gVGhlIE9yYW5nZSA1IFBsdXMgZGlkLgo+
+ID4gSW4gdGhlIGRvd25zdHJlYW0gRFRTLCB0aGV5IHVzZWQgZ3Bpby1sZWQgZm9yIHRoZSBncmVl
+biBsZWQKPiA+IGh0dHBzOi8vZ2l0aHViLmNvbS9vcmFuZ2VwaS14dW5sb25nL2xpbnV4LW9yYW5n
+ZXBpL2Jsb2IvMjMyZWQ0Yjk3YjY1ZGEyYjdiNjQ3YzRlM2M0OTZmODU5NGI5ZjNmMS9hcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMuZHRzI0wzMS1MMzYK
+PiA+IEJ1dCBpbiB0aGUgbWFpbmxpbmUga2VybmVsLCBpdCB3YXMgY29udmVydGVkIHRvIHVzZSBw
+d20tbGVkLgo+ID4gaHR0cHM6Ly9naXQua2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9n
+aXQvdG9ydmFsZHMvbGludXguZ2l0L2NvbW1pdC9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlw
+L3JrMzU4OC1vcmFuZ2VwaS01LXBsdXMuZHRzP2lkPTIzNmQyMjVlMWVlNzJhMjhhYTdjMmIxZTM5
+ODk0ZTQzOTBiYmY1MWMKPiA+Cj4gPiBKaW1teQo+Cj4gSXMgdGhlcmUgYSByZWFzb24gdGhlIGJs
+dWUgbGVkIHdhcyBub3QgY29udmVydGVkIGZyb20gR1BJTyB0byBQV00sIGFuZAo+IG9ubHkgdGhl
+IGdyZWVuIGxlZCB3YXM/ClRoZXJlIGlzIG5vIFBXTSBtdXhlZCB3aXRoIEdQSU8zIEE2LiBTbyB0
+aGUgb25seSBvcHRpb24gaXMgR1BJTy4KCkppbW15Cgo+Cj4gRGVubmlzCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
