@@ -4,71 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15CB9F30923
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 09:28:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4127F30924
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 09:30:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JJjB9M3CtG35pU4FYUKeG8PTYLXNQ3YfxO+Dgo3nZKs=; b=RKW/g5Hqr1lvusMK3rYb+hH5kG
-	DbK0BATbADFM9576EbRT/E0XrjJ+tJTH2Fs4RVdnqefs2vq8yesWDTLIY7HtO5lBY4tFcuFDr0EGT
-	GQkfxclnBTVRjqkIqiQqFSsOKKFRSakp4/EsI4l9u4HrB+1F45Yc698DHKwCU13pIUueJJtgCNFYp
-	8oM7CoAN6IXdsLd65gwcv2zYCpHt09pOB8WeKKYn70NOp0scj+/pBPEmRX5JjsBw/JANVuIuPpj4T
-	KB3Dl7dZe3zkcMcXSpO1Mt4Gamm6ext1ZZHoUZqkN/UcHqAf/xv90Fxntz6LC+EjZ2skIefqZ0XtA
-	//iFV6Ug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=uaagRNCo3iCspToiEF2iXlVBLLqaRx0hi9sJl5TP/Ho=; b=SNZV6orif6IwsO
+	PdxnBuMgVrDJYMhb5zvP7QE95mbywG8IkgjACgV04c7vXXP/927nc+XM3QjmJ62kbPUTC6dum1yRi
+	7/HGtU3P1WdGToHpK7LLjxRBzusXQg9eZ4w+tjNkO48ZIoKb3x/QAan7DTUqNnQS4opNFxC9wTqpT
+	XbL5CaobFFb30hcm1znmfjSlLnFAm4K2RqnVokWQ0ww8TQVTzNUVBkWGsl0e+J3F2TQbmdNvCfsRf
+	n5+qwhurf4WI8c8HKAaATtoeBK45yWNZBQNLny6wEPYDgKOJw/oASEUWmkelVc9OwapfV/OlxWzDQ
+	OgwFDICBGCPtWm9I3GDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy50B-00000001Nih-3skC;
-	Thu, 05 Mar 2026 09:28:15 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vy52n-00000001OOt-0ALI;
+	Thu, 05 Mar 2026 09:30:57 +0000
+Received: from smtprelay0011.hostedemail.com ([216.40.44.11] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy50A-00000001NiP-48dY;
-	Thu, 05 Mar 2026 09:28:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0E07461340;
-	Thu,  5 Mar 2026 09:28:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 33AF9C116C6;
-	Thu,  5 Mar 2026 09:28:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772702893;
-	bh=eMEdAdxmi5XoFOVsNLtFj1G9gXiGNoC5/esgtPlElrw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=rI7HGIYhSvfO1RmPL7HM9zEdH40BCaFV4GwxZZJjuXF3OASqzHW3jOH+AkqYx0AUG
-	 8+zQ87QG1y13OUntm0/TwT8WYNQXGWcBfbqSBLeGVbvp9AHtZZLURGBdLEfWt2lo5V
-	 le0b7GQewa3RvZOpRCegZPxgVHgc3EDPFkhvqb/ey5q6I/g+xR5SFq7Xmi4x7cFv2O
-	 LZs02z7aN6V4Z4FqV5gW9M+z/My2xLpx74i3BRILn+CmiCr/MAgM8jNnlgIVIOSApw
-	 gDkrtyV4tUll/rdSmRF6JUE2LBOOgLmrk1cCyX9Zc6j1Tn9XC/oz4dzPh3/P0BP/q2
-	 obZnRjiQsVFWg==
-Date: Thu, 5 Mar 2026 10:28:11 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	Andri Yngvason <andri@yngvason.is>, Werner Sembach <wse@tuxedocomputers.com>, 
-	Marius Vlad <marius.vlad@collabora.com>
-Subject: Re: [PATCH v9 02/19] drm: Add new general DRM property "color format"
-Message-ID: <20260305-just-oxpecker-of-reward-e05e4f@houat>
-References: <20260227-color-format-v9-0-658c3b9db7ef@collabora.com>
- <20260227-color-format-v9-2-658c3b9db7ef@collabora.com>
+	id 1vy52k-00000001OMR-08U2;
+	Thu, 05 Mar 2026 09:30:55 +0000
+Received: from omf12.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay04.hostedemail.com (Postfix) with ESMTP id 6EF351A090A;
+	Thu,  5 Mar 2026 09:30:48 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf12.hostedemail.com (Postfix) with ESMTPA id ABA5119;
+	Thu,  5 Mar 2026 09:30:41 +0000 (UTC)
+Message-ID: <f3a5aa3df78553ffc0fd0024f5fd36a4e2158c88.camel@perches.com>
+Subject: Re: [PATCH phy-next 22/22] MAINTAINERS: add regex for linux-phy
+From: Joe Perches <joe@perches.com>
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, Konrad Dybcio
+	 <konrad.dybcio@oss.qualcomm.com>
+Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, Neil
+ Armstrong <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org, 
+	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
+ netdev@vger.kernel.org, 	spacemit@lists.linux.dev,
+ UNGLinuxDriver@microchip.com
+Date: Thu, 05 Mar 2026 01:30:40 -0800
+In-Reply-To: <20260305085148.7cwo3yflp7vcfldf@skbuf>
+References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
+	 <20260304175735.2660419-23-vladimir.oltean@nxp.com>
+	 <a8fee1cd-1e69-4a9e-8533-c0988c480fb9@oss.qualcomm.com>
+	 <20260305085148.7cwo3yflp7vcfldf@skbuf>
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-In-Reply-To: <20260227-color-format-v9-2-658c3b9db7ef@collabora.com>
+X-Rspamd-Server: rspamout07
+X-Rspamd-Queue-Id: ABA5119
+X-Stat-Signature: isin6ba55864u4k7cspzxagise7enff6
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX1+c/QqwBFj4RnbTOHAHP0u/fhPSDrZvfXg=
+X-HE-Tag: 1772703041-391055
+X-HE-Meta: U2FsdGVkX18CpOmWAsQNq/nzIGrueYMCLFpafncVkMPEeWn8lMHmxGid0nuFShmczpxd7LMIQ2HkJXitNrouaAWweblPom1aNWswKBKkaGGCen5irY0lnX3z9ty7T8amhD6qn9Q5wfYeFrX1AAy/tVHr70RJ5jxHv1CzpDKls395qE7TAifFzgOqcxBZ+LxnR/uVacI/Z8SiG+R8Q0lWc4dUv5BUq0HaFG5uC1dlHaBdlDEn65TIo3X5+7C0AcoUpQeypXp8sK9gp+VHT+vsBW/Ta2vT0Zqxi066+g9opvcn5emNN3z91009RwQ+r7ADwt/gmX2gmKTLfK9kac3enKskM+3ua1Jz
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260305_013054_125886_B2628A00 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,133 +78,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6669095645380149577=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Thu, 2026-03-05 at 10:51 +0200, Vladimir Oltean wrote:
+> On Thu, Mar 05, 2026 at 09:39:35AM +0100, Konrad Dybcio wrote:
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> > > index 55af015174a5..bdfa47d9c774 100644
+> > > --- a/MAINTAINERS
+> > > +++ b/MAINTAINERS
+> > > @@ -10713,6 +10713,7 @@ F:    Documentation/devicetree/bindings/phy/
+> > >  F:   drivers/phy/
+> > >  F:   include/dt-bindings/phy/
+> > >  F:   include/linux/phy/
+> > > +K:   \b(devm_)?(of_)?phy_(create|destroy|init|exit|reset|power_(on|off)|configure|validate|calibrate|(get|set)_(mode|media|speed|bus_width|drvdata)|get_max_link_rate|pm_runtime_(get|put)|notify_(connect|disconnect|state)|get|put|optional_get|provider_(un)?register|simple_xlate|(create|remove)_lookup)\b|(struct\s+)?phy(_ops|_attrs|_lookup|_provider)?\b|linux/phy/phy\.h|phy-props\.h|phy-provider\.h
 
---===============6669095645380149577==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="56nzglyxg7oadotv"
-Content-Disposition: inline
+You could use multiple K: entries instead of this monster.
 
-
---56nzglyxg7oadotv
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v9 02/19] drm: Add new general DRM property "color format"
-MIME-Version: 1.0
-
-Hi,
-
-On Fri, Feb 27, 2026 at 08:20:07PM +0100, Nicolas Frattaroli wrote:
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index 4af91e252fbd..b5bc93856ad1 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -579,6 +579,91 @@ enum drm_output_color_format {
->  	DRM_OUTPUT_COLOR_FORMAT_YCBCR420,
->  };
-> =20
-> +/* Do not forget to adjust after modifying &enum drm_output_color_format=
- */
-> +#define DRM_OUTPUT_COLOR_FORMAT_COUNT 4
-
-Maybe we can put that as the last variant of our enum so we don't have
-to always update it?
-
-> +/**
-> + * enum drm_connector_color_format - Connector Color Format Request
-> + *
-> + * This enum, unlike &enum drm_output_color_format, is used to specify r=
-equests
-> + * for a specific color format on a connector through the DRM "color for=
-mat"
-> + * property. The difference is that it has an "AUTO" value to specify th=
-at
-> + * no specific choice has been made.
-> + */
-> +enum drm_connector_color_format {
-> +	/**
-> +	 * @DRM_CONNECTOR_COLOR_FORMAT_AUTO: The driver or display protocol
-> +	 * helpers should pick a suitable color format. All implementations of a
-> +	 * specific display protocol must behave the same way with "AUTO", but
-> +	 * different display protocols do not necessarily have the same "AUTO"
-> +	 * semantics.
-> +	 *
-> +	 * For HDMI, "AUTO" picks RGB, but falls back to YCbCr 4:2:0 if the
-> +	 * bandwidth required for full-scale RGB is not available, or the mode
-> +	 * is YCbCr 4:2:0-only, as long as the mode and output both support
-> +	 * YCbCr 4:2:0.
-> +	 *
-> +	 * For display protocols other than HDMI, the recursive bridge chain
-> +	 * format selection picks the first chain of bridge formats that works,
-> +	 * as has already been the case before the introduction of the "color
-> +	 * format" property. Non-HDMI bridges should therefore either sort their
-> +	 * bus output formats by preference, or agree on a unified auto format
-> +	 * selection logic that's implemented in a common state helper (like
-> +	 * how HDMI does it).
-> +	 */
-> +	DRM_CONNECTOR_COLOR_FORMAT_AUTO =3D 0,
-> +
-> +	/**
-> +	 * @DRM_CONNECTOR_COLOR_FORMAT_RGB444: RGB output format
-> +	 */
-> +	DRM_CONNECTOR_COLOR_FORMAT_RGB444,
-> +
-> +	/**
-> +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR444: YCbCr 4:4:4 output format (ie.
-> +	 * not subsampled)
-> +	 */
-> +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR444,
-> +
-> +	/**
-> +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR422: YCbCr 4:2:2 output format (ie.
-> +	 * with horizontal subsampling)
-> +	 */
-> +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR422,
-> +
-> +	/**
-> +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR420: YCbCr 4:2:0 output format (ie.
-> +	 * with horizontal and vertical subsampling)
-> +	 */
-> +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR420,
-> +};
-> +
-> +/* Do not forget to adjust after modifying &enum drm_connector_color_for=
-mat */
-> +#define DRM_CONNECTOR_COLOR_FORMAT_COUNT 5
-
-Ditto
-
-Maxime
-
---56nzglyxg7oadotv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCaalMqgAKCRAnX84Zoj2+
-dmOPAX92VmruO+gIj35XK8ogbZVYutcf8QCLMn4u+YKllIE7k9+XA+wG0UK9eYuH
-cO1fW3UBfRH+rv+HolxgeR79kVh3vlGJgPBqkn4Am7SomEZ6vyimagwigP2i7czB
-4BUuzmli8g==
-=EFdZ
------END PGP SIGNATURE-----
-
---56nzglyxg7oadotv--
-
-
---===============6669095645380149577==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+And please use (?:<foo>) to avoid capture groups too.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6669095645380149577==--
-
