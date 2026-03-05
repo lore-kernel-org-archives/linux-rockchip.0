@@ -4,134 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC1F3EEF31C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 08:52:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 805A3EEF33D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  5 Mar 2026 09:05:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=d5DCcjk3i3up6aWyVRhRW36YnM+goBuSfpvbqUL/zAM=; b=q6wsGVq4aoEwNj
-	QPmSybtM/TjbunaNZZl7kiutdUvjK0epKbw/z4uy9AYvOe6qZ+Dhd7XMTcTB0uiANti8PT5KjGjPG
-	LVufS3rn2QNap3rN50umjATeG+yqP+mjHyf9YTtpQe/2mV5rbRBJPWYfa5XbMpy7Byuha1wgelq49
-	nE7uIr0Dhgqy4X5uajjRRqifZo2Kyn7Bn1bV1ywF6ql4SdujOecvwLTtRWq0JCGeK/Vune7KMqO1h
-	8yKUyFZpgvqqfUYrtNxdv37L3PdyTjTUykx/kzNSTKaFPSJkWM+u6TgIWIdUW7TRLTJvYyeIJGJJ7
-	Uxv9PGmqvXqzAFxde7cg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9z1diA+9K84pBp44SnVuYRr8kC5LnrR9of1FAts/srE=; b=NAiboSGTGDvfmo
+	XUqe60Nu4MAbm6aF+ZSRgib4rRe29+rDaK9o3RjG8Xjzp4DkpJcLgGTCSE2h6H7oYHZJrqGvOYWB4
+	ym/VFawjv1pGnRjgNigAySZr3HsDU9IN9yZkL9d9bHvH4GpJ9NW8IhBMidzTykLCurOkLoLT4pzs8
+	amWULB8XwFWAfle12iiFQSRAcoNMdhNMoAnIRLYlSjM4Ehm8Gwmxy0Bt4OBUHPIhX4vpFucXbSx0j
+	Hmc+S9XKU4plypaIukAXpm0DooNszep/I6Rw1DuvNpFP8RQQdF6jto1kxZHtlkBOKoNXYqIjocSAe
+	yUOINjIcyJTrHpvpwnrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4R5-00000001FJz-1l4m;
-	Thu, 05 Mar 2026 08:51:59 +0000
-Received: from mail-westeuropeazon11010032.outbound.protection.outlook.com ([52.101.69.32] helo=AM0PR83CU005.outbound.protection.outlook.com)
+	id 1vy4do-00000001HFl-0tRe;
+	Thu, 05 Mar 2026 09:05:08 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vy4R2-00000001FHj-3JBF;
-	Thu, 05 Mar 2026 08:51:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xAByO/jqb6mUdfc1nRUWLmcodNPsbWLQcJoYdh/pu0elyJChyxZFB1dbV0K5Gz6tsLoZlb7t5vHJHH17ORM/JJI0T8QeFYC1W5ZYP4po2776AOrQVFQybb2gN+3Tywefp5DxO6JD9LxrRt08j98QQQS3m6k4cfHyHkfQ4uZy8AwS1w4ORwSQV3ZpVCsENpbsdWeSG8UTRKIBImtWrddnouztkfugKxSiJZLJvNBtkt1O2Hdr5Y4bWV91kZbj/esf26AVMmVXhE9cYcpPl0VEYJzRkrjGtctrycHIeZmeMxM6/6XzEVXQZhqTFr7wbxT1La6sRogx7hwEB0Gj/9u1iA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kn80cKSe+gXqxGplEDzaGs6vJx+xuyMZJX1zgh+9xkI=;
- b=m6nHWl0UM8t31p+Lk9vrhr0s52x1TMfE0LanigWgzFrEYECT03jLszivor1bp+DL5g9pANX8Zm1KWhvG+WbE2eayiiFpFg/cQcxXZ4qnPJG8PINZGFdpWBF7fT8b9QcYknSHm3fWjjH5Q+0PlGxxr/PIBNyjUHTq5dyEAkUmfVRes6UCgP7O2NMTvf3QVbshUi+6Hscq/3Xn538MhKbAdiRsR7EQETQYmv84kFxxwTfoZiHAWp+pnyqZUJczT8kceYJNAC0jKLkpQQkY63TYhwT/9EmcV4JsksL1IxY8DqnG9f7SiSvcICksKlMhXKmf52PbJ7JdWju7MpnvhQUr3Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kn80cKSe+gXqxGplEDzaGs6vJx+xuyMZJX1zgh+9xkI=;
- b=C+bTmHYXiM/8qbNSIABCIW7sPlOtEek3sQptB89NdJ428z0eFOqwSpazkDwqFQH/JKdmi34p1LjZ0VIE8uU0DUVQqLwvNMeOcja9ieQHzcDAy8XuOR51G9FJ5mOGjisuEtBhdCCmZd+k1po/Ov2bteJI1PPnvCU60z6rXKIS0/GrTfKiJ2jCEoYnBokoHu2j0KwUyWGTAdGDW3/5RJiPXX2nH74cZROU5Y5M2WPHSJpWRSc6Hlxi+Quzyj4U/7twafKWWYCDnr0ztcmn69Bha80gisu5YFWqtueb3EgAsdqIJWggSzek1MwxFylKEZ/SpY92HteS7pemO2W14Blnjw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by AM9PR04MB8940.eurprd04.prod.outlook.com (2603:10a6:20b:40b::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9678.18; Thu, 5 Mar
- 2026 08:51:52 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9678.016; Thu, 5 Mar 2026
- 08:51:52 +0000
-Date: Thu, 5 Mar 2026 10:51:48 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org, spacemit@lists.linux.dev,
-	UNGLinuxDriver@microchip.com
-Subject: Re: [PATCH phy-next 22/22] MAINTAINERS: add regex for linux-phy
-Message-ID: <20260305085148.7cwo3yflp7vcfldf@skbuf>
-References: <20260304175735.2660419-1-vladimir.oltean@nxp.com>
- <20260304175735.2660419-23-vladimir.oltean@nxp.com>
- <a8fee1cd-1e69-4a9e-8533-c0988c480fb9@oss.qualcomm.com>
-Content-Disposition: inline
-In-Reply-To: <a8fee1cd-1e69-4a9e-8533-c0988c480fb9@oss.qualcomm.com>
-X-ClientProxiedBy: WA2P291CA0047.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1f::16) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	id 1vy4dk-00000001HDy-2deo;
+	Thu, 05 Mar 2026 09:05:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CEC2A41B4E;
+	Thu,  5 Mar 2026 09:05:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2B124C116C6;
+	Thu,  5 Mar 2026 09:05:03 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772701503;
+	bh=CCLpEYvlxoqg400L58JRWG0E8HGphV4/FeLFDSKOkYA=;
+	h=From:Subject:Date:To:Cc:From;
+	b=bc/kGKJZ0ibUi/NN9IxRD2uOMUgbhElzEWhdq7Y4QhXet3eELFJnQjV7FVnQcH9cu
+	 Yig89dkNqgJewqPYmcYNRf2tGAJvH2Mh6uK3W28q9jIAnDQA9Qijxu1F0HYL8foRQd
+	 V0qtN0rCewp335lvhThdcbZLjkDeqndIh2EcCt8tUq8NLzoCT/sNAAVjYfWlc0zPae
+	 aNElAxT+P+IL2t319cj6xl6pm9VqgMqldnBbyZu36RxDrMa2l2MfjBzpX17heUJbk0
+	 5WI0FB/Qn3w8HA14syv87Cuzu90uvLEqzwWQng/gA8q0MUQcBTgbgfZjAnLlnEiHtJ
+	 L0VGn08pirZrA==
+From: Maxime Ripard <mripard@kernel.org>
+Subject: [PATCH v3 00/14] drm: Create drm_output_color_format enum
+Date: Thu, 05 Mar 2026 10:04:52 +0100
+Message-Id: <20260305-drm-rework-color-formats-v3-0-f3935f6db579@kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AM9PR04MB8940:EE_
-X-MS-Office365-Filtering-Correlation-Id: f3794075-8f10-4c5a-7756-08de7a94722a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|19092799006|7416014|10070799003|1800799024|366016;
-X-Microsoft-Antispam-Message-Info: HVVOfQwxdDmxSz3P8/MbGt4uP1dgx0+vQ35z3nC9LmY/OPQe90dIa6fgFsLF+wE70xpEBm2htokbQf4jpAWudymIfm8J2yNCEcRuRqo5C2XBDA6zkJ1dstfF61J9RNDtSgRE4AAIVN0fVIsm0+o6c4ai/tCPI4WFqhxwDVIG6P4hrp00OWar2Vo4JxWPdVBTC2p1Y49UtXCCbbbjMRI36jDM6BSvKecO/aQNtVNzDlKlDo/xXQUkVpkYvDgDq45BSeLf9vuA3C9RmG0kGTNUzDaZA2AH/QoEiMQ3IXSBaSFy6bOCaIyuN1ow+mHrzvye6hdWMdmwRytoWqF4FKBRmVGZx61EH24WFUWrHk3TmLAf3cj1C5pIe0aj8LLomMCYvBbOVhNTFB6EpzH1ZEiaeWUkgssGptp2Njdo6M6RLZkrM13vGHWqn70+fJR7v2FudCYQ1bGyNDTBg1BuatEynuKmi1WSZbDR5wnE9OkGv8JlZLS+7v86TBRxME1PdfQJh9UaitRfRIUJ4Uqo8DAyg4crxhQh3Nc2tIQ5+beVbuGnSLEzoDJZOX+JP8Gl2jLUpcAafiUf2bzezZL2W9ssZx0i05eVQ7IJr7WRPAVv9cownPUUe6S1fnzTUKjYFGbJLSxtyEgQTaTgNwBICtoyOPuTwWQTf6OR6pW+UTPOfH+arMSo0Q0hcdnf77Gs1a7UEV3BDYwRJ3xijZ6B4An5JPl/K5DNkVCiRpiq5/YnTrM=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(19092799006)(7416014)(10070799003)(1800799024)(366016);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8Wg0RTbJr9xq26XXL3fWxdwYiqnn3CLZVKs7wvIj1p4/glF+msfF3igVUhEk?=
- =?us-ascii?Q?KCrqL4R1O31j4GlOKrxe6L13t/5l1cFMXeuycRmlpnm+hVML5ol4Ix5k9++z?=
- =?us-ascii?Q?ENHi0slX1nFivxmkGsBq2jZ/GE1DdINOegGdgT1LiBqHp1kOUihGBJn2NKFs?=
- =?us-ascii?Q?u6nGJZCRf0GAQywqQh5scqoF6GHMkpDbc2YbtTNOYOxgz3nyd5J1PS7399ps?=
- =?us-ascii?Q?QZsv+uxLSZbqnqddfe/4ml0Z96N1Zrtnp/NQVSp7hhV4WjBPqJ3fPUxxAjP+?=
- =?us-ascii?Q?VRjARKN/+wIQYthv4YYtLEk+5kuPBNdAZJOZYrZv2V7fjXGpb/HUsb9Yk7XZ?=
- =?us-ascii?Q?AOf6Ubz68j+n5jXmUz6QhGG3tXT/BS+otZfXL7m0izOoDysUdFRQjJ+Mtna0?=
- =?us-ascii?Q?ZhNF+Td6TtsFjRzrbqKZjhtctZoDOmi2bEzOGaqYLOi8tazjyOpulv4QFDWp?=
- =?us-ascii?Q?qrNdXS6JqXyLGhnnwUVnydvNsIqR9YrbzDnC5FuWoh3xIQ0+5mFK3ijPN0eZ?=
- =?us-ascii?Q?Vo/vOd3RXOe0oTXlpoo0EehEIMR9THbVxoVjfMsgrhzVmPFgxh6GOOjHyR58?=
- =?us-ascii?Q?8Lu1h72yT3veAsP6kvtoHxzUmtvXCKixC1RBMf/8Sk97St9rkh0H5TYa6S4h?=
- =?us-ascii?Q?XfRW7IDsk7/sNFyMyKyjus0nOQIkcqPY8HEw2NXYerbfhtDi+gxpZFtUg9/4?=
- =?us-ascii?Q?Z1XEPhoT4j/Uhp2ufaUIQiSxqzGF2cMEBivy3NSlfbnBjwu98samuDjiQLm0?=
- =?us-ascii?Q?eEix2pHT2S8KRHOoBjohlTXojoLKZVt0GGbRr7idsAbI+LwaYMiZVOcQKsrn?=
- =?us-ascii?Q?VxzCTrL/pVqi2abrg7QskZdShspViikyZTSLotT61X94gkB/nqAIF5o9v337?=
- =?us-ascii?Q?Upj/zjMlTvsam4s2eyvnXWz35zqSgncttHtPMcurUnutsse5kG21xlerkenB?=
- =?us-ascii?Q?dft9OtJF6j1D8mWsddb5mn6bBefH+eBMNzpzR5LVPlgpjcTU2gCO69lmPZOi?=
- =?us-ascii?Q?FysX+sCdWJLeLPvD0WcHsuJmeyr319aEXLbomL1dD7VN3kw2fvAhugARwiju?=
- =?us-ascii?Q?aldqFp9LnqfD5lGrK0rvWeL95T4bCNwCb6erOrCY4dovC8RHA3b6Os2givgw?=
- =?us-ascii?Q?KC3XN9C5LI2kWRMnKmmiJyYtQdwZ9yR5ceMLMktcDNerCi0Umt3RiTH8Mjue?=
- =?us-ascii?Q?Xh9eGrTuhykA/BB+HllPlGSAGN+cc7n6XuJWX7BtA4Yoaks5yVQRrVXiX4s9?=
- =?us-ascii?Q?NCCeqAjChN6GQyZMzZUdwMih9h1pNSkDssrt2c18HczGr/dZgooC4Inouxjn?=
- =?us-ascii?Q?ozb8ms/EvkClLQ2whMD9Xz3mkKFgp70E52b0VOjBzO5mDfWK3sJHK85/A9TG?=
- =?us-ascii?Q?poeHie6ggNcL8VOqu4x4pKjWtCxMzKkuOVMAKhy4maRK5EKllvs2e77iZ3vc?=
- =?us-ascii?Q?Tigh0A5HwW+xT7T+5T26pufK7ap4/7rTt1ycR9NX++6ZYOaX8FXn+JzBq0ii?=
- =?us-ascii?Q?ZQlRqfeP4EA54jerfCOFefliHhxgVGiXBgwBrnxjutI99pYBEX3cwDFvisxr?=
- =?us-ascii?Q?/QlTnIxu5DjY+Wg8k/Q48pZXHqGOGBTzD4bLpL1gh9WjwxP5oO1UXltbRWgA?=
- =?us-ascii?Q?xw9w/deTkKZ9KGyzotH1bJHA//64/ANkkd+hwBFyJQY9ds1dPIZuOe0xHTuG?=
- =?us-ascii?Q?/7Xug35243duqW9muCFVZH4AkTRtwBkywcDDw1cySXdFOog3U4HMzw2uKKMN?=
- =?us-ascii?Q?4PSdUyo3njuFZnydZVcvx5cJookxkeuml7OASINihJWnyA7cuUqquTrX1RCK?=
-X-MS-Exchange-AntiSpam-MessageData-1: fWnlM+bZmrVk06iF7ehT70ZwXbi6ZEOkcK8=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f3794075-8f10-4c5a-7756-08de7a94722a
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 Mar 2026 08:51:52.5667
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: KEuVcQAeBdYuEQfCMqrD9vqGTo4XMNyAvV0aKCkz9TdQwqrWu+DWT/dWho4m8aKp9DX/eUS9C6p2HqafjCcG2g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8940
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/43NzQ6CMAzA8VchO1vDCgH05HsYD2MrsPAx05GpI
+ by7g5NejL39m/TXRXhiS16ck0UwBeutm2Jkh0ToTk0tgTWxBaZYpIg5GB6B6eG4B+0Gx9A4HtX
+ soUKj48hMSyni+Z2psc+dvt5id9bPjl/7pyC37R9okJBCTbUuiyLNlVGXnnii4ei4FZsa8FMqf
+ 0gYpao2WFaEqjmZL2ld1zdtajFPCwEAAA==
+X-Change-ID: 20260224-drm-rework-color-formats-82dcccc13c11
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Andy Yan <andy.yan@rock-chips.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Liu Ying <victor.liu@nxp.com>, Chen-Yu Tsai <wens@kernel.org>, 
+ Samuel Holland <samuel@sholland.org>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ amd-gfx@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, Jani Nikula <jani.nikula@intel.com>
+X-Mailer: b4 0.14.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3940; i=mripard@kernel.org;
+ h=from:subject:message-id; bh=CCLpEYvlxoqg400L58JRWG0E8HGphV4/FeLFDSKOkYA=;
+ b=owGbwMvMwCmsHn9OcpHtvjLG02pJDJkr3c1+T9owYXYw97NTTTkuk/c0eNgsWBrI47H5gpzlX
+ 0nbLebvOqayMAhzMsiKKbI8kQk7vbx9cZWD/cofMHNYmUCGMHBxCsBEkl4yNmxgXRFs7MjPe+za
+ 5SOvg3iCL7rHCLoY7bKNepXpGDhJrrl9gn/gfcc5XfennZzdWLNfm7HO8kFu1j3mpedmvJQ67C9
+ guOHCImWNNP1X3uZXo4MFvvPfLfl96dV9lxvOczaYLtTLF0gDAA==
+X-Developer-Key: i=mripard@kernel.org; a=openpgp;
+ fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_005156_842705_D5AE3D54 
-X-CRM114-Status: GOOD (  14.48  )
+X-CRM114-CacheID: sfid-20260305_010504_724773_4C4914E2 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,36 +108,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Konrad,
+Hi,
 
-On Thu, Mar 05, 2026 at 09:39:35AM +0100, Konrad Dybcio wrote:
-> > diff --git a/MAINTAINERS b/MAINTAINERS
-> > index 55af015174a5..bdfa47d9c774 100644
-> > --- a/MAINTAINERS
-> > +++ b/MAINTAINERS
-> > @@ -10713,6 +10713,7 @@ F:    Documentation/devicetree/bindings/phy/
-> >  F:   drivers/phy/
-> >  F:   include/dt-bindings/phy/
-> >  F:   include/linux/phy/
-> > +K:   \b(devm_)?(of_)?phy_(create|destroy|init|exit|reset|power_(on|off)|configure|validate|calibrate|(get|set)_(mode|media|speed|bus_width|drvdata)|get_max_link_rate|pm_runtime_(get|put)|notify_(connect|disconnect|state)|get|put|optional_get|provider_(un)?register|simple_xlate|(create|remove)_lookup)\b|(struct\s+)?phy(_ops|_attrs|_lookup|_provider)?\b|linux/phy/phy\.h|phy-props\.h|phy-provider\.h
-> 
-> Would looking for the devm/of_phy_ prefix followed by an open parentheses
-> not suffice for the 'has function call' case, instead of listing all
-> currently present exported functions?
+This series creates an enum to represent the output color format as an
+enum instead of a bitmask, and consolidate the HDMI helpers to use the
+new enum.
 
-This would maybe work when you run ./scripts/get_maintainer.pl on a file.
-But I would like it to have good coverage on individual patches too. And
-since the devm/of_phy prefix only matches when you "get" the PHY, not
-"use" it, my fear is we would still be missing out on the most important
-part of the patches.
+This should make Nicolas' work easier.
 
-> 
-> My worry is that this approach is overbuilt and absolutely no one will
-> remember to update it
+It has been build tested, and passes kunit tests.
 
-I think I can add a test in the patch build automation that correlates
-function and struct names from <linux/phy/phy.h> with their presence in
-MAINTAINERS.
+Let me know what you think,
+Maxime
+
+---
+Changes in v3:
+- Update more documentation
+- Rebase on drm-misc-next-2026-03-05
+- Link to v2: https://lore.kernel.org/r/20260227-drm-rework-color-formats-v2-0-8bd278e2af9d@kernel.org
+
+Changes in v2:
+- Add missing conversion from HDMI_COLORSPACE to DRM_OUTPUT_COLOR
+- Do an enum forward declaration instead of including a header
+- Fix typos in doc
+- Collect tags
+- Rebase on drm-misc-next-2026-02-26
+- Link to v1: https://lore.kernel.org/r/20260224-drm-rework-color-formats-v1-0-bebc76604ada@kernel.org
+
+---
+Maxime Ripard (14):
+      drm/connector: Introduce drm_output_color_format enum
+      drm/edid: Convert to drm_output_color_format enum
+      drm/display: hdmi: Convert to drm_output_color_format
+      drm/amdgpu: display: Convert to drm_output_color_format
+      drm/bridge: adv7511: Convert to drm_output_color_format
+      drm/bridge: analogix: Convert to drm_output_color_format
+      drm/bridge: cadence: Convert to drm_output_color_format
+      drm/bridge: synopsys: dw-dp: Convert to drm_output_color_format
+      drm/bridge: synopsys: dw-hdmi: Convert to drm_output_color_format
+      drm/arm: komeda: Convert to drm_output_color_format
+      drm/mediatek: dp: Convert to drm_output_color_format
+      drm/rockchip: analogix: Convert to drm_output_color_format
+      drm/connector: Remove DRM_COLOR_FORMAT defines
+      drm/display: hdmi: Use drm_output_color_format instead of hdmi_colorspace
+
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c  |   4 +-
+ .../gpu/drm/arm/display/komeda/d71/d71_component.c |  14 +-
+ drivers/gpu/drm/arm/display/komeda/komeda_crtc.c   |   2 +-
+ .../gpu/drm/arm/display/komeda/komeda_pipeline.h   |   5 +-
+ .../drm/arm/display/komeda/komeda_pipeline_state.c |   2 +-
+ drivers/gpu/drm/bridge/adv7511/adv7511_drv.c       |   2 +-
+ drivers/gpu/drm/bridge/analogix/analogix_dp_core.c |   4 +-
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.c    |  24 +--
+ .../gpu/drm/bridge/cadence/cdns-mhdp8546-core.h    |   2 +-
+ drivers/gpu/drm/bridge/inno-hdmi.c                 |   6 +-
+ drivers/gpu/drm/bridge/ite-it6263.c                |   2 +-
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c            |  71 ++++----
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c          |  16 +-
+ drivers/gpu/drm/display/drm_bridge_connector.c     |   4 +-
+ drivers/gpu/drm/display/drm_hdmi_helper.c          |   7 +-
+ drivers/gpu/drm/display/drm_hdmi_state_helper.c    |  60 ++++---
+ drivers/gpu/drm/drm_bridge.c                       |   2 +-
+ drivers/gpu/drm/drm_connector.c                    |  16 +-
+ drivers/gpu/drm/drm_edid.c                         |  18 +-
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |   4 +-
+ drivers/gpu/drm/mediatek/mtk_hdmi_v2.c             |   8 +-
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c    |   4 +-
+ drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c             |   2 +-
+ drivers/gpu/drm/tests/drm_connector_test.c         |  80 ++++-----
+ drivers/gpu/drm/tests/drm_hdmi_state_helper_test.c | 182 ++++++++++-----------
+ drivers/gpu/drm/vc4/vc4_hdmi.c                     |  18 +-
+ drivers/gpu/drm/vc4/vc4_hdmi.h                     |   2 +-
+ include/drm/bridge/dw_hdmi_qp.h                    |   2 +-
+ include/drm/display/drm_hdmi_helper.h              |   3 +-
+ include/drm/drm_bridge.h                           |   5 +-
+ include/drm/drm_connector.h                        |  48 ++++--
+ 31 files changed, 334 insertions(+), 285 deletions(-)
+---
+base-commit: d2e20c8951e4bb5f4a828aed39813599980353b6
+change-id: 20260224-drm-rework-color-formats-82dcccc13c11
+
+Best regards,
+-- 
+Maxime Ripard <mripard@kernel.org>
+
 
 _______________________________________________
 Linux-rockchip mailing list
