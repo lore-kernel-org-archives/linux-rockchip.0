@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C6DAF01807
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Mar 2026 07:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70795F01801
+	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Mar 2026 07:41:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=dmG4qyF99j1GD6gVhT4v7L2LtjGSZ8toutLEhloKWG4=; b=3ZW2b0S46IQzNX
-	89+S3kgISup+AnahXBKUUfGEZ0akV38o0IW9SW0Lcar3BuHnqH3tB0yUjD5GmwvNPOQCGbM+PZXHv
-	2HvbOXxcHWVIikzo8WBTu90w8oigB5WB22tGflbxWd/KoUV/9iGdq41ruXBEw3fSiQ5HaF+gsx4BQ
-	8tXJYnQYng7w4Cidz88ceQQoPfI7tgo10vGZtnsKYGUxEBwvgPah17qlbrFSgTLwuZuUdkTxgRAZm
-	kvgU3g5UW0baCFSwoT5xvZmeY6TSxoUBrOqKGDZ3HsdJP8Zha/jS27+Dop4sWhCNfhLA56fojip9n
-	5E59Cgmu5pBZLrqwxlhw==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=W9EPUnUMWJJJ0/L5o83H8+7D8k+oIh85nBeAttUZdn8=; b=S42/JdPqQxHWuT
+	8np8GrcazCYAIcLNum4UNHyl9woOnl+f7H+Vlu498pdXjZ48Ri/ialpZ7Rg8i2zLfVl9NRucUufFZ
+	OAsv4f1UN38pvglaw9kXff/8qopg8whRfvMse3Z/AxNeETHexmGxCIrGjUWb6Utf+VhFqLFfPRL2J
+	ZBCcr1PBUMsWE9QPgx2Lq4W9lEU8sQ04lcamIAR6GGrVhOU8RkVWWBg7nE+e/EgmmxhPkEicxLAfs
+	sceZwWWvhscuV45pMLU0Vd8BKEtp4WGNgw3cCkV0TbROohfJONmMiUJqEc2w6rx6UrOH81NdocfsJ
+	pjsxTrU5fAd73zD9oxmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyPo2-00000003ASA-1nen;
-	Fri, 06 Mar 2026 07:41:06 +0000
-Received: from mail-m1973170.qiye.163.com ([220.197.31.70])
+	id 1vyPo3-00000003ASI-2rR1;
+	Fri, 06 Mar 2026 07:41:07 +0000
+Received: from mail-m15579.qiye.163.com ([101.71.155.79])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyPny-00000003AQP-3pht
+	id 1vyPnz-00000003AQS-3qMj
 	for linux-rockchip@lists.infradead.org;
 	Fri, 06 Mar 2026 07:41:05 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 35fcf41c7;
-	Fri, 6 Mar 2026 15:40:48 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 35fcf41f3;
+	Fri, 6 Mar 2026 15:40:57 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>,
 	Rob Herring <robh@kernel.org>,
@@ -40,24 +40,25 @@ Cc: linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 0/3] Add shaping support for Rockchip platforms
-Date: Fri,  6 Mar 2026 15:40:29 +0800
-Message-Id: <1772782832-216867-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 2/3] pmdomain: rockchip: Add pm_shaping support
+Date: Fri,  6 Mar 2026 15:40:31 +0800
+Message-Id: <1772782832-216867-3-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9cc21786a709cckunm7894a4e01405b5c
+In-Reply-To: <1772782832-216867-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1772782832-216867-1-git-send-email-shawn.lin@rock-chips.com>
+X-HM-Tid: 0a9cc217ab7f09cckunm7894a4e01405be4
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkJLS1YdSRlLQk0aTh1JSUhWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUgZGFYfTxlKHU9MTk1DQ05WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=hMxMq6NTdtGQXcm34cBu1ZOamzPkNApDLENLq0mCf7Czd+PoegEtWivxlmnF9HjmcbNCyMZDvWEKS6TCD2c3S9Ogz9eYIfkimmvszD8zYL7DBsuOG2uRBS9Vzo5O09FBFtKgNpCj8LxUfwqborBMPsRzA+MLfM88dRbAqTSMijE=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=qACK77M8imd6tMfzuiqSbpPVRZC5FMb2GQ7Svv8vO/M=;
+	b=hPDrhj2kW51e/5PoNL1s4sOjXgys/bx1LXWmjgTa2cswiRdWrvT06OyHoHm4UgvmaIo6RYUVgxOJ3sf8Z3xs11vygCCc0uSpIXEJVlWqXEVrMoFg51k50QAln3d8JwOBHtLaOBpz7gE7VNfzokWNrTsNQXA9VkVNbZ5f/R0P0vw=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=HjuQ2QVWKDJpfXRvBsSPxPCbwHfU5/qVFwxvjt/vakg=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260305_234104_223204_5E482637 
-X-CRM114-Status: UNSURE (   9.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260305_234104_225143_2CDA264D 
+X-CRM114-Status: GOOD (  18.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,24 +76,171 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
 pm_shaping is introduced for some platforms to throttle the outstanding
-burst requests of each IP to prevent bus monopolization. It should be
-saved and restored along with the on/off of pmdomain, the same as pm_qos.
-This patchset adds support for it.
+burst requests of each IP to prevent bus monopolization. In general, they
+should be set in firmware but given that powering off pm domain will lose
+the configurations, so add it support in pmdomain code.
 
+They are defined and used the same way of pm_qos in DT but service with
+different purposes.
 
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-Shawn Lin (3):
-  dt-bindings: power: rockchip: Add pm_shaping support
-  pmdomain: rockchip: Add pm_shaping support
-  arm64: dts: rockchip: Add shaping nodes for rk3576
+ drivers/pmdomain/rockchip/pm-domains.c | 97 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 97 insertions(+)
 
- .../bindings/power/rockchip,power-controller.yaml  |   8 ++
- arch/arm64/boot/dts/rockchip/rk3576.dtsi           | 139 +++++++++++++++++++++
- drivers/pmdomain/rockchip/pm-domains.c             |  97 ++++++++++++++
- 3 files changed, 244 insertions(+)
-
+diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
+index 490bbb1..56699aa 100644
+--- a/drivers/pmdomain/rockchip/pm-domains.c
++++ b/drivers/pmdomain/rockchip/pm-domains.c
+@@ -89,14 +89,18 @@ struct rockchip_pmu_info {
+ #define QOS_BANDWIDTH		0x10
+ #define QOS_SATURATION		0x14
+ #define QOS_EXTCONTROL		0x18
++#define SHAPING_NBPKTMAX0	0x0
+ 
+ struct rockchip_pm_domain {
+ 	struct generic_pm_domain genpd;
+ 	const struct rockchip_domain_info *info;
+ 	struct rockchip_pmu *pmu;
+ 	int num_qos;
++	int num_shaping;
+ 	struct regmap **qos_regmap;
++	struct regmap **shaping_regmap;
+ 	u32 *qos_save_regs[MAX_QOS_REGS_NUM];
++	u32 *shaping_save_regs;
+ 	int num_clks;
+ 	struct clk_bulk_data *clks;
+ 	struct device_node *node;
+@@ -488,6 +492,28 @@ static int rockchip_pmu_restore_qos(struct rockchip_pm_domain *pd)
+ 	return 0;
+ }
+ 
++static int rockchip_pmu_save_shaping(struct rockchip_pm_domain *pd)
++{
++	int i;
++
++	for (i = 0; i < pd->num_shaping; i++)
++		regmap_read(pd->shaping_regmap[i], SHAPING_NBPKTMAX0,
++			    &pd->shaping_save_regs[i]);
++
++	return 0;
++}
++
++static int rockchip_pmu_restore_shaping(struct rockchip_pm_domain *pd)
++{
++	int i;
++
++	for (i = 0; i < pd->num_shaping; i++)
++		regmap_write(pd->shaping_regmap[i], SHAPING_NBPKTMAX0,
++			     pd->shaping_save_regs[i]);
++
++	return 0;
++}
++
+ static bool rockchip_pmu_domain_is_on(struct rockchip_pm_domain *pd)
+ {
+ 	struct rockchip_pmu *pmu = pd->pmu;
+@@ -650,6 +676,7 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+ 
+ 	if (!power_on) {
+ 		rockchip_pmu_save_qos(pd);
++		rockchip_pmu_save_shaping(pd);
+ 
+ 		/* if powering down, idle request to NIU first */
+ 		ret = rockchip_pmu_set_idle_request(pd, true);
+@@ -668,6 +695,7 @@ static int rockchip_pd_power(struct rockchip_pm_domain *pd, bool power_on)
+ 			goto out;
+ 
+ 		rockchip_pmu_restore_qos(pd);
++		rockchip_pmu_restore_shaping(pd);
+ 	}
+ 
+ out:
+@@ -767,6 +795,71 @@ static void rockchip_pd_detach_dev(struct generic_pm_domain *genpd,
+ 	pm_clk_destroy(dev);
+ }
+ 
++static int rockchip_pd_of_get_shaping(struct rockchip_pm_domain *pd,
++				      struct device_node *node)
++{
++	struct rockchip_pmu *pmu = pd->pmu;
++	struct device_node *shaping_node;
++	int num_shaping = 0, num_shaping_reg = 0;
++	int error, i;
++
++	num_shaping = of_count_phandle_with_args(node, "pm_shaping", NULL);
++
++	/* Count the real available pm_shaping nodes */
++	for (i = 0; i < num_shaping; i++) {
++		shaping_node = of_parse_phandle(node, "pm_shaping", i);
++		if (shaping_node && of_device_is_available(shaping_node))
++			pd->num_shaping++;
++		of_node_put(shaping_node);
++	}
++
++	if (!pd->num_shaping)
++		return 0;
++
++	/* Allocate memory for them */
++	pd->shaping_regmap = devm_kcalloc(pmu->dev, pd->num_shaping,
++					  sizeof(*pd->shaping_regmap),
++					  GFP_KERNEL);
++	if (!pd->shaping_regmap)
++		return -ENOMEM;
++
++	pd->shaping_save_regs = devm_kmalloc(pmu->dev, sizeof(u32) *
++					     pd->num_shaping,
++					     GFP_KERNEL);
++	if (!pd->shaping_save_regs)
++		return -ENOMEM;
++
++	/* Record the real available pm_shaping nodes */
++	for (i = 0; i < num_shaping; i++) {
++		shaping_node = of_parse_phandle(node, "pm_shaping", i);
++		if (!shaping_node)
++			return -ENODEV;
++
++		if (of_device_is_available(shaping_node)) {
++			if (num_shaping_reg >= pd->num_shaping) {
++				error = -EINVAL;
++				goto err_put_node;
++			}
++
++			pd->shaping_regmap[num_shaping_reg] =
++				syscon_node_to_regmap(shaping_node);
++			if (IS_ERR(pd->shaping_regmap[num_shaping_reg])) {
++				error = -ENODEV;
++				goto err_put_node;
++			}
++
++			num_shaping_reg++;
++		}
++		of_node_put(shaping_node);
++	}
++
++	return 0;
++
++err_put_node:
++	of_node_put(shaping_node);
++	return error;
++}
++
+ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 				      struct device_node *node)
+ {
+@@ -874,6 +967,10 @@ static int rockchip_pm_add_one_domain(struct rockchip_pmu *pmu,
+ 		}
+ 	}
+ 
++	error = rockchip_pd_of_get_shaping(pd, node);
++	if (error)
++		dev_warn(pmu->dev, "%pOFn: failed to get shaping\n", node);
++
+ 	if (pd->info->name)
+ 		pd->genpd.name = pd->info->name;
+ 	else
 -- 
 2.7.4
 
