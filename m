@@ -4,68 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D947FC4451B
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E82C43458
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Date:From:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XncPmthyVMQU4WrXn4LnvPYQP5BgFc4QvfHNhFmxoCc=; b=zyu7+x7dPZXCtc
-	52JPY1DaVF17jz8jcQZRsn6mE35sOIG05A6yVHgIsRplomOkN2u+ejgAq3vqMdWpRgrT29lLUg6Fi
-	VEULG4pAcwiQBTJVYkucpBckubBat8CmMg46QbfYA8PJD5etC2lfJfktKSkawU5xr6aNZFmuqAa35
-	nFdwYN5OLbovp9FdOC39a8tXqp3WsN4qLzFhgM6Ou1JO0MvEY6n55iNkVsRc2gyzXUJd9kRAF60ro
-	Q45TkWKM2byad+jVp+Ou3juYQk+q8vI6912KpLA/ZPMJ9Hq97b7f0C7Vb97PsqADX2RgHHSq97qCc
-	n3V+vvTcrS3I6E3e8GAQ==;
+	List-Owner; bh=zt0+2NiikF+upWZVJ4DrBif73bI5tDlx12WIafHS1r4=; b=b3pDEdkvB3sIsP
+	pzGXuF3AU0wixdPQ830+IRoC1Zy9w3rkF+ifbj5PqoNFLUz/scooCUyv6r1veut3miV0vDw+jH6WB
+	IzXF2sFkMk09nzUOttvcefSqk3tpaDccuf1IUgfw0ajDZKmYO2heXvUwFjAoL3zBY3IVWXiTeias9
+	aYCkoq0qC9czmBGJLmvGXDXYcALsdjriJr2ynKqP2K4Gj86gZj1SgbcFmG5kLAqAcSDOSlRxkyAau
+	nyhtG3iRo0YtRPQ2OVB+2IO/FGoN41vq344S8QNsBbCCut1jA622TLH4Q0/koN6yZZIjVGz/yILnC
+	+W1ppNsZk57rL9PWl5PQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkQk-00000001Uir-24RO;
-	Thu, 09 Jul 2026 08:48:26 +0000
-Received: from mail-m3296.qiye.163.com ([220.197.32.96])
+	id 1whkQp-00000001UsW-1TM1;
+	Thu, 09 Jul 2026 08:48:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1va7d0-00000003QXp-0U9r
-	for linux-rockchip@lists.infradead.org;
-	Mon, 29 Dec 2025 07:25:19 +0000
-Message-ID: <AGkAtwAtJy-UDFfi3M2RSaqR.3.1766993111418.Hmail.ye.zhang@rock-chips.com>
-To: Krzysztof Kozlowski  <krzk@kernel.org>
-Cc: Linus Walleij <linus.walleij@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Bartosz Golaszewski <brgl@bgdev.pl>, Rob Herring <robh@kernel.org>, 
-	krzk+dt <krzk+dt@kernel.org>, conor+dt <conor+dt@kernel.org>, 
-	linux-gpio <linux-gpio@vger.kernel.org>, 
-	devicetree <devicetree@vger.kernel.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	"tao.huang" <tao.huang@rock-chips.com>
-Subject: =?UTF-8?B?UmU6IFtQQVRDSCB2NCA3LzddIEFSTTogZHRzOiByb2NrY2hpcDogcmszNTA2OiBBZGQgcGluY3RybCBhbmQgcm1pbyBkdHNpIGZvciByazM1MDY=?=
-X-Priority: 3
-X-Mailer: HMail Webmail Server V2.0 Copyright (c) 2016-163.com Sirius_WIN_1.51.1
-X-Originating-IP: 58.22.7.114
-In-Reply-To: <ebb720f6-4756-437f-a71a-d94f45d732e8@kernel.org>
-References: <20251227114957.3287944-1-ye.zhang@rock-chips.com> <20251227114957.3287944-8-ye.zhang@rock-chips.com> <ebb720f6-4756-437f-a71a-d94f45d732e8@kernel.org>
+	id 1vyiZh-00000004rRh-3pCn;
+	Sat, 07 Mar 2026 03:43:35 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9A61C43C6A;
+	Sat,  7 Mar 2026 03:43:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B574C19422;
+	Sat,  7 Mar 2026 03:43:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772855012;
+	bh=Npi1ivSwi9obv8U3L34yLEE92R/UJPUFNgtE+UQvMxI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=eEu0t4KqV0RXFs7ptg/3zuFhP8YGOnn/jnZa56ETLQ7fgpNICTk8CQhJZpG4tICj5
+	 9RlrKYLlJyDOyDPNeBLR9i/IjqdNks26GRcxcCKRkytQCHcQ6FoDX/kaYfzkVD4I29
+	 VM9fiopVVkrFjgAsAsP4yJKaVHQNAk5h1pWtGezpWDjiDE/LERIK9Eu1Hdtj4vsLVN
+	 H0PIpltzVprS8RunFG2e2J+vtV+FW1P/lak0nG4JwecP2NkAj4/C1wWxjJb+/LP9AH
+	 GyW7ZvTZlWI7b0Tg++YRXjC6U4V+brYhXf+KEuvVmI7jGUkI3lB5LBJNCK9YPVYeb/
+	 PrBzkjLXUw4jA==
+Date: Fri, 6 Mar 2026 19:43:28 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
+ <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Richard
+ Cochran <richardcochran@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet
+ <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin
+ <mcoquelin.stm32@gmail.com>, Alexandre Torgue
+ <alexandre.torgue@foss.st.com>, Vinod Koul <vkoul@kernel.org>, Giuseppe
+ Cavallaro <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>,
+ Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Samuel Holland <samuel@sholland.org>, Matthew Gerlach
+ <matthew.gerlach@altera.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Keguang Zhang
+ <keguang.zhang@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
+ <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>,
+ s32@nxp.com, Romain Gantois <romain.gantois@bootlin.com>, Lad Prabhakar
+ <prabhakar.mahadev-lad.rj@bp.renesas.com>, Heiko Stuebner
+ <heiko@sntech.de>, Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto
+ <inochiama@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Minda Chen
+ <minda.chen@starfivetech.com>, Drew Fustini <fustini@kernel.org>, Guo Ren
+ <guoren@kernel.org>, Fu Wei <wefu@redhat.com>, Nobuhiro Iwamatsu
+ <nobuhiro.iwamatsu.x90@mail.toshiba>, Geert Uytterhoeven
+ <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Maxime
+ Ripard <mripard@kernel.org>, Shuang Liang <liangshuang@eswincomputing.com>,
+ Zhi Li <lizhi2@eswincomputing.com>, Shangjuan Wei
+ <weishangjuan@eswincomputing.com>, "G. Jaya Kumaran"
+ <vineetha.g.jaya.kumaran@intel.com>, Clark Wang <xiaoning.wang@nxp.com>,
+ Linux Team <linux-imx@nxp.com>, Frank Li <Frank.Li@nxp.com>, David Wu
+ <david.wu@rock-chips.com>, Samin Guo <samin.guo@starfivetech.com>,
+ Christophe Roullier <christophe.roullier@foss.st.com>, Swathi K S
+ <swathi.ks@samsung.com>, Bartosz Golaszewski <brgl@kernel.org>, Mohd Ayaan
+ Anwar <mohd.anwar@oss.qualcomm.com>, linux-arm-msm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-arm-kernel@lists.infradead.org, Drew Fustini
+ <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev,
+ linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org,
+ imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+ linux-riscv@lists.infradead.org, Bartosz Golaszewski
+ <bartosz.golaszewski@linaro.org>, Krzysztof Kozlowski
+ <krzysztof.kozlowski@oss.qualcomm.com>, Konrad Dybcio
+ <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: [PATCH net-next v7 0/7] net: stmmac: qcom-ethqos: add support
+ for SCMI power domains
+Message-ID: <20260306194328.238d89ff@kernel.org>
+In-Reply-To: <20260306-qcom-sa8255p-emac-v7-0-d6a3013094b7@oss.qualcomm.com>
+References: <20260306-qcom-sa8255p-emac-v7-0-d6a3013094b7@oss.qualcomm.com>
 MIME-Version: 1.0
-Received: from ye.zhang@rock-chips.com( [58.22.7.114] ) by ajax-webmail ( [127.0.0.1] ) ; Mon, 29 Dec 2025 15:25:11 +0800 (GMT+08:00)
-From: =?UTF-8?B?5byg54Oo?= <ye.zhang@rock-chips.com>
-Date: Mon, 29 Dec 2025 15:25:11 +0800 (GMT+08:00)
-X-HM-Tid: 0a9b68fc45e70300kunm50884eeed91f
-X-HM-MType: 1
-X-HM-NTES-SC: AL0_4z5B86Wr4Tz9jdMF+bhXMTRjsrDknlR9vNBzlnYPSNuiT0h4wr6guvdTSp
-	TBMvzEa6RMPKP1QW9Ei5Pi131B7yNhJhQODgKEpYrHZvY3oFy4q72HtESdjAjkJl2FwBpIyLx9Rn
-	3S5U8IgY8Wcx2T+/xpvPUqCzAB3fXos7T4P8Q=
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUxCGVYfHUtPSRkYS01LHkNWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=WkKuWmQFz3txpY2yYplK5dluIOXnXkjH4vRBdu9Nb42mIcStOmBEaNV3yoEPveMzCmUolsHdI06ndn5t6dKugl+9K4nrI3cdy2o6z3EsLcdVS6R/KyqKfAHsTI3LBFQZ81Fa4jtvLED76Yk4pLRPSac8B7lj9Ghcbu6m/XuVMbU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=MnJ455SKQ4fWCyvQTSN+37HvQ7g/ibRTP8V0NRo5BA8=;
-	h=date:mime-version:subject:message-id:from;
-X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20251228_232518_651154_D33F88D6 
-X-CRM114-Status: UNSURE (   6.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260306_194334_006483_9A8F5AC0 
+X-CRM114-Status: GOOD (  13.03  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,57 +110,41 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjUvMTIvMjggMTg6MzcsIEtyenlzenRvZiBLb3psb3dza2kg5YaZ6YGTOgomZ3Q7IE9u
-IDI3LzEyLzIwMjUgMTI6NDksIFllIFpoYW5nIHdyb3RlOgomZ3Q7Jmd0OyArCQkvb21pdC1pZi1u
-by1yZWYvCiZndDsmZ3Q7ICsJCXJtX2lvMjhfdG91Y2hfa2V5X2luNjogcm0taW8yOC10b3VjaC1r
-ZXktaW42IHsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHBpbnMgPQomZ3Q7Jmd0OyArCQkJCSZsdDsx
-IFJLX1BDMyA3ICZhbXA7cGNmZ19wdWxsX25vbmUmZ3Q7OwomZ3Q7Jmd0OyArCQkJcm9ja2NoaXAs
-cm1pby1waW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MCAyOCA0OSZndDs7CiZndDsmZ3Q7ICsJCX07
-CiZndDsmZ3Q7ICsKJmd0OyZndDsgKwkJL29taXQtaWYtbm8tcmVmLwomZ3Q7Jmd0OyArCQlybV9p
-bzI4X3RvdWNoX2tleV9pbjc6IHJtLWlvMjgtdG91Y2gta2V5LWluNyB7CiZndDsmZ3Q7ICsJCQly
-b2NrY2hpcCxwaW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MSBSS19QQzMgNyAmYW1wO3BjZmdfcHVs
-bF9ub25lJmd0OzsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHJtaW8tcGlucyA9CiZndDsmZ3Q7ICsJ
-CQkJJmx0OzAgMjggNTAmZ3Q7OwomZ3Q7Jmd0OyArCQl9OwomZ3Q7Jmd0OyArCiZndDsmZ3Q7ICsJ
-CS9vbWl0LWlmLW5vLXJlZi8KJmd0OyZndDsgKwkJcm1faW8yOF9zYWkwX21jbGs6IHJtLWlvMjgt
-c2FpMC1tY2xrIHsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHBpbnMgPQomZ3Q7Jmd0OyArCQkJCSZs
-dDsxIFJLX1BDMyA3ICZhbXA7cGNmZ19wdWxsX25vbmUmZ3Q7OwomZ3Q7Jmd0OyArCQkJcm9ja2No
-aXAscm1pby1waW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MCAyOCA1MSZndDs7CiZndDsmZ3Q7ICsJ
-CX07CiZndDsmZ3Q7ICsKJmd0OyZndDsgKwkJL29taXQtaWYtbm8tcmVmLwomZ3Q7Jmd0OyArCQly
-bV9pbzI4X3NhaTBfc2Nsazogcm0taW8yOC1zYWkwLXNjbGsgewomZ3Q7Jmd0OyArCQkJcm9ja2No
-aXAscGlucyA9CiZndDsmZ3Q7ICsJCQkJJmx0OzEgUktfUEMzIDcgJmFtcDtwY2ZnX3B1bGxfbm9u
-ZSZndDs7CiZndDsmZ3Q7ICsJCQlyb2NrY2hpcCxybWlvLXBpbnMgPQomZ3Q7Jmd0OyArCQkJCSZs
-dDswIDI4IDUyJmd0OzsKJmd0OyZndDsgKwkJfTsKJmd0OyZndDsgKwomZ3Q7Jmd0OyArCQkvb21p
-dC1pZi1uby1yZWYvCiZndDsmZ3Q7ICsJCXJtX2lvMjhfc2FpMF9scmNrOiBybS1pbzI4LXNhaTAt
-bHJjayB7CiZndDsmZ3Q7ICsJCQlyb2NrY2hpcCxwaW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MSBS
-S19QQzMgNyAmYW1wO3BjZmdfcHVsbF9ub25lJmd0OzsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHJt
-aW8tcGlucyA9CiZndDsmZ3Q7ICsJCQkJJmx0OzAgMjggNTMmZ3Q7OwomZ3Q7Jmd0OyArCQl9Owom
-Z3Q7Jmd0OyArCiZndDsmZ3Q7ICsJCS9vbWl0LWlmLW5vLXJlZi8KJmd0OyZndDsgKwkJcm1faW8y
-OF9zYWkwX3NkaTA6IHJtLWlvMjgtc2FpMC1zZGkwIHsKJmd0OyZndDsgKwkJCXJvY2tjaGlwLHBp
-bnMgPQomZ3Q7Jmd0OyArCQkJCSZsdDsxIFJLX1BDMyA3ICZhbXA7cGNmZ19wdWxsX25vbmUmZ3Q7
-OwomZ3Q7Jmd0OyArCQkJcm9ja2NoaXAscm1pby1waW5zID0KJmd0OyZndDsgKwkJCQkmbHQ7MCAy
-OCA1NCZndDs7CiZndDsmZ3Q7ICsJCX07CiZndDsKJmd0OyBXaHkgYXJlIHlvdSBkZWZpbmluZyBh
-bGwgcGlucz8gVGhpcyBpcyB3cm9uZywgeW91ciBkcml2ZXIgaGFzIHRvIGRvIGl0LAomZ3Q7IG5v
-dCBEVFMuIEFsbCB0aGVzZSBkZWZpbml0aW9ucyB3aGVuIG5vdCB1c2VkIGFyZSBqdXN0IHBvaW50
-bGVzcy4KJmd0OwpUaGlzIGZpbGUgaXMgYXV0by1nZW5lcmF0ZWQgdG8gcHJvdmlkZSBhIGNvbXBs
-ZXRlIHNldCBvZiBSTUlPIGNvbmZpZ3VyYXRpb25zLiAgIE91ciBpbnRlbnRpb24gaXMgdG8gb2Zm
-ZXIgYSBnZW5lcmljIGxpYnJhcnkgZm9yIGFsbCBmdXR1cmUgYm9hcmQgZGV2ZWxvcGVycywgc28g
-dGhleSBjYW4gc2ltcGx5IHBpY2sgdGhlIG5lZWRlZCBub2RlcyBieSBwaGFuZGxlIHdpdGhvdXQg
-bWFudWFsbHkgbG9va2luZyB1cCByZWdpc3RlciB2YWx1ZXMgaW4gdGhlIGRhdGFzaGVldCBldmVy
-eSB0aW1lLiAgIFRoaXMgaW1wcm92ZXMgdXNhYmlsaXR5IGFuZCBzdGFuZGFyZGl6YXRpb24uCgpX
-ZSBhbHNvIHVzZWQgdGhlIC9vbWl0LWlmLW5vLXJlZi8gdGFnLCBzbyB0aGlzIHdpbGwgc3RyaWN0
-bHkgbm90IGluY3JlYXNlIHRoZSBzaXplIG9mIHRoZSBjb21waWxlZCBEVEIgYmluYXJ5IGF0IGFs
-bC4KCkNvdWxkIHlvdSBwbGVhc2UgcmVjb25zaWRlciBpZiB0aGlzICBhcHByb2FjaCBpcyBhY2Nl
-cHRhYmxlIGdpdmVuIHRoZSB1c2FiaWxpdHkgYmVuZWZpdHM/CgpJZiB5b3Ugc3RpbGwgY29uc2lk
-ZXIgdGhlIH4yNWsgbGluZXMgb2Ygc291cmNlIGNvZGUgYmxvYXQgdW5hY2NlcHRhYmxlIGZvciB1
-cHN0cmVhbSwgd2Ugd2lsbCBoYXZlIHRvIGRyb3AgdGhpcyBnZW5lcmljIGR0c2kgZmlsZSBhbmQg
-bGV0IHVzZXJzIChhbmQgb3Vyc2VsdmVzKSBtYW51YWxseSBkZWZpbmUgb25seSB0aGUgcmVxdWly
-ZWQgbm9kZXMgd2hlbiBhZGRpbmcgYm9hcmQgc3VwcG9ydC4iCgpCZXN0IHJlZ2FyZHMsClllIFpo
-YW5nCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
-LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
-Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
-aXAK
+On Fri, 06 Mar 2026 16:46:38 +0100 Bartosz Golaszewski wrote:
+> Add support for the firmware-managed variant of the DesignWare MAC on
+> the sa8255p platform. This series contains new DT bindings and driver
+> changes required to support the MAC in the STMMAC driver.
+> 
+> It also reorganizes the ethqos code quite a bit to make the introduction
+> of power domains into the driver a bit easier on the eye.
+> 
+> The DTS changes will go in separately.
+
+Looks like it conflicts with patches merged last night, please rebase
+
+Applying: dt-bindings: net: qcom: document the ethqos device for SCMI-based systems
+Applying: net: stmmac: qcom-ethqos: use generic device properties
+Using index info to reconstruct a base tree...
+M	drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+Falling back to patching base and 3-way merge...
+Auto-merging drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+CONFLICT (content): Merge conflict in drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+Recorded preimage for 'drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c'
+error: Failed to merge in the changes.
+hint: Use 'git am --show-current-patch=diff' to see the failed patch
+hint: When you have resolved this problem, run "git am --continue".
+hint: If you prefer to skip this patch, run "git am --skip" instead.
+hint: To restore the original branch and stop patching, run "git am --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Patch failed at 0002 net: stmmac: qcom-ethqos: use generic device properties
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
