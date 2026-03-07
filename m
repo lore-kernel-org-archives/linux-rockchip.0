@@ -4,58 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24576F5141C
-	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Mar 2026 15:18:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11346F5141C
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Mar 2026 15:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z/D2kLFchFuhS9Jh1fxhHolaY4pFn5Dmv9fwjdApGtA=; b=GAh1xnWAvktsz0
-	ZUJhb3SS/Xkm047wT7KPxuT8oHpat+aDl8jMT7PVeVOn3DXYuMV7/NyG1TGIUgqu8s+OuoYDoqHG7
-	1c4KHfYidQ3zQM036zLGdjWgW/NZaTmESu+Gb3bxGagtoQNqeKOe3fvCA6WVeV5k1SE8lLWWJYJaa
-	nKBdjzMIVBLMM5Jsp/f6uXZlJKPdrAlGqXYZDLzY58P6tlfZrK+fq7Q+d/RURgC7nCFqlBuog1tgH
-	+6ZrB2bfvqU7TYO+t1Ur0t92kNmFdmQCOSobYaontpSo9r80+9KnkLCAQS7vTRlLKXZF1AcPc4760
-	KqIg8Gjioj3XDJZb+YDQ==;
+	List-Owner; bh=kfT+fP1T7KjdbZSHHGSHfGbzHhWRIfTM6Im8bKEhnEk=; b=axX5mnqcTkbFTc
+	cXwB/AZxRxBCWxd1yKu5xFnlq3DeWaMkvhI+ZMETP/GPB5elrQuYrGGiw+LrQ5EPDMbUW7i6mlAmv
+	AhBqS5If6Ak1PEbJdi7Jk1fhOIzkfMjONALHGhgXOtAHlHbnp6Vu4GzMen1NxomZmshGPv5lJzQxd
+	VpS2DUgOQzorB/3tz1r/zusHYhXz75duNFsZfH+BRKFf0060oCVhpKeI7jyNPy8IsGZJSzgRG3eTv
+	O7fXRWMiiEhj5ckFpR1/O7ROgmzfxZGpE5BAAGDw0HZIBB1LRzbNJocHMKPxKbRBhxGqZBQmMoRHG
+	EcJhfRHruWYzXa/vtGRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vytPy-00000005IJJ-03UJ;
-	Sat, 07 Mar 2026 15:18:14 +0000
+	id 1vytf6-00000005J35-1T4y;
+	Sat, 07 Mar 2026 15:33:52 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vytPv-00000005IJC-3KRV
-	for linux-rockchip@lists.infradead.org;
-	Sat, 07 Mar 2026 15:18:12 +0000
+	id 1vytf4-00000005J2S-1AVa;
+	Sat, 07 Mar 2026 15:33:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 16EDB6001D;
-	Sat,  7 Mar 2026 15:18:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BF76C19422;
-	Sat,  7 Mar 2026 15:18:09 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 41626600AE;
+	Sat,  7 Mar 2026 15:33:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60E05C2BCB1;
+	Sat,  7 Mar 2026 15:33:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772896689;
-	bh=jlypIP7aSTLT6zBopju+NVijnNmlfi4wioiJEX4k+HU=;
+	s=k20201202; t=1772897628;
+	bh=LGGa35LUu1Cajfet/gRyfYd8q2l0CArrIN4zoHM0CyM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Pz5TYceLrLeUNaE5OZh18nZssVhCQuGG4Dl+4595UIdhQ/LOMOsk1nsYmOSunzRgY
-	 n8FzOkMCIHLLgpdtcUbrvZy03fQx6hnuoG9WgJt4juGbwcLOA7ga5TYqOkMnT0FrYv
-	 ZXxbOvfTG4SA9hn3+lIZHVlVfP/XB1pGSV/ybg9psQRWEDsuvatJRWztk4UtDBO+Nh
-	 8osKYuub3v2RngY27loXxr7S6UPCFRFv92Qj2uazrDK3fp1dKWb1VpLBTf9KaoXy/g
-	 xuESlWTh1oD4jNWLbZKU41y071oHnLtyojHLAUun5jIg1c7o7v0zaiAJQUQhKlIU7R
-	 11ImNMRK7nT8w==
-Date: Sat, 7 Mar 2026 16:18:07 +0100
+	b=k3hKirZ50L++Iv7ng1nmAk6Odn124V0dCq62IUqtY+htEN4qYwRrkfTYqm1V8p4OZ
+	 5ts5tRfykMDwcJ2jGmShiFwTEk1z465sj2CgrgddITs6rVoMHxKUBvplkzIjaCtv4u
+	 lYIh77SLIXWsVkrfZrHqQU6dJrjBB1MH9UhlEakgd8Cdq86gtMRPoSrFtU220uIgSq
+	 xPWbJ04SA9vI2otDejr0A6sF4/vYVH3TIFb0tEsprOtu0nJS9pAG7RxvaF1H+Z+2Se
+	 A+htZTgiPiWA+N15RMBcazWW6i3AkvQWbtG5m5V+ln78n7g4qv7hyf7zUcO1Cad0cr
+	 piqfWAPSP55AQ==
+Date: Sat, 7 Mar 2026 16:33:46 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Sakari Ailus <sakari.ailus@linux.intel.com>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Frank Li <Frank.li@nxp.com>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add shaping nodes for rk3576
-Message-ID: <20260307-impartial-cat-of-efficiency-a742ff@quoll>
-References: <1772782832-216867-1-git-send-email-shawn.lin@rock-chips.com>
- <1772782832-216867-4-git-send-email-shawn.lin@rock-chips.com>
+	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
+	Collabora Kernel Team <kernel@collabora.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/4] media: dt-bindings: rockchip,rk3568-mipi-csi2: add
+ rk3588 compatible
+Message-ID: <20260307-complex-finicky-skua-bf52bd@quoll>
+References: <20260305-rk3588-csi2rx-v1-0-0cd8d2bf28c0@collabora.com>
+ <20260305-rk3588-csi2rx-v1-1-0cd8d2bf28c0@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <1772782832-216867-4-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <20260305-rk3588-csi2rx-v1-1-0cd8d2bf28c0@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,27 +75,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 06, 2026 at 03:40:32PM +0800, Shawn Lin wrote:
->  						 <&cru PCLK_VOP_ROOT>;
->  					pm_qos = <&qos_vop_m0>,
->  						 <&qos_vop_m1ro>;
-> +					pm_shaping = <&shaping_vop_m0>,
-> +						     <&shaping_vop_m1ro>;
->  					#power-domain-cells = <1>;
->  					#address-cells = <1>;
->  					#size-cells = <0>;
-> @@ -1602,11 +1626,21 @@
->  			reg = <0x0 0x27f05000 0x0 0x20>;
->  		};
->  
-> +		shaping_gpu: shaping@27f05088 {
-> +			compatible = "rockchip,rk3576-shaping", "syscon";
+On Fri, Mar 06, 2026 at 03:09:48PM +0100, Michael Riesch wrote:
+> The RK3588 MIPI CSI-2 receivers are compatible to the ones found in
+> the RK3568. However, their integration in the respective SoC may be
+> different when it comes to the (currently not implemented) split
 
-NAK, undocumented ABI.
+All this says they are compatible, so express it.
 
-And basic checkpatch would tell you that.
+> DPHY feature. Therefore, add the RK3588 compatible to allow for
+> future differentiation.
 
-Also, shaping block is not a syscon. Please read what the syscon is.
+This I do not understand. If you just copy standard rules from
+writing-bindings, then no, don't do that. It's obvious and there is
+never a need to repeat any standard/common rule. If you want to say
+devices are not compatible, then say that explicitly.
 
 Best regards,
 Krzysztof
