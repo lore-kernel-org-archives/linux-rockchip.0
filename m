@@ -4,85 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BE43FCC07D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  6 Mar 2026 21:36:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD4E6F5141C
+	for <linux-rockchip@archiver.kernel.org>; Sat,  7 Mar 2026 15:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AFTtZ4FRr1KFnk5VljubE6Q/ddu1X+tX8s4g4DA6iWM=; b=ZDqTUyi0no5CF+
-	vCds7gJQFJNE5VKV9XSpl1enQTK4acjN9/X+Bha5Kk+WkAaW0TSLlr5HjVlBqm1VJ5HyYvsSmAQzI
-	AgGVZ+1z2e83WW5hCzMUoBtEJH0RVWLg8zCxtd5NuSHMXs1LXnN79+92HHWO/Mf/XrukBp8PCp/ga
-	DhiqF6PxgWsklZ89ByDd2NzHX30xyL69ejc1c/6FhHzsghXturbaEtDwK+r8sXCkx+CAVPojaddrt
-	e6mQdTrjgWuK5smFqR/Oi8n/CelADb0Y8u5iRpA5UJXPKz5swptQJL1E4N+AaaGoUCQeUcQWjtSKi
-	ufOkYrifiJVky9cGC/rg==;
+	List-Owner; bh=cr0TOtyKvWw1W0CmmNJfmw0K4yZZ9J1RxhfwE18S2/E=; b=u0w6ChYvQpo+UM
+	gWPug9xSWOm3QUyxImhy5eWGjFEIKHvtqWuC11OvTIVxCvYYxxRkIUMBTJY9Tc6kNE7d0UmEFZI10
+	jukbkonEpXLcIUyAj9rPboI/LSp5tVfU2mbE5O+xa9+TgkvAJZiJZ3tN3iSNup9BltjCc7mcX19wr
+	bu8jB+sbcj552OG1oEICJGaEAUHNsQecJUJOsBb9xrczdT3x8jwu9gNla/NGXkKkxyV/CwgmAuvLz
+	A4CI5M6lVrvWIKlhfrx3G7rR9WFJCh4DWRtFNXoLmdqf0zwpgp3u6iEqWgZHKI2VBGl8Rnc5BGNTQ
+	bcbGZ12aFomHsUKQA1kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vycqS-00000004XMf-0tb7;
-	Fri, 06 Mar 2026 21:36:28 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vytOs-00000005IG5-0YPf;
+	Sat, 07 Mar 2026 15:17:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vycqP-00000004XLD-2xx8;
-	Fri, 06 Mar 2026 21:36:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1772832982;
-	bh=rrrv97/od52gix5N3UDXATdxSWQcwxqLuGr79o0yhqM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fNI5I40iVXHpHhBywRVM7GRAGf63i4KK/ST2LezxpGgiuNzp4w3lrH2bN+Pazv5fq
-	 9WbYwgKEQvRD5/drpzLWUmtQ5Ibl62Rlm9v+tLLovKma09z6yYvdF3wLVl05fxzJW8
-	 atn7hae+nRoWiII99/VlBpAJhiabi+DSyHPtTjd2XbguHmVUEWctqUxvNpm1OkMOuo
-	 qy7dM4lKkNpE+p7ZIEhiEM+S/t07lkn6A37im8kq7nlhhhZeyPUN+MLlS4IN4EcTNA
-	 NQ1GQyG4vqo+LSihnQJjof2NiYQKjGxDAmM7Vy9aWAw4igDdZTsDoOH1HNPgyDL7b4
-	 raQDax7y3dyvg==
-Received: from [192.168.1.90] (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 16D6D17E0959;
-	Fri,  6 Mar 2026 22:36:21 +0100 (CET)
-Message-ID: <ca96f498-5da3-4552-9f04-a2f4530475db@collabora.com>
-Date: Fri, 6 Mar 2026 23:36:20 +0200
+	id 1vytOq-00000005IFz-1Dda
+	for linux-rockchip@lists.infradead.org;
+	Sat, 07 Mar 2026 15:17:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5EE946001D;
+	Sat,  7 Mar 2026 15:17:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8610EC19422;
+	Sat,  7 Mar 2026 15:17:02 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1772896623;
+	bh=0UnT+075J08xFSw5ayjMg4ookTNNmPK5kNEOX3Bba1s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Civrm1ki07KOZoF+DAaXctutesxEyo26q81HghJOpSHL2BKdvpIlmBfwuQpFamBd2
+	 yVrpUj9M6xD/KZT/su4uRMbymopzKXjr01YdoygFIcLEVWCRGvmjeJRv+xiw1cmEVx
+	 zzY0HWWE2rg6X5uajzbnItF7+h/WggLROWibSbf+8kB0PD6oQF8XBxmn83eR7feYZt
+	 TbkN3ovSQofGYZfM+5CkuNhiwCFl9yt7rcKNHibSnY1YD2X1e4/XJw0I/WEoTix/uf
+	 FrGDBBR/agAFHMIECAfby95z4fIMu95zT1hxiHvzTD7ClyvXjBi7PLuGB7SsiBpon7
+	 +ZyCGYDlUCbdg==
+Date: Sat, 7 Mar 2026 16:17:00 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Ulf Hansson <ulf.hansson@linaro.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: power: rockchip: Add pm_shaping support
+Message-ID: <20260307-original-shrewd-mouflon-1eb07b@quoll>
+References: <1772782832-216867-1-git-send-email-shawn.lin@rock-chips.com>
+ <1772782832-216867-2-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 02/22] drm/display: hdmi-state-helper: Use default
- case for unsupported formats
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
- Rodrigo Siqueira <siqueira@igalia.com>,
- Alex Deucher <alexander.deucher@amd.com>,
- =?UTF-8?Q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>,
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
- linux-doc@vger.kernel.org
-References: <20260305-color-format-v10-0-a58c68a11868@collabora.com>
- <20260305-color-format-v10-2-a58c68a11868@collabora.com>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260305-color-format-v10-2-a58c68a11868@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_133625_978077_236B36DC 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <1772782832-216867-2-git-send-email-shawn.lin@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,21 +72,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/5/26 4:19 PM, Nicolas Frattaroli wrote:
-> Switch statements that do not handle all possible values of an
-> enumeration will generate a warning during compilation. In preparation
-> for adding a COUNT value to the end of the enum, this needs to be dealt
-> with.
-> 
-> Add a default case to sink_supports_format_bpc's DRM_OUTPUT_COLOR_FORMAT
-> switch statement, and move the log-and-return unknown pixel format
-> handling into it.
-> 
-> No functional change.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Fri, Mar 06, 2026 at 03:40:30PM +0800, Shawn Lin wrote:
+> pm_shaping is introduced for some platforms to throttle the outstanding
+> burst requests of each IP to prevent bus monopolization. Add a discription
+> of it.
 
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Isn't that interconnects?
+
+Also which platforms? We don't add it for your downstream code. Why
+there is no property restriction per variant in the binding?
+
+
+> 
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> ---
+> 
+>  .../devicetree/bindings/power/rockchip,power-controller.yaml      | 8 ++++++++
+>  1 file changed, 8 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> index b41db57..4af6c30 100644
+> --- a/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> +++ b/Documentation/devicetree/bindings/power/rockchip,power-controller.yaml
+> @@ -147,6 +147,14 @@ $defs:
+>            A number of phandles to qos blocks which need to be saved and restored
+>            while power domain switches state.
+>  
+> +      pm_shaping:
+
+Read DTS coding style. Build your code with W=2 so you will see here
+warnings.
+
+Also, read writing bindings or any docs for beginners. Missing prefix.
+
+
+> +        $ref: /schemas/types.yaml#/definitions/phandle-array
+
+so phandle? Or array? Decide...
+
+> +        items:
+> +          maxItems: 1
+
+So how many items?
+
+> +        description: |
+
+Drop |
+
+> +          A number of phandles to shaping blocks which need to be saved and restored
+> +          while power domain switches state.
+
+Wrap code according to Linux coding style.
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
