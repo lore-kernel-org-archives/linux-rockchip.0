@@ -4,60 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0E3EA853D
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Mar 2026 18:00:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49D19EA853F
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Mar 2026 18:41:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9oVqDIY0OClD/CaeGIiRyUMcxKeaLl2mxd5zK6cZYqs=; b=FxzLPzUzPibQ19
-	crS5A9TqciDHdrhirUU4hTSuO/fZ/IWXwM/qhRW8zUIB76uOO/KEPm6Hi4U8iB4LnWYSIGLexBKwn
-	cEOiA20VjdAWFVrVS/7xjzjAhVs1jyzYOLMaxoxpugzhjbcuQewrV+raU58tDJLR2pPKKNSdajYNk
-	NapY2/RqLbvOPu0dp5QpIwdCb7DLoMxoqLxhyZ8oSzrSuAosyC9PmcA2X/4kCJLcRz/vaPk1MhQ9Z
-	iEqxlxw2N0zvEfe53t6UzRledjn1KvB0OIDFtDTYNsZDqpaQTikuKnyQkK4wYUvBhAO/karNAM2+h
-	Fm4tl1ywm1A4py7CNDIA==;
+	List-Owner; bh=tIRCKLVt9fE2g+Ss9Hy8fRCwaR8ixmvTKHeAAGxlPAQ=; b=YwvOaKYSMEWFw8
+	fQ8Nzt3/1lBIPKy+/c3bmmP+fde4RHwB4JHFQtY+X4MTb7jdBa/mZGyiHZ/VSeZajK1bZpQ09/74N
+	KoH/zJrSIUeoWQOr2bUXpJ73nmr/VvN7bXRLKjqOpLWg/Hefxew2FAc8Dod3GEmfq6aHyYNi1TM+9
+	uzS3+CSZFUWgE4wkhaYcZ1IEQWJagiEv43yrzsyIvI7/DQE54A1WcUQhjHTO3erN5WOrGJ9P7d7om
+	rMFW72GibejRfftqFPVEypv6QJL9k6ZMB3ZKbNFRSNziCTTz2FCydQdGL5sMXBQNGk9V5HTjGnA6A
+	3cJUXTTnQg205/CeLyPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzIQD-00000006Efs-2DbB;
-	Sun, 08 Mar 2026 18:00:09 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1vzJ3m-00000006GQ1-0XHz;
+	Sun, 08 Mar 2026 18:41:02 +0000
+Received: from smtprelay0010.hostedemail.com ([216.40.44.10] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzIQ7-00000006Edn-3TDG;
-	Sun, 08 Mar 2026 18:00:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=COX7CpTb/27v5+RAJjpmWzEICJkLOwS/U54SdgdwvJ0=; b=dT
-	Mvt5zreya8sYFTIdBVn+u2Cr+TZpKI2sHjC2eOz50+u7Z9bcgWi9rBmOKKmEgNT9xNvbN2WV71V+Y
-	MTg2bknSvJlEcZlhzC8/RD+LOfjFVJwRy0Suiwp0bqKJXu0GL9C9yJfORHH9scM7YznnM23vGIC03
-	WMxQMzpeato1q7o=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1vzIPq-00Ajv8-GI; Sun, 08 Mar 2026 18:59:46 +0100
-Date: Sun, 8 Mar 2026 18:59:46 +0100
-From: Andrew Lunn <andrew@lunn.ch>
-To: =?utf-8?B?5ZC05Yeh?= <12321260@zju.edu.cn>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, kuba@kernel.org,
-	edumazet@google.com, pabeni@redhat.com, andrew+netdev@lunn.ch,
-	heiko@sntech.de, romain.perier@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: Re: [PATCH] net: ethernet: arc: fix use-after-free in probe
- error path
-Message-ID: <1bb942f0-d512-4834-bf01-49f9a9d7fd77@lunn.ch>
-References: <20260304025303.145493-1-fanwu01@zju.edu.cn>
- <b6ac1471-e33a-41d3-9e67-e6463612f05b@lunn.ch>
- <54c76f66.7eea7.19ccca93975.Coremail.12321260@zju.edu.cn>
+	id 1vzJ3h-00000006GOq-3SZq;
+	Sun, 08 Mar 2026 18:40:59 +0000
+Received: from omf19.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay09.hostedemail.com (Postfix) with ESMTP id D43C38CD9E;
+	Sun,  8 Mar 2026 18:40:51 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: joe@perches.com) by omf19.hostedemail.com (Postfix) with ESMTPA id 6CBA920025;
+	Sun,  8 Mar 2026 18:40:45 +0000 (UTC)
+Message-ID: <ca170cbaf2f8bcbc89bbda68914d8e0d7640f0e7.camel@perches.com>
+Subject: Re: [PATCH v2 phy-next 24/24] MAINTAINERS: add regexes for linux-phy
+From: Joe Perches <joe@perches.com>
+To: vladimir.oltean@nxp.com, linux-phy@lists.infradead.org
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, 	dri-devel@lists.freedesktop.org,
+ freedreno@lists.freedesktop.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, 	linux-can@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-sunxi@lists.linux.dev, 
+	linux-tegra@vger.kernel.org, linux-usb@vger.kernel.org,
+ netdev@vger.kernel.org, 	spacemit@lists.linux.dev,
+ UNGLinuxDriver@microchip.com
+Date: Sun, 08 Mar 2026 11:40:44 -0700
+In-Reply-To: <20260308114009.2546587-25-vladimir.oltean@nxp.com>
+References: <20260308114009.2546587-1-vladimir.oltean@nxp.com>
+	 <20260308114009.2546587-25-vladimir.oltean@nxp.com>
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <54c76f66.7eea7.19ccca93975.Coremail.12321260@zju.edu.cn>
+X-Stat-Signature: mibobo4wkbramau4qyjthmehkiqudojz
+X-Rspamd-Server: rspamout01
+X-Rspamd-Queue-Id: 6CBA920025
+X-Session-Marker: 6A6F6540706572636865732E636F6D
+X-Session-ID: U2FsdGVkX1/1oqpGv8s8V8RuGZRFC80nZh9ljOj3ohI=
+X-HE-Tag: 1772995245-174125
+X-HE-Meta: U2FsdGVkX1+4XRzz60ugpVFQWsQctyjPh9D8dWNkk9O80wKikqTLI//fEpSwY7VKkjTAQqCbvy/bDztttYzuNBQP3PDd6DE18CINvDdnHew5cXtwNDDJn4KiBH3EXroYIs/0V5C/aytRQmLMTGCZZlkmVqa0mog1lMlvYoTUOPxP3MIGj9+OItuBdGt7SwG+E1NN8A/Yc9Sq4U8TJPe/XcW25BuE6rH2bXBjLakvy2b4imYLaL6YRBqKlFvDSAukFbzkOlERn3vJJPcvYBJiMotKjWx2PYK5v4pDPHYsRlN9R//2k7hsjvl6B3t7ELpdAjuD6CN+C7OKO7KQLV3bHimDBNhwcxGB9M1yVBNLk9v9/I7LPCcJRUT7SR2W+eai
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260308_110003_871549_AF835207 
-X-CRM114-Status: GOOD (  14.95  )
+X-CRM114-CacheID: sfid-20260308_114057_922174_ADE746D6 
+X-CRM114-Status: UNSURE (   6.51  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,64 +75,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU3VuLCBNYXIgMDgsIDIwMjYgYXQgMDQ6NTY6MDhQTSArMDgwMCwg5ZC05YehIHdyb3RlOgo+
-IFlvdSBhcmUgcmlnaHQgdGhhdCBub3JtYWwgZGV2aWNlIGludGVycnVwdCBnZW5lcmF0aW9uIGlz
-IGVuYWJsZWQgaW4gYXJjX2VtYWNfb3BlbigpIHZpYSBSX0VOQUJMRSwgc28gd2UgY2VydGFpbmx5
-IGRvbid0IGV4cGVjdCByZWd1bGFyIFJYL1RYIHRyYWZmaWMgaW50ZXJydXB0cyBkdXJpbmcgcHJv
-YmUuCj4gCj4gTXkgbWFpbiBjb25jZXJuIGhlcmUgaXMgdGhlIGxpZmV0aW1lIG9yZGVyaW5nIGlu
-IHRoZSBlcnJvciBwYXRoLiBhcmNfZW1hY19wcm9iZSgpIGluc3RhbGxzIHRoZSBJUlEgaGFuZGxl
-ciB2aWEgZGV2bV9yZXF1ZXN0X2lycSguLi4sIG5kZXYpLCBidXQgaWYgZW1hY19yb2NrY2hpcF9w
-cm9iZSgpIGZhaWxzIGxhdGVyLCBpdCBleHBsaWNpdGx5IGNhbGxzIGZyZWVfbmV0ZGV2KG5kZXYp
-IHdlbGwgYmVmb3JlIHRoZSBkZXZyZXMgY2xlYW51cCByb3V0aW5lIHJ1bnMuCj4gCj4gSW4gdGhh
-dCBzcGVjaWZpYyBnYXAsIGlmIGFuIElSUSBpcyBzb21laG93IGRlbGl2ZXJlZOKAlHBlcmhhcHMg
-ZnJvbSBhIHBlbmRpbmcvbGF0Y2hlZCBsaW5lIGxlZnQgYnkgdGhlIGZpcm13YXJlL2Jvb3Rsb2Fk
-ZXIsIG9yIG90aGVyIG5vbi10cmFmZmljIGFub21hbGllc+KAlGFyY19lbWFjX2ludHIoKSB3aWxs
-IGltbWVkaWF0ZWx5IGRlcmVmZXJlbmNlIGRldl9pZCBhcyBhIHN0cnVjdCBuZXRfZGV2aWNlICou
-IFNpbmNlIG5kZXYgaGFzIGFscmVhZHkgYmVlbiBtYW51YWxseSBmcmVlZCwgdGhpcyByZXN1bHRz
-IGluIGEgVUFGLgo+IAo+IFNvIHdoaWxlIEkgY29tcGxldGVseSBhZ3JlZSB0aGlzIGlzbid0IGEg
-bm9ybWFsIHByZS1vcGVuIHRyYWZmaWMgcGF0aCwgdGhlIG1peGVkIGxpZmV0aW1lIG1hbmFnZW1l
-bnQgKG1hbmFnZWQgSVJRIHZzLiBtYW51YWwgbmV0ZGV2IGZyZWUpIHN0aWxsIGNyZWF0ZXMgYSBy
-ZWFsIHJhY2Ugd2luZG93Lgo+IAo+IFN3aXRjaGluZyB0byBkZXZtX2FsbG9jX2V0aGVyZGV2KCkg
-cHV0cyBib3RoIHJlc291cmNlcyB1bmRlciBkZXZyZXMgbWFuYWdlbWVudCwgcGVybWFuZW50bHkg
-Zml4aW5nIHRoaXMgdGVhcmRvd24gb3JkZXJpbmcgaXNzdWUuIEkgd291bGQgYmUgaGFwcHkgdG8g
-c2VuZCBhIHYyIGFuZCByZXdvcmQgdGhlIGNvbW1pdCBsb2cgdG8gZW1waGFzaXplIHRoaXMgYXMg
-YSBwb3RlbnRpYWwgcmFjZSB3aW5kb3cgYW5kIGEgaGFyZGVuaW5nIGZpeC4gTGV0IG1lIGtub3cg
-d2hhdCB5b3UgdGhpbmsuCgpodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9w
-cm9jZXNzL21haW50YWluZXItbmV0ZGV2Lmh0bWwjY2xlYW4tdXAtcGF0Y2hlcwoKICAxLjcuNC4g
-Q2xlYW4tdXAgcGF0Y2hlc8K2CgogIE5ldGRldiBkaXNjb3VyYWdlcyBwYXRjaGVzIHdoaWNoIHBl
-cmZvcm0gc2ltcGxlIGNsZWFuLXVwcywgd2hpY2ggYXJlCiAgbm90IGluIHRoZSBjb250ZXh0IG9m
-IG90aGVyIHdvcmsuIEZvciBleGFtcGxlOgoKICBBZGRyZXNzaW5nIGNoZWNrcGF0Y2gucGwsIGFu
-ZCBvdGhlciB0cml2aWFsIGNvZGluZyBzdHlsZSB3YXJuaW5ncwoKICBBZGRyZXNzaW5nIExvY2Fs
-IHZhcmlhYmxlIG9yZGVyaW5nIGlzc3VlcwoKICBDb252ZXJzaW9ucyB0byBkZXZpY2UtbWFuYWdl
-ZCBBUElzIChkZXZtXyBoZWxwZXJzKQoKICBUaGlzIGlzIGJlY2F1c2UgaXQgaXMgZmVsdCB0aGF0
-IHRoZSBjaHVybiB0aGF0IHN1Y2ggY2hhbmdlcyBwcm9kdWNlCiAgY29tZXMgYXQgYSBncmVhdGVy
-IGNvc3QgdGhhbiB0aGUgdmFsdWUgb2Ygc3VjaCBjbGVhbi11cHMuCgoKU29tZSBwZXJjZW50YWdl
-IG9mIGRldm1fIGNvbnZlcnNhdGlvbiBwYXRjaGVzIGJyZWFrIGRyaXZlcnMuIFdlClJldmlld2Vy
-cyBuZWVkIHRvIGxvb2sgYXQgYWxsIHN1Y2ggcGF0Y2hlcyBhbmQgdHJ5IHRvIGRldGVjdCBzdWNo
-CmJyZWFrYWdlLiBJbiBnZW5lcmFsLCBpdCBpcyBub3Igd29ydGggaXQuIEhlbmNlIHdlIGdlbmVy
-YWxseSByZWplY3QKcGF0Y2hlcyBsaWtlIHRoaXMuCgpUaGlzIGlzIGhvd2V2ZXIgc2xpZ2h0bHkg
-ZGlmZmVyZW50LiBJdCBsb29rcyBsaWtlIHRoaXMgZHJpdmVyIHdhcwpicm9rZW4gZnJvbSB0aGUg
-YmVnaW5uaW5nLiBUaGUgcmFjZSB5b3UgcG9pbnQgb3V0IGhhcyBhbHdheXMgYmVlbgp0aGVyZS4g
-VGhhdCBpcyBzb21ldGhpbmcgd29ydGggcG9pbnRpbmcgb3V0IGluIHRoZSBjb21taXQgbWVzc2Fn
-ZS4KCkJ1dCB0YWtlIGEgc3RlcCBiYWNrLiBUaGluayBhYm91dCBpbnRlcnJ1cHQgaGFuZGxpbmcg
-aW4gZ2VuZXJhbC4gRG8KeW91IHRoaW5rIGl0IGlzIGdvb2QgcHJhY3RpY2UgdG8gcmVxdWVzdCBp
-bnRlcnJ1cHRzIGJlZm9yZSBjb25maWd1cmluZwp0aGUgaGFyZHdhcmUgYWJvdXQgd2hhdCBpbnRl
-cnJ1cHRzIGl0IHdpbGwgZGVsaXZlcj8KCklmIHRoZSBkcml2ZXIgd3JvdGUgdG8gUl9FTkFCTEUg
-aW4gcHJvYmUsIGJlZm9yZSByZXF1ZXN0aW5nIHRoZQppbnRlcnJ1cHQsIGVuYWJsZWQgdGhlIG5l
-ZWRlZCBpbnRlcnJ1cHRzIGluIG9wZW4sIGRpc2FibGVkIHRoZQppbnRlcnJ1cHRzIGluIGNsb3Nl
-LCB0aGUgZGlmZmVyZW50IGxpZmV0aW1lcyB3b3VsZCBub3QgbWF0dGVyLgoKU28sIGZvciBzdGFi
-bGUsIHBsZWFzZSBhZGQgY29kZSB0byBwdXQgaW50ZXJydXB0cyBpbnRvIGEgd2VsbCBrbm93bgpz
-dGF0ZSBiZWZvcmUgcmVxdWVzdGluZyB0aGUgaW50ZXJydXB0LiBQbGVhc2UgdXNlIHRoZSBuZXQg
-dHJlZSwgYW5kCmFkZCBhIEZpeGVzOiB0YWcuCgpZb3UgY2FuIHN1Ym1pdCB0aGlzIHBhdGNoIHRv
-IG5ldC1uZXh0LCBidXQgd2UgbWlnaHQgcmVqZWN0IGl0LCBiZWNhdXNlCm9mIHRoZSBwb2xpY3ku
-IElmIHlvdSBhcmUgd29ya2luZyBvbiB0aGlzIGRyaXZlciwgYWRkaW5nIG90aGVyCmZlYXR1cmVz
-LCB0aGlzIHBhdGNoIGlzIHBhcnQgb2YgYSBiaWdnZXIgcGF0Y2hzZXQsIHdlIGFyZSBtb3JlIGxp
-a2VseQp0byBhY2NlcHQgaXQuCgogICAgQW5kcmV3CgotLS0KcHctYm90OiBjcgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Sun, 2026-03-08 at 13:40 +0200, vladimir.oltean@nxp.com wrote:
+> diff --git a/MAINTAINERS b/MAINTAINERS
+[]
+> @@ -10713,6 +10713,17 @@ F:	Documentation/devicetree/bindings/phy/
+> +K:	(?:linux/phy/phy\.h|phy-props\.h|phy-provider\.h)
+
+phy-props.h and phy-provider.h don't seem to exist.
+Are these going to be added later?
+Maybe this should be phy-common-props.h ?
+
+Perhaps if matching only the include uses:
+(/ is escaped because get_maintainer is stupid)
+something like:
+
+K:	include\s*\<linux\/phy\/phy(?:-common-props|-provider)?\.h\>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
