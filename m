@@ -4,83 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4882C54FD2
-	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Mar 2026 12:40:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0E3EA853D
+	for <linux-rockchip@archiver.kernel.org>; Sun,  8 Mar 2026 18:00:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rwJwA3htGT2cJQlLSGCAEBsZgoakOCwo3CS3oKjtSNk=; b=ZToVQSSe48jAhz
-	dezBRVD4gnuLwXrt3fXLRDz+bkX8yBGO9eihSCyFaQGTjtqi4IIUGzq7jlUwJuZhuEKJkDwLynlvX
-	dlyBErRB0sIsFxr9Wr73J/shFmHNKbGw83x9WfSso1TW6u1dc3nutLPsPVDvdjzbnJZe9KMaQ3fWB
-	VyNXQEiIOynyN9qqHycWRZfl/iJAF5lPfqMu4NMTjGgPGR+ZQ+Nv9WBn48m7JK859gWCzjNbrCMHv
-	oohLWFSxxNuv2PPGC+jIydhPLEmPGslzXe8EFYWpdIPUhS1wuTV+FkWLw9arKSaAYmTdJG9BFSxTx
-	Dq5pBQC5uH6cmpv66/rw==;
+	List-Owner; bh=9oVqDIY0OClD/CaeGIiRyUMcxKeaLl2mxd5zK6cZYqs=; b=FxzLPzUzPibQ19
+	crS5A9TqciDHdrhirUU4hTSuO/fZ/IWXwM/qhRW8zUIB76uOO/KEPm6Hi4U8iB4LnWYSIGLexBKwn
+	cEOiA20VjdAWFVrVS/7xjzjAhVs1jyzYOLMaxoxpugzhjbcuQewrV+raU58tDJLR2pPKKNSdajYNk
+	NapY2/RqLbvOPu0dp5QpIwdCb7DLoMxoqLxhyZ8oSzrSuAosyC9PmcA2X/4kCJLcRz/vaPk1MhQ9Z
+	iEqxlxw2N0zvEfe53t6UzRledjn1KvB0OIDFtDTYNsZDqpaQTikuKnyQkK4wYUvBhAO/karNAM2+h
+	Fm4tl1ywm1A4py7CNDIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzDQo-000000061U0-0FuO;
-	Sun, 08 Mar 2026 12:40:26 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1vzIQD-00000006Efs-2DbB;
+	Sun, 08 Mar 2026 18:00:09 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzDQi-000000061TJ-3uPX;
-	Sun, 08 Mar 2026 12:40:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1772973621; x=1804509621;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=zbhtCbttgtMn5lFau9Gez8kwNEMkXCFdMTQtkiSITIg=;
-  b=hb4yueSPyYlWGYBtwTx0LsIxTLwv87JI9M75pGPc9KGDBRkHZ7izb3Ew
-   HncTQF+AXjyQuWbpJW2LD1SBDw3pSYx+qHHqc5zsmkAXPqQXhynNATlgM
-   CS4gtCnfbEni1xiXzvB0KfV5u4prYI4G4nBQemm9PPX6I6CZKz35c6uyE
-   KrBimN6eBmtKrrZAMaI4LueJ2bPziZ3h1E4ruWGbrGHB2JA8/ZMqYfyut
-   W++09hjQTCPyYcjNhqPycG9Foj8GrFr+ASsd2vAa5o9L0aczs+gqO9WMt
-   TV8CiDwx1gwTwN2EPeKKy1Uymhp3JmWahXkJbCyCfjeX+83YQtGW7FCS8
-   g==;
-X-CSE-ConnectionGUID: S5yPOlcnT7akzWWTFwlqDQ==
-X-CSE-MsgGUID: 2Vr1ak37Qr2fJ7LYbKWXIg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11722"; a="61587715"
-X-IronPort-AV: E=Sophos;i="6.23,108,1770624000"; 
-   d="scan'208";a="61587715"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2026 05:40:18 -0700
-X-CSE-ConnectionGUID: HkapVZWaSWyLtiDRtBE1MA==
-X-CSE-MsgGUID: ao7zcG5vSIawFOjqk+EinA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,108,1770624000"; 
-   d="scan'208";a="218685603"
-Received: from ijarvine-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.88])
-  by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Mar 2026 05:40:15 -0700
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id A7C6F121D15;
-	Sun, 08 Mar 2026 14:40:45 +0200 (EET)
-Date: Sun, 8 Mar 2026 14:40:45 +0200
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Dang Huynh <dang.huynh@mainlining.org>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Gerald Loacker <gerald.loacker@wolfvision.net>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: rockchip: rkcif: Add missing MUST_CONNECT flag to
- pads
-Message-ID: <aa1uTfimVo5H05Q7@kekkonen.localdomain>
-References: <20260129-rkcif-null-v1-1-90788ec347f5@mainlining.org>
- <9bb4eced-5710-49ac-99cf-fa0b1d1459b1@collabora.com>
+	id 1vzIQ7-00000006Edn-3TDG;
+	Sun, 08 Mar 2026 18:00:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
+	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
+	In-Reply-To:References; bh=COX7CpTb/27v5+RAJjpmWzEICJkLOwS/U54SdgdwvJ0=; b=dT
+	Mvt5zreya8sYFTIdBVn+u2Cr+TZpKI2sHjC2eOz50+u7Z9bcgWi9rBmOKKmEgNT9xNvbN2WV71V+Y
+	MTg2bknSvJlEcZlhzC8/RD+LOfjFVJwRy0Suiwp0bqKJXu0GL9C9yJfORHH9scM7YznnM23vGIC03
+	WMxQMzpeato1q7o=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1vzIPq-00Ajv8-GI; Sun, 08 Mar 2026 18:59:46 +0100
+Date: Sun, 8 Mar 2026 18:59:46 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: =?utf-8?B?5ZC05Yeh?= <12321260@zju.edu.cn>
+Cc: netdev@vger.kernel.org, davem@davemloft.net, kuba@kernel.org,
+	edumazet@google.com, pabeni@redhat.com, andrew+netdev@lunn.ch,
+	heiko@sntech.de, romain.perier@gmail.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: Re: [PATCH] net: ethernet: arc: fix use-after-free in probe
+ error path
+Message-ID: <1bb942f0-d512-4834-bf01-49f9a9d7fd77@lunn.ch>
+References: <20260304025303.145493-1-fanwu01@zju.edu.cn>
+ <b6ac1471-e33a-41d3-9e67-e6463612f05b@lunn.ch>
+ <54c76f66.7eea7.19ccca93975.Coremail.12321260@zju.edu.cn>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <9bb4eced-5710-49ac-99cf-fa0b1d1459b1@collabora.com>
+In-Reply-To: <54c76f66.7eea7.19ccca93975.Coremail.12321260@zju.edu.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260308_054021_378549_2FAB0CFA 
-X-CRM114-Status: GOOD (  15.77  )
+X-CRM114-CacheID: sfid-20260308_110003_871549_AF835207 
+X-CRM114-Status: GOOD (  14.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,53 +69,64 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Fri, Feb 13, 2026 at 09:06:47AM +0100, Michael Riesch wrote:
-> Hi Dang,
-> 
-> Thanks for the patch -- and sorry for the late reply.
-> 
-> On 1/29/26 08:24, Dang Huynh wrote:
-> > The pads missed checks for connected devices which may a null dereference
-> > when the stream is enabled.
-> > 
-> > Unable to handle kernel NULL pointer dereference at virtual address
-> > 0000000000000020
-> > pc : rkcif_interface_enable_streams+0x48/0xf0
-> > lr : rkcif_interface_enable_streams+0x44/0xf0
-> > Call trace:
-> >  rkcif_interface_enable_streams+0x48/0xf0
-> >  v4l2_subdev_enable_streams+0x26c/0x3f0
-> >  rkcif_stream_start_streaming+0x140/0x278
-> >  vb2_start_streaming+0x74/0x188
-> >  vb2_core_streamon+0xe0/0x1d8
-> >  vb2_ioctl_streamon+0x60/0xa8
-> >  v4l_streamon+0x2c/0x40
-> >  __video_do_ioctl+0x34c/0x400
-> >  video_usercopy+0x2d0/0x800
-> >  video_ioctl2+0x20/0x60
-> >  v4l2_ioctl+0x48/0x78
-> > 
-> > Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
-> > Fixes: 85411d17bee9 ("media: rockchip: rkcif: add abstraction for interface and crop blocks")
-> > Signed-off-by: Dang Huynh <dang.huynh@mainlining.org>
-> 
-> Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-
-Thanks, I added Cc: stable to this one.
-
--- 
-Regards,
-
-Sakari Ailus
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU3VuLCBNYXIgMDgsIDIwMjYgYXQgMDQ6NTY6MDhQTSArMDgwMCwg5ZC05YehIHdyb3RlOgo+
+IFlvdSBhcmUgcmlnaHQgdGhhdCBub3JtYWwgZGV2aWNlIGludGVycnVwdCBnZW5lcmF0aW9uIGlz
+IGVuYWJsZWQgaW4gYXJjX2VtYWNfb3BlbigpIHZpYSBSX0VOQUJMRSwgc28gd2UgY2VydGFpbmx5
+IGRvbid0IGV4cGVjdCByZWd1bGFyIFJYL1RYIHRyYWZmaWMgaW50ZXJydXB0cyBkdXJpbmcgcHJv
+YmUuCj4gCj4gTXkgbWFpbiBjb25jZXJuIGhlcmUgaXMgdGhlIGxpZmV0aW1lIG9yZGVyaW5nIGlu
+IHRoZSBlcnJvciBwYXRoLiBhcmNfZW1hY19wcm9iZSgpIGluc3RhbGxzIHRoZSBJUlEgaGFuZGxl
+ciB2aWEgZGV2bV9yZXF1ZXN0X2lycSguLi4sIG5kZXYpLCBidXQgaWYgZW1hY19yb2NrY2hpcF9w
+cm9iZSgpIGZhaWxzIGxhdGVyLCBpdCBleHBsaWNpdGx5IGNhbGxzIGZyZWVfbmV0ZGV2KG5kZXYp
+IHdlbGwgYmVmb3JlIHRoZSBkZXZyZXMgY2xlYW51cCByb3V0aW5lIHJ1bnMuCj4gCj4gSW4gdGhh
+dCBzcGVjaWZpYyBnYXAsIGlmIGFuIElSUSBpcyBzb21laG93IGRlbGl2ZXJlZOKAlHBlcmhhcHMg
+ZnJvbSBhIHBlbmRpbmcvbGF0Y2hlZCBsaW5lIGxlZnQgYnkgdGhlIGZpcm13YXJlL2Jvb3Rsb2Fk
+ZXIsIG9yIG90aGVyIG5vbi10cmFmZmljIGFub21hbGllc+KAlGFyY19lbWFjX2ludHIoKSB3aWxs
+IGltbWVkaWF0ZWx5IGRlcmVmZXJlbmNlIGRldl9pZCBhcyBhIHN0cnVjdCBuZXRfZGV2aWNlICou
+IFNpbmNlIG5kZXYgaGFzIGFscmVhZHkgYmVlbiBtYW51YWxseSBmcmVlZCwgdGhpcyByZXN1bHRz
+IGluIGEgVUFGLgo+IAo+IFNvIHdoaWxlIEkgY29tcGxldGVseSBhZ3JlZSB0aGlzIGlzbid0IGEg
+bm9ybWFsIHByZS1vcGVuIHRyYWZmaWMgcGF0aCwgdGhlIG1peGVkIGxpZmV0aW1lIG1hbmFnZW1l
+bnQgKG1hbmFnZWQgSVJRIHZzLiBtYW51YWwgbmV0ZGV2IGZyZWUpIHN0aWxsIGNyZWF0ZXMgYSBy
+ZWFsIHJhY2Ugd2luZG93Lgo+IAo+IFN3aXRjaGluZyB0byBkZXZtX2FsbG9jX2V0aGVyZGV2KCkg
+cHV0cyBib3RoIHJlc291cmNlcyB1bmRlciBkZXZyZXMgbWFuYWdlbWVudCwgcGVybWFuZW50bHkg
+Zml4aW5nIHRoaXMgdGVhcmRvd24gb3JkZXJpbmcgaXNzdWUuIEkgd291bGQgYmUgaGFwcHkgdG8g
+c2VuZCBhIHYyIGFuZCByZXdvcmQgdGhlIGNvbW1pdCBsb2cgdG8gZW1waGFzaXplIHRoaXMgYXMg
+YSBwb3RlbnRpYWwgcmFjZSB3aW5kb3cgYW5kIGEgaGFyZGVuaW5nIGZpeC4gTGV0IG1lIGtub3cg
+d2hhdCB5b3UgdGhpbmsuCgpodHRwczovL3d3dy5rZXJuZWwub3JnL2RvYy9odG1sL2xhdGVzdC9w
+cm9jZXNzL21haW50YWluZXItbmV0ZGV2Lmh0bWwjY2xlYW4tdXAtcGF0Y2hlcwoKICAxLjcuNC4g
+Q2xlYW4tdXAgcGF0Y2hlc8K2CgogIE5ldGRldiBkaXNjb3VyYWdlcyBwYXRjaGVzIHdoaWNoIHBl
+cmZvcm0gc2ltcGxlIGNsZWFuLXVwcywgd2hpY2ggYXJlCiAgbm90IGluIHRoZSBjb250ZXh0IG9m
+IG90aGVyIHdvcmsuIEZvciBleGFtcGxlOgoKICBBZGRyZXNzaW5nIGNoZWNrcGF0Y2gucGwsIGFu
+ZCBvdGhlciB0cml2aWFsIGNvZGluZyBzdHlsZSB3YXJuaW5ncwoKICBBZGRyZXNzaW5nIExvY2Fs
+IHZhcmlhYmxlIG9yZGVyaW5nIGlzc3VlcwoKICBDb252ZXJzaW9ucyB0byBkZXZpY2UtbWFuYWdl
+ZCBBUElzIChkZXZtXyBoZWxwZXJzKQoKICBUaGlzIGlzIGJlY2F1c2UgaXQgaXMgZmVsdCB0aGF0
+IHRoZSBjaHVybiB0aGF0IHN1Y2ggY2hhbmdlcyBwcm9kdWNlCiAgY29tZXMgYXQgYSBncmVhdGVy
+IGNvc3QgdGhhbiB0aGUgdmFsdWUgb2Ygc3VjaCBjbGVhbi11cHMuCgoKU29tZSBwZXJjZW50YWdl
+IG9mIGRldm1fIGNvbnZlcnNhdGlvbiBwYXRjaGVzIGJyZWFrIGRyaXZlcnMuIFdlClJldmlld2Vy
+cyBuZWVkIHRvIGxvb2sgYXQgYWxsIHN1Y2ggcGF0Y2hlcyBhbmQgdHJ5IHRvIGRldGVjdCBzdWNo
+CmJyZWFrYWdlLiBJbiBnZW5lcmFsLCBpdCBpcyBub3Igd29ydGggaXQuIEhlbmNlIHdlIGdlbmVy
+YWxseSByZWplY3QKcGF0Y2hlcyBsaWtlIHRoaXMuCgpUaGlzIGlzIGhvd2V2ZXIgc2xpZ2h0bHkg
+ZGlmZmVyZW50LiBJdCBsb29rcyBsaWtlIHRoaXMgZHJpdmVyIHdhcwpicm9rZW4gZnJvbSB0aGUg
+YmVnaW5uaW5nLiBUaGUgcmFjZSB5b3UgcG9pbnQgb3V0IGhhcyBhbHdheXMgYmVlbgp0aGVyZS4g
+VGhhdCBpcyBzb21ldGhpbmcgd29ydGggcG9pbnRpbmcgb3V0IGluIHRoZSBjb21taXQgbWVzc2Fn
+ZS4KCkJ1dCB0YWtlIGEgc3RlcCBiYWNrLiBUaGluayBhYm91dCBpbnRlcnJ1cHQgaGFuZGxpbmcg
+aW4gZ2VuZXJhbC4gRG8KeW91IHRoaW5rIGl0IGlzIGdvb2QgcHJhY3RpY2UgdG8gcmVxdWVzdCBp
+bnRlcnJ1cHRzIGJlZm9yZSBjb25maWd1cmluZwp0aGUgaGFyZHdhcmUgYWJvdXQgd2hhdCBpbnRl
+cnJ1cHRzIGl0IHdpbGwgZGVsaXZlcj8KCklmIHRoZSBkcml2ZXIgd3JvdGUgdG8gUl9FTkFCTEUg
+aW4gcHJvYmUsIGJlZm9yZSByZXF1ZXN0aW5nIHRoZQppbnRlcnJ1cHQsIGVuYWJsZWQgdGhlIG5l
+ZWRlZCBpbnRlcnJ1cHRzIGluIG9wZW4sIGRpc2FibGVkIHRoZQppbnRlcnJ1cHRzIGluIGNsb3Nl
+LCB0aGUgZGlmZmVyZW50IGxpZmV0aW1lcyB3b3VsZCBub3QgbWF0dGVyLgoKU28sIGZvciBzdGFi
+bGUsIHBsZWFzZSBhZGQgY29kZSB0byBwdXQgaW50ZXJydXB0cyBpbnRvIGEgd2VsbCBrbm93bgpz
+dGF0ZSBiZWZvcmUgcmVxdWVzdGluZyB0aGUgaW50ZXJydXB0LiBQbGVhc2UgdXNlIHRoZSBuZXQg
+dHJlZSwgYW5kCmFkZCBhIEZpeGVzOiB0YWcuCgpZb3UgY2FuIHN1Ym1pdCB0aGlzIHBhdGNoIHRv
+IG5ldC1uZXh0LCBidXQgd2UgbWlnaHQgcmVqZWN0IGl0LCBiZWNhdXNlCm9mIHRoZSBwb2xpY3ku
+IElmIHlvdSBhcmUgd29ya2luZyBvbiB0aGlzIGRyaXZlciwgYWRkaW5nIG90aGVyCmZlYXR1cmVz
+LCB0aGlzIHBhdGNoIGlzIHBhcnQgb2YgYSBiaWdnZXIgcGF0Y2hzZXQsIHdlIGFyZSBtb3JlIGxp
+a2VseQp0byBhY2NlcHQgaXQuCgogICAgQW5kcmV3CgotLS0KcHctYm90OiBjcgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
