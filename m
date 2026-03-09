@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DEDFFCA19C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3D5EFCD7A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CSKNhNjIOtASNVQwBYB6fCL0AoYf0omCBzrN7wcQjts=; b=E0zTQpR9wi2F3z
-	R4AbyeFYWSp0kPrxoGAMvGAqfvZ+ejvR+8CWIxyezp5cvZ6W2Ir5ZIuE++cg014kSaFEe1PqoaKhV
-	wO5nFvaoPJQOKXIkXV2N8xNCmtCMyBHe49giQIB2LwmQoVZjZm3tn9fHx/2vcFuaXFXWAXTnHfdNQ
-	Nestix2Sx7NLgJE460fM5EyRjz02lj//y0ULKnnbqdvZ211tSGFtUoLrzw83TYgqeSM4z2BlLgORR
-	4XcJ6RXUUyrXmKzMPlQcq5DlXsQ2KQ9MKDxr4jTlzI1EKQg94lf741DbMqGSGyx1QaBVBGv3oIRMV
-	1gPv+Sh87WQJsm2ti1Mg==;
+	List-Owner; bh=0bXzdg6pYTtonxxoCVbRoqjqZl+i/LFNTkhGvk8cfa8=; b=2OPATJ+iYQZ4/f
+	HXzOR2drV+AtmQTvBoSnYheiB9UP9pYIjxruALNnzdlc9dZ4jIs1o3qAyqlHjIstXP/f117dUhdY0
+	AHWP5x92cRQhK0JZsYB+GEbwlVSoep7qyOnFBYbbQPA9oBNTc09MJzBoJvjvVVQIFDVsuDVfGzzUm
+	1v1WcMByf2RlcbBdNXZlQy58CZHQHB7+AtT6rZCCtPKqPFIl9V+9DfiX1Lp/o63AbiW9ZPp17sUkE
+	ErIw9PLoBFPg13jdAGbB/clDmdR9xDIDYigU5TstB9qM0ZMEnLP6ll315B836CwwumuXLbcM3HphD
+	aCIhajwMc4QztvSsEBPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjL9-00000008F2J-17R9;
-	Mon, 09 Mar 2026 22:44:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1vzjLC-00000008F6d-0wE3;
+	Mon, 09 Mar 2026 22:44:46 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjL5-00000008Ez3-3d9p;
+	id 1vzjL6-00000008Ez4-0Vae;
 	Mon, 09 Mar 2026 22:44:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773096277;
-	bh=hOzfYzjHemquzVHS6LN19cOYz515Qjqf1oSNrVOyMIc=;
+	s=mail; t=1773096276;
+	bh=rYpWUQ3mqz6uob7ZfihmWRD74dfEUvjuf4DnktKdAMg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JX1kf8QXj19XAJD1NqoXFv+ekqZhcXk0EMTNQYIZN1BawzQEYmzl7IZNqRYYSzciu
-	 Jx8TMGbmZXKxy46Ww/mb4yO6O2rGrjOrsAGffAdB4ZzDJPb80WqfVDQxUIJUTQmri0
-	 9HZt5NTNa1h+DnUmLcvJ+JoyvUjhmabNWxHWBRD+vn3JXSz+Dg0pbXl29gQk3177fC
-	 BUbUXvqNnkRzSykHeatLgGbcVoHs4aaKKVGX9y847/f7mE9AZfa1kZOfPhocUGxY3E
-	 lEpjhWrGKYC0+gRSdCb1fGktig4nuzlmyyTett09JbDlylDSUUzS6P75/OCnL8gAVr
-	 U23LwIRGq3vIQ==
+	b=aunrSO1MagiS8C5tdB6lao0fJGtJOnXf+tTwv/et9GTZoYycDr8PMTsWq0kD1VA7l
+	 OvywJCKo9oa6KL9wHuxLc+VOFQ0zCMakhXHHkubEqmQ/pb6p44XGywsK1iAnKAmZjI
+	 Ye3+RBr5S0S48Fzb+JnWIkLF0lsByfB7n/bj54ksU/Eh3q75TQqWLBYW9zeFVxrHaE
+	 82/lL9PaWjBy9opQOeiazGpttp7lz+hD1c1vdwEq11Iz9c1eJBhBaRbfAfBZwDbnzX
+	 FieQ8r6tBTMwWfmEcGfBXhui/GWC4nYeVmjyc2CDtRl4GdFNK4NJ3M+33s63Adyuss
+	 Oh7t3d3cY8IIg==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A7CFE17E0EFE;
-	Mon,  9 Mar 2026 23:44:37 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C29A217E048B;
+	Mon,  9 Mar 2026 23:44:36 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 10 Mar 2026 00:44:31 +0200
-Subject: [PATCH v2 3/8] drm/rockchip: dw_dp: Fix null-ptr-deref in
- dw_dp_remove()
+Date: Tue, 10 Mar 2026 00:44:30 +0200
+Subject: [PATCH v2 2/8] drm/rockchip: dw_dp: Switch to drmm_kzalloc()
 MIME-Version: 1.0
-Message-Id: <20260310-drm-rk-fixes-v2-3-645ecfb43f49@collabora.com>
+Message-Id: <20260310-drm-rk-fixes-v2-2-645ecfb43f49@collabora.com>
 References: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
 In-Reply-To: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,8 +67,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_154440_056251_AB38E25B 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20260309_154440_318418_A32BF4EB 
+X-CRM114-Status: GOOD (  12.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,39 +85,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Attempting to access driver data in the platform driver ->remove()
-callback may lead to a null pointer dereference since there is no
-guaranty that the component ->bind() callback invoking
-platform_set_drvdata() was executed.
+Driver makes use of drmm_encoder_init() to initialize the encoder and
+automatically handle the cleanup by registering drm_encoder_cleanup()
+with drmm_add_action().
 
-A common scenario is when Rockchip DRM driver didn't manage to run
-component_bind_all() because of an (unrelated) error causing early
-return from rockchip_drm_bind().
+However, the internal structure containing the encoder part gets
+allocated with devm_kzalloc(), which happens while component_bind_all()
+is being called from Rockchip DRM driver.  The component framework
+further ensures it is deallocated as part of releasing all the resources
+claimed during bind, which is triggered from component_unbind_all().
 
-Drop the unnecessary call to platform_get_drvdata() and, instead,
-reference the target device structure via platform_device.
+When the reference to the DRM device gets eventually dropped via
+drm_dev_put() in rockchip_drm_unbind(), drmm_encoder_alloc_release()
+attempts to access the now released encoder structure, leading to
+use-after-free.
+
+Ensure driver's internal structure is still reachable on encoder cleanup
+by switching from a device-managed allocation to a drm-managed one.
 
 Fixes: d68ba7bac955 ("drm/rockchip: Add RK3588 DPTX output support")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-index 532af476d250..8945a245398c 100644
+index dac3d202971e..532af476d250 100644
 --- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-@@ -133,9 +133,7 @@ static int dw_dp_probe(struct platform_device *pdev)
+@@ -13,6 +13,7 @@
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_bridge.h>
+ #include <drm/drm_bridge_connector.h>
++#include <drm/drm_managed.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_print.h>
+ #include <drm/drm_probe_helper.h>
+@@ -82,7 +83,7 @@ static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *
+ 	struct drm_connector *connector;
+ 	int ret;
  
- static void dw_dp_remove(struct platform_device *pdev)
- {
--	struct rockchip_dw_dp *dp = platform_get_drvdata(pdev);
--
--	component_del(dp->dev, &dw_dp_rockchip_component_ops);
-+	component_del(&pdev->dev, &dw_dp_rockchip_component_ops);
- }
+-	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
++	dp = drmm_kzalloc(drm_dev, sizeof(*dp), GFP_KERNEL);
+ 	if (!dp)
+ 		return -ENOMEM;
  
- static const struct dw_dp_plat_data rk3588_dp_plat_data = {
 
 -- 
 2.52.0
