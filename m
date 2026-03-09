@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D116EEFCD72
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4645EFCD9F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F9t0SAy5WR+f2iEkO6ywLGRImiHEYFY4BvOyjTjs+Sk=; b=x6DZ5lCCkyWpfj
-	qEqVkV6eK8rPNXsaYmzFA97rgiX6iGl2oTkhALN+/Le6Fhghm9WmcV9y7HIT/XeOgSwUgxod9GpDe
-	mOuk3ZF+v2MYfwyAK50sy+NklE6RGgjVmTdito4UeC1iISw5T9j92o0FccS3EEuCZJZWss6qpoGPq
-	uzrzkhcuX/5cmK99OnG7cofpo/FzK9IkZKGHALdpd/paI/t/FNyOxnXwWrgrfp/laRGj5WiURrtM6
-	fseMIULtQzxfY+c8FceEazTKTgoqDD8TyyvrhTIeCNaljteohx22sIUdPWAyTtw3OS0aeLsSC/Oxz
-	RKaCqYs0Q0NQ3a7QsstQ==;
+	List-Owner; bh=BM3rKUwnhg4v98Vo9v+NN38KEUvjXCyzVzM6/dEfPtU=; b=WTfpaqF6M4B8kf
+	UyHwdgAjwNS+qaoBCzNC1z6kJPxbbzjVznPrXM/Say5UqPHcEc+wSlcuR2N4XmH1ZfjvMOKsJiJd2
+	ySt/3uWfG269Bb1Q2g1HxUiwyPFqJcyKjnn/QdbX8Uys3tbvGMJWWVEBOalizkn2gwHd4ZkI2YM8K
+	obUt/GDB6j1lL+uKEK/AULa59QeaSOyp7PPRO87tqHNqSLMO0ikjl41Hqzcso/l84ysg2uWJ1NN98
+	W65dDiKwKXXFraTWwwH7MRyjw0Rh0vmJ56Xxsd3bjnk7pVuPdJ+cpnH0S8abmo7anCwaTGRpUlPOq
+	b4PxjSO2Z9P1nupsc9ew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjLJ-00000008FFD-38rp;
-	Mon, 09 Mar 2026 22:44:53 +0000
+	id 1vzjLK-00000008FGn-2BCZ;
+	Mon, 09 Mar 2026 22:44:54 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjL9-00000008F0Y-0XYi;
-	Mon, 09 Mar 2026 22:44:44 +0000
+	id 1vzjL9-00000008F1H-37R7;
+	Mon, 09 Mar 2026 22:44:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1773096281;
-	bh=G0L1ZFdJ8ipmt4Cudovn7XKwjKaSlysZ1PuC86cYCI0=;
+	bh=js3wV5z5S67zy6eAdYjU4FSDvTWxhLq5Wlg/JpSyxbc=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=omj7jF6uFnTcbRu1si/OQtMQudraGEkTfgicmtwrBTIcIk91vZ9o2rPp7+dhtIMhh
-	 jhYexQp1MkrWyaTi1zd6iNXne+OJIr+1g8jAqhYb7QvfTbgXWdIUu2Ga+JGXVUjsjs
-	 vNChTJf/KeQ7O+oSrAeLbmH+PBVgyBKCuE9mYFYyUv1R9rwBlniF6wZTIuwMM9XnAY
-	 NvhCsfp7TQ0YwpObix5nkJbA46RrFGdywvgHNHUiAmDNR6FwiHl8fu5XA8FQRol1ob
-	 9btMxmtl6ZKDFyRncU+k2pRiDoXeQVLEiWgm42TuAR1RSSmI1oNAIOuW8YZqPZvkEO
-	 nrv95qDQ4Um+Q==
+	b=hX2Kp8DhyhPRCcKiJzDzrIyyf2lMlUIsKinKqG4ZfHf445gkpBhg/sY5GCsC85979
+	 7UsCibJY8NwgcBnBKkHDBdVB7tSIMnfUrMyPZ3ZyFGqkIroloydspd7+dtMm7PxUk7
+	 uzHTdooz/oBOIYJyG53N5nz4JlXRVXrQNP7Jq4K82U49VkSrVX5AEpwhcJ2B7XX8X2
+	 9BOr7JvLMcJOovHaJGEHeOL+tgX6biLxo4Kw8EY5MOgBSPQ0SKed051Erm8SQFn3pQ
+	 gjGp98/wi8Eq4KzpezAeObRY7k0XcZ09lxG6yF/nHF+/BPiedWi34IYJdjAkakKhju
+	 ymG8qzUxY+Lxw==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D282117E13CB;
-	Mon,  9 Mar 2026 23:44:40 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9EFB717E13F9;
+	Mon,  9 Mar 2026 23:44:41 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 10 Mar 2026 00:44:35 +0200
-Subject: [PATCH v2 7/8] drm/bridge: synopsys: dw-dp: Unregister AUX channel
- on bridge detach
+Date: Tue, 10 Mar 2026 00:44:36 +0200
+Subject: [PATCH v2 8/8] drm/bridge: synopsys: dw-dp: Drop useless memory
+ allocation
 MIME-Version: 1.0
-Message-Id: <20260310-drm-rk-fixes-v2-7-645ecfb43f49@collabora.com>
+Message-Id: <20260310-drm-rk-fixes-v2-8-645ecfb43f49@collabora.com>
 References: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
 In-Reply-To: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -68,8 +68,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_154443_415486_B945F37A 
-X-CRM114-Status: GOOD (  10.13  )
+X-CRM114-CacheID: sfid-20260309_154444_013085_7FEB886E 
+X-CRM114-Status: GOOD (  10.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,71 +86,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The DisplayPort AUX channel gets initialized and registered during
-dw_dp_bind(), but it is never unregistered, which may lead to resource
-leaks and/or use-after-free:
+The bridge gets allocated and initialized implicitly via the
+devm_drm_bridge_alloc() helper in dw_dp_bind().  However, this is
+preceded by an explicit allocation for the same dw_dp struct, which is
+never used anywhere as the return from devm_kzalloc() gets immediately
+overwritten by the aforementioned helper.
 
-[  224.661371] BUG: KASAN: slab-use-after-free in device_is_dependent+0xe0/0x2b0
-[  224.662015] Read of size 8 at addr ffff00011aee8550 by task modprobe/658
-...
-[  224.662796]  device_is_dependent+0xe0/0x2b0
-[  224.662802]  device_is_dependent+0x108/0x2b0
-[  224.662808]  device_link_add+0x1f8/0x10b0
-[  224.662813]  devm_of_phy_get_by_index+0x120/0x200
-[  224.662819]  dw_dp_bind+0x34c/0xb10 [dw_dp]
-[  224.662830]  dw_dp_rockchip_bind+0x194/0x250 [rockchipdrm]
-[  224.662864]  component_bind_all+0x3a8/0x720
-[  224.662869]  rockchip_drm_bind+0x120/0x390 [rockchipdrm]
-[  224.662899]  try_to_bring_up_aggregate_device+0x76c/0x838
-[  224.662904]  component_master_add_with_match+0x1f4/0x230
-[  224.662909]  rockchip_drm_platform_probe+0x420/0x538 [rockchipdrm]
-[  224.662939]  platform_probe+0xe8/0x168
-[  224.662945]  really_probe+0x340/0x828
-[  224.662950]  __driver_probe_device+0x2e0/0x350
-[  224.662954]  driver_probe_device+0x80/0x140
-[  224.662959]  __driver_attach+0x398/0x460
-[  224.662964]  bus_for_each_dev+0xe0/0x198
-[  224.662968]  driver_attach+0x50/0x68
-[  224.662972]  bus_add_driver+0x2a0/0x4c0
-[  224.662977]  driver_register+0x294/0x360
-[  224.662982]  __platform_driver_register+0x7c/0x98
-[  224.662987]  rockchip_drm_init+0xc4/0xff8 [rockchipdrm]
-...
+Get rid of the unnecessary and confusing memory allocation.
 
-Unregister the AUX adapter on bridge detach.
-
-Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index e7bef9150f6a..8d02f047693a 100644
+index 8d02f047693a..9e7ace6be3a0 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1751,6 +1751,13 @@ static const struct drm_edid *dw_dp_bridge_edid_read(struct drm_bridge *bridge,
- 	return edid;
- }
+@@ -1977,10 +1977,6 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 	void __iomem *res;
+ 	int ret;
  
-+static void dw_dp_bridge_detach(struct drm_bridge *bridge)
-+{
-+	struct dw_dp *dp = bridge_to_dp(bridge);
-+
-+	drm_dp_aux_unregister(&dp->aux);
-+}
-+
- static u32 *dw_dp_bridge_atomic_get_output_bus_fmts(struct drm_bridge *bridge,
- 						    struct drm_bridge_state *bridge_state,
- 						    struct drm_crtc_state *crtc_state,
-@@ -1824,6 +1831,7 @@ static const struct drm_bridge_funcs dw_dp_bridge_funcs = {
- 	.atomic_disable = dw_dp_bridge_atomic_disable,
- 	.detect = dw_dp_bridge_detect,
- 	.edid_read = dw_dp_bridge_edid_read,
-+	.detach = dw_dp_bridge_detach,
- };
- 
- static int dw_dp_link_retrain(struct dw_dp *dp)
+-	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
+-	if (!dp)
+-		return ERR_PTR(-ENOMEM);
+-
+ 	dp = devm_drm_bridge_alloc(dev, struct dw_dp, bridge, &dw_dp_bridge_funcs);
+ 	if (IS_ERR(dp))
+ 		return ERR_CAST(dp);
 
 -- 
 2.52.0
