@@ -4,57 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECC54EA854A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 03:29:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18259EA854A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 03:29:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=n8sKJ1GphwfMW27n0cwM4gnoTVroqBuArtbk+X2LhBQ=; b=m/F81aURe0GBKa
-	1ArnE8N+H5GPJ3L5uySaQrATGmCkTdloSye/OuT+E7IXy+pUna8F4rto3lvF4dKg+xigSICLaow7U
-	bI8NbUcT7uRV0YQqplw7CuWg9+huh9Bkb1XhMW0r6x1yLI5CNA5mlWrQqcfgLTbFmugp/jlXynlxh
-	ZfpQMRuYQRS6WvJ/MZ51+tuPs8+DLkFhsa348H3ncATANpmfanAUZDG5Ji3swYdIV+cDsfplCKcoA
-	+ZFvnG5fNgY1aqlHELYu/y8UuI6FLHtepZgZOr6wPAR4RX8huHVC+di4nEjpET4mmqUX7Hefh30zz
-	BU8/xrmauuFa57v21abw==;
+	List-Owner; bh=rOPXCOZM/SzRVI3Sv+jKCcLVN2CIYc9TgBhD67/9l6g=; b=CydTi5gxLZ5iLf
+	EBK80pBXNBai6y3nZ8MQKQNvSqw2O27NA7yhNQWAEYr2PhjnQgZEQwsy6B2X4+U9uYpKAQHQScz8C
+	if2fZ9pfVXpqxWek2oNbhe0NsZNARiMn00h1F+O/pOtYMFH0YdhQVYBLHg7UIwqYBr4YoOgVntyY6
+	+Hm92Ld5fzNUUVEGmdol+KGpN6zNU8hhtGW6E0Y9JjTOYYhoRlHp744ekgzX0R1PlLULU+5Bx2p1D
+	X2aBpKeRwpVcv25K7Dm/udb26Z3uue7Vsl3jkfdwcnkKsoblbHnH5M0QPdCSoeajLUuz+PPP/rrg2
+	wpJopBTqz4QzsHwS1Wrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzRJD-00000006azl-3mwK;
-	Mon, 09 Mar 2026 03:29:31 +0000
-Received: from mail-m32121.qiye.163.com ([220.197.32.121])
+	id 1vzRJH-00000006b1P-1SWG;
+	Mon, 09 Mar 2026 03:29:35 +0000
+Received: from mail-m19731110.qiye.163.com ([220.197.31.110])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzRJB-00000006axu-1j3G
+	id 1vzRJF-00000006ays-0CDS
 	for linux-rockchip@lists.infradead.org;
-	Mon, 09 Mar 2026 03:29:30 +0000
+	Mon, 09 Mar 2026 03:29:34 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 36314790e;
-	Mon, 9 Mar 2026 11:29:25 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 363147917;
+	Mon, 9 Mar 2026 11:29:28 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Ulf Hansson <ulf.hansson@linaro.org>,
 	Jaehoon Chung <jh80.chung@samsung.com>
 Cc: linux-mmc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH 2/3] mmc: dw_mmc-hi3798mv200: Using phase map from dw_mmc core
-Date: Mon,  9 Mar 2026 11:29:02 +0800
-Message-Id: <1773026943-111633-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH 3/3] mmc: dw_mmc-rockchip: Add phase map support
+Date: Mon,  9 Mar 2026 11:29:03 +0800
+Message-Id: <1773026943-111633-4-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1773026943-111633-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1773026943-111633-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9cd0a4763f09cckunm2100c80115ef306
+X-HM-Tid: 0a9cd0a4824709cckunm2100c80115ef32a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGktIHlZOQk5CGEoZQkhPSkxWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUsfT1ZKTx5IT00fTR4fHhlWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=K6i2E8P8Lo3hbZsVort13sKlOJO46PPgw38q44XJtpcIeKP4z2GwbLLH8DN1WF0snftpLPjOp+hniYroBFmaIb8ybXfiqoUQojEi3sRNHCWGxiRZGJHkxVp7kkdN3UzoT0P2Bri8Ub1SXHly5Zpt70qmnMpvZNU0YCAybCk7Od8=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=i5btDijxszuMykpSWLDZiSOgfbymhsrQbgwiBJnZEsY=;
+	b=WgGzW8abesGFh9oR765J1VaMLti7Y58/5mXfxfZ/MGLS7vvkbc2hs+ryCY57+YH2Ub0SuPwwqMU7F2TKObwZkxDBlqPj28CDVyDZq7+2nNxWvOhPthRo3zHVXyZ2wBbl3CRX417U08YswR94Rd8N2XNTD+uOK1ZnIUCvUcw7384=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=mlM35uqN2yUhjHZ4GGat8HwhQ4cccNIP8fSMoinlNo4=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260308_202929_668578_1D0E0B44 
-X-CRM114-Status: GOOD (  10.04  )
+X-CRM114-CacheID: sfid-20260308_202933_242931_466AB98B 
+X-CRM114-Status: GOOD (  17.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,57 +72,94 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-dw_mmc core helps parse phase map now, so reuse it.
-
-No functional changes intended.
+Multiple boards require different phase settings, rendering the default
+phase policy unscalable. Therefore, we introduce phase map to address this
+limitation. To preserve backward compatibility, the default_sample_phase
+and original drv phase for different modes are retained, with phase map
+values taking precedence when available.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+
 ---
 
- drivers/mmc/host/dw_mmc-hi3798mv200.c | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+ drivers/mmc/host/dw_mmc-rockchip.c | 27 ++++++++++++++++++---------
+ 1 file changed, 18 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/mmc/host/dw_mmc-hi3798mv200.c b/drivers/mmc/host/dw_mmc-hi3798mv200.c
-index a64907e..fda4178 100644
---- a/drivers/mmc/host/dw_mmc-hi3798mv200.c
-+++ b/drivers/mmc/host/dw_mmc-hi3798mv200.c
-@@ -30,13 +30,12 @@ struct dw_mci_hi3798mv200_priv {
- 	struct clk *drive_clk;
- 	struct regmap *crg_reg;
- 	u32 sap_dll_offset;
--	struct mmc_clk_phase_map phase_map;
- };
- 
- static void dw_mci_hi3798mv200_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
+index 7699541..c6eece4 100644
+--- a/drivers/mmc/host/dw_mmc-rockchip.c
++++ b/drivers/mmc/host/dw_mmc-rockchip.c
+@@ -179,7 +179,8 @@ static int rockchip_mmc_set_phase(struct dw_mci *host, bool sample, int degrees)
+ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
  {
- 	struct dw_mci_hi3798mv200_priv *priv = host->priv;
--	struct mmc_clk_phase phase = priv->phase_map.phase[ios->timing];
+ 	struct dw_mci_rockchip_priv_data *priv = host->priv;
+-	int ret;
 +	struct mmc_clk_phase phase = host->phase_map.phase[ios->timing];
- 	u32 val;
++	int ret, sample_phase, drv_phase;
+ 	unsigned int cclkin;
+ 	u32 bus_hz;
  
- 	val = mci_readl(host, ENABLE_SHIFT);
-@@ -158,9 +157,9 @@ static int dw_mci_hi3798mv200_execute_tuning_mix_mode(struct dw_mci *host,
- 		 * We don't care what timing we are tuning for,
- 		 * simply use the same phase for all timing needs tuning.
- 		 */
--		priv->phase_map.phase[MMC_TIMING_MMC_HS200].in_deg = degrees[mid];
--		priv->phase_map.phase[MMC_TIMING_MMC_HS400].in_deg = degrees[mid];
--		priv->phase_map.phase[MMC_TIMING_UHS_SDR104].in_deg = degrees[mid];
-+		host->phase_map.phase[MMC_TIMING_MMC_HS200].in_deg = degrees[mid];
-+		host->phase_map.phase[MMC_TIMING_MMC_HS400].in_deg = degrees[mid];
-+		host->phase_map.phase[MMC_TIMING_UHS_SDR104].in_deg = degrees[mid];
+@@ -213,8 +214,15 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 	}
  
- 		clk_set_phase(priv->sample_clk, degrees[mid]);
- 		dev_dbg(host->dev, "Tuning clk_sample[%d, %d], set[%d]\n",
-@@ -185,8 +184,6 @@ static int dw_mci_hi3798mv200_init(struct dw_mci *host)
- 	if (!priv)
- 		return -ENOMEM;
+ 	/* Make sure we use phases which we can enumerate with */
+-	if (!IS_ERR(priv->sample_clk) && ios->timing <= MMC_TIMING_SD_HS)
+-		rockchip_mmc_set_phase(host, true, priv->default_sample_phase);
++	if (!IS_ERR(priv->sample_clk)) {
++		/* Keep backward compatibility */
++		if (ios->timing <= MMC_TIMING_SD_HS) {
++			sample_phase = phase.valid ? phase.in_deg : priv->default_sample_phase;
++			rockchip_mmc_set_phase(host, true, sample_phase);
++		} else if (phase.valid) {
++			rockchip_mmc_set_phase(host, true, phase.in_deg);
++		}
++	}
  
--	mmc_of_parse_clk_phase(host->dev, &priv->phase_map);
+ 	/*
+ 	 * Set the drive phase offset based on speed mode to achieve hold times.
+@@ -243,15 +251,13 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 	 * same results, for instance).
+ 	 */
+ 	if (!IS_ERR(priv->drv_clk)) {
+-		int phase;
 -
- 	priv->sample_clk = devm_clk_get_enabled(host->dev, "ciu-sample");
- 	if (IS_ERR(priv->sample_clk))
- 		return dev_err_probe(host->dev, PTR_ERR(priv->sample_clk),
+ 		/*
+ 		 * In almost all cases a 90 degree phase offset will provide
+ 		 * sufficient hold times across all valid input clock rates
+ 		 * assuming delay_o is not absurd for a given SoC.  We'll use
+ 		 * that as a default.
+ 		 */
+-		phase = 90;
++		drv_phase = 90;
+ 
+ 		switch (ios->timing) {
+ 		case MMC_TIMING_MMC_DDR52:
+@@ -261,7 +267,7 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 			 * to get the same timings.
+ 			 */
+ 			if (ios->bus_width == MMC_BUS_WIDTH_8)
+-				phase = 180;
++				drv_phase = 180;
+ 			break;
+ 		case MMC_TIMING_UHS_SDR104:
+ 		case MMC_TIMING_MMC_HS200:
+@@ -273,11 +279,14 @@ static void dw_mci_rk3288_set_ios(struct dw_mci *host, struct mmc_ios *ios)
+ 			 * SoCs measured this seems to be OK, but it doesn't
+ 			 * hurt to give margin here, so we use 180.
+ 			 */
+-			phase = 180;
++			drv_phase = 180;
+ 			break;
+ 		}
+ 
+-		rockchip_mmc_set_phase(host, false, phase);
++		/* Use out phase from phase map first */
++		if (phase.valid)
++			drv_phase = phase.out_deg;
++		rockchip_mmc_set_phase(host, false, drv_phase);
+ 	}
+ }
+ 
 -- 
 2.7.4
 
