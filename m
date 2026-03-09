@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F3AF3C248
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 12:29:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76E5AF3C24E
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 13:34:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=25jgZS+3RwD4dipm+IUJuvmgwYax1nbdvTHEigC4CcY=; b=XFERZAEOB95ngu8hh3XHM4xMY0
-	d9vYgj71hG+qYQFZH+hfwBa8U8sd7AwDSrU/Yk/8+gmZrTjCBzTs8OG4gfQ9ivfKtF2vcV+rmJxlq
-	HOsgu0CO+cx5NFiU3/rwfymSJuYt8PFaiobNGOevWng9hDT6pLX9/IohXJDt/3BvgMAx+5B/fdqF2
-	Vh7IlwQ1BcEsHVAPPgqKvLqNA/Egsb3n/lsEz7crVbFjgyw6D5RH/x7ASfH5UKawcJqy56wnqk8N2
-	7XcyODlEXV/iZNXSCtpmBX2vDxQTqlcrxjXkDqEYGRyCx77pVMVG3qN2wOuRMeunxULR8U5kL60rD
-	SGLZcUHg==;
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=7mAxOAXNLZFFfZJVyzcwQ88Ar60PW0uDOqAFApI8dYw=; b=WjIonBCtqUpuYz
+	8RO4MV91Y6qsWFK0ooJyMueoq6Vg1+RNIsrVAhde+yph1283OPFqSX0FT7PGKnQhKlGT8sDWZVhNH
+	Zbg1hocs1M/TKSdH5Of2pGLKdKABDDARNcGpiMD6uNiYBboms9TygPL9PPglk6//ejNeYygdUYPzF
+	ImbjoTek175MsPERuHUJCtb7MvgSKeXHBifPSUgueN2wo+EHRfbiuXuaNzOx2G4UisKuRpVFbkq1V
+	XqRlHXWjDofiNYl5fSm7jeivveXBAqs0AGYbXAfID+ZrujMHH/73xsUXrY3tS2eLYceG30Kjm1EYo
+	GZLwwh2G19kV6OrRCdCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzZjz-00000007Jc9-1PjU;
-	Mon, 09 Mar 2026 12:29:43 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1vzakW-00000007PBy-2WiD;
+	Mon, 09 Mar 2026 13:34:20 +0000
+Received: from mail-m49248.qiye.163.com ([45.254.49.248])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzZjx-00000007JbZ-0mGH;
-	Mon, 09 Mar 2026 12:29:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 48A5E600AE;
-	Mon,  9 Mar 2026 12:29:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82263C4CEF7;
-	Mon,  9 Mar 2026 12:29:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773059380;
-	bh=sdACc/Vbt9m0Tf3WatUwZZmOXL5NI62/15tUJ8fQl8M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JMDb8XsIm65PkNu73oLSZoi0tfbQDim/GSj7cTRxWJMUOPPHL2GFZ1NF3os0/1jQ1
-	 KSqFUuUZkKacY7gSY8VK0MpssUjeTR5dRxOs6lKincVkR/h8SSvWLSmRweSFReyqJ7
-	 fgzYbHiMie8oxNTlQhPYonhvAUqG9b54NebTJb+EvL6QLlyFYxhKBRUQ4OcCfW/8+0
-	 496unukW4tkQpsDz1WqSo0UavpBwMHSyI5lQlOSAYuy1hCKHWKcGN9Gj9gHa7q3CLo
-	 xjbKUXlkxLsvXFmoF1KSijZ96TjG58B9jJbTLpYeM9xdXdPZy4nQQ1hEVbwnGmX7ZU
-	 0uwBoAfd0PhDg==
-Date: Mon, 9 Mar 2026 12:29:35 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Felix Gu <ustc.gu@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Jon Lin <jon.lin@rock-chips.com>,
-	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] spi: rockchip-sfc: Remove redundant
- spi_unregister_controller() call
-Message-ID: <52755ab9-7387-4f4b-95d4-2bfdeedc3e5f@sirena.org.uk>
-References: <20260305-sfc-v1-1-6fbf6df0e899@gmail.com>
+	id 1vzakU-00000007P8u-0k5P;
+	Mon, 09 Mar 2026 13:34:20 +0000
+Received: from [172.16.12.43] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 364581b40;
+	Mon, 9 Mar 2026 21:34:08 +0800 (GMT+08:00)
+Message-ID: <8df0574d-c4c8-4a6d-a357-7b8c82a38acb@rock-chips.com>
+Date: Mon, 9 Mar 2026 21:34:08 +0800
 MIME-Version: 1.0
-In-Reply-To: <20260305-sfc-v1-1-6fbf6df0e899@gmail.com>
-X-Cookie: I don't understand you anymore.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 09/15] drm/bridge: analogix_dp: Apply
+ drm_bridge_connector helper
+From: Damon Ding <damon.ding@rock-chips.com>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
+ neil.armstrong@linaro.org, rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
+ jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
+ festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
+ kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
+ jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
+ heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
+ dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
+ linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20260210071225.2566099-1-damon.ding@rock-chips.com>
+ <20260210071225.2566099-10-damon.ding@rock-chips.com>
+ <DGT1S368J0BK.3UA75JNEA1AB8@bootlin.com>
+ <b08028a2-a721-404f-aa37-2d5460b42f94@rock-chips.com>
+Content-Language: en-US
+In-Reply-To: <b08028a2-a721-404f-aa37-2d5460b42f94@rock-chips.com>
+X-HM-Tid: 0a9cd2ce18f603a3kunm414b5e452e0573
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0geTFYdSkNLSUoeH0hNGktWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=M4Y5MGyxF/AdrP3ihZXEHSWnvV2h0B7W+h5SyJclBYmjiA7VtwI0rHMg3a5WDAVUW1I4A4n6VdStslrwNpjxSWCf7wHBGc8pCPvWNfwSRNB7ZZM3WIAq5RiP696HMrrMqVVlvCKfwdKCWgoMWA7Or616ir+NiRL6F2BKRX2eYPc=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=m+pjJ8AYp8UNMrQ2/YzyBJ5hJEx0e6GJLawz++scizw=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260309_063418_766996_3C472888 
+X-CRM114-Status: GOOD (  17.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,73 +80,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6646942131191037520=="
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============6646942131191037520==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="AClr4NiypPa3ZHRv"
-Content-Disposition: inline
-
-
---AClr4NiypPa3ZHRv
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Thu, Mar 05, 2026 at 11:38:21PM +0800, Felix Gu wrote:
-
-> The driver uses devm_spi_register_controller() for registration, which
-> automatically unregisters the controller via devm cleanup when the
-> device is removed.
-
-> The manual call to spi_unregister_controller() in the remove() callback
-> is therefore redundant and should be removed.
-
-Not just redundant, it'll be a double free.
-
-> -	spi_unregister_controller(host);
->  	dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
->  			 DMA_BIDIRECTIONAL);
->  	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
-
-This does mean that if the device is being force unregistered with
-children still present those children might still be submitting SPI
-requests while the DMA buffer is unmapped, but in the normal course of
-affairs it's more likely that the devices will be unregistered before
-the controller.  It would be best to either roll back the use of devm or
-add a devm based unmap of the buffer here, the current remove function
-has correct ordering.
-
---AClr4NiypPa3ZHRv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmuvS4ACgkQJNaLcl1U
-h9Chiwf9HWSa3dh2cae/FqNy2jBr53e+UB+ij8++KuKvJ4c9nWTndSDG8yv26YUJ
-U0WQ7a8K4o0lnfzzdba92bwMC0HbkvNaK37jUBWjv2jfb0VaviYe/DPIRIEaXdJ7
-9Ahv5K09vfBXWvzlGmBpaDX0mI1n7agTLuDTnIOAhe0vGuCDJFyQy7O5eg3Vzazs
-vC8THtwX0jIsWXId9lRQkdu5dcg6+8z5jLgdzJkg7BEsPvadhk4mgUsNeuUKc7rZ
-m8ajxOr9qxHM8WAYrn7J0R50rJCl+gVQmT8m3U+NvRjCbfjuD9+uhttWdPw7mK+k
-fg3ykuWMZWrzhsIQLnSr8vY+RnyLzQ==
-=JX79
------END PGP SIGNATURE-----
-
---AClr4NiypPa3ZHRv--
-
-
---===============6646942131191037520==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6646942131191037520==--
-
+SGkgTHVjYSwKCk9uIDMvOS8yMDI2IDc6MjUgUE0sIERhbW9uIERpbmcgd3JvdGU6Cj4gSGkgTHVj
+YSwKPiAKPiBPbiAzLzMvMjAyNiA1OjQyIFBNLCBMdWNhIENlcmVzb2xpIHdyb3RlOgo+PiBIZWxs
+byBEYW1vbiwKPj4KPj4gT24gVHVlIEZlYiAxMCwgMjAyNiBhdCA4OjEyIEFNIENFVCwgRGFtb24g
+RGluZyB3cm90ZToKPj4+IEFwcGx5IGRybV9icmlkZ2VfY29ubmVjdG9yIGhlbHBlciBmb3IgQW5h
+bG9naXggRFAgZHJpdmVyLgo+Pj4KPj4+IFRoZSBmb2xsb3dpbmcgY2hhbmdlcyBoYXZlIGJlZW4g
+bWFkZToKPj4+IC0gQXBwbHkgZHJtX2JyaWRnZV9jb25uZWN0b3IgaGVscGVyIHRvIGdldCByaWQg
+b2YgJmRybV9jb25uZWN0b3JfZnVuY3MKPj4+IMKgwqAgYW5kICZkcm1fY29ubmVjdG9yX2hlbHBl
+cl9mdW5jcy4KPj4+IC0gUmVtb3ZlIHVubmVjZXNzYXJ5IHBhcmFtZXRlciBzdHJ1Y3QgZHJtX2Nv
+bm5lY3RvciogZm9yIGNhbGxiYWNrCj4+PiDCoMKgICZhbmFsb2dpeF9kcF9wbGF0X2RhdGEuYXR0
+YWNoLgo+Pj4gLSBSZW1vdmUgJmFuYWxvZ2l4X2RwX2RldmljZS5jb25uZWN0b3IuCj4+PiAtIENv
+bnZlcnQgYW5hbG9naXhfZHBfYXRvbWljX2NoZWNrKCkvYW5hbG9naXhfZHBfZGV0ZWN0KCkgdG8K
+Pj4+IMKgwqAgJmRybV9icmlkZ2VfZnVuY3MuYXRvbWljX2NoZWNrKCkvJmRybV9icmlkZ2VfZnVu
+Y3MuZGV0ZWN0KCkuCj4+PiAtIFNwbGl0IGFuYWxvZ2l4X2RwX2dldF9tb2RlcygpIGludG8gJmRy
+bV9icmlkZ2VfZnVuY3MuZ2V0X21vZGVzKCkgYW5kCj4+PiDCoMKgICZkcm1fYnJpZGdlX2Z1bmNz
+LmVkaWRfcmVhZCgpLgo+Pj4gLSBTZXQgZmxhZyBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNU
+T1IgZm9yIGJyaWRnZSBhdHRhY2htZW50IHdoaWxlCj4+PiDCoMKgIGJpbmRpbmcuIE1lYW53aGls
+ZSwgbWFrZSBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IgdW5zdXBwcG9ydGVkCj4+IMKg
+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
+Xgo+Pgo+PiBEbyB5b3UgbWVhbiAiIURSTV9CUklER0VfQVRUQUNIX05PX0NPTk5FQ1RPUiIgaGVy
+ZSAoaS5lLiBtaXNzaW5nICchJyk/Cj4+Cj4+IEFsc28sIHVuc3VwcHBvcnRlZCAtPiB1bnN1cHBv
+cnRlZCAodHlwbykKPj4KPiAKPiBXaWxsIGZpeCBpbiB2MTAuCj4gCj4+PiDCoMKgIGluIGFuYWxv
+Z2l4X2RwX2JyaWRnZV9hdHRhY2goKS4KPj4+IC0gU2V0ICZkcm1fYnJpZGdlLm9wcyBhY2NvcmRp
+bmcgdG8gZGlmZmVyZW50IGNhc2VzLgo+Pj4KPj4+IFNpZ25lZC1vZmYtYnk6IERhbW9uIERpbmcg
+PGRhbW9uLmRpbmdAcm9jay1jaGlwcy5jb20+Cj4+PiBUZXN0ZWQtYnk6IE1hcmVrIFN6eXByb3dz
+a2kgPG0uc3p5cHJvd3NraUBzYW1zdW5nLmNvbT4KPj4+IFRlc3RlZC1ieTogSGVpa28gU3R1ZWJu
+ZXIgPGhlaWtvQHNudGVjaC5kZT4gKG9uIHJrMzU4OCkKPj4KPj4gSSBoYWQgYSBxdWljayBsb29r
+LCBsb29rcyBnb29kIG92ZXJhbGwsIGZvciB0aGUgbW9tZW50IEkgaGF2ZSBvbmx5IGEKPj4gcXVl
+c3Rpb24sIHNlZSBiZWxvdy4KPj4KPj4gSSBhaW0gYXQgcmV2aWV3aW5nIHRoaXMgcGF0Y2ggaW4g
+ZGVwdGgsIGJ1dCBpdCdzIG5vdCBhbiBlYXN5IG9uZSB0bwo+PiBkaWdlc3QuIFdvdWxkIGl0IGJl
+IGZlYXNpYmxlIHRvIHNwbGl0IGl0IGluIHNtYWxsZXIgbG9naWNhbCBzdGVwcz8gSWYgaXQKPj4g
+aXMsIHBsZWFzZSBkbywgaXQgd291bGQgYmUgdmVyeSBoZWxwZnVsIGZvciByZXZpZXdpbmcuCj4g
+Cj4gWWVzLCB0aGlzIGNvbW1pdCB3aWxsIGJlIHNwbGl0IGludG8gc2V2ZXJhbCBzbWFsbGVyIG9u
+ZXMgaW4gdjEwLgo+IAo+Pgo+Pj4gQEAgLTE1MzIsNiArMTQ4MSw3IEBAIEVYUE9SVF9TWU1CT0xf
+R1BMKGFuYWxvZ2l4X2RwX3Jlc3VtZSk7Cj4+Pgo+Pj4gwqAgaW50IGFuYWxvZ2l4X2RwX2JpbmQo
+c3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAqZHAsIHN0cnVjdCAKPj4+IGRybV9kZXZpY2UgKmRy
+bV9kZXYpCj4+PiDCoCB7Cj4+PiArwqDCoMKgIHN0cnVjdCBkcm1fYnJpZGdlICpicmlkZ2UgPSAm
+ZHAtPmJyaWRnZTsKPj4+IMKgwqDCoMKgwqAgaW50IHJldDsKPj4+Cj4+PiDCoMKgwqDCoMKgIGRw
+LT5kcm1fZGV2ID0gZHJtX2RldjsKPj4+IEBAIC0xNTQ1LDcgKzE0OTUsMTggQEAgaW50IGFuYWxv
+Z2l4X2RwX2JpbmQoc3RydWN0IGFuYWxvZ2l4X2RwX2RldmljZSAKPj4+ICpkcCwgc3RydWN0IGRy
+bV9kZXZpY2UgKmRybV9kZXYpCj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAgcmV0dXJuIHJldDsKPj4+
+IMKgwqDCoMKgwqAgfQo+Pj4KPj4+IC3CoMKgwqAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goZHAt
+PmVuY29kZXIsICZkcC0+YnJpZGdlLCBOVUxMLCAwKTsKPj4+ICvCoMKgwqAgaWYgKGRwLT5wbGF0
+X2RhdGEtPnBhbmVsKQo+Pj4gK8KgwqDCoMKgwqDCoMKgIGJyaWRnZS0+b3BzID0gRFJNX0JSSURH
+RV9PUF9NT0RFUyB8IERSTV9CUklER0VfT1BfREVURUNUOwo+Pj4gK8KgwqDCoCBlbHNlCj4+PiAr
+wqDCoMKgwqDCoMKgwqAgYnJpZGdlLT5vcHMgPSBEUk1fQlJJREdFX09QX0VESUQgfCBEUk1fQlJJ
+REdFX09QX0RFVEVDVDsKPj4+ICsKPj4+ICvCoMKgwqAgYnJpZGdlLT5vZl9ub2RlID0gZHAtPmRl
+di0+b2Zfbm9kZTsKPj4+ICvCoMKgwqAgYnJpZGdlLT50eXBlID0gRFJNX01PREVfQ09OTkVDVE9S
+X2VEUDsKPj4+ICvCoMKgwqAgcmV0ID0gZGV2bV9kcm1fYnJpZGdlX2FkZChkcC0+ZGV2LCAmZHAt
+PmJyaWRnZSk7Cj4+Cj4+IENhbiBkZXZtX2RybV9icmlkZ2VfYWRkKCkgYmUgYWRkZWQgdG8gYW5h
+bG9naXhfZHBfcHJvYmUoKSBpbnN0ZWFkPwo+IAo+IFdpbGwgZG8gaW4gdjEwLgoKTXkgYXBvbG9n
+aWVzIGZvciBteSBzb21ld2hhdCBpcnJlc3BvbnNpYmxlIHJlcGx5IGVhcmxpZXIhCgpXaGVuIEkg
+d2FzIHNwbGl0dGluZyB0aGlzIGNvbW1pdCwgSSByZWFsaXplZCB0aGF0IG1vdmluZyAKZGV2bV9k
+cm1fYnJpZGdlX2FkZCgpIHRvIGFuYWxvZ2l4X2RwX3Byb2JlKCkgaXMgYWN0dWFsbHkgbm90IGZl
+YXNpYmxlIOKAkyAKdGhlIHR5cGUgb2YgdGhlIGRvd25zdHJlYW0gYnJpZGdlIG9mIHRoZSBBbmFs
+b2dpeCBicmlkZ2UgY2FuIG9ubHkgYmUgCmRldGVybWluZWQgYWZ0ZXIgdGhlIGVudGlyZSBwcm9i
+ZSBwcm9jZXNzIGlzIGZ1bGx5IGNvbXBsZXRlZC4KCnJvY2tjaGlwX2RwX3Byb2JlKCkvZXh5bm9z
+X2RwX3Byb2JlKCkgLT4KICAgYW5hbG9naXhfZHBfZmluaXNoX3Byb2JlKCkgLT4KICAgICBhbmFs
+b2dpeF9kcF9hdXhfZG9uZV9wcm9iaW5nKCkgLT4KICAgICAgIGRybV9vZl9maW5kX3BhbmVsX29y
+X2JyaWRnZSgpIC0+CiAgICAgICAgIHJvY2tjaGlwX2RwX2JpbmQoKS9leHlub3NfZHBfYmluZCgp
+IC0+CiAgICAgICAgICAgYW5hbG9naXhfZHBfYmluZCgpLT4KICAgICAgICAgICAgIGRldm1fZHJt
+X2JyaWRnZV9hZGQoKQoKVG8gYXZvaWQgY29uZnVzaW9uLCBJ4oCZdmUgYWRkZWQgc29tZSBjb21t
+ZW50cyBmb3IgdGhpcyBlYXNpbHkgCm1pc3VuZGVyc3Rvb2QgbG9naWMgdG8gdGhlIGNvbW1pdCBt
+ZXNzYWdlIG9mIHYxMCwgc28gdGhlIHJlYXNvbmluZyBpcyAKY2xlYXIgZm9yIGV2ZXJ5b25lLgoK
+PiAKPj4KPj4+ICvCoMKgwqAgaWYgKHJldCkKPj4+ICvCoMKgwqDCoMKgwqDCoCBnb3RvIGVycl91
+bnJlZ2lzdGVyX2F1eDsKPj4+ICsKPj4+ICvCoMKgwqAgcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2go
+ZHAtPmVuY29kZXIsIGJyaWRnZSwgTlVMTCwgCj4+PiBEUk1fQlJJREdFX0FUVEFDSF9OT19DT05O
+RUNUT1IpOwo+Pj4gwqDCoMKgwqDCoCBpZiAocmV0KSB7Cj4+PiDCoMKgwqDCoMKgwqDCoMKgwqAg
+RFJNX0VSUk9SKCJmYWlsZWQgdG8gY3JlYXRlIGJyaWRnZSAoJWQpXG4iLCByZXQpOwo+Pj4gwqDC
+oMKgwqDCoMKgwqDCoMKgIGdvdG8gZXJyX3VucmVnaXN0ZXJfYXV4Owo+IAoKQmVzdCByZWdhcmRz
+LApEYW1vbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+CkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRl
+YWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgt
+cm9ja2NoaXAK
