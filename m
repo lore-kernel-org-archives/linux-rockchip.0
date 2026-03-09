@@ -4,53 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10BFBFCA191
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 21:25:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73BEDFCA19C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:37:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Eieu0l71M5m6OhPm2EO3Jf90WGXrSN0w6blCJGjYR5Y=; b=iHO12P0wi2D1+h
-	fAHfY9Ux1y3sbJU0uBbOMb3alKTUCcn1dTNzt3PO9c3/tS1zJYYc7NWqMy/fwZAO5T72BI8byuvKG
-	zpbIuGQLpfKRPxy7hqbXVoLlhdorBIctqjqzM6hN7Sz+tNElJGGH/5xF8XRuPBU0ueH23CvM1ZVcp
-	T2pYLmI0MWcvNA7SffRpLRKjaQRNVG3+YJ/i0S9pmIfDsrw18Iqp6CFq2FmzPcz/w4DX2YoK57ouP
-	+vkhNpQSE+HghHcocZBB6AIlzVq4K8+nJvUTGIByzG7qyHENcUuWvHVT6te3d0j7QKMc3oPXfRJGq
-	mQfV11P6tTadIHnOnXAA==;
+	List-Owner; bh=b7Yt9l0atdJXWlhg9HmKByi6nHIbEfrblEyReA4Ckpk=; b=b6cIszOR0VJZld
+	Qde8dfUW2WmYznaVcmhdZtawJ8xW9xZG2i4JFF4NquVXidzlN5wJLn5KnWyVJdvGBwl1UOiHpIpJU
+	mfobc8ye8q9wlkqF3pTBMEVyGItyZ6YJFahpIK0/3FBKEXUSZuDh77XBdV+0AYCItXGdAFSAiM9Ga
+	V6TbUssgCRbLGlJxDONjvGrkQhr55GCnNbPRH7C7vaQMD833Lb8dM1YZbotYxAy0rtLjGa3yIJ3Y3
+	DLYtqwjSww4kjZhhPepVpGSvk4pkO0WJ0uIX5gwniaL4rE9oyCraPuI4fP3KkK1Su0fFk2xuhfVEf
+	sZ715z4z/1j9M42FBSfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzi68-00000008BIx-1vEl;
-	Mon, 09 Mar 2026 21:25:08 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vzjDx-00000008EZk-26S8;
+	Mon, 09 Mar 2026 22:37:17 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzi65-00000008BHz-17FM;
-	Mon, 09 Mar 2026 21:25:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=oVHmmg5PbGhBJcH1DiEgCgltbKf4t8SXuZF/r8goSLw=; b=m65ga86fwWwLPFyKsNOsIcX0n5
-	t+hFSKHitbRnnM6HTltcGkOw/tM+icOJ6Po2iUWNNoMiJy7a7u9GvU+ZLT4CbtQ+QmzRISrhVkYzh
-	cQUak1ZcIUurAZjCLi4UO0smzo1imi2Ysvh7okKiSYqWTtGPpv+8yHWpsPWHuuieDuCO75OyKuHvz
-	DjrRpGK2Pp1QNKhrQVJeKkstBhNDvU/Rw0wPiS/sDuXiraKj1nOI0eE+ovUGNXPsnWjN7qtXi8EdK
-	/oH4O1VDXio5inTRlf0oHSGLGY+jUWpVOtYVGr0BGnBIW1yQQKz1UMNJeiXOCIUocG6Kmbv/tNul7
-	KHMXW2IQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
-Cc: jonas@kwiboo.se, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Fabio Estevam <festevam@nabladev.com>
-Subject: Re: [PATCH v5 2/4] ARM: dts: rockchip: Add support for RV1103B
-Date: Mon, 09 Mar 2026 22:24:52 +0100
-Message-ID: <47923648.fMDQidcC6G@phil>
-In-Reply-To: <20260216010219.2131484-2-festevam@gmail.com>
-References: <20260216010219.2131484-1-festevam@gmail.com>
- <20260216010219.2131484-2-festevam@gmail.com>
+	id 1vzjDu-00000008EZX-16HB;
+	Mon, 09 Mar 2026 22:37:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6210260054;
+	Mon,  9 Mar 2026 22:37:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC18EC4CEF7;
+	Mon,  9 Mar 2026 22:37:11 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773095833;
+	bh=6BnqkIlhVLViOxVryE2C/8Z+o2ZWDSXu/1ZvCYaDXaI=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=tf3H4xezIDRsTefv5vg+Fi29V0HK0hXba7SX8Qjpff2LIMJyrIdAUlfUphLpz0vXt
+	 VQpGFEczR5IAjz3w0nxB8MKfbmHs4/aNlNfd+DGOIIOp6l134w/5Rp2To/2e5JfMwX
+	 jka3hl9HgNEm6orCxeH/SfP3w8jvX/m5fYle80bUygWWmiwJcRPR27vaKPH8K2+jSn
+	 2iA8h2SwCIPEPEdAOWaWyB1A1B9vQ5bLuZBgaON2BkDvHjIYMQS0GC1DnqWefCyonN
+	 /H0sDUjE5hGE9wW/AFoF2BHq5ToC8S60Ncuv3QlHZK5gJX2tIU+UUy0yH9Lc0MEaig
+	 BwfzfclgNVaDg==
+From: Mark Brown <broonie@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>, Jon Lin <jon.lin@rock-chips.com>, 
+ Felix Gu <ustc.gu@gmail.com>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20260310-sfc-v2-1-67fab04b097f@gmail.com>
+References: <20260310-sfc-v2-1-67fab04b097f@gmail.com>
+Subject: Re: [PATCH v2] spi: rockchip-sfc: Fix double-free in remove()
+ callback
+Message-Id: <177309583151.321088.16829523155005247397.b4-ty@kernel.org>
+Date: Mon, 09 Mar 2026 22:37:11 +0000
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_142505_328740_D8A2C826 
-X-CRM114-Status: GOOD (  20.10  )
+X-Mailer: b4 0.15-dev-83dbb
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,106 +65,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAxNi4gRmVicnVhciAyMDI2LCAwMjowMjoxNyBNaXR0ZWxldXJvcMOkaXNjaGUg
-Tm9ybWFsemVpdCBzY2hyaWViIEZhYmlvIEVzdGV2YW06Cj4gRnJvbTogRmFiaW8gRXN0ZXZhbSA8
-ZmVzdGV2YW1AbmFibGFkZXYuY29tPgo+IAo+IEFkZCB0aGUgaW5pdGlhbCBSVjExMDNCIGRldmlj
-ZXRyZWUuCj4gCj4gQmFzZWQgb24gdGhlIDUuMTAgUm9ja2NoaXAgdmVuZG9yIGtlcm5lbC4KPiAK
-PiBTaWduZWQtb2ZmLWJ5OiBGYWJpbyBFc3RldmFtIDxmZXN0ZXZhbUBuYWJsYWRldi5jb20+Cj4g
-LS0tCj4gVGhlIDxkdC1iaW5kaW5ncy9jbG9jay9yb2NrY2hpcCxydjExMDNiLWNydS5oPiBoZWFk
-ZXIgY29tZXMgZnJvbSBhbm90aGVyCj4gc2VyaWVzOgo+IAo+IGh0dHBzOi8vbG9yZS5rZXJuZWwu
-b3JnL2xpbnV4LWRldmljZXRyZWUvMjAyNjAyMTAwMjI2MjAuMTcyNTcwLTEtZmVzdGV2YW1AZ21h
-aWwuY29tLwo+IAo+IE1heWJlIEhlaWtvIGNvdWxkIGFwcGx5IHRoZSBjbG9jayBzZXJpZXMgYXMg
-d2VsbD8KPiAKPiBDaGFuZ2VzIHNpbmNlIHY0Ogo+IC0gTm9uZS4KPiAKPiAgLi4uL2Jvb3QvZHRz
-L3JvY2tjaGlwL3J2MTEwM2ItcGluY3RybC5kdHNpICAgIHwgODE2ICsrKysrKysrKysrKysrKysr
-Kwo+ICBhcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9ydjExMDNiLmR0c2kgICAgICAgfCAyNTcg
-KysrKysrCj4gIDIgZmlsZXMgY2hhbmdlZCwgMTA3MyBpbnNlcnRpb25zKCspCj4gIGNyZWF0ZSBt
-b2RlIDEwMDY0NCBhcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9ydjExMDNiLXBpbmN0cmwuZHRz
-aQo+ICBjcmVhdGUgbW9kZSAxMDA2NDQgYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcnYxMTAz
-Yi5kdHNpCgoKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcnYxMTAz
-Yi5kdHNpIGIvYXJjaC9hcm0vYm9vdC9kdHMvcm9ja2NoaXAvcnYxMTAzYi5kdHNpCj4gbmV3IGZp
-bGUgbW9kZSAxMDA2NDQKPiBpbmRleCAwMDAwMDAwMDAwMDAuLjU5NTViMjQ5ZDRjZQo+IC0tLSAv
-ZGV2L251bGwKPiArKysgYi9hcmNoL2FybS9ib290L2R0cy9yb2NrY2hpcC9ydjExMDNiLmR0c2kK
-PiBAQCAtMCwwICsxLDI1NyBAQAo+ICsvLyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogKEdQTC0y
-LjArIE9SIE1JVCkKPiArLyoKPiArICogQ29weXJpZ2h0IChjKSAyMDI0IFJvY2tjaGlwIEVsZWN0
-cm9uaWNzIENvLiwgTHRkLgo+ICsgKi8KPiArCj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9jbG9j
-ay9yb2NrY2hpcCxydjExMDNiLWNydS5oPgo+ICsjaW5jbHVkZSA8ZHQtYmluZGluZ3MvZ3Bpby9n
-cGlvLmg+Cj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9pbnRlcnJ1cHQtY29udHJvbGxlci9pcnEu
-aD4KPiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2ludGVycnVwdC1jb250cm9sbGVyL2FybS1naWMu
-aD4KPiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3BpbmN0cmwvcm9ja2NoaXAuaD4KPiArI2luY2x1
-ZGUgPGR0LWJpbmRpbmdzL3NvYy9yb2NrY2hpcCxib290LW1vZGUuaD4KPiArCj4gKy8gewo+ICsJ
-I2FkZHJlc3MtY2VsbHMgPSA8MT47Cj4gKwkjc2l6ZS1jZWxscyA9IDwxPjsKPiArCj4gKwljb21w
-YXRpYmxlID0gInJvY2tjaGlwLHJ2MTEwM2IiOwo+ICsKPiArCWludGVycnVwdC1wYXJlbnQgPSA8
-JmdpYz47Cj4gKwo+ICsJYXJtLXBtdSB7Cj4gKwkJY29tcGF0aWJsZSA9ICJhcm0sY29ydGV4LWE3
-LXBtdSI7Cj4gKwkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDEyNyBJUlFfVFlQRV9MRVZFTF9ISUdI
-PjsKPiArCQlpbnRlcnJ1cHQtYWZmaW5pdHkgPSA8JmNwdTA+Owo+ICsJfTsKPiArCj4gKwl4aW4z
-Mms6IG9zY2lsbGF0b3ItMzJrIHsKPiArCQljb21wYXRpYmxlID0gImZpeGVkLWNsb2NrIjsKPiAr
-CQljbG9jay1mcmVxdWVuY3kgPSA8MzI3Njg+Owo+ICsJCWNsb2NrLW91dHB1dC1uYW1lcyA9ICJ4
-aW4zMmsiOwo+ICsJCSNjbG9jay1jZWxscyA9IDwwPjsKPiArCX07CgpQbGVhc2UgZG91YmxlLWNo
-ZWNrIHdoZXJlIHRoYXQgeGluMzJrIGlzIGNvbWluZyBmcm9tIGluIGRldmljZS1zY2hlbWF0aWNz
-LgpZZXMgdGhlIHhpbjI0bSBpcyBub3JtYWxseSBhIGRlZGljYXRlZCBvc2NpbGxhdG9yLCBidXQg
-dGhlIHhpbjMyayBpbgptb3N0IGNhc2VzIGlzIGdlbmVyYXRlZCBmcm9tIHRoZSBzeXN0ZW0tcG1p
-Yy4KClNvIHBsZWFzZSBjaGVjayBhbmQgbW9zdCBsaWtlbHkgbW92ZSB0aGF0IHRvIHRoZSBib2Fy
-ZCBkdHMuCgpBbHNvLCBwbGVhc2Ugc29ydCBub2RlLW5hbWVzIGFscGhhYmV0aWNhbGx5IChpZiB0
-aGVyZSBpcyBubyBhZGRyZXNzKQoKCj4gKwl4aW4yNG06IG9zY2lsbGF0b3ItMjRtIHsKPiArCQlj
-b21wYXRpYmxlID0gImZpeGVkLWNsb2NrIjsKPiArCQljbG9jay1mcmVxdWVuY3kgPSA8MjQwMDAw
-MDA+Owo+ICsJCWNsb2NrLW91dHB1dC1uYW1lcyA9ICJ4aW4yNG0iOwo+ICsJCSNjbG9jay1jZWxs
-cyA9IDwwPjsKPiArCX07Cj4gKwo+ICsJY3B1cyB7Cj4gKwkJI2FkZHJlc3MtY2VsbHMgPSA8MT47
-Cj4gKwkJI3NpemUtY2VsbHMgPSA8MD47Cj4gKwo+ICsJCWNwdTA6IGNwdUAwIHsKPiArCQkJZGV2
-aWNlX3R5cGUgPSAiY3B1IjsKPiArCQkJY29tcGF0aWJsZSA9ICJhcm0sY29ydGV4LWE3IjsKPiAr
-CQkJcmVnID0gPDB4MD47Cj4gKwkJCWNsb2NrcyA9IDwmY3J1IEFSTUNMSz47Cj4gKwkJfTsKPiAr
-CX07Cj4gKwo+ICsJdGltZXIgewo+ICsJCWNvbXBhdGlibGUgPSAiYXJtLGFybXY3LXRpbWVyIjsK
-PiArCQlpbnRlcnJ1cHRzID0gPEdJQ19QUEkgMTMgKEdJQ19DUFVfTUFTS19TSU1QTEUoMSkgfCBJ
-UlFfVFlQRV9MRVZFTF9ISUdIKT4sCj4gKwkJCSAgICAgPEdJQ19QUEkgMTQgKEdJQ19DUFVfTUFT
-S19TSU1QTEUoMSkgfCBJUlFfVFlQRV9MRVZFTF9ISUdIKT47Cj4gKwkJY2xvY2stZnJlcXVlbmN5
-ID0gPDI0MDAwMDAwPjsKPiArCX07Cj4gKwo+ICsJcGluY3RybDogcGluY3RybCB7Cj4gKwkJY29t
-cGF0aWJsZSA9ICJyb2NrY2hpcCxydjExMDNiLXBpbmN0cmwiOwo+ICsJCXJvY2tjaGlwLGdyZiA9
-IDwmaW9jPjsKPiArCQkjYWRkcmVzcy1jZWxscyA9IDwxPjsKPiArCQkjc2l6ZS1jZWxscyA9IDwx
-PjsKPiArCQlyYW5nZXM7Cj4gKwo+ICsJCWdwaW8wOiBncGlvQDIwNTIwMDAwIHsKPiArCQkJY29t
-cGF0aWJsZSA9ICJyb2NrY2hpcCxncGlvLWJhbmsiOwo+ICsJCQlyZWcgPSA8MHgyMDUyMDAwMCAw
-eDIwMD47Cj4gKwkJCWludGVycnVwdHMgPSA8R0lDX1NQSSA3NSBJUlFfVFlQRV9MRVZFTF9ISUdI
-PjsKPiArCQkJY2xvY2tzID0gPCZjcnUgUENMS19QTVVfR1BJTzA+LCA8JmNydSBEQkNMS19QTVVf
-R1BJTzA+Owo+ICsJCQlncGlvLWNvbnRyb2xsZXI7Cj4gKwkJCSNncGlvLWNlbGxzID0gPDI+Owo+
-ICsJCQlpbnRlcnJ1cHQtY29udHJvbGxlcjsKPiArCQkJI2ludGVycnVwdC1jZWxscyA9IDwyPjsK
-PiArCQl9Owo+ICsKPiArCQlncGlvMTogZ3Bpb0AyMGQ4MDAwMCB7Cj4gKwkJCWNvbXBhdGlibGUg
-PSAicm9ja2NoaXAsZ3Bpby1iYW5rIjsKPiArCQkJcmVnID0gPDB4MjBkODAwMDAgMHgyMDA+Owo+
-ICsJCQlpbnRlcnJ1cHRzID0gPEdJQ19TUEkgNzkgSVJRX1RZUEVfTEVWRUxfSElHSD47Cj4gKwkJ
-CWNsb2NrcyA9IDwmY3J1IFBDTEtfR1BJTzE+LCA8JmNydSBEQkNMS19HUElPMT47Cj4gKwkJCWdw
-aW8tY29udHJvbGxlcjsKPiArCQkJI2dwaW8tY2VsbHMgPSA8Mj47Cj4gKwkJCWludGVycnVwdC1j
-b250cm9sbGVyOwo+ICsJCQkjaW50ZXJydXB0LWNlbGxzID0gPDI+Owo+ICsJCX07Cj4gKwo+ICsJ
-CWdwaW8yOiBncGlvQDIwODQwMDAwIHsKPiArCQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxncGlv
-LWJhbmsiOwo+ICsJCQlyZWcgPSA8MHgyMDg0MDAwMCAweDIwMD47Cj4gKwkJCWludGVycnVwdHMg
-PSA8R0lDX1NQSSA4MyBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiArCQkJY2xvY2tzID0gPCZjcnUg
-UENMS19HUElPMj4sIDwmY3J1IERCQ0xLX0dQSU8yPjsKPiArCQkJZ3Bpby1jb250cm9sbGVyOwo+
-ICsJCQkjZ3Bpby1jZWxscyA9IDwyPjsKPiArCQkJaW50ZXJydXB0LWNvbnRyb2xsZXI7Cj4gKwkJ
-CSNpbnRlcnJ1cHQtY2VsbHMgPSA8Mj47Cj4gKwkJfTsKPiArCX07Cj4gKwo+ICsJc29jIHsKPiAr
-CQljb21wYXRpYmxlID0gInNpbXBsZS1idXMiOwo+ICsJCSNhZGRyZXNzLWNlbGxzID0gPDE+Owo+
-ICsJCSNzaXplLWNlbGxzID0gPDE+Owo+ICsJCXJhbmdlczsKPiArCj4gKwkJY3J1OiBjbG9jay1j
-b250cm9sbGVyQDIwMDAwMDAwIHsKPiArCQkJY29tcGF0aWJsZSA9ICJyb2NrY2hpcCxydjExMDNi
-LWNydSI7Cj4gKwkJCXJlZyA9IDwweDIwMDAwMDAwIDB4ODEwMDA+Owo+ICsJCQkjY2xvY2stY2Vs
-bHMgPSA8MT47Cj4gKwkJCSNyZXNldC1jZWxscyA9IDwxPjsKPiArCQkJYm9vdHBoLWFsbDsKCkkg
-ZG9uJ3QgdGhpbmsgd2Ugd2FudCB1LWJvb3Qtc3BlY2lmaWMgcHJvcGVydGllcyBpbiBtYWlubGlu
-ZS4KVGhleSBhcmUgbm9ybWFsbHkga2VwdCBpbiBzZXBhcmF0ZSAtdS1ib290LmR0c2kgZmlsZXMK
-Cj4gKwkJfTsKClsuLi5dCgo+ICsJCXVhcnQxOiBzZXJpYWxAMjA4NzAwMDAgewo+ICsJCQljb21w
-YXRpYmxlID0gInJvY2tjaGlwLHJ2MTEwM2ItdWFydCIsICJzbnBzLGR3LWFwYi11YXJ0IjsKCnVh
-cnQgY29tcGF0aWJsZSwgZG9lcyBub3Qgc2VlbSB0byBoYXZlIGxhbmRlZCBpbiB0aGUgdWFydCB0
-cmVlCgo+ICsJCQlyZWcgPSA8MHgyMDg3MDAwMCAweDEwMD47Cj4gKwkJCWludGVycnVwdHMgPSA8
-R0lDX1NQSSA3MCBJUlFfVFlQRV9MRVZFTF9ISUdIPjsKPiArCQkJcmVnLXNoaWZ0ID0gPDI+Owo+
-ICsJCQlyZWctaW8td2lkdGggPSA8ND47Cj4gKwkJCWNsb2NrcyA9IDwmY3J1IFNDTEtfVUFSVDE+
-LCA8JmNydSBQQ0xLX1VBUlQxPjsKPiArCQkJY2xvY2stbmFtZXMgPSAiYmF1ZGNsayIsICJhcGJf
-cGNsayI7Cj4gKwkJCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwkJCXBpbmN0cmwtMCA9
-IDwmdWFydDFtMF94ZmVyPjsKPiArCQkJc3RhdHVzID0gImRpc2FibGVkIjsKPiArCQl9OwoKWy4u
-Ll0KCj4gKwkJd2R0OiB3YXRjaGRvZ0AyMDhkMDAwMCB7Cj4gKwkJCWNvbXBhdGlibGUgPSAic25w
-cyxkdy13ZHQiOwoKcGxlYXNlIGFkZCBhIG5ldyBjb21wYXRpYmxlIHRvIHRoZSBkdy13ZHQgd2F0
-Y2hkb2cgYmluZGluZwoKPiArCQkJcmVnID0gPDB4MjA4ZDAwMDAgMHgxMDA+Owo+ICsJCQljbG9j
-a3MgPSA8JmNydSBUQ0xLX1dEVF9OUz4sIDwmY3J1IFBDTEtfV0RUX05TPjsKPiArCQkJY2xvY2st
-bmFtZXMgPSAidGNsayIsICJwY2xrIjsKPiArCQkJaW50ZXJydXB0cyA9IDxHSUNfU1BJIDI5IElS
-UV9UWVBFX0xFVkVMX0hJR0g+Owo+ICsJCQlzdGF0dXMgPSAiZGlzYWJsZWQiOwo+ICsJCX07Cj4g
-KwoKCkhlaWtvCgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Tue, 10 Mar 2026 02:01:34 +0800, Felix Gu wrote:
+> The driver uses devm_spi_register_controller() for registration, which
+> automatically unregisters the controller via devm cleanup when the
+> device is removed. The manual call to spi_unregister_controller() in
+> the remove() callback can lead to a double-free.
+> 
+> And to make sure controller is unregistered before DMA buffer is
+> unmapped, switch to use spi_register_controller() in probe().
+> 
+> [...]
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+
+Thanks!
+
+[1/1] spi: rockchip-sfc: Fix double-free in remove() callback
+      commit: 111e2863372c322e836e0c896f6dd9cf4ee08c71
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
