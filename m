@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD87EF3718
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 08:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3533CEF371A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 09:02:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A62DsR+lZpGKjxIxyj5OP3uv6Sy7NkYz4pY6Gt95ydY=; b=zY5Cqhg5Hz5kec
-	oEWKa7CFHaccuocJoQwJ8gh/Ev9sXUEW/3BE0KoIAwCugsUcrOovJDJnr0eXCDc32svHJK4ytkSZY
-	d13MLd8EQKwFCF9wl4f7B+10zKNBLSJPwdFlNMmncBmd0I4VS7uhznPg7U+SgVXXIhzzU465wOMED
-	MbdIhCLj9HfgL7BlV8MefPYHtpCmk/DQ12usjHYLKZ24HuWjGCsULe/kax6g0FxeMytD8aagd6AHY
-	r14zM5gG3p4e1s4RovTaiKbe0QeydZBjYrReHeeOpeXLLYC/Tgg9VsnNlR4dvsybSSM7xTCzDaiJn
-	VWOjsvJN2R8M4FZIHKVw==;
+	List-Owner; bh=gkQLL+PUOSrwXNy7Zls0truyjbsh2gNdejcwvZvNh9g=; b=q8tgsGyArXDVfT
+	LrPlXnhXANcToaKOIoXZVpIrNdHBq5HeyGGma2rFhC34jwcnm5h1FzKIHJJYVzxnnRi34MRpcEJIz
+	kQa7y/YQ8ElSmozb2y+bIVT7hBUDNwNYOLKUFQ73tKO4k4EwkFQrgd28IfUlBNpq61zS2Jy/CrHJ6
+	6urQEX7aE6xDPJlP2eFy1XmxRRI7BQZqLQ/rwvL/MSKORmQAnhXxpl2pkWCRiliqq0034vx96PmXs
+	M3UJe5SuAKAd9XAPo+WyEVK6+GCznoh3KKSq7PpjkeGZkLon6qVf85fwUi12OA3Rk3JzCU+ayqt8+
+	tzjdZoQjotvmcY6uaYzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzWJX-00000006uVW-1U1O;
-	Mon, 09 Mar 2026 08:50:11 +0000
+	id 1vzWVf-00000006vYk-3oTz;
+	Mon, 09 Mar 2026 09:02:43 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzWJU-00000006uUu-2dGg;
-	Mon, 09 Mar 2026 08:50:10 +0000
+	id 1vzWVc-00000006vY5-3yNA;
+	Mon, 09 Mar 2026 09:02:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773046201;
-	bh=FxAl0QIkPydcsKFhFovYjX6NFk7PTnRn1mUjEL9vK3A=;
+	s=mail; t=1773046956;
+	bh=pMsimM0jrkN9TClCZtebv47wyhydHL/nRiqxAuKIOX4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=NM3yuWFhnNgYJktHRtGaEsoEEo/PYzJqlGkkh7OcNJBvXA4IVULQcBbyH3NtZWqPh
-	 jpKl5L9x3F9FiKKyP4XgDcXA55+L2gL3AWaeS2bu3BAcC+WUF24DKykNnAStxwGYu0
-	 7Kkchxr0NdKBMwvnmjSWaD6prqtw7bqgK0fxi3DMnrQQcRrkZ5spvEnjRMOIrVTF+w
-	 lMSuwRfCJrF4fdlRnO/CRmHnKxhxjifWeHEphUHwQdI0Tkj5tLcGZ8Qh9zk1Cehc5T
-	 eon+ToZ2mR4jiZAtqG/RVMNO4l49NZAVD2mQG1xgwMR7+pppeub+kox3Iwo+92qzOj
-	 VmUgFiCC6TB5Q==
+	b=kGAJK6pZNHnQh5u7UzYcZET/DCDJE/EIbrUvrqe2ovExMpFvnCGAYGpBYR5QzZ9FM
+	 FlqoKEyBFyYNeHgSKX8IUaZgMpU2xuZW4b1/RzRSS1mSrxlHjz30bch7QHvDnHODc0
+	 z0heRGeyJ1UqNnFZci0T4W9QR7tajqWb/uWEKU3IY1zKDqSUZfVJLwEukfAOVBTB5u
+	 whNBUy9UwE8BbmCp90sQFzvQUty3jwkC3hMa3ANaXNDGU1+6vJTTXFfKiPOEPyzLje
+	 xNwzRS7TeaNQFj8NOunvoF3NYZnpBIeh+7A8nNFfgISwHYKqjALFYTEH9ApC6qiC1u
+	 F0Pqd1WmJX4XQ==
 Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0EFDE17E01B1;
-	Mon,  9 Mar 2026 09:50:01 +0100 (CET)
-Message-ID: <eaec4b1c-469c-4f81-884b-3308aa85633f@collabora.com>
-Date: Mon, 9 Mar 2026 09:50:00 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 33C2717E0EFE;
+	Mon,  9 Mar 2026 10:02:36 +0100 (CET)
+Message-ID: <d670a203-6fc1-4fbc-a7b2-c2366745d794@collabora.com>
+Date: Mon, 9 Mar 2026 10:02:35 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/4] media: dt-bindings: rockchip,rk3568-mipi-csi2: add
- rk3588 compatible
+Subject: Re: [PATCH 4/4] arm64: defconfig: enable designware mipi csi-2
+ receiver
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  Sakari Ailus <sakari.ailus@linux.intel.com>,
@@ -61,14 +61,14 @@ Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
  devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260305-rk3588-csi2rx-v1-0-0cd8d2bf28c0@collabora.com>
- <20260305-rk3588-csi2rx-v1-1-0cd8d2bf28c0@collabora.com>
- <20260307-complex-finicky-skua-bf52bd@quoll>
+ <20260305-rk3588-csi2rx-v1-4-0cd8d2bf28c0@collabora.com>
+ <20260307-majestic-otter-of-contentment-eeba71@quoll>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260307-complex-finicky-skua-bf52bd@quoll>
+In-Reply-To: <20260307-majestic-otter-of-contentment-eeba71@quoll>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_015008_860044_AAF107EE 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20260309_020241_181589_F2A9B360 
+X-CRM114-Status: GOOD (  14.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,34 +87,27 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Krzysztof,
 
-On 3/7/26 16:33, Krzysztof Kozlowski wrote:
-> On Fri, Mar 06, 2026 at 03:09:48PM +0100, Michael Riesch wrote:
->> The RK3588 MIPI CSI-2 receivers are compatible to the ones found in
->> the RK3568. However, their integration in the respective SoC may be
->> different when it comes to the (currently not implemented) split
+On 3/7/26 16:34, Krzysztof Kozlowski wrote:
+> On Fri, Mar 06, 2026 at 03:09:51PM +0100, Michael Riesch wrote:
+>> The Synopsys DesignWare MIPI CSI-2 Receiver is integrated into
+>> recent Rockchip SoCs, such as the RK3568 and the RK3588.
 > 
-> All this says they are compatible, so express it.
+> ... and used on boards foo bar.
 
-..express it... how exactly? In the commit message? Or what do you mean
-exactly?
+foo bar = pretty much any recent board with a Rockchip SoC on it...
+(plus NXP users, as there is a series by Frank in the works)
 
->> DPHY feature. Therefore, add the RK3588 compatible to allow for
->> future differentiation.
 > 
-> This I do not understand. If you just copy standard rules from
-> writing-bindings, then no, don't do that. It's obvious and there is
-> never a need to repeat any standard/common rule. If you want to say
-> devices are not compatible, then say that explicitly.
+> (becuse we take defconfig for boards, not for SoCs - if there is no
+> single board using it, then it should not be enabled because it means
+> you do it for downstream which simply does not exist for us).
 
-It's a bit of a complicated story. To keep it short, the RK3568 and the
-RK3588 MIPI CSI-2 receivers are compatible at least right now. In
-future, this may or may not change. This depends on how this split DPHY
-integration is implemented -- and we won't know that for some time.
-Right now I expect that the phys property will become optional when this
-happens (at least for the RK3568).
-
-What is the safe bet here? Going for a fallback compatible and adjust
-everything when the split DPHY feature is implemented?
+... but there is not yet a mainline example. Next item on my TODO list
+is to send out basic RK3588 VICAP support including the device tree bits
+for the Radxa ROCK 5B+ plus camera modules. Should I include the patch
+in that series? Or wait until that series has been accepted? Or will you
+just take my word for it that there will be plenty of boards using that
+receiver in near future?
 
 Best regards,
 Michael
