@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2D32FCA19C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E247FCA19F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z8kPszwTEgTd/0y6QcUNQAKQenvBMVZaAQwwn2Ji4EM=; b=QPhswJaB8Dt2MU
-	hzCzs17ZhXpvfWVbxQVqo9qb1XJZBZ+emD/3ApqqSHQKgInVS/FPAcvg6CfdDcNKJ9UoWnZ0xdtqH
-	i3uPlMia7begla/I11JWZplG3E0et38PCf5ihPwRJHeg5RkeefZ+n7pwlJBpESX9J8Nra3NDhtcUJ
-	DVsmNLEHvonKS1OuC4zqnfkbt82BT0yLVcTJTCP1DAURJ1XWRXcMBFd9Ej9iC/vTPfiFtinzIwKAr
-	sdpaNEbpUet0qxVNXdrmimSAOuYYJ0FWNof4VIttnESiyto3jx23MN2HlnwQn83pfVDPPbNUGv2Ub
-	1/70EpJqy8ZqJ6DOz57g==;
+	List-Owner; bh=jaDIxSUZVTlWwKWmBkUfGT6LeLW9EkO6ZcUrD78QphU=; b=w4kgSKkCykEnvm
+	yUftxEV/nKk4riQXsalzbfQuZeLrxBRz27Y5D9D25ReC1UCG/kWuSAyQyvTUOvhV9VH82tcoHOna/
+	Jqu2N1owMlAYokYZwmfSMqKJIllT9FJyJLHsmyeB3JEv0RV4JSQNpSGRPvhFjX4UVeVzUyl6FzAiJ
+	pYW8fT32/Pt3Ncr56Ak5lrj//SQawnklwdt829LY5kwSY1KWKjT+TowHw369ODFlN3z/1vYeH0n4u
+	Wzl/D/4MWQfNZTdvxRJbrjUCmAi2/sGo28yGxa/mBC60XD5HPyltG06yGEsll3/JfJGSQvMYH5eHV
+	e91ZdF5LrqYytHJEO5yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjLH-00000008FBU-3SXl;
-	Mon, 09 Mar 2026 22:44:51 +0000
+	id 1vzjLI-00000008FCX-1lzz;
+	Mon, 09 Mar 2026 22:44:52 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjL7-00000008EzK-0Wwa;
-	Mon, 09 Mar 2026 22:44:42 +0000
+	id 1vzjL7-00000008F03-3F5Q;
+	Mon, 09 Mar 2026 22:44:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773096278;
-	bh=/aWzPrhPaX/fvhpltlRILH+gCS9UQ9O4Q1B1Jw1D6r4=;
+	s=mail; t=1773096279;
+	bh=sNdKtno5ECegmJwsSLYZy9+Ay7ieHE0bT5CiSOlA5ag=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MbVoeMbBw0svxz3PtZw/Xg41rg5Z9j2LZ4MRo29djyJOQeLKdTFUwRlRMb9r1haQb
-	 NuyYO18qTEGCrTyHuJDzdUQfb8OP52uqbp++1jmYF8+oq9PhXcdv5oir4i5GEyTz5Q
-	 k+x0XNem96IC9GfR/IwcIaQdmkS4VhajFPORNxgi5GMcIcA/9uDNmXrS/JcmZoS771
-	 c5PC5LMEGLs67VMhS9fSdpWv7FzO/AhwSdkz1B2KuPP/ybNcPyubWGO5EGZjeLUV68
-	 oUoqPv2Exwgo0AYVR/dBlTa3JtqMncO9a3IGkz1aYDQ8qhvjzE4uTrh0Lay4nKjfuW
-	 uhPMx9ToaFtaw==
+	b=UDS4aDeSzvFEedKicj1N2faotsMbVqMgvpsACPDxW3cVghSbfAdOKxzu3SLaP4DFs
+	 fM1tml9fIoVv9/ez5TVrjXrrRnyyZSCAIKMxzwVfMrcG5u5snO1BtDP7WpOB7x7+Xh
+	 tQM3GrpLB6dPeFk5Ddy2ieeQx4jT/Z975CinOqah4MHkSc0RZawR6ov9rR/uWhB5/I
+	 EQHociu7cjTIGvAdF8gcdkkK9CAC3CAK1/nQZuUUbwVqlQL+EV+k/STWaYuNQpSFaI
+	 x1Ngc14RY5LoYpG8rRNiqebEbGXXDChtzemd7A7c8tDI+Xww1XgH4FhVnZHYgIckZv
+	 kdaXw6JtENFCA==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7199417E09AC;
-	Mon,  9 Mar 2026 23:44:38 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 436CC17E0E91;
+	Mon,  9 Mar 2026 23:44:39 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 10 Mar 2026 00:44:32 +0200
-Subject: [PATCH v2 4/8] drm/rockchip: dw_dp: Simplify error handling
+Date: Tue, 10 Mar 2026 00:44:33 +0200
+Subject: [PATCH v2 5/8] drm/rockchip: dw_dp: Drop unnecessary #include
 MIME-Version: 1.0
-Message-Id: <20260310-drm-rk-fixes-v2-4-645ecfb43f49@collabora.com>
+Message-Id: <20260310-drm-rk-fixes-v2-5-645ecfb43f49@collabora.com>
 References: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
 In-Reply-To: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -67,8 +67,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_154441_339950_278DDBA1 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260309_154441_963589_AD0F671B 
+X-CRM114-Status: UNSURE (   8.87  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,58 +86,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make the code a bit more compact by getting rid of the superfluous
-assignments around PTR_ERR().
+Included header "rockchip_drm_vop.h" is not directly used, drop it.
 
-While at it, also drop dev assignment in dw_dp_probe().
+While at it, ensure #include directives are ordered alphabetically.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 21 +++++++--------------
- 1 file changed, 7 insertions(+), 14 deletions(-)
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-index 8945a245398c..fafefee8370d 100644
+index fafefee8370d..22c0911f1896 100644
 --- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
-@@ -104,20 +104,15 @@ static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *
- 	drm_encoder_helper_add(encoder, &dw_dp_encoder_helper_funcs);
+@@ -7,8 +7,11 @@
+  */
  
- 	dp->base = dw_dp_bind(dev, encoder, plat_data);
--	if (IS_ERR(dp->base)) {
--		ret = PTR_ERR(dp->base);
--		return ret;
--	}
-+	if (IS_ERR(dp->base))
-+		return PTR_ERR(dp->base);
+ #include <linux/component.h>
++#include <linux/media-bus-format.h>
+ #include <linux/of_device.h>
+ #include <linux/platform_device.h>
++#include <linux/videodev2.h>
++
+ #include <drm/bridge/dw_dp.h>
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_bridge.h>
+@@ -19,11 +22,7 @@
+ #include <drm/drm_probe_helper.h>
+ #include <drm/drm_simple_kms_helper.h>
  
- 	connector = drm_bridge_connector_init(drm_dev, encoder);
--	if (IS_ERR(connector)) {
--		ret = PTR_ERR(connector);
--		return dev_err_probe(dev, ret, "Failed to init bridge connector");
--	}
-+	if (IS_ERR(connector))
-+		return dev_err_probe(dev, PTR_ERR(connector),
-+				     "Failed to init bridge connector");
- 
--	drm_connector_attach_encoder(connector, encoder);
+-#include <linux/media-bus-format.h>
+-#include <linux/videodev2.h>
 -
--	return 0;
-+	return drm_connector_attach_encoder(connector, encoder);
- }
+ #include "rockchip_drm_drv.h"
+-#include "rockchip_drm_vop.h"
  
- static const struct component_ops dw_dp_rockchip_component_ops = {
-@@ -126,9 +121,7 @@ static const struct component_ops dw_dp_rockchip_component_ops = {
- 
- static int dw_dp_probe(struct platform_device *pdev)
- {
--	struct device *dev = &pdev->dev;
--
--	return component_add(dev, &dw_dp_rockchip_component_ops);
-+	return component_add(&pdev->dev, &dw_dp_rockchip_component_ops);
- }
- 
- static void dw_dp_remove(struct platform_device *pdev)
+ struct rockchip_dw_dp {
+ 	struct dw_dp *base;
 
 -- 
 2.52.0
