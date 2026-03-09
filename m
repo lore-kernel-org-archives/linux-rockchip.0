@@ -4,56 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73BEDFCA19C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75B00FCA19F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b7Yt9l0atdJXWlhg9HmKByi6nHIbEfrblEyReA4Ckpk=; b=b6cIszOR0VJZld
-	Qde8dfUW2WmYznaVcmhdZtawJ8xW9xZG2i4JFF4NquVXidzlN5wJLn5KnWyVJdvGBwl1UOiHpIpJU
-	mfobc8ye8q9wlkqF3pTBMEVyGItyZ6YJFahpIK0/3FBKEXUSZuDh77XBdV+0AYCItXGdAFSAiM9Ga
-	V6TbUssgCRbLGlJxDONjvGrkQhr55GCnNbPRH7C7vaQMD833Lb8dM1YZbotYxAy0rtLjGa3yIJ3Y3
-	DLYtqwjSww4kjZhhPepVpGSvk4pkO0WJ0uIX5gwniaL4rE9oyCraPuI4fP3KkK1Su0fFk2xuhfVEf
-	sZ715z4z/1j9M42FBSfw==;
+	List-Owner; bh=Mt14phtWeqLxBpfgNXaKrl57OLp3AAgmaRiTgeUaY0U=; b=GiNGK5+cCq+HhR
+	QZFAZAM625t7tdyv9LpT0u/5mFTJZZu2ySMWrOfxk1e3W6TYUZQ/fYhLLym+0iTKllwUanK4eRO1v
+	9OfHxXU9CYUudiOS+jsbZHKUdirADhhaJXHKtD3K1BUGOFaaj+cEdxxRwpcWHIaNHNb2699s+aGjr
+	G6xdWYSVQxXLY7LfJBDUM8ar+ZZ5cjWyDuQue4vtvpaZj/ARwXsMLZ2Q58c7zp67kEdgAPYPcFMxn
+	bWmgitdkbjhG1x3LB/qAICgG0QU5eIaf9xt3a1BKU6aGtSZYocLnBjewYSsVF37uWdQeVw163xpMu
+	qTcx/YW63+lUbFb1ZjNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjDx-00000008EZk-26S8;
-	Mon, 09 Mar 2026 22:37:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1vzjL7-00000008F0r-47gr;
+	Mon, 09 Mar 2026 22:44:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjDu-00000008EZX-16HB;
-	Mon, 09 Mar 2026 22:37:14 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6210260054;
-	Mon,  9 Mar 2026 22:37:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BC18EC4CEF7;
-	Mon,  9 Mar 2026 22:37:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773095833;
-	bh=6BnqkIlhVLViOxVryE2C/8Z+o2ZWDSXu/1ZvCYaDXaI=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=tf3H4xezIDRsTefv5vg+Fi29V0HK0hXba7SX8Qjpff2LIMJyrIdAUlfUphLpz0vXt
-	 VQpGFEczR5IAjz3w0nxB8MKfbmHs4/aNlNfd+DGOIIOp6l134w/5Rp2To/2e5JfMwX
-	 jka3hl9HgNEm6orCxeH/SfP3w8jvX/m5fYle80bUygWWmiwJcRPR27vaKPH8K2+jSn
-	 2iA8h2SwCIPEPEdAOWaWyB1A1B9vQ5bLuZBgaON2BkDvHjIYMQS0GC1DnqWefCyonN
-	 /H0sDUjE5hGE9wW/AFoF2BHq5ToC8S60Ncuv3QlHZK5gJX2tIU+UUy0yH9Lc0MEaig
-	 BwfzfclgNVaDg==
-From: Mark Brown <broonie@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>, Jon Lin <jon.lin@rock-chips.com>, 
- Felix Gu <ustc.gu@gmail.com>
-Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20260310-sfc-v2-1-67fab04b097f@gmail.com>
-References: <20260310-sfc-v2-1-67fab04b097f@gmail.com>
-Subject: Re: [PATCH v2] spi: rockchip-sfc: Fix double-free in remove()
- callback
-Message-Id: <177309583151.321088.16829523155005247397.b4-ty@kernel.org>
-Date: Mon, 09 Mar 2026 22:37:11 +0000
+	id 1vzjL4-00000008Eyp-2iji;
+	Mon, 09 Mar 2026 22:44:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773096276;
+	bh=dpoYWqd1QmnsLx6bOVdrexg1n+TySTa7C5ZjTOClS1o=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=BDGt3WnV/+KDx04oFzXpElqRJPUvtWXYPd0VrbZD055scylK7utBd1GY7TmniykIz
+	 RlIMxip9hMerUOiQdzakMlfOQv71hnUc7yfE1OM0JabFOR9/sk72L1t56bJOklgkQ9
+	 8F+GL9B26O8BfLN9BBlvAh9gXL5EQAyUEH4qdDdlOs2fbGA6iJcfyYnkbujm+lTJGK
+	 7EcD7tQD8kdEz8SfRmat8TBOPiVj4DO81/4RleNSuv2cdBoX2kQV/Id/ZaxoyLGcFh
+	 Q4tMxbZsVhOpx0RMJf3130PkpBbBDTmbVckc3EzHqomDnmafs7DHbvLKQiAntu8XXl
+	 HZeAM9YfW5fxg==
+Received: from localhost (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D7E1D17E041C;
+	Mon,  9 Mar 2026 23:44:35 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 10 Mar 2026 00:44:29 +0200
+Subject: [PATCH v2 1/8] drm/rockchip: inno-hdmi: Switch to drmm_kzalloc()
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-83dbb
+Message-Id: <20260310-drm-rk-fixes-v2-1-645ecfb43f49@collabora.com>
+References: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
+In-Reply-To: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260309_154438_834367_963310A1 
+X-CRM114-Status: GOOD (  13.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,44 +85,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 10 Mar 2026 02:01:34 +0800, Felix Gu wrote:
-> The driver uses devm_spi_register_controller() for registration, which
-> automatically unregisters the controller via devm cleanup when the
-> device is removed. The manual call to spi_unregister_controller() in
-> the remove() callback can lead to a double-free.
-> 
-> And to make sure controller is unregistered before DMA buffer is
-> unmapped, switch to use spi_register_controller() in probe().
-> 
-> [...]
+Driver makes use of drmm_encoder_init() to initialize the encoder and
+automatically handle the cleanup by registering drm_encoder_cleanup()
+with drmm_add_action().
 
-Applied to
+However, the internal structure containing the encoder part gets
+allocated with devm_kzalloc(), which happens while component_bind_all()
+is being called from Rockchip DRM driver.  The component framework
+further ensures it is deallocated as part of releasing all the resources
+claimed during bind, which is triggered from component_unbind_all().
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+When the reference to the DRM device gets eventually dropped via
+drm_dev_put() in rockchip_drm_unbind(), drmm_encoder_alloc_release()
+attempts to access the now released encoder structure, leading to
+use-after-free.
 
-Thanks!
+Ensure driver's internal structure is still reachable on encoder cleanup
+by switching from a device-managed allocation to a drm-managed one.
 
-[1/1] spi: rockchip-sfc: Fix double-free in remove() callback
-      commit: 111e2863372c322e836e0c896f6dd9cf4ee08c71
+Fixes: 969325a2597e ("drm/rockchip: inno-hdmi: Convert to drm bridge")
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+diff --git a/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
+index 97c20500f790..28e6fb09aae7 100644
+--- a/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c
+@@ -14,6 +14,7 @@
+ 
+ #include <drm/bridge/inno_hdmi.h>
+ #include <drm/drm_bridge_connector.h>
++#include <drm/drm_managed.h>
+ #include <drm/drm_of.h>
+ 
+ #include "rockchip_drm_drv.h"
+@@ -90,7 +91,7 @@ static int inno_hdmi_rockchip_bind(struct device *dev, struct device *master, vo
+ 	const struct inno_hdmi_plat_data *plat_data;
+ 	int ret;
+ 
+-	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
++	hdmi = drmm_kzalloc(drm, sizeof(*hdmi), GFP_KERNEL);
+ 	if (!hdmi)
+ 		return -ENOMEM;
+ 
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+-- 
+2.52.0
 
 
 _______________________________________________
