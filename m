@@ -4,70 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D133EFCD9C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 11:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F3AF3C248
+	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 12:29:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jp+A9UP0L/7HBzRoOMIlAv6aQ7K+e8nZqXSFO4uDebE=; b=Lg+8KJvJfYehJH
-	EEUjKxSSJLqFKGf1iCg9zKMQAAEuP0MIJmvYm8xVJsrCkwwMJEhIKB/sv1aN/4liv4uPEPzJdNksm
-	oMxAhu59QWVikLP2mxOqxjonmoNkXiOJFEtvVvjBKKQg6gLfKxcqr7KvpgqMiDneU0CmoabcCtAQj
-	1d7xVkgkgfGwwzcW+N4Oubfdjy7WlmECfTzDmSf9/UT3p34ENfVf1VtpMYDfF448ero7wWjXA/nBu
-	87CW6zbUa5lddFxuTCKd55uxxjUQj9Akz/nN2p+Z6kPgEYfCOuDV+8rGPeW7WkJ5dnjomILNbkcoS
-	Ac8kn3i3O0z2nOgd5pjA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=25jgZS+3RwD4dipm+IUJuvmgwYax1nbdvTHEigC4CcY=; b=XFERZAEOB95ngu8hh3XHM4xMY0
+	d9vYgj71hG+qYQFZH+hfwBa8U8sd7AwDSrU/Yk/8+gmZrTjCBzTs8OG4gfQ9ivfKtF2vcV+rmJxlq
+	HOsgu0CO+cx5NFiU3/rwfymSJuYt8PFaiobNGOevWng9hDT6pLX9/IohXJDt/3BvgMAx+5B/fdqF2
+	Vh7IlwQ1BcEsHVAPPgqKvLqNA/Egsb3n/lsEz7crVbFjgyw6D5RH/x7ASfH5UKawcJqy56wnqk8N2
+	7XcyODlEXV/iZNXSCtpmBX2vDxQTqlcrxjXkDqEYGRyCx77pVMVG3qN2wOuRMeunxULR8U5kL60rD
+	SGLZcUHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzZ92-00000007ENw-25CM;
-	Mon, 09 Mar 2026 11:51:32 +0000
-Received: from mail-m3269.qiye.163.com ([220.197.32.69])
+	id 1vzZjz-00000007Jc9-1PjU;
+	Mon, 09 Mar 2026 12:29:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzZ8y-00000007EMy-37O2;
-	Mon, 09 Mar 2026 11:51:30 +0000
-Received: from [172.16.12.43] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 36434b970;
-	Mon, 9 Mar 2026 19:51:23 +0800 (GMT+08:00)
-Message-ID: <01983e92-dabb-47f7-ba01-988ea41641db@rock-chips.com>
-Date: Mon, 9 Mar 2026 19:51:24 +0800
+	id 1vzZjx-00000007JbZ-0mGH;
+	Mon, 09 Mar 2026 12:29:41 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 48A5E600AE;
+	Mon,  9 Mar 2026 12:29:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82263C4CEF7;
+	Mon,  9 Mar 2026 12:29:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773059380;
+	bh=sdACc/Vbt9m0Tf3WatUwZZmOXL5NI62/15tUJ8fQl8M=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JMDb8XsIm65PkNu73oLSZoi0tfbQDim/GSj7cTRxWJMUOPPHL2GFZ1NF3os0/1jQ1
+	 KSqFUuUZkKacY7gSY8VK0MpssUjeTR5dRxOs6lKincVkR/h8SSvWLSmRweSFReyqJ7
+	 fgzYbHiMie8oxNTlQhPYonhvAUqG9b54NebTJb+EvL6QLlyFYxhKBRUQ4OcCfW/8+0
+	 496unukW4tkQpsDz1WqSo0UavpBwMHSyI5lQlOSAYuy1hCKHWKcGN9Gj9gHa7q3CLo
+	 xjbKUXlkxLsvXFmoF1KSijZ96TjG58B9jJbTLpYeM9xdXdPZy4nQQ1hEVbwnGmX7ZU
+	 0uwBoAfd0PhDg==
+Date: Mon, 9 Mar 2026 12:29:35 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Felix Gu <ustc.gu@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Jon Lin <jon.lin@rock-chips.com>,
+	linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] spi: rockchip-sfc: Remove redundant
+ spi_unregister_controller() call
+Message-ID: <52755ab9-7387-4f4b-95d4-2bfdeedc3e5f@sirena.org.uk>
+References: <20260305-sfc-v1-1-6fbf6df0e899@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 10/15] drm/bridge: analogix_dp: Add new API
- analogix_dp_finish_probe()
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
- heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
- dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20260210071225.2566099-1-damon.ding@rock-chips.com>
- <20260210071225.2566099-11-damon.ding@rock-chips.com>
- <DGT20ZJ3Q4WP.3OTQJYWGSYGUD@bootlin.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <DGT20ZJ3Q4WP.3OTQJYWGSYGUD@bootlin.com>
-X-HM-Tid: 0a9cd270098c03a3kunm26e3dc7b2d81c9
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ05OS1YeHkxLSkgYQkNDTE9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=C4os9YqNIUC3dEyjyzM/hCxvk1F4fWa1S7B31zMJjMRFJW7ZEsZL+m85ptIf9IWCeuLLhar9IN001x4s5PBLTMGuQlDb+GzAX3aXtbXJrDmPNAb2GPzyOvS/jIXmdi0MK0cJdB+IiAiLNeWa/7D2wdMUSjFWtZYZZb4qvAyF1AM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=hduUfmGwgnKMskaDKeGcgwJWohiGVW+qVStYTESGB2U=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_045129_339413_7FDE15BD 
-X-CRM114-Status: GOOD (  22.81  )
+In-Reply-To: <20260305-sfc-v1-1-6fbf6df0e899@gmail.com>
+X-Cookie: I don't understand you anymore.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,129 +65,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============6646942131191037520=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
 
-On 3/3/2026 5:54 PM, Luca Ceresoli wrote:
-> Hello Damon,
-> 
-> On Tue Feb 10, 2026 at 8:12 AM CET, Damon Ding wrote:
->> Since the panel/bridge should logically be positioned behind the
->> Analogix bridge in the display pipeline, it makes sense to handle
->> the panel/bridge parsing on the Analogix side. Therefore, we add
->> a new API analogix_dp_finish_probe(), which combines the panel/bridge
->> parsing with component addition, to do it.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
->> Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
-> 
-> ...
-> 
->> @@ -1581,6 +1583,52 @@ struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp)
->>   }
->>   EXPORT_SYMBOL_GPL(analogix_dp_get_aux);
->>
->> +static int analogix_dp_aux_done_probing(struct drm_dp_aux *aux)
->> +{
->> +	struct analogix_dp_device *dp = to_dp(aux);
->> +	struct analogix_dp_plat_data *plat_data = dp->plat_data;
->> +	int port = plat_data->dev_type == EXYNOS_DP ? 0 : 1;
->> +	int ret;
->> +
->> +	/*
->> +	 * If drm_of_find_panel_or_bridge() returns -ENODEV, there may be no valid panel
->> +	 * or bridge nodes. The driver should go on for the driver-free bridge or the DP
->> +	 * mode applications.
->> +	 */
->> +	ret = drm_of_find_panel_or_bridge(dp->dev->of_node, port, 0,
->> +					  &plat_data->panel, &plat_data->next_bridge);
->> +	if (ret && ret != -ENODEV)
->> +		return ret;
->> +
->> +	return component_add(dp->dev, plat_data->ops);
->> +}
->> +
->> +int analogix_dp_finish_probe(struct analogix_dp_device *dp)
->> +{
->> +	int ret;
->> +
->> +	ret = devm_of_dp_aux_populate_bus(&dp->aux, analogix_dp_aux_done_probing);
->> +	if (ret) {
->> +		/*
->> +		 * If devm_of_dp_aux_populate_bus() returns -ENODEV, the done_probing() will
->> +		 * not be called because there are no EP devices. Then the callback function
->> +		 * analogix_dp_aux_done_probing() will be called directly in order to support
->> +		 * the other valid DT configurations.
->> +		 *
->> +		 * NOTE: The devm_of_dp_aux_populate_bus() is allowed to return -EPROBE_DEFER.
-> 
-> Uhm, if it is allowed to return -EPROBE_DEFER...
-> 
->> +		 */
->> +		if (ret != -ENODEV) {
->> +			dev_err(dp->dev, "failed to populate aux bus\n");
->> +			return ret;
->> +		}
-> 
-> ...then you shouldn't dev_err() when -EPROBE_DEFER is returned.
-> 
-> Either use dev_err_probe() (which would also simplify your code) or check
-> for if (ret != -ENODEV && ret != -EPROBE_DEFER).
+--===============6646942131191037520==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="AClr4NiypPa3ZHRv"
+Content-Disposition: inline
 
-Will fix in v10.
 
-> 
->> +
->> +		return analogix_dp_aux_done_probing(&dp->aux);
->> +	}
->> +
->> +	return 0;
->> +}
->> +EXPORT_SYMBOL_GPL(analogix_dp_finish_probe);
->> +
->>   MODULE_AUTHOR("Jingoo Han <jg1.han@samsung.com>");
->>   MODULE_DESCRIPTION("Analogix DP Core Driver");
->>   MODULE_LICENSE("GPL v2");
->> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
->> index 3428ffff24c5..bae969dec63a 100644
->> --- a/include/drm/bridge/analogix_dp.h
->> +++ b/include/drm/bridge/analogix_dp.h
->> @@ -30,6 +30,7 @@ struct analogix_dp_plat_data {
->>   	struct drm_bridge *next_bridge;
->>   	struct drm_encoder *encoder;
->>   	struct drm_connector *connector;
->> +	const struct component_ops *ops;
-> 
-> Is adding a new stored field a good idea? Can it be instead passed as an
-> argument to analogix_dp_finish_probe()?
-> 
-> Note I don't have a strong opinion here, just the added struct field seems
-> overkill for being used just once.
-> 
+--AClr4NiypPa3ZHRv
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-I agree this is a better approach, since the &component_ops is only used 
-during probing.
+On Thu, Mar 05, 2026 at 11:38:21PM +0800, Felix Gu wrote:
 
->> @@ -49,5 +50,6 @@ int analogix_dp_stop_crc(struct drm_connector *connector);
->>
->>   struct analogix_dp_plat_data *analogix_dp_aux_to_plat_data(struct drm_dp_aux *aux);
->>   struct drm_dp_aux *analogix_dp_get_aux(struct analogix_dp_device *dp);
->> +int analogix_dp_finish_probe(struct analogix_dp_device *dp);
->>
->>   #endif /* _ANALOGIX_DP_H_ */
-> 
+> The driver uses devm_spi_register_controller() for registration, which
+> automatically unregisters the controller via devm cleanup when the
+> device is removed.
 
-Best regards,
-Damon
+> The manual call to spi_unregister_controller() in the remove() callback
+> is therefore redundant and should be removed.
 
+Not just redundant, it'll be a double free.
+
+> -	spi_unregister_controller(host);
+>  	dma_unmap_single(&pdev->dev, sfc->dma_buffer, sfc->max_iosize,
+>  			 DMA_BIDIRECTIONAL);
+>  	free_pages((unsigned long)sfc->buffer, get_order(sfc->max_iosize));
+
+This does mean that if the device is being force unregistered with
+children still present those children might still be submitting SPI
+requests while the DMA buffer is unmapped, but in the normal course of
+affairs it's more likely that the devices will be unregistered before
+the controller.  It would be best to either roll back the use of devm or
+add a devm based unmap of the buffer here, the current remove function
+has correct ordering.
+
+--AClr4NiypPa3ZHRv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmuvS4ACgkQJNaLcl1U
+h9Chiwf9HWSa3dh2cae/FqNy2jBr53e+UB+ij8++KuKvJ4c9nWTndSDG8yv26YUJ
+U0WQ7a8K4o0lnfzzdba92bwMC0HbkvNaK37jUBWjv2jfb0VaviYe/DPIRIEaXdJ7
+9Ahv5K09vfBXWvzlGmBpaDX0mI1n7agTLuDTnIOAhe0vGuCDJFyQy7O5eg3Vzazs
+vC8THtwX0jIsWXId9lRQkdu5dcg6+8z5jLgdzJkg7BEsPvadhk4mgUsNeuUKc7rZ
+m8ajxOr9qxHM8WAYrn7J0R50rJCl+gVQmT8m3U+NvRjCbfjuD9+uhttWdPw7mK+k
+fg3ykuWMZWrzhsIQLnSr8vY+RnyLzQ==
+=JX79
+-----END PGP SIGNATURE-----
+
+--AClr4NiypPa3ZHRv--
+
+
+--===============6646942131191037520==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6646942131191037520==--
+
