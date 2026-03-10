@@ -4,47 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB4DFD2D80
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F686FD2D60
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uT2fZE+qkfXB0CSU9QUlWaOalJeAniGMGr6FYJgrcCM=; b=R0M0Qwk5G/amxU
-	ajr2vhgRlARtOwP+xkuPTDXoWTUw8qVVcNyz84Oy9pvEapeqbryivIRcyiXA7X10Da9X3NBYWRib7
-	loSUXuCt8xvS8CdteUcspizqmZTU7PzlR0ebwvku6B5BJhHWwBmkJd+rHM31rX+tGvGm5VHS1OGUu
-	CK/lohKYXESQ7JBYSX2AhIqoPcOSLbdpTlRBaPdPz8INNx+jL8FgUrAicXmnWN59T+So8xPoNWbeM
-	/UFPTa7R1SabsqPP6kYwk9sXi7pdEBXDW03g2rped9jkDrgEpVIUkC09n/8PYpvJtV80SLU44exE6
-	mpu/XjSw7A6wZYptXrdw==;
+	List-Owner; bh=yn7Tnrq0Ugc/vPhjd4A5yTaQaOM0cXF+fl5N6aFB2UY=; b=DPqw2RV5xRd2s9
+	qAEROkODIj2hw6naoTKzVqyA+N14BFSDQpvyJObT5wtPI8sTRzOSooUa5kMHRLHU6R2AvcuRfJVvx
+	BRhDRySvUW/SzV1TqNctlx8O6bQzo2E9gAhN/bMpRzn5a9r9Nn74uBwtGbwq1bkn1BSTEK36ju1Oj
+	U0ceHy3rXuQ7el5RaKneXv9bd1s8FOZXbJUKafxZwbRS0b0yYgR1VqvVpLiAUiOTcviiGtv2LGAgM
+	wc9ojTPOJMGQBhLNrGcDipZ/Ei5j0eM4D+BwxMNVpYvOEeBajWcxP/mGtjLbXVbyIDEDLhgTB2OA1
+	yO8qyVFsF0WsR2lHIUsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvjK-00000009PS0-2oRx;
-	Tue, 10 Mar 2026 11:58:30 +0000
-Received: from mail.avm.de ([2001:bf0:244:244::119])
+	id 1vzvjM-00000009PXa-2lLT;
+	Tue, 10 Mar 2026 11:58:32 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvge-00000009Kbj-1iqX;
-	Tue, 10 Mar 2026 11:55:46 +0000
+	id 1vzvgj-00000009Kna-2axN;
+	Tue, 10 Mar 2026 11:55:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=CMAEotzjl80q/k3AHUpFdsqecrdK0X6tjqiBMW6zbGo=; b=aY7kUwner0/lRi0Wwv5i8g2Fpa
+	C+lp5ZrIZp0yatatBQ5dm+19Kt4ms0T9IFi3oGXugYGjjWjoV6QmQ0zi1iyQ6HfxLvWjsidHMpd86
+	9FBEmudD8dwI0lT5eMR72883LBBLq1iGGnDcjqM1CdlMHqsyKA86XR9yz6yT3NbLEYOOndaJkizIc
+	L9Pu6IM3l9rStDBD6tqA2hsCiZ/Wg2oiAgyZ7zb0WLmso32ra2W6iXRRfTcreywzelZjJSnv8vgY4
+	zj83e7J7ZsdxNciKNmEjPjCCF48swXrLkXXu0bho3CtigywOJLbBhr2YukwHm/Zht23Wbu3bfCmUz
+	LYnAWaxg==;
+Received: from mail.avm.de ([212.42.244.120])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vzvgT-0000000EQ7U-3yMP;
+	Tue, 10 Mar 2026 11:55:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143729; bh=D3MT7fsInTbF+Q1IcBY1KlhxZOhv8n1GbgMEryPc1iY=;
+	t=1773143726; bh=g4FFdRUzUDur+rKeacaiCQZ+hQh7tI9Z6NjRyFnQc8w=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FuoIkm8y1r9jmy9XkB/nIcxLjk6bi+LjK6sb5O5ohjTjMY18sKNe5fNP8s8fr+eSE
-	 cVA8MM9YDRtdE2+c+3jQLNZHyd4epnj5ZDnSjfPWRMAs2R10VO12Ss6TLbgdzang/C
-	 IuQfXi2yHqFGvraOYFSaQFSWS/mBIxmUmEAiJKQg=
-Received: from [212.42.244.71] (helo=mail.avm.de)
+	b=rRX3stPQMInmxRJPEzximgG0zMf53EmXskDxqUtsKeYEkVQ/dYQttdiJ1RwUnbcpz
+	 vUIyMp9GJewHbVUEmLcfea/7Tczz6UnxZqIBZpZCQjil3jUyfWJvjrL+lRSOeW+TzV
+	 m1ne+0b2SGo4W3cNeV9kwvYwa/se7AsaBn9ffb+U=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006b0-2367-7f0000032729-7f000001ca2a-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:29 +0100
-Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
+	id 69b006ad-b734-7f0000032729-7f000001c092-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:25 +0100
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:28 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:25 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:22 +0100
-Subject: [PATCH 56/61] clk: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:49:05 +0100
+Subject: [PATCH 39/61] irqchip: Prefer IS_ERR_OR_NULL over manual NULL
+ check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-56-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-39-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -74,29 +89,29 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, 
- Thomas Gleixner <tglx@kernel.org>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1921; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=D3MT7fsInTbF+Q1IcBY1KlhxZOhv8n1GbgMEryPc1iY=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAaUcbSjlqDNveOR0T7quZaIRE99Gs4Y40VBm
- M+JmB4D/wiJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGlAAKCRA0LQZT0ays
- 29iMCACZFg0QUOFeRuYtY3bNuohm/w3gB25wtydzkEpw1y51B0CHIEYO2D+JTSeLzAXWxzoBnW9
- HXPmPssLJbvCLWKHMMkr0gAWPlZj2r2H5W9oWdTzVn7prfkWfj3QlC8PF6krEUlEdaF6S2eKHnY
- z1zuimMLbUrpcxQrqC7ES4i2d/Rp5LYwIEnS9CU2G4AgF3dSj7KUVqb2Lo1UirL++DC+eGcQfPA
- Ura0HOmvOdmbreSMPuxW3hgubjzqbYDJe+u22CiDbkdU8O1mLNiEw60lO04uucHvbyqPHMrNt0s
- Po0xv5cdM7Uk0fq2L3KaKWcmaytoRStiJNfwvalXm+okYQVa
+Cc: Marc Zyngier <maz@kernel.org>, Thomas Gleixner <tglx@kernel.org>, 
+ Andrew Lunn <andrew@lunn.ch>, Gregory Clement <gregory.clement@bootlin.com>, 
+ Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1797; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=g4FFdRUzUDur+rKeacaiCQZ+hQh7tI9Z6NjRyFnQc8w=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZajgCYubaE210ybXd9Qufza8n+eFtBCfTFO
+ oQVV6kxanqJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGWgAKCRA0LQZT0ays
+ 28ISB/9piM+RbVSziEng1t7dun6orhPWKQV9naYfNjFW3SarwsnzmnBDz0nuaGgkwHFCge92/YT
+ C6PE2tX58vKdugSVIB0D9NRq5gq4thjVq3D0H2GAQlza/oKxurc4wdXC5dXInbYl5OUB2w09WQy
+ fMKAkwG0m3WFPKRgizEtCKM6l/9q3B4q2rnnpcRKQx0iNvhf+dUkY5BUPSwCcfQvJK7+4PoC/ZE
+ ddAoJcpror4/MCI0j47/BVNaHIB5K9WykFVMhov3BZvNavqXT9C64hKXxD2btf1UcwShvWKloSd
+ PxNXkra2HopfIdMjPOY9w4hG57NjkAcqg0vkRHvvtwjYvgsZ
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143729-974B6E1F-DBF721A0/0/0
+X-purgate-ID: 149429::1773143725-DB5DFA3D-FD67F9DA/0/0
 X-purgate-type: clean
-X-purgate-size: 1923
+X-purgate-size: 1799
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045545_072617_700A6CD6 
-X-CRM114-Status: GOOD (  12.97  )
+X-CRM114-CacheID: sfid-20260310_115540_972387_F89EBE60 
+X-CRM114-Status: GOOD (  12.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,59 +131,47 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
 check.
 
-Semantich change: Previously the code only printed the warning on error,
-but not when the pointer was NULL. Now the warning is printed in both
-cases!
+Change generated with coccinelle.
 
-Change found with coccinelle.
-
-To: Michael Turquette <mturquette@baylibre.com>
-To: Stephen Boyd <sboyd@kernel.org>
-To: Daniel Lezcano <daniel.lezcano@kernel.org>
+To: Marc Zyngier <maz@kernel.org>
 To: Thomas Gleixner <tglx@kernel.org>
-Cc: linux-clk@vger.kernel.org
+To: Andrew Lunn <andrew@lunn.ch>
+To: Gregory Clement <gregory.clement@bootlin.com>
+To: Sebastian Hesselbarth <sebastian.hesselbarth@gmail.com>
+Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/clk/clk.c               | 4 ++--
- drivers/clocksource/timer-pxa.c | 2 +-
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/irqchip/irq-gic-v3.c     | 2 +-
+ drivers/irqchip/irq-mvebu-odmi.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/clk.c b/drivers/clk/clk.c
-index 47093cda9df32223c1120c3710261296027c4cd3..35146e3869a7dd93741d10b7223d4488a9216ed1 100644
---- a/drivers/clk/clk.c
-+++ b/drivers/clk/clk.c
-@@ -4558,7 +4558,7 @@ void clk_unregister(struct clk *clk)
- 	unsigned long flags;
- 	const struct clk_ops *ops;
+diff --git a/drivers/irqchip/irq-gic-v3.c b/drivers/irqchip/irq-gic-v3.c
+index 20f13b686ab22faf722dd2b24faf96af636a4bbd..6dc9827357a21ae05dd838fb717871c73f3c7562 100644
+--- a/drivers/irqchip/irq-gic-v3.c
++++ b/drivers/irqchip/irq-gic-v3.c
+@@ -2252,7 +2252,7 @@ static int __init gic_of_init(struct device_node *node, struct device_node *pare
  
--	if (!clk || WARN_ON_ONCE(IS_ERR(clk)))
-+	if (WARN_ON_ONCE(IS_ERR_OR_NULL(clk)))
- 		return;
+ out_unmap_rdist:
+ 	for (i = 0; i < nr_redist_regions; i++)
+-		if (rdist_regs[i].redist_base && !IS_ERR(rdist_regs[i].redist_base))
++		if (!IS_ERR_OR_NULL(rdist_regs[i].redist_base))
+ 			iounmap(rdist_regs[i].redist_base);
+ 	kfree(rdist_regs);
+ out_unmap_dist:
+diff --git a/drivers/irqchip/irq-mvebu-odmi.c b/drivers/irqchip/irq-mvebu-odmi.c
+index b99ab9dcc14b3ba982876cf5525499d02bc1c997..94e7eda46e81833cfe0479b6fabba715bf4ef6b8 100644
+--- a/drivers/irqchip/irq-mvebu-odmi.c
++++ b/drivers/irqchip/irq-mvebu-odmi.c
+@@ -217,7 +217,7 @@ static int __init mvebu_odmi_init(struct device_node *node,
+ 	for (i = 0; i < odmis_count; i++) {
+ 		struct odmi_data *odmi = &odmis[i];
  
- 	clk_debug_unregister(clk->core);
-@@ -4744,7 +4744,7 @@ void __clk_put(struct clk *clk)
- {
- 	struct module *owner;
- 
--	if (!clk || WARN_ON_ONCE(IS_ERR(clk)))
-+	if (WARN_ON_ONCE(IS_ERR_OR_NULL(clk)))
- 		return;
- 
- 	clk_prepare_lock();
-diff --git a/drivers/clocksource/timer-pxa.c b/drivers/clocksource/timer-pxa.c
-index 7ad0e5adb2ffac4125c34710fc67f4b45f30331d..f65fb0b7fc318b766227e5e7a4c0fb08ba11c8f9 100644
---- a/drivers/clocksource/timer-pxa.c
-+++ b/drivers/clocksource/timer-pxa.c
-@@ -218,7 +218,7 @@ void __init pxa_timer_nodt_init(int irq, void __iomem *base)
- 
- 	timer_base = base;
- 	clk = clk_get(NULL, "OSTIMER0");
--	if (clk && !IS_ERR(clk)) {
-+	if (!IS_ERR_OR_NULL(clk)) {
- 		clk_prepare_enable(clk);
- 		pxa_timer_common_init(irq, clk_get_rate(clk));
- 	} else {
+-		if (odmi->base && !IS_ERR(odmi->base))
++		if (!IS_ERR_OR_NULL(odmi->base))
+ 			iounmap(odmis[i].base);
+ 	}
+ 	bitmap_free(odmis_bm);
 
 -- 
 2.43.0
