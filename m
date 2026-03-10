@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94E2DFD2D95
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99FC1FD2D60
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KBLOo5eLJVfjlW/AJlk7yB2k8ZdALlDUIt62n03OPws=; b=Jtizj5ka8DTd9V
-	X63Snz5FCgmCen8jTCjQTFOiyxc6wm7hIDVGTF6ndXzkGCqDp3SMskDBR6mye9VhpBi6pkIlg5NB6
-	1f4nMSR8aMlQ9y/msF8IYvsceDDm/wzVi+SGMHpMfondHgas/epydJl3mR2IcUhLKm9HiQG1JlXb1
-	RSZh4zRr5RpMYFjJWVL4+PY6mrbOlnzUPjwTZkEA+C5YEPU44saYVHsu2LqgbFyXpfFeSopRV64oU
-	b+WhawgTjOwg6qqu1vWQjG/aIPnhwgN9txPhrk7rL/nkn3HVmXIQ6/rfe7g01xiywVRjBgKZdcxhJ
-	Z/QBptLKYIs4fVj86I4g==;
+	List-Owner; bh=jkXjGM67pOPVptbFAtbHKPAfrapx+/wOBo5/rpKwYFg=; b=w2dp1RtkT3JoDB
+	1GsLCO7FLjgIKq3BqoUVVrQaalKhLOJQeE50csKrYoYPXMFU2hs2cX+vm8GWJr0/lRQf74nagG57h
+	sTzvhgK0FqswH1waI+PbSjAdjJW7UaeaPzO4941FPJc76wE02yUPtIIxFfhUkcA0aa6ctrXVmMXqE
+	elClpeBdJJK8K163ZpnraBmjtFcf385+K32koGPlPGX8jzPj9QOb9K3Alr8vTDHW6GVzibXGe1shd
+	eoXusW0aH0RmGx2L1sfShX0xPZVomQIdoGG0QoMjdvuevF27yDBeP+uS96PFpYq3Jjw8iBFlGKV+l
+	kChbNa5iLf+4rXHmXVFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzviq-00000009OYA-0vw5;
-	Tue, 10 Mar 2026 11:58:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vzviw-00000009Ohm-1DzL;
+	Tue, 10 Mar 2026 11:58:06 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgg-00000009Ki1-2r4u;
+	id 1vzvgg-00000009KiQ-4BkG;
 	Tue, 10 Mar 2026 11:55:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=CGmSA97P5zoUAPVKt40UlhgFAMOY9j0jHxmE1RUkWWE=; b=csgCQJ+1G893tq/f42+yZwclJ5
-	yfHPN4uffIIa3RkkIehiXgJg4DK+9ehXJrZ6i7NvLwi0GzrzxhLNSdEQugKaHerLuTmEFVNFC7z0U
-	CYv1PW6yfoSYMtoBK/SShyVmLSevGQAlJ0XUbbL4yVm6FFQMJxueMwS0jWkak2JqZVqp1y13Xq86x
-	eyzBXn3XXkSawjCFxbhlSASgaBDJDmWGwuCIPfjSgYTKR0QtbpJWa72pj/AEiit3vqNRG5PjqnVLg
-	2nI0PwIY41vBxJ2GlhD0gLY7JiwULAn+L6LCZ1EpwdkWT0ZFQzqGUxKs5+JwvEQSSUqVbcKL8TDwP
-	u3BQOxtg==;
-Received: from mail.avm.de ([212.42.244.119])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgT-0000000EQ7S-3yYp;
-	Tue, 10 Mar 2026 11:55:43 +0000
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=uUd92BxhkUpS1fg5roJt+vyXppFysNInEix5Mg1TR9I=; b=bFEobPyleGxyyL+cjPeuGOatc2
+	+PTuZ0wJbAeYD3+ApJE6QXchZf07K6iCAp99v2k57Sq6tXnE7IR50SklXC3KpDxi9xitBF/SPdU9X
+	lyiAMG5jOoiu4y2w5zoa/TUdoE5wVVPVFYeULkWoO3gPBrjzvEaNV9WKuynoeOUOsAc7iIv3Y8j9Y
+	HwF/IORTx7gix+DCNitt89pi4tJG/X08yPZkTNPnIiqlKzxKZXVVxHOycTdcIja+1gQhhdCzE5wI1
+	40mcwHFjtEkOhSo/z0ngoEwCJ2NTH9GxRyDH6dwYLTHKPUw91qZkVYqaKxqfOrgk/a31JgmEUgQie
+	ZO4gewpA==;
+Received: from mail.avm.de ([2001:bf0:244:244::120])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vzvgb-00000007lg9-0FEH;
+	Tue, 10 Mar 2026 11:55:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143724; bh=vGrPLNOiClPR9kf2JYtGEgONwIn4sxqTHiWcc1kKKyY=;
+	t=1773143728; bh=gOURDJcimLwc0Y7s7mu8KRblXgipzGTYZgiAn3dRwDI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=vGHDpooj3kbLZ+8D0plCbMeYqQhZctChcZoWM2Oz3ppzOc10y+IZamI2t1Up6x5Oz
-	 ZOQWpS5VxsHODQ5E0bYLhrVtG85jFVZABrb+vIZU9NfiYqywilzOFMSb7wFF9KlZxk
-	 XMjhpb+uZFDFGYC7810AK5hKKVXc3NZ47/tNCbvg=
-Received: from [212.42.244.71] (helo=mail.avm.de)
+	b=ex53I4YG0KjBerNqRD5wRIiox3FXFKTSd0JtZvKuo0ROgMoNdRRAPThrM/Qsevv02
+	 e8XWjmKIuppAES/QSOjqmEyPMBZJml1FZ+UNb0gDdtCYyQjh8crsZ0vtK8+gKHBfLt
+	 MJw5NhjMOgoL79FPNU9K+5wpre1mwH1utAmpyJeE=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006ab-2367-7f0000032729-7f0000019cec-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:23 +0100
-Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
+	id 69b006af-b734-7f0000032729-7f0000019c7a-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:23 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:31 +0100
-Subject: [PATCH 05/61] smb: Prefer IS_ERR_OR_NULL over manual NULl check
+Date: Tue, 10 Mar 2026 12:49:21 +0100
+Subject: [PATCH 55/61] interconnect: Prefer IS_ERR_OR_NULL over manual NULL
+ check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-5-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-55-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -88,30 +89,27 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Steve French <sfrench@samba.org>, Paulo Alcantara <pc@manguebit.org>, 
- Ronnie Sahlberg <ronniesahlberg@gmail.com>, 
- Shyam Prasad N <sprasad@microsoft.com>, Tom Talpey <tom@talpey.com>, 
- Bharath SM <bharathsm@microsoft.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2182; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=vGrPLNOiClPR9kf2JYtGEgONwIn4sxqTHiWcc1kKKyY=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAXmFi2noeXj0abdUjIB9kKoSnFcuerTTnqGw
- aIV0JkIMuiJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF5gAKCRA0LQZT0ays
- 25ZYCACJTZVo2gUPO+X2etWPNlTUp7ClEwWSNg3dPZBa5w0Z7EuwahYUGGyy8BKX2Xr3Nw3eStQ
- sVKw7MXxWmXWt5UTxCuTdRP3F8qkFihhAcyZGnaWXtsHW80RrqCOvZyrn/d1kQqYEpMpKbZIZxv
- /EpbwmWT4XeRvGuaEWqQ2bbe/QDrikm2suvUw6m77AVK8ag0Unhi8yF7km5ZQPmNxRG0b7wRfDu
- f9v8qAqM0yTILYLsa5pGAGuQ+9RoWhRyw/Vp6w7DPGkGl5Ft2gyZ5dwPzpx69OognVNti4fm1g6
- tztjOPF3hTnYGvxjbl6RQZRancjyqct71KnXaO98GUCNnx9j
+Cc: Georgi Djakov <djakov@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=974; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=gOURDJcimLwc0Y7s7mu8KRblXgipzGTYZgiAn3dRwDI=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAaR6ZpvsAoRDFUpNu6G6elsfY3kgc27+uFRK
+ ZLVDKnVLraJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGkQAKCRA0LQZT0ays
+ 28XJCACYmRByi8P7LIl1oc/g3aO1owAe5Q8Or8oVGhiLH2LhqHs6nfDqZLIqz1sL3qrQVyF7YGk
+ kX0mFSo3Tm/dtN68cM8AHWfCx75PDZnJ1klwJaD/a5osoRSf4X3Ik4ZQj/cB7O+Zq1qUVCpMYTg
+ XaFUKyzlehYbqEs1YGNkcYOQXSo6Ofkc0rCWX7WPlFeXlek3wVqFGPJYbk8vXFwaghiu8bk1jxs
+ 5OWlABLNOMeICixwYBtsJBbBssbgobIHjFZNKGQbzYy6+2+uPNUf9NBHl8iaEQQnS3RZflKIJzs
+ X0gv7zaxzUqJp37JtExDbIsVdOxpFm9EpGTYIR5B4gcmwoes
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143723-8ECA1E1F-59018045/0/0
+X-purgate-ID: 149429::1773143727-E55C3A3D-7BA9F82C/0/0
 X-purgate-type: clean
-X-purgate-size: 2184
+X-purgate-size: 976
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_115540_553397_08CA7D4A 
-X-CRM114-Status: UNSURE (   9.96  )
+X-CRM114-CacheID: sfid-20260310_115541_168409_D219A791 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -132,63 +130,33 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
 check.
 
-Change generated with coccinelle.
+Semantich change: Previously the code only printed the warning on error,
+but not when the pointer was NULL. Now the warning is printed in both
+cases!
 
-To: Steve French <sfrench@samba.org>
-To: Paulo Alcantara <pc@manguebit.org>
-To: Ronnie Sahlberg <ronniesahlberg@gmail.com>
-To: Shyam Prasad N <sprasad@microsoft.com>
-To: Tom Talpey <tom@talpey.com>
-To: Bharath SM <bharathsm@microsoft.com>
-Cc: linux-cifs@vger.kernel.org
-Cc: samba-technical@lists.samba.org
+Change found with coccinelle.
+
+To: Georgi Djakov <djakov@kernel.org>
+Cc: linux-pm@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- fs/smb/client/cifsglob.h | 2 +-
- fs/smb/client/connect.c  | 2 +-
- fs/smb/client/readdir.c  | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/interconnect/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/fs/smb/client/cifsglob.h b/fs/smb/client/cifsglob.h
-index 6f9b6c72962b09260542b711d4c64e7dc42c7845..fb731b2609465ebe50742936b458aba210ecbd4a 100644
---- a/fs/smb/client/cifsglob.h
-+++ b/fs/smb/client/cifsglob.h
-@@ -1336,7 +1336,7 @@ void cifs_put_tlink(struct tcon_link *tlink);
- static inline struct tcon_link *
- cifs_get_tlink(struct tcon_link *tlink)
- {
--	if (tlink && !IS_ERR(tlink))
-+	if (!IS_ERR_OR_NULL(tlink))
- 		atomic_inc(&tlink->tl_count);
- 	return tlink;
- }
-diff --git a/fs/smb/client/connect.c b/fs/smb/client/connect.c
-index 3bad2c5c523dbd1d4b1ab253567984612be0f348..aa12d327894b270b59ea30be0e6d77b4188fc98f 100644
---- a/fs/smb/client/connect.c
-+++ b/fs/smb/client/connect.c
-@@ -2895,7 +2895,7 @@ cifs_get_tcon(struct cifs_ses *ses, struct smb3_fs_context *ctx)
- void
- cifs_put_tlink(struct tcon_link *tlink)
- {
--	if (!tlink || IS_ERR(tlink))
-+	if (IS_ERR_OR_NULL(tlink))
+diff --git a/drivers/interconnect/core.c b/drivers/interconnect/core.c
+index 8569b78a18517b33abeafac091978b25cbc1acc7..22e92b30f73853d5bd2e05b4f52cb5aa22556468 100644
+--- a/drivers/interconnect/core.c
++++ b/drivers/interconnect/core.c
+@@ -790,7 +790,7 @@ void icc_put(struct icc_path *path)
+ 	size_t i;
+ 	int ret;
+ 
+-	if (!path || WARN_ON(IS_ERR(path)))
++	if (WARN_ON(IS_ERR_OR_NULL(path)))
  		return;
  
- 	if (!atomic_dec_and_test(&tlink->tl_count) ||
-diff --git a/fs/smb/client/readdir.c b/fs/smb/client/readdir.c
-index be22bbc4a65a03ec64b87d8505d1496279f22efc..3e9260cca196ea8ab17aad82c4824ec5e468e2e7 100644
---- a/fs/smb/client/readdir.c
-+++ b/fs/smb/client/readdir.c
-@@ -165,7 +165,7 @@ cifs_prime_dcache(struct dentry *parent, struct qstr *name,
- 			inode = ERR_PTR(-ENOMEM);
- 		alias = d_splice_alias(inode, dentry);
- 		d_lookup_done(dentry);
--		if (alias && !IS_ERR(alias))
-+		if (!IS_ERR_OR_NULL(alias))
- 			dput(alias);
- 	}
- 	dput(dentry);
+ 	ret = icc_set_bw(path, 0, 0);
 
 -- 
 2.43.0
