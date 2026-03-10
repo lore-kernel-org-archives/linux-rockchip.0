@@ -4,52 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C0B5FCC9DB
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 08:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B229FEA854E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 08:53:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QVzgGzxWgxO591a91njMFAOGfIqQItFnsA9j2AfZjA8=; b=FXqgBdtwWbIeCP
-	dAU6Wtl8v4fZNt37YXwAtbuwQ3Q3WsfO+uWbIBB24gbINbf4DMB5mDJdGyGhcwwTysTJpdVmCAtYs
-	TXMCSILKEUcZnHo5XhRRKRJu53yrrgNH2YWBpPdarr9VZ7mJiPBVPxVRhkLaFEQPf93K0AGa/xuaa
-	qIbG9qwOpgZV4qe5ohG9Xa445zIPjrHO9fSOKSYrZZlFrY9YJEy6CdM00MAbDp31fzo//eZagVRFA
-	PVESBc2w/I7Wnd5YX9vwxR1tel/jNxl8CH/fH0hcYlzypPhx9b17hgUHvYbL9QnMCW/jPkEqs5wOP
-	y0fwYnAtlMQLOB092yBw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wOo79/Mxs7fbmqA51Ji9ztD2EPAn4LS6xQNdoOqpR6w=; b=V21SGZpe3d7EGM
+	uAfNcU4qnCJn+49Df/vusDXS2J1PRIhGSjwTSqYcNyH7/dKE4W0OqpMmvqophGy9Bz+ut70lTS1xK
+	AFYfrH245ZXrMpm5Uri3wv/OgpN/DeQns4XD+P+lsGz1JSVgvwFnrx2q0r2e0qoi3Om5D9ErkPk7g
+	V5OrlhB6f2KjDWBEg/nBdqH6/HTIpUum9r5n0T+bucapZpwaoP6UYqc9sTVcUveQMa3pm1Qxaf5f3
+	rtV9rrFy3yoTczEvjT9YNK6P/MPUOrNEOWDb4L681MYVcNhiJ2SAA+UwftvdwZQ9LAx1LVTAvweqp
+	uKgQImsGMeZ+H/gUmf3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzslk-00000008zqw-3XeO;
-	Tue, 10 Mar 2026 08:48:48 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vzsqO-000000090R2-3i69;
+	Tue, 10 Mar 2026 08:53:36 +0000
+Received: from mail-m49246.qiye.163.com ([45.254.49.246])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzsli-00000008zq8-3Yy9;
-	Tue, 10 Mar 2026 08:48:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=LDnvAqGNNm3WAv14lqVG/Cz8m/tMIKxrjvpf5+LfotM=; b=l0wIErnCa7VHZPHycc5wGKaUkL
-	Yvz5kANYlS0XPLz/iuR2NrLGPcRURHOBzm4faD1fWbmUqHDdbBPI9z4rsa/I61cA44XbcjfQPzSQI
-	3JH4sSNf+xfTq6bJE2qbkzZaR3ywZHyEXWZ4OeT/t1ncRkWfvm3Be3AY6w1bBi5Jo2GmLwbKxEmMC
-	9SzOmfK47DvNw80PUtVeLGQH6/0OrqRDnDgb4kmCKe808R4hhSaTTDC4lTtu9MovXpN+i/43gjRaT
-	oCZ9/2WFrq91UN5rTmSZC9LV5vi9tuUFV1EgdXUDbacu60B/wcVrDVEmRsehDCCkKEWM4Vg2mtT3s
-	rQPM1bSA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Pedro Alves <pta2002@pta2002.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Pedro Alves <pta2002@pta2002.com>
-Subject: Re: [PATCH v2] arm64: dts: rockchip: configure hdmirx in Rock 5 ITX
-Date: Tue, 10 Mar 2026 09:48:43 +0100
-Message-ID: <9638846.rMLUfLXkoz@phil>
-In-Reply-To: <20260304-radxa-r5-itx-hdmirx-v2-1-6567e9e3298b@pta2002.com>
-References: <20260304-radxa-r5-itx-hdmirx-v2-1-6567e9e3298b@pta2002.com>
+	id 1vzsqM-000000090QX-1PAp;
+	Tue, 10 Mar 2026 08:53:35 +0000
+Received: from xxm-vm.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 366407926;
+	Tue, 10 Mar 2026 16:48:21 +0800 (GMT+08:00)
+From: Simon Xue <xxm@rock-chips.com>
+To: Joerg Roedel <joro@8bytes.org>,
+	Will Deacon <will@kernel.org>,
+	Robin Murphy <robin.murphy@arm.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Simon Xue <xxm@rock-chips.com>,
+	iommu@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] iommu/rockchip: Drop global rk_ops in favor of per-device ops
+Date: Tue, 10 Mar 2026 16:48:11 +0800
+Message-Id: <20260310084812.126082-1-xxm@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
+X-HM-Tid: 0a9cd6eecfc503ackunm4dcecdff2859ab8
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxhPGVYZTkxKGUsYGENKS0NWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=C+rt0Ro3Pjm30ci7xv0PAhoxbBrXHpgN6Xmb8BXdQCQTUWWUnWkaFPU3xvhWowbaKOYqKO2uz+V6J/65eD16+lEZAZMKfexxZRtZyPgAAQgPUITA3fhBtT4HMY8qkGVj7Eq9YOQJLwsqfqgqBCoCjJX13QcDpZsYZIbykTAnKZM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=ep+jJlFfjKc1W/n2Uufe+1A+x8UJ79REU3n+hRnPnqM=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_014846_893021_B1A61B2B 
-X-CRM114-Status: GOOD (  14.41  )
+X-CRM114-CacheID: sfid-20260310_015334_599969_8954E264 
+X-CRM114-Status: GOOD (  19.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,35 +68,268 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUGVkcm8sCgpBbSBNaXR0d29jaCwgNC4gTcOkcnogMjAyNiwgMjE6NDQ6MzkgTWl0dGVsZXVy
-b3DDpGlzY2hlIE5vcm1hbHplaXQgc2NocmllYiBQZWRybyBBbHZlczoKPiBUaGUgUmFkeGEgUm9j
-ayA1IElUWCBib2FyZCBleHBvc2VzIGFuIEhETUkgaW5wdXQgZXhhY3RseSB0aGUgc2FtZSB3YXkg
-YXMKPiB0aGUgUm9jayA1QiwgYnV0IHRoaXMgd2FzIG5vdCByZWZsZWN0ZWQgaW4gaXRzIERUUy4K
-PiAKPiBDaGFuZ2UgdGhlIHJrMzU4OC1yb2NrLTUtaXR4IHRvIGNvbmZpZ3VyZSBhbmQgZW5hYmxl
-IHRoZSBoZG1pX3JlY2VpdmVyCj4gYW5kIGhkbWlfcmVjZWl2ZXJfY21hIG5vZGVzLgo+IAo+IFRo
-ZSBob3QtcGx1ZyBkZXRlY3Rpb24gKEhQRCkgcGluIGtlZXBzIHRoZSBoZG1pcnhfZGV0IG5hbWUg
-cmF0aGVyIHRoYW4KPiB0aGUgaGRtaXJ4X2hwZCBuYW1lIHVzZWQgaW4gb3RoZXIgYm9hcmRzIHNp
-bmNlIHRoYXQgaXMgd2hhdCBtYXRjaGVzIHRoZQo+IG9mZmljaWFsIHNjaGVtYXRpY3MgKEhETUlJ
-UlhfREVUX0wpLgo+IAo+IFRoZSBjb25maWd1cmF0aW9ucyB3ZXJlIGNvbmZpcm1lZCB0byBiZSBp
-ZGVudGljYWwgb24gdGhlIGRvd25zdHJlYW0KPiBSYWR4YSBrZXJuZWwsIGFuZCB0aGlzIGhhcyBi
-ZWVuIHRlc3RlZCB0byB3b3JrIG9uIGEgUm9jayA1IElUWCBib2FyZAo+IHJ1bm5pbmcga2VybmVs
-IDYuMTkuMy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBQZWRybyBBbHZlcyA8cHRhMjAwMkBwdGEyMDAy
-LmNvbT4KCj4gKyZoZG1pX3JlY2VpdmVyIHsKPiArCXBpbmN0cmwtMCA9IDwmaGRtaW0xX3J4X2Nl
-YyAmaGRtaW0xX3J4X2hwZGluICZoZG1pbTFfcnhfc2NsICZoZG1pbTFfcnhfc2RhICZoZG1pcnhf
-ZGV0PjsKCmFyZSB5b3Ugc3VyZSB0aGUgaGRtaW0xX3J4X2hwZGluIGlzIHJvdXRlZD8KQmVjYXVz
-ZSB0aGF0IGlzIGdwaW8zX0Q0IHdoaWxlIHlvdXIgaHBkLWdwaW9zIGJlbG93IGlzIGdwaW8xX2M2
-LgoKPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwlocGQtZ3Bpb3MgPSA8JmdwaW8x
-IFJLX1BDNiBHUElPX0FDVElWRV9MT1c+OwoKQWxzbyBwbGVhc2UgcHJvdmlkZSBhIHBpbmN0cmwg
-c2V0dGluZyBmb3IgdGhlIGdwaW8gaHBkIHBpbi4KClRoYW5rcyBhIGxvdApIZWlrbwoKPiArCj4g
-KwlzdGF0dXMgPSAib2theSI7Cj4gK307Cj4gKwo+ICAmaGRwdHhwaHkxIHsKPiAgCXN0YXR1cyA9
-ICJva2F5IjsKPiAgfTsKPiAKPiAtLS0KPiBiYXNlLWNvbW1pdDogMDVmN2U4OWFiOTczMTU2NWQ4
-YTYyZTNiNWQxZWMyMDY0ODVlZWIwYgo+IGNoYW5nZS1pZDogMjAyNjAzMDMtcmFkeGEtcjUtaXR4
-LWhkbWlyeC1mNDY0NWU2NGY4YzMKPiAKPiBCZXN0IHJlZ2FyZHMsCj4gCgoKCgoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+The driver currently uses a global rk_ops pointer, forcing all IOMMU
+instances to share the same operations. This restricts the driver from
+supporting SoCs that might integrate different versions of IOMMU hardware.
+
+Since the IOMMU framework passes the master device information to
+iommu_paging_domain_alloc(), the global variable is no longer needed.
+
+Fix this by moving rk_ops into struct rk_iommu and struct rk_iommu_domain.
+Initialize it per-device during probe via of_device_get_match_data(),
+and replace all global references with the instance-specific pointers.
+
+Signed-off-by: Simon Xue <xxm@rock-chips.com>
+---
+ drivers/iommu/rockchip-iommu.c | 67 ++++++++++++++++------------------
+ 1 file changed, 31 insertions(+), 36 deletions(-)
+
+diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+index 0013cf196c57..09233c67ee8e 100644
+--- a/drivers/iommu/rockchip-iommu.c
++++ b/drivers/iommu/rockchip-iommu.c
+@@ -82,6 +82,14 @@
+   */
+ #define RK_IOMMU_PGSIZE_BITMAP 0x007ff000
+ 
++struct rk_iommu_ops {
++	phys_addr_t (*pt_address)(u32 dte);
++	u32 (*mk_dtentries)(dma_addr_t pt_dma);
++	u32 (*mk_ptentries)(phys_addr_t page, int prot);
++	u64 dma_bit_mask;
++	gfp_t gfp_flags;
++};
++
+ struct rk_iommu_domain {
+ 	struct list_head iommus;
+ 	u32 *dt; /* page directory table */
+@@ -89,6 +97,7 @@ struct rk_iommu_domain {
+ 	spinlock_t iommus_lock; /* lock for iommus list */
+ 	spinlock_t dt_lock; /* lock for modifying page directory table */
+ 	struct device *dma_dev;
++	const struct rk_iommu_ops *rk_ops;
+ 
+ 	struct iommu_domain domain;
+ };
+@@ -98,14 +107,6 @@ static const char * const rk_iommu_clocks[] = {
+ 	"aclk", "iface",
+ };
+ 
+-struct rk_iommu_ops {
+-	phys_addr_t (*pt_address)(u32 dte);
+-	u32 (*mk_dtentries)(dma_addr_t pt_dma);
+-	u32 (*mk_ptentries)(phys_addr_t page, int prot);
+-	u64 dma_bit_mask;
+-	gfp_t gfp_flags;
+-};
+-
+ struct rk_iommu {
+ 	struct device *dev;
+ 	void __iomem **bases;
+@@ -117,6 +118,7 @@ struct rk_iommu {
+ 	struct iommu_device iommu;
+ 	struct list_head node; /* entry in rk_iommu_domain.iommus */
+ 	struct iommu_domain *domain; /* domain to which iommu is attached */
++	const struct rk_iommu_ops *rk_ops;
+ };
+ 
+ struct rk_iommudata {
+@@ -124,7 +126,6 @@ struct rk_iommudata {
+ 	struct rk_iommu *iommu;
+ };
+ 
+-static const struct rk_iommu_ops *rk_ops;
+ static struct iommu_domain rk_identity_domain;
+ 
+ static inline void rk_table_flush(struct rk_iommu_domain *dom, dma_addr_t dma,
+@@ -510,7 +511,7 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
+ 	 * and verifying that upper 5 (v1) or 7 (v2) nybbles are read back.
+ 	 */
+ 	for (i = 0; i < iommu->num_mmu; i++) {
+-		dte_addr = rk_ops->pt_address(DTE_ADDR_DUMMY);
++		dte_addr = iommu->rk_ops->pt_address(DTE_ADDR_DUMMY);
+ 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, dte_addr);
+ 
+ 		if (dte_addr != rk_iommu_read(iommu->bases[i], RK_MMU_DTE_ADDR)) {
+@@ -551,7 +552,7 @@ static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
+ 	page_offset = rk_iova_page_offset(iova);
+ 
+ 	mmu_dte_addr = rk_iommu_read(base, RK_MMU_DTE_ADDR);
+-	mmu_dte_addr_phys = rk_ops->pt_address(mmu_dte_addr);
++	mmu_dte_addr_phys = iommu->rk_ops->pt_address(mmu_dte_addr);
+ 
+ 	dte_addr_phys = mmu_dte_addr_phys + (4 * dte_index);
+ 	dte_addr = phys_to_virt(dte_addr_phys);
+@@ -560,14 +561,14 @@ static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
+ 	if (!rk_dte_is_pt_valid(dte))
+ 		goto print_it;
+ 
+-	pte_addr_phys = rk_ops->pt_address(dte) + (pte_index * 4);
++	pte_addr_phys = iommu->rk_ops->pt_address(dte) + (pte_index * 4);
+ 	pte_addr = phys_to_virt(pte_addr_phys);
+ 	pte = *pte_addr;
+ 
+ 	if (!rk_pte_is_page_valid(pte))
+ 		goto print_it;
+ 
+-	page_addr_phys = rk_ops->pt_address(pte) + page_offset;
++	page_addr_phys = iommu->rk_ops->pt_address(pte) + page_offset;
+ 	page_flags = pte & RK_PTE_PAGE_FLAGS_MASK;
+ 
+ print_it:
+@@ -663,13 +664,13 @@ static phys_addr_t rk_iommu_iova_to_phys(struct iommu_domain *domain,
+ 	if (!rk_dte_is_pt_valid(dte))
+ 		goto out;
+ 
+-	pt_phys = rk_ops->pt_address(dte);
++	pt_phys = rk_domain->rk_ops->pt_address(dte);
+ 	page_table = (u32 *)phys_to_virt(pt_phys);
+ 	pte = page_table[rk_iova_pte_index(iova)];
+ 	if (!rk_pte_is_page_valid(pte))
+ 		goto out;
+ 
+-	phys = rk_ops->pt_address(pte) + rk_iova_page_offset(iova);
++	phys = rk_domain->rk_ops->pt_address(pte) + rk_iova_page_offset(iova);
+ out:
+ 	spin_unlock_irqrestore(&rk_domain->dt_lock, flags);
+ 
+@@ -730,7 +731,7 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+ 	if (rk_dte_is_pt_valid(dte))
+ 		goto done;
+ 
+-	page_table = iommu_alloc_pages_sz(GFP_ATOMIC | rk_ops->gfp_flags,
++	page_table = iommu_alloc_pages_sz(GFP_ATOMIC | rk_domain->rk_ops->gfp_flags,
+ 					  SPAGE_SIZE);
+ 	if (!page_table)
+ 		return ERR_PTR(-ENOMEM);
+@@ -742,13 +743,13 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
+ 		return ERR_PTR(-ENOMEM);
+ 	}
+ 
+-	dte = rk_ops->mk_dtentries(pt_dma);
++	dte = rk_domain->rk_ops->mk_dtentries(pt_dma);
+ 	*dte_addr = dte;
+ 
+ 	rk_table_flush(rk_domain,
+ 		       rk_domain->dt_dma + dte_index * sizeof(u32), 1);
+ done:
+-	pt_phys = rk_ops->pt_address(dte);
++	pt_phys = rk_domain->rk_ops->pt_address(dte);
+ 	return (u32 *)phys_to_virt(pt_phys);
+ }
+ 
+@@ -790,7 +791,7 @@ static int rk_iommu_map_iova(struct rk_iommu_domain *rk_domain, u32 *pte_addr,
+ 		if (rk_pte_is_page_valid(pte))
+ 			goto unwind;
+ 
+-		pte_addr[pte_count] = rk_ops->mk_ptentries(paddr, prot);
++		pte_addr[pte_count] = rk_domain->rk_ops->mk_ptentries(paddr, prot);
+ 
+ 		paddr += SPAGE_SIZE;
+ 	}
+@@ -812,7 +813,7 @@ static int rk_iommu_map_iova(struct rk_iommu_domain *rk_domain, u32 *pte_addr,
+ 			    pte_count * SPAGE_SIZE);
+ 
+ 	iova += pte_count * SPAGE_SIZE;
+-	page_phys = rk_ops->pt_address(pte_addr[pte_count]);
++	page_phys = rk_domain->rk_ops->pt_address(pte_addr[pte_count]);
+ 	pr_err("iova: %pad already mapped to %pa cannot remap to phys: %pa prot: %#x\n",
+ 	       &iova, &page_phys, &paddr, prot);
+ 
+@@ -849,7 +850,7 @@ static int rk_iommu_map(struct iommu_domain *domain, unsigned long _iova,
+ 	pte_index = rk_iova_pte_index(iova);
+ 	pte_addr = &page_table[pte_index];
+ 
+-	pte_dma = rk_ops->pt_address(dte_index) + pte_index * sizeof(u32);
++	pte_dma = rk_domain->rk_ops->pt_address(dte_index) + pte_index * sizeof(u32);
+ 	ret = rk_iommu_map_iova(rk_domain, pte_addr, pte_dma, iova,
+ 				paddr, size, prot);
+ 
+@@ -887,7 +888,7 @@ static size_t rk_iommu_unmap(struct iommu_domain *domain, unsigned long _iova,
+ 		return 0;
+ 	}
+ 
+-	pt_phys = rk_ops->pt_address(dte);
++	pt_phys = rk_domain->rk_ops->pt_address(dte);
+ 	pte_addr = (u32 *)phys_to_virt(pt_phys) + rk_iova_pte_index(iova);
+ 	pte_dma = pt_phys + rk_iova_pte_index(iova) * sizeof(u32);
+ 	unmap_size = rk_iommu_unmap_iova(rk_domain, pte_addr, pte_dma, size);
+@@ -945,7 +946,7 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
+ 
+ 	for (i = 0; i < iommu->num_mmu; i++) {
+ 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
+-			       rk_ops->mk_dtentries(rk_domain->dt_dma));
++			       iommu->rk_ops->mk_dtentries(rk_domain->dt_dma));
+ 		rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
+ 		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
+ 	}
+@@ -1068,17 +1069,19 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
+ 	if (!rk_domain)
+ 		return NULL;
+ 
++	iommu = rk_iommu_from_dev(dev);
++	rk_domain->rk_ops = iommu->rk_ops;
++
+ 	/*
+ 	 * rk32xx iommus use a 2 level pagetable.
+ 	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
+ 	 * Allocate one 4 KiB page for each table.
+ 	 */
+-	rk_domain->dt = iommu_alloc_pages_sz(GFP_KERNEL | rk_ops->gfp_flags,
++	rk_domain->dt = iommu_alloc_pages_sz(GFP_KERNEL | rk_domain->rk_ops->gfp_flags,
+ 					     SPAGE_SIZE);
+ 	if (!rk_domain->dt)
+ 		goto err_free_domain;
+ 
+-	iommu = rk_iommu_from_dev(dev);
+ 	rk_domain->dma_dev = iommu->dev;
+ 	rk_domain->dt_dma = dma_map_single(rk_domain->dma_dev, rk_domain->dt,
+ 					   SPAGE_SIZE, DMA_TO_DEVICE);
+@@ -1117,7 +1120,7 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
+ 	for (i = 0; i < NUM_DT_ENTRIES; i++) {
+ 		u32 dte = rk_domain->dt[i];
+ 		if (rk_dte_is_pt_valid(dte)) {
+-			phys_addr_t pt_phys = rk_ops->pt_address(dte);
++			phys_addr_t pt_phys = rk_domain->rk_ops->pt_address(dte);
+ 			u32 *page_table = phys_to_virt(pt_phys);
+ 			dma_unmap_single(rk_domain->dma_dev, pt_phys,
+ 					 SPAGE_SIZE, DMA_TO_DEVICE);
+@@ -1212,15 +1215,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
+ 	iommu->num_mmu = 0;
+ 
+ 	ops = of_device_get_match_data(dev);
+-	if (!rk_ops)
+-		rk_ops = ops;
+-
+-	/*
+-	 * That should not happen unless different versions of the
+-	 * hardware block are embedded the same SoC
+-	 */
+-	if (WARN_ON(rk_ops != ops))
+-		return -EINVAL;
++	iommu->rk_ops = ops;
+ 
+ 	iommu->bases = devm_kcalloc(dev, num_res, sizeof(*iommu->bases),
+ 				    GFP_KERNEL);
+@@ -1286,7 +1281,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
+ 			goto err_pm_disable;
+ 	}
+ 
+-	dma_set_mask_and_coherent(dev, rk_ops->dma_bit_mask);
++	dma_set_mask_and_coherent(dev, iommu->rk_ops->dma_bit_mask);
+ 
+ 	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
+ 	if (err)
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
