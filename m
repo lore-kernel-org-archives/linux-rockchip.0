@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE184FD2D69
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65B52FD2D7E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EzasNbUgx768F2pEgfBERFOdSd1JN0k6WXQhnFJ9kQc=; b=KFA2UTT23wrPYD
-	9mdyfs7w3VYDSqRSZezav3rHdbAMgAp0q7G/XKBo3D0O9SCQ0jYXNHgny/2McuX/AYnlgtLHHlCji
-	6nQYl22cwSix4tsiRkQbpG6nsP/UnC1JCvqITya6/lUYbizsRmZQJLP6knFBLGcQg83ER2GGeO2ei
-	wughWTwNC2G1QA3fJ6beKB81ys9RZ6Eqy8nzR7lLtl2IHl9wrqFqQX5A6liQAfkilajD0RQaAfTlE
-	T5JmW2Ebm8dc93UOiM7/M9zXPKr/FoOza0CCjBuz7G+Pi9ZGvNVsi7S8GUR3NY/il9bT7AY82BWgp
-	wr9ZcALT6XrRKZOeaEgw==;
+	List-Owner; bh=1y3XURVKicrjYiC6QrOHm2oNkZtrCTMbQJ2WEkcT67c=; b=oBtfxBY4AP8uKi
+	iAgx54lxmUomiKBXUcQYmY8srhK7XYf+8hzQc94NoGcOIUwLTxo95Z0L0eWjy0miM7P3KTmYVeag+
+	e7LwPm/l8VDRTMl8tZEPTirUYmF4mubbZEMawCNUsJHyM8GRKErS/fPg72G0eQiMKtDAtqwG7+JQ8
+	7VlKxFdheBWd5aTYFtu9k9JmCROvtV24qZyuzxR9gQaQ2RcaDYGHT7FzwEkfs4LmR1HuNSbnrlaaI
+	2ANo9fh2kbSVi5SvR1P0q+35q2dmWWVjPHSwIWe1d6Osk+12blLH44c/YIYPkXLMk9nWKGf5X8lXX
+	wa4Ee2eTgHrJrlDXJnog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvjU-00000009Pos-35xh;
-	Tue, 10 Mar 2026 11:58:40 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1vzvjJ-00000009PPh-34QF;
+	Tue, 10 Mar 2026 11:58:29 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgo-00000009Kud-1inM;
-	Tue, 10 Mar 2026 11:55:54 +0000
+	id 1vzvgj-00000009Kms-19iv;
+	Tue, 10 Mar 2026 11:55:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=tH1cp5PCJpa6ROYs7l2uv7rYJsMuwswI+vu0oa+RdzE=; b=qeuKo3ZsPPu5jZSptXSAY1Eav9
-	Gaw+KYpVOSIN6ivTSnaJWxyE8mdCfiefEpti+MYYqQiY0oKr6sTFCOdwsIVifTFonYPGEuk70bkzp
-	ecJ9QoJeqX6x9DGxyfv7LZWN+4++XqJYA9fniW6OE8RvHbIFJVSSg1ZTuC8FBvmHjGjpXyDWBn2qI
-	qtgGciAbv0YZqP/hWgT30x4OiQh7cU0TY7tcrlM6b4Dkj98QLoBxdPS5Y+3Bdqo2/ZOZGKYR9Bm/r
-	n97fKwwLrWDjvQGKGXeECN6WMJGHp0jxq0MOxqfSusGAxWf1RllBjqILzkKjkOU7BMI0iJL/TGf1P
-	q3r2yzog==;
-Received: from mail.avm.de ([212.42.244.119])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgh-0000000EQCN-1tkx;
-	Tue, 10 Mar 2026 11:55:50 +0000
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=uE139u5zoua9TnetiXGtcYlFuz9R+VpXRn5VBlrCpnQ=; b=H+kym4x+kBs1D1inN5iW5E8f3L
+	ErEEAir1syofsovpY4uQykOfSGAodg7up+yhnzXBFI7ZGCANp0Em3fdvdjG8/icabb+7kiwIDPONc
+	S9eZPjvMyiQ5qUtfffCHf+qExgxLh/N0L1vaOOo6Sr6AJVnJA3rdmi5RpFPECLh6bL7qcYOBK/hXM
+	M6V4xuzlvaBCL7F8JgyHWs9DEjJEKXVYojOZX004SAvVLTMDvHX4i6ml43KTsY8JQ+59MtnNLEf2B
+	jcVWjKPpJF8nfkmzzT6Qr+XUpcFI2ZXtL1eO15InFHYA9OkiX+fXjTR6tib7Cvi+l9motAz2P+g6/
+	+ZHEiSjA==;
+Received: from mail.avm.de ([2001:bf0:244:244::94])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vzvgc-00000007lhz-2VM2;
+	Tue, 10 Mar 2026 11:55:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143730; bh=BZdZKAXpTi8WGNXN2fiMzetM/noYEEE0kBAl+EzvNzY=;
+	t=1773143728; bh=u291MpoQyOoQ8laFPzXzGEOIKYw0K1QgWZAkzpMyO94=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SoumYKRreG/py1h5mHUmmcf5MNhTA0IWVyuhwVtBQDsB3zjLeFZGYUpB8dmBQK885
-	 8zp8zOhWINTswvz/8Dpb4sCQeiaM8MeFzyXeYCejwMtQ6v6ZBfw76CXpeNeZINOkH+
-	 x4yAkEpkA6PhpBthZhWBkiZQBi3374fgQonGrnmw=
-Received: from [212.42.244.71] (helo=mail.avm.de)
+	b=ykq5xCtCLnpuisjh7yCkntpXVoj7+lenTonMwnNyj3HEswqyJb7tAewrRcpMAVrss
+	 htdRzuKIhEkY2u9z8HmZVLAVG9LXQEK5KzfFb+glv/mPDwZDOJWP8p2pGfwANfwg8Y
+	 cyh+Ai5Y49rs9bC9KZyLfdR4nR4N9Gt4Gg3G9z8A=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006b1-2367-7f0000032729-7f000001ca68-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:29 +0100
-Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
+	id 69b006af-e21d-7f0000032729-7f000001ba8e-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:29 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:27 +0100
-Subject: [PATCH 61/61] file: Drop unlikely() around IS_ERR_OR_NULL()
+Date: Tue, 10 Mar 2026 12:49:11 +0100
+Subject: [PATCH 45/61] thermal: Prefer IS_ERR_OR_NULL over manual NULL
+ check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-61-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-45-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -88,28 +89,30 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Christian Brauner <brauner@kernel.org>, 
- Jeff Layton <jlayton@kernel.org>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1020; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=BZdZKAXpTi8WGNXN2fiMzetM/noYEEE0kBAl+EzvNzY=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAamjmr2YH1D6NIv4bWMOoOgSjqlNw1AkTnEk
- z4zblGz3BCJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGpgAKCRA0LQZT0ays
- 24dkB/9I2IH2WVtNuAbc4pN8k/UWfzfn7IBk5SYldKbG4a3vAt2BCQOMLY6KBgHTT+SL+30NFE0
- eqhT72U09tRMvyWUaeodCCSJABvxL6Unq+gQWaX6/P1+X8+kVa/Fa0v8GHtiYqiopntbOsAjZBr
- sS0Bbptn0GuVsdoMNke4vQD0A9rA3xW5nWOgDpK1U8FjC9uaXfz1Bfzn2XQq/Me0fZtcNCJpNlZ
- qjNOLRSw3BZGb7IPqnUrcjHIuuNd6dYbs6wYHOgbyiibTqQrj6tp6SnoDxHnYU93V6GBh2lMfHt
- 9qSEynUbZNIYOnoqI2ah9KWLVKFkMsTrddsdp5JisL6z2WZS
+Cc: Eduardo Valentin <edubezval@gmail.com>, Keerthy <j-keerthy@ti.com>, 
+ "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Zhang Rui <rui.zhang@intel.com>, 
+ Lukasz Luba <lukasz.luba@arm.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1238; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=u291MpoQyOoQ8laFPzXzGEOIKYw0K1QgWZAkzpMyO94=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZv85jT8mK77P0DgzyoB3jbjqxnd52qin/43
+ 73TECCS4NSJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGbwAKCRA0LQZT0ays
+ 2zstCACwpYJlOocsZ3HBVMWCF0IhNq09wby5LkvAsENXavKVYKWH0lNK553mHyG2L0hqOjwgfmQ
+ 2R6ChfeUAdB1pLjTViMeeaIXq4AlyCRjEyAsVR/bQ5/US1JrFGhJzXarTPhODhjHiBoPAuzZhOB
+ 8fipmcjA1HLbJFaREcynXwQWmFtG9ouLXgkvipVtzsg9HQdQPWOUefHLkAAvMOKdk+hmDB4ECbB
+ NiykkLaAUziz7cfWSAQQRPcA1Gr6EaK8Vw6tF4Kl2S0zRlJlORdN+u8vB04XH9TW/DB1ISJvpll
+ cqhryBZ8g4FfGeREfmgUyiQqqlzXdeOdKWH1FU8uNB4YFH+q
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143729-96CB1E1F-80912B69/0/0
+X-purgate-ID: 149429::1773143727-7DE07F2F-8C4B41F9/0/0
 X-purgate-type: clean
-X-purgate-size: 1022
+X-purgate-size: 1240
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_115548_574322_09E8D38E 
-X-CRM114-Status: UNSURE (   9.48  )
+X-CRM114-CacheID: sfid-20260310_115543_708850_0EA54416 
+X-CRM114-Status: UNSURE (   9.67  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,35 +130,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-IS_ERR_OR_NULL() already uses likely(!ptr) internally. checkpatch does
-not like nesting it:
-> WARNING: nested (un)?likely() calls, IS_ERR_OR_NULL already uses
-> unlikely() internally
-Remove the explicit use of unlikely().
+Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
+check.
 
 Change generated with coccinelle.
 
-To: Christian Brauner <brauner@kernel.org>
-To: Jeff Layton <jlayton@kernel.org>
+To: Eduardo Valentin <edubezval@gmail.com>
+To: Keerthy <j-keerthy@ti.com>
+To: "Rafael J. Wysocki" <rafael@kernel.org>
+To: Daniel Lezcano <daniel.lezcano@kernel.org>
+To: Zhang Rui <rui.zhang@intel.com>
+To: Lukasz Luba <lukasz.luba@arm.com>
+Cc: linux-pm@vger.kernel.org
+Cc: linux-omap@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- include/linux/file.h | 2 +-
+ drivers/thermal/ti-soc-thermal/ti-thermal-common.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/linux/file.h b/include/linux/file.h
-index 27484b444d3155685cdbb89f546f26ef66e3e1b4..007b9b9d365a052c1c056e12571eaf4f8ef5a45c 100644
---- a/include/linux/file.h
-+++ b/include/linux/file.h
-@@ -163,7 +163,7 @@ static inline void class_fd_prepare_destructor(const struct fd_prepare *fdf)
- {
- 	if (unlikely(fdf->__fd >= 0))
- 		put_unused_fd(fdf->__fd);
--	if (unlikely(!IS_ERR_OR_NULL(fdf->__file)))
-+	if (!IS_ERR_OR_NULL(fdf->__file))
- 		fput(fdf->__file);
- }
+diff --git a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
+index 0cf0826b805a998abd0d4e2cfa6938de8a46c4f0..9218417e6d923ec370e032f5b91f9a839fd293f4 100644
+--- a/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
++++ b/drivers/thermal/ti-soc-thermal/ti-thermal-common.c
+@@ -228,7 +228,7 @@ int ti_thermal_register_cpu_cooling(struct ti_bandgap *bgp, int id)
+ 		return 0;
  
+ 	data = ti_bandgap_get_sensor_data(bgp, id);
+-	if (!data || IS_ERR(data))
++	if (IS_ERR_OR_NULL(data))
+ 		data = ti_thermal_build_data(bgp, id);
+ 
+ 	if (!data)
 
 -- 
 2.43.0
