@@ -4,48 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF1FEB1053
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:55:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA67EB1052
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:56:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=N1+1g1ZT6TehJVU5owYi2ywQE6r8h5ni5+YthXHGhwc=; b=f9A8vITwgAmtzW
-	6ag0MXtWsaQwkZ4yXJMJAoE21PGco2v+DHLMaFZvi7GINaaxTN9kn/rZ3Uu8yOSV3U4wOKrsD/Pkc
-	Sw42m+XZ3zxY2lmlSeuQ+6b+dD6A5FLNAKZj5V0SriIBCUvjgPFh6U+9u6aH4yRFokCUag94fdRhN
-	c/a6ausBjDiMcNKF/DNw3Ds0WCLx1q0a/7+er0tDKQNAxXLX0ShjxRZQpt3cOD71px4nvwvLP5Sc+
-	F9+j/H2Vs/NBc6dMKGKTNTWrlXIXE7aajEY/KaYDtlFmZC1TE6IwwWMxar6DbcgASW4iWk47PMVPI
-	yYSye9zR682sOohRFltw==;
+	List-Owner; bh=ilO7Bojll2kb46NROO7ZainwB5nGb9fH7S9igMBfqC8=; b=yzCW3jg2JxAKJr
+	jxxLIL+0g5EEFp82bpsMOKns1C3PNLK+HaEc/hwvoTV9GiR56ZyfN76ltgfm3KJrkBNa7CDx0Lzkn
+	YAyB3ELGKjnlZwPSHE0/AbbeLwhv3uaQ62oMQZwoLG2A46YMO38J9kxTw6SQ6HK+q6CFvCGADl4zk
+	3dUG262CX9yoS9QU1Ic16k89bic+94ugdgMtff8w1u+PiDO692bgwtA4ZoUqLuOLiguoHj2nbO/jr
+	lvljNqh4VpsCBMU96FH26w8ZY15ijq5vcZaTv6/sDJ79sAauyObxRVwWZnc49ss1qSk8ZwAnGgeCx
+	syT4T0GORVUD+8Mxa+4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgo-00000009Kwf-21dG;
-	Tue, 10 Mar 2026 11:55:54 +0000
+	id 1vzvgt-00000009L4H-1zOJ;
+	Tue, 10 Mar 2026 11:55:59 +0000
 Received: from mail.avm.de ([212.42.244.119])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgP-00000009KMF-0qnn;
-	Tue, 10 Mar 2026 11:55:32 +0000
+	id 1vzvgP-00000009KMH-1C38;
+	Tue, 10 Mar 2026 11:55:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143723; bh=pg0bcAlKCqGzZYxxvjTHT3BjuiImw/JCztrCxw0OaYk=;
+	t=1773143723; bh=DGbCaZBy1FpfvXwgzKpSCwa07WA8CY/Qb4IJHso0Te4=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=bIWX9HTo18B4ZE3sIquR8sbft3qzxzntZILxo7B74pgnu0rbeOHxAC7dlzZUeUKhf
-	 HyziuuxI8v1FJdI0XETgMVlTILYL71/sVzADfcPBmDn0JPtGKUshimXXHFg01f3FBK
-	 jYVNQFVbnSBvARzQ5cTWzBurkew0k16ZhIWvNTOE=
+	b=rc8Hq89Fb5fz3t9XGAV9DEbHVf5dfp7yp00Gf9MYpCbFElXUliv8K0TJ88EegoebM
+	 lMHRZL83a9AqjbASsPk3qVgNFrp4VheSaUprtXI9vxtui90WS9FjZFrbxSMEBA+AFT
+	 xc3KncdB3VgIsSI2EjPb3pbBX8z4jE0V+gxrfv0k=
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006aa-2367-7f0000032729-7f0000019cb8-1
+	id 69b006ab-2367-7f0000032729-7f0000019cc4-1
 	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:23 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:22 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:23 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:27 +0100
-Subject: [PATCH 01/61] Coccinelle: Prefer IS_ERR_OR_NULL over manual NULL
- check
+Date: Tue, 10 Mar 2026 12:48:28 +0100
+Subject: [PATCH 02/61] btrfs: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-1-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-2-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -75,29 +74,27 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Julia Lawall <Julia.Lawall@inria.fr>, 
- Nicolas Palix <nicolas.palix@imag.fr>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3942; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=pg0bcAlKCqGzZYxxvjTHT3BjuiImw/JCztrCxw0OaYk=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAXSiE/1KQSdimAccvhjPksfwMRe29ZGV0WmQ
- dc68UTm4wOJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF0gAKCRA0LQZT0ays
- 23P4B/sHBnCDcdVo4QHtyw/PgaWkSZpnGi/FADclDF/JNscwRsXCrFWzhKgn3xZ7GBKm9yEUANd
- kHYMMKsDVZ5Sq7xOrshFMfBSWpA+0BsCM8pKaxoj2QHBKIDA4UgN93hm4YvutplfF9/q6gdQOqR
- x0WpQkBc7InCLdKCwpXNhcL/HWVvBtzqT2nSOrbK1Rd5xcaVOko56aV82Fnst/bFUZLKttOBTCU
- bLU0LprdbSKp+PN7eyMO37tBs3H4QuuQgnRmZxd8L6mNXEFIpj0UqSFvKNrDWZBtTjurbiwItHZ
- +OYdOt4ryN9C08iNZEaNQULUxcRTzE4KumgPWWtIEShH9ICc
+Cc: Chris Mason <clm@fb.com>, David Sterba <dsterba@suse.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3017; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=DGbCaZBy1FpfvXwgzKpSCwa07WA8CY/Qb4IJHso0Te4=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAXVP8rQiO4oClcWoVpEQy4tTT6UufgJ8AjmW
+ meFZ085mAaJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF1QAKCRA0LQZT0ays
+ 26ZTCACM3Mi9LEMEAWgAR6v8SxUVk3um+/46scAm+wvRfrMWEFwlnMkQBbCGIGZUNkKB1Pk7uvR
+ q9d3fZ689cKMySmmjPCYjQ/WgGDVLcywEn6In35Jwnklhlj4dYJLSL6WxXsza+vlAV93TQDvaTs
+ OFlLEsZ2j+XY+f2mrUOcVwOk+301k/goYUacbLoVSw0YZnroo7kAB2acRVGhOGAOOiJoiVAdHNU
+ Yf8QURa2qrPqHMwGd4SQRV57t+Grw+zEItF3L0eYw7mf41TaJcLeP7Vo+0nFp2D9QdrMND4nUec
+ WhX0remRDcBywCJPWh7SmqRiZyiXDaIfp9JkUkUr5yx6Wacb
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143723-D8CB5E1F-6C1339D5/0/0
+X-purgate-ID: 149429::1773143723-80C85E1F-0AA4A985/0/0
 X-purgate-type: clean
-X-purgate-size: 3944
+X-purgate-size: 3019
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045529_723049_05E60E39 
-X-CRM114-Status: UNSURE (   9.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260310_045529_718643_5FCA5763 
+X-CRM114-Status: GOOD (  11.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,174 +111,81 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Find and convert uses of IS_ERR() plus NULL check to IS_ERR_OR_NULL().
+Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
+check.
 
-There are several cases where `!ptr && WARN_ON[_ONCE](IS_ERR(ptr))` is
-used:
-- arch/x86/kernel/callthunks.c:215 WARN_ON_ONCE
-- drivers/clk/clk.c:4561 WARN_ON_ONCE
-- drivers/interconnect/core.c:793 WARN_ON
-- drivers/reset/core.c:718 WARN_ON
-The change is not 100% semantical equivalent as the warning will now
-also happen when the pointer is NULL.
+IS_ERR_OR_NULL() already uses likely(!ptr) internally. checkpatch does
+not like nesting it:
+> WARNING: nested (un)?likely() calls, IS_ERR_OR_NULL already uses
+> unlikely() internally
+Remove the explicit use of likely().
 
-To: Julia Lawall <Julia.Lawall@inria.fr>
-To: Nicolas Palix <nicolas.palix@imag.fr>
-Cc: cocci@inria.fr
+Change generated with coccinelle.
+
+To: Chris Mason <clm@fb.com>
+To: David Sterba <dsterba@suse.com>
+Cc: linux-btrfs@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
-
----
-drivers/clocksource/mips-gic-timer.c:283 looks suspicious: ret != clk,
-but Daniel Lezcano verified it as cottect.
-
-There are some cases where the checks are part of a larger expression:
-- mm/kmemleak.c:1095
-- mm/kmemleak.c:1155
-- mm/kmemleak.c:1173
-- mm/kmemleak.c:1290
-- mm/kmemleak.c:1328
-- mm/kmemleak.c:1241
-- mm/kmemleak.c:1310
-- mm/kmemleak.c:1258
-- net/netlink/af_netlink.c:2670
-Thanks to Julia Lawall for the help to also handle them.
-
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- scripts/coccinelle/api/is_err_or_null.cocci | 125 ++++++++++++++++++++++++++++
- 1 file changed, 125 insertions(+)
+ fs/btrfs/inode.c       | 2 +-
+ fs/btrfs/transaction.c | 2 +-
+ fs/btrfs/tree-log.c    | 2 +-
+ fs/btrfs/uuid-tree.c   | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/scripts/coccinelle/api/is_err_or_null.cocci b/scripts/coccinelle/api/is_err_or_null.cocci
-new file mode 100644
-index 0000000000000000000000000000000000000000..7a430eadccd9f9f28b1711d67dd87a817a45bd52
---- /dev/null
-+++ b/scripts/coccinelle/api/is_err_or_null.cocci
-@@ -0,0 +1,125 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+///
-+/// Use IF_ERR_OR_NULL() instead of IS_ERR() plus a check for (not) NULL
-+///
-+// Copyright: (C) 2026 Philipp Hahn, FRITZ! Technology GmbH.
-+// Confidence: High
-+// Options: --no-includes --include-headers
-+// Keywords: IS_ERR, IS_ERR_OR_NULL
-+
-+virtual patch
-+virtual report
-+virtual org
-+
-+@p1 depends on patch@
-+expression E;
-+@@
-+(
-+-	E != NULL && !IS_ERR(E)
-++	!IS_ERR_OR_NULL(E)
-+|
-+-	E == NULL || IS_ERR(E)
-++	IS_ERR_OR_NULL(E)
-+|
-+-	!IS_ERR(E) && E != NULL
-++	!IS_ERR_OR_NULL(E)
-+|
-+-	IS_ERR(E) || E == NULL
-++	IS_ERR_OR_NULL(E)
-+)
-+
-+@p2 depends on patch@
-+expression E;
-+@@
-+(
-+-	E == NULL || WARN_ON(IS_ERR(E))
-++	WARN_ON(IS_ERR_OR_NULL(E))
-+|
-+-	E == NULL || WARN_ON_ONCE(IS_ERR(E))
-++	WARN_ON_ONCE(IS_ERR_OR_NULL(E))
-+)
-+
-+@p3 depends on patch@
-+expression E,e1;
-+@@
-+(
-+-	e1 && E != NULL && !IS_ERR(E)
-++	e1 && !IS_ERR_OR_NULL(E)
-+|
-+-	e1 || E == NULL || IS_ERR(E)
-++	e1 || IS_ERR_OR_NULL(E)
-+|
-+-	e1 && !IS_ERR(E) && E != NULL
-++	e1 && !IS_ERR_OR_NULL(E)
-+|
-+-	e1 || IS_ERR(E) || E == NULL
-++	e1 || IS_ERR_OR_NULL(E)
-+)
-+
-+@r1 depends on report || org@
-+expression E;
-+position p;
-+@@
-+(
-+ 	E != NULL && ... && !IS_ERR@p(E)
-+|
-+ 	E == NULL || ... || IS_ERR@p(E)
-+|
-+ 	!IS_ERR@p(E) && ... && E != NULL
-+|
-+ 	IS_ERR@p(E) || ... || E == NULL
-+)
-+
-+@script:python depends on report@
-+p << r1.p;
-+@@
-+coccilib.report.print_report(p[0], "opportunity for IS_ERR_OR_NULL()")
-+
-+@script:python depends on org@
-+p << r1.p;
-+@@
-+coccilib.org.print_todo(p[0], "opportunity for IS_ERR_OR_NULL()")
-+
-+@p4 depends on patch@
-+identifier I;
-+expression E;
-+@@
-+(
-+-	(I = E) != NULL && !IS_ERR(I)
-++	!IS_ERR_OR_NULL((I = E))
-+|
-+-	(I = E) == NULL || IS_ERR(I)
-++	IS_ERR_OR_NULL((I = E))
-+)
-+
-+@r2 depends on report || org@
-+identifier I;
-+expression E;
-+position p;
-+@@
-+(
-+*	(I = E) != NULL && ... && !IS_ERR@p(I)
-+|
-+*	(I = E) == NULL || ... || IS_ERR@p(I)
-+)
-+
-+@script:python depends on report@
-+p << r2.p;
-+@@
-+coccilib.report.print_report(p[0], "opportunity for IS_ERR_OR_NULL()")
-+
-+@script:python depends on org@
-+p << r2.p;
-+@@
-+coccilib.org.print_todo(p[0], "opportunity for IS_ERR_OR_NULL()")
-+
-+@p5 depends on patch disable unlikely @
-+expression E;
-+@@
-+-\( likely \| unlikely \)(
-+(
-+ IS_ERR_OR_NULL(E)
-+|
-+ !IS_ERR_OR_NULL(E)
-+)
-+-)
+diff --git a/fs/btrfs/inode.c b/fs/btrfs/inode.c
+index a11fcc9e9f502c559148cf33679014fb83b0d3b0..7c26a0bf56bf7309e2ce8256854d760b2d64b16a 100644
+--- a/fs/btrfs/inode.c
++++ b/fs/btrfs/inode.c
+@@ -4683,7 +4683,7 @@ static noinline int may_destroy_subvol(struct btrfs_root *root)
+ 	dir_id = btrfs_super_root_dir(fs_info->super_copy);
+ 	di = btrfs_lookup_dir_item(NULL, fs_info->tree_root, path,
+ 				   dir_id, &name, 0);
+-	if (di && !IS_ERR(di)) {
++	if (!IS_ERR_OR_NULL(di)) {
+ 		btrfs_dir_item_key_to_cpu(path->nodes[0], di, &key);
+ 		if (key.objectid == btrfs_root_id(root)) {
+ 			ret = -EPERM;
+diff --git a/fs/btrfs/transaction.c b/fs/btrfs/transaction.c
+index 7ef8c9b7dfc17a5133b6d2dc134e288975ed98d1..40b83037725033d3178dc3fc2c1e347ad2c597f7 100644
+--- a/fs/btrfs/transaction.c
++++ b/fs/btrfs/transaction.c
+@@ -1737,7 +1737,7 @@ static noinline int create_pending_snapshot(struct btrfs_trans_handle *trans,
+ 	dir_item = btrfs_lookup_dir_item(NULL, parent_root, path,
+ 					 btrfs_ino(parent_inode),
+ 					 &fname.disk_name, 0);
+-	if (unlikely(dir_item != NULL && !IS_ERR(dir_item))) {
++	if (!IS_ERR_OR_NULL(dir_item)) {
+ 		pending->error = -EEXIST;
+ 		goto dir_item_existed;
+ 	} else if (IS_ERR(dir_item)) {
+diff --git a/fs/btrfs/tree-log.c b/fs/btrfs/tree-log.c
+index 780a06d592409b05fb42dc8079b019d23fe0cdfa..2e07ae393cf9d16f562047dd4cbfd7b4b9f2952e 100644
+--- a/fs/btrfs/tree-log.c
++++ b/fs/btrfs/tree-log.c
+@@ -5750,7 +5750,7 @@ static int btrfs_check_ref_name_override(struct extent_buffer *eb,
+ 		name_str.len = this_name_len;
+ 		di = btrfs_lookup_dir_item(NULL, inode->root, search_path,
+ 				parent, &name_str, 0);
+-		if (di && !IS_ERR(di)) {
++		if (!IS_ERR_OR_NULL(di)) {
+ 			struct btrfs_key di_key;
+ 
+ 			btrfs_dir_item_key_to_cpu(search_path->nodes[0],
+diff --git a/fs/btrfs/uuid-tree.c b/fs/btrfs/uuid-tree.c
+index f24c14b9bb2fd7420b06263a5a0c4b889a859bc6..c497b287f3418933e532903b326b969416ae22cb 100644
+--- a/fs/btrfs/uuid-tree.c
++++ b/fs/btrfs/uuid-tree.c
+@@ -478,7 +478,7 @@ int btrfs_uuid_scan_kthread(void *data)
+ 
+ out:
+ 	btrfs_free_path(path);
+-	if (trans && !IS_ERR(trans))
++	if (!IS_ERR_OR_NULL(trans))
+ 		btrfs_end_transaction(trans);
+ 	if (ret)
+ 		btrfs_warn(fs_info, "btrfs_uuid_scan_kthread failed %d", ret);
 
 -- 
 2.43.0
