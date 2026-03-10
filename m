@@ -4,72 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09DB2FD2D71
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 12:54:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24055FD2D79
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 13:22:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AIFgZzwDrD+IcqrSv5JqpiZLwfs7rtQPGLxD3Jtam5I=; b=Z30LwuZJb1ZzUa
-	K85Hfj1vGX8JsmoFuz83V6RXc0Gd9fRRXvx4S83Gy+32/tuxBqB7lPgRvlz+1mTXkmlkCUra7rwP9
-	Ug04SBDsDjm1SivDTW/AhJoalVT86j+RrYqOH+A3GmKC8rvgq9bQ5ymdtTUj/DrSHKSrqVw8h7hTj
-	leKH3iX64MW/3k350V9nBuVKKt6LppT2WzJ5M+EbGQHOotnaVgnLZaUAWOTeQLvwbn5TTlyUDpjwI
-	q50aFo5Q9CaDiusH6cYVpnS7VMB9VueCHSd4dzCjjb1F3QcYvvCkngR8pv0FAyMsMaO1EqTcZwYyK
-	kryOkY8LQcC1DDw6ikyQ==;
+	List-Owner; bh=9vmaIF4mPqC5/csB2Q6KI2k+MRmbDXIWN1SWuuvKP/U=; b=UaRtI3jD1nZAvf
+	qr3FRB13XDb/ipeaHJ3Tx9rhw9oFMR2EJIDK3R/liMINYxhaTJVsPfW3svccj1lwBl93/zVuG31Ig
+	XrGbpfvYVynVYK1ec03EYGujqwiZmqTCGJozIq3LISB+FcA1UN7Gv4MxcUfnjPOCWd9ndTF4BQBcK
+	Lm0Ld+XeunFonROtZo7AsoccF2e64ORPZveR+L9p4KoRLjaN1ZzgsSiqkhq8jidScprNFYh0cV5cC
+	bO+rXEqCCGfJ0/Mac+4eH9urQoqDceHIYCSWh3L14tGIQDYnTt1n7kKUYC2Kj2LyhCBcwwfyeCQuo
+	0dPdYmjnT++Vv1tlOFNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzwbE-00000009Xmc-1nQl;
-	Tue, 10 Mar 2026 12:54:12 +0000
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+	id 1vzx2K-00000009aIl-0ufI;
+	Tue, 10 Mar 2026 13:22:12 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzwbB-00000009XkW-0Pot
+	id 1vzx2G-00000009aH9-28tY
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Mar 2026 12:54:11 +0000
-Received: by mail-pl1-x629.google.com with SMTP id d9443c01a7336-2aeab6ff148so1645ad.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 05:54:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20230601; t=1773147248; x=1773752048; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=mm6hm+LHoMGo5Ew01sq1dP9YSITnoqIDxYFDqmtgvh0=;
-        b=vNZVR6oHwfj80xd6FDiXZ5Oe1oOxo70b55yv0kZzy/YJ3CNoaTDac6mOcWuRAc9KdB
-         4Dhh/+cWFIyzhg+zPdz+xQTBHd3RmeuYsei1rGN8YXL6OlxmsreixnRgObpD9zCIFYxZ
-         UK3gfO4fWDgtXfD7SOXFEcKlDESgWW+A2KzxRzHC9VaENuuEbbkB48LLjCqxIBaewBjg
-         Dvel62z6lDpTpD59e1X6vx2sMK2Kb2LKxlXU3WjceaXjEroVSB5vmnvsS9waAcKhXeMh
-         dQ1JQEqfHTzxKMBROv6M9E2qVd8ksMXz9n5kagJL/lL/I9DWd2WQhZZrvecg0QdKF/9c
-         Iwpg==
+	Tue, 10 Mar 2026 13:22:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1773148926;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5/adDEbR57gUpYJcJq84OoDVxrrM3xMPFmZCRo0jKXM=;
+	b=ADQQpd+bpcMvyiI6BuK6I/AtlFPVjRaT1jbvm8x0bcg2sn4Mv+l/q+wGsOaa7zGZavpvJL
+	HOw6n0NTrJxN8BVrJlzy+3Oyq/AicE10gafpjzfnHFVMImjvlOy3qRSEO7jpexZVWETsUQ
+	RoRPrXnJkd5ZbUZ0X+x9wM3CIJYSD9c=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-211-dYg7_rAWNiaCJ0AV9GU8CQ-1; Tue, 10 Mar 2026 09:22:05 -0400
+X-MC-Unique: dYg7_rAWNiaCJ0AV9GU8CQ-1
+X-Mimecast-MFC-AGG-ID: dYg7_rAWNiaCJ0AV9GU8CQ_1773148925
+Received: by mail-qk1-f197.google.com with SMTP id af79cd13be357-8cd81506677so1375227485a.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 06:22:05 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773147248; x=1773752048;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=mm6hm+LHoMGo5Ew01sq1dP9YSITnoqIDxYFDqmtgvh0=;
-        b=C9kRZmVBHhzuyjiRKiLuHBFVnvgXCrm06LniA6GfIDm3Ybw2Vy+MJmkwrq04Q+Cqwg
-         S6mUnz/fQVf/hIHxLv4JPez0rNDiDB9/aIVJA2jnp8dToyk/WFi/YRia3aD/zwKfBep9
-         sV53mOlUeVC88DYb6OlyZoJigmFm+3JjnseN52DIHz1SQ7HeicUb2Biei4Ar6hFG6vf6
-         pwBF9wch4dWbIKrIB5qsSqrlyfc+lwIlOitjWzeHHNl3SnEYC0E5T4f0AgGkf2pJNZHx
-         PfFDwmoAx6gqtEI/hw0T5nrolRunkDIxfKALR3L3oWskqWyp0RwuMlwnsv7TN713ceiN
-         5K4A==
-X-Forwarded-Encrypted: i=1; AJvYcCWJQ4ngVXptgJSkJGG/7qZszRykynyizJSx6PZxDdFG8AWnT0JS+U+0+r2e1/aWJO3/4Ea82pKfVe25IxyuIA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz0Y9T7+WxJQTVnRGpLS+LZwO1WNaCqhu9r9incb+OpljZtUF7M
-	mSoNuTaKrxwaOFZJUZjrLxX3uHQDwtbZVWJaD6gYfVf3qC0IYgUaOXaqiH0wr1vVcw==
-X-Gm-Gg: ATEYQzxuSiE/PLQlZLC9XjrtUx7J3zCAiaTaqEL81dAt0Pp8rxofxunF3PKGtn7W3AJ
-	hLXG1Ryhdycmrb03m2y13JNYt7sbrkUXnKRKPAY+z8DaH9Q+zhfAsj1KkjkaY8jUy1chF/iFQvS
-	OYLLoFIAPVtztXunAdd1jSbU5E1ENEZ/VdoKCukqAHy+Q2UmC/fnfrC2kZ9ip9iHIAvKGy7K3Xk
-	deSp5kyzOw/ayOizI6rOSRP0hqVqSplFeJNmUmaKOkt961JiOjAURMdbeoCTwu9NL/HsFflsZmp
-	+Jygi8pV41AtsLxiFnfonEXdwFptTHz0BFAIF42tuv/LdO7KmHpwU1EAnhN5n2yEBXEPv1KPGkU
-	WM2LHr1cXIeri766+5PCi3wc6PCl/VVImwGg5c8MBvSiFKSu3adRAyOCLHmY0mFcJXb1U8vcHvP
-	WMi4tRA9ips9F+efrVAIAU29MIvD5Rx5+qBMgLZZVy3BRCdCeaZV5j7eBLAg==
-X-Received: by 2002:a17:902:ebd2:b0:2ae:45bb:bc4e with SMTP id d9443c01a7336-2aea30ebe48mr3008685ad.24.1773147247400;
-        Tue, 10 Mar 2026 05:54:07 -0700 (PDT)
-Received: from google.com (10.129.124.34.bc.googleusercontent.com. [34.124.129.10])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c739e0cb73dsm12445679a12.11.2026.03.10.05.53.57
+        d=1e100.net; s=20230601; t=1773148925; x=1773753725;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=5/adDEbR57gUpYJcJq84OoDVxrrM3xMPFmZCRo0jKXM=;
+        b=MFgzVIcq5anh2F/yfUvNVe+drNzCfBoldN/oMTnMPXrg4rfzyikeKcP+bGppiDyo1q
+         BHeH5W21TE6VJJsICkWfb1Y41nvOgvDUBafpHzXjhVB85sO1hClHxbonCFztwKyvz49h
+         JaDW80umxLb7aaJnartoYB8buUZm1QBr9fDpjpiIYC2X+TTsev4UX4PIgZlHQ+IiANiY
+         N3VsLdlHUXV06ZqAHglgWc6GoNNZSP2WMls3oodFsxHAQj2IjnoQRLk/mMphwRBQNKI9
+         Vv/RxZWgPcnYueKi7bCJwKVOCGMWrVtq+nqIRQsGEi3Xgd1VIkFkrnCatCeNQtG0XkRZ
+         9iJQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWV+MDZRjnNlsJPvvk75kLMcHjEsDgEDwd8iggToofCnOVVBu+panRbsYH6VRaC93oPsiPEv6cO2CvcOR6SWg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyGsoARivSUbHXdffc2u1JbiET8gwa/btccBYVv/s44pYLBo8M/
+	CmpVLcuULUgpOv058NWX8ZjoaI+Mk3vZWVCqQnenRqVxvID4DDONZ/gsDpVE/tkuAk71fMYdL5b
+	7cZ+aDRRBvno8SJ2oRFyZg86VBDJkfBfyV63b84Cq8Uq5oINfWWLbqyAii6HCjAbbTp/tzMFCHg
+	==
+X-Gm-Gg: ATEYQzyYaaLXt0NSxMymoTupVDzEmq0iuRl0Q495THVLDo4MhufuDV4OhhZTzmtKsEa
+	EZfbEx7cxwSSiEOpVkj2RShomATf0u/GNsRHg3yBlEkzDXD9BIEGYPxjlxApCfBmaGL8iyr8kcM
+	T7s45iAMK6rShlnEuIaEPODtP7AQqpT/EYieAr9noL0Fr5MH5HsMKwR0mKWbFDxGdRUv5CLTtKh
+	tQfi2Ih7FnH2zOHOG2MCdaIkCJmo1KFrOXEd38X1P4J1TJBAhXQnjunnPnsF/N1G45Ha6WKTS0H
+	vaSMnymOWDoL9B3ik+XUm/l8pzvq0YZ/MQB41dAO/n3zs9FGjsZ0vawZ6A6lYpBKdyifavWWbO6
+	SXrZ+ddCCftsmQGOsYZjUr+ykakCBZ+UAgLLnv20Gz8qSW3nQ2Rkw7WyV
+X-Received: by 2002:a05:620a:3713:b0:8ca:1240:4991 with SMTP id af79cd13be357-8cd6d4f9469mr1830786285a.45.1773148924711;
+        Tue, 10 Mar 2026 06:22:04 -0700 (PDT)
+X-Received: by 2002:a05:620a:3713:b0:8ca:1240:4991 with SMTP id af79cd13be357-8cd6d4f9469mr1830766185a.45.1773148922638;
+        Tue, 10 Mar 2026 06:22:02 -0700 (PDT)
+Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cd8576db0esm474754485a.47.2026.03.10.06.21.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 05:54:06 -0700 (PDT)
-Date: Tue, 10 Mar 2026 12:53:54 +0000
-From: Pranjal Shrivastava <praan@google.com>
+        Tue, 10 Mar 2026 06:22:01 -0700 (PDT)
+Date: Tue, 10 Mar 2026 09:21:58 -0400
+From: Brian Masney <bmasney@redhat.com>
 To: Philipp Hahn <phahn-oss@avm.de>
 Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
 	bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr,
@@ -98,17 +105,24 @@ Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
 	ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
 	sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
 	tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev,
-	Alex Williamson <alex@shazbot.org>
-Subject: Re: [PATCH 46/61] vfio: Prefer IS_ERR_OR_NULL over manual NULL check
-Message-ID: <abAUYvx6VEdSmInm@google.com>
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Thomas Gleixner <tglx@kernel.org>
+Subject: Re: [PATCH 56/61] clk: Prefer IS_ERR_OR_NULL over manual NULL check
+Message-ID: <abAa9vQg4BSxl1BJ@redhat.com>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
- <20260310-b4-is_err_or_null-v1-46-bd63b656022d@avm.de>
+ <20260310-b4-is_err_or_null-v1-56-bd63b656022d@avm.de>
 MIME-Version: 1.0
+In-Reply-To: <20260310-b4-is_err_or_null-v1-56-bd63b656022d@avm.de>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: ei5a8yucawwXackf5URMfARCxd4MAa6_dheVP7cCaLU_1773148925
+X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
-In-Reply-To: <20260310-b4-is_err_or_null-v1-46-bd63b656022d@avm.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_055409_153199_B70D4B51 
-X-CRM114-Status: GOOD (  16.75  )
+X-CRM114-CacheID: sfid-20260310_062208_742854_5830479A 
+X-CRM114-Status: GOOD (  11.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,43 +139,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 10, 2026 at 12:49:12PM +0100, Philipp Hahn wrote:
+On Tue, Mar 10, 2026 at 12:49:22PM +0100, Philipp Hahn wrote:
 > Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
 > check.
 > 
-> Change generated with coccinelle.
+> Semantich change: Previously the code only printed the warning on error,
+
+Semantic ...
+
+> but not when the pointer was NULL. Now the warning is printed in both
+> cases!
 > 
-> To: Alex Williamson <alex@shazbot.org>
-> Cc: kvm@vger.kernel.org
+> Change found with coccinelle.
+> 
+> To: Michael Turquette <mturquette@baylibre.com>
+> To: Stephen Boyd <sboyd@kernel.org>
+> To: Daniel Lezcano <daniel.lezcano@kernel.org>
+> To: Thomas Gleixner <tglx@kernel.org>
+> Cc: linux-clk@vger.kernel.org
 > Cc: linux-kernel@vger.kernel.org
 > Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
-> ---
->  drivers/vfio/vfio_main.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-> index 742477546b15d4dbaf9ebcfb2e67627db71521e0..d71922dfde5885967398deddec3e9e04b05adfec 100644
-> --- a/drivers/vfio/vfio_main.c
-> +++ b/drivers/vfio/vfio_main.c
-> @@ -923,7 +923,7 @@ vfio_ioctl_device_feature_mig_device_state(struct vfio_device *device,
->  
->  	/* Handle the VFIO_DEVICE_FEATURE_SET */
->  	filp = device->mig_ops->migration_set_state(device, mig.device_state);
-> -	if (IS_ERR(filp) || !filp)
-> +	if (IS_ERR_OR_NULL(filp))
->  		goto out_copy;
->  
->  	return vfio_ioct_mig_return_fd(filp, arg, &mig);
-> 
 
-Reviewed-by: Pranjal Shrivastava <praan@google.com>
+With the minor typo addressed:
 
-The cleanup alone looks fine, but I'm not sure if the maintainers would
-be happy about the tree-wide spam, since each patch might go through a
-different tree. I'd wait for Alex's preference/ack on that.
+Reviewed-by: Brian Masney <bmasney@redhat.com>
 
-Thanks,
-Praan
 
 _______________________________________________
 Linux-rockchip mailing list
