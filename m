@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F63AFD2D6E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D0BBFD2D6D
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,54 +12,53 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=P5q4sd/BXvC2GeXBHeuK6YLUwyQE3AQLuba8L7TEjA4=; b=u1yTHgc4jPHfMN
-	bDcss+i7akbSxPQZNzctBmLoY/FkLJ+j32EsP1hOpbwqkd2pEHqgH2M7QIv8K4ayPMQPNRaQT/NlC
-	hC9UTlo6ZWF/Mc/A8zcrmuS2F8i33I/YRKSmsiuIZ7BAW9Y8FEXXb/5U492Xmk6CnJnB+DmxfQF60
-	U8otmLonE+eZ+7yw9zfPpjOAfwfgM7m8xNqH9ZBIWe1IbxOjad5LNUe6bm/7yrtaSCmPAt2hQ72a8
-	iCSD7CVbIUScq465maRhovLiNLSfCwuYuiQiYIH4vb3vglrnVipzRb809LXZszayjL657Al0Xf8Ko
-	Cjiuy5Ro1Oo2o+P+K8bw==;
+	List-Owner; bh=Ba343ICr7xAujNiY5bVqavpSYH2TwdB+q8SDeINqeGA=; b=zYhYsBF75zNa+N
+	UPCXMAVwE7QmOA+M754HqnmO4Vn8/q0+Hb9+UtjQmMk/TS04lsbEcIXT420MH459rUs3OdhLBKJhO
+	rwtLyhwpHd66AcO+XlCg5R7kI2zpbADYI5SrP3NnUDIgCS2wffgcGxHeYiKVK8jayE2YPJ9WF2jyj
+	pIG4A9xcd/kB22bo0Hjhz61FvBfHE/3p/3vaJ8hSUivuhvGLvszd/o9OvRvk9Tj83VF/ODM3AC4TC
+	GsX79BcmqIOTaOHDyzT8QoGERwR7lhPOPlT+UHcWXUnwfYmtjkmo2dCU7Ywan5qQcJiO7zTCLn+XP
+	4+vTvjgpZ7SHbThKv5VA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvj4-00000009Ovg-1MWf;
-	Tue, 10 Mar 2026 11:58:14 +0000
+	id 1vzvj3-00000009OuT-3Vyf;
+	Tue, 10 Mar 2026 11:58:13 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgg-00000009KiG-43CL;
+	id 1vzvgh-00000009KiV-1J4B;
 	Tue, 10 Mar 2026 11:55:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=yJWPVNJOB+im5Jg+MQkNUsULwxUOA2b7ZO3AQfQfYXU=; b=DNpRPCzid73I/fJu5jgUsb55vz
-	ns7pGU08ZIqouKkCBTjLuWN32p8r+/2aFbXwEQylN+9/cX4i6V4nKfpLs08Wir4K6XhhjQdSX1e5p
-	A0HR7rfkMS2uate3XDVNiwLFkLGbWg0Izagra5RiyrSivfo4wSx6+LE/wwQOx0L3c1+PGFD9FeblO
-	DLkkE6kXZhXOzmIl4MKmXqzAQ5o0WHlNvf425fInX3lOSBX2F2UV+mfAwBn1GdTgyu1jVgI8085FF
-	QSKeAvGknVdXJ+qXRGY6aoX5BrzJUcUiI6rgPv5ntBxsE/168a2dIUTgTFUNTjksZ9+OS0ddaZI16
-	w/xZoU7A==;
-Received: from mail.avm.de ([212.42.244.94])
+	bh=lrRXsh0QP3uQBo+fRrmRSbxajRBSUkQFtB6HeorUnAU=; b=hPpjziF9GJRjUDVkPIO6gnI+vH
+	MLxTqJBYaGNx1o9UAHOfe9lYw7JgipGtMGPsmvfrsnjKc1C3KReIeInEWuDPOoNsCOEmrYPMuHYSC
+	+yGFAlFSJS23HLi4lpQR92qTepYYAhhAPg3iMmkzp/F5CSZeXAYOAn32/dIXZDv8riVwKGpEb4dyg
+	eozeKS8xInSniWQnq6//fMoIEGAiYLJz+xOKlXJNb26kBY2ee8qb7053QASF4gjCtOac9LYJgvJ7N
+	cff4UhJ/UESrzRxBG0TQ9GQAEVWus7iVQV27Y4aEq01weFaxxHgI9lCrzZMBWQnx8ENPUT23EMNVU
+	q+XkjfJw==;
+Received: from mail.avm.de ([2001:bf0:244:244::94])
 	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvga-00000007lf9-0vgj;
-	Tue, 10 Mar 2026 11:55:42 +0000
+	id 1vzvga-00000007lfA-1NM3;
+	Tue, 10 Mar 2026 11:55:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143727; bh=tuKkFaje3/67N7+EgH43toSki2nfSyvowNLdXGdESEg=;
+	t=1773143727; bh=OG5VAiuGyzJgANNFmhgEdiJnvt9YJlG2KvCxr7UGm4k=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=r+Bm3oJS8/+32ZYGJ4UVxlrt7f9UtpWnT+67BiHxtliz59uxMI5sUh7+OdyJZrU84
-	 oJKKVCJPxENp4cyPplGnJOyhV2Rya3i4aDtjbyK8DFhZzMmI64bq0RbYNiKKndHNeg
-	 obwacGvLiuG6y1WbSPM0lPtBbQUvyegsd7ixN734=
+	b=JAdZI+FehAdfAN09twwfZHH6jDfh071cQKzCXwtIuoVqEEpOJJcnao39LQt63y4t/
+	 7qNOwbcUlaXsU8odvsi+CNxHeM67JZXi3Ip3hqOsWbsrOWQmqT6Wf8Y7+vMqlEol/o
+	 yXX6+U61Z17F5K3SatxnKB4/2w/h4/gfhRTup+tE=
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006af-e21d-7f0000032729-7f000001ba70-1
+	id 69b006ae-e21d-7f0000032729-7f000001da46-1
 	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:26 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:08 +0100
-Subject: [PATCH 42/61] pmdomain: Prefer IS_ERR_OR_NULL over manual NULL
- check
+Date: Tue, 10 Mar 2026 12:49:06 +0100
+Subject: [PATCH 40/61] phy: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-42-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-40-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -89,27 +88,29 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Ulf Hansson <ulf.hansson@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1155; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=tuKkFaje3/67N7+EgH43toSki2nfSyvowNLdXGdESEg=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZkDlGRZW4plkDdO/q/5zI0Z5Mh3aiEDX5Kr
- HkD8tDHTjSJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGZAAKCRA0LQZT0ays
- 22gFCACOZ3xbUn7DVys9f0zhKrFg1046b9jGtTeftFIaZ4sDTERX+NnuADwMWlcQi8MAEiX00cR
- w7aw6Pu5UwlIY4a//xAXQOD0Vq3vR2NLs/mYfOXBEyx8uBUm6hnHex2/TV3VaisJJ0c/nDfxiVS
- PU0p02U0cgmDRMbp/b1fSLFHzNrm+hO/7LNRD9bLaqTjGpZUScyufroKDOn5G4AkEBqNVNB17jO
- VAtR0IXhgFW2Uuc0XEKCg+KHshTFKSAPvKPonnlie/OWxc6MLfJtX+Szyr9D2UStWTYIluWdysV
- 1svYEoMi2X+1/dEnsAW5QR9/oHEWtkGT2aoEyJlhPvAZyp4m
+Cc: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=833; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=OG5VAiuGyzJgANNFmhgEdiJnvt9YJlG2KvCxr7UGm4k=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZdX7BuYNUIT5gp+HdcH5WlcPs/igfKSrsAT
+ PQS+sW6TAKJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGXQAKCRA0LQZT0ays
+ 2/NeB/9cvi9goE8RWfPmZWHWl3KHJ0IK1niSHPDuRHNTDiNM+uFP9eXaUfJVBsSlG1Wrvh2+TJe
+ E9N4PWX9zPPmgAp5c7pkgWQbvcINWsfQ1xzs1yuBHGsqvNtAKAsQzgwmgDGwuWvubUvPlUOVRcp
+ yVNORqT1RMYwWcOYu1sgBDKncm/OAEpn290nhfRgs1yTJZoXMdM3Qo3tnRyHHZBM6KJSQfrTcAN
+ m09EN+RMlpdZuT4NVV6TCBCJKyPJuHYu9on1qpX149qmJ5tp+DIgif8s3ztCwKsBs1+MXzsdDLr
+ s9Zz5Ncp+UQA6p8+C4T8PIAGabbdKYRKG/eLYl2cB6wt3ozJ
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143727-E2654F2F-96715D38/0/0
+X-purgate-ID: 149429::1773143727-8EE65F2F-4D55CEAD/0/0
 X-purgate-type: clean
-X-purgate-size: 1157
+X-purgate-size: 835
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_115540_309811_DCCD4963 
-X-CRM114-Status: GOOD (  10.08  )
+X-CRM114-CacheID: sfid-20260310_115540_770416_9E645C50 
+X-CRM114-Status: UNSURE (   8.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,30 +132,28 @@ check.
 
 Change generated with coccinelle.
 
-To: Ulf Hansson <ulf.hansson@linaro.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-pm@vger.kernel.org
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-rockchip@lists.infradead.org
+To: Vinod Koul <vkoul@kernel.org>
+To: Neil Armstrong <neil.armstrong@linaro.org>
+Cc: linux-phy@lists.infradead.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/pmdomain/rockchip/pm-domains.c | 2 +-
+ drivers/phy/phy-core.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 44d34840ede7a8f483930044c96042dda9290809..4352aa40298a3bcfde90811258bac20a86068c10 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -746,7 +746,7 @@ static int rockchip_pd_attach_dev(struct generic_pm_domain *genpd,
- 	}
+diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+index 21aaf2f76e53eb1c63f1ffd2217f767c2dab5c3a..6416e9097caab56f7ba663777eba2c06291dffc5 100644
+--- a/drivers/phy/phy-core.c
++++ b/drivers/phy/phy-core.c
+@@ -699,7 +699,7 @@ EXPORT_SYMBOL_GPL(of_phy_get);
+  */
+ void of_phy_put(struct phy *phy)
+ {
+-	if (!phy || IS_ERR(phy))
++	if (IS_ERR_OR_NULL(phy))
+ 		return;
  
- 	i = 0;
--	while ((clk = of_clk_get(dev->of_node, i++)) && !IS_ERR(clk)) {
-+	while (!IS_ERR_OR_NULL((clk = of_clk_get(dev->of_node, i++)))) {
- 		dev_dbg(dev, "adding clock '%pC' to list of PM clocks\n", clk);
- 		error = pm_clk_add_clk(dev, clk);
- 		if (error) {
+ 	mutex_lock(&phy->mutex);
 
 -- 
 2.43.0
