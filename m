@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF9A2FD2D79
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2C45FD2D7A
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,53 +12,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SleWfw20ohKTUHkr0MpUkggihtbXhU6x1uR/dfU8UxQ=; b=prboC806NLb95S
-	HEamFBYiRNK+J7fG4DlJftvaXfoetA6DD/j37NBLcidRxBvWxK5dFikdqi7veBbeV8fCw1Gj5OWvW
-	fz+0DZFyIpTzXDCRZGRsMbx0rZnqDu4j/PldX3cOYmDyxZ0kX8BquUy6VKtxC9ONDbwAKZW+pwEkq
-	RrJNWNhh+FZ+z0AOL9SpT+IagG6UmNY0aEHeO8DjH1e4TTRU/9pV2eY52vVV+8AwfLtjocy1HIBEg
-	0vWBFlC5E0Xonbb1BnEN+2xSOuxNAhhRS7mPaM3C8afs4UzM2hgG1fSMdyviL3W0jJpalKq5l7k/z
-	SlNe3y2aJr3u1jqJKMbA==;
+	List-Owner; bh=2bH6N7LxZTBYaC/ilLn1tp8JQAaXZZ2y2yBw3wxZby0=; b=UhXWzKmnxbSCPs
+	17kmFUaMGY3vufPU1RF7CkGywRNiMeoefIZAazQI8XbYRvFChHBKcnbMkaihhaHLG+HCGSoHWCjYo
+	/Dh8CD7eOVh7Hc91+avv+D4beWXnARSLvtnTE3WawaxFgnnOkJzgjtpb1GO9OdclMPoe8PsXt14SD
+	heoz5U0HAiF29D8UUqSPWU9sAjx68Ad0SS21RlTi5FwLy+BhbGAcGyIEkSyM+vZ8M0W4ZvsIAjStl
+	QjfoYWYHTYOq7MoW4xULvm/84nIRjdHGnG6SfguG7+Lhmu/qrbUec92+7uI3mz3vGJgGJq0Sy0gAs
+	gJzXu6egl58R8+BaCKMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvjI-00000009PLy-1g1O;
+	id 1vzvjI-00000009PMz-39Ce;
 	Tue, 10 Mar 2026 11:58:28 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+Received: from mail.avm.de ([2001:bf0:244:244::119])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgj-00000009Knd-2gh2;
-	Tue, 10 Mar 2026 11:55:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=VeyuMlBSXCUl2HyhMWtK62gNrN2xqJpTn5I2B2Zc2uk=; b=eoXWngz/xIo82y7QZlFVrwSGGK
-	m6kCH/IRo3x/ahwCAJvSWixA1KRJbx1vvsCrK+SpIIzJ6n/Amudg6JcLftb1DrfNbOyHEbDRLW/5O
-	pcTB4XHnmS7Du4RVwPAnVd/aiS7Ce1ETb3uvR5/kHAMzWVWFhCziXJmxj4rYMGmfiImhlZ9MOijOu
-	/FKUGQFXZEoGBoc7nm+3VG083fKtnbypMRATLb50SYR7JHSLs5/iI/7rL/CchV/CMnw7ZglUJ7fdz
-	HwFkn9QJSw0o/MfyeCjpiNBVw+3O9z4OMkSdqgmnkp+M8AP1ewxoob2iKsMna78cuHV+E9sa+A8iy
-	4XJsXHxw==;
-Received: from mail.avm.de ([212.42.244.120])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgT-0000000EQ7V-3ygf;
-	Tue, 10 Mar 2026 11:55:44 +0000
+	id 1vzvgf-00000009KdS-2mzW;
+	Tue, 10 Mar 2026 11:55:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143725; bh=xBKhBreRFiEpPz9/49OtWlCzYkq81mZihzEqekyK7xA=;
+	t=1773143729; bh=aOTa0J99wrUiCJDKciZIBaRSFy8AAIBeipk1P/Ry6Do=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=helEnKZUDYmuyC7r9itC+dVARlXrRlYpZWzDAaAXEYc5wN1FHoKQsdSjCaomchjhv
-	 +41zqDKlH044FWtyvi2VX9TAdQF1rs14U237EegHWJogLxynx4m+2shwi9NDMEzjxe
-	 k3vCUFrBTw+1/DCUt/wn8qmUGFq+b5Q0TC9ytTvc=
+	b=OzCQWGEP3xIWg4aft9Gi61CqVxzVTLKLAimjDrWeQqUc3hUkPv1N3tKeXtgO8+TTP
+	 XhmqP+sFetcOut+NsJt0vEBnYbeIs2Hbr8gQtf+aklxbXgaq0RnUqAMfY7Dvjp000Y
+	 AkX7mNRKwyV5huTmoXbZ4xAO9eyZ3soV+HNDBiK0=
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006ac-b734-7f0000032729-7f000001c024-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:24 +0100
+	id 69b006b1-2367-7f0000032729-7f000001ca34-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:29 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:24 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:29 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:48 +0100
-Subject: [PATCH 22/61] md: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:49:23 +0100
+Subject: [PATCH 57/61] reset: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-22-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-57-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -88,29 +74,27 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Alasdair Kergon <agk@redhat.com>, Mike Snitzer <snitzer@kernel.org>, 
- Mikulas Patocka <mpatocka@redhat.com>, 
- Benjamin Marzinski <bmarzins@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1995; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=xBKhBreRFiEpPz9/49OtWlCzYkq81mZihzEqekyK7xA=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAYgLcFKxegL/bQqhgTo4RNQJgrnmxL3YCzsA
- NwbsOtNPYeJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGIAAKCRA0LQZT0ays
- 21bACACtmD+JNOZZE2WtYGgZs+OKFUvGXg8BvTcg2nAeuTAfDV15mPSXGDJtr1bOhVuDnL/Nw9l
- YuHe1nCI3Kb5gMl9oJ6QTc/nxqpUehwIiPaszmCzsqUT9Av4+JV9tbiRExsTnWgWp8/ohC7O/t7
- 0F2HI97L08/EOhP6er3J/caSpZnOpbWXT+xXd1cfFQmhFO8426W+HbSPnqaYqXoPZvzXs04m+U7
- Y+HhZZm9gUaVM39bOf2O7FpXKP5lXlaxHXla0Syc5xOdqOCZGHEwLXH/1MeFU5JbVnp/DFE01i8
- 2gpgUDB/Kr+8ov9qYVC2ZPrR+l2cjmrUojAxw0U8eiSwxKRA
+Cc: Philipp Zabel <p.zabel@pengutronix.de>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=968; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=aOTa0J99wrUiCJDKciZIBaRSFy8AAIBeipk1P/Ry6Do=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAaYTbMwEnKjO28t4NGQZrm6X1QSq5SK/k8qB
+ qh4VPr1rLCJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGmAAKCRA0LQZT0ays
+ 21umCACxIKapQYseolYqqyBm7SyLTZbMM7MUu/ruXbxGyc49Ef4ha2YprHG4wuhRGtqa+VJappe
+ JyX0Z9X9KMdJsI/T+BsTdbSpg720pNSAKbSG/WcuoRUIgTiyuqx3+IKJLG0jtFT86FOozZPOWEy
+ PPGiUFAfCi7lTKlHGrGHOhGX9fNEHoC67p+hbdbdmFe+ifTERx6lzSSYvUcvltMUMt2tdHG0fgm
+ mbuvPyYzKrB65Gooayr+TJ6lncMe1eo3kIkCgAS0gJFF08HI7PwP3Atbb7J7YpFYREokazErNBn
+ 540BWDngwOE49h53Z1ngLFPv4fl7uolW05pdRIimfw0qiceA
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143724-71DC2A3D-384367F1/0/0
+X-purgate-ID: 149429::1773143729-7B4FEE1F-3FF7DD9F/0/0
 X-purgate-type: clean
-X-purgate-size: 1997
+X-purgate-size: 970
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_115541_509596_884EEF27 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260310_045546_392085_9D6F00B8 
+X-CRM114-Status: GOOD (  10.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,55 +114,32 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
 check.
 
-Change generated with coccinelle.
+Semantich change: Previously the code only printed the warning on error,
+but not when the pointer was NULL. Now the warning is printed in both
+cases!
 
-To: Alasdair Kergon <agk@redhat.com>
-To: Mike Snitzer <snitzer@kernel.org>
-To: Mikulas Patocka <mpatocka@redhat.com>
-To: Benjamin Marzinski <bmarzins@redhat.com>
-Cc: dm-devel@lists.linux.dev
+Change found with coccinelle.
+
+To: Philipp Zabel <p.zabel@pengutronix.de>
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/md/dm-cache-metadata.c | 2 +-
- drivers/md/dm-crypt.c          | 4 ++--
- 2 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/reset/core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/md/dm-cache-metadata.c b/drivers/md/dm-cache-metadata.c
-index 57158c02d096ed38759d563bf27e7f1b3fe58ccc..32f7d25b83a181a30a78c663d48f7882cb97f7b5 100644
---- a/drivers/md/dm-cache-metadata.c
-+++ b/drivers/md/dm-cache-metadata.c
-@@ -1819,7 +1819,7 @@ int dm_cache_metadata_abort(struct dm_cache_metadata *cmd)
- 	WRITE_UNLOCK(cmd);
- 	dm_block_manager_destroy(old_bm);
- out:
--	if (new_bm && !IS_ERR(new_bm))
-+	if (!IS_ERR_OR_NULL(new_bm))
- 		dm_block_manager_destroy(new_bm);
- 
- 	return r;
-diff --git a/drivers/md/dm-crypt.c b/drivers/md/dm-crypt.c
-index 54823341c9fda46b2d8e13428cbd51f3edf642d5..05eae3d3c7df6baebd0b7a4219f7b6938f6e7f87 100644
---- a/drivers/md/dm-crypt.c
-+++ b/drivers/md/dm-crypt.c
-@@ -2295,7 +2295,7 @@ static void crypt_free_tfms_aead(struct crypt_config *cc)
- 	if (!cc->cipher_tfm.tfms_aead)
+diff --git a/drivers/reset/core.c b/drivers/reset/core.c
+index fceec45c8afc1e74fe46311bdc023ff257e8d770..649bb4ebabb20a09349ccbfc62f8280621df450e 100644
+--- a/drivers/reset/core.c
++++ b/drivers/reset/core.c
+@@ -715,7 +715,7 @@ EXPORT_SYMBOL_GPL(reset_control_bulk_acquire);
+  */
+ void reset_control_release(struct reset_control *rstc)
+ {
+-	if (!rstc || WARN_ON(IS_ERR(rstc)))
++	if (WARN_ON(IS_ERR_OR_NULL(rstc)))
  		return;
  
--	if (cc->cipher_tfm.tfms_aead[0] && !IS_ERR(cc->cipher_tfm.tfms_aead[0])) {
-+	if (!IS_ERR_OR_NULL(cc->cipher_tfm.tfms_aead[0])) {
- 		crypto_free_aead(cc->cipher_tfm.tfms_aead[0]);
- 		cc->cipher_tfm.tfms_aead[0] = NULL;
- 	}
-@@ -2312,7 +2312,7 @@ static void crypt_free_tfms_skcipher(struct crypt_config *cc)
- 		return;
- 
- 	for (i = 0; i < cc->tfms_count; i++)
--		if (cc->cipher_tfm.tfms[i] && !IS_ERR(cc->cipher_tfm.tfms[i])) {
-+		if (!IS_ERR_OR_NULL(cc->cipher_tfm.tfms[i])) {
- 			crypto_free_skcipher(cc->cipher_tfm.tfms[i]);
- 			cc->cipher_tfm.tfms[i] = NULL;
- 		}
+ 	if (reset_control_is_array(rstc))
 
 -- 
 2.43.0
