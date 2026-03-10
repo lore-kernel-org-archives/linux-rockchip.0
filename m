@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23D2AFD2D81
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 13:47:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B936FD2D97
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 13:49:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MOYlLAKLBiKYxh1fG6A/JArXRmbE2AksNVGjfzwDhSE=; b=4KfUHzJhpPlegu
-	rFoH1kR0a883MKE4bIfEynvkKk+sEtWCSm5/dVoKFpcZYU4JjMD4ADuDm3uKHP7dyyfjYOpOV/jI7
-	OoqoAeEe1TmmxPT7IecSfigdpDTaJ1U7kmr3vl5kH3wjc4GzvEgTwlWhaU3FKIp53dAwvwtX6eDKc
-	MSCrg49sIRmg0/Uf8ADkjx2kLG+0jSsXpBAE5SamMN3GtZreI5tL3pvNACk6BX6HVIFgM4ffdzjiO
-	NeXPR2tC1gqKRxuvbs+jqgdH3JMtgrVi0urFmkaN3VT1tftp/av5631Km/N6aj+x5B14PEx6cCsVo
-	0BY3svrBbmZb5jG/SdVQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=bZu4xiVmlqqlVvF1lslNsh+WHIqozPZRUaRBHLVYrfg=; b=Pt6Ig6GHFrUu0U
+	ewyc4TNSIujseVkmefYqY8Fw5NTADo7lmmUC69xEWcKI48A2KYC8wdRu6UIhNXIJuNPx01bOMF9Wm
+	P77rii7BwkQhXmc8hv9zFP9Uw/B22rXUdtyUJsRokLX0fq0L/kTwnZeSs7Dk/89iFTkCDcRpla390
+	uCeuguvlmUAphNd3yPir+SASzwYBbC9YxPWJy8jdurnwsPqcmqlI1vfRbvQ8X2ERYqMZ5udnVKa4a
+	XETcL2/gY7x/cnt5/QUFrDLB1yyzMsdPhxYxcSeVrZWBFZzoOMx6x/xruBSeow9ZL9INMCAQGbH5U
+	ef8tW05Le+KJJBGvPq8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzxQg-00000009d3O-2VSB;
-	Tue, 10 Mar 2026 13:47:22 +0000
-Received: from kylie.crudebyte.com ([5.189.157.229])
+	id 1vzxSV-00000009dF9-3tUw;
+	Tue, 10 Mar 2026 13:49:15 +0000
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzxQd-00000009d2B-3wWD;
-	Tue, 10 Mar 2026 13:47:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Content-ID:Content-Description;
-	bh=aVv/PSZT5NGeZjfHxwg8OpWgNHlsgZDJ/5CMzeiUbdo=; b=dTpIUmFyfV+bP6Hy0ueZpN32tu
-	piiOrm2xYxIB724JO1nPYEvLrwNppM7ldi2VsLNiB9a22ZPzaNJQ0YaGHJwVuraOF2yk5SpAHZold
-	s8t7GSMCpZMXoj2MN+HCYF9oJcPgVF+TLl3oulmGF4t7YrhkwJ3IfsTmzXldUh96w/myd3pDSVX1g
-	/e8bzPXWMBYBNoEloTPI5IYSewDyrYj60Js0etFfclp4hEgkn7HaHPBIdN5mmqp8OC3Z4JyMZY1In
-	us3k02cy2EDC8Yr2DD9TZj2Bfv2JCzi8o1CBU/q/X+4deOd5/tymAnt0Bem3HGOfb0TZNQXc+sRV/
-	1upKIM10UX7QbQ98BeJxn1cHAUt80a13aLlrns2kgX3r4ZD43IvQ3qOgYizweNeHFZvB+bpwBSNFD
-	hlDW1qIdKmIN+wC7qSL6cU7m+YgH+eIF1AeR8pLLvTFBNqmI6qti9D+O96RBcbYAwE/olpfjlTGn5
-	mdLSL9FFfI7mx4Sepl5WAdeD1XVerb2KTcAMA8AXYimzng7DssEnPDbX6u+t3yAcQjc1BrWIujZyx
-	Gao2D20IgKGUx784nxNUpYJ2ZiCkXzoDKyugnEIdTC+VrOwC2OEJanP1Uq3/BrGj0qOrmxYFeI51c
-	48zjYWWU3v40e6itkF189TkI8Acs6/RLaheNlL7MM=;
-From: Christian Schoenebeck <linux_oss@crudebyte.com>
-To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
- bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr,
- dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org,
- gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org,
- intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev, kvm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-block@vger.kernel.org,
- linux-bluetooth@vger.kernel.org, linux-btrfs@vger.kernel.org,
- linux-cifs@vger.kernel.org, linux-clk@vger.kernel.org,
- linux-erofs@lists.ozlabs.org, linux-ext4@vger.kernel.org,
- linux-fsdevel@vger.kernel.org, linux-gpio@vger.kernel.org,
- linux-hyperv@vger.kernel.org, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-leds@vger.kernel.org,
- linux-media@vger.kernel.org, linux-mips@vger.kernel.org, linux-mm@kvack.org,
- linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org,
- linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org,
- linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
- linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
- linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org,
- linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
- sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
- tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev,
- Philipp Hahn <phahn-oss@avm.de>, Philipp Hahn <phahn-oss@avm.de>
-Cc: Eric Van Hensbergen <ericvh@kernel.org>,
- Latchesar Ionkov <lucho@ionkov.net>,
- Dominique Martinet <asmadeus@codewreck.org>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Simon Horman <horms@kernel.org>
-Subject: Re: [PATCH 24/61] net/9p: Prefer IS_ERR_OR_NULL over manual NULL check
-Date: Tue, 10 Mar 2026 14:47:03 +0100
-Message-ID: <1948861.tdWV9SEqCh@weasel>
-In-Reply-To: <20260310-b4-is_err_or_null-v1-24-bd63b656022d@avm.de>
-References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
- <20260310-b4-is_err_or_null-v1-24-bd63b656022d@avm.de>
+	id 1vzxST-00000009dEl-3fPD
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Mar 2026 13:49:15 +0000
+Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-7d75ed779bfso513919a34.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 06:49:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773150552; x=1773755352; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Jh+5BGUQpxoxlv8hrHifglehZ/PN15+tKGmZZiN1HKY=;
+        b=PJnV7aJM9GJhiBk2euiSqP+HI1dOwNsjb3WKxAHveUIK9BBo8TeiuV9zVWOSTPnYuR
+         GSzJHZ4VdCs05wuxRYjfU59pfx3sSEAq6D25Zij7TX+xbQ8oKotCmlJbSRS5O5FYcDOx
+         zDOfuphwAV0iVfPxi69uFkO5RVYGdVnnwkt+efosub2Qnnpy5R9JdLAvCAISI82RfTlK
+         NeuFs/73Y2CwUpU6RWOUF7tfdzEiLPdlPawKcUPWd8UhPpSqNMfZtAekKumxHr1Ww+b2
+         aw95ADtK7pnt6yyX+XzCDomDFibVH1Z5a0fpKK5mN2CP+4FPHDZiewryf5E6yxBd5ZeP
+         cQCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773150552; x=1773755352;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Jh+5BGUQpxoxlv8hrHifglehZ/PN15+tKGmZZiN1HKY=;
+        b=pYIy1JfissaNtHvifaJP9jLtEzsW+mONfm+o+xWUW03lU4X5frlOxKvWmLWYjsPCQ2
+         OAjb1NZ2DGJj+X2h9px4SDZLfTPrnmrLah29sOHMY8naM6LhjSvYmAKF6qtvBLi2xOOR
+         Dl/mQh5EEuQuWExsR0Gx9ggscrEVt+EZOKxqFgVm14PYm4RCDgvsYrXaV2K0RNMLd1Ao
+         /eOxG0ah650I4NxUe+YWBybAYOI4jfT0YXCeyDMZOJ6sSResglPyXbDBz4gGgH6oWcG2
+         xXj/kCTx7eK5w49NFFcWT8wdEATjRMXKwIakeEvr/Y1g8sNy1cSheI9m5soQpHJ8JpN+
+         X20Q==
+X-Gm-Message-State: AOJu0Yx6fVHwPZoKX7V2svyG3IGkemG54HEmfftUF5bt35yZk6gFWaQq
+	kEuXAmUYbpQWvQ0yqL4vD8UNu/vwwX14DNO6Y5as91qWHT8zGsZcIepl
+X-Gm-Gg: ATEYQzy5gyD1Swn20JPUzWuZNSHmsg4DyRb51d4drK6TKHBlIHD9M1RxzqEwhjYan0X
+	0U98ptA3Tk/0hSOiNW8tzKidrlLSFrw9owmDk16hwVUx8MqewqOKY+ZxTK1tU+n7+4d/0oIOiGS
+	loEx+Vh+QMp3pCKbagdOrGhnj9DlAexPRrQw4EjTqXy5cbbRUifxVFY75LJ6ijoWavcoTROYEg7
+	QwoR+IMqbkqPD8N7EUrpQjSKakz9tWQbFiRh992UCvhuXzjhgGKbtUi6J0mjpFsj0XwEKxYr66K
+	6K0ndA1PdJ5bcghjMkdeQYo1XJxvlzPFqkZfh0xJ/LndjSDP2OsOJpFiUerGgdAuqHqlANI3QeM
+	v1+Nkk4+Hryn9bvDqOUnnlIKgDmjz8xl5mkTwgyIoUgNSGDi2G+zN0orvCc2flVRXX/N2cviDIY
+	4zfPfqX/gjVIrEQH/3xstk
+X-Received: by 2002:a05:6830:620f:b0:7d1:9516:6858 with SMTP id 46e09a7af769-7d72702d2a3mr10048666a34.24.1773150552233;
+        Tue, 10 Mar 2026 06:49:12 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7d75039b811sm3357767a34.16.2026.03.10.06.49.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Mar 2026 06:49:11 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: devicetree@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH] arm64: dts: rockchip: Correct Fan Supply for Gameforce Ace
+Date: Tue, 10 Mar 2026 08:46:48 -0500
+Message-ID: <20260310134648.550006-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_064719_990321_365F03C0 
-X-CRM114-Status: GOOD (  12.85  )
+X-CRM114-CacheID: sfid-20260310_064913_939795_7A8940AD 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,74 +99,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 10 March 2026 12:48:50 CET Philipp Hahn wrote:
-> Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
-> check.
-> 
-> Change generated with coccinelle.
-> 
-> To: Eric Van Hensbergen <ericvh@kernel.org>
-> To: Latchesar Ionkov <lucho@ionkov.net>
-> To: Dominique Martinet <asmadeus@codewreck.org>
-> To: Christian Schoenebeck <linux_oss@crudebyte.com>
-> To: "David S. Miller" <davem@davemloft.net>
-> To: Eric Dumazet <edumazet@google.com>
-> To: Jakub Kicinski <kuba@kernel.org>
-> To: Paolo Abeni <pabeni@redhat.com>
-> To: Simon Horman <horms@kernel.org>
-> Cc: v9fs@lists.linux.dev
-> Cc: netdev@vger.kernel.org
-> Cc: linux-kernel@vger.kernel.org
-> Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
-> ---
->  include/net/9p/client.h | 2 +-
->  net/9p/trans_rdma.c     | 8 ++++----
->  2 files changed, 5 insertions(+), 5 deletions(-)
+From: Chris Morgan <macromorgan@hotmail.com>
 
-Reviewed-by: Christian Schoenebeck <linux_oss@crudebyte.com>
- 
-> diff --git a/include/net/9p/client.h b/include/net/9p/client.h
-> index
-> 838a94218b593f3fb19e6827c472753380193461..4bde6bd716f323c819745e64c7aac0dea
-> 7beb72f 100644 --- a/include/net/9p/client.h
-> +++ b/include/net/9p/client.h
-> @@ -364,7 +364,7 @@ static inline struct p9_fid *p9_fid_get(struct p9_fid
-> *fid)
-> 
->  static inline int p9_fid_put(struct p9_fid *fid)
->  {
-> -	if (!fid || IS_ERR(fid))
-> +	if (IS_ERR_OR_NULL(fid))
->  		return 0;
-> 
->  	if (tracepoint_enabled(9p_fid_ref))
-> diff --git a/net/9p/trans_rdma.c b/net/9p/trans_rdma.c
-> index
-> aa5bd74d333f3b5e6fd1e4344d26bc0201ff7f7f..60461344b536bcb6e94112aace75a88b6
-> a99ad86 100644 --- a/net/9p/trans_rdma.c
-> +++ b/net/9p/trans_rdma.c
-> @@ -252,16 +252,16 @@ static void rdma_destroy_trans(struct p9_trans_rdma
-> *rdma) if (!rdma)
->  		return;
-> 
-> -	if (rdma->qp && !IS_ERR(rdma->qp))
-> +	if (!IS_ERR_OR_NULL(rdma->qp))
->  		ib_destroy_qp(rdma->qp);
-> 
-> -	if (rdma->pd && !IS_ERR(rdma->pd))
-> +	if (!IS_ERR_OR_NULL(rdma->pd))
->  		ib_dealloc_pd(rdma->pd);
-> 
-> -	if (rdma->cq && !IS_ERR(rdma->cq))
-> +	if (!IS_ERR_OR_NULL(rdma->cq))
->  		ib_free_cq(rdma->cq);
-> 
-> -	if (rdma->cm_id && !IS_ERR(rdma->cm_id))
-> +	if (!IS_ERR_OR_NULL(rdma->cm_id))
->  		rdma_destroy_id(rdma->cm_id);
-> 
->  	kfree(rdma);
+Correct the regulator providing power to the PWM controlled fan.
+Without this fix the fan only runs when the audio path is playing
+audio (because the speaker amplifier and PWM fan share the same
+regulator).
 
+Fixes: 4e946c447a04 ("arm64: dts: rockchip: Add GameForce Ace")
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+index b69d7aa0b2f1..89618394c0bf 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
+@@ -318,7 +318,7 @@ pwm_fan: pwm-fan {
+ 		compatible = "pwm-fan";
+ 		#cooling-cells = <2>;
+ 		cooling-levels = <0 120 150 180 210 240 255>;
+-		fan-supply = <&vcc5v0_sys>;
++		fan-supply = <&vcc5v0_spk>;
+ 		interrupt-parent = <&gpio4>;
+ 		interrupts = <RK_PB2 IRQ_TYPE_EDGE_RISING>;
+ 		pulses-per-revolution = <4>;
+-- 
+2.43.0
 
 
 _______________________________________________
