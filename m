@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEBB7F3C27D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C295FEA8550
 	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 09:30:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,69 +12,49 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Kee8g5Rl08FmbdOG5jQdGBCtjEUeQXoLVU2oUDwZSlA=; b=lUQdaScffI5+rE
-	eTYTFG6bI5v2wZQ9HzKt9+PiL2jJ/C052wZSAKYh44dkKQS+xJIv0fwBJMAQmRXsqOvOOtWjNqIkk
-	VNfIgbTOLCKKajdAI35v7W5qUogZsVkIbiLmkskOtggtWHxzbuTPHvmbKBWIm8IOQE918+xpu3VvJ
-	K2uQSpnIGWKrjjlCN1hVM0VO9f5Bq0UCaHikiCcLzSpSi6gwmYrFagtRf7bcd4R9lckxXR2DQpR2E
-	WKfg5EOCm0uf3arScUWB1s8mbZbotV8v6X/OlG4o6wb7hXA+vg1D/PJO9KG8+ZSzc7RAL3kOgcG63
-	n4ZNwr/rCxK6Y1Fdt9sA==;
+	List-Owner; bh=GmbhNUxNCL4nlWeFzRQVVRqwsyhba7R9YeDkMFeVfU8=; b=wdyYmCjKe+Ihdu
+	71O1i9uxVw4RL4xsoNJunw98LdRxmh59VtZ7ktUdHI2s1QHs5cLPoGBWQSS1VxiGappQbdM2uJ/hr
+	ZvrJbz5bbGhOMlXT2N7M5Ty1WlR4rQ4BCBbdWwQsaz64Wnw2DdNt09GtQ4qywweo/AXPFyII/0H1Z
+	zk9qgMPCzWwWk8KfDTJlbOCvjz4irlBujQeVqp3bae/P0G22yp1AK+Ll04b2U9fJFLRf94JfuSBAg
+	lZW4whFAQisTjQENphTucRo1Afot2gw7O/+n78x85/uat69p+DWK172IyK/Hq6v0xY881FuNPWOgj
+	nV9dMIiyCk4eMpBB8Z3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztPt-000000095pk-1g6h;
-	Tue, 10 Mar 2026 09:30:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztPo-000000095mr-40IL;
-	Tue, 10 Mar 2026 09:30:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=33jPbzlWeMQan5XZ6y6WfE7m1EsEV0Da0Wn6BJa6sCw=; b=PkLY0hi1Q0VDo9mU6ajgfQNSfS
-	kAlJ6bo+bSB+9pfO/jHPTPyFvchNshlw7fZNdGDNXAige34XAFGxLZ2vL3b3/nm7yzcK2Da3Mfam3
-	WAx+0g+ITQKAEwToMBk3umTCqbsaSjIn12qHXt29Q4/SAVy1yTdogwVCZRM19769ALX2/tqRIp6J2
-	ZdexIThXY82TVdSl4MkrE/pKaM4fmTN2LlifOf0GloJH0RDibxXxJXCWxrcNe6WSSBq4gMNIgytul
-	/FqmME1bwbTW1pl/+ZgPpV6BgL5L98DtYnhyFkl4MYsYJK4IBifQ1YYkDZSPG4rkfXd9NWUmuH/xF
-	/+rTt6mw==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztPl-0000000E7oW-1luF;
+	id 1vztPn-000000095mW-0pIA;
 	Tue, 10 Mar 2026 09:30:11 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vztPk-000000095lU-2v3A;
+	Tue, 10 Mar 2026 09:30:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=33jPbzlWeMQan5XZ6y6WfE7m1EsEV0Da0Wn6BJa6sCw=; b=eIPS7K/HQG/f6MHSpeVoR45sjb
-	QucjZyqPj4vp2WCj8LUSUqBF3xCxUsdS3kO2dQBz5XSIxrdqLXi/eMMQcpWN9U3tUS191FlEPD2AY
-	qCAUmjNI7jBqs9ibMHXSrFV1CXytOMwZyYXM2ofSt/bc6KMSnnVSpU8ckij523xddu4YqSUHG00By
-	WlQ+6C903zK6eLs93qektCyPnDX/cRLZwz47rYVQoR6KNulsQinzTcK3i1Ab1nGBJLPTtcpYQr/lU
-	Gj1K5LBL+7nlucgGU5jEwMh1aFySNxJmVqe4T8c4w4sm3ZHIA/QNewOdIQxHMO3d2lw//w3rXMJI1
-	79Icifyw==;
+	bh=XW5x2W70/4qH1wnLG28SxFGceYyAdqEbV+ODm4WuYMg=; b=AXZiRj3XaLjCcEcg6QX35x7Q7S
+	+gR7ns3jStOmeS0rkfMeYt3tnLMbvRTFwDgc8Ft5TKwsFLVLATTFA0ZfWs1VcZb0Mb+7aw/WDNBak
+	bKAcwLYW5l0b+dwGRpr9M30txEbxjxFhdmme8XWm+0nAwx+Mu4Tnhxd/R/PRZVUbLYJXgqnfWVeHv
+	yML0UHWTDARQPfVNWq3KpGGkSXwLKPUaKDNe5CI33Af3j0rRgo4+AyDRF1F4sWomD3HneyvKxHhXp
+	hw8PWlC4da8rzUUeWCpGaIjD/kUzjswHfy62agnvfbzWbMt+QmrAYrEsa5cYQNpwsiPEMyDGAIGh3
+	EKsvhBKQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Diederik de Haas <diederik@cknow-tech.com>
+To: Fabio Estevam <festevam@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	Samuel Holland <samuel@sholland.org>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Maximilian Weigand <mweigand@mweigand.net>,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	hrdl <git@hrdl.eu>,
-	phantomas <phantomas@phantomas.xyz>,
-	Dragan Simic <dsimic@manjaro.org>
-Subject: Re: [PATCH] arm64: dts: rockchip: Enable GPU on rk3566-pinenote
-Date: Tue, 10 Mar 2026 10:29:52 +0100
-Message-ID: <177313498973.2340533.6039251344596922355.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
+Date: Tue, 10 Mar 2026 10:29:54 +0100
+Message-ID: <177313498974.2340533.2031096927430655073.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260305120620.173600-1-diederik@cknow-tech.com>
-References: <20260305120620.173600-1-diederik@cknow-tech.com>
+In-Reply-To: <20260304164448.1024410-1-festevam@gmail.com>
+References: <20260304164448.1024410-1-festevam@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_093009_567616_2109456E 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20260310_023008_755950_991E1F86 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,17 +72,20 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Thu, 05 Mar 2026 13:05:40 +0100, Diederik de Haas wrote:
-> The GPU is most useful when used together with the EBC on the PineNote,
-> which is not yet described. But there's no reason not to define the GPU
-> already as the hardware is present and could be used without the EBC.
+On Wed, 04 Mar 2026 13:44:48 -0300, Fabio Estevam wrote:
+> According to hid-over-i2c.yaml, the correct name for the 3.3V supply
+> is 'vdd-supply'.
 > 
+> Fix it accordingly.
 > 
+> This fixes the following dt-schema warning:
+> 
+> [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: Enable GPU on rk3566-pinenote
-      commit: 82c68c62bd8d64785c42292449688fed4d2c284c
+[1/1] ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
+      commit: 3ca314a5643057ad30d16b18c99ceaa5474c1200
 
 Best regards,
 -- 
