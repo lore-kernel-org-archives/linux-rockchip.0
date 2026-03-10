@@ -4,126 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04E88C4452B
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B03C44529
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3qQo+/NkirgCIZJKBWmxJkhUIeFKp3rOnhhBULLjNN0=; b=fPqalvcNPBaYPd
-	x9ziBPRqlP+SsrF3wRYNK0D6LUx7VqVySuVGCJZYLx/Hwh1z6PG7g5JYeGKC6ynViU2Exp7dge5dz
-	pqlO1OIq+1LLPyr260XZFD+dngzFQpR5re75Y8iMyCMLQK0p67sWlml+qog7xQtQOrMY217N80jeZ
-	r1KkhdIQnGCiKh0L0RXcHq94hEX8yizfzidxfaCgyLiNYoUKtRcNZS1OZZ+N2lRI0D2VD8QbWrOjk
-	2VSRplZ3f2iKkjI99wv4DM9OG5VmLnX6PSd9zDgGEupjTiXD8HrQ4KR63HvTxv8qSi+BU9UOj/oTj
-	xgx7D50FZMt8XLotomJA==;
+	List-Owner; bh=Rme+7lk1JWxMTsBUYc+nfqvYmBZpidX0GWQIdGDSE5A=; b=PtJJCo1fBPtlOH
+	QV7yBUdKtqZSiqVGD/91siljJ7J9hRxe8IuUX9yqRTGOcwE9A8+NU2Cjj5Fz8zreCv7aqORX5ubvE
+	Zwjuf4nG40VfWsWUptaGc4TOv52lyKgadlvDEbGfdBsTYmn4HDJcyN2NDN9Bx+cYQ9YbZCn9BhBDs
+	kQ0vJteE3sMsweI6XsjcpaTzmUVsrLxU9TQo1oNK55YDWzqKeo+opJ60uWGiHgk7xJLaCYR7Mxz2g
+	gG4B8q6xW9PWK4vn6GZONVb03Srh3/4lln63iLML9Pu59Fl8+0M9Gcff6c1FPMpXhZ47xjoHecI5I
+	n7QCKkl2EROO7glIfY4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkQl-00000001UkX-2Bqb;
-	Thu, 09 Jul 2026 08:48:27 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1whkQq-00000001Uwt-2BWz;
+	Thu, 09 Jul 2026 08:48:32 +0000
+Received: from mail.avm.de ([212.42.244.94])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vfMD7-00000005tva-2A6w;
-	Mon, 12 Jan 2026 18:00:13 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1BE3C60055;
-	Mon, 12 Jan 2026 18:00:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB923C16AAE;
-	Mon, 12 Jan 2026 18:00:08 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1768240811;
-	bh=mGbofIjwnm9caXWlIFuD+vvkQiRMHg0CWCn2+iWjokQ=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=feB0lBBcPjMm6TcLwyV7ebbxAv/YTwcCPMIuU2dVmvhL5mGCrIawtev3cma1EX2dA
-	 gimcge4/rXibL+oI/bA4/8WLwnYBQjmUWgdqxGK+z6QcoubI5S8MGhmHsN6RGU3I0m
-	 bOaihftKwYyTpOxlZre+emHgYCTF4qUVx3nrUpVhTKwciuti+mwHDDCK+Uudv2JTSh
-	 R6RBys8rz+B/35nVnKrzi3MKeFCyoNWx7MF7/pgVShpqzu4mBxe+J9/cv0NwkEif1g
-	 VG+WPfM/JevSndphvgNzv7J2+6JAdWpT5GxWT+B4lRohyxUT14oeDlYMchDvMoo1+A
-	 VALVB9TuQpPSg==
-From: Jakub Kicinski <kuba@kernel.org>
-To: bartosz.golaszewski@oss.qualcomm.com
-Cc: Jakub Kicinski <kuba@kernel.org>,
-	jbrunet@baylibre.com,
-	linux-stm32@st-md-mailman.stormreply.com,
-	devicetree@vger.kernel.org,
-	neil.armstrong@linaro.org,
-	unicorn_wang@outlook.com,
-	andrew+netdev@lunn.ch,
-	vkoul@kernel.org,
-	peppe.cavallaro@st.com,
-	jernej.skrabec@gmail.com,
-	samin.guo@starfivetech.com,
-	david.wu@rock-chips.com,
-	christophe.roullier@foss.st.com,
-	linux-amlogic@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	martin.blumenstingl@googlemail.com,
-	robh@kernel.org,
-	linux-imx@nxp.com,
-	andersson@kernel.org,
-	joabreu@synopsys.com,
-	s32@nxp.com,
-	swathi.ks@samsung.com,
-	konradybcio@kernel.org,
-	krzk+dt@kernel.org,
-	keguang.zhang@gmail.com,
-	kernel@pengutronix.de,
-	romain.gantois@bootlin.com,
-	brgl@kernel.org,
-	sophgo@lists.linux.dev,
-	netdev@vger.kernel.org,
-	xiaoning.wang@nxp.com,
-	imx@lists.linux.dev,
-	dfustini@tenstorrent.com,
-	davem@davemloft.net,
-	jan.petrous@oss.nxp.com,
-	magnus.damm@gmail.com,
-	lizhi2@eswincomputing.com,
-	linux-sunxi@lists.linux.dev,
-	linux-mips@vger.kernel.org,
-	vineetha.g.jaya.kumaran@intel.com,
-	matthew.gerlach@altera.com,
-	wefu@redhat.com,
-	geert+renesas@glider.be,
-	edumazet@google.com,
-	linux-kernel@vger.kernel.org,
-	Frank.Li@nxp.com,
-	conor+dt@kernel.org,
-	mripard@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	kernel@esmil.dk,
-	linux-renesas-soc@vger.kernel.org,
-	alexandre.torgue@foss.st.com,
-	inochiama@gmail.com,
-	minda.chen@starfivetech.com,
-	s.hauer@pengutronix.de,
-	nobuhiro.iwamatsu.x90@mail.toshiba,
-	prabhakar.mahadev-lad.rj@bp.renesas.com,
-	fustini@kernel.org,
-	richardcochran@gmail.com,
-	pabeni@redhat.com,
-	shawnguo@kernel.org,
-	wens@kernel.org,
-	heiko@sntech.de,
-	guoren@kernel.org,
-	weishangjuan@eswincomputing.com,
-	mcoquelin.stm32@gmail.com,
-	khilman@baylibre.com,
-	festevam@gmail.com,
-	liangshuang@eswincomputing.com,
-	krzysztof.kozlowski@oss.qualcomm.com,
-	linux-arm-msm@vger.kernel.org,
-	konrad.dybcio@oss.qualcomm.com,
-	linux-rockchip@lists.infradead.org,
-	samuel@sholland.org
-Subject: Re: [RESEND,net-next,v6,7/7] net: stmmac: qcom-ethqos: add support for sa8255p
-Date: Mon, 12 Jan 2026 10:00:05 -0800
-Message-ID: <20260112180005.4144056-1-kuba@kernel.org>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260112-qcom-sa8255p-emac-v6-7-86a3d4b2ad83@oss.qualcomm.com>
-References: <20260112-qcom-sa8255p-emac-v6-7-86a3d4b2ad83@oss.qualcomm.com>
+	id 1vzvgV-00000009KRp-3Wbn;
+	Tue, 10 Mar 2026 11:55:41 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
+	t=1773143726; bh=6EuXq65aclW87MvbjKpAiGhSvzG4CQReYSdgtvzfvbQ=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=OlBoHHpVof4NyozqV3vxjKcjvk/y17oYz+NX0GgTt5nMsrjzgfoQZCcD5nyMeqLWk
+	 htiyUI/wWJswuTU+8y83flTCS0RnzHoiIrK06LfnovJyy/ccZ/NhBYSEivcOaZTGCa
+	 Ux8J7cHyncVvErf5jzV1qMqauD0EUnF5+GejdCq4=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
+	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
+	(envelope-from <phahn-oss@avm.de>)
+	id 69b006ae-e21d-7f0000032729-7f000001da2a-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:26 +0100
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
+	by mail.avm.de (Postfix) with ESMTPS;
+	Tue, 10 Mar 2026 12:55:26 +0100 (CET)
+From: Philipp Hahn <phahn-oss@avm.de>
+Date: Tue, 10 Mar 2026 12:49:03 +0100
+Subject: [PATCH 37/61] drm: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
+Message-Id: <20260310-b4-is_err_or_null-v1-37-bd63b656022d@avm.de>
+References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
+ bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr, 
+ dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org, 
+ gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org, 
+ intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev, 
+ kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org, 
+ linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org, 
+ linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org, 
+ linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org, 
+ linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org, 
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-leds@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-mips@vger.kernel.org, linux-mm@kvack.org, 
+ linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org, 
+ linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org, 
+ linux-phy@lists.infradead.org, linux-pm@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, 
+ linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org, 
+ linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org, 
+ linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com, 
+ linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org, 
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org, 
+ ntfs3@lists.linux.dev, samba-technical@lists.samba.org, 
+ sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
+ tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
+ Philipp Hahn <phahn-oss@avm.de>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Zhenyu Wang <zhenyuw.linux@gmail.com>, Zhi Wang <zhi.wang.linux@gmail.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4819; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=6EuXq65aclW87MvbjKpAiGhSvzG4CQReYSdgtvzfvbQ=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZT+7AKzVVh94OZwGC1ojred94HRoubB3Jj7
+ iZaELcQHomJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGUwAKCRA0LQZT0ays
+ 26wAB/9TBiS4XQT7vnGKfXiPWlqEeJl/SwNfE8gRd+LVLd2GPoXI77JKlqZA5KJHsuEaYytwRHj
+ 0co7/mL9JXJHOUE/UPYXt3qFrwRsleM7nnJK7ysqo/nuMkL1zXCK+fpnqQpoBiKUkPJFjSSQWWs
+ A0qg0NaHPa2ThCoMkZDNEnWBS7X/+ME4OgDoWVp7r1X953fdXqxWSX8/++3IUoA8zLfZZvBTN8Z
+ lQp574N8BAAfdqG0oi1OBRhOByM9d1hpEYg4qXmJvNDZzHG8su81gcwwO+KaBKEy6Skfpo/fDOj
+ n85UVFKj8iDz3Ls4+zhkzod+J74YBwXEvBpocAWj1P06D/Zf
+X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
+ fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
+X-purgate-ID: 149429::1773143726-88610E6F-62997727/0/0
+X-purgate-type: clean
+X-purgate-size: 4821
+X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
+X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
+X-purgate: clean
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260310_045536_970762_A84D7201 
+X-CRM114-Status: GOOD (  15.35  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -136,120 +123,94 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least pausible.
-
-For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
----
-net: stmmac: qcom-ethqos: add support for sa8255p
-
-This commit adds support for the SA8255P SoC which uses power domains
-managed via SCMI firmware, rather than the traditional clock/phy-based
-power management used by other variants.
-
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-> index 8ba57bba3f2e..54f8ef3cfd7d 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-
-[ ... ]
-
-> +static void ethqos_disable_serdes(void *data)
-> +{
-> +	struct qcom_ethqos *ethqos = data;
-> +
-> +	qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
-                          ^^
-
-Should this be qcom_ethqos_domain_off() instead of qcom_ethqos_domain_on()?
-
-This function is registered as a cleanup action via devm_add_action_or_reset()
-to undo the qcom_ethqos_domain_on(ETHQOS_PD_SERDES) call during probe. Using
-domain_on here would increment the PM runtime usage counter again rather than
-decrementing it. The serdes power domain would never be properly turned off
-on driver removal.
-
-Compare with qcom_ethqos_pd_serdes_powerdown() which correctly uses
-qcom_ethqos_domain_off().
-
-> +}
-
-[ ... ]
-
-> +static int qcom_ethqos_pd_init(struct device *dev, void *priv)
-> +{
-> +	struct qcom_ethqos *ethqos = priv;
-> +	int ret;
-> +
-> +	/*
-> +	 * Enable functional clock to prevent DMA reset after timeout due
-> +	 * to no PHY clock being enabled after the hardware block has been
-> +	 * power cycled. The actual configuration will be adjusted once
-> +	 * ethqos_fix_mac_speed() is called.
-> +	 */
-> +	ethqos_set_func_clk_en(ethqos);
-> +
-> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_CORE);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
-> +	if (ret) {
-> +		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
-> +		return ret;
-> +	}
-> +
-> +	return 0;
-> +}
-
-[ ... ]
-
->  	if (pm_data && pm_data->use_domains) {
->  		ethqos->set_serdes_speed = ethqos_set_serdes_speed_pd;
->
-> +		ret = devm_pm_domain_attach_list(dev, &pm_data->pd,
-> +						 &ethqos->pd.pd_list);
-> +		if (ret < 0)
-> +			return dev_err_probe(dev, ret, "Failed to attach power domains\n");
-> +
-> +		plat_dat->clks_config = ethqos_pd_clks_config;
-> +		plat_dat->serdes_powerup = qcom_ethqos_pd_serdes_powerup;
-> +		plat_dat->serdes_powerdown = qcom_ethqos_pd_serdes_powerdown;
-> +		plat_dat->exit = qcom_ethqos_pd_exit;
-> +		plat_dat->init = qcom_ethqos_pd_init;
-                             ^^^^^^^^^^^^^^^^^^^^^^^
-
-> +		plat_dat->clk_ptp_rate = pm_data->clk_ptp_rate;
-> +
-> +		ret = qcom_ethqos_pd_init(dev, ethqos);
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Is qcom_ethqos_pd_init() being called twice?
-
-It is assigned to plat_dat->init above, and then called directly here. Later,
-devm_stmmac_pltfr_probe() -> stmmac_pltfr_probe() -> stmmac_dvr_probe() will
-call plat_dat->init() again (see stmmac_main.c stmmac_dvr_probe function).
-
-Each call to qcom_ethqos_pd_init() increments the PM runtime usage counter
-for ETHQOS_PD_CORE and ETHQOS_PD_MDIO via pm_runtime_resume_and_get(). With
-two calls, the refcount would be 2 for each domain, but qcom_ethqos_pd_exit()
-only decrements once per domain. This would leave the power domains with a
-dangling reference.
-
-Perhaps the direct call to qcom_ethqos_pd_init() here should be removed, and
-let stmmac_dvr_probe() invoke it through the plat_dat->init callback?
-
-> +		if (ret)
-> +			return ret;
-
-[ ... ]
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+UHJlZmVyIHVzaW5nIElTX0VSUl9PUl9OVUxMKCkgb3ZlciB1c2luZyBJU19FUlIoKSBhbmQgYSBt
+YW51YWwgTlVMTApjaGVjay4KCkNoYW5nZSBnZW5lcmF0ZWQgd2l0aCBjb2NjaW5lbGxlLgoKVG86
+IEFuZHJ6ZWogSGFqZGEgPGFuZHJ6ZWouaGFqZGFAaW50ZWwuY29tPgpUbzogTmVpbCBBcm1zdHJv
+bmcgPG5laWwuYXJtc3Ryb25nQGxpbmFyby5vcmc+ClRvOiBSb2JlcnQgRm9zcyA8cmZvc3NAa2Vy
+bmVsLm9yZz4KVG86IExhdXJlbnQgUGluY2hhcnQgPExhdXJlbnQucGluY2hhcnRAaWRlYXNvbmJv
+YXJkLmNvbT4KVG86IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KVG86IEplcm5laiBT
+a3JhYmVjIDxqZXJuZWouc2tyYWJlY0BnbWFpbC5jb20+ClRvOiBNYWFydGVuIExhbmtob3JzdCA8
+bWFhcnRlbi5sYW5raG9yc3RAbGludXguaW50ZWwuY29tPgpUbzogTWF4aW1lIFJpcGFyZCA8bXJp
+cGFyZEBrZXJuZWwub3JnPgpUbzogVGhvbWFzIFppbW1lcm1hbm4gPHR6aW1tZXJtYW5uQHN1c2Uu
+ZGU+ClRvOiBEYXZpZCBBaXJsaWUgPGFpcmxpZWRAZ21haWwuY29tPgpUbzogU2ltb25hIFZldHRl
+ciA8c2ltb25hQGZmd2xsLmNoPgpUbzogWmhlbnl1IFdhbmcgPHpoZW55dXcubGludXhAZ21haWwu
+Y29tPgpUbzogWmhpIFdhbmcgPHpoaS53YW5nLmxpbnV4QGdtYWlsLmNvbT4KVG86IEphbmkgTmlr
+dWxhIDxqYW5pLm5pa3VsYUBsaW51eC5pbnRlbC5jb20+ClRvOiBKb29uYXMgTGFodGluZW4gPGpv
+b25hcy5sYWh0aW5lbkBsaW51eC5pbnRlbC5jb20+ClRvOiBSb2RyaWdvIFZpdmkgPHJvZHJpZ28u
+dml2aUBpbnRlbC5jb20+ClRvOiBUdnJ0a28gVXJzdWxpbiA8dHVyc3VsaW5AdXJzdWxpbi5uZXQ+
+ClRvOiBBbGV4IERldWNoZXIgPGFsZXhhbmRlci5kZXVjaGVyQGFtZC5jb20+ClRvOiAiQ2hyaXN0
+aWFuIEvDtm5pZyIgPGNocmlzdGlhbi5rb2VuaWdAYW1kLmNvbT4KVG86IFNhbmR5IEh1YW5nIDxo
+amNAcm9jay1jaGlwcy5jb20+ClRvOiAiSGVpa28gU3TDvGJuZXIiIDxoZWlrb0BzbnRlY2guZGU+
+ClRvOiBBbmR5IFlhbiA8YW5keS55YW5Acm9jay1jaGlwcy5jb20+CkNjOiBkcmktZGV2ZWxAbGlz
+dHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBsaW51eC1rZXJuZWxAdmdlci5rZXJuZWwub3JnCkNjOiBp
+bnRlbC1nZnhAbGlzdHMuZnJlZWRlc2t0b3Aub3JnCkNjOiBhbWQtZ2Z4QGxpc3RzLmZyZWVkZXNr
+dG9wLm9yZwpDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQub3JnCkNjOiBsaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnClNpZ25lZC1vZmYtYnk6IFBoaWxpcHAgSGFo
+biA8cGhhaG4tb3NzQGF2bS5kZT4KLS0tCiBkcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9wc3lz
+L2R3LWhkbWkuYyAgICAgICB8IDIgKy0KIGRyaXZlcnMvZ3B1L2RybS9kcm1fc3lzZnMuYyAgICAg
+ICAgICAgICAgICAgICAgIHwgMiArLQogZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxl
+ci5jICAgICAgICAgICAgfCA0ICsrLS0KIGRyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX3Rl
+c3QuYyAgICAgICAgICAgIHwgMiArLQogZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3LW1pcGkt
+ZHNpLXJvY2tjaGlwLmMgfCAyICstCiA1IGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwg
+NiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vYnJpZGdlL3N5bm9w
+c3lzL2R3LWhkbWkuYyBiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5j
+CmluZGV4IGVlODhjMGU3OTNiMDQxNmQyMDEwNWE0MzQ0OGNiNDAzNzQwMmU2NGIuLjY0ZmEyYmM4
+ZDI4MTk3MTQ3ZWUyMmI0Zjc0MTM0Y2MyN2RkOWIzMmQgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1
+L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9icmlk
+Z2Uvc3lub3BzeXMvZHctaGRtaS5jCkBAIC0zNjA4LDcgKzM2MDgsNyBAQCB2b2lkIGR3X2hkbWlf
+cmVtb3ZlKHN0cnVjdCBkd19oZG1pICpoZG1pKQogewogCWRybV9icmlkZ2VfcmVtb3ZlKCZoZG1p
+LT5icmlkZ2UpOwogCi0JaWYgKGhkbWktPmF1ZGlvICYmICFJU19FUlIoaGRtaS0+YXVkaW8pKQor
+CWlmICghSVNfRVJSX09SX05VTEwoaGRtaS0+YXVkaW8pKQogCQlwbGF0Zm9ybV9kZXZpY2VfdW5y
+ZWdpc3RlcihoZG1pLT5hdWRpbyk7CiAJaWYgKCFJU19FUlIoaGRtaS0+Y2VjKSkKIAkJcGxhdGZv
+cm1fZGV2aWNlX3VucmVnaXN0ZXIoaGRtaS0+Y2VjKTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1
+L2RybS9kcm1fc3lzZnMuYyBiL2RyaXZlcnMvZ3B1L2RybS9kcm1fc3lzZnMuYwppbmRleCBlZjRl
+OTIzYTg3Mjg0MzMzOTc0M2QyMWU0ODc3MjI1ODU1ZGE5MjFlLi42NzQ4YWNiNDE2M2U4ZjU2NThj
+OTIwMWEwNDEyYjM4ODYyYzdiYWFiIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vZHJtX3N5
+c2ZzLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2RybV9zeXNmcy5jCkBAIC02MDAsNyArNjAwLDcg
+QEAgc3RydWN0IGRldmljZSAqZHJtX3N5c2ZzX21pbm9yX2FsbG9jKHN0cnVjdCBkcm1fbWlub3Ig
+Km1pbm9yKQogICovCiBpbnQgZHJtX2NsYXNzX2RldmljZV9yZWdpc3RlcihzdHJ1Y3QgZGV2aWNl
+ICpkZXYpCiB7Ci0JaWYgKCFkcm1fY2xhc3MgfHwgSVNfRVJSKGRybV9jbGFzcykpCisJaWYgKElT
+X0VSUl9PUl9OVUxMKGRybV9jbGFzcykpCiAJCXJldHVybiAtRU5PRU5UOwogCiAJZGV2LT5jbGFz
+cyA9IGRybV9jbGFzczsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hl
+ZHVsZXIuYyBiL2RyaXZlcnMvZ3B1L2RybS9pOTE1L2d2dC9zY2hlZHVsZXIuYwppbmRleCAxNWZk
+ZDUxNGNhODM2ZTg0ZjRkZTk1ZTMyMDdhYjQ1YmI5MjQzNDI2Li45MzNlYzVmZmExZjFlYmFmZDY4
+Nzk5NmYxNjdiOTgyNDkwNzAyMjExIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0vaTkxNS9n
+dnQvc2NoZWR1bGVyLmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL2k5MTUvZ3Z0L3NjaGVkdWxlci5j
+CkBAIC02NzUsMTAgKzY3NSwxMCBAQCBzdGF0aWMgdm9pZCByZWxlYXNlX3NoYWRvd19iYXRjaF9i
+dWZmZXIoc3RydWN0IGludGVsX3ZncHVfd29ya2xvYWQgKndvcmtsb2FkKQogCWxpc3RfZm9yX2Vh
+Y2hfZW50cnlfc2FmZShiYiwgcG9zLCAmd29ya2xvYWQtPnNoYWRvd19iYiwgbGlzdCkgewogCQlp
+ZiAoYmItPm9iaikgewogCQkJaTkxNV9nZW1fb2JqZWN0X2xvY2soYmItPm9iaiwgTlVMTCk7Ci0J
+CQlpZiAoYmItPnZhICYmICFJU19FUlIoYmItPnZhKSkKKwkJCWlmICghSVNfRVJSX09SX05VTEwo
+YmItPnZhKSkKIAkJCQlpOTE1X2dlbV9vYmplY3RfdW5waW5fbWFwKGJiLT5vYmopOwogCi0JCQlp
+ZiAoYmItPnZtYSAmJiAhSVNfRVJSKGJiLT52bWEpKQorCQkJaWYgKCFJU19FUlJfT1JfTlVMTChi
+Yi0+dm1hKSkKIAkJCQlpOTE1X3ZtYV91bnBpbihiYi0+dm1hKTsKIAogCQkJaTkxNV9nZW1fb2Jq
+ZWN0X3VubG9jayhiYi0+b2JqKTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24v
+cmFkZW9uX3Rlc3QuYyBiL2RyaXZlcnMvZ3B1L2RybS9yYWRlb24vcmFkZW9uX3Rlc3QuYwppbmRl
+eCAwYjQ1OWY3ZGYyM2JhZTNlZWY3ZTM2ZjRiNWYzNTYzOGZiNmY0OTg1Li41NzMyODRjNGFmNjBm
+MTJkN2VkZWM4ODkyNjBmYzhhMmUyYjcwNDIwIDEwMDY0NAotLS0gYS9kcml2ZXJzL2dwdS9kcm0v
+cmFkZW9uL3JhZGVvbl90ZXN0LmMKKysrIGIvZHJpdmVycy9ncHUvZHJtL3JhZGVvbi9yYWRlb25f
+dGVzdC5jCkBAIC0yMzQsNyArMjM0LDcgQEAgc3RhdGljIHZvaWQgcmFkZW9uX2RvX3Rlc3RfbW92
+ZXMoc3RydWN0IHJhZGVvbl9kZXZpY2UgKnJkZXYsIGludCBmbGFnKQogCQkJcmFkZW9uX2JvX3Vu
+cmVzZXJ2ZShndHRfb2JqW2ldKTsKIAkJCXJhZGVvbl9ib191bnJlZigmZ3R0X29ialtpXSk7CiAJ
+CX0KLQkJaWYgKGZlbmNlICYmICFJU19FUlIoZmVuY2UpKQorCQlpZiAoIUlTX0VSUl9PUl9OVUxM
+KGZlbmNlKSkKIAkJCXJhZGVvbl9mZW5jZV91bnJlZigmZmVuY2UpOwogCQlicmVhazsKIAl9CmRp
+ZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHctbWlwaS1kc2ktcm9ja2NoaXAu
+YyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCmluZGV4
+IDM1NDdkOTFiMjVkMzE3YzZjYWQ2OTBkYTdkOTdhN2U1NDM2YzAyMzYuLjhhMjY3ZGU4NWRhOWM3
+NmMyZTI5YjJhYmFiZjEyMThlNDAwMjgyYzIgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvZ3B1L2RybS9y
+b2NrY2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCisrKyBiL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kdy1taXBpLWRzaS1yb2NrY2hpcC5jCkBAIC0xMDk1LDcgKzEwOTUsNyBAQCBzdGF0aWMg
+aW50IGR3X21pcGlfZHNpX3JvY2tjaGlwX2hvc3RfZGV0YWNoKHZvaWQgKnByaXZfZGF0YSwKIAlz
+dHJ1Y3QgZGV2aWNlICpzZWNvbmQ7CiAKIAlzZWNvbmQgPSBkd19taXBpX2RzaV9yb2NrY2hpcF9m
+aW5kX3NlY29uZChkc2kpOwotCWlmIChzZWNvbmQgJiYgIUlTX0VSUihzZWNvbmQpKQorCWlmICgh
+SVNfRVJSX09SX05VTEwoc2Vjb25kKSkKIAkJY29tcG9uZW50X2RlbChzZWNvbmQsICZkd19taXBp
+X2RzaV9yb2NrY2hpcF9vcHMpOwogCiAJY29tcG9uZW50X2RlbChkc2ktPmRldiwgJmR3X21pcGlf
+ZHNpX3JvY2tjaGlwX29wcyk7CgotLSAKMi40My4wCgoKX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4
+LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcv
+bWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
