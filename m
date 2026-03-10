@@ -4,59 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B229FEA854E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 08:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A7AEA854E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 08:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=wOo79/Mxs7fbmqA51Ji9ztD2EPAn4LS6xQNdoOqpR6w=; b=V21SGZpe3d7EGM
-	uAfNcU4qnCJn+49Df/vusDXS2J1PRIhGSjwTSqYcNyH7/dKE4W0OqpMmvqophGy9Bz+ut70lTS1xK
-	AFYfrH245ZXrMpm5Uri3wv/OgpN/DeQns4XD+P+lsGz1JSVgvwFnrx2q0r2e0qoi3Om5D9ErkPk7g
-	V5OrlhB6f2KjDWBEg/nBdqH6/HTIpUum9r5n0T+bucapZpwaoP6UYqc9sTVcUveQMa3pm1Qxaf5f3
-	rtV9rrFy3yoTczEvjT9YNK6P/MPUOrNEOWDb4L681MYVcNhiJ2SAA+UwftvdwZQ9LAx1LVTAvweqp
-	uKgQImsGMeZ+H/gUmf3A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gdAFJKwG0hd9gPzaABRk6LOY2KCJKU05xKXiwDf8nYQ=; b=H3EsMRudPL2KWhzNwcGmZeR5Mr
+	BJSsNOpPAqUDCHRIteNtZKRmq18Y2ARzfauvYNjgAZt9sX3sP2DvJMEAaUyzk2ZQ+1t3QOS2EgN+m
+	hAuFakgHVuth/1lnO63FJomdPPIkNnz3ePGHT4ZupwYJHBpoHIOuV30tT/sIkNCYNz6HFOPSSE9pl
+	uhMpzpP1IehB9s3U182JTSEjurEaVnKrPP77P8OSdj9+d6BRs86zwSedTC+0TyR4pF4Dl6rXoejNW
+	0Oi/MK1VpHc7gzeYyxM5YXnL9HHOquvN5u2m5tOeSa63XQjjfIv1WEfxBgh2k6lBjHvYNIOZtgMgO
+	qZeyd0lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzsqO-000000090R2-3i69;
-	Tue, 10 Mar 2026 08:53:36 +0000
-Received: from mail-m49246.qiye.163.com ([45.254.49.246])
+	id 1vzsqd-000000090Uz-0Jfj;
+	Tue, 10 Mar 2026 08:53:51 +0000
+Received: from tika.stderr.nl ([94.142.244.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzsqM-000000090QX-1PAp;
-	Tue, 10 Mar 2026 08:53:35 +0000
-Received: from xxm-vm.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 366407926;
-	Tue, 10 Mar 2026 16:48:21 +0800 (GMT+08:00)
-From: Simon Xue <xxm@rock-chips.com>
-To: Joerg Roedel <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Simon Xue <xxm@rock-chips.com>,
-	iommu@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] iommu/rockchip: Drop global rk_ops in favor of per-device ops
-Date: Tue, 10 Mar 2026 16:48:11 +0800
-Message-Id: <20260310084812.126082-1-xxm@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
+	id 1vzsqZ-000000090TH-264I
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Mar 2026 08:53:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=mail.tikatika.nl; s=201709.tika; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=Jurke3t2EyAB5+kik9FcOqNaKymdC6aoDQcLoDZKbXc=; b=RLL5cx9MD2m8r+X9gRVzVpVqZs
+	RWsU1OHvsr6fp+kbOZjI/bIzss324l6KeKJJJjUdmkUWLz585TZR5otE81+7jCvOv3OD+3/PWAXZx
+	2G4mvfUSS7uyy2+r8v8M6c1B10ZJ7iZ45+kw3/c/mJkeAotgH2hCq5OmzMrESIJEwRJU=;
+X-Preliminary-Spam-Score: -4.4 (----)
+Received: from [10.42.0.16] (helo=login.tika.stderr.nl)
+	by tika.stderr.nl with smtp (Exim 4.96)
+	(envelope-from <matthijs@stdin.nl>)
+	id 1vzsqH-0002Jb-2J;
+	Tue, 10 Mar 2026 09:53:32 +0100
+Received: (nullmailer pid 2675120 invoked by uid 2001);
+	Tue, 10 Mar 2026 08:53:29 -0000
+Date: Tue, 10 Mar 2026 09:53:29 +0100
+From: Matthijs Kooijman <matthijs@stdin.nl>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Subject: Re: [PATCH RESEND 1/2] arm64: dts: rockchip: rk3308: Add gpio-ranges
+ properties
+Message-ID: <aa_cCCc7FqdSv8eX@login.tika.stderr.nl>
+Mail-Followup-To: Matthijs Kooijman <matthijs@stdin.nl>,
+	Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
+	Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+References: <20260302202121.197288-1-matthijs@stdin.nl>
+ <20260302202121.197288-3-matthijs@stdin.nl>
+ <e439f2f7-0b25-41a5-951a-d8d3bc9f2bf2@kwiboo.se>
 MIME-Version: 1.0
-X-HM-Tid: 0a9cd6eecfc503ackunm4dcecdff2859ab8
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQxhPGVYZTkxKGUsYGENKS0NWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=C+rt0Ro3Pjm30ci7xv0PAhoxbBrXHpgN6Xmb8BXdQCQTUWWUnWkaFPU3xvhWowbaKOYqKO2uz+V6J/65eD16+lEZAZMKfexxZRtZyPgAAQgPUITA3fhBtT4HMY8qkGVj7Eq9YOQJLwsqfqgqBCoCjJX13QcDpZsYZIbykTAnKZM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=ep+jJlFfjKc1W/n2Uufe+1A+x8UJ79REU3n+hRnPnqM=;
-	h=date:mime-version:subject:message-id:from;
+In-Reply-To: <e439f2f7-0b25-41a5-951a-d8d3bc9f2bf2@kwiboo.se>
+X-PGP-Fingerprint: E7D0 C6A7 5BEE 6D84 D638  F60A 3798 AF15 A156 5658
+X-PGP-Key: http://www.stderr.nl/static/files/gpg_pubkey.asc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_015334_599969_8954E264 
-X-CRM114-Status: GOOD (  19.02  )
+X-CRM114-CacheID: sfid-20260310_015348_085930_77E99586 
+X-CRM114-Status: GOOD (  24.15  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,268 +79,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7498061987164320408=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver currently uses a global rk_ops pointer, forcing all IOMMU
-instances to share the same operations. This restricts the driver from
-supporting SoCs that might integrate different versions of IOMMU hardware.
 
-Since the IOMMU framework passes the master device information to
-iommu_paging_domain_alloc(), the global variable is no longer needed.
+--===============7498061987164320408==
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="Y0Af1s2EGjNyxXmK"
+Content-Disposition: inline
 
-Fix this by moving rk_ops into struct rk_iommu and struct rk_iommu_domain.
-Initialize it per-device during probe via of_device_get_match_data(),
-and replace all global references with the instance-specific pointers.
 
-Signed-off-by: Simon Xue <xxm@rock-chips.com>
----
- drivers/iommu/rockchip-iommu.c | 67 ++++++++++++++++------------------
- 1 file changed, 31 insertions(+), 36 deletions(-)
+--Y0Af1s2EGjNyxXmK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 0013cf196c57..09233c67ee8e 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -82,6 +82,14 @@
-   */
- #define RK_IOMMU_PGSIZE_BITMAP 0x007ff000
- 
-+struct rk_iommu_ops {
-+	phys_addr_t (*pt_address)(u32 dte);
-+	u32 (*mk_dtentries)(dma_addr_t pt_dma);
-+	u32 (*mk_ptentries)(phys_addr_t page, int prot);
-+	u64 dma_bit_mask;
-+	gfp_t gfp_flags;
-+};
-+
- struct rk_iommu_domain {
- 	struct list_head iommus;
- 	u32 *dt; /* page directory table */
-@@ -89,6 +97,7 @@ struct rk_iommu_domain {
- 	spinlock_t iommus_lock; /* lock for iommus list */
- 	spinlock_t dt_lock; /* lock for modifying page directory table */
- 	struct device *dma_dev;
-+	const struct rk_iommu_ops *rk_ops;
- 
- 	struct iommu_domain domain;
- };
-@@ -98,14 +107,6 @@ static const char * const rk_iommu_clocks[] = {
- 	"aclk", "iface",
- };
- 
--struct rk_iommu_ops {
--	phys_addr_t (*pt_address)(u32 dte);
--	u32 (*mk_dtentries)(dma_addr_t pt_dma);
--	u32 (*mk_ptentries)(phys_addr_t page, int prot);
--	u64 dma_bit_mask;
--	gfp_t gfp_flags;
--};
--
- struct rk_iommu {
- 	struct device *dev;
- 	void __iomem **bases;
-@@ -117,6 +118,7 @@ struct rk_iommu {
- 	struct iommu_device iommu;
- 	struct list_head node; /* entry in rk_iommu_domain.iommus */
- 	struct iommu_domain *domain; /* domain to which iommu is attached */
-+	const struct rk_iommu_ops *rk_ops;
- };
- 
- struct rk_iommudata {
-@@ -124,7 +126,6 @@ struct rk_iommudata {
- 	struct rk_iommu *iommu;
- };
- 
--static const struct rk_iommu_ops *rk_ops;
- static struct iommu_domain rk_identity_domain;
- 
- static inline void rk_table_flush(struct rk_iommu_domain *dom, dma_addr_t dma,
-@@ -510,7 +511,7 @@ static int rk_iommu_force_reset(struct rk_iommu *iommu)
- 	 * and verifying that upper 5 (v1) or 7 (v2) nybbles are read back.
- 	 */
- 	for (i = 0; i < iommu->num_mmu; i++) {
--		dte_addr = rk_ops->pt_address(DTE_ADDR_DUMMY);
-+		dte_addr = iommu->rk_ops->pt_address(DTE_ADDR_DUMMY);
- 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR, dte_addr);
- 
- 		if (dte_addr != rk_iommu_read(iommu->bases[i], RK_MMU_DTE_ADDR)) {
-@@ -551,7 +552,7 @@ static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
- 	page_offset = rk_iova_page_offset(iova);
- 
- 	mmu_dte_addr = rk_iommu_read(base, RK_MMU_DTE_ADDR);
--	mmu_dte_addr_phys = rk_ops->pt_address(mmu_dte_addr);
-+	mmu_dte_addr_phys = iommu->rk_ops->pt_address(mmu_dte_addr);
- 
- 	dte_addr_phys = mmu_dte_addr_phys + (4 * dte_index);
- 	dte_addr = phys_to_virt(dte_addr_phys);
-@@ -560,14 +561,14 @@ static void log_iova(struct rk_iommu *iommu, int index, dma_addr_t iova)
- 	if (!rk_dte_is_pt_valid(dte))
- 		goto print_it;
- 
--	pte_addr_phys = rk_ops->pt_address(dte) + (pte_index * 4);
-+	pte_addr_phys = iommu->rk_ops->pt_address(dte) + (pte_index * 4);
- 	pte_addr = phys_to_virt(pte_addr_phys);
- 	pte = *pte_addr;
- 
- 	if (!rk_pte_is_page_valid(pte))
- 		goto print_it;
- 
--	page_addr_phys = rk_ops->pt_address(pte) + page_offset;
-+	page_addr_phys = iommu->rk_ops->pt_address(pte) + page_offset;
- 	page_flags = pte & RK_PTE_PAGE_FLAGS_MASK;
- 
- print_it:
-@@ -663,13 +664,13 @@ static phys_addr_t rk_iommu_iova_to_phys(struct iommu_domain *domain,
- 	if (!rk_dte_is_pt_valid(dte))
- 		goto out;
- 
--	pt_phys = rk_ops->pt_address(dte);
-+	pt_phys = rk_domain->rk_ops->pt_address(dte);
- 	page_table = (u32 *)phys_to_virt(pt_phys);
- 	pte = page_table[rk_iova_pte_index(iova)];
- 	if (!rk_pte_is_page_valid(pte))
- 		goto out;
- 
--	phys = rk_ops->pt_address(pte) + rk_iova_page_offset(iova);
-+	phys = rk_domain->rk_ops->pt_address(pte) + rk_iova_page_offset(iova);
- out:
- 	spin_unlock_irqrestore(&rk_domain->dt_lock, flags);
- 
-@@ -730,7 +731,7 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
- 	if (rk_dte_is_pt_valid(dte))
- 		goto done;
- 
--	page_table = iommu_alloc_pages_sz(GFP_ATOMIC | rk_ops->gfp_flags,
-+	page_table = iommu_alloc_pages_sz(GFP_ATOMIC | rk_domain->rk_ops->gfp_flags,
- 					  SPAGE_SIZE);
- 	if (!page_table)
- 		return ERR_PTR(-ENOMEM);
-@@ -742,13 +743,13 @@ static u32 *rk_dte_get_page_table(struct rk_iommu_domain *rk_domain,
- 		return ERR_PTR(-ENOMEM);
- 	}
- 
--	dte = rk_ops->mk_dtentries(pt_dma);
-+	dte = rk_domain->rk_ops->mk_dtentries(pt_dma);
- 	*dte_addr = dte;
- 
- 	rk_table_flush(rk_domain,
- 		       rk_domain->dt_dma + dte_index * sizeof(u32), 1);
- done:
--	pt_phys = rk_ops->pt_address(dte);
-+	pt_phys = rk_domain->rk_ops->pt_address(dte);
- 	return (u32 *)phys_to_virt(pt_phys);
- }
- 
-@@ -790,7 +791,7 @@ static int rk_iommu_map_iova(struct rk_iommu_domain *rk_domain, u32 *pte_addr,
- 		if (rk_pte_is_page_valid(pte))
- 			goto unwind;
- 
--		pte_addr[pte_count] = rk_ops->mk_ptentries(paddr, prot);
-+		pte_addr[pte_count] = rk_domain->rk_ops->mk_ptentries(paddr, prot);
- 
- 		paddr += SPAGE_SIZE;
- 	}
-@@ -812,7 +813,7 @@ static int rk_iommu_map_iova(struct rk_iommu_domain *rk_domain, u32 *pte_addr,
- 			    pte_count * SPAGE_SIZE);
- 
- 	iova += pte_count * SPAGE_SIZE;
--	page_phys = rk_ops->pt_address(pte_addr[pte_count]);
-+	page_phys = rk_domain->rk_ops->pt_address(pte_addr[pte_count]);
- 	pr_err("iova: %pad already mapped to %pa cannot remap to phys: %pa prot: %#x\n",
- 	       &iova, &page_phys, &paddr, prot);
- 
-@@ -849,7 +850,7 @@ static int rk_iommu_map(struct iommu_domain *domain, unsigned long _iova,
- 	pte_index = rk_iova_pte_index(iova);
- 	pte_addr = &page_table[pte_index];
- 
--	pte_dma = rk_ops->pt_address(dte_index) + pte_index * sizeof(u32);
-+	pte_dma = rk_domain->rk_ops->pt_address(dte_index) + pte_index * sizeof(u32);
- 	ret = rk_iommu_map_iova(rk_domain, pte_addr, pte_dma, iova,
- 				paddr, size, prot);
- 
-@@ -887,7 +888,7 @@ static size_t rk_iommu_unmap(struct iommu_domain *domain, unsigned long _iova,
- 		return 0;
- 	}
- 
--	pt_phys = rk_ops->pt_address(dte);
-+	pt_phys = rk_domain->rk_ops->pt_address(dte);
- 	pte_addr = (u32 *)phys_to_virt(pt_phys) + rk_iova_pte_index(iova);
- 	pte_dma = pt_phys + rk_iova_pte_index(iova) * sizeof(u32);
- 	unmap_size = rk_iommu_unmap_iova(rk_domain, pte_addr, pte_dma, size);
-@@ -945,7 +946,7 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
- 
- 	for (i = 0; i < iommu->num_mmu; i++) {
- 		rk_iommu_write(iommu->bases[i], RK_MMU_DTE_ADDR,
--			       rk_ops->mk_dtentries(rk_domain->dt_dma));
-+			       iommu->rk_ops->mk_dtentries(rk_domain->dt_dma));
- 		rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
- 		rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
- 	}
-@@ -1068,17 +1069,19 @@ static struct iommu_domain *rk_iommu_domain_alloc_paging(struct device *dev)
- 	if (!rk_domain)
- 		return NULL;
- 
-+	iommu = rk_iommu_from_dev(dev);
-+	rk_domain->rk_ops = iommu->rk_ops;
-+
- 	/*
- 	 * rk32xx iommus use a 2 level pagetable.
- 	 * Each level1 (dt) and level2 (pt) table has 1024 4-byte entries.
- 	 * Allocate one 4 KiB page for each table.
- 	 */
--	rk_domain->dt = iommu_alloc_pages_sz(GFP_KERNEL | rk_ops->gfp_flags,
-+	rk_domain->dt = iommu_alloc_pages_sz(GFP_KERNEL | rk_domain->rk_ops->gfp_flags,
- 					     SPAGE_SIZE);
- 	if (!rk_domain->dt)
- 		goto err_free_domain;
- 
--	iommu = rk_iommu_from_dev(dev);
- 	rk_domain->dma_dev = iommu->dev;
- 	rk_domain->dt_dma = dma_map_single(rk_domain->dma_dev, rk_domain->dt,
- 					   SPAGE_SIZE, DMA_TO_DEVICE);
-@@ -1117,7 +1120,7 @@ static void rk_iommu_domain_free(struct iommu_domain *domain)
- 	for (i = 0; i < NUM_DT_ENTRIES; i++) {
- 		u32 dte = rk_domain->dt[i];
- 		if (rk_dte_is_pt_valid(dte)) {
--			phys_addr_t pt_phys = rk_ops->pt_address(dte);
-+			phys_addr_t pt_phys = rk_domain->rk_ops->pt_address(dte);
- 			u32 *page_table = phys_to_virt(pt_phys);
- 			dma_unmap_single(rk_domain->dma_dev, pt_phys,
- 					 SPAGE_SIZE, DMA_TO_DEVICE);
-@@ -1212,15 +1215,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 	iommu->num_mmu = 0;
- 
- 	ops = of_device_get_match_data(dev);
--	if (!rk_ops)
--		rk_ops = ops;
--
--	/*
--	 * That should not happen unless different versions of the
--	 * hardware block are embedded the same SoC
--	 */
--	if (WARN_ON(rk_ops != ops))
--		return -EINVAL;
-+	iommu->rk_ops = ops;
- 
- 	iommu->bases = devm_kcalloc(dev, num_res, sizeof(*iommu->bases),
- 				    GFP_KERNEL);
-@@ -1286,7 +1281,7 @@ static int rk_iommu_probe(struct platform_device *pdev)
- 			goto err_pm_disable;
- 	}
- 
--	dma_set_mask_and_coherent(dev, rk_ops->dma_bit_mask);
-+	dma_set_mask_and_coherent(dev, iommu->rk_ops->dma_bit_mask);
- 
- 	err = iommu_device_sysfs_add(&iommu->iommu, dev, NULL, dev_name(dev));
- 	if (err)
--- 
-2.34.1
+Hi Jonas,
 
+Thanks for your review.
+
+> > This does not immediately change functionality, because the
+> > gpio-rockchip.c driver has a workaround that defines ranges when they
+> > are not present in DT, but that relies on global gpio numbering (so
+> > AFAICS only works when the rockchip gpio banks are initialized first and
+> > in-order).
+>=20
+> This is strictly not correct, the driver use the gpioX alias id as
+> defined in the device tree and does not depend on the initialization
+> order.
+
+Ah, I had not realized these aliases existed. However, it seems they are
+not actually relevant in this case. My assumption was that gpio
+numbering was based on initalizating order, but I see in the code that
+GPIO drivers decide themselves (by setting gc->base statically or maybe
+based on DT). For the gpio-rockchip driver, these base numbers are
+hardcoded to start from 0 in rockchip_pinctrl_get_soc_data(). Dynamic
+initialization-order based numbering is also done for drivers that do
+not set gc->base, but that starts at GPIO number 512 to prevent
+conflicts.
+
+In any case, I will update my commit message to better reflect what is
+happening.
+
+
+> > --- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+> > +++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
+> > @@ -889,6 +889,7 @@ gpio0: gpio@ff220000 {
+> >  			interrupts =3D <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
+> >  			clocks =3D <&cru PCLK_GPIO0>;
+> >  			gpio-controller;
+> > +			gpio-ranges =3D <&pinctrl 0 0 32>;
+>=20
+> This matches the driver, but not the hardware according to datasheet, it
+> only lists gpio0 A0-C5 used, and not all 32 pins supported by the gpio0
+> controller.
+
+Indeed, this seems to be the case, but I wonder if this is a problem?
+
+Isee other rockchip devicetree definitions (rk3528, rk3562, rk356x,
+rk3576, rk3588) do not care about this and just map all 32 pins. See
+
+	git grep -C 20 rockchip,gpio-bank | grep gpio-ranges
+
+I also think there is no other provision for these missing GPIOs
+anywhere - both pinctrl and gpiod seem to expose all 32 pins, even the
+one that do not exist.
+
+Limiting the gpio-ranges definitions would prevent writing to reserved
+pinctrl registers via the userspace gpio API, which might be useful, but
+you would still be able to write to them via a custom devicetree (that
+uses non-existing pinctrl pins) and you would still be able to write to
+non-existent gpio registers via the userspace API.
+
+Given the above, do you still think it would be good to limit the
+gpio-ranges to the existing GPIOs only (I have no strong opinion)?
+
+Gr.
+
+Matthijs
+
+--Y0Af1s2EGjNyxXmK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCAAdFiEEMyF3AetYrDfGJ9el6ZMxy91tJYwFAmmv3AUACgkQ6ZMxy91t
+JYyNZA//VogIWO55rSmcEXGC0p9rrWm93PtZhjLMawss6RQXPtmAwnQUSDF7xCoy
+jsoOT8xFlARRDQC0v0ONBNhmOOYzH14emEqudzdjV6auGr8GW0vBdMF04xjWigEC
+nL1Jiqp+yoC1Rgk8C19H3fOiyx5VpEIkw5IHKrSQQH49gRkHjvHkTMDPLqeH32eY
+iH68S6mCp705yDVUXrRWCL4uRSfu5EaHpfRyfmqEf4gAz46Yxi4grxV9US7fjjZO
+x3PSE3XtNCleshCP/97xKPt8yAzir3NCRiXWFqTX58lwbK81s/ygVQSY914lJ88L
+gzNWmCMuhy01+4CF7GGnDE6C7jWSavixnrUhXRggIPq393OOs93sN5sXs2JnHP43
+qSAdwbPMf8ob4/JYyr9AdL90DKWXuqaN2PisAMn3p0+4Emr16LkQ5J4H20b5T1eW
+S8rg4jxHJdGd35IJzo0DC50kXp/s7T4EAdNmwKlcruubWMrCelyJ60kETqqI2noF
+Ov7vD3BV8XZUngJC0qeo8Cx62d13KZr4o1xKYvxA4Tmgi7ptx4XR6DDdZ2Utl9R9
+vlkTkR6tuEaOAOoJrniRQ9eOZYOgd2+JRyqJ9wNvfyvEK1YWZEfbaMy3/BWYrTlq
+YqjZkeflsS7QFjnSHLvkGMFe6OOTGlZMCVUjCKr8Mo6Kcv15bAc=
+=tkhC
+-----END PGP SIGNATURE-----
+
+--Y0Af1s2EGjNyxXmK--
+
+
+--===============7498061987164320408==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7498061987164320408==--
+
