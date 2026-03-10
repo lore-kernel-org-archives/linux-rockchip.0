@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49A7AEA854E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 08:53:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E322FEA8550
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 08:59:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gdAFJKwG0hd9gPzaABRk6LOY2KCJKU05xKXiwDf8nYQ=; b=H3EsMRudPL2KWhzNwcGmZeR5Mr
-	BJSsNOpPAqUDCHRIteNtZKRmq18Y2ARzfauvYNjgAZt9sX3sP2DvJMEAaUyzk2ZQ+1t3QOS2EgN+m
-	hAuFakgHVuth/1lnO63FJomdPPIkNnz3ePGHT4ZupwYJHBpoHIOuV30tT/sIkNCYNz6HFOPSSE9pl
-	uhMpzpP1IehB9s3U182JTSEjurEaVnKrPP77P8OSdj9+d6BRs86zwSedTC+0TyR4pF4Dl6rXoejNW
-	0Oi/MK1VpHc7gzeYyxM5YXnL9HHOquvN5u2m5tOeSa63XQjjfIv1WEfxBgh2k6lBjHvYNIOZtgMgO
-	qZeyd0lw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=TQQ83XSjsiFfdyGsIBlQsQsCidcN0dGjRbWVmcQpqFw=; b=EOXNfCWEhJmS2oKwea2L9TmdDd
+	ESX92SXGRTDd9BT91D4keLJmOnd9Hsbg35EBWtxrXQ19tVxPX5QY8UxHkCmM7RiOQmg7Y2/kvYOWc
+	6+7RKLyvJejsrI5n0k4n/hCdjA9I1EuAMh4HIUujjdbow/JEgRTOviZszwKrrYCw821/eCIaZ4BZM
+	1Zrb4a0wyFBeNmCshdnbqRnf3lJFqUveLUktIcO5K8lP6PVN2p9vSDw5TCkRmlsEKAcY+5eqer513
+	LaPMuA0/okhkWDhGzXG5v7nQGrbU+7APH3Pm2C9Tv47Saw6MSfqo6XsrNbOAENfVoFKA7vAkQXstV
+	xtaQYYyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzsqd-000000090Uz-0Jfj;
-	Tue, 10 Mar 2026 08:53:51 +0000
-Received: from tika.stderr.nl ([94.142.244.14])
+	id 1vzsvt-0000000910p-1gP0;
+	Tue, 10 Mar 2026 08:59:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzsqZ-000000090TH-264I
+	id 1vzsvs-0000000910T-0ukQ
 	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Mar 2026 08:53:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=mail.tikatika.nl; s=201709.tika; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Jurke3t2EyAB5+kik9FcOqNaKymdC6aoDQcLoDZKbXc=; b=RLL5cx9MD2m8r+X9gRVzVpVqZs
-	RWsU1OHvsr6fp+kbOZjI/bIzss324l6KeKJJJjUdmkUWLz585TZR5otE81+7jCvOv3OD+3/PWAXZx
-	2G4mvfUSS7uyy2+r8v8M6c1B10ZJ7iZ45+kw3/c/mJkeAotgH2hCq5OmzMrESIJEwRJU=;
-X-Preliminary-Spam-Score: -4.4 (----)
-Received: from [10.42.0.16] (helo=login.tika.stderr.nl)
-	by tika.stderr.nl with smtp (Exim 4.96)
-	(envelope-from <matthijs@stdin.nl>)
-	id 1vzsqH-0002Jb-2J;
-	Tue, 10 Mar 2026 09:53:32 +0100
-Received: (nullmailer pid 2675120 invoked by uid 2001);
-	Tue, 10 Mar 2026 08:53:29 -0000
-Date: Tue, 10 Mar 2026 09:53:29 +0100
-From: Matthijs Kooijman <matthijs@stdin.nl>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Heiko Stuebner <heiko@sntech.de>, Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, "linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Subject: Re: [PATCH RESEND 1/2] arm64: dts: rockchip: rk3308: Add gpio-ranges
- properties
-Message-ID: <aa_cCCc7FqdSv8eX@login.tika.stderr.nl>
-Mail-Followup-To: Matthijs Kooijman <matthijs@stdin.nl>,
-	Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>,
-	Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-References: <20260302202121.197288-1-matthijs@stdin.nl>
- <20260302202121.197288-3-matthijs@stdin.nl>
- <e439f2f7-0b25-41a5-951a-d8d3bc9f2bf2@kwiboo.se>
+	Tue, 10 Mar 2026 08:59:16 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 96E3E60097
+	for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 08:59:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44274C2BCAF
+	for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 08:59:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773133155;
+	bh=aNoRrpmsMc+cYEvSe6invRTy+zqTopZWXaN7o7akQrU=;
+	h=References:In-Reply-To:From:Date:Subject:To:From;
+	b=K09gTLDoKjSyE99nhOkMcw7DA+Qr0qRBXUiYz2l3EQB3P3s51zoCHWvI6LKbQOIkd
+	 J16LNZMyyYTJ4CnV+fu+9cvW91621tuyKadK28ti7qi5xGXVo7LhxG5qESjMJI2Acv
+	 Mvv2ntgEUmSy3fTRqYEprmg0MX3y/hQfv8YMVT6ihEleUzEClJ/oCWH4l5TrvehQMI
+	 U5zJdV7vq7XOaAQlLtL/nhRMCIzdWHG0rR3teMK9Ne6zdvW8+9SQUmiFc1JSVVqu5m
+	 BwHt86RY0AsaJTXoMDrNfDbUtLE98aWI2+/mEhbWw9kVNi0ju5H69ftaRDEmQQ3JVh
+	 Pxrrq20HBbwuw==
+Received: by mail-yx1-f46.google.com with SMTP id 956f58d0204a3-64c9fcc24b3so9714226d50.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 01:59:15 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCUHx1mExWu+poBC9HQYy6jIxJOO2JH9OU70eLxGTtydYcvl732dy2dURzgZl4polA91VKphJYe6TYsrb4VL/A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxoYfx554W8J0FkH1nU0oBV3ts+QiwaRuIWN7g0HHSrNIizaIp6
+	wowHOauc7YlkmieIe6NBSPPwG34nZIva2YXc7P4y7FlgISuYgRe52QcVDpoOUj36HPRBM21Jn26
+	v9zGbpMD4X7BIqBw6AWuEfFpuNq4uyGw=
+X-Received: by 2002:a05:690e:4486:b0:649:c7dd:d2ea with SMTP id
+ 956f58d0204a3-64d141a0203mr9886891d50.39.1773133154629; Tue, 10 Mar 2026
+ 01:59:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <e439f2f7-0b25-41a5-951a-d8d3bc9f2bf2@kwiboo.se>
-X-PGP-Fingerprint: E7D0 C6A7 5BEE 6D84 D638  F60A 3798 AF15 A156 5658
-X-PGP-Key: http://www.stderr.nl/static/files/gpg_pubkey.asc
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_015348_085930_77E99586 
-X-CRM114-Status: GOOD (  24.15  )
+References: <20260302202121.197288-1-matthijs@stdin.nl> <20260302202121.197288-3-matthijs@stdin.nl>
+ <e439f2f7-0b25-41a5-951a-d8d3bc9f2bf2@kwiboo.se> <aa_cCCc7FqdSv8eX@login.tika.stderr.nl>
+In-Reply-To: <aa_cCCc7FqdSv8eX@login.tika.stderr.nl>
+From: Linus Walleij <linusw@kernel.org>
+Date: Tue, 10 Mar 2026 09:59:03 +0100
+X-Gmail-Original-Message-ID: <CAD++jLmFt6N=v4RsxWqWKcsOonxbyoe7F__j+xNr4c8LWdgR7g@mail.gmail.com>
+X-Gm-Features: AaiRm502_1rkdLm1iaYa81yroOSRyRAo1lhawNhKOWuv7m5FNhD4eOYbJtZ1CkU
+Message-ID: <CAD++jLmFt6N=v4RsxWqWKcsOonxbyoe7F__j+xNr4c8LWdgR7g@mail.gmail.com>
+Subject: Re: [PATCH RESEND 1/2] arm64: dts: rockchip: rk3308: Add gpio-ranges properties
+To: Matthijs Kooijman <matthijs@stdin.nl>, Jonas Karlman <jonas@kwiboo.se>, Heiko Stuebner <heiko@sntech.de>, 
+	Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, 
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>, 
+	"linux-gpio@vger.kernel.org" <linux-gpio@vger.kernel.org>, 
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,119 +78,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7498061987164320408=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============7498061987164320408==
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="Y0Af1s2EGjNyxXmK"
-Content-Disposition: inline
-
-
---Y0Af1s2EGjNyxXmK
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-Hi Jonas,
-
-Thanks for your review.
-
-> > This does not immediately change functionality, because the
-> > gpio-rockchip.c driver has a workaround that defines ranges when they
-> > are not present in DT, but that relies on global gpio numbering (so
-> > AFAICS only works when the rockchip gpio banks are initialized first and
-> > in-order).
->=20
-> This is strictly not correct, the driver use the gpioX alias id as
-> defined in the device tree and does not depend on the initialization
-> order.
-
-Ah, I had not realized these aliases existed. However, it seems they are
-not actually relevant in this case. My assumption was that gpio
-numbering was based on initalizating order, but I see in the code that
-GPIO drivers decide themselves (by setting gc->base statically or maybe
-based on DT). For the gpio-rockchip driver, these base numbers are
-hardcoded to start from 0 in rockchip_pinctrl_get_soc_data(). Dynamic
-initialization-order based numbering is also done for drivers that do
-not set gc->base, but that starts at GPIO number 512 to prevent
-conflicts.
-
-In any case, I will update my commit message to better reflect what is
-happening.
-
-
-> > --- a/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> > +++ b/arch/arm64/boot/dts/rockchip/rk3308.dtsi
-> > @@ -889,6 +889,7 @@ gpio0: gpio@ff220000 {
-> >  			interrupts =3D <GIC_SPI 40 IRQ_TYPE_LEVEL_HIGH>;
-> >  			clocks =3D <&cru PCLK_GPIO0>;
-> >  			gpio-controller;
-> > +			gpio-ranges =3D <&pinctrl 0 0 32>;
->=20
-> This matches the driver, but not the hardware according to datasheet, it
-> only lists gpio0 A0-C5 used, and not all 32 pins supported by the gpio0
-> controller.
-
-Indeed, this seems to be the case, but I wonder if this is a problem?
-
-Isee other rockchip devicetree definitions (rk3528, rk3562, rk356x,
-rk3576, rk3588) do not care about this and just map all 32 pins. See
-
-	git grep -C 20 rockchip,gpio-bank | grep gpio-ranges
-
-I also think there is no other provision for these missing GPIOs
-anywhere - both pinctrl and gpiod seem to expose all 32 pins, even the
-one that do not exist.
-
-Limiting the gpio-ranges definitions would prevent writing to reserved
-pinctrl registers via the userspace gpio API, which might be useful, but
-you would still be able to write to them via a custom devicetree (that
-uses non-existing pinctrl pins) and you would still be able to write to
-non-existent gpio registers via the userspace API.
-
-Given the above, do you still think it would be good to limit the
-gpio-ranges to the existing GPIOs only (I have no strong opinion)?
-
-Gr.
-
-Matthijs
-
---Y0Af1s2EGjNyxXmK
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEMyF3AetYrDfGJ9el6ZMxy91tJYwFAmmv3AUACgkQ6ZMxy91t
-JYyNZA//VogIWO55rSmcEXGC0p9rrWm93PtZhjLMawss6RQXPtmAwnQUSDF7xCoy
-jsoOT8xFlARRDQC0v0ONBNhmOOYzH14emEqudzdjV6auGr8GW0vBdMF04xjWigEC
-nL1Jiqp+yoC1Rgk8C19H3fOiyx5VpEIkw5IHKrSQQH49gRkHjvHkTMDPLqeH32eY
-iH68S6mCp705yDVUXrRWCL4uRSfu5EaHpfRyfmqEf4gAz46Yxi4grxV9US7fjjZO
-x3PSE3XtNCleshCP/97xKPt8yAzir3NCRiXWFqTX58lwbK81s/ygVQSY914lJ88L
-gzNWmCMuhy01+4CF7GGnDE6C7jWSavixnrUhXRggIPq393OOs93sN5sXs2JnHP43
-qSAdwbPMf8ob4/JYyr9AdL90DKWXuqaN2PisAMn3p0+4Emr16LkQ5J4H20b5T1eW
-S8rg4jxHJdGd35IJzo0DC50kXp/s7T4EAdNmwKlcruubWMrCelyJ60kETqqI2noF
-Ov7vD3BV8XZUngJC0qeo8Cx62d13KZr4o1xKYvxA4Tmgi7ptx4XR6DDdZ2Utl9R9
-vlkTkR6tuEaOAOoJrniRQ9eOZYOgd2+JRyqJ9wNvfyvEK1YWZEfbaMy3/BWYrTlq
-YqjZkeflsS7QFjnSHLvkGMFe6OOTGlZMCVUjCKr8Mo6Kcv15bAc=
-=tkhC
------END PGP SIGNATURE-----
-
---Y0Af1s2EGjNyxXmK--
-
-
---===============7498061987164320408==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7498061987164320408==--
-
+T24gVHVlLCBNYXIgMTAsIDIwMjYgYXQgOTo1M+KAr0FNIE1hdHRoaWpzIEtvb2lqbWFuIDxtYXR0
+aGlqc0BzdGRpbi5ubD4gd3JvdGU6Cgo+IEFoLCBJIGhhZCBub3QgcmVhbGl6ZWQgdGhlc2UgYWxp
+YXNlcyBleGlzdGVkLiBIb3dldmVyLCBpdCBzZWVtcyB0aGV5IGFyZQo+IG5vdCBhY3R1YWxseSBy
+ZWxldmFudCBpbiB0aGlzIGNhc2UuIE15IGFzc3VtcHRpb24gd2FzIHRoYXQgZ3Bpbwo+IG51bWJl
+cmluZyB3YXMgYmFzZWQgb24gaW5pdGFsaXphdGluZyBvcmRlciwKCkl0IHVzdWFsbHkgaXMuCgpX
+ZSBkbyBub3QgbGlrZSBpdCB3aGVuIHBlb3BsZSBkZXBlbmQgb24gdGhlIGdsb2JhbCBHUElPIG51
+bWJlcmluZy4KCj4gYnV0IEkgc2VlIGluIHRoZSBjb2RlIHRoYXQKPiBHUElPIGRyaXZlcnMgZGVj
+aWRlIHRoZW1zZWx2ZXMgKGJ5IHNldHRpbmcgZ2MtPmJhc2Ugc3RhdGljYWxseSBvciBtYXliZQo+
+IGJhc2VkIG9uIERUKS4KClRoZXkgKmNhbiogYnV0IHRoZXkgcmVhbGx5IHNob3VsZG4ndC4gVGhp
+cyBtZWNoYW5pc20gZXhpc3RzIGZvcgpsZWdhY3kgcmVhc29ucy4KCk5laXRoZXIga2VybmVsIGRy
+aXZlcnMgbm9yIHVzZXJzcGFjZSBzaG91bGQgZGVwZW5kIG9uIHRoZQpnbG9iYWwgR1BJTyBudW1i
+ZXIuCgpXZSBldmVuIHJlcGxhY2VkIHRoZSBzeXNmcyB3aXRoIGEgbWVjaGFuaXNtIHRoYXQgYXZv
+aWRzIHVzaW5nCnRoZSBnbG9iYWwgR1BJTyBudW1iZXIgaW4gZmF2b3VyIG9mIGNoaXAtbG9jYWwg
+b2Zmc2V0cyB0byBkcml2ZQpob21lIHRoZSBwb2ludC4KClRoZSByZWFzb25pbmcgYmVoaW5kIHRo
+aXMgaXMgY2xlYXI6IGl0IGlzIGltcG9zc2libGUgdG8gbWFpbnRhaW4KdGhlIGdsb2JhbCBudW1i
+ZXJzcGFjZSBpbiBhbnkgc3lzdGVtIHdpdGggZW5vdWdoIGhvdC1wbHVnZ2FibGUKR1BJTyBleHBh
+bmRlcnMgc3VjaCBhcyBvbiBVU0IgYW5kIHRvIHNvbWUgZXh0ZW50IG90aGVyCnNsb3cgYnVzZXMu
+IERvIHdlIGtub3cgaG93IG1hbnkgd2lsbCBiZSBwbHVnZ2VkIGluPyBOby4KU28gd2UgY2FuJ3Qg
+aGF2ZSBhbnkgcmVsaWFibGUgbnVtYmVyc3BhY2UuCgpJdCdzIG9ubHkgZW1iZWRkZWQgZGV2ZWxv
+cGVycyB3aG8gaGFzIG5ldmVyIHNlZW4gYSBVU0IKR1BJTyBleHBhbmRlciB3aG8gdGhpbmtzIHRo
+ZSBnbG9iYWwgbnVtYmVyc3BhY2UgY2FuIHdvcmsuCgpZb3VycywKTGludXMgV2FsbGVpagoKX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2No
+aXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDov
+L2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
