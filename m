@@ -4,48 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AE67FD2D8B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E44CFD2D8E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CwzgCfGzqfHuWpgEqxnfq5oKslSPOmS2mpVY2L6BKXc=; b=wYqGs53HghzIH3
-	5xqBSq5AHmy4SRHxIiG2L+JxvYlwIx/LhNHET14reePZWfaEEJj7Fq/58gqXUFZYbA+G9y/hIOTx6
-	mceyg5E2yUm70L6WGKac/5Yg1BdnFgfP244foq4vcRyDX7O7/hVM3TBo0us6Xuy20EMvap+46r2dz
-	hKJMP2F/rILVGn6dkuHAGlzDpbwNKWu2tRSnO3HDis8whmvkdlULWUxT+lJCgM4ystUJ7FLz+GJoA
-	9TUpVNnC22CVt34ipyA7Ax+i7CyxbjflpVK44mjJUqg9Tx9Mt5uixgNsvfwaoqfhejcViD+ytbqwD
-	SBssj5EfmVQ+TWNEpZ5g==;
+	List-Owner; bh=hAgCRQj/+PM6A6Yh59AOaXY0qfv3e8QreRuXSrs8nHU=; b=SxzwcVe2kBRL9o
+	jg7mb93grbfmNfmQk185m0cKMiEelHs6R9dWobK94hqfmVUqGfKfe5Y04vUYDIh9Bk0J5AEXIzngB
+	5Y/eAas6tCKp3jYw1UOrvOo3XHuBh0ZTKj4t+9MyngYoBNwicLRE1KeOpkOJgiXLLuxl3VOyOalQD
+	skW+V7WfPEOPNh3NlynxSKohC/WrW28ochTI66/9EQKLT61XrySdRKk5ifPM0btQ/rZvdzErLoD89
+	ogonH4/1pSeS4R9D6mYUdwKopXqWgtdNo+aavlC/WU/3F8UAQgNBBP6StF5Ei1YaZxe/92zz6LnxU
+	7ZCXAFwgkwzwEJKjgZsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvin-00000009OPq-0VC0;
-	Tue, 10 Mar 2026 11:57:57 +0000
-Received: from mail.avm.de ([212.42.244.119])
+	id 1vzviq-00000009OaY-43ue;
+	Tue, 10 Mar 2026 11:58:00 +0000
+Received: from mail.avm.de ([2001:bf0:244:244::94])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgd-00000009KZx-2KNn;
-	Tue, 10 Mar 2026 11:55:46 +0000
+	id 1vzvgc-00000009KWt-12m5;
+	Tue, 10 Mar 2026 11:55:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143727; bh=7QEjQvc53kHdYvJikGIe0XIqNo63J0gbffxhQyvvDmc=;
+	t=1773143728; bh=a1YtuPUr/A4Jokjiqoyr22dEN0gVE+OOIk5/iCzuB9k=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=xkT1xwtnaKnF5zwky80U90tVBtgjXUcX+GeykmrAvdmpppC5+8VK/cr2uIrG8dU1M
-	 7wm2m1OyU4JV6u1islMHTFtIiUXXXY5n/w/md+c+5C+f1bhtmzGNVLxiuCLq3+FykP
-	 yZ+BZpZfQ6y4Yx2gZPgoiPOharwFnkzMOEjjrW34=
-Received: from [212.42.244.71] (helo=mail.avm.de)
+	b=BoFkjZyaKFG4I+0my0U16P/ZlsfjMrTgDD1a+wOsKM3wW6Hyckunq05e6+k99D3Gi
+	 4kV+7om5pC/Efx3ZEKmiJFTqpv4USFiYyuVuVp1V1iQJ18dYlrQIte47hFcyWAgg5r
+	 KM84isD0nokr7A5umpY1I9BsMYrFHMDwFBwVekfs=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006af-2367-7f0000032729-7f000001c9aa-1
+	id 69b006af-e21d-7f0000032729-7f000001baa4-1
 	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
-Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
 	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:07 +0100
-Subject: [PATCH 41/61] pinctrl: Prefer IS_ERR_OR_NULL over manual NULL
- check
+Date: Tue, 10 Mar 2026 12:49:13 +0100
+Subject: [PATCH 47/61] nfc: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-41-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-47-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -75,27 +74,27 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Linus Walleij <linusw@kernel.org>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=974; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=7QEjQvc53kHdYvJikGIe0XIqNo63J0gbffxhQyvvDmc=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZht0v/gzetsO7BqEut/SimpAgjLSUxejqDN
- jYPITjd+qeJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGYQAKCRA0LQZT0ays
- 2w/2B/4pX609pdZXvqHfb+Vqmmi/TuKtxSLe3zgXgKoCJW/gh17vsp/T22wIBqf6SXS4OIznDwc
- CqIbsgeOEAAlNDyBRYAY6KPNdElI/rv3fa2ORfx9RdjhIHa4x5wKb3P01gEbIVxJDT7L+eaQBY5
- W5yNdsizunhdj+FuJcUWkiWweG/sakXiGLIkqX5NlLESVIppvEGGOaxwjbsMisZ9PSaDKihHXQV
- LTJsTcuZgnx6Ly3LMJ0SQkiMEfMsx1Sbu6dG9rRM3ckN2uFTC5HrsnBNmmT4sZqY9FpULICBCkq
- q7sHGVDOpWpuw1oJ3VO2Y9YZsG2cD9KHQpB9olXNSESNKBcu
+Cc: Mark Greer <mgreer@animalcreek.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1019; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=a1YtuPUr/A4Jokjiqoyr22dEN0gVE+OOIk5/iCzuB9k=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZ1Y/UGouoeQcc9WQ8MxrI8d8MHBXHMF2nKS
+ xW2sTsLmvSJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGdQAKCRA0LQZT0ays
+ 20jSB/99EGQGPGXfwgc9aoZkEd87WlbZAw/E49hsk8skwCBZpOQIbZBOjpLkfsW3KBFKwpYL6hr
+ zj+vjAPS0Kbx/wu/htgTOseyb8dlXJs2DJCBqPrRUWk2pbJhfh9SL0jieoNOSPl5SCoElM11Tk7
+ rVQVkuo82qw4WSlg3liLUmo4Aasw+ALrReSJUM+VyOL2Xm/NrCTSIkyRe46UeXgqxXym8K01Jiw
+ UcwLAnfIONTcOH9YPD1gA7uZh9C/pYgWe8DkJu23THTdXZuc/7KopxZDLw5gOH2D1JgCmfeTZcx
+ ZHAC2ZLeQRVUrAJ1qKHgI4k8WSRe11aWcTzhA96+gLBGdLHb
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143727-86C91E1F-25F0153A/0/0
+X-purgate-ID: 149429::1773143727-8161EF2F-9C4586C8/0/0
 X-purgate-type: clean
-X-purgate-size: 976
+X-purgate-size: 1021
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045543_838922_37096A86 
-X-CRM114-Status: UNSURE (   9.73  )
+X-CRM114-CacheID: sfid-20260310_045542_865014_2EB10B70 
+X-CRM114-Status: UNSURE (   9.61  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,27 +117,28 @@ check.
 
 Change generated with coccinelle.
 
-To: Linus Walleij <linusw@kernel.org>
-Cc: linux-gpio@vger.kernel.org
+To: Mark Greer <mgreer@animalcreek.com>
+Cc: linux-wireless@vger.kernel.org
+Cc: netdev@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/pinctrl/core.c | 2 +-
+ drivers/nfc/trf7970a.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/pinctrl/core.c b/drivers/pinctrl/core.c
-index b5e97689589fbf1b6750620fc193bc820012be2b..97a80989601abbe969d4b64cb0f3926fd4f291f5 100644
---- a/drivers/pinctrl/core.c
-+++ b/drivers/pinctrl/core.c
-@@ -1991,7 +1991,7 @@ static void pinctrl_init_device_debugfs(struct pinctrl_dev *pctldev)
- 	device_root = debugfs_create_dir(debugfs_name, debugfs_root);
- 	pctldev->device_root = device_root;
+diff --git a/drivers/nfc/trf7970a.c b/drivers/nfc/trf7970a.c
+index d17c701c7888b3be0b46cf95c4b77182313c97c0..f62fc2b80b05bd7a82269334d7f50e6394bfe80f 100644
+--- a/drivers/nfc/trf7970a.c
++++ b/drivers/nfc/trf7970a.c
+@@ -651,7 +651,7 @@ static void trf7970a_send_upstream(struct trf7970a *trf)
+ 	dev_kfree_skb_any(trf->tx_skb);
+ 	trf->tx_skb = NULL;
  
--	if (IS_ERR(device_root) || !device_root) {
-+	if (IS_ERR_OR_NULL(device_root)) {
- 		pr_warn("failed to create debugfs directory for %s\n",
- 			dev_name(pctldev->dev));
- 		return;
+-	if (trf->rx_skb && !IS_ERR(trf->rx_skb) && !trf->aborting)
++	if (!IS_ERR_OR_NULL(trf->rx_skb) && !trf->aborting)
+ 		print_hex_dump_debug("trf7970a rx data: ", DUMP_PREFIX_NONE,
+ 				     16, 1, trf->rx_skb->data, trf->rx_skb->len,
+ 				     false);
 
 -- 
 2.43.0
