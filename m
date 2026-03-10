@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BF89FD2D66
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 464F2FD2D67
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D/iJs51SF40R97SDD9GPy5fcs+Lol/duHaEioK5N/fY=; b=j3xuJdTGIj1HHi
-	vMtC40NGgpBL16JCf0uevqEuI7KsblcoA5nnmsFJxwcjNyMFnHTx3kS1YiOtlpkEqiEeOdc/dtoli
-	2bOKAlg2oyAkZzqqeeFFqlzFAyjfG7MOvt9aAYquKu8b45omsn+AxIwQYQDyg5Y0/2lRxku9fbLmp
-	Uenfh+SDtNStMaucnSwSJwMzq74lWNuDXwSXm79K18HTiXVP95R/jThgtMCm8tL6N6JqxnksHkCH3
-	Z+TD0AUt6mvgg4+Iq60cNv6j2j7AXeX5HVjgs2AFLo5ULZDK6g9vsJ7KWLUmwAYb+sdlkL8DQWg6q
-	stlAO3PGjaCDsIHUrcoQ==;
+	List-Owner; bh=6qZwROdx67oia3YZkRi24EV0iip9ATRjOPpcpY9tIIE=; b=A+HdTrJHos8ik3
+	aLzGUgtbmZFKaerez7sTrTYmmUXFvu6BVXiPk6ISsCPmGOkYUVoS+sUTLAnBojxLxF7X3gf9w/OIR
+	bX2prRqnnum5YS9VX1xWjKAybw+PVUuQOuhsVK1jPRRdd6HCfLuuW98PSwZaK+YYqb2PLCfszG0b8
+	OWGuZfQ45biQK/yStN5dzG5LV+9tN+aRkdBZcQ63c46kil3LQfkrgEm7uKGm/WNT8tfT9mWes7Ick
+	8xcVfVLpocorQtZLJTbxU+iMX4Wz71wC8p51o7W6shRCYipwgsqDS7ax3jXNNSrk6O0kW3PYnp7rv
+	DpwdwAIPffHKbo/fMcXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvj0-00000009Omu-31uE;
-	Tue, 10 Mar 2026 11:58:10 +0000
-Received: from mail.avm.de ([212.42.244.94])
+	id 1vzvj1-00000009Opd-3bJ8;
+	Tue, 10 Mar 2026 11:58:11 +0000
+Received: from mail.avm.de ([2001:bf0:244:244::120])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgd-00000009Kak-3qAw;
+	id 1vzvgd-00000009KZy-1XoT;
 	Tue, 10 Mar 2026 11:55:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143728; bh=sIEabNGpfTtaNmN5jdtpnoUYPpUdFMe596BbQNmq6Ew=;
+	t=1773143728; bh=ljsuTOpGREUyGER98xbD6/ci86SD8pohlonTQBpqGIg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=xKnBkg5622xaCaFlGwFQ3bswFSgdcTVbCDHB3k8l65KFt6Ule9kyi3QR8HfOXuW5L
-	 MKbugm+H1wq/E04UmM1cfkP9mUjiEZ3Ws7yzlEjYYTJHZ64lqewOtbO15JI10WApm1
-	 CoPFx+DZxYAYXylALiT4nuOog37Am7eL2zh2ct4Q=
-Received: from [212.42.244.71] (helo=mail.avm.de)
+	b=PqCygKH8TUTFzdsVoltpS6V+urh3nKuUaWPGyQ9+G5dBBIMLMlSqFUF2pQu2ztCks
+	 nKjygDeUmN//qOptE9nqaXpkixC5XmuX8GEDJn5HpI8613PWAZldzQgtG5ilRHjEDe
+	 PPv3OqXdqRSmvRO/4sRCoDxU/Kdn2GWugjDbKUbA=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006b0-e21d-7f0000032729-7f000001bae4-1
+	id 69b006b0-b734-7f0000032729-7f0000019cb0-1
 	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:28 +0100
-Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
 	Tue, 10 Mar 2026 12:55:28 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:19 +0100
-Subject: [PATCH 53/61] hyperv: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:49:25 +0100
+Subject: [PATCH 59/61] debugobjects: Drop likely() around !IS_ERR_OR_NULL()
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-53-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-59-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -74,30 +74,28 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: "K. Y. Srinivasan" <kys@microsoft.com>, 
- Haiyang Zhang <haiyangz@microsoft.com>, Wei Liu <wei.liu@kernel.org>, 
- Dexuan Cui <decui@microsoft.com>, Long Li <longli@microsoft.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1146; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=sIEabNGpfTtaNmN5jdtpnoUYPpUdFMe596BbQNmq6Ew=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAaKQPK6RykE0QE2RJD5htL1ZvRNh+zI6jTmu
- VOYpL5CXyeJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGigAKCRA0LQZT0ays
- 29fzB/oCGLAMazrUNiEmwKr9nq0MNT5XdhZH3wkJWE4yJ+UKMd35Xi9PPSb65qZMk+N4uMiZj2H
- T6Td1MreYgfIRLT7kTJk/n1BuSWWFP55nfvFZFjjhY5aoonvuH6RpMC7x9+9tNKQtJ7ne+y8JUp
- qmDL3C1GxXXFNKbwYmtZySONDO5gXmgMnGjDdckVFucnIkQYwHywWpIrPTZv3zUS9k6qS6F4HLs
- npSrcLjQ++9xnCfmtppGIezlVuCbkGtNbWVtJ6RuDAqRXXu4e1NER6f7pIlU/5AgYfpLOxyecDo
- JLi+d7tyzKhXU/h5ql9oJc0IZPZktOy6eLbVlaElpfc4YFhD
+Cc: Andrew Morton <akpm@linux-foundation.org>, 
+ Thomas Gleixner <tglx@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1116; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=ljsuTOpGREUyGER98xbD6/ci86SD8pohlonTQBpqGIg=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAafUF4Co3bKHEJh1nSPEbGPanpbmXqLGBVTE
+ nsli8aGTIqJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGnwAKCRA0LQZT0ays
+ 2/eqCACfKEiwIm4grjaffCaqYK9UtMC/I42k93h5L5QQzw4cYMYd8FGhvLp+Ug9Jk9iQltpydL0
+ M021kU+8e5LuC9HNGAP+FvXfKicTrLe4WOGLghTKJxJD0Qnwt87qFBwN4C5TgDS7lK8yPptqdRT
+ xavsstUunap8iVxwbzeUWdgcTpG4nsY9KAjliWo7xLgVYhCSEWYrkYbks39zWe9p1rptJWM2IT/
+ +/O3p9icHSV3twwgGTFQhBYPys+tvE7XNArxXHhB+XYW7AEdqLgSeLiL6ig5y++9xZFwEIcnWi0
+ 5dJklCZYTethhL0MgTuOAEkoSCl0Bk6MDrD8akTrSRkzdCkv
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143728-95676F2F-E8C255A2/0/0
+X-purgate-ID: 149429::1773143728-7AAFCA3D-1B7F7E41/0/0
 X-purgate-type: clean
-X-purgate-size: 1148
+X-purgate-size: 1118
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045544_182066_FD62AD9F 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260310_045543_639769_1C3DA66F 
+X-CRM114-Status: GOOD (  10.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,40 +112,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
-check.
+IS_ERR_OR_NULL() already uses likely(!ptr) internally. checkpatch does
+not like nesting it:
+> WARNING: nested (un)?likely() calls, IS_ERR_OR_NULL already uses
+> unlikely() internally
+Remove the explicit use of likely().
 
 Change generated with coccinelle.
 
-To: "K. Y. Srinivasan" <kys@microsoft.com>
-To: Haiyang Zhang <haiyangz@microsoft.com>
-To: Wei Liu <wei.liu@kernel.org>
-To: Dexuan Cui <decui@microsoft.com>
-To: Long Li <longli@microsoft.com>
-Cc: linux-hyperv@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>
+To: Thomas Gleixner <tglx@kernel.org>
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/hv/mshv_eventfd.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ lib/debugobjects.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/hv/mshv_eventfd.c b/drivers/hv/mshv_eventfd.c
-index d8471546e6a0c7e6eca933c640459f1d02152cb2..24dff7a498ac9c3edd31f4c9bc2f23729ba2a6ce 100644
---- a/drivers/hv/mshv_eventfd.c
-+++ b/drivers/hv/mshv_eventfd.c
-@@ -516,10 +516,10 @@ static int mshv_irqfd_assign(struct mshv_partition *pt,
- 	if (irqfd->irqfd_resampler)
- 		mshv_irqfd_resampler_shutdown(irqfd);
+diff --git a/lib/debugobjects.c b/lib/debugobjects.c
+index 12f50de85b621a743a5b6f2638a308f6162c6fcc..12e2e42e6a31aa8706e859aca41b81c03889cffe 100644
+--- a/lib/debugobjects.c
++++ b/lib/debugobjects.c
+@@ -1024,7 +1024,7 @@ void debug_object_assert_init(void *addr, const struct debug_obj_descr *descr)
+ 	raw_spin_lock_irqsave(&db->lock, flags);
+ 	obj = lookup_object_or_alloc(addr, db, descr, false, true);
+ 	raw_spin_unlock_irqrestore(&db->lock, flags);
+-	if (likely(!IS_ERR_OR_NULL(obj)))
++	if (!IS_ERR_OR_NULL(obj))
+ 		return;
  
--	if (resamplefd && !IS_ERR(resamplefd))
-+	if (!IS_ERR_OR_NULL(resamplefd))
- 		eventfd_ctx_put(resamplefd);
- 
--	if (eventfd && !IS_ERR(eventfd))
-+	if (!IS_ERR_OR_NULL(eventfd))
- 		eventfd_ctx_put(eventfd);
- 
- out:
+ 	/* If NULL the allocation has hit OOM */
 
 -- 
 2.43.0
