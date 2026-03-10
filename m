@@ -4,41 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B22EB1053
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:57:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 301D5EB1052
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:57:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p2MgC88XNG8CTePL/LW5Vr4GYPX3v5aOKaMVQDi4iF8=; b=wHB3/rE8uDX/IB
-	K76E5shU9aDLMZVF1onTFxsnNEg4PrebzAmYCJkvWt8Oh4wQeezP2daHt4FQk6kdGwD7HzcXX5G5A
-	bhBUNpJz1Du5iF5CKCuV97vP9MJh/XVPwRDjuDjid4mQMzHhPc3bJmkRrglm+37QabraGbJlJQChb
-	6CEDd1McZ2NEM32Wo+at+B7QnmZhAiMrIeCLcZiI0IekYzNSIX2d3/fC1lFOy4JAU8hUZNb3afxei
-	Q5lu/yn0m46EdMw90CrTdi/CHf60VyABi2y9zK926PGtHpS5vGZgciNigip5AdyhXza2SuuWHT0FU
-	qhZ80yz4a1r3Gbl2NqqQ==;
+	List-Owner; bh=AwOAvm5sA3Nin1K4YBE/b5ixrPWTIpM8Ac3agVyYMFQ=; b=ONrt8hcPPaWV6P
+	yzi886lxxdd913z2y7shnnV+MdGd8oth1To8W+iswb7UUvQT2/QJBaSOlzdazHq2ScGD1HeZfCT27
+	qdOXn7v5Wa9aRrkOkn1YYRD9Z9adBkzJGGXh/QHQ5CaqP8gozKcX2L5QMy50MQc70E1f6wLYSNsVa
+	dt9kuHmIcRK832Hjtqj3w9n4kwwAPTygWSDH0No4RCwcZZ5GwYXjAe7zjP+iUgO9ZkewL31g6OW/N
+	Ed6F+qLI4bUzHBVJkxELXHutrAR4/KD571nH71a9M4lcRqWi71qrvv+0+ckMGT4cd42YicwVthIZU
+	M+0kamxSc2B2kfiMTG4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvhz-00000009MmF-2jrU;
-	Tue, 10 Mar 2026 11:57:07 +0000
-Received: from mail.avm.de ([212.42.244.94])
+	id 1vzvi0-00000009Mnk-38TL;
+	Tue, 10 Mar 2026 11:57:08 +0000
+Received: from mail.avm.de ([212.42.244.120])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgP-00000009KMG-2ipp;
-	Tue, 10 Mar 2026 11:55:39 +0000
-Received: from [212.42.244.71] (helo=mail.avm.de)
+	id 1vzvgU-00000009KPr-1EkN;
+	Tue, 10 Mar 2026 11:55:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
+	t=1773143725; bh=N8ytNu1U36GmBgTPXVAE5/A4s2PfdogY1tJY/l2pxcM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=f0/sH3vWUtSFTcrY68KbpDRxIZCYT2hIiwDi3Dik93BJCASdZICq9tTWJ3wgjDVyu
+	 Jxt6MZXNePDtV4TX0U7P53CBk1XHgvUArUuxPPUnS5hIbTeOVph/0B/h50wymqYtj1
+	 3T7/WTJwdzfusP5uEpNMFoKuQUCnMWZUuDcbxKoU=
+Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006ac-e21d-7f0000032729-7f000001d9ae-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:24 +0100
-Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
+	id 69b006ab-b734-7f0000032729-7f000001bfc8-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:23 +0100
+Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:24 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:23 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:35 +0100
-Subject: [PATCH 09/61] ntfs3: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:48:38 +0100
+Subject: [PATCH 12/61] quota: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-9-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-12-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -68,27 +74,27 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Konstantin Komarov <almaz.alexandrovich@paragon-software.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1617; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=0D7JqCvM2HduGB7jcCjsvL2MgPxSPSMnqWoOW6gFXPg=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAX0gr7ZqouZ6B9Y6l873KDZh87VRkMxmLSVt
- AItcTzXYr2JATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF9AAKCRA0LQZT0ays
- 2/XgCACwqNRVP1ceb2sCHMTvH8vznLrrwbRdBid2VGiRwlIoIqclnUBeLwwGZ/n/hBxtkijY1s3
- NziYVgznq0k9VYxacmvzAvuKhhv5805K9y/+itK+PFXmzL3ZRzqmfWP6ng28fVSUYAufwVEc7CR
- 9llIbOBq8N4aCpqTBELhb7mwymU8hNLZpMBK934i79wnmNx9OySShuCrTBL+FEQ9g/aUtfHcqTV
- 4JM/tu/NHEvIwEfZrC8rjS3HwU+8fz/vbF4We+/TjORw4iEGT1m6VfBdB71QF+Wi1viRKTPIkVW
- Nxf+o86GuJolrkUsNGy4WHdCFW95aUilkAjXyF+7XIpdZkLT
+Cc: Jan Kara <jack@suse.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=763; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=N8ytNu1U36GmBgTPXVAE5/A4s2PfdogY1tJY/l2pxcM=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAX+MICb9QGDh9sr8xrXC0GI/+3a26bt3TCKL
+ Vjl33LfQY+JATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF/gAKCRA0LQZT0ays
+ 26n6B/wNFZznKdxnE0qMd12a2eIuA9+krGiImi7olxEd9wOJhsBf8sKwI0E3QgvpW0h7L8AJ/V7
+ YwWi88O6oeBiZ3QDKSUmLS/9VlykYZ97N4eOIEzkOMJxki98cx4PncgKAN9Jy63O/7GoZyteCZ7
+ +9i83brafUHJWnhfe2dyfef6pp7LRzaCEfdld6TPIgAENhsi0/zr3Pv5hQfjJiyWTNInkfN/Wc9
+ eBcVMsl2Zb6jE1xGE/aNpGFG8dNw74geAiaLniVxheZHeJfqzhWkArPaHQ0SYGtCtwd5smdDDAA
+ 6BFeqEcljgo2LkEM+gZQjogP088dQYDyFGUkwYA0hLFDBEaT
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143724-80E01F2F-4A43AD77/0/0
+X-purgate-ID: 149429::1773143723-435C7A3D-F151BDE4/0/0
 X-purgate-type: clean
-X-purgate-size: 1619
+X-purgate-size: 765
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045529_855723_A01789BD 
-X-CRM114-Status: UNSURE (   8.48  )
+X-CRM114-CacheID: sfid-20260310_045534_542007_574395B5 
+X-CRM114-Status: UNSURE (   9.30  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,52 +117,26 @@ check.
 
 Change generated with coccinelle.
 
-To: Konstantin Komarov <almaz.alexandrovich@paragon-software.com>
-Cc: ntfs3@lists.linux.dev
+To: Jan Kara <jack@suse.com>
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- fs/ntfs3/fsntfs.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ fs/quota/quota.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/fs/ntfs3/fsntfs.c b/fs/ntfs3/fsntfs.c
-index 0df2aa81d8845f21bfb571c408bd65b9e1fb8128..3ced4f95c2e95bac1fe5b334f976b8c8a15cf19d 100644
---- a/fs/ntfs3/fsntfs.c
-+++ b/fs/ntfs3/fsntfs.c
-@@ -237,7 +237,7 @@ int ntfs_extend_init(struct ntfs_sb_info *sbi)
- 
- 	/* Try to find $ObjId */
- 	inode2 = dir_search_u(inode, &NAME_OBJID, NULL);
--	if (inode2 && !IS_ERR(inode2)) {
-+	if (!IS_ERR_OR_NULL(inode2)) {
- 		if (is_bad_inode(inode2)) {
- 			iput(inode2);
- 		} else {
-@@ -248,21 +248,21 @@ int ntfs_extend_init(struct ntfs_sb_info *sbi)
- 
- 	/* Try to find $Quota */
- 	inode2 = dir_search_u(inode, &NAME_QUOTA, NULL);
--	if (inode2 && !IS_ERR(inode2)) {
-+	if (!IS_ERR_OR_NULL(inode2)) {
- 		sbi->quota_no = inode2->i_ino;
- 		iput(inode2);
- 	}
- 
- 	/* Try to find $Reparse */
- 	inode2 = dir_search_u(inode, &NAME_REPARSE, NULL);
--	if (inode2 && !IS_ERR(inode2)) {
-+	if (!IS_ERR_OR_NULL(inode2)) {
- 		sbi->reparse.ni = ntfs_i(inode2);
- 		sbi->reparse_no = inode2->i_ino;
- 	}
- 
- 	/* Try to find $UsnJrnl */
- 	inode2 = dir_search_u(inode, &NAME_USNJRNL, NULL);
--	if (inode2 && !IS_ERR(inode2)) {
-+	if (!IS_ERR_OR_NULL(inode2)) {
- 		sbi->usn_jrnl_no = inode2->i_ino;
- 		iput(inode2);
- 	}
+diff --git a/fs/quota/quota.c b/fs/quota/quota.c
+index 33bacd70758007129e0375bab44d7431195ec441..2e09fc247d0cf45b9e83a4f8a0be7ea694c8c2a1 100644
+--- a/fs/quota/quota.c
++++ b/fs/quota/quota.c
+@@ -965,7 +965,7 @@ SYSCALL_DEFINE4(quotactl, unsigned int, cmd, const char __user *, special,
+ 	else
+ 		drop_super_exclusive(sb);
+ out:
+-	if (pathp && !IS_ERR(pathp))
++	if (!IS_ERR_OR_NULL(pathp))
+ 		path_put(pathp);
+ 	return ret;
+ }
 
 -- 
 2.43.0
