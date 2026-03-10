@@ -4,110 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02F01FD4F1B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 18:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC7DFD4F34
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 21:04:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UWLFF03XP1wOsJUWdUGy2fwCbw4MHw5/9MyDAuopn1g=; b=S06KzSX3Sszfa+
-	6ruHLXtGzpH05gWNeDsKsjY9b0uOItchWj2P97NzROpOvYOddw9Tjmv4ssxNTT68nJYZRR5Dj1Y/N
-	0b22ntluWuLx/q8fFfvsBxIyESksDNQ4pr/dxbx6SJlFVQMcsUJtQkbTrB4O/TZMNCXReIfwqDcVj
-	z58jhsERZmZDc/kupV2Gg9Ff9Km2Fayny9vSHzqtFr1CyA8djsE+F1eGLH1bzlVx/YS+5Tm1iZz+k
-	4CygB448A/c2od2+kwrqIFJ70JeA2RZq+02CXP1aBucyxzBbiKKXq4web8NzMA+MimbtB7igO4J4K
-	bWBsWw4gmpjMsqQlilrA==;
+	List-Owner; bh=0SmFGCl2aBunPllmQ9NTp6rpcIbeLTPojSjiTx/EyW0=; b=d1i2GgyIhYyPif
+	fw57cL6R8YtWIfEZkMyKY5aB0zGA4WdTqEIP2jJJU+hdHk2ChJnNfNkyjsB7EqJGYGZVf2C0t329I
+	YE4+zw8VvGks857s3gX7plBjaVDp3s0Asxp+m+i/kiBmcr+1Tyy+mOZoYOWuy5Vpy/CV+9oPeDwbw
+	eqAGOs9UtVFOmUn6k9+LF39HBcLXcZH9jsuLzOzjqZQPKO369LaBfQVdD/gut8ztub2KcwulC+TzP
+	waVip8aiFZsuxIbA3p8QPF8zlMKn9aJd1ua8vEmxEz/xOs2Jsl1b5oJzMt6wZUVfIgeGUrklFEnjq
+	pIbzaebKQEICwxdwqdjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w020l-0000000A6FP-0ZpG;
-	Tue, 10 Mar 2026 18:40:55 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
-	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w020h-0000000A6BI-1umx
-	for linux-rockchip@lists.infradead.org;
-	Tue, 10 Mar 2026 18:40:54 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2ae82df847bso30023715ad.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 10 Mar 2026 11:40:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773168050; x=1773772850; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=bjFZ9oZWWc3RZ4UdO5rq+AZbr7uPDX73K58gh1+yuH0=;
-        b=gtLybQfMSjecfKBaGNqaukRn3K/7o8JorJppIKNpCc+QM/VJDFJvQwwbooZQ9FcmwP
-         GCJvFN1msrobA2RnJ6du+aZ+7LE8i6/Pk9CnOufc1FiA/Ls9JTwqbiEwN0GiAlxEDCyW
-         7H7mM09xEr8SCiQcpLZ64RPaXO8aM0vVmSFf5Iw80b+sAnAm9XsVaGZVzWdCHJWBX+ib
-         /6nxmSb16ClMReUtBFSqlLUtXsyUxp9FlN1rO2Ktv660+THVRNhWB7k87ee+i1sMFwOr
-         JgIovHR0jlAXD5w0qlh76L4y4llZogMns7Q8v4LbegdO35xX29KypZYhSSLLNFLOppEI
-         Cy2w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773168050; x=1773772850;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=bjFZ9oZWWc3RZ4UdO5rq+AZbr7uPDX73K58gh1+yuH0=;
-        b=bL96wpFw16r03mWVTr4VmdWg97/7gnflCIA2NSH2dikOgeti2s6IlSgoMd5/0b7rZo
-         dk2EHOzHgD31TOJrRZlSShzn2F51sKgzsVx6PUnWhZLJoKOdzPWZ3o9eZ97eAPPEoj6h
-         /1mCr0k9VSd7Sdx+5Oizn5cPhXRoHh3aeTDZirv8DxcpjwRaTNxS4z6xrIwfJkPsbxI4
-         IOuIBTya6iUuTf6y0SwS3b3PbjGbDSAA/PAp5rSsoOvleZ0qHLwHp9awvdqXHAA5occQ
-         cvZ7D3P59dLbJpWDKPCxNmiCgedD/HUZhyx86gJNZwbZNvp0flgVDL+1nwWrxJEf14Uy
-         oy+A==
-X-Forwarded-Encrypted: i=1; AJvYcCV3U1D9XU9N7MWLkQkmGgcNqRWTKYiPl96eYN8odkq4fBQu4bR5hVyamyrP2gakh54+wcGzih5KQNpp/PENeA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyB4w0Fb3A7ZbYlhVAN4yiWyJ2VULM/FG0yLoRJMAyoqHwsYvt6
-	dSmZot/hKrbThXZ6tbu5B4hmAY21rryNzYRwbpv3PSUg62sZTBHkH1S5
-X-Gm-Gg: ATEYQzz7YkBOVMOqZpygZENGFEEoG2oNcrqpVNKykaR9u1AJD4KIakrrXGtqmuKWzFA
-	pKrb+6YISdFonklRZOe9YiZn6SH0k0FgNwv9fZLVxP757Elqfs7t9Ft+J/H+71SKT1dcz0AwrYD
-	J8s1AjA84klnC3jTD1LaYZ+5i1fdESX9mG0jukorlyztwzsQL3Rli5+KQeS3PaSs8PiTncv49Lh
-	PHStoXvMn5dYlzT0t2i8IkOw6UElAt6YHQlNDoS0w/o4KSgnr6szsF9weuyzwgqydwIYiAPozQD
-	He0qD8/LMChzF2DWUV2J9IBN9Ky4/uquihaOnbpNPeg4FShfQXBXJ3C5gi8qvsYkvj66PAcV2fU
-	+dzcqhCg2n0LtM9gltTIz22oAipOkpIl0feMYWm5FZhH++FHscLgXWBKhrF32D6k/sPz90up89Z
-	krFcGIoaMlDexIbPm7USM6BcSvL73F2dIGanx8Y9cVJy5xcw==
-X-Received: by 2002:a17:903:28c8:b0:2ae:5671:7071 with SMTP id d9443c01a7336-2ae8252cf0fmr96662285ad.43.1773168050081;
-        Tue, 10 Mar 2026 11:40:50 -0700 (PDT)
-Received: from google.com ([2402:7500:a44:85b:2953:97d3:b283:95c3])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ae83e58592sm220535625ad.14.2026.03.10.11.40.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Mar 2026 11:40:49 -0700 (PDT)
-Date: Wed, 11 Mar 2026 02:40:36 +0800
-From: Kuan-Wei Chiu <visitorckw@gmail.com>
-To: Philipp Hahn <phahn-oss@avm.de>
-Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
-	bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr,
-	dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org,
-	gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org,
-	intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev,
-	kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org,
-	linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org,
-	linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org,
-	linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-	linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org,
-	linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-leds@vger.kernel.org, linux-media@vger.kernel.org,
-	linux-mips@vger.kernel.org, linux-mm@kvack.org,
-	linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org,
-	linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org,
-	linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-	linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
-	linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
-	sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
-	tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev
-Subject: Re: [PATCH 00/61] treewide: Use IS_ERR_OR_NULL over manual NULL
- check - refactor
-Message-ID: <abBlpGKO842B3yl9@google.com>
-References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+	id 1w04F2-0000000AHAK-3C7r;
+	Tue, 10 Mar 2026 21:03:48 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w04Ez-0000000AH9f-0XRq;
+	Tue, 10 Mar 2026 21:03:46 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 577941596;
+	Tue, 10 Mar 2026 14:03:34 -0700 (PDT)
+Received: from [10.57.58.37] (unknown [10.57.58.37])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8A1E93F694;
+	Tue, 10 Mar 2026 14:03:35 -0700 (PDT)
+Message-ID: <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
+Date: Tue, 10 Mar 2026 21:03:32 +0000
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+ Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>,
+ Shawn Lin <shawn.lin@rock-chips.com>, Hans Zhang <18255117159@163.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>, linux-pci@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Anand Moon <linux.amoon@gmail.com>,
+ Grimmauld <grimmauld@grimmauld.de>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ "Rafael J. Wysocki" <rafael@kernel.org>, Danilo Krummrich <dakr@kernel.org>,
+ driver-core@lists.linux.dev, Lukas Wunner <lukas@wunner.de>
+References: <20260226101032.1042-1-linux.amoon@gmail.com>
+ <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
+ <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
+ <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
+From: Robin Murphy <robin.murphy@arm.com>
+Content-Language: en-GB
+In-Reply-To: <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_114051_531528_8351CF99 
-X-CRM114-Status: GOOD (  16.83  )
+X-CRM114-CacheID: sfid-20260310_140345_314264_80E74320 
+X-CRM114-Status: GOOD (  21.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,47 +73,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Philipp,
+[ +driver-core maintainers - async probe question below ]
 
-On Tue, Mar 10, 2026 at 12:48:26PM +0100, Philipp Hahn wrote:
-> While doing some static code analysis I stumbled over a common pattern,
-> where IS_ERR() is combined with a NULL check. For that there is
-> IS_ERR_OR_NULL().
+On 2026-03-10 3:30 pm, Manivannan Sadhasivam wrote:
+> Hi Robin,
 > 
-> I've written a Coccinelle patch to find and patch those instances.
-> The patches follow grouped by subsystem.
+> On Tue, Mar 10, 2026 at 01:41:56PM +0000, Robin Murphy wrote:
+>> Hi Mani,
+>>
+>> On 2026-03-04 6:48 am, Manivannan Sadhasivam wrote:
+>>>
+>>> On Thu, 26 Feb 2026 15:40:23 +0530, Anand Moon wrote:
+>>>> Rockchip DWC PCIe driver currently performs synchronous link training for
+>>>> combo PHYs (PCIe 3.0/2.0 and SATA 3.0) during boot. This process waits for
+>>>> the link to be fully established, adding several milliseconds to the boot
+>>>> sequence. To optimize boot time, this change enables asynchronous probing,
+>>>> allowing link establishment to proceed in the background while the kernel
+>>>> continues probing other devices.
+>>>>
+>>>> [...]
+>>>
+>>> Applied, thanks!
+>>>
+>>> [1/1] PCI: dw-rockchip: Enable async probe by default
+>>>         commit: ec392abc95932838bf7e3d659d358f4df9ff5a0a
+>>
+>> This appears to have the side-effect that calling pci_host_probe() from
+>> async context can effectively force async probe for the endpoint drivers
+>> as well, but some drivers are not OK with that, as our CI has just
+>> flagged up.
+>>
 > 
-> Patches 55-58 may be dropped as they have a (minor?) semantic change:
-> They use WARN_ON() or WARN_ON_ONCE(), but only in the IS_ERR() path, not
-> for the NULL check. Iff it is okay to print the warning also for NULL,
-> then the patches can be applied.
+> Thanks for reporting!
 > 
-> While generating the patch set `checkpatch` complained about mixing
-> [un]likely() with IS_ERR_OR_NULL(), which already uses likely()
-> internally. I found and fixed several locations, where that combination
-> has been used.
+>> (And as for that particular warning, ISTR last time I looked into it
+>> another context, the opinion of the MDIO/phy maintainers seemed to be
+>> "don't force async probe".)
+>>
+> 
+> This was discussed during v2 [1] and concluded that the async probe benefits
+> outweigh the unharmful splat from phylib. I also agree with the above conclusion
+> that this splat should not prevent us from enabling async probe for PCI
+> controller drivers. It can easily save a few 100ms during boot.
 
-Thanks for the patchset. However, I think we need a explanation for why
-switching to IS_ERR_OR_NULL() is an improvement over the existing code.
+The problem is not an "unharmful splat" from one driver on one board - 
+that's *a* symptom, and the fact that it happens to be a relatively 
+benign one does not dismiss the problem that forcing async probe upon 
+drivers that are not designed to support async probe cannot in general 
+be assumed to be safe, so is not OK. It's one thing if a user brings it 
+upon themselves by explicitly using the "driver_async_probe=" option, 
+but it's very different if some other driver starts doing it for them.
 
-IMHO, the necessity of IS_ERR_OR_NULL() often highlights a confusing or
-flawed API design. It usually implies that the caller is unsure whether
-a failure results in an error pointer or a NULL pointer. Rather than
-doing a treewide conversion of this pattern, I believe it would be much
-more meaningful to review these instances case-by-case and fix the
-underlying APIs or caller logic instead.
+Looking closer, it seems like the fundamental issue might be when we've 
+got this far (simplified for clarity):
 
-Additionally, a treewide refactoring like this has the practical
-drawback of creating unnecessary merge conflicts when backporting to
-stable trees.
+- async_run_entry_fn
+   - rockchip_pcie_probe
+     - pci_host_probe
+      - pci_bus_add_device
+        - device_initial_probe
+          - __device_attach_driver
 
-Regards,
-Kuan-Wei
+wherein we then reach the "if (data->check_async && async_allowed != 
+data->want_async)" condition, at which point check_async is true (from 
+device_initial_probe()), while async_allowed and want_async are *both* 
+false, but that leads us to actually go ahead and call 
+driver_probe_device() for the child device despite being in async 
+context. That doesn't seem right to me - I'm guessing it maybe wasn't 
+anticipated to have bus drivers calling device_initial_probe() from 
+within async in the first place?
+
+It may not strictly be the fault of this patch - clearly 91703041697c 
+("PCI: Allow built-in drivers to use async initial probing") is 
+implicated in this too - but the fact is that it *has* exposed a bug 
+that needs fixing one way or another, it can't just be left hanging and 
+impacting end users.
+
+Thanks,
+Robin.
+
+> 
+> - Mani
+> 
+> [1] https://lore.kernel.org/linux-pci/aYHVlS1nbCMMyF04@ryzen
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
