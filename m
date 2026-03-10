@@ -4,47 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1BDFFD2D70
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F93BFD2D69
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DLIopcQbzAZtlmv0jhysWbcKuMVrflyv2ejLIgXnMPA=; b=JcVywYFrZ4FvYy
-	EtWM1qn3QbTi/4GTGij33qbpxqjkhxY9rHEljmzyReqLWpMuyUmgE8gkqh6iVr0SEDCgfBKwet30C
-	+ZedbmPAzX5j4zvJGR7wIJGsCp3FESjDQlwHRdNU+VqYQ0MW9nacUX/3+PF3GuXFs4qrdgVaz4+2Y
-	MyFXJevk6U53ZsAdN5tbL8Cp9KwxNACdTJaEknJsJQGIaBPBRbqOBSyfEV8qAIogK+LweQxY0y4Bb
-	eu+NEi2khnP5Gtiv6hYRy5nW8mKX3hbjySFYtWWV/v8VtGh/CmgE+Sy697sxyJbSofQAS3HQt0KEp
-	Xqq56Q9cqF39Q1So0wuA==;
+	List-Owner; bh=+TQ/f2rrFdomrJLCV22+D41U3F7iXh8t+ns4I2tDEE8=; b=phF/Pn/EFUioZK
+	TaoLFtbFRt0zE5ziYZjfyTUd/vdJYPKeWbOsmPcZgb0Q0CzAminRIIGfBFI5aKxSAClVQx/8N+Krc
+	WwbHzdjevMLwwbFQlOAd/nbCkatInDoWLE1H/MDfF+EIqVDcs8rlCsHGpv1AHK9wBjel2tVnCnH5a
+	o/xz/aXU+wGGQ6s3sTYnbtSmWzb4PhPP8ieuICjgxvW87v3rSeuoma0Ks/SAyQzWViaS7HpUK+SyZ
+	2Bim1R74YJNPI07K7oEpPbNPgSEeYQnAq+9nxat5FUItGU78lAner5DAfL87UDzhL85oboSOZAxal
+	y7bpmLkvsXt+lkwxKY9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvj4-00000009Owv-4BLs;
-	Tue, 10 Mar 2026 11:58:15 +0000
-Received: from mail.avm.de ([2001:bf0:244:244::119])
+	id 1vzvj8-00000009P4M-26R6;
+	Tue, 10 Mar 2026 11:58:18 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgd-00000009Ka2-1zbd;
-	Tue, 10 Mar 2026 11:55:45 +0000
+	id 1vzvgg-00000009KiB-3cOQ;
+	Tue, 10 Mar 2026 11:55:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=C+GdyesCqjDCe4PZkQJNYjcFFIcNfAxTkK/W4yWnbYU=; b=KN6yT+9lxdYl1Ia8+QDqw97UMO
+	ApfsVDnfp/yBga2GP2t+9Im1yi7HX0WEexuebRFIJijWoRYqiWmZUJEog4qoxgxl2cPf/9V3n7Q8d
+	zAF7I0t3ip1ycA5pTnMGcgerX1HYpUtD1HgKR6K3gIrI00KMcpU3e467d3VTz3py57uQUFUviaxO2
+	p8MB8Q6Vx1S8Hx5ChvQF7AtiMQC5WLzl0o4dfEjzh6u4DQV6AbNtHb5kpO5sGc6VVu3yFhkKkT6/c
+	jjTXDYO6rP+KE4H8tgSjbnx1SN15FbUEKOX+oHrUa6CkYJxu7PxT8XwD8ivbsqKajSI5FMuXoQvmx
+	0rke9U/w==;
+Received: from mail.avm.de ([2001:bf0:244:244::120])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vzvgZ-00000007leE-00nK;
+	Tue, 10 Mar 2026 11:55:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143727; bh=zh0NA9cMXwD2DkPFVL0EOnYz45KEbaJC9E9Miol506A=;
+	t=1773143727; bh=gXi6ivSyh7ZdNYhxQJgA68gjpGeiYyVoxWZ9PHNV1mk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=SxQcNNRuEiFwL/5k7L3uNmiPeI5MF2imk5edf5+bENjDS759Fz4qD+/GE8T78XGoj
-	 y3Anx7ULmIKK+LqK0b0jH70rnI3ftcXHXYxeZ0UjeUBfUOOob6Uk/Ag51Y5ZWXmM5b
-	 3t6vwVKkMaMk0t3qb5EymyzCnKyZ6WtwRBwC159Q=
+	b=i31l4ZLCMLhpXpaK7/Y2yOfuiAhnSJr8fMnqxjs25j5opOPrdqJNTkpsIEDFkqgSp
+	 sZnvLSPj8tGgU4HRU29DH4iPyKhf4v+uoWFgpTspJJOsv7N1zoPc8cizNZidyZ8Q0X
+	 jUywybPonMt30TuRnw66+h5bxhBLfRmMmaXnPfrQ=
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006af-2367-7f0000032729-7f000001c9bc-1
+	id 69b006af-b734-7f0000032729-7f0000019c20-1
 	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
 	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:12 +0100
-Subject: [PATCH 46/61] vfio: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:49:17 +0100
+Subject: [PATCH 51/61] leds: Prefer IS_ERR_OR_NULL over manual NULL check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-46-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-51-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -74,27 +88,27 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Alex Williamson <alex@shazbot.org>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=940; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=zh0NA9cMXwD2DkPFVL0EOnYz45KEbaJC9E9Miol506A=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZyWhsmplRS68Hjc75s841x9LkbYtnoYEUHf
- 5sKSdvRLCOJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGcgAKCRA0LQZT0ays
- 26J5B/950clmJMa20JiDvd2Y9XUU4IMRZvZhOhN1i+pY6SIYFFSSWrstAJqpIpGOZ3R9V9O+AHS
- +c7Qni9AFhXI7buBYvtSAJWLJA8EJ41+9M8UOXpQoB5DcXO1c0CGt0ajsPjByLrSehp36R5PzH2
- wWu5vJHC6K9Bj9PLCfIhxzyGkz/hL0gcZbuCGZMCsvjzhhK3aqUIEmC2PQzNoj/okoSky7H2ok5
- Weutgt7pTJ9Q0oTr+n0PVtebcJ9O9+q3o9Yrs2sONA2GIXHGzM3vgOrYqV1Xoa6t/eWQHNiKxUs
- zghoWpQpcWwkFeKxopN3kqosmr1/sM4hUF11IDDx0e4ZVVPT
+Cc: Lee Jones <lee@kernel.org>, Pavel Machek <pavel@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=923; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=gXi6ivSyh7ZdNYhxQJgA68gjpGeiYyVoxWZ9PHNV1mk=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAaDRzpibZr08PkdSw8N3Wy2DsiAYuwbT7jaR
+ Q+T5qeGz2qJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGgwAKCRA0LQZT0ays
+ 2y8ACACMKWU5TdDg1OYJ2RnR6HQxJ+2JBIhOyDk8x3FmHidd0wyjcAKA49FqYhtFEhdjGJpgNO3
+ wlcNr4zJ0vDoKzMmVWNj4Kco49QymIlKxd4ko1v9jLom22gL6FIw+i0pd7JG7Dw9K0M9qv/g65X
+ psKPmTQlkBRnjyq+gEp1UF+Z+aW8svU4fmV048TA2bEb7zgfrp0dmnA9hbj2JEYjWrt/pHjBWtC
+ 27oF1sxBbFSjPkNzuaBpb0y9RWyLO/07lImA1AItNHZGlvNpydtzvqp/I3qxgt9sXKt1PHRt8iZ
+ u4zVb/lltaBI2wPScPn/3+nmKc5y9QbdtT1oK6vzRsjkH2h6
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143727-BACB9E1F-6BD158D9/0/0
+X-purgate-ID: 149429::1773143727-CD5F3A3D-F6F9F436/0/0
 X-purgate-type: clean
-X-purgate-size: 942
+X-purgate-size: 925
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045543_740301_2A3C13D1 
-X-CRM114-Status: UNSURE (   9.68  )
+X-CRM114-CacheID: sfid-20260310_115539_100299_3BB7AD39 
+X-CRM114-Status: UNSURE (   9.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -117,27 +131,28 @@ check.
 
 Change generated with coccinelle.
 
-To: Alex Williamson <alex@shazbot.org>
-Cc: kvm@vger.kernel.org
+To: Lee Jones <lee@kernel.org>
+To: Pavel Machek <pavel@kernel.org>
+Cc: linux-leds@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/vfio/vfio_main.c | 2 +-
+ drivers/leds/trigger/ledtrig-tty.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/vfio/vfio_main.c b/drivers/vfio/vfio_main.c
-index 742477546b15d4dbaf9ebcfb2e67627db71521e0..d71922dfde5885967398deddec3e9e04b05adfec 100644
---- a/drivers/vfio/vfio_main.c
-+++ b/drivers/vfio/vfio_main.c
-@@ -923,7 +923,7 @@ vfio_ioctl_device_feature_mig_device_state(struct vfio_device *device,
+diff --git a/drivers/leds/trigger/ledtrig-tty.c b/drivers/leds/trigger/ledtrig-tty.c
+index 8eb6286b33ac3cdcbb72ed9ad5ad7105e15d20b6..3725571144d910b225ca9605771fc0f0c8355efd 100644
+--- a/drivers/leds/trigger/ledtrig-tty.c
++++ b/drivers/leds/trigger/ledtrig-tty.c
+@@ -220,7 +220,7 @@ static void ledtrig_tty_work(struct work_struct *work)
+ 			goto out;
  
- 	/* Handle the VFIO_DEVICE_FEATURE_SET */
- 	filp = device->mig_ops->migration_set_state(device, mig.device_state);
--	if (IS_ERR(filp) || !filp)
-+	if (IS_ERR_OR_NULL(filp))
- 		goto out_copy;
+ 		tty = tty_kopen_shared(devno);
+-		if (IS_ERR(tty) || !tty)
++		if (IS_ERR_OR_NULL(tty))
+ 			/* What to do? retry or abort */
+ 			goto out;
  
- 	return vfio_ioct_mig_return_fd(filp, arg, &mig);
 
 -- 
 2.43.0
