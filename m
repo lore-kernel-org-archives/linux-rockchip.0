@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8D51FD2D7D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 130D4FD2D7C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:58:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Myio+bjzf768TXNclTzTqGu9BAmu1gaXHNvjyagAiqA=; b=zFyexOhVn+bRUQ
-	uwpejXAakEgwRHqLEKMknpWJVf48SsDf2DP0y1+Cz7sADWqfsq/oNWUIgxDq87Q1IukkbEd8uzwHD
-	6cLGV0G5QG58fO8jbYCtyU0W8ihS2xpl/Cp5CqUNTfTqq1Mbe6uVg+MzTQLZ6LLS8h9sSCVRT/19R
-	ZNhji9SihzIbRVLGzD3+QraKU/qhHru79k97ldi9DR+81INqE6ULcH0sdpZ6EGHyRSzYYEBrNgLSH
-	47YPk5RBf8um7QuoWjOB3s496cf9ppVDv+bOR9QpUPnrHEh19o5OS3SOoaqX/znaaEDUFvrF1HmMt
-	5YSq6DjwJ3Q/CeGpBVeg==;
+	List-Owner; bh=AmChQ9+6a11UxxWm7JP8QvmlliFlgS/tWUAxDwzymUg=; b=JzQeijRfx87xM6
+	+w3WfnRtpkKI2ArzyPsgmJT8otJcO/UXOGQwMZTAprQIVv6Q4Wfyb9U8D/HxutJDCe9wwkY+noov6
+	OSBSHfFO3+hucsr5ZXsqZjcR0BSSW2KQSt60SaA+0w4pC/8qrEUZN1nX0TRvsJsEBlVcTAhRE8BBU
+	BxbOebnO3eddCZn+zRbXyZFSM9KtaLyARxK3GsvlrPydqO1Im1231K1CrMMNhkqkYJjPMcoTMpdE4
+	yPu9F2AbGtso3HDDNyDaunKTygIzniwNpQQ/q4d8zDDzCNRJ9H+XJLyzwnKWhim7Jgm1UojBsjt6r
+	a8KRXtk2iRDlxgeGDOuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvjJ-00000009POo-1iqH;
-	Tue, 10 Mar 2026 11:58:29 +0000
+	id 1vzvjL-00000009PUd-3PQ0;
+	Tue, 10 Mar 2026 11:58:32 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgh-00000009Kj9-1IIG;
+	id 1vzvgh-00000009Kjy-3D3d;
 	Tue, 10 Mar 2026 11:55:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=vRq2g61wWE1srncME+gnVjuT8yOFss+lGNNn6b4Uit4=; b=AeIN/ORe4the7XtghrEM7Z19Mc
-	62/A720r9/k1Gle7PIZwBXDfjTeaSNkQcIT2DcDHH6SEY+KQD+gO480flYqeMr6WR7yI35sumKU+u
-	cmdB+Skw47HQkfTslG2VqgSF3GF4DrtXE6rLTcgVIeFMp1JrS+H8An2RSSyPTYyN7nW7wo5RG4FWh
-	wm1ETnD5RHGnS2+QskWDxawW1um9+qA7OOq44USvdi1gSlCmHfiv7i5lPIxsmzE8RTcxwrv+jKzP5
-	HYaEAL8UiiCQ7SfDWoK2W66/aKGrV/dbNYx0GHOOzaNu3ytoB7aLRiVyhyGtiWuaezmSRMTqCs91Z
-	MYS5lGcw==;
-Received: from mail.avm.de ([2001:bf0:244:244::120])
+	bh=JeJj0T69WHUPLsIPvgVGO/TfjBqV2iFp2koKUN8LMcY=; b=TonmAq8+esIIl1RfPBwRYxW4yW
+	L/0XIkzIrSgrxvo68FDMjyZgEOWKORKVvaGwcly/dbToVjkVTzNZLobcAK0yqIWWMUpopeeu/23TJ
+	e7E/cQU0swcN19gIrD6d4avoOzRtQXNL+3KxoLVPq6yFs8NH6NetwthB1ULQ3FTN6snzV2mI/y33y
+	r0Ank6o8dPn+CHrfPftQA0vqHz28xkhtwW3U83u5yJyAN3zVT0h/EUF7EnSNV0vsic+ZS1D3BWutq
+	/HVVhdOTdIsnz6WcTLBKWLKOZB+K+QHq6WzqzfTxiD2SYdXCrkpocoW/QTXMDaxsPNZ1brSgHhsqY
+	CycBrf6A==;
+Received: from mail.avm.de ([212.42.244.119])
 	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgb-00000007lgF-1DR1;
+	id 1vzvgb-00000007lgH-1GDO;
 	Tue, 10 Mar 2026 11:55:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143727; bh=r2ZNUyu6wG+N08MfsdquggU1Q5xHuPu+4B/VYVv0t9Q=;
+	t=1773143726; bh=w6c4PA3VGZ44yyLt8mghr+WTJ9TxkFa/GQpFHp0jaRg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=YXGm2fddB0bD05XRQUo0zroBzSiXv55w6mXtnC3/rbyTRBzDlz9PWwan2loANEchz
-	 3nUHhdwioF2zPrdtj5GGDiz2/RlpAekCz2aZgV1toF9qbrEYEb5oV3jU7h9yUVsShF
-	 X4koU5bE7tqGGpl7IdLmkPqUNFFBIWSBlmjRRwMc=
+	b=QeZmxS4Y9ZxzJ1P+c7PyBalRHGdguYBtzjQZ1WHuqnNfndJHBOWadzXneNpIO/Cpe
+	 WtbDE01JXbjsGwDZW/SJl+0F8SgXDtITpS9jrWOZKuA2MxhvXL4esHAjK0cxyNxT8g
+	 cX9nlCS2vI2XLhpV0lZEIvKvUcBSNRY+QxXEviZg=
 Received: from [212.42.244.71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006af-b734-7f0000032729-7f0000019c66-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
+	id 69b006ad-2367-7f0000032729-7f0000019da4-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:25 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [212.42.244.71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:25 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:20 +0100
-Subject: [PATCH 54/61] aoe: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:48:56 +0100
+Subject: [PATCH 30/61] net/sunrpc: Prefer IS_ERR_OR_NULL over manual NULL
+ check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-54-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-30-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -88,27 +89,33 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Justin Sanders <justin@coraid.com>, Jens Axboe <axboe@kernel.dk>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=955; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=r2ZNUyu6wG+N08MfsdquggU1Q5xHuPu+4B/VYVv0t9Q=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAaNWcUAch/xMnI0wAbOgPf41K9NsP36Msk7P
- Nki6xRL5YKJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGjQAKCRA0LQZT0ays
- 2xbWCACfzS98X1Mp5R5EwpIK0pTgqrssQIB840NNUj3GRa/d9D29Lch2JFjR2Yy+ldzvSmEDJYr
- +FATwB8i4z+nArVkmYPgbG8vodjj8pep1H5lik7YhU3G9ClazVWr99T039Q+W8sEprULXLQ0dbA
- 4Kpe3/L1QfxY1N+GchfqAHMv0rRJq1RvirATmISGmxTg7n0SEymJW83Bn4X8R0ZnvK6kohy5NEW
- 2Ii5RKfTmBA8YgN2bfh5HrwrKAUrDiQU4qD40KTADcaRVC7Oxd160l9rFHE0+fB+GiDoct83TcC
- /85+2RTmaR+Iva1VQ69ftJxFcgDmZC/vMk3mknKyTuNPcNM+
+Cc: Trond Myklebust <trondmy@kernel.org>, Anna Schumaker <anna@kernel.org>, 
+ Chuck Lever <chuck.lever@oracle.com>, Jeff Layton <jlayton@kernel.org>, 
+ NeilBrown <neil@brown.name>, Olga Kornievskaia <okorniev@redhat.com>, 
+ Dai Ngo <Dai.Ngo@oracle.com>, Tom Talpey <tom@talpey.com>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Simon Horman <horms@kernel.org>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2551; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=w6c4PA3VGZ44yyLt8mghr+WTJ9TxkFa/GQpFHp0jaRg=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAY7O6x5f/jrEOlM2kM2YjYC7Xq22wW3Mikry
+ 9AY9ISieLCJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGOwAKCRA0LQZT0ays
+ 24W7CACaVIegavbFPh1+6gPSjqv5T1Ou5hQU0OcaZ20nx5fdOimad+jK3UuGfZrC9Vgv0QMm0ym
+ 3OSuSluEWbuIv6zcFp3UbdEj9aI7TM7en4Ha7pCkmDfNfPts09fhhi9VrPo390VGOMeNWeVMtD/
+ CQde1U2q7DKI3QtGXyjY9I//uCPpAfeRw/e0X1QSKZ9eOdV+c4uWgQhNCPrPJZrHvycJx2lFn3Q
+ ZNRGEplISNXY/bb/iuclRgqFYvGWnoUgBYQkpTrGJqDvFREwT8LcHN3+0nwKoz0xIqQbO7gBWgt
+ +Dgbc3vk23keeP8aHFv6AZ7K16GCQyMm+zwDBr92eUq+pHvN
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143727-DADD8A3D-0ED39ACF/0/0
+X-purgate-ID: 149429::1773143725-8A498E1F-7900509A/0/0
 X-purgate-type: clean
-X-purgate-size: 957
+X-purgate-size: 2553
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_115541_399941_85D242F6 
-X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-CacheID: sfid-20260310_115541_519663_BEACF94F 
+X-CRM114-Status: UNSURE (   9.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,28 +138,70 @@ check.
 
 Change generated with coccinelle.
 
-To: Justin Sanders <justin@coraid.com>
-To: Jens Axboe <axboe@kernel.dk>
-Cc: linux-block@vger.kernel.org
+To: Trond Myklebust <trondmy@kernel.org>
+To: Anna Schumaker <anna@kernel.org>
+To: Chuck Lever <chuck.lever@oracle.com>
+To: Jeff Layton <jlayton@kernel.org>
+To: NeilBrown <neil@brown.name>
+To: Olga Kornievskaia <okorniev@redhat.com>
+To: Dai Ngo <Dai.Ngo@oracle.com>
+To: Tom Talpey <tom@talpey.com>
+To: "David S. Miller" <davem@davemloft.net>
+To: Eric Dumazet <edumazet@google.com>
+To: Jakub Kicinski <kuba@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+To: Simon Horman <horms@kernel.org>
+Cc: linux-nfs@vger.kernel.org
+Cc: netdev@vger.kernel.org
 Cc: linux-kernel@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/block/aoe/aoecmd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ net/sunrpc/xprtrdma/svc_rdma_transport.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/block/aoe/aoecmd.c b/drivers/block/aoe/aoecmd.c
-index a4744a30a8af4ff05113f3234021eec728265b4f..b31e539a66433a0a5d6e81117a32d12735ffc1bc 100644
---- a/drivers/block/aoe/aoecmd.c
-+++ b/drivers/block/aoe/aoecmd.c
-@@ -1268,7 +1268,7 @@ aoe_ktstart(struct ktstate *k)
+diff --git a/net/sunrpc/xprtrdma/svc_rdma_transport.c b/net/sunrpc/xprtrdma/svc_rdma_transport.c
+index 9b623849723ed0eb74b827881c6f32d3434c891b..b4d03e59a8202f20360cff1e2e79b1e325396517 100644
+--- a/net/sunrpc/xprtrdma/svc_rdma_transport.c
++++ b/net/sunrpc/xprtrdma/svc_rdma_transport.c
+@@ -578,7 +578,7 @@ static struct svc_xprt *svc_rdma_accept(struct svc_xprt *xprt)
+  errout:
+ 	/* Take a reference in case the DTO handler runs */
+ 	svc_xprt_get(&newxprt->sc_xprt);
+-	if (newxprt->sc_qp && !IS_ERR(newxprt->sc_qp))
++	if (!IS_ERR_OR_NULL(newxprt->sc_qp))
+ 		ib_destroy_qp(newxprt->sc_qp);
+ 	rdma_destroy_id(newxprt->sc_cm_id);
+ 	rpcrdma_rn_unregister(dev, &newxprt->sc_rn);
+@@ -608,7 +608,7 @@ static void svc_rdma_free(struct svc_xprt *xprt)
+ 	might_sleep();
  
- 	init_completion(&k->rendez);
- 	task = kthread_run(kthread, k, "%s", k->name);
--	if (task == NULL || IS_ERR(task))
-+	if (IS_ERR_OR_NULL(task))
- 		return -ENOMEM;
- 	k->task = task;
- 	wait_for_completion(&k->rendez); /* allow kthread to start */
+ 	/* This blocks until the Completion Queues are empty */
+-	if (rdma->sc_qp && !IS_ERR(rdma->sc_qp))
++	if (!IS_ERR_OR_NULL(rdma->sc_qp))
+ 		ib_drain_qp(rdma->sc_qp);
+ 	flush_workqueue(svcrdma_wq);
+ 
+@@ -619,16 +619,16 @@ static void svc_rdma_free(struct svc_xprt *xprt)
+ 	svc_rdma_recv_ctxts_destroy(rdma);
+ 
+ 	/* Destroy the QP if present (not a listener) */
+-	if (rdma->sc_qp && !IS_ERR(rdma->sc_qp))
++	if (!IS_ERR_OR_NULL(rdma->sc_qp))
+ 		ib_destroy_qp(rdma->sc_qp);
+ 
+-	if (rdma->sc_sq_cq && !IS_ERR(rdma->sc_sq_cq))
++	if (!IS_ERR_OR_NULL(rdma->sc_sq_cq))
+ 		ib_free_cq(rdma->sc_sq_cq);
+ 
+-	if (rdma->sc_rq_cq && !IS_ERR(rdma->sc_rq_cq))
++	if (!IS_ERR_OR_NULL(rdma->sc_rq_cq))
+ 		ib_free_cq(rdma->sc_rq_cq);
+ 
+-	if (rdma->sc_pd && !IS_ERR(rdma->sc_pd))
++	if (!IS_ERR_OR_NULL(rdma->sc_pd))
+ 		ib_dealloc_pd(rdma->sc_pd);
+ 
+ 	/* Destroy the CM ID */
 
 -- 
 2.43.0
