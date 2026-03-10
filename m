@@ -4,47 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41204EB1054
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:55:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF1FEB1053
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dHtkX9kBYvzwUr2ZqsKl87RPfCbt5pFJVMzzEO9WyWY=; b=cc9fL2r+XIf7c+
-	GBdo2PEzBNiRZyKc7mqNXXO+omOBfrv2aNHMhCFXWT6olA5MzBclIV0ONSABmfd0GhrkUBgbhLwRz
-	duJSI7rf86DqCuyfNnuUFyg9ZBT8TDNrkhYL/2M0uQbyc99Rf7BG4o0MYNRv9jHMbapnU8lcsKRGc
-	TfkX88jJ64zYY9kUaGzX3kOcje0MZHv0RT0FW6ESOW9PHp9Va+LTwYT8LqdiPQaTWIGrOrNA7uDJI
-	Rsfh21+nP7XZXm+G3mM6I2WsSS6yTRdoyKKByQUakbhbAyTqh+tnnjtAtBrnBC9oGKAPHNWY2GV8N
-	I+X7E03clYi5nQ8dzLJw==;
+	List-Owner; bh=N1+1g1ZT6TehJVU5owYi2ywQE6r8h5ni5+YthXHGhwc=; b=f9A8vITwgAmtzW
+	6ag0MXtWsaQwkZ4yXJMJAoE21PGco2v+DHLMaFZvi7GINaaxTN9kn/rZ3Uu8yOSV3U4wOKrsD/Pkc
+	Sw42m+XZ3zxY2lmlSeuQ+6b+dD6A5FLNAKZj5V0SriIBCUvjgPFh6U+9u6aH4yRFokCUag94fdRhN
+	c/a6ausBjDiMcNKF/DNw3Ds0WCLx1q0a/7+er0tDKQNAxXLX0ShjxRZQpt3cOD71px4nvwvLP5Sc+
+	F9+j/H2Vs/NBc6dMKGKTNTWrlXIXE7aajEY/KaYDtlFmZC1TE6IwwWMxar6DbcgASW4iWk47PMVPI
+	yYSye9zR682sOohRFltw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgm-00000009Ktx-34MX;
-	Tue, 10 Mar 2026 11:55:52 +0000
-Received: from mail.avm.de ([2001:bf0:244:244::119])
+	id 1vzvgo-00000009Kwf-21dG;
+	Tue, 10 Mar 2026 11:55:54 +0000
+Received: from mail.avm.de ([212.42.244.119])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgP-00000009KMO-1stT;
+	id 1vzvgP-00000009KMF-0qnn;
 	Tue, 10 Mar 2026 11:55:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143723; bh=KX6X+DDiGt9UXTjcCHLPV6DtScldl/2cIRjPuvT9tTY=;
+	t=1773143723; bh=pg0bcAlKCqGzZYxxvjTHT3BjuiImw/JCztrCxw0OaYk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ZioiLNZ6EfhKGMrW73+pjGIuwzOuvOKiSTcZ7wPJiCwebXNzeEOuXWZ+A1nFHvhW4
-	 kJcOoKZ0VhxgqpRswcks1O+/9tUDVhOk4k88nkZD85ItDoYcz2HVcAjttfrO5CwuLe
-	 NFoc05VLkE1QM4ORDb0Hi3i8FcBzsZqAPnJdPzxQ=
+	b=bIWX9HTo18B4ZE3sIquR8sbft3qzxzntZILxo7B74pgnu0rbeOHxAC7dlzZUeUKhf
+	 HyziuuxI8v1FJdI0XETgMVlTILYL71/sVzADfcPBmDn0JPtGKUshimXXHFg01f3FBK
+	 jYVNQFVbnSBvARzQ5cTWzBurkew0k16ZhIWvNTOE=
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006ab-2367-7f0000032729-7f0000019d06-1
+	id 69b006aa-2367-7f0000032729-7f0000019cb8-1
 	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:23 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:23 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:22 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:48:32 +0100
-Subject: [PATCH 06/61] 9p: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:48:27 +0100
+Subject: [PATCH 01/61] Coccinelle: Prefer IS_ERR_OR_NULL over manual NULL
+ check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-6-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-1-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -74,30 +75,28 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: Eric Van Hensbergen <ericvh@kernel.org>, 
- Latchesar Ionkov <lucho@ionkov.net>, 
- Dominique Martinet <asmadeus@codewreck.org>, 
- Christian Schoenebeck <linux_oss@crudebyte.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=932; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=KX6X+DDiGt9UXTjcCHLPV6DtScldl/2cIRjPuvT9tTY=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAXqJp0CDUjw9jEvsvX+a/KbvAdXeFk7KScmA
- k1gbpU+8P+JATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF6gAKCRA0LQZT0ays
- 29mrCACj+Vud6UtbAeAOyyVoHbFLvMA1jaglqqRGws0fgYsgwpzXFXvy2i2CmaAOIcTuq4UVTOl
- 2Cp9O2MO0VDKHA4864zJOud8em6WQkYpTs1edDKjyZ8gpLnrkl+uUALuLIZHLcn32/PFl6USje2
- 0rlhbB9Ue5RZDoT7EFzcp3mX899jCdSGzalbeWr5SPDgRQW0S9l7PbTpDgAvlvTr4+JT6Q76sJ+
- Xum3jXXZ29Rm368akWgnu/SoCzltjqdTHnSYloTAliMoi8hFFj6gbktEQSHRbMEzLVXTgNcHq2l
- 4mfiDZbzmkqs8S8e3yaP+Mk/R/tjrHLygop2cIGzqTfhnlfW
+Cc: Julia Lawall <Julia.Lawall@inria.fr>, 
+ Nicolas Palix <nicolas.palix@imag.fr>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3942; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=pg0bcAlKCqGzZYxxvjTHT3BjuiImw/JCztrCxw0OaYk=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAXSiE/1KQSdimAccvhjPksfwMRe29ZGV0WmQ
+ dc68UTm4wOJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAF0gAKCRA0LQZT0ays
+ 23P4B/sHBnCDcdVo4QHtyw/PgaWkSZpnGi/FADclDF/JNscwRsXCrFWzhKgn3xZ7GBKm9yEUANd
+ kHYMMKsDVZ5Sq7xOrshFMfBSWpA+0BsCM8pKaxoj2QHBKIDA4UgN93hm4YvutplfF9/q6gdQOqR
+ x0WpQkBc7InCLdKCwpXNhcL/HWVvBtzqT2nSOrbK1Rd5xcaVOko56aV82Fnst/bFUZLKttOBTCU
+ bLU0LprdbSKp+PN7eyMO37tBs3H4QuuQgnRmZxd8L6mNXEFIpj0UqSFvKNrDWZBtTjurbiwItHZ
+ +OYdOt4ryN9C08iNZEaNQULUxcRTzE4KumgPWWtIEShH9ICc
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143723-77CF7E1F-303E842C/0/0
+X-purgate-ID: 149429::1773143723-D8CB5E1F-6C1339D5/0/0
 X-purgate-type: clean
-X-purgate-size: 934
+X-purgate-size: 3944
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045529_736265_1D496379 
-X-CRM114-Status: UNSURE (   9.52  )
+X-CRM114-CacheID: sfid-20260310_045529_723049_05E60E39 
+X-CRM114-Status: UNSURE (   9.75  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,35 +114,174 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
-check.
+Find and convert uses of IS_ERR() plus NULL check to IS_ERR_OR_NULL().
 
-Change generated with coccinelle.
+There are several cases where `!ptr && WARN_ON[_ONCE](IS_ERR(ptr))` is
+used:
+- arch/x86/kernel/callthunks.c:215 WARN_ON_ONCE
+- drivers/clk/clk.c:4561 WARN_ON_ONCE
+- drivers/interconnect/core.c:793 WARN_ON
+- drivers/reset/core.c:718 WARN_ON
+The change is not 100% semantical equivalent as the warning will now
+also happen when the pointer is NULL.
 
-To: Eric Van Hensbergen <ericvh@kernel.org>
-To: Latchesar Ionkov <lucho@ionkov.net>
-To: Dominique Martinet <asmadeus@codewreck.org>
-To: Christian Schoenebeck <linux_oss@crudebyte.com>
-Cc: v9fs@lists.linux.dev
+To: Julia Lawall <Julia.Lawall@inria.fr>
+To: Nicolas Palix <nicolas.palix@imag.fr>
+Cc: cocci@inria.fr
 Cc: linux-kernel@vger.kernel.org
+
+---
+drivers/clocksource/mips-gic-timer.c:283 looks suspicious: ret != clk,
+but Daniel Lezcano verified it as cottect.
+
+There are some cases where the checks are part of a larger expression:
+- mm/kmemleak.c:1095
+- mm/kmemleak.c:1155
+- mm/kmemleak.c:1173
+- mm/kmemleak.c:1290
+- mm/kmemleak.c:1328
+- mm/kmemleak.c:1241
+- mm/kmemleak.c:1310
+- mm/kmemleak.c:1258
+- net/netlink/af_netlink.c:2670
+Thanks to Julia Lawall for the help to also handle them.
+
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- fs/9p/fid.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ scripts/coccinelle/api/is_err_or_null.cocci | 125 ++++++++++++++++++++++++++++
+ 1 file changed, 125 insertions(+)
 
-diff --git a/fs/9p/fid.h b/fs/9p/fid.h
-index 0d6138bee2a3d1ab565ab2d210c0a3f3bf97e4e3..3bb7ef4380e972a2d9ab67eb4aab6cc5bfe2eea7 100644
---- a/fs/9p/fid.h
-+++ b/fs/9p/fid.h
-@@ -27,7 +27,7 @@ static inline struct p9_fid *v9fs_fid_clone(struct dentry *dentry)
- 	struct p9_fid *fid, *nfid;
- 
- 	fid = v9fs_fid_lookup(dentry);
--	if (!fid || IS_ERR(fid))
-+	if (IS_ERR_OR_NULL(fid))
- 		return fid;
- 
- 	nfid = clone_fid(fid);
+diff --git a/scripts/coccinelle/api/is_err_or_null.cocci b/scripts/coccinelle/api/is_err_or_null.cocci
+new file mode 100644
+index 0000000000000000000000000000000000000000..7a430eadccd9f9f28b1711d67dd87a817a45bd52
+--- /dev/null
++++ b/scripts/coccinelle/api/is_err_or_null.cocci
+@@ -0,0 +1,125 @@
++// SPDX-License-Identifier: GPL-2.0-only
++///
++/// Use IF_ERR_OR_NULL() instead of IS_ERR() plus a check for (not) NULL
++///
++// Copyright: (C) 2026 Philipp Hahn, FRITZ! Technology GmbH.
++// Confidence: High
++// Options: --no-includes --include-headers
++// Keywords: IS_ERR, IS_ERR_OR_NULL
++
++virtual patch
++virtual report
++virtual org
++
++@p1 depends on patch@
++expression E;
++@@
++(
++-	E != NULL && !IS_ERR(E)
+++	!IS_ERR_OR_NULL(E)
++|
++-	E == NULL || IS_ERR(E)
+++	IS_ERR_OR_NULL(E)
++|
++-	!IS_ERR(E) && E != NULL
+++	!IS_ERR_OR_NULL(E)
++|
++-	IS_ERR(E) || E == NULL
+++	IS_ERR_OR_NULL(E)
++)
++
++@p2 depends on patch@
++expression E;
++@@
++(
++-	E == NULL || WARN_ON(IS_ERR(E))
+++	WARN_ON(IS_ERR_OR_NULL(E))
++|
++-	E == NULL || WARN_ON_ONCE(IS_ERR(E))
+++	WARN_ON_ONCE(IS_ERR_OR_NULL(E))
++)
++
++@p3 depends on patch@
++expression E,e1;
++@@
++(
++-	e1 && E != NULL && !IS_ERR(E)
+++	e1 && !IS_ERR_OR_NULL(E)
++|
++-	e1 || E == NULL || IS_ERR(E)
+++	e1 || IS_ERR_OR_NULL(E)
++|
++-	e1 && !IS_ERR(E) && E != NULL
+++	e1 && !IS_ERR_OR_NULL(E)
++|
++-	e1 || IS_ERR(E) || E == NULL
+++	e1 || IS_ERR_OR_NULL(E)
++)
++
++@r1 depends on report || org@
++expression E;
++position p;
++@@
++(
++ 	E != NULL && ... && !IS_ERR@p(E)
++|
++ 	E == NULL || ... || IS_ERR@p(E)
++|
++ 	!IS_ERR@p(E) && ... && E != NULL
++|
++ 	IS_ERR@p(E) || ... || E == NULL
++)
++
++@script:python depends on report@
++p << r1.p;
++@@
++coccilib.report.print_report(p[0], "opportunity for IS_ERR_OR_NULL()")
++
++@script:python depends on org@
++p << r1.p;
++@@
++coccilib.org.print_todo(p[0], "opportunity for IS_ERR_OR_NULL()")
++
++@p4 depends on patch@
++identifier I;
++expression E;
++@@
++(
++-	(I = E) != NULL && !IS_ERR(I)
+++	!IS_ERR_OR_NULL((I = E))
++|
++-	(I = E) == NULL || IS_ERR(I)
+++	IS_ERR_OR_NULL((I = E))
++)
++
++@r2 depends on report || org@
++identifier I;
++expression E;
++position p;
++@@
++(
++*	(I = E) != NULL && ... && !IS_ERR@p(I)
++|
++*	(I = E) == NULL || ... || IS_ERR@p(I)
++)
++
++@script:python depends on report@
++p << r2.p;
++@@
++coccilib.report.print_report(p[0], "opportunity for IS_ERR_OR_NULL()")
++
++@script:python depends on org@
++p << r2.p;
++@@
++coccilib.org.print_todo(p[0], "opportunity for IS_ERR_OR_NULL()")
++
++@p5 depends on patch disable unlikely @
++expression E;
++@@
++-\( likely \| unlikely \)(
++(
++ IS_ERR_OR_NULL(E)
++|
++ !IS_ERR_OR_NULL(E)
++)
++-)
 
 -- 
 2.43.0
