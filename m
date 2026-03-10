@@ -4,57 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C295FEA8550
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 09:30:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6165AF41808
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 09:30:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GmbhNUxNCL4nlWeFzRQVVRqwsyhba7R9YeDkMFeVfU8=; b=wdyYmCjKe+Ihdu
-	71O1i9uxVw4RL4xsoNJunw98LdRxmh59VtZ7ktUdHI2s1QHs5cLPoGBWQSS1VxiGappQbdM2uJ/hr
-	ZvrJbz5bbGhOMlXT2N7M5Ty1WlR4rQ4BCBbdWwQsaz64Wnw2DdNt09GtQ4qywweo/AXPFyII/0H1Z
-	zk9qgMPCzWwWk8KfDTJlbOCvjz4irlBujQeVqp3bae/P0G22yp1AK+Ll04b2U9fJFLRf94JfuSBAg
-	lZW4whFAQisTjQENphTucRo1Afot2gw7O/+n78x85/uat69p+DWK172IyK/Hq6v0xY881FuNPWOgj
-	nV9dMIiyCk4eMpBB8Z3w==;
+	List-Owner; bh=qFWdJ6rj/s025BkspjBP30tQIfDFn0Kzbrxg/0nfKbc=; b=jMll+6gRoycPe2
+	QgK8osM1F22oSAHgsjKmyoq/L88Gyp+zARrnBB/Z8uicNyOru06WTUGuGddPqQPAX3iIW3FdaAFrZ
+	tbyn+NPtt9UdRJ83fAGpYNQoGIsNussIJfc5/AE4XEesFQFpL9CBBXBwizjk2R0cf5s/GlN7tk8QR
+	9uvw7FszXfzZZyOxdwRyAMT79sEha5zw3Yv2XBiW/JN8jhuFDrzEzXoUcbDojCKZ1xTiUJ6lIaQj1
+	RvGbs1ipIAzDihEqbWF7eTiOeGh3pdtM5r8/Ou9e2YbsoafNW03iLx6IC+kBA95NwpZQX/YkagSH/
+	q+lLhWHcIvxg3CCZ9hMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztPn-000000095mW-0pIA;
-	Tue, 10 Mar 2026 09:30:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1vztPu-000000095qu-0s2U;
+	Tue, 10 Mar 2026 09:30:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vztPk-000000095lU-2v3A;
-	Tue, 10 Mar 2026 09:30:09 +0000
+	id 1vztPs-000000095oK-2alC
+	for linux-rockchip@bombadil.infradead.org;
+	Tue, 10 Mar 2026 09:30:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=BQFB551uQxWQuLg3XRRlCuau7a6nCD7Elvt70vllWfE=; b=WiZMSUPpUWpzfRRpje2qXncVwi
+	ppXhYzDakC91X1AOmAjASDn15afGXX4gc/77nRpVLvWR2kCe7YdNrWYdEWlwOw8qgL+qRK8eWPRnG
+	lyrcz8cfkbzxBdc3LlAK5sAI1FygufEtfYPiSO+Uv4ULjd76WfqdTyDoPYVksXaF8xSJVChgr0XZQ
+	p2p03u6lrBg55Q4o1L3IkSxfJnRdVphLEn/Pelnca/X85nRfppcO5XQlO/Tj9DWezezSX/XGmYgZ/
+	tc9oIqap5uvaWXtBrrsVhD/VR0rmhDzBHl1gn7r7d4Xf3oHzTK6HPfieK5wyte/+YEVzf5NWNZtgR
+	G/Z2oIEw==;
+Received: from gloria.sntech.de ([185.11.138.130])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vztPo-0000000E7pj-3YzS
+	for linux-rockchip@lists.infradead.org;
+	Tue, 10 Mar 2026 09:30:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=XW5x2W70/4qH1wnLG28SxFGceYyAdqEbV+ODm4WuYMg=; b=AXZiRj3XaLjCcEcg6QX35x7Q7S
-	+gR7ns3jStOmeS0rkfMeYt3tnLMbvRTFwDgc8Ft5TKwsFLVLATTFA0ZfWs1VcZb0Mb+7aw/WDNBak
-	bKAcwLYW5l0b+dwGRpr9M30txEbxjxFhdmme8XWm+0nAwx+Mu4Tnhxd/R/PRZVUbLYJXgqnfWVeHv
-	yML0UHWTDARQPfVNWq3KpGGkSXwLKPUaKDNe5CI33Af3j0rRgo4+AyDRF1F4sWomD3HneyvKxHhXp
-	hw8PWlC4da8rzUUeWCpGaIjD/kUzjswHfy62agnvfbzWbMt+QmrAYrEsa5cYQNpwsiPEMyDGAIGh3
-	EKsvhBKQ==;
+	bh=BQFB551uQxWQuLg3XRRlCuau7a6nCD7Elvt70vllWfE=; b=hoWcc4nnibu5kfPRzlIdx5Scie
+	T7YdxgowCXYrlHh818iISKD+o3IxN63Af/h72WudZuS0EyfpuhOY223oCc5XBavVu7qV5WOeH6fwE
+	uTW88E+j4n/KAJsxZezjBR0q5qrsAXCXz3nYzbEJ9/iM33c509Fypzm1UuFxk4IQA8JdJEvjSIZq9
+	BfVHJ1QgEt1fCaID+Be3/wh0kReQybezf2c7aDq5k8ySzhWMfsLQ3WRcjTFCaZvnn2nepiuVFk0d0
+	usLUdffZ3utfzLkZfqklU9xlFlEBAp5PnjUEWlojPxDiIj3wVqig2ZpUGSY4wLiVixKVGwLkq8y1o
+	VbhPW6Dg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
+To: Stephen Boyd <sboyd@kernel.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
-Date: Tue, 10 Mar 2026 10:29:54 +0100
-Message-ID: <177313498974.2340533.2031096927430655073.b4-ty@sntech.de>
+	linux-clk@vger.kernel.org
+Subject: Re: [PATCH v2] clk: rockchip: rk3568: Add PCIe pipe clock gates
+Date: Tue, 10 Mar 2026 10:29:55 +0100
+Message-ID: <177313498967.2340533.2279759049347731335.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260304164448.1024410-1-festevam@gmail.com>
-References: <20260304164448.1024410-1-festevam@gmail.com>
+In-Reply-To: <1772799641-32164-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1772799641-32164-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_023008_755950_991E1F86 
-X-CRM114-Status: GOOD (  11.11  )
+X-CRM114-CacheID: sfid-20260310_093012_994569_CEF66556 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,20 +85,18 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 04 Mar 2026 13:44:48 -0300, Fabio Estevam wrote:
-> According to hid-over-i2c.yaml, the correct name for the 3.3V supply
-> is 'vdd-supply'.
+On Fri, 06 Mar 2026 20:20:41 +0800, Shawn Lin wrote:
+> The PCIe pipe clocks are currently left as orphan clocks and remain
+> enabled indefinitely, which is suboptimal. Add the missing clock gates
+> so the PCIe driver can explicitly manage them when not in use. In order
+> not to break compatibility with old DTB, mark them as CLK_IGNORE_UNUSED.
 > 
-> Fix it accordingly.
 > 
-> This fixes the following dt-schema warning:
-> 
-> [...]
 
 Applied, thanks!
 
-[1/1] ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
-      commit: 3ca314a5643057ad30d16b18c99ceaa5474c1200
+[1/1] clk: rockchip: rk3568: Add PCIe pipe clock gates
+      commit: 41b1a6760959017c4fa1dbc7c3cc318406ab1455
 
 Best regards,
 -- 
