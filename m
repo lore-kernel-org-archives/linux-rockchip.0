@@ -4,47 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00DE7EB1060
-	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:57:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F056FD2D63
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 11:57:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ejw1gEJJfbXeJiTACnpraYVAZbH72Su/4j6Jjk2Wi+c=; b=aUvjf3MPRohOp8
-	TMKJbBW3oUu5z4BF15mehJY9D4dXJUACzTWqioMnw2h2d2ec5oO9VMz6c40udTNZoYu9ecPXzTCis
-	jLzsBJkiTFWoQ6RLliZyTTLCuO+M+2yB9n5keaSMsWxnqVD8CBv2skZjIG5nRmcgXmeaxpOr+U4Qe
-	K3N91mKXVHh8jxIZGSl+Yox+6Uw7esIV4rYSMGfErpHFF6JgnbWq8hPg5/UPol8VxAR6RoD+o5A/P
-	SL2jBW3erOYbU6QUMvGs6Hy2gvB92IAtcsSnnjvDR9qZzjxep9dHg2KmsEokWnmR85G8kGmUcIUi/
-	+Cus2iXtCqf9Vh+kIMKg==;
+	List-Owner; bh=wSzo93/xHvwb0By7SLW7A+QwbimKq+zXRD7T5NhKi7U=; b=ArqsqAYJgNdkCl
+	zTjrO/MlGpzWDXJgRtmE6w7L6XO2F/dKAbOjQBEAgyIgq6ZnZlxD6W57XrGpuWEI9IGuUE5mIsuML
+	hqK/XLMzY860i5uyqWgxKKkEAhdxRKDsfum6iDZfC6Nu0LTEYsLyW8i6Yo7AVabMxAVs4A8AhoLLa
+	HVyODnroaEGeyO5bIpnw3l1PihkB01wIrU84E8GbSF/4t4HDvCSxrPrz0EG2fdeFO2rLqQSOZKtWF
+	hLuvk36yz7bNB18OYimOyoNJvwA6mkY2hp8EfWDytRzbj71wFObXy12Xy1kofiBhPVEUy89ZTX8Dr
+	fZlQT0Jc3nxgIR3K5WuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzviJ-00000009NL7-0pU9;
-	Tue, 10 Mar 2026 11:57:27 +0000
-Received: from mail.avm.de ([2001:bf0:244:244::94])
+	id 1vzvib-00000009O1e-2IoN;
+	Tue, 10 Mar 2026 11:57:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzvgb-00000009KWY-2C8E;
-	Tue, 10 Mar 2026 11:55:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=avm.de; s=mail;
-	t=1773143727; bh=5jNhYM960jMlYUrL3T2we+u9wPA7QX8xb/YhMa8cGzI=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=M5sopbNY66qmWa+2q+MLa+uKDQnYhARDVpHPBaPhnBAWxbQH6mILrzFzXoehD/OnN
-	 XfkL39v7DGJAyVHbunl2dtyoz4/s+HQp68/tCQVMA+YzssNFiXbaAEz8Yvn1XdtigU
-	 NmV3lEhKYunB5kPsVmat/OQepTdLQIWCI8jH5Ufw=
+	id 1vzvgf-00000009Kfn-2PKu;
+	Tue, 10 Mar 2026 11:55:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=1RQt94wsCFG7IJEQyvVRUl8nd2Z953/wokMRXtIM6bI=; b=H0Jn56P77NNw6KywfjvW5oHv2Y
+	I0H6YYIMtUSPdYvtFBy89Sxjvl5H7c9PiTAYZcq1bBqZzMLxQhoEJJvfNPHMcQaXG+nXYejp/UoAw
+	u270Us6cL+R2aqB6CSGsxzdEy13bvGH5dkqi0xkR8wHyUHrDIOo1HzqqR4gVGNQzS9ss5BUmXUiNY
+	4uGxSIb14IAZwIYfBlTGzxPk9EkrJYpDCXIT+ayYQo24I0o4CA8FOo578JWEuFX7NuLUSFhO6Bo7Y
+	bRv9gNwGl9u+q+0Rl9Wa+KE5QrdN2yP0nCCPvmhMQXV04DCJ5eyL3GWn/0Ql4vBGOhPkrdvPCUfea
+	mw4udQoQ==;
+Received: from mail.avm.de ([2001:bf0:244:244::94])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1vzvgS-0000000EQ6k-3nIy;
+	Tue, 10 Mar 2026 11:55:40 +0000
 Received: from [2001:bf0:244:244::71] (helo=mail.avm.de)
 	by mail.avm.de with ESMTP (eXpurgate 4.55.2)
 	(envelope-from <phahn-oss@avm.de>)
-	id 69b006af-e21d-7f0000032729-7f000001ba7e-1
-	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:27 +0100
+	id 69b006ad-e21d-7f0000032729-7f000001d9e2-1
+	for <multiple-recipients>; Tue, 10 Mar 2026 12:55:25 +0100
 Received: from mail-auth.avm.de (dovecot-mx-01.avm.de [IPv6:2001:bf0:244:244::71])
 	by mail.avm.de (Postfix) with ESMTPS;
-	Tue, 10 Mar 2026 12:55:27 +0100 (CET)
+	Tue, 10 Mar 2026 12:55:25 +0100 (CET)
 From: Philipp Hahn <phahn-oss@avm.de>
-Date: Tue, 10 Mar 2026 12:49:10 +0100
-Subject: [PATCH 44/61] target: Prefer IS_ERR_OR_NULL over manual NULL check
+Date: Tue, 10 Mar 2026 12:48:47 +0100
+Subject: [PATCH 21/61] lib/test: Prefer IS_ERR_OR_NULL over manual NULL
+ check
 MIME-Version: 1.0
-Message-Id: <20260310-b4-is_err_or_null-v1-44-bd63b656022d@avm.de>
+Message-Id: <20260310-b4-is_err_or_null-v1-21-bd63b656022d@avm.de>
 References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 In-Reply-To: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
 To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
@@ -74,28 +83,30 @@ To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
  sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
  tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, 
  Philipp Hahn <phahn-oss@avm.de>
-Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1611; i=phahn-oss@avm.de;
- h=from:subject:message-id; bh=5jNhYM960jMlYUrL3T2we+u9wPA7QX8xb/YhMa8cGzI=;
- b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAZrwlPF0cTtka85RKXa/jq01klA6219EkbVF
- sAxzvkaF5OJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGawAKCRA0LQZT0ays
- 26c3B/97YbFOVY+7aU+X20/OGHSJFO2zRY48bbypRSoZTJJvUVhT9k9LgthUke6q7t50KfcaKxO
- +ji7TT6hO8Cm4OsGah0c5lQCV8UQAJc4iRbI/bt93UQwIqQrpJeR9mDiRtZ63zuk53hAKMaouvF
- y6MARoN+FEiA3sHGmWk/DuFGtzf6I3rn5UIuUm1ckeIx7XgHZwxEQLChAjM+0RUA9PFCwYu/qm6
- 9IpeMJ2V/nIZwaOJH7XMvW452VksCcG4pysYBM4gaKPDiw/aj9RS8erUS771tOWY6ZGy4Wx4+7y
- JX63QRv+rPmmYyTOxZi58eVjXbcoNvE3qP8qFHWJHKPRXuOf
+Cc: Andrew Morton <akpm@linux-foundation.org>, 
+ Luis Chamberlain <mcgrof@kernel.org>, Petr Pavlu <petr.pavlu@suse.com>, 
+ Daniel Gomez <da.gomez@kernel.org>, Sami Tolvanen <samitolvanen@google.com>, 
+ Aaron Tomlin <atomlin@atomlin.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2236; i=phahn-oss@avm.de;
+ h=from:subject:message-id; bh=dZgGx+TJ86HynJEVGMrEA5pIsLW37DebkwtATXmSHOI=;
+ b=owEBbQGS/pANAwAKATQtBlPRrKzbAcsmYgBpsAYdDyn9P9EqiNuLjohkPV9X7iASajPgIoE/Y
+ Nuv6AjHInyJATMEAAEKAB0WIQQ5bPBtrWDUcDQCppg0LQZT0ays2wUCabAGHQAKCRA0LQZT0ays
+ 2wT8B/9ExWKAo/Sn9Hy5RU9mMJnGJZfEhSDSh3BrEyzAo8askVVJ9+5gjVv5zubvVRZSl0xsWYD
+ ONcBymLUypUnGPDyKoUOhx2btlwnIrxM+A/znjwtFfejlhgahBH8clBf9ppwmWxz+aomfSi8dH0
+ gI3DmyyOVIa4OSRnV4I+RdKzJvI1/m5sEwA+61ywfL4pM19NmtFK9XOne0dvmugbwth+SSxAJRb
+ vUziX2Dy0AcV+RxD3aCuKKv6tZLzJkBbkKbaQ16k0qyAZb3zbS92hAPdw+yFsGOJMaFjGgEs6OE
+ FCCv3wHl+aKzbAwbrH/eK6sw740pLs96xx8NapXtmcrko8Wn
 X-Developer-Key: i=phahn-oss@avm.de; a=openpgp;
  fpr=58AF7C2E007CDBE62C59E078F50EFDCF8AD04B1A
-X-purgate-ID: 149429::1773143727-8B66AF2F-B220D537/0/0
+X-purgate-ID: 149429::1773143725-98670F2F-CE18AF23/0/0
 X-purgate-type: clean
-X-purgate-size: 1613
+X-purgate-size: 2238
 X-purgate-Ad: Categorized by eleven eXpurgate (R) https://www.eleven.de
 X-purgate: This mail is considered clean (visit https://www.eleven.de for further information)
 X-purgate: clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_045541_748962_620304CD 
-X-CRM114-Status: UNSURE (   8.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260310_115533_706468_BCEDDCE1 
+X-CRM114-Status: GOOD (  11.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,46 +128,55 @@ check.
 
 Change generated with coccinelle.
 
-To: "Martin K. Petersen" <martin.petersen@oracle.com>
-Cc: linux-scsi@vger.kernel.org
-Cc: target-devel@vger.kernel.org
+To: Andrew Morton <akpm@linux-foundation.org>
+To: Luis Chamberlain <mcgrof@kernel.org>
+To: Petr Pavlu <petr.pavlu@suse.com>
+To: Daniel Gomez <da.gomez@kernel.org>
+To: Sami Tolvanen <samitolvanen@google.com>
+To: Aaron Tomlin <atomlin@atomlin.com>
 Cc: linux-kernel@vger.kernel.org
+Cc: linux-modules@vger.kernel.org
 Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
 ---
- drivers/target/target_core_fabric_configfs.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ lib/test_firmware.c | 2 +-
+ lib/test_kmod.c     | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/target/target_core_fabric_configfs.c b/drivers/target/target_core_fabric_configfs.c
-index 331689b30f8540c8e78de3eae32c1f8cd4906213..20d57d766ada6ba24cbd2d44d0107cdff9483a68 100644
---- a/drivers/target/target_core_fabric_configfs.c
-+++ b/drivers/target/target_core_fabric_configfs.c
-@@ -479,7 +479,7 @@ static struct config_group *target_fabric_make_np(
- 	}
+diff --git a/lib/test_firmware.c b/lib/test_firmware.c
+index b471d720879a70c0db82e605960abe69de28ab4b..fc3177927a02e2d7849915309048529395ece0f8 100644
+--- a/lib/test_firmware.c
++++ b/lib/test_firmware.c
+@@ -955,7 +955,7 @@ static ssize_t trigger_batched_requests_store(struct device *dev,
+ 		init_completion(&req->completion);
+ 		req->task = kthread_run(test_fw_run_batch_request, req,
+ 					     "%s-%u", KBUILD_MODNAME, req->idx);
+-		if (!req->task || IS_ERR(req->task)) {
++		if (IS_ERR_OR_NULL(req->task)) {
+ 			pr_err("Setting up thread %u failed\n", req->idx);
+ 			req->task = NULL;
+ 			rc = -ENOMEM;
+diff --git a/lib/test_kmod.c b/lib/test_kmod.c
+index f0dd092860ea6f9c69a71e10cb1c8b071b1cd1b7..f44a181f6f1ab53cf95a0a0b598b88cb5f8f369d 100644
+--- a/lib/test_kmod.c
++++ b/lib/test_kmod.c
+@@ -327,7 +327,7 @@ static int try_one_request(struct kmod_test_device *test_dev, unsigned int idx)
+ 	info->task_sync = kthread_run(run_request, info, "%s-%u",
+ 				      KBUILD_MODNAME, idx);
  
- 	se_tpg_np = tf->tf_ops->fabric_make_np(se_tpg, group, name);
--	if (!se_tpg_np || IS_ERR(se_tpg_np))
-+	if (IS_ERR_OR_NULL(se_tpg_np))
- 		return ERR_PTR(-EINVAL);
+-	if (!info->task_sync || IS_ERR(info->task_sync)) {
++	if (IS_ERR_OR_NULL(info->task_sync)) {
+ 		test_dev->test_is_oom = true;
+ 		dev_err(test_dev->dev, "Setting up thread %u failed\n", idx);
+ 		info->task_sync = NULL;
+@@ -358,7 +358,7 @@ static void test_dev_kmod_stop_tests(struct kmod_test_device *test_dev)
  
- 	se_tpg_np->tpg_np_parent = se_tpg;
-@@ -937,7 +937,7 @@ static struct config_group *target_fabric_make_tpg(
- 	}
- 
- 	se_tpg = tf->tf_ops->fabric_make_tpg(wwn, name);
--	if (!se_tpg || IS_ERR(se_tpg))
-+	if (IS_ERR_OR_NULL(se_tpg))
- 		return ERR_PTR(-EINVAL);
- 
- 	config_group_init_type_name(&se_tpg->tpg_group, name,
-@@ -1112,7 +1112,7 @@ static struct config_group *target_fabric_make_wwn(
- 	}
- 
- 	wwn = tf->tf_ops->fabric_make_wwn(tf, group, name);
--	if (!wwn || IS_ERR(wwn))
-+	if (IS_ERR_OR_NULL(wwn))
- 		return ERR_PTR(-EINVAL);
- 
- 	wwn->cmd_compl_affinity = SE_COMPL_AFFINITY_CPUID;
+ 	for (i=0; i < config->num_threads; i++) {
+ 		info = &test_dev->info[i];
+-		if (info->task_sync && !IS_ERR(info->task_sync)) {
++		if (!IS_ERR_OR_NULL(info->task_sync)) {
+ 			dev_info(test_dev->dev,
+ 				 "Stopping still-running thread %i\n", i);
+ 			kthread_stop(info->task_sync);
 
 -- 
 2.43.0
