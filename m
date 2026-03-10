@@ -4,72 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4645EFCD9F
-	for <linux-rockchip@archiver.kernel.org>; Mon,  9 Mar 2026 22:44:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70095FCC9A5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 10 Mar 2026 01:25:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BM3rKUwnhg4v98Vo9v+NN38KEUvjXCyzVzM6/dEfPtU=; b=WTfpaqF6M4B8kf
-	UyHwdgAjwNS+qaoBCzNC1z6kJPxbbzjVznPrXM/Say5UqPHcEc+wSlcuR2N4XmH1ZfjvMOKsJiJd2
-	ySt/3uWfG269Bb1Q2g1HxUiwyPFqJcyKjnn/QdbX8Uys3tbvGMJWWVEBOalizkn2gwHd4ZkI2YM8K
-	obUt/GDB6j1lL+uKEK/AULa59QeaSOyp7PPRO87tqHNqSLMO0ikjl41Hqzcso/l84ysg2uWJ1NN98
-	W65dDiKwKXXFraTWwwH7MRyjw0Rh0vmJ56Xxsd3bjnk7pVuPdJ+cpnH0S8abmo7anCwaTGRpUlPOq
-	b4PxjSO2Z9P1nupsc9ew==;
+	List-Owner; bh=BdmL+0tvyg1Bhnl24jJ8ufsF58GE+AkQMNh6ThAGXb4=; b=snoQPjXJO9MPHW
+	JaK4FsyWWc0vGePSDsHXmqxDNEfvXgpLDEhEn/6e4q7LTgu0jpTVC2TetrqU4x9/pRwyx+rkcI7RB
+	C92nNJIBoMdJZLRwrefRa57weBIOQxEkt+R/AUxo+IzDhnqtNY5TMZTTZvaXjRcJtSO+PgIFWuBkL
+	GXl4NFo2EAHUJJZoTKs4nz+mWF/zYe2eOrSqYvqLBPFWu5FJMMP5tARxBM3FLDAIizDgaFwhtmqEL
+	d5AIBc1Rf0hNVsD06qENI1f3Nbu7j4XLBARQHA2R7lE7am3PKjHLYPV6gs49jW964hoyDqtt6VfUX
+	x435BK+u1qsvVQtVwVvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjLK-00000008FGn-2BCZ;
-	Mon, 09 Mar 2026 22:44:54 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1vzlqn-00000008Sn5-00n3;
+	Tue, 10 Mar 2026 01:25:33 +0000
+Received: from mail-m32107.qiye.163.com ([220.197.32.107])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vzjL9-00000008F1H-37R7;
-	Mon, 09 Mar 2026 22:44:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773096281;
-	bh=js3wV5z5S67zy6eAdYjU4FSDvTWxhLq5Wlg/JpSyxbc=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hX2Kp8DhyhPRCcKiJzDzrIyyf2lMlUIsKinKqG4ZfHf445gkpBhg/sY5GCsC85979
-	 7UsCibJY8NwgcBnBKkHDBdVB7tSIMnfUrMyPZ3ZyFGqkIroloydspd7+dtMm7PxUk7
-	 uzHTdooz/oBOIYJyG53N5nz4JlXRVXrQNP7Jq4K82U49VkSrVX5AEpwhcJ2B7XX8X2
-	 9BOr7JvLMcJOovHaJGEHeOL+tgX6biLxo4Kw8EY5MOgBSPQ0SKed051Erm8SQFn3pQ
-	 gjGp98/wi8Eq4KzpezAeObRY7k0XcZ09lxG6yF/nHF+/BPiedWi34IYJdjAkakKhju
-	 ymG8qzUxY+Lxw==
-Received: from localhost (unknown [86.123.23.225])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9EFB717E13F9;
-	Mon,  9 Mar 2026 23:44:41 +0100 (CET)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 10 Mar 2026 00:44:36 +0200
-Subject: [PATCH v2 8/8] drm/bridge: synopsys: dw-dp: Drop useless memory
- allocation
+	id 1vzlqk-00000008Slt-2gW3;
+	Tue, 10 Mar 2026 01:25:32 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3653ae7a1;
+	Tue, 10 Mar 2026 09:25:22 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	alim.akhtar@samsung.com,
+	jingoohan1@gmail.com,
+	p.zabel@pengutronix.de,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	dianders@chromium.org,
+	m.szyprowski@samsung.com,
+	luca.ceresoli@bootlin.com,
+	jani.nikula@intel.com,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v10 01/18] drm/bridge: analogix_dp: Add &analogix_dp_plat_data.next_bridge
+Date: Tue, 10 Mar 2026 09:24:41 +0800
+Message-Id: <20260310012458.169272-2-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260310012458.169272-1-damon.ding@rock-chips.com>
+References: <20260310012458.169272-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-Message-Id: <20260310-drm-rk-fixes-v2-8-645ecfb43f49@collabora.com>
-References: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
-In-Reply-To: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.14.3
+X-HM-Tid: 0a9cd55941b003a3kunm2771af5030dec5
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU1OSVZMQxgdTUpCGEwYGR5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=bVsByBz3UcWWVRewBCDwyTidxSsFZAUXtWjgvxbgOVfqYpYJLiWvLNh83My5h08MTC8oOvZcCQ3VKW6D/8KPwDv6CX2rfqxjkg69XL8AtegdE8DNH4oxOpMGJSEnvp8BKzYyPjYgf35GlFYr3KcNIJuSVQSElQOc3o/vZC0tG8k=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=1qcQ7gNd/FYZLVi0CLYQ36BgxuUYuY4ez1oRTlI1iEA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260309_154444_013085_7FEB886E 
-X-CRM114-Status: GOOD (  10.14  )
+X-CRM114-CacheID: sfid-20260309_182530_879364_4ADE9F71 
+X-CRM114-Status: UNSURE (   7.84  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,37 +104,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The bridge gets allocated and initialized implicitly via the
-devm_drm_bridge_alloc() helper in dw_dp_bind().  However, this is
-preceded by an explicit allocation for the same dw_dp struct, which is
-never used anywhere as the return from devm_kzalloc() gets immediately
-overwritten by the aforementioned helper.
+In order to move the panel/bridge parsing and attachmenet to the
+Analogix side, add component struct drm_bridge *next_bridge to
+platform data struct analogix_dp_plat_data.
 
-Get rid of the unnecessary and confusing memory allocation.
+The movement makes sense because the panel/bridge should logically
+be positioned behind the Analogix bridge in the display pipeline.
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
+
 ---
- drivers/gpu/drm/bridge/synopsys/dw-dp.c | 4 ----
- 1 file changed, 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-index 8d02f047693a..9e7ace6be3a0 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-@@ -1977,10 +1977,6 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
- 	void __iomem *res;
- 	int ret;
- 
--	dp = devm_kzalloc(dev, sizeof(*dp), GFP_KERNEL);
--	if (!dp)
--		return ERR_PTR(-ENOMEM);
--
- 	dp = devm_drm_bridge_alloc(dev, struct dw_dp, bridge, &dw_dp_bridge_funcs);
- 	if (IS_ERR(dp))
- 		return ERR_CAST(dp);
+Changes in v4:
+- Rename the &analogix_dp_plat_data.bridge to
+  &analogix_dp_plat_data.next_bridge
 
+Changes in v9:
+- Add Reviewed-by and Tested-by tags.
+---
+ include/drm/bridge/analogix_dp.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+index cf17646c1310..582357c20640 100644
+--- a/include/drm/bridge/analogix_dp.h
++++ b/include/drm/bridge/analogix_dp.h
+@@ -27,6 +27,7 @@ static inline bool is_rockchip(enum analogix_dp_devtype type)
+ struct analogix_dp_plat_data {
+ 	enum analogix_dp_devtype dev_type;
+ 	struct drm_panel *panel;
++	struct drm_bridge *next_bridge;
+ 	struct drm_encoder *encoder;
+ 	struct drm_connector *connector;
+ 	bool skip_connector;
 -- 
-2.52.0
+2.34.1
 
 
 _______________________________________________
