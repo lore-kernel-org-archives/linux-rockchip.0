@@ -4,72 +4,223 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF4C1FCC9AA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 05:26:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC819FD0655
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 08:17:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
-	References:To:Subject:Cc:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b/w+B7m8GfEuLU3nWaiwPZOsytzIenV6ZXpHc5AHdOA=; b=VWeoc3UvwELHI1uwzckCAk14uE
-	+NSwj3f1H6F8ePJBCCqhpugNd3v4HcbRL50ZjF3ngHZza+qxPw9DQJ5gNIu4Jl+ePEZyVTd5PCF4p
-	TnXo4ZTJ2+jdOKe4PXUGA0vEBIyZHXmuwwlNipoCrgBhmN4ozmQnkRv3w0l89LYZDMttU5xxgc1sX
-	iWFJH+Mt1A5fL4DKawfF9cuAPbNT6e53xFOC3eQtKPIUmDFBp7XHx2+6UzHIFg2CKg3+EjK3WP+Gy
-	QIjK2kjgjnBIcojvEoqco9E0U22MrWcIK2cGwC2GXzBd64SIS52RZyzM09KxqTvAnxMNmLmOiexwb
-	WJVHN+zw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Xp/lytX4KEulz9qtUBGjR1T2fS6u3Hawip9N4IxpMsE=; b=1w1GU8tyNKglnh
+	Epwa88ktvRZStRXGCJguz2FfwNgsL6b0cSlyQ3g7n/t4VV6IpixeXFGEpi8LD3bcESc0xArx9+LuR
+	lMPvML+0IJlW9+0woyCBo4iozxmIWGpBolydNNQXqbcXMrMs5oJi41nNGrVkzxIu1kfHEs1FIkyYs
+	3e5s5t6gWwGP7N/EzGjr9goKxwypdI2kpVbjLMjmxydSWAIlvpP/A745jdsVPIB9TnAgnqiKpMa/s
+	MbNcyww7HC9u1/3oId8QE31OJ/4hRhbo/Bbid3FQVM/O3I68HKRhrotBdvbfSF3a8L+J+WNZsY9fM
+	BaKolOnwmmROPM1e77Og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0C5c-0000000AmJX-05UY;
-	Wed, 11 Mar 2026 05:26:36 +0000
-Received: from mail-m19731113.qiye.163.com ([220.197.31.113])
+	id 1w0EkY-0000000B8pk-2wdT;
+	Wed, 11 Mar 2026 08:17:02 +0000
+Received: from mgamail.intel.com ([198.175.65.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0C5Z-0000000AmI6-28Hx;
-	Wed, 11 Mar 2026 05:26:34 +0000
-Received: from [172.16.12.17] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 36820e818;
-	Wed, 11 Mar 2026 13:26:29 +0800 (GMT+08:00)
-Cc: shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
- linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
- linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>,
- Wilfred Mallawa <wilfred.mallawa@wdc.com>,
- Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
- Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>,
- Brian Norris <briannorris@chromium.org>, Wilson Ding <dingwei@marvell.com>,
- Frank Li <Frank.Li@nxp.com>
-Subject: Re: [PATCH v7 1/4] PCI/ERR: Add support for resetting the Root Ports
- in a platform specific way
-To: manivannan.sadhasivam@oss.qualcomm.com,
- Bjorn Helgaas <bhelgaas@google.com>,
- Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
- Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kwilczynski@kernel.org>,
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
-References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
- <20260310-pci-port-reset-v7-1-9dd00ccc25ab@oss.qualcomm.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-Message-ID: <e951b005-d9c9-224b-ed52-23abbccf7212@rock-chips.com>
-Date: Wed, 11 Mar 2026 13:26:28 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.11.0
+	id 1w0EkV-0000000B8oh-2rq5;
+	Wed, 11 Mar 2026 08:17:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773217020; x=1804753020;
+  h=from:to:cc:subject:date:message-id:references:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=Mh00NQrg2lIKNWkDXvNhPe2GMjEhYIMI8kQ4tCuMao4=;
+  b=UEB82GXTGE8LKaxZjLrQR2qxrgdNhb0VzNFo9CW4oGeF43w8+fuQYCDl
+   ZzED9JF2W0mmeoW4/Q3MRielKvaPseGOrASxIeNMwcgd/u5AgUbvlvvlk
+   eyUN70JFO4nkkS6qXjXH9KbcW36YAHW0HoiXB9CmECb7Y2HCIe8MzTbOM
+   aaHaN4sCsb8r2FGzMlaxQ7eKlCATNxzqKAZsY0KQEegwC45xRuHCJ+uEz
+   YEy0YwIWKmpzQ6ckS2iGgnubTAfM1Le/9q2f9AXg/QQCpbpPoqu2av6Gi
+   SMQQn3Lnqpdf8I4FTpzYkGOaxoHqLMvOV0ib/6/eTnN40RwvFw7DRNdhg
+   Q==;
+X-CSE-ConnectionGUID: d/eU0xgrQtyBRM3XxTDFcA==
+X-CSE-MsgGUID: ND18VKOfTeqoMew6GqjiUg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="74467609"
+X-IronPort-AV: E=Sophos;i="6.23,113,1770624000"; 
+   d="scan'208";a="74467609"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Mar 2026 01:16:55 -0700
+X-CSE-ConnectionGUID: BMGoJHUZRWmghWNXe/Zk3Q==
+X-CSE-MsgGUID: g5YTB1s2Sqi+a6FaJQciMg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,113,1770624000"; 
+   d="scan'208";a="217077384"
+Received: from orsmsx901.amr.corp.intel.com ([10.22.229.23])
+  by fmviesa010.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Mar 2026 01:16:52 -0700
+Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Wed, 11 Mar 2026 01:16:51 -0700
+Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37 via Frontend Transport; Wed, 11 Mar 2026 01:16:51 -0700
+Received: from SN4PR2101CU001.outbound.protection.outlook.com (40.93.195.26)
+ by edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.37; Wed, 11 Mar 2026 01:16:51 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Opo9MpRJtwx0zLgDgZOZFJvPXyHqHHtJzkUiUwVJCsz4tKEKo07LreqxtnrsCjwVojH4U+UwLGvLUj6tWPkc6m4pF4S6tJD49D6pQ27s7xGcfs0lsvws5Mc4Crewz36bF2iEdApjb3wgDXOINHplZ8RrYmMyGB9KiYtvU5ZM7+8PPHQ4D+mLJZuIVu46F87G8kMLHuO5LzweNhPlt1T0hwPb8bjCxWtbmFufuecYQPnZ5Losrc+UeFJp5bjwsqeLk92kr09MQxsBmElWGC1C55jrobnIuiBTr7MkzzIlRr7ETHdfc04dd2ppiR3SK20FP0U+KXkotq1HmCcVeC5k6w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Mh00NQrg2lIKNWkDXvNhPe2GMjEhYIMI8kQ4tCuMao4=;
+ b=PvZIA67maJcJZMl8ktUdh9e+oCmpUPO8uwMtDhImWg/7I0jtaQ97c2U03ZqEoY5MA8kxm/yaPjMOIZv/MRKJR5724vKgt3Zy0JtPGquxl+oby5wgXKR+gL5+Or5WdIAw4vi7PIP0s32fyfKM3StEJoqnrE68jqMTix3K03Ob2M8ClebhUzWxUWTTpgzEU+9ptB0YRzkwnLjf3Gbc5uI4fJXkLyhlVjPmb83qjchjgoQt/KAwPjnhtyjdlxnRgmuNmCsuQLP2UvSKZFbsiecOE8S+TAZM+vodeF7mGh4J2QrbQPRzL3dwaH393UaCBjVAY6A3gLotIzLPB/B5adEJOg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
+ by IA0PR11MB8379.namprd11.prod.outlook.com (2603:10b6:208:488::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.11; Wed, 11 Mar
+ 2026 08:16:43 +0000
+Received: from IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
+ ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9700.010; Wed, 11 Mar 2026
+ 08:16:43 +0000
+From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
+To: Philipp Hahn <phahn-oss@avm.de>, "amd-gfx@lists.freedesktop.org"
+	<amd-gfx@lists.freedesktop.org>, "apparmor@lists.ubuntu.com"
+	<apparmor@lists.ubuntu.com>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
+	"ceph-devel@vger.kernel.org" <ceph-devel@vger.kernel.org>, "cocci@inria.fr"
+	<cocci@inria.fr>, "dm-devel@lists.linux.dev" <dm-devel@lists.linux.dev>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"gfs2@lists.linux.dev" <gfs2@lists.linux.dev>,
+	"intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
+	"intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
+	"iommu@lists.linux.dev" <iommu@lists.linux.dev>, "kvm@vger.kernel.org"
+	<kvm@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-block@vger.kernel.org"
+	<linux-block@vger.kernel.org>, "linux-bluetooth@vger.kernel.org"
+	<linux-bluetooth@vger.kernel.org>, "linux-btrfs@vger.kernel.org"
+	<linux-btrfs@vger.kernel.org>, "linux-cifs@vger.kernel.org"
+	<linux-cifs@vger.kernel.org>, "linux-clk@vger.kernel.org"
+	<linux-clk@vger.kernel.org>, "linux-erofs@lists.ozlabs.org"
+	<linux-erofs@lists.ozlabs.org>, "linux-ext4@vger.kernel.org"
+	<linux-ext4@vger.kernel.org>, "linux-fsdevel@vger.kernel.org"
+	<linux-fsdevel@vger.kernel.org>, "linux-gpio@vger.kernel.org"
+	<linux-gpio@vger.kernel.org>, "linux-hyperv@vger.kernel.org"
+	<linux-hyperv@vger.kernel.org>, "linux-input@vger.kernel.org"
+	<linux-input@vger.kernel.org>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "linux-leds@vger.kernel.org"
+	<linux-leds@vger.kernel.org>, "linux-media@vger.kernel.org"
+	<linux-media@vger.kernel.org>, "linux-mips@vger.kernel.org"
+	<linux-mips@vger.kernel.org>, "linux-mm@kvack.org" <linux-mm@kvack.org>,
+	"linux-modules@vger.kernel.org" <linux-modules@vger.kernel.org>,
+	"linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
+	"linux-nfs@vger.kernel.org" <linux-nfs@vger.kernel.org>,
+	"linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
+	"linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
+	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
+	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
+	"linux-sctp@vger.kernel.org" <linux-sctp@vger.kernel.org>,
+	"linux-security-module@vger.kernel.org"
+	<linux-security-module@vger.kernel.org>, "linux-sh@vger.kernel.org"
+	<linux-sh@vger.kernel.org>, "linux-sound@vger.kernel.org"
+	<linux-sound@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com"
+	<linux-stm32@st-md-mailman.stormreply.com>,
+	"linux-trace-kernel@vger.kernel.org" <linux-trace-kernel@vger.kernel.org>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, "ntfs3@lists.linux.dev"
+	<ntfs3@lists.linux.dev>, "samba-technical@lists.samba.org"
+	<samba-technical@lists.samba.org>, "sched-ext@lists.linux.dev"
+	<sched-ext@lists.linux.dev>, "target-devel@vger.kernel.org"
+	<target-devel@vger.kernel.org>, "tipc-discussion@lists.sourceforge.net"
+	<tipc-discussion@lists.sourceforge.net>, "v9fs@lists.linux.dev"
+	<v9fs@lists.linux.dev>
+CC: Ilya Dryomov <idryomov@gmail.com>, Alex Markuze <amarkuze@redhat.com>,
+	Viacheslav Dubeyko <slava@dubeyko.com>
+Subject: RE: [Intel-wired-lan] [PATCH 03/61] ceph: Prefer IS_ERR_OR_NULL over
+ manual NULL check
+Thread-Topic: [Intel-wired-lan] [PATCH 03/61] ceph: Prefer IS_ERR_OR_NULL over
+ manual NULL check
+Thread-Index: AQHcsKJtosLQvJfHUESbmHNNZ0gghLWo/XCg
+Date: Wed, 11 Mar 2026 08:16:43 +0000
+Message-ID: <IA3PR11MB89868EDCF9D093C501E01FA3E547A@IA3PR11MB8986.namprd11.prod.outlook.com>
+References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+ <20260310-b4-is_err_or_null-v1-3-bd63b656022d@avm.de>
+In-Reply-To: <20260310-b4-is_err_or_null-v1-3-bd63b656022d@avm.de>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|IA0PR11MB8379:EE_
+x-ms-office365-filtering-correlation-id: e34e8a58-dab4-497e-6b65-08de7f4687c7
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|376014|921020|38070700021|22082099003|18002099003|56012099003;
+x-microsoft-antispam-message-info: jQMLhYHNcc8rWLFFel/x2sMvHTNauRhuYBG4bf+v7DsJZFhupIQte49LtN3UoUBak4B1IEWtI5P1CmysS1a+awGpSJz1r40isgFFN6L4/mibvFUKClT/MHdIMjSE4HQukbYf0M2IxFRTmvLUaDZO/+OqT2RCKgtSBSNwPfxfWkRyzOeF2hz7VqpT/bP5wowbzNc66q4wL8xr7nzirI6YWKRsmxf1DWqNzDJq0ZDssnFrN3NJVD+DmQgHzvk6oU6znVEUc7rJrNuDvx5SfI22I0vk5YAHgZS3r3GWilsK/mH0/G6jWruqtyFazGqdS4YPo4VggHYRFgUF4hMOlNHdsU7DcnNMARrbZ0SGm+HoHpUKEXC4slgRMBk4pTRlS1bNRHmu7dctE53a4eld7MfvX4/VCisN7uIrH3H7wkgEnlsZFrITVWlYj6tCEICkv95CBNqOFL+vcNYaZDnlXRN4h4ieBBAs4bkxgJo51IR6odZkbLzjMXpzGcqsI/mt6RfxXqC8AL1RcxFJ07fcXv73zoGCVGHcwPZIItHDvtrPE46pL/lO0UByfnfuhJKRNACe4ge0dP0jWubYBPg4uKPCBIlEiu1E9lLwYWDODI+MxWMdCnw7Hi6ZWZe7Crnx98PGgc8WM8q+qFjTlWci6orACn3nPHmShktAHNmKZLfzUy4xRYweFBtNzgWrA73evyHgmwW3MabvCgHgm+V/f7BaRNGziMylCelvMtY5LRr3SVkxqtpuIWlU2tl6maVXxD/6Zma/pAGcxVD3vEAJpHEREdZUf+Id82qWyMcEFNe8aBamRKZIZReDd6IYnkL9aw8J
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:IA3PR11MB8986.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(376014)(921020)(38070700021)(22082099003)(18002099003)(56012099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?L0JnUUFIYlQxQkxQM3YrYlVCSThmZkoyOGZMejBVUmpSTW1IdDhLdTdBRVBI?=
+ =?utf-8?B?MjRuT09YQWdUSjNsclQ2Yi8wSDZBQjdiVzhCZmxXZkhQSTkxNjhXWExvNkZB?=
+ =?utf-8?B?dGNLYlNJbi9SNlMwSG1HNTd0RmVRT2NJRmVYMklXdjdDNFI0Rnd4dWtKUFZk?=
+ =?utf-8?B?YnZQVDBHelJaTmluU1FFQXZTelZZUlRNblJGMjVPT3Q5VkFpQXFLeW9UNmNJ?=
+ =?utf-8?B?Vmc0bEkwVVBOSk5xcVJJMzh3b3NNWlI0MnVPVmE4SGxuUVJiaXF1NkNkUXBK?=
+ =?utf-8?B?NmFLa2tEeWU4UEVPWERuTzVsVFZzREQyYnArUWdRVWRTRW5OK3FQcXZWRHpZ?=
+ =?utf-8?B?MXdxUmtzUC9uS011RnlNZmYydWZHSVMrcDl6b3JnWEl1MnpIZk13eFZpVHda?=
+ =?utf-8?B?UXJpT3RRRmtyOFdkUHVyKzZUN2s3NVMzNkZIU0ozUUgxNzRES3pjOHZaRTlw?=
+ =?utf-8?B?YXBqeUMwaUg4WmNTWkdUWlpaV29vWVVVSWk4Rzhnb0dDeGlZWVVPbVZHN2lm?=
+ =?utf-8?B?VUFobVB5cDM5K1ptdG5kcFFJUXd0aEJhNVFYanZKUkRIOFJKZUlweGZvWGxW?=
+ =?utf-8?B?SVRwaEpvQk5nQmJTVCtPQ2RGZ0NnNWNiYWRaQzkyWmlpMzVzbThGZ3B6RFVX?=
+ =?utf-8?B?UGxTOHJUSWFyeWZDSlZWSmtSM2Uwc3BEQ0dsM3hJS3J1S3FObTVvOW5sVzQz?=
+ =?utf-8?B?YWRoekI0Wk40R1Z0Smh6VHpwZlRCRlBXc3BqQzgzZmZVYVd1ZXRtL3NHc0Jk?=
+ =?utf-8?B?YWtqTEFtSHh2ODd6a29LYkpwSS9nUlQxU0xjdVA0c2JqUG9pT2VxMHloakNK?=
+ =?utf-8?B?NnZmMTZXOGczQzBZLzhyWDNna1dmdWtXVUFaTlZnTHM5c3kvektGNEg5TG51?=
+ =?utf-8?B?M2tieDF4dTBhUUJaRUJvQkNqcGkyMTJSYVl6eUpDNEZsbG42SCs0YWRNT3hp?=
+ =?utf-8?B?UFQvVzJTTis5RnFEWE1WWjlSZVdFSFAwb0dLQkIvNlpUODdtdHFlT3JKeXhJ?=
+ =?utf-8?B?cUN6em01SW5RQ0p2djM2NDR6UUxiQis2OGJGSHBzY3VURTZ2enhCT3Y0aDlC?=
+ =?utf-8?B?aEZNeWdVTmlBK3hBUHBuWjRVSmRFZmJNWE40NVJ0RE9mc1IydUJmYlU5WitW?=
+ =?utf-8?B?WVZKUXk4dUJGaE9tNUd1WmJ2ckN1V0VveVpqOGhXekxZeUxTcVRENWVFeVhr?=
+ =?utf-8?B?V3dpSWZYajNPZWdZTkdpTWlta3RtK25uTTBpZENMUTU2NE9YeS80bE1uQi9D?=
+ =?utf-8?B?SmFQdDQ3bUpRWmJwT3lKcVRFdEpHd1VwSHU3cXlBbnAraVBaR1NVQ2lSblVo?=
+ =?utf-8?B?aVN4eXBTcmRHSHJNaFhITWpCeG81dFl0dE1VTUwraTc5SVBmTEFBMzR4eFJ1?=
+ =?utf-8?B?bHZFYk1EZEYyaEVDTjlPUlBxN0ZhQmRRRms3YUdlZGpwTmVNMGp2UlJLS3h3?=
+ =?utf-8?B?UVBhZzZJLy9XQ1FVVElVeHBVTzRBTHRPNXQwam92ZGFJaXlLQXp4TWxaMkxY?=
+ =?utf-8?B?d1hGU1M1ck0yZkF4WVQxaXJaTlhjTGxXSTE1dUVwMVhzMmhmbC9JRk1yV0Yy?=
+ =?utf-8?B?RDhWQThtL2xpT1E4aEt3OFBVcnU4bHJrVDBvVXpMM0RhSXNqSDdpcjVSVzFh?=
+ =?utf-8?B?SWYyZDVLWUtBMExrcmQzdmJZYkhaN2c1VVR6SXUyWWVKNFE1Vit1dHdLcWF5?=
+ =?utf-8?B?RTRaWUF2YkdtVGxHSVFTakRabXU4Y0lYOVMyMURmb3FrK1lPRVQvQ1NQZFpC?=
+ =?utf-8?B?YWgzeEhPTjB0TjRNZ1NkVTZBeE1IMG9FelU3Qk8yYkRML3dwQ2RuTXJWdU43?=
+ =?utf-8?B?ZFZPUS85bmw0dnc5cmFGWDlxbm5PbGlOdzJKTWhTSUk3clNXNTc4NW9NQWIy?=
+ =?utf-8?B?MlJTR2JkQ0xiYkYrdE5LbXF2RkVERllYMzFZWCt2RFB3SlV3K0ZSeFJ1VTMz?=
+ =?utf-8?B?ODA1bk45VERFZ2hiRXlWeFNJOUJLZ1AzTk9DSDJVMEZSYXNxWnlqalU4b0tP?=
+ =?utf-8?B?K3RtZTFCb1VRK2l2K29abWdZZFpRWFl5d25GYmRURUlPbGxtTUJWWWpVem1a?=
+ =?utf-8?B?bXcvR054UUd5WUVTNnlKUFAxdzdaa1NtN1BJSjJXWFFjY3h6eWp0TmdDS1A3?=
+ =?utf-8?B?MWlybnExWTFMRytzeTVXNytOcFRNME42eU9wNk9xc3pQd05tNk42V0hhQm1L?=
+ =?utf-8?B?dTl3YTBjbGxkYjUvMDdmV2NTNnlPdjl4Y09Ec2VrNXZZYW01amJOM3pZdWp6?=
+ =?utf-8?B?YVAwSjFoV0FydDhMS0J0VWNWUmFDNVBtTXRnUEVKNnJ3R0N3RnJHNk42SEN0?=
+ =?utf-8?B?eDA3ajdsQ0EzTkVhcXhBV0lsOU9vdk0rU0gwWmpnYzNnMHdBcjM0TXViZ2Yv?=
+ =?utf-8?Q?pmu1iw0JdmpqlrD8=3D?=
 MIME-Version: 1.0
-In-Reply-To: <20260310-pci-port-reset-v7-1-9dd00ccc25ab@oss.qualcomm.com>
-X-HM-Tid: 0a9cdb5c5d4d09cckunma929f57d18cd2d
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhlDTlZPHxlISE4ZSx8aHUJWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=K7wZRUJk1emUgxCcHil5+9JB/ANF+IxeKRXJYfvQNEB51UFMvURGvaB1+hEuaGfLw6gNqqGdYK7+AzOAJqC3QeulrOvdMdg98utMWmVdILteJwz08dWusEIiUceoqY1rrzpiBbUcuejudxcc0a8Y5GCv3zU3YmURNiNhYMC2e6Q=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=9yG8NQ0gHRExp7u3DqeTqLY+f4Q07ToFiRLsE78NeCU=;
-	h=date:mime-version:subject:message-id:from;
+X-Exchange-RoutingPolicyChecked: lS2x9ZIERkqgSn6Qc2Rfme6olSfFFxn2kmThqyIUm9Tyig3CNDNpPt1RwVWn7smwbBGJOzGfzCUuSOp27IHdik5xKs6rWV3ymJopLnDQSlVKAM6dlmNiDO3CJSy8X/IwO/YZdVRbsCsLTnoDX/jQ7pe8NGHKIbWh/d/7lgxquo77YLgktOmX9UtHTSiUFZKVZNxDUkmF1ReoboNIUri7zvoUg3oS177Awk4d+KM4Mj0dBehbim9Vu9HmZcBLy7DO0/CV06JdE98SmKBKqBbfyaW51ogywi/q2lMNh4w0K3qwNL6po5vnFnNYH1EUfdnz2mU2G/+qIrH7ce+ltJ6kWg==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e34e8a58-dab4-497e-6b65-08de7f4687c7
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2026 08:16:43.5293
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ICks5v4abd3Mi47kJZ/Surb/+jNIrlILUiXV7SvcOuIRk0/oIphN5Js5Fof8QKa29fKfn+Kf31+5teG4Pxt9Lzf6o71UCRgFr4PD3RuzL9E=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR11MB8379
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_222633_715679_706BD2FB 
-X-CRM114-Status: GOOD (  23.82  )
+X-CRM114-CacheID: sfid-20260311_011659_796003_77D23DDD 
+X-CRM114-Status: UNSURE (   7.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,74 +232,99 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="gbk"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-1NogMjAyNi8wMy8xMCDQx8batv4gMjI6MDEsIE1hbml2YW5uYW4gU2FkaGFzaXZhbSB2aWEgQjQg
-UmVsYXkg0LS1wDoKPiBGcm9tOiBNYW5pdmFubmFuIFNhZGhhc2l2YW0gPG1hbmlAa2VybmVsLm9y
-Zz4KPiAKPiBTb21lIGhvc3QgYnJpZGdlIGRldmljZXMgcmVxdWlyZSByZXNldHRpbmcgdGhlIFJv
-b3QgUG9ydHMgaW4gYSBwbGF0Zm9ybQo+IHNwZWNpZmljIHdheSB0byByZWNvdmVyIHRoZW0gZnJv
-bSBlcnJvciBjb25kaXRpb25zIHN1Y2ggYXMgRmF0YWwgQUVSCj4gZXJyb3JzLCBMaW5rIERvd24g
-ZXRjLi4uIFNvIGludHJvZHVjZSBwY2lfaG9zdF9icmlkZ2U6OnJlc2V0X3Jvb3RfcG9ydCgpCj4g
-Y2FsbGJhY2sgYW5kIGNhbGwgaXQgZnJvbSBwY2liaW9zX3Jlc2V0X3NlY29uZGFyeV9idXMoKSBp
-ZiBhdmFpbGFibGUuIEFsc28sCj4gc2F2ZSB0aGUgUm9vdCBQb3J0IGNvbmZpZyBzcGFjZSBiZWZv
-cmUgcmVzZXQgYW5kIHJlc3RvcmUgaXQgYWZ0ZXJ3YXJkcy4KPiAKPiBUaGUgJ3Jlc2V0X3Jvb3Rf
-cG9ydCcgY2FsbGJhY2sgaXMgcmVzcG9uc2libGUgZm9yIHJlc2V0dGluZyB0aGUgZ2l2ZW4gUm9v
-dAo+IFBvcnQgcmVmZXJlbmNlZCBieSB0aGUgJ3BjaV9kZXYnIHBvaW50ZXIgaW4gYSBwbGF0Zm9y
-bSBzcGVjaWZpYyB3YXkgYW5kCj4gYnJpbmcgaXQgYmFjayB0byB0aGUgd29ya2luZyBzdGF0ZSBp
-ZiBwb3NzaWJsZS4gSWYgYW55IGVycm9yIG9jY3VycyBkdXJpbmcKPiB0aGUgcmVzZXQgb3BlcmF0
-aW9uLCByZWxldmFudCBlcnJubyBzaG91bGQgYmUgcmV0dXJuZWQuCj4gCj4gU2lnbmVkLW9mZi1i
-eTogTWFuaXZhbm5hbiBTYWRoYXNpdmFtIDxtYW5pdmFubmFuLnNhZGhhc2l2YW1AbGluYXJvLm9y
-Zz4KPiBTaWduZWQtb2ZmLWJ5OiBNYW5pdmFubmFuIFNhZGhhc2l2YW0gPG1hbml2YW5uYW4uc2Fk
-aGFzaXZhbUBvc3MucXVhbGNvbW0uY29tPgo+IFRlc3RlZC1ieTogQnJpYW4gTm9ycmlzIDxicmlh
-bm5vcnJpc0BjaHJvbWl1bS5vcmc+Cj4gVGVzdGVkLWJ5OiBLcmlzaG5hIENoYWl0YW55YSBDaHVu
-ZHJ1IDxrcmlzaG5hLmNodW5kcnVAb3NzLnF1YWxjb21tLmNvbT4KPiBUZXN0ZWQtYnk6IFJpY2hh
-cmQgWmh1IDxob25neGluZy56aHVAbnhwLmNvbT4KPiBSZXZpZXdlZC1ieTogRnJhbmsgTGkgPEZy
-YW5rLkxpQG54cC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL3BjaS9wY2kuYyAgICAgIHwgMjAgKysr
-KysrKysrKysrKysrKysrKysKPiAgIGRyaXZlcnMvcGNpL3BjaWUvZXJyLmMgfCAgNSAtLS0tLQo+
-ICAgaW5jbHVkZS9saW51eC9wY2kuaCAgICB8ICAxICsKPiAgIDMgZmlsZXMgY2hhbmdlZCwgMjEg
-aW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9w
-Y2kvcGNpLmMgYi9kcml2ZXJzL3BjaS9wY2kuYwo+IGluZGV4IDg0NzljMmUxZjc0Zi4uNmYwOTA1
-N2Q4M2UwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvcGNpL3BjaS5jCj4gKysrIGIvZHJpdmVycy9w
-Y2kvcGNpLmMKPiBAQCAtNDgxMiw2ICs0ODEyLDI2IEBAIHZvaWQgcGNpX3Jlc2V0X3NlY29uZGFy
-eV9idXMoc3RydWN0IHBjaV9kZXYgKmRldikKPiAgIAo+ICAgdm9pZCBfX3dlYWsgcGNpYmlvc19y
-ZXNldF9zZWNvbmRhcnlfYnVzKHN0cnVjdCBwY2lfZGV2ICpkZXYpCj4gICB7Cj4gKwlzdHJ1Y3Qg
-cGNpX2hvc3RfYnJpZGdlICpob3N0ID0gcGNpX2ZpbmRfaG9zdF9icmlkZ2UoZGV2LT5idXMpOwo+
-ICsJaW50IHJldDsKPiArCj4gKwlpZiAocGNpX2lzX3Jvb3RfYnVzKGRldi0+YnVzKSAmJiBob3N0
-LT5yZXNldF9yb290X3BvcnQpIHsKPiArCQkvKgo+ICsJCSAqIFNhdmUgdGhlIGNvbmZpZyBzcGFj
-ZSBvZiB0aGUgUm9vdCBQb3J0IGJlZm9yZSBkb2luZyB0aGUKPiArCQkgKiByZXNldCwgc2luY2Ug
-dGhlIHN0YXRlIGNvdWxkIGJlIGxvc3QuIFRoZSBFbmRwb2ludCBzdGF0ZQo+ICsJCSAqIHNob3Vs
-ZCd2ZSBiZWVuIHNhdmVkIGJ5IHRoZSBjYWxsZXIuCj4gKwkJICovCj4gKwkJcGNpX3NhdmVfc3Rh
-dGUoZGV2KTsKPiArCQlyZXQgPSBob3N0LT5yZXNldF9yb290X3BvcnQoaG9zdCwgZGV2KTsKPiAr
-CQlpZiAocmV0KQo+ICsJCQlwY2lfZXJyKGRldiwgIkZhaWxlZCB0byByZXNldCBSb290IFBvcnQ6
-ICVkXG4iLCByZXQpOwo+ICsJCWVsc2UKPiArCQkJLyogTm93IHJlc3RvcmUgaXQgb24gc3VjY2Vz
-cyAqLwo+ICsJCQlwY2lfcmVzdG9yZV9zdGF0ZShkZXYpOwo+ICsKPiArCQlyZXR1cm47Cj4gKwl9
-Cj4gKwo+ICAgCXBjaV9yZXNldF9zZWNvbmRhcnlfYnVzKGRldik7Cj4gICB9Cj4gICAKCkxHVE0s
-CgpSZXZpZXdlZC1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cgo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9wY2llL2Vyci5jIGIvZHJpdmVycy9wY2kvcGNpZS9lcnIu
-Ywo+IGluZGV4IGJlYmU0YmMxMTFkNy4uMTNiOWQ5ZWI3MTRmIDEwMDY0NAo+IC0tLSBhL2RyaXZl
-cnMvcGNpL3BjaWUvZXJyLmMKPiArKysgYi9kcml2ZXJzL3BjaS9wY2llL2Vyci5jCj4gQEAgLTI1
-NiwxMSArMjU2LDYgQEAgcGNpX2Vyc19yZXN1bHRfdCBwY2llX2RvX3JlY292ZXJ5KHN0cnVjdCBw
-Y2lfZGV2ICpkZXYsCj4gICAJfQo+ICAgCj4gICAJaWYgKHN0YXR1cyA9PSBQQ0lfRVJTX1JFU1VM
-VF9ORUVEX1JFU0VUKSB7Cj4gLQkJLyoKPiAtCQkgKiBUT0RPOiBTaG91bGQgY2FsbCBwbGF0Zm9y
-bS1zcGVjaWZpYwo+IC0JCSAqIGZ1bmN0aW9ucyB0byByZXNldCBzbG90IGJlZm9yZSBjYWxsaW5n
-Cj4gLQkJICogZHJpdmVycycgc2xvdF9yZXNldCBjYWxsYmFja3M/Cj4gLQkJICovCj4gICAJCXN0
-YXR1cyA9IFBDSV9FUlNfUkVTVUxUX1JFQ09WRVJFRDsKPiAgIAkJcGNpX2RiZyhicmlkZ2UsICJi
-cm9hZGNhc3Qgc2xvdF9yZXNldCBtZXNzYWdlXG4iKTsKPiAgIAkJcGNpX3dhbGtfYnJpZGdlKGJy
-aWRnZSwgcmVwb3J0X3Nsb3RfcmVzZXQsICZzdGF0dXMpOwo+IGRpZmYgLS1naXQgYS9pbmNsdWRl
-L2xpbnV4L3BjaS5oIGIvaW5jbHVkZS9saW51eC9wY2kuaAo+IGluZGV4IDFjMjcwZjFkNTEyMy4u
-MzRjNDM0Yjc5YWJiIDEwMDY0NAo+IC0tLSBhL2luY2x1ZGUvbGludXgvcGNpLmgKPiArKysgYi9p
-bmNsdWRlL2xpbnV4L3BjaS5oCj4gQEAgLTY0NCw2ICs2NDQsNyBAQCBzdHJ1Y3QgcGNpX2hvc3Rf
-YnJpZGdlIHsKPiAgIAl2b2lkICgqcmVsZWFzZV9mbikoc3RydWN0IHBjaV9ob3N0X2JyaWRnZSAq
-KTsKPiAgIAlpbnQgKCplbmFibGVfZGV2aWNlKShzdHJ1Y3QgcGNpX2hvc3RfYnJpZGdlICpicmlk
-Z2UsIHN0cnVjdCBwY2lfZGV2ICpkZXYpOwo+ICAgCXZvaWQgKCpkaXNhYmxlX2RldmljZSkoc3Ry
-dWN0IHBjaV9ob3N0X2JyaWRnZSAqYnJpZGdlLCBzdHJ1Y3QgcGNpX2RldiAqZGV2KTsKPiArCWlu
-dCAoKnJlc2V0X3Jvb3RfcG9ydCkoc3RydWN0IHBjaV9ob3N0X2JyaWRnZSAqYnJpZGdlLCBzdHJ1
-Y3QgcGNpX2RldiAqZGV2KTsKPiAgIAl2b2lkCQkqcmVsZWFzZV9kYXRhOwo+ICAgCXVuc2lnbmVk
-IGludAlpZ25vcmVfcmVzZXRfZGVsYXk6MTsJLyogRm9yIGVudGlyZSBoaWVyYXJjaHkgKi8KPiAg
-IAl1bnNpZ25lZCBpbnQJbm9fZXh0X3RhZ3M6MTsJCS8qIE5vIEV4dGVuZGVkIFRhZ3MgKi8KPiAK
-Cl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJv
-Y2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0
-dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+
+> -----Original Message-----
+> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
+> Of Philipp Hahn
+> Sent: Tuesday, March 10, 2026 12:48 PM
+> To: amd-gfx@lists.freedesktop.org; apparmor@lists.ubuntu.com;
+> bpf@vger.kernel.org; ceph-devel@vger.kernel.org; cocci@inria.fr; dm-
+> devel@lists.linux.dev; dri-devel@lists.freedesktop.org;
+> gfs2@lists.linux.dev; intel-gfx@lists.freedesktop.org; intel-wired-
+> lan@lists.osuosl.org; iommu@lists.linux.dev; kvm@vger.kernel.org;
+> linux-arm-kernel@lists.infradead.org; linux-block@vger.kernel.org;
+> linux-bluetooth@vger.kernel.org; linux-btrfs@vger.kernel.org; linux-
+> cifs@vger.kernel.org; linux-clk@vger.kernel.org; linux-
+> erofs@lists.ozlabs.org; linux-ext4@vger.kernel.org; linux-
+> fsdevel@vger.kernel.org; linux-gpio@vger.kernel.org; linux-
+> hyperv@vger.kernel.org; linux-input@vger.kernel.org; linux-
+> kernel@vger.kernel.org; linux-leds@vger.kernel.org; linux-
+> media@vger.kernel.org; linux-mips@vger.kernel.org; linux-mm@kvack.org;
+> linux-modules@vger.kernel.org; linux-mtd@lists.infradead.org; linux-
+> nfs@vger.kernel.org; linux-omap@vger.kernel.org; linux-
+> phy@lists.infradead.org; linux-pm@vger.kernel.org; linux-
+> rockchip@lists.infradead.org; linux-s390@vger.kernel.org; linux-
+> scsi@vger.kernel.org; linux-sctp@vger.kernel.org; linux-security-
+> module@vger.kernel.org; linux-sh@vger.kernel.org; linux-
+> sound@vger.kernel.org; linux-stm32@st-md-mailman.stormreply.com;
+> linux-trace-kernel@vger.kernel.org; linux-usb@vger.kernel.org; linux-
+> wireless@vger.kernel.org; netdev@vger.kernel.org;
+> ntfs3@lists.linux.dev; samba-technical@lists.samba.org; sched-
+> ext@lists.linux.dev; target-devel@vger.kernel.org; tipc-
+> discussion@lists.sourceforge.net; v9fs@lists.linux.dev; Philipp Hahn
+> <phahn-oss@avm.de>
+> Cc: Ilya Dryomov <idryomov@gmail.com>; Alex Markuze
+> <amarkuze@redhat.com>; Viacheslav Dubeyko <slava@dubeyko.com>
+> Subject: [Intel-wired-lan] [PATCH 03/61] ceph: Prefer IS_ERR_OR_NULL
+> over manual NULL check
+> 
+> Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
+> check.
+> 
+> Change generated with coccinelle.
+> 
+> To: Ilya Dryomov <idryomov@gmail.com>
+> To: Alex Markuze <amarkuze@redhat.com>
+> To: Viacheslav Dubeyko <slava@dubeyko.com>
+> Cc: ceph-devel@vger.kernel.org
+> Cc: linux-kernel@vger.kernel.org
+> Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
+> ---
+>  fs/ceph/dir.c  | 2 +-
+>  fs/ceph/snap.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/fs/ceph/dir.c b/fs/ceph/dir.c index
+> 86d7aa594ea99335af3e91a95c0a418fdc1b8a8a..934250748ae4fd4c148fd27bdf91
+> 175047c2877d 100644
+> --- a/fs/ceph/dir.c
+> +++ b/fs/ceph/dir.c
+> @@ -889,7 +889,7 @@ int ceph_handle_notrace_create(struct inode *dir,
+> struct dentry *dentry)  {
+>  	struct dentry *result = ceph_lookup(dir, dentry, 0);
+> 
+> -	if (result && !IS_ERR(result)) {
+> +	if (!IS_ERR_OR_NULL(result)) {
+>  		/*
+>  		 * We created the item, then did a lookup, and found
+>  		 * it was already linked to another inode we already
+> diff --git a/fs/ceph/snap.c b/fs/ceph/snap.c index
+> 52b4c2684f922bfed39550311e793bfe3622cd26..528ad581be160713f91416115659
+> e2dc6f259576 100644
+> --- a/fs/ceph/snap.c
+> +++ b/fs/ceph/snap.c
+> @@ -902,7 +902,7 @@ int ceph_update_snap_trace(struct ceph_mds_client
+> *mdsc,
+>  bad:
+>  	err = -EIO;
+>  fail:
+> -	if (realm && !IS_ERR(realm))
+> +	if (!IS_ERR_OR_NULL(realm))
+>  		ceph_put_snap_realm(mdsc, realm);
+>  	if (first_realm)
+>  		ceph_put_snap_realm(mdsc, first_realm);
+> 
+> --
+> 2.43.0
+
+Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
