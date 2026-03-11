@@ -4,101 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 407EE1125852
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 16:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 298DF1125851
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 16:25:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iQJM7WmyB3k7Ag35I+VERT25rTpVzWJ/un42oXTc2Y0=; b=KBxJB+do+bRVCn
-	tNYxTRXIO6wR6SOZVgkcl9rL8DT1dJJgC6mFK4OpsY/MfE/UtEUlETC3tgPRTqixxh7SHJuf7Wq/h
-	ZK2waDOgDDKaM6DLM3L3fPb5CWCAFPIK0UI1sGUngaSH6uN47MiJ3qfrsFtt7ZJhlFH7/vq5FVrxc
-	ozYCwK2ZhgKhy8/HjWZwBYmEYkzJQ6qXLdJF/oRSZ9pVGpjOlqtAUVatosFN8wOvJ4a2kXmvyfEXu
-	ynO54seWlQchvh/NKv0T2ye31zrpAOpbYMDouSQAXk485CdoF5hKgJRZvFwIp+ewqnSdaIY8JjHl+
-	NbOs6LxvbvBJZFtSyXGw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TyRXa9BwYyfisSgw3ZZ67GCtZapuN0RdVANx5fyosTY=; b=1MQd3Tn8ulj80b
+	qKRyuVSLODdyO6FOtUed87X0qcwoRo1z9LKgjvHDrLFQS+p2sI01qKjcH5lyDikHPZuQZcIdgrlc+
+	wN7m1I/gt3mYIjsi0/WTVyr2iUWToki5+pTa6v6SrswRHJjeM7I5XS1J0/gRxhLfiJsxvsDHCKIX0
+	mFsqMQXvPXO86a9js0SSZIUWrpvqpiXBl6pUjETAgj5nAVsoRZNM+ly2hIQijBWIGaAZBMAMr9Mqa
+	HwxvpiPbslDr5s6DU5FF4C+OREgJlqdSWayIFDUBd9wsSlPYWrbNDd8ra7eHB4jVMl3+/uVMdd9cP
+	drR2PbET3tIi94koiHSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0MJ3-0000000BudK-1e84;
-	Wed, 11 Mar 2026 16:21:09 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1w0MMw-0000000BvUk-15ZS;
+	Wed, 11 Mar 2026 16:25:10 +0000
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0MIy-0000000BuWx-38fp
+	id 1w0MMu-0000000BvTy-1UZW
 	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Mar 2026 16:21:06 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-439afc58ac7so87901f8f.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Mar 2026 09:21:04 -0700 (PDT)
+	Wed, 11 Mar 2026 16:25:09 +0000
+Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-439bcec8613so43575f8f.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Mar 2026 09:25:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1773246063; x=1773850863; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=f4c9O2cAKMzdhEw8waFKH8CurVd4+UFa/RS9fIQimTs=;
-        b=WEMKI+KbIbq475qu4nq8TEY68GOo5qgdYe3fcTD1iWqiN/4QuGfP3uE6q5pVff3RY+
-         z/paFqQ0YGnOnXXssEoYbvNWhf5OEt/svsi2OJtFUC3cJDW4/Ssv/Pbd9d3gdvcbAM3a
-         rhnGD1f2TV0+EytEiHiaXAIebb4A3fZfwhBciNrQeI2kDGjganAN16fzM6P9DOZAGaEf
-         ytCV5vEnOHNap9GrBtfv03jOfFcHvY4Sf//xiLxZaKait3RAbO+zntSKDetNojw1o2aP
-         hnq+OUWea7hKfIHlKAWNsgwo4/Av5CvowYhhFCzUG8y1OERVfTyKL6tDnTADpmSqY1Ab
-         LC3w==
+        d=flipper.net; s=google; t=1773246306; x=1773851106; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=avEg50b7lIE4cReK2Q5lP00wp15UEOQn11C/oczabmk=;
+        b=LrdXXaY27gw4pkamSCDgPouze0sfApBwk86tjLWl6jzw1dCdFa5wqtbbEwqG+5T2Og
+         8K9XO6+WkKxD9ghmYnWKi7dN/gxfelw7Nv3Rpg3XvIlWGc8hnN4V87GY9bkPhoobF1ek
+         fc7qsRtLMubRqbWPn9eRFakZiQrJmdENvRzKJRaw5X8fyWqu6o2ygpXHZi9HY04OakH/
+         qg17q5y3biqs2PNoIydM/9+DhAvFGZyd9sKc+qPLXj3yBZnZeJ8hm9EQDXYMsDetbBwx
+         9x7y05fOhYP0YbUGOtBlRASXWfqezZqsYAdwQqYFxOt0h+NBGhTB9ma+SdyynP8poZmK
+         KIMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773246063; x=1773850863;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=f4c9O2cAKMzdhEw8waFKH8CurVd4+UFa/RS9fIQimTs=;
-        b=B1wBI3Uo0WnUG1rgDDWjf49EedwHvuFzYzxgawY1Pu3vb2L5JqQE0PVBRgkRfkpX40
-         40Zn0q1YOAwJw15lBTxk7/kPWLAX6DaoToEQnDe3NvrWp4CiNqWZek6cmzaasPuWIrtV
-         VJRwdxosQtr0RsKxEgRLfjAcTfjWI3wM0C4Lk6At7OgzmTVH4UIx1TYuDfG9+pDxVRUB
-         UH4LNWRof93R/LjEybZ+4jWvYw8ygE09udf9tJ750zIMO8B7tt8K/a7c0FVdaHn3lVUB
-         OGLv3scL9x9glWOngCXyAEdc22PyT8F1Pz4MbrUsc7wWQfUBBOrMAzGvJK3/+vt3nc+J
-         HEXQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW6m0rzjUFjDgJ/WC3Bgje0HoM2zDYTnpiwF6Mw8fK4vzOv/U79xMqSsX5eZzd8OCKPjlUolJPXL5tJJ3BOPA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyCVPbeFh309bxg2D2uwRncwj4Sy3fC0Zpm3Nn5qe8pM6jGIXEQ
-	hpeZVDY3e0tEPZ+ZmV8eq5sAlqxzUwcrPE8iCkVqU4UdAj9imHv7zbNPSsltQigFGc0=
-X-Gm-Gg: ATEYQzyIGCQSO1bJncYK4cp51lZBrfkgMMIqfIM+7znQbC5Atd/9cvs1qUnBfiRXCzY
-	58p7BTy9i0XrjECaDOgYRu6qscYfiWsK1D9o0knHOpQ71L7F/Qe4ZwPzianUTJvvWxX0r88PhZu
-	CDKH2lRjUZdjJpemhN8cWphMrytbR6t6dEruyZx8o90Zn4KBDpMCiDre8vWLwV+3hgjj6tKD6Jt
-	YYizYtoXc72eNjuf+zRRzugTtu8Q7QklknavZ6ImnxEX6ijF9gsTzgEXtrcCln6t09vcXlKf2wu
-	mQ3BXG5tlHSubDNZwG3aka3c/wQ7sKFUFGe7ACXFRB45jSBPQLC5HiKGxfswSPdxrnIurnxLbOu
-	Somz6stIFh5mNeHqkWHlJH+tNghBKvml3uNphGMYTFsZQnbiOSS6+41ZVJMT45QWxhr8a71GLoa
-	LSbhKYY5gAkyG9z5GQcbDVwxw3TfxU1yPyRw4hvwTbYuVKDP6NN6faMnrD49cN22Hs+bMNGCTNC
-	jrEDA==
-X-Received: by 2002:a05:600c:a08:b0:485:2c61:9459 with SMTP id 5b1f17b1804b1-4854b0afb48mr55832705e9.8.1773246062266;
-        Wed, 11 Mar 2026 09:21:02 -0700 (PDT)
+        d=1e100.net; s=20230601; t=1773246306; x=1773851106;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=avEg50b7lIE4cReK2Q5lP00wp15UEOQn11C/oczabmk=;
+        b=fzagl932GhwcWuP88HZnE0c/t0MlReqF7+T0a9lPB5/M9+v6CYkSI2mddwfxfAUXlu
+         EpV+7K0TGMiGkjiBaVJa5b7Omr9z22eEhx9TqTtcEGLAWXjiONrYgws51PFskDS4//vJ
+         h4uCQrldpZhYFBEmcARwjLFhuHqJ87morG1yASt77rV0/bdPmx3e9vsSokEFPPBHvkYS
+         se9dgNXffnh8d6OAAFJjFhNhSMnSNsdnugyUsPGqKbIiLVyDUm/EEFloMm+OvuzCFru8
+         AvdAgAJdiYgfStLwmJ/EixPz1FoRqNAfUZZ10lqHTVSmOAxValWOjs/1x6+zoi0sXcyI
+         WUnQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXDrzT3Z38T+U7LxGPE9/ymdPIFr2OdylqpCxfMz/rJRKGMvgmXvcti+e8XZ1/KYAPmoikUgZ1mJ3K3MDsxwQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzSVcaGKUW4EF+cfgnYmAav/c424XYZTzrLJvCNDJFtlVPuKPB5
+	+F0o2r6/rZMBscYauRY2Q9mG1n/ZuNATfYDw8y4uTGYGg5llylBnDbDEF5CHcKRaE6g=
+X-Gm-Gg: ATEYQzyFzqYm40NKKdqs342SIDjoRoDDJgYKv/reQKVEL+TckrY24Xoj4qGWvXA5dQl
+	IzpcBOZKs9+ubMJyl/buCXbqyyJxiQYanjsHWwX2n+YrLgswLAap3gYLAslEbrcISexGcfc8XBA
+	fLvgRghHBnYrHIKDO72Ho43x+nEac+UoPIVg8h6dCplHO+vUvumLBSbD1SPMI3XCMSdX0Icjjvn
+	5WC5mub6HqTqxqZvb5V9+dMjuw8fstw9mkjNL8XoZvr4Wr0nfOUkbRe50VIy5TFh4mRpP1b9ef3
+	fh+RtByZ8IyUUNMKdLd6ly5tDWWVjE0C0RCCO+Ni9rJnDHOorMyWoaSvKLs29VT0Ewr/sah8yTX
+	wogk1V3pLmH8P0BzmFqilTWBG0aE3tb4CA/G9MuXM+T0KsZvlFUq48wYbY5RpAv2ZZEEFxAhxdk
+	tNULZrsXV5aWkVL5UDDlfCZtq92qYHvmx6kkpKwlAVVX6BgQWIAwH8Qqe0nK2jVEb3eoRP5YXem
+	PoL2HUSsfkc1j7J
+X-Received: by 2002:a05:6000:200f:b0:439:b1d8:6084 with SMTP id ffacd0b85a97d-439f822334emr6514903f8f.44.1773246306286;
+        Wed, 11 Mar 2026 09:25:06 -0700 (PDT)
 Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439fe20b899sm283952f8f.23.2026.03.11.09.20.59
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-439fe1a76e5sm295946f8f.12.2026.03.11.09.25.04
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2026 09:21:02 -0700 (PDT)
+        Wed, 11 Mar 2026 09:25:05 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Wed, 11 Mar 2026 20:20:46 +0400
-Subject: [PATCH 3/4] usb: typec: tcpci_rt1711h: Add support for Hynetek
- HUSB311
+Date: Wed, 11 Mar 2026 20:25:02 +0400
+Subject: [PATCH] arm64: dts: rockchip: Add analog audio switches to RK3576
+ EVB1
 MIME-Version: 1.0
-Message-Id: <20260311-husb311-v1-3-f25bcb58cff7@flipper.net>
-References: <20260311-husb311-v1-0-f25bcb58cff7@flipper.net>
-In-Reply-To: <20260311-husb311-v1-0-f25bcb58cff7@flipper.net>
+Message-Id: <20260311-evb1-audio-switches-v1-1-0e0199e56c80@flipper.net>
+X-B4-Tracking: v=1; b=H4sIAF2XsWkC/x3MPQqAMAxA4atIZgOmagWvIg62RptFpfEPxLtbH
+ L/hvQeUo7BCmz0Q+RSVdUmgPAMfhmVmlDEZTGFsURIhn45wOEZZUS/ZfWDFuildVXljHFlI5RZ
+ 5kvu/dv37fqkBMDplAAAA
+X-Change-ID: 20260311-evb1-audio-switches-573b44c22b16
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Gene Chen <gene_chen@richtek.com>, Heiko Stuebner <heiko@sntech.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, Alexey Charkov <alchark@flipper.net>
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2922; i=alchark@flipper.net;
- h=from:subject:message-id; bh=HrT7kgAxAewbIt6oxfECG5Zscpfe57igzugyy1/fdnU=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRunJZ8Xvo8a6G29Pt9y2ZnbMsOT3v6o1DwLpPF+qncG
- 46+3fkqomMiC4MYF4OlmCLL3G9LbKca8c3a5eHxFWYOKxPIEGmRBgYgYGHgy03MKzXSMdIz1TbU
- MzTUMdYxYuDiFICpLhRnZDhZ2FHxqOH18XsqpruYj9qKnZDZxPzhXs1q9nXGBz4cX+7M8D/VWbL
- zVPjuF3sq27Jtrhv8nzvbSLKUeQfDyfI9OT6bb3MDAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1099; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=SrETXia2AeuYWSUIAN84IRhX87WCsAlPD9OXpI+Iy1o=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWRunJ5QYZZe9/vcC+Z4I4+nEXcWqG569EBsSvXas39eb
+ cx4tFpftGMiC4MYF4OlmCLL3G9LbKca8c3a5eHxFWYOKxPIEGmRBgYgYGHgy03MKzXSMdIz1TbU
+ MzTUMdYxYuDiFICplt/CyLDDZX9yyLZjW7p0/yVWPDXce271/yYzt2XGv59qrp5q/PwjI8OpMvs
+ Z298ebLCcyr3JUJqr8bOJ8J7KiTM8N0pbxogu6WYFAA==
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_092104_855524_2CC005B2 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20260311_092508_436896_3E360FD8 
+X-CRM114-Status: UNSURE (   8.44  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,96 +113,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-HUSB311 is a pin-compatible and register-compatible drop-in replacement
-for RT1711H, so add its IDs to the existing driver.
+These allow selective muting/unmuting of inputs and outputs, as well as
+setting mutually-exclusive rules in ALSA UCM.
 
-Link: https://www.hynetek.com/uploadfiles/site/219/news/0863c0c7-f535-4f09-bacd-0440d2c21088.pdf
-Link: https://dl.xkwy2018.com/downloads/RK3588S/03_Product%20Line%20Branch_Tablet/02_Key%20Device%20Specifications/HUSB311%20introduction%2020210526.pdf
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- drivers/usb/typec/tcpm/tcpci_rt1711h.c | 21 +++++++++++++++++++--
- 1 file changed, 19 insertions(+), 2 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-index 88c50b984e8a..ac5917c1e253 100644
---- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-+++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-@@ -18,6 +18,9 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- 
-+#define HUSB311_VID		0x2E99
-+#define HUSB311_PID		0x0311
-+#define HUSB311_DID		0x0000
- #define RT1711H_VID		0x29CF
- #define RT1711H_PID		0x1711
- #define RT1711H_DID		0x2171
-@@ -55,6 +58,8 @@
- 
- struct rt1711h_chip_info {
- 	u32 rxdz_sel;
-+	u16 vid;
-+	u16 pid;
- 	u16 did;
- 	bool enable_pd30_extended_message;
- };
-@@ -308,14 +313,14 @@ static int rt1711h_check_revision(struct i2c_client *i2c, struct rt1711h_chip *c
- 	ret = i2c_smbus_read_word_data(i2c, TCPC_VENDOR_ID);
- 	if (ret < 0)
- 		return ret;
--	if (ret != RT1711H_VID) {
-+	if (ret != chip->info->vid) {
- 		dev_err(&i2c->dev, "vid is not correct, 0x%04x\n", ret);
- 		return -ENODEV;
- 	}
- 	ret = i2c_smbus_read_word_data(i2c, TCPC_PRODUCT_ID);
- 	if (ret < 0)
- 		return ret;
--	if (ret != RT1711H_PID) {
-+	if (ret != chip->info->pid) {
- 		dev_err(&i2c->dev, "pid is not correct, 0x%04x\n", ret);
- 		return -ENODEV;
- 	}
-@@ -405,17 +410,28 @@ static void rt1711h_remove(struct i2c_client *client)
- 	tcpci_unregister_port(chip->tcpci);
- }
- 
-+static const struct rt1711h_chip_info husb311 = {
-+	.vid = HUSB311_VID,
-+	.pid = HUSB311_PID,
-+	.did = HUSB311_DID,
-+};
-+
- static const struct rt1711h_chip_info rt1711h = {
-+	.vid = RT1711H_VID,
-+	.pid = RT1711H_PID,
- 	.did = RT1711H_DID,
- };
- 
- static const struct rt1711h_chip_info rt1715 = {
- 	.rxdz_sel = RT1711H_BMCIO_RXDZSEL,
-+	.vid = RT1711H_VID,
-+	.pid = RT1711H_PID,
- 	.did = RT1715_DID,
- 	.enable_pd30_extended_message = true,
- };
- 
- static const struct i2c_device_id rt1711h_id[] = {
-+	{ "husb311", (kernel_ulong_t)&husb311 },
- 	{ "rt1711h", (kernel_ulong_t)&rt1711h },
- 	{ "rt1715", (kernel_ulong_t)&rt1715 },
- 	{}
-@@ -423,6 +439,7 @@ static const struct i2c_device_id rt1711h_id[] = {
- MODULE_DEVICE_TABLE(i2c, rt1711h_id);
- 
- static const struct of_device_id rt1711h_of_match[] = {
-+	{ .compatible = "hynetek,husb311", .data = &husb311 },
- 	{ .compatible = "richtek,rt1711h", .data = &rt1711h },
- 	{ .compatible = "richtek,rt1715", .data = &rt1715 },
- 	{}
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+index f5746bc2970b..fb0dd1bc5148 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+@@ -270,6 +270,7 @@ sound {
+ 		simple-audio-card,frame-master = <&masterdai>;
+ 		simple-audio-card,hp-det-gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_LOW>;
+ 		simple-audio-card,mclk-fs = <256>;
++		simple-audio-card,pin-switches = "Headphones", "Speaker", "Main Mic", "Headset Mic";
+ 		simple-audio-card,routing =
+ 			"Headphone Power INL", "LOUT1",
+ 			"Headphone Power INR", "ROUT1",
 
+---
+base-commit: 7109a2155340cc7b21f27e832ece6df03592f2e8
+change-id: 20260311-evb1-audio-switches-573b44c22b16
+
+Best regards,
 -- 
-2.52.0
+Alexey Charkov <alchark@flipper.net>
 
 
 _______________________________________________
