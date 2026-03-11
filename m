@@ -4,64 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D303D1062889
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 12:33:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 769451062891
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 13:01:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=i1twUXGq8+l82fWg4yc0oKW/gJa2GCdON6HA789H0FA=; b=IuPB9nWVOYRyuR
-	3VwG37un3L7IGB9SZ3Qk4Yz+qlVXBU3QJX18Q9NNfqdw4K87DVMOw7SnbA8gGDjN5BjbII7PDbafD
-	fNT+VXwkJT4LQwfXi3/08YD8Ef7Wn+LtBOMr3Dd7Htec6gpooUoZd8rYAR/AaZ7srKzSslesxPMJF
-	mXuzv5D376MCkihJFifBAg6xsNB031Xef1u0+U7Baef90atOS0mKY8TYyyP1fcLB200vPKjVRZFW5
-	Ne0chpi1ChlLxqLKs5jSrtW2ZpQerPP0NAC/t2iDe9TKrGAUbNochYP34blzMz0jxQWTSfx1ZqIG6
-	91+wB/CHiflNF2yrxSMw==;
+	List-Owner; bh=F4PLAP1hfcyuNVbEoaTP0fBkDUfsDEAQ74UWTYHdzz8=; b=sCooP6Jg7U3gwH
+	OEd9olDXQttekv883Y+flFORChyUjmRSPzP+8Poxb04kibv0Qa+a2ASyciPcB7O+cOUJCs1GIvoS9
+	gJRYBmHpWW/XZhK2mo/olhdApzMhSKxl4usN7tlj3JS5Sh7Zb60XYokHyEX97ZheLJ5B0RH4ubtSt
+	tBZp1JHI/oLEyjjlfRRh7g8blldlPaHLpIZzFa7FSE1Ipnbju528tNu0lhT0W4ia5SjC0kcauEOrJ
+	vYbkhkZq8KYB2S2SOOWo1SP6Nub/tIiWvmGRHbv7OdOgxKQw0TizNlBk4Wfj9mdPN19NU94V1/caL
+	/TjBxKSyO5OAWL5O9BlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0Il0-0000000BZ7u-226J;
-	Wed, 11 Mar 2026 12:33:46 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w0JC3-0000000BbqS-00Ot;
+	Wed, 11 Mar 2026 13:01:43 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0Iky-0000000BZ6i-217X;
-	Wed, 11 Mar 2026 12:33:45 +0000
+	id 1w0JC1-0000000BbpX-0YuS;
+	Wed, 11 Mar 2026 13:01:41 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AEB4E444A6;
-	Wed, 11 Mar 2026 12:33:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8A80C4CEF7;
-	Wed, 11 Mar 2026 12:33:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 9F1EB60122;
+	Wed, 11 Mar 2026 13:01:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B7F67C19425;
+	Wed, 11 Mar 2026 13:01:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773232423;
-	bh=+J1EgSs3yVorF0G+jb94JiobSJNb8UX0YbEzR1remQE=;
+	s=k20201202; t=1773234099;
+	bh=a0mm90LqBByU8JcPQHFkpu2cDYMi5t5OFUYWl2t0HkQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=pJvRthEmWqz76nsAf972JnvXxTWFbzxueKgKXgL7xDkHyW36BBSCIQBATnuxbCAoK
-	 SeqYc3bhQbkREYqkHDivdLSaYwVM4egN56Yi+5kg/wQ/KHMMzwJiz7Pcj2NVl0MyZ2
-	 YFfJfEZXb0Q2YM+vGnhARKXtYTMs/21KFX1C6uzstcfz+yQzFjWlY2DNTr2xKhkCTb
-	 aLGPXXb38lVwC1kGY0L7o2/DYp2fEeATbHcr51XRe1l+J6Md51ncGhQmJZY/VMX5vf
-	 yqgVLSB6dG9tNkwD4ghuSmm/PENZBdFaBOGP8rq8RNTIRPkGALY18ptSLZssx+asCP
-	 H5AuroHcT7P3w==
-Date: Wed, 11 Mar 2026 18:02:51 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Cc: Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Hans Zhang <18255117159@163.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>, linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Anand Moon <linux.amoon@gmail.com>, 
-	Grimmauld <grimmauld@grimmauld.de>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <pvef2ck2xpmq6amueka25odt6wjd3usmkjspf3mvlmfzsd7lyz@5eraltok22tq>
-References: <20260226101032.1042-1-linux.amoon@gmail.com>
- <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
+	b=ST66fgt7ntOC5LHkAIPMu8+1KnAUD76BPOoky9SpC47p9wwx6mGS0rTaJjr+ilYAd
+	 cwEsxjJ5iFGzt+XX41jPOD7+O9zSKZN0cBPIIlqBqEfxKo+c8DYTD/f0WUcWaY5dVG
+	 J+BQSvu+R2K0Cv/400wgamTZmSSgvQUCvxN3XfhV1tgeIjakMCuxhV32Q2JKaoyPOt
+	 0HJv0Ym1e7nHk4mkOZgda9TT70dZ5UxAIAxTl84+O55Bje7WXBNgwqfZXTF9uPLB5E
+	 wLCxp+uyhOzx+EJmtQ/CIi0OraUXUnLzc0Q5kD8HASwz2ffpZRJkosays2dfvnLWkH
+	 M666zV4XpaoWA==
+Date: Wed, 11 Mar 2026 14:01:37 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v1 1/4] dt-bindings: display: rockchip: analogix-dp: Add
+ support for RK3576
+Message-ID: <20260311-toucanet-of-imaginary-authority-c9f0db@quoll>
+References: <20260310105307.309765-1-damon.ding@rock-chips.com>
+ <20260310105307.309765-2-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_053344_574739_4338752E 
-X-CRM114-Status: GOOD (  10.31  )
+In-Reply-To: <20260310105307.309765-2-damon.ding@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,29 +63,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: heiko@sntech.de, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, alchark@gmail.com, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXIgMDQsIDIwMjYgYXQgMTI6MTg6NTlQTSArMDUzMCwgTWFuaXZhbm5hbiBTYWRo
-YXNpdmFtIHdyb3RlOgo+IAo+IE9uIFRodSwgMjYgRmViIDIwMjYgMTU6NDA6MjMgKzA1MzAsIEFu
-YW5kIE1vb24gd3JvdGU6Cj4gPiBSb2NrY2hpcCBEV0MgUENJZSBkcml2ZXIgY3VycmVudGx5IHBl
-cmZvcm1zIHN5bmNocm9ub3VzIGxpbmsgdHJhaW5pbmcgZm9yCj4gPiBjb21ibyBQSFlzIChQQ0ll
-IDMuMC8yLjAgYW5kIFNBVEEgMy4wKSBkdXJpbmcgYm9vdC4gVGhpcyBwcm9jZXNzIHdhaXRzIGZv
-cgo+ID4gdGhlIGxpbmsgdG8gYmUgZnVsbHkgZXN0YWJsaXNoZWQsIGFkZGluZyBzZXZlcmFsIG1p
-bGxpc2Vjb25kcyB0byB0aGUgYm9vdAo+ID4gc2VxdWVuY2UuIFRvIG9wdGltaXplIGJvb3QgdGlt
-ZSwgdGhpcyBjaGFuZ2UgZW5hYmxlcyBhc3luY2hyb25vdXMgcHJvYmluZywKPiA+IGFsbG93aW5n
-IGxpbmsgZXN0YWJsaXNobWVudCB0byBwcm9jZWVkIGluIHRoZSBiYWNrZ3JvdW5kIHdoaWxlIHRo
-ZSBrZXJuZWwKPiA+IGNvbnRpbnVlcyBwcm9iaW5nIG90aGVyIGRldmljZXMuCj4gPiAKPiA+IFsu
-Li5dCj4gCj4gQXBwbGllZCwgdGhhbmtzIQo+IAo+IFsxLzFdIFBDSTogZHctcm9ja2NoaXA6IEVu
-YWJsZSBhc3luYyBwcm9iZSBieSBkZWZhdWx0Cj4gICAgICAgY29tbWl0OiBlYzM5MmFiYzk1OTMy
-ODM4YmY3ZTNkNjU5ZDM1OGY0ZGY5ZmY1YTBhCj4gCgpEcm9wcGVkIHRoZSBwYXRjaCBmcm9tIGNv
-bnRyb2xsZXIvZHdjLXJvY2tjaGlwIGJyYW5jaCBkdWUgdG8gY29uY2VybnMgd2l0aCB0aGUKcG90
-ZW50aWFsIGRlYWRsb2NrIGluIHRoZSBwaHlsaWIuIFdoZW4gQmpvcm4gdXBkYXRlcyB0aGUgcGNp
-L25leHQgYnJhbmNoLCB0aGlzCndpbGwgZ2V0IGRyb3BwZWQgZnJvbSBsaW51eC1uZXh0IGFzIHdl
-bGwuCgotIE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a
-4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5m
-cmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xp
-bnV4LXJvY2tjaGlwCg==
+On Tue, Mar 10, 2026 at 06:53:04PM +0800, Damon Ding wrote:
+> The eDP TX controller on RK3576 is the same as that on RK3588.
+> 
+> The newly added clock 'hclk' is the video datapath clock.
+> 
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> ---
+>  .../bindings/display/rockchip/rockchip,analogix-dp.yaml     | 6 +++++-
+>  1 file changed, 5 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> index d99b23b88cc5..4496a43881f9 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> @@ -15,6 +15,7 @@ properties:
+>      enum:
+>        - rockchip,rk3288-dp
+>        - rockchip,rk3399-edp
+> +      - rockchip,rk3576-edp
+>        - rockchip,rk3588-edp
+>  
+>    clocks:
+> @@ -26,7 +27,9 @@ properties:
+>      items:
+>        - const: dp
+>        - const: pclk
+> -      - const: grf
+> +      - enum:
+> +          - grf
+> +          - hclk
+
+And why it is not the same clock? Nothing in commit msg explains why
+this clock input (not output!) is different.
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
