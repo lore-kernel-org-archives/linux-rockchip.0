@@ -4,62 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E421125863
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 18:33:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC9F103E2E6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 21:09:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HRewxkHJ62ykAztHPE+m/xt2HRkCgamdULhHf2Gtno0=; b=WApGnHu26DcmcWxkddUFPVbVEh
-	NM1IZOiN1m5bUMreY3HvvKhytn2pUwmpUa7BxFRAonyjaWKxt0qH+vswpq87k8C+VJyYEIv//Q0ml
-	WTFX8keU3TIKIYBuLsZAutXygUKWlmby0IjxEByYwLiHjN2ejz7JXA2o9q/OvXmE1LGhhgz5Rk7gg
-	nzbKdVykngJw+eAzSpy5b2CLLR59T/nC0CWiEWRoqkaVu+Vx/7wa5atELFcafSsZQ3VUPIFg5Nln2
-	qFDItny1jpKK44eeMye4tG6i26pdylBdFdihOkcF+87A/Xd3fQaseIaoNQarJoO8Q9VnCCl3hnNLf
-	UN8/Ijug==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=z5vOtTFmvfCf3JeXtIjriLhaAB5vSjFJlJlfO6X2kGA=; b=aIXUfwOjmsXKX3
+	NymY3hW+PidQNbDQvM/YoHDIO677h5OY938kz8SLVzYUhs/E6KHqFEF8M1F5Te3vXWz5RUAjauwwp
+	3K9x5w7nwGl3REa4XTylC3ZjuaV3dCB+0P+tN/TiBqeOxTPwRjVdeXn1h3bV+ZgtJ+F4IfXQUIHTJ
+	Pv53MiBL+7Wnzs+ASBKz+DXyx0OdE3W+uipEB8MV10gbhz/2Y7PH7WLuyqeh5sXwh6BMfWG9zoQ/M
+	iKjhk4pDfAeZsnFY8Oue2p3PNfvs9veajjjkLls/KqeNsVaNLtA0zPMKeX7YaRMXabW+3P+Cq4TAx
+	Q9HsdyjAtBUQ4uFQTLlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0OMj-0000000CBrV-3TjS;
-	Wed, 11 Mar 2026 18:33:05 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w0Qo4-0000000CX9j-2RVZ;
+	Wed, 11 Mar 2026 21:09:28 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0OMi-0000000CBqT-0hgV;
-	Wed, 11 Mar 2026 18:33:04 +0000
+	id 1w0Qo2-0000000CX9I-3Z8V;
+	Wed, 11 Mar 2026 21:09:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9894860054;
-	Wed, 11 Mar 2026 18:33:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A3DE6C4CEF7;
-	Wed, 11 Mar 2026 18:33:00 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id ADE9260054;
+	Wed, 11 Mar 2026 21:09:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ED2FC4CEF7;
+	Wed, 11 Mar 2026 21:09:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773253983;
-	bh=yZO0XCw5nlpw0ZrBkeaUHqUFtS/67i2s1DwerNiMRzY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=WcPKneftO7e7cu9I7wgKPzvE8rp8REWFnWWbp21ahdEYs9EDKKOZmkP3roGjxWIfD
-	 t4mC/LkqBtsgwuqeWUGk3xE7DGC7juInc5PfVKdi3I7wUYligM2PUbyrQYjdr/df6N
-	 L4u3asf4kEV7p8NO/QXs9G8zKMJXBjmA6KDUSTyumC1wSeoF9Nm7KLiBKPLJoJpXMj
-	 3KdrlL28pYRF6ueS7YwzYEzrVvj8JWRECq4VNn/7LudeYLWM7z1FF8juOXR8QMtwfZ
-	 2vLJKq3CyhfdJ9ed1g9QR4e6nj+1vUo8WYqZeM+UguI/n1z4jbtRvJ9MPYkcPdGClR
-	 8w6cNP3UEM1qw==
-Date: Wed, 11 Mar 2026 18:32:58 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Alexey Charkov <alchark@flipper.net>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Gene Chen <gene_chen@richtek.com>, Heiko Stuebner <heiko@sntech.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/4] usb: typec: tcpci_rt1711h: Add support for Hynetek
- HUSB311
-Message-ID: <20260311-married-democrat-f6eb1c651e97@spud>
-References: <20260311-husb311-v1-0-f25bcb58cff7@flipper.net>
- <20260311-husb311-v1-3-f25bcb58cff7@flipper.net>
-MIME-Version: 1.0
-In-Reply-To: <20260311-husb311-v1-3-f25bcb58cff7@flipper.net>
+	s=k20201202; t=1773263365;
+	bh=0rXaMvGNi4+OvPnGl2fgoLlfPW/6GtuSV3FJJcwDS9M=;
+	h=Date:Subject:Cc:To:From:References:In-Reply-To:From;
+	b=nTY9OMOC9F7kBpERi6z30FTuaZPxVl5Fv76LmjUo5otKD3FEeRahGXzKjzBHLciW/
+	 vsFHQE05z41uqlhKhSf82H6e/E4Nzu9yGSGunIZ9o4u6pDNHpQYJyKgpZB6+0m5s1D
+	 cAewcAljEd7Hj7kuJulzboI2aN1KxsQbjjxPrm3U6Pu/bOyjMJ6EBuAu7Zg/qeb4B0
+	 f6ToSmUPcZdepsHbptQjimEa08e1m8i4KaHUqNpNAR6l4j2zh0wNXnIpDSkMMMCK27
+	 3T5aLWdjgAYUE16y8cGqZfrCI7WYozbJwRtjgPtBEKCMJrNi+E6cOP74wmmn8fZt4t
+	 s51IXrEVJ8MCw==
+Mime-Version: 1.0
+Date: Wed, 11 Mar 2026 22:09:19 +0100
+Message-Id: <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+Cc: "Robin Murphy" <robin.murphy@arm.com>, "Manivannan Sadhasivam"
+ <manivannan.sadhasivam@oss.qualcomm.com>, "Lorenzo Pieralisi"
+ <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
+ <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas"
+ <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Niklas Cassel"
+ <cassel@kernel.org>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Hans Zhang"
+ <18255117159@163.com>, "Nicolas Frattaroli"
+ <nicolas.frattaroli@collabora.com>, "Wilfred Mallawa"
+ <wilfred.mallawa@wdc.com>, <linux-pci@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "Anand Moon" <linux.amoon@gmail.com>, "Grimmauld" <grimmauld@grimmauld.de>,
+ "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, <driver-core@lists.linux.dev>, "Lukas Wunner"
+ <lukas@wunner.de>
+To: "Manivannan Sadhasivam" <mani@kernel.org>
+From: "Danilo Krummrich" <dakr@kernel.org>
+References: <20260226101032.1042-1-linux.amoon@gmail.com>
+ <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
+ <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
+ <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
+ <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
+ <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
+ <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org>
+ <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
+In-Reply-To: <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,152 +82,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============1261281252420023005=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Wed Mar 11, 2026 at 1:28 PM CET, Manivannan Sadhasivam wrote:
+> On Wed, Mar 11, 2026 at 12:46:03PM +0100, Danilo Krummrich wrote:
+>> On Wed Mar 11, 2026 at 6:24 AM CET, Manivannan Sadhasivam wrote:
+>> > I have a contrary view here. If just a single driver or lib doesn't handle async
+>> > probe, it cannot just force other drivers to not take the advantage of async
+>> > probe. As I said above, enabling async probe easily saves a few hunderd ms or
+>> > even more if there are more than one Root Port or Root Complex in an SoC.
+>> 
+>> Then the driver or lib has to be fixed / improved first or the driver core has
+>> to be enabled to deal with a case where PROBE_FORCE_SYNCHRONOUS is requested
+>> from an async path, etc.
+>> 
+>> In any case, applying the patch and breaking things (knowingly?) doesn't seem
+>> like the correct approach.
+>> 
+>> > I strongly agree with you here that the underlying issue should be fixed. But
+>> > the real impact to end users is not this splat, but not having the boot time
+>> > optimization that this patch brings in. As an end user, one would want their
+>> > systems to boot quickly and they wouldn't bother much about a harmless warning
+>> > splat appearing in the dmesg log.
+>> 
+>> You mean quickly booting into a "harmless" potential deadlock condition the
+>> warning splat tries to make people aware of? :)
+>> 
+>
+> Hmm, I overlooked the built-as-module part where the deadlock could be possible
+> as indicated by the comment about the WARN_ON_ONCE().
+>
+> But what is the path forward here? Do you want the phylib to fix the
+> request_module() call or fix the driver core instead?
 
---===============1261281252420023005==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="6tI4BFSm5nhCNk5R"
-Content-Disposition: inline
+Here are a few thoughts.
 
+In general, I think the best would be to get rid of the (affected)
+PROBE_FORCE_SYNCHRONOUS cases.
 
---6tI4BFSm5nhCNk5R
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Now, I guess this can be pretty hard for a PCI controller driver, as you can't
+really predict what ends up being probed from you async context, i.e. it could
+even be some other bus controller and things could even propagate further.
 
-On Wed, Mar 11, 2026 at 08:20:46PM +0400, Alexey Charkov wrote:
-> HUSB311 is a pin-compatible and register-compatible drop-in replacement
-> for RT1711H, so add its IDs to the existing driver.
->=20
-> Link: https://www.hynetek.com/uploadfiles/site/219/news/0863c0c7-f535-4f0=
-9-bacd-0440d2c21088.pdf
-> Link: https://dl.xkwy2018.com/downloads/RK3588S/03_Product%20Line%20Branc=
-h_Tablet/02_Key%20Device%20Specifications/HUSB311%20introduction%2020210526=
-=2Epdf
-> Signed-off-by: Alexey Charkov <alchark@flipper.net>
-> ---
->  drivers/usb/typec/tcpm/tcpci_rt1711h.c | 21 +++++++++++++++++++--
->  1 file changed, 19 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typec/t=
-cpm/tcpci_rt1711h.c
-> index 88c50b984e8a..ac5917c1e253 100644
-> --- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-> +++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
-> @@ -18,6 +18,9 @@
->  #include <linux/regmap.h>
->  #include <linux/regulator/consumer.h>
-> =20
-> +#define HUSB311_VID		0x2E99
-> +#define HUSB311_PID		0x0311
-> +#define HUSB311_DID		0x0000
->  #define RT1711H_VID		0x29CF
->  #define RT1711H_PID		0x1711
->  #define RT1711H_DID		0x2171
-> @@ -55,6 +58,8 @@
-> =20
->  struct rt1711h_chip_info {
->  	u32 rxdz_sel;
-> +	u16 vid;
-> +	u16 pid;
->  	u16 did;
->  	bool enable_pd30_extended_message;
->  };
-> @@ -308,14 +313,14 @@ static int rt1711h_check_revision(struct i2c_client=
- *i2c, struct rt1711h_chip *c
->  	ret =3D i2c_smbus_read_word_data(i2c, TCPC_VENDOR_ID);
->  	if (ret < 0)
->  		return ret;
-> -	if (ret !=3D RT1711H_VID) {
-> +	if (ret !=3D chip->info->vid) {
->  		dev_err(&i2c->dev, "vid is not correct, 0x%04x\n", ret);
+Not sure how big of a deal it is in practice though, there are not a lot of
+PROBE_FORCE_SYNCHRONOUS drivers (left), but note that specifying neither
+PROBE_FORCE_SYNCHRONOUS nor PROBE_PREFER_ASYNCHRONOUS currently results in
+synchronous by default.
 
-Why are we checking vids and pids here? Rejecting a non-match prevents
-using fallback compatibles, so I'd like to know why the code exists.
+(Also, quite some other PCI controller drivers do set PROBE_PREFER_ASYNCHRONOUS
+and apparently got lucky with it.)
 
-Is it just here for the sake of it, or to prevent some actual issues?
-Not really familiar with USB devices unfortunately.
+From a driver-core perspective I think we're rather limited on what we can do;
+we are already in async context at this point and can't magically go back to
+initcall context.
 
->  		return -ENODEV;
->  	}
->  	ret =3D i2c_smbus_read_word_data(i2c, TCPC_PRODUCT_ID);
->  	if (ret < 0)
->  		return ret;
-> -	if (ret !=3D RT1711H_PID) {
-> +	if (ret !=3D chip->info->pid) {
->  		dev_err(&i2c->dev, "pid is not correct, 0x%04x\n", ret);
->  		return -ENODEV;
->  	}
-> @@ -405,17 +410,28 @@ static void rt1711h_remove(struct i2c_client *clien=
-t)
->  	tcpci_unregister_port(chip->tcpci);
->  }
-> =20
-> +static const struct rt1711h_chip_info husb311 =3D {
-> +	.vid =3D HUSB311_VID,
-> +	.pid =3D HUSB311_PID,
-> +	.did =3D HUSB311_DID,
-> +};
-> +
->  static const struct rt1711h_chip_info rt1711h =3D {
-> +	.vid =3D RT1711H_VID,
-> +	.pid =3D RT1711H_PID,
->  	.did =3D RT1711H_DID,
->  };
-> =20
->  static const struct rt1711h_chip_info rt1715 =3D {
->  	.rxdz_sel =3D RT1711H_BMCIO_RXDZSEL,
-> +	.vid =3D RT1711H_VID,
-> +	.pid =3D RT1711H_PID,
->  	.did =3D RT1715_DID,
->  	.enable_pd30_extended_message =3D true,
->  };
-> =20
->  static const struct i2c_device_id rt1711h_id[] =3D {
-> +	{ "husb311", (kernel_ulong_t)&husb311 },
->  	{ "rt1711h", (kernel_ulong_t)&rt1711h },
->  	{ "rt1715", (kernel_ulong_t)&rt1715 },
->  	{}
-> @@ -423,6 +439,7 @@ static const struct i2c_device_id rt1711h_id[] =3D {
->  MODULE_DEVICE_TABLE(i2c, rt1711h_id);
-> =20
->  static const struct of_device_id rt1711h_of_match[] =3D {
-> +	{ .compatible =3D "hynetek,husb311", .data =3D &husb311 },
->  	{ .compatible =3D "richtek,rt1711h", .data =3D &rt1711h },
->  	{ .compatible =3D "richtek,rt1715", .data =3D &rt1715 },
->  	{}
->=20
-> --=20
-> 2.52.0
->=20
+So, the only thing I can think of is to kick off work on a workqueue, which in
+the end would be the same as the deferred probe handling.
 
---6tI4BFSm5nhCNk5R
-Content-Type: application/pgp-signature; name="signature.asc"
+Another alternative would be to let the subsystem handle such cases, which in
+this case would probably mean to handle the current_is_async() case in
+pci_host_probe() or pci_bus_add_devices().
 
------BEGIN PGP SIGNATURE-----
+On the other hand, this would probably end up to be a subsystem specific
+implementation of "kick of work on a workqueue".
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCabG1WQAKCRB4tDGHoIJi
-0kgrAP4upuFyR0UGawjbINMrbZloUR3MmjPrqCZPfQMR31V5TgEAviKDrsSRZ9rJ
-nTbMVK1OVS0AhYAEUqnwLHuvJiFYaAw=
-=1/re
------END PGP SIGNATURE-----
-
---6tI4BFSm5nhCNk5R--
-
-
---===============1261281252420023005==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> I can drop this patch in the meantime. But holding this prolong wouldn't help.
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============1261281252420023005==--
-
