@@ -4,88 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BABB31125823
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 13:56:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C97B1125820
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 14:03:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Mtv0s4LZsEm5M+9PHcJiDUKUTLrMvtKHBnnBiTiX374=; b=YuUxZFqpS1MtG1
-	qIs3GP+Mpzm9QxKGLuhfJVzGlma8+M+U/RjYg8Wc1Yz79U5U8bU3P/lHHZ94Rqky8XoE5cQVhJ/lX
-	2MymIsMd0UozQGuOllZ7dm0VAqjYtGXM6io03/XJV/H5I52plmWdVjEvEzoMydttCALsfEq61wpeH
-	kNkz6VmM7xnI/F1WzTpQer4nu/VhruoyU+5buzprCxPPf+J1rOU7INdyux8NM8vHQsyDF1W5cqlCp
-	JktMSMxNIm6Dz+nKzptUasuifncmIrKP8E+DEra1QP7zg0d2kCQiOKvL79wypHP8Px3sYk1HhNseJ
-	cHDIDDqHII4iT+mha57A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=miUc6on74kqQ3bQVKCeVnYv88iPwq1NIGwDQlpffCbw=; b=nfAdDBHCktZq98
+	wBAbaJNxWrp3pZToIlaZ5C+0/vl3wG4lJZKbAq9nZz2fkQ4WHEZj9oUuC7AMru19UnrWAdgtMn1TA
+	qp/7EFlzndpUJ9FIIxRjs5ZFPuY0NZ09o30w3VhoBipdF1+BPe8DuoOUXNRf0QAVSlMu0ZS70R4ss
+	7JwHRj9h7uqGKI6PevOAX3peSjeEYvyLY5QR1BKYSUVfPk8fepMp6OJ8ihl5BVvAODF1dPgZt5mvc
+	aO/qxpBZ7aOXjtVSuprL3Js7cRbyTAHFq7c+FihcIa5CCtA1M420Lfvhij/3Oufof4jamDnfmU2KV
+	61FCD+cg+58dYSX3movw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0K2s-0000000BfUs-0Sfh;
-	Wed, 11 Mar 2026 13:56:18 +0000
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+	id 1w0KA9-0000000Bfvz-2Qun;
+	Wed, 11 Mar 2026 14:03:49 +0000
+Received: from smtprelay0016.hostedemail.com ([216.40.44.16] helo=relay.hostedemail.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0K2p-0000000BfUE-0IQj
-	for linux-rockchip@lists.infradead.org;
-	Wed, 11 Mar 2026 13:56:16 +0000
-Received: by mail-dy1-x1332.google.com with SMTP id 5a478bee46e88-2ba895adfeaso12185507eec.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 11 Mar 2026 06:56:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773237374; x=1773842174; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=wsNfVZt6GLcKlOBtv1buOE4N+3eK5BD7iSdzAmdz13w=;
-        b=g0BUqBXaxaR2pTV08L8WIr5r4boKgopY0cmcblrryAO/jXMJd3muAwd2VTIIdMCOfC
-         6pGb20y9uKW0hLM19kZSMNRRbrluJnKznXgOXFrULmgkO+IJeQBWc4DZPsjUrHdEn/eu
-         AL+9iNF1Z5co+IBfyK6dGmCByrCGxQVUsh8CCxzK7x6Wn3HEeL6pxv7Ntv8xV+TK99dR
-         o3cOQJEO0R6eFTTK2vMpNb+wVEmybfEN+aMm/AxBEdN5qiIWg6bKiJ/UH4/WQ95me6Ri
-         PWPzwRySe6pVtFNUXlAc5sOWQvmEjsY/fIp1alrx3DvoEwuw7MVic2xvPVWC84xhjuOX
-         hd3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20230601; t=1773237374; x=1773842174;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wsNfVZt6GLcKlOBtv1buOE4N+3eK5BD7iSdzAmdz13w=;
-        b=wi4YL6tB5W2rjLLF9w2tdRpdzznejIfiAVFOygkkRBermi4rJ6JCfdHzwaHXWOxbFe
-         k9B2JumnaZVX70UiH/rt4z3L6goUjoRFc2TjWJD+sKcWSc3N49AFUnZwOJdsB3Jo5bO7
-         Q+iwJk74CmKWrj3YekJ+5hT7m+mxS7FAA2lZ5s8M+BJpowaDWs06bHI/n6tVPLW7jUpv
-         Xb07wDgbcJRVzmveSEtkjzggHF/xgvWngU4KZPs0oKt5p9iUi48IMj66U3RiChl1npp6
-         lvUiZECcI6yTeFMkYnmNTR1IhCRzaopS7SoR+UL5k8R9GKA0CTTYFzVswtr/Qa4aJH2L
-         c8zw==
-X-Forwarded-Encrypted: i=1; AJvYcCVREGksYWkNzovC+7ekarmE15YB+Tg3CS1jrU3bQPIfh4hkpm5d9QTycXL9thbtuOb/J52vztTRE1WG8mS6LQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yywdj/xYLhRNun5QBr8+wOa5Lggx7cgAb2AtsdHGkpe1cdm7jG5
-	ZhkkkvMMislwqMfwOA8LevcNw2XvURCbW81rQnpR/Nc6TeGmqGzsFILJ
-X-Gm-Gg: ATEYQzyfrTSkMVoJ1BHh2Z/PQsmSAGwzXwsEdZVUcUpM8bgt8vasVU7KT3AgtgVNXSh
-	IAXmm4ljvaX5RUPEoqDFD/YVX0hYcnZParXsH++gSLNgLS3a+Vuac07lhNIfHZUvtPump4FN5IU
-	tlA9BP9/xkTI3yndQMgNEIEsHqymQ5k9bR4ikf2pMWlJcgQDL8T4muVZ3D8sRysN0tMc+NWv1GS
-	tKu5d73g6Ywmg9j12mlQNADsCm62otB2Ms9JvY1sJpUM6I0METjIp1tULNjMBAiz6FOWHGpvh/t
-	CR7ghMqj2TxrKvNZ5XGTK430nYRURuVpuzqt9XqqkKTvPwrIhm2DhcVFPnH8siJVDK5d0ekQZ9s
-	VteR4hC8+jUdVEigxszrxL/NBB/WCvJyCA/fxBYsfriPjywxxkvtyJIKyfOw+H5R6gj2O8uXud8
-	bEBuHRjY9m8aPHW8T6K1PDVc+wy4kjLwem4SxgWFi6ddnKmHvDQ8La4sh2lu1qv//nzsxpxQ==
-X-Received: by 2002:a05:7301:1002:b0:2b0:2e5:228b with SMTP id 5a478bee46e88-2be8a5a87e9mr904558eec.33.1773237374035;
-        Wed, 11 Mar 2026 06:56:14 -0700 (PDT)
-Received: from fabio-Precision-3551.. ([2804:1b3:a803:148f:866b:f519:b5db:1242])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2be8a8338dasm2608352eec.6.2026.03.11.06.56.10
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 11 Mar 2026 06:56:13 -0700 (PDT)
-From: Fabio Estevam <festevam@gmail.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@nabladev.com>
-Subject: [PATCH] ARM: dts: rockchip: Fix LED node names on rk3288-phycore-rdk
-Date: Wed, 11 Mar 2026 10:56:04 -0300
-Message-ID: <20260311135604.21634-1-festevam@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1w0KA6-0000000Bfuq-3acs;
+	Wed, 11 Mar 2026 14:03:48 +0000
+Received: from omf20.hostedemail.com (a10.router.float.18 [10.200.18.1])
+	by unirelay02.hostedemail.com (Postfix) with ESMTP id 4324D139CEA;
+	Wed, 11 Mar 2026 14:03:38 +0000 (UTC)
+Received: from [HIDDEN] (Authenticated sender: rostedt@goodmis.org) by omf20.hostedemail.com (Postfix) with ESMTPA id 0CF3220025;
+	Wed, 11 Mar 2026 14:03:20 +0000 (UTC)
+Date: Wed, 11 Mar 2026 10:03:32 -0400
+From: Steven Rostedt <rostedt@goodmis.org>
+To: "Masami Hiramatsu (Google)" <mhiramat@kernel.org>
+Cc: Philipp Hahn <phahn-oss@avm.de>, amd-gfx@lists.freedesktop.org,
+ apparmor@lists.ubuntu.com, bpf@vger.kernel.org, ceph-devel@vger.kernel.org,
+ cocci@inria.fr, dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org,
+ gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org,
+ intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev,
+ kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org,
+ linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-leds@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-mm@kvack.org,
+ linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
+ linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
+ sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, Mathieu
+ Desnoyers <mathieu.desnoyers@efficios.com>
+Subject: Re: [PATCH 15/61] trace: Prefer IS_ERR_OR_NULL over manual NULL
+ check
+Message-ID: <20260311100332.6a2ce4b1@gandalf.local.home>
+In-Reply-To: <20260311141332.b611237d36b61b2409e66cb3@kernel.org>
+References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+	<20260310-b4-is_err_or_null-v1-15-bd63b656022d@avm.de>
+	<20260310100750.303af303@gandalf.local.home>
+	<20260311141332.b611237d36b61b2409e66cb3@kernel.org>
+X-Mailer: Claws Mail 3.20.0git84 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
+X-Rspamd-Queue-Id: 0CF3220025
+X-Stat-Signature: ff8ct3tumfmuryqygkfkcm78w16u4scc
+X-Rspamd-Server: rspamout03
+X-Session-Marker: 726F737465647440676F6F646D69732E6F7267
+X-Session-ID: U2FsdGVkX1+skqrXXDxm4il2tsYmj25H0/GTzSRdMUI=
+X-HE-Tag: 1773237800-364001
+X-HE-Meta: U2FsdGVkX1+aU4mY7bFvO8lRauP/vgjT20dobHa0QHVROVhTP6xZNvlHFy+HnthX7C3DUw86Ksayk8kipkioUde1pGRJffeDzlmGTmiRQAtxOhSsM3gHnZJQZGdgNXBABYZdeE7OsMEvCI5Ff4ZQbbyu3yXHRyZXg5AHof/AO0vcusmeqjpCWWhtLLOcuZIY7+tOVjT7VktVnLaFPp1jjRLc3JQ2sJ4jp/SiL4aHgDK/k//b9d34oAYT+AlJT32Fm0BFv3eObF3U3OAnj7CnGXu0MyQ+0edSgYKqKIiOybnUsF1fYSODF4X+zk3bqwV4HOqJnRMkZevrGktYEsiiqb8/qNY0d6MZ
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_065615_098709_66B40D55 
-X-CRM114-Status: GOOD (  10.37  )
+X-CRM114-CacheID: sfid-20260311_070346_957719_CA354E6A 
+X-CRM114-Status: GOOD (  10.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,58 +97,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Fabio Estevam <festevam@nabladev.com>
+On Wed, 11 Mar 2026 14:13:32 +0900
+Masami Hiramatsu (Google) <mhiramat@kernel.org> wrote:
 
-According to nxp,pca953x.yaml, the pattern for the led names should be:
- "^led-[0-9a-z]+$".
+> Hmm, now IS_ERR_OR_NULL() is an inline function, so it is safe.
+> But if you want to use IS_ERR_OR_NULL() here, it will be better something like
+> 
+> node = rhashtable_walk_next(&iter);
+> while (!IS_ERR_OR_NULL(node)) {
+> 	fprobe_remove_node_in_module(mod, node, &alist);
+> 	node = rhashtable_walk_next(&iter);
+> }
 
-Change it accordingly to fix the following dt-schema warning"
+But now you need to have a duplicate code in order to acquire "node"
 
-leddimmer@62 (nxp,pca9533): 'led1', 'led2', 'led3', 'led4' do not match any
-of the regexes: '^led-[0-9a-z]+$', '^pinctrl-[0-9]+$'
+I think the patch just makes the code worse.
 
-Signed-off-by: Fabio Estevam <festevam@nabladev.com>
----
- arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts b/arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts
-index d411fd9811fd..46362e804daf 100644
---- a/arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts
-+++ b/arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts
-@@ -125,25 +125,25 @@ leddim: leddimmer@62 {
- 		compatible = "nxp,pca9533";
- 		reg = <0x62>;
- 
--		led1 {
-+		led-1 {
- 			label = "red:user1";
- 			linux,default-trigger = "none";
- 			type = <PCA9532_TYPE_LED>;
- 		};
- 
--		led2 {
-+		led-2 {
- 			label = "green:user2";
- 			linux,default-trigger = "none";
- 			type = <PCA9532_TYPE_LED>;
- 		};
- 
--		led3 {
-+		led-3 {
- 			label = "blue:user3";
- 			linux,default-trigger = "none";
- 			type = <PCA9532_TYPE_LED>;
- 		};
- 
--		led4 {
-+		led-4 {
- 			label = "red:user4";
- 			linux,default-trigger = "none";
- 			type = <PCA9532_TYPE_LED>;
--- 
-2.43.0
-
+-- Steve
 
 _______________________________________________
 Linux-rockchip mailing list
