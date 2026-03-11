@@ -4,222 +4,147 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35AE7FD0653
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 08:19:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9F7DFD065A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 08:37:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=PoV0GrMJRK+Q6mUTB/yB9LzMSJBH/DHAl/gpa7u94+0=; b=mOdAaKpKj4pX83
-	aIUOZgWK9ey7bF1di+BF0AblMxIDRqabxYWhPBT1KIKcczcqHDa9ogY3qGMC//ID8VGqucx8IXnLQ
-	jnU335ZsGqG9BHnqYzpf9tkwH1l+68YLutstkmJspZf+czIVjfNyV0fINYL9JagZiNpkarLz2392C
-	rxSn8pOPt6yP6CLQC7iF0pA5OxisHH5VT14ZM752Objy2JA4oCsoODgZfG4kw3n4xqgjJSrabqs8x
-	7ZjufJsqr4w+QulSB9876BO4YerlLjnJfzfOtdZlXymAaXlLs5kV2MgWFSWC/ir82mokuEqdi86i+
-	BCmgNDMmzD07eUp6MbOw==;
+	List-Owner; bh=VYPxDwP98B4uqwa3445OevExdsB2WdkvAIaK5lEZ1/s=; b=AsyJmShFq7pv6Q
+	SUswj/noja1LE9nu0jW9Tak9eUyZEVqg7izM6WHB1LYkHJsG/tx8wwrDTecwgmzXkZVNa2nA8yw0G
+	QSBbRvCvMAFhC75tLoPXkWHcxNG6c49Gm56gdxQUIrh8SymrTDE7Q41Gt1Gc627+VccIozrxYoMYA
+	snmbWchOU37O8DJvSQaHBebiaVxhsksJpMc3uR0rE+q/tJ+yWqOLG/rS+JP3qGVaUxZFDcfRkhXyB
+	hp/L7hDJoSn3l1U0cDmobDquqLJusqKILT+qt/nPTO4kLURwJgXseUt6WmiY3hjerp8GGmqMy+5VC
+	TXUptRQ6BA/4mzIEluWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0En4-0000000B9lZ-0S7M;
-	Wed, 11 Mar 2026 08:19:38 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1w0F4R-0000000BBb9-1BBM;
+	Wed, 11 Mar 2026 08:37:35 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0En0-0000000B9jk-2AIw;
-	Wed, 11 Mar 2026 08:19:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773217174; x=1804753174;
-  h=from:to:cc:subject:date:message-id:references:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=/ef+jK0YkTsaCNho9PZIEWOi4UpNIRGBY/ukEGrwSAI=;
-  b=aMoPeVH8qnGZfix8Jq+V4kLLPdq40Luq8NYVbbNdl5UZa67UvGSB7/Yw
-   hUsmW081Wm4gfBSuNmy3ojmEenKw6LzCeTV/MSIBQ7jYdbh01tnw6I1e8
-   wV8Ndl/O4+4GF4kZbxFiqN5qnWiHdaRXQpZtM5PWlrMXNXuZplBP8AwY5
-   C/6YWg65Fk2imQLbpJXzOtpaBieY7dBZbTVo97fPk/EFqxNIaYp7yZnk2
-   CNirC0QTZWnNdKR8xXxNI606TzgneDlJ4vwskcmSvmLwQnoCtwP3n8qyH
-   /3QRwDFCuQrSXPxZfuwhBAjJavxTytGrYOH5mP2CTMCv7jZuIfznAVdyh
-   w==;
-X-CSE-ConnectionGUID: 9HPadaWNTyuR9TPcZ82Xag==
-X-CSE-MsgGUID: KS1k3ibmSymzsUvoV/00DQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11725"; a="78133111"
-X-IronPort-AV: E=Sophos;i="6.23,113,1770624000"; 
-   d="scan'208";a="78133111"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Mar 2026 01:19:33 -0700
-X-CSE-ConnectionGUID: 5S9cH0XpR8WSgUZGhQWMXg==
-X-CSE-MsgGUID: vsD02ZUFQyedQpUuP67l8g==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,113,1770624000"; 
-   d="scan'208";a="216669451"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
-  by fmviesa006.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Mar 2026 01:19:31 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 11 Mar 2026 01:19:30 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Wed, 11 Mar 2026 01:19:30 -0700
-Received: from CH4PR04CU002.outbound.protection.outlook.com (40.107.201.67) by
- edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Wed, 11 Mar 2026 01:19:30 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=X6x7DOxwYL2URrNljXUye9/pkkJEgGvMluK0lJvrxOuC0xbXj7FAX30FaacLX8YhZ0OPHvObfLJMQO/2SN+g35yiqaoD0NRLoUjVpE+2Q20auqMH/3eN8vNqeXNA0qqon9XPsaIe92fDZVh+Mg1UkmBsd9SsRDy4gIp0tNH66nGK1sHczu/E46/iEpMu3OTnw5VrTffX0fgcASGq/Ie7EXqV/nMY/jUbQKm5RmjvL6qjRWcWKx6ViJTBK/cyTXPT4S2tdWggG498XtLIIpii+AJvy2fTLtiYSBf15Q9eG3T+Ca0gqQjmJsGaeiN50sqItyfsZKYw9iiBzpM1lzZGkw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=/ef+jK0YkTsaCNho9PZIEWOi4UpNIRGBY/ukEGrwSAI=;
- b=H0VSauvRFB1tI8e0jq/4o+oqrWBjsBXRh7ExZegW3lLMuyS/pJ8v4XumtQgojS1iLuwQTGOV+prn9tIE9yLvCiPKb0LgzbgzTM91/8bsXzhSMk92RR9XdGex53qyRcZXOcTP8vXLmFmQINKNoLGDVP5PXaQO/TMnuutqnu9OmCV1ulxV7byf9gzFy0GUcZG79usH9ZV1Iv++LyV/eXJAJeavY0sG/e2QjPhRrgpLP4eMPT0EII6zOos+2wm5EvsoXAp/yqRiVl/sKShbUTDOq+/0mmlp5E5Wj0FJ/f3VGv3eIPxXujghHwmOa0nhwqTjYIAM2NmfqC6EEZaXDgxY6Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com (2603:10b6:208:577::21)
- by LV8PR11MB8510.namprd11.prod.outlook.com (2603:10b6:408:1e8::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.11; Wed, 11 Mar
- 2026 08:19:22 +0000
-Received: from IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c]) by IA3PR11MB8986.namprd11.prod.outlook.com
- ([fe80::e6f0:6afb:6ef9:ab5c%5]) with mapi id 15.20.9700.010; Wed, 11 Mar 2026
- 08:19:22 +0000
-From: "Loktionov, Aleksandr" <aleksandr.loktionov@intel.com>
-To: Philipp Hahn <phahn-oss@avm.de>, "amd-gfx@lists.freedesktop.org"
-	<amd-gfx@lists.freedesktop.org>, "apparmor@lists.ubuntu.com"
-	<apparmor@lists.ubuntu.com>, "bpf@vger.kernel.org" <bpf@vger.kernel.org>,
-	"ceph-devel@vger.kernel.org" <ceph-devel@vger.kernel.org>, "cocci@inria.fr"
-	<cocci@inria.fr>, "dm-devel@lists.linux.dev" <dm-devel@lists.linux.dev>,
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-	"gfs2@lists.linux.dev" <gfs2@lists.linux.dev>,
-	"intel-gfx@lists.freedesktop.org" <intel-gfx@lists.freedesktop.org>,
-	"intel-wired-lan@lists.osuosl.org" <intel-wired-lan@lists.osuosl.org>,
-	"iommu@lists.linux.dev" <iommu@lists.linux.dev>, "kvm@vger.kernel.org"
-	<kvm@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-block@vger.kernel.org"
-	<linux-block@vger.kernel.org>, "linux-bluetooth@vger.kernel.org"
-	<linux-bluetooth@vger.kernel.org>, "linux-btrfs@vger.kernel.org"
-	<linux-btrfs@vger.kernel.org>, "linux-cifs@vger.kernel.org"
-	<linux-cifs@vger.kernel.org>, "linux-clk@vger.kernel.org"
-	<linux-clk@vger.kernel.org>, "linux-erofs@lists.ozlabs.org"
-	<linux-erofs@lists.ozlabs.org>, "linux-ext4@vger.kernel.org"
-	<linux-ext4@vger.kernel.org>, "linux-fsdevel@vger.kernel.org"
-	<linux-fsdevel@vger.kernel.org>, "linux-gpio@vger.kernel.org"
-	<linux-gpio@vger.kernel.org>, "linux-hyperv@vger.kernel.org"
-	<linux-hyperv@vger.kernel.org>, "linux-input@vger.kernel.org"
-	<linux-input@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "linux-leds@vger.kernel.org"
-	<linux-leds@vger.kernel.org>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "linux-mips@vger.kernel.org"
-	<linux-mips@vger.kernel.org>, "linux-mm@kvack.org" <linux-mm@kvack.org>,
-	"linux-modules@vger.kernel.org" <linux-modules@vger.kernel.org>,
-	"linux-mtd@lists.infradead.org" <linux-mtd@lists.infradead.org>,
-	"linux-nfs@vger.kernel.org" <linux-nfs@vger.kernel.org>,
-	"linux-omap@vger.kernel.org" <linux-omap@vger.kernel.org>,
-	"linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
-	"linux-pm@vger.kernel.org" <linux-pm@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>,
-	"linux-scsi@vger.kernel.org" <linux-scsi@vger.kernel.org>,
-	"linux-sctp@vger.kernel.org" <linux-sctp@vger.kernel.org>,
-	"linux-security-module@vger.kernel.org"
-	<linux-security-module@vger.kernel.org>, "linux-sh@vger.kernel.org"
-	<linux-sh@vger.kernel.org>, "linux-sound@vger.kernel.org"
-	<linux-sound@vger.kernel.org>, "linux-stm32@st-md-mailman.stormreply.com"
-	<linux-stm32@st-md-mailman.stormreply.com>,
-	"linux-trace-kernel@vger.kernel.org" <linux-trace-kernel@vger.kernel.org>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
-	"netdev@vger.kernel.org" <netdev@vger.kernel.org>, "ntfs3@lists.linux.dev"
-	<ntfs3@lists.linux.dev>, "samba-technical@lists.samba.org"
-	<samba-technical@lists.samba.org>, "sched-ext@lists.linux.dev"
-	<sched-ext@lists.linux.dev>, "target-devel@vger.kernel.org"
-	<target-devel@vger.kernel.org>, "tipc-discussion@lists.sourceforge.net"
-	<tipc-discussion@lists.sourceforge.net>, "v9fs@lists.linux.dev"
-	<v9fs@lists.linux.dev>
-CC: Phillip Lougher <phillip@squashfs.org.uk>
-Subject: RE: [Intel-wired-lan] [PATCH 13/61] squashfs: Prefer IS_ERR_OR_NULL
- over manual NULL check
-Thread-Topic: [Intel-wired-lan] [PATCH 13/61] squashfs: Prefer IS_ERR_OR_NULL
- over manual NULL check
-Thread-Index: AQHcsKKX2fg+jweOV02/w33fa6lR77Wo/jSg
-Date: Wed, 11 Mar 2026 08:19:22 +0000
-Message-ID: <IA3PR11MB89862A758B9D064ED69DDEFAE547A@IA3PR11MB8986.namprd11.prod.outlook.com>
-References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
- <20260310-b4-is_err_or_null-v1-13-bd63b656022d@avm.de>
-In-Reply-To: <20260310-b4-is_err_or_null-v1-13-bd63b656022d@avm.de>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA3PR11MB8986:EE_|LV8PR11MB8510:EE_
-x-ms-office365-filtering-correlation-id: e8b0c821-2d3f-4cc9-93af-08de7f46e668
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|366016|7416014|38070700021|921020|56012099003|22082099003|18002099003;
-x-microsoft-antispam-message-info: hyIuLUdmPyLzFfo/AMlIgUhhPpxXs27MqgAcsjs3Lri9dZWGQ5+fJQ1xWd8ZICk+wRis9iHYgsfZNVJ7jkWWDmFCNCV8kgbZKJlJfRNFyAspZsHjUK8GuRP2mfAL52msAf5GSElgzxcXii8zigcZ2ryUL7j8/4SNLIl5VyYkLT1yroOARCGG/WEyuf4tG/uc2H3MEDJhclHNB0LS7X6mxBbL5fB9NvyIP4lyNKMBwNKVFM3Mjaf+9wFkQBlnfH/Iix3qoDyr0Db1QFfhi/8Tab8b3B1mrEdPW85Kxuriria1pFrWGRUraaG6oRMtPONRUwJnepMR0AWDZSDUF9rzHGvvg5owyPeXf9trGZR2wey3G3QSzs216LtP6d955vO8Msnp92wZz174C+XkIsNGJCupjXktimz09COEuUYxgEwEVnxrAU/iX+PUqnoLZJolB97WMvzkGwqGt0NDJfKP5Y9eqiVm4RUn7IVxfXSvypR+l+Br036/OsOWsR0WvlwkZ7HZQmZwEOIGhD6MEQQIVSgYUhE5yDNKNX1tpNmVNxzMy+dB9deYm2IYTdcC0Ugc/mJu36P8u3i1vhrRrRtXVxmaeREovrXHsz/DzvxYsAWq/oBYKm2+FhLXVAyqOyF5qH/bLfCZijH0D1Bv4+iOy0u7ONlVBTxbOr5Y9JwqqH9p7jkhWALVMfPuloIvXuVs1JpzFIWvYpe755VYqBYIpVEaNwBvF9ONxe7vaRpvSfgCEtGZ+lgB7Cj2x5eqwIAqFLvGI1zZ1oGsiYpofTLbJlkPqlbZe1keXc5yayewRg43f8P95QMeCWPzC5G7dys2
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:IA3PR11MB8986.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(366016)(7416014)(38070700021)(921020)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?aWRZSndyN3p6MVJLdm8wQWtCdUs5MzFPRTJMOUFSK1hTVGFzM3phb0d3cyto?=
- =?utf-8?B?bU9zV2k5UlJNUVVCZzFhd2gvdEpicW95VFFqY1pxcTRCNjU5ZzNKRWtQMktN?=
- =?utf-8?B?MFl6ai8xbUR2Y3I2SjlwRmQ3aXNDTXZRNmZ5eWo5b0dndEI5eG1NNXZxYzg5?=
- =?utf-8?B?Szl1U0MvTit4bkRMeW5WZmZlYkQrRzVBVjZocnVqQytGY3RFVmVnNkVwTity?=
- =?utf-8?B?NE00YTNXYjAydXZtQ3I3NFE2MnNlZ2pxb3U2MmkwcC9haUk2ZGZlbEZFMWl2?=
- =?utf-8?B?eHRuaDlzU1ZGUWg1UlhlaXcvZnZNZTZISVdCSUgrMVB3eGt3MGhjUGxjZ05i?=
- =?utf-8?B?a25ZNmR6bDBOenBaaHhvcDVSdWRFb0k5MWRML1VTZlVwRkhRTE5Idk1rN3lD?=
- =?utf-8?B?MndNazNEbFo5UXRiQ3FOcFRqUXl3ZE5lOUdKWUo3Y1VVVEFodXowMUFXNWl3?=
- =?utf-8?B?bG16S1pGMjdJNzBmd2U3a3BvS3Y3b1FrMkcrcEJIY2o1QUYxbDRseFZ6bS9n?=
- =?utf-8?B?UkxJWnoxMXBETlRlaGpjR1J2d2NwYkdYejZMSDEzY1lrQzRkSllpeVE1TmYr?=
- =?utf-8?B?bWd3RWh6MHhLM1dYblFaNkNsTnNoQUs2eThTZUs3dGJRUlkvUUxwcEg0WUZs?=
- =?utf-8?B?Sm0vMWxIUExwV2tjR1dxMlROZkJnTWxVWisxK0V2SHZtU3Mrb1gzRVF0aDhL?=
- =?utf-8?B?ZTdtSUh4cS9zbFpjeFF4OW03U3NsV1FUcmdZRjRHWWlMK0ZKVnRrd2ZSVUpw?=
- =?utf-8?B?bGlJWUN3TnhVOE9iZzNMT3RWRE1OR2xES1dZcDJ6alBmOGxMcTg5QittRUha?=
- =?utf-8?B?UXVCS1Nka2wrM2NKcFVLaXc4OEgyUzhVRU1ydGJkMXp1V2RQdGc4NGUvdUI1?=
- =?utf-8?B?d3ZMdWFpREdIdUxHSEtlSXgzazV0eG52QjY0QTdaNXRKam4vWGdvcTNPeDhQ?=
- =?utf-8?B?alVQQTlhYnRkMWE4ZGlQYnUyUm16N2hpaVdRbGNEVUZXakhDR1NkcVhtSjhl?=
- =?utf-8?B?QzkzajRsYlZEQ0JyV25USVpzMG5hSHRQMFpWWi9KMXBMSEVRbjQvTU1pUlJl?=
- =?utf-8?B?SDFHOElpemRwUUF4NjN0dkhhYitKRUNKWmh0VkhJRDRzTUpnMGRsZzdmU0RT?=
- =?utf-8?B?WVlNSi9HaDZRVnQ5Nnp1aWFFcGZFUVQ2aG43d2lMWHlhdFJlUEYvVlBybTBG?=
- =?utf-8?B?cVdkMmg2aVNkSzg2azBLSXRkWjJ4cXJsN3g2Wk1hTmhxODhscStUMC9QbUs5?=
- =?utf-8?B?TFNhRTg0bXo4ckh5ajRQVmd3ZERrelByN28yRm9GRFBTSUhnZ0tHZ0FyOWxw?=
- =?utf-8?B?MGV4ckdXaTFVdmRpbTBsNHNycGN1a20rU09MRWJibXVCYXhWanQxZ3gyaml1?=
- =?utf-8?B?YnYyMWtrQXhDaXBBWm85eERWOXloRUQ0RU16M0dhRFZucmJyZm9qWC8zdTBL?=
- =?utf-8?B?MUZaM3dCSE16a3lxcjVSeGFCdUo3M1RaSUxzTnJ6MVFiUUpWYXltSFhsN2dD?=
- =?utf-8?B?YWdTZ2R2VVR5KzlVRGZCVkZJVm9IU0poOFhaVm1pOTBzUThmak5aUmlNMERz?=
- =?utf-8?B?aEVnS1FqZEFDMGo5dE9VaG5RUFBhZEp1M0cvdWllaytEVFU3WUgrTnBFQlRN?=
- =?utf-8?B?MXNiVXljL0JIQ1BRVkJKTUZrakprM0Y3TnB1Rmw0YzBLdTNCTEpGb0IrSnkw?=
- =?utf-8?B?OE10NlZHS1BoLzVmQ0ZKdlRjWXg5WWRpY09hT3pURVlPQldSaXd1ZDlpUXU5?=
- =?utf-8?B?MjFFT2RCMDEzUXA0L2V3VmpmZTA4RURUOG5heFQ3dlBoKzFTbnFvRXcvNGE3?=
- =?utf-8?B?RDJTbHdPV2ZDWU5MYXhaTTMvQ1RQUmJveXVraWoydjFjSGhranJWVmJHYUFN?=
- =?utf-8?B?ajNYRm1UaEo3MHdqSFJFcjc1Qlp2eFE1bGRHUWhiRzg5V25RU0RGWDVGeVhj?=
- =?utf-8?B?d0hMeG90Ylo0aE5MSkUrZUtDMU5QTTBheDVVZndEeGdYcTlCbGVLa3VTRFNL?=
- =?utf-8?B?TFcxZTBpMVFxRmF3dVpjZnVkRnozUUQydnBuem4vUkpSQ2xYMUhLTDZvazlv?=
- =?utf-8?B?SWdhNGtudFhKZStXaWFERXNlQWtMTnJJNU51WnZKb05HNHJPSU9UeWQ3TXE0?=
- =?utf-8?B?bDREektPd2grVHUwU2YyTXhWNzZKeXdwQnU3YjdJKzJ5dlJmbkhwdHJ0MHli?=
- =?utf-8?B?V09CQjZ5UDh5ZUwrZkFiN0R6VGNJWWtLbkx6WFRHRlZJZEpkb3h0YWtuTmtE?=
- =?utf-8?B?NWk1L0s0WG16OVZnTGJ6cEZhNW5HU3NtWGVSU3Q4Q3R4ZEs5KzdZajZzZnBp?=
- =?utf-8?B?cU1zMHVWZjBMbGM2eGdDYXp5MmlId2ZINlFmQ1N2Tm1jUHo0bWJ2b2xVd2dF?=
- =?utf-8?Q?qzpiEgWXQIGOWACY=3D?=
+	id 1w0F4O-0000000BBa9-1ZOn
+	for linux-rockchip@lists.infradead.org;
+	Wed, 11 Mar 2026 08:37:33 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62B830Zl1266072
+	for <linux-rockchip@lists.infradead.org>; Wed, 11 Mar 2026 08:37:31 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	v6shnDKy0mTtNDl8IP4ADRHwgFmAxB+//orXLuR5fLg=; b=hhs5fZMyvtxS8Nuu
+	ytOLTRbVQ6fk7Nn3abZLkq4nk10BNPQgEP4xkSb75GAgLxtR8jfPQVALSNIK7cQt
+	rEnKprQJPKQQe1prkq0IYawtPRkKqGL5DB9X1vgxK+SrSJXxiM+5raitEo0U0ZyF
+	FJAjzHYw04iSe5osB9V/zMgrMm+hsPFXESQdDQi96rffkrjJNsmgL5axWCcr6Yxw
+	Vk/i3gIeCLyIRyRiSzbBoTD1flcFtkou7t41nocrIfOv3n0aiXLrvweArTeVorNZ
+	nxMd2wy/5pcqZREwyaV1LBEyNeUoLSvKiQtOPXTiBUtacHJtPkm1iEgB+nCoybAy
+	AC9j6w==
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com [209.85.210.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ctpkfk296-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Wed, 11 Mar 2026 08:37:30 +0000 (GMT)
+Received: by mail-pf1-f197.google.com with SMTP id d2e1a72fcca58-829b20cc6faso678450b3a.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 11 Mar 2026 01:37:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1773218249; x=1773823049; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=v6shnDKy0mTtNDl8IP4ADRHwgFmAxB+//orXLuR5fLg=;
+        b=P1K+ae5FLsegPkiXhkUMjhFkcBDoEJxhP56DLG2yCG3VD7n30nefCi6roZIBBf990+
+         GJLKhynyyVnc5cRU00ZnIfDpt5lupsJ6RF7KCtNLWcaFF2NgTZzRd/VfgsBE3sLoCk6D
+         kuO6DW0f1ECBTRqNFL4uQcg4z4FkiB8MitzS/Jezwjk+JWIhLgDOKZfz87O4firgV1HW
+         5iIv1yKHKhm0Ayh/xq6dsHSi5USUw+GHIBJ3LGELmf84mcgRg9JhCYZXreO0nuP2E3rS
+         UIiB9G82MMd5n1FuoloZRrWetVKXje2G29R27D/br7kARf/Bo3hgWxowkvXPxoEmqS52
+         shNw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1773218249; x=1773823049;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=v6shnDKy0mTtNDl8IP4ADRHwgFmAxB+//orXLuR5fLg=;
+        b=rHfa2rAHD2nCzf8RSY1zOVAueHHfdxDQFxSnzmCakL/PgHPXiLJu/nd1RE850w1tm0
+         lnFBEZdNxCD50gA3hlp2G/lPg9yGexjnIZiaojsH5qtXsRW+2//huhaZvPODImEpLHSi
+         4xjHhh373y0MZO8D3ErY1ElNsAYJKrmGkcTX77uvLDJAd+O1P/fiTtsYeWLYVhntgwiW
+         PxL9YZwMjRR5vQjEYIrpaF6OUlesJ57W4KBrOV1WD6G8kC0vuKaeAVO5QszrhFpBKvHF
+         khpjBG8p/ZPHzCkX1/QlveGyDhXbNfhtG7NHe6RPaHH2hnlSqUNnTgEsYNoF628qTwHD
+         iEgg==
+X-Forwarded-Encrypted: i=1; AJvYcCXFwpTa2Xvb/mBzPhap/HzMLTkq+XDZe7XPBezoHgxffIsM9ABXprljy+wpM2WJhcW6SQsgG1eucg/t9PWvnA==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw0u2dfMulbYuDrHsfiuBbubadsucHvv7TEQimY4A5HYPuH7v49
+	lp/+Ulo740Dw/M+1MeAi55nZzo7rCuNSGlEf3A5WvC3XXZ0pBMriCrhwdvRXVCp7MqJY0PxqN0/
+	twM/R8/EytXfWgMPFjNKkjz4RBVsBi7l9V+FP8lqTFBQMi+c0G9WazHkNGjGkwdnpr1Uz+IGn2A
+	M=
+X-Gm-Gg: ATEYQzxzy9HIMbcuQVEbIclg1imowbUi0L7cr+3JWmZXy+R5C3hGmnqdLGH1KMjexsK
+	aMF3mOwSjq6/5llMpPGYX4zEjtGW7clawy5R18K1siqRm9ijsHC4WtXX3hx+Ovs1YBfhdp1vkAS
+	Eyj7uNLpEZT+OatS+m4A1GoD5YkQIGEMHUlrBAu8FDVkzXA/MHdsU4krIHjgZ8egkxvAxOcNb4/
+	6/ZO6gE7XkyvBXePOfjWq+49+hLIkMrVNpWrW7/uE2y3GYOwkRmMbHMVKnzPk3a02X/lkgH5HC8
+	egZUSIGQ++Mr05VfTXOhocWb33gqc9uN8ZizNen/ffXgVjMOZqqY7Fxbj2OyD2COm1eyoRZFlYC
+	5f/3hhmZPQu32eo9O5GEP679AzDeEKKhoUrk2FwTxai6e73HrdUSj/Q==
+X-Received: by 2002:a05:6a00:349a:b0:81f:4e1c:1d3b with SMTP id d2e1a72fcca58-829f7ae6a79mr1535900b3a.23.1773218249441;
+        Wed, 11 Mar 2026 01:37:29 -0700 (PDT)
+X-Received: by 2002:a05:6a00:349a:b0:81f:4e1c:1d3b with SMTP id d2e1a72fcca58-829f7ae6a79mr1535869b3a.23.1773218248955;
+        Wed, 11 Mar 2026 01:37:28 -0700 (PDT)
+Received: from [10.218.35.45] ([202.46.22.19])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-829f6df3b14sm1736918b3a.20.2026.03.11.01.37.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 11 Mar 2026 01:37:28 -0700 (PDT)
+Message-ID: <cd192707-1f8e-4ad7-8be5-470415fb4e95@oss.qualcomm.com>
+Date: Wed, 11 Mar 2026 14:07:18 +0530
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: P0Tryjjgi7r5Sa0dlJeJhxUWOQBz8cPKEFEztYoIPr4G9+CoOlxKVru1o9mOIJtLJTY8Te8NA1zDRylwrIJ8bEp9UvPbQY3P7wrnmq41gcDMf0KideWh7G3rBfeh4eusiMFtOni/PI1ZCcuU7kkjtwBleS6siQ0a1Rv86ZTPBRp2FdISTmJLmkDC7KRDl3GmMiwpkTbJFJ7/0QuSkCIUlmrscye0PIOC9mWlgNEE1LMhsArZCWgtD7EsRjD0lmgKJ46qBspyG8JcAnk7wYrD57fKY38r2tUvYJA9hM+vSpC0o+LODVBGEyovjgeGID60S25IUFIu1VtmqFyYsdFWGA==
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR11MB8986.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e8b0c821-2d3f-4cc9-93af-08de7f46e668
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2026 08:19:22.2770
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: v/8DqgpKLoEvRkW7zxyEgNR2f6Ove8R3jDy9/Bed5FvhwcoXhnWgJFh0D0pbQpAo9gEO552WAVc460NALCUO8gCA2vIi8cOsqM+scnMQn2k=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV8PR11MB8510
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 0/4] PCI: Add support for resetting the Root Ports in a
+ platform specific way
+To: manivannan.sadhasivam@oss.qualcomm.com,
+        Bjorn Helgaas <bhelgaas@google.com>,
+        Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
+        Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
+        Lorenzo Pieralisi <lpieralisi@kernel.org>,
+        =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+        Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+        Heiko Stuebner <heiko@sntech.de>,
+        Philipp Zabel <p.zabel@pengutronix.de>
+Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org,
+        Niklas Cassel <cassel@kernel.org>,
+        Wilfred Mallawa
+ <wilfred.mallawa@wdc.com>,
+        Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>,
+        Brian Norris <briannorris@chromium.org>,
+        Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>
+References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
+Content-Language: en-US
+From: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
+In-Reply-To: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
+X-Proofpoint-GUID: 4JepdRdk4LUn_viGJeqwblvW4Vzan6Q2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzExMDA3MSBTYWx0ZWRfX9sRAIDF//3SR
+ CvNIHUXPiq5E9iJhDUB6+0cbcidEuN/4qSXEOVR20DsdYGxPUT3cME7A9L3AJB225dvArG2Bhyj
+ gbxmaSFUIXaBvq0IZmJJC4by2TeMIWqogRaQWLjqwiikhAqKLFKDucqFmnOW2YvhUoVLaHnlMpB
+ mQSNVdNV/MQAlXnx7S+xoZBoF3zz0okTC+dtlJH/sfWLPHDwl3oIz390dguO6JvwLstWccHMTPA
+ ZjxZRRuGCz+KE2fEUMGjszkix2mbZS6LUAva4kz8iEKCf0UBQHywFUo4c5ruP5A3J/FtVkafNOm
+ 0c5g4q7OLhM94fUGtM7a6k0CWGbOpQGMQaAy+LfoNDnJg/WiDlDre5xcjBKCItxJYlh8OFu9qQL
+ wlxqhC/65ij9o+hCvfmfKrupI8GxmCYIVwrhAkBWtGFr/WUcTsC3ApmYfAsCiYQYap0JY0A+c6U
+ Bceqdudf4bJkuPFmvCw==
+X-Proofpoint-ORIG-GUID: 4JepdRdk4LUn_viGJeqwblvW4Vzan6Q2
+X-Authority-Analysis: v=2.4 cv=Gq5PO01C c=1 sm=1 tr=0 ts=69b129ca cx=c_pps
+ a=rEQLjTOiSrHUhVqRoksmgQ==:117 a=fChuTYTh2wq5r3m49p7fHw==:17
+ a=lJ8DZ0MjVbnDIa4D:21 a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=ImqNvw3yTObJCdT6Mg8A:9
+ a=QEXdDO2ut3YA:10 a=2VI0MkxyNR6bbpdq8BZq:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-11_01,2026-03-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 malwarescore=0 bulkscore=0 lowpriorityscore=0 spamscore=0
+ adultscore=0 clxscore=1015 priorityscore=1501 impostorscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2602130000 definitions=main-2603110071
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_011934_614895_6FA36A9E 
-X-CRM114-Status: UNSURE (   7.00  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260311_013732_422880_07001378 
+X-CRM114-Status: GOOD (  31.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -231,78 +156,110 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
 
-> -----Original Message-----
-> From: Intel-wired-lan <intel-wired-lan-bounces@osuosl.org> On Behalf
-> Of Philipp Hahn
-> Sent: Tuesday, March 10, 2026 12:49 PM
-> To: amd-gfx@lists.freedesktop.org; apparmor@lists.ubuntu.com;
-> bpf@vger.kernel.org; ceph-devel@vger.kernel.org; cocci@inria.fr; dm-
-> devel@lists.linux.dev; dri-devel@lists.freedesktop.org;
-> gfs2@lists.linux.dev; intel-gfx@lists.freedesktop.org; intel-wired-
-> lan@lists.osuosl.org; iommu@lists.linux.dev; kvm@vger.kernel.org;
-> linux-arm-kernel@lists.infradead.org; linux-block@vger.kernel.org;
-> linux-bluetooth@vger.kernel.org; linux-btrfs@vger.kernel.org; linux-
-> cifs@vger.kernel.org; linux-clk@vger.kernel.org; linux-
-> erofs@lists.ozlabs.org; linux-ext4@vger.kernel.org; linux-
-> fsdevel@vger.kernel.org; linux-gpio@vger.kernel.org; linux-
-> hyperv@vger.kernel.org; linux-input@vger.kernel.org; linux-
-> kernel@vger.kernel.org; linux-leds@vger.kernel.org; linux-
-> media@vger.kernel.org; linux-mips@vger.kernel.org; linux-mm@kvack.org;
-> linux-modules@vger.kernel.org; linux-mtd@lists.infradead.org; linux-
-> nfs@vger.kernel.org; linux-omap@vger.kernel.org; linux-
-> phy@lists.infradead.org; linux-pm@vger.kernel.org; linux-
-> rockchip@lists.infradead.org; linux-s390@vger.kernel.org; linux-
-> scsi@vger.kernel.org; linux-sctp@vger.kernel.org; linux-security-
-> module@vger.kernel.org; linux-sh@vger.kernel.org; linux-
-> sound@vger.kernel.org; linux-stm32@st-md-mailman.stormreply.com;
-> linux-trace-kernel@vger.kernel.org; linux-usb@vger.kernel.org; linux-
-> wireless@vger.kernel.org; netdev@vger.kernel.org;
-> ntfs3@lists.linux.dev; samba-technical@lists.samba.org; sched-
-> ext@lists.linux.dev; target-devel@vger.kernel.org; tipc-
-> discussion@lists.sourceforge.net; v9fs@lists.linux.dev; Philipp Hahn
-> <phahn-oss@avm.de>
-> Cc: Phillip Lougher <phillip@squashfs.org.uk>
-> Subject: [Intel-wired-lan] [PATCH 13/61] squashfs: Prefer
-> IS_ERR_OR_NULL over manual NULL check
-> 
-> Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
-> check.
-> 
-> Change generated with coccinelle.
-> 
-> To: Phillip Lougher <phillip@squashfs.org.uk>
-> Cc: linux-kernel@vger.kernel.org
-> Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
-> ---
->  fs/squashfs/cache.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/fs/squashfs/cache.c b/fs/squashfs/cache.c index
-> 67abd4dff222235e75d8c2b10d5e9b811d6e38d8..8888cc02966e2e33210c872c7332
-> 05d4c581ecc9 100644
-> --- a/fs/squashfs/cache.c
-> +++ b/fs/squashfs/cache.c
-> @@ -198,7 +198,7 @@ void squashfs_cache_delete(struct squashfs_cache
-> *cache)  {
->  	int i, j;
-> 
-> -	if (IS_ERR(cache) || cache == NULL)
-> +	if (IS_ERR_OR_NULL(cache))
->  		return;
-> 
->  	for (i = 0; i < cache->entries; i++) {
-> 
-> --
-> 2.43.0
+On 3/10/2026 7:31 PM, Manivannan Sadhasivam via B4 Relay wrote:
+> Hi,
+>
+> Currently, in the event of AER/DPC, PCI core will try to reset the slot (Root
+> Port) and its subordinate devices by invoking bridge control reset and FLR. But
+> in some cases like AER Fatal error, it might be necessary to reset the Root
+> Ports using the PCI host bridge drivers in a platform specific way (as indicated
+> by the TODO in the pcie_do_recovery() function in drivers/pci/pcie/err.c).
+> Otherwise, the PCI link won't be recovered successfully.
+>
+> So this series adds a new callback 'pci_host_bridge::reset_root_port' for the
+> host bridge drivers to reset the Root Port when a fatal error happens.
+>
+> Also, this series allows the host bridge drivers to handle PCI link down event
+> by resetting the Root Ports and recovering the bus. This is accomplished by the
+> help of the new 'pci_host_handle_link_down()' API. Host bridge drivers are
+> expected to call this API (preferrably from a threaded IRQ handler) with
+> relevant Root Port 'pci_dev' when a link down event is detected for the port.
+> The API will reuse the pcie_do_recovery() function to recover the link if AER
+> support is enabled, otherwise it will directly call the reset_root_port()
+> callback of the host bridge driver (if exists).
+>
+> For reference, I've modified the pcie-qcom driver to call
+> pci_host_handle_link_down() API with Root Port 'pci_dev' after receiving the
+> LDn global_irq event and populated 'pci_host_bridge::reset_root_port()'
+> callback to reset the Root Ports.
+>   
+> Testing
+> -------
+>
+> Tested on Qcom Lemans AU Ride platform with Host and EP SoCs connected over PCIe
+> link. Simulated the LDn by disabling LTSSM_EN on the EP and I could verify that
+> the link was getting recovered successfully.
+>
+> Changes in v7:
+> - Dropped Rockchip Root port reset patch due to reported issues. But the series
+>    works on other platforms as tested by others.
+> - Added pci_{lock/unlock}_rescan_remove() to guard pci_bus_error_reset() as the
+>    device could be removed in-between due to Native hotplug interrupt.
+> - Rebased on top of v7.0-rc1
+> - Link to v6: https://lore.kernel.org/r/20250715-pci-port-reset-v6-0-6f9cce94e7bb@oss.qualcomm.com
+>
+> Changes in v6:
+> - Incorporated the patch: https://lore.kernel.org/all/20250524185304.26698-2-manivannan.sadhasivam@linaro.org/
+> - Link to v5: https://lore.kernel.org/r/20250715-pci-port-reset-v5-0-26a5d278db40@oss.qualcomm.com
+>
+> Changes in v5:
+> * Reworked the pci_host_handle_link_down() to accept Root Port instead of
+>    resetting all Root Ports in the event of link down.
+> * Renamed 'reset_slot' to 'reset_root_port' to avoid confusion as both terms
+>    were used interchangibly and the series is intended to reset Root Port only.
+> * Added the Rockchip driver change to this series.
+> * Dropped the applied patches and review/tested tags due to rework.
+> * Rebased on top of v6.16-rc1.
+>
+> Changes in v4:
+> - Handled link down first in the irq handler
+> - Updated ICC & OPP bandwidth after link up in reset_slot() callback
+> - Link to v3: https://lore.kernel.org/r/20250417-pcie-reset-slot-v3-0-59a10811c962@linaro.org
+>
+> Changes in v3:
+> - Made the pci-host-common driver as a common library for host controller
+>    drivers
+> - Moved the reset slot code to pci-host-common library
+> - Link to v2: https://lore.kernel.org/r/20250416-pcie-reset-slot-v2-0-efe76b278c10@linaro.org
+>
+> Changes in v2:
+> - Moved calling reset_slot() callback from pcie_do_recovery() to pcibios_reset_secondary_bus()
+> - Link to v1: https://lore.kernel.org/r/20250404-pcie-reset-slot-v1-0-98952918bf90@linaro.org
+>
+> Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+For entire series,
+Reviewed-by: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
 
-Reviewed-by: Aleksandr Loktionov <aleksandr.loktionov@intel.com>
+- Krishna Chaitanya.
+> ---
+> Manivannan Sadhasivam (4):
+>        PCI/ERR: Add support for resetting the Root Ports in a platform specific way
+>        PCI: host-common: Add link down handling for Root Ports
+>        PCI: qcom: Add support for resetting the Root Port due to link down event
+>        misc: pci_endpoint_test: Add AER error handlers
+>
+>   drivers/misc/pci_endpoint_test.c         |  20 +++++
+>   drivers/pci/controller/dwc/pcie-qcom.c   | 143 ++++++++++++++++++++++++++++++-
+>   drivers/pci/controller/pci-host-common.c |  35 ++++++++
+>   drivers/pci/controller/pci-host-common.h |   1 +
+>   drivers/pci/pci.c                        |  21 +++++
+>   drivers/pci/pcie/err.c                   |   6 +-
+>   include/linux/pci.h                      |   1 +
+>   7 files changed, 221 insertions(+), 6 deletions(-)
+> ---
+> base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
+> change-id: 20250715-pci-port-reset-4d9519570123
+>
+> Best regards,
+
+
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
