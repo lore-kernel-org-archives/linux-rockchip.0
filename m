@@ -4,69 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C42110611E0
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 11:05:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E84F5106286B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 11:46:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
+	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6M2rFQkRB+lsAf3b/kcjmlDN2Hur3JCz8WiR0gjOllE=; b=MT/P9RnG4D5e6p
-	t5tYCRmx6qBHpCEv2Rgo20IypkaPkVvINfyJbfD/edK4m6ZyY08rWyB2Dq3rmiz1I8I0jLV9/0gaR
-	FoO/DIEDGKXWYGgfx2KeatVUMQn0nowzqfCNTte4TW5+vmUUY9U2FPDWTkK0W/b0GgXsKDd+5iXSn
-	ezKiiDTDQ/+uUxwRMrUR8N/+L8z3U4I6Kw+xKfhn85hgww4pOn6yK/rAxwgH0KODUjQBdichZlRKL
-	OkLj6bB0ECQ4VzF8mgU5JLy3VpOW0wJpMJZoWudq8n9ygCLH911e/U6Kd+4JPtZiT554cGIE40Wip
-	MP+8dJLUNYxmdiMGAcaQ==;
+	List-Owner; bh=XNh8575mb3rw1PNNsJFBh83+Pf3EHw0KHLlZlIBRp3U=; b=hRZ3P0voepvo3F
+	ijtAvTyKxDKrOMmJcyDmnpPRtcp0cC0gSMQJsEyZyk72E+sF9hBoEqXc2zWWtGQGTCbcMaON0BR+3
+	taMY22TTeADrdvrOvdk3oC7QhDBmwu8E6k7209LwHeNydMGwkihDyS206OvZ7FhZ//C2+P0Mek6lI
+	/acJvsPegcI9X0G4UP4cQB5jxBMRxn3oJuGugSrX/rIfYHSVnXRYa88IFpTHjRDXNN2tFgBo8mqD8
+	X8fBhvsucBbdYdrp7IgIjk4xUOof7TbjOmUtyQAmhPDsPL6dUCnZuPOYRAOsmtl9pilqzvXBSN6QA
+	3IYTPa0pOeeGeiXHj4eQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0HNX-0000000BT05-02kH;
-	Wed, 11 Mar 2026 11:05:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w0I0x-0000000BVWm-2Mh5;
+	Wed, 11 Mar 2026 11:46:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0HNV-0000000BSzs-3n8k;
-	Wed, 11 Mar 2026 11:05:25 +0000
+	id 1w0I0w-0000000BVWZ-12UD;
+	Wed, 11 Mar 2026 11:46:10 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E84CA6013E;
-	Wed, 11 Mar 2026 11:05:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B6B7C4CEF7;
-	Wed, 11 Mar 2026 11:05:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1157460145;
+	Wed, 11 Mar 2026 11:46:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 79082C4CEF7;
+	Wed, 11 Mar 2026 11:46:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773227124;
-	bh=BgLuLCpNt8YikxfkQc3yHUtyj3A7U731tcqZVJqZcPM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Eq24ij66oMbyTp1yMVUcNGzHc65udFXi7P4njEUQUTlsmxGbZAXKzJnJ9FlGX4OH5
-	 8EJdF+H5q/pNCEc9m2zibOEiho3mYxp4rAL9uS9PPqOtvTL8xHBpnRMGEbfimxABGW
-	 iwMIRCPAVGeGn0VdA1SK0UaD2BwdtnTi6a4F0LutKSrnZ0AUkgwHiWqYHeq2Yo+hQB
-	 BX77RFSPRFEXfbCIFMcHngXlOR7zC1ZXJuzsO2W8TO5YKYMAyOP3XiWDOWdC2AEfyb
-	 Py7eKU8OcsajO4JUfyO2uBjjwKK/FMz5jqIaK34DcCF4ou2NdzrBnCexEbFUbfSP1d
-	 bXzS+9ypNh3XA==
-Date: Wed, 11 Mar 2026 12:05:15 +0100
-From: Niklas Cassel <cassel@kernel.org>
-To: manivannan.sadhasivam@oss.qualcomm.com
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
-	Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>,
-	Brian Norris <briannorris@chromium.org>,
-	Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>
-Subject: Re: [PATCH v7 0/4] PCI: Add support for resetting the Root Ports in
- a platform specific way
-Message-ID: <abFMa6DCGGLUHddA@fedora>
-References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
+	s=k20201202; t=1773229568;
+	bh=mePPF9zcPSvtBJqRo2t1V0QkuJgJRZztiTUUZcbcg0Y=;
+	h=Date:Subject:Cc:To:From:References:In-Reply-To:From;
+	b=LL43S37gfzT/Tm97KcgLsUXSfiOoxXzNEvUrv5x20U2bjXaNgs2ZEmAgEqPArpUoO
+	 jMRBsFO1rtnAFbU7NnV1UYL2ZLu78aO4zL8Y7m8Bk2MEOzq5U5kiR9/6SUzZYukt7x
+	 YCTfvAKZMs3yfoGP49cGvPDmIt42flrR6PfRuh5zAIQmyzPxgztNsbO/gK+Je4YLce
+	 ciCMdoBBXH0iGc+dE87FOkoBu6Uce/jRT/Ya7GEyH4/7KkWuHPyqX8nSztSBQvw3vL
+	 L8FegqH/dGZqRNCpbuvVZrTfiR676Um5mvDDVFYh66XpUXS9leC3rE1c8nNUescbmb
+	 xFoVtT4VD+7vg==
+Mime-Version: 1.0
+Date: Wed, 11 Mar 2026 12:46:03 +0100
+Message-Id: <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+Cc: "Robin Murphy" <robin.murphy@arm.com>, "Manivannan Sadhasivam"
+ <manivannan.sadhasivam@oss.qualcomm.com>, "Lorenzo Pieralisi"
+ <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
+ <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas"
+ <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Niklas Cassel"
+ <cassel@kernel.org>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Hans Zhang"
+ <18255117159@163.com>, "Nicolas Frattaroli"
+ <nicolas.frattaroli@collabora.com>, "Wilfred Mallawa"
+ <wilfred.mallawa@wdc.com>, <linux-pci@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+ "Anand Moon" <linux.amoon@gmail.com>, "Grimmauld" <grimmauld@grimmauld.de>,
+ "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
+ <rafael@kernel.org>, <driver-core@lists.linux.dev>, "Lukas Wunner"
+ <lukas@wunner.de>
+To: "Manivannan Sadhasivam" <mani@kernel.org>
+From: "Danilo Krummrich" <dakr@kernel.org>
+References: <20260226101032.1042-1-linux.amoon@gmail.com>
+ <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
+ <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
+ <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
+ <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
+ <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
+In-Reply-To: <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,31 +85,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 10, 2026 at 07:31:58PM +0530, Manivannan Sadhasivam via B4 Relay wrote:
-> Changes in v7:
-> - Dropped Rockchip Root port reset patch due to reported issues. But the series
->   works on other platforms as tested by others.
+On Wed Mar 11, 2026 at 6:24 AM CET, Manivannan Sadhasivam wrote:
+> I have a contrary view here. If just a single driver or lib doesn't handle async
+> probe, it cannot just force other drivers to not take the advantage of async
+> probe. As I said above, enabling async probe easily saves a few hunderd ms or
+> even more if there are more than one Root Port or Root Complex in an SoC.
 
-Are you referring to
+Then the driver or lib has to be fixed / improved first or the driver core has
+to be enabled to deal with a case where PROBE_FORCE_SYNCHRONOUS is requested
+from an async path, etc.
 
-## On EP side:
-# echo 0 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start && \
-  sleep 0.1 && echo 1 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start
+In any case, applying the patch and breaking things (knowingly?) doesn't seem
+like the correct approach.
 
-Then running pcitest only having 7 / 16 tests passed ?
+> I strongly agree with you here that the underlying issue should be fixed. But
+> the real impact to end users is not this splat, but not having the boot time
+> optimization that this patch brings in. As an end user, one would want their
+> systems to boot quickly and they wouldn't bother much about a harmless warning
+> splat appearing in the dmesg log.
 
-If so, isn't that a problem also for qcom?
+You mean quickly booting into a "harmless" potential deadlock condition the
+warning splat tries to make people aware of? :)
 
-
-There is no chance that the patch:
-"misc: pci_endpoint_test: Add AER error handlers"
-improves things in this regard?
-
-Or will it simply avoid the "AER: device recovery failed" print?
-
-
-Kind regards,
-Niklas
+(Or am I missing a subtle detail and we can never actually end up in a deadlock
+for some reason?)
 
 _______________________________________________
 Linux-rockchip mailing list
