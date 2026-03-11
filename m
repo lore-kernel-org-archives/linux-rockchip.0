@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EDFBFD88D3
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 00:43:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFEF1FD88D5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 00:55:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LK6d1P870WnxvRJUd01owBErbpezxMKM6Z0+fPIUTaY=; b=bEDv/f8mUI11zL
-	ltJIxutNWDLse+PErbI5NBeROdFZSmW3+gEYDHjcVwkwmTVR99zntUU2oJeV+p/JKQhUIRabjR+dj
-	kQJhcY7RZdyxdaxrP8dAON4FG44r4TAdrYXSBTt0X2GJaf3tnTj/0jl3JjowdqE7KPw5TwVGPm7NE
-	RDUXjwP0BW0xJ/YnYDTAw6HfGKNPKYdU+TbTju1FLcEJct0+9iMU7tR7EvzcUjr+ChDnNX6jDcEyZ
-	34THbTc2TyWGqaczaReloWUgModbqqLsFUqq9L6WaZTG8WBcMIDBtI+DnefnX3OvJmXj07KpXrTqF
-	6CnOKHHryNlPZhLKgibg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Date:Message-ID:From:
+	References:To:Subject:Cc:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uZcN8ZIjgH66MTuxiUmLZjjPQl0ktlOIO8aR73Rm4go=; b=2S7YuoaAxFtuzH/INgDKIWeS51
+	Gd3JTkScyyBrj/xrw+sYCV0oVjuztayF6AdNQJrVJofNyv0CmgzLjj7l0dT3j6z2UYrg3T76OhJrh
+	o8zn4L0AKHHN6lvQKMHpGemun7H9gnV5YG6naHtHFpDUzUYEEVNud7MWwyyS/acEvmb+/Y0F1Ffdk
+	4424Hy1yys05mTmyiqJsO+aLnBErZ5Zt8bKzSgOmwOrZqodxGcT/mcUZckSkWAfAGWj3m4o+W485E
+	e+l2Gukw3jTW63gZgBhY3KeSn777if8BLtx0graNi7YMHgulf/IXEFBk7HaORORlfGqcm654/r7fe
+	TjXVvxrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w07fZ-0000000ASco-04gX;
-	Wed, 11 Mar 2026 00:43:25 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w07r3-0000000ATGB-1WjL;
+	Wed, 11 Mar 2026 00:55:17 +0000
+Received: from mail-m32117.qiye.163.com ([220.197.32.117])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w07fW-0000000ASbg-3pAw;
-	Wed, 11 Mar 2026 00:43:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C2E5C60141;
-	Wed, 11 Mar 2026 00:43:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BFE8C19423;
-	Wed, 11 Mar 2026 00:43:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773189801;
-	bh=kH/Ie2aFI4K/lDnNQHmGKjIFS9FcKLj4P5iq92/ff4A=;
-	h=Date:Subject:Cc:To:From:References:In-Reply-To:From;
-	b=ehjrxnRqe+S2eARDKmHB+T6s70Jt3cX86F+fjg7UoP9KeQpNc++YTPXyAwhtwIrtC
-	 q+wwSkK/QiCZrhT3t4VHk0J2WoSlGLUkkGpwlzyZ6jokMDIQm0yfYlsUivEzvT3bMF
-	 JgSpQf96bxTLa4D7k5pAKV6KtS++9ko/Db84UTLpbbpHn6dpFhfco15NtaOrsZdhsT
-	 vp4VUUPWaEOXi+DT0ZGVDQh52RxlDZ08G2lq7Z3+Xt5hsbx4Li0T+2Y4YDJ+32VMgZ
-	 DpWgLqCJ4KlHX1acNrBvV8OHzGz5t/OeAK2QzFST19HKtDhzq6VS1/mBLlA4Lu1IqI
-	 VCQ0H/t/tXKqg==
-Mime-Version: 1.0
-Date: Wed, 11 Mar 2026 01:43:15 +0100
-Message-Id: <DGZJBMG2Y738.2MU5LXVGEDD47@kernel.org>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-Cc: "Manivannan Sadhasivam" <mani@kernel.org>, "Manivannan Sadhasivam"
- <manivannan.sadhasivam@oss.qualcomm.com>, "Lorenzo Pieralisi"
- <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
- <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas"
- <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Niklas Cassel"
- <cassel@kernel.org>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Hans Zhang"
- <18255117159@163.com>, "Nicolas Frattaroli"
- <nicolas.frattaroli@collabora.com>, "Wilfred Mallawa"
- <wilfred.mallawa@wdc.com>, <linux-pci@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Anand Moon" <linux.amoon@gmail.com>, "Grimmauld" <grimmauld@grimmauld.de>,
- "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, <driver-core@lists.linux.dev>, "Lukas Wunner"
- <lukas@wunner.de>, "Dmitry Torokhov" <dmitry.torokhov@gmail.com>
-To: "Robin Murphy" <robin.murphy@arm.com>
-From: "Danilo Krummrich" <dakr@kernel.org>
-References: <20260226101032.1042-1-linux.amoon@gmail.com>
- <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
- <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
- <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
- <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
-In-Reply-To: <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
+	id 1w07qz-0000000ATFb-2qzu;
+	Wed, 11 Mar 2026 00:55:15 +0000
+Received: from [172.16.12.17] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3678c56ad;
+	Wed, 11 Mar 2026 08:55:03 +0800 (GMT+08:00)
+Cc: shawn.lin@rock-chips.com, linux-pci@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Niklas Cassel <cassel@kernel.org>,
+ Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+ Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
+ Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>,
+ Brian Norris <briannorris@chromium.org>, Wilson Ding <dingwei@marvell.com>,
+ Frank Li <Frank.Li@nxp.com>
+Subject: Re: [PATCH v7 2/4] PCI: host-common: Add link down handling for Root
+ Ports
+To: manivannan.sadhasivam@oss.qualcomm.com,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
+ Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>,
+ =?UTF-8?Q?Krzysztof_Wilczy=c5=84ski?= <kwilczynski@kernel.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
+References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
+ <20260310-pci-port-reset-v7-2-9dd00ccc25ab@oss.qualcomm.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+Message-ID: <2eb738fb-9dfe-1e88-6ea7-afdba9cb3d25@rock-chips.com>
+Date: Wed, 11 Mar 2026 08:55:01 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
+MIME-Version: 1.0
+In-Reply-To: <20260310-pci-port-reset-v7-2-9dd00ccc25ab@oss.qualcomm.com>
+X-HM-Tid: 0a9cda63dc8f09cckunm38bfaea514eddb
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQk4YGFZCS05KHUxLHRpNTUpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=kfOdNE3EOKnXsygqxi9846fL4/tfGrHHufMHhcZSqW9MTTTIqCuBGUX/zVyg7ioK37rllmhlXiocSZLOPtud5LXKachckvyWn7BGwp1H4lKUNHYY9AmWdtLUnJIF0u/fdulWGnBK2eSSI2LJdbit7/Qw5WUqh7Vhb7SNeSLBpJ4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=sd2Fc6FSnG2d3pMTg14GqePnOxYc9BQqdVSkTf9LTHs=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260310_175514_223860_1A1F4DEA 
+X-CRM114-Status: GOOD (  32.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,61 +81,115 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="gbk"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-(Cc: Dmitry)
-
-On Tue Mar 10, 2026 at 10:03 PM CET, Robin Murphy wrote:
-> [ +driver-core maintainers - async probe question below ]
-
-<snip>
-
-> I'm guessing it maybe wasn't anticipated to have bus drivers calling
-> device_initial_probe() from within async in the first place?
-
-I think this is not limited to device_initial_probe(), device_attach() or even
-device_add() would have the same problem. I.e. the driver core simply does not
-consider whether it is already running in an async handler when it is requested
-to run probe() synchronously.
-
-A simple workaround to this would be to check whether current_is_async() and in
-case it returns true just defer probing in an PROBE_FORCE_SYNCHRONOUS case. This
-would at least be compatible with the guarantees given by
-PROBE_FORCE_SYNCHRONOUS, but it doesn't sound quite right to me -- guess I have
-to think about it a bit more.
-
-In any case, given that this is not a supported case, this commit seems to be
-wrong and should probably be reverted.
-
-I think a quick workaround in the driver core as mentioned above is not a good
-idea, instead this should be properly thought through.
-
-> It may not strictly be the fault of this patch - clearly 91703041697c 
-> ("PCI: Allow built-in drivers to use async initial probing") is 
-> implicated in this too - but the fact is that it *has* exposed a bug 
-> that needs fixing one way or another, it can't just be left hanging and 
-> impacting end users.
-
-At a side note, I think device_initial_probe() was not meant to be exposed
-outside of the driver core in the first place. As the name suggests it is only
-meant to be called on the initial probe() path (i.e. the initial probe() path of
-the driver core). It seems to me that it ended up in include/linux/device.h
-instead of drivers/base/base.h by accident.
-
-The original commit - commit 765230b5f084 ("driver-core: add asynchronous
-probing support for drivers") - introducing the feature even mentions "manual
-binding is still synchronous" in its commit message and I think this has never
-been changed.
-
-So, it seems commit 91703041697c ("PCI: Allow built-in drivers to use async
-initial probing") relies on something that might work by accident. :)
-
-So, I wouldn't rule out any unexpected side effects entirely.
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTWFuaQoK1NogMjAyNi8wMy8xMCDQx8batv4gMjI6MDIsIE1hbml2YW5uYW4gU2FkaGFzaXZh
+bSB2aWEgQjQgUmVsYXkg0LS1wDoKPiBGcm9tOiBNYW5pdmFubmFuIFNhZGhhc2l2YW0gPG1hbmlA
+a2VybmVsLm9yZz4KPiAKPiBUaGUgUENJIGxpbmssIHdoZW4gZG93biwgbmVlZHMgdG8gYmUgcmVj
+b3ZlcmVkIHRvIGJyaW5nIGl0IGJhY2suIEJ1dCBvbgo+IHNvbWUgcGxhdGZvcm1zLCB0aGF0IGNh
+bm5vdCBiZSBkb25lIGluIGEgZ2VuZXJpYyB3YXkgYXMgbGluayByZWNvdmVyeQo+IHByb2NlZHVy
+ZSBpcyBwbGF0Zm9ybSBzcGVjaWZpYy4gU28gYWRkIGEgbmV3IEFQSQo+IHBjaV9ob3N0X2hhbmRs
+ZV9saW5rX2Rvd24oKSB0aGF0IGNvdWxkIGJlIGNhbGxlZCBieSB0aGUgaG9zdCBicmlkZ2UgZHJp
+dmVycwo+IGZvciBhIHNwZWNpZmljIFJvb3QgUG9ydCB3aGVuIHRoZSBsaW5rIGdvZXMgZG93bi4K
+PiAKPiBUaGUgQVBJIGFjY2VwdHMgdGhlICdwY2lfZGV2JyBjb3JyZXNwb25kaW5nIHRvIHRoZSBS
+b290IFBvcnQgd2hpY2ggb2JzZXJ2ZWQKPiB0aGUgbGluayBkb3duIGV2ZW50LiBJZiBDT05GSUdf
+UENJRUFFUiBpcyBlbmFibGVkLCB0aGUgQVBJIGNhbGxzCj4gcGNpZV9kb19yZWNvdmVyeSgpIGZ1
+bmN0aW9uIHdpdGggJ3BjaV9jaGFubmVsX2lvX2Zyb3plbicgYXMgdGhlIHN0YXRlLiBUaGlzCj4g
+d2lsbCByZXN1bHQgaW4gdGhlIGV4ZWN1dGlvbiBvZiB0aGUgQUVSIEZhdGFsIGVycm9yIGhhbmRs
+aW5nIGNvZGUuIFNpbmNlCj4gdGhlIGxpbmsgZG93biByZWNvdmVyeSBpcyBwcmV0dHkgbXVjaCB0
+aGUgc2FtZSBhcyBBRVIgRmF0YWwgZXJyb3IgaGFuZGxpbmcsCj4gcGNpZV9kb19yZWNvdmVyeSgp
+IGhlbHBlciBpcyByZXVzZWQgaGVyZS4gRmlyc3QsIHRoZSBBRVIgZXJyb3JfZGV0ZWN0ZWQoKQo+
+IGNhbGxiYWNrIHdpbGwgYmUgdHJpZ2dlcmVkIGZvciB0aGUgYnJpZGdlIGFuZCB0aGVuIGZvciB0
+aGUgZG93bnN0cmVhbQo+IGRldmljZXMuIEZpbmFsbHksIHBjaV9ob3N0X3Jlc2V0X3Jvb3RfcG9y
+dCgpIHdpbGwgYmUgY2FsbGVkIGZvciB0aGUgUm9vdAo+IFBvcnQsIHdoaWNoIHdpbGwgcmVzZXQg
+dGhlIFJvb3QgUG9ydCB1c2luZyAncmVzZXRfcm9vdF9wb3J0JyBjYWxsYmFjayB0bwo+IHJlY292
+ZXIgdGhlIGxpbmsuIE9uY2UgdGhhdCdzIGRvbmUsIHJlc3VtZSBtZXNzYWdlIHdpbGwgYmUgYnJv
+YWRjYXN0ZWQgdG8KPiB0aGUgYnJpZGdlIGFuZCB0aGUgZG93bnN0cmVhbSBkZXZpY2VzLCBpbmRp
+Y2F0aW5nIHN1Y2Nlc3NmdWwgbGluayByZWNvdmVyeS4KPiAKPiBCdXQgaWYgQ09ORklHX1BDSUVB
+RVIgaXMgbm90IGVuYWJsZWQgaW4gdGhlIGtlcm5lbCwgb25seQo+IHBjaV9ob3N0X3Jlc2V0X3Jv
+b3RfcG9ydCgpIEFQSSB3aWxsIGJlIGNhbGxlZCwgd2hpY2ggd2lsbCBpbiB0dXJuIGNhbGwKPiBw
+Y2lfYnVzX2Vycm9yX3Jlc2V0KCkgdG8ganVzdCByZXNldCB0aGUgUm9vdCBQb3J0IGFzIHRoZXJl
+IGlzIG5vIHdheSB3ZQo+IGNvdWxkIGluZm9ybSB0aGUgZHJpdmVycyBhYm91dCBsaW5rIHJlY292
+ZXJ5Lgo+IAo+IFNpZ25lZC1vZmYtYnk6IE1hbml2YW5uYW4gU2FkaGFzaXZhbSA8bWFuaXZhbm5h
+bi5zYWRoYXNpdmFtQGxpbmFyby5vcmc+Cj4gU2lnbmVkLW9mZi1ieTogTWFuaXZhbm5hbiBTYWRo
+YXNpdmFtIDxtYW5pdmFubmFuLnNhZGhhc2l2YW1Ab3NzLnF1YWxjb21tLmNvbT4KPiBUZXN0ZWQt
+Ynk6IEJyaWFuIE5vcnJpcyA8YnJpYW5ub3JyaXNAY2hyb21pdW0ub3JnPgo+IFRlc3RlZC1ieTog
+S3Jpc2huYSBDaGFpdGFueWEgQ2h1bmRydSA8a3Jpc2huYS5jaHVuZHJ1QG9zcy5xdWFsY29tbS5j
+b20+Cj4gVGVzdGVkLWJ5OiBSaWNoYXJkIFpodSA8aG9uZ3hpbmcuemh1QG54cC5jb20+Cj4gUmV2
+aWV3ZWQtYnk6IEZyYW5rIExpIDxGcmFuay5MaUBueHAuY29tPgo+IC0tLQo+ICAgZHJpdmVycy9w
+Y2kvY29udHJvbGxlci9wY2ktaG9zdC1jb21tb24uYyB8IDM1ICsrKysrKysrKysrKysrKysrKysr
+KysrKysrKysrKysrCj4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1ob3N0LWNvbW1vbi5o
+IHwgIDEgKwo+ICAgZHJpdmVycy9wY2kvcGNpLmMgICAgICAgICAgICAgICAgICAgICAgICB8ICAx
+ICsKPiAgIGRyaXZlcnMvcGNpL3BjaWUvZXJyLmMgICAgICAgICAgICAgICAgICAgfCAgMSArCj4g
+ICA0IGZpbGVzIGNoYW5nZWQsIDM4IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9wY2kvY29udHJvbGxlci9wY2ktaG9zdC1jb21tb24uYyBiL2RyaXZlcnMvcGNpL2NvbnRy
+b2xsZXIvcGNpLWhvc3QtY29tbW9uLmMKPiBpbmRleCBkNjI1OGMxY2ZmZTUuLjE1ZWJmZjhhNTQy
+YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1ob3N0LWNvbW1vbi5j
+Cj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktaG9zdC1jb21tb24uYwo+IEBAIC0x
+Miw5ICsxMiwxMSBAQAo+ICAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gICAjaW5jbHVkZSA8bGlu
+dXgvb2ZfYWRkcmVzcy5oPgo+ICAgI2luY2x1ZGUgPGxpbnV4L29mX3BjaS5oPgo+ICsjaW5jbHVk
+ZSA8bGludXgvcGNpLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvcGNpLWVjYW0uaD4KPiAgICNpbmNs
+dWRlIDxsaW51eC9wbGF0Zm9ybV9kZXZpY2UuaD4KPiAgIAo+ICsjaW5jbHVkZSAiLi4vcGNpLmgi
+Cj4gICAjaW5jbHVkZSAicGNpLWhvc3QtY29tbW9uLmgiCj4gICAKPiAgIHN0YXRpYyB2b2lkIGdl
+bl9wY2lfdW5tYXBfY2ZnKHZvaWQgKnB0cikKPiBAQCAtMTA2LDUgKzEwOCwzOCBAQCB2b2lkIHBj
+aV9ob3N0X2NvbW1vbl9yZW1vdmUoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldikKPiAgIH0K
+PiAgIEVYUE9SVF9TWU1CT0xfR1BMKHBjaV9ob3N0X2NvbW1vbl9yZW1vdmUpOwo+ICAgCj4gK3N0
+YXRpYyBwY2lfZXJzX3Jlc3VsdF90IHBjaV9ob3N0X3Jlc2V0X3Jvb3RfcG9ydChzdHJ1Y3QgcGNp
+X2RldiAqZGV2KQo+ICt7Cj4gKwlpbnQgcmV0Owo+ICsKPiArCXBjaV9sb2NrX3Jlc2Nhbl9yZW1v
+dmUoKTsKPiArCXJldCA9IHBjaV9idXNfZXJyb3JfcmVzZXQoZGV2KTsKPiArCXBjaV91bmxvY2tf
+cmVzY2FuX3JlbW92ZSgpOwo+ICsJaWYgKHJldCkgewo+ICsJCXBjaV9lcnIoZGV2LCAiRmFpbGVk
+IHRvIHJlc2V0IFJvb3QgUG9ydDogJWRcbiIsIHJldCk7Cj4gKwkJcmV0dXJuIFBDSV9FUlNfUkVT
+VUxUX0RJU0NPTk5FQ1Q7Cj4gKwl9Cj4gKwo+ICsJcGNpX2luZm8oZGV2LCAiUm9vdCBQb3J0IGhh
+cyBiZWVuIHJlc2V0XG4iKTsKPiArCj4gKwlyZXR1cm4gUENJX0VSU19SRVNVTFRfUkVDT1ZFUkVE
+Owo+ICt9Cj4gKwo+ICtzdGF0aWMgdm9pZCBwY2lfaG9zdF9yZWNvdmVyX3Jvb3RfcG9ydChzdHJ1
+Y3QgcGNpX2RldiAqcG9ydCkKPiArewo+ICsjaWYgSVNfRU5BQkxFRChDT05GSUdfUENJRUFFUikK
+PiArCXBjaWVfZG9fcmVjb3ZlcnkocG9ydCwgcGNpX2NoYW5uZWxfaW9fZnJvemVuLCBwY2lfaG9z
+dF9yZXNldF9yb290X3BvcnQpOwo+ICsjZWxzZQo+ICsJcGNpX2hvc3RfcmVzZXRfcm9vdF9wb3J0
+KHBvcnQpOwoKU2luY2UgcGNpX2hvc3RfcmVzZXRfcm9vdF9wb3J0KCkgcmV0dXJucyBwY2lfZXJz
+X3Jlc3VsdF90LCBzaG91bGRuJ3Qgd2UgCmNoZWNrIHRoZSByZXN1bHQ/IElmIHRoZSByZXR1cm4g
+dmFsdWUgaXMgaW50ZW50aW9uYWxseSBpZ25vcmVkIGhlcmUsCm1heWJlIHBjaV9ob3N0X3Jlc2V0
+X3Jvb3RfcG9ydCBhY3R1YWxseSBkb2Vzbid0IG5lZWQgYSByZXR1cm4gdmFsdWUgYXQKYWxsPwoK
+PiArI2VuZGlmCj4gK30KPiArCj4gK3ZvaWQgcGNpX2hvc3RfaGFuZGxlX2xpbmtfZG93bihzdHJ1
+Y3QgcGNpX2RldiAqcG9ydCkKPiArewo+ICsJcGNpX2luZm8ocG9ydCwgIlJlY292ZXJpbmcgUm9v
+dCBQb3J0IGR1ZSB0byBMaW5rIERvd25cbiIpOwo+ICsJcGNpX2hvc3RfcmVjb3Zlcl9yb290X3Bv
+cnQocG9ydCk7Cj4gK30KPiArRVhQT1JUX1NZTUJPTF9HUEwocGNpX2hvc3RfaGFuZGxlX2xpbmtf
+ZG93bik7CgpUaGlzIGZ1bmN0aW9uIHNob3VsZG4ndCBiZSBjYWxsZWQgbGlrZSBpbiBpbnRlcnJ1
+cHQgY29udGV4dCBiZWNhdXNlIG9mCnRoZSBwY2lfbG9ja19yZXNjYW5fcmVtb3ZlKCkgYW5kIHBj
+aV9idXNfZXJyb3JfcmVzZXQoKTo6cGNpX3Nsb3RfbXV0ZXgsCmJ1dCBpdCdzIG5vdCBzbyBvYnZp
+b3VzIGZyb20gdGhlIEFQSSBuYW1lLiBJdCdzIHByb25lIGZvciBob3N0IGRyaXZlcnMKdG8gdXNl
+IGl0IGxpa2U6CgpyZWdpc3Rlcl9MRG5faXJxIC0+IGlycSBpc3IgLT4gcGNpX2hvc3RfaGFuZGxl
+X2xpbmtfZG93bigpCgpTbyBwZXJoYXBzIGFkZCBhIGNvbW1lbnQgYWJvdXQgaXQgd291bGQgYmUg
+YmV0dGVyLgoKPiArCj4gICBNT0RVTEVfREVTQ1JJUFRJT04oIkNvbW1vbiBsaWJyYXJ5IGZvciBQ
+Q0kgaG9zdCBjb250cm9sbGVyIGRyaXZlcnMiKTsKPiAgIE1PRFVMRV9MSUNFTlNFKCJHUEwgdjIi
+KTsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktaG9zdC1jb21tb24u
+aCBiL2RyaXZlcnMvcGNpL2NvbnRyb2xsZXIvcGNpLWhvc3QtY29tbW9uLmgKPiBpbmRleCBiNTA3
+NWQ0YmQ3ZWIuLmRkMTJkZDFhMWIyMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9jb250cm9s
+bGVyL3BjaS1ob3N0LWNvbW1vbi5oCj4gKysrIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2kt
+aG9zdC1jb21tb24uaAo+IEBAIC0xNyw2ICsxNyw3IEBAIGludCBwY2lfaG9zdF9jb21tb25faW5p
+dChzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2LAo+ICAgCQkJIHN0cnVjdCBwY2lfaG9zdF9i
+cmlkZ2UgKmJyaWRnZSwKPiAgIAkJCSBjb25zdCBzdHJ1Y3QgcGNpX2VjYW1fb3BzICpvcHMpOwo+
+ICAgdm9pZCBwY2lfaG9zdF9jb21tb25fcmVtb3ZlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
+ZXYpOwo+ICt2b2lkIHBjaV9ob3N0X2hhbmRsZV9saW5rX2Rvd24oc3RydWN0IHBjaV9kZXYgKnBv
+cnQpOwo+ICAgCj4gICBzdHJ1Y3QgcGNpX2NvbmZpZ193aW5kb3cgKnBjaV9ob3N0X2NvbW1vbl9l
+Y2FtX2NyZWF0ZShzdHJ1Y3QgZGV2aWNlICpkZXYsCj4gICAJc3RydWN0IHBjaV9ob3N0X2JyaWRn
+ZSAqYnJpZGdlLCBjb25zdCBzdHJ1Y3QgcGNpX2VjYW1fb3BzICpvcHMpOwo+IGRpZmYgLS1naXQg
+YS9kcml2ZXJzL3BjaS9wY2kuYyBiL2RyaXZlcnMvcGNpL3BjaS5jCj4gaW5kZXggNmYwOTA1N2Q4
+M2UwLi4xYjM3YmZlNmQwNzkgMTAwNjQ0Cj4gLS0tIGEvZHJpdmVycy9wY2kvcGNpLmMKPiArKysg
+Yi9kcml2ZXJzL3BjaS9wY2kuYwo+IEBAIC01NjUwLDYgKzU2NTAsNyBAQCBpbnQgcGNpX2J1c19l
+cnJvcl9yZXNldChzdHJ1Y3QgcGNpX2RldiAqYnJpZGdlKQo+ICAgCW11dGV4X3VubG9jaygmcGNp
+X3Nsb3RfbXV0ZXgpOwo+ICAgCXJldHVybiBwY2lfYnVzX3Jlc2V0KGJyaWRnZS0+c3Vib3JkaW5h
+dGUsIFBDSV9SRVNFVF9ET19SRVNFVCk7Cj4gICB9Cj4gK0VYUE9SVF9TWU1CT0xfR1BMKHBjaV9i
+dXNfZXJyb3JfcmVzZXQpOwo+ICAgCj4gICAvKioKPiAgICAqIHBjaV9wcm9iZV9yZXNldF9idXMg
+LSBwcm9iZSB3aGV0aGVyIGEgUENJIGJ1cyBjYW4gYmUgcmVzZXQKPiBkaWZmIC0tZ2l0IGEvZHJp
+dmVycy9wY2kvcGNpZS9lcnIuYyBiL2RyaXZlcnMvcGNpL3BjaWUvZXJyLmMKPiBpbmRleCAxM2I5
+ZDllYjcxNGYuLmQ3NzQwM2Q4ODU1YiAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BjaS9wY2llL2Vy
+ci5jCj4gKysrIGIvZHJpdmVycy9wY2kvcGNpZS9lcnIuYwo+IEBAIC0yOTIsMyArMjkyLDQgQEAg
+cGNpX2Vyc19yZXN1bHRfdCBwY2llX2RvX3JlY292ZXJ5KHN0cnVjdCBwY2lfZGV2ICpkZXYsCj4g
+ICAKPiAgIAlyZXR1cm4gc3RhdHVzOwo+ICAgfQo+ICtFWFBPUlRfU1lNQk9MX0dQTChwY2llX2Rv
+X3JlY292ZXJ5KTsKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
