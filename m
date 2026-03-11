@@ -4,70 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8432BFD88FA
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 05:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 390C1FCC9AA
+	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 05:13:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
+	Message-Id:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=4U1GoaYdNOQ3iTILiq3wjRihY37w/HMLlxPbdnF0T/U=; b=1QIOS9WNtFvUJq
-	SlkLQ1guywkpNsXiPvLS2qibCVD5qgZOrwZEOY9hplsbENM4/IXsisIAAtUmR4sWAPap+j/nIy99e
-	lVsAimrB8M5A6o0smKZCw6UIdUTDcoMuhaa+TVbUQlSxjsapKvJsj2GcbMpQUka7qEWLRxlHPnLgX
-	FX2wDZbGaJwA1Ioskq4F5pevgD+G7Is8QxSdYQXa2ZQ3P8HVyqfogmfrk8CTBDmsu2pCM18rYBHHA
-	s9wTxuPMNBhkms6yQfL8ORUdlYCbk1bprPx9g2eyhm+j1i9+zAKhJRwtvkciLPMPZVYcERC3aHDi7
-	wx+5MJAmd0Tu+QHBjP0Q==;
+	List-Owner; bh=sNXBy2tkxdpx8IRsoYq7iBxappMIUPzGk81Yab4ITA4=; b=xVO9In47aVDhGC
+	dcWdsI5GJS3Ee22a54y5ANq5tkOI6JuSd/x/CgM3IFyYtZHcqMH6VAUhjqZ5qHVaT/iPc2Kayf4kh
+	QfpdEbndeRKTRpRFLI/oyDLTVrblvKej0xtt3i0IERFx5vrTQcSG8huNL9zu4XnV5d5uHOZB7+Lc0
+	1QDl3cUOWkJtk5lwqQ5B4NNicyekUrrtBuMM3IwC4/ix3dPBcUgOfkCiX9GVWur/N1kL3sSfddSki
+	c0uwgkGptUOCmY/Vuln3v2oFF2ythmfMJYHOnX8Ct0Z3b2Y0L9XmMBk2qhBTn9lw6DA5AsuBAbhis
+	WoTlPydOUV4Jl8f7vq6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0BkL-0000000AkmM-1MIV;
-	Wed, 11 Mar 2026 05:04:37 +0000
+	id 1w0BtC-0000000AlDR-18Qc;
+	Wed, 11 Mar 2026 05:13:46 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0BkI-0000000AklK-25Ag;
-	Wed, 11 Mar 2026 05:04:35 +0000
+	id 1w0Bt8-0000000AlCg-2K69;
+	Wed, 11 Mar 2026 05:13:43 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5C9E1418C1;
-	Wed, 11 Mar 2026 05:04:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1AB3FC4CEF7;
-	Wed, 11 Mar 2026 05:04:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8E663440BC;
+	Wed, 11 Mar 2026 05:13:40 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0B290C4CEF7;
+	Wed, 11 Mar 2026 05:13:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773205473;
-	bh=fYyP3Zu9FaIM29drE15IUXdeAZe+0BRP7elc4vr6eGc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=nqL4eVSceLQkWZy2agF52UXOujfj7w7KrEuOhM4cOGhKUUw59uYN9x/5NytgiLzOR
-	 xyWmn0w8TWKhJQe9w/xoJxPfAi391pPUereu4K3uFM6v04Vy0yAg19kdVdcsk+Uybf
-	 M2Rb7gOuGWtqzdzH2HbGgZU1OqH3JIw2AyDnYgJBndJ7Du6iRkyELJwQFdExIOU4Ue
-	 Sm1dIkfSaGoEcCsDEFhczs0iyNeXbjA2koRhzqOeqDPtcX7Yl6WJiiPLg+Cqqkp7pf
-	 tKgqGLem++ya1KScueLxRfgME5XE5rfWQxjtKpmX42uZbg7S1f/VNDZtR75TxwvL13
-	 hssZiohpAg36Q==
-Date: Wed, 11 Mar 2026 10:34:17 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: manivannan.sadhasivam@oss.qualcomm.com, 
-	Bjorn Helgaas <bhelgaas@google.com>, Mahesh J Salgaonkar <mahesh@linux.ibm.com>, 
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	Niklas Cassel <cassel@kernel.org>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, 
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, Lukas Wunner <lukas@wunner.de>, 
-	Richard Zhu <hongxing.zhu@nxp.com>, Brian Norris <briannorris@chromium.org>, 
-	Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>
-Subject: Re: [PATCH v7 2/4] PCI: host-common: Add link down handling for Root
- Ports
-Message-ID: <vnsmjvtwaeticdxwz6u43dxnpi6duhc3r5motwnfer4l2bpqcm@noeme6lgq4jf>
-References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
- <20260310-pci-port-reset-v7-2-9dd00ccc25ab@oss.qualcomm.com>
- <2eb738fb-9dfe-1e88-6ea7-afdba9cb3d25@rock-chips.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <2eb738fb-9dfe-1e88-6ea7-afdba9cb3d25@rock-chips.com>
+	s=k20201202; t=1773206020;
+	bh=28by/08L5sQfVInnpnws13wBN8rSRzXkYuFZbXIDejE=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=fBD8jk+Az9XLzjQybetTno+W1ryvU+pJL+N7BKChPP4rEV9IYqgPEFF2K1MPy7V+I
+	 icuIUfL/Dg5/kgC+Hmy6YXnokVmu1zBps2v+geMH037tafu9KbfbPBt55PGuheVQJI
+	 z4qBbYgbztbgPszs8uOt3DWOo4BLsomiZb502AAVr8RGodlkXenJkrZoPQ7T4PM4Oz
+	 vrK0XegnvMjvVzXWSmVe1LK/JeGbm1OZeYQWd07yKlzuY4gn+/WuMImks+j3fST4ms
+	 212iplG27c78T1c+7zhxUp3BWeQ6jYmUF3g5aNFDkxAetR3pCSSickOn/0/x8U56nb
+	 McVwjAbkgnZAA==
+Date: Wed, 11 Mar 2026 14:13:32 +0900
+From: Masami Hiramatsu (Google) <mhiramat@kernel.org>
+To: Steven Rostedt <rostedt@goodmis.org>
+Cc: Philipp Hahn <phahn-oss@avm.de>, amd-gfx@lists.freedesktop.org,
+ apparmor@lists.ubuntu.com, bpf@vger.kernel.org, ceph-devel@vger.kernel.org,
+ cocci@inria.fr, dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org,
+ gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org,
+ intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev,
+ kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org,
+ linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org,
+ linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org,
+ linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org,
+ linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-leds@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-mips@vger.kernel.org, linux-mm@kvack.org,
+ linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org,
+ linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
+ linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
+ linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org,
+ linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+ linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
+ sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
+ tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, Masami
+ Hiramatsu <mhiramat@kernel.org>, Mathieu Desnoyers
+ <mathieu.desnoyers@efficios.com>
+Subject: Re: [PATCH 15/61] trace: Prefer IS_ERR_OR_NULL over manual NULL
+ check
+Message-Id: <20260311141332.b611237d36b61b2409e66cb3@kernel.org>
+In-Reply-To: <20260310100750.303af303@gandalf.local.home>
+References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+	<20260310-b4-is_err_or_null-v1-15-bd63b656022d@avm.de>
+	<20260310100750.303af303@gandalf.local.home>
+X-Mailer: Sylpheed 3.8.0beta1 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
+Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260310_220434_578819_42853EC4 
-X-CRM114-Status: GOOD (  40.08  )
+X-CRM114-CacheID: sfid-20260310_221342_659258_AFDC25EB 
+X-CRM114-Status: GOOD (  21.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,105 +95,103 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXIgMTEsIDIwMjYgYXQgMDg6NTU6MDFBTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
-Ogo+IEhpIE1hbmkKPiAKPiDlnKggMjAyNi8wMy8xMCDmmJ/mnJ/kuowgMjI6MDIsIE1hbml2YW5u
-YW4gU2FkaGFzaXZhbSB2aWEgQjQgUmVsYXkg5YaZ6YGTOgo+ID4gRnJvbTogTWFuaXZhbm5hbiBT
-YWRoYXNpdmFtIDxtYW5pQGtlcm5lbC5vcmc+Cj4gPiAKPiA+IFRoZSBQQ0kgbGluaywgd2hlbiBk
-b3duLCBuZWVkcyB0byBiZSByZWNvdmVyZWQgdG8gYnJpbmcgaXQgYmFjay4gQnV0IG9uCj4gPiBz
-b21lIHBsYXRmb3JtcywgdGhhdCBjYW5ub3QgYmUgZG9uZSBpbiBhIGdlbmVyaWMgd2F5IGFzIGxp
-bmsgcmVjb3ZlcnkKPiA+IHByb2NlZHVyZSBpcyBwbGF0Zm9ybSBzcGVjaWZpYy4gU28gYWRkIGEg
-bmV3IEFQSQo+ID4gcGNpX2hvc3RfaGFuZGxlX2xpbmtfZG93bigpIHRoYXQgY291bGQgYmUgY2Fs
-bGVkIGJ5IHRoZSBob3N0IGJyaWRnZSBkcml2ZXJzCj4gPiBmb3IgYSBzcGVjaWZpYyBSb290IFBv
-cnQgd2hlbiB0aGUgbGluayBnb2VzIGRvd24uCj4gPiAKPiA+IFRoZSBBUEkgYWNjZXB0cyB0aGUg
-J3BjaV9kZXYnIGNvcnJlc3BvbmRpbmcgdG8gdGhlIFJvb3QgUG9ydCB3aGljaCBvYnNlcnZlZAo+
-ID4gdGhlIGxpbmsgZG93biBldmVudC4gSWYgQ09ORklHX1BDSUVBRVIgaXMgZW5hYmxlZCwgdGhl
-IEFQSSBjYWxscwo+ID4gcGNpZV9kb19yZWNvdmVyeSgpIGZ1bmN0aW9uIHdpdGggJ3BjaV9jaGFu
-bmVsX2lvX2Zyb3plbicgYXMgdGhlIHN0YXRlLiBUaGlzCj4gPiB3aWxsIHJlc3VsdCBpbiB0aGUg
-ZXhlY3V0aW9uIG9mIHRoZSBBRVIgRmF0YWwgZXJyb3IgaGFuZGxpbmcgY29kZS4gU2luY2UKPiA+
-IHRoZSBsaW5rIGRvd24gcmVjb3ZlcnkgaXMgcHJldHR5IG11Y2ggdGhlIHNhbWUgYXMgQUVSIEZh
-dGFsIGVycm9yIGhhbmRsaW5nLAo+ID4gcGNpZV9kb19yZWNvdmVyeSgpIGhlbHBlciBpcyByZXVz
-ZWQgaGVyZS4gRmlyc3QsIHRoZSBBRVIgZXJyb3JfZGV0ZWN0ZWQoKQo+ID4gY2FsbGJhY2sgd2ls
-bCBiZSB0cmlnZ2VyZWQgZm9yIHRoZSBicmlkZ2UgYW5kIHRoZW4gZm9yIHRoZSBkb3duc3RyZWFt
-Cj4gPiBkZXZpY2VzLiBGaW5hbGx5LCBwY2lfaG9zdF9yZXNldF9yb290X3BvcnQoKSB3aWxsIGJl
-IGNhbGxlZCBmb3IgdGhlIFJvb3QKPiA+IFBvcnQsIHdoaWNoIHdpbGwgcmVzZXQgdGhlIFJvb3Qg
-UG9ydCB1c2luZyAncmVzZXRfcm9vdF9wb3J0JyBjYWxsYmFjayB0bwo+ID4gcmVjb3ZlciB0aGUg
-bGluay4gT25jZSB0aGF0J3MgZG9uZSwgcmVzdW1lIG1lc3NhZ2Ugd2lsbCBiZSBicm9hZGNhc3Rl
-ZCB0bwo+ID4gdGhlIGJyaWRnZSBhbmQgdGhlIGRvd25zdHJlYW0gZGV2aWNlcywgaW5kaWNhdGlu
-ZyBzdWNjZXNzZnVsIGxpbmsgcmVjb3ZlcnkuCj4gPiAKPiA+IEJ1dCBpZiBDT05GSUdfUENJRUFF
-UiBpcyBub3QgZW5hYmxlZCBpbiB0aGUga2VybmVsLCBvbmx5Cj4gPiBwY2lfaG9zdF9yZXNldF9y
-b290X3BvcnQoKSBBUEkgd2lsbCBiZSBjYWxsZWQsIHdoaWNoIHdpbGwgaW4gdHVybiBjYWxsCj4g
-PiBwY2lfYnVzX2Vycm9yX3Jlc2V0KCkgdG8ganVzdCByZXNldCB0aGUgUm9vdCBQb3J0IGFzIHRo
-ZXJlIGlzIG5vIHdheSB3ZQo+ID4gY291bGQgaW5mb3JtIHRoZSBkcml2ZXJzIGFib3V0IGxpbmsg
-cmVjb3ZlcnkuCj4gPiAKPiA+IFNpZ25lZC1vZmYtYnk6IE1hbml2YW5uYW4gU2FkaGFzaXZhbSA8
-bWFuaXZhbm5hbi5zYWRoYXNpdmFtQGxpbmFyby5vcmc+Cj4gPiBTaWduZWQtb2ZmLWJ5OiBNYW5p
-dmFubmFuIFNhZGhhc2l2YW0gPG1hbml2YW5uYW4uc2FkaGFzaXZhbUBvc3MucXVhbGNvbW0uY29t
-Pgo+ID4gVGVzdGVkLWJ5OiBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4K
-PiA+IFRlc3RlZC1ieTogS3Jpc2huYSBDaGFpdGFueWEgQ2h1bmRydSA8a3Jpc2huYS5jaHVuZHJ1
-QG9zcy5xdWFsY29tbS5jb20+Cj4gPiBUZXN0ZWQtYnk6IFJpY2hhcmQgWmh1IDxob25neGluZy56
-aHVAbnhwLmNvbT4KPiA+IFJldmlld2VkLWJ5OiBGcmFuayBMaSA8RnJhbmsuTGlAbnhwLmNvbT4K
-PiA+IC0tLQo+ID4gICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1ob3N0LWNvbW1vbi5jIHwg
-MzUgKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysKPiA+ICAgZHJpdmVycy9wY2kvY29u
-dHJvbGxlci9wY2ktaG9zdC1jb21tb24uaCB8ICAxICsKPiA+ICAgZHJpdmVycy9wY2kvcGNpLmMg
-ICAgICAgICAgICAgICAgICAgICAgICB8ICAxICsKPiA+ICAgZHJpdmVycy9wY2kvcGNpZS9lcnIu
-YyAgICAgICAgICAgICAgICAgICB8ICAxICsKPiA+ICAgNCBmaWxlcyBjaGFuZ2VkLCAzOCBpbnNl
-cnRpb25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9kcml2ZXJzL3BjaS9jb250cm9sbGVyL3Bj
-aS1ob3N0LWNvbW1vbi5jIGIvZHJpdmVycy9wY2kvY29udHJvbGxlci9wY2ktaG9zdC1jb21tb24u
-Ywo+ID4gaW5kZXggZDYyNThjMWNmZmU1Li4xNWViZmY4YTU0MmEgMTAwNjQ0Cj4gPiAtLS0gYS9k
-cml2ZXJzL3BjaS9jb250cm9sbGVyL3BjaS1ob3N0LWNvbW1vbi5jCj4gPiArKysgYi9kcml2ZXJz
-L3BjaS9jb250cm9sbGVyL3BjaS1ob3N0LWNvbW1vbi5jCj4gPiBAQCAtMTIsOSArMTIsMTEgQEAK
-PiA+ICAgI2luY2x1ZGUgPGxpbnV4L29mLmg+Cj4gPiAgICNpbmNsdWRlIDxsaW51eC9vZl9hZGRy
-ZXNzLmg+Cj4gPiAgICNpbmNsdWRlIDxsaW51eC9vZl9wY2kuaD4KPiA+ICsjaW5jbHVkZSA8bGlu
-dXgvcGNpLmg+Cj4gPiAgICNpbmNsdWRlIDxsaW51eC9wY2ktZWNhbS5oPgo+ID4gICAjaW5jbHVk
-ZSA8bGludXgvcGxhdGZvcm1fZGV2aWNlLmg+Cj4gPiArI2luY2x1ZGUgIi4uL3BjaS5oIgo+ID4g
-ICAjaW5jbHVkZSAicGNpLWhvc3QtY29tbW9uLmgiCj4gPiAgIHN0YXRpYyB2b2lkIGdlbl9wY2lf
-dW5tYXBfY2ZnKHZvaWQgKnB0cikKPiA+IEBAIC0xMDYsNSArMTA4LDM4IEBAIHZvaWQgcGNpX2hv
-c3RfY29tbW9uX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ID4gICB9Cj4g
-PiAgIEVYUE9SVF9TWU1CT0xfR1BMKHBjaV9ob3N0X2NvbW1vbl9yZW1vdmUpOwo+ID4gK3N0YXRp
-YyBwY2lfZXJzX3Jlc3VsdF90IHBjaV9ob3N0X3Jlc2V0X3Jvb3RfcG9ydChzdHJ1Y3QgcGNpX2Rl
-diAqZGV2KQo+ID4gK3sKPiA+ICsJaW50IHJldDsKPiA+ICsKPiA+ICsJcGNpX2xvY2tfcmVzY2Fu
-X3JlbW92ZSgpOwo+ID4gKwlyZXQgPSBwY2lfYnVzX2Vycm9yX3Jlc2V0KGRldik7Cj4gPiArCXBj
-aV91bmxvY2tfcmVzY2FuX3JlbW92ZSgpOwo+ID4gKwlpZiAocmV0KSB7Cj4gPiArCQlwY2lfZXJy
-KGRldiwgIkZhaWxlZCB0byByZXNldCBSb290IFBvcnQ6ICVkXG4iLCByZXQpOwo+ID4gKwkJcmV0
-dXJuIFBDSV9FUlNfUkVTVUxUX0RJU0NPTk5FQ1Q7Cj4gPiArCX0KPiA+ICsKPiA+ICsJcGNpX2lu
-Zm8oZGV2LCAiUm9vdCBQb3J0IGhhcyBiZWVuIHJlc2V0XG4iKTsKPiA+ICsKPiA+ICsJcmV0dXJu
-IFBDSV9FUlNfUkVTVUxUX1JFQ09WRVJFRDsKPiA+ICt9Cj4gPiArCj4gPiArc3RhdGljIHZvaWQg
-cGNpX2hvc3RfcmVjb3Zlcl9yb290X3BvcnQoc3RydWN0IHBjaV9kZXYgKnBvcnQpCj4gPiArewo+
-ID4gKyNpZiBJU19FTkFCTEVEKENPTkZJR19QQ0lFQUVSKQo+ID4gKwlwY2llX2RvX3JlY292ZXJ5
-KHBvcnQsIHBjaV9jaGFubmVsX2lvX2Zyb3plbiwgcGNpX2hvc3RfcmVzZXRfcm9vdF9wb3J0KTsK
-PiA+ICsjZWxzZQo+ID4gKwlwY2lfaG9zdF9yZXNldF9yb290X3BvcnQocG9ydCk7Cj4gCj4gU2lu
-Y2UgcGNpX2hvc3RfcmVzZXRfcm9vdF9wb3J0KCkgcmV0dXJucyBwY2lfZXJzX3Jlc3VsdF90LCBz
-aG91bGRuJ3Qgd2UKPiBjaGVjayB0aGUgcmVzdWx0PyBJZiB0aGUgcmV0dXJuIHZhbHVlIGlzIGlu
-dGVudGlvbmFsbHkgaWdub3JlZCBoZXJlLAo+IG1heWJlIHBjaV9ob3N0X3Jlc2V0X3Jvb3RfcG9y
-dCBhY3R1YWxseSBkb2Vzbid0IG5lZWQgYSByZXR1cm4gdmFsdWUgYXQKPiBhbGw/Cj4gCgpUaGUg
-cmV0dXJuIHZhbHVlIGlzIG1vc3RseSBmb3IgcGNpZV9kb19yZWNvdmVyeSgpIHdoaWNoIGl0ZXJh
-dGVzIHRocm91Z2ggdGhlCnN1Ym9yZGluYXRlIGRldmljZXMgYW5kIGNhbGxzIHBjaV9ob3N0X3Jl
-c2V0X3Jvb3RfcG9ydCgpLiBJdCBhbHNvIG1ha2VzIHVzZSBvZgp0aGUgcmV0dXJuIHZhbHVlLCBz
-byB3ZSBjYW5ub3QgbWFrZSBpdCB2b2lkLgoKVGhlIHJlYXNvbiB3aHkgSSBza2lwcGVkIHRoZSBy
-ZXR1cm4gdmFsdWUgaW4gcGNpX2hvc3RfaGFuZGxlX2xpbmtfZG93bigpIGlzCnRoYXQsIHdlIGNh
-bm90IGRvIG11Y2ggaW4gdGhlIGNhc2Ugb2YgZmFpbHVyZSBvdGhlciB0aGFuIHJlcG9ydGluZyB0
-aGUgZmFpbHVyZSwKd2hpY2ggaXMgYWxyZWFkeSB0YWtlbiBjYXJlIGluIHBjaV9ob3N0X3Jlc2V0
-X3Jvb3RfcG9ydCgpLgoKPiA+ICsjZW5kaWYKPiA+ICt9Cj4gPiArCj4gPiArdm9pZCBwY2lfaG9z
-dF9oYW5kbGVfbGlua19kb3duKHN0cnVjdCBwY2lfZGV2ICpwb3J0KQo+ID4gK3sKPiA+ICsJcGNp
-X2luZm8ocG9ydCwgIlJlY292ZXJpbmcgUm9vdCBQb3J0IGR1ZSB0byBMaW5rIERvd25cbiIpOwo+
-ID4gKwlwY2lfaG9zdF9yZWNvdmVyX3Jvb3RfcG9ydChwb3J0KTsKPiA+ICt9Cj4gPiArRVhQT1JU
-X1NZTUJPTF9HUEwocGNpX2hvc3RfaGFuZGxlX2xpbmtfZG93bik7Cj4gCj4gVGhpcyBmdW5jdGlv
-biBzaG91bGRuJ3QgYmUgY2FsbGVkIGxpa2UgaW4gaW50ZXJydXB0IGNvbnRleHQgYmVjYXVzZSBv
-Zgo+IHRoZSBwY2lfbG9ja19yZXNjYW5fcmVtb3ZlKCkgYW5kIHBjaV9idXNfZXJyb3JfcmVzZXQo
-KTo6cGNpX3Nsb3RfbXV0ZXgsCj4gYnV0IGl0J3Mgbm90IHNvIG9idmlvdXMgZnJvbSB0aGUgQVBJ
-IG5hbWUuIEl0J3MgcHJvbmUgZm9yIGhvc3QgZHJpdmVycwo+IHRvIHVzZSBpdCBsaWtlOgo+IAo+
-IHJlZ2lzdGVyX0xEbl9pcnEgLT4gaXJxIGlzciAtPiBwY2lfaG9zdF9oYW5kbGVfbGlua19kb3du
-KCkKPiAKPiBTbyBwZXJoYXBzIGFkZCBhIGNvbW1lbnQgYWJvdXQgaXQgd291bGQgYmUgYmV0dGVy
-Lgo+IAoKWWVzLCBJIGFncmVlLiBJIG1lbnRpb25lZCBpbiB0aGUgY292ZXIgbGV0dGVyIHRoYXQg
-dGhpcyBBUEkgc2hvdWxkIGJlIGNhbGxlZApmcm9tIGEgdGhyZWFkZWQgSVJRIGhhbmRsZXIsIGJ1
-dCBpdCBzaG91bGQgYmUgbWVudGlvbmVkIGluIHRoZSBBUEkgZGVzY3JpcHRpb24KdG9vLiBJIHdp
-bGwgYWRkIGl0IGluIG5leHQgdmVyc2lvbiBvciBhbW1lbmQgaXQgd2hpbGUgYXBwbHlpbmcuCgot
-IE1hbmkKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+4K6a4K6/4K61
-4K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+On Tue, 10 Mar 2026 10:07:50 -0400
+Steven Rostedt <rostedt@goodmis.org> wrote:
+
+> On Tue, 10 Mar 2026 12:48:41 +0100
+> Philipp Hahn <phahn-oss@avm.de> wrote:
+> 
+> > Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
+> > check.
+> 
+> Why?
+> 
+> > 
+> > Change generated with coccinelle.
+> > 
+> > To: Steven Rostedt <rostedt@goodmis.org>
+> > To: Masami Hiramatsu <mhiramat@kernel.org>
+> > To: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+> > Cc: linux-kernel@vger.kernel.org
+> > Cc: linux-trace-kernel@vger.kernel.org
+> > Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
+> > ---
+> >  kernel/trace/fprobe.c                | 2 +-
+> >  kernel/trace/kprobe_event_gen_test.c | 2 +-
+> >  kernel/trace/trace_events_hist.c     | 2 +-
+> >  3 files changed, 3 insertions(+), 3 deletions(-)
+> > 
+> > diff --git a/kernel/trace/fprobe.c b/kernel/trace/fprobe.c
+> > index dcadf1d23b8a31f571392d0c49cbd22df1716b4f..a94ce810d83b90f55d1178a9bd29c78fd068df4c 100644
+> > --- a/kernel/trace/fprobe.c
+> > +++ b/kernel/trace/fprobe.c
+> > @@ -607,7 +607,7 @@ static int fprobe_module_callback(struct notifier_block *nb,
+> >  	do {
+> >  		rhashtable_walk_start(&iter);
+> >  
+> > -		while ((node = rhashtable_walk_next(&iter)) && !IS_ERR(node))
+> > +		while (!IS_ERR_OR_NULL((node = rhashtable_walk_next(&iter))))
+> 
+> Ug, No!
+> 
+> That looks so much worse than the original.
+
+Hmm, now IS_ERR_OR_NULL() is an inline function, so it is safe.
+But if you want to use IS_ERR_OR_NULL() here, it will be better something like
+
+node = rhashtable_walk_next(&iter);
+while (!IS_ERR_OR_NULL(node)) {
+	fprobe_remove_node_in_module(mod, node, &alist);
+	node = rhashtable_walk_next(&iter);
+}
+
+Thanks,
+
+> 
+> -- Steve
+> 
+> >  			fprobe_remove_node_in_module(mod, node, &alist);
+> >  
+> >  		rhashtable_walk_stop(&iter);
+> > diff --git a/kernel/trace/kprobe_event_gen_test.c b/kernel/trace/kprobe_event_gen_test.c
+> > index 5a4b722b50451bfdee42769a6d3be39c055690d1..a1735ca273f0b756aa1fcfcdab30ddad9bc51c5f 100644
+> > --- a/kernel/trace/kprobe_event_gen_test.c
+> > +++ b/kernel/trace/kprobe_event_gen_test.c
+> > @@ -75,7 +75,7 @@ static struct trace_event_file *gen_kretprobe_test;
+> >  
+> >  static bool trace_event_file_is_valid(struct trace_event_file *input)
+> >  {
+> > -	return input && !IS_ERR(input);
+> > +	return !IS_ERR_OR_NULL(input);
+> >  }
+> >  
+> >  /*
+> > diff --git a/kernel/trace/trace_events_hist.c b/kernel/trace/trace_events_hist.c
+> > index 73ea180cad555898693e92ee397a1c9493c7c167..59df215e1dfd9349eca1c0823ed709ec7285f766 100644
+> > --- a/kernel/trace/trace_events_hist.c
+> > +++ b/kernel/trace/trace_events_hist.c
+> > @@ -3973,7 +3973,7 @@ trace_action_create_field_var(struct hist_trigger_data *hist_data,
+> >  	 */
+> >  	field_var = create_target_field_var(hist_data, system, event, var);
+> >  
+> > -	if (field_var && !IS_ERR(field_var)) {
+> > +	if (!IS_ERR_OR_NULL(field_var)) {
+> >  		save_field_var(hist_data, field_var);
+> >  		hist_field = field_var->var;
+> >  	} else {
+> > 
+> 
+
+
+-- 
+Masami Hiramatsu (Google) <mhiramat@kernel.org>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
