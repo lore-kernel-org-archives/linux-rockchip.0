@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC9F103E2E6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 11 Mar 2026 21:09:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7366E103E2F8
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 00:52:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=z5vOtTFmvfCf3JeXtIjriLhaAB5vSjFJlJlfO6X2kGA=; b=aIXUfwOjmsXKX3
-	NymY3hW+PidQNbDQvM/YoHDIO677h5OY938kz8SLVzYUhs/E6KHqFEF8M1F5Te3vXWz5RUAjauwwp
-	3K9x5w7nwGl3REa4XTylC3ZjuaV3dCB+0P+tN/TiBqeOxTPwRjVdeXn1h3bV+ZgtJ+F4IfXQUIHTJ
-	Pv53MiBL+7Wnzs+ASBKz+DXyx0OdE3W+uipEB8MV10gbhz/2Y7PH7WLuyqeh5sXwh6BMfWG9zoQ/M
-	iKjhk4pDfAeZsnFY8Oue2p3PNfvs9veajjjkLls/KqeNsVaNLtA0zPMKeX7YaRMXabW+3P+Cq4TAx
-	Q9HsdyjAtBUQ4uFQTLlQ==;
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=hPegBgZdOBN4HXRdaXnyBhr+QFCuV+TL1h+mfMpwHGU=; b=JXQGC0kvHN+q5d
+	F1gN5yVnDrZhVO1+pStncJ4bjOUGOgRLD58volyxTu1jPqxttI9cc8pRrLlttEZVw9a5w1il7kuRK
+	Jz083zE3pZWRcZMz5V92cSmAGcpn+KTpYJ+5gBmelcFWGR2SFHKXAHRMNhgZeNBhXav3DWacs/JAx
+	weqHgjWJS6EnfrYNEmw1vm/iju/R8iBFLPRlhTZmQkzNJdNq9lbodMu41wpU2C0Tj9L7ZoRmxJ8GM
+	m463HjR8/AtjnRI+Lcfn6TVkZ0spxlFJuLrEa5EysZirsNJYtGjfapW8X5Zn7TXjQD2QdTjQL+qtC
+	QgJ3P9CEsvcBAmJU1Xvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0Qo4-0000000CX9j-2RVZ;
-	Wed, 11 Mar 2026 21:09:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w0UHZ-0000000CyE3-3KiT;
+	Thu, 12 Mar 2026 00:52:09 +0000
+Received: from mail-m15598.qiye.163.com ([101.71.155.98])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0Qo2-0000000CX9I-3Z8V;
-	Wed, 11 Mar 2026 21:09:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id ADE9260054;
-	Wed, 11 Mar 2026 21:09:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3ED2FC4CEF7;
-	Wed, 11 Mar 2026 21:09:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773263365;
-	bh=0rXaMvGNi4+OvPnGl2fgoLlfPW/6GtuSV3FJJcwDS9M=;
-	h=Date:Subject:Cc:To:From:References:In-Reply-To:From;
-	b=nTY9OMOC9F7kBpERi6z30FTuaZPxVl5Fv76LmjUo5otKD3FEeRahGXzKjzBHLciW/
-	 vsFHQE05z41uqlhKhSf82H6e/E4Nzu9yGSGunIZ9o4u6pDNHpQYJyKgpZB6+0m5s1D
-	 cAewcAljEd7Hj7kuJulzboI2aN1KxsQbjjxPrm3U6Pu/bOyjMJ6EBuAu7Zg/qeb4B0
-	 f6ToSmUPcZdepsHbptQjimEa08e1m8i4KaHUqNpNAR6l4j2zh0wNXnIpDSkMMMCK27
-	 3T5aLWdjgAYUE16y8cGqZfrCI7WYozbJwRtjgPtBEKCMJrNi+E6cOP74wmmn8fZt4t
-	 s51IXrEVJ8MCw==
-Mime-Version: 1.0
-Date: Wed, 11 Mar 2026 22:09:19 +0100
-Message-Id: <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-Cc: "Robin Murphy" <robin.murphy@arm.com>, "Manivannan Sadhasivam"
- <manivannan.sadhasivam@oss.qualcomm.com>, "Lorenzo Pieralisi"
- <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
- <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas"
- <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Niklas Cassel"
- <cassel@kernel.org>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Hans Zhang"
- <18255117159@163.com>, "Nicolas Frattaroli"
- <nicolas.frattaroli@collabora.com>, "Wilfred Mallawa"
- <wilfred.mallawa@wdc.com>, <linux-pci@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Anand Moon" <linux.amoon@gmail.com>, "Grimmauld" <grimmauld@grimmauld.de>,
- "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, <driver-core@lists.linux.dev>, "Lukas Wunner"
- <lukas@wunner.de>
-To: "Manivannan Sadhasivam" <mani@kernel.org>
-From: "Danilo Krummrich" <dakr@kernel.org>
-References: <20260226101032.1042-1-linux.amoon@gmail.com>
- <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
- <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
- <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
- <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
- <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
- <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org>
- <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
-In-Reply-To: <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
+	id 1w0UHW-0000000CyDg-3glQ
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Mar 2026 00:52:08 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 369efffad;
+	Thu, 12 Mar 2026 08:51:57 +0800 (GMT+08:00)
+From: Shawn Lin <shawn.lin@rock-chips.com>
+To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K . Petersen" <martin.petersen@oracle.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-scsi@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Shawn Lin <shawn.lin@rock-chips.com>
+Subject: [PATCH v2] scsi: ufs: drockchip,rk3576-ufshc: dt-bindings: Add new mphy reset item
+Date: Thu, 12 Mar 2026 08:51:47 +0800
+Message-Id: <1773276707-24857-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9cdf875eb709cckunmc99ce7d957335
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQklJTVZOTUwfTUNNSkMYTxpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=Pa3gm9LPU8atHGfwjM6pFp1/paSeulsxByOX5OBJ7JhU2lpd1sLpbm+Gmkx8B3eq4fd3n4ZT2QiDAsl97YeCpYqv0RoxAVYZiQ2hjHFOkLomSMMer2/vN9ie+c9gK6cM+PXEO5xIFipTK3FGTJSWCpeWTCl3Yh+npTvcYYYP+Uo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=1CdTSXSgbu7pjk01TaZ9yRuCgv2po2xbhjwyMUCPEKg=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260311_175207_435575_6D458272 
+X-CRM114-Status: GOOD (  11.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,74 +69,77 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed Mar 11, 2026 at 1:28 PM CET, Manivannan Sadhasivam wrote:
-> On Wed, Mar 11, 2026 at 12:46:03PM +0100, Danilo Krummrich wrote:
->> On Wed Mar 11, 2026 at 6:24 AM CET, Manivannan Sadhasivam wrote:
->> > I have a contrary view here. If just a single driver or lib doesn't handle async
->> > probe, it cannot just force other drivers to not take the advantage of async
->> > probe. As I said above, enabling async probe easily saves a few hunderd ms or
->> > even more if there are more than one Root Port or Root Complex in an SoC.
->> 
->> Then the driver or lib has to be fixed / improved first or the driver core has
->> to be enabled to deal with a case where PROBE_FORCE_SYNCHRONOUS is requested
->> from an async path, etc.
->> 
->> In any case, applying the patch and breaking things (knowingly?) doesn't seem
->> like the correct approach.
->> 
->> > I strongly agree with you here that the underlying issue should be fixed. But
->> > the real impact to end users is not this splat, but not having the boot time
->> > optimization that this patch brings in. As an end user, one would want their
->> > systems to boot quickly and they wouldn't bother much about a harmless warning
->> > splat appearing in the dmesg log.
->> 
->> You mean quickly booting into a "harmless" potential deadlock condition the
->> warning splat tries to make people aware of? :)
->> 
->
-> Hmm, I overlooked the built-as-module part where the deadlock could be possible
-> as indicated by the comment about the WARN_ON_ONCE().
->
-> But what is the path forward here? Do you want the phylib to fix the
-> request_module() call or fix the driver core instead?
+Add the mphy reset property to the devicetree bindings for the Rockchip
+RK3576 UFS host controller. The mphy reset signal is used to reset the
+physical adapter. Resetting other components while leaving the mphy
+unreset may occasionally prevent the UFS controller from successfully
+linking up with the device.
 
-Here are a few thoughts.
+This addresses an intermittent hardware bug where the UFS link fails to
+establish under specific timing conditions with certain chips. While
+difficult to reproduce initially, this issue was consistently observed in
+downstream testing and requires explicit mphy reset control for full
+stability.
 
-In general, I think the best would be to get rid of the (affected)
-PROBE_FORCE_SYNCHRONOUS cases.
+Although this change increases the maxItems for resets and adds a new
+entry (which technically alters the binding ABI), it does not break
+compatibility for existing Linux systems. The driver uses
+devm_reset_control_array_get_exclusive() to manage resets, allowing it
+to function correctly with both older Device Trees (without the mphy
+entry) and newer ones.
 
-Now, I guess this can be pretty hard for a PCI controller driver, as you can't
-really predict what ends up being probed from you async context, i.e. it could
-even be some other bus controller and things could even propagate further.
+Fixes: d90e92023771 ("scsi: ufs: dt-bindings: Document Rockchip UFS host controller")
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
 
-Not sure how big of a deal it is in practice though, there are not a lot of
-PROBE_FORCE_SYNCHRONOUS drivers (left), but note that specifying neither
-PROBE_FORCE_SYNCHRONOUS nor PROBE_PREFER_ASYNCHRONOUS currently results in
-synchronous by default.
+Changes in v2:
+- update commit msg to indicate Linux is not affected and describe the
+  what is happended(Krzysztof)
 
-(Also, quite some other PCI controller drivers do set PROBE_PREFER_ASYNCHRONOUS
-and apparently got lucky with it.)
+ Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
-From a driver-core perspective I think we're rather limited on what we can do;
-we are already in async context at this point and can't magically go back to
-initcall context.
+diff --git a/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml b/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
+index c7d17cf4..e738153 100644
+--- a/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
++++ b/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
+@@ -41,7 +41,7 @@ properties:
+     maxItems: 1
+ 
+   resets:
+-    maxItems: 4
++    maxItems: 5
+ 
+   reset-names:
+     items:
+@@ -49,6 +49,7 @@ properties:
+       - const: sys
+       - const: ufs
+       - const: grf
++      - const: mphy
+ 
+   reset-gpios:
+     maxItems: 1
+@@ -98,8 +99,8 @@ examples:
+             interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH>;
+             power-domains = <&power RK3576_PD_USB>;
+             resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>, <&cru SRST_A_UFS>,
+-                     <&cru SRST_P_UFS_GRF>;
+-            reset-names = "biu", "sys", "ufs", "grf";
++                     <&cru SRST_P_UFS_GRF>, <&cru SRST_MPHY_INIT>;
++            reset-names = "biu", "sys", "ufs", "grf", "mphy";
+             reset-gpios = <&gpio4 RK_PD0 GPIO_ACTIVE_LOW>;
+         };
+     };
+-- 
+2.7.4
 
-So, the only thing I can think of is to kick off work on a workqueue, which in
-the end would be the same as the deferred probe handling.
-
-Another alternative would be to let the subsystem handle such cases, which in
-this case would probably mean to handle the current_is_async() case in
-pci_host_probe() or pci_bus_add_devices().
-
-On the other hand, this would probably end up to be a subsystem specific
-implementation of "kick of work on a workqueue".
-
-> I can drop this patch in the meantime. But holding this prolong wouldn't help.
 
 _______________________________________________
 Linux-rockchip mailing list
