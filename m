@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4800F106ACE3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 20:02:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B590F106ACE3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 20:02:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ddKdzmsaUSBZ7dh2gTSZ5vNBfJVZmmLR54ELcaGhOIE=; b=jsz9rR9uOI54A6
-	VfMxrxDsx3kZ5hJLDIE2lIeNdTI3faKp9ZQTNNT/N5RrgVBy5LhAMmGsHMTV9n3gvFF8y82Mg081o
-	LYSN2SPMiNg6tCodzMn3Y6XkQ0JtVayMI4ViXoc3b5zNOJZf/TjiOw3rfNF+Oi4zNMWANNdJlajND
-	AnxaK2xW14YczQVn+03ak8VHxHa7hXpmYv13EjxbRafckhtON7ByhKjhpV4nMf34H1vTX0s8caVAH
-	b3uLIBUfiUWtyyEkq3k2VwAIXSiro3lylLZKZQ0pPUgoIfptKFzp52hmTzNiOt3uwgyf0WIPVtnqV
-	kkbVKKE315J1bjvMJmHQ==;
+	List-Owner; bh=kPndTeF5H95Vl2YGsa4RHtB9WiNr5BpZUFGMFFvoXAI=; b=Wb91VtpYtij6oF
+	XHWynek0lcSHgfZpqn+k0zdesgo2pO6io6z4PjBLXSKqmfImVY07tpnMZfr4CO/NzFKp/rv8uhWYF
+	eAr/E3mHjzT9cVeRWbbDzdl/F8cYnM/CKcv3NGwxNSsoB2sZVfBZPULzNuLZKo4NlWDOPii0JoyY9
+	RQkGQNRSMaVYkvgsVdisPse65dJZHE3RU+D+L4TmDH6sfCCP+rzsfWpJwztg7JtTVkt3h7/zpZz6o
+	zlWxNmH9Oj6ekcZLEkqt1e+WWqkZLhdquy/C/FBFVPIGwqfbHacGYkytbHxU3+ri4ieeX1I+Yadn/
+	SO6fnKi6izSphCc1Z5LA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0mEX-0000000FCXF-1VqO;
-	Thu, 12 Mar 2026 20:02:13 +0000
+	id 1w0mEd-0000000FCas-2qaM;
+	Thu, 12 Mar 2026 20:02:19 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0mEU-0000000FCVg-3dbL;
-	Thu, 12 Mar 2026 20:02:11 +0000
+	id 1w0mEc-0000000FCZF-17vq
+	for linux-rockchip@lists.infradead.org;
+	Thu, 12 Mar 2026 20:02:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=dEWf7d7u2qtY1h7kt2ogwyBl8RlAkVQjKkU0vbu9Csw=; b=GObeaW55IjuMyneDDClwv1kUfM
-	tApPzylWbRw4/VYHK8NuDJusvOMQIr+WqWCFHmgCJzRbcufM6IGbt73W1pmB5Z+eoZuPFyy2hmHIF
-	/mYYGuOkj0Q/sPRkjDRQNjjr73dN+FLK2RPfhpwvfCRe1VV/aEo0/S7KTtJgEjPPIzXJGMiaU+Vv3
-	C+8o4wi5GQ3hIoFTu8OiGmhZkgfjJh542HYyYlwIApANEDlxZ6zKAXExlXUbePy3r67GQr1E9LHCM
-	GuOqbCKY2DRYV8zMhBFMlq7Cjo0DZNz/bD9/gBkQ24Q7zfjIcbnmx3zxCKqdm10zIuWAz6jvJRAGL
-	xDQLm48A==;
+	bh=xm0P/ms1Jd/s/4uaMaEbhok052vUZSHlfFiirTn6RwI=; b=EpszRhWytKItDKfj0vQLAP/vh7
+	8saiRJPec/UTJVr1PjyahuPYSz1hOvCBWl//LPWnecK8MXoFWnKs8f4PG4fW9GXX/W3K4uGKJpeRZ
+	jBWfwLRuMvrVPOer38dXL2K0h+FND8Id+mi22taJesRfBT1VbcAIoAD9iIvCilGer3wYsuCtHwyio
+	DH3DQmvHmpdQwKHC3yzxIOxRCZiBK2za8W/ccC1OueDPa3AXvqzaqdJ14Dqxqfzi61TI0ZZ6Xp5Y7
+	MxQNVtsAxWJBW+3LFBtNrEua3edjKB2pF4BtW5XW+G34PFoUy5j5/37tGqZe5VMwYNgIM6THwsrqA
+	rPCGL4eg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Fabio Estevam <festevam@gmail.com>
+To: devicetree@vger.kernel.org,
+	Chris Morgan <macroalpha82@gmail.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Fabio Estevam <festevam@nabladev.com>
-Subject: Re: [PATCH] ARM: dts: rockchip: Fix LED node names on rk3288-phycore-rdk
-Date: Thu, 12 Mar 2026 21:00:57 +0100
-Message-ID: <177334565380.2520391.18416759606426475557.b4-ty@sntech.de>
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: Correct Fan Supply for Gameforce Ace
+Date: Thu, 12 Mar 2026 21:00:58 +0100
+Message-ID: <177334565394.2520391.6625227879888773579.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260311135604.21634-1-festevam@gmail.com>
-References: <20260311135604.21634-1-festevam@gmail.com>
+In-Reply-To: <20260310134648.550006-1-macroalpha82@gmail.com>
+References: <20260310134648.550006-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_130210_906065_EFDCD05B 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260312_130218_309113_3DBF89FA 
+X-CRM114-Status: UNSURE (   8.69  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,21 +73,18 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 11 Mar 2026 10:56:04 -0300, Fabio Estevam wrote:
-> According to nxp,pca953x.yaml, the pattern for the led names should be:
->  "^led-[0-9a-z]+$".
+On Tue, 10 Mar 2026 08:46:48 -0500, Chris Morgan wrote:
+> Correct the regulator providing power to the PWM controlled fan.
+> Without this fix the fan only runs when the audio path is playing
+> audio (because the speaker amplifier and PWM fan share the same
+> regulator).
 > 
-> Change it accordingly to fix the following dt-schema warning"
 > 
-> leddimmer@62 (nxp,pca9533): 'led1', 'led2', 'led3', 'led4' do not match any
-> of the regexes: '^led-[0-9a-z]+$', '^pinctrl-[0-9]+$'
-> 
-> [...]
 
 Applied, thanks!
 
-[1/1] ARM: dts: rockchip: Fix LED node names on rk3288-phycore-rdk
-      commit: 8d11cbff066fd9ba866b20ff823eca15301095a6
+[1/1] arm64: dts: rockchip: Correct Fan Supply for Gameforce Ace
+      commit: 98291ce632466c3de7f29b37a1f7b89a6dee2910
 
 Best regards,
 -- 
