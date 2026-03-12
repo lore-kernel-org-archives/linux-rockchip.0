@@ -4,60 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7366E103E2F8
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 00:52:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 346FD103E2FA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 01:17:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
 	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=hPegBgZdOBN4HXRdaXnyBhr+QFCuV+TL1h+mfMpwHGU=; b=JXQGC0kvHN+q5d
-	F1gN5yVnDrZhVO1+pStncJ4bjOUGOgRLD58volyxTu1jPqxttI9cc8pRrLlttEZVw9a5w1il7kuRK
-	Jz083zE3pZWRcZMz5V92cSmAGcpn+KTpYJ+5gBmelcFWGR2SFHKXAHRMNhgZeNBhXav3DWacs/JAx
-	weqHgjWJS6EnfrYNEmw1vm/iju/R8iBFLPRlhTZmQkzNJdNq9lbodMu41wpU2C0Tj9L7ZoRmxJ8GM
-	m463HjR8/AtjnRI+Lcfn6TVkZ0spxlFJuLrEa5EysZirsNJYtGjfapW8X5Zn7TXjQD2QdTjQL+qtC
-	QgJ3P9CEsvcBAmJU1Xvg==;
+	List-Owner; bh=lbrLpH7X6SyfLXTQZIllwmF/1jeE6k0R9iiIx5wJkjs=; b=xHjWtfijaMrm+3
+	V+KCS4losyROAHuHFonX11KrxbiP8coZH3S9HvaAHhfeZwqmp0ZbqYSAvc8PpZ4QMmoqptRQ5Q+j1
+	06WITzJkhbyvaTEVHR/s7Seb6lSxQmaLOvyNH0fcEtW17v52X3a7UnUBMPay3T1t2RW7d8somWgEi
+	V4Fp9euLaFetMEKv5DY2I5c/sa31sJkV5Z1VMlRH6fsWC7JI9NwRIyC+55MSvUii2CnI1GxMfE99Z
+	FGZIrHpmZSP3wNM03qpVqDt/w67ttz3q/rVY4nmcMjm/1e6wyD9wuLVuUpwxYgmWZAbtptKsrtrAx
+	RvoWFziT5o2mD8ACwmQg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0UHZ-0000000CyE3-3KiT;
-	Thu, 12 Mar 2026 00:52:09 +0000
-Received: from mail-m15598.qiye.163.com ([101.71.155.98])
+	id 1w0Ufu-0000000CzCp-0QeD;
+	Thu, 12 Mar 2026 01:17:18 +0000
+Received: from mail-m81134.netease.com ([47.88.81.134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0UHW-0000000CyDg-3glQ
+	id 1w0Ufr-0000000CzCU-1g8y
 	for linux-rockchip@lists.infradead.org;
-	Thu, 12 Mar 2026 00:52:08 +0000
+	Thu, 12 Mar 2026 01:17:17 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 369efffad;
-	Thu, 12 Mar 2026 08:51:57 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 369fb8d6d;
+	Thu, 12 Mar 2026 09:12:04 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
-To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-	"Martin K . Petersen" <martin.petersen@oracle.com>,
-	Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
 Cc: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	devicetree@vger.kernel.org,
-	linux-scsi@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] scsi: ufs: drockchip,rk3576-ufshc: dt-bindings: Add new mphy reset item
-Date: Thu, 12 Mar 2026 08:51:47 +0800
-Message-Id: <1773276707-24857-1-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v2] arm64: dts: rockchip: Add mphy reset to ufshc node
+Date: Thu, 12 Mar 2026 09:11:53 +0800
+Message-Id: <1773277913-29580-1-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9cdf875eb709cckunmc99ce7d957335
+X-HM-Tid: 0a9cdf99cc3b09cckunme9be3b7f5ae6a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQklJTVZOTUwfTUNNSkMYTxpWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0NDGVYaTkMaSx1CH0tOGUtWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Pa3gm9LPU8atHGfwjM6pFp1/paSeulsxByOX5OBJ7JhU2lpd1sLpbm+Gmkx8B3eq4fd3n4ZT2QiDAsl97YeCpYqv0RoxAVYZiQ2hjHFOkLomSMMer2/vN9ie+c9gK6cM+PXEO5xIFipTK3FGTJSWCpeWTCl3Yh+npTvcYYYP+Uo=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=1CdTSXSgbu7pjk01TaZ9yRuCgv2po2xbhjwyMUCPEKg=;
+	b=Fk90FPzQjXMpd3UbBC3R9hIpLv6zu2xic5j6pXsrN0H9rI/DHQKIuuqIgjN4HhIdtHZcdiMF6BWwpE5mELvxHtjbU71UIpd43ssd/4WhJk4N2PIjiosEM3y7057l+PWKy+0rY6evfLCOJI3b5WFsFZN4rJwdk//DvcAnWwC+Vf0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=fHmb+YlUv7Nu0y5qxsXTJRFcWV5YJy6pwaTsnn/PDlA=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260311_175207_435575_6D458272 
-X-CRM114-Status: GOOD (  11.16  )
+X-CRM114-CacheID: sfid-20260311_181715_975213_93D79AF7 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,11 +72,9 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the mphy reset property to the devicetree bindings for the Rockchip
-RK3576 UFS host controller. The mphy reset signal is used to reset the
-physical adapter. Resetting other components while leaving the mphy
-unreset may occasionally prevent the UFS controller from successfully
-linking up with the device.
+The mphy reset signal is used to reset the physical adapter. Resetting
+other components while leaving the mphy unreset may occasionally prevent
+the UFS controller from successfully linking up with the device.
 
 This addresses an intermittent hardware bug where the UFS link fails to
 establish under specific timing conditions with certain chips. While
@@ -87,56 +82,33 @@ difficult to reproduce initially, this issue was consistently observed in
 downstream testing and requires explicit mphy reset control for full
 stability.
 
-Although this change increases the maxItems for resets and adds a new
-entry (which technically alters the binding ABI), it does not break
-compatibility for existing Linux systems. The driver uses
-devm_reset_control_array_get_exclusive() to manage resets, allowing it
-to function correctly with both older Device Trees (without the mphy
-entry) and newer ones.
-
-Fixes: d90e92023771 ("scsi: ufs: dt-bindings: Document Rockchip UFS host controller")
+Fixes: c75e5e010fef ("scsi: arm64: dts: rockchip: Add UFS support for RK3576 SoC")
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
 Changes in v2:
-- update commit msg to indicate Linux is not affected and describe the
-  what is happended(Krzysztof)
+- update the commit msg to better describe the issue and add fixes tag
+  then send it as a separate patch.
 
- Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml b/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
-index c7d17cf4..e738153 100644
---- a/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
-+++ b/Documentation/devicetree/bindings/ufs/rockchip,rk3576-ufshc.yaml
-@@ -41,7 +41,7 @@ properties:
-     maxItems: 1
- 
-   resets:
--    maxItems: 4
-+    maxItems: 5
- 
-   reset-names:
-     items:
-@@ -49,6 +49,7 @@ properties:
-       - const: sys
-       - const: ufs
-       - const: grf
-+      - const: mphy
- 
-   reset-gpios:
-     maxItems: 1
-@@ -98,8 +99,8 @@ examples:
-             interrupts = <GIC_SPI 361 IRQ_TYPE_LEVEL_HIGH>;
-             power-domains = <&power RK3576_PD_USB>;
-             resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>, <&cru SRST_A_UFS>,
--                     <&cru SRST_P_UFS_GRF>;
--            reset-names = "biu", "sys", "ufs", "grf";
-+                     <&cru SRST_P_UFS_GRF>, <&cru SRST_MPHY_INIT>;
-+            reset-names = "biu", "sys", "ufs", "grf", "mphy";
-             reset-gpios = <&gpio4 RK_PD0 GPIO_ACTIVE_LOW>;
-         };
-     };
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 9c28769..9fa99be 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -2035,8 +2035,9 @@
+ 			pinctrl-0 = <&ufs_refclk &ufs_rstgpio>;
+ 			pinctrl-names = "default";
+ 			resets = <&cru SRST_A_UFS_BIU>, <&cru SRST_A_UFS_SYS>,
+-				 <&cru SRST_A_UFS>, <&cru SRST_P_UFS_GRF>;
+-			reset-names = "biu", "sys", "ufs", "grf";
++				 <&cru SRST_A_UFS>, <&cru SRST_P_UFS_GRF>,
++				 <&cru SRST_MPHY_INIT>;
++			reset-names = "biu", "sys", "ufs", "grf", "mphy";
+ 			reset-gpios = <&gpio4 RK_PD0 GPIO_ACTIVE_LOW>;
+ 			status = "disabled";
+ 		};
 -- 
 2.7.4
 
