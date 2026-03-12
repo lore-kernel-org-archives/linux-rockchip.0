@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5322FED2F6
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 09:30:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A2CEFED2F9
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 09:31:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A9gnsNPd60xWnL44JLxWdXU6GP/Wb0VFl110ezC6tDo=; b=rs0npe1Gybng/i
-	c/MsL9iwo9cCP5GJYR5Vkddihl44bOm6lUAuSfF2yV2k5DEDp68dLYj62+Pqxz3hec5Av8+2bb6LT
-	sOlEOYkYDQb8ETMf0RIpi6oPH9+s9+123apj7/UP5+exS4Sc1DSN7/oYmVmsqT8ZvELWlAHuCCVGR
-	aqMHMBHtx5FVpfYojWhH7i1KyBTkwsmOzziZJWfDDIg80WEY38m2L7OCGRjdd/J/I9lc1fExhqecE
-	fBb9tJLgqKoYq7zK+kr0bW7zgY1WzWnAyMYEqwhHIGySp9GD1turGpZdwim1WKlggP6GSvOBk2N4h
-	/F/ftaqEI7BHQ8lbZGVg==;
+	List-Owner; bh=qzWh4lCpJP8wV/KkVwt8QNFOXs1V9SwpdLgl4IVf4Mw=; b=TvKMu+Ak7Xj3aJ
+	6WaTu5dj61WpH8gN46PEdhkqAJ8TfUwdF4srn4hscIYNayF/tkNENlPN8j1yb+62PtzbK49AjTwL1
+	zp6VOHc9ABY6bTDk+E2NbeSPzGvRgtCFfPYuYlu/YXzfnwM7LzqngFh96IlcTtQe0VTE1u6WQ5TVl
+	EGxOP/NZTexGEUQgOHq00Cb+MVVeMe8r4bWYJUnY8mCeBiev08yG8y+GCYiEO6UKlmLc96NBZeaki
+	mc96e2zzCkvvC+pYxdUpT5JmonKlG2gHhnMHSqmMw6P6LLprc577JRKeUkJtq2GhUkp9WL2+h+aYU
+	ivo2UthKYt5zk2ie1Bvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0cNU-0000000Dkci-0wG2;
-	Thu, 12 Mar 2026 09:30:48 +0000
+	id 1w0cNb-0000000DkkM-3YiX;
+	Thu, 12 Mar 2026 09:30:58 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0cMI-0000000DizO-2QsD;
-	Thu, 12 Mar 2026 09:29:36 +0000
-X-UUID: f6fd25581df511f1a21c59e7364eecb8-20260312
+	id 1w0cMH-0000000Dj4T-3lTU;
+	Thu, 12 Mar 2026 09:29:35 +0000
+X-UUID: f5cc12a21df511f1a21c59e7364eecb8-20260312
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:9c0fef49-add6-4c75-9ae7-2a9d04d96b5b,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:a2b8a1a1-cefa-402b-b829-8dd8840d76ed,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:5ee666ed7089e2336e82d381e74c08d2,BulkI
+X-CID-META: VersionHash:89c9d04,CLOUDID:93f75e2a15091fd5248aa60a82459e3d,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -39,12 +39,12 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f6fd25581df511f1a21c59e7364eecb8-20260312
+X-UUID: f5cc12a21df511f1a21c59e7364eecb8-20260312
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 260563749; Thu, 12 Mar 2026 17:29:27 +0800
+	with ESMTP id 306095963; Thu, 12 Mar 2026 17:29:25 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: linux-spi@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
@@ -57,16 +57,16 @@ To: linux-spi@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	broonie@kernel.org
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH 17/17] spi: zynqmp-gqspi: Use helper function devm_clk_get_enabled()
-Date: Thu, 12 Mar 2026 17:29:09 +0800
-Message-Id: <00142ccb5415bab9b13cba74138d579e72d3313d.1773306858.git.xiaopei01@kylinos.cn>
+Subject: [PATCH 12/17] spi: stm32-qspi: Use helper function devm_clk_get_enabled()
+Date: Thu, 12 Mar 2026 17:29:04 +0800
+Message-Id: <e0eda5a2e18031aa9a73c43cee35b02bc622e989.1773306858.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1773306858.git.xiaopei01@kylinos.cn>
 References: <cover.1773306858.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_022935_510770_17472631 
-X-CRM114-Status: UNSURE (   9.16  )
+X-CRM114-CacheID: sfid-20260312_022934_321602_05FBC8A9 
+X-CRM114-Status: UNSURE (   9.87  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,49 +91,50 @@ Simplify code.
 
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-zynqmp-gqspi.c | 17 ++---------------
- 1 file changed, 2 insertions(+), 15 deletions(-)
+ drivers/spi/spi-stm32-qspi.c | 17 +++++------------
+ 1 file changed, 5 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
-index 502fd5eccc83..a88b07956c33 100644
---- a/drivers/spi/spi-zynqmp-gqspi.c
-+++ b/drivers/spi/spi-zynqmp-gqspi.c
-@@ -1244,26 +1244,16 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
- 	if (IS_ERR(xqspi->regs))
- 		return PTR_ERR(xqspi->regs);
+diff --git a/drivers/spi/spi-stm32-qspi.c b/drivers/spi/spi-stm32-qspi.c
+index df1bbacec90a..9ff9975edef4 100644
+--- a/drivers/spi/spi-stm32-qspi.c
++++ b/drivers/spi/spi-stm32-qspi.c
+@@ -819,25 +819,19 @@ static int stm32_qspi_probe(struct platform_device *pdev)
  
--	xqspi->pclk = devm_clk_get(&pdev->dev, "pclk");
-+	xqspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
- 	if (IS_ERR(xqspi->pclk))
- 		return dev_err_probe(dev, PTR_ERR(xqspi->pclk),
- 				     "pclk clock not found.\n");
+ 	init_completion(&qspi->match_completion);
  
--	xqspi->refclk = devm_clk_get(&pdev->dev, "ref_clk");
-+	xqspi->refclk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
- 	if (IS_ERR(xqspi->refclk))
- 		return dev_err_probe(dev, PTR_ERR(xqspi->refclk),
- 				     "ref_clk clock not found.\n");
- 
--	ret = clk_prepare_enable(xqspi->pclk);
--	if (ret)
--		return dev_err_probe(dev, ret, "Unable to enable APB clock.\n");
+-	qspi->clk = devm_clk_get(dev, NULL);
++	qspi->clk = devm_clk_get_enabled(dev, NULL);
+ 	if (IS_ERR(qspi->clk))
+-		return PTR_ERR(qspi->clk);
 -
--	ret = clk_prepare_enable(xqspi->refclk);
++		return dev_err_probe(dev, PTR_ERR(qspi->clk),
++				     "can not enable the clock\n");
+ 	qspi->clk_rate = clk_get_rate(qspi->clk);
+ 	if (!qspi->clk_rate)
+ 		return -EINVAL;
+ 
+-	ret = clk_prepare_enable(qspi->clk);
 -	if (ret) {
--		dev_err(dev, "Unable to enable device clock.\n");
--		goto clk_dis_pclk;
+-		dev_err(dev, "can not enable the clock\n");
+-		return ret;
 -	}
 -
- 	init_completion(&xqspi->data_completion);
- 
- 	mutex_init(&xqspi->op_lock);
-@@ -1339,9 +1329,6 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
- 	pm_runtime_dont_use_autosuspend(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
- 	pm_runtime_set_suspended(&pdev->dev);
--	clk_disable_unprepare(xqspi->refclk);
--clk_dis_pclk:
--	clk_disable_unprepare(xqspi->pclk);
+ 	rstc = devm_reset_control_get_exclusive(dev, NULL);
+ 	if (IS_ERR(rstc)) {
+ 		ret = PTR_ERR(rstc);
+ 		if (ret == -EPROBE_DEFER)
+-			goto err_clk_disable;
++			goto err_defer;
+ 	} else {
+ 		reset_control_assert(rstc);
+ 		udelay(2);
+@@ -886,8 +880,7 @@ static int stm32_qspi_probe(struct platform_device *pdev)
+ 	pm_runtime_dont_use_autosuspend(qspi->dev);
+ err_dma_free:
+ 	stm32_qspi_dma_free(qspi);
+-err_clk_disable:
+-	clk_disable_unprepare(qspi->clk);
++err_defer:
  
  	return ret;
  }
