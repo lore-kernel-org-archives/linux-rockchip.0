@@ -4,78 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02835105A596
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 13:00:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86F22105A597
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 13:02:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bgGQWVOhrJmseFEPuf+W0G63qqEnRrhc6LOYKvaI0uM=; b=ksyT5K6nDT1p37
-	zYoB+4wPh96Pw3bPHr+FPpi0fw6XepEYvLWkqVAiTKB7rEAAJWBMgOEv0M+tsLDBFhJ56v4pNyJUT
-	ILPQiCIs2/NVq0u+2zgrTl2uVH7453IiFQMxOwn1NNqRtpfeksg5WAuml/M+eCoPnSE7AdmdI9cMI
-	IC64hAXg/tPJGqFP8Ht+F0ZdJdA1g/S15xODCsHLmgt5YcRHmhbjve6qMXJkiBp+sp9gJ3Xp3bhlM
-	gzCCeuLf+tHCFDrpbm666ks5WvxVBsh7gYoeGVIEYZvHxQ+4ktn7u81kRCbBcJU7Kb/lsOLi6hNPf
-	bCWc4wTk0PZ0WHZOiN4A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dNIe+ct5dS3Z+qptwIfQwtKS1JnUAlPc3k566XATxic=; b=YRxfHfyWupGprNu/oBCEQT9NPJ
+	jScSCiDvqO0kGX/FzF5B6WUf3ba7kMNP1OozIC3cz9BsKmujEUY+5m22A4T8u+PQL0PXJ3BVv1Pkp
+	Wp6M42XqpZB5i/eOC/QPMdTh0mZhuMBxNt6G3rkjEZK2n0EZHIzcxHx+5U32hAZifUFC5F/BKl8Rn
+	CWTbiIs2uAoKmiYkkKPD5YMWpnBq5tvscdg8JdAoqJW1lTwVIeXgWO4a32WQleYMZqjpcZDCPYRx+
+	yo//iinu3tPY4gYDub3VprAgb5tTglnv0O6heTgfmn4S9OY8QlDldwHOjZbIG0Gos0TWIMQv6TG5B
+	k7y8XLKw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fe0-0000000E5sH-49Pj;
-	Thu, 12 Mar 2026 13:00:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w0fgL-0000000E68U-1kKm;
+	Thu, 12 Mar 2026 13:02:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0fdx-0000000E5rI-1JuC;
-	Thu, 12 Mar 2026 13:00:02 +0000
+	id 1w0fgI-0000000E67I-317t;
+	Thu, 12 Mar 2026 13:02:26 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EE25D4022C;
-	Thu, 12 Mar 2026 12:59:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B268C2BCAF;
-	Thu, 12 Mar 2026 12:59:54 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AB13160131;
+	Thu, 12 Mar 2026 13:02:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75297C19424;
+	Thu, 12 Mar 2026 13:02:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773320398;
-	bh=jnqnQKwftHtCIfpSHfz7acIeHazHEgJ0xJKgKEXMU7U=;
-	h=Date:Subject:Cc:To:From:References:In-Reply-To:From;
-	b=XQMzh00lPdskzeLywViKrxB7WK8P+wSnNIq+7/aXGXxRnb3hDcyJ4SVkWXEP/ZX85
-	 Vi18/OQ/R/4oU6m3kinwsrb57nLtCm6R2dQPZs+aLFdRgdCGbaivG612r1xLQxG4Z7
-	 Yz83Pu9m/TgSzzvVdREhz8y/9a0jb69riAot+RrSud63yjwnXULTF1nF3HDvSCqRSp
-	 7UlxhMe3zOOev9XKvfGeMazvaQtaK9bL6dPeUMpaVzdJn5q1Etr0xUIs7vfG7oqM7l
-	 Wv56pSWmJFCrJrZg0quoSc908cMAy89sxAPQSe/8kCfIBs69iHoijTQOGSa9e4XX+0
-	 6t7swwrOHVLew==
-Mime-Version: 1.0
-Date: Thu, 12 Mar 2026 13:59:52 +0100
-Message-Id: <DH0TM60TVX5D.20W4O1X696ALA@kernel.org>
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-Cc: "Manivannan Sadhasivam" <mani@kernel.org>, "Manivannan Sadhasivam"
- <manivannan.sadhasivam@oss.qualcomm.com>, "Lorenzo Pieralisi"
- <lpieralisi@kernel.org>, =?utf-8?q?Krzysztof_Wilczy=C5=84ski?=
- <kwilczynski@kernel.org>, "Rob Herring" <robh@kernel.org>, "Bjorn Helgaas"
- <bhelgaas@google.com>, "Heiko Stuebner" <heiko@sntech.de>, "Niklas Cassel"
- <cassel@kernel.org>, "Shawn Lin" <shawn.lin@rock-chips.com>, "Hans Zhang"
- <18255117159@163.com>, "Nicolas Frattaroli"
- <nicolas.frattaroli@collabora.com>, "Wilfred Mallawa"
- <wilfred.mallawa@wdc.com>, <linux-pci@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- "Anand Moon" <linux.amoon@gmail.com>, "Grimmauld" <grimmauld@grimmauld.de>,
- "Greg Kroah-Hartman" <gregkh@linuxfoundation.org>, "Rafael J. Wysocki"
- <rafael@kernel.org>, <driver-core@lists.linux.dev>, "Lukas Wunner"
- <lukas@wunner.de>
-To: "Robin Murphy" <robin.murphy@arm.com>
-From: "Danilo Krummrich" <dakr@kernel.org>
-References: <20260226101032.1042-1-linux.amoon@gmail.com>
- <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
- <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
- <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
- <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
- <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
- <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org>
- <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
- <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org>
- <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
-In-Reply-To: <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_060001_438373_D7F1A379 
-X-CRM114-Status: GOOD (  10.25  )
+	s=k20201202; t=1773320545;
+	bh=6JGSpqVxm5Xk2m9ccSi9/f5mq6saFDm1oVr7MCpFyr4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ijzuRMZaAG0cxBMl7gDHrSzew3fvUz+nBqTiXPU+NIp69zqt1wfJfesyFC/fVZS3+
+	 fpJQfT7RAlMy6CdCes95jyDBXqJ9b0oy2+/mIhMf1FRNGI13AM1NqmAm86j3/A/552
+	 5kQ9+UXYzpoZsbEKqCumRSSwg+UQG2vj14Bds3PbgErv5h43Bs/xRG8wi00G2nRngr
+	 EIIwDGkg6bJW4vTpgIQrRiJEabuw4Tb1FNbFO22KU/UjrislDHxxzWqcPdnp2DTFq5
+	 sey6Gzv43mUHHEgvpwlNQvy8QnAR90ilRc2oUbTs2Xh0giY+jhiCjSVqkQ2SFWQMPl
+	 im56x+2su4L1w==
+Date: Thu, 12 Mar 2026 13:02:20 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Pei Xiao <xiaopei01@kylinos.cn>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH 13/17] spi: stm32: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <8fe16029-2830-44c3-bf32-5aea31f72c62@sirena.org.uk>
+References: <cover.1773306858.git.xiaopei01@kylinos.cn>
+ <d239cda51bb3dcc84da4a7194a30f3be82422f70.1773306858.git.xiaopei01@kylinos.cn>
+MIME-Version: 1.0
+In-Reply-To: <d239cda51bb3dcc84da4a7194a30f3be82422f70.1773306858.git.xiaopei01@kylinos.cn>
+X-Cookie: I feel better about world problems now!
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,42 +68,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============7654135904217013379=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Mar 12, 2026 at 1:48 PM CET, Robin Murphy wrote:
-> On 2026-03-11 9:09 pm, Danilo Krummrich wrote:
->>  From a driver-core perspective I think we're rather limited on what we can do;
->> we are already in async context at this point and can't magically go back to
->> initcall context.
->> 
->> So, the only thing I can think of is to kick off work on a workqueue, which in
->> the end would be the same as the deferred probe handling.
->
-> Hmm, in fact, isn't the deferred probe mechanism itself actually quite
-> appropriate?
 
-Yes, I've also mentioned this in [1], including the fact that it technically
-even complies with the guarantees given by PROBE_FORCE_SYNCHRONOUS. I.e. the
-documentation says:
+--===============7654135904217013379==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="9knHiRnV8mpI+WJ7"
+Content-Disposition: inline
 
-	Use this to annotate drivers that need their probe routines to run
-	synchronously with driver and device registration (with the exception of
-	-EPROBE_DEFER handling - re-probing always ends up being done
-	asynchronously).
 
-However, I'm still not sure how I feel about this, since I consider this to be
-more like a workaround that just moves things to a "more approprite" async
-context.
+--9knHiRnV8mpI+WJ7
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-On the other hand, eventually we want everything to work with
-PROBE_PREFER_ASYNCHRONOUS, so maybe it's also good enough for the time being.
+On Thu, Mar 12, 2026 at 05:29:05PM +0800, Pei Xiao wrote:
 
-[1] https://lore.kernel.org/driver-core/DGZJBMG2Y738.2MU5LXVGEDD47@kernel.org/
+> +	if (!cfg->has_device_mode && device_mode)
+> +		return dev_err_probe(&pdev->dev, -EPERM, "spi-slave not
+> +				     supported\n");
+
+Similar thing in this driver here.
+
+--9knHiRnV8mpI+WJ7
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmmyuVsACgkQJNaLcl1U
+h9CkwggAg24YBsU71i5Djghu/lHhxeErxA+7HBjAV3TstCzfospFBacxZTrIypgS
+mWtgo+SwmXbDn6WiyjDlwpIMTI6PFDzzMn6x6sxwj5/OD1osR2cJ2SYzYSbwFxbQ
+uoJphNgSht3FEaDioOtHfdrgiLIkMm+/TYlf1u7+ZzrgI4ueyhtCfs0dN8EfdB+q
+pAJUva6gft4S6N3uS4kagfQP8e+IwxXr5fekxL3p7Y9XYpa30rHE56Oc7sbGWGma
++WP0OfGjImbuvKtGxAPKoGBte/kLIrsSHoAFhTLSytjUxs4uuftK3Y5g3d7zq1fh
++TRESnlE15ixsifgA+1umZAfcpBjfA==
+=ouCy
+-----END PGP SIGNATURE-----
+
+--9knHiRnV8mpI+WJ7--
+
+
+--===============7654135904217013379==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7654135904217013379==--
+
