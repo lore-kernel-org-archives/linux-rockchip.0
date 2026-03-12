@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F36FED2F7
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 09:32:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 225DA105A576
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 11:18:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8qcNr5jETZ6AOZbo+6F4z0Koo8NHDndhRmAYO9meY6Q=; b=AiHEwSHf1/oldZ
-	KD4RjDCeeUBCd5JVILD7V8k9YkGCrUvxRVvo2VaQddi9lWVJbt9l/k9XOt7sviqizsxATUqN/ewK1
-	0aB3p4sHZuAp7B0q8VhwSQYMz5jTLa9VTZFwPhYYUhVH6R5RYrlHTI/TZW+Y5XxhezuzTBsMf7wRm
-	eo4v+PxrieOe82UewqFAytWuDf8aMCWytSz251FaXnd+rsc9Up6/iFfB/PEnbQ3QKUV1wW/GlGDlI
-	D9ib/zy+VB5yQe5nfcQqvZHluQReBmvLk6X3QKUHKpi8Y/0HvExOV3M7lYtKXDxwsb1Jt/yEj0di7
-	xpwgejVGMdDYFPhhIqTQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2eGI2L7nSVMKmgt0kABKP+FMrXmxvbwusEgf4rYFN3Y=; b=wQzRCcvhYpYo7CBl5eUnPL+MTI
+	BWi1Nb2d85sKMg7AmLgRcniprKiHgg6lC7efVOpeXH1RuaTbWUcitF8yTbRk72V3AIVsxstYx7MpD
+	UIVaVrbMT9wLU8bms4yUmWyclQut7kZgMKaKDw1N3SY5ijd8Cdeg/nz/0aPzxgF+XPfAlox82Oiau
+	8euyvUS3jFOspv2uzxx3bYCadcoZTvTRV2XZltKhm2tH5jXG99dPUu6EQzZGr77po3jCumU61A+uk
+	eTEk1WX1P2Da1Q6NwA6/QwgZgfhzWz1iFPyzkw0Q7KsNHsMiON1sROnx3z4p2CnmQn/ico0Qj1o25
+	W4o3h4dQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0cOx-0000000DlzW-0EY1;
-	Thu, 12 Mar 2026 09:32:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w0e3A-0000000Dvjy-0f9N;
+	Thu, 12 Mar 2026 11:17:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0cMj-0000000Djlp-1MvA;
-	Thu, 12 Mar 2026 09:30:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=kWr3UpL72gEY0ThjpzFd6EFwY6zHsa+dAASz/B2/zTg=; b=nWq2bIEU8scMpqmHKJ+2fM0rUU
-	lDNG4xw9jAVF0DWTP/yfeT7uHhRkfMdWEeKsA0pnCWrLmUQS+1NkL4Gi6wl0tXgRsKS1IVuH64jyr
-	0kskPz4EKD2xbWksD9ilExWyGWWDz7HeErgvzbxl4F6rMQVFxfTbuKxc2WWu+0Jn9Xs9SMbuK53I6
-	+BMeKNUUV31S8robcMlHroPpYYM7HgLSsxMQS4HErlZTtyzMKG6BPuzS0nMGVb1YC6/EVlzoVsR/H
-	wj5udV2MpaRQLIGdRm9kpzoveffJH12d8vPh4g7K/uQu7jr/A6pBneClKXwkKZZV1/vKXPGcOZpNa
-	1Otig+Cw==;
-Received: from mailgw.kylinos.cn ([124.126.103.232])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0cMY-00000000pFp-2dpv;
-	Thu, 12 Mar 2026 09:29:58 +0000
-X-UUID: f3e56b281df511f1a21c59e7364eecb8-20260312
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:30aaff68-b3a0-4a6c-b7ec-9b19efc51e2d,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:20
-X-CID-META: VersionHash:89c9d04,CLOUDID:3e4443aa1e61333fe56bff94d6c99248,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f3e56b281df511f1a21c59e7364eecb8-20260312
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 649171632; Thu, 12 Mar 2026 17:29:22 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: linux-spi@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	broonie@kernel.org
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH 04/17] spi: img-spfi: Use helper function devm_clk_get_enabled()
-Date: Thu, 12 Mar 2026 17:28:56 +0800
-Message-Id: <6891014954a8c121347dbd517b585d5a903e8da4.1773306858.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1773306858.git.xiaopei01@kylinos.cn>
-References: <cover.1773306858.git.xiaopei01@kylinos.cn>
+	id 1w0e38-0000000DvjR-1evu;
+	Thu, 12 Mar 2026 11:17:54 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 9421760137;
+	Thu, 12 Mar 2026 11:17:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A0DECC116C6;
+	Thu, 12 Mar 2026 11:17:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773314271;
+	bh=wBedHcPA+Jr+vf+qz66g3+kvQVhwPxMWfDbP3CM01lA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=IVs8wrlI91czMoggK0JSP9g8pChndUrcaYTLje9aIDwaobXvtLF5yzouiYPuJAf9D
+	 BQtSjkyoL4qEaPUeQTw6b9FlDP0m3HgB2FNzFy1HVzWFh0u9yUBn+cNd9K0XMBb/mY
+	 koTrTBKkI5FGPIhHw+uVBwzjAFR0HFUbWpWH9c2H9xzCr1ydJMLjsMcTHi1Zqe57TE
+	 EKKyIPWzPeiuFPszClrntZ5mbiJkWb/eBzGmJRT5i5sw3k14YsyBe9dwmc9scNgZ1z
+	 VICWYtn1PrwyGmeNHE0PVkhZytFNzf+bRoEw2RQlveiEYnFZA8IWmRyVYa9LMShJ/p
+	 JR0qEpZE78ySA==
+Date: Thu, 12 Mar 2026 11:17:46 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Alexey Charkov <alchark@flipper.net>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Gene Chen <gene_chen@richtek.com>, Heiko Stuebner <heiko@sntech.de>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 3/4] usb: typec: tcpci_rt1711h: Add support for Hynetek
+ HUSB311
+Message-ID: <20260312-malformed-cruelly-b27dc90fffff@spud>
+References: <20260311-husb311-v1-0-f25bcb58cff7@flipper.net>
+ <20260311-husb311-v1-3-f25bcb58cff7@flipper.net>
+ <20260311-married-democrat-f6eb1c651e97@spud>
+ <CAKTNdwFQnySkhpLDrFh5kwX=_tvci=g0Y6Q5y-15Qsogd=FxOw@mail.gmail.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_092956_717523_E5AD57FF 
-X-CRM114-Status: UNSURE (   9.19  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <CAKTNdwFQnySkhpLDrFh5kwX=_tvci=g0Y6Q5y-15Qsogd=FxOw@mail.gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,67 +73,130 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============8028109299414407936=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-devm_clk_get() and clk_prepare_enable() can now be replaced by
-devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
-longer necessary to unprepare and disable the clocks explicitly.
-Simplify code.
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
----
- drivers/spi/spi-img-spfi.c | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+--===============8028109299414407936==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="288jPNk02s7OMmIL"
+Content-Disposition: inline
 
-diff --git a/drivers/spi/spi-img-spfi.c b/drivers/spi/spi-img-spfi.c
-index 902fb64815c9..a227cff5da70 100644
---- a/drivers/spi/spi-img-spfi.c
-+++ b/drivers/spi/spi-img-spfi.c
-@@ -557,24 +557,17 @@ static int img_spfi_probe(struct platform_device *pdev)
- 	if (ret)
- 		goto put_spi;
- 
--	spfi->sys_clk = devm_clk_get(spfi->dev, "sys");
-+	spfi->sys_clk = devm_clk_get_enabled(spfi->dev, "sys");
- 	if (IS_ERR(spfi->sys_clk)) {
- 		ret = PTR_ERR(spfi->sys_clk);
- 		goto put_spi;
- 	}
--	spfi->spfi_clk = devm_clk_get(spfi->dev, "spfi");
-+	spfi->spfi_clk = devm_clk_get_enabled(spfi->dev, "spfi");
- 	if (IS_ERR(spfi->spfi_clk)) {
- 		ret = PTR_ERR(spfi->spfi_clk);
- 		goto put_spi;
- 	}
- 
--	ret = clk_prepare_enable(spfi->sys_clk);
--	if (ret)
--		goto put_spi;
--	ret = clk_prepare_enable(spfi->spfi_clk);
--	if (ret)
--		goto disable_pclk;
--
- 	spfi_reset(spfi);
- 	/*
- 	 * Only enable the error (IACCESS) interrupt.  In PIO mode we'll
-@@ -655,9 +648,6 @@ static int img_spfi_probe(struct platform_device *pdev)
- 		dma_release_channel(spfi->rx_ch);
- 	if (spfi->tx_ch)
- 		dma_release_channel(spfi->tx_ch);
--	clk_disable_unprepare(spfi->spfi_clk);
--disable_pclk:
--	clk_disable_unprepare(spfi->sys_clk);
- put_spi:
- 	spi_controller_put(host);
- 
--- 
-2.25.1
 
+--288jPNk02s7OMmIL
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Mar 12, 2026 at 11:09:43AM +0400, Alexey Charkov wrote:
+> On Wed, Mar 11, 2026 at 10:33=E2=80=AFPM Conor Dooley <conor@kernel.org> =
+wrote:
+> >
+> > On Wed, Mar 11, 2026 at 08:20:46PM +0400, Alexey Charkov wrote:
+> > > HUSB311 is a pin-compatible and register-compatible drop-in replaceme=
+nt
+> > > for RT1711H, so add its IDs to the existing driver.
+> > >
+> > > Link: https://www.hynetek.com/uploadfiles/site/219/news/0863c0c7-f535=
+-4f09-bacd-0440d2c21088.pdf
+> > > Link: https://dl.xkwy2018.com/downloads/RK3588S/03_Product%20Line%20B=
+ranch_Tablet/02_Key%20Device%20Specifications/HUSB311%20introduction%202021=
+0526.pdf
+> > > Signed-off-by: Alexey Charkov <alchark@flipper.net>
+> > > ---
+> > >  drivers/usb/typec/tcpm/tcpci_rt1711h.c | 21 +++++++++++++++++++--
+> > >  1 file changed, 19 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/drivers/usb/typec/tcpm/tcpci_rt1711h.c b/drivers/usb/typ=
+ec/tcpm/tcpci_rt1711h.c
+> > > index 88c50b984e8a..ac5917c1e253 100644
+> > > --- a/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> > > +++ b/drivers/usb/typec/tcpm/tcpci_rt1711h.c
+> > > @@ -18,6 +18,9 @@
+> > >  #include <linux/regmap.h>
+> > >  #include <linux/regulator/consumer.h>
+> > >
+> > > +#define HUSB311_VID          0x2E99
+> > > +#define HUSB311_PID          0x0311
+> > > +#define HUSB311_DID          0x0000
+> > >  #define RT1711H_VID          0x29CF
+> > >  #define RT1711H_PID          0x1711
+> > >  #define RT1711H_DID          0x2171
+> > > @@ -55,6 +58,8 @@
+> > >
+> > >  struct rt1711h_chip_info {
+> > >       u32 rxdz_sel;
+> > > +     u16 vid;
+> > > +     u16 pid;
+> > >       u16 did;
+> > >       bool enable_pd30_extended_message;
+> > >  };
+> > > @@ -308,14 +313,14 @@ static int rt1711h_check_revision(struct i2c_cl=
+ient *i2c, struct rt1711h_chip *c
+> > >       ret =3D i2c_smbus_read_word_data(i2c, TCPC_VENDOR_ID);
+> > >       if (ret < 0)
+> > >               return ret;
+> > > -     if (ret !=3D RT1711H_VID) {
+> > > +     if (ret !=3D chip->info->vid) {
+> > >               dev_err(&i2c->dev, "vid is not correct, 0x%04x\n", ret);
+> >
+> > Why are we checking vids and pids here? Rejecting a non-match prevents
+> > using fallback compatibles, so I'd like to know why the code exists.
+> >
+> > Is it just here for the sake of it, or to prevent some actual issues?
+> > Not really familiar with USB devices unfortunately.
+>=20
+> Hi Conor,
+>=20
+> It looks like a relic of some original vendor provided driver code.
+> Rockchip's implementation of a HUSB311 driver [1] contains similar
+> checks but I don't think it adds practical value in the world of
+> Device Tree (after all, it's just an I2C device - I haven't seen many
+> I2C drivers reject a DT match based on hardware IDs found in
+
+There's been a lot of drivers in drivers/iio that do this kind of
+although they're gradually being modified over time to support using
+fallback compatibles.
+
+> registers). I chose to avoid removing them with my patch though,
+> because I don't have any Richtek hardware to test such a change.
+>=20
+> Maybe the error could be downgraded to a warning though.
+
+To make use of a fallback, it can't produce a warning. If you wanna keep
+it, just make them dev_dbg() I think.
+
+Also, the devicetree binding should then be modified to support using
+the fallback.
+
+Cheers,
+Conor.
+
+--288jPNk02s7OMmIL
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCabKg2gAKCRB4tDGHoIJi
+0kk2AQDyPSMsaOdJAVhjM9GUu81QMjVh+OQxeTyTVc9oxZggkgD+PwjQxS3n6dhI
+EGB+VVnwp4ser4OBFZFXWgb3WuPt4AQ=
+=6uRW
+-----END PGP SIGNATURE-----
+
+--288jPNk02s7OMmIL--
+
+
+--===============8028109299414407936==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============8028109299414407936==--
+
