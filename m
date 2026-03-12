@@ -4,118 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517BD106ACE3
-	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 19:34:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A74106ACE3
+	for <linux-rockchip@archiver.kernel.org>; Thu, 12 Mar 2026 20:01:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:References:
-	In-Reply-To:Message-ID:Cc:To:From:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=kzdruB6H1GNOy/3/m4IPiauB1Nno+AvX9DSeH1tTvbI=; b=POWV1QmX/RLa4eqP19z4b0jUNm
-	0P63+SXJCv/JHP4EoyGyRIrjqZrMGYmpKdHei/LNyyh2A+iIqdhiMrqfABDEK5lQBVRiR0wlYrTH2
-	w4nWx90q4t4bkvqlFEFDTUWRDzany89+dkYqzoNMn2f/45xLTOGdmHxtDAxNAmgemQQ2H5TQUtt1v
-	vQIA/IXnZtRR458gYxcrgvLzaKVh9QydsmRAcDsTJsEiY2L2AXGjwGKK+WCoCgLuqB83XEL7Dxxat
-	ZDzpKe3cHAGwk6RcSuwa+PcXtdF1Ea2YxW1HwRR07uE7PrIGm72EPMFZypPy5MJxxLTKt7xZuKpup
-	PUHfXwTQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=meVXU3HJtjVVePP0vxbxkMs3EB0oq2RYymji2FwORb8=; b=Rucxaj9zZeyZFk
+	6Vdyr0uxdrv69399mrA9XDt/7QWU2NliEBWxk8QciQYSKcGS8Hz8civX1lUedtXWEgGeDwu6PpZqG
+	YAcYmAFjC4vjfZI31GnfZ6MWYipMLA/ecXincxi+n42jpvMk5wXjQ69vEMwOoNAAKF6AkqsCFhekp
+	WYQahQ4wu8Hqc4raWQHWI0gfyEjJ3ImQa31c3FFoLAbqyp+W7XK9KrwTY5PCmD6DIinkbd8DzkLFj
+	tuMLR4bI8Msr6U+IpOo8UtNS909laCBPuKso61+NwnGHByVnUBFIOiVQh5gxzWSYXUWoG6Aqtn6oi
+	h3d/K9m41oNo7t0tIBHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0lnF-0000000F7r5-0sMq;
-	Thu, 12 Mar 2026 19:34:01 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w0mEC-0000000FCRW-3Mxd;
+	Thu, 12 Mar 2026 20:01:52 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0lnC-0000000F7q9-3XsI;
-	Thu, 12 Mar 2026 19:33:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=VQ4I1//oujMg/wMbvtHZ1fNg62i5rEhIWcPKRohhj4U=; b=ZrnPA5B9UUEjcpxDB2y7UWknNu
-	HBiI3yuwlrPvI9t+ttYfOgQm+ljWEGkXQufxW24oaXseftJe6d5oYq4PBIxaErDzFIfRfJR2Qqg90
-	KKd+A2O6y1m8OJHpY2dInDTihyZtJpyuSWejmd/3XJXhc425DSSb3AV3Kv4H+FlRvZ5BHgxj59Wu+
-	qhcOk//D2MfBJvEnBF8OOaEuuriagwajMaqkRaXt/Pp0+hxhbxn0WL/sEdFlJrtg8jpm7Eb4D8UyJ
-	/LIR7mN785LeZWFCVMZvfwfc4uIiVkEuX3P3ADo1/dXhW5bxSpDC0mtYdxLefkskw28yAH20obMKm
-	DhKvZN6g==;
-Received: from mailout.nod.at ([116.203.167.152] helo=lithops.sigma-star.at)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0ln9-00000001uIG-03T0;
-	Thu, 12 Mar 2026 19:33:56 +0000
-Received: from localhost (localhost [127.0.0.1])
-	by lithops.sigma-star.at (Postfix) with ESMTP id 4DE582C14A8;
-	Thu, 12 Mar 2026 20:33:44 +0100 (CET)
-Received: from lithops.sigma-star.at ([127.0.0.1])
-	by localhost (lithops.sigma-star.at [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id yCwNT8mwVvHB; Thu, 12 Mar 2026 20:33:43 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by lithops.sigma-star.at (Postfix) with ESMTP id 8A34D2C14AA;
-	Thu, 12 Mar 2026 20:33:43 +0100 (CET)
-Received: from lithops.sigma-star.at ([127.0.0.1])
-	by localhost (lithops.sigma-star.at [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id 3HN7guaAFMsE; Thu, 12 Mar 2026 20:33:43 +0100 (CET)
-Received: from lithops.sigma-star.at (lithops.sigma-star.at [195.201.40.130])
-	by lithops.sigma-star.at (Postfix) with ESMTP id ABF4A2C14A6;
-	Thu, 12 Mar 2026 20:33:42 +0100 (CET)
-Date: Thu, 12 Mar 2026 20:33:42 +0100 (CET)
-From: Richard Weinberger <richard@nod.at>
-To: Philipp Hahn <phahn-oss@avm.de>
-Cc: amd-gfx <amd-gfx@lists.freedesktop.org>, 
-	apparmor <apparmor@lists.ubuntu.com>, bpf <bpf@vger.kernel.org>, 
-	ceph-devel <ceph-devel@vger.kernel.org>, cocci <cocci@inria.fr>, 
-	dm-devel@lists.linux.dev, 
-	DRI mailing list <dri-devel@lists.freedesktop.org>, 
-	gfs2 <gfs2@lists.linux.dev>, 
-	intel-gfx <intel-gfx@lists.freedesktop.org>, 
-	intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev, 
-	kvm@vger.kernel.org, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
-	linux-block <linux-block@vger.kernel.org>, 
-	linux-bluetooth@vger.kernel.org, 
-	linux-btrfs <linux-btrfs@vger.kernel.org>, 
-	linux-cifs <linux-cifs@vger.kernel.org>, linux-clk@vger.kernel.org, 
-	linux-erofs <linux-erofs@lists.ozlabs.org>, 
-	linux-ext4 <linux-ext4@vger.kernel.org>, 
-	linux-fsdevel <linux-fsdevel@vger.kernel.org>, 
-	linux-gpio@vger.kernel.org, 
-	linux-hyperv <linux-hyperv@vger.kernel.org>, 
-	linux-input@vger.kernel.org, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-leds@vger.kernel.org, 
-	linux-media <linux-media@vger.kernel.org>, 
-	linux-mips <linux-mips@vger.kernel.org>, 
-	linux-mm <linux-mm@kvack.org>, linux-modules@vger.kernel.org, 
-	linux-mtd <linux-mtd@lists.infradead.org>, 
-	linux-nfs <linux-nfs@vger.kernel.org>, 
-	linux-omap <linux-omap@vger.kernel.org>, 
-	linux-phy@lists.infradead.org, linux-pm <linux-pm@vger.kernel.org>, 
-	linux-rockchip <linux-rockchip@lists.infradead.org>, 
-	linux-s390 <linux-s390@vger.kernel.org>, 
-	linux-scsi <linux-scsi@vger.kernel.org>, linux-sctp@vger.kernel.org, 
-	LSM <linux-security-module@vger.kernel.org>, 
-	linux-sh <linux-sh@vger.kernel.org>, 
-	linux-sound <linux-sound@vger.kernel.org>, 
-	linux-stm32 <linux-stm32@st-md-mailman.stormreply.com>, 
-	linux-trace-kernel <linux-trace-kernel@vger.kernel.org>, 
-	linux-usb@vger.kernel.org, 
-	linux-wireless <linux-wireless@vger.kernel.org>, 
-	netdev <netdev@vger.kernel.org>, ntfs3 <ntfs3@lists.linux.dev>, 
-	samba-technical <samba-technical@lists.samba.org>, 
-	sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
-	tipc-discussion@lists.sourceforge.net, v9fs <v9fs@lists.linux.dev>, 
-	Miquel Raynal <miquel.raynal@bootlin.com>, 
-	Vignesh Raghavendra <vigneshr@ti.com>
-Message-ID: <1584421372.26258.1773344022512.JavaMail.zimbra@nod.at>
-In-Reply-To: <20260310-b4-is_err_or_null-v1-48-bd63b656022d@avm.de>
-References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de> <20260310-b4-is_err_or_null-v1-48-bd63b656022d@avm.de>
-Subject: Re: [PATCH 48/61] mtd: Prefer IS_ERR_OR_NULL over manual NULL check
+	id 1w0mE9-0000000FCQL-3d4K;
+	Thu, 12 Mar 2026 20:01:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=qgyqOHCPScAfR4PRcc+4ddmSV9FhJ0HZJ8pbHHXAdu8=; b=SkgWdm7RdLobc009NpMp0Wmyr2
+	iBA+7oe4KL9k/yQ3Y9C42IDxyK/u03CLbpB9tNrJcxSyNIq+6S5JnjP2yzzUdRCCpY7brm5rpMWr+
+	iOdFCqyiLoqX77ioib2rVNovayg7Ar6cpUOuvRDSpZ0QTPc6GJS43FJb+q1FUxu+LwUeiXx2se892
+	a7l8zqRbkMCsam365uDYQAwQe/naWgBO2n2oKMs4qfrqFhSTufR/Lb8/0kbDaEJVFZvMPTKPn0Wnq
+	o4uCDJxwpjb5Vr+AbFpi+i1WZM0YPCV+N5lQc3tgs1+nnNQasuwXQ8h7YvSYDKSnNSawHD3+m2Zh8
+	p7OZuFnw==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Alexey Charkov <alchark@flipper.net>
+Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add analog audio switches to RK3576 EVB1
+Date: Thu, 12 Mar 2026 21:00:56 +0100
+Message-ID: <177334565370.2520391.4310192190507174351.b4-ty@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260311-evb1-audio-switches-v1-1-0e0199e56c80@flipper.net>
+References: <20260311-evb1-audio-switches-v1-1-0e0199e56c80@flipper.net>
 MIME-Version: 1.0
-X-Originating-IP: [195.201.40.130]
-X-Mailer: Zimbra 8.8.12_GA_3807 (ZimbraWebClient - FF148 (Linux)/8.8.12_GA_3809)
-Thread-Topic: Prefer IS_ERR_OR_NULL over manual NULL check
-Thread-Index: 0l8CyewQmrWlgaG6N3QgQFfukutRbA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260312_193355_203421_23C5A22D 
-X-CRM114-Status: UNSURE (   2.19  )
+X-CRM114-CacheID: sfid-20260312_130149_963519_AC0D7C9E 
+X-CRM114-Status: UNSURE (   9.13  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,16 +67,28 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-LS0tLS0gVXJzcHLDvG5nbGljaGUgTWFpbCAtLS0tLQo+IFZvbjogIlBoaWxpcHAgSGFobiIgPHBo
-YWhuLW9zc0Bhdm0uZGU+Cj4gLQlpZiAoZ3Bpb210ZC0+bndwICYmICFJU19FUlIoZ3Bpb210ZC0+
-bndwKSkKPiArCWlmICghSVNfRVJSX09SX05VTEwoZ3Bpb210ZC0+bndwKSkKCk5vLCBwbGVhc2Ug
-ZG9uJ3QuCgpUaGlzIG1ha2VzIHJlYWRpbmcgdGhlIGNvZGUgbm90IGVhc2llci4KClRoYW5rcywK
-Ly9yaWNoYXJkCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+
+On Wed, 11 Mar 2026 20:25:02 +0400, Alexey Charkov wrote:
+> These allow selective muting/unmuting of inputs and outputs, as well as
+> setting mutually-exclusive rules in ALSA UCM.
+> 
+> 
+
+Applied, thanks!
+
+[1/1] arm64: dts: rockchip: Add analog audio switches to RK3576 EVB1
+      commit: 9d28af133ef2de00239dc8a8b7878aa4f1b3ecb1
+
+Best regards,
+-- 
+Heiko Stuebner <heiko@sntech.de>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
