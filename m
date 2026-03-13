@@ -4,76 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEE08107BCD6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 18:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FE1107BCD6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 18:19:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:References:
-	List-Owner; bh=+9ev9M+jzsMYuh1+jDWHD63TgxLzAvo7Z3wqqx3G2y8=; b=WAWoaBqjy8hBuO
-	UKBFyTJh9ol1G4D1LOiFR8CO2b5oRR7yYT0th8aPEtECzLB2tBqSk8qv0XX1qkTceENV8t+prj5H4
-	kZ4w7r+0Ph8AHvdc0tQGu+xsYRPgwmrVz9Zp/+lSBiIn3EAfrzxE1X6m6tnHf7Qpqnb45mTefQBhu
-	btcfk3147K2UHvizNHG9SqAuFv2bC+q7+CeQq7rqUMHDiZbO1lK67WorKHKVXR2DYoTW+KrN0IC8v
-	zVpMdJ6PxK8AQCW3zC0ngkPNdSZl0rT7c423fbFvrS++3oxDTVdf5jhZQcQyw77Aenl7PVUK9y26o
-	IF7FpqLvAPSKAAx3qh7g==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BzIb6cbKkQWyk1/+RmENssV96uwYmKuN3oDTeAkYxLM=; b=YwwmW+3nc2AIyi
+	7O6YLzF3Bc5Rtb7JAEN9hw8peZAbapIiwhMfUFwQxjMbhQFY0lIrYBSIj6BmXxQLbIVYVXqb0JF/3
+	NYYrkha6hmD+P12fhyJIVXXLh+zWJhVd7U0jr2QFq+WZleA20zU22hPc4HqYTd9CllJdOn5JZk2+5
+	QSepwVdsmv1oGnYoNn6GOS1E9caDTCMCOSumoXOMPKzxkJBvzUTzn9pLKINSC8RoWd97fFTBG1yYS
+	z072AN333CmxteccFovB53/OSYRDjeaMueQXiTaxKY6/hYkQBYBdh5m/1FhiCiQMoTCib5C8glFQj
+	p2+somOR7K4KU/YOr8oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w176F-00000000sko-2CJ2;
-	Fri, 13 Mar 2026 18:19:03 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w176x-00000000t5j-3eYj;
+	Fri, 13 Mar 2026 18:19:47 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w176C-00000000sjy-3dUv;
-	Fri, 13 Mar 2026 18:19:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id CA7F46012B;
-	Fri, 13 Mar 2026 18:18:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49944C19421;
-	Fri, 13 Mar 2026 18:18:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773425939;
-	bh=2NXO+yF+55T7F+hpfAb0nuG4E5nybIth2x/Lfeit0v0=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:From;
-	b=WkuBmUY5zECY4w8HigOp4c5Dc0Y7y2nfHD6yuEYwFaBxRHSoHOnEVTjF7hkT0eQkA
-	 AFvQ0/U9ShmNbMyzF+0wQhrhDsQwyNxKjC32q2tl+0EsRInNZqjgNxUjA0SajeBrn6
-	 kHFj31oHvk4O5GY8i8NmF5RD6dgQrjiCuW1ZNS0TlFAoxlpUagAwvkYpFuqyVtZphY
-	 QVlHtHnRkgjRr9/4FntuZCDQbU9JYgsYDVeDARhaRlMuvQRsZqk8X1fkK1i1jrac4k
-	 8sYPWv4uyylodoV2LcLxP/nDTVvuq2bcgK0cxCWY0hcOSstFpl3VMDzH3SGAkgADCP
-	 f+nDIUI0cgl7Q==
-Date: Fri, 13 Mar 2026 13:18:58 -0500
-From: Bjorn Helgaas <helgaas@kernel.org>
-To: Christian Bruel <christian.bruel@foss.st.com>
-Cc: Koichiro Den <den@valinux.co.jp>, jingoohan1@gmail.com, mani@kernel.org,
-	lpieralisi@kernel.org, kwilczynski@kernel.org, robh@kernel.org,
-	bhelgaas@google.com, cassel@kernel.org, Frank.Li@nxp.com,
-	vigneshr@ti.com, s-vadapalli@ti.com, hongxing.zhu@nxp.com,
-	l.stach@pengutronix.de, shawnguo@kernel.org, s.hauer@pengutronix.de,
-	kernel@pengutronix.de, festevam@gmail.com, minghuan.Lian@nxp.com,
-	mingkai.hu@nxp.com, roy.zang@nxp.com, jesper.nilsson@axis.com,
-	heiko@sntech.de, srikanth.thokala@intel.com,
-	marek.vasut+renesas@gmail.com, yoshihiro.shimoda.uh@renesas.com,
-	geert+renesas@glider.be, magnus.damm@gmail.com,
-	mcoquelin.stm32@gmail.com, alexandre.torgue@foss.st.com,
-	thierry.reding@gmail.com, jonathanh@nvidia.com,
-	hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
-	kishon@kernel.org, jirislaby@kernel.org, rongqianfeng@vivo.com,
-	18255117159@163.com, shawn.lin@rock-chips.com,
-	nicolas.frattaroli@collabora.com, linux.amoon@gmail.com,
-	vidyas@nvidia.com, shuah@kernel.org, linux-omap@vger.kernel.org,
-	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@axis.com,
-	linux-rockchip@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	linux-tegra@vger.kernel.org, linux-kselftest@vger.kernel.org
-Subject: Re: [PATCH v10 3/8] PCI: dwc: Advertise dynamic inbound mapping
- support
-Message-ID: <20260313181858.GA1427542@bhelgaas>
+	id 1w176v-00000000t3k-0Jtt;
+	Fri, 13 Mar 2026 18:19:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=HKgNDhaBbbTv/+y1AavDqvCj/t0nPjX4gBTDUg9TX6c=; b=HlmU1vlo3KIO02qMTLyo611JUA
+	GuevmmkW1ZLGjpkbUIKBW/wYpXY4r4MU3RopnV9wal8pRzJkJxYE3kl0UdiI7Gb2dgvITJ25JwOeX
+	zr+GJp0GJ2RHEXmlIqbjhv4ZjQfgEMmAeX4PTYKceOjmSzS1zTopO57NDwvwNSidPy0Jx6s32O3n5
+	pWl/9HjA85xY6KDyM9j1DraGCE6HZr24XhznLXOxhWaDgripj7ovjc3Bz4mkH03HBzXR8zmjK+JWX
+	EQgsCzncfzBMK58BSRm5pw5up7l6joAi+svisTOFsMD2xv6KZvwHvq9EgKVx5jFvi8FYDT3AF0VMj
+	vTzCcdYw==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Gerald Loacker <gerald.loacker@wolfvision.net>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, michael.riesch@collabora.com
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Michael Riesch <michael.riesch@collabora.com>,
+ Michael Riesch <michael.riesch@collabora.com>
+Subject: Re: [PATCH] arm64: dts: rockchip: enable vicap dvp on wolfvision pf5 io
+ expander
+Date: Fri, 13 Mar 2026 19:19:39 +0100
+Message-ID: <6246776.lOV4Wx5bFT@phil>
+In-Reply-To: <20260313-wv-io-expander-vicap-v1-1-11001fb3b744@collabora.com>
+References: <20260313-wv-io-expander-vicap-v1-1-11001fb3b744@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <b2b03ebe-9482-4a13-b22f-7b44da096eed@foss.st.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260313_111945_133110_42EE94E5 
+X-CRM114-Status: UNSURE (   9.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,59 +66,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 13, 2026 at 04:59:26PM +0100, Christian Bruel wrote:
-> Hello,
-> 
-> While testing after this series, I encountered regressions on the STM32MP2,
-> which I am unsure how to fix. The failures depend on the order in which the
-> tests are run.
-
-c0f1506f6354 ("PCI: dwc: Advertise dynamic inbound mapping support")
-appeared in v7.0-rc1, so apparently we added a regression in v7.0?  Do
-we need to revert this?
-
-> The STM32 ATU has 4 inbound entries. After enumeration, the first 4 ATU
-> entries are allocated within ib_window_map.
-> 
-> On the first run of ./pci_endpoint_test -v BAR3(for example),
-> SUBRRANGE_SETUP calls dw_pcie_ep_ib_atu_addr(), which frees only one ATU
-> entry (BAR3), because we were in the bar_to_atu case, for the first submap
-> but fails to allocate the second submap. So the test FAILs.
-> 
-> On the second run with a different BAR, SUBRRANGE_SETUP test calls
-> dw_pcie_ep_ib_atu_addr() again, freeing the required ATU entry (BAR1) and
-> successfully using the second ATU entry (3), which was left unallocated by
-> the first test. then now the test PASSes
-> 
-> Therefore, the first invocation of ./pci_endpoint_test on any BAR always
-> fails. Other invocations are fine because the first one has left the missing
-> necessary ATU entry free. Whatever initial BAR number is used
-> 
-> I am unsure how to fix this. Always freeing all BARs before calling
-> set_bar() in the epf-test seems overkill, but safe.
-> I am also considering modifying dw_pcie_ep_clear_ib_maps() to clear N
-> num_submap entries even if ib_atu_indexes was not used yet, since only the
-> full BAR is used during the first invocation from bar_to_atu. But the
-> question is which ATU entry to select ? BAR+1 ?. This seems empirical.
-> 
-> I am not bothered by test failures due to an insufficient number of BARs
-> (this is already the case for BAR5,6), but the fact that the failures depend
-> on the test order is frustrating and show a regression.
-> 
-> But I'm not satisfied with either of the 2 possible fixes mentioned above.
-> 
-> Do you have any other thought ?
-> 
-> thank you
-> 
-> Christian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRnJlaXRhZywgMTMuIE3DpHJ6IDIwMjYsIDE2OjUzOjI5IE1pdHRlbGV1cm9ww6Rpc2NoZSBO
+b3JtYWx6ZWl0IHNjaHJpZWIgTWljaGFlbCBSaWVzY2ggdmlhIEI0IFJlbGF5Ogo+IEZyb206IE1p
+Y2hhZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNjaEBjb2xsYWJvcmEuY29tPgo+IAo+IFRoZSBEaWdp
+dGFsIFZpZGVvIFBvcnQgKERWUCwgdGhlIDE2LWJpdCB2YXJpYW50KSBvZiB0aGUgUkszNTY4IFZJ
+Q0FQCj4gaXMgYnJva2VuIG91dCB0byB0aGUgUEY1IG1haW5ib2FyZCBleHBhbnNpb24gaGVhZGVy
+Lgo+IEVuYWJsZSBpdCBpbiB0aGUgZGV2aWNlIHRyZWUgb3ZlcmxheSBmb3IgdGhlIFdvbGZWaXNp
+b24gUEY1IElPCj4gRXhwYW5kZXIgYm9hcmQuCj4gCj4gU2lnbmVkLW9mZi1ieTogTWljaGFlbCBS
+aWVzY2ggPG1pY2hhZWwucmllc2NoQHdvbGZ2aXNpb24ubmV0PgoKVGhlIEZyb20gc2hvdWxkIG1h
+dGNoIHRoZSBmaXJzdCBTaWduZWQtb2ZmLWJ5IGxpbmUuCgpBbGwgbGF0ZXIgU2lnbmVkLW9mZi1i
+eXMgYXJlIGZyb20gIm90aGVyIiBwZW9wbGUgaGFuZGxpbmcgdGhlIHBhdGNoLAppLmUuIHRoYXQg
+b3RoZXIgTWljaGFlbCBSaWVzY2ggOy0pCgo+IFJldmlld2VkLWJ5OiBHZXJhbGQgTG9hY2tlciA8
+Z2VyYWxkLmxvYWNrZXJAd29sZnZpc2lvbi5uZXQ+Cj4gVGVzdGVkLWJ5OiBHZXJhbGQgTG9hY2tl
+ciA8Z2VyYWxkLmxvYWNrZXJAd29sZnZpc2lvbi5uZXQ+Cj4gUmV2aWV3ZWQtYnk6IEJyeWFuIE8n
+RG9ub2dodWUgPGJyeWFuLm9kb25vZ2h1ZUBsaW5hcm8ub3JnPgo+IFNpZ25lZC1vZmYtYnk6IE1p
+Y2hhZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNjaEBjb2xsYWJvcmEuY29tPgoKCkhlaWtvCgoKCl9f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
+aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
+Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
