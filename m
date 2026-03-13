@@ -4,74 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B80A107BCD3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 990B4107BCD7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:57:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kRj0uQ+7dx5z9WOC71eOL/6fLkkt+TBsYKIIrlu+Ci4=; b=dKkcZs+9DJyS1Z
-	bOQdTm9dLeF9+tL4+UI+53Bd0bTSx41hOBcNqChEWitBgsoXPt6iy0q3p/0mwm0ScZ7peZ0/35YXw
-	CHe9frcZUSPnbxBv1cR49IhWXWSP0IYTa/Hl0ZZtMZcbsyX5BbECnHoSxZq8X9vY3peV9PYCuy5hX
-	NpAM3BzV7CspiQPVQl4YO/3OrUxlK0J+nMSGUqvlRIlUBNi1w2MNHSzXF1rdptbmpXtkg4ATeMBfC
-	SnogN+l+mX/r4Fe487uPd9i239+SPjetnAmXOJ7aYaEIn2Y2aWlIBHsBUrkA6jhW3Hb7RFUv+OJyz
-	qmoimyspppFV5VOzhcFw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nqXSsOV/F/f3EawnwqWzeVLVtqiZDJ4rMadfprGeGx0=; b=Ik/O79rjMBYPEN
+	DyF7go5otV8LgzlVlcN9bn9mtiwB3RXfsCX7gTCbDVZwtIN0Xpv+dXxdPfwcsWHLxQnr9yBLpQ/Sk
+	+MeBTS99DD7/SOV/NJ+5B21cJ1EmvEIYMKcoLnCcQuF6bZwi3IZduDuK1dRv2yHHj/85AMhIZwH+T
+	tnlMDQntTaDySAQwMkl5ArM0R1bsI+wl+853NkL/hIzPMA4hz82b+Zb+9abr7iqSomKGPj9xBS7Ef
+	7zmSt94SdFQ/SYuwKkk21JDOeg3tKV3vXDzFW+YIC9XlDd4cOCUTN3/frrrcbR9oiswNKmq20Wh/f
+	k/irWmtT/3dYinQHuQFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16Rh-00000000luB-2CmQ;
-	Fri, 13 Mar 2026 17:37:09 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16Rc-00000000ltc-381h;
-	Fri, 13 Mar 2026 17:37:08 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 82FC4176A;
-	Fri, 13 Mar 2026 10:36:55 -0700 (PDT)
-Received: from [10.57.59.200] (unknown [10.57.59.200])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 8E8C03F73B;
-	Fri, 13 Mar 2026 10:36:58 -0700 (PDT)
-Message-ID: <4f9fdfc9-f2ad-49b1-a6b9-ae64aaa47cfd@arm.com>
-Date: Fri, 13 Mar 2026 17:36:56 +0000
+	id 1w16lO-00000000nqg-3m9d;
+	Fri, 13 Mar 2026 17:57:30 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w16lJ-00000000nlc-2MhF;
+	Fri, 13 Mar 2026 17:57:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773424641;
+	bh=zoRJcc+9LulL0mfzN2JJ+x4jgcsK4gDEhoHOhad868s=;
+	h=From:Subject:Date:To:Cc:From;
+	b=ni5gyQtlBVHDrrjUKVh1j8mnsqSIUA+MVOmT53faStbFBl4hqZ3y9YhLleUH9E/MZ
+	 dFk4jF06iv5Q2Ohzc5WF3AlCCOw5PAwGDrmXIKYkjNSXEMx+RYREYkkevi6hjQzUiC
+	 YpmROe6eRSsNSVLdQUVPk2qMu4kBPanA871THdi5UyKKN/SjRimjcW/3bZziXRIP+B
+	 2JTc0m+3Fp9V9eyfVqEWDeFA4u+SVlWtRVOLIhTE5xkO8ln4P3zBOfc5jaOcTofR2F
+	 visyTMoKVLdQxY1jcz+J6QqAYQ5En5sMXijnDlNEWD+I3LAqRapMY3aif8sUsuKsyf
+	 LXI1Q8gQVTNnQ==
+Received: from jupiter.universe (dyndsl-091-248-210-078.ewe-ip-backbone.de [91.248.210.78])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6AB5A17E0454;
+	Fri, 13 Mar 2026 18:57:21 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 23B47480026; Fri, 13 Mar 2026 18:57:21 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Subject: [PATCH v3 00/12] phy: rockchip: usbdp: Fixes, DP 1-lane support
+ and cleanups
+Date: Fri, 13 Mar 2026 18:57:09 +0100
+Message-Id: <20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-To: Danilo Krummrich <dakr@kernel.org>
-Cc: Manivannan Sadhasivam <mani@kernel.org>,
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>,
- =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>,
- Shawn Lin <shawn.lin@rock-chips.com>, Hans Zhang <18255117159@163.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Wilfred Mallawa <wilfred.mallawa@wdc.com>, linux-pci@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Anand Moon <linux.amoon@gmail.com>,
- Grimmauld <grimmauld@grimmauld.de>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- "Rafael J. Wysocki" <rafael@kernel.org>, driver-core@lists.linux.dev,
- Lukas Wunner <lukas@wunner.de>
-References: <20260226101032.1042-1-linux.amoon@gmail.com>
- <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
- <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
- <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
- <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
- <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
- <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org>
- <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
- <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org>
- <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
- <DH0TM60TVX5D.20W4O1X696ALA@kernel.org>
- <6cfe4bda-036f-4bb9-8a08-ed75f61cae24@arm.com>
- <DH1QCLS89ADR.3H0XABP0GEFQT@kernel.org>
-From: Robin Murphy <robin.murphy@arm.com>
-Content-Language: en-GB
-In-Reply-To: <DH1QCLS89ADR.3H0XABP0GEFQT@kernel.org>
+X-B4-Tracking: v=1; b=H4sIAPVPtGkC/4XNTQrCMBCG4auUrI0kUxKpK+8hLvIzscHahMQGp
+ fTupl2JIC7fD+aZmWRMHjM5NjNJWHz2YazR7hpiejVekXpbmwADyYC1NAVzM72PdMraRmoGVOM
+ UqdCis04LyVVL6nFM6Pxzg8+X2r3Pj5Be25/C1/UvWThllEslXQdo+UGeTBgGpUNSexPuZGULf
+ FD8NwWV0vKABkC4TuI3tSzLGwipEbMLAQAA
+X-Change-ID: 20260203-rockchip-usbdp-cleanup-5b59dfb561a3
+To: Vinod Koul <vkoul@kernel.org>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>
+Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Yubing Zhang <yubing.zhang@rock-chips.com>, 
+ Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, kernel@collabora.com, 
+ devicetree@vger.kernel.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ William Wu <william.wu@rock-chips.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2479;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=zoRJcc+9LulL0mfzN2JJ+x4jgcsK4gDEhoHOhad868s=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm0UADABW9YDxyY68d7afn9D1cIo5jsgg45q
+ VO38rNb9o0vi4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJptFAAAAoJENju1/PI
+ O/qaG4EQAJzOGESyYslWAQIb4dMQ0kLRYZT3mv4tvLmYE+PalDRUV2Ps5nVMU5QJro3lk4Pv1/D
+ SSoIP2TAPDFV7ftpEj4I1uMZIeqLi/n5oQPxiGnpoQSov0QE5ZxrCoNFZc0oN3GGvWkIEhKfxyq
+ 92UzdQ8VPc5hZia+UrOp+askt+aE3Qml2eptzbfJx9a4CqhKPzAIUSTXPfM3QvU1ixnIAl94OXv
+ w/ZNd6vqoOmTQq8+733HhffwnglMG6bo9Gk6nmVaTVqLi2Y5Dx6IGU62ame+OBs6cMG6UpEptIe
+ n9SO6fJt5SUYv56fwbXV8imc2H3OeWRnMPPY5nCdnzvPvcG86rGl5CjDXnfdRZcBgYoiwcpfDwA
+ Ov9/kuacn3M3YAkp/1jth4NxcvC4xU5tV9+8QLpUp/jcjcKUWfqaSnEATCNBp1Gl3GFaUJnLD+H
+ FzO+ncOcuzTbakC+ra6OGrv63JOmT3EwMyRmsAAQ9TlQfZctBaqXIjFtLYwuHjONvvK1pgFlmdr
+ O/8g6miiKPl5krjtXwnOd7I6b5KJMMX+/vaTwIaIsOruFfxCy67j0Xb5Ym0kJtB9it4Alfsqr0j
+ QpKbHcfzMPtR9VxUVI4+CRx518miuwLbefAb9fak0Ukf7dLh7Dg4PqM/FfEQRshClt5JD2IwTx3
+ lO2PdK8IzQo0iTCuz5x42BA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_103704_882038_8FBB9FD2 
-X-CRM114-Status: GOOD (  31.67  )
+X-CRM114-CacheID: sfid-20260313_105725_766679_7EA75B70 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,95 +101,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 2026-03-13 2:39 pm, Danilo Krummrich wrote:
-> On Fri Mar 13, 2026 at 2:15 PM CET, Robin Murphy wrote:
->> On 2026-03-12 12:59 pm, Danilo Krummrich wrote:
->>> On Thu Mar 12, 2026 at 1:48 PM CET, Robin Murphy wrote:
->>>> On 2026-03-11 9:09 pm, Danilo Krummrich wrote:
->>>>>    From a driver-core perspective I think we're rather limited on what we can do;
->>>>> we are already in async context at this point and can't magically go back to
->>>>> initcall context.
->>>>>
->>>>> So, the only thing I can think of is to kick off work on a workqueue, which in
->>>>> the end would be the same as the deferred probe handling.
->>>>
->>>> Hmm, in fact, isn't the deferred probe mechanism itself actually quite
->>>> appropriate?
->>>
->>> Yes, I've also mentioned this in [1], including the fact that it technically
->>> even complies with the guarantees given by PROBE_FORCE_SYNCHRONOUS. I.e. the
->>> documentation says:
->>>
->>> 	Use this to annotate drivers that need their probe routines to run
->>> 	synchronously with driver and device registration (with the exception of
->>> 	-EPROBE_DEFER handling - re-probing always ends up being done
->>> 	asynchronously).
->>>
->>> However, I'm still not sure how I feel about this, since I consider this to be
->>> more like a workaround that just moves things to a "more approprite" async
->>> context.
->>
->> I guess the underlying problem there is that there are at least 3
->> different significant aspects to what "synchronous" can mean:
->>
->> - literally in the context or device/driver registration as documented.
->> Off-hand I'm not really sure what useful property may be *specific* to
->> those conditions that a driver might rely on, other than for
->> super-special cases like platform_driver_probe().
-> 
-> I'm not worried about this one, as it is already special by not being compatible
-> with deferred probe. I.e. the caller already has to promise that the
-> corresponding probe() call will never return -EPROBE_DEFER.
-> 
-> This is a much more error prone requirement than just "don't call this from
-> async" already.
-> 
->> - serialised, i.e. probes of multiple devices won't happen concurrently
->> on multiple threads. This is probably the one hiding the most driver
->> bugs, e.g. internal shared/global state without sufficient
->> synchronisation. I guess this falls out as a side-effect of the first
->> condition, but AFAICS it *can* also still provided by deferred probe
->> (given that it's a single work item iterating a list one-by-one)
->>
->> - in some regular thread context that isn't liable to have issues
->> synchronising against other async_func workers (i.e. the request_module
->> case). Again, deferred can't have a problem here, or it wouldn't have
->> worked properly in general for the last decade.
->>
->> So it's not that we'd be relying on some dubious "deferred is always
->> synchronous" assumption - AFAICS deferred *can* launch async if the
->> driver permits it - more just ratifying that deferred is still able to
->> effectively honour all the useful properties of PROBE_FORCE_SYNCHRONOUS
->> other than "during registration of the thing".
-> 
-> Yes, and as mentioned above, EPROBE_DEFER has always been a valid path for
-> PROBE_FORCE_SYNCHRONOUS, which is why I brought it up as a a workaround in the
-> first place.
-> 
-> (The reason why I still say "workaround" is because nothing actually needs to be
-> deferred.)
-> 
-> Anyways, as I mentioned...
-> 
->>> On the other hand, eventually we want everything to work with
->>> PROBE_PREFER_ASYNCHRONOUS, so maybe it's also good enough for the time being.
-> 
-> ...plus there are not a lot of PROBE_FORCE_SYNCHRONOUS left anyways.
-> 
-> Do you want to send a patch?
+This series overhauls the Rockchip USBDP driver; apart from a
+a bunch of cleanups and small improvements the main goal is to
+get the driver ready for proper USB-C DP AltMode support.
 
-Sure, I just wanted to check that you didn't see anything obviously 
-wrong with my reasoning-by-inspection - if you're sufficiently happy 
-then I'll write this up as a proper commit message and post the patch 
-(likely on Monday now) so we can all nit-pick the details :)
+Once this series has landed, it unblocks enabling proper USB-C
+DP AltMode on the RK3588 and RK3576 platforms incl. runtime PM
+for the Synopsys DesignWare DisplayPort controller.
 
-Cheers,
-Robin.
+Apart from this series, further changes are required on the
+DRM side. There are no compile-time dependencies between the
+DRM side and the PHY side, but the PHY side must be applied
+to avoid SErrors once runtime PM is added to the DisplayPort
+controller driver. Thus it would be really good to land this
+series in the next merge window.
+
+Changes in v3:
+- Link to v2: https://lore.kernel.org/r/20260213-rockchip-usbdp-cleanup-v2-0-b67ec225f96e@collabora.com
+- Add patch to register the USBDP PHY as DRM bridge
+- Add patch to describe ports in DT binding (used by the DRM bridge)
+- Add patch to drop HPD handling from the PHY
+
+Changes in v2:
+- Link to v1: https://lore.kernel.org/r/20260203-rockchip-usbdp-cleanup-v1-0-16a6f92ed176@collabora.com
+- Added new patches to fix USB3 SError
+
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+Frank Wang (1):
+      phy: rockchip: usbdp: Amend SSC modulation deviation
+
+Sebastian Reichel (9):
+      dt-bindings: phy: rockchip-usbdp: add improved ports scheme
+      phy: rockchip: usbdp: Do not loose USB3 PHY status
+      phy: rockchip: usbdp: Keep clocks running on PHY re-init
+      phy: rockchip: usbdp: Add missing mode_change update
+      phy: rockchip: usbdp: Rename DP lane functions
+      phy: rockchip: usbdp: Use FIELD_PREP_WM16_CONST
+      phy: rockchip: usbdp: Cleanup DP lane selection function
+      phy: rockchip: usbdp: Register DP aux bridge
+      phy: rockchip: usbdp: Drop DP HPD handling
+
+William Wu (1):
+      phy: rockchip: usbdp: Fix LFPS detect threshold control
+
+Zhang Yubing (1):
+      phy: rockchip: usbdp: Support single-lane DP
+
+ .../bindings/phy/phy-rockchip-usbdp.yaml           |  23 +++
+ drivers/phy/rockchip/Kconfig                       |   2 +
+ drivers/phy/rockchip/phy-rockchip-usbdp.c          | 158 +++++++--------------
+ 3 files changed, 74 insertions(+), 109 deletions(-)
+---
+base-commit: 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f
+change-id: 20260203-rockchip-usbdp-cleanup-5b59dfb561a3
+
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
 
 _______________________________________________
 Linux-rockchip mailing list
