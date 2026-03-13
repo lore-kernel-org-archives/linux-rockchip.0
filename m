@@ -4,77 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 976BB105F7BF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 15:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3882105F7BF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 15:59:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=5IE/qjaJRhZXYN37+EOGzUC6cGjt1jkdjnNysOumTn4=; b=A7oUTGLSrZs6aD
-	d3oqD+Qzn1C1Co1Q2MSPXE4B+RnQ6dMUlryIypc+mv0K+XF7IJi4ypwxdnsU1XQONibTRfzlE5OFC
-	MWTQ/E+DcF4IP/Y8P50/zSYfMhTvgM3N9NR9kK7qeGP8qxxPTnOT196JMpxVZrVh/giLxjPTGiAIB
-	hptdGapLl/oYglYFjWzPOh7lXesfodMLgsbeqGRGdLj3DcNAholH8lZNmVwMvFp/UykPaV1Ax7WVw
-	JlXKbcScBH02NDhnLOQju3T8fl57FYhiRoKIroaG9EWgjtkKdxe9qRbIGxkLuzRwpf3vBzDFVswnY
-	AlzALjy//FEVUQHA0Zrw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:CC:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JBQSlMotwugtvpARZNGI3/slj3AKzPT3ixnGchiCLQ0=; b=p3caY9wCBkADt9
+	QKZoRzbpFvbVODO+tWOPASJBE8d7fBPa4QMvUwZ4ul+HUJ8/qVD4wUP8S1JTZ59EkY0wKRu9u573R
+	Rpa9h4IVhUfgk8vFHVZ0T6GBpu4JwfRsL44HK7Sz0fX5eSMX+E6oa74k3/3W1kFgp/8b4Kao1CJsw
+	9iVYf33k9KOOdAMxSIsS9YHRNuqTgsp2xqZN377MTLKCY2Rw1Dbq/m/tgqnKclfQjB/R1ysug/liu
+	cDtWYvJylU420+xIuuKclA7/K6dfVKyAmhoTsYPzO6312gdoxWl05/kQQvjT4piL48Z59/vyHD08g
+	/Y+tLbzGZ5z+S58fgkkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w14pS-00000000aRp-31N7;
-	Fri, 13 Mar 2026 15:53:34 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w14vW-00000000bRj-1IK9;
+	Fri, 13 Mar 2026 15:59:50 +0000
+Received: from mail-northeuropeazon11011002.outbound.protection.outlook.com ([52.101.65.2] helo=DU2PR03CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w14pP-00000000aQp-3q0Y;
-	Fri, 13 Mar 2026 15:53:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2B61840225;
-	Fri, 13 Mar 2026 15:53:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 070CAC19421;
-	Fri, 13 Mar 2026 15:53:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773417211;
-	bh=kU7hMmxmzKGXeVy3rmWVv+bR1lRVLBiYIDHHCO9xWVc=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=JzI9/LoSSDwo6u9sJlEHZC2YLhmwETciWJ5sojIWY0xZ5Y6SIKLQHczxjnTShO1xy
-	 QfXJRv9qxsyLYw2G00TBPaACZVBNIH8z8xZ1hTMXCIlLAVGS98YT7ZZNwMah7z6ug0
-	 nbLTMTWK6bf7hGu/Grdcwc4UClfiiJ8L/xVGVitvBQgBYU8sUZ4qaQRjOTywsUl4xX
-	 jsWnpywp5B1z7aTt6zxt7Zf7JRKrX1xDKWeI1dufXrE+JHC6g+9mUjx8SgOTO+sGJL
-	 b6Zj8fACy/F0isB7gohymA3HB2HdAhaudojyGqJoDj+2vr1QhHKbIn1vp91PfPdfV9
-	 B28qvBy5RmIHQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id E9D0F105F7BF;
-	Fri, 13 Mar 2026 15:53:30 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 13 Mar 2026 16:53:29 +0100
-Subject: [PATCH] arm64: dts: rockchip: enable vicap dvp on wolfvision pf5
- io expander
+	id 1w14vR-00000000bQj-3Eq2;
+	Fri, 13 Mar 2026 15:59:47 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Kb2x55vBrTYcc2Z8cQkLBP2JBxckso1Vd/XKmsxuEs9jS60Pwz+HUIyrioi9EiozhaToGXZPSFA3/LexDzG2FTKZ4rSj24unlNpb9ChtpXz7GrCBagBTQpnOSSKWJEml/VIRPZScPr8qkghc+K6GoUd3qwYGvc0hyqXZ9yPKk3SbMnuj0DccHkrrHgqC35z2EuGU0uibNJXpIJivS7XVHVA9NsKLXj+ivglYoMxF9QzAqOGeC7cBHcIHXDDtVpIDD5u3qXWEgLE4iN29Oh6elDQS8xnENRhkemxVvlR8ztk9RyccAGI7lsm7nX8ZEzZdanm5HFLBBdEv5kdabb3g/w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fR2dh5GSPHSR2HP3TQPobfR4vXyawiK37BD3N2AYz60=;
+ b=Rb/qXHaRRy6G3izSZRn9qcIZj4KnSpVJDsvdmlA5oH5MllcISK9IMxBsek6LUGF8HcL1gSFHaxO9THhp3xJAzJDf1LKdTzpit+Yz3odec5XmqOoZP+2eGqThz+9hm1Fn3Vut+FEO30r8TwO6SvE5J81QSC96tSSBDe/CUFsBRriB0oYcosDgLXGhtvM0kQvUZ8zED6yyPfbLyEad4zE/elFTH9SL3Es5NWER8NjZ41IVh3vixAi/oPkHuEFRtG+LDy8jpfW3hXu39YPIn27a8o9JoEJOdnyAET7dXVMBho9J+2mYdHzyAPxhrE0smMLq2+yNog+t3uuv6+dC9JyOdw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 164.130.1.59) smtp.rcpttodomain=valinux.co.jp smtp.mailfrom=foss.st.com;
+ dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fR2dh5GSPHSR2HP3TQPobfR4vXyawiK37BD3N2AYz60=;
+ b=gpKJdbeRfkT4L2/Wj8/QU3w6hl73nu1DQsr30U+niIAI+lWJzghnjO9wRZfm0QHyk8xqLnYA5w73dVx3ub3bGbTGvf8iJrLT2tc5Pd5NN54bm9cmwErIrHgdxt1yvfcMhaMC5ax8gOMcgo3OojElHxj0/YAUro83gSZSqVcxXg22dZohLVWLbf07EMOQURQcyXewaUKm9mDS2H2pRXrV+N4nmN0kxT+ualyFWldTyv/Rt6if2nfbDmYGxyswbHja0jI/UNAD4nD8AD+RBFwQoTGNbrfoW4UgNmpoIbCjAkYveGi2eyNg5wJMRNNdqcwQYS6E6DEhUbXtSS0ckMnoRg==
+Received: from DU2PR04CA0283.eurprd04.prod.outlook.com (2603:10a6:10:28c::18)
+ by AS1PR10MB5529.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:20b:474::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.16; Fri, 13 Mar
+ 2026 15:59:35 +0000
+Received: from DB1PEPF000509E9.eurprd03.prod.outlook.com
+ (2603:10a6:10:28c:cafe::89) by DU2PR04CA0283.outlook.office365.com
+ (2603:10a6:10:28c::18) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9678.26 via Frontend Transport; Fri,
+ 13 Mar 2026 15:59:35 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.59)
+ smtp.mailfrom=foss.st.com; dkim=none (message not signed)
+ header.d=none;dmarc=fail action=none header.from=foss.st.com;
+Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
+ designate 164.130.1.59 as permitted sender) receiver=protection.outlook.com;
+ client-ip=164.130.1.59; helo=smtpO365.st.com;
+Received: from smtpO365.st.com (164.130.1.59) by
+ DB1PEPF000509E9.mail.protection.outlook.com (10.167.242.59) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.9678.18 via Frontend Transport; Fri, 13 Mar 2026 15:59:34 +0000
+Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpo365.st.com
+ (10.250.44.71) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Fri, 13 Mar
+ 2026 17:02:05 +0100
+Received: from [10.130.77.120] (10.130.77.120) by STKDAG1NODE2.st.com
+ (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Fri, 13 Mar
+ 2026 16:59:32 +0100
+Message-ID: <b2b03ebe-9482-4a13-b22f-7b44da096eed@foss.st.com>
+Date: Fri, 13 Mar 2026 16:59:26 +0100
 MIME-Version: 1.0
-Message-Id: <20260313-wv-io-expander-vicap-v1-1-11001fb3b744@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAPgytGkC/x2N0QrCMAwAf2Xk2cDWUQV/RXxI0+gCIyst1sHYv
- xt8vIPjDmhSVRrchwOqdG26mcN0GYAXsregZmcIY7iO8zTjt6NuKHshy1KxK1PBEGOSwJJvkcH
- TRE0wVTJePLbPurosVV66/1+P53n+AJmGMlJ7AAAA
-To: Gerald Loacker <gerald.loacker@wolfvision.net>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
- Michael Riesch <michael.riesch@collabora.com>, 
- Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773417210; l=2200;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=AxZQMPkNnnwsrhXc1fCRiYhuc1Gbnk7fB2Vzh07TFp8=;
- b=uWjRu68zw60pg4cPIDcmL5g1Cl+/n8xiSkYermWSAGsa1U/hZf9rlWQhditBQT7OFRSZByQr7
- SwDO3yO+JgdCXu61Ekdyr/KFcG789qndRQSdTcDnERwYPo0k/KLE39Z
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v10 3/8] PCI: dwc: Advertise dynamic inbound mapping
+ support
+To: Koichiro Den <den@valinux.co.jp>, <jingoohan1@gmail.com>,
+	<mani@kernel.org>, <lpieralisi@kernel.org>, <kwilczynski@kernel.org>,
+	<robh@kernel.org>, <bhelgaas@google.com>, <cassel@kernel.org>,
+	<Frank.Li@nxp.com>
+CC: <vigneshr@ti.com>, <s-vadapalli@ti.com>, <hongxing.zhu@nxp.com>,
+	<l.stach@pengutronix.de>, <shawnguo@kernel.org>, <s.hauer@pengutronix.de>,
+	<kernel@pengutronix.de>, <festevam@gmail.com>, <minghuan.Lian@nxp.com>,
+	<mingkai.hu@nxp.com>, <roy.zang@nxp.com>, <jesper.nilsson@axis.com>,
+	<heiko@sntech.de>, <srikanth.thokala@intel.com>,
+	<marek.vasut+renesas@gmail.com>, <yoshihiro.shimoda.uh@renesas.com>,
+	<geert+renesas@glider.be>, <magnus.damm@gmail.com>,
+	<mcoquelin.stm32@gmail.com>, <alexandre.torgue@foss.st.com>,
+	<thierry.reding@gmail.com>, <jonathanh@nvidia.com>,
+	<hayashi.kunihiko@socionext.com>, <mhiramat@kernel.org>, <kishon@kernel.org>,
+	<jirislaby@kernel.org>, <rongqianfeng@vivo.com>, <18255117159@163.com>,
+	<shawn.lin@rock-chips.com>, <nicolas.frattaroli@collabora.com>,
+	<linux.amoon@gmail.com>, <vidyas@nvidia.com>, <shuah@kernel.org>,
+	<linux-omap@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
+	<imx@lists.linux.dev>, <linuxppc-dev@lists.ozlabs.org>,
+	<linux-arm-kernel@axis.com>, <linux-rockchip@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
+	<linux-stm32@st-md-mailman.stormreply.com>, <linux-tegra@vger.kernel.org>,
+	<linux-kselftest@vger.kernel.org>
+References: <20260124145012.2794108-1-den@valinux.co.jp>
+ <20260124145012.2794108-4-den@valinux.co.jp>
+Content-Language: en-US
+From: Christian Bruel <christian.bruel@foss.st.com>
+In-Reply-To: <20260124145012.2794108-4-den@valinux.co.jp>
+X-Originating-IP: [10.130.77.120]
+X-ClientProxiedBy: STKCAS1NODE1.st.com (10.75.128.134) To STKDAG1NODE2.st.com
+ (10.75.128.133)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB1PEPF000509E9:EE_|AS1PR10MB5529:EE_
+X-MS-Office365-Filtering-Correlation-Id: c8426537-1976-4da1-02e9-08de811985b6
+X-LD-Processed: 75e027c9-20d5-47d5-b82f-77d7cd041e8f,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|36860700016|7416014|376014|1800799024|82310400026|18002099003|56012099003|22082099003;
+X-Microsoft-Antispam-Message-Info: fw2s3TSC4OSqWB3QSZGwaozOdRgLbvywUwgpMs4/8C8noz+YqHSBbIk0xvKn7FDYLV+/7rDpQPaRj9mzp/+5nJ0M9+irRlN9HlqIru0wjxOnhfi6/ng0fcD8MvhuxAZZfmxZzFpSFBeD6l5Rx1BZkcI8OH9IdD9oDZhMMMvdH4qkEcGONUeos7qhxS3Pm7kwMFRQdKMRcM28FG2Z3/VsESf0e0S09FAC5R38EEulZdO1A61DWBIUVj8Cj04xOUt70Ef2QqO/Qn3oSFbE33Fsbnt4WTQ5LkFUXXgt1XsfmLvRlkJ4d2BJIi8m5+DGPIHXOLoreyYVBonUVAJZrCV0c8Mimg+DEcf+9MbjF+kYSDl+jJHk89xcmRqCIeNrWIL7rLa0D/ZSEg8XkYuVKb6HILjktp9tlmiSbmB7P1cM9xfKT17m1ic37wqI2Eli4+D1DP8L2kzev01LbIYZtQEjjrMTBQ3X2f4QI21IbuPJHqlNQG0XL8Kv5l7iBhnRTr4onyJGIHwywo7Ts/Jmol+61A27irVIgQh17r+VqUUm+m0SRPuJWebSl+M7zIJe7D3+scKVXZfwRFnnjqqKE7Yw+plGOSSmrJ7SAQ1W9gTt3PDuG9evFIHKoKdBw59C1RlTchruEKoycqPPHOzxs1eBFwySto1fw2QUtDwa1y+bb/NRjGA7SoVs4ShNzCXr7sCT4fk6W3zE1aqGvA9gYhp25kINGwoBqrZ/T9MJmEloAtYKAZ7XbE3bGsveIqZ9Aa4HmBTUMNKPW3UE3YuAv4Sr+Q==
+X-Forefront-Antispam-Report: CIP:164.130.1.59;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(36860700016)(7416014)(376014)(1800799024)(82310400026)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: TCChnitx4bv7GwJxbg2co3WJ1o0/vLzxAZ+5RWjFIj9Fi+VADGhjsGJ8wL+BXhF1Zrkfc0QVyUOEBn8OA5F4CCvXUHAKGFytDzYgfkRNaN7iU3nri9WaRnkWiYG4TZkJBSvx6t7jztw1cf+6kRsBEzZpkyYJRIPemkL7AlQB7JAYkE4vHJrh2bEdLblFDJH3kSxG+1ZdZi58LWTr/dTK8/itfj80yDV1a2wC0A1cwrcJDEzA8d3VAEe34YJC72HjHXmR8HJxwSIzQH6B/wDLVd3aR4ysgjJhz2IYU3+hNZnPzulF70Pg16pKF24YPXqVKQjBsW1PVDVHMAo566SBkUq0TdloOvBfCohZEC+nNo9T078fY3EinexDbWyG8KB4AdAxERHYJnRYYL6UIhCOwolidheRqRKmVrImhRtFNz7BNGkiMTAbob3djDiIXc53
+X-OriginatorOrg: foss.st.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Mar 2026 15:59:34.9843
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: c8426537-1976-4da1-02e9-08de811985b6
+X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.59];Helo=[smtpO365.st.com]
+X-MS-Exchange-CrossTenant-AuthSource: DB1PEPF000509E9.eurprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS1PR10MB5529
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_085332_003226_0DD535E2 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20260313_085946_383610_DAF19E7B 
+X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,84 +145,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
+Hello,
 
-The Digital Video Port (DVP, the 16-bit variant) of the RK3568 VICAP
-is broken out to the PF5 mainboard expansion header.
-Enable it in the device tree overlay for the WolfVision PF5 IO
-Expander board.
+While testing after this series, I encountered regressions on the 
+STM32MP2, which I am unsure how to fix. The failures depend on the order 
+in which the tests are run.
 
-Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
-Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
-Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
-Habidere,
+The STM32 ATU has 4 inbound entries. After enumeration, the first 4 ATU 
+entries are allocated within ib_window_map.
 
-This patch was skipped when the RK3568 series was applied, as the
-MEDIA_PCLK_SAMPLE_DUAL_EDGE definition was introduced in the very same
-series.
+On the first run of ./pci_endpoint_test -v BAR3(for example), 
+SUBRRANGE_SETUP calls dw_pcie_ep_ib_atu_addr(), which frees only one ATU 
+entry (BAR3), because we were in the bar_to_atu case, for the first 
+submap but fails to allocate the second submap. So the test FAILs.
 
-With the definition mainline for two kernel releases now, it should be
-safe to merge this device tree modification.
+On the second run with a different BAR, SUBRRANGE_SETUP test calls 
+dw_pcie_ep_ib_atu_addr() again, freeing the required ATU entry (BAR1) 
+and successfully using the second ATU entry (3), which was left 
+unallocated by the first test. then now the test PASSes
 
-Thanks in advance!
----
- .../rockchip/rk3568-wolfvision-pf5-io-expander.dtso  | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+Therefore, the first invocation of ./pci_endpoint_test on any BAR always 
+fails. Other invocations are fine because the first one has left the 
+missing necessary ATU entry free. Whatever initial BAR number is used
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
-index 048933de2943..8cfce71dd318 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
-@@ -11,6 +11,7 @@
- #include <dt-bindings/clock/rk3568-cru.h>
- #include <dt-bindings/gpio/gpio.h>
- #include <dt-bindings/interrupt-controller/irq.h>
-+#include <dt-bindings/media/video-interfaces.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- 
- &{/} {
-@@ -134,3 +135,22 @@ &usb2phy0_host {
- 	phy-supply = <&usb_host_vbus>;
- 	status = "okay";
- };
-+
-+&vicap {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&cif_clk &cif_dvp_clk &cif_dvp_bus16>;
-+	status = "okay";
-+};
-+
-+&vicap_dvp {
-+	vicap_dvp_input: endpoint {
-+		bus-type = <MEDIA_BUS_TYPE_BT656>;
-+		bus-width = <16>;
-+		pclk-sample = <MEDIA_PCLK_SAMPLE_DUAL_EDGE>;
-+		rockchip,dvp-clk-delay = <10>;
-+	};
-+};
-+
-+&vicap_mmu {
-+	status = "okay";
-+};
+I am unsure how to fix this. Always freeing all BARs before calling 
+set_bar() in the epf-test seems overkill, but safe.
+I am also considering modifying dw_pcie_ep_clear_ib_maps() to clear N 
+num_submap entries even if ib_atu_indexes was not used yet, since only 
+the full BAR is used during the first invocation from bar_to_atu. But 
+the question is which ATU entry to select ? BAR+1 ?. This seems empirical.
 
----
-base-commit: 1f318b96cc84d7c2ab792fcc0bfd42a7ca890681
-change-id: 20260313-wv-io-expander-vicap-255be2ced75c
+I am not bothered by test failures due to an insufficient number of BARs 
+(this is already the case for BAR5,6), but the fact that the failures 
+depend on the test order is frustrating and show a regression.
 
-Best regards,
--- 
-Michael Riesch <michael.riesch@collabora.com>
+But I'm not satisfied with either of the 2 possible fixes mentioned above.
 
+Do you have any other thought ?
 
+thank you
+
+Christian
 
 _______________________________________________
 Linux-rockchip mailing list
