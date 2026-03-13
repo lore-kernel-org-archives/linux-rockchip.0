@@ -4,80 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FCBA105F79B
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 11:09:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33A0A105F7A8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 12:56:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A99GhdKQE1mNmv3bnrHMp6JFFsvGpl2s7Q5b6XV5c7o=; b=K6ulwvyIzW4ilO
-	RwgvvK83czraV5mQFrIJJ/t64UBSvY0fq+A8+/eFASbcnFsjSiFwfydEdLlvVnySlT+C4ciLnqtqh
-	fPcIS03N8yVgX68B7T/aKjfj5UUT1b+OiFpv+dJWlb9SvzHREMlrY78x0ACCPSi6s+K+A+UXV1slh
-	2yWrD7LFSVu1/Sjtza+EmrbFZED/xhzcMroczATGOERQcsebwjojtD1uejm7ASlShWBuHVYIWq61e
-	C5ljnd+nMMVip8CdsokvKS3menIK+HD2jaCLkGOuLRIJgVQiZRtJ+Q03q6+M8eDAWSz38ozXEk+xs
-	TeNwdwJQYoo1E5OlPaZg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VMNyB0TLUZjCaxzHXFleVPe8U0RBBPYLnHEeP50Tl0o=; b=umPkab7hHsaxY3M8cj4iv3Ds1L
+	GxFFFEUzdkwrilHvP9leIOyBFwvOEQ2yDumj++SMWB1HjCyv/Lfiwx1g9kHA/ZhOHhTZrBnPFUbvs
+	7ie7fTB4ZV8jvvyS2H4X9YMJCJcucXB3aZBKTuEuavm0U61hAeIb7hbSmrhdA6anDFYyWwt5TT4+Y
+	tbW7n9tnQZv18kd6bHszPD/FNMouRZg+LxLZ9rbPelaXNWYqVNUTLp/DGX+vXnYsXwJmXcaunuiHK
+	X7S66H/JPVCF+kC111TedBDOnAXsjGz2i39v9X5XsX0VPxlJdedhredERTXfMrn4FvdeBQRBszG/2
+	f4eholDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w10O2-0000000HZwn-0NAb;
-	Fri, 13 Mar 2026 11:08:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w123g-00000000A2m-2lrZ;
+	Fri, 13 Mar 2026 12:56:04 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w10Ns-0000000HZqU-2ENR;
-	Fri, 13 Mar 2026 11:08:53 +0000
+	id 1w123Z-00000000A1Z-2bRw;
+	Fri, 13 Mar 2026 12:55:57 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 795EB442F8;
-	Fri, 13 Mar 2026 11:08:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 130B9C2BCB0;
-	Fri, 13 Mar 2026 11:08:47 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F07486012B;
+	Fri, 13 Mar 2026 12:55:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8865AC19421;
+	Fri, 13 Mar 2026 12:55:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773400127;
-	bh=eXpDdX/kQyDxNpLURS993lHyshWENbFjP5/yo5InZe4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=dIw/Jz8vkWHaZ03tSMACJ28koZon8C9jZBYEtu3vvb2pGrszXb+zEWlPwfoMkHeqx
-	 Q8FcQPko2TaQqoVVC2Rt7zwW2dA5jwBPjhPmDcMlyoW68R9O+QUmrOVvtDfxTTCa74
-	 MCYqznGBwf7+FoGX+yM2bkSM2Xu0RJ25XzA224KDQjMfc9vtemNMdnycRKyohM+Lfz
-	 KjKodbFhGmi/PLUPH6VKefAKzXO3q/LkyJJGKTImwksx3vJuQWwnVeh7cBa64xwF4i
-	 GCl7CtlU3lQ+ESTE41uCbDmV6ar6iQnCUdK3NS4mlQDTL5H2/yxtPCil6j8EOOWWyA
-	 vGQEMjpa66ipA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id F0108105F79B;
-	Fri, 13 Mar 2026 11:08:46 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 13 Mar 2026 12:08:46 +0100
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: add mipi csi-2 receiver nodes
- to rk3588
+	s=k20201202; t=1773406556;
+	bh=Zjx0eOHVxG9gyRtEPqgdCcdKSmIhSdKw+KfUYhGrs8w=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=LKDNhWqZ9gcLlJdoxr0XynPiyUoe0daj5KnfLIG4JofOAQVLnpfys+tsWuBfR2BP+
+	 6BJj6yZqfdm3hP9/V+3GjcABC4QPZaLJh+UehwPfjEiiPgBRLJ6mgswvf9usqZ5HyW
+	 B35LWJTwY7IrxQ1ooNqsQWH1kQI+VgfVN7nqixPusURihdngD8rUG+kVXzeu3RPREe
+	 HL0ID1LecKPKPy/Ia8QeXmRWoF6BA05QvmnIjDA4KKqSsmWbqzdha1+mMcteN7bbhf
+	 Hzm7r3p3USkrdmFn6vaEWdLOJOjaqX2Y8UmAlpDxnlihm5RiCIr2WOGSb3NBQJJndm
+	 MHJylAxBihjJQ==
+Date: Fri, 13 Mar 2026 12:55:51 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Pei Xiao <xiaopei01@kylinos.cn>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH v2 01/17] spi: axiado: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <d54214f4-b57a-455e-991e-8700d03eea95@sirena.org.uk>
+References: <cover.1773381582.git.xiaopei01@kylinos.cn>
+ <d78ba5faa6ed3f5e009b41fc1ee1c2bcdaff882b.1773381582.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Message-Id: <20260305-rk3588-csi2rx-v2-2-79d01b615486@collabora.com>
-References: <20260305-rk3588-csi2rx-v2-0-79d01b615486@collabora.com>
-In-Reply-To: <20260305-rk3588-csi2rx-v2-0-79d01b615486@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Frank Li <Frank.li@nxp.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Collabora Kernel Team <kernel@collabora.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773400125; l=2503;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=eOx/3+fLG0p1riU9lvyNxwYlp2uG1DyRr96Nkcj8cCQ=;
- b=BshxsPW1Cibi+TDccRt2CIth6qAE8y4UFkVD+cyVxXflClu9NLb4WcRYg42f68HGU7OWTkgsG
- bM4kOo8w75FAe3pq42OMJPJ1+IQCzI9sjUGtcKUufwktx3/ClQSEmNH
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_040848_625319_5B14741F 
-X-CRM114-Status: UNSURE (   9.55  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <d78ba5faa6ed3f5e009b41fc1ee1c2bcdaff882b.1773381582.git.xiaopei01@kylinos.cn>
+X-Cookie: Monitor not included.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,100 +68,63 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5177610701884233142=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
 
-The Rockchip RK3588 features six MIPI CSI-2 receiver units:
- - MIPI0: connected to MIPI DCPHY0 (not supported)
- - MIPI1: connected to MIPI DCPHY1 (not supported)
- - MIPI2: connected to MIPI DPHY0
- - MIPI3: connected to MIPI DPHY0-1 (not supported)
- - MIPI4: connected to MIPI DPHY1
- - MIPI5: connected to MIPI DPHY1-1 (not supported)
-As the MIPI DCPHYs as well as the split DPHY mode of the DPHYs
-are not yet supported, add only the device tree nodes for the
-MIPI2 and MIPI4 units.
-
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 52 +++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 7fe9593d8c19..6c593b0255c3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1430,6 +1430,58 @@ av1d: video-codec@fdc70000 {
- 		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
- 	};
- 
-+	csi2: csi@fdd30000 {
-+		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-+		reg = <0x0 0xfdd30000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "err1", "err2";
-+		clocks = <&cru PCLK_CSI_HOST_2>;
-+		phys = <&csi_dphy0>;
-+		power-domains = <&power RK3588_PD_VI>;
-+		resets = <&cru SRST_P_CSI_HOST_2>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi2_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi2_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
-+	csi4: csi@fdd50000 {
-+		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-+		reg = <0x0 0xfdd50000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 151 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "err1", "err2";
-+		clocks = <&cru PCLK_CSI_HOST_4>;
-+		phys = <&csi_dphy1>;
-+		power-domains = <&power RK3588_PD_VI>;
-+		resets = <&cru SRST_P_CSI_HOST_4>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi4_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi4_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
- 	vop: vop@fdd90000 {
- 		compatible = "rockchip,rk3588-vop";
- 		reg = <0x0 0xfdd90000 0x0 0x4200>, <0x0 0xfdd95000 0x0 0x1000>;
-
--- 
-2.39.5
+--===============5177610701884233142==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="1oJhbZS/zdMQ8Obt"
+Content-Disposition: inline
 
 
+--1oJhbZS/zdMQ8Obt
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Mar 13, 2026 at 02:08:17PM +0800, Pei Xiao wrote:
+> devm_clk_get() and clk_prepare_enable() can now be replaced by
+> devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
+> longer necessary to unprepare and disable the clocks explicitly.
+> Simplify code.
+
+> -	xspi->pclk = devm_clk_get(&pdev->dev, "pclk");
+> +	xspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
+>  	if (IS_ERR(xspi->pclk)) {
+
+This doesn't update the remove function which while it doesn't free the
+clock does disable it.  Please check all the other patches for similar
+issues too.
+
+--1oJhbZS/zdMQ8Obt
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm0CVcACgkQJNaLcl1U
+h9AmBQf+NZmcjADEavTXUkEkwog1B2fWsPoumOErBPGPp/uNMBzFPkj7gtNd5btL
+ucVKvAua02jhgHneB/r1FG0shTauJc9wVpal3XmgRnMdqN8XRjML+ZWlF1SI+tpc
+v45g2somStcn0QaQOUiGzrwcZddKdUwXCKwidznhryq4fm4Qm0d0jSLg5ayUdLhN
+iavAAr+18xMj0UyCJQttiVZ5oR4PdExtioX/4xm4pJhL+H9TPdBC1fouESmEEOG4
+krxSjVZLRrIxK8ZTjQ4RCV9ykypPyOl3bheFPN7rtI234NlAhUQu6ujoUgoC4aXU
+IoIqyGMXFEt63B8KRgz9kIl/lz6DCw==
+=oV3/
+-----END PGP SIGNATURE-----
+
+--1oJhbZS/zdMQ8Obt--
+
+
+--===============5177610701884233142==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5177610701884233142==--
+
