@@ -4,114 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9EA8105F781
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 09:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BF4F105F784
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 09:26:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
 	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OxBmLBvTuy64bciO36OD7RwoF271bNpHBNz0hPY9iM8=; b=qtZA8xTT4M4Ou/
-	spna8Efe89H2iBFE/vzAEANqS7Df0llEomJpw8JY0ffyjUSXxULADYIUMXXSMQxLeFcj1jU1vn3q+
-	phqwMW4AxzdJpGb2eSnBRSKQy8pxHNHnsvSkdr6DVF3j07GPryk5pyM2XQ/KvWmUZF3TDiaCc+xAp
-	Y7I5HwB+A/ZHVziushd9tZSr4EkgHgBot5c+o+IKbbHG3JqPxRY5ohnh5fu6dlYHFwqXq8hp7W+6V
-	9HWS/VriozqfyXw3YE6Q+2Gz9OlA+a7O+rvVx9gB2gBevj0wEd0AdG+SBjcI6ripe75pMocHLNZp8
-	kueJgp7loKiKk25peeiQ==;
+	List-Owner; bh=QPNTcX/5u88akGKYA3fCM63eLD9zmpWa8LwSk8CjEOw=; b=XsEdGqDKMrAPZy
+	CC0NwLjD7HEgssox/FayYXVp0Gg8TsfFR6QFxeQec6YWa11w5YFEVwjASSmQ4REz+STiOvZ7ITN76
+	oWjXq0k/QzINGHomNJewZ51rIvdiTwQFH5/ctDdXeZaf4TdOOM4XbhR0vRNA4R0cpRDlO9bBvO1t0
+	eYxCfUUxEMxJzBN2NsJP/1vNuCNoOQ/7alw42KmJWaaY7SGX1t77ji16f2X3sxQ20jMU19T6wzH+o
+	GQlsL1uUezkM+50cS7h8hmvYk6rvVmfIXOTETTvhZHQW7Pwo2vTfz6R+fN4Tetl4f2JrKq3P3HzmX
+	8jiqOSnNykw4TS8hs/Wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0ym8-0000000HNjS-3Zz7;
-	Fri, 13 Mar 2026 09:25:44 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1w0ynC-0000000HNvu-29Xy;
+	Fri, 13 Mar 2026 09:26:50 +0000
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w0ym7-0000000HNi2-1FTD
+	id 1w0yn8-0000000HNuo-1PLL
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Mar 2026 09:25:44 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-b9704cd6951so199806766b.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Mar 2026 02:25:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773393941; cv=none;
+	Fri, 13 Mar 2026 09:26:49 +0000
+Received: by mail-ed1-x536.google.com with SMTP id 4fb4d7f45d1cf-660a58841d4so2450267a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Mar 2026 02:26:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773394004; cv=none;
         d=google.com; s=arc-20240605;
-        b=A7wFb7o74SMC8PJz/q7Y860TnzZklICGoHOjiexRJPi0oDNkI/Yc9v6AIa9SmuCMAy
-         MbheMAmFxJh408QwGVgt5cr4n4kYaIEuSNAp9j9ZmpFMBltHpgZeXAcLj62rHL/edCpM
-         DwnTtrFmRXL92oalSLfrFnGX3UOQ8miABeNLCLxd7OXjORbO9Wnp695PsN6qWWjSu6nR
-         DHjrsBiXENPFPBA+KMlJm064UMbieNLEfxixRv2opjjXktxNeNG2s0oDyMXNPXLnJuwM
-         boc9pwPpmy3wq221Tjv07dcGWaDiCXT7+VZQUdRO0rXcx3gVE3/sbf92nLa0eP75ci/5
-         602Q==
+        b=bq28rhwvjzhL2W8wQbfjL0643HwMMH/yIcgV/bayzPUHyTuSGMJ394HdGW5y/PHtIC
+         axQOMBuYfum1noz1PSawdFAIXAzmEb/j1b9dZLLi9v7QbzACVqWHCNLlLs/5M3i+R32m
+         1N13rdTTbYt39m48aMnHkUK2p4BTxIp6u+dfHj1xv/j+1rtFii56DvcZJxJnWAHQoUv7
+         cWrJM+9CQgn0q0n3qQ+EVwTiQr+BJb1SonJ9006l+LcuoEF+8qem3WCLFyohKkX9o+bC
+         iWVdpS2NdyENAVPqBYUVQ9eTNjkZ6P9vE2wPZQA084YTTVSgEk8uNkWbbBISoXKV9TWs
+         U/nA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=skapIsZV+2WP9UcczRrFkVT7zb1t6DskdiJBKEA1lOE=;
-        fh=/8BEuR9o0JTTF5sy4p+rpPdImnYklqj4xrEv7IpYiUs=;
-        b=SSk6Z7cXTw3k6JdlXWqFGdhKjvHp8yzhoLmkJJsfdf7DVX3XHXOBEn/8/VZdv8v3XD
-         ZbxxhBp3OAXQmrxccYrIOVKfoYcXS5iwVuyYe4A9mazOfBmKG1FLf3VGhBEHW+suCpS1
-         G5wNZpZzqBfwVoQ6irDWsjHVv6LA/Lb7AMXUlYrIzhmCbqHVtb87g0XKVpTDYB7fgtZw
-         j7r5uQM9w8vJuhLciQiS1R3IT43OedEptsslqtomEtoN3iASnxOcammdGVHk0D/8Npfd
-         AW8wffwR8HVmj9qQ5qYcVZeTFeyrRSExwrrv/xub/w2OABTyqvbVoFjvnPTMuv7jgAxx
-         IQIg==;
+        bh=9zhdSL5TZ0+7QU3R0xnxIo4ImepctE4X0d6M5LPIqcs=;
+        fh=l2bljbyCm7XxcA0ZU/zk1uX+Eh5l/Pwcer30czlrYm4=;
+        b=UWm0stooZY7PSplXYOy8usdASlnli59zf36Nrjf5fNrLbML3krDDmwWc0UaB62C0Dh
+         soUDoV3jnXI1P8REFli3mSKFPXj8hFltalgV1Y2j+goNRomvWqd+5iC8hBRhXLWDU6gr
+         RjPxiqn9VFmLQHO+JTcNg2FPUN4PdfhXrBJaKUQ6cvYM4V1P+3FTBL6OvM2QOb/UQ5jY
+         ie5M5DGRwTlVs2GTrdpSv8o/Kx1FQshV/3jmhvrMjmZ/v9bxkV3WdGIFfG4Yo4QOWcgv
+         VmFkXiM6RmYZ38QxEy9ewK3jhzqzGQ54ZsgTScpYMHtpGb5zH1CAfJjn2gpaMI/qdBT7
+         dx0g==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773393941; x=1773998741; darn=lists.infradead.org;
+        d=gmail.com; s=20230601; t=1773394004; x=1773998804; darn=lists.infradead.org;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=skapIsZV+2WP9UcczRrFkVT7zb1t6DskdiJBKEA1lOE=;
-        b=jo8NdGdFCcGXvUhhADGwm8DfAUzZrdmswwV7GGDsVqRgJBlhBz5YVv+CSE0IgDbIJj
-         ObOmJxDQU65o4uukEIoBWTXONtaCZhAkeIcFkQKPOp1IekcWD4h0YMI+N5Va8KEu4akU
-         73fPIrcHBAGaey0/t9xlRITBbuP4IMyKbAuGx59JVh/tD84eqlrAEKXRW9thR0IWZU8c
-         FQW8RcKfPhyoE7FM/5Iv/XF7CvHfaOhH4nrbmjPL+Qjpuf1azFrv5u6lZoShKb8jNcmH
-         LvZyAuJoJhohTHKA/nwtbHVK1dQGY0M/ZOj7dzHPPZdtxgBe7P3cNmHD2H7e28caS+9E
-         c3+g==
+        bh=9zhdSL5TZ0+7QU3R0xnxIo4ImepctE4X0d6M5LPIqcs=;
+        b=ANjJGJbSUBJUhRnm0O+cjwb0AXQ3/xMWF2gsh5u6l2gx41glNeWMorAWuiWyqjK6Ip
+         RRbPdExpHIcdgURrx9uixdkQTf5Yc4WBlfZ9Ibv6zlGTSO//ey5P8JeEORrLj6lspg66
+         6C+tBVdAR/BT0bvC2N2pfMZrDhiK2Qbctaa7gNL/aAMCvPRb5lZYdn9jUWB6oVp15tj+
+         Xy3N47ZOs+oIU5IcF2CasrrqRpTujaH7RgfDWbbi89YMnKA9veByZK4d3oEbhfs8g7HP
+         W3aUYIYgXxlYydTJprZ+IpbBR5wcrrPe1YILzqQzjVVHbwTOW1weVtoTIfv6kIw8SD4s
+         NdkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773393941; x=1773998741;
+        d=1e100.net; s=20251104; t=1773394004; x=1773998804;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=skapIsZV+2WP9UcczRrFkVT7zb1t6DskdiJBKEA1lOE=;
-        b=nDnOr1l7Azbf7KJ1jCEhNWcIPz55MCc3UqWwAGp/FfEv84++SOYp2gKsO+QkHPotOq
-         o6rMt+DjOZ0/ZSUY7sKYmlcEbr5MPGHT6fW/FUlsSlR4CsQfSnqlgMM9SOWoOJ9TjdWj
-         8bfMDUEanV4p9OdCxvWgFTGnPVR0DAflqvhT4rMS+ABGw8so40uKOGGif1DDq5omF28E
-         kpiONcjACZU7BXdcWq7qAaRZBB2FYfrqafgcdYM2dqiWJrHGr1J9g5n3rNeETZ4uZuGA
-         /bqEdY0A3A0hgz33LZSbpUqL5Q69lvMZDLZ7osTLqxysgxUW5IDszP46iquoJzy+xgvJ
-         7WpQ==
-X-Forwarded-Encrypted: i=1; AJvYcCUCPMbQfIEbNfzdJ/+nBtSCgnElWz3XsGYupI6cxcTj0UUiY8XJMLVayaznMg3vaIVVV99dvRseO7j+zrfmmQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw7U6XKm6878hQ7SgqwFUiThp0vF+I5XZcoFn5KO8jGmXnQSr5g
-	A7+C6vnM/uqfdLGPPCJKIuo0j387Dh2Ooix1oHfD6CnVsOMgGlwIUE2nfPH47LGWGjpMGzqD8yC
-	QXzLQzVtc6S8W0i+Rb/c5lPwSVwgVC44=
-X-Gm-Gg: ATEYQzyLnUrWGAWF9CcFH1dFOj9U1isdQuPZOXZ76jw9LBkXcd16UwkzvqWvqR5qcfo
-	NVeJ3pyMLW+DDnO0edvJcQsKKna/UC3RKXkNWqvVZGV1aB+kro9G7BIdta49TGnQ7XKEELmirdc
-	4000bKeFDq3XVY6esqGnxC0gQmhe0O9LUdH8OO+Fe0mj/B+Z0WvYb5K/NU179lsuI1tL6r4dxAn
-	GIWHYhi/ndWna1bbcNSshXhvaq0w0oqnsWX8RSEYJsjBrtYku+mH3Rnci7SLUW0OSHb5Ha9qKX0
-	S6UwXA==
-X-Received: by 2002:a17:907:8dcd:b0:b93:81e7:845a with SMTP id
- a640c23a62f3a-b976507ad70mr126077666b.9.1773393940274; Fri, 13 Mar 2026
- 02:25:40 -0700 (PDT)
+        bh=9zhdSL5TZ0+7QU3R0xnxIo4ImepctE4X0d6M5LPIqcs=;
+        b=pWPiUPqiJVGy2nLGrSjsLysl8KKIMiAGbL20SN8Kx5mEUOLcemEa4nhR/6Jy651I9S
+         AmjBJyxxsvWEzIB/xOrjZnNzoPKzFIMLePSdbkNXIqEPAsPXXXe762j8PjEGV5rr+lHN
+         5+xccjcqHvZhrRFTTWjPwNfzpWEmR2KETS8GoC2IBaQqNBfBEqMQEFJ/zn0TWwZ+Yvj/
+         qhOz2ZAUdlJ7kgvNl730NDTi505Pufku7R4gkUMiWpkTxgOPkCs8CkXSo8080C3bGqYt
+         hGQmY9Zjx9Gvt2WAIF2ofFBT6F/DUbGO0xA+WiZwyvj4EuzdfcJavlmdDgUws4XvrtHY
+         Lx+Q==
+X-Forwarded-Encrypted: i=1; AJvYcCWhCOoc/NHXIC861rzwHSn60MYSksWWU+gK47/Qzk2AsjbRWwLFtyFw2Jca9uQoZq5/EPgTZvPnaMpbbBymeQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YysM8FU49Y2sDqDE4pWEEwyZQufxZWLTT4rBsddYby1hCAk2XUA
+	+Hwqog3wdz84n+nmTP6KKTzMSL4Cbej+/cxSc4W02EpQY+GkWA3WclvcXOjS9IpLItYkqja63sL
+	+NFvg8QpLDQiltO6ZkJfMk70YM0CHYr0=
+X-Gm-Gg: ATEYQzyfG4RQ1kFf0FY+pVvvuAavbhaD7lk6WFpylR/bl6+SnYmZ6qi+UM/NxqGSBWf
+	Yvxc3aXms7C5/w2qcehtRmwBH6qvjyKVbNv4Yuma1Wb4QY1xwKhAKPVHFI7sTo1fStLZ+n0OqUr
+	e74mTL7u/41wAcR+CHW6fI2DnQu4aDJnJPgwMEgmVlxhlnEnZtjCGazJwDgjmqgIC1LW1WuUXvf
+	8q9BvhjRJ7hsAvMtn5pwPFZaOQPj8lAUmkke6BdYJIwU4l5syCctYyMviJ+qL8fDT0LBdxCtJiY
+	RIaHbg==
+X-Received: by 2002:a17:907:6d24:b0:b95:53ff:5e00 with SMTP id
+ a640c23a62f3a-b97651ec2fcmr160615366b.58.1773394003605; Fri, 13 Mar 2026
+ 02:26:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260226101032.1042-1-linux.amoon@gmail.com> <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
  <87bc37ee-234c-4568-b72e-955c130a6838@arm.com> <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
  <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com> <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
  <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org> <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
- <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org> <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
-In-Reply-To: <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
+ <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org> <7b5592e7-8a9d-2cf0-bb3e-e306a6337165@rock-chips.com>
+ <CANAwSgTaZqsHYXD_ACkJGGLgk4knc7N72f4qrJaaenE-cXM8BA@mail.gmail.com> <DH0S7TSFKDJV.2YPSBH9F142LL@kernel.org>
+In-Reply-To: <DH0S7TSFKDJV.2YPSBH9F142LL@kernel.org>
 From: Anand Moon <linux.amoon@gmail.com>
-Date: Fri, 13 Mar 2026 14:55:23 +0530
-X-Gm-Features: AaiRm52hlbsJk0-LJBm1qE_mVZnVv4Bhkj1fxNTd0yyF5TYOEj4LUpGTe5M1isE
-Message-ID: <CANAwSgTxsDB0t1vj--uvYCCxf4NhnjhBEDLqdevLnGAiuU6_pw@mail.gmail.com>
+Date: Fri, 13 Mar 2026 14:56:28 +0530
+X-Gm-Features: AaiRm53rZCLp_kErJJxBMXMWmeLwePiSPPATSICps4w1XibNQCvpnT-mxDnWsvY
+Message-ID: <CANAwSgQCQ4z7p7Z8qe2mRqUY7zKe0w0wE+1RfYtD4NePzoit3A@mail.gmail.com>
 Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Danilo Krummrich <dakr@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+To: Danilo Krummrich <dakr@kernel.org>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Robin Murphy <robin.murphy@arm.com>, 
 	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
 	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
-	Hans Zhang <18255117159@163.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Niklas Cassel <cassel@kernel.org>, Hans Zhang <18255117159@163.com>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
 	Wilfred Mallawa <wilfred.mallawa@wdc.com>, linux-pci@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
 	linux-kernel@vger.kernel.org, Grimmauld <grimmauld@grimmauld.de>, 
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
 	driver-core@lists.linux.dev, Lukas Wunner <lukas@wunner.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_022543_385463_CF4D3F8A 
-X-CRM114-Status: GOOD (  42.45  )
+X-CRM114-CacheID: sfid-20260313_022647_100865_4ABE1750 
+X-CRM114-Status: GOOD (  11.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,104 +130,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Robin,
+Hi Danilo,
 
-On Thu, 12 Mar 2026 at 18:18, Robin Murphy <robin.murphy@arm.com> wrote:
+On Thu, 12 Mar 2026 at 17:24, Danilo Krummrich <dakr@kernel.org> wrote:
 >
-> On 2026-03-11 9:09 pm, Danilo Krummrich wrote:
-> > On Wed Mar 11, 2026 at 1:28 PM CET, Manivannan Sadhasivam wrote:
-> >> On Wed, Mar 11, 2026 at 12:46:03PM +0100, Danilo Krummrich wrote:
-> >>> On Wed Mar 11, 2026 at 6:24 AM CET, Manivannan Sadhasivam wrote:
-> >>>> I have a contrary view here. If just a single driver or lib doesn't handle async
-> >>>> probe, it cannot just force other drivers to not take the advantage of async
-> >>>> probe. As I said above, enabling async probe easily saves a few hunderd ms or
-> >>>> even more if there are more than one Root Port or Root Complex in an SoC.
-> >>>
-> >>> Then the driver or lib has to be fixed / improved first or the driver core has
-> >>> to be enabled to deal with a case where PROBE_FORCE_SYNCHRONOUS is requested
-> >>> from an async path, etc.
-> >>>
-> >>> In any case, applying the patch and breaking things (knowingly?) doesn't seem
-> >>> like the correct approach.
-> >>>
-> >>>> I strongly agree with you here that the underlying issue should be fixed. But
-> >>>> the real impact to end users is not this splat, but not having the boot time
-> >>>> optimization that this patch brings in. As an end user, one would want their
-> >>>> systems to boot quickly and they wouldn't bother much about a harmless warning
-> >>>> splat appearing in the dmesg log.
-> >>>
-> >>> You mean quickly booting into a "harmless" potential deadlock condition the
-> >>> warning splat tries to make people aware of? :)
-> >>>
-> >>
-> >> Hmm, I overlooked the built-as-module part where the deadlock could be possible
-> >> as indicated by the comment about the WARN_ON_ONCE().
-> >>
-> >> But what is the path forward here? Do you want the phylib to fix the
-> >> request_module() call or fix the driver core instead?
-> >
-> > Here are a few thoughts.
-> >
-> > In general, I think the best would be to get rid of the (affected)
-> > PROBE_FORCE_SYNCHRONOUS cases.
-> >
-> > Now, I guess this can be pretty hard for a PCI controller driver, as you can't
-> > really predict what ends up being probed from you async context, i.e. it could
-> > even be some other bus controller and things could even propagate further.
-> >
-> > Not sure how big of a deal it is in practice though, there are not a lot of
-> > PROBE_FORCE_SYNCHRONOUS drivers (left), but note that specifying neither
-> > PROBE_FORCE_SYNCHRONOUS nor PROBE_PREFER_ASYNCHRONOUS currently results in
-> > synchronous by default.
-> >
-> > (Also, quite some other PCI controller drivers do set PROBE_PREFER_ASYNCHRONOUS
-> > and apparently got lucky with it.)
-> >
-> >  From a driver-core perspective I think we're rather limited on what we can do;
-> > we are already in async context at this point and can't magically go back to
-> > initcall context.
-> >
-> > So, the only thing I can think of is to kick off work on a workqueue, which in
-> > the end would be the same as the deferred probe handling.
+> On Thu Mar 12, 2026 at 12:40 PM CET, Anand Moon wrote:
+> > I've reproduced the issue on my end. Following Danilo's suggestion,
+> > I used PROBE_FORCE_SYNCHRONOUS to resolve the warning.
 >
-> Hmm, in fact, isn't the deferred probe mechanism itself actually quite
-> appropriate? A suitable calling context isn't the most obvious "resource
-> provider" to wait for, but ultimately it's still a case of "we don't
-> have everything we need right now, but it's worth trying again soon".
-> I may have missed some subtleties, but my instinct is that it could
-> perhaps be as simple as something like this (completely untested).
->
-> Cheers,
-> Robin.
->
-> ----->8-----
->
-> diff --git a/drivers/base/dd.c b/drivers/base/dd.c
-> index bea8da5f8a3a..3c4a0207ae3f 100644
-> --- a/drivers/base/dd.c
-> +++ b/drivers/base/dd.c
-> @@ -954,6 +954,16 @@ static int __device_attach_driver(struct device_driver *drv, void *_data)
->         if (data->check_async && async_allowed != data->want_async)
->                 return 0;
->
-> +       /*
-> +        * Bus drivers may probe asynchronously, but be adding a child device
-> +        * whose driver still wants a synchronous probe. In this case, just
-> +        * defer it, to be triggered by the parent driver probe succeeding.
-> +        */
-> +       if (!async_allowed && current_is_async()) {
-> +               driver_deferred_probe_add(dev);
-> +               return 0;
-> +       }
-> +
->         /*
->          * Ignore errors returned by ->probe so that the next driver can try
->          * its luck.
->
+> I did not propose to add PROBE_FORCE_SYNCHRONOUS, I just noted that we should
+> not force all subsequent drivers into async probe() by adding
+> PROBE_PREFER_ASYNCHRONOUS before the issue is resolved.
 
-Thanks, these changes help fix the warning.
-Please add my
-Tested-by: Anand Moon <linux.amoon@gmail.com>
+My apologies,Thanks for clarifying. I misunderstood your point.
 
 Thanks
 -Anand
