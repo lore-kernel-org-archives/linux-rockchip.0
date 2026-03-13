@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0F9F107BCD8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:58:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 957C4107BCD0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:58:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZSnRw8CrhsPATezo+iaGYvxbf1ZLfDaIq+ST0iljydI=; b=b1bW1lWTRfCM3f
-	Yu9sTwo5SP5FGKcw/lWweI3zK6ttp3G7bg5CUvVE4xeDkhbp/qd+PjQWFItCRzmljJdmiUTugVH1J
-	LjgVb3qOFzcsD6myJwEt7f/dXJDauqM/x5tTaKsPw83RWt/0U/m+Lw9N9B5RssMy6owJdbNmu+fkt
-	yL7ZH9V80Qyi7bkTNttMrkcZva8Dng1xQ0zAX7AEtWy4rdgKVRMABV8vwUMrpzXu+cDucojDXCxAH
-	48gyhWgitveW2WILIANNA/stdlKayGFsZccEFe8lOObwsNZP+taea+EvuIT+1qukDKx7f7NCu7ypH
-	HG8wC0PrNNWseX5BeA8A==;
+	List-Owner; bh=6IKRORuDKMO0EYDu3Ont2XjEoWmC09K5rBQ03yJeKNs=; b=vgYi9Dy4SekOGo
+	l+9t6rTxca8cB8MlmxzeyhkeW/bpkY0Y9FCCyTOqiM5z8+JQzvka3ZHU+c7fVxlJB9IHeDRrBPOE2
+	Y5FNYSXo0nBpJiyYs+hDrYVTLwgWvk+v+an0QoPv2fADeKFX7lYy9L0DHou7BSMOM7za1kjUom2OL
+	chaO4iR1hpU8adzd561xkkRJqAZZeQ7JVJlB2BgSC7fZWuWC+FrRebwYjLRvS15Skl8GbTH5Q/jrg
+	Tc22n457HQIwqnFqq2tWx5vVW1VXo29fN4uNAzr3/TMTICGhiApAjRfCSG2dXAz/RSa0OUIxFke3l
+	R3EsAo9eP7luLrJpE+hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16lz-00000000oZ0-2R1G;
-	Fri, 13 Mar 2026 17:58:07 +0000
+	id 1w16m7-00000000ohK-1Drv;
+	Fri, 13 Mar 2026 17:58:15 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16lN-00000000nnp-3qy2;
-	Fri, 13 Mar 2026 17:57:32 +0000
+	id 1w16lO-00000000noN-2fjW;
+	Fri, 13 Mar 2026 17:57:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773424641;
-	bh=dUOuRcSdmkPT5OJpNxAO8iMCG2oRg7tjpzo/g+O1Qks=;
+	s=mail; t=1773424642;
+	bh=NASRAMg/PKdsJGQlTD5B2MZN3t5wRLOrKDSZPRqrbsw=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=XMqFpRclhrcMeBZAcLeuRp8MHH2eceTJDReKnizd96ZOK3OfkY+aJaLUwhOcL2DPM
-	 Wrns7aTiMAnTq02qF2IEfPfE6g1GgHxNQ3Vd0QZUxxB8nakoO/Q1OFEsGaPWz+TwfT
-	 KOomxTThEPzMOKwrsN0+P5HNdN4tnFZFKxhFFHZtZtC7Ye76v6pjcAJ/oOXS3lNq/0
-	 ZK3AwdTkXGWyjp6xW+zz5I8LvcgpKf1Kgy0TqB/MjtNx1y5qjr279rV3JuM1qux67w
-	 QjmxlX2VmjuI1xe7pUbcrmIs4TmRvjrDXR2/Y/Z4L5M9iitaERejwAWNVlkzqDNWZu
-	 X0rfAJCBbnvGw==
+	b=FkeiDUjXdtAOujE029Hqne/8SD4TVXNYN+Pxzw5dX0WyEWwbOu5zucOL4SnsFmEL6
+	 ilCWMZvjAIGZ7iaFNxyeY4jcXFO/BQ+axixA9DUoJDK9VGN57mJhcHryVAPn7U57XL
+	 scYpmAuqVQQdRn3mbqVobAqFfLZK0oLBZ/Sd2ms61Q/8G5qKk63Iv8RHGWYh95xCso
+	 8gruT3OFhZ6a7TKFMCPhBEhFZH+8B5O2ZLNnM395RZBWkE57Yv6aGaC0PQFZ4bo70n
+	 XCaqTluDIoPDFsk/qDkFgq5D3H3rHRs9t9iXxJrhPqvVqk1kSSKIcYd7lUzYVgwZv6
+	 vyIkzC2qERUFg==
 Received: from jupiter.universe (dyndsl-091-248-210-078.ewe-ip-backbone.de [91.248.210.78])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C347A17E1380;
-	Fri, 13 Mar 2026 18:57:21 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 05E9B17E14A5;
+	Fri, 13 Mar 2026 18:57:22 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 2AFEB48002C; Fri, 13 Mar 2026 18:57:21 +0100 (CET)
+	id 32DD2480035; Fri, 13 Mar 2026 18:57:21 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 13 Mar 2026 18:57:15 +0100
-Subject: [PATCH v3 06/12] phy: rockchip: usbdp: Add missing mode_change
- update
+Date: Fri, 13 Mar 2026 18:57:21 +0100
+Subject: [PATCH v3 12/12] phy: rockchip: usbdp: Drop DP HPD handling
 MIME-Version: 1.0
-Message-Id: <20260313-rockchip-usbdp-cleanup-v3-6-3e8fe89a35b5@collabora.com>
+Message-Id: <20260313-rockchip-usbdp-cleanup-v3-12-3e8fe89a35b5@collabora.com>
 References: <20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com>
 In-Reply-To: <20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -66,26 +65,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1949;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3585;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=dUOuRcSdmkPT5OJpNxAO8iMCG2oRg7tjpzo/g+O1Qks=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm0UAAjzWVTyiaU43Tu76Ye4dA1ydrje8x7h
- N7BxGXby+c9AIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJptFAAAAoJENju1/PI
- O/qaASIP/0oQWcQqq8bP2zhl5IIVUCMot9dWgfM01QJr3/wL195cHYgE899te2/Sag9kx/a+bYm
- T9FmAyGQ0X+hl5S5yMAprYE1PQGs1xftTBxXDgmBMeMWM53R3CcSGMGkHKg1C3JBPKB1felbZjv
- 0DbuBHA9hfabEz4VNzT6iwauvrdgcXV/6iQ+rwL4SzXV6BgmDnzsQ8a3zNmtsUqXPcDr6CCriY5
- 3aiPbWLQ0VOzA70fulqP3QYeBf0AHkqcFXzBjjEPoTeNG0i+O38FGwGUQk8TrRdvPfeqoNpjCd7
- L4kqVsDs1bEciR9AelkSibLVbOhkfVOKwico4pP17An2muq3wHdVUeCR+c23QVcT9//qiW4YBgj
- C9jsewvaqubqf3d+tf1GrlAFihqdHVJzxS1uygigMA4j1NcINU49dX4DfGw+M8aWlYO6iMRniIN
- lu/TMqMV+3rX0t5TBpieowhda3LBCIP5YBjCj2SjmGszpd31uThFf9vmwUcOG4uB1RUD5cEmF6T
- 5ZhotQxYcCec0hJxScxGrV8Z5viNKuWSPYv9bDMxNy2V4aoHMmiPJgJEHQK/W91kstR0PjKamnJ
- 4cgtkE288rc7aJ4PKuFRaVzvDrA3LNCCwv0+C153GxMtwsgM2jrhyEYdo8z79RO+lBZpgWO2R+G
- WNrueUkb2Md6FQNCDCxovZQ==
+ bh=NASRAMg/PKdsJGQlTD5B2MZN3t5wRLOrKDSZPRqrbsw=;
+ b=kA0DAAoB2O7X88g7+poByyZiAGm0UAGhSy4BA7y309Eu4jLAtdUvzAoavcFLgV9DHlvA2S5I/
+ 4kCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJptFABAAoJENju1/PIO/qaclwP/0b6
+ xCKcA1+9Q9o9VCUddTjX3LvAITtW6gNqYd9d4aUm/OHZBtv6iyIP3sieZ38VCM7lpYzisyIkNTY
+ X7Mj+QME/rAfoKWBO4LuuNUvMtOoofonz5QpVPCawCrFrsosQI45f/rznANyNlzwFoDgRkc0dD3
+ 6GcmBcqeotnySqtlDALiAKNKe66OBOHVwrmo12otKrAlpmGgpxbVFaK8FjmFHCL4qSz9GHHlI7p
+ TyITPsFfZxpmzKX+8AHytxb5PMGiPRRym5g6tGcby9oDtaIgNmNNoi574+srekMt+hCyC7lSKyS
+ Tl8tEdAvdiBhKXx7c9vOXsdUwXOSwKdqXzCQdO6bcQYwhQmTy8xRo1JeVCblEWFKPArRUH0cnIJ
+ WLnjy66ohCPgxAb3xr73QD2OtRwezlCspcIJ8+b9oig6+m0QFoJyrqNGYD60be4k+vRivWqJAJF
+ LHFTv5Q4kSzk6dc1aNA5YRu1rS6FtfAkh0o73vGXVMOBl4YtKdeYAQIweExOBLm/ot3ylyx536W
+ hBxl8TGrf31ccLxEpDLGCBhYprtH3XACcHEBLML5D2lbnIa8coV9e4t2vdugUWxHTRAReg915iN
+ sx95dh+pWiiIjjaBoL7cwLgxVIenP2tHU/WP0BEYOxkfS4sU6twsEc+g1l4lDLd7graGy/Xa47/
+ NkYoK
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_105730_129191_59EF66B7 
-X-CRM114-Status: GOOD (  12.21  )
+X-CRM114-CacheID: sfid-20260313_105730_828583_84C00A8E 
+X-CRM114-Status: GOOD (  16.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,59 +101,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk_udphy_set_typec_default_mapping() updates the available modes,
-but does not set the mode_change as required. This results in
-missing re-initialization and thus non-working DisplayPort.
+Drop the HPD handling logic from the USBDP PHY. The registers involved
+require the display controller power domain being enabled and thus the
+HPD signal should be handled by the displayport controller itself.
+Apart from that the HPD handling as it is done here is incorrect and
+misses hotplug events happening after the USB-C connector (e.g. when
+a USB-C to HDMI adapter is involved and the HDMI cable is replugged).
 
-Fix this issue by introducing a new helper to update the available
-modes.
+Proper USB-C DP HPD support requires some restructuring of the DP
+controller driver, which will happen independent of this patch. The
+mainline kernel does not yet support USB-C DP AltMode on RK3588 and
+RK3576, so it is fine to drop this code without adding the counterpart
+in the DRM in an atomic change.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 47 +------------------------------
+ 1 file changed, 1 insertion(+), 46 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 97e53b933225..febc148a754e 100644
+index 2de7b66ee813..402913a8d3f3 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -619,6 +619,15 @@ static void rk_udphy_dp_hpd_event_trigger(struct rk_udphy *udphy, bool hpd)
- 	rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, hpd);
+@@ -186,8 +186,6 @@ struct rk_udphy {
+ 	u32 dp_lane_sel[4];
+ 	u32 dp_aux_dout_sel;
+ 	u32 dp_aux_din_sel;
+-	bool dp_sink_hpd_sel;
+-	bool dp_sink_hpd_cfg;
+ 	unsigned int link_rate;
+ 	unsigned int lanes;
+ 	u8 bw;
+@@ -579,19 +577,6 @@ static void rk_udphy_dp_lane_enable(struct rk_udphy *udphy, int dp_lanes)
+ 				   CMN_DP_CMN_RSTN, FIELD_PREP(CMN_DP_CMN_RSTN, 0x0));
  }
  
-+static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
-+{
-+	if (udphy->mode == mode)
-+		return;
-+
-+	udphy->mode_change = true;
-+	udphy->mode = mode;
-+}
-+
- static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
+-static void rk_udphy_dp_hpd_event_trigger(struct rk_udphy *udphy, bool hpd)
+-{
+-	const struct rk_udphy_cfg *cfg = udphy->cfgs;
+-
+-	udphy->dp_sink_hpd_sel = true;
+-	udphy->dp_sink_hpd_cfg = hpd;
+-
+-	if (!udphy->dp_in_use)
+-		return;
+-
+-	rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, hpd);
+-}
+-
+ static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
  {
- 	if (udphy->flip) {
-@@ -649,7 +658,7 @@ static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
- 		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 1);
+ 	if (udphy->mode == mode)
+@@ -1360,22 +1345,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
+ 		break;
  	}
  
--	udphy->mode = UDPHY_MODE_DP_USB;
-+	rk_udphy_mode_set(udphy, UDPHY_MODE_DP_USB);
+-	if (state->alt && state->alt->svid == USB_TYPEC_DP_SID) {
+-		struct typec_displayport_data *data = state->data;
+-
+-		if (!data) {
+-			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-		} else if (data->status & DP_STATUS_IRQ_HPD) {
+-			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-			usleep_range(750, 800);
+-			rk_udphy_dp_hpd_event_trigger(udphy, true);
+-		} else if (data->status & DP_STATUS_HPD_STATE) {
+-			rk_udphy_mode_set(udphy, mode);
+-			rk_udphy_dp_hpd_event_trigger(udphy, true);
+-		} else {
+-			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-		}
+-	}
++	rk_udphy_mode_set(udphy, mode);
+ 
+ 	mutex_unlock(&udphy->mutex);
+ 	return 0;
+@@ -1522,20 +1492,6 @@ static int rk_udphy_probe(struct platform_device *pdev)
+ 	return 0;
  }
  
- static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-@@ -1385,10 +1394,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
- 			usleep_range(750, 800);
- 			rk_udphy_dp_hpd_event_trigger(udphy, true);
- 		} else if (data->status & DP_STATUS_HPD_STATE) {
--			if (udphy->mode != mode) {
--				udphy->mode = mode;
--				udphy->mode_change = true;
--			}
-+			rk_udphy_mode_set(udphy, mode);
- 			rk_udphy_dp_hpd_event_trigger(udphy, true);
- 		} else {
- 			rk_udphy_dp_hpd_event_trigger(udphy, false);
+-static int __maybe_unused rk_udphy_resume(struct device *dev)
+-{
+-	struct rk_udphy *udphy = dev_get_drvdata(dev);
+-
+-	if (udphy->dp_sink_hpd_sel)
+-		rk_udphy_dp_hpd_event_trigger(udphy, udphy->dp_sink_hpd_cfg);
+-
+-	return 0;
+-}
+-
+-static const struct dev_pm_ops rk_udphy_pm_ops = {
+-	SET_LATE_SYSTEM_SLEEP_PM_OPS(NULL, rk_udphy_resume)
+-};
+-
+ static const char * const rk_udphy_rst_list[] = {
+ 	"init", "cmn", "lane", "pcs_apb", "pma_apb"
+ };
+@@ -1640,7 +1596,6 @@ static struct platform_driver rk_udphy_driver = {
+ 	.driver		= {
+ 		.name	= "rockchip-usbdp-phy",
+ 		.of_match_table = rk_udphy_dt_match,
+-		.pm = &rk_udphy_pm_ops,
+ 	},
+ };
+ module_platform_driver(rk_udphy_driver);
 
 -- 
 2.51.0
