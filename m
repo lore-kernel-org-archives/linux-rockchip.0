@@ -4,66 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2405B107BCE1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 19:33:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7D5C107BCE1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 20:00:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kc8U402GvGH1n3WVKPDKTwZ93IvFCcC28DfOyxHORT8=; b=MKOekK2o21wIrL
-	tpn1XSzHyeonZZWw6d7BUxFC5X7D6RyztF7lBeQ5YAbgTc5FkPPcDk/w4OQPlCNdDAQR6GqJ4kINv
-	trKnAh5PwcArHfxwbepQMR3U/GMeUGv5eAsUprOCeInbtSHRFYo6jBGhHK6noI0jQT7+WFeK7FMt9
-	RP1weNfsJVid6xli5wJ5odBCTNArYkuHSr4k2Qypsv8gjJWEMK1A1Bxd3Nz2RTF4bF9HVyOVBm8iC
-	EM9Ny8VojpsYR6xmfeheOzTLU4v45o+if2wS73dyMLyoI7nASZHnZzrZkWNGQpMmdDspgLz3oBgZK
-	eNsUQEpWQvLd1J5onMAQ==;
+	List-Owner; bh=v8y4Ccz3E0ueDU2FDMYFJhcchtRW3pw2HY5wew4cgmc=; b=aLasDtHAdNJHYT
+	Ui1wM72WyURdcdYGkV7LYbQ1gAga/vbicslLIGtzkAjBqsMSu9JRZHv3OKgT/LZom7kxWbFZCMVol
+	3gWYjINbBIAjPpZ97SbpsZYlBhP2Z8kxoyy4I1Kx00OHgHEDJPqfI3fVrrQG04ryEKFVU5XtjKkX1
+	pvRNPKA51oWOEyh9halp/6SrmBTHi2iJW2udiH/rbHRN43+8TIzpa2zTzlQQ+onI5Ks+A/CBDqGGp
+	ouRrY4tSZeLyCRgs4e/ymg+kurztQXLN3a+OiVgIP5xw68/vVZn7+aPrjLQWIDOiraRkexp+ZfLy2
+	aNbVb4Y/4F9EsbyAPXOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w18G3-000000014b9-3Wor;
-	Fri, 13 Mar 2026 19:33:15 +0000
+	id 1w18ge-000000019R7-2PBa;
+	Fri, 13 Mar 2026 20:00:44 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w18G0-000000014Zv-302f;
-	Fri, 13 Mar 2026 19:33:14 +0000
+	id 1w18gb-000000019PX-2p73;
+	Fri, 13 Mar 2026 20:00:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773430388;
-	bh=ojwFUsM/iT2lF91PBJe00tHmWNmES2FQ7zwsljgOW0c=;
+	s=mail; t=1773432038;
+	bh=7y5xiInZCWmmHEw1menCYPBGJisRe/lJxFo8cH20mis=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fJTnOia1iWfEb5R5IrGx6ImRr+cbw44K2coEHIRJfQJVVCEG/9dTLaulsPB3ySHrd
-	 OaqAye+2edYmHwHzbrsk2DtjHYriPjSPliLolsWEwMqwDWeKGoUg0szX2NacwxZ6mQ
-	 qshwzzUipEZ+T8itCDjAwcw8d13z/EseNbsMaUV0NlyW8o2m8ds3la5Bu4RavQygCq
-	 1VTj1Ey/RqBnfZAVcDDfpRSLBOFHbCTywurcZX1giroewPM6FlW3987mLvKdVgeLl/
-	 C4HluG8U5XizyTTgX2G9arOACRTrP89M037pn2hPY0RH6BIop7SXhiM7iaqyeFtUPY
-	 18LBNEYlawiFQ==
+	b=Rk/7P1tc2/5uFwKiov74BGEb8RCgKEmBskn1txNGp5nOdDabX6F9uBWC5DGKJaAbJ
+	 qHM1Bq13agSKpEOLatcRPLD+TAsXO9Kwaqlebhhxpn64r1H2BMsms01h9GnECeKcgi
+	 PUsZqq2KO2l4ecS+HEq8tzXYLkvJqA+enVSU/7USCarlTf2XNl2Syj7q2Dy8p4tshz
+	 1z7wCXXpisV0YDT/dT3ca2HDvXIm9d3xXBLqxxTYCa+TYMMyyoiM1m5z2aShZc/VbO
+	 lx0GwJE/HdtlOZy988O9SkW423YeSfKFl19AoImYAx6HrxbFYQs4q2iNKvwmX/gcrE
+	 fKhRfRZfO90Vw==
 Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1E40217E0222;
-	Fri, 13 Mar 2026 20:33:08 +0100 (CET)
-Message-ID: <1f9942a5-e63b-4f44-87b6-5153f7ed72b7@collabora.com>
-Date: Fri, 13 Mar 2026 20:33:07 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E8D0417E0222;
+	Fri, 13 Mar 2026 21:00:37 +0100 (CET)
+Message-ID: <e064b4f2-a138-4ea9-aee4-93ac8af38f64@collabora.com>
+Date: Fri, 13 Mar 2026 21:00:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: rockchip: enable vicap dvp on wolfvision pf5
- io expander
-To: Heiko Stuebner <heiko@sntech.de>,
- Gerald Loacker <gerald.loacker@wolfvision.net>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Bryan O'Donoghue <bryan.odonoghue@linaro.org>
-References: <20260313-wv-io-expander-vicap-v1-1-11001fb3b744@collabora.com>
- <6246776.lOV4Wx5bFT@phil>
+Subject: Re: [PATCH 2/9] media: dt-bindings: add rockchip rk3588 vicap
+To: Conor Dooley <conor@kernel.org>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ =?UTF-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?=
+ <mai.kuznetsov.misha@gmail.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250430-rk3588-vicap-v1-0-b3bddf749914@collabora.com>
+ <20250430-rk3588-vicap-v1-2-b3bddf749914@collabora.com>
+ <20260313-quickly-imperial-47638c9f0d4f@spud>
+ <20260313-coyness-jab-ff0c85654555@spud>
 Content-Language: en-US
 From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <6246776.lOV4Wx5bFT@phil>
+In-Reply-To: <20260313-coyness-jab-ff0c85654555@spud>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_123312_928046_1622A646 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20260313_130041_897003_29626CBA 
+X-CRM114-Status: GOOD (  15.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,34 +85,81 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgSGVpa28sCgpPbiAzLzEzLzI2IDE5OjE5LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiBBbSBG
-cmVpdGFnLCAxMy4gTcOkcnogMjAyNiwgMTY6NTM6MjkgTWl0dGVsZXVyb3DDpGlzY2hlIE5vcm1h
-bHplaXQgc2NocmllYiBNaWNoYWVsIFJpZXNjaCB2aWEgQjQgUmVsYXk6Cj4+IEZyb206IE1pY2hh
-ZWwgUmllc2NoIDxtaWNoYWVsLnJpZXNjaEBjb2xsYWJvcmEuY29tPgo+Pgo+PiBUaGUgRGlnaXRh
-bCBWaWRlbyBQb3J0IChEVlAsIHRoZSAxNi1iaXQgdmFyaWFudCkgb2YgdGhlIFJLMzU2OCBWSUNB
-UAo+PiBpcyBicm9rZW4gb3V0IHRvIHRoZSBQRjUgbWFpbmJvYXJkIGV4cGFuc2lvbiBoZWFkZXIu
-Cj4+IEVuYWJsZSBpdCBpbiB0aGUgZGV2aWNlIHRyZWUgb3ZlcmxheSBmb3IgdGhlIFdvbGZWaXNp
-b24gUEY1IElPCj4+IEV4cGFuZGVyIGJvYXJkLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBNaWNoYWVs
-IFJpZXNjaCA8bWljaGFlbC5yaWVzY2hAd29sZnZpc2lvbi5uZXQ+Cj4gCj4gVGhlIEZyb20gc2hv
-dWxkIG1hdGNoIHRoZSBmaXJzdCBTaWduZWQtb2ZmLWJ5IGxpbmUuCgpIbW0uLi4gRmlyc3Qgb2Yg
-YWxsLCB0aGUgU2lnbmVkLW9mZi1ieSBsaW5lIGlzIGNvcnJlY3QsIHRoaXMgcGF0Y2ggc3RlbXMK
-ZnJvbSBteSBXb2xmVmlzaW9uIGVyYS4gQnV0IHRoZW4gd2l0aCB0aGUgLm1haWxtYXAgZW50cnkg
-SSBjcmVhdGVkIHdoZW4KdGhlIGVyYSBlbmRlZCwgSSBjYW5ub3Qgc2V0IHRoZSBwYXRjaCBhdXRo
-b3IgKGFuZCB0aHVzIHRoZSBGcm9tIGxpbmUpCmNvcnJlY3RseS4KCkxldCBtZSB0cnkgYWdhaW4g
-d2l0aG91dCB0aGlzIGVudHJ5Li4uCgo+IAo+IEFsbCBsYXRlciBTaWduZWQtb2ZmLWJ5cyBhcmUg
-ZnJvbSAib3RoZXIiIHBlb3BsZSBoYW5kbGluZyB0aGUgcGF0Y2gsCj4gaS5lLiB0aGF0IG90aGVy
-IE1pY2hhZWwgUmllc2NoIDstKQoKWWVhaCB0aGF0IGd1eSdzIHByZXR0eSB3ZWlyZCEKCj4gCj4+
-IFJldmlld2VkLWJ5OiBHZXJhbGQgTG9hY2tlciA8Z2VyYWxkLmxvYWNrZXJAd29sZnZpc2lvbi5u
-ZXQ+Cj4+IFRlc3RlZC1ieTogR2VyYWxkIExvYWNrZXIgPGdlcmFsZC5sb2Fja2VyQHdvbGZ2aXNp
-b24ubmV0Pgo+PiBSZXZpZXdlZC1ieTogQnJ5YW4gTydEb25vZ2h1ZSA8YnJ5YW4ub2Rvbm9naHVl
-QGxpbmFyby5vcmc+Cj4+IFNpZ25lZC1vZmYtYnk6IE1pY2hhZWwgUmllc2NoIDxtaWNoYWVsLnJp
-ZXNjaEBjb2xsYWJvcmEuY29tPgo+IAo+IAo+IEhlaWtvCj4gCj4gCgpCZXN0IHJlZ2FyZHMsCk1p
-Y2hhZWwKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
-aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
-Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
-Y2tjaGlwCg==
+Hi Conor,
+
+On 3/13/26 17:57, Conor Dooley wrote:
+> On Fri, Mar 13, 2026 at 04:56:29PM +0000, Conor Dooley wrote:
+>> On Fri, Mar 13, 2026 at 04:20:44PM +0100, Michael Riesch via B4 Relay wrote:
+>>> From: Michael Riesch <michael.riesch@collabora.com>
+>>>
+>>> Add documentation for the Rockchip RK3588 Video Capture (VICAP) unit.
+>>>
+>>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+>>> ---
+>>>  .../bindings/media/rockchip,rk3588-vicap.yaml      | 256 +++++++++++++++++++++
+>>>  MAINTAINERS                                        |   1 +
+>>>  2 files changed, 257 insertions(+)
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3588-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3588-vicap.yaml
+>>> new file mode 100644
+>>> index 000000000000..7fd4214921cb
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3588-vicap.yaml
+>>> @@ -0,0 +1,256 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/media/rockchip,rk3588-vicap.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+>>> +
+>>> +title: Rockchip RK3588 Video Capture (VICAP)
+>>> +
+>>> +maintainers:
+>>> +  - Michael Riesch <michael.riesch@collabora.com>
+>>> +
+>>> +description:
+>>> +  The Rockchip RK3588 Video Capture (VICAP) block features a digital video
+>>> +  port (DVP, a parallel video interface) and six MIPI CSI-2 ports. It receives
+>>> +  the data from camera sensors, video decoders, or other companion ICs and
+>>> +  transfers it into system main memory by AXI bus and/or passes it to the image
+>>> +  signal processing (ISP) blocks.
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    enum:
+>>> +      - rockchip,rk3588-vicap
+>>
+>> Curious why this cannot share a binding with the existing 3568-vicap.
+>> Looks pretty similar binding wise at least.
+>> If it's an entirely different architecture or whatever, please mention
+>> that in your commit message.
+> 
+> Looking further, it's using the same driver too...
+
+It's not an entirely different architecture (indeed it uses the same
+driver). There are some differences to the RK3568 and the PX30 (which
+uses its own binding as well BTW): apart from different resets and
+clocks that's mostly the notion of the connections to the ISP. But to be
+fair, as it turns out this boils down to two additional ports.
+Other recent SoCs (e.g., RK3576 or RK3562) will be a good match for the
+RK3588 binding, but then again exactly resets, clocks and ports may vary
+in that variants as well.
+
+Personally I find this variant-specific DT binding magic hard to read,
+and thus I went for a separate binding. That said, please let me know
+what your preference is and I'll arrange it that way. Not a hill I'd
+want to die on.
+
+Best regards,
+Michael
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
