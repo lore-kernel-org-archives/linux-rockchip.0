@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA389107BCD6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE922107BCD0
 	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:57:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F07DGUjXzX9Kxbd1R+laa+FFb4VTbukBDAhQmwKYCGs=; b=CLBFwnlkJk+FH7
-	udVMY8sGiieuWKxHJmI1kHYMg528g82aaYgTeGvlBuRStuHqtplwn9KJWOv2tyZUiRRT1uy+iDPlr
-	luIkUPjivDwjDHXlyiOAbEwhSkslewnhCBU7+vNo9YMi/ckvlCDU6R7ImPbOwBn7+v6G6Hp6i+PC7
-	Ou2YGHpvGQYM+S86JDS/obrDtB4ZKb/O3wK+RqP7MxAYbmHQ/nOp8axzA6gNZSkBZzQPqUxbZNwvp
-	X1ak1NtYDR8jQjdpydDqiL+N6joqnAVFnXrkS/rf6WlVFH+Iu+p+kZj88fN4TiOMltbZgc7a4UJse
-	UTG82qdM1M2VeJizKtWA==;
+	List-Owner; bh=z9KJbgEr52yLVl17A2q5Sdb3ziWVRMLPbDNWlaGwYbw=; b=QUs6CASR3ER8KF
+	GTM5/q+aAhbzKmkbo6OHFwMg93bkauMPZS+aNemNYDDN17j+bvutN/GoTaABg82/QkWe4lXZInRrr
+	mZ4kM7Vu3HZUSpU/5Gb878xFAiYyk1+NDj5Jxi0C5MKQ3XCe6WtG+9/BeSaGDiPPnYSxr0DIvVzKL
+	Qb5yxEEFjsLpryn0CKFmAkmFFVNSzy0BNY96k9AtM3OXQu9xuLWBrQNl8csEMrT+eogH4gJfOtVzT
+	Vt/E6NC2gFZTcKofvQaeujgoLJkN+cNNqKSVo5tq8s3194J7kymOPzEdADH29ellOijLcruZ8mzet
+	UiB5PNX5gD9jsrb5fQmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16lX-00000000o1k-0HoO;
+	id 1w16lX-00000000o33-3dXN;
 	Fri, 13 Mar 2026 17:57:39 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16lJ-00000000nlh-2MZ7;
+	id 1w16lJ-00000000nlg-2hhI;
 	Fri, 13 Mar 2026 17:57:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1773424641;
-	bh=HIo5oL1M0YAgySVOdJ8x+RTMqtenWf2Gl2GNqO+0Hmg=;
+	bh=7erG1vSntiZYfDvD9BPxDXJhjGY+cucRfQBaEqe1HlY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=oofRkhXRUmQQqh18xEcYWXN9sWwXD0KuDsGZ49Cegn6aJHnny9D3leTTTC/6o6bsr
-	 NvN8h06E/sdSkO/DL5F924NITsmwzWZ/gCCHoOsrSrC/79Kkxp7i0G40y7iQic2Mk5
-	 cbJ/MA5w4avJLL9f72Qj6lb5844koHhMmEucCAL4ciqy29J6FjjBNCpsOt4JuJ+VBS
-	 fZSPf781hrAcPAof0smztn8XJKW7eDGeVrNJBvr3/LyrX3scPhvH1pPBOLFiUd1sZU
-	 oNwYo9ruYaT8k2uD8gLkWBDSxtV2Qo1w6LjlvQc3GfiB9hR09m81rMrnPS5NwVUyr1
-	 0xBtQs0bdKu/g==
+	b=ieLBvGr+yVicWy/eXV2T4tHKZZs7vEsi2DA+COe02Sv8188BReGoSdqnp/Ftf5Eds
+	 c1hayddhGwN6gX8x4a0Lzx9tBoFWkZYfJSOcMW+91cNHHs++LAyYXFq037t9SD+W+U
+	 Dv3qVBg3bLVwecpDexIyDypoTF3GgFJiTkfvbRpi/wK5VPw4bfcgHAUfA6MKaSjQYj
+	 M57FIlkPQz6N/9jeZcvL3Rf1HkmnC8Pj2NUAwkqz29y8zspjgH98/Ok//L9NN6hVD/
+	 NW+LksSSagaep6BqdCfDw3wmrpRUvNvy8OqznBoPgQMdq0rbWB0eBQRiCoj4ZoNOov
+	 ff+owCO5N6zzg==
 Received: from jupiter.universe (dyndsl-091-248-210-078.ewe-ip-backbone.de [91.248.210.78])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 80AF217E137B;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6F17417E0EB4;
 	Fri, 13 Mar 2026 18:57:21 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 262BF480028; Fri, 13 Mar 2026 18:57:21 +0100 (CET)
+	id 283F548002A; Fri, 13 Mar 2026 18:57:21 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Fri, 13 Mar 2026 18:57:10 +0100
-Subject: [PATCH v3 01/12] dt-bindings: phy: rockchip-usbdp: add improved
- ports scheme
+Date: Fri, 13 Mar 2026 18:57:13 +0100
+Subject: [PATCH v3 04/12] phy: rockchip: usbdp: Amend SSC modulation
+ deviation
 MIME-Version: 1.0
-Message-Id: <20260313-rockchip-usbdp-cleanup-v3-1-3e8fe89a35b5@collabora.com>
+Message-Id: <20260313-rockchip-usbdp-cleanup-v3-4-3e8fe89a35b5@collabora.com>
 References: <20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com>
 In-Reply-To: <20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -66,26 +66,27 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2240;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1708;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=HIo5oL1M0YAgySVOdJ8x+RTMqtenWf2Gl2GNqO+0Hmg=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm0UADexdooOXtKkZ6ZJhrF9WrGmCqbOofI3
- czzek2Ig+Wv6YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJptFAAAAoJENju1/PI
- O/qaA6AP/0RimBaRa7E/I1vABMjHUj4mERcoICzrxDSHz8LQ6TFQm6A4Illj7HvVyawe8fD8IMH
- hoTcxvNWoTrxUvNNvaf7CbqiUo4RILZyaOadQvWqn6tLAGn3srFbwXbxawzt56K6pH3ol8iLIXL
- HcSu4Lm5sF3ZVY809TK2r7bUct8ABGC4orb7+sjAOGpJUf0cf7kZZnV2vzcttCmY5xSZeC7b3vB
- qbWQM9L2G9lm8SEByzef0gdPte6DdZUaMH4ro69dz4qhAbq8r12RHbjxb3oWKve1rHgOM6fhlKb
- qAZzDp4a+egybs0u/wggK3N6WUsGwTspGtVIeT8zTSzKT0eqMXengPcV9MzrrDLWGchD03LhfDO
- g2/r6O9BhUQbLu9zu5FN/gYfJ20gIqxmCWYToqc1Zi2BeVJG2TCiMviWyaHWajlK+WTpCeGazY7
- G+oRNtD6s5qSaE5BRH8imetW1yxMQhjQ6bfbsbeAzJszj3jY+Ph04REkAooqcqpZrUCuDgLyjmc
- ImwZ+a8KalTCb12fZLKWUNaKZVgAIS+PWXEeUc7sHjcDuuIwJWL8LDV58LvCmudRgMqCa1SoKUt
- eoolyN+VcXh8dR1Wtfdx6szWadinWGd9Im/xwZdlqkrV1JZJon9MVUpYOwHoZDd5S0BV4u9gTMb
- f72ucRoTf1eoAj9H2jwM2uQ==
+ bh=DmJGqquNgLK3sA4UZxU1kvwePYoRCEplGjQQLTvjtuw=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm0UAD4zFEFy+De1oL5KQyUrINHyjejz91ck
+ WMnwecOweACFIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJptFAAAAoJENju1/PI
+ O/qaijcP+gPgApeWWe7B/YUbIe/y383lh+xKjKfOsVjayjBxlstwoxHaQOTXSZmb3vyf8OCPzUe
+ nlWQm8OQ7Pr2w5fjdSvJlgoY+sVoBLevGdon7LIKdQcOYidKKWFKF+ddlvZuSqHOO1Z9LbL5HBA
+ ByznkxrY6ITcb/+KD/WPzLYIeuzUK/BnYvwFvKzuKBXR4AZ64VKUUrVmaZqEzze4bORHXCFwDNI
+ q+EwnxViNT0+tIQktfPiBd6PFtblDVtFw5EmTdjay9Q35EH6UvU6sKfscR0x3aIJGSt5g1TDUby
+ gs3LyPNEs6ez/jmunADZ3ngcb4NRXb2jGXnsZa10VXHpFJlRgFETPl+/cImvFkr2EWhe/fhgahi
+ Dk3VX+fFt2JSKSPrtcdo2CPEy+rvFMSxOsqnsUWgP1bFyfaLgSc/Z7pgCn9slPomT9n+Z93yLM2
+ SFhtiW4E/4B15m9UrCKkJvaRY41qO6FemTlSB6IkoxvuCFaRgxr0mYZi3FSUfeu8JtRsB02b2G7
+ /Nk9U3rwxQSbIVKH1EzDAT9IkNqnkD2MLw9M41zrjyMR0IpMnnWtMgpqjm/R+aNHcC4bjQAN1E8
+ gcQDZ/oDxzA5Yka0MgLdrkUTlSTrB+TZKbJrai0VnKZCqUHXbvB7XxOE/+6GAsSuoAZLStuyb92
+ 9bueVVC2V+ErEEqCnPx84hQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_105725_767310_20F05310 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20260313_105725_894226_72105ADB 
+X-CRM114-Status: UNSURE (   9.85  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,56 +103,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the Rockchip USBDP PHY is missing a documented port scheme.
-Meanwhile upstream RK3588 DTS files are a bit messy and use different
-port schemes. The upstream USBDP PHY Linux kernel driver does not yet
-parse the ports at all and thus does not create any implicit ABI either.
+From: Frank Wang <frank.wang@rock-chips.com>
 
-But with the current mess it is not possible to properly support USB-C
-DP AltMode. Thus this introduces a proper port scheme following roughly
-the ports design of the Qualcomm QMP USB4-USB3-DP PHY controller binding
-with a slight difference that there is an additional port for the
-USB-C SBU port as the Rockchip USB-DP PHY also contains the SBU mux.
+Move SSC modulation deviation into private config of clock
 
+ - 24M: 0x00d4[5:0] = 0x30
+ - 26M: 0x00d4[5:0] = 0x33
+
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+[Taken over from rockchip's kernel tree; register 0x00d4 is not
+described in the TRM]
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- .../bindings/phy/phy-rockchip-usbdp.yaml           | 23 ++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
-index 8b7059d5b182..f728acf057e4 100644
---- a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
-+++ b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
-@@ -114,6 +114,29 @@ properties:
-       A port node to link the PHY to a TypeC controller for the purpose of
-       handling orientation switching.
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index 98562a888b42..1f686844c337 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -350,7 +350,8 @@ static const struct reg_sequence rk_udphy_24m_refclk_cfg[] = {
+ 	{0x0a64, 0xa8}, {0x1a3c, 0xd0},
+ 	{0x1a44, 0xd0}, {0x1a48, 0x01},
+ 	{0x1a4c, 0x0d}, {0x1a54, 0xe0},
+-	{0x1a5c, 0xe0}, {0x1a64, 0xa8}
++	{0x1a5c, 0xe0}, {0x1a64, 0xa8},
++	{0x00d4, 0x30}
+ };
  
-+  ports:
-+    $ref: /schemas/graph.yaml#/properties/ports
-+    properties:
-+      port@0:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of the PHY for USB (or DP when configured into 4 lane
-+          mode), which should point to the superspeed port of a USB connector.
-+
-+      port@1:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Incoming endpoint from the USB controller
-+
-+      port@2:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Incoming endpoint from the DisplayPort controller
-+
-+      port@3:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description:
-+          Output endpoint of the PHY for DP, which should either point to the
-+          SBU port of a USB-C connector or a DisplayPort connector input port.
-+
- required:
-   - compatible
-   - reg
+ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+@@ -377,7 +378,7 @@ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+ 	{0x0c30, 0x0e}, {0x0c48, 0x06},
+ 	{0x1c30, 0x0e}, {0x1c48, 0x06},
+ 	{0x028c, 0x18}, {0x0af0, 0x00},
+-	{0x1af0, 0x00}
++	{0x1af0, 0x00}, {0x00d4, 0x33}
+ };
+ 
+ static const struct reg_sequence rk_udphy_init_sequence[] = {
+@@ -412,8 +413,7 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x00d4, 0x30},
+-	{0x0024, 0x6e},
++	{0x20d4, 0x08}, {0x0024, 0x6e}
+ };
+ 
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
 -- 
 2.51.0
