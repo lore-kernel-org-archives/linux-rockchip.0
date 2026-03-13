@@ -4,51 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D59F107BCD6
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7956107BCD6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 17:21:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
+	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mbcKVtJoMHcvj0exVO0wq2U8+JUmnJd1/Vr4gL5V3r0=; b=izLMCYqAm+gwHv
-	OTFHvWj5HIIkx8nQe5lR5VRg5dQBq633R4sFCrZEGKNXaR4ZoclBwLeBhwUPJP9sC6lb5LpyKoakD
-	ftF/NeYryYLMUbBfUZGfx1wRTSjUYgHQB65sGh05XYZ9qb/GocrPV+tH8HnQeaLogKh1OzzXjEpPa
-	QP++dwMDpgTBgafqUvRQWEdFUo320Z604CoGGobTqzrYg3ShEbLMD4Zc1AD4CfRuYjsumU3mc/T/+
-	OXZjiQHuZqlCEND+EJzL2651+ZhAoQRNOJt7zugz4WnTRkBDDfkChuiThkjXOHv4pQ5BPKrcclU5d
-	YxmBV6m0zQKhueGJvREw==;
+	List-Owner; bh=lbdhhi+c8ww21n+r/8hdTa+B82BBtKewzj6/+KdcdR0=; b=Sq1bnAZRo0+WXc
+	8Kx3KDP3JYGjfXOUH6VLDGMUO2aBXEb0uo0CL3ND9i+/9dfnTVyOlfFCR1RxEvl1dt/qlHVTp9fZv
+	rqv0bwI+Xq57IwB9nXHbH0zZbGzArWmDbbyU4yML0SSMCkTHVD0d/Mz1qZ9kaW8NtbXHS6471ww56
+	MmD53r57YxYm4yCWRd4D2nyKiQhjM9vMuc7fI0MbORCvMAsjxJhnQMSesLb7w6ZixBFiTYcHkSk1L
+	/Yh4J2S3AeEjtTgn/E8sm65z6ZGa8UrYiCr+3Xm5ejpfnh0nZUXNRgQDkcfmMxQD/LIikG8ONM7q9
+	YrCG/ZP/glwewFfwCi2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16Bw-00000000krR-20Ny;
-	Fri, 13 Mar 2026 17:20:52 +0000
+	id 1w16C6-00000000kwv-3Zah;
+	Fri, 13 Mar 2026 17:21:02 +0000
 Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w16Br-00000000kqF-2Dje
+	id 1w16C3-00000000kuv-1emH
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Mar 2026 17:20:51 +0000
+	Fri, 13 Mar 2026 17:21:01 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 242E81A2E1D;
-	Fri, 13 Mar 2026 17:20:45 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id E20521A2E1D;
+	Fri, 13 Mar 2026 17:20:57 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id D338F60027;
-	Fri, 13 Mar 2026 17:20:44 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 981B410368614;
-	Fri, 13 Mar 2026 18:20:32 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B3E8B60027;
+	Fri, 13 Mar 2026 17:20:57 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 666A610369F56;
+	Fri, 13 Mar 2026 18:20:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1773422442; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1773422456; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=vzP2F8ldfzZldEuB0zwnw7nG2Tv4Qz+d5X+msxEr7kw=;
-	b=FQwm0oHlMEBGzEMCKMoMgbPWC9aQXWU0IQHzja3zCZvBOQseFndRbL1FYs5+RZuq9rAizx
-	//+bQ4vUk+VzZ9SWkP7XJo02seGVxZL9jR2r/AR1tIiNRI1W5dODW7y+5aQiIZUncv6Pn3
-	2EW3aaC2pLxqFIVeJ9W/yfPZphwqkwRzCN+JXWimvguIHFxbwOKjwSC5FTJhxh575mjxV5
-	VP0OqEIBeGo1mvsT0ledGpg1JAnHL87zndYiA0RcsdiuoukHIGePL0hmUgPdZ3CF+y1pKC
-	Gv9xiluP18x+AcY2pEbCxLuZbmOJ3STtfv71g0Ju5SQAeLMdb+tsn65cW5R5Iw==
+	bh=3DWK+h5edTmRvUbM/mZG6EfD+UZlA5nnNuQWRmdQd5Y=;
+	b=A7HawzIyiy94D5qIRkDexP9qHwNzDfdu81U8+GuqhJiT02RiMKrFa4xHM3eIhho9J5yWxz
+	Qw3zkiN64Gd15SyCHSqUnM4ajMrfmeJf9SiLSI7foiEBEjHxwDglk0dmeWsJ6DC5dq3rBy
+	ngq5y0YueV/rF1lKhJTjeOP2gqssqYL/SKYU9JmH8dAodPsqpOnr/HOrwAUindyzr2+WTJ
+	XB3TSvRcN1cWoG5W4q01VYatcwI4lClMTpv/SoqY1NMbQy0tFtJFE5ezsARrr/VCR5semF
+	GIysxfFJyhN/BVqiPtZphLxkddvHG58OtS2kZhX6B3t3YKhBeMjbzedIxXBOmQ==
 Mime-Version: 1.0
-Date: Fri, 13 Mar 2026 18:20:31 +0100
-Message-Id: <DH1TSA7A427M.359T6C2RFKRNY@bootlin.com>
-Subject: Re: [PATCH v10 17/18] drm/bridge: analogix_dp: Remove bridge
- disabing and panel unpreparing in analogix_dp_unbind()
+Date: Fri, 13 Mar 2026 18:20:49 +0100
+Message-Id: <DH1TSIFDJRJ4.2T0M55T042X54@bootlin.com>
+To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
+ <neil.armstrong@linaro.org>, <rfoss@kernel.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v10 09/18] drm/bridge: analogix_dp: Remove unused struct
+ drm_connector* for &analogix_dp_plat_data.attach()
 Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
  <jernej.skrabec@gmail.com>, <maarten.lankhorst@linux.intel.com>,
  <mripard@kernel.org>, <tzimmermann@suse.de>, <airlied@gmail.com>,
@@ -63,18 +66,14 @@ Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
  <dri-devel@lists.freedesktop.org>, <imx@lists.linux.dev>,
  <linux-arm-kernel@lists.infradead.org>,
  <linux-samsung-soc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
-To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
- <neil.armstrong@linaro.org>, <rfoss@kernel.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
 X-Mailer: aerc 0.20.1
 References: <20260310012458.169272-1-damon.ding@rock-chips.com>
- <20260310020029.178314-1-damon.ding@rock-chips.com>
- <20260310020029.178314-4-damon.ding@rock-chips.com>
-In-Reply-To: <20260310020029.178314-4-damon.ding@rock-chips.com>
+ <20260310012458.169272-10-damon.ding@rock-chips.com>
+In-Reply-To: <20260310012458.169272-10-damon.ding@rock-chips.com>
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_102049_834775_FB683BD6 
-X-CRM114-Status: UNSURE (   6.41  )
+X-CRM114-CacheID: sfid-20260313_102100_021283_97772567 
+X-CRM114-Status: UNSURE (   4.89  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,16 +91,13 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue Mar 10, 2026 at 3:00 AM CET, Damon Ding wrote:
-> The analogix_dp_unbind() should be balanced with analogix_dp_bind().
-> There are no bridge enabling and panel preparing in analogix_dp_bind(),
-> so it should be reasonable to remove the bridge disabing and panel
-> unpreparing in analogix_dp_unbind().
+On Tue Mar 10, 2026 at 2:24 AM CET, Damon Ding wrote:
+> For both Rockchip and Exynos sides, the struct drm_connector* is
+> never used in callback &analogix_dp_plat_data.attach(). After
+> applying drm_bridge_connector helper, this parameter will no longer
+> be used at all.
 >
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
-> Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
 
 Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
