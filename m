@@ -4,86 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F045105F7A2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 13:11:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C397105F7A8
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 13:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HYIvUx0eBE9Cscl28+UA0RU8FyzJ41XF3SH3/9Qjnsg=; b=ZaN2V8Q+xTgWEq
-	n8x390CigjrDTDiJ11pMIrOksvelrQQpPt11xmKic67zHzSZ1qS1lTheSmimOcV5LFIusVrl6gUMO
-	/JcLvi5hOqdTK9qWV5PGHgiHnl0EbKLsxtR7OJQpNXZvpcJV88PcCIbJnT7SHI+aCRpPHBYWgXv0+
-	S6n0kSANc5qiG4CKZ3oTC0ex26gJWzhXHcFPmgDaT3YrdqD4Ie9x97bJOlgS7Hq9luDwWSZyPtNLs
-	ly6cjj6mSiTpcldmq0F78Km2tJ+Wz3ApjKW0loQI2AnkwVmu0Ibam6ZszwUUFSqVpyje+Z+Pt4998
-	L33p1EuZubL5WHJV5yug==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=xvtx2GZsqEwFDj0SWA64mjL7Wc8irmYNaA6FtOOlB18=; b=UAmWjrV5SiAKxE
+	6vYgQ04ht361d0hTnbIuKugdFYXc69otKbD8Tkx42Tzr40c5XzLr8tDAgvyRzB194QqfutRDdC7KT
+	ARtTq2wvpJwLI3btNbExeRmisJYIonw6nMI65TnE83NLlVao2XBa1WN4x9Bkg2udH1K+ElglOzD7i
+	YXFPdqQ5F1pL4q86qfO30Sl2JilnD9SA+sLt2OxcD0OOd6TMf272DgCQZm1xSMETGyUJj1hk9aW+e
+	Y3ykVIRxTt3Kvoovzx7ShK25Q+wcJDhbU1PjbiHfwV+vjuYza7Fd3Lc+KxNdT8k0ylYlspYCBsWGc
+	MsElsHM+eQLe1SJqk/FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w12IW-00000000BOA-0foh;
-	Fri, 13 Mar 2026 13:11:24 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w12IY-00000000BPh-0TUL;
+	Fri, 13 Mar 2026 13:11:26 +0000
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w12IT-00000000BLq-0yli
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 13 Mar 2026 13:11:21 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=eS5sv0UBOGHpIO5uY3YOxKqzDuk8BU/Ch3wu8qyg9oY=; b=GmyCBglJQ9Hm2xApRkK8gE4OY/
-	Nvg/z4EgfJaHw2daoHGiT5KzCt5O9Z8be1cQ9D7v/Jx1967DqqqEcm6+BpjUOD5cwvEeDJPPAJHIF
-	82sx0dqcrruuOin57+y4EKNM2kfTo0iF86x5D0kci6V3kjr0b9GlWc09YuqPByN/JY4+iG1lhc5Dt
-	vB0UVO1Eyz18Zk6SGXtNM0EPO68rWqfjJGQoeMo7IaBrTqVNnXus3eXsEtasesOwLy9BcXlLiaWOw
-	1Xp9tyVDMPnJbVqDGk/C5GexWdbfE9hDNwJIip7ZEUBjZleMNG2RbrqU2EqHQwBHfmEUtSKoVZ5na
-	Po/2Aybg==;
-Received: from mail-dy1-x132f.google.com ([2607:f8b0:4864:20::132f])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w12IQ-00000003Kwa-01Kg
+	id 1w12IT-00000000BM1-1cbu
 	for linux-rockchip@lists.infradead.org;
-	Fri, 13 Mar 2026 13:11:19 +0000
-Received: by mail-dy1-x132f.google.com with SMTP id 5a478bee46e88-2bdfc4b191fso2490764eec.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 13 Mar 2026 06:11:17 -0700 (PDT)
+	Fri, 13 Mar 2026 13:11:23 +0000
+Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-2be9c886a0fso2785549eec.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 13 Mar 2026 06:11:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773407476; x=1774012276; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=eS5sv0UBOGHpIO5uY3YOxKqzDuk8BU/Ch3wu8qyg9oY=;
-        b=N/oU1hnDY5f53dyCmvWdHsIyWSAtwABui09Auk69mRRbXzusK7Pifp2Pd1meNBX6EV
-         Cr1sJSCKx4nlpq2x1rMGVczNYYc84jB1sHC9UvlcOFBeYzfu5CCRVEJsp+WgXvH4LSMZ
-         /ZvrC8e5YeStmc3mzXn2GgsbqPK3ZLypvgrfKaRCVHFSYeoEXV9gajEsSLI2szH9x2F5
-         eb1V2RJ/Wjrs/44LQ/LfqDFCvvjJvbQVU9YDfxhEa9TifvAdjKsaKRDODiu4pLCY4fma
-         MRoT93zsqxKV8xQV62yHtPPveZsJhyQQ7eBjz3fBwLjQkKJFA43pVWZ9DTjZJ3grgMFx
-         eOig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773407476; x=1774012276;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20230601; t=1773407480; x=1774012280; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=eS5sv0UBOGHpIO5uY3YOxKqzDuk8BU/Ch3wu8qyg9oY=;
-        b=l03qTGwL0D6lhgz/HDUlkUQElJvLclzBenVG1ByRjksKt1COdmzaCE7yXf6x95Vt6u
-         VUPZbcN8pIDINq7BRB9Nu8tqwyrjdu0JTu/1Cy6pBf3ZtFaEEWnMzCurIEpC7NsXcKeY
-         xPE8xFBBEtALgweWb4xrsxhOZyNKqgMCggJ3TKZ9FhYYIbU2CmtpX4So0KJTYiFunqAN
-         xjFPAbMdxIAkVg/t16LZ/+zy53XoK9otWQI2EqdDReVh3lK4jAHryrGxXX47pGuYTTub
-         RTZJIFIWskM5c3cCiGO4bxLTBpHumnyF7q93iE7+OiOXM88h9732MN5wd9egDh0lWLvL
-         wk6A==
-X-Forwarded-Encrypted: i=1; AJvYcCXxoAZuC4uruT81BWzwxeZnJg+mTxq420t50kgM7i+0ICveGvRQvAnw3WykVqtTm4Bfd4jSw0r/jTNsVYQZdw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YykFUNXhMdZ2HTGqdyfWIBonV0j+WKzulLK4sQGS6mdfn5xkrHP
-	dvu2PZcKV8Oe+XHjO/Fzki0hfmn/Slpgto49HNTpTEvp5jw+Tb3vj7xDtPWz3w==
-X-Gm-Gg: ATEYQzwqe2fUSW20lG9YUrGY+ueWq4MKX0dfr1oeSa3p1e2Vdg0F7G4eSrID4Vrnfww
-	sMXbNvHgx2HZYfgyoTOSPzqavL/Ro79XyHuIxZQW2KDzjd2Fa3dWJC/lGVfJDUZ/yj3pLpP7i/g
-	gnBNsPRw8rnjQi4hDjdtZ90etZKW4yESSsu5sp+YZ3VsDPwxxHz76JUtcHbeSNctZC2x6qRVfL3
-	PdRWjMm2LlV/C+MAUTCUR4RbDE+sYPEFaid124Lrg4cy6paYnvKoODa1ySqIVSL94MtToL+XRSL
-	e4hAYIZy9Ai8QgolYDoriD1nQsPRCaNCv32TAcYH389kj8+nEeUAgyHcAy6FZz5lHdJX0eOUfKm
-	b+lC18H2TRkYcd44lsWD6AQz0U2J3dM1kp4Mr+mlGIqdnlqZJ0zc0Rz81QxzkHlvfR1bdISJi+D
-	2gLOfOLJagPAU4Lag8Nxeyo+XKkqlUBuXzaeOYyFfdtwJig50oHOpa5PvzOdUym1rfvkB2xEo4m
-	RaP
-X-Received: by 2002:a05:693c:6286:b0:2be:b2cf:cd34 with SMTP id 5a478bee46e88-2beb2cfda25mr328638eec.18.1773407475406;
-        Fri, 13 Mar 2026 06:11:15 -0700 (PDT)
+        bh=86y4zhRmTMfm+iSZW02gT9FBnz7XUGMnUo0sfBI76/8=;
+        b=DXmLBdIjNLxymD4ggUP7TNiQc9nemfA5e8OB7m8iLLU0gpJvFsw7qmonc34k/kwE96
+         aKgCn2MRb3iFWzEgYK5YzRB/KQEVNf2fGZD3/BCHgxkocbLI1QcUcxl6W9kHY0FL9PRJ
+         rlogdEPXxQHG7wQkEBjuRMNN2TVDuLgqq/PjabVi95JYbdVPksk7BqhzR3WO+WkyCsEY
+         5m5yN2QdrcTtJx44k4fF0NBIspCIQHR7tKKJqj2UPu0FhJ8DeYOQ/VkXFnx2DFgoDDfg
+         cZMHPQsLeGTmC3SJIXiAsBZjUsoQxCUWwIAkbz8R4ixeXXdhXirivzflvHm1j96x6uYn
+         Ai0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773407480; x=1774012280;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=86y4zhRmTMfm+iSZW02gT9FBnz7XUGMnUo0sfBI76/8=;
+        b=LtjJLBqExI7dXJzIbUwuvr/2YSywMM8S73HvQWY45Zxay4xISA7L3ntlSBId3y88Ro
+         auP6YDSVCYZz2nquq2rhvnyFBmQBQ54rfrQhfRNY/qJGcI227I9jvrnGVAJ5ZIut3ECH
+         hYWCFgunUOSTeG6jbIvfgPifd9zdwwvnTwFgSxr9mEoAxvoGTIDS1KY/SJz4yGtvVBtO
+         5c098SQVQi0yD4gvIijKjwMCV5v+hZ/KXEgl2TqnNkw8xFGUUpg0/9FdoPAjRCJeQ+BH
+         HAeP6+f6GpoCavo2dSL1QQc1L6ELJeIfvw5uBVlJkJdvaQjCCGB6D8Mdr0rUtnbV48fJ
+         djzQ==
+X-Forwarded-Encrypted: i=1; AJvYcCWTlAnp6kOXTznv1xQExgIHLHGbfEmGryNzWHhB0Bn8cR56W3KBew97hppiV2Ksg07IRaDL+2gR+CNhImge3w==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyXhxoJnfbOUyAZCh7ND2NhueeNGVjGnKjA/sZEk8bX/69R1rpz
+	pQFj6aXyMypuvSac3HRROrPG5XUwALEOGob+z7Zz47MHfKxRJo0Sk8bSzS6ZyA==
+X-Gm-Gg: ATEYQzxRg2a+EUqI3gMx7m/tKZFLuqmlAEHa6QsKP5628+SVCQkP9vCVKvmph8w5sBb
+	RS2rOFa2V6VBF9PzkMJlYtoC+utOAwMILZXV0uabZrw4evraS81Q0eXsGmf5fSKGoUP51JWeFMg
+	QTNnmpSg7RhXny0FC0y8F4tF6BuBhdbzvBqvwi/pNb3vLxbvPhNEW4vg/9J+6K9LphWFxdBCQEn
+	5O9HFAKYOsx8mYluUpElKAdXh/M6Vz/okBFggsfjeSJPMzPwmzs/D7Gz7NR9HNsIuVkyVguo4Mg
+	JjtqjbEXUt/c22ETH9qCtw6W0zj/1j7RRB94r3+3CFAuYuB4gTgTD7lHZZ3bCSYOhb3lAVS+EyV
+	vrwPObUUNVfgeRr1/cwpW6IQ4DIFSj/ri6bFcm66vRGZ4Yb5hHG9wNtUkAZyKngduGnAWDEMhSq
+	CyE8CpYRhtYlGETpBMBcjL7db38mjubML20V6D5vIrYN89JSaEGPKSWFlwQGicpDtFPg==
+X-Received: by 2002:a05:693c:2c92:b0:2be:713f:964a with SMTP id 5a478bee46e88-2bea554b300mr1463728eec.21.1773407480124;
+        Fri, 13 Mar 2026 06:11:20 -0700 (PDT)
 Received: from fabio-Precision-3551.. ([2804:1b3:a803:148f:b6b5:4:db6e:9a2c])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2beab5702e5sm2602315eec.29.2026.03.13.06.11.10
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2beab5702e5sm2602315eec.29.2026.03.13.06.11.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2026 06:11:13 -0700 (PDT)
+        Fri, 13 Mar 2026 06:11:18 -0700 (PDT)
 From: Fabio Estevam <festevam@gmail.com>
 To: heiko@sntech.de
 Cc: robh@kernel.org,
@@ -94,17 +79,17 @@ Cc: robh@kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	shawn.lin@rock-chips.com,
-	Fabio Estevam <festevam@nabladev.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v7 1/4] dt-bindings: soc: rockchip: grf: Add RV1103B compatibles
-Date: Fri, 13 Mar 2026 10:10:55 -0300
-Message-ID: <20260313131058.708361-1-festevam@gmail.com>
+	Fabio Estevam <festevam@nabladev.com>
+Subject: [PATCH v7 2/4] ARM: dts: rockchip: Add support for RV1103B
+Date: Fri, 13 Mar 2026 10:10:56 -0300
+Message-ID: <20260313131058.708361-2-festevam@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260313131058.708361-1-festevam@gmail.com>
+References: <20260313131058.708361-1-festevam@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_131118_234329_554E8463 
-X-CRM114-Status: UNSURE (   6.71  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260313_061121_651473_D4764A41 
+X-CRM114-Status: GOOD (  12.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,45 +108,1099 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Fabio Estevam <festevam@nabladev.com>
 
-Add the PMU GRF and IOC compatible strings for the RV1103B SoC.
+Add the initial RV1103B devicetree.
+
+Based on the 5.10 Rockchip vendor kernel.
 
 Signed-off-by: Fabio Estevam <festevam@nabladev.com>
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
 Changes since v6:
-- None.
+- Updated Copyright year.
+- Fix the SDMMC compatible string.
 
- Documentation/devicetree/bindings/soc/rockchip/grf.yaml | 3 +++
- 1 file changed, 3 insertions(+)
+ .../boot/dts/rockchip/rv1103b-pinctrl.dtsi    | 816 ++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1103b.dtsi       | 249 ++++++
+ 2 files changed, 1065 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b.dtsi
 
-diff --git a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-index 0b8e3294c83e..2cc43742b8e3 100644
---- a/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-+++ b/Documentation/devicetree/bindings/soc/rockchip/grf.yaml
-@@ -63,6 +63,7 @@ properties:
-               - rockchip,rk3588-vo0-grf
-               - rockchip,rk3588-vo1-grf
-               - rockchip,rk3588-vop-grf
-+              - rockchip,rv1103b-ioc
-               - rockchip,rv1108-usbgrf
-           - const: syscon
-       - items:
-@@ -98,6 +99,7 @@ properties:
-               - rockchip,rk3576-pmu0-grf
-               - rockchip,rk3576-usb2phy-grf
-               - rockchip,rk3588-usb2phy-grf
-+              - rockchip,rv1103b-pmu-grf
-               - rockchip,rv1108-grf
-               - rockchip,rv1108-pmugrf
-               - rockchip,rv1126-grf
-@@ -231,6 +233,7 @@ allOf:
-               - rockchip,rk3036-grf
-               - rockchip,rk3308-grf
-               - rockchip,rk3368-pmugrf
-+              - rockchip,rv1103b-pmu-grf
- 
-     then:
-       properties:
+diff --git a/arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi b/arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+new file mode 100644
+index 000000000000..15516c384139
+--- /dev/null
++++ b/arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+@@ -0,0 +1,816 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2026 Rockchip Electronics Co., Ltd.
++ */
++
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <arm64/rockchip/rockchip-pinconf.dtsi>
++
++&pinctrl {
++	cam-clk0 {
++		/omit-if-no-ref/
++		cam_clk0: cam-clk0 {
++			rockchip,pins =
++				/* cam_clk0_out */
++				<1 RK_PB5 1 &pcfg_pull_none>;
++		};
++	};
++
++	cam-clk1 {
++		/omit-if-no-ref/
++		cam_clk1: cam-clk1 {
++			rockchip,pins =
++				/* cam_clk1_out */
++				<1 RK_PB6 1 &pcfg_pull_none>;
++		};
++	};
++
++	cam-spi {
++		/omit-if-no-ref/
++		cam_spi_bus4: cam-spi-bus4 {
++			rockchip,pins =
++				/* cam_spi_d0 */
++				<0 RK_PB5 4 &pcfg_pull_up_drv_level_2>,
++				/* cam_spi_d1 */
++				<0 RK_PB2 4 &pcfg_pull_up_drv_level_2>,
++				/* cam_spi_d2 */
++				<0 RK_PB1 4 &pcfg_pull_up_drv_level_2>,
++				/* cam_spi_d3 */
++				<0 RK_PB0 4 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		cam_spi_clk: cam-spi-clk {
++			rockchip,pins =
++				/* cam_spi_clk */
++				<0 RK_PB4 4 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		cam_spi_cs0n: cam-spi-cs0n {
++			rockchip,pins =
++				/* cam_spi_cs0n */
++				<0 RK_PB3 4 &pcfg_pull_none>;
++		};
++	};
++
++	clk {
++		/omit-if-no-ref/
++		clk_32k: clk-32k {
++			rockchip,pins =
++				/* clk_32k */
++				<0 RK_PA0 2 &pcfg_pull_none>;
++		};
++	};
++
++	clk-24m {
++		/omit-if-no-ref/
++		clk_24m_out: clk-24m-out {
++			rockchip,pins =
++				/* clk_24m_out */
++				<0 RK_PA0 3 &pcfg_pull_none>;
++		};
++	};
++
++	cpu {
++		/omit-if-no-ref/
++		cpu: cpu {
++			rockchip,pins =
++				/* cpu_avs */
++				<0 RK_PA1 2 &pcfg_pull_none>;
++		};
++	};
++
++	emmc {
++		/omit-if-no-ref/
++		emmc_bus4: emmc-bus4 {
++			rockchip,pins =
++				/* emmc_d0 */
++				<1 RK_PA1 1 &pcfg_pull_up_drv_level_2>,
++				/* emmc_d1 */
++				<1 RK_PA2 1 &pcfg_pull_up_drv_level_2>,
++				/* emmc_d2 */
++				<1 RK_PA3 1 &pcfg_pull_up_drv_level_2>,
++				/* emmc_d3 */
++				<1 RK_PA0 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		emmc_clk: emmc-clk {
++			rockchip,pins =
++				/* emmc_clk */
++				<1 RK_PA4 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		emmc_cmd: emmc-cmd {
++			rockchip,pins =
++				/* emmc_cmd */
++				<1 RK_PA5 1 &pcfg_pull_up_drv_level_2>;
++		};
++	};
++
++	fspi {
++		/omit-if-no-ref/
++		fspi_bus4: fspi-bus4 {
++			rockchip,pins =
++				/* fspi_d0 */
++				<1 RK_PA1 2 &pcfg_pull_none>,
++				/* fspi_d1 */
++				<1 RK_PA2 2 &pcfg_pull_none>,
++				/* fspi_d2 */
++				<1 RK_PA3 2 &pcfg_pull_none>,
++				/* fspi_d3 */
++				<1 RK_PA0 2 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		fspi_cs0: fspi-cs0 {
++			rockchip,pins =
++				/* fspi_cs0n */
++				<1 RK_PA5 2 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		fspi_clk: fspi-clk {
++			rockchip,pins =
++				/* fspi_clk */
++				<1 RK_PA4 2 &pcfg_pull_none>;
++		};
++	};
++
++	i2c0 {
++		/omit-if-no-ref/
++		i2c0m0_xfer: i2c0m0-xfer {
++			rockchip,pins =
++				/* i2c0_scl_m0 */
++				<0 RK_PA5 3 &pcfg_pull_none_smt>,
++				/* i2c0_sda_m0 */
++				<0 RK_PA6 3 &pcfg_pull_none_smt>;
++		};
++
++		/omit-if-no-ref/
++		i2c0m1_xfer: i2c0m1-xfer {
++			rockchip,pins =
++				/* i2c0_scl_m1 */
++				<1 RK_PB4 5 &pcfg_pull_none_smt>,
++				/* i2c0_sda_m1 */
++				<1 RK_PB3 5 &pcfg_pull_none_smt>;
++		};
++
++		/omit-if-no-ref/
++		i2c0m2_xfer: i2c0m2-xfer {
++			rockchip,pins =
++				/* i2c0_scl_m2 */
++				<1 RK_PB5 2 &pcfg_pull_none_smt>,
++				/* i2c0_sda_m2 */
++				<1 RK_PB6 2 &pcfg_pull_none_smt>;
++		};
++	};
++
++	i2c1 {
++		/omit-if-no-ref/
++		i2c1m0_xfer: i2c1m0-xfer {
++			rockchip,pins =
++				/* i2c1_scl_m0 */
++				<0 RK_PB0 1 &pcfg_pull_none_smt>,
++				/* i2c1_sda_m0 */
++				<0 RK_PB1 1 &pcfg_pull_none_smt>;
++		};
++
++		/omit-if-no-ref/
++		i2c1m1_xfer: i2c1m1-xfer {
++			rockchip,pins =
++				/* i2c1_scl_m1 */
++				<2 RK_PA4 4 &pcfg_pull_none_smt>,
++				/* i2c1_sda_m1 */
++				<2 RK_PA5 4 &pcfg_pull_none_smt>;
++		};
++	};
++
++	i2c2 {
++		/omit-if-no-ref/
++		i2c2m0_xfer: i2c2m0-xfer {
++			rockchip,pins =
++				/* i2c2_scl_m0 */
++				<0 RK_PB2 1 &pcfg_pull_none_smt>,
++				/* i2c2_sda_m0 */
++				<0 RK_PB3 1 &pcfg_pull_none_smt>;
++		};
++
++		/omit-if-no-ref/
++		i2c2m1_xfer: i2c2m1-xfer {
++			rockchip,pins =
++				/* i2c2_scl_m1 */
++				<2 RK_PA6 4 &pcfg_pull_none_smt>,
++				/* i2c2_sda_m1 */
++				<2 RK_PA7 4 &pcfg_pull_none_smt>;
++		};
++	};
++
++	i2c3 {
++		/omit-if-no-ref/
++		i2c3m0_xfer: i2c3m0-xfer {
++			rockchip,pins =
++				/* i2c3_scl_m0 */
++				<0 RK_PB4 1 &pcfg_pull_none_smt>,
++				/* i2c3_sda_m0 */
++				<0 RK_PB5 1 &pcfg_pull_none_smt>;
++		};
++
++		/omit-if-no-ref/
++		i2c3m1_xfer: i2c3m1-xfer {
++			rockchip,pins =
++				/* i2c3_scl_m1 */
++				<2 RK_PB3 4 &pcfg_pull_none_smt>,
++				/* i2c3_sda_m1 */
++				<2 RK_PB2 4 &pcfg_pull_none_smt>;
++		};
++	};
++
++	i2c4 {
++		/omit-if-no-ref/
++		i2c4m0_xfer: i2c4m0-xfer {
++			rockchip,pins =
++				/* i2c4_scl_m0 */
++				<2 RK_PB0 4 &pcfg_pull_none_smt>,
++				/* i2c4_sda_m0 */
++				<2 RK_PB1 4 &pcfg_pull_none_smt>;
++		};
++
++		/omit-if-no-ref/
++		i2c4m1_xfer: i2c4m1-xfer {
++			rockchip,pins =
++				/* i2c4_scl_m1 */
++				<1 RK_PB7 2 &pcfg_pull_none_smt>,
++				/* i2c4_sda_m1 */
++				<1 RK_PC0 2 &pcfg_pull_none_smt>;
++		};
++	};
++
++	jtag {
++		/omit-if-no-ref/
++		jtagm0: jtagm0 {
++			rockchip,pins =
++				/* jtag_tck_m0 */
++				<0 RK_PA5 5 &pcfg_pull_none>,
++				/* jtag_tms_m0 */
++				<0 RK_PA6 5 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		jtagm1: jtagm1 {
++			rockchip,pins =
++				/* jtag_tck_m1 */
++				<0 RK_PB4 3 &pcfg_pull_none>,
++				/* jtag_tms_m1 */
++				<0 RK_PB5 3 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		jtagm2: jtagm2 {
++			rockchip,pins =
++				/* jtag_tck_m2 */
++				<1 RK_PB4 3 &pcfg_pull_none>,
++				/* jtag_tms_m2 */
++				<1 RK_PB3 3 &pcfg_pull_none>;
++		};
++	};
++
++	psram-spi {
++		/omit-if-no-ref/
++		psram_spi_bus4: psram-spi-bus4 {
++			rockchip,pins =
++				/* psram_spi_d0 */
++				<0 RK_PA2 4 &pcfg_pull_none>,
++				/* psram_spi_d1 */
++				<0 RK_PA1 4 &pcfg_pull_none>,
++				/* psram_spi_d2 */
++				<0 RK_PA5 4 &pcfg_pull_none>,
++				/* psram_spi_d3 */
++				<0 RK_PA6 4 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		psram_spi_clk: psram-spi-clk {
++			rockchip,pins =
++				/* psram_spi_clk */
++				<0 RK_PA0 4 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		psram_spi_cs0n: psram-spi-cs0n {
++			rockchip,pins =
++				/* psram_spi_cs0n */
++				<0 RK_PA4 4 &pcfg_pull_none>;
++		};
++	};
++
++	pwm0 {
++		/omit-if-no-ref/
++		pwm0m0_ch0: pwm0m0-ch0 {
++			rockchip,pins =
++				/* pwm0m0_ch0 */
++				<0 RK_PA1 1 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m0_ch1: pwm0m0-ch1 {
++			rockchip,pins =
++				/* pwm0m0_ch1 */
++				<0 RK_PA5 2 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m0_ch2: pwm0m0-ch2 {
++			rockchip,pins =
++				/* pwm0m0_ch2 */
++				<0 RK_PA6 2 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m0_ch3: pwm0m0-ch3 {
++			rockchip,pins =
++				/* pwm0m0_ch3 */
++				<0 RK_PA2 1 &pcfg_pull_none_drv_level_0>;
++		};
++
++		/omit-if-no-ref/
++		pwm0m1_ch0: pwm0m1-ch0 {
++			rockchip,pins =
++				/* pwm0m1_ch0 */
++				<2 RK_PA0 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m1_ch1: pwm0m1-ch1 {
++			rockchip,pins =
++				/* pwm0m1_ch1 */
++				<2 RK_PA1 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m1_ch2: pwm0m1-ch2 {
++			rockchip,pins =
++				/* pwm0m1_ch2 */
++				<2 RK_PA2 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m1_ch3: pwm0m1-ch3 {
++			rockchip,pins =
++				/* pwm0m1_ch3 */
++				<2 RK_PB0 3 &pcfg_pull_none_drv_level_0>;
++		};
++
++		/omit-if-no-ref/
++		pwm0m2_ch1: pwm0m2-ch1 {
++			rockchip,pins =
++				/* pwm0m2_ch1 */
++				<1 RK_PB7 1 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm0m2_ch2: pwm0m2-ch2 {
++			rockchip,pins =
++				/* pwm0m2_ch2 */
++				<1 RK_PC0 1 &pcfg_pull_none_drv_level_0>;
++		};
++	};
++
++	pwm1 {
++		/omit-if-no-ref/
++		pwm1m0_ch0: pwm1m0-ch0 {
++			rockchip,pins =
++				/* pwm1m0_ch0 */
++				<0 RK_PB0 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm1m0_ch1: pwm1m0-ch1 {
++			rockchip,pins =
++				/* pwm1m0_ch1 */
++				<0 RK_PB1 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm1m0_ch2: pwm1m0-ch2 {
++			rockchip,pins =
++				/* pwm1m0_ch2 */
++				<0 RK_PB2 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm1m0_ch3: pwm1m0-ch3 {
++			rockchip,pins =
++				/* pwm1m0_ch3 */
++				<0 RK_PB3 3 &pcfg_pull_none_drv_level_0>;
++		};
++
++		/omit-if-no-ref/
++		pwm1m1_ch0: pwm1m1-ch0 {
++			rockchip,pins =
++				/* pwm1m1_ch0 */
++				<2 RK_PA3 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm1m1_ch1: pwm1m1-ch1 {
++			rockchip,pins =
++				/* pwm1m1_ch1 */
++				<2 RK_PA4 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm1m1_ch2: pwm1m1-ch2 {
++			rockchip,pins =
++				/* pwm1m1_ch2 */
++				<2 RK_PA5 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm1m1_ch3: pwm1m1-ch3 {
++			rockchip,pins =
++				/* pwm1m1_ch3 */
++				<2 RK_PB1 3 &pcfg_pull_none_drv_level_0>;
++		};
++	};
++
++	pwm2 {
++		/omit-if-no-ref/
++		pwm2m0_ch0: pwm2m0-ch0 {
++			rockchip,pins =
++				/* pwm2m0_ch0 */
++				<1 RK_PB0 4 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm2m0_ch1: pwm2m0-ch1 {
++			rockchip,pins =
++				/* pwm2m0_ch1 */
++				<1 RK_PA7 4 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm2m0_ch2: pwm2m0-ch2 {
++			rockchip,pins =
++				/* pwm2m0_ch2 */
++				<1 RK_PB4 4 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm2m0_ch3: pwm2m0-ch3 {
++			rockchip,pins =
++				/* pwm2m0_ch3 */
++				<1 RK_PB3 4 &pcfg_pull_none_drv_level_0>;
++		};
++
++		/omit-if-no-ref/
++		pwm2m1_ch0: pwm2m1-ch0 {
++			rockchip,pins =
++				/* pwm2m1_ch0 */
++				<2 RK_PA6 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm2m1_ch1: pwm2m1-ch1 {
++			rockchip,pins =
++				/* pwm2m1_ch1 */
++				<2 RK_PA7 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm2m1_ch2: pwm2m1-ch2 {
++			rockchip,pins =
++				/* pwm2m1_ch2 */
++				<2 RK_PB2 3 &pcfg_pull_none_drv_level_0>;
++		};
++		/omit-if-no-ref/
++		pwm2m1_ch3: pwm2m1-ch3 {
++			rockchip,pins =
++				/* pwm2m1_ch3 */
++				<2 RK_PB3 3 &pcfg_pull_none_drv_level_0>;
++		};
++	};
++
++	pwr {
++		/omit-if-no-ref/
++		pwr: pwr {
++			rockchip,pins =
++				/* pwr_ctrl0 */
++				<0 RK_PA3 1 &pcfg_pull_none>,
++				/* pwr_ctrl1 */
++				<0 RK_PA4 1 &pcfg_pull_none>;
++		};
++	};
++
++	rtc_32k {
++		/omit-if-no-ref/
++		rtc_32k: rtc-32k {
++			rockchip,pins =
++				/* rtc_32k_out */
++				<0 RK_PA0 1 &pcfg_pull_none>;
++		};
++	};
++
++	sai {
++		/omit-if-no-ref/
++		sai: sai {
++			rockchip,pins =
++				/* sai_lrck */
++				<2 RK_PB1 5 &pcfg_pull_none>,
++				/* sai_mclk */
++				<2 RK_PB0 5 &pcfg_pull_none>,
++				/* sai_sclk */
++				<2 RK_PA7 5 &pcfg_pull_none>,
++				/* sai_sdi */
++				<2 RK_PA6 5 &pcfg_pull_none>,
++				/* sai_sdo */
++				<2 RK_PB2 5 &pcfg_pull_none>;
++		};
++	};
++
++	sdmmc0 {
++		/omit-if-no-ref/
++		sdmmc0_bus4: sdmmc0-bus4 {
++			rockchip,pins =
++				/* sdmmc0_d0 */
++				<1 RK_PB0 1 &pcfg_pull_up_drv_level_2>,
++				/* sdmmc0_d1 */
++				<1 RK_PA7 1 &pcfg_pull_up_drv_level_2>,
++				/* sdmmc0_d2 */
++				<1 RK_PB4 1 &pcfg_pull_up_drv_level_2>,
++				/* sdmmc0_d3 */
++				<1 RK_PB3 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		sdmmc0_clk: sdmmc0-clk {
++			rockchip,pins =
++				/* sdmmc0_clk */
++				<1 RK_PB1 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		sdmmc0_cmd: sdmmc0-cmd {
++			rockchip,pins =
++				/* sdmmc0_cmd */
++				<1 RK_PB2 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		sdmmc0_det: sdmmc0-det {
++			rockchip,pins =
++				/* sdmmc0_det */
++				<1 RK_PA6 1 &pcfg_pull_up>;
++		};
++	};
++
++	sdmmc1 {
++		/omit-if-no-ref/
++		sdmmc1_bus4: sdmmc1-bus4 {
++			rockchip,pins =
++				/* sdmmc1_d0 */
++				<2 RK_PA1 1 &pcfg_pull_up_drv_level_2>,
++				/* sdmmc1_d1 */
++				<2 RK_PA0 1 &pcfg_pull_up_drv_level_2>,
++				/* sdmmc1_d2 */
++				<2 RK_PA5 1 &pcfg_pull_up_drv_level_2>,
++				/* sdmmc1_d3 */
++				<2 RK_PA4 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		sdmmc1_clk: sdmmc1-clk {
++			rockchip,pins =
++				/* sdmmc1_clk */
++				<2 RK_PA2 1 &pcfg_pull_up_drv_level_2>;
++		};
++
++		/omit-if-no-ref/
++		sdmmc1_cmd: sdmmc1-cmd {
++			rockchip,pins =
++				/* sdmmc1_cmd */
++				<2 RK_PA3 1 &pcfg_pull_up_drv_level_2>;
++		};
++	};
++
++	spi0 {
++		/omit-if-no-ref/
++		spi0m0_clk: spi0m0-clk {
++			rockchip,pins =
++				/* spi0_clk_m0 */
++				<2 RK_PB0 2 &pcfg_pull_none>,
++				/* spi0_miso_m0 */
++				<2 RK_PB3 2 &pcfg_pull_none>,
++				/* spi0_mosi_m0 */
++				<2 RK_PB1 2 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		spi0m0_cs0: spi0m0-cs0 {
++			rockchip,pins =
++				/* spi0_cs0n_m0 */
++				<2 RK_PB2 2 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		spi0m0_cs1: spi0m0-cs1 {
++			rockchip,pins =
++				/* spi0_cs1n_m0 */
++				<2 RK_PA7 2 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		spi0m1_clk: spi0m1-clk {
++			rockchip,pins =
++				/* spi0_clk_m1 */
++				<2 RK_PA2 5 &pcfg_pull_none>,
++				/* spi0_miso_m1 */
++				<2 RK_PA4 5 &pcfg_pull_none>,
++				/* spi0_mosi_m1 */
++				<2 RK_PA1 5 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		spi0m1_cs0: spi0m1-cs0 {
++			rockchip,pins =
++				/* spi0_cs0n_m1 */
++				<2 RK_PA3 5 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		spi0m1_cs1: spi0m1-cs1 {
++			rockchip,pins =
++				/* spi0_cs1n_m1 */
++				<2 RK_PA0 5 &pcfg_pull_none>;
++		};
++	};
++
++	uart0 {
++		/omit-if-no-ref/
++		uart0m0_xfer: uart0m0-xfer {
++			rockchip,pins =
++				/* uart0_rx_m0 */
++				<0 RK_PA6 1 &pcfg_pull_up>,
++				/* uart0_tx_m0 */
++				<0 RK_PA5 1 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart0m1_xfer: uart0m1-xfer {
++			rockchip,pins =
++				/* uart0_rx_m1 */
++				<0 RK_PB5 2 &pcfg_pull_up>,
++				/* uart0_tx_m1 */
++				<0 RK_PB4 2 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart0m2_xfer: uart0m2-xfer {
++			rockchip,pins =
++				/* uart0_rx_m2 */
++				<1 RK_PB3 2 &pcfg_pull_up>,
++				/* uart0_tx_m2 */
++				<1 RK_PB4 2 &pcfg_pull_up>;
++		};
++	};
++
++	uart1 {
++		/omit-if-no-ref/
++		uart1m0_xfer: uart1m0-xfer {
++			rockchip,pins =
++				/* uart1_rx_m0 */
++				<0 RK_PB2 2 &pcfg_pull_up>,
++				/* uart1_tx_m0 */
++				<0 RK_PB3 2 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart1m0_ctsn: uart1m0-ctsn {
++			rockchip,pins =
++				/* uart1m0_ctsn */
++				<0 RK_PB5 5 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart1m0_rtsn: uart1m0-rtsn {
++			rockchip,pins =
++				/* uart1m0_rtsn */
++				<0 RK_PB4 5 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		uart1m1_xfer: uart1m1-xfer {
++			rockchip,pins =
++				/* uart1_rx_m1 */
++				<1 RK_PA7 2 &pcfg_pull_up>,
++				/* uart1_tx_m1 */
++				<1 RK_PB0 2 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart1m1_ctsn: uart1m1-ctsn {
++			rockchip,pins =
++				/* uart1m1_ctsn */
++				<1 RK_PB2 2 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart1m1_rtsn: uart1m1-rtsn {
++			rockchip,pins =
++				/* uart1m1_rtsn */
++				<1 RK_PB1 2 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		uart1m2_xfer: uart1m2-xfer {
++			rockchip,pins =
++				/* uart1_rx_m2 */
++				<2 RK_PA7 1 &pcfg_pull_up>,
++				/* uart1_tx_m2 */
++				<2 RK_PA6 1 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart1m2_ctsn: uart1m2-ctsn {
++			rockchip,pins =
++				/* uart1m2_ctsn */
++				<2 RK_PA5 2 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart1m2_rtsn: uart1m2-rtsn {
++			rockchip,pins =
++				/* uart1m2_rtsn */
++				<2 RK_PA4 2 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		uart1m3_xfer: uart1m3-xfer {
++			rockchip,pins =
++				/* uart1_rx_m3 */
++				<2 RK_PA3 2 &pcfg_pull_up>,
++				/* uart1_tx_m3 */
++				<2 RK_PA2 2 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart1m3_ctsn: uart1m3-ctsn {
++			rockchip,pins =
++				/* uart1m3_ctsn */
++				<2 RK_PA1 2 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart1m3_rtsn: uart1m3-rtsn {
++			rockchip,pins =
++				/* uart1m3_rtsn */
++				<2 RK_PA0 2 &pcfg_pull_none>;
++		};
++	};
++
++	uart2 {
++		/omit-if-no-ref/
++		uart2m0_xfer: uart2m0-xfer {
++			rockchip,pins =
++				/* uart2_rx_m0 */
++				<0 RK_PB1 2 &pcfg_pull_up>,
++				/* uart2_tx_m0 */
++				<0 RK_PB0 2 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart2m0_ctsn: uart2m0-ctsn {
++			rockchip,pins =
++				/* uart2m0_ctsn */
++				<0 RK_PB3 5 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart2m0_rtsn: uart2m0-rtsn {
++			rockchip,pins =
++				/* uart2m0_rtsn */
++				<0 RK_PB2 5 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		uart2m1_xfer: uart2m1-xfer {
++			rockchip,pins =
++				/* uart2_rx_m1 */
++				<2 RK_PB1 1 &pcfg_pull_up>,
++				/* uart2_tx_m1 */
++				<2 RK_PB0 1 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart2m1_ctsn: uart2m1-ctsn {
++			rockchip,pins =
++				/* uart2m1_ctsn */
++				<2 RK_PB3 1 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart2m1_rtsn: uart2m1-rtsn {
++			rockchip,pins =
++				/* uart2m1_rtsn */
++				<2 RK_PB2 1 &pcfg_pull_none>;
++		};
++
++		/omit-if-no-ref/
++		uart2m2_xfer: uart2m2-xfer {
++			rockchip,pins =
++				/* uart2_rx_m2 */
++				<1 RK_PB6 3 &pcfg_pull_up>,
++				/* uart2_tx_m2 */
++				<1 RK_PB5 3 &pcfg_pull_up>;
++		};
++
++		/omit-if-no-ref/
++		uart2m2_ctsn: uart2m2-ctsn {
++			rockchip,pins =
++				/* uart2m2_ctsn */
++				<1 RK_PC0 3 &pcfg_pull_none>;
++		};
++		/omit-if-no-ref/
++		uart2m2_rtsn: uart2m2-rtsn {
++			rockchip,pins =
++				/* uart2m2_rtsn */
++				<1 RK_PB7 3 &pcfg_pull_none>;
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/rockchip/rv1103b.dtsi b/arch/arm/boot/dts/rockchip/rv1103b.dtsi
+new file mode 100644
+index 000000000000..54454bc54706
+--- /dev/null
++++ b/arch/arm/boot/dts/rockchip/rv1103b.dtsi
+@@ -0,0 +1,249 @@
++// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
++/*
++ * Copyright (c) 2026 Rockchip Electronics Co., Ltd.
++ */
++
++#include <dt-bindings/clock/rockchip,rv1103b-cru.h>
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/interrupt-controller/arm-gic.h>
++#include <dt-bindings/pinctrl/rockchip.h>
++#include <dt-bindings/soc/rockchip,boot-mode.h>
++
++/ {
++	#address-cells = <1>;
++	#size-cells = <1>;
++
++	compatible = "rockchip,rv1103b";
++
++	interrupt-parent = <&gic>;
++
++	arm-pmu {
++		compatible = "arm,cortex-a7-pmu";
++		interrupts = <GIC_SPI 127 IRQ_TYPE_LEVEL_HIGH>;
++		interrupt-affinity = <&cpu0>;
++	};
++
++	cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		cpu0: cpu@0 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a7";
++			reg = <0x0>;
++			clocks = <&cru ARMCLK>;
++		};
++	};
++
++	timer {
++		compatible = "arm,armv7-timer";
++		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>,
++			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
++		clock-frequency = <24000000>;
++	};
++
++	xin24m: oscillator-24m {
++		compatible = "fixed-clock";
++		clock-frequency = <24000000>;
++		clock-output-names = "xin24m";
++		#clock-cells = <0>;
++	};
++
++	pinctrl: pinctrl {
++		compatible = "rockchip,rv1103b-pinctrl";
++		rockchip,grf = <&ioc>;
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		gpio0: gpio@20520000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x20520000 0x200>;
++			interrupts = <GIC_SPI 75 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru PCLK_PMU_GPIO0>, <&cru DBCLK_PMU_GPIO0>;
++			gpio-controller;
++			#gpio-cells = <2>;
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++
++		gpio1: gpio@20d80000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x20d80000 0x200>;
++			interrupts = <GIC_SPI 79 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru PCLK_GPIO1>, <&cru DBCLK_GPIO1>;
++			gpio-controller;
++			#gpio-cells = <2>;
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++
++		gpio2: gpio@20840000 {
++			compatible = "rockchip,gpio-bank";
++			reg = <0x20840000 0x200>;
++			interrupts = <GIC_SPI 83 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru PCLK_GPIO2>, <&cru DBCLK_GPIO2>;
++			gpio-controller;
++			#gpio-cells = <2>;
++			interrupt-controller;
++			#interrupt-cells = <2>;
++		};
++	};
++
++	soc {
++		compatible = "simple-bus";
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		cru: clock-controller@20000000 {
++			compatible = "rockchip,rv1103b-cru";
++			reg = <0x20000000 0x81000>;
++			#clock-cells = <1>;
++			#reset-cells = <1>;
++		};
++
++		pmu_grf: syscon@20160000 {
++			compatible = "rockchip,rv1103b-pmu-grf", "syscon", "simple-mfd";
++			reg = <0x20160000 0x1000>;
++
++			reboot_mode: reboot-mode {
++				compatible = "syscon-reboot-mode";
++				offset = <0x200>;
++				mode-normal = <BOOT_NORMAL>;
++				mode-recovery = <BOOT_RECOVERY>;
++				mode-bootloader = <BOOT_FASTBOOT>;
++				mode-loader = <BOOT_BL_DOWNLOAD>;
++			};
++		};
++
++		ioc: syscon@20170000 {
++			compatible = "rockchip,rv1103b-ioc", "syscon";
++			reg = <0x20170000 0x60000>;
++		};
++
++		gic: interrupt-controller@20411000 {
++			compatible = "arm,gic-400";
++			interrupt-controller;
++			#interrupt-cells = <3>;
++			#address-cells = <0>;
++
++			reg = <0x20411000 0x1000>,
++			      <0x20412000 0x2000>,
++			      <0x20414000 0x2000>,
++			      <0x20416000 0x2000>;
++			interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(1) | IRQ_TYPE_LEVEL_HIGH)>;
++		};
++
++		uart0: serial@20540000 {
++			compatible = "rockchip,rv1103b-uart", "snps,dw-apb-uart";
++			reg = <0x20540000 0x100>;
++			interrupts = <GIC_SPI 69 IRQ_TYPE_LEVEL_HIGH>;
++			reg-shift = <2>;
++			reg-io-width = <4>;
++			clocks = <&cru SCLK_UART0>, <&cru PCLK_UART0>;
++			clock-names = "baudclk", "apb_pclk";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart0m0_xfer>;
++			status = "disabled";
++		};
++
++		sdmmc1: mmc@20650000 {
++			compatible = "rockchip,rv1103b-dw-mshc", "rockchip,rk3576-dw-mshc";
++			reg = <0x20650000 0x4000>;
++			interrupts = <GIC_SPI 44 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru HCLK_SDMMC1>, <&cru CCLK_SDMMC1>;
++			clock-names = "biu", "ciu";
++			fifo-depth = <0x100>;
++			max-frequency = <150000000>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&sdmmc1_clk &sdmmc1_cmd &sdmmc1_bus4>;
++			status = "disabled";
++		};
++
++		uart1: serial@20870000 {
++			compatible = "rockchip,rv1103b-uart", "snps,dw-apb-uart";
++			reg = <0x20870000 0x100>;
++			interrupts = <GIC_SPI 70 IRQ_TYPE_LEVEL_HIGH>;
++			reg-shift = <2>;
++			reg-io-width = <4>;
++			clocks = <&cru SCLK_UART1>, <&cru PCLK_UART1>;
++			clock-names = "baudclk", "apb_pclk";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart1m0_xfer>;
++			status = "disabled";
++		};
++
++		uart2: serial@20880000 {
++			compatible = "rockchip,rv1103b-uart", "snps,dw-apb-uart";
++			reg = <0x20880000 0x100>;
++			interrupts = <GIC_SPI 71 IRQ_TYPE_LEVEL_HIGH>;
++			reg-shift = <2>;
++			reg-io-width = <4>;
++			clocks = <&cru SCLK_UART2>, <&cru PCLK_UART2>;
++			clock-names = "baudclk", "apb_pclk";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart2m0_xfer>;
++			status = "disabled";
++		};
++
++		wdt: watchdog@208d0000 {
++			compatible = "rockchip,rv1103b-wdt", "snps,dw-wdt";
++			reg = <0x208d0000 0x100>;
++			clocks = <&cru TCLK_WDT_NS>, <&cru PCLK_WDT_NS>;
++			clock-names = "tclk", "pclk";
++			interrupts = <GIC_SPI 29 IRQ_TYPE_LEVEL_HIGH>;
++			status = "disabled";
++		};
++
++		sdmmc0: mmc@20d20000 {
++			compatible = "rockchip,rv1103b-dw-mshc", "rockchip,rk3576-dw-mshc";
++			reg = <0x20d20000 0x4000>;
++			interrupts = <GIC_SPI 42 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru HCLK_SDMMC0>, <&cru CCLK_SDMMC0>;
++			clock-names = "biu", "ciu";
++			fifo-depth = <0x100>;
++			max-frequency = <150000000>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&sdmmc0_det &sdmmc0_clk &sdmmc0_cmd &sdmmc0_bus4>;
++			status = "disabled";
++		};
++
++		emmc: mmc@20d30000 {
++			compatible = "rockchip,rv1103b-dw-mshc", "rockchip,rk3576-dw-mshc";
++			reg = <0x20d30000 0x4000>;
++			interrupts = <GIC_SPI 51 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru HCLK_EMMC>, <&cru CCLK_EMMC>;
++			clock-names = "biu", "ciu";
++			fifo-depth = <0x100>;
++			max-frequency = <150000000>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&emmc_clk &emmc_cmd &emmc_bus4>;
++			status = "disabled";
++		};
++
++		fspi0: spi@20d40000 {
++			compatible = "rockchip,sfc";
++			reg = <0x20d40000 0x4000>;
++			interrupts = <GIC_SPI 52 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru SCLK_SFC_2X>, <&cru HCLK_SFC>;
++			clock-names = "clk_sfc", "hclk_sfc";
++			#address-cells = <1>;
++			#size-cells = <0>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&fspi_bus4 &fspi_cs0 &fspi_clk>;
++			status = "disabled";
++		};
++
++		system_sram: sram@210f6000 {
++			compatible = "mmio-sram";
++			reg = <0x210f6000 0x8000>;
++			#address-cells = <1>;
++			#size-cells = <1>;
++			ranges = <0 0x210f6000 0x8000>;
++		};
++	};
++};
++
++#include "rv1103b-pinctrl.dtsi"
 -- 
 2.43.0
 
