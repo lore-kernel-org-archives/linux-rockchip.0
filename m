@@ -4,53 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C8EA105F7BC
-	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 15:25:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 976BB105F7BF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 13 Mar 2026 15:53:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oRrQqaJuy+qE6E6ndYD5kyvHvjXfkCAthHTkDcvDNKE=; b=Ldv4EvKoHRX+4X
-	cAjZn2MthIThsZKbNkHAPX/eWBXvsHlP7dsySBl1A//Wa+RAf85thOeLlPWYWozFo/BdYgkrfGL9q
-	xKr6AU41nb7KttKJ06SHPXbDmKMAwkg9kaQI0k01csHmhMszLlIJKuwVIkyX9V4U4ibyalJns1fFL
-	HQxlDxSBxlEXjDhp6iGTmOqB48tliNwtksaCiCko1hup5GarmTPX0xLQpXCYCONg3hjMYnGC+sQAf
-	WPHrJD06Z/WUyqGtA3K0LGga+EaqY2fE2gsEzN773fSUKnuVmLqrfT3Rgc1LTgCBFXdnNQrEM/dWB
-	AArSyB6b9xFxR+SP8wEw==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
+	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5IE/qjaJRhZXYN37+EOGzUC6cGjt1jkdjnNysOumTn4=; b=A7oUTGLSrZs6aD
+	d3oqD+Qzn1C1Co1Q2MSPXE4B+RnQ6dMUlryIypc+mv0K+XF7IJi4ypwxdnsU1XQONibTRfzlE5OFC
+	MWTQ/E+DcF4IP/Y8P50/zSYfMhTvgM3N9NR9kK7qeGP8qxxPTnOT196JMpxVZrVh/giLxjPTGiAIB
+	hptdGapLl/oYglYFjWzPOh7lXesfodMLgsbeqGRGdLj3DcNAholH8lZNmVwMvFp/UykPaV1Ax7WVw
+	JlXKbcScBH02NDhnLOQju3T8fl57FYhiRoKIroaG9EWgjtkKdxe9qRbIGxkLuzRwpf3vBzDFVswnY
+	AlzALjy//FEVUQHA0Zrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w14OU-00000000Y1z-2izt;
-	Fri, 13 Mar 2026 15:25:42 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w14pS-00000000aRp-31N7;
+	Fri, 13 Mar 2026 15:53:34 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w14OS-00000000Y0s-0wRi;
-	Fri, 13 Mar 2026 15:25:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=FBGeKWKKKMA/GYKVdnALvhIQ+8mrBUlUzmRZ9SlygL8=; b=siZ3hLr/RBuaALUlg0nh7FZcY7
-	lWf5bv5S/xfRiWZ7Kz/z2JTrBN3OdMkK4ZjW9DJWtdfXn3BiamcMdU31fI5nlqK48075qsDryk5NH
-	gMPGOKk/7zQbpuhCsELAjcw2ffuRfNmj/bRb/3yCjIAgf3VGvPr8YLOiGyT4QVagg/qo5NXKdtFyN
-	hQVidV3y9NX/XujTtkD5r+6ixUjpWNGCb3nX7jc28er9fN7xsVcXIoqvIFC+OeZgn6UW20Ch0J/kX
-	Nd0GrGT+Jf7HZDJJi2VpQbCE4WWBJs9KF7xvbTEYEhFJCaPJ+bhRaMz1yrZC93UrHH7tK2jxby+xw
-	CNQ9m07Q==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: ulf.hansson@linaro.org, Fabio Estevam <festevam@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Fabio Estevam <festevam@nabladev.com>
-Subject: Re: [PATCH] dt-bindings: mmc: rockchip-dw-mshc: Fix the RV1103B compatible
-Date: Fri, 13 Mar 2026 16:25:30 +0100
-Message-ID: <12853156.O9o76ZdvQC@phil>
-In-Reply-To: <20260313130835.708066-1-festevam@gmail.com>
-References: <20260313130835.708066-1-festevam@gmail.com>
+	id 1w14pP-00000000aQp-3q0Y;
+	Fri, 13 Mar 2026 15:53:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2B61840225;
+	Fri, 13 Mar 2026 15:53:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 070CAC19421;
+	Fri, 13 Mar 2026 15:53:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773417211;
+	bh=kU7hMmxmzKGXeVy3rmWVv+bR1lRVLBiYIDHHCO9xWVc=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=JzI9/LoSSDwo6u9sJlEHZC2YLhmwETciWJ5sojIWY0xZ5Y6SIKLQHczxjnTShO1xy
+	 QfXJRv9qxsyLYw2G00TBPaACZVBNIH8z8xZ1hTMXCIlLAVGS98YT7ZZNwMah7z6ug0
+	 nbLTMTWK6bf7hGu/Grdcwc4UClfiiJ8L/xVGVitvBQgBYU8sUZ4qaQRjOTywsUl4xX
+	 jsWnpywp5B1z7aTt6zxt7Zf7JRKrX1xDKWeI1dufXrE+JHC6g+9mUjx8SgOTO+sGJL
+	 b6Zj8fACy/F0isB7gohymA3HB2HdAhaudojyGqJoDj+2vr1QhHKbIn1vp91PfPdfV9
+	 B28qvBy5RmIHQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E9D0F105F7BF;
+	Fri, 13 Mar 2026 15:53:30 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Fri, 13 Mar 2026 16:53:29 +0100
+Subject: [PATCH] arm64: dts: rockchip: enable vicap dvp on wolfvision pf5
+ io expander
 MIME-Version: 1.0
+Message-Id: <20260313-wv-io-expander-vicap-v1-1-11001fb3b744@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAPgytGkC/x2N0QrCMAwAf2Xk2cDWUQV/RXxI0+gCIyst1sHYv
+ xt8vIPjDmhSVRrchwOqdG26mcN0GYAXsregZmcIY7iO8zTjt6NuKHshy1KxK1PBEGOSwJJvkcH
+ TRE0wVTJePLbPurosVV66/1+P53n+AJmGMlJ7AAAA
+To: Gerald Loacker <gerald.loacker@wolfvision.net>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Michael Riesch <michael.riesch@collabora.com>, 
+ Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773417210; l=2200;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=AxZQMPkNnnwsrhXc1fCRiYhuc1Gbnk7fB2Vzh07TFp8=;
+ b=uWjRu68zw60pg4cPIDcmL5g1Cl+/n8xiSkYermWSAGsa1U/hZf9rlWQhditBQT7OFRSZByQr7
+ SwDO3yO+JgdCXu61Ekdyr/KFcG789qndRQSdTcDnERwYPo0k/KLE39Z
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260313_082540_283429_9DAC6B52 
-X-CRM114-Status: GOOD (  14.52  )
+X-CRM114-CacheID: sfid-20260313_085332_003226_0DD535E2 
+X-CRM114-Status: GOOD (  11.79  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,40 +86,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgMTMuIE3DpHJ6IDIwMjYsIDE0OjA4OjM1IE1pdHRlbGV1cm9ww6Rpc2NoZSBO
-b3JtYWx6ZWl0IHNjaHJpZWIgRmFiaW8gRXN0ZXZhbToKPiBGcm9tOiBGYWJpbyBFc3RldmFtIDxm
-ZXN0ZXZhbUBuYWJsYWRldi5jb20+Cj4gCj4gUlYxMTAzQiB1c2VzIHRoZSBzYW1lIERlc2lnbldh
-cmUgTVNIQyBjb250cm9sbGVyIElQIHZlcnNpb24gYXMgUkszNTc2Lgo+IAo+IFRoZXkgaGF2ZSBu
-byAiY2l1LWRyaXZlIiBub3IgImNpdS1zYW1wbGUiIGNsb2NrcyBhbmQgdXNlIHRoZSBwaGFzZQo+
-IHR1bmluZyBpbnNpZGUgdGhlIGNvbnRyb2xsZXIuCj4gCj4gRml4IGl0IGFjY29yZGluZ2x5Lgo+
-IAo+IEZpeGVzOiA1MTdiMWUzYzk0NTUgKCJkdC1iaW5kaW5nczogbW1jOiByb2NrY2hpcC1kdy1t
-c2hjOiBBZGQgUlYxMTAzQiBjb21wYXRpYmxlIikKPiBTdWdnZXN0ZWQtYnk6IFNoYXduIExpbiA8
-c2hhd24ubGluQHJvY2stY2hpcHMuY29tPgo+IFNpZ25lZC1vZmYtYnk6IEZhYmlvIEVzdGV2YW0g
-PGZlc3RldmFtQG5hYmxhZGV2LmNvbT4KClJldmlld2VkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVp
-a29Ac250ZWNoLmRlPgoKPiAtLS0KPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdz
-L21tYy9yb2NrY2hpcC1kdy1tc2hjLnlhbWwgfCA1ICsrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCA0
-IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRh
-dGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9yb2NrY2hpcC1kdy1tc2hjLnlhbWwgYi9Eb2N1
-bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbW1jL3JvY2tjaGlwLWR3LW1zaGMueWFtbAo+
-IGluZGV4IGE3NTIwOWJkMjcxMC4uNDk2NWJiNTE4YzU0IDEwMDY0NAo+IC0tLSBhL0RvY3VtZW50
-YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tbWMvcm9ja2NoaXAtZHctbXNoYy55YW1sCj4gKysr
-IGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL21tYy9yb2NrY2hpcC1kdy1tc2hj
-LnlhbWwKPiBAQCAtNDMsMTEgKzQzLDE0IEBAIHByb3BlcnRpZXM6Cj4gICAgICAgICAgICAgICAg
-LSByb2NrY2hpcCxyazM1NjItZHctbXNoYwo+ICAgICAgICAgICAgICAgIC0gcm9ja2NoaXAscmsz
-NTY4LWR3LW1zaGMKPiAgICAgICAgICAgICAgICAtIHJvY2tjaGlwLHJrMzU4OC1kdy1tc2hjCj4g
-LSAgICAgICAgICAgICAgLSByb2NrY2hpcCxydjExMDNiLWR3LW1zaGMKPiAgICAgICAgICAgICAg
-ICAtIHJvY2tjaGlwLHJ2MTEwOC1kdy1tc2hjCj4gICAgICAgICAgICAgICAgLSByb2NrY2hpcCxy
-djExMjYtZHctbXNoYwo+ICAgICAgICAgICAgLSBjb25zdDogcm9ja2NoaXAscmszMjg4LWR3LW1z
-aGMKPiAgICAgICAgIyBmb3IgUm9ja2NoaXAgUkszNTc2IHdpdGggcGhhc2UgdHVuaW5nIGluc2lk
-ZSB0aGUgY29udHJvbGxlcgo+ICsgICAgICAtIGl0ZW1zOgo+ICsgICAgICAgICAgLSBlbnVtOgo+
-ICsgICAgICAgICAgICAgIC0gcm9ja2NoaXAscnYxMTAzYi1kdy1tc2hjCj4gKyAgICAgICAgICAt
-IGNvbnN0OiByb2NrY2hpcCxyazM1NzYtZHctbXNoYwo+ICAgICAgICAtIGNvbnN0OiByb2NrY2hp
-cCxyazM1NzYtZHctbXNoYwo+ICAKPiAgICByZWc6Cj4gCgoKCgoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Michael Riesch <michael.riesch@collabora.com>
+
+The Digital Video Port (DVP, the 16-bit variant) of the RK3568 VICAP
+is broken out to the PF5 mainboard expansion header.
+Enable it in the device tree overlay for the WolfVision PF5 IO
+Expander board.
+
+Signed-off-by: Michael Riesch <michael.riesch@wolfvision.net>
+Reviewed-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+Tested-by: Gerald Loacker <gerald.loacker@wolfvision.net>
+Reviewed-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+Habidere,
+
+This patch was skipped when the RK3568 series was applied, as the
+MEDIA_PCLK_SAMPLE_DUAL_EDGE definition was introduced in the very same
+series.
+
+With the definition mainline for two kernel releases now, it should be
+safe to merge this device tree modification.
+
+Thanks in advance!
+---
+ .../rockchip/rk3568-wolfvision-pf5-io-expander.dtso  | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
+index 048933de2943..8cfce71dd318 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
++++ b/arch/arm64/boot/dts/rockchip/rk3568-wolfvision-pf5-io-expander.dtso
+@@ -11,6 +11,7 @@
+ #include <dt-bindings/clock/rk3568-cru.h>
+ #include <dt-bindings/gpio/gpio.h>
+ #include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/media/video-interfaces.h>
+ #include <dt-bindings/pinctrl/rockchip.h>
+ 
+ &{/} {
+@@ -134,3 +135,22 @@ &usb2phy0_host {
+ 	phy-supply = <&usb_host_vbus>;
+ 	status = "okay";
+ };
++
++&vicap {
++	pinctrl-names = "default";
++	pinctrl-0 = <&cif_clk &cif_dvp_clk &cif_dvp_bus16>;
++	status = "okay";
++};
++
++&vicap_dvp {
++	vicap_dvp_input: endpoint {
++		bus-type = <MEDIA_BUS_TYPE_BT656>;
++		bus-width = <16>;
++		pclk-sample = <MEDIA_PCLK_SAMPLE_DUAL_EDGE>;
++		rockchip,dvp-clk-delay = <10>;
++	};
++};
++
++&vicap_mmu {
++	status = "okay";
++};
+
+---
+base-commit: 1f318b96cc84d7c2ab792fcc0bfd42a7ca890681
+change-id: 20260313-wv-io-expander-vicap-255be2ced75c
+
+Best regards,
+-- 
+Michael Riesch <michael.riesch@collabora.com>
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
