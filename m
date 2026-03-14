@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 628AB10706F5
-	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Mar 2026 18:42:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1618B10706F2
+	for <linux-rockchip@archiver.kernel.org>; Sat, 14 Mar 2026 18:45:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=F9CYGr8rZHYAggIuOtNhRtD4Vp6HWH/0XN8oliBp23A=; b=2hnEt2gYfKQvHX
-	DWN+rzPBUTExOCcgn9ji4qAchrbfc5/GcOvRdtziQ/Wq7QMpNzex/oBsMdsuAQX8eF9BTD9DYXb5x
-	wpIVzc7M+pyg5gxAvOd8PcvLPMdqSyLTXkAwh4UW80zbnP0LkorUnU2xLAgechWkgObxzny2GgDIr
-	C9pFjgNGaiqFqH/y+fzBIBqkMZCa4E1eOVJ/q4RWSpOmVCG+2ETUhx+qATR4Jytz01TgOaLKDp/Mu
-	XFHCG9yP6kFLNY2zAa8WhUbUS3CX7/MaNGcvBeWUrVQwCKvA2zq3R4KZPtJ5etQsJqeFrFE2LEXaF
-	jgR4JOWExI8tfejvQLng==;
+	List-Owner; bh=FcvSPFyVKpgGAtPB/fh4gb6fvWaHMVnCpf+N18Ja7Fs=; b=FlsLbxLTWKFq4z
+	BTEg8ITPBBxQVZi/fe/Vsq1/ElNB29fG8n8rubxEOP48XPfKxodl0GoZu6qz1N6qqnSJCvI+ODCU/
+	OExbTkRHqv+KJdCWMPeRehVzHgbdZJyk7AW1CBFS4NsX9vbnnVKgmEMkUB3QfslbxNckV+YsOedL0
+	aNbq/MgLMxpYThj5sF3+1pqQrKTsYCjreEAvgO/pEeduWf9zA85RoAb/GgM5oFEPWtQrptMIuDQe4
+	1c3un8dtDgVoJpkIGI8TtuYXPedFwxQorSY0L1mjDRdjcLb9wc95PpnNqIZSK/AElg0cRTzNHyluF
+	y13zQ6j3tPJri107eWDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1Twh-0000000255b-326z;
-	Sat, 14 Mar 2026 18:42:43 +0000
+	id 1w1TzW-000000025NO-3GKm;
+	Sat, 14 Mar 2026 18:45:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w1Twe-00000002554-2EKX;
-	Sat, 14 Mar 2026 18:42:41 +0000
+	id 1w1TzU-000000025Mv-2DlM;
+	Sat, 14 Mar 2026 18:45:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=2YspHBaRj+3aRDhXBfHzng0fFhuBsYu6B5AO6SSeqWo=; b=NDdbkyR5GVN4YheBlRPtbLPQ0P
-	pghFRNN7TJyD4gO2iOLit7dhnxmOJLdNCH1a9CIutuoqPsC7P5Vh8Vf3oJilc6yly6TomHAJYBOak
-	UiD93/v4tjZ5Dig067BMVEKIM6+uLRVcH+UanTdNRGdLfEXakukMlz4lFA1yEUXxNVtVYfNMl0G/o
-	iwAbj0CKOYDuQ1Vua6huS0hG3xw8LVYG68ENqmq/++965x4YjRoG9WQm6A8Cwxr7qqsSUIHj1ojta
-	uWFWEJ+pEIwQJ1noknm38/XuAHBbILqFFWAAFvhn1MwzlUVbryNGgNj9Fwa643mNmLxo6d6mhZVQW
-	MhyJ+VZg==;
+	bh=kE6rooa9lpNkvv+MRXc7iLpUu314ODoCUYLjOHYbKho=; b=Jj9xgp1gGQy3wARyMmNTlprcun
+	k6xqBSey9NBlP2aQ06vcaBmY1CWnZuXhMRA+qtsKB95C+KvME0ASEnOgk3IekAWWJtoJu9nx0rSM+
+	vw7NpNUsi5+2FiKvvDFGnwioEu9kDsYFB0jykcyt95AjShSbl7g0/Gj9nfYTlY0At4f79uVy3/GJ4
+	vSfGsJd6VGFJfzB/NSnJS+BsE557O8omCzTAayx6p6LsTVmdXQb6rA9deEKSjviTmN4bpieve2XdY
+	QDknAC0EymnX6y9lyoA48jchIeiR8Jd+HVfcq9TBOoSa0/nHg57umw4e6G6wY5GoREh6tuUho/CS3
+	jvvcQ5xQ==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts fixes for 7.0 #1
-Date: Sat, 14 Mar 2026 19:42:38 +0100
-Message-ID: <5055064.GXAFRqVoOG@phil>
+Subject: [GIT PULL] Rockchip dts64 changes for 7.1 #1
+Date: Sat, 14 Mar 2026 19:45:34 +0100
+Message-ID: <13966995.uLZWGnKmhe@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260314_114240_572296_8ACFBF53 
-X-CRM114-Status: GOOD (  10.58  )
+X-CRM114-CacheID: sfid-20260314_114536_572587_6963107B 
+X-CRM114-Status: GOOD (  12.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,13 +62,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi SoC maintainers,
+Hi soc maintainers,
 
-please find a below some Rockchip fixes for the current 7.0 release-cycle.
-And in the next PR, even one driver-fix this time.
+please find below Rockchip DT changes for the merge-window for 7.1 .
 
-Please pull
+So far only arm64 changes :-)
 
+
+Please pull.
 Thanks
 Heiko
 
@@ -79,62 +80,106 @@ The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
 
 are available in the Git repository at:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.0-rockchip-dtsfixes1
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-dts64-1
 
-for you to fetch changes up to 2ed11ad1c2b4c191cb2ed6741be127eb99f8634f:
+for you to fetch changes up to d7787a77cf8b129304f590233032556dec10dfc6:
 
-  arm64: dts: rockchip: Correct Joystick Axes on Gameforce Ace (2026-03-12 20:52:53 +0100)
-
-----------------------------------------------------------------
-A big number of changes fixing dt-schema issues on the ARM32 side,
-fixes for the Gameforce-Ace to make the hardware work properly
-(including thermals) as well as fixing issues both on Beelink A1 (spdif)
-and Pinebook Pro (Wifi) by reverting the commits that created the issues
+  arm64: dts: rockchip: enable vicap dvp on wolfvision pf5 io expander (2026-03-13 21:39:34 +0100)
 
 ----------------------------------------------------------------
-Chris Morgan (2):
-      arm64: dts: rockchip: Correct Fan Supply for Gameforce Ace
-      arm64: dts: rockchip: Correct Joystick Axes on Gameforce Ace
+New boards: RK3576-EVB2, OneThing Edge Cube
+New soc-peripherals: DisplayPort on RK3576
+New overlays: TSx33 device-revisions, HD702E display/touchscreen on
+NanoPC-T4
 
-Fabio Estevam (11):
-      ARM: dts: rockchip: Remove rockchip,grf from rk3288 tsadc
-      ARM: dts: rockchip: Move PHY reset to ethernet-phy node on rk3036 boards
-      ARM: dts: rockchip: Fix RTC compatible on rk3288-phycore-rdk
-      ARM: dts: rockchip: Use mount-matrix on rk3188-bqedison2qc
-      ARM: dts: rockchip: Remove invalid regulator-property from rk3288-veyron
-      ARM: dts: rockchip: Fix the Bluetooth node name on rk3288-veyron
-      ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
-      ARM: dts: rockchip: Add missing the touchscreen interrupt on rk3288-phycore-rdk
-      ARM: dts: rockchip: Fix RTC description on rk3288-firefly-reload
-      ARM: dts: rockchip: Fix GMAC description n RK3288 boards
-      ARM: dts: rockchip: Fix LED node names on rk3288-phycore-rdk
+And as always a number of per-board changes for added or enabled
+peripherals, added supplies, things moved to more fitting positions.
 
-Heiko Stuebner (1):
-      Revert "arm64: dts: rockchip: Further describe the WiFi for the Pinebook Pro"
+----------------------------------------------------------------
+Alexey Charkov (1):
+      arm64: dts: rockchip: Add analog audio switches to RK3576 EVB1
 
-Ming Wang (1):
-      arm64: dts: rockchip: Fix Bluetooth stability on LCKFB TaiShan Pi
+Andy Yan (1):
+      arm64: dts: rockchip: Add DisplayPort dt node for rk3576
 
-Robin Murphy (1):
-      Revert "arm64: dts: rockchip: add SPDIF audio to Beelink A1"
+Chaoyi Chen (4):
+      dt-bindings: arm: rockchip: Add rk3576 evb2 board
+      arm64: dts: rockchip: Add rk3576 evb2 board
+      arm64: dts: rockchip: Fix sdmmc pwren pinctrl for rk3576-evb2
+      arm64: dts: rockchip: Enable displayport for rk3576 evb2
 
- arch/arm/boot/dts/rockchip/rk3036-evb.dts          |  4 ++--
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts        |  4 ++--
- arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts  |  2 +-
- .../boot/dts/rockchip/rk3288-firefly-reload.dts    |  3 +--
- arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts  | 16 +++++++++------
- arch/arm/boot/dts/rockchip/rk3288-phycore-som.dtsi |  2 +-
- arch/arm/boot/dts/rockchip/rk3288-veyron-brain.dts |  2 --
- .../arm/boot/dts/rockchip/rk3288-veyron-fievel.dts |  5 ++---
- arch/arm/boot/dts/rockchip/rk3288-veyron-jaq.dts   |  2 +-
- arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts |  2 +-
- .../arm/boot/dts/rockchip/rk3288-veyron-mickey.dts |  2 --
- arch/arm/boot/dts/rockchip/rk3288.dtsi             |  1 -
- arch/arm64/boot/dts/rockchip/rk3328-a1.dts         | 23 ----------------------
- .../boot/dts/rockchip/rk3399-pinebook-pro.dts      | 18 -----------------
- arch/arm64/boot/dts/rockchip/rk3566-lckfb-tspi.dts |  4 ++--
- .../boot/dts/rockchip/rk3588s-gameforce-ace.dts    | 12 +++++------
- 16 files changed, 29 insertions(+), 73 deletions(-)
+Chris Morgan (1):
+      arm64: dts: rockchip: add Awinic aw87391 amplifiers for Anbernic RG-DS
+
+Heiko Stuebner (8):
+      arm64: dts: rockchip: Add port subnodes to RK356x SATA controllers
+      arm64: dts: rockchip: add overlay for qnap-ts433 device revision
+      arm64: dts: rockchip: add overlay for qnap-ts233 device revision
+      arm64: dts: rockchip: add overlay for qnap-ts133 device revision
+      arm64: dts: rockchip: use gated-fixed-clock for pcie-refclk on rk3588-jaguar
+      arm64: dts: rockchip: use gated-fixed-clock for pcie-refclk on rk3588-tiger
+      arm64: dts: rockchip: add pinctrl for clk-generator GPIO on rk3588-tiger
+      arm64: dts: rockchip: Make Jaguar PCIe-refclk pin use pull-up config
+
+Hugh Cole-Baker (1):
+      arm64: dts: rockchip: add pwm-fan for NanoPC-T6
+
+Jun Yan (3):
+      dt-bindings: vendor-prefixes: Add Shenzhen OneThing Technologies Co., Ltd.
+      dt-bindings: arm: rockchip: Add OneThing Edge Cube series
+      arm64: dts: rockchip: Add OneThing Edge Cube series
+
+Michael Riesch (1):
+      arm64: dts: rockchip: enable vicap dvp on wolfvision pf5 io expander
+
+Robin Murphy (4):
+      arm64: dts: rockchip: Move RK3399 eDP pinctrl to boards
+      arm64: dts: rockchip: Add overlay for FriendlyElec HD702E
+      arm64: dts: rockchip: Clean up NanoPi-R2S Plus gmac2io
+      arm64: dts: rockchip: Describe HDMI supplies for nanopi4 boards
+
+Samuel Holland (2):
+      arm64: dts: rockchip: Add battery and charger on rk3566-pinenote
+      arm64: dts: rockchip: Enable GPU on rk3566-pinenote
+
+Shawn Lin (2):
+      arm64: dts: rockchip: add node name for RK3588_PD_RKVDEC0/1 and RK3588_PD_VENC0/1
+      arm64: dts: rockchip: Add supply for pd_rkvdec and pd_venc on rk3388-evbs
+
+ .../devicetree/bindings/arm/rockchip.yaml          |    9 +-
+ .../devicetree/bindings/vendor-prefixes.yaml       |    2 +
+ arch/arm64/boot/dts/rockchip/Makefile              |   22 +
+ .../boot/dts/rockchip/rk3328-nanopi-r2s-plus.dts   |   17 -
+ arch/arm64/boot/dts/rockchip/rk3399-base.dtsi      |    3 +-
+ .../boot/dts/rockchip/rk3399-gru-chromebook.dtsi   |    2 +
+ .../boot/dts/rockchip/rk3399-nanopc-t4-hd702e.dtso |   96 ++
+ arch/arm64/boot/dts/rockchip/rk3399-nanopi4.dtsi   |    2 +
+ .../boot/dts/rockchip/rk3399-pinebook-pro.dts      |    2 -
+ .../dts/rockchip/rk3399-sapphire-excavator.dts     |    2 +
+ .../dts/rockchip/rk3566-onething-edge-cube.dts     |  342 +++++++
+ arch/arm64/boot/dts/rockchip/rk3566-pinenote.dtsi  |   31 +
+ .../dts/rockchip/rk3566-qnap-ts133-pcb-13.dtso     |   64 ++
+ .../boot/dts/rockchip/rk3568-anbernic-rg-ds.dts    |   44 +-
+ .../dts/rockchip/rk3568-qnap-ts233-pcb-12-11.dtso  |   93 ++
+ .../dts/rockchip/rk3568-qnap-ts433-pcb-12-10.dtso  |  151 +++
+ .../rk3568-wolfvision-pf5-io-expander.dtso         |   20 +
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi      |   27 +-
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   |    1 +
+ arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts   | 1071 ++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi           |   28 +
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      |    8 +-
+ arch/arm64/boot/dts/rockchip/rk3588-evb1-v10.dts   |   16 +
+ arch/arm64/boot/dts/rockchip/rk3588-jaguar.dts     |   21 +-
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi |   39 +
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi     |   27 +-
+ arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts  |   16 +
+ 27 files changed, 2093 insertions(+), 63 deletions(-)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3399-nanopc-t4-hd702e.dtso
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-onething-edge-cube.dts
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3566-qnap-ts133-pcb-13.dtso
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-ts233-pcb-12-11.dtso
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3568-qnap-ts433-pcb-12-10.dtso
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-evb2-v10.dts
 
 
 
