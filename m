@@ -4,85 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D4C7F53D7E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 17:47:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42BB2F53D85
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 18:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EEsUOQ5ktWOVgN/sgEJUxt8Ro3GMAR3PksDiWlFI8Uk=; b=T5/mI7Q6hmkyiE/dH3M0p98xLK
-	dsonVbmHUl8MflcbMsb1zu2JhFAmOeBMDNWrfbNJWMd0/zaiqPrNcPp8qxWh6Sq5D0Wi8M6kERxQj
-	j4df49XZsw8SuxT6MmEh5/H0v//rlftAh9tNlCjos/eeoU1DjMab0LmHUsUYesNAVvmDrzyTq1E9b
-	08VrokCbhP3lT2gwwBeKu6TMepLU5dv6zzx7LsJJxuTc8JT9aT2T+9dbbfQ8oInw+wNFtanroNSko
-	Y1zFQ47QdI6Zb+1wd3tEh+omy4VwxJ9LPaxlerseGnje+hvaKasnkf3OnG+9LgasSrSdTano5Fomr
-	8Ex6iUnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ueenNI2cRhfzChONb1cqfaj9V3vbvR6idVr53aRtPUg=; b=oAS6BXpVkUzCPv
+	govsMnLqeo3UkBOgPBEcUDN+E06FOWMUhp9EaNdi/L7hdBIG4pzNPPL8THvdNRq3ulKVoxwKi6iqL
+	4WD/3mB5LE2+YEbc7VVEZhJ0VgwtuLTKGDzKROLIruOoce4P2ankQ+9DGOs33fIzlrbUzkjo77Kgv
+	42EHP83Wv49vcQHFxqEakkRIfcqmGkTU0ILCt03utQi8AiswayWUZmHfjuDQk604ZAMYM9zUAAQLn
+	Nekr1fnR8dfWzDIAgC5HtZOYnen2bOKjiBP8882Fo0EntyZt8ekBjsk3vdWjXPZAQ1vM2Pu3E63++
+	Rp/9ek5DRE3aTYGdgpug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2C2B-00000004bnl-32pP;
-	Mon, 16 Mar 2026 17:47:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2Cb1-00000004fsX-2d0Y;
+	Mon, 16 Mar 2026 18:23:19 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2C29-00000004bnE-2mFt;
-	Mon, 16 Mar 2026 17:47:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E6CD96012B;
-	Mon, 16 Mar 2026 17:47:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69BFCC19421;
-	Mon, 16 Mar 2026 17:47:09 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773683236;
-	bh=dnDuwXGZ1btx0I9ScP/HNHG9vbVZo5zMOWlpux0W4WY=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=sRBXa2ovvjPnWmoWwcUZlUb/RfNIKCBxJYUgGqWYE+olH5e/05xmKOMn3PMn3Bxq8
-	 Sm0RPOKtJgrFA4Nkna/SfM63GmGOjUcqhNOYPE5XT8hDbTrlYcVkWZ5EzY+jprOrRV
-	 l4Viqa7XAxFuU+rATnPUZYB48xFh6rMSI83W27iHNJjWLHREjypaENdzy/QzPBAdK3
-	 qOABTEsGsrgj3ajoNm0Gg6WLlNHu9IvYa+UNT73TeY7utnqPEN+vZG0sDR9BaOi8QA
-	 0XJU1kq/TxMTtEfK9n13gvkI74v1W4TiIWlCMY0nyY+YEx6zNL3h/lJ3umTM3hkX5Y
-	 cEen2C1izEUvA==
-Date: Mon, 16 Mar 2026 17:47:06 +0000
-From: Mark Brown <broonie@kernel.org>
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Saenz Julienne <nsaenz@kernel.org>, Lee Jones <lee@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Shree Ramamoorthy <s-ramamoorthy@ti.com>,
-	Jerome Neanne <jerome.neanne@baylibre.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-	Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	Alexander Kurz <akurz@blala.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 04/15] dt-bindings: regulator: act8x: Use generic
- power-controller schema
-Message-ID: <fd6b7103-2a72-4cae-8e92-44ee9586a953@sirena.org.uk>
-References: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
- <20260316-power-controller-v1-4-92c80e5e1744@nxp.com>
+	id 1w2Cax-00000004fqB-1sEz;
+	Mon, 16 Mar 2026 18:23:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773685391;
+	bh=4dH9UQ/Y/hWeLPTbKSBpRwN52HqohB9Y7AqIn1h0Dx4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=Xui+5kcVrdO0l0dkaQ7NbCdgSdW2VAQJM+5RS1/fXwh/SX7xvxjFf2SHud0L7lAGF
+	 YTxMw/acJXH1MOZImOHI7Lu2AUzgqa/o5ikN6P/vO/JqexjkYmbT3hcuY2f4XNdtyk
+	 YhryTunFTjy/ROeRREn0c1RmpRSE0W1Ntl5QHQdu9NVrWdiDR0SmemQ2bsoMAtGwpo
+	 a0/87PCYzW6gEutMX49KFzU45PkMp+vXipSppcI06odAHl7hrd/T7Px9Ih/EFEBpxR
+	 nHYRfShOBDz6VvO5CXrM977sBTntZ2Vrlu2INXbIxIkvWw27rfxTBgUSKdy9LaWgNi
+	 7FRg8Q45HXXFg==
+Received: from jupiter.universe (dyndsl-091-248-189-119.ewe-ip-backbone.de [91.248.189.119])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5F87017E1380;
+	Mon, 16 Mar 2026 19:23:11 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id 12669480028; Mon, 16 Mar 2026 19:23:11 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Mon, 16 Mar 2026 19:23:01 +0100
+Subject: [PATCH 2/2] arm64: dts: rockchip: Add SPDIF nodes to RK3576 device
+ tree
 MIME-Version: 1.0
-In-Reply-To: <20260316-power-controller-v1-4-92c80e5e1744@nxp.com>
-X-Cookie: Excellent day to have a rotten day.
+Message-Id: <20260316-rk3576-spdif-v1-2-acb75088b560@collabora.com>
+References: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
+In-Reply-To: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4648;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=4dH9UQ/Y/hWeLPTbKSBpRwN52HqohB9Y7AqIn1h0Dx4=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm4So/gVYMrkePdwL9rdxDNwgd39fV1f1SYv
+ 2eEPAFT78bBFokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpuEqPAAoJENju1/PI
+ O/qapWMP/3PIG6oPr0grGiMDB8TpeQJ0ppmkrxqrRe4i7o643N690u6uahI1Lwt3/vXDY95XyXf
+ +8yIN2++okLfkPRll0QTF+L+INslu4kpHBDgFf3135VW5SECcAXMUZja5DYPBruZNr/rHmQkm2U
+ iSV2LjJ8jNSc92dEyyLMEIVJ6TSvMZsDouCtmo9B/yURT3NM3FbI3umm3wWev6srq+NynicNd9r
+ 6Jj5p9okRazQEbPcf3kbyud7uo2DvHqg78oRkgfbpeo7zqdtqiw9jMzy2oeZbtPnfQehus/NjOi
+ 3AstllPtqTKPDBphZtEVE3FAIMHqLmtrQttTimnDxKl0yMnQ2fNH+ASx3aDVuHzU0nQBwpjHgYc
+ FoZBD3iQEP+n9qvws3J1MkRcqTNFm8xvyPBSQA+8jklkcJzCLKAqZOoHaQEEODNXyKvrXXcv4Um
+ ipT2evOPSw+up81AFnwZw2fqS4uM8jKplqURdozn77hkygnhb4RXYtLBKiVJiQEg9Z8jlIWGu45
+ Nw/FcjJf8F46LcmpxqARrbe3kUUQsq9wsuoKHW4EVclyFc0GNxtSRwMd0P6OjbKJA/fLeXok8yI
+ wHm8eCx9tE8YQnTw30m4lEaYRgsrxkvyYQGxLw5C3HXGCwuKeUz935C2MIZw2ATcbYh5mDO243b
+ QaFx+o9VjctN+V/XJB1Uzug==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260316_112315_651588_26184E7E 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,59 +92,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4278898580746846370=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Add support for all six SPDIF transmitters found in the RK3576.
+The nodes have been taken over from the BSP kernel and checked
+against the TRM (power domain descriptions from chapter 6.3.2,
+addresses from "Table 1-1 Address Mapping", interrupt from
+"Table 1-3 RK3576 Interrupt Connection List" (TRM numbers are
+off by 32 due to SGI/PPI not being numbered separately). The
+TRM lacks a proper clock tree, but fortunately are quite obvious
+for the SPDIF IP.
 
---===============4278898580746846370==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xItI8zXtmIATo4FR"
-Content-Disposition: inline
+Note, that the RK3576 also has 3 SPDIF receivers, which need their
+own binding and are not handled in this patch.
 
+A typical use case for the SPDIF transmitters is audio support for
+the Displayport (DP) controller. DP requires inserting PCUV control
+bits, which requires software support when using I2S. The SPDIF IP
+can add it automatically and thus is preferred.
 
---xItI8zXtmIATo4FR
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 82 ++++++++++++++++++++++++++++++++
+ 1 file changed, 82 insertions(+)
 
-On Mon, Mar 16, 2026 at 10:47:39PM +0800, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
->=20
-> Convert the binding to use the generic power-controller schema instead by
-> referencing power-controller.yaml and removing the local
-> `system-power-controller` property definition.
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index 53ff6bd027af..b03dd69eca3c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1379,6 +1379,19 @@ vop_mmu: iommu@27d07e00 {
+ 			status = "disabled";
+ 		};
+ 
++		spdif_tx2: spdif-tx@27d20000 {
++			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
++			reg = <0x0 0x27d20000 0x0 0x1000>;
++			interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru MCLK_SPDIF_TX2>, <&cru HCLK_SPDIF_TX2>;
++			clock-names = "mclk", "hclk";
++			dmas = <&dmac2 28>;
++			dma-names = "tx";
++			power-domains = <&power RK3576_PD_VO0>;
++			#sound-dai-cells = <0>;
++			status = "disabled";
++		};
++
+ 		sai5: sai@27d40000 {
+ 			compatible = "rockchip,rk3576-sai";
+ 			reg = <0x0 0x27d40000 0x0 0x1000>;
+@@ -1511,6 +1524,45 @@ dp0_out: port@1 {
+ 			};
+ 		};
+ 
++		spdif_tx3: spdif-tx@27ea0000 {
++			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
++			reg = <0x0 0x27ea0000 0x0 0x1000>;
++			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru MCLK_SPDIF_TX3>, <&cru HCLK_SPDIF_TX3>;
++			clock-names = "mclk", "hclk";
++			dmas = <&dmac2 29>;
++			dma-names = "tx";
++			power-domains = <&power RK3576_PD_VO1>;
++			#sound-dai-cells = <0>;
++			status = "disabled";
++		};
++
++		spdif_tx4: spdif-tx@27eb0000 {
++			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
++			reg = <0x0 0x27eb0000 0x0 0x1000>;
++			interrupts = <GIC_SPI 370 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru MCLK_SPDIF_TX4>, <&cru HCLK_SPDIF_TX4>;
++			clock-names = "mclk", "hclk";
++			dmas = <&dmac1 6>;
++			dma-names = "tx";
++			power-domains = <&power RK3576_PD_VO1>;
++			#sound-dai-cells = <0>;
++			status = "disabled";
++		};
++
++		spdif_tx5: spdif-tx@27ec0000 {
++			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
++			reg = <0x0 0x27ec0000 0x0 0x1000>;
++			interrupts = <GIC_SPI 371 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru MCLK_SPDIF_TX5>, <&cru HCLK_SPDIF_TX5>;
++			clock-names = "mclk", "hclk";
++			dmas = <&dmac0 25>;
++			dma-names = "tx";
++			power-domains = <&power RK3576_PD_VO1>;
++			#sound-dai-cells = <0>;
++			status = "disabled";
++		};
++
+ 		sai7: sai@27ed0000 {
+ 			compatible = "rockchip,rk3576-sai";
+ 			reg = <0x0 0x27ed0000 0x0 0x1000>;
+@@ -2166,6 +2218,36 @@ &sai4m0_sdi
+ 			status = "disabled";
+ 		};
+ 
++		spdif_tx0: spdif-tx@2a670000 {
++			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
++			reg = <0x0 0x2a670000 0x0 0x1000>;
++			interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru MCLK_SPDIF_TX0>, <&cru HCLK_SPDIF_TX0>;
++			clock-names = "mclk", "hclk";
++			dmas = <&dmac0 5>;
++			dma-names = "tx";
++			power-domains = <&power RK3576_PD_AUDIO>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&spdifm0_tx0>;
++			#sound-dai-cells = <0>;
++			status = "disabled";
++		};
++
++		spdif_tx1: spdif-tx@2a680000 {
++			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
++			reg = <0x0 0x2a680000 0x0 0x1000>;
++			interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&cru MCLK_SPDIF_TX1>, <&cru HCLK_SPDIF_TX1>;
++			clock-names = "mclk", "hclk";
++			dmas = <&dmac1 5>;
++			dma-names = "tx";
++			power-domains = <&power RK3576_PD_AUDIO>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&spdifm0_tx1>;
++			#sound-dai-cells = <0>;
++			status = "disabled";
++		};
++
+ 		gic: interrupt-controller@2a701000 {
+ 			compatible = "arm,gic-400";
+ 			reg = <0x0 0x2a701000 0 0x10000>,
 
-Acked-by: Mark Brown <broonie@kernel.org>
+-- 
+2.51.0
 
---xItI8zXtmIATo4FR
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm4QhoACgkQJNaLcl1U
-h9ACOQf+JqpHS2vvWDBGmTprNgfkrZ9Q44lgSNbWZMnktfJE13q21QKHK5kSnDrO
-X40ZRgtewonmiGVIcifBtNjgoqkmY98pJvPnhgJjgP3fmBlFL/WCxYwUjF/JQCkg
-LrlVyB6IdKDWWAmUUVULvowVdo1TyiYZ2dlrvVwjGuMZJDgRFAz85fobiqkW9hIb
-5Z6Wdof4lcERkIE0dsbXctCTU4GJTupsC6duor8XTKC+wIL9sx02un+kINcyGwnP
-FwEkgvpfw9H/r9/jBuxTEQh7QcJPvlx36Ub2mFuBlF3OCJApRlm+j+vz9btoTkX4
-XZN3mowbqzv9xO9cSelYbJCV/FMs2Q==
-=SWwQ
------END PGP SIGNATURE-----
-
---xItI8zXtmIATo4FR--
-
-
---===============4278898580746846370==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4278898580746846370==--
-
