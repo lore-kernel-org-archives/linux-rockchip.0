@@ -4,157 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1FE7F53D67
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 15:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D11F53D65
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 15:16:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
-	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=sS3fraiN9OuKalrJNK9eSQ5Mz7lss6w88nfZkSJbsFY=; b=kpBEH1bHwi2UI+RHT9f7O8G3G/
-	bfNOVhjHTfaimc44ni7EpHYD4SH5FOLX1lQPIkpHKAHzmJ4bILdmdKC6qiWpxRccwg7CY58dsAhYy
-	DWaKkJmn0dbAaxWhksCkJDp+wdHcN7Uc1GD6MDieYTZfIDei6zTqwT8C1xLXQoMxy0jE56t0zK96Q
-	cIXiz0XsUL4Bz2xvXyQYQtPSt/t/U3BaEbyMe3oN8lTfA5mD3lwr2noV+462O2oRiZ0lAuW0gP2dc
-	pPvpzCl8IjWt6TBR3kcT9Us85gbnz+rnBNGH2/G/2PTDXeDWcsLkF43gimm/ElSduhe8WmCUcGwCa
-	3imwbMwA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1Bk40NzZI/3wADCQ9UTPPE8uNSj2HFnzYegllZuy0Z4=; b=3WmmHLnvYdIB5B
+	bMyMQfhidzC6SlqAlTdMlPkjQHFdE26uBpcqTZ+UB2cxowduRxkPMEf+L71KeEkLAsj3yNB2vD2Fa
+	hMPIPkiP1ZNwe6ZVFJ9z2Lmc/Pb8S8GLPdMqGcNgeL8Brhoei85cTwH70k3rnVzqVHrE/oS/K/80d
+	IBDzZ06Ct+hpm6vQRuz3ThoDy0UiPxlpPMuAjzfapwXWaqQbfNGGTiSGBK1oZWUargFtvy6L+frah
+	bXnZiGtZFljCYl90a65nH7hw7ASz+QCnA2SCTTPgMeahG+boTeimLq6CVImevHAz6K3CqZk9VYKHM
+	gh+QI1Lf5jq5XqMFIV4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w29UZ-00000004HjG-2TvR;
-	Mon, 16 Mar 2026 15:04:27 +0000
-Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1w29fh-00000004IyD-2vec;
+	Mon, 16 Mar 2026 15:15:57 +0000
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w29UW-00000004HiF-0pIZ;
-	Mon, 16 Mar 2026 15:04:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MjHp8co7NZiLJan7WYLjnOcQSW5MgUCxMYyJV6TEsQ23yW6AV2nsNVNg+q4h5tnR9ppBetj/fVP+3crJSKjXs2+t4bloiaqRrznJHwNc+SQirL1dJJXdrPGWJmqtn+RGuzyD9V03kPO5LqTrBba0VDv3uOYHqIzU/f7v6UWSixgNVNmjvX+5uXLWghuUoDHJCcMKWMef3x5Uulopf0XtCWw1C09Q4byqZ1jPHuCPZwpks2efroW3sBy+eM/UhrmMRSaxR/ltJelYt/tlAN8ZkWq5T8GCSoO0XaXYgOog8tAxj3t462wWQMwYGH8SGbdgk1vbsSX5hxdhaFkZRYKT4w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pWGV9u4WTqtSOoJec9lnEUb5iFnWkjg8ekAqSrCKhww=;
- b=xPsR9aI9yZCUoJq/hUjaXm3+SGLyiDNSDBfK7Ahytz2EK+d0v6OwN9qwxgtX6gJPG40HxgY1HE62ez5tME57ExRFG/I70haPbmqSrh5m9/OABEpV3nqiE2bkrkokF2fgb9BRVdt6yoxZ1uX+dsz74SRxQWdM5mqJLiIGAYNPtcuRNkw2aNHvIdMo5M5i3nn/Ckvlw/IlYYehftDUKcjeAipeJrKFvkuHEF9hSq0DcJEUAgoX6ydN4AwNm/RsATANMO4ZH89CbxmAQRtgnu/rH3Lv9++Sv4y+d0dMW0eqaV6ZlBJxg96djUmRWIL9AzpbWaFZwWVtqqyNzmCmS895Hw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pWGV9u4WTqtSOoJec9lnEUb5iFnWkjg8ekAqSrCKhww=;
- b=QcITW519Re40gLbBNQdEUQIydm+r4Pi3ajLjDgLZGFALf3lZ0tR1n0xGwRT9zYSkbZ2hU8Gp+ZzRP/dGW20sBU7UofeqCn5967z/75UK785x/XUAhvPCD/4kN3vle9vc87fTKiubEfWNVP9KEv7GsBkS/Qd55ahtp4mpXWtmWZCHLc6QoRmmRp6OOkVC0YsAp1zG2RHkH44JjqDZ0TuxqvYSissSwDR5UvUpQmAZmh0w4RsgLEe15je5n+InzSmGUX8wMPheLsNrK7tmCTHIsvy1JpJtzCPmwLWYFxbA/SqVz3Vw59sab0J6oTFRRFC/9p5FJc3L9hlCc3RL4wHI2A==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from PAXPR04MB8459.eurprd04.prod.outlook.com (2603:10a6:102:1da::15)
- by GV2PR04MB12019.eurprd04.prod.outlook.com (2603:10a6:150:30c::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.24; Mon, 16 Mar
- 2026 14:48:17 +0000
-Received: from PAXPR04MB8459.eurprd04.prod.outlook.com
- ([fe80::4972:7eaa:b9f6:7b5e]) by PAXPR04MB8459.eurprd04.prod.outlook.com
- ([fe80::4972:7eaa:b9f6:7b5e%7]) with mapi id 15.20.9700.022; Mon, 16 Mar 2026
- 14:48:24 +0000
-From: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Date: Mon, 16 Mar 2026 22:47:48 +0800
-Subject: [PATCH 13/15] dt-bindings: mfd: rohm,bd71828-pmic: Use generic
- power-controller schema
-Message-Id: <20260316-power-controller-v1-13-92c80e5e1744@nxp.com>
-References: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
-In-Reply-To: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
- Ulf Hansson <ulf.hansson@linaro.org>, 
- Florian Fainelli <florian.fainelli@broadcom.com>, 
- Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
- Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
- Saenz Julienne <nsaenz@kernel.org>, Lee Jones <lee@kernel.org>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Shree Ramamoorthy <s-ramamoorthy@ti.com>, 
- Jerome Neanne <jerome.neanne@baylibre.com>, 
- Paul Cercueil <paul@crapouillou.net>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Dmitry Osipenko <digetx@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
- Joseph Chen <chenjh@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, 
- Zhang Qing <zhangqing@rock-chips.com>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Andreas Kemnade <andreas@kemnade.info>, 
- =?utf-8?q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
- Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>, 
- Matti Vaittinen <mazziesaccount@gmail.com>, Alexander Kurz <akurz@blala.de>, 
- Krzysztof Kozlowski <krzk@kernel.org>, 
- =?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-rtc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-X-Mailer: b4 0.14.2
-X-ClientProxiedBy: SI2PR02CA0030.apcprd02.prod.outlook.com
- (2603:1096:4:195::17) To PAXPR04MB8459.eurprd04.prod.outlook.com
- (2603:10a6:102:1da::15)
+	id 1w29ff-00000004Ixe-1w33
+	for linux-rockchip@lists.infradead.org;
+	Mon, 16 Mar 2026 15:15:56 +0000
+Received: by mail-lf1-x12c.google.com with SMTP id 2adb3069b0e04-5a10d130b37so4287323e87.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Mar 2026 08:15:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773674153; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Lc4HZNyg62BAunWFLZkxiobrg8tRUIK/4bjJlwcP/aCR9m9XqKJqHZBZBe4xKJ/0NF
+         GxaQYKnh+tu6gJILuikEx1YhUbWK5ooUfaQKsBb0uPlk4T1UkxLm1pU5xhCQ+mJ0FhE7
+         +LMq2TetGegqFM8JP8BcnO1mIJ1zuXAcT4cjon42vo+FlQNyAECnQMydNVCdk2a9zk1e
+         XFXZLwubFf9zBhvOf2ymsCD2X9VBeW2+8y1mJkRCQkW7CtvgHrYPJPuM61S+H9Yumk2/
+         xaZZcvk+L17JxO8Tq9DbnvL4E4z86p2XeyYM5kaFghagjl3GVWEaTkxywndX8X1bZ6i0
+         FtMQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=LqHFA8ezpiqlalV4mlS5Ns4Uk9hJm+DS0/y0X5Bc/n4=;
+        fh=pDtGWUGasROi6rJpWbjwQCoUBSW1Jue08rCSEU8knPs=;
+        b=aQxzbg8EXQNs6vFhxGf+pLTu0e3c0SJYK5nQvj6EHI1CD+XXUhZnyKuU6O7+96GUBF
+         dVAVDmVghAekkPaKdjMBLRpG/xTnEsq6l4rk4KjINwJ7JUloyChqSngMMcIRHNT8Kjet
+         E+kufKnsV/7/KYUcpfRL8DJVbldF0agL211G/Cj8i58YL/XrZRC1fZdc7y7d2itVk4IA
+         JezMBSjSkQ/SQeQTGT+4gRB+Jh9pF5n/PoZpe7mxEiSkfiFIEEcPR7O0ujqjf8cSux5+
+         Nyry4hLGXXJm42vXlTd2zXVw5w54vhomhz6zB9vm0lUuK7cFMP/n27+qpomfWP1oLN4v
+         j+CA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1773674153; x=1774278953; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=LqHFA8ezpiqlalV4mlS5Ns4Uk9hJm+DS0/y0X5Bc/n4=;
+        b=oladjpt8Cp1VnNkdQCO3T1eeNCgE0TVD8QsgGFwWdz9oQ6Hj/T6v50ez0zLSs6mbT+
+         jIh7poK88tngByXWzV8JJJzdqDXbD2Capq9ubPyXO1pGFrKt8Gjj18Ob4tVfxEq6V91q
+         OiNiLOK0EP1IIB/L9EMHKt805VoxRu3hhkKBkGVp6e5myFbhlPV8wRUtNAJaqJTrJ3b3
+         YoIk1CuZ5d95NNYWMBVV3AfImXzU8wxDF8q39agVGtTLSkKTisyb7W0VNRzkY8jSHM4i
+         SN9eMAe+lRAFLqoWCAIjh0XF/NNy8JBbXJgqeJKRTuyhNjv6pigGypWR82Owd/qSmcHw
+         g5Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773674153; x=1774278953;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=LqHFA8ezpiqlalV4mlS5Ns4Uk9hJm+DS0/y0X5Bc/n4=;
+        b=hbD2H2f3RXcz3nl8WvkGNv6BnRjY/zdiX7hzQAfoO4EPF4coiYNEJWk2lU6fNyJjv+
+         oQx83IKrblvMMxqcGWaXoh77O6JjoWjpz8AukvJER6oieQANbnoX9BVHp7H7U08f9kBX
+         2AwEIpDEGaukfkMX6yDD20r/Avem8t5MxWSdelxxPnUschF4lCbMbXkIbLB9TZvjE6l0
+         IWmHgFjsBZri+l9biCYMACDu3mlKuTuy03je9Y56mSm1YxKUoeus0Bs4Yws9lJhO1bWb
+         KbGCslKLwtu0yFZXISX7mcdNSPiZ5rfvPtsq1beZUy07IIY0cZv45wyL8zwUiImSARAX
+         QJTQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVdU579FuCM8hxlteMlJ01fM8ZJ4WK57xcuYuRWMYhkK2xftsb6Lt1fzlWogJZvPku7hc+xz8e417DJbCoTIA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzjeLi1FDFuxjJszhgOhIJeudCXO1WIFEOtG1vxu64rv5ki+99E
+	61CfO5w1aRBDGp/79ualIguZoD/6lSlr8gcxPNRLo3GERpgcdqIWZLhC2WdLVntYVLxb26IV5XC
+	eh63qWGYgJLzTqwn5EPdmcWqi5895gx8WV2tSl7hi+g==
+X-Gm-Gg: ATEYQzwIMCQX8R+yr5bFvRVWb4xixP7TpO9FNNabTGaWwLkWf86EpjPPq7pPY/3PSSz
+	fcL0VzCnQ5xilgl7mFDMdY8k1Zaqj7xnzAvyyFTJForYXMz2eOrPe/SiiRDwfXB+JNIi8ADWRyx
+	ICegIpJ+BsIqQ0D+phQudESbmOVPbkzhpisCRq5sD8fJHb04Dc9BrqxRP/9gIG+PiOJWi7JwLHm
+	bx06rIhi+cFzJDwzRjG3JyxlmWOXnzC1cHwNePA2aLz5yJGRVzIPUy3SZ2fP+XVH8jTwNXFsqlD
+	XDVwkoLW
+X-Received: by 2002:a05:6512:3786:10b0:5a1:5994:2773 with SMTP id
+ 2adb3069b0e04-5a162668c3fmr3597222e87.14.1773674153033; Mon, 16 Mar 2026
+ 08:15:53 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXPR04MB8459:EE_|GV2PR04MB12019:EE_
-X-MS-Office365-Filtering-Correlation-Id: db85ac70-973d-4410-1815-08de836b12f6
-X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|376014|7416014|19092799006|1800799024|56012099003|22082099003|18002099003|921020|38350700014;
-X-Microsoft-Antispam-Message-Info: bcpQWyF0aGgKZ7JhlC4orM/3j7CvPFkQZdkZbnw0gtjkyou6gOdZ7WCHlcFV1QN0JUplHYH5gqIgY5fMfs1luxIUtJILJo/BTPGoliFSXEC3q1fj2GCtmJwCfdND2pk2E03CbXRgPI5404CcMSZIV5nYW6k4+agqk2ptrdPb3jWm3jxiN6zsJkVSohleoT6RmFmfKLmsWpkuxnBW9Fuy8NlxNaglHX1NLiKbWZ0OV74Swg15+IdtqwuKvZ/i/G6M5DQU2Cu+FPVo4iEFNlrwjUCnBM+GEwkCz6jWp2uMVwyTyCj99Ix3UaYW5DooEhdGIUkpkP04YcRyzMJI91makG3mQs8e/lciGiuSboQrdjHQrNuiVhIe7uvu3IUHCuGidotqwIzUQ4zjymkAIzNpvIqwgT0iY0Ck2fzEgqJTQvhGDTnWvNRZe660jcwM3T0qSdPxv5fA9DhXAAGhiC2ije3EV5xlPQi0H0k6NHerse4z6oWigAY5dho28vZcMtQ9UZGE6dCmQbZnvEsStFT3UDXMyGIKK20MszS5A7hy0Xm1ekDR/X24B/GmppVSQiHgvUQOeyYF5X1tXQFwxGY/Iae+U5EuBVOd1g5DgEs95jVniCgaVQFz4Q0WoMCz7UbuUKXGpThyhFTqnRTy39f+325qiIOC1fXgsQ9PQTRNnUZrM0PlIO9dIKz9gdpbPsbL3zAkcpvM++glQJhsXkcgMaVmcoEuAPvenL891Uud5uMa4bHYI5DXhoekAWyF0lYSRfTG89l4kGGsUImzbk6iAvOxU7j1YhuZ4tZFYz2plDMjM6lVVxYyYrWDdc2swvrO
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB8459.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(376014)(7416014)(19092799006)(1800799024)(56012099003)(22082099003)(18002099003)(921020)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bWdtaVorM2FHL0JxdWN1MVBDSlJZV2trRFVmVTk5Rk1TQ2NyWlBCT0oyc011?=
- =?utf-8?B?aXZNME9iM1Z1RDZmOGNnV0lKZm1QbjBSSzFlVGt3NXc3azhzREJTaDQ0dkVi?=
- =?utf-8?B?S3pTTkVvSm9VYlRQZ3FGMjZxWlFFcWxWbWFROWVCQXNTeTBlVjFPREU5QkJh?=
- =?utf-8?B?ZGFUN2I2RWRWRjhjTHh2ZUw4Q00xazJoV3RLa2V6Rmo0U2hVVHQyNXN3RnFX?=
- =?utf-8?B?eGdYcXJYTFZmcVNnOVBVdXcrT1ZzenF5UDFUV2tCWTZLQytGdjVBUUxIc2l4?=
- =?utf-8?B?Znc0TUpVUmEzbm9rdDlwR3lPZkZPcG5URkVZbHkxTFdVUWFmRHlBaHZ1R1V0?=
- =?utf-8?B?QnhKRFhVZVFtTTQvdWdMQ0VmSHBtQXEvY1pQNDd3ckQzUXRQN0d5ZFdnSm4v?=
- =?utf-8?B?UFJRZ1pqaVA5UWdYOFFXY2txZHprVXgvWUNqUkhnbTZQcEEraXpwYm52QjM4?=
- =?utf-8?B?akNWSHZmNFJzcldoZjZzWTdvd2NwZk5iRjQvYjFhbHB1THZ2MjhTSnVlcGJo?=
- =?utf-8?B?SEREa0RBY21QU3dPUVBOTlVYSmJWRlJPejcyMzlydmhpRWp3NUg4T3QyYlNG?=
- =?utf-8?B?VkYzMUpyaXVhWHBKUWc4L0Q3WFFhZElyR3pub2U3YnhlczRDUjZZbHR0ekxN?=
- =?utf-8?B?ZmZIWDRUT2FmQ2t2ckhRaEpRYUppTTN0aWpRMjhqczZhNk04NWZIYTc1b2RU?=
- =?utf-8?B?RmpmVWphbUlSWko2ZjY4aFpRR3IzNW03V2I1a3VQRXNxQUFMVVQxeHRweVll?=
- =?utf-8?B?V0EyWFNnNHkrK0JSNVJVTmlsaDZ2SG5ndEZ4bUtNd1pETENkeUExMW9LRFhO?=
- =?utf-8?B?Rk0vSEZQVk9tOXp6MWhXMThvbnZrZURlNEl1eWVPczZNenJpTlZCTVpod1N1?=
- =?utf-8?B?L29WcUpxQzFzSnQyeEpUelFvSHcxdTBZY0FzMEJZZE95cFZiVmRTOUFmYjdq?=
- =?utf-8?B?c09jNGtLYklTMnM5cFpPWHlWZ2VwWG1tRGpmSGIxS2VPVmpsNHl6SnhjdjZn?=
- =?utf-8?B?dmZyQkxod1pGc3J4Z2kxVFRuT2dMMnpGajE0bEJhNXJYVjJnb3ZBN2RvTDFj?=
- =?utf-8?B?RFovM1ErakN6aTBTMjNmNENiYkJTQmNNVVdDWjBld2RvUXR1UUxnVmorTXJP?=
- =?utf-8?B?d0YrZHFRcDJXZnZPWFpXTDVXOHhzUDJxTnBpelpjVWVPT1pvcnZQZW4wR004?=
- =?utf-8?B?elVtY01tUC9qOFBYbjdTNGpleWJxRTF3bDhKRXhXKzRnM2J5aXhLcnc1cFE3?=
- =?utf-8?B?ZXp3REhXSjVzVWFaYjF2cVpBVWRxQVlZZG82VEFNeUJBRXJQVGsrTzhoUk10?=
- =?utf-8?B?SW1mbzhia3RneEZtUStPVy9IUUppaTZhMXBnUng5WkFzckU5TnExcXhJYjA1?=
- =?utf-8?B?SUhWNUU5aW9nU3l4QjRnU05wbGNIRkk2UWx2b0FJeGQ0WC9jQm52YzQzUGpp?=
- =?utf-8?B?YlZ6T3lDU2FxZ0xuMlZyckl3eTk3QWdsRWt4dGRFanVna3pzYit5TStKYUxW?=
- =?utf-8?B?Vmx0QU05c2IvajlKT3JNRXNpQW1vdzFxZ2lWc1JZdy8xZ1dVUTBneWJkMmky?=
- =?utf-8?B?T3ZubWgyR3FmVVNHRmRNb0d0OHRPOWRBNFFiQ0owVVV0WlR2WHRRRjF0WGJu?=
- =?utf-8?B?QWJsNUlsWlBDZTlPa3VTUlNUU2ozNmRhM3FaWWtaTGFCQzBjS21QOURTbVc3?=
- =?utf-8?B?Z3J1Tm9MQnlRMTdUdnFpMHFkcE9rYnMrRnA2TjkwWG1Odm11UWtEdzkzSWRo?=
- =?utf-8?B?NFFZT29iV1pnQk5jTGxxb0ZnUnBnNDEzbENBTDArUFNYV2Z2bWt0OTg0RnJE?=
- =?utf-8?B?ZkxWNUpCTlIrelJsRE5WWXZlRlFVRWJkN2lpMGQ0S3BreDljaUcyZjNNbFRH?=
- =?utf-8?B?VVh1N1J1UGd5S1Q3N2VyR1NVTzQyKy9vMXRoVm4xSXp4TEdSN2dBdVFITHg5?=
- =?utf-8?B?aUVRNk9vekhuT1VadEdLK0JuV2lwWDNTL3F4Mmo5YklOakhJd3BPSkh6TXQ1?=
- =?utf-8?B?WHV2SCtvYks1SFJqa2dWZkhBNEJxWjFBbnJpS1VwaisrZjZBNDlYNnpjdUwz?=
- =?utf-8?B?c3hrbS9FVUY5K1BSbFdTTWtRZ3Z4MlpSenJFNHI5bkhUeExaelppUkllM0pB?=
- =?utf-8?B?Q1FxMVArMys1eHIwMC9nYmNWaHhGVVNsRTdMRWtaalJIOWFMRUdUMWZpdWl2?=
- =?utf-8?B?MkZ5T1hMeVFjZjB3dTYrZ21hTkk2WkNYNStqTFEvV01FRnNnLytVbHNncGRH?=
- =?utf-8?B?UWNSUEsyZ1J3eU04RDZ5c3BOdTNmM2NKVVFDZ1RzMklyNVpLL2tQc0RTcktm?=
- =?utf-8?B?WkFibW1uRS9xWHJMT0hRUnZ1M0l1MGZQbDNvRWhmNmJCWlF2QXk4dz09?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: db85ac70-973d-4410-1815-08de836b12f6
-X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB8459.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Mar 2026 14:48:23.9956
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: rt3efNzMm5/HMn7ORki64sulmTbtY/DcZLB4MYI3tO/xafQbTlWQlcH42nA90d/p6qZIDhuwus7yPqB/gNGiuw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR04MB12019
+References: <1773026943-111633-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1773026943-111633-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Mon, 16 Mar 2026 16:15:16 +0100
+X-Gm-Features: AaiRm51ROAc5PVIT4fZKKt2_UCIWlTSjB2cm-yra15BjSZUgNMXbRf49SImO_44
+Message-ID: <CAPDyKFqqbR0ir3Ja4mMXxOveKQUwaeSMSDtqnhUuS=iriWRzjg@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Add phase map support in dw_mmc-rockchip
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: Jaehoon Chung <jh80.chung@samsung.com>, linux-mmc@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_080424_356391_F4494FBF 
-X-CRM114-Status: GOOD (  10.09  )
+X-CRM114-CacheID: sfid-20260316_081555_521502_047F99B8 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,53 +115,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Peng Fan <peng.fan@nxp.com>
+On Mon, 9 Mar 2026 at 04:29, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+>
+> Hi Ulf and Jeahoon,
+>
+> Currently, in dw_mmc-rockchip, the rockchip,default-sample-phase is only used
+> for some lower speed sampling, while the output-phase configurations are fixed
+> based on timing settings for all SoCs and boards.
+>
+> Subsequent validation shows that this approach fails to achieve optimal timing
+> performance on many chips and development boards, failing to meet test requirements.
+> Since different timing profiles demand distinct phase configurations, we introduce
+> phase map support to dw_mmc-rockchip to address this issue.
+>
+> Additionally, given that dw_mmc-hi3798mv200 already utilizes phase map functionality,
+> we avoid reinventing the wheel by moving the phase map parsing logic into the core
+> dw_mmc framework (similar to how mmc_of_parse() is implemented), rather than duplicating
+> code in the rockchip driver.
+>
+> This change maintains backward compatibility: the original default_sample_phase and fixed
+> drv phase configurations for different modes are preserved, with phase map values taking
+> precedence when configured.
+>
+>
+>
+> Shawn Lin (3):
+>   mmc: dw_mmc: Add parsing mmc_clk_phase_map support
+>   mmc: dw_mmc-hi3798mv200: Using phase map from dw_mmc core
+>   mmc: dw_mmc-rockchip: Add phase map support
+>
+>  drivers/mmc/host/dw_mmc-hi3798mv200.c | 11 ++++-------
+>  drivers/mmc/host/dw_mmc-rockchip.c    | 27 ++++++++++++++++++---------
+>  drivers/mmc/host/dw_mmc.c             |  2 ++
+>  drivers/mmc/host/dw_mmc.h             |  2 ++
+>  4 files changed, 26 insertions(+), 16 deletions(-)
+>
+> --
+> 2.7.4
+>
 
-Switch the binding to use the generic power-controller schema instead by
-referencing power-controller.yaml and removing the local
-`system-power-controller` property definition.
+The series applied for next, thanks!
 
-Signed-off-by: Peng Fan <peng.fan@nxp.com>
----
- Documentation/devicetree/bindings/mfd/rohm,bd71828-pmic.yaml | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/mfd/rohm,bd71828-pmic.yaml b/Documentation/devicetree/bindings/mfd/rohm,bd71828-pmic.yaml
-index 09e7d68e92bf3d91bbbdf2e1b6a942e87b5fe7a1..9818102e02c75a46f7c56de8776ecb9b91a77cdf 100644
---- a/Documentation/devicetree/bindings/mfd/rohm,bd71828-pmic.yaml
-+++ b/Documentation/devicetree/bindings/mfd/rohm,bd71828-pmic.yaml
-@@ -15,6 +15,9 @@ description: |
-   single-cell linear charger. Also included is a Coulomb counter, a real-time
-   clock (RTC), and a 32.768 kHz clock gate.
- 
-+allOf:
-+  - $ref: /schemas/power/power-controller.yaml#
-+
- properties:
-   compatible:
-     oneOf:
-@@ -79,8 +82,6 @@ properties:
-       used to mark the pins which should not be configured for GPIO. Please see
-       the ../gpio/gpio.txt for more information.
- 
--  system-power-controller: true
--
- required:
-   - compatible
-   - reg
-@@ -91,7 +92,7 @@ required:
-   - gpio-controller
-   - "#gpio-cells"
- 
--additionalProperties: false
-+unevaluatedProperties: false
- 
- examples:
-   - |
-
--- 
-2.37.1
-
+Kind regards
+Uffe
 
 _______________________________________________
 Linux-rockchip mailing list
