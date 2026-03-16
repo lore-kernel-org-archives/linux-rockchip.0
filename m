@@ -4,84 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50C31F506D9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 14:55:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61914F53D67
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 15:02:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/vGCFegOPMybCnzdE6Dei/d9LqfbLBUarS/g52fJJOM=; b=i709gmHnOmEzUGZQfvuoau9jU4
-	PXvQHhwpg4UFVEY+zY/JINWQ5WqQURee7BnxmOLuywTay/lxihOrBds6781VW0yL1+Xem0PQv+Q8A
-	0XHBBPb8vVvr2foHAXkwiA4oO2KHhXhXVuqZvQ0fy59T7GvL8QHEAlPhfyhwPhHE3jXrLhZcKVm8y
-	5gJP0ff8jgw1OUQGsE+iZ1e3Gg639wkzuv6+BB5equA53Hsz5XP2PeAA/UcLE8X253ztHukSCkskY
-	9Gyt0AC/cstoKk4e2nKtqF/4sk+ZzexBCz+hbkZmEM6SwqNlf2igDjE14LWr/1J5IEqSfE/MRh3Re
-	thoMPUBw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:In-Reply-To:
+	References:Message-Id:Subject:Date:From:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=bC7X5Mekml66U671ZmwCxPDTpo0FOQnGbAMS7DvWLmI=; b=WBrY/F6n4Zq48NOqyDNibuwwdO
+	GC9v/yf1BUPp8glJ16GVwmCGyjfSFskrOh2KbRhfeWZui3OVJfRT/DT7NzyPJJ/AC8as8aevYf7kc
+	6qlH5Y3PdQCsKUG0EWOu1budlK79fzNNoTVDWyvEu3F2i5C5F6HjD60cxcRt+xgfv89Fq+aSrk3a7
+	motJyzQrlFxNEaS/14tMXQo8EG94XpK9REwnYI4wnTnN100ZthDieRcF9njvbVIyjtRlK2lXae8oc
+	YCTX3W1rmFw3T4LG9j1h5j3ALGRwQFlh1W27j1axxDbm3PrSl9nuEYQr699wMNokXE5yYn6z1BXyL
+	9zz62jQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w29Ly-00000004GAi-2wd5;
-	Mon, 16 Mar 2026 14:55:34 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w29Sn-00000004HQV-1nQ4;
+	Mon, 16 Mar 2026 15:02:37 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w29Lw-00000004G9U-1CBD;
-	Mon, 16 Mar 2026 14:55:32 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5B72760123;
-	Mon, 16 Mar 2026 14:55:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01AFCC19421;
-	Mon, 16 Mar 2026 14:55:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773672931;
-	bh=DXurX+rXkNtKMNetYL42Wscz0IskX62tenc5ozVeitA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=qJh/lLK9mQ4+tJsi/be7GN9483oLhqrwmr5gGA9yIxTr0zTqxRzRW53VKiDpS+znu
-	 al1TPbiDEz7JLE3AqeSgHGq+ej/dN8cj1DdY/c7ah90EdaS1H6plBc+IN475XdaAdc
-	 FfhBGf86zLMwlyannK/mE47+UFYTRd3UoHk/blPQ3d9PQct/l4lX12amujsz3xjfHG
-	 6iqb4GGddwKFjL8zG/CdLEYRoTS8ftWzk6C82uxjtslnVFRGMoPijQQ3UenQwxxqg+
-	 Fk4g+LelXVOHJGKC4jq20cV9YoUQOjywQrRyBudWaukf1rZdBBhlbNiCf1V0+qCDcd
-	 ypRksCHLMX91A==
-Date: Mon, 16 Mar 2026 14:55:21 +0000
-From: Mark Brown <broonie@kernel.org>
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Saenz Julienne <nsaenz@kernel.org>, Lee Jones <lee@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Shree Ramamoorthy <s-ramamoorthy@ti.com>,
-	Jerome Neanne <jerome.neanne@baylibre.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-	Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	Alexander Kurz <akurz@blala.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 00/15] Convert power-controller to dt-schema and update
- various yaml file to referencing it
-Message-ID: <f329f1b4-787e-4c8c-ba26-e419a047023b@sirena.org.uk>
+	id 1w29Sk-00000004HPs-1H1P;
+	Mon, 16 Mar 2026 15:02:35 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=w68hxx3SU2c46u+hsvWRmvA7ZOkOhs/HQh2BGpNTAvQ5H59YRVerW6cfsHDpMwRl+KiFAUklQQRJZz+qM+gXv2+vPb6VuF+RtdZybXmTmuzhgsMlrRcZN8GSxbruwSZsHHzmI6WUAXbbe2hEY/3Bu/J7JyqY9fMmgTUJ3PY5S/khZs26ybUpdBzzxgyOhZq1w2uFMSEA62T9n6F6nMYZtu33Oit2ZF7GZREP4iRbntV34l0WhsWAtLXbgVTkY9rmMAoKaA+eHQxnmUzvx9FKCDJTqW4RJgVjcbRLHyP2jaOsBaBWwmImL41KFbzzyX+B2Dlx0r8C9IVXjJ4A9EVGGA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=k7fHnNKN+qHwVNnDBbGLv+sd2JZD3z1Xn1tVhXyGS8k=;
+ b=BgqMbEXkKmC23ZnLsh5/hpHp0KmKujL3gb8SEQpfSYyFQGf7CbCqGSjrcbKv/k2Fu5swT4/xZ4OhlBP34Xq58sY6qAEVG7afa3phvcit6d5pa0W/quydnjuo9ANnYwB1YETdgTWmQ3DxQC28kFGnSWRZQLLsjjd8ZcjW9imJFdjCKxCu7EKg+kUpLslMlyUvkJhijMicxxWsneeCuXGbEFya1fFH/Zmyj1Tkqkv1/A4Pb0XpaQ8T79vyKJiYfNuRisSVX2P1B1DKXhI6rYU9s2xq8jz5vjI9WV0cv275ffYW/JI2Jq6zMaznzTFqUk7Zjy/dJ7G8SVzxJTbeE1Mz1g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=k7fHnNKN+qHwVNnDBbGLv+sd2JZD3z1Xn1tVhXyGS8k=;
+ b=wFW9kliw4Umt9shUi8b4J79JGkfh+LrQmbgV5+vDkF5ypL94WVWvICzmkAe9PsGZwBziJuVtDmaiTXVsgN8FHzkET2mvT+Vjinf9j21thRiVcMnHW6fRHKnP+hqWntkzAVWn4IYV4A9yA6zXB0uYp/6695qezAo9wPoGjA/YDjlJ1FRnmleOcIRhjqosA99wPGVjulsLSiJbjdceCI4DYkQP+h7IRFpkCAg7aGT4IDfaROOXJ/gY2NzoYoByGJZVstltpQYqKEjkb8TzAjyGhwrbNeWG+pYkA1RURMk+8CicgyNAlhtCRRYatd74+fGcaP4zoh5XVkKZ/CTugxF+3w==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from PAXPR04MB8459.eurprd04.prod.outlook.com (2603:10a6:102:1da::15)
+ by GV2PR04MB12019.eurprd04.prod.outlook.com (2603:10a6:150:30c::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.24; Mon, 16 Mar
+ 2026 14:47:08 +0000
+Received: from PAXPR04MB8459.eurprd04.prod.outlook.com
+ ([fe80::4972:7eaa:b9f6:7b5e]) by PAXPR04MB8459.eurprd04.prod.outlook.com
+ ([fe80::4972:7eaa:b9f6:7b5e%7]) with mapi id 15.20.9700.022; Mon, 16 Mar 2026
+ 14:47:14 +0000
+From: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
+Date: Mon, 16 Mar 2026 22:47:41 +0800
+Subject: [PATCH 06/15] dt-bindings: mfd: ene-kb[3]930: Use generic
+ power-controller schema
+Message-Id: <20260316-power-controller-v1-6-92c80e5e1744@nxp.com>
 References: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
-MIME-Version: 1.0
 In-Reply-To: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
-X-Cookie: Not a flying toy.
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+ Ulf Hansson <ulf.hansson@linaro.org>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ Saenz Julienne <nsaenz@kernel.org>, Lee Jones <lee@kernel.org>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Shree Ramamoorthy <s-ramamoorthy@ti.com>, 
+ Jerome Neanne <jerome.neanne@baylibre.com>, 
+ Paul Cercueil <paul@crapouillou.net>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Dmitry Osipenko <digetx@gmail.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Joseph Chen <chenjh@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>, 
+ Zhang Qing <zhangqing@rock-chips.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Andreas Kemnade <andreas@kemnade.info>, 
+ =?utf-8?q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, 
+ Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>, 
+ Matti Vaittinen <mazziesaccount@gmail.com>, Alexander Kurz <akurz@blala.de>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ =?utf-8?q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rtc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
+X-Mailer: b4 0.14.2
+X-ClientProxiedBy: SI2PR02CA0030.apcprd02.prod.outlook.com
+ (2603:1096:4:195::17) To PAXPR04MB8459.eurprd04.prod.outlook.com
+ (2603:10a6:102:1da::15)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PAXPR04MB8459:EE_|GV2PR04MB12019:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3b281143-b1ae-4523-c1e7-08de836ae9b0
+X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|376014|7416014|19092799006|1800799024|56012099003|22082099003|18002099003|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: N0P3EvRuLY3DOsznZ416ksNWgCLChoe8fxMKhgpOQNJD+xFxehS9JPLVZqjSVJJxoM8huoqlXbwOTvr8n/gGpbpX5BZI6eNPkUFEMLjYQSlWjH39MvYAR2flFgPAhXv3lZkWfHo5o8MooeZknWPoLHLGIV5Qf5EF+AJRff3NLqYJIVIfz+ZyJGk8PBiUkRXWQn7bSv1bTObLd6Gu7JWSXiPZbpoMIiXLRdI5b/kbVrcfBYfsaYISYbmJNTQVJOisztr/nReTmlDq6Eb/mJTGb7RnGrZEvQZIEvT0suJggc1kWtT81JZ1jmA/057o+vbNtP2nM1mGkexLuHEDWwfEA0J0FvZUbw+4YF7UYECtZLQ/vKJegapJ8OgMZNmTLORR5czOOT9KU8Zw3oYQhWczKNsGa7RS41WMJsbI4FmCtVAf+vNm6olkTyH+5k28xTiUb6fPWkye/L7h9ht2B83XzB0tqF9CxfWHRK0/UzN7LjuxvqF8FZkyb4Qal7GUA1BTP2IzE74DYWa8JiXV98vBEKZ2q7D7+aNknlXvwfK5j1BJpudqcUza/tlQJDFqMfYPewG4Fbj/j57/6wxceZzr4IpNTy1gpC0O847kyUh/wAboO7Sjl1jXAhSdIvKXZiCbeUCAzjQvyH+Hpe3fytLjIAQOTHtssmRJLGL61Vwl2LpIazg1iRkKMiOuqkaiJceShgDOHaNN2A9brKlV7biuRkgBfzCSG3MZrY5Nkfu/PdDtDcoX6PFKtJiv6G397/PUL8YkjkflsJsFknIDbZhT0eWFSI9VwyI3gtJPDmcBrJX0zEOweL3/R45SYBXNs9ER
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB8459.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(376014)(7416014)(19092799006)(1800799024)(56012099003)(22082099003)(18002099003)(921020)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?MHhZTzNPNUxEM3lKdU56aW9XZVJQMVdrSy9GWm11bmhZM1RIcjViVUFWcnVs?=
+ =?utf-8?B?UDlKWGpjTytubUh2ZTB1c2p2VjFoZmJSOHZ1bFJqUWZoZllPanJadFpBb1Vs?=
+ =?utf-8?B?MUdsUmFUSkZvRUZuTFVueHlwUVpZR0c0RjNYT2tDUmNoYnpYSTVaSllCdzZD?=
+ =?utf-8?B?R29TZnYwaHJnc211NUVRU1VhQmJtZVM4bmluRjJYNENtQnc2VTd1d1lmMnFC?=
+ =?utf-8?B?MWM0T1ZHK2ZoeVdnOUlNbVJmN0NrS203UEVUMTFWNm5mRmpzWXQ4a09yOVVi?=
+ =?utf-8?B?QlUyYXZscHdKd0hWZjRQcmdSUml0VFpNcm10VThyRWhYZmJ2MVpyRWwxOURp?=
+ =?utf-8?B?TGViYlhYcldzekgrY2lXY2paNTN6b3pTblZFRjFwZE0ycWg2M2N0ZmVLbXBX?=
+ =?utf-8?B?ZDg3RE9ZTjJYVlVWUzBvTkExQ3pYNjZDaGxuMzJCcDEvZ3VJR2FrZHNKMVJM?=
+ =?utf-8?B?Rlh6eTYvcmhkT0JiL2pkSnRNcXNPRGFtTmdUTEpudXNTeDhmaUk3K0NFSTVV?=
+ =?utf-8?B?L1kzMWt2OXA0djR2NGhEemFaWlFtZHdxTVBobWF0MUxmMUlXS2FzTVQwbUZR?=
+ =?utf-8?B?alNhMUpLU1ZnUDR3cDlhMUtkVmE0TGE1azl4K21MeWtKL1NqR1hEaWNjOGRl?=
+ =?utf-8?B?MGtSMmFwT1lyTjlLV3FvLzRwQnE4bk9jK3JJMWx5cW5PWXJQblRRVWVQUmRI?=
+ =?utf-8?B?TnppREFYL3FzenlNNUxJSHhtRXk4TnlnNW9uV0xNU21rdXFPL29OdWFTTzV6?=
+ =?utf-8?B?ZnZQbzVEMkZEbTJQTzlnV216SXZUcTFzQmdiMFlFT0RwRHNYeS9Tcktsd25k?=
+ =?utf-8?B?Sm1NNkV2bk9yMWpGSEhrcUNXQk1qa0hHVC9vSW5SelRUN2FRalExamtnMlE3?=
+ =?utf-8?B?MFJkcVlBc2NNN0k4ZmJ2SCtjbSs0MWhLSWpSNlU2cFJLOWpMaEJFVXBFVGpr?=
+ =?utf-8?B?MWdObi94MEF6WjRHaXNEWVhoRlJpRzI3MlgwYnlaMUg3Qkd5ZEFSMkpBNWZa?=
+ =?utf-8?B?RDlLTlZaQWNodnlqNkpLS0hiS2VHQzYxSkhIM1dSWmEzci9qTS96cnY5ZkJw?=
+ =?utf-8?B?YUhjdXl5ZmJpU0JEKzhhMExZVC9oNC8vY0cycE1lS0trTGYzMEdrUS94NC85?=
+ =?utf-8?B?Tlo0VUp4eWV6d1Y3WHNOSFZCbS9vQVdZdEZjay91NE9RY0hkZUJPZVlKUy81?=
+ =?utf-8?B?S0JTRDArUWt1ZWR6bzRndWtOQ2QwcGNoOHAxQkdwWDErVGp2cVp0elhhTFRl?=
+ =?utf-8?B?cVR3TjUyNnN2WXRvd0FIT081VXIvcmlTN3Rkb2txR2EyTGNiRWtMRUZ3c2JT?=
+ =?utf-8?B?TTVSSHZuU1Y5NWJaK3BJKzUyRS95b3JXSEM0MklCM290SjFRWGVLWUozTnZF?=
+ =?utf-8?B?dEE1aUtOSWRIYklEa0E4UkJleDd6OGQ5UHl3KzY0NXkzTGdjS3ZxYyt2U0Y4?=
+ =?utf-8?B?NWlveWlUWk1GWi9qczc4bGJUQmYyemV0ZWtxR093cUovOTNyZVg0UzZQOHZa?=
+ =?utf-8?B?Y1p3NmNzRjlsRmJld1ZESVFKSVZPallIVENPRzY1NktSdGlGa1h6MW4xOE5B?=
+ =?utf-8?B?d0wvQTk2VDJRUGloQllpK1BEcGtZSVNOMjZpcFVXWHpMR1RzVFcwS3hpQTRl?=
+ =?utf-8?B?dmszVGs4TUsySW55bzBiemcveVZ1NUJEL09vNWNUWDV1b3ZzazBvZVRsQVlh?=
+ =?utf-8?B?OXpFdmxYdVpvUkxIckUrTXU1K2kzRm1pM0cyY01KSkVkWWRuZHhCQ21tRFlY?=
+ =?utf-8?B?VjJwNVBtTjhqbXppdnBGeFFSSUxHRk04Q2RFcDFuRTdCU2xkbitrSVBiczdX?=
+ =?utf-8?B?cGVjTTdWQnpCZGsvdyt0ZWZhTmFiTDB2ZkRmMXY4eWROU1oybFg3ckhlanR3?=
+ =?utf-8?B?SWRRdmtURWlHZlkrOEl5ZDZscnN0ektpUEhzc1dMMU5ibnc5ZDg3SEI1cS9x?=
+ =?utf-8?B?ZEs5QzE2L3BXSHJlT2sxVFpUWFRocXdSQTlFbEhVQTkyZ2hZQnpWdkJ1bllV?=
+ =?utf-8?B?bDcwSmJabUp4Z0Zld0RKNUlKUjJ1YU1tL1RhMGZKVUh1ZFpyeHNoNG9IRWVP?=
+ =?utf-8?B?MW5QVSthaVBZem96YmZHNUJIMklPQ3lHNjJLU1dWT2JDaWlOdCs0WU9ZUnpT?=
+ =?utf-8?B?WmloOWE1d091WXlieUF4T3VRdEpzRzgrMjFvUXduMk1jaVpOb3pBeDAzd2Z4?=
+ =?utf-8?B?MjY5UXAxeEpoU216VFBRejhtUXZDdG1oT1lUTEZsZlFwRm9IdjJPUmlyUmIv?=
+ =?utf-8?B?bnlRSFVVa0ZDOTE0K0hKU0VEMUdXZXozL1JuK2FKMmZETk9mTEdIU1lXcGRW?=
+ =?utf-8?B?TEg2WHdyUGwzdDBKTmJOcEZnUHQ1SHlzSTFwK1g0Z3ZCSWNObVJuZz09?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3b281143-b1ae-4523-c1e7-08de836ae9b0
+X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB8459.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Mar 2026 14:47:14.5302
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 873sqr6jnGjD9+ARvSVZ8WagCvtNFLUDOMzELWBnF5OOkipUJY06KgSWffY0DjOrxz50ZDidj4JaXuMIubgCTQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR04MB12019
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260316_080234_390113_6E0C2830 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,59 +166,82 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5635805570430847728=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+From: Peng Fan <peng.fan@nxp.com>
 
---===============5635805570430847728==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="q5D3dN9fM9+vUHgs"
-Content-Disposition: inline
+Convert the binding to use the generic power-controller schema instead by
+referencing power-controller.yaml and removing the local
+`system-power-controller` property definition.
 
+Signed-off-by: Peng Fan <peng.fan@nxp.com>
+---
+ Documentation/devicetree/bindings/mfd/ene-kb3930.yaml | 7 ++++---
+ Documentation/devicetree/bindings/mfd/ene-kb930.yaml  | 6 +++---
+ 2 files changed, 7 insertions(+), 6 deletions(-)
 
---q5D3dN9fM9+vUHgs
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+diff --git a/Documentation/devicetree/bindings/mfd/ene-kb3930.yaml b/Documentation/devicetree/bindings/mfd/ene-kb3930.yaml
+index 9b11b6e2bbf746f46406db268bf49b6775939fb3..1847a6d5b22e8ded8638424cfdc6605005d20846 100644
+--- a/Documentation/devicetree/bindings/mfd/ene-kb3930.yaml
++++ b/Documentation/devicetree/bindings/mfd/ene-kb3930.yaml
+@@ -13,6 +13,9 @@ description: |
+ maintainers:
+   - Lubomir Rintel <lkundrak@v3.sk>
+ 
++allOf:
++  - $ref: /schemas/power/power-controller.yaml#
++
+ properties:
+   compatible:
+     items:
+@@ -26,13 +29,11 @@ properties:
+     description: GPIO used with the shutdown protocol on Ariel
+     maxItems: 2
+ 
+-  system-power-controller: true
+-
+ required:
+   - compatible
+   - reg
+ 
+-additionalProperties: false
++unevaluatedProperties: false
+ 
+ examples:
+   - |
+diff --git a/Documentation/devicetree/bindings/mfd/ene-kb930.yaml b/Documentation/devicetree/bindings/mfd/ene-kb930.yaml
+index 02c111def5de5fa480c59e70518e1de89b2aff08..e0c8abf95bd92f6aa463e3347c101a1c1589161e 100644
+--- a/Documentation/devicetree/bindings/mfd/ene-kb930.yaml
++++ b/Documentation/devicetree/bindings/mfd/ene-kb930.yaml
+@@ -13,7 +13,9 @@ description: |
+ maintainers:
+   - Dmitry Osipenko <digetx@gmail.com>
+ 
+-$ref: /schemas/power/supply/power-supply.yaml
++allOf:
++  - $ref: /schemas/power/supply/power-supply.yaml
++  - $ref: /schemas/power/power-controller.yaml#
+ 
+ properties:
+   compatible:
+@@ -24,8 +26,6 @@ properties:
+   reg:
+     maxItems: 1
+ 
+-  system-power-controller: true
+-
+ required:
+   - compatible
+   - reg
 
-On Mon, Mar 16, 2026 at 10:47:35PM +0800, Peng Fan (OSS) wrote:
-> Convert power-controller.txt to dt-schema
-> Update various dt-bindings to use generic power-controller.yaml without
-> defining local property.
+-- 
+2.37.1
 
-Are there any dependencies here?  It doesn't look like it.  In general
-please don't send a single series covering multiple subsystems unless
-there are actual dependencies, it just makes it harder to figure out how
-to handle things.  Send a separate series to each subsystem instead.
-
---q5D3dN9fM9+vUHgs
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm4GdgACgkQJNaLcl1U
-h9CnKwf/Y45O1xRPr9mTmI28M1CvW30zJp5xoDJXzVFZW6jtEjIuA8mFy+dOgIj+
-PkIOw9oNhVPJcUpY4vl8XJBEZDdEDPMwSOdMexgMsCCCeJBF1/2fEHkxI1xyTRlP
-19Nh8e23AD9Qpm+0/Hjn/iDwpuYXhqRLxqw17yeReb8HyXAvnVcoLQAsonOHewce
-imvplZGb9vkqG8UivYBCq/7Ar+eVs6vZGg2IEm5kn4EkVWj9xZDFMeP8G8RhbqnM
-oNHrFPTft2T52cuebigvOum9pbm4WmO5U8BqTDHLldZRD0qfvdKSn1hGumXDnVfh
-2O2qPvCp7KP1+oQbqttXJjEuIyoNLg==
-=wZgr
------END PGP SIGNATURE-----
-
---q5D3dN9fM9+vUHgs--
-
-
---===============5635805570430847728==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5635805570430847728==--
-
