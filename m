@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42BB2F53D85
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D720EF53D87
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 18:23:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,45 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ueenNI2cRhfzChONb1cqfaj9V3vbvR6idVr53aRtPUg=; b=oAS6BXpVkUzCPv
-	govsMnLqeo3UkBOgPBEcUDN+E06FOWMUhp9EaNdi/L7hdBIG4pzNPPL8THvdNRq3ulKVoxwKi6iqL
-	4WD/3mB5LE2+YEbc7VVEZhJ0VgwtuLTKGDzKROLIruOoce4P2ankQ+9DGOs33fIzlrbUzkjo77Kgv
-	42EHP83Wv49vcQHFxqEakkRIfcqmGkTU0ILCt03utQi8AiswayWUZmHfjuDQk604ZAMYM9zUAAQLn
-	Nekr1fnR8dfWzDIAgC5HtZOYnen2bOKjiBP8882Fo0EntyZt8ekBjsk3vdWjXPZAQ1vM2Pu3E63++
-	Rp/9ek5DRE3aTYGdgpug==;
+	List-Owner; bh=BnmkamVLLgx0yjyeDnYBnIR/ZYQuu7btkIcqdomjU+k=; b=fn5QCboAhkBdUG
+	bn6iCA3KIJehxwkZ1kFWhsg4m7ZvDi2oybi/O0q3Qhb9P0J7aon3i9yjlOB4veoX7fM/FPkW/4YXA
+	Q+S0LjNijZrUL2pWs7EjR7NDsdka5JsITvnbl1y/iHi5ZVxVna4FZg6tru7eW2KsOhpVC3lo+BXt4
+	A6xqhPA9949z/Eyhi/fVCJ1A2t1rPzNfEAA3XvOvFoNV3PEPj6VKgWFBag6bE64YwDHkdFJ3HxPGM
+	2cqHBHpmAX8fByteUeEV41nR7H0e+jP+SzFNxg4xhrBpV+w982wG021gXuApjkf+pZclGlLbOTarJ
+	0Sr8JYxDuqvF7dBexgdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Cb1-00000004fsX-2d0Y;
+	id 1w2Cb1-00000004fsc-3sW7;
 	Mon, 16 Mar 2026 18:23:19 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Cax-00000004fqB-1sEz;
+	id 1w2Cax-00000004fqC-1tOD;
 	Mon, 16 Mar 2026 18:23:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1773685391;
-	bh=4dH9UQ/Y/hWeLPTbKSBpRwN52HqohB9Y7AqIn1h0Dx4=;
+	bh=HGO3OOLu11jOTIotRzoqHyXFhbc0NsvCC6OCQWzZChM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Xui+5kcVrdO0l0dkaQ7NbCdgSdW2VAQJM+5RS1/fXwh/SX7xvxjFf2SHud0L7lAGF
-	 YTxMw/acJXH1MOZImOHI7Lu2AUzgqa/o5ikN6P/vO/JqexjkYmbT3hcuY2f4XNdtyk
-	 YhryTunFTjy/ROeRREn0c1RmpRSE0W1Ntl5QHQdu9NVrWdiDR0SmemQ2bsoMAtGwpo
-	 a0/87PCYzW6gEutMX49KFzU45PkMp+vXipSppcI06odAHl7hrd/T7Px9Ih/EFEBpxR
-	 nHYRfShOBDz6VvO5CXrM977sBTntZ2Vrlu2INXbIxIkvWw27rfxTBgUSKdy9LaWgNi
-	 7FRg8Q45HXXFg==
+	b=QpQDV7/2fsFiMtihFTpTRLVAW1f3hxfAV1aesAQKuWWoOvLtTCeuy9TeuWdK7tb4Z
+	 7RjxxbGX3dcg8+CREfnTaRJAat0fkn440Us7HgCMcN64eefxfbn9XegwirgE5LRl8A
+	 cjYMSZ6kf+t2C76l/nBg2XAJE6FwkJBlG24VPKBE2Y011MvaTF7A3D8XCHyh/qLbZr
+	 SYveTBSPzkIxSPwHSlJyQgzRQQ4InqxgkBTSDKrJUbCZsBFWHQosC/Oj/8225rd+hi
+	 vv4WbcfSgHa0doNT1+fgpyzZ8EuTQNKQD43zan8u/lSl8oynBQgiuzOjoidYQilV8p
+	 MabzMFnt+1JOA==
 Received: from jupiter.universe (dyndsl-091-248-189-119.ewe-ip-backbone.de [91.248.189.119])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5F87017E1380;
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5C48917E0EFE;
 	Mon, 16 Mar 2026 19:23:11 +0100 (CET)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 12669480028; Mon, 16 Mar 2026 19:23:11 +0100 (CET)
+	id 12BFF48002C; Mon, 16 Mar 2026 19:23:11 +0100 (CET)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Mon, 16 Mar 2026 19:23:01 +0100
-Subject: [PATCH 2/2] arm64: dts: rockchip: Add SPDIF nodes to RK3576 device
- tree
+Date: Mon, 16 Mar 2026 19:23:00 +0100
+Subject: [PATCH 1/2] dt-bindings: ASoC: rockchip: Add compatible for RK3576
+ SPDIF
 MIME-Version: 1.0
-Message-Id: <20260316-rk3576-spdif-v1-2-acb75088b560@collabora.com>
+Message-Id: <20260316-rk3576-spdif-v1-1-acb75088b560@collabora.com>
 References: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
 In-Reply-To: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
 To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
@@ -61,26 +61,27 @@ Cc: Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4648;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=827;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=4dH9UQ/Y/hWeLPTbKSBpRwN52HqohB9Y7AqIn1h0Dx4=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm4So/gVYMrkePdwL9rdxDNwgd39fV1f1SYv
- 2eEPAFT78bBFokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpuEqPAAoJENju1/PI
- O/qapWMP/3PIG6oPr0grGiMDB8TpeQJ0ppmkrxqrRe4i7o643N690u6uahI1Lwt3/vXDY95XyXf
- +8yIN2++okLfkPRll0QTF+L+INslu4kpHBDgFf3135VW5SECcAXMUZja5DYPBruZNr/rHmQkm2U
- iSV2LjJ8jNSc92dEyyLMEIVJ6TSvMZsDouCtmo9B/yURT3NM3FbI3umm3wWev6srq+NynicNd9r
- 6Jj5p9okRazQEbPcf3kbyud7uo2DvHqg78oRkgfbpeo7zqdtqiw9jMzy2oeZbtPnfQehus/NjOi
- 3AstllPtqTKPDBphZtEVE3FAIMHqLmtrQttTimnDxKl0yMnQ2fNH+ASx3aDVuHzU0nQBwpjHgYc
- FoZBD3iQEP+n9qvws3J1MkRcqTNFm8xvyPBSQA+8jklkcJzCLKAqZOoHaQEEODNXyKvrXXcv4Um
- ipT2evOPSw+up81AFnwZw2fqS4uM8jKplqURdozn77hkygnhb4RXYtLBKiVJiQEg9Z8jlIWGu45
- Nw/FcjJf8F46LcmpxqARrbe3kUUQsq9wsuoKHW4EVclyFc0GNxtSRwMd0P6OjbKJA/fLeXok8yI
- wHm8eCx9tE8YQnTw30m4lEaYRgsrxkvyYQGxLw5C3HXGCwuKeUz935C2MIZw2ATcbYh5mDO243b
- QaFx+o9VjctN+V/XJB1Uzug==
+ bh=HGO3OOLu11jOTIotRzoqHyXFhbc0NsvCC6OCQWzZChM=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm4So5g1+1/DpTsSGBarerila7iw/g9lPMiB
+ JbgHvXhFgbqnokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpuEqOAAoJENju1/PI
+ O/qaedIP/22o0FoajFUdurX76u/vT3Pk1FbtUsSFOcHzSIhQzW3HtmPD2j0nB2imDa0/w6mmH/3
+ hEZS85aKTEtsMHdqnHwNTR2pKpUL8qKWKQ5XSW7pAUcs2l9baNE1wYfTvQumwuTMkJNXT0OQXCB
+ y9k0rDpyX4IoScOwSO9eHpBT7/mdmnVDTZVbdwLCW7THxywpWbMyQmurvp29z3SlCzIQzsQe5Eb
+ nYMtJ7rMoY7Y9J9i2potyUfldf6Z2dFl/E6y81LYBd3YV11L4WihpkyW8iEeHsYbW0FwFtFhjR5
+ 7XP4Y6fMgVsgR/9UUS7rCR1XePy4qImpCKwvxA2oPm3AAA1QEstSv1ndZwCCzQJIBvHc6pJKa5R
+ XEtpN3EEFQtTKwO41yAHfdyxuIMkEU4DBYqAHjLPpowFCnunzAQx+CcXcDWVQ77ywWBLRBrprIs
+ hmGp2Wz7fOHH7g8HhjQJ73URqJmOxYK6/5vSPLnRilF4JkPSPafG3Ig7Bl5ZR1rQGVR1M6H/GGT
+ Rk1EwOQ15j4EoW5K4H6cVt0WBf4HQxFZ8bfKdWVWWAxVV4cdRT5hGkE5NdO8zDP0MTExeEbYiYZ
+ 9QOZNCa/TShELiEqImQyk5zRSTvUezI7EviutH2qEYdfPadof369hdKY87LqZlPerVo6NyVgFVo
+ waryQ7tXvsrW2J/K6fdoumA==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_112315_651588_26184E7E 
-X-CRM114-Status: GOOD (  13.43  )
+X-CRM114-CacheID: sfid-20260316_112315_650462_35C9A67F 
+X-CRM114-Status: UNSURE (   9.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,135 +98,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support for all six SPDIF transmitters found in the RK3576.
-The nodes have been taken over from the BSP kernel and checked
-against the TRM (power domain descriptions from chapter 6.3.2,
-addresses from "Table 1-1 Address Mapping", interrupt from
-"Table 1-3 RK3576 Interrupt Connection List" (TRM numbers are
-off by 32 due to SGI/PPI not being numbered separately). The
-TRM lacks a proper clock tree, but fortunately are quite obvious
-for the SPDIF IP.
-
-Note, that the RK3576 also has 3 SPDIF receivers, which need their
-own binding and are not handled in this patch.
-
-A typical use case for the SPDIF transmitters is audio support for
-the Displayport (DP) controller. DP requires inserting PCUV control
-bits, which requires software support when using I2S. The SPDIF IP
-can add it automatically and thus is preferred.
+Add a compatible string for SPDIF on RK3576, which is similar to the
+one on RK3568.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576.dtsi | 82 ++++++++++++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
+ Documentation/devicetree/bindings/sound/rockchip-spdif.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-index 53ff6bd027af..b03dd69eca3c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
-@@ -1379,6 +1379,19 @@ vop_mmu: iommu@27d07e00 {
- 			status = "disabled";
- 		};
+diff --git a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+index 56c755c22945..502907dd28b3 100644
+--- a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
++++ b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+@@ -33,6 +33,7 @@ properties:
+           - const: rockchip,rk3066-spdif
+       - items:
+           - enum:
++              - rockchip,rk3576-spdif
+               - rockchip,rk3588-spdif
+           - const: rockchip,rk3568-spdif
  
-+		spdif_tx2: spdif-tx@27d20000 {
-+			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
-+			reg = <0x0 0x27d20000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 197 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SPDIF_TX2>, <&cru HCLK_SPDIF_TX2>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac2 28>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO0>;
-+			#sound-dai-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		sai5: sai@27d40000 {
- 			compatible = "rockchip,rk3576-sai";
- 			reg = <0x0 0x27d40000 0x0 0x1000>;
-@@ -1511,6 +1524,45 @@ dp0_out: port@1 {
- 			};
- 		};
- 
-+		spdif_tx3: spdif-tx@27ea0000 {
-+			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
-+			reg = <0x0 0x27ea0000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 198 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SPDIF_TX3>, <&cru HCLK_SPDIF_TX3>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac2 29>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO1>;
-+			#sound-dai-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		spdif_tx4: spdif-tx@27eb0000 {
-+			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
-+			reg = <0x0 0x27eb0000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 370 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SPDIF_TX4>, <&cru HCLK_SPDIF_TX4>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac1 6>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO1>;
-+			#sound-dai-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		spdif_tx5: spdif-tx@27ec0000 {
-+			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
-+			reg = <0x0 0x27ec0000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 371 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SPDIF_TX5>, <&cru HCLK_SPDIF_TX5>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac0 25>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_VO1>;
-+			#sound-dai-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		sai7: sai@27ed0000 {
- 			compatible = "rockchip,rk3576-sai";
- 			reg = <0x0 0x27ed0000 0x0 0x1000>;
-@@ -2166,6 +2218,36 @@ &sai4m0_sdi
- 			status = "disabled";
- 		};
- 
-+		spdif_tx0: spdif-tx@2a670000 {
-+			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
-+			reg = <0x0 0x2a670000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 195 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SPDIF_TX0>, <&cru HCLK_SPDIF_TX0>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac0 5>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&spdifm0_tx0>;
-+			#sound-dai-cells = <0>;
-+			status = "disabled";
-+		};
-+
-+		spdif_tx1: spdif-tx@2a680000 {
-+			compatible = "rockchip,rk3576-spdif", "rockchip,rk3568-spdif";
-+			reg = <0x0 0x2a680000 0x0 0x1000>;
-+			interrupts = <GIC_SPI 196 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&cru MCLK_SPDIF_TX1>, <&cru HCLK_SPDIF_TX1>;
-+			clock-names = "mclk", "hclk";
-+			dmas = <&dmac1 5>;
-+			dma-names = "tx";
-+			power-domains = <&power RK3576_PD_AUDIO>;
-+			pinctrl-names = "default";
-+			pinctrl-0 = <&spdifm0_tx1>;
-+			#sound-dai-cells = <0>;
-+			status = "disabled";
-+		};
-+
- 		gic: interrupt-controller@2a701000 {
- 			compatible = "arm,gic-400";
- 			reg = <0x0 0x2a701000 0 0x10000>,
 
 -- 
 2.51.0
