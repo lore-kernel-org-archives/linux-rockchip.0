@@ -4,61 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15C44F53D6D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 16:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14801F53D72
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 16:39:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sWAqzB5c9MZA0oD5rmP64Eht0xvyW7s/9NzoyfuWXYc=; b=xcBIWGbCEx7IMx
-	H8glWmAHuPthom/V5SV++igPIdR87X/0iIgA78mkYT8y7he6R/yaT0b9MIq/yonN1rR6nGjxRCSDO
-	vFF3CO33DJBKWo/68jqjti6JEzMjMAWicvcqea0ttD7Wosn0u/eJS5lJcDqAssj3TgzcT7m4lUb4z
-	EuCuuw2hffqW4AOuE0X14v5Y759vQ2I6c5hprpFRTiT99yeRDGkc4vxiSRJk18dczRoPr+Q4FxG/a
-	JKjjAI8U/skfcGvH/O2u0ihXQxDbImYVMJS3zI8pInks8Lqe8U36tTvXfR+Qds68WL9axlsn3E9KA
-	nOdJm7z8mLV6iN45iwHg==;
+	List-Owner; bh=0N41JH7SLovqaRPNK7FheJtMbpYAz2uWQfzB/81GO2c=; b=Cld+KjbnkYaHDy
+	VDpHCxB0EQx4K2QNfbUEuzRR9zIoyQPC8MDN5PgYNRurhUTK7ml7klZ0raKPTH01PTwk8unrKQdom
+	4jxzBkGSi/WPgKy4sVIt9bVffWG0QCO/SoZcJIcx4I8qwOCAIB3+kD+izd8NPJVAUor8u35jzBo74
+	vZrGRZqDtv+q7A4qZcazD0FvrP+IN4eGvsyncjWnYDG3y4KeIO1Q4ACB+ahovl3q7SenzGUIjr6uv
+	adKD49oowlak3zdOwbKFM1XzxtYMrjxtfFedWC5Ap8mrUOpMpbxf11dqVpSwOqVOy9TaXx3tPW5r+
+	stQVor43Ls30zP3G4PSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2AiG-00000004ReV-2IXK;
-	Mon, 16 Mar 2026 16:22:40 +0000
-Received: from out-171.mta0.migadu.com ([91.218.175.171])
+	id 1w2Ayi-00000004Tet-3Fz0;
+	Mon, 16 Mar 2026 16:39:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2AiE-00000004Rax-1YWs
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Mar 2026 16:22:39 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1773678128;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=sKiVBNoA5DEu7rqy18+2ZGT3Fg9uiPh7qLdQNWRH0EY=;
-	b=G1CHmcKbFX5mwfpFjdibARdCz8T1tfgVZCAJgRPK8uxCx5g8EmpSMyA3J1ZTg5s4BoBcin
-	ToynlxXlMxee8q7yw6iQsBhbucNcQyXnlP3hTiyAqYLsv5Cfsj2+a6fdaQvzMTuE6DY3wM
-	CVy4ZRAE7v2uTo8rHvZf/98ai/dhfJ8R18VM9vRchKjEDNT6i7JhZxlP6AggU0+LX5YIKi
-	S2hnC05U37pqE+45ot88biPiXWVku3sujcSj2Mxt+FIoP3FUHt+OfeLQ8s22wJqlPVjXBV
-	kY3cALfz34v+iGuEV5ORqMc5a6wy3v13PZgA53fCpqBH6ZzNEHqNy1Hdabo4OA==
-Date: Mon, 16 Mar 2026 17:22:05 +0100
-Message-Id: <DH4CF5YNUZ6S.3DOP275H6TBVN@cknow-tech.com>
-Subject: Re: [PATCH v2 2/3] arm64: dts: rockchip: Enable OTP controller for
- RK356x
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Heiko Stuebner" <heiko@sntech.de>
-Cc: <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
- <kever.yang@rock-chips.com>, <finley.xiao@rock-chips.com>, <w@1wt.eu>,
- <jonas@kwiboo.se>
-References: <20260312213019.13965-1-heiko@sntech.de>
- <20260312213019.13965-3-heiko@sntech.de>
- <DH4BCBM75EA1.3S6GHUO64SAMA@cknow-tech.com>
-In-Reply-To: <DH4BCBM75EA1.3S6GHUO64SAMA@cknow-tech.com>
-X-Migadu-Flow: FLOW_OUT
+	id 1w2Ayg-00000004Te3-3bFD;
+	Mon, 16 Mar 2026 16:39:39 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6A67C442EC;
+	Mon, 16 Mar 2026 16:39:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9588DC19421;
+	Mon, 16 Mar 2026 16:39:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773679178;
+	bh=qEW7nkdy+hqRZA5WBxEYkPY3Eekc6Tj16/7r/ZQmwxg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=MyDBcwoABrXg6ReEBykjnSI6xVbDDPkDTfsAulNpJPXs/l08iqkBa2bUxFM3WklOE
+	 nMjdUsQwm3bLJJkogAJWY8cbrtii7biF229jEUEr1r8XcJqr1ajZ5iJLwflS6YJVoP
+	 2Ev2i0UaHRrPYaMRIdbOSc33tuIKSUCmuuET8ZcnHX5Zyiw96Rqt88n1Nr4BFS1diX
+	 XH9WUSySnQx+M7r1duXl4j6t9jGfzXk+b3LVqOVoWpn3TpGAHHuZfHTYeKCo1247Az
+	 IsJ11vKll513OyyVgbms0ddflK47d/ehluyIi9VTyVcYYt8RhMPSaxxvKPetmtXbNj
+	 1bwyfja/vhVhQ==
+Message-ID: <1af76da3-aa6c-4960-addb-a8028ff93a74@kernel.org>
+Date: Mon, 16 Mar 2026 17:39:28 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 00/15] Convert power-controller to dt-schema and update
+ various yaml file to referencing it
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Ulf Hansson <ulf.hansson@linaro.org>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>,
+ Scott Branden <sbranden@broadcom.com>, Saenz Julienne <nsaenz@kernel.org>,
+ Lee Jones <lee@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Shree Ramamoorthy <s-ramamoorthy@ti.com>,
+ Jerome Neanne <jerome.neanne@baylibre.com>,
+ Paul Cercueil <paul@crapouillou.net>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Dmitry Osipenko <digetx@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+ Joseph Chen <chenjh@rock-chips.com>, Chris Zhong <zyw@rock-chips.com>,
+ Zhang Qing <zhangqing@rock-chips.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Andreas Kemnade <andreas@kemnade.info>,
+ =?UTF-8?Q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>,
+ Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>,
+ Matti Vaittinen <mazziesaccount@gmail.com>, Alexander Kurz <akurz@blala.de>,
+ =?UTF-8?Q?Andr=C3=A9_Draszik?= <andre.draszik@linaro.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rtc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
+References: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_092238_556466_139A670E 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20260316_093938_941266_11583A92 
+X-CRM114-Status: UNSURE (   8.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,89 +140,19 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Heiko,
+On 16/03/2026 15:47, Peng Fan (OSS) wrote:
+> Convert power-controller.txt to dt-schema
+> Update various dt-bindings to use generic power-controller.yaml without
+> defining local property.
+> 
 
-On Thu Mar 12, 2026 at 10:30 PM CET, Heiko Stuebner wrote:
-> Enable the One Time Programmable Controller (OTPC) in RK356x and add
-> an initial nvmem fixed layout.
+And here you explain the dependencies - external or within the patchset
+- e.g. how what stops people from merging it. You cc-ed multiple
+subsystems, so please think from the subsystem maintainer point of view
+- what should they do here.
 
-I build a kernel with the nvmem patches and your patches from this
-series and tried it out on my NanoPi R5S with a RK3568 SoC.
-Navigating to ``/sys/bus/nvmem/devices/rockchip-otp0/cells`` and then
-doing ``hexdump <cell-name>`` showed all kind of values.
-
-Then I did the same with my PineNote with a RK3566 SoC and that gave
-different values, except for npu-leakage, which I guess is fine?
-So feel free to include my
-
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # NanoPi R5S, PineNote
-
-Cheers,
-  Diederik
-
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> ---
->  arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 46 +++++++++++++++++++
->  1 file changed, 46 insertions(+)
->
-> diff --git a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> index 68b48606f601..c8321af7de7d 100644
-> --- a/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> +++ b/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
-> @@ -1123,6 +1123,52 @@ rng: rng@fe388000 {
->  		status = "disabled";
->  	};
->  
-> +	otp: efuse@fe38c000 {
-> +		compatible = "rockchip,rk3568-otp";
-> +		reg = <0x0 0xfe38c000 0x0 0x4000>;
-> +		clocks = <&cru CLK_OTPC_NS_USR>, <&cru PCLK_OTPC_NS>,
-> +			 <&cru PCLK_OTPPHY>, <&cru CLK_OTPC_NS_SBPI>;
-> +		clock-names = "otp", "apb_pclk", "phy", "sbpi";
-> +		resets = <&cru SRST_OTPC_NS_USR>, <&cru SRST_P_OTPC_NS>,
-> +			 <&cru SRST_OTPPHY>, <&cru SRST_OTPC_NS_SBPI>;
-> +		reset-names = "otp", "apb", "phy", "sbpi";
-> +
-> +		nvmem-layout {
-> +			compatible = "fixed-layout";
-> +			#address-cells = <1>;
-> +			#size-cells = <1>;
-> +
-> +			cpu_code: cpu-code@2 {
-> +				reg = <0x02 0x2>;
-> +			};
-> +
-> +			otp_cpu_version: cpu-version@8 {
-> +				reg = <0x08 0x1>;
-> +				bits = <3 3>;
-> +			};
-> +
-> +			otp_id: id@a {
-> +				reg = <0x0a 0x10>;
-> +			};
-> +
-> +			cpu_leakage: cpu-leakage@1a {
-> +				reg = <0x1a 0x1>;
-> +			};
-> +
-> +			log_leakage: log-leakage@1b {
-> +				reg = <0x1b 0x1>;
-> +			};
-> +
-> +			npu_leakage: npu-leakage@1c {
-> +				reg = <0x1c 0x1>;
-> +			};
-> +
-> +			gpu_leakage: gpu-leakage@1d {
-> +				reg = <0x1d 0x1>;
-> +			};
-> +		};
-> +	};
-> +
->  	i2s0_8ch: i2s@fe400000 {
->  		compatible = "rockchip,rk3568-i2s-tdm";
->  		reg = <0x0 0xfe400000 0x0 0x1000>;
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
