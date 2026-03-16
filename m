@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 917FEF53D7E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 17:46:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D4C7F53D7E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 17:47:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=daMeC60TXMROG46Y9bvEd0xu2+nKNsA/SWCg11mi5bM=; b=Mkfu9FD2WG1rKJZb8hVIt5ApUG
-	ZOgME8AjSE+Zx8oalqsXhbDwpUdM42JEnnXhTyXo2MNeeGRNAPBZM3PDJ0WmXqI0Jfj3c9PSlh4hY
-	QXJue5l9XR0DY9tzfAfVOETN9uWHoscyGHzFuDxmAsKxtvl70ITeVfF5qkMUQtDYtc20l+Gga9xcK
-	xh6GmZtYKDostTKLpXJZWxPNJ2v3svZPepenfDZZasAcvD/uOF3GuTNxiJUtX2OtfJlxiobiPOWUK
-	phwx5U44zUpP2/ve1fZv3pGb+vswkqMcHFEcrl+iMaUtE56UDI+0g1jEJvTkOOB+nMtMsmeAuRYuK
-	JLJ+E7vg==;
+	bh=EEsUOQ5ktWOVgN/sgEJUxt8Ro3GMAR3PksDiWlFI8Uk=; b=T5/mI7Q6hmkyiE/dH3M0p98xLK
+	dsonVbmHUl8MflcbMsb1zu2JhFAmOeBMDNWrfbNJWMd0/zaiqPrNcPp8qxWh6Sq5D0Wi8M6kERxQj
+	j4df49XZsw8SuxT6MmEh5/H0v//rlftAh9tNlCjos/eeoU1DjMab0LmHUsUYesNAVvmDrzyTq1E9b
+	08VrokCbhP3lT2gwwBeKu6TMepLU5dv6zzx7LsJJxuTc8JT9aT2T+9dbbfQ8oInw+wNFtanroNSko
+	Y1zFQ47QdI6Zb+1wd3tEh+omy4VwxJ9LPaxlerseGnje+hvaKasnkf3OnG+9LgasSrSdTano5Fomr
+	8Ex6iUnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2C1Y-00000004bh9-1m2y;
-	Mon, 16 Mar 2026 17:46:40 +0000
+	id 1w2C2B-00000004bnl-32pP;
+	Mon, 16 Mar 2026 17:47:19 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2C1V-00000004bgi-2RDK;
-	Mon, 16 Mar 2026 17:46:38 +0000
+	id 1w2C29-00000004bnE-2mFt;
+	Mon, 16 Mar 2026 17:47:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 975596013E;
-	Mon, 16 Mar 2026 17:46:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B24EC19425;
-	Mon, 16 Mar 2026 17:46:29 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E6CD96012B;
+	Mon, 16 Mar 2026 17:47:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 69BFCC19421;
+	Mon, 16 Mar 2026 17:47:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773683196;
-	bh=wEHPyMu42lihqvWHgqVVNGPuEB9VrdUuNbdTcZKzmLY=;
+	s=k20201202; t=1773683236;
+	bh=dnDuwXGZ1btx0I9ScP/HNHG9vbVZo5zMOWlpux0W4WY=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=hSJlQ6BrcpxYUk7JBEtBF9Qqe5d4jddMRs/BIYPXhpPeq2zSkrT1d7BDArBZojKWW
-	 BKLlbp5f1keg+9VNpIOWgkIBIijWzUmue4HADCbTjzJnOVuwSErUxWlrchbV7aek/k
-	 YL4Fz+hGFQ0alKzrJMsisaNWzjtXgr4Qjs4zOx0v4MuWkjCh4+uKgjvpAtIutxB2fm
-	 V/l3yUflC1bUWuKJqOQf43X3PX/imfc5TIias6ybZRLFFbMRWwZztH+NfDeWxMC/EL
-	 lfDdbpOMY/QxVqRDnnN9xRBiwYaM6qcWptv2b3NZoVJPWL8tv+1soDKh3FtqZiSf1Y
-	 tDcGiBYLJGuaQ==
-Date: Mon, 16 Mar 2026 17:46:26 +0000
+	b=sRBXa2ovvjPnWmoWwcUZlUb/RfNIKCBxJYUgGqWYE+olH5e/05xmKOMn3PMn3Bxq8
+	 Sm0RPOKtJgrFA4Nkna/SfM63GmGOjUcqhNOYPE5XT8hDbTrlYcVkWZ5EzY+jprOrRV
+	 l4Viqa7XAxFuU+rATnPUZYB48xFh6rMSI83W27iHNJjWLHREjypaENdzy/QzPBAdK3
+	 qOABTEsGsrgj3ajoNm0Gg6WLlNHu9IvYa+UNT73TeY7utnqPEN+vZG0sDR9BaOi8QA
+	 0XJU1kq/TxMTtEfK9n13gvkI74v1W4TiIWlCMY0nyY+YEx6zNL3h/lJ3umTM3hkX5Y
+	 cEen2C1izEUvA==
+Date: Mon, 16 Mar 2026 17:47:06 +0000
 From: Mark Brown <broonie@kernel.org>
 To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -75,13 +75,13 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 03/15] dt-bindings: regulator: ti,tps65219: Use generic
+Subject: Re: [PATCH 04/15] dt-bindings: regulator: act8x: Use generic
  power-controller schema
-Message-ID: <f0d6b252-370a-405c-b2b5-e02b8bc59bca@sirena.org.uk>
+Message-ID: <fd6b7103-2a72-4cae-8e92-44ee9586a953@sirena.org.uk>
 References: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
- <20260316-power-controller-v1-3-92c80e5e1744@nxp.com>
+ <20260316-power-controller-v1-4-92c80e5e1744@nxp.com>
 MIME-Version: 1.0
-In-Reply-To: <20260316-power-controller-v1-3-92c80e5e1744@nxp.com>
+In-Reply-To: <20260316-power-controller-v1-4-92c80e5e1744@nxp.com>
 X-Cookie: Excellent day to have a rotten day.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -94,23 +94,23 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0796261775045487043=="
+Content-Type: multipart/mixed; boundary="===============4278898580746846370=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0796261775045487043==
+--===============4278898580746846370==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8MjI/4wsRBNLAdgX"
+	protocol="application/pgp-signature"; boundary="xItI8zXtmIATo4FR"
 Content-Disposition: inline
 
 
---8MjI/4wsRBNLAdgX
+--xItI8zXtmIATo4FR
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Mar 16, 2026 at 10:47:38PM +0800, Peng Fan (OSS) wrote:
+On Mon, Mar 16, 2026 at 10:47:39PM +0800, Peng Fan (OSS) wrote:
 > From: Peng Fan <peng.fan@nxp.com>
 >=20
 > Convert the binding to use the generic power-controller schema instead by
@@ -119,25 +119,25 @@ On Mon, Mar 16, 2026 at 10:47:38PM +0800, Peng Fan (OSS) wrote:
 
 Acked-by: Mark Brown <broonie@kernel.org>
 
---8MjI/4wsRBNLAdgX
+--xItI8zXtmIATo4FR
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm4QfEACgkQJNaLcl1U
-h9BWOwf/RYua3madlI7scNf3qpDMzQZHgi+eqAl3g7Lq6pMKTkmLA/V4P37VJTPi
-bB1VTwPRbNvxdczmeLgDust4Yi7d39Se6tX+OrgSXOhv+FMKnw621zdhZ9NLaI2Y
-tsbOwANB98ZH+jnGwVRJirPiDuopbsmBHRd7JovirNpdNujPs0sss3Z/GfWVyjjZ
-kZwF+6fEn7MKfHz8v0cVjdhDB/zKxJWyX6zlpSXToWVSvhiVnRmMW8tzvxax/kLa
-NukR0cAOLKySPWir5+lkOD3Vr2as+vhfcBmfZOdOB1bNqGF8nWOUt6DJljvdw7Iu
-wXg+QS+O0wGAQNLRmrZboAIyvnZQqA==
-=igxU
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm4QhoACgkQJNaLcl1U
+h9ACOQf+JqpHS2vvWDBGmTprNgfkrZ9Q44lgSNbWZMnktfJE13q21QKHK5kSnDrO
+X40ZRgtewonmiGVIcifBtNjgoqkmY98pJvPnhgJjgP3fmBlFL/WCxYwUjF/JQCkg
+LrlVyB6IdKDWWAmUUVULvowVdo1TyiYZ2dlrvVwjGuMZJDgRFAz85fobiqkW9hIb
+5Z6Wdof4lcERkIE0dsbXctCTU4GJTupsC6duor8XTKC+wIL9sx02un+kINcyGwnP
+FwEkgvpfw9H/r9/jBuxTEQh7QcJPvlx36Ub2mFuBlF3OCJApRlm+j+vz9btoTkX4
+XZN3mowbqzv9xO9cSelYbJCV/FMs2Q==
+=SWwQ
 -----END PGP SIGNATURE-----
 
---8MjI/4wsRBNLAdgX--
+--xItI8zXtmIATo4FR--
 
 
---===============0796261775045487043==
+--===============4278898580746846370==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -148,5 +148,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0796261775045487043==--
+--===============4278898580746846370==--
 
