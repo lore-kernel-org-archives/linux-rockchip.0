@@ -4,50 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCC90F013D5
-	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 08:41:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D8B5F4644F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 11:15:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PsrHm5OtfrMDiPNVbvERqrSLmcAfa0+5IU1TmOIYZuA=; b=4zxLUhXeei/bW/
-	WGLlzcqmDtJp0TxArZPpUiVd7qZEZmZVBOBM8gyPVV/uAa99tRoAHPn+xJmoeabcLuP91gMxF0b8l
-	5xDFM8E05gMLu9/pIiQ0yYDV1dEjl4xKjINl2n9eG+xguOT7HBEMeTFU0CZuN8JKQWqjhCVMN6HLC
-	a7la8OrkySEs3RTdSikmc47mNe63QafxW0BpDKPmTLgCo16+Ci2Ye0o+bD80Nhufnt5vLSknQI4vS
-	1tGQ+WsbKuMpsbaZr67h9ln0AWdOjXZz4VS/HymzgL6z/zcGVRhc37LK/n8aFzn1YtBP699unht4w
-	nzDopXfDqgeSETPuMc0A==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=kh4CsMuwV9MZgUa1zqhE9v7Vwi2st8vepkI2H2Ao3s8=; b=QEHWo7Eb1dzrhq
+	WPo3rceEhnjkhQxOCnX2X8HV9+ZOvxGp5/UE/z2vt1SaOvuEEJrzaSxtwD3j40zjA9W5C9/+TLwz7
+	QEKulC0sUZMPYNjuxthHOx7d9QmAPxxSqpUM52G3I2OFhDtdyPAAgxTF38mxsP7QDI2WmD2tSbKAy
+	UFLFgzWcJxqLR/gn8YDQBpw3HilWK1RMWiyfttLCaEHWKDrCeeV2RnzNX/8hpNbQO8stgWIuG+5Hd
+	GRlBfeUOUFVR6QOcDJnJDzDF0DQ91FPtk4YPyKVY3/OVpRjbp60ga4Re+6NjluCO064s4wbdxkiti
+	sKOiXnJW428iWPKieDWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w23Vt-00000003ZII-44uL;
-	Mon, 16 Mar 2026 08:41:25 +0000
-Received: from mx1.wiredblade.com ([72.51.58.38])
+	id 1w25v5-00000003nq8-22Vx;
+	Mon, 16 Mar 2026 11:15:35 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w23Vr-00000003ZHz-2oar
-	for linux-rockchip@lists.infradead.org;
-	Mon, 16 Mar 2026 08:41:24 +0000
-dkim-signature: v=1; a=rsa-sha256; d=psihoexpert.ro; s=dynu;
-	c=relaxed/relaxed; q=dns/txt; h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Transfer-Encoding;
-	bh=bTvMJhKi428zCRtr43pHlrKylv2Xx00GjbMEhpaWMTQ=;
-	b=NC1zfJ8IGzssem504K+SYyI6MwKci7OTrZqMtLIQd2/8RW0IkyQ3gr7bpbjf84cm19lYqzUQvj8a+MkIFNA6PCpLOM3Jnh98F4LRkTZI8anNq2rzdPcbfei3uOxnYapucIjgS1eKrvLOIaIKD8qPXoQJ7bVRSJPdRUy3+KKymAMfLdpaFYaz5ordS8YkImmfkZfLexM2cSR67Rs/IDaGu8Ql/RzMQ64BDbAsbQBwGeztEF2TtURrk/PM1y
-	YrN5+AmzfFUJL4IJVYrAAci9f52MooRrdkPZvyey2nFY5VhP5h9h9ryZBAyZtZlF6ou3dXvoNuxXunG9dn560+HhRqZg==
-Received: from TkB (188-24-192-137.rdsnet.ro [188.24.192.137])
-	by mx1.wiredblade.com with ESMTPSA
-	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256)
-	; Mon, 16 Mar 2026 08:41:17 +0000
-From: Marius Dinu <m95d+git@psihoexpert.ro>
-To: linux-rockchip@lists.infradead.org
-Cc: Marius Dinu <m95d+git@psihoexpert.ro>
-Subject: [PATCH] drm: rockchip: dw_dp: add missing dependency on bridge_connector
-Date: Mon, 16 Mar 2026 10:46:53 +0200
-Message-ID: <20260316084653.1559-1-m95d+git@psihoexpert.ro>
-X-Mailer: git-send-email 2.52.0
+	id 1w25v1-00000003nml-1PTn;
+	Mon, 16 Mar 2026 11:15:33 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1773659687; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=UIej3PgOTkE/n0d+iLhvO9KUEiB24mLjI5T3L8rccNLAyjrayVNy8Aw0GeSTmgMPA68EXjupr5mrY8JaIsmw27IaWeATHFfYPAFqIrCh+nM3maDlIYuf8fIQ06Y/Vkp9l8E5WIfTUs3OU16oTagb2sSEhfrcm/esDoQertxM7Io=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1773659687; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=XlhrKy1qO5Y7JTYOOoPiFnrf+Gaw2TCJw74PIWbx0L8=; 
+	b=GHJL5UhzMhaI4sJ/M2v+eF4cfdijD4SFjKwqah2FRjP9h/z1zw2QMf9fj98FRyyGfo3LH8PCo1xWQF8j2EeKQ0LopTyqkGzgSvdHumi+9YnmRzB5LQeaczuGyYgmdJY/3gCNT68jyY6In18UbnM7WRUY7rUMGkP+ZShY2bE1rgU=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773659687;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=XlhrKy1qO5Y7JTYOOoPiFnrf+Gaw2TCJw74PIWbx0L8=;
+	b=FPZG0d9UCoj7VXzxtKmvxxFQxaF9k8mtZY+xQj9wmcNo5ZR3YeOZ0v/MSQDEG4e/
+	uo+DFdjh4U8fl2V0BoI81dK5Xu0NTrMpgb8RMITuxhj8KJz8j88FHgNWCMwF0qOxFfQ
+	9yuJEN5GQKJ2HcVlyUA0Yk+HsIxrGRCSHTTnxhhU=
+Received: by mx.zohomail.com with SMTPS id 177365968484917.368603781984916;
+	Mon, 16 Mar 2026 04:14:44 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+ rfoss@kernel.org, Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v1 3/4] drm/bridge: analogix_dp: Add support for RK3576
+Date: Mon, 16 Mar 2026 12:14:37 +0100
+Message-ID: <2032185.PYKUYFuaPT@workhorse>
+In-Reply-To: <20260310105307.309765-4-damon.ding@rock-chips.com>
+References: <20260310105307.309765-1-damon.ding@rock-chips.com>
+ <20260310105307.309765-4-damon.ding@rock-chips.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_014123_810053_305DBEFB 
-X-CRM114-Status: UNSURE (   6.68  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260316_041531_507750_F37DFB25 
+X-CRM114-Status: GOOD (  16.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -59,34 +73,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, dianders@chromium.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, kever.yang@rock-chips.com, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, alchark@gmail.com, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Avoids this error:
-  ld: drivers/gpu/drm/rockchip/dw_dp-rockchip.o: in function `dw_dp_rockchip_bind':
-  /usr/src/linux/drivers/gpu/drm/rockchip/dw_dp-rockchip.c:108:(.text+0x188): undefined reference to `drm_bridge_connector_init'
+On Tuesday, 10 March 2026 11:53:06 Central European Standard Time Damon Ding wrote:
+> Expand enum analogix_dp_devtype with RK3576_EDP, and add max_link_rate
+> and max_lane_count configs for it.
+> 
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> ---
+>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 1 +
+>  include/drm/bridge/analogix_dp.h                   | 3 ++-
+>  2 files changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> index fe7158d9edde..c4e49e8186ab 100644
+> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+> @@ -1248,6 +1248,7 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
+>  		video_info->max_link_rate = 0x0A;
+>  		video_info->max_lane_count = 0x04;
+>  		break;
+> +	case RK3576_EDP:
+>  	case RK3588_EDP:
+>  		video_info->max_link_rate = 0x14;
+>  		video_info->max_lane_count = 0x04;
+> diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
+> index 854af692229b..d1a6e6d44a2b 100644
+> --- a/include/drm/bridge/analogix_dp.h
+> +++ b/include/drm/bridge/analogix_dp.h
+> @@ -16,12 +16,13 @@ enum analogix_dp_devtype {
+>  	EXYNOS_DP,
+>  	RK3288_DP,
+>  	RK3399_EDP,
+> +	RK3576_EDP,
+>  	RK3588_EDP,
+>  };
+>  
+>  static inline bool is_rockchip(enum analogix_dp_devtype type)
+>  {
+> -	return type == RK3288_DP || type == RK3399_EDP || type == RK3588_EDP;
+> +	return type == RK3288_DP || type == RK3399_EDP || type == RK3576_EDP || type == RK3588_EDP;
 
-Signed-off-by: Marius Dinu <m95d+git@psihoexpert.ro>
----
- drivers/gpu/drm/rockchip/Kconfig | 1 +
- 1 file changed, 1 insertion(+)
+I think we can make this easier to read with a switch statement. In
+a separate patch, we may also want to rename `is_rockchip` to
+`analogix_dp_is_rockchip`, as e.g. rockchip_drm_vop.c and exynos_dp.c
+both include his header file as well.
 
-diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchip/Kconfig
-index 1479b8c4ed40..749a4b86c893 100644
---- a/drivers/gpu/drm/rockchip/Kconfig
-+++ b/drivers/gpu/drm/rockchip/Kconfig
-@@ -13,6 +13,7 @@ config DRM_ROCKCHIP
- 	select DRM_ANALOGIX_DP if ROCKCHIP_ANALOGIX_DP
- 	select DRM_DISPLAY_DP_AUX_BUS if ROCKCHIP_ANALOGIX_DP
- 	select DRM_DW_DP if ROCKCHIP_DW_DP
-+	select DRM_BRIDGE_CONNECTOR if ROCKCHIP_DW_DP
- 	select DRM_DW_HDMI if ROCKCHIP_DW_HDMI
- 	select DRM_DW_HDMI_QP if ROCKCHIP_DW_HDMI_QP
- 	select DRM_DW_MIPI_DSI if ROCKCHIP_DW_MIPI_DSI
--- 
-2.52.0
+Switch statement would make the function look something like:
+
+static inline bool is_rockchip(enum analogix_dp_devtype type)
+{
+	switch (type) {
+	case RK3288_DP:
+	case RK3399_EDP:
+	case RK3576_EDP:
+	case RK3588_EDP:
+		return true;
+	default:
+		return false;
+	}
+}
+
+Kind regards,
+Nicolas Frattaroli
+
+>  }
+>  
+>  struct analogix_dp_plat_data {
+> 
+
+
 
 
 
