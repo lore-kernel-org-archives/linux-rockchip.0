@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F35FFF506CC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5474F506CB
 	for <linux-rockchip@archiver.kernel.org>; Mon, 16 Mar 2026 13:08:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,33 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XAHhoMhLGbX3/HCoB88paVwvabRylwbKyaHpnDRNgiY=; b=fRfDho+5gcSuvv
-	vIbmFZ+nfcArjbRHG50EAOL2k/dHSLs5wfWRQ+eyzTqvlrvjHg1lmalqgw/VyyHx3FDvuS8EqeVuO
-	+RrU5+qppWywpsMXpDQcQeG58GErUl4GJT5EuFKIS8wllV5vzeKn7fsoLCkwo2zjwQKtRm1Rp4TnB
-	akUJMSzIAY7RSqQHqUzRIJDTT9DZAGns2TLHmUWP5x4V8hKc0ihsJGWatZJKKjh8O9C+uDm6mPv3t
-	r4RtO2UzegugFYbIgiL50iLc0F9R7cQSFsQKjxKD4doj7iI5gHVyTjiijIZIzuPiOIhRBxXqIR5Uc
-	cXWVnZ90/2KMz8aGYY6g==;
+	List-Owner; bh=eYAJB5LQQBSRBPFsmJUDXFePyrEoj+24LyVng4o+bzc=; b=KjFMPFNP/0Vn9i
+	vVnrPZxsXgQuHI3a7PmMGOrSTpPTo8+unEcc8DFt10WGVvelKj8D0u5OdJ8/V9R0+POdEcP+RSgh1
+	T4JPEHW+3A6kxiDe217lAkgdvJXMDZW3PD8DHzcbuDwP5fNG4/spvl43TJu0+iOCiK4862UbUF80Q
+	WkXgU0Rk84pgBtPEC1F3mOzN/iO4q8ZULXFCAvGjZzb/VQea57W4B84BLrU+9dCICAJ9sGYH61CTl
+	W7Z0K+s3PLZf5ZBn3oKSy6Sssc5IQ0uJG4F6ualmM0+GJA28b3Vwc117DY+nA5f8gcRXFGynm4mGJ
+	guW5PTZay83ZtWfnwn3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w27g1-0000000403j-2avJ;
-	Mon, 16 Mar 2026 13:08:09 +0000
+	id 1w27g2-0000000404F-1OyW;
+	Mon, 16 Mar 2026 13:08:10 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w27fz-0000000402v-40p0;
-	Mon, 16 Mar 2026 13:08:07 +0000
+	id 1w27g0-0000000402x-0bDX;
+	Mon, 16 Mar 2026 13:08:08 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=55aVh5zzvysKO2K9tzF58PzklumqwmTYgr4KvXL1AMU=; b=PZdgxQhphRf6Xh7vSRKtGraVGw
-	b7RRsKgVOtV1Y6WXj593pJa44iKn5Kuowk313U1/ScWi2A9eWIoeTgj6szJNarlVoomFwOPA+UFkh
-	yMHWYzgxFKT/Fy43sZ55mMLEYrimAf/vRPdwplxEOCAhHshUhPTwGyeSn7F5Qg2T4R23qHCBvTmSh
-	i/8tsWQiZyiFn+stUjAi7viA+YXwDPGSxr1FdD4/LXpdKG+FWZocto2LrxNvBDY6H6l3qozkaFIgw
-	AycGzmmfcvPclYnD9VQJP2WywmIMKqwsiQ5MMLs+x5yRkg0EFDMK612ixJHbmWb3A22n/120GclRk
-	+JvJExLA==;
+	bh=MkTZYHJpVH53Si1xxxr8JQuTVTYhXIYd8LKiQKjxI+4=; b=jc7IqNrhZbtHSLPZyh4o3l4SzA
+	4YzHEmZfdWAJOzSZLaaModvqnzmc9e/vInWbXjJdBWgkYtwYwB+9ga5NEY9KjuiBOq/Q6w1R5H3Zp
+	k7se7DXh0J/Ed1xjXhrhH7FzBBOWHL/y48p//QO0ad//LHapyMGZPbhWfrvzqu0/m4QnKGgI51Dxe
+	3nMaUNkS01Osb6xtEo/FT68MBJtAYKYaSH6H35oPRhjUGyty+1jipKtTJyFLf3YiJyeFL3DwtC8ut
+	kQ9WMYoXDl6ETDAXr6FJ9k5yo8l43zoY6jNS0yIcbARkpcCGgpTFni1yZCklbXw/5tn0Qb3nfeBrD
+	g+WCMQZg==;
 Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w27fw-000000010lS-3j9X;
+	id 1w27fw-000000010lT-3j6m;
 	Mon, 16 Mar 2026 13:08:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=superkali.me; s=default; h=Cc:To:In-Reply-To:References:Message-Id:
@@ -46,24 +46,24 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=55aVh5zzvysKO2K9tzF58PzklumqwmTYgr4KvXL1AMU=; b=H7NwRCY6gSaF/hEX5xAa1uMOQA
-	GB57iDFAq2szDdlfPonj3pBkpV5FjyhtB7pnRN2NPMOB3OI6P/KBa5WAUbnxQO1PXQDY+J9xh2TmM
-	986G1OZKxHIiSr+7GoJqPx1f9aDlBmBULvqacNCTyE3XhDJrw6t2W0+qk3smDbmTA8sMRpnuNAkCE
-	YfQAtFlWE82qSozckVuiDQggb+RyDIQzAOYJkGvkwEKcPdpHZ8n+SQ8RTMa9AFZd7yMUfk3eUYEdf
-	cwGFMWFIoFzyUew4YMzL+HUXTcuU59w5ggnsnd6cqq3B1rcyldSz7b5r1jfueaASZXw5I9QIyuI18
-	/ha5rJpg==;
+	bh=MkTZYHJpVH53Si1xxxr8JQuTVTYhXIYd8LKiQKjxI+4=; b=f5pWXXIfMyC0VETBVVla0rrFBP
+	F6MlwQAbbVgn7U72banrizmu2fYpAOAPsgw1mn28KvRx+qnMibGLi3D2w9VtlKJT6mkYqjLfnTv84
+	T/BJv21P17iq2WBQioFvyv4ex8GRLuei0uo136o4UqIZ9h6kEKjV2h6p8j4Jm88E0nmx3NGp1igYO
+	djxHSsHVYSon02oGH2lhsMmKUt1UCnIUzXS0RggPXn8f2l0a+4Svh/1Yl+WSzAcRz+5Z6bQtFlJJA
+	rhPjse9KOV3q2krAYDYRQJOyQ+UQCrn7XqTK0YjhKYeyGMWFzSeu+Hk8jpevgn0FQnRBZbA0+cWpO
+	247J6oVw==;
 Received: from [185.94.132.237] (port=54871 helo=1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa)
 	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
 	(Exim 4.99.1)
 	(envelope-from <hello@superkali.me>)
-	id 1w27eX-0000000BDZB-3ZPN;
-	Mon, 16 Mar 2026 14:06:37 +0100
+	id 1w27ea-0000000BDZB-1WUJ;
+	Mon, 16 Mar 2026 14:06:39 +0100
 From: Daniele Briguglio <hello@superkali.me>
-Date: Mon, 16 Mar 2026 14:06:31 +0100
-Subject: [PATCH 1/3] dt-bindings: clock: rockchip,rk3588-cru: add I2S MCLK
- output to IO clock IDs
+Date: Mon, 16 Mar 2026 14:06:33 +0100
+Subject: [PATCH 3/3] clk: rockchip: rk3588: add GATE_GRF clocks for I2S
+ MCLK output to IO
 MIME-Version: 1.0
-Message-Id: <20260316-rk3588-mclk-gate-grf-v1-1-66fb9a246718@superkali.me>
+Message-Id: <20260316-rk3588-mclk-gate-grf-v1-3-66fb9a246718@superkali.me>
 References: <20260316-rk3588-mclk-gate-grf-v1-0-66fb9a246718@superkali.me>
 In-Reply-To: <20260316-rk3588-mclk-gate-grf-v1-0-66fb9a246718@superkali.me>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -76,11 +76,11 @@ Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
  Daniele Briguglio <hello@superkali.me>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773666394; l=1283;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773666394; l=4743;
  i=hello@superkali.me; s=20260316; h=from:subject:message-id;
- bh=m6I+53NOmP/FBOxIqYA7/Pg65sLmXjAEQcj2H89XEVs=;
- b=xAes7lPb1gny0pILU/9Erd3+j4Q5USwAbUm9jmw8vsUJyLgpuRAnWHKMxnvBSHKyK3DQ6Xx1n
- tf9FDQsp2Y7AE8JiWH5tBF71qV134hxJEhMK0GHVYVyIDmukk6tmu8O
+ bh=J+EIEg1pqOJjG0KsFt5Kl5CBsqAz+bYW4IMvCtxXl5Q=;
+ b=TF+ahMc9stJ1mnSeJQyzvAxKK6zzIez7ySVEH6aJ4mC0mvgOA1AJ7V0x6tJBxqkyzY4/Dcbvq
+ Zi44yKpQa87Bt/6xTi1tibC2V70q/WzrGwnF3Zgwb66B9xJVKY71Ef5
 X-Developer-Key: i=hello@superkali.me; a=ed25519;
  pk=5tynRWQdL93CDcapJ73FkcCRY2PeBOJOIAoIhRig53U=
 X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
@@ -94,8 +94,8 @@ X-Source:
 X-Source-Args: 
 X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_130805_035295_6F7F40B9 
-X-CRM114-Status: UNSURE (   6.73  )
+X-CRM114-CacheID: sfid-20260316_130805_035953_127BF488 
+X-CRM114-Status: UNSURE (   9.62  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,39 +113,112 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add clock identifiers for the I2S MCLK output to IO gate clocks on
-RK3588. These clocks control whether the internal I2S MCLK signals
-reach the external IO pins through gates in the SYS_GRF register
-(SOC_CON6, offset 0x318).
+The I2S MCLK outputs on RK3588 are gated by bits in the SYS_GRF
+register SOC_CON6 (offset 0x318). These gates control whether the
+internal CRU MCLK signals reach the external IO pins connected to
+audio codecs.
 
-The following gate clocks are defined:
+The kernel should explicitly manage these gates so that audio
+functionality does not depend on bootloader register state. This is
+analogous to what was done for RK3576 SAI MCLK outputs [1].
+
+Register the SYS_GRF as an auxiliary GRF with grf_type_sys in the
+early clock init, and add GATE_GRF entries for all four I2S MCLK
+output gates:
+
   - I2S0_8CH_MCLKOUT_TO_IO (bit 0)
   - I2S1_8CH_MCLKOUT_TO_IO (bit 1)
   - I2S2_2CH_MCLKOUT_TO_IO (bit 2)
   - I2S3_2CH_MCLKOUT_TO_IO (bit 7)
 
-These are needed by board DTS files that connect external audio codecs
-to I2S interfaces, where the codec requires MCLK from the SoC.
+Board DTS files that need MCLK on an IO pin can reference these
+clocks, e.g.:
+
+    clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
+
+Tested on the Youyeetoo YY3588 (RK3588) with an ES8388 codec on I2S0.
+
+[1] https://lore.kernel.org/r/20250305-rk3576-sai-v1-2-64e6cf863e9a@collabora.com/
 
 Signed-off-by: Daniele Briguglio <hello@superkali.me>
 ---
- include/dt-bindings/clock/rockchip,rk3588-cru.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/clk/rockchip/clk-rk3588.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-index 0c7d3ca2d5bc..7528034cff56 100644
---- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-@@ -734,6 +734,10 @@
- #define PCLK_AV1_PRE			719
- #define HCLK_SDIO_PRE			720
- #define PCLK_VO1GRF			721
-+#define I2S0_8CH_MCLKOUT_TO_IO		722
-+#define I2S1_8CH_MCLKOUT_TO_IO		723
-+#define I2S2_2CH_MCLKOUT_TO_IO		724
-+#define I2S3_2CH_MCLKOUT_TO_IO		725
+diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+index 1694223f4f84..0e550642c655 100644
+--- a/drivers/clk/rockchip/clk-rk3588.c
++++ b/drivers/clk/rockchip/clk-rk3588.c
+@@ -5,6 +5,7 @@
+  */
  
- /* scmi-clocks indices */
+ #include <linux/clk-provider.h>
++#include <linux/mfd/syscon.h>
+ #include <linux/of.h>
+ #include <linux/of_address.h>
+ #include <linux/platform_device.h>
+@@ -892,6 +893,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(8), 0, GFLAGS),
+ 	MUX(I2S2_2CH_MCLKOUT, "i2s2_2ch_mclkout", i2s2_2ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_CLKSEL_CON(30), 2, 1, MFLAGS),
++	GATE_GRF(I2S2_2CH_MCLKOUT_TO_IO, "i2s2_2ch_mclkout_to_io", "i2s2_2ch_mclkout",
++			0, 0x0318, 2, GFLAGS, grf_type_sys),
+ 
+ 	COMPOSITE(CLK_I2S3_2CH_SRC, "clk_i2s3_2ch_src", gpll_aupll_p, 0,
+ 			RK3588_CLKSEL_CON(30), 8, 1, MFLAGS, 3, 5, DFLAGS,
+@@ -907,6 +910,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(8), 4, GFLAGS),
+ 	MUX(I2S3_2CH_MCLKOUT, "i2s3_2ch_mclkout", i2s3_2ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_CLKSEL_CON(32), 2, 1, MFLAGS),
++	GATE_GRF(I2S3_2CH_MCLKOUT_TO_IO, "i2s3_2ch_mclkout_to_io", "i2s3_2ch_mclkout",
++			0, 0x0318, 7, GFLAGS, grf_type_sys),
+ 	GATE(PCLK_ACDCDIG, "pclk_acdcdig", "pclk_audio_root", 0,
+ 			RK3588_CLKGATE_CON(7), 11, GFLAGS),
+ 	GATE(HCLK_I2S0_8CH, "hclk_i2s0_8ch", "hclk_audio_root", 0,
+@@ -935,6 +940,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 			RK3588_CLKGATE_CON(7), 10, GFLAGS),
+ 	MUX(I2S0_8CH_MCLKOUT, "i2s0_8ch_mclkout", i2s0_8ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_CLKSEL_CON(28), 2, 2, MFLAGS),
++	GATE_GRF(I2S0_8CH_MCLKOUT_TO_IO, "i2s0_8ch_mclkout_to_io", "i2s0_8ch_mclkout",
++			0, 0x0318, 0, GFLAGS, grf_type_sys),
+ 
+ 	GATE(HCLK_PDM1, "hclk_pdm1", "hclk_audio_root", 0,
+ 			RK3588_CLKGATE_CON(9), 6, GFLAGS),
+@@ -2220,6 +2227,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+ 			RK3588_PMU_CLKGATE_CON(2), 13, GFLAGS),
+ 	MUX(I2S1_8CH_MCLKOUT, "i2s1_8ch_mclkout", i2s1_8ch_mclkout_p, CLK_SET_RATE_PARENT,
+ 			RK3588_PMU_CLKSEL_CON(9), 2, 2, MFLAGS),
++	GATE_GRF(I2S1_8CH_MCLKOUT_TO_IO, "i2s1_8ch_mclkout_to_io", "i2s1_8ch_mclkout",
++			0, 0x0318, 1, GFLAGS, grf_type_sys),
+ 	GATE(PCLK_PMU1, "pclk_pmu1", "pclk_pmu0_root", CLK_IS_CRITICAL,
+ 			RK3588_PMU_CLKGATE_CON(1), 0, GFLAGS),
+ 	GATE(CLK_DDR_FAIL_SAFE, "clk_ddr_fail_safe", "clk_pmu0", CLK_IGNORE_UNUSED,
+@@ -2439,6 +2448,8 @@ static struct rockchip_clk_branch rk3588_clk_branches[] = {
+ static void __init rk3588_clk_early_init(struct device_node *np)
+ {
+ 	struct rockchip_clk_provider *ctx;
++	struct rockchip_aux_grf *sys_grf_e;
++	struct regmap *sys_grf;
+ 	unsigned long clk_nr_clks, max_clk_id1, max_clk_id2;
+ 	void __iomem *reg_base;
+ 
+@@ -2479,6 +2490,17 @@ static void __init rk3588_clk_early_init(struct device_node *np)
+ 			&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
+ 			ARRAY_SIZE(rk3588_cpub1clk_rates));
+ 
++	/* Register SYS_GRF for I2S MCLK output to IO gate clocks */
++	sys_grf = syscon_regmap_lookup_by_compatible("rockchip,rk3588-sys-grf");
++	if (!IS_ERR(sys_grf)) {
++		sys_grf_e = kzalloc_obj(*sys_grf_e);
++		if (sys_grf_e) {
++			sys_grf_e->grf = sys_grf;
++			sys_grf_e->type = grf_type_sys;
++			hash_add(ctx->aux_grf_table, &sys_grf_e->node, grf_type_sys);
++		}
++	}
++
+ 	rockchip_clk_register_branches(ctx, rk3588_early_clk_branches,
+ 				       ARRAY_SIZE(rk3588_early_clk_branches));
  
 
 -- 
