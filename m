@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68013FED9EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 18:08:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB6FCFED9FD
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 18:08:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=KVaKSvLRl33cqB12TH+doyxRr0X68+j7h0ts/t/GSP0=; b=mN1vmjiq4iLuiZ
-	IVxtYV6A/mmTUcG5rcfaQTr3P0qSQWD+p6lAnKi5z4srU/YLBxsUujba2J8Vijaf9R5Omd2MIM+ZK
-	x5/QsYRvScrFitAjHPz1SoxToMCkd2EezNvw8Vs9RU2Z/fuIlfvpWIFiJ8Y1qrl4vnZwWzLreOujg
-	z+/AUjy8garFHC+oAav4Z9hJqqDpUZfqfg5OOmFAlsaA6d6eg3Pqob5mFxrOtKiP5ZO9Y9/B0TUF7
-	6n9xDLyZ89qFZfXIcY6IysR+vkiC4ziI2o8ttSLPmbGGR+GxQP3OYTVkJn3FUmbV0rbz306wjTJs0
-	/1v8cHZDafPPo3b/BK9g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=BTzxBnJvuZ1vAvJET3io+kl1Jy+Y/NVEi6eBXwJ7z+U=; b=D2MIYOqIoebdJ7
+	XOzU8RbQoFSpb9Hc2Zki32AQ5kH/geXCt2gCI7D3wrjIxspCyndQYeI6Qc9qlX3jOploosMyRvPHa
+	RVtbokCVGe5YE9Dt/vRNBPqt3z4STNAmGOEhXD16zYw9v+HPbE7V3SmMtwSDBkiWYlDUifHVAqQJa
+	B4XwapRN26W1GfguAJitqg/OJhK46GL/ReJeqoB8qKffm3GKO6lVzF/0S/f1jFmgCEmVAav6EcX7x
+	iuRYTjYZABiAUZSSf3xaqCWwfJI35PtcIyT7AQz+EyE1XDSdDVkFgWQFbJZ1fXRgnU7JgwhQbNBoL
+	o2qsmWwKSGU/fqM4AtoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Ypx-000000070yf-3iHu;
-	Tue, 17 Mar 2026 18:08:13 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1w2Yq3-0000000712u-2I57;
+	Tue, 17 Mar 2026 18:08:19 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Ypv-000000070xB-1Hvw
+	id 1w2Ypx-000000070yA-4AKk
 	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Mar 2026 18:08:12 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43a03cb1df9so5991690f8f.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 17 Mar 2026 11:08:10 -0700 (PDT)
+	Tue, 17 Mar 2026 18:08:16 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-43b44c0bcdbso2273260f8f.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Mar 2026 11:08:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1773770889; x=1774375689; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=HT1vwWl+a38V7qIi5t2z8SaT/U8JFZY0mnIb8ncq2Gk=;
-        b=x51jjyQ6bbCieh4+QR2rfY7/i0fJyBMTKX++3bf+87OqbbU+/WU72B8Lc3FLcwKoz8
-         HiMLmBGP8LzXxQvxxB5Gh9UUJhchIZGDg0tCAgIk72VXL8o/3UrejeEWW5OpuFE+nH76
-         2S7OrNG3LENN76YmB8q4bmbQHGwSV4j2bw6HQG3p6VEcUofpghdz4PKrINeuyZHB5f5P
-         fxgdxgT2uJld8ezFwozageybdJtQeEPmY4YVJtN8TGSq94xQ4xZESxsxCucblAf/K8ZV
-         AJb2ROeLlL3bUrh/y2IKiD3Vc4x8eo7cjYC8SJcbCnfYWhAFiQPdqHRD7UnA3GjVIL/M
-         ySyQ==
+        d=flipper.net; s=google; t=1773770892; x=1774375692; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=S9sCFNxATE1UQcKX1OKooIck8dS1xOFB94Y0TqD1Dbc=;
+        b=ChIR8dr4tlaOi21hA4haDy/R2ogFU+C/s+Ryy3xINx5iXhwJw5C2jQVu+2ZqbydvTL
+         f/Mz/r/MmVuzonNuDA3wZQpGwiY7hHWe262vDbu45pDP7E0X4OzILr8KVw1cOOcTjAZ+
+         Acz7HRQqrQxi4Le0Smp1ShrmlBD1saSa/7Ma+dBxkQhe+6/1tn/54uU6anMmWI1oTQkV
+         pTnTJQFJIOvKvDYPSNsAreVBvnWD65/xfKxJl87MSriD8ifqWr4s/ks8BAohRGji9ffU
+         JeltDKODow+tFsb9kLX1lgih58KGg1eCSJvCr+ux/znmX2/YF756QezrVN5bjt4qRy2e
+         cT0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773770889; x=1774375689;
-        h=cc:to:content-transfer-encoding:mime-version:message-id:date
-         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=HT1vwWl+a38V7qIi5t2z8SaT/U8JFZY0mnIb8ncq2Gk=;
-        b=GohdQD8zh0xHdCbCXmlsIpzxmbesjJMMPg2ZgXlUPykbbjQ7QhrktbGxetTSU21ba3
-         f/UFcNAJiutOFC0ShbY4gzXYNTxzM6TRklK/7W+oJ5BiKle0B6HXWibDRGBhf/LWbrMr
-         zMGlRiMn/+ESq6jpnHnWpvunFPiJNwOOujyMWT9G64UzP5k2FQmF4RJNfRnq96kNlENd
-         Gypc9BLcwzbXrzlmcvu+CxyYtE9T6Ouy7qAvnsq+oEwxrTe8AMLaY/kSC2lyAzVi/lSL
-         wWQ7ShnXQkXBF22FrGzbfzWxOkCPxu/CXjGlMaAs+euP/b0qC7z+dLBXO6R5HgR77ibU
-         3yVQ==
-X-Forwarded-Encrypted: i=1; AJvYcCW6ma+12pOTVyHQoKCLuBcYJoURGqOQY6NX9F22pyKFYcTPqVtoHU7BKvpWSHaYVEAPM9IAbYOqvc8/ZrWHVw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YywwLP8Jcx9N2sAchg+ezZhP/NBcBnBjK3e0IokvIFZ2idQgZ91
-	IoW1zpKq4FwxMsqSx361qQgd8ZUySotE3MIFb43VFoPvs/LNwN+RzKbq+E5K3EVrkW0=
-X-Gm-Gg: ATEYQzy/HtInPIoXYFRSZpQ3pJ45+pbuRJRir5XMOAkCk3x+poudiOvY0e/GYL85TKS
-	Z2kRj8W/RvP1lVodMtMHsbB+lbUJJ1Q808FydWmipW1qGwW/ElGDaeToU+zExESk6pvFrz/9QPI
-	ahz9CG3gb02khi3iXSrXsnsaGEHhbrELkFpU8oyMsMVJZpq3DfFSF3p74s/TFBl6ek0h4APCPsV
-	BYtTSIbu5QWVOlrAbUDMPcS7nRGnwchFLuFQoOkb3dZwL2GknP04nCOn5o0MdX+QRXK1lNSxI5x
-	OTAw4i1lWkcGdbAnKoWuOnysvVSvhtUA1IUKrpTTtxvYZ8KYsAlInj/XIbsFR4tTON9U4sjNyvP
-	m7BaLspzfd1BnhAXZQ3O1HfgVQPYLDonJ49eUVxS6K9QpqTVsFrcS6cO13D7yjVh+IpyZMVy++7
-	ohzVvadr5eKLY1t2E9+crCR9z/XnthAg9r8SILUN/qJng2XMhlsdeyL90N3eUMxR90OwVLiLnpl
-	bC9VQ==
-X-Received: by 2002:a05:600c:1d0b:b0:485:30f7:6e88 with SMTP id 5b1f17b1804b1-486f4577061mr8194215e9.31.1773770888892;
-        Tue, 17 Mar 2026 11:08:08 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1773770892; x=1774375692;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=S9sCFNxATE1UQcKX1OKooIck8dS1xOFB94Y0TqD1Dbc=;
+        b=NemWxFW1CKhCnDr5wRy+1kTgJMBTuEtrlBMWi46gIKlXyu0Twhp4zEljt6+1XGHeIK
+         +KOUG2s+bmUlKOug6awjlpspXUIpgSQYmkRMwZniEuT6439cCT3T8yiOCqavp+0FTC3b
+         JwsPA2pR5OJSOwN27Qrv+ZXFeqYe5FtLtdQThJq7Z33Q9hFDl0cO4fus9eo49J64ntA0
+         qgTR+djQE0mBRdbS+1Kry0t3+HPRs+1bDk8YDUm5MnmjLsljiTK7hM1EBgmBcKBHt31l
+         UYVIuvu9p9gdD0VNtxzlBJOvuFi98sk2vgjJap0/R05erCKkUwkongb/V517GCYcj2/v
+         xlLA==
+X-Forwarded-Encrypted: i=1; AJvYcCV6B51ihuvIASrpFo506fY7JZABn20RWm3pCUWyVMWljL6zc7mD1dCiy4QYTtotl+laDqRoVxl3DZJBW8vLrw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzd2Pbfj6+Y3RfB1urth2/rtrfdWaiF3oQKkTdIY1NPoDRl6Zxc
+	ldk/RV2bYn8xo7AZC0zFCz+OI5YfmTXfAisXqNCp9cYA8LCxJ8uuDtalXil74mr0FMs=
+X-Gm-Gg: ATEYQzwJRN9eM40Sc4i8ywV/e2nTpXM21MoJpY4VzY1afb3RN+iJCOGxJgEzMl2S0Ri
+	EAWVDbCc4kx7W2GwDMpmwq1BrTYhpZgDgivzhlqkcIbrDc21m1raA6FXiXZvPgR+E/uCPAkZxA1
+	nmVi/SyUeU7DVrE7XvdD4a2dzFE10QmFGaGl6HkIcDv9u+V+6LWTGV1YNL66LhNtOUxmEIKtH/A
+	nNg3wl57n80mmG5+RoofxZ6IEPOUzska6934PA2ZjvHN5z4mJWrFY1sZ/sKVafah8pJKvZlcq51
+	2f2OF11gVwHaP04uUGOdeo1SdH0tvjYvXZBfe0puTAzJweP9hAUvVNM85nCiTafSEJg9KlP7D5G
+	z++x3MkUjs/dhQWnJAdkcS+2Gu4vn5tFdSdZmLF++xuOqkTjDGQzikOa6K8kr91fg3Y2C+OJ0T+
+	aWgjvBu9hChdhfH8OYpygwiGXyQJXGLimoPIn2w6/JDwkKDnWG/0LrGBtmUxv7f7xJ5xSN2yoG3
+	FyNx+ehZirtey+6
+X-Received: by 2002:a05:6000:608:b0:43b:447a:11a6 with SMTP id ffacd0b85a97d-43b527a0871mr372127f8f.8.1773770892007;
+        Tue, 17 Mar 2026 11:08:12 -0700 (PDT)
 Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43b5184b8b9sm1436536f8f.1.2026.03.17.11.08.05
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43b5184b8b9sm1436536f8f.1.2026.03.17.11.08.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Mar 2026 11:08:08 -0700 (PDT)
+        Tue, 17 Mar 2026 11:08:11 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Subject: [PATCH v2 0/5] Add HUSB311 Type-C controller
-Date: Tue, 17 Mar 2026 22:07:57 +0400
-Message-Id: <20260317-husb311-v2-0-03c17c986abe@flipper.net>
+Date: Tue, 17 Mar 2026 22:07:58 +0400
+Subject: [PATCH v2 1/5] dt-bindings: vendor-prefixes: Add Hynetek
+ Semiconductor Co., Ltd.
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAH2YuWkC/zXMwQ6CMAzG8VchPTtDZ2DqifcwHCh20sSMZcNFQ
- /buDozHf9Pvt0LkIBzhWq0QOEmU2ZXQhwrGaXAPVnIvDbrWbY3YqOkV6YSo9AWJCAdjTAvl2we
- 28t6lW196krjM4bPDCbfrz9i2fyOhqpXVDY3UnEdrTWef4j2Ho+MF+pzzF7urctmgAAAA
-X-Change-ID: 20260115-husb311-291bbb1a7776
+Message-Id: <20260317-husb311-v2-1-03c17c986abe@flipper.net>
+References: <20260317-husb311-v2-0-03c17c986abe@flipper.net>
+In-Reply-To: <20260317-husb311-v2-0-03c17c986abe@flipper.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
@@ -92,17 +92,18 @@ Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
  Alexey Charkov <alchark@flipper.net>, 
  Conor Dooley <conor.dooley@microchip.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2698; i=alchark@flipper.net;
- h=from:subject:message-id; bh=akAl2/DG0rdw7GlbNngJ+xuwwxnaipw/AQYp8maIV00=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTunNF6r7Z+eZ2E4oJ2I+HNT2ROywbkLzbi7/zRrbxM4
- o/qsqxLHRNZGMS4GCzFFFnmfltiO9WIb9YuD4+vMHNYmUCGSIs0MAABCwNfbmJeqZGOkZ6ptqGe
- oaGOsY4RAxenAEy1LBcjw8nDy1/9mst7L2zPdOOAlW2RyZm3DoeVcTIVL3mslC5yOYvhn37WtUW
- BX4vqPti9vzJPwm3qHTN+i5oTzdy36vprLj4X4QcA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1010; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=T+J1OY8trN/7RzkbAWgyzywsuUmbTSqBleeNAx93u6E=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTunNGWxX9hHu/TwgdqBXVCqw4uu3hAfLto+YSe6Y4V/
+ iZeR0tOdkxkYRDjYrAUU2SZ+22J7VQjvlm7PDy+wsxhZQIZIi3SwAAELAx8uYl5pUY6Rnqm2oZ6
+ hoY6xjpGDFycAjDVdVEM/0NfeRv6vWLZMTvtw74F/0IO1V7YEBDr9utKA/e3c/67I30Z/oesDEj
+ NE718LvnIupknltQoM00srGFWk8jRvWsp1/pEjxMA
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_110811_366922_44CF10CF 
-X-CRM114-Status: GOOD (  14.17  )
+X-CRM114-CacheID: sfid-20260317_110814_074518_6AA42E81 
+X-CRM114-Status: UNSURE (   7.42  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,59 +120,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-HUSB311 is a drop-in replacement for RT1711H, used in Rockchip RK3576 EVB1
-board and some other boards closely following the reference schematic.
+Hynetek Semiconductor Co., Ltd. focuses on intelligent energy control
+technology, mainly for the intelligent fast charging and digital energy
+fields.
 
-The existing RT1711H driver seems to work fine with HUSB311, and publicly
-available documentation does not provide enough information for HUSB311 
-to identify any meaningful differences, so this series wires up the
-existing driver to treat HUSB311 in the same way it treats RT1711H, by the
-way of introducing fallback compatibles in the binding and removing
-unnecessary VID/PID/DID checks from the driver.
-
-Note that patches 2 and 4 are on top of commits by Yanshen Cao which are
-currently in next but not in master. Maybe they can be squashed in full
-or in part to reduce churn, if we agree on using fallback compatibles.
-From what I can tell, ET7304 can also be used with a fallback compatible
-alone and without driver changes once VID/PID/DID checks are removed (I
-don't see it used in any DTS in either mainline or next yet, though)
-
-This also enables a bare-bones DT node for HUSB311 on RK3576 EVB1, but
-currently misses the connections graph for the USB SS and SBU lines, as
-those might require the USBDP PHY ports schema to be updated first for
-proper DP AltMode support as indicated by Sebastian.
-
+Link: https://en.hynetek.com/
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
-
 ---
-Changes in v2:
-- Changed the binding to use fallback compatibles (thanks Conor for the suggestion)
-- Rebased on top of recent next, thus also adjusted the binding for ET7304 to fall
-  back to RT1715. There are no in-tree DT users yet
-- Removed the VID/PID/DID checks altogether instead of endlessly multiplying the
-  list of matches for new clones (thanks Conor for the suggestion)
-- Link to v1: https://lore.kernel.org/r/20260311-husb311-v1-0-f25bcb58cff7@flipper.net
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
----
-Alexey Charkov (5):
-      dt-bindings: vendor-prefixes: Add Hynetek Semiconductor Co., Ltd.
-      dt-bindings: usb: richtek,rt1711h: Switch ETEK ET7304 to use a fallback compatible
-      dt-bindings: usb: richtek,rt1711h: Add Hynetek HUSB311
-      usb: typec: tcpci_rt1711h: Drop unnecessary VID/PID/DID checks
-      arm64: dts: rockchip: Add HUSB311 Type-C controller on RK3576 EVB1
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 5a806faf7170..3ffb1a8e24af 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -747,6 +747,8 @@ patternProperties:
+     description: Hycon Technology Corp.
+   "^hydis,.*":
+     description: Hydis Technologies
++  "^hynetek,.*":
++    description: Hynetek Semiconductor Co., Ltd.
+   "^hynitron,.*":
+     description: Shanghai Hynitron Microelectronics Co. Ltd.
+   "^hynix,.*":
 
- .../devicetree/bindings/usb/richtek,rt1711h.yaml   | 16 ++++--
- .../devicetree/bindings/vendor-prefixes.yaml       |  2 +
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   | 20 ++++++++
- drivers/usb/typec/tcpm/tcpci_rt1711h.c             | 59 +---------------------
- 4 files changed, 36 insertions(+), 61 deletions(-)
----
-base-commit: 95c541ddfb0815a0ea8477af778bb13bb075079a
-change-id: 20260115-husb311-291bbb1a7776
-
-Best regards,
 -- 
-Alexey Charkov <alchark@flipper.net>
+2.52.0
 
 
 _______________________________________________
