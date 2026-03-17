@@ -4,51 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1137BF33833
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 10:02:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D081EFD707C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 11:17:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gfThpmoSKQJKGbI8cG+mtSITD6bPNtizBnTX7o1XUbQ=; b=liYmns0BUDHGi3
-	MwlYJ6yi7zUfdbuQbhh6ddvMHDeZs8doDZrVOwVCdZ4MsK4Kh3hYrf4jnFHc3A33TWI4sNtG4c9/C
-	5eYJjbrrsTUJ1u5FOvOfkNZHH8lKnJht3ICxcZlHRKHsf47BJbCAj3X2p1Sqmbs9EZZig6TouSDVc
-	pIZRymaEkwHD2p8p4FmR9okNyoGUPgpiBf2kirpEL0ladMT+A0/FeOJAFAdCaDwX/RyV4a6TR3VkV
-	SI5XyWkpbNNDxe51XzCfii+c6KfzzvHWcZSRsHOWTBsM6PboIoDIpVQy6F+AD/1F4fVpIRJ43JOUe
-	pdvMwKzue03i8eyzqRhQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BUASRworzUAKZpXXK98111eiGRChXzlfB5EKdf4Ht7I=; b=Jqym0+q/fb6xqMmn4FxlvXgKbk
+	dLImgB22DIHUuSZwddOx8XdXCowz9/agx+oS1wwRypHl1fjyNxwEvetn5qft4GDTVm9T7rhjvCSlx
+	MJ1xni7ssp0K6rRezwC0kkSiBIHL44s0hb0JWPYR8/Mu6X2qGklI0ZFS/uQqqPqXzavi3sg7HCwMB
+	AbPyQOI3WF2O6NP19VXsAbz+mQyVtBf8XtCbViXdaWA8xyYbtYxytU58pCRam3JlI/oYcXpCXSB0T
+	EsVFTkw4P6lqYeGQRpGSIe/YoGBBII8+jtqMfRlo8oaFFIdsK24Pi3Hkh1oX3BuqO3lqgUNN06AAh
+	7+RYHF4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2RGH-00000005wha-3Qmd;
-	Tue, 17 Mar 2026 10:02:53 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w2SQ1-000000066U0-011R;
+	Tue, 17 Mar 2026 11:17:01 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2RGC-00000005wgj-3bAm;
-	Tue, 17 Mar 2026 10:02:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=kVSAKNPWFaVjAvCtb6poHFlHo32MFz9vQGa3WsfvRMM=; b=LgP3QfHfOOYMNSRMLjnLoFRFAa
-	ZCDb16yFn4AYA3tDWxE0CFUeDIiFC4NxMxix+jDDlDzm7goSZaEg7muiykq02mgzgm/4pctchpZ75
-	MQ6AOfUMGYpw1H6U8uc1tfbMBWxRehX6wF88fh7EWDORMFBrzFlzQI/L6uGneN8v5nELhdGDPTm2I
-	H5XtgeA+5+V5EukXV+sRWIOsH+Ey0+MiC0QYhtL3wrlq2PBNKsECLGszqHmyW/hSDtteNeYMI1QAW
-	/M+Lp7uqYobYf6/Rq1/wWqxfcpZ7yU5BPA2djnbJh/+KMCY09AXRR3g+p4ENQIdyaBNT68CbUlWeu
-	+/gjaZmw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: arm@kernel.org, soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: Re: [GIT PULL] Rockchip dts fixes for 7.0 #1
-Date: Tue, 17 Mar 2026 11:02:46 +0100
-Message-ID: <3682281.iIbC2pHGDl@phil>
-In-Reply-To: <aa9d42ad-c480-4fc8-b8be-1a0c505b4293@kernel.org>
-References: <5055064.GXAFRqVoOG@phil> <10817796.nUPlyArG6x@phil>
- <aa9d42ad-c480-4fc8-b8be-1a0c505b4293@kernel.org>
+	id 1w2SPx-000000066Sw-30RM;
+	Tue, 17 Mar 2026 11:16:58 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0263444458;
+	Tue, 17 Mar 2026 11:16:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 68824C4CEF7;
+	Tue, 17 Mar 2026 11:16:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773746216;
+	bh=QT+lbY9/xI/ADS68SjLkZ6KxcFgasXL+Xc+GdnIFe74=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=uaFwLzO8bjL9By3OJ8nwOOanQikvV1XJXkwvbygj5WUi0CRTJiTdCQxfuZRogVEn/
+	 ulEcpfi18dfPQ39FA+pnZqkfL2W20ZrYqBKBgCga3RqOHUvQpuJHW8kRQnONY9Twlz
+	 zuu+rGnxN4SVmvq6DohbPbm5L/mxLA7TZyH1Esy1c3ZT6gnpLwgcHK4lEL5jYAVEPy
+	 Z1CnBd8nUcfnUE7ekyowsB35vdsaarsVi8ZVQ5w7UbTpJ838s7CkQwTg4oDKRSJ1ma
+	 y++mAlEQ6Z6Gxxnz98HcKHcIhvVQD3L3NsP3nuP7PuCCtzz8/1mTKq7gaeeC/Un7lL
+	 CRkcAQxXWww1w==
+Date: Tue, 17 Mar 2026 12:16:47 +0100
+From: Niklas Cassel <cassel@kernel.org>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: manivannan.sadhasivam@oss.qualcomm.com,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
+	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
+	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
+	Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>,
+	Brian Norris <briannorris@chromium.org>,
+	Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>
+Subject: Re: [PATCH v7 0/4] PCI: Add support for resetting the Root Ports in
+ a platform specific way
+Message-ID: <abk3rU2EDKjkefUD@ryzen>
+References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
+ <abFMa6DCGGLUHddA@fedora>
+ <dp2rem4gj7zhfgykvekmcrhq4ticm6m6ido6tbgflwzfcuuwkl@4wuxgle27eyx>
+ <srdn3bspgwff7f7tnst7wzg4us4buifrv7o3ylo527hmuciyl3@6ioyrl6rfhaz>
 MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="A15YEQnAzhPrJ5mF"
+Content-Disposition: inline
+In-Reply-To: <srdn3bspgwff7f7tnst7wzg4us4buifrv7o3ylo527hmuciyl3@6ioyrl6rfhaz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_030248_922229_11DD5EAA 
-X-CRM114-Status: GOOD (  24.83  )
+X-CRM114-CacheID: sfid-20260317_041657_823242_82998954 
+X-CRM114-Status: GOOD (  56.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -60,87 +85,453 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDE3LiBNw6RyeiAyMDI2LCAxMDoxOToyOSBNaXR0ZWxldXJvcMOkaXNjaGUg
-Tm9ybWFsemVpdCBzY2hyaWViIEtyenlzenRvZiBLb3psb3dza2k6Cj4gT24gMTcvMDMvMjAyNiAx
-MDowNSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBBbSBEaWVuc3RhZywgMTcuIE3DpHJ6IDIw
-MjYsIDA5OjQ1OjMwIE1pdHRlbGV1cm9ww6Rpc2NoZSBOb3JtYWx6ZWl0IHNjaHJpZWIgS3J6eXN6
-dG9mIEtvemxvd3NraToKPiA+PiBPbiBTYXQsIE1hciAxNCwgMjAyNiBhdCAwNzo0MjozOFBNICsw
-MTAwLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiA+Pj4gSGkgU29DIG1haW50YWluZXJzLAo+ID4+
-Pgo+ID4+PiBwbGVhc2UgZmluZCBhIGJlbG93IHNvbWUgUm9ja2NoaXAgZml4ZXMgZm9yIHRoZSBj
-dXJyZW50IDcuMCByZWxlYXNlLWN5Y2xlLgo+ID4+PiBBbmQgaW4gdGhlIG5leHQgUFIsIGV2ZW4g
-b25lIGRyaXZlci1maXggdGhpcyB0aW1lLgo+ID4+Pgo+ID4+PiBQbGVhc2UgcHVsbAo+ID4+Pgo+
-ID4+PiBUaGFua3MKPiA+Pj4gSGVpa28KPiA+Pj4KPiA+Pj4KPiA+Pj4gVGhlIGZvbGxvd2luZyBj
-aGFuZ2VzIHNpbmNlIGNvbW1pdCA2ZGUyM2Y4MWE1ZTA4YmU4ZmJmNWU4ZDdlOWZlYmM3MmE1YjVm
-MjdmOgo+ID4+Pgo+ID4+PiAgIExpbnV4IDcuMC1yYzEgKDIwMjYtMDItMjIgMTM6MTg6NTkgLTA4
-MDApCj4gPj4+Cj4gPj4+IGFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5IGF0Ogo+
-ID4+Pgo+ID4+PiAgIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwv
-Z2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdpdCB0YWdzL3Y3LjAtcm9ja2NoaXAtZHRzZml4ZXMx
-Cj4gPj4+Cj4gPj4+IGZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byAyZWQxMWFkMWMyYjRj
-MTkxY2IyZWQ2NzQxYmUxMjdlYjk5Zjg2MzRmOgo+ID4+Pgo+ID4+PiAgIGFybTY0OiBkdHM6IHJv
-Y2tjaGlwOiBDb3JyZWN0IEpveXN0aWNrIEF4ZXMgb24gR2FtZWZvcmNlIEFjZSAoMjAyNi0wMy0x
-MiAyMDo1Mjo1MyArMDEwMCkKPiA+Pj4KPiA+Pj4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4+PiBBIGJpZyBudW1iZXIg
-b2YgY2hhbmdlcyBmaXhpbmcgZHQtc2NoZW1hIGlzc3VlcyBvbiB0aGUgQVJNMzIgc2lkZSwKPiA+
-Pj4gZml4ZXMgZm9yIHRoZSBHYW1lZm9yY2UtQWNlIHRvIG1ha2UgdGhlIGhhcmR3YXJlIHdvcmsg
-cHJvcGVybHkKPiA+Pj4gKGluY2x1ZGluZyB0aGVybWFscykgYXMgd2VsbCBhcyBmaXhpbmcgaXNz
-dWVzIGJvdGggb24gQmVlbGluayBBMSAoc3BkaWYpCj4gPj4+IGFuZCBQaW5lYm9vayBQcm8gKFdp
-ZmkpIGJ5IHJldmVydGluZyB0aGUgY29tbWl0cyB0aGF0IGNyZWF0ZWQgdGhlIGlzc3Vlcwo+ID4+
-Pgo+ID4+PiAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tCj4gPj4+IENocmlzIE1vcmdhbiAoMik6Cj4gPj4+ICAgICAgIGFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBDb3JyZWN0IEZhbiBTdXBwbHkgZm9yIEdhbWVmb3JjZSBBY2UKPiA+
-Pj4gICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IENvcnJlY3QgSm95c3RpY2sgQXhlcyBvbiBH
-YW1lZm9yY2UgQWNlCj4gPj4+Cj4gPj4+IEZhYmlvIEVzdGV2YW0gKDExKToKPiA+Pj4gICAgICAg
-QVJNOiBkdHM6IHJvY2tjaGlwOiBSZW1vdmUgcm9ja2NoaXAsZ3JmIGZyb20gcmszMjg4IHRzYWRj
-Cj4gPj4+ICAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogTW92ZSBQSFkgcmVzZXQgdG8gZXRoZXJu
-ZXQtcGh5IG5vZGUgb24gcmszMDM2IGJvYXJkcwo+ID4+PiAgICAgICBBUk06IGR0czogcm9ja2No
-aXA6IEZpeCBSVEMgY29tcGF0aWJsZSBvbiByazMyODgtcGh5Y29yZS1yZGsKPiA+Pj4gICAgICAg
-QVJNOiBkdHM6IHJvY2tjaGlwOiBVc2UgbW91bnQtbWF0cml4IG9uIHJrMzE4OC1icWVkaXNvbjJx
-Ywo+ID4+PiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IFJlbW92ZSBpbnZhbGlkIHJlZ3VsYXRv
-ci1wcm9wZXJ0eSBmcm9tIHJrMzI4OC12ZXlyb24KPiA+Pgo+ID4+IE5vdCBhIGZpeC4KPiA+Pgo+
-ID4+PiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEZpeCB0aGUgQmx1ZXRvb3RoIG5vZGUgbmFt
-ZSBvbiByazMyODgtdmV5cm9uCj4gPj4KPiA+PiBOb3QgYSBmaXguIFRoaXMgaXMgYSBwdXJlIHN0
-eWxlIGNoYW5nZS4gRml4ZXMgZm9yIGN1cnJlbnQgY3ljbGUgbWVhbnMKPiA+PiBlaXRoZXIgaW1w
-b3J0YW50IGlzc3VlcyBiZWluZyBmaXhlZCBvciBlcnJvcnMgaW50cm9kdWNlZCBpbiBjdXJyZW50
-Cj4gPj4gY3ljbGUuCj4gPj4KPiA+PiBDaGFuZ2luZyBzdHlsZSBmcm9tIG9uZSB0byBhbm90aGVy
-IGlzIG5vdCBhIGZpeC4KPiA+Pgo+ID4+PiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEZpeCB0
-aGUgdHJhY2twYWQgc3VwcGx5IG9uIHJrMzI4OC12ZXlyb24tamVycnkKPiA+Pj4gICAgICAgQVJN
-OiBkdHM6IHJvY2tjaGlwOiBBZGQgbWlzc2luZyB0aGUgdG91Y2hzY3JlZW4gaW50ZXJydXB0IG9u
-IHJrMzI4OC1waHljb3JlLXJkawo+ID4+PiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEZpeCBS
-VEMgZGVzY3JpcHRpb24gb24gcmszMjg4LWZpcmVmbHktcmVsb2FkCj4gPj4KPiA+PiBOb3QgYSBm
-aXguIFN0eWxlIG9mIG5vZGUgbmFtZSBpcyBub3QgYSBidWcsIG90aGVyd2lzZSBkZXNjcmliZSB1
-c2VyCj4gPj4gdmlzaWJsZSAobm90ICJpbnRlcm5hbCB0b29scyIgdmlzaWJsZSkgaW1wYWN0Lgo+
-ID4+Cj4gPj4+ICAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogRml4IEdNQUMgZGVzY3JpcHRpb24g
-biBSSzMyODggYm9hcmRzCj4gPj4+ICAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogRml4IExFRCBu
-b2RlIG5hbWVzIG9uIHJrMzI4OC1waHljb3JlLXJkawo+ID4+Cj4gPj4gU2V2ZXJhbCBvdGhlciBh
-cmUgcXVlc3Rpb25hYmxlIGFzIHdlbGwsIHNpbmNlIHRoZXkgd2VyZSBpbiBEVFMgZm9yIGxvbmcK
-PiA+PiB0aW1lLiBQbGVhc2UgYWxzbyByZWFkIExpbnVzJyBleHBsYW5hdGlvbiBoZXJlIGZyb20g
-c29tZSB0aW1lIGFnbyAtIGlmCj4gPj4gdGhlIGlzc3VlIGlzIGZvciBsb25nIHRpbWUgYW5kIG5v
-IG9uZSBjYXJlZCwgdGhlbiBjaGFuZ2luZyBpdCBpcyBhIG5vcm1hbAo+ID4+IGRldmVsb3BtZW50
-Lgo+ID4+Cj4gPj4gU2V2ZXJhbCBjaGFuZ2VkIHBpZWNlcyBoZXJlIGxvb2sgbGlrZSAzIG9yIG1v
-cmUgeWVhcnMgb2xkLCBzbyBkb2VzIG5vdAo+ID4+IGZpdCBjcml0ZXJpYSBvZiBjdXJyZW50IGN5
-Y2xlIGZpeCBhdCBhbGwuCj4gPj4KPiA+PiBQbGVhc2Ugc3BsaXQgdGhlIHB1bGwuCj4gPiAKPiA+
-IEkgZG8gcmVtZW1iZXIgaW4gdGhlIHBhc3QsIGNoYW5nZXMgdGhhdCByZWR1Y2VkIHRoZSBudW1i
-ZXIgb2YKPiA+IGR0LWNoZWNrZXIgZXJyb3JzIHdlcmUgY29uc2lkZXJlZCBmaXhlcywgYnV0IGl0
-IHNlZW1zIHRoYXQgaGFzCj4gPiBjaGFuZ2VkLCBzbyBJJ2xsIHNwbGl0IHRoYXQgYWNjb3JkaW5n
-bHkuCj4gCj4gSXQgaXMgc3ViamVjdGl2ZSBhbmQgb2YgY291cnNlIGR0YnNfY2hlY2sgZml4IGZv
-ciBpc3N1ZSBpbnRyb2R1Y2VkIGluCj4gY3VycmVudCBjeWNsZSBpcyBhIFJDLWZpeC4gSSBhbSBw
-cmV0dHkgc3VyZSB0aGF0IG1hbnkgbWFpbnRhaW5lcnMgd291bGQKPiBwdWxsIGFsbCBhYm92ZSB0
-byBSQywgYnV0IEkgZm9sbG93IGEgYml0IHN0cmljdGVyIGludGVycHJldGF0aW9uIGp1c3QKPiBs
-aWtlIExpbnVzIGV4cGxhaW5lZCBpdDoKPiAKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9sa21s
-L0NBKzU1YUZ5dlczOFdVOTNDcWVnSGlLdC1SZU84eU5mQU9VR1pSRkdZMy1BcTBVc0VUd0BtYWls
-LmdtYWlsLmNvbS8KPiAKPiBodHRwczovL2xvcmUua2VybmVsLm9yZy9hbGwvQ0FIay0lM0R3Z0Z1
-b0hwTWtfWl9SM3FNWFZEZ3EwTjE1OTIlMkJiQUJreUdqd3dTTDR6QnRIQUBtYWlsLmdtYWlsLmNv
-bS8KPiAKPiBTbyB0aGUgaXNzdWVzIHdlcmUgdGhlcmUgcHJvYmFibHkgZm9yIG1hbnkgeWVhcnMg
-YW5kIGZpeGVzIGRvIG5vdCBoYXZlCj4gdXNlci12aXNpYmxlIGltcGFjdCwgdGh1cyB0aGV5IGxv
-b2sgbGlrZSByZWd1bGFyIGltcHJvdmVtZW50IG9mIHBvb3IKPiBjb2RlLiBKdXN0IGxpa2UgSSBl
-dmFsdWF0ZWQgZHRic19jaGVjayBmaW5kaW5ncyBpbiAyMDI0IC0gNTAlIG9mCj4gd2FybmluZ3Mg
-YXJlIHN0eWxlLgoKClRoYW5rcyBmb3IgdGhlIGV4cGxhbmF0aW9uLiBBcyBJIHNhaWQsIEknbGwg
-YWRhcHQgdGhlIFBSIGFjY29yZGluZ2x5IDotKSAuCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxp
-c3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFk
-ZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+
+--A15YEQnAzhPrJ5mF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Wed, Mar 11, 2026 at 08:44:15PM +0530, Manivannan Sadhasivam wrote:
+> On Wed, Mar 11, 2026 at 08:09:53PM +0530, Manivannan Sadhasivam wrote:
+> > On Wed, Mar 11, 2026 at 12:05:15PM +0100, Niklas Cassel wrote:
+> > > On Tue, Mar 10, 2026 at 07:31:58PM +0530, Manivannan Sadhasivam via B4 Relay wrote:
+> > > > Changes in v7:
+> > > > - Dropped Rockchip Root port reset patch due to reported issues. But the series
+> > > >   works on other platforms as tested by others.
+> > > 
+> > > Are you referring to
+> > > 
+> > > ## On EP side:
+> > > # echo 0 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start && \
+> > >   sleep 0.1 && echo 1 > /sys/kernel/config/pci_ep/controllers/a40000000.pcie-ep/start
+> > > 
+> > > Then running pcitest only having 7 / 16 tests passed ?
+> > > 
+> > > If so, isn't that a problem also for qcom?
+> > > 
+> > 
+> > No, tests are passing on my setup after link up.
+> > 
+> > > 
+> > > There is no chance that the patch:
+> > > "misc: pci_endpoint_test: Add AER error handlers"
+> > > improves things in this regard?
+> > > 
+> > > Or will it simply avoid the "AER: device recovery failed" print?
+> > > 
+> > 
+> > Yes, as mentioned in the commit message, it just avoids the AER recovery failure
+> > message.
+> > 
+> 
+> I also realized that Endpoint state is not saved in all the code paths. So the
+> pci_endpoint_test driver has to save/restore the state also. But it is still not
+> clear why that didn't help you.
+> 
+> Can you share the snapshot of the entire config space before and after reset
+> using 'lspci -xxxx -s "0000:01:00"'?
+
+If I don't add something like:
+
+diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
+index 1eced7a419eb..9d7ee39164d4 100644
+--- a/drivers/misc/pci_endpoint_test.c
++++ b/drivers/misc/pci_endpoint_test.c
+@@ -1059,6 +1059,9 @@ static int pci_endpoint_test_set_irq(struct pci_endpoint_test *test,
+                return ret;
+        }
+ 
++       pr_info("saving PCI state (irq_type: %d)\n", req_irq_type);
++       pci_save_state(pdev);
++
+        return 0;
+ }
+ 
+@@ -1453,6 +1456,7 @@ static pci_ers_result_t pci_endpoint_test_error_detected(struct pci_dev *pdev,
+ 
+ static pci_ers_result_t pci_endpoint_test_slot_reset(struct pci_dev *pdev)
+ {
++       pci_restore_state(pdev);
+        return PCI_ERS_RESULT_RECOVERED;
+ }
+
+On top of your patch.
+
+Then all the BAR tests + MSI and MSI-X tests fail.
+
+There is a huge difference in lspci -vvv output (as I guess is expected),
+including all BARs being marked as disabled.
+
+
+With the patch above. There is zero difference before/after reset, and all
+the BAR tests pass. However, MSI/MSI-X tests still fail with:
+
+# pci_endpoint_test.c:143:MSI_TEST:Expected 0 (0) == ret (-110) 
+# pci_endpoint_test.c:143:MSI_TEST:Test failed for MSI1
+
+ETIMEDOUT.
+
+This suggests that pci_endpoint_test on the host side did not receive an
+interrupt.
+
+I don't know why, but considering that lspci output is now (with the
+save+restore) identical, I assume that the problem is not related to
+the host. Unless somehow the host will use a new/different MSI address
+after the root port has been reset, and we restore the old MSI address,
+but looking at the code, dw_pcie_msi_init() is called by
+dw_pcie_setup_rc(), so I would expect the MSI address to be the same.
+
+
+I will be very busy for a few weeks, so I don't have time to debug this.
+If anyone wants to debug this on rk3588, I'm attaching the patches for
+this new feature for rk3588 that can be applied on top of this series.
+
+Personally, I'm fine with this series getting merged even though this
+new feature will only be supported by the QCOM driver.
+But, I don't understand how e.g. pci endpoint test can work on QCOM
+platforms, after the root port has been reset, without something like
+the save/restore diff above.
+
+
+Kind regards,
+Niklas
+
+--A15YEQnAzhPrJ5mF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment;
+	filename=0001-Revert-PCI-dw-rockchip-Simplify-regulator-setup-with.patch
+
+From c6416291bdbe2a3964b60183492208b41208f5a0 Mon Sep 17 00:00:00 2001
+From: Niklas Cassel <cassel@kernel.org>
+Date: Tue, 17 Mar 2026 09:59:09 +0100
+Subject: [PATCH 1/2] Revert "PCI: dw-rockchip: Simplify regulator setup with
+ devm_regulator_get_enable_optional()"
+
+This reverts commit c930b10f17c03858cfe19b9873ba5240128b4d1b.
+---
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 23 ++++++++++++++-----
+ 1 file changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index 8db27199cfa6..bec42fe646d8 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -95,6 +95,7 @@ struct rockchip_pcie {
+ 	unsigned int clk_cnt;
+ 	struct reset_control *rst;
+ 	struct gpio_desc *rst_gpio;
++	struct regulator *vpcie3v3;
+ 	struct irq_domain *irq_domain;
+ 	const struct rockchip_pcie_of_data *data;
+ 	bool supports_clkreq;
+@@ -673,15 +674,22 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 		return ret;
+ 
+ 	/* DON'T MOVE ME: must be enable before PHY init */
+-	ret = devm_regulator_get_enable_optional(dev, "vpcie3v3");
+-	if (ret < 0 && ret != -ENODEV)
+-		return dev_err_probe(dev, ret,
+-				     "failed to enable vpcie3v3 regulator\n");
++	rockchip->vpcie3v3 = devm_regulator_get_optional(dev, "vpcie3v3");
++	if (IS_ERR(rockchip->vpcie3v3)) {
++		if (PTR_ERR(rockchip->vpcie3v3) != -ENODEV)
++			return dev_err_probe(dev, PTR_ERR(rockchip->vpcie3v3),
++					"failed to get vpcie3v3 regulator\n");
++		rockchip->vpcie3v3 = NULL;
++	} else {
++		ret = regulator_enable(rockchip->vpcie3v3);
++		if (ret)
++			return dev_err_probe(dev, ret,
++					     "failed to enable vpcie3v3 regulator\n");
++	}
+ 
+ 	ret = rockchip_pcie_phy_init(rockchip);
+ 	if (ret)
+-		return dev_err_probe(dev, ret,
+-				     "failed to initialize the phy\n");
++		goto disable_regulator;
+ 
+ 	ret = reset_control_deassert(rockchip->rst);
+ 	if (ret)
+@@ -714,6 +722,9 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
+ deinit_phy:
+ 	rockchip_pcie_phy_deinit(rockchip);
++disable_regulator:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
+ 
+ 	return ret;
+ }
+-- 
+2.53.0
+
+
+--A15YEQnAzhPrJ5mF
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment;
+	filename=0002-PCI-dw-rockchip-Add-support-to-reset-Root-Port-upon-.patch
+
+From 47b29e709bb209b2877a072cd3a9c3e5f1b66399 Mon Sep 17 00:00:00 2001
+From: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+Date: Tue, 17 Mar 2026 09:30:57 +0100
+Subject: [PATCH 2/2] PCI: dw-rockchip: Add support to reset Root Port upon
+ link down event
+
+The PCIe link may go down in cases like firmware crashes or unstable
+connections. When this occurs, the PCIe Root Port must be reset to restore
+the functionality. However, the current driver lacks link down handling,
+forcing users to reboot the system to recover.
+
+This patch implements the `reset_root_port` callback for link down handling
+for Rockchip DWC PCIe host controller. In which, the RC is reset,
+reconfigured and link training initiated to recover from the link down
+event.
+
+This also by extension fixes issues with sysfs initiated bus resets. In
+that, currently, when a sysfs initiated bus reset is issued, the endpoint
+device is non-functional after (may link up with downgraded link status).
+With the link down handling support, a sysfs initiated bus reset works as
+intended. Testing conducted on a ROCK5B board with an M.2 NVMe drive.
+
+Signed-off-by: Wilfred Mallawa <wilfred.mallawa@wdc.com>
+---
+ drivers/pci/controller/dwc/Kconfig            |   1 +
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 137 +++++++++++++++++-
+ 2 files changed, 135 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/pci/controller/dwc/Kconfig b/drivers/pci/controller/dwc/Kconfig
+index d0aa031397fa..ecaf79da843b 100644
+--- a/drivers/pci/controller/dwc/Kconfig
++++ b/drivers/pci/controller/dwc/Kconfig
+@@ -361,6 +361,7 @@ config PCIE_ROCKCHIP_DW_HOST
+ 	depends on OF
+ 	select PCIE_DW_HOST
+ 	select PCIE_ROCKCHIP_DW
++	select PCI_HOST_COMMON
+ 	help
+ 	  Enables support for the DesignWare PCIe controller in the
+ 	  Rockchip SoC (except RK3399) to work in host mode.
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index bec42fe646d8..75928057acee 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -24,6 +24,7 @@
+ #include <linux/reset.h>
+ 
+ #include "../../pci.h"
++#include "../pci-host-common.h"
+ #include "pcie-designware.h"
+ 
+ /*
+@@ -106,6 +107,9 @@ struct rockchip_pcie_of_data {
+ 	const struct pci_epc_features *epc_features;
+ };
+ 
++static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
++				       struct pci_dev *pdev);
++
+ static int rockchip_pcie_readl_apb(struct rockchip_pcie *rockchip, u32 reg)
+ {
+ 	return readl_relaxed(rockchip->apb_base + reg);
+@@ -326,6 +330,7 @@ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
+ 
+ 	rockchip_pcie_configure_l1ss(pci);
+ 	rockchip_pcie_enable_l0s(pci);
++	pp->bridge->reset_root_port = rockchip_pcie_rc_reset_root_port;
+ 
+ 	/* Disable Root Ports BAR0 and BAR1 as they report bogus size */
+ 	dw_pcie_writel_dbi2(pci, PCI_BASE_ADDRESS_0, 0x0);
+@@ -524,6 +529,32 @@ static const struct dw_pcie_ops dw_pcie_ops = {
+ 	.get_ltssm = rockchip_pcie_get_ltssm,
+ };
+ 
++static irqreturn_t rockchip_pcie_rc_sys_irq_thread(int irq, void *arg)
++{
++	struct rockchip_pcie *rockchip = arg;
++	struct dw_pcie *pci = &rockchip->pci;
++	struct dw_pcie_rp *pp = &pci->pp;
++	struct device *dev = pci->dev;
++	struct pci_dev *port;
++	u32 reg;
++
++	reg = rockchip_pcie_readl_apb(rockchip, PCIE_CLIENT_INTR_STATUS_MISC);
++	rockchip_pcie_writel_apb(rockchip, reg, PCIE_CLIENT_INTR_STATUS_MISC);
++
++	dev_dbg(dev, "PCIE_CLIENT_INTR_STATUS_MISC: %#x\n", reg);
++	dev_dbg(dev, "LTSSM_STATUS: %#x\n", rockchip_pcie_get_ltssm_reg(rockchip));
++
++	if (reg & PCIE_LINK_REQ_RST_NOT_INT) {
++		dev_dbg(dev, "hot reset or link-down reset\n");
++		for_each_pci_bridge(port, pp->bridge->bus) {
++			if (pci_pcie_type(port) == PCI_EXP_TYPE_ROOT_PORT)
++				pci_host_handle_link_down(port);
++		}
++	}
++
++	return IRQ_HANDLED;
++}
++
+ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ {
+ 	struct rockchip_pcie *rockchip = arg;
+@@ -556,14 +587,29 @@ static irqreturn_t rockchip_pcie_ep_sys_irq_thread(int irq, void *arg)
+ 	return IRQ_HANDLED;
+ }
+ 
+-static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
++static int rockchip_pcie_configure_rc(struct platform_device *pdev,
++				      struct rockchip_pcie *rockchip)
+ {
++	struct device *dev = &pdev->dev;
+ 	struct dw_pcie_rp *pp;
++	int irq, ret;
+ 	u32 val;
+ 
+ 	if (!IS_ENABLED(CONFIG_PCIE_ROCKCHIP_DW_HOST))
+ 		return -ENODEV;
+ 
++	irq = platform_get_irq_byname(pdev, "sys");
++	if (irq < 0)
++		return irq;
++
++	ret = devm_request_threaded_irq(dev, irq, NULL,
++					rockchip_pcie_rc_sys_irq_thread,
++					IRQF_ONESHOT, "pcie-sys-rc", rockchip);
++	if (ret) {
++		dev_err(dev, "failed to request PCIe sys IRQ\n");
++		return ret;
++	}
++
+ 	/* LTSSM enable control mode */
+ 	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
+ 	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
+@@ -575,7 +621,17 @@ static int rockchip_pcie_configure_rc(struct rockchip_pcie *rockchip)
+ 	pp = &rockchip->pci.pp;
+ 	pp->ops = &rockchip_pcie_host_ops;
+ 
+-	return dw_pcie_host_init(pp);
++	ret = dw_pcie_host_init(pp);
++	if (ret) {
++		dev_err(dev, "failed to initialize host\n");
++		return ret;
++	}
++
++	/* unmask hot reset/link-down reset */
++	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++
++	return ret;
+ }
+ 
+ static int rockchip_pcie_configure_ep(struct platform_device *pdev,
+@@ -701,7 +757,7 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 
+ 	switch (data->mode) {
+ 	case DW_PCIE_RC_TYPE:
+-		ret = rockchip_pcie_configure_rc(rockchip);
++		ret = rockchip_pcie_configure_rc(pdev, rockchip);
+ 		if (ret)
+ 			goto deinit_clk;
+ 		break;
+@@ -729,6 +785,81 @@ static int rockchip_pcie_probe(struct platform_device *pdev)
+ 	return ret;
+ }
+ 
++static int rockchip_pcie_rc_reset_root_port(struct pci_host_bridge *bridge,
++					    struct pci_dev *pdev)
++{
++	struct pci_bus *bus = bridge->bus;
++	struct dw_pcie_rp *pp = bus->sysdata;
++	struct dw_pcie *pci = to_dw_pcie_from_pp(pp);
++	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
++	struct device *dev = rockchip->pci.dev;
++	u32 val;
++	int ret;
++
++	dw_pcie_stop_link(pci);
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++	rockchip_pcie_phy_deinit(rockchip);
++
++	ret = reset_control_assert(rockchip->rst);
++	if (ret)
++		return ret;
++
++	ret = rockchip_pcie_phy_init(rockchip);
++	if (ret)
++		goto disable_regulator;
++
++	ret = reset_control_deassert(rockchip->rst);
++	if (ret)
++		goto deinit_phy;
++
++	ret = rockchip_pcie_clk_init(rockchip);
++	if (ret)
++		goto deinit_phy;
++
++	ret = pp->ops->init(pp);
++	if (ret) {
++		dev_err(dev, "Host init failed: %d\n", ret);
++		goto deinit_clk;
++	}
++
++	/* LTSSM enable control mode */
++	val = FIELD_PREP_WM16(PCIE_LTSSM_ENABLE_ENHANCE, 1);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_HOT_RESET_CTRL);
++
++	rockchip_pcie_writel_apb(rockchip,
++				 PCIE_CLIENT_SET_MODE(PCIE_CLIENT_MODE_RC),
++				 PCIE_CLIENT_GENERAL_CON);
++
++	ret = dw_pcie_setup_rc(pp);
++	if (ret) {
++		dev_err(dev, "Failed to setup RC: %d\n", ret);
++		goto deinit_clk;
++	}
++
++	/* unmask hot reset/link-down reset */
++	val = FIELD_PREP_WM16(PCIE_LINK_REQ_RST_NOT_INT, 0);
++	rockchip_pcie_writel_apb(rockchip, val, PCIE_CLIENT_INTR_MASK_MISC);
++
++	ret = dw_pcie_start_link(pci);
++	if (ret)
++		goto deinit_clk;
++
++	/* Ignore errors, the link may come up later */
++	dw_pcie_wait_for_link(pci);
++	dev_dbg(dev, "Root Port reset completed\n");
++	return ret;
++
++deinit_clk:
++	clk_bulk_disable_unprepare(rockchip->clk_cnt, rockchip->clks);
++deinit_phy:
++	rockchip_pcie_phy_deinit(rockchip);
++disable_regulator:
++	if (rockchip->vpcie3v3)
++		regulator_disable(rockchip->vpcie3v3);
++
++	return ret;
++}
++
+ static const struct rockchip_pcie_of_data rockchip_pcie_rc_of_data_rk3568 = {
+ 	.mode = DW_PCIE_RC_TYPE,
+ };
+-- 
+2.53.0
+
+
+--A15YEQnAzhPrJ5mF
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--A15YEQnAzhPrJ5mF--
+
