@@ -4,72 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AB4FED9F1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 17:22:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3746BFED9F6
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 17:29:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=quBPrPum0ga4Z49L2IRhjmqjUNr0PXYRf3upIoKyiVc=; b=al1uwt4iuw0OzNMpyZKtNeQdfo
-	0uTHnf8gU039PQftY0X0dXp8ihFa/OL5dfbyUlN8oUM64F7WKQAeajkkt5mEZWk9ckvlMIyoeK+U9
-	GZoXYArvzM0X4VmCXL/FEk/A+f5Bhaa2Gj32p2ehs8HX8J6R0UFoa3qiF6T1hwQTBgiT/A37u75CI
-	EdTnbmb0GII1aFrYgA0OvIuD/n9ak3M9qdr1RLSonm1UBqO5rIfO7S6XXl3jqdF5FRltX/aXlhN6i
-	yPuj3cOIhAIJFTg5NXMfJiIzbdN2iE27T0M4v/Qv7owrTa1fUgZ0KpmiblGA4tdrwDe7DEQQ/CkNe
-	V9XBP+Ww==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=El+Frr9M3QTxRRjBRw/eHgybQJ2R4gLjJDr469ndEUU=; b=friGUT8VtgV6Kl
+	r6TJzoUTPFZJ1WAg1nORukIZ6/PRzGYXC10mVCu7q6PkBG90MlVdd0/Jn2nCBMvRhFMuokc6rMf+a
+	WaNxCVb44QhfbJKCp+ahGZo0tTi7fRVtYRRN2kSzF4QFZ5bx1O7Y/6Hr9FIwp9wRe1gCpVdnQCIgW
+	6JKMeiXa8LWSaShjrerVHy4FRHa6UD84/ZjOr4LVTcldIRwwszdCRuMR0lUBhjj/Mvb11ICZbEQ0C
+	QJgq9OR/hxyAG5nvB/LrBEstwEZA3AwuQVVOD3LN1SWGEzG9wbRYu1PMc1f3nh5g7ERAuIXEuu8Uc
+	VJlKD+uXfnW/zVWsv6lg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Y7r-00000006vci-2RU9;
-	Tue, 17 Mar 2026 17:22:39 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1w2YEH-00000006wdP-4605;
+	Tue, 17 Mar 2026 17:29:17 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Y7o-00000006vbH-3SdQ;
-	Tue, 17 Mar 2026 17:22:38 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1773768141; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=HPFcjpjFhaIdcBNwj7gmuEk50vuOsqPaTQ6rCVKuI/RROM22Ng1P2I2Ep8YXaK4AvamqMxOpV+P8btcO2pfbqV6jD00WoSIL1Y+GdIFWY9NvHn2YUoImWNvtafuV3ukDMZBhVLuCwWSonuKAEhVHqEXsqDW/ZjnhSN8UY5Hz0JU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1773768141; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=csSww+WIybtBNldf33djiUaktagQrObOaKalU3CZA8k=; 
-	b=BUCLmoZwQ2+LSfBX2hkBAYr887/eWL7DPoc5VEqkvbxA2NldzH9MWgNw2rSeHwn49uY0H0ZqoY/hKCCI1weGferJ6eHhNZa3UCrqXd6HTVNkefeLdEYVCzA6jRP4gK3+ogkmwrIzyT1v6e5lnP+M43WwSNze/mWgVg2PkSQx+Eg=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773768141;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=csSww+WIybtBNldf33djiUaktagQrObOaKalU3CZA8k=;
-	b=RcVe2aKdIYXcdGrxc3GQ/hFLkfmPl0xwq29Qj1m+xoVDJ1f0kezE0ZVAV/MxKYar
-	2t9piYXgQOPrHnk7EyOMkGGya0Ct/wDKjUdmlRgTIU3rz0ZhUPy2sqzFFMDoNN//f5W
-	C2yw4vyPhOIC2zrrLvbdO5fHXcxi57Bsb3n+vJeM=
-Received: by mx.zohomail.com with SMTPS id 1773768138648743.3558401817487;
-	Tue, 17 Mar 2026 10:22:18 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id C4470180085; Tue, 17 Mar 2026 18:22:14 +0100 (CET)
-Date: Tue, 17 Mar 2026 18:22:14 +0100
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
-Subject: Re: [PATCH 1/2] dt-bindings: ASoC: rockchip: Add compatible for
- RK3576 SPDIF
-Message-ID: <abmNLwjx4FJ5N_Px@venus>
-References: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
- <20260316-rk3576-spdif-v1-1-acb75088b560@collabora.com>
- <50e2f262-6fc8-429d-af0d-5f9d1a0d6ab0@sirena.org.uk>
+	id 1w2YEE-00000006wd1-44VM
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Mar 2026 17:29:16 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 30D084E425F5;
+	Tue, 17 Mar 2026 17:29:13 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id EE1775FC9A;
+	Tue, 17 Mar 2026 17:29:12 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E2CF910450651;
+	Tue, 17 Mar 2026 18:29:01 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1773768551; h=from:subject:date:message-id:to:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=cRVoOWLPKWuFETrlnWJFPl+sm1jQGU97ogkoEGJ4v04=;
+	b=MKT7yYScc1mVn4B8hX7dotZvhbNzUqQvmXPtROurRqhVBUsCMYfakCzc0J6KJe1ebBJLin
+	HDLgh9oyBoxLdEqyPMd0S0MtdwbDX208vMjJrQlhulkRFGIss/a4di4cSkwBw5ageIDUnY
+	JAojp3Yjj5rdhgjbWc6wRK1giBdKK+uc/PIUYzKILfgxZiGcfIkGZpim8Yrhu0iEhd91TN
+	kBaz0woJtsdIBE11VQGnpUOMfDErE0nyc2QQYVxJnyZ42msmsKHcIzs9i3ho4o62HllK3u
+	G1I5cGBFUYcbP2LEwVHUMl4UwQYLmSqwcyKxv/t15Wr4bpYzLFZEgPMWwH6QrA==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>, 
+ Detlev Casanova <detlev.casanova@collabora.com>, 
+ Douglas Anderson <dianders@chromium.org>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Sugar Zhang <sugar.zhang@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, 
+ dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Christian Hewitt <christianshewitt@gmail.com>
+In-Reply-To: <20260228112822.4056354-1-christianshewitt@gmail.com>
+References: <20260228112822.4056354-1-christianshewitt@gmail.com>
+Subject: Re: [PATCH v2] drm/bridge: dw-hdmi-qp: fix multi-channel audio
+ output
+Message-Id: <177376854105.1901972.15709099301544999005.b4-ty@bootlin.com>
+Date: Tue, 17 Mar 2026 18:29:01 +0100
 MIME-Version: 1.0
-In-Reply-To: <50e2f262-6fc8-429d-af0d-5f9d1a0d6ab0@sirena.org.uk>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.2.1.1.4.3/273.758.55
-X-ZohoMailClient: External
+X-Mailer: b4 0.14.3
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_102236_928473_B3E154EC 
-X-CRM114-Status: GOOD (  16.57  )
+X-CRM114-CacheID: sfid-20260317_102915_146119_C1121A24 
+X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,80 +84,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3476625772353488206=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3476625772353488206==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gu3fveioy3pqqyrr"
-Content-Disposition: inline
+On Sat, 28 Feb 2026 11:28:22 +0000, Christian Hewitt wrote:
+> Channel Allocation (PB4) and Level Shift Information (PB5) are
+> configured with values from PB1 and PB2 due to the wrong offset
+> being used. This results in missing audio channels or incorrect
+> speaker placement when playing multi-channel audio.
+> 
+> Use the correct offset to fix multi-channel audio output.
+> 
+> [...]
 
+Applied, thanks!
 
---gu3fveioy3pqqyrr
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 1/2] dt-bindings: ASoC: rockchip: Add compatible for
- RK3576 SPDIF
-MIME-Version: 1.0
+[1/1] drm/bridge: dw-hdmi-qp: fix multi-channel audio output
+      commit: cffcb42c57686e9a801dfcf37a3d0c62e51c1c3e
 
-Hello Mark,
+Best regards,
+-- 
+Luca Ceresoli <luca.ceresoli@bootlin.com>
 
-On Mon, Mar 16, 2026 at 07:44:45PM +0000, Mark Brown wrote:
-> On Mon, Mar 16, 2026 at 07:23:00PM +0100, Sebastian Reichel wrote:
-> > Add a compatible string for SPDIF on RK3576, which is similar to the
-> > one on RK3568.
->=20
-> Please submit patches using subject lines reflecting the style for the
-> subsystem, this makes it easier for people to identify relevant patches.
-> Look at what existing commits in the area you're changing are doing and
-> make sure your subject lines visually resemble what they're doing.
-> There's no need to resubmit to fix this alone.
-
-Sorry, my fault. I used the same prefix as the one adding RK3588
-support to the binding and forgot about the different preference for
-sound DT bindings. I would have prepared a v2, but I see you already
-picked it up.
-
-Greetings,
-
--- Sebastian
-
---gu3fveioy3pqqyrr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmm5jcYACgkQ2O7X88g7
-+ppwyQ/8CCHnmOnwX5ap5MlSA3+bsCIwDhlkCQ4FXecT6EJQRYR9HlcBeaBOM73b
-AgVqwYCRnHJlLgpGFiExZAstwSiUIAUT7adyut/MmouWOBU8uUq1l7csVSC5oT9m
-24nPCEVL1Oj8iGsrp6mmQCVkqBqjOf+RNskYwq2pPfP2+5mYIX0CxzubyK77zECS
-RYaLASXlMWpoGUj2ITo2PQZJYcndtv3rTnOv9SjnGSG+hkB1wBeet/EQmq8ulE7G
-dYvibi1c5YHhxkNM3LcWjIKcUU1b3AAbGf9htlDZpjQq3pOKWglSyeuECHm+7z+P
-4dLCVC94hV8FptcNU9Iq/r0qCRuPBu1nW+6IyIIe11xYPR6Iyk6tbWGwG42FBLvK
-amEXxHw9gGn6tBSfzDVa7nenglg/jBrVqOKo7npN1110X16PzRcTsO0/471ClYFN
-9ZSg0vbU1fbI/OdGkpYsBGRsXVE42vASfz/rEI61syr9sC8o+4muWtHXuonkVrFS
-l1+svdDjUcdnu4dknyWkXhUWSh/vBp1Mtjtiotp6B4ZhjC/ds8CmKdCaf8NqX3j4
-DzEkYmM04XagLXR/TuPcieDxJ9HwsA5pZV5901DD8kT7rmLg5jiNc6xcODILO4lL
-Uqc9W4Fue3D4LMq/aH0qxJYriLxJBKrss3N/+bH+e21GmoiEvtQ=
-=Eg5n
------END PGP SIGNATURE-----
-
---gu3fveioy3pqqyrr--
-
-
---===============3476625772353488206==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3476625772353488206==--
-
