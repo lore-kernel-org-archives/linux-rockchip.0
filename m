@@ -4,59 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63A0BFD8769
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 13:20:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EA16FD8769
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 13:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mmf3NnIudESwfmDNJfyUcEuqja+EW1VV2R8/E1N0Uxs=; b=n47Bce/KEhZldf5tPCWLwKI3I6
-	OAUI9ABmM2sKfn18lruDsWz2U/zz8kH3jV2MJPTo0Pqb+P7wH68gatPk9vGDiaJvyyrsddCA+S7RF
-	RfF8RP6Zg8Y7fIGSKDlmzHuWHxR6caJIV7inuVy2Gk+9Cw3S/eD+LT6miArZP2AJXGAtlWJ99iwOn
-	ikNyFNL+99eRId9NhzhnQGDGe+u5ga1tVjTqfu5QlzK36xE+BIo2ArF5oFsKrKeCtiZ1Kg6w7avv9
-	/NA/EsYyIGDEvNDCgl3T81QSuimYmRZEO1gXQCUu6jcu3f1NSCjzajVo7WNpsN04jJocHc9tkb17Q
-	TSPuG8iQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=CVvLydUb5aG71IXwXZvvKdLS+ypqPoAinveA3uBD3xU=; b=BIQ3W57MAackDW
+	kSqgvEzG3fpe1GqMnZRDQcxgDgra4Wb//W4a0zD46iup8Ctv5TgRyJ4IVakcFV9DmPWa/QxvrGy9G
+	vBciXUcIPmflqsEH6ddifKleH/2ujiQPehvwXuTVU2CrST3HP1ZH+5Oql2XZ4CJWzgrbWFu0EIxGq
+	8QrGPoE8XRvsRUMfWF47Xukxu5prsHascfny1YCkj9xulantOpXezsL8x9qbaA/uYoVYraRjnuym8
+	T8v5HHljhDkkLqjKAuxi+1U16+MDtDAKF7n+3rBC2QhaWHGdo9ccwQpcaCuXwmbEFmuTCPixs+EBs
+	iiYRmn8iQhcUhwlerU8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2UL0-00000006PNa-0dpy;
-	Tue, 17 Mar 2026 13:19:58 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2UMT-00000006Pio-2Ksy;
+	Tue, 17 Mar 2026 13:21:29 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2UKx-00000006PMj-2nVj;
-	Tue, 17 Mar 2026 13:19:55 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E7BE660018;
-	Tue, 17 Mar 2026 13:19:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A61E9C4CEF7;
-	Tue, 17 Mar 2026 13:19:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773753593;
-	bh=17QQxtRUtaf7KEtmNuQbCZyqj8LsLetQhwKYrcsm9Tg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=ryqgogP1Js25YVHvobHnOKBl5MYdxOSD2aOiI1tf6rJQER5WihsK9Uq3jfo6Qlf2b
-	 BtONs2A6D54IA4DNEv1Sy0CY6z9gO4p20SThPPkHcwNdCWn5jr22BFpMDOYrAoLSbq
-	 sgZTC8u9xZQu4B/IWVM/GrLwf4dd+exti7RlPqEl4f4czsv51D3od0djhhjvtRmmTC
-	 WYdwB8SCN+QNUbefFUPZOXTmnR7msjPL2f9KXr88ikHvO9/N48Zi3PI1IevuuXxGuW
-	 Jg7rPyI7R0lNjmB0khjEhzaAAgXytb9Tc7RPeU0j3kdsOWVHghNIyu8gn0Kf3R8YE6
-	 65mGvnUDWFheQ==
-Date: Tue, 17 Mar 2026 13:19:48 +0000
-From: Mark Brown <broonie@kernel.org>
-To: Pei Xiao <xiaopei01@kylinos.cn>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v3 01/17] spi: axiado: Use helper function
- devm_clk_get_enabled()
-Message-ID: <00540689-fbc5-49cf-b185-5af372f7ef0d@sirena.org.uk>
-References: <cover.1773733017.git.xiaopei01@kylinos.cn>
- <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
+	id 1w2UMQ-00000006PhM-1R5p;
+	Tue, 17 Mar 2026 13:21:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1773753682;
+	bh=hTN1TNlOZL26JxiO/N2w3PZRC4OyzRSiRbthnRGcI0I=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=e3Wo5w1g48wmRF4VftZVxkCP6WO42t2NEdAxgAgcbg73QSnJPPXkHZXTmPnrIEwGM
+	 g4EfshV3wE3ZbE3QLdmmaTGH5N2hY/gpqcfiAAs9IbvJ6CUE+59IrqS6g3oO0YbC/A
+	 FwdqhZBos8+ItXxhieyZ6z6IOlsXuftcfHXIR6rVYdklpDI0LrrhQFQiA259+QO9up
+	 fzB5FZbYlOJV7PTs5YwhxwI1gFwoOvxAxI18eVV83ixh9Z/wA1/E58JupvozFswG9C
+	 LXQazlhooyzrZ/DdRnNn+7CWEJr1uBIEzd/3qGEdHc1RfNPagIwLMS248CGhO4KoHY
+	 6OMIzOpw/1D/A==
+Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: mriesch)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 68CC517E0E3F;
+	Tue, 17 Mar 2026 14:21:21 +0100 (CET)
+Message-ID: <e894fe10-3780-465a-984d-01f5e8f4c97e@collabora.com>
+Date: Tue, 17 Mar 2026 14:21:20 +0100
 MIME-Version: 1.0
-In-Reply-To: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
-X-Cookie: Must be over 18.
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 3/9] media: rockchip: rkcif: add support for rk3588
+ vicap mipi capture
+To: Mehdi Djait <mehdi.djait@linux.intel.com>
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Kever Yang <kever.yang@rock-chips.com>,
+ Jagan Teki <jagan@amarulasolutions.com>,
+ =?UTF-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?=
+ <mai.kuznetsov.misha@gmail.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>,
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+ Collabora Kernel Team <kernel@collabora.com>,
+ Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
+ <20250430-rk3588-vicap-v2-3-77de5ee9048e@collabora.com>
+ <ablRBViDR996euua@mdjait-mobl>
+Content-Language: en-US
+From: Michael Riesch <michael.riesch@collabora.com>
+In-Reply-To: <ablRBViDR996euua@mdjait-mobl>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260317_062126_570898_7685D0E6 
+X-CRM114-Status: GOOD (  15.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,57 +84,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3174974584087821483=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Mehdi,
 
---===============3174974584087821483==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="8+YRHFs8YF4SBCDe"
-Content-Disposition: inline
+On 3/17/26 14:08, Mehdi Djait wrote:
+> Hi Michael,
+> 
+> Thank you for this nice patch!
+> 
+> On Tue, Mar 17, 2026 at 10:32:21AM +0100, Michael Riesch via B4 Relay wrote:
+>> From: Michael Riesch <michael.riesch@collabora.com>
+>>
+>> The RK3588 Video Capture (VICAP) unit features a Digital Video Port
+>> (DVP) and six MIPI CSI-2 capture interfaces. Add initial support
+>> for this variant to the rkcif driver and enable the MIPI CSI-2
+>> capture interfaces.
+>>
+>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> 
+> [...]
+> 
+>>  static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
+>>  					      unsigned int index)
+>>  {
+>> @@ -631,6 +765,8 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+>>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL1, ctrl1);
+>>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, ctrl0);
+>>  
+>> +	rkcif_mipi_write(interface, RKCIF_MIPI_CTRL, RKCIF_MIPI_CTRL_CAP_EN);
+>> +
+> 
+> while this is the correct solution for rk3588, for the rk3568 vicap this
+> will write 0x1 to the VICAP_MIPI_CTRL : 0x00A0 which will enable the water line.
+
+nice catch ;-) However, the TRM (at least my version) claims that this
+bit has a reset value of 0x1, so the bit in question should be already
+set in the first place. Thus I decided to *not* make variant specific
+code paths.
+
+Do you see problems in your setup?
+
+> 
+> --
+> Kind Regards
+> Mehdi Djait
+
+Best regards,
+Michael
 
 
---8+YRHFs8YF4SBCDe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-
-On Tue, Mar 17, 2026 at 03:41:43PM +0800, Pei Xiao wrote:
-> devm_clk_get() and clk_prepare_enable() can now be replaced by
-> devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
-> longer necessary to unprepare and disable the clocks explicitly.
-> Simplify code.
-
-This doens't apply against current code, please check and resend.
-
---8+YRHFs8YF4SBCDe
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmm5VPQACgkQJNaLcl1U
-h9BDXgf9F2bMcNxWFiGlImGG2lAZ6+rhIz0gb1xd8L/zXFcj49GbT66gTFF+vs6Z
-nJhYnwuUnf46hnhc583pZ39MeS/psE2kjIaTNiGva4NLDwWkiYkn79oJk9zepDF0
-9HRb3mjyaDDPQtfCgnrkTb2VZObD/41CWBtZ8x5JxjFwHkIG776RlhYJUU2y2myN
-oAvCWPJddLcAOZapamPyu/LZvMwFfhWgP4mAr81G/th9dO45ELAiKqMj33zN4VzV
-yJ4r0AY9ZSXuW+NmdztaukKEKWwKGDeT5I3vRWqSJ2EvkvODgAw209d76768VQ+G
-JJtidlXADpZe7vD4DCReLGZERU0QQw==
-=AabK
------END PGP SIGNATURE-----
-
---8+YRHFs8YF4SBCDe--
-
-
---===============3174974584087821483==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3174974584087821483==--
-
