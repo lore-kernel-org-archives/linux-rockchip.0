@@ -4,55 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56F5FED9E3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 15:15:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B1C9FED9EA
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 16:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Subject:
+	Message-Id:Date:Mime-Version:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qv0O9f/uuSH08iG/Lg/y+FXTLE4Rcx5wEFMh9UyFIGM=; b=r+iNNN6n0Sr1UD
-	EYctPljOz/BgmOxtLUvYkO2KQ/8FRIp2qvIavW+53PRhcQLvIsVlGd4rXce4FVDionpj7rbZjgs9K
-	0AE1q92VOgpvsvqHtA6YW0pgGF+D3Dcqqbx4LxpneNBV9U6A20N1QGL4NnR9lttFOYoWfK4792Q4N
-	jqxi1MJUg5Lt7OS3o3lF0WTU9mk32u5tABXEmQmLXP1loS7oUc86ThgxuYc63DFUEwsf9mODXV2Ev
-	pPcyie3pEQ0I507wpl0Y8NhzNMJx/lZHauN4PnOkIjSFTjjkMTuNax7oX7t0HmNDJ++mJ179MY2xW
-	kReVvImCpuZKCNQYW8tw==;
+	List-Owner; bh=vrRjVR7boAlTDa+/1NwlsZ+dJz8YgwQNqxj2E0mGcqY=; b=AVwkDoq8hSDTqi
+	vE7iymItKt5szS0CnCjJHh1oZGhlGnYD5iBP9jAPAEpKwsSnUGpqFAl1q9UVPRXdIoKTjGCOOPrt3
+	TBc0ihrX+SNpZWAhQessyMFT/gEt5C9YpyOJrZtcfv2+X9la95wdZrkL4i8ZOaMDQkEoYKotXT9iK
+	CZ/txIXcdWXppBIRELHMJXJ7TnewmLVONO7HkjB7R1xAU7/1G9+G2ztn0o7bv5nujYDBZyTxYK9GB
+	Kl6HqXiNoH80VjTUz6n1qn59nWyogyvLWjigx9FaWrJ5i1qHrAM3JrqEo8vik/m2zJSrmyq726uqV
+	rrez/hvC0kTl8cJZr9uA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2W8I-00000006hpi-10D3;
-	Tue, 17 Mar 2026 15:14:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w2X5r-00000006np2-1c6R;
+	Tue, 17 Mar 2026 16:16:31 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2W8F-00000006hon-1aPx;
-	Tue, 17 Mar 2026 15:14:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=4qqIO5Nq4HZXMqx40ONnhQAaxlGohVZ2byEsaKtpwVE=; b=aE6K6iBT+96RgF/AXkjeTIg7fI
-	jlo6J/tjurPYMVRpNDnbGHBIADEYLG82kIiLADARaE4f7JgkQwuswrfvLaqqr7NtHHOCIZvJhIayv
-	aWwdrfzo8wD+Qcs6NqgaPI/WOHwK89r1ko1FRqErJsJY9ZSMddQLK9hPC11feftENz+iQK3yPbQoS
-	gaZfBJLzT8F7D+u5R84T+2tAFtTvO4XssjWwCxJcWkFoUQAChSJXhW0hcQSy2lVqQKzpuRaZVoVv8
-	buG8FU/pxaTAE3L1mMLOx1xGWxBKJuB0jvcMfLSSPsRZB8OljdSHF9stY6s0LPCywIsQ2BZiCtQ6l
-	CvCBrOLw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: "Rafael J. Wysocki" <rafael@kernel.org>,
- Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
- Lukasz Luba <lukasz.luba@arm.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: Re: [PATCH] thermal/drivers/rockchip: Shut up eFuse prober defer warning
-Date: Tue, 17 Mar 2026 16:14:45 +0100
-Message-ID: <3330199.5fSG56mABF@phil>
-In-Reply-To: <20260317-rockchip-thermal-trim-warning-v1-1-01bc4bda75e9@collabora.com>
-References: <20260317-rockchip-thermal-trim-warning-v1-1-01bc4bda75e9@collabora.com>
-MIME-Version: 1.0
+	id 1w2X5n-00000006nnt-3G4u
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Mar 2026 16:16:29 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 7151E1A2E05;
+	Tue, 17 Mar 2026 16:16:23 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 3F07A5FC9A;
+	Tue, 17 Mar 2026 16:16:23 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 609F11045063F;
+	Tue, 17 Mar 2026 17:16:12 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1773764181; h=from:subject:date:message-id:to:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=s4qSyYHl1wcr5KNT4MVUGisOp5HFLKoqkr7jcvtKlyU=;
+	b=nTJI506afqiFlLXgatgefe0YsP8Hc/2YEM1eHvyL5qUoe7OEtPw0Z3AB1SgLUJHO3HD/0Z
+	Uxf6dbXXiz7nzI2Gb1UFgl8YO1KDVY6vddAl8eryJPENTSIQk6gqZVxjthPFbT22exYImF
+	pGuhTyH7dpAFEgjzCSX90+icrsBQBFOeIG1NsCTdRGYG6wfuR8h4FI+cWs52mJwrNvRQgf
+	cdxgTPJivgW2m4WV0tzvpOyTDI3niSyowPMJGEHNgnv4v0PBXk+C8zdkuRVwHWtyBY5Hp1
+	dQam8tn6+OINwIcZbzf9nw+V+UOEBzzjffGO+CH9Cy7E2Fg5gq2X9SyZN1M1fg==
+Mime-Version: 1.0
+Date: Tue, 17 Mar 2026 17:16:11 +0100
+Message-Id: <DH56X74P9GC9.1O123S92J60RG@bootlin.com>
+Subject: Re: [PATCH v2] drm/bridge: dw-hdmi-qp: fix multi-channel audio
+ output
+To: "Christian Hewitt" <christianshewitt@gmail.com>, "Andrzej Hajda"
+ <andrzej.hajda@intel.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Robert Foss" <rfoss@kernel.org>, "Laurent Pinchart"
+ <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman" <jonas@kwiboo.se>,
+ "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Dmitry Baryshkov"
+ <dmitry.baryshkov@oss.qualcomm.com>, "Cristian Ciocaltea"
+ <cristian.ciocaltea@collabora.com>, "Detlev Casanova"
+ <detlev.casanova@collabora.com>, "Douglas Anderson"
+ <dianders@chromium.org>, "Andy Yan" <andy.yan@rock-chips.com>, "Sugar
+ Zhang" <sugar.zhang@rock-chips.com>, "Heiko Stuebner" <heiko@sntech.de>,
+ <dri-devel@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
+ <linux-kernel@vger.kernel.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.20.1
+References: <20260228112822.4056354-1-christianshewitt@gmail.com>
+In-Reply-To: <20260228112822.4056354-1-christianshewitt@gmail.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_081455_475259_103DF7A3 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20260317_091627_965578_8B4EF330 
+X-CRM114-Status: UNSURE (   8.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,36 +84,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRGllbnN0YWcsIDE3LiBNw6RyeiAyMDI2LCAxNTozMTozMCBNaXR0ZWxldXJvcMOkaXNjaGUg
-Tm9ybWFsemVpdCBzY2hyaWViIFNlYmFzdGlhbiBSZWljaGVsOgo+IFNodXQgdXAgdGhlIGZvbGxv
-d2luZyBtZXNzYWdlIHByaW50ZWQgYXQgZXJyb3IgbGV2ZWwgb24gQXJtU29tIFNpZ2U1Ogo+IAo+
-IHJvY2tjaGlwLXRoZXJtYWwgMmFlNzAwMDAudHNhZGM6IGZhaWxlZCByZWFkaW5nIHRyaW0gb2Yg
-c2Vuc29yIDA6IC1FUFJPQkVfREVGRVIKPiAKPiBGaXhlczogYWUzMzJlYzAwMDlkICgidGhlcm1h
-bC9kcml2ZXJzL3JvY2tjaGlwOiBTdXBwb3J0IHJlYWRpbmcgdHJpbSB2YWx1ZXMgZnJvbSBPVFAi
-KQo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBj
-b2xsYWJvcmEuY29tPgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
-ZGU+Cgo+IC0tLQo+ICBkcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIHwgMyArLS0K
-PiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRp
-ZmYgLS1naXQgYS9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIGIvZHJpdmVycy90
-aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+IGluZGV4IGM0OWRkZjcwZjg2ZS4uMmE0MDMzOWRl
-MGQwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPiAr
-KysgYi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4gQEAgLTE2MzgsOCArMTYz
-OCw3IEBAIHJvY2tjaGlwX3RoZXJtYWxfcmVnaXN0ZXJfc2Vuc29yKHN0cnVjdCBwbGF0Zm9ybV9k
-ZXZpY2UgKnBkZXYsCj4gIAlpZiAodHNhZGMtPmdldF90cmltX2NvZGUgJiYgc2Vuc29yLT5vZl9u
-b2RlKSB7Cj4gIAkJZXJyb3IgPSByb2NrY2hpcF9nZXRfZWZ1c2VfdmFsdWUoc2Vuc29yLT5vZl9u
-b2RlLCAidHJpbSIsICZ0cmltKTsKPiAgCQlpZiAoZXJyb3IgPCAwICYmIGVycm9yICE9IC1FTk9F
-TlQpIHsKPiAtCQkJZGV2X2VycihkZXYsICJmYWlsZWQgcmVhZGluZyB0cmltIG9mIHNlbnNvciAl
-ZDogJXBlXG4iLAo+IC0JCQkJaWQsIEVSUl9QVFIoZXJyb3IpKTsKPiArCQkJZGV2X2Vycl9wcm9i
-ZShkZXYsIGVycm9yLCAiZmFpbGVkIHJlYWRpbmcgdHJpbSBvZiBzZW5zb3IgJWRcbiIsIGlkKTsK
-PiAgCQkJcmV0dXJuIGVycm9yOwo+ICAJCX0KPiAgCQlpZiAodHJpbSkgewo+IAo+IC0tLQo+IGJh
-c2UtY29tbWl0OiA2ZGUyM2Y4MWE1ZTA4YmU4ZmJmNWU4ZDdlOWZlYmM3MmE1YjVmMjdmCj4gY2hh
-bmdlLWlkOiAyMDI2MDMxNy1yb2NrY2hpcC10aGVybWFsLXRyaW0td2FybmluZy1jZDAwNzJhYTJm
-NDYKPiAKPiBCZXN0IHJlZ2FyZHMsCj4gCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hello Christian,
+
+On Sat Feb 28, 2026 at 12:28 PM CET, Christian Hewitt wrote:
+> From: Jonas Karlman <jonas@kwiboo.se>
+>
+> Channel Allocation (PB4) and Level Shift Information (PB5) are
+> configured with values from PB1 and PB2 due to the wrong offset
+> being used. This results in missing audio channels or incorrect
+> speaker placement when playing multi-channel audio.
+>
+> Use the correct offset to fix multi-channel audio output.
+>
+> Fixes: fd0141d1a8a2 ("drm/bridge: synopsys: Add audio support for dw-hdmi-qp")
+> Reported-by: Christian Hewitt <christianshewitt@gmail.com>
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Christian Hewitt <christianshewitt@gmail.com>
+> Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+
+While applying this patch to drm-mics-fixes, checkpatch complains:
+
+  -:14: WARNING:BAD_REPORTED_BY_LINK: Reported-by: should be immediately followed by Closes: with a URL to the report
+
+You can send v3 with the link, or just reply with the link and I'll take
+care of adding it to the commit message.
+
+Luca
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
