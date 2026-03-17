@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7251F3380B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 07:40:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B257F3380B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 07:42:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ay2tYmBhlHihEMI0d7oT5XQDbAf8ch0sL+R0cVZbjdk=; b=l0i3VxiE7PHcB1
-	ELZP3kuyHyJor56NYIWU0jhv/PdjuwrCPm+g6AropQjb8WwVTs6E2IqCfKTHnjelcwUuSrBADKJZJ
-	YPIj6OI7KlVidTOlRZCFsEchrw3OQj7IS8W99fnHn4Jiob8OivViN+jVrtRyRqv+4E0AD3/YZYWgg
-	OAtSliUCGJa72ZidnsknhpkTSjnmh9t0EEjZzynWJzfQ1SEo/HvXoRErA401TCUcw9nA7VIXU1Vfs
-	7H7WbXlQZhhk2cv9gpFEEZQZIiE25X/A/95nf26RDblGdPnf22JQWKkgaSM+4/ovq/B8M9cikH1m8
-	P9hCCYSN09xkEDfgkeQA==;
+	List-Owner; bh=IC32ithHKn5WnhndwITcxhyaHhUwFSIrQ2CzS8g3DI8=; b=SbL9slSXOutJTC
+	kxp9Ey9FFgXJ0Svc5s4vXk5/aRfP4ztMND02aWtNmmB4HfNZ5X7i45gHPcN5KDQZb2GBus6pJXHPi
+	owDxmveNIyVWO0ue19On9W4WHMZUmD2xnSulYBjJGgJKsEcc/T+wxIArqBsUyHAsuQgcY2PH8Zudb
+	9ZnfHVrAZWERIKIXJK2IIcJz4tF7/9Vxr9Y8g2DdGc0qRMwc5YMlqFsCCsNddEYV4I2Zab5ZZT3I/
+	ZToS7IgX2uaA90+A19oYHvgaNOtfWtfHxTDtjYgh+xpWNIaaKeeLP0yCvPEJMuxIhaH7ZFyKPUbPu
+	7jPnqqxQ5w/C+uKOiJcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P2W-00000005abs-19fM;
-	Tue, 17 Mar 2026 07:40:32 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2P4O-00000005b5J-1cHV;
+	Tue, 17 Mar 2026 07:42:28 +0000
+Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P2U-00000005abf-1TgU;
-	Tue, 17 Mar 2026 07:40:30 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C19C560103;
-	Tue, 17 Mar 2026 07:40:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E401FC4CEF7;
-	Tue, 17 Mar 2026 07:40:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773733229;
-	bh=HSM1mqZ60fsrIPA8vhvonH7caBlWD6pJ/37Voo8FQRU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=CXwVjQuh+z/pNt5yjO/MJnRfqXCpwmvPve+OpkL9gmp19ezPb8PIQBImoz4RV1u/K
-	 72F03OpIR5q7dHLHVMdqWE7iGqJSv/WbJ1y3uhmVRhml+MW3pvYO89ddC0xYl1mdkk
-	 VI45j0FMMlqF7vZ8KSs26reL1V7ZF2ZCmLp32iPOX4aFY1WfU+4KQgbToLD7g1ZTBe
-	 fNz1E4Dq054ALb8RcsXzu324ATDmjwmeabC8nO8we/HC9/aRQluI5WDQZvlx1ofzrE
-	 wX4FSVJT6YMeVHXILnI3zQ1q7etNMUAqV5W56WLA/rF/s7z3kUPQ2u4xUhyvY0ctnk
-	 EqI+RReBMIX+w==
-Date: Tue, 17 Mar 2026 08:40:27 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Daniele Briguglio <hello@superkali.me>
-Cc: Michael Turquette <mturquette@baylibre.com>, 
-	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Subject: Re: [PATCH 1/3] dt-bindings: clock: rockchip,rk3588-cru: add I2S
- MCLK output to IO clock IDs
-Message-ID: <20260317-maize-peacock-of-teaching-d8ab90@quoll>
-References: <20260316-rk3588-mclk-gate-grf-v1-0-66fb9a246718@superkali.me>
- <20260316-rk3588-mclk-gate-grf-v1-1-66fb9a246718@superkali.me>
+	id 1w2P4H-00000005atx-0wBz;
+	Tue, 17 Mar 2026 07:42:23 +0000
+X-UUID: cb0bbaee21d411f1a21c59e7364eecb8-20260317
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11,REQID:8ed28783-528a-49b8-b422-9e532f0e4568,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
+	ON:release,TS:0
+X-CID-META: VersionHash:89c9d04,CLOUDID:d1496f212eed61f0c89101fc49fc3b6e,BulkI
+	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
+	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: cb0bbaee21d411f1a21c59e7364eecb8-20260317
+X-User: xiaopei01@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+	(envelope-from <xiaopei01@kylinos.cn>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 209579328; Tue, 17 Mar 2026 15:42:04 +0800
+From: Pei Xiao <xiaopei01@kylinos.cn>
+To: linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	broonie@kernel.org
+Cc: Pei Xiao <xiaopei01@kylinos.cn>
+Subject: [PATCH v3 02/17] spi: bcm63xx-hsspi: Use helper function devm_clk_get_enabled()
+Date: Tue, 17 Mar 2026 15:41:44 +0800
+Message-Id: <4edc7f6b63cc8b83b2185c398256234426a3d859.1773733017.git.xiaopei01@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <cover.1773733017.git.xiaopei01@kylinos.cn>
+References: <cover.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260316-rk3588-mclk-gate-grf-v1-1-66fb9a246718@superkali.me>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260317_004221_575328_ABF01E01 
+X-CRM114-Status: GOOD (  10.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,21 +83,105 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 16, 2026 at 02:06:31PM +0100, Daniele Briguglio wrote:
-> 
-> The following gate clocks are defined:
->   - I2S0_8CH_MCLKOUT_TO_IO (bit 0)
->   - I2S1_8CH_MCLKOUT_TO_IO (bit 1)
->   - I2S2_2CH_MCLKOUT_TO_IO (bit 2)
->   - I2S3_2CH_MCLKOUT_TO_IO (bit 7)
+devm_clk_get() and clk_prepare_enable() can now be replaced by
+devm_clk_get_enabled() when driver enables the clocks. Moreover, it is no
+longer necessary to unprepare and disable the clocks explicitly.
+Simplify code.
 
-We see that in the diff. No need to repeat, because it makes your small
-change unnecessarily big. There is no benefit in writing tons of obvious text.
+Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+---
+ drivers/spi/spi-bcm63xx-hsspi.c | 46 +++++++++------------------------
+ 1 file changed, 12 insertions(+), 34 deletions(-)
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
-Best regards,
-Krzysztof
+diff --git a/drivers/spi/spi-bcm63xx-hsspi.c b/drivers/spi/spi-bcm63xx-hsspi.c
+index 612f8802e690..266eabd3715b 100644
+--- a/drivers/spi/spi-bcm63xx-hsspi.c
++++ b/drivers/spi/spi-bcm63xx-hsspi.c
+@@ -758,8 +758,7 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(regs))
+ 		return PTR_ERR(regs);
+ 
+-	clk = devm_clk_get(dev, "hsspi");
+-
++	clk = devm_clk_get_enabled(dev, "hsspi");
+ 	if (IS_ERR(clk))
+ 		return PTR_ERR(clk);
+ 
+@@ -767,41 +766,26 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(reset))
+ 		return PTR_ERR(reset);
+ 
+-	ret = clk_prepare_enable(clk);
+-	if (ret)
+-		return ret;
+-
+ 	ret = reset_control_reset(reset);
+-	if (ret) {
+-		dev_err(dev, "unable to reset device: %d\n", ret);
+-		goto out_disable_clk;
+-	}
++	if (ret)
++		return dev_err_probe(dev, ret, "unable to reset device: %d\n", ret);
+ 
+ 	rate = clk_get_rate(clk);
+ 	if (!rate) {
+-		pll_clk = devm_clk_get(dev, "pll");
+-
+-		if (IS_ERR(pll_clk)) {
+-			ret = PTR_ERR(pll_clk);
+-			goto out_disable_clk;
+-		}
+-
+-		ret = clk_prepare_enable(pll_clk);
+-		if (ret)
+-			goto out_disable_clk;
++		pll_clk = devm_clk_get_enabled(dev, "pll");
++		if (IS_ERR(pll_clk))
++			return dev_err_probe(dev, PTR_ERR(pll_clk),
++					     "failed enable pll clk\n");
+ 
+ 		rate = clk_get_rate(pll_clk);
+-		if (!rate) {
+-			ret = -EINVAL;
+-			goto out_disable_pll_clk;
+-		}
++		if (!rate)
++			return dev_err_probe(dev, -EINVAL,
++					     "failed get pll clk rate\n");
+ 	}
+ 
+ 	host = spi_alloc_host(&pdev->dev, sizeof(*bs));
+-	if (!host) {
+-		ret = -ENOMEM;
+-		goto out_disable_pll_clk;
+-	}
++	if (!host)
++		return dev_err_probe(dev, -ENOMEM, "alloc host no mem\n");
+ 
+ 	bs = spi_controller_get_devdata(host);
+ 	bs->pdev = pdev;
+@@ -887,10 +871,6 @@ static int bcm63xx_hsspi_probe(struct platform_device *pdev)
+ 	pm_runtime_disable(&pdev->dev);
+ out_put_host:
+ 	spi_controller_put(host);
+-out_disable_pll_clk:
+-	clk_disable_unprepare(pll_clk);
+-out_disable_clk:
+-	clk_disable_unprepare(clk);
+ 	return ret;
+ }
+ 
+@@ -902,8 +882,6 @@ static void bcm63xx_hsspi_remove(struct platform_device *pdev)
+ 
+ 	/* reset the hardware and block queue progress */
+ 	__raw_writel(0, bs->regs + HSSPI_INT_MASK_REG);
+-	clk_disable_unprepare(bs->pll_clk);
+-	clk_disable_unprepare(bs->clk);
+ 	sysfs_remove_group(&pdev->dev.kobj, &bcm63xx_hsspi_group);
+ }
+ 
+-- 
+2.25.1
 
 
 _______________________________________________
