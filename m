@@ -4,57 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACC4F33817
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 08:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DDDAF33820
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 09:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OE/D8P/OYiPFD/kR1IBkC7yBQ2LLPWEGMr2gGP3UWl4=; b=moauSYO/N1jMAH
-	BTf6DwDLQcnwNBA734ZxsyagQ/eawtdWHohYIqsX1KK6ZnOZ0qjsye+0/1UtIGoV0djpPZQCZYrEQ
-	NGhRawwQUSoPD+I3Ggkaj9qge3Ilbl6hQIwTVKUrERnDWkneFLdtVviMmbqQMBTiu2O1+BOgY9Mtz
-	R3mE9pUU7N8qsX66i3k8DxApe3Y7aAczqW0Zi3WkhNUfhyHwBSVrK4u3kKKPwFtERGLhfcCf+UHgo
-	RVC3iTa2Z2jWHfDCX02/3xeDNHG6DQsvVq9BuZ6VtRLs7/ee2bAC1q0VhctsXwz+//M2IO3LkT4c4
-	i6tDm0LNElWBCrQbTg2g==;
+	List-Owner; bh=ExvhamOw7DHiXq+tVSLj9LIzI8EyF5GjNmt4KIe+jo0=; b=DRxcxq9N3ibP/5
+	2a2jn4Mo/nhMhpi9tBIuJVr87t+ohbwXY7U2QsXcFDM5KQDFDQUPe8H7c9JOpU4kW6hrv6pLdg6hZ
+	+ZAidtvKxJrz0QCfScnIwMx7RSF9c2e5KS8irnMjol/dUwhGliKW6f67xHHpTAHoKxbfudeV16oFo
+	7EoMGcUkF6/y2Yn8b2K7Cl2eKtYQrNMcvRHo+/cq5EJyOjEjBCtG62x/cCP+vdxuTN2yrosQjDvOl
+	iOWMlOHWfuL3kga5qA3eX4SMUQHkHEch6qaD/I6g3/MzZy6Czdq6T2lGl1+TUo024P4rA06KY6U15
+	z1pTkjg1kDwZX6T2yTbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Q6P-00000005lGS-0HDE;
-	Tue, 17 Mar 2026 08:48:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w2QN5-00000005muw-2Blc;
+	Tue, 17 Mar 2026 09:05:51 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Q6M-00000005lFZ-0DaR;
-	Tue, 17 Mar 2026 08:48:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id C478A4391D;
-	Tue, 17 Mar 2026 08:48:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 212EAC4CEF7;
-	Tue, 17 Mar 2026 08:48:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773737312;
-	bh=tDo9OmIfiT5G3x5H5qI/bsN8tjRVgdhgQfHqmc1A6Hs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=laEyObRactQ5CBD7PtTv3zIoevfgiUwGfSazVh/UIZI5QYKl8MTU5/Tvrpdi+K7Pj
-	 cc6BqNwaelGiGBLdCgFqGsxkVUfd8AqIUsxmYMBYr2DRvgOook17Un2v0V5EL+dLCQ
-	 ftlGMlakXdzZPMREs013dieOJ/cMIxvA6fL0wFDarokubAE/IaTfFmZSupSpKI6nw/
-	 w8FEU8iJOakGe4TSTKJWz++Q0DMeAwl877ANPlGrlM6JtKBdhBvDq+v+4xb3UKKY+e
-	 ofViXdFqoLcPZu0RRRuiCAFW1kZNXQCcUadwRPMDHaKqVtSXHCU8uQWKuTEUhFBO4K
-	 KTM8wnPTdOh7w==
-Date: Tue, 17 Mar 2026 09:48:30 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: arm@kernel.org, soc@kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [GIT PULL] Rockchip dts64 changes for 7.1 #1
-Message-ID: <20260317-impetuous-attentive-penguin-43a503@quoll>
-References: <13966995.uLZWGnKmhe@phil>
+	id 1w2QN0-00000005muA-1FM6;
+	Tue, 17 Mar 2026 09:05:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=7BAE8LjeF83jHd4SQwSadRgJd4yWJH8g5djeZ7lRo2k=; b=jdfOhEaoB2ew3o9mowKIzPE6yH
+	amCO8fSi7sAl98aq+9/WYxoYuuyTuptV7QUEupijM3S6G5CnXIvTY0CZJHE0+h5weDoto2lZKK1YF
+	3VIbKT4tgYShg+prxHVl1c/cdPU6xIa/WqkUQ/Fh+noU8C2AcFbBphPToLJQAKQYJMEMoPuc4XewN
+	DtDIQsYbxRrkidOvBWMwz3fD5tg4ztGFAzanyucsboQZ/iAHAYJp81quKyyXaSwQ016oF0Qa8cSCw
+	jfRVxDcik+T4xzaKGYru2KG63pAHCCAxPPNhX+TcMbgBcGlpeFk3G3825dCU8pFHO47Q8CjMYeHis
+	JOopmjuA==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: arm@kernel.org, soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: Re: [GIT PULL] Rockchip dts fixes for 7.0 #1
+Date: Tue, 17 Mar 2026 10:05:39 +0100
+Message-ID: <10817796.nUPlyArG6x@phil>
+In-Reply-To: <20260317-clever-flat-wolverine-313a4c@quoll>
+References: <5055064.GXAFRqVoOG@phil> <20260317-clever-flat-wolverine-313a4c@quoll>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <13966995.uLZWGnKmhe@phil>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_014834_112096_6F68A0A1 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20260317_020546_399046_A60727F3 
+X-CRM114-Status: GOOD (  23.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,53 +59,68 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat, Mar 14, 2026 at 07:45:34PM +0100, Heiko Stuebner wrote:
-> Hi soc maintainers,
-> 
-> please find below Rockchip DT changes for the merge-window for 7.1 .
-> 
-> So far only arm64 changes :-)
-> 
-> 
-> Please pull.
-> Thanks
-> Heiko
-> 
-> 
-> The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
-> 
->   Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
-> 
-> are available in the Git repository at:
-> 
->   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-dts64-1
-
-Next analysis reports:
-
-Days in linux-next:
-----------------------------------------
- 1 | + (1)
- 2 |
- 3 |
- 4 | + (1)
-
-Please keep changes in next for at least few releases, in case of
-development pulls. Allow community to actually test your code before you
-send it to upstream maintainer. We are early in the cycle, so there is
-no need to rush changes which were almost not in next.
-
-I will leave pull for later (not reviewed yet).
-
-Best regards,
-Krzysztof
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDE3LiBNw6RyeiAyMDI2LCAwOTo0NTozMCBNaXR0ZWxldXJvcMOkaXNjaGUg
+Tm9ybWFsemVpdCBzY2hyaWViIEtyenlzenRvZiBLb3psb3dza2k6Cj4gT24gU2F0LCBNYXIgMTQs
+IDIwMjYgYXQgMDc6NDI6MzhQTSArMDEwMCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBIaSBT
+b0MgbWFpbnRhaW5lcnMsCj4gPiAKPiA+IHBsZWFzZSBmaW5kIGEgYmVsb3cgc29tZSBSb2NrY2hp
+cCBmaXhlcyBmb3IgdGhlIGN1cnJlbnQgNy4wIHJlbGVhc2UtY3ljbGUuCj4gPiBBbmQgaW4gdGhl
+IG5leHQgUFIsIGV2ZW4gb25lIGRyaXZlci1maXggdGhpcyB0aW1lLgo+ID4gCj4gPiBQbGVhc2Ug
+cHVsbAo+ID4gCj4gPiBUaGFua3MKPiA+IEhlaWtvCj4gPiAKPiA+IAo+ID4gVGhlIGZvbGxvd2lu
+ZyBjaGFuZ2VzIHNpbmNlIGNvbW1pdCA2ZGUyM2Y4MWE1ZTA4YmU4ZmJmNWU4ZDdlOWZlYmM3MmE1
+YjVmMjdmOgo+ID4gCj4gPiAgIExpbnV4IDcuMC1yYzEgKDIwMjYtMDItMjIgMTM6MTg6NTkgLTA4
+MDApCj4gPiAKPiA+IGFyZSBhdmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5IGF0Ogo+ID4g
+Cj4gPiAgIGh0dHBzOi8vZ2l0Lmtlcm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L21t
+aW5kL2xpbnV4LXJvY2tjaGlwLmdpdCB0YWdzL3Y3LjAtcm9ja2NoaXAtZHRzZml4ZXMxCj4gPiAK
+PiA+IGZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byAyZWQxMWFkMWMyYjRjMTkxY2IyZWQ2
+NzQxYmUxMjdlYjk5Zjg2MzRmOgo+ID4gCj4gPiAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBDb3Jy
+ZWN0IEpveXN0aWNrIEF4ZXMgb24gR2FtZWZvcmNlIEFjZSAoMjAyNi0wMy0xMiAyMDo1Mjo1MyAr
+MDEwMCkKPiA+IAo+ID4gLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gQSBiaWcgbnVtYmVyIG9mIGNoYW5nZXMgZml4aW5n
+IGR0LXNjaGVtYSBpc3N1ZXMgb24gdGhlIEFSTTMyIHNpZGUsCj4gPiBmaXhlcyBmb3IgdGhlIEdh
+bWVmb3JjZS1BY2UgdG8gbWFrZSB0aGUgaGFyZHdhcmUgd29yayBwcm9wZXJseQo+ID4gKGluY2x1
+ZGluZyB0aGVybWFscykgYXMgd2VsbCBhcyBmaXhpbmcgaXNzdWVzIGJvdGggb24gQmVlbGluayBB
+MSAoc3BkaWYpCj4gPiBhbmQgUGluZWJvb2sgUHJvIChXaWZpKSBieSByZXZlcnRpbmcgdGhlIGNv
+bW1pdHMgdGhhdCBjcmVhdGVkIHRoZSBpc3N1ZXMKPiA+IAo+ID4gLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQo+ID4gQ2hyaXMg
+TW9yZ2FuICgyKToKPiA+ICAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBDb3JyZWN0IEZhbiBT
+dXBwbHkgZm9yIEdhbWVmb3JjZSBBY2UKPiA+ICAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBD
+b3JyZWN0IEpveXN0aWNrIEF4ZXMgb24gR2FtZWZvcmNlIEFjZQo+ID4gCj4gPiBGYWJpbyBFc3Rl
+dmFtICgxMSk6Cj4gPiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IFJlbW92ZSByb2NrY2hpcCxn
+cmYgZnJvbSByazMyODggdHNhZGMKPiA+ICAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogTW92ZSBQ
+SFkgcmVzZXQgdG8gZXRoZXJuZXQtcGh5IG5vZGUgb24gcmszMDM2IGJvYXJkcwo+ID4gICAgICAg
+QVJNOiBkdHM6IHJvY2tjaGlwOiBGaXggUlRDIGNvbXBhdGlibGUgb24gcmszMjg4LXBoeWNvcmUt
+cmRrCj4gPiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IFVzZSBtb3VudC1tYXRyaXggb24gcmsz
+MTg4LWJxZWRpc29uMnFjCj4gPiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IFJlbW92ZSBpbnZh
+bGlkIHJlZ3VsYXRvci1wcm9wZXJ0eSBmcm9tIHJrMzI4OC12ZXlyb24KPiAKPiBOb3QgYSBmaXgu
+Cj4gCj4gPiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEZpeCB0aGUgQmx1ZXRvb3RoIG5vZGUg
+bmFtZSBvbiByazMyODgtdmV5cm9uCj4gCj4gTm90IGEgZml4LiBUaGlzIGlzIGEgcHVyZSBzdHls
+ZSBjaGFuZ2UuIEZpeGVzIGZvciBjdXJyZW50IGN5Y2xlIG1lYW5zCj4gZWl0aGVyIGltcG9ydGFu
+dCBpc3N1ZXMgYmVpbmcgZml4ZWQgb3IgZXJyb3JzIGludHJvZHVjZWQgaW4gY3VycmVudAo+IGN5
+Y2xlLgo+IAo+IENoYW5naW5nIHN0eWxlIGZyb20gb25lIHRvIGFub3RoZXIgaXMgbm90IGEgZml4
+Lgo+IAo+ID4gICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBGaXggdGhlIHRyYWNrcGFkIHN1cHBs
+eSBvbiByazMyODgtdmV5cm9uLWplcnJ5Cj4gPiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEFk
+ZCBtaXNzaW5nIHRoZSB0b3VjaHNjcmVlbiBpbnRlcnJ1cHQgb24gcmszMjg4LXBoeWNvcmUtcmRr
+Cj4gPiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEZpeCBSVEMgZGVzY3JpcHRpb24gb24gcmsz
+Mjg4LWZpcmVmbHktcmVsb2FkCj4gCj4gTm90IGEgZml4LiBTdHlsZSBvZiBub2RlIG5hbWUgaXMg
+bm90IGEgYnVnLCBvdGhlcndpc2UgZGVzY3JpYmUgdXNlcgo+IHZpc2libGUgKG5vdCAiaW50ZXJu
+YWwgdG9vbHMiIHZpc2libGUpIGltcGFjdC4KPiAKPiA+ICAgICAgIEFSTTogZHRzOiByb2NrY2hp
+cDogRml4IEdNQUMgZGVzY3JpcHRpb24gbiBSSzMyODggYm9hcmRzCj4gPiAgICAgICBBUk06IGR0
+czogcm9ja2NoaXA6IEZpeCBMRUQgbm9kZSBuYW1lcyBvbiByazMyODgtcGh5Y29yZS1yZGsKPiAK
+PiBTZXZlcmFsIG90aGVyIGFyZSBxdWVzdGlvbmFibGUgYXMgd2VsbCwgc2luY2UgdGhleSB3ZXJl
+IGluIERUUyBmb3IgbG9uZwo+IHRpbWUuIFBsZWFzZSBhbHNvIHJlYWQgTGludXMnIGV4cGxhbmF0
+aW9uIGhlcmUgZnJvbSBzb21lIHRpbWUgYWdvIC0gaWYKPiB0aGUgaXNzdWUgaXMgZm9yIGxvbmcg
+dGltZSBhbmQgbm8gb25lIGNhcmVkLCB0aGVuIGNoYW5naW5nIGl0IGlzIGEgbm9ybWFsCj4gZGV2
+ZWxvcG1lbnQuCj4gCj4gU2V2ZXJhbCBjaGFuZ2VkIHBpZWNlcyBoZXJlIGxvb2sgbGlrZSAzIG9y
+IG1vcmUgeWVhcnMgb2xkLCBzbyBkb2VzIG5vdAo+IGZpdCBjcml0ZXJpYSBvZiBjdXJyZW50IGN5
+Y2xlIGZpeCBhdCBhbGwuCj4gCj4gUGxlYXNlIHNwbGl0IHRoZSBwdWxsLgoKSSBkbyByZW1lbWJl
+ciBpbiB0aGUgcGFzdCwgY2hhbmdlcyB0aGF0IHJlZHVjZWQgdGhlIG51bWJlciBvZgpkdC1jaGVj
+a2VyIGVycm9ycyB3ZXJlIGNvbnNpZGVyZWQgZml4ZXMsIGJ1dCBpdCBzZWVtcyB0aGF0IGhhcwpj
+aGFuZ2VkLCBzbyBJJ2xsIHNwbGl0IHRoYXQgYWNjb3JkaW5nbHkuCgoKSGVpa28KCgoKCl9fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlw
+IG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9s
+aXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
