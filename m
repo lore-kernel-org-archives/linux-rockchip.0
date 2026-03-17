@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A413FED9EF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 17:08:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01AB4FED9F1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 17:22:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dP/g2s5pdqz1UXDb8kO8FzpO7UIhw+6fjmm6rFNCS3Y=; b=sqfK41XqtVcxYc
-	Fonh9xVC3rjVO/Y74q9XW84P2U+TfEyVUipLc1OKD+di+vH9qY5lPuidY++AxrvUV9xFXi9l0CAFk
-	T6SbJmcDSCt16eggm6nALp6eK0XEualWdWVw5ARbF3fKkGI9j/14sCR5L0dSFUctNQ3FQSPCKQuwm
-	36CZ9MKg1kympku+2EfpJZtiYVbMcABFC8crX+RUBXHPDmroOzhNPM20K9FozPDhssHZ+pAK1W7Ml
-	HBxGf8kUQcG3FTSWVWJdpdcXDBhlD8NtTvSmnnG0PeKz+EPB9qF98iiN8A8AvEmEEjAHfghl2u0G9
-	GE9+kYsdb4OzTeWsSLZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=quBPrPum0ga4Z49L2IRhjmqjUNr0PXYRf3upIoKyiVc=; b=al1uwt4iuw0OzNMpyZKtNeQdfo
+	0uTHnf8gU039PQftY0X0dXp8ihFa/OL5dfbyUlN8oUM64F7WKQAeajkkt5mEZWk9ckvlMIyoeK+U9
+	GZoXYArvzM0X4VmCXL/FEk/A+f5Bhaa2Gj32p2ehs8HX8J6R0UFoa3qiF6T1hwQTBgiT/A37u75CI
+	EdTnbmb0GII1aFrYgA0OvIuD/n9ak3M9qdr1RLSonm1UBqO5rIfO7S6XXl3jqdF5FRltX/aXlhN6i
+	yPuj3cOIhAIJFTg5NXMfJiIzbdN2iE27T0M4v/Qv7owrTa1fUgZ0KpmiblGA4tdrwDe7DEQQ/CkNe
+	V9XBP+Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2XuI-00000006tE3-2YzJ;
-	Tue, 17 Mar 2026 17:08:38 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2Y7r-00000006vci-2RU9;
+	Tue, 17 Mar 2026 17:22:39 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2XuH-00000006tDn-0IzS;
-	Tue, 17 Mar 2026 17:08:37 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 753AA60018;
-	Tue, 17 Mar 2026 17:08:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8FE03C2BCAF;
-	Tue, 17 Mar 2026 17:08:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773767316;
-	bh=OYKACKHn9r18VVAQQYO3XCrcZvWsa6eEUXZQRmgI5C0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=rhvZZBY2U1mkFiKJSa826Kc7/gzYFZ5jEiwCXQnVS1v18/CpcQgiD8yLe10ccgZw6
-	 rJlFDbVK80uWDDmJujHFEyNr8h5sdpMmPsbx4bou7op6cEftrXfe2aI14MyVyefzlt
-	 hFlf0rFejR8e6OWjf1GEuAHpNP9Vkt9oxLGV3CWZ4Ox1fhf6QZpHKjY2lkwXFSDtlG
-	 t4ibFiC8FcvggvF2ld1UFYcQravWyOc2zuLlTAL29stP+rNb1HGzHLtW2Kl3u6YzVX
-	 jAaeF21hSn+OaQVE9dlnA3dfV1u0xT7/sLjg3EVyKaue5fLzuKpTEw9BbZZ4iRLGI8
-	 SEbfKRPG6l8Xw==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com
-In-Reply-To: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
+	id 1w2Y7o-00000006vbH-3SdQ;
+	Tue, 17 Mar 2026 17:22:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1773768141; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=HPFcjpjFhaIdcBNwj7gmuEk50vuOsqPaTQ6rCVKuI/RROM22Ng1P2I2Ep8YXaK4AvamqMxOpV+P8btcO2pfbqV6jD00WoSIL1Y+GdIFWY9NvHn2YUoImWNvtafuV3ukDMZBhVLuCwWSonuKAEhVHqEXsqDW/ZjnhSN8UY5Hz0JU=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1773768141; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=csSww+WIybtBNldf33djiUaktagQrObOaKalU3CZA8k=; 
+	b=BUCLmoZwQ2+LSfBX2hkBAYr887/eWL7DPoc5VEqkvbxA2NldzH9MWgNw2rSeHwn49uY0H0ZqoY/hKCCI1weGferJ6eHhNZa3UCrqXd6HTVNkefeLdEYVCzA6jRP4gK3+ogkmwrIzyT1v6e5lnP+M43WwSNze/mWgVg2PkSQx+Eg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773768141;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=csSww+WIybtBNldf33djiUaktagQrObOaKalU3CZA8k=;
+	b=RcVe2aKdIYXcdGrxc3GQ/hFLkfmPl0xwq29Qj1m+xoVDJ1f0kezE0ZVAV/MxKYar
+	2t9piYXgQOPrHnk7EyOMkGGya0Ct/wDKjUdmlRgTIU3rz0ZhUPy2sqzFFMDoNN//f5W
+	C2yw4vyPhOIC2zrrLvbdO5fHXcxi57Bsb3n+vJeM=
+Received: by mx.zohomail.com with SMTPS id 1773768138648743.3558401817487;
+	Tue, 17 Mar 2026 10:22:18 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id C4470180085; Tue, 17 Mar 2026 18:22:14 +0100 (CET)
+Date: Tue, 17 Mar 2026 18:22:14 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Alexey Charkov <alchark@gmail.com>, linux-sound@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, kernel@collabora.com
+Subject: Re: [PATCH 1/2] dt-bindings: ASoC: rockchip: Add compatible for
+ RK3576 SPDIF
+Message-ID: <abmNLwjx4FJ5N_Px@venus>
 References: <20260316-rk3576-spdif-v1-0-acb75088b560@collabora.com>
-Subject: Re: (subset) [PATCH 0/2] Add SPDIF support to RK3576
-Message-Id: <177375071091.66172.9619091096870411031.b4-ty@kernel.org>
-Date: Tue, 17 Mar 2026 12:31:50 +0000
+ <20260316-rk3576-spdif-v1-1-acb75088b560@collabora.com>
+ <50e2f262-6fc8-429d-af0d-5f9d1a0d6ab0@sirena.org.uk>
 MIME-Version: 1.0
-X-Mailer: b4 0.15-dev-e1b5b
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1335; i=broonie@kernel.org;
- h=from:subject:message-id; bh=OYKACKHn9r18VVAQQYO3XCrcZvWsa6eEUXZQRmgI5C0=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBpuYqQC0mSRbvylEYD8XOwmbfCGbStTFm5gcpB+
- WMc5ukRc5qJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCabmKkAAKCRAk1otyXVSH
- 0HgGB/0VtBFyeChYr02uBJH0w2HPP0KbeANerijwZkJYYAa7H7iiNfnxSOqKy32XDMYLLMFSmSh
- 9ANd6QWMUNAiM7awG7MWSMr7aUaKM0PFWlO5Guw0Z+m36wqmLuwC+f1/shA71QEKh7FDbSyXzQp
- pQGlcivQjzR0cVYGA5L0HU4fhmgMRj59s1NtA3ja6USpSwAot4tO3GKBHwIQWTz+lq2TJYwsCve
- jtLg+2dVCHiEN5CE5XaqrL5eTjNoWggtsg/z/Nf66rK2mCtFO01gBPtiAMbJpZ6Y/wiJk9j2zYl
- C3Ig1w9XCfUVoeQXyVHXKRtCjgSJvaVaJ/DUZ4PseKCiZuXw
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+In-Reply-To: <50e2f262-6fc8-429d-af0d-5f9d1a0d6ab0@sirena.org.uk>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.1.1.4.3/273.758.55
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260317_102236_928473_B3E154EC 
+X-CRM114-Status: GOOD (  16.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,51 +81,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3476625772353488206=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 Mar 2026 19:22:59 +0100, Sebastian Reichel wrote:
-> Add SPDIF support to RK3576
-> 
-> Add SPDIF support on RK3576 in preparation for Displayport audio
-> support. My expectation is that Mark picks up the DT binding via
-> his audio tree and Heiko picks up the DTS via the Rockchip tree.
-> 
-> 
-> [...]
 
-Applied to
+--===============3476625772353488206==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="gu3fveioy3pqqyrr"
+Content-Disposition: inline
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.0
 
-Thanks!
+--gu3fveioy3pqqyrr
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/2] dt-bindings: ASoC: rockchip: Add compatible for
+ RK3576 SPDIF
+MIME-Version: 1.0
 
-[1/2] dt-bindings: ASoC: rockchip: Add compatible for RK3576 SPDIF
-      https://git.kernel.org/broonie/sound/c/4eae391a8e4c
+Hello Mark,
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+On Mon, Mar 16, 2026 at 07:44:45PM +0000, Mark Brown wrote:
+> On Mon, Mar 16, 2026 at 07:23:00PM +0100, Sebastian Reichel wrote:
+> > Add a compatible string for SPDIF on RK3576, which is similar to the
+> > one on RK3568.
+>=20
+> Please submit patches using subject lines reflecting the style for the
+> subsystem, this makes it easier for people to identify relevant patches.
+> Look at what existing commits in the area you're changing are doing and
+> make sure your subject lines visually resemble what they're doing.
+> There's no need to resubmit to fix this alone.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+Sorry, my fault. I used the same prefix as the one adding RK3588
+support to the binding and forgot about the different preference for
+sound DT bindings. I would have prepared a v2, but I see you already
+picked it up.
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+Greetings,
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+-- Sebastian
 
-Thanks,
-Mark
+--gu3fveioy3pqqyrr
+Content-Type: application/pgp-signature; name="signature.asc"
 
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmm5jcYACgkQ2O7X88g7
++ppwyQ/8CCHnmOnwX5ap5MlSA3+bsCIwDhlkCQ4FXecT6EJQRYR9HlcBeaBOM73b
+AgVqwYCRnHJlLgpGFiExZAstwSiUIAUT7adyut/MmouWOBU8uUq1l7csVSC5oT9m
+24nPCEVL1Oj8iGsrp6mmQCVkqBqjOf+RNskYwq2pPfP2+5mYIX0CxzubyK77zECS
+RYaLASXlMWpoGUj2ITo2PQZJYcndtv3rTnOv9SjnGSG+hkB1wBeet/EQmq8ulE7G
+dYvibi1c5YHhxkNM3LcWjIKcUU1b3AAbGf9htlDZpjQq3pOKWglSyeuECHm+7z+P
+4dLCVC94hV8FptcNU9Iq/r0qCRuPBu1nW+6IyIIe11xYPR6Iyk6tbWGwG42FBLvK
+amEXxHw9gGn6tBSfzDVa7nenglg/jBrVqOKo7npN1110X16PzRcTsO0/471ClYFN
+9ZSg0vbU1fbI/OdGkpYsBGRsXVE42vASfz/rEI61syr9sC8o+4muWtHXuonkVrFS
+l1+svdDjUcdnu4dknyWkXhUWSh/vBp1Mtjtiotp6B4ZhjC/ds8CmKdCaf8NqX3j4
+DzEkYmM04XagLXR/TuPcieDxJ9HwsA5pZV5901DD8kT7rmLg5jiNc6xcODILO4lL
+Uqc9W4Fue3D4LMq/aH0qxJYriLxJBKrss3N/+bH+e21GmoiEvtQ=
+=Eg5n
+-----END PGP SIGNATURE-----
+
+--gu3fveioy3pqqyrr--
+
+
+--===============3476625772353488206==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3476625772353488206==--
+
