@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6067F3380B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 07:43:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72DFAF3380B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 07:43:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0KvcL/40WByJNF/vT261SMVV99EvtX3oybKpkUM1v1Q=; b=LxaObrFV3RFZps
-	8X/pbkbY0uRpbZJNB2Hcn4exUOhXCy64o3Yx1s88AoGCtnO3Bx0g8EqTwKL66PgBJkajaW5mclG/c
-	LAox9+6uv7jrENDKbkMLshF3ILRgPzby5BKKZyVlz909QpDIxBzy/dB3ncX33qtrohJOtoqFL3y3l
-	aRiZAeu5B52qycdl5WfUtyZJ29hvMYU5NkB5QSE+xV0hwmhDqMJufmfUT+X4xbttHFxF3jTaKKaPG
-	8aFlN4OsptBm7pR3Ys0IiXQsU0rNq+e/3U0SWoX5drq0dbDgPYUKjDZ2p71nfdGmLWzfvLy0Hz3x6
-	txxI00J5mUU9Pp+oQdbA==;
+	List-Owner; bh=ucIeOamoqHxTvlXccYO7b+gqP9FPnI8ohwoG/wExfLM=; b=Acb4RdfoUcjWLN
+	UtTJBOZ/WlGQWhlw5ASgs9LUDhAq2XZ2zf6nFYTiGy0Q3VecmD4JakHXjBck0MdMoPuaFYQjwVf4K
+	Di342H4awat5hO0iV8PCZEnx5NIS8N5lNFXeZGGfscrvYH1xkk/57T5Hb20rKwygSlUJYV9upoa3c
+	qCmrgY5d6kGSB//L7jN8+YFPp1QHRoSA2SOfSQ4Js2bKLICeylahM1HpBh3xxdnwUTO794k+K5gtk
+	LNEa880dkq/mKpTwahWq3xcOIbTFIbbRwGBvvxrm96UhVN84xQ3qMthu9Cm0uUQ4oCGUQp8eK6ZiQ
+	6a38b+A6snB14b3BBKDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P5h-00000005cqw-3gv1;
-	Tue, 17 Mar 2026 07:43:49 +0000
+	id 1w2P5m-00000005d0O-3yrG;
+	Tue, 17 Mar 2026 07:43:55 +0000
 Received: from mailgw.kylinos.cn ([124.126.103.232])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2P4L-00000005asb-1KuV;
-	Tue, 17 Mar 2026 07:42:26 +0000
-X-UUID: ce669e3e21d411f1a21c59e7364eecb8-20260317
+	id 1w2P4N-00000005ayU-36AH;
+	Tue, 17 Mar 2026 07:42:29 +0000
+X-UUID: cf8291b021d411f1a21c59e7364eecb8-20260317
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:0b5f35dc-abd0-4a95-b5c3-fdf9a15419d0,IP:0,U
+X-CID-O-INFO: VERSION:1.3.11,REQID:173b38bb-c69e-404a-a79c-17bf021bdeee,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
 	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:97d0cae223f660685a50af45bcee0765,BulkI
+X-CID-META: VersionHash:89c9d04,CLOUDID:c5b2ca66005b3c4a40ea1ee03de6e846,BulkI
 	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
 	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
 	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -39,12 +39,12 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: ce669e3e21d411f1a21c59e7364eecb8-20260317
+X-UUID: cf8291b021d411f1a21c59e7364eecb8-20260317
 X-User: xiaopei01@kylinos.cn
 Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
 	(envelope-from <xiaopei01@kylinos.cn>)
 	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 1171231400; Tue, 17 Mar 2026 15:42:10 +0800
+	with ESMTP id 1154852593; Tue, 17 Mar 2026 15:42:12 +0800
 From: Pei Xiao <xiaopei01@kylinos.cn>
 To: linux-spi@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
@@ -57,16 +57,16 @@ To: linux-spi@vger.kernel.org,
 	linux-stm32@st-md-mailman.stormreply.com,
 	broonie@kernel.org
 Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v3 14/17] spi: sunplus-sp7021: Use helper function devm_clk_get_enabled()
-Date: Tue, 17 Mar 2026 15:41:56 +0800
-Message-Id: <1de37e735cf714ca96f05092415f9a396aa4c157.1773733017.git.xiaopei01@kylinos.cn>
+Subject: [PATCH v3 17/17] spi: zynqmp-gqspi: Use helper function devm_clk_get_enabled()
+Date: Tue, 17 Mar 2026 15:41:59 +0800
+Message-Id: <7de0b300eb9a94631e5af8bc1d7471e62122ff85.1773733017.git.xiaopei01@kylinos.cn>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1773733017.git.xiaopei01@kylinos.cn>
 References: <cover.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_004225_715934_F6BCCECC 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20260317_004228_164875_534AD7D6 
+X-CRM114-Status: UNSURE (   9.10  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,49 +91,61 @@ Simplify code.
 
 Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
 ---
- drivers/spi/spi-sunplus-sp7021.c | 15 +--------------
- 1 file changed, 1 insertion(+), 14 deletions(-)
+ drivers/spi/spi-zynqmp-gqspi.c | 19 ++-----------------
+ 1 file changed, 2 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/spi/spi-sunplus-sp7021.c b/drivers/spi/spi-sunplus-sp7021.c
-index 789b092fe8c0..35601212fb78 100644
---- a/drivers/spi/spi-sunplus-sp7021.c
-+++ b/drivers/spi/spi-sunplus-sp7021.c
-@@ -389,11 +389,6 @@ static int sp7021_spi_target_transfer_one(struct spi_controller *ctlr, struct sp
+diff --git a/drivers/spi/spi-zynqmp-gqspi.c b/drivers/spi/spi-zynqmp-gqspi.c
+index 502fd5eccc83..a7e135607e2a 100644
+--- a/drivers/spi/spi-zynqmp-gqspi.c
++++ b/drivers/spi/spi-zynqmp-gqspi.c
+@@ -1244,26 +1244,16 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(xqspi->regs))
+ 		return PTR_ERR(xqspi->regs);
+ 
+-	xqspi->pclk = devm_clk_get(&pdev->dev, "pclk");
++	xqspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
+ 	if (IS_ERR(xqspi->pclk))
+ 		return dev_err_probe(dev, PTR_ERR(xqspi->pclk),
+ 				     "pclk clock not found.\n");
+ 
+-	xqspi->refclk = devm_clk_get(&pdev->dev, "ref_clk");
++	xqspi->refclk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
+ 	if (IS_ERR(xqspi->refclk))
+ 		return dev_err_probe(dev, PTR_ERR(xqspi->refclk),
+ 				     "ref_clk clock not found.\n");
+ 
+-	ret = clk_prepare_enable(xqspi->pclk);
+-	if (ret)
+-		return dev_err_probe(dev, ret, "Unable to enable APB clock.\n");
+-
+-	ret = clk_prepare_enable(xqspi->refclk);
+-	if (ret) {
+-		dev_err(dev, "Unable to enable device clock.\n");
+-		goto clk_dis_pclk;
+-	}
+-
+ 	init_completion(&xqspi->data_completion);
+ 
+ 	mutex_init(&xqspi->op_lock);
+@@ -1339,9 +1329,6 @@ static int zynqmp_qspi_probe(struct platform_device *pdev)
+ 	pm_runtime_dont_use_autosuspend(&pdev->dev);
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 	pm_runtime_set_suspended(&pdev->dev);
+-	clk_disable_unprepare(xqspi->refclk);
+-clk_dis_pclk:
+-	clk_disable_unprepare(xqspi->pclk);
+ 
  	return ret;
  }
+@@ -1368,8 +1355,6 @@ static void zynqmp_qspi_remove(struct platform_device *pdev)
+ 	pm_runtime_dont_use_autosuspend(&pdev->dev);
+ 	pm_runtime_put_noidle(&pdev->dev);
+ 	pm_runtime_set_suspended(&pdev->dev);
+-	clk_disable_unprepare(xqspi->refclk);
+-	clk_disable_unprepare(xqspi->pclk);
+ }
  
--static void sp7021_spi_disable_unprepare(void *data)
--{
--	clk_disable_unprepare(data);
--}
--
- static void sp7021_spi_reset_control_assert(void *data)
- {
- 	reset_control_assert(data);
-@@ -460,7 +455,7 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 	if (pspim->s_irq < 0)
- 		return pspim->s_irq;
- 
--	pspim->spi_clk = devm_clk_get(dev, NULL);
-+	pspim->spi_clk = devm_clk_get_enabled(dev, NULL);
- 	if (IS_ERR(pspim->spi_clk))
- 		return dev_err_probe(dev, PTR_ERR(pspim->spi_clk), "clk get fail\n");
- 
-@@ -468,14 +463,6 @@ static int sp7021_spi_controller_probe(struct platform_device *pdev)
- 	if (IS_ERR(pspim->rstc))
- 		return dev_err_probe(dev, PTR_ERR(pspim->rstc), "rst get fail\n");
- 
--	ret = clk_prepare_enable(pspim->spi_clk);
--	if (ret)
--		return dev_err_probe(dev, ret, "failed to enable clk\n");
--
--	ret = devm_add_action_or_reset(dev, sp7021_spi_disable_unprepare, pspim->spi_clk);
--	if (ret)
--		return ret;
--
- 	ret = reset_control_deassert(pspim->rstc);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "failed to deassert reset\n");
+ MODULE_DEVICE_TABLE(of, zynqmp_qspi_of_match);
 -- 
 2.25.1
 
