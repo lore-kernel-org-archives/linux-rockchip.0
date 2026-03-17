@@ -4,72 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF8B4FB5EA1
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 01:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22A29FB5EA5
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 04:03:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XqyhCSDaKHlGRQsfVZoJ5Jy1XvQNHJFj6Y4V7mVUcf4=; b=ZspyERjvOKNIs6
-	3C/IWqCowYkpMZq2A+X/fdNP7VdEJqxCHlM2jgHzwmEjOGoq5Hq5k4x/gXYlpyAmYp5WGRQtO3DSV
-	aT1B8EPGYRlv7QrnEHpFhJQUzmlC0G4LQzG2c5dnWoeeKLal8qh0GRxp0dFdwrdOV2herD5+1OI38
-	oouiW4r1iQ5hX9ujRyvJGmjFUs1gPqQyu+cAqHttmSS6eoDoQNRNbd4tD8/vH7W5C02i9sUirnpOG
-	ANv+Dg6GRJ3RpcApV6cp/e9p5xxrkF2LjVRWtuoQaYBPhQbcIQNcWq3YShs0o2DgWfHJL+GKdu/KZ
-	gmDAOugyiLicsA1DFSDg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AXnN4zSA4D03h47FuW/5mUxpbHXsmJfG0Ii89tq26o4=; b=XvGNI7J6J+txRp
+	bB3c5L10DUJrFr1PCcX9HhPeph5AeWy2ZQTYRSal9Or2zs/MQzn0PDRXqf/TIUQytKdtbConhmpcd
+	v7aY3Icsdsc98LaAmNrwz+wARZ6Q3Zg3RfGZVZg/pxnJf4f+P9r8qV1gV1sSeIs4yOvaRxQPnli+a
+	wpkRP3Mn/8rKPOb9jgzc0vSbRyGIYPjnySCfyagOj+Da+p802tKPir1b+G++j48bUxk0BTX9ShGpu
+	iVMd7fDHqSjOaTfx6fW1sUGdgIwU2iIysc8cwTHW1YgjEwC+trhpZd5NxDJa64FYjwg7PEs0eqZRB
+	z7e8n44S+/H/uSy2rKOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2JQN-00000005CTo-3ogx;
-	Tue, 17 Mar 2026 01:40:47 +0000
-Received: from mail-m32122.qiye.163.com ([220.197.32.122])
+	id 1w2LeF-00000005MdP-05fX;
+	Tue, 17 Mar 2026 04:03:15 +0000
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2JQK-00000005CRt-0vni;
-	Tue, 17 Mar 2026 01:40:46 +0000
-Received: from [172.16.12.43] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 372f4c86a;
-	Tue, 17 Mar 2026 09:40:38 +0800 (GMT+08:00)
-Message-ID: <62e28820-066c-42af-82a2-a9c95449b176@rock-chips.com>
-Date: Tue, 17 Mar 2026 09:40:38 +0800
+	id 1w2LeB-00000005Mcb-3rWl;
+	Tue, 17 Mar 2026 04:03:13 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=cApTWVK/8TxtZBD5viEcYpvLZ4/RMLXRUhZmpoNncA0s2FfVbb/eYAihnKFQQnsMYP76abEsGjIkVEmiP7IMHg/IHoqd53yN3Nvo10mjNBOOv1+h2G61ASYYclT9Z38XWYHL75aQL+ky3SxvWr4EoabKK9jhFjMaaYpUavuPgEmd6GuE5h8Pch2n18TWs62Ut56/9NeyLOwe9F/GF+TvMEFvL4LLk7vf5ClGazK0T8tGjFZKIz7fn2+n5nPr4yi8/uwtnXOp+/hLoAI1zOGUXsUmg3UmyAeujNFv69nzAMedHqpCEZdypwHLJk4/9WhitvAAXUuzHDrc8pBtywpESA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=CR1dTvzZlpSp2cklpSVg64MUtSFerzgKi4xA4axBoIo=;
+ b=KrR7UldElb9cq1L94/Mo9AeBBFVwMP/BAHXxRptg33TNKld151bw461Xp1Ns9FxzwPp9vhWEtU7J2nM1DO54U6n9SQQzzfDMINHLTUzTSbGCyZ7qNCoeKCHHv/kLSODfh5Li+0SM0Od4XY5d/CO18XBlvfv2o3v+YzYfwgtpgnhQoSid20UtiAkAcNSjAF1ZMOnNonh8XqdojcWv87Nb4D6Vg7HQKEcD0vv5S76+aBsfjrezsOzqZtORw/qGPP0G+DS+b0p2qvU7fXx39M0apamfhwonBTPlAkW34CrdjBGbp0irydxQ1A9oCAYRrmt9pDMiCdm4fQpTbH8vzFX1Bw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
+ dkim=pass header.d=wesion.com; arc=none
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wesion.com;
+Received: from JH0PR03MB8617.apcprd03.prod.outlook.com (2603:1096:990:91::14)
+ by SEYPR03MB7965.apcprd03.prod.outlook.com (2603:1096:101:177::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.25; Tue, 17 Mar
+ 2026 04:03:02 +0000
+Received: from JH0PR03MB8617.apcprd03.prod.outlook.com
+ ([fe80::28d:6503:f51c:11b7]) by JH0PR03MB8617.apcprd03.prod.outlook.com
+ ([fe80::28d:6503:f51c:11b7%4]) with mapi id 15.20.9700.022; Tue, 17 Mar 2026
+ 04:03:02 +0000
+From: Gray Huang <gray.huang@wesion.com>
+To: heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	naoki@radxa.com,
+	jonas@kwiboo.se,
+	chaoyi.chen@rock-chips.com,
+	i@chainsx.cn,
+	michael.opdenacker@rootcommit.com,
+	inindev@gmail.com,
+	quentin.schulz@cherry.de,
+	andrew@lunn.ch,
+	alchark@gmail.com,
+	pbrobinson@gmail.com,
+	nick@khadas.com,
+	Gray Huang <gray.huang@wesion.com>
+Subject: [PATCH 0/2] arm64: dts: rockchip: Add initial support for Khadas Edge 2L
+Date: Tue, 17 Mar 2026 12:02:46 +0800
+Message-Id: <20260317040248.267154-1-gray.huang@wesion.com>
+X-Mailer: git-send-email 2.34.1
+X-ClientProxiedBy: TP0P295CA0024.TWNP295.PROD.OUTLOOK.COM (2603:1096:910:5::6)
+ To JH0PR03MB8617.apcprd03.prod.outlook.com (2603:1096:990:91::14)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v10 11/18] drm/bridge: analogix_dp: Apply
- drm_bridge_connector helper
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
- shawnguo@kernel.org, s.hauer@pengutronix.de, kernel@pengutronix.de,
- festevam@gmail.com, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, alim.akhtar@samsung.com,
- jingoohan1@gmail.com, p.zabel@pengutronix.de, hjc@rock-chips.com,
- heiko@sntech.de, andy.yan@rock-chips.com, dmitry.baryshkov@oss.qualcomm.com,
- dianders@chromium.org, m.szyprowski@samsung.com, jani.nikula@intel.com,
- linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org,
- imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
- linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20260310012458.169272-1-damon.ding@rock-chips.com>
- <20260310012458.169272-12-damon.ding@rock-chips.com>
- <DH1TKWREZMFK.3BY4NY36BXLXG@bootlin.com>
- <bebadd3b-2fd1-404e-bc64-205c8b44880c@rock-chips.com>
- <DH46EQM1PED9.2BVW9DWVIMEJZ@bootlin.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <DH46EQM1PED9.2BVW9DWVIMEJZ@bootlin.com>
-X-HM-Tid: 0a9cf973bf6e03a3kunm936f13bf2236b8
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkhNTVYYGkoYSE0YGENMSk5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=PMpp2P0XBVwcx8LLPcRmL5qfKUI3Ti5xc0q4KnELILlo+we4wYdKwzRCQV4/e6ecU4tOo4RgMj8xL8hBj7AHUupPd4ibMmmJjCC4E0LzUVuiABJjZeO01qG190Qa3VPM4Z6FubQyG6Chy5j61GUcGd9TEmvDbuOU41QtfUYXvCA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Z7g0mhmika0FKKGECUI1aZl6PGeXN4tAHtnClVoIoOM=;
-	h=date:mime-version:subject:message-id:from;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: JH0PR03MB8617:EE_|SEYPR03MB7965:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3d94f519-e537-47cf-97d9-08de83da155b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|376014|7416014|1800799024|56012099003|18002099003|38350700014;
+X-Microsoft-Antispam-Message-Info: HD5+MDqM9P9tRJgfIobtlkDZ5mW/O4lqoZYtxiSo/KRM6knBQXtmTJnDGHYiPl0Wm3ltEDHLwN96OIpEj3TQ3rOGfc54gX8yivIEjjRogJVttlJ4JaGjsZmLf0xd5JllzMln7RXg3kPkoKGtrmycmE2ylW7+CbtEfjO0eK1Y1t23DmnWWdIouBzuk/Q7yEUSRKr9qqF92PXLyOW+lcmw+BiUBLgSYNb/AH22KCoYIDWod5RhZ0tnmAVMzvv7dSO5yCsChoGX31Xx/puCoH9BY4ADOixCgrLmD3Z9Pz5wrNF96oeKrwC0arGnbtVI+UpRNL/6I+XMkx+nbzjuutnUaV9BmmraWenmnYD+g/MF+GyQW/qonHnjOkiuopqkRV1HGWRrktMc5tLGTUS+aD3339IgzpejFgh6fCs36y+sbww9cJ/e5VXuCgGfhw/SDOFOYoEQXufnI4p22z1bHWmtv69f1/Tm7FAj79bcbJKIErGWJud2cYHhwYgRt7jdMU98VL72RiIFu8G34YV2qUjzF+/RikEROivPSMc8n/iRC3ry9drTn9EcklhwFk8bMKnAvi69L5FqvWlqVoEDZ6x2Mf4hTgJ0EEazxftU+y6P3qY9/3yTARkEGt9XPav81h9iuNcE6ac7w+Of1fIApZX8VSoei2VpprWTYePOVTFiXzOznl1Ko2rm5RiQ/I6y3su97EdxUZf706LnJmqlopMat2n233dwCoAZ0HlC++xqTJomj7D6t0boTkexZkYk2/Bbimrb+cm91HBmdrBWwTdhapok6ROa4PLJUH/vFde/Omg=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:JH0PR03MB8617.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(376014)(7416014)(1800799024)(56012099003)(18002099003)(38350700014);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fd+LCcigaaKJqLZiMYR3U6habEhkI6iBV8D8mEYRKeXSeNnoPnAXrdZI8Q1L?=
+ =?us-ascii?Q?pz9MEMXR7xVt6JVruWXv7k/K2Sy3vdXGKiEwnCb0g63hQQnjHUxs60c/jFcQ?=
+ =?us-ascii?Q?Sbx+Y4uMLzxhO8hwciMKUoNDIIUYlaBV6cvEn5J1uysDNRVmxjDa/Xob/OyC?=
+ =?us-ascii?Q?w67qjX7eM1+3++1AkhGWXPFLv5fW/W91u+fXxwbsyklTo2yJnGU77VJ41Ks6?=
+ =?us-ascii?Q?cCf94LtezzeEGUvFM1UlI5Yr8uOi6xZt7lj5ZvXP05ExuOaUefDvnYEJilgg?=
+ =?us-ascii?Q?SSZOM6Ve4rQci54dGTouA4yMdNaowfMrLI8Od2oHzzOct0udGItXk2u2/oS9?=
+ =?us-ascii?Q?SLZRJhhTiU09Hu1WBK55GE/WwDEqrHvi5Om5lCKLC3T/ZXxeQLORhCSinJXv?=
+ =?us-ascii?Q?KfdBZC1tgayYUQsFIDnjjemufwvvFekgatQJ3CNXlsbozZcOekJg7RNglYIr?=
+ =?us-ascii?Q?LFgp0rcoOsglu79IjML0sB98vCjbfKDoeY06jyyfCgGM9y85uPdFVbNZcw/q?=
+ =?us-ascii?Q?l2ar5E2Ab8yft50IoiyV//pQ806Fx9vPehxaquX/EeKtRf6qgM2FpTZSuks4?=
+ =?us-ascii?Q?hRN0rRTPyONu5JP9gLaG7ZFAepcBMqUBUNWB02ZFrIFsXM9PeMlma6GH51o+?=
+ =?us-ascii?Q?GpoMYkW0qigquJFrWf72DxPMMEcjMUbgO3bL4M8iuw0igd1C/RnNPbfPzHlp?=
+ =?us-ascii?Q?KplMnXp6R9A8+pIFtVyehqH8NJ6AbjUaDOHVV74cFut//eSUd6UTUSgF+nQa?=
+ =?us-ascii?Q?GknkvWjuCxG9O66+3Jb2jXiWp04kDM7e/28+SQMqr8l0Dgwu2KnCehaiiFLF?=
+ =?us-ascii?Q?4HSltpH4pYU0WtGLhWKjfx/lZhrsS0Xxyty3z4ShvsLTdFqeUUE542U4mGfG?=
+ =?us-ascii?Q?/7hgxGn2e1ckBNMdm7jhb8SQjfh5g+XFcGG1AiDHr+H8mKPkrJZpPvaPVhkd?=
+ =?us-ascii?Q?Za74ReS58EDgZwl0Mff5JX37dLFqgMwWXxNnOrb4vlktfIAncRAifGdMHqi7?=
+ =?us-ascii?Q?SoUtOYNzz8vbpb8qIl5g/OCT9nt7n4OB6bpJZ4hRu8HeHVZcgA4lUWj9q2XU?=
+ =?us-ascii?Q?/hyNcRvTDRvOruH0twwDzv+USSssisK5yxsUm9CrbdH/basqIA3sJG1V6Frj?=
+ =?us-ascii?Q?pVsQyWWFfUK6rTCUUGrMcIKymqs6WIty6Znu5XuJkEXMfxUxfPOTVnaMSu0D?=
+ =?us-ascii?Q?4V2EM+pWCb+UIhZScS2KibMQVSgsISaz9rBkSR1B+u1RzTHoTTQI7NvE3v3f?=
+ =?us-ascii?Q?fowBWMq9AelhejYDbvKtX/1hTEQYee/sdRRxTVM3OFmcep2IdqukZomBNqHV?=
+ =?us-ascii?Q?K/+AQJvnqHnXyaUhzM+EeZBs9gOq9pkMjyPHEBNEN7grNDRfN1wfEClaiva9?=
+ =?us-ascii?Q?qSjWEZrFVOj9ggEgTIxxexYQL5rsY//BCuhgxvF1NTu1xUMv0VulkQTyurcW?=
+ =?us-ascii?Q?dnVa+X1VUelysb2hr8rE5aYrDKYmxcfcqdDcMkOlrUrISNiZtPXOCF8E7/5f?=
+ =?us-ascii?Q?bWF2KNDshqVs+wcsOjqX7gQT1ou7w26buScx/+Z/j8Z9omixNJxbM/teY5+Z?=
+ =?us-ascii?Q?UNMa/xkPbAab4qBcqArJRy7ePnKuBNRactgM/D+rBBFWSh7u+z8NhGiml09H?=
+ =?us-ascii?Q?vTN8zGb5Bgk75tW0G5WjW8WCjpD9wPUFGa0IDIEj84X8P+LwU++DW7c4Mxod?=
+ =?us-ascii?Q?keErkggTalW7odXLgnHhsMVg4Xqi7MX4Tmwd739YIpoWLNRGfsmcoIPq6723?=
+ =?us-ascii?Q?vjvSB7e8bg=3D=3D?=
+X-OriginatorOrg: wesion.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3d94f519-e537-47cf-97d9-08de83da155b
+X-MS-Exchange-CrossTenant-AuthSource: JH0PR03MB8617.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2026 04:03:02.0344
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: mLeDEOov7GuUJCGXgasiZSDz8tqcWr7RNdePR+jVL7/LGKskMk5xPMpqw8Gc9wn2GkPjvFKzQ/BLAzfsL36rTQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR03MB7965
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_184045_598676_42C3E6B5 
-X-CRM114-Status: GOOD (  13.15  )
+X-CRM114-CacheID: sfid-20260316_210311_982389_8578960B 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,63 +139,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CgpPbiAzLzE2LzIwMjYgNzozOSBQTSwgTHVjYSBDZXJlc29saSB3cm90ZToKPiBPbiBNb24gTWFy
-IDE2LCAyMDI2IGF0IDQ6MTcgQU0gQ0VULCBEYW1vbiBEaW5nIHdyb3RlOgo+PiBIaSBMdWNhLAo+
-Pgo+PiBPbiAzLzE0LzIwMjYgMToxMCBBTSwgTHVjYSBDZXJlc29saSB3cm90ZToKPj4+IEhlbGxv
-IERhbW9uLAo+Pj4KPj4+IE9uIFR1ZSBNYXIgMTAsIDIwMjYgYXQgMjoyNCBBTSBDRVQsIERhbW9u
-IERpbmcgd3JvdGU6Cj4+Pj4gSW5pdGlhbGl6ZSBicmlkZ2VfY29ubmVjdG9yIGZvciBib3RoIFJv
-Y2tjaGlwIGFuZCBFeHlub3MgZW5jb2RlciBzaWRlcy4KPj4+PiBUaGVuLCBtYWtlIERSTV9CUklE
-R0VfQVRUQUNIX05PX0NPTk5FQ1RPUiBtYW5kYXRvcnkgZm9yIEFuYWxvZ2l4IGJyaWRnZQo+Pj4+
-IHNpZGUsIGFzIHRoZSBwcml2YXRlICZkcm1fY29ubmVjdG9yIGlzIG5vIGxvbmdlciBjcmVhdGVk
-Lgo+Pj4+Cj4+Pj4gVGhlIHByZXZpb3VzICZkcm1fY29ubmVjdG9yX2Z1bmNzIGFuZCAmZHJtX2Nv
-bm5lY3Rvcl9oZWxwZXJfZnVuY3MgQVBJcwo+Pj4+IGFyZSByZXBsYWNlZCBieSB0aGUgY29ycmVz
-cG9uZGluZyAmZHJtX2JyaWRnZV9mdW5jcyBBUElzOgo+Pj4+Cj4+Pj4gYW5hbG9naXhfZHBfYXRv
-bWljX2NoZWNrKCkgLT4gYW5hbG9naXhfZHBfYnJpZGdlX2F0b21pY19jaGVjaygpCj4+Pj4gYW5h
-bG9naXhfZHBfZGV0ZWN0KCkgICAgICAgLT4gYW5hbG9naXhfZHBfYnJpZGdlX2RldGVjdCgpCj4+
-Pj4gYW5hbG9naXhfZHBfZ2V0X21vZGVzKCkgICAgLT4gYW5hbG9naXhfZHBfYnJpZGdlX2dldF9t
-b2RlcygpCj4+Pj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbmFsb2dpeF9kcF9i
-cmlkZ2VfZWRpZF9yZWFkKCkKPj4+Pgo+Pj4+IEFkZGl0aW9uYWxseSwgdGhlIGNvbXBhdGliaWxp
-dGllcyBvZiBBbmFsb2dpeCBEUCBicmlkZ2UgYmFzZWQgb24gd2hldGhlcgo+Pj4+IHRoZSBuZXh0
-IGJyaWRnZSBpcyBhICdwYW5lbCcuIElmIGl0IGlzLCBPUF9NT0RFUyBhbmQgT1BfREVURUNUIGFy
-ZQo+Pj4+IHN1cHBvcnRlZDsgSWYgbm90ICh0aGUgbmV4dCBicmlkZ2UgaXMgYSAnbW9uaXRvcicg
-b3IgYSBicmlkZ2UgY2hpcCksCj4+Pj4gT1BfRURJRCBhbmQgT1BfREVURUNUIGFyZSBzdXBwb3J0
-ZWQuCj4+Pj4KPj4+PiBUaGUgZGV2bV9kcm1fYnJpZGdlX2FkZCgpIGlzIHBsYWNlZCBpbiBhbmFs
-b2dpeF9kcF9iaW5kKCkgaW5zdGVhZCBvZgo+Pj4+IGFuYWxvZ2l4X2RwX3Byb2JlKCksIGJlY2F1
-c2UgdGhlIHR5cGUgb2YgbmV4dCBicmlkZ2UgKHRoZSBwYW5lbCwgbW9uaXRvcgo+Pj4+IG9yIGJy
-aWRnZSBjaGlwKSBjYW4gb25seSBiZSBkZXRlcm1pbmVkIGFmdGVyIHRoZSBwcm9iZSBwcm9jZXNz
-IGhhcyBmdWxseQo+Pj4+IGNvbXBsZXRlZC4KPj4+Pgo+Pj4+IFNpZ25lZC1vZmYtYnk6IERhbW9u
-IERpbmcgPGRhbW9uLmRpbmdAcm9jay1jaGlwcy5jb20+Cj4+Pj4gVGVzdGVkLWJ5OiBNYXJlayBT
-enlwcm93c2tpIDxtLnN6eXByb3dza2lAc2Ftc3VuZy5jb20+Cj4+Pj4gVGVzdGVkLWJ5OiBIZWlr
-byBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiAob24gcmszNTg4KQo+Pj4KPj4+IC4uLgo+Pj4K
-Pj4+PiBAQCAtNzMsMTUgKzcyLDEyIEBAIHN0YXRpYyBpbnQgZXh5bm9zX2RwX2JyaWRnZV9hdHRh
-Y2goc3RydWN0IGFuYWxvZ2l4X2RwX3BsYXRfZGF0YSAqcGxhdF9kYXRhLAo+Pj4+ICAgIAkJCQkg
-ICBzdHJ1Y3QgZHJtX2JyaWRnZSAqYnJpZGdlKQo+Pj4+ICAgIHsKPj4+PiAgICAJc3RydWN0IGV4
-eW5vc19kcF9kZXZpY2UgKmRwID0gdG9fZHAocGxhdF9kYXRhKTsKPj4+PiAtCWVudW0gZHJtX2Jy
-aWRnZV9hdHRhY2hfZmxhZ3MgZmxhZ3MgPSAwOwo+Pj4+ICAgIAlpbnQgcmV0Owo+Pj4+Cj4+Pj4g
-ICAgCS8qIFByZS1lbXB0IERQIGNvbm5lY3RvciBjcmVhdGlvbiBpZiB0aGVyZSdzIGEgYnJpZGdl
-ICovCj4+Pj4gICAgCWlmIChwbGF0X2RhdGEtPm5leHRfYnJpZGdlKSB7Cj4+Pj4gLQkJaWYgKGRw
-LT5oYXNfb2ZfYnJpZGdlKQo+Pj4+IC0JCQlmbGFncyA9IERSTV9CUklER0VfQVRUQUNIX05PX0NP
-Tk5FQ1RPUjsKPj4+PiAtCj4+Pj4gLQkJcmV0ID0gZHJtX2JyaWRnZV9hdHRhY2goJmRwLT5lbmNv
-ZGVyLCBwbGF0X2RhdGEtPm5leHRfYnJpZGdlLCBicmlkZ2UsIGZsYWdzKTsKPj4+PiArCQlyZXQg
-PSBkcm1fYnJpZGdlX2F0dGFjaCgmZHAtPmVuY29kZXIsIHBsYXRfZGF0YS0+bmV4dF9icmlkZ2Us
-IGJyaWRnZSwKPj4+PiArCQkJCQlEUk1fQlJJREdFX0FUVEFDSF9OT19DT05ORUNUT1IpOwo+Pj4K
-Pj4+IFNob3VsZCB0aGlzIGJlICdmbGFncyB8IERSTV9CUklER0VfQVRUQUNIX05PX0NPTk5FQ1RP
-UicgdG8gYmUgZnV0dXJlLXByb29mPwo+Pj4KPj4KPj4gQWhhLCB0aGUgZXh5bm9zX2RwX2JyaWRn
-ZV9hdHRhY2goKSBhbmQgZXZlbgo+PiAmYW5hbG9naXhfZHBfcGxhdF9kYXRhLmF0dGFjaCgpIGhh
-dmUgYmVlbiByZW1vdmVkIGluIFtQQVRDSCB2MTAgMTYvMThdCj4+IGZvciBjb25zaXN0ZW5jeSBh
-bmQgc2ltcGxpZmljYXRpb24uIFNpbmNlIHRoZSBvbmx5IGJyaWRnZSBmbGFnIHN1cHBvcnRlZAo+
-PiByaWdodCBub3cgaXMgRFJNX0JSSURHRV9BVFRBQ0hfTk9fQ09OTkVDVE9SLCBsZXTigJlzIGxl
-YXZlIHRoaXMgYXMgaXMgZm9yCj4+IG5vdy4gOy0pCj4gCj4gQXMgeW91IGFyZSBnb2luZyB0byBz
-ZW5kIHYxMSwgSSdkIGRvIHRoYXQgY2hhbmdlLiBJdCBpcyB0aGUgcmlnaHQgdGhpbmcgZG8KPiB0
-bywgaXQncyBjaGVhcCwgYW5kIGluIGNhc2UgcGF0Y2hlcyB1cCB0byAxMS8xOCBidXQgbm90ICh5
-ZXQpIHVwIHRvIDE2LzE4Cj4gd2UgYXZvaWQgZW5kaW5nIHVwIHdpdGggdW5vcHRpbWFsIGNvZGUg
-dW50aWwgcGF0Y2ggMTYvMTggaXMgYXBwbGllZC4KPiAKClllcywgSSB3aWxsIGZpeCB0aGlzIGlu
-IHYxMS4KCkJlc3QgcmVnYXJkcywKRGFtb24KCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This patch series adds initial basic support for the Khadas Edge 2L board,
+which is based on the Rockchip RK3576 SoC.
+
+To keep the initial review process simple and easy, this series only 
+enables the bare minimum peripherals required to boot the board to a shell:
+- UART (for serial console)
+- eMMC (for root filesystem)
+
+Support for other rich peripherals (such as PCIe Wi-Fi, USB, HDMI, 
+microSD, etc.) will be submitted in subsequent patch series once this 
+base is merged.
+
+Gray Huang (2):
+  dt-bindings: arm: rockchip: Add Khadas Edge 2L board
+  arm64: dts: rockchip: Add Khadas Edge 2L board
+
+ .../devicetree/bindings/arm/rockchip.yaml     |  5 +++
+ arch/arm64/boot/dts/rockchip/Makefile         |  1 +
+ .../dts/rockchip/rk3576-khadas-edge-2l.dts    | 34 +++++++++++++++++++
+ 3 files changed, 40 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-khadas-edge-2l.dts
+
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
