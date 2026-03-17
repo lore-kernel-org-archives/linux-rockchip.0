@@ -4,80 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9645BFD8769
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 13:28:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B4BFD877B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 14:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8xSLeVXvO6nW2QZGOJten2kzwDWWFG4hNN3MiXkWUXs=; b=AD/DRUAZu905Y0
-	RO6Ms6uffJqmSHdIzCQFVnfniHDzNaeHN6X0mDw6AJLR6aSMYs62igRdWakgGHt5f49N9h8yC8Qqr
-	1elsXttpwS2dMyjOfwGfd+fnV1uWT4Tj4/QYwDpgbzUPVi5+WT4PPYgHJnq3FweMeHKjN+0bTde9N
-	euYaSv9ZGCtEyTcMscfrSEtpR8tE//xtnG5CDPisLoRJG8CNbVIeuA0RK6pkIvCn3z+1BlbqR1lnc
-	OcHfTGP5i47Til0boI25XwDILC/MwWPgYBcPnczjJRCjjq3Ka04T1vPM0g+KtpSc8tx6xx31ZCEeS
-	oZ7Gr5Gip0HsKrum7+Fg==;
+	List-Owner; bh=waqt5TJO7KSCypV5aYbN9DjccG4VIEHJtep0BVuVWmM=; b=Rq3h/GmX2PMI5P
+	FHGYymuUnByU1K32SgvqAmzk0L+Rjlsp3jADooWvGEz9b4mHKD9upQMa0lHiSs+AjmOlIF7LGvhpv
+	MA3KPoM6bPbEJDBH/b3le6T+nuzF3kaleX82FbAX37OoHjMmQbffzpJf1AZUZXSYN0liPP3tFpCsL
+	QBo5A5gkN4NQp2F36Kz1EHihhZVvmzVOm8zkMv26zzs78jtCT1EJQcxtf/5Jbh9+IjUH4B62rYRRe
+	h5iDq9qYWGmV7cBwuzytwuWG0WWBIozkq5s+FsXatZGL4ZE0e+6Zn7E7UgTrXEVG4yUnQ0GykXyFo
+	YcqXxQm4G3mxizN1bx6w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2UTO-00000006Qdd-1CeC;
-	Tue, 17 Mar 2026 13:28:38 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1w2VAX-00000006XMA-09K5;
+	Tue, 17 Mar 2026 14:13:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2UTL-00000006Qcv-0BqJ;
-	Tue, 17 Mar 2026 13:28:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773754115; x=1805290115;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=5deYAWnk5PjnJBSj7gYUmK+FXdv106euB1I/XmQwMW4=;
-  b=myIFe9i+Y6rx5bTg8R+UMoUkfeRMohQnGQqW7NKTpnGpPL1/+Q7bTy42
-   RXg2+rseuxQ0jfiVBYtHrJ2t9j7zNvAnkpo1DaJsp/wPLm7MEqiI8sAnR
-   HJHVvHKJXwXhWuN4YE0UO2wfJIdGNDRtseOieEGO1t96HrRHCfP5ddXfR
-   GBLxIsO83jbNLdNhcPsytJI2y5fgmEU9/Xelac8G0BsoF/WsZ2aqrjLIW
-   mhKGIq+L2IsINqVwLcNB+aETdhogbTGfmAGXSmPgLISv81hq6w+8TJWKQ
-   WrVpN46C5OyWf6P/PJy6eEO9q91sfakO49R9baZW5vmKvnTCZaw4Tg6ca
-   Q==;
-X-CSE-ConnectionGUID: a86XJpDRQZe/d5oj+9pdjA==
-X-CSE-MsgGUID: Ltpu3RbqQDC4igi0dJxRdA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11732"; a="85412107"
-X-IronPort-AV: E=Sophos;i="6.23,124,1770624000"; 
-   d="scan'208";a="85412107"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2026 06:28:34 -0700
-X-CSE-ConnectionGUID: 91XVWifeTBGqTq3vc/kSJQ==
-X-CSE-MsgGUID: 7+2RRmQVRtqZFCzALNf9ug==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,124,1770624000"; 
-   d="scan'208";a="226736160"
-Received: from dhhellew-desk2.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.171])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Mar 2026 06:28:29 -0700
-Date: Tue, 17 Mar 2026 14:28:22 +0100
-From: Mehdi Djait <mehdi.djait@linux.intel.com>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
-	Jagan Teki <jagan@amarulasolutions.com>, 
-	=?utf-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?= <mai.kuznetsov.misha@gmail.com>, Sebastian Reichel <sebastian.reichel@collabora.com>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Collabora Kernel Team <kernel@collabora.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/9] media: rockchip: rkcif: add support for rk3588
- vicap mipi capture
-Message-ID: <ablWdjlrPLGhDJi4@mdjait-mobl>
-References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
- <20250430-rk3588-vicap-v2-3-77de5ee9048e@collabora.com>
- <ablRBViDR996euua@mdjait-mobl>
- <e894fe10-3780-465a-984d-01f5e8f4c97e@collabora.com>
+	id 1w2VAS-00000006XKP-3Zfa
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Mar 2026 14:13:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9990D4450D
+	for <linux-rockchip@lists.infradead.org>; Tue, 17 Mar 2026 14:13:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7F3ECC19424
+	for <linux-rockchip@lists.infradead.org>; Tue, 17 Mar 2026 14:13:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773756787;
+	bh=9QDalKJYBUEDUJPFs8n5F17T6oCLIOfRdQADKKa+dtg=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=tZAEscpa8SCC5cIZ2JquMfgXyJ2cYbjRRZovEZ4pp9iCwMtzoyZvoUvuYiYMbRTYC
+	 SnQwovSWExy1qzNu8gKN2Re3kiqbZF6sZmkIooWlWa9EIx1ERfsbgtRs5rZB0SAIxf
+	 3lPrGMQ4Ue2TuM4ia8nL9lBYQlDl9Z6+Gmi7Vne8vrfCzyTk9J2Ck3dsbBaTLAPSfD
+	 NPCO+IQ8fm5HTfq9yr/wXF7f1MJldHxMFhyKqH3oTfoTSoTC0Dh5v2G2YRcDRDQgL5
+	 ObXNTsitNLuKk+KvWrgZ9pPDroH39BoYVIyc5TZiwHYdHQ131NS6aY+w9jvXRnJOfo
+	 pYQYSw8TEnjrw==
+Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-38a3486419cso38232971fa.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Mar 2026 07:13:07 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCVNziO29Ea0sDrTFDVClF/9PAYYdHbMI3lHeN1p2e2yxqqq9KIzPIOcS/7Ku92lF7+eSwYk6nF+WsJrzphcdw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzytQAHIeuImyJ0yat8gqkjr4b4aH9mFF47AgxAkfRSB9WKNjdX
+	2dHQEVkfqwX76RIKhnuBunXLTU7Xy2kRCJj269Uz3CkvSDYwdtOEtS/rauvU8yV0OISJmAVTX1k
+	RZls4TL4CO+6KGRPs9mq1eB+W7hLfPELI93rZTv1kbA==
+X-Received: by 2002:a05:651c:2115:b0:37f:c5ca:a6d4 with SMTP id
+ 38308e7fff4ca-38a89666433mr58706271fa.6.1773756785569; Tue, 17 Mar 2026
+ 07:13:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <e894fe10-3780-465a-984d-01f5e8f4c97e@collabora.com>
+References: <20260316-qcom-sa8255p-emac-v9-0-c58934e76ff2@oss.qualcomm.com> <64d282fd94be1546df75d7df5b47eacc0479797a.camel@redhat.com>
+In-Reply-To: <64d282fd94be1546df75d7df5b47eacc0479797a.camel@redhat.com>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Tue, 17 Mar 2026 15:12:53 +0100
+X-Gmail-Original-Message-ID: <CAMRc=MfNcK3MLndik1jy-yhHAph5=amnTGgn-MpXXG0Uv1ifpQ@mail.gmail.com>
+X-Gm-Features: AaiRm52mh793CgOH9S8BNXU-tBYi1I-pfEq9XQjt50faEkjR5xH42aEvJgG19dM
+Message-ID: <CAMRc=MfNcK3MLndik1jy-yhHAph5=amnTGgn-MpXXG0Uv1ifpQ@mail.gmail.com>
+Subject: Re: [PATCH net-next v9 0/6] net: stmmac: qcom-ethqos: add support for
+ SCMI power domains
+To: Radu Rendec <rrendec@redhat.com>
+Cc: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, 
+	Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio <konradybcio@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Vinod Koul <vkoul@kernel.org>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
+	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman <khilman@baylibre.com>, 
+	Jerome Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>, 
+	Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com, 
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>, Romain Gantois <romain.gantois@bootlin.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, 
+	Maxime Ripard <mripard@kernel.org>, Christophe Roullier <christophe.roullier@foss.st.com>, 
+	linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, 
+	linux-arm-kernel@lists.infradead.org, Drew Fustini <dfustini@tenstorrent.com>, 
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org, 
+	linux-mips@vger.kernel.org, imx@lists.linux.dev, 
+	linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>, 
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+	Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>, 
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_062835_123113_3C402496 
-X-CRM114-Status: GOOD (  21.59  )
+X-CRM114-CacheID: sfid-20260317_071308_928296_D0A901FF 
+X-CRM114-Status: GOOD (  32.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,68 +103,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Tue, Mar 17, 2026 at 02:21:20PM +0100, Michael Riesch wrote:
-> Hi Mehdi,
-> 
-> On 3/17/26 14:08, Mehdi Djait wrote:
-> > Hi Michael,
-> > 
-> > Thank you for this nice patch!
-> > 
-> > On Tue, Mar 17, 2026 at 10:32:21AM +0100, Michael Riesch via B4 Relay wrote:
-> >> From: Michael Riesch <michael.riesch@collabora.com>
-> >>
-> >> The RK3588 Video Capture (VICAP) unit features a Digital Video Port
-> >> (DVP) and six MIPI CSI-2 capture interfaces. Add initial support
-> >> for this variant to the rkcif driver and enable the MIPI CSI-2
-> >> capture interfaces.
-> >>
-> >> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
-> > 
-> > [...]
-> > 
-> >>  static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
-> >>  					      unsigned int index)
-> >>  {
-> >> @@ -631,6 +765,8 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
-> >>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL1, ctrl1);
-> >>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, ctrl0);
-> >>  
-> >> +	rkcif_mipi_write(interface, RKCIF_MIPI_CTRL, RKCIF_MIPI_CTRL_CAP_EN);
-> >> +
-> > 
-> > while this is the correct solution for rk3588, for the rk3568 vicap this
-> > will write 0x1 to the VICAP_MIPI_CTRL : 0x00A0 which will enable the water line.
-> 
-> nice catch ;-) However, the TRM (at least my version) claims that this
-> bit has a reset value of 0x1, so the bit in question should be already
-> set in the first place. Thus I decided to *not* make variant specific
-> code paths.
-
-Yes, the reset value is indeed 0x1
-
-> 
-> Do you see problems in your setup?
-> 
-
-No problems, it works as expected, I was just confused to see the
-mipi capture enable added with this rk3588 patch and not before.
-
-I just find it a bit confusing but if a nicer solution is too much
-hassle we can leave it like this.
-
---
-Kind Regards
-Mehdi Djait
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBNYXIgMTYsIDIwMjYgYXQgNzozMeKAr1BNIFJhZHUgUmVuZGVjIDxycmVuZGVjQHJl
+ZGhhdC5jb20+IHdyb3RlOgo+Cj4gT24gTW9uLCAyMDI2LTAzLTE2IGF0IDEzOjA1ICswMTAwLCBC
+YXJ0b3N6IEdvbGFzemV3c2tpIHdyb3RlOgo+ID4gQWRkIHN1cHBvcnQgZm9yIHRoZSBmaXJtd2Fy
+ZS1tYW5hZ2VkIHZhcmlhbnQgb2YgdGhlIERlc2lnbldhcmUgTUFDIG9uCj4gPiB0aGUgc2E4MjU1
+cCBwbGF0Zm9ybS4gVGhpcyBzZXJpZXMgY29udGFpbnMgbmV3IERUIGJpbmRpbmdzIGFuZCBkcml2
+ZXIKPiA+IGNoYW5nZXMgcmVxdWlyZWQgdG8gc3VwcG9ydCB0aGUgTUFDIGluIHRoZSBTVE1NQUMg
+ZHJpdmVyLgo+ID4KPiA+IEl0IGFsc28gcmVvcmdhbml6ZXMgdGhlIGV0aHFvcyBjb2RlIHF1aXRl
+IGEgYml0IHRvIG1ha2UgdGhlIGludHJvZHVjdGlvbgo+ID4gb2YgcG93ZXIgZG9tYWlucyBpbnRv
+IHRoZSBkcml2ZXIgYSBiaXQgZWFzaWVyIG9uIHRoZSBleWUuCj4gPgo+ID4gVGhlIERUUyBjaGFu
+Z2VzIHdpbGwgZ28gaW4gc2VwYXJhdGVseS4KPgo+IEknbSBzZWVpbmcgc29tZSB3ZWlyZCBiZWhh
+dmlvciB3aXRoIHRoaXMgdmVyc2lvbi4gVGhlIHByb2JlIHBhcnQgbG9va3MKPiBnb29kIChidXQg
+c2VlIGJlbG93KSwgYnV0IHdoZW4gSSB0cnkgdG8gYnJpbmcgYW4gaW50ZXJmYWNlIHVwLCBpdCBm
+YWlscwo+IHdpdGggRVRJTUVET1VULiBUaGUgcmVsZXZhbnQgcGFydCBvZiB0aGUgc3RhY2sgdHJh
+Y2UgbGVhZGluZyB0byB0aGUKPiBlcnJvciBpcyB0aGlzOgo+Cj4gZHdtYWM0X2RtYV9yZXNldCsw
+eDIwOC8weDIyMCBbc3RtbWFjXQo+IHN0bW1hY19yZXNldCsweDJjLzB4NjggW3N0bW1hY10KPiBz
+dG1tYWNfaW5pdF9kbWFfZW5naW5lKzB4MTA4LzB4NDAwIFtzdG1tYWNdCj4gc3RtbWFjX2h3X3Nl
+dHVwKzB4NWMvMHg1MzggW3N0bW1hY10KPiBfX3N0bW1hY19vcGVuKzB4YzgvMHgyYTAgW3N0bW1h
+Y10KPiBzdG1tYWNfb3BlbisweGNjLzB4MjM4IFtzdG1tYWNdCj4gX19kZXZfb3BlbisweDEzOC8w
+eDJhOAo+Cj4gTm93IGR3bWFjNF9kbWFfcmVzZXQoKSBpcyB2ZXJ5IHNpbXBsZS4gSXQgc2V0cyB0
+aGUgc29mdCByZXNldCBiaXQgaW4KPiB0aGUgRE1BX0JVU19NT0RFIHJlZ2lzdGVyLCB0aGVuIHdh
+aXRzIGZvciB0aGUgaGFyZHdhcmUgdG8gY2xlYXIgaXQsIGFuZAo+IHRoYXQgbmV2ZXIgaGFwcGVu
+cy4KPgo+IE5vdywgZ2V0dGluZyBiYWNrIHRvIHRoZSBwcm9iZSBwYXJ0LCB0aGVyZSBpcyBvbmUg
+ZXh0cmEgbWVzc2FnZQo+IChjb21wYXJlZCB0byBteSBwcmV2aW91cyBzdWNjZXNzZnVsIHRlc3Qg
+b24gdjcpLCB3aGljaCBJIHNlZSBhdCB0aGUKPiB2ZXJ5IGVuZCBvZiB0aGUgcHJvYmluZzoKPgo+
+ICAgcWNvbS1ldGhxb3MgMjMwNDAwMDAuZXRoZXJuZXQ6IGNsa19jc3IgdmFsdWUgb3V0IG9mIHJh
+bmdlICgweGZmZmZmZjAwCj4gICBleGNlZWRzIG1hc2sgMHgwMDAwMGYwMCksIHRydW5jYXRpbmcK
+Pgo+IFRoaXMgaXMgYSBzYTg3NzVwIHJpZGUgYm9hcmQsIHNvIHRoZXJlIGFyZSB0d28gc3RtbWFj
+IGRldmljZXMuIEkgb25seQo+IHNlZSB0aGF0IG1lc3NhZ2UgZm9yIHRoZSAybmQgb25lLCB3aGlj
+aCBpcyBhbHNvIHRoZSBvbmUgSSdtIHRyeWluZyB0bwo+IGVuYWJsZSwgYW5kIHdoaWNoIGZhaWxz
+Lgo+Cj4gSSByZWFsaXplIHRoaXMgbWF5IG9yIG1heSBub3QgYmUgcmVsYXRlZCB0byB5b3VyIGNo
+YW5nZXMuIEJ1dCB0aGVyZSBpcwo+IG5vIHdheSB0byB0ZXN0IG9uIGEgU0NNSS1wZCBib2FyZCB3
+aXRob3V0IHRoZW0uIEknbSBub3Qgc3VyZSBob3cKPiByZWxldmFudCBpdCB3b3VsZCBiZSB0byB0
+ZXN0IG9uIHRoZSBub24tU0NNSSB2YXJpYW50LiBJJ20gYXNzdW1pbmcgdGhlCj4gRE1BIHBhcnQg
+c2hvdWxkIHdvcmsgdGhlIHNhbWUgd2F5IChyZWdhcmRsZXNzIG9mIFNDTUktcGQpLCBzbyBpZiBJ
+IGNhbgo+IHJlcHJvZHVjZSBpdCB0aGVyZSwgYW5kIHNpbmNlIEkga25vdyBpdCB3b3JrcyBvbiBt
+YWlubGluZSBMaW51eCAodGhhdCdzCj4gd2hlcmUgSSB0ZXN0ZWQgdjcpLCBJIGNvdWxkIGJpc2Vj
+dCBhbmQgc2VlIHdoaWNoIGNvbW1pdCBpbiBuZXQtbmV4dAo+IGJyZWFrcyBpdC4gSWYgeW91IGRv
+bid0IGhhdmUgYW55IGJldHRlciBpZGVhLCBsZXQgbWUga25vdyBhbmQgSSBjYW4KPiB0cnkuIE1l
+YW53aGlsZSwgSSdsbCBrZWVwIHBva2luZyBhdCB2OS4KPgoKRG9lcyBjdXJyZW50IG5ldC1uZXh0
+IG9uIGl0cyBvd24gc3RpbGwgd29yaz8gT3IgaXMgdGhlIHNlY29uZAppbnRlcmZhY2UgYnJva2Vu
+IGV2ZW4gd2l0aG91dCB0aGlzIHNlcmllcz8KCkJhcnQKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
