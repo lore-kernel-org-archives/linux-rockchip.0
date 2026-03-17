@@ -4,82 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAF03FB5EAD
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 14:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E56F5FED9E3
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 15:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=4t460JWRZ9V208NeVCr1H0C/7/n06iSSvdZVvjtqBzE=; b=qdXLCINsZ6fKQ1
-	/pcRX1KUxDTx+hh4e0/yZ0DvDpCFFlqdMwx80++A+tZAMkwpqj2GBCH2veaxcOhSHvC7QVFyLxdd3
-	3f2Bf4Fm08b4Tb7xp2v3eeU9hdRTmWXgFn26u2aaaYezXYuCKqcveUZNIDrwBchgnGTNUk+UMd3wX
-	tw9f0ehsG1hB5eYK91dEveSgoDwr/8IxoIryT2mDb785Wxg78a/qUYzQ6Gjide4tkaSBu5FZnjQbP
-	nLkaBAkCDcQ1wi3pJxIG4S5OjK5be8IdbLs9LbReVQe+Y1v8m1nlE7uavdLpvW8fvVmPpNLTJO3/a
-	OsLh+D6P7ccAS7XHIswg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=qv0O9f/uuSH08iG/Lg/y+FXTLE4Rcx5wEFMh9UyFIGM=; b=r+iNNN6n0Sr1UD
+	EYctPljOz/BgmOxtLUvYkO2KQ/8FRIp2qvIavW+53PRhcQLvIsVlGd4rXce4FVDionpj7rbZjgs9K
+	0AE1q92VOgpvsvqHtA6YW0pgGF+D3Dcqqbx4LxpneNBV9U6A20N1QGL4NnR9lttFOYoWfK4792Q4N
+	jqxi1MJUg5Lt7OS3o3lF0WTU9mk32u5tABXEmQmLXP1loS7oUc86ThgxuYc63DFUEwsf9mODXV2Ev
+	pPcyie3pEQ0I507wpl0Y8NhzNMJx/lZHauN4PnOkIjSFTjjkMTuNax7oX7t0HmNDJ++mJ179MY2xW
+	kReVvImCpuZKCNQYW8tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Va9-00000006dMG-1ACI;
-	Tue, 17 Mar 2026 14:39:41 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w2W8I-00000006hpi-10D3;
+	Tue, 17 Mar 2026 15:14:58 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2Va5-00000006dLf-23ZV;
-	Tue, 17 Mar 2026 14:39:39 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773758375;
-	bh=Af4KFyu9G462PBzFPcUbHdbzV8CZObDoeMRMMguLwig=;
-	h=From:Date:Subject:To:Cc:From;
-	b=oLBSxm5zgGhreREyqEyUzYn869Xp060RkmQkC7FaFgd6fIGSuqiYIrCUc/HVHQLS5
-	 iXS3FsB8jBciScQaaR3SM6COLva3lEnWOxVbHm7y9xbcOtqlry2Ks6AbZoUs8O87eP
-	 u+BZQCCqTcdFkl6EjCTKY3tNg1Wl4kKiRENFim4LKanN2Xs1WRs5TxOO050jBSLO/f
-	 35j7MAfRF1EMJ+p14juEBxfDKTjbPesxUfmqYFfujmHKlFfMBb0gslxf1U2oJftQXt
-	 10n5G5OWfJoGhzEN9/zQI0ijVV8BYSuZL1FoO7AahiL+2ywvXK0T/LJ8q5FMR2Icsx
-	 jikZnVLB586EA==
-Received: from jupiter.universe (dyndsl-091-248-085-025.ewe-ip-backbone.de [91.248.85.25])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F21E917E026C;
-	Tue, 17 Mar 2026 15:39:34 +0100 (CET)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id A2DAF48002A; Tue, 17 Mar 2026 15:39:34 +0100 (CET)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 17 Mar 2026 15:39:30 +0100
-Subject: [PATCH] arm64: dts: rockchip: add SD/eMMC aliases for ArmSom Sige5
-MIME-Version: 1.0
-Message-Id: <20260317-sige5-mmc-aliases-v1-1-ee93a1571802@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAKFnuWkC/x3MSwqAMAwA0atI1gZq1SpeRVzUJmrAHw2IIN7d4
- vItZh5QjsIKXfZA5EtUjj2hyDMIi99nRqFksMY6UxYNqsxc47YF9Kt4ZcWKnR2JbGOohdSdkSe
- 5/2c/vO8HAyd6uGMAAAA=
-X-Change-ID: 20260317-sige5-mmc-aliases-4e62bdd270d8
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	id 1w2W8F-00000006hon-1aPx;
+	Tue, 17 Mar 2026 15:14:56 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=4qqIO5Nq4HZXMqx40ONnhQAaxlGohVZ2byEsaKtpwVE=; b=aE6K6iBT+96RgF/AXkjeTIg7fI
+	jlo6J/tjurPYMVRpNDnbGHBIADEYLG82kIiLADARaE4f7JgkQwuswrfvLaqqr7NtHHOCIZvJhIayv
+	aWwdrfzo8wD+Qcs6NqgaPI/WOHwK89r1ko1FRqErJsJY9ZSMddQLK9hPC11feftENz+iQK3yPbQoS
+	gaZfBJLzT8F7D+u5R84T+2tAFtTvO4XssjWwCxJcWkFoUQAChSJXhW0hcQSy2lVqQKzpuRaZVoVv8
+	buG8FU/pxaTAE3L1mMLOx1xGWxBKJuB0jvcMfLSSPsRZB8OljdSHF9stY6s0LPCywIsQ2BZiCtQ6l
+	CvCBrOLw==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: "Rafael J. Wysocki" <rafael@kernel.org>,
+ Daniel Lezcano <daniel.lezcano@linaro.org>, Zhang Rui <rui.zhang@intel.com>,
+ Lukasz Luba <lukasz.luba@arm.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1193;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=Af4KFyu9G462PBzFPcUbHdbzV8CZObDoeMRMMguLwig=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGm5Z6alpHKfAvXq7zL1PZ3iPAInwi3LN0/S+
- /t2vGkmeNpyfIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpuWemAAoJENju1/PI
- O/qao/cP/15PNIpmb6DW8m3mBXgyxNr8Ess3FS1i7Py89+4nu/uLkj8NXNyRwF9M8eTfwsIjTq+
- 2jCxyd+BUxGIhwrwevqziRtfitG/SuIlm8f8ZsK6CnfQqUYy0TnzrunV/sKdaULU77XHrMRHCyj
- svLtcwVfOrStoAf9RBtqK90gUrwlWIKMZsCjtTwqy0xtg7ICMhCEX9qbDoUYxzDSidIg1Q4rbfj
- L6uJ6JBN3sr+Nx8GUqeFg6tyhSYBnhUHt9boeg1rWmpAZg7PEo4/fZmHeLV2d5A8dBdn2hlg4rY
- ZMg2+4vPdCPOv0Q9X3GfOqiEWaz9TKofEnm1x7Oe2nVOeEDxXBwStongX828QHEGz7t/T/mOT6S
- p3hfg1a6blEIMFgIoyVF0F7hfIztIbDxj4wIfFspiE3J3FB64QYYrToj1nP6wZGaZ2NElzSJzRT
- KP/kdZRANLbcBKO/aJr5TOpzrCT7x2grx/xt/bqWzwfEU+O9kPF1Qc3sO0d9shQ6iNS4k/Yu3IW
- Y3RBEM6Xme1i/isQGjeieIKzJbb0MRhgqfkJA/tMsneuDNR+dtBGWf8ljdj80E5NFhn70xR6qoZ
- isv1jIuX5EM2vmRwTLll62Cr5oykz6y+4xxiWqGJOHZfndRimQ7RYArg5ggT3rDGA1cMbh0MbX8
- ka+llNC8HMM01jYItr6E0qA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+Subject: Re: [PATCH] thermal/drivers/rockchip: Shut up eFuse prober defer warning
+Date: Tue, 17 Mar 2026 16:14:45 +0100
+Message-ID: <3330199.5fSG56mABF@phil>
+In-Reply-To: <20260317-rockchip-thermal-trim-warning-v1-1-01bc4bda75e9@collabora.com>
+References: <20260317-rockchip-thermal-trim-warning-v1-1-01bc4bda75e9@collabora.com>
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_073937_675983_75180C80 
-X-CRM114-Status: GOOD (  10.78  )
+X-CRM114-CacheID: sfid-20260317_081455_475259_103DF7A3 
+X-CRM114-Status: GOOD (  12.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,49 +64,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Provide aliases for the SD and eMMC interfaces, so that the operating
-system can assign stable interface names.
-
-On Linux this is only relevant when booting without partition UUID
-based root device identification, e.g. when booting without an
-initramfs. In that case booting with e.g. root=/dev/mmcblk0p2 is
-unreliable without this patch as the device numbers changed based
-on device probe order.
-
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index d372ba252af8..1c100ffd1518 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -21,6 +21,8 @@ / {
- 	aliases {
- 		ethernet0 = &gmac0;
- 		ethernet1 = &gmac1;
-+		mmc0 = &sdhci;
-+		mmc1 = &sdmmc;
- 	};
- 
- 	chosen {
-
----
-base-commit: 74b04802e23d970099c522b711b0d94e9a29dd74
-change-id: 20260317-sige5-mmc-aliases-4e62bdd270d8
-
-Best regards,
--- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRGllbnN0YWcsIDE3LiBNw6RyeiAyMDI2LCAxNTozMTozMCBNaXR0ZWxldXJvcMOkaXNjaGUg
+Tm9ybWFsemVpdCBzY2hyaWViIFNlYmFzdGlhbiBSZWljaGVsOgo+IFNodXQgdXAgdGhlIGZvbGxv
+d2luZyBtZXNzYWdlIHByaW50ZWQgYXQgZXJyb3IgbGV2ZWwgb24gQXJtU29tIFNpZ2U1Ogo+IAo+
+IHJvY2tjaGlwLXRoZXJtYWwgMmFlNzAwMDAudHNhZGM6IGZhaWxlZCByZWFkaW5nIHRyaW0gb2Yg
+c2Vuc29yIDA6IC1FUFJPQkVfREVGRVIKPiAKPiBGaXhlczogYWUzMzJlYzAwMDlkICgidGhlcm1h
+bC9kcml2ZXJzL3JvY2tjaGlwOiBTdXBwb3J0IHJlYWRpbmcgdHJpbSB2YWx1ZXMgZnJvbSBPVFAi
+KQo+IFNpZ25lZC1vZmYtYnk6IFNlYmFzdGlhbiBSZWljaGVsIDxzZWJhc3RpYW4ucmVpY2hlbEBj
+b2xsYWJvcmEuY29tPgoKUmV2aWV3ZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2gu
+ZGU+Cgo+IC0tLQo+ICBkcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIHwgMyArLS0K
+PiAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAyIGRlbGV0aW9ucygtKQo+IAo+IGRp
+ZmYgLS1naXQgYS9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jIGIvZHJpdmVycy90
+aGVybWFsL3JvY2tjaGlwX3RoZXJtYWwuYwo+IGluZGV4IGM0OWRkZjcwZjg2ZS4uMmE0MDMzOWRl
+MGQwIDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvdGhlcm1hbC9yb2NrY2hpcF90aGVybWFsLmMKPiAr
+KysgYi9kcml2ZXJzL3RoZXJtYWwvcm9ja2NoaXBfdGhlcm1hbC5jCj4gQEAgLTE2MzgsOCArMTYz
+OCw3IEBAIHJvY2tjaGlwX3RoZXJtYWxfcmVnaXN0ZXJfc2Vuc29yKHN0cnVjdCBwbGF0Zm9ybV9k
+ZXZpY2UgKnBkZXYsCj4gIAlpZiAodHNhZGMtPmdldF90cmltX2NvZGUgJiYgc2Vuc29yLT5vZl9u
+b2RlKSB7Cj4gIAkJZXJyb3IgPSByb2NrY2hpcF9nZXRfZWZ1c2VfdmFsdWUoc2Vuc29yLT5vZl9u
+b2RlLCAidHJpbSIsICZ0cmltKTsKPiAgCQlpZiAoZXJyb3IgPCAwICYmIGVycm9yICE9IC1FTk9F
+TlQpIHsKPiAtCQkJZGV2X2VycihkZXYsICJmYWlsZWQgcmVhZGluZyB0cmltIG9mIHNlbnNvciAl
+ZDogJXBlXG4iLAo+IC0JCQkJaWQsIEVSUl9QVFIoZXJyb3IpKTsKPiArCQkJZGV2X2Vycl9wcm9i
+ZShkZXYsIGVycm9yLCAiZmFpbGVkIHJlYWRpbmcgdHJpbSBvZiBzZW5zb3IgJWRcbiIsIGlkKTsK
+PiAgCQkJcmV0dXJuIGVycm9yOwo+ICAJCX0KPiAgCQlpZiAodHJpbSkgewo+IAo+IC0tLQo+IGJh
+c2UtY29tbWl0OiA2ZGUyM2Y4MWE1ZTA4YmU4ZmJmNWU4ZDdlOWZlYmM3MmE1YjVmMjdmCj4gY2hh
+bmdlLWlkOiAyMDI2MDMxNy1yb2NrY2hpcC10aGVybWFsLXRyaW0td2FybmluZy1jZDAwNzJhYTJm
+NDYKPiAKPiBCZXN0IHJlZ2FyZHMsCj4gCgoKCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
+Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
+bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
