@@ -4,155 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C539F53D84
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 05:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5A7CF33801
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 06:25:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yUyWFIdwaJLP1Krjsfc+SFe82VWxhiYvVfG7Qt0cACM=; b=22WSOLznZh8TRI
-	VvqaPLRsLlc1rvPo6M5zjbljIinZXYTcLNqSTdSHA7Hl+8j8jKJXGgx7/JHudvZ/0719kfMg+djxX
-	K2/O2lJBsVanIiKjLnrkgVClOfXZWZBi/letYMzOiBobIsaV53Yt/komsxuoKa6/VSwSnbVu21mv6
-	ICPO6pxp8dvQRuaiqqXx5PykEf6BaH6Xy3esuspDI8Fahz8byIWma9zTNteMdOAarzzRJ41GIF8QN
-	W2eLHgJAt3mSPhzl7y3eeBxTXoR+tpGW64sfpQuSiFb2JKgSkcMjrEQjaX/0KHrVMPxrPBjqZIB1g
-	ywxCSnkS44m+xZcRA9Zw==;
+	List-Owner; bh=E/Opna0D4OUy+e47LTxXLV1MEgdN4tZPYtqtoSaB8tg=; b=NIPU+92WrDMaLx
+	5ktXVMQaKtFchIvi6G6KARXRV8AkOpesxRWIqG1UyXu0Hy7uwTbgc1Psn0TVpD5j/DtsxG3UUnM7N
+	mFQE4HSw7TDINggFMGOCe22BV0v2I4kWP7Eb/zBaXPlo1IvkhoiOxasR6gga9hHEvPeTatj+yyuNv
+	DFyh/E3sx+8Oo/fsLeGDMjtLMIYTuMHsLFL67eLQKrsAawy1j3OGrfk5ujrrUy+pMwKysWquaGc01
+	r2J3vF91R9gTDAZ10aDt60oguxPvX4TtN2a7KLCkQI4nW3KkIo6zoUr6KLjml/0HwX3OxgMl7M7F4
+	zLHRLmV6LMaGArfiWHfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2NDc-00000005SKR-20V5;
-	Tue, 17 Mar 2026 05:43:52 +0000
-Received: from mail-westeuropeazon11013069.outbound.protection.outlook.com ([52.101.72.69] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1w2Nra-00000005Uqq-1E4y;
+	Tue, 17 Mar 2026 06:25:10 +0000
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2NDY-00000005SJk-1415;
-	Tue, 17 Mar 2026 05:43:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jAJMDkqjp7aq1VIpnaqx6B1LdgJwm2vs3t6k+9jHU8SWh/V3kco0CERQzqUOhFAssUxjyAY1lLV+WA+DDo2wFIt7ILDUYmm2PxJosymDVTF64hBAUzx9XpY996KlN5TNe+QOaX3tQeW6ByYAQAFsI13wgftgbf5XA+/Jx5mKqA3UZUxGHTHst2zPod2K8XUp1h1zaShS7wh8F1b8MEVeBOPNN5B96MBUfEbOBHH2wDhuOKeX9MxPaKZ0qJ5eIDQdwrI8fBFC93077nkF0ZX/FjIQhzLDJSdz0A9rxK5zbkqpQmbojqVNZVbKf2p+gNzQBqcwK+ucxZMc960HaBtbbw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=G3wW+mEIbWLg2+crk/OQdVurPAquWFO4CgtUPerFlBQ=;
- b=fRl257c8QZr4qmOYnlzRGAsq31Pqaj3BFuyQhNLHoXLbRnVnNBhFk2H/bd2jM3rpxvcgi0Akzz0LdSat5F5wtQ0TesVFC/UWRzEasft0N9jqIlN4tDcNzT9ULEs4GDx39/JbhuilXYTnxFar4mZFE4u/jSA4je2cEW+eHU64Q1xUMuK23SiCj+dOEDTcnePSL9YFAjBNBZgv5QRrZx8Iv7rhaREKQrTB0IvjE8DEZioyAu0f9gyb5zWUdfyuOMEy0WgayWWj+Gf2KV4eo47ZzzmUkazEMG80PlRzYiEIonH/HFXI7/vJUZ+WKKdOvUT5/AZ6A4k4EDgdiR3V74VqGw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=G3wW+mEIbWLg2+crk/OQdVurPAquWFO4CgtUPerFlBQ=;
- b=nDYSDtlzjc5F1iiq4O65zsZaegmx+778M/ww0HYpCB7qmP9jbGifaetQXP7xCKSxqEPC+Egqwb4SkF+MvhanWCvuL0RikVq4gYegx+ta24A+T8VNKETvmqs9IlAPyzF62EnxCFh2AONZT9P2ppB7aQmXWV+nYI71qjWyU5HPGVhagfAALdeqgcUmro2rJIk4xGNy3bc8VMi3qB8kFP/Yz0HtRGutWZ+rQBAbERx/M0E6nV8HC/EuAgM11XUufmratYnn4YBWAZNgQUmBqR42vAk7c3YxNUXAgVtDQLSo3VXE7tlWlWAqZDZjLoD8pEe29xl+nhFTxUQfhQlCn5Ra2Q==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from PAXPR04MB8459.eurprd04.prod.outlook.com (2603:10a6:102:1da::15)
- by PAXPR04MB8426.eurprd04.prod.outlook.com (2603:10a6:102:1ca::6) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.24; Tue, 17 Mar
- 2026 05:43:41 +0000
-Received: from PAXPR04MB8459.eurprd04.prod.outlook.com
- ([fe80::4972:7eaa:b9f6:7b5e]) by PAXPR04MB8459.eurprd04.prod.outlook.com
- ([fe80::4972:7eaa:b9f6:7b5e%7]) with mapi id 15.20.9700.022; Tue, 17 Mar 2026
- 05:43:40 +0000
-Date: Tue, 17 Mar 2026 13:45:41 +0800
-From: Peng Fan <peng.fan@oss.nxp.com>
-To: Andreas Kemnade <andreas@kemnade.info>
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Saenz Julienne <nsaenz@kernel.org>, Lee Jones <lee@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Shree Ramamoorthy <s-ramamoorthy@ti.com>,
-	Jerome Neanne <jerome.neanne@baylibre.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-	Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	Alexander Kurz <akurz@blala.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-Subject: Re: [PATCH 00/15] Convert power-controller to dt-schema and update
- various yaml file to referencing it
-Message-ID: <abjqhZh0CpVTNGsW@shlinux89>
-References: <20260316-power-controller-v1-0-92c80e5e1744@nxp.com>
- <f329f1b4-787e-4c8c-ba26-e419a047023b@sirena.org.uk>
- <20260316170034.31bee485@kemnade.info>
-Content-Disposition: inline
-In-Reply-To: <20260316170034.31bee485@kemnade.info>
-X-ClientProxiedBy: SG2PR03CA0088.apcprd03.prod.outlook.com
- (2603:1096:4:7c::16) To PAXPR04MB8459.eurprd04.prod.outlook.com
- (2603:10a6:102:1da::15)
+	id 1w2NrX-00000005Uq2-0Dmj
+	for linux-rockchip@lists.infradead.org;
+	Tue, 17 Mar 2026 06:25:09 +0000
+Received: by mail-ej1-x630.google.com with SMTP id a640c23a62f3a-b97e6e48b24so6512966b.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 16 Mar 2026 23:25:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1773728705; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fpcE35cAUcAbTTw0RhzVGWELvXysH+b8OVQcrg2yw4I8vihEmkcJhxZJ3i32/ef4zj
+         ysBBKy3QVNAkBqRmaqEGtwt+2/t0b9voGnFINbyP9DlaC+a4NM5tFWGSuy6jlOCi9hfZ
+         zho2zoqc16NyrH9FjnrUV7S1NcDyT6pf5Bmr0V1j7xcwh1zwJi44zLlCntWvBoxe37qs
+         rwPbHMVQkbY0vPFY6G6fG3OKiYexNNPR3iSOhzDpLKPkI919lwairn19DlTFhSdJTffz
+         KCSGh39+q4QT55bVu4P9fdR2/T1QYksZzlI704QVSSXSQnnA9I0ESeQiPFcblqPh4MBg
+         XJpw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=grG6esplvyUewgvA3Y3jc/bN8nKq9yVtK9UsxaYqAWg=;
+        fh=/aT6DsZAsRxycW4f+Yd1dWsoNVbcKCFBLLBSwkIiJIw=;
+        b=F6Rowqc+JO7VseyUllSrM8yu932TwfRWrHUWHrLCc6puQwpw5bBq4voK0biKZ3X5kD
+         nCTLFo9tbNXOBQE1JxNEQT7yphBlXMhHLEAh2wf5Z1NH2qqi5CWBb9hcWWnbt1djTo2C
+         zRGhb46KBhMMUSeO1GjirHsJHys9OtcfYf9qmePciYQ77eJv6GQN5KAvRAGVjhzbXE2t
+         bVqtfTzHJvWOfsyqd3Jx7jBYRG1bxZap+EWAumawU4fwggK8S/3FBFvvVgyxdf7WgxJK
+         rFdgfP3ZqA8/cESBhjCvMRqfbfGXJJgHiIE8yFWyqJWxb1ge/Sv6/XWvAEGkWNfsTC3w
+         0FjA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773728705; x=1774333505; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=grG6esplvyUewgvA3Y3jc/bN8nKq9yVtK9UsxaYqAWg=;
+        b=MxEJH+Z2oXov2MOa0qJeOIGXDkfN2Wd3y+libUGQksNLqW35IuJ6wKJU/208v6em9P
+         ZnmxbgLjJjbEQEh7FjwOrELHkV73Iz9/JgLD594R4BVCSWz0eciDsQoQpsjdx+AZVkja
+         FukjhSpEu8WCisGlH3vB/RCIAJN/pxrkhwg4+sXUGNPZV3ZUeblUA/75/fyTQYSMNfzZ
+         p8wEXIkJe4HPWvrKZEuHZoZCHenGOWenKYjzqTZpTD2uiu+wX3kw5i/68cTadxzK7Tnl
+         pUlAeyIbnAXw7kqAuv8AkkX5IOgmf9j1CteVM9jkgzOuU7qGu7cWUXLkFVg5DK1F0kNv
+         1Onw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773728705; x=1774333505;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=grG6esplvyUewgvA3Y3jc/bN8nKq9yVtK9UsxaYqAWg=;
+        b=fbELi/dYsi6o9udbqREQGOgMQj6PJlEkaLUOQbgdYPBNIcqXa/y96solnxzXBVQnJS
+         2C3lmHI7rWBI9tOBkHrZtumNATkIAM0SIZ8WuQirxRnW0cUYKn+eLl9/0jmtKiZTiRYK
+         +b2+XeUhtHRJ+YYi5ZY1Cf9OwbW/AbXFjJPFwTZOmpukJ/hIAFdOshlEVU8alR6Ng4Ne
+         LcY16wOivjWj2RKsDyehLMwpAM8c7c/aipTnuL6Sg1oWG2MUgRpTbBPu5LZMbR8x9dIG
+         1/IVQ0nNbf41wpofMref4UorIM20d3RWaJMxrns4gZs+HJddcK1zqW3AIy+4nrCaORbS
+         6NFg==
+X-Forwarded-Encrypted: i=1; AJvYcCWEftLIS5FMKvYUOVrL6T1ifOdSgEx6HrOYYVdzHKQBrvjPH50EDBeUqQtQeEzx9oWE9/hUB/0ft5Lv/UA9kQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwNBdG0DeLAUGiXjqpv0rbvgGKPd/2MH+olWO0q/atxC2IUCyHR
+	VzGfT9gQecgIhAc3LqpdGGyxPe5ONnIKpFXmyn0OpRMuUyTKRAPcVQZVgA1i6OZ5m2uExGHfwsd
+	Hd/ZJLTCK+uPXexCuo0SHML2IgIyFVNU=
+X-Gm-Gg: ATEYQzwXL2qPoFaw+vssEVbZu3UgvshVVbvPXaQU6W55TAijFJL29XivMUz9Z6IOkPv
+	zf0GRZMX+kOZ/GkDo+QdzJGIuQHZEaLExXppsxDsUjW+5SE7NtZrEHFfSa824LdYRdeISDYgvxH
+	AV93X0jhyhKgu1aYpOKM934OLczG/wFm+DJmTxOnQ7zi8FpSu6k+o51Snq9L0SHJ6atgmxTaeNj
+	6eIIO/07H1csGa5Sun6+WjyUgx0rmxf5KQXPM3UuA9oXdT0UzlLYkdPNAlJ5gZpU46uRaUztbnl
+	MBSWAg==
+X-Received: by 2002:a17:907:a42:b0:b97:17b7:d8eb with SMTP id
+ a640c23a62f3a-b9765392026mr1010186466b.38.1773728704481; Mon, 16 Mar 2026
+ 23:25:04 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PAXPR04MB8459:EE_|PAXPR04MB8426:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8ae5dc1f-0f8c-405d-6896-08de83e824b6
-X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|7416014|52116014|19092799006|18002099003|56012099003|22082099003|38350700014;
-X-Microsoft-Antispam-Message-Info: nyLNM6JUwC0ro5BuRcdQjPVQuHeWqx5MhPNFmoic3tAGMEB242JerUCuMqRF6iDieZEAU2EQcAJrh3EnkYzIvpEmppzDFpdu34q4qsKqssmy6twE0iHdtI6wIrj7PdQ3zKZcF4oxt4nCkIGxNqdKp63U53VGH2IgMmfona88JB5pdlWcDjJNiKmAyznoH1IC1Ks2hD8UqPfYdIG/0i/qOQWD8QD8NP5but1kMNWkJHoNhXXcGgmCPWUkx46cPdP2dzqwsD3WStq+C3Hezgpazjy6FtBpESEzLUqdYPiI+QkhtamqQ+6robn9t5eEf4yyscKPm9eCqaUeVgmOBt2ampPZhIRbXfaAd+NueXOVkzdhL5qjyObDml8XkbIuytMpBw/l3YNQzY/nWq0UPHSKuGIIhbCyjClpbIkleJeaJ7OAcVhGtN9ukFb9nCThgjBkRbn7BE+yPkAVdJClsgtGdBgwxc/l8n6+ms8tK4YuUQ/e6BLUJU39RYDSTWdilIGIgQ2gRYjRXCFqtJlqJ3yQbCraxOB9PffIhVkaVbLiLyo7o1sKCcBIdOqsVcmINFsgt0sVsjaYvJO1SN8JiyXr5KoT43gO/JiYDhbIBEQI8rRiJNl0hQuHSsKsRSXQ9cAuCe5+Jah/QaAFYqtl9Z0CtB1c1lNsR0piWDm0ylhKzKEsbHo8k/konGkvbBDlOUmCpz8Jnv5BWjhJjXR5fsrZTcTA4T/wCZneBXo8RGW2vvFcbPWeGnZTSblkMOhNolLYLs/WzkiNccVwjbXslcZ4idspG2EZ57Bf8v81APrIEOQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PAXPR04MB8459.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(7416014)(52116014)(19092799006)(18002099003)(56012099003)(22082099003)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Fx/UgCKEUsXgr806srW/Vi2lra8ymUV2G24bH+igwJvUNYy3DHmHus4hevD0?=
- =?us-ascii?Q?m21e/lLGjslo1a0R/vU1jT0nzgjZ2e2YhOW4vjYN77RR2H00xpztV/R9yUPa?=
- =?us-ascii?Q?NhAsH+EogQ+VcpzPlOrTvjDHDYLcsi/idtgQAVsNb4pvzTA/AhPHSCMXORy6?=
- =?us-ascii?Q?NZkEn5y5gmBiTyqzllVHAi0t1IpghuCUtM8F0ovk1dHAH0IdBDc1pDVqjj8r?=
- =?us-ascii?Q?d+JVuTqqaBmxREbE7oQVO9KUEAGOrlElhjA+W5ZL0jEqGF+rMIGDC6aG2eON?=
- =?us-ascii?Q?Z9JYAi2PeXq9FbC+hC1OcfPWcLO/Nnyjp9PUzeqdWyTrLmErlOWkMZdRjneC?=
- =?us-ascii?Q?bFWJc+bxocojOyTKtOyFBQBTrNPNhKrfm9z55OkxOu8k4MOWTuYdK/TR1KuV?=
- =?us-ascii?Q?L8mwpQtTorQNaRY1aflE3yFXUJMJHTizYu6jiB3R6h/0+v/2YCJrUwBB4lGm?=
- =?us-ascii?Q?b58azCGeZPR+xt2QlBdO0+tyc2Zm8AJN1atTkVy/g6bW4lzHyAHXjONM53GL?=
- =?us-ascii?Q?eXtDu2Kp06bG9QgfMnddTdHiU8uO8SRM03InVbeNk4k0TSQcBgNXx4qrZa7I?=
- =?us-ascii?Q?NN22MR658K6O4OkQNI9eI45mjafI4WOcJ1s4bW8MnornNcVI19XjdNY+gNBa?=
- =?us-ascii?Q?b702gDDQc5e6P30aDCgF2wEUofJpEKNJHhi1BKmhHFvEGU5+IKk1DPuqCkTV?=
- =?us-ascii?Q?cmLHdq7HDln6E4GIcxMLoSrh5DGom9yoyXsS4Vb2Yju8NcMDDBDTbcvF0GM2?=
- =?us-ascii?Q?Cj/0yqCrBmlW/N6ylse9kRZKDb8Z1egAYGxk9AhGrTNbM4I9HXSdtobm94di?=
- =?us-ascii?Q?8UbtOvZ9Wus7rwUB2EGVBtOuu5dh9N1x/lxMCXotoJDqSnbO5Jzkj7AKuXLj?=
- =?us-ascii?Q?GZ3hbwjb9R8oTE+i9m0p20ENyCG3TAeSULuYM92Za3misjlQAPiOO9cIn6N8?=
- =?us-ascii?Q?Qqy6TG9R6GaRaRWrx/V/0h6d3VTiMp+xyEvY3ehLY1QWPcqk1+On7OEqiftN?=
- =?us-ascii?Q?D0BiESWsLxCT6LiVKgWqM2v15Dja8cCdO4Os1qEj0G9azSY90Iu2pRL+dhVJ?=
- =?us-ascii?Q?1XN97YelhQYlx6BrpqxfLR6ISdpPIXrgMONmQ+sd8xjMbokxsv39QqKzzd1V?=
- =?us-ascii?Q?p+iHC2pStDVPjFKEYr24lYc+M0AQpmcJFh7CnhXnP8EwStscnJeO7hNluJXc?=
- =?us-ascii?Q?4SOwZlwMElx07nO4FrjwnZwH+xo2d6no4HZI02eo3HTXzOLEe8c/KCFxRCVJ?=
- =?us-ascii?Q?u9CvgPBNQe+8xlRCCqZ2SE0+c2LY+gRLya4eeTNw/V1GmOpI7DQlT4k5fu1i?=
- =?us-ascii?Q?kSETtD/16HYQflaOIfmnjmVQXEb4nj+ivkad2BUBwL6EzM2yTxSd9oNZzukG?=
- =?us-ascii?Q?Bb3HU+H6kHwClqlD4HT2EmpYFYyK/MbpnGviYTgMqPlYyBny5+ONV07f3+qy?=
- =?us-ascii?Q?JT9+7nLER3ShI+++QiL+xuocIVhYgymSb8dbe9DbPHcGqEw7uAFPjGwAgG8O?=
- =?us-ascii?Q?Z6arFZ29ARPTDjkDw5LRn3dE5qNr1OFt4u8RjCUvVfzAZCcFhowiXw56Uv7x?=
- =?us-ascii?Q?Krt5WZ3PhM/mx3sT/l7MZHh7uvDC6HMEUpmxl7Z9q7QwuOzpt8QNpvlZGU79?=
- =?us-ascii?Q?az7KKpXLaMK3qYgNiA4z7nVadRtasQ4QIcbT0r13fOc7gEIL6tvz+g1L57aO?=
- =?us-ascii?Q?fKyNbjfNUI8nD7Qpp21GGelwyuwaGFHRDvOfjGBOUymKPuzTc31/pnhuSbz1?=
- =?us-ascii?Q?DH17AhYi7A=3D=3D?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8ae5dc1f-0f8c-405d-6896-08de83e824b6
-X-MS-Exchange-CrossTenant-AuthSource: PAXPR04MB8459.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Mar 2026 05:43:40.8485
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: OjdJ7IWLYUrVWSLxmx0LEdQDScUDEjGHYivKTqdhretQK63QPfq2omPzlVNHa8CAkQnA2GVhMXFqmZ4Ad3GsRQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB8426
+References: <20260226101032.1042-1-linux.amoon@gmail.com> <177260693908.10259.13055467642416391434.b4-ty@kernel.org>
+ <87bc37ee-234c-4568-b72e-955c130a6838@arm.com> <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
+ <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com> <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
+ <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org> <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
+ <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org> <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
+ <DH0TM60TVX5D.20W4O1X696ALA@kernel.org> <6cfe4bda-036f-4bb9-8a08-ed75f61cae24@arm.com>
+ <DH1QCLS89ADR.3H0XABP0GEFQT@kernel.org> <4f9fdfc9-f2ad-49b1-a6b9-ae64aaa47cfd@arm.com>
+ <CANAwSgQ6eaM=Z=MBmS0=HrLfBxOh+vqnRSkEge_q6y+oe7AU5w@mail.gmail.com>
+In-Reply-To: <CANAwSgQ6eaM=Z=MBmS0=HrLfBxOh+vqnRSkEge_q6y+oe7AU5w@mail.gmail.com>
+From: Anand Moon <linux.amoon@gmail.com>
+Date: Tue, 17 Mar 2026 11:54:47 +0530
+X-Gm-Features: AaiRm52xTModvcS_wCghjufMEmds7Entym6jtUGNfqUcYmHWBvki21yZ4UCg2r0
+Message-ID: <CANAwSgTVw7Tn7ZHFBqdHkZHbuTDSgbt5L_rhrVVtRwQu7ZS+tw@mail.gmail.com>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Danilo Krummrich <dakr@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Heiko Stuebner <heiko@sntech.de>, 
+	Niklas Cassel <cassel@kernel.org>, Shawn Lin <shawn.lin@rock-chips.com>, 
+	Hans Zhang <18255117159@163.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>, linux-pci@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, Grimmauld <grimmauld@grimmauld.de>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, "Rafael J. Wysocki" <rafael@kernel.org>, 
+	driver-core@lists.linux.dev, Lukas Wunner <lukas@wunner.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260316_224349_516470_A6C20D08 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20260316_232507_204750_250171A8 
+X-CRM114-Status: GOOD (  61.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -169,37 +131,170 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 16, 2026 at 05:00:34PM +0100, Andreas Kemnade wrote:
->On Mon, 16 Mar 2026 14:55:21 +0000
->Mark Brown <broonie@kernel.org> wrote:
+Hi Robin,
+
+On Sat, 14 Mar 2026 at 10:42, Anand Moon <linux.amoon@gmail.com> wrote:
 >
->> On Mon, Mar 16, 2026 at 10:47:35PM +0800, Peng Fan (OSS) wrote:
->> > Convert power-controller.txt to dt-schema
->> > Update various dt-bindings to use generic power-controller.yaml without
->> > defining local property.  
->> 
->> Are there any dependencies here?  It doesn't look like it.  In general
->> please don't send a single series covering multiple subsystems unless
->> there are actual dependencies, it just makes it harder to figure out how
->> to handle things.  Send a separate series to each subsystem instead.
+> Hi Robin,
 >
->It seems that everything depends on Patch 1.
-
-Krzysztof had similar comments. I reply here.
-
-Yes, depends on patch 1, sorry for not being clear in cover-letter. I just
-created a PR to dt-schema in github.
-https://github.com/devicetree-org/dt-schema/pull/187
-
-After that PR is merged, I will separate this patchset for each subsystem.
-
-Thanks,
-Peng
-
+> On Fri, 13 Mar 2026 at 23:07, Robin Murphy <robin.murphy@arm.com> wrote:
+> >
+> > On 2026-03-13 2:39 pm, Danilo Krummrich wrote:
+> > > On Fri Mar 13, 2026 at 2:15 PM CET, Robin Murphy wrote:
+> > >> On 2026-03-12 12:59 pm, Danilo Krummrich wrote:
+> > >>> On Thu Mar 12, 2026 at 1:48 PM CET, Robin Murphy wrote:
+> > >>>> On 2026-03-11 9:09 pm, Danilo Krummrich wrote:
+> > >>>>>    From a driver-core perspective I think we're rather limited on what we can do;
+> > >>>>> we are already in async context at this point and can't magically go back to
+> > >>>>> initcall context.
+> > >>>>>
+> > >>>>> So, the only thing I can think of is to kick off work on a workqueue, which in
+> > >>>>> the end would be the same as the deferred probe handling.
+> > >>>>
+> > >>>> Hmm, in fact, isn't the deferred probe mechanism itself actually quite
+> > >>>> appropriate?
+> > >>>
+> > >>> Yes, I've also mentioned this in [1], including the fact that it technically
+> > >>> even complies with the guarantees given by PROBE_FORCE_SYNCHRONOUS. I.e. the
+> > >>> documentation says:
+> > >>>
+> > >>>     Use this to annotate drivers that need their probe routines to run
+> > >>>     synchronously with driver and device registration (with the exception of
+> > >>>     -EPROBE_DEFER handling - re-probing always ends up being done
+> > >>>     asynchronously).
+> > >>>
+> > >>> However, I'm still not sure how I feel about this, since I consider this to be
+> > >>> more like a workaround that just moves things to a "more approprite" async
+> > >>> context.
+> > >>
+> > >> I guess the underlying problem there is that there are at least 3
+> > >> different significant aspects to what "synchronous" can mean:
+> > >>
+> > >> - literally in the context or device/driver registration as documented.
+> > >> Off-hand I'm not really sure what useful property may be *specific* to
+> > >> those conditions that a driver might rely on, other than for
+> > >> super-special cases like platform_driver_probe().
+> > >
+> > > I'm not worried about this one, as it is already special by not being compatible
+> > > with deferred probe. I.e. the caller already has to promise that the
+> > > corresponding probe() call will never return -EPROBE_DEFER.
+> > >
+> > > This is a much more error prone requirement than just "don't call this from
+> > > async" already.
+> > >
+> > >> - serialised, i.e. probes of multiple devices won't happen concurrently
+> > >> on multiple threads. This is probably the one hiding the most driver
+> > >> bugs, e.g. internal shared/global state without sufficient
+> > >> synchronisation. I guess this falls out as a side-effect of the first
+> > >> condition, but AFAICS it *can* also still provided by deferred probe
+> > >> (given that it's a single work item iterating a list one-by-one)
+> > >>
+> > >> - in some regular thread context that isn't liable to have issues
+> > >> synchronising against other async_func workers (i.e. the request_module
+> > >> case). Again, deferred can't have a problem here, or it wouldn't have
+> > >> worked properly in general for the last decade.
+> > >>
+> > >> So it's not that we'd be relying on some dubious "deferred is always
+> > >> synchronous" assumption - AFAICS deferred *can* launch async if the
+> > >> driver permits it - more just ratifying that deferred is still able to
+> > >> effectively honour all the useful properties of PROBE_FORCE_SYNCHRONOUS
+> > >> other than "during registration of the thing".
+> > >
+> > > Yes, and as mentioned above, EPROBE_DEFER has always been a valid path for
+> > > PROBE_FORCE_SYNCHRONOUS, which is why I brought it up as a a workaround in the
+> > > first place.
+> > >
+> > > (The reason why I still say "workaround" is because nothing actually needs to be
+> > > deferred.)
+> > >
+> > > Anyways, as I mentioned...
+> > >
+> > >>> On the other hand, eventually we want everything to work with
+> > >>> PROBE_PREFER_ASYNCHRONOUS, so maybe it's also good enough for the time being.
+> > >
+> > > ...plus there are not a lot of PROBE_FORCE_SYNCHRONOUS left anyways.
+> > >
+> > > Do you want to send a patch?
+> >
+> > Sure, I just wanted to check that you didn't see anything obviously
+> > wrong with my reasoning-by-inspection - if you're sufficiently happy
+> > then I'll write this up as a proper commit message and post the patch
+> > (likely on Monday now) so we can all nit-pick the details :)
+> >
+> I believe the issue lies in the r8169 module, which currently has the
+> PHY address hardcoded to zero in mdiobus_get_phy. I have modified the
+> implementation to scan the MDIO bus for all possible addresses to improve
+> hardware compatibility.
 >
->Regards,
->Andreas
+> Can you check this at your end.
 >
+> ----->8-----
+> $ git diff drivers/net/ethernet/realtek/r8169_main.c
+> diff --git a/drivers/net/ethernet/realtek/r8169_main.c
+> b/drivers/net/ethernet/realtek/r8169_main.c
+> index 58788d196c57..fa99e33eccfe 100644
+> --- a/drivers/net/ethernet/realtek/r8169_main.c
+> +++ b/drivers/net/ethernet/realtek/r8169_main.c
+> @@ -5420,7 +5420,8 @@ static int r8169_mdio_register(struct rtl8169_private *tp)
+>  {
+>         struct pci_dev *pdev = tp->pci_dev;
+>         struct mii_bus *new_bus;
+> -       int ret;
+> +       struct phy_device *phydev;
+> +       int ret, addr;
+>
+>         /* On some boards with this chip version the BIOS is buggy and misses
+>          * to reset the PHY page selector. This results in the PHY ID read
+> @@ -5455,18 +5456,30 @@ static int r8169_mdio_register(struct
+> rtl8169_private *tp)
+>         if (ret)
+>                 return ret;
+>
+> -       tp->phydev = mdiobus_get_phy(new_bus, 0);
+> -       if (!tp->phydev) {
+> +       /* find the first (lowest address) PHY on the current MAC's MII bus */
+> +       for (addr = 0; addr < PHY_MAX_ADDR; addr++) {
+> +               struct phy_device *tmp = mdiobus_get_phy(new_bus, addr);
+> +               if (tmp) {
+> +                       phydev = tmp;
+> +                       break;
+> +               }
+> +       }
+> +
+> +       if (!phydev) {
+> +               dev_err(&pdev->dev, "no PHY found on bus\n");
+>                 return -ENODEV;
+> -       } else if (!tp->phydev->drv) {
+> -               /* Most chip versions fail with the genphy driver.
+> -                * Therefore ensure that the dedicated PHY driver is loaded.
+> -                */
+> +       }
+> +
+> +       /* Most chip versions fail with the genphy driver.
+> +        * Therefore ensure that the dedicated PHY driver is loaded.
+> +        */
+> +       if (!phydev->drv || phy_driver_is_genphy(phydev)) {
+>                 dev_err(&pdev->dev, "no dedicated PHY driver found for
+> PHY ID 0x%08x, maybe realtek.ko needs to be added to initramfs?\n",
+>                         tp->phydev->phy_id);
+>                 return -EUNATCH;
+>         }
+>
+> +       tp->phydev = phydev;
+>         tp->phydev->mac_managed_pm = true;
+>         if (rtl_supports_eee(tp))
+>                 phy_support_eee(tp->phydev);
+>
+> > Cheers,
+> > Robin.
+>
+I've submitted a patch to address the issue you reported.
+Could you please verify if this resolves it on your side?
+
+[1] https://lore.kernel.org/all/20260317061700.7734-1-linux.amoon@gmail.com/
+
+Thanks
+-Anand
 
 _______________________________________________
 Linux-rockchip mailing list
