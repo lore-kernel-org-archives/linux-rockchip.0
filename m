@@ -4,62 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60E06FED9F8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 17:36:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68013FED9EF
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 18:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Subject:
-	Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VBUPeJ0Wp/5V1kTA9Vwq58kI3FUgZ8LufGXY68J2FgU=; b=Taqm2kfYxdg2U/
-	yJtpsy8rHBQgt4nLbAuA2Dl2MHYiYJEKJVxamK9L2t5O57aOSby6nDXGhzC2NgPrD78RWBtAKgOzo
-	aslUEEfH9PjGopQlLJzyilYJ78/BYjtGd1U74PznfdpL4xoZliEp775J52E35exKDUeDLuw7yLdXx
-	Zy7yWnJJ432dUCEOT7CYGrLCzTZu9IXOatHQAlLi+xcewoPfCrtSCnz2AuUe7CBAh8z0i+zDHIKAV
-	z4kd7g+PdEzfKKlsFUIwP+V2khJ5KR3OH467ym1+qktBEkQc7Ae1Pzc6d8Vpf6/6K1AZ0PCt4wFS0
-	fj53AOxG5lsNNGY35t8Q==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=KVaKSvLRl33cqB12TH+doyxRr0X68+j7h0ts/t/GSP0=; b=mN1vmjiq4iLuiZ
+	IVxtYV6A/mmTUcG5rcfaQTr3P0qSQWD+p6lAnKi5z4srU/YLBxsUujba2J8Vijaf9R5Omd2MIM+ZK
+	x5/QsYRvScrFitAjHPz1SoxToMCkd2EezNvw8Vs9RU2Z/fuIlfvpWIFiJ8Y1qrl4vnZwWzLreOujg
+	z+/AUjy8garFHC+oAav4Z9hJqqDpUZfqfg5OOmFAlsaA6d6eg3Pqob5mFxrOtKiP5ZO9Y9/B0TUF7
+	6n9xDLyZ89qFZfXIcY6IysR+vkiC4ziI2o8ttSLPmbGGR+GxQP3OYTVkJn3FUmbV0rbz306wjTJs0
+	/1v8cHZDafPPo3b/BK9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2YKz-00000006wyV-3lRO;
-	Tue, 17 Mar 2026 17:36:13 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1w2Ypx-000000070yf-3iHu;
+	Tue, 17 Mar 2026 18:08:13 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2YKw-00000006wxg-1MOd
+	id 1w2Ypv-000000070xB-1Hvw
 	for linux-rockchip@lists.infradead.org;
-	Tue, 17 Mar 2026 17:36:12 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 392F1C55059;
-	Tue, 17 Mar 2026 17:36:31 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 0AF965FC9A;
-	Tue, 17 Mar 2026 17:36:07 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A92BD1045065D;
-	Tue, 17 Mar 2026 18:35:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1773768965; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=jpsLJn4w7neAQsnq1JuiayRZw0qDoeOk/wH87a8LDpY=;
-	b=0FrSobcSxum9vt1AIfUY5FnLi/zPcxY6DTWX7PMLG25gqnT6Ea+Pdp7Jb/VY5KvywAAcgm
-	4/JkHrHrU9v8jw1+h2OWqusK5R1j0hCRseQJlKMG3E4E6y//QN9Od8WSOdVK1lmMrt2hIn
-	ABsGxuCGGDBSGmFrMhXZ5bCbgeLtJrqJeijIEQ+LT3QMeHZXEnJjoFYgBdQkkxwoAXxonS
-	lE87RrmAvA+pIBxCp1bku2ZmOUl8TtgwiA8u4n2p8Gjm43NGDq7kKPyabbszqJiYvpbVnj
-	lCwurXWGVNwJN4XKEnMt9Oy7FxXSTn6+piM3Z38PUfdpjpQf+F6L7s8NWgGLDQ==
-Mime-Version: 1.0
-Date: Tue, 17 Mar 2026 18:35:58 +0100
-Message-Id: <DH58MAETGDMM.2QS6VJDQ7UXIV@bootlin.com>
-Subject: Re: [PATCH v2] drm/bridge: dw-hdmi-qp: fix multi-channel audio
- output
-To: "Christian Hewitt" <christianshewitt@gmail.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.20.1
-References: <20260228112822.4056354-1-christianshewitt@gmail.com>
- <DH56X74P9GC9.1O123S92J60RG@bootlin.com>
- <00EE3E21-F614-429B-ACB6-19AF64CF74B3@gmail.com>
-In-Reply-To: <00EE3E21-F614-429B-ACB6-19AF64CF74B3@gmail.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	Tue, 17 Mar 2026 18:08:12 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43a03cb1df9so5991690f8f.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 17 Mar 2026 11:08:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=flipper.net; s=google; t=1773770889; x=1774375689; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=HT1vwWl+a38V7qIi5t2z8SaT/U8JFZY0mnIb8ncq2Gk=;
+        b=x51jjyQ6bbCieh4+QR2rfY7/i0fJyBMTKX++3bf+87OqbbU+/WU72B8Lc3FLcwKoz8
+         HiMLmBGP8LzXxQvxxB5Gh9UUJhchIZGDg0tCAgIk72VXL8o/3UrejeEWW5OpuFE+nH76
+         2S7OrNG3LENN76YmB8q4bmbQHGwSV4j2bw6HQG3p6VEcUofpghdz4PKrINeuyZHB5f5P
+         fxgdxgT2uJld8ezFwozageybdJtQeEPmY4YVJtN8TGSq94xQ4xZESxsxCucblAf/K8ZV
+         AJb2ROeLlL3bUrh/y2IKiD3Vc4x8eo7cjYC8SJcbCnfYWhAFiQPdqHRD7UnA3GjVIL/M
+         ySyQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773770889; x=1774375689;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=HT1vwWl+a38V7qIi5t2z8SaT/U8JFZY0mnIb8ncq2Gk=;
+        b=GohdQD8zh0xHdCbCXmlsIpzxmbesjJMMPg2ZgXlUPykbbjQ7QhrktbGxetTSU21ba3
+         f/UFcNAJiutOFC0ShbY4gzXYNTxzM6TRklK/7W+oJ5BiKle0B6HXWibDRGBhf/LWbrMr
+         zMGlRiMn/+ESq6jpnHnWpvunFPiJNwOOujyMWT9G64UzP5k2FQmF4RJNfRnq96kNlENd
+         Gypc9BLcwzbXrzlmcvu+CxyYtE9T6Ouy7qAvnsq+oEwxrTe8AMLaY/kSC2lyAzVi/lSL
+         wWQ7ShnXQkXBF22FrGzbfzWxOkCPxu/CXjGlMaAs+euP/b0qC7z+dLBXO6R5HgR77ibU
+         3yVQ==
+X-Forwarded-Encrypted: i=1; AJvYcCW6ma+12pOTVyHQoKCLuBcYJoURGqOQY6NX9F22pyKFYcTPqVtoHU7BKvpWSHaYVEAPM9IAbYOqvc8/ZrWHVw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YywwLP8Jcx9N2sAchg+ezZhP/NBcBnBjK3e0IokvIFZ2idQgZ91
+	IoW1zpKq4FwxMsqSx361qQgd8ZUySotE3MIFb43VFoPvs/LNwN+RzKbq+E5K3EVrkW0=
+X-Gm-Gg: ATEYQzy/HtInPIoXYFRSZpQ3pJ45+pbuRJRir5XMOAkCk3x+poudiOvY0e/GYL85TKS
+	Z2kRj8W/RvP1lVodMtMHsbB+lbUJJ1Q808FydWmipW1qGwW/ElGDaeToU+zExESk6pvFrz/9QPI
+	ahz9CG3gb02khi3iXSrXsnsaGEHhbrELkFpU8oyMsMVJZpq3DfFSF3p74s/TFBl6ek0h4APCPsV
+	BYtTSIbu5QWVOlrAbUDMPcS7nRGnwchFLuFQoOkb3dZwL2GknP04nCOn5o0MdX+QRXK1lNSxI5x
+	OTAw4i1lWkcGdbAnKoWuOnysvVSvhtUA1IUKrpTTtxvYZ8KYsAlInj/XIbsFR4tTON9U4sjNyvP
+	m7BaLspzfd1BnhAXZQ3O1HfgVQPYLDonJ49eUVxS6K9QpqTVsFrcS6cO13D7yjVh+IpyZMVy++7
+	ohzVvadr5eKLY1t2E9+crCR9z/XnthAg9r8SILUN/qJng2XMhlsdeyL90N3eUMxR90OwVLiLnpl
+	bC9VQ==
+X-Received: by 2002:a05:600c:1d0b:b0:485:30f7:6e88 with SMTP id 5b1f17b1804b1-486f4577061mr8194215e9.31.1773770888892;
+        Tue, 17 Mar 2026 11:08:08 -0700 (PDT)
+Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43b5184b8b9sm1436536f8f.1.2026.03.17.11.08.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Mar 2026 11:08:08 -0700 (PDT)
+From: Alexey Charkov <alchark@flipper.net>
+Subject: [PATCH v2 0/5] Add HUSB311 Type-C controller
+Date: Tue, 17 Mar 2026 22:07:57 +0400
+Message-Id: <20260317-husb311-v2-0-03c17c986abe@flipper.net>
+MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAH2YuWkC/zXMwQ6CMAzG8VchPTtDZ2DqifcwHCh20sSMZcNFQ
+ /buDozHf9Pvt0LkIBzhWq0QOEmU2ZXQhwrGaXAPVnIvDbrWbY3YqOkV6YSo9AWJCAdjTAvl2we
+ 28t6lW196krjM4bPDCbfrz9i2fyOhqpXVDY3UnEdrTWef4j2Ho+MF+pzzF7urctmgAAAA
+X-Change-ID: 20260115-husb311-291bbb1a7776
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Gene Chen <gene_chen@richtek.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Yuanshen Cao <alex.caoys@gmail.com>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ Alexey Charkov <alchark@flipper.net>, 
+ Conor Dooley <conor.dooley@microchip.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2698; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=akAl2/DG0rdw7GlbNngJ+xuwwxnaipw/AQYp8maIV00=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTunNF6r7Z+eZ2E4oJ2I+HNT2ROywbkLzbi7/zRrbxM4
+ o/qsqxLHRNZGMS4GCzFFFnmfltiO9WIb9YuD4+vMHNYmUCGSIs0MAABCwNfbmJeqZGOkZ6ptqGe
+ oaGOsY4RAxenAEy1LBcjw8nDy1/9mst7L2zPdOOAlW2RyZm3DoeVcTIVL3mslC5yOYvhn37WtUW
+ BX4vqPti9vzJPwm3qHTN+i5oTzdy36vprLj4X4QcA
+X-Developer-Key: i=alchark@flipper.net; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_103610_526436_1A738C0C 
-X-CRM114-Status: GOOD (  15.85  )
+X-CRM114-CacheID: sfid-20260317_110811_366922_44CF10CF 
+X-CRM114-Status: GOOD (  14.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,60 +114,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: Maxime Ripard <mripard@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, Jonas Karlman <jonas@kwiboo.se>, linux-rockchip@lists.infradead.org, dri-devel@lists.freedesktop.org, Simona Vetter <simona@ffwll.ch>, Maarten
- Lankhorst <maarten.lankhorst@linux.intel.com>, Detlev Casanova <detlev.casanova@collabora.com>, Jernej Skrabec <jernej.skrabec@gmail.com>, Douglas Anderson <dianders@chromium.org>, Sugar
- Zhang <sugar.zhang@rock-chips.com>, Dmitry
- Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Laurent
- Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Andy Yan <andy.yan@rock-chips.com>, David
- Airlie <airlied@gmail.com>, linux-kernel@vger.kernel.org, Heiko Stuebner <heiko@sntech.de>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gQ2hyaXN0aWFuLCBDcmlzdGlhbiwgSm9uYXMsCgpPbiBUdWUgTWFyIDE3LCAyMDI2IGF0
-IDU6NDkgUE0gQ0VULCBDaHJpc3RpYW4gSGV3aXR0IHdyb3RlOgo+PiBPbiAxNyBNYXIgMjAyNiwg
-YXQgODoxNuKAr3BtLCBMdWNhIENlcmVzb2xpIDxsdWNhLmNlcmVzb2xpQGJvb3RsaW4uY29tPiB3
-cm90ZToKPj4KPj4gSGVsbG8gQ2hyaXN0aWFuLAo+Pgo+PiBPbiBTYXQgRmViIDI4LCAyMDI2IGF0
-IDEyOjI4IFBNIENFVCwgQ2hyaXN0aWFuIEhld2l0dCB3cm90ZToKPj4+IEZyb206IEpvbmFzIEth
-cmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KPj4+Cj4+PiBDaGFubmVsIEFsbG9jYXRpb24gKFBCNCkg
-YW5kIExldmVsIFNoaWZ0IEluZm9ybWF0aW9uIChQQjUpIGFyZQo+Pj4gY29uZmlndXJlZCB3aXRo
-IHZhbHVlcyBmcm9tIFBCMSBhbmQgUEIyIGR1ZSB0byB0aGUgd3Jvbmcgb2Zmc2V0Cj4+PiBiZWlu
-ZyB1c2VkLiBUaGlzIHJlc3VsdHMgaW4gbWlzc2luZyBhdWRpbyBjaGFubmVscyBvciBpbmNvcnJl
-Y3QKPj4+IHNwZWFrZXIgcGxhY2VtZW50IHdoZW4gcGxheWluZyBtdWx0aS1jaGFubmVsIGF1ZGlv
-Lgo+Pj4KPj4+IFVzZSB0aGUgY29ycmVjdCBvZmZzZXQgdG8gZml4IG11bHRpLWNoYW5uZWwgYXVk
-aW8gb3V0cHV0Lgo+Pj4KPj4+IEZpeGVzOiBmZDAxNDFkMWE4YTIgKCJkcm0vYnJpZGdlOiBzeW5v
-cHN5czogQWRkIGF1ZGlvIHN1cHBvcnQgZm9yIGR3LWhkbWktcXAiKQo+Pj4gUmVwb3J0ZWQtYnk6
-IENocmlzdGlhbiBIZXdpdHQgPGNocmlzdGlhbnNoZXdpdHRAZ21haWwuY29tPgo+Pj4gU2lnbmVk
-LW9mZi1ieTogSm9uYXMgS2FybG1hbiA8am9uYXNAa3dpYm9vLnNlPgo+Pj4gU2lnbmVkLW9mZi1i
-eTogQ2hyaXN0aWFuIEhld2l0dCA8Y2hyaXN0aWFuc2hld2l0dEBnbWFpbC5jb20+Cj4+PiBSZXZp
-ZXdlZC1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFAY29sbGFib3Jh
-LmNvbT4KPj4KPj4gV2hpbGUgYXBwbHlpbmcgdGhpcyBwYXRjaCB0byBkcm0tbWljcy1maXhlcywg
-Y2hlY2twYXRjaCBjb21wbGFpbnM6Cj4+Cj4+ICAtOjE0OiBXQVJOSU5HOkJBRF9SRVBPUlRFRF9C
-WV9MSU5LOiBSZXBvcnRlZC1ieTogc2hvdWxkIGJlIGltbWVkaWF0ZWx5IGZvbGxvd2VkIGJ5IENs
-b3Nlczogd2l0aCBhIFVSTCB0byB0aGUgcmVwb3J0Cj4+Cj4+IFlvdSBjYW4gc2VuZCB2MyB3aXRo
-IHRoZSBsaW5rLCBvciBqdXN0IHJlcGx5IHdpdGggdGhlIGxpbmsgYW5kIEknbGwgdGFrZQo+PiBj
-YXJlIG9mIGFkZGluZyBpdCB0byB0aGUgY29tbWl0IG1lc3NhZ2UuCj4KPiBBcG9sb2dpZXMsIGl0
-IGxvb2tzIGxpa2UgdXNlIG9mIFJlcG9ydGVkLWJ5IHdhcyB0aWdodGVuZWQgc2luY2UgSSBsYXN0
-Cj4gdXNlZCBpdCwgYW5kIHRoZXJl4oCZcyBubyBvZmZpY2lhbCByZXBvcnQgYW55d2hlcmUgSSBj
-YW4gbGluayB0byAoaXQgd2FzCj4gYWxsIGRvbmUgaW4gcHJpdmF0ZSBjaGFubmVscykgc28gYmV0
-dGVyIHRvIGp1c3QgZHJvcCBpdCBmcm9tIHRoZSB2MiBwYXRjaAo+IGlmIHRoYXTigJlzIHBvc3Np
-YmxlPyAtIGlmIG5vdCBJIGNhbiBzZW5kIGEgdjMgd2l0aG91dCBpdC4KClRoYW5rcyBmb3IgdGhl
-IHF1aWNrIGZlZWRiYWNrLgoKSSBhcHBsaWVkIGtlZXBpbmcgdGhlIGNvbW1pdCBtZXNzYWdlIGFz
-IGlzLiBJbiBsYWNrIG9mIGEgcHVibGljIGRpc2N1c3Npb24KSSBndWVzcyB0aGUgJ1JlcG9ydGVk
-LWJ5JyBpcyBzb21ld2hhdCBpbmZvcm1hdGl2ZSBhbnl3YXkuIEkgcmVhZCB0aGUKY2hlY2twYXRj
-aCBhcyBhIGdlbmVyYWwgc3VnZ2VzdGlvbiwgbm90IGEgaGFyZCBydWxlLgoKU28gbm93IHRoaXMg
-cGF0Y2ggaXMgb24gZHJtLW1pc2MtZml4ZXMsIGJ1dCBkcm0tbWlzYy1maXhlcyBhbmQKZHJtLW1p
-c2MtbmV4dCBhcmUgbm93IGNvbmZsaWN0aW5nIGJlY2F1c2Ugb2Ygb3RoZXIgY2hhbmdlcyBieSBD
-cmlzdGlhbgpDaW9jYWx0ZWEgYXBwbGllZCBpbiB0aGUgbWVhbndoaWxlIHRvIGRybS1taXNjLW5l
-eHQsIGFuZCBwYXJ0aWN1bGFybHkKY29tbWl0IDNlYTY5OWI1NmQzMSAoImRybS9icmlkZ2U6IGR3
-LWhkbWktcXA6IFJld29yayBBdWRpbyBJbmZvRnJhbWUKaGFuZGxlciIpLgoKQ3Jpc3RpYW4sIENo
-cmlzdGlhbiAoaGVoKSwgSm9uYXMsIGNvdWxkIHlvdSBwbGVhc2UgY2hlY2sgd2hldGhlciB0aGUg
-Y29kZQpvbiBkcm0tbWlzYy1uZXh0IGhhcyBvciBub3QgdGhlIGJ1ZyB0aGF0IGlzIGZpeGVkIGhl
-cmU/IEFuZCBpZiBpdCBzdGlsbApoYXMsIHNlbmQgYSBmaXggYmFzZWQgb24gY3VycmVudCBkcm0t
-bWlzYy1uZXh0PwoKVGhhbmtzIQoKQmVzdCByZWdhcmRzLApMdWNhCgotLQpMdWNhIENlcmVzb2xp
-LCBCb290bGluCkVtYmVkZGVkIExpbnV4IGFuZCBLZXJuZWwgZW5naW5lZXJpbmcKaHR0cHM6Ly9i
-b290bGluLmNvbQoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+HUSB311 is a drop-in replacement for RT1711H, used in Rockchip RK3576 EVB1
+board and some other boards closely following the reference schematic.
+
+The existing RT1711H driver seems to work fine with HUSB311, and publicly
+available documentation does not provide enough information for HUSB311 
+to identify any meaningful differences, so this series wires up the
+existing driver to treat HUSB311 in the same way it treats RT1711H, by the
+way of introducing fallback compatibles in the binding and removing
+unnecessary VID/PID/DID checks from the driver.
+
+Note that patches 2 and 4 are on top of commits by Yanshen Cao which are
+currently in next but not in master. Maybe they can be squashed in full
+or in part to reduce churn, if we agree on using fallback compatibles.
+From what I can tell, ET7304 can also be used with a fallback compatible
+alone and without driver changes once VID/PID/DID checks are removed (I
+don't see it used in any DTS in either mainline or next yet, though)
+
+This also enables a bare-bones DT node for HUSB311 on RK3576 EVB1, but
+currently misses the connections graph for the USB SS and SBU lines, as
+those might require the USBDP PHY ports schema to be updated first for
+proper DP AltMode support as indicated by Sebastian.
+
+Signed-off-by: Alexey Charkov <alchark@flipper.net>
+
+---
+Changes in v2:
+- Changed the binding to use fallback compatibles (thanks Conor for the suggestion)
+- Rebased on top of recent next, thus also adjusted the binding for ET7304 to fall
+  back to RT1715. There are no in-tree DT users yet
+- Removed the VID/PID/DID checks altogether instead of endlessly multiplying the
+  list of matches for new clones (thanks Conor for the suggestion)
+- Link to v1: https://lore.kernel.org/r/20260311-husb311-v1-0-f25bcb58cff7@flipper.net
+
+---
+Alexey Charkov (5):
+      dt-bindings: vendor-prefixes: Add Hynetek Semiconductor Co., Ltd.
+      dt-bindings: usb: richtek,rt1711h: Switch ETEK ET7304 to use a fallback compatible
+      dt-bindings: usb: richtek,rt1711h: Add Hynetek HUSB311
+      usb: typec: tcpci_rt1711h: Drop unnecessary VID/PID/DID checks
+      arm64: dts: rockchip: Add HUSB311 Type-C controller on RK3576 EVB1
+
+ .../devicetree/bindings/usb/richtek,rt1711h.yaml   | 16 ++++--
+ .../devicetree/bindings/vendor-prefixes.yaml       |  2 +
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts   | 20 ++++++++
+ drivers/usb/typec/tcpm/tcpci_rt1711h.c             | 59 +---------------------
+ 4 files changed, 36 insertions(+), 61 deletions(-)
+---
+base-commit: 95c541ddfb0815a0ea8477af778bb13bb075079a
+change-id: 20260115-husb311-291bbb1a7776
+
+Best regards,
+-- 
+Alexey Charkov <alchark@flipper.net>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
