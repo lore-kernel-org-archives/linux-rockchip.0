@@ -4,63 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3506CF33809
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 07:58:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D930DF33814
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 08:37:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y92y+V8hWULGmBxxe+G1Jpt4SDcrZ4i4oSVJBkl1atQ=; b=EWZBFSazCj/UQI
-	f2fVKBw0WB/pujtt63z15UnzTVqeYsR5IcStu3JicjrYrofNBmiV/tC551QIwoP2T3Hr16qN3bsCb
-	vj0YQkCQu1t4UUdrg9OZLPQAxnAOGSr1ThBu2acNdAqBLjnFrUKZN/yGk/eJkW+HKgCTNd+/Ba43N
-	us4Rhrc2zGETLzMBV/2cGfBX+ut76HHXNPO5qlSIWFaeKs8gTPqGMJbNChQ7aCh2vfTQFeZkCc2r4
-	4VVFTibP0vj8CenZewqjeGeShiPeAGg6/pldOC3TZyQfBifXDuQR/HdwFd3XUcNh8thLhA1xKRot/
-	pSYA3PSnl5KrgPCdTApA==;
+	List-Owner; bh=U0MNuY5z5AsbV2TTtRvov1NPEzTdBOIGKuIq69Fghbs=; b=kspTLrIXMlvyyZ
+	38kE0DF5OjuTOjF7eaqIwb0q8gW1+nS4jT05o3iDiJxFQip0c9V4QtE8v2gu75igA/2+ptD3q6OtB
+	5SFAtWptgE3Wa0dmYHxHiBu1QkHltZVyeT7GNo2ADDPiFj4mmlYIYuOVcqKxd7g0lOSTGS0p6ZPxk
+	PM/UbalNQwFMQfGUHC5qjl+4K4bp58HlioEXi9vPzGtj3HhaIBigWkATWWyFI5o5krzyYmbf4rCGQ
+	l1fz1EhKdKUx1zZDlPORDV+1qyDokYMYMZwwnwDGx+iuXSirqmQVqTqvUzVs47Nf2JnBFsjig73yD
+	zhhCyslK0mtm7bYuvgfg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2PJk-00000005fgo-3sER;
-	Tue, 17 Mar 2026 07:58:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w2Pvz-00000005jzx-48Gw;
+	Tue, 17 Mar 2026 08:37:51 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2PJi-00000005ffy-1nn1;
-	Tue, 17 Mar 2026 07:58:19 +0000
+	id 1w2Pvy-00000005jzh-2cbv;
+	Tue, 17 Mar 2026 08:37:50 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 439BB43E9A;
-	Tue, 17 Mar 2026 07:58:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAF39C4CEF7;
-	Tue, 17 Mar 2026 07:58:16 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A394C60018;
+	Tue, 17 Mar 2026 08:37:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F0BF4C4CEF7;
+	Tue, 17 Mar 2026 08:37:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773734297;
-	bh=3sLvtGTLJoxK6OLcS/9XxpE1hjPcHKS+oPikARyO1ic=;
+	s=k20201202; t=1773736669;
+	bh=3ROM+tLx7TMgQ2ugUywzp/sxA2JiAFepBbbuV9ioIf0=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=akEovTsSC7Il9hrWdtVCsY6bhZPw4DT1j93GYxId5GIhGR5pjxPyjsAbCIs/4wr8r
-	 G0PFfOHW5KbyVXQ4Kjp7GixYvGQ8WTql7qSphH0/mibVqaWRUTV05nq/RO7xk737x3
-	 LOh1Zm7pE/QBqTwqro+lcXxDnybOf5KFetPl20N8IEfokwSMFH5sXl3EYsC4Mk/cNy
-	 PHqm4ud+HD1SFCCYqirw399iN74vFcH/w6bdoWjUfwtScXU2bsp5iKR7WZnIzj+1Se
-	 7PtCIdBURTHAJ2/wtMLQWAsW1Fs8tKsfOrPTs2JHYpYFO/njBs+CYNubJ46BGh57pB
-	 0lTFto6vrNJaA==
-Date: Tue, 17 Mar 2026 08:58:14 +0100
+	b=QCcd57nSkG1imRW3wcIKJ54uHE9cRNkCGPtjkmjAasDZcQiuxxEDoUysrVEfofKR3
+	 kqfkuzNAcljChr4EIELEZ+2RPGojZKbuuykN1BBjCAAJi8swMKPA8aUBRsH4nlOktS
+	 rATS7B/pW5HbCkwH3zuY34CGmxzgQZlozYnofd1f1TlqHlMp/u0Yu8QtaaazNL7NqL
+	 LovXvsUQsbz6UnNi7/NP7wfGpc3mjjZuESbkrpiLhQU9MiazhJLQ0Jo50PLJNS76IM
+	 tHaK3xc3NChdBWIiTshcNY6M0Ru4NrjDDKD3Qy89A1udxKWs9+madYqmcJMP8PEPUA
+	 nmILck5nB27Ww==
+Date: Tue, 17 Mar 2026 09:37:47 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Gray Huang <gray.huang@wesion.com>
-Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
-	conor+dt@kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, naoki@radxa.com, jonas@kwiboo.se, 
-	chaoyi.chen@rock-chips.com, i@chainsx.cn, michael.opdenacker@rootcommit.com, 
-	inindev@gmail.com, quentin.schulz@cherry.de, andrew@lunn.ch, alchark@gmail.com, 
-	pbrobinson@gmail.com, nick@khadas.com
-Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Add Khadas Edge 2L board
-Message-ID: <20260317-discreet-swan-of-bloom-cecb3a@quoll>
-References: <20260317040248.267154-1-gray.huang@wesion.com>
- <20260317040248.267154-3-gray.huang@wesion.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: arm@kernel.org, soc@kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [GIT PULL] Rockchip driver fixes for 7.0 #1
+Message-ID: <20260317-functional-hot-dingo-a286aa@quoll>
+References: <4719110.LvFx2qVVIh@phil>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260317040248.267154-3-gray.huang@wesion.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_005818_490373_BE4A0C15 
-X-CRM114-Status: UNSURE (   7.93  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <4719110.LvFx2qVVIh@phil>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,17 +68,23 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 17, 2026 at 12:02:48PM +0800, Gray Huang wrote:
-> Edge 2L is an ultraslim, credit-card sized ARM PC designed by Khadas.
+On Sat, Mar 14, 2026 at 07:41:19PM +0100, Heiko Stuebner wrote:
+> The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
 > 
-> In this patch, we will add basic device tree support for this board,
+>   Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
+> 
+> are available in the Git repository at:
+> 
+>   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.0-rockchip-drvfixes1
+> 
+> for you to fetch changes up to 24ed11ee5bacf9a9aca18fc6b47667c7f38d578b:
+> 
+>   soc: rockchip: grf: Add missing of_node_put() when returning (2026-02-22 23:27:20 +0100)
+> 
+> ----------------------------------------------------------------
+> Fixing a missing of_node_put() call.
 
-Please do not use "This commit/patch/change", but imperative mood. See
-longer explanation here:
-https://elixir.bootlin.com/linux/v6.16/source/Documentation/process/submitting-patches.rst#L94
-
-> Only eMMC, UART are enabled, so it's capable of booting into
-> a basic Linux system from eMMC via serial console.
+Thanks, applied
 
 Best regards,
 Krzysztof
