@@ -4,99 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFE33F3381B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 09:19:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CFF1F33825
+	for <linux-rockchip@archiver.kernel.org>; Tue, 17 Mar 2026 09:32:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G59/YI/2yXPtUThEynCQb0tK0s35eMy9DeIQNxLOlIA=; b=l+Jes/eHgBb1DX
-	trYGRC4Sba8hHKQyzkzOejZMX8zBfya4w4GevDpZHsmPthcmxy1vigtCmXyR9P8uCgaidk9u8w5Nd
-	tufZw/1wNebvpRfVw9v3ujHz4E3rH/1CQ6jd1f8tFyhjXFZySW+39Uft5Q38Bx+GYnEuoHEmarbYZ
-	2C1i+HfEQbJ0EhsPFVYggoX+EU8nO3x3JYHuSDEKJwOUH/Xi3EB33MW7RI2df/cDJL33kePd7yjO3
-	uV46Nbh7mLCBd+VXkGrbxYOKI8XE9naaGyaF7GjJdvHZxKb2AYkFrM+5SJGFwFgxTxRB5giB6OXiM
-	oCTymVkIrW8M4FvaQRJw==;
+	List-Owner; bh=a25YIrlTfa9/3Bi5qSVoWJ2hpwXfLOYa4/atenTcAAs=; b=kJiwczEgY0Lou8
+	wcag6x4E/RD832dAcIPX8fIbYLm7KRShSJkmXh49AgfmWibt3KFL2O8mGsdGmS6TUdqi6FjBugTik
+	xgm43Cjuo8m3LYi51KjdlDnQEAQYtsJsIqfuq27bw29U32a7feA0bfeKCydDpdgluXgfGgaOS0k+d
+	4nd7MtrUbQnozqQ3EVMvY24H2+isIWqki2JpqM2EZ+3OKo+P/gkU9FtpXFLrBpE7bJ6Bmq322o/hH
+	u+Umv5OiFZtZBpCHTppqTRTJ1uU9ffxioNoTJ2I71o1T6Rj72wc9tBmlKkw6P+qNEYv03UORMBhsm
+	vr8K4LUqllHuy9vLvo4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2QaS-00000005r3r-1tfP;
-	Tue, 17 Mar 2026 09:19:40 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w2Qmp-00000005sfv-2CTK;
+	Tue, 17 Mar 2026 09:32:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2QaQ-00000005r2a-2UF4;
-	Tue, 17 Mar 2026 09:19:38 +0000
+	id 1w2Qmn-00000005sdf-16kJ;
+	Tue, 17 Mar 2026 09:32:25 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E5AB56132E;
-	Tue, 17 Mar 2026 09:19:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E9C8C4CEF7;
-	Tue, 17 Mar 2026 09:19:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4EDF26013A;
+	Tue, 17 Mar 2026 09:32:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id EEFA3C19425;
+	Tue, 17 Mar 2026 09:32:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773739172;
-	bh=be6va4WwPnBFOMfW6Lq/Dypb11IupWJmaZIo3CJTq3I=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fKRDp3CiCzpbQ2NbDVx5XifGID6bUaoSSRNjp1UPT46LKIGfGMvW1SbwOzAhfMVA4
-	 MkBDwCQ3wkeGnMzFu4OrPumJJOD9wGFtTWwPrgjcCqBGdmmRJP6TkIf1LbbaJiIfxm
-	 OSu7eMEHza0kNOZBFS5YuSz8ZSr7cnKdCilryx5nwv4ljCPUtLIusZZGr7FM32NFLf
-	 OacMYpwCUDxlybUuYVrqdbDNqWSEzQSodjKne+cs/lXji2Y8JyQ6qFrgHm5JuLfFpd
-	 MD02OKfLwHJEsgwfMkhyd/tYvYqNJhgQw67hO4pjyjpqaV5YvRt/kWv/Nd4QAmio01
-	 1Z6ecKGi9B4aA==
-Message-ID: <aa9d42ad-c480-4fc8-b8be-1a0c505b4293@kernel.org>
-Date: Tue, 17 Mar 2026 10:19:29 +0100
+	s=k20201202; t=1773739944;
+	bh=p8cijtpU/HSsGMiP46YwtSX4nNkA+3J4pw4gPojkcGs=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=UxT1sfvbxgTb3B9ITJ/TbmS4lHIDkn/zydRUjoKNKIrt86o+P6srfZAE6loUauh1+
+	 BEDPiUtzt4pqLtW5kj/3n+6xTJJ5eSSQGaxZuwz/uwHHbmNtGzI8RMbrfTkhz68074
+	 XhSR9XIpKhKT9UFVl/yxv/khTsTKWvzCh6xDdt2S7kTLVn0xo6szzHWitvdvRrwIyC
+	 3+aW9n7AW4p4j4ZEPGYRia7joJW27YZYx4hlGGVZbdkaoMJ6gw7RGRkwhYMO6bRLbh
+	 bfYlNwsjni81riLPTQ6niTYnTgSY4NwIF+Kz4v7V875O/tXcANr1Fxtd7GOi49u+mh
+	 5YEuPx9EUbkrg==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id E1441F33820;
+	Tue, 17 Mar 2026 09:32:23 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Tue, 17 Mar 2026 10:32:19 +0100
+Subject: [PATCH v2 1/9] Documentation: admin-guide: media: add rk3588 vicap
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [GIT PULL] Rockchip dts fixes for 7.0 #1
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: arm@kernel.org, soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-References: <5055064.GXAFRqVoOG@phil>
- <20260317-clever-flat-wolverine-313a4c@quoll> <10817796.nUPlyArG6x@phil>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
- cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
- JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
- gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
- J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
- NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
- BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
- vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
- Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
- TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
- S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGVBBMBCgA/AhsDBgsJCAcDAgYVCAIJCgsE
- FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJoF1BKBQkWlnSaAAoJEBuTQ307
- QWKbHukP/3t4tRp/bvDnxJfmNdNVn0gv9ep3L39IntPalBFwRKytqeQkzAju0whYWg+R/rwp
- +r2I1Fzwt7+PTjsnMFlh1AZxGDmP5MFkzVsMnfX1lGiXhYSOMP97XL6R1QSXxaWOpGNCDaUl
- ajorB0lJDcC0q3xAdwzRConxYVhlgmTrRiD8oLlSCD5baEAt5Zw17UTNDnDGmZQKR0fqLpWy
- 786Lm5OScb7DjEgcA2PRm17st4UQ1kF0rQHokVaotxRM74PPDB8bCsunlghJl1DRK9s1aSuN
- hL1Pv9VD8b4dFNvCo7b4hfAANPU67W40AaaGZ3UAfmw+1MYyo4QuAZGKzaP2ukbdCD/DYnqi
- tJy88XqWtyb4UQWKNoQqGKzlYXdKsldYqrLHGoMvj1UN9XcRtXHST/IaLn72o7j7/h/Ac5EL
- 8lSUVIG4TYn59NyxxAXa07Wi6zjVL1U11fTnFmE29ALYQEXKBI3KUO1A3p4sQWzU7uRmbuxn
- naUmm8RbpMcOfa9JjlXCLmQ5IP7Rr5tYZUCkZz08LIfF8UMXwH7OOEX87Y++EkAB+pzKZNNd
- hwoXulTAgjSy+OiaLtuCys9VdXLZ3Zy314azaCU3BoWgaMV0eAW/+gprWMXQM1lrlzvwlD/k
- whyy9wGf0AEPpLssLVt9VVxNjo6BIkt6d1pMg6mHsUEVzsFNBFVDXDQBEADNkrQYSREUL4D3
- Gws46JEoZ9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLue
- MNsWLJBvBaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6ei
- OMheesVS5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wA
- GldWsRxbf3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA
- 6z6lBZn0WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9
- YegxWKvXXHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt
- 91pFzBSOIpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gU
- BLHFTg2hYnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/
- JoFzZ4B0p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu
- 4vXVFBYIGmpyNPYzRm0QPwARAQABwsF8BBgBCgAmAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtB
- YpsFAmgXUF8FCRaWWyoACgkQG5NDfTtBYptO0w//dlXJs5/42hAXKsk+PDg3wyEFb4NpyA1v
- qmx7SfAzk9Hf6lWwU1O6AbqNMbh6PjEwadKUk1m04S7EjdQLsj/MBSgoQtCT3MDmWUUtHZd5
- RYIPnPq3WVB47GtuO6/u375tsxhtf7vt95QSYJwCB+ZUgo4T+FV4hquZ4AsRkbgavtIzQisg
- Dgv76tnEv3YHV8Jn9mi/Bu0FURF+5kpdMfgo1sq6RXNQ//TVf8yFgRtTUdXxW/qHjlYURrm2
- H4kutobVEIxiyu6m05q3e9eZB/TaMMNVORx+1kM3j7f0rwtEYUFzY1ygQfpcMDPl7pRYoJjB
- dSsm0ZuzDaCwaxg2t8hqQJBzJCezTOIkjHUsWAK+tEbU4Z4SnNpCyM3fBqsgYdJxjyC/tWVT
- AQ18NRLtPw7tK1rdcwCl0GFQHwSwk5pDpz1NH40e6lU+NcXSeiqkDDRkHlftKPV/dV+lQXiu
- jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
- zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
- XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <10817796.nUPlyArG6x@phil>
+Message-Id: <20250430-rk3588-vicap-v2-1-77de5ee9048e@collabora.com>
+References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
+In-Reply-To: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ =?utf-8?q?=D0=9A=D1=83=D0=B7=D0=BD=D0=B5=D1=86=D0=BE=D0=B2_=D0=9C=D0=B8=D1=85=D0=B0=D0=B8=D0=BB?= <mai.kuznetsov.misha@gmail.com>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773739942; l=4703;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=+eC6O18wtYpvs9VlVLfglS6X0TZCIanqcH/7iXnFd4I=;
+ b=q11rIe2Goh3Zc4dkARzS0JFn3gmHBBTXW8XXeo89TPokkuSqBK7B646840c+h/eljYONw2tnm
+ 32ZB5g+PzNrCcXukt6/yl4xHYd4FITsE3izMv3aQjEZ2vrqhX1Bxuex
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,81 +88,104 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Reply-To: michael.riesch@collabora.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMTcvMDMvMjAyNiAxMDowNSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gQW0gRGllbnN0YWcs
-IDE3LiBNw6RyeiAyMDI2LCAwOTo0NTozMCBNaXR0ZWxldXJvcMOkaXNjaGUgTm9ybWFsemVpdCBz
-Y2hyaWViIEtyenlzenRvZiBLb3psb3dza2k6Cj4+IE9uIFNhdCwgTWFyIDE0LCAyMDI2IGF0IDA3
-OjQyOjM4UE0gKzAxMDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+Pj4gSGkgU29DIG1haW50YWlu
-ZXJzLAo+Pj4KPj4+IHBsZWFzZSBmaW5kIGEgYmVsb3cgc29tZSBSb2NrY2hpcCBmaXhlcyBmb3Ig
-dGhlIGN1cnJlbnQgNy4wIHJlbGVhc2UtY3ljbGUuCj4+PiBBbmQgaW4gdGhlIG5leHQgUFIsIGV2
-ZW4gb25lIGRyaXZlci1maXggdGhpcyB0aW1lLgo+Pj4KPj4+IFBsZWFzZSBwdWxsCj4+Pgo+Pj4g
-VGhhbmtzCj4+PiBIZWlrbwo+Pj4KPj4+Cj4+PiBUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2Ug
-Y29tbWl0IDZkZTIzZjgxYTVlMDhiZThmYmY1ZThkN2U5ZmViYzcyYTViNWYyN2Y6Cj4+Pgo+Pj4g
-ICBMaW51eCA3LjAtcmMxICgyMDI2LTAyLTIyIDEzOjE4OjU5IC0wODAwKQo+Pj4KPj4+IGFyZSBh
-dmFpbGFibGUgaW4gdGhlIEdpdCByZXBvc2l0b3J5IGF0Ogo+Pj4KPj4+ICAgaHR0cHM6Ly9naXQu
-a2VybmVsLm9yZy9wdWIvc2NtL2xpbnV4L2tlcm5lbC9naXQvbW1pbmQvbGludXgtcm9ja2NoaXAu
-Z2l0IHRhZ3MvdjcuMC1yb2NrY2hpcC1kdHNmaXhlczEKPj4+Cj4+PiBmb3IgeW91IHRvIGZldGNo
-IGNoYW5nZXMgdXAgdG8gMmVkMTFhZDFjMmI0YzE5MWNiMmVkNjc0MWJlMTI3ZWI5OWY4NjM0ZjoK
-Pj4+Cj4+PiAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBDb3JyZWN0IEpveXN0aWNrIEF4ZXMgb24g
-R2FtZWZvcmNlIEFjZSAoMjAyNi0wMy0xMiAyMDo1Mjo1MyArMDEwMCkKPj4+Cj4+PiAtLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-Cj4+PiBBIGJpZyBudW1iZXIgb2YgY2hhbmdlcyBmaXhpbmcgZHQtc2NoZW1hIGlzc3VlcyBvbiB0
-aGUgQVJNMzIgc2lkZSwKPj4+IGZpeGVzIGZvciB0aGUgR2FtZWZvcmNlLUFjZSB0byBtYWtlIHRo
-ZSBoYXJkd2FyZSB3b3JrIHByb3Blcmx5Cj4+PiAoaW5jbHVkaW5nIHRoZXJtYWxzKSBhcyB3ZWxs
-IGFzIGZpeGluZyBpc3N1ZXMgYm90aCBvbiBCZWVsaW5rIEExIChzcGRpZikKPj4+IGFuZCBQaW5l
-Ym9vayBQcm8gKFdpZmkpIGJ5IHJldmVydGluZyB0aGUgY29tbWl0cyB0aGF0IGNyZWF0ZWQgdGhl
-IGlzc3Vlcwo+Pj4KPj4+IC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KPj4+IENocmlzIE1vcmdhbiAoMik6Cj4+PiAgICAgICBh
-cm02NDogZHRzOiByb2NrY2hpcDogQ29ycmVjdCBGYW4gU3VwcGx5IGZvciBHYW1lZm9yY2UgQWNl
-Cj4+PiAgICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogQ29ycmVjdCBKb3lzdGljayBBeGVzIG9u
-IEdhbWVmb3JjZSBBY2UKPj4+Cj4+PiBGYWJpbyBFc3RldmFtICgxMSk6Cj4+PiAgICAgICBBUk06
-IGR0czogcm9ja2NoaXA6IFJlbW92ZSByb2NrY2hpcCxncmYgZnJvbSByazMyODggdHNhZGMKPj4+
-ICAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogTW92ZSBQSFkgcmVzZXQgdG8gZXRoZXJuZXQtcGh5
-IG5vZGUgb24gcmszMDM2IGJvYXJkcwo+Pj4gICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBGaXgg
-UlRDIGNvbXBhdGlibGUgb24gcmszMjg4LXBoeWNvcmUtcmRrCj4+PiAgICAgICBBUk06IGR0czog
-cm9ja2NoaXA6IFVzZSBtb3VudC1tYXRyaXggb24gcmszMTg4LWJxZWRpc29uMnFjCj4+PiAgICAg
-ICBBUk06IGR0czogcm9ja2NoaXA6IFJlbW92ZSBpbnZhbGlkIHJlZ3VsYXRvci1wcm9wZXJ0eSBm
-cm9tIHJrMzI4OC12ZXlyb24KPj4KPj4gTm90IGEgZml4Lgo+Pgo+Pj4gICAgICAgQVJNOiBkdHM6
-IHJvY2tjaGlwOiBGaXggdGhlIEJsdWV0b290aCBub2RlIG5hbWUgb24gcmszMjg4LXZleXJvbgo+
-Pgo+PiBOb3QgYSBmaXguIFRoaXMgaXMgYSBwdXJlIHN0eWxlIGNoYW5nZS4gRml4ZXMgZm9yIGN1
-cnJlbnQgY3ljbGUgbWVhbnMKPj4gZWl0aGVyIGltcG9ydGFudCBpc3N1ZXMgYmVpbmcgZml4ZWQg
-b3IgZXJyb3JzIGludHJvZHVjZWQgaW4gY3VycmVudAo+PiBjeWNsZS4KPj4KPj4gQ2hhbmdpbmcg
-c3R5bGUgZnJvbSBvbmUgdG8gYW5vdGhlciBpcyBub3QgYSBmaXguCj4+Cj4+PiAgICAgICBBUk06
-IGR0czogcm9ja2NoaXA6IEZpeCB0aGUgdHJhY2twYWQgc3VwcGx5IG9uIHJrMzI4OC12ZXlyb24t
-amVycnkKPj4+ICAgICAgIEFSTTogZHRzOiByb2NrY2hpcDogQWRkIG1pc3NpbmcgdGhlIHRvdWNo
-c2NyZWVuIGludGVycnVwdCBvbiByazMyODgtcGh5Y29yZS1yZGsKPj4+ICAgICAgIEFSTTogZHRz
-OiByb2NrY2hpcDogRml4IFJUQyBkZXNjcmlwdGlvbiBvbiByazMyODgtZmlyZWZseS1yZWxvYWQK
-Pj4KPj4gTm90IGEgZml4LiBTdHlsZSBvZiBub2RlIG5hbWUgaXMgbm90IGEgYnVnLCBvdGhlcndp
-c2UgZGVzY3JpYmUgdXNlcgo+PiB2aXNpYmxlIChub3QgImludGVybmFsIHRvb2xzIiB2aXNpYmxl
-KSBpbXBhY3QuCj4+Cj4+PiAgICAgICBBUk06IGR0czogcm9ja2NoaXA6IEZpeCBHTUFDIGRlc2Ny
-aXB0aW9uIG4gUkszMjg4IGJvYXJkcwo+Pj4gICAgICAgQVJNOiBkdHM6IHJvY2tjaGlwOiBGaXgg
-TEVEIG5vZGUgbmFtZXMgb24gcmszMjg4LXBoeWNvcmUtcmRrCj4+Cj4+IFNldmVyYWwgb3RoZXIg
-YXJlIHF1ZXN0aW9uYWJsZSBhcyB3ZWxsLCBzaW5jZSB0aGV5IHdlcmUgaW4gRFRTIGZvciBsb25n
-Cj4+IHRpbWUuIFBsZWFzZSBhbHNvIHJlYWQgTGludXMnIGV4cGxhbmF0aW9uIGhlcmUgZnJvbSBz
-b21lIHRpbWUgYWdvIC0gaWYKPj4gdGhlIGlzc3VlIGlzIGZvciBsb25nIHRpbWUgYW5kIG5vIG9u
-ZSBjYXJlZCwgdGhlbiBjaGFuZ2luZyBpdCBpcyBhIG5vcm1hbAo+PiBkZXZlbG9wbWVudC4KPj4K
-Pj4gU2V2ZXJhbCBjaGFuZ2VkIHBpZWNlcyBoZXJlIGxvb2sgbGlrZSAzIG9yIG1vcmUgeWVhcnMg
-b2xkLCBzbyBkb2VzIG5vdAo+PiBmaXQgY3JpdGVyaWEgb2YgY3VycmVudCBjeWNsZSBmaXggYXQg
-YWxsLgo+Pgo+PiBQbGVhc2Ugc3BsaXQgdGhlIHB1bGwuCj4gCj4gSSBkbyByZW1lbWJlciBpbiB0
-aGUgcGFzdCwgY2hhbmdlcyB0aGF0IHJlZHVjZWQgdGhlIG51bWJlciBvZgo+IGR0LWNoZWNrZXIg
-ZXJyb3JzIHdlcmUgY29uc2lkZXJlZCBmaXhlcywgYnV0IGl0IHNlZW1zIHRoYXQgaGFzCj4gY2hh
-bmdlZCwgc28gSSdsbCBzcGxpdCB0aGF0IGFjY29yZGluZ2x5LgoKSXQgaXMgc3ViamVjdGl2ZSBh
-bmQgb2YgY291cnNlIGR0YnNfY2hlY2sgZml4IGZvciBpc3N1ZSBpbnRyb2R1Y2VkIGluCmN1cnJl
-bnQgY3ljbGUgaXMgYSBSQy1maXguIEkgYW0gcHJldHR5IHN1cmUgdGhhdCBtYW55IG1haW50YWlu
-ZXJzIHdvdWxkCnB1bGwgYWxsIGFib3ZlIHRvIFJDLCBidXQgSSBmb2xsb3cgYSBiaXQgc3RyaWN0
-ZXIgaW50ZXJwcmV0YXRpb24ganVzdApsaWtlIExpbnVzIGV4cGxhaW5lZCBpdDoKCmh0dHBzOi8v
-bG9yZS5rZXJuZWwub3JnL2xrbWwvQ0ErNTVhRnl2VzM4V1U5M0NxZWdIaUt0LVJlTzh5TmZBT1VH
-WlJGR1kzLUFxMFVzRVR3QG1haWwuZ21haWwuY29tLwoKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
-YWxsL0NBSGstJTNEd2dGdW9IcE1rX1pfUjNxTVhWRGdxME4xNTkyJTJCYkFCa3lHand3U0w0ekJ0
-SEFAbWFpbC5nbWFpbC5jb20vCgpTbyB0aGUgaXNzdWVzIHdlcmUgdGhlcmUgcHJvYmFibHkgZm9y
-IG1hbnkgeWVhcnMgYW5kIGZpeGVzIGRvIG5vdCBoYXZlCnVzZXItdmlzaWJsZSBpbXBhY3QsIHRo
-dXMgdGhleSBsb29rIGxpa2UgcmVndWxhciBpbXByb3ZlbWVudCBvZiBwb29yCmNvZGUuIEp1c3Qg
-bGlrZSBJIGV2YWx1YXRlZCBkdGJzX2NoZWNrIGZpbmRpbmdzIGluIDIwMjQgLSA1MCUgb2YKd2Fy
-bmluZ3MgYXJlIHN0eWxlLgoKQmVzdCByZWdhcmRzLApLcnp5c3p0b2YKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Michael Riesch <michael.riesch@collabora.com>
+
+Add a section that describes the Rockchip RK3588 VICAP.
+
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../admin-guide/media/rkcif-rk3588-vicap.dot       | 29 ++++++++++++++++++++
+ Documentation/admin-guide/media/rkcif.rst          | 32 ++++++++++++++++++++++
+ 2 files changed, 61 insertions(+)
+
+diff --git a/Documentation/admin-guide/media/rkcif-rk3588-vicap.dot b/Documentation/admin-guide/media/rkcif-rk3588-vicap.dot
+new file mode 100644
+index 000000000000..f6d3404920b5
+--- /dev/null
++++ b/Documentation/admin-guide/media/rkcif-rk3588-vicap.dot
+@@ -0,0 +1,29 @@
++digraph board {
++        rankdir=TB
++        n00000007 [label="{{<port0> 0} | rkcif-mipi2\n/dev/v4l-subdev0 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000007:port1 -> n0000000a
++        n00000007:port1 -> n00000010 [style=dashed]
++        n00000007:port1 -> n00000016 [style=dashed]
++        n00000007:port1 -> n0000001c [style=dashed]
++        n0000000a [label="rkcif-mipi2-id0\n/dev/video0", shape=box, style=filled, fillcolor=yellow]
++        n00000010 [label="rkcif-mipi2-id1\n/dev/video1", shape=box, style=filled, fillcolor=yellow]
++        n00000016 [label="rkcif-mipi2-id2\n/dev/video2", shape=box, style=filled, fillcolor=yellow]
++        n0000001c [label="rkcif-mipi2-id3\n/dev/video3", shape=box, style=filled, fillcolor=yellow]
++        n00000025 [label="{{<port0> 0} | rkcif-mipi4\n/dev/v4l-subdev1 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000025:port1 -> n00000028
++        n00000025:port1 -> n0000002e [style=dashed]
++        n00000025:port1 -> n00000034 [style=dashed]
++        n00000025:port1 -> n0000003a [style=dashed]
++        n00000028 [label="rkcif-mipi4-id0\n/dev/video4", shape=box, style=filled, fillcolor=yellow]
++        n0000002e [label="rkcif-mipi4-id1\n/dev/video5", shape=box, style=filled, fillcolor=yellow]
++        n00000034 [label="rkcif-mipi4-id2\n/dev/video6", shape=box, style=filled, fillcolor=yellow]
++        n0000003a [label="rkcif-mipi4-id3\n/dev/video7", shape=box, style=filled, fillcolor=yellow]
++        n00000043 [label="{{<port0> 0} | dw-mipi-csi2rx fdd30000.csi\n/dev/v4l-subdev2 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000043:port1 -> n00000007:port0
++        n00000048 [label="{{<port0> 0} | dw-mipi-csi2rx fdd50000.csi\n/dev/v4l-subdev3 | {<port1> 1}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000048:port1 -> n00000025:port0
++        n0000004d [label="{{} | imx415 3-001a\n/dev/v4l-subdev4 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
++        n0000004d:port0 -> n00000043:port0
++        n00000051 [label="{{} | imx415 4-001a\n/dev/v4l-subdev5 | {<port0> 0}}", shape=Mrecord, style=filled, fillcolor=green]
++        n00000051:port0 -> n00000048:port0
++}
+diff --git a/Documentation/admin-guide/media/rkcif.rst b/Documentation/admin-guide/media/rkcif.rst
+index 2558c121abc4..fcd7f8cfc5d3 100644
+--- a/Documentation/admin-guide/media/rkcif.rst
++++ b/Documentation/admin-guide/media/rkcif.rst
+@@ -77,3 +77,35 @@ and the following video devices:
+ .. kernel-figure:: rkcif-rk3568-vicap.dot
+     :alt:   Topology of the RK3568 Video Capture (VICAP) unit
+     :align: center
++
++Rockchip RK3588 Video Capture (VICAP)
++-------------------------------------
++
++The RK3588 Video Capture (VICAP) unit features a digital video port and six
++MIPI CSI-2 capture interfaces that can receive video data independently.
++The DVP accepts parallel video data, BT.656 and BT.1120.
++Since the BT.1120 protocol may feature more than one stream, the RK3568 VICAP
++DVP features four DMA engines that can capture different streams.
++Similarly, the RK3588 VICAP MIPI CSI-2 receivers feature four DMA engines each
++to handle different Virtual Channels (VCs).
++
++The rkcif driver represents this hardware variant by exposing the following
++V4L2 subdevices:
++
++* dw-mipi-csi2rx fdd30000.csi: MIPI CSI-2 receiver connected to MIPI DPHY0
++* dw-mipi-csi2rx fdd50000.csi: MIPI CSI-2 receiver connected to MIPI DPHY1
++* rkcif-mipi2: INTERFACE/CROP block for the MIPI CSI-2 receiver connected to
++  MIPI DPHY0
++* rkcif-mipi4: INTERFACE/CROP block for the MIPI CSI-2 receiver connected to
++  MIPI DPHY1
++
++and the following video devices:
++
++* rkcif-mipi2-id{0,1,2,3}: The DMA engines connected to the rkcif-mipi2
++  INTERFACE/CROP block.
++* rkcif-mipi4-id{0,1,2,3}: The DMA engines connected to the rkcif-mipi4
++  INTERFACE/CROP block.
++
++.. kernel-figure:: rkcif-rk3588-vicap.dot
++    :alt:   Topology of the RK3588 Video Capture (VICAP) unit
++    :align: center
+
+-- 
+2.39.5
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
