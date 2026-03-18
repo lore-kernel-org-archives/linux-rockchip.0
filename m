@@ -4,99 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 001C5103E190
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 14:50:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55056103E195
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 15:06:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=BnUoT/ZeiSOZozxArAF+/ZOFCVxvw1BN/WjCYFxDeXw=; b=AwH7iHIymHX8LG
-	dN6Aze0KyeAXusQlw+ySeF2liHOPZOuwtdLyl/k9AIViKkvGVjd3eECR/LR9SbXwHcSCbuTChx3h5
-	e8HzKe5sr2/GWlR8RkVw5gAfOEd4o+wQ9GdR9ocMVudJfs8chn6Uan8NdAZUygbqmEfInbI1GexVf
-	sepi+A+5h1cIAWLFkaoFcbxbU/n8NQ6qBppN+Guc3aMPOU+bDIxSSMO/bhs+HKx8XpRFZP7YC8AKB
-	royVehcUWUTBPrAx1nm6KP78oJhXydwppueibNTwZ95qiG1EbtE1d4vjDDUqevmyGZwER7awQV8OQ
-	3kfTra2C0S3K+FqOEXbw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lJ7EmV3vtW5UskO4QqKAMzg/4o2KpU/eCvYAVXJ/jAA=; b=vTYVMcRfmdxLd6
+	2GZ0uwvn3qdsHhykTayVPWleK1mub+40BsdTwM9Q6AHTPJyMq0LVmagybumH+c6z2IEw0cfr1S4bg
+	csRJZZfp03akr1ssvD7RAl+h5FFJPhNCSEFKLhfiBq+yEVLUCBTVZYjs0/Z3rHBrAjxsSTIJkiw20
+	cqgFHY0WCiagRxJDR7eXpmtLX+ueV9EJu4FINofayamBSjDLdr5k6BKFbQwb/RFv1WLI+YQ15Jhbl
+	kPk6FAB60onr7WV/M2Yo0srcNj9z1otSslMO9mj51ycrkaffZs0vSJo9FW0UG5RLH35HrCfQ87EFT
+	O6zlAQIoQnttdhiCWVdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2sEN-00000008d7Q-1jjH;
-	Wed, 18 Mar 2026 14:50:43 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1w2sTR-00000008egW-0qhs;
+	Wed, 18 Mar 2026 15:06:17 +0000
+Received: from mgamail.intel.com ([198.175.65.20])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2sEJ-00000008d6E-1heo
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Mar 2026 14:50:41 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4852afd42ceso59267025e9.2
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Mar 2026 07:50:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1773845437; x=1774450237; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=v4jx9be2ixpeez8G3+677w21LKJvNvIiDEiSr10SzEQ=;
-        b=ofJlLKAwWFSbQ8WCvldaXbodhbqdUDzBNzhWvj/iQ5DdAF5jIvlie45CWA9pXj4qMg
-         SBWgpSFB4Zv7K9BhBigxLNf3Mu1lcU1K8fFR68CzjDRnRuZXMyRonCljGCncAXojULdl
-         GRA8f7EWWbYbN0jf2//hQkV1eM685PGMysE354oxAVqr2ApM2gVDPOkb70olevj8P5F3
-         2TdCGgeXTSCpOz9nF8RUjJUDSa/ArJLl0u3+2vyW00pZn9Kg2hr9jjZ8e+8GLg08RadV
-         /xp6jqqqn5yz8J4B9KDsks5gZsxr1LyGx5p2/2WbxeUrNLQLHGb8SLfCRl+hCXb52mS6
-         Jw1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773845437; x=1774450237;
-        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
-         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=v4jx9be2ixpeez8G3+677w21LKJvNvIiDEiSr10SzEQ=;
-        b=ezYvHjux9cJKk8eUxmnZDOkwIcVMmxb2DO44V6vN5704OLJtVgCSOAhfQeq4W91aHz
-         TwcvlsVtJJeKloKWWBW+bjwIIIav/ipufRiRrkhW1v12m06I97Uo/0AYFhETOpkPG3Y5
-         sTq/eC4/keN/c8J6v6yFoBTs9YsPxwaAttjxFF/IzwihvzLclHlnMLS+TNZGBGmBOhQi
-         jb1/ocnqa2Q3jXPflrlXP7CvhQ3FvOvnJ69fc8CK2WcgG6S8lr6hg4h5a8vbETiNm6gw
-         yO6i/zT0wqm2yLFCiWs2K/iSPxftnoLyT0Ht1GirJBUvUeX0n+dQHJB9hQaxppDnzdE/
-         fnIg==
-X-Gm-Message-State: AOJu0YzzJ5tTQdUM5eCj8pstRIoMMcS/EJDuyotf5CgIalNvMwRcJ8gj
-	pWmTT/XWdXiNqMPHbgTkR/Al2myRAQPHtBxJR9dEpNxGZIi1Hi4K4FgZtbzCmv+/8Do=
-X-Gm-Gg: ATEYQzwhcS0VjL/ACp8UMv2FpiVIhz0XroXDs0MJ9HvHx9OqTeHbonef8d1A/ABYBB1
-	M9CDFvKhRH2VHK9Tyyhi5ctU3Ujupc1vq3un3W0mIeWdoJbkezW7n16cZIjcROfTB/FHZ88QvRA
-	6zS6EGqS7jQ0ivib64q7yEfftmkLuXrJbuZxTD6I7D/c8i9xrMU3YwGlr2PEUYXYkwpDh8ZZ15G
-	pNsDM4erncDCXSVYD0vrNe0z57kDAHbc1Jsslbk5eMCpH8Ea35wGH5J0j4+hAdgUXu4SbO17fDo
-	zV91CXPt8pcf6TEy3eYXOeNevK0KYtreFGExIhzB4xPreR2P2eabwD0eY9U/CfgHRAZ7JXYJz3C
-	0fbZJzCSWBqj4uDA8HaW5YbNbMa+EibR51M9sjyarMS40iCTjD7FzY+O7juQTx+qh2R4EHWt0kI
-	w03noOKlONvVM+q6V7dSmQzDdwKDZz0aznoEeTXXGwNFp0rjXUE14IOYuPPhzi2G0DfIjSDk30f
-	Tdv6w==
-X-Received: by 2002:a05:600c:1f13:b0:485:3c05:24dc with SMTP id 5b1f17b1804b1-486f4465ec5mr61165625e9.33.1773845437260;
-        Wed, 18 Mar 2026 07:50:37 -0700 (PDT)
-Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-486f421a6f2sm64455665e9.8.2026.03.18.07.50.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 18 Mar 2026 07:50:36 -0700 (PDT)
-From: Alexey Charkov <alchark@flipper.net>
-Date: Wed, 18 Mar 2026 18:50:25 +0400
-Subject: [PATCH] ASoC: rockchip: rockchip_sai: Set slot width for non-TDM
- mode
+	id 1w2sTN-00000008efv-43l9;
+	Wed, 18 Mar 2026 15:06:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773846374; x=1805382374;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=4mKNZGsMnx96h+U53BOOHWYmauvrjAENdqFmFNmU85o=;
+  b=QX8BqEsoSg7/cWcxRA/J1PeInvxNe74oOXZ1XQHzpF23LDVWVc4lcy2O
+   aRP983VpaIa7zK8G87i6bcruWdbiM38B4vKfWKHPj0nUnUsHdb8FKEZ69
+   9rq2darau/tp7F83DsnAfrwtE9ivUAYEmHNRtTch70kCyHjWX15ujI4sx
+   0guK16mVDzGsXJ52h/GHHhSufS1YdT0KY7cT+nuHZGWZgNtoCOb8Mpawz
+   oBgQPIUfuLSEg/U3ADaVJRd7dc2n93hIgJYI0a7CAu+Ggk+WCsJSrTY8q
+   0spjIb9nyU92PY7rkLptN7WGcf2ZFlt0mqbfNIcVVBENH0ne77Gd/4TWS
+   Q==;
+X-CSE-ConnectionGUID: uCimlx0JTr2o2FlJnfAITQ==
+X-CSE-MsgGUID: 75dHdsk6R56fKf8pEQfVJA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="74601746"
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="74601746"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 08:06:08 -0700
+X-CSE-ConnectionGUID: 45FZNnEETzigI3hiwWOn+w==
+X-CSE-MsgGUID: 9Lplwp4OTDGMa1328tMtMg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="227341270"
+Received: from lkp-server01.sh.intel.com (HELO 63737dd503cb) ([10.239.97.150])
+  by fmviesa005.fm.intel.com with ESMTP; 18 Mar 2026 08:06:04 -0700
+Received: from kbuild by 63737dd503cb with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w2sTC-0000000031t-0fMK;
+	Wed, 18 Mar 2026 15:06:02 +0000
+Date: Wed, 18 Mar 2026 23:05:24 +0800
+From: kernel test robot <lkp@intel.com>
+To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
+Subject: Re: [PATCH v3 01/17] spi: axiado: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <202603182309.Rj2JxGYZ-lkp@intel.com>
+References: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Message-Id: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
-X-B4-Tracking: v=1; b=H4sIALC7umkC/x3MQQqAIBBA0avErBswo5KuEi1EpxwICycqkO6et
- HyL/zMIJSaBscqQ6GLhPRY0dQUu2LgSsi8GrXSv2sagWEbZ9hNv9mfAdjBEvnNaOw8lOhIt/Pz
- DaX7fD/krs4pgAAAA
-X-Change-ID: 20260318-sai-slot-width-378eed5c22cd
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Heiko Stuebner <heiko@sntech.de>, Sugar Zhang <sugar.zhang@rock-chips.com>
-Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Alexey Charkov <alchark@flipper.net>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1654; i=alchark@flipper.net;
- h=from:subject:message-id; bh=NLuWlcb8pDVc/jx4hn9f+1Y4XpERqSPMPejDpC3HkM8=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTu2r2LQXabQmNxUOTmuWuVZk1xYDH7F7xj3tm5YhsuT
- d5751SZX8dEFgYxLgZLMUWWud+W2E414pu1y8PjK8wcViaQIdIiDQxAwMLAl5uYV2qkY6Rnqm2o
- Z2ioY6xjxMDFKQBTff4ZI8P3KSv/KzEcnL3vu/K+l+pbFh3xStZe+UPM8PKzyZlhs3YwMzLskdU
- R9W1wm3mARX752pKM9Qv8kr5alHXePbncc8pXtio2AA==
-X-Developer-Key: i=alchark@flipper.net; a=openpgp;
- fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
+Content-Disposition: inline
+In-Reply-To: <a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_075039_453686_AF7BCB51 
-X-CRM114-Status: GOOD (  11.43  )
+X-CRM114-CacheID: sfid-20260318_080614_089374_C502A756 
+X-CRM114-Status: GOOD (  13.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,51 +92,63 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Currently the slot width in non-TDM mode is always kept at the POR value
-of 32 bits, regardless of the sample width, which doesn't work well for
-some codecs such as NAU8822.
+Hi Pei,
 
-Set the slot width according to the sample width in non-TDM mode, which
-is what other CPU DAI drivers do.
+kernel test robot noticed the following build warnings:
 
-Tested on the following RK3576 configurations:
-- SAI2 + NAU8822 (codec as the clock master), custom board
-- SAI1 + ES8388 (codec as the clock master), RK3576 EVB1
-- SAI2 + RT5616 (SAI as the clock master), FriendlyElec NanoPi M5
+[auto build test WARNING on broonie-spi/for-next]
+[also build test WARNING on next-20260317]
+[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/master clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
 
-NAU8822 didn't work prior to this patch but works after the patch. Other
-two configurations work both before and after the patch.
+url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-Use-helper-function-devm_clk_get_enabled/20260318-110300
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-next
+patch link:    https://lore.kernel.org/r/a78f25f1b15b90121e9723ecb5bd606bbb1868d4.1773733017.git.xiaopei01%40kylinos.cn
+patch subject: [PATCH v3 01/17] spi: axiado: Use helper function devm_clk_get_enabled()
+config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/20260318/202603182309.Rj2JxGYZ-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260318/202603182309.Rj2JxGYZ-lkp@intel.com/reproduce)
 
-Fixes: cc78d1eaabad ("ASoC: rockchip: add Serial Audio Interface (SAI) driver")
-Signed-off-by: Alexey Charkov <alchark@flipper.net>
----
- sound/soc/rockchip/rockchip_sai.c | 4 ++++
- 1 file changed, 4 insertions(+)
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603182309.Rj2JxGYZ-lkp@intel.com/
 
-diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-index 1bf614dbdf4d..ed393e5034a4 100644
---- a/sound/soc/rockchip/rockchip_sai.c
-+++ b/sound/soc/rockchip/rockchip_sai.c
-@@ -628,6 +628,10 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
- 
- 	regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
- 
-+	if (!sai->is_tdm)
-+		regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
-+				   SAI_XCR_SBW(params_physical_width(params)));
-+
- 	regmap_read(sai->regmap, reg, &val);
- 
- 	slot_width = SAI_XCR_SBW_V(val);
+All warnings (new ones prefixed by >>):
 
----
-base-commit: 8e5a478b6d6a5bb0a3d52147862b15e4d826af19
-change-id: 20260318-sai-slot-width-378eed5c22cd
+   drivers/spi/spi-axiado.c: In function 'ax_spi_remove':
+>> drivers/spi/spi-axiado.c:865:24: warning: unused variable 'xspi' [-Wunused-variable]
+     865 |         struct ax_spi *xspi = spi_controller_get_devdata(ctlr);
+         |                        ^~~~
 
-Best regards,
+
+vim +/xspi +865 drivers/spi/spi-axiado.c
+
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  853  
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  854  /**
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  855   * ax_spi_remove - Remove method for the SPI driver
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  856   * @pdev:	Pointer to the platform_device structure
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  857   *
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  858   * This function is called if a device is physically removed from the system or
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  859   * if the driver module is being unloaded. It frees all resources allocated to
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  860   * the device.
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  861   */
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  862  static void ax_spi_remove(struct platform_device *pdev)
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  863  {
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  864  	struct spi_controller *ctlr = platform_get_drvdata(pdev);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07 @865  	struct ax_spi *xspi = spi_controller_get_devdata(ctlr);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  866  
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  867  	spi_unregister_controller(ctlr);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  868  
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  869  	pm_runtime_set_suspended(&pdev->dev);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  870  	pm_runtime_disable(&pdev->dev);
+e75a6b00ad7962a Vladimir Moravcevic 2026-01-07  871  
+
 -- 
-Alexey Charkov <alchark@flipper.net>
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
