@@ -4,68 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BCB910854D1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 02:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03615FCD0C5
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 07:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=59u+zt6QZ9D67sNmGWra6ITWnPP2GRkAklrz8naemLA=; b=x4myQCmHIjx+VN
-	hclBCTyxDL6VU2qKzwIgRi0nBuMjAb/cAhfs/VSjwTGlT57jb3vQmQY/JB5gcCAYr077gng95BOIe
-	H1kjPi/moAdRR4d4CCAAlAv9rOrTzqAmXgcz5yoln5owvX+qRwc22q2BGH8el5s6oEB+VQqAYX/IR
-	SjWcWmOhgCOhXR3TBcAQNtGbeKqBh0sXF+ZA99TRWhrpJv2qsNmOpWgspTdjDqIzBAIwGfx3kb7/x
-	hHoiluu5N0XSH/SAmHpfWUy0mMuyLu4/o7dsfnwlVtf401DXvlvWhhFH1zrkeoHtcOd26Mn0p+VhW
-	n5Dve8WrgejML+FGBxaQ==;
+	List-Owner; bh=7114WGxx3cQQnPE7KwYitzyE1BDXTaY/oRGl53XZ5co=; b=rcKuDAfC0wMjO3
+	iedOJzQPje8nJttIIzqQoZhL95+BEgEcq0tcj/xvlw026VOZ/KbY/wApv9st+uAFIBoeKogaVU1nN
+	8E9Xqe0Ug3FAP0Wk3Nnw1u/keU8/wNNVCp/w2PeSb5HzOjXy24Eo7FbJ5bE7hJ0lzP1eqP9eCASyh
+	2Qjxhlr/83b8gdVPQ0uLsIFWBtJFKaHWZsUKKmdsfG5pQWpd6kZlezaC3Y6VXBvm3P9iy/tOehtSc
+	KDSvymdp/xKBK1ZU5fbmSKSX3XntHTi7YsCw6CzaVYiK2ko0MHwOkshkKeLxPsinRVN00O6bh5nKB
+	fdYlbrnxZGEMeDpoUuEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2grL-00000007enE-3snq;
-	Wed, 18 Mar 2026 02:42:11 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1w2llS-00000007xwH-2vhJ;
+	Wed, 18 Mar 2026 07:56:26 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2gph-00000007cXE-0vGq;
-	Wed, 18 Mar 2026 02:40:30 +0000
-X-UUID: cc9aa704227311f1a21c59e7364eecb8-20260318
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:0cfe2427-3d59-4ad2-bf8a-2e540f18b346,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:5d417bfb0956acf9f04223ba2d7b9988,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: cc9aa704227311f1a21c59e7364eecb8-20260318
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 288843384; Wed, 18 Mar 2026 10:40:17 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v4 16/17] spi: zynq-qspi: Simplify clock handling with devm_clk_get_enabled()
-Date: Wed, 18 Mar 2026 10:40:06 +0800
-Message-Id: <ddf33629a24d640b3c775cca35123ff051366648.1773801401.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1773801401.git.xiaopei01@kylinos.cn>
-References: <cover.1773801401.git.xiaopei01@kylinos.cn>
+	id 1w2llP-00000007xvB-3Jxe;
+	Wed, 18 Mar 2026 07:56:24 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id C278A401D9;
+	Wed, 18 Mar 2026 07:56:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 17259C19421;
+	Wed, 18 Mar 2026 07:56:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773820582;
+	bh=Dm8nloxB7a4lKdtN1G1u7tvNf+IRoiVYTRO2+aKqP90=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=onwpR3ksvKHwW/w02b0cYAKyTnkIypaEko8bIAFKGYiNL0wVPIYy2H95Y0/EKbe6f
+	 Prpkct0J74uqCe6SuShrUHOhkieG6yzsOgh9Fy3E9FloSNCgGfyjr8R2Cs/WP2irnC
+	 2aIa/quFcNZmHy0pGXepzxhz1BYeTHNRYKxYjrxsZSCELcoPOx0Xfbcqb0rC+88ODK
+	 yhMzgwtXQAGDYBneLD7fWAl2/rr8ioMkCDtz9loBgoFzIupTdgyU4Ew+z9McKAyfTk
+	 pyXBe09Z1sLBesr62KzwstrePteZ0qB5qsSkyrXQcfDLiDacac8GEbKK6kRftRfGBA
+	 cS1PRZzpR2fNg==
+Date: Wed, 18 Mar 2026 08:56:20 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Gray Huang <gray.huang@wesion.com>
+Cc: heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, naoki@radxa.com, jonas@kwiboo.se, 
+	chaoyi.chen@rock-chips.com, i@chainsx.cn, michael.opdenacker@rootcommit.com, 
+	inindev@gmail.com, quentin.schulz@cherry.de, andrew@lunn.ch, alchark@gmail.com, 
+	pbrobinson@gmail.com, nick@khadas.com
+Subject: Re: [PATCH v2 1/2] dt-bindings: arm: rockchip: Add Khadas Edge 2L
+ board
+Message-ID: <20260318-spicy-wasp-of-prosperity-9ad730@quoll>
+References: <20260317090731.600787-1-gray.huang@wesion.com>
+ <20260317090731.600787-2-gray.huang@wesion.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260317090731.600787-2-gray.huang@wesion.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260317_194029_660347_BBE14429 
-X-CRM114-Status: GOOD (  12.30  )
+X-CRM114-CacheID: sfid-20260318_005623_849701_57BBC6B1 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,112 +77,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace devm_clk_get() followed by clk_prepare_enable() with
-devm_clk_get_enabled() for both "pclk" and "ref_clk". This removes
-the need for explicit clock enable and disable calls, as the managed
-API automatically disables the clocks on device removal or probe
-failure.
+On Tue, Mar 17, 2026 at 05:07:30PM +0800, Gray Huang wrote:
+> The Khadas Edge 2L is a single board computer based on the
+> Rockchip RK3576 SoC.
 
-Remove the now-unnecessary clk_disable_unprepare() calls from the
-probe error paths and the remove callback. Simplify error handling
-by jumping directly to the remove_ctlr label.
+<form letter>
+This is a friendly reminder during the review process.
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
----
- drivers/spi/spi-zynq-qspi.c | 31 ++++++-------------------------
- 1 file changed, 6 insertions(+), 25 deletions(-)
+It looks like you received a tag and forgot to add it.
 
-diff --git a/drivers/spi/spi-zynq-qspi.c b/drivers/spi/spi-zynq-qspi.c
-index 5232483c4a3a..8c3975030d0a 100644
---- a/drivers/spi/spi-zynq-qspi.c
-+++ b/drivers/spi/spi-zynq-qspi.c
-@@ -661,7 +661,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 		goto remove_ctlr;
- 	}
- 
--	xqspi->pclk = devm_clk_get(&pdev->dev, "pclk");
-+	xqspi->pclk = devm_clk_get_enabled(&pdev->dev, "pclk");
- 	if (IS_ERR(xqspi->pclk)) {
- 		dev_err(&pdev->dev, "pclk clock not found.\n");
- 		ret = PTR_ERR(xqspi->pclk);
-@@ -670,36 +670,24 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 
- 	init_completion(&xqspi->data_completion);
- 
--	xqspi->refclk = devm_clk_get(&pdev->dev, "ref_clk");
-+	xqspi->refclk = devm_clk_get_enabled(&pdev->dev, "ref_clk");
- 	if (IS_ERR(xqspi->refclk)) {
- 		dev_err(&pdev->dev, "ref_clk clock not found.\n");
- 		ret = PTR_ERR(xqspi->refclk);
- 		goto remove_ctlr;
- 	}
- 
--	ret = clk_prepare_enable(xqspi->pclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable APB clock.\n");
--		goto remove_ctlr;
--	}
--
--	ret = clk_prepare_enable(xqspi->refclk);
--	if (ret) {
--		dev_err(&pdev->dev, "Unable to enable device clock.\n");
--		goto clk_dis_pclk;
--	}
--
- 	xqspi->irq = platform_get_irq(pdev, 0);
- 	if (xqspi->irq < 0) {
- 		ret = xqspi->irq;
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 	ret = devm_request_irq(&pdev->dev, xqspi->irq, zynq_qspi_irq,
- 			       0, pdev->name, xqspi);
- 	if (ret != 0) {
- 		ret = -ENXIO;
- 		dev_err(&pdev->dev, "request_irq failed\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 
- 	ret = of_property_read_u32(np, "num-cs",
-@@ -709,7 +697,7 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 	} else if (num_cs > ZYNQ_QSPI_MAX_NUM_CS) {
- 		ret = -EINVAL;
- 		dev_err(&pdev->dev, "only 2 chip selects are available\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	} else {
- 		ctlr->num_chipselect = num_cs;
- 	}
-@@ -728,15 +716,11 @@ static int zynq_qspi_probe(struct platform_device *pdev)
- 	ret = devm_spi_register_controller(&pdev->dev, ctlr);
- 	if (ret) {
- 		dev_err(&pdev->dev, "devm_spi_register_controller failed\n");
--		goto clk_dis_all;
-+		goto remove_ctlr;
- 	}
- 
- 	return ret;
- 
--clk_dis_all:
--	clk_disable_unprepare(xqspi->refclk);
--clk_dis_pclk:
--	clk_disable_unprepare(xqspi->pclk);
- remove_ctlr:
- 	spi_controller_put(ctlr);
- 
-@@ -758,9 +742,6 @@ static void zynq_qspi_remove(struct platform_device *pdev)
- 	struct zynq_qspi *xqspi = platform_get_drvdata(pdev);
- 
- 	zynq_qspi_write(xqspi, ZYNQ_QSPI_ENABLE_OFFSET, 0);
--
--	clk_disable_unprepare(xqspi->refclk);
--	clk_disable_unprepare(xqspi->pclk);
- }
- 
- static const struct of_device_id zynq_qspi_of_match[] = {
--- 
-2.25.1
+If you do not know the process, here is a short explanation:
+Please add Acked-by/Reviewed-by/Tested-by tags when posting new
+versions of patchset, under or above your Signed-off-by tag, unless
+patch changed significantly (e.g. new properties added to the DT
+bindings). Tag is "received", when provided in a message replied to you
+on the mailing list. Tools like b4 can help here. However, there's no
+need to repost patches *only* to add the tags. The upstream maintainer
+will do that for tags received on the version they apply.
+
+Please read:
+https://elixir.bootlin.com/linux/v6.12-rc3/source/Documentation/process/submitting-patches.rst#L577
+
+If a tag was not added on purpose, please state why and what changed.
+</form letter>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
