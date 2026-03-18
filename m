@@ -4,67 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02095107760D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 19:30:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB705107760E
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 19:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tiVmUMiVaJN5oHGZ9++W91e8apUaY6OABXCOuTRB/NI=; b=jx/AuRW1IBVu/I
-	R60/Qucg+ccVIdgFX1lD+qCDRJ89TlHx5B/8HnCbZwLz5Jsh+aTV0/SIf+GQCxVOq+Oa2ROC//0MK
-	c/pCrVcJOD6NFdbgoCAELpc2ALrqa21v833Es0NunyUgkuJEDAw+WVy8qrlj3FhaPopAoS1jHm8Bn
-	nMOWmkeJLWBoKuUmBXWBw2gm7aWVXMpdPt9qwR7CgGUcj1KLuE3RiYECPMwMsNRgUW0MkQMZNu0L+
-	nMzySvX1tKyyS33vpIzIAPOvGDCxSqVw89Cz6xlm+pLUf/T5EB7qit2GNUp4yRvotz2//DHRV89hM
-	TMEoQUpyKAPzLzXYrSmQ==;
+	List-Owner; bh=x3/tci5R0dBMqBed3nw6P3XV/ayqpr90s36FcHK+Vrk=; b=BiyGKC97CQCGRU
+	OyeGDiUi9lL7+myJ0M7lqnVoHzd2oApBNHhdVP/aY3lXGwGSb0OONHr+CimkBEYrFFYYr0l6Q53JH
+	mQg+jX3cbGPyh3bH8lLEa4hS5AOg4/3v02TV84HsoLPPRowH2XI6ZiJRrZwqGoo8QDIFQpr8XLUbW
+	6wh6U2HJq3CNPbxgmazxFd9B4VcKBd5EjaNWhPX5dyj7R2XKsbyq+jA1AP1SLonF0j7Vk/Rn5QgvX
+	9mMa0lSBcpVtuMfXBnDEDI0JBrVX0MsgRmDM9SLOCP6TOO6TS6L/473S+Wfl/LCibmX/p2rWTnXCr
+	ImxvOcOBzkkLyOBdYS2Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2waw-00000009Esp-3UyV;
-	Wed, 18 Mar 2026 19:30:18 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1w2x0E-00000009G5t-2cA9;
+	Wed, 18 Mar 2026 19:56:26 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2wat-00000009Es4-49ve
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Mar 2026 19:30:17 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1773862212; cv=none; 
+	id 1w2x0B-00000009G5V-2nZR;
+	Wed, 18 Mar 2026 19:56:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1773863773; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=cNcdhXgkyPAGZHAW9rMHvUva+G1af9eWvZykYLY2gQqVwxJfib3A1YeC2JLq3yUbJI1g0Hc55wrjlIPK0K2dgnmb7/l+SsmEqaNnyPl86HoRZ6pW4lPrLmS5dnpns9flxEOOlroKpVtnfvZRiFdkJPtnYzqW5ipTpDfKEiJZSII=
+	b=EGzOvcVKwT5yKkqoBnwcXBINCb6R55d1qXgQH6Wov3tqMDz4x67Jf4Yx9KFj+GVYgu1oPqVp/Ern2JFVyz2tntOFiZZVymYOYhsGH5cEztroDDcWD/TTkvSeLBQn+DaDUhZtwUFsLANp5bXsyFS8ZgSQVDZgBBP3rt4rSvFt4v8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1773862212; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=AoHyond7xNgQSW9EJSh2IxOLr5RUuJoKHFWAxfuSNEc=; 
-	b=OtKilQGSfADbe/1dFepbWOd5EWgA+lAXGUUKNfnRiFoVxqv2K7iVyd4dFczie89who0fJojnyzjWQBp6CbZ64CRmLXmKdC/g/uTWy8BZDP1bOnR7nToSnCjIA/asH4TVJpaq7cc7rYohaH872oO5n5x8DlXJ2gZjzAEJqaQqAg0=
+	t=1773863773; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=7i7Sts2L5UVBiYhCcyvetXpuxZHpVPukk3YrxttDSSY=; 
+	b=gvgF5IFU8AhXld3iBJj31FH6WR6shbbLgrjSqGlk+b+pohKAD9bqZYNLhQogHpooETETA7THOUF7343nwWuzKxCmUqQIZs01XppIb/9ER5gM5Xo5fjf4UYeLe4gjUzmpYWO++SnUgwdKVZysuNb2GtYyjtPzePcKWMufSJ2prK4=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
-	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773862212;
-	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:From:From:To:To:Cc:Cc:References:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=AoHyond7xNgQSW9EJSh2IxOLr5RUuJoKHFWAxfuSNEc=;
-	b=lTn6OW5LosCLZKFxGF7loosMjYiuFz33Xeb3mavomlA9F2ScUuou+Z/JC05zoLF/
-	AuYftLYOGAS/5iWXvqcEskyc2hHqt92f4GOmZY6sLOZlMQRnR+kRDAHXVp5I9r97p5J
-	/nvKprGQEaq/abtpbkJ91vm3WPaeNZxdudsvpDp4=
-Received: by mx.zohomail.com with SMTPS id 1773862210582440.3353042997378;
-	Wed, 18 Mar 2026 12:30:10 -0700 (PDT)
-Message-ID: <18888de2-d294-41f3-b37f-e74b34209728@collabora.com>
-Date: Wed, 18 Mar 2026 22:30:07 +0300
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1773863773;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=7i7Sts2L5UVBiYhCcyvetXpuxZHpVPukk3YrxttDSSY=;
+	b=k/X77GIBP4H0Y7nZk0GKcjVRZoVFAPWXzmpNgG9u8alGd67WBrbo51a1BtHCxtq7
+	dtEGdozh8h4+jvA4bJFg8I8s++GndCGhfgVdBJpWVrH18+YKOGjE2Urr/EJr3t/zcBS
+	egNSG5lT1UwWUr2uYb1pfPbDBq24QXn5SOMZLnio=
+Received: by mx.zohomail.com with SMTPS id 1773863771726221.9025611389253;
+	Wed, 18 Mar 2026 12:56:11 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Heiko Stuebner <heiko@sntech.de>, Sugar Zhang <sugar.zhang@rock-chips.com>,
+ Alexey Charkov <alchark@flipper.net>
+Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alexey Charkov <alchark@flipper.net>
+Subject: Re: [PATCH] ASoC: rockchip: rockchip_sai: Set slot width for non-TDM mode
+Date: Wed, 18 Mar 2026 20:56:06 +0100
+Message-ID: <14828456.uLZWGnKmhe@workhorse>
+In-Reply-To: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
+References: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: hdmirx: snps, rk: Fix EDID injection with proper
- HPD toggle on RK3588
-From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-To: Ross Cawston <ross@r-sc.ca>, linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org, hans.verkuil@cisco.com,
- ezequiel@collabora.com, benjamin.gaignard@collabora.com
-References: <20260209061654.54757-1-ross@r-sc.ca>
- <476df663-2391-46ef-a5ae-2000bb418d73@collabora.com>
-Content-Language: en-US
-In-Reply-To: <476df663-2391-46ef-a5ae-2000bb418d73@collabora.com>
-X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_123016_090894_1DE4DDD4 
-X-CRM114-Status: GOOD (  19.69  )
+X-CRM114-CacheID: sfid-20260318_125623_781793_5496F9D4 
+X-CRM114-Status: GOOD (  24.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,51 +74,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMi8xMy8yNiAxNTo0NiwgRG1pdHJ5IE9zaXBlbmtvIHdyb3RlOgo+IE9uIDIvOS8yNiAwOTox
-NiwgUm9zcyBDYXdzdG9uIHdyb3RlOgo+PiBUaGUgZXhpc3RpbmcgVklESU9DX1NfRURJRCBpbXBs
-ZW1lbnRhdGlvbiB3cml0ZXMgRURJRCBkYXRhIGJ1dCBkb2VzIG5vdAo+PiBwcm9wZXJseSB0cmln
-Z2VyIHNvdXJjZSByZW5lZ290aWF0aW9uIG9uIFJLMzU4OCBib2FyZHMuIFRoaXMgcmVzdWx0cyBp
-bgo+PiBubyB2aXNpYmxlIGNoYW5nZSB0byB0aGUgc291cmNlIGRldmljZSBkZXNwaXRlIHRoZSBp
-b2N0bCBzdWNjZWVkaW5nLgo+Pgo+PiBFdmVuIHJlLXBsdWdnaW5nIHRoZSBIRE1JIGNhYmxlIGRv
-ZXMgbm90IHRyaWdnZXIgcmVuZWdvdGlhdGlvbiBvbiBwcmV2aW91cwo+PiB2ZXJzaW9ucyBvZiB0
-aGUgZHJpdmVyLiBUaGlzIHZlcnNpb24gcmVsaWFibHkgdHJpZ2dlcnMgcmVuZWdvdGlhdGlvbiBv
-bgo+PiBFRElEIGluamVjdGlvbiBvbiB0ZXN0ZWQgaGFyZHdhcmUuCj4+Cj4+IEZpeCBieSBtaXJy
-b3JpbmcgdGhlIHZlbmRvciBCU1AgYmVoYXZpb3I6Cj4+IC0gRGlzYWJsZSBIRE1JIGFuZCBETUEg
-SVJRcyB0byBhdm9pZCByYWNlcy4KPj4gLSBTaW11bGF0ZSBwbHVnb3V0IGlmIDVWIHBvd2VyIGlz
-IHByZXNlbnQuCj4+IC0gVG9nZ2xlIEhQRCBsb3cgYmVmb3JlIHdyaXRlLgo+PiAtIFNjaGVkdWxl
-IGEgZGVsYXllZCBob3RwbHVnIHdvcmtxdWV1ZSAoMTAwMG1zKSB0byByZS1lbmFibGUgSFBEIGFu
-ZAo+PiAgIGZvcmNlIHJlbmVnb3RpYXRpb24uCj4+Cj4+IEJ1bXAgV0FJVF9TSUdOQUxfTE9DS19U
-SU1FIGZyb20gMzAwbXMgdG8gNjAwbXMgdG8gZW5zdXJlIGxvY2suCj4+Cj4+IFRoaXMgZW5zdXJl
-cyBjdXN0b20gRURJRHMgdGFrZSBlZmZlY3QgcmVsaWFibHksIGFsbG93aW5nIHVzZXJzcGFjZSB0
-bwo+PiBmb3JjZSBzcGVjaWZpYyByZXNvbHV0aW9ucy90aW1pbmdzLgo+Pgo+PiBUZXN0ZWQgb24g
-T3JhbmdlIFBpIDUgVWx0cmEgYW5kIFJhZHhhIFJvY2sgNUIg4oCUIHNvdXJjZXMgbm93IGNvcnJl
-Y3RseQo+PiByZS1kZXRlY3QgYW5kIGxvY2sgdG8gdGhlIG5ldyBFRElEIG1vZGVzLgo+Pgo+PiBT
-aWduZWQtb2ZmLWJ5OiBSb3NzIENhd3N0b24gPHJvc3NAci1zYy5jYT4KPj4KPj4gLS0tCj4+ICBk
-cml2ZXJzL21lZGlhL3BsYXRmb3JtL3N5bm9wc3lzL2hkbWlyeC9zbnBzX2hkbWlyeC5jIHwgNDMg
-KysrKysrKysrKysrKysrKystLS0tLS0KPj4gIDEgZmlsZSBjaGFuZ2VkLCAzNyBpbnNlcnRpb25z
-KCspLCA2IGRlbGV0aW9ucygtKQo+Pgo+PiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0
-Zm9ybS9zeW5vcHN5cy9oZG1pcngvc25wc19oZG1pcnguYyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZv
-cm0vc3lub3BzeXMvaGRtaXJ4L3NucHNfaGRtaXJ4LmMKPj4gaW5kZXggYWJjMTIzLi5kZWY0NTYg
-MTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vc3lub3BzeXMvaGRtaXJ4L3Nu
-cHNfaGRtaXJ4LmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9zeW5vcHN5cy9oZG1p
-cngvc25wc19oZG1pcnguYwo+PiBAQCAtODgsNiArODgsMTAgQEAKPj4gIAlIRE1JUlhfTlVNX1JT
-VCwKPj4gIH07Cj4gCj4gSGVsbG8gUm9zcywKPiAKPiBJIHdhcyBhYmxlIHRvIHJlcHJvZHVjZSB0
-aGUgcHJvYmxlbSBhbmQgY29uZmlybSB0aGF0IHRoaXMgcGF0Y2ggZml4ZXMKPiBpdC4gV2lsbCBu
-ZWVkIG1vcmUgdGltZSB0byB1bmRlcnN0YW5kIHdoYXQncyBnb2luZyBvbiBhcyBwcmV0dHkgc3Vy
-ZQo+IEVESUQgd2FzIHdvcmtpbmcgcHJvcGVybHkgbGFzdCB0aW1lIEkgd2FzIHRlc3RpbmcgaXQs
-IHdpbGwgZ2V0IGJhY2sgdG8KPiB5b3UgYWZ0ZXIuCj4gCj4gQlRXLCBrZXJuZWwncyBzb3VyY2Ug
-Y29kZSBoYXMgLi9zY3JpcHRzL2dldF9tYWludGFpbmVyLnBsIHRoYXQgeW91Cj4gc2hvdWxkIHVz
-ZSBiZWZvcmUgc2VuZGluZyBwYXRjaCB0byBNTCB0byBmaW5kIHJlbGV2YW50IGVtYWlsIHJlY2lw
-aWVudHMKPiBvZiB0aGUgcGF0Y2gsIG90aGVyd2lzZSBpdCBtYXkgc3RheSB1bm5vdGljZWQgZm9y
-IGEgbG9uZyB0aW1lLgo+IAoKSGksIFJvc3MuIFBsZWFzZSBnaXZlIGEgdGVzdCB0byBbMV0sIGl0
-IGZpeGVzIEVESUQgcHJvYmxlbSB3aXRoIG15IHRlc3RpbmcuCgpbMV0KaHR0cHM6Ly9sb3JlLmtl
-cm5lbC5vcmcvbGludXgtbWVkaWEvMjAyNjAzMTgxOTI2MTkuMzkxMDA2MC0xLWRtaXRyeS5vc2lw
-ZW5rb0Bjb2xsYWJvcmEuY29tL1QvI3UKCi0tIApCZXN0IHJlZ2FyZHMsCkRtaXRyeQoKX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
-bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
-c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Wednesday, 18 March 2026 15:50:25 Central European Standard Time Alexey Charkov wrote:
+> Currently the slot width in non-TDM mode is always kept at the POR value
+> of 32 bits, regardless of the sample width, which doesn't work well for
+> some codecs such as NAU8822.
+> 
+> Set the slot width according to the sample width in non-TDM mode, which
+> is what other CPU DAI drivers do.
+> 
+> Tested on the following RK3576 configurations:
+> - SAI2 + NAU8822 (codec as the clock master), custom board
+> - SAI1 + ES8388 (codec as the clock master), RK3576 EVB1
+> - SAI2 + RT5616 (SAI as the clock master), FriendlyElec NanoPi M5
+> 
+> NAU8822 didn't work prior to this patch but works after the patch. Other
+> two configurations work both before and after the patch.
+> 
+> Fixes: cc78d1eaabad ("ASoC: rockchip: add Serial Audio Interface (SAI) driver")
+> Signed-off-by: Alexey Charkov <alchark@flipper.net>
+> ---
+>  sound/soc/rockchip/rockchip_sai.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
+> index 1bf614dbdf4d..ed393e5034a4 100644
+> --- a/sound/soc/rockchip/rockchip_sai.c
+> +++ b/sound/soc/rockchip/rockchip_sai.c
+> @@ -628,6 +628,10 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
+>  
+>  	regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
+>  
+> +	if (!sai->is_tdm)
+> +		regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
+> +				   SAI_XCR_SBW(params_physical_width(params)));
+> +
+>  	regmap_read(sai->regmap, reg, &val);
+>  
+>  	slot_width = SAI_XCR_SBW_V(val);
+> 
+> ---
+> base-commit: 8e5a478b6d6a5bb0a3d52147862b15e4d826af19
+> change-id: 20260318-sai-slot-width-378eed5c22cd
+> 
+> Best regards,
+> 
+
+Thanks for the patch! Looking at where else this reg mask is used, I
+got curious about `rockchip_sai_set_tdm_slot`. It seems to reset
+SAI_XCR_SBW back to 32 when something calls it with 0 slots. Do we
+have to adjust this as well there?
+
+I think what we're running into here is the difference between I2S
+normal mode, and I2S justified mode. In justified modes, it'd be
+normal to have a slot bit width of 32 but a valid data width of, say,
+16. In that case, VDJ would specify whether something is left or right
+justified as far as I can tell.
+
+So basically I'm wondering if we've accidentally been sending
+I2S left-justified data all along when using SND_SOC_DAIFMT_I2S,
+and whether we should only be setting this in SND_SOC_DAIFMT_I2S.
+
+Either way, I can give this a
+
+Tested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+for ES8388 on my ROCK 4D (with my enablement patches for it there
+on top that I need to get back around to).
+
+Kind regards,
+Nicolas Frattaroli
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
