@@ -4,105 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33BBC10775E1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 16:52:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF57D10775E9
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 17:05:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LZEtSn5kOIqBh2gHA8EI5vfZgsSoJw2/W30IO+fuO54=; b=eWG+TgXkPfaTs5
-	qW3FkAee71CjZiKWVLjbowK3uGwUNlzyPfB/tR5dLv+C4OMLap9bOF/Dv5czO+O5ZmTVyly6OZV0g
-	5LljZ97ccJJFi4lrPboDYKi6kQ2xcUhClAVfnDsz55hYNGfaYHfRZVxcAe/ah+Jz18oxOn76cyDQ/
-	MIt+nmD/+8ZjAGPvk3hbjkRlRD+qe4qemoO2TelLEldERVVEAcbHSImEVS7XrvBOzj8JkIotZqw1i
-	bWEBqw3LZNV/Gvm0dpgi1GcSGvTr/pO0b51pf2y1sPKuxrAc0f3AFEcikBx7i13u8F5qDTdWFHoNR
-	+c9CtQ34GJCEr029ZtFA==;
+	List-Owner; bh=25XnnNuDQ4zF8DUyRHKGZ1gADE6i4miuRqPbtuAffqg=; b=i+M9678PKwuY0I
+	ZxZdg6x/iLQM3zEFWmzJf0W/UrMgTsE3bwNPqx1NLziXFBZtg3DvefHaHdtrCW3mlNibArToP2oOm
+	/M+65XQt0UXmAmeVjIzdng4DxMOShi4Z7TH8hhYZOLVTUbPfMYuQeaGhJSX7kdR0ZtEHv4nzvpaPt
+	wi6uLO4fLI7H1DnFnZnKK+E1Rtt1Y/Y+8wfQHlvBHRFQKjzFRA8+j61IaqiPPBcqjcs0bd7JON7bZ
+	bEUnZkzURdsuqDQFGTj7oQrccT/CcJ+Tirk81YJU+PYKiq+gYVnUyGkKVR/ZviKQAjz+2PAbjzo5n
+	HgdSOuqL+q7ZXeuQkx4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2u8F-000000090Oj-3gx2;
-	Wed, 18 Mar 2026 16:52:31 +0000
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+	id 1w2uKi-000000091Ig-2FVt;
+	Wed, 18 Mar 2026 17:05:24 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2u8D-000000090Nw-2Odj
-	for linux-rockchip@lists.infradead.org;
-	Wed, 18 Mar 2026 16:52:30 +0000
-Received: by mail-ej1-x62b.google.com with SMTP id a640c23a62f3a-b97b30fa5e5so2568666b.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 18 Mar 2026 09:52:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1773852747; cv=none;
-        d=google.com; s=arc-20240605;
-        b=JXRPBfQWpHdELZVtCNOOKueZSN83VT9sUapky1CoitZoZnGMMqzFmqKUg687A95H0r
-         qN18KNsF0yE8MXNo+aeCt6l3FXMefvo5H/8sj5WxKwnH9M8t87RErq7BAcefegrw7pyf
-         RVF/rXJvp4GKgxdX2ewezGCjXXQ8cLdjorCfIxzj0PMngWnDJ5g0BDU4FYDsr/DXlGbg
-         OYSEgBA2pZWsfrs+Ocg6oy4t+98ZNdDeHyuRyZN8Zf3oUJ1/7xM38AiE8tavt3l+1jY/
-         u8kNTFDpwDhxbKr6H3SqHZzMrEIenviEPDn5hXIYtr8ypqEnypk3ipx6gvPtNnOhzz00
-         dyNg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=n8s0iyx5Up+axNLd5N4vYWUUxP+7s5+5idq+mXMf/gI=;
-        fh=TY4n+IPOWqgLa2z0YeXa2396qQlByPbnEXw1mvju8n0=;
-        b=dZJIHRK7WLKEsj7Vo9Qg22tqI6b9dTVjxYhwY3zZW82t9TPi9ZAoNeog6F9Z2TMmRq
-         H0hu4jhh3Kgb2UTkuA1AFxd9sHE412pa9pAC0BQEZ8kcb3JLdmwJUteYHtJjToZDd9Sn
-         JY9ANWmppGQZ/8Pbxst+np4tx/l+1LSjDX9VESEN3UVoBdEvw/D8cv3iNbPHqnOKq3JO
-         eV4P/7NKr0dvo5kA5nmtAeVceqtiylGdJlDsNSNIDDimn7w1fCF5mySj0UCarwenOVa/
-         FRiOYLwqQot83E5s92vGZn3woZFx0h/Dx7S0ZfLOepvq6pccSg64j7ATwRQa3+W4obNW
-         2qCg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1773852747; x=1774457547; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=n8s0iyx5Up+axNLd5N4vYWUUxP+7s5+5idq+mXMf/gI=;
-        b=Y8AZ+b+i2FJdC2n5Xf5Jiv9843adCoyYCuxNKWUnxMynGs9/KGy6DDuXrVX7BQG6Ap
-         Xi+bZZd96I/YqHJtFHqMl2teVnD0AP+PhncaZ47bJej2um8PnF5OUMg+z8Sxvw8Z/6Uo
-         ITdFWkqryNsaJfn1YbAwUKna6X7NLiPInMonMai16obnf6McW60BNIvyUu+rtl3GYSM9
-         2kHDg/HxcWIM5Uk7Xpz6CFeT4G039WIbP6IlB6VW6ZvhKDtseKb+WZVkIuAfuNDnYm6w
-         Ph3bxxPcuCaYsJHn097iKlx7uK62KYxhrpipZUDgIcCr8isOpkZW4G/k6+1NoH+Vtlad
-         uQ0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773852747; x=1774457547;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=n8s0iyx5Up+axNLd5N4vYWUUxP+7s5+5idq+mXMf/gI=;
-        b=M6RVT+biOyym2feYUSZ4PxsJmzHcM1fVXM/8+OK5j8V2yplW6BsRNzVVxwO+P8KGYW
-         Ru6bDiG6sPJ5pUj5wnrW2enA0XFDF7f+YeqFgx4ZQ143sSf+tsDJ6ZeIN8NBzO4Xhuxj
-         muddX6m4aVZ0rBkg0XAxYttzUGgZ/9qeEncyus35IrbFJ3DClT635DuVBIBSRv+qMjph
-         RQl32+kpvR2VkVuC4UtWXPwTvNHyjihYNifmxFtrQiv4hxGGAUWYD3nB3xHCODplM2FE
-         rXtkkBUG2oFZZRd57Ul3ws2zlkIa1Io5i5CgzjojYO8f7TfdZLFOuNrkEK29PDoYsrAa
-         2rog==
-X-Forwarded-Encrypted: i=1; AJvYcCWtxSb66UBKLBHR3RgoQ9S2YLiLSKImK+WCNrff28cGcM9qUjqast+MAD/wZpDjtCYTNB4gd7Kjy/UBmPboag==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw8wfEP/dnnDTpDgMel+wKuJRwq8/untFbtoX0kwIZCEXjXnvIL
-	1rMlO1ngERZCqWUERCh4x17IpIQct2ere6UUiyS+z/8AFrt1LCYwMxpLYuaGD9Szz5Ao8tiFFEF
-	tlZouLgng6DXEIGf7XE1Z6tmIUKa2MZ3fUPXZnAxprQ==
-X-Gm-Gg: ATEYQzzHHfqkjqNtd3loMCfQaVAV3sAQjp5+0WYt1P3toNmZkGdki/sIByKFSuOcBPK
-	sUv6hYs8sg25dYn7ciHT9DW3y0/hLz1xdDAQs+Eee6BgRla664ZiaSHKKzhh52owUw92zr5jrqd
-	U1LZ9VicDqOUX6AbOzweW4R3wL5akBtfQo0hideYj4gv32m+Cj1D5QoXh7WMGNahqGUsV1InR/V
-	Duzv6zNXnuPCGjJFO49213DHvg55VhBbeL6zZIH8CLxgw1CDunqkiQqc8PAyGXSyzkpu/w80RP0
-	y2TwrJc=
-X-Received: by 2002:a17:907:268c:b0:b87:7485:b4a8 with SMTP id
- a640c23a62f3a-b97f437c5e0mr269129266b.0.1773852747057; Wed, 18 Mar 2026
- 09:52:27 -0700 (PDT)
+	id 1w2uKf-000000091Hs-0kak;
+	Wed, 18 Mar 2026 17:05:22 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773853521; x=1805389521;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=FRwg2E9CLljwcNk6xTVAFoV/k9oE/5jF1+naOPnV9r4=;
+  b=InLvy5jCXWuuy/fsi+SbucXet37p4D9GM3Nn7WEwYsKf1GFuBhfbnIjQ
+   jYx8MAm3k3m6iXzQl+GNWfRENuQwaoRRd+o+9uByF3SUJZaMm2ZUfROWD
+   9k7aR+ev78ETCEIf+sgu1ff69x5H3efOJ5m+IH2jA8ilDlDuXw0Cy7SNg
+   JCcPMa/tixfnTBBcHBHmmTGtRKQK/ifU4E26Y3iM1kB6l/IWPu6OsSRD6
+   f0VhyrS81iaX1H83yk9Thjp5lT+jHBisiWItVmTWDA4R4fmnQ3DEGFDMr
+   cK2WOgLJHpY5gKzovMnwivXtC6RN8/og1NCTZdGFeXQhd4MVGno20VpL4
+   w==;
+X-CSE-ConnectionGUID: pCOIlR72RNq6k71w7TlrlA==
+X-CSE-MsgGUID: M2ADU1mbTTeBsVJ6yUvZnw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="74948736"
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="74948736"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Mar 2026 10:05:20 -0700
+X-CSE-ConnectionGUID: I4g4cbSVQxWMegfWb/0kZg==
+X-CSE-MsgGUID: a8hhyyakQLmEVdfMWq0wMQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,127,1770624000"; 
+   d="scan'208";a="222740621"
+Received: from lkp-server01.sh.intel.com (HELO 63737dd503cb) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 18 Mar 2026 10:05:16 -0700
+Received: from kbuild by 63737dd503cb with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w2uKX-000000003Az-29FG;
+	Wed, 18 Mar 2026 17:05:13 +0000
+Date: Thu, 19 Mar 2026 01:04:38 +0800
+From: kernel test robot <lkp@intel.com>
+To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
+	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org
+Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
+Subject: Re: [PATCH v3 07/17] spi: orion: Use helper function
+ devm_clk_get_enabled()
+Message-ID: <202603190122.1OMLjae4-lkp@intel.com>
+References: <5727aa84748872059e2a39eb67f1f08c0de6206b.1773733017.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-References: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net> <339ebaa9-9642-4716-bca7-6a32a135124a@sirena.org.uk>
-In-Reply-To: <339ebaa9-9642-4716-bca7-6a32a135124a@sirena.org.uk>
-From: Alexey Charkov <alchark@flipper.net>
-Date: Wed, 18 Mar 2026 20:52:16 +0400
-X-Gm-Features: AaiRm53s1de568Rl6WcWFL_NmD36Tc9G63SkTCGabmNWoWncrHCvYMTyZ7Db36c
-Message-ID: <CAKTNdwF9JRW7PjqnZwmvp_X5UjjJ023tBzFY7yCSnCJH5W6q-w@mail.gmail.com>
-Subject: Re: [PATCH] ASoC: rockchip: rockchip_sai: Set slot width for non-TDM mode
-To: Mark Brown <broonie@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Sugar Zhang <sugar.zhang@rock-chips.com>, linux-rockchip@lists.infradead.org, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
+Content-Disposition: inline
+In-Reply-To: <5727aa84748872059e2a39eb67f1f08c0de6206b.1773733017.git.xiaopei01@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_095229_621080_C31D51CF 
-X-CRM114-Status: GOOD (  10.35  )
+X-CRM114-CacheID: sfid-20260318_100521_281995_A12AB255 
+X-CRM114-Status: GOOD (  10.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,26 +87,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXIgMTgsIDIwMjYgYXQgODoxN+KAr1BNIE1hcmsgQnJvd24gPGJyb29uaWVAa2Vy
-bmVsLm9yZz4gd3JvdGU6Cj4KPiBPbiBXZWQsIE1hciAxOCwgMjAyNiBhdCAwNjo1MDoyNVBNICsw
-NDAwLCBBbGV4ZXkgQ2hhcmtvdiB3cm90ZToKPgo+ID4gICAgICAgcmVnbWFwX3VwZGF0ZV9iaXRz
-KHNhaS0+cmVnbWFwLCByZWcsIFNBSV9YQ1JfVkRXX01BU0sgfCBTQUlfWENSX0NTUl9NQVNLLCB2
-YWwpOwo+ID4KPiA+ICsgICAgIGlmICghc2FpLT5pc190ZG0pCj4gPiArICAgICAgICAgICAgIHJl
-Z21hcF91cGRhdGVfYml0cyhzYWktPnJlZ21hcCwgcmVnLCBTQUlfWENSX1NCV19NQVNLLAo+ID4g
-KyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgU0FJX1hDUl9TQlcocGFyYW1zX3BoeXNp
-Y2FsX3dpZHRoKHBhcmFtcykpKTsKPiA+ICsKPgo+IFdoYXQgaGFwcGVucyBpZiBwbGF5YmFjayBh
-bmQgY2FwdHVyZSBoYXZlIGRpZmZlcmVudCB3aWR0aHM/ICBJIHdvbmRlciBpZgo+IGZvcmNpbmcg
-YSBURE0gY29uZmlndXJhdGlvbiB3aXRoIHRoZSBhZmZlY3RlZCBDT0RFQ3Mgd291bGQgYmUgZWFz
-aWVyLgoKUGxheWJhY2sgYW5kIGNhcHR1cmUgZ28gdG8gZGlmZmVyZW50ICJyZWciIGVhY2gsIGFu
-ZCBlYWNoIGhhcyBhIHNsb3QKd2lkdGggZmllbGQuIFRoZSBjb3JyZWN0ICJyZWciIGZvciB0aGUg
-c3RyZWFtIGlzIHNlbGVjdGVkIDUwIGxpbmVzIHVwCmluIHRoZSBzYW1lIGZ1bmN0aW9uLiBTbyB0
-aGV5IHNob3VsZG4ndCByZWFsbHkgZ2V0IGluIGVhY2ggb3RoZXIncwp3YXksIGZyb20gd2hhdCBJ
-IGNhbiB0ZWxsLgoKQmVzdCByZWdhcmRzLApBbGV4ZXkKCl9fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
-eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
-L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Pei,
+
+kernel test robot noticed the following build warnings:
+
+[auto build test WARNING on broonie-spi/for-next]
+[also build test WARNING on next-20260317]
+[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/mas=
+ter clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-=
+Use-helper-function-devm_clk_get_enabled/20260318-110300
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for=
+-next
+patch link:    https://lore.kernel.org/r/5727aa84748872059e2a39eb67f1f08c0d=
+e6206b.1773733017.git.xiaopei01%40kylinos.cn
+patch subject: [PATCH v3 07/17] spi: orion: Use helper function devm_clk_ge=
+t_enabled()
+config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/2026031=
+9/202603190122.1OMLjae4-lkp@intel.com/config)
+compiler: nios2-linux-gcc (GCC) 11.5.0
+reproduce (this is a W=3D1 build): (https://download.01.org/0day-ci/archive=
+/20260319/202603190122.1OMLjae4-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new versio=
+n of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603190122.1OMLjae4-lkp@i=
+ntel.com/
+
+All warnings (new ones prefixed by >>):
+
+   drivers/spi/spi-orion.c: In function 'orion_spi_remove':
+>> drivers/spi/spi-orion.c:798:27: warning: unused variable 'spi' [-Wunused=
+-variable]
+     798 |         struct orion_spi *spi =3D spi_controller_get_devdata(hos=
+t);
+         |                           ^~~
+
+
+vim +/spi +798 drivers/spi/spi-orion.c
+
+60cadec9da7b6c drivers/spi/orion_spi.c Shadi Ammouri    2008-08-05  793  =
+
+60cadec9da7b6c drivers/spi/orion_spi.c Shadi Ammouri    2008-08-05  794  =
+
+2e0de1efb233ab drivers/spi/spi-orion.c Uwe Kleine-K=F6nig 2023-03-03  795  =
+static void orion_spi_remove(struct platform_device *pdev)
+60cadec9da7b6c drivers/spi/orion_spi.c Shadi Ammouri    2008-08-05  796  {
+08e6c5038fee47 drivers/spi/spi-orion.c Yang Yingliang   2023-08-18  797  	s=
+truct spi_controller *host =3D platform_get_drvdata(pdev);
+08e6c5038fee47 drivers/spi/spi-orion.c Yang Yingliang   2023-08-18 @798  	s=
+truct orion_spi *spi =3D spi_controller_get_devdata(host);
+60cadec9da7b6c drivers/spi/orion_spi.c Shadi Ammouri    2008-08-05  799  =
+
+5c6786945b4e04 drivers/spi/spi-orion.c Russell King     2014-06-21  800  	p=
+m_runtime_get_sync(&pdev->dev);
+4574b886698dfa drivers/spi/spi-orion.c Andrew Lunn      2012-04-06  801  =
+
+08e6c5038fee47 drivers/spi/spi-orion.c Yang Yingliang   2023-08-18  802  	s=
+pi_unregister_controller(host);
+5c6786945b4e04 drivers/spi/spi-orion.c Russell King     2014-06-21  803  	p=
+m_runtime_disable(&pdev->dev);
+60cadec9da7b6c drivers/spi/orion_spi.c Shadi Ammouri    2008-08-05  804  }
+60cadec9da7b6c drivers/spi/orion_spi.c Shadi Ammouri    2008-08-05  805  =
+
+
+-- =
+
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
