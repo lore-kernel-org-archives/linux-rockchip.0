@@ -4,125 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 583C8103E178
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 13:45:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 001C5103E190
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 14:50:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FYVijpReRChPY4Mne5jNzFzFGimyTF3CcGwO9K2j+Sc=; b=AX2PDEBwEMeT7c
-	S0af67++9UzrHIORZgcPdf0+3JMmECpWRnlKft+bkveRVvlGOp79FzmDPbMPPQo8nYlmMASqbAv33
-	MrUzDFsjLV2EM+W6le+OHBrmwAwbeoVx4IzvJcAABTjRvYVjy/pL7STxaLm5WBjJzDYQIp94ofRCi
-	+XyM1czbvs1yO+JMMS+FMeZoT6r3OoLTZQ5XOHLYvLXldzJLZCVHQe/c/49Fzv38qmNIYUPxu3WcL
-	Qs3tysKOlkMordKDShT2aN1iASAgeLTO66D+RvwjyBvi0dy5+QDIBlV902+zwWdogDh0WR7A9RoNz
-	bySB9aD0fUdOH7YUmyPA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=BnUoT/ZeiSOZozxArAF+/ZOFCVxvw1BN/WjCYFxDeXw=; b=AwH7iHIymHX8LG
+	dN6Aze0KyeAXusQlw+ySeF2liHOPZOuwtdLyl/k9AIViKkvGVjd3eECR/LR9SbXwHcSCbuTChx3h5
+	e8HzKe5sr2/GWlR8RkVw5gAfOEd4o+wQ9GdR9ocMVudJfs8chn6Uan8NdAZUygbqmEfInbI1GexVf
+	sepi+A+5h1cIAWLFkaoFcbxbU/n8NQ6qBppN+Guc3aMPOU+bDIxSSMO/bhs+HKx8XpRFZP7YC8AKB
+	royVehcUWUTBPrAx1nm6KP78oJhXydwppueibNTwZ95qiG1EbtE1d4vjDDUqevmyGZwER7awQV8OQ
+	3kfTra2C0S3K+FqOEXbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2rD9-00000008Var-3JPI;
-	Wed, 18 Mar 2026 13:45:23 +0000
-Received: from mail-northeuropeazon11012029.outbound.protection.outlook.com ([52.101.66.29] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1w2sEN-00000008d7Q-1jjH;
+	Wed, 18 Mar 2026 14:50:43 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2rD7-00000008VZN-2CxP;
-	Wed, 18 Mar 2026 13:45:22 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=EC+jJsJQiBpIkwHjRtAvQenMwlrhXNZCSFqFOikGT99gl45OIKNZZ9b5fNpoM3bYt43g+nAvRVgDqX8z0wwRWxrjXLIk1+bjjLhAappA/ucikursuI4TKmPf7Jf4du2sFu4qx2ruZG9HIlUvX7V/F4sMWPUpdKVoPIE2Doh2Ozkp0sIlRAXWKNqp1gZVkAy0rhn+23hMlMjSAYp3jbtJ2NzosWPYp+MjL0BoRTbf1UIENee++OdVPS/9TKc0V97OW9RIxSakC8TveDg+2GW+IKEcfDOrUucdlbSDP45pWRJvI1griiQuQ+kTy0udmfq7JBiRH6hLNtuwMKuOASdnFw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=T748oTPOn6Vf4zDtFIFiJdqmDQM9Pwav2OXKOn/KdOM=;
- b=yzWB9ePDGwJJhgiQR+Q7zYIXFQV8mIyR6ez6OTLuobQnsKsNdamQUTNav8/uSB2tJ1yo07bsdI4M1rf72Z6gRv6PB0NZ06nOZrYDCbSXC7wAcju3BgcYWDz+S5f88lMgZPfV+njQvhgfb2H9lBpLX8ViT5lLyen36BI1Yk/4L2pv3Am70spDBoIGrvvbkbVagNWh+HBiQGYD9ofteTTMXVq9iD85vk5lPSJg3jLSgk+xTOWqgr5oDIRdvdRTYrtT9wSN8iF75gvuh3+hbGbE8sDyUEChw/QKVm8j4+gZURqPDhprDXOvk1nUo6nv+kB0f6UzSIdZkugelACBMW8ikQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=T748oTPOn6Vf4zDtFIFiJdqmDQM9Pwav2OXKOn/KdOM=;
- b=Ur/FhEywlSqabddArLhiyasjKN75x2WnWr6045hHcx0b9ifgeTWUXcHjuEjXVTsr5Mqsqy3YUtLt8MuHutWVidG+9E8m/gmWggK1YfW35VrrqXo8KV7CmL3CBg7iQ8nCx1FdLhrZmjKEBw03s0qxw62RnXdhUmGEDGf9mkywUukbEWlCNCBWeHvH2VL2s7r3+aoNAhn6SNGZU5JsDY5nsca7gmlp7Ymoupf2U3nceifRBA/iyYDimShgnK1/FwpdaJGKCfuGOo+n1xrtuiV/NOdPwJq54/Jwr6XRhQWu/Mc1Br5cKAVUEQX0KOJJucM5FFRi3EGtVvJyQZaWWo6/5w==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
- by AM0PR04MB11915.eurprd04.prod.outlook.com (2603:10a6:20b:701::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Wed, 18 Mar
- 2026 13:45:14 +0000
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9700.021; Wed, 18 Mar 2026
- 13:45:15 +0000
-Date: Wed, 18 Mar 2026 09:45:07 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: Pei Xiao <xiaopei01@kylinos.cn>
-Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH v4 05/17] spi: imx: Simplify clock handling with
- devm_clk_get_enabled()
-Message-ID: <abqsYybojsX8ni1o@lizhi-Precision-Tower-5810>
-References: <cover.1773801401.git.xiaopei01@kylinos.cn>
- <554b3a088ac453f50df9b040e3506c807efb5dd6.1773801401.git.xiaopei01@kylinos.cn>
-Content-Disposition: inline
-In-Reply-To: <554b3a088ac453f50df9b040e3506c807efb5dd6.1773801401.git.xiaopei01@kylinos.cn>
-X-ClientProxiedBy: PH7PR10CA0002.namprd10.prod.outlook.com
- (2603:10b6:510:23d::28) To PA4PR04MB9366.eurprd04.prod.outlook.com
- (2603:10a6:102:2a9::8)
+	id 1w2sEJ-00000008d6E-1heo
+	for linux-rockchip@lists.infradead.org;
+	Wed, 18 Mar 2026 14:50:41 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4852afd42ceso59267025e9.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 18 Mar 2026 07:50:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=flipper.net; s=google; t=1773845437; x=1774450237; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=v4jx9be2ixpeez8G3+677w21LKJvNvIiDEiSr10SzEQ=;
+        b=ofJlLKAwWFSbQ8WCvldaXbodhbqdUDzBNzhWvj/iQ5DdAF5jIvlie45CWA9pXj4qMg
+         SBWgpSFB4Zv7K9BhBigxLNf3Mu1lcU1K8fFR68CzjDRnRuZXMyRonCljGCncAXojULdl
+         GRA8f7EWWbYbN0jf2//hQkV1eM685PGMysE354oxAVqr2ApM2gVDPOkb70olevj8P5F3
+         2TdCGgeXTSCpOz9nF8RUjJUDSa/ArJLl0u3+2vyW00pZn9Kg2hr9jjZ8e+8GLg08RadV
+         /xp6jqqqn5yz8J4B9KDsks5gZsxr1LyGx5p2/2WbxeUrNLQLHGb8SLfCRl+hCXb52mS6
+         Jw1A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773845437; x=1774450237;
+        h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+         :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=v4jx9be2ixpeez8G3+677w21LKJvNvIiDEiSr10SzEQ=;
+        b=ezYvHjux9cJKk8eUxmnZDOkwIcVMmxb2DO44V6vN5704OLJtVgCSOAhfQeq4W91aHz
+         TwcvlsVtJJeKloKWWBW+bjwIIIav/ipufRiRrkhW1v12m06I97Uo/0AYFhETOpkPG3Y5
+         sTq/eC4/keN/c8J6v6yFoBTs9YsPxwaAttjxFF/IzwihvzLclHlnMLS+TNZGBGmBOhQi
+         jb1/ocnqa2Q3jXPflrlXP7CvhQ3FvOvnJ69fc8CK2WcgG6S8lr6hg4h5a8vbETiNm6gw
+         yO6i/zT0wqm2yLFCiWs2K/iSPxftnoLyT0Ht1GirJBUvUeX0n+dQHJB9hQaxppDnzdE/
+         fnIg==
+X-Gm-Message-State: AOJu0YzzJ5tTQdUM5eCj8pstRIoMMcS/EJDuyotf5CgIalNvMwRcJ8gj
+	pWmTT/XWdXiNqMPHbgTkR/Al2myRAQPHtBxJR9dEpNxGZIi1Hi4K4FgZtbzCmv+/8Do=
+X-Gm-Gg: ATEYQzwhcS0VjL/ACp8UMv2FpiVIhz0XroXDs0MJ9HvHx9OqTeHbonef8d1A/ABYBB1
+	M9CDFvKhRH2VHK9Tyyhi5ctU3Ujupc1vq3un3W0mIeWdoJbkezW7n16cZIjcROfTB/FHZ88QvRA
+	6zS6EGqS7jQ0ivib64q7yEfftmkLuXrJbuZxTD6I7D/c8i9xrMU3YwGlr2PEUYXYkwpDh8ZZ15G
+	pNsDM4erncDCXSVYD0vrNe0z57kDAHbc1Jsslbk5eMCpH8Ea35wGH5J0j4+hAdgUXu4SbO17fDo
+	zV91CXPt8pcf6TEy3eYXOeNevK0KYtreFGExIhzB4xPreR2P2eabwD0eY9U/CfgHRAZ7JXYJz3C
+	0fbZJzCSWBqj4uDA8HaW5YbNbMa+EibR51M9sjyarMS40iCTjD7FzY+O7juQTx+qh2R4EHWt0kI
+	w03noOKlONvVM+q6V7dSmQzDdwKDZz0aznoEeTXXGwNFp0rjXUE14IOYuPPhzi2G0DfIjSDk30f
+	Tdv6w==
+X-Received: by 2002:a05:600c:1f13:b0:485:3c05:24dc with SMTP id 5b1f17b1804b1-486f4465ec5mr61165625e9.33.1773845437260;
+        Wed, 18 Mar 2026 07:50:37 -0700 (PDT)
+Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-486f421a6f2sm64455665e9.8.2026.03.18.07.50.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Mar 2026 07:50:36 -0700 (PDT)
+From: Alexey Charkov <alchark@flipper.net>
+Date: Wed, 18 Mar 2026 18:50:25 +0400
+Subject: [PATCH] ASoC: rockchip: rockchip_sai: Set slot width for non-TDM
+ mode
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|AM0PR04MB11915:EE_
-X-MS-Office365-Filtering-Correlation-Id: d16056fa-addd-454d-568d-08de84f495ae
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|52116014|376014|366016|19092799006|1800799024|38350700014|18002099003|56012099003|22082099003|7053199007;
-X-Microsoft-Antispam-Message-Info: hEjPRWQiSFbpcUGW/EdpKneGRRj5ToObxhaGx9APeGltzVFnjybHEWpnEfCFFFvLEGWOpNUfO5e4gzaWrSLw8TAMXjB+DEpO+R0d++83OuOwVFj774/aev7d6NFj8m5ummXaOWpKZ2JpRvdu/hTeTxP0wqzzXzIWceQvuGdPJKqjXx0xjOFuT3AnhQPaHjaBAhns6+lOGd5+kpuFFMrsEaoLv5oQl17GECA4n8jHbCRI5Y0Pk4s621TcTgegto9DWrDImtyZmd2FFJMeDRMCaxM0fvnLl/pojm9uZh6FJKJJKuWjLOHi9xawaqPQX/4Vs5w/xN8772ev/EoyKih9YisGkzQlvKxSCn029hSv0jAt/qYSDOE4HqPT37eFaz6gGE6BXbaZaRkzPJd+xl44Y/yd0G9H+Q+g9iUkfZf9mhs1VqHUNRG56S6UOqj5Opb8bL3kcbDQgSfxeKlsxjNk9JuDkl8Vg00stL59XRho9F1yA+aa9SI6I2NGrlnb0f23pT9w2jnQtQwX+vvZhtkAYKOr9gk3dm3DIs5iaF/uDzVsd+G626O8P5v67LANoY9APfOHGoYfzyytdpMCRr+0gwjPQBgsM1Ch/5P9rSeDe2NdvBvawiMok7AVaM4gaUwnXABHrlut2U1HceoTDZeePKjAMnHCeMHOy6yUSQVviUOFgu79MJslDSO6FEmd4h2+PtU7YAUEyEk6Uyb5t3693sqe5cWaYeWnr1Ll1rWTcS3OujRWMq2hpSwWyqvDAV/pHcnfzFqz9KmWwFMXPKCh2CqoAccwYBUTJdJnFGEYCJE=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(52116014)(376014)(366016)(19092799006)(1800799024)(38350700014)(18002099003)(56012099003)(22082099003)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?XBSFuRH6RfSO6L3+JW3R4PrnKSsmemRW0mT8pdz8KkOnTdKDOPSJ8aHJtDa+?=
- =?us-ascii?Q?LHM0375qFLjszCfXMFOqUwK/FGB3zlmdXSowzelog4qUyOMWrXPa7A2yc7bd?=
- =?us-ascii?Q?cW+mE03MF20qQh82WG0u16UcTUXo2qK8iA3ggu9pp8Fktno8IpkjfR7amt4o?=
- =?us-ascii?Q?gyGXWHGqN3k00h6NDvWHc7+/4NFK2QvRKJSfaY7NEp+nr1QkK+TlC0Fh8OPA?=
- =?us-ascii?Q?w8qEP+YEiFQpCgSqIPDJc4iDkEDoKUaTPTqvA+WZTAJ+d2PFPDQ6zT0UAzC9?=
- =?us-ascii?Q?F/AMffjS7+UA4+pdyd0TCYr4KDquyCGatayTo6UclEaVP9lC+VVAPRjQ72xc?=
- =?us-ascii?Q?U8IeiipgGm4SJlVX9CYghkFexVZgC4q0YMg++BYzcxFv4ttxd/viJq/fQ8X2?=
- =?us-ascii?Q?cToA/zPU3tEMoBaI0cmKFP19PHL3iStKcu4ZbI8C3OvBTaQAXJmxLWpgj9Ev?=
- =?us-ascii?Q?RRaixGaPz28X1+cxUDUdzOPVh+TA5KCHSNovHH5y2nqM7MwkEkR+NQbmoAVu?=
- =?us-ascii?Q?dR3335NM9nNNmp0Rn7WgJSeVcD98IpN4ug/V8cyxzUmhFAnEAn+SPXnpXg+1?=
- =?us-ascii?Q?btn9MXEC+aucLlZwX89nft3h+80fOGfFjIb9Q8l2vrzbLfFjkLDD4oxtSvpW?=
- =?us-ascii?Q?9nUvFlB5dH9JlroojBxPKCJxdKPer4GWB83bDOm2zZDznnXGux3HuI5A07J8?=
- =?us-ascii?Q?yFAvyNFFvTITymr7u0WeTYXadGCgGaUiq2lKV+JkivzZlJ4Vce41sVPz6i69?=
- =?us-ascii?Q?eyyN+i2pBmaMbN9oyhkJ1pNW7KI/19lDOZrfax+YhLAdzNE6Esb3a14qmy8i?=
- =?us-ascii?Q?l5Xp+K0ZLvnQu//4tmMA3qfLxomN5aDY3EJRea8kXWkk8li1lJUO2nJX1x8h?=
- =?us-ascii?Q?R/2cM9Zv6GZiRAQHyquvSq5Z96huMTreLvp6kkHMMjyfo2Q+Hd8ao11AKHzM?=
- =?us-ascii?Q?dfzy2vU26lny+qoUQpBOJHBXc2bSYD06NDkIzz1TgN5CFLfIf/lFDPRf5wyj?=
- =?us-ascii?Q?VbHKM0tI97TkEnnsYVstqqKE9Y5t5hb+DOwwaFb7Ut5DuUNRW2XJW1Zf1frJ?=
- =?us-ascii?Q?QsZBTWE5ExO1sG+zGmqwpGpXSaAkRLx5g+hcptQORyKEs6+EWfsYFiXZJuou?=
- =?us-ascii?Q?6wJ9KBOUOWgrenvr8St7fkQnQVfYHVmvP/T9ByJfvy8TgRIiYMgpLvI3uWyB?=
- =?us-ascii?Q?4/e7OLXKRFNjEY28QlgeCumvjGPH9/fdEROMiyCzIcRZ2KY7d62g1MPXO8TQ?=
- =?us-ascii?Q?sMMJ14tFk5x2v7MBM4WEsL/7nczjopLoPM9ufvbojJXylk0DniBUhnfZHVzA?=
- =?us-ascii?Q?I01RkZUSd6+BoI77H8yMvTFC/1cq89mbZQFezS+dsUbAreyYGJ0R5HiSghh8?=
- =?us-ascii?Q?AWXkrsSDPUnddWVAajEjE90I6W+9FUt4r7QcObqmh2c0KGVFWjOOgqKyFj26?=
- =?us-ascii?Q?sy38w1cqoG+IuvWnLy8L/na/5PimNQUYxh/z5jDDp+n2BxYlRe3LcCP2C1F1?=
- =?us-ascii?Q?BO0bGddBdk0qsmfdqrN5PU4zVmeEJ9bI+/og/CxULed1rYFN59GnUMHp1CvR?=
- =?us-ascii?Q?XM6WFVbJ+QDpIdMJoX/KeEdaB5vNoop3/q3hWSfCee40sjtLktHFGzGnQXwF?=
- =?us-ascii?Q?lKsPb78KlYQSDork+jrztiru830ZStTsgGWPKPYjhRY6+tzBwKepAzxEU3VE?=
- =?us-ascii?Q?dd5XC3FBaujYf+wzW3Uh7LljwWJkf591AcZse4sBKVXAywwe47GIRcl0nRcc?=
- =?us-ascii?Q?dPqx2oPcww=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d16056fa-addd-454d-568d-08de84f495ae
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2026 13:45:15.3304
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: dQ9ClbHtxkZpnRTcX/gYYnLi5/VGPH4N0DrI+nCQ+qqxczD1dKcPrT4bdonp/pPrdBZHxp5mgvge8pdTkPX2eQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM0PR04MB11915
+Message-Id: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
+X-B4-Tracking: v=1; b=H4sIALC7umkC/x3MQQqAIBBA0avErBswo5KuEi1EpxwICycqkO6et
+ HyL/zMIJSaBscqQ6GLhPRY0dQUu2LgSsi8GrXSv2sagWEbZ9hNv9mfAdjBEvnNaOw8lOhIt/Pz
+ DaX7fD/krs4pgAAAA
+X-Change-ID: 20260318-sai-slot-width-378eed5c22cd
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Heiko Stuebner <heiko@sntech.de>, Sugar Zhang <sugar.zhang@rock-chips.com>
+Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Alexey Charkov <alchark@flipper.net>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1654; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=NLuWlcb8pDVc/jx4hn9f+1Y4XpERqSPMPejDpC3HkM8=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTu2r2LQXabQmNxUOTmuWuVZk1xYDH7F7xj3tm5YhsuT
+ d5751SZX8dEFgYxLgZLMUWWud+W2E414pu1y8PjK8wcViaQIdIiDQxAwMLAl5uYV2qkY6Rnqm2o
+ Z2ioY6xjxMDFKQBTff4ZI8P3KSv/KzEcnL3vu/K+l+pbFh3xStZe+UPM8PKzyZlhs3YwMzLskdU
+ R9W1wm3mARX752pKM9Qv8kr5alHXePbncc8pXtio2AA==
+X-Developer-Key: i=alchark@flipper.net; a=openpgp;
+ fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_064521_572160_371114F7 
-X-CRM114-Status: GOOD (  17.92  )
+X-CRM114-CacheID: sfid-20260318_075039_453686_AF7BCB51 
+X-CRM114-Status: GOOD (  11.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,69 +113,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 18, 2026 at 10:39:55AM +0800, Pei Xiao wrote:
-> Replace devm_clk_get() followed by clk_prepare_enable() with
-> devm_clk_get_enabled() for both "ipg" and "per" clocks. This reduces
-> boilerplate code and error handling, as the managed API automatically
-> disables the clocks when the device is removed or if probe fails.
->
-> Remove the now-unnecessary clk_disable_unprepare() calls from the
-> probe error paths.
->
-> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
-> ---
+Currently the slot width in non-TDM mode is always kept at the POR value
+of 32 bits, regardless of the sample width, which doesn't work well for
+some codecs such as NAU8822.
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Set the slot width according to the sample width in non-TDM mode, which
+is what other CPU DAI drivers do.
 
->  drivers/spi/spi-imx.c | 15 ++-------------
->  1 file changed, 2 insertions(+), 13 deletions(-)
->
-> diff --git a/drivers/spi/spi-imx.c b/drivers/spi/spi-imx.c
-> index 64c6c09e1e7b..a01c466818de 100644
-> --- a/drivers/spi/spi-imx.c
-> +++ b/drivers/spi/spi-imx.c
-> @@ -2323,26 +2323,18 @@ static int spi_imx_probe(struct platform_device *pdev)
->  		goto out_controller_put;
->  	}
->
-> -	spi_imx->clk_ipg = devm_clk_get(&pdev->dev, "ipg");
-> +	spi_imx->clk_ipg = devm_clk_get_enabled(&pdev->dev, "ipg");
->  	if (IS_ERR(spi_imx->clk_ipg)) {
->  		ret = PTR_ERR(spi_imx->clk_ipg);
->  		goto out_controller_put;
->  	}
->
-> -	spi_imx->clk_per = devm_clk_get(&pdev->dev, "per");
-> +	spi_imx->clk_per = devm_clk_get_enabled(&pdev->dev, "per");
->  	if (IS_ERR(spi_imx->clk_per)) {
->  		ret = PTR_ERR(spi_imx->clk_per);
->  		goto out_controller_put;
->  	}
->
-> -	ret = clk_prepare_enable(spi_imx->clk_per);
-> -	if (ret)
-> -		goto out_controller_put;
-> -
-> -	ret = clk_prepare_enable(spi_imx->clk_ipg);
-> -	if (ret)
-> -		goto out_put_per;
-> -
->  	pm_runtime_set_autosuspend_delay(spi_imx->dev, MXC_RPM_TIMEOUT);
->  	pm_runtime_use_autosuspend(spi_imx->dev);
->  	pm_runtime_get_noresume(spi_imx->dev);
-> @@ -2386,9 +2378,6 @@ static int spi_imx_probe(struct platform_device *pdev)
->  	pm_runtime_disable(spi_imx->dev);
->  	pm_runtime_set_suspended(&pdev->dev);
->
-> -	clk_disable_unprepare(spi_imx->clk_ipg);
-> -out_put_per:
-> -	clk_disable_unprepare(spi_imx->clk_per);
->  out_controller_put:
->  	spi_controller_put(controller);
->
-> --
-> 2.25.1
->
+Tested on the following RK3576 configurations:
+- SAI2 + NAU8822 (codec as the clock master), custom board
+- SAI1 + ES8388 (codec as the clock master), RK3576 EVB1
+- SAI2 + RT5616 (SAI as the clock master), FriendlyElec NanoPi M5
+
+NAU8822 didn't work prior to this patch but works after the patch. Other
+two configurations work both before and after the patch.
+
+Fixes: cc78d1eaabad ("ASoC: rockchip: add Serial Audio Interface (SAI) driver")
+Signed-off-by: Alexey Charkov <alchark@flipper.net>
+---
+ sound/soc/rockchip/rockchip_sai.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
+index 1bf614dbdf4d..ed393e5034a4 100644
+--- a/sound/soc/rockchip/rockchip_sai.c
++++ b/sound/soc/rockchip/rockchip_sai.c
+@@ -628,6 +628,10 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
+ 
+ 	regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
+ 
++	if (!sai->is_tdm)
++		regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
++				   SAI_XCR_SBW(params_physical_width(params)));
++
+ 	regmap_read(sai->regmap, reg, &val);
+ 
+ 	slot_width = SAI_XCR_SBW_V(val);
+
+---
+base-commit: 8e5a478b6d6a5bb0a3d52147862b15e4d826af19
+change-id: 20260318-sai-slot-width-378eed5c22cd
+
+Best regards,
+-- 
+Alexey Charkov <alchark@flipper.net>
+
 
 _______________________________________________
 Linux-rockchip mailing list
