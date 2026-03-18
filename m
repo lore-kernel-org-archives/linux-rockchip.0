@@ -4,130 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02C0F10775F1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 17:20:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF9D610775FD
+	for <linux-rockchip@archiver.kernel.org>; Wed, 18 Mar 2026 17:53:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zyYF3hu7K3CuFal6OqoXmaRPcaZGcuW2OUypvxvpU3w=; b=BvlJhsgSVRegpQEQ0PTP4fu2kc
-	25WQIKfyE5HWGqhchuEBZN32YSpJLRgl1IBtbXv4PfkGaZE96ZW9m6sGHk0HY9Ys0hnIYnU7wvQi1
-	+NMyuQnVC1lLEwDM3N5nLMZpysROFpP3xfhA/CYgY6SYxTlbJa3GvTnOEFDPJ5Fye/q/8J2TgOEnM
-	jgd59RiezVZJcPp4Rphq/jUhbCK+yCb+FQ+0/eq3HjZZT1ECUl1709WTIFPyX/Uaj04/w2pQgT44e
-	ylElC3Yh44HsF98jz6nPx0D1jLK3onTtEJpCJ46NJH6KPET/aN1oVypuqOxRlsEfs6srLdTeu5ZlD
-	WhueFqiA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=cpaVsJp7MN1CHatfrqWI2RDNxopc2GHLMTcLyI0mzNI=; b=Nu2BpPagUDHNUOIYtSYMp15tAN
+	M7CHi61PTvFvlb6SkH79Wzy/7x6PQ+b4xAVLi+3gwl274pQYE+/Tu7bCvXfS6hxyjrXnyxxEX61T8
+	Em6EhtaO5AACjk3NxCUyKfQVn53hDt5yVbaL5i3o9DgIrQlx9VprIIhyi5hLBrBYya62zv2u5VRmm
+	Tcdoi+mlhECoL9iX7+Ct5DIx46+hSpWnb8iwB7QAyAjV1FpuCAQxdo65syi+vtBDwHSFyN1/nzZGa
+	srzHOUPA8tBYHavRRFzJr+b1KWdpl7JacBOjgySRjjF5gfrPaGJdIwulN9S4olHhe5w3WVlh+YQPk
+	pSULmEcQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2uZK-000000093Ku-01ds;
-	Wed, 18 Mar 2026 17:20:30 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w2v4k-000000097kz-3Kv0;
+	Wed, 18 Mar 2026 17:52:58 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2uZH-000000093KA-0rcO;
-	Wed, 18 Mar 2026 17:20:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:To:Subject:MIME-Version:Date:Message-ID:Sender:
-	Reply-To:Cc:Content-ID:Content-Description;
-	bh=72i0Af2CILVbwbBueaZ8KOXIlo24SRO8oa6WAfXbGWE=; b=g045MO4pknXsR+r26xfWqb/LXf
-	fsVxQtrZUvL7IpCtdh7LkVveuca4rF5AIFtAUHAkL8xVrclBuYADNL7YZqx9aA5WXnAvxmVMAwkhf
-	sxEbHWcLUWnzW7csXzXtEiArA7t1bWZfDfyuO5lqWAfcijYytDcOk65dMUyQKpZW4/psTkwZREngB
-	pceqN0gtmXaUcYivqcxeJfWpn4bKxVrvryITHrOTPq/H7AOE1vHlqTJ4reY8wGa0fboe6On0q2yt6
-	32mgoL16ErU6sb73o9torg8dKIc1jEXXZBz/oQeZcVxZgjek94tC+/Nqpm3+T7M3E7j7SpfPSyUfJ
-	eQarBBhw==;
-Received: from mail-swedencentralazon11013026.outbound.protection.outlook.com ([52.101.83.26] helo=GVXPR05CU001.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w2uZC-0000000BrAZ-1qaG;
-	Wed, 18 Mar 2026 17:20:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=hoZh7XEt3HtrkaR9koCBJT9TA4dnn/OlS10UqYZO6BYd7Xb2ucV8v10DTKjrmmvTqJyqQDlt/tAWq9lhzm7uvJEFyiaR7lvQWMDgt5HaRWTnT21eEtZ1kmJgmeNs5GgBuHO2c91+LO4oMdRVqy57573rBpQqkebzVXkM7aMx+F2sNF0w0qHwqfEK5TOdShBNgDMfUx6X8cXuS/J6La0AcVrB70oswG5KS3gSAgCrUMk0BYCEkQThRKSyAudmjuxeD8LxoLNhkmzYsBajCsNO+mM5iqoAhE2F3GB66qPu2MQJ18cQAdypP2tz5KObXq/DHXqUDGmu57MDwPy9weCbtg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=72i0Af2CILVbwbBueaZ8KOXIlo24SRO8oa6WAfXbGWE=;
- b=pEK30hfpWOMp8S64SNvEmmxcCI6P0jgDZHkLZN242H2flFcmfixMAxVBLaHerSnvHAdhffl9wgNpnP2NhMJAkX/hUUET3WZbhNHS8pXYi8WTB89+Ae1VxhaWUhb9ES80vnTnMbqEcbQSlz9Dx5IVQ/CKkDmyntXcjwVFFodEVF8ZUNPJCakFyZP+alCjEg6Z1R2Ep7RoGV0nNimbDx3yMRenbdwlblF5OgDc7aCGLh7r3kCmJKRtb5a7gbEnlVOGxnnWOs9JZmHK4jnUphT9tsJc/1+CvcGhhIa2SDEH7uz6jdGwZ+uTwlBe0rou14quXl72WFc7uCNLwGiPsQf7BQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
- 164.130.1.60) smtp.rcpttodomain=kylinos.cn smtp.mailfrom=foss.st.com;
- dmarc=fail (p=none sp=none pct=100) action=none header.from=foss.st.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=foss.st.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=72i0Af2CILVbwbBueaZ8KOXIlo24SRO8oa6WAfXbGWE=;
- b=nmCsFbdFWc4ahJG/KSQW0jdGnHs5wB14Xk9YjQ6uISXDwnFRGGFfW1UNh4t7BEbXTXPI1Y95caAa+0y2CRb/VKQCq5dXi/sM427dRf20kxl5LBGfn80dcyNgubxPZNVHeIG+xmI5H/hBic/bZE+Ddz7Chey5GTm7Bd1ICJ6kdbJRMX2Tlua26Tn/SRbBd5T2DPUcBaC1nhJkvIySkFpifmW9nxeZxqvjWi9+mqiy+fm49OW82HBz4TjBNjPEJ6FyiVgb+vjNw9RRElNWVj9kSoF/0PYld/5oictPAnO9v4EB+qqcHZDMUbEcRizICbCzby9z33Ohb9TphGedDgu4eQ==
-Received: from DB8PR06CA0064.eurprd06.prod.outlook.com (2603:10a6:10:120::38)
- by VE1PR10MB3805.EURPRD10.PROD.OUTLOOK.COM (2603:10a6:800:164::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9700.15; Wed, 18 Mar
- 2026 17:20:16 +0000
-Received: from DB5PEPF00014B91.eurprd02.prod.outlook.com
- (2603:10a6:10:120:cafe::88) by DB8PR06CA0064.outlook.office365.com
- (2603:10a6:10:120::38) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.20.9700.27 via Frontend Transport; Wed,
- 18 Mar 2026 17:19:52 +0000
-X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 164.130.1.60)
- smtp.mailfrom=foss.st.com; dkim=none (message not signed)
- header.d=none;dmarc=fail action=none header.from=foss.st.com;
-Received-SPF: Fail (protection.outlook.com: domain of foss.st.com does not
- designate 164.130.1.60 as permitted sender) receiver=protection.outlook.com;
- client-ip=164.130.1.60; helo=smtpO365.st.com;
-Received: from smtpO365.st.com (164.130.1.60) by
- DB5PEPF00014B91.mail.protection.outlook.com (10.167.8.229) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.9723.19 via Frontend Transport; Wed, 18 Mar 2026 17:20:15 +0000
-Received: from STKDAG1NODE2.st.com (10.75.128.133) by smtpO365.st.com
- (10.250.44.72) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Wed, 18 Mar
- 2026 18:22:32 +0100
-Received: from [10.252.10.174] (10.252.10.174) by STKDAG1NODE2.st.com
- (10.75.128.133) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.29; Wed, 18 Mar
- 2026 18:20:12 +0100
-Message-ID: <ae1b9767-574d-418a-84d9-8bc128a9e500@foss.st.com>
-Date: Wed, 18 Mar 2026 18:20:11 +0100
+	id 1w2v4j-000000097kY-20Um;
+	Wed, 18 Mar 2026 17:52:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E165160054;
+	Wed, 18 Mar 2026 17:52:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E97A2C19421;
+	Wed, 18 Mar 2026 17:52:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773856376;
+	bh=7RhELfoamd+1f1X8vuupz5lvW6wqDowxnnhYEeX4noA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=FlkHo54TQPrdvX0KKoD5mQgS7R2ornPusMzZgXsAAjpK1wR14Q25dhL3FoO+NFRne
+	 Tge8FZzhYFWJqLKEYm7pBjmeYQpMCnPNJcu702ZsOxL166yonfYSPEBekK5NZ53Zwa
+	 KduLdF/9llG0ap1QNfaP//L1vXJ6QSbXyJAoZOW/5rpuqFVT/XB85bAKP202tlYa/H
+	 cHsVssPe7EKhKlVl7iJB7wZaGMII93Ft8lagmNbsYIExi7BWTFxsGVQ1YfIohNt9uo
+	 3/9pR8anHFvNTSpZupNKdtM4QCh5zOEQa43YtZBe0/vH4JfJQkmhyby5QLIrwyj+Z/
+	 DdKRUi27K2cVw==
+Date: Wed, 18 Mar 2026 17:52:50 +0000
+From: Conor Dooley <conor@kernel.org>
+To: michael.riesch@collabora.com
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	=?utf-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?= <mai.kuznetsov.misha@gmail.com>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/9] media: dt-bindings: add rockchip rk3588 vicap
+Message-ID: <20260318-mumbo-lumber-b550932a5423@spud>
+References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
+ <20250430-rk3588-vicap-v2-2-77de5ee9048e@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [Linux-stm32] [PATCH v4 13/17] spi: stm32: Simplify clock
- handling with devm_clk_get_enabled()
-To: Pei Xiao <xiaopei01@kylinos.cn>, <linux-spi@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<imx@lists.linux.dev>, <openbmc@lists.ozlabs.org>,
-	<linux-rockchip@lists.infradead.org>, <linux-riscv@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>,
-	<linux-stm32@st-md-mailman.stormreply.com>
-References: <cover.1773801401.git.xiaopei01@kylinos.cn>
- <cb88610059a9b20a9f2ffcd03cd77fecbecf7eaf.1773801401.git.xiaopei01@kylinos.cn>
-Content-Language: en-US
-From: Amelie Delaunay <amelie.delaunay@foss.st.com>
-In-Reply-To: <cb88610059a9b20a9f2ffcd03cd77fecbecf7eaf.1773801401.git.xiaopei01@kylinos.cn>
-X-Originating-IP: [10.252.10.174]
-X-ClientProxiedBy: ENXCAS1NODE2.st.com (10.75.128.138) To STKDAG1NODE2.st.com
- (10.75.128.133)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DB5PEPF00014B91:EE_|VE1PR10MB3805:EE_
-X-MS-Office365-Filtering-Correlation-Id: c54840f0-9b6f-46e8-e1d9-08de85129f35
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|36860700016|82310400026|921020|18002099003|22082099003|56012099003|7053199007;
-X-Microsoft-Antispam-Message-Info: pC7QXVJDAFr+AzhfA92QyLXK1Orr0940Uu6M8ZFUxqZqLXhMv2c2zn7KAn7OB0+7xwycTbZ8CYrX2RsdfSXGixDpa+H/pacCZFQd9LNMcqI4HwkzCvpWRuZ+B3ml0rIGu/ar1hZ0tD2zB577JvOuTP2Qfqv+UlmkbtcJVqMOMgAgbVNX8XVo9vt6vE+fCqfGkS9UxAIDKwLcJQAsoJNKw4qm1wBK45v4xwSYqFbLswG2qh/c9Vsf7LMQWrg3guSqb3c8sioBIcr8VCF/TYOOYK7x7gPs4Ht9dxCZ0EbuEpfgosBodftJA+/zI4glNJmLQWXLvxEOu6rc91La0d+yj0Df9QaQSOj6/CTbYj0dg94C7heHBYg2AD7D2P0lqv8X3/3RIjgSJN2QTAMqgaPJrgRP374MOmqbmPqO2+qLHeyUs0z1cOfVOLaGBfqMwmzw4rEgJKVwBIX+oM4mygZiIuZSK/mm5rd6dzHqY+/7fPSwIg/flHNjBM7wg1v11LT1FTDoFfyUbbaP1P4CzC8jo31msZEEdSU2rMQN4z3HOrV5p3SJAEswtN0bIcj2f+a76CJFGcv9D7snnSztkGA9UeyxID0xhBaecfKvbij6My28A3aOzTcoGD628lCZqm+fA5eAfVuTj9Hkf45psaCu9mXgP8qIE8nggJMvgjWq1eqxn3ZcU6EPyqhGYxATp4T41euZisFHwA4Mj04Ni/un6c1YsigO8gSBkoSgzS5zCoIhirzpu/JA28VI7QIj+PR5xQ+ELq66MuB0+4KYcS0FXMTrlAcbE+Znqh5nvoXauIiNcK4tZlcOKRhWYv9eL8PQ
-X-Forefront-Antispam-Report: CIP:164.130.1.60;CTRY:IT;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:smtpO365.st.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(36860700016)(82310400026)(921020)(18002099003)(22082099003)(56012099003)(7053199007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 30Oq685Ewt/zJ+karDW1HSaKyZNcrSP2RHDAL4nB31zxx7ksaxKM6uhm+YpAn1qwLzbxoygaed8px4DCnGwy3VEsSHNRca05Ep7v6VJpY4rrSILBTXrVv2CDWXHQ+PfSILC/6kiubUOtiUhWnoq+Rn+hGwwvCidoyYtt3AMrv1aflADT69UXd5u5rbliCOoN8MsM65m+zoDlF9mAFc3L+75/cPpi+iYrFWGfCb/+bj53UmC5quQsCpsIiqlxC7pXznPL6PulUl3vYOvjzv317UEDiKNCoUbz6lYr2yhwnOZF4OlNuiqt5qYwfgMBM1IzlDR4n4J8/2xGJj6Z/zuKFQ24KFwDoIv5WYwM+J5tUI8TWJNHH92yp+5ENBb1KlPtpunaiI0dphJfDX5xlyf5EFvrSCVNSUwIffKbD+FgXhAKQ/Fq27YvWxBL3105c/X/
-X-OriginatorOrg: foss.st.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 18 Mar 2026 17:20:15.9015
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: c54840f0-9b6f-46e8-e1d9-08de85129f35
-X-MS-Exchange-CrossTenant-Id: 75e027c9-20d5-47d5-b82f-77d7cd041e8f
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=75e027c9-20d5-47d5-b82f-77d7cd041e8f;Ip=[164.130.1.60];Helo=[smtpO365.st.com]
-X-MS-Exchange-CrossTenant-AuthSource: DB5PEPF00014B91.eurprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VE1PR10MB3805
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_172023_217660_5A462C3C 
-X-CRM114-Status: GOOD (  19.28  )
+In-Reply-To: <20250430-rk3588-vicap-v2-2-77de5ee9048e@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,167 +78,221 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2794077036594058219=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
 
-On 3/18/26 03:40, Pei Xiao wrote:
-> Replace devm_clk_get() followed by clk_prepare_enable() with
-> devm_clk_get_enabled() for the clock. This removes the need for
-> explicit clock enable and disable calls, as the managed API automatically
-> handles clock disabling on device removal or probe failure.
-> 
-> Remove the now-unnecessary clk_disable_unprepare() calls from the probe
-> error paths and the remove callback. Also simplify error handling by
-> using dev_err_probe().
-> 
-> Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
+--===============2794077036594058219==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jVdB2zejn0FZqmel"
+Content-Disposition: inline
+
+
+--jVdB2zejn0FZqmel
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Tue, Mar 17, 2026 at 10:32:20AM +0100, Michael Riesch via B4 Relay wrote:
+> From: Michael Riesch <michael.riesch@collabora.com>
+>=20
+> Add documentation for the Rockchip RK3588 Video Capture (VICAP) unit.
+> To that end, make the existing rockchip,rk3568-vicap documentation
+> more general and introduce variant specific constraints.
+>=20
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 > ---
->   drivers/spi/spi-stm32.c | 61 ++++++++++++-----------------------------
->   1 file changed, 18 insertions(+), 43 deletions(-)
-> 
-> diff --git a/drivers/spi/spi-stm32.c b/drivers/spi/spi-stm32.c
-> index 8a7f5a10d4af..ee5092bc5956 100644
-> --- a/drivers/spi/spi-stm32.c
-> +++ b/drivers/spi/spi-stm32.c
-> @@ -2360,25 +2360,21 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   	int ret;
->   
->   	cfg = of_device_get_match_data(&pdev->dev);
-> -	if (!cfg) {
-> -		dev_err(&pdev->dev, "Failed to get match data for platform\n");
-> -		return -ENODEV;
-> -	}
-> +	if (!cfg)
-> +		return dev_err_probe(&pdev->dev, -ENODEV,
-> +				     "Failed to get match data for platform\n");
->   
->   	device_mode = of_property_read_bool(np, "spi-slave");
-> -	if (!cfg->has_device_mode && device_mode) {
-> -		dev_err(&pdev->dev, "spi-slave not supported\n");
-> -		return -EPERM;
-> -	}
-> +	if (!cfg->has_device_mode && device_mode)
-> +		return dev_err_probe(&pdev->dev, -EPERM, "spi-slave not supported\n");
->   
->   	if (device_mode)
->   		ctrl = devm_spi_alloc_target(&pdev->dev, sizeof(struct stm32_spi));
->   	else
->   		ctrl = devm_spi_alloc_host(&pdev->dev, sizeof(struct stm32_spi));
-> -	if (!ctrl) {
-> -		dev_err(&pdev->dev, "spi controller allocation failed\n");
-> -		return -ENOMEM;
-> -	}
-> +	if (!ctrl)
-> +		return dev_err_probe(&pdev->dev, -ENOMEM,
-> +				     "spi controller allocation failed\n");
+>  .../bindings/media/rockchip,rk3568-vicap.yaml      | 191 +++++++++++++++=
++++---
+>  1 file changed, 167 insertions(+), 24 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vica=
+p.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> index 18cd0a5a5318..15a889ff8e52 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> @@ -15,9 +15,15 @@ description:
+>    the data from camera sensors, video decoders, or other companion ICs a=
+nd
+>    transfers it into system main memory by AXI bus.
+> =20
+> +  The Rockchip RK3588 Video Capture (VICAP) is similar to its RK3568
+> +  counterpart, but features six MIPI CSI-2 ports and additional connecti=
+ons
+> +  to the image signal processor (ISP) blocks.
+> +
+>  properties:
+>    compatible:
+> -    const: rockchip,rk3568-vicap
+> +    enum:
+> +      - rockchip,rk3568-vicap
+> +      - rockchip,rk3588-vicap
+> =20
+>    reg:
+>      maxItems: 1
+> @@ -26,37 +32,23 @@ properties:
+>      maxItems: 1
+> =20
+>    clocks:
+> -    items:
+> -      - description: ACLK
+> -      - description: HCLK
+> -      - description: DCLK
+> -      - description: ICLK
+> +    minItems: 4
+> +    maxItems: 5
+> =20
+>    clock-names:
+> -    items:
+> -      - const: aclk
+> -      - const: hclk
+> -      - const: dclk
+> -      - const: iclk
+> +    minItems: 4
+> +    maxItems: 5
+> =20
+>    iommus:
+>      maxItems: 1
+> =20
+>    resets:
+> -    items:
+> -      - description: ARST
+> -      - description: HRST
+> -      - description: DRST
+> -      - description: PRST
+> -      - description: IRST
+> +    minItems: 5
+> +    maxItems: 9
+> =20
+>    reset-names:
+> -    items:
+> -      - const: arst
+> -      - const: hrst
+> -      - const: drst
+> -      - const: prst
+> -      - const: irst
+> +    minItems: 5
+> +    maxItems: 9
 
-it fits on single line
-+		return dev_err_probe(&pdev->dev, -ENOMEM, "spi controller allocation 
-failed\n");
+> +allOf:
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3568-vicap
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 4
+> +          maxItems: 4
 
->   	platform_set_drvdata(pdev, ctrl);
->   
->   	spi = spi_controller_get_devdata(ctrl);
-> @@ -2409,32 +2405,19 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   		return ret;
->   	}
->   
-> -	spi->clk = devm_clk_get(&pdev->dev, NULL);
-> -	if (IS_ERR(spi->clk)) {
-> -		ret = PTR_ERR(spi->clk);
-> -		dev_err(&pdev->dev, "clk get failed: %d\n", ret);
-> -		return ret;
-> -	}
-> +	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
-> +	if (IS_ERR(spi->clk))
-> +		return dev_err_probe(&pdev->dev, PTR_ERR(spi->clk), "clk enabled failed\n");
->   
-> -	ret = clk_prepare_enable(spi->clk);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "clk enable failed: %d\n", ret);
-> -		return ret;
-> -	}
->   	spi->clk_rate = clk_get_rate(spi->clk);
-> -	if (!spi->clk_rate) {
-> -		dev_err(&pdev->dev, "clk rate = 0\n");
-> -		ret = -EINVAL;
-> -		goto err_clk_disable;
-> -	}
-> +	if (!spi->clk_rate)
-> +		return dev_err_probe(&pdev->dev, -EINVAL, "clk rate = 0\n");
->   
->   	rst = devm_reset_control_get_optional_exclusive(&pdev->dev, NULL);
->   	if (rst) {
-> -		if (IS_ERR(rst)) {
-> +		if (IS_ERR(rst))
->   			ret = dev_err_probe(&pdev->dev, PTR_ERR(rst),
->   					    "failed to get reset\n");
-> -			goto err_clk_disable;
-> -		}
+Anything here that repeats the outermost constraint should be dropped,
+so no minItems here..
 
-Here you change the behavior: it should return dev_err_probe(...) (on 
-single line too)
-+		if (IS_ERR(rst))
-+   			return dev_err_probe(&pdev->dev, PTR_ERR(rst), "failed to get 
-reset\n");
+> +
+> +        clock-names:
+> +          items:
+> +            - const: aclk
+> +            - const: hclk
+> +            - const: dclk
+> +            - const: iclk
+> +
+> +        resets:
+> +          minItems: 5
+> +          maxItems: 5
 
->   
->   		reset_control_assert(rst);
->   		udelay(2);
-> @@ -2461,11 +2444,9 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   	dev_dbg(spi->dev, "one message max size %d\n", spi->t_size_max);
->   
->   	ret = spi->cfg->config(spi);
-> -	if (ret) {
-> -		dev_err(&pdev->dev, "controller configuration failed: %d\n",
-> -			ret);
-> -		goto err_clk_disable;
-> -	}
-> +	if (ret)
-> +		return dev_err_probe(&pdev->dev, ret,
-> +				     "controller configuration failed: %d\n", ret);
+=2E..or here...
 
-it fits on single line too here.
+> +
+> +        reset-names:
+> +          items:
+> +            - const: arst
+> +            - const: hrst
+> +            - const: drst
+> +            - const: prst
+> +            - const: irst
 
->   
->   	ctrl->auto_runtime_pm = true;
->   	ctrl->bus_num = pdev->id;
-> @@ -2490,8 +2471,7 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   			dev_info(&pdev->dev, "tx dma disabled\n");
->   			spi->dma_tx = NULL;
->   		} else {
-> -			dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
-> -			goto err_clk_disable;
-> +			return dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
->   		}
->   	} else {
->   		ctrl->dma_tx = spi->dma_tx;
-> @@ -2579,8 +2559,6 @@ static int stm32_spi_probe(struct platform_device *pdev)
->   err_dma_tx_release:
->   	if (spi->dma_tx)
->   		dma_release_channel(spi->dma_tx);
-> -err_clk_disable:
-> -	clk_disable_unprepare(spi->clk);
->   
->   	return ret;
->   }
-> @@ -2610,9 +2588,6 @@ static void stm32_spi_remove(struct platform_device *pdev)
->   		gen_pool_free(spi->sram_pool, (unsigned long)spi->sram_rx_buf,
->   			      spi->sram_rx_buf_size);
->   
-> -	clk_disable_unprepare(spi->clk);
-> -
-> -
->   	pinctrl_pm_select_sleep_state(&pdev->dev);
->   }
->   
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            const: rockchip,rk3588-vicap
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 5
+> +          maxItems: 5
 
+=2E..or maxItems here...
+
+> +
+> +        clock-names:
+> +          items:
+> +            - const: aclk
+> +            - const: hclk
+> +            - const: dclk
+> +            - const: iclk0
+
+> +            - const: iclk1
+> +
+> +        resets:
+> +          minItems: 9
+> +          maxItems: 9
+
+=2E..or here.
+
+> +
+> +        reset-names:
+> +          items:
+> +            - const: arst
+> +            - const: hrst
+> +            - const: drst
+> +            - const: irst0
+
+Were you willing to reuse "irst" for the 0th irst, all the repetition
+wouldn't be needed. I assume it represents the reset for the port at
+address 0, so it wouldn't even be a different meaning on each device.
+
+> +            - const: irst1
+> +            - const: irst2
+> +            - const: irst3
+> +            - const: irst4
+> +            - const: irst5
+> +
+>  additionalProperties: false
+> =20
+>  examples:
+>=20
+> --=20
+> 2.39.5
+>=20
+>=20
+
+--jVdB2zejn0FZqmel
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCabrmcgAKCRB4tDGHoIJi
+0kE+AQCiO8R6sREJ16rGB4nk0o2txYYzKiWx5flN3eu4tYAL+gD/RBcvFZzkcWgN
+cce8jKdYN4Rihg2tKuLCrikL1c2BDAw=
+=sCrK
+-----END PGP SIGNATURE-----
+
+--jVdB2zejn0FZqmel--
+
+
+--===============2794077036594058219==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2794077036594058219==--
+
