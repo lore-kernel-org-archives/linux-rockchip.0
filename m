@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08D011091904
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 18:44:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B6B9109190B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 18:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AQyxUmRjJlihlCbog0XUpySToJBhXR2tompH5azH83Y=; b=DX/m0mhFjc4IhdKD9mSiM0N+4U
-	GVnaV6X5RSdZkuSYXfwFHEtWh2UyWPYeU3RmGjI+2olOp01PT9jY3mb37dVJZ4YS12/vUrLCwmbcz
-	cwCMPvAEtiKioNbzQhz5EWz5XIHtWA3b/hoahiPcTN6kG+vN7G5q+EDkuiYkGKhth8Wx/+Oa4EcZz
-	TFFyFYjNgsx7aEQGjE6GvE9YH49JqH/GKbvVCd2LyWl0HPJnqHlTxmAZJW/ITf7Xdeh168q4o47gZ
-	xGTBU3R8YLfF5ZAYjFDJVCxRs/xUbDS0uX3+NiyFnpL8JreX9P1ZM0/TxVnJkxpJ/9ZdGuIM/s+tA
-	/cXzup1g==;
+	bh=Nsg+PMSrmzB0mfcaGjL3WX+wWIz398ms9fMOYSEbzg8=; b=332l6Ny0gmk0Ubu3vMIKHT6i8S
+	eFVnAsSHsyDw2roBAgwKZddOkYMXi29p6WFAOIXAzonbktk1hoctVgOWX2WLR724sP9KwYrLEsOr4
+	AIsiXxn1rSwrSfH2Mp2NqR6HGnXMY7v7iFRQNXNVLbdhkyXXaukByhzUy1THfBaQ7NENm3tQLvy1/
+	7tDGuHzmVt8MaMixobSdYyyesKdjysZk336pl4VU8DURw5jv8N1Vn1jSWg/Uh4oYhBs2/qvC+J0nH
+	Z2+n6GLZJXjVPsDXhLL1we5ceLNWVGsplmo2/VkpjvDFkBXZJwa3Eqt67P14PJ44OJaFwJQhcwzPn
+	2ZR3WcBA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3ILw-0000000BORS-2rR1;
-	Thu, 19 Mar 2026 18:44:16 +0000
+	id 1w3INT-0000000BOe7-3dvm;
+	Thu, 19 Mar 2026 18:45:51 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3ILv-0000000BOQw-1ghJ
+	id 1w3INS-0000000BOdQ-1814
 	for linux-rockchip@bombadil.infradead.org;
-	Thu, 19 Mar 2026 18:44:15 +0000
+	Thu, 19 Mar 2026 18:45:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
 	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=TTdIhzTfVOU4J4zn+pv0u4noPX6wbBChtTHWotcoChQ=; b=GIzFwcpy9eMol1lPd36Rwwb/xp
-	RpjBE3ZoocxLqgKirVVTx5SQ/uzjRyTTohtU6N8uhhpjl70o/070WlW4Y3YrCAVWDuCHfcKSbvqMZ
-	XoMSwNuKDT9gbu8vSmOXfqXczNjAJ3kpSnEfsW8YyX6ei8sdGUnQn9+Bq80Q4xmjmkzBrrXkqvZen
-	It/PAE+DQAx2U052WWm6yKqHIzsOtetU5a4+jXq1yS3wFQq/20arR1vXQvKOTMqhMN4xQHBN2KNFs
-	Fhhpjwc/2iht5IOb/1S41qFhuzt9nA+VtI2oINAD9lpyqJiGWOXTzydYau1claV02Zg8YQL7HUlCx
-	50uaTriQ==;
-Received: from mail-qk1-x744.google.com ([2607:f8b0:4864:20::744])
+	bh=fyxr2cT76xTmVXlGS1w9Azu54H6E559HX/Y7oAdioW8=; b=MAMRGK2MezecVNmBifvO2yeSwI
+	kX0ejiquDgcBtJMaGuVhIU5kI5jA1i0srkTK528EjwHHsyWqZIY9ml630TNgPZi0ZREy9JuchS9xx
+	ebiJBjriDTVHhf3Lo44v/5+/5OFvprLhMXDWE6B/42cUfp/9UexbeAfVVYSqkH0j3wffqqTtB0tC/
+	tMt8IhxVqBdN/8BBQmeZtQ6YrPkMkCI3PlWIYr+N9OVtP8ctcNKE4FGA7n0h+VjDov3biTm3SXvwq
+	itAFqpndMvuIzM6iL9e/kuQcWlmO684A5sBbJpURFAdsHD573Ykw9/YqSXeJ2jwIJTWYij8D0ztxl
+	COxEW44w==;
+Received: from mail-qk1-x731.google.com ([2607:f8b0:4864:20::731])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3ILr-0000000EHeF-3Yd4
+	id 1w3INP-0000000EHwY-0A3Q
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Mar 2026 18:44:13 +0000
-Received: by mail-qk1-x744.google.com with SMTP id af79cd13be357-8cd767d2d70so95976385a.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Mar 2026 11:44:10 -0700 (PDT)
+	Thu, 19 Mar 2026 18:45:48 +0000
+Received: by mail-qk1-x731.google.com with SMTP id af79cd13be357-8cd8c6e365eso132456185a.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Mar 2026 11:45:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1773945849; x=1774550649; darn=lists.infradead.org;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1773945945; x=1774550745; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=TTdIhzTfVOU4J4zn+pv0u4noPX6wbBChtTHWotcoChQ=;
-        b=u+fa+Tpv9muZKINXilL6yh9bSrek/Q2ayWGuHvIeoNdeAPirlDXDTYVQkU79XnjLI/
-         r8cbQlJjSA0ff+yKM1V6DPANxxZQe5ON8eDDkoyPENUVMnK2xSeNLzlp1ieuFeJkXxKy
-         AYVuzYMBOQZBJsn85QcJaREVjhpJek3UULrUvXt71bz13Q98V7MrC1H0gCsNGt8RPzdc
-         fDH+fno55Z404gh/he2k9FG1gue0lXrztUkH5qsecLQcU1MSddHMoe/SLJyRX5A4ps3m
-         IH/yI7u24WSymp9+WSKBUv2CAAEN1YWSPluaIeFJ/LpomYckDdm0idn7lTTWluZHQeml
-         nBqw==
+        bh=fyxr2cT76xTmVXlGS1w9Azu54H6E559HX/Y7oAdioW8=;
+        b=1Z3/zaDBNwP+Dfvua8RS1N3ysBWoZFKQrUTsh1iXo5f5QpBg03LH/NVXmUw4TTWbrg
+         Liia79GJn0AbY8T24ZbnePS9Jhe21/VsY4eZOw81WCiFz2IHCHwRMZ5RsOr6HdqFZ/r/
+         99yYt/be87IxsjSEbuSCyHqfOPeKJtbwQpcjOivfz4JXpuRQvY+IR98eGuVB2ybSHUQI
+         3DjOCrxapGuc8CTNqBM35hUYfs/C6sWFw/lKzHoeXPyljCgB4WaGtw2tsS6j7NvGugw4
+         Doilw0noj/Posj0rD6LuL91P3JPQhswFhWCB3Bx7Nu8pylyQ912q8QDQz1uY7wtW95xu
+         pwfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773945849; x=1774550649;
+        d=1e100.net; s=20251104; t=1773945945; x=1774550745;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=TTdIhzTfVOU4J4zn+pv0u4noPX6wbBChtTHWotcoChQ=;
-        b=gWw/NveHcaOj3BSTlZqx0XlGLIkmJfuZvYXThEdrI5Zsrz/tU2wiyad9ZFVIRNRJGV
-         ukLZ1sCbNkgkkGun26gfc5Pv5x90O9z0lW8hNv5XnXL7SssLmCvlxGQNiFjD1HuYB+Oy
-         A8ITzTJxFigEIKY981qWYvnEdloYAkw/2+5IR/Zuo1vMNyDJTsM8XPiG7KumxaeyfEfd
-         nfNapvtBW2JIDJfZu6K9kBG/wzJXBqUlB4MZXFK9Eo10RTb9gL+avScZVQxZoa+oS1Ck
-         hgxOsbQ5nn1cxRgUXbEqmZs9HyPIQu8w3xpHBEETsjBOVKGqmN1w782wzdz6gqPHjeiJ
-         ErCA==
-X-Forwarded-Encrypted: i=1; AJvYcCU/PUwVbLEmeow0ipOBckxns8CFjhLskpPWsetv1Y3gQN8CMmOtBOV32XrnWHULVjlKnZAhZ7GfaA031S5zuQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yw+4oJi91Z2zhIVmH53skknxYLoU+HuZTqEyul7RnvhugczDlKC
-	0vMsTqbsPD6dCz/Gzj+sEPhy5x3oDorS49kaK9wLWf5Uya/z6v8WYXvQVmX9k53iH7M=
-X-Gm-Gg: ATEYQzxxvTK+uCmymr9aLGlRevIzwSPH3HJgoG0azGkRlxUMnzphJgjhFkXGi2Wg/u5
-	+t/+XyDpozxdZjyMnFI9KQVmDoqi5xFdRMexDIQPt82kv8vBjBMCoI0JBHaDaCg9EnxpnCH8R6m
-	FPvAmTY9h95CAPPUFOVHVuSwV3tY9a4lj4plJdWVmYh41ktmPLpG4tebqjmFi/O23DnVBsk7Y+e
-	4JkTomjfQEPOKX172stBB5KBesDR8q5P4v/h+zNPZ047UzDjNhb0rPPui8HWLGVJ4uR3jegVtOn
-	aJ3Wz1Qu7lp64KcStTUmswNrmyXVFxgTYXCTi8JX5xFBimPNP1shpAtFxkVLJFA3QbFy8ynQEkj
-	iZ19edij/kT1fveejXZkE1SSvXeNak4CVxn71oo8WAfIEwm9WKMIr8qxe+CqqfR/Ltje8ViAEK1
-	UVvU7UTqHt5RhjWwsCqdSpcjPkYN2S
-X-Received: by 2002:a05:620a:458d:b0:8b2:1ee9:dcfb with SMTP id af79cd13be357-8cfc7b65a1cmr52317385a.8.1773945849126;
-        Thu, 19 Mar 2026 11:44:09 -0700 (PDT)
+        bh=fyxr2cT76xTmVXlGS1w9Azu54H6E559HX/Y7oAdioW8=;
+        b=GFaPkhhtKIPB9Bdz/kl9TX3YXT9keIuSsBud0E1ATt2rKiDDfZ7e81AsMSMVYFhYKj
+         gMTSyBGROUevC25aU93CSFrHvqpgaYRYg6AaG+wbWOq70YzSipQC4/VtBv+UGJxhM7zk
+         jcKpC/RuBCIi6PJ1+rpDlnOv73yAkTwGFmUuyxhSUsiJczBU9L2KJwKDwE8nhkngu0A4
+         wsam3IsiyrPGH5rGHTgVf+ppQrpkaCSWsyZuq77Q0WKoMOsDTcH1Y5RlkX66UVY2PXBb
+         sL+o8qDroICJ/xcRcfLQjXqxRgmK/5GiezhWOHWEtzSF7YvZCPXG5uwS0QpE23DfYGlN
+         yckw==
+X-Forwarded-Encrypted: i=1; AJvYcCURC5z4uXEET3Te3fILr4bGe9Gu/gz9LithS3RmrVCCIhpPQfSUimjOfyWPfIkFZaPynvQSxqn9Pua2VWr4YQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyvmMFbX/lx96sawJun/8sG7Jo4HJwh4ay9MG3RzYCT0ZtAu5ph
+	zaNSNwYLAtn5vX1JpAohq+19Ue8Tm/b0bbk8r8vApg/oLw87R91q1PTfuV+ICjrQhSE=
+X-Gm-Gg: ATEYQzymrhNMtHqD0KFS7Pi+m2vxVj4C6s0eh06pI3LI+A/CgyJx14j61moKTEhp05R
+	iM82mzLH/SAE7XZTBtZHZcj2sMi38Vf9BeqWH1x5I87bEGo4zs1IyC+kIXa7mkD9rD0syEJPavm
+	LNugcgZkmn5AaMe0Xt5N9nylwbeQeSgHF+MnTMTVu2p6HTHF0NG4gqY0YFVGCOe/RLC0Ingb9FM
+	QADzh8xWJsJZJyz05mT2o8AVxBKdaXpZ6u9dhdHd5qiMS3pVSwm28LI+JPfVT8+RUNbnSbi1nqO
+	NhRG5s13TiU+ZGnnewvhwv6TQrMv510vL3ofKXKtKi+zOTqhm8G3SP6gtuAQ7EKtymhN8pAkKSU
+	7fHNsJE7jYqDCohFiYA2yIdvRa/ufM4i/Y+BT4XCw2MpMshfMkRjk66EF9gTk7a3NBIjr5YaHCV
+	BxBpmEN91A14MkdWmzIES6lknqkXK+
+X-Received: by 2002:a05:620a:4050:b0:8cf:c08e:5f43 with SMTP id af79cd13be357-8cfc8097225mr45589685a.63.1773945944917;
+        Thu, 19 Mar 2026 11:45:44 -0700 (PDT)
 Received: from ?IPv6:2606:6d00:11:b76d::5ac? ([2606:6d00:11:b76d::5ac])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfacdaeb88sm611790085a.5.2026.03.19.11.44.07
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfad16691asm485652985a.23.2026.03.19.11.45.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Mar 2026 11:44:08 -0700 (PDT)
-Message-ID: <fc7b74095548d9c13a92d2944c1f5ca9f5c7dba5.camel@ndufresne.ca>
-Subject: Re: [PATCH v3 01/27] media: dt-bindings: media: rockchip-rga: add
- rockchip,rk3588-rga3
+        Thu, 19 Mar 2026 11:45:44 -0700 (PDT)
+Message-ID: <82eaf7e33273ab2f68ff6720244be2f268e52cb2.camel@ndufresne.ca>
+Subject: Re: [PATCH v3 02/27] media: v4l2-common: sort RGB formats in
+ v4l2_format_info
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
@@ -96,10 +96,10 @@ To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	devicetree@vger.kernel.org, kernel@pengutronix.de
-Date: Thu, 19 Mar 2026 14:44:06 -0400
-In-Reply-To: <20260127-spu-rga3-v3-1-77b273067beb@pengutronix.de>
+Date: Thu, 19 Mar 2026 14:45:42 -0400
+In-Reply-To: <20260127-spu-rga3-v3-2-77b273067beb@pengutronix.de>
 References: <20260127-spu-rga3-v3-0-77b273067beb@pengutronix.de>
-	 <20260127-spu-rga3-v3-1-77b273067beb@pengutronix.de>
+	 <20260127-spu-rga3-v3-2-77b273067beb@pengutronix.de>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -116,8 +116,8 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_184412_133667_414C9D3B 
-X-CRM114-Status: GOOD (  22.49  )
+X-CRM114-CacheID: sfid-20260319_184547_394147_2D75826B 
+X-CRM114-Status: GOOD (  15.82  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,150 +129,238 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3093132651326125728=="
+Content-Type: multipart/mixed; boundary="===============1354678756222381012=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============3093132651326125728==
+--===============1354678756222381012==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-cKylSNn6LcAUhVrxOu1V"
+	protocol="application/pgp-signature"; boundary="=-Wsz88yXF6Ple/ZN0Bspp"
 
 
---=-cKylSNn6LcAUhVrxOu1V
+--=-Wsz88yXF6Ple/ZN0Bspp
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mardi 27 janvier 2026 =C3=A0 15:39 +0100, Sven P=C3=BCschel a =C3=A9crit=
 =C2=A0:
-> Add a new compatible for the RGA3 (Raster Graphic Acceleration 3)
-> peripheral found on the RK3588 SoC. Also specify an iommu property,
-> as the RGA3 contains the generic rockchip iommu. The RGA2 also has
-> an iommu, but it's specific to the RGA2.
+> Sort the RGB formats in v4l2_format_info to match the format definitions
+> in include/uapi/linux/videodev2.h . Also introduce the same sections to
+> partition the list of formats and align the format info in each section.
 >=20
-> The existing binding refers to the RGA2 peripheral. The RK3588
-> contains one RGA2 core and two RGA3 cores. Both feature a similar
-> functionality of scaling, cropping and rotating of up to two input
-> images into one output image. Key differences of the RGA3 are:
->=20
-> - supports 10bit YUV output formats
-> - supports 8x8 tiles and FBCD as inputs and outputs
-> - supports BT2020 color space conversion
-> - max output resolution of (8192-64)x(8192-64)
-> - MMU can map up to 32G DDR RAM
-> - fully planar formats (3 planes) are not supported
-> - max scale up/down factor of 8 (RGA2 allows up to 16)
-
-Nothing import, but some more details on the differences can be found here.
-
-https://github.com/sravansenthiln1/rga-demos/tree/main
-
-They also removed from RGA3 the neural network quantization support
-(CLIP((source + offset) * scale). I suppose that integer tensors are fading
-away, and the accelerator does not do floats.
-
-One things that isn't clear, even in the upstream RGA2 implementation is if=
- the
-accelerator is cache coherent. When I study the BSP usage of RGA2, they
-integrate the RGA2 directly into GStreamer software video converter. They d=
-on't
-do anything to flush the cache, indicating that RGA2 is most probably cache
-coherent.
-
-Do you know if RGA3 has the same feature or if this is one of the differenc=
-e ?
-Typically, RKIOMMU users are not, in RGA2, a completely custom mmu was used=
- (and
-implemented inside the driver, as standalone).
-
+> The alignment of the 1 or 2 bytes RGB formats contains an additional
+> space in preparation of adding the missing formats to the list, as for
+> V4L2_PIX_FMT_ARGB555X an additional space is necessary.
 >=20
 > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
 > ---
-> =C2=A0.../devicetree/bindings/media/rockchip-rga.yaml=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0 | 19 ++++++++++++++++++-
-> =C2=A01 file changed, 18 insertions(+), 1 deletion(-)
+> =C2=A0drivers/media/v4l2-core/v4l2-common.c | 54 +++++++++++++++++++-----=
+-----------
+> =C2=A01 file changed, 30 insertions(+), 24 deletions(-)
 >=20
-> diff --git a/Documentation/devicetree/bindings/media/rockchip-rga.yaml b/=
-Documentation/devicetree/bindings/media/rockchip-rga.yaml
-> index ac17cda65191b..7735d8794c719 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip-rga.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip-rga.yaml
-> @@ -9,7 +9,9 @@ title: Rockchip 2D raster graphic acceleration controller=
- (RGA)
-> =C2=A0description:
-> =C2=A0=C2=A0 RGA is a standalone 2D raster graphic acceleration unit. It =
-accelerates 2D
-> =C2=A0=C2=A0 graphics operations, such as point/line drawing, image scali=
-ng, rotation,
-> -=C2=A0 BitBLT, alpha blending and image blur/sharpness.
-> +=C2=A0 BitBLT, alpha blending and image blur/sharpness. There exist two =
-variants
-> +=C2=A0 named RGA2 and RGA3 that differ in the supported inputs/output fo=
-rmats,
-> +=C2=A0 the attached IOMMU and the supported operations on the input.
-> =C2=A0
-> =C2=A0maintainers:
-> =C2=A0=C2=A0 - Jacob Chen <jacob-chen@iotwrt.com>
-> @@ -20,6 +22,7 @@ properties:
-> =C2=A0=C2=A0=C2=A0=C2=A0 oneOf:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: rockchip,rk3288-rga
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: rockchip,rk3399-rga
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: rockchip,rk3588-rga3
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - items:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - enum:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 - rockchip,rk3228-rga
-> @@ -45,6 +48,9 @@ properties:
-> =C2=A0=C2=A0 power-domains:
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 1
-> =C2=A0
-> +=C2=A0 iommus:
-> +=C2=A0=C2=A0=C2=A0 maxItems: 1
+> diff --git a/drivers/media/v4l2-core/v4l2-common.c b/drivers/media/v4l2-c=
+ore/v4l2-common.c
+> index 554c591e11133..49c1ec08e2eb3 100644
+> --- a/drivers/media/v4l2-core/v4l2-common.c
+> +++ b/drivers/media/v4l2-core/v4l2-common.c
+> @@ -245,33 +245,39 @@ EXPORT_SYMBOL_GPL(v4l2_s_parm_cap);
+> =C2=A0const struct v4l2_format_info *v4l2_format_info(u32 format)
+> =C2=A0{
+> =C2=A0	static const struct v4l2_format_info formats[] =3D {
+> -		/* RGB formats */
+> -		{ .format =3D V4L2_PIX_FMT_BGR24,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIXE=
+L_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 3, 0, 0, 0 }, =
+.bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGB24,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIXE=
+L_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 3, 0, 0, 0 }, =
+.bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_HSV24,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIXE=
+L_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 3, 0, 0, 0 }, =
+.bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_BGR32,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIXE=
+L_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, =
+.bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_XBGR32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_BGRX32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGB32,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIXE=
+L_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, =
+.bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_XRGB32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGBX32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_HSV32,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIXE=
+L_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, =
+.bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_ARGB32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGBA32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_ABGR32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_BGRA32,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGB565,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGB565X, .pixel_enc =3D V4L2_PIXEL_ENC_RGB,=
+ .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 }, .bpp_div =
+=3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGB555,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_BGR666,=C2=A0 .pixel_enc =3D V4L2_PIXEL_ENC=
+_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_=
+div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_BGR48_12, .pixel_enc =3D V4L2_PIXEL_ENC_RGB=
+, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6, 0, 0, 0 }, .bpp_div =
+=3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_BGR48, .pixel_enc =3D V4L2_PIXEL_ENC_RGB, .=
+mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6, 0, 0, 0 }, .bpp_div =3D=
+ { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGB48, .pixel_enc =3D V4L2_PIXEL_ENC_RGB, .=
+mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6, 0, 0, 0 }, .bpp_div =3D=
+ { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_ABGR64_12, .pixel_enc =3D V4L2_PIXEL_ENC_RG=
+B, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 8, 0, 0, 0 }, .bpp_div=
+ =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> -		{ .format =3D V4L2_PIX_FMT_RGBA1010102, .pixel_enc =3D V4L2_PIXEL_ENC_=
+RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_d=
+iv =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		/* RGB formats (1 or 2 bytes per pixel) */
+> +		{ .format =3D V4L2_PIX_FMT_RGB555,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIX=
+EL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 },=
+ .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_RGB565,=C2=A0=C2=A0 .pixel_enc =3D V4L2_PIX=
+EL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 },=
+ .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_RGB565X,=C2=A0 .pixel_enc =3D V4L2_PIXEL_EN=
+C_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0, 0, 0 }, .bpp=
+_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
 > +
-> =C2=A0=C2=A0 resets:
-> =C2=A0=C2=A0=C2=A0=C2=A0 maxItems: 3
+> +		/* RGB formats (3 or 4 bytes per pixel) */
+> +		{ .format =3D V4L2_PIX_FMT_BGR666,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_BGR24,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+.pixel_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .=
+bpp =3D { 3, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D=
+ 1 },
+> +		{ .format =3D V4L2_PIX_FMT_RGB24,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+.pixel_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .=
+bpp =3D { 3, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D=
+ 1 },
+> +		{ .format =3D V4L2_PIX_FMT_BGR32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+.pixel_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .=
+bpp =3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D=
+ 1 },
+> +		{ .format =3D V4L2_PIX_FMT_ABGR32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_XBGR32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_BGRA32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_BGRX32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_RGB32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 =
+.pixel_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .=
+bpp =3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D=
+ 1 },
+> +		{ .format =3D V4L2_PIX_FMT_RGBA32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_RGBX32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_ARGB32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> +		{ .format =3D V4L2_PIX_FMT_XRGB32,=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 .pixe=
+l_enc =3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =
+=3D { 4, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 }=
+,
+> =C2=A0		{ .format =3D V4L2_PIX_FMT_RGBX1010102, .pixel_enc =3D V4L2_PIXEL=
+_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .=
+bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_RGBA1010102, .pixel_enc =3D V4L2_PIXEL_ENC_=
+RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_d=
+iv =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> =C2=A0		{ .format =3D V4L2_PIX_FMT_ARGB2101010, .pixel_enc =3D V4L2_PIXEL=
+_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .=
+bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
 > =C2=A0
-> @@ -54,6 +60,17 @@ properties:
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: axi
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - const: ahb
-> =C2=A0
-> +allOf:
-> +- if:
-> +=C2=A0=C2=A0=C2=A0 properties:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatible:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 contains:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enum:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - roc=
-kchip,rk3588-rga3
-> +=C2=A0 then:
-> +=C2=A0=C2=A0=C2=A0 required:
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - iommus
+> +		/* RGB formats (6 or 8 bytes per pixel) */
+> +		{ .format =3D V4L2_PIX_FMT_BGR48_12,=C2=A0 .pixel_enc =3D V4L2_PIXEL_E=
+NC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6, 0, 0, 0 }, .bp=
+p_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_BGR48,=C2=A0=C2=A0=C2=A0=C2=A0 .pixel_enc =
+=3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6=
+, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_RGB48,=C2=A0=C2=A0=C2=A0=C2=A0 .pixel_enc =
+=3D V4L2_PIXEL_ENC_RGB, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 6=
+, 0, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_ABGR64_12, .pixel_enc =3D V4L2_PIXEL_ENC_RG=
+B, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 8, 0, 0, 0 }, .bpp_div=
+ =3D { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
 > +
+> +		/* HSV formats */
+> +		{ .format =3D V4L2_PIX_FMT_HSV24, .pixel_enc =3D V4L2_PIXEL_ENC_RGB, .=
+mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 3, 0, 0, 0 }, .bpp_div =3D=
+ { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +		{ .format =3D V4L2_PIX_FMT_HSV32, .pixel_enc =3D V4L2_PIXEL_ENC_RGB, .=
+mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 4, 0, 0, 0 }, .bpp_div =3D=
+ { 1, 1, 1, 1 }, .hdiv =3D 1, .vdiv =3D 1 },
+> +
+> =C2=A0		/* YUV packed formats */
+> =C2=A0		{ .format =3D V4L2_PIX_FMT_YUYV,=C2=A0=C2=A0=C2=A0 .pixel_enc =3D=
+ V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0=
+, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 1 },
+> =C2=A0		{ .format =3D V4L2_PIX_FMT_YVYU,=C2=A0=C2=A0=C2=A0 .pixel_enc =3D=
+ V4L2_PIXEL_ENC_YUV, .mem_planes =3D 1, .comp_planes =3D 1, .bpp =3D { 2, 0=
+, 0, 0 }, .bpp_div =3D { 1, 1, 1, 1 }, .hdiv =3D 2, .vdiv =3D 1 },
 
-You really can't use this chip with CMA ?
-
-Nicolas
-
-> =C2=A0required:
-> =C2=A0=C2=A0 - compatible
-> =C2=A0=C2=A0 - reg
-
---=-cKylSNn6LcAUhVrxOu1V
+--=-Wsz88yXF6Ple/ZN0Bspp
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxD9gAKCRDZQZRRKWBy
-9MTmAP9/UjJig3fQpTvjDlz3tiARS93/hVZoNEUjD3yE0V+9qAEAti3yCIjKjcaI
-z1e1wbvEi3mfHC8yVbOrjPYReUxynQQ=
-=46hR
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCabxEVgAKCRDZQZRRKWBy
+9No4AQD3/aAkAEwNjIOWQvIu1NDXoIuPzyXnLJ2iMFNMGp1u5wD/UwF3ZnJ1cn7m
+BQCobwSyzvDMGTI14zeSx+a+Yoz9rwE=
+=RVgQ
 -----END PGP SIGNATURE-----
 
---=-cKylSNn6LcAUhVrxOu1V--
+--=-Wsz88yXF6Ple/ZN0Bspp--
 
 
---===============3093132651326125728==
+--===============1354678756222381012==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -283,5 +371,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============3093132651326125728==--
+--===============1354678756222381012==--
 
