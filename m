@@ -4,69 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 909281090220
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 13:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB3B61090225
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 13:37:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7eAa520etSJRanpqB5lPx5P3OZ2yJpwajcgsz08Z1FI=; b=chG5pMpmR4SYXO
-	r4f9H/8WQhfsVJLtlwqHHklAVlCe0bx70iEg8bocZL9J5eaWzWVIsFoWwM4R9x+Yxndf2Q/O2X/bZ
-	huQoxJKNhNI1aYug6pdUlDsF8ewVxgQdsN4AAbf4bOoa1UYSe0QFnksAFDRcYaG16VswYvvhymFe2
-	jawloRXlT8AUuctM0/E0EazhxaPukbd6jHT3lTWLna92pCWClp2U0UbJ12BdD68vG/Wf+PgYg+7uB
-	JsmCJTd2hDoBXusNqaEaLjsScJHzPOZ4Uu50PODyiatnx/rPKdZsNzDSyRl8RXyw+zMaz/kbKgnvQ
-	rFJaZqaZ25wcokx7GJ5Q==;
+	List-Owner; bh=ihV7eHPMkhsnzmieJL/t0YdD2izAEbUAvbBwqOlNbYY=; b=1W70kMvk0Nw7nt
+	KC1NccxUY3hDmxBTEeTQg04DF/vAe1s2InCMrhtUkVLkBG2E532K4/r1fbXp6d0wZ5GYbo7R+2RtK
+	IZ8VGlXXrF+8ROibRS9VJ7RPZNQVvyWIsyHdU01bJcuYHfu6cZGjDh09mzw6zdVQgIK/W7XSQQDu5
+	5Qqh3198DUfEV34NjTVA7BrplL/90tcnsW2ZX2Jh4wklnhsLTM3ZiNDtY0ZZnKV55cLkaDJDfl9TC
+	ZzIBpbWFYAlWAnqRrg85tUJX7fhMQlNkscVWqhXJNg3ta7FenOBi6IndJf6VujrseiC660Vfnzd2A
+	jH388gdOyEX87oSa8Nqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3DRn-0000000Agmm-0mdQ;
-	Thu, 19 Mar 2026 13:29:59 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1w3DYf-0000000AhIm-3HA9;
+	Thu, 19 Mar 2026 13:37:05 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3DRk-0000000Aglv-0jPC
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Mar 2026 13:29:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: References: Cc:
- To: From: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1773926994;
- bh=mXlN5DoBtmc48+CasdwvQDpS+DXItTqESoFoYWJajJ0=;
- b=xaN8pnuMa2uWRPVh1e+MPJeQxLpBE0Tdg5jPDdxa5wAyMIZdw+qRDFV5QJJ/qCOekDU9/MdIO
- +ZbnOeL5LoARmpI1VYdZoN8ZcPEXht+Qqv28olJ6j67Dkx65V/cGKbomWMjmURoCn7JcpE0z/D+
- z0m1AHkjCaM+jhdHcWtfrsb5bqKW81KJreTCQI1h1rozA+sDQDDx5S8jLSFRK/RMKumU/w/OSeG
- cehgrjC2bt0JzyrHTlKHqwstQXrKzgNzWyvMCy1rvQ7f5y8pmjqtnwReeV/lspvGR1kQiFUI4oS
- JIAY98Mx/Tmr7o+8ATP661GUPafXr7t48j5hhmxLMUIw==
-X-Forward-Email-ID: 69bbfa5193199f63becdd5bc
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.6.50
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <384dfd20-cf74-415a-a2df-a2c257d8032f@kwiboo.se>
-Date: Thu, 19 Mar 2026 14:29:50 +0100
+	id 1w3DYd-0000000AhIJ-0qno;
+	Thu, 19 Mar 2026 13:37:04 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7C9FC406E9;
+	Thu, 19 Mar 2026 13:37:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4F4FC19424;
+	Thu, 19 Mar 2026 13:37:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773927422;
+	bh=kZE7fWjkE9q0fs78z6WZPbfFeAaukSfB72v2ajLzOBc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=BF9GI/T48b6qMVLzhYLVgZ6osl/jvVy0Ho4gccdiYbNb0qBqZB+mcXrGzifkD+4Oa
+	 YiHGUaxIo1fmBBC0KCnAop7NXf9w6OCBn7N8+lk1yhcvYsWYKvmVre/Kr4EgSl1uuE
+	 WEQPY8Uukd+REDkeGSaYoiTvSjiXmTvYfuML1ygSlAYJhhJ4mEmKFqtTmADgygliig
+	 MFLGXupcwxkg0Y2qGIqsaO6QyMM8Oo8ORv26T4c/wUev4poueTOrGMhFUm1xhvN3NF
+	 pUr4yKSw3siiZ4JlD0pnopmN/aXMWFmKqgrr0p0fmnW42UHCI+whoXfHJ067YTMESW
+	 AM9m2t/fXXDPg==
+Message-ID: <ccf2c7f1-84d2-4d73-92ff-6400ed0a5489@kernel.org>
+Date: Thu, 19 Mar 2026 14:36:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3] arm64: dts: rockchip: rock-3b: Model PI6C20100 as
  gated-fixed-clock
-From: Jonas Karlman <jonas@kwiboo.se>
-To: MidG971 <midgy971@gmail.com>
-Cc: "linux-rockchip@lists.infradead.org"
- <linux-rockchip@lists.infradead.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "heiko@sntech.de" <heiko@sntech.de>,
- "shawn.lin@rock-chips.com" <shawn.lin@rock-chips.com>
+To: MidG971 <midgy971@gmail.com>, linux-rockchip@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, jonas@kwiboo.se, shawn.lin@rock-chips.com
 References: <20260319102247.32260-1-midgy971@gmail.com>
- <0adb7e19-62ea-4578-a448-f5d1e709ee28@kwiboo.se>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-In-Reply-To: <0adb7e19-62ea-4578-a448-f5d1e709ee28@kwiboo.se>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <20260319102247.32260-1-midgy971@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_062956_267624_417A6ACC 
-X-CRM114-Status: GOOD (  20.73  )
+X-CRM114-CacheID: sfid-20260319_063703_307511_435C7E11 
+X-CRM114-Status: GOOD (  11.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,114 +116,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi again,
+On 19/03/2026 11:22, MidG971 wrote:
+> The Radxa ROCK 3B uses a PI6C20100 PCIe reference clock buffer to
+> provide a 100MHz reference clock to the PCIe 3.0 PHY and controllers.
+> This chip is currently modeled only as a fixed regulator
+> (vcc3v3_pi6c_03), with no clock output representation.
+> 
+> The PI6C20100 is a clock generator, not a power supply. Model it
+> properly as a gated-fixed-clock, following the pattern established
+> for the Rock 5 ITX and other boards with similar PCIe clock buffer
+> chips.
+> 
+> The regulator node is kept as-is since it controls the power supply
+> to the PI6C20100 chip via GPIO0_D4. The new gated-fixed-clock node
+> references this regulator as its vdd-supply and provides a proper
+> 100MHz clock output. The pcie3x2 node is updated to include the
+> pipe and reference clocks, matching the approach used in
+> rk3588-rock-5-itx.dts.
+> 
+> Assisted-by: Claude:claude-3-opus
+> Signed-off-by: MidG971 <midgy971@gmail.com>
 
-On 3/19/2026 2:19 PM, Jonas Karlman wrote:
-> Hi,
-> 
-> On 3/19/2026 11:22 AM, MidG971 wrote:
->> The Radxa ROCK 3B uses a PI6C20100 PCIe reference clock buffer to
->> provide a 100MHz reference clock to the PCIe 3.0 PHY and controllers.
->> This chip is currently modeled only as a fixed regulator
->> (vcc3v3_pi6c_03), with no clock output representation.
->>
->> The PI6C20100 is a clock generator, not a power supply. Model it
->> properly as a gated-fixed-clock, following the pattern established
->> for the Rock 5 ITX and other boards with similar PCIe clock buffer
->> chips.
->>
->> The regulator node is kept as-is since it controls the power supply
->> to the PI6C20100 chip via GPIO0_D4. The new gated-fixed-clock node
->> references this regulator as its vdd-supply and provides a proper
->> 100MHz clock output. The pcie3x2 node is updated to include the
->> pipe and reference clocks, matching the approach used in
->> rk3588-rock-5-itx.dts.
->>
->> Assisted-by: Claude:claude-3-opus
->> Signed-off-by: MidG971 <midgy971@gmail.com>
-> 
-> Typically you should use your real name in SoB line, kernel docs state:
-> 
->   using a known identity (sorry, no anonymous contributions.)
-> 
-> https://docs.kernel.org/process/submitting-patches.html
-> 
->> ---
->>
->> Changes since v2 [1]:
->>  - Fix AI attribution: use Assisted-by tag instead of Signed-off-by (Shawn)
->>  - Add missing pipe clock (CLK_PCIE30X2_PIPE_DFT) to pcie3x2 clocks
->>    override (Shawn, referencing David's patch [2])
->>
->> Changes since v1 [3]:
->>  - Drop phy-supply approach entirely (Jonas, Shawn)
->>  - Model PI6C20100 as gated-fixed-clock instead
->>  - Wire reference clock to pcie3x2 controller
->>  - Follow pattern from rk3588-rock-5-itx.dts
->>
->> [1] https://lore.kernel.org/linux-rockchip/20260304132957.684616-1-midgy971@gmail.com/
->> [2] https://lore.kernel.org/linux-rockchip/d981fa84-bd05-ac9d-98ca-89ee47177829@rock-chips.com/T/#m6a8289609e6a60691d3c06358b6322c7aa5e43d1
->> [3] https://lore.kernel.org/linux-rockchip/20260213151452.535527-1-midgy971@gmail.com/
->>
->>  arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 21 ++++++++++++++++++++-
->>  1 file changed, 20 insertions(+), 1 deletion(-)
->>
->> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
->> index c5f67dd6dfd9..1a2b3c4d5e6f 100644
->> --- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
->> +++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
->> @@ -56,7 +56,16 @@
->>  		};
->>  	};
->>
->> -	/* pi6c pcie clock generator */
->> +	/* PI6C20100 PCIe reference clock buffer (100MHz) */
->> +	pcie30_refclk: pcie-clock-generator {
->> +		compatible = "gated-fixed-clock";
->> +		#clock-cells = <0>;
->> +		clock-frequency = <100000000>;
->> +		clock-output-names = "pcie30_refclk";
->> +		vdd-supply = <&vcc3v3_pi6c_03>;
-> 
-> The vcc3v3_pi6c_03 regulator should also be removed in this patch,
-> as you state in the commit message, it is not a power supply.
-> 
-> Please convert to use enable-gpios prop.
+Anonymous contributions are not accepted. You must use your full name or
+known to us identity (nickname is not a "known identity").
 
-I looked at wrong schematics, please disregard this comment :-)
-
-Regards.
-Jonas
-
-> 
-> Regards,
-> Jonas
-> 
->> +	};
->> +
->> +	/* PI6C20100 power supply - active-high GPIO0_D4 */
->>  	vcc3v3_pi6c_03: regulator-3v3-vcc-pi6c-03 {
->>  		compatible = "regulator-fixed";
->>  		enable-active-high;
->> @@ -553,6 +562,15 @@
->>  };
->>
->>  &pcie3x2 {
->> +	clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
->> +		 <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
->> +		 <&cru CLK_PCIE30X2_AUX_NDFT>,
->> +		 <&cru CLK_PCIE30X2_PIPE_DFT>,
->> +		 <&pcie30_refclk>;
->> +	clock-names = "aclk_mst", "aclk_slv",
->> +		      "aclk_dbi", "pclk", "aux",
->> +		      "pipe", "ref";
->>  	pinctrl-names = "default";
->>  	pinctrl-0 = <&pcie30x2m1_pins>;
->>  	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
->> --
->> 2.39.5
->>
-> 
+Best regards,
+Krzysztof
 
 
 _______________________________________________
