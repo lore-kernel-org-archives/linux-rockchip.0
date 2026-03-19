@@ -4,71 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CE611088E64
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 02:06:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10C631075262
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:04:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vzXF/K57OVhMm3ML2xUeU5RvoAAkv0VlbGT+KbOUyG8=; b=da1/olZgvV6nuc
-	jARLvBxeqnZd5IZ7pE3ATfWndqjca+ytXiCSoVVVDVacEDC9PyIEYr9Q/acKawdF0pHhUJGr0gTtl
-	q8ymZ+ZpdrfKwTE2Zt5pDYz5nw5RdxTEp+twdbTnmUPG9X2q8N9NQdGnLqWgvSItAOI/JKNNczy2d
-	v4027rvAUdlaE0+jsXP+1/8CCWQmQS99oRHPpliVCbH+xxCeXuk//qesgspL/n9tfmnX9/I96xIJw
-	mmCHkKCzGN9HiUysU8dFkoJ9MotbAHX3If+/0RLbwcivqehzVG1ho88BFLG5X2r1VL80FTDF+pWP2
-	JZEUEwDVslAU6wic4xkg==;
+	List-Owner; bh=11TIrausGoYi4MZB1WEsDAcS7eM0AXdcXvBdIfut+jI=; b=BTkDi/OoAbQc2I
+	pVZ8cmtIS4MQxk8fneB7DNfbzZVkmLh8aFv7iIATzOshYwaHfqF3SX3bVRvEE4RvT/UKypEb86ARF
+	Lu0T6UHgNVu6cj9w96VqNIwmb15cMvX3zi4bjQ+PPCGYA9SE0gSPJGf0qsSoZ4Ccz4DSkt9bQXhzV
+	5OFGWg7GeQVvnZb5XAhHNAUusfBxoFqT+8oXGGZA6fw1ANhWg49FijsiEAOHmDQ1jDwuvHKlsCPzy
+	6hsywAsI+sdG+/Xq6BoEbYa5VmUR85ihKuFTBaalZJDvwmayOHC2FqYWYLyI/P4mOS/85+w3Pxpa7
+	Cn8ujesYFzT5vkQrl4/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w32m3-00000009gRT-0uQo;
-	Thu, 19 Mar 2026 02:06:13 +0000
-Received: from mailgw.kylinos.cn ([124.126.103.232])
+	id 1w37QW-0000000A6Gi-22l7;
+	Thu, 19 Mar 2026 07:04:16 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w32kX-00000009e5o-0j5G;
-	Thu, 19 Mar 2026 02:04:39 +0000
-X-UUID: f46be9c2233711f1a21c59e7364eecb8-20260319
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11,REQID:9d48c5ab-b3aa-46fa-bd7d-65aa28a8d0a5,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTI
-	ON:release,TS:0
-X-CID-META: VersionHash:89c9d04,CLOUDID:979b3530c0da1b419a4b489ea9edf3da,BulkI
-	D:nil,BulkQuantity:0,Recheck:0,SF:81|82|102|850|898,TC:nil,Content:0|15|50
-	,EDM:5,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: f46be9c2233711f1a21c59e7364eecb8-20260319
-X-User: xiaopei01@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
-	(envelope-from <xiaopei01@kylinos.cn>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 682703516; Thu, 19 Mar 2026 10:04:25 +0800
-From: Pei Xiao <xiaopei01@kylinos.cn>
-To: linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev,
-	openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com,
-	broonie@kernel.org,
-	Frank.Li@nxp.com,
-	amelie.delaunay@foss.st.com
-Cc: Pei Xiao <xiaopei01@kylinos.cn>
-Subject: [PATCH v5 13/17] spi: stm32: Simplify clock handling with devm_clk_get_enabled()
-Date: Thu, 19 Mar 2026 10:04:09 +0800
-Message-Id: <c8259f582596fd08541b94dce5dbb4cae513e295.1773885292.git.xiaopei01@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <cover.1773885292.git.xiaopei01@kylinos.cn>
-References: <cover.1773885292.git.xiaopei01@kylinos.cn>
+	id 1w37QT-0000000A6GF-1YlR;
+	Thu, 19 Mar 2026 07:04:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1773903854; x=1805439854;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=XWRb4tG0WfjZbF3L2bUwVIdS+/4y/LWaL3SwWGs47Z8=;
+  b=cFNRpJXffnxMDHZ/rLN7fPnVMJHtYOy3KhcIN/9nrwaPhUVFjtdnlCuq
+   rcOMHJ+01yAj6LqyZpFNua7DgLFeaVTuTWZiJp3dYtDFn/oPNfaEKV6i9
+   uPEUXrxZqeIDlnb0B7wHnv4XSE3zoE7cuTl16VOWyiXUE6s/KwOxO08pP
+   BHU5w3oEzAMVYma3uvQyowYc0c6VY73AJqaJCiRGM8KcZi+QyLn0YAgIp
+   yU/AxkWyuMGzHvAC6vhof8rvaVhnC+UdRTjCkvoQYduqmfOTFCWlHnimn
+   IOZ8ZbhxFg0BwLfH8bgPjGmQBW/lmezUuB8TywteyhV+xdZuJnQWMDMuE
+   Q==;
+X-CSE-ConnectionGUID: G7i3Q570SkiMIabT9QU7pg==
+X-CSE-MsgGUID: 8nW3RhVLSuKCuNO30ckuLA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11733"; a="62538843"
+X-IronPort-AV: E=Sophos;i="6.23,128,1770624000"; 
+   d="scan'208";a="62538843"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 Mar 2026 00:04:13 -0700
+X-CSE-ConnectionGUID: 6kIld5kyQMCuWrGShd9Iow==
+X-CSE-MsgGUID: ePfOVPAlSMy5V8WuidXKGw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,128,1770624000"; 
+   d="scan'208";a="224890375"
+Received: from lkp-server02.sh.intel.com (HELO a51c2a36b9df) ([10.239.97.151])
+  by fmviesa004.fm.intel.com with ESMTP; 19 Mar 2026 00:04:08 -0700
+Received: from kbuild by a51c2a36b9df with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1w37Ps-000000000Sn-1nKh;
+	Thu, 19 Mar 2026 07:03:42 +0000
+Date: Thu, 19 Mar 2026 15:03:23 +0800
+From: kernel test robot <lkp@intel.com>
+To: Daniele Briguglio <hello@superkali.me>,
+	Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: oe-kbuild-all@lists.linux.dev, linux-clk@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Daniele Briguglio <hello@superkali.me>
+Subject: Re: [PATCH 3/3] clk: rockchip: rk3588: add GATE_GRF clocks for I2S
+ MCLK output to IO
+Message-ID: <202603191419.MH6EuPga-lkp@intel.com>
+References: <20260316-rk3588-mclk-gate-grf-v1-3-66fb9a246718@superkali.me>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260316-rk3588-mclk-gate-grf-v1-3-66fb9a246718@superkali.me>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260318_190437_586640_0212B668 
-X-CRM114-Status: GOOD (  11.56  )
+X-CRM114-CacheID: sfid-20260319_000413_505505_331F9764 
+X-CRM114-Status: GOOD (  12.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,143 +96,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace devm_clk_get() followed by clk_prepare_enable() with
-devm_clk_get_enabled() for the clock. This removes the need for
-explicit clock enable and disable calls, as the managed API automatically
-handles clock disabling on device removal or probe failure.
+Hi Daniele,
 
-Remove the now-unnecessary clk_disable_unprepare() calls from the probe
-error paths and the remove callback. Also simplify error handling by
-using dev_err_probe().
+kernel test robot noticed the following build errors:
 
-Signed-off-by: Pei Xiao <xiaopei01@kylinos.cn>
----
- drivers/spi/spi-stm32.c | 62 +++++++++++------------------------------
- 1 file changed, 17 insertions(+), 45 deletions(-)
+[auto build test ERROR on b84a0ebe421ca56995ff78b66307667b62b3a900]
 
-diff --git a/drivers/spi/spi-stm32.c b/drivers/spi/spi-stm32.c
-index 8a7f5a10d4af..be88e62075af 100644
---- a/drivers/spi/spi-stm32.c
-+++ b/drivers/spi/spi-stm32.c
-@@ -2360,25 +2360,20 @@ static int stm32_spi_probe(struct platform_device *pdev)
- 	int ret;
- 
- 	cfg = of_device_get_match_data(&pdev->dev);
--	if (!cfg) {
--		dev_err(&pdev->dev, "Failed to get match data for platform\n");
--		return -ENODEV;
--	}
-+	if (!cfg)
-+		return dev_err_probe(&pdev->dev, -ENODEV,
-+				     "Failed to get match data for platform\n");
- 
- 	device_mode = of_property_read_bool(np, "spi-slave");
--	if (!cfg->has_device_mode && device_mode) {
--		dev_err(&pdev->dev, "spi-slave not supported\n");
--		return -EPERM;
--	}
-+	if (!cfg->has_device_mode && device_mode)
-+		return dev_err_probe(&pdev->dev, -EPERM, "spi-slave not supported\n");
- 
- 	if (device_mode)
- 		ctrl = devm_spi_alloc_target(&pdev->dev, sizeof(struct stm32_spi));
- 	else
- 		ctrl = devm_spi_alloc_host(&pdev->dev, sizeof(struct stm32_spi));
--	if (!ctrl) {
--		dev_err(&pdev->dev, "spi controller allocation failed\n");
--		return -ENOMEM;
--	}
-+	if (!ctrl)
-+		return dev_err_probe(&pdev->dev, -ENOMEM, "spi controller allocation failed\n");
- 	platform_set_drvdata(pdev, ctrl);
- 
- 	spi = spi_controller_get_devdata(ctrl);
-@@ -2409,32 +2404,18 @@ static int stm32_spi_probe(struct platform_device *pdev)
- 		return ret;
- 	}
- 
--	spi->clk = devm_clk_get(&pdev->dev, NULL);
--	if (IS_ERR(spi->clk)) {
--		ret = PTR_ERR(spi->clk);
--		dev_err(&pdev->dev, "clk get failed: %d\n", ret);
--		return ret;
--	}
-+	spi->clk = devm_clk_get_enabled(&pdev->dev, NULL);
-+	if (IS_ERR(spi->clk))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(spi->clk), "clk enabled failed\n");
- 
--	ret = clk_prepare_enable(spi->clk);
--	if (ret) {
--		dev_err(&pdev->dev, "clk enable failed: %d\n", ret);
--		return ret;
--	}
- 	spi->clk_rate = clk_get_rate(spi->clk);
--	if (!spi->clk_rate) {
--		dev_err(&pdev->dev, "clk rate = 0\n");
--		ret = -EINVAL;
--		goto err_clk_disable;
--	}
-+	if (!spi->clk_rate)
-+		return dev_err_probe(&pdev->dev, -EINVAL, "clk rate = 0\n");
- 
- 	rst = devm_reset_control_get_optional_exclusive(&pdev->dev, NULL);
- 	if (rst) {
--		if (IS_ERR(rst)) {
--			ret = dev_err_probe(&pdev->dev, PTR_ERR(rst),
--					    "failed to get reset\n");
--			goto err_clk_disable;
--		}
-+		if (IS_ERR(rst))
-+			return dev_err_probe(&pdev->dev, PTR_ERR(rst), "failed to get reset\n");
- 
- 		reset_control_assert(rst);
- 		udelay(2);
-@@ -2461,11 +2442,8 @@ static int stm32_spi_probe(struct platform_device *pdev)
- 	dev_dbg(spi->dev, "one message max size %d\n", spi->t_size_max);
- 
- 	ret = spi->cfg->config(spi);
--	if (ret) {
--		dev_err(&pdev->dev, "controller configuration failed: %d\n",
--			ret);
--		goto err_clk_disable;
--	}
-+	if (ret)
-+		return dev_err_probe(&pdev->dev, ret, "controller configuration failed: %d\n", ret);
- 
- 	ctrl->auto_runtime_pm = true;
- 	ctrl->bus_num = pdev->id;
-@@ -2490,8 +2468,7 @@ static int stm32_spi_probe(struct platform_device *pdev)
- 			dev_info(&pdev->dev, "tx dma disabled\n");
- 			spi->dma_tx = NULL;
- 		} else {
--			dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
--			goto err_clk_disable;
-+			return dev_err_probe(&pdev->dev, ret, "failed to request tx dma channel\n");
- 		}
- 	} else {
- 		ctrl->dma_tx = spi->dma_tx;
-@@ -2579,8 +2556,6 @@ static int stm32_spi_probe(struct platform_device *pdev)
- err_dma_tx_release:
- 	if (spi->dma_tx)
- 		dma_release_channel(spi->dma_tx);
--err_clk_disable:
--	clk_disable_unprepare(spi->clk);
- 
- 	return ret;
- }
-@@ -2610,9 +2585,6 @@ static void stm32_spi_remove(struct platform_device *pdev)
- 		gen_pool_free(spi->sram_pool, (unsigned long)spi->sram_rx_buf,
- 			      spi->sram_rx_buf_size);
- 
--	clk_disable_unprepare(spi->clk);
--
--
- 	pinctrl_pm_select_sleep_state(&pdev->dev);
- }
- 
+url:    https://github.com/intel-lab-lkp/linux/commits/Daniele-Briguglio/dt-bindings-clock-rockchip-rk3588-cru-add-I2S-MCLK-output-to-IO-clock-IDs/20260316-222240
+base:   b84a0ebe421ca56995ff78b66307667b62b3a900
+patch link:    https://lore.kernel.org/r/20260316-rk3588-mclk-gate-grf-v1-3-66fb9a246718%40superkali.me
+patch subject: [PATCH 3/3] clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO
+config: arm-allyesconfig (https://download.01.org/0day-ci/archive/20260319/202603191419.MH6EuPga-lkp@intel.com/config)
+compiler: arm-linux-gnueabi-gcc (GCC) 15.2.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260319/202603191419.MH6EuPga-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603191419.MH6EuPga-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   drivers/clk/rockchip/clk-rk3588.c: In function 'rk3588_clk_early_init':
+>> drivers/clk/rockchip/clk-rk3588.c:2496:29: error: implicit declaration of function 'kzalloc_obj' [-Wimplicit-function-declaration]
+    2496 |                 sys_grf_e = kzalloc_obj(*sys_grf_e);
+         |                             ^~~~~~~~~~~
+>> drivers/clk/rockchip/clk-rk3588.c:2496:27: error: assignment to 'struct rockchip_aux_grf *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+    2496 |                 sys_grf_e = kzalloc_obj(*sys_grf_e);
+         |                           ^
+
+
+vim +/kzalloc_obj +2496 drivers/clk/rockchip/clk-rk3588.c
+
+  2447	
+  2448	static void __init rk3588_clk_early_init(struct device_node *np)
+  2449	{
+  2450		struct rockchip_clk_provider *ctx;
+  2451		struct rockchip_aux_grf *sys_grf_e;
+  2452		struct regmap *sys_grf;
+  2453		unsigned long clk_nr_clks, max_clk_id1, max_clk_id2;
+  2454		void __iomem *reg_base;
+  2455	
+  2456		max_clk_id1 = rockchip_clk_find_max_clk_id(rk3588_clk_branches,
+  2457						ARRAY_SIZE(rk3588_clk_branches));
+  2458		max_clk_id2 = rockchip_clk_find_max_clk_id(rk3588_early_clk_branches,
+  2459						ARRAY_SIZE(rk3588_early_clk_branches));
+  2460		clk_nr_clks = max(max_clk_id1, max_clk_id2) + 1;
+  2461	
+  2462		reg_base = of_iomap(np, 0);
+  2463		if (!reg_base) {
+  2464			pr_err("%s: could not map cru region\n", __func__);
+  2465			return;
+  2466		}
+  2467	
+  2468		ctx = rockchip_clk_init_early(np, reg_base, clk_nr_clks);
+  2469		if (IS_ERR(ctx)) {
+  2470			pr_err("%s: rockchip clk init failed\n", __func__);
+  2471			iounmap(reg_base);
+  2472			return;
+  2473		}
+  2474		early_ctx = ctx;
+  2475	
+  2476		rockchip_clk_register_plls(ctx, rk3588_pll_clks,
+  2477					   ARRAY_SIZE(rk3588_pll_clks),
+  2478					   RK3588_GRF_SOC_STATUS0);
+  2479	
+  2480		rockchip_clk_register_armclk(ctx, ARMCLK_L, "armclk_l",
+  2481				mux_armclkl_p, ARRAY_SIZE(mux_armclkl_p),
+  2482				&rk3588_cpulclk_data, rk3588_cpulclk_rates,
+  2483				ARRAY_SIZE(rk3588_cpulclk_rates));
+  2484		rockchip_clk_register_armclk(ctx, ARMCLK_B01, "armclk_b01",
+  2485				mux_armclkb01_p, ARRAY_SIZE(mux_armclkb01_p),
+  2486				&rk3588_cpub0clk_data, rk3588_cpub0clk_rates,
+  2487				ARRAY_SIZE(rk3588_cpub0clk_rates));
+  2488		rockchip_clk_register_armclk(ctx, ARMCLK_B23, "armclk_b23",
+  2489				mux_armclkb23_p, ARRAY_SIZE(mux_armclkb23_p),
+  2490				&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
+  2491				ARRAY_SIZE(rk3588_cpub1clk_rates));
+  2492	
+  2493		/* Register SYS_GRF for I2S MCLK output to IO gate clocks */
+  2494		sys_grf = syscon_regmap_lookup_by_compatible("rockchip,rk3588-sys-grf");
+  2495		if (!IS_ERR(sys_grf)) {
+> 2496			sys_grf_e = kzalloc_obj(*sys_grf_e);
+  2497			if (sys_grf_e) {
+  2498				sys_grf_e->grf = sys_grf;
+  2499				sys_grf_e->type = grf_type_sys;
+  2500				hash_add(ctx->aux_grf_table, &sys_grf_e->node, grf_type_sys);
+  2501			}
+  2502		}
+  2503	
+  2504		rockchip_clk_register_branches(ctx, rk3588_early_clk_branches,
+  2505					       ARRAY_SIZE(rk3588_early_clk_branches));
+  2506	
+  2507		rockchip_clk_of_add_provider(np, ctx);
+  2508	}
+  2509	CLK_OF_DECLARE_DRIVER(rk3588_cru, "rockchip,rk3588-cru", rk3588_clk_early_init);
+  2510	
+
 -- 
-2.25.1
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
 _______________________________________________
 Linux-rockchip mailing list
