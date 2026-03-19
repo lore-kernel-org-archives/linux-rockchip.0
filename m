@@ -4,99 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 922141075273
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A365B1075274
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:48:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lS3zWJND8tSuBdSUp3sGn92wZ6w66IzxCB2i16nElEo=; b=5CavQ0gyGEsTYt
-	4KvZJqwn03Z7dCobS/qILiiCww69MSk9JeDjiJYJID1DRMKJwvmhH4JnXva+z6Kge50zFTQwe4F/w
-	Scis0fJ36sv0Z5tUZqIQZGCG+5watCGqT9YzSTsF55LsLWIczKalfd0fhLOfvHjy1gipBZJuBCUgM
-	1cqB3z/zJeuFYwKjS4eBkEPYUifC5e4p71ac/PBLW6gWqZnPSyEpKsrmD0aZtO5amOgVhhP6lnKMV
-	EukC9B3YBdPedbZjyy6fdJKEdzpiDRx3KScPzzCiOrCQUvyKPJxmDw22+eZgX1q0LbCofhlFBC8Jm
-	ztJ11ueSau5WMsiNnEDA==;
+	List-Owner; bh=G4IQyycL1wi6A84RgpOYZIPVkRmSXFyQAJRyUEVbWHI=; b=jUH8qSnz3Tai5q
+	HTq/d5RIuZjdgg7n3JFR4PAT8WR8u89V1wXLErqB3G9B45/6CLFxs+IvchMz8v0MFf3ETzHW5pkU+
+	Ps8ggaVPSL32BP2m0wqYfKJPk1qGa6o7ZBtFQih0DPJq9kbmv3A0ngnl3k48leMRrTvsn36hyK6Ke
+	cyktup1K72X4KqCCRJVAfN4H0qWhgX7Q31M8pikbZ+w99p++2GYZhb4m9A1IaFlhOTRwOP0MEf6vz
+	3J/qLIlSylPF6leNRIYigjJ9B0TQt2lVprjVO/Ol8Vz7ASOqLi7iDJpf5Jet36+jAykgzbpS0AOjP
+	yKKKHgL+mf+2LdT8sYCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37uu-0000000A9er-2CXm;
-	Thu, 19 Mar 2026 07:35:40 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1w386r-0000000AB2t-1A6p;
+	Thu, 19 Mar 2026 07:48:01 +0000
+Received: from mail-m3286.qiye.163.com ([220.197.32.86])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37up-0000000A9db-21AC;
-	Thu, 19 Mar 2026 07:35:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
-	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
-	:Reply-To:Content-ID:Content-Description;
-	bh=Ob+IZvhkIha5DTBe/HV7/KpWvsF/0JXOGJlTDavxCws=; b=tIYa5UGtcxt5Dd9KipsIhazacC
-	1UYaWUiZYE0DrOGTPZWVfAwPdvrYXQOKJQ0Nsb7XVtkbLEBxKFOhP6J1zIxtRyrxjXini150kTRos
-	Vg8uog/4/LtlM1xrWTt5w2iGtCNbAs2Jmosvpj6fZgE7b3OyfFMu6TXXamCwnjTgFAnchSOOg9TkT
-	iM0OqvHCnV26bcQTVTn+uCntE5Ts/8blaHPWuWoJSD2GkwjQowVfJfNhi+ELqQ/t9MEYakoxDPMp1
-	PcuDeI+6ylqbfNs97YDdHRnvCpQjp90Dx1a00vK9HuhZ8EcDOZfzdyjMFSENeoK6w9urygCy3mzE5
-	uooOGy0g==;
-Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
-	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37um-00000005k09-07Ue;
-	Thu, 19 Mar 2026 07:35:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=superkali.me; s=default; h=Cc:To:In-Reply-To:References:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=Ob+IZvhkIha5DTBe/HV7/KpWvsF/0JXOGJlTDavxCws=; b=LCUuc0Um3IQUEw5OCt8m2did9c
-	02xLgHhXHwXZH5P4EDFOP8yzDJ7A3iTWYZKH30OL5QmITY9DQkR6qKJr3ySjkJd6IC1j9u9p4RIV1
-	0HM6F70JB/NKV895yUVPsrqNzkA7VZbeck4zitfqmVCf6zZkEeYvKZhyrRQJ8+Q/OQsR1oNoKHc5r
-	XMCob9bsXHbl86vGVRGXVSLqLHL9GiEirMJucbSpkw7JfihmXR7hOjOU/s+FCStp0eErIbgA+cuD7
-	RwOUMsIzTkgkx8BAPcXjmSHLzGU1WxyCL7EgaDRfN+9aL6rKO3Z9ZjQ/DVltp8SMwPuuv6ZhYIRwB
-	WYQ0+w5A==;
-Received: from [109.52.2.233] (port=10095 helo=mac.lan)
-	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
-	(Exim 4.99.1)
-	(envelope-from <hello@superkali.me>)
-	id 1w37tR-0000000DgEs-1Eqr;
-	Thu, 19 Mar 2026 08:34:06 +0100
-From: Daniele Briguglio <hello@superkali.me>
-Date: Thu, 19 Mar 2026 08:34:00 +0100
-Subject: [PATCH v2 2/3] clk: rockchip: allow grf_type_sys lookup in
- aux_grf_table
+	id 1w386n-0000000AB1t-0W1K;
+	Thu, 19 Mar 2026 07:47:59 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3789bd654;
+	Thu, 19 Mar 2026 15:47:47 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	victor.liu@nxp.com,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	jingoohan1@gmail.com,
+	p.zabel@pengutronix.de,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	alim.akhtar@samsung.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	luca.ceresoli@bootlin.com,
+	nicolas.frattaroli@collabora.com,
+	dianders@chromium.org,
+	m.szyprowski@samsung.com,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v11 14/17] drm/exynos: exynos_dp: Apply analogix_dp_finish_probe()
+Date: Thu, 19 Mar 2026 15:47:41 +0800
+Message-Id: <20260319074744.1965918-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260319071452.1961274-1-damon.ding@rock-chips.com>
+References: <20260319071452.1961274-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-Message-Id: <20260319-rk3588-mclk-gate-grf-v2-2-c4c8daab0762@superkali.me>
-References: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
-In-Reply-To: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
-To: Michael Turquette <mturquette@baylibre.com>, 
- Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Daniele Briguglio <hello@superkali.me>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773905640; l=1708;
- i=hello@superkali.me; s=20260316; h=from:subject:message-id;
- bh=WL4AZHxfBGBXO8GMVo8sFDi5dqnXuP+ssvyAyb87JKI=;
- b=CIBbXZiSnKKJf6/VCZVNzJ5/Lt9EuE5/PE8VkfNlNP486LQx0DFv1wQzMlAK+TMvYM17A3kOZ
- iPesQEuOR6EAbz3FxOiT0p4rKB9TickY9UT0KBVTzswjrW3QbrNIp6c
-X-Developer-Key: i=hello@superkali.me; a=ed25519;
- pk=5tynRWQdL93CDcapJ73FkcCRY2PeBOJOIAoIhRig53U=
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - superkali.me
-X-Get-Message-Sender-Via: fr5000-r.dnsiaas.com: authenticated_id: hello@superkali.me
-X-Authenticated-Sender: fr5000-r.dnsiaas.com: hello@superkali.me
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
+X-HM-Tid: 0a9d051098dd03a3kunmf4d8b30239c761
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ05CHVZDSEpOTh5JGE4YHhhWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=FtijqO5oKnriZtUzbOA5Va+zjlJ+2aZBe+kPH+PrPR8uPQWaot9rUYJJnGD1ZMho70HeWUjKsXd//VpLcIMQNifohmsFVnf0J7kp1lzHkTyunBvIs16RZ/hXGif6URYqb2cazb2JtJEOH03TeqiQ1OAvs/cMfT2Iz9dAYwEJ4RM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=l0rCYWGbbWqoD8V97nbLeMFxlHthOJgEIOH48elhF+M=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_073532_104612_511E3EB9 
-X-CRM114-Status: UNSURE (   8.38  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260319_004757_580166_F3DCDCEC 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,46 +104,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove the grf_type_sys exclusion from the auxiliary GRF table lookup
-in rockchip_clk_register_branches(). Previously, branches with
-grf_type_sys always used ctx->grf directly, bypassing the aux_grf_table.
+Apply analogix_dp_finish_probe() in order to move the panel/bridge
+parsing from Exynos side to the Analogix side.
 
-This is a problem on SoCs like RK3588 where ctx->grf points to the
-PHP_GRF (set via the CRU's rockchip,grf phandle), but GATE_GRF clock
-entries need to access the SYS_GRF instead.
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
 
-With this change, grf_type_sys branches first check the aux_grf_table,
-and fall back to ctx->grf if no entry is found. This is backwards
-compatible: on SoCs that do not register grf_type_sys in the
-aux_grf_table, the behavior is unchanged.
-
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Daniele Briguglio <hello@superkali.me>
 ---
- drivers/clk/rockchip/clk.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-index e8b3b0b9a4f8..911e6b610618 100644
---- a/drivers/clk/rockchip/clk.c
-+++ b/drivers/clk/rockchip/clk.c
-@@ -509,10 +509,9 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
- 		clk = NULL;
+Changes in v4:
+- Rename analogix_dp_find_panel_or_bridge() to
+  analogix_dp_finish_probe().
+
+Changes in v7:
+- Remove exynos_dp_legacy_bridge_init() and inline API
+  devm_drm_of_display_mode_bridge().
+- If the panel or the next_bridge is parsed from DT, use ptr validity
+  to check whether to call component_add() directly at the end of
+  probing.
+
+-Changes in v9:
+- Add Tested-by tag.
+---
+ drivers/gpu/drm/exynos/exynos_dp.c | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
+index b2597fafd73d..9f3d4d4c7352 100644
+--- a/drivers/gpu/drm/exynos/exynos_dp.c
++++ b/drivers/gpu/drm/exynos/exynos_dp.c
+@@ -158,9 +158,6 @@ static int exynos_dp_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct device_node *np;
+ 	struct exynos_dp_device *dp;
+-	struct drm_panel *panel;
+-	struct drm_bridge *bridge;
+-	int ret;
  
- 		/* for GRF-dependent branches, choose the right grf first */
--		if ((list->branch_type == branch_grf_mux ||
--		     list->branch_type == branch_grf_gate ||
--		     list->branch_type == branch_grf_mmc) &&
--		    list->grf_type != grf_type_sys) {
-+		if (list->branch_type == branch_grf_mux ||
-+		    list->branch_type == branch_grf_gate ||
-+		    list->branch_type == branch_grf_mmc) {
- 			hash_for_each_possible(ctx->aux_grf_table, agrf, node, list->grf_type) {
- 				if (agrf->type == list->grf_type) {
- 					grf = agrf->grf;
-
+ 	dp = devm_kzalloc(&pdev->dev, sizeof(struct exynos_dp_device),
+ 			  GFP_KERNEL);
+@@ -187,30 +184,30 @@ static int exynos_dp_probe(struct platform_device *pdev)
+ 		goto out;
+ 	}
+ 
+-	ret = drm_of_find_panel_or_bridge(dev->of_node, 0, 0, &panel, &bridge);
+-	if (ret == -ENODEV) {
++	if (of_get_display_timings(dev->of_node)) {
+ 		dp->plat_data.next_bridge = devm_drm_of_display_mode_bridge(dp->dev,
+ 									dp->dev->of_node,
+ 									DRM_MODE_CONNECTOR_eDP);
+-		ret = IS_ERR(dp->plat_data.next_bridge) ? PTR_ERR(dp->plat_data.next_bridge) : 0;
++		if (IS_ERR(dp->plat_data.next_bridge))
++			return PTR_ERR(dp->plat_data.next_bridge);
+ 	}
+-	if (ret)
+-		return ret;
+ 
+ 	/* The remote port can be either a panel or a bridge */
+-	dp->plat_data.panel = panel;
+-	dp->plat_data.next_bridge = bridge;
+ 	dp->plat_data.dev_type = EXYNOS_DP;
+ 	dp->plat_data.power_on = exynos_dp_poweron;
+ 	dp->plat_data.power_off = exynos_dp_poweroff;
+ 	dp->plat_data.attach = exynos_dp_bridge_attach;
++	dp->plat_data.ops = &exynos_dp_ops;
+ 
+ out:
+ 	dp->adp = analogix_dp_probe(dev, &dp->plat_data);
+ 	if (IS_ERR(dp->adp))
+ 		return PTR_ERR(dp->adp);
+ 
+-	return component_add(&pdev->dev, &exynos_dp_ops);
++	if (dp->plat_data.panel || dp->plat_data.next_bridge)
++		return component_add(&pdev->dev, &exynos_dp_ops);
++	else
++		return analogix_dp_finish_probe(dp->adp);
+ }
+ 
+ static void exynos_dp_remove(struct platform_device *pdev)
 -- 
-2.53.0
+2.34.1
 
 
 _______________________________________________
