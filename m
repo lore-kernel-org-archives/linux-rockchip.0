@@ -4,63 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84929107528A
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 09:49:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAD4A108E1C7
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 10:18:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S7Q7KlimRKQtHq6njoYcp6irASUK7DIntCuMMl+kRC8=; b=NaPm9QcPMSZ6SP
-	hlFu4S+LYNhqEjFljUoMgLMYSONjmBkJIU0Q2zJxhGiQu3/prJjbCRlaGOXqXs+dI/Fe5Oq33Bp2M
-	PWWV2TDimjUX4nXnXMUa7TivgVnSmdv4tO5AxF0eGGu2/mJL2vsuNDpEyeNWpynA9Pr4GVexlyx0y
-	u4+8/uIjv1ZJmoDZ9hC9kQNVHAonTs4O7lrMhwNBczoRb1vXl0/jEfw23OdqDUqaPpKu4onM8Tz/2
-	rvmarxf3jqa2o7JWeyxlhMGwv/qzv+oPxWYGaV67+AEZDKOPqI8HigUgMEp59isHYlhnn6Obi6wY9
-	xCO11YJ8zDoWMVEwlmPQ==;
+	List-Owner; bh=8/g3Wr7dbqNRHkuJ0I4OepH4yuaI59odv1PuBOBeYcU=; b=y2FtbgvemWXurj
+	J4AmadiDkSEOyt3FmVDBeUF3grSWytz7o3jTjNJs8JCHQynDZa57eD2IRHctovig9SOGW/puLRgNh
+	l4uNhcZQsQI/L340/d5YkfseW5uQ6MMD+O2rcp3XYRKAqWjbvTFpf4EkA21f3xVH1GwuPqyy617VV
+	JPQYze09W5etO4zk4QKCnBKAVTkurUK+UH4QCsoflqnVP2kJbN1Z1PBWsL15sMht6DO1PQoW9Q1xq
+	NYjOg5zNJ0GSEn9Sy0Ij9lOvUkLWnx0dGDSj3NWRwPyKYd5A9XQdLUTN4BllVjeI418cXbqSmg/Lb
+	knU7uwpQKmS3gCdvd51Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3A01-0000000AMJb-0ZPX;
-	Thu, 19 Mar 2026 09:49:05 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1w3AS9-0000000AOtP-1KD0;
+	Thu, 19 Mar 2026 10:18:09 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w39zx-0000000AMG6-2G6Y
+	id 1w3AS4-0000000AOpl-3bUK
 	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Mar 2026 09:49:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=W0LikUcRQnqBOEV8Is9VRwWVuamqD0tZbt4oWdTOSkA=; b=T
-	HIR7VjgOhYqyYj79tuFc/LQ6SCUr+yG3mcXyPzJbmHxK+qgVX0yeFk2uarMi83xr
-	HnjA1pSpG9bsg/1ASFukLjAPDPlDUwpE5wd4g/isGl8SVpVRpYr9kXX6ImiQdUGg
-	RP+ZqbNVQzUNTznuVK0n0IFXKtSShVcPSYzRgxr2Wo=
-Received: from andyshrk$163.com ( [121.15.173.1] ) by
- ajax-webmail-wmsvr-40-127 (Coremail) ; Thu, 19 Mar 2026 17:48:54 +0800
- (CST)
-X-Originating-IP: [121.15.173.1]
-Date: Thu, 19 Mar 2026 17:48:54 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Marius Dinu" <m95d+git@psihoexpert.ro>
-Cc: linux-rockchip@lists.infradead.org
-Subject: Re:[PATCH] drm: rockchip: dw_dp: add missing dependency on
- bridge_connector
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20251222(83accb85) Copyright (c) 2002-2026 www.mailtech.cn 163com
-In-Reply-To: <20260316084653.1559-1-m95d+git@psihoexpert.ro>
-References: <20260316084653.1559-1-m95d+git@psihoexpert.ro>
-X-CM-CTRLMSGS: NBzeeXBsdXM9MTc3MzkxMzczMzM1NV9hZWQ1MWU2MTQ4NDkwNzg2MjZkYTE2Y
- WI0YWEyZmEzZg==
-X-NTES-SC: AL_Qu2cAfWavE8o4iCeZukfmUgWjuw/WsG1v/Ul1YBSP556jA/p+y4Yc0F9PHTG/86KEB2dvwSFXhVUw+lkf4hAfKAWiznf4/fuCs1d914TH8iQlQ==
+	Thu, 19 Mar 2026 10:18:07 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4852e9ca034so6564595e9.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Mar 2026 03:18:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773915482; x=1774520282; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=vtI5DygtRvulSb7YE3u7LJdebCzSARmgo/E7HSytGFo=;
+        b=IL9PVgA2ffsOuol1+7hjal13Oxzwret1CZSMCH3/JtKKf7Wnxm3RSyWTNHG/ErFZ7C
+         2FfrZ+T6WOlNQ8oOCXltN5fuTubDUUt3PIlSzPqZ6WcGxuCiMlGguPhi2cohA4jpo0ra
+         WuQaZzRx0nqpBUm6RksNi2cBq811riQOSUwHe5Y4PybGQypqpNcBGV7MS5cPZ76YgfYP
+         UTvF+mI+1TiuiG0Us2wtFt4yzan8ngBSei0nC3KVT6ZCC+eyHYIogWnNhbYxHq2EGi4V
+         +DyIJyiDPrOQxX7/JFSvPeHQ3w0eYUNmsMTmrNMoXG0nWSIfI3QeRJn/SPRwdphY9H9d
+         xYAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773915482; x=1774520282;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=vtI5DygtRvulSb7YE3u7LJdebCzSARmgo/E7HSytGFo=;
+        b=L8/gYFHcWk/UvjY7tvatLJh6rgGNiTrbMgEjgHMWiiq10t299pSK1yqOi+WD4Y2hpA
+         14ElPPOSfif0UN+6W8m8AxQXuN2beSPBs4FTt8M5bkXs8eI1p0qfnGhtG4dOCjN3QL1E
+         3s31dgv+UClkE6UfzK2a0sAc9Hbj6TISkE5cX8DXfqZ9NkMy6IqXQ5ae/0AZwNSwXJbQ
+         0CyaTDMsBm5FYsJNjJm0bTgUp+SsDBg/CO1sdjknUQd1+36dP6qqGciJN7YsoYvmbBkp
+         0whZdY9wNIXiNA4eA0EBrafEeaysB0T04fc2g2SECP5yyRRefQNGsqpzZa888rXg6oEA
+         STQg==
+X-Gm-Message-State: AOJu0YwKOHUkNJvR7R1pKCWAC25+pxoT9XetcKjgvLxY1sD4o/2/eHQM
+	/CHK/n82pPSnHMxb0EcrdEgHtSOAjZKj1jBGDEmbvmNTRYbasR0g6qL5
+X-Gm-Gg: ATEYQzzOSMQLhI1AcbX+ZIFkhEaBTmLQVIP/VU3NA4d+MIhD5FzbAo8E6XTx/aJwOCd
+	yS9LMKHPX3ULR54WOrWGriJ/UdGFRo0YkCYKA1hlgTN6pDNMfgZ29Flkke1u78ny8KW9HbIlIdF
+	GZHFY2BlIhBq4LD0AGMrGSMxFxnXSyjdB30br6icLLjmgzTNC3oGumkhIoCwja+U8kJUCHtPXId
+	v2JQ79s/ANWzpXJkLnpsaXPBp3lc0wzpc4aRC1qIYjHNQ12H8g/RYiSWzuDt95omKBdJkpWjJVD
+	wAEs1/9FcCTHpBAycMdtRoX9eJGsrT+Sh3cDaOQl+qpER/t+FqtKRrR1lauOJe5Yh6LKCe7cHFE
+	rUAgpO+/Z8kSrOB6/2Oni9lCwLEy9Bihj00OimI+tXsDzbON2sfLhoNVgBXpNwKZa37wQNxrbIt
+	BG1RiUyj9HPokGsM8esqdLDgiTGF6wmxsscyXOvA==
+X-Received: by 2002:a05:600c:4e49:b0:485:4136:99a8 with SMTP id 5b1f17b1804b1-486f4441072mr98897205e9.22.1773915482135;
+        Thu, 19 Mar 2026 03:18:02 -0700 (PDT)
+Received: from debian.levillagebyca.com ([213.152.28.84])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-486f4bb1b38sm71969575e9.3.2026.03.19.03.18.01
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Mar 2026 03:18:01 -0700 (PDT)
+From: MidG971 <midgy971@gmail.com>
+To: shawn.lin@rock-chips.com
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	jonas@kwiboo.se
+Subject: Re: [PATCH v2] arm64: dts: rockchip: rock-3b: Model PI6C20100 as gated-fixed-clock
+Date: Thu, 19 Mar 2026 11:19:11 +0100
+Message-Id: <20260319101911.31348-1-midgy971@gmail.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <shawn-reply-message-id>
+References: <7008e941-e4b0-a060-1cd7-55070fd5831f@rock-chips.com>
 MIME-Version: 1.0
-Message-ID: <46dde1cc.8a7e.19d057f7bb7.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: fygvCgB3+T2Gxrtpu818AA--.2490W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7gYcemm7xoYPAgAA3R
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_024902_027583_9309F007 
-X-CRM114-Status: UNSURE (   5.12  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260319_031804_914548_D244A634 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,35 +96,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkhlbGxvIE1hcml1c++8jAoKQXQgMjAyNi0wMy0xNiAxNjo0Njo1MywgIk1hcml1cyBEaW51IiA8
-bTk1ZCtnaXRAcHNpaG9leHBlcnQucm8+IHdyb3RlOgo+QXZvaWRzIHRoaXMgZXJyb3I6Cj4gIGxk
-OiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvZHdfZHAtcm9ja2NoaXAubzogaW4gZnVuY3Rpb24g
-YGR3X2RwX3JvY2tjaGlwX2JpbmQnOgo+ICAvdXNyL3NyYy9saW51eC9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvZHdfZHAtcm9ja2NoaXAuYzoxMDg6KC50ZXh0KzB4MTg4KTogdW5kZWZpbmVkIHJl
-ZmVyZW5jZSB0byBgZHJtX2JyaWRnZV9jb25uZWN0b3JfaW5pdCcKPgo+U2lnbmVkLW9mZi1ieTog
-TWFyaXVzIERpbnUgPG05NWQrZ2l0QHBzaWhvZXhwZXJ0LnJvPgo+LS0tCj4gZHJpdmVycy9ncHUv
-ZHJtL3JvY2tjaGlwL0tjb25maWcgfCAxICsKPiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24o
-KykKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnIGIvZHJp
-dmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPmluZGV4IDE0NzliOGM0ZWQ0MC4uNzQ5YTRi
-ODZjODkzIDEwMDY0NAo+LS0tIGEvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL0tjb25maWcKPisr
-KyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9LY29uZmlnCj5AQCAtMTMsNiArMTMsNyBAQCBj
-b25maWcgRFJNX1JPQ0tDSElQCj4gCXNlbGVjdCBEUk1fQU5BTE9HSVhfRFAgaWYgUk9DS0NISVBf
-QU5BTE9HSVhfRFAKPiAJc2VsZWN0IERSTV9ESVNQTEFZX0RQX0FVWF9CVVMgaWYgUk9DS0NISVBf
-QU5BTE9HSVhfRFAKPiAJc2VsZWN0IERSTV9EV19EUCBpZiBST0NLQ0hJUF9EV19EUAo+KwlzZWxl
-Y3QgRFJNX0JSSURHRV9DT05ORUNUT1IgaWYgUk9DS0NISVBfRFdfRFAKCgoKSSBzdWdnZXN0IHB1
-dCB0aGlzIGluIGNvbmZpZyBST0NLQ0hJUF9EV19EUCwgIGtlZXAgdGhlIHNhbWUgc3R5bGUgd2l0
-aCBST0NLQ0hJUF9EV19IRE1JX1FQIC9ST0NLQ0hJUF9DRE5fRFAvUk9DS0NISVBfUkdCCgoKPiAJ
-c2VsZWN0IERSTV9EV19IRE1JIGlmIFJPQ0tDSElQX0RXX0hETUkKPiAJc2VsZWN0IERSTV9EV19I
-RE1JX1FQIGlmIFJPQ0tDSElQX0RXX0hETUlfUVAKPiAJc2VsZWN0IERSTV9EV19NSVBJX0RTSSBp
-ZiBST0NLQ0hJUF9EV19NSVBJX0RTSQo+LS0gCj4yLjUyLjAKPgo+Cj4KPl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCj5MaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKPkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKPmh0dHA6Ly9saXN0cy5p
-bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On 2026/03/04, Shawn Lin wrote:
+> IIUC, you are using Claude to help generate this patch, please
+> describe it properly, for example,
+>
+> Co-developed-by: Claude claude-opus-4-20250514 [1]
+> or
+> Assisted-by: Claude:claude-3-opus [2]
+>
+> [1] https://lwn.net/Articles/1031473/
+> [2] https://docs.kernel.org/process/coding-assistants.html
+
+Thank you for the guidance. I used Claude as a coding assistant and
+will use the proper tag in v3:
+
+  Assisted-by: Claude:claude-3-opus
+  Signed-off-by: MidG971 <midgy971@gmail.com>
+
+> There is a missing pipe clock which should be fixed. Please
+> refer to David's patch[3].
+>
+> [3] https://lore.kernel.org/linux-rockchip/d981fa84-bd05-ac9d-98ca-89ee47177829@rock-chips.com/T/#m6a8289609e6a60691d3c06358b6322c7aa5e43d1
+
+Since our board-level &pcie3x2 override replaces the clocks property
+entirely, v3 adds CLK_PCIE30X2_PIPE_DFT ("pipe") as well, consistent
+with David's base DTS patch.
+
+I tested v3 on the ROCK 3B (kernel 6.19.0-rc5): pcie3x2 probes
+successfully and the NVMe device is detected at 15.75 Gb/s. The
+pcie30_refclk clock appears in the clock tree at 100MHz with pcie3x2
+as its consumer.
+
+One note on the pipe clock test: CLK_PCIE30X2_PIPE_DFT is defined in
+rk3568-cru.h but was not yet registered in the CRU driver in the
+tested kernel build, so the pipe clock was excluded from the
+functional test (pcie3x2 probe fails with -ENOENT at clock index 5
+when it is included). The gated-fixed-clock node and ref clock were
+verified working. I expect the pipe clock will work once the CRU
+driver registers it alongside David's DTS patch.
+
+v3 is sent separately.
+
+Best regards,
+MidG971
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
