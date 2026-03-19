@@ -4,75 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDA7E1075275
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 08:04:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB261075277
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 08:30:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nfioUPqRkBbixEszFiQkmQRHgnzCAQid+O5ycd68xUM=; b=voN442/rXBhl2L
-	KdlvEm6JySUolzrjG6n+w9SGrU+6Jf04BTmBaPHANYq0Sh/PeKvG/a6xkfUg7kh0BvRG9aJmP6y9a
-	ure8EXo+k6OFM4cL3egrkOULseBm7rIlzkieK+URnhmD0qamCBoDPgQ22Mnddv7DTLBYvTSotxbdU
-	xcV3GOydx0Zq4fLY/UY1aj/es6lzyyefLSJ+OSoC1DBqWFLrGytOyU/sdomaplLrphztEgXAbytt3
-	v7vYnv1AYeUiIrKo7K9hFHk9C7O02df/1Kfud0EIE97OR9H/jA1opj+TF6n1Yl0k13vvOjTzw6s8T
-	kS1Uy74TQm2FNWAHc5rQ==;
+	List-Owner; bh=f96ROa2iD4h5EhTulroLdmGRo4jLn5rjlOuyS8x2Ch4=; b=d0Lzl7RdmiAMH0
+	Itcp7DmtBy+YADvAgH5/8ROz0S0ohyMe980ujN4QcgfLN21G4yhCoevGCk2mcYQwkddfG+ug3OCzw
+	erg8pFApcNtGtsHEZymD7t4eN0MbUZXATjevseGSDU1BVa19Qhh+iVpIkAJNtsAr33Tx21CZ+4VmX
+	SD12j/Y7K7yX6UKaQ98/SgmVueoWIPNX4JUCshf0sI2pqvrvsL82Pdfb1zYf0NdOXtqmNwmLfz4ku
+	QftjsyFSivOxRKQs2etXi2ow3K7kof3aQ7+TzLDYOTd0ja9AN/7UfG4Xy+5epxz5DSDI8uxbfIFSr
+	GgIyqGVVOLHWvguFzAdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w38MZ-0000000ACZ6-3anR;
-	Thu, 19 Mar 2026 08:04:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w38mF-0000000AF9G-1rlx;
+	Thu, 19 Mar 2026 08:30:47 +0000
+Received: from mail-m3281.qiye.163.com ([220.197.32.81])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w38MV-0000000ACXt-3xJ3;
-	Thu, 19 Mar 2026 08:04:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1773907448;
-	bh=oddScRKYzaeDQ9pGWNCQ6oWoxk9xdprHLqYG2eBVmlQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=a8OcSNGBcqdOsgpeikZ6TXswpBrTS9I3QHnKk4mNa0ibBWD068edwm47HjayT4h9W
-	 kxWXUEBdKKC3YD7ccz827IEJHKzS+rNgyqGqeYACcKdFDPNLbot5QEmfSaYqxiNZef
-	 Z7Me4f46esE/NOqrpk5CnbXQb6wR7RTn8E0qZq7mq9DoIfsAk01VzTJo2FSBq8ZZGc
-	 LsHtwOI8bBu5RjlzRVl7IoJAvLTZ2O4HTJyXlwwqo8OT6fexWio6egKG2laLdeJ0RM
-	 cfmnbWJPA03dE3djLFFy3BHb+pBsujxk8g5X/ZGCXG90x3S3PipBHzGxjnmySWmJEG
-	 PGL7qpyblQgng==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 79FE417E0EB4;
-	Thu, 19 Mar 2026 09:04:07 +0100 (CET)
-Message-ID: <d9a9be92-7439-4899-8be2-adf7f0490790@collabora.com>
-Date: Thu, 19 Mar 2026 09:04:06 +0100
+	id 1w38mC-0000000AF8m-1alY;
+	Thu, 19 Mar 2026 08:30:46 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 37887440d;
+	Thu, 19 Mar 2026 15:15:26 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	victor.liu@nxp.com,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	inki.dae@samsung.com,
+	sw0312.kim@samsung.com,
+	kyungmin.park@samsung.com,
+	krzk@kernel.org,
+	jingoohan1@gmail.com,
+	p.zabel@pengutronix.de,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	kernel@pengutronix.de,
+	festevam@gmail.com,
+	alim.akhtar@samsung.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	luca.ceresoli@bootlin.com,
+	nicolas.frattaroli@collabora.com,
+	dianders@chromium.org,
+	m.szyprowski@samsung.com,
+	linux-kernel@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v11 07/17] drm/bridge: analogix_dp: Move the color format check to .atomic_check() for Rockchip platforms
+Date: Thu, 19 Mar 2026 15:14:42 +0800
+Message-Id: <20260319071452.1961274-8-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260319071452.1961274-1-damon.ding@rock-chips.com>
+References: <20260319071452.1961274-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/9] media: dt-bindings: add rockchip rk3588 vicap
-To: Conor Dooley <conor@kernel.org>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Jagan Teki <jagan@amarulasolutions.com>,
- =?UTF-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?=
- <mai.kuznetsov.misha@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
- <20250430-rk3588-vicap-v2-2-77de5ee9048e@collabora.com>
- <20260318-mumbo-lumber-b550932a5423@spud>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260318-mumbo-lumber-b550932a5423@spud>
+X-HM-Tid: 0a9d04f2fc0503a3kunm86e540ee396580
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ09DSlZITRhCGkxOHUkZGUtWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
+	1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=elmFdaKiP61Q5k6DDOjly7iy6d/87Fxc4rqhAMOH5/56ybZkDgQFvUEz3bPBQjMEd17LqmzyOaI/p90R0BXDY1vaUbZbfxeQGR+Rv5Z8iBTW6aneT2lGipbA0eRhUo2KIaWsfCbcj/YKjJ9zQzE220nAT5emJgdjqwP5VvPRjWs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=3rkQ8jPKQUXQ5Fcb5jzjcMRfHXjYelN4FuQCG5UEL4g=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_010412_183523_C9F1E497 
-X-CRM114-Status: GOOD (  14.30  )
+X-CRM114-CacheID: sfid-20260319_013044_985098_6BCE8CD0 
+X-CRM114-Status: GOOD (  12.44  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,93 +104,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Conor,
+For Rockchip platforms, the YUV color formats are currently unsupported.
+This compatibility check was previously implemented in
+&analogix_dp_plat_data.get_modes().
 
-On 3/18/26 18:52, Conor Dooley wrote:
-> [...]
->>  
->>    resets:
->> -    items:
->> -      - description: ARST
->> -      - description: HRST
->> -      - description: DRST
->> -      - description: PRST
->> -      - description: IRST
->> +    minItems: 5
->> +    maxItems: 9
->>  
->>    reset-names:
->> -    items:
->> -      - const: arst
->> -      - const: hrst
->> -      - const: drst
->> -      - const: prst
->> -      - const: irst
->> +    minItems: 5
->> +    maxItems: 9
-> 
->> +allOf:
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            const: rockchip,rk3568-vicap
->> +    then:
->> +      properties:
->> +        clocks:
->> +          minItems: 4
->> +          maxItems: 4
-> 
-> Anything here that repeats the outermost constraint should be dropped,
-> so no minItems here..
+Moving color format check to &drm_connector_helper_funcs.atomic_check()
+would get rid of &analogix_dp_plat_data.get_modes() and be more
+reasonable than before.
 
-I already took a look at similar VICAPs (e.g., R3576) that will have
-more clocks. This is way I left this one in here.
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
 
-But I guess I will remove it and add it again when e.g. RK3576 VICAP
-support is added.
+---
 
->> [...]
-> 
->> +
->> +        reset-names:
->> +          items:
->> +            - const: arst
->> +            - const: hrst
->> +            - const: drst
->> +            - const: irst0
-> 
-> Were you willing to reuse "irst" for the 0th irst, all the repetition
-> wouldn't be needed. I assume it represents the reset for the port at
-> address 0, so it wouldn't even be a different meaning on each device.
+Changes in v9:
+- Add Tested-by tag.
+---
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++++
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c    | 18 ------------------
+ 2 files changed, 11 insertions(+), 18 deletions(-)
 
-Not quite I think. "{a,h,d}rst" are the same on all variants, then there
-is "prst" and "irst" on RK3568 and "irst{0-5}" on RK3588. So I thought
-that writing it out explicitly for each variant is more readable (even
-though it may need a few characters more).
-
-OK?
-
-I'll try to send out a new version later today.
-
-Best regards,
-Michael
-
-> 
->> +            - const: irst1
->> +            - const: irst2
->> +            - const: irst3
->> +            - const: irst4
->> +            - const: irst5
->> +
->>  additionalProperties: false
->>  
->>  examples:
->>
->> -- 
->> 2.39.5
->>
->>
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 4606ecc3f480..5bf41b364aba 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -894,8 +894,19 @@ static int analogix_dp_atomic_check(struct drm_connector *connector,
+ 				    struct drm_atomic_state *state)
+ {
+ 	struct analogix_dp_device *dp = to_dp(connector);
++	struct drm_display_info *di = &connector->display_info;
+ 	struct drm_connector_state *conn_state;
+ 	struct drm_crtc_state *crtc_state;
++	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
++
++	if (is_rockchip(dp->plat_data->dev_type)) {
++		if ((di->color_formats & mask)) {
++			DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
++			di->color_formats &= ~mask;
++			di->color_formats |= DRM_COLOR_FORMAT_RGB444;
++			di->bpc = 8;
++		}
++	}
+ 
+ 	conn_state = drm_atomic_get_new_connector_state(state, connector);
+ 	if (WARN_ON(!conn_state))
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index fdab71d51e2a..70fe5ae69e2e 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -166,23 +166,6 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+ 	return 0;
+ }
+ 
+-static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+-				 struct drm_connector *connector)
+-{
+-	struct drm_display_info *di = &connector->display_info;
+-	/* VOP couldn't output YUV video format for eDP rightly */
+-	u32 mask = DRM_COLOR_FORMAT_YCBCR444 | DRM_COLOR_FORMAT_YCBCR422;
+-
+-	if ((di->color_formats & mask)) {
+-		DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
+-		di->color_formats &= ~mask;
+-		di->color_formats |= DRM_COLOR_FORMAT_RGB444;
+-		di->bpc = 8;
+-	}
+-
+-	return 0;
+-}
+-
+ static bool
+ rockchip_dp_drm_encoder_mode_fixup(struct drm_encoder *encoder,
+ 				   const struct drm_display_mode *mode,
+@@ -481,7 +464,6 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 	dp->plat_data.dev_type = dp->data->chip_type;
+ 	dp->plat_data.power_on = rockchip_dp_poweron;
+ 	dp->plat_data.power_off = rockchip_dp_powerdown;
+-	dp->plat_data.get_modes = rockchip_dp_get_modes;
+ 
+ 	ret = rockchip_dp_of_probe(dp);
+ 	if (ret < 0)
+-- 
+2.34.1
 
 
 _______________________________________________
