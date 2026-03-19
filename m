@@ -4,143 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E093109192B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 22:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B836109192C
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 22:56:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KJPnIA+9l/IOJF0EURmDF55E7aIWLBpObjviHUYWVqk=; b=IpJaLzWbgP4hTJ
-	Y9yvfgoBpwIafTtfZDm8DaPOe/cBJg5C2sC812vluxi3RHKAEUUIl9eu/9d7Q93Icei7NhQPjBj8n
-	eKMxG/OXLcMNpp9VfQo5iJcD/C4ufUXr3wqHJ3ls7fotk4yOCJnU9oWZBd2/hW5m+Czo4gtC7BU8X
-	JhhK8AYqmyKBnBkhMBgfmbZ1UXT8km1HcLpUKIoyeqvpXktxL11+RO9qN3jQkLyEEWk5/qjcqux1n
-	uB68dOzF1i6pYsKemnY+KsnJy7zhStJz2QyUbT5G2OC5c/DgsTgJXgN9HzICJu64MopVX3lst74PM
-	NE6tsrWrKQ/10+ny13Sw==;
+	List-Owner; bh=/87vMmH3mN8Eq+A6eOwMQGlV4GB+IN367IGcvkbGTCc=; b=tH2RxU5ya2v51b
+	2n4qEIY6mAFtSzp+u5yWoMSR+wseoG4OcjO98MoSpxM0XkNpJWfYiXjJ6wFTGsgwUxAW6iBkibB8b
+	47n6anIBVzISkd/iPlnk74d1EWEjKHdOCepvt1WYO+JGAw77tB9vhQ3aNG2y3DA+OGPHQ9ihXO5zY
+	q/ow6fTBxU7eH2K3YqbYB37u9023UXRvKZz8nk11REhLsYjapqsi8F5eyxFmIvRiuWQvuyVPlG/A9
+	OP4WdFD0PRq8cVZFOAyHwzZ7UGpZ8LusMN20/syU7Xyi9OeG28Ud0jnPaCG34knJuueLGw8dowOdM
+	IBvdmLGApfmnY0kn+WNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Lxz-0000000BjBb-2ph2;
-	Thu, 19 Mar 2026 22:35:47 +0000
-Received: from mail-westeuropeazon11013012.outbound.protection.outlook.com ([52.101.72.12] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1w3MI0-0000000Blam-1q3m;
+	Thu, 19 Mar 2026 22:56:28 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3LwO-0000000BfTp-1mI9;
-	Thu, 19 Mar 2026 22:34:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=cIdjFHDsL/47QAmjqErULxqRFrl1iUTpaJKDoor8L8OFSLN3Bn1+WgCtSX+VP2ZzIwk1KnwrpoLxzrQtVcR4lqZaerFesihKrOQVVlSHs7Sjz0/mGuy1EbsZ/ru7nzYKHH/US2fh7vXp5LyYHRbJMCwBGMRjFwzgsOJyXlExZl3tg7xZl++5yt/GCxB/8gb+bwfqDpIrmxVgYnn2Y818v2R4e9MlhLPfHdzQJyHDFy9iaj3+fD4DfFZqtPYBndK7EwadGa7btJ0tKKMlyL6Sbsz36AugI8lnI3QXo16k4yvAkDEMLeEl36XCUy7t77djORloZLTjBJpjEvHtKLhslw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tpcMpOj7EkX9LGxVXmbfajSEtxU0/+RWcEpKRZTsXRM=;
- b=v3mTn7XrNbHbVWFn7HQyZCPKiIGC+BYCoOx6zsZYiqr6pZTiH0YGF/VjIEACwkg8nENRAdsVRUf7gnQxU/bagK/HEmxOdv5hAYrxW8elH/SgDGU2uYCbtLo0qp1cIDY7kNxcuCkc7zJZRGVOhiXGfaBVRkpSHQjTUc41FYfhEy7QE0OtqfLW7jbN/jsHKAIKRLT1OfLV+YqigyqILhzE8D5bEKdSsk+yMIZvhiZQ4tdcQjKkC4i+drgF4ARDq4508LU4MMC74BMI9vN8en7flM0m92oXhCUeDgWin0o81wXcM6kmxkv6UHY6cZ7tGkgiKInsAGVuU3tLuARNATGv4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=tpcMpOj7EkX9LGxVXmbfajSEtxU0/+RWcEpKRZTsXRM=;
- b=XR37Amug1oBl7LRouxRGD4KTPSHo9KXfZShSAtusBNIPsCz2u2Lfw4QqSsumqP8kSGIJC0+9aJDZmMtKFS2hJE34FSmdyWWM5pKT4GX/AmwvWTPYNrypnAmsWv0v78T4Aej6dmcWmPVS02IVUYCjho4/7ugzqaA/D+auuIjSQnQcj8UzYPeM00PpaSPdW0wY7tylJBaEnwWeBEKrkq2R6vWW/sJlfp8XFTHnZly1OrPVljQfCrOSPoaKVIIKCxMCyRoBLusQJHa7g292NWDN2BQ0d+QB8dY6mziXt15D9G+IRJuGY+tAigJUj3JEViaZMNAdohPIarNcdkZpVkl+ZA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by PAXPR04MB8079.eurprd04.prod.outlook.com (2603:10a6:102:1cc::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Thu, 19 Mar
- 2026 22:33:40 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9723.018; Thu, 19 Mar 2026
- 22:33:35 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: linux-phy@lists.infradead.org
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-riscv@lists.infradead.org,
+	id 1w3MHx-0000000BlaJ-0rz5;
+	Thu, 19 Mar 2026 22:56:26 +0000
+Received: from killaraus.ideasonboard.com (2001-14ba-703d-e500--2a1.rev.dnainternet.fi [IPv6:2001:14ba:703d:e500::2a1])
+	by perceval.ideasonboard.com (Postfix) with UTF8SMTPSA id 822549A6;
+	Thu, 19 Mar 2026 23:55:09 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1773960909;
+	bh=D5ufjY0DYZjx0CTcTWqnAIWmi7GZIgok8ABXpcBXL70=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=udQZ99eXAI1H7UjMC1rrzc1pCVU+FKzPliulvPmdmwNYiyNnBJ7jdjr77J1VgNH0r
+	 ZpyiAuI1kNhyfAUKy4njZ/mrr23r38lapBRL5mD/ASxj5JIDQOUv2VwKm3XNKXWyvt
+	 mZoo233lIbuUxi0mxzDZtA6MactEDBcAwHHG23YU=
+Date: Fri, 20 Mar 2026 00:56:21 +0200
+From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+To: Stefan Klug <stefan.klug@ideasonboard.com>
+Cc: linux-media@vger.kernel.org, Dafna Hirschfeld <dafna@fastmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
 	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-scsi@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org,
-	spacemit@lists.linux.dev,
-	UNGLinuxDriver@microchip.com,
-	Joe Perches <joe@perches.com>
-Subject: [PATCH v5 phy-next 27/27] MAINTAINERS: add regexes for linux-phy
-Date: Fri, 20 Mar 2026 00:32:41 +0200
-Message-ID: <20260319223241.1351137-28-vladimir.oltean@nxp.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
-References: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
-X-ClientProxiedBy: VI1PR0502CA0015.eurprd05.prod.outlook.com
- (2603:10a6:803:1::28) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/3] media: rkisp1: Set format defaults based on
+ requested color space
+Message-ID: <20260319225621.GA950244@killaraus.ideasonboard.com>
+References: <20250227114558.3097101-1-stefan.klug@ideasonboard.com>
+ <20250227114558.3097101-2-stefan.klug@ideasonboard.com>
+ <20250301010252.GI7342@pendragon.ideasonboard.com>
+ <20250301143453.GJ7342@pendragon.ideasonboard.com>
+ <177202208017.2000438.5208896949701142402@localhost>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|PAXPR04MB8079:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3f155316-cf66-48a7-2bfe-08de86078eb6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|7416014|376014|19092799006|10070799003|1800799024|56012099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: +upsZRuFux+K3Za4MDzyFPN1x5rH+PJrh420M2R5VGJDNHHr/TdCnsGLKHLyEtWu85S6TIRNB6dP965mPlJti5Ot5gC0tUieELO7VcwWoono3n4M8gWs71YxBwrPDyyocXXoL5B4CzkjwD8aqFeE/BCda42h3uu6Zfi1YKiomCMG2pC9t8gsPj3y4obYVXTbCUaybzIgsfQrwTrH3qk6hRcW+TRFxHRY9Jy/IAoVFjbAC5m9hBe2o33XVCvwiz+bxZk0wEq1rNl5b8UQfytQKsUKfXoy8ym0WeTvskCooZCjmpNEWG8P/mdEVNec+rmUN1i8RK79yU8nbWhNrnWk2aeCHyCq/g6W+Vxqqua7W2IZo56ybJTlEaoch1M4g11WEJVMcbunuDQnGU+FMvq30q8ZyQ5YP7/+HoNSIQkdU9W7HVJLMY/RLfOmVQ2upoYN5v/hmXpKszgaOlc/9m6FRNOY1xLLnBuwyuV0SVcuXlDiFv8Mqi9QxeRQUbIyoKhV6YZSziEwXwS602yoFLjhBRzrzm6pGV+sqp9rSApQ3VlAGgCqSoNnhwZjlkoZCJqv0JIEbxxmoX/f7FCtR9vxL7MLMC6wVqsEfTX1Sd3Y1Eo0/5Up2e7LFTwHSt5HlkmnIOqM3sObvp4e3lQmpcI0+pkTRcuSZ1BAnumXwDD47bA/Efxp5YR+vToivywgPPVyGqJh6bXNVXBtjaQw9xkYgCkq38t+bd5wIK0e9ZI/O6c=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(7416014)(376014)(19092799006)(10070799003)(1800799024)(56012099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?BUVxklfbXaPgcEUOwJHmNzwgNVpQMJ3Tqzg/1ywEUGc3bclL5aimK7VkU3g3?=
- =?us-ascii?Q?4QPDOoFP9yx+GXcqI+fOLgWazng47f3Q0TDxNltke0/a0Pf8ACsrLfjxI3p0?=
- =?us-ascii?Q?4aCY9QVWpaH5dpUpBms6GwLQ/cktcQwnsMJKnN140zviitd+axivyual8q0a?=
- =?us-ascii?Q?iHUT2sk7+t9429mwAnx12CSzhnS2fIVnYJ5G+ixY/AuRSFoL8wyBuFTjiEkP?=
- =?us-ascii?Q?nwcY11OxLEjLgmMi811PZRc0ZKQFUVfVpJ5h8E0jCPCmQ8JsVoxXyHo7scI1?=
- =?us-ascii?Q?w/qJUq1FIxBuUva6riTzu77upXzaX4cOUWF+iHdasK+kpaULK55rguJTx7xC?=
- =?us-ascii?Q?6D7HKw3slmoABvFXg24+4QCOFMhMFwzSADBvDmTHpKuq15MPaJ5XFCWO+vNk?=
- =?us-ascii?Q?o8Wlnqv9xC893TsXZgYq5iqIRWwQWAUmxiZs0XACRL6AN2I9dJpMObF7vqTh?=
- =?us-ascii?Q?FMqPvBXse6L8uSncgjcEHaw8cq0aoWWA/gdkfYhvSGWEVnozF/vswl/Jt/7t?=
- =?us-ascii?Q?cn1BVIDhyitpYxxaRP162DYBPBrf5h1EtR+tkcaNxPpDkDMtJSj1cUDCOATL?=
- =?us-ascii?Q?GT4mWUpVygfPxCNncu6uhglg0LeQ0w4FxLNShUUThiqFn4fuSSM66VVztDtD?=
- =?us-ascii?Q?lOFKCurqZjx6wkfVF2VvAQ7YJ64QJ/wXmcF2h7xESFf/Zzhv/DdYgAqWwgiF?=
- =?us-ascii?Q?w+0K5E7LhEvmhc59XDMZboa1PvADHW+Dg4u+O1U1d5qRzlNmj7fOlyC4YNA0?=
- =?us-ascii?Q?vydq0OV/a4wZsdbrpmPpdNfeXxASJqnYHs7vX9yrE5AXcty8zOYTQ7qVyccN?=
- =?us-ascii?Q?yQCa7SBCdbrUr4NGsIoHlD7Db/u4jOunyxOVh/cWSojmp677WoLb6f+0nRiO?=
- =?us-ascii?Q?i4mnSI+vTABesd562KICBi7Jzm7ruwpWF/0NVZCFcg1dha4yVHkbMcdggYOj?=
- =?us-ascii?Q?Eh9NoiE0t0GYazL39Uw/Pz/ovZOAipQTRwZoeMPHhsAopVbSqTL1NVbZk1Q/?=
- =?us-ascii?Q?U99tBcj33n54ILo19pHdguESni1xCugMi7Eo5PW0rIyG4B/GIdwPzop+m6T3?=
- =?us-ascii?Q?ZT2gtILwCBbgKxHXS+RrhHtiwGUHFfj49FesomuEOC4d0jNFEwlgy1xZ9Dut?=
- =?us-ascii?Q?iT7mPlkNuyQh2dJ7pNDt3b2qXs3tkA5ESIjXxMq0ZC2HHCr6LIe7/soUnp/i?=
- =?us-ascii?Q?ZDFvaDxDbB5pgKyavHq+RL59moCp5Deb3L2iKUJdx8phW/4I4f1k29v4mAYN?=
- =?us-ascii?Q?ipE6bL2DlT4YoneKFLwJVohBEPZQTIgW+pQnb6fKUvI71eseCzKzbx4HsB74?=
- =?us-ascii?Q?9JfiKeRhxfr3tQrlHqhysihL3x0tAC3GEjnHWBzcEshfugwj1LiFqEkF9Yxn?=
- =?us-ascii?Q?sqnASDUel/SaL1rhVpdeyja0kuODHZKDIUPBThNrYwVfww7I47n7ff/mZr+o?=
- =?us-ascii?Q?wZI7EliTSWTGVcmAQIVCunkD4gNkqK4I2w6cURu1bH820QjeOU+fjDMaefnM?=
- =?us-ascii?Q?M4HdmGKkvcrDOUXRInNmeurSmTyUvKbVUoMSyYrC3MwEL72YW2LCfmoRQVu9?=
- =?us-ascii?Q?H0uxt9DxQ/2OAKqZwO0bRwY7FsIi85avDAMuU1QI2nBMEssW98iM2k68J4lS?=
- =?us-ascii?Q?qJUlkJwceOYz74dpNHV8HUELMT0dO1R9Z4urfPkOcLNxQ3vyL7PbcwP4jwPO?=
- =?us-ascii?Q?zD94jdZwFxDyzHuji38Dh/ojguNjTzRDpGB6n9cW7yfkC6IFChJy1dgGPLRc?=
- =?us-ascii?Q?OyIrsYaSTtWQ9sU24iD7QqwkVmDpwiVX6M3HEt1fCwoy/yNNJYdrWkC9dvDk?=
-X-MS-Exchange-AntiSpam-MessageData-1: wMK5jLXYNFIEB3Caef+8LcEsblTw55zklXQ=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3f155316-cf66-48a7-2bfe-08de86078eb6
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 19 Mar 2026 22:33:35.1356
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9Ya2j59DNYhEX2w7Y1AEtqKr/jDEBKWp8+4i4QMDCW8wm9ElNvrA4nVUDpopY9cW1EJhnjWjZAYNw+lsw2zAEA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB8079
+Content-Disposition: inline
+In-Reply-To: <177202208017.2000438.5208896949701142402@localhost>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_153408_511984_BB557940 
-X-CRM114-Status: GOOD (  12.59  )
+X-CRM114-CacheID: sfid-20260319_155625_557940_466B75D5 
+X-CRM114-Status: GOOD (  66.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,77 +74,231 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some pragmatic shortcuts are being taken by PHY consumer driver authors,
-which put a burden on the framework. A lot of these can be caught during
-review.
+On Wed, Feb 25, 2026 at 01:21:20PM +0100, Stefan Klug wrote:
+> Hi Laurent,
+> 
+> Thank you for the (loong ago) review. I finally came around to wrap my
+> head around that again.
+> 
+> Quoting Laurent Pinchart (2025-03-01 15:34:53)
+> > On Sat, Mar 01, 2025 at 03:02:54AM +0200, Laurent Pinchart wrote:
+> > > On Thu, Feb 27, 2025 at 12:44:59PM +0100, Stefan Klug wrote:
+> > > > When color space JPEG is requested, the ISP sets the quantization
+> > > > incorrectly to limited range. To fix that, set the xfer_func, ycbcr_enc
+> > > > and quantization to the defaults for the requested color space if they
+> > > > are not specified explicitly.
+> > > 
+> > > The commit message fails to explain why you're addressing xfer_func and
+> > > ycbcr_enc to fix the quantization issue.
+> > > 
+> > > > Do this only in case we are converting
+> > > > from RAW to YUV.
+> > > 
+> > > And this should explain why.
+> > > 
+> > > > Signed-off-by: Stefan Klug <stefan.klug@ideasonboard.com>
+> > > > ---
+> > > >  .../media/platform/rockchip/rkisp1/rkisp1-isp.c   | 15 ++++++++++++++-
+> > > >  1 file changed, 14 insertions(+), 1 deletion(-)
+> > > > 
+> > > > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > > > index d94917211828..468f5a7d03c7 100644
+> > > > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > > > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > > > @@ -680,10 +680,23 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+> > > 
+> > > Adding a bit more context:
+> > > 
+> > >       set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
+> > > 
+> > >       if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> > > 
+> > > If V4L2_MBUS_FRAMEFMT_SET_CSC isn't set, the colorspace fields on the
+> > > source pad will be copied from the sink pad, which doesn't seem right.
+> > 
+> > Thinking some more about it, it's not wrong either. The colorspace and
+> > xfer_func fields are not used by the driver, as the related ISP
+> > processing blocks are configured through ISP parameters. Without
+> > userspace providing the value of the fields on the source pad, the
+> > driver can't know what colorspace and xfer_func is produced. Copying the
+> > values from the sink pad is as good of a guess as we can make.
+> > 
+> > The ycbcr_enc and quantization fields are different, as they are taken
+> > into account by the driver to configure the ISP. Copying ycbcr_enc from
+> > the sink pad means that it will be set to V4L2_YCBCR_ENC_601 when the
+> > sink format is bayer and the source format is YUV. As the sink
+> > colorspace is most likely going to be V4L2_COLORSPACE_RAW in that case,
+> > that's a fine default, and is identical to what we would get from
+> > V4L2_MAP_YCBCR_ENC_DEFAULT(). Setting the quantization to
+> > V4L2_QUANTIZATION_LIM_RANGE also seems fine as a default, and it what
+> > V4L2_MAP_QUANTIZATION_DEFAULT() would give us.
+> > 
+> > TL;DR: there's probably no need to change the current behaviour when
+> > V4L2_MBUS_FRAMEFMT_SET_CSC isn't set.
+> 
+> I partially agree. Basically we don't care about colorspace and
+> xfer_func because we know that it is not used by the driver. But
+> src_fmt->colorspace is now V4L2_COLORSPACE_RAW and that could also be
+> queried by the user if I'm not mistaken. Wouldn't it be better (and
+> clearer code wise) to explicitly set the defaults in case we are
+> converting from RAW to YUV? Something like
+> 
+> 	/*
+> 	 * Copy the color space for the sink pad. When converting from Bayer to
+> 	 * YUV, set proper defaults.
+> 	 */
+> 	if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
+> 	    src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> 		src_fmt->colorspace = V4L2_COLORSPACE_SRGB;
+> 		src_fmt->xfer_func = V4L2_XFER_FUNC_SRGB;
+> 		src_fmt->ycbcr_enc = V4L2_YCBCR_ENC_601;
+> 		src_fmt->quantization = V4L2_QUANTIZATION_LIM_RANGE;
+> 	} else {
+> 		src_fmt->colorspace = sink_fmt->colorspace;
+> 		src_fmt->xfer_func = sink_fmt->xfer_func;
+> 		src_fmt->ycbcr_enc = sink_fmt->ycbcr_enc;
+> 		src_fmt->quantization = sink_fmt->quantization;
+> 	}
+> 
+> Functionality wise it is the same, but it makes the following code easier
+> to understand without the need to remember that we can safely copy
+> colorspace as it won't be used anyways.
+> 
+> > > It's a separate issue, but fixing both together may lead to better code.
+> > > 
+> > > >             if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+> > > >                     if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
+> > > >                             src_fmt->colorspace = format->colorspace;
+> > > > -                   if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
+> > > > +
+> > > > +                   if (format->xfer_func == V4L2_XFER_FUNC_DEFAULT)
+> > > 
+> > > Are you sure the condition should be inverted ?
+> 
+> That really looks quite wrong.
+> 
+> > > >                             src_fmt->xfer_func = format->xfer_func;
+> > > > +                   else
+> > > > +                           src_fmt->xfer_func =
+> > > > +                                   V4L2_MAP_XFER_FUNC_DEFAULT(format->colorspace);
+> > > > +
+> > > >                     if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
+> > > >                             src_fmt->ycbcr_enc = format->ycbcr_enc;
+> > > > +                   else
+> > > > +                           src_fmt->ycbcr_enc =
+> > > > +                                   V4L2_MAP_YCBCR_ENC_DEFAULT(format->colorspace);
+> > > > +
+> > > > +                   if (format->quantization == V4L2_QUANTIZATION_DEFAULT)
+> > > > +                           src_fmt->quantization =
+> > > > +                                   V4L2_MAP_QUANTIZATION_DEFAULT(false,
+> > > > +                                           format->colorspace, format->ycbcr_enc);
+> > > 
+> > > Shouldn't this use src_fmt instead of format ?
+> 
+> The outcome is the same. It felt more symmetrical to base the default
+> value on format->... as we do for the other fields.
 
-Make sure the linux-phy list is copied on as many keywords that regexes
-can reasonably catch.
+If format->colorspace is V4L2_COLORSPACE_DEFAULT then I think it won't
+be the same. the V4L2_MAP_*_DEFAULT macros don't expect their argument
+to be a *_DEFAULT value.
 
-Some considerations that led to this solution and not a simpler one:
-- Consumers may be located anywhere, and their file naming provides no
-  indication whatsoever that they are PHY API consumers.
-- The network PHY API has similarly sounding API: phy_start(),
-  phy_connect(), etc. Similarly, matching on "phy" would hit
-  phys_addr_t, "cryptography", etc.
-- The header files themselves need attention to avoid matching on
-  include/linux/phy.h (network PHY), include/linux/usb/phy.h,
-  drivers/net/vendor/device/phy.h, etc.
-- At least for a transitional period, I suppose developers will still
-  try to add PHY providers outside the subsystem (which is discouraged).
+> > > I think quantization handling could be moved below.
+> > > 
+> > > >             }
+> > > >  
+> > > >             if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
+> > 
+> > Now I'm wondering if this is right. As far as I can tell, the
+> > quantization isn't taken into account by the driver when the ISP is
+> > bypassed (capturing raw bayer data, or capturing YUV data from a YUV
+> > sensor).
+> 
+> Are you sure about the YUV to YUV case? We pass src_fmt->quatization
+> into rkisp1_params_pre_configure() which is then used to initializ the
+> remaining blocks. Iam however unsure if *any* of these blocks is active
+> in YUV to YUV mode.
 
-So I used \b to try to match on actual word boundaries and I went for
-listing all markers of PHY API use as they may appear in patch contexts.
+That's a good question. It should be tested. Isaac may have checked when
+working on YUV passthrough mode.
 
-Bit rot is a valid concern. I will add a test to the build automation
-that newly introduced struct and function names in include/linux/phy.h,
-include/linux/phy-props.h and drivers/phy/phy-provider.h are matched by
-the MAINTAINERS entry K: patterns.
+> > How about something like this ?
+> > 
+> > diff --git a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > index d94917211828..9c215c9bb30f 100644
+> > --- a/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > +++ b/drivers/media/platform/rockchip/rkisp1/rkisp1-isp.c
+> > @@ -659,11 +659,10 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+> >                 src_fmt->quantization = sink_fmt->quantization;
+> > 
+> >         /*
+> > -        * Allow setting the source color space fields when the SET_CSC flag is
+> > -        * set and the source format is YUV. If the sink format is YUV, don't
+> > -        * set the color primaries, transfer function or YCbCr encoding as the
+> > -        * ISP is bypassed in that case and passes YUV data through without
+> > -        * modifications.
+> > +        * Allow setting the source color space fields when the SET_CSC flag.
+> > +        * This is restricted to the case where the sink format is raw and the
+> > +        * source format is YUV, as in other cases the ISP is bypassed and the
+> > +        * input data is passed through without modifications.
+> 
+> Yes, that seems legit and makes the logic easier to follow. Only concern
+> is the YUV to YUV mode.
+> 
+> >          *
+> >          * The color primaries and transfer function are configured through the
+> >          * cross-talk matrix and tone curve respectively. Settings for those
+> > @@ -676,18 +675,30 @@ static void rkisp1_isp_set_src_fmt(struct rkisp1_isp *isp,
+> >          */
+> >         set_csc = format->flags & V4L2_MBUS_FRAMEFMT_SET_CSC;
+> > 
+> > -       if (set_csc && src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> > -               if (sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER) {
+> > -                       if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
+> > -                               src_fmt->colorspace = format->colorspace;
+> > -                       if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
+> > -                               src_fmt->xfer_func = format->xfer_func;
+> > -                       if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
+> > -                               src_fmt->ycbcr_enc = format->ycbcr_enc;
+> > -               }
+> > +       if (set_csc && sink_info->pixel_enc == V4L2_PIXEL_ENC_BAYER &&
+> > +           src_info->pixel_enc == V4L2_PIXEL_ENC_YUV) {
+> > +               if (format->colorspace != V4L2_COLORSPACE_DEFAULT)
+> > +                       src_fmt->colorspace = format->colorspace;
+> > +
+> > +               if (format->xfer_func != V4L2_XFER_FUNC_DEFAULT)
+> > +                       src_fmt->xfer_func = format->xfer_func;
+> > +               else
+> > +                       src_fmt->xfer_func =
+> > +                               V4L2_MAP_XFER_FUNC_DEFAULT(src_fmt->colorspace);
+> > +
+> > +               if (format->ycbcr_enc != V4L2_YCBCR_ENC_DEFAULT)
+> > +                       src_fmt->ycbcr_enc = format->ycbcr_enc;
+> > +               else
+> > +                       src_fmt->ycbcr_enc =
+> > +                               V4L2_MAP_YCBCR_ENC_DEFAULT(src_fmt->colorspace);
+> > 
+> >                 if (format->quantization != V4L2_QUANTIZATION_DEFAULT)
+> >                         src_fmt->quantization = format->quantization;
+> > +               else
+> > +                       src_fmt->quantization =
+> > +                               V4L2_MAP_QUANTIZATION_DEFAULT(false,
+> > +                                                             src_fmt->colorspace,
+> > +                                                             src_fmt->ycbcr_enc);
+> >         }
+> > 
+> >         *format = *src_fmt;
+> > 
+> > Can I let you write a commit message ? :-)
+> 
+> I try to get bak to it :-)
 
-The keyword patterns were written with great help from Joe Perches
-<joe@perches.com>.
+I'd like to send a pull request tomorrow. It's a bit of a short notice,
+we can also merge this for v7.2.
 
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
-Cc: Joe Perches <joe@perches.com>
-
-v3->v5: none
-v2->v3:
-- escape forward slash in linux/phy/phy.h in regex pattern:
-  https://lore.kernel.org/linux-phy/9fd14d166e860f26febfbc9061a6dcae6a166961.camel@perches.com/
-v1->v2:
-- split into multiple regex patterns
-- use matching-only (insted of capturing) regex patterns
-- adjust commit message to reflect the Q&A from v1
----
- MAINTAINERS | 11 +++++++++++
- 1 file changed, 11 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 55af015174a5..cd920f14abde 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -10713,6 +10713,17 @@ F:	Documentation/devicetree/bindings/phy/
- F:	drivers/phy/
- F:	include/dt-bindings/phy/
- F:	include/linux/phy/
-+K:	(?:linux\/phy\/phy\.h|phy-props\.h|phy-provider\.h)
-+K:	\b(?:__)?(?:devm_)?(?:of_)?phy_(?:create|destroy|provider_(?:un)?register)\b
-+K:	\bphy_(?:create|remove)_lookup\b
-+K:	\bphy_(?:get|set)_drvdata\b
-+K:	\b(?:devm_)?(?:of_)?phy_(?:optional_)?(?:get|put)(?:_by_index)?\b
-+K:	\bphy_pm_runtime_(?:get|put)(?:_sync)?\b
-+K:	\bphy_(?:init|exit|power_(?:on|off))\b
-+K:	\bphy_(?:get|set)_(?:mode(?:_ext)?|media|speed|bus_width|max_link_rate)\b
-+K:	\bphy_(?:reset|configure|validate|calibrate)\b
-+K:	\bphy_notify_(?:connect|disconnect|state)\b
-+K:	\bstruct\s+phy(?:_ops|_attrs|_lookup|_provider)?\b
- 
- GENERIC PINCTRL I2C DEMULTIPLEXER DRIVER
- M:	Wolfram Sang <wsa+renesas@sang-engineering.com>
 -- 
-2.43.0
+Regards,
 
+Laurent Pinchart
 
 _______________________________________________
 Linux-rockchip mailing list
