@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2681075275
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:35:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 922141075273
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:35:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cFyEmjTYTxN5H6YkyYXiLCdQYxijyyE36OjST7jQvNE=; b=48igdOhuBBOgWS
-	vY+DhphQnZR0/++saBP5S0UWbNhpMhDHQyieOqHoK+GkgQ7BYTCw5GlSk50TfSnYB6UXX9OW8jM84
-	x4YlF4ToUNYMh+8ghozxfUpu3eicTH4mHpGM/AmzIi9iaJGt5lv4uEap6VXujVnerPRUdvLjBcQJR
-	TAB1ELt/q5U+Nbb5pC3i7c6Gtkw0L9RG5kECm/3mgYr1Llg4Aj7FNFc3OpiR+l/WqWnnyzUAu/aBc
-	aUJVvht94ZXSQrg2RpPLKB+WloagPjy+EfV6to1KLy7E54xzQxc4PWkvONlF2PjguZbWYfxhIzeeR
-	JK4CMmhAKsW/gF9Oxo8A==;
+	List-Owner; bh=lS3zWJND8tSuBdSUp3sGn92wZ6w66IzxCB2i16nElEo=; b=5CavQ0gyGEsTYt
+	4KvZJqwn03Z7dCobS/qILiiCww69MSk9JeDjiJYJID1DRMKJwvmhH4JnXva+z6Kge50zFTQwe4F/w
+	Scis0fJ36sv0Z5tUZqIQZGCG+5watCGqT9YzSTsF55LsLWIczKalfd0fhLOfvHjy1gipBZJuBCUgM
+	1cqB3z/zJeuFYwKjS4eBkEPYUifC5e4p71ac/PBLW6gWqZnPSyEpKsrmD0aZtO5amOgVhhP6lnKMV
+	EukC9B3YBdPedbZjyy6fdJKEdzpiDRx3KScPzzCiOrCQUvyKPJxmDw22+eZgX1q0LbCofhlFBC8Jm
+	ztJ11ueSau5WMsiNnEDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37uw-0000000A9gX-0OGv;
-	Thu, 19 Mar 2026 07:35:42 +0000
+	id 1w37uu-0000000A9er-2CXm;
+	Thu, 19 Mar 2026 07:35:40 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37uo-0000000A9dZ-0L3E;
+	id 1w37up-0000000A9db-21AC;
 	Thu, 19 Mar 2026 07:35:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=4r6wkkKWx0HfcJZH7gXeKF9oJ6zCw/C5ilURSEcdU7I=; b=uwrJgdvTORo4qzGFqhYJPzdZoC
-	CWTTbblOUmAwdARII6xfeQ29OyPc/OIAj3gutJ0aQZJCNCHxmqiGnj+PrUo+e17910ch6o72eJJll
-	drKO7nz5qKun1oSUp/3knYurVsdu95tijcVd+4+IXn2h6NVeO7OPsik+mNTQ7kgHoUrnjlXuupBbm
-	DXex4Ot8m2p88zWdPNAWme+zoldSWOdR5TQ8EFSbHt1+YCnpz0HiS7cU7ywzDTgOPlGyTdazQpw1R
-	xI2UNt1H9+rMBcllBADRR2pgT8dbYAUavQ+Y4UJhCocArgVmqMWUYpY5XaMAZvD9bNjAIR5Z4AbxT
-	iW362vVA==;
+	bh=Ob+IZvhkIha5DTBe/HV7/KpWvsF/0JXOGJlTDavxCws=; b=tIYa5UGtcxt5Dd9KipsIhazacC
+	1UYaWUiZYE0DrOGTPZWVfAwPdvrYXQOKJQ0Nsb7XVtkbLEBxKFOhP6J1zIxtRyrxjXini150kTRos
+	Vg8uog/4/LtlM1xrWTt5w2iGtCNbAs2Jmosvpj6fZgE7b3OyfFMu6TXXamCwnjTgFAnchSOOg9TkT
+	iM0OqvHCnV26bcQTVTn+uCntE5Ts/8blaHPWuWoJSD2GkwjQowVfJfNhi+ELqQ/t9MEYakoxDPMp1
+	PcuDeI+6ylqbfNs97YDdHRnvCpQjp90Dx1a00vK9HuhZ8EcDOZfzdyjMFSENeoK6w9urygCy3mzE5
+	uooOGy0g==;
 Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37ul-00000005k06-15ie;
-	Thu, 19 Mar 2026 07:35:32 +0000
+	id 1w37um-00000005k09-07Ue;
+	Thu, 19 Mar 2026 07:35:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=superkali.me; s=default; h=Cc:To:In-Reply-To:References:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=4r6wkkKWx0HfcJZH7gXeKF9oJ6zCw/C5ilURSEcdU7I=; b=NYiXBJIEH+T+2g8hYewFkM9BDA
-	O8NdlkcreHW0y3YCQ5IrlXicy9+WNEMURIjspR8BhZUYHhPnUMFkvPhA0XMbsF12IR0cjQFaVt72/
-	rGq3KvUGxISB+2xilHnmNrM89c8oLGzxYgEkvoEzBqNTFng81gEYfr1G6YMbG5+y92Vf7M1Hm7eOh
-	VR/eMOTs6PN/rAbImC1MAnRHP4KHUPFV6XBrfTCoJ9vKkomrMAcTNAncyIjtFzYzqFIgmWx/vbu5v
-	jr5zq6nXHlj1riLO6TnNdyd6nWKkQ6LSF3KIu7+Pf79HslyyNbuCnbTihjY8Fy5KlviERPcJJKFxa
-	6o26tT5Q==;
+	bh=Ob+IZvhkIha5DTBe/HV7/KpWvsF/0JXOGJlTDavxCws=; b=LCUuc0Um3IQUEw5OCt8m2did9c
+	02xLgHhXHwXZH5P4EDFOP8yzDJ7A3iTWYZKH30OL5QmITY9DQkR6qKJr3ySjkJd6IC1j9u9p4RIV1
+	0HM6F70JB/NKV895yUVPsrqNzkA7VZbeck4zitfqmVCf6zZkEeYvKZhyrRQJ8+Q/OQsR1oNoKHc5r
+	XMCob9bsXHbl86vGVRGXVSLqLHL9GiEirMJucbSpkw7JfihmXR7hOjOU/s+FCStp0eErIbgA+cuD7
+	RwOUMsIzTkgkx8BAPcXjmSHLzGU1WxyCL7EgaDRfN+9aL6rKO3Z9ZjQ/DVltp8SMwPuuv6ZhYIRwB
+	WYQ0+w5A==;
 Received: from [109.52.2.233] (port=10095 helo=mac.lan)
 	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
 	(Exim 4.99.1)
 	(envelope-from <hello@superkali.me>)
-	id 1w37tP-0000000DgEs-2phc;
-	Thu, 19 Mar 2026 08:34:05 +0100
+	id 1w37tR-0000000DgEs-1Eqr;
+	Thu, 19 Mar 2026 08:34:06 +0100
 From: Daniele Briguglio <hello@superkali.me>
-Date: Thu, 19 Mar 2026 08:33:59 +0100
-Subject: [PATCH v2 1/3] dt-bindings: clock: rockchip,rk3588-cru: add I2S
- MCLK output to IO clock IDs
+Date: Thu, 19 Mar 2026 08:34:00 +0100
+Subject: [PATCH v2 2/3] clk: rockchip: allow grf_type_sys lookup in
+ aux_grf_table
 MIME-Version: 1.0
-Message-Id: <20260319-rk3588-mclk-gate-grf-v2-1-c4c8daab0762@superkali.me>
+Message-Id: <20260319-rk3588-mclk-gate-grf-v2-2-c4c8daab0762@superkali.me>
 References: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
 In-Reply-To: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
 To: Michael Turquette <mturquette@baylibre.com>, 
@@ -74,14 +74,13 @@ Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, 
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Daniele Briguglio <hello@superkali.me>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ Daniele Briguglio <hello@superkali.me>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773905640; l=975;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773905640; l=1708;
  i=hello@superkali.me; s=20260316; h=from:subject:message-id;
- bh=s/jc/s6Rzr1Mg/JbVnbKEPF1NVKRtlMfsACn6kbFdKc=;
- b=1jo5TKoywLPX8VEd6ybg8rA7NdSpML9127iS51mq8dWB4mhGkrFI8KjxZTGl32BmLMwh//X8y
- +XL5WnEh++1DPdxfHGQ0DeMYWHqoEMOAKPrOu72abkvOuEQ2Vijmsev
+ bh=WL4AZHxfBGBXO8GMVo8sFDi5dqnXuP+ssvyAyb87JKI=;
+ b=CIBbXZiSnKKJf6/VCZVNzJ5/Lt9EuE5/PE8VkfNlNP486LQx0DFv1wQzMlAK+TMvYM17A3kOZ
+ iPesQEuOR6EAbz3FxOiT0p4rKB9TickY9UT0KBVTzswjrW3QbrNIp6c
 X-Developer-Key: i=hello@superkali.me; a=ed25519;
  pk=5tynRWQdL93CDcapJ73FkcCRY2PeBOJOIAoIhRig53U=
 X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
@@ -95,8 +94,8 @@ X-Source:
 X-Source-Args: 
 X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_073531_343612_D4F042FF 
-X-CRM114-Status: UNSURE (   5.46  )
+X-CRM114-CacheID: sfid-20260319_073532_104612_511E3EB9 
+X-CRM114-Status: UNSURE (   8.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,31 +113,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add clock identifiers for the four I2S MCLK output to IO gate clocks
-on RK3588, needed by board DTS files where the codec requires MCLK
-from the SoC on an external IO pin.
+Remove the grf_type_sys exclusion from the auxiliary GRF table lookup
+in rockchip_clk_register_branches(). Previously, branches with
+grf_type_sys always used ctx->grf directly, bypassing the aux_grf_table.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+This is a problem on SoCs like RK3588 where ctx->grf points to the
+PHP_GRF (set via the CRU's rockchip,grf phandle), but GATE_GRF clock
+entries need to access the SYS_GRF instead.
+
+With this change, grf_type_sys branches first check the aux_grf_table,
+and fall back to ctx->grf if no entry is found. This is backwards
+compatible: on SoCs that do not register grf_type_sys in the
+aux_grf_table, the behavior is unchanged.
+
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Daniele Briguglio <hello@superkali.me>
 ---
- include/dt-bindings/clock/rockchip,rk3588-cru.h | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/clk/rockchip/clk.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-index 0c7d3ca2d5bc..7528034cff56 100644
---- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
-+++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
-@@ -734,6 +734,10 @@
- #define PCLK_AV1_PRE			719
- #define HCLK_SDIO_PRE			720
- #define PCLK_VO1GRF			721
-+#define I2S0_8CH_MCLKOUT_TO_IO		722
-+#define I2S1_8CH_MCLKOUT_TO_IO		723
-+#define I2S2_2CH_MCLKOUT_TO_IO		724
-+#define I2S3_2CH_MCLKOUT_TO_IO		725
+diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
+index e8b3b0b9a4f8..911e6b610618 100644
+--- a/drivers/clk/rockchip/clk.c
++++ b/drivers/clk/rockchip/clk.c
+@@ -509,10 +509,9 @@ void rockchip_clk_register_branches(struct rockchip_clk_provider *ctx,
+ 		clk = NULL;
  
- /* scmi-clocks indices */
- 
+ 		/* for GRF-dependent branches, choose the right grf first */
+-		if ((list->branch_type == branch_grf_mux ||
+-		     list->branch_type == branch_grf_gate ||
+-		     list->branch_type == branch_grf_mmc) &&
+-		    list->grf_type != grf_type_sys) {
++		if (list->branch_type == branch_grf_mux ||
++		    list->branch_type == branch_grf_gate ||
++		    list->branch_type == branch_grf_mmc) {
+ 			hash_for_each_possible(ctx->aux_grf_table, agrf, node, list->grf_type) {
+ 				if (agrf->type == list->grf_type) {
+ 					grf = agrf->grf;
 
 -- 
 2.53.0
