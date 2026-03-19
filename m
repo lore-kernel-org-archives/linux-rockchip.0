@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94A681075274
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:35:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F2681075275
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 07:35:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=20ktN0BgbNTv2ownNBKuHlw2iz0NfLKF1XvKSGAptR0=; b=JJ7SWcnl9L8piv
-	fi21pFepZKt5F2YDnTD0hXL3eG96rIa1AyACJUeEbVgNOg3j2l+KGwcErIzadWRoE9LPGSQIzOV0f
-	HZmV+YntGt4godKCQ5rtyhraAnX2TBQ3yaf7jsjjJLwta8hu65dqturf4iay8AUQJiJQ0wMtWbh2B
-	hTUGmJh198MCoXMIytcf20t95M/uMo/LgFtIe1XWix+uyWeaQMKym7R3lbdspmc9YVi4+ThigMUQH
-	i8npH4lebKoZjDiA5hFXe/9U2X6T2zowgEvyBZdoSyUJV8e603vxcNHCYwj8e1hQGwPu0Gj/3GVLT
-	pApGFtGOI0CsuOfgE0AQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=cFyEmjTYTxN5H6YkyYXiLCdQYxijyyE36OjST7jQvNE=; b=48igdOhuBBOgWS
+	vY+DhphQnZR0/++saBP5S0UWbNhpMhDHQyieOqHoK+GkgQ7BYTCw5GlSk50TfSnYB6UXX9OW8jM84
+	x4YlF4ToUNYMh+8ghozxfUpu3eicTH4mHpGM/AmzIi9iaJGt5lv4uEap6VXujVnerPRUdvLjBcQJR
+	TAB1ELt/q5U+Nbb5pC3i7c6Gtkw0L9RG5kECm/3mgYr1Llg4Aj7FNFc3OpiR+l/WqWnnyzUAu/aBc
+	aUJVvht94ZXSQrg2RpPLKB+WloagPjy+EfV6to1KLy7E54xzQxc4PWkvONlF2PjguZbWYfxhIzeeR
+	JK4CMmhAKsW/gF9Oxo8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37uu-0000000A9fX-3Ffy;
-	Thu, 19 Mar 2026 07:35:40 +0000
+	id 1w37uw-0000000A9gX-0OGv;
+	Thu, 19 Mar 2026 07:35:42 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37uo-0000000A9da-1FmG;
+	id 1w37uo-0000000A9dZ-0L3E;
 	Thu, 19 Mar 2026 07:35:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Cc:To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:
-	Content-ID:Content-Description:In-Reply-To:References;
-	bh=+sFZ1FLKiR65L4M1IonsRzZ9s3L1BFiD5c8mbE2C9B0=; b=V62rU/Xb4T3rDARmvr6/doRamm
-	Z7M9nITFmOXJqjxqGYBjS/hH9WZqIJg/TngX6SGcSgLjbM2bBQwnCq5EKkmgTkJRpZ4wXfNq7wViK
-	U3/t5q09H662InQnYhUI5HQpv6IQGuodxlH6DVewluyUm97civaRJ6j4Zs0tStC5XrcjWOP3sTn74
-	CyiyIIdkCcrQrGuHsFuPTM+wWFo3LUUJB80hyt6GbsMlz5ISUXKQrRfteKxanb65wjcM7X2k4H+3C
-	1gm+Y6H2E882zxA3YyXcxHjFOaIAff58Mgo8Lpd2MKL14bk1gCVHSZgpT12h4i5k58uXbTe6MxVTh
-	jqOEx+Sw==;
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=4r6wkkKWx0HfcJZH7gXeKF9oJ6zCw/C5ilURSEcdU7I=; b=uwrJgdvTORo4qzGFqhYJPzdZoC
+	CWTTbblOUmAwdARII6xfeQ29OyPc/OIAj3gutJ0aQZJCNCHxmqiGnj+PrUo+e17910ch6o72eJJll
+	drKO7nz5qKun1oSUp/3knYurVsdu95tijcVd+4+IXn2h6NVeO7OPsik+mNTQ7kgHoUrnjlXuupBbm
+	DXex4Ot8m2p88zWdPNAWme+zoldSWOdR5TQ8EFSbHt1+YCnpz0HiS7cU7ywzDTgOPlGyTdazQpw1R
+	xI2UNt1H9+rMBcllBADRR2pgT8dbYAUavQ+Y4UJhCocArgVmqMWUYpY5XaMAZvD9bNjAIR5Z4AbxT
+	iW362vVA==;
 Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w37ul-00000005k08-16AE;
-	Thu, 19 Mar 2026 07:35:33 +0000
+	id 1w37ul-00000005k06-15ie;
+	Thu, 19 Mar 2026 07:35:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=superkali.me; s=default; h=Cc:To:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:In-Reply-To:References:List-Id:List-Help:List-Unsubscribe:
+	d=superkali.me; s=default; h=Cc:To:In-Reply-To:References:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
 	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=+sFZ1FLKiR65L4M1IonsRzZ9s3L1BFiD5c8mbE2C9B0=; b=HuhqpKnsB9WMzy9owOWVxJ77M2
-	7o4WnVvv4hvWee3S/36BP+WMIPiOT9q8iZ6yJR5iIMaoJJJlOMMVzwfZYBFA9GlxYHWAm+hbB/bQu
-	UnQFOwampOuM+DCkIjUxTZJQ7RoRGRIfDXOJJcAhgFaiA0plcfTfjtkYh/DPB63puMOvG954E7NV2
-	GKN507nImCj7yCSMeUlm1wHkV62wC6uWhWucSWQz//ExQW8M42VWSVH/eaiEc7muQOAWQQAmnqKb1
-	CSHIvXE3sNrC2l2PrcfSmXGON0o1Wy4NrWDLTSnmBHvqfgFqeQaSWngJlx+Oi0IJQk0FvHJTl9zZw
-	fuxbevcg==;
+	bh=4r6wkkKWx0HfcJZH7gXeKF9oJ6zCw/C5ilURSEcdU7I=; b=NYiXBJIEH+T+2g8hYewFkM9BDA
+	O8NdlkcreHW0y3YCQ5IrlXicy9+WNEMURIjspR8BhZUYHhPnUMFkvPhA0XMbsF12IR0cjQFaVt72/
+	rGq3KvUGxISB+2xilHnmNrM89c8oLGzxYgEkvoEzBqNTFng81gEYfr1G6YMbG5+y92Vf7M1Hm7eOh
+	VR/eMOTs6PN/rAbImC1MAnRHP4KHUPFV6XBrfTCoJ9vKkomrMAcTNAncyIjtFzYzqFIgmWx/vbu5v
+	jr5zq6nXHlj1riLO6TnNdyd6nWKkQ6LSF3KIu7+Pf79HslyyNbuCnbTihjY8Fy5KlviERPcJJKFxa
+	6o26tT5Q==;
 Received: from [109.52.2.233] (port=10095 helo=mac.lan)
 	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
 	(Exim 4.99.1)
 	(envelope-from <hello@superkali.me>)
-	id 1w37tN-0000000DgEs-2FIc;
-	Thu, 19 Mar 2026 08:34:03 +0100
+	id 1w37tP-0000000DgEs-2phc;
+	Thu, 19 Mar 2026 08:34:05 +0100
 From: Daniele Briguglio <hello@superkali.me>
-Subject: [PATCH v2 0/3] clk: rockchip: rk3588: add I2S MCLK output gate
- clocks
-Date: Thu, 19 Mar 2026 08:33:58 +0100
-Message-Id: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
+Date: Thu, 19 Mar 2026 08:33:59 +0100
+Subject: [PATCH v2 1/3] dt-bindings: clock: rockchip,rk3588-cru: add I2S
+ MCLK output to IO clock IDs
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNTQ6CMBBGr0Jm7Zi2YK2svIdhUeoUGn4zRaIh3
- N3KBVy+l3zv2yASB4pQZhswrSGGaUygThm41o4NYXgmBiWUFrnUyF1+MQYH13fY2IWwYY+uqKU
- RRW68E5CmM5MP7yP7qBK3IS4Tf46XVf7sn+AqUaDWvr5ZVeirNPf4mok724fzQFDt+/4F2AAyE
- rsAAAA=
-X-Change-ID: 20260316-rk3588-mclk-gate-grf-c4b180438fc0
+Message-Id: <20260319-rk3588-mclk-gate-grf-v2-1-c4c8daab0762@superkali.me>
+References: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
+In-Reply-To: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
 To: Michael Turquette <mturquette@baylibre.com>, 
  Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -78,14 +75,13 @@ Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, 
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
  Daniele Briguglio <hello@superkali.me>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
- kernel test robot <lkp@intel.com>
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1773905640; l=2504;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1773905640; l=975;
  i=hello@superkali.me; s=20260316; h=from:subject:message-id;
- bh=hwWOzRdVjXzUuETpCCZtWnOEr3ju3ZD/7cJHhaC2XaY=;
- b=mMlo4V6ZMSIrvQtN1Pp9tg+tjEeICjCvhseV9g1Wqd/UzsZO+A2hqW5EfXzmrGcGGqdCPsp8B
- Cs8B9xF8FZPBNunlVOcc4j395FkERMfhnWpkA/jPkfGq6nm7DStgQS+
+ bh=s/jc/s6Rzr1Mg/JbVnbKEPF1NVKRtlMfsACn6kbFdKc=;
+ b=1jo5TKoywLPX8VEd6ybg8rA7NdSpML9127iS51mq8dWB4mhGkrFI8KjxZTGl32BmLMwh//X8y
+ +XL5WnEh++1DPdxfHGQ0DeMYWHqoEMOAKPrOu72abkvOuEQ2Vijmsev
 X-Developer-Key: i=hello@superkali.me; a=ed25519;
  pk=5tynRWQdL93CDcapJ73FkcCRY2PeBOJOIAoIhRig53U=
 X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
@@ -99,8 +95,8 @@ X-Source:
 X-Source-Args: 
 X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_073531_352835_AA770E24 
-X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-CacheID: sfid-20260319_073531_343612_D4F042FF 
+X-CRM114-Status: UNSURE (   5.46  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,59 +114,34 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On RK3588, the four I2S master clock (MCLK) outputs to external IO
-pins are gated by bits in SYS_GRF SOC_CON6 (offset 0x0318). These
-are set-to-disable gates with hiword mask semantics.
+Add clock identifiers for the four I2S MCLK output to IO gate clocks
+on RK3588, needed by board DTS files where the codec requires MCLK
+from the SoC on an external IO pin.
 
-The TRM documents the reset value of these bits as 0 (gate open),
-but in practice the Rockchip firmware (BL31) may set them during
-early boot, preventing the MCLK signal from reaching external audio
-codecs. The kernel should manage these gates explicitly so that
-audio functionality does not depend on bootloader register state.
-
-This series adds GATE_GRF clock entries for all four I2S MCLK output
-gates, following the same approach used for the RK3576 SAI MCLK
-output gates [1]. Board DTS files that need MCLK on an IO pin can
-reference these clocks (e.g. clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>),
-ensuring the output gate is opened when the clock is enabled.
-
-Patch 1 adds the four clock ID bindings.
-Patch 2 removes the grf_type_sys exclusion from the aux_grf_table
-        lookup, which prevented SYS_GRF-based GATE_GRF entries from
-        being resolved on RK3588 (where ctx->grf points to PHP_GRF).
-Patch 3 registers the SYS_GRF as an auxiliary GRF and adds the four
-        GATE_GRF clock entries, each placed after its parent MCLKOUT.
-
-Tested on a Youyeetoo YY3588 (RK3588) board with an ES8388 audio
-codec connected to I2S0. Without this series the firmware leaves the
-gate closed and the codec receives no master clock. With the series
-applied and DTS updated, audio playback works correctly.
-
-[1] https://lore.kernel.org/r/20250305-rk3576-sai-v1-2-64e6cf863e9a@collabora.com/
-
-Changes in v2:
-- Patch 1: shortened commit message (Krzysztof)
-- Patch 3: added missing #include <linux/slab.h> for kzalloc_obj
-  (kernel test robot)
-
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Signed-off-by: Daniele Briguglio <hello@superkali.me>
 ---
-Daniele Briguglio (3):
-      dt-bindings: clock: rockchip,rk3588-cru: add I2S MCLK output to IO clock IDs
-      clk: rockchip: allow grf_type_sys lookup in aux_grf_table
-      clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO
+ include/dt-bindings/clock/rockchip,rk3588-cru.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- drivers/clk/rockchip/clk-rk3588.c               | 23 +++++++++++++++++++++++
- drivers/clk/rockchip/clk.c                      |  7 +++----
- include/dt-bindings/clock/rockchip,rk3588-cru.h |  4 ++++
- 3 files changed, 30 insertions(+), 4 deletions(-)
----
-base-commit: b84a0ebe421ca56995ff78b66307667b62b3a900
-change-id: 20260316-rk3588-mclk-gate-grf-c4b180438fc0
+diff --git a/include/dt-bindings/clock/rockchip,rk3588-cru.h b/include/dt-bindings/clock/rockchip,rk3588-cru.h
+index 0c7d3ca2d5bc..7528034cff56 100644
+--- a/include/dt-bindings/clock/rockchip,rk3588-cru.h
++++ b/include/dt-bindings/clock/rockchip,rk3588-cru.h
+@@ -734,6 +734,10 @@
+ #define PCLK_AV1_PRE			719
+ #define HCLK_SDIO_PRE			720
+ #define PCLK_VO1GRF			721
++#define I2S0_8CH_MCLKOUT_TO_IO		722
++#define I2S1_8CH_MCLKOUT_TO_IO		723
++#define I2S2_2CH_MCLKOUT_TO_IO		724
++#define I2S3_2CH_MCLKOUT_TO_IO		725
+ 
+ /* scmi-clocks indices */
+ 
 
-Best regards,
 -- 
-Daniele Briguglio <hello@superkali.me>
+2.53.0
 
 
 _______________________________________________
