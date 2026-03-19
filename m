@@ -4,77 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33F1C109022B
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 13:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C3C109022E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 14:14:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=mdaQT9iUVKHlLdZ6uELg5Kr2SZBPYbsBq5NYB8xGZ3U=; b=k0fYlXX09oEb3k
-	19xyMocShOgmW2czE2CDN9cZrESZuRLRRkxBolyh0C3nGboTAnKmbNSriDnhS0y2x1nImURMr4t/O
-	pAi1PxyV3cpQZpy7NntkOW5uc1/0ql8zRfdQsfzsScRPQJk8PWshmuyQ7IVPVOYCeCJmdwq8ETZt4
-	kjCjeGv90LikvEJkRzFaCW+wqieESZH5xRmwci6gwzay8dIaF8CIbFEGvk9H+pMAA3xIKdXMhFjeG
-	8/JOK7MQ7GQOV6Zw7yqNvq4gpYJa9dUNWmizFJV81cU2/XeNg0foNlvD41iGRuiXrIBoG1em9RakY
-	9RheuQaYrzpT6wtpVmIQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nLfn8lPRd63MCHFvYxiq02q4ytBdxI4knAAF5GE6LII=; b=x1HUhcFAw1NavY
+	w1isyuCb0C6bZhO7NTOEEFGROqin68W3XWrQ+q+okZxjNwmsogLi04PRWg9R/EoSYkwUhJyNltssR
+	dHVjz3s08c37YbOY6/ySCHDYm81SFkFScCQ7zoGI3WHg5TMJpSlpxCPu1GnxH3Ofsc52qYl4iQoPN
+	7QtyQgeb4qCG98i8k6Wqrdfv7j3CgHpnip7atzymZ7DIpSWNQd1aVDyc3AFOmlqQXE2yNGEFoErCD
+	BrNujQnn5JRTqI57Y7EvlkxyIAXCDR/3FlDK1VOAsIyTif3JtnfColppVji9vJb8KAkN9NyV2u3MH
+	R4gN64dsqUYnyssLFmFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Drm-0000000AisQ-3L5Q;
-	Thu, 19 Mar 2026 13:56:50 +0000
-Received: from out162-62-58-216.mail.qq.com ([162.62.58.216])
+	id 1w3E8N-0000000AkmG-0wQe;
+	Thu, 19 Mar 2026 14:13:59 +0000
+Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Drj-0000000Airm-3EXP;
-	Thu, 19 Mar 2026 13:56:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1773928592; bh=QB0PAHjXJtrNdDodBFe2YFA8Ial1S7MV3yYq3bW3Z6w=;
-	h=From:To:Cc:Subject:Date;
-	b=OZIuQDm3gsJ6HK/EUYVIO3wMK0ytRSedyWKrnCtPb5CkNhT/8KFr3ylTT5tWlUkXl
-	 qv00O8rDSK5qCU5bFxew0+J2cFXVSLGdUfV7LERaH28xB8ocyDriFP/Ylg7DW9+3Gx
-	 jwpExommlITWr96++S3IYVuTMjiDPa+MN7wICA98=
-Received: from mail.red54.com ([139.99.8.57])
-	by newxmesmtplogicsvrszb51-1.qq.com (NewEsmtp) with SMTP
-	id E0D89E56; Thu, 19 Mar 2026 21:56:13 +0800
-X-QQ-mid: xmsmtpt1773928573t778m5lcy
-Message-ID: <tencent_78E7E3F6991FB4403D5ADC9E6A6BC3BF8307@qq.com>
-X-QQ-XMAILINFO: MMwjR1C73eIsPYIJmh7X440ZtM80sQDjF5nMcIXzGUvGMjBhReA1DB52+T3lWR
-	 QhpCcXdclI30GKKwQJYCZkIwo8dfwpB6L/QUmeYluB8iqtYfSXmy5XkrTAZOO5c5W8vYovS8++jB
-	 h6bTkvZtZ2DRpX+jMd2ShguYw60HjMWVTNT+15ZKfuMd9IYwx/iB0Eeu07ijZqCHRKRhlS9WB8M5
-	 CZypwXnrr28c0pHMeVSjHb6GRR9JnrCq6GxCP5lQ4icIouxeFfH0aqLzQdhuz5W3WoWGSM51FwSP
-	 WwcduP74YJbH1IvUVHwoVAaQVteqItobujcROXy7j2FYQSB4ZuClaGLd56UYrZrtnRsoZ8ufu70x
-	 c9zUoufIFbzfavZHZwwjJwyHW/3/r0vb+TJ1u1WsK3Jn8vhWZtI4dZe6U04n2+5uQYC/3h0c3tzb
-	 9+sasxJdw658XllPyTPuYhRah0Dhsjwx01Ot4LOmvXhW4IwwOl7v0XUCG4hbdREOIie9Ju2pQYJd
-	 XV35BUVCjfVFG+T7gwPyTjY3R7RLMeThYLLGb1C/5HVCua+50dj/2y5yUDgbpk6OePKGe1ccDtJx
-	 zoU0CkUdWsEwN6T0QSe5DAasSRFn2RiORcYWIVhNFg3P10vKHvYT711441sMuF0PLSb/hhmMDg5X
-	 1C+BWFJ4laxINeG2uujy4GiddwXv5p+AXeXpWSMQf/BMBulG4/aVVg/n6tv5IOxUr3zDoqXgAASw
-	 8JKz/nLfH2yrbaNyvPPmOhgdUJ1Onabcq4/MEZN5gdwfvjMcxI4UhqukGn8Ji3jt9IHXYaeGgTGf
-	 3NFa5xlrCxUjq9B/mtyBZAcnNFjmCH1gSkglRCL8RbnEkijTxRaE1XIwGptZ5bWL8ZT9ZqrigWnx
-	 DVSluNe16zQrIzf1zRN1vqFmaflAX5Qn6oxcwpNTw/ugjl+69SKyEwagfNn4wB6OGdGq54R9Y33q
-	 WuKUzotjj6mvYgbNstp1lfvTnKyetNJtt96t/wfgZQUHbozKEcziyWB7xAaLdrarA8zFHL/Lhbz4
-	 ruqyz3Q5O0WmvmoRNSQIe9hkpUBWcinIxIOmO9Q3mnxFyKul1LlpDrX1txwJXKoOaDf8wD8I+QH/
-	 +oekJ6I3/x1mxXq8/UXZ3XX1nN1iA5o7rvz9GOLZAo0lkPDLxcPJ+/5wCWMX5JLivRCi6X
-X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
-From: =?UTF-8?q?=E8=B0=A2=E8=87=B4=E9=82=A6=20=28XIE=20Zhibang=29?= <Yeking@Red54.com>
-To: linux-rockchip@lists.infradead.org
-Cc: =?UTF-8?q?=E8=B0=A2=E8=87=B4=E9=82=A6=20=28XIE=20Zhibang=29?= <Yeking@Red54.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Finley Xiao <finley.xiao@rock-chips.com>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Fix RK3562 EVB2 model name
-Date: Thu, 19 Mar 2026 13:55:00 +0000
-X-OQ-MSGID: <20260319135500.69993-1-Yeking@Red54.com>
-X-Mailer: git-send-email 2.43.0
+	id 1w3E8L-0000000Akkw-0rRm
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Mar 2026 14:13:58 +0000
+Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out2.suse.de (Postfix) with ESMTPS id 233AB5BD4B;
+	Thu, 19 Mar 2026 14:13:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
+	t=1773929632; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4fUFXPph0d+U/6GDmGbgLZ/FXBjYuxpYsgD69WTKZEc=;
+	b=qJFdgiFwZof840urwELAyJUPmqr5R5KSb1T4rwYuc7bb8XNbCm/kv+M5FkrKSBEOM1bZiu
+	/MGyuwm/OFnFKmJm/t/Uz/+GbEcAEAQCMtEWioCbgwKOh4DWZ0qNVZOg9g66xDY+m4U+fD
+	w9Xqoe30eNI+goFz62hSwZMzWorThdA=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
+	s=susede2_ed25519; t=1773929632;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4fUFXPph0d+U/6GDmGbgLZ/FXBjYuxpYsgD69WTKZEc=;
+	b=4jpB79ycXSQsxOkgtV3HKUa6Dm/vQ/wRir8pmFsiYnB6qgK3LbPe12RtulXb4tol7/E3ij
+	faYPra8B4GTfZjDQ==
+Authentication-Results: smtp-out2.suse.de;
+	none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.cz; s=susede2_rsa;
+	t=1773929631; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4fUFXPph0d+U/6GDmGbgLZ/FXBjYuxpYsgD69WTKZEc=;
+	b=OrcSAEzL/6c4UDB40dZmtUkHL2UKN/t418W/3/WLfRE3VUYtttdOTA1LBRs2LexriSZBXr
+	IUCLAcO9QxQoLCNXA0PSitgNb7BC5cuH9t+EXroQLbXGhfbC1mTChSWj64vc6V41FfYy8R
+	mio6pb/J12e+5TPnOnmBoDRex83ce1A=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.cz;
+	s=susede2_ed25519; t=1773929631;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=4fUFXPph0d+U/6GDmGbgLZ/FXBjYuxpYsgD69WTKZEc=;
+	b=HXVk5/yPJtxIjyky0dtujMNvVHE9KONXRU8D1O6wb4LBxoqwDaKPYOnkGEkCrYDJmYyVOA
+	klxEA++oJw6AsaAw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 14B714273B;
+	Thu, 19 Mar 2026 14:13:51 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id TmUEBZ8EvGlPZwAAD6G6ig
+	(envelope-from <jack@suse.cz>); Thu, 19 Mar 2026 14:13:51 +0000
+Received: by quack3.suse.cz (Postfix, from userid 1000)
+	id C850FA0B32; Thu, 19 Mar 2026 15:13:46 +0100 (CET)
+Date: Thu, 19 Mar 2026 15:13:46 +0100
+From: Jan Kara <jack@suse.cz>
+To: Philipp Hahn <phahn-oss@avm.de>
+Cc: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com, 
+	bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr, 
+	dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org, gfs2@lists.linux.dev, 
+	intel-gfx@lists.freedesktop.org, intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev, 
+	kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org, linux-btrfs@vger.kernel.org, 
+	linux-cifs@vger.kernel.org, linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org, 
+	linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org, linux-gpio@vger.kernel.org, 
+	linux-hyperv@vger.kernel.org, linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-leds@vger.kernel.org, linux-media@vger.kernel.org, linux-mips@vger.kernel.org, 
+	linux-mm@kvack.org, linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org, 
+	linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org, linux-phy@lists.infradead.org, 
+	linux-pm@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org, 
+	linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org, 
+	linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org, linux-sound@vger.kernel.org, 
+	linux-stm32@st-md-mailman.stormreply.com, linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org, 
+	linux-wireless@vger.kernel.org, netdev@vger.kernel.org, ntfs3@lists.linux.dev, 
+	samba-technical@lists.samba.org, sched-ext@lists.linux.dev, target-devel@vger.kernel.org, 
+	tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev, Jan Kara <jack@suse.com>
+Subject: Re: [PATCH 12/61] quota: Prefer IS_ERR_OR_NULL over manual NULL check
+Message-ID: <ol2d7c5z7yfyuwo5tyfxurgqedruhr6bzmuv37bx5phhrmmoyh@4zjspbtexid3>
+References: <20260310-b4-is_err_or_null-v1-0-bd63b656022d@avm.de>
+ <20260310-b4-is_err_or_null-v1-12-bd63b656022d@avm.de>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260310-b4-is_err_or_null-v1-12-bd63b656022d@avm.de>
+X-Spamd-Result: default: False [-2.30 / 50.00];
+	BAYES_HAM(-3.00)[99.99%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	MID_RHS_NOT_FQDN(0.50)[];
+	NEURAL_HAM_SHORT(-0.20)[-0.999];
+	MIME_GOOD(-0.10)[text/plain];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TO_DN_SOME(0.00)[];
+	ARC_NA(0.00)[];
+	FUZZY_RATELIMITED(0.00)[rspamd.com];
+	MISSING_XM_UA(0.00)[];
+	MIME_TRACE(0.00)[0:+];
+	FROM_HAS_DN(0.00)[];
+	RCVD_COUNT_THREE(0.00)[3];
+	TO_MATCH_ENVRCPT_SOME(0.00)[];
+	FROM_EQ_ENVFROM(0.00)[];
+	R_RATELIMIT(0.00)[to_ip_from(RLck44p98ib5bmd95s13xxw3gp)];
+	RCVD_TLS_LAST(0.00)[];
+	DKIM_SIGNED(0.00)[suse.cz:s=susede2_rsa,suse.cz:s=susede2_ed25519];
+	RCPT_COUNT_GT_50(0.00)[55];
+	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.com:email]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_065648_349440_F2218D1E 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260319_071357_436064_D5693C68 
+X-CRM114-Status: GOOD (  18.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +144,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIG1vZGVsIG5hbWUgc2hvdWxkIGJlICJSb2NrY2hpcCBSSzM1NjIgRVZCMiBWMTAgQm9hcmQi
-LgoKRml4ZXM6IGNlYjZlZjFlYTkwMCAoImFybTY0OiBkdHM6IHJvY2tjaGlwOiBBZGQgUkszNTYy
-IGV2YjIgZGV2aWNldHJlZSIpClNpZ25lZC1vZmYtYnk6IOiwouiHtOmCpiAoWElFIFpoaWJhbmcp
-IDxZZWtpbmdAUmVkNTQuY29tPgotLS0KUmVmZXJlbmNlOgpodHRwczovL2dpdGh1Yi5jb20vcm9j
-a2NoaXAtbGludXgva2VybmVsL2Jsb2IvZGV2ZWxvcC02LjYvYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9yazM1NjItZXZiMi1kZHI0LXYxMC5kdHNpI0wxNgoKIGFyY2gvYXJtNjQvYm9vdC9k
-dHMvcm9ja2NoaXAvcmszNTYyLWV2YjItdjEwLmR0cyB8IDIgKy0KIDEgZmlsZSBjaGFuZ2VkLCAx
-IGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQoKZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTYyLWV2YjItdjEwLmR0cyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMv
-cm9ja2NoaXAvcmszNTYyLWV2YjItdjEwLmR0cwppbmRleCA2YTg0ZGIxNTRhN2QuLjM4NzA2MmVl
-YTUyMCAxMDA2NDQKLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1NjItZXZi
-Mi12MTAuZHRzCisrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTYyLWV2YjIt
-djEwLmR0cwpAQCAtMTMsNyArMTMsNyBAQAogI2luY2x1ZGUgInJrMzU2Mi5kdHNpIgogCiAvIHsK
-LQltb2RlbCA9ICJSb2NrY2hpcCBSSzM1NjIgRVZCIFYyMCBCb2FyZCI7CisJbW9kZWwgPSAiUm9j
-a2NoaXAgUkszNTYyIEVWQjIgVjEwIEJvYXJkIjsKIAljb21wYXRpYmxlID0gInJvY2tjaGlwLHJr
-MzU2Mi1ldmIyLXYxMCIsICJyb2NrY2hpcCxyazM1NjIiOwogCiAJY2hvc2VuOiBjaG9zZW4gewot
-LSAKMi40My4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJh
-ZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51
-eC1yb2NrY2hpcAo=
+On Tue 10-03-26 12:48:38, Philipp Hahn wrote:
+> Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
+> check.
+> 
+> Change generated with coccinelle.
+> 
+> To: Jan Kara <jack@suse.com>
+> Cc: linux-kernel@vger.kernel.org
+> Signed-off-by: Philipp Hahn <phahn-oss@avm.de>
+
+Thanks for the patch but frankly I find the original variant clearer wrt
+what is going on. So I prefer to keep the code as is.
+
+								Honza
+
+> ---
+>  fs/quota/quota.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/fs/quota/quota.c b/fs/quota/quota.c
+> index 33bacd70758007129e0375bab44d7431195ec441..2e09fc247d0cf45b9e83a4f8a0be7ea694c8c2a1 100644
+> --- a/fs/quota/quota.c
+> +++ b/fs/quota/quota.c
+> @@ -965,7 +965,7 @@ SYSCALL_DEFINE4(quotactl, unsigned int, cmd, const char __user *, special,
+>  	else
+>  		drop_super_exclusive(sb);
+>  out:
+> -	if (pathp && !IS_ERR(pathp))
+> +	if (!IS_ERR_OR_NULL(pathp))
+>  		path_put(pathp);
+>  	return ret;
+>  }
+> 
+> -- 
+> 2.43.0
+> 
+-- 
+Jan Kara <jack@suse.com>
+SUSE Labs, CR
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
