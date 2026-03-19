@@ -4,91 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EA70109024D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 16:30:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94D611090257
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 17:15:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=+/IcWohw9S9MqHFXvrFyyWKed8uquGjxZBtTta/+rZg=; b=h8Mdi5ahzQ6qb0
-	ENyj38r/VKOKP12dIW3jyCZT/NQsjp3tsVSPf/XJkouMCYQxrapASp1+61UM16sov2eGTRhFOSRLw
-	AdkqxIaNSoW7m0rYURqIq7BTOBu6A0Kt5TWtZSg7pSgydJDNnN3oYWS384uCwCkQVAJqGIOWPuF+8
-	lHpMl6sASs9EKtTowYwQht//H1/BNDC9Xshyh4SiipJMTGD7cZczDpJ/CUZfPVHNvwjprqjx/VtWq
-	fnSfD8mJuy4/G1Y9VAC4SQGA2Cd16OaPwPccGHvILqUgKYiP1/+/CB4orwEcVJgxKJffe4//JOaUj
-	yYmS+NKkJmojq0JvvsIQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XYQXC62ygxjIxQmLXKaGJNZRX70jeWkt5ZZavxAC4OE=; b=wDfXWe9v0TgSS6
+	T6iYhLbEQFX0IIHBQ+L4uVaUWJtle+/lDeEe8gq/gL6PJsjzNxvWOuDI8nyhnwku5VK0QE2yBcqE0
+	t2O+bwjDbHvYvxrLVjcYUhR+PoEZwECp29K3yGH2ZzC305sxE1T1rtlsgljV/MbZ3Pf7F4yhSMiqj
+	5gzdSAA7h73lMfiC2lZkogH87mldNa2Np8jZRRN5R7B2vbbDO3lFfxcncqyPLo9VntINCESdloqQw
+	3LKEXJLUw1eEYDQW/D8RpIb7U/acZxy6biZYSMubhQpWvSYaARjuGCxiuVGLk+7ewq2yKcSEswZ2W
+	JxlRJwbBJ1qArzyUvtow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3GGX-0000000B4yx-1xim;
-	Thu, 19 Mar 2026 16:30:33 +0000
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+	id 1w3Gxl-0000000BAM8-2DUw;
+	Thu, 19 Mar 2026 17:15:13 +0000
+Received: from 011.lax.mailroute.net ([199.89.1.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3GGU-0000000B4xw-2rda
-	for linux-rockchip@lists.infradead.org;
-	Thu, 19 Mar 2026 16:30:31 +0000
-Received: by mail-pl1-x62d.google.com with SMTP id d9443c01a7336-2b061b6cf36so8618145ad.3
-        for <linux-rockchip@lists.infradead.org>; Thu, 19 Mar 2026 09:30:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773937829; x=1774542629; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=7WbbIrQRZg+WI5V+d2UHHYYa3r1L0mKPW9kQXI1QdeY=;
-        b=XEiCZNmrF8i/bOOPCZhEf5ei95AULC4vSjQnjlvg3IqvAbbYomBbomi4QkPrzd9pI3
-         vFQaTI3DBPDAPxzMLDR14YnANAXiPo5KA+mpEF+QCbvtvOIubyxirZedxmgPCM2a0fu5
-         pVcYtY6QU4j3VmbodxSEX0WefKTrk99yP2qhOHV5AhiUHkMk3ws6MOlv/i/6bwYTeeaH
-         YM85NanXpGqwcU243+s5EsfQPnqjQxea+eU2u/BLVO0X99jl3iSZalh/h1zqXufkraoh
-         yK2gJuaIvIj2drNKNcyBvJnLOgHYUPTLAINbyHYk/DnA0IuzmoKBQt8m4ToiAajUhAPM
-         4l0g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773937829; x=1774542629;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=7WbbIrQRZg+WI5V+d2UHHYYa3r1L0mKPW9kQXI1QdeY=;
-        b=bQSsBgcw5JuJNFf64uyTIMa3soa3r2pzSyCi6nKTMmds/vo2u+8QhWP+tDup8FYIGX
-         b4t8beaHWMrR0I7bSHExTM8wv7obAPyd4h0X0tEPi8qWOezuNdUYlpj5fsDEzmS1Mtcq
-         k1dvBsx/VOsCR5IjFqXwFohPitUQoZzanH0hco0Bz22huY5xqBdOsm1tu4fkoV///x3H
-         TvqPkFlFVgFvn+c+w/2uxR71Zr/gfTqkRooUz6hs23kCGxaNgIdw5HWxMJvtdV9Drp8/
-         kbtqJ3lXiBQmUFA40cfsRB2nhwDlYxgUhhEEAaldI/UiY/U91meHVwNutDxeml/7ILTK
-         9QaA==
-X-Forwarded-Encrypted: i=1; AJvYcCUX+4LtmdDKwIZDE4+0VZw13Q4atXPV8j7IXFOAFjJiN3zfBxODXuU9YUYYhrHRqR+ruKDcpMaLC4FAeY7RWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yys9JP92wkAP0HHnUnzH4rHxAD58ITyaG0nyat9UFhSdWED3N8s
-	vM7dzSHvg6Ws8pM+/Bg0QnBuDTV8ezPNy4erSO9XBww2p/yicay3OOkb
-X-Gm-Gg: ATEYQzyrt7KhxCriOZN7jOF+RY+YEajbmUYMdi3JZVOElsYP+UgZMENHhtpVvUl6Xl6
-	tiiumZPxC0LTHJ6QPARSyJReoTICYWr+myNlvDXaoOcUhol9LipLtfRG5wqbap1LmYoatmlsDnP
-	9Lth4aiRpuQwHZNPkUvT4mZXKB7mA0x6EqxpIPQ8tD9pUnz4GpenYWYafG6KI5aUGGt5feAQNPd
-	xc54NnIza/NlnGxX+o1B1XbHMbvcf3VlyqY1FRkAP8a00zTljerjkWR8m4wPk61GkjYfuCLk4BA
-	EfNaIImiT+pyPJW/48J3Wg2IO6MNZX6k/2E697oIemmkSDPiYmDDBoZarje5LKOVeqo+ALBFfdK
-	ab4weLaUZLr8Cq4lHcEqJPONIGSC2blNC69g1MO5H6rBSCYZ3CW2u2ao1+dLn/1/HL9krvpy7V1
-	U64ZEmTEKJosEQ44udL3k3cEiT96U=
-X-Received: by 2002:a17:903:17cb:b0:2b0:67a7:5c4b with SMTP id d9443c01a7336-2b06e3bd39bmr79715765ad.28.1773937829185;
-        Thu, 19 Mar 2026 09:30:29 -0700 (PDT)
-Received: from ubuntu.. ([152.56.142.182])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b06f7e8290sm61584485ad.82.2026.03.19.09.30.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 19 Mar 2026 09:30:28 -0700 (PDT)
-From: Anas Iqbal <mohd.abd.6602@gmail.com>
-To: Chanwoo Choi <cw00.choi@samsung.com>,
-	MyungJoo Ham <myungjoo.ham@samsung.com>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Kyungmin Park <kyungmin.park@samsung.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-	linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Anas Iqbal <mohd.abd.6602@gmail.com>
-Subject: [PATCH] devfreq: event: rockchip-dfi: fix missing clk_disable_unprepare() on error
-Date: Thu, 19 Mar 2026 16:30:11 +0000
-Message-ID: <20260319163011.18876-1-mohd.abd.6602@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1w3Gxi-0000000BAKq-1IlT;
+	Thu, 19 Mar 2026 17:15:11 +0000
+Received: from localhost (localhost [127.0.0.1])
+	by 011.lax.mailroute.net (Postfix) with ESMTP id 4fcC4X1zKzz1XM5kY;
+	Thu, 19 Mar 2026 17:15:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=acm.org; h=
+	content-transfer-encoding:content-type:content-type:in-reply-to
+	:from:from:content-language:references:subject:subject
+	:user-agent:mime-version:date:date:message-id:received:received;
+	 s=mr01; t=1773940495; x=1776532496; bh=UHJsWGTSlJTfY7QnX97XerQU
+	NMUaLpd7tP4C0EEZkzg=; b=dFKmxQsxM8O2hO+PntnmCfQmA2VsxQt1I9BWP45v
+	e99xashdlvnQ0iqpzna366213RNXzYUgf1v3+givoQ4OAgp6jhkArR0HgCsDDvLP
+	5u4QOdYjX9pUJlOX2DE3toANf60hlf5yDeqMcuMD1kjAv9XaSRRnHc2imlEmPZqQ
+	YiM5s2CDkWV6Mdk4AFzavdqTRL89qGFkfAxKt3lZ3gbdurzVjr4dSZvtrHFIkz0p
+	eIImjdzfLZxX4edUA95TsTfOxQ31EJmzDgr27Ispq2YeMv+HqZqSJu2XoNuEf+ZO
+	v8YxxK8gPLxPwbUnDpqGfT41WYhoPLQKKf/Ytf8IZrNWLA==
+X-Virus-Scanned: by MailRoute
+Received: from 011.lax.mailroute.net ([127.0.0.1])
+ by localhost (011.lax [127.0.0.1]) (mroute_mailscanner, port 10029) with LMTP
+ id kgNEXQsIxXTY; Thu, 19 Mar 2026 17:14:55 +0000 (UTC)
+Received: from [100.119.48.131] (unknown [104.135.180.219])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: bvanassche@acm.org)
+	by 011.lax.mailroute.net (Postfix) with ESMTPSA id 4fcC482cLFz1XM5kW;
+	Thu, 19 Mar 2026 17:14:48 +0000 (UTC)
+Message-ID: <ea7a5729-3df0-49ef-ab8d-47ade75cc393@acm.org>
+Date: Thu, 19 Mar 2026 10:14:47 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 phy-next 09/24] ufs: exynos: stop poking into struct
+ phy guts
+To: Vladimir Oltean <vladimir.oltean@nxp.com>, linux-phy@lists.infradead.org
+Cc: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org,
+ freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org,
+ linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org,
+ linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
+ linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+ linux-usb@vger.kernel.org, netdev@vger.kernel.org, spacemit@lists.linux.dev,
+ UNGLinuxDriver@microchip.com, Alim Akhtar <alim.akhtar@samsung.com>,
+ Peter Griffin <peter.griffin@linaro.org>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Krzysztof Kozlowski <krzk@kernel.org>,
+ Chanho Park <chanho61.park@samsung.com>
+References: <20260309190842.927634-1-vladimir.oltean@nxp.com>
+ <20260309190842.927634-10-vladimir.oltean@nxp.com>
+Content-Language: en-US
+From: Bart Van Assche <bvanassche@acm.org>
+In-Reply-To: <20260309190842.927634-10-vladimir.oltean@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_093030_724718_BA22EC53 
-X-CRM114-Status: GOOD (  12.72  )
+X-CRM114-CacheID: sfid-20260319_101510_397085_D9FFDAB3 
+X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,46 +95,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Smatch reports:
-drivers/devfreq/event/rockchip-dfi.c:215 rockchip_dfi_enable() warn:
-'dfi->clk' from clk_prepare_enable() not released.
+On 3/9/26 12:08 PM, Vladimir Oltean wrote:
+> The Exynos host controller driver is clearly a PHY consumer (gets the
+> ufs->phy using devm_phy_get()), but pokes into the guts of struct phy
+> to get the generic_phy->power_count.
 
-If rockchip_dfi_ddrtype_to_ctrl() fails after clk_prepare_enable(),
-the clock is not disabled, leading to a resource leak.
-
-Add clk_disable_unprepare() in the error path to properly release
-the clock.
-
-Fixes: d724f4a4581b ("PM / devfreq: rockchip-dfi: Prepare for multiple users")
-Signed-off-by: Anas Iqbal <mohd.abd.6602@gmail.com>
----
- drivers/devfreq/event/rockchip-dfi.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/devfreq/event/rockchip-dfi.c b/drivers/devfreq/event/rockchip-dfi.c
-index 5e6e7e900bda..8db0bceeded4 100644
---- a/drivers/devfreq/event/rockchip-dfi.c
-+++ b/drivers/devfreq/event/rockchip-dfi.c
-@@ -185,8 +185,10 @@ static int rockchip_dfi_enable(struct rockchip_dfi *dfi)
- 	}
- 
- 	ret = rockchip_dfi_ddrtype_to_ctrl(dfi, &ctrl);
--	if (ret)
-+	if (ret) {
-+		clk_disable_unprepare(dfi->clk);
- 		goto out;
-+	}
- 
- 	for (i = 0; i < dfi->max_channels; i++) {
- 
--- 
-2.43.0
-
+Reviewed-by: Bart Van Assche <bvanassche@acm.org>
 
 _______________________________________________
 Linux-rockchip mailing list
