@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A97EF1090235
-	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 14:38:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC2AF1090236
+	for <linux-rockchip@archiver.kernel.org>; Thu, 19 Mar 2026 14:50:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Q4GWrDFpoCskwh+3P+mx/CU0hASllnnak90I214UDfw=; b=LZOJwiVppSRn0fm513HJfq0ARF
-	FsE2LSOkCc+s7QEtUREjDNm3k6mHjx8MQW4SrVflGo8s7+gmqj02ARKy19pneIknNISvWYcAkwZ7T
-	LzMLQMXPJcVy4GWYliBpm9e7NAOcG2z6kjY2UkFGLdsxFG/UQc2lTTRuuZWOlDN7JqH1nffb6TmBB
-	N1i+oZHkOFtPyzRsQ7ry5Jxvm+6sH/q/6u5EFUVvdWV17tlLmRuovZpEh2feZT9o0luSw9QVOrSYy
-	9lKXHhNm7LuAjSRLyOSshV4FyIkhOQq2XpFP9jN05S8BtAT0xzlfAlh9DfLyR/+v/0cT0q5ABwCKD
-	fRjuj2pQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=5PBEgTa6I/uh4F6AuUzM84aYAreuhBZ2csEuArFdNkk=; b=Rb9cON4oWjOPea
+	Hb3Y+MShVGsi4MnC8EUNNI2TRIyapR/VrtsXIoULULfQf6C6EN9qBTU7dySE8sg+AaaHSEXG0Hupc
+	OJEvSSXuFBfpTeaA5f7o84BBOi70mY86tTTx0umRogCfAs8AlXSnNJYLHJg0uyE1c3EzLHNDa2/03
+	F51mbAm+rFX3sjwUXsnYxMXxib+VMqRatDG1roM9a1ViSPD5AYSDhMg8gI9xjuVTdqPtgnu9rB/LI
+	J5zxxaQ14MYR1cWQQ8gjOPwe4mdCEmFeYGPwCzwmY4HWYl/ZvRv4e5EsTHHT6xagPcNUz2xLl0oxp
+	e/b+00xr2VRvOtR+CsdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3EWA-0000000Aojk-3Q0q;
-	Thu, 19 Mar 2026 14:38:34 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w3Ehl-0000000Apix-3NKe;
+	Thu, 19 Mar 2026 14:50:33 +0000
+Received: from mail-wm1-f48.google.com ([209.85.128.48])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3EW8-0000000AojD-3qbA;
-	Thu, 19 Mar 2026 14:38:33 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 4190760054;
-	Thu, 19 Mar 2026 14:38:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3BF48C19424;
-	Thu, 19 Mar 2026 14:38:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1773931112;
-	bh=xVDCvmHcqvISvprP7lO7W6ddF7WUVJ7W2Df/HLSX/ok=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=r2kuo2AK5XKO3e1cpuhsJqbCb932nj+lOW/XRoTa5IcwOsYufpH27/bdev1IWsa1u
-	 06RQxeQl/XeWFQgYAWyGwcW5uMHorjRHwCOYXGGMdK/H0mukpftjtUsvYkwmn3yiAc
-	 WYOMz4kGTBIc2VNAKd/AEq7K/U7FFGzBaAY3bVzq/lvRzUn9/3mNktUBWDHKNyClte
-	 e/ZljoGXAcB0WQ/oNTRV2y2l47eqZ+AS7p4psAhMwF017vRcEWhUqAk79CkKh1WPMf
-	 4aBY8Jhk7/iXZhtfBoeGcrpQQfT8t5vpZ5igasBjHvm57milfLFqCtehtwcTcSAJ4m
-	 CuiVgcEZPVTYQ==
-Date: Thu, 19 Mar 2026 14:38:25 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Michael Riesch <michael.riesch@collabora.com>
-Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	=?utf-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?= <mai.kuznetsov.misha@gmail.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	id 1w3Ehj-0000000Api0-13uz
+	for linux-rockchip@lists.infradead.org;
+	Thu, 19 Mar 2026 14:50:32 +0000
+Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-4852fdb36a8so7451375e9.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 19 Mar 2026 07:50:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1773931828; x=1774536628; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=8e2Ktq5sJeaHDP/JJnHCRh3f+LsDBElFuTwB6/IOVF0=;
+        b=UZpzs8YYRZVixtbxbonojpJSlKS7IVGIp2nA2XmH8VaLI8XAA/Gcpg7gQ9JvFdKLAA
+         4fi1RIifjvLq8AwYmWSrWL3YOHrriHWzBCADZL+BYv3GGoN3E+AVmOEUkHvJFHHUg4dY
+         tIqiCo9vOL+UZHFBxMkwT0QTzijPR3GjMSTinHpTg/TOX1XvbRo/Yia/N350JjXSLcng
+         t0QAK66GZphrknVAV4qjklLlEvrnXypoua1Oy4JQYVyGe45h/OW2h30ziVgcu14C2Tdg
+         ho/LiLeGWUi+Qt0OSArCQJ0ezNORYL+cIS+D/UAl9g5i97IWvqOA+LoPJe58h9XR1j9Z
+         FTUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1773931828; x=1774536628;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=8e2Ktq5sJeaHDP/JJnHCRh3f+LsDBElFuTwB6/IOVF0=;
+        b=YIWoYIVzxD106Rie20bgsE0DdXrP518X2grnFcPk7xkMeFxbiYXVx5H03e3PcfY87v
+         X4mL4Jpurrr9wnsr1P0gUtk281p+m5Y8hy9+VhnhlMa9cjrFN38cUBTs7M5P5bDWMy6D
+         xzqPnp4vdKLJtnMKgbZk3c3UBjvkz0VW0LMQikVTk0/EluqJKHyft85NYPTwnn4s3bqn
+         9TX051ZyGJX4ycucWG3ZUxNtBg6gxjHl7qeaiLJmT7Kc+Gt7jMYOofn/leqjzQN9TrWc
+         RTnXRhcXaaFKfYEwVDUuG8CqNxBgxBwrcnaHwbzAKBf/yvxLgHmSa7Okwj/U643E6/ds
+         Al2Q==
+X-Gm-Message-State: AOJu0YxxM9EhO7GipUCMwWlWuVPALCvl7xmsmMuthjGsLGOVB9yDdb3a
+	QIJfyj597L4G9aVZjWxaxa9HpsdT79cCBnxqzbw2SqIOAca42ejvUaqEYXBDbE2WLtU=
+X-Gm-Gg: ATEYQzxFpxtnnTzvyWNEVOpDc2y4sutgSjrwkkrkE/27iylHeUcWMgLZ8ZHSTjvKTyg
+	7kQrBKnhFEKnUoskY9n3imqKbvc1NxhFZfzqUvKRkqQIl73mTvCmN9BdwuxhrnxKwK0D/3Qgjuq
+	6SGo4MldbZ5frjeVxqWnNvu+nyYaNEXZBWOCp1ei+Oo1FhlcHledKp/iV9swdC1qG97SdcctVc+
+	JfVtyEgWmg5FNHwNgDEprXooepnTWTM/vYk+ioEzlxBXi2+5TpNSVWT40ONlk+yvOYTTqqa78H9
+	6oXIEFR9WWYz6gDHE/xha5he459tjwSB2lOSA0Y5JUhVXVG7egj0i+nt0YyDCI7DGzr4ozAgMle
+	zFf0KLsDMqcwyj9jf57XQILA6KiwIdBZDLbuhqVIgLK6fsT5OjkzAIIq8GCyUnlMyI8jLP4PH2x
+	NFynygrUAd4h96sCMcfnVuPV9/Amurw6n1RL/OHg==
+X-Received: by 2002:a05:600c:c491:b0:486:d76c:fa57 with SMTP id 5b1f17b1804b1-486f4469363mr125436735e9.17.1773931828190;
+        Thu, 19 Mar 2026 07:50:28 -0700 (PDT)
+Received: from debian.levillagebyca.com ([213.152.28.84])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-486f8c351f8sm66819755e9.6.2026.03.19.07.50.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Mar 2026 07:50:27 -0700 (PDT)
+From: MidG971 <midgy971@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: shawn.lin@rock-chips.com,
+	heiko@sntech.de,
+	jonas@kwiboo.se,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/9] media: dt-bindings: add rockchip rk3588 vicap
-Message-ID: <20260319-unrobed-simile-1c1393962ff9@spud>
-References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
- <20250430-rk3588-vicap-v2-2-77de5ee9048e@collabora.com>
- <20260318-mumbo-lumber-b550932a5423@spud>
- <d9a9be92-7439-4899-8be2-adf7f0490790@collabora.com>
+	devicetree@vger.kernel.org,
+	MidG971 <midgy971@gmail.com>
+Subject: [PATCH v4] arm64: dts: rockchip: rock-3b: Model PI6C20100 as
+ gated-fixed-clock
+Date: Thu, 19 Mar 2026 15:51:20 +0100
+Message-Id: <20260319145120.99833-1-midgy971@gmail.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20260304132957.684616-1-midgy971@gmail.com>
+References: <20260304132957.684616-1-midgy971@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <d9a9be92-7439-4899-8be2-adf7f0490790@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260319_075031_305677_650E4992 
+X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,115 +99,97 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7832811744031394868=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+The Radxa ROCK 3B uses a PI6C20100 PCIe reference clock buffer to
+provide a 100MHz reference clock to the PCIe 3.0 PHY and controllers.
+This chip is currently modeled only as a fixed regulator
+(vcc3v3_pi6c_03), with no clock output representation.
 
---===============7832811744031394868==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="gs5QsPffFgv1KN45"
-Content-Disposition: inline
+The PI6C20100 is a clock generator, not a power supply. Model it
+properly as a gated-fixed-clock, following the pattern established
+for the Rock 5 ITX and other boards with similar PCIe clock buffer
+chips.
 
+The regulator node is kept as-is since it controls the power supply
+to the PI6C20100 chip via GPIO0_D4. The new gated-fixed-clock node
+references this regulator as its vdd-supply and provides a proper
+100MHz clock output. The pcie3x2 node is updated to include the
+pipe and reference clocks, matching the approach used in
+rk3588-rock-5-itx.dts.
 
---gs5QsPffFgv1KN45
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Assisted-by: Claude:claude-3-opus
+Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Midgy BALON <midgy971@gmail.com>
+---
 
-On Thu, Mar 19, 2026 at 09:04:06AM +0100, Michael Riesch wrote:
-> Hi Conor,
->=20
-> On 3/18/26 18:52, Conor Dooley wrote:
-> > [...]
-> >> =20
-> >>    resets:
-> >> -    items:
-> >> -      - description: ARST
-> >> -      - description: HRST
-> >> -      - description: DRST
-> >> -      - description: PRST
-> >> -      - description: IRST
-> >> +    minItems: 5
-> >> +    maxItems: 9
-> >> =20
-> >>    reset-names:
-> >> -    items:
-> >> -      - const: arst
-> >> -      - const: hrst
-> >> -      - const: drst
-> >> -      - const: prst
-> >> -      - const: irst
-> >> +    minItems: 5
-> >> +    maxItems: 9
-> >=20
-> >> +allOf:
-> >> +  - if:
-> >> +      properties:
-> >> +        compatible:
-> >> +          contains:
-> >> +            const: rockchip,rk3568-vicap
-> >> +    then:
-> >> +      properties:
-> >> +        clocks:
-> >> +          minItems: 4
-> >> +          maxItems: 4
-> >=20
-> > Anything here that repeats the outermost constraint should be dropped,
-> > so no minItems here..
->=20
-> I already took a look at similar VICAPs (e.g., R3576) that will have
-> more clocks. This is way I left this one in here.
->=20
-> But I guess I will remove it and add it again when e.g. RK3576 VICAP
-> support is added.
->=20
-> >> [...]
-> >=20
-> >> +
-> >> +        reset-names:
-> >> +          items:
-> >> +            - const: arst
-> >> +            - const: hrst
-> >> +            - const: drst
-> >> +            - const: irst0
-> >=20
-> > Were you willing to reuse "irst" for the 0th irst, all the repetition
-> > wouldn't be needed. I assume it represents the reset for the port at
-> > address 0, so it wouldn't even be a different meaning on each device.
->=20
-> Not quite I think. "{a,h,d}rst" are the same on all variants, then there
-> is "prst" and "irst" on RK3568 and "irst{0-5}" on RK3588. So I thought
-> that writing it out explicitly for each variant is more readable (even
-> though it may need a few characters more).
+Changes since v3 [1]:
+ - Add Reviewed-by from Shawn Lin
 
+Changes since v2 [2]:
+ - Fix AI attribution: use Assisted-by tag instead of Signed-off-by (Shawn)
+ - Add missing pipe clock (CLK_PCIE30X2_PIPE_DFT) to pcie3x2 clocks
+   override (Shawn, referencing David's patch [3])
 
-Ah right, I didn't see the prst one somehow. Ignore me so.
+Changes since v1 [4]:
+ - Drop phy-supply approach entirely (Jonas, Shawn)
+ - Model PI6C20100 as gated-fixed-clock instead
+ - Wire reference clock to pcie3x2 controller
+ - Follow pattern from rk3588-rock-5-itx.dts
 
---gs5QsPffFgv1KN45
-Content-Type: application/pgp-signature; name="signature.asc"
+[1] https://lore.kernel.org/linux-rockchip/20260304132957.684616-1-midgy971@gmail.com/
+[2] https://lore.kernel.org/linux-rockchip/20260304132957.684616-1-midgy971@gmail.com/
+[3] https://lore.kernel.org/linux-rockchip/d981fa84-bd05-ac9d-98ca-89ee47177829@rock-chips.com/T/#m6a8289609e6a60691d3c06358b6322c7aa5e43d1
+[4] https://lore.kernel.org/linux-rockchip/20260213151452.535527-1-midgy971@gmail.com/
 
------BEGIN PGP SIGNATURE-----
+ arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 21 ++++++++++++++++++++-
+ 1 file changed, 20 insertions(+), 1 deletion(-)
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCabwKYQAKCRB4tDGHoIJi
-0vI1AP9iqd2CvDCVFRnFVh5XA4+IKjf2bhkzQrjtjDQ4SFrupAEA+VRt+iWztoun
-oOwvNknPS9jj2rDN9dV2GlO7x5HP/wU=
-=of5J
------END PGP SIGNATURE-----
+diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+index c5f67dd6dfd9..1a2b3c4d5e6f 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
+@@ -56,7 +56,16 @@
+ 		};
+ 	};
 
---gs5QsPffFgv1KN45--
+-	/* pi6c pcie clock generator */
++	/* PI6C20100 PCIe reference clock buffer (100MHz) */
++	pcie30_refclk: pcie-clock-generator {
++		compatible = "gated-fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <100000000>;
++		clock-output-names = "pcie30_refclk";
++		vdd-supply = <&vcc3v3_pi6c_03>;
++	};
++
++	/* PI6C20100 power supply - active-high GPIO0_D4 */
+ 	vcc3v3_pi6c_03: regulator-3v3-vcc-pi6c-03 {
+ 		compatible = "regulator-fixed";
+ 		enable-active-high;
+@@ -553,6 +562,15 @@
+ };
 
+ &pcie3x2 {
++	clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
++		 <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
++		 <&cru CLK_PCIE30X2_AUX_NDFT>,
++		 <&cru CLK_PCIE30X2_PIPE_DFT>,
++		 <&pcie30_refclk>;
++	clock-names = "aclk_mst", "aclk_slv",
++		      "aclk_dbi", "pclk", "aux",
++		      "pipe", "ref";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pcie30x2m1_pins>;
+ 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
+--
+2.39.5
 
---===============7832811744031394868==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7832811744031394868==--
-
