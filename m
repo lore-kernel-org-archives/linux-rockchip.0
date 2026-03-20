@@ -4,90 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52140108B8E2
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 09:43:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20024108B8E3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 09:55:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+ahGWhI+v8q8fZL8I7r+n4I5MbQaXwVWdyuA4dVeRIU=; b=Xt5sTDOtrT+2Lw
-	2MMlWDzZh3u7ZKtnVJt0mu84lhVGgike8406ygPzsCf/eBiIb9jNg1qBAZvtTDCEP5WX3wPSJn1Gc
-	fvy4KY83QEK/caiu02BUqnrWUHd/Rr6xA/Cw8NxJYv4sNUp/glFY0izhOR2spBXD2WzABmfwHYGKZ
-	pyTdB4l6zoN8ZnpI/xLA/to+EokgGFthxZuTHaeNjoVFUFZME89yXi1m1wq8vO4f1rTBbhvwl+I4M
-	FTWnQbt0+Bmbz8rlGx/X7r4EVQvgxeaf9PqdId8w1Z2J94ygt7UiUQKJ4wyVkftYt73yn4UMaC865
-	7h38VdtBNWl4FXNhybzw==;
+	List-Owner; bh=tujejTPWkNrrRoNqWt3eWFVfhtDtglSkde4ed8+gGLo=; b=cBMGETg84tqFPb
+	yncWikQXKP+Gx0/vTfcxPux+mi5bclqvlO4s0puYIRRlL9H+65z5BwxckdGFtwzgFJ/2Zk497hNTG
+	cFWeDi8tT6RmaNYaD32qg8Re4riXyz731aiN2VhpqwrQp4bSF368Mnssl4Ze+j01dZ8Dx1FCQ1aK9
+	P/NP0e+Ffq87T7eCOIWkoRcPiqSVsxp+N7eCe4uxnPlu2N9uh542FqSF1z8hbt5q3YrFLi3D65LW0
+	0WOpoyIlJ1lIy8FJUDnvxF2eZBQadrkYzVkgreCoKAR0zZW8Mj6ZSALMld40UOEadscOgxLMRMH+0
+	Nqq6cAYWbUMr8CS2KtbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WOB-0000000CVXY-0aDZ;
-	Fri, 20 Mar 2026 09:43:31 +0000
-Received: from mail-wm1-f45.google.com ([209.85.128.45])
+	id 1w3WZz-0000000CWh5-47pk;
+	Fri, 20 Mar 2026 09:55:44 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3WO8-0000000CVUy-1FQj
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Mar 2026 09:43:29 +0000
-Received: by mail-wm1-f45.google.com with SMTP id 5b1f17b1804b1-4870206f73bso950915e9.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Mar 2026 02:43:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20230601; t=1773999806; x=1774604606; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=WGLNtDekxRKXdox7mzxK6y/EsZgDuny9HQCCHc8BUNw=;
-        b=mA1tWNhlIg0gYyE5bk11WlZeAp6oa6lPuWoL9s2kPHS2BRzN4X04EUqf/AYXgA+dJJ
-         nYgws9crrCiLASaBTJI9XIGt7RVMw5Hp4VhR32h4xvzQ8QuPkwfEcYa/hpZsmNrMOqm/
-         Sigkd1jMrrE/Txj57/c3W0m5hlJcNSFZPw45yt6piqBWAskO8r4CRageZRAY6RUsKw3J
-         pVy2JzzKPlRO+AjlFzkSpEFKOzHionyKs9HLQtppPBrcgKcGs37DZ0Z620w/ojC1qGQn
-         aPq7xzI6HU/q3sVrsZse0YJUiozwrfn4LLUEUoVJcV1lesFNnkiMWnpsqqVJ1ZKg3Fh3
-         QdyQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1773999806; x=1774604606;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=WGLNtDekxRKXdox7mzxK6y/EsZgDuny9HQCCHc8BUNw=;
-        b=U7Z0RTC29nIuEWnluu8dqLOTvAl+I5Izo+jCv88dII3RWsbB7lGdxw9mRPU0IQNTRi
-         Bljg5aHcdHsHdhGqXIprEOp7mTjdUrd+NAIUOqD/z4N3wwXEcqB30D8QepibElctejv5
-         Sj6mSDXUxGWGWsBvfBzLjjQugBZD3WBwiKSimBW2NkLWvZTRirixsytnSzqq/igcCKl5
-         EKwBvghbfu/l9E1wiinZG2Em8abu/axIiLvezcI8DagywT38eTM0IaV7wvTKkZ5dfhE+
-         WL9gQvGszJ4VKvuC5rk6MKjT/VumzHM63dnpPOlNwSsESa3cVYFAws+QuXs6LXNXSzQr
-         FVVQ==
-X-Gm-Message-State: AOJu0Yw4TI2miuofSJ1XUhMh5v8wxdlWOZLC8TyM1MylDpAcBqjukf2U
-	V65/cwFWgNuC9Pt5867Z8FrNS58k1Qu9AQ7E6Ljj4xNPC+QL4z7olpj/hFgfoVQTZ2M=
-X-Gm-Gg: ATEYQzzzbsj8cZ0LXa2PlYV9VCLpXgnlxKMYeZjQ/UFdUjKVAEtDwUnwjpgRgo2pU2y
-	jRMDTmPcms2wb6PBIUAY1U719BVVsyH84/bwr/JiUvbKcmsPDCJf3r5TzMvazbOZ8mCyEPl48A5
-	0/dhgkoT8FoMUQZZJGFZ3IMwYsFvwZvezjQWVl84SN79XR9NEBdCdUY3AWqeMXlVjg38UVk46AZ
-	+cJrd1WqUlfCJfJQWxJYH4OFJSRe71Oo4eiA4jvdaoq0J40pUd8/IH2Bb4q/DZ2GsNH27ogwKbG
-	0r8MBF4AW6CynAfp57KLVX49lKfalYOrWA7VW4yMMdgyYAkzQ6W8iGC4TDRPPClJ0QwAgfoxE4m
-	SuIvyKrB4Hiisq+QUuJfbdE2znEDEcm50Fzd4ZNPYjQQBAYO5GlBvBM0bB1prBh3stqc6f1tWry
-	lDRiYnLb+JNhjQonaC04R+AlKXNwjTh9GFK19DfA==
-X-Received: by 2002:a05:600c:1c0a:b0:486:fbc8:8dee with SMTP id 5b1f17b1804b1-486fee2dc56mr30563635e9.33.1773999805228;
-        Fri, 20 Mar 2026 02:43:25 -0700 (PDT)
-Received: from debian.levillagebyca.com ([213.152.28.84])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-486fd9845a2sm114372145e9.6.2026.03.20.02.43.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Mar 2026 02:43:24 -0700 (PDT)
-From: MidG971 <midgy971@gmail.com>
-To: linux-rockchip@lists.infradead.org
-Cc: heiko@sntech.de,
-	shawn.lin@rock-chips.com,
-	jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	Midgy BALON <midgy971@gmail.com>
-Subject: [PATCH v5] arm64: dts: rockchip: rock-3b: Model PI6C20100 as
- gated-fixed-clock
-Date: Fri, 20 Mar 2026 10:44:41 +0100
-Message-Id: <20260320094441.128263-1-midgy971@gmail.com>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <2053182.usQuhbGJ8B@phil>
-References: <2053182.usQuhbGJ8B@phil>
+	id 1w3WZw-0000000CWfm-13AX;
+	Fri, 20 Mar 2026 09:55:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774000532; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=h0DSz51kEzkzD5GQxFGjqVlpS7fRuOcz1+18dOsFoqbVpm7PlH2mXWGefkUqCKuf/pqkpEX4b2ggBz+JP2V+rA3RDLnMpN5DrAPIuh9SzyiT+x+OC1dR73Yl8kCatmD6idBMGxENVF9TcXRrcurP+NmW5uOd7ZRr+D1J4EzmVuA=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1774000532; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=AbW1WgDaf1eCMvjrjt561imFtuF6LeXvYMAHw1qjH7Y=; 
+	b=ZUgxzLriiYGd0y9C/QTADSzZgOphs0UJ4BTTMPMWqmHsYw6xdKFqnMoVkDNuNMLmwhcdjINU7WlU7Xp2WrdkKdhoD4zrKkedad4CC6oq23ys/XcXsjp05NFUmg/MPp7jwJGFcfGuBWQeNX41ZDGoRNEwyUfAFe07nKF3IWuCWx0=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774000532;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=AbW1WgDaf1eCMvjrjt561imFtuF6LeXvYMAHw1qjH7Y=;
+	b=VwYWx9VdOLZfpfhEf+y7/F2ogA5hJJwee0qc8vmzx6LXP5NZffrOUNZXFmPI0W4d
+	KkNKXUbZfdzNjuUagWEACMZTe2CVHR1wy+TmhJkyeyN9nhwEu/FYKwfynGSxUebbGqf
+	0+FZEkaPc9V8Hlgx8i7dScQin7/hLFCjqvDX2gCE=
+Received: by mx.zohomail.com with SMTPS id 1774000531385803.538354463539;
+	Fri, 20 Mar 2026 02:55:31 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+ Stephen Boyd <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>, Daniele Briguglio <hello@superkali.me>
+Cc: linux-clk@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Daniele Briguglio <hello@superkali.me>,
+ kernel test robot <lkp@intel.com>
+Subject: Re: [PATCH v2 3/3] clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK
+ output to IO
+Date: Fri, 20 Mar 2026 10:55:26 +0100
+Message-ID: <6947155.31r3eYUQgx@workhorse>
+In-Reply-To: <20260319-rk3588-mclk-gate-grf-v2-3-c4c8daab0762@superkali.me>
+References: <20260319-rk3588-mclk-gate-grf-v2-0-c4c8daab0762@superkali.me>
+ <20260319-rk3588-mclk-gate-grf-v2-3-c4c8daab0762@superkali.me>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_024328_360210_FF56E1D7 
-X-CRM114-Status: UNSURE (   9.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260320_025540_365520_FC5B186C 
+X-CRM114-Status: GOOD (  25.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,94 +82,137 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Midgy BALON <midgy971@gmail.com>
+On Thursday, 19 March 2026 08:34:01 Central European Standard Time Daniele Briguglio wrote:
+> The I2S MCLK outputs on RK3588 are gated by bits in the SYS_GRF
+> register SOC_CON6 (offset 0x318). These gates control whether the
+> internal CRU MCLK signals reach the external IO pins connected to
+> audio codecs.
+> 
+> The kernel should explicitly manage these gates so that audio
+> functionality does not depend on bootloader register state. This is
+> analogous to what was done for RK3576 SAI MCLK outputs [1].
+> 
+> Register the SYS_GRF as an auxiliary GRF with grf_type_sys in the
+> early clock init, and add GATE_GRF entries for all four I2S MCLK
+> output gates:
+> 
+>   - I2S0_8CH_MCLKOUT_TO_IO (bit 0)
+>   - I2S1_8CH_MCLKOUT_TO_IO (bit 1)
+>   - I2S2_2CH_MCLKOUT_TO_IO (bit 2)
+>   - I2S3_2CH_MCLKOUT_TO_IO (bit 7)
+> 
+> Board DTS files that need MCLK on an IO pin can reference these
+> clocks, e.g.:
+> 
+>     clocks = <&cru I2S0_8CH_MCLKOUT_TO_IO>;
+> 
+> Tested on the Youyeetoo YY3588 (RK3588) with an ES8388 codec on I2S0.
+> 
+> [1] https://lore.kernel.org/r/20250305-rk3576-sai-v1-2-64e6cf863e9a@collabora.com/
+> 
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202603191419.MH6EuPga-lkp@intel.com/
 
-The Radxa ROCK 3B uses a PI6C20100 PCIe reference clock buffer to
-provide a 100MHz reference clock to the PCIe 3.0 PHY and controllers.
-This chip is currently modeled only as a fixed regulator
-(vcc3v3_pi6c_03), with no clock output representation.
+I think you can drop these two tags, the patch wasn't merged yet.
 
-The PI6C20100 is a clock generator, not a power supply. Model it
-properly as a gated-fixed-clock, following the pattern established
-for the Rock 5 ITX and other boards with similar PCIe clock buffer
-chips.
+> Signed-off-by: Daniele Briguglio <hello@superkali.me>
+> ---
+>  drivers/clk/rockchip/clk-rk3588.c | 23 +++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
+> 
+> diff --git a/drivers/clk/rockchip/clk-rk3588.c b/drivers/clk/rockchip/clk-rk3588.c
+> index 1694223f4f84..4611b6ce8217 100644
+> --- a/drivers/clk/rockchip/clk-rk3588.c
+> +++ b/drivers/clk/rockchip/clk-rk3588.c
+> @@ -5,7 +5,9 @@
+>   */
+>  
+>  #include <linux/clk-provider.h>
+> +#include <linux/mfd/syscon.h>
+>  #include <linux/of.h>
+> +#include <linux/slab.h>
+>  #include <linux/of_address.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/syscore_ops.h>
+> @@ -892,6 +894,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+>  			RK3588_CLKGATE_CON(8), 0, GFLAGS),
+>  	MUX(I2S2_2CH_MCLKOUT, "i2s2_2ch_mclkout", i2s2_2ch_mclkout_p, CLK_SET_RATE_PARENT,
+>  			RK3588_CLKSEL_CON(30), 2, 1, MFLAGS),
+> +	GATE_GRF(I2S2_2CH_MCLKOUT_TO_IO, "i2s2_2ch_mclkout_to_io", "i2s2_2ch_mclkout",
+> +			0, 0x0318, 2, GFLAGS, grf_type_sys),
 
-The regulator node is kept as-is since it controls the power supply
-to the PI6C20100 chip via GPIO0_D4. The new gated-fixed-clock node
-references this regulator as its vdd-supply and provides a proper
-100MHz clock output. The pcie3x2 node is updated to include the
-pipe and reference clocks, matching the approach used in
-rk3588-rock-5-itx.dts.
+For the register offset, please add another patch which adds a
+#define RK3588_SYSGRF_SOC_CON6 0x318
+to `include/soc/rockchip/rk3588_grf.h`, and then use that name
+here by including that header. Alternatively, just define it
+in this file (though it's up to Heiko to decide what he prefers.)
 
-Assisted-by: Claude:claude-3-opus
-Reviewed-by: Shawn Lin <shawn.lin@rock-chips.com>
-Signed-off-by: Midgy BALON <midgy971@gmail.com>
----
+>  
+>  	COMPOSITE(CLK_I2S3_2CH_SRC, "clk_i2s3_2ch_src", gpll_aupll_p, 0,
+>  			RK3588_CLKSEL_CON(30), 8, 1, MFLAGS, 3, 5, DFLAGS,
+> @@ -907,6 +911,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+>  			RK3588_CLKGATE_CON(8), 4, GFLAGS),
+>  	MUX(I2S3_2CH_MCLKOUT, "i2s3_2ch_mclkout", i2s3_2ch_mclkout_p, CLK_SET_RATE_PARENT,
+>  			RK3588_CLKSEL_CON(32), 2, 1, MFLAGS),
+> +	GATE_GRF(I2S3_2CH_MCLKOUT_TO_IO, "i2s3_2ch_mclkout_to_io", "i2s3_2ch_mclkout",
+> +			0, 0x0318, 7, GFLAGS, grf_type_sys),
+>  	GATE(PCLK_ACDCDIG, "pclk_acdcdig", "pclk_audio_root", 0,
+>  			RK3588_CLKGATE_CON(7), 11, GFLAGS),
+>  	GATE(HCLK_I2S0_8CH, "hclk_i2s0_8ch", "hclk_audio_root", 0,
+> @@ -935,6 +941,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+>  			RK3588_CLKGATE_CON(7), 10, GFLAGS),
+>  	MUX(I2S0_8CH_MCLKOUT, "i2s0_8ch_mclkout", i2s0_8ch_mclkout_p, CLK_SET_RATE_PARENT,
+>  			RK3588_CLKSEL_CON(28), 2, 2, MFLAGS),
+> +	GATE_GRF(I2S0_8CH_MCLKOUT_TO_IO, "i2s0_8ch_mclkout_to_io", "i2s0_8ch_mclkout",
+> +			0, 0x0318, 0, GFLAGS, grf_type_sys),
+>  
+>  	GATE(HCLK_PDM1, "hclk_pdm1", "hclk_audio_root", 0,
+>  			RK3588_CLKGATE_CON(9), 6, GFLAGS),
+> @@ -2220,6 +2228,8 @@ static struct rockchip_clk_branch rk3588_early_clk_branches[] __initdata = {
+>  			RK3588_PMU_CLKGATE_CON(2), 13, GFLAGS),
+>  	MUX(I2S1_8CH_MCLKOUT, "i2s1_8ch_mclkout", i2s1_8ch_mclkout_p, CLK_SET_RATE_PARENT,
+>  			RK3588_PMU_CLKSEL_CON(9), 2, 2, MFLAGS),
+> +	GATE_GRF(I2S1_8CH_MCLKOUT_TO_IO, "i2s1_8ch_mclkout_to_io", "i2s1_8ch_mclkout",
+> +			0, 0x0318, 1, GFLAGS, grf_type_sys),
+>  	GATE(PCLK_PMU1, "pclk_pmu1", "pclk_pmu0_root", CLK_IS_CRITICAL,
+>  			RK3588_PMU_CLKGATE_CON(1), 0, GFLAGS),
+>  	GATE(CLK_DDR_FAIL_SAFE, "clk_ddr_fail_safe", "clk_pmu0", CLK_IGNORE_UNUSED,
+> @@ -2439,6 +2449,8 @@ static struct rockchip_clk_branch rk3588_clk_branches[] = {
+>  static void __init rk3588_clk_early_init(struct device_node *np)
+>  {
+>  	struct rockchip_clk_provider *ctx;
+> +	struct rockchip_aux_grf *sys_grf_e;
+> +	struct regmap *sys_grf;
+>  	unsigned long clk_nr_clks, max_clk_id1, max_clk_id2;
+>  	void __iomem *reg_base;
+>  
+> @@ -2479,6 +2491,17 @@ static void __init rk3588_clk_early_init(struct device_node *np)
+>  			&rk3588_cpub1clk_data, rk3588_cpub1clk_rates,
+>  			ARRAY_SIZE(rk3588_cpub1clk_rates));
+>  
+> +	/* Register SYS_GRF for I2S MCLK output to IO gate clocks */
+> +	sys_grf = syscon_regmap_lookup_by_compatible("rockchip,rk3588-sys-grf");
+> +	if (!IS_ERR(sys_grf)) {
+> +		sys_grf_e = kzalloc_obj(*sys_grf_e);
+> +		if (sys_grf_e) {
+> +			sys_grf_e->grf = sys_grf;
+> +			sys_grf_e->type = grf_type_sys;
+> +			hash_add(ctx->aux_grf_table, &sys_grf_e->node, grf_type_sys);
+> +		}
+> +	}
+> +
+>  	rockchip_clk_register_branches(ctx, rk3588_early_clk_branches,
+>  				       ARRAY_SIZE(rk3588_early_clk_branches));
+>  
+> 
+> 
 
-Changes since v4:
- - Fix From: line to match Signed-off-by (Heiko)
+With that addressed, you can add a
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Changes since v3 [1]:
- - Add Reviewed-by from Shawn Lin
+Kind regards,
+Nicolas Frattaroli
 
-Changes since v2 [2]:
- - Fix AI attribution: use Assisted-by tag instead of Signed-off-by (Shawn)
- - Add missing pipe clock (CLK_PCIE30X2_PIPE_DFT) to pcie3x2 clocks
-   override (Shawn, referencing David's patch [3])
-
-Changes since v1 [4]:
- - Drop phy-supply approach entirely (Jonas, Shawn)
- - Model PI6C20100 as gated-fixed-clock instead
- - Wire reference clock to pcie3x2 controller
- - Follow pattern from rk3588-rock-5-itx.dts
-
-[1] https://lore.kernel.org/linux-rockchip/20260304132957.684616-1-midgy971@gmail.com/
-[2] https://lore.kernel.org/linux-rockchip/20260304132957.684616-1-midgy971@gmail.com/
-[3] https://lore.kernel.org/linux-rockchip/d981fa84-bd05-ac9d-98ca-89ee47177829@rock-chips.com/T/#m6a8289609e6a60691d3c06358b6322c7aa5e43d1
-[4] https://lore.kernel.org/linux-rockchip/20260213151452.535527-1-midgy971@gmail.com/
-
- arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts | 21 ++++++++++++++++++++-
- 1 file changed, 20 insertions(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-index c5f67dd6dfd9..1a2b3c4d5e6f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-rock-3b.dts
-@@ -56,7 +56,16 @@
- 		};
- 	};
-
--	/* pi6c pcie clock generator */
-+	/* PI6C20100 PCIe reference clock buffer (100MHz) */
-+	pcie30_refclk: pcie-clock-generator {
-+		compatible = "gated-fixed-clock";
-+		#clock-cells = <0>;
-+		clock-frequency = <100000000>;
-+		clock-output-names = "pcie30_refclk";
-+		vdd-supply = <&vcc3v3_pi6c_03>;
-+	};
-+
-+	/* PI6C20100 power supply - active-high GPIO0_D4 */
- 	vcc3v3_pi6c_03: regulator-3v3-vcc-pi6c-03 {
- 		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -553,6 +562,15 @@
- };
-
- &pcie3x2 {
-+	clocks = <&cru ACLK_PCIE30X2_MST>, <&cru ACLK_PCIE30X2_SLV>,
-+		 <&cru ACLK_PCIE30X2_DBI>, <&cru PCLK_PCIE30X2>,
-+		 <&cru CLK_PCIE30X2_AUX_NDFT>,
-+		 <&cru CLK_PCIE30X2_PIPE_DFT>,
-+		 <&pcie30_refclk>;
-+	clock-names = "aclk_mst", "aclk_slv",
-+		      "aclk_dbi", "pclk", "aux",
-+		      "pipe", "ref";
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie30x2m1_pins>;
- 	reset-gpios = <&gpio2 RK_PD6 GPIO_ACTIVE_HIGH>;
---
-2.39.5
 
 
 _______________________________________________
