@@ -4,79 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C1C1093191
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 08:40:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF3EB1093188
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 08:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IMtXoAmUF5vslv2aROxTHDuolLg8UIYC1Q8X6xE/iJY=; b=DFt/12cuDABwj3
-	i8fTc4pWG4IcKqF0s7zrcsVgl3GJH7tj+2o0BLLx9kfW3I6dzA1HadOMXt93pt9d7svooe2VUGqZy
-	pjex/IPmOOMJNXuMDJdtpdREm8E7Rjx9vC7w4sis1ud06Rrrovmjk2XYJDsVEZnC3186TP8xwIebY
-	AOFVTa6j7o57oQbx2OH826FbFJmEwROFBv636IkF17iaYMbujT3mBtdQAOua0fPa8O6YhqNOCVw7G
-	JaQGwZBE+p6IpDUBkxgyBEfOceoygiv09ipoHvbcKNq0P8V6jGkuWxnOuRzxBRFh/qT3BhtJNF/SA
-	asDl9AXmdPQ8ky8rwDIA==;
+	List-Owner; bh=xjuRkUNu93jnJ0fXxsvkPpaAPsqZT10JXnsLqGHdMo4=; b=JmekQJjsYY7XEB
+	D3juAX8d6dMLuQIccAQs5T5CuNQI93MoOlMh4aY0Z5WRdmLSGVw0nOihsGb3IVBlD6SSdD+3DwNi9
+	unEL8n7+rZYihnuL3smIqUw5qJBHEiwaTk0kx27W6caOGd/Oy1ECKVa3DhMUfqCFBN1HChZNV8WTM
+	2jzJvPZMZ4W63QKKliQdH6Ay4eapAza9eIrF6NfGfc/5eeYx0eaXZlF9Mh29pEfnE8tcwhbAypfhl
+	lOqQqGjhHuZRWJiwm22ghlDL947cLVJmY+V3Yqs6Qj2ImtYeqgiThp3qIQB5uDseXLfiJ9qvJp0Zz
+	x+w9wOEsGLwPlPHIU+Mw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VPV-0000000CMz4-2IAW;
-	Fri, 20 Mar 2026 08:40:49 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1w3VX3-0000000CPJk-3sIC;
+	Fri, 20 Mar 2026 08:48:37 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VPS-0000000CMyV-23Ly;
-	Fri, 20 Mar 2026 08:40:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1773996046; x=1805532046;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=pRoVm1uSlvFJ1DUaEsZAHIMkqpeZSr5DbQgK9V4VP1I=;
-  b=MzQtpvTjEa9O1z1g9Mj+QbRPBf1OedNo6s4xP5tFxQL2x+37i3RJ5qOu
-   bC5jIcVIekdar88i7n2BID98FjORI6+Y9pslJJvVUUJlSyGRqwSeL4QmG
-   pOEz8FDNCIPLP7u3cu6dok5LzxzQPizs5Kf86Z3QRLQXT5BOeFo8ZJS7J
-   t4yif1o5BmGH4dRkEnwIwVBAZAAuLsX/djBKN9VQY2JCJfgjIMKPhD34R
-   bWPKcVemumcndUhMEgzHhpan9S0ObspcKEBVeq9KtsdhBVnDrsG7z6kxt
-   p1Mx0YX4cOcgE95TcxxptsHaF5vRN+67yWQGds6S6BR/NvktiQ//44XcB
-   A==;
-X-CSE-ConnectionGUID: tOB+D8MyT3G/gTHGcXvkPg==
-X-CSE-MsgGUID: ipojR9vtQ4apoepJnWG9hg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11734"; a="75043703"
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="75043703"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 01:40:45 -0700
-X-CSE-ConnectionGUID: UMl4ekA+SP2qinyxdLsYdQ==
-X-CSE-MsgGUID: oy8/u9TvR3Kup4Vvs0GRdw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="223210435"
-Received: from lkp-server02.sh.intel.com (HELO a51c2a36b9df) ([10.239.97.151])
-  by orviesa009.jf.intel.com with ESMTP; 20 Mar 2026 01:40:41 -0700
-Received: from kbuild by a51c2a36b9df with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1w3VOw-0000000029V-0Dxy;
-	Fri, 20 Mar 2026 08:40:19 +0000
-Date: Fri, 20 Mar 2026 16:39:03 +0800
-From: kernel test robot <lkp@intel.com>
-To: Pei Xiao <xiaopei01@kylinos.cn>, linux-spi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	imx@lists.linux.dev, openbmc@lists.ozlabs.org,
-	linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, broonie@kernel.org,
-	Frank.Li@nxp.com, amelie.delaunay@foss.st.com
-Cc: oe-kbuild-all@lists.linux.dev, Pei Xiao <xiaopei01@kylinos.cn>
-Subject: Re: [PATCH v5 11/17] spi: st: Simplify clock handling with
- devm_clk_get_enabled()
-Message-ID: <202603201638.tsz5xX5N-lkp@intel.com>
-References: <383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01@kylinos.cn>
+	id 1w3VX1-0000000CPJI-09GT;
+	Fri, 20 Mar 2026 08:48:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=ZbDVFjolLGX3QRmdSUPmSQ/KW7YhxkrqDIk5QadA5dk=; b=ICG+lqrbkJBPFYv1OGnP9Miu3d
+	NaIyEx6PVQH8VVHU9O4VNSprLyhEfZDoEcH3+OdOfo7tgVqLWRO05gCbEs+VViGZzRPOfrpWGFFvu
+	ri+hGv9EwejACBCAtQUSD73xYCrFkd0eEIVBbGCwUNKcsxj0JrpurMeWAZmh0xmbR+vt7DKEF7ybG
+	2OUR9ANCKMt1tXIc+X0r2/63Nbqd2dPw2272RNrCGaftYGPNWa21DiYGzVf5Nh/qJ7RP9vee9AoEx
+	vY36tOpj8+/pbDgvtFSuYt0z/bH788AQbe3KFmAzDtNhK9h9yuwmgtxAccZFTcrzESgBnc1Dr89p+
+	9/S9wM5w==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: linux-rockchip@lists.infradead.org, MidG971 <midgy971@gmail.com>
+Cc: shawn.lin@rock-chips.com, jonas@kwiboo.se,
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+ MidG971 <midgy971@gmail.com>
+Subject: Re: [PATCH v4] arm64: dts: rockchip: rock-3b: Model PI6C20100 as
+ gated-fixed-clock
+Date: Fri, 20 Mar 2026 09:48:25 +0100
+Message-ID: <2053182.usQuhbGJ8B@phil>
+In-Reply-To: <20260319145120.99833-1-midgy971@gmail.com>
+References: <20260304132957.684616-1-midgy971@gmail.com>
+ <20260319145120.99833-1-midgy971@gmail.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <383814750ad46181fd4199b3c6cec4767d480075.1773885292.git.xiaopei01@kylinos.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_014046_578236_5AEDC6D7 
-X-CRM114-Status: GOOD (  10.19  )
+X-CRM114-CacheID: sfid-20260320_014835_099717_D4E3A655 
+X-CRM114-Status: GOOD (  22.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,81 +62,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Pei,
-
-kernel test robot noticed the following build warnings:
-
-[auto build test WARNING on broonie-spi/for-next]
-[also build test WARNING on next-20260319]
-[cannot apply to atorgue-stm32/stm32-next rockchip/for-next xilinx-xlnx/mas=
-ter clk/clk-next shawnguo/for-next soc/for-next linus/master v7.0-rc4]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
-
-url:    https://github.com/intel-lab-lkp/linux/commits/Pei-Xiao/spi-axiado-=
-Simplify-clock-management-with-devm_clk_get_enabled/20260320-025630
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for=
--next
-patch link:    https://lore.kernel.org/r/383814750ad46181fd4199b3c6cec4767d=
-480075.1773885292.git.xiaopei01%40kylinos.cn
-patch subject: [PATCH v5 11/17] spi: st: Simplify clock handling with devm_=
-clk_get_enabled()
-config: nios2-allmodconfig (https://download.01.org/0day-ci/archive/2026032=
-0/202603201638.tsz5xX5N-lkp@intel.com/config)
-compiler: nios2-linux-gcc (GCC) 11.5.0
-reproduce (this is a W=3D1 build): (https://download.01.org/0day-ci/archive=
-/20260320/202603201638.tsz5xX5N-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new versio=
-n of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603201638.tsz5xX5N-lkp@i=
-ntel.com/
-
-All warnings (new ones prefixed by >>):
-
-   drivers/spi/spi-st-ssc4.c: In function 'spi_st_remove':
->> drivers/spi/spi-st-ssc4.c:365:32: warning: unused variable 'host' [-Wunu=
-sed-variable]
-     365 |         struct spi_controller *host =3D platform_get_drvdata(pde=
-v);
-         |                                ^~~~
-
-
-vim +/host +365 drivers/spi/spi-st-ssc4.c
-
-9e862375c5420a Lee Jones        2014-12-09  362  =
-
-2dd42da0b479ff Uwe Kleine-K=F6nig 2023-03-03  363  static void spi_st_remov=
-e(struct platform_device *pdev)
-9e862375c5420a Lee Jones        2014-12-09  364  {
-e6b7e64cb11966 Yang Yingliang   2023-11-28 @365  	struct spi_controller *ho=
-st =3D platform_get_drvdata(pdev);
-9e862375c5420a Lee Jones        2014-12-09  366  =
-
-cd050abeba2a95 Chuhong Yuan     2019-11-18  367  	pm_runtime_disable(&pdev-=
->dev);
-cd050abeba2a95 Chuhong Yuan     2019-11-18  368  =
-
-9e862375c5420a Lee Jones        2014-12-09  369  	pinctrl_pm_select_sleep_s=
-tate(&pdev->dev);
-9e862375c5420a Lee Jones        2014-12-09  370  }
-9e862375c5420a Lee Jones        2014-12-09  371  =
-
-
--- =
-
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMTkuIE3DpHJ6IDIwMjYsIDE1OjUxOjIwIE1pdHRlbGV1cm9ww6Rpc2No
+ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgTWlkRzk3MToKPiBUaGUgUmFkeGEgUk9DSyAzQiB1c2VzIGEg
+UEk2QzIwMTAwIFBDSWUgcmVmZXJlbmNlIGNsb2NrIGJ1ZmZlciB0bwo+IHByb3ZpZGUgYSAxMDBN
+SHogcmVmZXJlbmNlIGNsb2NrIHRvIHRoZSBQQ0llIDMuMCBQSFkgYW5kIGNvbnRyb2xsZXJzLgo+
+IFRoaXMgY2hpcCBpcyBjdXJyZW50bHkgbW9kZWxlZCBvbmx5IGFzIGEgZml4ZWQgcmVndWxhdG9y
+Cj4gKHZjYzN2M19waTZjXzAzKSwgd2l0aCBubyBjbG9jayBvdXRwdXQgcmVwcmVzZW50YXRpb24u
+Cj4gCj4gVGhlIFBJNkMyMDEwMCBpcyBhIGNsb2NrIGdlbmVyYXRvciwgbm90IGEgcG93ZXIgc3Vw
+cGx5LiBNb2RlbCBpdAo+IHByb3Blcmx5IGFzIGEgZ2F0ZWQtZml4ZWQtY2xvY2ssIGZvbGxvd2lu
+ZyB0aGUgcGF0dGVybiBlc3RhYmxpc2hlZAo+IGZvciB0aGUgUm9jayA1IElUWCBhbmQgb3RoZXIg
+Ym9hcmRzIHdpdGggc2ltaWxhciBQQ0llIGNsb2NrIGJ1ZmZlcgo+IGNoaXBzLgo+IAo+IFRoZSBy
+ZWd1bGF0b3Igbm9kZSBpcyBrZXB0IGFzLWlzIHNpbmNlIGl0IGNvbnRyb2xzIHRoZSBwb3dlciBz
+dXBwbHkKPiB0byB0aGUgUEk2QzIwMTAwIGNoaXAgdmlhIEdQSU8wX0Q0LiBUaGUgbmV3IGdhdGVk
+LWZpeGVkLWNsb2NrIG5vZGUKPiByZWZlcmVuY2VzIHRoaXMgcmVndWxhdG9yIGFzIGl0cyB2ZGQt
+c3VwcGx5IGFuZCBwcm92aWRlcyBhIHByb3Blcgo+IDEwME1IeiBjbG9jayBvdXRwdXQuIFRoZSBw
+Y2llM3gyIG5vZGUgaXMgdXBkYXRlZCB0byBpbmNsdWRlIHRoZQo+IHBpcGUgYW5kIHJlZmVyZW5j
+ZSBjbG9ja3MsIG1hdGNoaW5nIHRoZSBhcHByb2FjaCB1c2VkIGluCj4gcmszNTg4LXJvY2stNS1p
+dHguZHRzLgo+IAo+IEFzc2lzdGVkLWJ5OiBDbGF1ZGU6Y2xhdWRlLTMtb3B1cwo+IFJldmlld2Vk
+LWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5
+OiBNaWRneSBCQUxPTiA8bWlkZ3k5NzFAZ21haWwuY29tPgoKU29ycnkgZm9yIGhhdmluZyB0byBi
+cmluZyB1cCB0aGUgcHJvY2VzcyBhZ2FpbiwgYnV0IHRoZSBwYXRjaAphdXRob3Igc2hvdWxkIG1h
+dGNoIHRoZSBTaWduZWQtb2ZmLWJ5IGxpbmUuCgpZb3UgY2FuIHVwZGF0ZSB0aGUgcGF0Y2ggYXV0
+aG9yIHdpdGggc29tZXRoaW5nIGxpa2U6CiAgZ2l0IGNvbW1pdCAtLWF1dGhvcj0iTWlkZ3kgQkFM
+T04gPG1pZGd5OTcxQGdtYWlsLmNvbT4iIC0tYW1lbmQKCkFsc28gaXMgdGhlIGxhc3QgbmFtZSBh
+bHdheXMgIlVQUEVSIENBU0UiIGluIHlvdXIgcmVnaW9uPwoKVGhhbmtzIGEgbG90IGZvciBzdGF5
+aW5nIG9uIHRoaXMKSGVpa28KCgo+IC0tLQo+IAo+IENoYW5nZXMgc2luY2UgdjMgWzFdOgo+ICAt
+IEFkZCBSZXZpZXdlZC1ieSBmcm9tIFNoYXduIExpbgo+IAo+IENoYW5nZXMgc2luY2UgdjIgWzJd
+Ogo+ICAtIEZpeCBBSSBhdHRyaWJ1dGlvbjogdXNlIEFzc2lzdGVkLWJ5IHRhZyBpbnN0ZWFkIG9m
+IFNpZ25lZC1vZmYtYnkgKFNoYXduKQo+ICAtIEFkZCBtaXNzaW5nIHBpcGUgY2xvY2sgKENMS19Q
+Q0lFMzBYMl9QSVBFX0RGVCkgdG8gcGNpZTN4MiBjbG9ja3MKPiAgICBvdmVycmlkZSAoU2hhd24s
+IHJlZmVyZW5jaW5nIERhdmlkJ3MgcGF0Y2ggWzNdKQo+IAo+IENoYW5nZXMgc2luY2UgdjEgWzRd
+Ogo+ICAtIERyb3AgcGh5LXN1cHBseSBhcHByb2FjaCBlbnRpcmVseSAoSm9uYXMsIFNoYXduKQo+
+ICAtIE1vZGVsIFBJNkMyMDEwMCBhcyBnYXRlZC1maXhlZC1jbG9jayBpbnN0ZWFkCj4gIC0gV2ly
+ZSByZWZlcmVuY2UgY2xvY2sgdG8gcGNpZTN4MiBjb250cm9sbGVyCj4gIC0gRm9sbG93IHBhdHRl
+cm4gZnJvbSByazM1ODgtcm9jay01LWl0eC5kdHMKPiAKPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5l
+bC5vcmcvbGludXgtcm9ja2NoaXAvMjAyNjAzMDQxMzI5NTcuNjg0NjE2LTEtbWlkZ3k5NzFAZ21h
+aWwuY29tLwo+IFsyXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI2
+MDMwNDEzMjk1Ny42ODQ2MTYtMS1taWRneTk3MUBnbWFpbC5jb20vCj4gWzNdIGh0dHBzOi8vbG9y
+ZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwL2Q5ODFmYTg0LWJkMDUtYWM5ZC05OGNhLTg5ZWU0
+NzE3NzgyOUByb2NrLWNoaXBzLmNvbS9ULyNtNmE4Mjg5NjA5ZTZhNjA2OTFkM2MwNjM1OGI2MzIy
+YzdhYTVlNDNkMQo+IFs0XSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8y
+MDI2MDIxMzE1MTQ1Mi41MzU1MjctMS1taWRneTk3MUBnbWFpbC5jb20vCj4gCj4gIGFyY2gvYXJt
+NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2IuZHRzIHwgMjEgKysrKysrKysrKysr
+KysrKysrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9u
+KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4
+LXJvY2stM2IuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0z
+Yi5kdHMKPiBpbmRleCBjNWY2N2RkNmRmZDkuLjFhMmIzYzRkNWU2ZiAxMDA2NDQKPiAtLS0gYS9h
+cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1yb2NrLTNiLmR0cwo+ICsrKyBiL2Fy
+Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2IuZHRzCj4gQEAgLTU2LDcg
+KzU2LDE2IEBACj4gIAkJfTsKPiAgCX07Cj4gCj4gLQkvKiBwaTZjIHBjaWUgY2xvY2sgZ2VuZXJh
+dG9yICovCj4gKwkvKiBQSTZDMjAxMDAgUENJZSByZWZlcmVuY2UgY2xvY2sgYnVmZmVyICgxMDBN
+SHopICovCj4gKwlwY2llMzBfcmVmY2xrOiBwY2llLWNsb2NrLWdlbmVyYXRvciB7Cj4gKwkJY29t
+cGF0aWJsZSA9ICJnYXRlZC1maXhlZC1jbG9jayI7Cj4gKwkJI2Nsb2NrLWNlbGxzID0gPDA+Owo+
+ICsJCWNsb2NrLWZyZXF1ZW5jeSA9IDwxMDAwMDAwMDA+Owo+ICsJCWNsb2NrLW91dHB1dC1uYW1l
+cyA9ICJwY2llMzBfcmVmY2xrIjsKPiArCQl2ZGQtc3VwcGx5ID0gPCZ2Y2MzdjNfcGk2Y18wMz47
+Cj4gKwl9Owo+ICsKPiArCS8qIFBJNkMyMDEwMCBwb3dlciBzdXBwbHkgLSBhY3RpdmUtaGlnaCBH
+UElPMF9ENCAqLwo+ICAJdmNjM3YzX3BpNmNfMDM6IHJlZ3VsYXRvci0zdjMtdmNjLXBpNmMtMDMg
+ewo+ICAJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiAgCQllbmFibGUtYWN0aXZl
+LWhpZ2g7Cj4gQEAgLTU1Myw2ICs1NjIsMTUgQEAKPiAgfTsKPiAKPiAgJnBjaWUzeDIgewo+ICsJ
+Y2xvY2tzID0gPCZjcnUgQUNMS19QQ0lFMzBYMl9NU1Q+LCA8JmNydSBBQ0xLX1BDSUUzMFgyX1NM
+Vj4sCj4gKwkJIDwmY3J1IEFDTEtfUENJRTMwWDJfREJJPiwgPCZjcnUgUENMS19QQ0lFMzBYMj4s
+Cj4gKwkJIDwmY3J1IENMS19QQ0lFMzBYMl9BVVhfTkRGVD4sCj4gKwkJIDwmY3J1IENMS19QQ0lF
+MzBYMl9QSVBFX0RGVD4sCj4gKwkJIDwmcGNpZTMwX3JlZmNsaz47Cj4gKwljbG9jay1uYW1lcyA9
+ICJhY2xrX21zdCIsICJhY2xrX3NsdiIsCj4gKwkJICAgICAgImFjbGtfZGJpIiwgInBjbGsiLCAi
+YXV4IiwKPiArCQkgICAgICAicGlwZSIsICJyZWYiOwo+ICAJcGluY3RybC1uYW1lcyA9ICJkZWZh
+dWx0IjsKPiAgCXBpbmN0cmwtMCA9IDwmcGNpZTMweDJtMV9waW5zPjsKPiAgCXJlc2V0LWdwaW9z
+ID0gPCZncGlvMiBSS19QRDYgR1BJT19BQ1RJVkVfSElHSD47Cj4gLS0KPiAyLjM5LjUKPiAKPiAK
+CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
+eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
+ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
+aGlwCg==
