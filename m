@@ -4,195 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A0C9109316E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 02:15:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D49109316E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 02:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:Message-ID
-	:In-Reply-To:From:Subject:Cc:To:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IMCktZfdRKOq/O08vMQQJsFnFrkyXHrJhDlQT35JYRw=; b=V+6edFgitiL966
-	3ifnNFrBzjQAgF5Rl7khhpA9OLOP2bLbC/qfDkE7/dIuZ5q8o4MqwOy0ZE4aiBj5gjuh8XsFm1cv4
-	NOwBVcB94BcMRIqKTrg9LbYTnizRo3bSo+ocTm+G6iSk6m6UHgzURCcgeCqedumrrysJDgGYLXo2o
-	ENRT+/ji9WnmnIQw+Zh/WO4PiL+sxV2PRBVqYglVnwmPbtpSdwPZRcvhzNUL3/05zlV9Z6Y9QehSk
-	nlT6Pg3VAkxH3aNrUCQyzPH7qdGH/psD1FPCdvC28qMfzzO8EIIE5PTV8KeARbBLI6f+zW/scS5Ok
-	x4CqIKnO0NIkjPXx2W3g==;
+	List-Owner; bh=bqin/FiyFk4uP9tmiO+BzBbIL1UPf2hgDsrf61wrmqs=; b=xbSVCn3xJw3W5x
+	aOStq4qxl0LCFb5e0isY36rtalZA0vQTkxVrP5GszvT0tPWmXs+Fx+ansXPR9LKPLUp5defesjinm
+	ayT0M3fFLxRMpKjlSSP1WBZ2FRA9MA6kUXzpIE03qQwe7F8NKv+Zw2+g/chnM0TvUAZBxT5z9atZ1
+	eCWB3BzDOKjVmeTKs82iG0WMciA8YpwgdLH6sqScSnon7PjEn1N1nfKbIHwTZv0+owlNuXkGD0NLl
+	LLon1lMDog5ZSQgT+aKPm7HliMrbpjWEqdmeSvmlHXz8ud45TkevsukNfpT8ZnJlmst5Hz6SCHgsF
+	PFSzoLLL71J4l1wRaFMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3POl-0000000Buyr-1yPG;
-	Fri, 20 Mar 2026 02:15:39 +0000
-Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
+	id 1w3PjC-0000000BwCu-1Kx4;
+	Fri, 20 Mar 2026 02:36:46 +0000
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3POh-0000000Bux7-3oJO;
-	Fri, 20 Mar 2026 02:15:37 +0000
-Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62JFudhc1949233;
-	Fri, 20 Mar 2026 02:15:25 GMT
+	id 1w3Pj9-0000000BwCW-3OWM
+	for linux-rockchip@lists.infradead.org;
+	Fri, 20 Mar 2026 02:36:45 +0000
+Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62K0xker536248;
+	Fri, 20 Mar 2026 02:36:37 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=corp-2025-04-25; bh=e4LFMg2KiFC1HRlDK/
-	EH75+9Wt/J7M2f9XJJkwjZW0k=; b=NCm+1Hqh4Zz/N+Y8NYoccvlviaEs8jA3Wx
-	K0mzWQBO2DRvDYqD1GnJknzRbcZ9FiTCsFqb6FSP5p+bgLArETde4dd5FYOOcZJy
-	nFdjXr991KfHuMKQrx7+GxTj0ud/xEy1bX6TFLX/4CXf8cA+Q5guZL16HFTQaoue
-	PpOKRfBFBAwF+tLjVzgsQ0+J7Ru3/uyIkUNZPGhZICdAgP7yrri7UOEEW/vA/JP0
-	daEV2GDW3RqQ1QbMPacTfJlBXuDO3jzLXSyX8w3NJfYHD3CRmt7iysKZn/12HHo9
-	2Kzmc24eTBAesjipYJFORVQOKeIM6QRtJP0y9CARdtSosw2LaG0w==
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=MqXfRDBGG87/SrtLAFzhwTQX9IwNVcNXwmFPCp3BRPI=; b=
+	U7BIXB1BCDeOOrd0ASDnLAtkDAVrPAnv2IzQmBIXuGGAhZ1RjITy112dlJjrXtBN
+	r8ecnRI96TKVcdAZTCQDdmN7A9FZVVbffIQxtjvphDrycHgPZo93uXwiG6ox3BI7
+	5G1/G8Hc5pYMUrIpdhv+LyHjAO6IRfCVjWwfjslFmkXH2wYyKsiihApLcQ/IUOVC
+	d2LDYaVRmLt2aAG8+zLM/EzJThLtM/YeMH6yRa3qcK5tWNS3Ja5SfQjIjFfOutQd
+	bSKFqhtQVGVV/X+si9eW1Ia8/cN8Czet18gEYb1tZGzldCfpIwVpIjYKuAt2LjEm
+	BOLHXf3U4lEVR6vfW0E8Gw==
 Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cvyj68vsh-1
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cvyqc0v54-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 20 Mar 2026 02:15:25 +0000 (GMT)
+	Fri, 20 Mar 2026 02:36:36 +0000 (GMT)
 Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 62K1iJS9014100;
-	Fri, 20 Mar 2026 02:15:24 GMT
-Received: from dm5pr21cu001.outbound.protection.outlook.com (mail-centralusazon11011070.outbound.protection.outlook.com [52.101.62.70])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4cvx4dn74n-1
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 62K0GBZk014272;
+	Fri, 20 Mar 2026 02:36:35 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4cvx4dnkfb-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 20 Mar 2026 02:15:24 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Wkxkx1m5lqxchbh4xs6iimUG961baTvxttfY9bBuMbmezddL8k8q2FwNGJtpRxJOc3zKNdFKiKlBC6oRU4gyQhmh8UWX8UvGXwAeKmnLY4moF97CKqFEN19LLDFte0l6Au8cWdFprsRyzdDG1r03ZBGxD9PVnRrw7nHTIpZ/ahCucUyd58g8Df6kl45PTz738Q/f4KXLp3726d7x8IB8TT0HvD7klYttfX1JCH0go61p/P/bY/gELbLfD1s7LnLieAQ6N8sqZouKndAtUSK0gf53RHpNGJywbhc6f2M74MHv2I+CrSgTcTAFVu+4iU1Xk1X0ZYTD5ztQFiQeKQX9Sw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=e4LFMg2KiFC1HRlDK/EH75+9Wt/J7M2f9XJJkwjZW0k=;
- b=BPIaHJyP5d2/vP4gcOLx2UNWdBSfboyCS7yK1B/0Ilb2rh5K2hd3VM8/WRjjZaQLZOd332eiBkxe46cT9v4lf3WyEDzhTf2wmEVdyYSyF7Jt8/5JCRtQWn8bS4QLd+HwppJe0QGyKjXTcpM/OkRmwnf+Toh+ue3+BA9bB/GZqHPmh5xNiJc3FEu/x8TQT5OKkuqagHHTJJN+jzo1KhgxRI80E+4tvH4e5usPTI+Q9RdqkM39asdEhlcBHTzp6XeeHtPpeDMMVRUXsbD1C6SV+YjnVLW6K6LoT+1yObKOOFNDcFUnmNVYzVILpiiSYpI4f0nk6JiJMSQsUtL3x4zBTQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=e4LFMg2KiFC1HRlDK/EH75+9Wt/J7M2f9XJJkwjZW0k=;
- b=dYWjLkUZuXuVlZmPikv6rIW5O14PwPFXeHrvDgQMCv5br7FZMQgcpK0sir9yuU263Dqp+jksu7rC+XQ88/YjsG8YmHdbc7cvpI1C/K1F3MO/1qSgJK9fIrl1tK/VjPly+Sk4rut4sHBtxgUE2/JnoASHjeuR6VZza/K5JJ5D3J0=
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
- by IA4PR10MB8587.namprd10.prod.outlook.com (2603:10b6:208:55c::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Fri, 20 Mar
- 2026 02:15:19 +0000
-Received: from CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5]) by CH0PR10MB5338.namprd10.prod.outlook.com
- ([fe80::e525:dd71:b002:6ad5%6]) with mapi id 15.20.9723.019; Fri, 20 Mar 2026
- 02:15:19 +0000
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: <linux-phy@lists.infradead.org>, Vinod Koul <vkoul@kernel.org>,
-        Neil
- Armstrong <neil.armstrong@linaro.org>,
-        <dri-devel@lists.freedesktop.org>, <freedreno@lists.freedesktop.org>,
-        <linux-arm-kernel@lists.infradead.org>,
-        <linux-arm-msm@vger.kernel.org>, <linux-can@vger.kernel.org>,
-        <linux-gpio@vger.kernel.org>, <linux-ide@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
-        <linux-pci@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
-        <linux-riscv@lists.infradead.org>,
-        <linux-rockchip@lists.infradead.org>,
-        <linux-samsung-soc@vger.kernel.org>, <linux-scsi@vger.kernel.org>,
-        <linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
-        <linux-usb@vger.kernel.org>, <netdev@vger.kernel.org>,
-        <spacemit@lists.linux.dev>, <UNGLinuxDriver@microchip.com>,
-        Bart Van
- Assche <bvanassche@acm.org>,
-        Alim Akhtar <alim.akhtar@samsung.com>,
-        Peter Griffin <peter.griffin@linaro.org>,
-        "James E.J. Bottomley"
- <James.Bottomley@HansenPartnership.com>,
-        "Martin K. Petersen"
- <martin.petersen@oracle.com>,
-        Krzysztof Kozlowski <krzk@kernel.org>,
-        Chanho Park <chanho61.park@samsung.com>
-Subject: Re: [PATCH v5 phy-next 09/27] scsi: ufs: exynos: stop poking into
- struct phy guts
+	Fri, 20 Mar 2026 02:36:35 +0000
+Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 62K2aIsL027944;
+	Fri, 20 Mar 2026 02:36:35 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4cvx4dnkeh-2;
+	Fri, 20 Mar 2026 02:36:35 +0000
 From: "Martin K. Petersen" <martin.petersen@oracle.com>
-In-Reply-To: <20260319223241.1351137-10-vladimir.oltean@nxp.com> (Vladimir
-	Oltean's message of "Fri, 20 Mar 2026 00:32:23 +0200")
-Organization: Oracle Corporation
-Message-ID: <yq1a4w3l04g.fsf@ca-mkp.ca.oracle.com>
-References: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
-	<20260319223241.1351137-10-vladimir.oltean@nxp.com>
-Date: Thu, 19 Mar 2026 22:15:17 -0400
-X-ClientProxiedBy: YQZPR01CA0118.CANPRD01.PROD.OUTLOOK.COM
- (2603:10b6:c01:83::6) To CH0PR10MB5338.namprd10.prod.outlook.com
- (2603:10b6:610:cb::8)
+To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
+        Shawn Lin <shawn.lin@rock-chips.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        Heiko Stuebner <heiko@sntech.de>, Bart Van Assche <bvanassche@acm.org>,
+        Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+        linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v3] scsi: ufs: rockchip,rk3576-ufshc: dt-bindings: Add new mphy reset item
+Date: Thu, 19 Mar 2026 22:36:31 -0400
+Message-ID: <177397022246.2845275.8137897176689873586.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <1773368467-109650-1-git-send-email-shawn.lin@rock-chips.com>
+References: <1773368467-109650-1-git-send-email-shawn.lin@rock-chips.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|IA4PR10MB8587:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9597bd68-9e17-433c-490c-08de86268867
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|18002099003|56012099003|22082099003;
-X-Microsoft-Antispam-Message-Info: Isij4SalK5vkUb6Sph8ACbKn/vLNdxeK5hYB5pt7n7NkbclMmRMLXUO1JdlxVu8V4t26O6Qgjv6E++vh4Fgg7kxQzrHclDWrxwodpFk4Rf4gbmamLqRYE0xHmtGYkF+2XVmEuTiHnRryu/ynWZIRvN0PrSauHV36bzQCXRZtt4p0EMzHTP9lDfQl+cizsKPX40qrodq9HZFLLIIDKvGFLi6PD2J+r3BZOD1mnwtj2rdEXsL6YI0oeQCGI29NNwhLAZozT6Nd0j/sn8VjPuJq8FkZBBVS0USawqSdPmr5dZTHkC7jP8KoZhPbOUKxHCOCQuoVZ/YbWYPDvFsJeeOtf7Ni4cvPpdu6hve/Kv6eKgZ0FnlCy+zxpERaUKcgeTzikQ6BCoilsO2sL0PjanNWyv1Thcwea/NJoKEIIAz0khAGXtvQf4ZpzvG5BrwejQYsnjQJ2XgdE5WsriBtEn9/hocwqfIZy6KpyqpgIfN+Pav1eun3IYBnpW/F9F70xCg9PzpTnnjVAu3q4MyDSGK5a5gVMyBgFNRNu+EnXCcadQqjwc0PJsJZr1ngYuWRSM06LJZLk9mpPRlSn06CH5OFckfuY7javhy+m51E8SwkCjQCFtNlY1dlWVZ1488BsDdiw0t0Vor0nT0YOVAi2Iqq3ws74VcE0G5NzTk/nhWQEW7p5fb2GxV1aYn4MyENN6OC1tYnXiawVA6ogaJiTxYV+aP2Qnq67KHYVQOzTdaXuSQ=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?GADOBKCndiyZeNbnf8HfwAAJB3xS13V5z7jgy2z5BlkNuLjd5/vTJR3gIe1U?=
- =?us-ascii?Q?RUtuekBA/lYmg2yRS+gSIc+1jARl+VlI9Fs2i5x0UY0I6WLC7faivhYKDv8f?=
- =?us-ascii?Q?tALAS9XsuSzia1D0p3+akxmoBRnS2C4eulYWaFyezUo76eAQH14Hv2OpIxRE?=
- =?us-ascii?Q?Fj/XeKcXZ/pGdxAE1AiZ3Oa8BrQ4xcOYlY3ObT+5rzQYtH4z4NgU2PwWuQut?=
- =?us-ascii?Q?9he1wbaTp7YWTcseTQFUbwhKvLFyU2diIg1Kg+sZrD4dwCopYa0ZYxP7IyMS?=
- =?us-ascii?Q?svY7+wCdI6j0CWO0uIJFlDHaGcnW+eFgoPSBNSiTmOqn4fNpHIbyagQmNPMl?=
- =?us-ascii?Q?n5NpwsVZp9Dmvs0f8EiEOSQIEoG2xIZjw3Y9cLutrgRvgcwnbolE8zM4If8f?=
- =?us-ascii?Q?jP89k5Y0h/fH/IhLfkvpbkLGsJp0sbTUqXXChS6qZyWN5gOn/VRdbaetYpB3?=
- =?us-ascii?Q?KLUfnoPudm1SDQMU54hbUIoVkwDckQYH85niv4kPe9QCBWZIqGm14nZKqlPD?=
- =?us-ascii?Q?xTRBoFTX7kWtqqi1YIp7Kpn98cinr8wNuNfBl4XsPh2McMxu6tjLApq6Si/w?=
- =?us-ascii?Q?lJ3O7Zc5qqsC0nqA6x1xUQFu3kldPAvaosXh6zV50Xq4ntYMr9ykxI0mEg/T?=
- =?us-ascii?Q?0ladsb8qImvtaBhL+H3rQJYqq6rKg/rPAFJ0ZyAeIEO1nQ0PGKwp+2wSTzVM?=
- =?us-ascii?Q?oRqxSN06z475lOxoK3Oe/8IBz6j5wiWlwphm+TkVAio7c2vekagFcZDxzCHB?=
- =?us-ascii?Q?JZXNgtMJNFuO6jXDm4kZ6rgoK6dbPEA+WRMD9nlyVzu0ekzKS5StvNTFJIEC?=
- =?us-ascii?Q?qPz6bUOuHyFg0ZSTIiUKkRFkPQwV65Zh1gYY5GNkffHjPByzB0sa0KmeN74M?=
- =?us-ascii?Q?Ixxkg8D4YBSuNnkBya1C9wwvwg49VdY8nmEyCV4RI61xU1qtCYHL82eCPX+k?=
- =?us-ascii?Q?OR5r4ODhaiekUKmyTtNet1ptWR6k5iDNcookM/CrgfdHru1m8r4hWAKyN7pc?=
- =?us-ascii?Q?15ln1ZhNCrpgHe9/YZPl7g2F1i1/MN/tUb7iX+rPr6mOlivNiK/bU7UGqkgp?=
- =?us-ascii?Q?/nAkaJQRp0T33dZdMAUhVhNomMA7SfkysQf/zpDLDamIb5kA57JsDG6gNfbx?=
- =?us-ascii?Q?BEME7V230bftQe1PauICAte633l38H/NJJhWcHz1oS3efI/YP4Rx6AMvyHiP?=
- =?us-ascii?Q?eiw95SlKMZiDlVzepQP64x+Zln9kVpx6XYn/9MjMS2okFyy+UTwBDdDuLxqg?=
- =?us-ascii?Q?LaxyLRtfJ4PEsMrrSlhJGspmekS5l4i1cQ7o2TLZEiudcv7ilLj5+FME9WiR?=
- =?us-ascii?Q?QlU4nCteXk6MN0aRwBaOeCw7yQGZesGgi8H/1JLBu3hRIGf00ZxPfRFkl9vN?=
- =?us-ascii?Q?Dt5QjzJkNCk8YopNaGLSCAcyOyMfOAyqI6DZuhXYPzEnmtOJ1+syK/IgC84J?=
- =?us-ascii?Q?Hp8V6SEGOJRtnU5r4Vv5r4M2FvhghqwyQuoQvWEKqF+RgGIeG+eCuY2oOYTX?=
- =?us-ascii?Q?h3gB+9UadCT8M30d+Y30Ewzzsy/cXr/UlHnYMWlDcWOBzC4C1xD7gYQ4VzWN?=
- =?us-ascii?Q?sPn5SVcKn0LrFf8jJZxrM5XlVmeTfh3uwoi+p/LVEQ49JHA1yBsbmjrq8tAP?=
- =?us-ascii?Q?nUhjnbf5DCAhzVGdyhyMn9Wy1Zeig9+uoeSpVd0Qbn3BuxDAUqe4Uxj1Y/uS?=
- =?us-ascii?Q?7ApPYXgv5eRXx3Yik5ZKZwpFwwQTv67N/nIMuL9ZGBiCaztev+ZYq/bRkjap?=
- =?us-ascii?Q?dvfu3Cbau1E1UOsxSCkoYAyjCR+xbqg=3D?=
-X-Exchange-RoutingPolicyChecked: nT+dhkAx6s9DfOKC67xMe4B3rWj0mPlg/55wTOMCxyrOXqOFHLhJefT2JWaJiHaT3oo0amqzAN3Cz2fXH515s8NnkLTLzF2P5Kgn4HhXkVgyHd5BeV0SZCTAVCZ5AH4hDqMpRlntz5hMlbMn22oI5RCpwZihNfXmbuRyOicq4Bdy56bjLSxaz+h5x8PKXqX4nX2wiqy3EA4sPRgWr2gu4W30PoeFUmNXzn+HNv0CsxqLB03TSCcPs0R97culdBZT23U9a8EJOHaYz6CDf8pR2Sb2BgYax50AZ3XBlAmaQgjhqbL2Jw/ItDnQ4E4b2g+xUg4Xfs24wDwk51iH9UqUGA==
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: mhc2D9TyLR68DlFIdp+gaKJqoq98VOrvsExHMWs/jC0qqymj9nUWAhUgpKmGlg7iBCoAOg29Mb/+B9QLlgV8ORL3SDSrym/pCuAdHWzRoHu9NtpVYupU7YW4XRfHG35h8qPLOA/HP2ve6OarB9uurG5QOqZVk0VEwbzDTzOJEbw1EO69/X8DBRBQjTO6LPYqqDq9YIIIq8GijLWvQVy6p/ccB83/6XvWqwURCBSOIueAXiLrb1YSfMCPegkN/TKc8pN4PD7eEXfnnAeIk8bHhjVSTNjpzAEB1ECsffxJfKxbsc/H6FwDrEnQLCRvgrhTwKUxe014qB6yk0KHl9n8Tym9uXag+kNrGPlCqFMJcVgj33Ksxm+aGKyCLDCzEfZkHwaE6rWCbjUtetZvgCN5BDIzimKPQ8c+qklTnvxMe/x3cJIFdNJ0xWdy/hmm93U2rqTfjtKy+0+r5jE/wjVhhHsk0gyKWKtF2bfG7AFzJ/cHhP9TduRZ7XWOAnHKLSkzxu6dN7Rj03AXiPbS2AX0E7Mr8R+SkTI+ogXZnWdHFXlYgv6dgIrChl6rUjjkzyy/8v73Yn7y1w65LswK6rjdi/CqguKzcIBFgx/uEL8y2Ns=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9597bd68-9e17-433c-490c-08de86268867
-X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Mar 2026 02:15:19.0787
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: e6DJcmw4KePw8UOMFfe+7DYbwBYNUYfLf9gAtUIsoqwwn9IMF2CXZM4FwTBt/yyS6n75ff1hy8Nq4red+2jQMQK/ABvFhO2XxSHaBRZUVxY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA4PR10MB8587
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-03-19_04,2026-03-19_05,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 adultscore=0 bulkscore=0
- phishscore=0 mlxscore=0 mlxlogscore=750 malwarescore=0 suspectscore=0
+ phishscore=0 mlxscore=0 mlxlogscore=984 malwarescore=0 suspectscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
- definitions=main-2603200016
-X-Authority-Analysis: v=2.4 cv=LKFrgZW9 c=1 sm=1 tr=0 ts=69bcadbd cx=c_pps
+ definitions=main-2603200019
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzIwMDAxOSBTYWx0ZWRfX/qgaAJtOaN03
+ jC14RcM1IXiaqoxIasGPyIwXgKR7YLYx9YIMTh4W7/pc5LgFxz8F1/kvh4MuAdA6fLNNs83cmK8
+ uOTCRmvB2ULRoJSKmvSVgkdY+vSCZ4tVu0MzPJexd7BAH+9oTm8XWNlZnN4jYvE8VQYDSXtF3yK
+ cNKpJEyUZHVPBLpWqKyGIiwL5ECoBYhi9Xl5Q7wWFZ1O4eTDmIvTYOo5wEqwq5FyxJgynWHS5KA
+ 74dLFcBhfI0lzuCrbn/StaF1BT7F0f0Aj9IEdFtdsXm7Qa/29E4aQxjNdFIdRHCqNa1np1akczU
+ UCgjsN9g94jPPk8B3Xh/Q33RGFlrrihFohtO1acjcaQS2bbEV5Ktu0MGscm6Nz492YkMURkNV/W
+ PyaIh/Yy/cXPYaL5u8RcyGqzEK3wGS7uuosT3o/6yssR+jGW2+355wTBiQJBSeLDvxI0YrYPemd
+ CVb6+e0mlQsbwgrwNlA==
+X-Authority-Analysis: v=2.4 cv=J8WnLQnS c=1 sm=1 tr=0 ts=69bcb2b4 cx=c_pps
  a=OOZaFjgC48PWsiFpTAqLcw==:117 a=OOZaFjgC48PWsiFpTAqLcw==:17
- a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
- a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=Yq5XynenixoA:10
- a=GoEa3M9JfhUA:10 a=VkNPw1HP01LnGYTKEx00:22 a=jiCTI4zE5U7BLdzWsZGv:22
- a=EIcjfB9IiI4px24ztqRk:22 a=MazYMTbE4VX3fH07rsQA:9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzIwMDAxNiBTYWx0ZWRfX8Npg2O1Td+kZ
- tFOGPjoqnEYilc1YHWXI0NIOol/WEca1t0Lj9F3mXZ9wgzUu9hCjsLSzVehdAl11R9Nidpc8JoM
- VKxKt59DR8oOYM3JqibxOybvbF8Vq0ywNfhW68y0zghEsBewiB5iHIwXifpr2nseFr+DD+UukT0
- 1g5GbkE1ipZHohNkKs9ungfa/PrHih6Zl5ghvV5bXXzzUzpBCqqSdcdsCCiee1/pECeWAJOG5/q
- Qiu80QGVxX4SB/MuaurYzIeATlVKX2ITmqePhMD/pjw3yqAD/TFSnLYcXuqMYFNNWr6HSpMVrv3
- GVrS+ToNX6gG3RrWAtTpnEM1McdmC8KO6JyxNSRk33Xk+NJNEGPncR828SgZIxmyR/kE7qWCbht
- ZFN5LsWCJ6X1czAJpp+Jb29Lr+vRvaQeyZQt0TklZgQnTnm8VtytJQwuFQQy72ircSKr34Huug+
- jXgDeE951jbaLC0GQ1Q==
-X-Proofpoint-GUID: HsO257hzTrCyeZFJCkd6SsHTExLTVyyP
-X-Proofpoint-ORIG-GUID: HsO257hzTrCyeZFJCkd6SsHTExLTVyyP
+ a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=jiCTI4zE5U7BLdzWsZGv:22 a=BqU2WV_vvsyTyxaotp0D:22 a=VwQbUJbxAAAA:8
+ a=g6HomjI_0XDERytIjeEA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: uUqhXOy5OC20BEI76Y1a1ynCUPQ1vyUV
+X-Proofpoint-ORIG-GUID: uUqhXOy5OC20BEI76Y1a1ynCUPQ1vyUV
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_191535_976974_844C5699 
-X-CRM114-Status: UNSURE (   8.48  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260319_193643_968147_829A099F 
+X-CRM114-Status: GOOD (  12.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -209,16 +114,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, 13 Mar 2026 10:21:07 +0800, Shawn Lin wrote:
 
-Vladimir,
+> Add the mphy reset property to the devicetree bindings for the Rockchip
+> RK3576 UFS host controller. The mphy reset signal is used to reset the
+> physical adapter. Resetting other components while leaving the mphy
+> unreset may occasionally prevent the UFS controller from successfully
+> linking up with the device.
+> 
+> This addresses an intermittent hardware bug where the UFS link fails to
+> establish under specific timing conditions with certain chips. While
+> difficult to reproduce initially, this issue was consistently observed in
+> downstream testing and requires explicit mphy reset control for full
+> stability.
+> 
+> [...]
 
-> The Exynos host controller driver is clearly a PHY consumer (gets the
-> ufs->phy using devm_phy_get()), but pokes into the guts of struct phy
-> to get the generic_phy->power_count.
+Applied to 7.1/scsi-queue, thanks!
 
-Ah, newer version. Would still like an ack from Samsung.
-
-And I hit the wrong key, I did not actually apply this...
+[1/1] scsi: ufs: rockchip,rk3576-ufshc: dt-bindings: Add new mphy reset item
+      https://git.kernel.org/mkp/scsi/c/bdce3a69c578
 
 -- 
 Martin K. Petersen
