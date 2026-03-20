@@ -4,105 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB67D1099B28
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 17:36:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9797D1099B28
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 17:39:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TrQdR3RC9FgV4R9AyGQ/i6D5U5+cwqb5I75gvpFLZuM=; b=RBFhc3Q+Jc4a+pZqhR5e4tSNLf
-	LHmwg2lRxw9sHt7uTVWfaSlxoXpNxhMQY1lo8FIL0LD9F9c0uF5NOYSBQAldZgVBmmRUGZdw+94T6
-	vOLfGIx5r74rJsR/7zJQOdGkmePzAkkgrga4VJ7WUdX9tB3cjh8LMPI84w/AdZ0ZKqGG22CwLgW/4
-	m/LvTWt4OOyw8ZEt/3rjkF9/cubdOfMcbh2iW/2jhzRKQugnF8wtUpQbBNzQ5vmVd/OX7pXCxti+m
-	SKGgmSH9oiunadMIYnzrQ7KExKFSJX5hEXQaLd7mtUbZFdtPDay9Sj/2ggtnvavE5T0D4Qo8h6VWl
-	M4dTdtIw==;
+	bh=gD1OvCtyJ1VzP2+T4yXqQiSL76fwap5AcFjn8VoinDU=; b=gsO7AJ3GRn7Wu+gLDn558yMdOs
+	rRyGGdGowphz1BGRjzFmAUQ7UK3cghRiFL9KkTI0HqvURkspcNbf8z2QEm1j9CHu66v0unGmwSnlw
+	gujnzCE1MvHDyiYfz3hwRakZUtPsz8H8kw8EwNRAvLJs/LVs3GEXjOnqQ33SxxKPoNZcLo5Pet1T+
+	qb6yuyyCZ/SEjAni1aUqKaaD/Q45aTV7XxcWTZ21FK9l9++S/zLpIV1Wxml1Yn4XbtTwJ/TQLYY88
+	p9FM6aZZh1z8RyT9szn/hrm8b9YTR5f0FBg+A0wETzdmKblTXAat3eXvhuPT+qyixGljM41PHOkLk
+	gc5x/oNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3dm0-0000000DH3K-1mW9;
-	Fri, 20 Mar 2026 17:36:36 +0000
-Received: from mail-qk1-x732.google.com ([2607:f8b0:4864:20::732])
+	id 1w3dom-0000000DHLo-14fB;
+	Fri, 20 Mar 2026 17:39:28 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3dlx-0000000DH2A-2foh
+	id 1w3doj-0000000DHLC-0nBs
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Mar 2026 17:36:35 +0000
-Received: by mail-qk1-x732.google.com with SMTP id af79cd13be357-8cd767d2d70so190982085a.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 20 Mar 2026 10:36:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1774028192; x=1774632992; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=xMAwl75HKNDbj5ZNfCoVlvOAZudKVS7YfwFm4MVhr08=;
-        b=TpFus4WGI2kStBaEeYtLFL1BwLDaOorWFLF/rDHG4VtCWusWXzeDGkS/o4mbCNURpT
-         65iio4SbUkq3A/xuvOKBdlEq/Jsc1LvLAIE5sEiSQQOBxdHpuPcXtX3Cxyof3CUsvDyG
-         upLVLIfYnGsTaWiHtthHdsMjppV1R0nDSRvwtW6YdYkUBRtJqhzBux5kJFzBT3rTf1zd
-         Qpw68u9NkrxmcePuV/4Tgmu1aTcGE3o2qYVl8T64g7MYDAXFbaWExCLHyoLDFTUu1/K+
-         3UfElPrWmeP3vLL4DBS0G4+Td7oV5s/XiEVHoLM1yUiX3CsUwoRUbqc7yRSPZbtxf7EO
-         hvsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774028192; x=1774632992;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=xMAwl75HKNDbj5ZNfCoVlvOAZudKVS7YfwFm4MVhr08=;
-        b=cypRO8EFWR/2XrM/QeWMuptbI5vUCgZWuC2j/xtkhmvCnpIS1dvrgZyRWGGKgzKSwB
-         6K08iW3VEt7YF7F8TfPUCsMdtF/tug3fnRc++61eTOT6E8RnIECA00tciK130HfAKTkm
-         CBCVvzCtWfuj+iva5Ohq9roNF++bcefvxhOex+bhanzjq9gj3hkLqHPRSImSnnvBJr0R
-         WTJTUX5QzMzcbVrpfQ0D83xJ/S3wkHqNznzWjkweWW0AyY5/zt9HNC58w6Ch0uPNATzg
-         w1MnRdmVNjEbc5aU733ah0CHfh/WcWVQ1pMk5CP5RMUgeq0c8Fpdgbz0amxnP+8Q8Pub
-         kgCg==
-X-Forwarded-Encrypted: i=1; AJvYcCXOdxrJjpTikSeXXhXLDjRIr3ApU7azYovsh5gVzwx6JigjkL4mJvRrSSgoGoNIW78T5M4X36zaq/+T7ZOo/Q==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzWyH35jT7OrrvFnOCFGFNo5PzdefRSbEqu5SMDAaTUxB1xFuyF
-	gObMWH+hpVz3fxLBbE9PWrZ7PeC+q2ZteaQoGLBdV5rvNOK8z6ufwr9pCat2ymtgqeM=
-X-Gm-Gg: ATEYQzyJqbIsiyTFmZcpw4pS+FbGwVCof1oE2V8WdUbcIguA6fUKp1aez9yvitXda6/
-	dS4+r8LMD2uPQqdS2Of1Mo9cfEBnVNz/tPF4wje2kNBnBEKV3hjfpdfhsqxjlXRR7BUpkG0/xTL
-	J6+GCzoZVubFmCYiun/CWEk+lnM6qsM3OANPr3a6Z8wP+QhehTtqbJzKUoipu780i7BmKTT0bts
-	6T62196BL0Ku7k05TwnyOG5DNwNGtv0AC68rVyjA/Wc3ZmAzJO/+iAEfKnymhpU/rLfA7jZfHgR
-	H9M6WpgwSUulLOVisZjbpFh19+kkYxd+hnMC9mw5A7u+DQ99t3XJRV6l/OLDjybCRRVaSQ0RYzw
-	CDAGwhwMw49WNaS69u2U0D/aKLfVJIpEZWE5oGZSum6kAaPmvzrDufH1zEqi9UdJQ0fNLXmSmgV
-	Dh3RdPX4rgnftxdO3GR2rQSXy4VCET
-X-Received: by 2002:a05:620a:288d:b0:8cd:827a:2abd with SMTP id af79cd13be357-8cfc7f8adb8mr551611885a.72.1774028192036;
-        Fri, 20 Mar 2026 10:36:32 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:11:b76d::5ac? ([2606:6d00:11:b76d::5ac])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfc8fa74c1sm203629185a.18.2026.03.20.10.36.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Mar 2026 10:36:31 -0700 (PDT)
-Message-ID: <8e1e1d54371e1eb43405ebe315dc646f15e495d8.camel@ndufresne.ca>
-Subject: Re: [PATCH v3 07/27] media: rockchip: rga: use stride for offset
- calculation
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
-	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab
-	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
-	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	 <conor+dt@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, kernel@pengutronix.de
-Date: Fri, 20 Mar 2026 13:36:30 -0400
-In-Reply-To: <20260127-spu-rga3-v3-7-77b273067beb@pengutronix.de>
-References: <20260127-spu-rga3-v3-0-77b273067beb@pengutronix.de>
-	 <20260127-spu-rga3-v3-7-77b273067beb@pengutronix.de>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	Fri, 20 Mar 2026 17:39:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 9D43D4166F;
+	Fri, 20 Mar 2026 17:39:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B35E9C4CEF7;
+	Fri, 20 Mar 2026 17:39:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774028364;
+	bh=EmC83LvhVJvYi3xuGFTcrFTglNSFltf0KMf7Ig8lPtU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JuNz7bzhidytfCq09kZKJwyJBYvyYes9xox3rnttDS0EG7HYV+aZWVNhJ2MMHjugV
+	 UgxKzyFi4ZnvNG8+sEUDFGqBNwTDW3msGJxrIw9u42xAPc9C0kyufBdGv0zO5vowdT
+	 1Lij6usCBGSv5b7Ay1RLCztXcmmmf7JzFf16rUjfrvM9Qj/qzuhQqRIzKHKn8ef9Mg
+	 ceWH+RopObuNAJ4bimSbSCDWC1PPPCBgvK7LHR1bbtQxXfp64ZPow79gmBBzwXMp8O
+	 4LIZOIMEBnzM4BTbC/X/Kf8ypKcCxFB50EHggzEB8+E9rV+lIUfVP42G8iL+GG8TZJ
+	 AuX1X47T5xX/w==
+Date: Fri, 20 Mar 2026 17:39:19 +0000
+From: Conor Dooley <conor@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+	dlechner@baylibre.com, jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V2 1/5] dt-bindings: iio: imu: add icm42607
+Message-ID: <20260320-carless-puppet-995866998b8a@spud>
+References: <20260319182956.146976-1-macroalpha82@gmail.com>
+ <20260319182956.146976-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <20260319182956.146976-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_103633_704850_B5B00BC1 
-X-CRM114-Status: GOOD (  18.76  )
+X-CRM114-CacheID: sfid-20260320_103925_238960_26F0EE6B 
+X-CRM114-Status: UNSURE (   4.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,253 +72,39 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============7300416902893129498=="
+Content-Type: multipart/mixed; boundary="===============6417927022561850022=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7300416902893129498==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-IktT+5Q5ygBqkaZSvy5d"
+--===============6417927022561850022==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="aTCYQb8hepuZFpMC"
+Content-Disposition: inline
 
 
---=-IktT+5Q5ygBqkaZSvy5d
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+--aTCYQb8hepuZFpMC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Le mardi 27 janvier 2026 =C3=A0 15:39 +0100, Sven P=C3=BCschel a =C3=A9crit=
-=C2=A0:
-> Use the stride instead of the width for the offset calculation. This
-> ensures that the bytesperline value doesn't need to match the width
-> value of the image.
->=20
-> Furthermore this patch removes the dependency on the uv_factor property
-> and instead reuses the v4l2_format_info to determine the correct
-> division factor.
->=20
-> Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-> ---
-> =C2=A0drivers/media/platform/rockchip/rga/rga-buf.c | 14 +++++++++-----
-> =C2=A0drivers/media/platform/rockchip/rga/rga.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
- 16 ----------------
-> =C2=A0drivers/media/platform/rockchip/rga/rga.h=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0 1 -
-> =C2=A03 files changed, 9 insertions(+), 22 deletions(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rga/rga-buf.c b/drivers/medi=
-a/platform/rockchip/rga/rga-buf.c
-> index bb575873f2b24..65fc0d5b4aa10 100644
-> --- a/drivers/media/platform/rockchip/rga/rga-buf.c
-> +++ b/drivers/media/platform/rockchip/rga/rga-buf.c
-> @@ -14,7 +14,6 @@
-> =C2=A0#include <media/videobuf2-dma-sg.h>
-> =C2=A0#include <media/videobuf2-v4l2.h>
-> =C2=A0
-> -#include "rga-hw.h"
-> =C2=A0#include "rga.h"
-> =C2=A0
-> =C2=A0static ssize_t fill_descriptors(struct rga_dma_desc *desc, size_t m=
-ax_desc,
-> @@ -95,14 +94,19 @@ static int rga_buf_init(struct vb2_buffer *vb)
-> =C2=A0	return 0;
-> =C2=A0}
-> =C2=A0
-> -static int get_plane_offset(struct rga_frame *f, int plane)
-> +static int get_plane_offset(struct rga_frame *f,
-> +			=C2=A0=C2=A0=C2=A0 const struct v4l2_format_info *info,
-> +			=C2=A0=C2=A0=C2=A0 int plane)
-> =C2=A0{
-> +	u32 stride =3D f->pix.plane_fmt[0].bytesperline;
-> +
-> =C2=A0	if (plane =3D=3D 0)
-> =C2=A0		return 0;
-> =C2=A0	if (plane =3D=3D 1)
-> -		return f->width * f->height;
-> +		return stride * f->height;
-> =C2=A0	if (plane =3D=3D 2)
-> -		return f->width * f->height + (f->width * f->height / f->fmt->uv_facto=
-r);
-> +		return stride * f->height +
-> +		=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (stride * f->height / info->hdiv =
-/ info->vdiv);
-> =C2=A0
-> =C2=A0	return -EINVAL;
-> =C2=A0}
-> @@ -148,7 +152,7 @@ static int rga_buf_prepare(struct vb2_buffer *vb)
-> =C2=A0	/* Fill the remaining planes */
-> =C2=A0	info =3D v4l2_format_info(f->fmt->fourcc);
-> =C2=A0	for (i =3D info->mem_planes; i < info->comp_planes; i++)
-> -		offsets[i] =3D get_plane_offset(f, i);
-> +		offsets[i] =3D get_plane_offset(f, info, i);
-> =C2=A0
-> =C2=A0	rbuf->offset.y_off =3D offsets[0];
-> =C2=A0	rbuf->offset.u_off =3D offsets[1];
-> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
-atform/rockchip/rga/rga.c
-> index 338c7796490bc..da4d5bec7a0a5 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.c
-> +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -190,7 +190,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_ALPHA_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_ABGR8888,
-> =C2=A0		.depth =3D 32,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -199,7 +198,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_RB_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_ABGR8888,
-> =C2=A0		.depth =3D 32,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -208,7 +206,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_RB_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_XBGR8888,
-> =C2=A0		.depth =3D 32,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -217,7 +214,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_NONE_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_RGB888,
-> =C2=A0		.depth =3D 24,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -226,7 +222,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_RB_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_RGB888,
-> =C2=A0		.depth =3D 24,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -235,7 +230,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_RB_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_ABGR4444,
-> =C2=A0		.depth =3D 16,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -244,7 +238,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_RB_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_ABGR1555,
-> =C2=A0		.depth =3D 16,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -253,7 +246,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_RB_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_BGR565,
-> =C2=A0		.depth =3D 16,
-> -		.uv_factor =3D 1,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -262,7 +254,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_UV_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV420SP,
-> =C2=A0		.depth =3D 12,
-> -		.uv_factor =3D 4,
-> =C2=A0		.y_div =3D 2,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -271,7 +262,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_UV_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV422SP,
-> =C2=A0		.depth =3D 16,
-> -		.uv_factor =3D 2,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -280,7 +270,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_NONE_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV420SP,
-> =C2=A0		.depth =3D 12,
-> -		.uv_factor =3D 4,
-> =C2=A0		.y_div =3D 2,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -289,7 +278,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_NONE_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV420SP,
-> =C2=A0		.depth =3D 12,
-> -		.uv_factor =3D 4,
-> =C2=A0		.y_div =3D 2,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -298,7 +286,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_NONE_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV422SP,
-> =C2=A0		.depth =3D 16,
-> -		.uv_factor =3D 2,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 1,
-> =C2=A0	},
-> @@ -307,7 +294,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_NONE_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV420P,
-> =C2=A0		.depth =3D 12,
-> -		.uv_factor =3D 4,
-> =C2=A0		.y_div =3D 2,
-> =C2=A0		.x_div =3D 2,
-> =C2=A0	},
-> @@ -316,7 +302,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_NONE_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV422P,
-> =C2=A0		.depth =3D 16,
-> -		.uv_factor =3D 2,
-> =C2=A0		.y_div =3D 1,
-> =C2=A0		.x_div =3D 2,
-> =C2=A0	},
-> @@ -325,7 +310,6 @@ static struct rga_fmt formats[] =3D {
-> =C2=A0		.color_swap =3D RGA_COLOR_UV_SWAP,
-> =C2=A0		.hw_format =3D RGA_COLOR_FMT_YUV420P,
-> =C2=A0		.depth =3D 12,
-> -		.uv_factor =3D 4,
-> =C2=A0		.y_div =3D 2,
-> =C2=A0		.x_div =3D 2,
-> =C2=A0	},
-> diff --git a/drivers/media/platform/rockchip/rga/rga.h b/drivers/media/pl=
-atform/rockchip/rga/rga.h
-> index 2db10acecb405..477cf5b62bbb2 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.h
-> +++ b/drivers/media/platform/rockchip/rga/rga.h
-> @@ -17,7 +17,6 @@
-> =C2=A0struct rga_fmt {
-> =C2=A0	u32 fourcc;
-> =C2=A0	int depth;
-> -	u8 uv_factor;
-> =C2=A0	u8 y_div;
-> =C2=A0	u8 x_div;
-> =C2=A0	u8 color_swap;
-
---=-IktT+5Q5ygBqkaZSvy5d
+--aTCYQb8hepuZFpMC
 Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCab2FngAKCRDZQZRRKWBy
-9BloAPsHKgr+KaFyY9VVUNheC4oagzZIVyhFpCYJn5gTmsLnQQEAowO96Dv+27KK
-DpZZJP6AXY9axehC4NQNZaqzyQAtGAE=
-=aIWY
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCab2GRwAKCRB4tDGHoIJi
+0n+2AQDOoSl2g8nQdYhadOyLnaeDez9zFjMDbF9Zq3NrhrkC6wEAlg3H0iNaDpQY
+qvxM143+V4mX/Pk/IhhYY/lb/2LBOQ4=
+=RDUK
 -----END PGP SIGNATURE-----
 
---=-IktT+5Q5ygBqkaZSvy5d--
+--aTCYQb8hepuZFpMC--
 
 
---===============7300416902893129498==
+--===============6417927022561850022==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -371,5 +115,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7300416902893129498==--
+--===============6417927022561850022==--
 
