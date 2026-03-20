@@ -4,53 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF3EB1093188
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 08:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1440E1093199
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 09:19:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xjuRkUNu93jnJ0fXxsvkPpaAPsqZT10JXnsLqGHdMo4=; b=JmekQJjsYY7XEB
-	D3juAX8d6dMLuQIccAQs5T5CuNQI93MoOlMh4aY0Z5WRdmLSGVw0nOihsGb3IVBlD6SSdD+3DwNi9
-	unEL8n7+rZYihnuL3smIqUw5qJBHEiwaTk0kx27W6caOGd/Oy1ECKVa3DhMUfqCFBN1HChZNV8WTM
-	2jzJvPZMZ4W63QKKliQdH6Ay4eapAza9eIrF6NfGfc/5eeYx0eaXZlF9Mh29pEfnE8tcwhbAypfhl
-	lOqQqGjhHuZRWJiwm22ghlDL947cLVJmY+V3Yqs6Qj2ImtYeqgiThp3qIQB5uDseXLfiJ9qvJp0Zz
-	x+w9wOEsGLwPlPHIU+Mw==;
+	List-Owner; bh=deS78AFjvXEqXhIWw2C31pIrFwt58NKDgNCepU3kYXU=; b=0x/t5m9ComQ8tP
+	LwNKDIOY9WqFw/s7qMmmL14Bno88pblTfa+xAlOdT6CWmM67A4MDrXM9SFUZ3WxLpjaxE9ACu7qDs
+	JDbYteoKiroOJfQJI/Li9i1koSwQJzXR6fpsStfcAKUET8ZRzaWtBojAhVa1q4yNhvHYrfZBji+6q
+	yTUKNTDge1sam6MRaGu/NUXIaJxFVzDVQUPX3JKxpHtCfP/gWehyDQS5sWWe/d/x8OiMPPiLoAmHC
+	rZSKH4Steucprwvjc+zEBsxzCdZFHi58QKO792WP7hQgR2j3GHZn2j6MLiY9BltIMgRJAWLyRqf1Z
+	ah1RfMaPSgg9amQs2/Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VX3-0000000CPJk-3sIC;
-	Fri, 20 Mar 2026 08:48:37 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w3W0v-0000000CSh9-0UJm;
+	Fri, 20 Mar 2026 09:19:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3VX1-0000000CPJI-09GT;
-	Fri, 20 Mar 2026 08:48:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=ZbDVFjolLGX3QRmdSUPmSQ/KW7YhxkrqDIk5QadA5dk=; b=ICG+lqrbkJBPFYv1OGnP9Miu3d
-	NaIyEx6PVQH8VVHU9O4VNSprLyhEfZDoEcH3+OdOfo7tgVqLWRO05gCbEs+VViGZzRPOfrpWGFFvu
-	ri+hGv9EwejACBCAtQUSD73xYCrFkd0eEIVBbGCwUNKcsxj0JrpurMeWAZmh0xmbR+vt7DKEF7ybG
-	2OUR9ANCKMt1tXIc+X0r2/63Nbqd2dPw2272RNrCGaftYGPNWa21DiYGzVf5Nh/qJ7RP9vee9AoEx
-	vY36tOpj8+/pbDgvtFSuYt0z/bH788AQbe3KFmAzDtNhK9h9yuwmgtxAccZFTcrzESgBnc1Dr89p+
-	9/S9wM5w==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org, MidG971 <midgy971@gmail.com>
-Cc: shawn.lin@rock-chips.com, jonas@kwiboo.se,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- MidG971 <midgy971@gmail.com>
-Subject: Re: [PATCH v4] arm64: dts: rockchip: rock-3b: Model PI6C20100 as
- gated-fixed-clock
-Date: Fri, 20 Mar 2026 09:48:25 +0100
-Message-ID: <2053182.usQuhbGJ8B@phil>
-In-Reply-To: <20260319145120.99833-1-midgy971@gmail.com>
-References: <20260304132957.684616-1-midgy971@gmail.com>
- <20260319145120.99833-1-midgy971@gmail.com>
+	id 1w3W0t-0000000CSgK-2YgY;
+	Fri, 20 Mar 2026 09:19:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=AalUYTBsOrSBLpMWY4eHK3qWwaY7w/HBDn6iVpHR0CU=; b=JLxfpKWwUJQ7V4q1k3XZK/+zpF
+	O60Uv785pN1sB2kmdUSqaX7Y1B9+wToYuBlss/ok0M3W7QCkhqgfLaGjYL5kzXYZnVLUbEjttuJLA
+	vPy5Gc2zIrsIgWSzx38Jy8n7PNxNDxCbUxe80eb831nBJIG9k2mCFq5QTtwPw4uPDfbT6vRnSCvYd
+	TBiVQx+MeHUcSCQTRm7kSLNNoD8n+JwIa22fRYLVWb5XnHVRdbWUMjc57m6WhCg05Lwn7rKWsZ6pJ
+	zW8DyJKQB6pu9N6J+RpVL5czpoolpQO/SUrwRmZkHKCg5PvNGSMrffAip2zS+r+YggiuRqsrKBQEP
+	9XiAY43w==;
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w3W0e-0000000FDT2-2D2Z;
+	Fri, 20 Mar 2026 09:19:14 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 74D8B4026B;
+	Fri, 20 Mar 2026 09:19:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C66ADC2BC9E;
+	Fri, 20 Mar 2026 09:19:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1773998348;
+	bh=LaFfclQJNpW8j4z2NNQXpLUkD7/mL0945GUUmdgcNYI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=XxsQxNPgDUJHJqSei+eyT3/4wLXRMZEqzks3G36VQLFcfu9JWqwnY0mOg0MTOi1Ro
+	 0xNBxOt4FxheBLRQZkCyILhWO4riIZOPSIilhvRCJqaqqdY6/5HF3hQPztctn6ucIX
+	 1OKBg5jQrZDwH3wIHVCRAqYFJbjGKxwstlRNVQJe9i0P6mwq/PHNiGhZVoaXjuAI5d
+	 muiNrzaa0qk78JgPptsfReDFcKvx/Swv28NN4rw22m1qkBYrrXH64UWHgS8AKL1EqF
+	 sZayDTa+oC8LyGAjhTAcjJ2yxaJIEWbh77k+fYRJoB/Sn4EYeME3yGNRmV8G2OIOBE
+	 oEPtO3LUNwjSg==
+Date: Fri, 20 Mar 2026 10:19:06 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v2 1/9] dt-bindings: display: rockchip: analogix-dp:
+ Expand clock-names "hclk" for the third clock
+Message-ID: <20260320-amusing-magnetic-harrier-20cc40@quoll>
+References: <20260319104031.1986946-1-damon.ding@rock-chips.com>
+ <20260319104031.1986946-2-damon.ding@rock-chips.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260319104031.1986946-2-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_014835_099717_D4E3A655 
-X-CRM114-Status: GOOD (  22.40  )
+X-CRM114-CacheID: sfid-20260320_091912_878605_BBCCBF3F 
+X-CRM114-Status: GOOD (  16.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,78 +80,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: heiko@sntech.de, kever.yang@rock-chips.com, dri-devel@lists.freedesktop.org, dianders@chromium.org, amadeus@jmu.edu.cn, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, didi.debian@cknow.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, heiko.stuebner@cherry.de, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, alchark@gmail.com, michael.riesch@collabora.com, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com, tomeu@tomeuvizoso.net
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRG9ubmVyc3RhZywgMTkuIE3DpHJ6IDIwMjYsIDE1OjUxOjIwIE1pdHRlbGV1cm9ww6Rpc2No
-ZSBOb3JtYWx6ZWl0IHNjaHJpZWIgTWlkRzk3MToKPiBUaGUgUmFkeGEgUk9DSyAzQiB1c2VzIGEg
-UEk2QzIwMTAwIFBDSWUgcmVmZXJlbmNlIGNsb2NrIGJ1ZmZlciB0bwo+IHByb3ZpZGUgYSAxMDBN
-SHogcmVmZXJlbmNlIGNsb2NrIHRvIHRoZSBQQ0llIDMuMCBQSFkgYW5kIGNvbnRyb2xsZXJzLgo+
-IFRoaXMgY2hpcCBpcyBjdXJyZW50bHkgbW9kZWxlZCBvbmx5IGFzIGEgZml4ZWQgcmVndWxhdG9y
-Cj4gKHZjYzN2M19waTZjXzAzKSwgd2l0aCBubyBjbG9jayBvdXRwdXQgcmVwcmVzZW50YXRpb24u
-Cj4gCj4gVGhlIFBJNkMyMDEwMCBpcyBhIGNsb2NrIGdlbmVyYXRvciwgbm90IGEgcG93ZXIgc3Vw
-cGx5LiBNb2RlbCBpdAo+IHByb3Blcmx5IGFzIGEgZ2F0ZWQtZml4ZWQtY2xvY2ssIGZvbGxvd2lu
-ZyB0aGUgcGF0dGVybiBlc3RhYmxpc2hlZAo+IGZvciB0aGUgUm9jayA1IElUWCBhbmQgb3RoZXIg
-Ym9hcmRzIHdpdGggc2ltaWxhciBQQ0llIGNsb2NrIGJ1ZmZlcgo+IGNoaXBzLgo+IAo+IFRoZSBy
-ZWd1bGF0b3Igbm9kZSBpcyBrZXB0IGFzLWlzIHNpbmNlIGl0IGNvbnRyb2xzIHRoZSBwb3dlciBz
-dXBwbHkKPiB0byB0aGUgUEk2QzIwMTAwIGNoaXAgdmlhIEdQSU8wX0Q0LiBUaGUgbmV3IGdhdGVk
-LWZpeGVkLWNsb2NrIG5vZGUKPiByZWZlcmVuY2VzIHRoaXMgcmVndWxhdG9yIGFzIGl0cyB2ZGQt
-c3VwcGx5IGFuZCBwcm92aWRlcyBhIHByb3Blcgo+IDEwME1IeiBjbG9jayBvdXRwdXQuIFRoZSBw
-Y2llM3gyIG5vZGUgaXMgdXBkYXRlZCB0byBpbmNsdWRlIHRoZQo+IHBpcGUgYW5kIHJlZmVyZW5j
-ZSBjbG9ja3MsIG1hdGNoaW5nIHRoZSBhcHByb2FjaCB1c2VkIGluCj4gcmszNTg4LXJvY2stNS1p
-dHguZHRzLgo+IAo+IEFzc2lzdGVkLWJ5OiBDbGF1ZGU6Y2xhdWRlLTMtb3B1cwo+IFJldmlld2Vk
-LWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPiBTaWduZWQtb2ZmLWJ5
-OiBNaWRneSBCQUxPTiA8bWlkZ3k5NzFAZ21haWwuY29tPgoKU29ycnkgZm9yIGhhdmluZyB0byBi
-cmluZyB1cCB0aGUgcHJvY2VzcyBhZ2FpbiwgYnV0IHRoZSBwYXRjaAphdXRob3Igc2hvdWxkIG1h
-dGNoIHRoZSBTaWduZWQtb2ZmLWJ5IGxpbmUuCgpZb3UgY2FuIHVwZGF0ZSB0aGUgcGF0Y2ggYXV0
-aG9yIHdpdGggc29tZXRoaW5nIGxpa2U6CiAgZ2l0IGNvbW1pdCAtLWF1dGhvcj0iTWlkZ3kgQkFM
-T04gPG1pZGd5OTcxQGdtYWlsLmNvbT4iIC0tYW1lbmQKCkFsc28gaXMgdGhlIGxhc3QgbmFtZSBh
-bHdheXMgIlVQUEVSIENBU0UiIGluIHlvdXIgcmVnaW9uPwoKVGhhbmtzIGEgbG90IGZvciBzdGF5
-aW5nIG9uIHRoaXMKSGVpa28KCgo+IC0tLQo+IAo+IENoYW5nZXMgc2luY2UgdjMgWzFdOgo+ICAt
-IEFkZCBSZXZpZXdlZC1ieSBmcm9tIFNoYXduIExpbgo+IAo+IENoYW5nZXMgc2luY2UgdjIgWzJd
-Ogo+ICAtIEZpeCBBSSBhdHRyaWJ1dGlvbjogdXNlIEFzc2lzdGVkLWJ5IHRhZyBpbnN0ZWFkIG9m
-IFNpZ25lZC1vZmYtYnkgKFNoYXduKQo+ICAtIEFkZCBtaXNzaW5nIHBpcGUgY2xvY2sgKENMS19Q
-Q0lFMzBYMl9QSVBFX0RGVCkgdG8gcGNpZTN4MiBjbG9ja3MKPiAgICBvdmVycmlkZSAoU2hhd24s
-IHJlZmVyZW5jaW5nIERhdmlkJ3MgcGF0Y2ggWzNdKQo+IAo+IENoYW5nZXMgc2luY2UgdjEgWzRd
-Ogo+ICAtIERyb3AgcGh5LXN1cHBseSBhcHByb2FjaCBlbnRpcmVseSAoSm9uYXMsIFNoYXduKQo+
-ICAtIE1vZGVsIFBJNkMyMDEwMCBhcyBnYXRlZC1maXhlZC1jbG9jayBpbnN0ZWFkCj4gIC0gV2ly
-ZSByZWZlcmVuY2UgY2xvY2sgdG8gcGNpZTN4MiBjb250cm9sbGVyCj4gIC0gRm9sbG93IHBhdHRl
-cm4gZnJvbSByazM1ODgtcm9jay01LWl0eC5kdHMKPiAKPiBbMV0gaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvbGludXgtcm9ja2NoaXAvMjAyNjAzMDQxMzI5NTcuNjg0NjE2LTEtbWlkZ3k5NzFAZ21h
-aWwuY29tLwo+IFsyXSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8yMDI2
-MDMwNDEzMjk1Ny42ODQ2MTYtMS1taWRneTk3MUBnbWFpbC5jb20vCj4gWzNdIGh0dHBzOi8vbG9y
-ZS5rZXJuZWwub3JnL2xpbnV4LXJvY2tjaGlwL2Q5ODFmYTg0LWJkMDUtYWM5ZC05OGNhLTg5ZWU0
-NzE3NzgyOUByb2NrLWNoaXBzLmNvbS9ULyNtNmE4Mjg5NjA5ZTZhNjA2OTFkM2MwNjM1OGI2MzIy
-YzdhYTVlNDNkMQo+IFs0XSBodHRwczovL2xvcmUua2VybmVsLm9yZy9saW51eC1yb2NrY2hpcC8y
-MDI2MDIxMzE1MTQ1Mi41MzU1MjctMS1taWRneTk3MUBnbWFpbC5jb20vCj4gCj4gIGFyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2IuZHRzIHwgMjEgKysrKysrKysrKysr
-KysrKysrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCAyMCBpbnNlcnRpb25zKCspLCAxIGRlbGV0aW9u
-KC0pCj4gCj4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4
-LXJvY2stM2IuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Njgtcm9jay0z
-Yi5kdHMKPiBpbmRleCBjNWY2N2RkNmRmZDkuLjFhMmIzYzRkNWU2ZiAxMDA2NDQKPiAtLS0gYS9h
-cmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC1yb2NrLTNiLmR0cwo+ICsrKyBiL2Fy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJvY2stM2IuZHRzCj4gQEAgLTU2LDcg
-KzU2LDE2IEBACj4gIAkJfTsKPiAgCX07Cj4gCj4gLQkvKiBwaTZjIHBjaWUgY2xvY2sgZ2VuZXJh
-dG9yICovCj4gKwkvKiBQSTZDMjAxMDAgUENJZSByZWZlcmVuY2UgY2xvY2sgYnVmZmVyICgxMDBN
-SHopICovCj4gKwlwY2llMzBfcmVmY2xrOiBwY2llLWNsb2NrLWdlbmVyYXRvciB7Cj4gKwkJY29t
-cGF0aWJsZSA9ICJnYXRlZC1maXhlZC1jbG9jayI7Cj4gKwkJI2Nsb2NrLWNlbGxzID0gPDA+Owo+
-ICsJCWNsb2NrLWZyZXF1ZW5jeSA9IDwxMDAwMDAwMDA+Owo+ICsJCWNsb2NrLW91dHB1dC1uYW1l
-cyA9ICJwY2llMzBfcmVmY2xrIjsKPiArCQl2ZGQtc3VwcGx5ID0gPCZ2Y2MzdjNfcGk2Y18wMz47
-Cj4gKwl9Owo+ICsKPiArCS8qIFBJNkMyMDEwMCBwb3dlciBzdXBwbHkgLSBhY3RpdmUtaGlnaCBH
-UElPMF9ENCAqLwo+ICAJdmNjM3YzX3BpNmNfMDM6IHJlZ3VsYXRvci0zdjMtdmNjLXBpNmMtMDMg
-ewo+ICAJCWNvbXBhdGlibGUgPSAicmVndWxhdG9yLWZpeGVkIjsKPiAgCQllbmFibGUtYWN0aXZl
-LWhpZ2g7Cj4gQEAgLTU1Myw2ICs1NjIsMTUgQEAKPiAgfTsKPiAKPiAgJnBjaWUzeDIgewo+ICsJ
-Y2xvY2tzID0gPCZjcnUgQUNMS19QQ0lFMzBYMl9NU1Q+LCA8JmNydSBBQ0xLX1BDSUUzMFgyX1NM
-Vj4sCj4gKwkJIDwmY3J1IEFDTEtfUENJRTMwWDJfREJJPiwgPCZjcnUgUENMS19QQ0lFMzBYMj4s
-Cj4gKwkJIDwmY3J1IENMS19QQ0lFMzBYMl9BVVhfTkRGVD4sCj4gKwkJIDwmY3J1IENMS19QQ0lF
-MzBYMl9QSVBFX0RGVD4sCj4gKwkJIDwmcGNpZTMwX3JlZmNsaz47Cj4gKwljbG9jay1uYW1lcyA9
-ICJhY2xrX21zdCIsICJhY2xrX3NsdiIsCj4gKwkJICAgICAgImFjbGtfZGJpIiwgInBjbGsiLCAi
-YXV4IiwKPiArCQkgICAgICAicGlwZSIsICJyZWYiOwo+ICAJcGluY3RybC1uYW1lcyA9ICJkZWZh
-dWx0IjsKPiAgCXBpbmN0cmwtMCA9IDwmcGNpZTMweDJtMV9waW5zPjsKPiAgCXJlc2V0LWdwaW9z
-ID0gPCZncGlvMiBSS19QRDYgR1BJT19BQ1RJVkVfSElHSD47Cj4gLS0KPiAyLjM5LjUKPiAKPiAK
-CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51
-eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9y
-ZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tj
-aGlwCg==
+On Thu, Mar 19, 2026 at 06:40:23PM +0800, Damon Ding wrote:
+> The RK3588 eDP controller needs the video datapath clock "hclk" to work
+> well. Previously, it works without explicitly adding this clock because
+> the 'rockchip,vo-grf = <&vo1_grf>' property implicitly enables HCLK_VO1.
+> 
+> Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> ---
+>  .../bindings/display/rockchip/rockchip,analogix-dp.yaml       | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> index d99b23b88cc5..d2bc8636b626 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> @@ -26,7 +26,9 @@ properties:
+>      items:
+>        - const: dp
+>        - const: pclk
+> -      - const: grf
+> +      - enum:
+> +          - grf
+> +          - hclk
+
+You just told me it is the same clock, no? I asked that and you
+confirmed? Or you replied with an answer not relevant to the question?
+
+If this device takes reference to grf, why does it also take grf clock?
+Devices MUST NOT take clocks on behalf of other devices, so please
+answer with a list of all clock inputs according to datasheet/manual.
+
+Best regards,
+Krzysztof
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
