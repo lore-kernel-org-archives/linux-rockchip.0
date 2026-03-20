@@ -4,100 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85D49109316E
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 02:36:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 498B3109317B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 07:15:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bqin/FiyFk4uP9tmiO+BzBbIL1UPf2hgDsrf61wrmqs=; b=xbSVCn3xJw3W5x
-	aOStq4qxl0LCFb5e0isY36rtalZA0vQTkxVrP5GszvT0tPWmXs+Fx+ansXPR9LKPLUp5defesjinm
-	ayT0M3fFLxRMpKjlSSP1WBZ2FRA9MA6kUXzpIE03qQwe7F8NKv+Zw2+g/chnM0TvUAZBxT5z9atZ1
-	eCWB3BzDOKjVmeTKs82iG0WMciA8YpwgdLH6sqScSnon7PjEn1N1nfKbIHwTZv0+owlNuXkGD0NLl
-	LLon1lMDog5ZSQgT+aKPm7HliMrbpjWEqdmeSvmlHXz8ud45TkevsukNfpT8ZnJlmst5Hz6SCHgsF
-	PFSzoLLL71J4l1wRaFMQ==;
+	List-Owner; bh=YZoUQH4xyDjNhp6hd1+bXqnivEs9VK0L6JWgg+5/2nM=; b=OFfgA9mPlzt1mf
+	hYaRlQRODj68Fb+pUyqgrGI8zlGNN3xQ0LUZLTc/G4b7aWWXBkLu0su5c/tLVwJa6QFWTWDk5xvGU
+	tskX9242JRLIC8RQd6CPjlPBgqk2cjj6FndHHLGdUUa99pze/vNeJ1YUWQ/eLL8SERqnFK/yZm8O6
+	9wfbifN9tkycO7o4bfzTn9vu7dIsXsSW5McsvUZfrwbITAr2lB9fxNKEau/5ES+zN/f5Mp57bavvv
+	rFCEQXiGyksS7vV9MenwQaKPXg3Ex2qgTvNzkZ4vA8SfNMAWkN3YR9BGp3V985Smys79xeBVVFGg3
+	T34T/ukfA/wZgkFS1Ylw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3PjC-0000000BwCu-1Kx4;
-	Fri, 20 Mar 2026 02:36:46 +0000
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	id 1w3U4P-0000000CDV5-2zAV;
+	Fri, 20 Mar 2026 07:14:57 +0000
+Received: from mx1.wiredblade.com ([72.51.58.38])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3Pj9-0000000BwCW-3OWM
+	id 1w3U4N-0000000CDUk-3tgb
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Mar 2026 02:36:45 +0000
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
-	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62K0xker536248;
-	Fri, 20 Mar 2026 02:36:37 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
-	:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=
-	corp-2025-04-25; bh=MqXfRDBGG87/SrtLAFzhwTQX9IwNVcNXwmFPCp3BRPI=; b=
-	U7BIXB1BCDeOOrd0ASDnLAtkDAVrPAnv2IzQmBIXuGGAhZ1RjITy112dlJjrXtBN
-	r8ecnRI96TKVcdAZTCQDdmN7A9FZVVbffIQxtjvphDrycHgPZo93uXwiG6ox3BI7
-	5G1/G8Hc5pYMUrIpdhv+LyHjAO6IRfCVjWwfjslFmkXH2wYyKsiihApLcQ/IUOVC
-	d2LDYaVRmLt2aAG8+zLM/EzJThLtM/YeMH6yRa3qcK5tWNS3Ja5SfQjIjFfOutQd
-	bSKFqhtQVGVV/X+si9eW1Ia8/cN8Czet18gEYb1tZGzldCfpIwVpIjYKuAt2LjEm
-	BOLHXf3U4lEVR6vfW0E8Gw==
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
-	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4cvyqc0v54-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 20 Mar 2026 02:36:36 +0000 (GMT)
-Received: from pps.filterd (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 62K0GBZk014272;
-	Fri, 20 Mar 2026 02:36:35 GMT
-Received: from pps.reinject (localhost [127.0.0.1])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4cvx4dnkfb-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Fri, 20 Mar 2026 02:36:35 +0000
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
-	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 62K2aIsL027944;
-	Fri, 20 Mar 2026 02:36:35 GMT
-Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
-	by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4cvx4dnkeh-2;
-	Fri, 20 Mar 2026 02:36:35 +0000
-From: "Martin K. Petersen" <martin.petersen@oracle.com>
-To: "James E . J . Bottomley" <James.Bottomley@HansenPartnership.com>,
-        Shawn Lin <shawn.lin@rock-chips.com>
-Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
-        Heiko Stuebner <heiko@sntech.de>, Bart Van Assche <bvanassche@acm.org>,
-        Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
-        linux-scsi@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3] scsi: ufs: rockchip,rk3576-ufshc: dt-bindings: Add new mphy reset item
-Date: Thu, 19 Mar 2026 22:36:31 -0400
-Message-ID: <177397022246.2845275.8137897176689873586.b4-ty@oracle.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <1773368467-109650-1-git-send-email-shawn.lin@rock-chips.com>
-References: <1773368467-109650-1-git-send-email-shawn.lin@rock-chips.com>
+	Fri, 20 Mar 2026 07:14:57 +0000
+dkim-signature: v=1; a=rsa-sha256; d=psihoexpert.ro; s=dynu;
+	c=relaxed/relaxed; q=dns/txt; h=From:Subject:Date:Message-ID:To:CC:MIME-Version:Content-Type:Content-Transfer-Encoding:In-Reply-To:References;
+	bh=n3SYAGLUHLozUzmk13gqo20d1bWb4ru42R3BxxVDQIw=;
+	b=nV1KC1KvToOR6NGpKfalpEnvC9ly6R7yEb8phVssuRrqLr465bOrsCV2S9g5nGSPDylshvsgnAFx+mtr0sGW3zRsCmU4g6QlDQwDGIBBeNFUNsI0m1mn+HgDTO3qjZiyUfPnqiiQl6I2jbJlHQooxxe42R2ZLYumd4WBCcdXG6D2Ex9jIQryMd6qS2IJkraAeGyHpeydeMSdbCxF4Mrq6fMJVogGi+AuhmZf/UQfxPNH56KcLah7H7jlq5
+	46nTBptBmNvf9LGuGjdmA1+elPlr4l6ioGCPIy9Dp5Vq2n8yYviZaG4ityw4HTk+7mmxEkfrFNVbQNCdMhT1yeGsIkGw==
+Received: from GRAPHRT (188-24-192-137.rdsnet.ro [188.24.192.137])
+	by mx1.wiredblade.com with ESMTPSA
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256)
+	; Fri, 20 Mar 2026 07:14:22 +0000
+Date: Fri, 20 Mar 2026 09:14:35 +0200
+From: Marius Dinu <marius@psihoexpert.ro>
+To: Diederik de Haas <diederik@cknow-tech.com>
+Cc: Marius Dinu <m95d+git@psihoexpert.ro>,
+	linux-rockchip@lists.infradead.org, Andy Yan <andyshrk@163.com>
+Subject: Re: [PATCH v2] drm: rockchip-dw-dp: add missing dependency on
+ bridge_connector
+Message-ID: <abzz234Esd/b5ZHI@GRAPHRT>
+References: <20260319155051.1944-1-m95d+git@psihoexpert.ro>
+ <DH6YBGOJGS8F.1KVA57WLCE235@cknow-tech.com>
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-19_04,2026-03-19_05,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 adultscore=0 bulkscore=0
- phishscore=0 mlxscore=0 mlxlogscore=984 malwarescore=0 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
- definitions=main-2603200019
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzIwMDAxOSBTYWx0ZWRfX/qgaAJtOaN03
- jC14RcM1IXiaqoxIasGPyIwXgKR7YLYx9YIMTh4W7/pc5LgFxz8F1/kvh4MuAdA6fLNNs83cmK8
- uOTCRmvB2ULRoJSKmvSVgkdY+vSCZ4tVu0MzPJexd7BAH+9oTm8XWNlZnN4jYvE8VQYDSXtF3yK
- cNKpJEyUZHVPBLpWqKyGIiwL5ECoBYhi9Xl5Q7wWFZ1O4eTDmIvTYOo5wEqwq5FyxJgynWHS5KA
- 74dLFcBhfI0lzuCrbn/StaF1BT7F0f0Aj9IEdFtdsXm7Qa/29E4aQxjNdFIdRHCqNa1np1akczU
- UCgjsN9g94jPPk8B3Xh/Q33RGFlrrihFohtO1acjcaQS2bbEV5Ktu0MGscm6Nz492YkMURkNV/W
- PyaIh/Yy/cXPYaL5u8RcyGqzEK3wGS7uuosT3o/6yssR+jGW2+355wTBiQJBSeLDvxI0YrYPemd
- CVb6+e0mlQsbwgrwNlA==
-X-Authority-Analysis: v=2.4 cv=J8WnLQnS c=1 sm=1 tr=0 ts=69bcb2b4 cx=c_pps
- a=OOZaFjgC48PWsiFpTAqLcw==:117 a=OOZaFjgC48PWsiFpTAqLcw==:17
- a=IkcTkHD0fZMA:10 a=Yq5XynenixoA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=jiCTI4zE5U7BLdzWsZGv:22 a=BqU2WV_vvsyTyxaotp0D:22 a=VwQbUJbxAAAA:8
- a=g6HomjI_0XDERytIjeEA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: uUqhXOy5OC20BEI76Y1a1ynCUPQ1vyUV
-X-Proofpoint-ORIG-GUID: uUqhXOy5OC20BEI76Y1a1ynCUPQ1vyUV
+Content-Disposition: inline
+In-Reply-To: <DH6YBGOJGS8F.1KVA57WLCE235@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260319_193643_968147_829A099F 
-X-CRM114-Status: GOOD (  12.52  )
+X-CRM114-CacheID: sfid-20260320_001456_085117_6D3C7294 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,34 +63,75 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 Mar 2026 10:21:07 +0800, Shawn Lin wrote:
+On Thu, 2026-03-19 18.56.59 ++0100, Diederik de Haas wrote:
+> On Thu Mar 19, 2026 at 4:50 PM CET, Marius Dinu wrote:
+> > Avoids this error:
+> >   ld: drivers/gpu/drm/rockchip/dw_dp-rockchip.o: in function `dw_dp_roc=
+kchip_bind':
+> >   /usr/src/linux/drivers/gpu/drm/rockchip/dw_dp-rockchip.c:108:(.text+0=
+x188): undefined reference to `drm_bridge_connector_init'
+> >
+> > Signed-off-by: Marius Dinu <m95d+git@psihoexpert.ro>
+> > ---
+> >  drivers/gpu/drm/rockchip/Kconfig | 1 +
+> =
 
-> Add the mphy reset property to the devicetree bindings for the Rockchip
-> RK3576 UFS host controller. The mphy reset signal is used to reset the
-> physical adapter. Resetting other components while leaving the mphy
-> unreset may occasionally prevent the UFS controller from successfully
-> linking up with the device.
-> 
-> This addresses an intermittent hardware bug where the UFS link fails to
-> establish under specific timing conditions with certain chips. While
-> difficult to reproduce initially, this issue was consistently observed in
-> downstream testing and requires explicit mphy reset control for full
-> stability.
-> 
-> [...]
+> $ scripts/get_maintainer.pl drivers/gpu/drm/rockchip/Kconfig
+> Sandy Huang <hjc@rock-chips.com> (maintainer:DRM DRIVERS FOR ROCKCHIP)
+> "Heiko St=FCbner" <heiko@sntech.de> (maintainer:DRM DRIVERS FOR ROCKCHIP)
+> Andy Yan <andy.yan@rock-chips.com> (maintainer:DRM DRIVERS FOR ROCKCHIP)
+> Maarten Lankhorst <maarten.lankhorst@linux.intel.com> (maintainer:DRM DRI=
+VERS AND MISC GPU PATCHES)
+> Maxime Ripard <mripard@kernel.org> (maintainer:DRM DRIVERS AND MISC GPU P=
+ATCHES)
+> Thomas Zimmermann <tzimmermann@suse.de> (maintainer:DRM DRIVERS AND MISC =
+GPU PATCHES)
+> David Airlie <airlied@gmail.com> (maintainer:DRM DRIVERS)
+> Simona Vetter <simona@ffwll.ch> (maintainer:DRM DRIVERS)
+> dri-devel@lists.freedesktop.org (open list:DRM DRIVERS FOR ROCKCHIP)
+> linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC sup=
+port)
+> linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support)
+> linux-kernel@vger.kernel.org (open list)
+> =
 
-Applied to 7.1/scsi-queue, thanks!
+> I'm missing quite a few of these ...
 
-[1/1] scsi: ufs: rockchip,rk3576-ufshc: dt-bindings: Add new mphy reset item
-      https://git.kernel.org/mkp/scsi/c/bdce3a69c578
+I don't understand. I should cc all those addreses? All of them? :o
 
--- 
-Martin K. Petersen
+Regards,
+Marius
+
+> =
+
+> Cheers,
+>   Diederik
+> =
+
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/drivers/gpu/drm/rockchip/Kconfig b/drivers/gpu/drm/rockchi=
+p/Kconfig
+> > index 1479b8c4ed40..39cd38375e8a 100644
+> > --- a/drivers/gpu/drm/rockchip/Kconfig
+> > +++ b/drivers/gpu/drm/rockchip/Kconfig
+> > @@ -67,6 +67,7 @@ config ROCKCHIP_CDN_DP
+> >  =
+
+> >  config ROCKCHIP_DW_DP
+> >  	bool "Rockchip specific extensions for Synopsys DW DP"
+> > +	select DRM_BRIDGE_CONNECTOR
+> >  	help
+> >  	  This selects support for Rockchip SoC specific extensions
+> >  	  to enable Synopsys DesignWare Cores based DisplayPort transmit
+> =
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
