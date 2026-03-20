@@ -4,63 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9797D1099B28
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 17:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10B051099B31
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 17:43:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gD1OvCtyJ1VzP2+T4yXqQiSL76fwap5AcFjn8VoinDU=; b=gsO7AJ3GRn7Wu+gLDn558yMdOs
-	rRyGGdGowphz1BGRjzFmAUQ7UK3cghRiFL9KkTI0HqvURkspcNbf8z2QEm1j9CHu66v0unGmwSnlw
-	gujnzCE1MvHDyiYfz3hwRakZUtPsz8H8kw8EwNRAvLJs/LVs3GEXjOnqQ33SxxKPoNZcLo5Pet1T+
-	qb6yuyyCZ/SEjAni1aUqKaaD/Q45aTV7XxcWTZ21FK9l9++S/zLpIV1Wxml1Yn4XbtTwJ/TQLYY88
-	p9FM6aZZh1z8RyT9szn/hrm8b9YTR5f0FBg+A0wETzdmKblTXAat3eXvhuPT+qyixGljM41PHOkLk
-	gc5x/oNA==;
+	bh=7iv1iuwcFa5A9jdx9idir4azuZKlRevr0A9Wfl39S4k=; b=2n4Ii53trnhapiyEwTevHyzacb
+	7aI3qL59wdCpfGHA/U1cuHYKXfQb73CYmuy4iLAqV9fCVVfbIUflTB+exBMYm/97UNyWxOkveokiX
+	IyBNLw7vt3GRS3o4dPIqpiSZaXeCd/WphH4X3jHPkqxweqWriU5HGww6RN0vWbzCQh+94tcHWEPNM
+	EyTIZHWoldcIq9xA+eYRYFFX7IZHW56lFtndXPis3B3ovw3dsJlpYJmMD7S7mn9gAapZgkd76iik1
+	3VA2X+1o2cUYVmilvvj75YpVw6/zHOKdVgruQLBlwkvb1RA6Wq0zHH1PgLdwhac7M8jbzrCIZgcQu
+	NHIQYYqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3dom-0000000DHLo-14fB;
-	Fri, 20 Mar 2026 17:39:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w3dsE-0000000DHi2-38QE;
+	Fri, 20 Mar 2026 17:43:02 +0000
+Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3doj-0000000DHLC-0nBs
+	id 1w3dsB-0000000DHhA-1veU
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Mar 2026 17:39:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9D43D4166F;
-	Fri, 20 Mar 2026 17:39:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B35E9C4CEF7;
-	Fri, 20 Mar 2026 17:39:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774028364;
-	bh=EmC83LvhVJvYi3xuGFTcrFTglNSFltf0KMf7Ig8lPtU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=JuNz7bzhidytfCq09kZKJwyJBYvyYes9xox3rnttDS0EG7HYV+aZWVNhJ2MMHjugV
-	 UgxKzyFi4ZnvNG8+sEUDFGqBNwTDW3msGJxrIw9u42xAPc9C0kyufBdGv0zO5vowdT
-	 1Lij6usCBGSv5b7Ay1RLCztXcmmmf7JzFf16rUjfrvM9Qj/qzuhQqRIzKHKn8ef9Mg
-	 ceWH+RopObuNAJ4bimSbSCDWC1PPPCBgvK7LHR1bbtQxXfp64ZPow79gmBBzwXMp8O
-	 4LIZOIMEBnzM4BTbC/X/Kf8ypKcCxFB50EHggzEB8+E9rV+lIUfVP42G8iL+GG8TZJ
-	 AuX1X47T5xX/w==
-Date: Fri, 20 Mar 2026 17:39:19 +0000
-From: Conor Dooley <conor@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V2 1/5] dt-bindings: iio: imu: add icm42607
-Message-ID: <20260320-carless-puppet-995866998b8a@spud>
-References: <20260319182956.146976-1-macroalpha82@gmail.com>
- <20260319182956.146976-2-macroalpha82@gmail.com>
+	Fri, 20 Mar 2026 17:43:00 +0000
+Received: by mail-qk1-x72d.google.com with SMTP id af79cd13be357-8cb20bcff5aso182768885a.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 20 Mar 2026 10:42:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20230601.gappssmtp.com; s=20230601; t=1774028578; x=1774633378; darn=lists.infradead.org;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:from:to:cc:subject:date:message-id:reply-to;
+        bh=4b7bHDEHMNg+ZOh92aXYeYMSzd5GgyCONDythGrcDzA=;
+        b=htMTxA86opxGW2Hp2SK5ss906LY2k789Z4I7dQB1Iik0iDZcLsw5ruELf6QmgZGQgb
+         YU0yNp1B1q4yeVj4CcnsH03Wn3ELT2r/mFtqbAvwYaFzg5bueCbFcMGBYqjyGzosuLg5
+         dG+NvsZL8varDnQtPYGVft+3+oG9U7xmkEkUyo79f3JHoVho0pUYkJ0VxxWRulwO2awF
+         NB+vR0EVuRcO6qL7yaPROcXWD4DwiBHs7gTKUO1k6O6zKlQ4bshDCybncEu/fP0y0Yrp
+         zSqdXqxA8PB8jkE9Nxny4mVqyuNNRhNwY8aaAyUZTJe2yTCMVwBlbCDRb2piC6edlMJS
+         qbvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774028578; x=1774633378;
+        h=mime-version:user-agent:references:in-reply-to:date:cc:to:from
+         :subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=4b7bHDEHMNg+ZOh92aXYeYMSzd5GgyCONDythGrcDzA=;
+        b=qILLys4hpUSPX0yFBgvFa55kSZ6/EjxVo6kK13sC+pgklOC79b75AQuUELdqb88yQm
+         cc/Rb0JxcjWf33b87U98hZeDAKO4+mqus8GDcSI5Y7Bq/vjYH+VaVLWZYC8BCjqLG6D5
+         6U3TeEV+QzELyyxSyk8H9hK700a9qf497/hZhrxoBSVrDvKq55M/LQbV1Wj5Ey15ibka
+         pWsldQ3HfeCoMjZjz7ND4ROxrulcvxq2xDs2P+SDXwERoBu/iRq75CyLjq0tDtnF2KdE
+         g/YNI8Bc+sx1hCM7WB9mnc+/9aQLyWDP/4ZmqMVr0gs83pLJQuwlyTCu9Zi2Up1KTWqB
+         7EzQ==
+X-Forwarded-Encrypted: i=1; AJvYcCUkBSeY/ly6HScb69TRAr6AZR/B24wmphjC54Bfh+9fwlVaDnwjQg/iRPwaeDm/pPCzqqGVmkzDT/obFZVPJQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwfKf6dF7qkVThMSegv5qgKE3xmhxIibQJQWdlYjlkyjXZrg10k
+	2bB8V3bfHRYKK5E3YcAvyN5nAZqa9g6OTmkXJZxqD9fh/tuU2BqjKaxt9t4FYmAo33Q=
+X-Gm-Gg: ATEYQzx3mO8/UxM1XvxTdjQ5j+KN24QC4slFiDQPd4M7pg1GdZeKGq38Afw9xRwljo3
+	quJShvqivGOhgRn4G1+2oHCRPKsKeC51R4GPF8/kVzck6v8AZIt5k9DxmV50a3RUSyr8tPlyJ2c
+	3FRpnWBX3LwmVSbzmvpiHnmxiLs0HXXmO1ZZ15cnrrrAdKNMN92SJ/noIUJwb6g94ArjmTL6iMO
+	Y4NB20nnRXtZgFqQ+QjK32/D7kuOOknp4Rb8dkNd+2fAX5H1RYtMZ7hb1niT7rcZZ0iQmzySaHL
+	ML2LPfkluwreLq40JZ6h7MqTBlv4PoL+alqbO8sntqVDvHe8k3BMan02oDDGg3Ze+hxSpYduesD
+	e+YgacYt/8Iu9OU4Gpf19xj2Np8OzKkFKQD5PzEG7P8B1vySwqgekaARPEONuluWGk4lfD4Jp5r
+	/txo1QiiUHKnNX+sbMaE7oj74Lneq7
+X-Received: by 2002:a05:620a:4606:b0:8cd:b2e9:7d88 with SMTP id af79cd13be357-8cfc7f4df71mr539139685a.44.1774028577988;
+        Fri, 20 Mar 2026 10:42:57 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:11:b76d::5ac? ([2606:6d00:11:b76d::5ac])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8cfc8f5d128sm210466385a.8.2026.03.20.10.42.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 20 Mar 2026 10:42:57 -0700 (PDT)
+Message-ID: <baeafc597ae5b49e34481c4c2704ec242344ffe4.camel@ndufresne.ca>
+Subject: Re: [PATCH v3 09/27] media: rockchip: rga: announce and sync
+ colorimetry
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
+	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab
+	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
+	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	 <conor+dt@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	devicetree@vger.kernel.org, kernel@pengutronix.de
+Date: Fri, 20 Mar 2026 13:42:56 -0400
+In-Reply-To: <20260127-spu-rga3-v3-9-77b273067beb@pengutronix.de>
+References: <20260127-spu-rga3-v3-0-77b273067beb@pengutronix.de>
+	 <20260127-spu-rga3-v3-9-77b273067beb@pengutronix.de>
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-In-Reply-To: <20260319182956.146976-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_103925_238960_26F0EE6B 
-X-CRM114-Status: UNSURE (   4.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260320_104259_538468_0A5FD5C7 
+X-CRM114-Status: GOOD (  19.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,39 +101,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6417927022561850022=="
+Content-Type: multipart/mixed; boundary="===============8863523923254330647=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============6417927022561850022==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="aTCYQb8hepuZFpMC"
-Content-Disposition: inline
+--===============8863523923254330647==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-oe7RpPV93eR3PfJ/4+yO"
 
 
---aTCYQb8hepuZFpMC
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+--=-oe7RpPV93eR3PfJ/4+yO
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
+Le mardi 27 janvier 2026 =C3=A0 15:39 +0100, Sven P=C3=BCschel a =C3=A9crit=
+=C2=A0:
+> Announce the capability to adjust the quantization and ycbcr_enc on the
+> capture side and check if the SET_CSC flag is set when the colorimetry
+> is changed. Furthermore copy the colorimetry from the output to the
+> capture side to fix the currently failing v4l2-compliance tests, which
+> expect exactly this behavior.
+>=20
+> Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
 
---aTCYQb8hepuZFpMC
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+
+> ---
+> =C2=A0drivers/media/platform/rockchip/rga/rga.c | 37 ++++++++++++++++++++=
++++++++++++
+> =C2=A01 file changed, 37 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
+atform/rockchip/rga/rga.c
+> index 20d1d9cb7625d..cf9d5702598fa 100644
+> --- a/drivers/media/platform/rockchip/rga/rga.c
+> +++ b/drivers/media/platform/rockchip/rga/rga.c
+> @@ -437,6 +437,15 @@ static int vidioc_enum_fmt(struct file *file, void *=
+priv, struct v4l2_fmtdesc *f
+> =C2=A0	fmt =3D &formats[f->index];
+> =C2=A0	f->pixelformat =3D fmt->fourcc;
+> =C2=A0
+> +	if (f->type !=3D V4L2_BUF_TYPE_VIDEO_CAPTURE &&
+> +	=C2=A0=C2=A0=C2=A0 f->type !=3D V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE)
+> +		return 0;
+> +
+> +	/* allow changing the quantization and xfer func for YUV formats */
+> +	if (v4l2_is_format_yuv(v4l2_format_info(f->pixelformat)))
+> +		f->flags |=3D V4L2_FMT_FLAG_CSC_QUANTIZATION |
+> +			=C2=A0=C2=A0=C2=A0 V4L2_FMT_FLAG_CSC_YCBCR_ENC;
+> +
+> =C2=A0	return 0;
+> =C2=A0}
+> =C2=A0
+> @@ -459,8 +468,25 @@ static int vidioc_g_fmt(struct file *file, void *pri=
+v, struct v4l2_format *f)
+> =C2=A0static int vidioc_try_fmt(struct file *file, void *priv, struct v4l=
+2_format *f)
+> =C2=A0{
+> =C2=A0	struct v4l2_pix_format_mplane *pix_fmt =3D &f->fmt.pix_mp;
+> +	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
+> =C2=A0	struct rga_fmt *fmt;
+> =C2=A0
+> +	if (V4L2_TYPE_IS_CAPTURE(f->type)) {
+> +		const struct rga_frame *frm;
+> +
+> +		frm =3D rga_get_frame(ctx, f->type);
+> +		if (IS_ERR(frm))
+> +			return PTR_ERR(frm);
+> +
+> +		if (!(pix_fmt->flags & V4L2_PIX_FMT_FLAG_SET_CSC)) {
+> +			pix_fmt->quantization =3D frm->pix.quantization;
+> +			pix_fmt->ycbcr_enc =3D frm->pix.ycbcr_enc;
+> +		}
+> +		/* disallow values not announced in vidioc_enum_fmt */
+> +		pix_fmt->colorspace =3D frm->pix.colorspace;
+> +		pix_fmt->xfer_func =3D frm->pix.xfer_func;
+> +	}
+> +
+> =C2=A0	fmt =3D rga_fmt_find(pix_fmt->pixelformat);
+> =C2=A0	if (!fmt)
+> =C2=A0		fmt =3D &formats[0];
+> @@ -506,6 +532,17 @@ static int vidioc_s_fmt(struct file *file, void *pri=
+v, struct v4l2_format *f)
+> =C2=A0	frm->fmt =3D rga_fmt_find(pix_fmt->pixelformat);
+> =C2=A0	frm->stride =3D pix_fmt->plane_fmt[0].bytesperline;
+> =C2=A0
+> +	/*
+> +	 * Copy colorimetry from output to capture as required by the
+> +	 * v4l2-compliance tests
+> +	 */
+> +	if (V4L2_TYPE_IS_OUTPUT(f->type)) {
+> +		ctx->out.pix.colorspace =3D pix_fmt->colorspace;
+> +		ctx->out.pix.ycbcr_enc =3D pix_fmt->ycbcr_enc;
+> +		ctx->out.pix.quantization =3D pix_fmt->quantization;
+> +		ctx->out.pix.xfer_func =3D pix_fmt->xfer_func;
+> +	}
+> +
+> =C2=A0	/* Reset crop settings */
+> =C2=A0	frm->crop.left =3D 0;
+> =C2=A0	frm->crop.top =3D 0;
+
+--=-oe7RpPV93eR3PfJ/4+yO
 Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCab2GRwAKCRB4tDGHoIJi
-0n+2AQDOoSl2g8nQdYhadOyLnaeDez9zFjMDbF9Zq3NrhrkC6wEAlg3H0iNaDpQY
-qvxM143+V4mX/Pk/IhhYY/lb/2LBOQ4=
-=RDUK
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCab2HIAAKCRDZQZRRKWBy
+9Px4AQChjkhhOucaVISHeRAYH5X7ODkjIye5JGejpkeHL63PSQEAk4KAcyPF14o8
+SuHYOv4/KXqhuyvwujnnCWprB/iW7QE=
+=HbxP
 -----END PGP SIGNATURE-----
 
---aTCYQb8hepuZFpMC--
+--=-oe7RpPV93eR3PfJ/4+yO--
 
 
---===============6417927022561850022==
+--===============8863523923254330647==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -115,5 +228,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============6417927022561850022==--
+--===============8863523923254330647==--
 
