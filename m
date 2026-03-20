@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A43E41099B37
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 20:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA9211099B30
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 21:56:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=M/QP3P6j83F0cZ6w6r3cRWP+tLefBRIgWHs5GpiB5qk=; b=W8WpEddbcTHzyT
-	l1FRIWwOwzGUkIf8USzem/T+qeAnagFaKFjP8GZi99px/EmBMlFh9wTEsvbzdgajONmt0W3QcdmAn
-	UrMLi0HvkqYe5PQAFbRam2QvrAHVVK7ABG3ENrCM14oa9tNTmzDIg0NDLzvQBOlXjCFwU5uDEpfem
-	WcKhyZtILUbmSOeswW1KYlnR0V+CcbS5m5Hh8F6FAYcPHwJ3lEVNkR1ef/AXW8F3NAQRn0aINVKOc
-	f7ZNSL9Uk6PWMZw11BjQqnCysFi8+J8/I2JRHplqTN6n169nQr3nfsiFUIyAusE9Cgpz+a+gzygHq
-	0iSFjkgn09FfcscCZ8MQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=ON+6eXwoblfWuQ48PL8ygG3r4+jdbsl9GeCBTnNaar4=; b=q7m5xyzfHhSL57
+	1ToLC1R0xPm+JxWNmUexKWOGWK8e9Gf5O7OO1/ORmyvQ+jIa+KRVil3YGnUtTmvGWqeH/MIx4K89z
+	0GkRBpMKfLRR8X4fYeEsNzfCKxI2fjyF/TpHDECOai8swhYOHodCUdOrKcawtYAKGTb439KRSM8dr
+	+nNfKszcbkn/MnURWfxUd6dLnqsDoymEC0TyiyFfhoz3iaBmcTADsfw3gx6ORx14WFTNyersMHyqp
+	nObLBNDt9ix86YpBcUs5HmKQ+B29nLUleYNGUjgSlvahfsCIhssU89YVSvIa7ZKZLRwHUTIIY06LK
+	0L2AANyU0vvroYoOanPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3g13-0000000DXX9-0h48;
-	Fri, 20 Mar 2026 20:00:17 +0000
-Received: from mgamail.intel.com ([192.198.163.7])
+	id 1w3hpN-0000000Decu-18Ua;
+	Fri, 20 Mar 2026 21:56:21 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3g0z-0000000DXWo-1vDo
-	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Mar 2026 20:00:14 +0000
+	id 1w3hpF-0000000DecL-0f7P;
+	Fri, 20 Mar 2026 21:56:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1774036813; x=1805572813;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=3r5Dqp+WPxxPo6MxzHzpX2ZPdVn63bA4BVuyeCdHdSk=;
-  b=dDtpb9b5ROYjXFePXch0190/qq44y2FiEomkgH3fvK+6qqQ4gtUmRjoK
-   7Kh/63OR508JmriU4uQitaqr3A4bRtLA1UPCiC+ngsi1QwaOIblyWhVVt
-   7LG2c3/57VsrXlOa33IEIWZDYrteva4BIntbTDNSTQA8VHykpT+8LdRno
-   55k4qnk36m0sp+q1DtZTBDPRxIyQBXBpwv+t71vjw9+P5SmPmQAvW1ddV
-   pCshbWpCYFOW00/xqI6Hhj2xT3Cpb3i45M0HHHBkV8RT79sTt6dhnAPID
-   SwWW2uMK1J2yDrkdwIcN1/WVPVivPjhpBXXGEtdyGMFjyU6T5Y+L6WJ+6
-   A==;
-X-CSE-ConnectionGUID: Ly2LxeUFSHCIfSrZ1NygAA==
-X-CSE-MsgGUID: +R0oF1STRBKbwdPrHx1+Hw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11735"; a="100584508"
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="100584508"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 13:00:13 -0700
-X-CSE-ConnectionGUID: sR98MtiCSdypSm62QI/DZw==
-X-CSE-MsgGUID: vjCPd64eRQevYsybBhJggw==
+  t=1774043773; x=1805579773;
+  h=from:to:cc:subject:date:message-id:mime-version:
+   content-transfer-encoding;
+  bh=/Rf2eakh5ZeaAaheFJYAVxm4fy6YqH2KFkakWRjpmuM=;
+  b=V1tn8RB3dn3urYQ1OE6BNMxaTGWhe11BQWRGmG+HB85fDpLViNY5JImy
+   47gfXQ0bTmIukYwSVmlxP7oa+C669Y8Z+US2byTZBUeV4vzKfIU/HvJT7
+   ahAjn7vO3jbwgOqqqjp/lYQ4LxpZgiRPIxTf8uXSxVUghdGCgabpSZqJB
+   MZ9RcVd7PJ/q/iXthX0c6CM6ezojr6Ocwan1f8B0N12mOOeH4sOu5//Eg
+   bzJsFwC+GbUREea88JEswrrr8V8VH5bqrt9YuAOfJowAooVCzSxDESULH
+   D5a+fb22MI0UGiAc7a1Mfn1LkSif34s0AM1TjGPOwV1sJ6V0na9LSbwwE
+   g==;
+X-CSE-ConnectionGUID: JA6RV0LrSsq9e7T/yJtO0A==
+X-CSE-MsgGUID: FylbJ+4ASKuxZpGeXyWx4A==
+X-IronPort-AV: E=McAfee;i="6800,10657,11735"; a="75206241"
+X-IronPort-AV: E=Sophos;i="6.23,132,1770624000"; 
+   d="scan'208";a="75206241"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 14:56:10 -0700
+X-CSE-ConnectionGUID: RKkVuXzFSeeUmx+o2YwLYw==
+X-CSE-MsgGUID: Kp0B0jduSwCPwqIM2VlfoA==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="261283105"
-Received: from egrumbac-mobl6.ger.corp.intel.com (HELO localhost) ([10.245.245.40])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 13:00:09 -0700
-Date: Fri, 20 Mar 2026 22:00:06 +0200
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
-	dlechner@baylibre.com, jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH v2 0/5] Add Invensense ICM42607
-Message-ID: <ab2nRu2XnJx3SqKP@ashevche-desk.local>
-References: <20260319182956.146976-1-macroalpha82@gmail.com>
+X-IronPort-AV: E=Sophos;i="6.23,132,1770624000"; 
+   d="scan'208";a="220732837"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by fmviesa008.fm.intel.com with ESMTP; 20 Mar 2026 14:56:07 -0700
+Received: by black.igk.intel.com (Postfix, from userid 1003)
+	id DB47195; Fri, 20 Mar 2026 22:56:06 +0100 (CET)
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>,
+	linux-scsi@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Subject: [PATCH v1 1/1] scsi: ufs: rockchip: Drop unused include
+Date: Fri, 20 Mar 2026 22:56:06 +0100
+Message-ID: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260319182956.146976-1-macroalpha82@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_130013_559077_909BC952 
-X-CRM114-Status: UNSURE (   8.17  )
+X-CRM114-CacheID: sfid-20260320_145613_211203_5A81AABD 
+X-CRM114-Status: UNSURE (   8.77  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,29 +85,33 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 19, 2026 at 01:29:36PM -0500, Chris Morgan wrote:
+This driver includes the legacy header <linux/gpio.h> but does
+not use any symbols from it. Drop the inclusion.
 
-> Add support for the ICM42607 IMU. This sensor shares the same
-> functionality but a different register layout with the existing
-> ICM42600.
-> =
+Signed-off-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+---
+ drivers/ufs/host/ufs-rockchip.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> This driver should work with the ICM42607 and ICM42607P over both I2C
-> and SPI, however only the ICM42607P over I2C could be tested.
-
-Please, make sure each patch is ~750 =B1150 LoC, so it's reviewable.
-Last patch is unreviewable 2k+ LoC!
-
--- =
-
-With Best Regards,
-Andy Shevchenko
-
+diff --git a/drivers/ufs/host/ufs-rockchip.c b/drivers/ufs/host/ufs-rockchip.c
+index 7fff34513a60..bac68f238e1c 100644
+--- a/drivers/ufs/host/ufs-rockchip.c
++++ b/drivers/ufs/host/ufs-rockchip.c
+@@ -6,7 +6,6 @@
+  */
+ 
+ #include <linux/clk.h>
+-#include <linux/gpio.h>
+ #include <linux/gpio/consumer.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/of.h>
+-- 
+2.50.1
 
 
 _______________________________________________
