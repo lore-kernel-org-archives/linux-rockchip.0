@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DE9F10987B0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 16:45:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D2F710987B6
+	for <linux-rockchip@archiver.kernel.org>; Fri, 20 Mar 2026 16:56:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=k5CTL75acNayHq7g0IWY1uGwDCAVQ70HouU3QEjdHV4=; b=Q4ZPv7BwZX8PFs
-	SVCVkJONj8Hy8QAq5CmFiJmeQRHg3ow6G9MFEzpHSE5Qz1+BFnVfVPVcppCjO6BU28BZqokgjOGNG
-	E4sbTNPXGFkjtgiJckHsVHAa+jXvlqv8kGGJU8yCFXlGCc7K1hIPpxNfOZkt1VyaQ8n+3y/s/FE/R
-	MnXOJ1VUAWGSbB8rW/QKfYkUajG5MathAlz9nslpHVBBSTAmPn/UV+ZX3zCD24PAxmwu23+SbPA0Y
-	KPM6Wh66+4KGpcSopzMipSVqa1SD+R17axnsNaonCpWdqucY1CsGhudOS+eu4J+Lq7CnOWP+X8N3G
-	adTDUkL0Zh/1xil56dPg==;
+	List-Owner; bh=bEdnb9EJKnA6f/9yar+/HVJ3nK2PA71N350EP2KVjIY=; b=3s01NmKvRktR/G
+	BZGpBzb1siz5wvFFaql5HGQL8z0WkVnkwoDCUoKLEn5IYF07P1ZRIy270snZTV8GOJ7Ial31Kz/rc
+	nj/IXvoGbhTYlnIjax/9mrErW92SqXUlBvGas8WkzBqsaKgzhlqLg2GMl71Q7mSbowSWLGHUNz/Nu
+	QBboMokKjRAu3IZCTyOUmgDnJhgT6gnskwj3zUfv6XJTtnUqjBOECDPJQ+U6xbSL7TJh0CVO5XS8x
+	j96+dlpdsBF2+lk9k6i5CEotlnMvmuPlrGZSaYN2wILvl43KmiSrSuE3C2jsvyzIK3Z8Dj7TGqNkG
+	ZW/XIKNDjhM7IfRhTzRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3cy0-0000000DAjI-2JBa;
-	Fri, 20 Mar 2026 16:44:56 +0000
-Received: from mgamail.intel.com ([198.175.65.14])
+	id 1w3d8m-0000000DClc-1vfj;
+	Fri, 20 Mar 2026 16:56:04 +0000
+Received: from mgamail.intel.com ([198.175.65.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w3cxy-0000000DAie-1ol4
+	id 1w3d8j-0000000DClE-0VIk
 	for linux-rockchip@lists.infradead.org;
-	Fri, 20 Mar 2026 16:44:55 +0000
+	Fri, 20 Mar 2026 16:56:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1774025095; x=1805561095;
+  t=1774025761; x=1805561761;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=8o7EUfcliJ4m23BIGd721lVDYs7l78dCV1WdklpKn3c=;
-  b=NJS8nKdp7kT0QD1G0/iJievHeXvVEz4zwtVb7SNyMmhxnDaVqhLswP60
-   RL7gZBjNq4/8izwYTXJn7h41zSaC0Lo6O/L3VHcV3mPLpHKoq5NTjfZfE
-   luP2LVGsy5IssLd39EdRQtVDRbcPbVXsWxhdiGbs1msNc/FuQhe2IIxBM
-   ur6n+DqitXHvzdbfI6TQoOmhIxYHlX24RFkkJHbWw2JS0xBzf+P/+LVR0
-   hb/IVagZRLctk2AXLievooDUFuABlUVk2qNwqRaal7BMNh3TRgniwbj/y
-   4vaEJih3j1B8iZV1/YgzRKfNHwwTOu739UdfRJp956uPjW3LqeWbTznFp
-   g==;
-X-CSE-ConnectionGUID: 6YhXau7zSU2hkiAfegIU3w==
-X-CSE-MsgGUID: XjvUfy+lTxCXvARYt5HfCQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11735"; a="78971787"
+  bh=JOsQO3st7WILZVBsC8f9R41Jc6elrwJYkP5l/BvD1+0=;
+  b=L8QuU5nna8nAiDv1jq9tz2Sj4NLx0whSllQYK/cfCqwJieMWIIzPgzeB
+   lmxz5TCpZi0pvXPVkBeBYDRA9tO5CEOzMai7PlFPHIyoAthnWjHz6e6hJ
+   HoC2QmARdsh8mohBMMKSqF0EG/uZD+J5Z8GT6xcyfI3kVDspTyE8gPtOH
+   g9IdKE7+BvCdl2+TDxsZtc+XwxNzLv9pozP7tlZoUuSPOe0oSeUH8fJWF
+   IRXLg4JcrwOOf0ck4zkTwsliq4u10kzohKRBooKELVAFvesrc4oJ/4yAa
+   4wbfRiLm33nDT3d3aqpMcOtiGeqdXwP9sZdhcSly5OEiscwqSs9Jnatld
+   w==;
+X-CSE-ConnectionGUID: wDeN0rlTSoeTXpEbYU2FXA==
+X-CSE-MsgGUID: 9wdPF8auRDGvqz8F7xedIw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11735"; a="86590453"
 X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="78971787"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
-  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 09:44:52 -0700
-X-CSE-ConnectionGUID: nL0+5e5cSUahrq/spq4G0w==
-X-CSE-MsgGUID: 1WJN9SWqTsGWbXmsk1lN7A==
+   d="scan'208";a="86590453"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+  by orvoesa104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 20 Mar 2026 09:55:54 -0700
+X-CSE-ConnectionGUID: yzTcZ5yzTPSLzbwc1yJQiw==
+X-CSE-MsgGUID: HN+kDXFUToSBAd28oBPRcw==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.23,130,1770624000"; 
-   d="scan'208";a="253837263"
+   d="scan'208";a="222569042"
 Received: from lkp-server01.sh.intel.com (HELO ba623fe84fe1) ([10.239.97.150])
-  by orviesa002.jf.intel.com with ESMTP; 20 Mar 2026 09:44:47 -0700
+  by orviesa010.jf.intel.com with ESMTP; 20 Mar 2026 09:55:48 -0700
 Received: from kbuild by ba623fe84fe1 with local (Exim 4.98.2)
 	(envelope-from <lkp@intel.com>)
-	id 1w3cxo-0000000009p-212j;
-	Fri, 20 Mar 2026 16:44:44 +0000
-Date: Sat, 21 Mar 2026 00:44:01 +0800
+	id 1w3d8T-000000000Ar-30MX;
+	Fri, 20 Mar 2026 16:55:45 +0000
+Date: Sat, 21 Mar 2026 00:55:14 +0800
 From: kernel test robot <lkp@intel.com>
 To: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, andy@kernel.org,
-	nuno.sa@analog.com, dlechner@baylibre.com, jic23@kernel.org,
+Cc: oe-kbuild-all@lists.linux.dev, andy@kernel.org, nuno.sa@analog.com,
+	dlechner@baylibre.com, jic23@kernel.org,
 	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
 	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
 	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
 Subject: Re: [PATCH V2 4/5] iio: imu: inv_icm42600: Add support for icm42607
-Message-ID: <202603210243.jegPzaTL-lkp@intel.com>
+Message-ID: <202603210032.xLBroWQu-lkp@intel.com>
 References: <20260319182956.146976-5-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
 In-Reply-To: <20260319182956.146976-5-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260320_094454_524824_2E0212CB 
-X-CRM114-Status: GOOD (  10.48  )
+X-CRM114-CacheID: sfid-20260320_095601_294604_2B161F64 
+X-CRM114-Status: GOOD (  12.91  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,43 +107,84 @@ url:    https://github.com/intel-lab-lkp/linux/commits/Chris-Morgan/dt-bindings-
 base:   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git for-next
 patch link:    https://lore.kernel.org/r/20260319182956.146976-5-macroalpha82%40gmail.com
 patch subject: [PATCH V2 4/5] iio: imu: inv_icm42600: Add support for icm42607
-config: i386-buildonly-randconfig-003-20260320 (https://download.01.org/0day-ci/archive/20260321/202603210243.jegPzaTL-lkp@intel.com/config)
-compiler: clang version 20.1.8 (https://github.com/llvm/llvm-project 87f0227cb60147a26a1eeb4fb06e3b505e9c7261)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260321/202603210243.jegPzaTL-lkp@intel.com/reproduce)
+config: i386-randconfig-r134-20260320 (https://download.01.org/0day-ci/archive/20260321/202603210032.xLBroWQu-lkp@intel.com/config)
+compiler: gcc-13 (Debian 13.3.0-16) 13.3.0
+sparse: v0.6.5-rc1
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20260321/202603210032.xLBroWQu-lkp@intel.com/reproduce)
 
 If you fix the issue in a separate patch/commit (i.e. not just a new version of
 the same patch/commit), kindly add following tags
 | Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202603210243.jegPzaTL-lkp@intel.com/
+| Closes: https://lore.kernel.org/oe-kbuild-all/202603210032.xLBroWQu-lkp@intel.com/
 
 All warnings (new ones prefixed by >>):
 
->> drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c:108:18: warning: unused variable 'inv_icm42607_accel_filter_values' [-Wunused-const-variable]
+   drivers/iio/imu/inv_icm42600/inv_icm42600_core.c: In function 'inv_icm42607_hw_suspend':
+>> drivers/iio/imu/inv_icm42600/inv_icm42600_core.c:1150:13: warning: variable 'accel_conf' set but not used [-Wunused-but-set-variable]
+    1150 |         int accel_conf;
+         |             ^~~~~~~~~~
+--
+>> drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c:108:18: warning: 'inv_icm42607_accel_filter_values' defined but not used [-Wunused-const-variable=]
      108 | static const int inv_icm42607_accel_filter_values[] = {
          |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   1 warning generated.
 
 
-vim +/inv_icm42607_accel_filter_values +108 drivers/iio/imu/inv_icm42600/inv_icm42600_accel.c
+vim +/accel_conf +1150 drivers/iio/imu/inv_icm42600/inv_icm42600_core.c
 
-    95	
-    96	static const char * const inv_icm42600_accel_power_mode_items[] = {
-    97		"low-noise",
-    98		"low-power",
-    99	};
-   100	static const int inv_icm42600_accel_power_mode_values[] = {
-   101		INV_ICM42600_SENSOR_MODE_LOW_NOISE,
-   102		INV_ICM42600_SENSOR_MODE_LOW_POWER,
-   103	};
-   104	static const int inv_icm42600_accel_filter_values[] = {
-   105		INV_ICM42600_FILTER_BW_ODR_DIV_2,
-   106		INV_ICM42600_FILTER_AVG_16X,
-   107	};
- > 108	static const int inv_icm42607_accel_filter_values[] = {
-   109		INV_ICM42607_FILTER_BW_25HZ,
-   110		INV_ICM42607_FILTER_AVG_16X,
-   111	};
-   112	
+  1144	
+  1145	static int inv_icm42607_hw_suspend(struct device *dev)
+  1146	{
+  1147		struct inv_icm42600_state *st = dev_get_drvdata(dev);
+  1148		struct device *accel_dev;
+  1149		bool wakeup;
+> 1150		int accel_conf;
+  1151		int ret = 0;
+  1152	
+  1153		guard(mutex)(&st->lock);
+  1154	
+  1155		st->suspended.gyro = st->conf.gyro.mode;
+  1156		st->suspended.accel = st->conf.accel.mode;
+  1157		st->suspended.temp = st->conf.temp_en;
+  1158		if (pm_runtime_suspended(dev))
+  1159			return 0;
+  1160	
+  1161		if (st->fifo.on) {
+  1162			ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
+  1163					   INV_ICM42607_FIFO_CONFIG1_BYPASS);
+  1164			if (ret)
+  1165				return ret;
+  1166		}
+  1167	
+  1168		/* keep chip on and wake-up capable if APEX and wakeup on */
+  1169		accel_dev = &st->indio_accel->dev;
+  1170		wakeup = st->apex.on && device_may_wakeup(accel_dev);
+  1171		if (wakeup) {
+  1172			/* keep accel on and setup irq for wakeup */
+  1173			accel_conf = st->conf.accel.mode;
+  1174			enable_irq_wake(st->irq);
+  1175			disable_irq(st->irq);
+  1176		} else {
+  1177			/* disable APEX features and accel if wakeup disabled */
+  1178			if (st->apex.wom.enable) {
+  1179				ret = inv_icm42607_disable_wom(st);
+  1180				if (ret)
+  1181					return ret;
+  1182			}
+  1183			accel_conf = INV_ICM42600_SENSOR_MODE_OFF;
+  1184		}
+  1185	
+  1186		ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42600_SENSOR_MODE_OFF,
+  1187						 INV_ICM42600_SENSOR_MODE_OFF, false,
+  1188						 NULL);
+  1189		if (ret)
+  1190			return ret;
+  1191	
+  1192		if (!wakeup)
+  1193			regulator_disable(st->vddio_supply);
+  1194	
+  1195		return 0;
+  1196	}
+  1197	
 
 -- 
 0-DAY CI Kernel Test Service
