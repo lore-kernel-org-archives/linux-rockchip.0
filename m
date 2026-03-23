@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 031C5F483EE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 20:00:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D7D2F483F8
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 21:49:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CP0ixgUz48i1Pxv51zz12RhWOE6uiDznj8eq0F1vvYg=; b=x0/BmPCpBrAUYf
-	mJ1omAyAFjR/Ve5OB8fRtIxTOEPIZ+xPnqLkG9vgb0UPXX1FU0QBfns5t743bwYTQ8GxMZyYZbiv2
-	EHx1yDWk51TQknTVlt9rM1cTOFP7GYQOfr0iVzD+Ha+P3BIedToqJS8j84h0tnzNr4pu1Hh97VXOI
-	F4AcQaObYrVl3zEvAOJs0WQpp0Xm3nqSM5rBHCQX5gy9omtilZG/eY5MUPF6F8bm9uJpZo1rBrxa9
-	7FRW7orqETBi8K7XA1oLYVS2n8leOC91chHkdB4HfrkSxjuKBfNYkAmrH87g5nh25C6hMzqzh366O
-	9WfUzYHnzmap+YxuCJyw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gAevvCMRkKluGH8q5+n2NS1BOI7iD2RZ6v++JJBH//E=; b=YTQgdYZwlxIVZEndrowre6/8db
+	uSh9rXguWppItAk8B9UhuExOt89OwrSxcm9VViE50BlpVWb4yVngHtjHz/WjVrEJCJe9qizoKTpjs
+	Z5nvALl08/jFv5hb6zaSIlQvhA6A6sBKlBbWX/KYHwl0aR/qn6q6ofF3p3u6Oidp8pjk7UNsYtGQC
+	57W9k2v4R5zQsOz00dpZ9/kKNEz+estn4zKwK6zALh6iQWvFPwzs8rjV1XawxDQLOgiwhsp+PL68d
+	Wmyt6yJ1U7mstCGJvsjU1TgiNi3wIr+9c3/o4i+bvshZkAI6eQtn1N/Wu1oPIhncdvJ1c4+ZROnBq
+	VL9bGnUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4lS5-0000000HWra-21sE;
-	Mon, 23 Mar 2026 20:00:41 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1w4n9X-000000002Nj-3dRV;
+	Mon, 23 Mar 2026 21:49:39 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4lS3-0000000HWqv-2oFt;
-	Mon, 23 Mar 2026 20:00:39 +0000
+	id 1w4n9T-000000002MX-2vXs;
+	Mon, 23 Mar 2026 21:49:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id D08E4600CB;
-	Mon, 23 Mar 2026 20:00:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 475C0C4CEF7;
-	Mon, 23 Mar 2026 20:00:38 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 06FEF44186;
+	Mon, 23 Mar 2026 21:49:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9E23DC4CEF7;
+	Mon, 23 Mar 2026 21:49:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774296038;
-	bh=+x9AG17Hp/EBhtYzQohBkV903DY2Vh6iSe2BBxsw5YM=;
+	s=k20201202; t=1774302574;
+	bh=e2ZhSCx0wJsAx1emJeyO4FU08Tb6VMlBPPL5XXi0V+k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=k5GWk/YUuKdPBeWP84YtTOoDx7rfII8l4iT1yBV9NgYZP2jInEiNUsNQH+ZIy+TLl
-	 8PBfxs681Ew0ZlxDOfoxW1DhbnRm6LEvn7KTAF/ZBaTM+0SUsrC8fWv7LDPV1AK+yz
-	 UXvCmwWOQGyTxzzDW/O96L/vHXzHVoW/M7plyQwV2aLeLfpIUm/VuiZ4XpmHYZr0a5
-	 QJTua9wgXm1AMxQoQHK0DVqvR8syf19HA+LqXHBtHOF0+XxHMBWELgXIwkvM+Hs3LZ
-	 g4qBWXPLGpBKp8CRJ4R3EXR2uD0vKsxUcz/I9T+LDQZTq32N/uGlteB39Otu/cebCU
-	 D5Alz3WNmVYcA==
-Date: Mon, 23 Mar 2026 15:00:37 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Yubing Zhang <yubing.zhang@rock-chips.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	linux-arm-kernel@lists.infradead.org,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
-	Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org, Frank Wang <frank.wang@rock-chips.com>,
-	Dmitry Baryshkov <lumag@kernel.org>, Vinod Koul <vkoul@kernel.org>
-Subject: Re: [PATCH v3 01/12] dt-bindings: phy: rockchip-usbdp: add improved
- ports scheme
-Message-ID: <177429603690.1305360.6710008166136949728.robh@kernel.org>
-References: <20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com>
- <20260313-rockchip-usbdp-cleanup-v3-1-3e8fe89a35b5@collabora.com>
+	b=MXR3s6Iie7Hp0vfWKYIxZqEwcifDLvFfeZtG7iRbEA0DhAy6OrFcIRNASgmDu1wES
+	 zn4IB9ubKrtOy0wXus4wPsc0eBevTbJva1lSU9ESfklLjSd5pBNB1nV24Q36di4wYW
+	 0lXP0/FiXiQNTgJjuefwj+TrVnsIet/iqOzKs3Iq+mE+Od+sUt35pv7eHj4n55e+gz
+	 13fLIGiGQyk69OH0znKnUMNM0rDD9dbru0bdVoDvY3E2gfDe4vCze6n6yxC9kUGOMb
+	 kSLEBVcMkyjMZKjC+Q98InaQDpdQcVNO4WZCXfb7pbVZYBqGq7rQw4g31sEWJnyczt
+	 1LJaq/W2VhUWw==
+Date: Mon, 23 Mar 2026 21:49:30 +0000
+From: Mark Brown <broonie@kernel.org>
+To: Pei Xiao <xiaopei01@kylinos.cn>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+	openbmc@lists.ozlabs.org, linux-rockchip@lists.infradead.org,
+	linux-riscv@lists.infradead.org, linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, Frank.Li@nxp.com,
+	amelie.delaunay@foss.st.com
+Subject: Re: [PATCH v5 15/17] spi: uniphier: Simplify clock handling with
+ devm_clk_get_enabled()
+Message-ID: <2f623083-5846-48d4-8c36-e55d663047c0@sirena.org.uk>
+References: <cover.1773885292.git.xiaopei01@kylinos.cn>
+ <bcfc4a5191976b2ada9cd4094b61ac67a0ea9da7.1773885292.git.xiaopei01@kylinos.cn>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260313-rockchip-usbdp-cleanup-v3-1-3e8fe89a35b5@collabora.com>
+In-Reply-To: <bcfc4a5191976b2ada9cd4094b61ac67a0ea9da7.1773885292.git.xiaopei01@kylinos.cn>
+X-Cookie: Advancement in position.
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260323_144936_279825_DC92BFE8 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,34 +73,69 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============3682287644092278984=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Fri, 13 Mar 2026 18:57:10 +0100, Sebastian Reichel wrote:
-> Currently the Rockchip USBDP PHY is missing a documented port scheme.
-> Meanwhile upstream RK3588 DTS files are a bit messy and use different
-> port schemes. The upstream USBDP PHY Linux kernel driver does not yet
-> parse the ports at all and thus does not create any implicit ABI either.
-> 
-> But with the current mess it is not possible to properly support USB-C
-> DP AltMode. Thus this introduces a proper port scheme following roughly
-> the ports design of the Qualcomm QMP USB4-USB3-DP PHY controller binding
-> with a slight difference that there is an additional port for the
-> USB-C SBU port as the Rockchip USB-DP PHY also contains the SBU mux.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
->  .../bindings/phy/phy-rockchip-usbdp.yaml           | 23 ++++++++++++++++++++++
->  1 file changed, 23 insertions(+)
-> 
+--===============3682287644092278984==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="Y/Y2tr05pHZcxD/m"
+Content-Disposition: inline
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
+--Y/Y2tr05pHZcxD/m
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, Mar 19, 2026 at 10:04:11AM +0800, Pei Xiao wrote:
+> Replace devm_clk_get() followed by clk_prepare_enable() with
+> devm_clk_get_enabled() for the clock. This removes the need for
+> explicit clock enable and disable calls, as the managed API automatically
+> handles clock disabling on device removal or probe failure.
+
+This breaks an allmodconfig build:
+
+/build/stage/linux/drivers/spi/spi-uniphier.c: In function =E2=80=98uniphie=
+r_spi_remove=E2=80=99
+:
+/build/stage/linux/drivers/spi/spi-uniphier.c:773:35: error: unused variabl=
+e =E2=80=98pr
+iv=E2=80=99 [-Werror=3Dunused-variable]
+  773 |         struct uniphier_spi_priv *priv =3D spi_controller_get_devda=
+ta(host
+);
+      |                                   ^~~~
+
+--Y/Y2tr05pHZcxD/m
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmnBtWkACgkQJNaLcl1U
+h9BGOQf+P4qqM5W2u6LtXeZ+RqwAf5bIlruWN7Zu6y+s0RsmbnL8SLo7ezN1P5XA
+CaagW1s3A1znQ+f+UOmPpt7CUIM1lfu4JMWMQEq/cZthfywlxT0GzJCFxfwmIfXc
+CIg28KtEajxKDNgRhc5AUvY+uPwX0bN3q2rUJ/kMcSeopHH61rIVinefkvqchzj3
+FcC4NVtnG1cKpbV/hwswiKs7/f4NPM3PJs/PUgGtrqtvcaylsOcjEkL/tUQN5bHY
+TupvhVwEX8LSCuTL2A0ihBwbZj1FWzwTqmb2nkc+zwDd0wOWosktdz/D4qYx04Ox
+knJf2rx/baCD+1NxJPUJXi0GgY9dkg==
+=IvRp
+-----END PGP SIGNATURE-----
+
+--Y/Y2tr05pHZcxD/m--
+
+
+--===============3682287644092278984==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3682287644092278984==--
+
