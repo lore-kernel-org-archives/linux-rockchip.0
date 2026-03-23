@@ -4,69 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CF29F532C2
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 00:12:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A60C8F532C7
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 02:30:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
+	:Subject:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9UZexsgJwoLhm+rbaKWkrdDvv1mmNbrKSVqTpvabgAI=; b=R+SDzJxbTqSfaQ
-	UgE3EHvh3BOiGFhktxABlM0wl5Cym6cB54jpf1RT0ItMqLRqtQsiRDlHlqGF8yYty2waRlngNTVHQ
-	7W651ZLz+W2t1dn7NzDrFSUOijHhnKpHnA+5Cf+1GOH8fL7PM6sOnS9qKvfWbZl8Kw5AcAvtXn6M2
-	jcJGNt2EpatO0zvsYxPro5F22jq5nmfSk5YftbLI/KxzFwVy+QclP5AaouP6SB3yUMU4LulGS3R75
-	q/Jj3sLUjpCQD82v6Q/dc7+14NGAUr8jkXcz8T4CTyaTkB++qK+OcLVSv7r6xfqj0RU12lVb6r+Qh
-	caCQ2XkvCySlZ60+zosw==;
+	List-Owner; bh=buyaJ3d0RoiWZOmy/1K1iQm3eQ3X1pMVacym2E/nKCI=; b=KJAXSXGLGJr3GT
+	RCZnk1pEzc3GiEnBYbE2Jjz00EYhRD9eX028924Y0DXSgpBWueIbt1jIq6ZITMwYHB8jrTbtJceBf
+	0DO2Qob6ST5sMhaQCFu13HCYGKWN6bOYZ2tYbkuMbwUxXuJ6/Vocts6oDYSOACXtCqOlWdUKvPyQF
+	JXdlwX1JwX3vzO+Bxsu1hE/V/1yw4FYJg4c68bggwMDRCf7zv8jH07QKWFpBFVxg4PvFc+Bg7JC6A
+	E0cwQiEPARPzmLeo1a14wziS7qdY7bIk7cIAROJeavLLY6/jkSxbcxAQ1Q8ZD5x2iiYJ/QJswkR2o
+	zu9QqdK89SzOeGGXp8DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4pN5-00000000D7m-3iif;
-	Tue, 24 Mar 2026 00:11:47 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w4rX8-00000000P6F-43vW;
+	Tue, 24 Mar 2026 02:30:18 +0000
+Received: from mailout1.samsung.com ([203.254.224.24])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4pN4-00000000D7H-0HCT;
-	Tue, 24 Mar 2026 00:11:46 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B31D0600C4;
-	Tue, 24 Mar 2026 00:11:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57BE8C2BC9E;
-	Tue, 24 Mar 2026 00:11:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774311103;
-	bh=Di5mcPNb0r2N+QWMH4UxyuhE6p8fkYgO2pkH90SHdT4=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=f7r1JImQB/SRvnQqdQ62Ik0ATXOFu5eMEUFc4YTTBMHtSqYJ2gVutAKIN/VqjZyeF
-	 P2sWCb8H6rrSfm5Knf95lClTIk/6qD2abXnr5aBhHVu/X67jk+7F9AYilQBE84u2yA
-	 rT39OWjQR0xJvp7VaLbyF2OcpkWudRMK2uWc0MlRJDN9EvAQ0LyuFLkhCgUNPFBo/b
-	 1oxbwvUphkldddonytnk1kx6CJ8qHHZnUTDKibToHOrTSl1x+lGlVT1gCXFfpcXSq7
-	 SZtrQQi3Hgc7YNXvUJ+sD/K4XIhpBirnHXziunLrPKWxYxlEVUSz0YcQq0/YACipLq
-	 qa0h0Sq6mV5BQ==
-From: Mark Brown <broonie@kernel.org>
-To: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, imx@lists.linux.dev, openbmc@lists.ozlabs.org, 
- linux-rockchip@lists.infradead.org, linux-riscv@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- linux-stm32@st-md-mailman.stormreply.com, Frank.Li@nxp.com, 
- amelie.delaunay@foss.st.com, Pei Xiao <xiaopei01@kylinos.cn>
-In-Reply-To: <cover.1773885292.git.xiaopei01@kylinos.cn>
-References: <cover.1773885292.git.xiaopei01@kylinos.cn>
-Subject: Re: (subset) [PATCH v5 00/17] cleanup in spi by use
- devm_clk_get_enabled
-Message-Id: <177429527684.757727.3178430227590182148.b4-ty@b4>
-Date: Mon, 23 Mar 2026 19:47:56 +0000
+	id 1w4rX1-00000000OxA-24Zk
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Mar 2026 02:30:16 +0000
+Received: from epcas5p2.samsung.com (unknown [182.195.41.40])
+	by mailout1.samsung.com (KnoxPortal) with ESMTP id 20260324023002epoutp01a77372d7a0dcb71e3836fba03332f7c9~fphiNEYSw0330603306epoutp010
+	for <linux-rockchip@lists.infradead.org>; Tue, 24 Mar 2026 02:30:02 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout1.samsung.com 20260324023002epoutp01a77372d7a0dcb71e3836fba03332f7c9~fphiNEYSw0330603306epoutp010
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1774319402;
+	bh=xiEG8fs8U4waGFe76frAqj8GUGT8PfbUsJqfEpDU4H0=;
+	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
+	b=RTFBubUceVdG5dBZjg2EJuOun+7AvU7K1xXJVOiY75v5S6AwPDX0GCIymngOFAphd
+	 E4RA3K/kK+gtTKLgy3khdnDiPmc2cGWIz79uHvHB6IujWAiNQY1L9e+YM2hT5hM2cb
+	 67/UCzZXuKEnGh+5DWuT53H601jKazX4GP44bHGA=
+Received: from epsnrtp02.localdomain (unknown [182.195.42.154]) by
+	epcas5p3.samsung.com (KnoxPortal) with ESMTPS id
+	20260324023002epcas5p3c3a08032a55b26ba4a7023fdeaebf3cd~fphhsTMXr1327213272epcas5p3T;
+	Tue, 24 Mar 2026 02:30:02 +0000 (GMT)
+Received: from epcpadp1new (unknown [182.195.40.141]) by
+	epsnrtp02.localdomain (Postfix) with ESMTP id 4ffvBx72xwz2SSKf; Tue, 24 Mar
+	2026 02:30:01 +0000 (GMT)
+Received: from epsmtip1.samsung.com (unknown [182.195.34.30]) by
+	epcas5p4.samsung.com (KnoxPortal) with ESMTPA id
+	20260323172713epcas5p4dd04df01adb71b7563e1cac14b927632~fiHlqRiPK1063110631epcas5p4A;
+	Mon, 23 Mar 2026 17:27:13 +0000 (GMT)
+Received: from INBRO002756 (unknown [107.122.3.168]) by epsmtip1.samsung.com
+	(KnoxPortal) with ESMTPA id
+	20260323172656epsmtip1078ac64ab1a734cd90e8019874a7de3a~fiHV3p2Rc1639516395epsmtip1L;
+	Mon, 23 Mar 2026 17:26:55 +0000 (GMT)
+From: "Alim Akhtar" <alim.akhtar@samsung.com>
+To: "'Vladimir Oltean'" <vladimir.oltean@nxp.com>,
+	<linux-phy@lists.infradead.org>
+Cc: "'Vinod Koul'" <vkoul@kernel.org>, "'Neil Armstrong'"
+	<neil.armstrong@linaro.org>, <dri-devel@lists.freedesktop.org>,
+	<freedreno@lists.freedesktop.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-arm-msm@vger.kernel.org>, <linux-can@vger.kernel.org>,
+	<linux-gpio@vger.kernel.org>, <linux-ide@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-media@vger.kernel.org>,
+	<linux-pci@vger.kernel.org>, <linux-renesas-soc@vger.kernel.org>,
+	<linux-riscv@lists.infradead.org>, <linux-rockchip@lists.infradead.org>,
+	<linux-samsung-soc@vger.kernel.org>, <linux-scsi@vger.kernel.org>,
+	<linux-sunxi@lists.linux.dev>, <linux-tegra@vger.kernel.org>,
+	<linux-usb@vger.kernel.org>, <netdev@vger.kernel.org>,
+	<spacemit@lists.linux.dev>, <UNGLinuxDriver@microchip.com>, "'Bart Van
+ Assche'" <bvanassche@acm.org>, "'Peter Griffin'" <peter.griffin@linaro.org>,
+	"'James E.J. Bottomley'" <James.Bottomley@HansenPartnership.com>, "'Martin
+ K. Petersen'" <martin.petersen@oracle.com>, "'Krzysztof Kozlowski'"
+	<krzk@kernel.org>, "'Chanho Park'" <chanho61.park@samsung.com>
+In-Reply-To: <20260319223241.1351137-10-vladimir.oltean@nxp.com>
+Subject: RE: [PATCH v5 phy-next 09/27] scsi: ufs: exynos: stop poking into
+ struct phy guts
+Date: Mon, 23 Mar 2026 22:56:51 +0530
+Message-ID: <1891546521.01774319401971.JavaMail.epsvc@epcpadp1new>
 MIME-Version: 1.0
-X-Mailer: b4 0.16-dev-17187
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2226; i=broonie@kernel.org;
- h=from:subject:message-id; bh=Di5mcPNb0r2N+QWMH4UxyuhE6p8fkYgO2pkH90SHdT4=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBpwda8CnOiOloYzFySgYbCE/6hff/7Co6oZovH/
- NYX07fdL5eJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCacHWvAAKCRAk1otyXVSH
- 0NvUB/4tGt133fOvYsd5ccQQIQOzVbVHSDtwT2WLeR3+X0YErOBbugNfEdY+SSuDTTx5dvleDwv
- RRu/m16aqCnbltqs+xqYo0EXuNKhb/EH7dIXDpbBvc/66u5FoNCTIqeF5Jfab/mZBDBQKddVugr
- 5e0Weu5eT9FYS5UydoOJLtwKzXRKlT0OeLmLgYIV5CuL4HKShuJNQ4VHb1+VsVS74JesMhW3FZL
- e9cayQAVBijhwh//ogTcJasWpFIG0iF14Lf9dGiYeeZalKEWH9KveHB6VChUAjuE75JWrl/xt0a
- 8vEuC/a9d+boVY7I08rDLiYeqO164RdPm5UbQvrxTWXR5C9G
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQJoz1sM+EbPjkyDopxrfJVWkMJWdwIGLiEOAj0DJam0ghnJMA==
+Content-Language: en-us
+X-CMS-MailID: 20260323172713epcas5p4dd04df01adb71b7563e1cac14b927632
+X-Msg-Generator: CA
+CMS-TYPE: 105P
+X-CPGSPASS: Y
+X-Hop-Count: 3
+X-CMS-RootMailID: 20260319223312epcas5p183a1e0c31206025da8cf00b5d745a0ce
+References: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
+	<CGME20260319223312epcas5p183a1e0c31206025da8cf00b5d745a0ce@epcas5p1.samsung.com>
+	<20260319223241.1351137-10-vladimir.oltean@nxp.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260323_193013_022264_70553524 
+X-CRM114-Status: GOOD (  20.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,55 +109,70 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 19 Mar 2026 10:03:56 +0800, Pei Xiao wrote:
-> cleanup in spi by use devm_clk_get_enabled
+HI Vladimir,
+
+> -----Original Message-----
+> From: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Sent: Friday, March 20, 2026 4:02 AM
+> To: linux-phy@lists.infradead.org
+> Cc: Vinod Koul <vkoul@kernel.org>; Neil Armstrong
+> <neil.armstrong@linaro.org>; dri-devel@lists.freedesktop.org;
+> freedreno@lists.freedesktop.org; linux-arm-kernel@lists.infradead.org;
+> linux-arm-msm@vger.kernel.org; linux-can@vger.kernel.org; linux-
+> gpio@vger.kernel.org; linux-ide@vger.kernel.org; linux-
+> kernel@vger.kernel.org; linux-media@vger.kernel.org; linux-
+> pci@vger.kernel.org; linux-renesas-soc@vger.kernel.org; linux-
+> riscv@lists.infradead.org; linux-rockchip@lists.infradead.org;
+linux-samsung-
+> soc@vger.kernel.org; linux-scsi@vger.kernel.org;
+linux-sunxi@lists.linux.dev;
+> linux-tegra@vger.kernel.org; linux-usb@vger.kernel.org;
+> netdev@vger.kernel.org; spacemit@lists.linux.dev;
+> UNGLinuxDriver@microchip.com; Bart Van Assche <bvanassche@acm.org>;
+> Alim Akhtar <alim.akhtar@samsung.com>; Peter Griffin
+> <peter.griffin@linaro.org>; James E.J. Bottomley
+> <James.Bottomley@HansenPartnership.com>; Martin K. Petersen
+> <martin.petersen@oracle.com>; Krzysztof Kozlowski <krzk@kernel.org>;
+> Chanho Park <chanho61.park@samsung.com>
+> Subject: [PATCH v5 phy-next 09/27] scsi: ufs: exynos: stop poking into
+struct
+> phy guts
 > 
-> I know that many old SPI drivers should not be modified for hardware
-> stability and to reduce maintenance effort. But I can't help cleaning them
-> up. To minimize the introduction of issues, I tried not to modify the
-> timing of those hardware clock enables.
+> The Exynos host controller driver is clearly a PHY consumer (gets the
+> ufs->phy using devm_phy_get()), but pokes into the guts of struct phy
+> to get the generic_phy->power_count.
 > 
-> [...]
+> The UFS core (specifically ufshcd_link_startup()) may call the variant
+> operation exynos_ufs_pre_link() -> exynos_ufs_phy_init() multiple times if
+> the link startup fails and needs to be retried.
+> 
+> However ufs-exynos shouldn't be doing what it's doing, i.e. looking at the
+> generic_phy->power_count, because in the general sense of the API, a
+> single Generic PHY may have multiple consumers. If ufs-exynos looks at
+> generic_phy->power_count, there's no guarantee that this ufs-exynos
+> instance is the one who previously bumped that power count. So it may be
+> powering down the PHY on behalf of another consumer.
+> 
+> The correct way in which this should be handled is ufs-exynos should
+> *remember* whether it has initialized and powered up the PHY before, and
+> power it down during link retries. Not rely on the power_count (which,
+btw,
+> on the writer side is modified under &phy->mutex, but on the reader side
+is
+> accessed unlocked). This is a discouraged pattern even if here it doesn't
+> cause functional problems.
+> 
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Reviewed-by: Bart Van Assche <bvanassche@acm.org>
+> ---
+Thanks for the patch
+Acked-by: Alim Akhtar <alim.akhtar@samsung.com>
 
-Applied to
+Tested this patch for basic UFS functionality, UFS still works. 
+Feel free to add
+Tested-by: Alim Akhtar <alim.akhtar@samsung.com>
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.1
 
-Thanks!
-
-[02/17] spi: bcm63xx-hsspi: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/e532e21a246d
-[03/17] spi: bcmbca-hsspi: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/8b237cb10e32
-[09/17] spi: sifive: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/140039c23aca
-[13/17] spi: stm32: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/7da637804805
-[14/17] spi: sunplus-sp7021: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/ea0e916de134
-[15/17] spi: uniphier: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/fbf34af0c6eb
-[16/17] spi: zynq-qspi: Simplify clock handling with devm_clk_get_enabled()
-        https://git.kernel.org/broonie/spi/c/c9a4136c4746
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
 _______________________________________________
