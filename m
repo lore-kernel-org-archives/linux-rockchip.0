@@ -4,182 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43CD1F46101
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 13:22:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA2FBF46122
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 14:02:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zcGhoVVHKx4qzJyRqwnqLT/P4AK9m5LQPwTkxTiYSJc=; b=DcSkFsghUdnXX8
-	FZyxVTTlUuh8dHG3s0B6P1J2dgd9pgWQhRGlvQ1j2Ojv6C6WTh0PJ+BgDjXH79r5DFHBXm3KKF0IM
-	OBZQGvg85vmcTgi65/X9j1/1kQtSaHl+cy3T/xaavgsOIURXjUke/1V1NPCIQaHWoqyv4Vvh0kPeg
-	cGYhgRVJ/B2uixzMdGPsvkvBj1hnzWSzMOU8Lfl+M6aBPTOoBSP6Ifi6+n5HXo5RPdQH5Bg9r0JVq
-	4gMYH3ZitzEKrU3Zv4a7FkU5QiMVZs4GbYaXDLOI5dqMt9dTIy8qsSnAXD7aCdA7JACaBmJZH0uL5
-	NkwjpRHq8/G8Gm8UvY2A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=TkhNYCg2bpygY+YGhY45tDLkmErRlSaCGqPMIAbVgLo=; b=Rl4RdOfWwlRWHs
+	WHJ/5S+UTHvR/B2KjkX3ICf72bXp6KroL3n5xJ7Hy5SPU02WE/LBYDH13UEPfm0rA84toV+eRSKsR
+	IXs2PA1AEE6UY6BJxFRd6yORulffTs7mOxclFO6cMNOKg7ilT/MRf1QZLxgyJJzzrvotwDbOSTvU/
+	9D4cf9kiVN2IhrxP645qVWPUj0N2ss/RFv7RZLvy9Q/WvYQIEGDLueEfpOAYY5P8XYWfGC0CrferB
+	8wbTlUSPMtoxR6n9DpSj23/ucRtKpBvglzVkV901Z1d89Wd61k6NGScMnGLJCKRoEe+kaO3EBRG9C
+	l9uRdel551PA1yWyB0+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4fEI-0000000GnOH-3OAX;
-	Mon, 23 Mar 2026 13:22:02 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1w4fre-0000000GtKs-2sbP;
+	Mon, 23 Mar 2026 14:02:42 +0000
+Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4fDw-0000000GmvV-3YJJ
-	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Mar 2026 13:21:44 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62NC23RI3041879
-	for <linux-rockchip@lists.infradead.org>; Mon, 23 Mar 2026 13:21:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	3Q2i+GiHSpXUMk/5V2t9vb8q95gvl7L2wScFZUzHsU8=; b=iCo3bctD9dFdamfa
-	Bge8/bpjrUtGHfrLjSKxlAKdSdgLfeTPRB2955lSkQ9bnimI+QXHSVgYGnyRHPwR
-	FJn4MEz7HfIfsEAAOfV0G0pzSv+RoCxtebxCjqtZlLhI+w8LlCzhbwojwfxIKxaf
-	BKXzTJ5sH/B+xtIGMXM+aZnbRo9kKUiMMNKCF4YC7QFIIG4C6vRmYhAzlCaL/5PX
-	3FYg4/rd6DpQg8nM4OhfyGZ4YJEPKIb0kSbze5Wzt5hwvfolVH7zJS8b1NeMUA1+
-	zcTPC6lok9vzDSOrF+Pac84oafnPqKgM5zebVowQUWqeqdA3cDsB8VZgcq9EmsW0
-	r+7lig==
-Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com [209.85.222.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4d355w08c1-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Mon, 23 Mar 2026 13:21:39 +0000 (GMT)
-Received: by mail-ua1-f72.google.com with SMTP id a1e0cc1a2514c-94eb847f11cso485277241.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 23 Mar 2026 06:21:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1774272099; x=1774876899; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=3Q2i+GiHSpXUMk/5V2t9vb8q95gvl7L2wScFZUzHsU8=;
-        b=LoC1OZk47URPyjou+gmUs0BhZwMgO0Dhui3mTn0XrGNU5b7HHtP5lV9lk4YYgDyqpR
-         w8oD067VrzCgJeC3OGeiGYUlVgNS6fX0CIOteinR5kpSWuQ1C/L+5QnNb1QtNQS5vhyA
-         ABUfEbYXqxsBDESUlPxNUZghutVCktwxSK5JlrFm7j6IHY+LDKa0oV717Fy3jnS3UZFi
-         KFfrLAoml7cGjWC98WJdRSW7j39uybYodbGnhsvHLlrEyorSR7pkLq+n40hR7odnqBl/
-         +cev3uz7LHk0dAnGt8OwfLrHQJcQQJMyq+WhEGhDY9Z5FgR6lzGdFsvDxqX20sIVdUdI
-         4Gqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774272099; x=1774876899;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=3Q2i+GiHSpXUMk/5V2t9vb8q95gvl7L2wScFZUzHsU8=;
-        b=kAarwsY8xaHFnw3iNxY98x44Q8bQBSdyF2mu0EWibBkVhXsLck5rdPg0tcq2szVqkU
-         r4NunYsT+8jKb+8Akve65G0+qpvEl2NVNK4Dmkr5oeYgX3kQ+kAltua1zXm/JYVS9jMp
-         ov4R2x4N4bGaVTknBzvsE06NoNKLJVC4LlvDsdiaCvv7HpI0YOa/6JLka5Z6BxKYNn2T
-         LkLsy1xE+Bcsob99fkalRthC4Mu0S/MVJ48A5D7iKHwgnwLg4bYkWlmmZlI28iWA+GIE
-         dpLdWWQSti9Mb5Wgr/Tod2iRkgy00vvb8GLoV+wvO+pYejdfv64W+BlTBgL/cC1tWisx
-         KPZA==
-X-Forwarded-Encrypted: i=1; AJvYcCWbIFn3PrQYIfu31Idjf9hGmlgXvntNsOxcLSeyZEvyjUI4ZlGE15S2a6S7yUbBRQexf6NdBtqZZ+yJkGIlFA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwtWATK7m663UwvHMofHHFmuzFjljs8UHjX+4Rgj7RHSPbGvz60
-	mcCe6ofOLL7D24TYlpepbvTkduZpHfnc2o98vBEKW8NB6gXSCKofCY1hm+RPTWWs4C+igit8vS9
-	l3MI1343JWSt9ks6ZHSYhYufnWtlUrc/4CRc51UfGo0z+LSArtTD7gXTpEhqo7vm4lRgMGd5zqy
-	A=
-X-Gm-Gg: ATEYQzybYAM99/i+JTp5nvx1sNhGezz8NXnot/2m8nU28iJTgX1EY0D47xoBwS94LiO
-	ITz0vrtsQvGniZwEuzOg9GN9vCmLeZTe+56Mj5f8IPsmOkIbSkam10ttwylJQQh9e0C520kHeAq
-	Fhli4d2Fufm6d/MZwVwuOVoKajjM4xetRh6S96PYUULikx+qhCKbexIIPTmqimniPwXVw48ok1z
-	AtnkpjmUxBaU/UHUegygVEmEpNIPhgutPiktMWka1uvIeYG9i9M9DZpAgUd4kknxvem+UFORBJl
-	TWrRAFyvDKGOpk4H5y3T0nh0HnhhzpLyyXdu2L/ik2aqX2VefmmSsTy9e07BKc4a6JHQXkIjuNF
-	o19HUJ/daHPCZP5WHp3JSu5UIONFnDkU6Ejr2aN6bPUck2Kyxss6n
-X-Received: by 2002:a67:e704:0:b0:600:106f:5fa8 with SMTP id ada2fe7eead31-602aeb230cemr7011655137.15.1774272099005;
-        Mon, 23 Mar 2026 06:21:39 -0700 (PDT)
-X-Received: by 2002:a67:e704:0:b0:600:106f:5fa8 with SMTP id ada2fe7eead31-602aeb230cemr7011634137.15.1774272098415;
-        Mon, 23 Mar 2026 06:21:38 -0700 (PDT)
-Received: from brgl-qcom.local ([2a01:cb1d:dc:7e00:f9a0:d7e2:7eb6:79b5])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-b9832f44034sm503102066b.4.2026.03.23.06.21.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Mar 2026 06:21:37 -0700 (PDT)
-From: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Date: Mon, 23 Mar 2026 14:20:58 +0100
-Subject: [PATCH net-next v10 6/6] net: stmmac: qcom-ethqos: add support for
- sa8255p
+	id 1w4frc-0000000GtJq-1MCP;
+	Mon, 23 Mar 2026 14:02:41 +0000
+Received: from pb-laptop.local (185.221.143.129.nat.pool.zt.hu [185.221.143.129])
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 50A441BA;
+	Mon, 23 Mar 2026 15:01:20 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
+	s=mail; t=1774274480;
+	bh=BfH8lqrkHRMS5sCrm9+Zee84RMtu29VSz0DOXgmKV7Y=;
+	h=From:To:Cc:Subject:Date:From;
+	b=L4YA7V1gVEQVhycydPgRpalE6ys4+W4eQ1l++63mcN2uhUe0kxiNXwqTMI63KQ/8M
+	 swcq/Jx+0BLR+TGwpkhueF2LZWrD3xn/XQeYZZ6Qmi1dx/7bn+Cl9zR+t+UpgtRdaZ
+	 NxpT1CJ2UpFpmFEuvtWrOWtnM1uUSf7CuaMGqkn0=
+From: =?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <barnabas.pocze@ideasonboard.com>
+To: Dafna Hirschfeld <dafna@fastmail.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	=?UTF-8?q?Barnab=C3=A1s=20P=C5=91cze?= <barnabas.pocze@ideasonboard.com>
+Subject: [PATCH v1] media: rkisp1: Add support for CAC
+Date: Mon, 23 Mar 2026 15:02:16 +0100
+Message-ID: <20260323140216.1486161-1-barnabas.pocze@ideasonboard.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Message-Id: <20260323-qcom-sa8255p-emac-v10-6-79302b238a16@oss.qualcomm.com>
-References: <20260323-qcom-sa8255p-emac-v10-0-79302b238a16@oss.qualcomm.com>
-In-Reply-To: <20260323-qcom-sa8255p-emac-v10-0-79302b238a16@oss.qualcomm.com>
-To: Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Andrew Lunn <andrew+netdev@lunn.ch>,
-        "David S. Miller" <davem@davemloft.net>,
-        Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>,
-        Paolo Abeni <pabeni@redhat.com>,
-        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-        Alexandre Torgue <alexandre.torgue@foss.st.com>,
-        Vinod Koul <vkoul@kernel.org>,
-        Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-        Chen-Yu Tsai <wens@kernel.org>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Kevin Hilman <khilman@baylibre.com>,
-        Jerome Brunet <jbrunet@baylibre.com>, Shawn Guo <shawnguo@kernel.org>,
-        Fabio Estevam <festevam@gmail.com>,
-        Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
-        Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
-        Romain Gantois <romain.gantois@bootlin.com>,
-        Geert Uytterhoeven <geert+renesas@glider.be>,
-        Magnus Damm <magnus.damm@gmail.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Christophe Roullier <christophe.roullier@foss.st.com>,
-        Bartosz Golaszewski <brgl@kernel.org>,
-        Radu Rendec <rrendec@redhat.com>
-Cc: linux-arm-msm@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
-        linux-stm32@st-md-mailman.stormreply.com,
-        linux-arm-kernel@lists.infradead.org,
-        Drew Fustini <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev,
-        linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org,
-        imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
-        linux-riscv@lists.infradead.org, brgl@kernel.org,
-        Bartosz Golaszewski <bartosz.golaszewski@linaro.org>,
-        Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=13278;
- i=bartosz.golaszewski@oss.qualcomm.com; h=from:subject:message-id;
- bh=3YX99yDiykq8wht5jhlxLD9GqcQlDRrqtioZ2YaSMF4=;
- b=owEBbQKS/ZANAwAKAQWdLsv/NoTDAcsmYgBpwT5MxDQjK24eHHLbfxTlhthlxk1AlnbkT6xW2
- Px45/VChQGJAjMEAAEKAB0WIQSR5RMt5bVGHXuiZfwFnS7L/zaEwwUCacE+TAAKCRAFnS7L/zaE
- w3tuD/9AKs1Rakst0JFymj2NL4Fiz6GIj8cqw+hF4MSyRmFOucfl69YYPzWKzTdq+uAAr22YdEL
- 9Abr+BvAHm7D4iaFnrAiF6BTSfk1cEHBDhCAteqv2UScshQmx31ufaniixWpFHwWpHQITdwXQ6t
- dlkgwBou2xzYVYWyOJCny7Agc+D3FRqKbA2f2oZGHintY7wC+8plmU7XRMDZEeIfCR0ybFgb+lj
- juYAV+zVqj0d9eiPXFeon/v+X8/9/ImSus+dCfSEpXNOl9Zpk2BSPzxUz7NEpRWrNQzWrPK8nDL
- pxHIzMf4IX+PfWgVK5rrtIqgIrJ8nU5dhFKBT94SrlFzqfYge/RLtVORkk5hxrBKolsbWi9uvEX
- hVnfJxCLudFoqypbDfiWv8wZipltIgzR54ulv8Ao/fdrpCoUSwCPFT5WCD4QyJpoi4OKASF8kBR
- 39raOzFLCB1QsOSbgeVmSETi1JOcL0pGbYTrsnRGsWEgytYa94bA0T6etRRLOYTCr3Zc+/j7foT
- VkoHlOxy5xHcaImeUGB1hmVi6lXrUflu4xLy0cmmEzECf3RHlPzVTKiBHYD795XOdO1X5Lyb8aL
- js8veq1ZHAS1dMHyx6vs4KcffdZGwair4wXZ3TuX6/cLZxa6sMV8JppglLjuT39qAdE0QL/jylY
- Hs2CWaKgBuO+0jQ==
-X-Developer-Key: i=bartosz.golaszewski@oss.qualcomm.com; a=openpgp;
- fpr=169DEB6C0BC3C46013D2C79F11A72EA01471D772
-X-Authority-Analysis: v=2.4 cv=fq7RpV4f c=1 sm=1 tr=0 ts=69c13e63 cx=c_pps
- a=ULNsgckmlI/WJG3HAyAuOQ==:117 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
- a=Yq5XynenixoA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22 a=KKAkSRfTAAAA:8
- a=EUspDBNiAAAA:8 a=eSQ9y_BssGCL3sbXkzsA:9 a=QEXdDO2ut3YA:10
- a=1WsBpfsz9X-RYQiigVTh:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 8Sefqw5FG34JnfIdsHiej82O8Yk7Vc0f
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzIzMDEwMyBTYWx0ZWRfX4H4bI1Aqvb49
- GKJZWklcCXrfrgKwEDCh3JpT2FTagxL51QwYdlUfX7eJThF1FBgBSi5KHLUXJ6wGF4abyFwMA9q
- fZdOlG6TaY6Rgdr4dkdKyFV9pgmLvoRpqlpAKZsB7hUJBISKefAgsEqS0hDfAdbJycQPj/dTrWS
- bb/596urdelhXNRaGgh1/MbYh3NneVgI+dPfr7E2AUjjsGwLy8RZJGZdzlG0PrkFtuXVN4jgio1
- P5AG6KlSPi10+glurxb3cWj5QxrpDA7Z5ntvV0p6JDcP/4tYw/QRZ8/ZV6aoKsQpXVsrh9aQtHQ
- Pb4fASnzUVw1O+RzeCocTPhTiuOQIsF5KWby1noh9UD/6RAxFIO1r364lqi/6AfgdTk2i+ZIiRW
- j+8pTy7fX1oMcrErkqYHU5ROSfKebJablnUXCBtHgpLe/r3YrfwHD2GVI79op2SYK+7H81z6oJq
- iW3o2KoPUMCh6qmO1DA==
-X-Proofpoint-GUID: 8Sefqw5FG34JnfIdsHiej82O8Yk7Vc0f
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-03-23_04,2026-03-20_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 spamscore=0 adultscore=0 clxscore=1015 impostorscore=0
- lowpriorityscore=0 suspectscore=0 priorityscore=1501 bulkscore=0 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2603230103
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_062141_210356_3E9CBD5D 
-X-CRM114-Status: GOOD (  21.55  )
+X-CRM114-CacheID: sfid-20260323_070240_507031_46F2EF11 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -191,439 +65,232 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Extend the driver to support a new model - sa8255p. Unlike the
-previously supported variants, this one's power management is done in
-the firmware using SCMI. This is modeled in linux using power domains so
-add support for them.
-
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
----
- .../ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c    | 301 ++++++++++++++++++---
- 1 file changed, 262 insertions(+), 39 deletions(-)
-
-diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-index f32ff0d9ce513d8270c8db9c549a79778549df59..09ce80b446cbac8bf85d974a3d6517e037b049c1 100644
---- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-+++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-@@ -7,6 +7,8 @@
- #include <linux/platform_device.h>
- #include <linux/phy.h>
- #include <linux/phy/phy.h>
-+#include <linux/pm_opp.h>
-+#include <linux/pm_domain.h>
- 
- #include "stmmac.h"
- #include "stmmac_platform.h"
-@@ -81,6 +83,13 @@
- 
- #define SGMII_10M_RX_CLK_DVDR			0x31
- 
-+enum ethqos_pd_selector {
-+	ETHQOS_PD_CORE = 0,
-+	ETHQOS_PD_MDIO,
-+	ETHQOS_PD_SERDES,
-+	ETHQOS_NUM_PDS,
-+};
-+
- struct ethqos_emac_por {
- 	unsigned int offset;
- 	unsigned int value;
-@@ -98,6 +107,9 @@ struct ethqos_emac_driver_data {
- 
- struct ethqos_emac_pm_data {
- 	const char *link_clk_name;
-+	bool use_domains;
-+	struct dev_pm_domain_attach_data pd;
-+	unsigned int clk_ptp_rate;
- };
- 
- struct ethqos_emac_match_data {
-@@ -110,13 +122,21 @@ struct ethqos_emac_pm_ctx {
- 	struct phy *serdes_phy;
- };
- 
-+struct ethqos_emac_pd_ctx {
-+	struct dev_pm_domain_list *pd_list;
-+	int serdes_level;
-+};
-+
- struct qcom_ethqos {
- 	struct platform_device *pdev;
- 	void __iomem *rgmii_base;
- 	void (*configure_func)(struct qcom_ethqos *ethqos,
- 			       phy_interface_t interface, int speed);
- 
--	struct ethqos_emac_pm_ctx pm;
-+	union {
-+		struct ethqos_emac_pm_ctx pm;
-+		struct ethqos_emac_pd_ctx pd;
-+	};
- 	phy_interface_t phy_mode;
- 
- 	const struct ethqos_emac_por *rgmii_por;
-@@ -338,6 +358,25 @@ static const struct ethqos_emac_match_data emac_sa8775p_data = {
- 	.pm_data = &emac_sa8775p_pm_data,
- };
- 
-+static const char * const emac_sa8255p_pd_names[] = {
-+	"core", "mdio", "serdes"
-+};
-+
-+static const struct ethqos_emac_pm_data emac_sa8255p_pm_data = {
-+	.pd = {
-+		.pd_flags = PD_FLAG_NO_DEV_LINK,
-+		.pd_names = emac_sa8255p_pd_names,
-+		.num_pd_names = ETHQOS_NUM_PDS,
-+	},
-+	.use_domains = true,
-+	.clk_ptp_rate = 230400000,
-+};
-+
-+static const struct ethqos_emac_match_data emac_sa8255p_data = {
-+	.drv_data = &emac_v4_0_0_data,
-+	.pm_data = &emac_sa8255p_pm_data,
-+};
-+
- static int ethqos_dll_configure(struct qcom_ethqos *ethqos)
- {
- 	struct device *dev = &ethqos->pdev->dev;
-@@ -406,6 +445,28 @@ static int ethqos_dll_configure(struct qcom_ethqos *ethqos)
- 	return 0;
- }
- 
-+static int qcom_ethqos_domain_on(struct qcom_ethqos *ethqos,
-+				 enum ethqos_pd_selector sel)
-+{
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[sel];
-+	int ret;
-+
-+	ret = pm_runtime_resume_and_get(dev);
-+	if (ret < 0)
-+		dev_err(&ethqos->pdev->dev,
-+			"Failed to enable the power domain for %s\n",
-+			dev_name(dev));
-+	return ret;
-+}
-+
-+static void qcom_ethqos_domain_off(struct qcom_ethqos *ethqos,
-+				   enum ethqos_pd_selector sel)
-+{
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[sel];
-+
-+	pm_runtime_put_sync(dev);
-+}
-+
- static int ethqos_rgmii_macro_init(struct qcom_ethqos *ethqos, int speed)
- {
- 	struct device *dev = &ethqos->pdev->dev;
-@@ -655,6 +716,20 @@ static void ethqos_configure_sgmii(struct qcom_ethqos *ethqos,
- 	ethqos_pcs_set_inband(priv, interface == PHY_INTERFACE_MODE_SGMII);
- }
- 
-+static void ethqos_configure_sgmii_pd(struct qcom_ethqos *ethqos,
-+				      phy_interface_t interface, int speed)
-+{
-+	switch (speed) {
-+	case SPEED_2500:
-+	case SPEED_1000:
-+	case SPEED_100:
-+	case SPEED_10:
-+		ethqos->pd.serdes_level = speed;
-+	}
-+
-+	ethqos_configure_sgmii(ethqos, interface, speed);
-+}
-+
- static void ethqos_configure(struct qcom_ethqos *ethqos,
- 			     phy_interface_t interface, int speed)
- {
-@@ -710,6 +785,45 @@ static int ethqos_mac_finish_serdes(struct net_device *ndev, void *priv,
- 	return ret;
- }
- 
-+static int ethqos_mac_finish_serdes_pd(struct net_device *ndev, void *priv,
-+				       unsigned int mode,
-+				       phy_interface_t interface)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-+	int ret = 0;
-+
-+	qcom_ethqos_set_sgmii_loopback(ethqos, false);
-+
-+	if (interface == PHY_INTERFACE_MODE_SGMII ||
-+	    interface == PHY_INTERFACE_MODE_2500BASEX)
-+		ret = dev_pm_opp_set_level(dev, ethqos->pd.serdes_level);
-+
-+	return ret;
-+}
-+
-+static int qcom_ethqos_pd_serdes_powerup(struct net_device *ndev, void *priv)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-+	int ret;
-+
-+	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
-+	if (ret < 0)
-+		return ret;
-+
-+	return dev_pm_opp_set_level(dev, ethqos->pd.serdes_level);
-+}
-+
-+static void qcom_ethqos_pd_serdes_powerdown(struct net_device *ndev, void *priv)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-+
-+	dev_pm_opp_set_level(dev, 0);
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_SERDES);
-+}
-+
- static int ethqos_clks_config(void *priv, bool enabled)
- {
- 	struct qcom_ethqos *ethqos = priv;
-@@ -741,6 +855,68 @@ static void ethqos_clks_disable(void *data)
- 	ethqos_clks_config(data, false);
- }
- 
-+static void ethqos_disable_serdes(void *data)
-+{
-+	struct qcom_ethqos *ethqos = data;
-+
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_SERDES);
-+}
-+
-+static int ethqos_pd_clks_config(void *priv, bool enabled)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	int ret = 0;
-+
-+	if (enabled) {
-+		ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
-+		if (ret < 0) {
-+			dev_err(&ethqos->pdev->dev,
-+				"Failed to enable the MDIO power domain\n");
-+			return ret;
-+		}
-+
-+		ethqos_set_func_clk_en(ethqos);
-+	} else {
-+		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_MDIO);
-+	}
-+
-+	return ret;
-+}
-+
-+static int qcom_ethqos_pd_init(struct device *dev, void *priv)
-+{
-+	struct qcom_ethqos *ethqos = priv;
-+	int ret;
-+
-+	/*
-+	 * Enable functional clock to prevent DMA reset after timeout due
-+	 * to no PHY clock being enabled after the hardware block has been
-+	 * power cycled. The actual configuration will be adjusted once
-+	 * ethqos_fix_mac_speed() is called.
-+	 */
-+	ethqos_set_func_clk_en(ethqos);
-+
-+	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_CORE);
-+	if (ret)
-+		return ret;
-+
-+	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_MDIO);
-+	if (ret) {
-+		qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+
-+static void qcom_ethqos_pd_exit(struct device *dev, void *data)
-+{
-+	struct qcom_ethqos *ethqos = data;
-+
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_MDIO);
-+	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_CORE);
-+}
-+
- static void ethqos_ptp_clk_freq_config(struct stmmac_priv *priv)
- {
- 	struct plat_stmmacenet_data *plat_dat = priv->plat;
-@@ -781,31 +957,11 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 				     "dt configuration failed\n");
- 	}
- 
--	plat_dat->clks_config = ethqos_clks_config;
--
- 	ethqos = devm_kzalloc(dev, sizeof(*ethqos), GFP_KERNEL);
- 	if (!ethqos)
- 		return -ENOMEM;
- 
- 	ethqos->phy_mode = plat_dat->phy_interface;
--	switch (ethqos->phy_mode) {
--	case PHY_INTERFACE_MODE_RGMII:
--	case PHY_INTERFACE_MODE_RGMII_ID:
--	case PHY_INTERFACE_MODE_RGMII_RXID:
--	case PHY_INTERFACE_MODE_RGMII_TXID:
--		ethqos->configure_func = ethqos_configure_rgmii;
--		break;
--	case PHY_INTERFACE_MODE_2500BASEX:
--	case PHY_INTERFACE_MODE_SGMII:
--		ethqos->configure_func = ethqos_configure_sgmii;
--		plat_dat->mac_finish = ethqos_mac_finish_serdes;
--		break;
--	default:
--		dev_err(dev, "Unsupported phy mode %s\n",
--			phy_modes(ethqos->phy_mode));
--		return -EINVAL;
--	}
--
- 	ethqos->pdev = pdev;
- 	ethqos->rgmii_base = devm_platform_ioremap_resource_byname(pdev, "rgmii");
- 	if (IS_ERR(ethqos->rgmii_base))
-@@ -823,35 +979,101 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 	ethqos->has_emac_ge_3 = drv_data->has_emac_ge_3;
- 	ethqos->needs_sgmii_loopback = drv_data->needs_sgmii_loopback;
- 
--	ethqos->pm.link_clk = devm_clk_get(dev, clk_name);
--	if (IS_ERR(ethqos->pm.link_clk))
--		return dev_err_probe(dev, PTR_ERR(ethqos->pm.link_clk),
--				     "Failed to get link_clk\n");
-+	if (pm_data && pm_data->use_domains) {
-+		switch (ethqos->phy_mode) {
-+		case PHY_INTERFACE_MODE_RGMII:
-+		case PHY_INTERFACE_MODE_RGMII_ID:
-+		case PHY_INTERFACE_MODE_RGMII_RXID:
-+		case PHY_INTERFACE_MODE_RGMII_TXID:
-+			ethqos->configure_func = ethqos_configure_rgmii;
-+			break;
-+		case PHY_INTERFACE_MODE_2500BASEX:
-+		case PHY_INTERFACE_MODE_SGMII:
-+			ethqos->configure_func = ethqos_configure_sgmii_pd;
-+			plat_dat->mac_finish = ethqos_mac_finish_serdes_pd;
-+			break;
-+		default:
-+			dev_err(dev, "Unsupported phy mode %s\n",
-+				phy_modes(ethqos->phy_mode));
-+			return -EINVAL;
-+		}
- 
--	ret = ethqos_clks_config(ethqos, true);
--	if (ret)
--		return ret;
-+		ret = devm_pm_domain_attach_list(dev, &pm_data->pd,
-+						 &ethqos->pd.pd_list);
-+		if (ret < 0)
-+			return dev_err_probe(dev, ret, "Failed to attach power domains\n");
-+
-+		plat_dat->clks_config = ethqos_pd_clks_config;
-+		plat_dat->serdes_powerup = qcom_ethqos_pd_serdes_powerup;
-+		plat_dat->serdes_powerdown = qcom_ethqos_pd_serdes_powerdown;
-+		plat_dat->exit = qcom_ethqos_pd_exit;
-+		plat_dat->init = qcom_ethqos_pd_init;
-+		plat_dat->clk_ptp_rate = pm_data->clk_ptp_rate;
-+
-+		ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
-+		if (ret)
-+			return dev_err_probe(dev, ret,
-+					     "Failed to enable the serdes power domain\n");
-+
-+		ret = devm_add_action_or_reset(dev, ethqos_disable_serdes, ethqos);
-+		if (ret)
-+			return ret;
-+	} else {
-+		switch (ethqos->phy_mode) {
-+		case PHY_INTERFACE_MODE_RGMII:
-+		case PHY_INTERFACE_MODE_RGMII_ID:
-+		case PHY_INTERFACE_MODE_RGMII_RXID:
-+		case PHY_INTERFACE_MODE_RGMII_TXID:
-+			ethqos->configure_func = ethqos_configure_rgmii;
-+			break;
-+		case PHY_INTERFACE_MODE_2500BASEX:
-+		case PHY_INTERFACE_MODE_SGMII:
-+			ethqos->configure_func = ethqos_configure_sgmii;
-+			plat_dat->mac_finish = ethqos_mac_finish_serdes;
-+			break;
-+		default:
-+			dev_err(dev, "Unsupported phy mode %s\n",
-+				phy_modes(ethqos->phy_mode));
-+			return -EINVAL;
-+		}
- 
--	ret = devm_add_action_or_reset(dev, ethqos_clks_disable, ethqos);
--	if (ret)
--		return ret;
-+		ethqos->pm.link_clk = devm_clk_get(dev, clk_name);
-+		if (IS_ERR(ethqos->pm.link_clk))
-+			return dev_err_probe(dev, PTR_ERR(ethqos->pm.link_clk),
-+					     "Failed to get link_clk\n");
-+
-+		ret = ethqos_clks_config(ethqos, true);
-+		if (ret)
-+			return ret;
-+
-+		ret = devm_add_action_or_reset(dev, ethqos_clks_disable, ethqos);
-+		if (ret)
-+			return ret;
-+
-+		ethqos->pm.serdes_phy = devm_phy_optional_get(dev, "serdes");
-+		if (IS_ERR(ethqos->pm.serdes_phy))
-+			return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
-+					     "Failed to get serdes phy\n");
- 
--	ethqos->pm.serdes_phy = devm_phy_optional_get(dev, "serdes");
--	if (IS_ERR(ethqos->pm.serdes_phy))
--		return dev_err_probe(dev, PTR_ERR(ethqos->pm.serdes_phy),
--				     "Failed to get serdes phy\n");
-+		ethqos_set_clk_tx_rate(ethqos, NULL, plat_dat->phy_interface,
-+				       SPEED_1000);
- 
--	ethqos_set_clk_tx_rate(ethqos, NULL, plat_dat->phy_interface,
--			       SPEED_1000);
-+		plat_dat->clks_config = ethqos_clks_config;
-+		plat_dat->set_clk_tx_rate = ethqos_set_clk_tx_rate;
-+		plat_dat->ptp_clk_freq_config = ethqos_ptp_clk_freq_config;
-+
-+		if (ethqos->pm.serdes_phy) {
-+			plat_dat->serdes_powerup = qcom_ethqos_serdes_powerup;
-+			plat_dat->serdes_powerdown  = qcom_ethqos_serdes_powerdown;
-+		}
-+	}
- 
- 	qcom_ethqos_set_sgmii_loopback(ethqos, true);
- 	ethqos_set_func_clk_en(ethqos);
- 
- 	plat_dat->bsp_priv = ethqos;
--	plat_dat->set_clk_tx_rate = ethqos_set_clk_tx_rate;
- 	plat_dat->fix_mac_speed = ethqos_fix_mac_speed;
- 	plat_dat->dump_debug_regs = rgmii_dump;
--	plat_dat->ptp_clk_freq_config = ethqos_ptp_clk_freq_config;
- 	plat_dat->core_type = DWMAC_CORE_GMAC4;
- 	if (ethqos->has_emac_ge_3)
- 		plat_dat->dwmac4_addrs = &drv_data->dwmac4_addrs;
-@@ -877,6 +1099,7 @@ static int qcom_ethqos_probe(struct platform_device *pdev)
- 
- static const struct of_device_id qcom_ethqos_match[] = {
- 	{ .compatible = "qcom,qcs404-ethqos", .data = &emac_qcs404_data},
-+	{ .compatible = "qcom,sa8255p-ethqos", .data = &emac_sa8255p_data},
- 	{ .compatible = "qcom,sa8775p-ethqos", .data = &emac_sa8775p_data},
- 	{ .compatible = "qcom,sc8280xp-ethqos", .data = &emac_sc8280xp_data},
- 	{ .compatible = "qcom,sm8150-ethqos", .data = &emac_sm8150_data},
-
--- 
-2.47.3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+VGhlIENBQyBibG9jayBpbXBsZW1lbnRzIGNocm9tYXRpYyBhYmVycmF0aW9uIGNvcnJlY3Rpb24u
+IEV4cG9zZSBpdCB0bwp1c2Vyc3BhY2UgdXNpbmcgdGhlIGV4dGVuc2libGUgcGFyYW1ldGVycyBm
+b3JtYXQuIFRoaXMgd2FzIHRlc3RlZCBvbiB0aGUKaS5NWDhNUCBwbGF0Zm9ybSwgYnV0IGJhc2Vk
+IG9uIGF2YWlsYWJsZSBkb2N1bWVudGF0aW9uIGl0IGlzIGFsc28gcHJlc2VudAppbiB0aGUgUksz
+Mzk5IHZhcmlhbnQgKFYxMCkuIFRodXMgcHJlc3VtYWJseSBhbHNvIGluIGxhdGVyIHZlcnNpb25z
+LApzbyBubyBmZWF0dXJlIGZsYWcgaXMgaW50cm9kdWNlZC4KClNpZ25lZC1vZmYtYnk6IEJhcm5h
+YsOhcyBQxZFjemUgPGJhcm5hYmFzLnBvY3plQGlkZWFzb25ib2FyZC5jb20+Ci0tLQogLi4uL3Bs
+YXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcGFyYW1zLmMgIHwgIDY5ICsrKysrKysrKysr
+KwogLi4uL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcmVncy5oICAgIHwgIDIxICsr
+Ky0KIGluY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmggICAgICAgICAgICB8IDEwNiAr
+KysrKysrKysrKysrKysrKy0KIDMgZmlsZXMgY2hhbmdlZCwgMTkzIGluc2VydGlvbnMoKyksIDMg
+ZGVsZXRpb25zKC0pCgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hp
+cC9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hp
+cC9ya2lzcDEvcmtpc3AxLXBhcmFtcy5jCmluZGV4IDY0NDI0MzZhNWU0MjguLmI4ODlhZjlkY2Vl
+NDUgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3Jr
+aXNwMS1wYXJhbXMuYworKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNw
+MS9ya2lzcDEtcGFyYW1zLmMKQEAgLTY0LDYgKzY0LDcgQEAgdW5pb24gcmtpc3AxX2V4dF9wYXJh
+bXNfY29uZmlnIHsKIAlzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfY29tcGFuZF9ibHNfY29uZmln
+IGNvbXBhbmRfYmxzOwogCXN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19jb21wYW5kX2N1cnZlX2Nv
+bmZpZyBjb21wYW5kX2N1cnZlOwogCXN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc193ZHJfY29uZmln
+IHdkcjsKKwlzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfY2FjX2NvbmZpZyBjYWM7CiB9OwogCiBl
+bnVtIHJraXNwMV9wYXJhbXNfZm9ybWF0cyB7CkBAIC0xNDEzLDYgKzE0MTQsNDggQEAgc3RhdGlj
+IHZvaWQgcmtpc3AxX3dkcl9jb25maWcoc3RydWN0IHJraXNwMV9wYXJhbXMgKnBhcmFtcywKIAkJ
+CQkgICAgIFJLSVNQMV9DSUZfSVNQX1dEUl9UT05FX0NVUlZFX1lNX01BU0spOwogfQogCitzdGF0
+aWMgdm9pZAorcmtpc3AxX2NhY19jb25maWcoc3RydWN0IHJraXNwMV9wYXJhbXMgKnBhcmFtcywK
+KwkJICBjb25zdCBzdHJ1Y3Qgcmtpc3AxX2NpZl9pc3BfY2FjX2NvbmZpZyAqYXJnKQoreworCXUz
+MiByZWd2YWw7CisKKwkvKgorCSAqIFRoZSBlbmFibGUgYml0IGlzIGluIHRoZSBzYW1lIHJlZ2lz
+dGVyIChSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTCksCisJICogc28gb25seSBzZXQgdGhlIGNsaXBw
+aW5nIG1vZGUsIGFuZCBkbyBub3QgbW9kaWZ5IHRoZSBvdGhlciBiaXRzLgorCSAqLworCXJlZ3Zh
+bCA9IHJraXNwMV9yZWFkKHBhcmFtcy0+cmtpc3AxLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTCk7
+CisJcmVndmFsICY9IH4oUktJU1AxX0NJRl9JU1BfQ0FDX0NUUkxfSF9DTElQX01PREUgfAorCQkg
+ICAgUktJU1AxX0NJRl9JU1BfQ0FDX0NUUkxfVl9DTElQX01PREUpOworCXJlZ3ZhbCB8PSBGSUVM
+RF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0hfQ0xJUF9NT0RFLCBhcmctPmhfY2xpcF9t
+b2RlKSB8CisJCSAgRklFTERfUFJFUChSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTF9WX0NMSVBfTU9E
+RSwgYXJnLT52X2NsaXBfbW9kZSk7CisJcmtpc3AxX3dyaXRlKHBhcmFtcy0+cmtpc3AxLCBSS0lT
+UDFfQ0lGX0lTUF9DQUNfQ1RSTCwgcmVndmFsKTsKKworCXJlZ3ZhbCA9IEZJRUxEX1BSRVAoUktJ
+U1AxX0NJRl9JU1BfQ0FDX0NPVU5UX1NUQVJUX0hfTUFTSywgYXJnLT5oX2NvdW50X3N0YXJ0KSB8
+CisJCSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19DT1VOVF9TVEFSVF9WX01BU0ssIGFy
+Zy0+dl9jb3VudF9zdGFydCk7CisJcmtpc3AxX3dyaXRlKHBhcmFtcy0+cmtpc3AxLCBSS0lTUDFf
+Q0lGX0lTUF9DQUNfQ09VTlRfU1RBUlQsIHJlZ3ZhbCk7CisKKwlyZWd2YWwgPSBGSUVMRF9QUkVQ
+KFJLSVNQMV9DSUZfSVNQX0NBQ19BX1JFRF9NQVNLLCBhcmctPnJlZFswXSkgfAorCQkgRklFTERf
+UFJFUChSS0lTUDFfQ0lGX0lTUF9DQUNfQV9CTFVFX01BU0ssIGFyZy0+Ymx1ZVswXSk7CisJcmtp
+c3AxX3dyaXRlKHBhcmFtcy0+cmtpc3AxLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQSwgcmVndmFsKTsK
+KworCXJlZ3ZhbCA9IEZJRUxEX1BSRVAoUktJU1AxX0NJRl9JU1BfQ0FDX0JfUkVEX01BU0ssIGFy
+Zy0+cmVkWzFdKSB8CisJCSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19CX0JMVUVfTUFT
+SywgYXJnLT5ibHVlWzFdKTsKKwlya2lzcDFfd3JpdGUocGFyYW1zLT5ya2lzcDEsIFJLSVNQMV9D
+SUZfSVNQX0NBQ19CLCByZWd2YWwpOworCisJcmVndmFsID0gRklFTERfUFJFUChSS0lTUDFfQ0lG
+X0lTUF9DQUNfQ19SRURfTUFTSywgYXJnLT5yZWRbMl0pIHwKKwkJIEZJRUxEX1BSRVAoUktJU1Ax
+X0NJRl9JU1BfQ0FDX0NfQkxVRV9NQVNLLCBhcmctPmJsdWVbMl0pOworCXJraXNwMV93cml0ZShw
+YXJhbXMtPnJraXNwMSwgUktJU1AxX0NJRl9JU1BfQ0FDX0MsIHJlZ3ZhbCk7CisKKwlyZWd2YWwg
+PSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19YX05PUk1fTkZfTUFTSywgYXJnLT54X25m
+KSB8CisJCSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19YX05PUk1fTlNfTUFTSywgYXJn
+LT54X25zKTsKKwlya2lzcDFfd3JpdGUocGFyYW1zLT5ya2lzcDEsIFJLSVNQMV9DSUZfSVNQX0NB
+Q19YX05PUk0sIHJlZ3ZhbCk7CisKKwlyZWd2YWwgPSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQ
+X0NBQ19ZX05PUk1fTkZfTUFTSywgYXJnLT55X25mKSB8CisJCSBGSUVMRF9QUkVQKFJLSVNQMV9D
+SUZfSVNQX0NBQ19ZX05PUk1fTlNfTUFTSywgYXJnLT55X25zKTsKKwlya2lzcDFfd3JpdGUocGFy
+YW1zLT5ya2lzcDEsIFJLSVNQMV9DSUZfSVNQX0NBQ19ZX05PUk0sIHJlZ3ZhbCk7Cit9CisKIHN0
+YXRpYyB2b2lkCiBya2lzcDFfaXNwX2lzcl9vdGhlcl9jb25maWcoc3RydWN0IHJraXNwMV9wYXJh
+bXMgKnBhcmFtcywKIAkJCSAgICBjb25zdCBzdHJ1Y3Qgcmtpc3AxX3BhcmFtc19jZmcgKm5ld19w
+YXJhbXMpCkBAIC0yMDg5LDYgKzIxMzIsMjUgQEAgc3RhdGljIHZvaWQgcmtpc3AxX2V4dF9wYXJh
+bXNfd2RyKHN0cnVjdCBya2lzcDFfcGFyYW1zICpwYXJhbXMsCiAJCQkJICAgICAgUktJU1AxX0NJ
+Rl9JU1BfV0RSX0NUUkxfRU5BQkxFKTsKIH0KIAorc3RhdGljIHZvaWQgcmtpc3AxX2V4dF9wYXJh
+bXNfY2FjKHN0cnVjdCBya2lzcDFfcGFyYW1zICpwYXJhbXMsCisJCQkJICBjb25zdCB1bmlvbiBy
+a2lzcDFfZXh0X3BhcmFtc19jb25maWcgKmJsb2NrKQoreworCWNvbnN0IHN0cnVjdCBya2lzcDFf
+ZXh0X3BhcmFtc19jYWNfY29uZmlnICpjYWMgPSAmYmxvY2stPmNhYzsKKworCWlmIChjYWMtPmhl
+YWRlci5mbGFncyAmIFJLSVNQMV9FWFRfUEFSQU1TX0ZMX0JMT0NLX0RJU0FCTEUpIHsKKwkJcmtp
+c3AxX3BhcmFtX2NsZWFyX2JpdHMocGFyYW1zLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTCwKKwkJ
+CQkJUktJU1AxX0NJRl9JU1BfQ0FDX0NUUkxfRU5BQkxFKTsKKwkJcmV0dXJuOworCX0KKworCXJr
+aXNwMV9jYWNfY29uZmlnKHBhcmFtcywgJmNhYy0+Y29uZmlnKTsKKworCWlmICgoY2FjLT5oZWFk
+ZXIuZmxhZ3MgJiBSS0lTUDFfRVhUX1BBUkFNU19GTF9CTE9DS19FTkFCTEUpICYmCisJICAgICEo
+cGFyYW1zLT5lbmFibGVkX2Jsb2NrcyAmIEJJVChjYWMtPmhlYWRlci50eXBlKSkpCisJCXJraXNw
+MV9wYXJhbV9zZXRfYml0cyhwYXJhbXMsIFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMLAorCQkJCSAg
+ICAgIFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0VOQUJMRSk7Cit9CisKIHR5cGVkZWYgdm9pZCAo
+KnJraXNwMV9ibG9ja19oYW5kbGVyKShzdHJ1Y3Qgcmtpc3AxX3BhcmFtcyAqcGFyYW1zLAogCQkJ
+ICAgICBjb25zdCB1bmlvbiBya2lzcDFfZXh0X3BhcmFtc19jb25maWcgKmNvbmZpZyk7CiAKQEAg
+LTIxODUsNiArMjI0NywxMCBAQCBzdGF0aWMgY29uc3Qgc3RydWN0IHJraXNwMV9leHRfcGFyYW1z
+X2hhbmRsZXIgewogCQkuaGFuZGxlcgk9IHJraXNwMV9leHRfcGFyYW1zX3dkciwKIAkJLmdyb3Vw
+CQk9IFJLSVNQMV9FWFRfUEFSQU1TX0JMT0NLX0dST1VQX09USEVSUywKIAl9LAorCVtSS0lTUDFf
+RVhUX1BBUkFNU19CTE9DS19UWVBFX0NBQ10gPSB7CisJCS5oYW5kbGVyCT0gcmtpc3AxX2V4dF9w
+YXJhbXNfY2FjLAorCQkuZ3JvdXAJCT0gUktJU1AxX0VYVF9QQVJBTVNfQkxPQ0tfR1JPVVBfT1RI
+RVJTLAorCX0sCiB9OwogCiAjZGVmaW5lIFJLSVNQMV9QQVJBTVNfQkxPQ0tfSU5GTyhibG9jaywg
+ZGF0YSkgXApAQCAtMjIxNSw2ICsyMjgxLDcgQEAgcmtpc3AxX2V4dF9wYXJhbXNfYmxvY2tfdHlw
+ZXNfaW5mb1tdID0gewogCVJLSVNQMV9QQVJBTVNfQkxPQ0tfSU5GTyhDT01QQU5EX0VYUEFORCwg
+Y29tcGFuZF9jdXJ2ZSksCiAJUktJU1AxX1BBUkFNU19CTE9DS19JTkZPKENPTVBBTkRfQ09NUFJF
+U1MsIGNvbXBhbmRfY3VydmUpLAogCVJLSVNQMV9QQVJBTVNfQkxPQ0tfSU5GTyhXRFIsIHdkciks
+CisJUktJU1AxX1BBUkFNU19CTE9DS19JTkZPKENBQywgY2FjKSwKIH07CiAKIHN0YXRpY19hc3Nl
+cnQoQVJSQVlfU0laRShya2lzcDFfZXh0X3BhcmFtc19oYW5kbGVycykgPT0KQEAgLTI0NzQsNiAr
+MjU0MSw4IEBAIHZvaWQgcmtpc3AxX3BhcmFtc19kaXNhYmxlKHN0cnVjdCBya2lzcDFfcGFyYW1z
+ICpwYXJhbXMpCiAJcmtpc3AxX2llX2VuYWJsZShwYXJhbXMsIGZhbHNlKTsKIAlya2lzcDFfcGFy
+YW1fY2xlYXJfYml0cyhwYXJhbXMsIFJLSVNQMV9DSUZfSVNQX0RQRl9NT0RFLAogCQkJCVJLSVNQ
+MV9DSUZfSVNQX0RQRl9NT0RFX0VOKTsKKwlya2lzcDFfcGFyYW1fY2xlYXJfYml0cyhwYXJhbXMs
+IFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMLAorCQkJCVJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0VO
+QUJMRSk7CiB9CiAKIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgcmtpc3AxX3BhcmFtc19vcHMgcmtpc3Ax
+X3YxMF9wYXJhbXNfb3BzID0gewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9y
+b2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlZ3MuaCBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9j
+a2NoaXAvcmtpc3AxL3JraXNwMS1yZWdzLmgKaW5kZXggZmJlYjE4NmNkZTBkNS4uOGUyNTUzNzQ1
+OWJiZCAxMDA2NDQKLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEv
+cmtpc3AxLXJlZ3MuaAorKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNw
+MS9ya2lzcDEtcmVncy5oCkBAIC03MjQsNiArNzI0LDIzIEBACiAjZGVmaW5lIFJLSVNQMV9DSUZf
+SVNQX1dEUl9ETUlOX1NUUkVOR1RIX01BU0sJCUdFTk1BU0soMjAsIDE2KQogI2RlZmluZSBSS0lT
+UDFfQ0lGX0lTUF9XRFJfRE1JTl9TVFJFTkdUSF9NQVgJCTE2VQogCisvKiBDQUMgKi8KKyNkZWZp
+bmUgUktJU1AxX0NJRl9JU1BfQ0FDX0NUUkxfRU5BQkxFCQlCSVQoMCkKKyNkZWZpbmUgUktJU1Ax
+X0NJRl9JU1BfQ0FDX0NUUkxfVl9DTElQX01PREUJR0VOTUFTSygyLCAxKQorI2RlZmluZSBSS0lT
+UDFfQ0lGX0lTUF9DQUNfQ1RSTF9IX0NMSVBfTU9ERQlHRU5NQVNLKDMsIDMpCisjZGVmaW5lIFJL
+SVNQMV9DSUZfSVNQX0NBQ19DT1VOVF9TVEFSVF9IX01BU0sJR0VOTUFTSygxMiwgMCkKKyNkZWZp
+bmUgUktJU1AxX0NJRl9JU1BfQ0FDX0NPVU5UX1NUQVJUX1ZfTUFTSwlHRU5NQVNLKDI4LCAxNikK
+KyNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0FfUkVEX01BU0sJCUdFTk1BU0soOCwgMCkKKyNk
+ZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0FfQkxVRV9NQVNLCQlHRU5NQVNLKDI0LCAxNikKKyNk
+ZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0JfUkVEX01BU0sJCUdFTk1BU0soOCwgMCkKKyNkZWZp
+bmUgUktJU1AxX0NJRl9JU1BfQ0FDX0JfQkxVRV9NQVNLCQlHRU5NQVNLKDI0LCAxNikKKyNkZWZp
+bmUgUktJU1AxX0NJRl9JU1BfQ0FDX0NfUkVEX01BU0sJCUdFTk1BU0soOCwgMCkKKyNkZWZpbmUg
+UktJU1AxX0NJRl9JU1BfQ0FDX0NfQkxVRV9NQVNLCQlHRU5NQVNLKDI0LCAxNikKKyNkZWZpbmUg
+UktJU1AxX0NJRl9JU1BfQ0FDX1hfTk9STV9ORl9NQVNLCUdFTk1BU0soNCwgMCkKKyNkZWZpbmUg
+UktJU1AxX0NJRl9JU1BfQ0FDX1hfTk9STV9OU19NQVNLCUdFTk1BU0soMTksIDE2KQorI2RlZmlu
+ZSBSS0lTUDFfQ0lGX0lTUF9DQUNfWV9OT1JNX05GX01BU0sJR0VOTUFTSyg0LCAwKQorI2RlZmlu
+ZSBSS0lTUDFfQ0lGX0lTUF9DQUNfWV9OT1JNX05TX01BU0sJR0VOTUFTSygxOSwgMTYpCisKIC8q
+ID09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT0gKi8KIC8qICAgICAgICAgICAgICAgICAgICAgICAgICAgIENJRiBSZWdpc3Rl
+cnMgICAgICAgICAgICAgICAgICAgICAgICAgICAgKi8KIC8qID09PT09PT09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0gKi8KQEAgLTEx
+OTYsOCArMTIxMyw4IEBACiAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0NBQ19BCQkJKFJLSVNQMV9D
+SUZfSVNQX0NBQ19CQVNFICsgMHgwMDAwMDAwOCkKICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FD
+X0IJCQkoUktJU1AxX0NJRl9JU1BfQ0FDX0JBU0UgKyAweDAwMDAwMDBjKQogI2RlZmluZSBSS0lT
+UDFfQ0lGX0lTUF9DQUNfQwkJCShSS0lTUDFfQ0lGX0lTUF9DQUNfQkFTRSArIDB4MDAwMDAwMTAp
+Ci0jZGVmaW5lIFJLSVNQMV9DSUZfSVNQX1hfTk9STQkJCShSS0lTUDFfQ0lGX0lTUF9DQUNfQkFT
+RSArIDB4MDAwMDAwMTQpCi0jZGVmaW5lIFJLSVNQMV9DSUZfSVNQX1lfTk9STQkJCShSS0lTUDFf
+Q0lGX0lTUF9DQUNfQkFTRSArIDB4MDAwMDAwMTgpCisjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0NB
+Q19YX05PUk0JCShSS0lTUDFfQ0lGX0lTUF9DQUNfQkFTRSArIDB4MDAwMDAwMTQpCisjZGVmaW5l
+IFJLSVNQMV9DSUZfSVNQX0NBQ19ZX05PUk0JCShSS0lTUDFfQ0lGX0lTUF9DQUNfQkFTRSArIDB4
+MDAwMDAwMTgpCiAKICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfRVhQX0JBU0UJCQkweDAwMDAyNjAw
+CiAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0VYUF9DVFJMCQkJKFJLSVNQMV9DSUZfSVNQX0VYUF9C
+QVNFICsgMHgwMDAwMDAwMCkKZGlmZiAtLWdpdCBhL2luY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEt
+Y29uZmlnLmggYi9pbmNsdWRlL3VhcGkvbGludXgvcmtpc3AxLWNvbmZpZy5oCmluZGV4IGIyZDJh
+NzFmN2JhZmYuLmQ4YWNjY2FkZGQwZTkgMTAwNjQ0Ci0tLSBhL2luY2x1ZGUvdWFwaS9saW51eC9y
+a2lzcDEtY29uZmlnLmgKKysrIGIvaW5jbHVkZS91YXBpL2xpbnV4L3JraXNwMS1jb25maWcuaApA
+QCAtOTY3LDYgKzk2Nyw5MiBAQCBzdHJ1Y3Qgcmtpc3AxX2NpZl9pc3Bfd2RyX2NvbmZpZyB7CiAJ
+X191OCB1c2VfaXJlZjsKIH07CiAKKy8qCisgKiBlbnVtIHJraXNwMV9jaWZfaXNwX2NhY19oX2Ns
+aXBfbW9kZSAtIGhvcml6b250YWwgY2xpcHBpbmcgbW9kZQorICoKKyAqIEBSS0lTUDFfQ0lGX0lT
+UF9DQUNfSF9DTElQX01PREVfNFBYOiArLy0gNCBwaXhlbHMKKyAqIEBSS0lTUDFfQ0lGX0lTUF9D
+QUNfSF9DTElQX01PREVfNF81UFg6ICsvLSA0LzUgcGl4ZWxzIGRlcGVuZGluZyBvbiBiYXllciBw
+b3NpdGlvbgorICovCitlbnVtIHJraXNwMV9jaWZfaXNwX2NhY19oX2NsaXBfbW9kZSB7CisJUktJ
+U1AxX0NJRl9JU1BfQ0FDX0hfQ0xJUF9NT0RFXzRQWCA9IDAsCisJUktJU1AxX0NJRl9JU1BfQ0FD
+X0hfQ0xJUF9NT0RFXzRfNVBYID0gMSwKK307CisKKy8qKgorICogZW51bSBya2lzcDFfY2lmX2lz
+cF9jYWNfdl9jbGlwX21vZGUgLSB2ZXJ0aWNhbCBjbGlwcGluZyBtb2RlCisgKgorICogQFJLSVNQ
+MV9DSUZfSVNQX0NBQ19WX0NMSVBfTU9ERV8yUFg6ICsvLSAyIHBpeGVscworICogQFJLSVNQMV9D
+SUZfSVNQX0NBQ19WX0NMSVBfTU9ERV8zUFg6ICsvLSAzIHBpeGVscworICogQFJLSVNQMV9DSUZf
+SVNQX0NBQ19WX0NMSVBfTU9ERV8zXzRQWDogKy8tIDMvNCBwaXhlbHMgZGVwZW5kaW5nIG9uIGJh
+eWVyIHBvc2l0aW9uCisgKi8KK2VudW0gcmtpc3AxX2NpZl9pc3BfY2FjX3ZfY2xpcF9tb2RlIHsK
+KwlSS0lTUDFfQ0lGX0lTUF9DQUNfVl9DTElQX01PREVfMlBYID0gMCwKKwlSS0lTUDFfQ0lGX0lT
+UF9DQUNfVl9DTElQX01PREVfM1BYID0gMSwKKwlSS0lTUDFfQ0lGX0lTUF9DQUNfVl9DTElQX01P
+REVfM180UFggPSAyLAorfTsKKworLyoqCisgKiBzdHJ1Y3Qgcmtpc3AxX2NpZl9pc3BfY2FjX2Nv
+bmZpZyAtIGNocm9tYXRpYyBhYmVycmF0aW9uIGNvcnJlY3Rpb24gY29uZmlndXJhdGlvbgorICoK
+KyAqIFRoZSBjb3JyZWN0aW9uIGlzIGNhcnJpZWQgb3V0IGJ5IHNoaWZ0aW5nIHRoZSByZWQgYW5k
+IGJsdWUgcGl4ZWxzIHJlbGF0aXZlCisgKiB0byB0aGUgZ3JlZW4gb25lcywgZGVwZW5kaW5nIG9u
+IHRoZSBkaXN0YW5jZSBmcm9tIHRoZSBvcHRpY2FsIGNlbnRlcjoKKyAqCisgKiBAaF9jb3VudF9z
+dGFydDogaG9yaXpvbnRhbCBjb29yZGluYXRlIG9mIHRoZSBvcHRpY2FsIGNlbnRlciAoMTMtYml0
+IHVuc2lnbmVkIGludGVnZXI7IFsxLDgxOTFdKQorICogQHZfY291bnRfc3RhcnQ6IHZlcnRpY2Fs
+IGNvb3JkaW5hdGUgb2YgdGhlIG9wdGljYWwgY2VudGVyICgxMy1iaXQgdW5zaWduZWQgaW50ZWdl
+cjsgWzEsODE5MV0pCisgKgorICogRm9yIGVhY2ggcGl4ZWwsIHRoZSB4L3kgZGlzdGFuY2VzIGZy
+b20gdGhlIG9wdGljYWwgY2VudGVyIGFyZSBjYWxjdWxhdGVkIGFuZAorICogdGhlbiB0cmFuc2Zv
+cm1lZCBpbnRvIHRoZSBbMCwyNTVdIHJhbmdlIGJhc2VkIG9uIHRoZSBmb2xsb3dpbmcgZm9ybXVs
+YToKKyAqCisgKiAgICgoKGQgPDwgNCkgPj4gcykgKiBmKSA+PiA1CisgKgorICogd2hlcmUgYGRg
+IGlzIHRoZSBkaXN0YW5jZSwgYHNgIGFuZCBgZmAgYXJlIHRoZSBub3JtYWxpemF0aW9uIHBhcmFt
+ZXRlcnM6CisgKgorICogQHhfbmY6IGhvcml6b250YWwgbm9ybWFsaXphdGlvbiBzY2FsZSBwYXJh
+bWV0ZXIgKDUtYml0IHVuc2lnbmVkIGludGVnZXI7IFswLDMxXSkKKyAqIEB4X25zOiBob3Jpem9u
+dGFsIG5vcm1hbGl6YXRpb24gc2hpZnQgcGFyYW1ldGVyICg0LWJpdCB1bnNpZ25lZCBpbnRlZ2Vy
+OyBbMCwxNV0pCisgKgorICogQHlfbmY6IHZlcnRpY2FsIG5vcm1hbGl6YXRpb24gc2NhbGUgcGFy
+YW1ldGVyICg1LWJpdCB1bnNpZ25lZCBpbnRlZ2VyOyBbMCwzMV0pCisgKiBAeV9uczogdmVydGlj
+YWwgbm9ybWFsaXphdGlvbiBzaGlmdCBwYXJhbWV0ZXIgKDQtYml0IHVuc2lnbmVkIGludGVnZXI7
+IFswLDE1XSkKKyAqCisgKiBUaGVzZSBwYXJhbWV0ZXJzIHNob3VsZCBiZSBjaG9zZW4gYmFzZWQg
+b24gdGhlIGltYWdlIHJlc29sdXRpb24sIHRoZSBwb3NpdGlvbgorICogb2YgdGhlIG9wdGljYWwg
+Y2VudGVyLCBhbmQgdGhlIHNoYXBlIG9mIHBpeGVsczogc28gdGhhdCBubyBub3JtYWxpemVkIGRp
+c3RhbmNlCisgKiBpcyBsYXJnZXIgdGhhbiAyNTUuIElmIHRoZSBwaXhlbHMgaGF2ZSBzcXVhcmUg
+c2hhcGUsIHRoZSB0d28gc2V0cyBvZiBwYXJhbWV0ZXJzCisgKiBzaG91bGQgYmUgZXF1YWwuCisg
+KgorICogVGhlIGFjdHVhbCBhbW91bnQgb2YgY29ycmVjdGlvbiBpcyBjYWxjdWxhdGVkIHdpdGgg
+YSB0aGlyZCBkZWdyZWUgcG9seW5vbWlhbDoKKyAqCisgKiAgIGNbMF0gKiByICsgY1sxXSAqIHJe
+MiArIGNbMl0gKiByXjMKKyAqCisgKiB3aGVyZSBgY2AgaXMgdGhlIHNldCBvZiBjb2VmZmljaWVu
+dHMgZm9yIHRoZSBnaXZlbiBjb2xvciwgYW5kIGByYCBpcyBkaXN0YW5jZToKKyAqCisgKiBAcmVk
+OiByZWQgY29lZmZpY2llbnRzICg1LjQgdHdvJ3MgY29tcGxlbWVudDsgWy0xNiwxNS45Mzc1XSkK
+KyAqIEBibHVlOiBibHVlIGNvZWZmaWNpZW50cyAoNS40IHR3bydzIGNvbXBsZW1lbnQ7IFstMTYs
+MTUuOTM3NV0pCisgKgorICogRmluYWxseSwgdGhlIGFtb3VudCBpcyBjbGlwcGVkIGFzIHJlcXVl
+c3RlZDoKKyAqCisgKiBAaF9jbGlwX21vZGU6IG1heGltdW0gaG9yaXpvbnRhbCBzaGlmdCAoZnJv
+bSBlbnVtIHJraXNwMV9jaWZfaXNwX2NhY19oX2NsaXBfbW9kZSkKKyAqIEB2X2NsaXBfbW9kZTog
+bWF4aW11bSB2ZXJ0aWNhbCBzaGlmdCAoZnJvbSBlbnVtIHJraXNwMV9jaWZfaXNwX2NhY192X2Ns
+aXBfbW9kZSkKKyAqCisgKiBBIHBvc2l0aXZlIHJlc3VsdCB3aWxsIHNoaWZ0IGF3YXkgZnJvbSB0
+aGUgb3B0aWNhbCBjZW50ZXIsIHdoaWxlIGEgbmVnYXRpdmUKKyAqIG9uZSB3aWxsIHNoaWZ0IHRv
+d2FyZHMgdGhlIG9wdGljYWwgY2VudGVyLiBJbiB0aGUgbGF0dGVyIGNhc2UsIHRoZSBwaXhlbAor
+ICogdmFsdWVzIGF0IHRoZSBlZGdlcyBhcmUgZHVwbGljYXRlZC4KKyAqLworc3RydWN0IHJraXNw
+MV9jaWZfaXNwX2NhY19jb25maWcgeworCV9fdTggaF9jbGlwX21vZGU7CisJX191OCB2X2NsaXBf
+bW9kZTsKKworCV9fdTE2IGhfY291bnRfc3RhcnQ7CisJX191MTYgdl9jb3VudF9zdGFydDsKKwor
+CV9fdTE2IHJlZFszXTsKKwlfX3UxNiBibHVlWzNdOworCisJX191OCB4X25mOworCV9fdTggeF9u
+czsKKworCV9fdTggeV9uZjsKKwlfX3U4IHlfbnM7Cit9OworCiAvKi0tLS0tLS0tLS0gUEFSVDI6
+IE1lYXN1cmVtZW50IFN0YXRpc3RpY3MgLS0tLS0tLS0tLS0tKi8KIAogLyoqCkBAIC0xMTYxLDYg
+KzEyNDcsNyBAQCBlbnVtIHJraXNwMV9leHRfcGFyYW1zX2Jsb2NrX3R5cGUgewogCVJLSVNQMV9F
+WFRfUEFSQU1TX0JMT0NLX1RZUEVfQ09NUEFORF9FWFBBTkQsCiAJUktJU1AxX0VYVF9QQVJBTVNf
+QkxPQ0tfVFlQRV9DT01QQU5EX0NPTVBSRVNTLAogCVJLSVNQMV9FWFRfUEFSQU1TX0JMT0NLX1RZ
+UEVfV0RSLAorCVJLSVNQMV9FWFRfUEFSQU1TX0JMT0NLX1RZUEVfQ0FDLAogfTsKIAogLyogRm9y
+IGJhY2t3YXJkIGNvbXBhdGliaWxpdHkgKi8KQEAgLTE1MDcsNiArMTU5NCwyMiBAQCBzdHJ1Y3Qg
+cmtpc3AxX2V4dF9wYXJhbXNfd2RyX2NvbmZpZyB7CiAJc3RydWN0IHJraXNwMV9jaWZfaXNwX3dk
+cl9jb25maWcgY29uZmlnOwogfSBfX2F0dHJpYnV0ZV9fKChhbGlnbmVkKDgpKSk7CiAKKy8qKgor
+ICogc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX2NhY19jb25maWcgLSBSa0lTUDEgZXh0ZW5zaWJs
+ZSBwYXJhbXMgQ0FDIGNvbmZpZworICoKKyAqIFJrSVNQMSBleHRlbnNpYmxlIHBhcmFtZXRlcnMg
+Q0FDIGJsb2NrLgorICogSWRlbnRpZmllZCBieSA6Yzp0eXBlOmBSS0lTUDFfRVhUX1BBUkFNU19C
+TE9DS19UWVBFX0NBQ2AuCisgKgorICogQGhlYWRlcjogVGhlIFJrSVNQMSBleHRlbnNpYmxlIHBh
+cmFtZXRlcnMgaGVhZGVyLCBzZWUKKyAqCSAgICA6Yzp0eXBlOmBya2lzcDFfZXh0X3BhcmFtc19i
+bG9ja19oZWFkZXJgCisgKiBAY29uZmlnOiBDQUMgY29uZmlndXJhdGlvbiwgc2VlCisgKgkgICAg
+OmM6dHlwZTpgcmtpc3AxX2NpZl9pc3BfY2FjX2NvbmZpZ2AKKyAqLworc3RydWN0IHJraXNwMV9l
+eHRfcGFyYW1zX2NhY19jb25maWcgeworCXN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19ibG9ja19o
+ZWFkZXIgaGVhZGVyOworCXN0cnVjdCBya2lzcDFfY2lmX2lzcF9jYWNfY29uZmlnIGNvbmZpZzsK
+K30gX19hdHRyaWJ1dGVfXygoYWxpZ25lZCg4KSkpOworCiAvKgogICogVGhlIHJraXNwMV9leHRf
+cGFyYW1zX2NvbXBhbmRfY3VydmVfY29uZmlnIHN0cnVjdHVyZSBpcyBjb3VudGVkIHR3aWNlIGFz
+IGl0CiAgKiBpcyB1c2VkIGZvciBib3RoIHRoZSBDT01QQU5EX0VYUEFORCBhbmQgQ09NUEFORF9D
+T01QUkVTUyBibG9jayB0eXBlcy4KQEAgLTE1MzIsNyArMTYzNSw4IEBAIHN0cnVjdCBya2lzcDFf
+ZXh0X3BhcmFtc193ZHJfY29uZmlnIHsKIAlzaXplb2Yoc3RydWN0IHJraXNwMV9leHRfcGFyYW1z
+X2NvbXBhbmRfYmxzX2NvbmZpZykJCStcCiAJc2l6ZW9mKHN0cnVjdCBya2lzcDFfZXh0X3BhcmFt
+c19jb21wYW5kX2N1cnZlX2NvbmZpZykJCStcCiAJc2l6ZW9mKHN0cnVjdCBya2lzcDFfZXh0X3Bh
+cmFtc19jb21wYW5kX2N1cnZlX2NvbmZpZykJCStcCi0Jc2l6ZW9mKHN0cnVjdCBya2lzcDFfZXh0
+X3BhcmFtc193ZHJfY29uZmlnKSkKKwlzaXplb2Yoc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX3dk
+cl9jb25maWcpCQkJK1wKKwlzaXplb2Yoc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX2NhY19jb25m
+aWcpKQogCiAvKioKICAqIGVudW0gcmtzaXAxX2V4dF9wYXJhbV9idWZmZXJfdmVyc2lvbiAtIFJr
+SVNQMSBleHRlbnNpYmxlIHBhcmFtZXRlcnMgdmVyc2lvbgotLSAKMi41My4wCgoKX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
+bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
+LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
