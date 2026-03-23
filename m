@@ -4,49 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B174F483C6
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 16:15:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1896EF483C6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 16:15:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Subject:From:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Subject:
 	Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sfz+XKjqXYQsyfgfUbPWWnwtpFcPRZWHF6OIeOD1Wso=; b=cSjE0+nVuNOtuc
-	jJfiipJrOrOKVhWjxkdwkmHnKeSG0tmA4gl/UE4CpL7KWB5GAeqzm5Mv0gIRICV0gX3B1pizyoIYm
-	6oqGWN2xzHnoXsN0A1fEFgq3B76YuoNkKZQ3R53aqK6RBnJiPuqHWg5NBA2Ib/hM9C4UYBn37UICD
-	90I2t8K40ccvO7As4d12GdlhkL60T3V7T2dpVWT4Ll6j3K36Q4cfoFV+zQ08UtlujdNT8gOTL1HUB
-	CpjEe4fM+wQcfq+YX1lS85OHEo/SJ19dt9Jy+yQs2d7PJ306HMlSE2mcf3GoxSMShVOBPJyP/5q4N
-	5zvp+ybg1KclSl2Umxlg==;
+	List-Owner; bh=dVmHtww42XxHnJOiGhFnFEbSmQfm9pVKWcqjtoDkO04=; b=w1nZlEhbqnh9YN
+	Wx8w/1LVOzqDZwicgIOuu2ZQeTv+zCdcIgEvfi0LgVHEpieYNt5SYxp8LZ9raCblxZ5st5o4OT0U9
+	MqXg5ROvmGp1BwZe17IAM6Lfg/54nOvDpUYP4admSwnUpXbVrvJToauakXrXZYSncBGsnnjCueTOr
+	1LaIyA1buztjLSbgXFHEm+0pIFmMiVcNwEeLfuje5L0nHIGQV8rnvkWplzTyeDQFhGjtdo1NwpQf0
+	B3pXzbli8d/SF6EVTrZ7rs2NDS34Shqv/+W/P2HlAbcikoYXS+VSfsS1PAO8O3D8SCj1p1AWgAigF
+	jAosfYm2waPycQ50Frbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4hvx-0000000H6fm-2exH;
-	Mon, 23 Mar 2026 16:15:17 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1w4hw4-0000000H6iV-08CY;
+	Mon, 23 Mar 2026 16:15:24 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4hvt-0000000H6dj-3aEU
+	id 1w4hvu-0000000H6do-1Z9W
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Mar 2026 16:15:16 +0000
+	Mon, 23 Mar 2026 16:15:17 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 158FEC58081;
-	Mon, 23 Mar 2026 16:15:36 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 9960F4E427AE;
+	Mon, 23 Mar 2026 16:15:10 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 297505FEF6;
-	Mon, 23 Mar 2026 16:15:09 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 290B210451097;
-	Mon, 23 Mar 2026 17:14:53 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 6D9685FEF6;
+	Mon, 23 Mar 2026 16:15:10 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8EEEA10450FE0;
+	Mon, 23 Mar 2026 17:14:57 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1774282505; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1774282506; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=K6obHe83BAwmzQr/bTjTPtRZKHUknQfMZAa88iZ63Kw=;
-	b=gZNQO9t18okNaQnCJgK7AKFN1ayJZ25Qu2grAZkSWH+meBwEgO7CYqMhvUJtDfkJR9zNLX
-	tGqnLFBrLSfkHP+VwDq95ZuNIqDPpirhxj0bxO9gK6fMJUJjnkZzetUhBsdRqsIzWcb6Bn
-	Jf5uGXZpdLJklu6d251BycDsDJeBqGjtDLlctYHnez3K8HitbTJ4BWLghBFUcl8QvyV+4i
-	xqZXiVd474eHdHttYTF9u6SmKMfXkbeizy6+R75x6p5CwZrP253w0ee9tH3HdqKKWj3i7n
-	T8XAoObLuid6VqMe4CHkq30vE1krtSaImN4BJ/R+feuefkotqWvX+wDMdRkLRQ==
+	bh=wz/qy3mOqhyoOYrk4BYNUG4XnoW1wVBR5GPWBTYta+k=;
+	b=X8I0za+0DuH7Uricdi22M/uTCib/0T6dlZjRnidNjg5yq5jTJSBptkLD5BFMEGHu1c1Urv
+	P/GlNk2/IOpNJyvIR6JFZdujnZRu/xEZn0nCpRkF313SELDqqdkb5FCR3SVckFMYEY90M9
+	18vd1rwE2UFRQ3oazskYokOSUhwBLGeV0mwfPDVnZ72AuXrT6Z658yNUKugz058xy3LsuP
+	ea5Ak61T2Qprayj5sy69Bh9wCks/IfLxiWrh1wKR4kT4++lr6BqaeOG7H5EFZVVsLCdGEP
+	UY1R8QPgy+z09dqXUxNhPNfwhGA/TNJ7W8AAQmmc/tUg5TwCV91sJYyb5djeiQ==
 Mime-Version: 1.0
-Date: Mon, 23 Mar 2026 17:14:53 +0100
-Message-Id: <DHAANH2HFRIK.26SLTPXGLHOS2@bootlin.com>
+Date: Mon, 23 Mar 2026 17:14:56 +0100
+Message-Id: <DHAANIKVU6BV.20W1GS0MWT55E@bootlin.com>
+Subject: Re: [PATCH v2 9/9] drm/rockchip: analogix_dp: Add support for
+ RK3576
 To: "Damon Ding" <damon.ding@rock-chips.com>, <hjc@rock-chips.com>,
  <heiko@sntech.de>, <andy.yan@rock-chips.com>,
  <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
@@ -54,15 +56,14 @@ To: "Damon Ding" <damon.ding@rock-chips.com>, <hjc@rock-chips.com>,
  <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
  <andrzej.hajda@intel.com>, <neil.armstrong@linaro.org>, <rfoss@kernel.org>
 From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v2 8/9] drm/bridge: analogix_dp: Add support for RK3576
 X-Mailer: aerc 0.20.1
 References: <20260319104031.1986946-1-damon.ding@rock-chips.com>
- <20260319104031.1986946-9-damon.ding@rock-chips.com>
-In-Reply-To: <20260319104031.1986946-9-damon.ding@rock-chips.com>
+ <20260320004554.2006299-1-damon.ding@rock-chips.com>
+In-Reply-To: <20260320004554.2006299-1-damon.ding@rock-chips.com>
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_091514_032246_80631194 
-X-CRM114-Status: UNSURE (   5.70  )
+X-CRM114-CacheID: sfid-20260323_091514_537423_CEF6E28B 
+X-CRM114-Status: UNSURE (   7.85  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,11 +82,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Mar 19, 2026 at 11:40 AM CET, Damon Ding wrote:
-> Expand enum analogix_dp_devtype with RK3576_EDP, and add max_link_rate
-> and max_lane_count configs for it.
+On Fri Mar 20, 2026 at 1:45 AM CET, Damon Ding wrote:
+> RK3576 integrates the Analogix eDP 1.3 TX controller IP and the HDMI/eDP
+> TX Combo PHY based on a Samsung IP block - both of which are the same as
+> those on RK3588.
+>
+> The patch currently adds only the basic support, specifically RGB output
+> up to 4K@60Hz, without the tests for audio, PSR and other eDP 1.3 specific
+> features.
 >
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
 Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
