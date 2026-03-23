@@ -4,104 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A083EF4613D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 15:20:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F3AF4613B
+	for <linux-rockchip@archiver.kernel.org>; Mon, 23 Mar 2026 15:38:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:MIME-Version:Message-ID:Date
+	:Subject:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=e/6vhZ16NNzUA564vt+hrZMLAUTc4xsVR26EYq0UVKo=; b=F+dNa8Qv47vQDD
-	ZIjPF2a9dsunmUvVBju4+O94vAtv0rE2htbpqUgu5v4e6ue/0FenXPhQin0/c0b2w2DM52XnT+c9F
-	ZkkF3kemhAiMHA+3B3A3x5I8kj0i17WvQKsP836RFv44e4Nl3ykRvOU+a/mb2IMe4w/hklJUBWkQU
-	X1/Wvyo1Zt2IKogAO9ivg/Dn1lFU3kAQlXwvak8NX+d9/qLzMP8UktKR2PxuF2Q1VR3d2NMJ1yrCD
-	l0IRVeFm7aS+NRKmt9K6uUn/78ZifB2WZWIHIcbhqmURWemIatYSfb7SGQC7NgTiKW5qYjb63zv1A
-	J8CYpIzyAvJJg0vQUCyQ==;
+	List-Owner; bh=gIMfzAtp3vZjXx/SCaITC2s2zJeURz1LrVvBYZ+roIk=; b=QTr/R0zWq3cSp+
+	iLu0Tw9W8wCE6YAVj7+HQwfi97uQoVtr6JWrmJrDoLm7gTKELka6i+wv0NqcVDwVRdq8HFM6ZlkVG
+	niWcV4kzNgPfeHLQiraE/BSfBm1KherGrD4S7/wjwgCQZCo6jm3fdq38T5Cu4PHF9Be+hQOiYNTPU
+	Od6ZvhoEFBVcGOkkpttBNHj96PXNncrMyCKYi5APiHv9+AhhVysnemdI0mSYDwmDTQuTQd/oIwzxL
+	nVuoOzt7QOnW4IIeM9Wcj6B9kfU7B8NtDSp3BmtOsW96VuXEThu7xxOJvVtCYLRGuj0M1k5VUZoEQ
+	pKvki9nE1CQSBGK1JNqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4h4R-0000000H1HO-3BQy;
-	Mon, 23 Mar 2026 15:19:59 +0000
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+	id 1w4hM5-0000000H2zd-3HzX;
+	Mon, 23 Mar 2026 15:38:15 +0000
+Received: from mailout4.samsung.com ([203.254.224.34])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4h4P-0000000H1GQ-1J1t
+	id 1w4hM2-0000000H2yI-0usI
 	for linux-rockchip@lists.infradead.org;
-	Mon, 23 Mar 2026 15:19:58 +0000
-Received: by mail-lf1-x12a.google.com with SMTP id 2adb3069b0e04-59e4a04f059so2571303e87.2
-        for <linux-rockchip@lists.infradead.org>; Mon, 23 Mar 2026 08:19:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774279195; cv=none;
-        d=google.com; s=arc-20240605;
-        b=dHC5crNFwytt14tOL7sZ1S3uHOCX2xWqswAjbZORQvWji9xo+dr6/1WpIDw3Y3jXNl
-         s+wb5lizNwnTFBWCfhVAZgytSshrwyMfuRgHC68tQTgttw8N5b0XZL+Ix1xgH17cOE1K
-         bOGy70uBBdkTpI0+XqeZxWSv8G0cHG5lUv6FH62+QkbJl8iwEg833RGpO9JIHQdatoDY
-         4w+e1wCiMg1izBKvSIVdyFHYjrkWWMSFSZp1zW8Vh2MKw6V07HGki2gVAAZ2D+7FITMF
-         AcObScsqqxDI+fSbJ+pzY3rC+o5k3p79+f0CWJO4H7bgNMoZpNf6O7Bzmd1EduObLhc/
-         8Jpw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=e9m6IagqbiMUTJX23Qe4eCI6DILlg9PmVieqm1cjUqY=;
-        fh=5q2XUBB4HBFVN+v3/W3oVXzfX4UVWs1ccUVnKbl+Uis=;
-        b=YDKsflI+4nVcda4daupXd1ngzBD6CTV8o/M04AjqGXJcLX8YKvmeu9+i0/hNrhjV2O
-         1Gc/DWeUORCSO0ynkzxNIaPsLkC0hpXAEikcewHy1+aU7KhtAIF2+13C5/+9kBz3sGn9
-         KtrYjxvfC2qGcGPdHSEN12xPEm1QSKiflnyLyhZugUp7YFpFdnX4Xiq5cbEflQpBjPOo
-         WAjQ7ZUe/c66CKKzTMk8tVkwBaBr0e8LTPYviDGIbchuTIIIf1Ac02BWtHdhk0j1g5uq
-         OEPdvTS0l8SuVubnv0Qs164taYwPsjqc/ThAcJdG9ykVYgTpXnqrlRP9lXLkh6PYrApF
-         Zwow==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1774279195; x=1774883995; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=e9m6IagqbiMUTJX23Qe4eCI6DILlg9PmVieqm1cjUqY=;
-        b=sLOQjafbqWZH7WpLJqJDHyibjMYZkWRzVYY40vDz7KRBx33LDRg50DEevW2TLWnW+v
-         pxxOt7yzzOq2d6SKw5oBZmoknttLnaoAI9th1CAFZqOuRIIDl/JpS4YoMQcnOR8A0E1l
-         s185oFEfvjI6rmss34A5JVXHOhH/LTT/Y9D89hWPb4nzqgHAQbuYLwc/j7+jpyo4AH3a
-         mcOyb3hSbr8S8AMDcceAs4yzNB/U9Qd75cvi4M5aRu5SbdVmav6i52eOsf5Iv7FjjWfT
-         ooyw0VsqDEqDZdN++d1YzlWxJztwv0Q/o0Menf1NIbgO3xzcry8FynFdRND6tkcDZF9Q
-         wi/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774279195; x=1774883995;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=e9m6IagqbiMUTJX23Qe4eCI6DILlg9PmVieqm1cjUqY=;
-        b=J6RCMAeZELT1lIzSvVJIQyppRhzLMKE/m78ozg8ZVFCVCnx9/whUO3I9qa9tTFbdmo
-         qaHZ3wPx2CZq+oB7CQVHQHc2ihwmyXe9ZNIGc8xZ933e0g2fwXbNvvd5ZfofsD6v/6lc
-         xD4h37swLe+L4PvYlcsXHsGRZ4RC+CVKNM+RNZN3DH4U8XkgrVPFwBaooa9opqt5H59Y
-         SB+b0E6kCnfNL+m2k+X55WTFzYwwAOFWCJ/YnW4Uyxyld5oR1okk28R+fqEFbFdVgmkh
-         q2VJLbbHP+z32VTzVcZpZMrxwt/y+EK5etf9FadICONkFWrqHaQADmabibK6qxdXdDk1
-         cakw==
-X-Forwarded-Encrypted: i=1; AJvYcCXCbz9XL3V7yUHQt3lYDLsqFjCub0l7IM5uGkQNkPfwrkks9peBjoEEzbyn6WvP+kSwgm+hwTiGV3YAG00F+w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyDViMMsBGM3zrg4t9l6HWfCsYWkgu0X+i8158gKhyc2sh3eJj6
-	5JqLWoF8NxkoO5K5SZ+4KDoPqoPQQ7ftiiCv8tdcbccJpmxC023NHx+wqP2PV0KWsd8P5c/Kk1Y
-	GegkeXLsm/tXmPQoI6Js+3HAZcg0GjywUuWmhYRbxJw==
-X-Gm-Gg: ATEYQzzG6bC3Mpz6G6cIEtO5HgL6ChnAXVW2uuoyJE9jqSJ3CO++EIQ/LEC8KzTt6sP
-	IN0ngXL4Yx5wRtcJkE2QuFX6wVKTeuYyrlEH7+XH+gxiW5HJRT5QXOPH3c7IXhVK0QvKJbAxwMw
-	ps/axZmey8OnKKV7qelVmxAZWs1xNpBbeZ3pkOim3WMLrnVUOd9oR2xlzG0aJmHLLegG0O+6fka
-	CAPZX5LcrynXIk78Xaa+CasPbpCDy07Q4uterscAKkEpSKtFmRbYOulvDUjWjFHCuYUrl492p6o
-	54MDIzI3
-X-Received: by 2002:a05:6512:1288:b0:5a1:4017:18d1 with SMTP id
- 2adb3069b0e04-5a285b54ea6mr4675867e87.37.1774279195001; Mon, 23 Mar 2026
- 08:19:55 -0700 (PDT)
+	Mon, 23 Mar 2026 15:38:13 +0000
+Received: from epcas5p1.samsung.com (unknown [182.195.41.39])
+	by mailout4.samsung.com (KnoxPortal) with ESMTP id 20260323153802epoutp043e675fc895e9e329c9dbf1160ddf4bb8~fgoQ3ePbG1364413644epoutp04q
+	for <linux-rockchip@lists.infradead.org>; Mon, 23 Mar 2026 15:38:02 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com 20260323153802epoutp043e675fc895e9e329c9dbf1160ddf4bb8~fgoQ3ePbG1364413644epoutp04q
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+	s=mail20170921; t=1774280282;
+	bh=MYU9K1BczlLtBMfJPDu28QIk9pzoA+hXl3yf17nC2HI=;
+	h=From:To:Cc:In-Reply-To:Subject:Date:References:From;
+	b=mgU9aFrC+5Kx+21CCBQ48vtUtevP0XGV5aHjupTGFTw7s0wbx2FYZ7piHu2gEGNx9
+	 7FiJ9iRzTsn7N6OtZVcQFwqx9+/yRy1FbPgDJReQh76dJWCUi3xQdbS9llr9OgF8ia
+	 3KFTDuksHm5/ZDwJUU6SICm8wW+RY1yai4quNiMM=
+Received: from epsnrtp03.localdomain (unknown [182.195.42.155]) by
+	epcas5p1.samsung.com (KnoxPortal) with ESMTPS id
+	20260323153802epcas5p1bb1e979594c5257c037cdf6411e7a177~fgoQZrLX82373723737epcas5p1t;
+	Mon, 23 Mar 2026 15:38:02 +0000 (GMT)
+Received: from epcpadp2new (unknown [182.195.40.142]) by
+	epsnrtp03.localdomain (Postfix) with ESMTP id 4ffckf0KMvz3hhT4; Mon, 23 Mar
+	2026 15:38:02 +0000 (GMT)
+Received: from epsmtip2.samsung.com (unknown [182.195.34.31]) by
+	epcas5p3.samsung.com (KnoxPortal) with ESMTPA id
+	20260323123542epcas5p349d0e7c45d02ccaa06c84dbdf1777126~feJElRtj12139221392epcas5p34;
+	Mon, 23 Mar 2026 12:35:42 +0000 (GMT)
+Received: from INBRO002756 (unknown [107.122.3.168]) by epsmtip2.samsung.com
+	(KnoxPortal) with ESMTPA id
+	20260323123538epsmtip2099c850de3b514ee4ac3f5a0092dd02a~feJAkDKG92361023610epsmtip2P;
+	Mon, 23 Mar 2026 12:35:38 +0000 (GMT)
+From: "Alim Akhtar" <alim.akhtar@samsung.com>
+To: "'Vladimir Oltean'" <vladimir.oltean@nxp.com>, "'Martin K. Petersen'"
+	<martin.petersen@oracle.com>
+Cc: <linux-phy@lists.infradead.org>, "'Vinod Koul'" <vkoul@kernel.org>,
+	"'Neil	Armstrong'" <neil.armstrong@linaro.org>,
+	<dri-devel@lists.freedesktop.org>, <freedreno@lists.freedesktop.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+	<linux-can@vger.kernel.org>, <linux-gpio@vger.kernel.org>,
+	<linux-ide@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-media@vger.kernel.org>, <linux-pci@vger.kernel.org>,
+	<linux-renesas-soc@vger.kernel.org>, <linux-riscv@lists.infradead.org>,
+	<linux-rockchip@lists.infradead.org>, <linux-samsung-soc@vger.kernel.org>,
+	<linux-scsi@vger.kernel.org>, <linux-sunxi@lists.linux.dev>,
+	<linux-tegra@vger.kernel.org>, <linux-usb@vger.kernel.org>,
+	<netdev@vger.kernel.org>, <spacemit@lists.linux.dev>,
+	<UNGLinuxDriver@microchip.com>, "'Bart Van Assche'" <bvanassche@acm.org>,
+	"'Peter Griffin'" <peter.griffin@linaro.org>, "'James E.J. Bottomley'"
+	<James.Bottomley@HansenPartnership.com>, "'Krzysztof	Kozlowski'"
+	<krzk@kernel.org>, "'Chanho Park'" <chanho61.park@samsung.com>
+In-Reply-To: <20260323115848.ghdu4sbk75tvggfb@skbuf>
+Subject: RE: [PATCH v5 phy-next 09/27] scsi: ufs: exynos: stop poking into
+ struct phy guts
+Date: Mon, 23 Mar 2026 18:05:36 +0530
+Message-ID: <1891546521.01774280282025.JavaMail.epsvc@epcpadp2new>
 MIME-Version: 1.0
-References: <20260313130835.708066-1-festevam@gmail.com>
-In-Reply-To: <20260313130835.708066-1-festevam@gmail.com>
-From: Ulf Hansson <ulf.hansson@linaro.org>
-Date: Mon, 23 Mar 2026 16:19:18 +0100
-X-Gm-Features: AQROBzCNP8s-Y9NKf75E5i7SXfCEWFK3Iny8BNioMSMMiWmWo13eeXGEDAPT9OU
-Message-ID: <CAPDyKFpGo6aHh3qjT-cTT3SbLF8F1Y6voKEmj3aT-KqK3yHYQA@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: mmc: rockchip-dw-mshc: Fix the RV1103B compatible
-To: Fabio Estevam <festevam@gmail.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, heiko@sntech.de, 
-	shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	Fabio Estevam <festevam@nabladev.com>
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: AQJoz1sM+EbPjkyDopxrfJVWkMJWdwI9AyWpAaSC6pgB9ZOp/gJXIgBltGJxFXA=
+Content-Language: en-us
+X-CMS-MailID: 20260323123542epcas5p349d0e7c45d02ccaa06c84dbdf1777126
+X-Msg-Generator: CA
+CMS-TYPE: 105P
+X-CPGSPASS: Y
+X-Hop-Count: 3
+X-CMS-RootMailID: 20260323115859epcas5p10177db12a2e8aee9578271ff1411137b
+References: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
+	<20260319223241.1351137-10-vladimir.oltean@nxp.com>
+	<yq1a4w3l04g.fsf@ca-mkp.ca.oracle.com>
+	<CGME20260323115859epcas5p10177db12a2e8aee9578271ff1411137b@epcas5p1.samsung.com>
+	<20260323115848.ghdu4sbk75tvggfb@skbuf>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260323_081957_376213_86329ABC 
-X-CRM114-Status: GOOD (  16.06  )
+X-CRM114-CacheID: sfid-20260323_083811_959769_BF4F4957 
+X-CRM114-Status: GOOD (  17.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,55 +111,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 13 Mar 2026 at 14:08, Fabio Estevam <festevam@gmail.com> wrote:
->
-> From: Fabio Estevam <festevam@nabladev.com>
->
-> RV1103B uses the same DesignWare MSHC controller IP version as RK3576.
->
-> They have no "ciu-drive" nor "ciu-sample" clocks and use the phase
-> tuning inside the controller.
->
-> Fix it accordingly.
->
-> Fixes: 517b1e3c9455 ("dt-bindings: mmc: rockchip-dw-mshc: Add RV1103B compatible")
-> Suggested-by: Shawn Lin <shawn.lin@rock-chips.com>
-> Signed-off-by: Fabio Estevam <festevam@nabladev.com>
+Hi Vladimir
 
-Applied for next, thanks!
+> -----Original Message-----
+> From: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Sent: Monday, March 23, 2026 5:29 PM
+> To: Martin K. Petersen <martin.petersen@oracle.com>
+> Cc: linux-phy@lists.infradead.org; Vinod Koul <vkoul@kernel.org>; Neil
+> Armstrong <neil.armstrong@linaro.org>; dri-devel@lists.freedesktop.org;
+> freedreno@lists.freedesktop.org; linux-arm-kernel@lists.infradead.org;
+> linux-arm-msm@vger.kernel.org; linux-can@vger.kernel.org; linux-
+> gpio@vger.kernel.org; linux-ide@vger.kernel.org; linux-
+> kernel@vger.kernel.org; linux-media@vger.kernel.org; linux-
+> pci@vger.kernel.org; linux-renesas-soc@vger.kernel.org; linux-
+> riscv@lists.infradead.org; linux-rockchip@lists.infradead.org;
+linux-samsung-
+> soc@vger.kernel.org; linux-scsi@vger.kernel.org;
+linux-sunxi@lists.linux.dev;
+> linux-tegra@vger.kernel.org; linux-usb@vger.kernel.org;
+> netdev@vger.kernel.org; spacemit@lists.linux.dev;
+> UNGLinuxDriver@microchip.com; Bart Van Assche <bvanassche@acm.org>;
+> Alim Akhtar <alim.akhtar@samsung.com>; Peter Griffin
+> <peter.griffin@linaro.org>; James E.J. Bottomley
+> <James.Bottomley@HansenPartnership.com>; Krzysztof Kozlowski
+> <krzk@kernel.org>; Chanho Park <chanho61.park@samsung.com>
+> Subject: Re: [PATCH v5 phy-next 09/27] scsi: ufs: exynos: stop poking into
+> struct phy guts
+> 
+> On Thu, Mar 19, 2026 at 10:15:17PM -0400, Martin K. Petersen wrote:
+> > Vladimir,
+> >
+> > > The Exynos host controller driver is clearly a PHY consumer (gets
+> > > the
+> > > ufs->phy using devm_phy_get()), but pokes into the guts of struct
+> > > ufs->phy
+> > > to get the generic_phy->power_count.
+> >
+> > Ah, newer version. Would still like an ack from Samsung.
+> >
+> > And I hit the wrong key, I did not actually apply this...
+> 
+> I will have to resend v6 because of an armv7 build error I've caused for
+ufs-
+> qcom.c (which doesn't #include <linux/interrupt.h>, and relies on a
+transitive
+> inclusion from <linux/phy/phy.h>). It would be nice to get the ack from
+> Samsung, but I'll send the next version in the upcoming hours regardless.
+Will review and possibly test on one of the board later tonight
 
-Kind regards
-Uffe
 
 
-
-> ---
->  Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
->
-> diff --git a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> index a75209bd2710..4965bb518c54 100644
-> --- a/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> +++ b/Documentation/devicetree/bindings/mmc/rockchip-dw-mshc.yaml
-> @@ -43,11 +43,14 @@ properties:
->                - rockchip,rk3562-dw-mshc
->                - rockchip,rk3568-dw-mshc
->                - rockchip,rk3588-dw-mshc
-> -              - rockchip,rv1103b-dw-mshc
->                - rockchip,rv1108-dw-mshc
->                - rockchip,rv1126-dw-mshc
->            - const: rockchip,rk3288-dw-mshc
->        # for Rockchip RK3576 with phase tuning inside the controller
-> +      - items:
-> +          - enum:
-> +              - rockchip,rv1103b-dw-mshc
-> +          - const: rockchip,rk3576-dw-mshc
->        - const: rockchip,rk3576-dw-mshc
->
->    reg:
-> --
-> 2.43.0
->
 
 _______________________________________________
 Linux-rockchip mailing list
