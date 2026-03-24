@@ -4,63 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27FEBF54ACF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 15:56:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C32DF54AD0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 16:02:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:Cc:References:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mdrIMykTyAVPo6B81nH17h7BNtl/dJ8swQwhHrY06AA=; b=ZmVOgWVbcn1Ddb
-	Fflyppp0dk1R1du+knZf9RWH12V8JW/6oK6x87GEMfpYxOjKBcvBi0aq+Z6HEDO2KB7q40lcZqf52
-	VSe8iURR/qsf0PY8qpP8DJYyTdyTpKHavLIM7Xy7TgecXuIHCIqpgaRS9oPHEvHnBvtipULKFrJFo
-	g+lx6hdqcRBTjWe2PMW/PWJrYRjPU9CXxAiphZrAL7yR51j+icwbBQGJX8EuRWt6kRiiqgBBzcyoS
-	nWo2cfehnoVZxeZcwX9pP6tvCKrDu6Pv4eA7+z/wgsb+Nra6FEM2/RvMyK3BsN0r9f9xQxxgF8YCM
-	UBu8ZELxkJhFJb+ASrdw==;
+	List-Owner; bh=a+D5QtFhfQo2aW0IitJdM657ikcN8stliKxcq2lQgok=; b=lOxSdP+rpz0IG4
+	ohKAoynrxKJqNPrSgrTGXpmwjDGDcybeBm1opLb6gDIlab/8TaGzg9GspH0RCdDRsdkRFhluNgslW
+	9VzqfArAb14qA6A8pMdi6+J5TYVBacmqAb2CgjLk9nL30HryviOQ3UUZvu1veAdjpoj5YPdxD72op
+	j3hHk3isiVssPYDIFtirreB+I+0YMlfuuOBgGaodj/YZR3eKOh2kkxdggq/JPpk2qC1pnHdazn08D
+	zbML+p7E1IrgtMMbQ0ZpvUWybBBkyVaxxyWIaqCU7rDqdaYFLagNsULnMuTlUtXcYk1PmKKO9i8T/
+	wNjA4YAa43nIxfqsacYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5472-00000001nNZ-3dKM;
-	Tue, 24 Mar 2026 15:56:12 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1w54DH-00000001nub-3uRq;
+	Tue, 24 Mar 2026 16:02:39 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w546z-00000001nMd-2owB
-	for linux-rockchip@lists.infradead.org;
-	Tue, 24 Mar 2026 15:56:11 +0000
-Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
-	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <s.pueschel@pengutronix.de>)
-	id 1w546i-0001ad-Ic; Tue, 24 Mar 2026 16:55:52 +0100
-Message-ID: <05de75cb-adc4-470e-bc67-3218b4180025@pengutronix.de>
-Date: Tue, 24 Mar 2026 16:55:50 +0100
+	id 1w54DG-00000001nuD-0KKa;
+	Tue, 24 Mar 2026 16:02:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774368107; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=GSHLWSvL1ey7UKnEBHr54QllXY25zi/iQYdBm7ghNiOOdAHUi8fcb6NpCFMfO+Qbc+cO/STQto2RMa2ohRzCJ0juDO8itcchMeh1NSB+QrkN/oMF/d1UktGUEqBCT5MF7NuxnvGNm+Yx0aOu/pKNxd8qWyz4ct7lkkkTHcd1fVo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1774368107; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=mu1XGj5EiVT5drNcReQYQM3PhOjoRRxgQTVeHo55NM8=; 
+	b=cPx4mz3NM6wUCjjDUa7wMoSJOctK4qnKBGZjE91hXLlUlTEVqj7BDTBhRx7Pwkh7iYQGjAssKdK3tHrWmXOt/OXqiaKqzSPZZ2YVbtwtE7rDa9PMIbBX4P059F8C2Rg5BYjMt3tU63jR4CRxR9w4xApr4gRhoIKQ5B3owG1vApc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774368107;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=mu1XGj5EiVT5drNcReQYQM3PhOjoRRxgQTVeHo55NM8=;
+	b=P/FNneoplZ4So8iGyT1GqXJyB034CB0kLTbF3pDKjudgCA8V/XUqkaYs8yD35acY
+	mLMDxTVIwJeMxR9AcQ0U/04UZ73EpIoCPca8bVGMiyPld1Qb1CHpWPbqpWxAEXMbMJ1
+	cJFUvVdrz3WQeeO74tqIHbxWj5a95wDiK1PQnAz8=
+Received: by mx.zohomail.com with SMTPS id 1774368105495460.86037447788044;
+	Tue, 24 Mar 2026 09:01:45 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Tue, 24 Mar 2026 17:01:05 +0100
+Subject: [PATCH v11 01/22] drm/amd/display: Remove unnecessary
+ SIGNAL_TYPE_HDMI_TYPE_A check
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 01/27] media: dt-bindings: media: rockchip-rga: add
- rockchip,rk3588-rga3
-To: Nicolas Dufresne <nicolas@ndufresne.ca>,
- Jacob Chen <jacob-chen@iotwrt.com>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
- <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-References: <20260127-spu-rga3-v3-0-77b273067beb@pengutronix.de>
- <20260127-spu-rga3-v3-1-77b273067beb@pengutronix.de>
- <fc7b74095548d9c13a92d2944c1f5ca9f5c7dba5.camel@ndufresne.ca>
- <f2428e12-88c5-4b6e-a840-382e26da4541@pengutronix.de>
- <f5028eecdecedd9ea5e2a94d4fbf08b675e0842f.camel@ndufresne.ca>
-Content-Language: en-US
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- devicetree@vger.kernel.org, kernel@pengutronix.de
-From: =?UTF-8?Q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>
-In-Reply-To: <f5028eecdecedd9ea5e2a94d4fbf08b675e0842f.camel@ndufresne.ca>
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
-X-SA-Exim-Mail-From: s.pueschel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Message-Id: <20260324-color-format-v11-1-605559af4fb4@collabora.com>
+References: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
+In-Reply-To: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Werner Sembach <wse@tuxedocomputers.com>, 
+ Andri Yngvason <andri@yngvason.is>
+X-Mailer: b4 0.15.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_085609_867297_03BCC86D 
-X-CRM114-Status: GOOD (  34.52  )
+X-CRM114-CacheID: sfid-20260324_090238_170306_A80D94E3 
+X-CRM114-Status: GOOD (  12.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,133 +97,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmljb2xhcywKCk9uIDMvMjQvMjYgMTo1NSBQTSwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToK
-PiBMZSBtYXJkaSAyNCBtYXJzIDIwMjYgw6AgMTE6MjIgKzAxMDAsIFN2ZW4gUMO8c2NoZWwgYSDD
-qWNyaXTCoDoKPj4gSGkgTmljb2xhcywKPj4KPj4gT24gMy8xOS8yNiA3OjQ0IFBNLCBOaWNvbGFz
-IER1ZnJlc25lIHdyb3RlOgo+Pj4gTGUgbWFyZGkgMjcgamFudmllciAyMDI2IMOgIDE1OjM5ICsw
-MTAwLCBTdmVuIFDDvHNjaGVsIGEgw6ljcml0wqA6Cj4+Pj4gQWRkIGEgbmV3IGNvbXBhdGlibGUg
-Zm9yIHRoZSBSR0EzIChSYXN0ZXIgR3JhcGhpYyBBY2NlbGVyYXRpb24gMykKPj4+PiBwZXJpcGhl
-cmFsIGZvdW5kIG9uIHRoZSBSSzM1ODggU29DLiBBbHNvIHNwZWNpZnkgYW4gaW9tbXUgcHJvcGVy
-dHksCj4+Pj4gYXMgdGhlIFJHQTMgY29udGFpbnMgdGhlIGdlbmVyaWMgcm9ja2NoaXAgaW9tbXUu
-IFRoZSBSR0EyIGFsc28gaGFzCj4+Pj4gYW4gaW9tbXUsIGJ1dCBpdCdzIHNwZWNpZmljIHRvIHRo
-ZSBSR0EyLgo+Pj4+Cj4+Pj4gVGhlIGV4aXN0aW5nIGJpbmRpbmcgcmVmZXJzIHRvIHRoZSBSR0Ey
-IHBlcmlwaGVyYWwuIFRoZSBSSzM1ODgKPj4+PiBjb250YWlucyBvbmUgUkdBMiBjb3JlIGFuZCB0
-d28gUkdBMyBjb3Jlcy4gQm90aCBmZWF0dXJlIGEgc2ltaWxhcgo+Pj4+IGZ1bmN0aW9uYWxpdHkg
-b2Ygc2NhbGluZywgY3JvcHBpbmcgYW5kIHJvdGF0aW5nIG9mIHVwIHRvIHR3byBpbnB1dAo+Pj4+
-IGltYWdlcyBpbnRvIG9uZSBvdXRwdXQgaW1hZ2UuIEtleSBkaWZmZXJlbmNlcyBvZiB0aGUgUkdB
-MyBhcmU6Cj4+Pj4KPj4+PiAtIHN1cHBvcnRzIDEwYml0IFlVViBvdXRwdXQgZm9ybWF0cwo+Pj4+
-IC0gc3VwcG9ydHMgOHg4IHRpbGVzIGFuZCBGQkNEIGFzIGlucHV0cyBhbmQgb3V0cHV0cwo+Pj4+
-IC0gc3VwcG9ydHMgQlQyMDIwIGNvbG9yIHNwYWNlIGNvbnZlcnNpb24KPj4+PiAtIG1heCBvdXRw
-dXQgcmVzb2x1dGlvbiBvZiAoODE5Mi02NCl4KDgxOTItNjQpCj4+Pj4gLSBNTVUgY2FuIG1hcCB1
-cCB0byAzMkcgRERSIFJBTQo+Pj4+IC0gZnVsbHkgcGxhbmFyIGZvcm1hdHMgKDMgcGxhbmVzKSBh
-cmUgbm90IHN1cHBvcnRlZAo+Pj4+IC0gbWF4IHNjYWxlIHVwL2Rvd24gZmFjdG9yIG9mIDggKFJH
-QTIgYWxsb3dzIHVwIHRvIDE2KQo+Pj4gTm90aGluZyBpbXBvcnQsIGJ1dCBzb21lIG1vcmUgZGV0
-YWlscyBvbiB0aGUgZGlmZmVyZW5jZXMgY2FuIGJlIGZvdW5kIGhlcmUuCj4+Pgo+Pj4gaHR0cHM6
-Ly9naXRodWIuY29tL3NyYXZhbnNlbnRoaWxuMS9yZ2EtZGVtb3MvdHJlZS9tYWluCj4+Pgo+Pj4g
-VGhleSBhbHNvIHJlbW92ZWQgZnJvbSBSR0EzIHRoZSBuZXVyYWwgbmV0d29yayBxdWFudGl6YXRp
-b24gc3VwcG9ydAo+Pj4gKENMSVAoKHNvdXJjZSArIG9mZnNldCkgKiBzY2FsZSkuIEkgc3VwcG9z
-ZSB0aGF0IGludGVnZXIgdGVuc29ycyBhcmUgZmFkaW5nCj4+PiBhd2F5LCBhbmQgdGhlIGFjY2Vs
-ZXJhdG9yIGRvZXMgbm90IGRvIGZsb2F0cy4KPj4gSSd2ZSBmb3VuZCBhIG1vcmUgY29tcGxldGUg
-bGlzdCBpbiB0aGUgbGlicmdhIGRvY3MgWzFdLiBUaGVyZSBhcmUgYQo+PiBidW5jaCBvZiBkaWZm
-ZXJlbnQgUkdBMiB2ZXJzaW9ucyBvdXQgdGhlcmUsIHRoZSBSR0EyIGZyb20gdGhlIHJrMzI4OAo+
-PiBpc24ndCB0aGUgc2FtZSBhcyB0aGUgUkdBMi1FbmhhbmNlZCBjb250YWluZWQgaW4gdGhlIHJr
-MzU4OC9yazMzOTkuIE9ubHkKPj4gdGhlIGxhdHRlciBvbmUgaW5jbHVkZXMgdGhlIE5OIGZlYXR1
-cmVzLgo+Pgo+PiBbMV0KPj4gaHR0cHM6Ly9naXRodWIuY29tL2Fpcm9ja2NoaXAvbGlicmdhL2Js
-b2IvbWFpbi9kb2NzL1JvY2tjaGlwX0RldmVsb3Blcl9HdWlkZV9SR0FfRU4ubWQjZGVzaWduLWlu
-ZGV4Cj4gVGhhdCBpcyBhIHdheSBiZXR0ZXIgbGlzdCwgdGhhbmtzLgo+Cj4+PiBPbmUgdGhpbmdz
-IHRoYXQgaXNuJ3QgY2xlYXIsIGV2ZW4gaW4gdGhlIHVwc3RyZWFtIFJHQTIgaW1wbGVtZW50YXRp
-b24gaXMgaWYgdGhlCj4+PiBhY2NlbGVyYXRvciBpcyBjYWNoZSBjb2hlcmVudC4gV2hlbiBJIHN0
-dWR5IHRoZSBCU1AgdXNhZ2Ugb2YgUkdBMiwgdGhleQo+Pj4gaW50ZWdyYXRlIHRoZSBSR0EyIGRp
-cmVjdGx5IGludG8gR1N0cmVhbWVyIHNvZnR3YXJlIHZpZGVvIGNvbnZlcnRlci4gVGhleSBkb24n
-dAo+Pj4gZG8gYW55dGhpbmcgdG8gZmx1c2ggdGhlIGNhY2hlLCBpbmRpY2F0aW5nIHRoYXQgUkdB
-MiBpcyBtb3N0IHByb2JhYmx5IGNhY2hlCj4+PiBjb2hlcmVudC4KPj4+Cj4+PiBEbyB5b3Uga25v
-dyBpZiBSR0EzIGhhcyB0aGUgc2FtZSBmZWF0dXJlIG9yIGlmIHRoaXMgaXMgb25lIG9mIHRoZSBk
-aWZmZXJlbmNlID8KPj4+IFR5cGljYWxseSwgUktJT01NVSB1c2VycyBhcmUgbm90LCBpbiBSR0Ey
-LCBhIGNvbXBsZXRlbHkgY3VzdG9tIG1tdSB3YXMgdXNlZCAoYW5kCj4+PiBpbXBsZW1lbnRlZCBp
-bnNpZGUgdGhlIGRyaXZlciwgYXMgc3RhbmRhbG9uZSkuCj4+IEkgZG9uJ3Qga25vdy4gTG9va2lu
-ZyBhdCB0aGUgdmVuZG9yIGRyaXZlciBmb3IgdGhlIFJHQTMgaXQgc2V0cyBhIGNhY2hlCj4+IGZs
-dXNoIGZsYWcgd2hlbiB0aGUgc291cmNlIGlzIHZpcnR1YWwgbWVtb3J5ICh2cy4gZG1hLWJ1ZnMg
-YW5kIHBoeXNpY2FsCj4+IG1lbW9yeSkuIFNvIEknZCBhc3N1bWUgdGhlIFJHQTMgaXMgbm90IGNh
-Y2hlIGNvaGVyZW50LiBGcm9tIGEgY2hhdCB3aXRoCj4+IG15IGNvbGxlYWd1ZXMsIHRoZXkgZm91
-bmQgaXQgYSBiaXQgb2RkIHRoYXQgdGhlIFJHQTIgc2hvdWxkIGJlIGNhY2hlCj4+IGNvaGVyZW50
-LCBhcyBpdCBsb29rcyBsaWtlIGEgc3RyYW5nZSBleGNlcHRpb24gZm9yIGEgbWlub3IgcGVyaXBo
-ZXJhbC4KPj4KPj4gRG9lcyB0aGlzIGltcGx5IGFueXRoaW5nIGZvciBteSBkcml2ZXIgb3IgaXMg
-dGhlIHdob2xlIGNhY2hlIGNvaGVyZW5jeQo+PiBoYW5kbGVkIGJ5IHRoZSB1bmRlcmx5aW5nIGJ1
-ZmZlciBoYW5kbGluZyBvciBpcyB0aGlzIGp1c3QgZm9yIHRoZQo+PiBkaWZmZXJlbmNlIGRvY3Vt
-ZW50YXRpb24/Cj4+Cj4+IEJ0dy4gdG8gd2hpY2ggQlNQIGRvIHlvdSByZWZlcj8KPiBObyBpbXBs
-aWNhdGlvbiwgcHJldHR5IG11Y2ggZXZlcnl0aGluZyBJIGxvb2tlZCBpbiBpbiByb2NrY2hpcC1s
-aW51eC9rZXJuZWwgb24KPiBnaXRodWIuIENoZWNraW5nIGFnYWluLCB3aXRoIGEgYml0IG1vcmUg
-a25vd2xlZGdlIHRoZW4gbGFzdCB0aW1lIChidXQgc3RpbGwgdmVyeQo+IGxpdHRsZSksIGluZGVl
-ZCwgaXQgc2VlbXMgdGhhdCB2aXJ0dWFsIGFkZHJlc3MgaGFuZGxpbmcgaXMgc2ltaWxhciB0byB3
-aGF0IFZCMgo+IFVTRVJQVFIgY29kZSBpcyBkb2luZy4gQmFzaWNhbGx5LCBsb2NrcyBwYWdlcywg
-YW5kIHN5bmMgdGhlbSBpbiBzb21lIHdheXMuCj4KPiBJIHdhcyBqdXN0IHRyeWluZyB0byBoZWxw
-IGdhdGhlciB3aGF0IHRoaXMgZHJpdmVyIGlzIGxlYXZpbmcgYmVoaW5kLgo+Cj4+Pj4gU2lnbmVk
-LW9mZi1ieTogU3ZlbiBQw7xzY2hlbCA8cy5wdWVzY2hlbEBwZW5ndXRyb25peC5kZT4KPj4+PiAt
-LS0KPj4+PiAgwqDCoC4uLi9kZXZpY2V0cmVlL2JpbmRpbmdzL21lZGlhL3JvY2tjaGlwLXJnYS55
-YW1swqDCoMKgwqDCoMKgIHwgMTkgKysrKysrKysrKysrKysrKysrLQo+Pj4+ICDCoMKgMSBmaWxl
-IGNoYW5nZWQsIDE4IGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPj4+Pgo+Pj4+IGRpZmYg
-LS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvcm9ja2NoaXAt
-cmdhLnlhbWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvbWVkaWEvcm9ja2No
-aXAtcmdhLnlhbWwKPj4+PiBpbmRleCBhYzE3Y2RhNjUxOTFiLi43NzM1ZDg3OTRjNzE5IDEwMDY0
-NAo+Pj4+IC0tLSBhL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9tZWRpYS9yb2Nr
-Y2hpcC1yZ2EueWFtbAo+Pj4+ICsrKyBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5n
-cy9tZWRpYS9yb2NrY2hpcC1yZ2EueWFtbAo+Pj4+IEBAIC05LDcgKzksOSBAQCB0aXRsZTogUm9j
-a2NoaXAgMkQgcmFzdGVyIGdyYXBoaWMgYWNjZWxlcmF0aW9uIGNvbnRyb2xsZXIgKFJHQSkKPj4+
-PiAgwqDCoGRlc2NyaXB0aW9uOgo+Pj4+ICDCoMKgwqAgUkdBIGlzIGEgc3RhbmRhbG9uZSAyRCBy
-YXN0ZXIgZ3JhcGhpYyBhY2NlbGVyYXRpb24gdW5pdC4gSXQgYWNjZWxlcmF0ZXMgMkQKPj4+PiAg
-wqDCoMKgIGdyYXBoaWNzIG9wZXJhdGlvbnMsIHN1Y2ggYXMgcG9pbnQvbGluZSBkcmF3aW5nLCBp
-bWFnZSBzY2FsaW5nLCByb3RhdGlvbiwKPj4+PiAtwqAgQml0QkxULCBhbHBoYSBibGVuZGluZyBh
-bmQgaW1hZ2UgYmx1ci9zaGFycG5lc3MuCj4+Pj4gK8KgIEJpdEJMVCwgYWxwaGEgYmxlbmRpbmcg
-YW5kIGltYWdlIGJsdXIvc2hhcnBuZXNzLiBUaGVyZSBleGlzdCB0d28gdmFyaWFudHMKPj4+PiAr
-wqAgbmFtZWQgUkdBMiBhbmQgUkdBMyB0aGF0IGRpZmZlciBpbiB0aGUgc3VwcG9ydGVkIGlucHV0
-cy9vdXRwdXQgZm9ybWF0cywKPj4+PiArwqAgdGhlIGF0dGFjaGVkIElPTU1VIGFuZCB0aGUgc3Vw
-cG9ydGVkIG9wZXJhdGlvbnMgb24gdGhlIGlucHV0Lgo+IFdlIHNob3VsZCBzYXksICJ0aGlzIGRy
-aXZlciBzdXBwb3J0cyB0d28gdmFyaWFudHMiLCByYXRoZXIgdGhlbiB0aGVyZSBleGlzdC4gQ2Fu
-Cj4gd2UgY2xhcmlmeSB0aGF0IHdlIGRvbid0IHN1cHBvcnQgQml0QkxULCBJIHRoaW5rIGl0IGlz
-IG1pc3MtbGVhZGluZy4gSW4gZ2VuZXJhbCwKPiBJIGZvdW5kIG1vc3QgMkQgbTJtIGZvb2xpbmcg
-cGVvcGxlIGludG8gdGhpbmtpbmcsIGdyZWF0LCB0aGF0IGNoaXAgaXMgc3VwcG9ydGVkCj4gdW50
-aWwgdGhleSBmaW5kIHRoYXQgdjRsMiBtMm0gY2FuIG9ubHkgaGFuZGxlIGEgdGlueSBzdWJzZXQu
-CgpJc24ndCB0YWxraW5nIGFib3V0IGRyaXZlcnMvaW1wbGVtZW50YXRpb24gYXQgdGhpcyBwb2lu
-dCBpbmNvcnJlY3Q/IEluIApteSB1bmRlcnN0YW5kaW5nIHRoZSBkdCBkb2NzIGp1c3QgZGVzY3Jp
-YmUgdGhlIEhhcmR3YXJlICh3aGljaCBjYW4gZG8gCm1vcmUgdGhhbiB0aGUgbTJtIEFQSSBzdXBw
-b3J0cykuCgpCdHcuOiBnaXZlbiB0aGUgbXVsdGl0dWRlIG9mIGRpZmZlcmVudCBSR0EgdmVyc2lv
-bnMgKGFzIEkndmUgb25seSBmb3VuZCAKb3V0IHJlY2VudGx5IHRocm91Z2ggdGhlIGxpYnJnYSBk
-b2NzKSBJJ2xsIGFkanVzdCB0aGUgZG9jcyB0byBhdm9pZCAKaW1wbHlpbmcgdGhhdCB0aGVyZSBv
-bmx5IGV4aXN0cyBhIFJHQTIgYW5kIFJHQTMuIEluc3RlYWQgbW9yZSBsaWtlIAoidGhlcmUgZXhp
-c3QgdmFyaW91cyBSR0EgdmVyc2lvbnMiIGFuZCB0aGF0IHNvbWUgU29DcyAoYWthLiB0aGUgcmsz
-NTg4KSAKY29udGFpbiBSR0EgY29yZXMgd2l0aCBkaWZmZXJlbnQgdmVyc2lvbiAobWFraW5nIHRo
-ZSByZ2EzIGRpc3RpY3Rpb24gCm5lY2Vzc2FyeSwgYXMgcmszNTg4LXJnYSBkb2Vzbid0IGltcGx5
-IGlmIGl0J3MgdGhlIFJHQTItRW5oYW5jZWQgb3IgdGhlIApSR0EzIGNvcmUpLgoKU2luY2VyZWx5
-CiDCoCDCoCBTdmVuCgo+Cj4gTmljb2xhcwo+Cj4+Pj4gICAgCj4+Pj4gIMKgwqBtYWludGFpbmVy
-czoKPj4+PiAgwqDCoMKgIC0gSmFjb2IgQ2hlbiA8amFjb2ItY2hlbkBpb3R3cnQuY29tPgo+Pj4+
-IEBAIC0yMCw2ICsyMiw3IEBAIHByb3BlcnRpZXM6Cj4+Pj4gIMKgwqDCoMKgwqAgb25lT2Y6Cj4+
-Pj4gIMKgwqDCoMKgwqDCoMKgIC0gY29uc3Q6IHJvY2tjaGlwLHJrMzI4OC1yZ2EKPj4+PiAgwqDC
-oMKgwqDCoMKgwqAgLSBjb25zdDogcm9ja2NoaXAscmszMzk5LXJnYQo+Pj4+ICvCoMKgwqDCoMKg
-IC0gY29uc3Q6IHJvY2tjaGlwLHJrMzU4OC1yZ2EzCj4+Pj4gIMKgwqDCoMKgwqDCoMKgIC0gaXRl
-bXM6Cj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgLSBlbnVtOgo+Pj4+ICDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgLSByb2NrY2hpcCxyazMyMjgtcmdhCj4+Pj4gQEAgLTQ1LDYg
-KzQ4LDkgQEAgcHJvcGVydGllczoKPj4+PiAgwqDCoMKgIHBvd2VyLWRvbWFpbnM6Cj4+Pj4gIMKg
-wqDCoMKgwqAgbWF4SXRlbXM6IDEKPj4+PiAgICAKPj4+PiArwqAgaW9tbXVzOgo+Pj4+ICvCoMKg
-wqAgbWF4SXRlbXM6IDEKPj4+PiArCj4+Pj4gIMKgwqDCoCByZXNldHM6Cj4+Pj4gIMKgwqDCoMKg
-wqAgbWF4SXRlbXM6IDMKPj4+PiAgICAKPj4+PiBAQCAtNTQsNiArNjAsMTcgQEAgcHJvcGVydGll
-czoKPj4+PiAgwqDCoMKgwqDCoMKgwqAgLSBjb25zdDogYXhpCj4+Pj4gIMKgwqDCoMKgwqDCoMKg
-IC0gY29uc3Q6IGFoYgo+Pj4+ICAgIAo+Pj4+ICthbGxPZjoKPj4+PiArLSBpZjoKPj4+PiArwqDC
-oMKgIHByb3BlcnRpZXM6Cj4+Pj4gK8KgwqDCoMKgwqAgY29tcGF0aWJsZToKPj4+PiArwqDCoMKg
-wqDCoMKgwqAgY29udGFpbnM6Cj4+Pj4gK8KgwqDCoMKgwqDCoMKgwqDCoCBlbnVtOgo+Pj4+ICvC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIC0gcm9ja2NoaXAscmszNTg4LXJnYTMKPj4+PiArwqAgdGhl
-bjoKPj4+PiArwqDCoMKgIHJlcXVpcmVkOgo+Pj4+ICvCoMKgwqDCoMKgIC0gaW9tbXVzCj4+Pj4g
-Kwo+Pj4gWW91IHJlYWxseSBjYW4ndCB1c2UgdGhpcyBjaGlwIHdpdGggQ01BID8KPj4gQWgsIG5v
-LiBJJ2QgcmF0aGVyIHRob3VnaHQgdGhhdCB0aGlzIGp1c3QgZGVzY3JpYmVzIHRoYXQgdGhlcmUg
-aXMgYQo+PiBkZWRpY2F0ZWQgaW9tbXUgKHdoaWNoIGFsc28gaGFzIGEgYXBwcm9wcmlhdGUgZHQg
-bm9kZSkgZm9yIHRoaXMKPj4gcGVyaXBoZXJhbC4gSSdsbCBqdXN0IGRyb3AgdGhpcyBibG9jayAo
-d2hpY2ggYWxzbyBmaXhlcyB0aGUgaW5kZW50YXRpb24KPj4gaXNzdWUpLgo+Pgo+PiBTaW5jZXJl
-bHkKPj4gIMKgwqAgwqAgU3Zlbgo+Pgo+Pj4gTmljb2xhcwo+Pj4KPj4+PiAgwqDCoHJlcXVpcmVk
-Ogo+Pj4+ICDCoMKgwqAgLSBjb21wYXRpYmxlCj4+Pj4gIMKgwqDCoCAtIHJlZwoKX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFp
-bGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3Rz
-LmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: Werner Sembach <wse@tuxedocomputers.com>
+
+Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check that was performed in the
+drm_mode_is_420_only() case, but not in the drm_mode_is_420_also() &&
+force_yuv420_output case.
+
+Without further knowledge if YCbCr 4:2:0 is supported outside of HDMI,
+there is no reason to use RGB when the display
+reports drm_mode_is_420_only() even on a non HDMI connection.
+
+This patch also moves both checks in the same if-case. This  eliminates an
+extra else-if-case.
+
+Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+Tested-by: Andri Yngvason <andri@yngvason.is>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index 646fbdd5688b..86a64e98e8a1 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6713,12 +6713,9 @@ static void fill_stream_properties_from_drm_display_mode(
+ 	timing_out->v_border_top = 0;
+ 	timing_out->v_border_bottom = 0;
+ 	/* TODO: un-hardcode */
+-	if (drm_mode_is_420_only(info, mode_in)
+-			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
+-		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+-	else if (drm_mode_is_420_also(info, mode_in)
+-			&& aconnector
+-			&& aconnector->force_yuv420_output)
++	if (drm_mode_is_420_only(info, mode_in) ||
++	    (aconnector && aconnector->force_yuv420_output &&
++	     drm_mode_is_420_also(info, mode_in)))
+ 		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+ 	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
+ 			&& aconnector
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
