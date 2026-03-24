@@ -4,60 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B809F532EC
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 08:07:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C40B0F532EB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 08:17:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2mOfeRpmsirMs0JDx8/d657orpajsCpj3PgXYJYgg3k=; b=Vpc976H1obT14t
-	X+CtmsWJZDqJkyd5Ip9bo8ay/8cnYyqN6d7ZBOuzRsIPamSdiU+V1zTZ/LxAYjEWu039abWc4xHJ/
-	iHeBN5ib2g59SJiUfDB6WzzSu1xsMSE7gNUyZi/9Psf+QG6pbjJnt9qqTxlPtJscuceub+OAXhV7n
-	9pkQ9TRJyCJyZvbkTP2Dbiz1lZIgrBUvQAf0MEc9Wi9fwy5ofm1ZddId40Sapb0bU0uqyNEfvCsEo
-	rYFshu8WfE2g4yPeqEZQkhyUDS+6fs5UnJKrsZvu4ndC/bPmzCecQ+42DBWOnmpvsfq1v6LH0YYjX
-	v1enbSWoFmD+/Ar2jnLg==;
+	List-Owner; bh=cX5L90UgI88U6lespx8xPofGRz8E53AAQEik4e/dUqo=; b=shPh6TWLVymSJv
+	QK4rJL/qegqVKI30Ii6etjrGqX7Df4wux5fUk8/drnLDMpj8z2Ld6D7XxEcKyTPe2zADly9S+HCmB
+	wSA7QDlcvStJuyuxR2Ee9wzuphQAe68wYo0c3oRxYbuNYHtOlUwA6FYevHMYPGHXrWMsB64v/ONGe
+	Xj5PgjabCMcOChKYKiID/cYm+/57pgcjqLXVA4Tb2uxapOBfRnLVJb7F26rRS511y8v0gy2rfLJ7G
+	HTX1JOa6c1wxmFfOr3e9dx50hALEBUXdJO8VlTqXBjW6dOdAwTCV0N1qKlGOQRbBYYq/u1uQGwNGF
+	QZEYsX34heymcCvt7PVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4wn0-00000000xDA-06Yj;
-	Tue, 24 Mar 2026 08:07:02 +0000
-Received: from mail-m3285.qiye.163.com ([220.197.32.85])
+	id 1w4wwc-00000000ySH-3IyH;
+	Tue, 24 Mar 2026 08:16:58 +0000
+Received: from lahtoruutu.iki.fi ([2a0b:5c81:1c1::37])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4wmw-00000000xCR-2Kt9;
-	Tue, 24 Mar 2026 08:07:00 +0000
-Received: from [172.16.12.17] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3812347a3;
-	Tue, 24 Mar 2026 15:31:39 +0800 (GMT+08:00)
-Message-ID: <418f84d2-fb2c-c4a3-6690-c86ec44d594f@rock-chips.com>
-Date: Tue, 24 Mar 2026 15:31:38 +0800
+	id 1w4wwY-00000000yR8-2ZK0;
+	Tue, 24 Mar 2026 08:16:57 +0000
+Received: from hillosipuli.retiisi.eu (n18ws8cotq5gnfn8-1.v6.elisa-laajakaista.fi [IPv6:2001:99a:0:19f:4ce7:0:938c:d2f4])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sailus)
+	by lahtoruutu.iki.fi (Postfix) with ESMTPSA id 4fg2v32Nrbz49Q4j;
+	Tue, 24 Mar 2026 10:16:47 +0200 (EET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=lahtoruutu;
+	t=1774340208;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=VIRFr+vTpbz+Bqzxl07zXOH5KY7QuZAdEr+yCdmlHbU=;
+	b=TgcYZ0ZXw3h6MLj2WcJ6Hfu5eh5gD/Fi1orEgGCkCwkRjZwOHtfQIv2SvUvLIMiVbokkIA
+	A2pVSC7dfQkQ2c8cNRn4DI6gQt3PmrreqC5+dD5dJCkEsirL44vnR/xgEfXLcyGf4UKi5e
+	oGxZ3Q3s0T81FYfFahmRabACiWRRy/dkhBdGktAK6lzzcXnwSquapbUswOfJHTZCiFhc+Y
+	50JXpwe10kHyAzMwAeG6zch5RorXOHlQ/SXf0H60BoFHUF0f7P+UE9FwYfef0LuJCdSfug
+	jgpijiuz/AG0LtE/btoaUqGIeakMYQ5bHiVNpVQzMrRGn5XaQOS2ILQZDBG1uA==
+ARC-Seal: i=1; a=rsa-sha256; d=iki.fi; s=lahtoruutu; cv=none; t=1774340208;
+	b=D6LEbkeVJYw1cBKR8+mTzHjdw3FM3apl2w2BHODVxEYWQuCxmw6sa3DWGm0FxD4pDXQheR
+	6KBtDrbxhScpHh/QGReYpuPkz+0WuhAo/ripVEwuUkTQkTSKdeWh2VyruKcCaT6munw30c
+	uaBiM2hJQgYt3HUnt8j67jfTgfnGGrz9EgzJY6ApCEzcfB5MjYP4+5I2l5gBj3CkCvcBuz
+	5GzIaNKKJ3pCidvjYxL73b9p+7z321mhDEIiD9T9EorqIuljRM5fnrmXqjBgXQtOBV+MIV
+	oDF5Y0nN8+8OMrqWh5fKThgY9C5F1BuYpI14RgFBlXb3XP229YSS+h1GTuSoug==
+ARC-Authentication-Results: i=1;
+	ORIGINATING;
+	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
+	s=lahtoruutu; t=1774340208;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=VIRFr+vTpbz+Bqzxl07zXOH5KY7QuZAdEr+yCdmlHbU=;
+	b=FC2FR84W50DqmnVdifULU5w8cNSruG+U48ilxjw+UkdDmqevvz+lUoeylCJic5YeV3LD34
+	6cO9JvPEOfhiktZjz9oNTw60kBmyeHLmTL6gxqJoQq7zXxVEyrr7dCVxBwi3BYI0w2OMq8
+	aOGGNy382Vq2AN3/3BuXSIo7ncbWp9jQksfGe7RwqUPU207bumq2TScT1+Og7avGd0lF18
+	VrSC6eq3915oPUNp4sw6bOGOrGho6NR0AQEJQXZ0f2R74vaqHyBVouWmz0BsYzivc10/Ci
+	PBue0TvkHOvH2VuhjTjEDiTpHS7Uhl1uF0JTD1igLvw7IzAD2CiiAah6CgCreQ==
+Received: from valkosipuli.retiisi.eu (valkosipuli.local [192.168.4.2])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 91F4C634C51;
+	Tue, 24 Mar 2026 10:16:46 +0200 (EET)
+Date: Tue, 24 Mar 2026 10:16:46 +0200
+From: Sakari Ailus <sakari.ailus@iki.fi>
+To: Frank Li <Frank.Li@nxp.com>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	imx@lists.linux.dev
+Subject: Re: [PATCH 4/6] media: synopsys: use struct dw_mipi_csi2rx_regs to
+ describe register offsets
+Message-ID: <acJIbvVpmDS__EEg@valkosipuli.retiisi.eu>
+References: <20260210-imx93-dw-csi2-v1-0-69667bb86bfa@nxp.com>
+ <20260210-imx93-dw-csi2-v1-4-69667bb86bfa@nxp.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.1
-Cc: shawn.lin@rock-chips.com,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- "Martin K. Petersen" <martin.petersen@oracle.com>,
- Heiko Stuebner <heiko@sntech.de>
-Subject: Re: [PATCH v1 1/1] scsi: ufs: rockchip: Drop unused include
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
-X-HM-Tid: 0a9d1ec1a10009cckunm623cadc09c6d83
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkJIGFZOHktDHU4fGBlPSx9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=JeS80Zun1dOnGKzrio4K+VZ2PPPO3DJFTJeTYaTN0KG9mrg7FpwvVzLlzn0yn68uopv2X3SaR7uJB5V+MDT19eqNh/qx9zSRpDRIduhrPQlhgxz8gIM2qC3IXcagu6h0nhTePVbJpqG0j1j+qgFzlWpHkLOiGKh/NISYsnpiN3g=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=RqovqAVOh/J3GxdWkjwkCOMcif7wlkSPNm8sBdge6o4=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <20260210-imx93-dw-csi2-v1-4-69667bb86bfa@nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_010659_155025_7D275011 
-X-CRM114-Status: GOOD (  12.14  )
+X-CRM114-CacheID: sfid-20260324_011654_839512_E3249B08 
+X-CRM114-Status: GOOD (  26.60  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,25 +108,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYvMDMvMjEg5pif5pyf5YWtIDU6NTYsIEFuZHkgU2hldmNoZW5rbyDlhpnpgZM6Cj4g
-VGhpcyBkcml2ZXIgaW5jbHVkZXMgdGhlIGxlZ2FjeSBoZWFkZXIgPGxpbnV4L2dwaW8uaD4gYnV0
-IGRvZXMKPiBub3QgdXNlIGFueSBzeW1ib2xzIGZyb20gaXQuIERyb3AgdGhlIGluY2x1c2lvbi4K
-ClJldmlld2VkLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KCj4gCj4g
-U2lnbmVkLW9mZi1ieTogQW5keSBTaGV2Y2hlbmtvIDxhbmRyaXkuc2hldmNoZW5rb0BsaW51eC5p
-bnRlbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL3Vmcy9ob3N0L3Vmcy1yb2NrY2hpcC5jIHwgMSAt
-Cj4gICAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL3Vmcy9ob3N0L3Vmcy1yb2NrY2hpcC5jIGIvZHJpdmVycy91ZnMvaG9zdC91ZnMtcm9ja2No
-aXAuYwo+IGluZGV4IDdmZmYzNDUxM2E2MC4uYmFjNjhmMjM4ZTFjIDEwMDY0NAo+IC0tLSBhL2Ry
-aXZlcnMvdWZzL2hvc3QvdWZzLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL3Vmcy9ob3N0L3Vm
-cy1yb2NrY2hpcC5jCj4gQEAgLTYsNyArNiw2IEBACj4gICAgKi8KPiAgIAo+ICAgI2luY2x1ZGUg
-PGxpbnV4L2Nsay5oPgo+IC0jaW5jbHVkZSA8bGludXgvZ3Bpby5oPgo+ICAgI2luY2x1ZGUgPGxp
-bnV4L2dwaW8vY29uc3VtZXIuaD4KPiAgICNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4g
-ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
-cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
-bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Hi Frank,
+
+On Tue, Feb 10, 2026 at 12:11:11PM -0500, Frank Li wrote:
+> Use struct dw_mipi_csi2rx_regs to describe register offsets and support
+> new IP versions with differing register layouts.
+> 
+> Add rk3568_regs, matching the previous macro definitions, and pass it as
+> driver data retrieved during probe.
+> 
+> No functional change.
+> 
+> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> ---
+>  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 96 +++++++++++++++++-------
+>  1 file changed, 69 insertions(+), 27 deletions(-)
+> 
+> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> index 4ad4e3b23448affeeaa932a706653818ba4019ba..6a2966c9e3a2eac661fa1f8610c9f021d6e26cf8 100644
+> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> @@ -24,14 +24,39 @@
+>  #include <media/v4l2-mc.h>
+>  #include <media/v4l2-subdev.h>
+>  
+> -#define DW_MIPI_CSI2RX_N_LANES		0x04
+> -#define DW_MIPI_CSI2RX_RESETN		0x10
+> -#define DW_MIPI_CSI2RX_PHY_STATE	0x14
+> -#define DW_MIPI_CSI2RX_ERR1		0x20
+> -#define DW_MIPI_CSI2RX_ERR2		0x24
+> -#define DW_MIPI_CSI2RX_MSK1		0x28
+> -#define DW_MIPI_CSI2RX_MSK2		0x2c
+> -#define DW_MIPI_CSI2RX_CONTROL		0x40
+> +struct dw_mipi_csi2rx_regs {
+> +	u32 n_lanes;
+> +	u32 resetn;
+> +	u32 phy_state;
+> +	u32 err1;
+> +	u32 err2;
+> +	u32 msk1;
+> +	u32 msk2;
+> +	u32 control;
+> +};
+> +
+> +struct dw_mipi_csi2rx_drvdata {
+> +	const struct dw_mipi_csi2rx_regs *regs;
+> +};
+> +
+> +/* Help check wrong access unexisted register at difference IP version */
+> +#define DW_REG_EXIST	BIT(31)
+> +#define DW_REG(x)	(DW_REG_EXIST | (x))
+> +
+> +static const struct dw_mipi_csi2rx_regs rk3568_regs = {
+> +	.n_lanes = DW_REG(0x4),
+> +	.resetn = DW_REG(0x10),
+> +	.phy_state = DW_REG(0x14),
+> +	.err1 = DW_REG(0x20),
+> +	.err2 = DW_REG(0x24),
+> +	.msk1 = DW_REG(0x28),
+> +	.msk2 = DW_REG(0x2c),
+> +	.control = DW_REG(0x40),
+> +};
+> +
+> +static const struct dw_mipi_csi2rx_drvdata rk3568_drvdata = {
+
+"drvdata" is typically used of driver's context struct related to a given
+device. This is something else. How about calling it rk3568_devinfo for
+instance?
+
+> +	.regs = &rk3568_regs,
+> +};
+>  
+>  #define SW_CPHY_EN(x)		((x) << 0)
+>  #define SW_DSI_EN(x)		((x) << 4)
+> @@ -74,8 +99,35 @@ struct dw_mipi_csi2rx_device {
+>  
+>  	enum v4l2_mbus_type bus_type;
+>  	u32 lanes_num;
+> +
+> +	const struct dw_mipi_csi2rx_drvdata *drvdata;
+>  };
+>  
+> +static int
+> +dw_mipi_csi2rx_reg_err(struct dw_mipi_csi2rx_device *csi2, const char *name)
+> +{
+> +	dev_err_once(csi2->dev, "access to non-existent register: %s\n", name);
+> +	return 0;
+> +}
+> +
+> +#define __dw_reg_exist(offset) ((offset) & DW_REG_EXIST)
+> +
+> +#define dw_reg_exist(csi2, __name) __dw_reg_exist((csi2)->drvdata->regs->__name)
+
+Can you use the same dw_mipi_csi2rx prefix here?
+
+> +
+> +#define dw_mipi_csi2rx_write(csi2, __name, value)		\
+> +({	auto __csi2 = csi2;					\
+
+Are there different types being used for csi2? As this there's a single
+driver here I'd suppose no?
+
+> +	u32 offset = __csi2->drvdata->regs->__name;		\
+> +	__dw_reg_exist(offset) ?					\
+> +		writel(value, __csi2->base_addr + (offset & ~DW_REG_EXIST)) : \
+> +		dw_mipi_csi2rx_reg_err(__csi2, #__name); })
+> +
+> +#define dw_mipi_csi2rx_read(csi2, __name)			\
+> +({	auto __csi2 = csi2;					\
+> +	u32 offset = __csi2->drvdata->regs->__name;		\
+> +	__dw_reg_exist(offset) ?					\
+> +		readl(__csi2->base_addr + (offset & ~DW_REG_EXIST)) : \
+> +		dw_mipi_csi2rx_reg_err(__csi2, #__name); })
+> +
+>  static const struct v4l2_mbus_framefmt default_format = {
+>  	.width = 3840,
+>  	.height = 2160,
+> @@ -188,18 +240,6 @@ static inline struct dw_mipi_csi2rx_device *to_csi2(struct v4l2_subdev *sd)
+>  	return container_of(sd, struct dw_mipi_csi2rx_device, sd);
+>  }
+>  
+> -static inline void dw_mipi_csi2rx_write(struct dw_mipi_csi2rx_device *csi2,
+> -					unsigned int addr, u32 val)
+> -{
+> -	writel(val, csi2->base_addr + addr);
+> -}
+> -
+> -static inline u32 dw_mipi_csi2rx_read(struct dw_mipi_csi2rx_device *csi2,
+> -				      unsigned int addr)
+> -{
+> -	return readl(csi2->base_addr + addr);
+> -}
+> -
+>  static const struct dw_mipi_csi2rx_format *
+>  dw_mipi_csi2rx_find_format(struct dw_mipi_csi2rx_device *csi2, u32 mbus_code)
+>  {
+> @@ -265,9 +305,9 @@ static int dw_mipi_csi2rx_start(struct dw_mipi_csi2rx_device *csi2)
+>  	control |= SW_DATATYPE_FS(0x00) | SW_DATATYPE_FE(0x01) |
+>  		   SW_DATATYPE_LS(0x02) | SW_DATATYPE_LE(0x03);
+>  
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_N_LANES, lanes - 1);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_CONTROL, control);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_RESETN, 1);
+> +	dw_mipi_csi2rx_write(csi2, n_lanes, lanes - 1);
+> +	dw_mipi_csi2rx_write(csi2, control, control);
+> +	dw_mipi_csi2rx_write(csi2, resetn, 1);
+>  
+>  	return phy_power_on(csi2->phy);
+>  }
+> @@ -276,9 +316,9 @@ static void dw_mipi_csi2rx_stop(struct dw_mipi_csi2rx_device *csi2)
+>  {
+>  	phy_power_off(csi2->phy);
+>  
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_RESETN, 0);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_MSK1, ~0);
+> -	dw_mipi_csi2rx_write(csi2, DW_MIPI_CSI2RX_MSK2, ~0);
+> +	dw_mipi_csi2rx_write(csi2, resetn, 0);
+> +	dw_mipi_csi2rx_write(csi2, msk1, ~0);
+> +	dw_mipi_csi2rx_write(csi2, msk2, ~0);
+>  }
+>  
+>  static const struct media_entity_operations dw_mipi_csi2rx_media_ops = {
+> @@ -632,7 +672,7 @@ static void dw_mipi_csi2rx_unregister(struct dw_mipi_csi2rx_device *csi2)
+>  
+>  static const struct of_device_id dw_mipi_csi2rx_of_match[] = {
+>  	{
+> -		.compatible = "rockchip,rk3568-mipi-csi2",
+> +		.compatible = "rockchip,rk3568-mipi-csi2", .data = &rk3568_drvdata,
+>  	},
+>  	{}
+>  };
+> @@ -654,6 +694,8 @@ static int dw_mipi_csi2rx_probe(struct platform_device *pdev)
+>  	if (IS_ERR(csi2->base_addr))
+>  		return PTR_ERR(csi2->base_addr);
+>  
+> +	csi2->drvdata = device_get_match_data(dev);
+> +
+>  	ret = devm_clk_bulk_get_all(dev, &csi2->clks);
+>  	if (ret < 0)
+>  		return dev_err_probe(dev, -ENODEV, "failed to get clocks\n");
+> 
+
+-- 
+Regards,
+
+Sakari Ailus
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
