@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C191F54AD9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 16:05:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 928F7F54AD2
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 16:14:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tixwvC3SwdOW94Sx/Beq3d/Lv6tohG1obI6ZY7CYMWs=; b=TukXKYCfYMtNC0
-	8GP8FWwRoCg2IMRDZtl8UaMI8BvmWtuVnsXqZtwD/bq5aK9LUDR4zPDLUGsj38ngGyFKRfOyZeGM7
-	BQrjPD++i8+z8NYHSNPkNdjlaEJI3qMWBddw7wrl+lpZKXs5nPStPi67Y+K6WDftrCzotVOtj+y29
-	oDXxKeGsAKvMnJSEVk4ap8L6mfFd0Y+/EqpNN2PrtwDRN8gRaqvXG7enSA1gXwI45K6MrP3/utQ6r
-	uCLolDnYOKPfSF3PuJ/UbC2M6x4kirGc22Zvufh1+KyMYydWj0ZqXFq02/PtmV8FekM2BG52NbW52
-	B0oJU59ljqi+X96WFloA==;
+	List-Owner; bh=jC0x6Vf2a18UP+i5mlSwqcqxu1LHpDdUveCdrxboYMw=; b=qaAVEafQgsca13
+	cEBdhlPZmDiELhR9pa8JVLLP11YIQCJIMI5XbsXClF0Jzp3i5lPF9gXu3qp9ze8DumjHyJTZboru/
+	uT5h4h7xgasw9Y+ASCFi3UYNwjP+qofrCSzYsnqzHgKO/xyCpvpOyL1LrwLgGCOEV1EheiRMKVp88
+	oktOIAzLnXViwOWMF6e7JOxOnxXEv1O/B76vIjyMbrtnpRwFPfdsKPLL+m6fIypkP1pfpFNMxTe4o
+	rPKs8QLscpq91PPJSzqmRJK7GDdx8NzW6igtN8t4U0SgSXKyn1MZuclXSqTPQZv/zCZHVIT63UVK8
+	aCOBQdcMFw2beWxLKOIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w54Fi-00000001qAu-0iAM;
-	Tue, 24 Mar 2026 16:05:10 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1w54OQ-00000001rJ3-39jW;
+	Tue, 24 Mar 2026 16:14:10 +0000
+Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w54FV-00000001pyi-30M1;
-	Tue, 24 Mar 2026 16:05:08 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774368264; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=O6qAhMxUcCq3vSDeUaXQ3PiFqPXyEJ044LZwR+IyhlKc+L/pZc02LmCCNBgLcghX1E8IdI+dM97C9+d4KHlXr091tzTJG17QlHfF/0l3XkCAj/TbYSntcNUBV8HXPPM+EHfnsytHvQukJG4eUWTV7LnM4y9sfcTlIsTB9dX6frU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774368264; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=g0VbMYs0AEkV9EivTOSR7pyyzqpN5PApU+4T9PAdEGo=; 
-	b=dsaYCQjCcuot+3tC4bN7Eui2+HzhabrP6wZJCMYANZMujpZ797CCdYqXPmsTsOVwxhY957Gd8gCojmqWtFn4UdRffaJfSlYESyCcTFOikdowwP8oeBG0bv6ce7L7T4kEVCA6hwlXss/XSb/Gyh7jCleudx0/FJVkVHhmGzvU3KA=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774368264;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=g0VbMYs0AEkV9EivTOSR7pyyzqpN5PApU+4T9PAdEGo=;
-	b=SVilGr7zeevJfoUOthl2KApf2d/GxJSg2p4OlCffNrVXMFkG1hP35dmB1aJjd46g
-	83KPksyomhKeXbSSmjnd6/kc4tJ4HAiLcEXE7+3o87gPvJthPTxB3BTjxI+pOVbBEgi
-	4/q3xD2ofeoKtW+T3CHeKPprlvdWfPK26xIZYg28=
-Received: by mx.zohomail.com with SMTPS id 1774368261854804.4850539540041;
-	Tue, 24 Mar 2026 09:04:21 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 24 Mar 2026 17:01:26 +0100
-Subject: [PATCH v11 22/22] drm/bridge: Document bridge chain format
- selection
+	id 1w54ON-00000001rHL-41he
+	for linux-rockchip@lists.infradead.org;
+	Tue, 24 Mar 2026 16:14:09 +0000
+Received: from ptz.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::77] helo=[127.0.0.1])
+	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
+	(envelope-from <s.pueschel@pengutronix.de>)
+	id 1w54OA-0004bA-PA; Tue, 24 Mar 2026 17:13:54 +0100
+Message-ID: <8af3e277-a901-4b31-9729-032df3c0d56c@pengutronix.de>
+Date: Tue, 24 Mar 2026 17:13:51 +0100
 MIME-Version: 1.0
-Message-Id: <20260324-color-format-v11-22-605559af4fb4@collabora.com>
-References: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
-In-Reply-To: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
- Rodrigo Siqueira <siqueira@igalia.com>, 
- Alex Deucher <alexander.deucher@amd.com>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- linux-doc@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-X-Mailer: b4 0.15.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 11/27] media: rockchip: rga: avoid odd frame sizes for
+ YUV formats
+To: Nicolas Dufresne <nicolas@ndufresne.ca>,
+ Jacob Chen <jacob-chen@iotwrt.com>,
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, kernel@pengutronix.de
+References: <20260127-spu-rga3-v3-0-77b273067beb@pengutronix.de>
+ <20260127-spu-rga3-v3-11-77b273067beb@pengutronix.de>
+ <c154098ce7fd5d6bfcb44066b7c1f0cde07ff81d.camel@ndufresne.ca>
+Content-Language: en-US
+From: =?UTF-8?Q?Sven_P=C3=BCschel?= <s.pueschel@pengutronix.de>
+In-Reply-To: <c154098ce7fd5d6bfcb44066b7c1f0cde07ff81d.camel@ndufresne.ca>
+X-SA-Exim-Connect-IP: 2a0a:edc0:0:900:1d::77
+X-SA-Exim-Mail-From: s.pueschel@pengutronix.de
+X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
+X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_090457_833283_C33CB3E1 
-X-CRM114-Status: GOOD (  17.79  )
+X-CRM114-CacheID: sfid-20260324_091407_997572_AEAA1175 
+X-CRM114-Status: GOOD (  20.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,101 +70,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The bridge chain format selection behaviour was, until now,
-undocumented. With the addition of the "color format" DRM property, it's
-not sufficiently complex enough that documentation is warranted,
-especially for driver authors trying to do the right thing.
-
-Add a high-level overview of how the process is supposed to work, and
-mention what the display driver is supposed to do if it wants to make
-use of this functionality.
-
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- Documentation/gpu/drm-kms-helpers.rst |  6 ++++++
- drivers/gpu/drm/drm_bridge.c          | 40 +++++++++++++++++++++++++++++++++++
- 2 files changed, 46 insertions(+)
-
-diff --git a/Documentation/gpu/drm-kms-helpers.rst b/Documentation/gpu/drm-kms-helpers.rst
-index 781129f78b06..47c4f593cf9d 100644
---- a/Documentation/gpu/drm-kms-helpers.rst
-+++ b/Documentation/gpu/drm-kms-helpers.rst
-@@ -181,6 +181,12 @@ Bridge Operations
- .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
-    :doc: bridge operations
- 
-+Bridge Chain Format Selection
-+-----------------------------
-+
-+.. kernel-doc:: drivers/gpu/drm/drm_bridge.c
-+   :doc: bridge chain format selection
-+
- Bridge Connector Helper
- -----------------------
- 
-diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-index 9ee3a8c25510..188606a34313 100644
---- a/drivers/gpu/drm/drm_bridge.c
-+++ b/drivers/gpu/drm/drm_bridge.c
-@@ -198,6 +198,46 @@
-  * driver.
-  */
- 
-+/**
-+ * DOC: bridge chain format selection
-+ *
-+ * A bridge chain, from display output processor to connector, may contain
-+ * bridges capable of converting between bus formats on their inputs, and
-+ * output formats on their outputs. For example, a bridge may be able to convert
-+ * from RGB to YCbCr 4:4:4, and pass through YCbCr 4:2:0 as-is, but not convert
-+ * from RGB to YCbCr 4:2:0. This means not all input formats map to all output
-+ * formats.
-+ *
-+ * Further adding to this, a desired output color format, as specified with the
-+ * "color format" DRM property, might not correspond 1:1 to what the display
-+ * driver should set at its output. The bridge chain it feeds into may only be
-+ * able to reach the desired output format, if a conversion from a different
-+ * starting format is performed.
-+ *
-+ * To deal with this complexity, the recursive bridge chain bus format selection
-+ * logic starts with the last bridge in the chain, usually the connector, and
-+ * then recursively walks the chain of bridges backwards to the first bridge,
-+ * trying to find a path.
-+ *
-+ * For a display driver to work in such a scenario, it should read the first
-+ * bridge's bridge state to figure out which bus format the chain resolved to.
-+ * If the first bridge's input format resolved to %MEDIA_BUS_FMT_FIXED, then its
-+ * output format should be used.
-+ *
-+ * Special handling is done for HDMI as it relates to format selection. Instead
-+ * of directly using the "color format" DRM property for bridge chains that end
-+ * in HDMI bridges, the bridge chain format selection logic will trust the logic
-+ * that set the HDMI output format. For the common HDMI state helper
-+ * functionality, this means that %DRM_CONNECTOR_COLOR_FORMAT_AUTO will allow
-+ * fallbacks to YCBCr 4:2:0 if the bandwidth requirements would otherwise be too
-+ * high but the mode and connector allow it.
-+ *
-+ * For bridge chains that do not end in an HDMI bridge,
-+ * %DRM_CONNECTOR_COLOR_FORMAT_AUTO will be satisfied with the first output
-+ * format on the last bridge for which it can find a path back to the first
-+ * bridge.
-+ */
-+
- /* Protect bridge_list and bridge_lingering_list */
- static DEFINE_MUTEX(bridge_lock);
- static LIST_HEAD(bridge_list);
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgTmljb2xhcywKCk9uIDMvMjAvMjYgNjo0NyBQTSwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToK
+PiBMZSBtYXJkaSAyNyBqYW52aWVyIDIwMjYgw6AgMTU6MzkgKzAxMDAsIFN2ZW4gUMO8c2NoZWwg
+YSDDqWNyaXTCoDoKPj4gQXZvaWQgb2RkIGZyYW1lIHNpemVzIGZvciBZVVYgZm9ybWF0cywgYXMg
+dGhleSBtYXkgY2F1c2UgdW5kZWZpbmVkCj4+IGJlaGF2aW9yLiBUaGlzIGlzIGRvbmUgaW4gcHJl
+cGFyYXRpb24gZm9yIHRoZSBSR0EzLCB3aGljaCBoYW5ncyB3aGVuIHRoZQo+PiBvdXRwdXQgZm9y
+bWF0IGlzIHNldCB0byAxMjl4MTI5IHBpeGVsIFlVVjQyMCBTUCAoTlYxMikuCj4+Cj4+IFRoaXMg
+cmVxdWlyZW1lbnQgaXMgZG9jdW1lbnRlZCBleHBsaWNpdGx5IGZvciB0aGUgUkdBMyBpbsKgIHNl
+Y3Rpb24gNS42LjMKPj4gb2YgdGhlIFJLMzU4OCBUUk0gUGFydCAyLiBGb3IgdGhlIFJHQTIgdGhl
+IFJLMzU4OCBUUk0gUGFydCAyCj4+IChzZWN0aW9uIDYuMS4yKSBhbmQgUkszNTY4IFRSTSBQYXJ0
+IDIgKHNlY3Rpb24gMTQuMikgb25seSBtZW50aW9ucyB0aGUKPj4geC95IG9mZnNldHMgYW5kIHN0
+cmlkZSBhbGlnbmluZyByZXF1aXJlbWVudHMuIEJ1dCB0aGUgdmVuZG9yIGRyaXZlciBmb3IKPj4g
+dGhlIFJHQTIgYWxzbyBjb250YWlucyBjaGVja3MgZm9yIHRoZSB3aWR0aCBhbmQgaGVpZ2h0IHRv
+IGJlIGFsaWduZWQgdG8KPj4gMiBieXRlcy4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU3ZlbiBQw7xz
+Y2hlbCA8cy5wdWVzY2hlbEBwZW5ndXRyb25peC5kZT4KPj4gLS0tCj4+ICDCoGRyaXZlcnMvbWVk
+aWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5jIHwgMTkgKysrKysrKysrKysrKystLS0tLQo+
+PiAgwqAxIGZpbGUgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNSBkZWxldGlvbnMoLSkKPj4K
+Pj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmdhL3JnYS5j
+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLmMKPj4gaW5kZXggMjFh
+M2M2Y2QzOGRiYy4uNGZhNmFkYjEwYjdlZSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS9w
+bGF0Zm9ybS9yb2NrY2hpcC9yZ2EvcmdhLmMKPj4gKysrIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
+bS9yb2NrY2hpcC9yZ2EvcmdhLmMKPj4gQEAgLTMzNyw2ICszMzcsMTkgQEAgc3RhdGljIGludCB2
+aWRpb2NfdHJ5X2ZtdChzdHJ1Y3QgZmlsZSAqZmlsZSwgdm9pZCAqcHJpdiwgc3RydWN0IHY0bDJf
+Zm9ybWF0ICpmKQo+PiAgwqAJc3RydWN0IHJnYV9jdHggKmN0eCA9IGZpbGVfdG9fcmdhX2N0eChm
+aWxlKTsKPj4gIMKgCWNvbnN0IHN0cnVjdCByZ2FfaHcgKmh3ID0gY3R4LT5yZ2EtPmh3Owo+PiAg
+wqAJc3RydWN0IHJnYV9mbXQgKmZtdDsKPj4gKwlzdHJ1Y3QgdjRsMl9mcm1zaXplX3N0ZXB3aXNl
+IGZybXNpemUgPSB7Cj4+ICsJCS5taW5fd2lkdGggPSBody0+bWluX3dpZHRoLAo+PiArCQkubWF4
+X3dpZHRoID0gaHctPm1heF93aWR0aCwKPj4gKwkJLm1pbl9oZWlnaHQgPSBody0+bWluX2hlaWdo
+dCwKPj4gKwkJLm1heF9oZWlnaHQgPSBody0+bWF4X2hlaWdodCwKPj4gKwkJLnN0ZXBfd2lkdGgg
+PSAxLAo+PiArCQkuc3RlcF9oZWlnaHQgPSAxLAo+PiArCX07Cj4+ICsKPj4gKwlpZiAodjRsMl9p
+c19mb3JtYXRfeXV2KHY0bDJfZm9ybWF0X2luZm8ocGl4X2ZtdC0+cGl4ZWxmb3JtYXQpKSkgewo+
+PiArCQlmcm1zaXplLnN0ZXBfd2lkdGggPSAyOwo+PiArCQlmcm1zaXplLnN0ZXBfaGVpZ2h0ID0g
+MjsKPiBGb3IgVjRMMl9QSVhfRk1UX1lVVjQyMlAgYW5kIE5WMTYgdGhpcyBpcyAyLzEuIEkgYmVs
+aWV2ZSB5b3UgY2FuIGdlbmVyYWxpemUgdGhpcwo+IHdpdGggdGhlIGZvcm1hdCBpbmZvLCBhbmQg
+c2tpcCB0aGlzIGNvbmRpdGlvbnM6Cj4KPiAJCS5zdGVwX3dpdGggPSBpbmZvLT52ZGl2LAo+IAkJ
+LnN0ZXBfaGVpZ2h0ID0gaW5mby0+aGRpdgo+Cj4gVGhvdWdoLCBJJ20gc2F5aW5nIHRoYXQgZnJv
+bSBhIHBpeGVsIGZvcm1hdCBwZXJzcGVjdGl2ZSwgaWYgdGhlIEhXIG5lZWRzIDIvMiBmb3IKPiBh
+bGwgWVVWIGZvcm1hdHMsIGxldCBtZSBrbm93LCBJJ2xsIGdpdmUgbXkgUmIuCgpJJ3ZlIGludHJv
+ZHVjZWQgdGhpcyBsaW1pdGF0aW9uIGFmdGVyIHJ1bm5pbmcgaW50byB0aGUgMTI5eDEyOSBoYW5n
+IGFuZCAKbm90aWNpbmcgdGhhdCB0aGUgbGlicmdhIGp1c3QgZGlzYWxsb3dlZCBpdC4gSSd2ZSBk
+aWQgYSBxdWljayB0ZXN0IHdpdGggCjEyOHgxMjkgUktfRk9STUFUX1lDYkNyXzQyMl9TUCAoTlYx
+NikgYW5kIHRoZSBsaWJyZ2EgYWxzbyBkb2Vzbid0IGFsbG93IGl0OgoKcmdhX2FwaSB2ZXJzaW9u
+IDEuMTAuMV9bNF0KW8KgIDMwMy4xNzc0ODBdIHJnYTogMTgwN8KgIMKgMTgwN8KgIDogW3RnaWQ6
+MTgwN10gRGVzdHJveSBoYW5kbGVbMV0gd2hlbiAKdGhlIHVzZXIgZXhpdHMKMTAxLCBjaGVjayBl
+cnJvciEgSW52YWxpZCBwYXJhbWV0ZXJzOiBzcmMsIEVycm9yIHl1diBub3QgYWxpZ24gdG8gMiwg
+CnJlY3RbeCx5LHcsaF0gPSBbMCwgMCwgMTI4LCAxMjldLCB3c3RyaWRlID0gMTI4LCBoc3RyaWRl
+ID0gMTI5LCBmb3JtYXQgPSAKMHg4MDAoY2JjcjQyMnNwKQoKVGhlIGxpYnJnYSBkb2NzIFsxXSBh
+bHNvIGluZGljYXRlIHRoYXQgZm9yIGFsbCBZVVYgZm9ybWF0cyBvbiBhbGwgUkdBIAp2ZXJzaW9u
+cyB0aGUgImhlaWdodCBzdHJpZGUgbXVzdCBiZSAyLWFsaWduZWQiIChiYXNlZCBvbiB0aGUgbGli
+cmdhIAplcnJvciBvdXRwdXQgImhlaWdodCBzdHJpZGUiIHByb2JhYmx5IG1lYW5zICJoZWlnaHQg
+aW4gcGl4ZWxzIikuIApUaGVyZWZvcmUgSSd2ZSBjb3BpZWQgdGhpcyByZXF1aXJlbWVudCBnbG9i
+YWxseSBpbnRvIHRoZSBkcml2ZXIgdG8gYXZvaWQgCnBvdGVudGlhbCBwcm9ibGVtcyAoZS5nLiBo
+YW5ncyBvciB1c2luZyBtZW1vcnkgb3V0c2lkZSBvZiB0aGUgYWN0dWFsIGltYWdlKS4KClNpbmNl
+cmVseQogwqAgwqAgU3ZlbgoKWzFdIApodHRwczovL2NvZGViZXJnLm9yZy9haXJvY2tjaGlwL2xp
+YnJnYS9zcmMvYnJhbmNoL21haW4vZG9jcy9Sb2NrY2hpcF9EZXZlbG9wZXJfR3VpZGVfUkdBX0VO
+Lm1kI2ltYWdlLWZvcm1hdC1hbGlnbm1lbnQtaW5zdHJ1Y3Rpb25zCgo+IE5pY29sYXMKPgo+PiAr
+CX0KPj4gICAKPj4gIMKgCWlmIChWNEwyX1RZUEVfSVNfQ0FQVFVSRShmLT50eXBlKSkgewo+PiAg
+wqAJCWNvbnN0IHN0cnVjdCByZ2FfZnJhbWUgKmZybTsKPj4gQEAgLTM1OCwxMSArMzcxLDcgQEAg
+c3RhdGljIGludCB2aWRpb2NfdHJ5X2ZtdChzdHJ1Y3QgZmlsZSAqZmlsZSwgdm9pZCAqcHJpdiwg
+c3RydWN0IHY0bDJfZm9ybWF0ICpmKQo+PiAgwqAJaWYgKCFmbXQpCj4+ICDCoAkJZm10ID0gJmh3
+LT5mb3JtYXRzWzBdOwo+PiAgIAo+PiAtCXBpeF9mbXQtPndpZHRoID0gY2xhbXAocGl4X2ZtdC0+
+d2lkdGgsCj4+IC0JCQnCoMKgwqDCoMKgwqAgaHctPm1pbl93aWR0aCwgaHctPm1heF93aWR0aCk7
+Cj4+IC0JcGl4X2ZtdC0+aGVpZ2h0ID0gY2xhbXAocGl4X2ZtdC0+aGVpZ2h0LAo+PiAtCQkJCWh3
+LT5taW5faGVpZ2h0LCBody0+bWF4X2hlaWdodCk7Cj4+IC0KPj4gKwl2NGwyX2FwcGx5X2ZybXNp
+emVfY29uc3RyYWludHMoJnBpeF9mbXQtPndpZHRoLCAmcGl4X2ZtdC0+aGVpZ2h0LCAmZnJtc2l6
+ZSk7Cj4+ICDCoAl2NGwyX2ZpbGxfcGl4Zm10X21wKHBpeF9mbXQsIGZtdC0+Zm91cmNjLCBwaXhf
+Zm10LT53aWR0aCwgcGl4X2ZtdC0+aGVpZ2h0KTsKPj4gIMKgCXBpeF9mbXQtPmZpZWxkID0gVjRM
+Ml9GSUVMRF9OT05FOwo+PiAgIAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxp
+c3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0
+aW5mby9saW51eC1yb2NrY2hpcAo=
