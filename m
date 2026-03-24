@@ -4,92 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD7CBF532E9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 08:02:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B809F532EC
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 08:07:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Iak+6IDa51Dx8u2tJx29I2yT3RkJLCq/PIW+78jB1VY=; b=R2cWKsJWCuPsGP
-	tWnStPoHMh1CfP2WDLHUlkCZs6Nmx0BCuM50pMz/ZDPG9FvPFvh4b1O5DwgDCPUKyxOIyw3NnZoJs
-	SeWI4t4rp0DowpCF7d+P6qJyCo2afUo7bKD+xWMpejxNXVZQieyHv74dzf0/O1d0vnlAH1i8s3mYp
-	vbbFA/64T6XCbJvgS2D9P56J6YBMICnDiv45b6Sd65aQrvvleXysHNdXoQ/+c7sM/Nl48EakMHuIj
-	8qVFB7J6lt3b+Ii17tNEF2KU5FIwXelovrzVQhUBXTC0+5IEeXAFob9MDd/BkvUNv4LuXYdQM1iOt
-	wXq/pZx9nyFLD72eYFgQ==;
+	List-Owner; bh=2mOfeRpmsirMs0JDx8/d657orpajsCpj3PgXYJYgg3k=; b=Vpc976H1obT14t
+	X+CtmsWJZDqJkyd5Ip9bo8ay/8cnYyqN6d7ZBOuzRsIPamSdiU+V1zTZ/LxAYjEWu039abWc4xHJ/
+	iHeBN5ib2g59SJiUfDB6WzzSu1xsMSE7gNUyZi/9Psf+QG6pbjJnt9qqTxlPtJscuceub+OAXhV7n
+	9pkQ9TRJyCJyZvbkTP2Dbiz1lZIgrBUvQAf0MEc9Wi9fwy5ofm1ZddId40Sapb0bU0uqyNEfvCsEo
+	rYFshu8WfE2g4yPeqEZQkhyUDS+6fs5UnJKrsZvu4ndC/bPmzCecQ+42DBWOnmpvsfq1v6LH0YYjX
+	v1enbSWoFmD+/Ar2jnLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4wit-00000000wrP-3ZCM;
-	Tue, 24 Mar 2026 08:02:47 +0000
-Received: from meesny.iki.fi ([2001:67c:2b0:1c1::201])
+	id 1w4wn0-00000000xDA-06Yj;
+	Tue, 24 Mar 2026 08:07:02 +0000
+Received: from mail-m3285.qiye.163.com ([220.197.32.85])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w4wiq-00000000woh-1OPe;
-	Tue, 24 Mar 2026 08:02:45 +0000
-Received: from hillosipuli.retiisi.eu (n18ws8cotq5gnfn8-1.v6.elisa-laajakaista.fi [IPv6:2001:99a:0:19f:4ce7:0:938c:d2f4])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sailus)
-	by meesny.iki.fi (Postfix) with ESMTPSA id 4fg2ZW0pv3zyVM;
-	Tue, 24 Mar 2026 10:02:27 +0200 (EET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi; s=meesny;
-	t=1774339349;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=bsHWbw7oyNKZz8F9g3T7f5cxwL5OoWi6tUY7Ok/t8ws=;
-	b=MWSifNUlPaaqMOq4PuTJ5MqOaeiGZA+wlBmVOvAJuXT0uqK2iwK3AbdKBBSJPebPQH+cAk
-	srwWvrkyOCT47rCmaM/OLZu4Z4ASaTJXpYzo2RbSeToioBL0ksxV3ttibDMOzYKFeZ+Kk0
-	HzJzr9W4BsiqIjBTXktK9FmO8I4AgN8=
-ARC-Seal: i=1; a=rsa-sha256; d=iki.fi; s=meesny; cv=none; t=1774339349;
-	b=oW98lXMVIazFB6zLz7XJvsrrlvRFfsVvpjFymnNTO4uPy8Uf9aRTc6KWWcDlXv9ZwDVdlu
-	/bHalqM1L7lIl5piDLmK5SejL1ejle5bRnDYT0E1V87XmErzP1K6MlfBHRAzT2hODljSil
-	0QL6dzTpfEJdUN0lwlMu7GzasW5KLos=
-ARC-Authentication-Results: i=1;
-	ORIGINATING;
-	auth=pass smtp.auth=sailus smtp.mailfrom=sakari.ailus@iki.fi
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=iki.fi;
-	s=meesny; t=1774339349;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=bsHWbw7oyNKZz8F9g3T7f5cxwL5OoWi6tUY7Ok/t8ws=;
-	b=t//NLF34xv9Yrs/la/jT9186cicr6b4RNHPTFTBSwkXWdccrS/E+nVb8ChfqqjVaRhmIJN
-	+n3YGX26QzP484y1XJzmwwzmbNCpOQKYmIDpmHq5WdepT4jrCn6gViv+ib9YhBlpwxm1VR
-	bSac0l4xpMN9aXcoKfSab23Nms/7Ffo=
-Received: from valkosipuli.retiisi.eu (valkosipuli.local [192.168.4.2])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hillosipuli.retiisi.eu (Postfix) with ESMTPS id 1160B634C4E;
-	Tue, 24 Mar 2026 10:02:26 +0200 (EET)
-Date: Tue, 24 Mar 2026 10:02:25 +0200
-From: Sakari Ailus <sakari.ailus@iki.fi>
-To: Frank Li <Frank.Li@nxp.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	imx@lists.linux.dev
-Subject: Re: [PATCH 3/6] media: synopsys: implement .get_frame_desc() callback
-Message-ID: <acJFEcGm0Sgw5nyW@valkosipuli.retiisi.eu>
-References: <20260210-imx93-dw-csi2-v1-0-69667bb86bfa@nxp.com>
- <20260210-imx93-dw-csi2-v1-3-69667bb86bfa@nxp.com>
+	id 1w4wmw-00000000xCR-2Kt9;
+	Tue, 24 Mar 2026 08:07:00 +0000
+Received: from [172.16.12.17] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3812347a3;
+	Tue, 24 Mar 2026 15:31:39 +0800 (GMT+08:00)
+Message-ID: <418f84d2-fb2c-c4a3-6690-c86ec44d594f@rock-chips.com>
+Date: Tue, 24 Mar 2026 15:31:38 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260210-imx93-dw-csi2-v1-3-69667bb86bfa@nxp.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.1
+Cc: shawn.lin@rock-chips.com,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ "Martin K. Petersen" <martin.petersen@oracle.com>,
+ Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/1] scsi: ufs: rockchip: Drop unused include
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ linux-scsi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
+X-HM-Tid: 0a9d1ec1a10009cckunm623cadc09c6d83
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkJIGFZOHktDHU4fGBlPSx9WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=JeS80Zun1dOnGKzrio4K+VZ2PPPO3DJFTJeTYaTN0KG9mrg7FpwvVzLlzn0yn68uopv2X3SaR7uJB5V+MDT19eqNh/qx9zSRpDRIduhrPQlhgxz8gIM2qC3IXcagu6h0nhTePVbJpqG0j1j+qgFzlWpHkLOiGKh/NISYsnpiN3g=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=RqovqAVOh/J3GxdWkjwkCOMcif7wlkSPNm8sBdge6o4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_010244_552963_AB912B02 
-X-CRM114-Status: GOOD (  19.13  )
+X-CRM114-CacheID: sfid-20260324_010659_155025_7D275011 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,87 +69,25 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Frank,
-
-On Tue, Feb 10, 2026 at 12:11:10PM -0500, Frank Li wrote:
-> Implement the .get_frame_desc() callback to fetch information from the
-> remote endpoint.
-> 
-> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> ---
->  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 25 ++++++++++++++++++++++++
->  1 file changed, 25 insertions(+)
-> 
-> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> index 61cd7f491b3d5b8a37707b23ca03ce709b40a79f..4ad4e3b23448affeeaa932a706653818ba4019ba 100644
-> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> @@ -70,6 +70,8 @@ struct dw_mipi_csi2rx_device {
->  	struct v4l2_async_notifier notifier;
->  	struct v4l2_subdev sd;
->  
-> +	struct v4l2_subdev *remote_source;
-> +
->  	enum v4l2_mbus_type bus_type;
->  	u32 lanes_num;
->  };
-> @@ -431,10 +433,31 @@ static int dw_mipi_csi2rx_disable_streams(struct v4l2_subdev *sd,
->  	return ret;
->  }
->  
-> +static int
-> +dw_mipi_csi2rx_get_frame_desc(struct v4l2_subdev *sd, unsigned int pad,
-> +			      struct v4l2_mbus_frame_desc *fd)
-> +{
-> +	struct dw_mipi_csi2rx_device *csi2 = to_csi2(sd);
-> +	struct media_pad *remote_pad;
-> +
-> +	if (!csi2->remote_source)
-> +		return -ENODEV;
-> +
-> +	remote_pad = media_pad_remote_pad_unique(&csi2->pads[DW_MIPI_CSI2RX_PAD_SINK]);
-> +	if (IS_ERR(remote_pad)) {
-> +		dev_err(csi2->dev, "can't get source pad of %s (%pe)\n",
-> +			csi2->remote_source->name, remote_pad);
-> +		return PTR_ERR(remote_pad);
-> +	}
-> +	return v4l2_subdev_call(csi2->remote_source, pad, get_frame_desc,
-> +				remote_pad->index, fd);
-> +}
-
-Can you use v4l2_subdev_get_frame_desc_passthrough()?
-
-> +
->  static const struct v4l2_subdev_pad_ops dw_mipi_csi2rx_pad_ops = {
->  	.enum_mbus_code = dw_mipi_csi2rx_enum_mbus_code,
->  	.get_fmt = v4l2_subdev_get_fmt,
->  	.set_fmt = dw_mipi_csi2rx_set_fmt,
-> +	.get_frame_desc = dw_mipi_csi2rx_get_frame_desc,
->  	.set_routing = dw_mipi_csi2rx_set_routing,
->  	.enable_streams = dw_mipi_csi2rx_enable_streams,
->  	.disable_streams = dw_mipi_csi2rx_disable_streams,
-> @@ -487,6 +510,8 @@ static int dw_mipi_csi2rx_notifier_bound(struct v4l2_async_notifier *notifier,
->  		return ret;
->  	}
->  
-> +	csi2->remote_source = sd;
-> +
->  	return 0;
->  }
->  
-> 
-
--- 
-Regards,
-
-Sakari Ailus
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYvMDMvMjEg5pif5pyf5YWtIDU6NTYsIEFuZHkgU2hldmNoZW5rbyDlhpnpgZM6Cj4g
+VGhpcyBkcml2ZXIgaW5jbHVkZXMgdGhlIGxlZ2FjeSBoZWFkZXIgPGxpbnV4L2dwaW8uaD4gYnV0
+IGRvZXMKPiBub3QgdXNlIGFueSBzeW1ib2xzIGZyb20gaXQuIERyb3AgdGhlIGluY2x1c2lvbi4K
+ClJldmlld2VkLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KCj4gCj4g
+U2lnbmVkLW9mZi1ieTogQW5keSBTaGV2Y2hlbmtvIDxhbmRyaXkuc2hldmNoZW5rb0BsaW51eC5p
+bnRlbC5jb20+Cj4gLS0tCj4gICBkcml2ZXJzL3Vmcy9ob3N0L3Vmcy1yb2NrY2hpcC5jIHwgMSAt
+Cj4gICAxIGZpbGUgY2hhbmdlZCwgMSBkZWxldGlvbigtKQo+IAo+IGRpZmYgLS1naXQgYS9kcml2
+ZXJzL3Vmcy9ob3N0L3Vmcy1yb2NrY2hpcC5jIGIvZHJpdmVycy91ZnMvaG9zdC91ZnMtcm9ja2No
+aXAuYwo+IGluZGV4IDdmZmYzNDUxM2E2MC4uYmFjNjhmMjM4ZTFjIDEwMDY0NAo+IC0tLSBhL2Ry
+aXZlcnMvdWZzL2hvc3QvdWZzLXJvY2tjaGlwLmMKPiArKysgYi9kcml2ZXJzL3Vmcy9ob3N0L3Vm
+cy1yb2NrY2hpcC5jCj4gQEAgLTYsNyArNiw2IEBACj4gICAgKi8KPiAgIAo+ICAgI2luY2x1ZGUg
+PGxpbnV4L2Nsay5oPgo+IC0jaW5jbHVkZSA8bGludXgvZ3Bpby5oPgo+ICAgI2luY2x1ZGUgPGxp
+bnV4L2dwaW8vY29uc3VtZXIuaD4KPiAgICNpbmNsdWRlIDxsaW51eC9tZmQvc3lzY29uLmg+Cj4g
+ICAjaW5jbHVkZSA8bGludXgvb2YuaD4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hp
+cEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4v
+bGlzdGluZm8vbGludXgtcm9ja2NoaXAK
