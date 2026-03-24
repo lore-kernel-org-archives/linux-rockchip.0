@@ -4,55 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32206F54ADA
-	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 17:05:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8F05F54ADB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 24 Mar 2026 17:05:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=td8OpX1RsGJap51H5bRc5fGWGgrGNMTsNBcdaJvY1zs=; b=Bmb4wBvv9TyPgi
-	08pUQBxHihoLff3NOkb9BCeiRNoPrqEiNnuJZleR6UnF2d3NfwU/gJQ5G68qvnLF8Ra53zEJqvVND
-	yO+Xm1Ra2xFipYVxpSj8KXpWZCM89HghmDCwNq2eV1XC3SRwvrhHw4l/5AhF/gL0IySt+h6Sxo5qp
-	Ap5TVQv7byeE8NgpuAInAmBSl850wRpyF/8Ca9YNoi416rJcai2LDc35DWxBl9kAzw+lSoJftwwoZ
-	V3Xgu02gNIIxfib1cvDl9ooeYK8LW61/kJhOwy+nCkYDsbj83gjAAtnzKZf3SU5Zxib9La+ojRvYN
-	raqVohlGClFA2SS26JOA==;
+	List-Owner; bh=22FulM3xnjj6BZYWZVZ7YkKc1/adCwOKto69H/zCXtI=; b=c0a9sr+Vdp6+Jq
+	wtxKPMLyYnn1FSBiWx8KjLvcSXTAw/HNHvPXaGZFXHXHTt0c+CRxZbizVLH5GMP05vpmovEZ2g0L1
+	9RnOxYLStv6+TAUXh7Szr3Qo6UYFP6qbDLN3wmPr1mhcP88XpQQQv0FGuWp5X+IzIqm4uXQILBCil
+	zILcMqBAaB2gpIfGT/MLrprgFJhrj63gdg3Gd+Z8/bak6f+GSjuB+XnhmxiTZawipyxf9e9izIJfc
+	JM1TAjo3TO3kxQUvFJALG7h+BMdUX419WXvvXdBv0YfOUYwkw796e0lqS7c1YVIuQLb8F1CumK7uw
+	K4/Zvl2AaSHzvAC+gT7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w55Bg-00000001xyu-1C8f;
-	Tue, 24 Mar 2026 17:05:04 +0000
+	id 1w55Bn-00000001y0z-22hk;
+	Tue, 24 Mar 2026 17:05:11 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w55Bd-00000001xyD-16ZE;
-	Tue, 24 Mar 2026 17:05:02 +0000
+	id 1w55Bl-00000001y04-2ERP;
+	Tue, 24 Mar 2026 17:05:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=pthCqzcNV07zQFAYZ2QgjDyhOkbaR/Ra0oZwRM7xAAw=; b=a/aNQTwezhKlWZD4weZalk1vX0
-	Q4pmjertPTAXfiaM5E2huZ3OSJHo0Zl7zSXBmvjvPJl10XsjBL5a66qi8e22sg+8aanLEJIyBCNK+
-	tYAUn/9I8mlHI0IrYfd8b0rvseZlsz0c9k12rpqaf80qqlxTS/HjXppkZ+5A6JLWnKrGoDF3mNnHv
-	A6i3tgofkYFKl+SaMyoM/tAvZOcaG/x+y5asuG0VXRy9/dAznoXD1Ltwas1+AE33aPGaZQGg7hRem
-	vNP2nnCQLBwx5xRAhZYHLOpm06JufznjjYNntKNELNJ+eTF66FeBwQLc5rc7FQgXimJYt+rb4UkP6
-	rgP/qrrw==;
+	bh=0t+oQcy1b0wNBqxu5SQctA+VyPx8zQsKT5ERHccPGCQ=; b=i35miYNIRP18uL0KgzsFD3vHdk
+	Gq1pmFn8+Tf9XOn8UJ9OLQ2yHL48PWhNSK4FS4Mad/mnFQV6oj0sLtQ+kuJ/g/GMYs3o7KLfnf4LK
+	9IosGWCaXgBphwGmPL4okhcb4obf2EB5PIzsB5ZfOna/Uo5ILJiNRQKcbLHiBxUSXINhGp1saKDoe
+	BhMj6sKCsxU+befN48vspJ9hnMed6hc7FlKf5KAK70L/72dSlHeLr9iPHGnAS4vo2nR+2sSvorl+Q
+	tjL4pF3Vu3aw1WgYf3Ub2DMACNHTBqdBwx3za0DaSAd+GTgm78H12zZAEDEe7TqoeaccqOgH0hqmk
+	8lUpCYEA==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: linux-rockchip@lists.infradead.org,
-	MidG971 <midgy971@gmail.com>
+	=?UTF-8?q?=E8=B0=A2=E8=87=B4=E9=82=A6=20=28XIE=20Zhibang=29?= <Yeking@Red54.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	shawn.lin@rock-chips.com,
-	jonas@kwiboo.se,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Finley Xiao <finley.xiao@rock-chips.com>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH v5] arm64: dts: rockchip: rock-3b: Model PI6C20100 as gated-fixed-clock
-Date: Tue, 24 Mar 2026 18:04:52 +0100
-Message-ID: <177437177535.786081.7519498810130807269.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix RK3562 EVB2 model name
+Date: Tue, 24 Mar 2026 18:04:53 +0100
+Message-ID: <177437177533.786081.8620014414771033959.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260320094441.128263-1-midgy971@gmail.com>
-References: <20260320094441.128263-1-midgy971@gmail.com>
+In-Reply-To: <tencent_78E7E3F6991FB4403D5ADC9E6A6BC3BF8307@qq.com>
+References: <tencent_78E7E3F6991FB4403D5ADC9E6A6BC3BF8307@qq.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_100501_323993_C11D789A 
-X-CRM114-Status: GOOD (  11.69  )
+X-CRM114-CacheID: sfid-20260324_100509_577647_0A90D7D5 
+X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,42 +69,17 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 20 Mar 2026 10:44:41 +0100, MidG971 wrote:
-> The Radxa ROCK 3B uses a PI6C20100 PCIe reference clock buffer to
-> provide a 100MHz reference clock to the PCIe 3.0 PHY and controllers.
-> This chip is currently modeled only as a fixed regulator
-> (vcc3v3_pi6c_03), with no clock output representation.
-> 
-> The PI6C20100 is a clock generator, not a power supply. Model it
-> properly as a gated-fixed-clock, following the pattern established
-> for the Rock 5 ITX and other boards with similar PCIe clock buffer
-> chips.
-> 
-> [...]
-
-Applied, thanks!
-
-[1/1] arm64: dts: rockchip: rock-3b: Model PI6C20100 as gated-fixed-clock
-      commit: b61f3c69c87b5f061194f413d810723698534b02
-
-As I somehow expected, that AI messed up ;-) .
-
-In the 2nd part of the patch the reported number of lines
-in the header (the 15 there) does not match the number of lines
-in the diff itself (14). I've fixed that up to not have another
-round.
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+Ck9uIFRodSwgMTkgTWFyIDIwMjYgMTM6NTU6MDAgKzAwMDAsIOiwouiHtOmCpiAoWElFIFpoaWJh
+bmcpIHdyb3RlOgo+IFRoZSBtb2RlbCBuYW1lIHNob3VsZCBiZSAiUm9ja2NoaXAgUkszNTYyIEVW
+QjIgVjEwIEJvYXJkIi4KPiAKPiAKCkFwcGxpZWQsIHRoYW5rcyEKClsxLzFdIGFybTY0OiBkdHM6
+IHJvY2tjaGlwOiBGaXggUkszNTYyIEVWQjIgbW9kZWwgbmFtZQogICAgICBjb21taXQ6IGVkZTZh
+MDU2MDY4OTJiYWI0ZjZkNzg1ZmZjZmMxMjQxNTBjMmViMzIKCkJlc3QgcmVnYXJkcywKLS0gCkhl
+aWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpfX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
+cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
+YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
