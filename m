@@ -4,70 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B9381093168
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 21:34:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8362D109E523
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 22:00:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Z5NlULZVpylZGrm9v72y0Nck4y5guf3oALwYGvbXyxs=; b=3xl/LvHkAhw45F
-	FV6F2vGEnEaUCUHjjG0aP3Oo+GzP5FBF7EnE0XMeguoGSSWtmLHeZsJAPAJynjS4pCe3s6qLOpQYg
-	sObxt9/U4eugDmrhXVRzuHTA5EjsBWlNYuIm3xlGrRCYqzvP5KxIZirmbh2smaw+7hmfbcrBkdbj1
-	n/c3mxDTHH8CMZF/RyFPlvGbC1o2E5+SrmL1RQGVcbvLw/pC1RUHuRDbhNK6JuMyhYJECiyOcxYrK
-	6pWGlsIBzY6c4JWg2QIVGc9HjBOdQ4OKIOGgc4JXhGZThvTubhHc+fuT8+uWpvLpoNrYOxrDsq0Vj
-	XlWLsgHCULFvM5Mg3dew==;
+	List-Owner; bh=6xb5O5X9AbwpkL4Ki9gejPM5PUE5nOwGaL4gqjNtRkA=; b=gRSKIEjO0eBhcR
+	P/x9jYeFwiNHgTvfLZhblozLEmWpCYjhHVsX5Om3yviF1QB3ymDBSgJ6c3lEPH38cz/H73GbaS4PC
+	twJ1tE3aR8Jy0D6ywkBNuVy1eB1VEmo5xZihSKuDzf0yHpyyMsHjC6UxwNNTFKVzX7+mUxEF/Ilys
+	qSu5+ujB9O09wih7O53DdRs+Aq7wEoBcXJjo9Hn0Ts1VflRgMWRyJJQuMAzpNdqEZvCtj6wEnxCqf
+	+fq7D9ZSRUsq5O8fl0GtdMsQXJALKC5dI2F5oavN1Qh+E3zOzTdkCrWZ3CPjNx0+iPukAot+ZGqTh
+	wcM1nwJKM0OpX9G5QdVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5VsL-00000004Hmh-0oCw;
-	Wed, 25 Mar 2026 21:34:53 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1w5WGv-00000004JC7-1vmv;
+	Wed, 25 Mar 2026 22:00:17 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5VsI-00000004HmE-2WTs;
-	Wed, 25 Mar 2026 21:34:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1774474486;
-	bh=E1WXPXz+/NlfRML46gDMJ4qfQn90FVfE9nYP5/MLyMg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=e+rDolsHY8954s81Mp/fexI2cypjxrLKc6/hIUuDpERQFz1AgsSs/k6BYU7Sz3rrK
-	 SKImsKhlljGJuH+3OZEcXhJm8xoMTeiGsUijKm3BS/mgp70vScwP8BV9+qVzxuvmEZ
-	 DuPp1sLsSP5GFzOb1vQ5olRjkHik0XMRcwT0HYkhplYrTTbuR8Nxo1v/pkKOgam9JW
-	 ri0RroBwrfAP0fO00F15ZhuveO6PSW7Xrw113u8hOFw5ed3Tp3BjNUVj/4tQPDm/Ai
-	 DRHPVnmKm5oX5xuT2zWvxywDxOlEpkJxPzMXwaZDwAApkA2FgZvIH8T8iNAKH8VUza
-	 xjVE2rrtnyEGw==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B3FF117E5B52;
-	Wed, 25 Mar 2026 22:34:45 +0100 (CET)
-Message-ID: <703bcf13-ab45-4e9a-b80c-80911d85d819@collabora.com>
-Date: Wed, 25 Mar 2026 22:34:45 +0100
+	id 1w5WGs-00000004JB9-05cV;
+	Wed, 25 Mar 2026 22:00:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Xhr1D24nKivYP/3T0AfCxVIkR9YFjI1CmvRMS0ErUhs=; b=5tawHl3e+uz9eT1sXa8Trr9UO3
+	ROaHbvVci5+1x1gHnzDm2slDD0JaznmGKOrxGbVFDkZMzS+rmgkpFFIzI8uoZ8Vm3HM5sU74Lbgg9
+	/PopU1JjeSWjAX4u00eOPjCt0e4mbNvr581G0kAg+1PHB+QCwy6hnY76o/2fmt4nVWL0=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1w5WGR-00DMmg-Oz; Wed, 25 Mar 2026 22:59:47 +0100
+Date: Wed, 25 Mar 2026 22:59:47 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+	Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Christophe Roullier <christophe.roullier@foss.st.com>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Radu Rendec <rrendec@redhat.com>, linux-arm-msm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	Drew Fustini <dfustini@tenstorrent.com>,
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mips@vger.kernel.org, imx@lists.linux.dev,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH net-next v9 2/6] net: stmmac: qcom-ethqos: use generic
+ device properties
+Message-ID: <ba85f84e-740d-47d6-a8a0-97823bf2c4d7@lunn.ch>
+References: <20260316-qcom-sa8255p-emac-v9-0-c58934e76ff2@oss.qualcomm.com>
+ <20260316-qcom-sa8255p-emac-v9-2-c58934e76ff2@oss.qualcomm.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] media: dt-bindings: rockchip,rk3568-mipi-csi2: add
- rk3588 compatible
-To: Rob Herring <robh@kernel.org>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Sakari Ailus <sakari.ailus@linux.intel.com>,
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Frank Li <Frank.li@nxp.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Collabora Kernel Team <kernel@collabora.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260305-rk3588-csi2rx-v3-0-754473981f39@collabora.com>
- <20260305-rk3588-csi2rx-v3-1-754473981f39@collabora.com>
- <20260325210634.GA3963190-robh@kernel.org>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260325210634.GA3963190-robh@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20260316-qcom-sa8255p-emac-v9-2-c58934e76ff2@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_143450_821192_6D27B9DA 
-X-CRM114-Status: GOOD (  16.16  )
+X-CRM114-CacheID: sfid-20260325_150014_082945_CCD11749 
+X-CRM114-Status: UNSURE (   7.46  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,77 +106,17 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rob,
-
-On 3/25/26 22:06, Rob Herring wrote:
-> On Wed, Mar 25, 2026 at 11:25:34AM +0100, Michael Riesch wrote:
->> The RK3588 MIPI CSI-2 receivers are compatible to the ones found in
->> the RK3568.
->> Introduce a list of compatible variants and add the RK3588 variant to
->> it.
->>
->> Acked-by: Rob Herring (Arm) <robh@kernel.org>
-
-First of all, apologies for applying your Acked-by tag. I figured
-resolving the merged conflict was trivial and impossible to screw up, but...
-
->> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
->> ---
->>  .../devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml   | 10 +++++++---
->>  1 file changed, 7 insertions(+), 3 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
->> index 4ac4a3b6f406..3d3b3cd78884 100644
->> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
->> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
->> @@ -16,9 +16,13 @@ description:
->>  
->>  properties:
->>    compatible:
->> -    enum:
->> -      - fsl,imx93-mipi-csi2
->> -      - rockchip,rk3568-mipi-csi2
->> +    oneOf:
->> +      - const: fsl,imx93-mipi-csi2
->> +      - const: rockchip,rk3568-mipi-csi2
+On Mon, Mar 16, 2026 at 01:05:07PM +0100, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
 > 
-> These 2 should be a single enum as they were before.
+> In order to drop the dependency on CONFIG_OF, convert all device property
+> getters from OF-specific to generic device properties and stop pulling
+> in any linux/of.h symbols.
 
-... hm. Well.
+Adding to what Russell said, please document your new binding. e.g. in
+Documentation/firmware-guide/acpi/dsd.
 
-First, do you mean
-
-properties:
-  compatible:
-    oneOf:
-      - enum:
-         - fsl,imx93-mipi-csi2
-         - rockchip,rk3568-mipi-csi2
-      - items:
-         - enum:
-            - rockchip,rk3588-mipi-csi2
-         - const: rockchip,rk3568-mipi-csi2
-?
-
-If so, what is the practical difference?
-
-Thanks and best regards,
-Michael
-
-
-> 
->> +      - items:
->> +          - enum:
->> +              - rockchip,rk3588-mipi-csi2
->> +          - const: rockchip,rk3568-mipi-csi2
->>  
->>    reg:
->>      maxItems: 1
->>
->> -- 
->> 2.39.5
->>
-
+	Andrew
 
 _______________________________________________
 Linux-rockchip mailing list
