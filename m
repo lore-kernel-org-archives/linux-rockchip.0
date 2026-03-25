@@ -4,74 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D285F109C032
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 15:23:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7692109C032
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 15:27:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=O7rb0gjZEpdbIbG6NP9WTfa6oe/Clhfh5/cstNQvrOI=; b=E+a5f0iloKaK99
-	NLEJeBnkosZQnMqFPChhVyopi95QxcYLS3hglHJh693aMM54MfGVLy54JT3i7QCBbXa++H4iAbw7N
-	0RiAth4znPNn5ZVAyLDU9eZ9ofRVlI7AMTfYdCsAtEqR4UhfjQptWiIWV4xohBBmnWNYMqsvrmH3P
-	ODQrGWmfREThn2bEYRd3rwws/r70TpVZ7HsfvddJucJYD7caxRWxL5IyraOFQpBfIAcl9Uxw/Ntit
-	hWRt/hnk+bD1QBBWfA195gHJH7CcqscMPj3C5a6wL9nrCHwkMPW7r9iQT/qfIwz6wKdFht6JrnXmM
-	L6HlX1V8oLpgfmWtFkdw==;
+	List-Owner; bh=XnOlQEiASoQWVi/sygTghus2IRXYPiZwPigGTfVK56w=; b=ZLHFJfw2c3rJp7
+	aWHtcImV1PVxPvq2upo5POvel2VLMjWWGbk8b0s1n2mzf4ftBrYyOgky5qstdJWM3rQF/lLEOmEQG
+	nqsPeFRMxaa16sdVlkkoogN6617JwuUBHVjCe6IN5AQIB//F43ZpIC1XPH4UgDYsKZzdqwXoUoilu
+	M3JdjwjeWjZctr1THYfFv+u/MMu7+JLjOozRTD/A5Nt8I5UN/Ag+i3jzn7KNz+oxB+JRBXtUwrnob
+	x15QIoCinCR0MLIx6jAvFTbQjGO8AO1ocKdP05/nFSJs/JLU+oXoeHjEuTzIgzu6scg6JffxvKo6N
+	lWPrusrgwgRgYprn89tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Q4y-00000003mDV-40zM;
-	Wed, 25 Mar 2026 15:23:32 +0000
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
+	id 1w5Q8O-00000003mv0-3Mr1;
+	Wed, 25 Mar 2026 15:27:04 +0000
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Q4w-00000003mBW-14Pn
+	id 1w5Q8M-00000003muJ-28BX
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Mar 2026 15:23:31 +0000
-Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-2ba895adfeaso2779169eec.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 25 Mar 2026 08:23:29 -0700 (PDT)
+	Wed, 25 Mar 2026 15:27:03 +0000
+Received: by mail-dl1-x1229.google.com with SMTP id a92af1059eb24-1274204434bso820653c88.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 25 Mar 2026 08:27:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1774452209; x=1775057009; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1774452421; x=1775057221; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=dYR/VQii1eq+59yB5UylOEDiVqDDyUVcShZrPailuWs=;
-        b=MURMUkh1ea1IA3QCKeh9Wu9yqNH/CpzjSUphbHgLKQinb/b9yX5IWHFc4/Vx/qh120
-         aiwAYdUmRvQqiGiaNgp2amhTrchngMegnn1MFQhCNUN0QEsgtlUhJNDFioOzvvTu16vk
-         /zChJOVMaKKr7PKQwf0u4gvOyKBBfpJsxMYvUepM62B4TuQPR1cNyODF6+z11ueT2V9Q
-         X7RMHPg8nU4Zg8qHN8esJ1HmN9Hfm1WDsn40w/jWRVqu5+iSDNpXAT802vn8I+vsMHWm
-         1Dd+8bm6zzdwQ3lWQSc9JX/TulkVVIQfAigN++DdgfqRB2l6g6qW9JL/+7/CCj7fEsOr
-         QInQ==
+        bh=khgSvsFz4BGruQneZts97/YH28J+KXY7YhwPuOZLH0c=;
+        b=l31IbuJo2P2KfXa6Ou+8vr+JAAIOIc5J4NJ+xPy0hS4askB+Pfm5uxvM0vE1pTQM+R
+         U4hjJuKjuxxw005K0+5/gkgWXQQBE8fTmQfLn4nZ9m7tT+Pu1zxjKSBEX7+xRleQJ+s4
+         N7QvOB0YnlnggXjHPHh+wwIrXDiAjTe3oxn874dzdnig7ynKxuudYXTw2OrMjUtBCKVU
+         hp3tRVFhgoFwQbd8gGF8+I+VyZOr8B73xDVmMJGqXTX7rMU5LCPocpnfWT08wwuJPJ2/
+         k6aTd1BuuLlUmo+OlIYEjN6ehoUezM3dM5xt0k9HMm2/zKZJaXntvIErUPSqahuEV50z
+         t9Zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774452209; x=1775057009;
+        d=1e100.net; s=20251104; t=1774452421; x=1775057221;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=dYR/VQii1eq+59yB5UylOEDiVqDDyUVcShZrPailuWs=;
-        b=rv3+gelvsR1icEPjyuAZlHon/cBtcJPb5rastdmwmtjq6RR8VyhQECnIw1dNHDviJ0
-         Q+OZwYc8Xc9GOyf6eM27erCUVvJrfpFWzIBgJ3mN9LV+ebYiZaMm/b6ctCKWOttk+Ghd
-         Xbi26IDdjavsCIIYNQxpxexHFNEz5kxQMS/Ui0JeLwWu84wuMus1cGVQm3a5hqrWu+0g
-         HeFVYNPU+MJxsCSrA8l3nuhzb1uefMn1VT9PIcsDdkHUPIohu4w75gmw7TnhOVHMNetE
-         u9fKU1i0Ymk1m528iIDZ3xupYyOVinK8D8Ok/KLs5EKAySjVvxcp2ApLl0QIyEF6izBq
-         ZukQ==
-X-Forwarded-Encrypted: i=1; AJvYcCVduLM6IOKmZGjdKTEQoou2xJDlIrmT1l+9skftzq8FiuUBtEgBRgLD0DW/9HXL+lfkb2MYBo0EAWQtLpAnHA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxFSAmOd870/6WMK0sQp0kL+h/i7uu+ZHxOk0bvf0JfgRwhKrTK
-	hprKQahuIef7fF1LE9K3Tp/WCK9LmZ+QVkNIcUjv2WAEnCjqCo37R0bH
-X-Gm-Gg: ATEYQzyjKJEOZyhTjVleTkrNOPV38k7ZFxlRgoE2a8N1xyH9OBs/FiWl8Bf+uptcFB1
-	OELjEaVy21iX44nOmn+T9E2+jYu7kz/npEBCCnOqFyFSU9cP3Jp5xADw6TlmRHMiDCEvjpXMWh/
-	5J082fTrKgqRxw0yua2CDM8ZZlCrD4p51M6gcKbb9aj0GH1Va1zBNyfp6Nyjot1C/KpgdRcG8JA
-	U8bfAyr3sc9pT5JPOo/UtJ4Qv1U+rpF//UGRvfuOrieIXeGHnLqLdI7tdS9XM36cEa0mMyySdzH
-	p/BFl9YDs7cKGLrlBOaYMLM0Nr5PvWwi4vLhorJGEpXg+iQGUtiZqpLAQ+scLfvhw2jbr03KlQL
-	2ZbD+s01cHYua3g0+lTzULf2qjdzThQ35vk9G89nlyPG0BqBv6vcgmjL9IJxQ0na66Zt4y+C5h6
-	tYDrDaa8Pnzu15bLxKIVNLzlE1U6vKlC8wRnjcw9o+uWCSUVXJxAU6OBhikSAHAvj9
-X-Received: by 2002:a05:7301:578d:b0:2ba:6819:2e9b with SMTP id 5a478bee46e88-2c15d32bccemr2245364eec.3.1774452209058;
-        Wed, 25 Mar 2026 08:23:29 -0700 (PDT)
+        bh=khgSvsFz4BGruQneZts97/YH28J+KXY7YhwPuOZLH0c=;
+        b=Rr9PK707ETchMX3Mn7szysRJlVNe74GY6JpmHqS1MHfMXKF7RtDezkoLENAJz8Rueq
+         iI3SZ7BxZM3qM58WgS9X8nsa9EMKRzavnQJ/6yHpPETQK3iQn7YHbpTy2Q0kIUK6gPF7
+         ZPWMPZ1s9lBNBmYRIshI2mGxMBFNmHkNrHIoOwX8RyT35tT5DdKuipW9Blutd28wIVX+
+         3MtcPw/Ma51J03IKYEmPBLUvAlqh9D9Id7DtrH0NFTpPuAkmZEp3ZAdyJAr/xJK/5XoI
+         oI2/z8KlZ06gMlT1OMA54khpKnUxAeDLQt98QXPEcCmjRfO8NFUHKsLvFJKyr4ZSKQgv
+         LxsQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVRkolqZkcGjcPBctegw0ZH/imHrCOA5f89lIruPizT+ZWdvPTymRxf3wbJVyLht21qRFOlPJCbO8+ZkLt8xQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwYH/oqYhMbfm/gRH/wNTKyL8r5HT4iQimsY3VV4gH1ZCrbxLmL
+	J+BYgoC6GiLY/rbeG55TP9WuT2NawcdncTlfKNUvG9HBcigjAH26bVVFdM7vDw==
+X-Gm-Gg: ATEYQzx8wCBYv7FYaZWJyCV6+PdTHLfnWu1XxxxYKVBP5hVlk8VQcM0dbLZFGuKe//m
+	+aGSxm6uf3ijzqQ2w2qPKzZskOtCTLpe4yAdq3YaZjQ7/++RGixC9Z8PGp/inoNlJ6H6wsf1c0T
+	y+93lAxjGym121+dpHDV9yxqxNiQOGhi4doXsmJ54TVva1OiChqmuATc34zbb5tTqyAYRZSZTEv
+	pEjhG5UlBlYFIyvSGfpldKVLuIUNmtFUiS6QLfRjzqtC5R8ZERCPeBCU61/JXTZjMgUME29UMGQ
+	0uflHQ8Lx5vPWGmN8V1vDxbLgia8nyxGCEJeVBNJrj/bi/HPRJYR3NGkQXcpDGkVGcbKV7kft4Z
+	UGUuAfcE7MXis55EDtdMMof1+a9AXGVI2JoDrbc/w4NrUOH/dZi56Iv6jmMZpSj/35tJ4vaZhjC
+	s+zNC58mIocgmqYrqk8mXQOR3PRWaInkwPIX6OXeqorMUOf3LLDIV/Q7uMBY+/tFKG
+X-Received: by 2002:a05:7022:220d:b0:128:cf41:d6e4 with SMTP id a92af1059eb24-12a8e1682e4mr3485083c88.21.1774452421364;
+        Wed, 25 Mar 2026 08:27:01 -0700 (PDT)
 Received: from google.com ([2a00:79e0:2ebe:8:b7b4:352d:eb23:66e5])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2c10b29c941sm18375747eec.15.2026.03.25.08.23.27
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-12aa76243desm44594c88.9.2026.03.25.08.26.59
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Mar 2026 08:23:28 -0700 (PDT)
-Date: Wed, 25 Mar 2026 08:23:24 -0700
+        Wed, 25 Mar 2026 08:27:00 -0700 (PDT)
+Date: Wed, 25 Mar 2026 08:26:57 -0700
 From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Robin Murphy <robin.murphy@arm.com>
-Cc: Danilo Krummrich <dakr@kernel.org>, 
+To: Danilo Krummrich <dakr@kernel.org>
+Cc: Robin Murphy <robin.murphy@arm.com>, 
 	Manivannan Sadhasivam <mani@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
 	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
 	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
@@ -83,7 +83,7 @@ Cc: Danilo Krummrich <dakr@kernel.org>,
 	Grimmauld <grimmauld@grimmauld.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
 	"Rafael J. Wysocki" <rafael@kernel.org>, driver-core@lists.linux.dev, Lukas Wunner <lukas@wunner.de>
 Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
-Message-ID: <acP57qjzZr1NR1zf@google.com>
+Message-ID: <acP9-AfUQ7zp3kMS@google.com>
 References: <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
  <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
  <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
@@ -93,13 +93,13 @@ References: <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
  <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org>
  <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
  <acNgUoWWMCi1oLU4@google.com>
- <6cc25c83-6a5a-4785-9573-335371a94798@arm.com>
+ <DHBYL7Y262J2.263EOC2JNN4RK@kernel.org>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <6cc25c83-6a5a-4785-9573-335371a94798@arm.com>
+In-Reply-To: <DHBYL7Y262J2.263EOC2JNN4RK@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_082330_305256_373340EB 
-X-CRM114-Status: GOOD (  66.17  )
+X-CRM114-CacheID: sfid-20260325_082702_547434_84472A11 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,165 +116,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Mar 25, 2026 at 03:01:03PM +0000, Robin Murphy wrote:
-> On 25/03/2026 4:13 am, Dmitry Torokhov wrote:
-> > On Thu, Mar 12, 2026 at 12:48:36PM +0000, Robin Murphy wrote:
-> > > On 2026-03-11 9:09 pm, Danilo Krummrich wrote:
-> > > > On Wed Mar 11, 2026 at 1:28 PM CET, Manivannan Sadhasivam wrote:
-> > > > > On Wed, Mar 11, 2026 at 12:46:03PM +0100, Danilo Krummrich wrote:
-> > > > > > On Wed Mar 11, 2026 at 6:24 AM CET, Manivannan Sadhasivam wrote:
-> > > > > > > I have a contrary view here. If just a single driver or lib doesn't handle async
-> > > > > > > probe, it cannot just force other drivers to not take the advantage of async
-> > > > > > > probe. As I said above, enabling async probe easily saves a few hunderd ms or
-> > > > > > > even more if there are more than one Root Port or Root Complex in an SoC.
-> > > > > > 
-> > > > > > Then the driver or lib has to be fixed / improved first or the driver core has
-> > > > > > to be enabled to deal with a case where PROBE_FORCE_SYNCHRONOUS is requested
-> > > > > > from an async path, etc.
-> > > > > > 
-> > > > > > In any case, applying the patch and breaking things (knowingly?) doesn't seem
-> > > > > > like the correct approach.
-> > > > > > 
-> > > > > > > I strongly agree with you here that the underlying issue should be fixed. But
-> > > > > > > the real impact to end users is not this splat, but not having the boot time
-> > > > > > > optimization that this patch brings in. As an end user, one would want their
-> > > > > > > systems to boot quickly and they wouldn't bother much about a harmless warning
-> > > > > > > splat appearing in the dmesg log.
-> > > > > > 
-> > > > > > You mean quickly booting into a "harmless" potential deadlock condition the
-> > > > > > warning splat tries to make people aware of? :)
-> > > > > > 
-> > > > > 
-> > > > > Hmm, I overlooked the built-as-module part where the deadlock could be possible
-> > > > > as indicated by the comment about the WARN_ON_ONCE().
-> > > > > 
-> > > > > But what is the path forward here? Do you want the phylib to fix the
-> > > > > request_module() call or fix the driver core instead?
-> > > > 
-> > > > Here are a few thoughts.
-> > > > 
-> > > > In general, I think the best would be to get rid of the (affected)
-> > > > PROBE_FORCE_SYNCHRONOUS cases.
-> > > > 
-> > > > Now, I guess this can be pretty hard for a PCI controller driver, as you can't
-> > > > really predict what ends up being probed from you async context, i.e. it could
-> > > > even be some other bus controller and things could even propagate further.
-> > > > 
-> > > > Not sure how big of a deal it is in practice though, there are not a lot of
-> > > > PROBE_FORCE_SYNCHRONOUS drivers (left), but note that specifying neither
-> > > > PROBE_FORCE_SYNCHRONOUS nor PROBE_PREFER_ASYNCHRONOUS currently results in
-> > > > synchronous by default.
-> > > > 
-> > > > (Also, quite some other PCI controller drivers do set PROBE_PREFER_ASYNCHRONOUS
-> > > > and apparently got lucky with it.)
-> > > > 
-> > > >   From a driver-core perspective I think we're rather limited on what we can do;
-> > > > we are already in async context at this point and can't magically go back to
-> > > > initcall context.
-> > > > 
-> > > > So, the only thing I can think of is to kick off work on a workqueue, which in
-> > > > the end would be the same as the deferred probe handling.
-> > > 
-> > > Hmm, in fact, isn't the deferred probe mechanism itself actually quite
-> > > appropriate? A suitable calling context isn't the most obvious "resource
-> > > provider" to wait for, but ultimately it's still a case of "we don't
-> > > have everything we need right now, but it's worth trying again soon".
-> > > I may have missed some subtleties, but my instinct is that it could
-> > > perhaps be as simple as something like this (completely untested).
-> > > 
-> > > Cheers,
-> > > Robin.
-> > > 
-> > > ----->8-----
-> > > 
-> > > diff --git a/drivers/base/dd.c b/drivers/base/dd.c
-> > > index bea8da5f8a3a..3c4a0207ae3f 100644
-> > > --- a/drivers/base/dd.c
-> > > +++ b/drivers/base/dd.c
-> > > @@ -954,6 +954,16 @@ static int __device_attach_driver(struct device_driver *drv, void *_data)
-> > >   	if (data->check_async && async_allowed != data->want_async)
-> > >   		return 0;
-> > > +	/*
-> > > +	 * Bus drivers may probe asynchronously, but be adding a child device
-> > > +	 * whose driver still wants a synchronous probe. In this case, just
-> > > +	 * defer it, to be triggered by the parent driver probe succeeding.
-> > > +	 */
-> > > +	if (!async_allowed && current_is_async()) {
-> > > +		driver_deferred_probe_add(dev);
-> > > +		return 0;
-> > > +	}
-> > 
+On Wed, Mar 25, 2026 at 04:13:03PM +0100, Danilo Krummrich wrote:
+> On Wed Mar 25, 2026 at 5:13 AM CET, Dmitry Torokhov wrote:
 > > That means that you are kicking the majority devices (for now) into
 > > deferral path. I do not think this is optimal.
 > 
-> And probing drivers under conditions where they may go wrong or deadlock is
-> better? I've not yet had a chance to actually test this myself to see the
-> effect on timings, but whatever it might be, I can't imagine any *other*
-> method of re-serialising child driver probes could be significantly better
-> (or if it could be, that might represent some improvement we could make to
-> the deferred probe mechanism in general anyway).
+> That's not necessary, we'd only need to kick those into the deferral path that
+> have PROBE_FORCE_SYNCHRONOUS, no?
 
-There is serious disconnect as to what asynchronous and synchronous
-probing means. You do not go "back" to synchronous probing.
+Yes, it may limit the fallout, but as I explained in my other email
+there seem to be a serious disconnect on what synchronous and
+asynchronous probing mean.
 
-	/*
-	 * Indicates whether we are considering asynchronous probing or
-	 * not. Only initial binding after device or driver registration
-	 * (including deferral processing) may be done asynchronously, the
-	 * rest is always synchronous, as we expect it is being done by
-	 * request from userspace.
-	 */
-	bool check_async;
-
-So synchronous means that when you register device or driver we dun
-probe immediately on the same thread that registered said device or
-driver, while with async we _may_ schedule on a workqueue (but if the
-system has already scheduled too much async it will be probed
-synchronously or immediately).
-
-So in the case we are discussing the probing of phy device is indeed
-synchronous/immediate relative to the thread where the phy device is
-registered.
-
-> 
-> I have finally got a bit of time this afternoon to pick this up again, so
-> I'll have a play and try to finish the write-up capturing all the reasoning
-> so far (it's a long one...)
-> 
-> > Does phy really need to request modules synchronously (and on its own)?
-> > Why can't it rely on udev to load the modules and signal when phy
-> > devices are ready?
-> 
-> Getting hung up on what phylib does in this one particular case is rather
-> missing the point. There is a reason that we're still not forcing
-> async_probe on for everything by default. Many drivers will still not have
-> been tested and validated to handle it correctly, and while the majority of
-> latent issues will likely just be concurrency bugs which can be fixed with
-> better locking or whatever, even then we should be encouraging developers to
-> actively test and look for such bugs to make their drivers "async probe
-> clean", rather than knowingly enabling bugs to surface in the wild as weird
-> and subtle breakage on end-user systems.
-
-No. We have identified (at least IMO) that what phylib does is wrong. I
-am not advocating forcing this PCI host to be marked for asycn probing
-right now, before the phy issue is fixed, but I object to adding
-workarounds to driver core which hurt other cases and may lead to phylib
-never be fixed.
-
-> 
-> However, I imagine there will always remain some small minority of
-> PROBE_FORCE_SYNCHRONOUS drivers - either for niche legitimate technical
-> reasons, or just legacy drivers where updating them would take more effort
-> than it's worth - so the driver core surely needs the ability to not do the
-> wrong thing itself. That doesn't even need to be "optimal", it just needs to
-> be functionally correct.
-
-Again, your expectation of what sync probing means differs from what I
-had in mind when implementing it. PROBE_FORCE_SYNCHRONOUS is typically
-for drivers/modules that register both a device (typically a singleton)
-and a driver, and want to unregister both and free all resources when
-initialization fails for some reason. Think cases like PC keyboard
-controller.
+I wonder, don't we get issues with phylib in other cases? Don't we ever
+have a module resulting in creating a phy device triggering loading
+another module on the same thread? Won't that result in a warning also?
 
 Thanks.
 
