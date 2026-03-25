@@ -4,121 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02B81109C046
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 16:54:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25E92109C04F
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 17:38:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=gG7wLlKtYrGdKj5aSoJHSzFM7RWx+KPWxGVEoxesGxs=; b=xA6gW3C4nlvxmX
-	OSP9TktXRMxNBvlOZXLOS8AMHO7hlxJUT9J6UPw4wYXapp7E8tzSJVhqSP6lWmhPLDt/VKjfR9XMg
-	s+4b3No44EVsv12GZYEh9hALSgZev8nIrm24KkDC7vrtexCfj8G8ZYJirpVsSIWn5MMTHm7aNLPf1
-	iSijyo1n+Fts6tiyg64RtSc3JvahXVkhosw/3KJRROdexlraGsEriy9TcqOwY+Lycsd0XL/tq3GoY
-	/4Zrzzfm2j9hQAJZeC9suquA4xNMxeJJ/IkRFiMjRj3c730pqSZihUXgmPsVIRtVYR9VH5uM4dRyG
-	KK+AF7EyFmqHxn0/JVFg==;
+	List-Owner; bh=ed59doCz4IaKaRuZxOI91H+C9w84UYdMlDpolJnqCtk=; b=nfMRXg+YPhpTOq
+	fr3Qeq2AEMa1FzJROlh/FYYATObwjWLls10jZgauIuYAcGvrT68c+dCMU43UtyDHQcgMfasqUUqsh
+	RysG8JLhxDwv08NTC+57y0vYjvNh1CuFS8kWW7PmFVG+YsO/fW9eB3QZEaQKBqtgYBZNw2FAt/vlZ
+	TVu+X6QiLqtiQNiPJWPmp6aRIZV8QZN0PEyTcld7MsmXzkt2zN1UWUQJhkXeVAQNUcxLq0mnHFHGo
+	7wDiw9i/9p085NhmtsG4zUBiZCmAlRhPzagYyeF9vm+vrxXa4KjSFxsHJueZRArb3abr/9xAgHeAF
+	BPsRQFSrFAqktNK9JGbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5RUu-00000003wj8-16lV;
-	Wed, 25 Mar 2026 16:54:24 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1w5SBX-000000040Q0-0Z6i;
+	Wed, 25 Mar 2026 17:38:27 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5RUs-00000003wiP-1VUG;
-	Wed, 25 Mar 2026 16:54:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=ODQOVWprsCht00NPuMesuID9uYrQZAlXJDnop9aQvWE=; b=rhWx/s3+fF7avQacYSeC8zFMsS
-	0uDGNTcpLxO0TuZKXDrjomPy3pwzYNnsVAzqqbIg4nTKsP9tri7TbEAunfT6h17TYxgkuQ4aviXrT
-	r0ss54UoPno6paXf+I9KWRHSjZERfK92ZUPbNSMIrX9YUtFSH8GunO9+yRHeE3A6G7ixYggP8VhoU
-	QpmOYITfyO2Zo72EcXVHF0R88CcInnRLGaD9PLKCxH/Q4dLN1UrijqnGNraZDpoDI/01w/J5dVRvS
-	vqE1F55/G5B068eFKMVDrzbzHh0J34VPIoDrsllRv0oNoPzdNtv59Ei50PoNZM5ki37cgln3Ut/nY
-	4/Gd+Gbg==;
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5RUo-00000006gd9-40Fm;
-	Wed, 25 Mar 2026 16:54:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AA75740ADD;
-	Wed, 25 Mar 2026 16:54:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49A05C4CEF7;
-	Wed, 25 Mar 2026 16:54:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774457655;
-	bh=oMuUWLmoNITVcQzV/o3it6GVvrYLaH+S1Qr6U989rSY=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=qDB30oUW5a/3zO8cnh+u95v1NNfWmdGI2IjUhVXfyQO4SZA9TyoTDvTMqD+MHZCZB
-	 NbZtSa7ImOyDdMHoSkCtK7kMx2M9RnDL3kZd0WZAGqqSFNhJA4Vyj+bRdJUtT/WJ1+
-	 smzMbNGLEjkZHNkEwdIxqekKRq5iCdcpKCC+5KHh0JNGfGHt78pBcZNG2XZr+ZjCL8
-	 +pQPBWT2Qxf0S+D+n9gEGvUaIXjm0r1poXr0/YGLOZB2oBLm4MXdkhUtjKNkn3Qdqe
-	 uvMiMQG7Gvnj5hAOzCxfefchzrdYpSo9zodIbgOmf0vcfll+P9lh2ztHg9oF7j+3q5
-	 jVMvbkd5KgOww==
-From: Simon Horman <horms@kernel.org>
-To: bartosz.golaszewski@oss.qualcomm.com
-Cc: Simon Horman <horms@kernel.org>,
-	magnus.damm@gmail.com,
-	jernej.skrabec@gmail.com,
-	s32@nxp.com,
-	krzysztof.kozlowski@oss.qualcomm.com,
-	linux-arm-msm@vger.kernel.org,
-	imx@lists.linux.dev,
-	festevam@gmail.com,
-	linux-arm-kernel@lists.infradead.org,
-	wens@kernel.org,
-	netdev@vger.kernel.org,
-	geert+renesas@glider.be,
-	linux-stm32@st-md-mailman.stormreply.com,
-	dfustini@tenstorrent.com,
-	andersson@kernel.org,
-	khilman@baylibre.com,
-	linux-mips@vger.kernel.org,
-	mripard@kernel.org,
-	romain.gantois@bootlin.com,
-	vkoul@kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	jbrunet@baylibre.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	mcoquelin.stm32@gmail.com,
-	sophgo@lists.linux.dev,
-	brgl@kernel.org,
-	devicetree@vger.kernel.org,
-	konradybcio@kernel.org,
-	prabhakar.mahadev-lad.rj@bp.renesas.com,
-	linux-sunxi@lists.linux.dev,
-	conor+dt@kernel.org,
-	davem@davemloft.net,
-	jan.petrous@oss.nxp.com,
-	shawnguo@kernel.org,
-	linux-amlogic@lists.infradead.org,
-	linux-riscv@lists.infradead.org,
-	bartosz.golaszewski@linaro.org,
-	peppe.cavallaro@st.com,
-	krzk+dt@kernel.org,
-	mohd.anwar@oss.qualcomm.com,
-	konrad.dybcio@oss.qualcomm.com,
-	martin.blumenstingl@googlemail.com,
-	andrew+netdev@lunn.ch,
-	rrendec@redhat.com,
-	linux-rockchip@lists.infradead.org,
-	christophe.roullier@foss.st.com,
-	linux-kernel@vger.kernel.org,
-	neil.armstrong@linaro.org,
-	alexandre.torgue@foss.st.com,
-	edumazet@google.com,
-	robh@kernel.org
-Subject: Re: [PATCH net-next v10 6/6] net: stmmac: qcom-ethqos: add support for sa8255p
-Date: Wed, 25 Mar 2026 16:53:35 +0000
-Message-ID: <20260325165335.326630-1-horms@kernel.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260323-qcom-sa8255p-emac-v10-6-79302b238a16@oss.qualcomm.com>
-References: <20260323-qcom-sa8255p-emac-v10-6-79302b238a16@oss.qualcomm.com>
+	id 1w5SBU-000000040PD-2Ygr;
+	Wed, 25 Mar 2026 17:38:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1774460304; x=1805996304;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=tTM6qpl5dmfbHIRbO8CS8UflwO2BMvQhMGPDek8bavg=;
+  b=fyn3+1o9guV4SGxWjkXBEcgVzRVS90iyLj6mvTnZmlRdJuGhR/BDPXOd
+   PhHHhKCeGSPjIG/ul4zKR2a75KkCDmeW0dc9pqY1HyL/o1xejjLXcvzz+
+   FFaILMWbtrTLNgYMnqVwqUOcs4uJQgTql3GJo8kSyzzj03Hq9VksvkYW2
+   TQq4t3iKWZKsOoH2zQ3v8D8AuhdlS5tlP8/ZUds3EjZOfHj18cIb8gW0L
+   k+0m7eTx548CJcpQkMG1ZxMshYd1f0BZpbTcqzqIlxMOuiaSvq+/YLZax
+   N81HN5EHd2I53lOe6cNamh0Z0JH1aRMyBPBbmClIMqjdbKiL/tFKF+RN+
+   w==;
+X-CSE-ConnectionGUID: bEWsg0ZtSs2eBDc9z9YMaw==
+X-CSE-MsgGUID: kRo2VbTsTG+/7fjmLINj6w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11740"; a="75527087"
+X-IronPort-AV: E=Sophos;i="6.23,140,1770624000"; 
+   d="scan'208";a="75527087"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Mar 2026 10:38:21 -0700
+X-CSE-ConnectionGUID: O2KGlQQqTJadrw+GoRloHw==
+X-CSE-MsgGUID: 3jjEfzDVTpCR49VsLPA4fA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,140,1770624000"; 
+   d="scan'208";a="220347066"
+Received: from vpanait-mobl.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.187])
+  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 25 Mar 2026 10:38:17 -0700
+Date: Wed, 25 Mar 2026 18:38:10 +0100
+From: Mehdi Djait <mehdi.djait@linux.intel.com>
+To: michael.riesch@collabora.com
+Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Kever Yang <kever.yang@rock-chips.com>, 
+	Jagan Teki <jagan@amarulasolutions.com>, 
+	=?utf-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?= <mai.kuznetsov.misha@gmail.com>, Charalampos Mitrodimas <charmitro@posteo.net>, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+	Collabora Kernel Team <kernel@collabora.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 3/9] media: rockchip: rkcif: add support for rk3588
+ vicap mipi capture
+Message-ID: <acQdGy39-3H_nyKL@mdjait-mobl>
+References: <20250430-rk3588-vicap-v3-0-e38e428868cc@collabora.com>
+ <20250430-rk3588-vicap-v3-3-e38e428868cc@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20250430-rk3588-vicap-v3-3-e38e428868cc@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_165419_435769_5A82A8C3 
-X-CRM114-Status: GOOD (  17.35  )
+X-CRM114-CacheID: sfid-20260325_103824_683613_90A08EA1 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,105 +93,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This is an AI-generated review of your patch. The human sending this
-email has considered the AI review valid, or at least plausible.
+Hi Michael,
 
-For local reproduction steps see https://netdev-ai.bots.linux.dev/ai-local.html
----
-net: stmmac: qcom-ethqos: add support for sa8255p
+Thank you for the patch!
 
-Extend the driver to support a new model - sa8255p. Unlike the
-previously supported variants, this one's power management is done in
-the firmware using SCMI. This is modeled in linux using power domains so
-add support for them.
+On Wed, Mar 25, 2026 at 12:51:08PM +0100, Michael Riesch via B4 Relay wrote:
+> From: Michael Riesch <michael.riesch@collabora.com>
+> 
+> The RK3588 Video Capture (VICAP) unit features a Digital Video Port
+> (DVP) and six MIPI CSI-2 capture interfaces. Add initial support
+> for this variant to the rkcif driver and enable the MIPI CSI-2
+> capture interfaces.
+> 
 
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-> index f32ff0d9ce51..09ce80b446cb 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
+Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
 
-[ ... ]
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 141 +++++++++++++++++++++
+>  .../platform/rockchip/rkcif/rkcif-capture-mipi.h   |   1 +
+>  .../media/platform/rockchip/rkcif/rkcif-common.h   |   2 +-
+>  drivers/media/platform/rockchip/rkcif/rkcif-dev.c  |  18 +++
+>  4 files changed, 161 insertions(+), 1 deletion(-)
 
-> @@ -710,6 +785,45 @@ static int ethqos_mac_finish_serdes(struct net_device *ndev, void *priv,
->  	return ret;
->  }
->
-> +static int ethqos_mac_finish_serdes_pd(struct net_device *ndev, void *priv,
-> +				       unsigned int mode,
-> +				       phy_interface_t interface)
-> +{
-> +	struct qcom_ethqos *ethqos = priv;
-> +	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-> +	int ret = 0;
-> +
-> +	qcom_ethqos_set_sgmii_loopback(ethqos, false);
-> +
-> +	if (interface == PHY_INTERFACE_MODE_SGMII ||
-> +	    interface == PHY_INTERFACE_MODE_2500BASEX)
-> +		ret = dev_pm_opp_set_level(dev, ethqos->pd.serdes_level);
-> +
-> +	return ret;
-> +}
-> +
-> +static int qcom_ethqos_pd_serdes_powerup(struct net_device *ndev, void *priv)
-> +{
-> +	struct qcom_ethqos *ethqos = priv;
-> +	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-> +	int ret;
-> +
-> +	ret = qcom_ethqos_domain_on(ethqos, ETHQOS_PD_SERDES);
-> +	if (ret < 0)
-> +		return ret;
-> +
-> +	return dev_pm_opp_set_level(dev, ethqos->pd.serdes_level);
-> +}
-
-Does this leak the PM runtime reference if dev_pm_opp_set_level() fails?
-
-qcom_ethqos_pd_serdes_powerup() calls qcom_ethqos_domain_on() which
-acquires a PM runtime reference via pm_runtime_resume_and_get():
-
-qcom_ethqos_pd_serdes_powerup()
-  qcom_ethqos_domain_on()
-    pm_runtime_resume_and_get(dev)
-
-If the subsequent dev_pm_opp_set_level() fails, the function returns the
-error without calling qcom_ethqos_domain_off() to release the reference.
-
-The caller stmmac_legacy_serdes_power_up() in stmmac_main.c does not set
-legacy_serdes_is_powered=true on error, so stmmac_legacy_serdes_power_down()
-in the cleanup path skips the powerdown call.
-
-In the existing non-PD code path, qcom_ethqos_serdes_powerup() correctly
-handles this case by calling phy_exit() when phy_power_on() fails:
-
-drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c:qcom_ethqos_serdes_powerup() {
-	ret = phy_init(ethqos->pm.serdes_phy);
-	if (ret)
-		return ret;
-
-	ret = phy_power_on(ethqos->pm.serdes_phy);
-	if (ret) {
-		phy_exit(ethqos->pm.serdes_phy);
-		return ret;
-	}
-	...
-}
-
-Should qcom_ethqos_pd_serdes_powerup() call qcom_ethqos_domain_off()
-before returning the error from dev_pm_opp_set_level()?
-
-> +
-> +static void qcom_ethqos_pd_serdes_powerdown(struct net_device *ndev, void *priv)
-> +{
-> +	struct qcom_ethqos *ethqos = priv;
-> +	struct device *dev = ethqos->pd.pd_list->pd_devs[ETHQOS_PD_SERDES];
-> +
-> +	dev_pm_opp_set_level(dev, 0);
-> +	qcom_ethqos_domain_off(ethqos, ETHQOS_PD_SERDES);
-> +}
-
-[ ... ]
+--
+Kind Regards
+Mehdi Djait
 
 _______________________________________________
 Linux-rockchip mailing list
