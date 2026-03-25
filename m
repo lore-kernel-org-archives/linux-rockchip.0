@@ -4,77 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4FE0FEA82E
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 08:05:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51F52FEA833
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 08:24:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7V9x/eTgb7JlyDVq0IkXDSdw8aOSRfKvY4XGLcyct1o=; b=fhxBCSR4Mn7re8
-	yNFqP2dZcQnNwJVdLJnOi4r3gZzeIirYDyHXMPrXLxcpaVvg5vvJJhr8/BVXuZWCFHaLHu/nJ40Yz
-	4btddnipl6kOIqKk+aNBtBITUgyfBVAVTiCW0tO52W+joioX7B7GlOar7Z2/fJbyIxniAUZ+szkie
-	s2oeF6HfYfzD0+INIStF9SAFoAKvABpNjBGa+RKTSZUXspepWHd/kJxmKYSGBC9m2NPGWtTTjA5pn
-	sFv27WFgWBy5LOJnIneBZTqlk+gO2L/gW1m9TEsHOvFXky8O265lgGyjCkyhGrJPe2Jgu9SSfX9zQ
-	HrXe3Wd6DbaZ8OjaMMeQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RsomhUIjYMQ0hv5a/Q0QPkC0rk0ipYzVRGkg3KdiyMw=; b=kaLxXwMoJthredC6Rv5dW3cPre
+	sMBh/azJjJgHnxSv4UMRzAjg0lM4T/0XDdPSlOW28CebyhkXj1DA2mnaH1bd4gHapg72yl5zd2V2l
+	Jwh2xc8l0OEjAlLqjyJKKG/u2x5Bbb/lYqSZINTsbL5Co2tpF5bHW8rYczvlMFDryB2EzayXmAqjA
+	NRr6m2hBcbPlx7og1RwmFT34XJfRqFfaXAtY7jCHt1CzWAVsNdcqutkkJhp5dmgA3kPfDoCcBe2N7
+	knZBNZgUyB5cUzrIMFgc83YTjbBTRuQVLykRW46JCZ1JPCt3wt+iuWubc8KaQcH+V1MReUZw2PzLm
+	wIqUyupw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5JEh-00000002uDM-08n6;
-	Wed, 25 Mar 2026 08:05:07 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w5JXV-00000002wWi-3tAH;
+	Wed, 25 Mar 2026 08:24:33 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5JEd-00000002uBl-3w4Q;
-	Wed, 25 Mar 2026 08:05:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1774425899;
-	bh=JfkhMwj5pX3vzkYeKIXrU9wJqRr8s1NLWxQWQGgaA3Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=dicqqR9komLroysF/R/Cg1U6o5kKFlIGa08ve6xEUpswfU5mDNivsoIierLmjWdUC
-	 LoaqQ8AFzE337FNZHwRul2gDUsuEyP7RA/14aAu46Dh9qEG+JaTQZxVd16DS9pSy+O
-	 kWAJfSD5iyB9admQAOYSvz3FqRb9qjBCczYH+JWdPHRwhDhj9F0CXu3P4ZSs/vmuri
-	 5jP4ST8Z74hMyhx7DAYCPe+IrJnj/rHirp++AU3QIZXkeHp0WOxDFgJDZCNXPUUfTH
-	 XTDKew95WoDuIF4PdHP1mmnaCDIRmksi82NqRTxPCYHmgX8XpVoSQ1AtjCMh8TzDxi
-	 dsR1zJ/hf1HpA==
-Received: from [10.40.0.100] (185-67-175-126.lampert.tv [185.67.175.126])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: mriesch)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AE57A17E3E69;
-	Wed, 25 Mar 2026 09:04:58 +0100 (CET)
-Message-ID: <d97b05cb-396b-4189-8b96-88eab6f85f24@collabora.com>
-Date: Wed, 25 Mar 2026 09:04:57 +0100
+	id 1w5JXU-00000002wWG-02mb;
+	Wed, 25 Mar 2026 08:24:32 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id E1B15600C4;
+	Wed, 25 Mar 2026 08:24:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A04AC4CEF7;
+	Wed, 25 Mar 2026 08:24:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774427070;
+	bh=OXpyySfKyZH4/xByTVF+CcO5Zm0m2JZxVDe7zJkMYr8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=kaJIRIiM3CnzwTWAxlLjWYuN0VEiT2i58200iLTs297ZcYBUEFDNIhOPVeqTiRFi/
+	 1+VVucUcVSoJ8DoS1T16p7GrjEFwg83fDBOfRd7ydbm5ejQCKRihL3YvqIkN0RNeuf
+	 OlUomozQwJgbcsHSEZKjsU7/eZO1VDQPNMyj7wd0g8xe4mnqKTInaen1jPjbjGo+0G
+	 0GXEqRpJTGRGl3g3JUmpJxT6x2rRkXsbL4SkbpofUy3YU/SmpZL3hsTnHlkewmUNEF
+	 aaDj5+h4PjxK3B4GV49wKBPVgtAxSQ7bZpGp7gUdkfeX+Vn4YzLopCgxRE9Lwm+k3K
+	 DPUz5V/bvQhrw==
+Date: Wed, 25 Mar 2026 09:24:27 +0100
+From: Maxime Ripard <mripard@kernel.org>
+To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
+	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
+	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org, 
+	Werner Sembach <wse@tuxedocomputers.com>, Andri Yngvason <andri@yngvason.is>, 
+	Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v11 03/22] drm: Add new general DRM property "color
+ format"
+Message-ID: <20260325-neat-elegant-raven-ebc9ab@houat>
+References: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
+ <20260324-color-format-v11-3-605559af4fb4@collabora.com>
+ <acLDPYuaVI2-12JX@intel.com>
+ <23910073.EfDdHjke4D@workhorse>
+ <acLrv5hLyNss-Px5@intel.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/9] media: rockchip: rkcif: add support for rk3588
- vicap mipi capture
-To: Mehdi Djait <mehdi.djait@linux.intel.com>
-Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Kever Yang <kever.yang@rock-chips.com>,
- Jagan Teki <jagan@amarulasolutions.com>,
- =?UTF-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?=
- <mai.kuznetsov.misha@gmail.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Collabora Kernel Team <kernel@collabora.com>,
- Sakari Ailus <sakari.ailus@linux.intel.com>, linux-media@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20250430-rk3588-vicap-v2-0-77de5ee9048e@collabora.com>
- <20250430-rk3588-vicap-v2-3-77de5ee9048e@collabora.com>
- <ablRBViDR996euua@mdjait-mobl>
- <e894fe10-3780-465a-984d-01f5e8f4c97e@collabora.com>
- <ablWdjlrPLGhDJi4@mdjait-mobl>
-Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <ablWdjlrPLGhDJi4@mdjait-mobl>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_010504_166593_DB489FC0 
-X-CRM114-Status: GOOD (  22.02  )
+In-Reply-To: <acLrv5hLyNss-Px5@intel.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,78 +85,146 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============6930677609006718295=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mehdi,
 
-On 3/17/26 14:28, Mehdi Djait wrote:
-> Hi Michael,
-> 
-> On Tue, Mar 17, 2026 at 02:21:20PM +0100, Michael Riesch wrote:
->> Hi Mehdi,
->>
->> On 3/17/26 14:08, Mehdi Djait wrote:
->>> Hi Michael,
->>>
->>> Thank you for this nice patch!
->>>
->>> On Tue, Mar 17, 2026 at 10:32:21AM +0100, Michael Riesch via B4 Relay wrote:
->>>> From: Michael Riesch <michael.riesch@collabora.com>
->>>>
->>>> The RK3588 Video Capture (VICAP) unit features a Digital Video Port
->>>> (DVP) and six MIPI CSI-2 capture interfaces. Add initial support
->>>> for this variant to the rkcif driver and enable the MIPI CSI-2
->>>> capture interfaces.
->>>>
->>>> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
->>>
->>> [...]
->>>
->>>>  static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
->>>>  					      unsigned int index)
->>>>  {
->>>> @@ -631,6 +765,8 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
->>>>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL1, ctrl1);
->>>>  	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, ctrl0);
->>>>  
->>>> +	rkcif_mipi_write(interface, RKCIF_MIPI_CTRL, RKCIF_MIPI_CTRL_CAP_EN);
->>>> +
->>>
->>> while this is the correct solution for rk3588, for the rk3568 vicap this
->>> will write 0x1 to the VICAP_MIPI_CTRL : 0x00A0 which will enable the water line.
->>
->> nice catch ;-) However, the TRM (at least my version) claims that this
->> bit has a reset value of 0x1, so the bit in question should be already
->> set in the first place. Thus I decided to *not* make variant specific
->> code paths.
-> 
-> Yes, the reset value is indeed 0x1
-> 
->>
->> Do you see problems in your setup?
->>
-> 
-> No problems, it works as expected, I was just confused to see the
-> mipi capture enable added with this rk3588 patch and not before.
-> 
-> I just find it a bit confusing but if a nicer solution is too much
-> hassle we can leave it like this.
+--===============6930677609006718295==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="wbwmiqkexkho5cib"
+Content-Disposition: inline
 
-I agree that this is (while correct) not the nicest way. I am still
-bringing up the remaining features of the RK3588 VICAP (MUX + TOISP +
-SCALER) and it looks like I need to do some refactoring anyway to
-support them. When I do that, I shall rewrite this part. For the time
-being it would be great to have this merged in order to provide initial
-mainline support for this unit.
 
-Best regards,
-Michael
+--wbwmiqkexkho5cib
+Content-Type: text/plain; protected-headers=v1; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v11 03/22] drm: Add new general DRM property "color
+ format"
+MIME-Version: 1.0
 
+On Tue, Mar 24, 2026 at 09:53:35PM +0200, Ville Syrj=E4l=E4 wrote:
+> On Tue, Mar 24, 2026 at 08:10:11PM +0100, Nicolas Frattaroli wrote:
+> > On Tuesday, 24 March 2026 18:00:45 Central European Standard Time Ville=
+ Syrj=E4l=E4 wrote:
+> > > On Tue, Mar 24, 2026 at 05:01:07PM +0100, Nicolas Frattaroli wrote:
+> > > > +enum drm_connector_color_format {
+> > > > +	/**
+> > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_AUTO: The driver or display protoc=
+ol
+> > > > +	 * helpers should pick a suitable color format. All implementatio=
+ns of a
+> > > > +	 * specific display protocol must behave the same way with "AUTO"=
+, but
+> > > > +	 * different display protocols do not necessarily have the same "=
+AUTO"
+> > > > +	 * semantics.
+> > > > +	 *
+> > > > +	 * For HDMI, "AUTO" picks RGB, but falls back to YCbCr 4:2:0 if t=
+he
+> > > > +	 * bandwidth required for full-scale RGB is not available, or the=
+ mode
+> > > > +	 * is YCbCr 4:2:0-only, as long as the mode and output both suppo=
+rt
+> > > > +	 * YCbCr 4:2:0.
+> > > > +	 *
+> > > > +	 * For display protocols other than HDMI, the recursive bridge ch=
+ain
+> > > > +	 * format selection picks the first chain of bridge formats that =
+works,
+> > > > +	 * as has already been the case before the introduction of the "c=
+olor
+> > > > +	 * format" property. Non-HDMI bridges should therefore either sor=
+t their
+> > > > +	 * bus output formats by preference, or agree on a unified auto f=
+ormat
+> > > > +	 * selection logic that's implemented in a common state helper (l=
+ike
+> > > > +	 * how HDMI does it).
+> > > > +	 */
+> > > > +	DRM_CONNECTOR_COLOR_FORMAT_AUTO =3D 0,
+> > > > +
+> > > > +	/**
+> > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_RGB444: RGB output format
+> > > > +	 */
+> > > > +	DRM_CONNECTOR_COLOR_FORMAT_RGB444,
+> > > > +
+> > > > +	/**
+> > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR444: YCbCr 4:4:4 output forma=
+t (ie.
+> > > > +	 * not subsampled)
+> > > > +	 */
+> > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR444,
+> > > > +
+> > > > +	/**
+> > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR422: YCbCr 4:2:2 output forma=
+t (ie.
+> > > > +	 * with horizontal subsampling)
+> > > > +	 */
+> > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR422,
+> > > > +
+> > > > +	/**
+> > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR420: YCbCr 4:2:0 output forma=
+t (ie.
+> > > > +	 * with horizontal and vertical subsampling)
+> > > > +	 */
+> > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR420,
+> > >=20
+> > > Seems like this should document what the quantization range
+> > > should be for each format.
+> > >=20
+> >=20
+> > I don't think so? If you want per-component bit depth values,
+> > DRM_FORMAT_* defines would be the appropriate values to use. This
+> > enum is more abstract than that, and is there to communicate
+> > YUV vs. RGB and chroma subsampling, with bit depth being handled
+> > by other properties.
+> >=20
+> > If you mean the factor used for subsampling, then that'd only be
+> > relevant if YCBCR410 was supported where one chroma plane isn't
+> > halved but quartered in resolution. I suspect 4:1:0 will never
+> > be added; no digital display protocol standard supports it to my
+> > knowledge, and hopefully none ever will.
+>=20
+> No, I mean the quantization range (16-235 vs. 0-255 etc).
+>=20
+> The i915 behaviour is that YCbCr is always limited range,
+> RGB can either be full or limited range depending on the=20
+> "Broadcast RGB" property and other related factors.
+
+So far the HDMI state has both the format and quantization range as
+different fields. I'm not sure we need to document the range in the
+format field, maybe only mention it's not part of the format but has a
+field of its own?
+
+Maxime
+
+--wbwmiqkexkho5cib
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCacObuwAKCRAnX84Zoj2+
+ds1XAXsG3ZPGasIIoc6AjqXiDJncnXTY0PaMBBbXGSy+Rcyhb1RiReK8zMl508aI
+ahxZUfcBfAz2j3skdPxRfMkkduKBzOjrHQhv19x1nGeExVWXWq31x8ihOc0Sjroj
+z0wjpE2yrQ==
+=ee+x
+-----END PGP SIGNATURE-----
+
+--wbwmiqkexkho5cib--
+
+
+--===============6930677609006718295==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6930677609006718295==--
+
