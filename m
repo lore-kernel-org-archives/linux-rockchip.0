@@ -4,32 +4,32 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0261810987B8
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 01:58:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F20FD1075269
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 01:58:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZLA/734oc0l+Hq7wHuXoTtYipj3vlJAO2nYWRM21h0w=; b=ePC+8YCFXqoZTb
-	3m2W55vWxzUKePN7xM+oliHYKOmD85Ye2SBNaBDpfjiYf+ojB3TZ2ZsNYwI+NwSqpxmQLtRiuV1U9
-	oy+IsLshs6xPGSB/TrNKi1VXPcHsru7LAIa1y19ILk1hqZVwtGGh+jRMGvYrOblTGV6PbdX06QJ6J
-	1iSp4KiMT6/NedgyEqu5yZtl8b/tx+2T5JoDyY4CQF9dJmDl+mZJBrHl2eG/HE1fDzipQvontPwkU
-	0njrUCeAlFoJRsF6PyVeRyr/xwi4L4QGMIpBfbFXErbovXR8Nxs7jMXHhEVajMMMi3EPPTjTjXL/s
-	DzvG0+pGVYfZ3M0omqnA==;
+	List-Owner; bh=1XxU3o99T44WxM2xA9e8GfUoqN+GGd0W6BObBN0oIRs=; b=pnpFuOEKsZLy+9
+	hIk7MsJ96i+u5XTNi0hG8eW5t0nppnMmFWMZDgfzcv3gXFobJMMI8yB+r2t2HLzS13kOhXD9K3B1p
+	8eL/OLn9nYitFDY5Dr18qzDXGiHVKLACDRsKRu3Odfz5A2RqXzu25TJr3GVSqrdUlBAjz27pWmLFU
+	6abF+F5aFCyAxgq9mOtGW89SJHdfDmiKoYgnK6vGqzJgmWgG/6jRGcgZOaXMbFWjRINcyyen/ujey
+	Z6/NUh3wrWJqTSwojSRIqzmI3KaChYZxTyjhuBNjsx78GB+CDcuZ1LEMBMZkwMDCehVTKth4dK7hO
+	znYXnu3Yd9HyEwhSVb9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5DWG-00000002TqA-3YEb;
-	Wed, 25 Mar 2026 01:58:52 +0000
-Received: from mail-m1973176.qiye.163.com ([220.197.31.76])
+	id 1w5DWI-00000002Tqx-0Xc9;
+	Wed, 25 Mar 2026 01:58:54 +0000
+Received: from mail-m15573.qiye.163.com ([101.71.155.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5DWC-00000002Tn2-1xa2
+	id 1w5DWF-00000002ToA-0FxL
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Mar 2026 01:58:49 +0000
+	Wed, 25 Mar 2026 01:58:52 +0000
 Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 382e78d81;
-	Wed, 25 Mar 2026 09:58:43 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 382e78d8b;
+	Wed, 25 Mar 2026 09:58:46 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
 To: Manivannan Sadhasivam <mani@kernel.org>,
 	Bjorn Helgaas <bhelgaas@google.com>
@@ -39,25 +39,25 @@ Cc: linux-rockchip@lists.infradead.org,
 	linux-doc@vger.kernel.org,
 	Steven Rostedt <rostedt@goodmis.org>,
 	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v5 2/3] Documentation: tracing: Add PCI controller event documentation
-Date: Wed, 25 Mar 2026 09:58:31 +0800
-Message-Id: <1774403912-210670-3-git-send-email-shawn.lin@rock-chips.com>
+Subject: [PATCH v5 3/3] PCI: dw-rockchip: Add pcie_ltssm_state_transition trace support
+Date: Wed, 25 Mar 2026 09:58:32 +0800
+Message-Id: <1774403912-210670-4-git-send-email-shawn.lin@rock-chips.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1774403912-210670-1-git-send-email-shawn.lin@rock-chips.com>
 References: <1774403912-210670-1-git-send-email-shawn.lin@rock-chips.com>
-X-HM-Tid: 0a9d22b72f9a09cckunm61c156f0a55897
+X-HM-Tid: 0a9d22b73a1309cckunm61c156f0a558ae
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU5LGlYZTkIeHU4aThkfSUxWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQkMdTFYaGR9JSUtITxpOSR5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=T25oK54011WllIvrtGUBvYeaP2ibH5Eum1pnPUYo8ntQlhBjIeHDZ3YzhuKtttuvYpPJJJyEZ9ISdLzoVI97zwD1F5esX+AaX8gA5X0Tuxgu8Wf4zhn3CLRC+ePN/JX9gfXPRuEWgm9bhQkfhr1WevV1jgB3P/qJkBgukU9nAF0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=GDNTzFg7mWA3WGCmaG5bEv/LuzxprcU2vL1BmwDw0fg=;
+	b=gz89Ybf3vXAzPkxRsV/sY2TRC/F1Qbuf1E1T8HZlGmzRAn3aNHv0Xl+P7Z7PriyaDTV+BS23CZIxnqYqxJAhaPatqmTSOJZEuujBevwYJRn8Qq8TSyw5eW7DL1s3DizcfhMPu7SH5zvTCs6JZVxSGXrOQ8CtX5ZCqRycMJp4zao=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=mVQ3wBTObZTHeiuagy3/HA6ngtLOnHt9udd3dqVawG4=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260324_185848_711913_9AAD9F74 
-X-CRM114-Status: GOOD (  13.71  )
+X-CRM114-CacheID: sfid-20260324_185851_320845_D81415B9 
+X-CRM114-Status: GOOD (  20.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,87 +75,190 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The available tracepoint, pcie_ltssm_state_transition, monitors the LTSSM
-state transition for debugging purpose. Add description about it.
+Rockchip platforms provide a 64x4 bytes debug FIFO to trace the
+LTSSM history. Any LTSSM change will be recorded. It's useful
+for debug purpose, for example link failure, etc.
 
 Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
 ---
 
-Changes in v5: None
-Changes in v4: None
+Changes in v5:
+- rebase
+- use trace_pcie_ltssm_state_transition_enabled()
+
+Changes in v4:
+- skip trace if pci_ltssm_tp_enabled() is false.(Steven)
+- wrap into 80 columns(Bjorn)
+
 Changes in v3:
-- Add toctree entry in Documentation/trace/index.rst(Bagas Sanjaya)
-- fix mismatch section underline length(Bagas Sanjaya)
-- Make example snippets in code block(Bagas Sanjaya)
-- warp context into 80 columns and fix the file name(Bjorn)
+- reorder variables(Mani)
+- rename loop to i; rename en to enable(Mani)
+- use FIELD_GET(Mani)
+- add comment about how the FIFO works(Mani)
 
-Changes in v2: None
+Changes in v2:
+- use tracepoint
 
- Documentation/trace/events-pci-controller.rst | 42 +++++++++++++++++++++++++++
- Documentation/trace/index.rst                 |  1 +
- 2 files changed, 43 insertions(+)
- create mode 100644 Documentation/trace/events-pci-controller.rst
+ drivers/pci/controller/dwc/pcie-dw-rockchip.c | 111 ++++++++++++++++++++++++++
+ 1 file changed, 111 insertions(+)
 
-diff --git a/Documentation/trace/events-pci-controller.rst b/Documentation/trace/events-pci-controller.rst
-new file mode 100644
-index 0000000..cb9f715
---- /dev/null
-+++ b/Documentation/trace/events-pci-controller.rst
-@@ -0,0 +1,42 @@
-+.. SPDX-License-Identifier: GPL-2.0
+diff --git a/drivers/pci/controller/dwc/pcie-dw-rockchip.c b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+index bb5d1a3..e737103 100644
+--- a/drivers/pci/controller/dwc/pcie-dw-rockchip.c
++++ b/drivers/pci/controller/dwc/pcie-dw-rockchip.c
+@@ -22,6 +22,8 @@
+ #include <linux/platform_device.h>
+ #include <linux/regmap.h>
+ #include <linux/reset.h>
++#include <linux/workqueue.h>
++#include <trace/events/pci_controller.h>
+ 
+ #include "../../pci.h"
+ #include "pcie-designware.h"
+@@ -73,6 +75,20 @@
+ #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_1	BIT(4)
+ #define  PCIE_CLIENT_CDM_RASDES_TBA_L1_2	BIT(5)
+ 
++/* Debug FIFO information */
++#define PCIE_CLIENT_DBG_FIFO_MODE_CON	0x310
++#define  PCIE_CLIENT_DBG_EN		0xffff0007
++#define  PCIE_CLIENT_DBG_DIS		0xffff0000
++#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0	0x320
++#define PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1	0x324
++#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0	0x328
++#define PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1	0x32c
++#define  PCIE_CLIENT_DBG_TRANSITION_DATA 0xffff0000
++#define PCIE_CLIENT_DBG_FIFO_STATUS	0x350
++#define  PCIE_DBG_FIFO_RATE_MASK	GENMASK(22, 20)
++#define  PCIE_DBG_FIFO_L1SUB_MASK	GENMASK(10, 8)
++#define PCIE_DBG_LTSSM_HISTORY_CNT	64
 +
-+======================================
-+Subsystem Trace Points: PCI Controller
-+======================================
+ /* Hot Reset Control Register */
+ #define PCIE_CLIENT_HOT_RESET_CTRL	0x180
+ #define  PCIE_LTSSM_APP_DLY2_EN		BIT(1)
+@@ -98,6 +114,7 @@ struct rockchip_pcie {
+ 	struct irq_domain *irq_domain;
+ 	const struct rockchip_pcie_of_data *data;
+ 	bool supports_clkreq;
++	struct delayed_work trace_work;
+ };
+ 
+ struct rockchip_pcie_of_data {
+@@ -208,6 +225,96 @@ static enum dw_pcie_ltssm rockchip_pcie_get_ltssm(struct dw_pcie *pci)
+ 	return rockchip_pcie_get_ltssm_reg(rockchip) & PCIE_LTSSM_STATUS_MASK;
+ }
+ 
++#ifdef CONFIG_TRACING
++static void rockchip_pcie_ltssm_trace_work(struct work_struct *work)
++{
++	struct rockchip_pcie *rockchip = container_of(work,
++						struct rockchip_pcie,
++						trace_work.work);
++	struct dw_pcie *pci = &rockchip->pci;
++	enum dw_pcie_ltssm state;
++	u32 i, l1ss, prev_val = DW_PCIE_LTSSM_UNKNOWN, rate, val;
 +
-+Overview
-+========
-+The PCI controller tracing system provides tracepoints to monitor controller
-+level information for debugging purpose. The events normally show up here:
++	if (!trace_pcie_ltssm_state_transition_enabled())
++		goto skip_trace;
 +
-+	/sys/kernel/tracing/events/pci_controller
++	for (i = 0; i < PCIE_DBG_LTSSM_HISTORY_CNT; i++) {
++		val = rockchip_pcie_readl_apb(rockchip,
++				PCIE_CLIENT_DBG_FIFO_STATUS);
++		rate = FIELD_GET(PCIE_DBG_FIFO_RATE_MASK, val);
++		l1ss = FIELD_GET(PCIE_DBG_FIFO_L1SUB_MASK, val);
++		val = FIELD_GET(PCIE_LTSSM_STATUS_MASK, val);
 +
-+Cf. include/trace/events/pci_controller.h for the events definitions.
++		/*
++		 * Hardware Mechanism: The ring FIFO employs two tracking
++		 * counters:
++		 * - 'last-read-point': maintains the user's last read position
++		 * - 'last-valid-point': tracks the HW's last state update
++		 *
++		 * Software Handling: When two consecutive LTSSM states are
++		 * identical, it indicates invalid subsequent data in the FIFO.
++		 * In this case, we skip the remaining entries. The dual counter
++		 * design ensures that on the next state transition, reading can
++		 * resume from the last user position.
++		 */
++		if ((i > 0 && val == prev_val) || val > DW_PCIE_LTSSM_RCVRY_EQ3)
++			break;
 +
-+Available Tracepoints
-+=====================
++		state = prev_val = val;
++		if (val == DW_PCIE_LTSSM_L1_IDLE) {
++			if (l1ss == 2)
++				state = DW_PCIE_LTSSM_L1_2;
++			else if (l1ss == 1)
++				state = DW_PCIE_LTSSM_L1_1;
++		}
 +
-+pcie_ltssm_state_transition
-+---------------------------
++		trace_pcie_ltssm_state_transition(dev_name(pci->dev),
++				dw_pcie_ltssm_status_string(state),
++				((rate + 1) > pci->max_link_speed) ?
++				PCI_SPEED_UNKNOWN : PCIE_SPEED_2_5GT + rate);
++	}
 +
-+Monitors PCIe LTSSM state transition including state and rate information
-+::
++skip_trace:
++	schedule_delayed_work(&rockchip->trace_work, msecs_to_jiffies(5000));
++}
 +
-+    pcie_ltssm_state_transition  "dev: %s state: %s rate: %s\n"
++static void rockchip_pcie_ltssm_trace(struct rockchip_pcie *rockchip,
++				      bool enable)
++{
++	if (enable) {
++		rockchip_pcie_writel_apb(rockchip,
++					 PCIE_CLIENT_DBG_TRANSITION_DATA,
++					 PCIE_CLIENT_DBG_FIFO_PTN_HIT_D0);
++		rockchip_pcie_writel_apb(rockchip,
++					 PCIE_CLIENT_DBG_TRANSITION_DATA,
++					 PCIE_CLIENT_DBG_FIFO_PTN_HIT_D1);
++		rockchip_pcie_writel_apb(rockchip,
++					 PCIE_CLIENT_DBG_TRANSITION_DATA,
++					 PCIE_CLIENT_DBG_FIFO_TRN_HIT_D0);
++		rockchip_pcie_writel_apb(rockchip,
++					 PCIE_CLIENT_DBG_TRANSITION_DATA,
++					 PCIE_CLIENT_DBG_FIFO_TRN_HIT_D1);
++		rockchip_pcie_writel_apb(rockchip,
++					 PCIE_CLIENT_DBG_EN,
++					 PCIE_CLIENT_DBG_FIFO_MODE_CON);
 +
-+**Parameters**:
++		INIT_DELAYED_WORK(&rockchip->trace_work,
++				  rockchip_pcie_ltssm_trace_work);
++		schedule_delayed_work(&rockchip->trace_work, 0);
++	} else {
++		rockchip_pcie_writel_apb(rockchip,
++					 PCIE_CLIENT_DBG_DIS,
++					 PCIE_CLIENT_DBG_FIFO_MODE_CON);
++		cancel_delayed_work_sync(&rockchip->trace_work);
++	}
++}
++#else
++static void rockchip_pcie_ltssm_trace(struct rockchip_pcie *rockchip,
++				      bool enable)
++{
++}
++#endif
 +
-+* ``dev`` - PCIe controller instance
-+* ``state`` - PCIe LTSSM state
-+* ``rate`` - PCIe date rate
+ static void rockchip_pcie_enable_ltssm(struct rockchip_pcie *rockchip)
+ {
+ 	rockchip_pcie_writel_apb(rockchip, PCIE_CLIENT_ENABLE_LTSSM,
+@@ -291,6 +398,9 @@ static int rockchip_pcie_start_link(struct dw_pcie *pci)
+ 	 * 100us as we don't know how long should the device need to reset.
+ 	 */
+ 	msleep(PCIE_T_PVPERL_MS);
 +
-+**Example Usage**:
++	rockchip_pcie_ltssm_trace(rockchip, true);
 +
-+.. code-block:: shell
-+
-+    # Enable the tracepoint
-+    echo 1 > /sys/kernel/debug/tracing/events/pci_controller/pcie_ltssm_state_transition/enable
-+
-+    # Monitor events (the following output is generated when a device is linking)
-+    cat /sys/kernel/debug/tracing/trace_pipe
-+       kworker/0:0-9       [000] .....     5.600221: pcie_ltssm_state_transition: dev: a40000000.pcie state: RCVRY_EQ2 rate: 8.0 GT/s
-diff --git a/Documentation/trace/index.rst b/Documentation/trace/index.rst
-index 036db96..5d9bf469 100644
---- a/Documentation/trace/index.rst
-+++ b/Documentation/trace/index.rst
-@@ -55,6 +55,7 @@ applications.
-    events-nmi
-    events-msr
-    events-pci
-+   events-pci-controller
-    boottime-trace
-    histogram
-    histogram-design
+ 	gpiod_set_value_cansleep(rockchip->rst_gpio, 1);
+ 
+ 	return 0;
+@@ -301,6 +411,7 @@ static void rockchip_pcie_stop_link(struct dw_pcie *pci)
+ 	struct rockchip_pcie *rockchip = to_rockchip_pcie(pci);
+ 
+ 	rockchip_pcie_disable_ltssm(rockchip);
++	rockchip_pcie_ltssm_trace(rockchip, false);
+ }
+ 
+ static int rockchip_pcie_host_init(struct dw_pcie_rp *pp)
 -- 
 2.7.4
 
