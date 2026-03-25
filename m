@@ -4,75 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FF9F106B53C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 13:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6644B109C021
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 14:25:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qY+bWuOE6K1l7rxcScM2RK82ba/vJj7sI3sY9MZ3ubw=; b=IQF+c9fOvmk9cauyQbjQO6lAqc
-	0IErdUG6dZihGxkfmhT3Za0NgLDhQUwK+cYVW6qj7RlIOFfGm2Fmo9FYjA43/kIQjMiDdWqSeBaoq
-	+x1JvFxfIdEPs3srOZ2mKRg7kVk1E0KPzKEwWjmy7qSJ/qBFZ2pcyuakwsU1dWOzzfW6mByp/oVg5
-	aRrdE6TttsPaGczhqipDxy8/B0GWJe/jV3O3nE+XEmRRrvmhCQ7NQBpIz+m6zZbOsDzeYKirkEKhp
-	Yddix63ZUL4VejszL5RUQL+lFwGfrra1Hahfx85DgrYn1PSg928nPU2qC4w9vFiLS+J0+hnsPY3O+
-	rWe3rIUA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-reply-to:References:Cc:To:Subject:
+	From:MIME-version:Date:Message-id:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Iw1U6yShf8A2B09KS2VD3m6ZHVjj3ofK1THH/tsouCA=; b=VMYWeEZhE4KGyr
+	LPyIV2lbyeLKUSqPxReC2eAOVuigWTue8NwZE+dRcphbhne/7J05YmBgXUVIGM5fdPA+kMUivwtm9
+	vNQD9shW92M06o1tSoj52Jix7X0fZuvuazf12S49DJDaEIfK9ByfONODncasFM1wYz1TWixEAaraH
+	edq3L1xB5Kjs5lDhJjTClKKwfC+TrIYSdX8KXapiayToIQx0TOPHbWpVksZSZvH+pf5cGLxz0Lsw/
+	xcCMnyN0DcVTTyavy/WhHXCW74GJqhmQHRF1Ygj7XQYFTR0dOZJKSW8Vqa1NITzHEraCvOfOcs+hj
+	V6CdjOJSsbYF8vzaPN0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5OX4-00000003Uj3-1PTU;
-	Wed, 25 Mar 2026 13:44:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w5PAK-00000003ZHQ-1BZI;
+	Wed, 25 Mar 2026 14:25:00 +0000
+Received: from abi149ajj125.mrs1.oracleemaildelivery.com ([129.149.100.125])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5OX1-00000003UiX-40ZA;
-	Wed, 25 Mar 2026 13:44:24 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5706260123;
-	Wed, 25 Mar 2026 13:44:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83E8EC4CEF7;
-	Wed, 25 Mar 2026 13:44:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774446263;
-	bh=R4VEk07h2v3XpY1QKdgb2vlUARw9jfCfolYo6/LkTvs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=KAE5zjq0k6W6MQSkOk93LdaEMZFdhYeBkdfVVr5L9uBMksZM7Uj+Rg3tJ/F0cDoxQ
-	 /ZpWod11vMvBRZaWGpklLfxcVY8wnzkhrkpOKxO2ZpzX3i19eYIlo7JmFdPK8EEcbQ
-	 JBBTabX12+UWJfO1Bq/qIi6F99cuuS6xKFOHX2vMn9kETetBKgbivIuXWwjRZeoc68
-	 beV0nrCKaz3wo+/gqXJ9gA7YdKNV/Fs1hiFTBtGQQaaXsLS3mioPckoYsTNVOkDbRS
-	 G2w69gTn1NGrUnTnqKUR8XcjTDmia772g0/pL5mUppzkDufoGI7LB78+c4NUcgi3sA
-	 5UJr5EIo2ULvg==
-Date: Wed, 25 Mar 2026 14:44:20 +0100
-From: Maxime Ripard <mripard@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Dave Stevenson <dave.stevenson@raspberrypi.com>, 
-	Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
-	Rodrigo Siqueira <siqueira@igalia.com>, Alex Deucher <alexander.deucher@amd.com>, 
-	Christian =?utf-8?B?S8O2bmln?= <christian.koenig@amd.com>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Jani Nikula <jani.nikula@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Tvrtko Ursulin <tursulin@ursulin.net>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org, 
-	Werner Sembach <wse@tuxedocomputers.com>, Andri Yngvason <andri@yngvason.is>, 
-	Marius Vlad <marius.vlad@collabora.com>
-Subject: Re: [PATCH v11 03/22] drm: Add new general DRM property "color
- format"
-Message-ID: <20260325-holistic-llama-of-plenty-acbeca@houat>
-References: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
- <CAPY8ntB9f_=f5kru=8w9BpTuqQR+93maGpT61EKU28Uay2vq8Q@mail.gmail.com>
- <20260325-quaint-bull-of-fortitude-dc68da@houat>
- <12425220.nUPlyArG6x@workhorse>
-MIME-Version: 1.0
-In-Reply-To: <12425220.nUPlyArG6x@workhorse>
+	id 1w5PAH-00000003ZED-43cs
+	for linux-rockchip@lists.infradead.org;
+	Wed, 25 Mar 2026 14:24:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=pta2002-202603;
+ d=pta2002.com;
+ h=Date:To:From:Subject:Message-Id:MIME-Version:Sender:List-Unsubscribe:List-Unsubscribe-Post;
+ bh=4J2bs+Xgq5dSGZ9Mv94Ovt55+98SGPNbD1rG7ZHb4uQ=;
+ b=FnnoRcvPwcQ88IXds65/B5P7//0iglThbcaIrcO6g3CofN44r6A3w0uPjjFLxWZY2jv0dTyocp6/
+   3alQBPZxiyXOkcj9fTJEcl+gqw1PZcZ5XIzyepOchZ1PnETACiYvy2wMZ+ss9Y0Tu0XlWv1hTbjQ
+   xN+lZfK3UYSbToUx9gFamkTolbnwpp+MvwUKZR/Kuhvs9kt044E/Hkn2cZBaE0qczKiKSwdvX8Oq
+   Gr76XchpjPfqi/9ZxLZ72PMC51LF39zju3hZyEaOjZpaJZdZpO2MQla7y9d/UKrwl3BI54dxXBzi
+   D2vgArP9RXzMlBj/NmdBazrFx44nn9hEXhRXvw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=prod-mrs-20211019;
+ d=mrs1.rp.oracleemaildelivery.com;
+ h=Date:To:From:Subject:Message-Id:MIME-Version:Sender:List-Unsubscribe:List-Unsubscribe-Post;
+ bh=4J2bs+Xgq5dSGZ9Mv94Ovt55+98SGPNbD1rG7ZHb4uQ=;
+ b=b2OtjeDdRCdyh08wyO+KtsSS73aBbDEc/vKaLWFGsMVh+mHxQ5iyjzAhA38frxnjfLpUOHbbUXJd
+   v4FlxUQz9kzLJ/uLOlmeAQ9WNKYNF4n26OOT+enRM57AdSIb+1s1N4Ls7kuLZ/JpleKgO6/4hoky
+   DYci1CA2u7rgmsm/0kQjxGEIZZxdhL7G0vyaCxbG69+V4Tl9kWtkd6WyX5FSWKHu4enKo7ATgia1
+   2uhu0A2/8IlypXmJOi9YNNU1gnENBzA1IsJznsVV8GfFAr9KfUZsigK2/d6+g8xtzv5111MrT073
+   MDepG/M2jDAK9vDVPnNNNHGzOW3adClb3Xdd4Q==
+Received: by omta-ad1-fd3-401-eu-marseille-1.omtaad1.vcndpmrs.oraclevcn.com
+ (Oracle Communications Messaging Server 8.1.0.1.20260212 64bit (built Feb 12
+ 2026))
+ with ESMTPS id <0TCG002W5LDA3R60@omta-ad1-fd3-401-eu-marseille-1.omtaad1.vcndpmrs.oraclevcn.com>
+ for linux-rockchip@lists.infradead.org; Wed, 25 Mar 2026 14:24:46 +0000 (GMT)
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-id: <1331010f-1446-4892-9d81-2f18b60f6977@pta2002.com>
+Date: Wed, 25 Mar 2026 14:24:45 +0000
+MIME-version: 1.0
+User-Agent: Mozilla Thunderbird
+From: Pedro Alves <pta2002@pta2002.com>
+Subject: Re: [PATCH RESEND v2] arm64: dts: rockchip: configure hdmirx in Rock 5
+ ITX
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260323-radxa-r5-itx-hdmirx-v2-1-c52501909577@pta2002.com>
+ <3407927.44csPzL39Z@phil>
+Content-language: pt_PT, en-US
+In-reply-to: <3407927.44csPzL39Z@phil>
+Reporting-Meta: AAHaB8rt6U4pRWPuzg6HYoL14PsnJ3SvWR/H0/t4MAxeSZoxpcePWCN+kYBu4Dv9
+ oyx+yTPV6GooNsUjV5QAIcVW9vm8S/sArtRQ2SNODSY22KEGleIjP6uGwBqTIjlP
+ Bh3HyLj0hrl5EzJPxhRnOzz+U58brdGTqT86uJ/o+uKLRLhHv8WXIrgTV01JRzO+
+ Zyy1PW+YIZy4E73HNorZYffU/d2/+lJkErb/RwFd1LL9VJiLKfwmLPsgboQfzdFQ
+ w39ZzpXWpkcLBjXWxz0ww3monilmU1dCHlnu1T9bO4KGKhkYwct+F5XxPsZoROTP
+ jL7eY9RJ+4aAef1WbwlTTkehF+6clrc7mlAkC/wNf/45by8h6m6p2a9zjhWXQoPZ
+ FH3Q+vho+GS4qCW/ufgnfQnhv6ZsqUZTJY6M6osGWGz+A3PceOjyhxKwKjkAHTYg RRRLYDDM
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260325_072458_007638_B0F2C04F 
+X-CRM114-Status: GOOD (  13.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,129 +88,38 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3208486250479398511=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============3208486250479398511==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="nu5efgjywb5co2ik"
-Content-Disposition: inline
-
-
---nu5efgjywb5co2ik
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v11 03/22] drm: Add new general DRM property "color
- format"
-MIME-Version: 1.0
-
-On Wed, Mar 25, 2026 at 02:21:24PM +0100, Nicolas Frattaroli wrote:
-> On Wednesday, 25 March 2026 14:05:25 Central European Standard Time Maxim=
-e Ripard wrote:
-> > Hi Dave,
-> >=20
-> > On Wed, Mar 25, 2026 at 12:49:19PM +0000, Dave Stevenson wrote:
-> > > > diff --git a/include/drm/drm_connector.h b/include/drm/drm_connecto=
-r.h
-> > > > index af8b92d2d5b7..bd549f912b76 100644
-> > > > --- a/include/drm/drm_connector.h
-> > > > +++ b/include/drm/drm_connector.h
-> > > > @@ -571,14 +571,102 @@ enum drm_colorspace {
-> > > >   *   YCbCr 4:2:2 output format (ie. with horizontal subsampling)
-> > > >   * @DRM_OUTPUT_COLOR_FORMAT_YCBCR420:
-> > > >   *   YCbCr 4:2:0 output format (ie. with horizontal and vertical s=
-ubsampling)
-> > > > + * @DRM_OUTPUT_COLOR_FORMAT_COUNT:
-> > > > + *   Number of valid output color format values in this enum
-> > > >   */
-> > > >  enum drm_output_color_format {
-> > > >         DRM_OUTPUT_COLOR_FORMAT_RGB444 =3D 0,
-> > > >         DRM_OUTPUT_COLOR_FORMAT_YCBCR444,
-> > > >         DRM_OUTPUT_COLOR_FORMAT_YCBCR422,
-> > > >         DRM_OUTPUT_COLOR_FORMAT_YCBCR420,
-> > > > +       DRM_OUTPUT_COLOR_FORMAT_COUNT,
-> > > >  };
-> > > >
-> > > > +/**
-> > > > + * enum drm_connector_color_format - Connector Color Format Request
-> > > > + *
-> > > > + * This enum, unlike &enum drm_output_color_format, is used to spe=
-cify requests
-> > > > + * for a specific color format on a connector through the DRM "col=
-or format"
-> > > > + * property. The difference is that it has an "AUTO" value to spec=
-ify that
-> > > > + * no specific choice has been made.
-> > > > + */
-> > > > +enum drm_connector_color_format {
-> > > > +       /**
-> > > > +        * @DRM_CONNECTOR_COLOR_FORMAT_AUTO: The driver or display =
-protocol
-> > > > +        * helpers should pick a suitable color format. All impleme=
-ntations of a
-> > > > +        * specific display protocol must behave the same way with =
-"AUTO", but
-> > > > +        * different display protocols do not necessarily have the =
-same "AUTO"
-> > > > +        * semantics.
-> > > > +        *
-> > > > +        * For HDMI, "AUTO" picks RGB, but falls back to YCbCr 4:2:=
-0 if the
-> > > > +        * bandwidth required for full-scale RGB is not available, =
-or the mode
-> > > > +        * is YCbCr 4:2:0-only, as long as the mode and output both=
- support
-> > > > +        * YCbCr 4:2:0.
-> > >=20
-> > > Is there a reason you propose dropping back to YCbCr 4:2:0 without
-> > > trying YCbCr 4:2:2 first? Minimising the subsampling is surely
-> > > beneficial, and vc4 for one can do 4:2:2 but not 4:2:0.
-> >=20
-> > The "auto" behaviour is strictly identical to the one we have right now,
-> > and this one stems from i915. Back when all that logic was added, it was
-> > decided to align every driver behavior on i915 because that's what most
-> > compositors would expect.
->
-> would it be okay to extend the behavior while we're at it? 4:2:2 does save
-> bandwidth compared to RGB (unlike YCbCr 4:4:4). I do think 4:2:2 instead =
-of
-> 4:2:0 will provide benefits in some cases.
-
-I don't really know, we would need to ask some Wayland/Weston devs as
-well, but it sure is something worth discussing.
-
-I wouldn't do it in this series but as a follow-up though.
-
-Maxime
-
---nu5efgjywb5co2ik
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCacPmswAKCRAnX84Zoj2+
-dmGlAX0Q9JHOxhbPAWTKWwWdOKb27uv7yw9UktgOGpTC//J0c33s5cWESV5s9FVr
-OXH5nAQBeQGG5UBUfjnKVw2z5/UIP190HSYoXIe99ktfdFWZXL8eG7RH4sRMWGxb
-vSEBp9nfpg==
-=4Hsf
------END PGP SIGNATURE-----
-
---nu5efgjywb5co2ik--
-
-
---===============3208486250479398511==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3208486250479398511==--
-
+SGksCgpPbiAyNC8wMy8yMDI2IDE0OjE4LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiBBbSBNb250
+YWcsIDIzLiBNw6RyeiAyMDI2LCAxMDoyNTozMyBNaXR0ZWxldXJvcMOkaXNjaGUgTm9ybWFsemVp
+dCBzY2hyaWViIFBlZHJvIEFsdmVzOgo+PiArJmhkbWlfcmVjZWl2ZXIgewo+PiArCXBpbmN0cmwt
+MCA9IDwmaGRtaW0xX3J4X2NlYyAmaGRtaW0xX3J4X2hwZGluICZoZG1pbTFfcnhfc2NsICZoZG1p
+bTFfcnhfc2RhICZoZG1pcnhfZGV0PjsKPj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+
+PiArCWhwZC1ncGlvcyA9IDwmZ3BpbzEgUktfUEM2IEdQSU9fQUNUSVZFX0xPVz47Cj4gCj4gYXMg
+c2FpZCBiZWZvcmUsIHBsZWFzZSBhbHNvIGFkZCBhIHBpbmN0cmwgc2V0dGluZyBmb3IgdGhpcyBw
+aW4uCj4gCj4gZ3BpbzFfYzYgaXMgbm90IHBhcnQgb2YgdGhlIG1haW4gaGRtaXJ4IHNldCBvZiBw
+aW5zLCBoZW5jZSBuZWVkcyBhbgo+IGFkZGl0aW9uYWwgcGluY3RybCBlbnRyeSB0byBjb25maWd1
+cmUgaXQgYXMgZ3BpbyBhbmQgcG9zc2libHkgc2V0IGFueQo+IGFkZGl0aW9uYWwgcHVsbCBzZXR0
+aW5ncy4KPiAKPiBBbmQgeWVzIHRoZSBwaW5jdHJsLWRyaXZlciBkb2VzICJpbXBsY2l0bHkiIHNl
+dCB0aGUgZ3Bpby1tb2RlIHdoZW4KPiBhIGdwaW8gaXMgcmVxdWVzdGVkLCBidXQgb3VyIG1vcmUg
+bW9kZXJuIGFwcHJvYWNoIGlzIHRvIGFsd2F5cyBoYXZlCj4gYSByZWFsIHBpbmN0cmwgZW50cnkg
+ZXZlbiBmb3IgZ3Bpb3MuCgpJIGFtIHByb2JhYmx5IGdldHRpbmcgY29uZnVzZWQgYnkgd2hhdCB5
+b3UgYXJlIGFza2luZyBoZXJlLCBidXQgSSBkb24ndAp1bmRlcnN0YW5kIHdoYXQgZXhhY3RseSBJ
+IHNob3VsZCBhZGQuIFRoZXJlIHdhcyBhbHJlYWR5IGEgcGluY3RybCBmb3IKaGRtaXJ4X2RldCAo
+d2hpY2ggaXMgd2hhdCB0aGUgZ3BpbzFfYzYgcGluIGlzKSBwcmVzZW50IGluIHRoZSBmaWxlLApo
+ZW5jZSB3aHkgSSBkaWQgbm90IGFkZCBpdCBpbiB0aGlzIHBhdGNoOgoKJnBpbmN0cmwgewoJLyog
+Li4uICovCgloZG1pcnggewoJCWhkbWlyeF9kZXQ6IGhkbWlyeC1kZXQgewoJCQlyb2NrY2hpcCxw
+aW5zID0gPDEgUktfUEM2IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX25vbmU+OwoJCX07Cgl9OwoJ
+LyogLi4uICovCn07CgpMb29raW5nIGF0IHRoZSBvdGhlciBib2FyZHMsIHRoZXkgZG8gdGhlIHNh
+bWUgdGhpbmcsIGJ1dCB0aGV5IGNhbGwgaXQKaGRtaXJ4LTV2LWRldGVjdGlvbiBpbnN0ZWFkLCBi
+dXQgYXMgZGlzY3Vzc2VkIGluIHYxIG9mIHRoaXMgcGF0Y2ggSQplbmRlZCB1cCBrZWVwaW5nIHRo
+ZSBkZXQgbmFtaW5nIHRvIG1hdGNoIHRoZSBzY2hlbWF0aWNzLgoKU29ycnkgaWYgSSBhbSBtaXNz
+aW5nIHNvbWV0aGluZywgSSBkb24ndCBoYXZlIG11Y2ggZXhwZXJpZW5jZSB3aXRoIHRoaXMsCnNv
+IEkgd291bGQgcmVhbGx5IGFwcHJlY2lhdGUgc29tZSBleHRyYSBpbmZvcm1hdGlvbi4KClRoYW5r
+IHlvdSwKUGVkcm8KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
+YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
+dXgtcm9ja2NoaXAK
