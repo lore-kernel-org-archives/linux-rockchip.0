@@ -4,79 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7F8BFEA824
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 10:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AED4103A9A7
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 10:54:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=A99GhdKQE1mNmv3bnrHMp6JFFsvGpl2s7Q5b6XV5c7o=; b=WfTtasvPYzd+c5
-	OsWy65by6NdMppWKpAsvTB0HLLkPDZ45XalHBg3ixDoer5ZzGeoB/mbBh1UVabwrGQt5RMCWGF/iJ
-	m2VLVbdXlAzTlRZ7eElKqPBBp3wGWopBTOwXRGwr4Do06hVzcGOicClyUKKnJPdGn3b3HKL2YDoVp
-	8jZQeqoII8RaPnX15WyNsIU0sLwybNZ+VhiHJD5m1oKJIvJKLw0r+qVx0NtPLiI51cNakjRwtOkby
-	bXN0Zb0L5EcOE9xal1L5fLvK4X19HSbg2Am14oFstAvXxOzA59S8D4pUORShhbI7HkR/nE9ljioMr
-	qGxHEdQQuduWymxZlrvw==;
+	List-Owner; bh=3B8TyVJnDy/ovIodFhSCP9RlDdI8ui0VesgdXMmUsGw=; b=KMbX7ASShxrDGS
+	m/qLsxpJezXI/lXHtJEMCGWA0TghxR2XMXwxhqUt52juK3tnQLmy08Ary94dSnyaoUMg3pMWLn2LH
+	nP06IQ7JnaCfFxJNuDiiejy4leDZZI6c+CFcaQhnT1GrKFoJ7lbl6FaRUPpn74ogT3O+XooixHrKd
+	F57k6wF5gjCHJYmP2dRinrPQzavIywJjvXYPe0DOxpPfAHwBw1muAGtNboLFy4V0jkoA77qImlBdz
+	g2elXmJ2ss2cTe75RtOHUJWiyMEys6EpPt3zlfBIGMRo+SoND9mkbiuD0/M5DxjPQ6Z3ETal/uBae
+	t0j7NnBw98zRp0ALt7ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5LQt-0000000397L-2YZ6;
-	Wed, 25 Mar 2026 10:25:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1w5Lsp-00000003Boi-0WRY;
+	Wed, 25 Mar 2026 10:54:43 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5LQe-000000038yn-2khg;
-	Wed, 25 Mar 2026 10:25:38 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E55BC444B3;
-	Wed, 25 Mar 2026 10:25:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id C03E1C2BCB4;
-	Wed, 25 Mar 2026 10:25:35 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774434335;
-	bh=eXpDdX/kQyDxNpLURS993lHyshWENbFjP5/yo5InZe4=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Z6eYyiESvckSaaTv0qKMPPOIb+r1EBMMegIRq1Uz9cyWz89rEHUkeS+9+pBlPprzP
-	 qUXMfYeFI1q0z3JlZptW4zO7wJoDcD92GD5nMVOm5w9Q2aMH4XzTNf1YEj6wFl7aB3
-	 drgMylG372bBWhtOfUK9hTIj97S0uo0tI+BjPcTsQrnrUzIqJwOBTWO7RtHBb8K30S
-	 w7MpJh13Hy83lil0oKIm0ckEcj3dLnFKFyQHZPPqlGLJnWeul117IJEGhT6gf4sRAS
-	 fO+fF6Q68v79sy8Rr1anfosS6IJj0zqrofIma85wX1YJDI3FVG3hLfp9FMXAfVfT3V
-	 nT2D5E9WufqNg==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B181BFEA824;
-	Wed, 25 Mar 2026 10:25:35 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Wed, 25 Mar 2026 11:25:35 +0100
-Subject: [PATCH v3 2/2] arm64: dts: rockchip: add mipi csi-2 receiver nodes
- to rk3588
+	id 1w5Lsm-00000003BoL-22yG
+	for linux-rockchip@lists.infradead.org;
+	Wed, 25 Mar 2026 10:54:41 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774436069; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jGWxXoI4Fxqx9ftKhBp2mvazwVpUW0HDji9YuSV26ACBDCI+smoWI5oUdQsM6xlOZ+dEpGUqOwU152MGjeMqvujLR9kAD3tuFgAEMfZ1ytFzAyzM5lar6RjqUImkqh3CJpKswqjeKFiPhQevSFjQvlPQR/aVubUed69J/pn4tZ8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1774436069; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=4R+g7a/6PRxwSQaBDvJIaVNLCDM/f6AmvMh/P5pv3zc=; 
+	b=kqldyP0bOC9wgr/ms0zIgDRjFFkizSYbwz0qa5l2VXyJWJvJdU+qVZfpUqfG4aidvJSefDc1qNYkDl+4yuT25mdRBY0jPFHGk6FZwac0f+dp4Dz1xTHKwStlmWGoZEfBPFhVf0Pwlnns+ww1Wz4QaPJ/oLG+87VRO6AHNBqgJBw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
+	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774436069;
+	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
+	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=4R+g7a/6PRxwSQaBDvJIaVNLCDM/f6AmvMh/P5pv3zc=;
+	b=GRGdFnKwIcf6go3L5npFnz2a/Iz+cN8J/ed8ULL/XMc8XDOLzPjCzpjlsR+877AK
+	/i0eIHBmUWVsDsvPUBxn96Nq8wYi3Lh7YjB4+QEKJON/yImImUaCFuKr68RDV51Lcet
+	pK+uPm1sy13oak2metBV9dMXgiOgU2/kP1v9Kho4=
+Received: by mx.zohomail.com with SMTPS id 1774436067747177.4963352124538;
+	Wed, 25 Mar 2026 03:54:27 -0700 (PDT)
+Message-ID: <d5939f86-d61c-42b1-a85a-e81b0a358240@collabora.com>
+Date: Wed, 25 Mar 2026 13:54:19 +0300
 MIME-Version: 1.0
-Message-Id: <20260305-rk3588-csi2rx-v3-2-754473981f39@collabora.com>
-References: <20260305-rk3588-csi2rx-v3-0-754473981f39@collabora.com>
-In-Reply-To: <20260305-rk3588-csi2rx-v3-0-754473981f39@collabora.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Frank Li <Frank.li@nxp.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Collabora Kernel Team <kernel@collabora.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1774434334; l=2503;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=eOx/3+fLG0p1riU9lvyNxwYlp2uG1DyRr96Nkcj8cCQ=;
- b=88X1+5RPNBwR+aEH0UzzpSoiSmSWeI27iJXJWQAFUO8dGOUF6H/Zf+W/3eP25aduk7l+lu5ru
- yZ34GeKdCQaCpycS3z2fj6VaLtjSVGLZQN/xXBLTRgwgT7dSmVbqpio
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v1] media: hdmirx: snps, rk: Fix HPD hold time
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+ Hans Verkuil <hverkuil@xs4all.nl>, Ross Cawston <ross@r-sc.ca>,
+ kernel@collabora.com, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
+References: <20260318192619.3910060-1-dmitry.osipenko@collabora.com>
+ <abxfd7SdlaMWag_-@venus>
+Content-Language: en-US
+From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+In-Reply-To: <abxfd7SdlaMWag_-@venus>
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_032536_756925_700DD05C 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20260325_035440_603691_4F9085C1 
+X-CRM114-Status: UNSURE (   8.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,98 +78,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
+On 3/19/26 23:45, Sebastian Reichel wrote:
+> Hi,
+> 
+> On Wed, Mar 18, 2026 at 10:26:19PM +0300, Dmitry Osipenko wrote:
+>> Increase time of holding HPD pin low by 50ms. This fixes EDID change not
+>> detected by sink/display side.
+>>
+>> Fixes: 7b59b132ad43 ("media: platform: synopsys: Add support for HDMI input driver")
+>> Reported-by: Ross Cawston <ross@r-sc.ca>
+>> Closes: https://lore.kernel.org/linux-rockchip/20260209061654.54757-1-ross@r-sc.ca/
+>> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+>> ---
+> 
+> The prefix in the patch subject should probably be
+> 'media: platform: synopsys: hdmirx:' or 'media: synopsys: hdmirx:'.
 
-The Rockchip RK3588 features six MIPI CSI-2 receiver units:
- - MIPI0: connected to MIPI DCPHY0 (not supported)
- - MIPI1: connected to MIPI DCPHY1 (not supported)
- - MIPI2: connected to MIPI DPHY0
- - MIPI3: connected to MIPI DPHY0-1 (not supported)
- - MIPI4: connected to MIPI DPHY1
- - MIPI5: connected to MIPI DPHY1-1 (not supported)
-As the MIPI DCPHYs as well as the split DPHY mode of the DPHYs
-are not yet supported, add only the device tree nodes for the
-MIPI2 and MIPI4 units.
-
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 52 +++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 7fe9593d8c19..6c593b0255c3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1430,6 +1430,58 @@ av1d: video-codec@fdc70000 {
- 		resets = <&cru SRST_A_AV1>, <&cru SRST_P_AV1>, <&cru SRST_A_AV1_BIU>, <&cru SRST_P_AV1_BIU>;
- 	};
- 
-+	csi2: csi@fdd30000 {
-+		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-+		reg = <0x0 0xfdd30000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "err1", "err2";
-+		clocks = <&cru PCLK_CSI_HOST_2>;
-+		phys = <&csi_dphy0>;
-+		power-domains = <&power RK3588_PD_VI>;
-+		resets = <&cru SRST_P_CSI_HOST_2>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi2_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi2_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
-+	csi4: csi@fdd50000 {
-+		compatible = "rockchip,rk3588-mipi-csi2", "rockchip,rk3568-mipi-csi2";
-+		reg = <0x0 0xfdd50000 0x0 0x10000>;
-+		interrupts = <GIC_SPI 151 IRQ_TYPE_LEVEL_HIGH 0>,
-+			     <GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH 0>;
-+		interrupt-names = "err1", "err2";
-+		clocks = <&cru PCLK_CSI_HOST_4>;
-+		phys = <&csi_dphy1>;
-+		power-domains = <&power RK3588_PD_VI>;
-+		resets = <&cru SRST_P_CSI_HOST_4>;
-+		status = "disabled";
-+
-+		ports {
-+			#address-cells = <1>;
-+			#size-cells = <0>;
-+
-+			csi4_in: port@0 {
-+				reg = <0>;
-+			};
-+
-+			csi4_out: port@1 {
-+				reg = <1>;
-+			};
-+		};
-+	};
-+
- 	vop: vop@fdd90000 {
- 		compatible = "rockchip,rk3588-vop";
- 		reg = <0x0 0xfdd90000 0x0 0x4200>, <0x0 0xfdd95000 0x0 0x1000>;
+Good catch
 
 -- 
-2.39.5
-
-
+Best regards,
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
