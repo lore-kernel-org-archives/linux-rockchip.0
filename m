@@ -4,138 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B33103A9BD
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 11:43:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1697FEC11B
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 11:51:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
+	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dlSW1uG5Y9QSz2Jbdf1SNonXTgojr+ouMRYpPnIUVSc=; b=s7yCOH8uM4McrH
-	/L3lZ4ofLnrYkcYWjvby+ubYkZZfTgwG+wwz/7Vcl6gWsP11YNECtLdyzKTSfpf8mKuHR1f3lKS1c
-	OGH402pDtTJu4BrXApDYvdzG8ePTQC/nWtKS8aeM1uT2aqiNRfNTlgnGTL9QT4PIzyrmInwqys405
-	G+Nl+UF4y3mSJdeLuM7Chr8yQ7hvwCP7X1oLdxWjqlJS7v9yFyRQGkQPOAVfpHayoveOh2zYS40qC
-	x+YTF6FzcP7kdyFCF0yudESLUfZE2IN4T/4FLYtukcZaAIIHcPMMK9DoisuUkh4USgJItRQ9XvZEJ
-	9FPIPzgA0lytqLUJbpPQ==;
+	List-Owner; bh=k+KPSV5Ny1HTjXKQNFOsJXhHTaruUzLcXBMV85OTdxo=; b=tV0ynlDY77akxd
+	0fdMXKSF1sixJugxCQDmT1AF4ZOS8DyAOJDTxzNkHH5DNsCqxf8ZBAr/xBKPvG3EcjRhbU6Lc7TXn
+	bmVCMmZj4HpN5UHVycs/ScQTMxZ0fsMkSNO5Qd9NEboj7iXN51MerFUjjlFz2/hbp3E7xG8jriBIJ
+	gVV46VEu4nvBzfhFaX6nvyNJZ2ZwTSFUYPkdrpXROuZS5Kcoz2S/V6TqlJQG/JEKcIwkQJS5rZMQF
+	01WuAh6c7urxCjjKMaq0BoKwr+SME+KWOGOnNpmod88f/KET2YdjcuWMIdzURU0dWBxWcZSBb4NWY
+	9RRZd0zZbr7RrEGUIsdQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Mdx-00000003Ht6-3wmX;
-	Wed, 25 Mar 2026 11:43:26 +0000
-Received: from mail-westeuropeazon11011035.outbound.protection.outlook.com ([52.101.70.35] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1w5MlT-00000003J4j-2xVA;
+	Wed, 25 Mar 2026 11:51:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Mdu-00000003HsK-04nd;
-	Wed, 25 Mar 2026 11:43:23 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=HH8ZZQzS2OdB6qF4VXP16jqy/py/KwYbSEWi4QMr5oREoIF0sd6flhhIWocF2d46TCg/pZDGH8wfmtql+BRGcA7v61BUr9a1nSKEc8RtfNZcItViIxbicO186k/0r2qsfPQfIBTIxUSYXri0eKwFniFyhPoQUczblcnTeib+uNLxX9c1oiqy88qlrpKrRguwL85Gd5+zbR6O6s8ZKWlndGsSqA1d3PWfo+CBMG52EBkHp2JLGi/qQWal1U7ijsJOISnuYe+sy69cPa5iK7SE3H793auHu9xD26Sjd51xHhZLinnei/EJ8UFbX8ItO+hFHt5kmnw8AqrJRjaUaJCmkg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=2vFKXGa9EyD8gCXVhuW4dfTTmiqy4V75PSWVxTxMQzg=;
- b=jFHsQgypE2B+Al12DONj51EYkCGZVj7Ws1EretlxmcCTgbL48Y4hX0h0YqMmaP/UbvMvJs+8VjXo6YwTb3VMeKMGLXDr7lFK8g6uX0AAjisIg0seD7ONO+paMfXNp7Lmn3iTkGciCqpEvBaAflqRsYQn84G25F28fjN1jWBduFh355tHbgllVtw7beOzmUoATxkhnqbPYHBXqQM1o3+L9eAi3uNOsoMtwWIEGaTyO8APOt7xtlOmouUpysgZJLdJgmzjaxNvtOhE+TBdIsfVXtFwx/bsLB1DJlL7RMLkEqlqVxh1ZNRzCrkyANGjp5z+o1f7u90D8VYl7tWGRHvvAw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=2vFKXGa9EyD8gCXVhuW4dfTTmiqy4V75PSWVxTxMQzg=;
- b=UGTYVciVvvAlZoVyaHQ4sIVKvJkenXwmIYlUaIAfT7iwuIBSU3AIfwawHFV6Us0h7VexloxUEmSv8c+eZg/y/Z0vqwTKaCTWeE7aHcrY6HASM56funP/+uvZrLur9BNAgrumKOwJIDknHSO6/yPkYITfjBhLoRMIItipy+Yc1yYytQiDs8HJamwFns3mQqO9s0puCNSw6uET+r9ZqDQ7qsDreAERcrdDMa4bqh5RcPUtz3SyDAavX8yr29bHlZehkdc7AySXTPKonW4eCFucVo5vuMma76+FOC9D9+/vzqLqDUZF4r7JFmU9d00Eite8YBEfEwl2yOB/FQw7JiEyCQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by DU2PR04MB8951.eurprd04.prod.outlook.com (2603:10a6:10:2e2::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.20; Wed, 25 Mar
- 2026 11:43:14 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9723.030; Wed, 25 Mar 2026
- 11:43:13 +0000
-Date: Wed, 25 Mar 2026 13:43:09 +0200
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
-	spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Nitin Rawat <quic_nitirawa@quicinc.com>
-Subject: Re: [PATCH v5 phy-next 10/27] scsi: ufs: qcom: keep parallel track
- of PHY power state
-Message-ID: <20260325114309.3k7xkfrffpxp5xq4@skbuf>
-References: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
- <20260319223241.1351137-11-vladimir.oltean@nxp.com>
- <ezrcjjwtg5n76w4m65l27szu5mywx66ti3xuprkfcp3x6quvbf@2rew4zrnnbt2>
-Content-Disposition: inline
-In-Reply-To: <ezrcjjwtg5n76w4m65l27szu5mywx66ti3xuprkfcp3x6quvbf@2rew4zrnnbt2>
-X-ClientProxiedBy: WA2P291CA0011.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d0:1e::23) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	id 1w5MlS-00000003J2T-1S5x;
+	Wed, 25 Mar 2026 11:51:10 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B83AE6013C;
+	Wed, 25 Mar 2026 11:51:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 6C84CC2BCB5;
+	Wed, 25 Mar 2026 11:51:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774439469;
+	bh=JjjcPqq9H27QPxfBDMqXEuUsyUGVuGKEtryZAio5lrI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=oeXKpmF+Ssb56dhuDzTZ8bYVAw47TPYmo2I3Y6Br7BFQfxKeuFViWplqXXWHXjK1X
+	 WAseVzxT4qGjF0tuLCJ7hfh6XGnIIFtb5TUxOKE8SpQFAzpHAj7NstAAmfi9nBneeA
+	 wu5uBjc98bsGShuFkTG593kuJbslnJmngAhtSD6K3USiN5nTJZHKXeELpuS4CQ5qdW
+	 PEtvBzFi2GOXvY9KNU7wtFQUk9YSI4KuSp8WYDbIySfoACV+hsgjxj7pJy6BTT5gRm
+	 ocqILi1Km0p6+TVa6F3KTVxGV9oNdu2ALErviUJis0YenSFtuZ06LO2DahmR7MJr9I
+	 iZ7ynjCe9YF4Q==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 592EE1093168;
+	Wed, 25 Mar 2026 11:51:09 +0000 (UTC)
+From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
+Date: Wed, 25 Mar 2026 12:51:07 +0100
+Subject: [PATCH v3 2/9] media: dt-bindings: add rockchip rk3588 vicap
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|DU2PR04MB8951:EE_
-X-MS-Office365-Filtering-Correlation-Id: 67580038-d939-42e6-4c8c-08de8a63b29c
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|19092799006|1800799024|10070799003|376014|7416014|18002099003|56012099003|22082099003;
-X-Microsoft-Antispam-Message-Info: TDkLjGCk59oxN3k1h6kJNSkkPPysnIDson/TIrmVIcgitvLI2U93YTY2h5IX9usTD1geEAZ53Ta6v0FnQog3RBCtFzfHVKXaH8a2ff+rlHWLfgsg9du5zgtMxyZJgBake3QxQHNMd4ckY6vKFn28qt69ebzHZpOoazQTPfLWJcNebOe6B+SWwTDfSRRaZbwCa8WYbvaeylgThEXQ6Nlpti7VB6lVDGN9l4e4vVHVP8LYtcaql8naBE8KChH8wHvm7PoL3LuO3b95RRUc2jOiHyoeYKKDkhYZjFAPdjuySt25aZmAYS+rD/zTGzBD7TRxEMTa2Yq59185y5tT5M4LbVPUEPB0kPc2nKfKZ6Oi318nbm3MzmSXRBGQ1uCs97WsEvPFz3FhOyHOIVGj69f/Txivn2ZqNChAq2pqVJzGsRrJ4y+sFQUCJ+32svBOCqZSvfDuAdL5NMB9RZVRSYIbldyr/5pHJVmcpp7HnkDsO0Xp7LMXNnrdwvHhnY7Wycwh3c2siHVVUYE7D3AI3NsznE8KL2L5RrGUMeZkhFNUI2wLHDkQIbmfnmszrPjZ2FOBKJCNUniOSvl+RhyVz/g3r0ctq7EWzftn2L3TxEmo+V0i+VoLQzqcyWHWEVmrBUyX8hG7yf8ZI3fY2O6uan4h9DAZ9FllPesQnXvPRt8rzInQEhwDlGaA02TR70y/I7uyzbthwQKYJtS7abjrALnkrYQhqpaeOp3d7bYwFWQfHmk=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(19092799006)(1800799024)(10070799003)(376014)(7416014)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?iWJmwLPIaoPbZ3tsima06lFTVXZJ+kNEMNmQ1rLIvpkStZFV4qgzde6HZnQF?=
- =?us-ascii?Q?INw6NbJlg+GlePToErCCZ5GWtlT85g8ZhEu/wuJ+GG1U57oDOvLwnH6Ghdz3?=
- =?us-ascii?Q?u26jhEN0CJLnhrhVECS087aURkMMqM61Qf/J4oYxdPgqc7xUZekWNrZHFTiz?=
- =?us-ascii?Q?HN8DkgshAIi7ZEtgpxdMivW2xo7WnG9LbWm/Al2dJtGtJz8QSW9hCAdXb+Ik?=
- =?us-ascii?Q?71QtFJcf4Q63lOkk+KGeSPWbfYrWb+G6c8n+xxDmez/7ITXrk5dIj44vYZ8I?=
- =?us-ascii?Q?LQjWW433kNESUzpCrCkHdBxfILWUhsRT5LxsUDKki46x8r6Ehc7HgIzB8EAC?=
- =?us-ascii?Q?M5I3xb02ApH4fs6UXNUik9AZuY/HlkdJfuR6wEEb7emsbrYaY9nn7gvkPX+f?=
- =?us-ascii?Q?dqEJtgmAY1MKmS28xFpp56nIZxtUyx8UYfxEdlpGbCdXBaj6Dn4fytOsEC2D?=
- =?us-ascii?Q?66F5QRM6NKDBtzK4BXaXm1tOydMVgathTqf1rQOtwctkPBn9SbigyrcOeiNl?=
- =?us-ascii?Q?f1LjUfWjhwLcjBRROm3s4Ff0fhc3YRKNIjTTnLbVZCSvuhu0TcutpzDS+kab?=
- =?us-ascii?Q?VJdg40ueQCZf7wUCKuBo9AY4Fgl4jFUTxNdYbnkI0V0mL0jXcKgRDFCj7vRI?=
- =?us-ascii?Q?+VOP+JSPVfMOaWV7X9DFYMS/5M/CCjGgiM4+Mz6s7ZIwG4ZYW2PKWIA1aX8h?=
- =?us-ascii?Q?B/Xpboh9OSQYsMd9AWc1CZz0qls8+RKQkbkJTjOKyncNLv3qYhgj/SFF6BF6?=
- =?us-ascii?Q?Ot9tJhW+GXU0XVe6TL5LqpMv4eKbxSPCgHsB5F0R6XwhODXOMuyTH2yWo3q7?=
- =?us-ascii?Q?s7MxjJzLUusLxLpLTMua31TsI8NuDjvlVMLzzbJ8Lv6Y2nno1uO3X1ORjhJ5?=
- =?us-ascii?Q?j/lj05Ws2T2x9zp8t9pojrZUhBZWR+A5fj7jdES3A+PZi6Q0TVsB+rDk2Wgy?=
- =?us-ascii?Q?xUV+PERtmnZn5kandwsQ4qhxUoYbGpu3Zv95c5+ASG0mAWK1dDM0hCsy2vTE?=
- =?us-ascii?Q?QtFnu4yf4JGlF3wZ5bPV8KyI3KGkxAUSWfVRRrCNlBa8lEyPx47xPXJo383j?=
- =?us-ascii?Q?txIWhHhIGItWBw2omRI5Uzqte2oJQsZ5M2U4aRMc+jFEMQFla/Shl4BCFHwX?=
- =?us-ascii?Q?Z2w63YAe1TBhkrY1+TaAxh6mOXGiH57xRbb9/X/oWAjQT3vczTlq3RCZhFqm?=
- =?us-ascii?Q?L7BCKQ+Ij8vN1MGCjNbPaIg+qwAFR+O27C/oav7zDm8u+U/K/q3qQ8YK27ls?=
- =?us-ascii?Q?9IjO0MfZ94aNAGD108EVSM0RFoM1sr6furWDySPe1f85ZXEVdcrMkhTRCgGd?=
- =?us-ascii?Q?AvFqg+5XNokX+gObHI5bccsihztYFauMyTsC2GuuPQgkoyDe3erpPYvaqQL8?=
- =?us-ascii?Q?qVUSjf8B9dZLZOk5yJL7hn3KAKq38jbLTmjiD8fcvxbRuLKO1Mx1wM8/6mCQ?=
- =?us-ascii?Q?Fc6gH/MWrMcGhWSzK/Dslqk2j7Ubuf0tk6B+Xu3im8EK0ak7JwDJpooWX+Iz?=
- =?us-ascii?Q?Dr6noHzzYyvCBIkXKNtId5PlZobxXghD5sroRSJb4Kfwuzaes7JCr/6A2o1H?=
- =?us-ascii?Q?UZRmsqWudf7MOom+wAtGgrjvjDQ2we0Qye8+xFX/bXhyQ1j+cv2UcDI7DWcN?=
- =?us-ascii?Q?ThBIH0KpxG8VemFn1KiHZ5rXEKvMIyIhwLOj4pRPSNvRaWZn3sXE183/tZne?=
- =?us-ascii?Q?ocNRFgVxkGc8nat2Jft2SlaXZuJYscv5Lpw3K8Qe12IzBuvivu5eEP3X8XN9?=
- =?us-ascii?Q?mVKyWcGIjUJ0oNnObUiC0B1mNf92rabwNV8vH/jsvrrlrbc1jAHH+OXqRziH?=
-X-MS-Exchange-AntiSpam-MessageData-1: CXDuAeGTiO7U+w==
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 67580038-d939-42e6-4c8c-08de8a63b29c
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Mar 2026 11:43:13.8297
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: QmhYKydPcdenRdeevcDFt6W4GzHXcXgFQUtOM6MfznRNXgTLw9sJ3AC3Crse1GiM4KbF/sRfeu0rtEGrlVqcbw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU2PR04MB8951
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_044322_082740_996ECE17 
-X-CRM114-Status: GOOD (  24.01  )
+Message-Id: <20250430-rk3588-vicap-v3-2-e38e428868cc@collabora.com>
+References: <20250430-rk3588-vicap-v3-0-e38e428868cc@collabora.com>
+In-Reply-To: <20250430-rk3588-vicap-v3-0-e38e428868cc@collabora.com>
+To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Kever Yang <kever.yang@rock-chips.com>, 
+ Jagan Teki <jagan@amarulasolutions.com>, 
+ =?utf-8?q?=D0=9A=D1=83=D0=B7=D0=BD=D0=B5=D1=86=D0=BE=D0=B2_=D0=9C=D0=B8=D1=85=D0=B0=D0=B8=D0=BB?= <mai.kuznetsov.misha@gmail.com>, 
+ Charalampos Mitrodimas <charmitro@posteo.net>, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Collabora Kernel Team <kernel@collabora.com>, 
+ Sakari Ailus <sakari.ailus@linux.intel.com>
+Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
+X-Mailer: b4 0.12.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1774439467; l=6555;
+ i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
+ bh=oa4KcT9fRYz9I8qYtj9tZE2sEkoYMSd4GpMdemZqn04=;
+ b=/KDSFbVMYD09sLoLmNNsigUIQm54I9NYo0iabgQuiGDwRr508GdhthCGkPJOyS+aLQIO1ysV+
+ 6uuoRJpIvRaA8ILKyI4sIs5L72oIG2pxGKQzoZCAF8EMJDTCZ3vgsqR
+X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
+ pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
+X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
+ with auth_id=371
+X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,46 +89,273 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 24, 2026 at 11:00:10AM +0530, Manivannan Sadhasivam wrote:
-> On Fri, Mar 20, 2026 at 12:32:24AM +0200, Vladimir Oltean wrote:
-> > As explained in the similar ufs-exynos.c change, PHY consumer drivers
-> > should not look at the phy->power_count, because in the general case
-> > there might also be other consumers who have called phy_power_on() too,
-> > so the fact that the power_count is non-zero does not mean that we did.
-> > 
-> > Moreover, struct phy will become opaque soon, so the qcom UFS driver
-> > will not be able to apply this pattern. Keep parallel track of the PHY
-> > power state, instead of looking at a field which will become unavailable
-> > (phy->power_count).
-> > 
-> > About treating the phy_power_off() return code: from an API perspective,
-> > this should have probably returned void, otherwise consumers would be
-> > stuck in a state they can't escape. The provider, phy-qcom-qmp-ufs.c,
-> > does return 0 in its power_off() implementation. I consider it safe to
-> > discard potential errors from phy_power_off() instead of complicating
-> > the phy_powered_on logic.
-> > 
-> 
-> You could even simplify the code by getting rid of the 'phy_powered_on' check
-> altogether. There is no real need to track the PHY power state in this driver.
-> It is safe to call phy_power_off() without any checks.
-> 
-> - Mani
+From: Michael Riesch <michael.riesch@collabora.com>
 
-Ok.. as the author of commit 7bac65687510 ("scsi: ufs: qcom: Power off
-the PHY if it was already powered on in ufs_qcom_power_up_sequence()"),
-I assume you have hardware to test. Would you mind writing a patch that
-I could pick up to replace this one with?
+Add documentation for the Rockchip RK3588 Video Capture (VICAP) unit.
+To that end, make the existing rockchip,rk3568-vicap documentation
+more general and introduce variant specific constraints.
 
-I suppose that the power_count test is somehow no longer necessary after
-commit 77d2fa54a945 ("scsi: ufs: qcom : Refactor phy_power_on/off
-calls"), but frankly I don't see it - the ufshcd state machine is a bit
-too complicated for me to just statically analyze.
+Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+---
+ .../bindings/media/rockchip,rk3568-vicap.yaml      | 187 ++++++++++++++++++---
+ 1 file changed, 163 insertions(+), 24 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+index 18cd0a5a5318..897ed00c239b 100644
+--- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
++++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+@@ -15,9 +15,15 @@ description:
+   the data from camera sensors, video decoders, or other companion ICs and
+   transfers it into system main memory by AXI bus.
+ 
++  The Rockchip RK3588 Video Capture (VICAP) is similar to its RK3568
++  counterpart, but features six MIPI CSI-2 ports and additional connections
++  to the image signal processor (ISP) blocks.
++
+ properties:
+   compatible:
+-    const: rockchip,rk3568-vicap
++    enum:
++      - rockchip,rk3568-vicap
++      - rockchip,rk3588-vicap
+ 
+   reg:
+     maxItems: 1
+@@ -26,37 +32,23 @@ properties:
+     maxItems: 1
+ 
+   clocks:
+-    items:
+-      - description: ACLK
+-      - description: HCLK
+-      - description: DCLK
+-      - description: ICLK
++    minItems: 4
++    maxItems: 5
+ 
+   clock-names:
+-    items:
+-      - const: aclk
+-      - const: hclk
+-      - const: dclk
+-      - const: iclk
++    minItems: 4
++    maxItems: 5
+ 
+   iommus:
+     maxItems: 1
+ 
+   resets:
+-    items:
+-      - description: ARST
+-      - description: HRST
+-      - description: DRST
+-      - description: PRST
+-      - description: IRST
++    minItems: 5
++    maxItems: 9
+ 
+   reset-names:
+-    items:
+-      - const: arst
+-      - const: hrst
+-      - const: drst
+-      - const: prst
+-      - const: irst
++    minItems: 5
++    maxItems: 9
+ 
+   rockchip,grf:
+     $ref: /schemas/types.yaml#/definitions/phandle
+@@ -67,8 +59,15 @@ properties:
+ 
+   ports:
+     $ref: /schemas/graph.yaml#/properties/ports
++    additionalProperties: false
+ 
+     properties:
++      "#address-cells":
++        const: 1
++
++      "#size-cells":
++        const: 0
++
+       port@0:
+         $ref: /schemas/graph.yaml#/$defs/port-base
+         unevaluatedProperties: false
+@@ -100,13 +99,75 @@ properties:
+ 
+       port@1:
+         $ref: /schemas/graph.yaml#/properties/port
+-        description: Port connected to the MIPI CSI-2 receiver output.
++        description: Port connected to the MIPI CSI-2 receiver 0 output.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++      port@2:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the MIPI CSI-2 receiver 1 output.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++      port@3:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the MIPI CSI-2 receiver 2 output.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++      port@4:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the MIPI CSI-2 receiver 3 output.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++      port@5:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the MIPI CSI-2 receiver 4 output.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++      port@6:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the MIPI CSI-2 receiver 5 output.
+ 
+         properties:
+           endpoint:
+             $ref: video-interfaces.yaml#
+             unevaluatedProperties: false
+ 
++      port@10:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the ISP0 input.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
++
++      port@11:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Port connected to the ISP1 input.
++
++        properties:
++          endpoint:
++            $ref: video-interfaces.yaml#
++            unevaluatedProperties: false
+ required:
+   - compatible
+   - reg
+@@ -114,6 +175,84 @@ required:
+   - clocks
+   - ports
+ 
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3568-vicap
++    then:
++      properties:
++        clocks:
++          maxItems: 4
++
++        clock-names:
++          items:
++            - const: aclk
++            - const: hclk
++            - const: dclk
++            - const: iclk
++
++        resets:
++          maxItems: 5
++
++        reset-names:
++          items:
++            - const: arst
++            - const: hrst
++            - const: drst
++            - const: prst
++            - const: irst
++
++        ports:
++          properties:
++            port@2: false
++
++            port@3: false
++
++            port@4: false
++
++            port@5: false
++
++            port@6: false
++
++            port@10: false
++
++            port@11: false
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: rockchip,rk3588-vicap
++    then:
++      properties:
++        clocks:
++          minItems: 5
++
++        clock-names:
++          items:
++            - const: aclk
++            - const: hclk
++            - const: dclk
++            - const: iclk0
++            - const: iclk1
++
++        resets:
++          minItems: 9
++
++        reset-names:
++          items:
++            - const: arst
++            - const: hrst
++            - const: drst
++            - const: irst0
++            - const: irst1
++            - const: irst2
++            - const: irst3
++            - const: irst4
++            - const: irst5
++
+ additionalProperties: false
+ 
+ examples:
+
+-- 
+2.39.5
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
