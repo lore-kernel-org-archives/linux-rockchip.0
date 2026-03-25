@@ -4,54 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 321A1109C028
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 15:21:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D285F109C032
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 15:23:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xPxBt/cgNQs5AyBC2+z5KpyItHdf1SDksDaviKFIWAQ=; b=y/vcR8EggUhqYI
-	npkwBIjncTXqIVJ1ysVjdYwr0cjxNp56pdJO6DOnOZHfBl9rftAoUKOeKILYR/+nZT5vuFxc7xIUG
-	E+RkvRlBIEHKb3Bfbq2LxjN8iBZJEFB8qMe0z4mpebtJsVIwtAlAyvk9mQ7tobsjIGON6p33ufbrf
-	HA391mJ/FZ4LU922S0L18wGEtyjATECuktbdlpvVMg9+oqQTqqfqxHO+KdZC3w9df6PIAoeM056Hu
-	shw7OJq2CdO3U7X1jeNG842YWlFfJnw7a9Y03ZroS99bhRslPaMowubZ9XsQmlmjATcHZ/5DX6bIx
-	BhtNvh0Lxo6KOoB0Oywg==;
+	List-Owner; bh=O7rb0gjZEpdbIbG6NP9WTfa6oe/Clhfh5/cstNQvrOI=; b=E+a5f0iloKaK99
+	NLEJeBnkosZQnMqFPChhVyopi95QxcYLS3hglHJh693aMM54MfGVLy54JT3i7QCBbXa++H4iAbw7N
+	0RiAth4znPNn5ZVAyLDU9eZ9ofRVlI7AMTfYdCsAtEqR4UhfjQptWiIWV4xohBBmnWNYMqsvrmH3P
+	ODQrGWmfREThn2bEYRd3rwws/r70TpVZ7HsfvddJucJYD7caxRWxL5IyraOFQpBfIAcl9Uxw/Ntit
+	hWRt/hnk+bD1QBBWfA195gHJH7CcqscMPj3C5a6wL9nrCHwkMPW7r9iQT/qfIwz6wKdFht6JrnXmM
+	L6HlX1V8oLpgfmWtFkdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Q2u-00000003lgM-0D8a;
-	Wed, 25 Mar 2026 15:21:24 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1w5Q4y-00000003mDV-40zM;
+	Wed, 25 Mar 2026 15:23:32 +0000
+Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Q2q-00000003lfC-3S8L;
-	Wed, 25 Mar 2026 15:21:22 +0000
-Received: from ideasonboard.com (net-93-65-100-155.cust.vodafonedsl.it [93.65.100.155])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id B175D121A;
-	Wed, 25 Mar 2026 16:19:59 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1774451999;
-	bh=qZGiT+EvKcDkmxuOuy3DrL28n1CGTnETVnQH8DAchQE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=B1LWaFNi5OP19gPp8aVu+LOV0EMljp+gddp4A85a63+pI1HaXpCvXa1sq/ytmWK1L
-	 5d0iv3SiXbrj/2yFMvfDChcMU8kxuDJOYFuQmW3wJUYH0cGRYY2b7Qq7o5Q8TDkoXk
-	 4BoV6Yb+XlJ+7lrH/OcKZq/rRWuLYLWa6+NeBxN8=
-Date: Wed, 25 Mar 2026 16:21:15 +0100
-From: Jacopo Mondi <jacopo.mondi@ideasonboard.com>
-To: =?utf-8?Q?Barnab=C3=A1s_P=C5=91cze?= <barnabas.pocze@ideasonboard.com>
-Cc: Dafna Hirschfeld <dafna@fastmail.com>, 
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v1] media: rkisp1: Add support for CAC
-Message-ID: <acP7qpa8TxGLKFiw@zed>
-References: <20260323140216.1486161-1-barnabas.pocze@ideasonboard.com>
+	id 1w5Q4w-00000003mBW-14Pn
+	for linux-rockchip@lists.infradead.org;
+	Wed, 25 Mar 2026 15:23:31 +0000
+Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-2ba895adfeaso2779169eec.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 25 Mar 2026 08:23:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1774452209; x=1775057009; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=dYR/VQii1eq+59yB5UylOEDiVqDDyUVcShZrPailuWs=;
+        b=MURMUkh1ea1IA3QCKeh9Wu9yqNH/CpzjSUphbHgLKQinb/b9yX5IWHFc4/Vx/qh120
+         aiwAYdUmRvQqiGiaNgp2amhTrchngMegnn1MFQhCNUN0QEsgtlUhJNDFioOzvvTu16vk
+         /zChJOVMaKKr7PKQwf0u4gvOyKBBfpJsxMYvUepM62B4TuQPR1cNyODF6+z11ueT2V9Q
+         X7RMHPg8nU4Zg8qHN8esJ1HmN9Hfm1WDsn40w/jWRVqu5+iSDNpXAT802vn8I+vsMHWm
+         1Dd+8bm6zzdwQ3lWQSc9JX/TulkVVIQfAigN++DdgfqRB2l6g6qW9JL/+7/CCj7fEsOr
+         QInQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774452209; x=1775057009;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=dYR/VQii1eq+59yB5UylOEDiVqDDyUVcShZrPailuWs=;
+        b=rv3+gelvsR1icEPjyuAZlHon/cBtcJPb5rastdmwmtjq6RR8VyhQECnIw1dNHDviJ0
+         Q+OZwYc8Xc9GOyf6eM27erCUVvJrfpFWzIBgJ3mN9LV+ebYiZaMm/b6ctCKWOttk+Ghd
+         Xbi26IDdjavsCIIYNQxpxexHFNEz5kxQMS/Ui0JeLwWu84wuMus1cGVQm3a5hqrWu+0g
+         HeFVYNPU+MJxsCSrA8l3nuhzb1uefMn1VT9PIcsDdkHUPIohu4w75gmw7TnhOVHMNetE
+         u9fKU1i0Ymk1m528iIDZ3xupYyOVinK8D8Ok/KLs5EKAySjVvxcp2ApLl0QIyEF6izBq
+         ZukQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVduLM6IOKmZGjdKTEQoou2xJDlIrmT1l+9skftzq8FiuUBtEgBRgLD0DW/9HXL+lfkb2MYBo0EAWQtLpAnHA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFSAmOd870/6WMK0sQp0kL+h/i7uu+ZHxOk0bvf0JfgRwhKrTK
+	hprKQahuIef7fF1LE9K3Tp/WCK9LmZ+QVkNIcUjv2WAEnCjqCo37R0bH
+X-Gm-Gg: ATEYQzyjKJEOZyhTjVleTkrNOPV38k7ZFxlRgoE2a8N1xyH9OBs/FiWl8Bf+uptcFB1
+	OELjEaVy21iX44nOmn+T9E2+jYu7kz/npEBCCnOqFyFSU9cP3Jp5xADw6TlmRHMiDCEvjpXMWh/
+	5J082fTrKgqRxw0yua2CDM8ZZlCrD4p51M6gcKbb9aj0GH1Va1zBNyfp6Nyjot1C/KpgdRcG8JA
+	U8bfAyr3sc9pT5JPOo/UtJ4Qv1U+rpF//UGRvfuOrieIXeGHnLqLdI7tdS9XM36cEa0mMyySdzH
+	p/BFl9YDs7cKGLrlBOaYMLM0Nr5PvWwi4vLhorJGEpXg+iQGUtiZqpLAQ+scLfvhw2jbr03KlQL
+	2ZbD+s01cHYua3g0+lTzULf2qjdzThQ35vk9G89nlyPG0BqBv6vcgmjL9IJxQ0na66Zt4y+C5h6
+	tYDrDaa8Pnzu15bLxKIVNLzlE1U6vKlC8wRnjcw9o+uWCSUVXJxAU6OBhikSAHAvj9
+X-Received: by 2002:a05:7301:578d:b0:2ba:6819:2e9b with SMTP id 5a478bee46e88-2c15d32bccemr2245364eec.3.1774452209058;
+        Wed, 25 Mar 2026 08:23:29 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2ebe:8:b7b4:352d:eb23:66e5])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2c10b29c941sm18375747eec.15.2026.03.25.08.23.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Mar 2026 08:23:28 -0700 (PDT)
+Date: Wed, 25 Mar 2026 08:23:24 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Robin Murphy <robin.murphy@arm.com>
+Cc: Danilo Krummrich <dakr@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>, Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Heiko Stuebner <heiko@sntech.de>, Niklas Cassel <cassel@kernel.org>, 
+	Shawn Lin <shawn.lin@rock-chips.com>, Hans Zhang <18255117159@163.com>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Wilfred Mallawa <wilfred.mallawa@wdc.com>, 
+	linux-pci@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Anand Moon <linux.amoon@gmail.com>, 
+	Grimmauld <grimmauld@grimmauld.de>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	"Rafael J. Wysocki" <rafael@kernel.org>, driver-core@lists.linux.dev, Lukas Wunner <lukas@wunner.de>
+Subject: Re: [PATCH v3] PCI: dw-rockchip: Enable async probe by default
+Message-ID: <acP57qjzZr1NR1zf@google.com>
+References: <87bc37ee-234c-4568-b72e-955c130a6838@arm.com>
+ <f7tfshf7riljjibuqge4ubfjmludubpyh3ppdf6lasurzdzbtj@sw4xxagfhnn3>
+ <5d88fb5b-e771-4ea6-8d2c-c5cfd21e5860@arm.com>
+ <qwanhqrpztzkudik5fmberhabnzaly7v53677dohqzj5nq4wi2@6ndpiubyxcbi>
+ <DGZXF3LPSRK6.2QYN63QTKUQAX@kernel.org>
+ <cp5uktfqdf6zs53qsye57ior2ikmssgevxxdtevkzpisaif22h@7mrxspkuibow>
+ <DH09EDBW3X6T.2996UB1CFCAW2@kernel.org>
+ <55c28218-1638-4b90-a9cd-a177fb5abcb6@arm.com>
+ <acNgUoWWMCi1oLU4@google.com>
+ <6cc25c83-6a5a-4785-9573-335371a94798@arm.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260323140216.1486161-1-barnabas.pocze@ideasonboard.com>
+In-Reply-To: <6cc25c83-6a5a-4785-9573-335371a94798@arm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_082121_172451_1DC1F8B2 
-X-CRM114-Status: GOOD (  38.07  )
+X-CRM114-CacheID: sfid-20260325_082330_305256_373340EB 
+X-CRM114-Status: GOOD (  66.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,258 +111,177 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQmFybmFiw6FzCgpPbiBNb24sIE1hciAyMywgMjAyNiBhdCAwMzowMjoxNlBNICswMTAwLCBC
-YXJuYWLDoXMgUMWRY3plIHdyb3RlOgo+IFRoZSBDQUMgYmxvY2sgaW1wbGVtZW50cyBjaHJvbWF0
-aWMgYWJlcnJhdGlvbiBjb3JyZWN0aW9uLiBFeHBvc2UgaXQgdG8KPiB1c2Vyc3BhY2UgdXNpbmcg
-dGhlIGV4dGVuc2libGUgcGFyYW1ldGVycyBmb3JtYXQuIFRoaXMgd2FzIHRlc3RlZCBvbiB0aGUK
-PiBpLk1YOE1QIHBsYXRmb3JtLCBidXQgYmFzZWQgb24gYXZhaWxhYmxlIGRvY3VtZW50YXRpb24g
-aXQgaXMgYWxzbyBwcmVzZW50Cj4gaW4gdGhlIFJLMzM5OSB2YXJpYW50IChWMTApLiBUaHVzIHBy
-ZXN1bWFibHkgYWxzbyBpbiBsYXRlciB2ZXJzaW9ucywKPiBzbyBubyBmZWF0dXJlIGZsYWcgaXMg
-aW50cm9kdWNlZC4KPgo+IFNpZ25lZC1vZmYtYnk6IEJhcm5hYsOhcyBQxZFjemUgPGJhcm5hYmFz
-LnBvY3plQGlkZWFzb25ib2FyZC5jb20+CgpPbmx5IG1pbm9ycy4uCgo+IC0tLQo+ICAuLi4vcGxh
-dGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1wYXJhbXMuYyAgfCAgNjkgKysrKysrKysrKysr
-Cj4gIC4uLi9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEvcmtpc3AxLXJlZ3MuaCAgICB8ICAyMSAr
-KystCj4gIGluY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmggICAgICAgICAgICB8IDEw
-NiArKysrKysrKysrKysrKysrKy0KPiAgMyBmaWxlcyBjaGFuZ2VkLCAxOTMgaW5zZXJ0aW9ucygr
-KSwgMyBkZWxldGlvbnMoLSkKPgo+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcGFyYW1zLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3Jt
-L3JvY2tjaGlwL3JraXNwMS9ya2lzcDEtcGFyYW1zLmMKPiBpbmRleCA2NDQyNDM2YTVlNDI4Li5i
-ODg5YWY5ZGNlZTQ1IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2No
-aXAvcmtpc3AxL3JraXNwMS1wYXJhbXMuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
-cm9ja2NoaXAvcmtpc3AxL3JraXNwMS1wYXJhbXMuYwo+IEBAIC02NCw2ICs2NCw3IEBAIHVuaW9u
-IHJraXNwMV9leHRfcGFyYW1zX2NvbmZpZyB7Cj4gIAlzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNf
-Y29tcGFuZF9ibHNfY29uZmlnIGNvbXBhbmRfYmxzOwo+ICAJc3RydWN0IHJraXNwMV9leHRfcGFy
-YW1zX2NvbXBhbmRfY3VydmVfY29uZmlnIGNvbXBhbmRfY3VydmU7Cj4gIAlzdHJ1Y3Qgcmtpc3Ax
-X2V4dF9wYXJhbXNfd2RyX2NvbmZpZyB3ZHI7Cj4gKwlzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNf
-Y2FjX2NvbmZpZyBjYWM7Cj4gIH07Cj4KPiAgZW51bSBya2lzcDFfcGFyYW1zX2Zvcm1hdHMgewo+
-IEBAIC0xNDEzLDYgKzE0MTQsNDggQEAgc3RhdGljIHZvaWQgcmtpc3AxX3dkcl9jb25maWcoc3Ry
-dWN0IHJraXNwMV9wYXJhbXMgKnBhcmFtcywKPiAgCQkJCSAgICAgUktJU1AxX0NJRl9JU1BfV0RS
-X1RPTkVfQ1VSVkVfWU1fTUFTSyk7Cj4gIH0KPgo+ICtzdGF0aWMgdm9pZAo+ICtya2lzcDFfY2Fj
-X2NvbmZpZyhzdHJ1Y3Qgcmtpc3AxX3BhcmFtcyAqcGFyYW1zLAo+ICsJCSAgY29uc3Qgc3RydWN0
-IHJraXNwMV9jaWZfaXNwX2NhY19jb25maWcgKmFyZykKCkZpdHMgaW4gb25lIGxpbmUgd2l0aG91
-dCBnb2luZyBvdmVyIDgwIGNvbHMKCj4gK3sKPiArCXUzMiByZWd2YWw7Cj4gKwo+ICsJLyoKPiAr
-CSAqIFRoZSBlbmFibGUgYml0IGlzIGluIHRoZSBzYW1lIHJlZ2lzdGVyIChSS0lTUDFfQ0lGX0lT
-UF9DQUNfQ1RSTCksCj4gKwkgKiBzbyBvbmx5IHNldCB0aGUgY2xpcHBpbmcgbW9kZSwgYW5kIGRv
-IG5vdCBtb2RpZnkgdGhlIG90aGVyIGJpdHMuCj4gKwkgKi8KPiArCXJlZ3ZhbCA9IHJraXNwMV9y
-ZWFkKHBhcmFtcy0+cmtpc3AxLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTCk7Cj4gKwlyZWd2YWwg
-Jj0gfihSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTF9IX0NMSVBfTU9ERSB8Cj4gKwkJICAgIFJLSVNQ
-MV9DSUZfSVNQX0NBQ19DVFJMX1ZfQ0xJUF9NT0RFKTsKPiArCXJlZ3ZhbCB8PSBGSUVMRF9QUkVQ
-KFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0hfQ0xJUF9NT0RFLCBhcmctPmhfY2xpcF9tb2RlKSB8
-Cj4gKwkJICBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX1ZfQ0xJUF9NT0RFLCBh
-cmctPnZfY2xpcF9tb2RlKTsKPiArCXJraXNwMV93cml0ZShwYXJhbXMtPnJraXNwMSwgUktJU1Ax
-X0NJRl9JU1BfQ0FDX0NUUkwsIHJlZ3ZhbCk7Cj4gKwo+ICsJcmVndmFsID0gRklFTERfUFJFUChS
-S0lTUDFfQ0lGX0lTUF9DQUNfQ09VTlRfU1RBUlRfSF9NQVNLLCBhcmctPmhfY291bnRfc3RhcnQp
-IHwKPiArCQkgRklFTERfUFJFUChSS0lTUDFfQ0lGX0lTUF9DQUNfQ09VTlRfU1RBUlRfVl9NQVNL
-LCBhcmctPnZfY291bnRfc3RhcnQpOwo+ICsJcmtpc3AxX3dyaXRlKHBhcmFtcy0+cmtpc3AxLCBS
-S0lTUDFfQ0lGX0lTUF9DQUNfQ09VTlRfU1RBUlQsIHJlZ3ZhbCk7Cj4gKwo+ICsJcmVndmFsID0g
-RklFTERfUFJFUChSS0lTUDFfQ0lGX0lTUF9DQUNfQV9SRURfTUFTSywgYXJnLT5yZWRbMF0pIHwK
-PiArCQkgRklFTERfUFJFUChSS0lTUDFfQ0lGX0lTUF9DQUNfQV9CTFVFX01BU0ssIGFyZy0+Ymx1
-ZVswXSk7Cj4gKwlya2lzcDFfd3JpdGUocGFyYW1zLT5ya2lzcDEsIFJLSVNQMV9DSUZfSVNQX0NB
-Q19BLCByZWd2YWwpOwo+ICsKPiArCXJlZ3ZhbCA9IEZJRUxEX1BSRVAoUktJU1AxX0NJRl9JU1Bf
-Q0FDX0JfUkVEX01BU0ssIGFyZy0+cmVkWzFdKSB8Cj4gKwkJIEZJRUxEX1BSRVAoUktJU1AxX0NJ
-Rl9JU1BfQ0FDX0JfQkxVRV9NQVNLLCBhcmctPmJsdWVbMV0pOwo+ICsJcmtpc3AxX3dyaXRlKHBh
-cmFtcy0+cmtpc3AxLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQiwgcmVndmFsKTsKPiArCj4gKwlyZWd2
-YWwgPSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19DX1JFRF9NQVNLLCBhcmctPnJlZFsy
-XSkgfAo+ICsJCSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19DX0JMVUVfTUFTSywgYXJn
-LT5ibHVlWzJdKTsKPiArCXJraXNwMV93cml0ZShwYXJhbXMtPnJraXNwMSwgUktJU1AxX0NJRl9J
-U1BfQ0FDX0MsIHJlZ3ZhbCk7Cj4gKwo+ICsJcmVndmFsID0gRklFTERfUFJFUChSS0lTUDFfQ0lG
-X0lTUF9DQUNfWF9OT1JNX05GX01BU0ssIGFyZy0+eF9uZikgfAo+ICsJCSBGSUVMRF9QUkVQKFJL
-SVNQMV9DSUZfSVNQX0NBQ19YX05PUk1fTlNfTUFTSywgYXJnLT54X25zKTsKPiArCXJraXNwMV93
-cml0ZShwYXJhbXMtPnJraXNwMSwgUktJU1AxX0NJRl9JU1BfQ0FDX1hfTk9STSwgcmVndmFsKTsK
-PiArCj4gKwlyZWd2YWwgPSBGSUVMRF9QUkVQKFJLSVNQMV9DSUZfSVNQX0NBQ19ZX05PUk1fTkZf
-TUFTSywgYXJnLT55X25mKSB8Cj4gKwkJIEZJRUxEX1BSRVAoUktJU1AxX0NJRl9JU1BfQ0FDX1lf
-Tk9STV9OU19NQVNLLCBhcmctPnlfbnMpOwo+ICsJcmtpc3AxX3dyaXRlKHBhcmFtcy0+cmtpc3Ax
-LCBSS0lTUDFfQ0lGX0lTUF9DQUNfWV9OT1JNLCByZWd2YWwpOwo+ICt9Cj4gKwo+ICBzdGF0aWMg
-dm9pZAo+ICBya2lzcDFfaXNwX2lzcl9vdGhlcl9jb25maWcoc3RydWN0IHJraXNwMV9wYXJhbXMg
-KnBhcmFtcywKPiAgCQkJICAgIGNvbnN0IHN0cnVjdCBya2lzcDFfcGFyYW1zX2NmZyAqbmV3X3Bh
-cmFtcykKPiBAQCAtMjA4OSw2ICsyMTMyLDI1IEBAIHN0YXRpYyB2b2lkIHJraXNwMV9leHRfcGFy
-YW1zX3dkcihzdHJ1Y3Qgcmtpc3AxX3BhcmFtcyAqcGFyYW1zLAo+ICAJCQkJICAgICAgUktJU1Ax
-X0NJRl9JU1BfV0RSX0NUUkxfRU5BQkxFKTsKPiAgfQo+Cj4gK3N0YXRpYyB2b2lkIHJraXNwMV9l
-eHRfcGFyYW1zX2NhYyhzdHJ1Y3Qgcmtpc3AxX3BhcmFtcyAqcGFyYW1zLAo+ICsJCQkJICBjb25z
-dCB1bmlvbiBya2lzcDFfZXh0X3BhcmFtc19jb25maWcgKmJsb2NrKQo+ICt7Cj4gKwljb25zdCBz
-dHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfY2FjX2NvbmZpZyAqY2FjID0gJmJsb2NrLT5jYWM7Cj4g
-Kwo+ICsJaWYgKGNhYy0+aGVhZGVyLmZsYWdzICYgUktJU1AxX0VYVF9QQVJBTVNfRkxfQkxPQ0tf
-RElTQUJMRSkgewo+ICsJCXJraXNwMV9wYXJhbV9jbGVhcl9iaXRzKHBhcmFtcywgUktJU1AxX0NJ
-Rl9JU1BfQ0FDX0NUUkwsCj4gKwkJCQkJUktJU1AxX0NJRl9JU1BfQ0FDX0NUUkxfRU5BQkxFKTsK
-PiArCQlyZXR1cm47Cj4gKwl9Cj4gKwo+ICsJcmtpc3AxX2NhY19jb25maWcocGFyYW1zLCAmY2Fj
-LT5jb25maWcpOwo+ICsKPiArCWlmICgoY2FjLT5oZWFkZXIuZmxhZ3MgJiBSS0lTUDFfRVhUX1BB
-UkFNU19GTF9CTE9DS19FTkFCTEUpICYmCj4gKwkgICAgIShwYXJhbXMtPmVuYWJsZWRfYmxvY2tz
-ICYgQklUKGNhYy0+aGVhZGVyLnR5cGUpKSkKPiArCQlya2lzcDFfcGFyYW1fc2V0X2JpdHMocGFy
-YW1zLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RSTCwKPiArCQkJCSAgICAgIFJLSVNQMV9DSUZfSVNQ
-X0NBQ19DVFJMX0VOQUJMRSk7Cj4gK30KPiArCj4gIHR5cGVkZWYgdm9pZCAoKnJraXNwMV9ibG9j
-a19oYW5kbGVyKShzdHJ1Y3Qgcmtpc3AxX3BhcmFtcyAqcGFyYW1zLAo+ICAJCQkgICAgIGNvbnN0
-IHVuaW9uIHJraXNwMV9leHRfcGFyYW1zX2NvbmZpZyAqY29uZmlnKTsKPgo+IEBAIC0yMTg1LDYg
-KzIyNDcsMTAgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19oYW5kbGVy
-IHsKPiAgCQkuaGFuZGxlcgk9IHJraXNwMV9leHRfcGFyYW1zX3dkciwKPiAgCQkuZ3JvdXAJCT0g
-UktJU1AxX0VYVF9QQVJBTVNfQkxPQ0tfR1JPVVBfT1RIRVJTLAo+ICAJfSwKPiArCVtSS0lTUDFf
-RVhUX1BBUkFNU19CTE9DS19UWVBFX0NBQ10gPSB7Cj4gKwkJLmhhbmRsZXIJPSBya2lzcDFfZXh0
-X3BhcmFtc19jYWMsCj4gKwkJLmdyb3VwCQk9IFJLSVNQMV9FWFRfUEFSQU1TX0JMT0NLX0dST1VQ
-X09USEVSUywKPiArCX0sCj4gIH07Cj4KPiAgI2RlZmluZSBSS0lTUDFfUEFSQU1TX0JMT0NLX0lO
-Rk8oYmxvY2ssIGRhdGEpIFwKPiBAQCAtMjIxNSw2ICsyMjgxLDcgQEAgcmtpc3AxX2V4dF9wYXJh
-bXNfYmxvY2tfdHlwZXNfaW5mb1tdID0gewo+ICAJUktJU1AxX1BBUkFNU19CTE9DS19JTkZPKENP
-TVBBTkRfRVhQQU5ELCBjb21wYW5kX2N1cnZlKSwKPiAgCVJLSVNQMV9QQVJBTVNfQkxPQ0tfSU5G
-TyhDT01QQU5EX0NPTVBSRVNTLCBjb21wYW5kX2N1cnZlKSwKPiAgCVJLSVNQMV9QQVJBTVNfQkxP
-Q0tfSU5GTyhXRFIsIHdkciksCj4gKwlSS0lTUDFfUEFSQU1TX0JMT0NLX0lORk8oQ0FDLCBjYWMp
-LAo+ICB9Owo+Cj4gIHN0YXRpY19hc3NlcnQoQVJSQVlfU0laRShya2lzcDFfZXh0X3BhcmFtc19o
-YW5kbGVycykgPT0KPiBAQCAtMjQ3NCw2ICsyNTQxLDggQEAgdm9pZCBya2lzcDFfcGFyYW1zX2Rp
-c2FibGUoc3RydWN0IHJraXNwMV9wYXJhbXMgKnBhcmFtcykKPiAgCXJraXNwMV9pZV9lbmFibGUo
-cGFyYW1zLCBmYWxzZSk7Cj4gIAlya2lzcDFfcGFyYW1fY2xlYXJfYml0cyhwYXJhbXMsIFJLSVNQ
-MV9DSUZfSVNQX0RQRl9NT0RFLAo+ICAJCQkJUktJU1AxX0NJRl9JU1BfRFBGX01PREVfRU4pOwo+
-ICsJcmtpc3AxX3BhcmFtX2NsZWFyX2JpdHMocGFyYW1zLCBSS0lTUDFfQ0lGX0lTUF9DQUNfQ1RS
-TCwKPiArCQkJCVJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0VOQUJMRSk7Cj4gIH0KPgo+ICBzdGF0
-aWMgY29uc3Qgc3RydWN0IHJraXNwMV9wYXJhbXNfb3BzIHJraXNwMV92MTBfcGFyYW1zX29wcyA9
-IHsKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya2lzcDEv
-cmtpc3AxLXJlZ3MuaCBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3Jr
-aXNwMS1yZWdzLmgKPiBpbmRleCBmYmViMTg2Y2RlMGQ1Li44ZTI1NTM3NDU5YmJkIDEwMDY0NAo+
-IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmtpc3AxL3JraXNwMS1yZWdz
-LmgKPiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JraXNwMS9ya2lzcDEt
-cmVncy5oCj4gQEAgLTcyNCw2ICs3MjQsMjMgQEAKPiAgI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9X
-RFJfRE1JTl9TVFJFTkdUSF9NQVNLCQlHRU5NQVNLKDIwLCAxNikKPiAgI2RlZmluZSBSS0lTUDFf
-Q0lGX0lTUF9XRFJfRE1JTl9TVFJFTkdUSF9NQVgJCTE2VQo+Cj4gKy8qIENBQyAqLwo+ICsjZGVm
-aW5lIFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0VOQUJMRQkJQklUKDApCj4gKyNkZWZpbmUgUktJ
-U1AxX0NJRl9JU1BfQ0FDX0NUUkxfVl9DTElQX01PREUJR0VOTUFTSygyLCAxKQo+ICsjZGVmaW5l
-IFJLSVNQMV9DSUZfSVNQX0NBQ19DVFJMX0hfQ0xJUF9NT0RFCUdFTk1BU0soMywgMykKPiArI2Rl
-ZmluZSBSS0lTUDFfQ0lGX0lTUF9DQUNfQ09VTlRfU1RBUlRfSF9NQVNLCUdFTk1BU0soMTIsIDAp
-Cj4gKyNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0NPVU5UX1NUQVJUX1ZfTUFTSwlHRU5NQVNL
-KDI4LCAxNikKPiArI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9DQUNfQV9SRURfTUFTSwkJR0VOTUFT
-Syg4LCAwKQo+ICsjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0NBQ19BX0JMVUVfTUFTSwkJR0VOTUFT
-SygyNCwgMTYpCj4gKyNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0JfUkVEX01BU0sJCUdFTk1B
-U0soOCwgMCkKPiArI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9DQUNfQl9CTFVFX01BU0sJCUdFTk1B
-U0soMjQsIDE2KQo+ICsjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0NBQ19DX1JFRF9NQVNLCQlHRU5N
-QVNLKDgsIDApCj4gKyNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0NfQkxVRV9NQVNLCQlHRU5N
-QVNLKDI0LCAxNikKCkFsbCB0aGVzZSBtYXNrcyBmb3IgY29lZmZpY2llbnRzIDAsIDEgYW5kIDIg
-YXJlIGlkZW50aWNhbC4gTWF5YmUKI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9DQUNfUkVEX01BU0sJ
-CUdFTk1BU0soOCwgMCkKI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9DQUNfQkxVRV9NQVNLCQlHRU5N
-QVNLKDI0LCAxNikKCmlzIGVub3VnaAoKPiArI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9DQUNfWF9O
-T1JNX05GX01BU0sJR0VOTUFTSyg0LCAwKQo+ICsjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0NBQ19Y
-X05PUk1fTlNfTUFTSwlHRU5NQVNLKDE5LCAxNikKPiArI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9D
-QUNfWV9OT1JNX05GX01BU0sJR0VOTUFTSyg0LCAwKQo+ICsjZGVmaW5lIFJLSVNQMV9DSUZfSVNQ
-X0NBQ19ZX05PUk1fTlNfTUFTSwlHRU5NQVNLKDE5LCAxNikKPiArCj4gIC8qID09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0g
-Ki8KPiAgLyogICAgICAgICAgICAgICAgICAgICAgICAgICAgQ0lGIFJlZ2lzdGVycyAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAqLwo+ICAvKiA9PT09PT09PT09PT09PT09PT09PT09PT09PT09
-PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09ICovCj4gQEAgLTExOTYsOCAr
-MTIxMyw4IEBACj4gICNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX0EJCQkoUktJU1AxX0NJRl9J
-U1BfQ0FDX0JBU0UgKyAweDAwMDAwMDA4KQo+ICAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0NBQ19C
-CQkJKFJLSVNQMV9DSUZfSVNQX0NBQ19CQVNFICsgMHgwMDAwMDAwYykKPiAgI2RlZmluZSBSS0lT
-UDFfQ0lGX0lTUF9DQUNfQwkJCShSS0lTUDFfQ0lGX0lTUF9DQUNfQkFTRSArIDB4MDAwMDAwMTAp
-Cj4gLSNkZWZpbmUgUktJU1AxX0NJRl9JU1BfWF9OT1JNCQkJKFJLSVNQMV9DSUZfSVNQX0NBQ19C
-QVNFICsgMHgwMDAwMDAxNCkKPiAtI2RlZmluZSBSS0lTUDFfQ0lGX0lTUF9ZX05PUk0JCQkoUktJ
-U1AxX0NJRl9JU1BfQ0FDX0JBU0UgKyAweDAwMDAwMDE4KQo+ICsjZGVmaW5lIFJLSVNQMV9DSUZf
-SVNQX0NBQ19YX05PUk0JCShSS0lTUDFfQ0lGX0lTUF9DQUNfQkFTRSArIDB4MDAwMDAwMTQpCj4g
-KyNkZWZpbmUgUktJU1AxX0NJRl9JU1BfQ0FDX1lfTk9STQkJKFJLSVNQMV9DSUZfSVNQX0NBQ19C
-QVNFICsgMHgwMDAwMDAxOCkKPgo+ICAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0VYUF9CQVNFCQkJ
-MHgwMDAwMjYwMAo+ICAjZGVmaW5lIFJLSVNQMV9DSUZfSVNQX0VYUF9DVFJMCQkJKFJLSVNQMV9D
-SUZfSVNQX0VYUF9CQVNFICsgMHgwMDAwMDAwMCkKPiBkaWZmIC0tZ2l0IGEvaW5jbHVkZS91YXBp
-L2xpbnV4L3JraXNwMS1jb25maWcuaCBiL2luY2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmln
-LmgKPiBpbmRleCBiMmQyYTcxZjdiYWZmLi5kOGFjY2NhZGRkMGU5IDEwMDY0NAo+IC0tLSBhL2lu
-Y2x1ZGUvdWFwaS9saW51eC9ya2lzcDEtY29uZmlnLmgKPiArKysgYi9pbmNsdWRlL3VhcGkvbGlu
-dXgvcmtpc3AxLWNvbmZpZy5oCj4gQEAgLTk2Nyw2ICs5NjcsOTIgQEAgc3RydWN0IHJraXNwMV9j
-aWZfaXNwX3dkcl9jb25maWcgewo+ICAJX191OCB1c2VfaXJlZjsKPiAgfTsKPgo+ICsvKgo+ICsg
-KiBlbnVtIHJraXNwMV9jaWZfaXNwX2NhY19oX2NsaXBfbW9kZSAtIGhvcml6b250YWwgY2xpcHBp
-bmcgbW9kZQo+ICsgKgo+ICsgKiBAUktJU1AxX0NJRl9JU1BfQ0FDX0hfQ0xJUF9NT0RFXzRQWDog
-Ky8tIDQgcGl4ZWxzCj4gKyAqIEBSS0lTUDFfQ0lGX0lTUF9DQUNfSF9DTElQX01PREVfNF81UFg6
-ICsvLSA0LzUgcGl4ZWxzIGRlcGVuZGluZyBvbiBiYXllciBwb3NpdGlvbgo+ICsgKi8KPiArZW51
-bSBya2lzcDFfY2lmX2lzcF9jYWNfaF9jbGlwX21vZGUgewo+ICsJUktJU1AxX0NJRl9JU1BfQ0FD
-X0hfQ0xJUF9NT0RFXzRQWCA9IDAsCj4gKwlSS0lTUDFfQ0lGX0lTUF9DQUNfSF9DTElQX01PREVf
-NF81UFggPSAxLAo+ICt9Owo+ICsKPiArLyoqCj4gKyAqIGVudW0gcmtpc3AxX2NpZl9pc3BfY2Fj
-X3ZfY2xpcF9tb2RlIC0gdmVydGljYWwgY2xpcHBpbmcgbW9kZQo+ICsgKgo+ICsgKiBAUktJU1Ax
-X0NJRl9JU1BfQ0FDX1ZfQ0xJUF9NT0RFXzJQWDogKy8tIDIgcGl4ZWxzCj4gKyAqIEBSS0lTUDFf
-Q0lGX0lTUF9DQUNfVl9DTElQX01PREVfM1BYOiArLy0gMyBwaXhlbHMKPiArICogQFJLSVNQMV9D
-SUZfSVNQX0NBQ19WX0NMSVBfTU9ERV8zXzRQWDogKy8tIDMvNCBwaXhlbHMgZGVwZW5kaW5nIG9u
-IGJheWVyIHBvc2l0aW9uCj4gKyAqLwo+ICtlbnVtIHJraXNwMV9jaWZfaXNwX2NhY192X2NsaXBf
-bW9kZSB7Cj4gKwlSS0lTUDFfQ0lGX0lTUF9DQUNfVl9DTElQX01PREVfMlBYID0gMCwKPiArCVJL
-SVNQMV9DSUZfSVNQX0NBQ19WX0NMSVBfTU9ERV8zUFggPSAxLAo+ICsJUktJU1AxX0NJRl9JU1Bf
-Q0FDX1ZfQ0xJUF9NT0RFXzNfNFBYID0gMiwKPiArfTsKPiArCj4gKy8qKgo+ICsgKiBzdHJ1Y3Qg
-cmtpc3AxX2NpZl9pc3BfY2FjX2NvbmZpZyAtIGNocm9tYXRpYyBhYmVycmF0aW9uIGNvcnJlY3Rp
-b24gY29uZmlndXJhdGlvbgo+ICsgKgo+ICsgKiBUaGUgY29ycmVjdGlvbiBpcyBjYXJyaWVkIG91
-dCBieSBzaGlmdGluZyB0aGUgcmVkIGFuZCBibHVlIHBpeGVscyByZWxhdGl2ZQo+ICsgKiB0byB0
-aGUgZ3JlZW4gb25lcywgZGVwZW5kaW5nIG9uIHRoZSBkaXN0YW5jZSBmcm9tIHRoZSBvcHRpY2Fs
-IGNlbnRlcjoKClllcywgdGhlIGRpc3RhbmNlIHRvIHRoZSBjZW50ZXIgaXMgb25lIHBhcmFtZXRl
-ciwgYnV0IHRoZSBzaGlmdGluZwphbW91bnQgZGVwZW5kcyBvbiBvdGhlciB0aGluZ3MuIEkgd291
-bGQgZHJvcCB0aGUgbGFzdCBwYXJ0IG9mIHRoZQpzZW50ZW5jZSBhbmQgbW92ZSB0aGUgZGVzY3Jp
-cHRpb24gb2YgdGhlIHR3byBiZWxvdyBmaWVsZHMgYWZ0ZXIgdGhlCnRleHQKCj4gKyAqCj4gKyAq
-IEBoX2NvdW50X3N0YXJ0OiBob3Jpem9udGFsIGNvb3JkaW5hdGUgb2YgdGhlIG9wdGljYWwgY2Vu
-dGVyICgxMy1iaXQgdW5zaWduZWQgaW50ZWdlcjsgWzEsODE5MV0pCj4gKyAqIEB2X2NvdW50X3N0
-YXJ0OiB2ZXJ0aWNhbCBjb29yZGluYXRlIG9mIHRoZSBvcHRpY2FsIGNlbnRlciAoMTMtYml0IHVu
-c2lnbmVkIGludGVnZXI7IFsxLDgxOTFdKQoKc28gdGhlc2UgY291bGQgZ28ganVzdCBiZWZvcmUg
-QHhfbmYKCj4gKyAqCj4gKyAqIEZvciBlYWNoIHBpeGVsLCB0aGUgeC95IGRpc3RhbmNlcyBmcm9t
-IHRoZSBvcHRpY2FsIGNlbnRlciBhcmUgY2FsY3VsYXRlZCBhbmQKCkkgZm9yZ290OiBkaWQgd2Ug
-ZXN0YWJsaXNoIHRoYXQgdGhlIGNvcnJlY3Rpb24gaXMgYXBwbGllZCB0byB0aGUKZXVjbGlkZWFu
-IGRpc3RhbmNlIG9yIHRvIHggYW5kIHkgc2VwYXJhdGVseSA/Cgo+ICsgKiB0aGVuIHRyYW5zZm9y
-bWVkIGludG8gdGhlIFswLDI1NV0gcmFuZ2UgYmFzZWQgb24gdGhlIGZvbGxvd2luZyBmb3JtdWxh
-OgoKcy90cmFuc2Zvcm1lZC9ub3JtYWxpemVkID8KCj4gKyAqCj4gKyAqICAgKCgoZCA8PCA0KSA+
-PiBzKSAqIGYpID4+IDUKPiArICoKPiArICogd2hlcmUgYGRgIGlzIHRoZSBkaXN0YW5jZSwgYHNg
-IGFuZCBgZmAgYXJlIHRoZSBub3JtYWxpemF0aW9uIHBhcmFtZXRlcnM6CgpDYW4geW91IHVzZSAn
-bnMnIGFuZCAnbmYnIHRvIG1hdGNoIHRoZSBiZWxvdyA/Cgo+ICsgKgo+ICsgKiBAeF9uZjogaG9y
-aXpvbnRhbCBub3JtYWxpemF0aW9uIHNjYWxlIHBhcmFtZXRlciAoNS1iaXQgdW5zaWduZWQgaW50
-ZWdlcjsgWzAsMzFdKQo+ICsgKiBAeF9uczogaG9yaXpvbnRhbCBub3JtYWxpemF0aW9uIHNoaWZ0
-IHBhcmFtZXRlciAoNC1iaXQgdW5zaWduZWQgaW50ZWdlcjsgWzAsMTVdKQo+ICsgKgo+ICsgKiBA
-eV9uZjogdmVydGljYWwgbm9ybWFsaXphdGlvbiBzY2FsZSBwYXJhbWV0ZXIgKDUtYml0IHVuc2ln
-bmVkIGludGVnZXI7IFswLDMxXSkKPiArICogQHlfbnM6IHZlcnRpY2FsIG5vcm1hbGl6YXRpb24g
-c2hpZnQgcGFyYW1ldGVyICg0LWJpdCB1bnNpZ25lZCBpbnRlZ2VyOyBbMCwxNV0pCj4gKyAqCj4g
-KyAqIFRoZXNlIHBhcmFtZXRlcnMgc2hvdWxkIGJlIGNob3NlbiBiYXNlZCBvbiB0aGUgaW1hZ2Ug
-cmVzb2x1dGlvbiwgdGhlIHBvc2l0aW9uCj4gKyAqIG9mIHRoZSBvcHRpY2FsIGNlbnRlciwgYW5k
-IHRoZSBzaGFwZSBvZiBwaXhlbHM6IHNvIHRoYXQgbm8gbm9ybWFsaXplZCBkaXN0YW5jZQoKcy9w
-aXhlbHM6L3BpeGVscy8KCj4gKyAqIGlzIGxhcmdlciB0aGFuIDI1NS4gSWYgdGhlIHBpeGVscyBo
-YXZlIHNxdWFyZSBzaGFwZSwgdGhlIHR3byBzZXRzIG9mIHBhcmFtZXRlcnMKPiArICogc2hvdWxk
-IGJlIGVxdWFsLgo+ICsgKgo+ICsgKiBUaGUgYWN0dWFsIGFtb3VudCBvZiBjb3JyZWN0aW9uIGlz
-IGNhbGN1bGF0ZWQgd2l0aCBhIHRoaXJkIGRlZ3JlZSBwb2x5bm9taWFsOgo+ICsgKgo+ICsgKiAg
-IGNbMF0gKiByICsgY1sxXSAqIHJeMiArIGNbMl0gKiByXjMKPiArICoKPiArICogd2hlcmUgYGNg
-IGlzIHRoZSBzZXQgb2YgY29lZmZpY2llbnRzIGZvciB0aGUgZ2l2ZW4gY29sb3IsIGFuZCBgcmAg
-aXMgZGlzdGFuY2U6Cj4gKyAqCj4gKyAqIEByZWQ6IHJlZCBjb2VmZmljaWVudHMgKDUuNCB0d28n
-cyBjb21wbGVtZW50OyBbLTE2LDE1LjkzNzVdKQo+ICsgKiBAYmx1ZTogYmx1ZSBjb2VmZmljaWVu
-dHMgKDUuNCB0d28ncyBjb21wbGVtZW50OyBbLTE2LDE1LjkzNzVdKQo+ICsgKgo+ICsgKiBGaW5h
-bGx5LCB0aGUgYW1vdW50IGlzIGNsaXBwZWQgYXMgcmVxdWVzdGVkOgo+ICsgKgo+ICsgKiBAaF9j
-bGlwX21vZGU6IG1heGltdW0gaG9yaXpvbnRhbCBzaGlmdCAoZnJvbSBlbnVtIHJraXNwMV9jaWZf
-aXNwX2NhY19oX2NsaXBfbW9kZSkKPiArICogQHZfY2xpcF9tb2RlOiBtYXhpbXVtIHZlcnRpY2Fs
-IHNoaWZ0IChmcm9tIGVudW0gcmtpc3AxX2NpZl9pc3BfY2FjX3ZfY2xpcF9tb2RlKQo+ICsgKgo+
-ICsgKiBBIHBvc2l0aXZlIHJlc3VsdCB3aWxsIHNoaWZ0IGF3YXkgZnJvbSB0aGUgb3B0aWNhbCBj
-ZW50ZXIsIHdoaWxlIGEgbmVnYXRpdmUKPiArICogb25lIHdpbGwgc2hpZnQgdG93YXJkcyB0aGUg
-b3B0aWNhbCBjZW50ZXIuIEluIHRoZSBsYXR0ZXIgY2FzZSwgdGhlIHBpeGVsCj4gKyAqIHZhbHVl
-cyBhdCB0aGUgZWRnZXMgYXJlIGR1cGxpY2F0ZWQuCj4gKyAqLwo+ICtzdHJ1Y3Qgcmtpc3AxX2Np
-Zl9pc3BfY2FjX2NvbmZpZyB7Cj4gKwlfX3U4IGhfY2xpcF9tb2RlOwo+ICsJX191OCB2X2NsaXBf
-bW9kZTsKPiArCj4gKwlfX3UxNiBoX2NvdW50X3N0YXJ0Owo+ICsJX191MTYgdl9jb3VudF9zdGFy
-dDsKPiArCj4gKwlfX3UxNiByZWRbM107Cj4gKwlfX3UxNiBibHVlWzNdOwo+ICsKPiArCV9fdTgg
-eF9uZjsKPiArCV9fdTggeF9uczsKPiArCj4gKwlfX3U4IHlfbmY7Cj4gKwlfX3U4IHlfbnM7Cj4g
-K307Cj4gKwo+ICAvKi0tLS0tLS0tLS0gUEFSVDI6IE1lYXN1cmVtZW50IFN0YXRpc3RpY3MgLS0t
-LS0tLS0tLS0tKi8KPgo+ICAvKioKPiBAQCAtMTE2MSw2ICsxMjQ3LDcgQEAgZW51bSBya2lzcDFf
-ZXh0X3BhcmFtc19ibG9ja190eXBlIHsKPiAgCVJLSVNQMV9FWFRfUEFSQU1TX0JMT0NLX1RZUEVf
-Q09NUEFORF9FWFBBTkQsCj4gIAlSS0lTUDFfRVhUX1BBUkFNU19CTE9DS19UWVBFX0NPTVBBTkRf
-Q09NUFJFU1MsCj4gIAlSS0lTUDFfRVhUX1BBUkFNU19CTE9DS19UWVBFX1dEUiwKPiArCVJLSVNQ
-MV9FWFRfUEFSQU1TX0JMT0NLX1RZUEVfQ0FDLAo+ICB9Owo+Cj4gIC8qIEZvciBiYWNrd2FyZCBj
-b21wYXRpYmlsaXR5ICovCj4gQEAgLTE1MDcsNiArMTU5NCwyMiBAQCBzdHJ1Y3Qgcmtpc3AxX2V4
-dF9wYXJhbXNfd2RyX2NvbmZpZyB7Cj4gIAlzdHJ1Y3Qgcmtpc3AxX2NpZl9pc3Bfd2RyX2NvbmZp
-ZyBjb25maWc7Cj4gIH0gX19hdHRyaWJ1dGVfXygoYWxpZ25lZCg4KSkpOwo+Cj4gKy8qKgo+ICsg
-KiBzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfY2FjX2NvbmZpZyAtIFJrSVNQMSBleHRlbnNpYmxl
-IHBhcmFtcyBDQUMgY29uZmlnCj4gKyAqCj4gKyAqIFJrSVNQMSBleHRlbnNpYmxlIHBhcmFtZXRl
-cnMgQ0FDIGJsb2NrLgo+ICsgKiBJZGVudGlmaWVkIGJ5IDpjOnR5cGU6YFJLSVNQMV9FWFRfUEFS
-QU1TX0JMT0NLX1RZUEVfQ0FDYC4KPiArICoKPiArICogQGhlYWRlcjogVGhlIFJrSVNQMSBleHRl
-bnNpYmxlIHBhcmFtZXRlcnMgaGVhZGVyLCBzZWUKPiArICoJICAgIDpjOnR5cGU6YHJraXNwMV9l
-eHRfcGFyYW1zX2Jsb2NrX2hlYWRlcmAKPiArICogQGNvbmZpZzogQ0FDIGNvbmZpZ3VyYXRpb24s
-IHNlZQo+ICsgKgkgICAgOmM6dHlwZTpgcmtpc3AxX2NpZl9pc3BfY2FjX2NvbmZpZ2AKPiArICov
-Cj4gK3N0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19jYWNfY29uZmlnIHsKPiArCXN0cnVjdCBya2lz
-cDFfZXh0X3BhcmFtc19ibG9ja19oZWFkZXIgaGVhZGVyOwo+ICsJc3RydWN0IHJraXNwMV9jaWZf
-aXNwX2NhY19jb25maWcgY29uZmlnOwo+ICt9IF9fYXR0cmlidXRlX18oKGFsaWduZWQoOCkpKTsK
-PiArCj4gIC8qCj4gICAqIFRoZSBya2lzcDFfZXh0X3BhcmFtc19jb21wYW5kX2N1cnZlX2NvbmZp
-ZyBzdHJ1Y3R1cmUgaXMgY291bnRlZCB0d2ljZSBhcyBpdAo+ICAgKiBpcyB1c2VkIGZvciBib3Ro
-IHRoZSBDT01QQU5EX0VYUEFORCBhbmQgQ09NUEFORF9DT01QUkVTUyBibG9jayB0eXBlcy4KPiBA
-QCAtMTUzMiw3ICsxNjM1LDggQEAgc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX3dkcl9jb25maWcg
-ewo+ICAJc2l6ZW9mKHN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19jb21wYW5kX2Jsc19jb25maWcp
-CQkrXAo+ICAJc2l6ZW9mKHN0cnVjdCBya2lzcDFfZXh0X3BhcmFtc19jb21wYW5kX2N1cnZlX2Nv
-bmZpZykJCStcCj4gIAlzaXplb2Yoc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX2NvbXBhbmRfY3Vy
-dmVfY29uZmlnKQkJK1wKPiAtCXNpemVvZihzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfd2RyX2Nv
-bmZpZykpCj4gKwlzaXplb2Yoc3RydWN0IHJraXNwMV9leHRfcGFyYW1zX3dkcl9jb25maWcpCQkJ
-K1wKPiArCXNpemVvZihzdHJ1Y3Qgcmtpc3AxX2V4dF9wYXJhbXNfY2FjX2NvbmZpZykpCgpBbGwg
-bWlub3JzLCBwbGVhc2UgYWRkClJldmlld2VkLWJ5OiBKYWNvcG8gTW9uZGkgPGphY29wby5tb25k
-aUBpZGVhc29uYm9hcmQuY29tPgoKVGhhbmtzCiAgagoKPgo+ICAvKioKPiAgICogZW51bSBya3Np
-cDFfZXh0X3BhcmFtX2J1ZmZlcl92ZXJzaW9uIC0gUmtJU1AxIGV4dGVuc2libGUgcGFyYW1ldGVy
-cyB2ZXJzaW9uCj4gLS0KPiAyLjUzLjAKPgo+CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
-a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
-bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wed, Mar 25, 2026 at 03:01:03PM +0000, Robin Murphy wrote:
+> On 25/03/2026 4:13 am, Dmitry Torokhov wrote:
+> > On Thu, Mar 12, 2026 at 12:48:36PM +0000, Robin Murphy wrote:
+> > > On 2026-03-11 9:09 pm, Danilo Krummrich wrote:
+> > > > On Wed Mar 11, 2026 at 1:28 PM CET, Manivannan Sadhasivam wrote:
+> > > > > On Wed, Mar 11, 2026 at 12:46:03PM +0100, Danilo Krummrich wrote:
+> > > > > > On Wed Mar 11, 2026 at 6:24 AM CET, Manivannan Sadhasivam wrote:
+> > > > > > > I have a contrary view here. If just a single driver or lib doesn't handle async
+> > > > > > > probe, it cannot just force other drivers to not take the advantage of async
+> > > > > > > probe. As I said above, enabling async probe easily saves a few hunderd ms or
+> > > > > > > even more if there are more than one Root Port or Root Complex in an SoC.
+> > > > > > 
+> > > > > > Then the driver or lib has to be fixed / improved first or the driver core has
+> > > > > > to be enabled to deal with a case where PROBE_FORCE_SYNCHRONOUS is requested
+> > > > > > from an async path, etc.
+> > > > > > 
+> > > > > > In any case, applying the patch and breaking things (knowingly?) doesn't seem
+> > > > > > like the correct approach.
+> > > > > > 
+> > > > > > > I strongly agree with you here that the underlying issue should be fixed. But
+> > > > > > > the real impact to end users is not this splat, but not having the boot time
+> > > > > > > optimization that this patch brings in. As an end user, one would want their
+> > > > > > > systems to boot quickly and they wouldn't bother much about a harmless warning
+> > > > > > > splat appearing in the dmesg log.
+> > > > > > 
+> > > > > > You mean quickly booting into a "harmless" potential deadlock condition the
+> > > > > > warning splat tries to make people aware of? :)
+> > > > > > 
+> > > > > 
+> > > > > Hmm, I overlooked the built-as-module part where the deadlock could be possible
+> > > > > as indicated by the comment about the WARN_ON_ONCE().
+> > > > > 
+> > > > > But what is the path forward here? Do you want the phylib to fix the
+> > > > > request_module() call or fix the driver core instead?
+> > > > 
+> > > > Here are a few thoughts.
+> > > > 
+> > > > In general, I think the best would be to get rid of the (affected)
+> > > > PROBE_FORCE_SYNCHRONOUS cases.
+> > > > 
+> > > > Now, I guess this can be pretty hard for a PCI controller driver, as you can't
+> > > > really predict what ends up being probed from you async context, i.e. it could
+> > > > even be some other bus controller and things could even propagate further.
+> > > > 
+> > > > Not sure how big of a deal it is in practice though, there are not a lot of
+> > > > PROBE_FORCE_SYNCHRONOUS drivers (left), but note that specifying neither
+> > > > PROBE_FORCE_SYNCHRONOUS nor PROBE_PREFER_ASYNCHRONOUS currently results in
+> > > > synchronous by default.
+> > > > 
+> > > > (Also, quite some other PCI controller drivers do set PROBE_PREFER_ASYNCHRONOUS
+> > > > and apparently got lucky with it.)
+> > > > 
+> > > >   From a driver-core perspective I think we're rather limited on what we can do;
+> > > > we are already in async context at this point and can't magically go back to
+> > > > initcall context.
+> > > > 
+> > > > So, the only thing I can think of is to kick off work on a workqueue, which in
+> > > > the end would be the same as the deferred probe handling.
+> > > 
+> > > Hmm, in fact, isn't the deferred probe mechanism itself actually quite
+> > > appropriate? A suitable calling context isn't the most obvious "resource
+> > > provider" to wait for, but ultimately it's still a case of "we don't
+> > > have everything we need right now, but it's worth trying again soon".
+> > > I may have missed some subtleties, but my instinct is that it could
+> > > perhaps be as simple as something like this (completely untested).
+> > > 
+> > > Cheers,
+> > > Robin.
+> > > 
+> > > ----->8-----
+> > > 
+> > > diff --git a/drivers/base/dd.c b/drivers/base/dd.c
+> > > index bea8da5f8a3a..3c4a0207ae3f 100644
+> > > --- a/drivers/base/dd.c
+> > > +++ b/drivers/base/dd.c
+> > > @@ -954,6 +954,16 @@ static int __device_attach_driver(struct device_driver *drv, void *_data)
+> > >   	if (data->check_async && async_allowed != data->want_async)
+> > >   		return 0;
+> > > +	/*
+> > > +	 * Bus drivers may probe asynchronously, but be adding a child device
+> > > +	 * whose driver still wants a synchronous probe. In this case, just
+> > > +	 * defer it, to be triggered by the parent driver probe succeeding.
+> > > +	 */
+> > > +	if (!async_allowed && current_is_async()) {
+> > > +		driver_deferred_probe_add(dev);
+> > > +		return 0;
+> > > +	}
+> > 
+> > That means that you are kicking the majority devices (for now) into
+> > deferral path. I do not think this is optimal.
+> 
+> And probing drivers under conditions where they may go wrong or deadlock is
+> better? I've not yet had a chance to actually test this myself to see the
+> effect on timings, but whatever it might be, I can't imagine any *other*
+> method of re-serialising child driver probes could be significantly better
+> (or if it could be, that might represent some improvement we could make to
+> the deferred probe mechanism in general anyway).
+
+There is serious disconnect as to what asynchronous and synchronous
+probing means. You do not go "back" to synchronous probing.
+
+	/*
+	 * Indicates whether we are considering asynchronous probing or
+	 * not. Only initial binding after device or driver registration
+	 * (including deferral processing) may be done asynchronously, the
+	 * rest is always synchronous, as we expect it is being done by
+	 * request from userspace.
+	 */
+	bool check_async;
+
+So synchronous means that when you register device or driver we dun
+probe immediately on the same thread that registered said device or
+driver, while with async we _may_ schedule on a workqueue (but if the
+system has already scheduled too much async it will be probed
+synchronously or immediately).
+
+So in the case we are discussing the probing of phy device is indeed
+synchronous/immediate relative to the thread where the phy device is
+registered.
+
+> 
+> I have finally got a bit of time this afternoon to pick this up again, so
+> I'll have a play and try to finish the write-up capturing all the reasoning
+> so far (it's a long one...)
+> 
+> > Does phy really need to request modules synchronously (and on its own)?
+> > Why can't it rely on udev to load the modules and signal when phy
+> > devices are ready?
+> 
+> Getting hung up on what phylib does in this one particular case is rather
+> missing the point. There is a reason that we're still not forcing
+> async_probe on for everything by default. Many drivers will still not have
+> been tested and validated to handle it correctly, and while the majority of
+> latent issues will likely just be concurrency bugs which can be fixed with
+> better locking or whatever, even then we should be encouraging developers to
+> actively test and look for such bugs to make their drivers "async probe
+> clean", rather than knowingly enabling bugs to surface in the wild as weird
+> and subtle breakage on end-user systems.
+
+No. We have identified (at least IMO) that what phylib does is wrong. I
+am not advocating forcing this PCI host to be marked for asycn probing
+right now, before the phy issue is fixed, but I object to adding
+workarounds to driver core which hurt other cases and may lead to phylib
+never be fixed.
+
+> 
+> However, I imagine there will always remain some small minority of
+> PROBE_FORCE_SYNCHRONOUS drivers - either for niche legitimate technical
+> reasons, or just legacy drivers where updating them would take more effort
+> than it's worth - so the driver core surely needs the ability to not do the
+> wrong thing itself. That doesn't even need to be "optimal", it just needs to
+> be functionally correct.
+
+Again, your expectation of what sync probing means differs from what I
+had in mind when implementing it. PROBE_FORCE_SYNCHRONOUS is typically
+for drivers/modules that register both a device (typically a singleton)
+and a driver, and want to unregister both and free all resources when
+initialization fails for some reason. Think cases like PC keyboard
+controller.
+
+Thanks.
+
+-- 
+Dmitry
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
