@@ -4,75 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9BF1109C057
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 18:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18566109C05C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 20:46:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BWScxltxLK81K2kwcTmZm2bRkqcalvfy598yj6RZfhg=; b=RIEJ76WpdaS6ZGxNmIMJMDgrtq
-	Olud6KibNY1TuiqBp4Ph6T0t2BS+c2li+dSLHyqhAJTweWRZyoTLWtFvZDbKDwH/s/1jVHmbr5Bz1
-	r3Xn0RdG6DhovHosRb9/aBjmS45RbLD1/dcsJcq1Y7iOClC40cCNrunbAl2mz+/o8nKCMk5MeAX+e
-	5AY0vRQOqaOpU8o0llmh48LiomI3kfN3e34KZ8owPqMcyfgnMk52ueaWQcTB9g9l33/DUTuoui93C
-	OYlcxpkXbtERI1hGC4XXZhpAu5IRFWJ9cvmJpXXtDsj4hi1tmDmlNxbHKNsGWPykTGAWyQ/Ck4kAe
-	SvxByYNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8ix5GEXYwRyWiU5V2LcONVziGwVZju/FZDqp5r6HlfM=; b=wguh/IEya/RotO
+	HwI3SBGFylCpyoKJiCc8/1pSFgK054h2iejmh3UuwEw74Dcyb7xROUgh++nfH3BEJrq59JXPZkAw9
+	QSJ0Fa8CQ/LE/hXU43Mvytld081IyYq5CxQ2AKltUAE/85NKtcGosmcaOX5cIzY9Ch//j/Dj5BaDQ
+	R59wdWs/3KwdyEleNfQCv+dEpFiF7yNErTWtYmukfW2OccDA55wBLnMGoTBvnK0GGSYHx1POH5ts5
+	WKvfueon2afFwFRa29llbiGcrpWLJJpJEhl4iygr6WoDo2K3QohfWAaaiCnF+DmebJHdhNBZxF4iW
+	bv9C4IKKQkOuoRogLTBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5TFq-000000046Sy-1C8O;
-	Wed, 25 Mar 2026 18:46:58 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1w5V7j-00000004EJz-3YqH;
+	Wed, 25 Mar 2026 20:46:43 +0000
+Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5TFn-000000046SH-0LYT;
-	Wed, 25 Mar 2026 18:46:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1774464412;
-	bh=4BhKnDHxlKSMru2h+OBmbdE9nJuAzrXPd4R2KPATfNA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=GF6X0/cY68U7TcAA+jc86lgp+tJTdbOmYWAykONCLEOKDH3m1FbW0NVFAK8DfeNkk
-	 fWvPmJslpjaU9Buu53ZxlXmW/z4V8bR1GeMz7rxUufvJ9KRsIOy5wD4/ivcnRMpm0U
-	 5QqFdXGYl/GCr0FS3Rk7vEDWrlgT3GBlWPjHKuRg2zByCVhfzbyMHA/zEbFQ/k2S2P
-	 aRJeIMYweKB9Lv64uxT8xNH0PdZ0CCCVWrUIBqIY2ae4bM3GPRptCD+MWQP47/Hg/x
-	 pL/kKF5YTm5Qwrjuz0zec//cv4EOrh5jZgQPmiQch6D6x7/8u/yRfFk/6sGpSoRuJO
-	 +qkJpE3qTBBSQ==
-Received: from [IPv6:2606:6d00:15:e06b::c41] (unknown [IPv6:2606:6d00:15:e06b::c41])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6BA3917E5CBA;
-	Wed, 25 Mar 2026 19:46:51 +0100 (CET)
-Message-ID: <a9931f6b0568fa8c21b53a5c8ca93a9a90fed25d.camel@collabora.com>
-Subject: Re: [PATCH] media: verisilicon: AV1: Discard none supported profiles
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	kernel@collabora.com
-Date: Wed, 25 Mar 2026 14:46:49 -0400
-In-Reply-To: <20260325131956.18075-1-benjamin.gaignard@collabora.com>
-References: <20260325131956.18075-1-benjamin.gaignard@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1w5V7g-00000004EIW-3xQ3;
+	Wed, 25 Mar 2026 20:46:42 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
+	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=9QKg/ec1UB4Iqjz+3XvMVVCaBUJlpvPmNLrcDpzXquo=; b=Ve02YZRnNB03ruvQ/IjMJ/1ue1
+	Bi8GDv/IOoGR1ANMgT981Oj4zKj2iU195jiS8WXu+7B+X6xJnKauwJSR4031QIWEgH+2vTwfVQr6y
+	6Uce6PdLDE3m76fpnRsKUBhpTJScPz4WkdEti7wSHIpkJlDYs4ox/dK/urm14+6tM4h1b8TQhing0
+	q3JBKDYwRFu+WNMRY0DtkGZxWIuqCxaxHYQ6kgObXg6QaE2h1AxVEp6VucVunJ22eCyC+c/8oM7Sd
+	UH972dpzdlSDv5EZv13lys3OTKfnntfc2ax0H2xncCFzdbdlgsnc4buqoC6Go4sQrHDOJ9VVuLLZ2
+	JvH2jTZA==;
+Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:46352)
+	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.98.2)
+	(envelope-from <linux@armlinux.org.uk>)
+	id 1w5V7G-000000003sV-3Db4;
+	Wed, 25 Mar 2026 20:46:14 +0000
+Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
+	(envelope-from <linux@shell.armlinux.org.uk>)
+	id 1w5V7D-000000006M4-0GW4;
+	Wed, 25 Mar 2026 20:46:11 +0000
+Date: Wed, 25 Mar 2026 20:46:10 +0000
+From: "Russell King (Oracle)" <linux@armlinux.org.uk>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+	Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Christophe Roullier <christophe.roullier@foss.st.com>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Radu Rendec <rrendec@redhat.com>, linux-arm-msm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	Drew Fustini <dfustini@tenstorrent.com>,
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mips@vger.kernel.org, imx@lists.linux.dev,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH net-next v9 2/6] net: stmmac: qcom-ethqos: use generic
+ device properties
+Message-ID: <acRJkrKbF_lI03O4@shell.armlinux.org.uk>
+References: <20260316-qcom-sa8255p-emac-v9-0-c58934e76ff2@oss.qualcomm.com>
+ <20260316-qcom-sa8255p-emac-v9-2-c58934e76ff2@oss.qualcomm.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260316-qcom-sa8255p-emac-v9-2-c58934e76ff2@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_114655_269712_13AB2ADF 
-X-CRM114-Status: GOOD (  14.89  )
+X-CRM114-CacheID: sfid-20260325_134640_983933_03F4D349 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,90 +111,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3180468656325358985=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Mon, Mar 16, 2026 at 01:05:07PM +0100, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> 
+> In order to drop the dependency on CONFIG_OF, convert all device property
+> getters from OF-specific to generic device properties and stop pulling
+> in any linux/of.h symbols.
 
---===============3180468656325358985==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-5z62E6Ku7U3JD7cZZml0"
+Why is this desirable? Please see the recent discussion at
 
+https://lore.kernel.org/r/20260322-remove-device-find-by-of-node-v1-0-b72eb22a1215@gmail.com
 
---=-5z62E6Ku7U3JD7cZZml0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+specifically replies from Andrew and myself.
 
-Le mercredi 25 mars 2026 =C3=A0 14:19 +0100, Benjamin Gaignard a =C3=A9crit=
-=C2=A0:
-> AV1 hardware can only decode YUV420 pixel format. That means
-> that only profile 0 is supported. Discard all other profiles
-> when receiving AV1 sequence control.
->=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> ---
-> =C2=A0drivers/media/platform/verisilicon/hantro_drv.c | 2 ++
-> =C2=A01 file changed, 2 insertions(+)
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro_drv.c b/drivers/me=
-dia/platform/verisilicon/hantro_drv.c
-> index 2e81877f640f..12f98e7e7994 100644
-> --- a/drivers/media/platform/verisilicon/hantro_drv.c
-> +++ b/drivers/media/platform/verisilicon/hantro_drv.c
-> @@ -283,6 +283,8 @@ static int hantro_try_ctrl(struct v4l2_ctrl *ctrl)
-> =C2=A0
-> =C2=A0		if (sequence->bit_depth !=3D 8 && sequence->bit_depth !=3D 10)
-> =C2=A0			return -EINVAL;
-> +		if (sequence->seq_profile !=3D 0)
-> +			return -EINVAL;
+Merely wanting to drop a dependency is not a good enough reason for
+these kinds of conversions, because they in effect make the DT
+properties also apply to ACPI which may not be appropriate (note
+for example that MDIO busses are not represented in ACPI.)
 
-You should also add the missing control to better tell userspace what it ca=
-n and
-cannot do. Check MTK driver for reference, I think the same config can be u=
-sed:
-
-drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-...
-		.cfg =3D {
-			.id =3D V4L2_CID_MPEG_VIDEO_AV1_PROFILE,
-			.min =3D V4L2_MPEG_VIDEO_AV1_PROFILE_MAIN,
-			.def =3D V4L2_MPEG_VIDEO_AV1_PROFILE_MAIN,
-			.max =3D V4L2_MPEG_VIDEO_AV1_PROFILE_MAIN,
-		},
-...
-
-Nicolas
-
-> =C2=A0	}
-> =C2=A0
-> =C2=A0	return 0;
-
---=-5z62E6Ku7U3JD7cZZml0
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCacQtmQAKCRDZQZRRKWBy
-9Cy+AP4lqq9BCcDZOqXjBZ3yYGOfcfoXWeWE2KU70uAXcKsbpQD/bUl+RdDxPIY7
-yPwo6Fq713yfESsmKcVnHwPn9Tht5As=
-=z+Ou
------END PGP SIGNATURE-----
-
---=-5z62E6Ku7U3JD7cZZml0--
-
-
---===============3180468656325358985==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+-- 
+RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
+FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3180468656325358985==--
-
