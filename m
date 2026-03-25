@@ -4,102 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFEFF109C05C
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 20:52:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EC32106B504
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 21:06:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5+uPQRCzjBZjEKiwon+qM4jUaTcsvFrFbUbuMkTdTO8=; b=EfoAqHmqEDq+XB
-	CbOzxcPHJ0oH7hTPtiqo4TifEWNTJrCL4jqZCW1Joyf/+A4cPuJezFEd8QQxgXUnKslTnaFrmZHof
-	ufUlrog2EmrsLwpGYMnDJ0E5PvIZiO2U03Ee5gxKTg+ke3aHx/AawE8HKuzxe84E4yhO/R9ycLlv4
-	tvt1Yzf2k0T0Oo0Ny6j1oLAQqsUyLuMmAB8zACChl4B5OGQBpI299KU0SZxfwzPOm4snj/O+UY19Z
-	GJYadNNCCc86Rj4oCTvQr1SeUJyy719AZ35bkbfQnzZ0q3k9HALG98jhrqnsmAxMXVUVpAvLV/i8r
-	XoDMVg7J7DH1/vYlP6ew==;
+	List-Owner; bh=1xkCRSYy1ACA/bg8fnJ790RCkpF3lF6XA+6V8ZEqpDE=; b=tIahsqnrWl+ik1
+	IyTo8mfUgxfe2FFYDUBv1cL4n/ohW2gIiTKB1mqdZmqSM97UhLI1ERhBLinaOQqYSnHTbIj9hS/2i
+	YrmqiW6qnkV+YdqedtvTzgJCL3epJJvwrLXNFUAqLImdYZ1ML7Iqx8NrigxIFarzkYGnzkAe4f9AP
+	tDMORRQArGLTUeGRi17aiamEu/EY7YjdqkWuq729qB5VF+0dDFr/4oh+52owjE6Zoo9cg24B2QfNg
+	e2jwaAw/offKBLG1zldtGyBiEHSIAhgUhQwM0jd4x1BcJQyFJnuJ+R2zl6sqxCQSfsnWQcqyZRjAC
+	WKAK7vjNds0PNyAQSOaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5VDQ-00000004Egm-1itz;
-	Wed, 25 Mar 2026 20:52:36 +0000
-Received: from pandora.armlinux.org.uk ([2001:4d48:ad52:32c8:5054:ff:fe00:142])
+	id 1w5VR0-00000004FbD-3qMn;
+	Wed, 25 Mar 2026 21:06:38 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5VDN-00000004Efw-35Hc;
-	Wed, 25 Mar 2026 20:52:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=armlinux.org.uk; s=pandora-2019; h=Sender:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:
-	List-Help:List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=5TaF136hS7gyiN2INSsjbTVG4M1m+RcQW4RSzUAK8mc=; b=bJgocfdzLBKes2wMXa50BQ/Sgw
-	2VNxUldZJFRFO1DH1e3sWYkf+HpUKst8qeo6mEmxzisIlT9F643+8G7mP8W0cEG97CX9EddaPFnAx
-	0auvwtk71mLu472gb4M/pgwwwT7auS75QFoEuI3Ulc0t8Td1yqPpRlQhMRL9Q0sVOXjuT1KRASHvT
-	KyQkPoRHlhfR1LscoVZHueKBsDdovNbEjbfAFOMWWjTHfKoz7+lVqv6Pq5sNuqrikvfHErcf50ZxE
-	dLM4luhf9tuxdUXNx8G4p2TIcbxgKN3UURxz0Ib/Wm84DDDPrXllvWnYoO6lVBmszS+dAvfAa4kcZ
-	Cij15muw==;
-Received: from shell.armlinux.org.uk ([fd8f:7570:feb6:1:5054:ff:fe00:4ec]:36514)
-	by pandora.armlinux.org.uk with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.98.2)
-	(envelope-from <linux@armlinux.org.uk>)
-	id 1w5VD1-000000003uJ-1ODG;
-	Wed, 25 Mar 2026 20:52:11 +0000
-Received: from linux by shell.armlinux.org.uk with local (Exim 4.98.2)
-	(envelope-from <linux@shell.armlinux.org.uk>)
-	id 1w5VCy-000000006MD-0rz1;
-	Wed, 25 Mar 2026 20:52:08 +0000
-Date: Wed, 25 Mar 2026 20:52:08 +0000
-From: "Russell King (Oracle)" <linux@armlinux.org.uk>
-To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Cc: Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Rob Herring <robh@kernel.org>,
+	id 1w5VQz-00000004Faq-1ja9;
+	Wed, 25 Mar 2026 21:06:37 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6017760053;
+	Wed, 25 Mar 2026 21:06:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D777EC4CEF7;
+	Wed, 25 Mar 2026 21:06:35 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1774472796;
+	bh=EeIJxhoizL0VHrXFjuJlP/f+9rmJaR50OY4vHdMlwfE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=a6SmtO8KL/h5db7q0w193Qa/XVr9Xpj0JoGt7cCKgxbkcjf5umxxhimQBcbhq2Ot9
+	 c63j883PjdwCCLeUfd+Q1o5mS29QCsCYbWmOAp9lFKCNQEWs62JtUm/jrZziSkf0Eu
+	 f+W/BMlTeL66FX/vtrxIUcAmQZjFUt0rcR22rU6AJW/tMiMUCaPEcpmhQ2wEtElwGa
+	 /8QG9KCNoATgEYW0L0gPxL8qr/HZomFkBKHDz2v752E1yxfgLTaT5LLqoZ29S9Eyhh
+	 C6/hG59ugrHWkys5FRFOLDJJLj7SejybMisJox93kt8LXfgklQXFXcRXxKi2Cfy8N7
+	 2ifE6S3APHh0Q==
+Date: Wed, 25 Mar 2026 16:06:34 -0500
+From: Rob Herring <robh@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Frank Li <Frank.li@nxp.com>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
-	Chen-Yu Tsai <wens@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
-	Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
-	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
-	Romain Gantois <romain.gantois@bootlin.com>,
-	Geert Uytterhoeven <geert+renesas@glider.be>,
-	Magnus Damm <magnus.damm@gmail.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Christophe Roullier <christophe.roullier@foss.st.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Radu Rendec <rrendec@redhat.com>, linux-arm-msm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	Drew Fustini <dfustini@tenstorrent.com>,
-	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
-	linux-mips@vger.kernel.org, imx@lists.linux.dev,
-	linux-renesas-soc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
-	linux-riscv@lists.infradead.org,
-	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
-Subject: Re: [PATCH net-next v9 5/6] net: stmmac: qcom-ethqos: split power
- management context into a separate struct
-Message-ID: <acRK-F6TACsZqEhx@shell.armlinux.org.uk>
-References: <20260316-qcom-sa8255p-emac-v9-0-c58934e76ff2@oss.qualcomm.com>
- <20260316-qcom-sa8255p-emac-v9-5-c58934e76ff2@oss.qualcomm.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/2] media: dt-bindings: rockchip,rk3568-mipi-csi2:
+ add rk3588 compatible
+Message-ID: <20260325210634.GA3963190-robh@kernel.org>
+References: <20260305-rk3588-csi2rx-v3-0-754473981f39@collabora.com>
+ <20260305-rk3588-csi2rx-v3-1-754473981f39@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260316-qcom-sa8255p-emac-v9-5-c58934e76ff2@oss.qualcomm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_135233_776003_D9B595C7 
-X-CRM114-Status: GOOD (  11.40  )
+In-Reply-To: <20260305-rk3588-csi2rx-v3-1-754473981f39@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,24 +80,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Mar 16, 2026 at 01:05:10PM +0100, Bartosz Golaszewski wrote:
-> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+On Wed, Mar 25, 2026 at 11:25:34AM +0100, Michael Riesch wrote:
+> The RK3588 MIPI CSI-2 receivers are compatible to the ones found in
+> the RK3568.
+> Introduce a list of compatible variants and add the RK3588 variant to
+> it.
 > 
-> With match data split into general and power-management sections, let's
-> now do the same with runtime device data.
+> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  .../devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml   | 10 +++++++---
+>  1 file changed, 7 insertions(+), 3 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+> index 4ac4a3b6f406..3d3b3cd78884 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
+> @@ -16,9 +16,13 @@ description:
+>  
+>  properties:
+>    compatible:
+> -    enum:
+> -      - fsl,imx93-mipi-csi2
+> -      - rockchip,rk3568-mipi-csi2
+> +    oneOf:
+> +      - const: fsl,imx93-mipi-csi2
+> +      - const: rockchip,rk3568-mipi-csi2
 
-As I've already said, this conflicts with work that I have in progress,
-which will remove the serdes support from this driver _if_ we can get
-forward progress on the PCS bits from Mohd - that has become dependent
-on sorting out the MDIO bus clock which seems to have been totally
-broken in this driver for quite some time so that we can have confidence
-that any testing that is done is actually being done on a setup which is
-running within correct specification (and not running the MDIO bus at
-some insane speed that may lead to data corruption.)
+These 2 should be a single enum as they were before.
 
--- 
-RMK's Patch system: https://www.armlinux.org.uk/developer/patches/
-FTTP is here! 80Mbps down 10Mbps up. Decent connectivity at last!
+> +      - items:
+> +          - enum:
+> +              - rockchip,rk3588-mipi-csi2
+> +          - const: rockchip,rk3568-mipi-csi2
+>  
+>    reg:
+>      maxItems: 1
+> 
+> -- 
+> 2.39.5
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
