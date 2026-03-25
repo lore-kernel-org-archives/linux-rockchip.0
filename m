@@ -4,69 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AED4103A9A7
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 10:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF1DF103A9A8
+	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 10:58:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3B8TyVJnDy/ovIodFhSCP9RlDdI8ui0VesgdXMmUsGw=; b=KMbX7ASShxrDGS
-	m/qLsxpJezXI/lXHtJEMCGWA0TghxR2XMXwxhqUt52juK3tnQLmy08Ary94dSnyaoUMg3pMWLn2LH
-	nP06IQ7JnaCfFxJNuDiiejy4leDZZI6c+CFcaQhnT1GrKFoJ7lbl6FaRUPpn74ogT3O+XooixHrKd
-	F57k6wF5gjCHJYmP2dRinrPQzavIywJjvXYPe0DOxpPfAHwBw1muAGtNboLFy4V0jkoA77qImlBdz
-	g2elXmJ2ss2cTe75RtOHUJWiyMEys6EpPt3zlfBIGMRo+SoND9mkbiuD0/M5DxjPQ6Z3ETal/uBae
-	t0j7NnBw98zRp0ALt7ZA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=5AnJ20lZjeiAlamy4E6fuVVt9VyHQP9gTVZAMf+JpY0=; b=vMUaQzwM5omOgV
+	5NsIlyF/6ALaJXmkUHcime/DiiRpkn2MLWEgtbFvmVxkr6YL4Y+rAp1UEcjcxF3pSSsBAL0CiDJ74
+	KzFQwxg0Fj+PdAInRkDmKNELyWyoPq1yP7c05XF/gmB6JKs9LpF8W5TIbBVrLTRHGw9NI20usUCLw
+	MXH18ti765nQwiPbZviWqbtVeZxKTGlk3qzKn8nsUWOORGyMtguJIgU5THFwPuzC1u4PC1WukUUhk
+	BfdKnDgh8T3LIOQb9DStqpYNLJu3ps6xX4RJNZmSBXN/e8aNhHKWUwI/ord8LUof9BANZbLGdVL3V
+	dJbwMS6bJ5hJJ9fnhUfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Lsp-00000003Boi-0WRY;
-	Wed, 25 Mar 2026 10:54:43 +0000
+	id 1w5Lw7-00000003ByU-2xqt;
+	Wed, 25 Mar 2026 10:58:07 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5Lsm-00000003BoL-22yG
+	id 1w5Lw5-00000003BxZ-1oZz
 	for linux-rockchip@lists.infradead.org;
-	Wed, 25 Mar 2026 10:54:41 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774436069; cv=none; 
+	Wed, 25 Mar 2026 10:58:06 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1774436278; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=jGWxXoI4Fxqx9ftKhBp2mvazwVpUW0HDji9YuSV26ACBDCI+smoWI5oUdQsM6xlOZ+dEpGUqOwU152MGjeMqvujLR9kAD3tuFgAEMfZ1ytFzAyzM5lar6RjqUImkqh3CJpKswqjeKFiPhQevSFjQvlPQR/aVubUed69J/pn4tZ8=
+	b=Y7YCwHKzH8hiDAmnV1KUrd+IVN07UtPzFkqbD9FwE9D5lEDFGtb0pzQuy6wIWTTiyRrQA+9boVCvdlYQwC8J118KESfTl03jOaKpBWCAMObuNBdsqoQtNFWEwB8bM+nQuHNPleBHD9g3FEiVJwvp3MKB1+rFx5OWkQJVODGtVD4=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774436069; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=4R+g7a/6PRxwSQaBDvJIaVNLCDM/f6AmvMh/P5pv3zc=; 
-	b=kqldyP0bOC9wgr/ms0zIgDRjFFkizSYbwz0qa5l2VXyJWJvJdU+qVZfpUqfG4aidvJSefDc1qNYkDl+4yuT25mdRBY0jPFHGk6FZwac0f+dp4Dz1xTHKwStlmWGoZEfBPFhVf0Pwlnns+ww1Wz4QaPJ/oLG+87VRO6AHNBqgJBw=
+	t=1774436278; h=Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=LZX8KGo4PZ6B753XIW7wXx0NwuBo24mvyseB5KdfeiA=; 
+	b=CSLvxmGzf4i89ZEayN2s55qxcZIMlJhv2q1BTjRTfONKLbEW6Qrh/dyGxrlawwXo4KZz82vY+FMhWmK0XWpilb8+NLTmajP2yZ6zBspNjaf8DI5twM7KLFkLZviuq9kbvHmXPhXeX+vzEEoNk1Tmwiqn3KOnsPkDLaPj9GXGzbU=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=dmitry.osipenko@collabora.com;
 	dmarc=pass header.from=<dmitry.osipenko@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774436069;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774436277;
 	s=zohomail; d=collabora.com; i=dmitry.osipenko@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=4R+g7a/6PRxwSQaBDvJIaVNLCDM/f6AmvMh/P5pv3zc=;
-	b=GRGdFnKwIcf6go3L5npFnz2a/Iz+cN8J/ed8ULL/XMc8XDOLzPjCzpjlsR+877AK
-	/i0eIHBmUWVsDsvPUBxn96Nq8wYi3Lh7YjB4+QEKJON/yImImUaCFuKr68RDV51Lcet
-	pK+uPm1sy13oak2metBV9dMXgiOgU2/kP1v9Kho4=
-Received: by mx.zohomail.com with SMTPS id 1774436067747177.4963352124538;
-	Wed, 25 Mar 2026 03:54:27 -0700 (PDT)
-Message-ID: <d5939f86-d61c-42b1-a85a-e81b0a358240@collabora.com>
-Date: Wed, 25 Mar 2026 13:54:19 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] media: hdmirx: snps, rk: Fix HPD hold time
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
- Hans Verkuil <hverkuil@xs4all.nl>, Ross Cawston <ross@r-sc.ca>,
- kernel@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org
-References: <20260318192619.3910060-1-dmitry.osipenko@collabora.com>
- <abxfd7SdlaMWag_-@venus>
-Content-Language: en-US
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:MIME-Version:Content-Transfer-Encoding:Message-Id:Reply-To;
+	bh=LZX8KGo4PZ6B753XIW7wXx0NwuBo24mvyseB5KdfeiA=;
+	b=C3xDVnHmMoUC+rQxmG9E1JQGdTZt5KBGSMQtDER/26nRZ60Ab2ZVKuGGoUUlngr3
+	x0GgV++pKowKdzTmJZAgMWAJgRt4YkB8ukFwD6DHLEzDXJmuE74FaxMLTC37YmifT19
+	bwy5QQJ78qoC3xTCMy58YLRQGVaSW/k49DFv4cfg=
+Received: by mx.zohomail.com with SMTPS id 1774436275676558.7550111861934;
+	Wed, 25 Mar 2026 03:57:55 -0700 (PDT)
 From: Dmitry Osipenko <dmitry.osipenko@collabora.com>
-In-Reply-To: <abxfd7SdlaMWag_-@venus>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Ross Cawston <ross@r-sc.ca>
+Cc: kernel@collabora.com,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH v2] media: synopsys: hdmirx: Fix HPD lane hold time
+Date: Wed, 25 Mar 2026 13:57:42 +0300
+Message-ID: <20260325105742.63236-1-dmitry.osipenko@collabora.com>
+X-Mailer: git-send-email 2.53.0
+MIME-Version: 1.0
 X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_035440_603691_4F9085C1 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260325_035805_519868_C3F077BD 
+X-CRM114-Status: GOOD (  10.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,27 +80,42 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 3/19/26 23:45, Sebastian Reichel wrote:
-> Hi,
-> 
-> On Wed, Mar 18, 2026 at 10:26:19PM +0300, Dmitry Osipenko wrote:
->> Increase time of holding HPD pin low by 50ms. This fixes EDID change not
->> detected by sink/display side.
->>
->> Fixes: 7b59b132ad43 ("media: platform: synopsys: Add support for HDMI input driver")
->> Reported-by: Ross Cawston <ross@r-sc.ca>
->> Closes: https://lore.kernel.org/linux-rockchip/20260209061654.54757-1-ross@r-sc.ca/
->> Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
->> ---
-> 
-> The prefix in the patch subject should probably be
-> 'media: platform: synopsys: hdmirx:' or 'media: synopsys: hdmirx:'.
+Increase time of holding HPD lane low by 50ms. This fixes EDID change not
+detected by source/display side.
 
-Good catch
+Fixes: 7b59b132ad43 ("media: platform: synopsys: Add support for HDMI input driver")
+Reported-by: Ross Cawston <ross@r-sc.ca>
+Closes: https://lore.kernel.org/linux-rockchip/20260209061654.54757-1-ross@r-sc.ca/
+Signed-off-by: Dmitry Osipenko <dmitry.osipenko@collabora.com>
+---
 
+Changelog:
+
+v2: - Corrected commit title prefix as was suggested by Sebastian Reichel
+    - Corrected mixed up s/sink/source/ in the commit message.
+
+ drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+index 61ad20b18b8d..4c8957505a50 100644
+--- a/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
++++ b/drivers/media/platform/synopsys/hdmirx/snps_hdmirx.c
+@@ -506,9 +506,9 @@ static void hdmirx_hpd_ctrl(struct snps_hdmirx_dev *hdmirx_dev, bool en)
+ 	hdmirx_writel(hdmirx_dev, CORE_CONFIG,
+ 		      hdmirx_dev->hpd_trigger_level_high ? en : !en);
+ 
+-	/* 100ms delay as per HDMI spec */
++	/* 100ms delay as per HDMI spec + extra 50ms to cover internal delay */
+ 	if (!en)
+-		msleep(100);
++		msleep(100 + 50);
+ }
+ 
+ static void hdmirx_write_edid_data(struct snps_hdmirx_dev *hdmirx_dev,
 -- 
-Best regards,
-Dmitry
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
