@@ -4,53 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F55109E528
-	for <linux-rockchip@archiver.kernel.org>; Wed, 25 Mar 2026 23:41:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EAB84109E52B
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Mar 2026 01:08:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0BkPAs3a3SLGr4AhL0aGUkzzk68xwcsu7NVw+07NvLU=; b=PmnXVeQeX7RViH
-	lxPML77S/aGf4z0AmgVyT7cXQZMWyUdsLmd1tmM5Q2QhmK85psN2GBoegjVRGNWrvMt5ucsdrzQ98
-	dDsM5JNijvC1BMLS0X0adonevRkx1ukmqe4AECXazRkZZ7Ynz+wrUFglbFN2Q5i9xwGeUAtbA0FpJ
-	OUkJ3aGSyfnuxmxqGjAlKsbX+sqw5JbsKajeaomc/H2AtsHM0wLlsNgWYquHFzCfuPzUwMcbkMAje
-	p5gr0+HvNPi8OnHIz+rp0QaKOyMHKwur8evo7vOoDNigsuEsyngMccX3KTHbVypgTSsI1ysNlLap8
-	8b01+EuNSA06cjqRaR6A==;
+	List-Owner; bh=bd243dzBB3JYw9u6YxAgo9ZIOzCchJkxaov0DRYRqpU=; b=LfscItF5IBoR9w
+	2MpQsXOmvx7k5qhzNFvQKzGTRQ/cnYqq3m49N92cwgKXgJnG/AH35Nndewmf3ODZs4XApL/M4DNq0
+	mfIO0nRO48pF3aGPCm+E0BJUIVjzy0QCJDQmdpE3yQR5Omlr6oG+E2vTTNq8bUsWzyoQAqnMUK8+m
+	dAGP3pHbxU3gz4XWAgtvUxYRQhfLraKWXrxQN1HiVky2IM5FofKNREYLugwI5yH9b+hK8jmwaE5UO
+	Fpo5Ja5V6iRZ50h2NekhwYXdnAHP1W/xkWQoGEkp4leBmeXkSIWBXMKnYs1oBAx7w5wIdEVBw6Gy4
+	GlLNSRs9PdgBlnQ6ifPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5XrI-00000004RoB-0rDN;
-	Wed, 25 Mar 2026 23:41:56 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w5ZDQ-00000004VFk-48nK;
+	Thu, 26 Mar 2026 01:08:53 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5XrG-00000004RnS-0FUx;
-	Wed, 25 Mar 2026 23:41:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=b6yzGlttx+NXjSJf4aCL4qCZ2swewO2eS0YxkN2Iuaw=; b=M5lZcw4fBkUFqRe1eIpe6LvRwA
-	2ouXek52MBk/ibhN25yL4S394q/dCCjdw5Hs0EC13tfh7Irkc3ywd9nE4TCjFB9MYCYcEeOSDZ+qa
-	5eGiZ0Z+J3a3PSFRg24Tt98Nq7rpBx77Nu9SstJPtbAs+RDp4rsQ+Yl8qffT1Y7+CBZ9mCK0o21MR
-	4a8867X60jSEyOU5VUrxccGzTkxTQHi3StFomFYvQOVocQePOqtsCF60R2ZULlGPJSbJpkeO/6mMr
-	/5YQ4+LSO8TGOWyV+EMc9IqN2rFfN9vEbxSprZjKqyyfdeWSQlHW8O7hAyTkpbyfL1jJXrfAOMiee
-	qJVZgqlQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Pedro Alves <pta2002@pta2002.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Subject: Re: [PATCH RESEND v2] arm64: dts: rockchip: configure hdmirx in Rock 5 ITX
-Date: Thu, 26 Mar 2026 00:41:49 +0100
-Message-ID: <23047464.EfDdHjke4D@phil>
-In-Reply-To: <1331010f-1446-4892-9d81-2f18b60f6977@pta2002.com>
-References: <20260323-radxa-r5-itx-hdmirx-v2-1-c52501909577@pta2002.com>
- <3407927.44csPzL39Z@phil> <1331010f-1446-4892-9d81-2f18b60f6977@pta2002.com>
+	id 1w5ZDN-00000004VEr-2bLJ;
+	Thu, 26 Mar 2026 01:08:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=HZk9cX6zPb++VDwxFCjztWsZ6cPWXsFQhOd6PIpC+jg=; b=3k+TjSE4T5siYJvmjf+q67z7Bo
+	blgq/01N77awBnx7m8dxKS+XWCjvcdDITItvnD/oPHPgdpnl/fYTwqn9SZnLpumvD+4pQ9MuXPyJz
+	LLcgWn8WmSKGBEQCaDnMeONlaYVoPwlRLHNuJiDEDQk8r41BKPWSIExdHBN5qyXIf2iA=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1w5ZD0-00DNsG-6i; Thu, 26 Mar 2026 02:08:26 +0100
+Date: Thu, 26 Mar 2026 02:08:26 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Giuseppe Cavallaro <peppe.cavallaro@st.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Shawn Guo <shawnguo@kernel.org>, Fabio Estevam <festevam@gmail.com>,
+	Jan Petrous <jan.petrous@oss.nxp.com>, s32@nxp.com,
+	Mohd Ayaan Anwar <mohd.anwar@oss.qualcomm.com>,
+	Romain Gantois <romain.gantois@bootlin.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Christophe Roullier <christophe.roullier@foss.st.com>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Radu Rendec <rrendec@redhat.com>, linux-arm-msm@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
+	linux-arm-kernel@lists.infradead.org,
+	Drew Fustini <dfustini@tenstorrent.com>,
+	linux-sunxi@lists.linux.dev, linux-amlogic@lists.infradead.org,
+	linux-mips@vger.kernel.org, imx@lists.linux.dev,
+	linux-renesas-soc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+Subject: Re: [PATCH net-next v9 2/6] net: stmmac: qcom-ethqos: use generic
+ device properties
+Message-ID: <409265d8-532a-44d4-abc6-02ac5a19d286@lunn.ch>
+References: <20260316-qcom-sa8255p-emac-v9-0-c58934e76ff2@oss.qualcomm.com>
+ <20260316-qcom-sa8255p-emac-v9-2-c58934e76ff2@oss.qualcomm.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260316-qcom-sa8255p-emac-v9-2-c58934e76ff2@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260325_164154_102960_B41D98A9 
-X-CRM114-Status: GOOD (  23.89  )
+X-CRM114-CacheID: sfid-20260325_180849_682894_2FE290AE 
+X-CRM114-Status: GOOD (  17.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,46 +100,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgUGVkcm8sCgpBbSBNaXR0d29jaCwgMjUuIE3DpHJ6IDIwMjYsIDE1OjI0OjQ1IE1pdHRlbGV1
-cm9ww6Rpc2NoZSBOb3JtYWx6ZWl0IHNjaHJpZWIgUGVkcm8gQWx2ZXM6Cj4gSGksCj4gCj4gT24g
-MjQvMDMvMjAyNiAxNDoxOCwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4gPiBBbSBNb250YWcsIDIz
-LiBNw6RyeiAyMDI2LCAxMDoyNTozMyBNaXR0ZWxldXJvcMOkaXNjaGUgTm9ybWFsemVpdCBzY2hy
-aWViIFBlZHJvIEFsdmVzOgo+ID4+ICsmaGRtaV9yZWNlaXZlciB7Cj4gPj4gKwlwaW5jdHJsLTAg
-PSA8JmhkbWltMV9yeF9jZWMgJmhkbWltMV9yeF9ocGRpbiAmaGRtaW0xX3J4X3NjbCAmaGRtaW0x
-X3J4X3NkYSAmaGRtaXJ4X2RldD47Cj4gPj4gKwlwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+
-ID4+ICsJaHBkLWdwaW9zID0gPCZncGlvMSBSS19QQzYgR1BJT19BQ1RJVkVfTE9XPjsKPiA+IAo+
-ID4gYXMgc2FpZCBiZWZvcmUsIHBsZWFzZSBhbHNvIGFkZCBhIHBpbmN0cmwgc2V0dGluZyBmb3Ig
-dGhpcyBwaW4uCj4gPiAKPiA+IGdwaW8xX2M2IGlzIG5vdCBwYXJ0IG9mIHRoZSBtYWluIGhkbWly
-eCBzZXQgb2YgcGlucywgaGVuY2UgbmVlZHMgYW4KPiA+IGFkZGl0aW9uYWwgcGluY3RybCBlbnRy
-eSB0byBjb25maWd1cmUgaXQgYXMgZ3BpbyBhbmQgcG9zc2libHkgc2V0IGFueQo+ID4gYWRkaXRp
-b25hbCBwdWxsIHNldHRpbmdzLgo+ID4gCj4gPiBBbmQgeWVzIHRoZSBwaW5jdHJsLWRyaXZlciBk
-b2VzICJpbXBsY2l0bHkiIHNldCB0aGUgZ3Bpby1tb2RlIHdoZW4KPiA+IGEgZ3BpbyBpcyByZXF1
-ZXN0ZWQsIGJ1dCBvdXIgbW9yZSBtb2Rlcm4gYXBwcm9hY2ggaXMgdG8gYWx3YXlzIGhhdmUKPiA+
-IGEgcmVhbCBwaW5jdHJsIGVudHJ5IGV2ZW4gZm9yIGdwaW9zLgo+IAo+IEkgYW0gcHJvYmFibHkg
-Z2V0dGluZyBjb25mdXNlZCBieSB3aGF0IHlvdSBhcmUgYXNraW5nIGhlcmUsIGJ1dCBJIGRvbid0
-Cj4gdW5kZXJzdGFuZCB3aGF0IGV4YWN0bHkgSSBzaG91bGQgYWRkLiBUaGVyZSB3YXMgYWxyZWFk
-eSBhIHBpbmN0cmwgZm9yCj4gaGRtaXJ4X2RldCAod2hpY2ggaXMgd2hhdCB0aGUgZ3BpbzFfYzYg
-cGluIGlzKSBwcmVzZW50IGluIHRoZSBmaWxlLAo+IGhlbmNlIHdoeSBJIGRpZCBub3QgYWRkIGl0
-IGluIHRoaXMgcGF0Y2g6Cj4gCj4gJnBpbmN0cmwgewo+IAkvKiAuLi4gKi8KPiAJaGRtaXJ4IHsK
-PiAJCWhkbWlyeF9kZXQ6IGhkbWlyeC1kZXQgewo+IAkJCXJvY2tjaGlwLHBpbnMgPSA8MSBSS19Q
-QzYgUktfRlVOQ19HUElPICZwY2ZnX3B1bGxfbm9uZT47Cj4gCQl9Owo+IAl9Owo+IAkvKiAuLi4g
-Ki8KPiB9Owo+IAo+IExvb2tpbmcgYXQgdGhlIG90aGVyIGJvYXJkcywgdGhleSBkbyB0aGUgc2Ft
-ZSB0aGluZywgYnV0IHRoZXkgY2FsbCBpdAo+IGhkbWlyeC01di1kZXRlY3Rpb24gaW5zdGVhZCwg
-YnV0IGFzIGRpc2N1c3NlZCBpbiB2MSBvZiB0aGlzIHBhdGNoIEkKPiBlbmRlZCB1cCBrZWVwaW5n
-IHRoZSBkZXQgbmFtaW5nIHRvIG1hdGNoIHRoZSBzY2hlbWF0aWNzLgo+IAo+IFNvcnJ5IGlmIEkg
-YW0gbWlzc2luZyBzb21ldGhpbmcsIEkgZG9uJ3QgaGF2ZSBtdWNoIGV4cGVyaWVuY2Ugd2l0aCB0
-aGlzLAo+IHNvIEkgd291bGQgcmVhbGx5IGFwcHJlY2lhdGUgc29tZSBleHRyYSBpbmZvcm1hdGlv
-bi4KCllvdSBkaWRuJ3QgbWlzcyBhbnl0aGluZyAtIEkgZGlkIDotKSAuCgpOb3QgZmluZGluZyBh
-biBhZGRpdGlvbiB0byB0aGUgcGluY3RybCBkZWZpbml0aW9ucyBpbiB0aGUgcGF0Y2gKSSBtaXNy
-ZWFkIHRoZSAmaGRtaXJ4LWRldCByZWZlcmVuY2UgYXMgdGhlIG9uZSBkZWZpbmVkIGluIHRoZSBj
-b3JlCnJrMzU4OC1iYXNlLXBpbmN0cmwsIG5vdCByZWFsaXppbmcgdGhhdCB0aGUgcm9jazUtaXR4
-IG9uZSB3YXMKYWxyZWFkeSBleGlzdGluZyBpbiB0aGUgcm9jazUtaXR4IGR0cyBhbHJlYWR5LgoK
-ClNvcnJ5IGFib3V0IGNvbmZ1c2luZyB5b3UKSGVpa28KCgoKX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0Ckxp
-bnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5v
-cmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Mon, Mar 16, 2026 at 01:05:07PM +0100, Bartosz Golaszewski wrote:
+> From: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> 
+> In order to drop the dependency on CONFIG_OF, convert all device property
+> getters from OF-specific to generic device properties and stop pulling
+> in any linux/of.h symbols.
+> 
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@linaro.org>
+> Signed-off-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+> ---
+>  drivers/net/ethernet/stmicro/stmmac/Kconfig             | 2 +-
+>  drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c | 9 ++++-----
+>  2 files changed, 5 insertions(+), 6 deletions(-)
+> 
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/Kconfig b/drivers/net/ethernet/stmicro/stmmac/Kconfig
+> index 07088d03dbab5bd1abf66e9460613b839c1d565e..e2af4fdd654340d618477ed87d3889dbb9aab456 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/Kconfig
+> +++ b/drivers/net/ethernet/stmicro/stmmac/Kconfig
+> @@ -135,7 +135,7 @@ config DWMAC_MESON
+>  config DWMAC_QCOM_ETHQOS
+>  	tristate "Qualcomm ETHQOS support"
+>  	default ARCH_QCOM
+> -	depends on OF && (ARCH_QCOM || COMPILE_TEST)
+> +	depends on ARCH_QCOM || COMPILE_TEST
+>  	help
+>  	  Support for the Qualcomm ETHQOS core.
+
+Are you sure you want to do that?
+
+static int qcom_ethqos_probe(struct platform_device *pdev)
+{
+	struct device_node *np = pdev->dev.of_node;
+	const struct ethqos_emac_driver_data *data;
+	struct plat_stmmacenet_data *plat_dat;
+	struct stmmac_resources stmmac_res;
+	struct device *dev = &pdev->dev;
+	struct qcom_ethqos *ethqos;
+	int ret, i;
+
+	ret = stmmac_get_platform_resources(pdev, &stmmac_res);
+	if (ret)
+		return dev_err_probe(dev, ret,
+				     "Failed to get platform resources\n");
+
+	plat_dat = devm_stmmac_probe_config_dt(pdev, stmmac_res.mac);
+	if (IS_ERR(plat_dat)) {
+		return dev_err_probe(dev, PTR_ERR(plat_dat),
+				     "dt configuration failed\n");
+	}
+
+https://elixir.bootlin.com/linux/v6.19.9/source/drivers/net/ethernet/stmicro/stmmac/stmmac_platform.c#L684
+
+
+#else
+struct plat_stmmacenet_data *
+devm_stmmac_probe_config_dt(struct platform_device *pdev, u8 *mac)
+{
+	return ERR_PTR(-EINVAL);
+}
+#endif /* CONFIG_OF */
+
+It seems like this is just going to result in the probe failing with
+-EINVAL.
+
+	Andrew
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
