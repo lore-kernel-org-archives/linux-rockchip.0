@@ -4,112 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 798FD10A88FC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Mar 2026 17:58:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B90C210AB80E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Mar 2026 19:28:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kAnbbAMZNtDbuQ2wroui6k3HveMzWUxpurNv6otZbRM=; b=iJHVVq3RCN9WfX
-	4OxmraCf3olC94U77EZkg5uRHgEkO/SRmFF/UhEGwZK6jJzC1wv6Vf5w9tZ40nMls7iQMxnBgvbK4
-	pqOgywXkXYZZQvHeQNOxilTOWJ5DvJ/2088caaEA7tziGTaUH40SqfVJ1OogAC90XD0Fi28SiRRaz
-	lo4Nq0kN1NGR9UtdpICo88wwuOQWkqo/WAwTCPi5ghU/fVOWoA5GA1LUhWBPXy30aaqEQhltbBPAg
-	lXMpuvjJQkkWsxqamduc64hHGW5xuHtLK/cbgxIH/eKL6ngVrVWMzlSfVFvheBgwQqFfR3FGcJ16k
-	UcFc7Uf3tAAgP9TKRmWQ==;
+	List-Owner; bh=5odQYCLt08oVdKIItrmMdnyZZOHavu6pEHXZH6bGKJo=; b=uNQD6tzpZ99isU
+	eBQ8/JhJvsNqW/kymZquHWxwI2TSGkmDlwo49i17LC1SxhUJG38wJ9zwXf9lNU/k3e9601S4ITnH6
+	hCK95Uvq1Bbr3z++zE3QWSxJ/hCGf4sC4x2ldj4OKRUwUXMc8Bfvwy0100HesJYgs+TjmDSIMd97p
+	3wi5WDnk00YPBWwDLB2mdTK2PIPYeR3UHvKwmnWl6hWXTw2m6QKdiFhJdWhfPXCQqBN/SzEYCc7i7
+	nlcE+9sZ71RJGcYiz8K8h3EkEPK88/MvPI/E7Kj8lFF4brTpSvYnhykQuc67gnp5/ub8N0RKyV4vr
+	EWhA4YeRvImiDjpZPx0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5oyh-00000005zeL-3oCe;
-	Thu, 26 Mar 2026 17:58:43 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1w5qNe-0000000674c-19it;
+	Thu, 26 Mar 2026 19:28:34 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5oye-00000005zdi-1W7K;
-	Thu, 26 Mar 2026 17:58:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1774547920; x=1806083920;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=ZN1iuzw8T8W2bRviqNraUbLOrITrSm5KwXD+jmeiWWg=;
-  b=HAD0Dbh8FhnEzTz0TUYArZIvhYGi5SmBwnTpgdXqUpMdkhUQqkg79Vmh
-   TZ6jFRba0Jyz4vMdsgXW/9gQVpUbjyeXl2QoOdF6J+ABwoZEiy0nRAzJu
-   6EMIe15ipzoPkvICCBrTY/HOnjTbC5hqikkNH7YtEwqJ1JPDArVbNK4+Q
-   s+xC3s33S1CpEJgnkrfeoYhaKp4Q/n/BKTnfkvCX8hxms7ApV1qHkuhLg
-   yRaYgld79DYan0ZAPkS/0qfnGFfzTp1lBQgpMcmZ2LgSUQCNd1TuIH/QX
-   nYm4tVuZ/S20bgRmhBZeL6hF3QZjAZvL7Fd3kt426/ea94RDZZXmBCgXG
-   w==;
-X-CSE-ConnectionGUID: ZgtGQfHjQZ67tqjTcUsNHw==
-X-CSE-MsgGUID: 92+MZf9jSiGqQ8k6nYKb5w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11741"; a="85923287"
-X-IronPort-AV: E=Sophos;i="6.23,142,1770624000"; 
-   d="scan'208";a="85923287"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2026 10:58:38 -0700
-X-CSE-ConnectionGUID: QU8QSqOhQfqCPL3kMJ994A==
-X-CSE-MsgGUID: aPEZ8FAXSXOHe3ZqlAl2hA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,142,1770624000"; 
-   d="scan'208";a="229145609"
-Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.244.14])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Mar 2026 10:58:30 -0700
-Date: Thu, 26 Mar 2026 19:58:25 +0200
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Harry Wentland <harry.wentland@amd.com>,
-	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com,
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org,
-	Werner Sembach <wse@tuxedocomputers.com>,
-	Andri Yngvason <andri@yngvason.is>,
-	Marius Vlad <marius.vlad@collabora.com>
-Subject: Re: [PATCH v11 03/22] drm: Add new general DRM property "color
- format"
-Message-ID: <acVzwRyk_J24GrJ4@intel.com>
-References: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
- <20260324-color-format-v11-3-605559af4fb4@collabora.com>
- <acLDPYuaVI2-12JX@intel.com>
- <23910073.EfDdHjke4D@workhorse>
- <acLrv5hLyNss-Px5@intel.com>
- <20260325-neat-elegant-raven-ebc9ab@houat>
- <acPA60Ci3n_t__xF@intel.com>
- <20260325-magnificent-ultraviolet-oarfish-baefbc@houat>
- <acQsw3Wi_xVlBZ8d@intel.com>
- <20260326-pumpkin-goshawk-of-stamina-0ccb84@houat>
+	id 1w5qNb-0000000673c-2LY3;
+	Thu, 26 Mar 2026 19:28:32 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=P8q1b7BVCr0bxZwKjgU8Z7Ivc8vxFh7zx0HI/IRg014=; b=NmXGA9ydxp031MJXvgcF0ptzp7
+	XnxCZcHUteZX1hWuh3E/f7+WPpkpdHYHTGAs0t3XHOIesKna/h1MQCEtpDxqq5Aeu64B6rF4zPCHe
+	3Jief1YqMvdmf1FSJR7SQZO4vnkflxKLX7b01HSqpmpZXuLZoaT94whOqHimtZQVK0MBKyr/I4ihV
+	ed39NYWtlj7ywDMsyZPY58FuQ30fqgI+tCaujN3rw6lCsPbaKVpYzAFIbLxGbY6A8H0U/y9Z5fkpj
+	zsHWtwTIhTh2pXZZKcSLlS1xp3b6/DVvcNUfYfxAzMuD7QTCOxCrTUDiaXoco6w/oEPu6I2EghD0D
+	4cpvgQ4A==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 7/8] drm/bridge: synopsys: dw-dp: Unregister AUX channel on
+ bridge detach
+Date: Thu, 26 Mar 2026 20:28:02 +0100
+Message-ID: <2053748.usQuhbGJ8B@phil>
+In-Reply-To: <20260310-drm-rk-fixes-v2-7-645ecfb43f49@collabora.com>
+References: <20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com>
+ <20260310-drm-rk-fixes-v2-7-645ecfb43f49@collabora.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260326-pumpkin-goshawk-of-stamina-0ccb84@houat>
-X-Patchwork-Hint: comment
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_105840_472469_4D4571CF 
-X-CRM114-Status: GOOD (  49.10  )
+X-CRM114-CacheID: sfid-20260326_122831_617451_69C7E797 
+X-CRM114-Status: GOOD (  13.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,190 +71,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Mar 26, 2026 at 06:02:47PM +0100, Maxime Ripard wrote:
-> On Wed, Mar 25, 2026 at 08:43:15PM +0200, Ville Syrj=E4l=E4 wrote:
-> > On Wed, Mar 25, 2026 at 03:56:58PM +0100, Maxime Ripard wrote:
-> > > On Wed, Mar 25, 2026 at 01:03:07PM +0200, Ville Syrj=E4l=E4 wrote:
-> > > > On Wed, Mar 25, 2026 at 09:24:27AM +0100, Maxime Ripard wrote:
-> > > > > On Tue, Mar 24, 2026 at 09:53:35PM +0200, Ville Syrj=E4l=E4 wrote:
-> > > > > > On Tue, Mar 24, 2026 at 08:10:11PM +0100, Nicolas Frattaroli wr=
-ote:
-> > > > > > > On Tuesday, 24 March 2026 18:00:45 Central European Standard =
-Time Ville Syrj=E4l=E4 wrote:
-> > > > > > > > On Tue, Mar 24, 2026 at 05:01:07PM +0100, Nicolas Frattarol=
-i wrote:
-> > > > > > > > > +enum drm_connector_color_format {
-> > > > > > > > > +	/**
-> > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_AUTO: The driver or disp=
-lay protocol
-> > > > > > > > > +	 * helpers should pick a suitable color format. All imp=
-lementations of a
-> > > > > > > > > +	 * specific display protocol must behave the same way w=
-ith "AUTO", but
-> > > > > > > > > +	 * different display protocols do not necessarily have =
-the same "AUTO"
-> > > > > > > > > +	 * semantics.
-> > > > > > > > > +	 *
-> > > > > > > > > +	 * For HDMI, "AUTO" picks RGB, but falls back to YCbCr =
-4:2:0 if the
-> > > > > > > > > +	 * bandwidth required for full-scale RGB is not availab=
-le, or the mode
-> > > > > > > > > +	 * is YCbCr 4:2:0-only, as long as the mode and output =
-both support
-> > > > > > > > > +	 * YCbCr 4:2:0.
-> > > > > > > > > +	 *
-> > > > > > > > > +	 * For display protocols other than HDMI, the recursive=
- bridge chain
-> > > > > > > > > +	 * format selection picks the first chain of bridge for=
-mats that works,
-> > > > > > > > > +	 * as has already been the case before the introduction=
- of the "color
-> > > > > > > > > +	 * format" property. Non-HDMI bridges should therefore =
-either sort their
-> > > > > > > > > +	 * bus output formats by preference, or agree on a unif=
-ied auto format
-> > > > > > > > > +	 * selection logic that's implemented in a common state=
- helper (like
-> > > > > > > > > +	 * how HDMI does it).
-> > > > > > > > > +	 */
-> > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_AUTO =3D 0,
-> > > > > > > > > +
-> > > > > > > > > +	/**
-> > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_RGB444: RGB output format
-> > > > > > > > > +	 */
-> > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_RGB444,
-> > > > > > > > > +
-> > > > > > > > > +	/**
-> > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR444: YCbCr 4:4:4 ou=
-tput format (ie.
-> > > > > > > > > +	 * not subsampled)
-> > > > > > > > > +	 */
-> > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR444,
-> > > > > > > > > +
-> > > > > > > > > +	/**
-> > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR422: YCbCr 4:2:2 ou=
-tput format (ie.
-> > > > > > > > > +	 * with horizontal subsampling)
-> > > > > > > > > +	 */
-> > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR422,
-> > > > > > > > > +
-> > > > > > > > > +	/**
-> > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR420: YCbCr 4:2:0 ou=
-tput format (ie.
-> > > > > > > > > +	 * with horizontal and vertical subsampling)
-> > > > > > > > > +	 */
-> > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR420,
-> > > > > > > > =
-
-> > > > > > > > Seems like this should document what the quantization range
-> > > > > > > > should be for each format.
-> > > > > > > > =
-
-> > > > > > > =
-
-> > > > > > > I don't think so? If you want per-component bit depth values,
-> > > > > > > DRM_FORMAT_* defines would be the appropriate values to use. =
-This
-> > > > > > > enum is more abstract than that, and is there to communicate
-> > > > > > > YUV vs. RGB and chroma subsampling, with bit depth being hand=
-led
-> > > > > > > by other properties.
-> > > > > > > =
-
-> > > > > > > If you mean the factor used for subsampling, then that'd only=
- be
-> > > > > > > relevant if YCBCR410 was supported where one chroma plane isn=
-'t
-> > > > > > > halved but quartered in resolution. I suspect 4:1:0 will never
-> > > > > > > be added; no digital display protocol standard supports it to=
- my
-> > > > > > > knowledge, and hopefully none ever will.
-> > > > > > =
-
-> > > > > > No, I mean the quantization range (16-235 vs. 0-255 etc).
-> > > > > > =
-
-> > > > > > The i915 behaviour is that YCbCr is always limited range,
-> > > > > > RGB can either be full or limited range depending on the =
-
-> > > > > > "Broadcast RGB" property and other related factors.
-> > > > > =
-
-> > > > > So far the HDMI state has both the format and quantization range =
-as
-> > > > > different fields. I'm not sure we need to document the range in t=
-he
-> > > > > format field, maybe only mention it's not part of the format but =
-has a
-> > > > > field of its own?
-> > > > =
-
-> > > > I think we only have it for RGB (on some drivers only?). For YCbCr
-> > > > I think the assumption is limited range everywhere.
-> > > > =
-
-> > > > But I'm not really concerned about documenting struct members.
-> > > > What I'm talking about is the *uapi* docs. Surely userspace
-> > > > will want to know what the new property actually does so the
-> > > > uapi needs to be documented properly. And down the line some
-> > > > new driver might also implement the wrong behaviour if there
-> > > > is no clear specification.
-> > > =
-
-> > > Ack
-> > > =
-
-> > > > So I'm thinking (or perhaps hoping) the rule might be something lik=
-e:
-> > > > - YCbCr limited range =
-
-> > > > - RGB full range if "Broadcast RGB" property is not present
-> > > =
-
-> > > Isn't it much more complicated than that for HDMI though? My
-> > > recollection was that any VIC but VIC1 would be limited range, and
-> > > anything else full range?
-> > =
-
-> > Do we have some driver that implements the CTA-861 CE vs. IT mode
-> > logic but doesn't expose the "Broadcast RGB" property? I was hoping
-> > those would always go hand in hand now.
-> =
-
-> I'm not sure. i915 and the HDMI state helpers handle it properly (I
-> think?) but it looks like only vc4 registers the Broadcast RGB property
-> and uses the HDMI state helpers.
-> =
-
-> And it looks like amdgpu registers Broadcast RGB but doesn't use
-> drm_default_rgb_quant_range() which seems suspicious?
-
-If they want just manual full vs. limited then they should
-limit the property to not expose the "auto" option at all.
-
-amdgpu also ties this in with the "colorspace" property, which
-originally in i915 only controlled the infoframes/etc. But on
-amdgpu it now controls various aspects of output color
-transformation. The end result is that the property is a complete
-mess with most of the values making no sense. And for whatever
-reason everyone involved refused to remove/deprecate the
-nonsensical values :/
-
-Looks like this series should make sure the documentation for
-the "colorspace" property is in sync with the new property
-as well. Currently now it's giving conflicting information.
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCA5LiBNw6RyeiAyMDI2LCAyMzo0NDozNSBNaXR0ZWxldXJvcMOkaXNjaGUgTm9y
+bWFsemVpdCBzY2hyaWViIENyaXN0aWFuIENpb2NhbHRlYToKPiBUaGUgRGlzcGxheVBvcnQgQVVY
+IGNoYW5uZWwgZ2V0cyBpbml0aWFsaXplZCBhbmQgcmVnaXN0ZXJlZCBkdXJpbmcKPiBkd19kcF9i
+aW5kKCksIGJ1dCBpdCBpcyBuZXZlciB1bnJlZ2lzdGVyZWQsIHdoaWNoIG1heSBsZWFkIHRvIHJl
+c291cmNlCj4gbGVha3MgYW5kL29yIHVzZS1hZnRlci1mcmVlOgo+IAo+IFsgIDIyNC42NjEzNzFd
+IEJVRzogS0FTQU46IHNsYWItdXNlLWFmdGVyLWZyZWUgaW4gZGV2aWNlX2lzX2RlcGVuZGVudCsw
+eGUwLzB4MmIwCj4gWyAgMjI0LjY2MjAxNV0gUmVhZCBvZiBzaXplIDggYXQgYWRkciBmZmZmMDAw
+MTFhZWU4NTUwIGJ5IHRhc2sgbW9kcHJvYmUvNjU4Cj4gLi4uCj4gWyAgMjI0LjY2Mjc5Nl0gIGRl
+dmljZV9pc19kZXBlbmRlbnQrMHhlMC8weDJiMAo+IFsgIDIyNC42NjI4MDJdICBkZXZpY2VfaXNf
+ZGVwZW5kZW50KzB4MTA4LzB4MmIwCj4gWyAgMjI0LjY2MjgwOF0gIGRldmljZV9saW5rX2FkZCsw
+eDFmOC8weDEwYjAKPiBbICAyMjQuNjYyODEzXSAgZGV2bV9vZl9waHlfZ2V0X2J5X2luZGV4KzB4
+MTIwLzB4MjAwCj4gWyAgMjI0LjY2MjgxOV0gIGR3X2RwX2JpbmQrMHgzNGMvMHhiMTAgW2R3X2Rw
+XQo+IFsgIDIyNC42NjI4MzBdICBkd19kcF9yb2NrY2hpcF9iaW5kKzB4MTk0LzB4MjUwIFtyb2Nr
+Y2hpcGRybV0KPiBbICAyMjQuNjYyODY0XSAgY29tcG9uZW50X2JpbmRfYWxsKzB4M2E4LzB4NzIw
+Cj4gWyAgMjI0LjY2Mjg2OV0gIHJvY2tjaGlwX2RybV9iaW5kKzB4MTIwLzB4MzkwIFtyb2NrY2hp
+cGRybV0KPiBbICAyMjQuNjYyODk5XSAgdHJ5X3RvX2JyaW5nX3VwX2FnZ3JlZ2F0ZV9kZXZpY2Ur
+MHg3NmMvMHg4MzgKPiBbICAyMjQuNjYyOTA0XSAgY29tcG9uZW50X21hc3Rlcl9hZGRfd2l0aF9t
+YXRjaCsweDFmNC8weDIzMAo+IFsgIDIyNC42NjI5MDldICByb2NrY2hpcF9kcm1fcGxhdGZvcm1f
+cHJvYmUrMHg0MjAvMHg1MzggW3JvY2tjaGlwZHJtXQo+IFsgIDIyNC42NjI5MzldICBwbGF0Zm9y
+bV9wcm9iZSsweGU4LzB4MTY4Cj4gWyAgMjI0LjY2Mjk0NV0gIHJlYWxseV9wcm9iZSsweDM0MC8w
+eDgyOAo+IFsgIDIyNC42NjI5NTBdICBfX2RyaXZlcl9wcm9iZV9kZXZpY2UrMHgyZTAvMHgzNTAK
+PiBbICAyMjQuNjYyOTU0XSAgZHJpdmVyX3Byb2JlX2RldmljZSsweDgwLzB4MTQwCj4gWyAgMjI0
+LjY2Mjk1OV0gIF9fZHJpdmVyX2F0dGFjaCsweDM5OC8weDQ2MAo+IFsgIDIyNC42NjI5NjRdICBi
+dXNfZm9yX2VhY2hfZGV2KzB4ZTAvMHgxOTgKPiBbICAyMjQuNjYyOTY4XSAgZHJpdmVyX2F0dGFj
+aCsweDUwLzB4NjgKPiBbICAyMjQuNjYyOTcyXSAgYnVzX2FkZF9kcml2ZXIrMHgyYTAvMHg0YzAK
+PiBbICAyMjQuNjYyOTc3XSAgZHJpdmVyX3JlZ2lzdGVyKzB4Mjk0LzB4MzYwCj4gWyAgMjI0LjY2
+Mjk4Ml0gIF9fcGxhdGZvcm1fZHJpdmVyX3JlZ2lzdGVyKzB4N2MvMHg5OAo+IFsgIDIyNC42NjI5
+ODddICByb2NrY2hpcF9kcm1faW5pdCsweGM0LzB4ZmY4IFtyb2NrY2hpcGRybV0KPiAuLi4KPiAK
+PiBVbnJlZ2lzdGVyIHRoZSBBVVggYWRhcHRlciBvbiBicmlkZ2UgZGV0YWNoLgoKdGhhdCBzb3Vu
+ZHMgc29ydCBvZiBhc3ltbWV0cmljYWwgdGhvdWdoLiBkcm1fYnJpZGdlX2Z1bmNzIGhhcyBhdHRh
+Y2ggYW5kCmRldGFjaCBjYWxsYmFja3MgYW5kIHRoZSBjb21wb25lbnQtZnJhbWV3b3JrIGFsc28g
+aGFzIGJpbmQgYW5kIHVuYmluZApjYWxsYmFja3MuCgpUaGlzIG1pZ2h0IGNhdXNlIGNvbmZ1c2lv
+biBsYXRlciBvbiBJIGd1ZXNzLCBlc3BlY2lhbGx5IGFzIEkgZG9uJ3Qga25vdwppZiB0aGVyZSBj
+b3VsZCBiZSBhIGJyaWRnZSBhdHRhY2gsIGFmdGVyIHRoZSBkZXRhY2ggdGhhdCB1bnJlZ2lzdGVy
+cyB0aGUKYXV4IGFkYXB0ZXIuCgpMb29raW5nIGF0IHRoZSBBbmFsb2dpeERQIGZvciBleGFtcGxl
+LCBpdCBkb2VzIHRoZSB0aGUgcmVnaXN0ZXIgYW5kCnVucmVnaXN0ZXIgaW4gdGhlIGJpbmQvdW5i
+aW5kIGNhbGxiYWNrcyBvZiB0aGUgY29yZSBkcml2ZXIuCgpTbyBJIGd1ZXNzIHRoZSBpbiBteSBl
+eWVzIGNsZWFuZXIgd2F5IHdvdWxkIGJlIHRvIGludHJvZHVjZSBhCmR3X2RwX3VuYmluZCgpIGZ1
+bmN0aW9uIGFuZCBwdXQgdGhlIGF1eCB1bnJlZ2lzdGVyIHRoZXJlPwoKQXQgbGVhc3QgdGhhdCB3
+YXksIGV2ZXJ5dGhpbmcgd291bGQgYmUgYXQgdGhlIHNhbWUgImxldmVsIi4KCgpIZWlrbwoKCgpf
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2Nr
+Y2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRw
+Oi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
