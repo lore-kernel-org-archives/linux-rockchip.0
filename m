@@ -4,55 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40D3410AB83D
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 14:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B7C710AB830
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 14:21:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=30F0ZNq8LTKXQQmJHSXkzaMrVAmKaOSt/vvystdMfTM=; b=SvJDyZF1fqLmer
-	sKwplFEoMCU3dvZuSk/EyLiuVaPJ+rXzct/fsqVvQKfwTC1cMGY0RqRUqRRfxTpOi9lxa3Fb4vCor
-	50ZF4zRCEeQneI4TB7VJzpCzepWfxEgthn/hW3xzfStBkT9G3dy4qFfFtra1DZ/+ehvLKJiSJfkaN
-	YOU16IqeWN+fuV8kzXyezuGCRhc9fLsBzICe/62CBopTZ+YUwon1eRhybfO8uBC00O7GTVZJjAlWS
-	AMlahm2y3uaFgUvkBx/HG1V2qrpAWeSveB1X8Mgl1gCxYTyRe/AWEb+tF4aSxgnuEKIWaZPKiOOse
-	Ej4grQeBsJ8YscfDyvlQ==;
+	List-Owner; bh=3qr/c5Ufncm49gYMQy5cfiurOq8E/zAGtKmZ99Fefps=; b=sQafyglf2g1BkE
+	kdzAbBcFelmC05PzsdD4EOK0rrPqGmnOkEpuyim9SRAqWvMliFgS1r617j8QXt6pjeQ+14TxnK+8i
+	H1CY1wHpg8FuDAFUrCOT/KjPXMS7V4PfUFRUBnyJpbiJLc7YjocpGnYwTS3G5wHtCTJA039+Wo4AT
+	FlJfob07BxITP3vP7GIi9WujdvrhWbAPaSKB5agp2saMKcyCHRG2cfGBnY4HS0OTpOHGpIQY0Fip+
+	0dEAIANQY1DnjZL1RqdpnVw00EDAY14Wbk7F15dL3yn4TveKiS8MJdvHtnbyXtooNCQKxhc+ibs00
+	9adNYPBPkluRf4L+glYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w67xd-00000007a2M-0DLv;
-	Fri, 27 Mar 2026 14:14:53 +0000
-Received: from mail-m49228.qiye.163.com ([45.254.49.228])
+	id 1w683q-00000007b9I-07K1;
+	Fri, 27 Mar 2026 14:21:18 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w67xa-00000007a0x-2Och
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Mar 2026 14:14:52 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 389480261;
-	Fri, 27 Mar 2026 22:14:46 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v2] mmc: sdhci-dwcmshc: Refactor Rockchip platform data for controller revisions
-Date: Fri, 27 Mar 2026 22:14:35 +0800
-Message-Id: <1774620875-18258-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9d2fa5c4c309cckunmc15641eacac6bb
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5KHlZCTU9MGk0eSkpCGUtWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=PlC5TIHakuBN7qT6WNh9RtfxaYt/lidF/CASZGV+sV3f+72z1QaPyuur1bctsEUe0nBvioCHvY89M+CJCiqDiyYU/DO2mrpkfc1HX5ntd2xj99rJqLqwjKMS322USUumf1hj8VUaLZ25Nlj6NswfiIYnGlk3Gzbkc331n8MIzA4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=gFgoEUV9L8JDZIBojAxp3TVgf/l7jRPLQy0YDO/RzPQ=;
-	h=date:mime-version:subject:message-id:from;
+	id 1w683m-00000007b7c-1T2J;
+	Fri, 27 Mar 2026 14:21:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1774621270;
+	bh=DurxzAWMVmUfvm6R3SbJKFIGxokQNpjEf3KA/bMfMiw=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ZEawk3NHlwo3wKnP6M+wy3Ui9SRkzYldPxhOqXwGRILCWD4Hosph0aYHTz2AalXyS
+	 y9XVyuS6KLVCOk1GjL9xDPBE6HRqLkXc2Fw5pyTeSyEfcnUo+qY+0MUmfMbMofIzaC
+	 0POwii+8yFQgtdD4ypweBgUtTQIgx+O25zwRwQ7AukTiDIm5w7kLUEu8jMyGdQbMXv
+	 yEwC2wIhCje6MbPSVJTHvI1EQxmrKgLrbcGHiTAALQBjF91tt7UQo2N2t+ovtwkaTO
+	 Jb3VSIbIGz3QjZiY+9As4UJW5LY0HFAhnZEUwXeSwntML7gTVtvbb1FUWVWjO10ICT
+	 YCCpebG/dXuSg==
+Received: from jupiter.universe (dyndsl-091-248-085-253.ewe-ip-backbone.de [91.248.85.253])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 459AE17E46AB;
+	Fri, 27 Mar 2026 15:21:10 +0100 (CET)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id EB4D048002A; Fri, 27 Mar 2026 15:21:09 +0100 (CET)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Fri, 27 Mar 2026 15:21:06 +0100
+Subject: [PATCH] MAINTAINERS: Add Rockchip keyword matching
+MIME-Version: 1.0
+Message-Id: <20260327-maintainers-rockchip-keyword-v1-1-7f4634f761a6@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAFGSxmkC/x3MPQqEMBBA4avI1A7EZP3Bq4hFiKMOYiITcVeCd
+ zds8YqveQkiCVOEvkggdHHk4DOqsgC3Wr8Q8pQNWulGGd3ibtmfOZKIEtzmVj5wo/sbZELbqdp
+ VtTbzx0BeHEIz//77YXyeF4SBtYVuAAAA
+X-Change-ID: 20260327-maintainers-rockchip-keyword-a805c1523f43
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1387;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=DurxzAWMVmUfvm6R3SbJKFIGxokQNpjEf3KA/bMfMiw=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnGklVwa7R0qjXnc9g7Yo0b5P3ZBNyqNXvTC
+ C3XoFxYoP3XCIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJpxpJVAAoJENju1/PI
+ O/qaGVUP/3QPlZJpFPHgPrB8a2IXh17ZrFEor+4kn0UN1XSyAXs/qkCtU4TZ+jaCndEIxH3scs+
+ BBpEaRzBV2BJYBHcQF5Dw/crJ4lwXo9etFRzyYMuALMilx5Z0cm7KyEv7xiLfWLEJJqgqkuvCjV
+ 29NmGv+yZw3PbD3g1wB1JJ3ew21NiuLbK5R+W/JzGiiG7Tj55s+n+nBB9zwXeN1FdyfP1iisJbs
+ zvI1jIg3aLxfVD/Ofsmv0cSUP1ui53N/DPypnztH01aasODjgs+vz/a2TrHUgdwYPI/GSKqgYjP
+ 1j0SR5obmzZoVUFezrRMN6kudVB22ufIkDMGEsOl/YpPS+R/Rz7VUeMm8j4tnj2H81BTsM6Bz/i
+ ssjuKTXE3hrEtzcbNUW+tGwqN+yzG/2BxUuJcq5YV5FckoSCjFNR84lfamVTjOROhk1PvDM5mTt
+ 8Y1PWetEAjwq8NQnl67+hlwklgt9L/sZ4ZgLvREgUJdzN7Gtc57QWRKukoyEF+Huzf0B7K+CJXu
+ QyaJ4WSgpvaII2tRijs8d30BE/Y8zg+PTRyNJFbd9fUnf64YreNvK5GXhP+7n4aun4jXoU65FUf
+ 7IVk7i30rCQm2MOaFzozxWGzecJ89I3P6Y/rsFBoEzlRGj/eX/ZA4ONexHsijtI42zUl7Ba8kUy
+ RHArAGLRzJeC5l22M5Xs1vw==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_071451_255402_AEDA2290 
-X-CRM114-Status: GOOD (  16.84  )
+X-CRM114-CacheID: sfid-20260327_072114_567058_56A915E6 
+X-CRM114-Status: GOOD (  11.98  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,203 +90,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver previously used an enum (dwcmshc_rk_type) to distinguish
-platforms like the RK3568 and RK3588 based on DT compatible names.
-This approach is inflexible, scales poorly for future revisions or
-mixed-revision platforms, and conflates SoC names with controller
-revisions. One example is RK3576 which lists "rockchip,rk3588-dwcmshc"
-as a secondary compatible string just in order to claim it uses the
-same controller revision as RK3588. This is confusing and makes it
-error-prone to add new SoC support.
+Add keyword based matching for 'ARM/Rockchip SoC support'. This will
+match rockchip, Rockchip, RockChip and ROCKCHIP separated by any
+whitespace character or underscores.
 
-Introduces a new struct rockchip_pltfm_data containing a dedicated
-revision field. The old enum is removed, and all code paths are
-updated to use the revision-based data.
+The goal is to match arm64 defconfig patches, which should go through
+the Rockchip tree as they right now only match the LKML and thus are
+easily lost. The keyword matching is quite good for this, since it
+also applies to the commit message and the config options itself might
+not give any hint about being relevant for Rockchip.
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
+This is not perfect (people need to write good commit messages), but
+should improve the current situation quite a bit.
+---
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Changes in v2:
-- update commit msg
-- document the revision field
-- re-order the Rockchip plftm data
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 55af015174a5..9f036f812823 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3416,6 +3416,8 @@ F:	drivers/i2c/busses/i2c-rk3x.c
+ F:	drivers/net/ethernet/stmicro/stmmac/dwmac-rk.c
+ F:	sound/soc/rockchip/
+ N:	rockchip
++K:	\b[Rr]ock[Cc]hip\b
++K:	(?:\b|_)ROCKCHIP(?:\b|_)
+ 
+ ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES
+ M:	Krzysztof Kozlowski <krzk@kernel.org>
 
- drivers/mmc/host/sdhci-of-dwcmshc.c | 92 +++++++++++++++++++++++--------------
- 1 file changed, 57 insertions(+), 35 deletions(-)
+---
+base-commit: 2e930174c99bf75c71f898779f3ce777d7db6fd1
+change-id: 20260327-maintainers-rockchip-keyword-a805c1523f43
 
-diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-index a91b3e7..aae7656 100644
---- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-+++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-@@ -278,14 +278,8 @@
- #define PHY_DELAY_CODE_EMMC		0x17
- #define PHY_DELAY_CODE_SD		0x55
- 
--enum dwcmshc_rk_type {
--	DWCMSHC_RK3568,
--	DWCMSHC_RK3588,
--};
--
- struct rk35xx_priv {
- 	struct reset_control *reset;
--	enum dwcmshc_rk_type devtype;
- 	u8 txclk_tapnum;
- };
- 
-@@ -330,6 +324,16 @@ struct k230_pltfm_data {
- 	u32 write_prot_bit;
- };
- 
-+struct rockchip_pltfm_data {
-+	struct dwcmshc_pltfm_data dwcmshc_pdata;
-+	/*
-+	 * The controller hardware has two known revisions documented internally:
-+	 * - Revision 0: Exclusively used by RK3566 and RK3568 SoCs.
-+	 * - Revision 1: Implemented in all other Rockchip SoCs, including RK3576, RK3588, etc.
-+	 */
-+	int revision;
-+};
-+
- static void dwcmshc_enable_card_clk(struct sdhci_host *host)
- {
- 	u16 ctrl;
-@@ -749,6 +753,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
- 	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
- 	struct rk35xx_priv *priv = dwc_priv->priv;
-+	const struct rockchip_pltfm_data *rockchip_pdata = to_pltfm_data(dwc_priv, rockchip);
- 	u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
- 	u32 extra, reg;
- 	int err;
-@@ -816,7 +821,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	 * we must set it in higher speed mode.
- 	 */
- 	extra = DWCMSHC_EMMC_DLL_DLYENA;
--	if (priv->devtype == DWCMSHC_RK3568)
-+	if (rockchip_pdata->revision == 0)
- 		extra |= DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
- 	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
- 
-@@ -842,7 +847,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	    host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
- 		txclk_tapnum = priv->txclk_tapnum;
- 
--	if ((priv->devtype == DWCMSHC_RK3588) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
-+	if ((rockchip_pdata->revision == 1) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
- 		txclk_tapnum = DLL_TXCLK_TAPNUM_90_DEGREES;
- 
- 		extra = DLL_CMDOUT_SRC_CLK_NEG |
-@@ -898,11 +903,6 @@ static int dwcmshc_rk35xx_init(struct device *dev, struct sdhci_host *host,
- 	if (!priv)
- 		return -ENOMEM;
- 
--	if (of_device_is_compatible(dev->of_node, "rockchip,rk3588-dwcmshc"))
--		priv->devtype = DWCMSHC_RK3588;
--	else
--		priv->devtype = DWCMSHC_RK3568;
--
- 	priv->reset = devm_reset_control_array_get_optional_exclusive(mmc_dev(host->mmc));
- 	if (IS_ERR(priv->reset)) {
- 		err = PTR_ERR(priv->reset);
-@@ -2115,30 +2115,52 @@ static const struct cqhci_host_ops rk35xx_cqhci_ops = {
- 	.set_tran_desc	= dwcmshc_set_tran_desc,
- };
- 
--static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
--	.pdata = {
--		.ops = &sdhci_dwcmshc_rk35xx_ops,
--		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
--			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
--		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
--			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
-+	.dwcmshc_pdata = {
-+		.pdata = {
-+			.ops = &sdhci_dwcmshc_rk35xx_ops,
-+			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+		},
-+		.cqhci_host_ops = &rk35xx_cqhci_ops,
-+		.init = dwcmshc_rk35xx_init,
-+		.postinit = dwcmshc_rk35xx_postinit,
- 	},
--	.cqhci_host_ops = &rk35xx_cqhci_ops,
--	.init = dwcmshc_rk35xx_init,
--	.postinit = dwcmshc_rk35xx_postinit,
-+	.revision = 0,
- };
- 
--static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
--	.pdata = {
--		.ops = &sdhci_dwcmshc_rk35xx_ops,
--		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
--			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
--		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
--			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
-+	.dwcmshc_pdata = {
-+		.pdata = {
-+			.ops = &sdhci_dwcmshc_rk35xx_ops,
-+			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+		},
-+		.cqhci_host_ops = &rk35xx_cqhci_ops,
-+		.init = dwcmshc_rk35xx_init,
-+		.postinit = dwcmshc_rk3576_postinit,
-+	},
-+	.revision = 1,
-+};
-+
-+static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3588_pdata = {
-+	.dwcmshc_pdata = {
-+		.pdata = {
-+			.ops = &sdhci_dwcmshc_rk35xx_ops,
-+			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+		},
-+		.cqhci_host_ops = &rk35xx_cqhci_ops,
-+		.init = dwcmshc_rk35xx_init,
-+		.postinit = dwcmshc_rk35xx_postinit,
- 	},
--	.cqhci_host_ops = &rk35xx_cqhci_ops,
--	.init = dwcmshc_rk35xx_init,
--	.postinit = dwcmshc_rk3576_postinit,
-+	.revision = 1,
- };
- 
- static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
-@@ -2309,7 +2331,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
- 	},
- 	{
- 		.compatible = "rockchip,rk3588-dwcmshc",
--		.data = &sdhci_dwcmshc_rk35xx_pdata,
-+		.data = &sdhci_dwcmshc_rk3588_pdata,
- 	},
- 	{
- 		.compatible = "rockchip,rk3576-dwcmshc",
-@@ -2317,7 +2339,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
- 	},
- 	{
- 		.compatible = "rockchip,rk3568-dwcmshc",
--		.data = &sdhci_dwcmshc_rk35xx_pdata,
-+		.data = &sdhci_dwcmshc_rk3568_pdata,
- 	},
- 	{
- 		.compatible = "snps,dwcmshc-sdhci",
+Best regards,
 -- 
-2.7.4
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
 
 _______________________________________________
