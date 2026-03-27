@@ -4,116 +4,190 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DF9410F2867
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 20:24:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60B0510F2867
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 20:29:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:References:Message-ID
+	:In-Reply-To:From:Subject:Cc:To:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KqP+sXM8wLEYtQi+YOy/OB1EcD1pBg2JDB6tMd1ajVM=; b=sMdosWRcZrMhjs
-	Uel3iB7AaxXvxhMFu4jZvvZFXRhMUhWUrYwtcN8hMEM+wVdV47LuHUHsfeTGcHtB5BWlyJ1iOdG+E
-	Y+Tj9bCYvrFSuuF3dJnfXTlvBgCc5B2tvShcLwD2DoWkXHDWikdtVb4Wd3gKWZbuZ9O3hwf3kmGTG
-	R7OwGjnvt96c62pgdz4/L2hg3yA2hSpNRWdBQuFcWiE1iCZ9zm2h+o3GNxSU5MhF/lqYiDf8cmV4h
-	dHyB/zltV9Q+wiTXEiSXgEaLS3eMvygzsUDargFmPlo16Zv/YGxz/+M74S6bTTh3RgUWGJv2pGCqm
-	QKHJAnSj5uuuizWsWAcA==;
+	List-Owner; bh=oleaBxQhTilierrVjsClE4wCanGaL3lk4RhLLU2tGew=; b=t3zOGKFNqeuzWR
+	8c+f25N+C5/FwIcrVBXjPU+c48jsC/GYp/6mvNVOg3a8DzlEpAwPvXH40HpiI0CUmMgMdluSiSHnF
+	kXkaE/3THJHpIvtwxGRmgfEaSWGQU+5dEtXnYKc/Xxmrg9Z+WC4HQQTu+sDyk6PkQiAAS0G2GWw0E
+	7aMllV/CGhyU1/zy2seV57L7wS2PpIgHjN1JY5r8rpAwj5lJeqNZhxVN2uEZcWVRAklcsvrQZCTfo
+	43X+V+toTKTqD+gbD/XC54KPFIFhwUBRUvsiLYHZuoL+L5gaZhfCoLttovvXxURvScwIQkus2wbU+
+	W+h4tcBzX3l2XnfbT0xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6Dj3-000000089oo-3aa0;
-	Fri, 27 Mar 2026 20:24:13 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1w6DoZ-00000008AOj-20U0;
+	Fri, 27 Mar 2026 20:29:55 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6Dj0-000000089n5-2CUI
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Mar 2026 20:24:12 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-66b51bfe5f3so1545365a12.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 27 Mar 2026 13:24:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774643047; cv=none;
-        d=google.com; s=arc-20240605;
-        b=lwkZ/pHCpj9GCRDGjMRTpTaRl6X1mZFqSYuDoj2WBu/w0vPMKLH4iVAzLVTJITsrFD
-         Qpvdbq10aWY8zTWao3q9HZw5W6gnUDBT25WcwFXzf1SYEM08rFTivMFN+lhrNhPgYnzR
-         tUvnDNxUKadleFhFCMtJyaUfPbE0zdbYAKEsfNu/NPoa92kws0g7UwGbLHmWfRvKA41z
-         1nf2xXzj3hxH1As0rEKWFYg6z1aiVUStg0kFBj2U5BYn7v6bvLcmWDOfyXO6+Lg26C2H
-         RpE4XsWGd04F54SAHFVnjVenp2locpWCb5G3GjtF4s90aLkRFfQcSOfsGpDmaLZKfkqZ
-         60IA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=9WeOtA6rLKd2feImk1nWk/a5NsEeM0kN8oqqyEId0bQ=;
-        fh=5oqJGf4tKyNu5uV6JrhJFZxZmJEMgW6HRzXvni74l28=;
-        b=Gpb3FRFxUg43fCTFmJawO8iqNwmRGJHrYDAs035CTPnArO9NfnQ0NqqcJ8seQELyVT
-         to+LEHfnvA55gPPq7FfQNPI2u2EJNQaNzlWKccLCqb4a0AP58WhEYX7XlmPwWT2ushG3
-         iN9hAIANyRjuqsRQnhSrfALI0/0zXOV4PX01S+AuQDYgx0G5rhc5LMztEEzdLqv7gX1n
-         HhHn6M3Zu38JZa9784us81kQgYWamicD4pUC54G4pq5Y7kWwyUOGIpuz9wYNOpZ08XDW
-         g5svpuFd+mD7kjXJ2/mmTqS2GMc64vcY+MAW/15JuTR4uwUqVwDxDaSJiSOy5QMxbMvn
-         s+Lg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	id 1w6DoX-00000008AO9-0T3C;
+	Fri, 27 Mar 2026 20:29:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:Date:
+	References:Message-ID:In-Reply-To:From:Subject:Cc:To:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Jsyaee8V+G5HvpJN1/K1UqJ1q5mgYfzzL6VEzi8VLQE=; b=Zx6HyzU+xS+0xXYHU425zpSTw6
+	qeV5s+oZl1i9hxg6rod5mqdKw/dcKzKN4cuhXxUfjV9mabAoS/ygs4V43Iv3tECay1DNjCtAgWCRb
+	c5N739DPiXKxBM3oXJMiS1UId061jvefv543lL8rBTaH/L91w3Q851+3XV9Q9N+HO4NEUNn0DCHHY
+	iA1AVAYm+ZEbZnJqhJqyE15pgcvsPs2tInsY5pZFlxn8Q2ZKm3/AHOPFAfOxpRswQKh5yz58fr8X1
+	7JkKqpvxl1Rh3jfffrDAfXQMa4hIb2HqRc9sWMA6BPbPocbbpMk/AU73ZiJyzC2QJNbpiNBd4hynd
+	M39SGWAA==;
+Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w6DoD-0000000BEiR-1t5f;
+	Fri, 27 Mar 2026 20:29:44 +0000
+Received: from pps.filterd (m0246632.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 62RGvrYT980051;
+	Fri, 27 Mar 2026 20:28:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=corp-2025-04-25; bh=Jsyaee8V+G5HvpJN1/
+	K1UqJ1q5mgYfzzL6VEzi8VLQE=; b=ZhYBXuwE+/dChxMOU8Koy7MhV6Qfjo6uRo
+	8RRRV1ruidIMQ0trM+Lk4PF4FPWCx2QDJp5aoVQfwKIsOKnwqpy94tiPYlEDRsPx
+	JuRYPT6uH3SCl+RzuYthJIKWCV/kJs2eqAO+XWy+Fft5Fs1VgSxq32+tkIrCHX99
+	GdU3RbMdfU6l1JT/JkitFfUM4FL4FrGGOsvMWwzkIgnrLChbM+VVNfFeJ8Q15xA0
+	Yf3NhafW85f/ZRxNa7xoE5JdNW1plkbCDg9QUk5LGUw5obY6OgwYA+IU/eRxav1v
+	iW3miJg5WX5acBd8U9TADbbtLDR0+aAgU1M2lBoYiIZfIOtpg9Yg==
+Received: from iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (iadpaimrmta02.appoci.oracle.com [147.154.18.20])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4d1kgftr82-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 27 Mar 2026 20:28:39 +0000 (GMT)
+Received: from pps.filterd (iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com [127.0.0.1])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 62RJeQ2V038876;
+	Fri, 27 Mar 2026 20:28:38 GMT
+Received: from ch1pr05cu001.outbound.protection.outlook.com (mail-northcentralusazon11010032.outbound.protection.outlook.com [52.101.193.32])
+	by iadpaimrmta02.imrmtpd1.prodappiadaev1.oraclevcn.com (PPS) with ESMTPS id 4d1hsf1c55-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 27 Mar 2026 20:28:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=oeMSP3Xdwawoh+40+wykKSLpUl2se/Sdln2PVbVWTSP3vS5JY4LQDnendpamhZos6nWxaaUgSaT5vlpfOUfsHSTxzEm14abpInh5iMrf+BKTWDh8zWe4n5dWw8hY1d8ihvEyaD94B7NzsbkOXPvuywXa+BuiDpmY3/f4UtT1vlLYS7l5QTjJxTJ/ZlXZCq2Qkou34gLOpKU66PTdPPSBQSv480CST/PcKeGrYCdq8iWjlGOvXoHZejEvsKvrWaqGh7gOxbWznkWL57yc2cQhBA6qXziPxPBEJAEz/Z45UpkC5P5NcySJUzTYv6sjIXrfLGGr7uaS1WnSygyCC00GmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Jsyaee8V+G5HvpJN1/K1UqJ1q5mgYfzzL6VEzi8VLQE=;
+ b=GPOnOmBlmFcIHwa8FnnZbVX6LLpue4op272uxZs4be3yZlmUMRnd7NFHULuN6hdlVy/bsly+Q4HkQCh4h57ziV5kbERrj1d93vWcBo8+TEf+FjMG+m10GHgGiK2eyq4OA2TBLHXHIe4Duezzl7lAKLmg4bO2+VQ1Ym0XUEJph+P+ONrpvxGspxZEosoo3e26ULZgKh1+WMm1j/9HouWVo/cY+KXclXWtIKFXPEeWiUNbBVTgp89KGY2Xf178NZYoGqg6SWV4hq5m+z7gjPzVbS8Of0lBPEOHvrsHkoquEO4SLgjXRzfHaOfSVKBZG5Ru25fW7gQD3foaqWUlh1RL3Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
+ dkim=pass header.d=oracle.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1774643047; x=1775247847; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=9WeOtA6rLKd2feImk1nWk/a5NsEeM0kN8oqqyEId0bQ=;
-        b=tPiVudZrKWH5LTTvmhnYDqFOJyyk5sAfhGUhLn+yB/mCpgOz9auKLaegCrXEQ59Vvi
-         YJDDhg2iIOYQ19A+L+8/WF3KyXJj8F4uOuHKUPuZZYPeZNbHlHqOTnLZQEfXax1vFbWt
-         8627Ed1dpmJJ+QuGFA24cl/IaVeGKBYc9ZcAqdWQLqri6lLclJsHw/3P5g+v5oi1wC1v
-         w55pPNoq8e4RX89LaC69Q6KfXNPCI1PXv2GpaTpNZe5rELaEMIyrB9Gs81v/UW4H8aYI
-         lhbAHfpUi7/I60wRNvP8bU7UCtCW72gV0ch4y9G7PCRVTyyjlYLrZIA6KsPNmEyyoDoL
-         zoXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774643047; x=1775247847;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=9WeOtA6rLKd2feImk1nWk/a5NsEeM0kN8oqqyEId0bQ=;
-        b=Ef6Pt4CoAeB+516cTngUjGxLZeGLUcDsFgtkKVfBJiqNO81ShcBAE8MiR+cT5klT19
-         yonVaI5WXWIp8AtQcfl3PKAvolt4q9eOqrVqY0fDc6yq4OyCv/SYP/BQjdOSNO0ByxLY
-         iH9dR52uRrnJhtmRpL7lhFmpc4EahRCcW86MDMpQVk1o2No12/szlS16Spi0Khn7HxMY
-         0g3wO4rJb4wHDlovYzQ1U2GufatQZdB7BEwmoGEUFT7Y+s6DYwb/aFQEHMj8Bu9viHO+
-         tGrWjn1YUX89o4h8bBMGsXHJl37qaJpwGxrI5JIcanqfLuzN35zwyfvUmhuszImQvhX+
-         hzww==
-X-Forwarded-Encrypted: i=1; AJvYcCWCD3hAVtd7VFB04Q3U/KkR76zc5iwoY0MMAClS6SmrdZ7V3SWHI/atfMooIQC/MjYi7wq1BCeTW4EMVBpODw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz7ZIZGvNa+IOFYC554kroqmnHi6S3p2m9hYTVUODfyr9MVHpcl
-	KBnziuLuyPZhIjLrPl0lYooo9nT9nhzmoaROQo4ev9FIT6gC+ZUjvrq+Fejoh5nq8rF1pwJyw68
-	StYkl5nq6jKIRFyO1WZttcGhOEEF4h6k/pEIo/STicw==
-X-Gm-Gg: ATEYQzyCkV+59RgjSl0JNG5GIuc89vebHxIHmJYCHVQ/k0n7lUX5TnXc4H8O9sDVnaO
-	gvzoZYHK5lXvTusCpM8vzmWISHrvX7sPk53ElxYFb5pAXZPV9Gm3bbC/kJmOYpFvfM1P5dhrW07
-	fVlRy8jaffGobrjjEOuV+0S9UDuzTwRQissVdrh3JyMBROhjfO+qS6lnyNA26YtfgCXm2AKXvgW
-	qCS+iO4Bbh20SLgYNs5bb/+Z3Zr1RAHvBxhX8xisPJHoGso3j5zveSHiU7CJ4qCQ5qYXVPGrD11
-	sggfmSSWnI/tZy2O1NYOlI19LpMdVOJT1By5gv4n
-X-Received: by 2002:a05:6402:46db:b0:66a:199d:138 with SMTP id
- 4fb4d7f45d1cf-66b28c66cbemr2039826a12.20.1774643046839; Fri, 27 Mar 2026
- 13:24:06 -0700 (PDT)
+ d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Jsyaee8V+G5HvpJN1/K1UqJ1q5mgYfzzL6VEzi8VLQE=;
+ b=j5P7ZQ+3HBbQGBNHZJfrHUTuP+5xv6PzoVkKxedJKbpQmHil7r+d+c7b3Geb5ydcQrvCFt2BH+J5l19fhgvNGgMDr6+if6YAg3MhK7yi3S/1B3aPPPWXpRlfpzO0yXZlyvUVC7LMhqqWF8UtJJtEP8ws8lgnHiC3CGaReavwH0A=
+Received: from CH0PR10MB5338.namprd10.prod.outlook.com (2603:10b6:610:cb::8)
+ by CH3PR10MB7414.namprd10.prod.outlook.com (2603:10b6:610:155::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.23; Fri, 27 Mar
+ 2026 20:28:20 +0000
+Received: from CH0PR10MB5338.namprd10.prod.outlook.com
+ ([fe80::e525:dd71:b002:6ad5]) by CH0PR10MB5338.namprd10.prod.outlook.com
+ ([fe80::e525:dd71:b002:6ad5%6]) with mapi id 15.20.9745.023; Fri, 27 Mar 2026
+ 20:28:20 +0000
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, linux-scsi@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+        "Martin
+ K. Petersen" <martin.petersen@oracle.com>,
+        Heiko Stuebner
+ <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/1] scsi: ufs: rockchip: Drop unused include
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+In-Reply-To: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
+	(Andy Shevchenko's message of "Fri, 20 Mar 2026 22:56:06 +0100")
+Organization: Oracle Corporation
+Message-ID: <yq1ikah9fwg.fsf@ca-mkp.ca.oracle.com>
+References: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
+Date: Fri, 27 Mar 2026 16:28:18 -0400
+X-ClientProxiedBy: YQBPR0101CA0128.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:c01:5::31) To CH0PR10MB5338.namprd10.prod.outlook.com
+ (2603:10b6:610:cb::8)
 MIME-Version: 1.0
-References: <20260327184706.1600329-1-vladimir.oltean@nxp.com> <20260327184706.1600329-10-vladimir.oltean@nxp.com>
-In-Reply-To: <20260327184706.1600329-10-vladimir.oltean@nxp.com>
-From: Peter Griffin <peter.griffin@linaro.org>
-Date: Fri, 27 Mar 2026 20:23:54 +0000
-X-Gm-Features: AQROBzCjrloDfUGTlNvOpQXdM4anVOjHCl2P0WQRB2XbIrpLYVg7AhYSjcExBJI
-Message-ID: <CADrjBPqMwtrae7LB9A8xipg6R0rHGewe69awQ_jJnsf=2c=eTw@mail.gmail.com>
-Subject: Re: [PATCH v6 phy-next 09/28] scsi: ufs: exynos: stop poking into
- struct phy guts
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org, 
-	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	linux-usb@vger.kernel.org, netdev@vger.kernel.org, spacemit@lists.linux.dev, 
-	UNGLinuxDriver@microchip.com, Bart Van Assche <bvanassche@acm.org>, 
-	Alim Akhtar <alim.akhtar@samsung.com>, 
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, 
-	"Martin K. Petersen" <martin.petersen@oracle.com>, Krzysztof Kozlowski <krzk@kernel.org>, 
-	Chanho Park <chanho61.park@samsung.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CH0PR10MB5338:EE_|CH3PR10MB7414:EE_
+X-MS-Office365-Filtering-Correlation-Id: b128d2dd-f858-401f-3bc4-08de8c3f631a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|376014|56012099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: R+2yyG1huZYZcUXj44lGxEREVF4Zq8qojHUkfnrznm36lb+AigogLnRDQKsR7z125Nys7N9ZWNMhHZuDQDxGrLMgtPD8FggfrVrIDMzTBPkVlQlvcOJTLNfvtaa5DzOjpO3uu8MaRpsC8khTAKzAo4OFsIerArScg3T8jbjqQQaoVKBGd4t2ZGCxhaD+YJlAfvj4RAP1SQrGfUt4V2shHJYLCGMxbwmPBSPr+rfAQJvCKcFNVaj0CMFhMz2OjVwy592r3/shn4Z/6CeQ1Bpnx+TXbq8B9cJmV799kYpsdoc0WC7wuLjneChx77KjjfSmESW0SSv/+31Wkq63x9fXB2rYPGBcf1FipLCZvCyWjpbW9/ggtFONlKxz3P8IMPRiao8ibriMNtAb9C/kEL05FZLKd9J19Y1BfA8Pd0Yq+/y5iWNLbXw2iGau1ZF41MmPfzNS3bLFECddiAeDbxkQwJMbr/59AwnZna+zTDO4oH0C+G2MbcSkFBAIQHNrUdd2PK9lrkuSsbF8oWfo54E4kLewpfGtJb782emc6OhcED+J/lL0ayyAkuyA7OV8Lv8SWPksDqNDR9zm1Usk0k5pFCZq+q8ZwnyB1ZbOZZ/Tw3lFfw43jMpZiatOpbMiq/u9xFH13r0+6lTkJ/MWzIv7rjzyMwGJXn/21YMFSGrWBgVXdnPW/Ig0IHV/KlR+yA4lR2Spm34SqX6/X7cXMi6RJwJsuslr22BR5M6NSia9+0Y=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CH0PR10MB5338.namprd10.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(376014)(56012099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?BePcwIxO7arcgG5rUk9ztYE+N+OX6BhetzLSOTCXxPl9JWSIxNVCGdhwCXkv?=
+ =?us-ascii?Q?euGQgoNucBR3HrObW1c1P5NECzAWlOiihQyrz9K/vHSZSX2F8MjMnok1SBKm?=
+ =?us-ascii?Q?0x5YYx1KgNkFYGoiO2UwmHVu/SRrlMVF9tGPErbukMOs5Sbtr9SfPuKfpC2V?=
+ =?us-ascii?Q?7fAChY1lKqtRMnOBXDlstNOnDXHvwHxUuhvezy7TsxbbMXxQZDHOH6zy0Svr?=
+ =?us-ascii?Q?e7GNPdzSo7qpDCnneYF4Y4uupwABzpMBQEvCyhbh8mqtxgFJWWQrez2f/REp?=
+ =?us-ascii?Q?UO9/AkwGKPAQGTanXmWB2AEbmNeolBAlaknLqkjNx4qeCO5t9svPMZUESiUK?=
+ =?us-ascii?Q?NRg+IBRxkUvlVqI4aEftcQTuntVqhTFvtOBFWsklhWWAXABgsajO/tTSh16D?=
+ =?us-ascii?Q?/LCNql/Rb+TK0avqFNa4ZR3HeAMx5+zFahhFSqg6WoKvnvogZG90agg3F1sM?=
+ =?us-ascii?Q?RpMj2NTG+IrunZRwcmwJLi/TJwWE2utEQ71mGyd/AkpOmqDDRLFkxk0NVH1M?=
+ =?us-ascii?Q?Vc/iS6dkJRSFJhwR6HbqtVxpOz60VCOga060uhQzbO2ThA7d79TP18nyOl5s?=
+ =?us-ascii?Q?hHuZC7eZ2JZDUt0JA3lI8j8P/1DfH/Tu431d/Ts+5ZJycTALH1J0fchC/jbf?=
+ =?us-ascii?Q?9aBuUCQRcGXOjki0n4RjxfjG55M+1BJSrltJecXoUVT4yuKblTA8kkoT4hj5?=
+ =?us-ascii?Q?V7rE0/WLlWMQNDl0fok4NNSArbjSdxwKLeDVXtRp4itjrG1VGUDbwijUec64?=
+ =?us-ascii?Q?UrjSK8EdN3q7QjToZ10KDCpo07UvdwxnojBl6Y5FUXfK43zIV9HkYVutQ0q3?=
+ =?us-ascii?Q?s8hZqaZV6Lh/J2qk56+RRZsJKUJC/YUjP1umaS7qq7jj1Oi26B9FVz70DcAu?=
+ =?us-ascii?Q?iKi2FdIgxP60q0Gl2OnCsU+PJbyuzNN1xqOANsMlkgjY3zoylDN1+OTBEZNs?=
+ =?us-ascii?Q?yefNOj6h/R0awXVjbr204StsnC3A3LFodI7YgdsOnhnWcxV25brq63mQtHb8?=
+ =?us-ascii?Q?5Tp0w+D9YEwyAqwWP5K4hGJUNcSOea5syn2UXfMjquPa3nY4vSfpJCJ6IoBu?=
+ =?us-ascii?Q?1ommy09QQ0jvoKxp1Joe+D+WlpdNNVbDwi9jGx1ngsKo66ZIUxxOivhDhAHA?=
+ =?us-ascii?Q?A2iKb+ncM92hHgmMG+unaBvXMlMT6qBnSI1h3Gqw0JWCUEBQUwE+zl5y3Meb?=
+ =?us-ascii?Q?Og+wFTDwBDC8w4W6r4ryXijYAkl0iRFeLH2b4p0dkmbynkr3dNW0GdPWH4LB?=
+ =?us-ascii?Q?fGctNPBvbYAeO5pfm/plHtb8TBdRfnLmd2X77U7hqTKvQ4vdPGcxv/7Efivc?=
+ =?us-ascii?Q?m9m99Jbm2+pTY0nTotCirIrQE78X2g1sg+xyYRm8a0Y7xIuQCXdqukgi1M60?=
+ =?us-ascii?Q?tXdzUFf1+vYZBFGnBTc8t0tyApuNCqUdBxc4O0gBJ6uh01a700VCcBh3A9F5?=
+ =?us-ascii?Q?Asjg3MCGhzabdRy/6U5LbebecAC5wkbkgXe7Mw5AOZRzTA2uzzUSSty68o08?=
+ =?us-ascii?Q?bKY1rxG1shJtxiTXXPMgvuUKjcTIhXEeJyNonCP8lVY+XV5T8v1DphJpFMN8?=
+ =?us-ascii?Q?OQCkE6dFrEwLTyQZBPOvmzwn9i6AxEpJSDJT/l58ap/nXm5cv3YUZNfaq40w?=
+ =?us-ascii?Q?R8OpZ+C75MDQxixw3FYMY7YjOw2j3eDZ6qA6Wo2AymywpAU5Kw3I0RKNH/uW?=
+ =?us-ascii?Q?75tCdxmQzZyUIjfijTvwIExMWC/nH/3I/wfKcEa5TynTUE9vYYN/y0LXNWGW?=
+ =?us-ascii?Q?VNoOs+zHqvZ/lOrXqvTmOOFrydVgl1Y=3D?=
+X-Exchange-RoutingPolicyChecked: vEM7FHfggWLtgghEh69zdmJSVVGrq+BttvTKknQJFEGhW+YrfgJ+l6O0UuuFx+3RpbIQvtVW0hqjMzxdXxJsdS7/ukx4hh4BdWRivPrtHBWCaXGGxOr9T+YplmwjUIp1KHUaPYurmwLikP5qRXGtX2rfJDLFFg8dylKJ4gZsBSoye/88FjeuiWC5XaTfki9CX9hhSd4R5vjpVussyOHI+B8kQbOcA2dMRleNgNua9YKBNWIkj6YboFeBmwJf01uVeDv8iBAH8y1TqcsSbJwPbUnXmXacMsiYEg2p2ugacbSm7YQRIqXqMiYZevUsho4WRJ4H6v6HlUgYb0oVsNyBaw==
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: Gdw6+tCQoMgphrEUQzlHKN9bwO8wQI27Ktfumvvtv5P18MwOS6TSPJKVTt8spsBqyhWkdkRio6QnPOYvb/0+c7dDO44OuMxO+ZfU7vgsT6p/92LoiaBomZkA5+EQIHFY3d7OZS428jFjpXamZVpZG5Ue7wnYGEYHTHxTY7WLJ4XwbNiP1qqvKXl6nBr5f6DhAhB+Ob20VPggR6ztZV4il07XwJ/j1lH4SAtGolfDWcjey99cIqPIkXutnq+Fq6p3Ax+x/4o9N4bNQDUoNWA1IEXhToSnlrJEdUPpHqz/5wUyNFaXP7X1XHtwdOl6CO9kCVMHi9CbiROxn/8HDD3DlSJQ3iamq2KO0l7leu7cEPYBIZdudRbUiLRiNIfCDetKRPPFhSkKz8qkkLAN/oiR9XmK7A+hSBMsDFT37peEF6mEszPmrx/WgYAEs6r7n4bNn5zRQRuEpl5p2wuZhi1KHAHga6P1N9tIN9BMPZGQUvgB0KDD80aXpIgd3BUEr3x4zAuM7O22wDu5q67mc4G0PRqggkR1xjiVU91V/xwo0vbWCLui0OvWxr01wykwy7a5bmUoWe0vZ3kpHbIJswBLO8Fuw0VGF5fWlJIXEuSMb4s=
+X-OriginatorOrg: oracle.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: b128d2dd-f858-401f-3bc4-08de8c3f631a
+X-MS-Exchange-CrossTenant-AuthSource: CH0PR10MB5338.namprd10.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Mar 2026 20:28:20.7727
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: qe/o3QgyRtCYOW3jMjOazVfs1zbTQuxA7DNmTjalaavuANPkZO9JOg0ElE7Moou/7RrxY+Y62HYXulmxw57W5VTAtKgs2anrP1MIbESlRXE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR10MB7414
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-27_01,2026-03-26_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 malwarescore=0 mlxscore=0
+ adultscore=0 suspectscore=0 phishscore=0 mlxlogscore=695 bulkscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
+ definitions=main-2603270143
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzI3MDE0MiBTYWx0ZWRfXwQxejmeuMHNG
+ VnVZWTu0lLFvg4tqQbJgFgTrYKNqN9BIF5bvMUyVqNVPQ10D/qSmRzEhkGrhvZxi5au+CviJNIH
+ Lchulqu7Nop1p+qO58lcUzY8dHYkUOcAoBYR/QKCm5bLa5Dc705hQ4fS25LLv4tpJQ40AStNb5x
+ gGDs2+LgJ6JN1OnbsS6g8V7GwWIIYOB2Gmrclgi3d8UmtUtr8nlb4ueGru0w1UBNwl4VOf4LJLG
+ c/CNJ2MyPNAze/y/jmSVEm0mke/MImoqACDzAB+2a01lQf9/rYnBDbJVU+r5vt7XujsQV8rTeXF
+ yV1Qpov+m9ObIBavD/5XFhebsjpN3OWXkIx8f7UGeKl7WnlCiJvjLLvUqc4BieLZbrHgOSuvrKZ
+ xpr59QajRhgf9XgY4RAqTZqJiNm5ipM1mPPLv0R92nweIdGdz87+qi1AX4AH+BUn8sFW+nhjn2P
+ oqFufeqPVBypDedR6VkSXUr5D7a5rwXENAMGXM9s=
+X-Authority-Analysis: v=2.4 cv=aq+/yCZV c=1 sm=1 tr=0 ts=69c6e877 b=1 cx=c_pps
+ a=e1sVV491RgrpLwSTMOnk8w==:117 a=e1sVV491RgrpLwSTMOnk8w==:17
+ a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=Yq5XynenixoA:10
+ a=GoEa3M9JfhUA:10 a=VkNPw1HP01LnGYTKEx00:22 a=jiCTI4zE5U7BLdzWsZGv:22
+ a=3I1J8UUJPc9JN9BFgKH3:22 a=-MMmf-VsBYFSy3H-XEcA:9 cc=ntf awl=host:13811
+X-Proofpoint-ORIG-GUID: kbP4WORVyifLMONJyT0l5_JEc0xEnQSt
+X-Proofpoint-GUID: kbP4WORVyifLMONJyT0l5_JEc0xEnQSt
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_132410_608401_1B6D8EC5 
-X-CRM114-Status: GOOD (  28.60  )
+X-CRM114-CacheID: sfid-20260327_202941_399943_71ABE2AE 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,142 +204,16 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 27 Mar 2026 at 18:48, Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
->
-> The Exynos host controller driver is clearly a PHY consumer (gets the
-> ufs->phy using devm_phy_get()), but pokes into the guts of struct phy
-> to get the generic_phy->power_count.
->
-> The UFS core (specifically ufshcd_link_startup()) may call the variant
-> operation exynos_ufs_pre_link() -> exynos_ufs_phy_init() multiple times
-> if the link startup fails and needs to be retried.
->
-> However ufs-exynos shouldn't be doing what it's doing, i.e. looking at
-> the generic_phy->power_count, because in the general sense of the API, a
-> single Generic PHY may have multiple consumers. If ufs-exynos looks at
-> generic_phy->power_count, there's no guarantee that this ufs-exynos
-> instance is the one who previously bumped that power count. So it may be
-> powering down the PHY on behalf of another consumer.
->
-> The correct way in which this should be handled is ufs-exynos should
-> *remember* whether it has initialized and powered up the PHY before, and
-> power it down during link retries. Not rely on the power_count (which,
-> btw, on the writer side is modified under &phy->mutex, but on the reader
-> side is accessed unlocked). This is a discouraged pattern even if here
-> it doesn't cause functional problems.
->
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-> Reviewed-by: Bart Van Assche <bvanassche@acm.org>
-> Acked-by: Alim Akhtar <alim.akhtar@samsung.com>
-> Tested-by: Alim Akhtar <alim.akhtar@samsung.com>
-> ---
 
-Reviewed-by: Peter Griffin <peter.griffin@linaro.org>
+Andy,
 
-> Cc: Alim Akhtar <alim.akhtar@samsung.com>
-> Cc: Peter Griffin <peter.griffin@linaro.org>
-> Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
-> Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
-> Cc: Krzysztof Kozlowski <krzk@kernel.org>
-> Cc: Chanho Park <chanho61.park@samsung.com>
->
-> v5->v6: collect tags from Alim Akhtar
-> v4->v5: collect tag, add "scsi: " prefix to commit title
-> v3->v4: none
-> v2->v3:
-> - add Cc Chanho Park, author of commit 3d73b200f989 ("scsi: ufs:
->   ufs-exynos: Change ufs phy control sequence")
-> v1->v2:
-> - add better ufs->phy_powered_on handling in exynos_ufs_exit(),
->   exynos_ufs_suspend() and exynos_ufs_resume() which ensures we won't
->   enter a phy->power_count underrun condition
-> ---
->  drivers/ufs/host/ufs-exynos.c | 24 ++++++++++++++++++++----
->  drivers/ufs/host/ufs-exynos.h |  1 +
->  2 files changed, 21 insertions(+), 4 deletions(-)
->
-> diff --git a/drivers/ufs/host/ufs-exynos.c b/drivers/ufs/host/ufs-exynos.c
-> index 76fee3a79c77..274e53833571 100644
-> --- a/drivers/ufs/host/ufs-exynos.c
-> +++ b/drivers/ufs/host/ufs-exynos.c
-> @@ -963,9 +963,10 @@ static int exynos_ufs_phy_init(struct exynos_ufs *ufs)
->
->         phy_set_bus_width(generic_phy, ufs->avail_ln_rx);
->
-> -       if (generic_phy->power_count) {
-> +       if (ufs->phy_powered_on) {
->                 phy_power_off(generic_phy);
->                 phy_exit(generic_phy);
-> +               ufs->phy_powered_on = false;
->         }
->
->         ret = phy_init(generic_phy);
-> @@ -979,6 +980,8 @@ static int exynos_ufs_phy_init(struct exynos_ufs *ufs)
->         if (ret)
->                 goto out_exit_phy;
->
-> +       ufs->phy_powered_on = true;
-> +
->         return 0;
->
->  out_exit_phy:
-> @@ -1527,6 +1530,9 @@ static void exynos_ufs_exit(struct ufs_hba *hba)
->  {
->         struct exynos_ufs *ufs = ufshcd_get_variant(hba);
->
-> +       if (!ufs->phy_powered_on)
-> +               return;
-> +
->         phy_power_off(ufs->phy);
->         phy_exit(ufs->phy);
->  }
-> @@ -1728,8 +1734,10 @@ static int exynos_ufs_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
->         if (ufs->drv_data->suspend)
->                 ufs->drv_data->suspend(ufs);
->
-> -       if (!ufshcd_is_link_active(hba))
-> +       if (!ufshcd_is_link_active(hba) && ufs->phy_powered_on) {
->                 phy_power_off(ufs->phy);
-> +               ufs->phy_powered_on = false;
-> +       }
->
->         return 0;
->  }
-> @@ -1737,9 +1745,17 @@ static int exynos_ufs_suspend(struct ufs_hba *hba, enum ufs_pm_op pm_op,
->  static int exynos_ufs_resume(struct ufs_hba *hba, enum ufs_pm_op pm_op)
->  {
->         struct exynos_ufs *ufs = ufshcd_get_variant(hba);
-> +       int err;
->
-> -       if (!ufshcd_is_link_active(hba))
-> -               phy_power_on(ufs->phy);
-> +       if (!ufshcd_is_link_active(hba) && !ufs->phy_powered_on) {
-> +               err = phy_power_on(ufs->phy);
-> +               if (err) {
-> +                       dev_err(hba->dev, "Failed to power on PHY: %pe\n",
-> +                               ERR_PTR(err));
-> +               } else {
-> +                       ufs->phy_powered_on = true;
-> +               }
-> +       }
->
->         exynos_ufs_config_smu(ufs);
->         exynos_ufs_fmp_resume(hba);
-> diff --git a/drivers/ufs/host/ufs-exynos.h b/drivers/ufs/host/ufs-exynos.h
-> index abe7e472759e..683b9150e2ba 100644
-> --- a/drivers/ufs/host/ufs-exynos.h
-> +++ b/drivers/ufs/host/ufs-exynos.h
-> @@ -227,6 +227,7 @@ struct exynos_ufs {
->         int avail_ln_rx;
->         int avail_ln_tx;
->         int rx_sel_idx;
-> +       bool phy_powered_on;
->         struct ufs_pa_layer_attr dev_req_params;
->         struct ufs_phy_time_cfg t_cfg;
->         ktime_t entry_hibern8_t;
-> --
-> 2.43.0
->
+> This driver includes the legacy header <linux/gpio.h> but does
+> not use any symbols from it. Drop the inclusion.
+
+Applied to 7.1/scsi-staging, thanks!
+
+-- 
+Martin K. Petersen
 
 _______________________________________________
 Linux-rockchip mailing list
