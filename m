@@ -4,59 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8891910ED65C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 11:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E73B10ED65E
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 11:29:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ydmk0ogTSN264VX8ISyHfbDWVBm6BlYt+HzROgchJmM=; b=xDQTWj4owmgZhj
-	pr1PJtcaLvD3wOl44H1imOsAQeW255h8RxUAXSZfLWYKAjdLAadB/AKMxD72VyUzb41SYndgsFiOx
-	4LLAONPedAANeTgvvNNKlz/qZYvsIWDZ00GcZanrLh1Kl8s4S1jA6R5jSXq8z29y1mqgwdXJCDWRq
-	Zs9SinlWaFDYy2OWl6QaZXybiiRMFGFd/kJ4U0RSiITohY/uSGryH0Je3M79OtcK/TRPFuOiD8yZq
-	uv9MbH7jA8cjxnWh+hPLo9UZzQbfim5We4NvNbc3l2CGdEiCcoy/SId6GYTFTkK+rtZ9qcmlEJysi
-	YZutYFU2YhdKZFeyRx7A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=gwSWpEQmDneKvA5yu+UUoOS0Y6OqmlnaThFdWrXE7f4=; b=mXNgMPsTVzJbXCkEt8hG28yN6x
+	AeCmizKDlrQLXoPrMVZT27ByMRIrEP7rGNnQFVMsEi3IMzJYEX6xttgN3sUeiyLaCqDZomHRUx6e/
+	h00NsSq/1TvhgriVoJX7daUO+sVTxF+dYfVp9/ZDEiPg6b5HQsXPrQujT70NxYFtRCmpwZ0QoCYKh
+	j41kadjE7scLK+cz0gf5RGRBn3s+naQNi3jkakNnY3uPCiS6K5bA7IeFeSidcSfKuVImipP+i5/22
+	VSkDtHrXftOrNk1a1ILe3SU/KbqiSXEuw1xoIV6dhkMZj2L7X67ZcH4wGZp91DiEkP+FfYPqrBue2
+	+OnYclPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w65NC-00000007DX4-2pQT;
-	Fri, 27 Mar 2026 11:29:06 +0000
-Received: from mail-m49237.qiye.163.com ([45.254.49.237])
+	id 1w65NJ-00000007DYI-3unY;
+	Fri, 27 Mar 2026 11:29:13 +0000
+Received: from mail-northeuropeazon11010071.outbound.protection.outlook.com ([52.101.84.71] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w65N8-00000007DWh-3xYT
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Mar 2026 11:29:05 +0000
-Received: from [172.16.12.17] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3890d8f59;
-	Fri, 27 Mar 2026 19:28:54 +0800 (GMT+08:00)
-Message-ID: <793af56e-3a2b-632e-ed18-9a2bc0844351@rock-chips.com>
-Date: Fri, 27 Mar 2026 19:28:53 +0800
+	id 1w65NF-00000007DX8-2cWL;
+	Fri, 27 Mar 2026 11:29:12 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bi+RNwJJNC5DaXrN/DiRuzn66oz6WTXTnoQ7E+lh9ZYoX2uPo1X30A00tqc6HETW0GvezzbYAhiyRkpRhCAmW6pQwMSa8p9M/wQXB2fAHRP+9VO5dG8UbtHCPxahrmrhcU9sByc6KilDZN6MjMmIbSp+dOoC6IdYIUiSYPsw9cR6invRE/7g3OGQFfss3n6GlBUTTYL7xvv1cO8TQWQjzR8fcttvXeFZiJhfQLGIoE81f54TYAYdyD8el7Q5xqzrWZjDVpmTwYAe6FI9R/p0GD9vHqhVBla3qt1x+4mWwGM236cKGYHs4mQINDh3c7BQagGJkRVyn3S+ZpMCFoKDsw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=S1zVIvmAcRlEyydV7FuFfw5IxvYqfXEXsDEljHz56Fg=;
+ b=IzEDytsqXb4rL9VntYmZizDvdZlyl29W6A9PCfCNlZuV6aTR7FsBub8rbwfth4nLBrpEDNPriAuEVUKogk6aAcdrvxMqc3Msxa2iXyK6Ais1Lam1CJ+/eV17Y9ahD49QJE+FelmaXLvOg3tdpGAoACWKKkn84TSAfFhQP3+w0nPXakZMynHwylJdNSMeI69wdGoehl8lmBO9ogfh1RJgdNI9VhJK5eKk74/yc4xOdTXBG2yTqqP0E/FBed34c5jAtyNAGTYEZ/FnF+dysJlBEwgiOte8PzAyLqAw/fw8a4QOzNduvfSy+lQiOU5qgKyGCh26Ewmn/y/yEMrD0jPwUw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=S1zVIvmAcRlEyydV7FuFfw5IxvYqfXEXsDEljHz56Fg=;
+ b=DJ6eg8dWqU2iXeCQxhnZvFrWRhnsbUkPDRb0cZbPMPxdTlaUT3HYakrDZe4CDT/8bf+fWgVoLgMGO42MkK8bLzSNvtSxhthCT5gf+nlzGrXpF+58lnRUTjacJpEAx75d8mIIoT0nOQuO6uLWdGFsjIjIyZgl49t3mByGwPNvbqEN/gRRmIEgLXMJXKI2PRSqsXNTyyWqTrpX1pknrf4dyZJPJJdxXHx11xHOaKFJ3bB8gFgb655ZX9112Y+IPuV8IZRTokzJK+snlwB44Fgdd7x6dAuGyX1zd1eSE1fLaU8cbySh+6xVYE9VB7/E9yXP7VZS+X1ZqoTvZz7EAj9sqA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by DBBPR04MB7817.eurprd04.prod.outlook.com (2603:10a6:10:1ef::6) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9745.23; Fri, 27 Mar
+ 2026 11:29:04 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9723.030; Fri, 27 Mar 2026
+ 11:29:03 +0000
+Date: Fri, 27 Mar 2026 13:28:58 +0200
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
+	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
+	spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Nitin Rawat <quic_nitirawa@quicinc.com>
+Subject: Re: [PATCH v5 phy-next 10/27] scsi: ufs: qcom: keep parallel track
+ of PHY power state
+Message-ID: <20260327112858.r5lpqygtvsane2vf@skbuf>
+References: <20260319223241.1351137-1-vladimir.oltean@nxp.com>
+ <20260319223241.1351137-11-vladimir.oltean@nxp.com>
+ <ezrcjjwtg5n76w4m65l27szu5mywx66ti3xuprkfcp3x6quvbf@2rew4zrnnbt2>
+ <20260325114309.3k7xkfrffpxp5xq4@skbuf>
+ <vu3cxpynr5mu2fzkrtmjcwijc5jz323wlnbc3r7lp2wxqmhydx@z5xhgf4myw2d>
+ <20260325115731.genmq2yew2p4dvbs@skbuf>
+ <20260326080444.gbesciaa5zwvcgoy@skbuf>
+ <gq4sswslkjaoe5hhxe2mz6z57uiumotqknkryadvfsstj4srx4@qgenqekgrqv4>
+Content-Type: multipart/mixed; boundary="5nqk7qqoimem4szp"
+Content-Disposition: inline
+In-Reply-To: <gq4sswslkjaoe5hhxe2mz6z57uiumotqknkryadvfsstj4srx4@qgenqekgrqv4>
+X-ClientProxiedBy: WA2P291CA0010.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1e::16) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.1
-Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH] mmc: sdhci-of-dwcmshc: Refactor Rockchip platform data
- for controller revisions
-To: Adrian Hunter <adrian.hunter@intel.com>
-References: <1774597872-179908-1-git-send-email-shawn.lin@rock-chips.com>
- <20fe4fbb-df3d-4fa3-a595-3f446520f50f@intel.com>
-From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <20fe4fbb-df3d-4fa3-a595-3f446520f50f@intel.com>
-X-HM-Tid: 0a9d2f0debd209cckunm1779bbc4c9dfcd
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGU5OGVZCHUIeSR9JHR8fSU9WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=NrM5idk+GVypSFRghRHYsjiB8wsB5IpX5wnwpVThkS0ZPyeEMgBNIP9jaevYwU+O7hk8+lTdZbW0uPUEntzLeNRwkRT15BIRpE9vqjzQN3TbBHTCEGWO33/4JnRVfq8YUO7cJpwZlOcVA67uFr1gfc+H6LvPhOFDpd/Onwu7Dug=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=NNhXkmxsTBxKuxcVBhi78UPztA/CWNZ+e0HvJcBYZg0=;
-	h=date:mime-version:subject:message-id:from;
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|DBBPR04MB7817:EE_
+X-MS-Office365-Filtering-Correlation-Id: fc1dc106-c1aa-47b9-7d5a-08de8bf40c64
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|366016|6049299003|376014|7416014|10070799003|19092799006|18002099003|56012099003|22082099003|4053099003;
+X-Microsoft-Antispam-Message-Info: wO7exTkz0bVlqUvNuNmHpJy7npncU/7L/KRFfR8SmzjFDeWcCnNIR802dKo71Gdzzx3cmNg3G3MwtxUS6e/0QZBfgVSax0b6CTZacQ8L96JM1FVcJpWQjBZDSN0dHPiKOW+XdscpBe4gXBpJoOVtryH640LzTRRD3OPYZdGk4gi5kfbcpD8NDVhxifvS/V5QlhZgNAeaMLt9HWGAVwScPDrwgcOMEBnkL9mSwJIqzEuMrlMlgJ04DEUCfYwn1SZUtO4XPuzyrAFcctSU2PYsI2uWR8VRKxDtKuqkjyqaqja2Ez3JiJS04EBl8SVmUt7b2vfTP911fzIzw7vpMMFWnObsZjrevxxVWS8SaY+IT0o7IhG4KAiECCQ7c1XxVSh2V3VkzEMPLHG05sf2O8oOhp6WUP/rRFTk6InswrswlSvVmX/7K2gupR+4kcdvffwYnZlf8LaxDNgUsThmzkVXCYx9y5qfew8hAMMq+P6DrEUBP3Ulw83+EKbtJFNrR9zaQYcH4qHoTEBOU2fq0F1ZSB+XaHOyJNyEyEdwtXtJkS0BQsHVZrwS48679qh0AKgeQnXJznS+1/8Loemw8qRlEDRJdlHehhxMvQ3JyEQRcJArVM3aRIlFcP01QZGD8CYu9ooqjybTFOiURmlZ035TJfU4r4mJRCMkgMuNIKVzTTUWAgwGHNP74ILL1fJoRaFmI6ymnSnPSo71ykacYYgrnBAfRviH89WRgmkmK1Cg0HM=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(366016)(6049299003)(376014)(7416014)(10070799003)(19092799006)(18002099003)(56012099003)(22082099003)(4053099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yoRvvaCKMRsezlqrOkzCOMGXqO9duFmQXCFD1Na33vm1wSMr4NhOtpqMuhaS?=
+ =?us-ascii?Q?pTHquA5L7BI9IbTcqi+sMkIJjROKVj6oEvfjPodcyRlHxKKRdmjr7ut1H3XX?=
+ =?us-ascii?Q?hoUJwiXz5oDfeSBUz3YVskdSUxG3eU2eJOi4Wg4W+O/O5LOYNW1twt5ESjiP?=
+ =?us-ascii?Q?YMzOYocu0T3Mqdcq6Ze59j/1JFQy6PUVVKud2ujPkMlx4X69WwRIuBBMCi0M?=
+ =?us-ascii?Q?NYQMIko8zYyzHFNinjLPNMYY5g2rdWWwgX4WyFGhoKbyal5B43chHY0poz1V?=
+ =?us-ascii?Q?Ea86Jq7KPlKP3bk98wua+AB50keXNKUBgq4NPpHFYl6yYFCryfuoz9fxxD+I?=
+ =?us-ascii?Q?q3kcQAXo5Ub/B1rP8cgxXpA6N8iIBo9dOv4znwn1zLsZ82twK9qdBVuI/Xqn?=
+ =?us-ascii?Q?h60J82pKIUeAO5ZjJrfEA4T3TOwTBYqSnDaKKTXn5xRFMGOzzJIV8W8mQ9H4?=
+ =?us-ascii?Q?O39eMvcPQEdLY6v2cJn+zCxcWq+H3L+mJfEGjD2gOqHWxLLCzL1mzeqkyY8f?=
+ =?us-ascii?Q?4+dSTAlwG8Sd5BTajNzLnEM1GI6xh/INtIn8ciMkK/DsSEUNjSUN2dH7Idjb?=
+ =?us-ascii?Q?lXDg9gBpanSRMiyBhCZiaElDMpAniEV7Z25yv2VpHQnV0fJqtKfC2XBoj1/3?=
+ =?us-ascii?Q?0fXfBbXCc3G7FkL8tyb0p2iclnRWzbO435qO7uunQlaM9IqmmrwcdtgXp2+X?=
+ =?us-ascii?Q?ufvoMXHywiVoBwUWHNbzn2x58lz0W1SU8QpkBJlBQKBu2rezjxhHR/GX8dYB?=
+ =?us-ascii?Q?wGWdvg0GDAffe2auxLFID8iyhlVGRbHilHjlFaaaMvH4k8APhj3pi5QE3ZCW?=
+ =?us-ascii?Q?q9Zy5VFWOlI/3ekKOLARhTWh4krcKlh/SQrnPJ5wYMpzs96cD5tobo/+VXWD?=
+ =?us-ascii?Q?qVmvUIRRR/a3cMYUgJLKzWlaTXKqVEHt3kGtT8jX+41GNXXS8iikD4Y9ixTr?=
+ =?us-ascii?Q?xOdaXUBMMAbQ2hyGFj3AF5WJweIr3qIJOxraEEO1GXhfsWkKAe5wQZ649MHf?=
+ =?us-ascii?Q?8t02pUAjj/NnzMeRsmGWDFhbzmP3Oydq/XneNWwyyzktCIpJyB7JKVZhPYxQ?=
+ =?us-ascii?Q?Y1BRNEU3linGq1P9BmejJ/wxLKG0b8qcz/616BvJVin49ymcEkj+9lTWYigx?=
+ =?us-ascii?Q?Cp81n2KJUtSzfYf98obcH0Rs3P6usH3lQ+wk1LE6oRVmIdDf5sm1iA5X8hII?=
+ =?us-ascii?Q?pM/dWDpimDUNHoR8dheGyeF974JBL+nsaCb4kwBbCfuAOmYCxOo27OmTGyS0?=
+ =?us-ascii?Q?NU9x08zjXQxL2OfM3mnQw3NWBdT6acfZ74zcvBIOjGbLNFxViEl5Zh7/SUPh?=
+ =?us-ascii?Q?SYgJ4XcrS5bSs/wS9a16QkHmXyxk5tC7I+AulIcdS+yRb84oTj4qGB++DbC5?=
+ =?us-ascii?Q?+srvK+xIGevHtsHVJ+2sx7FpRSuNb/9L/zQCLoPY2wQsgYbSZEisDXF1PSxj?=
+ =?us-ascii?Q?gp0QHKqO59WoTH2Zw+rzxAhA5KkfPWeKHevJRIDGSdgqbEGNvkaofcWdLkvo?=
+ =?us-ascii?Q?+YvC8SndkZAYXmQTNm1VqF+NzjMMhlkhb9o6AtvYUj0sBEQEXoa/EAh095n9?=
+ =?us-ascii?Q?s93hRNK+v3TGbymOGQ9Xuoq4h9p7ljqB65cnwNtn/HMJhMgZV9ie6PYY1ai1?=
+ =?us-ascii?Q?F5g3f+iQhbPUrixF7jzKdI2fc6jmvRNWr02s62+7uwy082zKk1hcRJ88Qnqw?=
+ =?us-ascii?Q?QeEtAC4kg95zLbmFz4zydLIvEA76IJpyKXvsHSUYgAhBAy/v1wQ4XKQ6M1lq?=
+ =?us-ascii?Q?GlrFDj9nrOz+m6dc64m40PlgFW0oHtLwO4c3UcFGAUK+xziAOem8N95JDR8s?=
+X-MS-Exchange-AntiSpam-MessageData-1: pI7j9jq+ytydeS6doXzniOLt7qDpCoouen4=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fc1dc106-c1aa-47b9-7d5a-08de8bf40c64
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Mar 2026 11:29:03.1462
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: yk4qGyQhUqcxqxg18o2Ny9wTgOBR7nJTm7QqFObWEByjDith/2+Nnt+0shNPDCfiiQtcSXByx8cZbqVFlH4J5Q==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBBPR04MB7817
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_042904_337330_18C144ED 
-X-CRM114-Status: GOOD (  19.67  )
+X-CRM114-CacheID: sfid-20260327_042911_383569_7323273B 
+X-CRM114-Status: GOOD (  31.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,151 +153,313 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgQWRyaWFuCgrlnKggMjAyNi8wMy8yNyDmmJ/mnJ/kupQgMTc6MjksIEFkcmlhbiBIdW50ZXIg
-5YaZ6YGTOgo+IE9uIDI3LzAzLzIwMjYgMDk6NTEsIFNoYXduIExpbiB3cm90ZToKPj4gVGhlIGRy
-aXZlciBwcmV2aW91c2x5IHVzZWQgYW4gZW51bSAoZHdjbXNoY19ya190eXBlKSB0byBkaXN0aW5n
-dWlzaAo+PiBwbGF0Zm9ybXMgbGlrZSB0aGUgUkszNTY4IGFuZCBSSzM1ODggYmFzZWQgb24gRFQg
-Y29tcGF0aWJsZSBuYW1lcy4KPj4gVGhpcyBhcHByb2FjaCBpcyBpbmZsZXhpYmxlLCBzY2FsZXMg
-cG9vcmx5IGZvciBmdXR1cmUgcmV2aXNpb25zIG9yCj4+IG1peGVkLXJldmlzaW9uIHBsYXRmb3Jt
-cywgYW5kIGNvbmZsYXRlcyBTb0MgbmFtZXMgd2l0aCBjb250cm9sbGVyCj4+IHJldmlzaW9ucy4K
-Pj4KPj4gSW50cm9kdWNlcyBhIG5ldyBzdHJ1Y3Qgcm9ja2NoaXBfcGx0Zm1fZGF0YSBjb250YWlu
-aW5nIGEgZGVkaWNhdGVkCj4+IHJldmlzaW9uIGZpZWxkLiBUaGUgb2xkIGVudW0gaXMgcmVtb3Zl
-ZCwgYW5kIGFsbCBjb2RlIHBhdGhzIGFyZQo+PiB1cGRhdGVkIHRvIHVzZSB0aGUgcmV2aXNpb24t
-YmFzZWQgZGF0YS4KPj4KPj4gU2lnbmVkLW9mZi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9j
-ay1jaGlwcy5jb20+Cj4+IC0tLQo+Pgo+PiAgIGRyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtZHdj
-bXNoYy5jIHwgODcgKysrKysrKysrKysrKysrKysrKysrKy0tLS0tLS0tLS0tLS0tLQo+PiAgIDEg
-ZmlsZSBjaGFuZ2VkLCA1MiBpbnNlcnRpb25zKCspLCAzNSBkZWxldGlvbnMoLSkKPj4KPj4gZGlm
-ZiAtLWdpdCBhL2RyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtZHdjbXNoYy5jIGIvZHJpdmVycy9t
-bWMvaG9zdC9zZGhjaS1vZi1kd2Ntc2hjLmMKPj4gaW5kZXggYTkxYjNlNy4uNmI0M2JhOSAxMDA2
-NDQKPj4gLS0tIGEvZHJpdmVycy9tbWMvaG9zdC9zZGhjaS1vZi1kd2Ntc2hjLmMKPj4gKysrIGIv
-ZHJpdmVycy9tbWMvaG9zdC9zZGhjaS1vZi1kd2Ntc2hjLmMKPj4gQEAgLTI3OCwxNCArMjc4LDgg
-QEAKPj4gICAjZGVmaW5lIFBIWV9ERUxBWV9DT0RFX0VNTUMJCTB4MTcKPj4gICAjZGVmaW5lIFBI
-WV9ERUxBWV9DT0RFX1NECQkweDU1Cj4+ICAgCj4+IC1lbnVtIGR3Y21zaGNfcmtfdHlwZSB7Cj4+
-IC0JRFdDTVNIQ19SSzM1NjgsCj4+IC0JRFdDTVNIQ19SSzM1ODgsCj4+IC19Owo+PiAtCj4+ICAg
-c3RydWN0IHJrMzV4eF9wcml2IHsKPj4gICAJc3RydWN0IHJlc2V0X2NvbnRyb2wgKnJlc2V0Owo+
-PiAtCWVudW0gZHdjbXNoY19ya190eXBlIGRldnR5cGU7Cj4+ICAgCXU4IHR4Y2xrX3RhcG51bTsK
-Pj4gICB9Owo+PiAgIAo+PiBAQCAtMzMwLDYgKzMyNCwxMSBAQCBzdHJ1Y3QgazIzMF9wbHRmbV9k
-YXRhIHsKPj4gICAJdTMyIHdyaXRlX3Byb3RfYml0Owo+PiAgIH07Cj4+ICAgCj4+ICtzdHJ1Y3Qg
-cm9ja2NoaXBfcGx0Zm1fZGF0YSB7Cj4+ICsJc3RydWN0IGR3Y21zaGNfcGx0Zm1fZGF0YSBkd2Nt
-c2hjX3BkYXRhOwo+PiArCWludCByZXZpc2lvbjsKPiAKPiBEb2VzIHRoaXMgInJldmlzaW9uIiBt
-YXRjaCBIVyBzcGVjcywgb3RoZXJ3aXNlIG1heWJlIG5lZWQKPiB0byBjbGFyaWZ5IHdoZXJlIGl0
-IGNvbWVzIGZyb20uCj4gCgpUaGlzICJyZXZpc2lvbiIgb3JpZ2luYXRlcyBmcm9tIG91ciBpbnRl
-cm5hbCBJUCBkZXZlbG9wbWVudApkb2N1bWVudGF0aW9uLCBub3QgdGhlIHB1YmxpYyBjaGlwIHNw
-ZWNpZmljYXRpb25zLiBUaGUgcHVibGljIG1hbnVhbHMgZG8gCm5vdCBsYWJlbCB0aGVzZSBzcGVj
-aWZpYyBJUCB2ZXJzaW9ucy4KClJldmlzaW9uIDAgKEluaXRpYWwgSVApOiBUaGlzIGlzIHRoZSBp
-bml0aWFsIHZlcnNpb24gb2YgdGhlIElQIHVzZWQgaW4KdGhlIFJLMzU2OCBhbmQgUkszNTY2LiBQ
-b3N0LXNpbGljb24gdmFsaWRhdGlvbiBpZGVudGlmaWVkIGNlcnRhaW4gZXJyYXRhCnJlcXVpcmlu
-ZyB3b3JrYXJvdW5kcywgYW5kIHRoaXMgdmVyc2lvbiBsYWNrcyBIUzQwMCBzdXBwb3J0LgoKUmV2
-aXNpb24gMSAoRml4ZWQgSVApOiBUaGlzIGlzIHRoZSB1cGRhdGVkIElQIHZlcnNpb24gKHdpdGgK
-ZG9jdW1lbnRhdGlvbiBudW1iZXIgdXBkYXRlZCBpbnRlcm5hbGx5KS4gSXQgZml4ZXMgdGhlIHBy
-ZXZpb3VzIGlzc3VlcwphbmQgYWRkcyBIUzQwMCBzdXBwb3J0LiBUaGlzIHJldmlzaW9uIGlzIHVz
-ZWQgaW4gYWxsIHN1YnNlcXVlbnQgY2hpcHMKKFJLMzU3NiwgUkszNTg4LCBldGMuKS4KClNpbmNl
-IHRoZSBwdWJsaWMgc3BlY3MgZG8gbm90IGV4cG9zZSB0aGlzIGRpc3RpbmN0aW9uLCBJIGJlbGll
-dmUgdXNpbmcKdGhlIGludGVybmFsIElQIGRldmVsb3BtZW50IGRvY3VtZW50IHJldmlzaW9uIGlz
-IHRoZSBtb3N0IGFjY3VyYXRlIHdheQp0byBkaWZmZXJlbnRpYXRlIHRoZSBoYXJkd2FyZSBiZWhh
-dmlvciBpbiBzb2Z0d2FyZS4gSSB3aWxsIGFkZCBhIGNvbW1lbnQKaW4gdGhlIGNvZGUgdG8gY2xh
-cmlmeSB0aGlzIG9yaWdpbiBhbmQgdGhlIHNwZWNpZmljIGRpZmZlcmVuY2VzIGJldHdlZW4KdGhl
-IHJldmlzaW9ucy4KCj4+ICt9Owo+PiArCj4+ICAgc3RhdGljIHZvaWQgZHdjbXNoY19lbmFibGVf
-Y2FyZF9jbGsoc3RydWN0IHNkaGNpX2hvc3QgKmhvc3QpCj4+ICAgewo+PiAgIAl1MTYgY3RybDsK
-Pj4gQEAgLTc0OSw2ICs3NDgsNyBAQCBzdGF0aWMgdm9pZCBkd2Ntc2hjX3JrMzU2OF9zZXRfY2xv
-Y2soc3RydWN0IHNkaGNpX2hvc3QgKmhvc3QsIHVuc2lnbmVkIGludCBjbG9jawo+PiAgIAlzdHJ1
-Y3Qgc2RoY2lfcGx0Zm1faG9zdCAqcGx0Zm1faG9zdCA9IHNkaGNpX3ByaXYoaG9zdCk7Cj4+ICAg
-CXN0cnVjdCBkd2Ntc2hjX3ByaXYgKmR3Y19wcml2ID0gc2RoY2lfcGx0Zm1fcHJpdihwbHRmbV9o
-b3N0KTsKPj4gICAJc3RydWN0IHJrMzV4eF9wcml2ICpwcml2ID0gZHdjX3ByaXYtPnByaXY7Cj4+
-ICsJY29uc3Qgc3RydWN0IHJvY2tjaGlwX3BsdGZtX2RhdGEgKnJvY2tjaGlwX3BkYXRhID0gdG9f
-cGx0Zm1fZGF0YShkd2NfcHJpdiwgcm9ja2NoaXApOwo+PiAgIAl1OCB0eGNsa190YXBudW0gPSBE
-TExfVFhDTEtfVEFQTlVNX0RFRkFVTFQ7Cj4+ICAgCXUzMiBleHRyYSwgcmVnOwo+PiAgIAlpbnQg
-ZXJyOwo+PiBAQCAtODE2LDcgKzgxNiw3IEBAIHN0YXRpYyB2b2lkIGR3Y21zaGNfcmszNTY4X3Nl
-dF9jbG9jayhzdHJ1Y3Qgc2RoY2lfaG9zdCAqaG9zdCwgdW5zaWduZWQgaW50IGNsb2NrCj4+ICAg
-CSAqIHdlIG11c3Qgc2V0IGl0IGluIGhpZ2hlciBzcGVlZCBtb2RlLgo+PiAgIAkgKi8KPj4gICAJ
-ZXh0cmEgPSBEV0NNU0hDX0VNTUNfRExMX0RMWUVOQTsKPj4gLQlpZiAocHJpdi0+ZGV2dHlwZSA9
-PSBEV0NNU0hDX1JLMzU2OCkKPj4gKwlpZiAocm9ja2NoaXBfcGRhdGEtPnJldmlzaW9uID09IDAp
-Cj4+ICAgCQlleHRyYSB8PSBETExfUlhDTEtfTk9fSU5WRVJURVIgPDwgRFdDTVNIQ19FTU1DX0RM
-TF9SWENMS19TUkNTRUw7Cj4+ICAgCXNkaGNpX3dyaXRlbChob3N0LCBleHRyYSwgRFdDTVNIQ19F
-TU1DX0RMTF9SWENMSyk7Cj4+ICAgCj4+IEBAIC04NDIsNyArODQyLDcgQEAgc3RhdGljIHZvaWQg
-ZHdjbXNoY19yazM1Njhfc2V0X2Nsb2NrKHN0cnVjdCBzZGhjaV9ob3N0ICpob3N0LCB1bnNpZ25l
-ZCBpbnQgY2xvY2sKPj4gICAJICAgIGhvc3QtPm1tYy0+aW9zLnRpbWluZyA9PSBNTUNfVElNSU5H
-X01NQ19IUzQwMCkKPj4gICAJCXR4Y2xrX3RhcG51bSA9IHByaXYtPnR4Y2xrX3RhcG51bTsKPj4g
-ICAKPj4gLQlpZiAoKHByaXYtPmRldnR5cGUgPT0gRFdDTVNIQ19SSzM1ODgpICYmIGhvc3QtPm1t
-Yy0+aW9zLnRpbWluZyA9PSBNTUNfVElNSU5HX01NQ19IUzQwMCkgewo+PiArCWlmICgocm9ja2No
-aXBfcGRhdGEtPnJldmlzaW9uID09IDEpICYmIGhvc3QtPm1tYy0+aW9zLnRpbWluZyA9PSBNTUNf
-VElNSU5HX01NQ19IUzQwMCkgewo+PiAgIAkJdHhjbGtfdGFwbnVtID0gRExMX1RYQ0xLX1RBUE5V
-TV85MF9ERUdSRUVTOwo+PiAgIAo+PiAgIAkJZXh0cmEgPSBETExfQ01ET1VUX1NSQ19DTEtfTkVH
-IHwKPj4gQEAgLTg5OCwxMSArODk4LDYgQEAgc3RhdGljIGludCBkd2Ntc2hjX3JrMzV4eF9pbml0
-KHN0cnVjdCBkZXZpY2UgKmRldiwgc3RydWN0IHNkaGNpX2hvc3QgKmhvc3QsCj4+ICAgCWlmICgh
-cHJpdikKPj4gICAJCXJldHVybiAtRU5PTUVNOwo+PiAgIAo+PiAtCWlmIChvZl9kZXZpY2VfaXNf
-Y29tcGF0aWJsZShkZXYtPm9mX25vZGUsICJyb2NrY2hpcCxyazM1ODgtZHdjbXNoYyIpKQo+PiAt
-CQlwcml2LT5kZXZ0eXBlID0gRFdDTVNIQ19SSzM1ODg7Cj4+IC0JZWxzZQo+PiAtCQlwcml2LT5k
-ZXZ0eXBlID0gRFdDTVNIQ19SSzM1Njg7Cj4+IC0KPj4gICAJcHJpdi0+cmVzZXQgPSBkZXZtX3Jl
-c2V0X2NvbnRyb2xfYXJyYXlfZ2V0X29wdGlvbmFsX2V4Y2x1c2l2ZShtbWNfZGV2KGhvc3QtPm1t
-YykpOwo+PiAgIAlpZiAoSVNfRVJSKHByaXYtPnJlc2V0KSkgewo+PiAgIAkJZXJyID0gUFRSX0VS
-Uihwcml2LT5yZXNldCk7Cj4+IEBAIC0yMTE1LDMwICsyMTEwLDUyIEBAIHN0YXRpYyBjb25zdCBz
-dHJ1Y3QgY3FoY2lfaG9zdF9vcHMgcmszNXh4X2NxaGNpX29wcyA9IHsKPj4gICAJLnNldF90cmFu
-X2Rlc2MJPSBkd2Ntc2hjX3NldF90cmFuX2Rlc2MsCj4+ICAgfTsKPj4gICAKPj4gLXN0YXRpYyBj
-b25zdCBzdHJ1Y3QgZHdjbXNoY19wbHRmbV9kYXRhIHNkaGNpX2R3Y21zaGNfcmszNXh4X3BkYXRh
-ID0gewo+PiAtCS5wZGF0YSA9IHsKPj4gLQkJLm9wcyA9ICZzZGhjaV9kd2Ntc2hjX3JrMzV4eF9v
-cHMsCj4+IC0JCS5xdWlya3MgPSBTREhDSV9RVUlSS19DQVBfQ0xPQ0tfQkFTRV9CUk9LRU4gfAo+
-PiAtCQkJICBTREhDSV9RVUlSS19CUk9LRU5fVElNRU9VVF9WQUwsCj4+IC0JCS5xdWlya3MyID0g
-U0RIQ0lfUVVJUksyX1BSRVNFVF9WQUxVRV9CUk9LRU4gfAo+PiAtCQkJICAgU0RIQ0lfUVVJUksy
-X0NMT0NLX0RJVl9aRVJPX0JST0tFTiwKPj4gK3N0YXRpYyBjb25zdCBzdHJ1Y3Qgcm9ja2NoaXBf
-cGx0Zm1fZGF0YSBzZGhjaV9kd2Ntc2hjX3JrMzU2OF9wZGF0YSA9IHsKPj4gKwkuZHdjbXNoY19w
-ZGF0YSA9IHsKPj4gKwkJLnBkYXRhID0gewo+PiArCQkJLm9wcyA9ICZzZGhjaV9kd2Ntc2hjX3Jr
-MzV4eF9vcHMsCj4+ICsJCQkucXVpcmtzID0gU0RIQ0lfUVVJUktfQ0FQX0NMT0NLX0JBU0VfQlJP
-S0VOIHwKPj4gKwkJCQkgIFNESENJX1FVSVJLX0JST0tFTl9USU1FT1VUX1ZBTCwKPj4gKwkJCS5x
-dWlya3MyID0gU0RIQ0lfUVVJUksyX1BSRVNFVF9WQUxVRV9CUk9LRU4gfAo+PiArCQkJCSAgIFNE
-SENJX1FVSVJLMl9DTE9DS19ESVZfWkVST19CUk9LRU4sCj4+ICsJCX0sCj4+ICsJCS5jcWhjaV9o
-b3N0X29wcyA9ICZyazM1eHhfY3FoY2lfb3BzLAo+PiArCQkuaW5pdCA9IGR3Y21zaGNfcmszNXh4
-X2luaXQsCj4+ICsJCS5wb3N0aW5pdCA9IGR3Y21zaGNfcmszNXh4X3Bvc3Rpbml0LAo+PiAgIAl9
-LAo+PiAtCS5jcWhjaV9ob3N0X29wcyA9ICZyazM1eHhfY3FoY2lfb3BzLAo+PiAtCS5pbml0ID0g
-ZHdjbXNoY19yazM1eHhfaW5pdCwKPj4gLQkucG9zdGluaXQgPSBkd2Ntc2hjX3JrMzV4eF9wb3N0
-aW5pdCwKPj4gKwkucmV2aXNpb24gPSAwLAo+PiAgIH07Cj4+ICAgCj4+IC1zdGF0aWMgY29uc3Qg
-c3RydWN0IGR3Y21zaGNfcGx0Zm1fZGF0YSBzZGhjaV9kd2Ntc2hjX3JrMzU3Nl9wZGF0YSA9IHsK
-Pj4gLQkucGRhdGEgPSB7Cj4+IC0JCS5vcHMgPSAmc2RoY2lfZHdjbXNoY19yazM1eHhfb3BzLAo+
-PiAtCQkucXVpcmtzID0gU0RIQ0lfUVVJUktfQ0FQX0NMT0NLX0JBU0VfQlJPS0VOIHwKPj4gLQkJ
-CSAgU0RIQ0lfUVVJUktfQlJPS0VOX1RJTUVPVVRfVkFMLAo+PiAtCQkucXVpcmtzMiA9IFNESENJ
-X1FVSVJLMl9QUkVTRVRfVkFMVUVfQlJPS0VOIHwKPj4gLQkJCSAgIFNESENJX1FVSVJLMl9DTE9D
-S19ESVZfWkVST19CUk9LRU4sCj4+ICtzdGF0aWMgY29uc3Qgc3RydWN0IHJvY2tjaGlwX3BsdGZt
-X2RhdGEgc2RoY2lfZHdjbXNoY19yazM1ODhfcGRhdGEgPSB7Cj4gCj4gQmV0dGVyIG9yZGVyOiBz
-ZGhjaV9kd2Ntc2hjX3JrMzU2OF9wZGF0YSwgc2RoY2lfZHdjbXNoY19yazM1NzZfcGRhdGEsCj4g
-c2RoY2lfZHdjbXNoY19yazM1ODhfcGRhdGEKCgpTdXJl77yMIHdpbGwgZG8uCgo+IAo+PiArCS5k
-d2Ntc2hjX3BkYXRhID0gewo+PiArCQkucGRhdGEgPSB7Cj4+ICsJCQkub3BzID0gJnNkaGNpX2R3
-Y21zaGNfcmszNXh4X29wcywKPj4gKwkJCS5xdWlya3MgPSBTREhDSV9RVUlSS19DQVBfQ0xPQ0tf
-QkFTRV9CUk9LRU4gfAo+PiArCQkJCSAgU0RIQ0lfUVVJUktfQlJPS0VOX1RJTUVPVVRfVkFMLAo+
-PiArCQkJLnF1aXJrczIgPSBTREhDSV9RVUlSSzJfUFJFU0VUX1ZBTFVFX0JST0tFTiB8Cj4+ICsJ
-CQkJICAgU0RIQ0lfUVVJUksyX0NMT0NLX0RJVl9aRVJPX0JST0tFTiwKPj4gKwkJfSwKPj4gKwkJ
-LmNxaGNpX2hvc3Rfb3BzID0gJnJrMzV4eF9jcWhjaV9vcHMsCj4+ICsJCS5pbml0ID0gZHdjbXNo
-Y19yazM1eHhfaW5pdCwKPj4gKwkJLnBvc3Rpbml0ID0gZHdjbXNoY19yazM1eHhfcG9zdGluaXQs
-Cj4+ICsJfSwKPj4gKwkucmV2aXNpb24gPSAxLAo+PiArfTsKPj4gKwo+PiArc3RhdGljIGNvbnN0
-IHN0cnVjdCByb2NrY2hpcF9wbHRmbV9kYXRhIHNkaGNpX2R3Y21zaGNfcmszNTc2X3BkYXRhID0g
-ewo+PiArCS5kd2Ntc2hjX3BkYXRhID0gewo+PiArCQkucGRhdGEgPSB7Cj4+ICsJCQkub3BzID0g
-JnNkaGNpX2R3Y21zaGNfcmszNXh4X29wcywKPj4gKwkJCS5xdWlya3MgPSBTREhDSV9RVUlSS19D
-QVBfQ0xPQ0tfQkFTRV9CUk9LRU4gfAo+PiArCQkJCSAgU0RIQ0lfUVVJUktfQlJPS0VOX1RJTUVP
-VVRfVkFMLAo+PiArCQkJLnF1aXJrczIgPSBTREhDSV9RVUlSSzJfUFJFU0VUX1ZBTFVFX0JST0tF
-TiB8Cj4+ICsJCQkJICAgU0RIQ0lfUVVJUksyX0NMT0NLX0RJVl9aRVJPX0JST0tFTiwKPj4gKwkJ
-fSwKPj4gKwkJLmNxaGNpX2hvc3Rfb3BzID0gJnJrMzV4eF9jcWhjaV9vcHMsCj4+ICsJCS5pbml0
-ID0gZHdjbXNoY19yazM1eHhfaW5pdCwKPj4gKwkJLnBvc3Rpbml0ID0gZHdjbXNoY19yazM1NzZf
-cG9zdGluaXQsCj4+ICAgCX0sCj4+IC0JLmNxaGNpX2hvc3Rfb3BzID0gJnJrMzV4eF9jcWhjaV9v
-cHMsCj4+IC0JLmluaXQgPSBkd2Ntc2hjX3JrMzV4eF9pbml0LAo+PiAtCS5wb3N0aW5pdCA9IGR3
-Y21zaGNfcmszNTc2X3Bvc3Rpbml0LAo+PiArCS5yZXZpc2lvbiA9IDEsCj4gCj4gSXNuJ3Qgcmsz
-NTc2IHJldmlzaW9uID0gMCA/CgpBcyBleHBsYWluZWQgYWJvdmUsIHJrMzU3NiBpcyByZXZpc2lv
-biAxLgoKPiAKPj4gICB9Owo+PiAgIAo+PiAgIHN0YXRpYyBjb25zdCBzdHJ1Y3QgZHdjbXNoY19w
-bHRmbV9kYXRhIHNkaGNpX2R3Y21zaGNfdGgxNTIwX3BkYXRhID0gewo+PiBAQCAtMjMwOSw3ICsy
-MzI2LDcgQEAgc3RhdGljIGNvbnN0IHN0cnVjdCBvZl9kZXZpY2VfaWQgc2RoY2lfZHdjbXNoY19k
-dF9pZHNbXSA9IHsKPj4gICAJfSwKPj4gICAJewo+PiAgIAkJLmNvbXBhdGlibGUgPSAicm9ja2No
-aXAscmszNTg4LWR3Y21zaGMiLAo+PiAtCQkuZGF0YSA9ICZzZGhjaV9kd2Ntc2hjX3JrMzV4eF9w
-ZGF0YSwKPj4gKwkJLmRhdGEgPSAmc2RoY2lfZHdjbXNoY19yazM1ODhfcGRhdGEsCj4+ICAgCX0s
-Cj4+ICAgCXsKPj4gICAJCS5jb21wYXRpYmxlID0gInJvY2tjaGlwLHJrMzU3Ni1kd2Ntc2hjIiwK
-Pj4gQEAgLTIzMTcsNyArMjMzNCw3IEBAIHN0YXRpYyBjb25zdCBzdHJ1Y3Qgb2ZfZGV2aWNlX2lk
-IHNkaGNpX2R3Y21zaGNfZHRfaWRzW10gPSB7Cj4+ICAgCX0sCj4+ICAgCXsKPj4gICAJCS5jb21w
-YXRpYmxlID0gInJvY2tjaGlwLHJrMzU2OC1kd2Ntc2hjIiwKPj4gLQkJLmRhdGEgPSAmc2RoY2lf
-ZHdjbXNoY19yazM1eHhfcGRhdGEsCj4+ICsJCS5kYXRhID0gJnNkaGNpX2R3Y21zaGNfcmszNTY4
-X3BkYXRhLAo+PiAgIAl9LAo+PiAgIAl7Cj4+ICAgCQkuY29tcGF0aWJsZSA9ICJzbnBzLGR3Y21z
-aGMtc2RoY2kiLAo+IAo+IAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+--5nqk7qqoimem4szp
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+On Fri, Mar 27, 2026 at 12:22:46PM +0530, Manivannan Sadhasivam wrote:
+> I tested the patch. But it fails ufs_qcom_power_up_sequence() if PHY was already
+> powered on:
+> 
+> [   31.513321] qcom-qmp-ufs-phy 1d87000.phy: phy initialization timed-out
+> [   31.513335] ufshcd-qcom 1d84000.ufshc: Failed to calibrate PHY: -110
+> [   31.565273] ufshcd-qcom 1d84000.ufshc: Enabling the controller failed
+> 
+> Funny thing is, it didn't affect the functionality since the UFS core retries
+> ufshcd_hba_enable() and in the error path of ufs_qcom_power_up_sequence(),
+> phy_power_off() gets called and that causes the next try to succeed. So it is
+> evident that, if PHY was already powered ON, it should be powered off before
+> ufs_qcom_phy_power_on(). And due to the UFS driver design,
+> ufs_qcom_power_up_sequence() can get called multiple times. So we cannot just
+> remove phy_power_off().
+> 
+> Below diff on top of your patch fixes the issue:
+> 
+> ```
+> diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+> index ed067247d72a..2c9fe03f349e 100644
+> --- a/drivers/ufs/host/ufs-qcom.c
+> +++ b/drivers/ufs/host/ufs-qcom.c
+> @@ -567,6 +567,8 @@ static int ufs_qcom_power_up_sequence(struct ufs_hba *hba)
+>         if (ret)
+>                 return ret;
+>  
+> +       ufs_qcom_phy_power_off(host);
+> +
+>         ret = ufs_qcom_phy_set_gear(host, mode);
+>         if (ret) {
+>                 dev_err(hba->dev, "%s: phy_set_mode_ext() failed, ret = %d\n",
+> ```
+> 
+> - Mani
+
+Understood. Thanks for testing.
+
+I'm still not satisfied with this level of complexity. If I get you
+right, ufs_qcom_phy_power_off() is still needed because phy_calibrate()
+expects a "fresh after power on" state, otherwise it fails? That would
+be the second reason, apart from the first one I already identified
+(undo a phy_power_on() done prior to phy_init()).
+
+If so, could you please test the 3 patches attached (no relationship
+with anything else we've exchanged thus far)?
+
+--5nqk7qqoimem4szp
+Content-Type: text/x-diff; charset=us-ascii
+Content-Disposition: attachment;
+	filename="0001-phy-qcom-qmp-ufs-support-dynamic-gear-changing.patch"
+
+From 2d42c2d40e6ddfd0c73fc39601f93f7b81a42401 Mon Sep 17 00:00:00 2001
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+Date: Fri, 27 Mar 2026 12:41:00 +0200
+Subject: [PATCH 1/3] phy: qcom-qmp-ufs: support dynamic gear changing
+
+Currently, phy_set_mode_ext() on the QMP UFS PHY expects the PHY to be
+powered down, and it makes no change to the hardware state, instead
+phy_power_on() followed by phy_calibrate() must be run afterwards.
+
+"Order of API calls" from Documentation/driver-api/phy/phy.rst has a
+roundabout and not really clear way of saying that both calling
+sequences should be supported. This was further discussed here,
+documentation is pending an update:
+https://lore.kernel.org/linux-phy/E1vo0mF-00000007kbg-1OeA@rmk-PC.armlinux.org.uk/
+
+By absorbing the phy_power_off() -> ... -> phy_power_on() ->
+phy_configure() surrounding sequence into phy_set_mode_ext(), consumer
+drivers can be greatly simplified, and we also have a proper
+self-standing phy_set_mode_ext() implementation which does not rely on
+other calls to do its job.
+
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+---
+ drivers/phy/qualcomm/phy-qcom-qmp-ufs.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c b/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c
+index df138a5442eb..e75b059bf246 100644
+--- a/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c
++++ b/drivers/phy/qualcomm/phy-qcom-qmp-ufs.c
+@@ -2004,15 +2004,24 @@ static int qmp_ufs_set_mode(struct phy *phy, enum phy_mode mode, int submode)
+ {
+ 	struct qmp_ufs *qmp = phy_get_drvdata(phy);
+ 	const struct qmp_phy_cfg *cfg = qmp->cfg;
++	bool powered_on = phy->power_count;
+ 
+ 	if (submode > cfg->max_supported_gear || submode == 0) {
+ 		dev_err(qmp->dev, "Invalid PHY submode %d\n", submode);
+ 		return -EINVAL;
+ 	}
+ 
++	if (powered_on)
++		qmp_ufs_power_off(phy);
++
+ 	qmp->mode = mode;
+ 	qmp->submode = submode;
+ 
++	if (powered_on) {
++		qmp_ufs_power_on(phy);
++		return qmp_ufs_phy_calibrate(phy);
++	}
++
+ 	return 0;
+ }
+ 
+-- 
+2.34.1
+
+
+--5nqk7qqoimem4szp
+Content-Type: text/x-diff; charset=us-ascii
+Content-Disposition: attachment;
+	filename="0002-scsi-ufs-qcom-call-phy_init-before-phy_power_on.patch"
+
+From 8d156781d38597865da37a86417f553143d74eaa Mon Sep 17 00:00:00 2001
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+Date: Fri, 27 Mar 2026 13:14:39 +0200
+Subject: [PATCH 2/3] scsi: ufs: qcom: call phy_init() before phy_power_on()
+
+The Qualcomm UFS host controller driver violates the Generic PHY API
+expectation, documented in section "Order of API calls" from
+Documentation/driver-api/phy/phy.rst, and then tries to hide it.
+
+The expectation is that calls must be made in the phy_init() ->
+phy_power_on() -> phy_power_off() -> phy_exit() sequence.
+
+What we actually have is:
+
+ufshcd_init()
+-> ufshcd_hba_init()
+   -> ufshcd_setup_clocks(hba, true)
+      -> ufshcd_vops_setup_clocks(hba, true, POST_CHANGE)
+         -> ufs_qcom_setup_clocks(hba, true, POST_CHANGE)
+            -> phy_power_on(phy)
+   -> ufshcd_variant_hba_init()
+      -> ufs_qcom_init()
+         -> ufs_qcom_setup_clocks(hba, true, POST_CHANGE)
+            -> phy_power_on(phy)
+-> ufshcd_hba_enable()
+   -> ufshcd_vops_hce_enable_notify()
+      -> ufs_qcom_hce_enable_notify()
+         -> ufs_qcom_power_up_sequence()
+            -> if (phy->power_count) phy_power_off(phy)
+            -> phy_init(phy)
+
+This "works" because the way that the "phy_power_on was called before
+phy_init\n" condition is detected in phy-core.c is if the power_count is
+positive at the phy_init() call time.
+
+By having that "if (phy->power_count) phy_power_off(phy)" logic, the
+ufs-qcom.c technically sidesteps the test, but actually violates the
+Generic PHY API even more (calls phy_power_on() *and* phy_power_off()
+before phy_init()).
+
+The reason why I stumbled upon this was that I was trying to remove
+dereferences of phy->power_count from drivers. This is a PHY-internal
+field, and using it from drivers is highly likely to be incorrect, as
+this case showcases rather well.
+
+As commit 77d2fa54a945 ("scsi: ufs: qcom : Refactor phy_power_on/off
+calls") shows, this driver tries to couple the PHY power state with the
+HBA clocks, for power saving reasons. I won't try to change that, I will
+just move the phy_init() call earlier, to ufs_qcom_init().
+
+After the phy_init() movement, ufs_qcom_power_up_sequence() should no
+longer need to do either phy_init() nor the conditional phy_power_off().
+However, phy_power_off() is still needed, for a separate reason which
+will be dealt with separately.
+
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+---
+Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
+Cc: Manivannan Sadhasivam <mani@kernel.org>
+Cc: "Martin K. Petersen" <martin.petersen@oracle.com>
+Cc: Nitin Rawat <quic_nitirawa@quicinc.com>
+
+v5->v6: rewrite after actually understanding the core issue
+v4->v5: patch is new
+---
+ drivers/ufs/host/ufs-qcom.c | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+index 375fd24ba458..ffa70c6c7143 100644
+--- a/drivers/ufs/host/ufs-qcom.c
++++ b/drivers/ufs/host/ufs-qcom.c
+@@ -513,13 +513,6 @@ static int ufs_qcom_power_up_sequence(struct ufs_hba *hba)
+ 
+ 
+ 	/* phy initialization - calibrate the phy */
+-	ret = phy_init(phy);
+-	if (ret) {
+-		dev_err(hba->dev, "%s: phy init failed, ret = %d\n",
+-			__func__, ret);
+-		return ret;
+-	}
+-
+ 	ret = phy_set_mode_ext(phy, mode, host->phy_gear);
+ 	if (ret)
+ 		goto out_disable_phy;
+@@ -1441,6 +1434,13 @@ static int ufs_qcom_init(struct ufs_hba *hba)
+ 	if (err)
+ 		goto out_variant_clear;
+ 
++	err = phy_init(host->generic_phy);
++	if (err) {
++		dev_err(hba->dev, "%s: phy_init failed, ret = %d\n",
++			__func__, err);
++		goto out_variant_clear;
++	}
++
+ 	ufs_qcom_setup_clocks(hba, true, POST_CHANGE);
+ 
+ 	ufs_qcom_get_default_testbus_cfg(host);
+-- 
+2.34.1
+
+
+--5nqk7qqoimem4szp
+Content-Type: text/x-diff; charset=us-ascii
+Content-Disposition: attachment;
+	filename="0003-scsi-ufs-qcom-make-use-of-QMP-PHY-dynamic-gear-switc.patch"
+
+From 88f4bdfee770cd433a940a14e318d8c8b5dfa516 Mon Sep 17 00:00:00 2001
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+Date: Fri, 27 Mar 2026 13:18:05 +0200
+Subject: [PATCH 3/3] scsi: ufs: qcom: make use of QMP PHY dynamic gear
+ switching ability
+
+The QMP UFS PHY can now tolerate having phy_set_mode_ext() being called
+while the PHY is powered up. We no longer need to power it down, back up
+and calibrate it.
+
+Simplify ufs_qcom_power_up_sequence() by relying on just phy_set_mode_ext()
+and let PHY power management be handled just by ufs_qcom_setup_clocks().
+
+Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+---
+ drivers/ufs/host/ufs-qcom.c | 25 +------------------------
+ 1 file changed, 1 insertion(+), 24 deletions(-)
+
+diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
+index ffa70c6c7143..cf7b67f2021e 100644
+--- a/drivers/ufs/host/ufs-qcom.c
++++ b/drivers/ufs/host/ufs-qcom.c
+@@ -508,37 +508,14 @@ static int ufs_qcom_power_up_sequence(struct ufs_hba *hba)
+ 	if (ret)
+ 		return ret;
+ 
+-	if (phy->power_count)
+-		phy_power_off(phy);
+-
+-
+ 	/* phy initialization - calibrate the phy */
+ 	ret = phy_set_mode_ext(phy, mode, host->phy_gear);
+ 	if (ret)
+-		goto out_disable_phy;
+-
+-	/* power on phy - start serdes and phy's power and clocks */
+-	ret = phy_power_on(phy);
+-	if (ret) {
+-		dev_err(hba->dev, "%s: phy power on failed, ret = %d\n",
+-			__func__, ret);
+-		goto out_disable_phy;
+-	}
+-
+-	ret = phy_calibrate(phy);
+-	if (ret) {
+-		dev_err(hba->dev, "Failed to calibrate PHY: %d\n", ret);
+-		goto out_disable_phy;
+-	}
++		return ret;
+ 
+ 	ufs_qcom_select_unipro_mode(host);
+ 
+ 	return 0;
+-
+-out_disable_phy:
+-	phy_exit(phy);
+-
+-	return ret;
+ }
+ 
+ /*
+-- 
+2.34.1
+
+
+--5nqk7qqoimem4szp
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--5nqk7qqoimem4szp--
+
