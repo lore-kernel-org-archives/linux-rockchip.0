@@ -4,172 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DF3D10ED67F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 14:40:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D718710ED67F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 15:16:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:CC:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=aCHoQ5JMjsCg6Qk6h0HTwj9zFz9iH3VLNmiFIskPfrM=; b=lF6y64xnGF8Cai1pfwJuStcMnJ
-	Ga29xGdU1RtKctzr/4+vyqG4LlXIWh0PCEA9cCSWdoAM+NRWIepghmW/mYv3iiFbVQbCsKC2ElPx6
-	2oWPzJIc/970xkZeS93n4fxA1OCH/4m4ExPvbyuFZS6yK3s1ewK2tzBN7YpAQPde2zUUo+Ekle3Zs
-	mASVX2KrClIle+enHk8t379JsdFqAKPhd/EeH/sB8uuYzT94hYPobXeodVmOZpy1XlyhtDoTwiVzm
-	wyHKhzOfCEzk95mJ7PAkLYY7ECFEZdGMz2hPUn/PUwcxo7T6S3D52dnkgZmzErCSOs13allLzvgKZ
-	deg+VJYw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=9VxwcL+hfWfhNuHtJ0FEAOPGvlE0D+4wvmMrGilKAEo=; b=bal90fscftZ9h7
+	Q36YsZsJ6gamiUXcWht4lzIGSsVwi57apb3KSKJzsXeEtN4/EU8lAcG9j6Z3zDxttwbRQjpntL//x
+	GB8+D9FGAvD+PoA21BADtnzJW7aK3vNFCMs6zbLUsjVrpYDxtOrQ6Ig/7ZctzqXGHS+bNGxVA8nbx
+	pzKq0x+yP8oANUxVxoUUdGhh7VnJRWsn36pDRFgTX63ReYlk+WRGUixNavJb9ehzgvtdEJ6q1xcdQ
+	sGU15B0GZEqND/MMqgpVg2q0GKZstXgEfSAh0YJQJNPhDPdONWrfOZ81tGuGTCRLa2HIta/DHB2UK
+	KFfnqn0ACBPYnWwjp4ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w68MY-00000007cuh-0WAY;
-	Fri, 27 Mar 2026 14:40:38 +0000
-Received: from mgamail.intel.com ([198.175.65.16])
+	id 1w68uw-00000007fZz-30cF;
+	Fri, 27 Mar 2026 15:16:10 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w68MV-00000007cuL-1gNf
-	for linux-rockchip@lists.infradead.org;
-	Fri, 27 Mar 2026 14:40:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1774622435; x=1806158435;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=zcVgIMu4uIwSwhqUhxD+P/CKCkjCDtq97wxqQ6q36CA=;
-  b=n5NiFjVblrMVarpTxpRMQzDo3vLQN+g8n3uA87e0eV8NZ5A9Rva87DWl
-   flarR0qUVl+r6G2k4e1FWX844DpPyhUDmQnJj+/suWp1uEbf1KtSXZSjq
-   ASE/pUGblMv2wNANvINUpwN372iC1DbNWVsiw+OeC+ysH5OTnvCiA+Ns/
-   kyNswCADGu5NwjAPATSiaOMcRy90DLDqkMiAcHY0VoS3CpvBNmscuCcTf
-   zJWSjwYI8Qv5QSJtkUMK5V8f3Br6mf3awLSAgySziKfG6OEJYgjbp7MBw
-   CSw3Qfu2Cu5br9V/7D3oO+0BIRTVcOmEsuYAc5FG4KlIXOSp1D9eJOvVY
-   g==;
-X-CSE-ConnectionGUID: A1/LBOp9ThSF5pgDZkJfpg==
-X-CSE-MsgGUID: twlG7r2oTV21l0Icp189Bw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11741"; a="75894602"
-X-IronPort-AV: E=Sophos;i="6.23,144,1770624000"; 
-   d="scan'208";a="75894602"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2026 07:40:34 -0700
-X-CSE-ConnectionGUID: Fxee4UMzTNeXAfVVvu6GCA==
-X-CSE-MsgGUID: ugHDNrROTP6jVy5Z4ak0bg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,144,1770624000"; 
-   d="scan'208";a="229821084"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
-  by orviesa004.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2026 07:40:34 -0700
-Received: from ORSMSX903.amr.corp.intel.com (10.22.229.25) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Fri, 27 Mar 2026 07:40:33 -0700
-Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37 via Frontend Transport; Fri, 27 Mar 2026 07:40:33 -0700
-Received: from CO1PR03CU002.outbound.protection.outlook.com (52.101.46.1) by
- edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.37; Fri, 27 Mar 2026 07:40:32 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jffM9cMPHeThsO00w8WY6fOtfdcU9u84Nt2K+idwaFnZrqzO4toorH55+YV7O0EwNqv5/bCXXKtMZD1AjluVN5ltomouFpRJzpX+2Up4RKYB9WsU9MDFpMqYRuHGNCY7QrW8Z2B+t8nVjm4hM4C1q/b6I7Ao+vtQNyDomGvtao7WqBS8i0Z53KcRiYQNwITA3OE3nLVWF/XUe1OmuvYYq62fB4+QDPk6geN86cPKX6/UM4hBjGVhk1pAaWXFaLUZR9GmFKl7sxjyApNctHCjZd6+BHR17XkDsbR65nlYg5i0wCQPNaZ86pRL5crJG/ghmLsGh3Mkgp8n9CS3fCLg4Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yPYNDiw8zHmNWwIMXmrWc9V+OHF1mU9t1XPPACcRXUk=;
- b=KQPW4e3bbDkJsbbodVdhjR3abV/c2kT5B6kHfhVM95lCT/d5aIE3tmeHm7Sp3OZkw4PaYQxNt1NPGQfZPC8ycSJyYjaVcemP5qg4rW+R+SydL2jWxt9tXeDMbmhcj+OaPBe9o+U8opldTvwwDk8Xb+Uth0Z2l4+3fXDvSHbt0AijrT2VerW8YzW/Qm16qiAMOE0be1i+WMaI2pAOV/VZ0eGpj2P2zatcd9ECuYbQ1rLInEruuaMoIhMOkiguVQpFg392purzxG5/IGjMX9KE3CDRUWUpfcLCyQ0qRjU+VtaLNyWLlwDVz4ao+FcrsLzhasc4ooc+YsJerFR5iYpjdw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from DS0PR11MB7215.namprd11.prod.outlook.com (2603:10b6:8:13a::13)
- by IA1PR11MB6369.namprd11.prod.outlook.com (2603:10b6:208:3af::22) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.7; Fri, 27 Mar
- 2026 14:40:30 +0000
-Received: from DS0PR11MB7215.namprd11.prod.outlook.com
- ([fe80::cba:8493:6cff:5cf7]) by DS0PR11MB7215.namprd11.prod.outlook.com
- ([fe80::cba:8493:6cff:5cf7%5]) with mapi id 15.20.9769.006; Fri, 27 Mar 2026
- 14:40:30 +0000
-Message-ID: <42f2174d-14d1-4c1a-8e9b-96c8ab9912a8@intel.com>
-Date: Fri, 27 Mar 2026 16:40:25 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] mmc: sdhci-dwcmshc: Refactor Rockchip platform data
- for controller revisions
-To: Shawn Lin <shawn.lin@rock-chips.com>, Ulf Hansson <ulf.hansson@linaro.org>
-CC: <linux-mmc@vger.kernel.org>, <linux-rockchip@lists.infradead.org>
-References: <1774620875-18258-1-git-send-email-shawn.lin@rock-chips.com>
-Content-Language: en-US
-From: Adrian Hunter <adrian.hunter@intel.com>
-Organization: Intel Finland Oy, Registered Address: c/o Alberga Business Park,
- 6 krs, Bertel Jungin Aukio 5, 02600 Espoo, Business Identity Code: 0357606 -
- 4, Domiciled in Helsinki
-In-Reply-To: <1774620875-18258-1-git-send-email-shawn.lin@rock-chips.com>
-X-ClientProxiedBy: DUZP191CA0050.EURP191.PROD.OUTLOOK.COM
- (2603:10a6:10:4fa::23) To DS0PR11MB7215.namprd11.prod.outlook.com
- (2603:10b6:8:13a::13)
+	id 1w68ut-00000007fXw-15kG;
+	Fri, 27 Mar 2026 15:16:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1774624564;
+	bh=GklGLwJruxxCBqdiF2yNlz/pCwjKi6IpbWoG97hl45U=;
+	h=From:Subject:Date:To:Cc:From;
+	b=NczD2fvsNvnPYKVl+HB0VESISWa5CSibbFLoh6UlXu3EChWSs1GQm3Sci17xbRMg7
+	 cjK4CShwTzoHL+92HAp0lODxLULkNrmY2rxRbf6RKfXc66nZHaRKr6WQKXXyjydjke
+	 WJ+jDWseoArnDRt5MQGnHQwbBXXMM3BMYcUrTli7Oi3sO/cptkgJaOcUCXtvuzCaWt
+	 eNZ05UnqSOl1Fxu/m4toBSCDkGMZ9Ei7Y7MMksuuoK+qovWVpjwqD4HuC29g6x1Krc
+	 ThpnmO7eqCXhOPOY8r9QbSiY9EikUHH4E7Kb6R121MHJ2u8UPBkde+vFtDmyaBU5DR
+	 aMUIAWX9uNyEg==
+Received: from [192.168.0.15] (modemcable014.2-22-96.mc.videotron.ca [96.22.2.14])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A059017E58B9;
+	Fri, 27 Mar 2026 16:16:02 +0100 (CET)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH 0/4] media: rkvdec: Switch to using a bitwriter
+Date: Fri, 27 Mar 2026 11:15:59 -0400
+Message-Id: <20260327-rkvdec-use-bitwriter-v1-0-982cf872b590@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DS0PR11MB7215:EE_|IA1PR11MB6369:EE_
-X-MS-Office365-Filtering-Correlation-Id: ad2e414d-c8ff-481c-c96a-08de8c0ecb20
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|376014|18002099003|22082099003|56012099003;
-X-Microsoft-Antispam-Message-Info: Jqc5L+LS100zaJHCgEnZtIbXM+Z3L1Yz9EZSsIQCx3RcPSc26+wZx1hVCA6EqCJ95pPg85OcKxoF5piKI3IU/CAPtIx8sCO7CVVhgpeMH4FQTjBYr+RvSIQ62OEupeB3zvEmImU5H+dGmcrjSxX8yeSOZM7eFdAEtQYKW12j4O3aaIvtEXKnq+xn6D0HxybwcU4JullrEuewWsL1RllPaVIL2AO7BXbYpcOeiRm54GtcDD0RZJyRA2B9AmkaVkyUnCqe9EefbEkp6Cec6hN8Zr5buIgxqVV09d5VunFwcD/fd0BhceXKFAsw81AH3r7fGQFy+RfFK+amsD4ubWcPKzVWBolh0h9v56Z9BxFUlwACXcoKmJkMlGMrwNteaGHiAgv9Hs9jutU2Amm7cVt8xtNHbDbHxtFH2VEO4mZHYcQV2OqxoILHiEBmQ42X7An6KqxK+mtmWu1NxF2i9xOc5kUVx2/ag6z99+rp/GeC2TzcXSdKG/8DvUG3+lphWJptaP5/Bh87HowpNk3wiwhdRKQDP9kt5ag/vSQdp0j8ltniAW+1+UKMzxjDf6iIXtlnCm9qDfMBaR8jX+8xbwJt6zmod74bYkIJb8QgZnIZqvy91UDvnYN801NpteAC5LVMN40ZiHnBYAEZuRJ8dj3UchpNRfrpU9MPdABu9wrWUeOYfI3Ddbl1nYP1LO3m5KVEzjwbKNXkQj6G7QcmeMilg1dYLR4vZ1v656KPxp71GNc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DS0PR11MB7215.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YmMwZWFoMm5pUlR5VjZaVjVFQ1ZYWjBqWTZVRzhtMUNqTVV4b0VrdUJXeEZT?=
- =?utf-8?B?VU5MSFlKV2xJUU16ZnRWV1pMR1RuaGN6ZFBYSjZYcDloa1Q0eHI5NDVpQjFF?=
- =?utf-8?B?TVJRTGprV2wvNHdhMWtGZTJydHhyY1NVWk15dEJ0Y0RrMWZEb1VFcnRHNDVT?=
- =?utf-8?B?aGNpcjA3V2JVdHRqcjg4KzA1ekpobkZQZnJwLzcrNXlKS1pQd0VQc1d0Kytj?=
- =?utf-8?B?ZTBRZjBHdGhnWE1vLzZhWllVVTFpeU1jRjVhRXUyNC81R01zcGs0UHllMlVr?=
- =?utf-8?B?eVVoYmNYK29wTk00Z3BLL0l3MnZmQXRxVUtML05BdWZBN2VTSVkrandSSlhp?=
- =?utf-8?B?RjNuSUdGWG9OMlFEbXphUGNhSGJSNjBxc2I1Q0w4YXY4YVBRNmwxNTY5WFNO?=
- =?utf-8?B?YWZkWmpZOUJmeXlMY1Btb1k1VWU2dUF5c25vNmNkZVMxVzZqcHgvNDczMGxG?=
- =?utf-8?B?NEJEZXl2NExJbUw0QVQ4QllTaFhHOGprL3ZSRlRWVFF3RVZkbHBVK2FnS3lF?=
- =?utf-8?B?ZDJ6WHNiUDZYMFdpdEY1ZTBRempWMWxqYTJPLzI0S3lDZWVFeDEwRTI1RWc5?=
- =?utf-8?B?b3NvYXJuUXhkbmF1L3d0Um1zMUVaUmJjQ2pZVWxOQjQxMFVaZEhSQllCaG5I?=
- =?utf-8?B?dUlNRDhNcmhNREJZcHZ6QzVFQ0pnYjRKbko1RUtEOWcwSFVrRGkyNzVVYk9W?=
- =?utf-8?B?SVdGdDNIOElCaGNpbjNtNTd6TlZUcU9mWkRwcUFtM2JISndseGdHdkRNb0I5?=
- =?utf-8?B?cVVqdDFQMXNzaFArZWM1ZHAwWnVPNTRXL3J1YWl5SGQwNDNRenh4ZnF6UWlv?=
- =?utf-8?B?TWpmVGpob1VoMXNPb3JocFNSUCtvamtLNmFjN2ZWVndjVXBHSnd1MkcrYVBP?=
- =?utf-8?B?Y3BqYXBJM3ZWNTk4UWs2bm9UMGp1TTZmeWY0c1pxalAwMEIrU25aOUsxeXYr?=
- =?utf-8?B?ZlNVZkx0ak51MXdXUmN4aDJjSmpxNStiR3BCM1QvUCtGaTlraWoyNlRsM0Iw?=
- =?utf-8?B?VWlYdjFhcStTRnVwMGVRbk12WTlES3J6QXFCK283WWRIWVByM1RsSlVYNGh3?=
- =?utf-8?B?MXJEU0E1czVINkl2VSszeFlxRXdaczN2cE43QmtqcWVHUFdXNVFYSWpIV0ZE?=
- =?utf-8?B?cFo3OXZ6SlpIMWIyMXhaVTI1ZWcrTjUwNCtNK0g4dTU5Zy9TTFRqOHFZN2JG?=
- =?utf-8?B?d3VNYko3QXRBZytXd0FsL0NuWUJOOEdUd080Z00vQXkxWFFjWXJ0U3VuZTNp?=
- =?utf-8?B?L1Zsby9WKzhnZU9Pd1BUaHlTTmZOT0NBVHRkN0o5eVJtb09USEpIaXpJTWlu?=
- =?utf-8?B?TEVCTUNqV2ZTR1Y1ZTdUbWZPYjdKUnE0OUVVRE1kWElTWTJTQ1JmMzZpbzND?=
- =?utf-8?B?elNIenVFMUZhdUFzL0VXWnk2VG5OUys3TFpCaVppNWRsM0tXQjBKNyswWDl4?=
- =?utf-8?B?bTR5d2IxOHg2TU0wd0Z2T2gvUGxvSTNyWm1wQkM1L1JGTlFOcHB0aTRPWUVL?=
- =?utf-8?B?SUIvMDZLOHB6b0t2SHpKT2YrWGVIUmNCeEMySjQwYkZIN2hieU1lWDh6dmo4?=
- =?utf-8?B?ejRiRDhZdU5vb014S1FsWmp6dmI4OHNZcmtDMXRNNXVROUtyRnBSRWdiU2pV?=
- =?utf-8?B?WnhyQ1ozZDdPT0E5aFlEREdKYkJlSVh0U2FBcHdjSjhNRFFCUEtSOEU3bUho?=
- =?utf-8?B?TWhJaXlNZWpQSzlkbjMzbVVYVlBDRmIvbkNHdWI5UlN4UjBvaEQzUUJHWFY5?=
- =?utf-8?B?Yi9ML25sKzNGajJudVkzNXRaS1E3Yy9MQkdBekdSMjYvRVkrUjZMWVUxdG54?=
- =?utf-8?B?dHRQQ2pzRlczbEY1QXp0ZHYxcXBCWThTVm1PbDZrb1Y0M2xFSCtlenJZRmJs?=
- =?utf-8?B?am9ObDBIb2RxSTNQTXlZZFZOVDg1RXZOTFhaZXp4S2hnVlJnZmhyeUgzOGJL?=
- =?utf-8?B?N3pUQmRLNThxR3Y5WGtwQWpJWFNqMzROZms3OVc3aHRCeG5Xb21uQTNxMUFo?=
- =?utf-8?B?Zk5zWGgzSGFEaDMrM2xjNzRRUWdLWnAyZVNKMFBwUTR1NHl6V1VjWjZsM0Vl?=
- =?utf-8?B?cjhqc1BjM0k4QkYwZktReGFBZ1ZBVnl1c25lWGx2a3gzN1dwTytJUVBpRGs5?=
- =?utf-8?B?Z1BjT1JQeTR2MW9wWmVMcnZQK0JzUGUzZjBVTnNMYytuKzRMWlBNMENjeTVO?=
- =?utf-8?B?Y2I1ZldteVRzWU5aUjZNRnJ3RmZmYVVBd2hsVWg2L0lzWVlDczBpL3hBRzgz?=
- =?utf-8?B?SHlsQWFOQkxQY3FDMEJ4cWJUUEd3amQ3azRPM2dJdDBaa1JBUXdNRU9nSDRl?=
- =?utf-8?B?cFpKVU83OGVaQkdEMFBhUFQvd0tTaHF6K1gxcVJWL0wrWU9DWEtScUMwNXNU?=
- =?utf-8?Q?Hr+xagBKWJ9NGBLg=3D?=
-X-Exchange-RoutingPolicyChecked: YzTN2IFSr+kVemUJH42wRZSWzGBwbkTxXINULQMK7xoqWzKY/9Gq69GP8AGX0cgHNlSnsIrCatXKymqd7lOQEPCveZsvfqGAXr+wLnGCD4i8nydLltSHqyOhknpQWJ8E5sOOWRHu15+MLQ423ECNEeQr9eRWjAlcPMtHnff0D0f4W1cI2BVad7/XbE7wCDu8C5Iit5/HCGiOZUGnOSa8AHfqq44qav5AgsWfVwfJcACPZmuwdRZe1XiNSk0luLVxJjK9ClCHkz4LW8/pS6Fr8F764WRWwgPk0lshIpN6hnM4Cwlb9tXh+4GP59aMVqDnX835iEkxblD+kCZ1uyeRRw==
-X-MS-Exchange-CrossTenant-Network-Message-Id: ad2e414d-c8ff-481c-c96a-08de8c0ecb20
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR11MB7215.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Mar 2026 14:40:30.1186
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: T/uuhiPTzqZrUw3MnY4yYEbaAWPDvnbgDDHSEVu08ZAV+KtrtOebE9GHoq+zC7/WxEru3VD54Ku7aUwMkwwX6A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6369
-X-OriginatorOrg: intel.com
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMwQ6CMAyA4VchPdOEDQPRVyEcXNdpNUHTDjQhv
+ LsTjt/h/1cwVmGDS7WC8iImr6nA1RXQ/TrdGCUWg29817S+R30ukQlnYwySPyqZFZOL7nQOLaW
+ eoKRv5STffTuMh20OD6b8f8G2/QB+N5kQeAAAAA==
+X-Change-ID: 20260327-rkvdec-use-bitwriter-f1d149b3cf7c
+To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <nick.desaulniers+lkml@gmail.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ llvm@lists.linux.dev, kernel@collabora.com, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+X-Mailer: b4 0.15.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_074035_541310_0E084318 
-X-CRM114-Status: GOOD (  24.24  )
+X-CRM114-CacheID: sfid-20260327_081607_522759_5FF365CE 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -186,207 +84,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 27/03/2026 16:14, Shawn Lin wrote:
-> The driver previously used an enum (dwcmshc_rk_type) to distinguish
-> platforms like the RK3568 and RK3588 based on DT compatible names.
-> This approach is inflexible, scales poorly for future revisions or
-> mixed-revision platforms, and conflates SoC names with controller
-> revisions. One example is RK3576 which lists "rockchip,rk3588-dwcmshc"
-> as a secondary compatible string just in order to claim it uses the
-> same controller revision as RK3588. This is confusing and makes it
-> error-prone to add new SoC support.
-> 
-> Introduces a new struct rockchip_pltfm_data containing a dedicated
-> revision field. The old enum is removed, and all code paths are
-> updated to use the revision-based data.
-> 
-> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
-> ---
+Using bitfields in large structures where fields are mostly unaligned can
+be hard on the compiler.
 
-If you roll anoher version, one minor cosmetic thing I forgot
-to mention below.
+Issues have been reported with clang ([1], [2]) and, even though those
+issues are addressed by clang devs, some setup can't or won't update clang
+just to compile a driver.
 
-In any case:
+Even when fixed, the compiler still might have to allocate a bigger stack
+frame to manage misalignement. Coupled with other features like KASAN, the
+stack becomes larger than the kernel's maximum [3].
 
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+To avoid this, let's drop the bitfield implementation and switch to a
+bitwriter. There is already one for the older variants, so make it global
+and use it in other variants.
 
-> 
-> Changes in v2:
-> - update commit msg
-> - document the revision field
-> - re-order the Rockchip plftm data
-> 
->  drivers/mmc/host/sdhci-of-dwcmshc.c | 92 +++++++++++++++++++++++--------------
->  1 file changed, 57 insertions(+), 35 deletions(-)
-> 
-> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> index a91b3e7..aae7656 100644
-> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-> @@ -278,14 +278,8 @@
->  #define PHY_DELAY_CODE_EMMC		0x17
->  #define PHY_DELAY_CODE_SD		0x55
->  
-> -enum dwcmshc_rk_type {
-> -	DWCMSHC_RK3568,
-> -	DWCMSHC_RK3588,
-> -};
-> -
->  struct rk35xx_priv {
->  	struct reset_control *reset;
-> -	enum dwcmshc_rk_type devtype;
->  	u8 txclk_tapnum;
->  };
->  
-> @@ -330,6 +324,16 @@ struct k230_pltfm_data {
->  	u32 write_prot_bit;
->  };
->  
-> +struct rockchip_pltfm_data {
-> +	struct dwcmshc_pltfm_data dwcmshc_pdata;
-> +	/*
-> +	 * The controller hardware has two known revisions documented internally:
-> +	 * - Revision 0: Exclusively used by RK3566 and RK3568 SoCs.
-> +	 * - Revision 1: Implemented in all other Rockchip SoCs, including RK3576, RK3588, etc.
-> +	 */
-> +	int revision;
-> +};
-> +
->  static void dwcmshc_enable_card_clk(struct sdhci_host *host)
->  {
->  	u16 ctrl;
-> @@ -749,6 +753,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
->  	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
->  	struct rk35xx_priv *priv = dwc_priv->priv;
-> +	const struct rockchip_pltfm_data *rockchip_pdata = to_pltfm_data(dwc_priv, rockchip);
->  	u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
->  	u32 extra, reg;
->  	int err;
-> @@ -816,7 +821,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  	 * we must set it in higher speed mode.
->  	 */
->  	extra = DWCMSHC_EMMC_DLL_DLYENA;
-> -	if (priv->devtype == DWCMSHC_RK3568)
-> +	if (rockchip_pdata->revision == 0)
->  		extra |= DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
->  	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
->  
-> @@ -842,7 +847,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
->  	    host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
->  		txclk_tapnum = priv->txclk_tapnum;
->  
-> -	if ((priv->devtype == DWCMSHC_RK3588) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
-> +	if ((rockchip_pdata->revision == 1) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
+Note that only buffer structures are switched to the bitwriter. The
+registers representation structures are kept with bitfields, as they are
+properly aligned every 32 bits and don't require heavy stack overhead.
 
-Forgot to mention, unnecesary parentheses around "rockchip_pdata->revision == 1"
+Also note that the VDPU381 SPS and PPS structs are kept with bitfields,
+for the same reason that they are small and aligned enough not to require
+heavy stack overhead.
 
->  		txclk_tapnum = DLL_TXCLK_TAPNUM_90_DEGREES;
->  
->  		extra = DLL_CMDOUT_SRC_CLK_NEG |
-> @@ -898,11 +903,6 @@ static int dwcmshc_rk35xx_init(struct device *dev, struct sdhci_host *host,
->  	if (!priv)
->  		return -ENOMEM;
->  
-> -	if (of_device_is_compatible(dev->of_node, "rockchip,rk3588-dwcmshc"))
-> -		priv->devtype = DWCMSHC_RK3588;
-> -	else
-> -		priv->devtype = DWCMSHC_RK3568;
-> -
->  	priv->reset = devm_reset_control_array_get_optional_exclusive(mmc_dev(host->mmc));
->  	if (IS_ERR(priv->reset)) {
->  		err = PTR_ERR(priv->reset);
-> @@ -2115,30 +2115,52 @@ static const struct cqhci_host_ops rk35xx_cqhci_ops = {
->  	.set_tran_desc	= dwcmshc_set_tran_desc,
->  };
->  
-> -static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
-> -	.pdata = {
-> -		.ops = &sdhci_dwcmshc_rk35xx_ops,
-> -		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-> -			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-> -		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-> -			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-> +static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
-> +	.dwcmshc_pdata = {
-> +		.pdata = {
-> +			.ops = &sdhci_dwcmshc_rk35xx_ops,
-> +			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-> +				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-> +			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-> +				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-> +		},
-> +		.cqhci_host_ops = &rk35xx_cqhci_ops,
-> +		.init = dwcmshc_rk35xx_init,
-> +		.postinit = dwcmshc_rk35xx_postinit,
->  	},
-> -	.cqhci_host_ops = &rk35xx_cqhci_ops,
-> -	.init = dwcmshc_rk35xx_init,
-> -	.postinit = dwcmshc_rk35xx_postinit,
-> +	.revision = 0,
->  };
->  
-> -static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
-> -	.pdata = {
-> -		.ops = &sdhci_dwcmshc_rk35xx_ops,
-> -		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-> -			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-> -		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-> -			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-> +static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
-> +	.dwcmshc_pdata = {
-> +		.pdata = {
-> +			.ops = &sdhci_dwcmshc_rk35xx_ops,
-> +			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-> +				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-> +			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-> +				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-> +		},
-> +		.cqhci_host_ops = &rk35xx_cqhci_ops,
-> +		.init = dwcmshc_rk35xx_init,
-> +		.postinit = dwcmshc_rk3576_postinit,
-> +	},
-> +	.revision = 1,
-> +};
-> +
-> +static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3588_pdata = {
-> +	.dwcmshc_pdata = {
-> +		.pdata = {
-> +			.ops = &sdhci_dwcmshc_rk35xx_ops,
-> +			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-> +				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-> +			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-> +				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-> +		},
-> +		.cqhci_host_ops = &rk35xx_cqhci_ops,
-> +		.init = dwcmshc_rk35xx_init,
-> +		.postinit = dwcmshc_rk35xx_postinit,
->  	},
-> -	.cqhci_host_ops = &rk35xx_cqhci_ops,
-> -	.init = dwcmshc_rk35xx_init,
-> -	.postinit = dwcmshc_rk3576_postinit,
-> +	.revision = 1,
->  };
->  
->  static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
-> @@ -2309,7 +2331,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
->  	},
->  	{
->  		.compatible = "rockchip,rk3588-dwcmshc",
-> -		.data = &sdhci_dwcmshc_rk35xx_pdata,
-> +		.data = &sdhci_dwcmshc_rk3588_pdata,
->  	},
->  	{
->  		.compatible = "rockchip,rk3576-dwcmshc",
-> @@ -2317,7 +2339,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
->  	},
->  	{
->  		.compatible = "rockchip,rk3568-dwcmshc",
-> -		.data = &sdhci_dwcmshc_rk35xx_pdata,
-> +		.data = &sdhci_dwcmshc_rk3568_pdata,
->  	},
->  	{
->  		.compatible = "snps,dwcmshc-sdhci",
+[1]: https://lore.kernel.org/oe-kbuild-all/202601211924.rqKS2Ihm-lkp@intel.com/
+[2]: https://github.com/llvm/llvm-project/issues/178535
+[3]: https://yhbt.net/lore/llvm/20260121230406.GA2625738@ax162/T/#mad878ec24a8224e1387ef5e73cb77b9ada55e3f2
+
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+Detlev Casanova (4):
+      media: rkvdec: Introduce a global bitwriter helper
+      media: rkvdec: Use the global bitwriter instead of local one
+      media: rkvdec: common: Drop bitfields for the bitwriter
+      media: rkvdec: vdpu383: Drop bitfields for the bitwriter
+
+ drivers/media/platform/rockchip/rkvdec/Makefile    |   1 +
+ .../platform/rockchip/rkvdec/rkvdec-bitwriter.c    |  30 ++
+ .../platform/rockchip/rkvdec/rkvdec-bitwriter.h    |  25 +
+ .../platform/rockchip/rkvdec/rkvdec-h264-common.c  |  51 +--
+ .../platform/rockchip/rkvdec/rkvdec-h264-common.h  |  40 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-h264.c   | 109 ++---
+ .../platform/rockchip/rkvdec/rkvdec-hevc-common.c  |  92 +---
+ .../platform/rockchip/rkvdec/rkvdec-hevc-common.h  |  57 +--
+ .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   | 171 +++----
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c | 351 ++++++--------
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c | 502 +++++++++------------
+ 11 files changed, 578 insertions(+), 851 deletions(-)
+---
+base-commit: bbeb83d3182abe0d245318e274e8531e5dd7a948
+change-id: 20260327-rkvdec-use-bitwriter-f1d149b3cf7c
+
+Best regards,
+--  
+Detlev Casanova <detlev.casanova@collabora.com>
 
 
 _______________________________________________
