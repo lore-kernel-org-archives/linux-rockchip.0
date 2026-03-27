@@ -4,54 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D718710ED67F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 15:16:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74D6810F2841
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 15:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=9VxwcL+hfWfhNuHtJ0FEAOPGvlE0D+4wvmMrGilKAEo=; b=bal90fscftZ9h7
-	Q36YsZsJ6gamiUXcWht4lzIGSsVwi57apb3KSKJzsXeEtN4/EU8lAcG9j6Z3zDxttwbRQjpntL//x
-	GB8+D9FGAvD+PoA21BADtnzJW7aK3vNFCMs6zbLUsjVrpYDxtOrQ6Ig/7ZctzqXGHS+bNGxVA8nbx
-	pzKq0x+yP8oANUxVxoUUdGhh7VnJRWsn36pDRFgTX63ReYlk+WRGUixNavJb9ehzgvtdEJ6q1xcdQ
-	sGU15B0GZEqND/MMqgpVg2q0GKZstXgEfSAh0YJQJNPhDPdONWrfOZ81tGuGTCRLa2HIta/DHB2UK
-	KFfnqn0ACBPYnWwjp4ag==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=MNePkkmD5SBP8L68TKuUAZZMxx0HiBLrOE1GIhiwgFI=; b=ROHJ5YvWgzTatQ
+	MQS4secz0h+9WNC6B1t9mKUpcOsjrytHCU+f30GoDei6xO09bTgjuuCLqJqcaRbULPTftC6oMWRWK
+	zngkpvOD2wt7p5FeCmkGxjZvKKsHsssi3vz8VsUu9gn4G+6GHPAPYr4yOYOKIiVqq61D+/9YO/SZP
+	USudCby274sZNwT9AwpbcIGCOVL2yvgiBqumkfxoZm8C6+Vsvs/XTgX5o9mWyHKvGHOsCLqfKtXpe
+	zMtEqxfdQkfFuBrj3n4kCRlp0L56JLroYLz1tCHdA9WpJTNGIuvm0oIFAKDu2Lwp23bn8y9MQunM9
+	dn9aIrVSvytx4ErJ2KeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w68uw-00000007fZz-30cF;
-	Fri, 27 Mar 2026 15:16:10 +0000
+	id 1w68v3-00000007few-1LpA;
+	Fri, 27 Mar 2026 15:16:17 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w68ut-00000007fXw-15kG;
-	Fri, 27 Mar 2026 15:16:08 +0000
+	id 1w68uv-00000007fYy-07A0;
+	Fri, 27 Mar 2026 15:16:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1774624564;
-	bh=GklGLwJruxxCBqdiF2yNlz/pCwjKi6IpbWoG97hl45U=;
-	h=From:Subject:Date:To:Cc:From;
-	b=NczD2fvsNvnPYKVl+HB0VESISWa5CSibbFLoh6UlXu3EChWSs1GQm3Sci17xbRMg7
-	 cjK4CShwTzoHL+92HAp0lODxLULkNrmY2rxRbf6RKfXc66nZHaRKr6WQKXXyjydjke
-	 WJ+jDWseoArnDRt5MQGnHQwbBXXMM3BMYcUrTli7Oi3sO/cptkgJaOcUCXtvuzCaWt
-	 eNZ05UnqSOl1Fxu/m4toBSCDkGMZ9Ei7Y7MMksuuoK+qovWVpjwqD4HuC29g6x1Krc
-	 ThpnmO7eqCXhOPOY8r9QbSiY9EikUHH4E7Kb6R121MHJ2u8UPBkde+vFtDmyaBU5DR
-	 aMUIAWX9uNyEg==
+	s=mail; t=1774624566;
+	bh=93cbvhOhHO3BIlQLuu3rBBU+F598t09c4s9HxlgYH/E=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=YBY1xoer/CEtYGdfvDkOJnUC9SEAbOn19cLaA4YK5TmfTL8j2/MKqDSC2s1lRmLQE
+	 jOll7A7DaKycsm0VSd19fTkJuFd7toxN34H61yCao80zuEwt74i0vm1ziK/W7XF+at
+	 Gk/pnI3+5inCbtpO8397vE4RTw2U+GURK85ujwqbb5b47D044Dt1Yl4n2uSVFmOmg6
+	 tYeDNAGtLtZJ+UdKeae0I/KZLi1MGO/eU+fffnUMmzzaXi+IZ6yDx2iR8bGEir+x1P
+	 X+P2uAwC7JtG0K10cPOWfsDRAynN629FU4OQ9YFKFQ2H4ZadpIW3jtglXsjCSVRsaE
+	 mAaz8Tv8lQ7uQ==
 Received: from [192.168.0.15] (modemcable014.2-22-96.mc.videotron.ca [96.22.2.14])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A059017E58B9;
-	Fri, 27 Mar 2026 16:16:02 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C84F417E5A68;
+	Fri, 27 Mar 2026 16:16:04 +0100 (CET)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH 0/4] media: rkvdec: Switch to using a bitwriter
-Date: Fri, 27 Mar 2026 11:15:59 -0400
-Message-Id: <20260327-rkvdec-use-bitwriter-v1-0-982cf872b590@collabora.com>
+Date: Fri, 27 Mar 2026 11:16:00 -0400
+Subject: [PATCH 1/4] media: rkvdec: Introduce a global bitwriter helper
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMwQ6CMAyA4VchPdOEDQPRVyEcXNdpNUHTDjQhv
- LsTjt/h/1cwVmGDS7WC8iImr6nA1RXQ/TrdGCUWg29817S+R30ukQlnYwySPyqZFZOL7nQOLaW
- eoKRv5STffTuMh20OD6b8f8G2/QB+N5kQeAAAAA==
-X-Change-ID: 20260327-rkvdec-use-bitwriter-f1d149b3cf7c
+Message-Id: <20260327-rkvdec-use-bitwriter-v1-1-982cf872b590@collabora.com>
+References: <20260327-rkvdec-use-bitwriter-v1-0-982cf872b590@collabora.com>
+In-Reply-To: <20260327-rkvdec-use-bitwriter-v1-0-982cf872b590@collabora.com>
 To: Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Heiko Stuebner <heiko@sntech.de>, Nathan Chancellor <nathan@kernel.org>, 
@@ -65,9 +63,8 @@ Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_081607_522759_5FF365CE 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260327_081609_213946_9043894E 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,60 +81,110 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Using bitfields in large structures where fields are mostly unaligned can
-be hard on the compiler.
+The use of structures with bitfields is good when the values are
+somewhat aligned.
+More mis-alignement means that compilers need to do more gymanstics
+to edit the fields values.
 
-Issues have been reported with clang ([1], [2]) and, even though those
-issues are addressed by clang devs, some setup can't or won't update clang
-just to compile a driver.
+Some cases have been reported with CLang on specific architectures
+like armhf and hexagon, where the compiler would allocate a bigger
+local stack than needed or even completely freeze during compilation.
 
-Even when fixed, the compiler still might have to allocate a bigger stack
-frame to manage misalignement. Coupled with other features like KASAN, the
-stack becomes larger than the kernel's maximum [3].
+Some fixes have been provided to ease the issues, but the real fix
+here is to use a bitwriter instead of heavily unaligned bitfields.
 
-To avoid this, let's drop the bitfield implementation and switch to a
-bitwriter. There is already one for the older variants, so make it global
-and use it in other variants.
-
-Note that only buffer structures are switched to the bitwriter. The
-registers representation structures are kept with bitfields, as they are
-properly aligned every 32 bits and don't require heavy stack overhead.
-
-Also note that the VDPU381 SPS and PPS structs are kept with bitfields,
-for the same reason that they are small and aligned enough not to require
-heavy stack overhead.
-
-[1]: https://lore.kernel.org/oe-kbuild-all/202601211924.rqKS2Ihm-lkp@intel.com/
-[2]: https://github.com/llvm/llvm-project/issues/178535
-[3]: https://yhbt.net/lore/llvm/20260121230406.GA2625738@ax162/T/#mad878ec24a8224e1387ef5e73cb77b9ada55e3f2
+This is a preparation commit to provide a global bitwriter interface
+for the whole driver.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
-Detlev Casanova (4):
-      media: rkvdec: Introduce a global bitwriter helper
-      media: rkvdec: Use the global bitwriter instead of local one
-      media: rkvdec: common: Drop bitfields for the bitwriter
-      media: rkvdec: vdpu383: Drop bitfields for the bitwriter
+ drivers/media/platform/rockchip/rkvdec/Makefile    |  1 +
+ .../platform/rockchip/rkvdec/rkvdec-bitwriter.c    | 30 ++++++++++++++++++++++
+ .../platform/rockchip/rkvdec/rkvdec-bitwriter.h    | 25 ++++++++++++++++++
+ 3 files changed, 56 insertions(+)
 
- drivers/media/platform/rockchip/rkvdec/Makefile    |   1 +
- .../platform/rockchip/rkvdec/rkvdec-bitwriter.c    |  30 ++
- .../platform/rockchip/rkvdec/rkvdec-bitwriter.h    |  25 +
- .../platform/rockchip/rkvdec/rkvdec-h264-common.c  |  51 +--
- .../platform/rockchip/rkvdec/rkvdec-h264-common.h  |  40 +-
- .../media/platform/rockchip/rkvdec/rkvdec-h264.c   | 109 ++---
- .../platform/rockchip/rkvdec/rkvdec-hevc-common.c  |  92 +---
- .../platform/rockchip/rkvdec/rkvdec-hevc-common.h  |  57 +--
- .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   | 171 +++----
- .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c | 351 ++++++--------
- .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c | 502 +++++++++------------
- 11 files changed, 578 insertions(+), 851 deletions(-)
----
-base-commit: bbeb83d3182abe0d245318e274e8531e5dd7a948
-change-id: 20260327-rkvdec-use-bitwriter-f1d149b3cf7c
+diff --git a/drivers/media/platform/rockchip/rkvdec/Makefile b/drivers/media/platform/rockchip/rkvdec/Makefile
+index e629d571e4d8..11e2122bcbbf 100644
+--- a/drivers/media/platform/rockchip/rkvdec/Makefile
++++ b/drivers/media/platform/rockchip/rkvdec/Makefile
+@@ -2,6 +2,7 @@ obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) += rockchip-vdec.o
+ 
+ rockchip-vdec-y += \
+ 		   rkvdec.o \
++		   rkvdec-bitwriter.o \
+ 		   rkvdec-cabac.o \
+ 		   rkvdec-h264.o \
+ 		   rkvdec-h264-common.o \
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.c
+new file mode 100644
+index 000000000000..673ebb89002b
+--- /dev/null
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.c
+@@ -0,0 +1,30 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Rockchip Video Decoder bit writer
++ *
++ * Copyright (C) 2026 Collabora, Ltd.
++ *      Detlev Casanova <detlev.casanova@collabora.com>
++ * Copyright (C) 2019 Collabora, Ltd.
++ *	Boris Brezillon <boris.brezillon@collabora.com>
++ */
++
++#include <linux/types.h>
++#include <linux/bits.h>
++
++#include "rkvdec-bitwriter.h"
++
++void rkvdec_set_bw_field(u32 *buf, struct rkvdec_bw_field field, u32 value)
++{
++	u8 bit = field.offset % 32;
++	u16 word = field.offset / 32;
++	u64 mask = GENMASK_ULL(bit + field.len - 1, bit);
++	u64 val = ((u64)value << bit) & mask;
++
++	buf[word] &= ~mask;
++	buf[word] |= val;
++	if (bit + field.len > 32) {
++		buf[word + 1] &= ~(mask >> 32);
++		buf[word + 1] |= val >> 32;
++	}
++}
++
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.h b/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.h
+new file mode 100644
+index 000000000000..44154f1ebc65
+--- /dev/null
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.h
+@@ -0,0 +1,25 @@
++/* SPDX-License-Identifier: GPL-2.0 */
++/*
++ * Rockchip Video Decoder bit writer
++ *
++ * Copyright (C) 2026 Collabora, Ltd.
++ *      Detlev Casanova <detlev.casanova@collabora.com>
++ * Copyright (C) 2019 Collabora, Ltd.
++ *	Boris Brezillon <boris.brezillon@collabora.com>
++ */
++
++#ifndef RKVDEC_BIT_WRITER_H_
++#define RKVDEC_BIT_WRITER_H_
++
++#include <linux/types.h>
++
++struct rkvdec_bw_field {
++	u16 offset;
++	u8 len;
++};
++
++#define BW_FIELD(_offset, _len) ((struct rkvdec_bw_field){ _offset, _len })
++
++void rkvdec_set_bw_field(u32 *buf, struct rkvdec_bw_field field, u32 value);
++
++#endif /* RKVDEC_BIT_WRITER_H_ */
 
-Best regards,
---  
-Detlev Casanova <detlev.casanova@collabora.com>
+-- 
+2.53.0
 
 
 _______________________________________________
