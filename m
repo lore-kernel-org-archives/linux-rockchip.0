@@ -4,81 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 904F210AB82F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 26 Mar 2026 23:10:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D10B10AB83B
+	for <linux-rockchip@archiver.kernel.org>; Fri, 27 Mar 2026 00:55:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CC9SjgEi4Lr1CFLy1lzgflLvYWHfx7ykTeSl0VN+oow=; b=TJCdnEZzLHO8HC
-	evY6b42pvtjYKMNk6xHG/F80Sev9v06/sFzK4j0y1dU9ASD1L2ZD2VxnMWQH8wifho78pN09bM4Yn
-	JheWyxTHsENXkTgxsO1JQ6Pzus0YWAqI9FVDJi6jUjoaJyKzZNsc8CFebjg66z/SmkXbRGtYavAkl
-	JS5Ovgv/8jv9LDGiCAwgdCyNfVqreGaxsW01j3JLkIiKVqSaAx5qq0mVapZIMelsGZ9Smcj+kUwj/
-	eYtKKKVPDU1Q2nhGLw0KHWobgiC+jcZ1OWMyK1dtVRG65ETxcafx0bETTiZSXGQuZnYD9kal2JJQO
-	6erC15vzfdaNcPzIiZWg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=KItAeQqveYylhHP12j35UG14/GFTwrMpdCxJMkZ86HA=; b=DRfb6715qrXcBm
+	J1mZeqNLuqmC9etHhKVJkDofhworxVBsXRKmXaZlLRiFWUSVEowCS+gfHVEUBi6Gjy1fvzP6wjow5
+	2XF46MgWLI9UeTTW7ePreVrnfpW85owGcaZGdqheMdA+aNQOZBFeVEO1GyxHJrZJX42fElpOOg1qh
+	4RPJhnvJnU6EPxqnlg+xiccYOjpMAZIOYHJiNJMCrt/MgXTfJn2cv8REJKyUMQ6WjlHSADDVVEo8k
+	A5jHSj/vBL0QYwgWswspBcU8l3nCJUr0Aedz7lM/fQMz79p5yywCcvDw8TuPIFyloLSEzkro+ux62
+	wMrA1FVtGXLU+/g/m70A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5tqD-00000006Mov-1H11;
-	Thu, 26 Mar 2026 23:10:17 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1w5vUC-00000006S2v-3w50;
+	Fri, 27 Mar 2026 00:55:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w5tpz-00000006MhX-0wws;
-	Thu, 26 Mar 2026 23:10:05 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id D589F4418C;
-	Thu, 26 Mar 2026 23:10:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id AADA2C116C6;
-	Thu, 26 Mar 2026 23:10:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1774566601;
-	bh=F+kzzca6Z4BmvXweVJwbOgdkmwl7lP2kz+U6gv7BBLA=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=oIne2RvdPcoDbq+Kwfa5qWAA3ZZzYjM/bhYHjOnZ9XoQ7QB21ZumiDlPbGBIELqlC
-	 vxFTU6B0B3w5zIQN4KsQEnt4PU+gVbW4UUfXXtxYKNDYjxWDEwrH8iIo26k3YQnbS+
-	 iHR9hJp2bSx4DOnp9VaMymDi/Wr7of90PSOiCPF1/wkxajh6VVqRHw1ZXhOuzTiC/S
-	 LIfcTbXHKaF7+0DmlL1umZhK3gleQCHUs8MeK83Ro9nr1d8YzcVojbKr2a4Uuz6rWV
-	 45ojr/+MPXlamah3r45qvfMxT0KdjPxtsAn1qWuO2pK3cXgphi+v7earYif+KsYZRH
-	 /qaBtNyXS66eA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 8A41510AB82F;
-	Thu, 26 Mar 2026 23:10:01 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Subject: [PATCH v4 0/2] media: synopsys: csi2rx: add support for rk3588
- variant
-Date: Fri, 27 Mar 2026 00:09:59 +0100
-Message-Id: <20260305-rk3588-csi2rx-v4-0-81c6bcfefa63@collabora.com>
+	id 1w5vU9-00000006S1n-1UsJ;
+	Fri, 27 Mar 2026 00:55:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1774572933;
+	bh=V8lVwih9AzBJwR4ANDMYIaupy1aCX2o2M8JPQlL0kck=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=IrIqb/7GAIVHD1guC5m94AkcXTs3mqc4CtY9+J/qK/KXKq8Qxy4SbbNfudUXL78px
+	 Eh55aVvqNAWTtfqRTWTm0vO4/4Li30CogCg8tNoCpSPWyxEgO/vagQVw2U5G7oW4+s
+	 6M7i8ezglpfGmaHsosAyC+54eZlnX2Psa1A6MZHPx+zL8Q/ALQYKez7HRpEoywU7pT
+	 ZNNRJjkQjUAW4TpQCV1ZTs+UFfq0BbdIWNYC8qIkGoAqrFmEoo8bo7pbdEajg/z1gT
+	 PqW+W83gyJuFdWFrR9bV92PRZTmKXemWs3rK74Jp4AlgbSaSuhRjITOZ3tzogkjHHD
+	 ktetw3MEYQ5wg==
+Received: from localhost (unknown [86.123.23.225])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1380117E6255;
+	Fri, 27 Mar 2026 01:55:33 +0100 (CET)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Fri, 27 Mar 2026 02:55:07 +0200
+Subject: [PATCH v3 1/2] drm/bridge: synopsys: dw-dp: Support unregistering
+ the AUX channel
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAMe8xWkC/33NSw7CIAAE0KsY1mL4ttSV9zAu+FpiBQNKapreX
- dql0S5nknkzgWyTtxkcdxNItvjsY6iB7XdA9zJcLfSmZkAQaRBFHKYb5UJAnT1JI5QYu1ZjLhm
- SoG6UzBaqJIPu6yq8hqGWj2SdH9eT86Xm3udnTO/1s+Cl/ccXDBFE2ghDlCNCo5OOwyBVTPKg4
- x0sWiGbAqlC2xmEVYM5E80vgW4KdBE4Yy3tBHa0+xbmef4AvALURkcBAAA=
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Frank Li <Frank.li@nxp.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Collabora Kernel Team <kernel@collabora.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+Message-Id: <20260327-drm-rk-fixes-v3-1-fd2e6900c08c@collabora.com>
+References: <20260327-drm-rk-fixes-v3-0-fd2e6900c08c@collabora.com>
+In-Reply-To: <20260327-drm-rk-fixes-v3-0-fd2e6900c08c@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1774566600; l=2509;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=F+kzzca6Z4BmvXweVJwbOgdkmwl7lP2kz+U6gv7BBLA=;
- b=Q31Ushq3MPm7/rk/deCaFnjvfmVxk9/KY9/ptu4vESyDcHaREKfCWa+676qoOfzvkuVYr5Aae
- cbQSVm2trRLBMNUxDD+5gf6NZwQhNeHbeOBdu4LveLZPK3i8dL1Rq8M
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260326_161003_312938_2C89491C 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260326_175537_542954_8FFA11E7 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,81 +82,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Habidere,
+The DisplayPort AUX channel gets initialized and registered during
+dw_dp_bind(), but it is never unregistered, which may lead to resource
+leaks and/or use-after-free.
 
-The Rockchip RK3588 features six MIPI CSI-2 receiver units:
- - MIPI0: connected to MIPI DCPHY0
- - MIPI1: connected to MIPI DCPHY1
- - MIPI2: connected to MIPI DPHY0
- - MIPI3: connected to MIPI DPHY0-1 (only with split DPHY0)
- - MIPI4: connected to MIPI DPHY1
- - MIPI5: connected to MIPI DPHY1-1 (only with split DPHY1)
+Add the missing dw_dp_unbind() function to allow the users of the
+library to handle the required cleanup, i.e. unregister the AUX adapter.
 
-The MIPI DCPHYs (at least the CSI-2 features of them) as well
-as the split DPHY mode of the DPHYs are not yet supported by
-mainline. However, we can already provide support for the
-MIPI2 and MIPI4 units.
-
-When support for the split DPHY mode is introduced, the DPHY
-nodes should have the property
-    #phy-cells = <1>;
-and the MIPI CSI-2 receiver nodes should have the property
-    phys = <&csi_dphy{0,1} {0,1}>;
-in case the split mode is desired. Since this is a board
-specific hardware design, the properties need to be changed
-in the board device tree (or any overlays).
-
-As reasonable default, however, we can define, e.g., 
-    #phy-cells = <0>;
-and
-    phys = <&csi_dphy{0,1}>;
-in the SoC device tree include.
-This series introduces initial support for this default
-configuration.
-
-Looking forward to your comments!
-
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
-Changes in v4:
-- rebased onto media-commiters/next again (as Frank's patches
-  are now there)
-- changed "oneOf entries to enum in dt binding (Rob)
-- Link to v3: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v3-0-754473981f39@collabora.com
+ drivers/gpu/drm/bridge/synopsys/dw-dp.c | 6 ++++++
+ include/drm/bridge/dw_dp.h              | 1 +
+ 2 files changed, 7 insertions(+)
 
-Changes in v3:
-- rebased onto Sakari's cleanup branch (as Frank's patches were
-  merged) (Sakari)
-- added Rob's Acked-by
-- Link to v2: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v2-0-79d01b615486@collabora.com
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+index 3f4530c117c7..6211ba6ba7bd 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+@@ -2093,6 +2093,12 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ }
+ EXPORT_SYMBOL_GPL(dw_dp_bind);
+ 
++void dw_dp_unbind(struct dw_dp *dp)
++{
++	drm_dp_aux_unregister(&dp->aux);
++}
++EXPORT_SYMBOL_GPL(dw_dp_unbind);
++
+ MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
+ MODULE_DESCRIPTION("DW DP Core Library");
+ MODULE_LICENSE("GPL");
+diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
+index 25363541e69d..22105c3e8e4d 100644
+--- a/include/drm/bridge/dw_dp.h
++++ b/include/drm/bridge/dw_dp.h
+@@ -24,4 +24,5 @@ struct dw_dp_plat_data {
+ 
+ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+ 			 const struct dw_dp_plat_data *plat_data);
++void dw_dp_unbind(struct dw_dp *dp);
+ #endif /* __DW_DP__ */
 
-Changes in v2:
-- use fallback compatible instead of separate compatible (Krzysztof)
-- dropped patch 2 and 4 (as a consequence thereof)
-- Link to v1: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v1-0-0cd8d2bf28c0@collabora.com
-
----
-Michael Riesch (2):
-      media: dt-bindings: rockchip,rk3568-mipi-csi2: add rk3588 compatible
-      arm64: dts: rockchip: add mipi csi-2 receiver nodes to rk3588
-
- .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 11 +++--
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 52 ++++++++++++++++++++++
- 2 files changed, 60 insertions(+), 3 deletions(-)
----
-base-commit: 4fbeef21f5387234111b5d52924e77757626faa5
-change-id: 20260305-rk3588-csi2rx-a11f7c15a40a
-
-Best regards,
 -- 
-Michael Riesch <michael.riesch@collabora.com>
-
+2.52.0
 
 
 _______________________________________________
