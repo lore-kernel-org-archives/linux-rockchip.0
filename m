@@ -4,50 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E1310F3DE2
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Mar 2026 13:55:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5EDD810F3DCE
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Mar 2026 13:55:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rzlgAV8sCHkkF8gPmJyh6VHDJOxkB6k3eSGlWE+d4cM=; b=aOlLDxoahBEfI0
-	YhJnnZzJR2HDPUUQvNN9kZyop0ZbaGv1e+gQUvt/sCp9Lva3rK4IcSTlfQeEV94GXl8R7WY3s7ZcS
-	aF5etBEhDByGGrWJf0wbS3VgaEKEmpvGaneLGn5ezdsH3Slzu0UeWuSJUAv0nbTwPY/ojelulnH1y
-	2Y57nfwCy9V/Mvsl44G9qI/GnZXxhkRC6HKJXlVoc6G9444HFIPGKAlSvW+yga1NfzM8OwmXdf599
-	8reLDdOysUgDGHR4WchLkios24Vyy7ohrRVsRp5Alv14277qCyxQ0TdlM/5ywpapCjBw1YxnFUcaH
-	7ZSUR7wztlOOwfXfS9fA==;
+	List-Owner; bh=Im6IBVrhE9H4vlE6q4mtsTPQ6EbbD4Cmq8tFp7EPDAk=; b=xU6yTtRRdHmmWj
+	shA4+RU+zU9BFJSs0W6itFx7dknwZ8i7wCLmwql/qx8uF2rKrHRgnFPvISuTqtGO7Zam+KePJ3FS9
+	5f0oZAGdv3sz5MaxtVIjCpuTZUcMtnR9/OgoWrRqZzSFxJGmZJTkowZf1N5CGzc2JNQcwrNk+Romj
+	2EWCzcx0WBaBEfwHh+dtnrC/sTdlEUiosVg9ceqPVEq1HHJHBnkZMQjtj2jlkv4P0Do8JhB1JyaVp
+	An8fkzVcb3Kvlm8Kv32oNc7SC+z40Qh99nlkNytddAtEJdHk4m9SVpxlFrtuoOib+4utxkhXKB0uZ
+	iSNDBWsltnuGpOE9kiBg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6U86-00000008zh9-2BsL;
-	Sat, 28 Mar 2026 13:55:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1w6U8J-00000008znT-0cty;
+	Sat, 28 Mar 2026 13:55:23 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6U83-00000008zeY-0NL9;
-	Sat, 28 Mar 2026 13:55:08 +0000
+	id 1w6U84-00000008zeg-1clp;
+	Sat, 28 Mar 2026 13:55:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1774706103;
-	bh=Oi0gOGx8Pbzn8cxnk+KDcQyKry6zs4biJs1RjCjCeuk=;
+	s=mail; t=1774706104;
+	bh=LixLRwS/gYeAuzc200NVhm2SJwSbgTNPuw7cL+mtphg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=fn7azBtRcEOYwiB0nutp/7LpIJDr0JqrM8q2r3j5Im8qnbsr6BT1vWgA1mY3ikyP3
-	 vFpmgVhJ3k0G091xxWBErvDCVI1olapDgF2dXlLSLxaJAp6MIDaaLYALojWuSJ3RlS
-	 BmO4C0ct7CWsotykEhr1f0Nkoy/W6COsOx4o5uwYkqcpmstznrUxlONC0KRoGWHfOw
-	 LCwXXioKwH6idA0BM/axBLINxqdm3jS62P3Yzo6cGyVUQ+GczpXP8j4ZVNM5HwoJnJ
-	 TQW2cE3RGOw3zcOCsrq4pDtAX+ivUCJ5RovjtUO1SaI0mZ3vuQxrwl9esD0TBDL5cc
-	 W0ylA6oB4pGbg==
+	b=nHzRdiNuPmHkzrndquE0w8Tw0T/8qnILze85S3fco1vL99HxN+B1vnuY2bWHZ1AU5
+	 rogwJ0Da6NK/PtnJ1ra+YnQt4OgJGV3qY8UZVq3an1siiTUM6P5Y9X9KSMUJvtbS+b
+	 7mKENR64rhW7F+d00D5gtnScIgiIRcuvk3LTMMuviFeK3RN88zFnadpKictTiypj5e
+	 FfQJMeMV36py784hop/i383+lI11bE6uZuv7GzQ8Ye23ZF3pG2/W422wNh0WJMKQem
+	 JqungLd1IqL7YVLfQ3gWbEoUZP8OEGE85cpAtVbEkbDqDPu5HJDcY6dl0rh6CPWjG2
+	 NY6kpEE7kYcjA==
 Received: from localhost (unknown [86.123.23.225])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 494AA17E5F39;
-	Sat, 28 Mar 2026 14:55:03 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 35C6717E5F3E;
+	Sat, 28 Mar 2026 14:55:04 +0100 (CET)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sat, 28 Mar 2026 15:54:54 +0200
-Subject: [PATCH 1/2] phy: hdmi: Add optional FRL TxFFE config options
+Date: Sat, 28 Mar 2026 15:54:55 +0200
+Subject: [PATCH 2/2] phy: rockchip: samsung-hdptx: Add support for FRL
+ TxFFE level control
 MIME-Version: 1.0
-Message-Id: <20260328-hdptx-ffe-v1-1-53ebd5dea20a@collabora.com>
+Message-Id: <20260328-hdptx-ffe-v1-2-53ebd5dea20a@collabora.com>
 References: <20260328-hdptx-ffe-v1-0-53ebd5dea20a@collabora.com>
 In-Reply-To: <20260328-hdptx-ffe-v1-0-53ebd5dea20a@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -58,8 +59,8 @@ Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.14.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260328_065507_278236_63E27E42 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20260328_065508_587651_C8957B30 
+X-CRM114-Status: GOOD (  14.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,61 +77,132 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-During HDMI 2.1 FRL link training, the source and sink can negotiate a
-Transmitter Feed Forward Equalizer (TxFFE) level to compensate for
-signal quality degradation.  Starting from zero, the source may
-increment the TxFFE level up to a maximum agreed during the LTS3 stage
-if the sink keeps reporting FLT failures.
+During HDMI 2.1 FRL link training, the source may need to incrementally
+raise the TxFFE level in response to persistent link failures reported
+by the sink during LTS3.  The phy_configure_opts_hdmi struct now carries
+ffe_level and set_ffe_level fields to convey such an update
+independently of a full rate reconfiguration.
 
-It's worth noting TxFFE adjustment is optional and only attempted when
-both the source and the connected sink support it.
-
-Since the existing HDMI PHY configuration API covers the FRL rate/lane
-selection only, provide the following fields to the frl sub-struct of
-phy_configure_opts_hdmi:
-
-* ffe_level: the TxFFE level to apply, only meaningful when
-  set_ffe_level is set.
-
-* set_ffe_level: a 1-bit flag that changes the semantics of the
-  phy_configure() call, i.e. when set, the PHY driver must apply the new
-  ffe_level and ignore the other frl related fields.
-
-The flag-based approach reflects an important invariant in the link
-training process: whenever the FRL rate or lane count changes, the TxFFE
-level must be reset to zero.  A separate phy_configure() call with
-set_ffe_level can only follow after the rate has been established,
-making the two operations deliberately distinct.
+Wire up the optional TxFFE control in the Samsung HDPTX PHY driver.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- include/linux/phy/phy-hdmi.h | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c | 74 +++++++++++++++++++++--
+ 1 file changed, 69 insertions(+), 5 deletions(-)
 
-diff --git a/include/linux/phy/phy-hdmi.h b/include/linux/phy/phy-hdmi.h
-index d4cf4430ee8f..1d4b62475079 100644
---- a/include/linux/phy/phy-hdmi.h
-+++ b/include/linux/phy/phy-hdmi.h
-@@ -19,6 +19,10 @@ enum phy_hdmi_mode {
-  * @tmds_char_rate: HDMI TMDS Character Rate in Hertz.
-  * @frl.rate_per_lane: HDMI FRL Rate per Lane in Gbps.
-  * @frl.lanes: HDMI FRL lanes count.
-+ * @frl.ffe_level: Transmitter Feed Forward Equalizer Level.
-+ *	Optional, only meaningful when set_ffe_level flag is on.
-+ * @frl.set_ffe_level: Flag indicating whether or not to reconfigure ffe_level.
-+ *	All the other struct fields must be ignored when this is used.
-  *
-  * This structure is used to represent the configuration state of a HDMI phy.
-  */
-@@ -29,6 +33,8 @@ struct phy_configure_opts_hdmi {
- 		struct {
- 			u8 rate_per_lane;
- 			u8 lanes;
-+			u8 ffe_level;
-+			u8 set_ffe_level : 1;
- 		} frl;
- 	};
+diff --git a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+index 3bde7fbb34b1..c4669853ad0e 100644
+--- a/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
++++ b/drivers/phy/rockchip/phy-rockchip-samsung-hdptx.c
+@@ -333,6 +333,7 @@
+ #define FRL_3G3L_RATE			900000000
+ #define FRL_6G3L_RATE			1800000000
+ #define FRL_8G4L_RATE			3200000000
++#define FRL_FFE_MAX_LEVEL		3
+ 
+ enum dp_link_rate {
+ 	DP_BW_RBR,
+@@ -466,6 +467,16 @@ static const struct ropll_config rk_hdptx_tmds_ropll_cfg[] = {
+ 	{  25175000ULL,   84,    84,    1,    1,   15,  1,  168,    1,  16,  4,   1,    1, },
  };
+ 
++static const struct ffe_config {
++	u8 pre_shoot;
++	u8 de_emphasis;
++} rk_hdptx_frl_ffe_cfg[FRL_FFE_MAX_LEVEL + 1] = {
++	{ 0x3, 0x4 },
++	{ 0x3, 0x6 },
++	{ 0x3, 0x8 },
++	{ 0x3, 0x9 },
++};
++
+ static const struct reg_sequence rk_hdptx_common_cmn_init_seq[] = {
+ 	REG_SEQ0(CMN_REG(0009), 0x0c),
+ 	REG_SEQ0(CMN_REG(000a), 0x83),
+@@ -1321,6 +1332,45 @@ static int rk_hdptx_tmds_ropll_mode_config(struct rk_hdptx_phy *hdptx)
+ 	return rk_hdptx_post_enable_lane(hdptx);
+ }
+ 
++static int rk_hdptx_frl_ffe_config(struct rk_hdptx_phy *hdptx, u8 ffe_level)
++{
++	u8 val;
++
++	if (ffe_level > FRL_FFE_MAX_LEVEL)
++		return -EINVAL;
++
++	val = rk_hdptx_frl_ffe_cfg[ffe_level].pre_shoot;
++
++	regmap_update_bits(hdptx->regmap, LANE_REG(0305),
++			   LN_TX_DRV_PRE_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_PRE_LVL_CTRL_MASK, val));
++	regmap_update_bits(hdptx->regmap, LANE_REG(0405),
++			   LN_TX_DRV_PRE_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_PRE_LVL_CTRL_MASK, val));
++	regmap_update_bits(hdptx->regmap, LANE_REG(0505),
++			   LN_TX_DRV_PRE_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_PRE_LVL_CTRL_MASK, val));
++	regmap_update_bits(hdptx->regmap, LANE_REG(0605),
++			   LN_TX_DRV_PRE_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_PRE_LVL_CTRL_MASK, val));
++
++	val = rk_hdptx_frl_ffe_cfg[ffe_level].de_emphasis;
++
++	regmap_update_bits(hdptx->regmap, LANE_REG(0304),
++			   LN_TX_DRV_POST_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_POST_LVL_CTRL_MASK, val));
++	regmap_update_bits(hdptx->regmap, LANE_REG(0404),
++			   LN_TX_DRV_POST_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_POST_LVL_CTRL_MASK, val));
++	regmap_update_bits(hdptx->regmap, LANE_REG(0504),
++			   LN_TX_DRV_POST_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_POST_LVL_CTRL_MASK, val));
++	regmap_update_bits(hdptx->regmap, LANE_REG(0604),
++			   LN_TX_DRV_POST_LVL_CTRL_MASK,
++			   FIELD_PREP(LN_TX_DRV_POST_LVL_CTRL_MASK, val));
++	return 0;
++}
++
+ static void rk_hdptx_dp_reset(struct rk_hdptx_phy *hdptx)
+ {
+ 	reset_control_assert(hdptx->rsts[RST_LANE].rstc);
+@@ -1730,6 +1780,13 @@ static int rk_hdptx_phy_verify_hdmi_config(struct rk_hdptx_phy *hdptx,
+ 		unsigned long long frl_rate = 100000000ULL * hdmi_in->frl.lanes *
+ 					      hdmi_in->frl.rate_per_lane;
+ 
++		if (hdmi_in->frl.set_ffe_level) {
++			if (hdmi_in->frl.ffe_level > FRL_FFE_MAX_LEVEL)
++				return -EINVAL;
++
++			return 0;
++		}
++
+ 		switch (hdmi_in->frl.rate_per_lane) {
+ 		case 3:
+ 		case 6:
+@@ -2076,11 +2133,18 @@ static int rk_hdptx_phy_configure(struct phy *phy, union phy_configure_opts *opt
+ 		if (ret) {
+ 			dev_err(hdptx->dev, "invalid hdmi params for phy configure\n");
+ 		} else {
+-			hdptx->pll_config_dirty = true;
+-
+-			dev_dbg(hdptx->dev, "%s %s rate=%llu bpc=%u\n", __func__,
+-				hdptx->hdmi_cfg.mode ? "FRL" : "TMDS",
+-				hdptx->hdmi_cfg.rate, hdptx->hdmi_cfg.bpc);
++			if (hdptx->hdmi_cfg.mode == PHY_HDMI_MODE_FRL &&
++			    opts->hdmi.frl.set_ffe_level) {
++				dev_dbg(hdptx->dev, "%s ffe_level=%u\n", __func__,
++					opts->hdmi.frl.ffe_level);
++				ret = rk_hdptx_frl_ffe_config(hdptx, opts->hdmi.frl.ffe_level);
++			} else {
++				hdptx->pll_config_dirty = true;
++
++				dev_dbg(hdptx->dev, "%s %s rate=%llu bpc=%u\n", __func__,
++					hdptx->hdmi_cfg.mode ? "FRL" : "TMDS",
++					hdptx->hdmi_cfg.rate, hdptx->hdmi_cfg.bpc);
++			}
+ 		}
+ 
+ 		return ret;
 
 -- 
 2.52.0
