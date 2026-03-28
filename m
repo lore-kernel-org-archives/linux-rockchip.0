@@ -4,55 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F04E10BA438
-	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Mar 2026 00:29:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B79810F3DC0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 28 Mar 2026 00:49:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=b/O/agi5ThDFplwU33AFRIMAuJ8/JDGT0JQ+oHH7y0A=; b=cqlcKqcyFd8qL1
-	7ynz9Ow6L6X2AMG0qUr8NTwdj73qkWMmUGYC5cBXEFOrPgcukLnYMicJPvVtogyIXaOAOK2TzdZw4
-	SF5lk8XjE8dUiRCN80Fh5oOEK7FyO1U9dkbUwuM7HnOaSEowVN8uknPhV9G2j5al0xXTEwDj1MOtm
-	5WwEqeuyPQxpc26Pu1a7fphvk/SFZb1FyttcgRcywbBmQczaNSdIJ8J7gUNT7AZpFVBpZTPZW11kG
-	dre7Gpaqc59OF9h9mmKJ3i6D2Qj/qgH21yYfKwLYoydsM1TRR99qaWiUz3ERsJtiAdYF3wF90rmGB
-	obEKC1Whao54tV0Qr3Iw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=05A7Fi6HE9yl2Qgm815iIUfiIQo/fjMbniCfBtxkZcQ=; b=ar0/L35qr+fwhd
+	IpcFZCY+t64PmB2Ti8rUYryDjhiXVE3Nm2qHSEKbAEVV8nHbeXxMaH2mrBwgygmLTNfQ3IbjXTFOh
+	NKT6fVkKv+T9CkdW/hAC2nJN7rtBbZg12o8/VrYIQd0ZEdYQ21H+rXBRfTNrtqO3w7lLU+oqY08z2
+	2qKIFnERu2s0bw1VfZ4L033sU9OT/aRkVgCjLftbP1roNwjqH2xAlhSoiZ0IWiLyfxBbyKuZrasYA
+	E/TQTmt+PMG71Ma8vTIwebVhcqeAzr1b+hznaATBSXxUqxbRxmPaZPzCZ3TnpUB/d6CXc9l2SaYHN
+	4UnFJHw75kGDWjz2viVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6HYY-00000008NOc-13gZ;
-	Sat, 28 Mar 2026 00:29:38 +0000
-Received: from mail-m128137.netease.com ([103.209.128.137])
+	id 1w6Hrd-00000008PZt-12Vo;
+	Sat, 28 Mar 2026 00:49:21 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w6HYV-00000008NOC-0g6q
-	for linux-rockchip@lists.infradead.org;
-	Sat, 28 Mar 2026 00:29:37 +0000
-Received: from localhost.localdomain (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 389ec6fc7;
-	Sat, 28 Mar 2026 08:29:28 +0800 (GMT+08:00)
-From: Shawn Lin <shawn.lin@rock-chips.com>
-To: Ulf Hansson <ulf.hansson@linaro.org>
-Cc: linux-mmc@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Subject: [PATCH v3] mmc: sdhci-dwcmshc: Refactor Rockchip platform data for controller revisions
-Date: Sat, 28 Mar 2026 08:29:22 +0800
-Message-Id: <1774657762-152522-1-git-send-email-shawn.lin@rock-chips.com>
-X-Mailer: git-send-email 2.7.4
-X-HM-Tid: 0a9d31d88bfc09cckunmcfa577decdafce
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0kdTlYdHRpJTB5LQhhDHUhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=awwpyaMD8Wll4wgDpDOBiiV/uZ/1XpXeyusd/p/tqC4KP6Lh6FxYqZXKtmDzZzIzg1HEeMIkRPtw0xaS3OX3oMm26sifZoWouhwCAi9fuxkWzPMh3MfbHIuZQgszBeokXwxb93Y7xZNOw5ceRvS7/9H/jKR/wnjsZghw+MZ3i3I=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=KR+j9rTF2STA/yiWY1WnY1xK7H9cyKLdbiYd9SX2ZTg=;
-	h=date:mime-version:subject:message-id:from;
+	id 1w6HrZ-00000008PYz-3G84;
+	Sat, 28 Mar 2026 00:49:19 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1774658958; x=1806194958;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=spBRyUWWoNS2Cx1CYULWATwx80zhbnXsfwLRPIEYCuI=;
+  b=VE+nE43CuWRpP70QGDC6ozkGSGFGZZQC2uAxMzGRMl2HyOlCMBwFcaHF
+   v20KY6q4f2lqxVOmyg4zqLpPdEW+N/tobn5CDJTqehTrsPZ3wHidMmOTE
+   XDBPclXJJ1wPMGM8wz3B2f3dE1X/1VdeD18FtOY5woWYTL+lvjUzsbuua
+   ZyzDryOVfX0t2Es7Ebh/VgFEMIWPHhlnGbVwsMsZ338vZhZosfMdVBC3d
+   +CdCVibToD9Sj+OznS9vyOw6ydUKUpbP5FuLqVeyej6+EcWbZAc3egJx1
+   MbXJkOZ14sNW/4X5koJu9XCSzFpP6JwDJOsGckC/wBLKFkNxPFsASpxbp
+   Q==;
+X-CSE-ConnectionGUID: DJtOyzE/S4OX1vfXDq9k9A==
+X-CSE-MsgGUID: KBn3P4W9Rl+cAtC8qYs+OQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11742"; a="79345765"
+X-IronPort-AV: E=Sophos;i="6.23,145,1770624000"; 
+   d="scan'208";a="79345765"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2026 17:49:16 -0700
+X-CSE-ConnectionGUID: ViZQzStoQxSHGMjM9s43nA==
+X-CSE-MsgGUID: XSnK+Jz1Qd+SfVvK0wZw8A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,145,1770624000"; 
+   d="scan'208";a="230246594"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.188])
+  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Mar 2026 17:49:07 -0700
+Date: Sat, 28 Mar 2026 02:49:04 +0200
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Maxime Ripard <mripard@kernel.org>,
+	Harry Wentland <harry.wentland@amd.com>,
+	Leo Li <sunpeng.li@amd.com>, Rodrigo Siqueira <siqueira@igalia.com>,
+	Alex Deucher <alexander.deucher@amd.com>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org,
+	Werner Sembach <wse@tuxedocomputers.com>,
+	Andri Yngvason <andri@yngvason.is>,
+	Marius Vlad <marius.vlad@collabora.com>
+Subject: Re: [PATCH v11 03/22] drm: Add new general DRM property "color
+ format"
+Message-ID: <acclgID7lSVNten2@intel.com>
+References: <20260324-color-format-v11-0-605559af4fb4@collabora.com>
+ <20260326-pumpkin-goshawk-of-stamina-0ccb84@houat>
+ <acVzwRyk_J24GrJ4@intel.com>
+ <4153041.tdWV9SEqCh@workhorse>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <4153041.tdWV9SEqCh@workhorse>
+X-Patchwork-Hint: comment
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260327_172935_771276_CBACB630 
-X-CRM114-Status: GOOD (  16.63  )
+X-CRM114-CacheID: sfid-20260327_174917_875499_EE605DBB 
+X-CRM114-Status: GOOD (  65.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,210 +115,273 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver previously used an enum (dwcmshc_rk_type) to distinguish
-platforms like the RK3568 and RK3588 based on DT compatible names.
-This approach is inflexible, scales poorly for future revisions or
-mixed-revision platforms, and conflates SoC names with controller
-revisions. One example is RK3576 which lists "rockchip,rk3588-dwcmshc"
-as a secondary compatible string just in order to claim it uses the
-same controller revision as RK3588. This is confusing and makes it
-error-prone to add new SoC support.
+On Fri, Mar 27, 2026 at 01:56:06PM +0100, Nicolas Frattaroli wrote:
+> On Thursday, 26 March 2026 18:58:25 Central European Standard Time Ville =
+Syrj=E4l=E4 wrote:
+> > On Thu, Mar 26, 2026 at 06:02:47PM +0100, Maxime Ripard wrote:
+> > > On Wed, Mar 25, 2026 at 08:43:15PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > > On Wed, Mar 25, 2026 at 03:56:58PM +0100, Maxime Ripard wrote:
+> > > > > On Wed, Mar 25, 2026 at 01:03:07PM +0200, Ville Syrj=E4l=E4 wrote:
+> > > > > > On Wed, Mar 25, 2026 at 09:24:27AM +0100, Maxime Ripard wrote:
+> > > > > > > On Tue, Mar 24, 2026 at 09:53:35PM +0200, Ville Syrj=E4l=E4 w=
+rote:
+> > > > > > > > On Tue, Mar 24, 2026 at 08:10:11PM +0100, Nicolas Frattarol=
+i wrote:
+> > > > > > > > > On Tuesday, 24 March 2026 18:00:45 Central European Stand=
+ard Time Ville Syrj=E4l=E4 wrote:
+> > > > > > > > > > On Tue, Mar 24, 2026 at 05:01:07PM +0100, Nicolas Fratt=
+aroli wrote:
+> > > > > > > > > > > +enum drm_connector_color_format {
+> > > > > > > > > > > +	/**
+> > > > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_AUTO: The driver or =
+display protocol
+> > > > > > > > > > > +	 * helpers should pick a suitable color format. All=
+ implementations of a
+> > > > > > > > > > > +	 * specific display protocol must behave the same w=
+ay with "AUTO", but
+> > > > > > > > > > > +	 * different display protocols do not necessarily h=
+ave the same "AUTO"
+> > > > > > > > > > > +	 * semantics.
+> > > > > > > > > > > +	 *
+> > > > > > > > > > > +	 * For HDMI, "AUTO" picks RGB, but falls back to YC=
+bCr 4:2:0 if the
+> > > > > > > > > > > +	 * bandwidth required for full-scale RGB is not ava=
+ilable, or the mode
+> > > > > > > > > > > +	 * is YCbCr 4:2:0-only, as long as the mode and out=
+put both support
+> > > > > > > > > > > +	 * YCbCr 4:2:0.
+> > > > > > > > > > > +	 *
+> > > > > > > > > > > +	 * For display protocols other than HDMI, the recur=
+sive bridge chain
+> > > > > > > > > > > +	 * format selection picks the first chain of bridge=
+ formats that works,
+> > > > > > > > > > > +	 * as has already been the case before the introduc=
+tion of the "color
+> > > > > > > > > > > +	 * format" property. Non-HDMI bridges should theref=
+ore either sort their
+> > > > > > > > > > > +	 * bus output formats by preference, or agree on a =
+unified auto format
+> > > > > > > > > > > +	 * selection logic that's implemented in a common s=
+tate helper (like
+> > > > > > > > > > > +	 * how HDMI does it).
+> > > > > > > > > > > +	 */
+> > > > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_AUTO =3D 0,
+> > > > > > > > > > > +
+> > > > > > > > > > > +	/**
+> > > > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_RGB444: RGB output f=
+ormat
+> > > > > > > > > > > +	 */
+> > > > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_RGB444,
+> > > > > > > > > > > +
+> > > > > > > > > > > +	/**
+> > > > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR444: YCbCr 4:4:=
+4 output format (ie.
+> > > > > > > > > > > +	 * not subsampled)
+> > > > > > > > > > > +	 */
+> > > > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR444,
+> > > > > > > > > > > +
+> > > > > > > > > > > +	/**
+> > > > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR422: YCbCr 4:2:=
+2 output format (ie.
+> > > > > > > > > > > +	 * with horizontal subsampling)
+> > > > > > > > > > > +	 */
+> > > > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR422,
+> > > > > > > > > > > +
+> > > > > > > > > > > +	/**
+> > > > > > > > > > > +	 * @DRM_CONNECTOR_COLOR_FORMAT_YCBCR420: YCbCr 4:2:=
+0 output format (ie.
+> > > > > > > > > > > +	 * with horizontal and vertical subsampling)
+> > > > > > > > > > > +	 */
+> > > > > > > > > > > +	DRM_CONNECTOR_COLOR_FORMAT_YCBCR420,
+> > > > > > > > > > =
 
-Introduces a new struct rockchip_pltfm_data containing a dedicated
-revision field. The old enum is removed, and all code paths are
-updated to use the revision-based data.
+> > > > > > > > > > Seems like this should document what the quantization r=
+ange
+> > > > > > > > > > should be for each format.
+> > > > > > > > > > =
 
-Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+> > > > > > > > > =
 
-Acked-by: Adrian Hunter <adrian.hunter@intel.com>
----
+> > > > > > > > > I don't think so? If you want per-component bit depth val=
+ues,
+> > > > > > > > > DRM_FORMAT_* defines would be the appropriate values to u=
+se. This
+> > > > > > > > > enum is more abstract than that, and is there to communic=
+ate
+> > > > > > > > > YUV vs. RGB and chroma subsampling, with bit depth being =
+handled
+> > > > > > > > > by other properties.
+> > > > > > > > > =
 
-Changes in v3:
-- remove unnecesary parentheses
-- add Adrian's tag
+> > > > > > > > > If you mean the factor used for subsampling, then that'd =
+only be
+> > > > > > > > > relevant if YCBCR410 was supported where one chroma plane=
+ isn't
+> > > > > > > > > halved but quartered in resolution. I suspect 4:1:0 will =
+never
+> > > > > > > > > be added; no digital display protocol standard supports i=
+t to my
+> > > > > > > > > knowledge, and hopefully none ever will.
+> > > > > > > > =
 
-Changes in v2:
-- update commit msg
-- document the revision field
-- re-order the Rockchip plftm data
+> > > > > > > > No, I mean the quantization range (16-235 vs. 0-255 etc).
+> > > > > > > > =
 
- drivers/mmc/host/sdhci-of-dwcmshc.c | 92 +++++++++++++++++++++++--------------
- 1 file changed, 57 insertions(+), 35 deletions(-)
+> > > > > > > > The i915 behaviour is that YCbCr is always limited range,
+> > > > > > > > RGB can either be full or limited range depending on the =
 
-diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
-index a91b3e7..6139516 100644
---- a/drivers/mmc/host/sdhci-of-dwcmshc.c
-+++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
-@@ -278,14 +278,8 @@
- #define PHY_DELAY_CODE_EMMC		0x17
- #define PHY_DELAY_CODE_SD		0x55
- 
--enum dwcmshc_rk_type {
--	DWCMSHC_RK3568,
--	DWCMSHC_RK3588,
--};
--
- struct rk35xx_priv {
- 	struct reset_control *reset;
--	enum dwcmshc_rk_type devtype;
- 	u8 txclk_tapnum;
- };
- 
-@@ -330,6 +324,16 @@ struct k230_pltfm_data {
- 	u32 write_prot_bit;
- };
- 
-+struct rockchip_pltfm_data {
-+	struct dwcmshc_pltfm_data dwcmshc_pdata;
-+	/*
-+	 * The controller hardware has two known revisions documented internally:
-+	 * - Revision 0: Exclusively used by RK3566 and RK3568 SoCs.
-+	 * - Revision 1: Implemented in all other Rockchip SoCs, including RK3576, RK3588, etc.
-+	 */
-+	int revision;
-+};
-+
- static void dwcmshc_enable_card_clk(struct sdhci_host *host)
- {
- 	u16 ctrl;
-@@ -749,6 +753,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
- 	struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
- 	struct rk35xx_priv *priv = dwc_priv->priv;
-+	const struct rockchip_pltfm_data *rockchip_pdata = to_pltfm_data(dwc_priv, rockchip);
- 	u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
- 	u32 extra, reg;
- 	int err;
-@@ -816,7 +821,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	 * we must set it in higher speed mode.
- 	 */
- 	extra = DWCMSHC_EMMC_DLL_DLYENA;
--	if (priv->devtype == DWCMSHC_RK3568)
-+	if (rockchip_pdata->revision == 0)
- 		extra |= DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
- 	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
- 
-@@ -842,7 +847,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
- 	    host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
- 		txclk_tapnum = priv->txclk_tapnum;
- 
--	if ((priv->devtype == DWCMSHC_RK3588) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
-+	if (rockchip_pdata->revision == 1 && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
- 		txclk_tapnum = DLL_TXCLK_TAPNUM_90_DEGREES;
- 
- 		extra = DLL_CMDOUT_SRC_CLK_NEG |
-@@ -898,11 +903,6 @@ static int dwcmshc_rk35xx_init(struct device *dev, struct sdhci_host *host,
- 	if (!priv)
- 		return -ENOMEM;
- 
--	if (of_device_is_compatible(dev->of_node, "rockchip,rk3588-dwcmshc"))
--		priv->devtype = DWCMSHC_RK3588;
--	else
--		priv->devtype = DWCMSHC_RK3568;
--
- 	priv->reset = devm_reset_control_array_get_optional_exclusive(mmc_dev(host->mmc));
- 	if (IS_ERR(priv->reset)) {
- 		err = PTR_ERR(priv->reset);
-@@ -2115,30 +2115,52 @@ static const struct cqhci_host_ops rk35xx_cqhci_ops = {
- 	.set_tran_desc	= dwcmshc_set_tran_desc,
- };
- 
--static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
--	.pdata = {
--		.ops = &sdhci_dwcmshc_rk35xx_ops,
--		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
--			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
--		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
--			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
-+	.dwcmshc_pdata = {
-+		.pdata = {
-+			.ops = &sdhci_dwcmshc_rk35xx_ops,
-+			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+		},
-+		.cqhci_host_ops = &rk35xx_cqhci_ops,
-+		.init = dwcmshc_rk35xx_init,
-+		.postinit = dwcmshc_rk35xx_postinit,
- 	},
--	.cqhci_host_ops = &rk35xx_cqhci_ops,
--	.init = dwcmshc_rk35xx_init,
--	.postinit = dwcmshc_rk35xx_postinit,
-+	.revision = 0,
- };
- 
--static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
--	.pdata = {
--		.ops = &sdhci_dwcmshc_rk35xx_ops,
--		.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
--			  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
--		.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
--			   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
-+	.dwcmshc_pdata = {
-+		.pdata = {
-+			.ops = &sdhci_dwcmshc_rk35xx_ops,
-+			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+		},
-+		.cqhci_host_ops = &rk35xx_cqhci_ops,
-+		.init = dwcmshc_rk35xx_init,
-+		.postinit = dwcmshc_rk3576_postinit,
-+	},
-+	.revision = 1,
-+};
-+
-+static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3588_pdata = {
-+	.dwcmshc_pdata = {
-+		.pdata = {
-+			.ops = &sdhci_dwcmshc_rk35xx_ops,
-+			.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
-+				  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
-+			.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
-+				   SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
-+		},
-+		.cqhci_host_ops = &rk35xx_cqhci_ops,
-+		.init = dwcmshc_rk35xx_init,
-+		.postinit = dwcmshc_rk35xx_postinit,
- 	},
--	.cqhci_host_ops = &rk35xx_cqhci_ops,
--	.init = dwcmshc_rk35xx_init,
--	.postinit = dwcmshc_rk3576_postinit,
-+	.revision = 1,
- };
- 
- static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
-@@ -2309,7 +2331,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
- 	},
- 	{
- 		.compatible = "rockchip,rk3588-dwcmshc",
--		.data = &sdhci_dwcmshc_rk35xx_pdata,
-+		.data = &sdhci_dwcmshc_rk3588_pdata,
- 	},
- 	{
- 		.compatible = "rockchip,rk3576-dwcmshc",
-@@ -2317,7 +2339,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
- 	},
- 	{
- 		.compatible = "rockchip,rk3568-dwcmshc",
--		.data = &sdhci_dwcmshc_rk35xx_pdata,
-+		.data = &sdhci_dwcmshc_rk3568_pdata,
- 	},
- 	{
- 		.compatible = "snps,dwcmshc-sdhci",
--- 
-2.7.4
+> > > > > > > > "Broadcast RGB" property and other related factors.
+> > > > > > > =
 
+> > > > > > > So far the HDMI state has both the format and quantization ra=
+nge as
+> > > > > > > different fields. I'm not sure we need to document the range =
+in the
+> > > > > > > format field, maybe only mention it's not part of the format =
+but has a
+> > > > > > > field of its own?
+> > > > > > =
+
+> > > > > > I think we only have it for RGB (on some drivers only?). For YC=
+bCr
+> > > > > > I think the assumption is limited range everywhere.
+> > > > > > =
+
+> > > > > > But I'm not really concerned about documenting struct members.
+> > > > > > What I'm talking about is the *uapi* docs. Surely userspace
+> > > > > > will want to know what the new property actually does so the
+> > > > > > uapi needs to be documented properly. And down the line some
+> > > > > > new driver might also implement the wrong behaviour if there
+> > > > > > is no clear specification.
+> > > > > =
+
+> > > > > Ack
+> > > > > =
+
+> > > > > > So I'm thinking (or perhaps hoping) the rule might be something=
+ like:
+> > > > > > - YCbCr limited range =
+
+> > > > > > - RGB full range if "Broadcast RGB" property is not present
+> > > > > =
+
+> > > > > Isn't it much more complicated than that for HDMI though? My
+> > > > > recollection was that any VIC but VIC1 would be limited range, and
+> > > > > anything else full range?
+> > > > =
+
+> > > > Do we have some driver that implements the CTA-861 CE vs. IT mode
+> > > > logic but doesn't expose the "Broadcast RGB" property? I was hoping
+> > > > those would always go hand in hand now.
+> > > =
+
+> > > I'm not sure. i915 and the HDMI state helpers handle it properly (I
+> > > think?) but it looks like only vc4 registers the Broadcast RGB proper=
+ty
+> > > and uses the HDMI state helpers.
+> > > =
+
+> > > And it looks like amdgpu registers Broadcast RGB but doesn't use
+> > > drm_default_rgb_quant_range() which seems suspicious?
+> > =
+
+> > If they want just manual full vs. limited then they should
+> > limit the property to not expose the "auto" option at all.
+> > =
+
+> > amdgpu also ties this in with the "colorspace" property, which
+> > originally in i915 only controlled the infoframes/etc. But on
+> > amdgpu it now controls various aspects of output color
+> > transformation. The end result is that the property is a complete
+> > mess with most of the values making no sense. And for whatever
+> > reason everyone involved refused to remove/deprecate the
+> > nonsensical values :/
+> > =
+
+> > Looks like this series should make sure the documentation for
+> > the "colorspace" property is in sync with the new property
+> > as well. Currently now it's giving conflicting information.
+> > =
+
+> =
+
+> I take it the problematic information is in
+> =
+
+>     * DOC: standard connector properties
+>     *
+>     * Colorspace:
+> =
+
+> and probably specifically BT2020_YCC's (and BT2020_RGB's?) insistence
+> that they "produce RGB content".
+> =
+
+> I think we probably just have to change the statement "The variants
+> BT2020_RGB and BT2020_YCC are equivalent and the driver chooses between
+> RGB and YCbCr on its own."
+> =
+
+> The "on its own" here would get turned into "based on the color format
+> property".
+> =
+
+> Speaking of i915, that patch is one of the very few (5) patches in
+> this series still lacking a review (hint hint nudge nudge). I'd like
+> to get some more feedback on the remaining patches before I send out
+> another revision, so that it's hopefully not just docs changes (I
+> know better than to think those patches must be perfect and won't
+> need revision.)
+
+The i915 code around this is already a big mess, and I don't really
+adding to that mess. So I think we'll need to do some refactoring before
+we add anything there. I already started typing something and so far
+it looks fairly straightforward, so I should have something soon.
+
+While doing that several questions came to my mind though:
+
+* More interactions with the colorspace property, but I sent
+  a separate mail already about that
+
+* Which conversion matrix to use, and the answer I suspect
+  should be "ask the colorspace property", as mentioned in the
+  other mail
+
+* Should we flat out reject color formats (and I suppose also
+  colorspace prop values) the sink doesn't claim to support?
+
+  If yes, then I think we'll have to forget about adding anything =
+
+  to i915 MST code. The way the MST stuff works is that if one
+  stream needs a modeset then all the related streams get modeset
+  as well. Thus if the user replaces a monitor getting fed with a
+  YCbCr stream just as another stream is being modeset, then the
+  entire atomic commit could fail due to the YCbCr stream getting
+  rejected.
+
+  I think eventually we might have to invent some mechanism where
+  all the input into the modeset computation is cached somehow,
+  and said cache updated only on explicit userspace modesets.
+  Either that or we have to come up  with a way to skip some of
+  the calculations that depend on external factors. Either way
+  it's going to be a pain.
+
+  OTOH if we don't mind feeding the sink with stuff it can't
+  understand, then I suppose we might add YCbCr 4:4:4 support
+  for MST. It shouldn't be any different from RGB apart from
+  the RGB->YCbCr conversion, which is handled elsewhere. But
+  YCbCr 4:2:0 is definitely out either way, the MST code has
+  no support for that currently.
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
