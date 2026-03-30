@@ -4,69 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 775A210D14B0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Mar 2026 13:19:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7E6FF495E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Mar 2026 13:42:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3P1NCLmWgTPQ80NGaIoXRdCQi+bgd4vDX+vMyovlo+0=; b=onhDhMo2f99cwc
-	WoGyHkvWzL+KBPN9to1YmF5PkKIqMrzt+6fDCUQPPR9v4G2SF9tNghNxuSALR533ROKawgrxeLK6g
-	wocIOisGZhrXfuwTeY6C/26nfk/ERUZBcuh66wQadaQxMRtefTCfpIcFDs9MTXOohhFiu9WxSl0e0
-	7do4TLSXlKYmr5GjlSBZQDap3RKTfiWyX11wVoZYbAiE3u2kJQnTti56Okldzgw/S6Q4UnHW/piDL
-	cdm2qb8I1A5AlRlIdIqjZLFrBvAR5YAcIB5rezRRVvbD1QSNrCG54DZpDOh3PbxCdeKCIMWwf8h60
-	42JbJZpktynFJtsY5qRg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=XJm8Pdu+1/TY6dwMHImu56qiLsTpqwn8p7RbKpOHAiI=; b=cPoRpi9Au4Zl64
+	MkQ5FuRD0DhFC9Gcs8D8pI1fzfkNm7TbwdSCCZE90rolUkOJ4mh7JXkDXnOyFCRSnksj0LkpVHlQN
+	CKs4Kgg1+UZLmVwotOatBOcu8Ow7H7rxpGmRiue9/Sbxfjf0i2HCT8Mm+spAQxP1N9DtuJKkx7F2D
+	xG+UJY8WRio1PZ9rpwoXu7eZgcYZ41jr452ns4Z4AV7WPFzE2HyaGa+VvzbfWwsLS+rKABiLrHfTA
+	Xw1HUOP51houaxfxr3rafIlxST73324mPlbIWW56NwdwLlkRADD9GsfE5TKV5ySf+0c9ajkKXNFCg
+	mJgN0+UkNTuIEPqPrJ7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7CWt-0000000BKx1-14Lv;
-	Mon, 30 Mar 2026 13:19:43 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w7Csd-0000000BMtZ-2elg;
+	Mon, 30 Mar 2026 13:42:11 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7CWq-0000000BKwB-42UK;
-	Mon, 30 Mar 2026 13:19:41 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0FC0860123;
-	Mon, 30 Mar 2026 13:19:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DCF4BC4CEF7;
-	Mon, 30 Mar 2026 13:19:37 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=linuxfoundation.org;
-	s=korg; t=1774876778;
-	bh=Xt08PXymCs4YwVjpcynOD9Y9BtXPNMqPh7FYH0XBhoM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=tQMNoMlj1NRnTs9ZoEczeHKRYMoX5a+Z2tQ+dI8ELcy1g1k55rFExNZj/XJUrwar7
-	 syT3h7GHUTt1HRLmW4etNkE+JZlDSQ76EMLxJi+sqnm7V23ANlSN1JjmuPnvi/36Sz
-	 W+Qoa8hF1tyo5SxMJWYeOAqcIeqXyclLnV4HabqQ=
-Date: Mon, 30 Mar 2026 15:19:35 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
-	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
-	spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
-	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
-	Peter Chen <peter.chen@kernel.org>, Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>
-Subject: Re: [PATCH v6 phy-next 03/28] usb: add missing headers transitively
- included by <linux/phy/phy.h>
-Message-ID: <2026033028-squint-yield-4c23@gregkh>
-References: <20260327184706.1600329-1-vladimir.oltean@nxp.com>
- <20260327184706.1600329-4-vladimir.oltean@nxp.com>
+	id 1w7Csa-0000000BMt1-0ZlM
+	for linux-rockchip@lists.infradead.org;
+	Mon, 30 Mar 2026 13:42:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=yK76Q+G4cMjhrvebg2OGZ4pK6jgJ3OiAWlzfTPAmIpA=; b=OeAHswtYEbfo+YcnsnweDZ6w8F
+	dQQ3a52ADziTFqa4keV6CR1P9XJAPfqu2gwrI5ENSApcD8+diHQE1vIcFtMR9MWhFO+mJwjn40dQq
+	ViUBE6FdgqAl88LmaSiTp/1yr0heNIBJSFJTB+Jbu8Bi02/u5IQRD0+YA2gqP8CmWWyteTQwoasnZ
+	u43/Y6oZMMoqpA6vXtnawl3p8KteD3nmJ1CovROgZTkX8dUh3o0XL+wAc9CkGQiKgMi1SaSYXCU7s
+	ldnBNS0Lc4nHd1ldKv24Lz14/2Oli7g/a2c83rTayZV4tVJ/e4phs772hNith0Z6nYIHlA+Suwc1Z
+	lB/zTLaw==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock changes for 7.1 #1
+Date: Mon, 30 Mar 2026 15:42:00 +0200
+Message-ID: <3746710.R56niFO833@phil>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260327184706.1600329-4-vladimir.oltean@nxp.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260330_064208_206497_7FC51EEB 
+X-CRM114-Status: GOOD (  10.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,48 +62,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Mar 27, 2026 at 08:46:41PM +0200, Vladimir Oltean wrote:
-> The chipidea ci_hdrc_imx driver uses regulator consumer API like
-> regulator_enable() but does not include <linux/regulator/consumer.h>.
-> 
-> The core USB HCD driver calls invalidate_kernel_vmap_range() and
-> flush_kernel_vmap_range(), but does not include <linux/highmem.h>.
-> 
-> The DWC3 gadget driver calls:
-> - device_property_present()
-> - device_property_count_u8()
-> - device_property_read_u8_array()
-> but does not include <linux/property.h>
-> 
-> The dwc3-generic-plat driver uses of_device_get_match_data() but does
-> not include <linux/of.h>.
-> 
-> In all these cases, the necessary includes were still provided somehow,
-> directly or indirectly, through <linux/phy/phy.h>. The latter header
-> wants to drop those includes, so fill in the required headers to avoid
-> any breakage.
-> 
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-> Acked-by: Thinh Nguyen <Thinh.Nguyen@synopsys.com> # dwc3
-> ---
-> Cc: Peter Chen <peter.chen@kernel.org>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Cc: Frank Li <Frank.Li@nxp.com>
-> Cc: Sascha Hauer <s.hauer@pengutronix.de>
-> Cc: Pengutronix Kernel Team <kernel@pengutronix.de>
-> Cc: Fabio Estevam <festevam@gmail.com>
-> Cc: Thinh Nguyen <Thinh.Nguyen@synopsys.com>
-> 
-> v2->v6: none
-> v1->v2: collect tag
-> ---
->  drivers/usb/chipidea/ci_hdrc_imx.c   | 1 +
->  drivers/usb/core/hcd.c               | 1 +
->  drivers/usb/dwc3/dwc3-generic-plat.c | 1 +
->  drivers/usb/dwc3/gadget.c            | 1 +
->  4 files changed, 4 insertions(+)
+Hi Mike, Stephen,
 
-Acked-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+please find below a pull-request with a Rockchip clock change for 7.1
+One new clock driver and sone newly accessible existing clocks.
+
+Please pull.
+
+Thanks
+Heiko
+
+
+The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
+
+  Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-clk1
+
+for you to fetch changes up to 41b1a6760959017c4fa1dbc7c3cc318406ab1455:
+
+  clk: rockchip: rk3568: Add PCIe pipe clock gates (2026-03-10 09:34:27 +0100)
+
+----------------------------------------------------------------
+New clock driver for the RV1103B. For whatever reason that SoC only got
+a B addition to the name, but major changes internally - likely it is
+pin compatible with the non-b-variant. Other change is actually
+exporting PCIe pipe-clocks that were already in the binding.
+
+----------------------------------------------------------------
+Fabio Estevam (2):
+      dt-bindings: clock: rockchip: Add RV1103B CRU support
+      clk: rockchip: Add clock controller for the RV1103B
+
+Shawn Lin (1):
+      clk: rockchip: rk3568: Add PCIe pipe clock gates
+
+ .../bindings/clock/rockchip,rv1126b-cru.yaml       |   1 +
+ drivers/clk/rockchip/Kconfig                       |   7 +
+ drivers/clk/rockchip/Makefile                      |   1 +
+ drivers/clk/rockchip/clk-rk3568.c                  |   6 +
+ drivers/clk/rockchip/clk-rv1103b.c                 | 658 +++++++++++++++++++++
+ drivers/clk/rockchip/clk.h                         |  49 ++
+ include/dt-bindings/clock/rockchip,rv1103b-cru.h   | 220 +++++++
+ 7 files changed, 942 insertions(+)
+ create mode 100644 drivers/clk/rockchip/clk-rv1103b.c
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1103b-cru.h
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
