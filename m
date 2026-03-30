@@ -4,93 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 612A6FF4923
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Mar 2026 01:35:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21BBDFF492D
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Mar 2026 02:48:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Date:Subject:Cc:To:From:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f+fywXroF0GmeuL+30TCPnNenhnemRXryJNh4I4jqiQ=; b=jd8+gmtCPbBZ0o
-	Z+qgEIRArnlQudytnlXzPA5rMQfNTLRXu4++G6o+8T81rjp2UlRhmQ0WSCUJzI/EbV8d9AgOAQLVO
-	I09niX/vTpb0LaMiUV9JxVengrOgF/x868d3Pn31UWRzhEU8EbbreuF7aHQ93prpgBHmSDgwB75cs
-	blErtQiQKyM0LTAUS8px+7J7TPQgwRevcvguHNHEhgsI+IkFuummIMX3Z0OiIiNau5T1DOYx8YCM8
-	wuEkULgqDNanIdhK+rg0AyBDTMEbiRVZpY+AWiAQpQ2apDBhTVuivRp2LwfQbEJErE2XOmfShMPNd
-	EVJ9rVESEgZQfTIbiX7w==;
+	List-Owner; bh=ROGjUGyGCpCekXoeOelxNoZHQDiApYvKaTVNEDfb9Yc=; b=XE/TMnmEBDnsCN
+	sYVJbe0Xcb0k+fdFx2XTIYk5vWgeimQv9FdYQwJbSPJrIBcRaMCmNaunUYgxWX+9dL8Fsi6blZxiz
+	XD8Q8o8L/ysGaKpoGZI0dk9aZ+jGNeHvLph42RG7BWKbcy6EpJhBcrsFTdTHhJicS+vhBsd8nOj8o
+	ZaZCJvaE9Nt7+blbjg2CYaKglNEuDLbICNqO4kW6bSnwLagKOCFSeCkkBha5DJkMl6U+Q2gM0Injo
+	Br2saYQyOZUydzr/BVrUZy9XtdexokGiM3RM8g/IG/7SAmIxgI610fxcHCQ68l5eWOk9TCB15MJbk
+	MPeqa7JgreGyuyVpOgHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w71XZ-0000000ATdU-2nEi;
-	Mon, 30 Mar 2026 01:35:41 +0000
-Received: from smtpbg154.qq.com ([15.184.224.54])
+	id 1w72fR-0000000AWL6-41ga;
+	Mon, 30 Mar 2026 02:47:54 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.53])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w71XV-0000000ATc5-0wIa
-	for linux-rockchip@lists.infradead.org;
-	Mon, 30 Mar 2026 01:35:40 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1774834462;
-	bh=sfiAM2xTM874MiG/dhh6ShU4/XvUVAmXi/VOTC6gjTA=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=r47FcybMsUdzUS2n1obC5iPMspWHmlN9+YLleegl2RqVE7Lef6K463mJbd4tNXDgb
-	 dIVUqyHpCkosydQRqmUhtmwcp3+JQyNY5BbQb9qb1y4BHlRdDQfmAIfnZUtQ83rQlz
-	 HpSn6Dw5iAcPLdcd0IRBTYaqsTPn0H51oXfQLvK0=
-X-QQ-mid: zesmtpsz9t1774834460t11607d84
-X-QQ-Originating-IP: nTZ358fNU9KEol2P7krw/Em4+kZ+xSnWIUvoRY+oi8E=
-Received: from [172.16.12.51] ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 30 Mar 2026 09:34:16 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7524343022994647576
-Message-ID: <FE1BFB774BE13241+54b8a8ce-5a8c-495d-a53f-65a2440924fb@airkyi.com>
-Date: Mon, 30 Mar 2026 09:34:15 +0800
+	id 1w72fH-0000000AWJe-3SLJ;
+	Mon, 30 Mar 2026 02:47:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1774838854; bh=LzfztcHVW5zVig+WG14bRx+Z0nkYHAr2g4y2I8ErAoE=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=M2eeelTW6i0L0tXSpv9TL1cOaX4GUj+YwnaOgyy9Y+WcChuL8DB8I2JClDgNG5esP
+	 /ibxCqZmgOBqB50GxHA2Q9Shm9MoxEIC7xc9Ea+YsINxXUG8+J9LoI/JESpTh7K1ll
+	 5+Tho7bGpC6b4nTc/UqAQF88kzoDEaPCndLfJ1EY=
+Received: from mail.red54.com ([139.99.8.57])
+	by newxmesmtplogicsvrszc56-0.qq.com (NewEsmtp) with SMTP
+	id BC0B724B; Mon, 30 Mar 2026 10:47:00 +0800
+X-QQ-mid: xmsmtpt1774838820tpjwh2w6i
+Message-ID: <tencent_723DE3D68C7F44CF67ED583F558130B47208@qq.com>
+X-QQ-XMAILINFO: NGZp1yYNf7Y+JMPTFH+qlG0rqFrd7A0ipJV8tAJUcbaZuu0agTHNatFA4WZx/s
+	 zodnfSGb1N+LAOqHNYU+r1lA0EcdWOT/nY6HCBp6KlPHtbuylYyVlMGP8XfiVBQeXgl8sJgNkU7u
+	 /FFo437UhXvLd4MVfvGMYNYMuKCiQE9gJ7hTn/uaMdUMroYzccZhE49oG/amEjCfsyP4MZ+S/tRP
+	 kADGHEiZ5mNjZm2VJ2oeaGVJ6eqi3bDMhE6K6g883lDqqWhk85qB5cl5BkotUirbY+oMm0dwSsa3
+	 diboPV4L6ehO0NGLq+0UfOL+ZrQksOhS3FGUz5DAO7Mvf2lPB7PZiXJn9ZPg6c1bSP+rCgaLkhON
+	 66fwD8CEhwamOsYf27Wbt9o9C1cj6OyHjSISetWBySFmE7fUz5ENXBl7ZdJlKd4YCoaRxv+KZ29i
+	 wps2ca7JKNs9oL+gb2LLOKLqtvZBX48Cby61HPzxi1lTfQhFd8FAaiBIE73WHxIOupRni3ucFZna
+	 hEk1vnuaCXBB5lPwLLXA+2sGwosTx38XHtxs2W0+AxajoTe5e2K7DKszL44PhWwsUqACuaCwIza8
+	 j2ZlLPavRhNWSvnGnzAU3EHYH5jNJcr3sy2BrB7Az5jT6UubNlWlc4JrbjdAA8VLhI36PqMVUSon
+	 Gx52rRgFdFw8YdDMF9V8gwzn3/m0oG3zoSS9Oh3vh40tl0TFNQgil2L946tlM6yZOlo8cd+j39M0
+	 Zt0t9OBTXNRCqf0TI0ly+MPPA6O5ifBb1rK8NaqoUgnyVRp2dcegXhZ4oAiInUW9VZLtdmFZuI5b
+	 V32NC6k7yAQNlEx415H4MKoydnY7jXUL9KsN6UlCsUinLTt/VZhgU+pNbdIEndjzOse5fAG0l6VI
+	 aWy6WMVOOyhlpzgJd0yfIcGmObTQY7xlAv35+HebXUjRJ80/kmUjLElSZI+y9g9yO448fnFDlZuv
+	 bX83Abl/L7cavgA8+Q9fHhPMiri9ksB/IPs1SglOniuK5y22NrEeBjYuLflRh54JUzi/jKgOLJoQ
+	 VraR+p0RqXtKKyAvwKnhcslaOTJC8Lmf5vCtpwPU5KQexpaG6eP+8x1SIdYyHc9luOyS0ZTcSUSs
+	 Br6zrxwFeblJb6BU66ckbYxUhBIA==
+X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
+From: =?UTF-8?q?=E8=B0=A2=E8=87=B4=E9=82=A6=20=28XIE=20Zhibang=29?= <Yeking@Red54.com>
+To: krzk@kernel.org
+Cc: Yeking@Red54.com,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	finley.xiao@rock-chips.com,
+	heiko@sntech.de,
+	kever.yang@rock-chips.com,
+	krzk+dt@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Add RK3562 serial aliases
+Date: Mon, 30 Mar 2026 02:46:48 +0000
+X-OQ-MSGID: <20260330024657.50845-1-Yeking@Red54.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <9b3ee9e9-d44d-49b1-81ac-9c3806dc0efb@kernel.org>
+References: <9b3ee9e9-d44d-49b1-81ac-9c3806dc0efb@kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/10] Synopsys DisplayPort Controller improvements for
- Rockchip platforms
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>
-Cc: Damon Ding <damon.ding@rock-chips.com>,
- Dmitry Baryshkov <lumag@kernel.org>, Alexey Charkov <alchark@gmail.com>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
- kernel@collabora.com
-References: <20260326-synopsys-dw-dp-improvements-v1-0-501849162290@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20260326-synopsys-dw-dp-improvements-v1-0-501849162290@collabora.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: MjqaYNLY8QZGzozxPa2e4UjsmSFPMWH9daKuUnGcIpjj7/i+hyxjp0G9
-	CMBCaI/U8ineNaDjYX6lqVAGcejW5rfS6pI18d+1mz62wILtrVzzc2foG46GailYsNq3JYz
-	XRkUkg967jlqFOrlhnylB7wrgkDqy7cH6yiE66+vtTsgHuH6H1itqPOiQHt03RMMF9Mh43h
-	W/uGdE4DLLOGhga+PIkjFRs8TJ302/pJimdYT+jCvns8TnYtq3G5MAAtbfhQzCZk15iQX5X
-	IAxzxp4U/iuXOI2a8fBbyV9V3PVl/n2SOeADfDq8PiSEreZPsArbXU1KTbJskt6PcJ3nz1q
-	4paoxTTelb4MVzVYbaEHmbNrmUT1TTv/GgZXxi2qYjnWSPp1a7yAtqFGG+f3odNYlmvAYoe
-	kmMzypik4f3j54R73hawMytelbilLn4jUIVI3nnzTL5VlS2BoWlG2K6uz1OXcsiR/4vzbuO
-	hdv9158lrOybqRq46Sf79c2e3CIpc9piLNdcakFRAQeQgcHEqMMa1DRKjE4/sGaYy5av//E
-	TtvkcfG2DZvhoHXEuPxKiJAfjAZnyqz5dbGZXhprGwokNmVwmBsXrKhGGTREavOZARRpv1g
-	kk81hjWRDQfrDoPnFFLFx2fQ/qj/lMKtgutXXDnwV1kMqLNPQ7nYC5sKXVrjQQWAfnnxxoo
-	TZf60moYzpRXSiKeYpIQ/9E4I/uxCiUmFrWBeCzDVb2M+FBsWWDlkYdkVeBa3cbbkIBuj8E
-	SJF0m+M3kG+DZ59Ax2lbb455wQpXrjKib8dQlWfYWjZw6BErP1tdKGfoUKyUGLfUZ4HTOlL
-	WYsYe2p3GBK+8+X8JC0NWh8Lx0Jjd0qU9n0togB8R0IeSmlHsuM6yqY+X4/CJn7iqo7YRgO
-	BU+VnzoqBIQ1u4PzHM7F/B/fiA78PUh41y0O+hKSU3ORGT2aKIe5EpVDfZ69HEkWxpjXPvm
-	turVEQZ/QU1cEAzLYufkjgsP44rJqEgDzbtDR/8UVUij2AVJ3bWWZAoh9qW+8UxotTp6dCv
-	LUDbox7Q==
-X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
-X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260329_183537_956091_FEECE7BE 
-X-CRM114-Status: GOOD (  24.08  )
+X-CRM114-CacheID: sfid-20260329_194746_284394_F295805B 
+X-CRM114-Status: GOOD (  16.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,91 +88,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Sebastian, 
-
-On 3/27/2026 1:31 AM, Sebastian Reichel wrote:
-> This patch series updates the Synopsys Designware DisplayPort bridge
-> together with the only existing user: The Rockchip RK3576/RK3588:
-> 
->  1. follow-up bridges (PHY, USB-C connector)
->     this is needed to get USB-C DP AltMode working; I've followed the
->     Qualcomm driver as reference
-> 
->  2. runtime PM
->     the initial driver has been upstreamed without RPM; add it to
->     avoid wasting power when nothing is plugged
-> 
->  3. audio
->     the initial driver has been upstreamed without audio support;
->     this adds all missing bits for audio with single stream transport
-> 
-> The series is based on drm-misc-next with Cristian's cleanup series
-> applied as I expect that to land first:
-> 
-> https://lore.kernel.org/linux-rockchip/20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com/
-> 
-> To properly make use of the bridge code the following USBDP PHY series
-> is also needed:
-> 
-> https://lore.kernel.org/linux-rockchip/20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com/
-> 
-> There are two parts, which possibly need some discussion:
-> 
->  1. I added a dedicated bridge callback for out-of-band hotplug events,
->     which is separate from the hotplug_notify. I have a feeling, that
->     there might be a better solution, but haven't found it.
-> 
-
-Could you explain what an out-of-band hotplug event is?
-
-Can't the drivers/usb/typec/altmodes/displayport.c respond to these
-hot-plug events? Thank you.
-
-
->  2. The DT binding for audio support - explicitly marked as RFC - works
->     perfectly fine, but is not ready for MST. I don't intend to
->     implement that right now, but the binding should obviously take it
->     into consideration to avoid breaking it in the future. I've put
->     some points for discussion into the relevant patch.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
-> Sebastian Reichel (10):
->       drm/bridge: synopsys: dw-dp: Simplify driver data setting
->       drm/bridge: synopsys: dw-dp: Support MEDIA_BUS_FMT_FIXED
->       drm/bridge: synopsys: dw-dp: Add follow-up bridge support
->       drm/bridge: Add out-of-band HPD notify handler
->       drm/bridge: synopsys: dw-dp: Support software triggered OOB HPD
->       drm/rockchip: dw_dp: Implement out-of-band HPD handling
->       drm/bridge: synopsys: dw-dp: Add Runtime PM support
->       drm/rockchip: dw_dp: Add runtime PM support
->       [RFC] dt-bindings: display: rockchip: dw-dp: fix sound DAI cells
->       drm/bridge: synopsys: dw-dp: Add audio support
-> 
->  .../bindings/display/rockchip/rockchip,dw-dp.yaml  |   5 +-
->  drivers/gpu/drm/bridge/synopsys/dw-dp.c            | 284 ++++++++++++++++++++-
->  drivers/gpu/drm/display/drm_bridge_connector.c     |   6 +
->  drivers/gpu/drm/rockchip/dw_dp-rockchip.c          | 167 +++++++++++-
->  include/drm/bridge/dw_dp.h                         |   6 +
->  include/drm/drm_bridge.h                           |  14 +
->  6 files changed, 469 insertions(+), 13 deletions(-)
-> ---
-> base-commit: 0660ee19141e5e90b422b7daa0d8518a8d0d898b
-> change-id: 20260325-synopsys-dw-dp-improvements-7da2e98df1dd
-> 
-> Best regards,
-
--- 
-Best, 
-Chaoyi
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gU2F0LCBNYXIgMjgsIDIwMjYgYXQgMDQ6MDg6NTdQTSArMDEwMCwgS3J6eXN6dG9mIEtvemxv
+d3NraSB3cm90ZToKPiBPbiAyOC8wMy8yMDI2IDE0OjA1LCDosKLoh7TpgqYgKFhJRSBaaGliYW5n
+KSB3cm90ZToKPiA+IFRoaXMgZml4ZXMgdGhlIHN0ZG91dC1wYXRoIGluIHJrMzU2Mi1ldmIyLXYx
+MC5kdHMuCj4gPiAKPiA+IEZpeGVzOiBjZWI2ZWYxZWE5MDAgKCJhcm02NDogZHRzOiByb2NrY2hp
+cDogQWRkIFJLMzU2MiBldmIyIGRldmljZXRyZWUiKQo+ID4gU2lnbmVkLW9mZi1ieTog6LCi6Ie0
+6YKmIChYSUUgWmhpYmFuZykgPFlla2luZ0BSZWQ1NC5jb20+Cj4gPiAtLS0KPiA+ICBhcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Mi5kdHNpIHwgMTAgKysrKysrKysrKwo+ID4gIDEg
+ZmlsZSBjaGFuZ2VkLCAxMCBpbnNlcnRpb25zKCspCj4gPiAKPiA+IGRpZmYgLS1naXQgYS9hcmNo
+L2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Mi5kdHNpIGIvYXJjaC9hcm02NC9ib290L2R0
+cy9yb2NrY2hpcC9yazM1NjIuZHRzaQo+ID4gaW5kZXggZTQ4MTZhYTNkYWUwLi4xNGU3NGU4YWM3
+ZGYgMTAwNjQ0Cj4gPiAtLS0gYS9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Mi5k
+dHNpCj4gPiArKysgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Mi5kdHNpCj4g
+PiBAQCAtMjYsNiArMjYsMTYgQEAgYWxpYXNlcyB7Cj4gPiAgCQlncGlvMiA9ICZncGlvMjsKPiA+
+ICAJCWdwaW8zID0gJmdwaW8zOwo+ID4gIAkJZ3BpbzQgPSAmZ3BpbzQ7Cj4gPiArCQlzZXJpYWww
+ID0gJnVhcnQwOwo+ID4gKwkJc2VyaWFsMSA9ICZ1YXJ0MTsKPiA+ICsJCXNlcmlhbDIgPSAmdWFy
+dDI7Cj4gPiArCQlzZXJpYWwzID0gJnVhcnQzOwo+ID4gKwkJc2VyaWFsNCA9ICZ1YXJ0NDsKPiA+
+ICsJCXNlcmlhbDUgPSAmdWFydDU7Cj4gPiArCQlzZXJpYWw2ID0gJnVhcnQ2Owo+ID4gKwkJc2Vy
+aWFsNyA9ICZ1YXJ0NzsKPiA+ICsJCXNlcmlhbDggPSAmdWFydDg7Cj4gPiArCQlzZXJpYWw5ID0g
+JnVhcnQ5Owo+IAo+IFVBUlQgYWxpYXNlcyBhcmUgcHJvcGVydGllcyBvZiB0aGUgYm9hcmRzLCBu
+b3QgU29DLgo+IAo+IEJlc3QgcmVnYXJkcywKPiBLcnp5c3p0b2YKClNvIGFyZSB5b3Ugc2F5aW5n
+IHRoYXQgd2UgbmVlZCB0byByZW1vdmUgdGhlIHNlcmlhbCBhbGlhc2VzIGZyb20gZmlsZXMKbGlr
+ZSByazMzMDguZHRzaSwgcmszMzI4LmR0c2ksIHJrMzM2OC5kdHNpLCByazMzOTktYmFzZS5kdHNp
+LApyazM1NngtYmFzZS5kdHNpLCByazM1NzYuZHRzaSwgcmszNTg4LWJhc2UuZHRzaSwgYW5kIHNv
+IG9uPwoKS2luZCByZWdhcmRzLApYSUUgWmhpYmFuZwoKCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
