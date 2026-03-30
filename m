@@ -4,48 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D7E6FF495E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Mar 2026 13:42:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 791C4FF495E
+	for <linux-rockchip@archiver.kernel.org>; Mon, 30 Mar 2026 14:17:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=XJm8Pdu+1/TY6dwMHImu56qiLsTpqwn8p7RbKpOHAiI=; b=cPoRpi9Au4Zl64
-	MkQ5FuRD0DhFC9Gcs8D8pI1fzfkNm7TbwdSCCZE90rolUkOJ4mh7JXkDXnOyFCRSnksj0LkpVHlQN
-	CKs4Kgg1+UZLmVwotOatBOcu8Ow7H7rxpGmRiue9/Sbxfjf0i2HCT8Mm+spAQxP1N9DtuJKkx7F2D
-	xG+UJY8WRio1PZ9rpwoXu7eZgcYZ41jr452ns4Z4AV7WPFzE2HyaGa+VvzbfWwsLS+rKABiLrHfTA
-	Xw1HUOP51houaxfxr3rafIlxST73324mPlbIWW56NwdwLlkRADD9GsfE5TKV5ySf+0c9ajkKXNFCg
-	mJgN0+UkNTuIEPqPrJ7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1s5pCsaTHWcXfOKyk5g4xRAjJ6FVRKcDBSW5LhO4fVQ=; b=Scn7hPrXMhcyCWfFrNp4y4i6t0
+	IQa3YhYmxK1ebU7z/L1+sgs5gzOgQgn1XyJ4GQwjbbRzUEPmc1e7tI24+0rCcpW8bocBIgivfODq1
+	tpUHDAca6S3Y0QcfM3vsI+tHbiHGK99GHALxekMIzy3xA7rKri1V77Gl4pucKlFjiRS+0huCSsRjj
+	4L5OOOvN7TRWgoBANreKIu7jdo51x85v727Y7WuC7lQgXG2yf8uXQjrwoVyfca3nNbCcLAi8Zl511
+	9p3UkKW5y6Wf9Iw8eKTD1dyRhOpG2pn10ffQUUWjFxqbzMstbeYafXelFIND/NItpA+VJPRAifkMj
+	2GTzIZig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Csd-0000000BMtZ-2elg;
-	Mon, 30 Mar 2026 13:42:11 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w7DQw-0000000BP7v-2ECX;
+	Mon, 30 Mar 2026 14:17:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Csa-0000000BMt1-0ZlM
-	for linux-rockchip@lists.infradead.org;
-	Mon, 30 Mar 2026 13:42:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=yK76Q+G4cMjhrvebg2OGZ4pK6jgJ3OiAWlzfTPAmIpA=; b=OeAHswtYEbfo+YcnsnweDZ6w8F
-	dQQ3a52ADziTFqa4keV6CR1P9XJAPfqu2gwrI5ENSApcD8+diHQE1vIcFtMR9MWhFO+mJwjn40dQq
-	ViUBE6FdgqAl88LmaSiTp/1yr0heNIBJSFJTB+Jbu8Bi02/u5IQRD0+YA2gqP8CmWWyteTQwoasnZ
-	u43/Y6oZMMoqpA6vXtnawl3p8KteD3nmJ1CovROgZTkX8dUh3o0XL+wAc9CkGQiKgMi1SaSYXCU7s
-	ldnBNS0Lc4nHd1ldKv24Lz14/2Oli7g/a2c83rTayZV4tVJ/e4phs772hNith0Z6nYIHlA+Suwc1Z
-	lB/zTLaw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-Subject: [GIT PULL] Rockchip clock changes for 7.1 #1
-Date: Mon, 30 Mar 2026 15:42:00 +0200
-Message-ID: <3746710.R56niFO833@phil>
+	id 1w7DQt-0000000BP7C-1tn8;
+	Mon, 30 Mar 2026 14:17:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1774880251;
+	bh=YXD0cPHX7FzEdOQwXJrWO33JjySneVnOOD3EPxs1EoY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=fK97Qm2wvpdCOdiM3bHzyQ6O171iALrqVd43ZjNhW1jyvVmbT5I2RTOj0tnLJagSV
+	 4MkeRWKdMR+dW9/OKSUj14m+CWW+PV365Lw1Gg/Zq6HZEWavUKd7olgJ9PjjBMWzQG
+	 dO0iRxrgC1xuq1+ocvuqQXe8sQ+K7UH00ZJWvakonhpJY0IwXQ/lNHFW1LKz+URXLR
+	 qzOW5CSpjvfQNTxT4y46Np1DpriMNxgdwWjjUZhLsH23HZE4Glv9bXGby8SwFCmvJA
+	 X8lRcLyGeL4IMgwPJItaqhdTgVH4W0RAVR3ny+Z0CYMm57iv+yqRfj/jl0Z2GsmMUU
+	 DBHrpsOJkhzAg==
+Received: from [IPv6:2606:6d00:15:e06b::c41] (unknown [IPv6:2606:6d00:15:e06b::c41])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1671317E4686;
+	Mon, 30 Mar 2026 16:17:28 +0200 (CEST)
+Message-ID: <c177cd8ffb59ea63a26906577ba737677551cd0d.camel@collabora.com>
+Subject: Re: [PATCH 1/4] media: rkvdec: Introduce a global bitwriter helper
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>, Ezequiel Garcia	
+ <ezequiel@vanguardiasur.com.ar>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>,  Heiko Stuebner	 <heiko@sntech.de>, Nathan Chancellor
+ <nathan@kernel.org>, Nick Desaulniers	 <nick.desaulniers+lkml@gmail.com>,
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ Jonas Karlman <jonas@kwiboo.se>
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	llvm@lists.linux.dev, kernel@collabora.com
+Date: Mon, 30 Mar 2026 10:17:26 -0400
+In-Reply-To: <20260327-rkvdec-use-bitwriter-v1-1-982cf872b590@collabora.com>
+References: <20260327-rkvdec-use-bitwriter-v1-0-982cf872b590@collabora.com>
+	 <20260327-rkvdec-use-bitwriter-v1-1-982cf872b590@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260330_064208_206497_7FC51EEB 
-X-CRM114-Status: GOOD (  10.62  )
+X-CRM114-CacheID: sfid-20260330_071735_668544_1FA1E646 
+X-CRM114-Status: GOOD (  21.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,63 +89,166 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2293496093338454407=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Mike, Stephen,
 
-please find below a pull-request with a Rockchip clock change for 7.1
-One new clock driver and sone newly accessible existing clocks.
-
-Please pull.
-
-Thanks
-Heiko
+--===============2293496093338454407==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-yBgy0sQvaoJVzhLo4NBc"
 
 
-The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
+--=-yBgy0sQvaoJVzhLo4NBc
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
+Le vendredi 27 mars 2026 =C3=A0 11:16 -0400, Detlev Casanova a =C3=A9crit=
+=C2=A0:
+> The use of structures with bitfields is good when the values are
+> somewhat aligned.
+> More mis-alignement means that compilers need to do more gymanstics
+> to edit the fields values.
+>=20
+> Some cases have been reported with CLang on specific architectures
+> like armhf and hexagon, where the compiler would allocate a bigger
+> local stack than needed or even completely freeze during compilation.
+>=20
+> Some fixes have been provided to ease the issues, but the real fix
+> here is to use a bitwriter instead of heavily unaligned bitfields.
+>=20
+> This is a preparation commit to provide a global bitwriter interface
+> for the whole driver.
+>=20
+> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> ---
+> =C2=A0drivers/media/platform/rockchip/rkvdec/Makefile=C2=A0=C2=A0=C2=A0 |=
+=C2=A0 1 +
+> =C2=A0.../platform/rockchip/rkvdec/rkvdec-bitwriter.c=C2=A0=C2=A0=C2=A0 |=
+ 30 ++++++++++++++++++++++
+> =C2=A0.../platform/rockchip/rkvdec/rkvdec-bitwriter.h=C2=A0=C2=A0=C2=A0 |=
+ 25 ++++++++++++++++++
+> =C2=A03 files changed, 56 insertions(+)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rkvdec/Makefile b/drivers/me=
+dia/platform/rockchip/rkvdec/Makefile
+> index e629d571e4d8..11e2122bcbbf 100644
+> --- a/drivers/media/platform/rockchip/rkvdec/Makefile
+> +++ b/drivers/media/platform/rockchip/rkvdec/Makefile
+> @@ -2,6 +2,7 @@ obj-$(CONFIG_VIDEO_ROCKCHIP_VDEC) +=3D rockchip-vdec.o
+> =C2=A0
+> =C2=A0rockchip-vdec-y +=3D \
+> =C2=A0		=C2=A0=C2=A0 rkvdec.o \
+> +		=C2=A0=C2=A0 rkvdec-bitwriter.o \
 
-are available in the Git repository at:
+Its just one function, with 10 lines of code, can we inline it in the heade=
+r and
+drop the object ?
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-clk1
+> =C2=A0		=C2=A0=C2=A0 rkvdec-cabac.o \
+> =C2=A0		=C2=A0=C2=A0 rkvdec-h264.o \
+> =C2=A0		=C2=A0=C2=A0 rkvdec-h264-common.o \
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.c b/=
+drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.c
+> new file mode 100644
+> index 000000000000..673ebb89002b
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.c
+> @@ -0,0 +1,30 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Rockchip Video Decoder bit writer
+> + *
+> + * Copyright (C) 2026 Collabora, Ltd.
+> + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Detlev Casanova <detlev.casanova@collab=
+ora.com>
+> + * Copyright (C) 2019 Collabora, Ltd.
+> + *	Boris Brezillon <boris.brezillon@collabora.com>
+> + */
+> +
+> +#include <linux/types.h>
+> +#include <linux/bits.h>
+> +
+> +#include "rkvdec-bitwriter.h"
+> +
+> +void rkvdec_set_bw_field(u32 *buf, struct rkvdec_bw_field field, u32 val=
+ue)
+> +{
+> +	u8 bit =3D field.offset % 32;
+> +	u16 word =3D field.offset / 32;
+> +	u64 mask =3D GENMASK_ULL(bit + field.len - 1, bit);
+> +	u64 val =3D ((u64)value << bit) & mask;
+> +
+> +	buf[word] &=3D ~mask;
+> +	buf[word] |=3D val;
+> +	if (bit + field.len > 32) {
+> +		buf[word + 1] &=3D ~(mask >> 32);
+> +		buf[word + 1] |=3D val >> 32;
+> +	}
+> +}
+> +
+> diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.h b/=
+drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.h
+> new file mode 100644
+> index 000000000000..44154f1ebc65
+> --- /dev/null
+> +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-bitwriter.h
+> @@ -0,0 +1,25 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Rockchip Video Decoder bit writer
+> + *
+> + * Copyright (C) 2026 Collabora, Ltd.
+> + *=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Detlev Casanova <detlev.casanova@collab=
+ora.com>
+> + * Copyright (C) 2019 Collabora, Ltd.
+> + *	Boris Brezillon <boris.brezillon@collabora.com>
+> + */
+> +
+> +#ifndef RKVDEC_BIT_WRITER_H_
+> +#define RKVDEC_BIT_WRITER_H_
+> +
+> +#include <linux/types.h>
+> +
+> +struct rkvdec_bw_field {
+> +	u16 offset;
+> +	u8 len;
+> +};
+> +
+> +#define BW_FIELD(_offset, _len) ((struct rkvdec_bw_field){ _offset, _len=
+ })
+> +
+> +void rkvdec_set_bw_field(u32 *buf, struct rkvdec_bw_field field, u32 val=
+ue);
+> +
+> +#endif /* RKVDEC_BIT_WRITER_H_ */
 
-for you to fetch changes up to 41b1a6760959017c4fa1dbc7c3cc318406ab1455:
+--=-yBgy0sQvaoJVzhLo4NBc
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
 
-  clk: rockchip: rk3568: Add PCIe pipe clock gates (2026-03-10 09:34:27 +0100)
+-----BEGIN PGP SIGNATURE-----
 
-----------------------------------------------------------------
-New clock driver for the RV1103B. For whatever reason that SoC only got
-a B addition to the name, but major changes internally - likely it is
-pin compatible with the non-b-variant. Other change is actually
-exporting PCIe pipe-clocks that were already in the binding.
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCacqF9gAKCRDZQZRRKWBy
+9NNPAP9m/C7TMvFwXyQT8rK+UCGFvzuLY32by5+QAQwsH+fP4wEAoC19z0cPX+2k
+voSc2sk6B5FI6fzPOJXJX9z9XlPO0go=
+=/Y4+
+-----END PGP SIGNATURE-----
 
-----------------------------------------------------------------
-Fabio Estevam (2):
-      dt-bindings: clock: rockchip: Add RV1103B CRU support
-      clk: rockchip: Add clock controller for the RV1103B
-
-Shawn Lin (1):
-      clk: rockchip: rk3568: Add PCIe pipe clock gates
-
- .../bindings/clock/rockchip,rv1126b-cru.yaml       |   1 +
- drivers/clk/rockchip/Kconfig                       |   7 +
- drivers/clk/rockchip/Makefile                      |   1 +
- drivers/clk/rockchip/clk-rk3568.c                  |   6 +
- drivers/clk/rockchip/clk-rv1103b.c                 | 658 +++++++++++++++++++++
- drivers/clk/rockchip/clk.h                         |  49 ++
- include/dt-bindings/clock/rockchip,rv1103b-cru.h   | 220 +++++++
- 7 files changed, 942 insertions(+)
- create mode 100644 drivers/clk/rockchip/clk-rv1103b.c
- create mode 100644 include/dt-bindings/clock/rockchip,rv1103b-cru.h
+--=-yBgy0sQvaoJVzhLo4NBc--
 
 
-
+--===============2293496093338454407==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2293496093338454407==--
+
