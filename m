@@ -4,91 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5108C10F92E9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Mar 2026 18:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CAF10F92E9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Mar 2026 18:13:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VoxnLb7VoxxpXPe5yX5TRMrVQfcEQFCN7ue3jzA2/Gc=; b=1gVeJC6kvJkaZy
-	fdy+Kx1Py7VK/98g/Y6+qbt2YVWdPuXFM4+wezpuD4KznjNo0ddVoXtCZnO1hh+pZ6WJrHKq5S7CH
-	SwGy7MD+kkoigl3ppcA0CNZlmkvttKnHYUYyOnc4nzWIubPJVhNIcUAsV3sjMYl+iVAPpcJpPVGtg
-	SQRgqC1QVOVZvViwjmcx+vnHby7hLYYca2eycOoisTn4Po9VWqLaMxEU7JGfyso6H4O2sfKKRdT9+
-	oJxksnkMz0/6m/XueSOoTc10D9d66lfT8NBdK85cmqws5hiofbUWxqPhBi4ERqOAPvwwaBhkLyPka
-	LdF/jfmL7ZFSrIsJ9Gqw==;
+	List-Owner; bh=5SkGxlp9lWJw7pdRV6woV1ZGR3aSq6Vf0kA3EiSPyD0=; b=Y08Pg8E++NMgqN
+	49l0DlXAkJSnNinf5UJL2bi+iT3e6EEKN0jPiOBVB8wCb5zuikchTQTtZRyOVshpUOVPbEPd2fzBH
+	J5TwURExNeGCvPVHBPt6O4+bft7AJpqTxQm/tbKLxgdTW2gJggDcINJcsq1XOfiwYC9Zr8j0SY8Qu
+	asOS27bD1d/PFpItLq24f1+1G/fWsroxnlNxK8RUMUmYG4bAYgezhm1fECE4Zr+QYHybyeg8dOwpA
+	rzQywUfimsD7USN4e0vy5/mEUfl3+iaEURU2FVsvWmDHJmrguYVQYqRZBaiV6nvseKCYJO9kNSunY
+	TqXDfZczum0tpBLdLfkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7dQh-0000000DON3-2V3H;
-	Tue, 31 Mar 2026 18:03:07 +0000
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+	id 1w7db0-0000000DP3i-3iKU;
+	Tue, 31 Mar 2026 18:13:46 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7dQe-0000000DOLg-2eif
+	id 1w7day-0000000DP2z-2Qau
 	for linux-rockchip@lists.infradead.org;
-	Tue, 31 Mar 2026 18:03:05 +0000
-Received: by mail-pl1-x62a.google.com with SMTP id d9443c01a7336-2b2494440f3so11294145ad.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 31 Mar 2026 11:03:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=orb-net.20230601.gappssmtp.com; s=20230601; t=1774980184; x=1775584984; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=FIPjhe0ooozuU4t14Rzg0U/ZHVJIieutYDq/fthQq0s=;
-        b=gQ1h3g6mxU7PqCvlHEvI7k5uBXWkl19a004LtBWZol1qDaPbYq4RFVBdcbVraohJcE
-         rSf1xeMupfbWXVstfD21HvMDkaExxnrV+IKli5Pn/+ILJuTnPbdGjoq9yt+HoWfIAemj
-         C3/wEB4MCoVwilEMHFNyuc+qlhZGU64dNa3wh/t4xORT1LXL42UUZwYpKdm7apUHHW8+
-         bOFyVcVga4535UhK7pJxhzdBBWIEBS22xwjnZyllt6WVyz0JWy4kMATTlFxJE7NKoamM
-         zEqC6vLwODpXKfwnuzZXy01yJ1CNM9olpeQiXViWI1G6soHFsGiIHwvR/pt7M9KqtCnd
-         SNwQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1774980184; x=1775584984;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=FIPjhe0ooozuU4t14Rzg0U/ZHVJIieutYDq/fthQq0s=;
-        b=o3mqeW86s+HEterVscm2VBFp71ZqHrTU7srTex1EGX+1hNOMSMgItWvzMldmsV4LAS
-         NN8+WgQsHFyiFgDhQjRGqwJpQLssGacDByApAPfUrQzqvYMQL/SBuf4TMypfUZSrlqLk
-         njbV/FITCSBUiB/nvL6IUtBe45PY1Ctx5TCFcD/IHnDR7qXTs4XTVpP6JAOC/IWZDsq9
-         dYgtgdrR6UqpViMJg5slDt63Cjl36kZ4duY9TBaDEvBGgJS0JksqYhiqyohrZwMtF1Js
-         jbtVlF8eO3QZqDX1bBa9hz2yJQWaDZlpUc6YAGAjO+QgP+32nxNN8EJ3IXlUjaMXHQOD
-         L9OA==
-X-Forwarded-Encrypted: i=1; AJvYcCUz8Spt9yJFe8ExtAVGUhNsLL29mE86XjIhlMsNOWPpUnsNzNOD9MzUCeD0HrUHJ6dpvtxq/oyuoc1nL0Udug==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxBxCi6VCt/FW9397TIz1JuF/7vdKNEU7mDdBXun2x1XADAWFVr
-	C/7kO7Hzcf0gixyNjsq3xh0gkYZdY2RGxWRnjzDNIw83+cs7cu2HM+PA39KHFX0Kj00QXx1exov
-	7GeNLRco=
-X-Gm-Gg: ATEYQzyCKsEND+4DQ1+LomFW9C8V50X/Qww25GHVsPERTo5ZsHm223i1X2BU4Jw0/Hg
-	kMMoRGJjiQJqEU/KUZJ8T+lUlERpQeNNdcrXOVLCBEkD6T8Ue8ki4yGRZsOSI9bT+JNd9XpWdxq
-	iyZd4+ZdwlrZLcVenSvQxX6wxnM4jT87m+EUggb+5w3eFkU7D3CYEf/vn25n2TdjdZV8xM4LfsF
-	YJgfFSz6EgVmOUqE/JH3rAkkF4Atxt8B7cYCLDMyXPU5qzy0lTZa/SM7vuCcXjraWMHou2/mDX9
-	IIWI7k4NujBgUNlOmCOWdedwTkGbyUbMIPpI7Gfkr6u1bqsPQiVKfHFzgWwbMC7XPGSBv8VkZTC
-	Gz9prcUQEebBnI/wGwXMLZa2ik/O189KtfHASKlW4+kuUzmVYoBDK5wz+JyipPm1/dal7H6/mLd
-	2/GLKS8kPgZXh+UMSvjvLUEf3OvZg6e0zwFdhWPkZiP9fpPPms1x+xYw2+Qw7GHPK96yQQQ14OQ
-	rzYZw==
-X-Received: by 2002:a17:902:ea05:b0:2b0:5548:7d84 with SMTP id d9443c01a7336-2b269cce951mr1369705ad.48.1774980183702;
-        Tue, 31 Mar 2026 11:03:03 -0700 (PDT)
-Received: from claude-dev.lan ([50.125.94.20])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b242680132sm125240315ad.32.2026.03.31.11.03.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Mar 2026 11:03:03 -0700 (PDT)
-From: Daniel Bozeman <daniel@orb.net>
-To: ulf.hansson@linaro.org,
-	heiko@sntech.de
-Cc: linux-pm@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Daniel Bozeman <daniel@orb.net>
-Subject: [PATCH 2/2] pmdomain/rockchip: skip domains returning -EPROBE_DEFER
-Date: Tue, 31 Mar 2026 18:02:23 +0000
-Message-ID: <20260331180223.1682283-2-daniel@orb.net>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260331180223.1682283-1-daniel@orb.net>
-References: <20260331180223.1682283-1-daniel@orb.net>
+	Tue, 31 Mar 2026 18:13:45 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1774980822;
+ bh=SGfD5RUo85f+4kW7EBlx3yRh1/KFzFoR81S/pihvcqU=;
+ b=0FQdE7NUOzT4ms0H+1zyoVHjv+m5vhg3jaxjfRIWeqQ/hlikHoj57DPtVQQNRdLh6+h+uBtCi
+ X7MFvHRySUFK8c9MUQZWq3vJ9w/pSpxskSps7g/Vaff6ojzWr0IZ89z0RHRpeQ6Sayp/2+0Zwrf
+ eFQ9uYvvdcLZT3OMYl+Ktlq5Pgb1b2eW5s+GCy9NJBCj7UatNNAZEnHso+5Tr1UYsbhb+d8mNr+
+ d6vPKr8eJu51cGLQiyWKxzIw+phhAd1fy/IIq+pGT7yvNlUzx91bJiO2lVIpoghGp2xLZM7PZB9
+ IW4RJuiwVxzHmgWQx4bSmnkj7Uk9f9ypuqrp+mo2rYVw==
+X-Forward-Email-ID: 69cc0ecb650cf26cfd1ee59c
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.6.64
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <3cd63b3d-1c5e-4a11-856e-c4aeb5d97d55@kwiboo.se>
+Date: Tue, 31 Mar 2026 20:13:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] iommu/rockchip: fix page table allocation flags for v2
+ IOMMU
+To: Midgy BALON <midgy971@gmail.com>
+Cc: Shawn Lin <shawn.lin@rock-chips.com>, Simon Xue <xxm@rock-chips.com>,
+ iommu@lists.linux.dev, joro@8bytes.org, will@kernel.org,
+ robin.murphy@arm.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ stable@vger.kernel.org
+References: <20260331075010.1463-1-midgy971@gmail.com>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <20260331075010.1463-1-midgy971@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_110304_670514_80D765CB 
-X-CRM114-Status: GOOD (  11.45  )
+X-CRM114-CacheID: sfid-20260331_111344_612363_C848D16F 
+X-CRM114-Status: GOOD (  23.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,47 +80,88 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-When iterating child nodes during probe, a single domain returning
--EPROBE_DEFER (e.g. due to clock dependencies not yet available)
-causes the entire power domain controller to fail and tear down all
-successfully registered domains.
+Hi Midgy,
 
-This creates a window where devices in unrelated power domains that
-would have registered successfully cannot access their hardware. On
-RK3528, PD_GPU requires CRU clocks that may not be available yet,
-but the idle-only domains (PD_RKVENC, PD_VO, PD_VPU) have no clock
-requirements. When the controller fails due to PD_GPU, GPIO
-controllers in PD_RKVENC become inaccessible, leading to synchronous
-external aborts when GPIO-controlled regulators probe.
+On 3/31/2026 9:50 AM, Midgy BALON wrote:
+> commit 2a7e6400f72b ("iommu: rockchip: Allocate tables from all
+> available memory for IOMMU v2") removed GFP_DMA32 from
+> iommu_data_ops_v2, reasoning that RK356x and RK3588 IOMMU v2 hardware
+> supports up to 40-bit physical addresses for page tables.  However, the
+> RK3568 IOMMU page-table walker uses a 32-bit AXI bus: it cannot access
+> physical addresses above 4 GB regardless of the address encoding range.
+> 
+> On boards with more than 4 GB of RAM (e.g. 8 GB LPDDR4X), removing
+> GFP_DMA32 causes two distinct failure modes:
+> 
+> 1. Direct allocation above 4 GB: iommu_alloc_pages_sz() may return
+>    memory above 0x100000000.  The hardware page-table walker issues a
+>    bus error trying to dereference those addresses, causing an IOMMU
+>    fault on the first DMA transaction.
+> 
+> 2. SWIOTLB bounce-buffer poisoning: without GFP_DMA32, page tables land
+>    above the SWIOTLB window.  dma_map_single() with DMA_BIT_MASK(32)
+>    then bounces them into a buffer below 4 GB.  rk_dte_get_page_table()
+>    returns phys_to_virt() of the bounce buffer address; PTEs are written
+>    there; the next dma_sync_single_for_device(DMA_TO_DEVICE) copies the
+>    original (zero) data back over the bounce buffer, silently erasing the
+>    freshly written PTEs.  The IOMMU faults because every PTE reads as zero.
+> 
+> Restore GFP_DMA32 (and DMA_BIT_MASK(32)) for iommu_data_ops_v2, which
+> currently only serves "rockchip,rk3568-iommu" in mainline.
+> 
+> Tested on Radxa ROCK 3B (RK3568, 8 GB LPDDR4X):
+>   - MobileNetV1 via RKNN: 5.8 ms/inference (IOMMU mode)
+>   - YOLOv5s 640x640 via RKNN: ~57 ms/inference (IOMMU mode)
+>   - No IOMMU faults, correct inference results
+> 
+> Fixes: 2a7e6400f72b ("iommu: rockchip: Allocate tables from all available memory for IOMMU v2")
+> Cc: stable@vger.kernel.org
+> Cc: Jonas Karlman <jonas@kwiboo.se>
+> Signed-off-by: Midgy BALON <midgy971@gmail.com>
+> ---
+>  drivers/iommu/rockchip-iommu.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
+> index 85f3667e797..8b45db29471 100644
+> --- a/drivers/iommu/rockchip-iommu.c
+> +++ b/drivers/iommu/rockchip-iommu.c
+> @@ -1358,8 +1358,8 @@ static struct rk_iommu_ops iommu_data_ops_v2 = {
+>  	.pt_address = &rk_dte_pt_address_v2,
+>  	.mk_dtentries = &rk_mk_dte_v2,
+>  	.mk_ptentries = &rk_mk_pte_v2,
+> -	.dma_bit_mask = DMA_BIT_MASK(40),
+> -	.gfp_flags = 0,
+> +	.dma_bit_mask = DMA_BIT_MASK(32),
+> +	.gfp_flags = GFP_DMA32,
 
-Skip domains that return -EPROBE_DEFER and continue registering the
-rest. Skipped domains have NULL entries in the provider, causing
-their consumers to receive -ENOENT and defer until available.
+This change is wrong because this struct describe the RK IOMMU v2 that
+is capable of 40-bit addressing, used with e.g. RK3568 VOP2 MMU and MMUs
+in other RK35xx SoCs.
 
-Fixes: 7c696693a4f5 ("soc: rockchip: power-domain: Add power domain driver")
-Signed-off-by: Daniel Bozeman <daniel@orb.net>
----
- drivers/pmdomain/rockchip/pm-domains.c | 5 +++++
- 1 file changed, 5 insertions(+)
+What you have discovered is most likely that some IP blocks, e.g. NPU on
+RK3568, is not capable of >32-bit addressing, and/or that such IP blocks
+are still using IOMMU v1 blocks, or some variant with 32-bit limitation.
 
-diff --git a/drivers/pmdomain/rockchip/pm-domains.c b/drivers/pmdomain/rockchip/pm-domains.c
-index 2eecae092a..f42880c94f 100644
---- a/drivers/pmdomain/rockchip/pm-domains.c
-+++ b/drivers/pmdomain/rockchip/pm-domains.c
-@@ -1077,6 +1077,11 @@ static int rockchip_pm_domain_probe(struct platform_device *pdev)
- 	for_each_available_child_of_node_scoped(np, node) {
- 		error = rockchip_pm_add_one_domain(pmu, node);
- 		if (error) {
-+			if (error == -EPROBE_DEFER) {
-+				dev_dbg(dev, "skipped node %pOFn, dependencies not yet available\n",
-+					node);
-+				continue;
-+			}
- 			dev_err(dev, "failed to handle node %pOFn: %d\n",
- 				node, error);
- 			goto err_out;
--- 
-2.43.0
+However, the RK IOMMU driver is currently not capable of supporting
+different IOMMU revisions, if I recall correctly there may have been a
+patch trying to address that already on ML.
+
+Have you seen this issue with a variant of the rockit driver that add
+support for RK3568 or a variant of the downstream rknpu driver forward
+ported to mainline?
+
+If your findings are correct it is likely that the NPU MMU needs to use
+a different compatible, since rockchip,rk3568-iommu describe the IOMMUv2
+that is capable of 40-bit addressing and is also used by other RK35xx
+SoCs.
+
+Regards,
+Jonas
+
+>  };
+>  
+>  static const struct of_device_id rk_iommu_dt_ids[] = {
 
 
 _______________________________________________
