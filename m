@@ -4,83 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1E76FF60FF
-	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Mar 2026 11:02:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F0B2FF60FB
+	for <linux-rockchip@archiver.kernel.org>; Tue, 31 Mar 2026 11:15:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fQUQfp3K44mhb/DeA1v5VlRUQdw8cMktnhRpY/ERT6Y=; b=aOjIDaRBWp+Mh7QC7/iBHryjG4
-	RCtPFkgc9Oax8TFKym0JwXgFCOqh5N6oQOnj2CSadRjyeHab4k9nKXe1IUjNpBRNOdI3oN++g72HN
-	H34yybnLMfbiMVDmP2WfdyyngFYkERo2n/y2grpfZPZbi4Pvijde2Mv/xFOawNKqlrcv8RlyzGFUs
-	sEnQeOCKeuRiIBOVmnFzzoZmgzB9UsZrVzM35hH/tqTB/84SGfprXYi+b2wINK4t/GinombY3jhJ3
-	/HWHTG0YQ3cY2v2MAlSlYD5CYs0lLGRW58DdkWEI7z5VvieoN/RkL7ntyX3kGsVq1RkYZLdtqBoAG
-	h3i2oTmw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Tp6Nf9KXfMKmfRtZ2u0fVjm3U9f4BR/w6p//oyTxtBw=; b=nfO6a1H+smpp+z
+	WBgT83BDCHKbjli7qYjgU/7v/DYNWcirgKrfmoBsiOceTzLRpinKMgu0tWpqA9RQrkBqpyLavnktl
+	Stj/Yw8cgOhFzep3yf8U4BlTq93CF1LfaBEfjnx8ClVIAYBrac/QoGQhnjKyhvbasBbeCOmMFc1c2
+	gwjhMnF/KMmdU2xFhBFT3iXxerRiBiaWFCp16jnL5VGAxK33MwPaaxhMlcpejJREiil9NiFZBDlin
+	GQVLQvmZR8avHyHb5iUK8qhzVwVSntZz3umixKzjmWMpgHq5TFm/C8uOGWWCoSTONoeeZbxPCnwf+
+	rIAvIoqG3D8ocA/b5GbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Wr7-0000000Cp8s-3JFB;
-	Tue, 31 Mar 2026 11:01:57 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1w7X3y-0000000CqPR-0Wra;
+	Tue, 31 Mar 2026 11:15:14 +0000
+Received: from mail-lf1-x134.google.com ([2a00:1450:4864:20::134])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7Wr5-0000000Cp8S-3n2a
+	id 1w7X3v-0000000CqMs-2gv5
 	for linux-rockchip@lists.infradead.org;
-	Tue, 31 Mar 2026 11:01:57 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1774954888; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Bb4fYXmN58XESqL8Mizz7i6dZfAwwfSdKDL47H4/JApJmkBaN+6px9j0rOYKEzRV/AmI3kSgyKwpdtA4qIMBYMAgAc/9wryjZ/VIzhFIMBcHpvhh8/hZxIA75oShKY+lQHpZenjE3o/IA0f4t3Zsh6wCSzqEgrYfPPE1DSyfOss=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1774954888; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=u13dMEcF9M+aXZsAMu08kfH0fwxaX2Y4cknWwBOVSCY=; 
-	b=InWxbVKylN6XldQEMAIoQuoTd6cCFFR5X5+f/LeO0gcMyAJS3YaiTpux+HCNTiL/G6J+Evj27LudKZoRTz8cR/nly1IAYLUW+W63fFyjf01Ed1IOrGfLd3KaLP/ydJJqVoJmYe4gHvdOtFd9Mmp5PvATQh1cs99Uvhigju4vJk0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1774954888;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=u13dMEcF9M+aXZsAMu08kfH0fwxaX2Y4cknWwBOVSCY=;
-	b=UL1OFMIGHg9Zy1GZlRCQDlVlb35zutQpJ/PIGOVlLeugOLTK+3s5bf6C3p5Hou45
-	R/Kxqr/D8ZjofE7QU0ZncxiayHc7St9DUx3AyNYIsI5A3Y/GsELt53vcs23Lr0oYw+F
-	dRoxx0Q0XBa2sFbscg9RYazqeCIShfFVPoPz6cNE=
-Received: by mx.zohomail.com with SMTPS id 1774954887379775.1689389168353;
-	Tue, 31 Mar 2026 04:01:27 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id 4340D181F55; Tue, 31 Mar 2026 13:01:21 +0200 (CEST)
-Date: Tue, 31 Mar 2026 13:01:21 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Damon Ding <damon.ding@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Alexey Charkov <alchark@gmail.com>, dri-devel@lists.freedesktop.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	kernel@collabora.com
-Subject: Re: [PATCH 00/10] Synopsys DisplayPort Controller improvements for
- Rockchip platforms
-Message-ID: <acuoBEWNw6fVk-yT@venus>
-References: <20260326-synopsys-dw-dp-improvements-v1-0-501849162290@collabora.com>
- <FE1BFB774BE13241+54b8a8ce-5a8c-495d-a53f-65a2440924fb@airkyi.com>
- <acphlgK6ZmBitGJL@venus>
- <AFAEA46A791878B0+9fe68e46-8d8f-44f1-80e3-dfad2de51832@airkyi.com>
- <acsoT_i-LfoMoIy_@venus>
- <1801CF6805B8DD32+0afb49ab-a03c-40f0-92bd-d0b332f8f28e@airkyi.com>
+	Tue, 31 Mar 2026 11:15:12 +0000
+Received: by mail-lf1-x134.google.com with SMTP id 2adb3069b0e04-5a1443780c4so5501977e87.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 31 Mar 2026 04:15:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1774955709; cv=none;
+        d=google.com; s=arc-20240605;
+        b=W3RPCloQrbyxHsBRifniFwHUS6QDMNKg3qH+xPYo+ExEgeWMLbYIYluS2dsEomywnk
+         a3eUCS/A3CzpLjs/5m4svCeOfP4aC6cYGDrygXTrQPLeF97xJQyiib0D8xJdrAvddXEO
+         4JAQn6k14wSLhpv8knX8jOkPARBaZb5tO5SagEqDG3res2yfUJHnnTIUuse02sysFh7X
+         Hh8Sez+i+eUUUFf85QZ+FbTgnXJIGN6mKi2P/wr3cFiRKr4PDwfvcQlNRZ3AJwikSJ60
+         lrR0TTUrig4MlUIqTFKDYZtyB6jqLgE3NSWfPMzgR6FgJoGpdmDSpEOsEbHUNLDmuk2k
+         6vNw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=4tIaIXp7FQdF0r9WNUruNeum5K2fLGgptMXAzUr3RHE=;
+        fh=Y5DshpbCEhfv2CJvIPL4hAwBKGi4fBJoLvStVbnrTLA=;
+        b=RKJllVvG5gnrzuJ+tkR/8HzYPe6On+OjJuccaqZAuSlRS/jT7rOrFVruF0eu36VR8f
+         AY5wWzy0wp9b24ipfboN0BYXD++4efYHlj5PniW3L1BV1SdH7l1mtJTtOKMk4a9hxpRf
+         BGEQUvYJ4ith/lEREpa4UfmrBYjabN8fvpN18NhUMjX/p0Ha6rCUH51g2t5LiGsMuHSE
+         U8BpnXl16S/jasjadsVSlEos2J0n5SokiJIG2YZtnu+i8nZvCkDZ+xAMbdZoJS8vVRSx
+         wsA3sUSizQXKQDz0fx28S3huk7nrIshLzy+M0Vpi6ALODEYNwP4KlU/V2PoRs7EI/v/O
+         ZDBQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1774955709; x=1775560509; darn=lists.infradead.org;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=4tIaIXp7FQdF0r9WNUruNeum5K2fLGgptMXAzUr3RHE=;
+        b=vkHExHooDX8dVFy0pzNm3JRwLpoHGMjCh4/yhpg79HzQGIvzGSTgf5yw0nSmp70XU9
+         19eTLYWsOsxBVTCvdmrx/BtrPRcGgjg+YCv1ldCBZFqFxxuvwywztrC+abWA7m0e+d/h
+         SnCc36lS92lBUAWiXoLH6LWrNQSvAQ2GAGMOSUK21g2l76Kp9chd5h1fIpZQZt4O9t4l
+         E6svPaklKBvYJDsTuRow2wir5bh4dTz9b81YCfOrwgz1gNFZjYEncGPz4pMHZu0j+nSW
+         EyFFp4/AdCvVAQvJdku6XQe0PHD+mxcT/i7ODlraEhSX8fvTW+nvwRbMfYgxeJ72Y6dV
+         IIbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1774955709; x=1775560509;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=4tIaIXp7FQdF0r9WNUruNeum5K2fLGgptMXAzUr3RHE=;
+        b=W+Mp3K/aU6PN5t3SBQbupu98MbKmx2iwqQjWEeb1AIE8koYTMFu5s8Mb6kXYDH9RFT
+         sQuZl9fs/d5Md17Mt0B8mu+pXuweyLUCwVL6rHy2wgZHWiuOjjf1JzGU0ED1jgzlYJ+M
+         hFsgiy4khP1agVC1Jjuox6kFfk3lGOJkjt5RJLzy6B5q2ZfHPeWxKk9AeuqRbJtQ8so0
+         SdExIZz0kFDA3W378a3vVB15ARre4WYFO4u5xvP75HnS/kS/wEOqkw6beYhp3NIzMHGt
+         HBuQwocAeZ6rQbWbsX9d6Xt90zSiVEovcX0GXoDF8E2aV5J+ajdZ7Cvor4hDNvkvYKIq
+         6aNA==
+X-Forwarded-Encrypted: i=1; AJvYcCWPVGZ2FLpaMVqUKD16aMBmMoapW/PObIL9vvNfi+IP+7yLzhMh5hXDOGUU+OkX5NSC9Lid9dBcbxv/ywOsPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzZN2L1EuIRnQPlygAMG+9W87UJujMTcCTx+bGfb8qpbgsXj9D9
+	RiN3On+VSF4vwoKZbEpipwdHooyubL7dTW2gaFN+vxImTzOi5TwWQjsHT46R45lYKplaFg4Ll+I
+	SPuH8ZyC++AN8hs8zfWtriNU2T+KNIyL8abXNxYRdxQ==
+X-Gm-Gg: ATEYQzxJvvTpN0AgT95+O4qq8H+6yvPLgQ+bppNV6ZY16BYvm41c/pM8LZ81+UL49i0
+	3JOKYhrVAURRwpUOM5WJ8ecCTuD2fQYk0eN9RcNZDptJG4kTxmpEuF3/Ob7yiC1OvojD1aKJ9X4
+	odejsA85DUXGkEixXJyEY0eywVam/9sjHoIx04sBuRqeJ/oQXOQVpWQZ13LRk9TeKxpJKqnuyG/
+	6lWkc3luaUy20rWbq04tPWWBqgQXv2vMlmZh2shmxgtlCwCN5u3wKRCcI8n3MXcAZKYfIROIvQy
+	nKNaLsGD
+X-Received: by 2002:a05:6512:2313:b0:5a1:53a8:fe20 with SMTP id
+ 2adb3069b0e04-5a2baae136cmr1098957e87.8.1774955707894; Tue, 31 Mar 2026
+ 04:15:07 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <1801CF6805B8DD32+0afb49ab-a03c-40f0-92bd-d0b332f8f28e@airkyi.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.1.0.1.4.3/274.894.35
-X-ZohoMailClient: External
+References: <1774657762-152522-1-git-send-email-shawn.lin@rock-chips.com>
+In-Reply-To: <1774657762-152522-1-git-send-email-shawn.lin@rock-chips.com>
+From: Ulf Hansson <ulf.hansson@linaro.org>
+Date: Tue, 31 Mar 2026 13:14:31 +0200
+X-Gm-Features: AQROBzBS7blAll21TPGO827Cd20xrsesnJXSVw3i6fyudfuXltEqUXvSzzsypys
+Message-ID: <CAPDyKFosqzuv=t69tq_JBn+uy1YDNw7eT12hJs1SHD4P37OvRg@mail.gmail.com>
+Subject: Re: [PATCH v3] mmc: sdhci-dwcmshc: Refactor Rockchip platform data
+ for controller revisions
+To: Shawn Lin <shawn.lin@rock-chips.com>
+Cc: linux-mmc@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Adrian Hunter <adrian.hunter@intel.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_040155_973864_A7930D02 
-X-CRM114-Status: GOOD (  41.47  )
+X-CRM114-CacheID: sfid-20260331_041511_765347_7509507E 
+X-CRM114-Status: GOOD (  26.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,167 +111,220 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0962023779602254043=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Sat, 28 Mar 2026 at 01:29, Shawn Lin <shawn.lin@rock-chips.com> wrote:
+>
+> The driver previously used an enum (dwcmshc_rk_type) to distinguish
+> platforms like the RK3568 and RK3588 based on DT compatible names.
+> This approach is inflexible, scales poorly for future revisions or
+> mixed-revision platforms, and conflates SoC names with controller
+> revisions. One example is RK3576 which lists "rockchip,rk3588-dwcmshc"
+> as a secondary compatible string just in order to claim it uses the
+> same controller revision as RK3588. This is confusing and makes it
+> error-prone to add new SoC support.
+>
+> Introduces a new struct rockchip_pltfm_data containing a dedicated
+> revision field. The old enum is removed, and all code paths are
+> updated to use the revision-based data.
+>
+> Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+>
+> Acked-by: Adrian Hunter <adrian.hunter@intel.com>
 
---===============0962023779602254043==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zxhyojzxk5dujjf4"
-Content-Disposition: inline
+Applied for next, thanks!
+
+Kind regards
+Uffe
 
 
---zxhyojzxk5dujjf4
-Content-Type: text/plain; protected-headers=v1; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 00/10] Synopsys DisplayPort Controller improvements for
- Rockchip platforms
-MIME-Version: 1.0
-
-Hi,
-
-On Tue, Mar 31, 2026 at 11:16:26AM +0800, Chaoyi Chen wrote:
-> On 3/31/2026 10:09 AM, Sebastian Reichel wrote:
-> > On Tue, Mar 31, 2026 at 09:18:32AM +0800, Chaoyi Chen wrote:
-> >> On 3/30/2026 7:50 PM, Sebastian Reichel wrote:
-> >>> On Mon, Mar 30, 2026 at 09:34:15AM +0800, Chaoyi Chen wrote:
-> >>>>> There are two parts, which possibly need some discussion:
-> >>>>>
-> >>>>>  1. I added a dedicated bridge callback for out-of-band hotplug eve=
-nts,
-> >>>>>     which is separate from the hotplug_notify. I have a feeling, th=
-at
-> >>>>>     there might be a better solution, but haven't found it.
-> >>>>
-> >>>> Could you explain what an out-of-band hotplug event is?
-> >>>>
-> >>>> Can't the drivers/usb/typec/altmodes/displayport.c respond to these
-> >>>> hot-plug events? Thank you.
-> >>>
-> >>> That is what generates the out-of-band hotplug event in the first
-> >>> place via drm_connector_oob_hotplug_event(). The oob in that call
-> >>> means out of band.
-> >>>
-> >>> If you look at that function it calls oob_hotplug_event() callback
-> >>> on the DRM connector, which is then implemented by
-> >>> drm_bridge_connector_oob_hotplug_event(). This function calls uses
-> >>> the normal hpd handling (shared by in-band and out-of-band) and I'm
-> >>> patching it, so that the bridges are aware of hpd explicitly being
-> >>> provided out-of-band.
-> >>>
-> >>
-> >> Ah, I'm actually more concerned with the specific types of events.
-> >> For example, the "explicitly" provided HPD you mentioned here.=20
-> >> Isn't drm_connector_oob_hotplug_event able to provide those?
-> >>
-> >> I assume you=E2=80=99re looking for an oob event that is propagated al=
-ong the
-> >> bridge chain, rather than at the connector. Is that so? Thank you.
-> >=20
-> > The connector has a dedicated hotplug oob event callback, but I obvious=
-ly
-> > need the event on the bridge, since the DP controller is implemented as
-> > bridge. The existing infrastructure propages it down to the bridge chain
-> > via drm_bridge_hpd_notify(), which can be received by the DP controller
-> > via the .hpd_notify callback in struct drm_bridge_funcs.
-> >=20
-> > The problem is, that this receives events for in-band AND
-> > out-of-band hotplug events. That's why I added a new bridge
-> > callback, which hooks into the existing framework, but only delivers
-> > out-of-band events and no in-band events.
-> >=20
->=20
-> How to distinguish between in-band and out-of-band events? In your patch4:
->=20
-> @@ -180,6 +180,12 @@ static void drm_bridge_connector_oob_hotplug_event(s=
-truct drm_connector *connect
->  	struct drm_bridge_connector *bridge_connector =3D
->  		to_drm_bridge_connector(connector);
-> =20
-> +	/* Notify all bridges in the pipeline of hotplug events. */
-> +	drm_for_each_bridge_in_chain_scoped(bridge_connector->encoder, bridge) {
-> +		if (bridge->funcs->oob_notify)
-> +			bridge->funcs->oob_notify(bridge, connector, status);
-> +	}
+> ---
+>
+> Changes in v3:
+> - remove unnecesary parentheses
+> - add Adrian's tag
+>
+> Changes in v2:
+> - update commit msg
+> - document the revision field
+> - re-order the Rockchip plftm data
+>
+>  drivers/mmc/host/sdhci-of-dwcmshc.c | 92 +++++++++++++++++++++++--------------
+>  1 file changed, 57 insertions(+), 35 deletions(-)
+>
+> diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> index a91b3e7..6139516 100644
+> --- a/drivers/mmc/host/sdhci-of-dwcmshc.c
+> +++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+> @@ -278,14 +278,8 @@
+>  #define PHY_DELAY_CODE_EMMC            0x17
+>  #define PHY_DELAY_CODE_SD              0x55
+>
+> -enum dwcmshc_rk_type {
+> -       DWCMSHC_RK3568,
+> -       DWCMSHC_RK3588,
+> -};
+> -
+>  struct rk35xx_priv {
+>         struct reset_control *reset;
+> -       enum dwcmshc_rk_type devtype;
+>         u8 txclk_tapnum;
+>  };
+>
+> @@ -330,6 +324,16 @@ struct k230_pltfm_data {
+>         u32 write_prot_bit;
+>  };
+>
+> +struct rockchip_pltfm_data {
+> +       struct dwcmshc_pltfm_data dwcmshc_pdata;
+> +       /*
+> +        * The controller hardware has two known revisions documented internally:
+> +        * - Revision 0: Exclusively used by RK3566 and RK3568 SoCs.
+> +        * - Revision 1: Implemented in all other Rockchip SoCs, including RK3576, RK3588, etc.
+> +        */
+> +       int revision;
+> +};
 > +
-
-this is the new handler that will only get OOB events, since it is
-only called from the connector's oob hotplug event function.
-
->  	drm_bridge_connector_handle_hpd(bridge_connector, status);
-
-this is the existing handler, which is not modified and keeps its
-behaviour of receiving both hpd event types just as before.
-
-> Here, drm_bridge_connector_handle_hpd() will eventually call:
->=20
-> 	drm_for_each_bridge_in_chain_scoped(bridge_connector->encoder, bridge) {
-> 		if (bridge->funcs->hpd_notify)
-> 			bridge->funcs->hpd_notify(bridge, connector, status);
-> 	}
->=20
-> Therefore, for the bridge chain, you will call hpd_notify and
-> oob_notify separately.
-
-Correct, I keep existing functionality. Apparently it works for
-everyone else.
-
-> This looks redundant, how do you distinguish between them?
-
-hpd_notify can be used in the same way as before. It is useful in
-case the bridge driver does not care about the source of the hpd
-event. In case of the Rockchip Synopsys DP bridge, .hpd_notify is
-not bound and only .oob_notify is used, so it only receives the OOB
-events. It's not necessary to receive the in-band events at all,
-since those are generated by the driver itself anyways.
-
-> > The problem with receiving in-band in addition to out-of-band is
-> > that the out-of-band signal should set the hotplug pin accordingly,
-> > but the in-band detection also checks the actual DP link. If the OOB
-> > hotplug signal says "nothing plugged", the hotplug pin should be
-> > forced off, but if the DP link detection fails, the hotplug pin
-> > should not be force disabled, as that makes any further detection
-> > tries useless.
-
-Greetings,
-
--- Sebastian
-
---zxhyojzxk5dujjf4
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmnLqXkACgkQ2O7X88g7
-+prg6g//SvwR05BqZDVsojL70OoR7cgOcShKoW2+48teWWFmYnLjMQngMJfuA02Z
-ii1xl3ZGQ00JRSkXnINmrn88PZ1P2HajNjPPUMoxwJ8S3/rv4WUBrSXDjqvgSExI
-Z1iv8NoXCR2dPore64bUOKUD/YonjaUHeAIztXdjEU9NGrS/Z3iO5WbikmVKmJ7J
-1o35CZj8bB1UTDJDc7+PgCLgnCDkDTlRrpzEGSfxIZcG/P1g25k+K1uJRNB4ccvt
-jDkAbaMkw/yb7O9DRugQGP9pL1TNhCZGccMqvnZCCjOZMknbo57WyEiD7Q/LY00Q
-iOJJrLFyoCgdKMIMyu3u+jXS1Wwp3JLNzggTQcnlWpJip2H2RNuj7n66X3SPO0sE
-ZGE+mwRDNnNFATzn3UnnNwqErFqEyW5p0wBw1FucCzWSSeAB+/rcCCqrbBMT5qdt
-70le+BQqzQ4ENT6fMXGTdUO9YCDDDA6LEvgoAwMO7h6goJZKi9myVq2zfuPecB50
-UF7E8xj+zpmHzsOhcwiovSOSlwVra+A/KCM8LmTFeCn8ngt9YaQDCUV50S3YtPIg
-yq2y8mB0N3fRqdASROQNSHAFr1Xf58FNYy3OsoR/g+B8JCI0GckCX9UD2LI6D1hU
-TTXnoKSrYSK8cKBz06P08hwS0WpBDhYA99uyDgUkYyPpmNdelng=
-=v1/C
------END PGP SIGNATURE-----
-
---zxhyojzxk5dujjf4--
-
-
---===============0962023779602254043==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>  static void dwcmshc_enable_card_clk(struct sdhci_host *host)
+>  {
+>         u16 ctrl;
+> @@ -749,6 +753,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>         struct sdhci_pltfm_host *pltfm_host = sdhci_priv(host);
+>         struct dwcmshc_priv *dwc_priv = sdhci_pltfm_priv(pltfm_host);
+>         struct rk35xx_priv *priv = dwc_priv->priv;
+> +       const struct rockchip_pltfm_data *rockchip_pdata = to_pltfm_data(dwc_priv, rockchip);
+>         u8 txclk_tapnum = DLL_TXCLK_TAPNUM_DEFAULT;
+>         u32 extra, reg;
+>         int err;
+> @@ -816,7 +821,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>          * we must set it in higher speed mode.
+>          */
+>         extra = DWCMSHC_EMMC_DLL_DLYENA;
+> -       if (priv->devtype == DWCMSHC_RK3568)
+> +       if (rockchip_pdata->revision == 0)
+>                 extra |= DLL_RXCLK_NO_INVERTER << DWCMSHC_EMMC_DLL_RXCLK_SRCSEL;
+>         sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_RXCLK);
+>
+> @@ -842,7 +847,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+>             host->mmc->ios.timing == MMC_TIMING_MMC_HS400)
+>                 txclk_tapnum = priv->txclk_tapnum;
+>
+> -       if ((priv->devtype == DWCMSHC_RK3588) && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
+> +       if (rockchip_pdata->revision == 1 && host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
+>                 txclk_tapnum = DLL_TXCLK_TAPNUM_90_DEGREES;
+>
+>                 extra = DLL_CMDOUT_SRC_CLK_NEG |
+> @@ -898,11 +903,6 @@ static int dwcmshc_rk35xx_init(struct device *dev, struct sdhci_host *host,
+>         if (!priv)
+>                 return -ENOMEM;
+>
+> -       if (of_device_is_compatible(dev->of_node, "rockchip,rk3588-dwcmshc"))
+> -               priv->devtype = DWCMSHC_RK3588;
+> -       else
+> -               priv->devtype = DWCMSHC_RK3568;
+> -
+>         priv->reset = devm_reset_control_array_get_optional_exclusive(mmc_dev(host->mmc));
+>         if (IS_ERR(priv->reset)) {
+>                 err = PTR_ERR(priv->reset);
+> @@ -2115,30 +2115,52 @@ static const struct cqhci_host_ops rk35xx_cqhci_ops = {
+>         .set_tran_desc  = dwcmshc_set_tran_desc,
+>  };
+>
+> -static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk35xx_pdata = {
+> -       .pdata = {
+> -               .ops = &sdhci_dwcmshc_rk35xx_ops,
+> -               .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+> -                         SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+> -               .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+> -                          SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+> +static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3568_pdata = {
+> +       .dwcmshc_pdata = {
+> +               .pdata = {
+> +                       .ops = &sdhci_dwcmshc_rk35xx_ops,
+> +                       .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+> +                                 SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+> +                       .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+> +                                  SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+> +               },
+> +               .cqhci_host_ops = &rk35xx_cqhci_ops,
+> +               .init = dwcmshc_rk35xx_init,
+> +               .postinit = dwcmshc_rk35xx_postinit,
+>         },
+> -       .cqhci_host_ops = &rk35xx_cqhci_ops,
+> -       .init = dwcmshc_rk35xx_init,
+> -       .postinit = dwcmshc_rk35xx_postinit,
+> +       .revision = 0,
+>  };
+>
+> -static const struct dwcmshc_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
+> -       .pdata = {
+> -               .ops = &sdhci_dwcmshc_rk35xx_ops,
+> -               .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+> -                         SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+> -               .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+> -                          SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+> +static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3576_pdata = {
+> +       .dwcmshc_pdata = {
+> +               .pdata = {
+> +                       .ops = &sdhci_dwcmshc_rk35xx_ops,
+> +                       .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+> +                                 SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+> +                       .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+> +                                  SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+> +               },
+> +               .cqhci_host_ops = &rk35xx_cqhci_ops,
+> +               .init = dwcmshc_rk35xx_init,
+> +               .postinit = dwcmshc_rk3576_postinit,
+> +       },
+> +       .revision = 1,
+> +};
+> +
+> +static const struct rockchip_pltfm_data sdhci_dwcmshc_rk3588_pdata = {
+> +       .dwcmshc_pdata = {
+> +               .pdata = {
+> +                       .ops = &sdhci_dwcmshc_rk35xx_ops,
+> +                       .quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
+> +                                 SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
+> +                       .quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
+> +                                  SDHCI_QUIRK2_CLOCK_DIV_ZERO_BROKEN,
+> +               },
+> +               .cqhci_host_ops = &rk35xx_cqhci_ops,
+> +               .init = dwcmshc_rk35xx_init,
+> +               .postinit = dwcmshc_rk35xx_postinit,
+>         },
+> -       .cqhci_host_ops = &rk35xx_cqhci_ops,
+> -       .init = dwcmshc_rk35xx_init,
+> -       .postinit = dwcmshc_rk3576_postinit,
+> +       .revision = 1,
+>  };
+>
+>  static const struct dwcmshc_pltfm_data sdhci_dwcmshc_th1520_pdata = {
+> @@ -2309,7 +2331,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+>         },
+>         {
+>                 .compatible = "rockchip,rk3588-dwcmshc",
+> -               .data = &sdhci_dwcmshc_rk35xx_pdata,
+> +               .data = &sdhci_dwcmshc_rk3588_pdata,
+>         },
+>         {
+>                 .compatible = "rockchip,rk3576-dwcmshc",
+> @@ -2317,7 +2339,7 @@ static const struct of_device_id sdhci_dwcmshc_dt_ids[] = {
+>         },
+>         {
+>                 .compatible = "rockchip,rk3568-dwcmshc",
+> -               .data = &sdhci_dwcmshc_rk35xx_pdata,
+> +               .data = &sdhci_dwcmshc_rk3568_pdata,
+>         },
+>         {
+>                 .compatible = "snps,dwcmshc-sdhci",
+> --
+> 2.7.4
+>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============0962023779602254043==--
-
