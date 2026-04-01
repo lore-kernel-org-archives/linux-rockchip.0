@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA72710F931A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 02:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B50FF4937
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 03:44:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/Fef45PNgbIEDUAGdqSCL5/RMdawIp5F/4cyk6SaF9U=; b=OBsvsnybn7rOm0
-	UNm36ajcxHVQAl9ESxTPtyv90zLMmah+booZp0D5qqxuAsL9565OkQ8E5PGovg+JtDgTRT1eVIfq7
-	7mXExKVh9u9ikBcYiDStTGlyF6T/mXH0SRaopP9jAcYgfQhp94qv1zD6wjub6MyEHY4QqdPRdRDeg
-	fnhbch1M1iS1AQzL5KmvHnRBxAzUTKe6uBmhkp8Op7g1t1o0Ackw3S4Lq/VfAF6NOTy7Iz+mWM/bn
-	iP1R9y4hqihR+17InkPWsQ24h6i6S5q2guBKwNH8ERnEm5KeK4rqBOYA3CX/flYbPGjKsUm6pBs1C
-	0yDG9bA66qrd0m3dsDDQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=kvRqIA5AAvGe9fkCoN7OuP0uGYpYOaqOQxQZmBvHNw8=; b=YHBKFR8a9jej2Y
+	mZf+B8UnChC8OcvKVZHkArJK7i0r3pnQ1L8Im3YP14qDV4CiYntLHpJwOAw11fdMs+Q0BHiz3h2Fh
+	qUi2hVMFDnABUEndDb8UnGnE4egksZT+9Xq13YovT6gnq+uNeIRgYmwYysxyi1yE8Ruq8F4E7LHPA
+	LqzWw5MUGmZjWYdpZ89oPWooJitrfh8w3crP9jTOu86xWuAKVD4gYlwkAFJS2THar85b8hcVjXRMr
+	mEjJH3z2yTzePSaxLGxpXguPBTf4GoKYD4UjoqO48ZQY399TQUjPDN2sybHfURwLBmjlhM5pzPvsu
+	QomqcaQc0Y4FCRa/6VAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7lnk-0000000Ds5a-2rvp;
-	Wed, 01 Apr 2026 02:59:28 +0000
-Received: from mail-m15594.qiye.163.com ([101.71.155.94])
+	id 1w7mVM-0000000Dunb-3awS;
+	Wed, 01 Apr 2026 03:44:32 +0000
+Received: from mail-m15588.qiye.163.com ([101.71.155.88])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7lnh-0000000Ds53-3bgJ;
-	Wed, 01 Apr 2026 02:59:27 +0000
-Received: from [172.16.12.17] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 39142f724;
-	Wed, 1 Apr 2026 10:54:14 +0800 (GMT+08:00)
-Message-ID: <fc6f00fa-10b0-44c8-d8b4-694f8ff3b9ea@rock-chips.com>
-Date: Wed, 1 Apr 2026 10:54:13 +0800
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.13.1
-Cc: shawn.lin@rock-chips.com, linux-pm@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, ulf.hansson@linaro.org, heiko@sntech.de
-Subject: Re: [PATCH 1/2] pmdomain/rockchip: skip QoS operations for idle-only
- domains
-To: Daniel Bozeman <daniel@orb.net>
-References: <20260331180223.1682283-1-daniel@orb.net>
- <5c8732a3-6cc9-5d02-f56b-fc7ba29c7ce0@rock-chips.com>
- <CAG+Ngm+xJCCQMPddZx8AbPEeH3rUrn3GKF575zXpGPJrnELvMw@mail.gmail.com>
+	id 1w7mVJ-0000000DunD-3xoi
+	for linux-rockchip@lists.infradead.org;
+	Wed, 01 Apr 2026 03:44:31 +0000
+Received: from localhost.localdomain (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 39161e4ac;
+	Wed, 1 Apr 2026 11:39:19 +0800 (GMT+08:00)
 From: Shawn Lin <shawn.lin@rock-chips.com>
-In-Reply-To: <CAG+Ngm+xJCCQMPddZx8AbPEeH3rUrn3GKF575zXpGPJrnELvMw@mail.gmail.com>
-X-HM-Tid: 0a9d46f6852f09cckunm2fad582df958e2
+To: Ulf Hansson <ulf.hansson@linaro.org>
+Cc: linux-mmc@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Stable@vger.kernel.org
+Subject: [PATCH] mmc: sdhci-of-dwcmshc: Disable clock before DLL configuration
+Date: Wed,  1 Apr 2026 11:39:02 +0800
+Message-Id: <1775014742-233407-1-git-send-email-shawn.lin@rock-chips.com>
+X-Mailer: git-send-email 2.7.4
+X-HM-Tid: 0a9d471fc9a809cckunm8e6c8db9f9ecc3
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGkNPTVYdT08aHk8YQh5PHUlWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0ofH1YZTEsaSUhMSUtNGEpWFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=ZtfglWvVHDfRtUw1SGTqDQJJHeX/aurreDJr4KQff0OoDgR89JsUrhEFc8FCjs5g8RPp27wEGrwnqmNg0IRiYMUTxB4r9R++FGmn7rUDODjd+KScvBb8+3N5Wgfcz9rBpYzs1gcGfPI5Ia8uZTJTw/AMZD3Tm8Gf5Nt4C2LveZ0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=P9bx0JSQN5urEQ0kGf5GT9ZdgXv8ZZPvBz0eFEf+7pA=;
+	b=dQaI+ftgg1eYWObfz6PRRtDPMhRS58iTrkgwWKukB4yolJqAwd/RKQgiayyTKD8G2ukxfJfDlAsp7zfNDAavmwok8+XvckCKcKNnIzsb8F8roKKhaMJM12pUWmacpyWXYWg6b6OVt3tSLyhghlqk04wpec0mqbwG1FPE+oRtnfY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=6QJPJMz3AqhAVdrPV8Pt/icupjEt5XdhBpOtcqOFyFg=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260331_195926_100868_FD64E549 
-X-CRM114-Status: GOOD (  30.27  )
+X-CRM114-CacheID: sfid-20260331_204430_171072_CBFD1E04 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,96 +65,85 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+MIME-Version: 1.0
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-5ZyoIDIwMjYvMDQvMDEg5pif5pyf5LiJIDEwOjM0LCBEYW5pZWwgQm96ZW1hbiDlhpnpgZM6Cj4g
-VGhlIE5hbm9QaSBaZXJvMiAoUkszNTI4KSBrZXJuZWwgcGFuaWNzIGR1cmluZyBib290IHdoZW4g
-YQo+IEdQSU8tY29udHJvbGxlZCBVU0IgVkJVUyByZWd1bGF0b3IgaXMgZGVmaW5lZCBvbiBHUElP
-NCAod2hpY2gKPiBpcyBpbiBQRF9SS1ZFTkMpLiBUaGUgZ29hbCBvZiB0aGlzIHNlcmllcyBpcyB0
-byBtYWtlIFVTQiBob3N0Cj4gcG93ZXIgd29yayBvbiBib2FyZHMgdGhhdCB1c2UgR1BJTzQgZm9y
-IHJlZ3VsYXRvciBjb250cm9sLgo+IAo+IFRoZSByb290IGNhdXNlIGlzIGEgcHJvYmUgb3JkZXJp
-bmcgaXNzdWUuIE9uIFJLMzUyOCwgdGhlIHBvd2VyCj4gZG9tYWluIGNvbnRyb2xsZXIncyBmaXJz
-dCBwcm9iZSBhdHRlbXB0IGZhaWxzIGJlY2F1c2UgUERfR1BVJ3MKPiBjbG9jayBsb29rdXAgcmV0
-dXJucyAtRVBST0JFX0RFRkVSIChDUlUgaGFzbid0IHByb2JlZCB5ZXQpLgo+IFRoZSBkcml2ZXIg
-dGhlbiB0ZWFycyBkb3duIGFsbCBkb21haW5zLCBpbmNsdWRpbmcgUERfUktWRU5DCj4gd2hpY2gg
-d291bGQgaGF2ZSByZWdpc3RlcmVkIHN1Y2Nlc3NmdWxseSAoaXQgaGFzIG5vIGNsb2NrCj4gcmVx
-dWlyZW1lbnRzKS4gRHVyaW5nIHRoaXMgd2luZG93LCB0aGUgVVNCIHJlZ3VsYXRvciBkcml2ZXIK
-PiBwcm9iZXMgYW5kIHJlcXVlc3RzIEdQSU80LCB3aGljaCBpcyBpbiB0aGUgbm93LXVucmVnaXN0
-ZXJlZAo+IFBEX1JLVkVOQy4gVGhpcyB0cmlnZ2VycyBhIHN5bmNocm9ub3VzIGV4dGVybmFsIGFi
-b3J0Lgo+IAo+IFdpdGggcGF0Y2ggMiBhbG9uZSAoc2tpcHBpbmcgZGVmZXJyZWQgZG9tYWlucyks
-IHRoZSBpZGxlLW9ubHkKPiBkb21haW5zIHJlZ2lzdGVyIHN1Y2Nlc3NmdWxseS4gQnV0IHRoZSBn
-ZW5wZCBmcmFtZXdvcmsgdGhlbgo+IGF0dGVtcHRzIHRvIHBvd2VyIHRoZW0gb2ZmIHZpYSBnZW5w
-ZF9wb3dlcl9vZmZfd29ya19mbi4gVGhpcwo+IGNhbGxzIHJvY2tjaGlwX3BkX3Bvd2VyKCksIHdo
-aWNoIGRvZXMgUW9TIHNhdmUgYW5kIGlkbGUKPiByZXF1ZXN0cyBvbiBkb21haW5zIHdpdGggcHdy
-X21hc2sgPT0gMCB0aGF0IGNhbm5vdCBhY3R1YWxseQo+IGJlIHBvd2VyZWQgb2ZmLgo+IAo+IFRv
-IHlvdXIgcXVlc3Rpb24gYWJvdXQgd2h5IFFvUyByZWdpc3RlcnMgYmVjb21lIGluYWNjZXNzaWJs
-ZQo+IG9uIGlkbGUtb25seSBkb21haW5zOiBJIGhhdmUgbm90IHJvb3QtY2F1c2VkIHRoYXQgc3Bl
-Y2lmaWNhbGx5Lgo+IFdoYXQgSSBjYW4gY29uZmlybSBpcyB0aGUgY3Jhc2ggdHJhY2UgYmVsb3cs
-IHdoaWNoIG9jY3VycyB3aGVuCj4gcGF0Y2ggMiBpcyBhcHBsaWVkIHdpdGhvdXQgcGF0Y2ggMS4g
-VGhlIGFib3J0IGhhcHBlbnMgZHVyaW5nCgoKVGhpcyBzb3VuZHMgbGlrZSBhIHBhcmVudC1jaGls
-ZCBkZXBlbmRlbmN5IHdoaWNoIGhhc24ndCBiZWVuIHNvcnRlZApvdXQuIE15IGFub3RoZXIgcXVl
-c3Rpb24gd2lsbCBiZTogd2l0aCBwYXRjaCAxIGFwcGxpZWQsIGhvdyB0byBzYXZlLQpyZXN0b3Jl
-IHFvcyByZWdpc3RlcnMgZHVyaW5nIG5vcm1hbCBTMlIgdXNhZ2U/Cgo+IHJvY2tjaGlwX3BtdV9z
-ZXRfaWRsZV9yZXF1ZXN0IG9uIGFuIGlkbGUtb25seSBkb21haW46Cj4gCj4gIMKgIEludGVybmFs
-IGVycm9yOiBzeW5jaHJvbm91cyBleHRlcm5hbCBhYm9ydDogMDAwMDAwMDA5NjAwMDAxMAo+ICDC
-oCBDUFU6IDIgUElEOiA2MCBDb21tOiBrd29ya2VyLzI6Mwo+ICDCoCBXb3JrcXVldWU6IHBtIGdl
-bnBkX3Bvd2VyX29mZl93b3JrX2ZuCj4gIMKgIHBjIDogcmVnbWFwX21taW9fcmVhZDMybGUrMHg4
-LzB4MjAKPiAgwqAgbHIgOiByZWdtYXBfbW1pb19yZWFkKzB4NDQvMHg3MAo+ICDCoCBDYWxsIHRy
-YWNlOgo+ICDCoCDCoHJlZ21hcF9tbWlvX3JlYWQzMmxlKzB4OC8weDIwCj4gIMKgIMKgX3JlZ21h
-cF9idXNfcmVnX3JlYWQrMHg2Yy8weGFjCj4gIMKgIMKgX3JlZ21hcF9yZWFkKzB4NjAvMHhkOAo+
-ICDCoCDCoHJlZ21hcF9yZWFkKzB4NGMvMHg3Ywo+ICDCoCDCoHJvY2tjaGlwX3BtdV9zZXRfaWRs
-ZV9yZXF1ZXN0LmlzcmEuMCsweDk0LzB4MWI0Cj4gIMKgIMKgcm9ja2NoaXBfcGRfcG93ZXIrMHgz
-N2MvMHg2MDgKPiAgwqAgwqByb2NrY2hpcF9wZF9wb3dlcl9vZmYrMHgxNC8weDM4Cj4gIMKgIMKg
-Z2VucGRfcG93ZXJfb2ZmLmlzcmEuMCsweDFmMC8weDJmMAo+ICDCoCDCoGdlbnBkX3Bvd2VyX29m
-Zl93b3JrX2ZuKzB4MzQvMHg1NAo+IAo+IFRoZSB0d28gcGF0Y2hlcyB3b3JrIHRvZ2V0aGVyOiBw
-YXRjaCAxIHByZXZlbnRzIFFvUyBhY2Nlc3MKPiBvbiBpZGxlLW9ubHkgZG9tYWlucywgYW5kIHBh
-dGNoIDIgcHJldmVudHMgdGhlIGZ1bGwgcHJvYmUKPiB0ZWFyZG93biB3aGVuIGEgc2luZ2xlIGRv
-bWFpbiBkZWZlcnMuCj4gCj4gVGVzdGVkIG9uIE5hbm9QaSBaZXJvMiAoZml4ZXMgcGFuaWMpIGFu
-ZCBSYWR4YSBFMjBDIChubwo+IHJlZ3Jlc3Npb24pLgo+IAo+IE9uIFR1ZSwgTWFyIDMxLCAyMDI2
-IGF0IDY6MTfigK9QTSBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbSAKPiA8bWFp
-bHRvOnNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4+IHdyb3RlOgo+IAo+ICAgICBIaSBEYW5pZWws
-Cj4gCj4gICAgIOWcqCAyMDI2LzA0LzAxIOaYn+acn+S4iSAyOjAyLCBEYW5pZWwgQm96ZW1hbiDl
-hpnpgZM6Cj4gICAgICA+IElkbGUtb25seSBwb3dlciBkb21haW5zIChwd3JfbWFzayA9PSAwKSBj
-YW5ub3QgYWN0dWFsbHkgYmUgcG93ZXJlZAo+ICAgICAgPiBvbiBvciBvZmYuIHJvY2tjaGlwX2Rv
-X3BtdV9zZXRfcG93ZXJfZG9tYWluKCkgYWxyZWFkeSByZXR1cm5zIGVhcmx5Cj4gICAgICA+IGZv
-ciB0aGVzZSBkb21haW5zLCBidXQgcm9ja2NoaXBfcGRfcG93ZXIoKSBzdGlsbCBhdHRlbXB0cyBR
-b1Mgc2F2ZQo+ICAgICAgPiBhbmQgaWRsZSByZXF1ZXN0cyBiZWZvcmUgcmVhY2hpbmcgdGhhdCBj
-aGVjay4KPiAgICAgID4KPiAgICAgID4gT24gUkszNTI4LCB0aGUgaWRsZS1vbmx5IGRvbWFpbnMg
-KFBEX1JLVkVOQywgUERfVk8sIFBEX1ZQVSkgaGF2ZQo+ICAgICAgPiBRb1MgcmVnaXN0ZXJzIHRo
-YXQgbWF5IGJlIGluYWNjZXNzaWJsZSB3aGVuIHRoZSBnZW5lcmljIHBvd2VyIGRvbWFpbgo+ICAg
-ICAgPiBmcmFtZXdvcmsgYXR0ZW1wdHMgdG8gcG93ZXIgdGhlbSBvZmYsIGxlYWRpbmcgdG8gc3lu
-Y2hyb25vdXMgZXh0ZXJuYWwKPiAgICAgID4gYWJvcnRzLgo+ICAgICAgPgo+IAo+ICAgICBJcyBp
-dCB0aGUgcmVhbCBhYm9ydCBoYXBwZW5lZCBvbiB5b3VyIFJLMzUyOCBib2FyZD8gSSBhbSB0cnlp
-bmcgdG8KPiAgICAgdW5kZXJzdGFuZCB0aGUgcHJvYmxlbSBmaXJzdC4gRXZlbiB3aXRoIGlkbGUt
-b25seSBwb3dlcmRvbWFpbiwgdGhlIGNvZGUKPiAgICAgYWxzbyBzYXZlIHRoZSBRb1MgcmVnaXN0
-ZXJzIGJlZm9yZSBzZXQgaWRsZSB0byB0aGUgcG93ZXJkb21haW4sIHNvCj4gICAgIGhvdyB0aGUg
-UW9TIHJlZ2lzdGVycyBiZWNvbWUgaW5hY2Nlc3NpYmxlPwo+IAo+ICAgICAgPiBSZXR1cm4gZWFy
-bHkgZnJvbSByb2NrY2hpcF9wZF9wb3dlcigpIHdoZW4gcHdyX21hc2sgaXMgemVybywgbWF0Y2hp
-bmcKPiAgICAgID4gdGhlIGV4aXN0aW5nIGd1YXJkIGluIHJvY2tjaGlwX2RvX3BtdV9zZXRfcG93
-ZXJfZG9tYWluKCkuCj4gICAgICA+Cj4gICAgICA+IEZpeGVzOiAxZmU3NjdhNTZjMzIgKCJzb2M6
-IHJvY2tjaGlwOiBwb3dlci1kb21haW46IGFsbG93IGRvbWFpbnMKPiAgICAgb25seSBoYW5kbGlu
-ZyBpZGxlIHJlcXVlc3RzIikKPiAgICAgID4gU2lnbmVkLW9mZi1ieTogRGFuaWVsIEJvemVtYW4g
-PGRhbmllbEBvcmIubmV0Cj4gICAgIDxtYWlsdG86ZGFuaWVsQG9yYi5uZXQ+Pgo+ICAgICAgPiAt
-LS0KPiAgICAgID7CoCDCoGRyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9tYWlucy5jIHwg
-MyArKysKPiAgICAgID7CoCDCoDEgZmlsZSBjaGFuZ2VkLCAzIGluc2VydGlvbnMoKykKPiAgICAg
-ID4KPiAgICAgID4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvcG1kb21haW4vcm9ja2NoaXAvcG0tZG9t
-YWlucy5jCj4gICAgIGIvZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKPiAg
-ICAgID4gaW5kZXggNDkwYmJiMWQxZC4uMmVlY2FlMDkyYSAxMDA2NDQKPiAgICAgID4gLS0tIGEv
-ZHJpdmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKPiAgICAgID4gKysrIGIvZHJp
-dmVycy9wbWRvbWFpbi9yb2NrY2hpcC9wbS1kb21haW5zLmMKPiAgICAgID4gQEAgLTY0MCw2ICs2
-NDAsOSBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX3BkX3Bvd2VyKHN0cnVjdAo+ICAgICByb2NrY2hp
-cF9wbV9kb21haW4gKnBkLCBib29sIHBvd2VyX29uKQo+ICAgICAgPsKgIMKgIMKgIMKgaWYgKHJv
-Y2tjaGlwX3BtdV9kb21haW5faXNfb24ocGQpID09IHBvd2VyX29uKQo+ICAgICAgPsKgIMKgIMKg
-IMKgIMKgIMKgIMKgIMKgcmV0dXJuIDA7Cj4gICAgICA+Cj4gICAgICA+ICvCoCDCoCDCoGlmIChw
-ZC0+aW5mby0+cHdyX21hc2sgPT0gMCkKPiAgICAgID4gK8KgIMKgIMKgIMKgIMKgIMKgIMKgcmV0
-dXJuIDA7Cj4gICAgICA+ICsKPiAgICAgID7CoCDCoCDCoCDCoHJldCA9IGNsa19idWxrX2VuYWJs
-ZShwZC0+bnVtX2Nsa3MsIHBkLT5jbGtzKTsKPiAgICAgID7CoCDCoCDCoCDCoGlmIChyZXQgPCAw
-KSB7Cj4gICAgICA+wqAgwqAgwqAgwqAgwqAgwqAgwqAgwqBkZXZfZXJyKHBtdS0+ZGV2LCAiZmFp
-bGVkIHRvIGVuYWJsZSBjbG9ja3NcbiIpOwo+ICAgICAgPgo+ICAgICAgPiBiYXNlLWNvbW1pdDog
-YmMzMzA2OTk4MDFkM2I0Zjk5MTEwMzY1NTEyY2FlZDVhZGNmYWNhMwo+IAoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+According to the ASIC design recommendations, the clock must be
+disabled before operating the DLL to prevent glitches that could
+affect the internal digital logic. In extreme cases, failing to
+do so may cause the controller to malfunction completely.
+
+Adds a step to disable the clock before DLL configuration and
+re-enables it at the end.
+
+Fixes: 08f3dff799d4 ("mmc: sdhci-of-dwcmshc: add rockchip platform support")
+Cc: <Stable@vger.kernel.org>
+Signed-off-by: Shawn Lin <shawn.lin@rock-chips.com>
+---
+This is bascially a code sync with the downstream vendor kernel which was been
+done this way and tested for some years to confirm it could fix the issues in
+all corner cases.
+
+ drivers/mmc/host/sdhci-of-dwcmshc.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci-of-dwcmshc.c b/drivers/mmc/host/sdhci-of-dwcmshc.c
+index 6139516..e3ae334 100644
+--- a/drivers/mmc/host/sdhci-of-dwcmshc.c
++++ b/drivers/mmc/host/sdhci-of-dwcmshc.c
+@@ -783,12 +783,15 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 	extra |= BIT(4);
+ 	sdhci_writel(host, extra, reg);
+ 
++	/* Disable clock while config DLL */
++	sdhci_writew(host, 0, SDHCI_CLOCK_CONTROL);
++
+ 	if (clock <= 52000000) {
+ 		if (host->mmc->ios.timing == MMC_TIMING_MMC_HS200 ||
+ 		    host->mmc->ios.timing == MMC_TIMING_MMC_HS400) {
+ 			dev_err(mmc_dev(host->mmc),
+ 				"Can't reduce the clock below 52MHz in HS200/HS400 mode");
+-			return;
++			goto enable_clk;
+ 		}
+ 
+ 		/*
+@@ -808,7 +811,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 			DLL_STRBIN_DELAY_NUM_SEL |
+ 			DLL_STRBIN_DELAY_NUM_DEFAULT << DLL_STRBIN_DELAY_NUM_OFFSET;
+ 		sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
+-		return;
++		goto enable_clk;
+ 	}
+ 
+ 	/* Reset DLL */
+@@ -835,7 +838,7 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 				 500 * USEC_PER_MSEC);
+ 	if (err) {
+ 		dev_err(mmc_dev(host->mmc), "DLL lock timeout!\n");
+-		return;
++		goto enable_clk;
+ 	}
+ 
+ 	extra = 0x1 << 16 | /* tune clock stop en */
+@@ -868,6 +871,9 @@ static void dwcmshc_rk3568_set_clock(struct sdhci_host *host, unsigned int clock
+ 		DLL_STRBIN_TAPNUM_DEFAULT |
+ 		DLL_STRBIN_TAPNUM_FROM_SW;
+ 	sdhci_writel(host, extra, DWCMSHC_EMMC_DLL_STRBIN);
++
++enable_clk:
++	sdhci_enable_clk(host, 0);
+ }
+ 
+ static void rk35xx_sdhci_reset(struct sdhci_host *host, u8 mask)
+-- 
+2.7.4
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
