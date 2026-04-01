@@ -4,77 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54D3410F6FD7
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 15:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B29910FCAE4
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 21:28:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=et9RdL+lwQYsWSqtl6d6+o84U6HuW3IzmULlE9wqeEw=; b=C1H+FmxVAL8a9S
-	3mRtGxcqQEzGJumsVLn8vLrFg2pvTaVuZrrR3mNvUyHR/E/As2izmDUZMaaL5mu/7N0TybdFZ19Yy
-	1aZoPNT9OqV02uUy8Nq5OcmgEUXNLnvbyHOiccuAU8tJiAyEWD75Li8vLW5SDWagw0kq89uz10p7o
-	ew+CzvKODBqrkowCVUgf1NFb2DPVrRHeZJ/yRc/wje7xbkLuDgCyDxKGWty2Hqr2c3S9voH607f46
-	z/XVJvM1hSV5lN/1REN/+VnmIHVWhdG10jtO9i07ePSVeubAdEK+pSY33CA3I+AhWRqyAibDTH9rK
-	/Mlghoeyj7X9N1tWX7gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Pk8iCWOISCgpKVkxfAV3UhgXBjOL2+hXFrzoM+MkpEQ=; b=EKDdgA0EnXSIL4
+	EEDgD7LN8YXa54hIwlza/HVVeuFYdNyUBlHhOGbj55tDml0+njEtWKkmf63j4Zamkv+zehlsu3gfG
+	afGi803AlVsWhLcertkk0oHEsv7p58dqGPOgpWfonfedRLk+86I0+w1fOdwI0zhFpikdLs3PcljqY
+	G3OvDqtNyY1g29MkGisMapP3flF95qtIyJ9v1m9kASt+N6Z+uo5Yfiyt/Ihvc2bpYxV702cmojP10
+	UkCDc8RzAorLKsz3JsRpXgyETCBEZC+FhV2unqJDHAfykjAzysEHU623qZ1mS9h/xxx3I9fZd88ug
+	+fpxJl+5HWWrKoNFnr5g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7xDr-0000000FbMp-3s8D;
-	Wed, 01 Apr 2026 15:11:13 +0000
-Received: from smtp.forwardemail.net ([2001:19f0:ac01:372:5400:5ff:fe53:764a])
+	id 1w836U-0000000G6wL-3jly;
+	Wed, 01 Apr 2026 21:27:58 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7xDn-0000000FbLQ-0ira
-	for linux-rockchip@lists.infradead.org;
-	Wed, 01 Apr 2026 15:11:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1775056264;
- bh=OuuOxL55HdAFY06SfOG3LOC3qubiad/RGrqlyB0hkLI=;
- b=bvWrP9hmJtuh9ZRUxuGhSqhqkC0Ycv2Dx1vR7kP2GVGD7wv8fgk4iVpDe4OOmpCeh3x0U3n39
- 1CsAGqTH6KrYyHEeioy9bv2IplG6mii071BLGQKVX3mj0ZHA6cNcjbJ+fF5dzZ7bYMM/P0RW07A
- XtekFj9BkI578/P6U+3/phLU8f/0ced7FGAeJ3aPpJDkUVFDS2DTUupnzyY6cCkurldu5Kv60II
- DfxPIRMd5k9q2ysGh8I3xgOyC2Azchs9H3oVEHU+6sogKg1tFCj0mKxJMc6GeHg1OD3YyhKBV0t
- NbRT7lYBRWmOH5OvVqETXj7g5ASXkOyAgW8cfHPTNX0w==
-X-Forward-Email-ID: 69cd2639c44eae2b77aac006
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 2.6.64
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <d7e235c0-425e-4da6-a51e-5efdcac5a5f0@kwiboo.se>
-Date: Wed, 1 Apr 2026 16:05:40 +0200
+	id 1w836O-0000000G6vj-12PX;
+	Wed, 01 Apr 2026 21:27:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=CgQ0riG099Ng810rA77pJLFLouGFW6v9pWnuuSLHYA8=; b=1ZSAu4a8MGgxzMttGWd2CqVwMd
+	8VwEeDUgh9p9DdHxy4k9NgO2VAXOB0faNqM8TSPtxZkEZMXSxOTnRxONOHygabn7Cr/EZN0W4+DhY
+	H/HPaLy78lVS3F9bWYMjg7IW5QD9uFHMXoKU+knwpch+orC7Jn14rhhmW5ff8cGM12aqUqaqzgHja
+	xG6oBLxjZlMbT/O+YqTTd9JvKo0i0Ar2XnAtvtttXlw22HS2u6g39ZMpfZZYtFdhwzTK2h4uuT08C
+	dDnuxnc2ACyI2wa6Naoa9Xf06cuKQQeGDw7moWvdRV0Wlk62sWdZaf4tNenfrcHhx+3mT5ErN7U02
+	MFT9KzwQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip dts64 changes for 7.1 #2
+Date: Wed, 01 Apr 2026 23:27:47 +0200
+Message-ID: <2902697.BEx9A2HvPv@phil>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 2/3] arm64: dts: rockchip: refactor items from Orange
- Pi 5/b to prep for Pro
-To: "dennis@ausil.us" <dennis@ausil.us>
-Cc: FUKAUMI Naoki <naoki@radxa.com>, Hsun Lai <i@chainsx.cn>,
- Chaoyi Chen <chaoyi.chen@rock-chips.com>, John Clark <inindev@gmail.com>,
- Michael Opdenacker <michael.opdenacker@rootcommit.com>,
- Quentin Schulz <quentin.schulz@cherry.de>, Andrew Lunn <andrew@lunn.ch>,
- Chukun Pan <amadeus@jmu.edu.cn>, Alexey Charkov <alchark@gmail.com>,
- Peter Robinson <pbrobinson@gmail.com>,
- Michael Riesch <michael.riesch@collabora.com>,
- Mykola Kvach <xakep.amatop@gmail.com>, Jimmy Hon <honyuenkwun@gmail.com>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-References: <20260401010707.2584962-1-dennis@ausil.us>
- <20260401010707.2584962-3-dennis@ausil.us>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260401010707.2584962-3-dennis@ausil.us>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_081109_868352_9CB4C9BE 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20260401_142752_332844_804FD9A8 
+X-CRM114-Status: GOOD (  13.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,40 +57,74 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Dennis,
-
-On 4/1/2026 3:07 AM, dennis@ausil.us wrote:
-> From: Dennis Gilmore <dennis@ausil.us>
-> 
-> The Orange Pi 5 Pro uses the same SoC and base as the Orange Pi 5 and
-> Orange Pi 5B but has had sound, USB, and leds wired up differently. The
-> boards also use gmac for ethernet where thre Pro has a PCIe attached NIC
-> 
-> Signed-off-by: Dennis Gilmore <dennis@ausil.us>
-> ---
->  .../boot/dts/rockchip/rk3588s-orangepi-5.dts  | 184 ++++++++++++++++
->  .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi | 202 ++----------------
->  .../boot/dts/rockchip/rk3588s-orangepi-5b.dts | 181 ++++++++++++++++
->  3 files changed, 378 insertions(+), 189 deletions(-)
-
-This patch seem to reintroduce a lot of duplication for the 5 and 5b
-.dts-files. Please reduce the added duplication caused by this patch.
-
-Maybe it is better to create a rk3588s-orangepi-5-base.dtsi or similar
-where everything that is shared for all three boards is moved. Or the 5
-an 5b specific parts are moved into a rk3588s-orangepi-5-5b.dtsi or
-similar. Then the change in 5 and 5b board .dts-files are kept to a
-minimum.
-
-Regards,
-Jonas
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgc29jIG1haW50YWluZXJzLAoKcGxlYXNlIGZpbmQgYmVsb3cgc29tZSBtb3JlIFJvY2tjaGlw
+IERUIGNoYW5nZXMgZm9yIHRoZSBtZXJnZS13aW5kb3cKZm9yIDcuMSAuCgpUaGlzIHRpbWUgdGhl
+eSBoYXZlIGFsc28gbWFyaW5hdGVkIGxvbmdlciBpbiBuZXh0IHdpdGhvdXQgY29tcGxhaW50cy4K
+CgpQbGVhc2UgcHVsbC4KVGhhbmtzCkhlaWtvCgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNl
+IGNvbW1pdCBkNzc4N2E3N2NmOGIxMjkzMDRmNTkwMjMzMDMyNTU2ZGVjMTBkZmM2OgoKICBhcm02
+NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIHZpY2FwIGR2cCBvbiB3b2xmdmlzaW9uIHBmNSBpbyBl
+eHBhbmRlciAoMjAyNi0wMy0xMyAyMTozOTozNCArMDEwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhl
+IEdpdCByZXBvc2l0b3J5IGF0OgoKICBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGlu
+dXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2NrY2hpcC5naXQgdGFncy92Ny4xLXJvY2tjaGlw
+LWR0czY0LTIKCmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byA2Y2I0ZWM2M2JhOWE1ODMx
+NjIxY2Y5NTFiN2FmNTVjNjdiZWViOTdiOgoKICBhcm02NDogZHRzOiByb2NrY2hpcDogY29uZmln
+dXJlIGhkbWlyeCBpbiBSb2NrIDUgSVRYICgyMDI2LTAzLTI2IDAwOjM0OjU0ICswMTAwKQoKLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLQpOZXcgYm9hcmQsIHRoZSBLaGFkYXMgRWRnZSAyTC4gTmV3bHkgYWRkZWQgcGVyaXBoZXJh
+bHMgYXJlIHRoZQpPVFAgbnZtZW0gY29udHJvbGxlcnMgZm9yIFJLMzUyOCwgUkszNTYyIGFuZCBS
+SzM1NjYvOCwgU1BESUYgb24gUkszNTc2LgpUaGUgUkszNTY2LzggU29DcyBub3cgYWxzbyBjb250
+cm9sIHRoZSBQaXBlLWNsb2NrcyBvbiB0aGVpciBQQ0llCmNvbnRyb2xsZXJzIGFuZCBVRlNIQyBj
+b250cm9sbGVyIG9uIFJLMzU3NiBnb3QgYW4gYWRkaXRpb25hbCByZXNldCBsaW5lLgoKQXBhcnQg
+ZnJvbSB0aGF0IGFyZSBvZiBjb3Vyc2UgaW5kaXZpZHVhbCBib2FyZCBjaGFuZ2VzIGFuZCBmaXhl
+cyBmb3IKb2xkZXIgaXNzdWVzIHRoYXQgYXJlIG5vdCBzcGVjaWZpYyB0byB0aGUgY3VycmVudCBk
+ZXZlbG9wbWVudCBjeWNsZS4KCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KQW5hbmQgTW9vbiAoMSk6CiAgICAgIGFybTY0OiBk
+dHM6IHJvY2tjaGlwOiBFbmFibGUgUENJZSBDTEtSRVEjIGZvciBSSzM1ODggb24gUm9jayA1Yi01
+YnAtNXQgc2VyaWVzCgpDaHJpcyBNb3JnYW4gKDIpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hp
+cDogQ29ycmVjdCBGYW4gU3VwcGx5IGZvciBHYW1lZm9yY2UgQWNlCiAgICAgIGFybTY0OiBkdHM6
+IHJvY2tjaGlwOiBDb3JyZWN0IEpveXN0aWNrIEF4ZXMgb24gR2FtZWZvcmNlIEFjZQoKRGF2aWQg
+SGVpZGVsYmVyZyAoMSk6CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhc3NpZ24gcGlwZSBj
+bG9jayB0byByazM1NnggUENJZSBsYW5lcwoKR3JheSBIdWFuZyAoMik6CiAgICAgIGR0LWJpbmRp
+bmdzOiBhcm06IHJvY2tjaGlwOiBBZGQgS2hhZGFzIEVkZ2UgMkwgYm9hcmQKICAgICAgYXJtNjQ6
+IGR0czogcm9ja2NoaXA6IEFkZCBLaGFkYXMgRWRnZSAyTCBib2FyZAoKSGVpa28gU3R1ZWJuZXIg
+KDIpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogRW5hYmxlIE9UUCBjb250cm9sbGVyIGZv
+ciBSSzM1NjIKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEVuYWJsZSBPVFAgY29udHJvbGxl
+ciBmb3IgUkszNTZ4CgpKb25hcyBLYXJsbWFuICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2No
+aXA6IEVuYWJsZSBPVFAgY29udHJvbGxlciBmb3IgUkszNTI4CgpNaW5nIFdhbmcgKDEpOgogICAg
+ICBhcm02NDogZHRzOiByb2NrY2hpcDogRml4IEJsdWV0b290aCBzdGFiaWxpdHkgb24gTENLRkIg
+VGFpU2hhbiBQaQoKUGVkcm8gQWx2ZXMgKDEpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDog
+Y29uZmlndXJlIGhkbWlyeCBpbiBSb2NrIDUgSVRYCgpSb2JpbiBNdXJwaHkgKDEpOgogICAgICBS
+ZXZlcnQgImFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgU1BESUYgYXVkaW8gdG8gQmVlbGluayBB
+MSIKClNlYmFzdGlhbiBSZWljaGVsICgyKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFk
+ZCBTUERJRiBub2RlcyB0byBSSzM1NzYgZGV2aWNlIHRyZWUKICAgICAgYXJtNjQ6IGR0czogcm9j
+a2NoaXA6IGFkZCBTRC9lTU1DIGFsaWFzZXMgZm9yIEFybVNvbSBTaWdlNQoKU2hhd24gTGluICgx
+KToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBtcGh5IHJlc2V0IHRvIHVmc2hjIG5v
+ZGUKCuiwouiHtOmCpiAoWElFIFpoaWJhbmcpICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2No
+aXA6IEZpeCBSSzM1NjIgRVZCMiBtb2RlbCBuYW1lCgogLi4uL2RldmljZXRyZWUvYmluZGluZ3Mv
+YXJtL3JvY2tjaGlwLnlhbWwgICAgICAgICAgfCAgNSArKwogYXJjaC9hcm02NC9ib290L2R0cy9y
+b2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgfCAgMSArCiBhcmNoL2FybTY0L2Jvb3QvZHRz
+L3JvY2tjaGlwL3JrMzMyOC1hMS5kdHMgICAgICAgICB8IDIzIC0tLS0tLQogYXJjaC9hcm02NC9i
+b290L2R0cy9yb2NrY2hpcC9yazM1MjguZHRzaSAgICAgICAgICAgfCA0NyArKysrKysrKysrKysK
+IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTYyLWV2YjItdjEwLmR0cyAgIHwgIDIg
+Ky0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTYyLmR0c2kgICAgICAgICAgIHwg
+NDYgKysrKysrKysrKysrCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1sY2tm
+Yi10c3BpLmR0cyB8ICA0ICstCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC5k
+dHNpICAgICAgICAgICB8IDEyICsrLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
+NngtYmFzZS5kdHNpICAgICAgfCA1MiArKysrKysrKysrKystCiAuLi4vYm9vdC9kdHMvcm9ja2No
+aXAvcmszNTc2LWFybXNvbS1zaWdlNS5kdHMgICAgICB8ICAyICsKIC4uLi9ib290L2R0cy9yb2Nr
+Y2hpcC9yazM1NzYta2hhZGFzLWVkZ2UtMmwuZHRzICAgIHwgMzQgKysrKysrKysrCiBhcmNoL2Fy
+bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpICAgICAgICAgICB8IDg3ICsrKysrKysr
+KysrKysrKysrKysrKy0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2st
+NS1pdHguZHRzIHwgMTIgKysrCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIt
+NWJwLTV0LmR0c2kgICB8ICA2ICstCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1nYW1l
+Zm9yY2UtYWNlLmR0cyAgICB8IDEyICstLQogMTUgZmlsZXMgY2hhbmdlZCwgMzAzIGluc2VydGlv
+bnMoKyksIDQyIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9v
+dC9kdHMvcm9ja2NoaXAvcmszNTc2LWtoYWRhcy1lZGdlLTJsLmR0cwoKCgoKX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
+ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
+ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
