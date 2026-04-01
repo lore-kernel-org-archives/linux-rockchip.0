@@ -4,68 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C303D35177
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 11:56:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A4F5D35145
+	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 13:16:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fvwY4R0A6nfsYZ0k//S8gJtdbbgYRVdNLy7dM+1qdrk=; b=19wjCCr5uXCHeq
-	JC6AM1I5zW/LGE77HfnZkOD4wKULZC0RQwxF0MW0Qxt1qrmNIFNm/D+OU+VFBJJzUMZJ5v+DZnQB/
-	us8IpcSmkrazwWDqEVR8jZquYN/1M2KrO6chCs9NpQoYgQTcTbwtzQbYW4k0wAf+epGhWS3Lxr1wp
-	cZxMJuda+TbYtkNjhs1qdZmmGOynjSDHf3sZmoc+IufaAnJQelrhv7HjdiUIwCK2L4mZmUBfgzRlk
-	jzOaaO+Shh6JjZAEVFnK67a/ZD8CpkEyqw9Hc/DPlqoZCedAFQagr8igwYX8ouN0og5XAZZz/kJea
-	CWcRzLCsWC7b9s9niy+A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wxXgE4WI86bBroQ0sYmS2tExInb2r7E9+JVFAs16Vwo=; b=2cNP+BMw8+BVXA
+	uAqcIGHTRWWDplpkwk/Helgc9/MkotuQMNsKl9vp9irHKY9l6EZKL33YJM2NrLbNMB0q/ELr7414R
+	lrKLXu3N6v5xpYyF0wJzwvPbn54vHteis/O17Wt1EC7RlqC/6yzuJCwyPzhuKpNFiyTzg90hSBC6P
+	1f+xPeIPkUk4WrZItpZlf8PlQOqk0iGShA+aAbh497Y0TM0um6nBcJzY8/d3hIzhQ944WOa9S5uhc
+	Z5DS/xkkV2+47jceGzuoSQVuQH2GeSWZt9DTPnCQAeqHuQbSMPAnk6qVqzaQVhkEVTw2eTkbZTgQl
+	dnLlBgZWH6rCEFct9KgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7uBM-0000000Elf2-0C0A;
-	Wed, 01 Apr 2026 11:56:24 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1w7vRD-0000000FHyR-3qte;
+	Wed, 01 Apr 2026 13:16:51 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w7uBJ-0000000Eldz-1Ye3;
-	Wed, 01 Apr 2026 11:56:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=+D4hABqFUbRdNjSEQsn4jZKGmlNzjCBJR8Je8rUoK/s=; b=P4ewEt+B/LuJEBDQdIFgnvUp5Y
-	mCzEP9fzaPhVq0sBxjX70mUg02178W/mtNVjmKakPfdjvyiTUaAayYy9tzFXldc+Znodf6maAK4U2
-	Zf2sHpvKSJE5UqqE5rW5r9tsF/aTMOVHq5RS9t2jqDLKkfxgEEdwbdLyxXpmEo6HbgPw=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1w7uB3-00ELUx-GG; Wed, 01 Apr 2026 13:56:05 +0200
-Date: Wed, 1 Apr 2026 13:56:05 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: dennis@ausil.us
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1w7vRC-0000000FHxU-1s4T
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 01 Apr 2026 13:16:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=hA1ON1KrKFmuynktbmS/7CrrbUp1WQrtm6ccdkoVF2w=; b=b9SaJTizIPY31I8vJIRKOb3D66
+	QTWh39Y/Ns65VSMklBQLvcDDuhv8dnlljjR9VONrVO5/73gonqJhyPXIhdL4hTrdQk4KaCnEbVwwS
+	NSQ1Ow4fIwHthhzpjLRVcao7CcZ02WETLmBzen5LyvgcQcfF5kNM8tHabGylGI9XWvlAMrb+ZGyMR
+	p7ekSF+SH5XjVxpZPSfqKNqHsofFfUaqywhZsrsXsEVGZjFxnqgw4obBF9SgH6sQ8YUg00S1Iewj4
+	2DgKxBFl6uqjXS6N/w/iRGgSpnTsguRDgg+sHKqZsrEAR7IAM3WO42nqCSuhZDg1qLwPJ9a3s5i1J
+	XnMHEvEQ==;
+Received: from out-187.mta1.migadu.com ([95.215.58.187])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1w7vR9-00000000R9S-1JP1
+	for linux-rockchip@lists.infradead.org;
+	Wed, 01 Apr 2026 13:16:49 +0000
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1775049383;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=hA1ON1KrKFmuynktbmS/7CrrbUp1WQrtm6ccdkoVF2w=;
+	b=Q9CwM/oXd6o2d1UrsrE7d/ftoEoJyQ4aMNUcnz7xLhhBfmtcDo2DN/htknOV8YYkKqhPpf
+	Q3o4cAzlep6DIyDGiAq/ccNM8wcr75OpxVzsOYNOC4Z3q33eB1nqngcl2rROIJlEkXn1gs
+	ZCXBNL5ByXU5FvhbQ8/8iXmiJhSDJxvTFCxTXOgCtSg06Z6t6OGMbPdP8Ovzov4sJLc73b
+	82luSB3MmQK5mJQJD0ObpGfWASDAYM3/aHFBg0I09K3tsNMJ0K33Ez8v5Os2RypNDBMj0G
+	x0KScUtfaBYy6Liio8bs14Ie5Z9prC7aFxXn7iLXA1NNM5O5Qm51Dbh2i1fQQg==
+From: Diederik de Haas <diederik@cknow-tech.com>
+To: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, FUKAUMI Naoki <naoki@radxa.com>,
-	Hsun Lai <i@chainsx.cn>, Jonas Karlman <jonas@kwiboo.se>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	John Clark <inindev@gmail.com>,
-	Michael Opdenacker <michael.opdenacker@rootcommit.com>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Chukun Pan <amadeus@jmu.edu.cn>, Alexey Charkov <alchark@gmail.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Mykola Kvach <xakep.amatop@gmail.com>,
-	Jimmy Hon <honyuenkwun@gmail.com>, devicetree@vger.kernel.org,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Diederik de Haas <diederik@cknow-tech.com>,
+	Arnd Bergmann <arnd@arndb.de>,
+	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 3/3] arm64: dts: rockchip: Add Orange Pi 5 Pro board
- support
-Message-ID: <7c4791e9-6621-4afb-a166-55211b18fb08@lunn.ch>
-References: <20260401010707.2584962-1-dennis@ausil.us>
- <20260401010707.2584962-4-dennis@ausil.us>
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 0/2] Improve gmac0 DT config for NanoPi R5S
+Date: Wed,  1 Apr 2026 15:11:37 +0200
+Message-ID: <20260401131551.734456-1-diederik@cknow-tech.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260401010707.2584962-4-dennis@ausil.us>
+X-Migadu-Flow: FLOW_OUT
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_045621_430059_1A18C383 
-X-CRM114-Status: GOOD (  10.49  )
+X-CRM114-CacheID: sfid-20260401_141647_797340_79224E45 
+X-CRM114-Status: UNSURE (   5.49  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,24 +90,20 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Mar 31, 2026 at 08:07:07PM -0500, dennis@ausil.us wrote:
-> From: Dennis Gilmore <dennis@ausil.us>
-> 
-> Add device tree for the Xunlong Orange Pi 5 Pro (RK3588S).
-> 
-> - eMMC module, you can optionally solder a SPI NOR in place and turn
->  off the eMMC
-> - PCIe-attached NIC (pcie2x1l1)
-> - PCIe NVMe slot (pcie2x1l2)
-> - AP6256 WiFi (BCM43456) via SDIO with mmc-pwrseq
-> - BCM4345C5 Bluetooth
-> - es8388 audio
-> - USB 2.0 and USB 3.0
+These 2 patches contain a fix for an incorrect pinctlr definition and
+replaces several deprecated snps,reset* properties with their
+non-deprecated replacements.
 
-You said in patch 0/X that the Ethernet driver had just been
-accepted. So i was expecting a node for it here?
+Diederik de Haas (2):
+  arm64: dts: rockchip: Fix gmac0 reset pin for NanoPi R5S
+  arm64: dts: rockchip: Replace deprecated snps,* props for NanoPi R5S
 
-	  Andrew
+ arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 13 ++++++-------
+ 1 file changed, 6 insertions(+), 7 deletions(-)
+
+-- 
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
