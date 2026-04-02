@@ -4,48 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B29910FCAE4
-	for <linux-rockchip@archiver.kernel.org>; Wed,  1 Apr 2026 21:28:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5776ECC6B00
+	for <linux-rockchip@archiver.kernel.org>; Thu,  2 Apr 2026 05:56:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=Pk8iCWOISCgpKVkxfAV3UhgXBjOL2+hXFrzoM+MkpEQ=; b=EKDdgA0EnXSIL4
-	EEDgD7LN8YXa54hIwlza/HVVeuFYdNyUBlHhOGbj55tDml0+njEtWKkmf63j4Zamkv+zehlsu3gfG
-	afGi803AlVsWhLcertkk0oHEsv7p58dqGPOgpWfonfedRLk+86I0+w1fOdwI0zhFpikdLs3PcljqY
-	G3OvDqtNyY1g29MkGisMapP3flF95qtIyJ9v1m9kASt+N6Z+uo5Yfiyt/Ihvc2bpYxV702cmojP10
-	UkCDc8RzAorLKsz3JsRpXgyETCBEZC+FhV2unqJDHAfykjAzysEHU623qZ1mS9h/xxx3I9fZd88ug
-	+fpxJl+5HWWrKoNFnr5g==;
+	List-Owner; bh=k5wsHHPhHnrgfOTzovshO6ExllWG1C/nPF7JgVY7dXk=; b=bBm5p0qAhIp+R/
+	Vn3+etYp0ithNZiBIGGtajaI1p1Ehuc0COH23xnnpOiA1oq3b5ho2P5azxzreSssX5VJFnWXMc8o1
+	Ljf1LIdAEF2Vtvw34Gq1I27uMVsYqrDApFM617reYqGl3IRp0gYmjNhM0AqmWj/VE7OC8anvLeIgL
+	emIiP/E37jMBvIXDf/xvQyLu8q+3mCq1K9+ujzdfTtLADxskmg0TPzBNokElbB+mojZC6dJl7tvXK
+	pZEYJpRASEwilkLfjEt5/rWIb/8gGyXVdp0pnOtXw2GNsYwObBiw6eL+EuJTwiS0an9rzp1npHDFn
+	T73Cus9yvNeTfRlSY85Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w836U-0000000G6wL-3jly;
-	Wed, 01 Apr 2026 21:27:58 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1w8B2s-0000000GqCf-1JIy;
+	Thu, 02 Apr 2026 05:56:46 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w836O-0000000G6vj-12PX;
-	Wed, 01 Apr 2026 21:27:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=CgQ0riG099Ng810rA77pJLFLouGFW6v9pWnuuSLHYA8=; b=1ZSAu4a8MGgxzMttGWd2CqVwMd
-	8VwEeDUgh9p9DdHxy4k9NgO2VAXOB0faNqM8TSPtxZkEZMXSxOTnRxONOHygabn7Cr/EZN0W4+DhY
-	H/HPaLy78lVS3F9bWYMjg7IW5QD9uFHMXoKU+knwpch+orC7Jn14rhhmW5ff8cGM12aqUqaqzgHja
-	xG6oBLxjZlMbT/O+YqTTd9JvKo0i0Ar2XnAtvtttXlw22HS2u6g39ZMpfZZYtFdhwzTK2h4uuT08C
-	dDnuxnc2ACyI2wa6Naoa9Xf06cuKQQeGDw7moWvdRV0Wlk62sWdZaf4tNenfrcHhx+3mT5ErN7U02
-	MFT9KzwQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 7.1 #2
-Date: Wed, 01 Apr 2026 23:27:47 +0200
-Message-ID: <2902697.BEx9A2HvPv@phil>
+	id 1w8B2p-0000000GqBN-2siH
+	for linux-rockchip@lists.infradead.org;
+	Thu, 02 Apr 2026 05:56:44 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-82cd6614a90so221380b3a.3
+        for <linux-rockchip@lists.infradead.org>; Wed, 01 Apr 2026 22:56:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1775109401; x=1775714201; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=mPa2JorjoSVyHfMjtpIZG1uYQS3gSdgtgYbveNq9dMc=;
+        b=i/ReKXZlQXN9auoARKGAGh27EMWMzBzFeVl/OGKMTqNKAT30+uEMnTdjjlnjI92sAF
+         tyMkzCJqirANNOSX5R2wbjt28MnlGEYmNF3SNKrNoIlF+I0WTFtKdiReojRyJ+bBsCH5
+         I6Or1QfeFQZBgBNHgsU49c3pJVyprsrrQerKzQuS6MYQ1//HYBq+gpMvIj5vm5sHrJif
+         oilnydV3Ozi0WDNHmUp4S+vl9a1/19xZ8JX8os8KOwS8LKqFGr57jZDjB3BTQzSuLa2k
+         XgLeOL+CYZ56jH7ncnCsDpQ7dpZTFepEGmkfcUs6yGCy8ZYXcpqXxvDbyojXXfWPlb+k
+         3wiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775109401; x=1775714201;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=mPa2JorjoSVyHfMjtpIZG1uYQS3gSdgtgYbveNq9dMc=;
+        b=rJUP74Xna8x4juDyS+Uoa7Smg5sTHnrVWVLKaSVtiwdvR9fjHtyp5KIRjpC58tjmSU
+         QD/s+hqFi1yrs3Nzy5lQnY+DKs3R7aCXiO1geXPORpIH1w+ae6SuiKSHFrYkN0zYPFmB
+         vCVENIok3ektnU5nwL77ZIJiut/zpXJiAL7FU6HbTwO3B8EzR241fwCVRFPAxjzM3MGe
+         WkPFRyWE4KrsgjHP74zRz2r2B+UOL8+g9w2sypw/yRt2h7PKxnhIwOHTRmb4gyDXbVEX
+         CuEvEtDrJbhiEwh+6H5wjuj3vpbGQ4Tb/QWUy3u5DPh0lO2DebcofOYvLS3lXZPybwF9
+         F9eA==
+X-Forwarded-Encrypted: i=1; AJvYcCVEikKEkOwJxReTXz7UZxit8nfbXzZsQmxpq519pQXcsQMeSRzoAiujuTHHpgd6Bj91oTuO/LbZnj0ABuM4MA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHlq9rqb+q06kgDuMMTTH707eH7s0UuofLWVVPzxuRyFZEeGjx
+	0m+jlNQWX4zymf6cYhyAE+retgsrIbblNdAaK0m5LicOn9RCVY3+gx+c
+X-Gm-Gg: ATEYQzzAeoVa9mdORKZ5erEnA7Ch6Yw0R+UFXOFEmcwkyVegPWBMZSunPxIqv8jsqOo
+	iXZKjgvQAYZVkCJTn0P2fp+xKtp/ac5f0xnzZOWKSPP8JJJaBVaml2XmtMDcq0VRVCWo5U2NJ9+
+	2FmWAitJphqJWUGWp1C8v0PD/y+hDqUCtf8va68hbgq3rO3/Ceyb0OCms+aS6BWJFkPjoiVh8IZ
+	qF/8fXRULHt0IRG4lma8TZiUJvxEiRytvQIBJuwzPNkb3Oj/PmvhuCMWO7F4cO2LLSOVjk8OoBO
+	QWjt2DR+xL0tQFVJPXTjkJt9a2rs/q+YYzinpk5hNPS3ryDecF4qqcPckAEblk7naXQj+wggQ97
+	pkiggX7VWbDE8XvZZqKx4EIWmxXNaNuFqSm2Ky1zlsmBHKah28suUbW1PLNz8lNc2bWCgy2LWNq
+	OE3MlYxQTsP1xxl2wwTsTYIOdI+HTruOnpIVj2yA==
+X-Received: by 2002:a05:6a00:883:b0:823:3079:7c7 with SMTP id d2e1a72fcca58-82cfb9011ecmr2049074b3a.29.1775109401437;
+        Wed, 01 Apr 2026 22:56:41 -0700 (PDT)
+Received: from localhost ([2401:4900:36c2:bd58:77d1:5e5f:850b:d2c])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-82cf9c41bc6sm1760623b3a.29.2026.04.01.22.56.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Apr 2026 22:56:41 -0700 (PDT)
+From: Anushka Badhe <anushkabadhe@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Anushka Badhe <anushkabadhe@gmail.com>
+Subject: [PATCH] ASoC: dt-bindings: rockchip: Convert rk3399-gru-sound to YAML
+Date: Thu,  2 Apr 2026 11:26:35 +0530
+Message-ID: <20260402055635.8798-1-anushkabadhe@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260401_142752_332844_804FD9A8 
-X-CRM114-Status: GOOD (  13.31  )
+X-CRM114-CacheID: sfid-20260401_225643_751185_0A878C01 
+X-CRM114-Status: GOOD (  16.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,74 +100,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgc29jIG1haW50YWluZXJzLAoKcGxlYXNlIGZpbmQgYmVsb3cgc29tZSBtb3JlIFJvY2tjaGlw
-IERUIGNoYW5nZXMgZm9yIHRoZSBtZXJnZS13aW5kb3cKZm9yIDcuMSAuCgpUaGlzIHRpbWUgdGhl
-eSBoYXZlIGFsc28gbWFyaW5hdGVkIGxvbmdlciBpbiBuZXh0IHdpdGhvdXQgY29tcGxhaW50cy4K
-CgpQbGVhc2UgcHVsbC4KVGhhbmtzCkhlaWtvCgoKVGhlIGZvbGxvd2luZyBjaGFuZ2VzIHNpbmNl
-IGNvbW1pdCBkNzc4N2E3N2NmOGIxMjkzMDRmNTkwMjMzMDMyNTU2ZGVjMTBkZmM2OgoKICBhcm02
-NDogZHRzOiByb2NrY2hpcDogZW5hYmxlIHZpY2FwIGR2cCBvbiB3b2xmdmlzaW9uIHBmNSBpbyBl
-eHBhbmRlciAoMjAyNi0wMy0xMyAyMTozOTozNCArMDEwMCkKCmFyZSBhdmFpbGFibGUgaW4gdGhl
-IEdpdCByZXBvc2l0b3J5IGF0OgoKICBodHRwczovL2dpdC5rZXJuZWwub3JnL3B1Yi9zY20vbGlu
-dXgva2VybmVsL2dpdC9tbWluZC9saW51eC1yb2NrY2hpcC5naXQgdGFncy92Ny4xLXJvY2tjaGlw
-LWR0czY0LTIKCmZvciB5b3UgdG8gZmV0Y2ggY2hhbmdlcyB1cCB0byA2Y2I0ZWM2M2JhOWE1ODMx
-NjIxY2Y5NTFiN2FmNTVjNjdiZWViOTdiOgoKICBhcm02NDogZHRzOiByb2NrY2hpcDogY29uZmln
-dXJlIGhkbWlyeCBpbiBSb2NrIDUgSVRYICgyMDI2LTAzLTI2IDAwOjM0OjU0ICswMTAwKQoKLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLQpOZXcgYm9hcmQsIHRoZSBLaGFkYXMgRWRnZSAyTC4gTmV3bHkgYWRkZWQgcGVyaXBoZXJh
-bHMgYXJlIHRoZQpPVFAgbnZtZW0gY29udHJvbGxlcnMgZm9yIFJLMzUyOCwgUkszNTYyIGFuZCBS
-SzM1NjYvOCwgU1BESUYgb24gUkszNTc2LgpUaGUgUkszNTY2LzggU29DcyBub3cgYWxzbyBjb250
-cm9sIHRoZSBQaXBlLWNsb2NrcyBvbiB0aGVpciBQQ0llCmNvbnRyb2xsZXJzIGFuZCBVRlNIQyBj
-b250cm9sbGVyIG9uIFJLMzU3NiBnb3QgYW4gYWRkaXRpb25hbCByZXNldCBsaW5lLgoKQXBhcnQg
-ZnJvbSB0aGF0IGFyZSBvZiBjb3Vyc2UgaW5kaXZpZHVhbCBib2FyZCBjaGFuZ2VzIGFuZCBmaXhl
-cyBmb3IKb2xkZXIgaXNzdWVzIHRoYXQgYXJlIG5vdCBzcGVjaWZpYyB0byB0aGUgY3VycmVudCBk
-ZXZlbG9wbWVudCBjeWNsZS4KCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KQW5hbmQgTW9vbiAoMSk6CiAgICAgIGFybTY0OiBk
-dHM6IHJvY2tjaGlwOiBFbmFibGUgUENJZSBDTEtSRVEjIGZvciBSSzM1ODggb24gUm9jayA1Yi01
-YnAtNXQgc2VyaWVzCgpDaHJpcyBNb3JnYW4gKDIpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hp
-cDogQ29ycmVjdCBGYW4gU3VwcGx5IGZvciBHYW1lZm9yY2UgQWNlCiAgICAgIGFybTY0OiBkdHM6
-IHJvY2tjaGlwOiBDb3JyZWN0IEpveXN0aWNrIEF4ZXMgb24gR2FtZWZvcmNlIEFjZQoKRGF2aWQg
-SGVpZGVsYmVyZyAoMSk6CiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBhc3NpZ24gcGlwZSBj
-bG9jayB0byByazM1NnggUENJZSBsYW5lcwoKR3JheSBIdWFuZyAoMik6CiAgICAgIGR0LWJpbmRp
-bmdzOiBhcm06IHJvY2tjaGlwOiBBZGQgS2hhZGFzIEVkZ2UgMkwgYm9hcmQKICAgICAgYXJtNjQ6
-IGR0czogcm9ja2NoaXA6IEFkZCBLaGFkYXMgRWRnZSAyTCBib2FyZAoKSGVpa28gU3R1ZWJuZXIg
-KDIpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogRW5hYmxlIE9UUCBjb250cm9sbGVyIGZv
-ciBSSzM1NjIKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEVuYWJsZSBPVFAgY29udHJvbGxl
-ciBmb3IgUkszNTZ4CgpKb25hcyBLYXJsbWFuICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2No
-aXA6IEVuYWJsZSBPVFAgY29udHJvbGxlciBmb3IgUkszNTI4CgpNaW5nIFdhbmcgKDEpOgogICAg
-ICBhcm02NDogZHRzOiByb2NrY2hpcDogRml4IEJsdWV0b290aCBzdGFiaWxpdHkgb24gTENLRkIg
-VGFpU2hhbiBQaQoKUGVkcm8gQWx2ZXMgKDEpOgogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDog
-Y29uZmlndXJlIGhkbWlyeCBpbiBSb2NrIDUgSVRYCgpSb2JpbiBNdXJwaHkgKDEpOgogICAgICBS
-ZXZlcnQgImFybTY0OiBkdHM6IHJvY2tjaGlwOiBhZGQgU1BESUYgYXVkaW8gdG8gQmVlbGluayBB
-MSIKClNlYmFzdGlhbiBSZWljaGVsICgyKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFk
-ZCBTUERJRiBub2RlcyB0byBSSzM1NzYgZGV2aWNlIHRyZWUKICAgICAgYXJtNjQ6IGR0czogcm9j
-a2NoaXA6IGFkZCBTRC9lTU1DIGFsaWFzZXMgZm9yIEFybVNvbSBTaWdlNQoKU2hhd24gTGluICgx
-KToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBtcGh5IHJlc2V0IHRvIHVmc2hjIG5v
-ZGUKCuiwouiHtOmCpiAoWElFIFpoaWJhbmcpICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2No
-aXA6IEZpeCBSSzM1NjIgRVZCMiBtb2RlbCBuYW1lCgogLi4uL2RldmljZXRyZWUvYmluZGluZ3Mv
-YXJtL3JvY2tjaGlwLnlhbWwgICAgICAgICAgfCAgNSArKwogYXJjaC9hcm02NC9ib290L2R0cy9y
-b2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgfCAgMSArCiBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzMyOC1hMS5kdHMgICAgICAgICB8IDIzIC0tLS0tLQogYXJjaC9hcm02NC9i
-b290L2R0cy9yb2NrY2hpcC9yazM1MjguZHRzaSAgICAgICAgICAgfCA0NyArKysrKysrKysrKysK
-IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTYyLWV2YjItdjEwLmR0cyAgIHwgIDIg
-Ky0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTYyLmR0c2kgICAgICAgICAgIHwg
-NDYgKysrKysrKysrKysrCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2Ni1sY2tm
-Yi10c3BpLmR0cyB8ICA0ICstCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU2OC5k
-dHNpICAgICAgICAgICB8IDEyICsrLQogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-NngtYmFzZS5kdHNpICAgICAgfCA1MiArKysrKysrKysrKystCiAuLi4vYm9vdC9kdHMvcm9ja2No
-aXAvcmszNTc2LWFybXNvbS1zaWdlNS5kdHMgICAgICB8ICAyICsKIC4uLi9ib290L2R0cy9yb2Nr
-Y2hpcC9yazM1NzYta2hhZGFzLWVkZ2UtMmwuZHRzICAgIHwgMzQgKysrKysrKysrCiBhcmNoL2Fy
-bTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU3Ni5kdHNpICAgICAgICAgICB8IDg3ICsrKysrKysr
-KysrKysrKysrKysrKy0KIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2st
-NS1pdHguZHRzIHwgMTIgKysrCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWIt
-NWJwLTV0LmR0c2kgICB8ICA2ICstCiAuLi4vYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4cy1nYW1l
-Zm9yY2UtYWNlLmR0cyAgICB8IDEyICstLQogMTUgZmlsZXMgY2hhbmdlZCwgMzAzIGluc2VydGlv
-bnMoKyksIDQyIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGFyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTc2LWtoYWRhcy1lZGdlLTJsLmR0cwoKCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Convert the rockchip,rk3399-gru-sound.txt DT binding to YAML Schema.
+
+During conversion, property rockchip,cpu was changed from phandle to
+phandle-array to properly validate existing DTS usage.
+
+Signed-off-by: Anushka Badhe <anushkabadhe@gmail.com>
+---
+This was the error reported by dtbs_check when rockchip,cpu was defined as phandle:
+
+sound (rockchip,rk3399-gru-sound): rockchip,cpu:0: [211, 212] is too
+long from schema $id:
+http://devicetree.org/schemas/sound/rockchip,rk3399-gru-sound.yaml
+
+This error was found when verifying against
+rockchip/rk3399-gru-kevin.dtb
+
+ .../sound/rockchip,rk3399-gru-sound.txt       | 22 ---------
+ .../sound/rockchip,rk3399-gru-sound.yaml      | 47 +++++++++++++++++++
+ 2 files changed, 47 insertions(+), 22 deletions(-)
+ delete mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+ create mode 100644 Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.yaml
+
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
+deleted file mode 100644
+index 72d3cf4c2606..000000000000
+--- a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.txt
++++ /dev/null
+@@ -1,22 +0,0 @@
+-ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
+-
+-Required properties:
+-- compatible: "rockchip,rk3399-gru-sound"
+-- rockchip,cpu: The phandle of the Rockchip I2S controller that's
+-  connected to the codecs
+-- rockchip,codec: The phandle of the audio codecs
+-
+-Optional properties:
+-- dmic-wakeup-delay-ms : specify delay time (ms) for DMIC ready.
+-  If this option is specified, which means it's required dmic need
+-  delay for DMIC to ready so that rt5514 can avoid recording before
+-  DMIC send valid data
+-
+-Example:
+-
+-sound {
+-	compatible = "rockchip,rk3399-gru-sound";
+-	rockchip,cpu = <&i2s0>;
+-	rockchip,codec = <&max98357a &rt5514 &da7219>;
+-	dmic-wakeup-delay-ms = <20>;
+-};
+diff --git a/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.yaml b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.yaml
+new file mode 100644
+index 000000000000..10001fd2f886
+--- /dev/null
++++ b/Documentation/devicetree/bindings/sound/rockchip,rk3399-gru-sound.yaml
+@@ -0,0 +1,47 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/sound/rockchip,rk3399-gru-sound.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: ROCKCHIP with MAX98357A/RT5514/DA7219 codecs on GRU boards
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++
++properties:
++  compatible:
++    const: rockchip,rk3399-gru-sound
++
++  rockchip,cpu:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description:
++      The phandle of the Rockchip I2S controller that's connected to the codecs
++
++  rockchip,codec:
++    $ref: /schemas/types.yaml#/definitions/phandle-array
++    description: The phandle of the audio codecs
++
++  dmic-wakeup-delay-ms:
++    description:
++      specify delay time (ms) for DMIC ready.
++      If this option is specified, which means it's required dmic need
++      delay for DMIC to ready so that rt5514 can avoid recording before
++      DMIC sends valid data
++
++required:
++  - compatible
++  - rockchip,cpu
++  - rockchip,codec
++
++additionalProperties: false
++
++examples:
++  - |
++    sound {
++      compatible = "rockchip,rk3399-gru-sound";
++      rockchip,cpu = <&i2s0>;
++      rockchip,codec = <&max98357a &rt5514 &da7219>;
++      dmic-wakeup-delay-ms = <20>;
++    };
++
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
