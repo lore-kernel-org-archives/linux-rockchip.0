@@ -4,90 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38FE1E8537A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 16:09:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA95E8538E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KsYS3gkBErbIJdNBsZ048j3QK9MVu5eioTeULb05xVI=; b=RQ+VqCnRHmL14R
-	6ITZEQDbbfNNsC+OhoKG2WtY8NGjb5NW80em+c8YAoGCh4KhBoa7VEH5uWkbRc2WwhrZq30c21od+
-	CrbsQvSuqB+dDCiyF6zlfguER+DBqoOAm8gltHXv/WLpoP44AB7lVXDDRUYWAT3DpFcbc5soxHX1u
-	vWwsEG7TZpEX7nBHTXtTTdYq/TIjcBRdIfcCa7UP2rtNHOekD54o5MhwBAz6h9+PPF0jvr8uJCMO8
-	euIlnfVy3yVL7dnriH8tTTN1hOd0nlLsdYf6x27ycFXxgt1nj020AKRWhd5vO8TS27KxVNeWZvfSq
-	fG0vqRIr5gfbgzbFlgRQ==;
+	List-Owner; bh=GXA54uUVcsT3Q5rIgCU67+wxwERwkFLVFxt+j6QDTBY=; b=3BvF34ukE7vw/9
+	RucfJflkUhnSAwDUX+4fCTTZExzcRRe9iI+qUYCPZTXKAjw/MIbaJcz/suA1OXLsCskMTpCI+4P6E
+	kYyKb3hLoSYwjjIxaITMjAIs2hVngsX53bHCSejBOnwx4/ID48OaJpXE5Qkfq8BrwtiXW0s8yAZS8
+	ueRgumAPsw+cf31W5iiYPdUH/5+7cFqkCE0JuojqR4vOM98RfmNtJgfjsh9g2TgW+scdpDw2fAo3O
+	uX6fXz1yvaTuWz0eseOgpHwKN/dvqDaX2EK1bf33G9D4FRGrLQIrR9+1uPKsNvq8N3iGTYNnrKFpp
+	4vDLC8RD32cjV58A6Dgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8h5C-00000002G47-2eHE;
-	Fri, 03 Apr 2026 16:09:18 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1w8jeE-00000002Ryj-0DXo;
+	Fri, 03 Apr 2026 18:53:38 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8h58-00000002G2x-44YT;
-	Fri, 03 Apr 2026 16:09:16 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 932684E428D4;
-	Fri,  3 Apr 2026 16:09:11 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 60FDA603C1;
-	Fri,  3 Apr 2026 16:09:11 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BEC96104500F6;
-	Fri,  3 Apr 2026 18:09:00 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1775232549; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 in-reply-to:references; bh=AzjEQefN6xPDjXEYIiHo2SUJdWU1/vP2x5cFXraZjkk=;
-	b=L97T2VHGtwNjfPaEhWyiSnZG6k7C48S4htZ3xdXMja4I35x1Vha2dpAMX0WNGYblzxbrUv
-	w/aoNXMJkcAGsxHBGwMvC3v4AK9Us0ZAofbj1Jge/XAkKyW2WBLtAg7c7meeTov3m/kL37
-	0CrL3m46nLSt5nrUBSgCoKk3+eRsC35eLXnauDPjPd+NzRjQe8faib+rb+JcFj482nTsHb
-	3XncxjjRBpnDjNtz4yAKJu6tsmqEtJkodT5r8GkMTLIdOt2ARjdq1uvll/xIID23MOSaNo
-	KuHxucXkddWY+UP1yY+7J186BSJZy4E1fhoGtY3cQDGv+ydRID09gV/+YIKJFA==
-Date: Fri, 3 Apr 2026 18:09:00 +0200
-From: Alexandre Belloni <alexandre.belloni@bootlin.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	"Rafael J. Wysocki" <rafael@kernel.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Saenz Julienne <nsaenz@kernel.org>, Lee Jones <lee@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Shree Ramamoorthy <s-ramamoorthy@ti.com>,
-	Jerome Neanne <jerome.neanne@baylibre.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Dmitry Osipenko <digetx@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Joseph Chen <chenjh@rock-chips.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	Sebastian Reichel <sebastian.reichel@collabora.com>,
-	Andreas Kemnade <andreas@kemnade.info>,
-	Jonathan =?iso-8859-1?Q?Neusch=E4fer?= <j.neuschaefer@gmx.net>,
-	Lubomir Rintel <lkundrak@v3.sk>, Julien Panis <jpanis@baylibre.com>,
-	Matti Vaittinen <mazziesaccount@gmail.com>,
-	Alexander Kurz <akurz@blala.de>,
-	Krzysztof Kozlowski <krzk@kernel.org>,
-	=?iso-8859-1?Q?Andr=E9?= Draszik <andre.draszik@linaro.org>,
-	"Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-rtc@vger.kernel.org,
+	id 1w8jeB-00000002RyB-0Fan
+	for linux-rockchip@lists.infradead.org;
+	Fri, 03 Apr 2026 18:53:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1775242414; bh=IrkmYXz+eQlVd/BohsNjaWpAwzykhtdCHiqXQ19+Tno=;
+ b=xZApzcAF53F1tRje1dlRwqDoFq4mCyYYLD6a/STRl1hnqRokuBUjDC4ij1MjAbnOGvfZcx3qz
+ r+1YAghFwzQBhDk+ZnlRhoC8v8kWZxhGe0QMBlyadgBNmcp29PE5ihubY12kEuX5qqELr6drZQJ
+ WB05wpySIzuiW/v6B8XCKXkNvjoNHm8QOaRGqhxc2e/zoMiSe9dPLLTyTblF0mQr+YCYRy+WaHu
+ VDmmwTRlRznWa0HwWm7bzwM4Vb7s+LQIeV8wjMPz40I24bS7lU2+tOOxolpl7I1BP071I2EbYqY
+ xwvzSkMI1dwrbSJgy1lSrjRNW6zYTiVLfqJBRiZCLngg==
+X-Forward-Email-ID: 69d00cabdc98192b40b89309
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.66
+X-Forward-Email-Version: 2.6.68
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Christian Hewitt <christianshewitt@gmail.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org, Peng Fan <peng.fan@nxp.com>
-Subject: Re: (subset) [PATCH 05/15] dt-bindings: rtc: ingenic,rtc: Use
- generic power-controller schema
-Message-ID: <177523251875.1559844.9690289848283345069.b4-ty@b4>
-References: <20260316-power-controller-v1-5-92c80e5e1744@nxp.com>
+	linux-kernel@vger.kernel.org,
+	Christopher Obbard <chris.obbard@collabora.com>
+Subject: [PATCH v3 01/13] drm: bridge: dw_hdmi: Disable scrambler feature when not supported
+Date: Fri,  3 Apr 2026 18:52:47 +0000
+Message-ID: <20260403185303.80748-2-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260403185303.80748-1-jonas@kwiboo.se>
+References: <20260403185303.80748-1-jonas@kwiboo.se>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260316-power-controller-v1-5-92c80e5e1744@nxp.com>
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_090915_139895_6557C501 
-X-CRM114-Status: UNSURE (   7.78  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260403_115335_193746_E4CF4188 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,22 +88,43 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 16 Mar 2026 22:47:40 +0800, Peng Fan (OSS) wrote:
-> Convert the binding to use the generic power-controller schema instead by
-> referencing power-controller.yaml and removing the local
-> `system-power-controller` property definition.
+The scrambler feature can be left enabled when hotplugging from a sink
+and mode that require scrambling to a sink that does not support SCDC or
+scrambling.
 
-Applied, thanks!
+Typically a blank screen or 'no signal' message can be observed after
+using a HDMI 2.0 4K@60Hz mode and then hotplugging to a sink that only
+support HDMI 1.4.
 
-[05/15] dt-bindings: rtc: ingenic,rtc: Use generic power-controller schema
-        https://git.kernel.org/abelloni/c/0452290110cc
+Fix this by disabling the scrambler feature when SCDC is not supported.
 
-Best regards,
+Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
+Reported-by: Christopher Obbard <chris.obbard@collabora.com>
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v3: Collect r-b tag
+v2: New patch
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index 0296e110ce65..9febcb58a1df 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -2133,6 +2133,8 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+ 				    HDMI_MC_SWRSTZ);
+ 			drm_scdc_set_scrambling(hdmi->curr_conn, 0);
+ 		}
++	} else if (hdmi->version >= 0x200a) {
++		hdmi_writeb(hdmi, 0, HDMI_FC_SCRAMBLER_CTRL);
+ 	}
+ 
+ 	/* Set up horizontal active pixel width */
 -- 
-Alexandre Belloni, co-owner and COO, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+2.53.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
