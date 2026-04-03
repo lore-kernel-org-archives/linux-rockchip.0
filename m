@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72EF6D730AD
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:53:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDEDBE7E37E
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:53:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Zf5QW6BcuXGAfVLnpJ6CvwtuUZilQYP8rRAn6ivIgm8=; b=eGvjcQgLHRetqa
-	0SuWMeI5U9rOL3lXL/VDpiT4feOHRUT1bIIenx6+xb2Q3/tg2gAY+XLE1G8sRf6visjEpqLbeBK8g
-	qyYixRQK3N/rHBT0UYwa2BHxtUipNxs138TarJbCWGWZB5JSoUifenqW64wzisQCr4TY3j/18qzcv
-	9lV/7os8cqpZk+uvRA0n65fMuDKbm8OJKv6hWDB+06ndfpEyfdnGz9Y4Q4fbrJf5gOqCmlPT/4MfM
-	I0YcyNvtr8qn03fEXyCbxbygjj+M7pmIo4qaxIAIId+GqX1awp5eimVucLzSvAKiiGVAKLDquWnyG
-	Gcwa4JkAbzjXHURmpmRA==;
+	List-Owner; bh=kRT0XQcTQgOLEdJdvM/I0yi2UiON7W9amxPggDBFCBU=; b=cEZ4qS0wjK46rj
+	G/VlLxmhedZnoRSxD5+1mxNAySpwdOc6Tc5lKv/r7scX5FGJ5+QdonZ75LUDGPD14hec2IL5CHFx/
+	c8a++wEhJxMpvW9jurNDWtnNnI42Nn4bZdPD2UUShejysZmjQMaJ/txqD2da0Jg0jR3fvB+xAdsgL
+	OyVUBB831O88oxCQ2Q8T5ThqLkvaKcOZgJ2bPYX9BnYOX9knxGu0hU8chHUaGBZ2EqpL0FUrg+9SG
+	vMHiPDNq69+dS2nDN6AFpqoqIWeTAyzRT94OwEMlimCoP/2zWM/p1LdMYeIYPjjqtzopgLeDbN+ls
+	yWzrhRsvVcpdumioFG7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeS-00000002S4G-0Eh6;
-	Fri, 03 Apr 2026 18:53:52 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1w8jeT-00000002S4x-1K5v;
+	Fri, 03 Apr 2026 18:53:53 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeP-00000002S2P-1EOY
+	id 1w8jeR-00000002S3c-0Ww9
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Apr 2026 18:53:50 +0000
+	Fri, 03 Apr 2026 18:53:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1775242428; bh=t0j6fHmt5eOTjqBJf8He6l0hKsw3FQ0FWAqMAP76P7w=;
- b=mhTdGlCjb1heRreye3pZ30hDEbFYe4u3lwstQ/MqZNaTc5dCH0CpgPxor7WLc3SDA1RNY1nzH
- 5NyBwsuX9anD+gSgEahsq5bb8Z/8Yy1HL10iWLsSVjIwWoPZTydlQpbOugmUtN+MZjd7+Tgifkb
- 9p10lgR55Gkx0Xu6q3wRE4AIMdtNjJ6n765PCdbwDawbikuEmXNbVo68Fu1PpAiQ/ulb8t2Xnb4
- RSIlMdYG/eWbQSeFVuEDvSMz5C0gwPjFBVen6uom1EqdJF/71AnEeYZK9rXqOCE48uUWVUjA0fs
- uLUSZFguFZRMKEzFuT6xk37BHcdfgJFtZeNGp1zUjYOA==
-X-Forward-Email-ID: 69d00cb4dc98192b40b8933f
+ t=1775242430; bh=nHczWXAu86GVpPDJo2Ql/ATlrHI3Y8SePMn2/eMTTOo=;
+ b=MMmfRfUZkqFwKXNrPs120PDUkTPxdb3Feh8rhbuDKk5tcxS6rVmfehoh2VCzl48gfdPBBufeO
+ 7Mwm8/jXuVq79bDlamceFyfAesEGWkedOWSsyPnEBuhrzkRVPos0d/2GJlMZoX9rb2Xxxj2YDWC
+ SrL3O/j2mjEcqlV0vXh2WO9oqvX8b19rmd1r8XFSiyGR7B0QGfkaFHlQpGwD36AioVj1BjLiQ1C
+ 37iTlilyt1Jn6pNubvlzEiBjewR0Ak3oVK9o+IWq/MtuaswPRN1mSGg1TlUJFcXht9kefTdzfLl
+ doj63f2OlW3f2grf7u6D4ygJprcH1pGbk8v1+72ffVfA==
+X-Forward-Email-ID: 69d00cbcdc98192b40b89375
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 2.6.68
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -61,16 +61,16 @@ Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 03/13] drm: bridge: dw_hdmi: Call poweron/poweroff from atomic enable/disable
-Date: Fri,  3 Apr 2026 18:52:49 +0000
-Message-ID: <20260403185303.80748-4-jonas@kwiboo.se>
+Subject: [PATCH v3 05/13] drm: bridge: dw_hdmi: Fold poweron and setup functions
+Date: Fri,  3 Apr 2026 18:52:51 +0000
+Message-ID: <20260403185303.80748-6-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260403185303.80748-1-jonas@kwiboo.se>
 References: <20260403185303.80748-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_115349_339626_93245F7D 
-X-CRM114-Status: GOOD (  12.41  )
+X-CRM114-CacheID: sfid-20260403_115351_262903_7A4352B0 
+X-CRM114-Status: GOOD (  10.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,110 +87,72 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change to only call poweron/poweroff from atomic_enable/atomic_disable
-funcs instead of trying to be clever by keeping a bridge_is_on state and
-poweron/off in the hotplug irq handler.
-
-The bridge is already enabled/disabled depending on connection state
-with the call to drm_helper_hpd_irq_event() in hotplug irq handler.
-
-A benefit of this is that drm mode_config mutex is always held at
-poweron/off, something that may reduce the need for the dw-hdmi mutex.
+Fold the poweron and setup functions into one function and use the
+adjusted_mode directly from the new crtc_state to remove the need of
+storing previous_mode.
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v3: Collect r-b tag
-v2: Update commit message
+v2: No change
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 33 ++---------------------
- 1 file changed, 2 insertions(+), 31 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 21 ++++++++-------------
+ 1 file changed, 8 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 3b851f12adfe..eea266d01de3 100644
+index c03a86284a95..7e7147b14614 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -169,7 +169,6 @@ struct dw_hdmi {
- 	enum drm_connector_force force;	/* mutex-protected force state */
- 	struct drm_connector *curr_conn;/* current connector (only valid when !disabled) */
- 	bool disabled;			/* DRM has disabled our bridge */
--	bool bridge_is_on;		/* indicates the bridge is on */
- 	bool rxsense;			/* rxsense state */
- 	u8 phy_mask;			/* desired phy int mask settings */
- 	u8 mc_clkdis;			/* clock disable register */
-@@ -2398,8 +2397,6 @@ static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
+@@ -2252,9 +2252,9 @@ static void hdmi_disable_overflow_interrupts(struct dw_hdmi *hdmi)
+ 		    HDMI_IH_MUTE_FC_STAT2);
+ }
  
- static void dw_hdmi_poweron(struct dw_hdmi *hdmi)
+-static int dw_hdmi_setup(struct dw_hdmi *hdmi,
+-			 const struct drm_connector *connector,
+-			 const struct drm_display_mode *mode)
++static int dw_hdmi_poweron(struct dw_hdmi *hdmi,
++			   const struct drm_connector *connector,
++			   const struct drm_display_mode *mode)
  {
--	hdmi->bridge_is_on = true;
--
- 	/*
- 	 * The curr_conn field is guaranteed to be valid here, as this function
- 	 * is only be called when !hdmi->disabled.
-@@ -2413,30 +2410,6 @@ static void dw_hdmi_poweroff(struct dw_hdmi *hdmi)
- 		hdmi->phy.ops->disable(hdmi, hdmi->phy.data);
- 		hdmi->phy.enabled = false;
- 	}
--
--	hdmi->bridge_is_on = false;
+ 	const struct drm_display_info *display = &connector->display_info;
+ 	int ret;
+@@ -2394,15 +2394,6 @@ static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
+ 	hdmi_writeb(hdmi, ih_mute, HDMI_IH_MUTE);
+ }
+ 
+-static void dw_hdmi_poweron(struct dw_hdmi *hdmi)
+-{
+-	/*
+-	 * The curr_conn field is guaranteed to be valid here, as this function
+-	 * is only be called when !hdmi->disabled.
+-	 */
+-	dw_hdmi_setup(hdmi, hdmi->curr_conn, &hdmi->previous_mode);
 -}
 -
--static void dw_hdmi_update_power(struct dw_hdmi *hdmi)
--{
--	int force = hdmi->force;
--
--	if (hdmi->disabled) {
--		force = DRM_FORCE_OFF;
--	} else if (force == DRM_FORCE_UNSPECIFIED) {
--		if (hdmi->rxsense)
--			force = DRM_FORCE_ON;
--		else
--			force = DRM_FORCE_OFF;
--	}
--
--	if (force == DRM_FORCE_OFF) {
--		if (hdmi->bridge_is_on)
--			dw_hdmi_poweroff(hdmi);
--	} else {
--		if (!hdmi->bridge_is_on)
--			dw_hdmi_poweron(hdmi);
--	}
- }
+ static void dw_hdmi_poweroff(struct dw_hdmi *hdmi)
+ {
+ 	if (hdmi->phy.enabled) {
+@@ -2952,15 +2943,19 @@ static void dw_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
+ 					 struct drm_atomic_state *state)
+ {
+ 	struct dw_hdmi *hdmi = bridge->driver_private;
++	const struct drm_display_mode *mode;
+ 	struct drm_connector *connector;
++	struct drm_crtc *crtc;
  
- /*
-@@ -2561,7 +2534,6 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
+ 	connector = drm_atomic_get_new_connector_for_encoder(state,
+ 							     bridge->encoder);
++	crtc = drm_atomic_get_new_connector_state(state, connector)->crtc;
++	mode = &drm_atomic_get_new_crtc_state(state, crtc)->adjusted_mode;
  
- 	mutex_lock(&hdmi->mutex);
- 	hdmi->force = connector->force;
--	dw_hdmi_update_power(hdmi);
- 	dw_hdmi_update_phy_mask(hdmi);
- 	mutex_unlock(&hdmi->mutex);
- }
-@@ -2971,7 +2943,7 @@ static void dw_hdmi_bridge_atomic_disable(struct drm_bridge *bridge,
- 	mutex_lock(&hdmi->mutex);
- 	hdmi->disabled = true;
- 	hdmi->curr_conn = NULL;
--	dw_hdmi_update_power(hdmi);
-+	dw_hdmi_poweroff(hdmi);
- 	dw_hdmi_update_phy_mask(hdmi);
- 	handle_plugged_change(hdmi, false);
- 	mutex_unlock(&hdmi->mutex);
-@@ -2989,7 +2961,7 @@ static void dw_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
  	mutex_lock(&hdmi->mutex);
  	hdmi->disabled = false;
  	hdmi->curr_conn = connector;
--	dw_hdmi_update_power(hdmi);
-+	dw_hdmi_poweron(hdmi);
+-	dw_hdmi_poweron(hdmi);
++	dw_hdmi_poweron(hdmi, connector, mode);
  	dw_hdmi_update_phy_mask(hdmi);
  	handle_plugged_change(hdmi, true);
- 	mutex_unlock(&hdmi->mutex);
-@@ -3089,7 +3061,6 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
- 		if (hpd)
- 			hdmi->rxsense = true;
- 
--		dw_hdmi_update_power(hdmi);
- 		dw_hdmi_update_phy_mask(hdmi);
- 	}
  	mutex_unlock(&hdmi->mutex);
 -- 
 2.53.0
