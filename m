@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA95E8538E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC68BD730AD
 	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GXA54uUVcsT3Q5rIgCU67+wxwERwkFLVFxt+j6QDTBY=; b=3BvF34ukE7vw/9
-	RucfJflkUhnSAwDUX+4fCTTZExzcRRe9iI+qUYCPZTXKAjw/MIbaJcz/suA1OXLsCskMTpCI+4P6E
-	kYyKb3hLoSYwjjIxaITMjAIs2hVngsX53bHCSejBOnwx4/ID48OaJpXE5Qkfq8BrwtiXW0s8yAZS8
-	ueRgumAPsw+cf31W5iiYPdUH/5+7cFqkCE0JuojqR4vOM98RfmNtJgfjsh9g2TgW+scdpDw2fAo3O
-	uX6fXz1yvaTuWz0eseOgpHwKN/dvqDaX2EK1bf33G9D4FRGrLQIrR9+1uPKsNvq8N3iGTYNnrKFpp
-	4vDLC8RD32cjV58A6Dgg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=STCfixOUGFIjG350mrgGjMMff0UOE7sgY9Ycrq1tSLo=; b=H9kG7MeoDQeXlL
+	97TLGqiI1LAHi5yurZO63BEWLbPS0XdrlNIAusQzXxrwLIt8bNreTt25RuRpGZDhiR2a4XiJDd0Nn
+	cz+MnjQUb1U94nSTF4ytkGmqQKW3SKTZ+bmexfn6Q7Q0PGRLH51c7a0wYBu45O0dqpx7BzTBojz+F
+	Q5tq4g9E5QfqgdSAXzDpNvcR0CgL/1yj2GGzcDfVDSZ8TLTeowCz+xpHk/iaeRTA1y3C+9t3MvszH
+	BC1KTUyA33izzfXVxokSm5e2eQ2vy0b2ktE3NJGR5vSAoeBE9ynSpoQb2KPxv5tt5mwDtXJx2J+gI
+	pd5q5B6/srJzPci1eTJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeE-00000002Ryj-0DXo;
-	Fri, 03 Apr 2026 18:53:38 +0000
+	id 1w8jeC-00000002Ryf-3CPS;
+	Fri, 03 Apr 2026 18:53:36 +0000
 Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeB-00000002RyB-0Fan
+	id 1w8je9-00000002Rxx-2V2O
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Apr 2026 18:53:36 +0000
+	Fri, 03 Apr 2026 18:53:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1775242414; bh=IrkmYXz+eQlVd/BohsNjaWpAwzykhtdCHiqXQ19+Tno=;
- b=xZApzcAF53F1tRje1dlRwqDoFq4mCyYYLD6a/STRl1hnqRokuBUjDC4ij1MjAbnOGvfZcx3qz
- r+1YAghFwzQBhDk+ZnlRhoC8v8kWZxhGe0QMBlyadgBNmcp29PE5ihubY12kEuX5qqELr6drZQJ
- WB05wpySIzuiW/v6B8XCKXkNvjoNHm8QOaRGqhxc2e/zoMiSe9dPLLTyTblF0mQr+YCYRy+WaHu
- VDmmwTRlRznWa0HwWm7bzwM4Vb7s+LQIeV8wjMPz40I24bS7lU2+tOOxolpl7I1BP071I2EbYqY
- xwvzSkMI1dwrbSJgy1lSrjRNW6zYTiVLfqJBRiZCLngg==
-X-Forward-Email-ID: 69d00cabdc98192b40b89309
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1775242411;
+ bh=JMoGga8j+B0s/NUIBMqajdD1ehf1AEFaHBht6CmNsMI=;
+ b=bOrYcKpefX0XgGM4/haNLCCAetBLTBTXfeP7di0Bkj8T7q47wSkRUaWNlE/hsAFGNZEvOjuFa
+ poeFMz3pptX1z9Q9fjGlAEXZQ/dxhtxk4Qbcq9DNR7rthG4+TjysEEZicuBr2Wf9I9ghtD5YNjS
+ wcg/F74V9jYDXbQ+nwwWEZvQ/1aQa4EI3JeqDRHNAx5/ihuEP34ndOlpHmC7dEvQNYf4ITfdM4O
+ c4ZnMQrLVu83Q5XL/QVIf+W4DUs1RZ3j1R0+5Ornhdcu7W/jOJrwY0gvXBw8d33AqGt1kummwAV
+ G+qVjKoWxORlucf7uZTUcbanx6MFm8hYpj6CD2LL39Cg==
+X-Forward-Email-ID: 69d00ca6dc98192b40b892ee
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.66
 X-Forward-Email-Version: 2.6.68
@@ -47,31 +47,29 @@ X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
+	Robert Foss <rfoss@kernel.org>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	Jernej Skrabec <jernej.skrabec@gmail.com>,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: Christian Hewitt <christianshewitt@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Christian Hewitt <christianshewitt@gmail.com>,
 	Diederik de Haas <diederik@cknow-tech.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Christopher Obbard <chris.obbard@collabora.com>
-Subject: [PATCH v3 01/13] drm: bridge: dw_hdmi: Disable scrambler feature when not supported
-Date: Fri,  3 Apr 2026 18:52:47 +0000
-Message-ID: <20260403185303.80748-2-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v3 00/13] drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup
+Date: Fri,  3 Apr 2026 18:52:46 +0000
+Message-ID: <20260403185303.80748-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260403185303.80748-1-jonas@kwiboo.se>
-References: <20260403185303.80748-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_115335_193746_E4CF4188 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20260403_115334_107364_4A155500 
+X-CRM114-Status: UNSURE (   9.05  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,40 +86,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The scrambler feature can be left enabled when hotplugging from a sink
-and mode that require scrambling to a sink that does not support SCDC or
-scrambling.
+This is a revival of an old dw-hdmi series and is the first series part
+of a new effort to upstream old LibreELEC HDMI 2.0 patches for Rockchip
+RK33xx devices.
 
-Typically a blank screen or 'no signal' message can be observed after
-using a HDMI 2.0 4K@60Hz mode and then hotplugging to a sink that only
-support HDMI 1.4.
+This series ensure poweron/poweroff and CEC phys addr invalidation is
+happening under drm mode_config mutex lock, and also ensure EDID is
+updated after a HPD low voltage pulse by changing to debounce hotplug
+processing.
 
-Fix this by disabling the scrambler feature when SCDC is not supported.
+These changes have mainly been tested on Rockchip RK3328, RK3399 and
+RK3568 devices.
 
-Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
-Reported-by: Christopher Obbard <chris.obbard@collabora.com>
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-v3: Collect r-b tag
-v2: New patch
----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 2 ++
- 1 file changed, 2 insertions(+)
+Rockchip uses the dw-hdmi connector, so this could use some more testing
+with drivers that use the bridge connector.
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 0296e110ce65..9febcb58a1df 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2133,6 +2133,8 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
- 				    HDMI_MC_SWRSTZ);
- 			drm_scdc_set_scrambling(hdmi->curr_conn, 0);
- 		}
-+	} else if (hdmi->version >= 0x200a) {
-+		hdmi_writeb(hdmi, 0, HDMI_FC_SCRAMBLER_CTRL);
- 	}
+Future planned series will likely convert dw-hdmi to a hdmi bridge and
+add improved deep color support as preparation to add 10-bit and yuv420
+output support on Rockchip RK33xx devices.
+
+Testing with a Rock Pi 4 (RK3399) using a Reaspberry Pi Monitor with
+Linux kms client console using drm.debug=0xe should log something like
+following:
+
+ Power cycle monitor using the power button:
+  [CONNECTOR:68:HDMI-A-1] CEA VCDB 0x4a
+  [CONNECTOR:68:HDMI-A-1] HDMI: DVI dual 0, max TMDS clock 0 kHz
+  [CONNECTOR:68:HDMI-A-1] ELD monitor RPI MON156
+  [CONNECTOR:68:HDMI-A-1] HDMI: latency present 0 0, video latency 0 0, audio latency 0 0
+  [CONNECTOR:68:HDMI-A-1] ELD size 36, SAD count 1
+  [CONNECTOR:68:HDMI-A-1] Same epoch counter 10
  
- 	/* Set up horizontal active pixel width */
+ Cable unplugged:
+  [CONNECTOR:68:HDMI-A-1] EDID changed, epoch counter 11
+  [CONNECTOR:68:HDMI-A-1] status updated from connected to disconnected
+  [CONNECTOR:68:HDMI-A-1] Changed epoch counter 10 => 12
+  [CONNECTOR:68:HDMI-A-1] generating connector hotplug event
+  [CONNECTOR:68:HDMI-A-1] Sent hotplug event
+
+ Cable connected:
+  [CONNECTOR:68:HDMI-A-1] CEA VCDB 0x4a
+  [CONNECTOR:68:HDMI-A-1] HDMI: DVI dual 0, max TMDS clock 0 kHz
+  [CONNECTOR:68:HDMI-A-1] ELD monitor RPI MON156
+  [CONNECTOR:68:HDMI-A-1] HDMI: latency present 0 0, video latency 0 0, audio latency 0 0
+  [CONNECTOR:68:HDMI-A-1] ELD size 36, SAD count 1
+  [CONNECTOR:68:HDMI-A-1] status updated from disconnected to connected
+  [CONNECTOR:68:HDMI-A-1] Changed epoch counter 12 => 13
+  [CONNECTOR:68:HDMI-A-1] generating connector hotplug event
+  [CONNECTOR:68:HDMI-A-1] Sent hotplug event
+
+Changes in v3:
+- Rework EDID refresh handling to closer match bridge connector
+- Use delayed work to debounce HPD processing
+- Update commit messages
+- Collect r-b tags
+- Rebased on next-20260401
+Link to v2: https://lore.kernel.org/r/20240908132823.3308029-1-jonas@kwiboo.se/
+
+Changes in v2:
+- Add patch to disable scrambler feature when not supported
+- Add patch to only notify connected status on HPD interrupt
+- Update commit messages
+- Collect r-b tags
+- Rebased on next-20240906
+Link to v1: https://lore.kernel.org/r/20240611155108.1436502-1-jonas@kwiboo.se/
+
+Jonas Karlman (13):
+  drm: bridge: dw_hdmi: Disable scrambler feature when not supported
+  drm: bridge: dw_hdmi: Only notify connected status on HPD interrupt
+  drm: bridge: dw_hdmi: Call poweron/poweroff from atomic enable/disable
+  drm: bridge: dw_hdmi: Use passed mode instead of stored previous_mode
+  drm: bridge: dw_hdmi: Fold poweron and setup functions
+  drm: bridge: dw_hdmi: Remove previous_mode and mode_set
+  drm: bridge: dw_hdmi: Invalidate CEC phys addr from connector detect
+  drm: bridge: dw_hdmi: Remove cec_notifier_mutex
+  drm: bridge: dw_hdmi: Use delayed_work to debounce hotplug event
+  drm: bridge: dw_hdmi: Use drm_connector_helper_hpd_irq_event()
+  drm: bridge: dw_hdmi: Extract dw_hdmi_connector_status_update()
+  drm: bridge: dw_hdmi: Use dw_hdmi_connector_status_update()
+  drm: bridge: dw_hdmi: Use display_info is_hdmi and has_audio
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 209 +++++++++-------------
+ 1 file changed, 80 insertions(+), 129 deletions(-)
+
 -- 
 2.53.0
 
