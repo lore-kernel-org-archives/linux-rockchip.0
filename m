@@ -4,78 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F1C3D730A2
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 07:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD0BD730B1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 07:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=IBRykXm6nc5FbP6pvEpCawnK+G3cc8Fmw//u5cdSEpw=; b=NvQzl6XDvKRuqz
-	6smOI9dH1l7PjxQfJvM5+n9vOQi2H7VMwOWQgVtcVGVk6bKTX/yCMmRBXyr9YR7W71AFAdwONF4Qb
-	677dQc2zh9kCbcrTkUs/lNL0oyPwRalrKe0SuPA5nTcGc2GWpaIfuwyFJz1E3+dzdo3klk06eCwRW
-	Zk6oaqKjlcbHrrjQMlFpVnR8OBrktLTIrndotuyUZcGgiRU1F4d+7JwGSuqibShwMnIEX7vURjuUR
-	X1Auw2JD85GvFkgLypgYF3++25kuT5lhRZriBq+DgGegfZfP2aQBbI5OJ/ej8eIx8Tt2cl9mlW0ef
-	RK/ao/EVzWOPiQZ1eQqw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Subject:Cc:From
+	:To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fFC7/0XLJYmx0AGdQHo85OEK/HbJW1hVxL61XQoxhW0=; b=Pl5p7EhhWTSOjP
+	5tZfQ5HiYpn6w0TWrobJrnph5doNNTY/gP+CS0u6JNCuobQ7TgLalo7JkPjzFhUjpxlvCzotTJLzN
+	r91RSSQYwtxO7KLkOPIGWIoL9vzYL9G8d3+pHxeEhm0QybVTgkvsy0BYARewXmvglRzfppSdpGl+S
+	hsWBObWCltuNH0R+ff+FS2qABGWkZWOs6N/zsQFP1olD9UC2WnaSFMI/RG3owN7Oh9VKI0Uq+juNB
+	VLz07FbdStc4RIMu112yOktBdSycaSeybV54soMa9Xo1OLuj9ZgSrHOD0vsqZMuZ37iTtHhS8di7M
+	G6M4RWIbOZLMmkJ8u0kA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8YWO-00000001Qi8-2Up8;
-	Fri, 03 Apr 2026 07:00:48 +0000
-Received: from mail-m15593.qiye.163.com ([101.71.155.93])
+	id 1w8Yua-00000001b4d-1UCP;
+	Fri, 03 Apr 2026 07:25:48 +0000
+Received: from mail-24417.protonmail.ch ([109.224.244.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8YWL-00000001QfF-02fn;
-	Fri, 03 Apr 2026 07:00:47 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 396d58c7b;
-	Fri, 3 Apr 2026 15:00:38 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	wens@kernel.org,
-	samuel@sholland.org,
-	luca.ceresoli@bootlin.com
-Cc: Laurent.pinchart@ideasonboard.com,
-	jonas@kwiboo.se,
-	jernej.skrabec@gmail.com,
-	victor.liu@nxp.com,
-	dmitry.baryshkov@oss.qualcomm.com,
-	shengjiu.wang@nxp.com,
-	dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-sunxi@lists.linux.dev,
-	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v1 2/4] drm/bridge: dw-hdmi: Allow &dw_hdmi_plat_data.output_port = 0 without DRM_BRIDGE_ATTACH_NO_CONNECTOR
-Date: Fri,  3 Apr 2026 15:00:30 +0800
-Message-Id: <20260403070032.447102-3-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260403070032.447102-1-damon.ding@rock-chips.com>
-References: <20260403070032.447102-1-damon.ding@rock-chips.com>
+	id 1w8YuX-00000001b1f-2JbQ
+	for linux-rockchip@lists.infradead.org;
+	Fri, 03 Apr 2026 07:25:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail; t=1775201139; x=1775460339;
+	bh=5pCTJfDYr/r1hxWMxjtsdEhq89JT5cAfvqasjnMXAVQ=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=HFHWonGpk9aE8W+tG0jj7FT5gRxUI96AMoxWku5LuYlA4y8ck0kEzGzEZ4DXRseQP
+	 krLDNeRJOE7LSYPbWZEHj7c6u4ht6vl3c0FslsHAwqwwy5j1W53p76r0Vx2ORjf+y9
+	 P+4MvDHnRGC6uiCWN/tuXGz+HPrlBOsbtYECiEfxK9e9O/Gtp0crxSB5x37C5jktYv
+	 gNftONlJt12wd0tuPmjswECZgxuLgTB8NhV6ZwrFeQWhns2S/kyciGJwCa6OgT4+H9
+	 qvtaKfknhnLUfsVpxrbUyf3b0/no4llk5p+K4h99hF62spJxYQpRVYJixXNTiFjj6V
+	 7H/ZJhIYfDO+A==
+Date: Fri, 03 Apr 2026 07:25:35 +0000
+To: heiko@sntech.de
+From: Clemens Malten <c.malten@proton.me>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, Clemens Malten <c.malten@proton.me>
+Subject: [PATCH] arm64: dts: rockchip: odroid-m2: Enable DisplayPort Alt Mode over USB-C
+Message-ID: <20260403072408.44926-1-c.malten@proton.me>
+Feedback-ID: 133261535:user:proton
+X-Pm-Message-ID: 6e10c726fc4a3142f19f64eaf5dae528a9ac80d9
 MIME-Version: 1.0
-X-HM-Tid: 0a9d5224d3e103a3kunm1d6b6bc811de8c
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh4eHVZDSBpJSE8YT09PSkhWFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
-	hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=a3czWbbNA5bRxbuC+yj8HGXru+0VhED5jHr8yHMEfFFY6t7unzRDodHsLfmDyeRad9b/QdfUJzGJ3Smi7907Aro4Xl9VnWC2+x1KmIVJCb0ntGB2hpB9P/2tQukCKhE58S7ylyU2NlUI9MJ1OAzPunQBSCUK+B3nNmdoWub9CRQ=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=7YFq+k4oWEJWI7D226Mei8EZK2WhHcRNVgZytreS/T0=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_000045_634559_F293956A 
-X-CRM114-Status: GOOD (  11.00  )
+X-CRM114-CacheID: sfid-20260403_002545_871203_16ED1C80 
+X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,44 +67,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In the previous commit, Luca split the dw-hdmi attach process into two
-cases:
+Enable USB-C DisplayPort Alt Mode on the ODROID-M2 board (RK3588S) by
+adding the necessary DTS changes:
 
- A. hdmi->plat_data->output_port = 0:
-    the HDMI output (port@1) in device tree is not used
+- Enable dp0 controller (dw-dp driver)
+- Add VOP2 video pipeline endpoints: vp2 -> dp0 -> usbdp_phy0
+- Fix try-power-role from 'source' to 'sink' to allow the board to
+  receive power and trigger correct PD negotiation
+- Add altmodes block to the USB-C connector with DP SVID (0xff01) and
+  VDO. Note: svid must be declared as a 16-bit value (/bits/ 16) as
+  required by the typec class driver (fwnode_property_read_u16)
 
- B. hdmi->plat_data->output_port = 1:
-    the HDMI output (port@1) is parsed to find the next bridge
+Tested on ODROID-M2 (RK3588S) with a UGreen CM654 USB-C DP adapter
+under mainline Linux 6.19-rc.
 
-For Rockchip, many older platforms (RK3288, RK3399, etc.) only support
-case A by default. They can support DRM_BRIDGE_ATTACH_NO_CONNECTOR flag
-after adapting to the bridge connector helper. Relax this constraint in
-preparation for Rockchip dw-hdmi bridge-connector adaptation.
+This patch depends on Andy Yan's RK3588 DisplayPort Controller series:
+Link: https://lore.kernel.org/all/20250822063959.692098-1-andyshrk@163.com/
 
-Link: https://lore.kernel.org/all/20260402-drm-lcdif-dbanc-v3-6-27cd247a0847@bootlin.com/
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Signed-off-by: Clemens Malten <c.malten@proton.me>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ .../boot/dts/rockchip/rk3588s-odroid-m2.dts   | 29 ++++++++++++++++++-
+ 1 file changed, 28 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index dd50dda3a4f5..20b2f9e145b0 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2912,9 +2912,8 @@ static int dw_hdmi_bridge_attach(struct drm_bridge *bridge,
- {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
+index a72063c55..dbc62f032 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-odroid-m2.dts
+@@ -352,7 +352,17 @@ connector {
+ 			power-role = "dual";
+ 			sink-pdos = <PDO_FIXED(5000, 1000, PDO_FIXED_USB_COMM)>;
+ 			source-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
+-			try-power-role = "source";
++			try-power-role = "sink";
++
++			altmodes {
++				#address-cells = <1>;
++				#size-cells = <0>;
++				altmode@0 {
++					reg = <0>;
++					svid = /bits/ 16 <0xff01>;
++					vdo = <0xffffffff>;
++				};
++			};
  
--	/* DRM_BRIDGE_ATTACH_NO_CONNECTOR requires a remote-endpoint to the next bridge */
--	if (WARN_ON((flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) && !hdmi->plat_data->output_port))
--		return -EINVAL;
-+	if ((flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) && !hdmi->plat_data->output_port)
-+		return 0;
- 
- 	if (flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) {
- 		struct device_node *remote __free(device_node) =
+ 			ports {
+ 				#address-cells = <1>;
+@@ -952,3 +962,20 @@ vp0_out_hdmi0: endpoint@ROCKCHIP_VOP2_EP_HDMI0 {
+ 		remote-endpoint = <&hdmi0_in_vp0>;
+ 	};
+ };
++
++&dp0 {
++	status = "okay";
++};
++
++&dp0_in {
++	dp0_in_vp2: endpoint {
++		remote-endpoint = <&vp2_out_dp0>;
++	};
++};
++
++&vp2 {
++	vp2_out_dp0: endpoint@a {
++		reg = <ROCKCHIP_VOP2_EP_DP0>;
++		remote-endpoint = <&dp0_in_vp2>;
++	};
++};
 -- 
-2.34.1
+2.53.0
+
 
 
 _______________________________________________
