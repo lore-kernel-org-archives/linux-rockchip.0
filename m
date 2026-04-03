@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6914ED730AD
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:54:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EEF6D730B2
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:54:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ilKJZFjvWPQmaJjwJc4nq2eV8QPM4QJxZmgCwD+fOeQ=; b=1iOoxAH0FHGYvF
-	qNyWUaI8b6+HtfhxY3dPqgdRnJFn/Xnw58zIr9af1No7mirCbBl4m+OH/+Q3k7f0jbcgz1loUB+Ms
-	k9VhNSmKK0Cc1J7zODaZmiKo7oZCQtL6HrCDLN3C0zL8V+j/PyvQWqDPP0twitcKptxqGP4VJjX61
-	cJlQML4Gq3DzfsBViW44NpAPgkt3po5eJqQcypQ7hROcAvhWTCE9xr6OUyQ+9iAbSc8MfU/onq6n3
-	Whjpa6hb6yd2Kyvs0aQ3vbTM8kKaespqSIVp95kpngtykc0sRaUEiJn23fDgI2P/fHrjIS67Bpvkb
-	hwXzjigJwlQ8flqU1Now==;
+	List-Owner; bh=NY7zbe5I53AyFFvI++zfCHSazETmwjegCEdpP9+3xbE=; b=IQ0Yg4DXOw0pl9
+	GxBcjhJUOyKXU5LAyPGBbppwk2EViIVJWf043T3yiwqn8+/76ywIbzND8jjUEy0ouFCh2V6G0Y5Tw
+	i8yAFDP7jWtV90qBqx3J0zZXQqjHyMQljX+PVSF3oE6tGXDLtwYffjbBscwMZmGHKhQcbrD98f7Ow
+	gMHB4B9XraMUn0ehoUHk+jzKKUakENyjU1cK+ALx840xLVjD27SY+4ePV7g4miaXuxCNLzbalSoK4
+	SpzZFU+/V4TzmTyc5SNSV8Jgc7ejhlIlkfkSprX3IQCmCLfOnLcCd6xttSibfJz5eFKjZVugRzHR+
+	EG9oEbglesQ+/485SJ1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jer-00000002SHe-1ZoH;
-	Fri, 03 Apr 2026 18:54:17 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1w8jf0-00000002SLB-0V8K;
+	Fri, 03 Apr 2026 18:54:26 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeo-00000002SGV-39tV
+	id 1w8jex-00000002SKR-2vVB
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Apr 2026 18:54:15 +0000
+	Fri, 03 Apr 2026 18:54:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1775242454; bh=sn5c19iqNViTK6LNkTJwlq+SfVLeFcREcVA38qtyUTM=;
- b=vdnRSWJEK3x4vBorTIILOIZMn3uI96tVZLMVvIbDGu7YXHMEXQtrGaPRxePKhpbawj19zrMLU
- txuxm0JhP7VkEablOvo/DViUuDQ2nCQ0v3gPdKrvE+qQkQDVvKG+XkwkrcmLbo5WFMID2PfQoZJ
- 7lCR48emeTT50EYxUM2RrYp1rpgmoeSd0P/NeS1xaNxMCIchtsZNJCOHDdAJN4RmxxOBZlAXsMh
- kHn8gP4K2u/KXbd+Hl7azJtASISzWIOrCZwT24L4SjIdyTh4cs0iJh3QCAW6XbvSw0XfQzOrGP1
- 4BRl1c01waGNC0vnh6hpLpT/PLZoYiKwOofE3j2wAvPw==
-X-Forward-Email-ID: 69d00cd2dc98192b40b893fc
+ t=1775242462; bh=E0mkfxt+70i0sVXF+aEVWPvQZUQWrx57uJ1ok/r354g=;
+ b=n/HSHVY6/T6k+5mDZFlWi0mlaG10KRSx0XSiI3OQBLmioFTlT2/3icxVBGV8U3TA+z4wNo3oO
+ tjWkxgi5fSs5ssdHBJxeu7avjiLqT8f7WLXhEGIWx9Dy7aWZhUFYETtvtfDoRJ4uRrciSi8DsvY
+ 33XOkteO0++g6y4RPSIvKYpq0tEhk5gu5mhBtoEcatGClZCTgPg4h3CybZxMJ4/gGMiZzBJUbGe
+ 4KJxGrTfEBk46wo6eeOJ8+RojF8jBP8PbLinFt4tq/5aEPkl9JfjAbH/dv5dxTtzqOGp1AtvgC7
+ QR4wY/MGC+s/yznKslh9zCShYMyjm0OjhjD1Jp6gKYcA==
+X-Forward-Email-ID: 69d00cd7dc98192b40b89417
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
+ 149.28.215.223
 X-Forward-Email-Version: 2.6.68
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -61,16 +61,17 @@ Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 10/13] drm: bridge: dw_hdmi: Use drm_connector_helper_hpd_irq_event()
-Date: Fri,  3 Apr 2026 18:52:56 +0000
-Message-ID: <20260403185303.80748-11-jonas@kwiboo.se>
+Subject: [PATCH v3 11/13] drm: bridge: dw_hdmi: Extract dw_hdmi_connector_status_update()
+Date: Fri,  3 Apr 2026 18:52:57 +0000
+Message-ID: <20260403185303.80748-12-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260403185303.80748-1-jonas@kwiboo.se>
 References: <20260403185303.80748-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_115414_885410_6B4BF8BE 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20260403_115423_742192_CC7F3F5F 
+X-CRM114-Status: UNSURE (   9.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,36 +88,66 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Use drm_connector_helper_hpd_irq_event() or drm_helper_hpd_irq_event()
-depending on if a dw-hdmi connector or bridge is used.
+Move connector EDID update and CEC phys addr handling to a helper
+function as a preparation before moving EDID refresh from get_modes
+funcs to detect/force funcs.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v3: New patch
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 30 +++++++++++++----------
+ 1 file changed, 17 insertions(+), 13 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 4d079b689b3b..4a0498922476 100644
+index 4a0498922476..0d42fdf9a386 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -3054,10 +3054,13 @@ static void dw_hdmi_hpd_work(struct work_struct *work)
- {
- 	struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
+@@ -2467,6 +2467,21 @@ static const struct drm_edid *dw_hdmi_edid_read(struct dw_hdmi *hdmi,
+  * DRM Connector Operations
+  */
  
--	if (hdmi->bridge.dev) {
-+	if (hdmi->connector.dev)
-+		drm_connector_helper_hpd_irq_event(&hdmi->connector);
-+	else if (hdmi->bridge.dev)
- 		drm_helper_hpd_irq_event(hdmi->bridge.dev);
++static void
++dw_hdmi_connector_status_update(struct drm_connector *connector,
++				enum drm_connector_status status)
++{
++	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
++	const struct drm_edid *drm_edid;
 +
-+	if (hdmi->bridge.dev)
- 		drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
--	}
++	drm_edid = dw_hdmi_edid_read(hdmi, connector);
++	drm_edid_connector_update(connector, drm_edid);
++	drm_edid_free(drm_edid);
++
++	cec_notifier_set_phys_addr(hdmi->cec_notifier,
++				   connector->display_info.source_physical_address);
++}
++
+ static enum drm_connector_status
+ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
+ {
+@@ -2484,20 +2499,9 @@ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
+ 
+ static int dw_hdmi_connector_get_modes(struct drm_connector *connector)
+ {
+-	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi,
+-					     connector);
+-	const struct drm_edid *drm_edid;
+-	int ret;
++	dw_hdmi_connector_status_update(connector, connector->status);
+ 
+-	drm_edid = dw_hdmi_edid_read(hdmi, connector);
+-
+-	drm_edid_connector_update(connector, drm_edid);
+-	cec_notifier_set_phys_addr(hdmi->cec_notifier,
+-				   connector->display_info.source_physical_address);
+-	ret = drm_edid_connector_add_modes(connector);
+-	drm_edid_free(drm_edid);
+-
+-	return ret;
++	return drm_edid_connector_add_modes(connector);
  }
  
- static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+ static int dw_hdmi_connector_atomic_check(struct drm_connector *connector,
 -- 
 2.53.0
 
