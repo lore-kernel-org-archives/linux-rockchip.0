@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9AF8D730B0
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 07:00:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 045A0D730B1
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 07:00:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jVDvcX9Te1g68fm3/IAchuUjPHrjcbD/+cSFiZgN/D4=; b=php351SwDOhJq4
-	IVdfDqZ0VE5f1h3c5cxRVVmWULFH4rEb2e8t/jXFy2sqwO7MHADHCoBCxkc7jL/dpL0mpF9CVclWo
-	0uD2nMUvWGQ4pkbVbsBDs6NhfMt2dwbB4BgQrEL3yCC6SxPLvBLyPUVPHgxAQNLZTwJecNg33X5iv
-	feZg0jqwM+Q5pXBbppDNqohNiPCTbQva8IsIrErK2AhkmCH45Ds8LCxr7voDncfhnTq9NtaXV2ux+
-	aAVBRFkwnRvcwhiE7MdFYGu0ReqjgCOw/AIaJhmZy+auESNYRC60pl/YS07E+RmqQbaUMZm7Ytp3+
-	Qf7QZi8yhiLabjoVNzWA==;
+	List-Owner; bh=ERJr1CVgrY/VFDLlYWLIl69u08SyouSNycMmNS8LMFI=; b=OImdtolIDj8kd1
+	Da6boLdL3Wc9rSy3KI4lH4qKdQ6NW42QFkyZZ1Vx2Wk1EJ9jCBqybTLE7uNH0Dn2kM/FPkUpH8BaU
+	Gjl15ByDH6cWZX5gZKK1kEKpP50otDTExvlfEPGg0BuOQygFK0xXslzgzD74tsXMbghGl4quTIPKJ
+	Aq3oO4snrDl9ssz2v3lt/Oo5wCDn6tKVK4n5sxMdj/mwPsWcPK8kIyCbLL7hgW+5lak0ntJyUY2VT
+	u/UMwGBlgB9IW6YwmvGCYhxL4W/UjPUTWn/hsUT5h+wpwbie5OYXX05MQgW+r7i9Rh1vzR+wYwX/d
+	7bHl7uLVn0M1eyZ078lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8YWP-00000001Qib-0hUs;
-	Fri, 03 Apr 2026 07:00:49 +0000
-Received: from mail-m3295.qiye.163.com ([220.197.32.95])
+	id 1w8YWR-00000001Qm6-3mJL;
+	Fri, 03 Apr 2026 07:00:51 +0000
+Received: from mail-m49213.qiye.163.com ([45.254.49.213])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8YWM-00000001Qfz-0pWF;
-	Fri, 03 Apr 2026 07:00:47 +0000
+	id 1w8YWP-00000001Qf6-1vHJ;
+	Fri, 03 Apr 2026 07:00:50 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 396d58c9f;
-	Fri, 3 Apr 2026 15:00:42 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 396d58c6e;
+	Fri, 3 Apr 2026 15:00:36 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
@@ -56,26 +56,26 @@ Cc: Laurent.pinchart@ideasonboard.com,
 	linux-rockchip@lists.infradead.org,
 	linux-sunxi@lists.linux.dev,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v1 4/4] drm/rockchip: dw_hdmi: Support to find the next bridge
-Date: Fri,  3 Apr 2026 15:00:32 +0800
-Message-Id: <20260403070032.447102-5-damon.ding@rock-chips.com>
+Subject: [PATCH v1 1/4] drm/bridge: dw-hdmi: Pass bridge attach flags for dw_hdmi_bind()
+Date: Fri,  3 Apr 2026 15:00:29 +0800
+Message-Id: <20260403070032.447102-2-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260403070032.447102-1-damon.ding@rock-chips.com>
 References: <20260403070032.447102-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9d5224e24f03a3kunm1d6b6bc811ded4
+X-HM-Tid: 0a9d5224cc9f03a3kunm1d6b6bc811de6a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGhkeTFZIQ09NQ0hKSktLHR5WFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGRlLHVZJGUIaGklMT0tOHh5WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
 	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=aFs31TTZtr+bCfSkmGEJmc0xRV7zEwxDbZrhSC+mQNg0U67RwMRuJMxl4yptVlC6kZi5QRfl2dSs3ey2cwYI+2sXDp6VJgBZEO9JDJITLh/JRY5CKD1HhV4l/ODhISn/XFR3t4jpqT9q9y/19yiV87id2R+hDfWQw9s+LbJU9AY=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=qhMDeS5MJsqMangPhhuZJQL2DTnTsaxRf2SE3asViXM=;
+	b=OlOoyejoOkXGTU0c6apybdH7VloZYuymy3nY8UshMSA/uZrhmc5R0e/cHRqTMPPT4ts1ZuQHeZtwbl5PrhrJw/gbb17xqSbn8A58hlp6/36pSUmFjsTJo5DU0GsPN2VZxUpglrz+Vek1RK0D28zCnasPVmCr9eMpxEtc1kwl/7E=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=McMc5vAPh2G/cVqrH2p4ek7fEhv61YfNK/RtiS2LLiY=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_000046_392897_EDBB3727 
-X-CRM114-Status: GOOD (  10.03  )
+X-CRM114-CacheID: sfid-20260403_000049_727712_7E5026A9 
+X-CRM114-Status: GOOD (  10.56  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,47 +92,90 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-If there is a remote node connected to the HDMI output (port@1), the
-&dw_hdmi_plat_data.output_port should be set to 1. This patch allows
-Rockchip dw-hdmi to support the hdmi-connector and the next bridge.
+For Rockchip and Allwinner platforms, the HDMI encoder attaches the
+dw-hdmi bridge via dw_hdmi_bind(). This additional bridge attach flag
+serves as preparation for the Rockchip dw-hdmi driver to support the
+bridge-connector framework.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   | 5 +++--
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 2 +-
+ drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c       | 2 +-
+ include/drm/bridge/dw_hdmi.h                | 4 +++-
+ 4 files changed, 8 insertions(+), 5 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index ada45e8b3e2c..dd50dda3a4f5 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -3619,7 +3619,8 @@ EXPORT_SYMBOL_GPL(dw_hdmi_remove);
+  */
+ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
+ 			     struct drm_encoder *encoder,
+-			     const struct dw_hdmi_plat_data *plat_data)
++			     const struct dw_hdmi_plat_data *plat_data,
++			     enum drm_bridge_attach_flags flags)
+ {
+ 	struct dw_hdmi *hdmi;
+ 	int ret;
+@@ -3628,7 +3629,7 @@ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
+ 	if (IS_ERR(hdmi))
+ 		return hdmi;
+ 
+-	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL, 0);
++	ret = drm_bridge_attach(encoder, &hdmi->bridge, NULL, flags);
+ 	if (ret) {
+ 		dw_hdmi_remove(hdmi);
+ 		return ERR_PTR(ret);
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index b5cfcb936078..014ac09fd733 100644
+index 0dc1eb5d2ae3..21b141b7cb9c 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -544,6 +544,8 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	struct drm_encoder *encoder;
- 	struct rockchip_hdmi *hdmi;
- 	struct drm_connector *connector;
-+	struct device_node *remote;
-+	struct drm_bridge *next_bridge;
- 	int ret;
- 
- 	if (!pdev->dev.of_node)
-@@ -610,6 +612,18 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+@@ -608,7 +608,7 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
  
  	platform_set_drvdata(pdev, hdmi);
  
-+	remote = of_graph_get_remote_node(hdmi->dev->of_node, 1, -1);
-+	if (remote) {
-+		of_node_put(remote);
-+
-+		ret = drm_of_find_panel_or_bridge(hdmi->dev->of_node, 1, 0,
-+						  NULL, &next_bridge);
-+		if (ret && ret != -ENODEV)
-+			goto err_cleanup_encoder;
-+
-+		plat_data->output_port = 1;
-+	}
-+
- 	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data, DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+-	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
++	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data, 0);
  
  	/*
+ 	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
+diff --git a/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c b/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c
+index 96532709c2a7..04173335f7e7 100644
+--- a/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c
++++ b/drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c
+@@ -188,7 +188,7 @@ static int sun8i_dw_hdmi_bind(struct device *dev, struct device *master,
+ 
+ 	platform_set_drvdata(pdev, hdmi);
+ 
+-	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
++	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data, 0);
+ 
+ 	/*
+ 	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
+diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+index 8500dd4f99d8..e789fb451ef2 100644
+--- a/include/drm/bridge/dw_hdmi.h
++++ b/include/drm/bridge/dw_hdmi.h
+@@ -6,6 +6,7 @@
+ #ifndef __DW_HDMI__
+ #define __DW_HDMI__
+ 
++#include <drm/drm_bridge.h>
+ #include <sound/hdmi-codec.h>
+ 
+ struct drm_display_info;
+@@ -182,7 +183,8 @@ void dw_hdmi_remove(struct dw_hdmi *hdmi);
+ void dw_hdmi_unbind(struct dw_hdmi *hdmi);
+ struct dw_hdmi *dw_hdmi_bind(struct platform_device *pdev,
+ 			     struct drm_encoder *encoder,
+-			     const struct dw_hdmi_plat_data *plat_data);
++			     const struct dw_hdmi_plat_data *plat_data,
++			     enum drm_bridge_attach_flags flags);
+ 
+ void dw_hdmi_resume(struct dw_hdmi *hdmi);
+ 
 -- 
 2.34.1
 
