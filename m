@@ -4,71 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 419E1D6AB1B
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 00:53:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF8DD6AAFA
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 02:05:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hKcPHk9tRr0sHX75RFOQlAdUz+ERJUG8+7qZmnoBMS8=; b=ftgNokeUPq+Q/g
-	2GTgwfoNELlIgAnTo00V3yaqxuf0zzN28XL5zaLPl7sQmdWv6qy4i+KV+veIxdfIboEAoUaLZVYD1
-	+3AvS70iMw6+qo34daJr7+doxytWZMqI62BX0Qsk5IGs4FP9eIEwjL4UZFF6pEXqIx0U1SmLhK8wT
-	P/XDMdAceQyvavwxTyXZnQis5FZqq3XP8bFt2g9+I0FA3FHkIJ9+MSQOuV7Kiv3e4mii1lMRY9tDG
-	rwb48S4RKeuvOAhmZBDzxOUrk1XanKRY4eVBcs3MlhSVtcgAuf+wQsh+0Do+7FGFBMNPTSkZ9IPmQ
-	+Vmr2Ub8MK1AUfqB4rLw==;
+	List-Owner; bh=dUF6czuyJh6EbOG7QcQmoo7xCg1F1Rk0VOILskryGPs=; b=rZdShEVpOCKNJ1
+	mfRgt1+3ALynSgKltIc0F///hsEqtfwuLx4Us69/M1n1FJd/w/9Vx1/G+DOwRf+2gkXZP/qxc8itH
+	W9WpgpnyFUdu55NfbOD86SaA1lu9mglIymVzbRbqivedL9pOj7l5nkrrESmRvN8C8k0YoI5h8ZAax
+	7PbwWj9E8aEJB6inEjqHGhsdX2MXgaoe1Fc72gBCwsGRKA0L8yO5pFNR2U258HG2vrTmybGqq+lrz
+	nPZr1VpRBlgLc+H8+wpLQg3OJhLHtQ9/7H1fS97xiVhtW8Rv6we9dFRF2RPo5dESEDtGIVfj8Xbpk
+	SuX7wIt/5g6FlKWhW7Lw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Smy-0000000105i-0RpO;
-	Fri, 03 Apr 2026 00:53:32 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1w8Tus-000000015CN-0Vfc;
+	Fri, 03 Apr 2026 02:05:46 +0000
+Received: from mx0a-00069f02.pphosted.com ([205.220.165.32])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8Smv-00000001048-1E02;
-	Fri, 03 Apr 2026 00:53:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=R/gbGmXT8G+ZNC4WOZV98syZMUVqLqbIohTb80/HY9c=; b=K2
-	xaUK9NCidBxIhq4MBQyfiD9duhm5SufM2BFIUZeFRB8PBymzG9r0LIczZglK9WodAR/UyU9NhjAE7
-	ECUtKxIYSvVH0BJamhsL+NI1lDOLZxft0hNk9bXUmKlXF4jThuCxs79Qcg/qelLkptQ0+iPIOgKqk
-	X0It/l4/no9Dnk4=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1w8SmT-00Eaxu-P1; Fri, 03 Apr 2026 02:53:01 +0200
-Date: Fri, 3 Apr 2026 02:53:01 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Dennis Gilmore <dennis@ausil.us>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>, FUKAUMI Naoki <naoki@radxa.com>,
-	Hsun Lai <i@chainsx.cn>, Jonas Karlman <jonas@kwiboo.se>,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-	John Clark <inindev@gmail.com>,
-	Michael Opdenacker <michael.opdenacker@rootcommit.com>,
-	Quentin Schulz <quentin.schulz@cherry.de>,
-	Chukun Pan <amadeus@jmu.edu.cn>, Alexey Charkov <alchark@gmail.com>,
-	Peter Robinson <pbrobinson@gmail.com>,
-	Michael Riesch <michael.riesch@collabora.com>,
-	Mykola Kvach <xakep.amatop@gmail.com>,
-	Jimmy Hon <honyuenkwun@gmail.com>, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v5 2/3] arm64: dts: rockchip: refactor items from Orange
- Pi 5/b to prep for Pro
-Message-ID: <b1ba2e70-4886-4d37-9c53-9045c3ad78df@lunn.ch>
-References: <20260401010707.2584962-1-dennis@ausil.us>
- <20260401010707.2584962-3-dennis@ausil.us>
- <b733883d-e515-4946-a81f-d1a595985e01@lunn.ch>
- <CAABkxwvnv7i=xg53qu4JDapBs6ATaMGh9iXZfi+od=CCxRxQUA@mail.gmail.com>
+	id 1w8Tup-000000015BX-1KIC;
+	Fri, 03 Apr 2026 02:05:44 +0000
+Received: from pps.filterd (m0246629.ppops.net [127.0.0.1])
+	by mx0b-00069f02.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6330P58C3150600;
+	Fri, 3 Apr 2026 02:05:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
+	:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=
+	corp-2025-04-25; bh=va8tZAzcik9ibYN5dhcgHo1/7Og0KTYznIgjG96zuQE=; b=
+	cG44+wdKf6Tsvz0CAm7MuabTvueoPrpy1HHvc/ZKaE8kiPo23/Adrj05ikf7xlvO
+	BWgibIrWmphiREqrrWVL7zNnweIFafwIsLdqQzsq/DcQ6/4d6IZYVI3+a0h79Ejm
+	vbJtOOS0Gm76gQDYw+eKCapRF+amu60ueEp66+ZiIN3g48+fNqqx31Rq9Ruk/rPm
+	sPtgVUk3bpqj/RDEMB7s4m7Q1Z9JtNt5uJRNnkDbRdotbBySjwlnNJ2gxEAvLSpo
+	iUPZ+4Lu7O0FDRV1PfFtTYHkpl3cYRpsllpwYl1TCwif6O7JPSnzzqBwLclIL1KD
+	Ty4zObYB9q1v5UpD6yz2iw==
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.appoci.oracle.com [138.1.37.129])
+	by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 4d66v5se65-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 03 Apr 2026 02:05:40 +0000 (GMT)
+Received: from pps.filterd (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2) with ESMTP id 6331A5Lk028960;
+	Fri, 3 Apr 2026 02:05:39 GMT
+Received: from pps.reinject (localhost [127.0.0.1])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id 4d65eddp3b-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Fri, 03 Apr 2026 02:05:39 +0000
+Received: from phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
+	by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 63325cqX017364;
+	Fri, 3 Apr 2026 02:05:38 GMT
+Received: from ca-mkp2.ca.oracle.com.com (mpeterse-ol9.allregionaliads.osdevelopmeniad.oraclevcn.com [100.100.251.135])
+	by phxpaimrmta03.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTP id 4d65eddp33-1;
+	Fri, 03 Apr 2026 02:05:38 +0000
+From: "Martin K. Petersen" <martin.petersen@oracle.com>
+To: Shawn Lin <shawn.lin@rock-chips.com>, linux-scsi@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+        Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: "Martin K . Petersen" <martin.petersen@oracle.com>,
+        "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+        Heiko Stuebner <heiko@sntech.de>
+Subject: Re: [PATCH v1 1/1] scsi: ufs: rockchip: Drop unused include
+Date: Thu,  2 Apr 2026 22:05:24 -0400
+Message-ID: <177517593422.3522679.1544975066978972395.b4-ty@oracle.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
+References: <20260320215606.3236516-1-andriy.shevchenko@linux.intel.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <CAABkxwvnv7i=xg53qu4JDapBs6ATaMGh9iXZfi+od=CCxRxQUA@mail.gmail.com>
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-02_04,2026-04-02_05,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 bulkscore=0 spamscore=0
+ malwarescore=0 mlxlogscore=624 phishscore=0 suspectscore=0 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2603050001
+ definitions=main-2604030017
+X-Proofpoint-GUID: jMrp97DojdWvgtypZ3hTaCcxL8mvjgnP
+X-Authority-Analysis: v=2.4 cv=G7cR0tk5 c=1 sm=1 tr=0 ts=69cf2074 b=1 cx=c_pps
+ a=WeWmnZmh0fydH62SvGsd2A==:117 a=WeWmnZmh0fydH62SvGsd2A==:17
+ a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=jiCTI4zE5U7BLdzWsZGv:22 a=EIcjfB9IiI4px24ztqRk:22 a=VwQbUJbxAAAA:8
+ a=kJSQstGPYqi19cbqO5EA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-ORIG-GUID: jMrp97DojdWvgtypZ3hTaCcxL8mvjgnP
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDAzMDAxNyBTYWx0ZWRfXz6/IPjs5Ksft
+ sSMZS7rSwfShxry1hbwSuS85VcpGz4EIl5J86V0o5m6H4LIFZPl9CmPNlFpz8W/VSIvFlazZOLR
+ +V7bmKsBhgEAccXO/n61oIvZJ1Ktvrv/kQonJhbQaE7nni/5ZGpWpu3aUW7hnRO12QTiCEcUBoz
+ mr0ikJethsbC3wPqrx+LV6e+RMbrl1Yp0ny2W597zfZnRzAWsaXW+RIj+H1ELsbeRf2oxoXXGK9
+ OFij43Xc0i7JUNsbhU5wzAZUBchXzJIPr1dzbtffK6jnIwDE3TGZu/mrKgcIqk8h1jEZzHsT4qz
+ i/vn/sdvMEd94CByE59icH9rApmIIYA/aBY+4AUWNZCSRTVqS2dnVr3ZTVPg35SUU5p+fnH3Df0
+ 146YNgToR9XRIAcVx8Vu0GiCpTYViqLWpQHjYchK0Qsom4F7Ujckq8kItgbl6nxfUbXEh6xbbx9
+ 5SIuXISiMP9YV4UcEEA==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_175329_346615_19178FEE 
-X-CRM114-Status: GOOD (  15.48  )
+X-CRM114-CacheID: sfid-20260402_190543_362835_14E06DB7 
+X-CRM114-Status: UNSURE (   9.09  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,31 +108,27 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBBcHIgMDEsIDIwMjYgYXQgMDg6Mjc6MzBBTSAtMDUwMCwgRGVubmlzIEdpbG1vcmUg
-d3JvdGU6Cj4gSGkgQW5kcmV3LAo+IAo+IE9uIFdlZCwgQXByIDEsIDIwMjYgYXQgNjo1MuKAr0FN
-IEFuZHJldyBMdW5uIDxhbmRyZXdAbHVubi5jaD4gd3JvdGU6Cj4gPgo+ID4gPiArJmdtYWMxIHsK
-PiA+ID4gKyAgICAgY2xvY2tfaW5fb3V0ID0gIm91dHB1dCI7Cj4gPiA+ICsgICAgIHBoeS1oYW5k
-bGUgPSA8JnJnbWlpX3BoeTE+Owo+ID4gPiArICAgICBwaHktbW9kZSA9ICJyZ21paS1yeGlkIjsK
-PiA+ID4gKyAgICAgcGluY3RybC0wID0gPCZnbWFjMV9taWltCj4gPiA+ICsgICAgICAgICAgICAg
-ICAgICAmZ21hYzFfdHhfYnVzMgo+ID4gPiArICAgICAgICAgICAgICAgICAgJmdtYWMxX3J4X2J1
-czIKPiA+ID4gKyAgICAgICAgICAgICAgICAgICZnbWFjMV9yZ21paV9jbGsKPiA+ID4gKyAgICAg
-ICAgICAgICAgICAgICZnbWFjMV9yZ21paV9idXM+Owo+ID4gPiArICAgICBwaW5jdHJsLW5hbWVz
-ID0gImRlZmF1bHQiOwo+ID4gPiArICAgICB0eF9kZWxheSA9IDwweDQyPjsKPiA+Cj4gPiBwaHkt
-bW9kZSA9ICJyZ21paS1yeGlkIiBtZWFucyB0aGUgUENCIHByb3ZpZGVzIHRoZSAybnMgZGVsYXkg
-Zm9yCj4gPiBUWC4gVGhpcyBpcyB1bmxpa2VseSB0byBiZSBjb3JyZWN0LiBQbGVhc2UgdHJ5ICJy
-Z21paS1pZCIgYW5kIGRlbGV0ZQo+ID4gdGhlIHR4X2RlbGF5Lgo+IAo+IEFzIEkgbWVudGlvbmVk
-IHRvIHlvdSBpbiB2MiBJIGRvIG5vdCBoYXZlIHRoZSBhZmZlY3RlZCBoYXJkd2FyZSB0bwo+IHRl
-c3QgYW55IGNoYW5nZXMuIFRoaXMgcGF0Y2ggaXMganVzdCBtb3ZpbmcgdGhlIGV4aXN0aW5nIGRl
-ZmluaXRpb24KPiBmcm9tIHRoZSBjb21tb24gZHRzaSB0byB0aGUgdHdvIGRldmljZXMgdGhhdCAg
-aGF2ZSBnbWFjMSB3aXJlZCB1cC4gSQo+IGFtIG5vdCBjb21mb3J0YWJsZSBtYWtpbmcgY2hhbmdl
-cyBoZXJlIHRoYXQgSSBjYW4gbm90IHZlcmlmeSBpZiB0aGV5Cj4gd29yayBvciBub3QuCgpZZXMs
-IHNvcnJ5LgoKUGxlYXNlIGFkZCB0aGlzIHRvIHRoZSBjb21taXQgbWVzc2FnZSwgc28gaSBkb24n
-dCBtYWtlIHRoZSBzYW1lIHBvaW50CmFnYWluLgoKCUFuZHJldwoKX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
-CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
-ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Fri, 20 Mar 2026 22:56:06 +0100, Andy Shevchenko wrote:
+
+> This driver includes the legacy header <linux/gpio.h> but does
+> not use any symbols from it. Drop the inclusion.
+> 
+> 
+
+Applied to 7.1/scsi-queue, thanks!
+
+[1/1] scsi: ufs: rockchip: Drop unused include
+      https://git.kernel.org/mkp/scsi/c/8ad1ddc50d15
+
+-- 
+Martin K. Petersen
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
