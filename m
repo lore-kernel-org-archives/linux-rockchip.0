@@ -4,61 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9D83D73099
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 04:40:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF43D730AC
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 07:00:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kQdTXZ5LTpSkHRDOagxo13Kh0yhy/xB6p7ipzJbkN3g=; b=wXuO8SCQeGf5hx
-	o3BrbDrE89Aji/CSZ11UtbgB4dbWKBjley4h4WKLpeIuqU6B8HRKfMg+LHHTrDT/53Knmma56Wj87
-	tRyoutO2rwVX0DAIQIB7s8VSc4I83cj7Du+JQTS034TzXZ3ZaDJJb0Og3jAjIW8LOENfypYWVUPZk
-	i92724wiETLuBQjxi4VGIhIX/jp6ukxAqLz2SvURNEuOUKTeuecPFAbyhMlESiT4IFuXm29ABpyQm
-	Fm7+wDc0lfR9ukyoo5ibQLuACXKjIKS22mye+2dOK6C7QpezQmEhUqrsUMMiUnbqfipOFsRBfj6DA
-	AaIj2e8zJk/C8at18Oig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=MLi56E/jrFjBI9gsLiufDsmTgYvuE+V+laEJALbuSy4=; b=31g2PpWGH5C5TJ
+	hUympjoIfbS6QBk0g/k/WtttrD/R1EMkO1UYuakASbxCw4yPojA+b+NYfxDJa5FJx0vPLhYMXgJuS
+	SQkHgHjaYkBmDQTaYZNnHUqfvnsVMsU9c2tyddzX5fmsJnTwY2zMdmVZpz6c8idInTIJupt8M0qtQ
+	frBN2i3+BL084tXVDf4zCPkpsywCPtvubcAiKIyhjKQhgoZEtkbnrHPsoTdxQEHPUFrrMu2GtMgnq
+	r+X4G5KNVJhCsI9mhOA/QN1MvLkOlgf9JfyHLwI+QoFO4EPbvcP23iDSOa68bKnIO4mYZwJ3IsdXK
+	Wngvn1/BCY7M/6U2MjYg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8WKv-00000001CwO-0JiG;
-	Fri, 03 Apr 2026 04:40:49 +0000
-Received: from mail-m2457.xmail.ntesmail.com ([45.195.24.57])
+	id 1w8YWR-00000001QlF-1Lbe;
+	Fri, 03 Apr 2026 07:00:51 +0000
+Received: from mail-m32116.qiye.163.com ([220.197.32.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8WKp-00000001Cuc-2YHK;
-	Fri, 03 Apr 2026 04:40:47 +0000
-Received: from [192.168.31.31] (gy-adaptive-ssl-proxy-1-entmail-virt204.gy.ntes [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 396864e74;
-	Fri, 3 Apr 2026 12:40:27 +0800 (GMT+08:00)
-Message-ID: <5663593b-2c53-4632-ad2c-db9efa8e9ab2@rock-chips.com>
-Date: Fri, 3 Apr 2026 12:40:27 +0800
+	id 1w8YWO-00000001Qes-1z2P;
+	Fri, 03 Apr 2026 07:00:49 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 396d58c5d;
+	Fri, 3 Apr 2026 15:00:34 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	wens@kernel.org,
+	samuel@sholland.org,
+	luca.ceresoli@bootlin.com
+Cc: Laurent.pinchart@ideasonboard.com,
+	jonas@kwiboo.se,
+	jernej.skrabec@gmail.com,
+	victor.liu@nxp.com,
+	dmitry.baryshkov@oss.qualcomm.com,
+	shengjiu.wang@nxp.com,
+	dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	Damon Ding <damon.ding@rock-chips.com>
+Subject: [PATCH v1 0/4] Apply bridge-connector for the Rockchip DW-HDMI driver
+Date: Fri,  3 Apr 2026 15:00:28 +0800
+Message-Id: <20260403070032.447102-1-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] iommu/rockchip: fix page table allocation flags for v2
- IOMMU
-From: Simon Xue <xxm@rock-chips.com>
-To: Jonas Karlman <jonas@kwiboo.se>, Midgy BALON <midgy971@gmail.com>
-Cc: iommu@lists.linux.dev, joro@8bytes.org, will@kernel.org,
- robin.murphy@arm.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- stable@vger.kernel.org
-References: <20260331075010.1463-1-midgy971@gmail.com>
- <0f285782-b12a-4abd-bca7-b6c549bed59f@rock-chips.com>
- <e622cc9e-8fb0-454a-b88e-dc13cf2ff507@kwiboo.se>
- <89ed223d-1a2c-447d-9f21-76969e668855@rock-chips.com>
-In-Reply-To: <89ed223d-1a2c-447d-9f21-76969e668855@rock-chips.com>
-X-HM-Tid: 0a9d51a47baa03ackunm789b51092f4f36d
+X-HM-Tid: 0a9d5224c50403a3kunm1d6b6bc811de47
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGh9OGlZLT0IaGEJLGh1NTE5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUJCSU5LVU
-	pLS1VKQktCWQY+
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0xKT1YfHhpJHk9KThhDHUpWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=g0Q2Ypis5R4cjDFjKLDJBYsfm8rOI3Yghsqwhne/+vJr51C2y0lEGJuoCIS+2jqmbXmQDmt1Qtm73P0DZ/An+3jA5o8AdaBlZrjPAYlGvu8LvlHWoJ0WGnSMtPisgmX20DFwzko0CCTHzD1PTFEcvc1ia4gT6ks6UFToCioYjO0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=eYBzo3C1Cf7sqGeYKJ1qwNvqGxve4byxZgH3FVKfsJM=;
+	b=i3q+UMV3T40Upw+1mmYGdtYmgqCkv9XHwkxm6H6mozeFHn9SlX0oRLG/mD+xCH5lrus0RrFBhRoR6oFsI9CBcLz5+Qf11Ik7WReJYvsvc25eGOkRgJ5A6DWs++LWimnqFfoxgC7ibB9ZThrhcffXNrMjMuXp2JqBqp1c2y8rBu0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Po/SGAUNetbNZqws7TyBI/pS5fyLBPvJOytlLfUBhDg=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260402_214044_217134_DD5715ED 
-X-CRM114-Status: GOOD (  20.17  )
+X-CRM114-CacheID: sfid-20260403_000048_689384_AD7238AF 
+X-CRM114-Status: UNSURE (   7.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,95 +86,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CuWcqCAyMDI2LzQvMSAxODoyMiwgU2ltb24gWHVlIOWGmemBkzoKPiBIaSBKb25hcywKPgo+IOWc
-qCAyMDI2LzQvMSAxNjo0MSwgSm9uYXMgS2FybG1hbiDlhpnpgZM6Cj4+IEhpIFNpbW9uLAo+Pgo+
-PiBPbiA0LzEvMjAyNiA5OjQ4IEFNLCBTaW1vbiB3cm90ZToKPj4+IEhpIE1pZGd5LAo+Pj4KPj4+
-IOWcqCAyMDI2LzMvMzEgMTU6NTAsIE1pZGd5IEJBTE9OIOWGmemBkzoKPj4+PiBjb21taXQgMmE3
-ZTY0MDBmNzJiICgiaW9tbXU6IHJvY2tjaGlwOiBBbGxvY2F0ZSB0YWJsZXMgZnJvbSBhbGwKPj4+
-PiBhdmFpbGFibGUgbWVtb3J5IGZvciBJT01NVSB2MiIpIHJlbW92ZWQgR0ZQX0RNQTMyIGZyb20K
-Pj4+PiBpb21tdV9kYXRhX29wc192MiwgcmVhc29uaW5nIHRoYXQgUkszNTZ4IGFuZCBSSzM1ODgg
-SU9NTVUgdjIgaGFyZHdhcmUKPj4+PiBzdXBwb3J0cyB1cCB0byA0MC1iaXQgcGh5c2ljYWwgYWRk
-cmVzc2VzIGZvciBwYWdlIHRhYmxlcy4gSG93ZXZlciwgdGhlCj4+Pj4gUkszNTY4IElPTU1VIHBh
-Z2UtdGFibGUgd2Fsa2VyIHVzZXMgYSAzMi1iaXQgQVhJIGJ1czogaXQgY2Fubm90IGFjY2Vzcwo+
-Pj4+IHBoeXNpY2FsIGFkZHJlc3NlcyBhYm92ZSA0IEdCIHJlZ2FyZGxlc3Mgb2YgdGhlIGFkZHJl
-c3MgZW5jb2RpbmcgCj4+Pj4gcmFuZ2UuCj4+Pj4KPj4+PiBPbiBib2FyZHMgd2l0aCBtb3JlIHRo
-YW4gNCBHQiBvZiBSQU0gKGUuZy4gOCBHQiBMUEREUjRYKSwgcmVtb3ZpbmcKPj4+PiBHRlBfRE1B
-MzIgY2F1c2VzIHR3byBkaXN0aW5jdCBmYWlsdXJlIG1vZGVzOgo+Pj4+Cj4+Pj4gMS4gRGlyZWN0
-IGFsbG9jYXRpb24gYWJvdmUgNCBHQjogaW9tbXVfYWxsb2NfcGFnZXNfc3ooKSBtYXkgcmV0dXJu
-Cj4+Pj4gwqDCoMKgwqAgbWVtb3J5IGFib3ZlIDB4MTAwMDAwMDAwLsKgIFRoZSBoYXJkd2FyZSBw
-YWdlLXRhYmxlIHdhbGtlciAKPj4+PiBpc3N1ZXMgYQo+Pj4+IMKgwqDCoMKgIGJ1cyBlcnJvciB0
-cnlpbmcgdG8gZGVyZWZlcmVuY2UgdGhvc2UgYWRkcmVzc2VzLCBjYXVzaW5nIGFuIElPTU1VCj4+
-Pj4gwqDCoMKgwqAgZmF1bHQgb24gdGhlIGZpcnN0IERNQSB0cmFuc2FjdGlvbi4KPj4+IFdoaWNo
-IElQIGJsb2NrIGlzIGhpdHRpbmcgdGhpcz8gV2UnZCBsaWtlIHRvIHRha2UgYSBsb29rIG9uIG91
-ciBlbmQuCj4+IEkgaGF2ZSBzZWVuIHJlcG9ydHMgdGhhdCB0aGUgTlBVIE1NVSBvbiBSSzM1Njgv
-UkszNTY2IGlzIGhhdmluZyBzb21lCj4+IGlzc3VlIHVzaW5nIERURS9QVEUgd2l0aCA+MzItYml0
-IGFkZHJlc3NlcywgbWF5YmUgaXQgdXNlcyBhIGRpZmZlcmVudAo+PiBNTVUgaHcgcmV2aXNpb24g
-b3IgaGFzIHNvbWUgaHcgZXJyYXRhPwo+Pgo+PiDCoEZyb20gbXkgb3duIHRlc3RpbmcgYXQgbGVh
-c3QgdGhlIFZPUDIgTU1VIG9uIFJLMzU2OCAoYW5kIFJLMzU4OCkgd2FzCj4+IGFibGUgdG8gaGFu
-ZGxlIDQwLWJpdCBhZGRyZXNzYWJsZSBEVEUvUFRFLCBoZW5jZSB0aGUgb3JpZ2luYWwgY29tbWl0
-Cj4+IDJhN2U2NDAwZjcyYiAoImlvbW11OiByb2NrY2hpcDogQWxsb2NhdGUgdGFibGVzIGZyb20g
-YWxsIGF2YWlsYWJsZQo+PiBtZW1vcnkgZm9yIElPTU1VIHYyIikuCj4+Cj4+IEFzIGFsc28gbWVu
-dGlvbmVkIGluIG15IHJlcGx5IGF0IFsxXSwgbWF5YmUgdGhlIE5QVSBNTVUgaGFzIHNvbWUgaHcK
-Pj4gbGltaXRhdGlvbiBvciBlcnJhdGEgYW5kIG1heSBuZWVkIHRvIHVzZSBhIGRpZmZlcmVudCBj
-b21wYXRpYmxlLgo+Cj4gWWVzLMKgIFdlIGFyZSBjaGVja2luZyBpbnRlcm5hbGx5IHdoZXRoZXIg
-ZGlmZmVyZW50IElPTU1VIHZlcnNpb25zIAo+IGludGVncmF0ZWQuCj4KPiBJIHdpbGwgc2hhcmUg
-d2hhdCB3ZSBmaW5kIG9uY2Ugd2UgaGF2ZSByZXN1bHRzLgo+CldlIGludGVybmFsbHkgY2hlY2tl
-ZCB0aGF0IHRoZSBSSzM1NnggU29DcyBpbnRlZ3JhdGUgdHdvIGRpZmZlcmVudCBJT01NVSAKdmVy
-c2lvbnMgKHYxLjAgYW5kIHYyLjApLCBsaWtlIE5QVSBhbmQgSVNQIHVzZSB0aGUgdjEuMCBJT01N
-VS4KCkJvdGggdmVyc2lvbnMgY2FuIG1hcCA0MC1iaXQgcGh5c2ljYWwgcGFnZXMsIGJ1dCB2MS4w
-IGRvZXMgbm90IHN1cHBvcnQgCnBsYWNpbmcgdGhlIGZpcnN0LWxldmVsIHBhZ2UgdGFibGUgYWJv
-dmUgNCBHQi4KClRvIGZpeCB0aGlzLCBJIHRoaW5rIHdlIG5lZWQgdG8gbGFuZCB0aGlzIHBhdGNo
-IGZpcnN0OiAKaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvYWxsLzIwMjYwMzEwMTA1MzAzLjEyODg1
-OS0xLXh4bUByb2NrLWNoaXBzLmNvbS8KClRoZW4gb24gdG9wIG9mIHRoYXQsIHdlIGNhbiBhZGQg
-YSBuZXcgY29tcGF0aWJsZSBzdHJpbmcgdG8gZGlzdGluZ3Vpc2ggCnRoZSBJT01NVSB2ZXJzaW9u
-cy4KCj4+IFsxXSAKPj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvci8zY2Q2M2IzZC0xYzVlLTRh
-MTEtODU2ZS1jNGFlYjVkOTdkNTVAa3dpYm9vLnNlLwo+Pgo+PiBSZWdhcmRzLAo+PiBKb25hcwo+
-Pgo+Pj4+IDIuIFNXSU9UTEIgYm91bmNlLWJ1ZmZlciBwb2lzb25pbmc6IHdpdGhvdXQgR0ZQX0RN
-QTMyLCBwYWdlIHRhYmxlcyAKPj4+PiBsYW5kCj4+Pj4gwqDCoMKgwqAgYWJvdmUgdGhlIFNXSU9U
-TEIgd2luZG93LsKgIGRtYV9tYXBfc2luZ2xlKCkgd2l0aCBETUFfQklUX01BU0soMzIpCj4+Pj4g
-wqDCoMKgwqAgdGhlbiBib3VuY2VzIHRoZW0gaW50byBhIGJ1ZmZlciBiZWxvdyA0IEdCLiAKPj4+
-PiBya19kdGVfZ2V0X3BhZ2VfdGFibGUoKQo+Pj4+IMKgwqDCoMKgIHJldHVybnMgcGh5c190b192
-aXJ0KCkgb2YgdGhlIGJvdW5jZSBidWZmZXIgYWRkcmVzczsgUFRFcyBhcmUgCj4+Pj4gd3JpdHRl
-bgo+Pj4+IMKgwqDCoMKgIHRoZXJlOyB0aGUgbmV4dCBkbWFfc3luY19zaW5nbGVfZm9yX2Rldmlj
-ZShETUFfVE9fREVWSUNFKSAKPj4+PiBjb3BpZXMgdGhlCj4+Pj4gwqDCoMKgwqAgb3JpZ2luYWwg
-KHplcm8pIGRhdGEgYmFjayBvdmVyIHRoZSBib3VuY2UgYnVmZmVyLCBzaWxlbnRseSAKPj4+PiBl
-cmFzaW5nIHRoZQo+Pj4+IMKgwqDCoMKgIGZyZXNobHkgd3JpdHRlbiBQVEVzLsKgIFRoZSBJT01N
-VSBmYXVsdHMgYmVjYXVzZSBldmVyeSBQVEUgCj4+Pj4gcmVhZHMgYXMgemVyby4KPj4+IFRoaXMg
-cHJvYmFibHkgbmVlZCBhIHNlcGFyYXRlIHBhdGNoLiBPbmUgd2F5IHRvIGZpeCBpdCB3b3VsZCBi
-ZSB0byAKPj4+IHRyYWNrIHRoZQo+Pj4gb3JpZ2luYWwgTDIgcGFnZSB0YWJsZSBiYXNlIGFkZHJl
-c3NlcyBpbiBzdHJ1Y3QgcmtfaW9tbXVfZG9tYWluLAo+Pj4gdGhlbiBoYXZlIHJrX2R0ZV9nZXRf
-cGFnZV90YWJsZSgpIHJldHVybiB0aGUgdHJhY2tlZCBhZGRyZXNzIGluc3RlYWQgb2YKPj4+IGRl
-cml2aW5nIGl0IGZyb20gdGhlIERURS4KPj4+Cj4+Pj4gUmVzdG9yZSBHRlBfRE1BMzIgKGFuZCBE
-TUFfQklUX01BU0soMzIpKSBmb3IgaW9tbXVfZGF0YV9vcHNfdjIsIHdoaWNoCj4+Pj4gY3VycmVu
-dGx5IG9ubHkgc2VydmVzICJyb2NrY2hpcCxyazM1NjgtaW9tbXUiIGluIG1haW5saW5lLgo+Pj4+
-Cj4+Pj4gVGVzdGVkIG9uIFJhZHhhIFJPQ0sgM0IgKFJLMzU2OCwgOCBHQiBMUEREUjRYKToKPj4+
-PiDCoMKgwqAgLSBNb2JpbGVOZXRWMSB2aWEgUktOTjogNS44IG1zL2luZmVyZW5jZSAoSU9NTVUg
-bW9kZSkKPj4+PiDCoMKgwqAgLSBZT0xPdjVzIDY0MHg2NDAgdmlhIFJLTk46IH41NyBtcy9pbmZl
-cmVuY2UgKElPTU1VIG1vZGUpCj4+Pj4gwqDCoMKgIC0gTm8gSU9NTVUgZmF1bHRzLCBjb3JyZWN0
-IGluZmVyZW5jZSByZXN1bHRzCj4+Pj4KPj4+PiBGaXhlczogMmE3ZTY0MDBmNzJiICgiaW9tbXU6
-IHJvY2tjaGlwOiBBbGxvY2F0ZSB0YWJsZXMgZnJvbSBhbGwgCj4+Pj4gYXZhaWxhYmxlIG1lbW9y
-eSBmb3IgSU9NTVUgdjIiKQo+Pj4+IENjOiBzdGFibGVAdmdlci5rZXJuZWwub3JnCj4+Pj4gQ2M6
-IEpvbmFzIEthcmxtYW4gPGpvbmFzQGt3aWJvby5zZT4KPj4+PiBTaWduZWQtb2ZmLWJ5OiBNaWRn
-eSBCQUxPTiA8bWlkZ3k5NzFAZ21haWwuY29tPgo+Pj4+IC0tLQo+Pj4+IMKgwqAgZHJpdmVycy9p
-b21tdS9yb2NrY2hpcC1pb21tdS5jIHwgNCArKy0tCj4+Pj4gwqDCoCAxIGZpbGUgY2hhbmdlZCwg
-MiBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQo+Pj4+Cj4+Pj4gZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvaW9tbXUvcm9ja2NoaXAtaW9tbXUuYyAKPj4+PiBiL2RyaXZlcnMvaW9tbXUvcm9ja2No
-aXAtaW9tbXUuYwo+Pj4+IGluZGV4IDg1ZjM2NjdlNzk3Li44YjQ1ZGIyOTQ3MSAxMDA2NDQKPj4+
-PiAtLS0gYS9kcml2ZXJzL2lvbW11L3JvY2tjaGlwLWlvbW11LmMKPj4+PiArKysgYi9kcml2ZXJz
-L2lvbW11L3JvY2tjaGlwLWlvbW11LmMKPj4+PiBAQCAtMTM1OCw4ICsxMzU4LDggQEAgc3RhdGlj
-IHN0cnVjdCBya19pb21tdV9vcHMgaW9tbXVfZGF0YV9vcHNfdjIgPSB7Cj4+Pj4gwqDCoMKgwqDC
-oMKgIC5wdF9hZGRyZXNzID0gJnJrX2R0ZV9wdF9hZGRyZXNzX3YyLAo+Pj4+IMKgwqDCoMKgwqDC
-oCAubWtfZHRlbnRyaWVzID0gJnJrX21rX2R0ZV92MiwKPj4+PiDCoMKgwqDCoMKgwqAgLm1rX3B0
-ZW50cmllcyA9ICZya19ta19wdGVfdjIsCj4+Pj4gLcKgwqDCoCAuZG1hX2JpdF9tYXNrID0gRE1B
-X0JJVF9NQVNLKDQwKSwKPj4+PiAtwqDCoMKgIC5nZnBfZmxhZ3MgPSAwLAo+Pj4+ICvCoMKgwqAg
-LmRtYV9iaXRfbWFzayA9IERNQV9CSVRfTUFTSygzMiksCj4+Pj4gK8KgwqDCoCAuZ2ZwX2ZsYWdz
-ID0gR0ZQX0RNQTMyLAo+Pj4+IMKgwqAgfTsKPj4+PiDCoMKgIMKgwqAgc3RhdGljIGNvbnN0IHN0
-cnVjdCBvZl9kZXZpY2VfaWQgcmtfaW9tbXVfZHRfaWRzW10gPSB7Cj4+CgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+This patch series depends on and must be applied after:
+https://lore.kernel.org/all/20260402-drm-lcdif-dbanc-v3-7-27cd247a0847@bootlin.com/
+(Series [v3,00/11] drm/mxsfb/lcdif: use DRM_BRIDGE_ATTACH_NO_CONNECTOR and the bridge-connector)
+
+Patch 1: Make DRM_BRIDGE_ATTACH_NO_CONNECTOR optional for platforms that call
+         dw_hdmi_bind() to attach the dw-hdmi bridge.
+Patch 2: Allow &dw_hdmi_plat_data.output_port = 0 without the attach flag
+         DRM_BRIDGE_ATTACH_NO_CONNECTOR for dw-hdmi bridge.
+Patch 3: Apply bridge-connector for Rockchip dw-hdmi driver, so that connector
+         management is unified under bridge-connector. Treat dw-hdmi purely as
+         a bridge without using its own connector helper functions, which
+         partially overlaps with the bridge helper.
+Patch 4: Add next bridge support for Rockchip dw-hdmi driver, so that it can
+         support both the HDMI connector and additional bridge chips.
+
+Damon Ding (4):
+  drm/bridge: dw-hdmi: Pass bridge attach flags for dw_hdmi_bind()
+  drm/bridge: dw-hdmi: Allow &dw_hdmi_plat_data.output_port = 0 without
+    DRM_BRIDGE_ATTACH_NO_CONNECTOR
+  drm/rockchip: dw_hdmi: Apply DRM_BRIDGE_ATTACH_NO_CONNECTOR and the
+    bridge-connector
+  drm/rockchip: dw_hdmi: Support to find the next bridge
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   | 10 +++----
+ drivers/gpu/drm/rockchip/Kconfig            |  1 +
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 33 ++++++++++++++++++---
+ drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c       |  2 +-
+ include/drm/bridge/dw_hdmi.h                |  4 ++-
+ 5 files changed, 39 insertions(+), 11 deletions(-)
+
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
