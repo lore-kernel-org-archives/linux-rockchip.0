@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDEDBE7E37E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:53:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 726BBD730B2
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 18:53:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kRT0XQcTQgOLEdJdvM/I0yi2UiON7W9amxPggDBFCBU=; b=cEZ4qS0wjK46rj
-	G/VlLxmhedZnoRSxD5+1mxNAySpwdOc6Tc5lKv/r7scX5FGJ5+QdonZ75LUDGPD14hec2IL5CHFx/
-	c8a++wEhJxMpvW9jurNDWtnNnI42Nn4bZdPD2UUShejysZmjQMaJ/txqD2da0Jg0jR3fvB+xAdsgL
-	OyVUBB831O88oxCQ2Q8T5ThqLkvaKcOZgJ2bPYX9BnYOX9knxGu0hU8chHUaGBZ2EqpL0FUrg+9SG
-	vMHiPDNq69+dS2nDN6AFpqoqIWeTAyzRT94OwEMlimCoP/2zWM/p1LdMYeIYPjjqtzopgLeDbN+ls
-	yWzrhRsvVcpdumioFG7w==;
+	List-Owner; bh=Qda08O7dZr0mfoSp0fi67/OipTJt5+ErDQNL6+WT/kg=; b=VeqTyn5lMcz91e
+	1qB3oxafY2J2L7oaWwmR1CoyNIrko+L+1yi+8ixd9L/Gm8J3eB8iE1VGY8VLfU036DMPqIBdtBURz
+	0heflsm/8CFoZgwVGhTrkxtXHzZBCWpLqRnkNRhkI1QqvHgia7ShK6Bf6M45lQ6yOiUE8IcHDWPnI
+	nzlqY3a7hTUPpM6l/nu8Nda9pEKIJjhBJOZ9BkWOEKPAXJfjabIkgsvyCm/08t6Qjjs7Yjo4Icm6K
+	b04n8KX2rlYZoQWZbZbZMeNUqPeUFF5kb/PvMFtoivM2xU5IX9G3dCDEN2nP+Zx9/bVM+mP8oyABy
+	idAj/ieNw1iz4my7LaPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeT-00000002S4x-1K5v;
+	id 1w8jeT-00000002S5E-2PuF;
 	Fri, 03 Apr 2026 18:53:53 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8jeR-00000002S3c-0Ww9
+	id 1w8jeR-00000002S43-3k4i
 	for linux-rockchip@lists.infradead.org;
-	Fri, 03 Apr 2026 18:53:52 +0000
+	Fri, 03 Apr 2026 18:53:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1775242430; bh=nHczWXAu86GVpPDJo2Ql/ATlrHI3Y8SePMn2/eMTTOo=;
- b=MMmfRfUZkqFwKXNrPs120PDUkTPxdb3Feh8rhbuDKk5tcxS6rVmfehoh2VCzl48gfdPBBufeO
- 7Mwm8/jXuVq79bDlamceFyfAesEGWkedOWSsyPnEBuhrzkRVPos0d/2GJlMZoX9rb2Xxxj2YDWC
- SrL3O/j2mjEcqlV0vXh2WO9oqvX8b19rmd1r8XFSiyGR7B0QGfkaFHlQpGwD36AioVj1BjLiQ1C
- 37iTlilyt1Jn6pNubvlzEiBjewR0Ak3oVK9o+IWq/MtuaswPRN1mSGg1TlUJFcXht9kefTdzfLl
- doj63f2OlW3f2grf7u6D4ygJprcH1pGbk8v1+72ffVfA==
-X-Forward-Email-ID: 69d00cbcdc98192b40b89375
+ t=1775242431; bh=WH67sXyKoarLtyzIcKKSviRRZbQpYKOCnmKAymUSVNo=;
+ b=bQsbVmO9UMYDZSgyEfl5TrYprX2y1YlQk8KtMArqE+knNRpIarNC0hgPFEHUar/lsTWInQFJJ
+ tKMKbEeksiU5XvndCCC1CfZhYnKgvrO7i7j1EHHuSzXvvARLGtx+ZqFHq0+LBq1GZW5MRlGtVyN
+ gEy6FqEcnU208RM1Lhan4xi2jG+qi3EhHnu15GGtwGzG1Ao5O3P4oeaBzi4whYxY7XuflVFr+wI
+ LmbUMPziIMv+KdRklHuXii2Ne7SeNc9qXbcU6iuaFkhHEr80SlZrMSX1mD44pqWSge9GywEOcqt
+ 5WgmhGoaq955V+udX9mPPi0osF5BqfjFlH6HM+MsubPg==
+X-Forward-Email-ID: 69d00cb8dc98192b40b8935a
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
+ 149.28.215.223
 X-Forward-Email-Version: 2.6.68
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -61,16 +61,17 @@ Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v3 05/13] drm: bridge: dw_hdmi: Fold poweron and setup functions
-Date: Fri,  3 Apr 2026 18:52:51 +0000
-Message-ID: <20260403185303.80748-6-jonas@kwiboo.se>
+Subject: [PATCH v3 04/13] drm: bridge: dw_hdmi: Use passed mode instead of stored previous_mode
+Date: Fri,  3 Apr 2026 18:52:50 +0000
+Message-ID: <20260403185303.80748-5-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260403185303.80748-1-jonas@kwiboo.se>
 References: <20260403185303.80748-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_115351_262903_7A4352B0 
-X-CRM114-Status: GOOD (  10.81  )
+X-CRM114-CacheID: sfid-20260403_115351_942164_7A05950B 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,73 +88,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Fold the poweron and setup functions into one function and use the
-adjusted_mode directly from the new crtc_state to remove the need of
-storing previous_mode.
+Use the passed mode instead of mixing use of passed mode and the stored
+previous_mode in dw_hdmi_setup(). The passed mode is currenly always the
+previous_mode.
+
+Also fix a small typo and add a variable to help shorten a code line.
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v3: Collect r-b tag
-v2: No change
+v2: Update commit message, s/type/typo/
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 21 ++++++++-------------
- 1 file changed, 8 insertions(+), 13 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 9 ++++-----
+ 1 file changed, 4 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index c03a86284a95..7e7147b14614 100644
+index eea266d01de3..c03a86284a95 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2252,9 +2252,9 @@ static void hdmi_disable_overflow_interrupts(struct dw_hdmi *hdmi)
- 		    HDMI_IH_MUTE_FC_STAT2);
- }
- 
--static int dw_hdmi_setup(struct dw_hdmi *hdmi,
--			 const struct drm_connector *connector,
--			 const struct drm_display_mode *mode)
-+static int dw_hdmi_poweron(struct dw_hdmi *hdmi,
-+			   const struct drm_connector *connector,
-+			   const struct drm_display_mode *mode)
+@@ -2256,6 +2256,7 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi,
+ 			 const struct drm_connector *connector,
+ 			 const struct drm_display_mode *mode)
  {
- 	const struct drm_display_info *display = &connector->display_info;
++	const struct drm_display_info *display = &connector->display_info;
  	int ret;
-@@ -2394,15 +2394,6 @@ static void initialize_hdmi_ih_mutes(struct dw_hdmi *hdmi)
- 	hdmi_writeb(hdmi, ih_mute, HDMI_IH_MUTE);
- }
  
--static void dw_hdmi_poweron(struct dw_hdmi *hdmi)
--{
--	/*
--	 * The curr_conn field is guaranteed to be valid here, as this function
--	 * is only be called when !hdmi->disabled.
--	 */
--	dw_hdmi_setup(hdmi, hdmi->curr_conn, &hdmi->previous_mode);
--}
--
- static void dw_hdmi_poweroff(struct dw_hdmi *hdmi)
- {
- 	if (hdmi->phy.enabled) {
-@@ -2952,15 +2943,19 @@ static void dw_hdmi_bridge_atomic_enable(struct drm_bridge *bridge,
- 					 struct drm_atomic_state *state)
- {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
-+	const struct drm_display_mode *mode;
- 	struct drm_connector *connector;
-+	struct drm_crtc *crtc;
+ 	hdmi_disable_overflow_interrupts(hdmi);
+@@ -2301,12 +2302,10 @@ static int dw_hdmi_setup(struct dw_hdmi *hdmi,
+ 	hdmi->hdmi_data.video_mode.mdataenablepolarity = true;
  
- 	connector = drm_atomic_get_new_connector_for_encoder(state,
- 							     bridge->encoder);
-+	crtc = drm_atomic_get_new_connector_state(state, connector)->crtc;
-+	mode = &drm_atomic_get_new_crtc_state(state, crtc)->adjusted_mode;
+ 	/* HDMI Initialization Step B.1 */
+-	hdmi_av_composer(hdmi, &connector->display_info, mode);
++	hdmi_av_composer(hdmi, display, mode);
  
- 	mutex_lock(&hdmi->mutex);
- 	hdmi->disabled = false;
- 	hdmi->curr_conn = connector;
--	dw_hdmi_poweron(hdmi);
-+	dw_hdmi_poweron(hdmi, connector, mode);
- 	dw_hdmi_update_phy_mask(hdmi);
- 	handle_plugged_change(hdmi, true);
- 	mutex_unlock(&hdmi->mutex);
+-	/* HDMI Initializateion Step B.2 */
+-	ret = hdmi->phy.ops->init(hdmi, hdmi->phy.data,
+-				  &connector->display_info,
+-				  &hdmi->previous_mode);
++	/* HDMI Initialization Step B.2 */
++	ret = hdmi->phy.ops->init(hdmi, hdmi->phy.data, display, mode);
+ 	if (ret)
+ 		return ret;
+ 	hdmi->phy.enabled = true;
 -- 
 2.53.0
 
