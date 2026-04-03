@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C59A0E8536A
-	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 13:25:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C4CE8536F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  3 Apr 2026 13:39:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=CSIGnBcrD5dN6NJ+DZqWRrwCHIaSLUBrDTbqQLVrg4k=; b=0FKr2DkkJrwJdS
-	q9VfXUI4bTMY3YdTC+pW9Du/jGpgPcc0MyGRpi8lFjvTv51gUQMSl2OC6t4R9+TnEREBtOGR+xYVj
-	LrYLj/yD9FzHtsZm+5Lp5WsWGAVNCJY9sKino05wG0pQUvKwZA4FRqZn6tJFULyjOUtVa+i2EaSYI
-	y54qdN1otVz3mKrIR70IA/nHplqopEoP46Dx9l9CZXXtn1I8DKqmGUMg3sRNH/sBzHXJMoCPy6EQf
-	4yYEOIzORFsKjCiK+Movv9xfdltOrV9Cy5yuvbGiAfNKddlBKUH/WfpgVar3oOWvqqn0/udwTyvVJ
-	J0JAU8VlpZzIG0VLIXKw==;
+	List-Owner; bh=jZ09zp4jR3S3Bke+YgXLceV7yLws1A3C6Scw9B8ztc8=; b=QgCMqxjmezWFYp
+	3C8WbXWD3gPWhBy/bIQz72SejXYWM2DnqHIaDLD/CtRhelxIypICppws0ViXj8N6T8v9GiKY1evWw
+	0qaJHayl4LLVLqJ1Lf/BPfzxz2RhQpwOAbvLqiJnibOIjCVQM+CXgp0hqviCFUCRQ1c15OjLNEqw9
+	PRyIRAGpxltcBZIYPSMVjzcP6InqXM2vKi2wmV2TbsgDFwFTSPamqvm3yYjQ0wguYWDPj+P7qamRj
+	Cj4MTMSa46V8Uwrbs4PNSaPwVpKvtAZZSzlS1aHVBhqrP9tUvMP4HdWyX1VtYEDZw+xkfohYZNZRr
+	bv1NNjYKbdx3L6H/ctzA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8eWu-0000000248y-1Tkd;
-	Fri, 03 Apr 2026 13:25:44 +0000
+	id 1w8ekK-000000024uM-2vSL;
+	Fri, 03 Apr 2026 13:39:36 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w8eWr-0000000248W-38YD;
-	Fri, 03 Apr 2026 13:25:43 +0000
+	id 1w8ekH-000000024tp-3hRb;
+	Fri, 03 Apr 2026 13:39:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=NF4JDG9gLpkgwa9sSYPibHIAixK9qPvEipevanGie4c=; b=plb+/0EYqxQ+ZWruLdGpjcZs63
-	F/Qry1QoQpyR2ruHVovbtvdcU0KkG7PjDd/AdhiuSurFwmcmKezUo8sRh/uMKNXxeqL1j+XzZ6GjV
-	S5E3o7hAVIAwE2/zXy6Zol1t7fc2wZXXzpO+aLdQvwNdfcmddasc5Mkb+V71J+8o9vXpgqw6lqjDn
-	q20BV2VqWAiFOoUcV8KXcdCzbJyrAzBPzT9RSO8hmoLOOUgTfrI6WpbmM1vxebQpNKg7y/NEQlH94
-	p8RETiUXkyFULd3OZvFF3Gg8ILGyXlE4D/3xVMQpNdHIozItXmfJUj77IFL+PsKUWj+aR+QeHwwwP
-	W51lbgHw==;
+	bh=K0i9/psgiYriNr+bQD8bwLT5N5vs6aXdpa5YckR6JD0=; b=zB38WtEwuPAveMLDaJrCfuOoeM
+	wRqvnkKiQvikUmFiOjjuJGW18YqsmRUTJOjGCR8Bj/PBRLDdzythtvYtblO8CfLuI5u/X4DhcDpO5
+	35GlxsA2qWLqF1nmLwY8916tQ9vsSU07HGQ6bQpELI1fioaDrJJoKGbg0lHBdQ4h7mFkeGx/GcC4O
+	0LMqFsjqa5DLoyQFydL/UWvzBNIhysuqa7Xth36+zF+kqXWsqhysNt+Hnw3a7ymSG0iaiA5pBgSjt
+	gzTao7wn4ODFp2yexFVbUXglMjyHJ1OGQCRCjVahE45wXKr9gTOmx7jABkdC8hv8Nt04ZuzODoyNU
+	/bKlaebA==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: arm@kernel.org
 Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts32 changes for 7.1 #1
-Date: Fri, 03 Apr 2026 15:25:36 +0200
-Message-ID: <2771700.BddDVKsqQX@phil>
+ linux-arm-kernel@lists.infradead.org, Stephen Boyd <sboyd@kernel.org>,
+ mturquette@baylibre.com
+Subject: [GIT PULL] Rockchip dts32 changes for 7.1 #2
+Date: Fri, 03 Apr 2026 15:39:31 +0200
+Message-ID: <13980380.dW097sEU6C@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260403_062541_815568_DC2E703B 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20260403_063933_948851_90ED8B6E 
+X-CRM114-Status: GOOD (  16.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,7 +65,21 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi soc maintainers,
 
-please find below Rockchip ARM32 DT changes for the merge-window for 7.1 .
+please find below a new ARM32 Rockchip SoC for 7.1 . This goes on top
+of the generic arm32 changes I just sent.
+
+
+I've split this off from the other ARM32 changes, because this contains
+a shared clock header, shared between the devicetree side and the clock-
+driver side.
+
+The clock pull-request is sent [0], but not merged yet - probably after
+easter I guess.
+
+And while in the past this has always come together in time for the
+merge-window, I wasn't sure if in the soc multi-maintainer context the
+handling changes. So depending on your preference this could also wait
+until after the clock-subsystem-side got merged.
 
 
 Please pull.
@@ -72,51 +87,56 @@ Thanks
 Heiko
 
 
-The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
+[0] https://lore.kernel.org/all/3746710.R56niFO833@phil/
 
-  Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
 
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-dts32-1
-
-for you to fetch changes up to 94c8dc1fa8e1ad4037084204152bca1e799d7d1c:
+The following changes since commit 94c8dc1fa8e1ad4037084204152bca1e799d7d1c:
 
   ARM: dts: rockchip: Pass linux,code to the power key on rk3288-veyron-pinky (2026-03-24 17:06:35 +0100)
 
-----------------------------------------------------------------
-A number of dt-schema cleanups that are log standing, so not suitable
-as fix for the current release.
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-dts32-2
+
+for you to fetch changes up to 683192d7d5b47e89d920867f7c6997d2c0d1a0ad:
+
+  ARM: dts: rockchip: Add Onion Omega4 Evaluation Board (2026-03-24 17:40:11 +0100)
 
 ----------------------------------------------------------------
-Fabio Estevam (12):
-      ARM: dts: rockchip: Remove rockchip,grf from rk3288 tsadc
-      ARM: dts: rockchip: Move PHY reset to ethernet-phy node on rk3036 boards
-      ARM: dts: rockchip: Fix RTC compatible on rk3288-phycore-rdk
-      ARM: dts: rockchip: Use mount-matrix on rk3188-bqedison2qc
-      ARM: dts: rockchip: Remove invalid regulator-property from rk3288-veyron
-      ARM: dts: rockchip: Fix the Bluetooth node name on rk3288-veyron
-      ARM: dts: rockchip: Fix the trackpad supply on rk3288-veyron-jerry
-      ARM: dts: rockchip: Add missing the touchscreen interrupt on rk3288-phycore-rdk
-      ARM: dts: rockchip: Fix RTC description on rk3288-firefly-reload
-      ARM: dts: rockchip: Fix GMAC description n RK3288 boards
-      ARM: dts: rockchip: Fix LED node names on rk3288-phycore-rdk
-      ARM: dts: rockchip: Pass linux,code to the power key on rk3288-veyron-pinky
+Support for the RV1103B SoC and the Onion Omega4 board using it.
+While the RV1103B only got a B-extension to its name, the SoC internals
+were reworked heavily. So likely it's mainly pin compatible to the
+non-B variant.
 
- arch/arm/boot/dts/rockchip/rk3036-evb.dts            |  4 ++--
- arch/arm/boot/dts/rockchip/rk3036-kylin.dts          |  4 ++--
- arch/arm/boot/dts/rockchip/rk3188-bqedison2qc.dts    |  2 +-
- arch/arm/boot/dts/rockchip/rk3288-firefly-reload.dts |  3 +--
- arch/arm/boot/dts/rockchip/rk3288-phycore-rdk.dts    | 16 ++++++++++------
- arch/arm/boot/dts/rockchip/rk3288-phycore-som.dtsi   |  2 +-
- arch/arm/boot/dts/rockchip/rk3288-veyron-brain.dts   |  2 --
- arch/arm/boot/dts/rockchip/rk3288-veyron-fievel.dts  |  5 ++---
- arch/arm/boot/dts/rockchip/rk3288-veyron-jaq.dts     |  2 +-
- arch/arm/boot/dts/rockchip/rk3288-veyron-jerry.dts   |  2 +-
- arch/arm/boot/dts/rockchip/rk3288-veyron-mickey.dts  |  2 --
- arch/arm/boot/dts/rockchip/rk3288-veyron-pinky.dts   |  1 +
- arch/arm/boot/dts/rockchip/rk3288.dtsi               |  1 -
- 13 files changed, 22 insertions(+), 24 deletions(-)
+The dt-binding for the RV1103B clock driver is shared with the clock-
+driver branch going into the clock-tree.
+
+----------------------------------------------------------------
+Fabio Estevam (5):
+      dt-bindings: clock: rockchip: Add RV1103B CRU support
+      dt-bindings: soc: rockchip: grf: Add RV1103B compatibles
+      ARM: dts: rockchip: Add support for RV1103B
+      dt-bindings: arm: rockchip: Add Omega4 Evaluation board
+      ARM: dts: rockchip: Add Onion Omega4 Evaluation Board
+
+Heiko Stuebner (1):
+      Merge branch 'v7.1-shared/clkids' into v7.1-armsoc/dts32
+
+ .../devicetree/bindings/arm/rockchip.yaml          |   6 +
+ .../bindings/clock/rockchip,rv1126b-cru.yaml       |   1 +
+ .../devicetree/bindings/soc/rockchip/grf.yaml      |   3 +
+ arch/arm/boot/dts/rockchip/Makefile                |   1 +
+ arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts  |  63 ++
+ arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi     | 147 ++++
+ arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi    | 816 +++++++++++++++++++++
+ arch/arm/boot/dts/rockchip/rv1103b.dtsi            | 239 ++++++
+ include/dt-bindings/clock/rockchip,rv1103b-cru.h   | 220 ++++++
+ 9 files changed, 1496 insertions(+)
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4-evb.dts
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-omega4.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b-pinctrl.dtsi
+ create mode 100644 arch/arm/boot/dts/rockchip/rv1103b.dtsi
+ create mode 100644 include/dt-bindings/clock/rockchip,rv1103b-cru.h
 
 
 
