@@ -4,57 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BFCAE63FE3
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Apr 2026 16:54:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA475E63FEA
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Apr 2026 17:16:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=F/t3ixcma2x/kFR/xv7oBItaBmAVS2bLn/Qu/ZeBBBo=; b=N5WIP4SPc2G2Tp
-	ojHbEhGap1rROYaYoMZZbt/mIiPeG+4LNsPADdPYhDo5drCLkJdFg2GZQh2KNyUtOwXDrwFeeETZz
-	PSKNRS/2Hp4mJ/jfaNYpeo75BFE2iUktPhPWAi4czyrld7qi8iEHhpcUvROPWlR7JgOpg/XbSh1+C
-	2aRMSKkWZUpMSTgrKNGW+E42I2PAU0IKf3twQNeCUv1mYxs5bL2gCeGGXBqOdCus/hlOdCYnnHHx/
-	9gBcqYj+u2tUVd2c29Iw+Cd4EXNv5up+6OM3Ql3MRmlLq/EYy1vbi8AVZCt7v0/p5Ory1reZim449
-	/H47e8VUhR0IG38M4fXQ==;
+	List-Owner; bh=jmciHUd24k6uquwoPSzxW7WcEvQ9P1MmVhf30R1Uvtw=; b=fqDKZnsjeLXCcX
+	8Qi7Og6QAl0aIHrJqHqMDhbv3M/63sUZOohM275DMQqdOM8TJuwg5LFjvodUYEJMKvc8C+/HWlHVu
+	GteGP0MjB1V3hFlLbYY8jeRw7N5qwjV/Pd2s0V1OFNzrIPns1mlNIOebR2WnKchk3Dw0HvTXQc1V2
+	EgDpGZWJctpcJqLq015Me52DL8vJ74cwGquJraa7ExdfJEyrKu7dQZWmqt/PWOmneJQjpTyw2lRY0
+	cXbb0B/wVVugZClD85//uOCsIrM4Upx1NmwNzCPFikalbRonPgWHu6+7EnvkD57DmBuErsH2r5GV8
+	ETaLn6OnA2RBKuYQBxOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w94Fm-00000003bw0-41fD;
-	Sat, 04 Apr 2026 16:53:46 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1w94bd-00000003dHn-1jpB;
+	Sat, 04 Apr 2026 17:16:24 +0000
+Received: from sender4-op-o12.zoho.com ([136.143.188.12])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w94Fl-00000003bvu-2RUx
-	for linux-rockchip@lists.infradead.org;
-	Sat, 04 Apr 2026 16:53:45 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9C1B760008;
-	Sat,  4 Apr 2026 16:53:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3EAFCC19421;
-	Sat,  4 Apr 2026 16:53:40 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775321624;
-	bh=4ljFbXNE5GaVpD1qooXO+bZe5p57hd2HpLdsSi36i98=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=uoLLbiIxFbBGZ/vxLYnikvtUkFkVKpK+0+eS4Voj+KIm5HA/M3qyTg3zJr+w+/gsa
-	 mdc7NOsJGiGu5M6W/VfPOHq0EHo0WoThpRYCQ5/2oVF2oh3tgiYy8Tg3LNrLh+L4Mu
-	 uHBZ++P6y2er+rTRp3yfoTo7bKJHU4Url3YYN9yjLOY++ThUbe297jAGjbSy+FF9RI
-	 IKhX2S4k3adTLbqFyVmgH7E+VllDg6fIf6g6zOQIRH/R8AKRKsl0clumvpP8LIeyzU
-	 U5+YLC/LgJludkLgapI6ZyBO6VqWZkDdVHDcGxwtZeLV1WVdrbru/6P1V06EVBmn75
-	 hjx/TgvCHesdQ==
-Date: Sat, 4 Apr 2026 22:23:32 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Steven Rostedt <rostedt@goodmis.org>, 
-	Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, 
-	linux-rockchip@lists.infradead.org, linux-pci@vger.kernel.org, linux-trace-kernel@vger.kernel.org, 
-	linux-doc@vger.kernel.org
-Subject: Re: [PATCH v5 0/3] PCI Controller event and LTSSM tracepoint support
-Message-ID: <u2dh2os5qyuuv636uwzttvohfyics7tvqiobheftjzdnuegq33@n77svn2nlqu2>
-References: <1774403912-210670-1-git-send-email-shawn.lin@rock-chips.com>
+	id 1w94ba-00000003dHP-3zYZ;
+	Sat, 04 Apr 2026 17:16:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1775322969; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=B14SHV11mIeaSdfanRw/FPb/uoYWFTRzLcKOkqBx2gxpmS3EOItjhsgTa54RA5lRgmmkRPyfCaOA9jEuJwzAMloc+GWoId/gZlu/jmSwPXI9Oi0sldlOtQCoyYKO27yPcceKTHsCcTdFbVNjlAA7ZPF/vbWqaiW7p39YdidgRYQ=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1775322969; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=vsmbdBHaX2w5XcBqN3gdCMgwy3ayHTGIzo7A1ewMMMw=; 
+	b=Xbwm51IbpxbhGx97RqrO2v7dIB8E1prD7Ggl20lmN2NGu2WZGhMgjhAbmRG8u+2HaE6OOER+K+Jo/6I8Od6ITFKUP86jGdBKfHWXSwM17ilvmU3wWdTmoKpMsAc79Pf1bZL/CBC+xBJYqVFxtROxSzkDs9vPcro3W4TLMMMC4js=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1775322969;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
+	bh=vsmbdBHaX2w5XcBqN3gdCMgwy3ayHTGIzo7A1ewMMMw=;
+	b=I0ii5rAl21pUwmVpjFb7MbBrqCzddD6KhHO2tiwRELQfcAovLb7Xf6ndKxdVMOru
+	IUl8il3UOzBzqffwS1jXlhZMuASqAiKdbGe3DHXYundjqlN1T+AOA7GdU7FcuMRf7j0
+	UQH/x1olt9ZoWAhw9Q+Bu49SBpiz+IJ2C41tEG9U=
+Received: by mx.zohomail.com with SMTPS id 1775322965794133.1766397921774;
+	Sat, 4 Apr 2026 10:16:05 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Heiko Stuebner <heiko@sntech.de>, Sugar Zhang <sugar.zhang@rock-chips.com>,
+ Alexey Charkov <alchark@flipper.net>
+Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Alexey Charkov <alchark@flipper.net>
+Subject: Re: [PATCH] ASoC: rockchip: rockchip_sai: Set slot width for non-TDM mode
+Date: Sat, 04 Apr 2026 19:16:00 +0200
+Message-ID: <5445638.31r3eYUQgx@workhorse>
+In-Reply-To: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
+References: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <1774403912-210670-1-git-send-email-shawn.lin@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260404_101619_068222_F51C4493 
+X-CRM114-Status: GOOD (  19.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,141 +74,76 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gV2VkLCBNYXIgMjUsIDIwMjYgYXQgMDk6NTg6MjlBTSArMDgwMCwgU2hhd24gTGluIHdyb3Rl
-Ogo+IAo+IFRoaXMgcGF0Y2gtc2V0IGFkZHMgbmV3IHBjaSBjb250cm9sbGVyIGV2ZW50IGFuZCBM
-VFNTTSB0cmFjZXBvaW50IHVzZWQgYnkgaG9zdCBkcml2ZXJzCj4gd2hpY2ggcHJvdmlkZSBMVFNT
-TSB0cmFjZSBmdW5jdGlvbmFsaXR5LiBUaGUgZmlyc3QgdXNlciBpcyBwY2llLWR3LXJvY2tjaGlw
-IHdpdGggYSAyNTYKPiBCeXRlcyBGSUZPIGZvciByZWNvcmRpbmcgTFRTU00gdHJhbnNpdGlvbi4K
-PiAKClN0ZXZlLCBjb3VsZCB5b3UgcGxlYXNlIHRha2UgYSBsb29rIGF0IHRoZSB0cmFjaW5nIHBh
-cnQ/CgotIE1hbmkKCj4gVGVzdGluZwo+ID09PT09PT09PQo+IAo+IFRoaXMgc2VyaWVzIHdhcyB0
-ZXN0ZWQgb24gUkszNTg4L1JLMzU4OHMgRVZCMSB3aXRoIE5WTWUgU1NEIGNvbm5lY3RlZCB0byBQ
-Q0llMyBhbmQgUENJZTIKPiByb290IHBvcnRzLgo+IAo+IGVjaG8gMSA+IC9zeXMva2VybmVsL2Rl
-YnVnL3RyYWNpbmcvZXZlbnRzL3BjaV9jb250cm9sbGVyL3BjaWVfbHRzc21fc3RhdGVfdHJhbnNp
-dGlvbi9lbmFibGUKPiBjYXQgL3N5cy9rZXJuZWwvZGVidWcvdHJhY2luZy90cmFjZV9waXBlCj4g
-Cj4gICMgdHJhY2VyOiBub3AKPiAgIwo+ICAjIGVudHJpZXMtaW4tYnVmZmVyL2VudHJpZXMtd3Jp
-dHRlbjogNjQvNjQgICAjUDo4Cj4gICMKPiAgIyAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgXy0tLS0tPT4gaXJxcy1vZmYvQkgtZGlzYWJsZWQKPiAgIyAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAvIF8tLS0tPT4gbmVlZC1yZXNjaGVkCj4gICMgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICB8IC8gXy0tLT0+IGhhcmRpcnEvc29mdGlycQo+ICAjICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgfHwgLyBfLS09PiBwcmVlbXB0LWRlcHRoCj4gICMgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICB8fHwgLyBfLT0+IG1pZ3JhdGUtZGlzYWJsZQo+ICAjICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgfHx8fCAvICAgICBkZWxheQo+ICAjICAgICAgICAgICBUQVNL
-LVBJRCAgICAgQ1BVIyAgfHx8fHwgIFRJTUVTVEFNUCAgRlVOQ1RJT04KPiAgIyAgICAgICAgICAg
-ICAgfCB8ICAgICAgICAgfCAgIHx8fHx8ICAgICB8ICAgICAgICAgfAo+ICAgICAgIGt3b3JrZXIv
-MDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMTk0OiBwY2llX2x0c3NtX3N0YXRlX3Ry
-YW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IERFVEVDVF9BQ1QgcmF0ZTogVW5r
-bm93bgo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMTk4
-OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6
-IERFVEVDVF9XQUlUIHJhdGU6IFVua25vd24KPiAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFsw
-MDBdIC4uLi4uICAgICA1LjYwMDE5OTogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6
-IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBERVRFQ1RfQUNUIHJhdGU6IFVua25vd24KPiAgICAgICBr
-d29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIwMTogcGNpZV9sdHNzbV9z
-dGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBQT0xMX0FDVElWRSBy
-YXRlOiBVbmtub3duCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAg
-NS42MDAyMDI6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNp
-ZSBzdGF0ZTogUE9MTF9DT05GSUcgcmF0ZTogVW5rbm93bgo+ICAgICAgIGt3b3JrZXIvMDowLTkg
-ICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjA0OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRp
-b246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IENGR19MSU5LV0RfU1RBUlQgcmF0ZTogVW5r
-bm93bgo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjA2
-OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6
-IENGR19MSU5LV0RfQUNFUFQgcmF0ZTogVW5rbm93bgo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAg
-ICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjA3OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246
-IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IENGR19MQU5FTlVNX1dBSSByYXRlOiBVbmtub3du
-Cj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMDg6IHBj
-aWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogQ0ZH
-X0xBTkVOVU1fQUNFUFQgcmF0ZTogVW5rbm93bgo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAg
-WzAwMF0gLi4uLi4gICAgIDUuNjAwMjEwOiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRl
-djogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IENGR19DT01QTEVURSByYXRlOiBVbmtub3duCj4gICAg
-ICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMTI6IHBjaWVfbHRz
-c21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogQ0ZHX0lETEUg
-cmF0ZTogVW5rbm93bgo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAg
-IDUuNjAwMjEzOiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBj
-aWUgc3RhdGU6IEwwIHJhdGU6IDIuNSBHVC9zCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBb
-MDAwXSAuLi4uLiAgICAgNS42MDAyMTQ6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2
-OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogUkNWUllfTE9DSyByYXRlOiBVbmtub3duCj4gICAgICAg
-a3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMTY6IHBjaWVfbHRzc21f
-c3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogUkNWUllfUkNWUkNG
-RyByYXRlOiBVbmtub3duCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAg
-ICAgNS42MDAyMTc6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAu
-cGNpZSBzdGF0ZTogUkNWUllfU1BFRUQgcmF0ZTogVW5rbm93bgo+ICAgICAgIGt3b3JrZXIvMDow
-LTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjE4OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5z
-aXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFJDVlJZX0xPQ0sgcmF0ZTogVW5rbm93
-bgo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjIwOiBw
-Y2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFJD
-VlJZX0VRMSByYXRlOiBVbmtub3duCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAu
-Li4uLiAgICAgNS42MDAyMjE6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAw
-MDAwMDAucGNpZSBzdGF0ZTogUkNWUllfRVEyIHJhdGU6IDguMCBHVC9zCj4gICAgICAga3dvcmtl
-ci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMjI6IHBjaWVfbHRzc21fc3RhdGVf
-dHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogUkNWUllfRVEzIHJhdGU6IDgu
-MCBHVC9zCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAy
-MjQ6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0
-ZTogUkNWUllfTE9DSyByYXRlOiA4LjAgR1Qvcwo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAg
-WzAwMF0gLi4uLi4gICAgIDUuNjAwMjI1OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRl
-djogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFJDVlJZX1JDVlJDRkcgcmF0ZTogOC4wIEdUL3MKPiAg
-ICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIyNjogcGNpZV9s
-dHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9J
-RExFIHJhdGU6IDguMCBHVC9zCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4u
-LiAgICAgNS42MDAyMjc6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAw
-MDAucGNpZSBzdGF0ZTogTDAgcmF0ZTogOC4wIEdUL3MKPiAgICAgICBrd29ya2VyLzA6MC05ICAg
-ICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIyODogcGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9u
-OiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9MT0NLIHJhdGU6IDguMCBHVC9zCj4g
-ICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAgNS42MDAyMjk6IHBjaWVf
-bHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNpZSBzdGF0ZTogUkNWUllf
-UkNWUkNGRyByYXRlOiA4LjAgR1Qvcwo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0g
-Li4uLi4gICAgIDUuNjAwMjMxOiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQw
-MDAwMDAwLnBjaWUgc3RhdGU6IFJDVlJZX0lETEUgcmF0ZTogOC4wIEdUL3MKPiAgICAgICBrd29y
-a2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIzMjogcGNpZV9sdHNzbV9zdGF0
-ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBMMCByYXRlOiA4LjAgR1Qv
-cwo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjMzOiBw
-Y2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IEwx
-MjNfU0VORF9FSURMRSByYXRlOiA4LjAgR1Qvcwo+ICAgICAgIGt3b3JrZXIvMDowLTkgICAgICAg
-WzAwMF0gLi4uLi4gICAgIDUuNjAwMjM0OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRpb246IGRl
-djogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IEwxX0lETEUgcmF0ZTogOC4wIEdUL3MKPiAgICAgICBr
-d29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIzNjogcGNpZV9sdHNzbV9z
-dGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBSQ1ZSWV9MT0NLIHJh
-dGU6IDguMCBHVC9zCj4gICAgICAga3dvcmtlci8wOjAtOSAgICAgICBbMDAwXSAuLi4uLiAgICAg
-NS42MDAyMzc6IHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbjogZGV2OiBhNDAwMDAwMDAucGNp
-ZSBzdGF0ZTogUkNWUllfUkNWUkNGRyByYXRlOiA4LjAgR1Qvcwo+ICAgICAgIGt3b3JrZXIvMDow
-LTkgICAgICAgWzAwMF0gLi4uLi4gICAgIDUuNjAwMjM4OiBwY2llX2x0c3NtX3N0YXRlX3RyYW5z
-aXRpb246IGRldjogYTQwMDAwMDAwLnBjaWUgc3RhdGU6IFJDVlJZX0lETEUgcmF0ZTogOC4wIEdU
-L3MKPiAgICAgICBrd29ya2VyLzA6MC05ICAgICAgIFswMDBdIC4uLi4uICAgICA1LjYwMDIzOTog
-cGNpZV9sdHNzbV9zdGF0ZV90cmFuc2l0aW9uOiBkZXY6IGE0MDAwMDAwMC5wY2llIHN0YXRlOiBM
-MCByYXRlOiA4LjAgR1Qvcwo+IAo+IAo+IENoYW5nZXMgaW4gdjU6Cj4gLSByZWJhc2UKPiAtIHVz
-ZSBFTS9FTWUgaW5zdGVhZAo+IC0gcmVtb3ZlIHJlZy91bnJlZyBmdW5jdGlvbiBhbmQgYmFjayB0
-byB1c2UgVFJBQ0VfRVZFTlQKPiAtIHVzZSB0cmFjZV9wY2llX2x0c3NtX3N0YXRlX3RyYW5zaXRp
-b25fZW5hYmxlZCgpCj4gCj4gQ2hhbmdlcyBpbiB2NDoKPiAtIHVzZSBUUkFDRV9FVkVOVF9GTiB0
-byBub3RpZnkgd2hlbiB0byBzdGFydCBhbmQgc3RvcCB0aGUgdHJhY2Vwb2ludCwKPiAgIGFuZCBl
-eHBvcnQgcGNpX2x0c3NtX3RwX2VuYWJsZWQoKSBmb3IgaG9zdCBkcml2ZXJzIHRvIHVzZQo+IC0g
-c2tpcCB0cmFjZSBpZiBwY2lfbHRzc21fdHBfZW5hYmxlZCgpIGlzIGZhbHNlLihTdGV2ZW4pCj4g
-LSB3cmFwIGludG8gODAgY29sdW1ucyhCam9ybikKPiAKPiBDaGFuZ2VzIGluIHYzOgo+IC0gYWRk
-IFRSQUNFX0RFRklORV9FTlVNIGZvciBhbGwgZW51bXMoU3RldmVuIFJvc3RlZHQpCj4gLSBBZGQg
-dG9jdHJlZSBlbnRyeSBpbiBEb2N1bWVudGF0aW9uL3RyYWNlL2luZGV4LnJzdChCYWdhcyBTYW5q
-YXlhKQo+IC0gZml4IG1pc21hdGNoIHNlY3Rpb24gdW5kZXJsaW5lIGxlbmd0aChCYWdhcyBTYW5q
-YXlhKQo+IC0gTWFrZSBleGFtcGxlIHNuaXBwZXRzIGluIGNvZGUgYmxvY2soQmFnYXMgU2FuamF5
-YSkKPiAtIHdhcnAgY29udGV4dCBpbnRvIDgwIGNvbHVtbnMgYW5kIGZpeCB0aGUgZmlsZSBuYW1l
-KEJqb3JuKQo+IC0gcmVvcmRlciB2YXJpYWJsZXMoTWFuaSkKPiAtIHJlbmFtZSBsb29wIHRvIGk7
-IHJlbmFtZSBlbiB0byBlbmFibGUoTWFuaSkKPiAtIHVzZSBGSUVMRF9HRVQoTWFuaSkKPiAtIGFk
-ZCBjb21tZW50IGFib3V0IGhvdyB0aGUgRklGTyB3b3JrcyhNYW5pKQo+IAo+IENoYW5nZXMgaW4g
-djI6Cj4gLSB1c2UgdHJhY2Vwb2ludAo+IAo+IFNoYXduIExpbiAoMyk6Cj4gICBQQ0k6IHRyYWNl
-OiBBZGQgUENJIGNvbnRyb2xsZXIgTFRTU00gdHJhbnNpdGlvbiB0cmFjZXBvaW50Cj4gICBEb2N1
-bWVudGF0aW9uOiB0cmFjaW5nOiBBZGQgUENJIGNvbnRyb2xsZXIgZXZlbnQgZG9jdW1lbnRhdGlv
-bgo+ICAgUENJOiBkdy1yb2NrY2hpcDogQWRkIHBjaWVfbHRzc21fc3RhdGVfdHJhbnNpdGlvbiB0
-cmFjZSBzdXBwb3J0Cj4gCj4gIERvY3VtZW50YXRpb24vdHJhY2UvZXZlbnRzLXBjaS1jb250cm9s
-bGVyLnJzdCB8ICA0MiArKysrKysrKysrCj4gIERvY3VtZW50YXRpb24vdHJhY2UvaW5kZXgucnN0
-ICAgICAgICAgICAgICAgICB8ICAgMSArCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3Bj
-aWUtZHctcm9ja2NoaXAuYyB8IDExMSArKysrKysrKysrKysrKysrKysrKysrKysrKwo+ICBkcml2
-ZXJzL3BjaS90cmFjZS5jICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgIDEgKwo+ICBpbmNs
-dWRlL3RyYWNlL2V2ZW50cy9wY2lfY29udHJvbGxlci5oICAgICAgICAgfCAgNTggKysrKysrKysr
-KysrKysKPiAgNSBmaWxlcyBjaGFuZ2VkLCAyMTMgaW5zZXJ0aW9ucygrKQo+ICBjcmVhdGUgbW9k
-ZSAxMDA2NDQgRG9jdW1lbnRhdGlvbi90cmFjZS9ldmVudHMtcGNpLWNvbnRyb2xsZXIucnN0Cj4g
-IGNyZWF0ZSBtb2RlIDEwMDY0NCBpbmNsdWRlL3RyYWNlL2V2ZW50cy9wY2lfY29udHJvbGxlci5o
-Cj4gCj4gLS0gCj4gMi43LjQKPiAKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a
-4K6k4K6+4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On Wednesday, 18 March 2026 15:50:25 Central European Summer Time Alexey Charkov wrote:
+> Currently the slot width in non-TDM mode is always kept at the POR value
+> of 32 bits, regardless of the sample width, which doesn't work well for
+> some codecs such as NAU8822.
+> 
+> Set the slot width according to the sample width in non-TDM mode, which
+> is what other CPU DAI drivers do.
+> 
+> Tested on the following RK3576 configurations:
+> - SAI2 + NAU8822 (codec as the clock master), custom board
+> - SAI1 + ES8388 (codec as the clock master), RK3576 EVB1
+> - SAI2 + RT5616 (SAI as the clock master), FriendlyElec NanoPi M5
+> 
+> NAU8822 didn't work prior to this patch but works after the patch. Other
+> two configurations work both before and after the patch.
+> 
+> Fixes: cc78d1eaabad ("ASoC: rockchip: add Serial Audio Interface (SAI) driver")
+> Signed-off-by: Alexey Charkov <alchark@flipper.net>
+> ---
+>  sound/soc/rockchip/rockchip_sai.c | 4 ++++
+>  1 file changed, 4 insertions(+)
+> 
+> diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
+> index 1bf614dbdf4d..ed393e5034a4 100644
+> --- a/sound/soc/rockchip/rockchip_sai.c
+> +++ b/sound/soc/rockchip/rockchip_sai.c
+> @@ -628,6 +628,10 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
+>  
+>  	regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
+>  
+> +	if (!sai->is_tdm)
+> +		regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
+> +				   SAI_XCR_SBW(params_physical_width(params)));
+> +
+>  	regmap_read(sai->regmap, reg, &val);
+>  
+>  	slot_width = SAI_XCR_SBW_V(val);
+> 
+> ---
+> base-commit: 8e5a478b6d6a5bb0a3d52147862b15e4d826af19
+> change-id: 20260318-sai-slot-width-378eed5c22cd
+> 
+> Best regards,
+> 
+
+Okay, so I took a logic analyzer to the SAI today and found the following:
+
+It seems we've always been sending 16-bit samples in 32-bit width slots per
+channel before. With this change, we're now correctly sending 16-bit samples
+in 16-bit slots.
+
+In a follow-up patch (doesn't have to be in this one, this is fine to merge
+as-is) we could also refactor the switch statement just above to no longer
+exist but set val = SAI_XCR_VDW(params_width(params)).
+
+So:
+
+Acked-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+
+Kind regards,
+Nicolas Frattaroli
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
