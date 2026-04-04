@@ -4,65 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA475E63FEA
-	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Apr 2026 17:16:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC1DFE63FF6
+	for <linux-rockchip@archiver.kernel.org>; Sat,  4 Apr 2026 19:50:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=jmciHUd24k6uquwoPSzxW7WcEvQ9P1MmVhf30R1Uvtw=; b=fqDKZnsjeLXCcX
-	8Qi7Og6QAl0aIHrJqHqMDhbv3M/63sUZOohM275DMQqdOM8TJuwg5LFjvodUYEJMKvc8C+/HWlHVu
-	GteGP0MjB1V3hFlLbYY8jeRw7N5qwjV/Pd2s0V1OFNzrIPns1mlNIOebR2WnKchk3Dw0HvTXQc1V2
-	EgDpGZWJctpcJqLq015Me52DL8vJ74cwGquJraa7ExdfJEyrKu7dQZWmqt/PWOmneJQjpTyw2lRY0
-	cXbb0B/wVVugZClD85//uOCsIrM4Upx1NmwNzCPFikalbRonPgWHu6+7EnvkD57DmBuErsH2r5GV8
-	ETaLn6OnA2RBKuYQBxOA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=lhjsb6+VtimBUiv627QLNvH71K6fVdso+MUNbdQ7+vI=; b=fNf751Zys5ZgUu
+	dpXE/ZORAdosy/Qrc+qgrQH0DT2FYjqqzNuQK/tfnvwv4Y2uQv0zUj8F4nKwv6QSvIQeM2/Di9plD
+	/1gSvHXSnYGh7Qgq94YDdAhRQdYwnIEwU1t+2lU39ESZl8Z9lkWwhEPhSW3BPWJP7f1m7xRGlQOpy
+	qgS8bXsNndnifT2ta89JQ0d7Ap7JR7i2r5TAyjeDXpWYHNMnS4Bz1Pva9HEsczHwG3xF6mEUt+tXZ
+	j697Ti28RJnlhUyOssP5ro8kEywiQG2H4EpKfp9EkBSpgX88ThH1sbX0/rib+y6tkDwQVDQ25Hv7L
+	IymXU47SXCq/Rtp3JoWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w94bd-00000003dHn-1jpB;
-	Sat, 04 Apr 2026 17:16:24 +0000
-Received: from sender4-op-o12.zoho.com ([136.143.188.12])
+	id 1w970f-00000003iDQ-41hX;
+	Sat, 04 Apr 2026 19:50:21 +0000
+Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1w94ba-00000003dHP-3zYZ;
-	Sat, 04 Apr 2026 17:16:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1775322969; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=B14SHV11mIeaSdfanRw/FPb/uoYWFTRzLcKOkqBx2gxpmS3EOItjhsgTa54RA5lRgmmkRPyfCaOA9jEuJwzAMloc+GWoId/gZlu/jmSwPXI9Oi0sldlOtQCoyYKO27yPcceKTHsCcTdFbVNjlAA7ZPF/vbWqaiW7p39YdidgRYQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1775322969; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=vsmbdBHaX2w5XcBqN3gdCMgwy3ayHTGIzo7A1ewMMMw=; 
-	b=Xbwm51IbpxbhGx97RqrO2v7dIB8E1prD7Ggl20lmN2NGu2WZGhMgjhAbmRG8u+2HaE6OOER+K+Jo/6I8Od6ITFKUP86jGdBKfHWXSwM17ilvmU3wWdTmoKpMsAc79Pf1bZL/CBC+xBJYqVFxtROxSzkDs9vPcro3W4TLMMMC4js=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1775322969;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=vsmbdBHaX2w5XcBqN3gdCMgwy3ayHTGIzo7A1ewMMMw=;
-	b=I0ii5rAl21pUwmVpjFb7MbBrqCzddD6KhHO2tiwRELQfcAovLb7Xf6ndKxdVMOru
-	IUl8il3UOzBzqffwS1jXlhZMuASqAiKdbGe3DHXYundjqlN1T+AOA7GdU7FcuMRf7j0
-	UQH/x1olt9ZoWAhw9Q+Bu49SBpiz+IJ2C41tEG9U=
-Received: by mx.zohomail.com with SMTPS id 1775322965794133.1766397921774;
-	Sat, 4 Apr 2026 10:16:05 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Heiko Stuebner <heiko@sntech.de>, Sugar Zhang <sugar.zhang@rock-chips.com>,
- Alexey Charkov <alchark@flipper.net>
-Cc: linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Alexey Charkov <alchark@flipper.net>
-Subject: Re: [PATCH] ASoC: rockchip: rockchip_sai: Set slot width for non-TDM mode
-Date: Sat, 04 Apr 2026 19:16:00 +0200
-Message-ID: <5445638.31r3eYUQgx@workhorse>
-In-Reply-To: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
-References: <20260318-sai-slot-width-v1-1-1f68186f71e3@flipper.net>
+	id 1w970d-00000003iCo-2Ik8
+	for linux-rockchip@lists.infradead.org;
+	Sat, 04 Apr 2026 19:50:20 +0000
+Received: by mail-vk1-xa2d.google.com with SMTP id 71dfb90a1353d-56a8e0ea02aso3261080e0c.0
+        for <linux-rockchip@lists.infradead.org>; Sat, 04 Apr 2026 12:50:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1775332217; x=1775937017; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=fFw0d3YxVX0IoKpqo6KQF5VmNpCfzzBEIlKe5xv8oSw=;
+        b=ZxUeOHYtaBGnikK4GN6OQUyzJ1IMptnHYkTjDsdA4XyhVLBJJ3wSql5AiVyUVSJfyd
+         af2tthgKRYRmTmPJcBWLUFciv4TfdXadPU0JFiuyj2WWI4BrXuFHKls7UhX2J7JQVFZe
+         rvjEgrAbsMu1BN5gKSWxXuxafuSzsbWKClFPqhy3Xo02G2sMAuwuC+HxnXClPTRZ+7j8
+         M3bdJ3DA7x/XeLw0OTEeG9c4Li4r2YJHiGVcxixLE+AoRuKnjevC6Bme01XHvsQM7NJ0
+         +4G9juaMXNVet+exy1ZLnCPAej9ANgZ/O89ap2sbYl0q1SS2nGeQo0WeDm5lU6Al1ie4
+         95WQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775332217; x=1775937017;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=fFw0d3YxVX0IoKpqo6KQF5VmNpCfzzBEIlKe5xv8oSw=;
+        b=RZidsICn7BvcRZUPQhLcMTdaic2Ri/SQNAWTk3ndF9SVCPntKADxOtMABggIvzcC5m
+         /N+X0bYPboDOxN8t2WcaMc914QcR7AkWO+0pugAbCqZ0Agah9SpD3nS5OAqLKehEAG5C
+         aU8aajvBEsEnuzmpT3SIlfBW7w8L3cBpwe0FqDBwG8y56BgV1JqfTg9TC6HK+ooDJCPN
+         RM29eVNoED38CU6I/5HNOwcFkDzqOgxu7Ghy5Qr4qUze52Y17VHAYIMvtgCl/mUbfwHC
+         p5ZhksR9Y2ADOmN8zJihF7gL9n6UfxUv56zO+Q9Cl1w7J8Pj3WKfBLJlH5mCvN8uFKCA
+         5yVA==
+X-Forwarded-Encrypted: i=1; AJvYcCUT0x+4KYpUQ1VXA8tpdGf52Ms8Y0B1GrNLOV4HEjCiISfIlA+txQnyJ5+zPsp1RibAdSqsDWWKCV+HGof8TQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxTIBQzlKsn+O/IgqMhKWWbn+W3GlfnJ3doc18/jJPfjxg58p4v
+	/8WBQ7x3GepkIylKQ1H1O9Vrm9TVxwhZ1TGtcVgKSs6wgMEu0qxAxJRn
+X-Gm-Gg: AeBDiet0JqP03CMu9S7anRVftBAJmuQ7ZHVWYQHLGOp18kkDAUoSd8GJ6/4qEArBp9A
+	1YRglDr4pwxTDxLdI2OJRnaTo50X3XJ8b1h+qX7Y2eStoSBMCCv4d8GD48UtpqMIZ+KQcvofP+A
+	caYcobGsveL3/Yice/yIt2MaitPKPrMyRQlaVzO0BxWwGCV30LT24K1e432ZAyl/Miuc2CooVoW
+	8P51sddgs/ZNDAvld6D3IyujC07atcCPtTTCwwbf9tWjs7V7YfEIR/eW1A5OGCMT9DXzoYa4I6c
+	laM6wN/L1pOSvcPINMRXxf5HGHfnxVpewE9X84Mn5u8JdtDkWcaDfHL1jsTPtzq+sT+vDXlIFRY
+	uLfQz4+kdNgmptXp5dC647ncJS7iqXH6j0OIHPfUK+ipeyphhCC28X/aJZnl9AQ3ZP0yYr0KOrZ
+	pCwa1563AOs8YCg507kcMkHB7yuqmp4MWR3kIcPeiFdDI9BlQkBVzgEUDk+HaPJXvyy2H0pw==
+X-Received: by 2002:a05:6123:28:b0:56d:b337:4709 with SMTP id 71dfb90a1353d-56db3374a26mr1454973e0c.6.1775332217583;
+        Sat, 04 Apr 2026 12:50:17 -0700 (PDT)
+Received: from fabio-Precision-3551.. ([2804:1b3:a803:fafb:5a7b:510a:6309:f015])
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-56d9b8d22b4sm10695521e0c.0.2026.04.04.12.50.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 04 Apr 2026 12:50:16 -0700 (PDT)
+From: Fabio Estevam <festevam@gmail.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Fabio Estevam <festevam@nabladev.com>
+Subject: [PATCH] ARM: dts: rockchip: Remove invalid properies from rk3288-veyron-analog-audio
+Date: Sat,  4 Apr 2026 16:50:08 -0300
+Message-ID: <20260404195008.1951910-1-festevam@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260404_101619_068222_F51C4493 
-X-CRM114-Status: GOOD (  19.84  )
+X-CRM114-CacheID: sfid-20260404_125019_631367_8ACFDBEA 
+X-CRM114-Status: UNSURE (   8.41  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,68 +103,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wednesday, 18 March 2026 15:50:25 Central European Summer Time Alexey Charkov wrote:
-> Currently the slot width in non-TDM mode is always kept at the POR value
-> of 32 bits, regardless of the sample width, which doesn't work well for
-> some codecs such as NAU8822.
-> 
-> Set the slot width according to the sample width in non-TDM mode, which
-> is what other CPU DAI drivers do.
-> 
-> Tested on the following RK3576 configurations:
-> - SAI2 + NAU8822 (codec as the clock master), custom board
-> - SAI1 + ES8388 (codec as the clock master), RK3576 EVB1
-> - SAI2 + RT5616 (SAI as the clock master), FriendlyElec NanoPi M5
-> 
-> NAU8822 didn't work prior to this patch but works after the patch. Other
-> two configurations work both before and after the patch.
-> 
-> Fixes: cc78d1eaabad ("ASoC: rockchip: add Serial Audio Interface (SAI) driver")
-> Signed-off-by: Alexey Charkov <alchark@flipper.net>
-> ---
->  sound/soc/rockchip/rockchip_sai.c | 4 ++++
->  1 file changed, 4 insertions(+)
-> 
-> diff --git a/sound/soc/rockchip/rockchip_sai.c b/sound/soc/rockchip/rockchip_sai.c
-> index 1bf614dbdf4d..ed393e5034a4 100644
-> --- a/sound/soc/rockchip/rockchip_sai.c
-> +++ b/sound/soc/rockchip/rockchip_sai.c
-> @@ -628,6 +628,10 @@ static int rockchip_sai_hw_params(struct snd_pcm_substream *substream,
->  
->  	regmap_update_bits(sai->regmap, reg, SAI_XCR_VDW_MASK | SAI_XCR_CSR_MASK, val);
->  
-> +	if (!sai->is_tdm)
-> +		regmap_update_bits(sai->regmap, reg, SAI_XCR_SBW_MASK,
-> +				   SAI_XCR_SBW(params_physical_width(params)));
-> +
->  	regmap_read(sai->regmap, reg, &val);
->  
->  	slot_width = SAI_XCR_SBW_V(val);
-> 
-> ---
-> base-commit: 8e5a478b6d6a5bb0a3d52147862b15e4d826af19
-> change-id: 20260318-sai-slot-width-378eed5c22cd
-> 
-> Best regards,
-> 
+From: Fabio Estevam <festevam@nabladev.com>
 
-Okay, so I took a logic analyzer to the SAI today and found the following:
+The 'rockchip,mic-det-gpios' property is not documented anywhere.
 
-It seems we've always been sending 16-bit samples in 32-bit width slots per
-channel before. With this change, we're now correctly sending 16-bit samples
-in 16-bit slots.
+The 'rockchip,hp-det-gpios' property is not a valid property for the
+'rockchip,rockchip-audio-max98090' compatible.
 
-In a follow-up patch (doesn't have to be in this one, this is fine to merge
-as-is) we could also refactor the switch statement just above to no longer
-exist but set val = SAI_XCR_VDW(params_width(params)).
+Remove both invalid properties.
 
-So:
+Signed-off-by: Fabio Estevam <festevam@nabladev.com>
+---
+ arch/arm/boot/dts/rockchip/rk3288-veyron-analog-audio.dtsi | 2 --
+ 1 file changed, 2 deletions(-)
 
-Acked-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-Kind regards,
-Nicolas Frattaroli
-
+diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron-analog-audio.dtsi b/arch/arm/boot/dts/rockchip/rk3288-veyron-analog-audio.dtsi
+index 51208d161d65..25c7c0667856 100644
+--- a/arch/arm/boot/dts/rockchip/rk3288-veyron-analog-audio.dtsi
++++ b/arch/arm/boot/dts/rockchip/rk3288-veyron-analog-audio.dtsi
+@@ -14,8 +14,6 @@ sound {
+ 		rockchip,model = "VEYRON-I2S";
+ 		rockchip,i2s-controller = <&i2s>;
+ 		rockchip,audio-codec = <&max98090>;
+-		rockchip,hp-det-gpios = <&gpio6 RK_PA5 GPIO_ACTIVE_HIGH>;
+-		rockchip,mic-det-gpios = <&gpio6 RK_PB3 GPIO_ACTIVE_LOW>;
+ 		rockchip,headset-codec = <&headsetcodec>;
+ 		rockchip,hdmi-codec = <&hdmi>;
+ 	};
+-- 
+2.43.0
 
 
 _______________________________________________
