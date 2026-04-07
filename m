@@ -4,72 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5E37FEEF55
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Apr 2026 14:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A467FF5130
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Apr 2026 18:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sbZllft48LtV5sJZmIa3vcwrdzeAHocFTrd6G3kDwLw=; b=zRR5b7QJ5/BYMr
-	U78U0h2aNWan+0kZhBGej/cDZA+xrUwcdUxTf3puHLaRl0x6UxxT9axzPcMHPUb4mtN3p2kBLPKsl
-	hulDZnPw6zfox3z3YKjBuW7sUmWOuUMmFpEy0riuk+ZOquv40oLc42TkLjyYEG0nS6Fd/uimQSk0a
-	Om/0yhMmK3JWSPO5XnDvsMC1zW61SGNCYiACHl9vSToVOK+bcLY8ZfDVdr1vZtJrqMz2lBxKUZCNG
-	NO0L7GCAoSvXvW+S2lhMCRpYnsYnMQqeaL8QxFUZfMRcP0QZNDcYk+e/R5ZwmR5DALHK1z7utzDy/
-	96hBzLL2aMQvKB1ghI/g==;
+	List-Owner; bh=fVfzaMYB2HTWqozknixdx3XSPDPD9vRIUxbVSuIWOpA=; b=ecnK31uYls7nDf
+	h0ZVcf1SzQRjquvzrs9d20K6AhrpUVgGfyu/VKpVIxAw6GdQWvkmPwcjTJCaKfxMoB8bseHv+pnf4
+	J5f1A8wkhAdY2inP3609ykd/Et6RUDdD+zTr2oSNerdwgzIbaxOqJQWBciuTpw1mjCPQVOduOnNK8
+	5ffjKyfMlihKVbVjqjiGQ9IASCvfc/EoDMbssv4KApaze6g9EY1+00ITQXQZpPTp5oNPeYieU6DTu
+	zRiw+XqchxndZMaxZ/tahKcEDeZohIRDJBiQhKDsPovDD0v/L9oTEtL8VbHQXcRIdofu8BmW35ds9
+	kzE0G6RKXYmUzu3Ph9aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA7oV-00000006ebQ-49Gl;
-	Tue, 07 Apr 2026 14:53:59 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1wAAsX-00000006tqh-1Kbl;
+	Tue, 07 Apr 2026 18:10:21 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA7oS-00000006eaR-39mj
-	for linux-rockchip@lists.infradead.org;
-	Tue, 07 Apr 2026 14:53:58 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id A7C314E42946;
-	Tue,  7 Apr 2026 14:53:53 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 74AD7603C7;
-	Tue,  7 Apr 2026 14:53:53 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E190010450234;
-	Tue,  7 Apr 2026 16:53:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1775573631; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=dFpKKgJSe3LDnkGc1FYdedAaRZnlCAUJQ/ukxoYtD4Y=;
-	b=jyg5zU1hYNkpXLJb6meqXDq8VXWt5eBi1yf3MaMX4NsBnSaVC/ZPYaTPMHOcbkpkgn7seX
-	HdjHcw4PrpZ0PYHJ18lCo/NHNq/wkP2Ku+QULqsv8pSWhETT/KsLi7kQeTcjZWYThxn7Q4
-	l7zHJtiDTJiJlC1CO/bQDYp8BnlXkGJuxUHCWCez3KNaNT6ICV89h3x6N65jZYF6dnuQhC
-	xOEOeYuOK/aBMpBgzW0JucXrgPsddZzoiqseZiqilL5Fht5CfhYh8s8Bs8eo05cTOYj83O
-	phfnzk8yElIsP6clYK1BZPlnI0lWTWcda3nfyaoQG1wnb5XiWHJf1bmTtOtIUA==
-Mime-Version: 1.0
-Date: Tue, 07 Apr 2026 16:53:40 +0200
-Message-Id: <DHN0BGS5NT7V.364S1W551CQW6@bootlin.com>
-To: "Damon Ding" <damon.ding@rock-chips.com>, <andrzej.hajda@intel.com>,
- <neil.armstrong@linaro.org>, <rfoss@kernel.org>,
- <maarten.lankhorst@linux.intel.com>, <mripard@kernel.org>,
- <tzimmermann@suse.de>, <airlied@gmail.com>, <simona@ffwll.ch>,
- <hjc@rock-chips.com>, <heiko@sntech.de>, <andy.yan@rock-chips.com>,
- <wens@kernel.org>, <samuel@sholland.org>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH v1 2/4] drm/bridge: dw-hdmi: Allow
- &dw_hdmi_plat_data.output_port = 0 without DRM_BRIDGE_ATTACH_NO_CONNECTOR
-Cc: <Laurent.pinchart@ideasonboard.com>, <jonas@kwiboo.se>,
- <jernej.skrabec@gmail.com>, <victor.liu@nxp.com>,
- <dmitry.baryshkov@oss.qualcomm.com>, <shengjiu.wang@nxp.com>,
- <dri-devel@lists.freedesktop.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-rockchip@lists.infradead.org>, <linux-sunxi@lists.linux.dev>
-X-Mailer: aerc 0.20.1
-References: <20260403070032.447102-1-damon.ding@rock-chips.com>
- <20260403070032.447102-3-damon.ding@rock-chips.com>
-In-Reply-To: <20260403070032.447102-3-damon.ding@rock-chips.com>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1wAAsU-00000006tqE-0LIv;
+	Tue, 07 Apr 2026 18:10:19 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 83D2F406BC;
+	Tue,  7 Apr 2026 18:10:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DFCDC116C6;
+	Tue,  7 Apr 2026 18:10:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775585416;
+	bh=9fjuIFhmUoz+pTrO13nFTJUB6S3fQXknIHSx7EgxRZI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=dT8gTIpSJ89F+AHfiGM46qYbQ39i+NWIhwAa8WarZjcopRFBIdCHC1IzpIlk0NiPO
+	 HeRXXpKvxuAFyEvqJfVGM2u6hrtFZ+BLucPGY0G8Ogdf6LJ2U41qTWY+gnAnPRt5MP
+	 tw5QouUWRBTt0c/3Or3/5I4/Ju2QV5jZmHtOS0aCp4dFhlR1Yn8lsEcXsK2MQru/Nq
+	 DWEfqvMe6RnBweQKFoQbOuYvoiqb7FkTvzf5HHn2BrtuDtJT2TSPi7MV8c20OczSrV
+	 crugcMLxlbegmrtvSFVc3yBYgDrnsXBBN9n0J5Et3ejufmxx/ygfrWxQWX2Ulnkipb
+	 gGokkkjHXJegg==
+Date: Tue, 7 Apr 2026 13:10:14 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Sven =?iso-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>
+Cc: Jacob Chen <jacob-chen@iotwrt.com>, devicetree@vger.kernel.org,
+	sebastian.reichel@collabora.com,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org, kernel@pengutronix.de,
+	nicolas@ndufresne.ca, linux-media@vger.kernel.org
+Subject: Re: [PATCH v4 01/27] media: dt-bindings: media: rockchip-rga: add
+ rockchip,rk3588-rga3
+Message-ID: <177558541397.3220552.1652779778691249972.robh@kernel.org>
+References: <20260325-spu-rga3-v4-0-e90ec1c61354@pengutronix.de>
+ <20260325-spu-rga3-v4-1-e90ec1c61354@pengutronix.de>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260325-spu-rga3-v4-1-e90ec1c61354@pengutronix.de>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260407_075357_241752_381E186D 
-X-CRM114-Status: GOOD (  19.01  )
+X-CRM114-CacheID: sfid-20260407_111018_160891_3192A22C 
+X-CRM114-Status: GOOD (  14.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,70 +76,51 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Damon,
 
-On Fri Apr 3, 2026 at 9:00 AM CEST, Damon Ding wrote:
-> In the previous commit, Luca split the dw-hdmi attach process into two
-> cases:
->
->  A. hdmi->plat_data->output_port = 0:
->     the HDMI output (port@1) in device tree is not used
->
->  B. hdmi->plat_data->output_port = 1:
->     the HDMI output (port@1) is parsed to find the next bridge
->
-> For Rockchip, many older platforms (RK3288, RK3399, etc.) only support
-> case A by default. They can support DRM_BRIDGE_ATTACH_NO_CONNECTOR flag
-> after adapting to the bridge connector helper. Relax this constraint in
-> preparation for Rockchip dw-hdmi bridge-connector adaptation.
->
-> Link: https://lore.kernel.org/all/20260402-drm-lcdif-dbanc-v3-6-27cd247a0847@bootlin.com/
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+On Wed, 25 Mar 2026 15:50:32 +0100, Sven P=FCschel wrote:
+> Add a new compatible for the RGA3 (Raster Graphic Acceleration 3)
+> peripheral found on the RK3588 SoC. Also specify an iommu property,
+> as the RGA3 contains the generic rockchip iommu. While other versions
+> also have an iommu, it's usually specific to them.
+> =
+
+> The RK3588 contains one RGA2-Enhance core (also contained on the RK3399)
+> and two RGA3 cores. Both feature a similar functionality of scaling,
+> cropping and rotating of up to two input images into one output image.
+> Key differences of the RGA3 are:
+> =
+
+> - supports 10bit YUV output formats
+> - supports 8x8 tiles and FBCD as inputs and outputs
+> - supports BT2020 color space conversion
+> - max output resolution of (8192-64)x(8192-64)
+> - MMU can map up to 32G DDR RAM
+> - fully planar formats (3 planes) are not supported
+> - max scale up/down factor of 8 (RGA2 allows up to 16)
+> =
+
+> Signed-off-by: Sven P=FCschel <s.pueschel@pengutronix.de>
+> =
+
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index dd50dda3a4f5..20b2f9e145b0 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -2912,9 +2912,8 @@ static int dw_hdmi_bridge_attach(struct drm_bridge *bridge,
->  {
->  	struct dw_hdmi *hdmi = bridge->driver_private;
->
-> -	/* DRM_BRIDGE_ATTACH_NO_CONNECTOR requires a remote-endpoint to the next bridge */
-> -	if (WARN_ON((flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) && !hdmi->plat_data->output_port))
-> -		return -EINVAL;
-> +	if ((flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) && !hdmi->plat_data->output_port)
-> +		return 0;
->
->  	if (flags & DRM_BRIDGE_ATTACH_NO_CONNECTOR) {
->  		struct device_node *remote __free(device_node) =
+> =
 
-My understanding is that a hdmi-connector node is required in DT when using
-drm_bridge_connector and DRM_BRIDGE_ATTACH_NO_CONNECTOR. Among others, it
-is necessary to expose the correct connector type instead of defaulting to
-DRM_MODE_CONNECTOR_HDMIA.
+> Changed in v3/v4:
+> - Dropped Acked-by: Krzysztof Kozlowski due to the added iommus property
+>   and description adjustments.
+> ---
+>  Documentation/devicetree/bindings/media/rockchip-rga.yaml | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+> =
 
-@Dmitry, others, can you confirm or deny the above?
 
-If I'm correct, then the right way to support
-DRM_BRIDGE_ATTACH_NO_CONNECTOR here is adding an hdmi-connector node in DT,
-perhaps reusing the device tree overlay I proposed in [0].
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-[0] https://lore.kernel.org/lkml/20260407-drm-lcdif-dbanc-v4-8-247a16e61ef9@bootlin.com/
-
-Luca
-
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
 
 _______________________________________________
 Linux-rockchip mailing list
