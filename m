@@ -4,68 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7F5FB517E
-	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Apr 2026 07:09:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CED1FB517E
+	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Apr 2026 07:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fqv0Iqr/tiE893sbTSNqt0GC6ZUXzs/HCqDdTfp9z4c=; b=A0PU42F9kPVEDH
-	BpM/rNkTFKNHUEITgzRZ1E3bVsK0SijcxrblMLDiI5PIMdUpFZSXxtKyTR2VoP2K1OFfo7gutqLH2
-	dmVqXCTXcS25eI5Sbg1pJZS3rE0Eaiq2A0pELBCsQkzcHVODAd9kPb4Q4LTEqooIf2jRJv4196e2h
-	XkxEwJ3BQxCOJdjbjYJEykWCdJ6hRi2DnwcocKzKJYoCsmB+z9QzCGuVCC8ohgQGiL9hP+8v1LuEz
-	musGMfXuvfnXP9/Bdl4I+e53y9kqbGdwuFTy81+VYpjlYM5nVuyVjSJVsej7LwUeDF9Ax6SyY3yDr
-	XegM22txFE6UqxytxOBg==;
+	List-Owner; bh=iZiL6Q3arK7Bun7j5j2rJBnxYOLTp7FBCHuplT94tcw=; b=eVjVO7zSlaz6aP
+	g/sB7FKJaM9XSOKmkhb7GS0RjUL55VHuUk0GGz+ojwz+mQGeRQi7FLgQXFnbzPIY0weXVuz8zr8xT
+	fY2bJ+cbl8jD5EYhwufl9E27qWSupFvz8EVYFbKsF97cq0f7jWHz1R4fy//qyPAAACF950J06o0gb
+	GRumcsln/3f7MuB1bl4R5mQ741WX8eH2daoE2+fy9D3Dp91BnsHswF5ZZ1GFdhOjH4Z7awVl0WYu7
+	CYOtPL8CBfPLj7F/X0nr9aTfGWCzh9qI5lShrD3I4MqQiUT3y/befo6IbSieT9JD08CYNKnMz9+Me
+	yEx+egz+u48p7SWh9UFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0ZI-00000006327-2A8E;
-	Tue, 07 Apr 2026 07:09:48 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wA0ar-0000000637M-1Tu0;
+	Tue, 07 Apr 2026 07:11:25 +0000
+Received: from fr5000-r.dnsiaas.com ([92.42.104.18])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wA0ZG-0000000631k-28h4
+	id 1wA0am-0000000636Q-0Upv
 	for linux-rockchip@lists.infradead.org;
-	Tue, 07 Apr 2026 07:09:47 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E20D644438
-	for <linux-rockchip@lists.infradead.org>; Tue,  7 Apr 2026 07:09:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C77B7C116C6
-	for <linux-rockchip@lists.infradead.org>; Tue,  7 Apr 2026 07:09:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775545785;
-	bh=KC/jj6GmhMHDUzRtlH3EgwHDlxInZpWR93VMFPpSvO0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=Lg3+MFynZZDfGOAdcXK5csUuSME6DXXC2MFxNvAOHdoXnkpb4sCdWpygnucSj9v1m
-	 95UFzrmtIoL/cY3EQ5MbSFZAR5Fb2zHLH5E2xcV1SfEIllG4HLZJ+jDvEJZG4VS73M
-	 /tloYF7hTklShsjtd2WMxecRcFfyyLlFISH0sP9Bv3MV2PvGMIfemhb7LZF26B8ZYV
-	 BVeRbXceej5LrHISpis04/2N/bLNcGtjE6vGSA/xYpa8Mw2mVzvRV3g7OOP3vHiSqr
-	 m8SJo43kSOF5F6ZwQOUf0vlBiX80pFNSsfK3eE2SCsqD2Z4vHIQLDRp1fOlBAOaFsV
-	 zHgQzrtSI1N/g==
-Received: by mail-yw1-f179.google.com with SMTP id 00721157ae682-79a46ebe2beso44768667b3.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 07 Apr 2026 00:09:45 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCXl8DkHs6SQbJWf+kMUMgVzBPZIpJn48MZ5ExwAs6+7/hf0hNqhEIlnUjXyo4EF+UCYSSfYU7t1P/+/dE59Yg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyusE9fVC4Ai7Cs9sOcGPp2lk9CYtVlivJDSnB9c2y9cLucSP5r
-	kTA4M8aQYrFnGiWWqI6fiNgkL/LZQYXkYh3hT5537DrIdzGhJvoTPCpn4CjK1S62XFLFMQ70H5S
-	noGrxy56RYpdG0QR7SLry2pMzTi3rw+s=
-X-Received: by 2002:a05:690c:38a:b0:79a:7cff:7b81 with SMTP id
- 00721157ae682-7a4d556cdf1mr162249447b3.27.1775545785139; Tue, 07 Apr 2026
- 00:09:45 -0700 (PDT)
+	Tue, 07 Apr 2026 07:11:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=superkali.me; s=default; h=Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+	List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=XsOec6Hdyz9yZOVLnyQeVGGV7sb0eWBIKC1Iabb4xRg=; b=g3qwpRmcE4Tu+1nF83CXg+E62r
+	t6kYFb9LyUciaHHhcCH6Apxp+VDlW9e3vjjN+5VGOtF6itxkrZkAFh61f8L3OxYbmMYFZPLEmdtjz
+	wxrUNQhvWfjDjVC4+qHY/PB8gTxd8X+L27lyBC3HW4bY+hyvj5yjPf7pbTI/2WQHTmWFTnMwYNWDr
+	4yO9nnJBA1DG5r7G2eOoK0528YOJaXj4qilijpkVFfnLawk1C6EKzD3Mh1J7WV/R8yQkqPl76lTnP
+	Zn29d4ZF4HgmiYxD664BAT9KKwEOfDgG+08RrQ3ab72s9fOh9PbYqMTY3JLUbQyVeLoyc+/A/iTwD
+	omqvfobA==;
+Received: from [2a0d:52c0:500f:0:1bb:1e6d:23ac:ccd4] (port=59567 helo=localhost.localdomain)
+	by fr5000-r.dnsiaas.com with esmtpsa  (TLS1.3) tls TLS_CHACHA20_POLY1305_SHA256
+	(Exim 4.99.1)
+	(envelope-from <hello@superkali.me>)
+	id 1wA0a3-0000000Amwp-3rsq;
+	Tue, 07 Apr 2026 09:10:35 +0200
+From: Daniele Briguglio <hello@superkali.me>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-rockchip@lists.infradead.org,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Daniele Briguglio <hello@superkali.me>
+Subject: Re: [PATCH v3 0/4] clk: rockchip: rk3588: add I2S MCLK output gate clocks
+Date: Tue,  7 Apr 2026 09:10:31 +0200
+Message-ID: <20260407071031.69465-1-hello@superkali.me>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260320-rk3588-mclk-gate-grf-v3-0-980338eacd2c@superkali.me>
+References: <20260320-rk3588-mclk-gate-grf-v3-0-980338eacd2c@superkali.me>
 MIME-Version: 1.0
-References: <1774864401-177149-1-git-send-email-shawn.lin@rock-chips.com>
-In-Reply-To: <1774864401-177149-1-git-send-email-shawn.lin@rock-chips.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 7 Apr 2026 09:09:34 +0200
-X-Gmail-Original-Message-ID: <CAD++jLnKRFwdZOVdjX4wPmU_YvHw-MNjbbe09-GPaxHYDNav8Q@mail.gmail.com>
-X-Gm-Features: AQROBzCRHOHR9JFWyk6j7oerUzw_hLzyX-ZP_Z0zJ8yhgH3qIO3DjaI4Yz45Jn0
-Message-ID: <CAD++jLnKRFwdZOVdjX4wPmU_YvHw-MNjbbe09-GPaxHYDNav8Q@mail.gmail.com>
-Subject: Re: [PATCH] gpio: rockchip: convert to dynamic GPIO base allocation
-To: Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Bartosz Golaszewski <brgl@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, ye.zhang@rock-chips.com
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - fr5000-r.dnsiaas.com
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - superkali.me
+X-Get-Message-Sender-Via: fr5000-r.dnsiaas.com: authenticated_id: hello@superkali.me
+X-Authenticated-Sender: fr5000-r.dnsiaas.com: hello@superkali.me
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260407_000946_696959_EC0B9A9D 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20260407_001120_364489_4D2C5404 
+X-CRM114-Status: UNSURE (   0.55  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,29 +83,26 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gTW9uLCBNYXIgMzAsIDIwMjYgYXQgMTE6NTPigK9BTSBTaGF3biBMaW4gPHNoYXduLmxpbkBy
-b2NrLWNoaXBzLmNvbT4gd3JvdGU6Cgo+IFRoaXMgZHJpdmVyIGlzIHVzZWQgb24gZGV2aWNlIHRy
-ZWUgYmFzZWQgcGxhdGZvcm0uIFVzZSBkeW5hbWljCj4gR1BJTyBudW1iZXJzcGFjZSBiYXNlIHRv
-IHN1cHByZXNzIHRoZSB3YXJuaW5nOgo+Cj4gZ3BpbyBncGlvY2hpcDA6IFN0YXRpYyBhbGxvY2F0
-aW9uIG9mIEdQSU8gYmFzZSBpcyBkZXByZWNhdGVkLCB1c2UgZHluYW1pYyBhbGxvY2F0aW9uLgo+
-IGdwaW8gZ3Bpb2NoaXAxOiBTdGF0aWMgYWxsb2NhdGlvbiBvZiBHUElPIGJhc2UgaXMgZGVwcmVj
-YXRlZCwgdXNlIGR5bmFtaWMgYWxsb2NhdGlvbi4KPiBncGlvIGdwaW9jaGlwMjogU3RhdGljIGFs
-bG9jYXRpb24gb2YgR1BJTyBiYXNlIGlzIGRlcHJlY2F0ZWQsIHVzZSBkeW5hbWljIGFsbG9jYXRp
-b24uCj4gZ3BpbyBncGlvY2hpcDM6IFN0YXRpYyBhbGxvY2F0aW9uIG9mIEdQSU8gYmFzZSBpcyBk
-ZXByZWNhdGVkLCB1c2UgZHluYW1pYyBhbGxvY2F0aW9uLgo+IGdwaW8gZ3Bpb2NoaXA0OiBTdGF0
-aWMgYWxsb2NhdGlvbiBvZiBHUElPIGJhc2UgaXMgZGVwcmVjYXRlZCwgdXNlIGR5bmFtaWMgYWxs
-b2NhdGlvbi4KPgo+IFNpZ25lZC1vZmYtYnk6IFNoYXduIExpbiA8c2hhd24ubGluQHJvY2stY2hp
-cHMuY29tPgoKUmV2aWV3ZWQtYnk6IExpbnVzIFdhbGxlaWogPGxpbnVzd0BrZXJuZWwub3JnPgoK
-KEkgcGVyc29uYWxseSB0aGluayB3ZSBzaG91bGQgYmUgcHJvZ3Jlc3NpdmUgd2l0aCB0aGVzZSBj
-aGFuZ2VzLApCYXJ0b3N6IG1heSBiZSBtb3JlIGNhcmVmdWwuKQoKPiAtICAgICAgIGdjLT5iYXNl
-ID0gYmFuay0+cGluX2Jhc2U7Cj4gKyAgICAgICBnYy0+YmFzZSA9IC0xOwoKQ2FuIHdlIHJlbW92
-ZSB0aGUgd2hvbGUgLT5waW5fYmFzZSBuZXh0IGtlcm5lbCBjeWNsZSBpZiB0aGlzIGFsbApnb2Vz
-IHdlbGw/CgpZb3VycywKTGludXMgV2FsbGVpagoKX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJv
-Y2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFp
-bG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+Hi Heiko,
+
+Gentle ping on this series. It has collected the following tags:
+
+  Patch 1: Acked-by: Krzysztof Kozlowski
+  Patch 2: Reviewed-by: Nicolas Frattaroli
+  Patch 4: Reviewed-by: Nicolas Frattaroli
+  Patch 4: Tested-by: Ricardo Pardini
+
+Please let me know if anything else is needed.
+
+Thanks,
+Daniele
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
