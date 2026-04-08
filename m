@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAEAD105D991
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 01:38:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D4D1105D993
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 02:18:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
 	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kjlqRyar/ILcoNC/BS0ctmiPZxs+ltXc4iMt7jPkFKQ=; b=qdz2HJwmoK2PQu
-	O3toHgURQ3/l6vK/BhWR7C2vzj1nJFGIE/yONOK/7iNbBIzoKZk91FtMMT6Ej9l56mh/KocA6z2W1
-	ofqQ4C6xrn7ERIqqsFNiKSHsKeL3plZHe0FhKEwG5NjKijjrRu+kkyes+fNTzaJN6zTcxD30DpUbb
-	RPKYSeoc3WSAdOyQd9LPN0wZwGHamSbbvbaesRo/ZMdK++nUgjs13OY+EOQsjuMtvaU9WEfv4/0W4
-	hcEy+zUj2lD2Xwxl3Wd5XzjH0yn6g3braclWeaYoL3QvJsgPr+t10/eEeJgDDnQJ7vhuWGNqV5yRf
-	Q3lX0EjfYM71E3zxJFtQ==;
+	List-Owner; bh=+1G3DuXJHQedfvT+IkQ1a+am6eTfN6vgfqf9/z3tU0E=; b=P/wKKVY68cMZGt
+	1JQs4g3CASE3TkeVta8iEtOb09p4HNhmipDlRY+bwFf2remvbzJ9X95RUguKHUvMIHAx8bjVHmApi
+	1ENW8HEggntuYcxwizMPD4g91tNjdmqXOt7twfE5mARnH9Wzhj6zjQV8TYPhvo9glH4HOeZh25Vmj
+	KwFhaNo1aGq3CVWmJxeivWd6njwNPDImfFbELfE5K0bTnsNP8VnYJvuWJB6U2vjzy1s7ONZvAbLha
+	POUE6Ik2i+GtVNdcktcrpdCGbOfIAeUkE2G/1ufCwpTgXKAGq31ki+RU8e7Vsk348JMTsg8scS0IO
+	XXeqy4aVh1xSQM2k13pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAHs9-000000085kk-21oN;
-	Wed, 08 Apr 2026 01:38:25 +0000
-Received: from mail-m49209.qiye.163.com ([45.254.49.209])
+	id 1wAIUx-000000087qO-48jL;
+	Wed, 08 Apr 2026 02:18:31 +0000
+Received: from mail-m32114.qiye.163.com ([220.197.32.114])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAHs6-000000085kC-0Yl3;
-	Wed, 08 Apr 2026 01:38:24 +0000
-Received: from [172.16.12.43] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 39de7d730;
-	Wed, 8 Apr 2026 09:38:04 +0800 (GMT+08:00)
-Message-ID: <ee5ba5ac-3d33-4542-9abe-6d3e0d1e1d76@rock-chips.com>
-Date: Wed, 8 Apr 2026 09:38:03 +0800
+	id 1wAIUv-000000087pf-04ah
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Apr 2026 02:18:30 +0000
+Received: from [172.16.12.17] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 39e07af53;
+	Wed, 8 Apr 2026 10:18:22 +0800 (GMT+08:00)
+Message-ID: <a9c5d50f-b09d-2aa6-56e8-788675a7a8d6@rock-chips.com>
+Date: Wed, 8 Apr 2026 10:18:21 +0800
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v12 02/17] drm/bridge: Move legacy bridge driver out of
- imx directory for multi-platform use
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>, andrzej.hajda@intel.com,
- neil.armstrong@linaro.org, rfoss@kernel.org,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, victor.liu@nxp.com, shawnguo@kernel.org,
- s.hauer@pengutronix.de, inki.dae@samsung.com, sw0312.kim@samsung.com,
- kyungmin.park@samsung.com, krzk@kernel.org, jingoohan1@gmail.com,
- p.zabel@pengutronix.de, hjc@rock-chips.com, heiko@sntech.de,
- andy.yan@rock-chips.com
-Cc: Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
- jernej.skrabec@gmail.com, kernel@pengutronix.de, festevam@gmail.com,
- alim.akhtar@samsung.com, dmitry.baryshkov@oss.qualcomm.com,
- nicolas.frattaroli@collabora.com, dianders@chromium.org,
- m.szyprowski@samsung.com, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
- linux-arm-kernel@lists.infradead.org, linux-samsung-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-References: <20260401091454.25730-1-damon.ding@rock-chips.com>
- <20260401091454.25730-3-damon.ding@rock-chips.com>
- <DHMXIJKO62F2.3JVF0Y6L7DI0I@bootlin.com>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <DHMXIJKO62F2.3JVF0Y6L7DI0I@bootlin.com>
-X-HM-Tid: 0a9d6abd4cba03a3kunm02c5d4f5311355
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.1
+Cc: shawn.lin@rock-chips.com, linux-mmc@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, Stable@vger.kernel.org,
+ Ulf Hansson <ulf.hansson@linaro.org>
+Subject: Re: [PATCH] mmc: sdhci-of-dwcmshc: Disable clock before DLL
+ configuration
+To: Adrian Hunter <adrian.hunter@intel.com>
+References: <1775014742-233407-1-git-send-email-shawn.lin@rock-chips.com>
+ <da3b1b9c-fb92-4408-bb5a-485c050f7c60@intel.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <da3b1b9c-fb92-4408-bb5a-485c050f7c60@intel.com>
+X-HM-Tid: 0a9d6ae233bd09cckunm716af1033867a7
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQhpPHlYYHRlKTUpCHhgfQh5WFRQJFh
-	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
-	1VSktLVUpCWQY+
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0wYTlYaH0xOSRgaGR4aGU5WFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Hd1vd4jplB+V/AGhFIiROBjwtKrMDwt728WjZzN6yYhQVzxRFstEyjBi+BZCN7a3A9WPY14JeUCdNIV1oAUbaRqlm8laee1Ct43HI8Qk8JgjcXcj8lEZANU5MrrEtuUzkx6Q/u83DBAb598knymj5BynVPjfQ7ffVnmecTsaW6E=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=500nTzOsPEHbmmnZSC4nbTuUuD8MTS9l045tiv5dYA4=;
+	b=FKsyqy/62+sHoo2FL0sSgh8xxj55P4Ewb4Y+von8U2CRsa+A9Uh1KSkdbjBulBb7sF9hSlWtZSewAtlyT9MXzNoRliKWu3vTMayDYrDZMkpo+goKEeJ0CpTQlGJC9ZoY16p9MmowWcqX21rgE5qCLuczqBBwq6U5gORdKiV41w0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=bbP7HTNju4eJzMipoRDaCHo6KbSQ6RtCL471+qLrxWk=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260407_183822_686697_69B313DA 
-X-CRM114-Status: UNSURE (   8.62  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260407_191829_544636_5CCF5DBF 
+X-CRM114-Status: GOOD (  18.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,40 +69,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
-
-On 4/7/2026 8:41 PM, Luca Ceresoli wrote:
-> Hello Damon,
-> 
-> On Wed Apr 1, 2026 at 11:14 AM CEST, Damon Ding wrote:
->> As suggested by Dmitry, the DRM legacy bridge driver can be pulled
->> out of imx/ subdir for multi-platform use. The driver is also renamed
->> to make it more generic and suitable for platforms other than i.MX.
->>
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->> Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->> Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
->> Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
->> Tested-by: Heiko Stuebner <heiko@sntech.de> (on rk3588)
-> 
-> I tried applying patchs 1-9 to drm-misc-next but patch 2 does not apply due
-> to conflicts in the Kconfig file. Can you please rebase and send a new
-> iteration?
-> 
-> 
-
-Sure, will rebase and send a new version soon.
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+5ZyoIDIwMjYvMDQvMDcg5pif5pyf5LqMIDE0OjM4LCBBZHJpYW4gSHVudGVyIOWGmemBkzoKPiBP
+biAwMS8wNC8yMDI2IDA2OjM5LCBTaGF3biBMaW4gd3JvdGU6Cj4+IEFjY29yZGluZyB0byB0aGUg
+QVNJQyBkZXNpZ24gcmVjb21tZW5kYXRpb25zLCB0aGUgY2xvY2sgbXVzdCBiZQo+PiBkaXNhYmxl
+ZCBiZWZvcmUgb3BlcmF0aW5nIHRoZSBETEwgdG8gcHJldmVudCBnbGl0Y2hlcyB0aGF0IGNvdWxk
+Cj4+IGFmZmVjdCB0aGUgaW50ZXJuYWwgZGlnaXRhbCBsb2dpYy4gSW4gZXh0cmVtZSBjYXNlcywg
+ZmFpbGluZyB0bwo+PiBkbyBzbyBtYXkgY2F1c2UgdGhlIGNvbnRyb2xsZXIgdG8gbWFsZnVuY3Rp
+b24gY29tcGxldGVseS4KPj4KPj4gQWRkcyBhIHN0ZXAgdG8gZGlzYWJsZSB0aGUgY2xvY2sgYmVm
+b3JlIERMTCBjb25maWd1cmF0aW9uIGFuZAo+PiByZS1lbmFibGVzIGl0IGF0IHRoZSBlbmQuCj4+
+Cj4+IEZpeGVzOiAwOGYzZGZmNzk5ZDQgKCJtbWM6IHNkaGNpLW9mLWR3Y21zaGM6IGFkZCByb2Nr
+Y2hpcCBwbGF0Zm9ybSBzdXBwb3J0IikKPj4gQ2M6IDxTdGFibGVAdmdlci5rZXJuZWwub3JnPgo+
+PiBTaWduZWQtb2ZmLWJ5OiBTaGF3biBMaW4gPHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4KPj4g
+LS0tCj4+IFRoaXMgaXMgYmFzY2lhbGx5IGEgY29kZSBzeW5jIHdpdGggdGhlIGRvd25zdHJlYW0g
+dmVuZG9yIGtlcm5lbCB3aGljaCB3YXMgYmVlbgo+PiBkb25lIHRoaXMgd2F5IGFuZCB0ZXN0ZWQg
+Zm9yIHNvbWUgeWVhcnMgdG8gY29uZmlybSBpdCBjb3VsZCBmaXggdGhlIGlzc3VlcyBpbgo+PiBh
+bGwgY29ybmVyIGNhc2VzLgo+Pgo+PiAgIGRyaXZlcnMvbW1jL2hvc3Qvc2RoY2ktb2YtZHdjbXNo
+Yy5jIHwgMTIgKysrKysrKysrLS0tCj4+ICAgMSBmaWxlIGNoYW5nZWQsIDkgaW5zZXJ0aW9ucygr
+KSwgMyBkZWxldGlvbnMoLSkKPj4KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbW1jL2hvc3Qvc2Ro
+Y2ktb2YtZHdjbXNoYy5jIGIvZHJpdmVycy9tbWMvaG9zdC9zZGhjaS1vZi1kd2Ntc2hjLmMKPj4g
+aW5kZXggNjEzOTUxNi4uZTNhZTMzNCAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tbWMvaG9zdC9z
+ZGhjaS1vZi1kd2Ntc2hjLmMKPj4gKysrIGIvZHJpdmVycy9tbWMvaG9zdC9zZGhjaS1vZi1kd2Nt
+c2hjLmMKPj4gQEAgLTc4MywxMiArNzgzLDE1IEBAIHN0YXRpYyB2b2lkIGR3Y21zaGNfcmszNTY4
+X3NldF9jbG9jayhzdHJ1Y3Qgc2RoY2lfaG9zdCAqaG9zdCwgdW5zaWduZWQgaW50IGNsb2NrCj4+
+ICAgCWV4dHJhIHw9IEJJVCg0KTsKPj4gICAJc2RoY2lfd3JpdGVsKGhvc3QsIGV4dHJhLCByZWcp
+Owo+PiAgIAo+PiArCS8qIERpc2FibGUgY2xvY2sgd2hpbGUgY29uZmlnIERMTCAqLwo+PiArCXNk
+aGNpX3dyaXRldyhob3N0LCAwLCBTREhDSV9DTE9DS19DT05UUk9MKTsKPj4gKwo+PiAgIAlpZiAo
+Y2xvY2sgPD0gNTIwMDAwMDApIHsKPj4gICAJCWlmIChob3N0LT5tbWMtPmlvcy50aW1pbmcgPT0g
+TU1DX1RJTUlOR19NTUNfSFMyMDAgfHwKPj4gICAJCSAgICBob3N0LT5tbWMtPmlvcy50aW1pbmcg
+PT0gTU1DX1RJTUlOR19NTUNfSFM0MDApIHsKPj4gICAJCQlkZXZfZXJyKG1tY19kZXYoaG9zdC0+
+bW1jKSwKPj4gICAJCQkJIkNhbid0IHJlZHVjZSB0aGUgY2xvY2sgYmVsb3cgNTJNSHogaW4gSFMy
+MDAvSFM0MDAgbW9kZSIpOwo+PiAtCQkJcmV0dXJuOwo+PiArCQkJZ290byBlbmFibGVfY2xrOwo+
+PiAgIAkJfQo+PiAgIAo+PiAgIAkJLyoKPj4gQEAgLTgwOCw3ICs4MTEsNyBAQCBzdGF0aWMgdm9p
+ZCBkd2Ntc2hjX3JrMzU2OF9zZXRfY2xvY2soc3RydWN0IHNkaGNpX2hvc3QgKmhvc3QsIHVuc2ln
+bmVkIGludCBjbG9jawo+PiAgIAkJCURMTF9TVFJCSU5fREVMQVlfTlVNX1NFTCB8Cj4+ICAgCQkJ
+RExMX1NUUkJJTl9ERUxBWV9OVU1fREVGQVVMVCA8PCBETExfU1RSQklOX0RFTEFZX05VTV9PRkZT
+RVQ7Cj4+ICAgCQlzZGhjaV93cml0ZWwoaG9zdCwgZXh0cmEsIERXQ01TSENfRU1NQ19ETExfU1RS
+QklOKTsKPj4gLQkJcmV0dXJuOwo+PiArCQlnb3RvIGVuYWJsZV9jbGs7Cj4+ICAgCX0KPj4gICAK
+Pj4gICAJLyogUmVzZXQgRExMICovCj4+IEBAIC04MzUsNyArODM4LDcgQEAgc3RhdGljIHZvaWQg
+ZHdjbXNoY19yazM1Njhfc2V0X2Nsb2NrKHN0cnVjdCBzZGhjaV9ob3N0ICpob3N0LCB1bnNpZ25l
+ZCBpbnQgY2xvY2sKPj4gICAJCQkJIDUwMCAqIFVTRUNfUEVSX01TRUMpOwo+PiAgIAlpZiAoZXJy
+KSB7Cj4+ICAgCQlkZXZfZXJyKG1tY19kZXYoaG9zdC0+bW1jKSwgIkRMTCBsb2NrIHRpbWVvdXQh
+XG4iKTsKPj4gLQkJcmV0dXJuOwo+PiArCQlnb3RvIGVuYWJsZV9jbGs7Cj4+ICAgCX0KPj4gICAK
+Pj4gICAJZXh0cmEgPSAweDEgPDwgMTYgfCAvKiB0dW5lIGNsb2NrIHN0b3AgZW4gKi8KPj4gQEAg
+LTg2OCw2ICs4NzEsOSBAQCBzdGF0aWMgdm9pZCBkd2Ntc2hjX3JrMzU2OF9zZXRfY2xvY2soc3Ry
+dWN0IHNkaGNpX2hvc3QgKmhvc3QsIHVuc2lnbmVkIGludCBjbG9jawo+PiAgIAkJRExMX1NUUkJJ
+Tl9UQVBOVU1fREVGQVVMVCB8Cj4+ICAgCQlETExfU1RSQklOX1RBUE5VTV9GUk9NX1NXOwo+PiAg
+IAlzZGhjaV93cml0ZWwoaG9zdCwgZXh0cmEsIERXQ01TSENfRU1NQ19ETExfU1RSQklOKTsKPj4g
+Kwo+PiArZW5hYmxlX2NsazoKPj4gKwlzZGhjaV9lbmFibGVfY2xrKGhvc3QsIDApOwo+IAo+IFNo
+b3VsZCB0aGlzIGJlIDA/ICBJZiBzbywgbmVlZHMgc29tZSBleHBsYW5hdGlvbi4KClllcywgcGFz
+c2luZyAwIGlzIGludGVudGlvbmFsIGZvciB0aGUgUm9ja2NoaXAgcGxhdGZvcm0uClRoaXMgY29u
+dHJvbGxlciBvbiBSb2NrY2hpcCBoYXMgU0RIQ0lfUVVJUktfQ0FQX0NMT0NLX0JBU0VfQlJPS0VO
+CnNldCwgaW5kaWNhdGluZyB0aGF0IHRoZSBiYXNlIGNsb2NrIGNhcGFiaWxpdHkgcmVwb3J0aW5n
+IGlzIHVucmVsaWFibGUuCk1vcmUgaW1wb3J0YW50bHksIHRoZSBzZGNsayBmcmVxdWVuY3kgc2Vs
+ZWN0IGJpdHMgaW4gdGhlClNESENJX0NMT0NLX0NPTlRST0wgcmVnaXN0ZXIgYXJlIGFjdHVhbGx5
+IG5vbi1mdW5jdGlvbmFsIG9uIHRoaXMgCmhhcmR3YXJlLiBUaGUgc2RjbGsgZnJlcXVlbmN5IGlz
+IGluc3RlYWQgc2V0IHZpYSBjbGtfc2V0X3JhdGUoKWZvciBhbGwKbW9kZXMuIEZyb20gdGhpcyBw
+b2ludCwgYWxsIG9mIHRoZSBzZGhjaV9zZXRfY2xvY2soKSBjYWxscyBhbmQgaW4KZHdjbXNoY19y
+azM1Njhfc2V0X2Nsb2NrKCkgYXJlIGFsc28gc2VydmVkIGFzIGVuYWJsaW5nIGFuZCBkaXNhYmxp
+bmcKY2xrIG9ubHkuCgpUaGVyZWZvcmUsIHNkaGNpX2VuYWJsZV9jbGsoaG9zdCwgMCkgaXMgc2lt
+cGx5IHJlLWVuYWJsaW5nIHRoZQpjbG9jayB3aXRob3V0IG1vZGlmeWluZyB0aGUgZnJlcXVlbmN5
+IHNlbGVjdGlvbiBiaXRzLCB3aGljaCBhbGlnbnMgd2l0aAp0aGUgaGFyZHdhcmUncyBhY3R1YWwg
+YmVoYXZpb3IuCgpUZWNobmljYWxseSBzcGVha2luZywgd2UgY291bGQgc2F2ZSB0aGUgcHJldmlv
+dXNseSBjYWxjdWxhdGVkIHNkY2xrCnZhbHVlIGFuZCBwYXNzIGl0IHRvIHNkaGNpX2VuYWJsZV9j
+bGsoKS4gSG93ZXZlciwgc2luY2UgdGhlIGZyZXF1ZW5jeQpzZWxlY3QgYml0cyBhcmUgaWdub3Jl
+ZCBieSB0aGUgaGFyZHdhcmUsIHBhc3NpbmcgMCBpcyBzYWZlIGFuZApmdW5jdGlvbmFsbHkgZXF1
+aXZhbGVudC4gSSBjb3VsZCBhZGQgYSBjb21tZW50IGZvciBqdXN0IHRoaXMgbGluZSBjaGFuZ2UK
+b3Igd291bGQgeW91IGxpa2UgbWUgdG8gYWRkIGEgY29tbWVudCBmb3IgdGhlIHdob2xlIHNkY2xr
+IHN0dWZmIGluCmR3Y21zaGNfcmszNTY4X3NldF9jbG9jaygpPwoKCj4gCj4+ICAgfQo+PiAgIAo+
+PiAgIHN0YXRpYyB2b2lkIHJrMzV4eF9zZGhjaV9yZXNldChzdHJ1Y3Qgc2RoY2lfaG9zdCAqaG9z
+dCwgdTggbWFzaykKPiAKPiAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
+cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
+Zm8vbGludXgtcm9ja2NoaXAK
