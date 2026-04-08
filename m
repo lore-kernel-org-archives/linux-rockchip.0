@@ -4,64 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3BF010F995C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 17:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E3E10F9968
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 19:44:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KDAlc8NF33ytgU6z3x7jYK/aIX6DNbuOcitEg3oRpVQ=; b=BZ/s4lSLjJGOcy
-	SOO5q6KL8dMVkd3EMoGQ+Q0G0Oac2oh79Y5PIGmcARJ+TNe29ClY9gR7Hx4RLRoHgykZMe0V5+tY4
-	3AnsnBSlyUjQo/woOq3G/HA3M46kC+8Vy1ahGVDI5edSZMEftHDLsuMzkdopvfM8D50uJsxVzTgCu
-	ykcJoycbjgBuUTsezSKiIfGk8VWDcgLFfRjXMpXI7GR9BLr90aHeL9kDI5oMQyRBXYbsFG1b78oxt
-	Fo3+EyodyBXZLAmA4MH71lRqq9OMXvfy9f4CHuX/eGoEdw8Y94OIbolyup3LTb0Bw8sOCP9sHtrvg
-	g2GkUGKw4ZY85kemlY5w==;
+	List-Owner; bh=O/HQNWiM635Zh0XOGJ0KfXL8ZbOaKVHO+qEvwTA97DI=; b=f92CPvn4+EkP6n
+	m9ifXF/J84ix1snTgN8VUrnEZmOSKqG2kMg5Jn+dlVYKa0D/qK5yWs0c2S1igJozGGGoD+1xplmak
+	GhVFwkVSYJoa5EGTq6d94DX33x37C4kNzrEGawsumv6FlyM5h5j1vhtM8oackBF//8p40bdCFOU5i
+	6hlVyGt1z/CZ00NexNT0X1xYsf0+3B4Lwfdkw+hdy7qMHa1LuFvWqQnyxQeFh9q7twYnSZNdGr6FV
+	WgRNXb4SvE/V6efn50TiVw7SKfgA3SY+SE3w/byV9vK2CGFg7GFmaknwja3R9vkqEbXfXz+UXc5jl
+	ONBtx8mxiBgmY/Sh1K8A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAX2u-00000009Dhc-3kFQ;
-	Wed, 08 Apr 2026 17:50:32 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wAYpX-00000009KrD-2IvE;
+	Wed, 08 Apr 2026 19:44:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAX2s-00000009DeV-1aBm;
-	Wed, 08 Apr 2026 17:50:31 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1775670618; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=I4u7FW/tPFG/CjB3SVm9X11ID8dowsVwLk0U0XFJSktZfhxVxfvs0egS0DOr+EX4OnoeGTsG9e2tpJnwnnuhn0JLh6RwiHNPf6Wrvu91iEXbYzAduzZr2xkh+BuM36cS/Eu0gKzMMMy4lS5bI9+I8KfpaxXCVj4kVbqyhUbeeOc=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1775670618; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=I7h9KF6DUxHVCjojEM2b2Af8cE4DbNkN2i/zma/X7Ow=; 
-	b=PWYdccTH0fTMhS8GnUFkVIC58LJW4LVpFfewPfog1+ChdTuVMML+UqSt8TjdrD8JUyDU2ItiUjqRmR5QCYT6NEX+rurSRhkYWk+66sF0VyvANCGvk6/0FEu40Tp1v3KCkAJJPr8AXoqHp5dCFap3jpV0m23dYsgcIqT2zaLAwmU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1775670618;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=I7h9KF6DUxHVCjojEM2b2Af8cE4DbNkN2i/zma/X7Ow=;
-	b=lMZpj1ZW+MX0hZ9CgXdA71UCvB5cuthaTJKBL771nBkz1A214PCJUozqdEKMx/s0
-	blEHdcUhbm08487WO1RemLqcEovi9I44DBqB9TzNhbIxNhub328hJdjkhVBveyPHEOO
-	FPRM4mhZkg7nTT/De8DKSnl5M0ucMYOyzyb3fuQ8=
-Received: by mx.zohomail.com with SMTPS id 1775670617761642.4208513616555;
-	Wed, 8 Apr 2026 10:50:17 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Wed, 08 Apr 2026 19:49:42 +0200
-Subject: [PATCH v3 4/4] arm64: dts: rockchip: add analog audio to ROCK 4D
+	id 1wAYpV-00000009KqT-1lDb
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Apr 2026 19:44:50 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CBC70444ED
+	for <linux-rockchip@lists.infradead.org>; Wed,  8 Apr 2026 19:44:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B1EBEC2BC9E
+	for <linux-rockchip@lists.infradead.org>; Wed,  8 Apr 2026 19:44:48 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775677488;
+	bh=c5WnR933iazb0lin+oW2ATL9IN7UoHtxMl/eLZxJcb0=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=h/t7MvadYlcTmS24VXSHmX/uQwrlhTPAG3MLnhvHT91dvLf1Y2ieO9eXoZB2TXrcd
+	 6GABrkaM5MR4G2jBPPXkPVUeDcpQpgVLiBiw/PBWRkDUAV+FOusvfQa8DFQ8vrOofk
+	 mTrOrA1YtRCBVstexSwBr75B/IWCkwGvQ3+FSd/dZw+pTaDM2UMgkGWzNG3wSHB96d
+	 N4XKgWKEeghWeFNeUWieYPSPSp5oMdyDa9hWwqIJOGSEFssdTQjmbKLkY+NLnjRGgN
+	 E0isYap1tYKGjrpUD9Rp0DZUhbT33mXIupZgZFTI8g8W6/LiQbRd623SnmYa4Z/uSO
+	 BX4OX5b2pOlAg==
+Received: by mail-ej1-f48.google.com with SMTP id a640c23a62f3a-b8f9568e074so16248266b.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 08 Apr 2026 12:44:48 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AJvYcCXjSlSxnmi7KZQRAbrAEgnbGosO7BEukVyB8M4jGLmHsM58eiJLoXkwj3SUbmPqNNpP8I9g0uD6iGNQDGU3yw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwWX2uyfJtV3QvEPgXq/YUauuzfxpM/OSFLL7y0w/8WzvoPQEcv
+	5AUgC6ktpxIN50GDkhtu1fIpbR5xkFQj5v66bvR9LLC9F1nFGW43GfRfvPFVY/JqsuwM7yJkfK+
+	gC2E9mcNahDDYJBI4gRxhfwZBQwDFPQ==
+X-Received: by 2002:a17:907:c20:b0:b97:a39d:ae3d with SMTP id
+ a640c23a62f3a-b9d476a9b22mr36701966b.44.1775677486956; Wed, 08 Apr 2026
+ 12:44:46 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20260408-rock4d-audio-v3-4-49e43c3c2a68@collabora.com>
-References: <20260408-rock4d-audio-v3-0-49e43c3c2a68@collabora.com>
-In-Reply-To: <20260408-rock4d-audio-v3-0-49e43c3c2a68@collabora.com>
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Heiko Stuebner <heiko@sntech.de>
-X-Mailer: b4 0.15.1
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+ <20260330195853.392877-2-macroalpha82@gmail.com> <20260408131944.GA1901621-robh@kernel.org>
+ <PH0PR19MB9973386B000D79AD04904C96B2A55BA@PH0PR19MB997338.namprd19.prod.outlook.com>
+In-Reply-To: <PH0PR19MB9973386B000D79AD04904C96B2A55BA@PH0PR19MB997338.namprd19.prod.outlook.com>
+From: Rob Herring <robh@kernel.org>
+Date: Wed, 8 Apr 2026 14:44:33 -0500
+X-Gmail-Original-Message-ID: <CAL_JsqLEBnF2g7p2ubkUnpc2X9+r7wx9HP-Wdzp5Cm5wj013eQ@mail.gmail.com>
+X-Gm-Features: AQROBzDGxcdM9Vyw-5a18RZVzC8wwyekQwwIUeeoAHpDXWW3RAwMTQpvv5yzZ2I
+Message-ID: <CAL_JsqLEBnF2g7p2ubkUnpc2X9+r7wx9HP-Wdzp5Cm5wj013eQ@mail.gmail.com>
+Subject: Re: [PATCH V3 1/9] dt-bindings: iio: imu: icm42607: Add devicetree binding
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org, andy@kernel.org, 
+	nuno.sa@analog.com, dlechner@baylibre.com, jic23@kernel.org, 
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org, 
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
+	krzk+dt@kernel.org, andriy.shevchenko@intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_105030_482936_DE1ACF37 
-X-CRM114-Status: GOOD (  19.05  )
+X-CRM114-CacheID: sfid-20260408_124449_478188_F16A25D1 
+X-CRM114-Status: GOOD (  14.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,191 +82,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, linux-input@vger.kernel.org, kernel@collabora.com, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RADXA ROCK 4D, like many other Rockchip-based boards, uses an ES8388
-analog audio codec. On the production version of the board, the codec's
-LOUT1 and ROUT1 pins are tied to the headphone jack, whereas pins LOUT2
-and ROUT2 lead to a non-populated speaker amplifier that itself leads to
-a non-populated speaker jack. The schematic is still haunted by the
-ghosts of those symbols, but it clearly marks them as "NC".
-
-The 3.5mm TRRS jack has its microphone ring (and ground ring) wired to
-the codec's LINPUT1 and RINPUT1 pins for differential signalling.
-
-Furthermore, it uses the SoCs ADC to detect whether the inserted cable
-is of headphones (i.e., no microphone), or a headset (i.e., with
-microphone). The way this is done is that the ADC input taps the output
-of a 100K/100K resistor divider that divides the microphone ring pin
-that's pulled up to 3.3V.
-
-There is no ADC level difference between a completely empty jack and one
-with a set of headphones (i.e., ones that don't have a microphone)
-connected. Consequently headphone insertion detection isn't something
-that can be done.
-
-Add the necessary codec and audio card nodes. The non-populated parts,
-i.e. LOUT2 and ROUT2, are not modeled at all, as they are not present on
-the hardware.
-
-Also, add an adc-keys node for the headset detection, which uses an
-input type of EV_SW with the SW_MICROPHONE_INSERT keycode. Below the
-220mV pressed voltage level of our SW_MICROPHONE_INSERT switch, we also
-define a button that emits a KEY_RESERVED code, which is there to model
-this part of the voltage range as not just being extra legroom for the
-button above it, but actually a state that is encountered in the real
-world, and should be recognised as a valid state for the ADC range to be
-in so that no "closer" ADC button is chosen.
-
-Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 90 +++++++++++++++++++++++++
- 1 file changed, 90 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-index 899a84b1fbf9..c848c706196e 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
-@@ -6,6 +6,7 @@
- /dts-v1/;
- 
- #include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/input/input.h>
- #include <dt-bindings/leds/common.h>
- #include <dt-bindings/pinctrl/rockchip.h>
- #include <dt-bindings/pwm/pwm.h>
-@@ -37,6 +38,31 @@ hdmi_con_in: endpoint {
- 		};
- 	};
- 
-+	es8388_sound: es8388-sound {
-+		compatible = "simple-audio-card";
-+		simple-audio-card,format = "i2s";
-+		simple-audio-card,mclk-fs = <256>;
-+		simple-audio-card,name = "On-board Analog ES8388";
-+		simple-audio-card,widgets = "Microphone", "Headphone Mic",
-+					    "Headphone", "Headphone";
-+		simple-audio-card,routing = "Headphone", "LOUT1",
-+					    "Headphone", "ROUT1",
-+					    "Left PGA Mux", "Differential Mux",
-+					    "Differential Mux", "LINPUT1",
-+					    "Differential Mux", "RINPUT1",
-+					    "LINPUT1", "Headphone Mic",
-+					    "RINPUT1", "Headphone Mic";
-+
-+		simple-audio-card,cpu {
-+			sound-dai = <&sai1>;
-+		};
-+
-+		simple-audio-card,codec {
-+			sound-dai = <&es8388>;
-+			system-clock-frequency = <12288000>;
-+		};
-+	};
-+
- 	rfkill {
- 		compatible = "rfkill-gpio";
- 		pinctrl-names = "default";
-@@ -65,6 +91,37 @@ user-led {
- 		};
- 	};
- 
-+	saradc_keys: adc-keys {
-+		compatible = "adc-keys";
-+		io-channels = <&saradc 3>;
-+		io-channel-names = "buttons";
-+		keyup-threshold-microvolt = <3000000>;
-+		poll-interval = <100>;
-+
-+		/*
-+		 * During insertion and removal of a regular set of headphones,
-+		 * i.e. one without a microphone, the voltage level briefly
-+		 * dips below the 220mV of the headset connection switch.
-+		 * By having a button definition with a KEY_RESERVED signal
-+		 * between 0 to 220, we ensure no driver implementation thinks
-+		 * that the closest thing to 0V is 220mV so clearly there must
-+		 * be a headset connected.
-+		 */
-+
-+		button-headset-disconnected {
-+			label = "Headset Microphone Disconnected";
-+			linux,code = <KEY_RESERVED>;
-+			press-threshold-microvolt = <0>;
-+		};
-+
-+		button-headset-connected {
-+			label = "Headset Microphone Connected";
-+			linux,code = <SW_MICROPHONE_INSERT>;
-+			linux,input-type = <EV_SW>;
-+			press-threshold-microvolt = <220000>;
-+		};
-+	};
-+
- 	vcc_5v0_dcin: regulator-vcc-5v0-dcin {
- 		compatible = "regulator-fixed";
- 		regulator-always-on;
-@@ -696,6 +753,25 @@ eeprom@50 {
- 	};
- };
- 
-+&i2c3 {
-+	status = "okay";
-+
-+	es8388: audio-codec@10 {
-+		compatible = "everest,es8388", "everest,es8328";
-+		reg = <0x10>;
-+		clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
-+		AVDD-supply = <&vcca_3v3_s0>;
-+		DVDD-supply = <&vcc_3v3_s0>;
-+		HPVDD-supply = <&vcca_3v3_s0>;
-+		PVDD-supply = <&vcc_3v3_s0>;
-+		assigned-clocks = <&cru CLK_SAI1_MCLKOUT_TO_IO>;
-+		assigned-clock-rates = <12288000>;
-+		#sound-dai-cells = <0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&sai1m0_mclk>;
-+	};
-+};
-+
- &mdio0 {
- 	rgmii_phy0: ethernet-phy@1 {
- 		compatible = "ethernet-phy-id001c.c916";
-@@ -770,10 +846,24 @@ wifi_en_h: wifi-en-h {
- 	};
- };
- 
-+&sai1 {
-+	pinctrl-names = "default";
-+	pinctrl-0 = <&sai1m0_lrck
-+		     &sai1m0_sclk
-+		     &sai1m0_sdi0
-+		     &sai1m0_sdo0>;
-+	status = "okay";
-+};
-+
- &sai6 {
- 	status = "okay";
- };
- 
-+&saradc {
-+	vref-supply = <&vcca1v8_pldo2_s0>;
-+	status = "okay";
-+};
-+
- &sdmmc {
- 	bus-width = <4>;
- 	cap-mmc-highspeed;
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gV2VkLCBBcHIgOCwgMjAyNiBhdCA5OjMx4oCvQU0gQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdh
+bkBob3RtYWlsLmNvbT4gd3JvdGU6Cj4KPiBPbiBXZWQsIEFwciAwOCwgMjAyNiBhdCAwODoxOTo0
+NEFNIC0wNTAwLCBSb2IgSGVycmluZyB3cm90ZToKPiA+IE9uIE1vbiwgTWFyIDMwLCAyMDI2IGF0
+IDAyOjU4OjQ1UE0gLTA1MDAsIENocmlzIE1vcmdhbiB3cm90ZToKPiA+ID4gRnJvbTogQ2hyaXMg
+TW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KPiA+ID4KPiA+IFN1YmplY3Qgc3BhY2Ug
+aXMgbGltaXRlZCwgc28gZG9uJ3Qgc2F5IGRldmljZXRyZWUgYmluZGluZyB0d2ljZToKPiA+Cj4g
+PiBkdC1iaW5kaW5nczogaWlvOiBpbXU6IEFkZCBJbnZlbnNlbnNlIElDTTQyNjA3Cj4gPgo+ID4g
+PiBBZGQgZGV2aWNldHJlZSBiaW5kaW5nIGZvciB0aGUgSW52ZW5zZW5zZSBJQ000MjYwNyBhbmQg
+SW52ZW5zZW5zZQo+ID4gPiBJQ000MjYwN1AgaW5lcnRpYWwgbWVhc3VyZW1lbnQgdW5pdC4gVGhp
+cyB1bml0IGlzIGEgY29tYmluZWQKPiA+ID4gYWNjZWxlcm9tZXRlciwgZ3lyb3Njb3BlLCBhbmQg
+dGhlcm1vbWV0ZXIgYXZhaWxhYmxlIHZpYSBJMkMgb3IgU1BJLgo+ID4gPgo+ID4gPiBUaGlzIGRl
+dmljZSBpcyBmdW5jdGlvbmFsbHkgdmVyeSBzaW1pbGFyIHRvIHRoZSBpY200MjYwMCBzZXJpZXMg
+d2l0aCBhCj4gPiA+IHZlcnkgZGlmZmVyZW50IHJlZ2lzdGVyIGxheW91dC4KPiA+Cj4gPiBTaW1p
+bGFyIGVub3VnaCB0byB1c2UgdGhlIHNhbWUgYmluZGluZyBzY2hlbWE/Cj4KPiBZZXMuIEkgd2Fz
+IHVuZGVyIHRoZSAocG9zc2libHkgbWlzdGFrZW4pIGltcHJlc3Npb24gdGhhdCBkaWZmZXJlbnQg
+ZHJpdmVycwo+IHJlcXVpcmVkIGRpZmZlcmVudCBiaW5kaW5nIHNjaGVtYXMsIGJ1dCB0aGVzZSBz
+aG91bGQgYmUgc2ltaWxhciBlbm91Z2ggdG8KPiB1c2UgdGhlIHNhbWUgc2NoZW1hIGlmIGl0J3Mg
+YWxsb3dlZC4KClRvdGFsIGZpbmUuIEJpbmRpbmdzIGFuZCBkcml2ZXJzIGNhbiBiZSAxOjEsIE46
+MSBvciAxOk4uCgpSb2IKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
+bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
+bGludXgtcm9ja2NoaXAK
