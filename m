@@ -4,137 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DBE410F9940
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 14:31:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C1710F994F
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 15:11:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xg8Ngm3ZuHVp2PLr6N9elnuZe5zhlF2LRQS/gIbjHZo=; b=ArvNLSE2mSPKpy
-	jwpKchTekoB8KNVWCnMlazP4QgQ3EO6SwjQYqcF2ommrHT9H6wuhMWoosuQMAWX8TFNNH9MQWtPON
-	MABPCSolLaL41IoKYx8iww1wDeO5YEnttO+yFJfeuw5NMFbIn+rOr3mKlA+UeAJzJ4furjH+EL266
-	VqIjAqPfvA0ONFvw1nGORGz5n520TQ6jpWTA+Z8gLpGkQCmxXxPT65QkLycHlE+EihTs34pcKls2w
-	AX90nDBfwWy0Mdp6ZHjsNXNRmq5xEZPtRg74Puc+Otnh2JUx1v2KqZeg3pc4BBVd2E/4PeePMPFrG
-	k6wFp8rtGhDoxtxYmWjQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=PsznHofLldeePZXddSaLEb+6a5ky5gtzv7WfJL/xZ+o=; b=KqYPXDx+BzwlgF
+	/W/MLASlXl++Gry0qSvGS52pgrkmlAY5J8y1I788iiMsq6FT4d8x7Pz9GxDwpja7NIsb9F5HHeWHu
+	PFe1uWWt1JGDTzORVntHSQBM7+PuaQby58xpjFYb4k77vPFtl7YRooNqdvVfkfxf6OJ3b5RBY9dQh
+	jf1E6BtuxwCHdJsQw0Xt+q1I3JvuG82AbSeo/PhyJKuAEAYrj/7yBE0UhT/f5o/IlVEXvJ6x5jJwN
+	GaB5IO7RXT9eNtA9TOaw6DNF/umvhJqvKlGfC9xrMW0uExVvgttpngBnu9jRrLcVA+ocUdpR0vkQP
+	WOQj0Bn4iHEm2LgtplPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wATwF-00000008zz9-2hof;
-	Wed, 08 Apr 2026 14:31:27 +0000
-Received: from mail-westus3azolkn19010019.outbound.protection.outlook.com ([52.103.23.19] helo=PH7PR06CU001.outbound.protection.outlook.com)
+	id 1wAUYY-0000000928o-0nlB;
+	Wed, 08 Apr 2026 15:11:02 +0000
+Received: from out203-205-221-164.mail.qq.com ([203.205.221.164])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wATwC-00000008zy7-2OaK
-	for linux-rockchip@lists.infradead.org;
-	Wed, 08 Apr 2026 14:31:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Vr/5trAEmRVwZfhSxN5wqCxUOAl6fUw56vhjviVbQmgvKIrfF+rryO92JXZpISZ/x3Z+pGyi9cDgc0UKGdA6TOoO0IRNOyidxILTl9pc9hS0lFftT/jbEcRGbdy3oqEboNSY8UEK5gMILMzifCKpQt/65iyZO/FBRjlklYCljojx3IeERcwsuOSBXCqPMy5q4Q/SkvK0B50tarJ/elci0Mt6RE4rRspehlQhxZbFaji/lx8cbhntKVyr7L1B/UmQjpTQU77QNkI0njg8P+E+CXn635sDn5EolLG32Lrfs8nDcXOSW5tNiFOWFCty/kAASD1HPzkTQwZCSMDny+1oNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=u5cL+Xh4nMDfsoY6PPQiP5r/FJFxIvroqVW1a8KeBxI=;
- b=JL4OdLp/qxdjIkel+Oz5uxv6hceGIDu2+Gu12iuuml6VREcLvyw2CyYzHJUPptv+FlSbb+nXsDNkjgWxz516N2E63feIDus8ETuOuT8kS4mIRDlshHPDtThRY06Zj264RWEmgB5plizz9io96pQ+dY0tc+CHZNzHrcenRgRhSZryZ/wdU/tBcTB4dpgSfM9mmmWImJLTv7oLHKsRDpzAo5NP62r1zVZRFKeXbUrzNc1HLpF8+yoPUGkwHekkq+Nf/XFDdyMSMra1jsv7fQ29yVFhgA9NOLW12MDkl3Z3zJtA0nzvH42O4gDYqyqkzMHQrBqm9I8WO+ChNaYqhAqTSA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=u5cL+Xh4nMDfsoY6PPQiP5r/FJFxIvroqVW1a8KeBxI=;
- b=ef4ODhj6fnkYvILhHIXUsTCeyCdV9PxK5sB17XPQkHCksiH8CoU6EK+HSPEa2rQxOMx2boLBxOkQZSfQMFlqwIBJI3N22urHyQkg0MLkcaImcuB2q50Zi5C1mpDG00V2UHyHtJQnFFxX8tkvw2sqUIS7RwN/3xz7csc6eXkI6IcKW7s0NylVJF76YocsRtS+0d4LqDa38OL3kTz5CSxWrof2JYpDYkC6D3zOhs4DkXPcz8sRfTELhetCXNrIpb0UrBex4DKqs59m+lkVUVgiAjId7kExf4z3WiLa9qhoWtX6tmJefZ+7Nc33WmEXi2BlEf9IyNA1tDJHm+JePB1msA==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by CH3PR19MB7658.namprd19.prod.outlook.com
- (2603:10b6:610:129::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9769.20; Wed, 8 Apr
- 2026 14:31:16 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%7]) with mapi id 15.20.9769.017; Wed, 8 Apr 2026
- 14:31:16 +0000
-Date: Wed, 8 Apr 2026 09:31:13 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Rob Herring <robh@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jic23@kernel.org, jean-baptiste.maneyrol@tdk.com,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
-	andriy.shevchenko@intel.com
-Subject: Re: [PATCH V3 1/9] dt-bindings: iio: imu: icm42607: Add devicetree
- binding
-Message-ID: <PH0PR19MB9973386B000D79AD04904C96B2A55BA@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260330195853.392877-1-macroalpha82@gmail.com>
- <20260330195853.392877-2-macroalpha82@gmail.com>
- <20260408131944.GA1901621-robh@kernel.org>
-Content-Disposition: inline
-In-Reply-To: <20260408131944.GA1901621-robh@kernel.org>
-X-ClientProxiedBy: SN7PR04CA0107.namprd04.prod.outlook.com
- (2603:10b6:806:122::22) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <adZmsSr8BCaxeFeI@wintermute.localhost.fail>
+	id 1wAUYT-0000000927M-3a3X;
+	Wed, 08 Apr 2026 15:11:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1775661042; bh=XKcq00N0DIMUELEWrD+WO/50AsRGlhm2DyseYU7P9tM=;
+	h=From:To:Cc:Subject:Date;
+	b=JyZTNfin/Z/Q7aX4Z7YpCGa6gt5sw6BNtCREM0hDfMw9pW/g5rpeQsQ1kQqXNjjlh
+	 wgmxOpBb7/RIse8V9elz6FZTyeTr/67SWPyu6ndT1NKEP5sjLmX3hD3NV/iVkIKP6U
+	 KVzTMDmk2mZhZvFkMDyWBd1YZTvwMti2xroYz0kU=
+Received: from gwx-Ubuntu.. ([183.207.4.28])
+	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
+	id 26E24EE4; Wed, 08 Apr 2026 23:09:46 +0800
+X-QQ-mid: xmsmtpt1775660986thr6icol4
+Message-ID: <tencent_CF3170E7191769F8FB22C55A0F952E82E105@qq.com>
+X-QQ-XMAILINFO: NGZp1yYNf7Y+5o4+1CmlC1XFFeZPOT/SuqiQzarSPQeB5pWLyZC6My+Zr9JEL/
+	 urfH0ek6M9razrAqmSAn7ug0OfP4UideQhWr6rImYLHsRLmrZg5lTeMK/uxKPR01JH81YxPBuVwG
+	 oawynLjtjWfsC+xbU7R3uExSYD3XJvQ97ERzJbFMY4iJ8iJ375v9RSdGLJDcoRpqGGUB8RfxS9d5
+	 xF/Twp1KstRvsZFK7h4QKAkG2XUYTMRwLkk8PZOC1/Bxl1KMJQf2eklkC4cVDPdiPtIIFNWXLYVI
+	 XNqAWv1ET+/2GQiQfTXKBjhHqHwQxDxj+MtvDF5iMC+2JC2dAVpTncIkPM77uOsnQxPamHoK+8Es
+	 ppZhw6bp2g3phEWeP/ccqF4FPI9EyDINtuYihiI0zI707Rc4YYfEZBN6IQFg5X6btMPyGHA28ItR
+	 +B4roC64gvg4tBSw7pJLeW1wDW8N4QzGHZntcVuZPizQMfTc4+4/+LR6U7eyZ5R/Ra2mAOW4Khej
+	 2Nc2V6jn2kY/pqDZQ5ySLLIDrCplwIRGyqN4TmtW+dv5Ey+wIHHW8RLaL0bYPzh00j7CFGks6z3s
+	 1s+3clVdG/ju4rWWYUqvpg0pIZXgZQjJbmmaF9b5gHp6J3yFCL9xQYJGawrixypQnCcAkHAhbQaQ
+	 d+fjZ5hguxnTom/x9rfbucGcCXf+yy6Y38fSi7L3WMaejcODroqXkKlmKQGYGmVFOCgogByXfZqq
+	 iOo8KbDoiy7CJaw8HPNoJYh3xsdKdE4fPHZLRkXuZtt0/Aqksr7HzE5FvbteF1GrSjYeMeztp0aA
+	 PGpozq/IZUZfNxbVEL24zAyqI7fQeojALuwu/3VUpavtfQ9UQB4O1QvlTbPufaZIgPiLU2UWIizC
+	 M8tW7kIfzTGJoI5QdlWQ+pzn63qluUlhsbgeXIPJCZzMC5d3nBtgj23ip9aXvzOwSQogBiQOl7Ux
+	 ztlo4UWgx113X3KoDSIM9my4GwG8II/AO4lXSAJJCvhxGmTZD3frcJa39ZLcpErMDDMO05AK4qbr
+	 Wnl0sUsQsY24UzIqpPF3JiEIyiI9AnORPMJkostzLlwsn7AAZbuO+aTx7zN1oNGxJTPBdkp9dDzA
+	 tfzqo6
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+From: guoweix <2298701336@qq.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	f.kardame@manjaro.org,
+	pgwipeout@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	guoweix <2298701336@qq.com>
+Subject: [PATCH] arm64: dts: rockchip: fix rk809 interrupt pin on rk3566-roc-pc
+Date: Wed,  8 Apr 2026 23:09:44 +0800
+X-OQ-MSGID: <20260408150944.177773-1-2298701336@qq.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|CH3PR19MB7658:EE_
-X-MS-Office365-Filtering-Correlation-Id: e3c5cfe6-8830-4de0-882d-08de957b7e0e
-X-MS-Exchange-SLBlob-MailProps: qdrM8TqeFBv5zL3Pq3ogIg0sNnRYStpomEmKktuL1DsrivyiA1Mm/h5SGdbRUsUWIDo6rpa8B6d6v8Kpe3erUHAC6sl+JUS9ytd8w6Q6QCZEUNFQrk2NfMf57Z+q3meSM75kGy7ncv/hYssS/EotQq9HDKlBsJq7+SW6dQBxZX8oVYII8+g2DJ3aRRLfcr1CirlVXC/9gvf7Dcrl/J4iIwv6gbTu3dAxv9hdJLxhGJCP0cmXC+GU9eWCK2/FyMwdnIiQL+tEZU3l4rUSQ6D96/M7Bh2zu4sGnXOdQjHMRiyrHt/LJOkn142S1/DP++Sla9m7BbFSU4ppVsHytm3SXpigQDw2FaGE0LH5cklVlMdpZdYkGAunVDnXCiC110GHoY4VVevKhZqL8z6RegbWf5nUY9PKCmQhAlPy8BS2tYQ7Ezs5jO9kIXfzcAwSUCFwPRiUk+ZxiXRjL2GQgW1XTWnVP6XjfT6m0ZhVFB1Lbyklm9HVGc5Nss8kTO3EO1XvYbj9+6zyAabtcBTcnF8UioLQXUlyaMlrnmTVNG/5n07RCJjPrI3+pOY7kmQdkMHcGejdc7TXJhbJObOcaK1DHc4YkYgQGqF6MltuKtOMfCJna3lBeVIQ8EGfKsnVMius7CEpj5k1vFuvuVafsGW52HPOXoO21U8SCYrq73ayNvgis3hEtbs/mWzHqTq2/Endr9BB1Z78aHwmvHy0x2tQlL41mASlWLJSI70QTaETkkivZdxpzVNV5YSdD7R9tS02dSzReirXrwTrtiyVk6q4tSnV0ZpvrBCe
-X-Microsoft-Antispam: BCL:0;ARA:14566002|19110799012|23021999003|25031999004|41001999006|8060799015|15080799012|51005399006|5072599009|37011999003|461199028|6090799003|10035399007|440099028|3412199025|26121999003|40105399003;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?pmdS4xedSXHs7616f2bZY1wpOlXiLtkcNXr3jH257WL0tNJRLuVxhMr17U5u?=
- =?us-ascii?Q?SaK41jdrzJZHRRcgjPb/WsnQQKWss5KisGH0reAWxTAN837RsnIaYRB/jKO/?=
- =?us-ascii?Q?YRWR8UP2yBfqhNboFeI4DUMY3b64FnziADmYqZRfYRXbcxQl0dHImYDjrqKC?=
- =?us-ascii?Q?VGNy62EQm1BXSznKOBntd7UTnkttOS9zKF9hxpyUCN8UZmXof5XXzfcccdZg?=
- =?us-ascii?Q?zqxxRDmlW/hvNO6eGv1UJxPhZbVJFjFj46aNyEBxUrAa9cpIv5ka6hR1Zov+?=
- =?us-ascii?Q?HJTJsZz5FUrDh5o9UFd2qDC8OWXCf5VR/uny7CWzGB+orUBe80KtJMxohjYo?=
- =?us-ascii?Q?TpsHLJdxo2jXH0kfr58tPfUseevL+7jYk4iORfhal15P74E02T5mtmSKvm/T?=
- =?us-ascii?Q?npF2/rmmkClsuzuU7e8tfq5SCBRVYHCbH49uZ8wAhwiKfPqp9/zoCBN7dCKH?=
- =?us-ascii?Q?2i6jGnkO0hfGf1tU26HhwDAS1lLXTUKOapp/DCCvwQKxUZMaA1ja1THcR9Vi?=
- =?us-ascii?Q?zpOCCgIRxCrsxvmNGoNJMs3o1UwebrAkMD1jI4UCGnOwCoF3J34dVCgIfNps?=
- =?us-ascii?Q?beLV9DRSylASfHCaC1enT51PA57+7eVeszH+812e7Q/fdt1lR5G947Ty0G9S?=
- =?us-ascii?Q?5fzVazYZDipFXjrWfCt7/iIo+i86KnZVEH5rHMyP85Caqc9RqIxuow0PfIdd?=
- =?us-ascii?Q?LYEGaXjalfBAVf6rRo6X6pQxlv53+blqksZXkoXKT9ZDY50ekAIi8HSgBkXh?=
- =?us-ascii?Q?mQ3d3S0DqxfENwQBCyjbV+1DitNeHLMq0Jj41kxGOP7cOZFtdKpi8HA/pl78?=
- =?us-ascii?Q?7KsCMjhSQo1r/yjji8m++TEsJB7QXzWKq7issXavjnC31AO/cxSwf7tY6aR6?=
- =?us-ascii?Q?fTgvp7ZWPn2GOL1Vgvoutu3Z//hCJdnfCvB58WFWFgtrfiDuQiDHT3wmPiX3?=
- =?us-ascii?Q?ytcuS/CE7O5ggc6vodqxV6hMkPnG/XqBtUIP+iLjgVeZY/rWJgVWi3MS8ipC?=
- =?us-ascii?Q?q3KHzS4SEnHWozmtpLZP/wFnjo1QnKTte8SbYZG8RvqbEdci6UDKxFEflk78?=
- =?us-ascii?Q?A4Uk7mauElKsAqMFk3FxioCjUsUftg=3D=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?Gc4hec5QMMfe31j525U6GGQHzLCSjRhhwSDHr+B62Wei6rSmHyxaynVUrnaD?=
- =?us-ascii?Q?dOeoKPjmjyxJxbt0gR4BLUA42lX08OfGxJob9pBt8NsBPSyY3Ep8uebBS0h9?=
- =?us-ascii?Q?NswUDjT0MVVENevjUhDeKOc1UVlTEAXKANZRLJ+C9NIvA50WbFlG/GFZPPtl?=
- =?us-ascii?Q?QghQorRAJy+7yH5hS3G4wYoSe2yHkHJy9QYmOW697zggxM2X/kDbTuSAU34J?=
- =?us-ascii?Q?HCzV0bVsjK7ZbboX0ho111GYtHU3hTN64Yhyx6G+odD2Svwm4IaejrmJXkGr?=
- =?us-ascii?Q?aR2ppWU8XR9P5wOvP9oaVhExOIUThhE7HHq5xSTx+tCPq4wo/z1B8gx0qKo2?=
- =?us-ascii?Q?jGJni7iQAQFK4L1jDQAmZecy3vQjr+ZvQy5A2zriNsOu1LA3NNZtLyV2RDfC?=
- =?us-ascii?Q?SbDeMRNgm0rgouwrqM9x4EL4TBCNbawehK1ICP8TJ3fpcgL5PiKUdzMPmSbX?=
- =?us-ascii?Q?ssNpUw9K6P5sqaVcQ7T6zE3n5u2y/JBoQ+rprAlKIxLFb2s4mt2o6Q6qzp35?=
- =?us-ascii?Q?PAnCfypdbFZ5KNq0lkkquVJL6zG5P6SOeUGJIvzNwZV+RFYzoTe3L73ZaC02?=
- =?us-ascii?Q?kEgMeFl1CGMQPpuF3b8vEPAZarOBqAa/ztiUQH2u/c2d6nZr+P7kf50eKTv9?=
- =?us-ascii?Q?i1FM9ZQtroLvZfYkk3Scnx76JAu95Gw9sG1MAUi+qbrahU1hmLa+nImJqw/+?=
- =?us-ascii?Q?zpPFUSxMOpjThhCkQlTh2KQluedsmald5ptAh4Ug4mL5PdqsITXW9R2jngKZ?=
- =?us-ascii?Q?YQloLIjo7hQWywZpbxa8vkgnTXroqhGqUnttXSWyZo+J11yi9akC2R7oYzLz?=
- =?us-ascii?Q?nXlKMHcZlkcp/W/e42RSYNfP3HpvaQl1HGvFI+nYSMnMr86bT2x0tKaSSSaP?=
- =?us-ascii?Q?7aN9kycbPF1lRk73J4G8lEYmlOFnaAEIM80KA3OIgQGi9rgpENfdoW4bHDd6?=
- =?us-ascii?Q?pOnm7G6AuLYTtme3DWNI2kojxTV0US9ZLPX0HJ1z3OoWGrbEo2vzSiM/cMBC?=
- =?us-ascii?Q?znXa4UyHYNcNT0PHf6bT5gI5TiklXWLn8DV//nBXivSlO+5SSU1BYDXo6dlh?=
- =?us-ascii?Q?OY1P89J/pAPOE/169ynJgB/SNk+dVzUzx58Db5yoI0TTOEQ6TXvrmghDcS0b?=
- =?us-ascii?Q?IRIDI/B88M9lJdqU+zOvlP+WeFwp1sQ8D9lW41an1a3o0iLuR+5RUndI3h5J?=
- =?us-ascii?Q?124c1c8Nizt3HnUYgJcaNNUNg4s7LRpDQW5anzaofDpKBQjhveZxkvsbBxQe?=
- =?us-ascii?Q?t5dhL+LLgMavkcI2zidVhRgVBc9XEjfa1W/VAEq/36N6drOWpjVAQZd2NjQj?=
- =?us-ascii?Q?OGz7FZkf2bLwBsB/FM+XwfqDNgMaiVW70IQYTBTPH/OaNaTnH0zUPKhzgvET?=
- =?us-ascii?Q?V0ruqeePztqE3cuIQx3kMuWZNjvIYN+YzxdFDa+okwDyU4bcIA=3D=3D?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: e3c5cfe6-8830-4de0-882d-08de957b7e0e
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Apr 2026 14:31:16.3704
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR19MB7658
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_073124_618668_2726CA88 
-X-CRM114-Status: GOOD (  21.26  )
+X-CRM114-CacheID: sfid-20260408_081058_386771_D0B12600 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,147 +90,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 08, 2026 at 08:19:44AM -0500, Rob Herring wrote:
-> On Mon, Mar 30, 2026 at 02:58:45PM -0500, Chris Morgan wrote:
-> > From: Chris Morgan <macromorgan@hotmail.com>
-> > 
-> Subject space is limited, so don't say devicetree binding twice:
-> 
-> dt-bindings: iio: imu: Add Invensense ICM42607
-> 
-> > Add devicetree binding for the Invensense ICM42607 and Invensense
-> > ICM42607P inertial measurement unit. This unit is a combined
-> > accelerometer, gyroscope, and thermometer available via I2C or SPI.
-> > 
-> > This device is functionally very similar to the icm42600 series with a
-> > very different register layout.
-> 
-> Similar enough to use the same binding schema?
+The RK809 PMIC interrupt pin on the Firefly ROC-RK3566-PC (Station M2)
+is physically connected to GPIO0_A3 (RK_PA3) according to the board's
+schematic.
 
-Yes. I was under the (possibly mistaken) impression that different drivers
-required different binding schemas, but these should be similar enough to
-use the same schema if it's allowed.
+Currently, the PMIC node incorrectly specifies RK_PA7 for the interrupt,
+which prevents the PMIC from correctly signaling interrupts. (Note that
+the pinctrl node 'pmic_int' correctly configures RK_PA3).
 
-Thank you,
-Chris
+Fix this by updating the interrupts property to use RK_PA3.
 
-> 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> > ---
-> >  .../bindings/iio/imu/invensense,icm42607.yaml | 95 +++++++++++++++++++
-> >  1 file changed, 95 insertions(+)
-> >  create mode 100644 Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
-> > 
-> > diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
-> > new file mode 100644
-> > index 000000000000..bbacdee5b906
-> > --- /dev/null
-> > +++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
-> > @@ -0,0 +1,95 @@
-> > +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> > +%YAML 1.2
-> > +---
-> > +$id: http://devicetree.org/schemas/iio/imu/invensense,icm42607.yaml#
-> > +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> > +
-> > +title: InvenSense ICM-42607 Inertial Measurement Unit
-> > +
-> > +maintainers:
-> > +  - Chris Morgan <macromorgan@hotmail.com>
-> > +
-> > +description: |
-> 
-> Don't need '|'.
-> 
-> > +  6-axis MotionTracking device that combines a 3-axis gyroscope and a 3-axis
-> > +  accelerometer.
-> > +
-> > +properties:
-> > +  compatible:
-> > +    enum:
-> > +      - invensense,icm42607
-> > +      - invensense,icm42607p
-> 
-> blank line
-> 
-> > +  reg:
-> > +    maxItems: 1
-> > +
-> > +  interrupts:
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +
-> > +  interrupt-names:
-> > +    minItems: 1
-> > +    maxItems: 2
-> > +    items:
-> > +      enum:
-> > +        - INT1
-> > +        - INT2
-> > +
-> > +  drive-open-drain:
-> > +    type: boolean
-> > +
-> > +  mount-matrix: true
-> > +
-> > +  spi-cpha: true
-> > +  spi-cpol: true
-> > +
-> > +  vdd-supply:
-> > +    description: Regulator that provides power to the sensor
-> > +
-> > +  vddio-supply:
-> > +    description: Regulator that provides power to the bus
-> > +
-> > +required:
-> > +  - compatible
-> > +  - reg
-> > +  - interrupts
-> > +
-> > +allOf:
-> > +  - $ref: /schemas/spi/spi-peripheral-props.yaml#
-> > +
-> > +unevaluatedProperties: false
-> > +
-> > +examples:
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    i2c {
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        icm42607p@68 {
-> > +            compatible = "invensense,icm42607p";
-> > +            reg = <0x68>;
-> > +            interrupt-parent = <&gpio2>;
-> > +            interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
-> > +            interrupt-names = "INT1";
-> > +            vdd-supply = <&vdd>;
-> > +            vddio-supply = <&vddio>;
-> > +        };
-> > +    };
-> > +  - |
-> > +    #include <dt-bindings/interrupt-controller/irq.h>
-> > +    spi {
-> > +        #address-cells = <1>;
-> > +        #size-cells = <0>;
-> > +
-> > +        icm42607p@0 {
-> > +            compatible = "invensense,icm42607p";
-> > +            reg = <0>;
-> > +            spi-max-frequency = <24000000>;
-> > +            spi-cpha;
-> > +            spi-cpol;
-> > +            interrupt-parent = <&gpio1>;
-> > +            interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
-> > +            interrupt-names = "INT1";
-> > +            vdd-supply = <&vdd>;
-> > +            vddio-supply = <&vddio>;
-> > +        };
-> > +    };
-> > -- 
-> > 2.43.0
-> > 
+Fixes: 30ac9b4e25d8 ("arm64: dts: rockchip: add dts for Firefly Station M2 rk3566")
+
+Signed-off-by: guoweix <2298701336@qq.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+index 7e499064e035..985770e3a5e2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+@@ -245,7 +245,7 @@ rk809: pmic@20 {
+ 		compatible = "rockchip,rk809";
+ 		reg = <0x20>;
+ 		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
+ 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
+ 		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
+ 		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
+-- 
+2.43.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
