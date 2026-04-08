@@ -4,84 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 915A7FD5F87
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 08:05:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6515A1073CB9
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 13:19:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FctAQlxX2/jFcVYdt4YPCysAoRy2UKJQnZ+bH+/mEEQ=; b=t0mdsupWNHCj8V
-	bNHV8I0IFfguqJ/MRdD1u7t9wdOZQ6YIYseQCO0hwoSjNYXEpLz74fCOZzbdxHoykzA8SpQweW/N+
-	cpZtm8iya/AEMmoTu0qUwksqAzgyhttam4HbR0IkCVDRBf3rLFyV5zzvhvc9fvQ3QKzuhSIpM4Ej5
-	HEqsABL1C3XeqAXsSKnLmZE2EqVr4epVLAblY4A5QB1h22SEgnyZK4aeUffxtmdZBitc3V3L/NaRo
-	YiKmvYDOTw8N+l9Mrt2s6QGqGwZSWhAQxoocQE9tAaJu7d9iGjtETHJAsgk1hMgIstQz2Vxr/QtMu
-	7puMaoz/3KgndgfB2cfg==;
+	List-Owner; bh=xldMImd2As84IEklf285lhlbjH48K2eX9vfZxPYqSeI=; b=z2AD3RnsvWSa2B
+	e4W/JsiIqjT1CWa7qVBcngrCVl0fcdLdVeVMy+j02rxqVPCxDwr4RkU3oixtjlNhBGQXRGz2CKCwv
+	c87C+mHVXlu0bw/Dds/IO2hHC82PB3eOHZKeABa1+gdWu0O7Y3n9OSWTRF/FPuvXStel04Dk0xz9i
+	RLOvHXmnKGgqh26JLA/aBzqse7rQ4A4nVeH3S/dDUN76hZGK1WSNgkeirxAPp8SklMOCD0ZpECgvl
+	hVKu7fp4W6+Hs4aOggGeIc67wdF7FW6M1Cf7/oHOGQH740QuBAqPWwmHiQZnl45mi+Psh41SQhHEq
+	xXHiMmm4tki9wPdIxkNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wANuW-00000008UbI-2dRB;
-	Wed, 08 Apr 2026 08:05:17 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1wASov-00000008u5L-3t7C;
+	Wed, 08 Apr 2026 13:19:49 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wANuS-00000008Ua8-1LTz;
-	Wed, 08 Apr 2026 08:05:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1775635512; x=1807171512;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=LsoItqOaE3hAy7uN2dHO7bdB6DnI0M10PxH+jAAFVN8=;
-  b=Z2110AsJ14G98ZFurUeKE0nJEuJcNiK2iywiFjOaH3ftvslUakkhOKD/
-   lLo97GbCWS2e2xwJp6UmzbdLQ7QzaSFhJYsUpdz3ughc06VJ9guWDrsCr
-   NNrjDf1qkSVaHRMh/p5Q3QKDLxbO5E7VgvYaROzYoRIcyKTM/zb2PXHlr
-   RhSPPFZBnH5qsL42zjx5Newy8PvHMOO16DEAbuaZgBudHeZzR2ZUMFCER
-   rgjqat4quZfUo+lMdGQ31xwn6U5+YEWo48WbFmZL39cGnpWyFxuz5s3iA
-   R27Xpm8xFRYecwfR/mnhqcD819jXnsyI/YhaYI/w2uI+GfGLiOSF3T46G
-   w==;
-X-CSE-ConnectionGUID: qTM1QousQN2wXVUdJNakJQ==
-X-CSE-MsgGUID: 1qMmLvqOSxapWG1OPXIraA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11752"; a="79203530"
-X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; 
-   d="scan'208";a="79203530"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2026 01:05:11 -0700
-X-CSE-ConnectionGUID: cQSqKE2ERT6zeih3/eSOPw==
-X-CSE-MsgGUID: dFTYpTEWSDeViP1x0oSaHA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,167,1770624000"; 
-   d="scan'208";a="228657545"
-Received: from klitkey1-mobl1.ger.corp.intel.com (HELO kekkonen.fi.intel.com) ([10.245.245.17])
-  by orviesa007-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 08 Apr 2026 01:05:08 -0700
-Received: from kekkonen.localdomain (localhost [IPv6:::1])
-	by kekkonen.fi.intel.com (Postfix) with SMTP id 058A911F8BF;
-	Wed, 08 Apr 2026 11:05:22 +0300 (EEST)
-Date: Wed, 8 Apr 2026 11:05:22 +0300
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
-From: Sakari Ailus <sakari.ailus@linux.intel.com>
-To: michael.riesch@collabora.com
-Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Frank Li <Frank.li@nxp.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Kever Yang <kever.yang@rock-chips.com>,
-	Collabora Kernel Team <kernel@collabora.com>,
-	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v4 1/2] media: dt-bindings: rockchip,rk3568-mipi-csi2:
- add rk3588 compatible
-Message-ID: <adYMQlNtInGYu7Ka@kekkonen.localdomain>
-References: <20260305-rk3588-csi2rx-v4-0-81c6bcfefa63@collabora.com>
- <20260305-rk3588-csi2rx-v4-1-81c6bcfefa63@collabora.com>
+	id 1wASot-00000008u4z-0Jc0
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Apr 2026 13:19:48 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6AEB6440FD;
+	Wed,  8 Apr 2026 13:19:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 28508C19421;
+	Wed,  8 Apr 2026 13:19:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1775654386;
+	bh=Fle2L3rP4peCU11Gpmi6PDE0LAZyu5oAbKg95o0Fecs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=cpVHV3CmDuVp7UWNZaiBV/BW1BwcG6fy1qmMuvrzu8fa3JXdcfzMqfX8eh27+GlSI
+	 ozrPhlL4IEPow4YnlM/Fi2ukjUJf6kk9umhYjBxM6Awll7vZbrC7FGOYq68Kfu8Qf5
+	 /y5kmPKzgg+2bI6c3gZQTyuHBFR/CNTf/Srccp17aaN+mJoNbqW2U8o8d8BQAh/VcZ
+	 F3LoYxhSa7+4fek50DIAdsyG8S0HucpD9BhkKKyCx155T7aG8AIXhI/8JPyrpqyGq7
+	 brUz9AVuqTxJaVFUmM+w73WgmcJnKSYRL6VDKCGqYaXM2AHMTZm3emK9QguFEAGvCK
+	 xS9gHvKYbeFuw==
+Date: Wed, 8 Apr 2026 08:19:44 -0500
+From: Rob Herring <robh@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+	dlechner@baylibre.com, jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, andriy.shevchenko@intel.com,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V3 1/9] dt-bindings: iio: imu: icm42607: Add devicetree
+ binding
+Message-ID: <20260408131944.GA1901621-robh@kernel.org>
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+ <20260330195853.392877-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260305-rk3588-csi2rx-v4-1-81c6bcfefa63@collabora.com>
+In-Reply-To: <20260330195853.392877-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_010512_397446_9F7684AE 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20260408_061947_158885_61803426 
+X-CRM114-Status: GOOD (  17.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,25 +78,138 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Michael,
-
-On Fri, Mar 27, 2026 at 12:10:00AM +0100, Michael Riesch via B4 Relay wrote:
-> From: Michael Riesch <michael.riesch@collabora.com>
+On Mon, Mar 30, 2026 at 02:58:45PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> The RK3588 MIPI CSI-2 receivers are compatible to the ones found in
-> the RK3568.
-> Introduce a list of compatible variants and add the RK3588 variant to
-> it.
+Subject space is limited, so don't say devicetree binding twice:
 
-Please use your editor to wrap the commit messages in the future as needed.
-It became:
+dt-bindings: iio: imu: Add Invensense ICM42607
 
-The RK3588 MIPI CSI-2 receivers are compatible to the ones found in the
-RK3568. Introduce a list of compatible variants and add the RK3588 variant
-to it.
+> Add devicetree binding for the Invensense ICM42607 and Invensense
+> ICM42607P inertial measurement unit. This unit is a combined
+> accelerometer, gyroscope, and thermometer available via I2C or SPI.
+> 
+> This device is functionally very similar to the icm42600 series with a
+> very different register layout.
 
--- 
-Sakari Ailus
+Similar enough to use the same binding schema?
+
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../bindings/iio/imu/invensense,icm42607.yaml | 95 +++++++++++++++++++
+>  1 file changed, 95 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
+> new file mode 100644
+> index 000000000000..bbacdee5b906
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42607.yaml
+> @@ -0,0 +1,95 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/iio/imu/invensense,icm42607.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: InvenSense ICM-42607 Inertial Measurement Unit
+> +
+> +maintainers:
+> +  - Chris Morgan <macromorgan@hotmail.com>
+> +
+> +description: |
+
+Don't need '|'.
+
+> +  6-axis MotionTracking device that combines a 3-axis gyroscope and a 3-axis
+> +  accelerometer.
+> +
+> +properties:
+> +  compatible:
+> +    enum:
+> +      - invensense,icm42607
+> +      - invensense,icm42607p
+
+blank line
+
+> +  reg:
+> +    maxItems: 1
+> +
+> +  interrupts:
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  interrupt-names:
+> +    minItems: 1
+> +    maxItems: 2
+> +    items:
+> +      enum:
+> +        - INT1
+> +        - INT2
+> +
+> +  drive-open-drain:
+> +    type: boolean
+> +
+> +  mount-matrix: true
+> +
+> +  spi-cpha: true
+> +  spi-cpol: true
+> +
+> +  vdd-supply:
+> +    description: Regulator that provides power to the sensor
+> +
+> +  vddio-supply:
+> +    description: Regulator that provides power to the bus
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +  - interrupts
+> +
+> +allOf:
+> +  - $ref: /schemas/spi/spi-peripheral-props.yaml#
+> +
+> +unevaluatedProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    i2c {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        icm42607p@68 {
+> +            compatible = "invensense,icm42607p";
+> +            reg = <0x68>;
+> +            interrupt-parent = <&gpio2>;
+> +            interrupts = <7 IRQ_TYPE_EDGE_FALLING>;
+> +            interrupt-names = "INT1";
+> +            vdd-supply = <&vdd>;
+> +            vddio-supply = <&vddio>;
+> +        };
+> +    };
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    spi {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +
+> +        icm42607p@0 {
+> +            compatible = "invensense,icm42607p";
+> +            reg = <0>;
+> +            spi-max-frequency = <24000000>;
+> +            spi-cpha;
+> +            spi-cpol;
+> +            interrupt-parent = <&gpio1>;
+> +            interrupts = <2 IRQ_TYPE_EDGE_FALLING>;
+> +            interrupt-names = "INT1";
+> +            vdd-supply = <&vdd>;
+> +            vddio-supply = <&vddio>;
+> +        };
+> +    };
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
