@@ -4,76 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C1710F994F
-	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 15:11:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C91F10F9960
+	for <linux-rockchip@archiver.kernel.org>; Wed,  8 Apr 2026 16:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=PsznHofLldeePZXddSaLEb+6a5ky5gtzv7WfJL/xZ+o=; b=KqYPXDx+BzwlgF
-	/W/MLASlXl++Gry0qSvGS52pgrkmlAY5J8y1I788iiMsq6FT4d8x7Pz9GxDwpja7NIsb9F5HHeWHu
-	PFe1uWWt1JGDTzORVntHSQBM7+PuaQby58xpjFYb4k77vPFtl7YRooNqdvVfkfxf6OJ3b5RBY9dQh
-	jf1E6BtuxwCHdJsQw0Xt+q1I3JvuG82AbSeo/PhyJKuAEAYrj/7yBE0UhT/f5o/IlVEXvJ6x5jJwN
-	GaB5IO7RXT9eNtA9TOaw6DNF/umvhJqvKlGfC9xrMW0uExVvgttpngBnu9jRrLcVA+ocUdpR0vkQP
-	WOQj0Bn4iHEm2LgtplPw==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=poPNFZlEJvAyvHu+i2kKxTxsrLucgDXcUD3n+Rx/ZjM=; b=ox1bP/BRxSiCxF
+	gkKiWslZdEvLr72KteVxefJa5lbVg6XfYnP0XN/bXvkNF+cJwN24wuQZNuZaTFbq5LzXwGh6LJ0T2
+	i/ZZNgiHzWZjto228wfhJ2m5MuXTMzk+AGIOkjQ3ZIDP2A+VJj6oeSmnPn9eYWwC0zl/r0eudnpnG
+	M8HvRqqYlcnRyu+wnbUcbU4AK2PYZGjb9Xm402hpHmRJqz6uWWctcxN385+q0DG6wFUiXZ1UvZdmQ
+	9St3+6unw3+1o5uz2GAIUHzeH4Cwgt/kpkzzlbuaxKO2N6zCBEhiv5Nnqh9ph4JvH80O/gTQF2gI0
+	k+d9jHFtGEiWSEQzyxUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAUYY-0000000928o-0nlB;
-	Wed, 08 Apr 2026 15:11:02 +0000
-Received: from out203-205-221-164.mail.qq.com ([203.205.221.164])
+	id 1wAWFJ-0000000999E-1mD3;
+	Wed, 08 Apr 2026 16:59:17 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAUYT-0000000927M-3a3X;
-	Wed, 08 Apr 2026 15:11:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
-	t=1775661042; bh=XKcq00N0DIMUELEWrD+WO/50AsRGlhm2DyseYU7P9tM=;
-	h=From:To:Cc:Subject:Date;
-	b=JyZTNfin/Z/Q7aX4Z7YpCGa6gt5sw6BNtCREM0hDfMw9pW/g5rpeQsQ1kQqXNjjlh
-	 wgmxOpBb7/RIse8V9elz6FZTyeTr/67SWPyu6ndT1NKEP5sjLmX3hD3NV/iVkIKP6U
-	 KVzTMDmk2mZhZvFkMDyWBd1YZTvwMti2xroYz0kU=
-Received: from gwx-Ubuntu.. ([183.207.4.28])
-	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
-	id 26E24EE4; Wed, 08 Apr 2026 23:09:46 +0800
-X-QQ-mid: xmsmtpt1775660986thr6icol4
-Message-ID: <tencent_CF3170E7191769F8FB22C55A0F952E82E105@qq.com>
-X-QQ-XMAILINFO: NGZp1yYNf7Y+5o4+1CmlC1XFFeZPOT/SuqiQzarSPQeB5pWLyZC6My+Zr9JEL/
-	 urfH0ek6M9razrAqmSAn7ug0OfP4UideQhWr6rImYLHsRLmrZg5lTeMK/uxKPR01JH81YxPBuVwG
-	 oawynLjtjWfsC+xbU7R3uExSYD3XJvQ97ERzJbFMY4iJ8iJ375v9RSdGLJDcoRpqGGUB8RfxS9d5
-	 xF/Twp1KstRvsZFK7h4QKAkG2XUYTMRwLkk8PZOC1/Bxl1KMJQf2eklkC4cVDPdiPtIIFNWXLYVI
-	 XNqAWv1ET+/2GQiQfTXKBjhHqHwQxDxj+MtvDF5iMC+2JC2dAVpTncIkPM77uOsnQxPamHoK+8Es
-	 ppZhw6bp2g3phEWeP/ccqF4FPI9EyDINtuYihiI0zI707Rc4YYfEZBN6IQFg5X6btMPyGHA28ItR
-	 +B4roC64gvg4tBSw7pJLeW1wDW8N4QzGHZntcVuZPizQMfTc4+4/+LR6U7eyZ5R/Ra2mAOW4Khej
-	 2Nc2V6jn2kY/pqDZQ5ySLLIDrCplwIRGyqN4TmtW+dv5Ey+wIHHW8RLaL0bYPzh00j7CFGks6z3s
-	 1s+3clVdG/ju4rWWYUqvpg0pIZXgZQjJbmmaF9b5gHp6J3yFCL9xQYJGawrixypQnCcAkHAhbQaQ
-	 d+fjZ5hguxnTom/x9rfbucGcCXf+yy6Y38fSi7L3WMaejcODroqXkKlmKQGYGmVFOCgogByXfZqq
-	 iOo8KbDoiy7CJaw8HPNoJYh3xsdKdE4fPHZLRkXuZtt0/Aqksr7HzE5FvbteF1GrSjYeMeztp0aA
-	 PGpozq/IZUZfNxbVEL24zAyqI7fQeojALuwu/3VUpavtfQ9UQB4O1QvlTbPufaZIgPiLU2UWIizC
-	 M8tW7kIfzTGJoI5QdlWQ+pzn63qluUlhsbgeXIPJCZzMC5d3nBtgj23ip9aXvzOwSQogBiQOl7Ux
-	 ztlo4UWgx113X3KoDSIM9my4GwG8II/AO4lXSAJJCvhxGmTZD3frcJa39ZLcpErMDDMO05AK4qbr
-	 Wnl0sUsQsY24UzIqpPF3JiEIyiI9AnORPMJkostzLlwsn7AAZbuO+aTx7zN1oNGxJTPBdkp9dDzA
-	 tfzqo6
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
-From: guoweix <2298701336@qq.com>
-To: heiko@sntech.de
-Cc: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	f.kardame@manjaro.org,
-	pgwipeout@gmail.com,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	guoweix <2298701336@qq.com>
-Subject: [PATCH] arm64: dts: rockchip: fix rk809 interrupt pin on rk3566-roc-pc
-Date: Wed,  8 Apr 2026 23:09:44 +0800
-X-OQ-MSGID: <20260408150944.177773-1-2298701336@qq.com>
-X-Mailer: git-send-email 2.43.0
+	id 1wAWFF-0000000998I-3jDB
+	for linux-rockchip@lists.infradead.org;
+	Wed, 08 Apr 2026 16:59:15 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2b2ae8a0103so502245ad.0
+        for <linux-rockchip@lists.infradead.org>; Wed, 08 Apr 2026 09:59:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1775667552; x=1776272352; darn=lists.infradead.org;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:from:to
+         :cc:subject:date:message-id:reply-to;
+        bh=iNqmvT7YdCXAJg4FUIwYA7EHq158uKGOYNj5DRKvtwE=;
+        b=fVYqaTh3dCgOX94mL4lEe7rBid52FoIfNY7OO5d7qbBps9AZ/fjqkNYb5BvJW/lL68
+         8BJgnrUMs4z3sNAxQgBLR16bZtjplUcnHwnk8eWKiNCOahJr3f4XgZYJiyaxKOq3M7XW
+         ENCof/Jzi4jqTxck/b+Ffb5E2bft8QSHk6/60DxtLu1x4ayDn6H34OHE2djBENOcYZhv
+         MXw6I+9e1kROcqgwY6hE2twO7uqaDsKDpETWCvQj5VHMVF+T0iFK9RIBL0JF6oagVqfu
+         LxTniWLNupKfF/jEZ6Rdy4MDOTy/so3G9SwuiB4R2xAeXxs3WfrjATpjgZVqphWneL08
+         o6Dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775667552; x=1776272352;
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=iNqmvT7YdCXAJg4FUIwYA7EHq158uKGOYNj5DRKvtwE=;
+        b=IjVJ9Dks5r7VUlMI1xuvjyc7/euFzB7UlklCpb/SWaZC6RbR6+pOmcuRIyKtBuZj27
+         gY9XWWsRR3XS1yJtzHaggRZyvhIT1xi77qewlyOP/k57fwwl/zbKYkhjXDkxDI6yORLV
+         vL7uxeb+4CjhuC6gizZ0khP4fPDROPqfAKY1T1mD2i9Kv2dn7j9Q7537tEYoXeX6gFxl
+         8lNoB/wecWW5dgUvBj9/Ca6YhSWUmy28zkI3/75ijJeTQ38nUcwiIdVmQIMp8fiF/Zrz
+         NFhSMjaja5q4Fk55rqgzGqNBSDeKSUT6V4Ulbl49WL/ZT1VzRj8gcNn/D/1RLK+YR/Uq
+         WJTQ==
+X-Forwarded-Encrypted: i=1; AJvYcCXcy1bO18ntilF0MfybRqF/COkGIAD3rkSphmNAoyOke9HoM30zdeNUw0PKVaKATX9JJ6zF0HRC47kYxWN2eg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzfllqZifJX8HMyhV+kJYZSGO4dh6mW9JHSygSywjHGLD/WW/Yh
+	BbxWTSQ9plE2DdvlpIO7/FXl5FgRD2v64+wxhoJadBNXa3OwvWFAkR/G
+X-Gm-Gg: AeBDietgeT33BGvV32r3UXxa8041fJK1Lr9LnRbU+Mxd9Qt9pRe2m1ZQB6Fv9KB1z/k
+	DqUPTfAy7gJgp2KJ8O3VlyrYnnnva3e4c+zHfmOI5dtSMv3u1NF5YmdT2YkTxtgDhOAAnvo+DEA
+	RiMJCzDqNo11w3G5DqHYXearjL380DJJJEonPHxP9/5iqIraws7PfIPaqtV0kFZuuSOqr+ky+A8
+	bBWeOxkFYGEdrkr6vcytxcPrVmG9ptpaFcYuk2c2mt9nFxJKFTUkYo0utLC3CIlnEkvuweySnCj
+	eH2/ejE/1b4W5o+ROef1fHKBn5G8DyIEiDYPIS/6Nmk+UarWrgvntkMOQVOdceZyfsuMTPVorAn
+	KOk3DSRuzXXVV4BvzEU+hvEaQp4W1uiIVJ30dW9QHUUijGYiJcrxLimrjnzU74RhfhTrNwD9vVl
+	/PE68kEJ16FhAsb6LTTljcsZ5Mo/faYttPc1r45ebS+g1PJJFT1rHLYsGR5Kg/0yMi
+X-Received: by 2002:a05:7301:6097:b0:2b7:38cf:c2fd with SMTP id 5a478bee46e88-2d40e9cdf98mr157907eec.26.1775667552362;
+        Wed, 08 Apr 2026 09:59:12 -0700 (PDT)
+Received: from google.com ([2a00:79e0:2ebe:8:f3cf:7538:b120:7924])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-2ca760b0518sm22328464eec.0.2026.04.08.09.59.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Apr 2026 09:59:11 -0700 (PDT)
+Date: Wed, 8 Apr 2026 09:59:08 -0700
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Rob Herring <robh@kernel.org>
+Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+	Heiko Stuebner <heiko@sntech.de>, kernel@collabora.com, linux-input@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/4] dt-bindings: input: adc-keys: allow
+ linux,input-type property
+Message-ID: <adaJOEZHHmvZM_cB@google.com>
+References: <20251215-rock4d-audio-v2-0-82a61de39b4c@collabora.com>
+ <20251215-rock4d-audio-v2-1-82a61de39b4c@collabora.com>
+ <20251217-tough-ultra-junglefowl-f1a9ae@quoll>
+ <6778765.lOV4Wx5bFT@workhorse>
+ <20251217133440.GA724723-robh@kernel.org>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20251217133440.GA724723-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_081058_386771_D0B12600 
-X-CRM114-Status: GOOD (  10.40  )
+X-CRM114-CacheID: sfid-20260408_095913_962249_06C9BAFE 
+X-CRM114-Status: GOOD (  30.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,44 +103,80 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The RK809 PMIC interrupt pin on the Firefly ROC-RK3566-PC (Station M2)
-is physically connected to GPIO0_A3 (RK_PA3) according to the board's
-schematic.
+On Wed, Dec 17, 2025 at 07:34:40AM -0600, Rob Herring wrote:
+> On Wed, Dec 17, 2025 at 01:57:46PM +0100, Nicolas Frattaroli wrote:
+> > On Wednesday, 17 December 2025 09:31:15 Central European Standard Time =
+Krzysztof Kozlowski wrote:
+> > > On Mon, Dec 15, 2025 at 01:29:29PM +0100, Nicolas Frattaroli wrote:
+> > > > adc-keys, unlike gpio-keys, does not allow linux,input-type as a va=
+lid
+> > > > property. This makes it impossible to model devices that have ADC i=
+nputs
+> > > > that should generate switch events.
+> > > =
 
-Currently, the PMIC node incorrectly specifies RK_PA7 for the interrupt,
-which prevents the PMIC from correctly signaling interrupts. (Note that
-the pinctrl node 'pmic_int' correctly configures RK_PA3).
+> > > The solution is to use unevaluatedProps instead, which also allows
+> > > dropping other properties.
+> > > =
 
-Fix this by updating the interrupts property to use RK_PA3.
+> > > Best regards,
+> > > Krzysztof
+> > > =
 
-Fixes: 30ac9b4e25d8 ("arm64: dts: rockchip: add dts for Firefly Station M2 rk3566")
+> > > =
 
-Signed-off-by: guoweix <2298701336@qq.com>
----
- arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> > =
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
-index 7e499064e035..985770e3a5e2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
-@@ -245,7 +245,7 @@ rk809: pmic@20 {
- 		compatible = "rockchip,rk809";
- 		reg = <0x20>;
- 		interrupt-parent = <&gpio0>;
--		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
-+		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
- 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
- 		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
- 		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
--- 
-2.43.0
+> > Hi Krzysztof,
+> > =
 
+> > to understand the motivation behind this suggestion correctly:
+> > are the "linux," vendor prefixed properties, especially with regards
+> > to key codes, generally a bit of a thorn in the side of DT bindings
+> > maintainers?
+> =
+
+> Not really. Most have existed for decades. New ones get extra scrutiny =
+
+> and often end up dropping the linux prefix.
+> =
+
+> > I'd imagine so since they technically tie the DT to a specific OS
+> > kernel (though of course, others are free to translate those key
+> > codes). And the whole idea of configuring which code is emitted
+> > from something is basically abusing DT for configuring software
+> > rather than describing hardware.
+> > =
+
+> > I'm mainly interested because this is a thought that has been in
+> > the back of my mind for a while now, and I'm curious if the DT
+> > binding maintainers happen to have arrived at the same impass=E9,
+> > where linux,input-type et al abuse the DT model for something we
+> > would tell any other vendor not to abuse it for, but no better
+> > solution exists right now to achieve the same thing.
+> =
+
+> Not sure what the BSDs do here. It's never come up that I remember. Best =
+
+> I can tell is they just make it a userspace problem. So every possible =
+
+> keyboard needs a keymap file. Though I'm not sure how that would work =
+
+> with GPIO keys as you don't really have a scan code.
+
+Is there an update for this binding or should I apply the current
+version? I am OK with the driver changes...
+
+Thanks.
+
+-- =
+
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
