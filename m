@@ -4,71 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C5D4F364C3
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 22:25:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B3EF364CA
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 22:37:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5TlSBk6u9wRtGhIXWpjzzVRc0+W+Y+O22jaH4XD00+Q=; b=UHQA2v+z256QOV
-	B6TEscoi7/LxjM1fty0AWC8j65F1NhJCCpGxKBErNcHSNdW5IcQjlArXidfIhvLFzKuW+tQCexutm
-	VcJzaiVdI39uzgHJtjGcweH3o57GH0zIodzpY2mjDaM5aiBRoh4xY59dRgOiGVorb8gQB6FjoXn1R
-	4sCmRWSKG3w0OkN7fVPBaxM32YEIslJlwToitO37QysYSHvPdMvaxYS+8aA+jXroa/ImboP9Brye1
-	Cnqb6hFXk5VxXPRP2vMZZGo4OzfxkIigFoh1tZ8szduqkz29pIQQEsU9N7qBWNJVw3eCZHf4oje1m
-	GD8jogPd4h3T387eIy1g==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
+	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=scr6BVcJNcueW7NsQDBUcc17/bw9VddwnWAeUqKbwQo=; b=fZC7w2WjB49eZp
+	ej9j9jhS/IijBnS+oo4ySj/yxl93p7R9cDvj9XJoOmfhclp3yvKv/Br8EPS6eCRdTmK/FBZDt6+Ys
+	ZIBV4F8WQ5+Xx3Xo3L9mmd8B1zQBj0toXZt4vzD8oyXLapib396D7AUZ8SvVsv/MZ4fJdRGiK0PeN
+	JJIXEzi8q43nUCOeTbfb6+4oegRYa380uC32SK7lb/SMrkqimDJZ8iW9tpVwhmvEOYqJ1wtoxz6XT
+	4wvqon28CHCF3EEzV/hGM6Z7M6e9hD81JWC9WmRZBfFIOqb/7Fs3J8f7WqspE9I/X9ySOVfCzRj+O
+	jfJoidCqzm65ZtJARVnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAxoY-0000000BHrW-2DJj;
-	Thu, 09 Apr 2026 22:25:30 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wAy0T-0000000BI9p-0NHf;
+	Thu, 09 Apr 2026 22:37:49 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAxoV-0000000BHr9-3wAm
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Apr 2026 22:25:29 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2F4FA44405
-	for <linux-rockchip@lists.infradead.org>; Thu,  9 Apr 2026 22:25:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0CCAEC4AF0B
-	for <linux-rockchip@lists.infradead.org>; Thu,  9 Apr 2026 22:25:27 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775773527;
-	bh=gni6OuDMqG4Wudqx1opDhebHQF1rc+9753lXdYOtVwk=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=ci+7OuUoLgk0F9PQoVgXufFLrjmeqcP/QJAEQn9N6D5XhtWEKN92X/66NlFwlqJ1S
-	 8fKOo1iASV2UqzXl5UrPjfiSZG2g2yMoG+oAdWdVXqRxQS8W/4XTgeBqi04KV//Ty3
-	 +jXaLK/WYl0aCkAUikdRocp9xLzLQfLLVkPFoBfjrRTcCnJ7GDNWUtMnfhGfNLUPlH
-	 C1xQQpGLg7JCYU262M8f0tYM8w6N3qKwtT4gnusXRsz5+F7x2x3kceozsgOHPnb+tF
-	 eXwfp+KMLRj9RxKp/W/J8DN4uB7fsOTheg6wvbgC52VLa7UM7Yi+ku4fm96nbtDTuI
-	 thGvjuH4vo4Mg==
-Received: by mail-yx1-f53.google.com with SMTP id 956f58d0204a3-650221149e2so1505861d50.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Apr 2026 15:25:26 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AJvYcCVtxJlQa/l/KPX7apdNpJCYjnRMXeERNh7Kai9RB+BDDMSrob2NoIGuGAaXaafAHudTySuWyrBH5uuxISi6Yw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxgaDMYlsqmMTgEY+WN9g8qpXDdcac8ZLcPJhrONIoh6z9W8e5w
-	zsxiKcGvPdQck7/cxhWZeC+CibiCktKlIHAgv1gmyu7mYb4xTH0jWRkkYZcigRaEO64SEXKpjq8
-	Gk0eMbcERCAHklD5ce52ECpOquafzIMw=
-X-Received: by 2002:a53:edc8:0:b0:64e:efc7:b1cb with SMTP id
- 956f58d0204a3-65198ac3434mr597075d50.27.1775773526360; Thu, 09 Apr 2026
- 15:25:26 -0700 (PDT)
+	id 1wAy0P-0000000BI9G-2ynx;
+	Thu, 09 Apr 2026 22:37:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1775774261;
+	bh=mMZFlS36rjorHgR/mWWffVLLV2B7T9gk0BFFHkidN7c=;
+	h=From:Date:Subject:To:Cc:From;
+	b=WDgXoLNJg4XeYrwn12V6eES2wHHDyctKx1HgKhBZmIBtfD4b4zxRXznTdh2iZL4/c
+	 ugeQJuprMgY/NrMVOHrg3ESaYRN9baFIOpHocwgy6EHhZKXmcGGJWyFD8Mq6ccHe+t
+	 qjSbnY+eufxSJCX250lHByl5dGvgZQ38AV6zdbX2Z7k6ZnStw21pec9kTU/810ONXp
+	 riocy8rWXXgh3fLrK9HHQOowRtLPQiw3Ivu+X95AMPi0HW7eI3Ofhb17U6CkTQ7Dv2
+	 +pq91segVwXKaafhvtQh7yfucH+BAR5/oioRtGkewB4GwH1GZ1Biw+XD9/jROfqEeF
+	 S7wIquU+E6jIQ==
+Received: from jupiter.universe (unknown [100.64.1.62])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: sre)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 38F1817E12B9;
+	Fri, 10 Apr 2026 00:37:41 +0200 (CEST)
+Received: by jupiter.universe (Postfix, from userid 1000)
+	id EF4BB48002C; Thu, 09 Apr 2026 23:34:50 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+Date: Thu, 09 Apr 2026 23:34:41 +0200
+Subject: [PATCH RFC v2] drm/rockchip: vop2: Add clock rate mode check
 MIME-Version: 1.0
-References: <1774864401-177149-1-git-send-email-shawn.lin@rock-chips.com>
- <CAMRc=Mfg3KvifZgpD8c7kkLNhv3zgDKvHB=n_=MQJ2EtwRi44A@mail.gmail.com>
- <73130e47-dbd7-c0d0-eba1-8bafba9f91e5@rock-chips.com> <384b25a0-d55d-4415-82fb-dcf2e6ad1232@kwiboo.se>
-In-Reply-To: <384b25a0-d55d-4415-82fb-dcf2e6ad1232@kwiboo.se>
-From: Linus Walleij <linusw@kernel.org>
-Date: Fri, 10 Apr 2026 00:25:14 +0200
-X-Gmail-Original-Message-ID: <CAD++jLmhkZhWzjV9b6r9P4oZq=4dqVEVV7mwwE_WWRgRXbq3AQ@mail.gmail.com>
-X-Gm-Features: AQROBzAqbIzKJ9qMCr1olkI-tYrygB6OgUAWvIWw1d0yAhmxkRVT55ysYG46gq0
-Message-ID: <CAD++jLmhkZhWzjV9b6r9P4oZq=4dqVEVV7mwwE_WWRgRXbq3AQ@mail.gmail.com>
-Subject: Re: [PATCH] gpio: rockchip: convert to dynamic GPIO base allocation
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Bartosz Golaszewski <brgl@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, ye.zhang@rock-chips.com
+Message-Id: <20260409-vop2-clk-rate-check-v2-1-b207cfc427d7@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAHAb2GkC/32NTQrCMBCFr1Jm7UgzYNq4EgQP4Fa6SMfRhv6kJ
+ CUopXc39AAuv/d431shSnAS4VysECS56PyUgQ4FcGent6B7ZgYqSZekKkx+JuShx2AXQe6EeyR
+ dkzZVVbNlyMs5yMt9dusD7rcrNDnsXFx8+O5PSe3VX2lSqNDUpj1po5Rp7YX9MNjWB3tkP0Kzb
+ dsPGxQsFL8AAAA=
+X-Change-ID: 20260217-vop2-clk-rate-check-268269778cac
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: Daniel Stone <daniels@collabora.com>, 
+ Alexey Charkov <alchark@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6139;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=mMZFlS36rjorHgR/mWWffVLLV2B7T9gk0BFFHkidN7c=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnYG3pi93cTW4yCyNLQ/GfeLTF0kZ4v7mNL0
+ OjnrUV3xsUT+YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp2Bt6AAoJENju1/PI
+ O/qavSEP/A0aU+k3AfM0XGEz8p1RH76/YOZ9FzU2UErXy0i5r6jS48u4EPfvOr0xn4Syk6epyMz
+ jm65iH6FdShVljTsPUvorvrLWAIpbdlNgmL0AF8meRHLaYMF+I0BWmIgJvK3X0MrC0WxLS4crKP
+ hvmp/JbkwvTGg4yeTs/7Ec9KNpSvGgB60xyPw4ucCMzIwF1O36gritfoRIA3PoHWNJ9mzAnOW8J
+ jEX6OgP2aIPAv4Htm6O04uqSsJVtaX7fgZr7zloX97kxZHrYKIjpUKEO5XTD4NSbY3kt7GQRqK0
+ YhsO/NIA4/33Hg1tejWdUM6Wu0zcAv32GWb+4BKmFYitrzyz+nbdTwZnfSAgBaeJlIGvjmwehT+
+ s2y4gFTnfVYSNLrtfQOs66BU1Exhbt3EHcH10uwpMqpMjWH5WkTB0rEUEhSWEGm2Q7snzmH23qv
+ Gqk0ALPvoOH6eb5Fo3nzCMqPzgwjMpvNhZHhJ0ZK3MASBd+iGVBAQwBVZXD+limymSbkK1dqf7G
+ Ktq7Cen14fOOvvt7Rsu/6j3WDRAlMvmfcP54KwFRlT7ymXfLMkcrioRvBnLKEc3YuYGijk9b3Ij
+ /333Y5/ZlWPsuX4ObbS0f4/UZ+ntlgn3vt/j9HdYXWbYmObLME0CXGWJjdJgZ8CX3KP8rt3Lj5n
+ aSKCmBd1HEPPoqMrHAxk4DA==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_152528_020773_3B7F7403 
-X-CRM114-Status: GOOD (  16.92  )
+X-CRM114-CacheID: sfid-20260409_153745_908527_B6D7128F 
+X-CRM114-Status: GOOD (  16.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,70 +98,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVGh1LCBBcHIgOSwgMjAyNiBhdCA5OjA54oCvUE0gSm9uYXMgS2FybG1hbiA8am9uYXNAa3dp
-Ym9vLnNlPiB3cm90ZToKCj4gVGhpcyBwYXRjaCBpcyBjYXVzaW5nIGJvb3QgaXNzdWVzIG9uIG15
-IFJvY2sgUGkgNCAoUkszMzk5KSBib2FyZCB1c2luZwo+IG5leHQtMjAyNjA0MDkga2VybmVsIHdo
-ZXJlIHRoaXMgcGF0Y2ggaGFzIGJlZW4gYXBwbGllZCBhcyBjODA3OWY4M2UwYmYuCj4KPiBbICAg
-IDAuMDgyNzcxXSByb2NrY2hpcC1ncGlvIGZmNzIwMDAwLmdwaW86IHByb2JlZCAvcGluY3RybC9n
-cGlvQGZmNzIwMDAwCj4gWyAgICAwLjA4MzUzMV0gcm9ja2NoaXAtZ3BpbyBmZjczMDAwMC5ncGlv
-OiBwcm9iZWQgL3BpbmN0cmwvZ3Bpb0BmZjczMDAwMAo+IFsgICAgMC4wODQxMTBdIHJvY2tjaGlw
-LWdwaW8gZmY3ODAwMDAuZ3BpbzogcHJvYmVkIC9waW5jdHJsL2dwaW9AZmY3ODAwMDAKPiBbICAg
-IDAuMDg0NzQ2XSByb2NrY2hpcC1ncGlvIGZmNzg4MDAwLmdwaW86IHByb2JlZCAvcGluY3RybC9n
-cGlvQGZmNzg4MDAwCj4gWyAgICAwLjA4NTM4OV0gcm9ja2NoaXAtZ3BpbyBmZjc5MDAwMC5ncGlv
-OiBwcm9iZWQgL3BpbmN0cmwvZ3Bpb0BmZjc5MDAwMAo+IC0tCj4gWyAgICAwLjIxMjIwOF0gcm9j
-a2NoaXAtcGluY3RybCBwaW5jdHJsOiBwaW4gNjM3IGlzIG5vdCByZWdpc3RlcmVkIHNvIGl0IGNh
-bm5vdCBiZSByZXF1ZXN0ZWQKPiBbICAgIDAuMjEyMjcxXSByb2NrY2hpcC1waW5jdHJsIHBpbmN0
-cmw6IGVycm9yIC1FSU5WQUw6IHBpbi02MzcgKGdwaW8zOjYzNykKPiBbICAgIDAuMjEyMzQ0XSBs
-ZWRzLWdwaW8gbGVkczogZXJyb3IgLUVJTlZBTDogRmFpbGVkIHRvIGdldCBHUElPICcvbGVkcy9s
-ZWQtMCcKPiBbICAgIDAuMjEyMzg5XSBsZWRzLWdwaW8gbGVkczogcHJvYmUgd2l0aCBkcml2ZXIg
-bGVkcy1ncGlvIGZhaWxlZCB3aXRoIGVycm9yIC0yMgoKSSB0aGluayB0aGlzIG1heSBiZSBiZWNh
-dXNlIHRoZSByazMzOTkgaXMgbWlzc2luZyBncGlvLXJhbmdlcyBkZXNwaXRlIGl0IGlzIGEKbmV3
-IHBsYXRmb3JtIGFuZCBzaG91bGQgaGF2ZSBoYWQgaXRzIGdwaW8tcmFuZ2VzIGRlZmluZWQgaW4K
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazMzOTktYmFzZS5kdHNpIC4uLgoKQSBidW5j
-aCBvZiB0aGVzZSByb2NrY2hpcHMgc2VlbSB0byBoYXZlIHRoaXMgcHJvYmxlbSBkZXNwaXRlIHRo
-ZQpjb2RlIGluIHBpbmN0cmwtcm9ja2NoaXAuYyB0aGF0IHNheXM6CgogICAgLyoKICAgICAqIEZv
-ciBEZXZpY2VUcmVlLXN1cHBvcnRlZCBzeXN0ZW1zLCB0aGUgZ3BpbyBjb3JlIGNoZWNrcyB0aGUK
-ICAgICAqIHBpbmN0cmwncyBkZXZpY2Ugbm9kZSBmb3IgdGhlICJncGlvLXJhbmdlcyIgcHJvcGVy
-dHkuCiAgICAgKiBJZiBpdCBpcyBwcmVzZW50LCBpdCB0YWtlcyBjYXJlIG9mIGFkZGluZyB0aGUg
-cGluIHJhbmdlcwogICAgICogZm9yIHRoZSBkcml2ZXIuIEluIHRoaXMgY2FzZSB0aGUgZHJpdmVy
-IGNhbiBza2lwIGFoZWFkLgogICAgICoKICAgICAqIEluIG9yZGVyIHRvIHJlbWFpbiBjb21wYXRp
-YmxlIHdpdGggb2xkZXIsIGV4aXN0aW5nIERldmljZVRyZWUKICAgICAqIGZpbGVzIHdoaWNoIGRv
-bid0IHNldCB0aGUgImdwaW8tcmFuZ2VzIiBwcm9wZXJ0eSBvciBzeXN0ZW1zIHRoYXQKICAgICAq
-IHV0aWxpemUgQUNQSSB0aGUgZHJpdmVyIGhhcyB0byBjYWxsIGdwaW9jaGlwX2FkZF9waW5fcmFu
-Z2UoKS4KICAgICAqLwogICAgaWYgKCFvZl9wcm9wZXJ0eV9wcmVzZW50KGJhbmstPm9mX25vZGUs
-ICJncGlvLXJhbmdlcyIpKSB7CiAgICAgICAgc3RydWN0IGRldmljZV9ub2RlICpwY3RsbnAgPSBv
-Zl9nZXRfcGFyZW50KGJhbmstPm9mX25vZGUpOwogICAgICAgIHN0cnVjdCBwaW5jdHJsX2RldiAq
-cGN0bGRldiA9IE5VTEw7CgogICAgICAgIGlmICghcGN0bG5wKQogICAgICAgICAgICByZXR1cm4g
-LUVOT0RBVEE7CgogICAgICAgIHBjdGxkZXYgPSBvZl9waW5jdHJsX2dldChwY3RsbnApOwogICAg
-ICAgIG9mX25vZGVfcHV0KHBjdGxucCk7CiAgICAgICAgaWYgKCFwY3RsZGV2KQogICAgICAgICAg
-ICByZXR1cm4gLUVOT0RFVjsKCiAgICAgICAgcmV0ID0gZ3Bpb2NoaXBfYWRkX3Bpbl9yYW5nZShn
-YywgZGV2X25hbWUocGN0bGRldi0+ZGV2KSwgMCwKICAgICAgICAgICAgICAgICAgICAgICAgIGdj
-LT5iYXNlLCBnYy0+bmdwaW8pOwogICAgICAgIGlmIChyZXQpIHsKICAgICAgICAgICAgZGV2X2Vy
-cihiYW5rLT5kZXYsICJGYWlsZWQgdG8gYWRkIHBpbiByYW5nZVxuIik7CiAgICAgICAgICAgIGdv
-dG8gZmFpbDsKICAgICAgICB9CiAgICB9CgpOb3RpY2UgZGVyZWZlcmVuY2Ugb2YgZ3Bpb2xpYiBp
-bnRlcm5hbCBnYy1iYXNlIGhlcmUuCgogICAgICAgIHJldCA9IGdwaW9jaGlwX2FkZF9waW5fcmFu
-Z2UoZ2MsIGRldl9uYW1lKHBjdGxkZXYtPmRldiksIDAsCiAgICAgICAgICAgICAgICAgICAgICAg
-ICBnYy0+YmFzZSwgZ2MtPm5ncGlvKTsKCmFyZ3VtZW50cyBhcmUgZ3BpcGNoaXAsIHBpbmN0b250
-cm9sIGRldmljZSBuYW1lLApncGlvIG9mZnNldCwgcGluIG9mZnNldCwgbnVtYmVyIG9mIHBpbnMu
-CgpHUElPIG9mZnNldCBhbHdheXMgMD8/IFBhc3NpbmcgR1BJTyBvZmZzZXQgYXMgcGluIG9mZnNl
-dD8/CgpUaGlzIGlzIHByb2JhYmx5IGp1c3Qgd29ya2luZyBiZWNhdXNlIG9mIGx1Y2sgdGhhdCAw
-LDAgaXMgcGFzc2VkLgoKVGhpcyBzaG91bGQgcHJvYmFibHkgcmF0aGVyIGJlIHNvbWV0aGluZyBs
-aWtlOgoKICAgICAgICByZXQgPSBncGlvY2hpcF9hZGRfcGluX3JhbmdlKGdjLCBkZXZfbmFtZShw
-Y3RsZGV2LT5kZXYpLCBnYy0+YmFzZSwKICAgICAgICAgICAgICAgICAgICAgICAgIGJhbmstPmJh
-bmtfbnVtICogYmFuay0+bnJfcGlucywgZ2MtPm5ncGlvKTsKCkhlcmUgd2UgcHV0IHRoZSBhc3Np
-Z25lZCAoYnkgZ3Bpb2xpYikgZ2MtPmJhc2UgaW4gdGhlIHJpZ2h0IHBsYWNlLCB0aGVuCmJhbmst
-PmJhbmtfbnVtIHNob3VsZCBiZSAwLDEsMi4uLiBhbmQgYmFuay0+bnJfcGlucyBhbHdheXMgMzIg
-KEkgdGhpbmspLgoKSm9uYXMgY2FuIHlvdSB0ZXN0IHRoaXMgb25lbGluZXIgY2hhbmdlPyBJIGNh
-biBzZW5kIGEgcHJvcGVyIHBhdGNoCmlmIGl0IGhlbHBzLgoKSWYgdGhpcyB3b3JrcyB0aGUgRFRT
-IGZpbGVzIGNhbiAoU0hPVUxEKSBiZSBmaXhlZCB3aXRoIHByb3BlciByYW5nZXMgbGF0ZXIuCgpJ
-dCB3b3VsZCBiZSBuaWNlIGlmIHdlIGNvdWxkIGF1Z21lbnQgdGhlIHJvY2tjaGlwIHBpbmN0cmwg
-RFQgc2NoZW1hIHRvCm1ha2UgZ3Bpby1yYW5nZXMgbWFuZGF0b3J5IG9uIG5ldyBTb0NzLgoKWW91
-cnMsCkxpbnVzIFdhbGxlaWoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0
-cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGlu
-Zm8vbGludXgtcm9ja2NoaXAK
+The display might offer modes, which exceed the maximum clock rate of a
+video output. This usually happens for displays that offer refresh rates
+above 60 Hz. This results in no picture (or a broken one) being displayed
+without manual intervention. Fix this by teaching the driver about the
+maximum achievable clock rates for each video port.
+
+The information about the maximum clock rates for each video channel and
+the tip about multiple pixels being processed per clock were provided by
+Andy Yan and roughly checked against the information available in the
+datasheet (which specifies limits like "2560x1600@60Hz with 10-bit"
+instead of a specific pixel rate).
+
+For the video ports supporting a 600 MHz input clock, there is some
+logic to handle up to 4 pixels in parallel when needed resulting in
+the extra multiplier.
+
+Suggested-by: Andy Yan <andy.yan@rock-chips.com>
+Link: https://lore.kernel.org/linux-rockchip/1528d788.186b.19d08ed974c.Coremail.andyshrk@163.com/
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+---
+I've kept the RFC tag, as I'm not sure about the 4x parallel pixel
+processing. IIUIC all of the video ports with a maximum of 600 MHz
+input clock support it, considering they can go to 4K @ 120Hz,
+which is above 1.2GHz while Andy mentioned a max. support clock rate
+of 600 MHz.
+---
+Changes in v2:
+- Link to v1: https://lore.kernel.org/r/20260217-vop2-clk-rate-check-v1-1-989b569119ba@collabora.com
+- based on v7.0-rc7
+- rename max_clock_rate into max_pixel_clock_rate to distinguish from
+  input clock
+- update max clock rates to the numbers provided by Andy Yan with
+  extra 4x multiplier for 4K 120Hz VPs
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c |  3 +++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  1 +
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 10 ++++++++++
+ 3 files changed, 14 insertions(+)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index a195f5c819a2..35a0edda5375 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -1434,6 +1434,9 @@ static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
+ 	if (mode->hdisplay > vp->data->max_output.width)
+ 		return MODE_BAD_HVALUE;
+ 
++	if (mode->clock > vp->data->max_pixel_clock_rate / 1000)
++		return MODE_CLOCK_HIGH;
++
+ 	return MODE_OK;
+ }
+ 
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+index 9124191899ba..fd46913f3346 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
+@@ -225,6 +225,7 @@ struct vop2_video_port_data {
+ 	u16 gamma_lut_len;
+ 	u16 cubic_lut_len;
+ 	struct vop_rect max_output;
++	u32 max_pixel_clock_rate;
+ 	const u8 pre_scan_max_dly[4];
+ 	unsigned int offset;
+ 	/**
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index f3950e8476a7..6ae3d506c476 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -559,18 +559,21 @@ static const struct vop2_video_port_data rk3568_vop_video_ports[] = {
+ 		.gamma_lut_len = 1024,
+ 		.cubic_lut_len = 9 * 9 * 9,
+ 		.max_output = { 4096, 2304 },
++		.max_pixel_clock_rate = 600000000U,
+ 		.pre_scan_max_dly = { 69, 53, 53, 42 },
+ 		.offset = 0xc00,
+ 	}, {
+ 		.id = 1,
+ 		.gamma_lut_len = 1024,
+ 		.max_output = { 2048, 1536 },
++		.max_pixel_clock_rate = 200000000U,
+ 		.pre_scan_max_dly = { 40, 40, 40, 40 },
+ 		.offset = 0xd00,
+ 	}, {
+ 		.id = 2,
+ 		.gamma_lut_len = 1024,
+ 		.max_output = { 1920, 1080 },
++		.max_pixel_clock_rate = 150000000U,
+ 		.pre_scan_max_dly = { 40, 40, 40, 40 },
+ 		.offset = 0xe00,
+ 	},
+@@ -775,6 +778,7 @@ static const struct vop2_video_port_data rk3576_vop_video_ports[] = {
+ 		.gamma_lut_len = 1024,
+ 		.cubic_lut_len = 9 * 9 * 9, /* 9x9x9 */
+ 		.max_output = { 4096, 2304 },
++		.max_pixel_clock_rate = 600000000U * 4,
+ 		/* win layer_mix hdr  */
+ 		.pre_scan_max_dly = { 10, 8, 2, 0 },
+ 		.offset = 0xc00,
+@@ -785,6 +789,7 @@ static const struct vop2_video_port_data rk3576_vop_video_ports[] = {
+ 		.gamma_lut_len = 1024,
+ 		.cubic_lut_len = 729, /* 9x9x9 */
+ 		.max_output = { 2560, 1600 },
++		.max_pixel_clock_rate = 300000000U,
+ 		/* win layer_mix hdr  */
+ 		.pre_scan_max_dly = { 10, 6, 0, 0 },
+ 		.offset = 0xd00,
+@@ -793,6 +798,7 @@ static const struct vop2_video_port_data rk3576_vop_video_ports[] = {
+ 		.id = 2,
+ 		.gamma_lut_len = 1024,
+ 		.max_output = { 1920, 1080 },
++		.max_pixel_clock_rate = 150000000U,
+ 		/* win layer_mix hdr  */
+ 		.pre_scan_max_dly = { 10, 6, 0, 0 },
+ 		.offset = 0xe00,
+@@ -1061,6 +1067,7 @@ static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
+ 		.gamma_lut_len = 1024,
+ 		.cubic_lut_len = 9 * 9 * 9, /* 9x9x9 */
+ 		.max_output = { 4096, 2304 },
++		.max_pixel_clock_rate = 600000000U * 4,
+ 		/* hdr2sdr sdr2hdr hdr2hdr sdr2sdr */
+ 		.pre_scan_max_dly = { 76, 65, 65, 54 },
+ 		.offset = 0xc00,
+@@ -1070,6 +1077,7 @@ static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
+ 		.gamma_lut_len = 1024,
+ 		.cubic_lut_len = 729, /* 9x9x9 */
+ 		.max_output = { 4096, 2304 },
++		.max_pixel_clock_rate = 600000000U * 4,
+ 		.pre_scan_max_dly = { 76, 65, 65, 54 },
+ 		.offset = 0xd00,
+ 	}, {
+@@ -1078,12 +1086,14 @@ static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
+ 		.gamma_lut_len = 1024,
+ 		.cubic_lut_len = 17 * 17 * 17, /* 17x17x17 */
+ 		.max_output = { 4096, 2304 },
++		.max_pixel_clock_rate = 600000000U * 4,
+ 		.pre_scan_max_dly = { 52, 52, 52, 52 },
+ 		.offset = 0xe00,
+ 	}, {
+ 		.id = 3,
+ 		.gamma_lut_len = 1024,
+ 		.max_output = { 2048, 1536 },
++		.max_pixel_clock_rate = 150000000U,
+ 		.pre_scan_max_dly = { 52, 52, 52, 52 },
+ 		.offset = 0xf00,
+ 	},
+
+---
+base-commit: 591cd656a1bf5ea94a222af5ef2ee76df029c1d2
+change-id: 20260217-vop2-clk-rate-check-268269778cac
+
+Best regards,
+-- 
+Sebastian Reichel <sebastian.reichel@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
