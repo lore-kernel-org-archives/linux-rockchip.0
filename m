@@ -4,54 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269D1EA3C5E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 13:51:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672E9E98FB7
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 13:51:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=iazk/al3AP4txgF23MYHT/i+mb/EQFSqmEJ2ZZQbXD0=; b=4p4T8sdlY0I7mC
-	Yy7Ejh13hBjvs7mTCDZSkaoZszTcVgBTdhC5V2wTU3YdOL3UHQQZS2Ho7o6Nk/E02/A5nHSEEwUk+
-	WxsbyYNtzeap1MTXK9uF25DMeBn4WuD3zHdfvOBZYnAcb/s/hG2iu8u22qO/pxuvoziKUiWOWg5Mh
-	j2L3Gw/c3MTAR5y+9wcUGMatZaPG2qw9eQExibx6ladFrUGQviaz7LhNEgaRZX9kDNrjAgdgEunzc
-	Q46xyWvxVVG0J7dCi5rtf2lMikfwZDd+UIAaClXzt9EChiCc97EUW6HvWouH43fGUerd1EOm3vSaF
-	ykPiCEucLc905B5dtMvQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZkHtzyG/TyjdBdLJscBFabvq6wZvkLUiaq1VzqEJ1p0=; b=F1h68zAT+62cmU
+	o5hC702Kt+oVysn0w1L1prmfAIzOJqAYs2CS6CPDg7QyeQBkbnb5cZzG6n6m2XVclf4FpIPsWTzTm
+	+LBoMju+0XHIBvJPX1WRhQbJczisxmdrYyaIwCwLfz3AP8WDncEP71P/6ThdQLTyQ6hW2qHUXh+gw
+	lu5MaQIF69VJMIuL6L1Y9wBmie0a9m8WNA42gsgZws9RQLxe8Ex+7ob4+XQcNr4AZDOsrlvcE5AxD
+	6Fh+M5A+jU+CbWX5pAR0igFV+c1NwYjTzJxXj6S+pS2dThgcDn8YAdSLUWVr85ijGtNtrY+FhkAjD
+	0GtN8FO/Fw8E2XWsRDeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wApnG-0000000AZys-2YzD;
-	Thu, 09 Apr 2026 13:51:38 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wApnK-0000000Aa2B-1Pho;
+	Thu, 09 Apr 2026 13:51:42 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wApnB-0000000AZx8-16bz;
-	Thu, 09 Apr 2026 13:51:34 +0000
+	id 1wApnD-0000000AZxP-12Cd;
+	Thu, 09 Apr 2026 13:51:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1775742688;
-	bh=zb8Kdcld56GkDD3eedBbJU1WAMrgjQXCYOIVVPIDCuE=;
-	h=From:Subject:Date:To:Cc:From;
-	b=i54P+b5JUflbk2iAP5O3PJHSnKjPJHg0+jrZX+sOPe8KoX9ChZlc8aZPy/TMgV8R0
-	 Zhiv0TZpgVEx7/JYko257JDLmncVuXkQaPw7R7CEgTE6sUS14SFqSd6RFMl0Ud5F8y
-	 QEeLDC36E2QOvH8JY8aMPIZhSRSXRmt0s/s1ZQ+Jl+Q9iWH+JVT/FNm3Hnsiz0owCv
-	 +fuititxsucYcIDa0U2jFWQ4A+XYyzYrCI9mR0gM4PHLMedgYWTh+O2dnKFfdcW3/F
-	 QfQmj7OSSdn5N30KlYVuCmdFpVrK3rAVJJIbInfibb6Faw1L+AlelbEF+a63svX2NH
-	 GWyFnWPEawcHw==
+	s=mail; t=1775742692;
+	bh=Uf3oawvhkOYDFsuF3t/kHZrtN6yz3uwa92uWH3g5zZM=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=jOsFp6YU19b4d9Al8Ya16eVbiA5JsxqAJk1Td7XesbTO3lecWg/CaHDjV0z88Z+wb
+	 DyGdSLd82ehcyXpESkkersjoow99twav8ffpVGSyo3ljejE60umkCJ9pbHze46LVhs
+	 oxjOOr/1tbekHy8UbuabqjGHmFVtrRN3wJcra9WNgm9OC1T/V4Q0YOy79DOrQlMl44
+	 3lMVLCTZyFfuGEWUpqiSDomLanqEgLF4fT7glpfMKA0b+hD3NKsbNNNTYA51Bg50BZ
+	 R9Oqk6nhI4gqtPtVmYnR9TjTyP1CWvkNOO90zFU29Aey0SxevVZ1FuUg+E6VCQVF+6
+	 wGCto+Wtu4K+w==
 Received: from [192.168.0.15] (unknown [100.64.0.170])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: detlev)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 47E1517E0CA9;
-	Thu,  9 Apr 2026 15:51:27 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 09A3017E1313;
+	Thu,  9 Apr 2026 15:51:30 +0200 (CEST)
 From: Detlev Casanova <detlev.casanova@collabora.com>
-Subject: [PATCH 0/7] media: rkvdec: Enable multi-core support
-Date: Thu, 09 Apr 2026 09:50:35 -0400
-Message-Id: <20260409-rkvdec-multicore-v1-0-62b316abf0f7@collabora.com>
+Date: Thu, 09 Apr 2026 09:50:37 -0400
+Subject: [PATCH 2/7] media: v4l2-mem2mem: Remove WARN_ON() in
+ v4l2_m2m_job_finish()
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMSQ6DMAxA0asgrxspCVPoVSoWkBhwy1A5gJAQd
- yfA8i3+38EjE3p4RzswruRpGgPUKwLbVWOLglwwaKkzmUgj+Lc6tGJY+pnsxCgKY2LlqlTJXEP
- I/owNbffyUz72S/1FO18fOI4TEu/+mnQAAAA=
-X-Change-ID: 20260408-rkvdec-multicore-98831da51072
+Message-Id: <20260409-rkvdec-multicore-v1-2-62b316abf0f7@collabora.com>
+References: <20260409-rkvdec-multicore-v1-0-62b316abf0f7@collabora.com>
+In-Reply-To: <20260409-rkvdec-multicore-v1-0-62b316abf0f7@collabora.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
  Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
  Heiko Stuebner <heiko@sntech.de>, 
@@ -63,8 +62,9 @@ Cc: kernel@collabora.com, linux-media@vger.kernel.org,
  Detlev Casanova <detlev.casanova@collabora.com>
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_065133_559768_756D9CF5 
-X-CRM114-Status: GOOD (  17.22  )
+X-CRM114-CacheID: sfid-20260409_065135_947916_21C2161C 
+X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,70 +81,40 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Since the driver is used for decoding on rk3588 and that the SoC has
-2 identical decoding cores, enable support for it.
+This warning was added because there was no way, for drivers that support
+holding capture buffers to mark jobs done correctly without calling
+v4l2_m2m_buf_done_and_job_finish().
 
-Instead of exposing 2 v4l2 devices to userspace, the driver will only
-expose one and handle the 2 cores transparently.
-
-The 2 cores are able to work in parallel, but only contexts are
-parallelized: 1 stream, that uses 1 context, will only be able to use
-1 core as it usually needs previous frames already decoded to use as
-reference frames.
-To avoid complex scheduling, only different streams can use cores at the
-same time.
-
-To achieve this, the v4l2_m2m_buf_done_and_job_finish() had to be split
-in a done and a finish part (still keeping the unsplit function for other
-drivers). That allows the driver to get new jobs to run while the previous
-one is still running.
-The job_ready() callback is used to avoid scheduling multiple jobs from
-the same context.
-
-The IOMMU support is in a different commit, as it needed a bit more
-thought to work correctly, but I'm wondering if it should be merged with
-the multicore support commit.
-
-A fix for the RCB (Row and Cols Buffer) size computation is also provided
-as it was causing issues with some fluster tests.
-
-Performance-wise, fluster doesn't seem to run much faster, but I tested
-with an HEVC test video from Jellyfin and observed that frames start
-dropping with 6 concurrent gstreamer instances, instead of 4 without
-multi-core enabled.
+Now that v4l2_m2m_buf_done_manual() has been introduced, it has become
+possible and drivers can use it with v4l2_m2m_job_finish() for finer
+grained buffer management.
 
 Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
 ---
-Detlev Casanova (7):
-      media: v4l2-mem2mem: Add v4l2_m2m_buf_done_manual()
-      media: v4l2-mem2mem: Remove WARN_ON() in v4l2_m2m_job_finish()
-      media: rkvdec: Keep RCB to the correct size
-      media: rkvdec: Remove unused need_reset
-      media: rkvdec: Add multicore support
-      media: rkvdec: Wait for all buffers before stop_streaming
-      media: rkvdec: Add multicore IOMMU support
+ drivers/media/v4l2-core/v4l2-mem2mem.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
- .../media/platform/rockchip/rkvdec/rkvdec-h264.c   |  17 +-
- .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   |  16 +-
- .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    |  77 ++--
- .../media/platform/rockchip/rkvdec/rkvdec-rcb.h    |   8 +-
- .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c |  24 +-
- .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c |  24 +-
- .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  24 +-
- .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  26 +-
- .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  27 +-
- drivers/media/platform/rockchip/rkvdec/rkvdec.c    | 482 +++++++++++++--------
- drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  31 +-
- drivers/media/v4l2-core/v4l2-mem2mem.c             |  34 +-
- include/media/v4l2-mem2mem.h                       |  20 +
- 13 files changed, 500 insertions(+), 310 deletions(-)
----
-base-commit: 3036cd0d3328220a1858b1ab390be8b562774e8a
-change-id: 20260408-rkvdec-multicore-98831da51072
+diff --git a/drivers/media/v4l2-core/v4l2-mem2mem.c b/drivers/media/v4l2-core/v4l2-mem2mem.c
+index 7f9fad4f6807..27f7dd7974b5 100644
+--- a/drivers/media/v4l2-core/v4l2-mem2mem.c
++++ b/drivers/media/v4l2-core/v4l2-mem2mem.c
+@@ -487,13 +487,6 @@ void v4l2_m2m_job_finish(struct v4l2_m2m_dev *m2m_dev,
+ 	unsigned long flags;
+ 	bool schedule_next;
+ 
+-	/*
+-	 * This function should not be used for drivers that support
+-	 * holding capture buffers. Those should use
+-	 * v4l2_m2m_buf_done_and_job_finish() instead.
+-	 */
+-	WARN_ON(m2m_ctx->out_q_ctx.q.subsystem_flags &
+-		VB2_V4L2_FL_SUPPORTS_M2M_HOLD_CAPTURE_BUF);
+ 	spin_lock_irqsave(&m2m_dev->job_spinlock, flags);
+ 	schedule_next = _v4l2_m2m_job_finish(m2m_dev, m2m_ctx);
+ 	spin_unlock_irqrestore(&m2m_dev->job_spinlock, flags);
 
-Best regards,
---  
-Detlev Casanova <detlev.casanova@collabora.com>
+-- 
+2.53.0
 
 
 _______________________________________________
