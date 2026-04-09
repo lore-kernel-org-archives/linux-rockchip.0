@@ -4,101 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E664E10FC466
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 01:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 034E1E98FAF
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 04:50:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=015/Wf1mttvDwcWgVzW9+4dIfQ7zN21V2/ZHwBN2u24=; b=gLA1+dGTPVLv+N
-	eGCrMryEzDE1nrRAC98LPGNfWD7e7najl6BgAzxHz/Tz13zTJ5YsJ3lC4MljxiDPaCFP9i+NyL70W
-	znIFUScaEcC89W1yjljOxb78opKJ+n0HZ3Rut23db/ENsBJQ40DJE0caDgU8NPqDTQn80P+ofTEza
-	rP/kh+slkeJ/c1pVpQNt6+hbub+KEaWD8WqwV6wyR+2TwIrNUzUBPzjAN6MN6/gpxIaiU8Aws7Z/y
-	2dc47Jc9H0+WuhJR1rCz2uorXvqP9oQKU99RJ6h9q9Gw43EeJBB5eNoD7ntOECXooD2ivz/WQglyp
-	reNu4ErcJQZb/AtyDvsA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=plyFIcacunAVlt0Hdp4F599ZGUtJiIWHYnpixp4gPSY=; b=z3mTzCNFEseAHi
+	ClQObcdkdb3D6tXtMnUgPvGdddu9b15EmVtMVcSpGnrS1xXv04V4aCRT/LAVtWPQPD5jJcMD7o6YS
+	9MvBIp8ukPOy/JxI1mDJlfIfOISR04T8GaMS2kNjU/uQGS38CLIlCp4+p2BGyj+ONwLA0RF1Y1Kki
+	bLwLXnuEcNgDfFEQeC0jZO63lZAdp6ef+L6U9BXgzfjsqhgYR7SRiJnMJ6YxaB00qV+NHFT6uJuLX
+	sDxxadUVfuWH9ksr7y3eNJmQ4Z9eJWbBqVPagWu1pFNZCHrG6wRlVPf3Y/w5Km9hbjJoJma01X7AX
+	H357rm+ifKXk1J4nVbeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAefL-00000009b2z-2NW2;
-	Thu, 09 Apr 2026 01:58:43 +0000
-Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
+	id 1wAhKz-00000009h9O-2wYj;
+	Thu, 09 Apr 2026 04:49:53 +0000
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAefH-00000009b1c-3AAC
+	id 1wAhKy-00000009h8X-0BaU
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Apr 2026 01:58:42 +0000
-Received: by mail-dy1-x132c.google.com with SMTP id 5a478bee46e88-2d3eb307324so105132eec.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 08 Apr 2026 18:58:38 -0700 (PDT)
+	Thu, 09 Apr 2026 04:49:53 +0000
+Received: by mail-pj1-x1031.google.com with SMTP id 98e67ed59e1d1-35c2fe0d90fso470641a91.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 08 Apr 2026 21:49:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1775699918; x=1776304718; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rtu5J6mkYa7cAz+oGv/2J7Qnc58jCw+U8QvJQpdZOFw=;
-        b=grtxwQZKEtOXiVyrqRdUjowfs+vFQieTw5qgBm9XUHaCVjEftqe0aVKdx2fbaOsGqj
-         adfaAiIJxUzcq4HM7jlgs3piBafUXIpwxBFJiF4plzZ42wQe3AW1s/tBrVS20Ysnt02v
-         /Z6j7WNXvctoOQSF5QNUJol9sheO/8SpklX80=
+        d=gmail.com; s=20251104; t=1775710190; x=1776314990; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=+ImK8hvWI99jsMPE6842OWsdASSwcChHTL0PI+ouj+g=;
+        b=KqZIKk+gCgbg8kGPJsRLI0lDw9B/DwBYTPMSIRt05N/qM35bsQfYRnzEOqO6Wt3D8Y
+         UOuEldSWMCyuI5qItbm28tUp//hQzaS9xvWX5mBddx6MzVT/5vBGtWPMYJMuxR/3bLDH
+         mftW8TFf4cZJDa6iWzlAPOeu4jVN+nv01k+D8z/MKz8CTg+P5eRQ1pQj5eVMFiB0/fHH
+         J19unsfYFie341zH51Xo3jkB74dNpNPgymOpOzm75rJR7DmSU42TAkVFngd2/5YfUAtX
+         b1zXGUYNmBx1BEeeoPjKoLcXl3bgGfQYWUi62+0c1ml7MncjhzPVdQ2astsj4Yh4vwfo
+         Xg9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775699918; x=1776304718;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rtu5J6mkYa7cAz+oGv/2J7Qnc58jCw+U8QvJQpdZOFw=;
-        b=ECCUvVbOyNhflHZQH43OR7ykMmmy96cocpL4s/RtIlCKa/cfOlKK99DO3Qh9BvRIm5
-         Z8EV7bD1z1pAK3z8M1CkDczslHvy838RMSCx4CbrE5sMNV3kn7ao/4u9lDLSbCa5ZFAn
-         ebjk2ifJBeTeEtpF2pHsVh0PNRgENIwkw/C82fpPfxDiPdd9/W+WoDZyKRMXbsNKeJQk
-         iNBgE8SCtgQMIzngNqZEBUAv639eGqyjYRKuaAKiZ9f1W3bsCWCVMqn0ViPrUFpgATWN
-         xlEYfWUh2k7BkFwVoDOu1Ha8pgs3ZLNB5P29nU/M0s7bSdcDs3OvFMo3/l6y/8Ya672Y
-         q0OA==
-X-Forwarded-Encrypted: i=1; AJvYcCV/cMfnPbqw4SKP93VCO30qL4sjJjOhfeptobXbLQC0VoyYK0qurJo9Dz5eRgJkaFVVHMabzeygDwS6GN5/gg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yxb6Gt6pk/G3YNQAqUl34fgU1Up4/BLh4GmsIK4b30Glz7Tgm7z
-	vCTsjNJReuVh0eiYnoG4hq2ThrwyV5EJmlxr9Ry+hYfsRBMuN35RowFrJ+VjSAOKHQ==
-X-Gm-Gg: AeBDieumkG7T6IVlgP5LbBnST2zeeZWUqcwd7DRWPHhO65/W68WuwX3y8uZymrtluBg
-	ReGKX/nlf5dpe36LhAYwdpWkxIFGhGlnxTl9O/mWisq6nXc7vBeDiMH5qTQnyNXn8sLwBsOH5ye
-	3PwJiyLLgJWIzho6cAjpf9oeVHlV+uI8EjUv+kwYofc4YdRK0F3+UhB1+n92UWqe99yPwTgWaDD
-	HoLHuAc1aE8lOBz5aL4QIiHVyc7DKGnH/i9J/a37m07tozvUZK5xYZKwQspSYeYcANe0Z8DXF6v
-	pB9a5tAGGgJ8yKrnxoLEKguVHMSKAH5zm+Em0/po0dJWfVA+PnJSvGAZkDaHY/jmhOrgT4pbhTX
-	S6BQbNLRFxnpyCerJ8rfh7NgEIA8P2K0/9iEN1c8YXmJvM2dEv8DdPWDFlWVwYLDnepkd+K0c+Y
-	FjJY0dfYJeL2rWf0M6/b8IlmfwFYATvCJBiK1ic2uCqzUQDLhvHRH2JCx7ikFvNQ==
-X-Received: by 2002:a05:7301:6097:b0:2d1:a3ea:d8a5 with SMTP id 5a478bee46e88-2d40e9cace4mr857392eec.7.1775699918176;
-        Wed, 08 Apr 2026 18:58:38 -0700 (PDT)
-Received: from localhost ([2a00:79e0:2e7c:8:8419:d73b:6e27:ef7e])
-        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-2ca7c3010e9sm29435810eec.14.2026.04.08.18.58.36
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Apr 2026 18:58:37 -0700 (PDT)
-Date: Wed, 8 Apr 2026 18:58:34 -0700
-From: Brian Norris <briannorris@chromium.org>
-To: Hongxing Zhu <hongxing.zhu@nxp.com>
-Cc: "manivannan.sadhasivam@oss.qualcomm.com" <manivannan.sadhasivam@oss.qualcomm.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
-	"linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-	Niklas Cassel <cassel@kernel.org>,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
-	Lukas Wunner <lukas@wunner.de>, Wilson Ding <dingwei@marvell.com>,
-	Miles Chen <minhuachen@google.com>
-Subject: Re: [PATCH v7 0/4] PCI: Add support for resetting the Root Ports in
- a platform specific way
-Message-ID: <adcHylFjFjhHT-tP@google.com>
-References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
- <AS8PR04MB883389FD2A016F9E02756B048C49A@AS8PR04MB8833.eurprd04.prod.outlook.com>
+        d=1e100.net; s=20251104; t=1775710190; x=1776314990;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=+ImK8hvWI99jsMPE6842OWsdASSwcChHTL0PI+ouj+g=;
+        b=n3ZOx/jJulMUX9G9x3UVXUsdG1zxjzDdCjo2E1IkBrWucQQEmWrEY/cExNkp29o5d8
+         FtNHbEHpAyHSo/qgidAIaYSnJk+yByanlegMlO3dYHEen6jJ6TRW7YKObm64xnbwXB7x
+         saR5+oJ7pyYbaANXHQyqBXWKPup0ITTJkuCYL2r2nkL5gQhoK9N/UYffOy5SiXH2e6zn
+         JvUlEuXgnUnRJ5aHqb5zdPyjM/rFcG9bFqZhApjALxme1W//k1CAD+HOSESavSXTuSx1
+         E94k6pmXj3Shg8L6W/ufrrF7upWRKwk3oqGcr+0URLgD/KYExNNy7D2mYwXmpIDQqI3N
+         +M2A==
+X-Forwarded-Encrypted: i=1; AJvYcCWJbllKqI6CmWEMgk66bziX2dl0dD6vrEJFUmFmIDX9aH5AmKjbAvt09QFe6B9Q7rChJBJwC2oFR0YzqB4NEw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxsx/v7WWm1rGgyNuxTOD7+AIgeHzNQ0aH0UL7Fj3GhhuWIWJd7
+	Lc6/Igq96CW9jQci4IfJsYZWrESxooKe48/KVQwn0X9mIwsld7DUPcTu
+X-Gm-Gg: AeBDieuCruOM3VUTLHeRcLYey+qnyCrD2nb4UVzG0hA67sg8NaNZkprx4uf4EsRwHmQ
+	09UFKR5/WlCPrugqzwSxYe7lgs4tu3Hb/o/VLXkOuCpsH1PlklXyLQf3d6yGhGpMGdconSIQfgb
+	Ztv0FFagrzu2TtzN/uWL5RIj21MP+N6RLr+yTe3vPF9tJgy18FXlDvT46goZx3fv9+Gb2cvf1Kq
+	/jHL/FR+Pt+a82Te9cXlRhleRPZ5DkJdPFW+58LQoSD850R0vrvm+7roij06FEP2Gl5uR0AaNMQ
+	ELkxjTNABZ8DPpqtdvPmjXzx2U2S6r5U3vojQ+q43Y1EysdHdnss4Ehp3SYKmaVNYyW/UWgpi98
+	wMadIwqZ1P8iBx8BSG3y0NjvnBWPvuyxKNkPnRRq9TgawZOTp4/G8js1YR24Bh2MyEmY3jiZSCe
+	tSs9nV5MXi2PRBwe7g+bkV
+X-Received: by 2002:a17:90b:4d0b:b0:35b:9cd5:232e with SMTP id 98e67ed59e1d1-35de69b87d0mr21078585a91.29.1775710190421;
+        Wed, 08 Apr 2026 21:49:50 -0700 (PDT)
+Received: from rockpi-5b ([45.112.0.243])
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-c76c65812f4sm20395016a12.25.2026.04.08.21.49.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Apr 2026 21:49:49 -0700 (PDT)
+From: Anand Moon <linux.amoon@gmail.com>
+To: Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	linux-phy@lists.infradead.org (open list:GENERIC PHY FRAMEWORK),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Rockchip SoC support),
+	linux-rockchip@lists.infradead.org (open list:ARM/Rockchip SoC support),
+	linux-kernel@vger.kernel.org (open list)
+Cc: Anand Moon <linux.amoon@gmail.com>,
+	Niklas Cassel <cassel@kernel.org>
+Subject: [PATCH v1] phy: rockchip-snps-pcie3:phy: Configure clkreq_n and PowerDown for all lanes
+Date: Thu,  9 Apr 2026 10:19:30 +0530
+Message-ID: <20260409044939.7647-1-linux.amoon@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <AS8PR04MB883389FD2A016F9E02756B048C49A@AS8PR04MB8833.eurprd04.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_185839_846506_B2ED4C86 
-X-CRM114-Status: GOOD (  29.99  )
+X-CRM114-CacheID: sfid-20260408_214952_139574_ADC50D17 
+X-CRM114-Status: GOOD (  17.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,195 +102,107 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Richard and Mani,
+During the rk3588_p3phy_init sequence, the driver now explicitly
+configures each lane's CON0 register to ensure
+- PIPE 4.3 Compliance: clkreq_n (bit 6) is forced low (asserted) to meet
+  sideband signal requirements.
+- Active Power State: PowerDown[3:0] (bits 11:8) is set to P0
+  (Normal Operational State) to ensure the PHY is fully powered and ready
+  for link training.
 
-For the record, I've been using a form of an earlier version of this
-patchset in my environment for some time now, and I've run across
-problems that *might* relate to what Richard is reporting, but I'm not
-quite sure at the moment. Details below.
+These changes ensure that all lanes are consistently transitioned from
+reset into a known-good operational state, preventing undefined behavior
+and ensuring the PHY is ready for high-speed data transmission.
 
-On Wed, Mar 25, 2026 at 07:06:49AM +0000, Hongxing Zhu wrote:
-> Hi Mani:
-> I've accidentally encountered a new issue based on the reset root port patch-set.
-> After performing a few hot-reset operations, the PCIe link enters a continuous up/down cycling pattern.
-> 
-> I found that calling pci_reset_secondary_bus() first in pcibios_reset_secondary_bus() appears to resolve this issue.
-> Have you experienced a similar problem?
-> 
-> "
-> ...
-> [  141.897701] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [  142.086341] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [  142.092038] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000c00) link down detected
-> ...
-> "
-> 
-> Platform: i.MX95 EVK board plus local Root Ports reset supports based on the #1 and #2 patches of v7 patch-set.
-> Notes of the logs:
-> - One Gen3 NVME device is connected.
-> - "./memtool 4c341058=0;./memtool 4c341058=1;" is used to toggle the LTSSM_EN bit to trigger the link down.
-> - Toggle BIT6 of Bridge Control Register to trigger hot reset by "./memtool 4c30003c=004001ff; ./memtool 4c30003c=000001ff;"
-> - The Root Port reset patches works correctly at first.
-> However, after several hot-reset triggers, the link enters a repeated down/up cycling state.
-> 
-> Logs:
-> [    3.553188] imx6q-pcie 4c300000.pcie: host bridge /soc/pcie@4c300000 ranges:
-> [    3.560308] imx6q-pcie 4c300000.pcie:       IO 0x006ff00000..0x006fffffff -> 0x0000000000
-> [    3.568525] imx6q-pcie 4c300000.pcie:      MEM 0x0910000000..0x091fffffff -> 0x0010000000
-> [    3.577314] imx6q-pcie 4c300000.pcie: config reg[1] 0x60100000 == cpu 0x60100000
-> [    3.796029] imx6q-pcie 4c300000.pcie: iATU: unroll T, 128 ob, 128 ib, align 4K, limit 1024G
-> [    4.003746] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [    4.009553] imx6q-pcie 4c300000.pcie: PCI host bridge to bus 0000:00
-> root@imx95evk:~#
-> root@imx95evk:~#
-> root@imx95evk:~# ./memtool 4c341058=0;./memtool 4c341058=1; Writing 32-bit value 0x0 to address 0x4C341058
-> Writing 32-bit v
-> [   87.265348] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000d01) link down detected
-> alue 0x1 to adder
-> [   87.273106] imx6q-pcie 4c300000.pcie: Stop root bus and handle link down
-> ss 0x4C341058
-> [   87.281264] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> [   87.289245] pci 0000:01:00.0: AER: can't recover (no error_detected callback)
-> root@imx95evk:~# [   87.514216] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [   87.702968] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [   87.834983] pcieport 0000:00:00.0: Root Port has been reset
-> [   87.840714] pcieport 0000:00:00.0: AER: device recovery failed
-> [   87.846592] imx6q-pcie 4c300000.pcie: Rescan bus after link up is detected
-> [   87.855947] pcieport 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
+Cc: Niklas Cassel <cassel@kernel.org>
+Signed-off-by: Anand Moon <linux.amoon@gmail.com>
+---
+ .../phy/rockchip/phy-rockchip-snps-pcie3.c    | 28 +++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
 
-I've seen this same line ("bridge configuration invalid") before, and I
-believe that's because the saved state (pci_save_state(); more about
-this below) is invalid -- it contains 0 values in places where they
-should be non-zero. So when those values are restored
-(pci_restore_state()), we get confused.
+diff --git a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+index 4e8ffd173096..f46e13e79a0e 100644
+--- a/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
++++ b/drivers/phy/rockchip/phy-rockchip-snps-pcie3.c
+@@ -7,6 +7,7 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/delay.h>
++#include <linux/hw_bitfield.h>
+ #include <linux/io.h>
+ #include <linux/iopoll.h>
+ #include <linux/kernel.h>
+@@ -35,10 +36,14 @@
+ #define RK3588_PCIE3PHY_GRF_CMN_CON0		0x0
+ #define RK3588_PCIE3PHY_GRF_PHY0_STATUS1	0x904
+ #define RK3588_PCIE3PHY_GRF_PHY1_STATUS1	0xa04
++#define RK3588_PCIE3PHY_GRF_PHY0_LN0_CON0	0x1000
+ #define RK3588_PCIE3PHY_GRF_PHY0_LN0_CON1	0x1004
+ #define RK3588_PCIE3PHY_GRF_PHY0_LN1_CON1	0x1104
++#define RK3588_PCIE3PHY_GRF_PHY0_LN1_CON0	0x1100
++#define RK3588_PCIE3PHY_GRF_PHY1_LN0_CON0	0x2000
+ #define RK3588_PCIE3PHY_GRF_PHY1_LN0_CON1	0x2004
+ #define RK3588_PCIE3PHY_GRF_PHY1_LN1_CON1	0x2104
++#define RK3588_PCIE3PHY_GRF_PHY1_LN1_CON0	0x2100
+ #define RK3588_SRAM_INIT_DONE(reg)		(reg & BIT(0))
+ 
+ #define RK3588_BIFURCATION_LANE_0_1		BIT(0)
+@@ -49,6 +54,13 @@
+ #define RK3588_PCIE1LN_SEL_EN			(GENMASK(1, 0) << 16)
+ #define RK3588_PCIE30_PHY_MODE_EN		(GENMASK(2, 0) << 16)
+ 
++static const u32 rk3588_lane_con0[] = {
++	RK3588_PCIE3PHY_GRF_PHY0_LN0_CON0,
++	RK3588_PCIE3PHY_GRF_PHY0_LN1_CON0,
++	RK3588_PCIE3PHY_GRF_PHY1_LN0_CON0,
++	RK3588_PCIE3PHY_GRF_PHY1_LN1_CON0,
++};
++
+ struct rockchip_p3phy_ops;
+ 
+ struct rockchip_p3phy_priv {
+@@ -142,7 +154,7 @@ static int rockchip_p3phy_rk3588_init(struct rockchip_p3phy_priv *priv)
+ {
+ 	u32 reg = 0;
+ 	u8 mode = RK3588_LANE_AGGREGATION; /* default */
+-	int ret;
++	int ret, i;
+ 
+ 	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_PHY0_LN0_CON1,
+ 		     priv->rx_cmn_refclk_mode[0] ? RK3588_RX_CMN_REFCLK_MODE_EN :
+@@ -161,7 +173,7 @@ static int rockchip_p3phy_rk3588_init(struct rockchip_p3phy_priv *priv)
+ 	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_CMN_CON0, BIT(8) | BIT(24));
+ 
+ 	/* Set bifurcation if needed */
+-	for (int i = 0; i < priv->num_lanes; i++) {
++	for (i = 0; i < priv->num_lanes; i++) {
+ 		if (priv->lanes[i] > 1)
+ 			mode &= ~RK3588_LANE_AGGREGATION;
+ 		if (priv->lanes[i] == 3)
+@@ -174,6 +186,18 @@ static int rockchip_p3phy_rk3588_init(struct rockchip_p3phy_priv *priv)
+ 	regmap_write(priv->phy_grf, RK3588_PCIE3PHY_GRF_CMN_CON0,
+ 		     RK3588_PCIE30_PHY_MODE_EN | reg);
+ 
++	for (i = 0; i < priv->num_lanes && i < ARRAY_SIZE(rk3588_lane_con0); i++) {
++		u32 base = rk3588_lane_con0[i];
++
++		/* clkreq_n = 0 (asserted low for PIPE 4.3) */
++		regmap_write(priv->phy_grf, base,
++			     FIELD_PREP_WM16(BIT(6), 0));
++
++		/* PowerDown = P0 (0x0, fully active) */
++		regmap_write(priv->phy_grf, base,
++			     FIELD_PREP_WM16(GENMASK(11, 8), 0x0));
++	}
++
+ 	/* Set pcie1ln_sel in PHP_GRF_PCIESEL_CON */
+ 	if (!IS_ERR(priv->pipe_grf)) {
+ 		reg = mode & (RK3588_BIFURCATION_LANE_0_1 | RK3588_BIFURCATION_LANE_2_3);
 
-I believe we've pinned down one reason this invalid state occurs -- it's
-because of an automatic (mis)feature in the DesignWare PCIe hardware.
-Specifically, it's because of what the controller does during a surprise
-link-down error.
+base-commit: 7f87a5ea75f011d2c9bc8ac0167e5e2d1adb1594
+-- 
+2.50.1
 
-From the Designware docs:
-
-  "[...] during normal operation, the link might fail and go down. After
-  this link-down event, the controller requests the DWC_pcie_clkrst.v
-  module to hot-reset the controller. There is no difference in the
-  handling of a link-down reset or a hot reset; the controller asserts
-  the link_req_rst_not output requesting the DWC_pcie_clkrst.v module to
-  reset the controller."
-
-In some of the adjacent documentation (and confirmed in local testing),
-it suggests that this automatic reset will also reset various DBI (i.e.,
-PCIe config space) registers. It also seems as if there's not really a
-good way to completely stop this automatic reset -- the docs mention
-some SW methods prevent the reset, but they all seem racy or incomplete.
-
-Anyway, I think this implies that patch 1 is somewhat wrong [1]. It
-includes some code like this:
-
-		pci_save_state(dev);
-		ret = host->reset_root_port(host, dev);
-		if (ret)
-			pci_err(dev, "Failed to reset Root Port: %d\n", ret);
-		else
-			/* Now restore it on success */
-			pci_restore_state(dev);
-
-That first line (pci_save_state()) is prone to saving invalid state,
-depending on whether the link-down event has finished flushing and
-resetting the controller yet or not. The resulting impact is a bit hard
-to judge, depending on what (mis)configuration you end up with.
-
-I also noticed commit a2f1e22390ac ("PCI/ERR: Ensure error
-recoverability at all times") was merged recently. With that change, I
-believe it is now safe to perform pci_restore_state() even without
-pci_save_state() here.
-
-So ... can we remove pci_save_state() from
-pcibios_reset_secondary_bus()? Might that help? It sounds like my above
-observations *may* match Richard's reports, but I'm not sure. And
-anyway, the documented hardware behavior is racy, so it's hard to
-propose a foolproof solution.
-
-Brian
-
-[1] At least, for DesignWare controllers.
-
-> [   87.864423] pci_bus 0000:01: busn_res: [bus 01-ff] end is updated to 01
-> 
-> root@imx95evk:~#
-> root@imx95evk:~# cat /proc/interrupts | grep lnk;
-> 273:          2          0          0          0          0          0    GICv3 342 Level     PCIe PME, lnk_notify
-> root@imx95evk:~#
-> root@imx95evk:~#
-> root@imx95evk:~# ./memtool 4c30003c=004001ff; ./memtool 4c30003c=000001ff; Writing 32-bit va
-> [  107.028086] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000d00) link down detected lue 0x4001FF to a
-> [  107.037018] imx6q-pcie 4c300000.pcie: Stop root bus and handle link down ddress 0x4C30003C
-> [  107.045137] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> 
-> Writing 32-bit
-> [  107.053332] pci 0000:01:00.0: AER: can't recover (no error_detected callback)  value 0x1FF to address 0x4C30003C root@imx95evk:~#
-> [  107.282146] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [  107.470801] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [  107.602823] pcieport 0000:00:00.0: Root Port has been reset
-> [  107.608601] pcieport 0000:00:00.0: AER: device recovery failed
-> [  107.614497] imx6q-pcie 4c300000.pcie: Rescan bus after link up is detected
-> [  107.623805] pcieport 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-> [  107.632281] pci_bus 0000:01: busn_res: [bus 01] end is updated to 01
-> 
-> root@imx95evk:~#
-> root@imx95evk:~# cat /proc/interrupts | grep lnk;
-> 273:          4          0          0          0          0          0    GICv3 342 Level     PCIe PME, lnk_notify
-> root@imx95evk:~#
-> root@imx95evk:~# ./memtool 4c30003c=004001ff; ./memtool 4c30003c=000001ff; Writing 32-bit va
-> [  133.424041] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000d00) link down detected lue 0x4001FF to a
-> [  133.432954] imx6q-pcie 4c300000.pcie: Stop root bus and handle link down ddress 0x4C30003C
-> [  133.441106] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> 
-> Writing 32-bit
-> [  133.449309] pci 0000:01:00.0: AER: can't recover (no error_detected callback)  value 0x1FF to address 0x4C30003C root@imx95evk:~#
-> [  133.677824] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [  133.870414] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [  134.002534] pcieport 0000:00:00.0: Root Port has been reset
-> [  134.008307] pcieport 0000:00:00.0: AER: device recovery failed
-> [  134.014193] imx6q-pcie 4c300000.pcie: Rescan bus after link up is detected
-> [  134.023418] pcieport 0000:00:00.0: bridge configuration invalid ([bus 00-00]), reconfiguring
-> [  134.031881] pci_bus 0000:01: busn_res: [bus 01] end is updated to 01
-> 
-> root@imx95evk:~# ./memtool 4c30003c=004001ff; ./memtool 4c30003c=000001ff; Writing 32-bit va
-> [  140.149713] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000d00) link down detected lue 0x4001FF to a
-> [  140.158614] imx6q-pcie 4c300000.pcie: Stop root bus and handle link down ddress 0x4C30003C
-> [  140.166779] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> [  140.174981] pci 0000:01:00.0: AER: can't recover (no error_detected callback) Writing 32-bit value 0x1FF to address 0x4C30003C root@imx95evk:~#
-> [  140.401605] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [  140.590491] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [  140.596206] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000c00) link down detected
-> 
-> root@imx95evk:~#
-> [  141.630311] pcieport 0000:00:00.0: Data Link Layer Link Active not set in 100 msec
-> [  141.637950] pcieport 0000:00:00.0: Failed to reset Root Port: -25
-> [  141.644095] pcieport 0000:00:00.0: AER: subordinate device reset failed
-> [  141.650883] pcieport 0000:00:00.0: AER: device recovery failed
-> [  141.656784] imx6q-pcie 4c300000.pcie: Stop root bus and handle link down
-> [  141.663520] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> [  141.670271] pci 0000:01:00.0: AER: can't recover (no error_detected callback)
-> [  141.897701] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [  142.086341] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [  142.092038] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000c00) link down detected
-> [  143.126273] pcieport 0000:00:00.0: Data Link Layer Link Active not set in 100 msec
-> [  143.133919] pcieport 0000:00:00.0: Failed to reset Root Port: -25
-> [  143.140052] pcieport 0000:00:00.0: AER: subordinate device reset failed
-> [  143.146747] pcieport 0000:00:00.0: AER: device recovery failed
-> [  143.152604] imx6q-pcie 4c300000.pcie: Stop root bus and handle link down
-> [  143.159314] pcieport 0000:00:00.0: Recovering Root Port due to Link Down
-> [  143.166022] pci 0000:01:00.0: AER: can't recover (no error_detected callback)
-> [  143.389723] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000700) link up detected
-> [  143.582294] imx6q-pcie 4c300000.pcie: PCIe Gen.3 x1 link up
-> [  143.587996] imx6q-pcie 4c300000.pcie: PCIe(LNK_STS:0x00000c00) link down detected
-> 
-> 
-> Thanks.
-> Best Regards
-> Richard Zhu
 
 _______________________________________________
 Linux-rockchip mailing list
