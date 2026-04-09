@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3464E98FDE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F34C4E98FDF
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 06:53:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=K0Lr6WBK8caujtQqCneeqOJ9yS3sOzO2xDnYXWvi3Nw=; b=4uBI+MmOKryZXz
-	Mmi8ZeZz3BY8BC1bi7un/3/kZZdNusKX5qglC03RLGMItSP6cUaeoPvRks7+1d0PfdJh6cUl6qYmE
-	cQe1yh79Ob6oF1r5QjmR/QFPrnuU61FimhbuqIVNqmGzxSPy8CJjenlmtEzbYvx5CdXLKg0HFPkIT
-	wyhlfEY8TxVhCZo5wqLZ5eb5FCfVgkc1xF89D4fbm1BNvq3hZJRnkHF0fZy6TvHPfxpozh0xIp12l
-	frDLnCzUqz7Xbv++X+esMz10sUo80zB8pL6zWJfbnH19Ozk6m3OtuYsoz7O57QouRrbIA5ZMTt9Ra
-	gIvejm7fB0cY4H6sLtSA==;
+	List-Owner; bh=efmvXE7lWPEzq4FkSphQ8SRYSEHxNXanf2MHjo/Gnyk=; b=4QG6iShrPyISl6
+	sfwG9GsKBfmCt4gimdva5MCqyO161fliykCPDM0Hubx3vUGIEZZGTRW2OZPlnus38s60THcttJxTH
+	v7FQxUgROc7NMJ1YL5d/X9ugxBoFCRGzoAhAVWCw19e2/ePZJ2tBSPIbk/soPckJ9zoGJPICbaASa
+	qkK392S1vf0jPOdfdNfa3l3QxxfPiAslkMNCcUtkM0VyReyo62tXeuo5h7ccE7W9BGFfs0IJUEQ51
+	x/YDR7EaTJFArxlB3ma/UN3GFcDv8Cr4f1NKMDlQox06FzAwICUzAFJLW/uJf0rxpN2vHPiMSDhSe
+	+hSxpd+yKsXHmCpjYdQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAjGp-00000009nWp-0kHW;
-	Thu, 09 Apr 2026 06:53:43 +0000
-Received: from mail-m19731118.qiye.163.com ([220.197.31.118])
+	id 1wAjGl-00000009nQn-2pv6;
+	Thu, 09 Apr 2026 06:53:39 +0000
+Received: from mail-m49218.qiye.163.com ([45.254.49.218])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAjGi-00000009nKZ-3DGS;
-	Thu, 09 Apr 2026 06:53:38 +0000
+	id 1wAjGd-00000009nGe-0vwx;
+	Thu, 09 Apr 2026 06:53:36 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3a11ab330;
-	Thu, 9 Apr 2026 14:53:32 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3a11ab2fe;
+	Thu, 9 Apr 2026 14:53:26 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
@@ -69,26 +69,26 @@ Cc: Laurent.pinchart@ideasonboard.com,
 	linux-samsung-soc@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Damon Ding <damon.ding@rock-chips.com>
-Subject: [PATCH v13 09/17] drm/bridge: analogix_dp: Remove unused struct drm_connector* for &analogix_dp_plat_data.attach()
-Date: Thu,  9 Apr 2026 14:52:53 +0800
-Message-Id: <20260409065301.446670-10-damon.ding@rock-chips.com>
+Subject: [PATCH v13 07/17] drm/bridge: analogix_dp: Move the color format check to .atomic_check() for Rockchip platforms
+Date: Thu,  9 Apr 2026 14:52:51 +0800
+Message-Id: <20260409065301.446670-8-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260409065301.446670-1-damon.ding@rock-chips.com>
 References: <20260409065301.446670-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9d710479ff03a3kunmc1f4d654403a1e
+X-HM-Tid: 0a9d7104642803a3kunmc1f4d6544039b1
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQh5CSFYeSB1LQhgdGhgdQ0NWFRQJFh
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZQ0keGVZDHR1MSU4fQk0ZTk1WFRQJFh
 	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSEpKQk
 	1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=BH637uROx3Uz1jzLoLjI0WnGQs4+udACqqHixEXVkAzYK+0IC2zFbSOPSjvrTYO4N1mO2v2tsxxr1hSk8gIB3E07IN64BN9kBBBWZ3WNiQcE/l3TLt9HCw9Aeg0gu8UnmCU+ppnru6QoNW07errorDAeL9FDnqXf+fP29z1miWM=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=efAzOdGpxugXCm0pOz7tZTfN60xV7vKk8UmjiJijrB0=;
+	b=fG4eTU8Y6gI8LZufE0OZUpJIJpMGf/uQaTzMANpdDZjmOsHC/QpOPchiiG4c+V94RO933YOflxdwUDhNy9QQZh6MAlGm0G1rO2MHmgCzbcXyQENFAeOp/ErPjX0ggpSL3FD0PXphnT+gIlL+P9dsSqtd7ewEstpWSDhOrKtGnK4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=5efsGfB2pxv5Psr5CbfD9hyEEEYI7WSMCyRa9CxLDTc=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260408_235336_962931_0E26180A 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20260408_235331_597551_BAD4AB4F 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,65 +105,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-For both Rockchip and Exynos sides, the struct drm_connector* is
-never used in callback &analogix_dp_plat_data.attach(). After
-applying drm_bridge_connector helper, this parameter will no longer
-be used at all.
+For Rockchip platforms, the YUV color formats are currently unsupported.
+This compatibility check was previously implemented in
+&analogix_dp_plat_data.get_modes().
+
+Moving color format check to &drm_connector_helper_funcs.atomic_check()
+would get rid of &analogix_dp_plat_data.get_modes() and be more
+reasonable than before.
 
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Tested-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Tested-by: Heiko Stuebner <heiko@sntech.de> # rk3588
 
 ---
 
-Changes in v11:
-- Add Reviewed-by tag.
+Changes in v9:
+- Add Tested-by tag.
+
+Changes in v13:
+- Rebase after commit 01962a191242 ("drm/rockchip: analogix: Convert to
+  drm_output_color_format")
+- Modify '(on rk3588)' to '# rk3588' for Tested-by tag.
 ---
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 2 +-
- drivers/gpu/drm/exynos/exynos_dp.c                 | 3 +--
- include/drm/bridge/analogix_dp.h                   | 3 +--
- 3 files changed, 3 insertions(+), 5 deletions(-)
+ .../gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++++
+ .../gpu/drm/rockchip/analogix_dp-rockchip.c    | 18 ------------------
+ 2 files changed, 11 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 09b8b5e4fa23..840c1963e60e 100644
+index 88fb863fed78..c05cf100f17e 100644
 --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
 +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -991,7 +991,7 @@ static int analogix_dp_bridge_attach(struct drm_bridge *bridge,
- 	 * point after plat attached.
- 	 */
- 	if (dp->plat_data->attach) {
--		ret = dp->plat_data->attach(dp->plat_data, bridge, connector);
-+		ret = dp->plat_data->attach(dp->plat_data, bridge);
- 		if (ret) {
- 			DRM_ERROR("Failed at platform attach func\n");
- 			return ret;
-diff --git a/drivers/gpu/drm/exynos/exynos_dp.c b/drivers/gpu/drm/exynos/exynos_dp.c
-index 1eeb0b15f99a..71a00ee97782 100644
---- a/drivers/gpu/drm/exynos/exynos_dp.c
-+++ b/drivers/gpu/drm/exynos/exynos_dp.c
-@@ -70,8 +70,7 @@ static int exynos_dp_poweroff(struct analogix_dp_plat_data *plat_data)
+@@ -894,8 +894,19 @@ static int analogix_dp_atomic_check(struct drm_connector *connector,
+ 				    struct drm_atomic_state *state)
+ {
+ 	struct analogix_dp_device *dp = to_dp(connector);
++	struct drm_display_info *di = &connector->display_info;
+ 	struct drm_connector_state *conn_state;
+ 	struct drm_crtc_state *crtc_state;
++	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
++
++	if (is_rockchip(dp->plat_data->dev_type)) {
++		if ((di->color_formats & mask)) {
++			DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
++			di->color_formats &= ~mask;
++			di->color_formats |= BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444);
++			di->bpc = 8;
++		}
++	}
+ 
+ 	conn_state = drm_atomic_get_new_connector_state(state, connector);
+ 	if (WARN_ON(!conn_state))
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 387fb6259edd..48206a7b767f 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -166,23 +166,6 @@ static int rockchip_dp_powerdown(struct analogix_dp_plat_data *plat_data)
+ 	return 0;
  }
  
- static int exynos_dp_bridge_attach(struct analogix_dp_plat_data *plat_data,
--				   struct drm_bridge *bridge,
--				   struct drm_connector *connector)
-+				   struct drm_bridge *bridge)
- {
- 	struct exynos_dp_device *dp = to_dp(plat_data);
- 	enum drm_bridge_attach_flags flags = 0;
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 3301392eda5f..3428ffff24c5 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -33,8 +33,7 @@ struct analogix_dp_plat_data {
+-static int rockchip_dp_get_modes(struct analogix_dp_plat_data *plat_data,
+-				 struct drm_connector *connector)
+-{
+-	struct drm_display_info *di = &connector->display_info;
+-	/* VOP couldn't output YUV video format for eDP rightly */
+-	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
+-
+-	if ((di->color_formats & mask)) {
+-		DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
+-		di->color_formats &= ~mask;
+-		di->color_formats |= BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444);
+-		di->bpc = 8;
+-	}
+-
+-	return 0;
+-}
+-
+ static bool
+ rockchip_dp_drm_encoder_mode_fixup(struct drm_encoder *encoder,
+ 				   const struct drm_display_mode *mode,
+@@ -483,7 +466,6 @@ static int rockchip_dp_probe(struct platform_device *pdev)
+ 	dp->plat_data.dev_type = dp->data->chip_type;
+ 	dp->plat_data.power_on = rockchip_dp_poweron;
+ 	dp->plat_data.power_off = rockchip_dp_powerdown;
+-	dp->plat_data.get_modes = rockchip_dp_get_modes;
  
- 	int (*power_on)(struct analogix_dp_plat_data *);
- 	int (*power_off)(struct analogix_dp_plat_data *);
--	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *,
--		      struct drm_connector *);
-+	int (*attach)(struct analogix_dp_plat_data *, struct drm_bridge *);
- };
- 
- int analogix_dp_resume(struct analogix_dp_device *dp);
+ 	ret = rockchip_dp_of_probe(dp);
+ 	if (ret < 0)
 -- 
 2.34.1
 
