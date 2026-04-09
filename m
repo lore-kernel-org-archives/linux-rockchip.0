@@ -4,107 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBA02EA3C4E
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 13:31:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 269D1EA3C5E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 13:51:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VvVAAIuNs2ivWgDVqT8zuVuw6CC5xgVDcL08oUarryw=; b=tBIQ+HE7W2flEU
-	aAHOTPJsij3t8XdHhOPjF44t//ObJ3s5X0wjQ/q5bcm1L1p5QtH7GjCt7pjiGa8iK21m2jnnwWZLd
-	NziR2tBLljyM2vr7LLSCwzGTRF0mXEenXP40hn5GmOa+qguZfVOyTZXh1QMvIims4FfV+4QWBUieQ
-	la3yFuEFwlhqUb3gNzmNcFSIQfWogdefUfzeExHaI4O/G8PB5PlDt0QmvJRQqwTuqNH3UaGUpjev/
-	YAW+owY6dHpWFGT207HxdyoSL67DtIidgoisCIKE+Tx3LKsUd4/dMrNyI9QN/plAm36HFw70zWxVe
-	o/bbeBmmsCylhKSLTOYA==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=iazk/al3AP4txgF23MYHT/i+mb/EQFSqmEJ2ZZQbXD0=; b=4p4T8sdlY0I7mC
+	Yy7Ejh13hBjvs7mTCDZSkaoZszTcVgBTdhC5V2wTU3YdOL3UHQQZS2Ho7o6Nk/E02/A5nHSEEwUk+
+	WxsbyYNtzeap1MTXK9uF25DMeBn4WuD3zHdfvOBZYnAcb/s/hG2iu8u22qO/pxuvoziKUiWOWg5Mh
+	j2L3Gw/c3MTAR5y+9wcUGMatZaPG2qw9eQExibx6ladFrUGQviaz7LhNEgaRZX9kDNrjAgdgEunzc
+	Q46xyWvxVVG0J7dCi5rtf2lMikfwZDd+UIAaClXzt9EChiCc97EUW6HvWouH43fGUerd1EOm3vSaF
+	ykPiCEucLc905B5dtMvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wApTL-0000000AWDe-3DBd;
-	Thu, 09 Apr 2026 13:31:03 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1wApnG-0000000AZys-2YzD;
+	Thu, 09 Apr 2026 13:51:38 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wApTA-0000000AW8z-07Kv
-	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Apr 2026 13:31:03 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-b980b35534eso130356066b.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 09 Apr 2026 06:30:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1775741450; cv=none;
-        d=google.com; s=arc-20240605;
-        b=Rqwx+08poOINrjGQXtYdE6Hqc+MCIQZM/Irs2cCwB8WiewOjs6gJ9MHipU5L+I8o1T
-         pZVDO28MR1EyKagvthLxKWB4UG/qGtj7oO8lrmHCJa5qBFyY+NaU+gK0Bxf+ua+3OvQx
-         5mZgvBhde/AqeW3VABPO5191z/hkjBn04TuSesX/+MJI4//EE5A0hpk/vPw1Ng/EAdp3
-         wyigNKJAtRtrNEdrkCPMYzP2RVrDauitGHqMU7LrF7h6mfXzSQLye1M4NyjcjAQbG+3o
-         DD0xvrlt9ZM2IBnK69L5Yur3O29/DCy3yj2XuglG0rWqZTS7eYyC4OGJDCGFGtS1U6wQ
-         2xfw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Ev3RMMGjO06UYL38WMnmpo1Zv5dlNGgwSiRluf+t5pw=;
-        fh=EapZBB5SKRUzXJWJtqGhU0kMSN/Rm1t+TgOqhcLahV4=;
-        b=FmNzeoaY79AZgA1dBxmforNcyWrMn1Ldy/x+5n7a/lo7fZOKT3B38MKgoa9ec2/fD2
-         HJIXs7xkxwSkOsOYKpKKAOr223M8uHxsYHQxcjaDBA0lBtOcA6D/sWd+vUGJ4B6rK3xb
-         D0vMd2njt1HguPSZoufp6dS1k57jlYYV7RjmmnRsiggJv4Kvrq5C+lCoJuUgGHhEYaBF
-         EACh8ioyO2Sn/YJlQYky+ysNd5W9TdKyHt89FguZ0KPfOceXHmoffke7xP0My2AAmzN3
-         dZBPqloNEAhTlz2dDDDXdKhj+5ZYYFQ5DtdlJnkpZ8EwAm3kIIVAicEZZO1Ew+VZGKEV
-         r/ig==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1775741450; x=1776346250; darn=lists.infradead.org;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=Ev3RMMGjO06UYL38WMnmpo1Zv5dlNGgwSiRluf+t5pw=;
-        b=HngNAlVRDIwXviVP/WR297oaMgEJX5S6i5A4z188dqPE8gg0CezGazne9mLkZJknc+
-         h7ZXF8GANdgq60mYf+WmLRRTaktUYH1C1KwgCgKc7bhC1cWQkN85zOn5rUl67jqMzWfR
-         9bQ1P5CpSE9wBsYj3/a0txgt9I/ZWNxJ9PIEh5BWHIRDvVRtTBkAJGsflYhKQE/yh9R2
-         UGTJmmyi8X3dBkOXmeKfdozE7+dh69ny5Z2W42t9AHxF9QuhFVlEUeGWrBIyB2ch2oEk
-         IxJYwl+cTr06hqS94yjTNgbigylzzbtNp6GNZtYM05G8Ki2/ON+4LPnMrCcooBM/2png
-         snuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1775741450; x=1776346250;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=Ev3RMMGjO06UYL38WMnmpo1Zv5dlNGgwSiRluf+t5pw=;
-        b=EDd6f+KIgBbf32EJmQgIELX0diS5hEe2+F+nYJljFlVIVYj+GbAVlcK9239xRw4a6s
-         sknvgJDASgy0e4f9IFd9epczRdnzUU1ZPVce2InXdecbiBUfsUNUX2B2WOaQQT+gNdYV
-         NZUNXTOjJI/Qp9iD9mSBIB4jxjSUJfPUhq4lDDyJwBbxQmuKTHkLdFXmyTf4B4ugFdqh
-         Ls4I/F/oR6iaNF0vozHKr8HBHYtcC/8BfJnXAVqXzMsTEKKRIoCAkmFnq634e8dz/XX0
-         yb3zEK8sSN62WGbSAM0er4drtGo8xxEpBoW1bsvCNxDxkO2BCCSN5DG5OMpAKo5o8OVj
-         Jduw==
-X-Forwarded-Encrypted: i=1; AJvYcCUvzeBY6xJYZO507FUKvIQFlytC6IAGDO5u0GzYMLXunBARIFs4hXwj4ZBy0D20OH2TNOhtSAH6OSQphd98KQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxX2Q1sXbaoOJRYhC2zOxZveI7ZuxyYxjwb2PFntIf+it3EEWZE
-	rBmspQaup7Z2BwFcfuTbPEDf6kXSV4LQXVh64/K2zc/vr5grsS/cNGzKm7g3FfAvFcJH2ok9bXo
-	FmdxwduujiNpxqJYnySddmtgaxqGm6kK4KckJ
-X-Gm-Gg: AeBDietwXVi3swjZpZPFy6MMWHYZWeNTjAjfNMbz0RRjSTgyi3Hd6gI8TeQucOt4voW
-	02LwoAAhUrMk4wy67tC0DzYx2mCc3NHiUA+CgY70Lbty8atuvL1buZouVR7ZBsilJkZ9PKxUjcZ
-	KOaCpUtZWvHcdlxpLtbtdpH+BXR09Xn709FBQH/XOE1Sypx+Wajl4DqoNb3dwadKexsXmqW+4Mt
-	lfPq3cr8HRl+Xz4jXEnRpwgSfH2jOjUuGXXd0EMuJtf0VbSCLRNe2Cy2qHH/nFQkeZ2awaV9sio
-	YHdu2Q==
-X-Received: by 2002:a17:907:9727:b0:b98:42de:3700 with SMTP id
- a640c23a62f3a-b9d46227f6fmr183342266b.17.1775741449801; Thu, 09 Apr 2026
- 06:30:49 -0700 (PDT)
+	id 1wApnB-0000000AZx8-16bz;
+	Thu, 09 Apr 2026 13:51:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1775742688;
+	bh=zb8Kdcld56GkDD3eedBbJU1WAMrgjQXCYOIVVPIDCuE=;
+	h=From:Subject:Date:To:Cc:From;
+	b=i54P+b5JUflbk2iAP5O3PJHSnKjPJHg0+jrZX+sOPe8KoX9ChZlc8aZPy/TMgV8R0
+	 Zhiv0TZpgVEx7/JYko257JDLmncVuXkQaPw7R7CEgTE6sUS14SFqSd6RFMl0Ud5F8y
+	 QEeLDC36E2QOvH8JY8aMPIZhSRSXRmt0s/s1ZQ+Jl+Q9iWH+JVT/FNm3Hnsiz0owCv
+	 +fuititxsucYcIDa0U2jFWQ4A+XYyzYrCI9mR0gM4PHLMedgYWTh+O2dnKFfdcW3/F
+	 QfQmj7OSSdn5N30KlYVuCmdFpVrK3rAVJJIbInfibb6Faw1L+AlelbEF+a63svX2NH
+	 GWyFnWPEawcHw==
+Received: from [192.168.0.15] (unknown [100.64.0.170])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: detlev)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 47E1517E0CA9;
+	Thu,  9 Apr 2026 15:51:27 +0200 (CEST)
+From: Detlev Casanova <detlev.casanova@collabora.com>
+Subject: [PATCH 0/7] media: rkvdec: Enable multi-core support
+Date: Thu, 09 Apr 2026 09:50:35 -0400
+Message-Id: <20260409-rkvdec-multicore-v1-0-62b316abf0f7@collabora.com>
 MIME-Version: 1.0
-References: <20260409044939.7647-1-linux.amoon@gmail.com> <add2QFfHd5Jv9XU7@fedora>
-In-Reply-To: <add2QFfHd5Jv9XU7@fedora>
-From: Anand Moon <linux.amoon@gmail.com>
-Date: Thu, 9 Apr 2026 19:00:32 +0530
-X-Gm-Features: AQROBzDhqGfLcjBjGT2Hvs3ZMinMrOpBMtp_gMJbNkkfMBequ6wtYDsgQQOO3PI
-Message-ID: <CANAwSgRqEJ5sqjY4bAj=PiK8wA_LOYDu1OOPLWsL8u_4Afu+rg@mail.gmail.com>
-Subject: Re: [PATCH v1] phy: rockchip-snps-pcie3:phy: Configure clkreq_n and
- PowerDown for all lanes
-To: Niklas Cassel <cassel@kernel.org>
-Cc: Shawn Lin <shawn.lin@rock-chips.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>, 
-	"open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>, 
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>, 
-	open list <linux-kernel@vger.kernel.org>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMSQ6DMAxA0asgrxspCVPoVSoWkBhwy1A5gJAQd
+ yfA8i3+38EjE3p4RzswruRpGgPUKwLbVWOLglwwaKkzmUgj+Lc6tGJY+pnsxCgKY2LlqlTJXEP
+ I/owNbffyUz72S/1FO18fOI4TEu/+mnQAAAA=
+X-Change-ID: 20260408-rkvdec-multicore-98831da51072
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
+ Hans Verkuil <hverkuil+cisco@kernel.org>, Jonas Karlman <jonas@kwiboo.se>
+Cc: kernel@collabora.com, linux-media@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Detlev Casanova <detlev.casanova@collabora.com>
+X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_063052_410743_45353EB3 
-X-CRM114-Status: GOOD (  15.83  )
+X-CRM114-CacheID: sfid-20260409_065133_559768_756D9CF5 
+X-CRM114-Status: GOOD (  17.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,41 +76,78 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmlrbGFzLAoKVGhhbmtzIGZvciB5b3VyIHJldmlldyBjb21tZW50cy4KCk9uIFRodSwgOSBB
-cHIgMjAyNiBhdCAxNToxOSwgTmlrbGFzIENhc3NlbCA8Y2Fzc2VsQGtlcm5lbC5vcmc+IHdyb3Rl
-Ogo+Cj4gK1NoYXduCj4KPiBIZWxsbyBBbmFuZCwKPgo+IE9uIFRodSwgQXByIDA5LCAyMDI2IGF0
-IDEwOjE5OjMwQU0gKzA1MzAsIEFuYW5kIE1vb24gd3JvdGU6Cj4gPiBEdXJpbmcgdGhlIHJrMzU4
-OF9wM3BoeV9pbml0IHNlcXVlbmNlLCB0aGUgZHJpdmVyIG5vdyBleHBsaWNpdGx5Cj4KPiBQbGVh
-c2UgdXNlIGltcGVyYXRpdmUgbW9vZCwgYWN0aXZlIHZvaWNlLgo+Cj4KPiA+IGNvbmZpZ3VyZXMg
-ZWFjaCBsYW5lJ3MgQ09OMCByZWdpc3RlciB0byBlbnN1cmUKPiA+IC0gUElQRSA0LjMgQ29tcGxp
-YW5jZTogY2xrcmVxX24gKGJpdCA2KSBpcyBmb3JjZWQgbG93IChhc3NlcnRlZCkgdG8gbWVldAo+
-ID4gICBzaWRlYmFuZCBzaWduYWwgcmVxdWlyZW1lbnRzLgo+ID4gLSBBY3RpdmUgUG93ZXIgU3Rh
-dGU6IFBvd2VyRG93blszOjBdIChiaXRzIDExOjgpIGlzIHNldCB0byBQMAo+ID4gICAoTm9ybWFs
-IE9wZXJhdGlvbmFsIFN0YXRlKSB0byBlbnN1cmUgdGhlIFBIWSBpcyBmdWxseSBwb3dlcmVkIGFu
-ZCByZWFkeQo+ID4gICBmb3IgbGluayB0cmFpbmluZy4KPiA+Cj4gPiBUaGVzZSBjaGFuZ2VzIGVu
-c3VyZSB0aGF0IGFsbCBsYW5lcyBhcmUgY29uc2lzdGVudGx5IHRyYW5zaXRpb25lZCBmcm9tCj4g
-PiByZXNldCBpbnRvIGEga25vd24tZ29vZCBvcGVyYXRpb25hbCBzdGF0ZSwgcHJldmVudGluZyB1
-bmRlZmluZWQgYmVoYXZpb3IKPiA+IGFuZCBlbnN1cmluZyB0aGUgUEhZIGlzIHJlYWR5IGZvciBo
-aWdoLXNwZWVkIGRhdGEgdHJhbnNtaXNzaW9uLgo+Ck9rLCBJIHdpbGwgdXBkYXRlIHRoaXMuSSBm
-Cj4gRmlyc3QgZGVzY3JpYmUgdGhlIHByb2JsZW0sIHRoZW4gZGVzY3JpYmUgaG93IHlvdSBmaXgg
-aXQuCkkgd2FzIGludmVzdGlnYXRpbmcgdGhlIFBDSUUzMFg0X0NMS1JFUW4gaXNzdWUgaGlnaGxp
-Z2h0ZWQgYnkgU2hhd24gTGluLAphbmFseXppbmcgdGhlIFJLMzU4OCBUUk0gY2xvY2sgcmVxdWVz
-dCBjb25maWd1cmF0aW9ucyAocGFnZSA4NzgpCgpbMV0gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcv
-YWxsLzc3ZjBkM2MyLTY0OWYtNzcwZC0xNjM2LTZmZDUyZjNiNWY1ZUByb2NrLWNoaXBzLmNvbS8K
-Ckxvb2tpbmcgaW50byB0aGUgcG93ZXIgbWFuYWdlbWVudCBzdGF0ZSBvbiBJbnRlbOKAmXMgUENJ
-IEV4cHJlc3MgUG93ZXIgTWFuYWdlbWVudApkb2N1bWVudGF0aW9uLCB3aGljaCBkZWZpbmVzIHN0
-YXRlcyBzdWNoIGFzIFAwLCBQMHMsIFAxLCBQMS4xLCBQMS4yLCBhbmQgUDIKVW5kZXJzdGFuZGlu
-ZyB0aGlzIG1hcHBpbmcgaXMgZm9yIGludGVycHJldGluZyB0aGUgYmVoYXZpb3Igb2YgbGFuZS1z
-cGVjaWZpYwpjbG9jayByZXF1ZXN0cywgc28gaW5pdGlhbGl6ZSB0aGlzIHRvIHRoZSBQMCBzdGF0
-ZS4uCgpbMl0gaHR0cHM6Ly93d3cuaW50ZWwuY29tL2NvbnRlbnQvZGFtL3d3dy9wdWJsaWMvdXMv
-ZW4vZG9jdW1lbnRzL3doaXRlLXBhcGVycy9waHktaW50ZXJmYWNlLXBjaS1leHByZXNzLXNhdGEt
-dXNiMzAtYXJjaGl0ZWN0dXJlcy0zLjEucGRmCj4KPgo+IEtpbmQgcmVnYXJkcywKPiBOaWtsYXMK
-ClRoYW5rcwotQW5hbmQKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5p
-bmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8v
-bGludXgtcm9ja2NoaXAK
+Since the driver is used for decoding on rk3588 and that the SoC has
+2 identical decoding cores, enable support for it.
+
+Instead of exposing 2 v4l2 devices to userspace, the driver will only
+expose one and handle the 2 cores transparently.
+
+The 2 cores are able to work in parallel, but only contexts are
+parallelized: 1 stream, that uses 1 context, will only be able to use
+1 core as it usually needs previous frames already decoded to use as
+reference frames.
+To avoid complex scheduling, only different streams can use cores at the
+same time.
+
+To achieve this, the v4l2_m2m_buf_done_and_job_finish() had to be split
+in a done and a finish part (still keeping the unsplit function for other
+drivers). That allows the driver to get new jobs to run while the previous
+one is still running.
+The job_ready() callback is used to avoid scheduling multiple jobs from
+the same context.
+
+The IOMMU support is in a different commit, as it needed a bit more
+thought to work correctly, but I'm wondering if it should be merged with
+the multicore support commit.
+
+A fix for the RCB (Row and Cols Buffer) size computation is also provided
+as it was causing issues with some fluster tests.
+
+Performance-wise, fluster doesn't seem to run much faster, but I tested
+with an HEVC test video from Jellyfin and observed that frames start
+dropping with 6 concurrent gstreamer instances, instead of 4 without
+multi-core enabled.
+
+Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+---
+Detlev Casanova (7):
+      media: v4l2-mem2mem: Add v4l2_m2m_buf_done_manual()
+      media: v4l2-mem2mem: Remove WARN_ON() in v4l2_m2m_job_finish()
+      media: rkvdec: Keep RCB to the correct size
+      media: rkvdec: Remove unused need_reset
+      media: rkvdec: Add multicore support
+      media: rkvdec: Wait for all buffers before stop_streaming
+      media: rkvdec: Add multicore IOMMU support
+
+ .../media/platform/rockchip/rkvdec/rkvdec-h264.c   |  17 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-hevc.c   |  16 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-rcb.c    |  77 ++--
+ .../media/platform/rockchip/rkvdec/rkvdec-rcb.h    |   8 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-h264.c |  24 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu381-hevc.c |  24 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-h264.c |  24 +-
+ .../platform/rockchip/rkvdec/rkvdec-vdpu383-hevc.c |  26 +-
+ .../media/platform/rockchip/rkvdec/rkvdec-vp9.c    |  27 +-
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c    | 482 +++++++++++++--------
+ drivers/media/platform/rockchip/rkvdec/rkvdec.h    |  31 +-
+ drivers/media/v4l2-core/v4l2-mem2mem.c             |  34 +-
+ include/media/v4l2-mem2mem.h                       |  20 +
+ 13 files changed, 500 insertions(+), 310 deletions(-)
+---
+base-commit: 3036cd0d3328220a1858b1ab390be8b562774e8a
+change-id: 20260408-rkvdec-multicore-98831da51072
+
+Best regards,
+--  
+Detlev Casanova <detlev.casanova@collabora.com>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
