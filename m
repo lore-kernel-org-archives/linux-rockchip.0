@@ -4,66 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38777F364B2
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 19:09:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28C55F364BD
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 21:02:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=nEsJlokmsKfhgAODxroEuEomjwmy+yCsQC7pGNaXRm0=; b=yFRmY5TEcMqSLG
-	Yz5QTtjdLbcIFg++WMNnXj/PaN7eP9ykySdWoDceYLlwEaXy/BlsGJEuXs0xHd/OLkxEgUJNchq4t
-	Socc4ndp3p8M7yOPaeM7HOvIEcuQ/V8FR079WQui6Y34jA4u2+2VECjGEwAyJ7He+Cv+9qvfm4FaG
-	INTNwvyvqJxrEIvM06o0Mc3cpBEPIdPrPVW53fPoCFAk1rCvWqSXxlwECknzsQN9VVcx1uEgm3zXV
-	8zvzDBs9TJzsaJjJne9KVN/xojx8rz8F5Yr+Pi1O3p3xGisuy2aCHZkSZkTeMtr03CeRYYgpyl35z
-	dSy4RPmeda2zh+jWu2Mw==;
+	List-Owner; bh=xAo2EWTv68S9zzRrshYBPeuu3Aq29jw/RfEI3Q1HDog=; b=fSJ2KJerGHo4di
+	QiG3/OMhVCW6QjZdXgnQE43YZQNZ56DTDWWIHwt9LkgQauE9gXL2smld1Ves22D3RzbYywcBXO87G
+	vhtyTZXxHJXC1cduBXHcGSs8REedMDBvKGUgzIT6n6QqZZL6ry3U5hblfgG5Q7AxO2qOFkP60CICs
+	5n8hRHKUYvIDDUJE76BHiWItPmZFePMs95gxebR7j9Q91NhO5SQLXiGvdna8si2xPhoVrV/ZuWFmH
+	l3OGYr9srpV63ZjZMLtA46O/j71P4J4BsucmNcjiE0cg9b858CYP24Qv87eMkce9KDdK/ljHtgLt7
+	eCVtgNIbskX6VCfxqlmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAukg-0000000B8Pv-49P1;
-	Thu, 09 Apr 2026 19:09:19 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1wAwWU-0000000BCrA-0TyE;
+	Thu, 09 Apr 2026 21:02:46 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAuke-0000000B8PN-0Zwo
+	id 1wAwWR-0000000BCqJ-1GAq
 	for linux-rockchip@lists.infradead.org;
-	Thu, 09 Apr 2026 19:09:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1775761754;
- bh=7mFdGI22HLazQ8AMNtyB+5bh4ZS1+fAVOQiETGYdJus=;
- b=hfAgzfnsakFNSe4p2IeBaEQaNMEH1wxFbjEfDapE1Wx3jL29lbDQwNY0ho9DRCamJ9pVQphpw
- TNIZgWl/H18/hEnxZKSYRdsksihOqkA6XnuU3uAIeYfk8eLmtBSI/ShPqI/ZxSYo9VdURTtLaT8
- dCotLctyt/IrIc40K+DLyM03B3uQW58sxbXn3B1L4erKgFOzoOxwdAHTDZqjI1WRrsi+m90qp0b
- nAx4UTJvheUV8/VPk1TAdVAjRyZA/ghEH1oP8uSpAR7Iu+xB7p+DpC7EZHjbGogo1nz26QJwAsx
- NQnXLqrR3eLwrspxY+CKFb19DMvvTuO82sq/CXIUl6rw==
-X-Forward-Email-ID: 69d7f95570094f9452de21a3
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
-X-Forward-Email-Version: 2.6.69
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <384b25a0-d55d-4415-82fb-dcf2e6ad1232@kwiboo.se>
-Date: Thu, 9 Apr 2026 21:09:06 +0200
+	Thu, 09 Apr 2026 21:02:44 +0000
+Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 639Ibf19779506
+	for <linux-rockchip@lists.infradead.org>; Thu, 9 Apr 2026 21:02:42 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=fy24ThaE7zxCmOTOVBB95xQI
+	Swb2qBaf1w/hIxxQ6/A=; b=iwt83TLdksEzI97LSyWc2oo6OTCnetVF+TBZtYiw
+	jVvR93rQ0vMOjI9AGB43I1+Z3MGaVKHQYJUcZtCZqTVo/msgQFETyPAZX7TmH5lP
+	Er7k8jHnbsNkbtFBIu0Bgw9oaNxRBDsuYIdIpXeBbsrwTQVqSDNe4wmGkL8Osx90
+	32VlGgSVpKG0UmeHh5TgbJx0etVjXLB0VhbY7KIvrSqkcHv7uR9Nuvpuxgvc+/6x
+	qIpPaf8zT4TNVfSO7dpdO+FYiF3Pa89SwQWrkYQaWb+0/dujQoFTymbuiXbHzp26
+	jgNmLP0WYZRPyl6YuD5rT2Ob8d92OA/BnC1ECwM/vs9AYQ==
+Received: from mail-oo1-f69.google.com (mail-oo1-f69.google.com [209.85.161.69])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dec8hsw50-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 09 Apr 2026 21:02:42 +0000 (GMT)
+Received: by mail-oo1-f69.google.com with SMTP id 006d021491bc7-689b18091ebso2768245eaf.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 09 Apr 2026 14:02:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1775768562; x=1776373362; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=fy24ThaE7zxCmOTOVBB95xQISwb2qBaf1w/hIxxQ6/A=;
+        b=SqfYQEK/b2FBvLbcUlyk5U9258qsWLJPxtBRCln7GJvnUSHdhB7WNzui3ePA8CaD7w
+         nSFsTe0kN/Icb1WDrAwDIP3y8iblZWij5V9YM9iJt7Kr0/xyOF1O6xEG92WicXB0n0uI
+         YQzs7fbPdiSMouNfiXoEUJScYrZpW+5IkolQcu34r14cLxwd9akz/zolvztAq/neM0ey
+         xk0lZCExmFtRWuPZUt/R9+l1k84Cza/9hEhUfsb/4LbNKRrDY77uqfHsbgwIY2xcgrGF
+         O+5KZI0kBzattqKKPxXczbTHDo6TgOv3GtT0JhXHa1n4899yX2lQnRTSogjyB+XX4CB9
+         8wWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775768562; x=1776373362;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=fy24ThaE7zxCmOTOVBB95xQISwb2qBaf1w/hIxxQ6/A=;
+        b=bQo8ZxXeOZPkGjF8UxK9eiQU2SNveVZW4cCtq+sBOjg2Fd24/xacHkrkXlWVf/aYLc
+         VgN1ZIdGqL7qWvOlClGCUI0eNPyM3RPT4E4FLYdf1oie5g+6skatDpEuvXyCFFfajC4E
+         TC3EblV2cS9PuZgN4h+k7ZGR4RBVaFrWuNmLT3uHGtq8aVQFiydLeA8nlnZPLlg36kXY
+         39kXlRIKm8MJl1Vhe73ACIIhLDSAjMbfabXPP//DxHHmsaCxZoExR5P0lUI7lk9H7wN2
+         gwadktSWOj54mZyOrJIPSn14XfZnXojgURXbAzy/xugBa1M+AMQwzcb8k5gmLhsmurk2
+         6iUQ==
+X-Forwarded-Encrypted: i=1; AJvYcCVpskPd55F/lhTsyb/4eAfySJ+3q2BeWRNBcbqfWXsvHDmn0BBAH+ed7HCjR+FY86Tdjt0/l1sCQbOIZ30KfQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwkJAy8u0pxxU16MrGlDprEaQWfLRsbrT4DfCM0y3+Lu2LjXZRE
+	sRD958IQQokBr/mfxjutkZA8Nx19hbhjpO3DY2kJx+E9eslzUwtt5qTpgPIgw9GUBsPhZaKAhG0
+	lfMh1/q7IoMr+9oQy6kKsgxUmTCUeeMBgdOJ4LvbKOLk686IYTQhqa9/JsvI7bE65qieXBaNyHh
+	g=
+X-Gm-Gg: AeBDievcAshaHKeRV1TkoyHqBGMO1Bts0L5OSEWqWNnvoiE/G81X8wEWUkEE9gMVXA/
+	PvEp6eXxsLLnbWpTqssEEJjYpnH+Lpo838oJ9TXBjji/Uvzv5I6LTP9HvPCRrbxLDga+AgGlHok
+	oyFvowNZE34nAS3Y4pCdwjVxrtBl9HNml0ih0plKaC7VxzcxVuFzcZtBnHO7oue7k4HpbZVq5ef
+	0z+5mtAEqrnycQNLghPZ+jUPYF/P+nojv41/kCZoGQwrMWpeWPV8i2+FpOV+ter3fPR7qR5rZ0f
+	/Avgzax3YOxJya/7B53O3ey49OXsenoK1ifNUIT1RhdLN0gk7z86FGYAzi33Wa0SnZzu+rjmUkr
+	YdcedO+yx4xPtDIuLxQNlzXyBJqBNYr/Hv+CXS2XvmLFSt0jsL7kwEvSwF08p7SZX2LazexoZBT
+	hvAywGJurLOo3zq1ahYMzbeq59n+ahgv4qPAs=
+X-Received: by 2002:a05:6820:678d:b0:68a:3b31:1bfa with SMTP id 006d021491bc7-68a68d5fb3bmr2094618eaf.13.1775768561813;
+        Thu, 09 Apr 2026 14:02:41 -0700 (PDT)
+X-Received: by 2002:a05:6820:678d:b0:68a:3b31:1bfa with SMTP id 006d021491bc7-68a68d5fb3bmr2094597eaf.13.1775768561356;
+        Thu, 09 Apr 2026 14:02:41 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a3eee93264sm160532e87.29.2026.04.09.14.02.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 09 Apr 2026 14:02:40 -0700 (PDT)
+Date: Fri, 10 Apr 2026 00:02:38 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Damon Ding <damon.ding@rock-chips.com>
+Cc: andrzej.hajda@intel.com, neil.armstrong@linaro.org, rfoss@kernel.org,
+        maarten.lankhorst@linux.intel.com, mripard@kernel.org,
+        tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+        victor.liu@nxp.com, Frank.Li@nxp.com, shawnguo@kernel.org,
+        s.hauer@pengutronix.de, inki.dae@samsung.com, sw0312.kim@samsung.com,
+        kyungmin.park@samsung.com, krzk@kernel.org, jingoohan1@gmail.com,
+        p.zabel@pengutronix.de, hjc@rock-chips.com, heiko@sntech.de,
+        andy.yan@rock-chips.com, Laurent.pinchart@ideasonboard.com,
+        jonas@kwiboo.se, jernej.skrabec@gmail.com, kernel@pengutronix.de,
+        festevam@gmail.com, alim.akhtar@samsung.com, luca.ceresoli@bootlin.com,
+        nicolas.frattaroli@collabora.com, dianders@chromium.org,
+        m.szyprowski@samsung.com, linux-kernel@vger.kernel.org,
+        dri-devel@lists.freedesktop.org, imx@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org,
+        linux-samsung-soc@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v13 10/17] drm/bridge: analogix_dp: Pass struct
+ drm_atomic_state* for analogix_dp_bridge_mode_set()
+Message-ID: <cvm3mvyh5ggs2fsjmikzn6z4kf7vsgxcxl3qusyxnv6jmtt3sa@fof7vydwsvff>
+References: <20260409065301.446670-1-damon.ding@rock-chips.com>
+ <20260409065301.446670-11-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] gpio: rockchip: convert to dynamic GPIO base allocation
-To: Shawn Lin <shawn.lin@rock-chips.com>,
- Bartosz Golaszewski <brgl@kernel.org>
-Cc: Linus Walleij <linusw@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- linux-gpio@vger.kernel.org, linux-rockchip@lists.infradead.org,
- ye.zhang@rock-chips.com
-References: <1774864401-177149-1-git-send-email-shawn.lin@rock-chips.com>
- <CAMRc=Mfg3KvifZgpD8c7kkLNhv3zgDKvHB=n_=MQJ2EtwRi44A@mail.gmail.com>
- <73130e47-dbd7-c0d0-eba1-8bafba9f91e5@rock-chips.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <73130e47-dbd7-c0d0-eba1-8bafba9f91e5@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20260409065301.446670-11-damon.ding@rock-chips.com>
+X-Authority-Analysis: v=2.4 cv=PMM/P/qC c=1 sm=1 tr=0 ts=69d813f2 cx=c_pps
+ a=lVi5GcDxkcJcfCmEjVJoaw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=A5OVakUREuEA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22 a=s8YR1HE3AAAA:8
+ a=EUspDBNiAAAA:8 a=pclm5J9ib1Ufy00r_ZoA:9 a=CjuIK1q_8ugA:10 a=zZCYzV9kfG8A:10
+ a=rBiNkAWo9uy_4UTK5NWh:22 a=jGH_LyMDp9YhSvY-UuyI:22
+X-Proofpoint-ORIG-GUID: qSzofa7QgqrfnJ3xM_fntLjPz2bbAEWK
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDA5MDE5NCBTYWx0ZWRfX8JiYJQ0vndNy
+ r+7TV4TQJWj/gD57ylUduLwAXNavtkwQRLipQnGfXPDpgjA9h9sm5Z8Qr+Zcjba7c/umLfiU40d
+ C/8HuQQToDRI1Vm6/a/udHQR2B0BvWeo9U7GuuCYISFQar5QqNdzzbNiKrhJWXUJHMnsh9RaWly
+ ayUu0wxAcZKXSfT8ufGk4JW6IVHGs7JAlA+OOswyEcx8/U88/JmYTBBPzEW0ETTK1CwLLH5qslS
+ LrKldFAAmXgveas+ZwM5YdjDXRBJWzg8pn3gURCwy0nZ3sfAxlXUK8/Jq/B+Rs8VK7YgWBdIEgA
+ RvbS9lPuWkJPnGR/snkGdeVWprI6xONGnZvaIznCDaH4t44tgTV8VMxUFd/7YYEAhWPbWa74do4
+ 763IvXrDoU3a2xnoCN4UzoTqRmsuATNJSujbPixspnkgIlSZRpjrvLslkr1jSM9F5yE6VJkP4Cs
+ zUXV/rgAMLgWn1jD+6Q==
+X-Proofpoint-GUID: qSzofa7QgqrfnJ3xM_fntLjPz2bbAEWK
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-09_04,2026-04-09_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 suspectscore=0 priorityscore=1501 adultscore=0
+ lowpriorityscore=0 bulkscore=0 phishscore=0 clxscore=1015 malwarescore=0
+ spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2604010000
+ definitions=main-2604090194
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_120916_698581_F3275B6E 
-X-CRM114-Status: GOOD (  15.19  )
+X-CRM114-CacheID: sfid-20260409_140243_345628_6A32D1F7 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,100 +153,30 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpPbiA0LzcvMjAyNiAxMTo1OSBBTSwgU2hhd24gTGluIHdyb3RlOgo+IEhpIEJhcnRvc3os
-Cj4gCj4g5ZyoIDIwMjYvMDMvMzEg5pif5pyf5LqMIDE2OjA1LCBCYXJ0b3N6IEdvbGFzemV3c2tp
-IOWGmemBkzoKPj4gT24gTW9uLCBNYXIgMzAsIDIwMjYgYXQgMTE6NTPigK9BTSBTaGF3biBMaW4g
-PHNoYXduLmxpbkByb2NrLWNoaXBzLmNvbT4gd3JvdGU6Cj4+Pgo+Pj4gVGhpcyBkcml2ZXIgaXMg
-dXNlZCBvbiBkZXZpY2UgdHJlZSBiYXNlZCBwbGF0Zm9ybS4gVXNlIGR5bmFtaWMKPj4+IEdQSU8g
-bnVtYmVyc3BhY2UgYmFzZSB0byBzdXBwcmVzcyB0aGUgd2FybmluZzoKPj4+Cj4+PiBncGlvIGdw
-aW9jaGlwMDogU3RhdGljIGFsbG9jYXRpb24gb2YgR1BJTyBiYXNlIGlzIGRlcHJlY2F0ZWQsIHVz
-ZSBkeW5hbWljIGFsbG9jYXRpb24uCj4+PiBncGlvIGdwaW9jaGlwMTogU3RhdGljIGFsbG9jYXRp
-b24gb2YgR1BJTyBiYXNlIGlzIGRlcHJlY2F0ZWQsIHVzZSBkeW5hbWljIGFsbG9jYXRpb24uCj4+
-PiBncGlvIGdwaW9jaGlwMjogU3RhdGljIGFsbG9jYXRpb24gb2YgR1BJTyBiYXNlIGlzIGRlcHJl
-Y2F0ZWQsIHVzZSBkeW5hbWljIGFsbG9jYXRpb24uCj4+PiBncGlvIGdwaW9jaGlwMzogU3RhdGlj
-IGFsbG9jYXRpb24gb2YgR1BJTyBiYXNlIGlzIGRlcHJlY2F0ZWQsIHVzZSBkeW5hbWljIGFsbG9j
-YXRpb24uCj4+PiBncGlvIGdwaW9jaGlwNDogU3RhdGljIGFsbG9jYXRpb24gb2YgR1BJTyBiYXNl
-IGlzIGRlcHJlY2F0ZWQsIHVzZSBkeW5hbWljIGFsbG9jYXRpb24uCj4+Pgo+Pj4gU2lnbmVkLW9m
-Zi1ieTogU2hhd24gTGluIDxzaGF3bi5saW5Acm9jay1jaGlwcy5jb20+Cj4+PiAtLS0KPj4+Cj4+
-PiAgIGRyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlwLmMgfCAyICstCj4+PiAgIDEgZmlsZSBjaGFu
-Z2VkLCAxIGluc2VydGlvbigrKSwgMSBkZWxldGlvbigtKQo+Pj4KPj4+IGRpZmYgLS1naXQgYS9k
-cml2ZXJzL2dwaW8vZ3Bpby1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAu
-Ywo+Pj4gaW5kZXggYWMxYjkzOS4uMDhlYTY0NCAxMDA2NDQKPj4+IC0tLSBhL2RyaXZlcnMvZ3Bp
-by9ncGlvLXJvY2tjaGlwLmMKPj4+ICsrKyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlwLmMK
-Pj4+IEBAIC01ODIsNyArNTgyLDcgQEAgc3RhdGljIGludCByb2NrY2hpcF9ncGlvbGliX3JlZ2lz
-dGVyKHN0cnVjdCByb2NrY2hpcF9waW5fYmFuayAqYmFuaykKPj4+ICAgICAgICAgIGJhbmstPmdw
-aW9fY2hpcCA9IHJvY2tjaGlwX2dwaW9saWJfY2hpcDsKPj4+Cj4+PiAgICAgICAgICBnYyA9ICZi
-YW5rLT5ncGlvX2NoaXA7Cj4+PiAtICAgICAgIGdjLT5iYXNlID0gYmFuay0+cGluX2Jhc2U7Cj4+
-PiArICAgICAgIGdjLT5iYXNlID0gLTE7Cj4+PiAgICAgICAgICBnYy0+bmdwaW8gPSBiYW5rLT5u
-cl9waW5zOwo+Pj4gICAgICAgICAgZ2MtPmxhYmVsID0gYmFuay0+bmFtZTsKPj4+ICAgICAgICAg
-IGdjLT5wYXJlbnQgPSBiYW5rLT5kZXY7Cj4+PiAtLQo+Pj4gMi43LjQKPj4+Cj4+Cj4+IEkgdGFr
-ZSBpdCB5b3Uga25vdyBmaXJzdC1oYW5kIHRoYXQgbm9ib2R5IGRlcGVuZHMgb24gdGhlIHByZWRl
-ZmluZWQKPj4gR1BJTyBudW1iZXJpbmcgZm9yIHRoaXMgZHJpdmVyPyBJZiBzbywgSSBjYW4gcXVl
-dWUgaXQgZm9yIHY3LjEuCj4+Cj4gCj4gSSBoYXZlIGNvbmZpcm1lZCBpbnRlcm5hbGx5IHRoYXQg
-bm9ib2R5IGRlcGVuZHMgb24gdGhlIHByZS1kZWZpbmVkCj4gR1BJTyBudW1iZXJpbmcuCgpUaGlz
-IHBhdGNoIGlzIGNhdXNpbmcgYm9vdCBpc3N1ZXMgb24gbXkgUm9jayBQaSA0IChSSzMzOTkpIGJv
-YXJkIHVzaW5nCm5leHQtMjAyNjA0MDkga2VybmVsIHdoZXJlIHRoaXMgcGF0Y2ggaGFzIGJlZW4g
-YXBwbGllZCBhcyBjODA3OWY4M2UwYmYuCgpbICAgIDAuMDgyNzcxXSByb2NrY2hpcC1ncGlvIGZm
-NzIwMDAwLmdwaW86IHByb2JlZCAvcGluY3RybC9ncGlvQGZmNzIwMDAwClsgICAgMC4wODM1MzFd
-IHJvY2tjaGlwLWdwaW8gZmY3MzAwMDAuZ3BpbzogcHJvYmVkIC9waW5jdHJsL2dwaW9AZmY3MzAw
-MDAKWyAgICAwLjA4NDExMF0gcm9ja2NoaXAtZ3BpbyBmZjc4MDAwMC5ncGlvOiBwcm9iZWQgL3Bp
-bmN0cmwvZ3Bpb0BmZjc4MDAwMApbICAgIDAuMDg0NzQ2XSByb2NrY2hpcC1ncGlvIGZmNzg4MDAw
-LmdwaW86IHByb2JlZCAvcGluY3RybC9ncGlvQGZmNzg4MDAwClsgICAgMC4wODUzODldIHJvY2tj
-aGlwLWdwaW8gZmY3OTAwMDAuZ3BpbzogcHJvYmVkIC9waW5jdHJsL2dwaW9AZmY3OTAwMDAKLS0K
-WyAgICAwLjIxMjIwOF0gcm9ja2NoaXAtcGluY3RybCBwaW5jdHJsOiBwaW4gNjM3IGlzIG5vdCBy
-ZWdpc3RlcmVkIHNvIGl0IGNhbm5vdCBiZSByZXF1ZXN0ZWQKWyAgICAwLjIxMjI3MV0gcm9ja2No
-aXAtcGluY3RybCBwaW5jdHJsOiBlcnJvciAtRUlOVkFMOiBwaW4tNjM3IChncGlvMzo2MzcpClsg
-ICAgMC4yMTIzNDRdIGxlZHMtZ3BpbyBsZWRzOiBlcnJvciAtRUlOVkFMOiBGYWlsZWQgdG8gZ2V0
-IEdQSU8gJy9sZWRzL2xlZC0wJwpbICAgIDAuMjEyMzg5XSBsZWRzLWdwaW8gbGVkczogcHJvYmUg
-d2l0aCBkcml2ZXIgbGVkcy1ncGlvIGZhaWxlZCB3aXRoIGVycm9yIC0yMgotLQpbICAgIDAuNjA3
-NTQ1XSByb2NrY2hpcC1waW5jdHJsIHBpbmN0cmw6IHBpbiA1MTkgaXMgbm90IHJlZ2lzdGVyZWQg
-c28gaXQgY2Fubm90IGJlIHJlcXVlc3RlZApbICAgIDAuNjA4Nzc1XSByb2NrY2hpcC1waW5jdHJs
-IHBpbmN0cmw6IGVycm9yIC1FSU5WQUw6IHBpbi01MTkgKGdwaW8wOjUxOSkKWyAgICAwLjYxMDAw
-M10gZHdtbWNfcm9ja2NoaXAgZmUzMjAwMDAubW1jOiBwcm9iZSB3aXRoIGRyaXZlciBkd21tY19y
-b2NrY2hpcCBmYWlsZWQgd2l0aCBlcnJvciAtMjIKLS0KWyAgICAwLjgwNTg4Ml0gcm9ja2NoaXAt
-cGluY3RybCBwaW5jdHJsOiBwaW4gNTQ3IGlzIG5vdCByZWdpc3RlcmVkIHNvIGl0IGNhbm5vdCBi
-ZSByZXF1ZXN0ZWQKWyAgICAwLjgwNjY3Ml0gcm9ja2NoaXAtcGluY3RybCBwaW5jdHJsOiBlcnJv
-ciAtRUlOVkFMOiBwaW4tNTQ3IChncGlvMTo1NDcpClsgICAgMC44MDczMDFdIHJlZy1maXhlZC12
-b2x0YWdlIHJlZ3VsYXRvci12YnVzLXR5cGVjOiBlcnJvciAtRUlOVkFMOiBjYW4ndCBnZXQgR1BJ
-TwpbICAgIDAuODA3MzA3XSByb2NrY2hpcC1waW5jdHJsIHBpbmN0cmw6IHBpbiA2MDIgaXMgbm90
-IHJlZ2lzdGVyZWQgc28gaXQgY2Fubm90IGJlIHJlcXVlc3RlZApbICAgIDAuODA3OTcwXSByZWct
-Zml4ZWQtdm9sdGFnZSByZWd1bGF0b3ItdmJ1cy10eXBlYzogcHJvYmUgd2l0aCBkcml2ZXIgcmVn
-LWZpeGVkLXZvbHRhZ2UgZmFpbGVkIHdpdGggZXJyb3IgLTIyClsgICAgMC44MDg2OTJdIHJvY2tj
-aGlwLXBpbmN0cmwgcGluY3RybDogZXJyb3IgLUVJTlZBTDogcGluLTYwMiAoZ3BpbzI6NjAyKQpb
-ICAgIDAuODEwMjc5XSByZWctZml4ZWQtdm9sdGFnZSByZWd1bGF0b3ItdmNjM3YzLXBjaWU6IGVy
-cm9yIC1FSU5WQUw6IGNhbid0IGdldCBHUElPClsgICAgMC44MTAyODRdIHJvY2tjaGlwLXBpbmN0
-cmwgcGluY3RybDogcGluIDY2NSBpcyBub3QgcmVnaXN0ZXJlZCBzbyBpdCBjYW5ub3QgYmUgcmVx
-dWVzdGVkClsgICAgMC44MTAyOTldIHJvY2tjaGlwLXBpbmN0cmwgcGluY3RybDogZXJyb3IgLUVJ
-TlZBTDogcGluLTY2NSAoZ3BpbzQ6NjY1KQpbICAgIDAuODEwOTYwXSByZWctZml4ZWQtdm9sdGFn
-ZSByZWd1bGF0b3ItdmNjM3YzLXBjaWU6IHByb2JlIHdpdGggZHJpdmVyIHJlZy1maXhlZC12b2x0
-YWdlIGZhaWxlZCB3aXRoIGVycm9yIC0yMgpbICAgIDAuODExNjc5XSByZWctZml4ZWQtdm9sdGFn
-ZSByZWd1bGF0b3ItdmNjNXYwLWhvc3Q6IGVycm9yIC1FSU5WQUw6IGNhbid0IGdldCBHUElPClsg
-ICAgMC44MTM5NDNdIHJlZy1maXhlZC12b2x0YWdlIHJlZ3VsYXRvci12Y2M1djAtaG9zdDogcHJv
-YmUgd2l0aCBkcml2ZXIgcmVnLWZpeGVkLXZvbHRhZ2UgZmFpbGVkIHdpdGggZXJyb3IgLTIyCi0t
-ClsgICAgMC44Njc3ODhdIHJvY2tjaGlwLXBpbmN0cmwgcGluY3RybDogcGluIDUyMiBpcyBub3Qg
-cmVnaXN0ZXJlZCBzbyBpdCBjYW5ub3QgYmUgcmVxdWVzdGVkClsgICAgMC44Njg1MzddIHJvY2tj
-aGlwLXBpbmN0cmwgcGluY3RybDogZXJyb3IgLUVJTlZBTDogcGluLTUyMiAoZ3BpbzA6NTIyKQpb
-ICAgIDAuODY5MTY2XSBwd3JzZXFfc2ltcGxlIHNkaW8tcHdyc2VxOiBlcnJvciAtRUlOVkFMOiBy
-ZXNldCBHUElPcyBub3QgcmVhZHkKWyAgICAwLjg2OTc5OF0gcHdyc2VxX3NpbXBsZSBzZGlvLXB3
-cnNlcTogcHJvYmUgd2l0aCBkcml2ZXIgcHdyc2VxX3NpbXBsZSBmYWlsZWQgd2l0aCBlcnJvciAt
-MjIKLS0KWyAgICAwLjk0MDM2NV0gcm9ja2NoaXAtcGluY3RybCBwaW5jdHJsOiBwaW4gNjIzIGlz
-IG5vdCByZWdpc3RlcmVkIHNvIGl0IGNhbm5vdCBiZSByZXF1ZXN0ZWQKWyAgICAwLjk0MTA4NF0g
-cm9ja2NoaXAtcGluY3RybCBwaW5jdHJsOiBlcnJvciAtRUlOVkFMOiBwaW4tNjIzIChncGlvMzo2
-MjMpClsgICAgMC45NDE4MjNdIHJrX2dtYWMtZHdtYWMgZmUzMDAwMDAuZXRoZXJuZXQ6IGVycm9y
-IC1FSU5WQUw6IENhbm5vdCByZWdpc3RlciB0aGUgTURJTyBidXMKWyAgICAwLjk0MjU0Ml0gcmtf
-Z21hYy1kd21hYyBmZTMwMDAwMC5ldGhlcm5ldDogZXJyb3IgLUVJTlZBTDogTURJTyBidXMgKGlk
-OiAwKSByZWdpc3RyYXRpb24gZmFpbGVkClsgICAgMC45NDM3NzJdIHJrX2dtYWMtZHdtYWMgZmUz
-MDAwMDAuZXRoZXJuZXQ6IHByb2JlIHdpdGggZHJpdmVyIHJrX2dtYWMtZHdtYWMgZmFpbGVkIHdp
-dGggZXJyb3IgLTIyCgpXaXRoIGM4MDc5ZjgzZTBiZiAoImdwaW86IHJvY2tjaGlwOiBjb252ZXJ0
-IHRvIGR5bmFtaWMgR1BJTyBiYXNlCmFsbG9jYXRpb24iKSByZXZlcnRlZCBldmVyeXRoaW5nIGdv
-ZXMgYmFjayB0byBub3JtYWwgYW5kIGdwaW8vcGluY3RybAphbmQgYWxsIGRldmljZXMgZGVwZW5k
-aW5nIG9uIGdwaW8gd29ya3MgYWdhaW4uCgpSZWdhcmRzLApKb25hcwoKPiAKPiBUaGFua3MuCj4g
-Cj4+IEJhcnQKPj4KCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+On Thu, Apr 09, 2026 at 02:52:54PM +0800, Damon Ding wrote:
+> To avoid using &analogix_dp_device.connector for compatibility
+> with the bridge connector framework, get &drm_connector from
+> &drm_atomic_state instead.
+> 
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> ---
+>  drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
+> 
+
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+
+
+-- 
+With best wishes
+Dmitry
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
