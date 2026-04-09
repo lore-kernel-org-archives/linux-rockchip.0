@@ -4,71 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DBA0F31E22
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 14:49:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E15B7F31E22
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 15:24:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S/2SuwQ8QsPFc1+BFISCtRqc+/1FZ8c0oktyeUsGGNQ=; b=x45EjDqREiVCFz
-	oMxot5Xg64bmjyDL8e+sPu7KwLO0rSrG7APj7AUvbZinFIfy/L6JRTIhgtD7xwbHIvUDn4oo6aWYU
-	7z+owGsNO9NG/FeC2aHuZK3j+SwFr0PJ59jsuK9hB/Chyp6mahibfhp/jX/FHmN+sXd7PaScNTKGN
-	aY3oaWAgaA5qTNxHmSgW1SrhmV2M4y31yGPBOKMjKUyauzYKKoSdwGN+YwzDQvYIqxZIi3CSuXS3a
-	dpJeLn5RKiA1mEoU4fqi+Ql/4kNZIpc2MNJHvqO5xzeG+coClpjpPk24ABDHk/NkJZk5Orn4PzVQw
-	WtNsNbf7fi9WrqU2yy7w==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VkKL09z1x+YrMspbiV8kTjgqZ1/AXMfTH8nu4O8SKAU=; b=KZn/Ujo0wCfc/fkDp313Dm+wFO
+	CEF01dzsQXaZMnEuZjiUXFIbeL3mhditBNNSb6btkUskBLoiYrrvZkuHWqa6onWVqcegqcwcx6y78
+	7k4ZY7zHLAZkt8F+FrXr7Zll0+mBcv/mpxGT6qZNFxbKOblGNLmd4AEvDLDFEYktAOiAFwi7JsKay
+	zL5n7CEuyrhYDSuCi8WO/OZ92cfH6xTee6LwhG0kenRLsVgERhiFMfFN1ANM0NwGSk1sIIq35uYul
+	lEL6FZYnRjTPUOqHo6bqe5O1/2tyW0kHtMlzcEjBUHZ/o2rO60pkZv1OE+IjMAACpRS21wnO/jQrR
+	Ce7wxvmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAqhE-0000000AjeS-0ByR;
-	Thu, 09 Apr 2026 14:49:28 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wArFG-0000000AnLm-3sf4;
+	Thu, 09 Apr 2026 15:24:38 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAqhC-0000000Ajdj-0Ho8;
-	Thu, 09 Apr 2026 14:49:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1775746150; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=FyjrxfSs10DNUXtp2oEHYFs+x2xKQ8PL/bNjEjVnYvjY/VhrzKYBHJX+axnbY+zEAVUkHcdpVuYnJw4Q/g39sk3s5OeFvw0P2FLS8d/QomWcda8gTRlqAepJmOMsRTSHUD/vz3P/G1aOSR4aPu789dzVIabWNDoY0XViC5aua+4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1775746150; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=CR9mAVgxszVB53Zvua2wkg88/t3SzJ3xM3rQRaf39VM=; 
-	b=aO3NY/k4Vpuq1VWM8zTwvg+eQzaYOyzzebFTlxTGc5Qn8cjfw3id3CsCA4pCNeFrIe0O5zXzzyOFf3BGsUT+V3bADfyUKGSGX8c/OkKkVMJfg0J2zJcpfK/knx3JqYskMN6g8o+1U/qOsGIzt4TwjRvD7DxEuw5MyNAXwpDeZKE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1775746150;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=CR9mAVgxszVB53Zvua2wkg88/t3SzJ3xM3rQRaf39VM=;
-	b=OMrhomFcpM42/enJAPw7i8P9Z0b8+sCp4adXXJMG2Lo15WJzx5/4y927au7K32Hv
-	HhlMPripihSipxuNl/+Fup3Dao8Jh15qGEwNKY46ICj/Kj7MFkBYNoB1eNG7JZlkr9P
-	kS35stIgCPM6UfuCNgza+5cz/5s+rSd5Jlf2a4Dk=
-Received: by mx.zohomail.com with SMTPS id 177574614723085.36204229766054;
-	Thu, 9 Apr 2026 07:49:07 -0700 (PDT)
-Message-ID: <040f65ea-2559-4186-b733-3dc59a1ecc0b@collabora.com>
-Date: Thu, 9 Apr 2026 10:49:05 -0400
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1wArFD-0000000AnL4-47N6;
+	Thu, 09 Apr 2026 15:24:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1775748272;
+	bh=yRJ6u8GyYNSSyoKD5an4lWZMD1f6h28LyhWT410oxrY=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=Qn0EHVcpR0kF3s1EQhDIZZhJ47WXsX2Ummf6vGbt5BhJvR0hTtKT9sgGOUQkKKYaV
+	 CH3YB3qvt4QeRYwI20Ag2IxOKECqqLBMDo8UPx5sz7kwOVwX9VkWc6ifMILxpRcbyf
+	 pqF3bUrGHk+TUKBL3ulV3ghGDer3gvyOWSCVNY7dLHQoDi5qaJRnqzvnxo/ztcuRqP
+	 GGy89HOHO/vElb7llCrz7ntJ961XWntYt1dK8P55dJuCjM5KTPmcG7T/xeD4D67cez
+	 UbgnHOn0YBchfH48sxcu9cPxpZG4DAKrY372928RuXkZq+Dzwr0Lqa2P0/VOJkl6RC
+	 Jvbxc85pPyZ4A==
+Received: from [100.64.0.214] (unknown [100.64.0.214])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: nicolas)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 037FC17E12E2;
+	Thu,  9 Apr 2026 17:24:30 +0200 (CEST)
+Message-ID: <e6f8f62568a385cc6d98856f480bd469882b274a.camel@collabora.com>
 Subject: Re: [PATCH 7/7] media: rkvdec: Add multicore IOMMU support
-To: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,
- Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To: Detlev Casanova <detlev.casanova@collabora.com>, Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
  Heiko Stuebner <heiko@sntech.de>, Hans Verkuil <hverkuil+cisco@kernel.org>,
  Jonas Karlman <jonas@kwiboo.se>
-Cc: kernel@collabora.com, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
+Cc: kernel@collabora.com, linux-media@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org
+Date: Thu, 09 Apr 2026 11:24:29 -0400
+In-Reply-To: <040f65ea-2559-4186-b733-3dc59a1ecc0b@collabora.com>
 References: <20260409-rkvdec-multicore-v1-0-62b316abf0f7@collabora.com>
- <20260409-rkvdec-multicore-v1-7-62b316abf0f7@collabora.com>
- <517dc6e9de0e284b3dc22952d9479616e6c8ec62.camel@collabora.com>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <517dc6e9de0e284b3dc22952d9479616e6c8ec62.camel@collabora.com>
-X-ZohoMailClient: External
+	 <20260409-rkvdec-multicore-v1-7-62b316abf0f7@collabora.com>
+	 <517dc6e9de0e284b3dc22952d9479616e6c8ec62.camel@collabora.com>
+	 <040f65ea-2559-4186-b733-3dc59a1ecc0b@collabora.com>
+Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Organization: Collabora Canada
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_074926_199031_6283A73E 
-X-CRM114-Status: GOOD (  30.55  )
+X-CRM114-CacheID: sfid-20260409_082436_376852_82E0F2E6 
+X-CRM114-Status: GOOD (  38.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,206 +89,378 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============2025891628241108825=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgTmljb2xhcywKCk9uIDQvOS8yNiAxMDoxOSwgTmljb2xhcyBEdWZyZXNuZSB3cm90ZToKPiBM
-ZSBqZXVkaSAwOSBhdnJpbCAyMDI2IMOgIDA5OjUwIC0wNDAwLCBEZXRsZXYgQ2FzYW5vdmEgYSDD
-qWNyaXTCoDoKPj4gQXMgZWFjaCBjb3JlIGhhcyBpdHMgb3duIElPTU1VIGNvcmUsIGJ1ZmZlcnMg
-bXVzdCBiZSBtYXBwZWQgaW4gZWFjaAo+PiBjb3JlJ3MgSU9NTVUgc28gdGhhdCBhbnkgcnVuKCkg
-Y2FsbCBjYW4gdXNlIGFueSBjb3JlIHdpdGhvdXQgaGF2aW5nIHRvCj4+IHJlbWFwIGV2ZXJ5dGhp
-bmcuCj4+Cj4+IFRvIGRvIHRoYXQsIHdlIHVzZSByb2NrY2hpcCBpb21tdSBkb21haW4ncyBpb21t
-dSBkZXZpY2VzIGxpc3QuCj4+IFdpdGggdGhhdCwgb25lIElPTU1VIGRvbWFpbiBjYW4gYmUgbWFw
-cGVkIG9uIG11bHRpcGxlIGRldmljZXMsIG1lYW5pbmcKPj4gdGhhdCBlYWNoIGNhbGwgdG8gaW9t
-bXVfbWFwKCkgd2lsbCBmbHVzaCB0aGUgbmV3IG1hcHBpbmcgb24gYWxsIGRldmljZXMKPj4gaW4g
-dGhlIGxpc3QuCj4+Cj4+IFRoZSBJT01NVSBkb21haW4gdGhhdCB3aWxsIGhhdmUgYWxsIGRldmlj
-ZXMgaW4gaXRzIGxpc3QgaXMgdGhlIGZpcnN0Cj4+IGNvcmUncyBkZWZhdWx0IGRvbWFpbi4KPj4K
-Pj4gQW5vdGhlciBkb21haW4gY2Fubm90IGJlIHVzZWQgYmVjYXVzZSBWQjIgYWxsb2NhdGVzIGJ1
-ZmZlcnMgdGhyb3VnaCB0aGUKPj4gRE1BIGVuZ2luZSwgd2hpY2ggdXNlcyBpb21tdV9nZXRfZG1h
-X2RvbWFpbigpIHRvIGZpbmQgdGhlIGRvbWFpbiB0byBtYXAKPj4gYnVmZmVycyB0aHJvdWdoLgo+
-Pgo+PiBUaGUgSU9NTVUgcmVzdG9yZSBmdW5jdGlvbiBjYW4gc3RpbGwgd29yayBhcyBiZWZvcmUs
-IGJ1dCBuZWVkcyB0byBiZSBtb3JlCj4+IGV4cGxpY2l0IGluIHdoYXQgZG9tYWluIHRvIGF0dGFj
-aCB0aGUgZGV2aWNlIHRvLgo+PiBUaGF0IGlzIGJlY2F1c2UgZGV0YWNoaW5nIHRoZSBlbXB0eSBk
-b21haW4gd2lsbCByZWF0dGFjaCB0aGUgY29yZSdzIGRlZmF1bHQKPj4gZG9tYWluLCB3aGljaCBp
-cyB3cm9uZyAoZXhjZXB0IGZvciB0aGUgZmlyc3QgIm1haW4iIGNvcmUpLgo+Pgo+PiBUaGUgUkNC
-IHRlbXBvcmFyeSBidWZmZXJzIGFyZSBhbGxvY2F0ZWQgaW4gYSBkZWRpY2F0ZWQgU1JBTSwgZWFj
-aAo+PiBjb3JlIGhhcyBpdHMgb3duIFNSQU0sIHNvIHRoZSBtYXBwaW5nIGZvciBlYWNoIGNvcmUn
-cyBTUkFNIGlzIGFkZGVkIGluIHRoZQo+PiBnbG9iYWwgZG9tYWluLgo+Pgo+PiBFdmVyeXRoaW5n
-IGVsc2UgaXMgbWFwcGVkIHRocm91Z2ggdGhlIGZpcnN0IGNvcmUncyBkZWZhdWx0IGRvbWFpbiwg
-bWFraW5nCj4+IHRoZSBkcml2ZXIgd3JpdGUgdGhlIG1hcHBpbmdzIG9uIGJvdGggSU9NTVUgY29y
-ZXMuCj4gSnVzdCByYWlzaW5nIGFuIGlzc3VlIHdpdGggdGhlIHBhdGNoIG9yZGVyaW5nIGhlcmUu
-IEknbSB3b3JyaWVkIGluIGEgZ2l0IGJpc2VjdCwKPiB0aGUgZHJpdmVyIHdpbGwgYmUgYnJva2Vu
-IHVudGlsIHdlIGFwcGx5IHRoaXMgbGFzdCBwYXRjaC4gQ2FuIHdlIG1ha2Ugc3VyZSB0aGF0Cj4g
-dGhlIGRyaXZlciBiaXNlY3RzID8gKG9yIHRlbGwgbWUgaWYgSSdtIHdyb25nKQpObywgeW91J3Jl
-IHJpZ2h0LiBUaGF0J3MgYWxzbyB3aHkgSSBtZW50aW9uZWQgaXQgaW4gdGhlIGNvdmVyIGxldHRl
-ci4gClRoaXMgY29tbWl0IGlzIGFsc28gbm90IHRvbyBiaWcsIHNvIEknbGwgbWVyZ2UgdGhlIGxh
-c3QgMyBjb21taXRzIGFuZCAKYWRhcHQgdGhlIGNvbW1pdCBtZXNzYWdlIHRvIGtlZXAgdGhlIGlu
-Zm9ybWF0aW9uIGZyb20gdGhlIDMgKHRoZSBjb21taXQgCm1lc3NhZ2VzIGFyZSB3aHkgSSB3YW50
-ZWQgdG8ga2VlcCB0aGVtIHNlcGFyYXRlLCBidXQgdGhlcmUgaXMgbm8gZ29vZCAKd2F5IHRvIGtl
-ZXAgdGhlbSB0aGF0IHdheSkKCkRldGxldi4KPgo+PiBTaWduZWQtb2ZmLWJ5OiBEZXRsZXYgQ2Fz
-YW5vdmEgPGRldGxldi5jYXNhbm92YUBjb2xsYWJvcmEuY29tPgo+PiAtLS0KPj4gIMKgLi4uL21l
-ZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRlYy9ya3ZkZWMtcmNiLmPCoMKgwqAgfCAyMSArKysr
-KystLS0tLS0tCj4+ICDCoC4uLi9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVj
-LXJjYi5owqDCoMKgIHzCoCA2ICsrLS0KPj4gIMKgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2Nr
-Y2hpcC9ya3ZkZWMvcmt2ZGVjLmPCoMKgwqAgfCAzNSArKysrKysrKysrKysrKysrKy0tLS0tCj4+
-ICDCoGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5owqDCoMKg
-IHzCoCAyICstCj4+ICDCoDQgZmlsZXMgY2hhbmdlZCwgNDQgaW5zZXJ0aW9ucygrKSwgMjAgZGVs
-ZXRpb25zKC0pCj4+Cj4+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tj
-aGlwL3JrdmRlYy9ya3ZkZWMtcmNiLmMgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlw
-L3JrdmRlYy9ya3ZkZWMtcmNiLmMKPj4gaW5kZXggMTkwZmI3NDM4ZThjLi45NzdlMzdjZjIwOWIg
-MTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3Jr
-dmRlYy1yY2IuYwo+PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3JvY2tjaGlwL3JrdmRl
-Yy9ya3ZkZWMtcmNiLmMKPj4gQEAgLTU3LDcgKzU3LDcgQEAgYm9vbCBya3ZkZWNfcmNiX2J1Zl92
-YWxpZGF0ZV9zaXplKHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgpCj4+ICDCoAlyZXR1cm4gcmV0Owo+
-PiAgwqB9Cj4+ICAgCj4+IC12b2lkIHJrdmRlY19mcmVlX3JjYihzdHJ1Y3Qgcmt2ZGVjX2NvcmUg
-KmNvcmUpCj4+ICt2b2lkIHJrdmRlY19mcmVlX3JjYihzdHJ1Y3Qgcmt2ZGVjX2RldiAqcmt2ZGVj
-LCBzdHJ1Y3Qgcmt2ZGVjX2NvcmUgKmNvcmUpCj4+ICDCoHsKPj4gIMKgCXN0cnVjdCBya3ZkZWNf
-cmNiX2NvbmZpZyAqY2ZnID0gY29yZS0+cmNiX2NvbmZpZzsKPj4gIMKgCXVuc2lnbmVkIGxvbmcg
-dmlydF9hZGRyOwo+PiBAQCAtNzYsMTIgKzc2LDEyIEBAIHZvaWQgcmt2ZGVjX2ZyZWVfcmNiKHN0
-cnVjdCBya3ZkZWNfY29yZSAqY29yZSkKPj4gIMKgCQljYXNlIFJLVkRFQ19BTExPQ19TUkFNOgo+
-PiAgwqAJCQl2aXJ0X2FkZHIgPSAodW5zaWduZWQgbG9uZyljZmctPnJjYl9idWZzW2ldLmNwdTsK
-Pj4gICAKPj4gLQkJCWlmIChjb3JlLT5pb21tdV9kb21haW4pCj4+IC0JCQkJaW9tbXVfdW5tYXAo
-Y29yZS0+aW9tbXVfZG9tYWluLCB2aXJ0X2FkZHIsIHJjYl9zaXplKTsKPj4gKwkJCWlmIChya3Zk
-ZWMtPmlvbW11X2dsb2JhbF9kb21haW4pCj4+ICsJCQkJaW9tbXVfdW5tYXAocmt2ZGVjLT5pb21t
-dV9nbG9iYWxfZG9tYWluLCB2aXJ0X2FkZHIsIHJjYl9zaXplKTsKPj4gIMKgCQkJZ2VuX3Bvb2xf
-ZnJlZShjb3JlLT5zcmFtX3Bvb2wsIHZpcnRfYWRkciwgcmNiX3NpemUpOwo+PiAgwqAJCQlicmVh
-azsKPj4gIMKgCQljYXNlIFJLVkRFQ19BTExPQ19ETUE6Cj4+IC0JCQlkbWFfZnJlZV9jb2hlcmVu
-dChjb3JlLT5kZXYsCj4+ICsJCQlkbWFfZnJlZV9jb2hlcmVudChya3ZkZWMtPm1haW5fY29yZS0+
-ZGV2LAo+PiAgwqAJCQkJCcKgIHJjYl9zaXplLAo+PiAgwqAJCQkJCcKgIGNmZy0+cmNiX2J1ZnNb
-aV0uY3B1LAo+PiAgwqAJCQkJCcKgIGNmZy0+cmNiX2J1ZnNbaV0uZG1hKTsKPj4gQEAgLTk3LDcg
-Kzk3LDggQEAgdm9pZCBya3ZkZWNfZnJlZV9yY2Ioc3RydWN0IHJrdmRlY19jb3JlICpjb3JlKQo+
-PiAgwqAJY29yZS0+cmNiX2NvbmZpZyA9IE5VTEw7Cj4+ICDCoH0KPj4gICAKPj4gLWludCBya3Zk
-ZWNfYWxsb2NhdGVfcmNiKHN0cnVjdCBya3ZkZWNfY29yZSAqY29yZSwgdTMyIHdpZHRoLCB1MzIg
-aGVpZ2h0LAo+PiAraW50IHJrdmRlY19hbGxvY2F0ZV9yY2Ioc3RydWN0IHJrdmRlY19kZXYgKnJr
-dmRlYywgc3RydWN0IHJrdmRlY19jb3JlICpjb3JlLAo+PiArCQkJdTMyIHdpZHRoLCB1MzIgaGVp
-Z2h0LAo+PiAgwqAJCQljb25zdCBzdHJ1Y3QgcmNiX3NpemVfaW5mbyAqc2l6ZV9pbmZvLAo+PiAg
-wqAJCQlzaXplX3QgcmNiX2NvdW50KQo+PiAgwqB7Cj4+IEBAIC0xMzIsNyArMTMzLDcgQEAgaW50
-IHJrdmRlY19hbGxvY2F0ZV9yY2Ioc3RydWN0IHJrdmRlY19jb3JlICpjb3JlLCB1MzIgd2lkdGgs
-IHUzMiBoZWlnaHQsCj4+ICAgCj4+ICDCoAkJLyogVHJ5IGFsbG9jYXRpbmcgYW4gU1JBTSBidWZm
-ZXIgKi8KPj4gIMKgCQlpZiAoY29yZS0+c3JhbV9wb29sKSB7Cj4+IC0JCQlpZiAoY29yZS0+aW9t
-bXVfZG9tYWluKQo+PiArCQkJaWYgKHJrdmRlYy0+aW9tbXVfZ2xvYmFsX2RvbWFpbikKPj4gIMKg
-CQkJCXJjYl9zaXplID0gQUxJR04ocmNiX3NpemUsIFNaXzRLKTsKPj4gICAKPj4gIMKgCQkJY3B1
-ID0gZ2VuX3Bvb2xfZG1hX3phbGxvY19hbGlnbihjb3JlLT5zcmFtX3Bvb2wsCj4+IEBAIC0xNDIs
-MTEgKzE0MywxMSBAQCBpbnQgcmt2ZGVjX2FsbG9jYXRlX3JjYihzdHJ1Y3Qgcmt2ZGVjX2NvcmUg
-KmNvcmUsIHUzMiB3aWR0aCwgdTMyIGhlaWdodCwKPj4gIMKgCQl9Cj4+ICAgCj4+ICDCoAkJLyog
-SWYgYW4gSU9NTVUgaXMgdXNlZCwgbWFwIHRoZSBTUkFNIGFkZHJlc3MgdGhyb3VnaCBpdCAqLwo+
-PiAtCQlpZiAoY3B1ICYmIGNvcmUtPmlvbW11X2RvbWFpbikgewo+PiArCQlpZiAoY3B1ICYmIHJr
-dmRlYy0+aW9tbXVfZ2xvYmFsX2RvbWFpbikgewo+PiAgwqAJCQl1bnNpZ25lZCBsb25nIHZpcnRf
-YWRkciA9ICh1bnNpZ25lZCBsb25nKWNwdTsKPj4gIMKgCQkJcGh5c19hZGRyX3QgcGh5c19hZGRy
-ID0gZG1hOwo+PiAgIAo+PiAtCQkJcmV0ID0gaW9tbXVfbWFwKGNvcmUtPmlvbW11X2RvbWFpbiwg
-dmlydF9hZGRyLCBwaHlzX2FkZHIsCj4+ICsJCQlyZXQgPSBpb21tdV9tYXAocmt2ZGVjLT5pb21t
-dV9nbG9iYWxfZG9tYWluLCB2aXJ0X2FkZHIsIHBoeXNfYWRkciwKPj4gIMKgCQkJCQlyY2Jfc2l6
-ZSwgSU9NTVVfUkVBRCB8IElPTU1VX1dSSVRFLCAwKTsKPj4gIMKgCQkJaWYgKHJldCkgewo+PiAg
-wqAJCQkJZ2VuX3Bvb2xfZnJlZShjb3JlLT5zcmFtX3Bvb2wsCj4+IEBAIC0xNjYsNyArMTY3LDcg
-QEAgaW50IHJrdmRlY19hbGxvY2F0ZV9yY2Ioc3RydWN0IHJrdmRlY19jb3JlICpjb3JlLCB1MzIg
-d2lkdGgsIHUzMiBoZWlnaHQsCj4+ICDCoHJhbV9mYWxsYmFjazoKPj4gIMKgCQkvKiBGYWxsYmFj
-ayB0byBSQU0gKi8KPj4gIMKgCQlpZiAoIWNwdSkgewo+PiAtCQkJY3B1ID0gZG1hX2FsbG9jX2Nv
-aGVyZW50KGNvcmUtPmRldiwKPj4gKwkJCWNwdSA9IGRtYV9hbGxvY19jb2hlcmVudChya3ZkZWMt
-Pm1haW5fY29yZS0+ZGV2LAo+PiAgwqAJCQkJCQkgcmNiX3NpemUsCj4+ICDCoAkJCQkJCSAmZG1h
-LAo+PiAgwqAJCQkJCQkgR0ZQX0tFUk5FTCk7Cj4+IEBAIC0xODksNyArMTkwLDcgQEAgaW50IHJr
-dmRlY19hbGxvY2F0ZV9yY2Ioc3RydWN0IHJrdmRlY19jb3JlICpjb3JlLCB1MzIgd2lkdGgsIHUz
-MiBoZWlnaHQsCj4+ICDCoAlyZXR1cm4gMDsKPj4gICAKPj4gIMKgZXJyX2FsbG9jOgo+PiAtCXJr
-dmRlY19mcmVlX3JjYihjb3JlKTsKPj4gKwlya3ZkZWNfZnJlZV9yY2Iocmt2ZGVjLCBjb3JlKTsK
-Pj4gICAKPj4gIMKgCXJldHVybiByZXQ7Cj4+ICDCoH0KPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMv
-bWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy1yY2IuaCBiL2RyaXZlcnMvbWVk
-aWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy1yY2IuaAo+PiBpbmRleCBhMTJhZjli
-N2RjMmIuLmQxMTQ5YWZlN2ZkYSAxMDA2NDQKPj4gLS0tIGEvZHJpdmVycy9tZWRpYS9wbGF0Zm9y
-bS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLXJjYi5oCj4+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy1yY2IuaAo+PiBAQCAtOCw2ICs4LDcgQEAKPj4g
-ICAKPj4gIMKgI2luY2x1ZGUgPGxpbnV4L3R5cGVzLmg+Cj4+ICAgCj4+ICtzdHJ1Y3Qgcmt2ZGVj
-X2RldjsKPj4gIMKgc3RydWN0IHJrdmRlY19jdHg7Cj4+ICDCoHN0cnVjdCBya3ZkZWNfY29yZTsK
-Pj4gICAKPj4gQEAgLTIxLDExICsyMiwxMiBAQCBzdHJ1Y3QgcmNiX3NpemVfaW5mbyB7Cj4+ICDC
-oAllbnVtIHJjYl9heGlzIGF4aXM7Cj4+ICDCoH07Cj4+ICAgCj4+IC1pbnQgcmt2ZGVjX2FsbG9j
-YXRlX3JjYihzdHJ1Y3Qgcmt2ZGVjX2NvcmUgKmNvcmUsIHUzMiB3aWR0aCwgdTMyIGhlaWdodCwK
-Pj4gK2ludCBya3ZkZWNfYWxsb2NhdGVfcmNiKHN0cnVjdCBya3ZkZWNfZGV2ICpya3ZkZWMsIHN0
-cnVjdCBya3ZkZWNfY29yZSAqY29yZSwKPj4gKwkJCXUzMiB3aWR0aCwgdTMyIGhlaWdodCwKPj4g
-IMKgCQkJY29uc3Qgc3RydWN0IHJjYl9zaXplX2luZm8gKnNpemVfaW5mbywKPj4gIMKgCQkJc2l6
-ZV90IHJjYl9jb3VudCk7Cj4+ICDCoGRtYV9hZGRyX3Qgcmt2ZGVjX3JjYl9idWZfZG1hX2FkZHIo
-c3RydWN0IHJrdmRlY19jdHggKmN0eCwgaW50IGlkKTsKPj4gIMKgc2l6ZV90IHJrdmRlY19yY2Jf
-YnVmX3NpemUoc3RydWN0IHJrdmRlY19jdHggKmN0eCwgaW50IGlkKTsKPj4gIMKgaW50IHJrdmRl
-Y19yY2JfYnVmX2NvdW50KHN0cnVjdCBya3ZkZWNfY3R4ICpjdHgpOwo+PiAgwqBib29sIHJrdmRl
-Y19yY2JfYnVmX3ZhbGlkYXRlX3NpemUoc3RydWN0IHJrdmRlY19jdHggKmN0eCk7Cj4+IC12b2lk
-IHJrdmRlY19mcmVlX3JjYihzdHJ1Y3Qgcmt2ZGVjX2NvcmUgKmNvcmUpOwo+PiArdm9pZCBya3Zk
-ZWNfZnJlZV9yY2Ioc3RydWN0IHJrdmRlY19kZXYgKnJrdmRlYywgc3RydWN0IHJrdmRlY19jb3Jl
-ICpjb3JlKTsKPj4gZGlmZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAv
-cmt2ZGVjL3JrdmRlYy5jIGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMv
-cmt2ZGVjLmMKPj4gaW5kZXggYzI4MThmMTU3NWVmLi4yOTMwZTliNjQ5MDYgMTAwNjQ0Cj4+IC0t
-LSBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5jCj4+ICsr
-KyBiL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5jCj4+IEBA
-IC0xMjA0LDkgKzEyMDQsOSBAQCBzdGF0aWMgdm9pZCBya3ZkZWNfZGV2aWNlX3J1bih2b2lkICpw
-cml2KQo+PiAgwqAJfQo+PiAgIAo+PiAgwqAJaWYgKCFya3ZkZWNfcmNiX2J1Zl92YWxpZGF0ZV9z
-aXplKGN0eCkpIHsKPj4gLQkJcmt2ZGVjX2ZyZWVfcmNiKGN0eC0+Y29yZSk7Cj4+ICsJCXJrdmRl
-Y19mcmVlX3JjYihjdHgtPmRldiwgY3R4LT5jb3JlKTsKPj4gICAKPj4gLQkJcmV0ID0gcmt2ZGVj
-X2FsbG9jYXRlX3JjYihjdHgtPmNvcmUsCj4+ICsJCXJldCA9IHJrdmRlY19hbGxvY2F0ZV9yY2Io
-Y3R4LT5kZXYsIGN0eC0+Y29yZSwKPj4gIMKgCQkJCQnCoCBjdHgtPmRlY29kZWRfZm10LmZtdC5w
-aXhfbXAud2lkdGgsCj4+ICDCoAkJCQkJwqAgY3R4LT5kZWNvZGVkX2ZtdC5mbXQucGl4X21wLmhl
-aWdodCwKPj4gIMKgCQkJCQnCoCBjdHgtPmRldi0+dmFyaWFudC0+cmNiX3NpemVzLAo+PiBAQCAt
-MTQ4Niw2ICsxNDg2LDcgQEAgc3RhdGljIHZvaWQgcmt2ZGVjX3Y0bDJfY2xlYW51cChzdHJ1Y3Qg
-cmt2ZGVjX2RldiAqcmt2ZGVjKQo+PiAgIAo+PiAgwqBzdGF0aWMgdm9pZCBya3ZkZWNfaW9tbXVf
-cmVzdG9yZShzdHJ1Y3Qgcmt2ZGVjX2NvcmUgKmNvcmUpCj4+ICDCoHsKPj4gKwlpbnQgcmV0Owo+
-PiAgwqAJaWYgKGNvcmUtPmVtcHR5X2RvbWFpbikgewo+PiAgwqAJCS8qCj4+ICDCoAkJICogVG8g
-cmV3cml0ZSBtYXBwaW5nIGludG8gdGhlIGF0dGFjaGVkIElPTU1VIGNvcmUsIGF0dGFjaCBhIG5l
-dyBlbXB0eSBkb21haW4gdGhhdAo+PiBAQCAtMTQ5NCw4ICsxNDk1LDE0IEBAIHN0YXRpYyB2b2lk
-IHJrdmRlY19pb21tdV9yZXN0b3JlKHN0cnVjdCBya3ZkZWNfY29yZSAqY29yZSkKPj4gIMKgCQkg
-KiBUaGlzIGlzIHNhZmVseSBkb25lIGluIHRoaXMgaW50ZXJydXB0IGhhbmRsZXIgdG8gbWFrZSBz
-dXJlIG5vIG1lbW9yeSBnZXQgbWFwcGVkCj4+ICDCoAkJICogdGhyb3VnaCB0aGUgSU9NTVUgd2hp
-bGUgdGhlIGVtcHR5IGRvbWFpbiBpcyBhdHRhY2hlZC4KPj4gIMKgCQkgKi8KPj4gLQkJaW9tbXVf
-YXR0YWNoX2RldmljZShjb3JlLT5lbXB0eV9kb21haW4sIGNvcmUtPmRldik7Cj4+ICsJCWlvbW11
-X2RldGFjaF9kZXZpY2UoY29yZS0+Y3Vycl9jdHgtPmRldi0+aW9tbXVfZ2xvYmFsX2RvbWFpbiwg
-Y29yZS0+ZGV2KTsKPj4gKwkJcmV0ID0gaW9tbXVfYXR0YWNoX2RldmljZShjb3JlLT5lbXB0eV9k
-b21haW4sIGNvcmUtPmRldik7Cj4+ICsJCWlmIChyZXQpCj4+ICsJCQlkZXZfd2Fybihjb3JlLT5k
-ZXYsICJDYW5ub3QgYXR0YWNoIGVtcHR5IGRvbWFpbjogJWRcbiIsIHJldCk7Cj4+ICDCoAkJaW9t
-bXVfZGV0YWNoX2RldmljZShjb3JlLT5lbXB0eV9kb21haW4sIGNvcmUtPmRldik7Cj4+ICsJCXJl
-dCA9IGlvbW11X2F0dGFjaF9kZXZpY2UoY29yZS0+Y3Vycl9jdHgtPmRldi0+aW9tbXVfZ2xvYmFs
-X2RvbWFpbiwgY29yZS0+ZGV2KTsKPj4gKwkJaWYgKHJldCkKPj4gKwkJCWRldl93YXJuKGNvcmUt
-PmRldiwgIkNhbm5vdCBhdHRhY2ggZ2xvYmFsIGRvbWFpbjogJWRcbiIsIHJldCk7Cj4+ICDCoAl9
-Cj4+ICDCoH0KPj4gICAKPj4gQEAgLTE4NTgsNiArMTg2NSw4IEBAIHN0YXRpYyBpbnQgcmt2ZGVj
-X3Byb2JlKHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBkZXYpCj4+ICAgCj4+ICDCoAljb3JlID0g
-JnJrdmRlYy0+Y29yZXNbcmt2ZGVjLT5jb3JlX2NvdW50KytdOwo+PiAgIAo+PiArCWNvcmUtPmlk
-ID0gcmt2ZGVjLT5jb3JlX2NvdW50IC0gMTsKPj4gKwo+PiAgwqAJcGxhdGZvcm1fc2V0X2RydmRh
-dGEocGRldiwgcmt2ZGVjKTsKPj4gIMKgCWNvcmUtPmRldiA9ICZwZGV2LT5kZXY7Cj4+ICDCoAlJ
-TklUX0RFTEFZRURfV09SSygmY29yZS0+d2F0Y2hkb2dfd29yaywgcmt2ZGVjX3dhdGNoZG9nX2Z1
-bmMpOwo+PiBAQCAtMTg4MywxMiArMTg5MiwyNCBAQCBzdGF0aWMgaW50IHJrdmRlY19wcm9iZShz
-dHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+PiAgwqAJCQlyZXR1cm4gUFRSX0VSUihjb3Jl
-LT5saW5rKTsKPj4gIMKgCX0KPj4gICAKPj4gLQljb3JlLT5pb21tdV9kb21haW4gPSBpb21tdV9n
-ZXRfZG9tYWluX2Zvcl9kZXYoJnBkZXYtPmRldik7Cj4+IC0JaWYgKGNvcmUtPmlvbW11X2RvbWFp
-bikgewo+PiArCWlmIChpb21tdV9nZXRfZG9tYWluX2Zvcl9kZXYoJnBkZXYtPmRldikpIHsKPj4g
-IMKgCQljb3JlLT5lbXB0eV9kb21haW4gPSBpb21tdV9wYWdpbmdfZG9tYWluX2FsbG9jKGNvcmUt
-PmRldik7Cj4+ICAgCj4+IC0JCWlmICghY29yZS0+ZW1wdHlfZG9tYWluKQo+PiArCQlpZiAoSVNf
-RVJSKGNvcmUtPmVtcHR5X2RvbWFpbikpCj4+ICDCoAkJCWRldl93YXJuKGNvcmUtPmRldiwgImNh
-bm5vdCBhbGxvYyBuZXcgZW1wdHkgZG9tYWluXG4iKTsKPj4gKwo+PiArCQlpZiAoIXJrdmRlYy0+
-aW9tbXVfZ2xvYmFsX2RvbWFpbikgewo+PiArCQkJcmt2ZGVjLT5pb21tdV9nbG9iYWxfZG9tYWlu
-ID0gaW9tbXVfZ2V0X2RvbWFpbl9mb3JfZGV2KGNvcmUtPmRldik7Cj4+ICsKPj4gKwkJCWlmIChJ
-U19FUlIocmt2ZGVjLT5pb21tdV9nbG9iYWxfZG9tYWluKSkgewo+PiArCQkJCXJrdmRlYy0+aW9t
-bXVfZ2xvYmFsX2RvbWFpbiA9IE5VTEw7Cj4+ICsJCQkJZGV2X3dhcm5fb25jZShjb3JlLT5kZXYs
-ICJjYW5ub3QgYWxsb2MgbmV3IGdsb2JhbCBkb21haW5cbiIpOwo+PiArCQkJfQo+PiArCQl9Cj4+
-ICsKPj4gKwkJcmV0ID0gaW9tbXVfYXR0YWNoX2RldmljZShya3ZkZWMtPmlvbW11X2dsb2JhbF9k
-b21haW4sIGNvcmUtPmRldik7Cj4+ICsJCWlmIChyZXQpCj4+ICsJCQlkZXZfd2Fybihjb3JlLT5k
-ZXYsICJjYW5ub3QgYXR0YWNoIGdsb2JhbCBkb21haW4gdG8gY29yZSAlZFxuIiwgY29yZS0+aWQp
-Owo+PiAgwqAJfQo+PiAgIAo+PiAgwqAJcmV0ID0gZG1hX3NldF9jb2hlcmVudF9tYXNrKCZwZGV2
-LT5kZXYsIERNQV9CSVRfTUFTSygzMikpOwo+PiBAQCAtMTk2MSw3ICsxOTgyLDcgQEAgc3RhdGlj
-IHZvaWQgcmt2ZGVjX3JlbW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+PiAgwqAJ
-CWlmIChya3ZkZWMtPmNvcmVzW2ldLmVtcHR5X2RvbWFpbikKPj4gIMKgCQkJaW9tbXVfZG9tYWlu
-X2ZyZWUocmt2ZGVjLT5jb3Jlc1tpXS5lbXB0eV9kb21haW4pOwo+PiAgIAo+PiAtCQlya3ZkZWNf
-ZnJlZV9yY2IoJnJrdmRlYy0+Y29yZXNbaV0pOwo+PiArCQlya3ZkZWNfZnJlZV9yY2Iocmt2ZGVj
-LCAmcmt2ZGVjLT5jb3Jlc1tpXSk7Cj4+ICDCoAl9Cj4+ICDCoH0KPj4gICAKPj4gZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5oIGIvZHJp
-dmVycy9tZWRpYS9wbGF0Zm9ybS9yb2NrY2hpcC9ya3ZkZWMvcmt2ZGVjLmgKPj4gaW5kZXggNGYw
-NDJhMzY3ZGMwLi5jY2Q3NjZiMjIwYzcgMTAwNjQ0Cj4+IC0tLSBhL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5oCj4+ICsrKyBiL2RyaXZlcnMvbWVkaWEvcGxh
-dGZvcm0vcm9ja2NoaXAvcmt2ZGVjL3JrdmRlYy5oCj4+IEBAIC0xMzUsNyArMTM1LDYgQEAgc3Ry
-dWN0IHJrdmRlY19jb3JlIHsKPj4gIMKgCXZvaWQgX19pb21lbSAqbGluazsKPj4gIMKgCXN0cnVj
-dCBkZWxheWVkX3dvcmsgd2F0Y2hkb2dfd29yazsKPj4gIMKgCXN0cnVjdCBnZW5fcG9vbCAqc3Jh
-bV9wb29sOwo+PiAtCXN0cnVjdCBpb21tdV9kb21haW4gKmlvbW11X2RvbWFpbjsKPj4gIMKgCXN0
-cnVjdCBpb21tdV9kb21haW4gKmVtcHR5X2RvbWFpbjsKPj4gIMKgCXN0cnVjdCBya3ZkZWNfcmNi
-X2NvbmZpZyAqcmNiX2NvbmZpZzsKPj4gIMKgCXN0cnVjdCBya3ZkZWNfY3R4ICpjdXJyX2N0eDsK
-Pj4gQEAgLTE1NSw2ICsxNTQsNyBAQCBzdHJ1Y3Qgcmt2ZGVjX2RldiB7Cj4+ICDCoAl1bnNpZ25l
-ZCBpbnQgYXZhaWxhYmxlX2NvcmVfY291bnQ7Cj4+ICDCoAlzcGlubG9ja190IGNvcmVzX2xvY2s7
-IC8qIHNlcmlhbGl6ZXMgY29yZSBsaXN0IGFjY2VzcyAqLwo+PiAgwqAJc3RydWN0IHJrdmRlY19j
-b3JlICptYWluX2NvcmU7Cj4+ICsJc3RydWN0IGlvbW11X2RvbWFpbiAqaW9tbXVfZ2xvYmFsX2Rv
-bWFpbjsKPj4gIMKgfTsKPj4gICAKPj4gIMKgc3RydWN0IHJrdmRlY19jdHggewoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============2025891628241108825==
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-oRdpf3vSzts/F/hutoEG"
+
+
+--=-oRdpf3vSzts/F/hutoEG
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le jeudi 09 avril 2026 =C3=A0 10:49 -0400, Detlev Casanova a =C3=A9crit=C2=
+=A0:
+> Hi Nicolas,
+>=20
+> On 4/9/26 10:19, Nicolas Dufresne wrote:
+> > Le jeudi 09 avril 2026 =C3=A0 09:50 -0400, Detlev Casanova a =C3=A9crit=
+=C2=A0:
+> > > As each core has its own IOMMU core, buffers must be mapped in each
+> > > core's IOMMU so that any run() call can use any core without having t=
+o
+> > > remap everything.
+> > >=20
+> > > To do that, we use rockchip iommu domain's iommu devices list.
+> > > With that, one IOMMU domain can be mapped on multiple devices, meanin=
+g
+> > > that each call to iommu_map() will flush the new mapping on all devic=
+es
+> > > in the list.
+> > >=20
+> > > The IOMMU domain that will have all devices in its list is the first
+> > > core's default domain.
+> > >=20
+> > > Another domain cannot be used because VB2 allocates buffers through t=
+he
+> > > DMA engine, which uses iommu_get_dma_domain() to find the domain to m=
+ap
+> > > buffers through.
+> > >=20
+> > > The IOMMU restore function can still work as before, but needs to be =
+more
+> > > explicit in what domain to attach the device to.
+> > > That is because detaching the empty domain will reattach the core's d=
+efault
+> > > domain, which is wrong (except for the first "main" core).
+> > >=20
+> > > The RCB temporary buffers are allocated in a dedicated SRAM, each
+> > > core has its own SRAM, so the mapping for each core's SRAM is added i=
+n the
+> > > global domain.
+> > >=20
+> > > Everything else is mapped through the first core's default domain, ma=
+king
+> > > the driver write the mappings on both IOMMU cores.
+> > Just raising an issue with the patch ordering here. I'm worried in a gi=
+t bisect,
+> > the driver will be broken until we apply this last patch. Can we make s=
+ure that
+> > the driver bisects ? (or tell me if I'm wrong)
+> No, you're right. That's also why I mentioned it in the cover letter.=20
+> This commit is also not too big, so I'll merge the last 3 commits and=20
+> adapt the commit message to keep the information from the 3 (the commit=
+=20
+> messages are why I wanted to keep them separate, but there is no good=20
+> way to keep them that way)
+
+
+Unless we can implement everything, but only turn the multicore switch on i=
+n a
+final patch ? Basically removing the code that enable other cores at the en=
+d.
+But I don't want more code just to justify this, the break nice is nice for
+review fwiw, but if squashing is the way, let it be.
+
+Nicolas
+
+>=20
+> Detlev.
+> >=20
+> > > Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+> > > ---
+> > > =C2=A0=C2=A0.../media/platform/rockchip/rkvdec/rkvdec-rcb.c=C2=A0=C2=
+=A0=C2=A0 | 21 ++++++-------
+> > > =C2=A0=C2=A0.../media/platform/rockchip/rkvdec/rkvdec-rcb.h=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 6 ++--
+> > > =C2=A0=C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.c=C2=A0=C2=
+=A0=C2=A0 | 35 +++++++++++++++++-----
+> > > =C2=A0=C2=A0drivers/media/platform/rockchip/rkvdec/rkvdec.h=C2=A0=C2=
+=A0=C2=A0 |=C2=A0 2 +-
+> > > =C2=A0=C2=A04 files changed, 44 insertions(+), 20 deletions(-)
+> > >=20
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c b/dr=
+ivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+> > > index 190fb7438e8c..977e37cf209b 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.c
+> > > @@ -57,7 +57,7 @@ bool rkvdec_rcb_buf_validate_size(struct rkvdec_ctx=
+ *ctx)
+> > > =C2=A0=C2=A0	return ret;
+> > > =C2=A0=C2=A0}
+> > > =C2=A0=20
+> > > -void rkvdec_free_rcb(struct rkvdec_core *core)
+> > > +void rkvdec_free_rcb(struct rkvdec_dev *rkvdec, struct rkvdec_core *=
+core)
+> > > =C2=A0=C2=A0{
+> > > =C2=A0=C2=A0	struct rkvdec_rcb_config *cfg =3D core->rcb_config;
+> > > =C2=A0=C2=A0	unsigned long virt_addr;
+> > > @@ -76,12 +76,12 @@ void rkvdec_free_rcb(struct rkvdec_core *core)
+> > > =C2=A0=C2=A0		case RKVDEC_ALLOC_SRAM:
+> > > =C2=A0=C2=A0			virt_addr =3D (unsigned long)cfg->rcb_bufs[i].cpu;
+> > > =C2=A0=20
+> > > -			if (core->iommu_domain)
+> > > -				iommu_unmap(core->iommu_domain, virt_addr, rcb_size);
+> > > +			if (rkvdec->iommu_global_domain)
+> > > +				iommu_unmap(rkvdec->iommu_global_domain, virt_addr, rcb_size);
+> > > =C2=A0=C2=A0			gen_pool_free(core->sram_pool, virt_addr, rcb_size);
+> > > =C2=A0=C2=A0			break;
+> > > =C2=A0=C2=A0		case RKVDEC_ALLOC_DMA:
+> > > -			dma_free_coherent(core->dev,
+> > > +			dma_free_coherent(rkvdec->main_core->dev,
+> > > =C2=A0=C2=A0					=C2=A0 rcb_size,
+> > > =C2=A0=C2=A0					=C2=A0 cfg->rcb_bufs[i].cpu,
+> > > =C2=A0=C2=A0					=C2=A0 cfg->rcb_bufs[i].dma);
+> > > @@ -97,7 +97,8 @@ void rkvdec_free_rcb(struct rkvdec_core *core)
+> > > =C2=A0=C2=A0	core->rcb_config =3D NULL;
+> > > =C2=A0=C2=A0}
+> > > =C2=A0=20
+> > > -int rkvdec_allocate_rcb(struct rkvdec_core *core, u32 width, u32 hei=
+ght,
+> > > +int rkvdec_allocate_rcb(struct rkvdec_dev *rkvdec, struct rkvdec_cor=
+e *core,
+> > > +			u32 width, u32 height,
+> > > =C2=A0=C2=A0			const struct rcb_size_info *size_info,
+> > > =C2=A0=C2=A0			size_t rcb_count)
+> > > =C2=A0=C2=A0{
+> > > @@ -132,7 +133,7 @@ int rkvdec_allocate_rcb(struct rkvdec_core *core,=
+ u32 width, u32 height,
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0		/* Try allocating an SRAM buffer */
+> > > =C2=A0=C2=A0		if (core->sram_pool) {
+> > > -			if (core->iommu_domain)
+> > > +			if (rkvdec->iommu_global_domain)
+> > > =C2=A0=C2=A0				rcb_size =3D ALIGN(rcb_size, SZ_4K);
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0			cpu =3D gen_pool_dma_zalloc_align(core->sram_pool,
+> > > @@ -142,11 +143,11 @@ int rkvdec_allocate_rcb(struct rkvdec_core *cor=
+e, u32 width, u32 height,
+> > > =C2=A0=C2=A0		}
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0		/* If an IOMMU is used, map the SRAM address through it=
+ */
+> > > -		if (cpu && core->iommu_domain) {
+> > > +		if (cpu && rkvdec->iommu_global_domain) {
+> > > =C2=A0=C2=A0			unsigned long virt_addr =3D (unsigned long)cpu;
+> > > =C2=A0=C2=A0			phys_addr_t phys_addr =3D dma;
+> > > =C2=A0=20
+> > > -			ret =3D iommu_map(core->iommu_domain, virt_addr, phys_addr,
+> > > +			ret =3D iommu_map(rkvdec->iommu_global_domain, virt_addr, phys_ad=
+dr,
+> > > =C2=A0=C2=A0					rcb_size, IOMMU_READ | IOMMU_WRITE, 0);
+> > > =C2=A0=C2=A0			if (ret) {
+> > > =C2=A0=C2=A0				gen_pool_free(core->sram_pool,
+> > > @@ -166,7 +167,7 @@ int rkvdec_allocate_rcb(struct rkvdec_core *core,=
+ u32 width, u32 height,
+> > > =C2=A0=C2=A0ram_fallback:
+> > > =C2=A0=C2=A0		/* Fallback to RAM */
+> > > =C2=A0=C2=A0		if (!cpu) {
+> > > -			cpu =3D dma_alloc_coherent(core->dev,
+> > > +			cpu =3D dma_alloc_coherent(rkvdec->main_core->dev,
+> > > =C2=A0=C2=A0						 rcb_size,
+> > > =C2=A0=C2=A0						 &dma,
+> > > =C2=A0=C2=A0						 GFP_KERNEL);
+> > > @@ -189,7 +190,7 @@ int rkvdec_allocate_rcb(struct rkvdec_core *core,=
+ u32 width, u32 height,
+> > > =C2=A0=C2=A0	return 0;
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0err_alloc:
+> > > -	rkvdec_free_rcb(core);
+> > > +	rkvdec_free_rcb(rkvdec, core);
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0	return ret;
+> > > =C2=A0=C2=A0}
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h b/dr=
+ivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+> > > index a12af9b7dc2b..d1149afe7fda 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-rcb.h
+> > > @@ -8,6 +8,7 @@
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0#include <linux/types.h>
+> > > =C2=A0=20
+> > > +struct rkvdec_dev;
+> > > =C2=A0=C2=A0struct rkvdec_ctx;
+> > > =C2=A0=C2=A0struct rkvdec_core;
+> > > =C2=A0=20
+> > > @@ -21,11 +22,12 @@ struct rcb_size_info {
+> > > =C2=A0=C2=A0	enum rcb_axis axis;
+> > > =C2=A0=C2=A0};
+> > > =C2=A0=20
+> > > -int rkvdec_allocate_rcb(struct rkvdec_core *core, u32 width, u32 hei=
+ght,
+> > > +int rkvdec_allocate_rcb(struct rkvdec_dev *rkvdec, struct rkvdec_cor=
+e *core,
+> > > +			u32 width, u32 height,
+> > > =C2=A0=C2=A0			const struct rcb_size_info *size_info,
+> > > =C2=A0=C2=A0			size_t rcb_count);
+> > > =C2=A0=C2=A0dma_addr_t rkvdec_rcb_buf_dma_addr(struct rkvdec_ctx *ctx=
+, int id);
+> > > =C2=A0=C2=A0size_t rkvdec_rcb_buf_size(struct rkvdec_ctx *ctx, int id=
+);
+> > > =C2=A0=C2=A0int rkvdec_rcb_buf_count(struct rkvdec_ctx *ctx);
+> > > =C2=A0=C2=A0bool rkvdec_rcb_buf_validate_size(struct rkvdec_ctx *ctx)=
+;
+> > > -void rkvdec_free_rcb(struct rkvdec_core *core);
+> > > +void rkvdec_free_rcb(struct rkvdec_dev *rkvdec, struct rkvdec_core *=
+core);
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/driver=
+s/media/platform/rockchip/rkvdec/rkvdec.c
+> > > index c2818f1575ef..2930e9b64906 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+> > > @@ -1204,9 +1204,9 @@ static void rkvdec_device_run(void *priv)
+> > > =C2=A0=C2=A0	}
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0	if (!rkvdec_rcb_buf_validate_size(ctx)) {
+> > > -		rkvdec_free_rcb(ctx->core);
+> > > +		rkvdec_free_rcb(ctx->dev, ctx->core);
+> > > =C2=A0=20
+> > > -		ret =3D rkvdec_allocate_rcb(ctx->core,
+> > > +		ret =3D rkvdec_allocate_rcb(ctx->dev, ctx->core,
+> > > =C2=A0=C2=A0					=C2=A0 ctx->decoded_fmt.fmt.pix_mp.width,
+> > > =C2=A0=C2=A0					=C2=A0 ctx->decoded_fmt.fmt.pix_mp.height,
+> > > =C2=A0=C2=A0					=C2=A0 ctx->dev->variant->rcb_sizes,
+> > > @@ -1486,6 +1486,7 @@ static void rkvdec_v4l2_cleanup(struct rkvdec_d=
+ev *rkvdec)
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0static void rkvdec_iommu_restore(struct rkvdec_core *core=
+)
+> > > =C2=A0=C2=A0{
+> > > +	int ret;
+> > > =C2=A0=C2=A0	if (core->empty_domain) {
+> > > =C2=A0=C2=A0		/*
+> > > =C2=A0=C2=A0		 * To rewrite mapping into the attached IOMMU core, att=
+ach a new empty domain that
+> > > @@ -1494,8 +1495,14 @@ static void rkvdec_iommu_restore(struct rkvdec=
+_core *core)
+> > > =C2=A0=C2=A0		 * This is safely done in this interrupt handler to mak=
+e sure no memory get mapped
+> > > =C2=A0=C2=A0		 * through the IOMMU while the empty domain is attached=
+.
+> > > =C2=A0=C2=A0		 */
+> > > -		iommu_attach_device(core->empty_domain, core->dev);
+> > > +		iommu_detach_device(core->curr_ctx->dev->iommu_global_domain, core=
+->dev);
+> > > +		ret =3D iommu_attach_device(core->empty_domain, core->dev);
+> > > +		if (ret)
+> > > +			dev_warn(core->dev, "Cannot attach empty domain: %d\n", ret);
+> > > =C2=A0=C2=A0		iommu_detach_device(core->empty_domain, core->dev);
+> > > +		ret =3D iommu_attach_device(core->curr_ctx->dev->iommu_global_doma=
+in, core->dev);
+> > > +		if (ret)
+> > > +			dev_warn(core->dev, "Cannot attach global domain: %d\n", ret);
+> > > =C2=A0=C2=A0	}
+> > > =C2=A0=C2=A0}
+> > > =C2=A0=20
+> > > @@ -1858,6 +1865,8 @@ static int rkvdec_probe(struct platform_device =
+*pdev)
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0	core =3D &rkvdec->cores[rkvdec->core_count++];
+> > > =C2=A0=20
+> > > +	core->id =3D rkvdec->core_count - 1;
+> > > +
+> > > =C2=A0=C2=A0	platform_set_drvdata(pdev, rkvdec);
+> > > =C2=A0=C2=A0	core->dev =3D &pdev->dev;
+> > > =C2=A0=C2=A0	INIT_DELAYED_WORK(&core->watchdog_work, rkvdec_watchdog_=
+func);
+> > > @@ -1883,12 +1892,24 @@ static int rkvdec_probe(struct platform_devic=
+e *pdev)
+> > > =C2=A0=C2=A0			return PTR_ERR(core->link);
+> > > =C2=A0=C2=A0	}
+> > > =C2=A0=20
+> > > -	core->iommu_domain =3D iommu_get_domain_for_dev(&pdev->dev);
+> > > -	if (core->iommu_domain) {
+> > > +	if (iommu_get_domain_for_dev(&pdev->dev)) {
+> > > =C2=A0=C2=A0		core->empty_domain =3D iommu_paging_domain_alloc(core->=
+dev);
+> > > =C2=A0=20
+> > > -		if (!core->empty_domain)
+> > > +		if (IS_ERR(core->empty_domain))
+> > > =C2=A0=C2=A0			dev_warn(core->dev, "cannot alloc new empty domain\n")=
+;
+> > > +
+> > > +		if (!rkvdec->iommu_global_domain) {
+> > > +			rkvdec->iommu_global_domain =3D iommu_get_domain_for_dev(core->de=
+v);
+> > > +
+> > > +			if (IS_ERR(rkvdec->iommu_global_domain)) {
+> > > +				rkvdec->iommu_global_domain =3D NULL;
+> > > +				dev_warn_once(core->dev, "cannot alloc new global domain\n");
+> > > +			}
+> > > +		}
+> > > +
+> > > +		ret =3D iommu_attach_device(rkvdec->iommu_global_domain, core->dev=
+);
+> > > +		if (ret)
+> > > +			dev_warn(core->dev, "cannot attach global domain to core %d\n", c=
+ore->id);
+> > > =C2=A0=C2=A0	}
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0	ret =3D dma_set_coherent_mask(&pdev->dev, DMA_BIT_MASK(3=
+2));
+> > > @@ -1961,7 +1982,7 @@ static void rkvdec_remove(struct platform_devic=
+e *pdev)
+> > > =C2=A0=C2=A0		if (rkvdec->cores[i].empty_domain)
+> > > =C2=A0=C2=A0			iommu_domain_free(rkvdec->cores[i].empty_domain);
+> > > =C2=A0=20
+> > > -		rkvdec_free_rcb(&rkvdec->cores[i]);
+> > > +		rkvdec_free_rcb(rkvdec, &rkvdec->cores[i]);
+> > > =C2=A0=C2=A0	}
+> > > =C2=A0=C2=A0}
+> > > =C2=A0=20
+> > > diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.h b/driver=
+s/media/platform/rockchip/rkvdec/rkvdec.h
+> > > index 4f042a367dc0..ccd766b220c7 100644
+> > > --- a/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> > > +++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.h
+> > > @@ -135,7 +135,6 @@ struct rkvdec_core {
+> > > =C2=A0=C2=A0	void __iomem *link;
+> > > =C2=A0=C2=A0	struct delayed_work watchdog_work;
+> > > =C2=A0=C2=A0	struct gen_pool *sram_pool;
+> > > -	struct iommu_domain *iommu_domain;
+> > > =C2=A0=C2=A0	struct iommu_domain *empty_domain;
+> > > =C2=A0=C2=A0	struct rkvdec_rcb_config *rcb_config;
+> > > =C2=A0=C2=A0	struct rkvdec_ctx *curr_ctx;
+> > > @@ -155,6 +154,7 @@ struct rkvdec_dev {
+> > > =C2=A0=C2=A0	unsigned int available_core_count;
+> > > =C2=A0=C2=A0	spinlock_t cores_lock; /* serializes core list access */
+> > > =C2=A0=C2=A0	struct rkvdec_core *main_core;
+> > > +	struct iommu_domain *iommu_global_domain;
+> > > =C2=A0=C2=A0};
+> > > =C2=A0=20
+> > > =C2=A0=C2=A0struct rkvdec_ctx {
+
+--=-oRdpf3vSzts/F/hutoEG
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+Content-Transfer-Encoding: 7bit
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCadfErQAKCRDZQZRRKWBy
+9Pn/AP9pfr2vN+orSi7oPIBk4oXz2hHxU/tyhhj0mADYVEsFdAD/ehYDStpNd56v
+9rN/y/2K/yzi6YC3Sl9puEs8mjZO7Ak=
+=ukm5
+-----END PGP SIGNATURE-----
+
+--=-oRdpf3vSzts/F/hutoEG--
+
+
+--===============2025891628241108825==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2025891628241108825==--
+
