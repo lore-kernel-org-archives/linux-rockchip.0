@@ -4,101 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 615F1F459F3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Apr 2026 15:19:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5ABB1F459E5
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Apr 2026 22:06:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6mNoItG872OhQsWbFjBdhsvztUyhXoP9HvhUY8skoJI=; b=Ak7Y8JvZIJE0gy
-	7cdg1RGXUf1eoEijT7GOxV5FFweDVJTkfRvfiy3MRbi9eX2cfnIuEaSRoo9xLgiHzCZfFiz5X/dR+
-	HAkpxBIahSfg7nyFrjiTxKWUHoTB0GkA1nE7mOv8NlZ3jUXDpKofLiBNaOCcyewtEcjxpX5pmFKJp
-	5mmDmtmhkkX1PqXb8G+Li/Zl4sOKGiwrSwykDfz4ToIkxOFcUQT41o37h3f4ydDhquQIyWNZUwuh5
-	gUmQVOQE3Z5xtdch+slzFZ6wsEK7Cp4Yii3vCsxZXYsLGB1PzYyDtxhCzVtZHwBQrdBy/8GMQm4n6
-	d8TUGVjH18kBZkn/REEg==;
+	List-Owner; bh=B8fkJPdh8/gba0gD4cff9tH8f1yDYQcV6Aof+CC1qeU=; b=cad3kDOaU1knyt
+	PZs4P76rX2lhRQhttGrvz8492dQjoLce9ANobgVObS8A3pdEIQa9/LltwuKLU5/NQ/Z+QMU4XKO7B
+	ZhdPzyc/F32cW3kdHfdI7MeOFqAV/DKihsPlDlA2qbp7/65oy8AzWy1bLm+/D2R6f00KE8WmPAVJY
+	/oJSmKyKohcyAGZ/rky1odk3GqJYKVSxdHTjzqnEPtcBO6Uzv9Xhpx/HgavQ899NHqcNDplWlWJMW
+	LcVSVaHPhzwzl9b6F0YEx1tYYe587OUfvwNUwksoEBRSN52AqvJ3eNWfyTFNflKNjDgyvqfz+T+OB
+	uhGlWrw+4ZQp0ub8Tjhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBDdh-0000000CS4O-0yt2;
-	Fri, 10 Apr 2026 15:19:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wBJzT-0000000Cr2a-24Dk;
+	Fri, 10 Apr 2026 22:06:15 +0000
+Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBDdg-0000000CS3u-0HWd
-	for linux-rockchip@bombadil.infradead.org;
-	Fri, 10 Apr 2026 15:19:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=eTlXD+fEi5OyNbu4TxRTwpDmEzFd2ThBwniicSqJG9M=; b=gyDBb8ubZ9g8PbVDh5y7NfoA4O
-	X6H+RRSVCb5Oqsap4AqNFQ7LiuoC8eDY3Jq+AOKK1uRe1h0vHBhLdZ877/NITXAMwvSyXYcuLG4GS
-	Hd7+XfphWKI0khZAWTuH54nlM3/OIf47ks3VGfk2syhiCSzxi47jyNFDZl2wB+fXiWN3cgB9fOsmD
-	uX0pzWizflRCtRZ3mtsPMM/0LbUxl/3FRvRAwKLmY8rrXftWCXEIc/JDjinPntSOzkJKgeGF3S4xc
-	CRAjrAutu92Pc6wTPlHniRo78sjt08ipffDzmbQhf5vvZajO+EDsrWC7UD2WnK27vjyprSYz7n9bX
-	hqIVl/uQ==;
-Received: from outgoing-auth-1.mit.edu ([18.9.28.11] helo=outgoing.mit.edu)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBDdc-0000000DkPr-1GXM
+	id 1wBJzP-0000000Cr0j-3rAT
 	for linux-rockchip@lists.infradead.org;
-	Fri, 10 Apr 2026 15:19:19 +0000
-Received: from trampoline.thunk.org (pool-173-48-116-90.bstnma.fios.verizon.net [173.48.116.90])
-	(authenticated bits=0)
-        (User authenticated as tytso@ATHENA.MIT.EDU)
-	by outgoing.mit.edu (8.14.7/8.12.4) with ESMTP id 63AFIonm015842
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Fri, 10 Apr 2026 11:18:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mit.edu; s=outgoing;
-	t=1775834338; bh=eTlXD+fEi5OyNbu4TxRTwpDmEzFd2ThBwniicSqJG9M=;
-	h=From:Subject:Date:Message-ID:MIME-Version:Content-Type;
-	b=VM9pR3FUqiyu4dGQLYjxtn5fwtIzfU7ySZMp0abbH18xV6/gDABRi9uB743lXz8hh
-	 DLg+D58JGiw6cmfTe96qrNZsfI1LrX8CH4Z4SZsryjUI4LnJNSYnME68kmTAWN0bac
-	 +APmObxjmRctPfSGmHJbriSXfrkN55pWYIbiVRfu2y0ECqpOPHSJun6K+BHM+LkVI2
-	 DM7T+QYmlRWbU/sqPlO03FdXluf2F9iRmmuiDmCsbPLwL4U9izV2zs90P/AyWnNi7/
-	 WJE2W3FtW9KojAgen2wKI5w3YJJGh4CS8IuF5T47bMgUta6WPQzUW9F7QaunmIRgXz
-	 enYXQQPwNnobw==
-Received: by trampoline.thunk.org (Postfix, from userid 15806)
-	id 0D7462E00E1; Fri, 10 Apr 2026 11:18:48 -0400 (EDT)
-From: "Theodore Ts'o" <tytso@mit.edu>
-To: amd-gfx@lists.freedesktop.org, apparmor@lists.ubuntu.com,
-        bpf@vger.kernel.org, ceph-devel@vger.kernel.org, cocci@inria.fr,
-        dm-devel@lists.linux.dev, dri-devel@lists.freedesktop.org,
-        gfs2@lists.linux.dev, intel-gfx@lists.freedesktop.org,
-        intel-wired-lan@lists.osuosl.org, iommu@lists.linux.dev,
-        kvm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-block@vger.kernel.org, linux-bluetooth@vger.kernel.org,
-        linux-btrfs@vger.kernel.org, linux-cifs@vger.kernel.org,
-        linux-clk@vger.kernel.org, linux-erofs@lists.ozlabs.org,
-        linux-ext4@vger.kernel.org, linux-fsdevel@vger.kernel.org,
-        linux-gpio@vger.kernel.org, linux-hyperv@vger.kernel.org,
-        linux-input@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-leds@vger.kernel.org, linux-media@vger.kernel.org,
-        linux-mips@vger.kernel.org, linux-mm@kvack.org,
-        linux-modules@vger.kernel.org, linux-mtd@lists.infradead.org,
-        linux-nfs@vger.kernel.org, linux-omap@vger.kernel.org,
-        linux-phy@lists.infradead.org, linux-pm@vger.kernel.org,
-        linux-rockchip@lists.infradead.org, linux-s390@vger.kernel.org,
-        linux-scsi@vger.kernel.org, linux-sctp@vger.kernel.org,
-        linux-security-module@vger.kernel.org, linux-sh@vger.kernel.org,
-        linux-sound@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
-        linux-trace-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
-        linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-        ntfs3@lists.linux.dev, samba-technical@lists.samba.org,
-        sched-ext@lists.linux.dev, target-devel@vger.kernel.org,
-        tipc-discussion@lists.sourceforge.net, v9fs@lists.linux.dev,
-        Philipp Hahn <phahn-oss@avm.de>
-Cc: "Theodore Ts'o" <tytso@mit.edu>, Andreas Dilger <adilger.kernel@dilger.ca>
-Subject: Re: [PATCH 04/61] ext4: Prefer IS_ERR_OR_NULL over manual NULL check
-Date: Fri, 10 Apr 2026 11:18:40 -0400
-Message-ID: <177583430870.2758959.6171961359325912353.b4-ty@b4>
-X-Mailer: git-send-email 2.51.0
-In-Reply-To: <20260310-b4-is_err_or_null-v1-4-bd63b656022d@avm.de>
-References: <20260310-b4-is_err_or_null-v1-4-bd63b656022d@avm.de>
+	Fri, 10 Apr 2026 22:06:14 +0000
+Received: by mail-oo1-xc2a.google.com with SMTP id 006d021491bc7-66f747175d8so1280680eaf.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 10 Apr 2026 15:06:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1775858770; x=1776463570; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=j9076am4mzfnqKCXO40uzm6bV16grH8URJAf1spBMMo=;
+        b=Ns60ze08xORIZ7eJkcajAvYxZ2THJ6SpSJi2NGaSAkEgqXuDQUyJKOpA54GNFLI44d
+         Dw7LkzBSOoAQc+8uxDiU5GCWjxeWab0nniq6u/G9J61b/sml875vO1xuYpLGviArmHhD
+         B38y01r6+UHt4vIFYogAxwHJqx/8kX9H1KWkWKnECewQr7Lw7xnNMNa/A0zwmRFdNYNq
+         9rdFij1wMwCF4seWpzAxamws89kgciBb6hNJ+HcdwQZzqd8goYYy6Kv7wAYk24Q9o10B
+         9cs2DVg8+xhvsaTJwJUFhAZeKIVJjogzGGNpUSR4YPnetBsbyTyXRbshll2Zb3zM9E28
+         YxsA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1775858770; x=1776463570;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=j9076am4mzfnqKCXO40uzm6bV16grH8URJAf1spBMMo=;
+        b=Poax6ZrOyy0fCwvYfZriXT+xgBdKuwUei6NhYg1aBretKAggmFR6vFYafxSF3Go9n7
+         cXTdM0RR+esILkE4UAoaObntPGGLyPHCVHUjwqhlQGibQlsium7xrZ8/o8oXS7XxcZDq
+         iFqyoona6IyV7NOHA/BxtfoEdt4Sv/S7iUfdAYdBvUoWbGYeudkyr/SpZ0AngaU3nqSE
+         5juK5mrx1uMkDnDGK4GU6ZR1DiZYZKaJaMyU37GqMU4/DhOs4dBLuW6Zkh1j8LNdSCTT
+         99ts2I+9kOn7OTxjYJ73IZBF0tSfqAMatcp5/KCML48WbaomuqnYmppb6o8O90/GyNDy
+         MQ1w==
+X-Forwarded-Encrypted: i=1; AJvYcCX7pUzWeBO8lFqLm+BWpUFFXwZKYLnqUJqesGr3wiKVABizyHIVg31DpWYRVb3TIP2wZRvIiwFFTkpUUt49/A==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwtuDxtsJGrNOid4AUChqHZKk6I+gJb6sOCS/KiymNoyK1Zz9Hr
+	1Al++qnHOGVklgnACyU1x5Uyib5yP3fj1x09tbjO6v7juhK7o//VeevYzdhKBHEdRCs=
+X-Gm-Gg: AeBDiestsg6gLZULvtCukhg4+DMF38+EwuCaXkNbscNzHfdBiT2ZoFrRYlqWvQZbAsM
+	GEdQ0pQcAKvGkmKGOfpYImPDsiIDNMhvDhwwcXSclDapVMdEjot1iJi5l8+xBoErx9CZXzkQoPo
+	rBxP+GSGshRboorsEfsznjlEUizmVeqY7fel1Cl3/BBsfAio3n0L6agvK8ALIAqjCUwPAKOlLsH
+	nsfaJocaHEalMfyky9hzDb4tLYbszsvNIsvUns/77QSmHVPkM945bNKEAecXRXsayv1uHelJeca
+	Q/82CwpyiodHg2RopgBja+WR9EQ5TcW/PZ5U7tn+0Z6TGOVtkLT1AICYfgB7o27EW1m6Jl5NDcl
+	UBPpd54YRypifnYqvegNzJ8GTyLbmcWUMsBu2k3BF3wlDbAxOY5KWV79rfIDY7AigMNNCcLOON6
+	WUMSlWCmoX6VkERJUJTHnXOyIZ3c50yX2IS2wCwqqqUqX+1tdGdARqBcD5SxSaPQ7/7TI1B/z3m
+	A==
+X-Received: by 2002:a05:6820:f03:b0:687:d51c:e637 with SMTP id 006d021491bc7-68be5873460mr2265750eaf.7.1775858770102;
+        Fri, 10 Apr 2026 15:06:10 -0700 (PDT)
+Received: from ?IPV6:2600:8803:e7e4:500:b75d:2440:dc10:808b? ([2600:8803:e7e4:500:b75d:2440:dc10:808b])
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-423ddb20c0fsm2980846fac.11.2026.04.10.15.06.08
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 10 Apr 2026 15:06:09 -0700 (PDT)
+Message-ID: <631f3adb-550a-4902-b6f2-5614cd79ab75@baylibre.com>
+Date: Fri, 10 Apr 2026 17:06:08 -0500
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V3 2/9] iio: imu: inv_icm42607: Add Core for inv_icm42607
+ Driver
+To: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org
+Cc: andy@kernel.org, nuno.sa@analog.com, jic23@kernel.org,
+ jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com,
+ Chris Morgan <macromorgan@hotmail.com>
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+ <20260330195853.392877-3-macroalpha82@gmail.com>
+Content-Language: en-US
+From: David Lechner <dlechner@baylibre.com>
+In-Reply-To: <20260330195853.392877-3-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260410_161916_607316_4AAAE0D0 
-X-CRM114-Status: UNSURE (   5.72  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260410_150611_982738_C64F963E 
+X-CRM114-Status: GOOD (  24.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,21 +107,300 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 10 Mar 2026 12:48:30 +0100, Philipp Hahn wrote:
-> Prefer using IS_ERR_OR_NULL() over using IS_ERR() and a manual NULL
-> check.
+On 3/30/26 2:58 PM, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Change generated with coccinelle.
+> Add the core component of a new inv_icm42607 driver. This includes
+> a few setup functions and the full register definition in the
+> header file.
+> 
+> +#define INV_ICM42607_REG_PWR_MGMT0			0x1F
+> +#define INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL		BIT(7)
+> +#define INV_ICM42607_PWR_MGMT0_IDLE			BIT(4)
+> +#define INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK		GENMASK(3, 2)
+> +#define INV_ICM42607_PWR_MGMT0_GYRO(_mode)		\
+> +	FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, (_mode))
 
-Applied, thanks!
+We usually try to avoid macros that hide FIELD_PREP(). IMHO, it makes
+the code harder to read because you have to jump back and forth to
+definitions to see if it really is that.
 
-[04/61] ext4: Prefer IS_ERR_OR_NULL over manual NULL check
-        commit: 1d749e110277ce4103f27bd60d6181e52c0cc1e3
+> +#define INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK		GENMASK(1, 0)
+> +#define INV_ICM42607_PWR_MGMT0_ACCEL(_mode)		\
+> +	FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, (_mode))
+> +
 
-Best regards,
--- 
-Theodore Ts'o <tytso@mit.edu>
+...
+
+
+> +u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr)
+> +{
+> +	static u32 odr_periods[INV_ICM42607_ODR_NB] = {
+> +		/* Reserved values */
+> +		0, 0, 0, 0, 0,
+> +		/* 1600Hz */
+> +		625000,
+> +		/* 800Hz */
+> +		1250000,
+> +		/* 400Hz */
+> +		2500000,
+> +		/* 200Hz */
+> +		5000000,
+> +		/* 100 Hz */
+> +		10000000,
+> +		/* 50Hz */
+> +		20000000,
+> +		/* 25Hz */
+> +		40000000,
+> +		/* 12.5Hz */
+> +		80000000,
+> +		/* 6.25Hz */
+> +		160000000,
+> +		/* 3.125Hz */
+> +		320000000,
+> +		/* 1.5625Hz */
+> +		640000000,
+> +	};
+
+No range checking to avoid out-of-bouds access?
+
+> +
+> +	return odr_periods[odr];
+> +}
+> +
+> +int inv_icm42607_debugfs_reg(struct iio_dev *indio_dev, unsigned int reg,
+> +			     unsigned int writeval, unsigned int *readval)
+> +{
+> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	if (readval)
+> +		return regmap_read(st->map, reg, readval);
+> +
+> +	return regmap_write(st->map, reg, writeval);
+> +}
+> +
+> +static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
+> +				 const struct inv_icm42607_conf *conf)
+> +{
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	val = INV_ICM42607_PWR_MGMT0_GYRO(conf->gyro.mode) |
+> +	INV_ICM42607_PWR_MGMT0_ACCEL(conf->accel.mode);
+
+Indent wrapped lines one tab or line up with INV_ after `= `.
+
+> +	/*
+> +	 * No temperature enable reg in datasheet, but BSP driver
+> +	 * selected RC oscillator clock in LP mode when temperature
+> +	 * was disabled.
+> +	 */
+> +	if (!conf->temp_en)
+> +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_GYRO_CONFIG0_FS_SEL(conf->gyro.fs) |
+> +	INV_ICM42607_GYRO_CONFIG0_ODR(conf->gyro.odr);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_ACCEL_CONFIG0_FS_SEL(conf->accel.fs) |
+> +	INV_ICM42607_ACCEL_CONFIG0_ODR(conf->accel.odr);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_GYRO_CONFIG1_FILTER(conf->gyro.filter);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG1, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_ACCEL_CONFIG1_FILTER(conf->accel.filter);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG1, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->conf = *conf;
+> +
+> +	return 0;
+> +}
+> +
+> +/**
+> + *  inv_icm42607_setup() - check and setup chip
+> + *  @st:	driver internal state
+> + *  @bus_setup:	callback for setting up bus specific registers
+> + *
+> + *  Returns 0 on success, a negative error code otherwise.
+> + */
+> +static int inv_icm42607_setup(struct inv_icm42607_state *st,
+> +			      inv_icm42607_bus_setup bus_setup)
+> +{
+> +	const struct inv_icm42607_hw *hw = &inv_icm42607_hw[st->chip];
+> +	const struct device *dev = regmap_get_device(st->map);
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (val != hw->whoami)
+> +		dev_warn_probe(dev, -ENODEV,
+> +			       "invalid whoami %#02x expected %#02x (%s)\n",
+> +			       val, hw->whoami, hw->name);
+> +
+> +	st->name = hw->name;
+> +
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
+> +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
+> +	if (ret)
+> +		return ret;
+
+nit: Add blank line here.
+
+> +	msleep(INV_ICM42607_RESET_TIME_MS);
+> +
+> +	ret = regmap_read(st->map, INV_ICM42607_REG_INT_STATUS, &val);
+> +	if (ret)
+> +		return ret;
+> +	if (!(val & INV_ICM42607_INT_STATUS_RESET_DONE))
+> +		return dev_err_probe(dev, -ENODEV,
+> +				     "reset error, reset done bit not set\n");
+
+Could also replace this and msleep with regmap_read_poll_timeout().
+
+> +
+> +	ret = bus_setup(st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
+> +				 INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN,
+> +				 INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN);
+
+Simplify with regmap_set_bits().
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
+> +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK,
+> +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return inv_icm42607_set_conf(st, hw->conf);
+> +}
+> +
+> +static int inv_icm42607_enable_vddio_reg(struct inv_icm42607_state *st)
+> +{
+> +	int ret;
+> +
+> +	ret = regulator_enable(st->vddio_supply);
+> +	if (ret)
+> +		return ret;
+> +
+> +	usleep_range(3000, 4000);
+
+Use fsleep() and add a comment to explain why the duration
+was chosen.
+
+> +
+> +	return 0;
+> +}
+> +
+> +static void inv_icm42607_disable_vddio_reg(void *_data)
+> +{
+> +	struct inv_icm42607_state *st = _data;
+> +
+> +	regulator_disable(st->vddio_supply);
+> +}
+> +
+> +int inv_icm42607_core_probe(struct regmap *regmap, int chip,
+> +			    inv_icm42607_bus_setup bus_setup)
+> +{
+> +	struct device *dev = regmap_get_device(regmap);
+> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
+> +	struct inv_icm42607_state *st;
+> +	int irq, irq_type;
+> +	bool open_drain;
+> +	int ret;
+> +
+> +	if (chip < INV_CHIP_INVALID || chip >= INV_CHIP_NB)
+
+Only two chips are defined in regmap_read_poll_timeout, so this range
+checking seems wrong.
+
+> +		dev_warn_probe(dev, -ENODEV,
+> +			       "Invalid chip = %d\n", chip);
+> +
+> +	/* get INT1 only supported interrupt or fallback to first interrupt */
+> +	irq = fwnode_irq_get_byname(fwnode, "INT1");
+> +	if (irq < 0 && irq != -EPROBE_DEFER) {
+> +		dev_info(dev, "no INT1 interrupt defined, fallback to first interrupt\n");
+> +		irq = fwnode_irq_get(fwnode, 0);
+> +	}
+> +	if (irq < 0)
+> +		return dev_err_probe(dev, irq, "error missing INT1 interrupt\n");
+> +
+> +	irq_type = irq_get_trigger_type(irq);
+> +	if (!irq_type)
+> +		irq_type = IRQF_TRIGGER_FALLING;
+> +
+> +	open_drain = device_property_read_bool(dev, "drive-open-drain");
+> +
+> +	st = devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
+> +	if (!st)
+> +		return -ENOMEM;
+> +
+> +	dev_set_drvdata(dev, st);
+> +	mutex_init(&st->lock);
+> +	st->chip = chip;
+> +	st->map = regmap;
+> +	st->irq = irq;
+> +
+> +	ret = iio_read_mount_matrix(dev, &st->orientation);
+> +	if (ret) {
+> +		dev_err(dev, "failed to retrieve mounting matrix %d\n", ret);
+> +		return ret;
+> +	}
+> +
+> +	ret = devm_regulator_get_enable(dev, "vdd");
+> +	if (ret)
+> +		return dev_err_probe(dev, ret,
+> +				     "Failed to get vdd regulator\n");
+> +
+> +	msleep(INV_ICM42607_POWER_UP_TIME_MS);
+> +
+> +	st->vddio_supply = devm_regulator_get(dev, "vddio");
+
+If we aren't implementing power managament, we can just use
+devm_regulator_get_enabled() and avoid the devm_add_action_or_reset().
+
+> +	if (IS_ERR(st->vddio_supply))
+> +		return PTR_ERR(st->vddio_supply);
+> +
+> +	ret = inv_icm42607_enable_vddio_reg(st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(dev, inv_icm42607_disable_vddio_reg, st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Setup chip registers (includes WHOAMI check, reset check, bus setup) */
+
+This comment would be better as part of the function doc comment.
+
+> +	ret = inv_icm42607_setup(st, bus_setup);
+> +
+> +	return ret;
+> +}
 
 _______________________________________________
 Linux-rockchip mailing list
