@@ -4,89 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B3EF364CA
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Apr 2026 22:37:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 141E8F36B97
+	for <linux-rockchip@archiver.kernel.org>; Fri, 10 Apr 2026 00:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version:Subject:
-	Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=scr6BVcJNcueW7NsQDBUcc17/bw9VddwnWAeUqKbwQo=; b=fZC7w2WjB49eZp
-	ej9j9jhS/IijBnS+oo4ySj/yxl93p7R9cDvj9XJoOmfhclp3yvKv/Br8EPS6eCRdTmK/FBZDt6+Ys
-	ZIBV4F8WQ5+Xx3Xo3L9mmd8B1zQBj0toXZt4vzD8oyXLapib396D7AUZ8SvVsv/MZ4fJdRGiK0PeN
-	JJIXEzi8q43nUCOeTbfb6+4oegRYa380uC32SK7lb/SMrkqimDJZ8iW9tpVwhmvEOYqJ1wtoxz6XT
-	4wvqon28CHCF3EEzV/hGM6Z7M6e9hD81JWC9WmRZBfFIOqb/7Fs3J8f7WqspE9I/X9ySOVfCzRj+O
-	jfJoidCqzm65ZtJARVnA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:Cc:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NhMCtUS7bh1S4Uyf5btgNrB6yw0ZcHc1+1zKZulbpT8=; b=zqaB54cgspoh4o
+	yKpYFukS2bm2THLJMC5qS5v5sOVcgvKbpq1KxF2p8WXbwaNuxdHpcT0eVQsn6LtYb6yyGXbEe6lh5
+	PDynWMI/dI9XlddkzGD6Jzv0xHZ/ssfpQ8e6KKbb67Rwt6bO053vBTbxqyxHLg1inFPNVPvIbQQnM
+	IJv0rTkm3I6t0Zu5vZ8s944DdaQP/32y2JXt3X7oK4F2RjKN7Gmb4+4hYltt3AJYEvmtCgW5ktmxO
+	xfd1iaZdxXn4oCY/zQWi1TCblLFPK95DJx2IRtw1alfaEib37IfDKY22JlJ6iMva0r+FuOi/LvrDu
+	a9sza0QyTY0SXbEM3w8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAy0T-0000000BI9p-0NHf;
-	Thu, 09 Apr 2026 22:37:49 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wB01P-0000000BNfa-12y2;
+	Fri, 10 Apr 2026 00:46:55 +0000
+Received: from mail-m15573.qiye.163.com ([101.71.155.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wAy0P-0000000BI9G-2ynx;
-	Thu, 09 Apr 2026 22:37:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1775774261;
-	bh=mMZFlS36rjorHgR/mWWffVLLV2B7T9gk0BFFHkidN7c=;
-	h=From:Date:Subject:To:Cc:From;
-	b=WDgXoLNJg4XeYrwn12V6eES2wHHDyctKx1HgKhBZmIBtfD4b4zxRXznTdh2iZL4/c
-	 ugeQJuprMgY/NrMVOHrg3ESaYRN9baFIOpHocwgy6EHhZKXmcGGJWyFD8Mq6ccHe+t
-	 qjSbnY+eufxSJCX250lHByl5dGvgZQ38AV6zdbX2Z7k6ZnStw21pec9kTU/810ONXp
-	 riocy8rWXXgh3fLrK9HHQOowRtLPQiw3Ivu+X95AMPi0HW7eI3Ofhb17U6CkTQ7Dv2
-	 +pq91segVwXKaafhvtQh7yfucH+BAR5/oioRtGkewB4GwH1GZ1Biw+XD9/jROfqEeF
-	 S7wIquU+E6jIQ==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 38F1817E12B9;
-	Fri, 10 Apr 2026 00:37:41 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id EF4BB48002C; Thu, 09 Apr 2026 23:34:50 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Thu, 09 Apr 2026 23:34:41 +0200
-Subject: [PATCH RFC v2] drm/rockchip: vop2: Add clock rate mode check
+	id 1wB01K-0000000BNe0-0xAT;
+	Fri, 10 Apr 2026 00:46:53 +0000
+Received: from [172.16.12.17] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3a2aff74f;
+	Fri, 10 Apr 2026 08:46:33 +0800 (GMT+08:00)
+Message-ID: <0ee54525-928e-a1ce-ec2d-1f85cf15abbc@rock-chips.com>
+Date: Fri, 10 Apr 2026 08:46:29 +0800
 MIME-Version: 1.0
-Message-Id: <20260409-vop2-clk-rate-check-v2-1-b207cfc427d7@collabora.com>
-X-B4-Tracking: v=1; b=H4sIAHAb2GkC/32NTQrCMBCFr1Jm7UgzYNq4EgQP4Fa6SMfRhv6kJ
- CUopXc39AAuv/d431shSnAS4VysECS56PyUgQ4FcGent6B7ZgYqSZekKkx+JuShx2AXQe6EeyR
- dkzZVVbNlyMs5yMt9dusD7rcrNDnsXFx8+O5PSe3VX2lSqNDUpj1po5Rp7YX9MNjWB3tkP0Kzb
- dsPGxQsFL8AAAA=
-X-Change-ID: 20260217-vop2-clk-rate-check-268269778cac
-To: Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>
-Cc: Daniel Stone <daniels@collabora.com>, 
- Alexey Charkov <alchark@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- kernel@collabora.com, Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6139;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=mMZFlS36rjorHgR/mWWffVLLV2B7T9gk0BFFHkidN7c=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnYG3pi93cTW4yCyNLQ/GfeLTF0kZ4v7mNL0
- OjnrUV3xsUT+YkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp2Bt6AAoJENju1/PI
- O/qavSEP/A0aU+k3AfM0XGEz8p1RH76/YOZ9FzU2UErXy0i5r6jS48u4EPfvOr0xn4Syk6epyMz
- jm65iH6FdShVljTsPUvorvrLWAIpbdlNgmL0AF8meRHLaYMF+I0BWmIgJvK3X0MrC0WxLS4crKP
- hvmp/JbkwvTGg4yeTs/7Ec9KNpSvGgB60xyPw4ucCMzIwF1O36gritfoRIA3PoHWNJ9mzAnOW8J
- jEX6OgP2aIPAv4Htm6O04uqSsJVtaX7fgZr7zloX97kxZHrYKIjpUKEO5XTD4NSbY3kt7GQRqK0
- YhsO/NIA4/33Hg1tejWdUM6Wu0zcAv32GWb+4BKmFYitrzyz+nbdTwZnfSAgBaeJlIGvjmwehT+
- s2y4gFTnfVYSNLrtfQOs66BU1Exhbt3EHcH10uwpMqpMjWH5WkTB0rEUEhSWEGm2Q7snzmH23qv
- Gqk0ALPvoOH6eb5Fo3nzCMqPzgwjMpvNhZHhJ0ZK3MASBd+iGVBAQwBVZXD+limymSbkK1dqf7G
- Ktq7Cen14fOOvvt7Rsu/6j3WDRAlMvmfcP54KwFRlT7ymXfLMkcrioRvBnLKEc3YuYGijk9b3Ij
- /333Y5/ZlWPsuX4ObbS0f4/UZ+ntlgn3vt/j9HdYXWbYmObLME0CXGWJjdJgZ8CX3KP8rt3Lj5n
- aSKCmBd1HEPPoqMrHAxk4DA==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.13.1
+Cc: shawn.lin@rock-chips.com, Niklas Cassel <cassel@kernel.org>
+Subject: Re: [PATCH v1] phy: rockchip-snps-pcie3:phy: Configure clkreq_n and
+ PowerDown for all lanes
+To: Anand Moon <linux.amoon@gmail.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Heiko Stuebner
+ <heiko@sntech.de>,
+ "open list:GENERIC PHY FRAMEWORK" <linux-phy@lists.infradead.org>,
+ "moderated list:ARM/Rockchip SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+ open list <linux-kernel@vger.kernel.org>
+References: <20260409044939.7647-1-linux.amoon@gmail.com>
+From: Shawn Lin <shawn.lin@rock-chips.com>
+In-Reply-To: <20260409044939.7647-1-linux.amoon@gmail.com>
+X-HM-Tid: 0a9d74dadb4909cckunmd6738a1c517e0a
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1ktWUFJV1kPCRoVCBIfWUFZGUhISlYeT09DSh9IHUlMSRlWFRQJFh
+	oXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0tIVUpLSU9PT0
+	hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=KevY7tvxQt/iVUsWMn2Prf/um0QObBwPIG7Q9aew+klGem7Dz27DWVmhx+CBl/EylsycsAXfC4rFvkTqD+/55YcuWrDVdPkiLqt6/J4AM4vh8vie2nMl48wf+EAATzVK8etESyy8qY5Ri3Fe3hz3yPAfTKjaNi7KDfWYyGB1ZE0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Mqjz6IXi2Nh7CDAEaokpRybVDDSN/VvLWMpvHJGfmOg=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260409_153745_908527_B6D7128F 
-X-CRM114-Status: GOOD (  16.71  )
+X-CRM114-CacheID: sfid-20260409_174650_836773_D1482B91 
+X-CRM114-Status: GOOD (  22.51  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,168 +72,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The display might offer modes, which exceed the maximum clock rate of a
-video output. This usually happens for displays that offer refresh rates
-above 60 Hz. This results in no picture (or a broken one) being displayed
-without manual intervention. Fix this by teaching the driver about the
-maximum achievable clock rates for each video port.
-
-The information about the maximum clock rates for each video channel and
-the tip about multiple pixels being processed per clock were provided by
-Andy Yan and roughly checked against the information available in the
-datasheet (which specifies limits like "2560x1600@60Hz with 10-bit"
-instead of a specific pixel rate).
-
-For the video ports supporting a 600 MHz input clock, there is some
-logic to handle up to 4 pixels in parallel when needed resulting in
-the extra multiplier.
-
-Suggested-by: Andy Yan <andy.yan@rock-chips.com>
-Link: https://lore.kernel.org/linux-rockchip/1528d788.186b.19d08ed974c.Coremail.andyshrk@163.com/
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
-I've kept the RFC tag, as I'm not sure about the 4x parallel pixel
-processing. IIUIC all of the video ports with a maximum of 600 MHz
-input clock support it, considering they can go to 4K @ 120Hz,
-which is above 1.2GHz while Andy mentioned a max. support clock rate
-of 600 MHz.
----
-Changes in v2:
-- Link to v1: https://lore.kernel.org/r/20260217-vop2-clk-rate-check-v1-1-989b569119ba@collabora.com
-- based on v7.0-rc7
-- rename max_clock_rate into max_pixel_clock_rate to distinguish from
-  input clock
-- update max clock rates to the numbers provided by Andy Yan with
-  extra 4x multiplier for 4K 120Hz VPs
----
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c |  3 +++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |  1 +
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 10 ++++++++++
- 3 files changed, 14 insertions(+)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index a195f5c819a2..35a0edda5375 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1434,6 +1434,9 @@ static enum drm_mode_status vop2_crtc_mode_valid(struct drm_crtc *crtc,
- 	if (mode->hdisplay > vp->data->max_output.width)
- 		return MODE_BAD_HVALUE;
- 
-+	if (mode->clock > vp->data->max_pixel_clock_rate / 1000)
-+		return MODE_CLOCK_HIGH;
-+
- 	return MODE_OK;
- }
- 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-index 9124191899ba..fd46913f3346 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.h
-@@ -225,6 +225,7 @@ struct vop2_video_port_data {
- 	u16 gamma_lut_len;
- 	u16 cubic_lut_len;
- 	struct vop_rect max_output;
-+	u32 max_pixel_clock_rate;
- 	const u8 pre_scan_max_dly[4];
- 	unsigned int offset;
- 	/**
-diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index f3950e8476a7..6ae3d506c476 100644
---- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -559,18 +559,21 @@ static const struct vop2_video_port_data rk3568_vop_video_ports[] = {
- 		.gamma_lut_len = 1024,
- 		.cubic_lut_len = 9 * 9 * 9,
- 		.max_output = { 4096, 2304 },
-+		.max_pixel_clock_rate = 600000000U,
- 		.pre_scan_max_dly = { 69, 53, 53, 42 },
- 		.offset = 0xc00,
- 	}, {
- 		.id = 1,
- 		.gamma_lut_len = 1024,
- 		.max_output = { 2048, 1536 },
-+		.max_pixel_clock_rate = 200000000U,
- 		.pre_scan_max_dly = { 40, 40, 40, 40 },
- 		.offset = 0xd00,
- 	}, {
- 		.id = 2,
- 		.gamma_lut_len = 1024,
- 		.max_output = { 1920, 1080 },
-+		.max_pixel_clock_rate = 150000000U,
- 		.pre_scan_max_dly = { 40, 40, 40, 40 },
- 		.offset = 0xe00,
- 	},
-@@ -775,6 +778,7 @@ static const struct vop2_video_port_data rk3576_vop_video_ports[] = {
- 		.gamma_lut_len = 1024,
- 		.cubic_lut_len = 9 * 9 * 9, /* 9x9x9 */
- 		.max_output = { 4096, 2304 },
-+		.max_pixel_clock_rate = 600000000U * 4,
- 		/* win layer_mix hdr  */
- 		.pre_scan_max_dly = { 10, 8, 2, 0 },
- 		.offset = 0xc00,
-@@ -785,6 +789,7 @@ static const struct vop2_video_port_data rk3576_vop_video_ports[] = {
- 		.gamma_lut_len = 1024,
- 		.cubic_lut_len = 729, /* 9x9x9 */
- 		.max_output = { 2560, 1600 },
-+		.max_pixel_clock_rate = 300000000U,
- 		/* win layer_mix hdr  */
- 		.pre_scan_max_dly = { 10, 6, 0, 0 },
- 		.offset = 0xd00,
-@@ -793,6 +798,7 @@ static const struct vop2_video_port_data rk3576_vop_video_ports[] = {
- 		.id = 2,
- 		.gamma_lut_len = 1024,
- 		.max_output = { 1920, 1080 },
-+		.max_pixel_clock_rate = 150000000U,
- 		/* win layer_mix hdr  */
- 		.pre_scan_max_dly = { 10, 6, 0, 0 },
- 		.offset = 0xe00,
-@@ -1061,6 +1067,7 @@ static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
- 		.gamma_lut_len = 1024,
- 		.cubic_lut_len = 9 * 9 * 9, /* 9x9x9 */
- 		.max_output = { 4096, 2304 },
-+		.max_pixel_clock_rate = 600000000U * 4,
- 		/* hdr2sdr sdr2hdr hdr2hdr sdr2sdr */
- 		.pre_scan_max_dly = { 76, 65, 65, 54 },
- 		.offset = 0xc00,
-@@ -1070,6 +1077,7 @@ static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
- 		.gamma_lut_len = 1024,
- 		.cubic_lut_len = 729, /* 9x9x9 */
- 		.max_output = { 4096, 2304 },
-+		.max_pixel_clock_rate = 600000000U * 4,
- 		.pre_scan_max_dly = { 76, 65, 65, 54 },
- 		.offset = 0xd00,
- 	}, {
-@@ -1078,12 +1086,14 @@ static const struct vop2_video_port_data rk3588_vop_video_ports[] = {
- 		.gamma_lut_len = 1024,
- 		.cubic_lut_len = 17 * 17 * 17, /* 17x17x17 */
- 		.max_output = { 4096, 2304 },
-+		.max_pixel_clock_rate = 600000000U * 4,
- 		.pre_scan_max_dly = { 52, 52, 52, 52 },
- 		.offset = 0xe00,
- 	}, {
- 		.id = 3,
- 		.gamma_lut_len = 1024,
- 		.max_output = { 2048, 1536 },
-+		.max_pixel_clock_rate = 150000000U,
- 		.pre_scan_max_dly = { 52, 52, 52, 52 },
- 		.offset = 0xf00,
- 	},
-
----
-base-commit: 591cd656a1bf5ea94a222af5ef2ee76df029c1d2
-change-id: 20260217-vop2-clk-rate-check-268269778cac
-
-Best regards,
--- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgQW5hbmQKCuWcqCAyMDI2LzA0LzA5IOaYn+acn+WbmyAxMjo0OSwgQW5hbmQgTW9vbiDlhpnp
+gZM6Cj4gRHVyaW5nIHRoZSByazM1ODhfcDNwaHlfaW5pdCBzZXF1ZW5jZSwgdGhlIGRyaXZlciBu
+b3cgZXhwbGljaXRseQo+IGNvbmZpZ3VyZXMgZWFjaCBsYW5lJ3MgQ09OMCByZWdpc3RlciB0byBl
+bnN1cmUKPiAtIFBJUEUgNC4zIENvbXBsaWFuY2U6IGNsa3JlcV9uIChiaXQgNikgaXMgZm9yY2Vk
+IGxvdyAoYXNzZXJ0ZWQpIHRvIG1lZXQKPiAgICBzaWRlYmFuZCBzaWduYWwgcmVxdWlyZW1lbnRz
+LgoKY2xrcmVxX24gaXMgbm93IGZvcmNlIGFzc2VydGVkIHZpYSBjb250cm9sbGVyIGRyaXZlciBp
+ZiBzdXBwb3J0c19jbGtyZXEKaXMgbm90IHNldC4KCj4gLSBBY3RpdmUgUG93ZXIgU3RhdGU6IFBv
+d2VyRG93blszOjBdIChiaXRzIDExOjgpIGlzIHNldCB0byBQMAo+ICAgIChOb3JtYWwgT3BlcmF0
+aW9uYWwgU3RhdGUpIHRvIGVuc3VyZSB0aGUgUEhZIGlzIGZ1bGx5IHBvd2VyZWQgYW5kIHJlYWR5
+Cj4gICAgZm9yIGxpbmsgdHJhaW5pbmcuCj4gCgpQMCBpcyB0aGUgbmF0dXJlIHN0YXRlIHdoZW4g
+bGlua2luZyB1cC4gSSBkb24ndCBrbm93IHdoeSBpdCBzaG91bGQgYmUgUDAKYmVmb3JlIHdlIGV2
+ZW4gZG9uJ3Qga25vdyB3aGV0aGVyIHRoZSBkZXZpY2UgaXMgcHJlc2VudC4KCj4gVGhlc2UgY2hh
+bmdlcyBlbnN1cmUgdGhhdCBhbGwgbGFuZXMgYXJlIGNvbnNpc3RlbnRseSB0cmFuc2l0aW9uZWQg
+ZnJvbQo+IHJlc2V0IGludG8gYSBrbm93bi1nb29kIG9wZXJhdGlvbmFsIHN0YXRlLCBwcmV2ZW50
+aW5nIHVuZGVmaW5lZCBiZWhhdmlvcgo+IGFuZCBlbnN1cmluZyB0aGUgUEhZIGlzIHJlYWR5IGZv
+ciBoaWdoLXNwZWVkIGRhdGEgdHJhbnNtaXNzaW9uLgo+IAo+IENjOiBOaWtsYXMgQ2Fzc2VsIDxj
+YXNzZWxAa2VybmVsLm9yZz4KPiBTaWduZWQtb2ZmLWJ5OiBBbmFuZCBNb29uIDxsaW51eC5hbW9v
+bkBnbWFpbC5jb20+Cj4gLS0tCj4gICAuLi4vcGh5L3JvY2tjaGlwL3BoeS1yb2NrY2hpcC1zbnBz
+LXBjaWUzLmMgICAgfCAyOCArKysrKysrKysrKysrKysrKy0tCj4gICAxIGZpbGUgY2hhbmdlZCwg
+MjYgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVy
+cy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlwLXNucHMtcGNpZTMuYyBiL2RyaXZlcnMvcGh5L3Jv
+Y2tjaGlwL3BoeS1yb2NrY2hpcC1zbnBzLXBjaWUzLmMKPiBpbmRleCA0ZThmZmQxNzMwOTYuLmY0
+NmUxM2U3OWEwZSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL3BoeS9yb2NrY2hpcC9waHktcm9ja2No
+aXAtc25wcy1wY2llMy5jCj4gKysrIGIvZHJpdmVycy9waHkvcm9ja2NoaXAvcGh5LXJvY2tjaGlw
+LXNucHMtcGNpZTMuYwo+IEBAIC03LDYgKzcsNyBAQAo+ICAgCj4gICAjaW5jbHVkZSA8bGludXgv
+Y2xrLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvZGVsYXkuaD4KPiArI2luY2x1ZGUgPGxpbnV4L2h3
+X2JpdGZpZWxkLmg+Cj4gICAjaW5jbHVkZSA8bGludXgvaW8uaD4KPiAgICNpbmNsdWRlIDxsaW51
+eC9pb3BvbGwuaD4KPiAgICNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4KPiBAQCAtMzUsMTAgKzM2
+LDE0IEBACj4gICAjZGVmaW5lIFJLMzU4OF9QQ0lFM1BIWV9HUkZfQ01OX0NPTjAJCTB4MAo+ICAg
+I2RlZmluZSBSSzM1ODhfUENJRTNQSFlfR1JGX1BIWTBfU1RBVFVTMQkweDkwNAo+ICAgI2RlZmlu
+ZSBSSzM1ODhfUENJRTNQSFlfR1JGX1BIWTFfU1RBVFVTMQkweGEwNAo+ICsjZGVmaW5lIFJLMzU4
+OF9QQ0lFM1BIWV9HUkZfUEhZMF9MTjBfQ09OMAkweDEwMDAKPiAgICNkZWZpbmUgUkszNTg4X1BD
+SUUzUEhZX0dSRl9QSFkwX0xOMF9DT04xCTB4MTAwNAo+ICAgI2RlZmluZSBSSzM1ODhfUENJRTNQ
+SFlfR1JGX1BIWTBfTE4xX0NPTjEJMHgxMTA0Cj4gKyNkZWZpbmUgUkszNTg4X1BDSUUzUEhZX0dS
+Rl9QSFkwX0xOMV9DT04wCTB4MTEwMAo+ICsjZGVmaW5lIFJLMzU4OF9QQ0lFM1BIWV9HUkZfUEhZ
+MV9MTjBfQ09OMAkweDIwMDAKPiAgICNkZWZpbmUgUkszNTg4X1BDSUUzUEhZX0dSRl9QSFkxX0xO
+MF9DT04xCTB4MjAwNAo+ICAgI2RlZmluZSBSSzM1ODhfUENJRTNQSFlfR1JGX1BIWTFfTE4xX0NP
+TjEJMHgyMTA0Cj4gKyNkZWZpbmUgUkszNTg4X1BDSUUzUEhZX0dSRl9QSFkxX0xOMV9DT04wCTB4
+MjEwMAo+ICAgI2RlZmluZSBSSzM1ODhfU1JBTV9JTklUX0RPTkUocmVnKQkJKHJlZyAmIEJJVCgw
+KSkKPiAgIAo+ICAgI2RlZmluZSBSSzM1ODhfQklGVVJDQVRJT05fTEFORV8wXzEJCUJJVCgwKQo+
+IEBAIC00OSw2ICs1NCwxMyBAQAo+ICAgI2RlZmluZSBSSzM1ODhfUENJRTFMTl9TRUxfRU4JCQko
+R0VOTUFTSygxLCAwKSA8PCAxNikKPiAgICNkZWZpbmUgUkszNTg4X1BDSUUzMF9QSFlfTU9ERV9F
+TgkJKEdFTk1BU0soMiwgMCkgPDwgMTYpCj4gICAKPiArc3RhdGljIGNvbnN0IHUzMiByazM1ODhf
+bGFuZV9jb24wW10gPSB7Cj4gKwlSSzM1ODhfUENJRTNQSFlfR1JGX1BIWTBfTE4wX0NPTjAsCj4g
+KwlSSzM1ODhfUENJRTNQSFlfR1JGX1BIWTBfTE4xX0NPTjAsCj4gKwlSSzM1ODhfUENJRTNQSFlf
+R1JGX1BIWTFfTE4wX0NPTjAsCj4gKwlSSzM1ODhfUENJRTNQSFlfR1JGX1BIWTFfTE4xX0NPTjAs
+Cj4gK307Cj4gKwo+ICAgc3RydWN0IHJvY2tjaGlwX3AzcGh5X29wczsKPiAgIAo+ICAgc3RydWN0
+IHJvY2tjaGlwX3AzcGh5X3ByaXYgewo+IEBAIC0xNDIsNyArMTU0LDcgQEAgc3RhdGljIGludCBy
+b2NrY2hpcF9wM3BoeV9yazM1ODhfaW5pdChzdHJ1Y3Qgcm9ja2NoaXBfcDNwaHlfcHJpdiAqcHJp
+dikKPiAgIHsKPiAgIAl1MzIgcmVnID0gMDsKPiAgIAl1OCBtb2RlID0gUkszNTg4X0xBTkVfQUdH
+UkVHQVRJT047IC8qIGRlZmF1bHQgKi8KPiAtCWludCByZXQ7Cj4gKwlpbnQgcmV0LCBpOwo+ICAg
+Cj4gICAJcmVnbWFwX3dyaXRlKHByaXYtPnBoeV9ncmYsIFJLMzU4OF9QQ0lFM1BIWV9HUkZfUEhZ
+MF9MTjBfQ09OMSwKPiAgIAkJICAgICBwcml2LT5yeF9jbW5fcmVmY2xrX21vZGVbMF0gPyBSSzM1
+ODhfUlhfQ01OX1JFRkNMS19NT0RFX0VOIDoKPiBAQCAtMTYxLDcgKzE3Myw3IEBAIHN0YXRpYyBp
+bnQgcm9ja2NoaXBfcDNwaHlfcmszNTg4X2luaXQoc3RydWN0IHJvY2tjaGlwX3AzcGh5X3ByaXYg
+KnByaXYpCj4gICAJcmVnbWFwX3dyaXRlKHByaXYtPnBoeV9ncmYsIFJLMzU4OF9QQ0lFM1BIWV9H
+UkZfQ01OX0NPTjAsIEJJVCg4KSB8IEJJVCgyNCkpOwo+ICAgCj4gICAJLyogU2V0IGJpZnVyY2F0
+aW9uIGlmIG5lZWRlZCAqLwo+IC0JZm9yIChpbnQgaSA9IDA7IGkgPCBwcml2LT5udW1fbGFuZXM7
+IGkrKykgewo+ICsJZm9yIChpID0gMDsgaSA8IHByaXYtPm51bV9sYW5lczsgaSsrKSB7Cj4gICAJ
+CWlmIChwcml2LT5sYW5lc1tpXSA+IDEpCj4gICAJCQltb2RlICY9IH5SSzM1ODhfTEFORV9BR0dS
+RUdBVElPTjsKPiAgIAkJaWYgKHByaXYtPmxhbmVzW2ldID09IDMpCj4gQEAgLTE3NCw2ICsxODYs
+MTggQEAgc3RhdGljIGludCByb2NrY2hpcF9wM3BoeV9yazM1ODhfaW5pdChzdHJ1Y3Qgcm9ja2No
+aXBfcDNwaHlfcHJpdiAqcHJpdikKPiAgIAlyZWdtYXBfd3JpdGUocHJpdi0+cGh5X2dyZiwgUksz
+NTg4X1BDSUUzUEhZX0dSRl9DTU5fQ09OMCwKPiAgIAkJICAgICBSSzM1ODhfUENJRTMwX1BIWV9N
+T0RFX0VOIHwgcmVnKTsKPiAgIAo+ICsJZm9yIChpID0gMDsgaSA8IHByaXYtPm51bV9sYW5lcyAm
+JiBpIDwgQVJSQVlfU0laRShyazM1ODhfbGFuZV9jb24wKTsgaSsrKSB7Cj4gKwkJdTMyIGJhc2Ug
+PSByazM1ODhfbGFuZV9jb24wW2ldOwo+ICsKPiArCQkvKiBjbGtyZXFfbiA9IDAgKGFzc2VydGVk
+IGxvdyBmb3IgUElQRSA0LjMpICovCj4gKwkJcmVnbWFwX3dyaXRlKHByaXYtPnBoeV9ncmYsIGJh
+c2UsCj4gKwkJCSAgICAgRklFTERfUFJFUF9XTTE2KEJJVCg2KSwgMCkpOwo+ICsKPiArCQkvKiBQ
+b3dlckRvd24gPSBQMCAoMHgwLCBmdWxseSBhY3RpdmUpICovCj4gKwkJcmVnbWFwX3dyaXRlKHBy
+aXYtPnBoeV9ncmYsIGJhc2UsCj4gKwkJCSAgICAgRklFTERfUFJFUF9XTTE2KEdFTk1BU0soMTEs
+IDgpLCAweDApKTsKPiArCX0KPiArCj4gICAJLyogU2V0IHBjaWUxbG5fc2VsIGluIFBIUF9HUkZf
+UENJRVNFTF9DT04gKi8KPiAgIAlpZiAoIUlTX0VSUihwcml2LT5waXBlX2dyZikpIHsKPiAgIAkJ
+cmVnID0gbW9kZSAmIChSSzM1ODhfQklGVVJDQVRJT05fTEFORV8wXzEgfCBSSzM1ODhfQklGVVJD
+QVRJT05fTEFORV8yXzMpOwo+IAo+IGJhc2UtY29tbWl0OiA3Zjg3YTVlYTc1ZjAxMWQyYzliYzhh
+YzAxNjdlNWUyZDFhZGIxNTk0CgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlz
+dHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3Rp
+bmZvL2xpbnV4LXJvY2tjaGlwCg==
