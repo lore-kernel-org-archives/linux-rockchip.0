@@ -4,54 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26A0DF3ED5C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 11 Apr 2026 23:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 449CCE64001
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Apr 2026 09:18:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:To:Cc:From:Subject:
-	References:In-Reply-To:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W3x6uEh76ysRtofdT0KESDKdKnwWxM+XZ57lzsjIWh4=; b=KbKy/hVPXil8iq
-	ZYIH26PvEKo3392Wa/hBy/sYnjCAlNMnJOB2Oqw5ImlYjIC9Zxi42F1cRmebQcZUz9Mg/Tx4118Oy
-	Vo6FqWEeYdnwGcpFHnB5IqUOGsX63q1zooczZgkj57meDoLDhBxsUsuJ87ko75jw4xtpX+RcF2CxR
-	aT4AQts8tEy2FVDOI8CxHWr+4I4Ii3PFsTMEWFl7nrGuo6rDfFlP9K9suut/E9UTkEk+GgqygQPUY
-	8kWZQs1Ix0SaUD1o22oa2KylRM5+D+AhWr7gtpmxlEoiNvdQ8e/roiCwJyURNojEivJbtoxa819gb
-	yKezyO740WhxrsxkQRVQ==;
+	List-Owner; bh=Lpb1IHiBLvGJTfVSgF/rnT35BslykZ3ngJk4FN9Qu2U=; b=2R/zPS3VFY1S2T
+	RsrslWxjl6tMJCwXo8X6reE2hIl6oWYSvITn9D0d6epQW3GXpJ7Am3+uykukDBivPH7Jxr7dtambL
+	xvqYfcQewbpJE8jNDcbTFi1+9p8LNLB61SeH4mBwood4tC8g8FhMHotBrVtXQujWNbqvQtu5L9O8V
+	qPC45bnUgaA18Y2zm1uZPD0Ve/XN7cY73XvNN1c3HYI5Ba9a11iKDTz7s6hWJ+dl1mMy1zsi+oAoj
+	kDCd0gqgn/u4D9oeyvpB9ZzxOxIJowpTVxjAw7nEt16QIdTHq5ZAxJDBcZGyvhCnPtRZbPSW6hSEB
+	Op2VaukZl67q3TMdtL0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBhYK-0000000Drm5-2oS6;
-	Sat, 11 Apr 2026 23:15:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wBqxO-0000000EBmB-423l;
+	Sun, 12 Apr 2026 09:18:18 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBhYJ-0000000Drly-45mQ
-	for linux-rockchip@lists.infradead.org;
-	Sat, 11 Apr 2026 23:15:48 +0000
+	id 1wBqxN-0000000EBlj-3Crs;
+	Sun, 12 Apr 2026 09:18:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 204326015B;
-	Sat, 11 Apr 2026 23:15:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3379C116C6;
-	Sat, 11 Apr 2026 23:15:46 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 289D260172;
+	Sun, 12 Apr 2026 09:18:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77DE4C19424;
+	Sun, 12 Apr 2026 09:18:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775949346;
-	bh=cauOxnkjRELK8dcA7zmL5inijQj5/tR6tnWWhsiG1Vc=;
-	h=In-Reply-To:References:Subject:From:Cc:To:Date:From;
-	b=q7L/nlyI+PeG2ah+p7+/TVnD6cg8u42pXtuPtDZD82ipUvvNWhkRITH6/iDNi6oh3
-	 qjAw/gSWX+cirbvy8GJNt0ilqWFJKA1oC144dmRkx0ItCLdADJA7IAzX2PT8KwB6gf
-	 FwbzdtxJSiAe3i1SW+66Tu0Jd50GYIy2YvwqgLBdGbihp2KxoEBt3Eu9e11eHbbMwG
-	 pKRO2M2nkVd8Vwyq4UxaQW7XGQ7MCsLh64dhNzecRirPn4Gp+g27TAn0c7ciEOuGnz
-	 iBHVaS9BjSX2EEgFfJdotxYOj/6vxmNIOWejBTiw+mYLqqOunEZ5KOgfblqMqUx8Hm
-	 sIzgIPgmFEF/g==
+	s=k20201202; t=1775985496;
+	bh=9zcRZ+5PCI5Z2fw1/LxfwKyquv5HdTAAezig+TuHOzE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RDRBhUsqCCWSwAssF/9giJVfEb8/z/9qKI5PWbBTN+5sPXpuOjuHnOTZ3cDbKPaqB
+	 Y+vUW2vqRh2VYtf7OuZr0RHzIssPLLTkKwl4FBdgDStY/+N6EPT0VZM58zq8iJR4sO
+	 rHzFE2KK/WkWpiH88A4e59PO/3tbCkEI7YC8TXxj8mrdKp6j2BsRIDnige6nfDAs/7
+	 yaPl1mljvJcy1+Wbtmdlushm72R01n3Pbp8XFKiXRTqqhtm89pxiGeZKIL59klnOma
+	 egbPQm3K8hOYdjBx6HpLNpkDFVBVdZnzJwPdmE4/UPKtlT+FdEmqsDaJ6O5o9chcK5
+	 vE6dgrJlsPVDw==
+Date: Sun, 12 Apr 2026 11:18:14 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Anushka Badhe <anushkabadhe@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-sound@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2] ASoC: dt-bindings: rockchip: convert rk3399-gru-sound
+ to DT Schema
+Message-ID: <20260412-copper-hummingbird-of-saturation-cdde95@quoll>
+References: <20260410055532.60868-1-anushkabadhe@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <3746710.R56niFO833@phil>
-References: <3746710.R56niFO833@phil>
-Subject: Re: [GIT PULL] Rockchip clock changes for 7.1 #1
-From: Stephen Boyd <sboyd@kernel.org>
-Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
-To: Heiko Stuebner <heiko@sntech.de>, mturquette@baylibre.com
-Date: Sat, 11 Apr 2026 16:15:44 -0700
-Message-ID: <177594934499.5403.15761642378116047555@lazor>
-User-Agent: alot/0.12
+Content-Disposition: inline
+In-Reply-To: <20260410055532.60868-1-anushkabadhe@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,33 +72,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Quoting Heiko Stuebner (2026-03-30 06:42:00)
-> Hi Mike, Stephen,
+On Fri, Apr 10, 2026 at 11:25:32AM +0530, Anushka Badhe wrote:
+> Convert the rockchip,rk3399-gru-sound.txt DT binding to DT Schema
+> format.
 > 
-> please find below a pull-request with a Rockchip clock change for 7.1
-> One new clock driver and sone newly accessible existing clocks.
+> Update rockchip,cpu from a single I2S controller phandle to a
+> phandle-array. Add an optional second entry for the SPDIF controller,
+> as seen in rk3399-gru.dtsi, required by boards with DisplayPort audio.
 > 
-> Please pull.
-> 
-> Thanks
-> Heiko
-> 
-> 
-> The following changes since commit 6de23f81a5e08be8fbf5e8d7e9febc72a5b5f27f:
-> 
->   Linux 7.0-rc1 (2026-02-22 13:18:59 -0800)
-> 
-> are available in the Git repository at:
-> 
->   https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-clk1
-> 
-> for you to fetch changes up to 41b1a6760959017c4fa1dbc7c3cc318406ab1455:
-> 
->   clk: rockchip: rk3568: Add PCIe pipe clock gates (2026-03-10 09:34:27 +0100)
-> 
-> ----------------------------------------------------------------
+> Signed-off-by: Anushka Badhe <anushkabadhe@gmail.com>
+> ---
+> Changes in v2:
+> - Fix subject and body: "YAML Schema" -> "DT Schema"
+> - Fix title: "ROCKCHIP" -> "Rockchip"
+> - List items for rockchip,cpu with I2S and SPDIF descriptions
+> - List items for rockchip,codec
+> - Update descriptions for rockchip,cpu, rockchip,codec and
+>   dmic-wakeup-delay-ms
 
-Thanks. Pulled into clk-next
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
