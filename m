@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 449CCE64001
-	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Apr 2026 09:18:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D326E937E9
+	for <linux-rockchip@archiver.kernel.org>; Sun, 12 Apr 2026 15:59:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
+	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Lpb1IHiBLvGJTfVSgF/rnT35BslykZ3ngJk4FN9Qu2U=; b=2R/zPS3VFY1S2T
-	RsrslWxjl6tMJCwXo8X6reE2hIl6oWYSvITn9D0d6epQW3GXpJ7Am3+uykukDBivPH7Jxr7dtambL
-	xvqYfcQewbpJE8jNDcbTFi1+9p8LNLB61SeH4mBwood4tC8g8FhMHotBrVtXQujWNbqvQtu5L9O8V
-	qPC45bnUgaA18Y2zm1uZPD0Ve/XN7cY73XvNN1c3HYI5Ba9a11iKDTz7s6hWJ+dl1mMy1zsi+oAoj
-	kDCd0gqgn/u4D9oeyvpB9ZzxOxIJowpTVxjAw7nEt16QIdTHq5ZAxJDBcZGyvhCnPtRZbPSW6hSEB
-	Op2VaukZl67q3TMdtL0Q==;
+	List-Owner; bh=lLuyrShstypLfPnRHjODDZcM+Df3ajUP6/CUYbDZhGs=; b=nbQ7LbnonJhVwV
+	RbNP0rW0KLjDU1CImPwp8tMQcdHyxS++KoMJgUT1VsMim6zY8ii6Q5w+57OVi/HWNiKHr2nNNtRpW
+	LN+cVyHHPjMbRAFxLhTenP6Otc8nbOGK1pkiA/+QHzsqDdAKOF/zz8YOW9ap+Fz0YJI4+hd9f9q+h
+	zNXBYaC4OMa7TGwrPYZydd5Wa6HmkHUhP5Q5rNMD+qDNEF93y2+PS9KwGzmCJvAzgK4+hAlxW+OnE
+	DBmDh1/8VZke8QbclNntow82j92i+01yLwg/3VK7ydxqcNLhyDGvEsi9HjRiOh6KqblcdG4r2nsKb
+	Le54V70gQDhYqvoLZeIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBqxO-0000000EBmB-423l;
-	Sun, 12 Apr 2026 09:18:18 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wBxDK-0000000ESin-13qa;
+	Sun, 12 Apr 2026 15:59:10 +0000
+Received: from 188.29.72.98.threembb.co.uk ([188.29.72.98] helo=BOB1.lan)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wBqxN-0000000EBlj-3Crs;
-	Sun, 12 Apr 2026 09:18:17 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 289D260172;
-	Sun, 12 Apr 2026 09:18:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77DE4C19424;
-	Sun, 12 Apr 2026 09:18:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1775985496;
-	bh=9zcRZ+5PCI5Z2fw1/LxfwKyquv5HdTAAezig+TuHOzE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RDRBhUsqCCWSwAssF/9giJVfEb8/z/9qKI5PWbBTN+5sPXpuOjuHnOTZ3cDbKPaqB
-	 Y+vUW2vqRh2VYtf7OuZr0RHzIssPLLTkKwl4FBdgDStY/+N6EPT0VZM58zq8iJR4sO
-	 rHzFE2KK/WkWpiH88A4e59PO/3tbCkEI7YC8TXxj8mrdKp6j2BsRIDnige6nfDAs/7
-	 yaPl1mljvJcy1+Wbtmdlushm72R01n3Pbp8XFKiXRTqqhtm89pxiGeZKIL59klnOma
-	 egbPQm3K8hOYdjBx6HpLNpkDFVBVdZnzJwPdmE4/UPKtlT+FdEmqsDaJ6O5o9chcK5
-	 vE6dgrJlsPVDw==
-Date: Sun, 12 Apr 2026 11:18:14 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Anushka Badhe <anushkabadhe@gmail.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, linux-sound@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2] ASoC: dt-bindings: rockchip: convert rk3399-gru-sound
- to DT Schema
-Message-ID: <20260412-copper-hummingbird-of-saturation-cdde95@quoll>
-References: <20260410055532.60868-1-anushkabadhe@gmail.com>
+	id 1wBxDI-0000000ESiS-31If
+	for linux-rockchip@lists.infradead.org;
+	Sun, 12 Apr 2026 15:59:09 +0000
+Received: from [127.0.1.1] (localhost [127.0.0.1])
+	by BOB1.lan (Postfix) with ESMTP id BE188100C0E;
+	Sun, 12 Apr 2026 16:52:09 +0100 (BST)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260410055532.60868-1-anushkabadhe@gmail.com>
+Subject: Re: [PATCH v3 00/13] drm: bridge: dw_hdmi: Misc enable/disable,
+ CEC and EDID cleanup
+From: Bob McChesney <bob@electricworry.net>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Christian Hewitt <christianshewitt@gmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>, dri-devel@lists.freedesktop.org, 
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20260403185303.80748-1-jonas@kwiboo.se>
+References: <20260403185303.80748-1-jonas@kwiboo.se>
+Date: Sun, 12 Apr 2026 16:52:06 +0100
+Message-Id: <177600912694.3120199.15225713967699569703.b4-review@b4>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1776009129; l=663;
+ i=bob@electricworry.net; s=20260412; h=from:subject:message-id;
+ bh=2Owhh8ay/Hkw+E9qnB8mKWylDEfKMe4CFm7D3qZvZEk=;
+ b=fxZ0sQM1T8Ch7QrbBSQ/8IKfTW6Jwj4F1HRiiyta18G9aqDm3TRSBXDKWUuZFlHrE9tyj6zzz
+ fmUls/DWENUBXcLaSrdHAGBDr0ixp4tnciXFm1zIY+jgWTV9sI3hq1g
+X-Developer-Key: i=bob@electricworry.net; a=ed25519;
+ pk=CGakLk53ReX5zp/z2XgijzXWf7g5UEJMrdaP8LNZltE=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260412_085908_976456_9525535A 
+X-CRM114-Status: UNSURE (   7.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,29 +77,24 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 10, 2026 at 11:25:32AM +0530, Anushka Badhe wrote:
-> Convert the rockchip,rk3399-gru-sound.txt DT binding to DT Schema
-> format.
+On Fri, 03 Apr 2026 18:52:46 +0000, Jonas Karlman <jonas@kwiboo.se> wrote:
+> drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup
 > 
-> Update rockchip,cpu from a single I2S controller phandle to a
-> phandle-array. Add an optional second entry for the SPDIF controller,
-> as seen in rk3399-gru.dtsi, required by boards with DisplayPort audio.
+> This is a revival of an old dw-hdmi series and is the first series part
+> of a new effort to upstream old LibreELEC HDMI 2.0 patches for Rockchip
+> RK33xx devices.
 > 
-> Signed-off-by: Anushka Badhe <anushkabadhe@gmail.com>
-> ---
-> Changes in v2:
-> - Fix subject and body: "YAML Schema" -> "DT Schema"
-> - Fix title: "ROCKCHIP" -> "Rockchip"
-> - List items for rockchip,cpu with I2S and SPDIF descriptions
-> - List items for rockchip,codec
-> - Update descriptions for rockchip,cpu, rockchip,codec and
->   dmic-wakeup-delay-ms
+> This series ensure poweron/poweroff and CEC phys addr invalidation is
+> happening under drm mode_config mutex lock, and also ensure EDID is
+> updated after a HPD low voltage pulse by changing to debounce hotplug
+> processing.
+> 
+> [...]
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Tested-by: Bob McChesney <bob@electricworry.net>
 
-Best regards,
-Krzysztof
-
+-- 
+Bob McChesney <bob@electricworry.net>
 
 _______________________________________________
 Linux-rockchip mailing list
