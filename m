@@ -4,102 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BADFCF531C4
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 19:04:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 364E7F531C7
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 19:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rvqML8sqfemzD/WMU1SrX4MUlrkzb97zrx9+51lMJTk=; b=lWHipM0mJTvllY
-	7D+0ShgabSCGjDFZAAgsKLWNWWZyT1g11nvJfHNQgBUdaPwqpUb1EPj0KtRYvFeiwufy3cRTZs/dx
-	5zt6lP3PuBhINul227iYyTctIBbBiF7QHN39XEBj7u4adBhhZRcmMQKONZdvVBxCZTJMag7apticT
-	g4UHf7hJdVgjfhv93qy4wOKIYxYeUAsPd3CiT2Tm5BsESneiMA1bI2j2eXwg7rFaOmyF+R+NiZ3Xg
-	SgFQcgvWAyT3gOLx+Zj1Voa3gD0PHWso3KJ2kO9Zxg++1j7vYDgSkEa6NDOID7F2X1euazUkuxE6M
-	7Kj3veenOR7+XMGeVFAw==;
+	List-Owner; bh=f61dUQH6qqPqF+nv1wWcp093j3Iv/Jop+HL3rqxA3u4=; b=GLNuZ+Ag5I7BlY
+	mqpTI90OPFyL2MZ2+PURDO4frVa/ovULgluA0kiTFtlaEjI0xA9+vIX28pY663PoTx2wI4MzltOwH
+	FX5WanRQy4WdYQrvmI1zSdYtA6hhn0irbwQVtG9a/RKeR1Hso64HBHwfwlwDWqMlqw3O+osJMITzJ
+	495XSeos/puNGDAYCDP6At/cX/TkklqU4OZ8Wrsh+hPPvatX1MZxQ6Gid4056F7jgHwkT+OOV+vWX
+	mpPFDszJiZeq2AAQlHXwePBk5+GURuejgyr8yjQvSvQo5eFCpBAJOzvtJYUspxGownpjr7TWTDviM
+	yALdW233+lRZ+8axKjug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCMa9-0000000GGPs-1MEZ;
-	Mon, 13 Apr 2026 19:04:25 +0000
-Received: from mgamail.intel.com ([198.175.65.9])
+	id 1wCMcm-0000000GGbs-3aiq;
+	Mon, 13 Apr 2026 19:07:08 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCMa6-0000000GGPG-3pZU;
-	Mon, 13 Apr 2026 19:04:24 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1776107063; x=1807643063;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=J6Oy2Os5lNI/CAxu9YtA3xPK4u5JL/xZobEDTIfkwz0=;
-  b=OicepsB6UWypV3H80otaP7LXXry6ZFZijnTJyk84AOWGIOXAsjkS4PMW
-   e3cfeMxE9vGNrl4+OvRbcpOBy0Xbi2pbpcc1cKuiGT6nqTvutK4h9tU5k
-   Gt53SeuUrtDeZx2f5k7sbzSGsaK5JyT2xPA8zq93bXIAM86TmNud9nK88
-   oHx/U4jFCPouKfnOgTzcAhyhhH4L2rpe2QsOYs2ITY/gR2u/DB1BnV1Or
-   M9MWWRlwboaKqKV2/czRiJFHnsuDGKNNHuwXoQb+/FNZLu0XKmDZOw/RA
-   jYdlgrYsTNM/ceEse3Zu/rax93LREOEYdWx53BJmcTxkztxaN0XSTEX1i
-   w==;
-X-CSE-ConnectionGUID: iUbHrimxT26UtrrjNtv8xg==
-X-CSE-MsgGUID: NIThkndjRWOYDfG5aKw9eg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="99698031"
-X-IronPort-AV: E=Sophos;i="6.23,177,1770624000"; 
-   d="scan'208";a="99698031"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2026 12:04:21 -0700
-X-CSE-ConnectionGUID: s581NXHCRZmMfO6wEfwB2g==
-X-CSE-MsgGUID: SbIpZcUdT/a1/749YLYoDQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,177,1770624000"; 
-   d="scan'208";a="234275702"
-Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.97])
-  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2026 12:04:11 -0700
-Date: Mon, 13 Apr 2026 22:04:07 +0300
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
-	Rodrigo Siqueira <siqueira@igalia.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com,
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v13 11/27] drm/i915/hdmi: Add YCBCR444 handling for sink
- formats
-Message-ID: <ad0-J35F1kcyZjoG@intel.com>
-References: <20260413-color-format-v13-0-ab37d4dfba48@collabora.com>
- <20260413-color-format-v13-11-ab37d4dfba48@collabora.com>
- <ad08zqpKbyF--Br3@intel.com>
+	id 1wCMck-0000000GGbW-2BQh
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Apr 2026 19:07:07 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 10A3F40724;
+	Mon, 13 Apr 2026 19:07:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B4AD2C2BCAF;
+	Mon, 13 Apr 2026 19:06:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776107224;
+	bh=79DRtTOlzoDf2ZnJLgYDR2eJU8iXE4MgH1kroF9+zIA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=GRy1TCXRTdqkRFE+i/smjVDVq1ElhclE5CyesjNQMvs8Ay2F5kG3OtBSfAQ/UR4t1
+	 VxnwESygaMQLNZ8Vfue/v586YUtEcHenLwzTmSNIVyk5CBq4hJBTo3Coy0sutEoFo+
+	 XhYnNEcTlRu19eflfziv0r5Li0/unGO+78dntqwCUVUFCfTLypuMPp2TM/diQN5gVq
+	 9JKPgw0YiLbmK6VKeY9qz+hZcbg5EtCByI1zcyCX7muh0/Mtox1bV3+RtwzoD+7sOF
+	 L7DEraPjbUaPhVP8azzE8o4lVgSOguEli/lMnmrW6F38X/7Xh0j2vEuQkOBcq0kKb6
+	 NITZoqRzghD6Q==
+Date: Mon, 13 Apr 2026 20:06:54 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+ dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V3 2/9] iio: imu: inv_icm42607: Add Core for
+ inv_icm42607 Driver
+Message-ID: <20260413200547.75bfd672@jic23-huawei>
+In-Reply-To: <20260330195853.392877-3-macroalpha82@gmail.com>
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+	<20260330195853.392877-3-macroalpha82@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <ad08zqpKbyF--Br3@intel.com>
-X-Patchwork-Hint: comment
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_120422_992264_A951D720 
-X-CRM114-Status: GOOD (  22.99  )
+X-CRM114-CacheID: sfid-20260413_120706_615148_2BC0E306 
+X-CRM114-Status: GOOD (  41.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,108 +72,430 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 13, 2026 at 09:58:22PM +0300, Ville Syrj=E4l=E4 wrote:
-> On Mon, Apr 13, 2026 at 12:07:25PM +0200, Nicolas Frattaroli wrote:
-> > In anticipation of userspace being able to explicitly select supported
-> > sink formats, add handling of the YCBCR444 sink format. The AUTO path
-> > does not choose this format, but with explicit format selection added to
-> > the driver, it becomes a possibility.
-> > =
+On Mon, 30 Mar 2026 14:58:46 -0500
+Chris Morgan <macroalpha82@gmail.com> wrote:
 
-> > Check for YCBCR444 support on the sink in both sink_bpc_possible, and
-> > sink_format_valid.
-> > =
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add the core component of a new inv_icm42607 driver. This includes
+> a few setup functions and the full register definition in the
+> header file.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Hi Chris,
 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >  drivers/gpu/drm/i915/display/intel_hdmi.c | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> > =
+I've avoided repeating a few things David raised, but there may
+well be overlap on some things.  I'm not particularly keen on code
+that doesn't build at the end of a patch or even provide the Kconfig
+and makefile stuff to do so.  Maybe it's too much effort given how you have
+this structured.
 
-> > diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/dr=
-m/i915/display/intel_hdmi.c
-> > index 874076a29da4..5ab5b5f85cde 100644
-> > --- a/drivers/gpu/drm/i915/display/intel_hdmi.c
-> > +++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
-> > @@ -1966,6 +1966,8 @@ static bool intel_hdmi_sink_bpc_possible(struct d=
-rm_connector *_connector,
-> >  =
+Thanks,
 
-> >  		if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR420)
-> >  			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_36;
-> > +		else if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR444)
-> > +			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_36;
-> >  		else
-> >  			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_36;
-> >  	case 10:
-> > @@ -1974,6 +1976,8 @@ static bool intel_hdmi_sink_bpc_possible(struct d=
-rm_connector *_connector,
-> >  =
+Jonathan
 
-> >  		if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR420)
-> >  			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_30;
-> > +		else if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR444)
-> > +			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_30;
-> >  		else
-> >  			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_30;
-> >  	case 8:
-> > @@ -2038,6 +2042,11 @@ intel_hdmi_sink_format_valid(struct intel_connec=
-tor *connector,
-> >  =
+> ---
+>  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 424 ++++++++++++++++++
+>  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 300 +++++++++++++
+>  2 files changed, 724 insertions(+)
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> 
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> new file mode 100644
+> index 000000000000..609188c40ffc
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> @@ -0,0 +1,424 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#ifndef INV_ICM42607_H_
+> +#define INV_ICM42607_H_
+> +
+> +#include <linux/bitops.h>
+> +#include <linux/bitfield.h>
+> +#include <linux/regmap.h>
+> +#include <linux/mutex.h>
+> +#include <linux/regulator/consumer.h>
 
-> >  		return MODE_OK;
-> >  	case INTEL_OUTPUT_FORMAT_RGB:
-> > +		return MODE_OK;
-> > +	case INTEL_OUTPUT_FORMAT_YCBCR444:
-> =
+Alphabetical order.  Though fine to have an IIO specific block at the end.
 
-> We'll also want the !has_hdmi_sink check here like for 4:2:0.
-> =
+> +#include <linux/iio/iio.h>
+> +#include <linux/iio/common/inv_sensors_timestamp.h>
 
-> And I think we also want something to mirror the ycbcr_420_allowed
-> flag. I guess you could just make it something like:
-> =
+> +/* ODR values */
+> +enum inv_icm42607_odr {
+> +	INV_ICM42607_ODR_1600HZ = 5,
+> +	INV_ICM42607_ODR_800HZ,
+> +	INV_ICM42607_ODR_400HZ,
+> +	INV_ICM42607_ODR_200HZ,
+> +	INV_ICM42607_ODR_100HZ,
+> +	INV_ICM42607_ODR_50HZ,
+> +	INV_ICM42607_ODR_25HZ,
+> +	INV_ICM42607_ODR_12_5HZ,
+> +	INV_ICM42607_ODR_6_25HZ_LP,
+> +	INV_ICM42607_ODR_3_125HZ_LP,
+> +	INV_ICM42607_ODR_1_5625HZ_LP,
+> +	INV_ICM42607_ODR_NB,
 
-> intel_hdmi_ycbcr_444_allowed(display)
-> {
-> 	return DISPLAY_VER(display) >=3D 5 && !HAS_GMCH(display);
+If just here as number, then no terminating comma as
+we don't want to imply something might come after it.
+Same for all the other enums.
+> +};
+> +
+> +enum inv_icm42607_filter {
+> +	/* Low-Noise mode sensor data filter */
+> +	INV_ICM42607_FILTER_BYPASS,
+> +	INV_ICM42607_FILTER_BW_180HZ,
+> +	INV_ICM42607_FILTER_BW_121HZ,
+> +	INV_ICM42607_FILTER_BW_73HZ,
+> +	INV_ICM42607_FILTER_BW_53HZ,
+> +	INV_ICM42607_FILTER_BW_34HZ,
+> +	INV_ICM42607_FILTER_BW_25HZ,
+> +	INV_ICM42607_FILTER_BW_16HZ,
+> +
+> +	/* Low-Power mode sensor data filter (averaging) */
+> +	INV_ICM42607_FILTER_AVG_2X = 0,
+> +	INV_ICM42607_FILTER_AVG_4X,
+> +	INV_ICM42607_FILTER_AVG_8X,
+> +	INV_ICM42607_FILTER_AVG_16X,
+> +	INV_ICM42607_FILTER_AVG_32X,
+> +	INV_ICM42607_FILTER_AVG_64X,
+Bring these in when used.  For now these to me look like they should be broken
+into two separate enums. I can't see how the will be used though so hard
+to tell.
 
-Actually the display version check is redundant there.
-!HAS_GMCH alone is sufficient.
+> +};
+>
 
-> }
-> =
+> +#define INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK		GENMASK(1, 0)
+> +#define INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL		\
+> +	FIELD_PREP(INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK, 1)
 
-> That can also be reused when setting up the allowed property values.
-> =
+Define the value of the field to give that a name and use FIELD_PREP() inline.
 
-> > +		if (!(info->color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444)))
-> > +			return MODE_BAD;
-> > +
-> >  		return MODE_OK;
-> >  	default:
-> >  		MISSING_CASE(sink_format);
-> > =
 
-> > -- =
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> new file mode 100644
+> index 000000000000..6b7078387568
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> @@ -0,0 +1,300 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#include <linux/kernel.h>
+> +#include <linux/device.h>
+Most likely this should be more specific headers like
+dev_printk.h etc  It is pretty rare it makes sense to include
+device.h if following IWYU approach (which we do for IIO drivers
+and is generally accepted across the kernel).
+> +#include <linux/module.h>
+Alphabetical order.
+> +#include <linux/slab.h>
+> +#include <linux/delay.h>
+> +#include <linux/mutex.h>
+> +#include <linux/interrupt.h>
+> +#include <linux/irq.h>
+> +#include <linux/regulator/consumer.h>
+> +#include <linux/property.h>
+> +#include <linux/regmap.h>
+> +#include <linux/iio/iio.h>
 
-> > 2.53.0
-> =
+> +u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr)
+> +{
+> +	static u32 odr_periods[INV_ICM42607_ODR_NB] = {
 
-> -- =
+Hopefully the compiler can figure it out, but better
+as explicit const.
 
-> Ville Syrj=E4l=E4
-> Intel
+> +		/* Reserved values */
+> +		0, 0, 0, 0, 0,
+> +		/* 1600Hz */
+> +		625000,
+> +		/* 800Hz */
+> +		1250000,
+> +		/* 400Hz */
+> +		2500000,
+> +		/* 200Hz */
+> +		5000000,
+> +		/* 100 Hz */
+> +		10000000,
+> +		/* 50Hz */
+> +		20000000,
+> +		/* 25Hz */
+> +		40000000,
+> +		/* 12.5Hz */
+> +		80000000,
+> +		/* 6.25Hz */
+> +		160000000,
+> +		/* 3.125Hz */
+> +		320000000,
+> +		/* 1.5625Hz */
+> +		640000000,
+> +	};
+> +
+> +	return odr_periods[odr];
+> +}
 
--- =
+> +
+> +static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
+> +				 const struct inv_icm42607_conf *conf)
+> +{
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	val = INV_ICM42607_PWR_MGMT0_GYRO(conf->gyro.mode) |
+> +	INV_ICM42607_PWR_MGMT0_ACCEL(conf->accel.mode);
+Align as 
+	val = INV_ICM42607_PWR_MGMT0_GYRO(conf->gyro.mode) |
+	      INV_ICM42607_PWR_MGMT0_ACCEL(conf->accel.mode);
 
-Ville Syrj=E4l=E4
-Intel
+Though as mentioned in David's review, prefer to see the FIELD_PREP()
+inline.
+
+> +	/*
+> +	 * No temperature enable reg in datasheet, but BSP driver
+> +	 * selected RC oscillator clock in LP mode when temperature
+> +	 * was disabled.
+> +	 */
+> +	if (!conf->temp_en)
+> +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+
+Could make this 
+	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL,
+			  !conf->temp_en);
+Not particularly important though if you prefer the if.
+
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_GYRO_CONFIG0_FS_SEL(conf->gyro.fs) |
+> +	INV_ICM42607_GYRO_CONFIG0_ODR(conf->gyro.odr);
+
+As above.  If it's the second line of a statement, it must be indented
+to avoid readability issues. Fix all examples of this.
+
+
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_ACCEL_CONFIG0_FS_SEL(conf->accel.fs) |
+> +	INV_ICM42607_ACCEL_CONFIG0_ODR(conf->accel.odr);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_GYRO_CONFIG1_FILTER(conf->gyro.filter);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG1, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	val = INV_ICM42607_ACCEL_CONFIG1_FILTER(conf->accel.filter);
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG1, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->conf = *conf;
+> +
+> +	return 0;
+> +}
+> +
+> +/**
+> + *  inv_icm42607_setup() - check and setup chip
+> + *  @st:	driver internal state
+> + *  @bus_setup:	callback for setting up bus specific registers
+> + *
+> + *  Returns 0 on success, a negative error code otherwise.
+> + */
+> +static int inv_icm42607_setup(struct inv_icm42607_state *st,
+> +			      inv_icm42607_bus_setup bus_setup)
+> +{
+> +	const struct inv_icm42607_hw *hw = &inv_icm42607_hw[st->chip];
+> +	const struct device *dev = regmap_get_device(st->map);
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (val != hw->whoami)
+> +		dev_warn_probe(dev, -ENODEV,
+> +			       "invalid whoami %#02x expected %#02x (%s)\n",
+> +			       val, hw->whoami, hw->name);
+> +
+> +	st->name = hw->name;
+> +
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
+> +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
+> +	if (ret)
+> +		return ret;
+> +	msleep(INV_ICM42607_RESET_TIME_MS);
+
+fsleep() here as sleeping longer is probably fine and that function will
+apply appropriate slack on the times.
+
+> +
+> +	ret = regmap_read(st->map, INV_ICM42607_REG_INT_STATUS, &val);
+> +	if (ret)
+> +		return ret;
+> +	if (!(val & INV_ICM42607_INT_STATUS_RESET_DONE))
+> +		return dev_err_probe(dev, -ENODEV,
+> +				     "reset error, reset done bit not set\n");
+> +
+> +	ret = bus_setup(st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
+> +				 INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN,
+> +				 INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
+> +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK,
+> +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return inv_icm42607_set_conf(st, hw->conf);
+> +}
+> +
+> +static int inv_icm42607_enable_vddio_reg(struct inv_icm42607_state *st)
+> +{
+> +	int ret;
+> +
+> +	ret = regulator_enable(st->vddio_supply);
+> +	if (ret)
+> +		return ret;
+> +
+> +	usleep_range(3000, 4000);
+David covered this, fsleep() preferred.
+
+> +
+> +	return 0;
+> +}
+
+> +
+> +int inv_icm42607_core_probe(struct regmap *regmap, int chip,
+> +			    inv_icm42607_bus_setup bus_setup)
+> +{
+> +	struct device *dev = regmap_get_device(regmap);
+> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
+> +	struct inv_icm42607_state *st;
+> +	int irq, irq_type;
+> +	bool open_drain;
+> +	int ret;
+> +
+> +	if (chip < INV_CHIP_INVALID || chip >= INV_CHIP_NB)
+> +		dev_warn_probe(dev, -ENODEV,
+> +			       "Invalid chip = %d\n", chip);
+
+Easily fits on one line shorter than 80 chars.
+
+> +
+> +	/* get INT1 only supported interrupt or fallback to first interrupt */
+
+Why the fallback?  I suspect this is copied from a driver
+that didn't (bug) support named interrupts from the start.  Given you are
+doing so here, just insist on named one to simplify things.  I'd imagine
+that if INT2 is ever supported, the device configuration will need to be
+different.
+
+> +	irq = fwnode_irq_get_byname(fwnode, "INT1");
+> +	if (irq < 0 && irq != -EPROBE_DEFER) {
+> +		dev_info(dev, "no INT1 interrupt defined, fallback to first interrupt\n");
+> +		irq = fwnode_irq_get(fwnode, 0);
+> +	}
+> +	if (irq < 0)
+> +		return dev_err_probe(dev, irq, "error missing INT1 interrupt\n");
+> +
+> +	irq_type = irq_get_trigger_type(irq);
+> +	if (!irq_type)
+> +		irq_type = IRQF_TRIGGER_FALLING;
+
+Not used at this point.  Bring it in when you use it so we can understand
+the default setting.
+
+
+> +
+> +	open_drain = device_property_read_bool(dev, "drive-open-drain");
+> +
+> +	st = devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
+> +	if (!st)
+> +		return -ENOMEM;
+> +
+> +	dev_set_drvdata(dev, st);
+> +	mutex_init(&st->lock);
+For new code
+	ret = devm_mutex_init(&st->lock);
+	if (ret)
+		return ret;
+
+Brings a very small advantage if someone is debugging locks.
+
+> +	st->chip = chip;
+> +	st->map = regmap;
+> +	st->irq = irq;
+> +
+> +	ret = iio_read_mount_matrix(dev, &st->orientation);
+> +	if (ret) {
+> +		dev_err(dev, "failed to retrieve mounting matrix %d\n", ret);
+> +		return ret;
+
+return dev_err_probe();
+
+> +	}
+> +
+> +	ret = devm_regulator_get_enable(dev, "vdd");
+> +	if (ret)
+> +		return dev_err_probe(dev, ret,
+> +				     "Failed to get vdd regulator\n");
+> +
+> +	msleep(INV_ICM42607_POWER_UP_TIME_MS);
+> +
+> +	st->vddio_supply = devm_regulator_get(dev, "vddio");
+> +	if (IS_ERR(st->vddio_supply))
+> +		return PTR_ERR(st->vddio_supply);
+> +
+> +	ret = inv_icm42607_enable_vddio_reg(st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = devm_add_action_or_reset(dev, inv_icm42607_disable_vddio_reg, st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Setup chip registers (includes WHOAMI check, reset check, bus setup) */
+> +	ret = inv_icm42607_setup(st, bus_setup);
+> +
+> +	return ret;
+
+Looking forwards I would instead do:
+
+	if (ret)
+		return ret;
+
+	return 0;
+
+I think that makes it easier to add the additional pm stuff in later patches.
+
+> +}
+> +EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
 
 _______________________________________________
 Linux-rockchip mailing list
