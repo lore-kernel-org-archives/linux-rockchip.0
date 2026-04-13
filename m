@@ -4,84 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F2FE9380D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 03:20:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84681EBFD36
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 10:08:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=akhYi58qQdG+ufAqvvRzkjJGeYC6Le+/1UFwpLFwzAA=; b=FbOvsWkZxhpxbI
-	Iu/qhRVVlFIVSZLM6t38WNfpkSytIm8e9mKyY0QPbDatg7z/RTT9RcGHJlvcRw+hW5E5YtP43qk4j
-	iStmWAjc09C3/GqW+qwg4H4+pR/05azKnZfcy0sYhPSBnuu0Bb3ik1yfJ4I+zgzjASmkSZGs0nwwZ
-	APU1FangGzJpwOVp9ECNz31uVfBDUYLdYgnfOsoYzvF6TsMoOiOLpDjoURLuHbPzXdUV4Jdrl5y7g
-	Z0cHVRm5p0GSQT4eF2omfpoyjTVoEB3/YzEd0aHxor9/xnCxZ0DzyQVNbazMRfhvMY3z6774H7scQ
-	ZpjDoyDidbVdq4MD+Zjg==;
+	List-Owner; bh=ufC0Rm9CcU/QPECPsV0+qWOcxP5gNASVh/YYTy8XYYo=; b=ynC3i2DiRZ+2CW
+	rSJs0wXvU3F4DSiGJdakf4zhjR/gYyT8+1FT16cs6eLuu/1Ed/co5KnRK/YHivNnPDSLl6VWxa/oK
+	j8MsFRUHPvqfxNcR8AIPLe5d2bFCQahosr/7uaQHLa3fYScQAJZ0rqsDuJuSpIVeXICwPxSrVpoCI
+	+2UV+rQ8XEHhFwp6dEFSrYQ5jUsQW98tt4Daq9OyarXxwsBp0VM0sSOzpXSFQZ48fBhKPVoZBSROL
+	APu26O4cFDrzDko286K6OzD3lrLHkMOQZEALgW7hX7oGaWlckfF4KSAAtYAEz2+uqvfO05twdv87K
+	UxcaSW4nO0/gtkPSos5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC7qX-0000000Ew1X-3g73;
-	Mon, 13 Apr 2026 03:20:21 +0000
-Received: from smtpbgbr1.qq.com ([54.207.19.206])
+	id 1wCEDg-0000000FPsR-3NVq;
+	Mon, 13 Apr 2026 10:08:40 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wC7qT-0000000Ew0h-37GX
-	for linux-rockchip@lists.infradead.org;
-	Mon, 13 Apr 2026 03:20:20 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1776050352;
-	bh=ogsVwqs2EHz5JEsVYxGWqhUqK0WWsNCtR6dBPtTnbfg=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=AtLtVC5As+3Ph/LJaCjtMx3byYQAw/CSid1kGDO/FH+iXr6V+zjOkHTIHUOXw8tl+
-	 n8wJ+ATyr+CeBJJOp9UmPdO9/2q2E5VuvEPhbSmub40p51tFJrp6JayptULtn8NQ08
-	 qZvU1XMzc7qYIVD9ynrEWzTLxs+cX/8LRmwHKjeQ=
-X-QQ-mid: zesmtpsz9t1776050350t7b8516f3
-X-QQ-Originating-IP: GNntOqy7/9Vf323diNegGGGi1nHYBbOd6PR/kOLCRlI=
-Received: from [172.16.12.51] ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 13 Apr 2026 11:19:07 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 4940756688928196925
-Message-ID: <3F2138A226F05F52+ad3e8619-5b37-487c-87e8-cde3b5ae8081@airkyi.com>
-Date: Mon, 13 Apr 2026 11:19:04 +0800
+	id 1wCEDc-0000000FPqB-2hYJ;
+	Mon, 13 Apr 2026 10:08:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1776074871; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=TrtNrasC5V6cDZxjS7KeQ2JghwSAAV0u2iMuhEnm6PkfBr8aq0tnLpdsG1CWI2VD3DpqHMYzmMbOOSPDSpl8pXj4VItB0pFPuVlc4bAmJn0IjqwE0pWYNCfDXw2VHMKDM0obZ1wVX+GtoyTpMpKku4m9t5FqMHrTQDtf53nI6Kg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1776074871; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=0aHLj5HMmgBNp83PkRXSBCxnfFGY6jOss5iAqSsZMsg=; 
+	b=Ks8CnCVqY21aDFy9ti11wBb2+QTLrmHBGUHNTuIWcIMobj6+9F5HnubxOmKpd8bn+yQr9y/V6MKe8pVsRBJqsm66x8HrZH/AhJ/oCDN4D8z0vsk+br21Vf142e2qWLdYT8KfCwUsz4RZ/gKrKW0L7zX/4Lh9HqI8z5Q30FpW6hw=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776074871;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=0aHLj5HMmgBNp83PkRXSBCxnfFGY6jOss5iAqSsZMsg=;
+	b=dNPyeHI68YCj5ZtK/29mjjxcSscrL4HkTE2Vh+E9yqD392FFNoKC2toKcEG0v+zZ
+	L8kPO74ZqyYMoryUmBWPsYty1e3yOSQ9vqSAWa9n6gvBmftnja4yC5TGZeVx7XROWps
+	e3D8KUNFrFvAVayLSVLm8CRz/mDRfLjaBFJwNLko=
+Received: by mx.zohomail.com with SMTPS id 1776074869753787.0016875681852;
+	Mon, 13 Apr 2026 03:07:49 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Mon, 13 Apr 2026 12:07:15 +0200
+Subject: [PATCH v13 01/27] drm/amd/display: Remove unnecessary
+ SIGNAL_TYPE_HDMI_TYPE_A check
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/mipi-dsi: Only remove child devices that match the
- dsi device type
-To: dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Heiko Stuebner <heiko@sntech.de>
-References: <20251203115028.133-1-kernel@airkyi.com>
-Content-Language: en-US
-From: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20251203115028.133-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: OTISBJKPy/pkWjEOYa8AGV0DAvpund6eIGsVLzpyjlOj8/sh4a47Nf1p
-	YHjUMUNCuYV/DC2N8Lsf8UjjbWFwAegM6/4vUAprWAfuPPFsb9ykkd0jsVYWVwN7q36q45T
-	oCAfDXcMx2tOE3mj/R/4WBZNQ6RTTkJHcK+H610zh3xat5JLo6KaObDlULOIUuZKKSzWUfU
-	TchiUMQYLS0v08hKxSSKYaRYrwItAg8VElhYW+dlgoDDuxK3NfY+t8qrBN6hCOuw+144lX7
-	zZJKH8qKT8EwlricE4rcaipy+6Y9VpaX5XVVAaowSKsc+46ZT3zmkKdyjEODnmEq5Pz2Uul
-	UboYoW8S6CwLTfAJN2AGYWAumi/mPltYQFpUnj9CyGhNnXqKL0CzW27iKV6kZ9QI9vCzRL+
-	57xFPOH2KUpeAJxeIL0iGdtEsecM+WOR7ZjJzG4ND9shbzZ46CfMVhoeFgrPjX750He4LYg
-	s+HfLoJSM/P6yXVKqIm/RWkr/+W/fARTxCJ3i5p9jMyH/75yqa+/yeLy5ZGdC5VMRAitQcb
-	z9kduR+dpO6J1iuvE14HpYNFjsUs9m1l5GXKxM/ODHkn4+8hw926QG2Ove8YH9M8GwMFk0F
-	ZQgxON7j1T6+wJ7ufmR2E6K0rba46DjoQq5SlOAn6HE/1USbx/Q0Rem4gzrmO4lK+rN47PO
-	O17JvnmoegoAqEfKfbE7UmjcPqHejUWjKt/0yr8zikT9L3ETl1uuaNSAJI9UT9cEWKUzkOt
-	LSytBxauvRV+j4UWlhqH1eU3fWIBMa4uUu8bqSKdThAEarf8PjVi0AV9t6fy1ZU35p4fnPs
-	QwnKfoZnyb+X8a7fCcpLL76mpqwcJSK8Ht3n+uoWxjfP6bRvJsEUW6IdCfay3foT43T3YWV
-	pkhoiWlamz7AXmZr9S9Ar0f+Yt1sgccGVfWINEiEeM0/oCCMnlYQChJdXllLUn/dFP99GDE
-	JnN5H+sc1LvaEswIDKtNnbCUzeg4vkbrJAfVV4sL0VGEuSXsKrq+xEzspIqRjTS1vjKRsEj
-	/up7CD0XH0rwgLAE8m
-X-QQ-XMRINFO: NyFYKkN4Ny6FuXrnB5Ye7Aabb3ujjtK+gg==
-X-QQ-RECHKSPAM: 0
+Message-Id: <20260413-color-format-v13-1-ab37d4dfba48@collabora.com>
+References: <20260413-color-format-v13-0-ab37d4dfba48@collabora.com>
+In-Reply-To: <20260413-color-format-v13-0-ab37d4dfba48@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Werner Sembach <wse@tuxedocomputers.com>, 
+ Andri Yngvason <andri@yngvason.is>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260412_202018_817409_279F6913 
-X-CRM114-Status: GOOD (  21.07  )
+X-CRM114-CacheID: sfid-20260413_030836_786910_451EF5D7 
+X-CRM114-Status: GOOD (  12.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,57 +102,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Werner Sembach <wse@tuxedocomputers.com>
 
-On 12/3/2025 7:50 PM, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> 
-> This patch checks whether the device is a valid mipi_dsi_device before
-> accessing it in mipi_dsi_remove_device_fn().
-> 
-> The mipi_dsi_host_unregister() assumes that all child devices of the
-> host device are mipi_dsi_devices and uses mipi_dsi_remove_device_fn()
-> to perform subsequent operations specific to mipi_dsi_device.
-> 
-> In rockchip platform, for dw-mipi-dsi-rockchip.c, it creates a dphy
-> device, and it use the dsi host device as its parent device.
-> 
-> And when we call dw_mipi_dsi_remove() in
-> dw_mipi_dsi_rockchip_remove(), mipi_dsi_host_unregister() will get
-> such a dphy child device and treat it as an mipi_dsi_device, which
-> will lead to a further panic.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> ---
->  drivers/gpu/drm/drm_mipi_dsi.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/gpu/drm/drm_mipi_dsi.c b/drivers/gpu/drm/drm_mipi_dsi.c
-> index a712e177b350..5b9cc799eb87 100644
-> --- a/drivers/gpu/drm/drm_mipi_dsi.c
-> +++ b/drivers/gpu/drm/drm_mipi_dsi.c
-> @@ -349,7 +349,12 @@ EXPORT_SYMBOL(mipi_dsi_host_register);
->  
->  static int mipi_dsi_remove_device_fn(struct device *dev, void *priv)
->  {
-> -	struct mipi_dsi_device *dsi = to_mipi_dsi_device(dev);
-> +	struct mipi_dsi_device *dsi;
-> +
-> +	if (!dev_is_mipi_dsi(dev))
-> +		return 0;
-> +
-> +	dsi = to_mipi_dsi_device(dev);
->  
->  	if (dsi->attached)
->  		mipi_dsi_detach(dsi);
+Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check that was performed in the
+drm_mode_is_420_only() case, but not in the drm_mode_is_420_also() &&
+force_yuv420_output case.
 
-Gentle ping about this.
+Without further knowledge if YCbCr 4:2:0 is supported outside of HDMI,
+there is no reason to use RGB when the display
+reports drm_mode_is_420_only() even on a non HDMI connection.
 
-Thanks!
+This patch also moves both checks in the same if-case. This  eliminates an
+extra else-if-case.
+
+Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+Tested-by: Andri Yngvason <andri@yngvason.is>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index c2066319772b..ad9714382d5f 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6780,12 +6780,9 @@ static void fill_stream_properties_from_drm_display_mode(
+ 	timing_out->v_border_top = 0;
+ 	timing_out->v_border_bottom = 0;
+ 	/* TODO: un-hardcode */
+-	if (drm_mode_is_420_only(info, mode_in)
+-			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
+-		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+-	else if (drm_mode_is_420_also(info, mode_in)
+-			&& aconnector
+-			&& aconnector->force_yuv420_output)
++	if (drm_mode_is_420_only(info, mode_in) ||
++	    (aconnector && aconnector->force_yuv420_output &&
++	     drm_mode_is_420_also(info, mode_in)))
+ 		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+ 	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
+ 			&& aconnector
 
 -- 
-Best, 
-Chaoyi
+2.53.0
 
 
 _______________________________________________
