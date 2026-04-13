@@ -4,54 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD32DEBFD2F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 10:10:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC46EBFD36
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 10:10:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lEQAvzSc59UOvTkgu6+xoEvQV5PbcLX/nqLH2Lwivbs=; b=RtKy0TFu9dqADB
-	sY13RQXXKN0H3Yz2fTAwuVh350/MSLiRIAFDhoobHMUPQOAFh0e0dsWGJ0agWlDuybB9lUrUkD/Ap
-	ykbW+UZL+47JnKz5Eed+JySD9rxcQjBf4A7WczegpR0moIjXGDrr0y/yJVbmNJx5vgwmtFjrwauG3
-	3yNAeEnqYS2f3VnBPXQdNbR8anbkYoQvBSu/Cp7Cv4n/PGZswvclXCwkfiJZOr+tqQyksTCJNNoJm
-	a6INbkUr2z4TaWDpBl2wkdm6Aabf1b9MZU3oovBGtm6tWrXCyJgJ8H+eeUJX/Z3qq72Lyq3LYYkTo
-	Zoh7GJesEev77rsBunkA==;
+	List-Owner; bh=m05YJY1S9d/KkAifTNXNlAdYy3Mrhw9iqqolaJFhlGg=; b=ZYnRaB3Z/AUXO2
+	dScXBEDdP05tJoZrYsrrtEaqmCl2rw/mEeT+yvohpEHzSPtEY40IcNk9BcOSdQI1GusIrSJfSdG+c
+	yusO8+bm9gP2RVmPO39ad90sZv4o7ubB2aCkh8Y9kjmnrfeWPxdnJhrrUvAGHfA8TfXRiDX91KJs8
+	mAgQfTHvq76pTraykfOYOH7jyWvMkoMTSi3sENfBe+2K5bprOb7z764PF2r8HphSb/5U34thSCfoS
+	kyLAWpjTYO8A4Am3qFJM8QGv5tgrLSegP4Pb3gW9v3T6pyHqMivs3qnEahlxkjf2jIuXj7kqoXPjA
+	qxxUTAjqAsnmKnA84+iw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCEF3-0000000FR11-0etq;
-	Mon, 13 Apr 2026 10:10:05 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wCEF5-0000000FR3l-3j9F;
+	Mon, 13 Apr 2026 10:10:07 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCEEz-0000000FQxA-1TPu;
-	Mon, 13 Apr 2026 10:10:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1776074969; cv=none; 
+	id 1wCEF1-0000000FQyU-1G4P;
+	Mon, 13 Apr 2026 10:10:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=HabY2i2E1+ddRtoi01o8V7PD9YzY5+x/Zz9iixg8p/8=; b=bD+lsINYSnUI/fy2w0wdiGdSEc
+	4cRYORCYPDU+ErqIcKUKVwb0ciyIYpfqBuCCeD+DmlWvBigcR0eRr0qu2R/lYTm5rATike/4/qAAk
+	HEsX0vq+9vJZTtfgmTJ/p67ma19xNqT1VtrknJ6bnhkTpohNM4p7ZoRZnNUT/SkTW0CFh0lOhrSUF
+	pfxNKBxUuh+U2WmJDDdZBy4bIcGdsibQFCAbpFTh1kj/NrJsbcYmpQufIZ8z6AHuiD87xnbQYjO6C
+	SmOgFD69v90u5xIk7MUP5Z5u/3DQQWBRmzY7eo1HvsKDwdZMIk9QvY+N4mTNyEdxbSDtLs1/UwC/n
+	BPecRVdw==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wCEEx-0000000GYd1-2Wdn;
+	Mon, 13 Apr 2026 10:10:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1776074961; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=VxWv5bDSLJh3szrqoEbNpalLAzrc1tm15m3ys+l9XwCIlg6vJJLJ5gkbdHEMeznTpl1eKYOgIae0SoPn8JeF6Hew+0UInFvYSrmLxVEmCDnsg8Ezl1UitHMOIqEFlqu3+R9HHt0madc00DLN0NmmT06/eMZARnLnmdq3tDsSRQg=
+	b=EcJt6K/xuIAJzQCorLQEqBQf1auVZeJ0HMKfs9eKPrm+ea3bh+Wy7Dgl0gQhcVF1tTOD778qGmh6+49q9YkV9cEcm0ZqZMlegNFyntRYUVioGLgJcyHp0LGZCYFn8UsTUB7Z5UPVpWSFni1flPxJAJV3xAIgYpCSUbAmm9xRNHo=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1776074969; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=gOyE23O5K6s9fqOK0Fz3jTjo+ifm/m4nA7cZNUJvvo4=; 
-	b=TctDCQuOE5gZJj/OJ8V7M3ClkmGta8H0AuQETQeoRV6kf7qDW7Gl9E1v3wNKiagM76GM50fCOygkXZCAeHibgROC0fUoPJ15Kyfga8uMpI5VTus9nDEM7StJPrthaRoc2zbfF5wfamGV7qYXjjEQpJ3t9e7UnlLuwNJYyJOQ7lo=
+	t=1776074961; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=HabY2i2E1+ddRtoi01o8V7PD9YzY5+x/Zz9iixg8p/8=; 
+	b=ElAKk9Xwk38aNIbhwcCzF02vllUZSPplXKtE5Hv1dT3Csi0++lpDvUGegFlWnUXhNbEPBaz6T7NcqIW7rvjj0sV0BC8MeNhI/6utVKfqAa1u2lnvsRKKePoZEXcvCiBKegm525Uev6TcqQi51YXCQ0QN/rjc3x6I4d4KAvlSchY=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776074969;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776074961;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=gOyE23O5K6s9fqOK0Fz3jTjo+ifm/m4nA7cZNUJvvo4=;
-	b=IqUgY5nCErZY9dfVVQjzXsO0vcP76sIlzMultDufo38ya7Ln/KyrRBxLF01abEMq
-	DlK8yo13Pdf+N2H7JxdF8+ic/6OPunLszGNUVjiPKwlEfp7D+rzcZNP2JfE0DcSwJbB
-	2rnh5uexe+NviQUuhXeVJnNxeYm8NHfNjbhABlaA=
-Received: by mx.zohomail.com with SMTPS id 1776074967838175.92045163635623;
-	Mon, 13 Apr 2026 03:09:27 -0700 (PDT)
+	bh=HabY2i2E1+ddRtoi01o8V7PD9YzY5+x/Zz9iixg8p/8=;
+	b=ALHZ5JNdoOdmSnU2+Y5fNYTOYycTHDkGmqdXunyZ41pDMd3wiY5wyIl0etaM06dV
+	MIIx+NcfGhVpKOGC6P/XGtfCytqJKVeahWIPf6+byLWDPnBRtvdURauzpbhfyjoQjWo
+	B49MtoE0AsXsC42JJlqFmvQejuAlYzajBuQyeiLo=
+Received: by mx.zohomail.com with SMTPS id 1776074959034215.85803249771402;
+	Mon, 13 Apr 2026 03:09:19 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Mon, 13 Apr 2026 12:07:26 +0200
-Subject: [PATCH v13 12/27] drm/i915/dp: Add YCBCR444 handling for sink
+Date: Mon, 13 Apr 2026 12:07:25 +0200
+Subject: [PATCH v13 11/27] drm/i915/hdmi: Add YCBCR444 handling for sink
  formats
 MIME-Version: 1.0
-Message-Id: <20260413-color-format-v13-12-ab37d4dfba48@collabora.com>
+Message-Id: <20260413-color-format-v13-11-ab37d4dfba48@collabora.com>
 References: <20260413-color-format-v13-0-ab37d4dfba48@collabora.com>
 In-Reply-To: <20260413-color-format-v13-0-ab37d4dfba48@collabora.com>
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -82,8 +96,8 @@ Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_031001_541983_891EC09D 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20260413_110959_957720_9BE681C8 
+X-CRM114-Status: GOOD (  10.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,18 +119,37 @@ sink formats, add handling of the YCBCR444 sink format. The AUTO path
 does not choose this format, but with explicit format selection added to
 the driver, it becomes a possibility.
 
-Check for sink support of YCBCR444 to intel_dp_sink_format_valid.
+Check for YCBCR444 support on the sink in both sink_bpc_possible, and
+sink_format_valid.
 
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/i915/display/intel_dp.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/gpu/drm/i915/display/intel_hdmi.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
-index 35b8fb5740aa..47bd3d59ea93 100644
---- a/drivers/gpu/drm/i915/display/intel_dp.c
-+++ b/drivers/gpu/drm/i915/display/intel_dp.c
-@@ -1364,6 +1364,11 @@ intel_dp_sink_format_valid(struct intel_connector *connector,
+diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/drm/i915/display/intel_hdmi.c
+index 874076a29da4..5ab5b5f85cde 100644
+--- a/drivers/gpu/drm/i915/display/intel_hdmi.c
++++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
+@@ -1966,6 +1966,8 @@ static bool intel_hdmi_sink_bpc_possible(struct drm_connector *_connector,
+ 
+ 		if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR420)
+ 			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_36;
++		else if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR444)
++			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_36;
+ 		else
+ 			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_36;
+ 	case 10:
+@@ -1974,6 +1976,8 @@ static bool intel_hdmi_sink_bpc_possible(struct drm_connector *_connector,
+ 
+ 		if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR420)
+ 			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_30;
++		else if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR444)
++			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_30;
+ 		else
+ 			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_30;
+ 	case 8:
+@@ -2038,6 +2042,11 @@ intel_hdmi_sink_format_valid(struct intel_connector *connector,
  
  		return MODE_OK;
  	case INTEL_OUTPUT_FORMAT_RGB:
