@@ -4,101 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1CD2F531C7
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 19:21:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84EDEF531C3
+	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 19:24:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iRTy8ch0kEGT1v6lywrz76jTCKjAi/NyhtPgpr5nGE0=; b=UvHlwzEMThbrqJ
-	ze7p/HwVfexz+VThHq3iccJmZlT1dd8eNZcZL8G0BPWD7TLR63qV29I4mTyorMgQ/NOdA3sM99Pic
-	ktXCmGMELxSBDD42yq21f8gW49ihLYEi+U9b8lze4bz5AlKU7OsxxjulluMQfisN3z1p+mxZ/HtrX
-	n9KaoMgBLYMdLZ/jPAk6sJt4wDd5Jg7ccN2ZMcV34IjNMpoMVWqU6BaCgNdwgP77G/W2ohzEq5IvT
-	6LVXtEd4XZEW1Hi5hrpzUgduA3wWkxBR713h3nFxxyIJNsaA9F7EIhB21kHZ8aDLp0EH4FIufkI2F
-	WTIjrxT8wL7PBnAQBv3A==;
+	List-Owner; bh=NxMn28R0SY0NxF1ediaugxy3SiZq3/XRsqIJ393gE6o=; b=x92bfKpx+VD9HD
+	jhOx0+Y6iuimwOSqr2FxLejFtBD+0xaENGzYJwMY3J/ygcBCGBKTXUiE9oDsSiCE9MLlYeRHLxF66
+	DPsFnvaYc0KZvJEcmFfh8OQMm1ydiM+3XgdCWQyZYOfvjIniNpsZ1GIXyjsyghqg3HLFzL5+Eeg5y
+	l2/DwKqhFbeKE+lD3d/nCTbtVaeGazeWk0Vzr+BZs+M5fQLt+5j4+Ue95nBZCANlFcaHwDMM7d1Vi
+	vpdf8BPiQNg5MlKY67VZO5dp1dZBE6ksoIaG5a6OQcDsj5x4MgQtYV5ZV4ZwyDrejT8UoIApJ5txN
+	oLbaqSSsxfBmwflgdowA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCMr5-0000000GI5r-14u0;
-	Mon, 13 Apr 2026 19:21:55 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1wCMtG-0000000GIQQ-1OUt;
+	Mon, 13 Apr 2026 19:24:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCMr2-0000000GI5F-24qF;
-	Mon, 13 Apr 2026 19:21:53 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1776108112; x=1807644112;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=/yuxMwENnIRcCPgqrASXBDil5WGzLxAiS5rqQNABMkc=;
-  b=mhWDaI0I7cJ5yFifeIbMeI8Uljwsh62V7tDJvQGXYYm7HpfeJ5kijB+a
-   b+4wWfbdtz35NYfXAlflvibYx8IuTzzlYwM01q0KYUeoUxaObZzyZhkbr
-   M5gHPaCln/qsDTxd21W5TCsWKpldfw+6HeibfLCXX+gcBlSLwejZ7ayh2
-   uJdMqlG3rR6DWId5CIm2eQcwMeSxVKdsuoFKI42YPusdz1BAn2n9U4l3J
-   wXbevvjbj4SEpe9vh46Yk5hASUANA8NV7CJTkODz98neLHTUy9HLEOieC
-   Wrk9JYLljgJG/mUDG84OMeJBROh7HZp5tbB+V7MxmGxO4E9+RdMTcNikU
-   A==;
-X-CSE-ConnectionGUID: cU4b2wB9S1Oxv+dv5Stf0Q==
-X-CSE-MsgGUID: pV8yOkeeQXGwn7AJmYs1rA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="88435223"
-X-IronPort-AV: E=Sophos;i="6.23,177,1770624000"; 
-   d="scan'208";a="88435223"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2026 12:21:50 -0700
-X-CSE-ConnectionGUID: +JW6UgNqSJaplS0n3VHDFQ==
-X-CSE-MsgGUID: bC1tA4TnQ3+K75+6KoFutQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.23,177,1770624000"; 
-   d="scan'208";a="225569953"
-Received: from abityuts-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.97])
-  by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Apr 2026 12:21:40 -0700
-Date: Mon, 13 Apr 2026 22:21:31 +0300
-From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
-	Rodrigo Siqueira <siqueira@igalia.com>,
-	Alex Deucher <alexander.deucher@amd.com>,
-	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
-	Shuah Khan <skhan@linuxfoundation.org>, kernel@collabora.com,
-	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
-	intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org
-Subject: Re: [PATCH v13 13/27] drm/i915: Implement the "color format" DRM
- property
-Message-ID: <ad1CO9-nlaskZQM7@intel.com>
-References: <20260413-color-format-v13-0-ab37d4dfba48@collabora.com>
- <20260413-color-format-v13-13-ab37d4dfba48@collabora.com>
+	id 1wCMtD-0000000GIP6-0kqS
+	for linux-rockchip@lists.infradead.org;
+	Mon, 13 Apr 2026 19:24:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id DE9B94440B;
+	Mon, 13 Apr 2026 19:24:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0B7FC2BCB0;
+	Mon, 13 Apr 2026 19:24:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776108246;
+	bh=8KRDSTf0HhUXanWQxJnM/XPPYz1LpFytWo8+xt8KtaQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=QKJ8BJRMIk/MY+JQFaFy5ITnNH1++UGk+PmoHYsgm1cxoR1KAe+s5D/w7x/lAjxwt
+	 vtrcQCSXOn/S7pXDgJi7rK2nBpMFZ7+fT4qrdJq6G3pUfTeDYodH5tJChdKq4rMBpx
+	 mEa8/vtm5qGsfZGg1dwWx79GChM1y4dU3zolueaw5SJZnzSti2pnniZAYUj0VDAUPr
+	 M0ebI+oNOL9S1b6/O5ueyBhhVmPrlYzmSS4uEoz19XGqnlL4iCLrkNt/NMpTIPy1uh
+	 4J0ppdluBnBQjYROlK4EVkwKGyQmnRvtCFWHx5lGFTr1fR3w0GQhbGN0cvF+/j9AEb
+	 xIZs3Tx+a1HGQ==
+Date: Mon, 13 Apr 2026 20:23:56 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+ dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V3 4/9] iio: imu: inv_icm42607: Add Buffer support
+ functions to icm42607
+Message-ID: <20260413202356.1afb4b8f@jic23-huawei>
+In-Reply-To: <20260330195853.392877-5-macroalpha82@gmail.com>
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+	<20260330195853.392877-5-macroalpha82@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260413-color-format-v13-13-ab37d4dfba48@collabora.com>
-X-Patchwork-Hint: comment
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_122152_601485_32AAEBF6 
-X-CRM114-Status: GOOD (  30.48  )
+X-CRM114-CacheID: sfid-20260413_122407_272917_9ADC82D5 
+X-CRM114-Status: GOOD (  24.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,251 +72,195 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 13, 2026 at 12:07:27PM +0200, Nicolas Frattaroli wrote:
-> Implement the "color format" DRM property for both DP and HDMI.  The
-> values of the property include RGB, YCbCr420, YCbCr444 and Auto. Auto
-> will pick RGB, with a fallback to YCbCr420.
-> =
+On Mon, 30 Mar 2026 14:58:48 -0500
+Chris Morgan <macroalpha82@gmail.com> wrote:
 
-> The mask of supported formats by the source exposed by the property is
-> an optimistic scenario, as specific DFP-related caveats can't be
-> established before an EDID is present.
-> =
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add all FIFO parsing and reading functions to support
+> inv_icm42607 hardware.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+A few minor things inline.
 
-> Should the explicitly requested color format not be supported by the
-> sink (or by the source in combination with the sink), then an error is
-> returned to userspace, so that it can make a better choice.
-> =
+Thanks,
 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Jonathan
+
 > ---
->  drivers/gpu/drm/i915/display/intel_connector.c | 10 +++++++
->  drivers/gpu/drm/i915/display/intel_connector.h |  1 +
->  drivers/gpu/drm/i915/display/intel_dp.c        | 38 ++++++++++++++++++++=
-+++---
->  drivers/gpu/drm/i915/display/intel_hdmi.c      | 38 ++++++++++++++++++++=
-+++---
->  4 files changed, 79 insertions(+), 8 deletions(-)
-> =
+>  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |   4 +
+>  .../imu/inv_icm42607/inv_icm42607_buffer.c    | 496 ++++++++++++++++++
+>  .../imu/inv_icm42607/inv_icm42607_buffer.h    |  98 ++++
+>  .../iio/imu/inv_icm42607/inv_icm42607_core.c  |  25 +
+>  4 files changed, 623 insertions(+)
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+> 
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> index 7d13091aa8df..5530fd3bc03f 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
 
-> diff --git a/drivers/gpu/drm/i915/display/intel_connector.c b/drivers/gpu=
-/drm/i915/display/intel_connector.c
-> index 7ef9338d67ab..b1a21dd77af6 100644
-> --- a/drivers/gpu/drm/i915/display/intel_connector.c
-> +++ b/drivers/gpu/drm/i915/display/intel_connector.c
-> @@ -338,3 +338,13 @@ intel_attach_scaling_mode_property(struct drm_connec=
-tor *connector)
->  =
-
->  	connector->state->scaling_mode =3D DRM_MODE_SCALE_ASPECT;
->  }
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> new file mode 100644
+> index 000000000000..4f5f199586fc
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> @@ -0,0 +1,496 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
 > +
-> +void
-> +intel_attach_color_format_property(struct drm_connector *connector)
+> +#include <linux/kernel.h>
+> +#include <linux/device.h>
+> +#include <linux/minmax.h>
+> +#include <linux/mutex.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +#include <linux/delay.h>
+> +
+> +#include <linux/iio/buffer.h>
+> +#include <linux/iio/common/inv_sensors_timestamp.h>
+> +#include <linux/iio/iio.h>
+
+Alphabetical order (+ a block for IIO) for headers.
+
+> +
+> +static unsigned int inv_icm42607_wm_truncate(unsigned int watermark,
+> +					     size_t packet_size)
 > +{
-> +	const unsigned long fmts =3D BIT(DRM_OUTPUT_COLOR_FORMAT_RGB444) |
-> +				   BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) |
-> +				   BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR420);
-
-We're going to need different formats for different platforms, and =
-
-for DP vs. HDMI.
-
-For HDMI it should be fairly simple if we have the
-ycbcr420_allowed and ycbcr444_allowed things to consult.
-
-For DP I'm not sure if we want to advertise YCbCr output support
-for platforms that can't produce it without help from the PCON.
-If we know there is an on board PCON that can do it, then the answer
-is probably yes. But without that it might be best to not advertise
-the relevant formats unless source_can_output() tells us that it can
-be directly output. We could at least start with that, and revisit
-it later if some situations arise where eg. having explicit 4:2:0
-output on older platforms is beneficial.
-
-I think you want to split this to separate DP vs. HDMI patches since
-the two require quite different logic.
-
+> +	size_t wm_size;
+> +	unsigned int wm;
 > +
-> +	drm_connector_attach_color_format_property(connector, fmts);
+> +	wm_size = watermark * packet_size;
+> +	if (wm_size > INV_ICM42607_FIFO_WATERMARK_MAX)
+> +		wm_size = INV_ICM42607_FIFO_WATERMARK_MAX;
+> +
+> +	wm = wm_size / packet_size;
+> +
+> +	return wm;
+
+Why not
+
+	return wm_size / packet_size;
+
 > +}
-> diff --git a/drivers/gpu/drm/i915/display/intel_connector.h b/drivers/gpu=
-/drm/i915/display/intel_connector.h
-> index 0aa86626e646..c77b7aac02cb 100644
-> --- a/drivers/gpu/drm/i915/display/intel_connector.h
-> +++ b/drivers/gpu/drm/i915/display/intel_connector.h
-> @@ -34,5 +34,6 @@ void intel_attach_dp_colorspace_property(struct drm_con=
-nector *connector);
->  void intel_attach_scaling_mode_property(struct drm_connector *connector);
->  void intel_connector_queue_modeset_retry_work(struct intel_connector *co=
-nnector);
->  void intel_connector_cancel_modeset_retry_work(struct intel_connector *c=
-onnector);
-> +void intel_attach_color_format_property(struct drm_connector *connector);
->  =
 
->  #endif /* __INTEL_CONNECTOR_H__ */
-> diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i9=
-15/display/intel_dp.c
-> index 47bd3d59ea93..3b2293415b55 100644
-> --- a/drivers/gpu/drm/i915/display/intel_dp.c
-> +++ b/drivers/gpu/drm/i915/display/intel_dp.c
-> @@ -3398,10 +3398,10 @@ intel_dp_compute_output_format(struct intel_encod=
-er *encoder,
->  }
->  =
 
->  static int
-> -intel_dp_compute_formats(struct intel_encoder *encoder,
-> -			 struct intel_crtc_state *crtc_state,
-> -			 struct drm_connector_state *conn_state,
-> -			 bool respect_downstream_limits)
-> +intel_dp_compute_formats_auto(struct intel_encoder *encoder,
-> +			      struct intel_crtc_state *crtc_state,
-> +			      struct drm_connector_state *conn_state,
-> +			      bool respect_downstream_limits)
+> +int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
+> +				     unsigned int count)
+> +{
+> +	s64 gyro_ts, accel_ts;
+> +	int ret;
+> +
+> +	gyro_ts = iio_get_time_ns(st->indio_gyro);
+> +	accel_ts = iio_get_time_ns(st->indio_accel);
+> +
+> +	ret = inv_icm42607_buffer_fifo_read(st, count);
+> +
+> +	return ret;
+Either
+	return inv_...
+or
+	ret = 
+	if (ret)
+		return ret;
+
+	return 0;
+
+2nd one only if this is going to get more complex in later patches.
+
+> +}
+> +
+> +int inv_icm42607_buffer_init(struct inv_icm42607_state *st)
+> +{
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	st->fifo.watermark.eff_gyro = 1;
+> +	st->fifo.watermark.eff_accel = 1;
+> +
+> +	/* Configure FIFO_COUNT format in bytes and big endian */
+> +	val = INV_ICM42607_INTF_CONFIG0_FIFO_COUNT_ENDIAN;
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
+> +				 val, val);
+regmap_set_bits();
+
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Initialize FIFO in bypass mode */
+> +	return regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
+> +			    INV_ICM42607_FIFO_CONFIG1_BYPASS);
+> +}
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+> new file mode 100644
+> index 000000000000..64a66c00a861
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+...
+
+> +/* FIFO data packet */
+> +struct inv_icm42607_fifo_sensor_data {
+> +	__be16 x;
+> +	__be16 y;
+> +	__be16 z;
+> +} __packed;
+
+Why packed? It will be anyway unless I'm missing something.
+
+> +#define INV_ICM42607_FIFO_DATA_INVALID		-32768
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> index da04c820dab2..344071089042 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+
+...
+
+> @@ -436,6 +449,8 @@ static int inv_icm42607_suspend(struct device *dev)
+>  static int inv_icm42607_resume(struct device *dev)
 >  {
->  	struct intel_display *display =3D to_intel_display(encoder);
->  	struct intel_dp *intel_dp =3D enc_to_intel_dp(encoder);
-> @@ -3437,6 +3437,34 @@ intel_dp_compute_formats(struct intel_encoder *enc=
-oder,
+>  	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	struct inv_icm42607_sensor_state *gyro_st = iio_priv(st->indio_gyro);
+> +	struct inv_icm42607_sensor_state *accel_st = iio_priv(st->indio_accel);
+>  	struct device *accel_dev;
+>  	bool wakeup;
+>  	int ret;
+> @@ -462,6 +477,16 @@ static int inv_icm42607_resume(struct device *dev)
+>  	ret = inv_icm42607_set_pwr_mgmt0(st, st->suspended.gyro,
+>  					 st->suspended.accel,
+>  					 st->suspended.temp, NULL);
+> +	if (ret)
+> +		return ret;
+> +
+> +	if (st->fifo.on) {
+I've not checked, but if this doesn't get more complex you can do
+	if (!st->fifo.on)
+		return 0;
+
+	inv_....
+
+	return regmap_write();
+
+> +		inv_sensors_timestamp_reset(&gyro_st->ts);
+> +		inv_sensors_timestamp_reset(&accel_st->ts);
+> +		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
+> +				   INV_ICM42607_FIFO_CONFIG1_MODE);
+> +	}
+> +
 >  	return ret;
 >  }
->  =
+>  
 
-> +static int
-> +intel_dp_compute_formats(struct intel_encoder *encoder,
-> +			 struct intel_crtc_state *crtc_state,
-> +			 struct drm_connector_state *conn_state,
-> +			 bool respect_downstream_limits)
-> +{
-> +	switch (conn_state->color_format) {
-> +	case DRM_CONNECTOR_COLOR_FORMAT_RGB444:
-> +		return intel_dp_compute_output_format(encoder, crtc_state, conn_state,
-> +						      respect_downstream_limits,
-> +						      INTEL_OUTPUT_FORMAT_RGB);
-> +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR444:
-> +		return intel_dp_compute_output_format(encoder, crtc_state, conn_state,
-> +						      respect_downstream_limits,
-> +						      INTEL_OUTPUT_FORMAT_YCBCR444);
-> +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR420:
-> +		return intel_dp_compute_output_format(encoder, crtc_state, conn_state,
-> +						      respect_downstream_limits,
-> +						      INTEL_OUTPUT_FORMAT_YCBCR420);
-> +	case DRM_CONNECTOR_COLOR_FORMAT_AUTO:
-> +		return intel_dp_compute_formats_auto(encoder, crtc_state, conn_state,
-> +						     respect_downstream_limits);
-> +	default:
-> +		MISSING_CASE(conn_state->color_format);
-> +		return -EINVAL;
-> +	}
-> +}
-> +
->  void
->  intel_dp_audio_compute_config(struct intel_encoder *encoder,
->  			      struct intel_crtc_state *pipe_config,
-> @@ -7025,6 +7053,8 @@ intel_dp_add_properties(struct intel_dp *intel_dp, =
-struct drm_connector *_connec
->  =
-
->  	if (HAS_VRR(display))
->  		drm_connector_attach_vrr_capable_property(&connector->base);
-> +
-> +	intel_attach_color_format_property(&connector->base);
->  }
->  =
-
->  static void
-> diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/drm/=
-i915/display/intel_hdmi.c
-> index 5ab5b5f85cde..632498e3702b 100644
-> --- a/drivers/gpu/drm/i915/display/intel_hdmi.c
-> +++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
-> @@ -2307,10 +2307,10 @@ static int intel_hdmi_compute_output_format(struc=
-t intel_encoder *encoder,
->  	return intel_hdmi_compute_clock(encoder, crtc_state, respect_downstream=
-_limits);
->  }
->  =
-
-> -static int intel_hdmi_compute_formats(struct intel_encoder *encoder,
-> -				      struct intel_crtc_state *crtc_state,
-> -				      const struct drm_connector_state *conn_state,
-> -				      bool respect_downstream_limits)
-> +static int intel_hdmi_compute_formats_auto(struct intel_encoder *encoder,
-> +					   struct intel_crtc_state *crtc_state,
-> +					   const struct drm_connector_state *conn_state,
-> +					   bool respect_downstream_limits)
->  {
->  	struct intel_display *display =3D to_intel_display(encoder);
->  	struct intel_connector *connector =3D to_intel_connector(conn_state->co=
-nnector);
-> @@ -2345,6 +2345,35 @@ static int intel_hdmi_compute_formats(struct intel=
-_encoder *encoder,
->  	return ret;
->  }
->  =
-
-> +static int intel_hdmi_compute_formats(struct intel_encoder *encoder,
-> +				      struct intel_crtc_state *crtc_state,
-> +				      const struct drm_connector_state *conn_state,
-> +				      bool respect_downstream_limits)
-> +{
-> +	struct intel_connector *connector =3D to_intel_connector(conn_state->co=
-nnector);
-> +
-> +	switch (conn_state->color_format) {
-> +	case DRM_CONNECTOR_COLOR_FORMAT_RGB444:
-> +		return intel_hdmi_compute_output_format(encoder, crtc_state, connector,
-> +							respect_downstream_limits,
-> +							INTEL_OUTPUT_FORMAT_RGB);
-> +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR444:
-> +		return intel_hdmi_compute_output_format(encoder, crtc_state, connector,
-> +							respect_downstream_limits,
-> +							INTEL_OUTPUT_FORMAT_YCBCR444);
-> +	case DRM_CONNECTOR_COLOR_FORMAT_YCBCR420:
-> +		return intel_hdmi_compute_output_format(encoder, crtc_state, connector,
-> +							respect_downstream_limits,
-> +							INTEL_OUTPUT_FORMAT_YCBCR420);
-> +	case DRM_CONNECTOR_COLOR_FORMAT_AUTO:
-> +		return intel_hdmi_compute_formats_auto(encoder, crtc_state, conn_state,
-> +						       respect_downstream_limits);
-> +	default:
-> +		MISSING_CASE(conn_state->color_format);
-> +		return -EINVAL;
-> +	}
-> +}
-> +
->  static bool intel_hdmi_is_cloned(const struct intel_crtc_state *crtc_sta=
-te)
->  {
->  	return crtc_state->uapi.encoder_mask &&
-> @@ -2729,6 +2758,7 @@ intel_hdmi_add_properties(struct intel_hdmi *intel_=
-hdmi, struct drm_connector *_
->  =
-
->  	intel_attach_hdmi_colorspace_property(&connector->base);
->  	drm_connector_attach_content_type_property(&connector->base);
-> +	intel_attach_color_format_property(&connector->base);
->  =
-
->  	if (DISPLAY_VER(display) >=3D 10)
->  		drm_connector_attach_hdr_output_metadata_property(&connector->base);
-> =
-
-> -- =
-
-> 2.53.0
-
--- =
-
-Ville Syrj=E4l=E4
-Intel
 
 _______________________________________________
 Linux-rockchip mailing list
