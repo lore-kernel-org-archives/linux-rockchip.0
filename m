@@ -4,93 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA4C6F531CE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 13 Apr 2026 21:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9033F531F8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 14 Apr 2026 07:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2GHgZPE+U6GVp5bevX49iAmLNUuNmMLertzTUFjmKeQ=; b=pa95f1cxg53nGe
-	J5NfQxGjBsi/9pTQdArr6HCGMVJEvqLUMnAROJkm62phvAt41LIxIPXHp5LYehqXy8/pZp3MPnS0c
-	1OoUKTzb3bpJalkhuQCPyt0AYZePF8GLwlUf6Z7PxGNnYI0+HmZIUxNYeKQJHuhrhlhM2RjZ/SC0a
-	LLn8GdpCxbaaaRUA5q9FXMwvHQro092S31WR8ttvdOzmNG/oLXTkSK17uPrvFHlB9VnzXebtX6VR9
-	v7r3zRgrho/JP4kelzt0xzXpT8zH+W17popGRHNKApOdRiR4UGIFuhlQ7FKYgjqF4olGL2c/hFCif
-	pNQR1/1jtXtcKrvfZ9kQ==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=94rOBzH/ahyCoLT15fA1jGT2xfwh2UiGVuB7Uv/Diro=; b=5AW845qQYV4oDh
+	jgNmdZL5h+rCVRtVXeMCbJoQsLS7VbgiWMbn+TPVO8VSvN4S6jOSZSxEoW2DYHssYwBHrvxkcoLER
+	2rVcf53T2yaEX7HfpRf/TzMyxki0gpKlgAQ3StSqIPkGjYJjCDM54QsUMN0ZEnSOmYO53ROU6esbk
+	xDOber8y2ADm4wnq5CSYMN5kEn+wZLVlyqntQi8I0v/tHodsbqeiWjcGVufumVzmkmxDd5rw8egKz
+	mFzr7SR+dR+ozqa7UjH3mdZV6wldtlCU8DtWml6zX20pZKg0gJzjUimdVEFAHT+52owRadl862moe
+	XU0FWKzN5np6vWAX8EwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCPEF-0000000GPhP-3u7r;
-	Mon, 13 Apr 2026 21:53:59 +0000
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+	id 1wCXzG-0000000GtSM-29ys;
+	Tue, 14 Apr 2026 07:15:06 +0000
+Received: from mgamail.intel.com ([198.175.65.17])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wCPED-0000000GPgg-2aZG
+	id 1wCXzD-0000000GtRy-1xhB
 	for linux-rockchip@lists.infradead.org;
-	Mon, 13 Apr 2026 21:53:58 +0000
-Received: by mail-lf1-x12f.google.com with SMTP id 2adb3069b0e04-5a2beddab48so4662166e87.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 13 Apr 2026 14:53:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776117235; x=1776722035; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=AOXMNTIIXoqpY3VFkb3PMLMzullDNaoQaiXPYXq2Yho=;
-        b=OPeCbT7h24Z3BSBrr5eAXjmHtIZhBvJoZxF9frsrQyHPJ5Wn8be0JR2PT8DJouaZl6
-         d94kcWhf/Qo4akKEVWdqsKggQ8Hlsv+WTdN+v/8Nq5/pQDBKpk9adW1ZoKFuHJkXpJmE
-         Sns+2uJ93aDDwiJmxI3p7F7bs0Vc46DArh7FfuPk+ggnXUNt4slfMgxM8s8a+XnKvc9k
-         x4oJ4ZtRCuGvGJ/Z5+Az69OfLFoU1bOk0Hah5FOqvZetUJUfa1o2n/M+BoOwbuWp4KEp
-         ueYzB+vb5/qz9Zqn7hUQ0ycbrvZKWcBhrRiQx75D4zmKUs6uUhFJ9jQ1q0S2UR/twVq+
-         dZGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776117235; x=1776722035;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=AOXMNTIIXoqpY3VFkb3PMLMzullDNaoQaiXPYXq2Yho=;
-        b=ncseTxLj7UpDygvHKsn8zXOxmtp/a6N7dyocZSWcKUlYZ+cf9Gb6QSOuHfBlR6d+VM
-         z3tPHHoNg3T+lfb4o4f3jMNUu+Xe1cS8a7P5+Q6IIvZp60GMn1UlGnAkR3v6eVrrZF7V
-         0VSPskdoDTy6U2kEUfAoLVs3Vf57hBIJSiXP2W3Su6fV+RAD6jyBQ2cYeaewxIK0hLBE
-         30CBncx7w4l/2RDaRgPj9l7MXUImeUNkBKFNH+eUoC2VkaXfgCWDVI03Wv+WKRO2TnIL
-         axgB3GHbxkIMtYou2rCKbPnAVN5MKQdfhMNMiAGZ4El8esvwWrZtIR1wOZoLaS+26Dfr
-         CVag==
-X-Forwarded-Encrypted: i=1; AFNElJ/dgnhqdgSZSnhnLrh5BJQihhV+fJsmeLCyddUL62FASBRPNWTQSy9KyWeDOrZh4YZOLzmovG9RGejx/qoTIQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yyx0TlYvfSjgi89xQLMq4N+zbq14Rt9XAWcQpokMeSa5CPkzyDZ
-	kNFWzcSM21H4PQVpgigz+lFmPsRWuKURl150+AG66bNGrMQZs/IXDmv5
-X-Gm-Gg: AeBDiesywMsqJnC51fF8pzNXbGLhRJdT/K1VWsX1edHgoVpUJkqC/CIZZ1KWr7+Rt5E
-	0V6JleWkRdJCPfLkjrs8PMfTfYOkhRBj9KxVpA6cIZkr6TfNoUJNcNeGOkXuFFExM6iKtnL7L10
-	j5GbuFN5HhNSEVfNNLJG1Qz6QR/PUmnumeBNHQShRCd3p6tTiCOAPOf8mVpgpJ0In6bEt8nEtA8
-	bi6tFMZBfuCjokmy4XQk5ah923sJttBL+gJgWBC1A+e3z9NqdWmpL8Z0cCidNiCQ7KQbmUIIMhW
-	e0+VmDrDUxxo5nASOMh08WPZfPRKu68jeUo71lqF4rVqok8cLWk5WwnyCxVXG2TWsENvQqtqmcC
-	tcOrlswnQUcMTSCGFK5yktM5+6M8NfpX+7hgjZjY192lbT6Posj1Wkp4Vfwm8wPJ0rtj33O9pQu
-	uCt4NoukiNMhCIFca6P9A2s9pImGRGXH37XarJw8+nH4VpW7eOoPiXoMxEXfVjQsMBL3dcVuEbB
-	2vzp8j2NIZBVDjp1uHOmEz7a8tVWw==
-X-Received: by 2002:a05:6512:108d:b0:5a4:d4:5c5e with SMTP id 2adb3069b0e04-5a400d45e20mr1006936e87.22.1776117234891;
-        Mon, 13 Apr 2026 14:53:54 -0700 (PDT)
-Received: from rocky.so.lan (9091-40f8-8d6a-8ea6-6a01-841a-07d0-2001.dyn.estpak.ee. [2001:7d0:841a:6a01:8ea6:8d6a:40f8:9091])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a3fe65214fsm806370e87.49.2026.04.13.14.53.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 13 Apr 2026 14:53:53 -0700 (PDT)
-From: Sten-Silver Ots <stensilver@gmail.com>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Sten-Silver Ots <stensilver@gmail.com>,
-	FUKAUMI Naoki <naoki@radxa.com>,
-	Torsten Duwe <duwe@lst.de>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: Enable the NPU on rk3588-rock-5-itx
-Date: Tue, 14 Apr 2026 00:52:49 +0300
-Message-ID: <20260413215301.4656-1-stensilver@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Tue, 14 Apr 2026 07:15:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1776150903; x=1807686903;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Lg6AwNi+noSUdU7+/Bf+YozYCr81gUXl7BqaU3aWAN0=;
+  b=RQBl5wRDa+GNe2NJvOGMwJKMMezBERGqLTn3LtORCzNE5T5gu8K8I6Bi
+   c29YmPKW9Awmo925Z6IpoE5hJe6R9UUNErOUAa5ZMJRV5eKqvIBUn/xpN
+   LdfjrD9NCedHG6CQVRCZqUUEDjCINK41Nah9L/0r7Sp/uDWmWOOYJ+O3i
+   YQNRIMucfdqc52tkLITdywz+dINSpnD+CA//sVo8cL2NnRORQtnzr7Ntp
+   1SFcimCrch1ZsqK8uTsTcojIDRJ6mXj/xXLZWkaX2XsI57Ziv18Cmx3Ia
+   t9eqtaQVYV6/3yU7+vVujy4BePgBhKkabeLS77IW8O/PkvinG+qDs9wIO
+   w==;
+X-CSE-ConnectionGUID: YN9/gcIBQsqu4mRxUAd7Nw==
+X-CSE-MsgGUID: nuVAZrYHQQK6oI96ZdgfXQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11758"; a="77067197"
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; 
+   d="scan'208";a="77067197"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2026 00:14:54 -0700
+X-CSE-ConnectionGUID: k0LRaNlaREeB2+gZACKSMQ==
+X-CSE-MsgGUID: i0BwJHQ1TDS7NUgpXv2jTQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,179,1770624000"; 
+   d="scan'208";a="225285049"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.106])
+  by fmviesa006-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Apr 2026 00:14:51 -0700
+Date: Tue, 14 Apr 2026 10:14:48 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V3 2/9] iio: imu: inv_icm42607: Add Core for inv_icm42607
+ Driver
+Message-ID: <ad3paMbRXtq6BrCu@ashevche-desk.local>
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+ <20260330195853.392877-3-macroalpha82@gmail.com>
+ <20260413200547.75bfd672@jic23-huawei>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260413200547.75bfd672@jic23-huawei>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260413_145357_677218_596433EC 
-X-CRM114-Status: GOOD (  10.42  )
+X-CRM114-CacheID: sfid-20260414_001503_643672_85F8D77D 
+X-CRM114-Status: UNSURE (   7.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,78 +94,26 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit enables the NPU on Radxa Rock 5 ITX board.
-The regulator vdd_npu_s0 was already in place and since the NPUs
-power domain supply is now described remove the always-on property
-from the regulator.
+On Mon, Apr 13, 2026 at 08:06:54PM +0100, Jonathan Cameron wrote:
+> On Mon, 30 Mar 2026 14:58:46 -0500
+> Chris Morgan <macroalpha82@gmail.com> wrote:
 
-Signed-off-by: Sten-Silver Ots <stensilver@gmail.com>
----
- .../boot/dts/rockchip/rk3588-rock-5-itx.dts   | 35 ++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
+...
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-index de154adb1497..d3ab6c68a60b 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5-itx.dts
-@@ -421,7 +421,6 @@ vdd_npu_s0: regulator@42 {
- 		reg = <0x42>;
- 		fcs,suspend-voltage-selector = <1>;
- 		regulator-name = "vdd_npu_s0";
--		regulator-always-on;
- 		regulator-boot-on;
- 		regulator-min-microvolt = <550000>;
- 		regulator-max-microvolt = <950000>;
-@@ -683,6 +682,10 @@ &pd_gpu {
- 	domain-supply = <&vdd_gpu_s0>;
- };
- 
-+&pd_npu {
-+	domain-supply = <&vdd_npu_s0>;
-+};
-+
- &pinctrl {
- 	hym8563 {
- 		rtc_int: rtc-int {
-@@ -802,6 +805,36 @@ dp1_hpd: dp1-hpd {
- 	};
- };
- 
-+&rknn_core_0 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_1 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_core_2 {
-+	npu-supply = <&vdd_npu_s0>;
-+	sram-supply = <&vdd_npu_s0>;
-+	status = "okay";
-+};
-+
-+&rknn_mmu_0 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_1 {
-+	status = "okay";
-+};
-+
-+&rknn_mmu_2 {
-+	status = "okay";
-+};
-+
- &pwm14 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pwm14m1_pins>;
+> > +	if (!conf->temp_en)
+> > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> 
+> Could make this 
+> 	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL,
+> 			  !conf->temp_en);
+> Not particularly important though if you prefer the if.
+
+Isn't this becomes FIELD_MODIFY()?
+
 -- 
-2.53.0
+With Best Regards,
+Andy Shevchenko
+
 
 
 _______________________________________________
