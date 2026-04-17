@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A347CF436B2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0305F436B4
 	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 15:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,70 +12,70 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mwnfBMXaVw7D0d2uXwTNfConCa0KOzbFSAj6vmU7rk0=; b=zX3x5mB3BCEOzo
-	ALRw7j28czhOB4pRTfzRl+iryp8PYm7moR5U1VnWtiuiohrioMbwzDkDfLGVI3wTiaIkqOsQYEwR2
-	PS7rlvgZsUPES2ySMwYDB2Sh9UY73ejg2Aj2haixXR9Jti921lRZnocr+qsylRXKEhK0Qm9y7xSvO
-	j3yAeGF9T11V1/kVO93xwBofAfNp9uY5fhRgStoOCVsOXR7pLxPthUWce+Aris1amc9ey3ub+/V9Y
-	R+wtT4ssSGJPLmq9tjTsx0BF3kIuuiou6OYPtmuP5xCtqomCV/tVT8UAzxDbVi8VOQoqJ5PPXM/py
-	WYsDD96ZfVmsUbOKgzaA==;
+	List-Owner; bh=0RwI84HtXRFr8mduEr2DjLDdepQ7uKefu8CIH+Vis0M=; b=WF2ZCtuHjuOEYN
+	W4x604Em3UcEaIlJVQchwIOnG3/soTOfNq8tEm8vjmGbngoKmYTVU0jjE7VYHmmA/SaJ+9mbFEqOS
+	+FwO9L1+jBiXtB658ETNSoCBtza9s6GLrSlh6ZOmT66IqJTyESnbl3Bgb6w7mTs7GSbSflkfBWeWs
+	dtqgUOoa4/OWASI2Js419cTT/GPLPlTzI+jYJrhlR/dIGttbSD5rsDgTUs8QmDgh20cKm/gMMgWbq
+	IUO2pqj4E2+XQBm18TxxRZ7QJsWvWygEEtd1eWltRjMNerCpRtNOsZnlHvsPqZTtiISY150PQXE0K
+	gma/tqm0ZM/KckGDE52A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDkrX-00000004Bhc-13ag;
-	Fri, 17 Apr 2026 15:12:07 +0000
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+	id 1wDkrg-00000004Bq5-07u4;
+	Fri, 17 Apr 2026 15:12:16 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDkrU-00000004BfN-2N3N
+	id 1wDkrc-00000004BlQ-3Kpb
 	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Apr 2026 15:12:05 +0000
-Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43cfd1f9fd1so512495f8f.3
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Apr 2026 08:12:04 -0700 (PDT)
+	Fri, 17 Apr 2026 15:12:15 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-488a88aeec9so12176765e9.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 17 Apr 2026 08:12:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1776438723; x=1777043523; darn=lists.infradead.org;
+        d=flipper.net; s=google; t=1776438731; x=1777043531; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=c0h/bSzKrRDyDdmyG30auftZMv/S6b+0T+VipJS3jxA=;
-        b=nrAM5JHg8gxjJhUtBs6pXjAMlIjnkw5oodZHLNlOqScUmGKrGa9PBTe9HXff3KoqHd
-         vQ3yUwiwBFWnjQlZkSOqMpX/WDJp/x5z4tkWybZMGclgC5jSWsylroTaQlkO2DukwB1Q
-         jq/ECyjwMaj9l5ZMasTHHuBBecoXF+G54xG5D1CuSA2Ly1mVPqLIIND3XihRL+igZQUj
-         2NX23UKtAZEPbzAZjR5YANJkxAeTuHntYgAEkLdkLlOUVHBzCcZ0lYQ7H81fWOfoYpVA
-         oRCX8Uw1ZeDEF3ehE+4g+7UgxkC0IrMeBXtf9lqveeryHLo8xPPYAjL6p3J0zxsL2wGs
-         lYSw==
+        bh=az2KIqgV5YqkPRGM1cxImWSRMVebKiNjnNol2i4MAlI=;
+        b=S4Uc65nleSStbw0h9XWeop5/2T8nCmy7LWryCMNHtVm6/Tccybv+c7IKUku+IsiNFv
+         9eWBlR3WjBoRq7XOBB2QXtV/T2IBQB7jPwY1hruPTIsoolDN1YozryhHuKPkv0VnQzPJ
+         u/+/AXA8BoDLLbKRNAqr+mONm4VeGVnYEIlzOIr1e3G6n4L9XhNUdW1yNyLDTQzk/G8/
+         8dT2/wMKEMC0TY3jzNZhvAkm9AyiC4CJXuIT5PZI0cTa5dLg/Kww79AhDmChtqzak2oJ
+         L4xEsAMf+uYIrf/9wkZ0UK6bam1o6HUMFTfBDccsXyrijGTJxbhrw2RXdVzqx8ctpESu
+         hc/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776438723; x=1777043523;
+        d=1e100.net; s=20251104; t=1776438731; x=1777043531;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=c0h/bSzKrRDyDdmyG30auftZMv/S6b+0T+VipJS3jxA=;
-        b=ViQxVRvdpzmYS/lnEX+eGdrWXWfR97de4BIHccYTLlDXZX2qyWAZTamrXzH0aNBfJ/
-         Nwp//yYxZYKXGtfgz7tchLYHSsqr3lAU/vyTqGIvBN0kLND45KhuKj04lUFn08M0xLEt
-         rZ86u9iZDlEoyM4XC3GDJKOb8Q8S3WZNB7W8v7rLNh7Cx0vM4HsyHlGpDf36S/hiOvzE
-         s1qGzWBXGeptdr/eQueuNKUBPcJJyE/jWdi1FxlVSMZdCcvCMkCqaFgdZW/gVm7fF7Vh
-         LKaYMRdRbeBOxRscibtc5sXGwCEtYvBu+bNgJs8GRDh20ERO7cj54gP0M6e0bnL8clVq
-         /2fg==
-X-Forwarded-Encrypted: i=1; AFNElJ9dSjtVxcrS3RC8AdwiNZZhG9njD5UJbLAMGa0sjBEExjN32S4PYcB8gfWhRM3nDXnka0vsnuEbB+4Dq7dMrg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxCrGtdvwMmz2rsYJdouuItgnMTIko0RbgFBMe3SQ9MHrGELkEh
-	V+9sodWnDKQiBE9vA3jbikKkLZjRC8hK1dnNykiVO1YCzQSt76kHo6Njm7tR3lcrN8o=
-X-Gm-Gg: AeBDievy337VzQR7XJnMwl4F6KfOvMxQnOSujXtGtMbs3j47ChjaeVWNQLzgQvxoclc
-	pzlqgjNaeLjOK6WGZFHVXZ650tYtZNV2/YFnXXw+095bs0Pw73iJw0RIAZj5K8dcmyiPl96syk0
-	iRaITngQiby/zN/rPCV5VT7jkJYvg9ep9Psi8FGkeWpr1fPqwP5tLClPeOtt3zkbP2IksQC8Yf2
-	LPKLTneudW+7/n2BwYsP6KKeoh2Ulf+xVK6KEavQKefEC+VhKi91CMnILKWVsn6J0F6XerzC5yp
-	X1OPCwZt+mFkfGu0gRb/nT9mFKgDEJCx+JLnGZUT0t1CKZpj6ILGWZ0jOMXUroo5U55Ie4st8/w
-	Bnc3KwJsh2nhXEOh42X0Qy8VW8Dfla7qutyQFtJxniRB1CztHYb0Y2lkQbgPcHZ6zfolCMvdLmY
-	UQwL7cg0DRP8ocv6Hv2FwxrrTNNgNoGeULZGZVThL75rQMe5qr9OISrXIVXjzQ2HtRlvaOavros
-	OCjPgsKn0d54jDI
-X-Received: by 2002:a05:6000:18a6:b0:43d:70de:1c68 with SMTP id ffacd0b85a97d-43fe3e08c35mr4827304f8f.30.1776438722860;
-        Fri, 17 Apr 2026 08:12:02 -0700 (PDT)
+        bh=az2KIqgV5YqkPRGM1cxImWSRMVebKiNjnNol2i4MAlI=;
+        b=pFCvoYFDRVvDs88fRbc9iGNh7Cy1dHQsDWaE3pEGUhaa/gqdjUmPKtNxOk9MXM+9UF
+         Mw6OFAj9klWte4SSKqv6/TEznhSB4pEQX/G+bfz60CJbWXrIbIHL0K9LONGe7OgJFcLM
+         KtMSVSPa5e/V+IQfbSS4AJJ5pSPeFI0HE3MJJEJEXf2W4vQMp9EkUc2qNnJbtofI2D0a
+         W5oCCQHDovsQVVb3BeL3a/uNpHnSBeOe+CTND9aEVAwZXQ82pSHtDTcjESzxxhEAMP/a
+         gBBmxbNb8gwNs1yInMqoA+Td8FInNmvtWe/UIrokv3dod1Cr1nXlmjh8WhdMqWyyYtDN
+         kFnQ==
+X-Forwarded-Encrypted: i=1; AFNElJ+5+/U1jinDB9xsyiVZD5+DiEcex8NUyfrWdky9wyg7PNb1DtVTgitlmuYUTGoTBpfsB2RuM1aCkThD5nXk3Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0Ywh3sQz+kf7SylPVJLyK06zWBa6dEhRSiLLob3q0Y9B17c3XK8D
+	GyYuMx1j3fIJL68FT/SKTy64HBLPMPliLrjlUtRhpOwl6PiQA2kCYqIdyw9/MkYo5Jc=
+X-Gm-Gg: AeBDieucM5YAHksPq81n4xGg3LjY5+FxJv6ZpufL+CY31btw8vks8kPyKK9JJdNC5X9
+	USL3lWmhx0du37x1FEWQlgHXQ6IrsL8qrCmwh0tuJ+67OprLL89rFtZTiT7v8SKiIVPaWbTNnlQ
+	phnRpDcqtazTHbeExQrDe6BhmjJg+RX70NumeWdQlL+DeQddPFSvchYMO9bwyYEZ713Jj+kuIP9
+	SKekg+LI34LojbTG11YKdxW/8byc8ptp9gRjg8Iq62DZ/WUIm/s5ZAeVgw1Ly/E9ldDcJ9PsyBo
+	h064M7b6Uq60ejGrKLVUev477VO29f4RUKM7v3A+I4IzKQPx3+ddA4Q2Ccxfv6VhobdYEMyeegp
+	pA04LrRsgSxFkgBmSn3A+2i6Rd1tY+5QbPwPjlwIFXf1f7rTB4mBhnECebSFNY3aZpGd8+hf+Tr
+	a3Ou5Z3J/ARk0Zsy/3SSWFxqES8F7EBxbekD6pKoB3ZROiwg5DemtOZpXRj2T94tPYWgFiJmIyq
+	KHB4/70NrmdW85f
+X-Received: by 2002:a05:600c:3546:b0:488:81b1:ae36 with SMTP id 5b1f17b1804b1-488fb7880camr48839705e9.23.1776438730645;
+        Fri, 17 Apr 2026 08:12:10 -0700 (PDT)
 Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43fe4e591cesm7376426f8f.36.2026.04.17.08.11.59
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43fe4e591cesm7376426f8f.36.2026.04.17.08.12.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Apr 2026 08:12:02 -0700 (PDT)
+        Fri, 17 Apr 2026 08:12:10 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Fri, 17 Apr 2026 19:11:45 +0400
-Subject: [PATCH RFC 2/4] clk: rockchip: pll: use round-nearest in
- determine_rate
+Date: Fri, 17 Apr 2026 19:11:47 +0400
+Subject: [PATCH RFC 4/4] clk: rockchip: rk3576: add ROUND_CLOSEST to
+ dclk_vp1_src divider
 MIME-Version: 1.0
-Message-Id: <20260417-rk3576-dclk-v1-2-26a9d0dcb2de@flipper.net>
+Message-Id: <20260417-rk3576-dclk-v1-4-26a9d0dcb2de@flipper.net>
 References: <20260417-rk3576-dclk-v1-0-26a9d0dcb2de@flipper.net>
 In-Reply-To: <20260417-rk3576-dclk-v1-0-26a9d0dcb2de@flipper.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -89,17 +89,17 @@ Cc: Pavel Zhovner <pavel@flipper.net>,
  linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, 
  Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1952; i=alchark@flipper.net;
- h=from:subject:message-id; bh=NvfvyU1IImSrCF3iQB5Qso5w+H1TNTTu2n7InPVjkh4=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQ+8t0mFK38Z9ft90/KpYsSdv70XXD10YenzgXaixSqJ
- vwM+vdKo2MiC4MYF4OlmCLL3G9LbKca8c3a5eHxFWYOKxPIEGmRBgYgYGHgy03MKzXSMdIz1TbU
- MzTSMdYxYuDiFICpzipnZPiXM6nmzcpO/RZJe/8Jl6LLDT4zicyQ35vOmzlnyhXFdRGMDNM+vyo
- 6x3zN912Ur3S2wqWjEzvDkpb/1XCwURZbUfi+iREA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1924; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=MJzTscokaYVjaUenKSLbKoiovLeIQbNEzqwhkopLKGI=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQ+8t2+8RTP4gqLYob2DNVSvTrzxQ82/a7SW+3xNOBIi
+ PINS76WjoksDGJcDJZiiixzvy2xnWrEN2uXh8dXmDmsTCBDpEUaGICAhYEvNzGv1EjHSM9U21DP
+ 0EjHWMeIgYtTAKb67UtGho4P594u/vp4E6vSzw6BvvkfkrjvvHc1nO7fp1LJ5CvF9IPhn8bhnO2
+ 79F2iasptjeP2Blz4f7J5xZTLyz353lo8+H2fnwsA
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_081204_620553_88AD14C4 
-X-CRM114-Status: GOOD (  13.51  )
+X-CRM114-CacheID: sfid-20260417_081212_910114_591D46F4 
+X-CRM114-Status: GOOD (  11.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,45 +111,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-cm9ja2NoaXBfcGxsX2RldGVybWluZV9yYXRlKCkgd2Fsa3MgdGhlIHJhdGUgdGFibGUgaW4gZGVz
-Y2VuZGluZyBvcmRlcgphbmQgcGlja3MgdGhlIGZpcnN0IGVudHJ5IDw9IHRoZSByZXF1ZXN0ZWQg
-cmF0ZS4gVGhpcyBmbG9vci1yb3VuZGluZwppbnRlcmFjdHMgcG9vcmx5IHdpdGggY29uc3VtZXJz
-IHRoYXQgdXNlIENMS19TRVRfUkFURV9QQVJFTlQ6IGEgZGl2aWRlcgppdGVyYXRpbmcgY2FuZGlk
-YXRlcyBhc2tzIHRoZSBQTEwgZm9yIHJhdGUqZGl2LCBhbmQgYSB0aW55IHVuZGVyc2hvb3QKY2F1
-c2VzIHRoZSBQTEwgdG8gc25hcCB0byBhIG11Y2ggbG93ZXIgZW50cnkuCgpGb3IgZXhhbXBsZSwg
-cmVxdWVzdGluZyAxOTkxLjA0IE1IeiAoMjQ4Ljg4IE1IeiAqIDgpIGNhdXNlcyB0aGUgUExMIHRv
-CnJldHVybiAxOTY4IE1IeiBpbnN0ZWFkIG9mIDE5OTIgTUh6IOKAlCBhIDI0IE1IeiB0YWJsZSBn
-YXAgdGhhdCBwcm9kdWNlcwphIDEuMiUgcGl4ZWwgY2xvY2sgZXJyb3Igd2hlbiBkaXZpZGVkIGJh
-Y2sgZG93bi4KCkNoYW5nZSB0byByb3VuZC10by1uZWFyZXN0OiBmb3IgZWFjaCB0YWJsZSBlbnRy
-eSBjb21wdXRlIHRoZSBhYnNvbHV0ZQpkaXN0YW5jZSBmcm9tIHRoZSByZXF1ZXN0LCBhbmQgcGlj
-ayB0aGUgZW50cnkgd2l0aCB0aGUgc21hbGxlc3QgZGVsdGEuClRoZSBDQ0YncyBkaXZpZGVyIGFu
-ZCBjb21wb3NpdGUgbG9naWMgaGFuZGxlIG92ZXIvdW5kZXJzaG9vdCBwcmVmZXJlbmNlcwp2aWEg
-dGhlaXIgb3duIFJPVU5EX0NMT1NFU1QgZmxhZ3MuCgpTaWduZWQtb2ZmLWJ5OiBBbGV4ZXkgQ2hh
-cmtvdiA8YWxjaGFya0BmbGlwcGVyLm5ldD4KLS0tCiBkcml2ZXJzL2Nsay9yb2NrY2hpcC9jbGst
-cGxsLmMgfCAxNiArKysrKysrKy0tLS0tLS0tCiAxIGZpbGUgY2hhbmdlZCwgOCBpbnNlcnRpb25z
-KCspLCA4IGRlbGV0aW9ucygtKQoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Ns
-ay1wbGwuYyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1wbGwuYwppbmRleCA2Yjg1MzgwMGNi
-NmIuLmMxNDJmMmM0ZmQ5OSAxMDA2NDQKLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLXBs
-bC5jCisrKyBiL2RyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1wbGwuYwpAQCAtNjYsMTkgKzY2LDE5
-IEBAIHN0YXRpYyBpbnQgcm9ja2NoaXBfcGxsX2RldGVybWluZV9yYXRlKHN0cnVjdCBjbGtfaHcg
-Kmh3LAogewogCXN0cnVjdCByb2NrY2hpcF9jbGtfcGxsICpwbGwgPSB0b19yb2NrY2hpcF9jbGtf
-cGxsKGh3KTsKIAljb25zdCBzdHJ1Y3Qgcm9ja2NoaXBfcGxsX3JhdGVfdGFibGUgKnJhdGVfdGFi
-bGUgPSBwbGwtPnJhdGVfdGFibGU7CisJdW5zaWduZWQgbG9uZyBiZXN0ID0gMDsKIAlpbnQgaTsK
-IAotCS8qIEFzc3VtaW5nIHJhdGVfdGFibGUgaXMgaW4gZGVzY2VuZGluZyBvcmRlciAqLwogCWZv
-ciAoaSA9IDA7IGkgPCBwbGwtPnJhdGVfY291bnQ7IGkrKykgewotCQlpZiAocmVxLT5yYXRlID49
-IHJhdGVfdGFibGVbaV0ucmF0ZSkgewotCQkJcmVxLT5yYXRlID0gcmF0ZV90YWJsZVtpXS5yYXRl
-OwotCi0JCQlyZXR1cm4gMDsKLQkJfQorCQlpZiAoYWJzKChsb25nKXJlcS0+cmF0ZSAtIChsb25n
-KXJhdGVfdGFibGVbaV0ucmF0ZSkgPAorCQkgICAgYWJzKChsb25nKXJlcS0+cmF0ZSAtIChsb25n
-KWJlc3QpKQorCQkJYmVzdCA9IHJhdGVfdGFibGVbaV0ucmF0ZTsKIAl9CiAKLQkvKiByZXR1cm4g
-bWluaW11bSBzdXBwb3J0ZWQgdmFsdWUgKi8KLQlyZXEtPnJhdGUgPSByYXRlX3RhYmxlW2kgLSAx
-XS5yYXRlOworCWlmIChiZXN0KQorCQlyZXEtPnJhdGUgPSBiZXN0OworCWVsc2UKKwkJcmVxLT5y
-YXRlID0gcmF0ZV90YWJsZVtwbGwtPnJhdGVfY291bnQgLSAxXS5yYXRlOwogCiAJcmV0dXJuIDA7
-CiB9CgotLSAKMi41Mi4wCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3Rz
-LmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5m
-by9saW51eC1yb2NrY2hpcAo=
+Without CLK_DIVIDER_ROUND_CLOSEST, the divider's _is_best_div() only
+considers candidates where now <= target, rejecting any rate above the
+target even when it is closer. Combined with the PLL round-nearest fix,
+this causes the divider to still pick a suboptimal rate: with PLL
+round-nearest alone, div=8 produces 249.0 MHz (0.048% over) but is
+rejected because it exceeds the target, and div=3/248.0 MHz wins
+(-0.354% error).
+
+Add CLK_DIVIDER_ROUND_CLOSEST to dclk_vp1_src's div_flags so the
+divider picks the rate closest to the target regardless of direction.
+Together with the PLL round-nearest change, this yields:
+
+  VPLL 1992 MHz / 8 = 249.0 MHz (+0.048% error)
+
+instead of the previous:
+
+  VPLL 1488 MHz / 6 = 248.0 MHz (-0.354% error)
+
+This small difference appears to enable more monitors to lock to the VP1
+clock when driving output at 2560x1440@60Hz via DisplayPort.
+
+Signed-off-by: Alexey Charkov <alchark@flipper.net>
+---
+ drivers/clk/rockchip/clk-rk3576.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/clk/rockchip/clk-rk3576.c b/drivers/clk/rockchip/clk-rk3576.c
+index 28eb5a802e83..9fc3264ef322 100644
+--- a/drivers/clk/rockchip/clk-rk3576.c
++++ b/drivers/clk/rockchip/clk-rk3576.c
+@@ -1106,7 +1106,7 @@ static struct rockchip_clk_branch rk3576_clk_branches[] __initdata = {
+ 			RK3576_CLKSEL_CON(145), 8, 3, MFLAGS, 0, 8, DFLAGS,
+ 			RK3576_CLKGATE_CON(61), 10, GFLAGS),
+ 	COMPOSITE(DCLK_VP1_SRC, "dclk_vp1_src", gpll_cpll_vpll_bpll_lpll_p, CLK_SET_RATE_NO_REPARENT | CLK_SET_RATE_PARENT,
+-			RK3576_CLKSEL_CON(146), 8, 3, MFLAGS, 0, 8, DFLAGS,
++			RK3576_CLKSEL_CON(146), 8, 3, MFLAGS, 0, 8, DFLAGS | CLK_DIVIDER_ROUND_CLOSEST,
+ 			RK3576_CLKGATE_CON(61), 11, GFLAGS),
+ 	COMPOSITE(DCLK_VP2_SRC, "dclk_vp2_src", gpll_cpll_vpll_bpll_lpll_p, CLK_SET_RATE_NO_REPARENT,
+ 			RK3576_CLKSEL_CON(147), 8, 3, MFLAGS, 0, 8, DFLAGS,
+
+-- 
+2.52.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
