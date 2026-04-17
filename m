@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA29AF43689
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 09:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3A9FF43688
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 09:27:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=OZoQ3NEVjedoPZVVcqvchkG8EdftUMSWU4u85OWsk4I=; b=h8LYXCOlOWPijc
-	aNnbynjrqEWjKcrBbr9uRb931zSrbPsE3aulx4uvBTg3skgUNimwWVZFiqagDM2RlvMtgPNCEDlmj
-	1XKmJwl7KTmZ3WIPSfEeK0iq/5Aidl8Pniuv7QwVo/fY6Kg2gPyQ+MkYA5DWmWRnu5UIKDaix/yRg
-	Q4Q27p09X0UsAjv1qiMKEsdympKWC0fc8aC5tAHIOGmvJt4y9K5ZENo2mcbkh4AMKemRuf70rk/aw
-	7Ck4BQj9ADriESE2HKfrTVKBkN7eAS5gFMRsVYi/TFVvQNJZRUOCcy09DgwK6rl1sUIuilxSvfJn8
-	uQWq5U03nQf7tl9TxfFw==;
+	List-Owner; bh=e7Mycm7aZkaAuuecd09Far2u6w5tGDS1SgtKgWBPhBA=; b=EtjlVOUmxdkIF+
+	CTnHm4dZCLiQv/cBoewZP73ANb7qiTWZmxnvmoaUJnTTxCM1mRGr0JDftFfpqjgs+3WIAX9Ze5eIW
+	BBTW2K/aMNxCNBhWSKpCsTCg50OP/Uj7e9XFzJOdruiYAzNE9jho0U5Cqu2PVHn8USNIcFZnh91TH
+	86xbhQ41jGoZt971r41my1XPrjsWuJJHymo1bD/+N71AXa3tjJU71t36/18rlWsvVVb6YHKGsiBrv
+	pjSG8h5rJu7q9r6fcxhPIdIns/hIVQn93c8uBr4Ft5trjtiyeKQFcqbrHSugLw5cpw5NmJDOKZyhZ
+	CuuuuxxPdSQn2lybYj3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfTV-00000003me1-013n;
-	Fri, 17 Apr 2026 09:26:57 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wDfTb-00000003mml-3w2g;
+	Fri, 17 Apr 2026 09:27:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfS5-00000003ksP-3s4f;
-	Fri, 17 Apr 2026 09:25:34 +0000
+	id 1wDfS4-00000003kqm-3I0G;
+	Fri, 17 Apr 2026 09:25:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1776417927;
-	bh=XA64gsmd6KJbIrvvu5Dmgjjt7ajhyMvFMl5Ha8MY2ws=;
+	s=mail; t=1776417926;
+	bh=jtQEyQGL2Fv4pcwOJtIEqissSCpIvy9rVx/FpMLP1Sg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=lHa+o5Yf1xOxjhmRvLuJPzTjGUd/ptUBq2qIdB41sGUMsYzIgHx/F7l4zpWkQmgkm
-	 J21/gUk+QAmrRxD6b53gzVewGJgE0gFF0jX7EI7bUW6cib+Piq6fgE5yiYFtYrhNUk
-	 VvyD/WJMfzlvACZwdiQME7+vSfl5b/cBLdMDJHybJcMUrvoupePadoHNRNlfmOJE6I
-	 WGJ68jNIDDFLSI6bEvUgE2OhtlW2DQ5OprYwsS6JaYdVpifxZMk+XZGVJvxs6jZtYh
-	 5b8nG7LE8p+cxNt4bg88dOZzNiR+2cO+keNRwvTe+LPjepLa0+OwvncXUzTt8Bu5I3
-	 xOEsI9v978NVw==
+	b=n5jTS8VShKH5ZnbIkeCJKFIbl3pdZ6Yle17DPFwUlmuUm6teilQOIE3XHfsRvdrkA
+	 Q0dBFfIv9fMwP0xwFMzJ+Z3U3UT6dngqenrNDSpCCPU1KP+kCIftIGjIacA2PXWP7f
+	 7Gh+EPujUQYiDwUWytVHRRKv/o/VOXKwPo95e40SP8zIskO9FJN2z+Os1jwcAud3sF
+	 vW2eWV5cVvzDp4hzn+H1rnfFpIV18U8CxIJ1wCHQpEoBq+0Fjqq5f1JzGeopCB5/Zx
+	 xhnJcVHYXVC52Aq6OFz5Y68OTKVcboOuGqmMWIYy62xLrTBxECah1LKqWFQi/OxqGh
+	 6WActtVH2xq7A==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7C7EA17E0F7F;
-	Fri, 17 Apr 2026 11:25:27 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A488117E0CA9;
+	Fri, 17 Apr 2026 11:25:26 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 17 Apr 2026 12:24:58 +0300
-Subject: [PATCH 24/40] arm64: dts: rockchip: Add frl-enable-gpios to
- rk3588-orangepi-5-ultra
+Date: Fri, 17 Apr 2026 12:24:57 +0300
+Subject: [PATCH 23/40] arm64: dts: rockchip: Add frl-enable-gpios to
+ rk3588-orangepi-5-plus
 MIME-Version: 1.0
-Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-24-a19c0dd8c9f6@collabora.com>
+Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-23-a19c0dd8c9f6@collabora.com>
 References: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
 In-Reply-To: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,8 +58,9 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_022531_720057_70FDF33C 
-X-CRM114-Status: GOOD (  10.68  )
+X-CRM114-CacheID: sfid-20260417_022531_936793_C31A6768 
+X-CRM114-Status: UNSURE (   9.03  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,46 +77,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The board exposes the GPIO4_B2 line to control the voltage bias on the
-HDMI1 data lines.  It must be asserted when operating in HDMI 2.1 FRL
-mode and deasserted for HDMI 1.4/2.0 TMDS mode.
+The board exposes the GPIO4_B1 and GPIO4_B2 lines to control the voltage
+bias on the data lines for the HDMI0 and HDMI1 ports.  These lines must
+be asserted when operating in HDMI 2.1 FRL mode and deasserted for HDMI
+1.4/2.0 TMDS mode.
 
-Wire up the HDMI1 node to the GPIO line using the frl-enable-gpios
-property to allow adjusting the bias when transitioning between TMDS and
-FRL operating modes.
+Wire up both HDMI ports to their respective GPIO lines using the
+frl-enable-gpios property to allow adjusting the bias when transitioning
+between TMDS and FRL operating modes.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
-index f8c6c080e418..8a3040ad7450 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-ultra.dts
-@@ -27,7 +27,8 @@ hdmi1_con_in: endpoint {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+index 9950d1147e12..3a8d19ec8bd8 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-orangepi-5-plus.dts
+@@ -121,6 +121,9 @@ &fan {
+ };
+ 
+ &hdmi0 {
++	pinctrl-0 = <&hdmim0_tx0_cec &hdmim0_tx0_hpd
++		     &hdmim0_tx0_scl &hdmim0_tx0_sda &hdmi0_frl_en>;
++	frl-enable-gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_LOW>;
+ 	status = "okay";
+ };
+ 
+@@ -141,6 +144,9 @@ hdmi0_out_con: endpoint {
+ };
+ 
  &hdmi1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&hdmim0_tx1_cec &hdmim0_tx1_hpd
--			     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
-+			     &hdmim1_tx1_scl &hdmim1_tx1_sda &hdmi1_frl_en>;
++	pinctrl-0 = <&hdmim2_tx1_cec &hdmim0_tx1_hpd
++		     &hdmim1_tx1_scl &hdmim1_tx1_sda &hdmi1_frl_en>;
 +	frl-enable-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_LOW>;
  	status = "okay";
  };
  
-@@ -64,6 +65,12 @@ &led_green_pwm {
+@@ -278,6 +284,16 @@ &pcie2x1l2 {
  };
  
  &pinctrl {
 +	hdmi {
++		hdmi0_frl_en: hdmi0-frl-en {
++			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++
 +		hdmi1_frl_en: hdmi1-frl-en {
 +			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +
- 	usb {
- 		usb_otg_pwren: usb-otg-pwren {
- 			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
+ 	hym8563 {
+ 		hym8563_int: hym8563-int {
+ 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
 
 -- 
 2.53.0
