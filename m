@@ -4,131 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0911F43680
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 08:51:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A60FF43683
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 09:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LV6A3jMXDSEWzKe9qg6iGrgLWntgmf6efxuGwsDiAAA=; b=LRbrkTt59eOBC9
-	NiLLJpsIUbm2lqXe6liPAamfEywqk7ZKSBV0p9oLuYjrqI+iKfR6/lZJV60NSsBtOfDpz1DhuNpY3
-	M7agtW6iBBX2Ue4Gkyz10ccGdg5Xbg+UyXZNynPCvgJlhPJ05JsohM3Jx5NLbqVWHMrTznnrgz9fN
-	ZhQdJBQBp96MbfwP/jskSRo3G/HGwYCNE/7nBxtRBppojX9lswT3LcMX8rX6HIh8dbhCuQr0Z08h8
-	/94k5L4l3i2kkv9YnSLQWihN9QjHIoa5TkXtkJP78na3wfhH67yd6EKO8c0JemenWfhBxF08YDpPm
-	k0f5cr9HXL+Jlwo3p8Cg==;
+	List-Owner; bh=t0S2Ijte3UeaWH+l8Z8fAZKvnJ4z5G3aN3z9Qk9jO28=; b=4JwS295C9osOQS
+	CPVNtfv4RuUjus3cJUm1Q4HORb1kdfyAZtYwmAxTxjUJPBTO7NLC2cED7ualW3/lVfOHZATIcP8it
+	0fSJLn4lS/wGxcwws15MA0uQHKxU2YZtzs1cegQbnixj65cuVlV4wiF5SQgr+5Rm9ngAXawwFksvX
+	zhjdFgc32v0nKoV9JpONiLFAupRz6TnCtkpjuebsQP9k2hVX5Xfi2tr4sUBnWRkhOxbE7M7OeY8aD
+	hHAuky4oh6Ee4bEClFnXkTXhzlOtX3R2IfvX5ubfMVRDjsY70qaGkSoM1gi7BpuuF+AFFDGwmhoPj
+	lK3rRTJYg4md6MVRDjUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDev2-00000003iAq-2K52;
-	Fri, 17 Apr 2026 08:51:20 +0000
-Received: from mail-norwayeastazon11013010.outbound.protection.outlook.com ([40.107.159.10] helo=OSPPR02CU001.outbound.protection.outlook.com)
+	id 1wDfRs-00000003kcL-1jYg;
+	Fri, 17 Apr 2026 09:25:16 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDeuz-00000003iAA-29Fj;
-	Fri, 17 Apr 2026 08:51:18 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Wt2R9QCjhl5dkgaEQkaL1OcDOIN73AI2QaNUm2OgwLUOP7SMOLCk9AGhngPeHD+irYZLQxnj8uv+0vygOSeJROEeeUH87vh45XIIwtlVW9fcWB3b1nedjszc9tzGMFXF+E0+DdRlSri3LvthaVOAXrYGL+rXNkNx3P3c3XcsE4oJDg5m2dKc9dJp9eDmUDmDcVI8JcB8XGr3aecOcWGx/zTq35s+okXjRC3OIoppmLYP+1Jltp1l8+XxLLlDEg8rfoP209I/zxMs4o60LrVHAIs4K8GTfQAsaQyqbDQ/HSwpn5faxHtu6qWV9+crs4x/WUdOEpGbyHwHNQ16XvEY+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=M6QdxBH/xsptjqYlM3MwBE0o6/mgvXC8pddkUQpu7uE=;
- b=FqoF3Qd3ViEuQrAsGq1RVMRQ5X5KbuRfPQhauyMkY5E3ljGjglbYbxW+NxB6asDDInOQAKjK4tPLUxpLbEmd8u8lH38ZUF8w25LHDkyI567opEMZP7UGXaQIWv+HxkYLeb4TT/4f/2Ff1JRAHrlYdg++YE5PwUb6/Y1uEIG8PPS9WDn1BBuNxjxefOnfirdNUqK5FuE/nfBpLIXiCrcvq426beM1GSA3EcAp9hZR4AxUncIpuhX+qypb89qH4ktAnkkRfcZFvOQVSiIGKR+LaTFw2aGU+OM+925cZaVe7kpNQptaWBV3sj5u/SE4ousoJ/EOpofzEqDC0vV5LeYzuA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=M6QdxBH/xsptjqYlM3MwBE0o6/mgvXC8pddkUQpu7uE=;
- b=VRDjgrGwqYHlHtB5h6WMogY0L5N5GicpPe1+fxlkB8l4CuHU4ehaalHwC8lntywEScb5AKzHKfKa19jzJVARiNcYYlNKY/DGES99gW1yvmE5AC07wna93X/94fK8TsZYvhub/JkPQbZDTDVpn3lngvab0KihdjJjh4zPX/EH+lWXGPAQ5eTysXAdFnMWrAi54PFXUyKwvjmVJ2kA0F9W0Z/GYZoxuMuQ0TkZNSnB5uCTwum3BwvCL2jjhAePsInzInq7EKUYmz7y1pLDsq0yLQfpMHHEpnxEz416NuW7RVwrLtHBg4GT5Ghj4fFEW70Jp/MXf+6lLhL2ZdNmflRSEg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
- by VI0PR04MB10949.eurprd04.prod.outlook.com (2603:10a6:800:26c::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.25; Fri, 17 Apr
- 2026 08:51:11 +0000
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9818.023; Fri, 17 Apr 2026
- 08:51:11 +0000
-Date: Fri, 17 Apr 2026 04:51:03 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 3/5] media: synopsys: Add PHY stopstate wait for i.MX93
-Message-ID: <aeH0d1Bbp0agLPto@lizhi-Precision-Tower-5810>
-References: <20260415-csi2_imx95-v1-0-7d63f3508719@oss.nxp.com>
- <20260415-csi2_imx95-v1-3-7d63f3508719@oss.nxp.com>
-Content-Disposition: inline
-In-Reply-To: <20260415-csi2_imx95-v1-3-7d63f3508719@oss.nxp.com>
-X-ClientProxiedBy: PH7P220CA0060.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:510:32b::29) To PA4PR04MB9366.eurprd04.prod.outlook.com
- (2603:10a6:102:2a9::8)
+	id 1wDfRp-00000003ka6-0BUL;
+	Fri, 17 Apr 2026 09:25:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1776417910;
+	bh=pIkr2lvmVoiMJarejipGAoVFydRK9sYCHg56kEfAWiI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=JtY6+cDqZPSv0LM5EWwQuGVclhFlfcSBVDKECLaI3lxcPunZvR1QS9fxoA5xJVe5C
+	 w7C01O6KiBGWszgM3gfgv8c7EGZWFjyaqwCn7D6VOfPK39RjT7A4jMg+6izzWK8HSY
+	 8bj1IRKybURM++38vS4XsUUzfwv7g2W6pSY6wvC5Woj0ap3ccSbbH5d2g1GwPccUna
+	 8TwmYjx9mpFO+LT0djemEiF8Khx19Oj3x6dYHyAC+bBY/GSzs7JZo6eS1Ia8Hj67mx
+	 /V8AWbxUvqrupDhdB2ty4SNHq9RV074V5yvQFx4WRtx2+fWaCh88sFzeLmHwQvX4Hw
+	 MavJSytWW3g4w==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5257217E137E;
+	Fri, 17 Apr 2026 11:25:10 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Fri, 17 Apr 2026 12:24:37 +0300
+Subject: [PATCH 03/40] arm64: dts: rockchip: Add frl-enable-gpios to
+ rk3576-evb1-v10
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|VI0PR04MB10949:EE_
-X-MS-Office365-Filtering-Correlation-Id: abc7a9ec-e39e-42db-061c-08de9c5e799a
-X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|7416014|376014|19092799006|1800799024|56012099003|22082099003|18002099003|38350700014;
-X-Microsoft-Antispam-Message-Info: j6lXNfU+/o4BcfQ0nyOL4RgICoeGL7k5XkEAkGZPtApgHkA3FX5cDV5QEs9qRIrnxKyuKG+MeujvcUg0OJ6sKsvf6Na7V/4rgBzXRNI/XNXGpEz38Jn0P4r+AZUuL0q9lgXns2WcrKLk8PYdtn3yIRancT+J99mc9xvZI2tYEtWvqV+L2RePqTbqfgbPMX8yQz9cxytX7kEVJASysfEkdGhoa7bi8PHTWHYp9e3SNjKC/s6lluqMm8J8CrvZIONkXZ/6xI2dND57kLfWovzP1BLqoN0wUi+KKwTxRTQ1K8jfCHolchiECX/ddR2sASqF1OyJ7r10+IhD0yix27CXB7DagOZPBBIvoIaIFnInK20MnHCZ8xj8dLwMm4zctI4xlqo6rIDILU8fmQMbMtzb98FsPYhfmNgpxy2kRH3xL24Lwf1fpoBhepfdfA38/Gs1+/Q/MTr2FQJuYS+xNxFWqOwQGJgFHuQlVd2mJm4EeS3Fag9yOU+h4MGtK8d1LpFR9XtDHXVkjP62fhyqI2sDjqorTFlor6gQXKHvhm0OxQq9Bnv+lMdpJUwD3HHTR1KwCvYrsLD3/oLPrfOjJLo89EReSlsfe2lTZ9YxVmfPSIWuAK/BiWAITuOfBU3zRZRSwHaivqnpA6uXEqfNka5toBGKOGHv0X++ZAoEFjnZmfrWrsk0lGL9QKRroiymZCdJZhsZ/omECamJyCixyPoxsKe6ItSxTHrzQ2LwPr8rD1AD9WRbUNHAvW/5VE7bOWtf+piRRUEB1REmRskrNpbYmw5SIqjIH/h8ufafXDYRfUs=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(7416014)(376014)(19092799006)(1800799024)(56012099003)(22082099003)(18002099003)(38350700014);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?UMW+rB9m7JYFZXLZXlZysIssOy53VD+3nsPDKI9cQ6G0o3W/jTUfUX0DQnph?=
- =?us-ascii?Q?yP59GNYCRoHZhqvJTf9uM2HROW5pu08FmI77dYfAc/X6lerxy0o8WGQLlh7k?=
- =?us-ascii?Q?raEqdLi9+i+M0BJbN+Z1ibtJiR4nTS4AauWhrdxYfffB1Ojhmvr2CNevpAIQ?=
- =?us-ascii?Q?J8eFX/TKpBj1c39zS4RhW9GA522osi8Npmqxq5Nxb7ut8AikfjIeKZEevXOP?=
- =?us-ascii?Q?pVvK1MM9sP/7hO+2TecAJ1Px3GVI9ddGL/Ipo+sYvkY94udpkX3SO5Zkzt6c?=
- =?us-ascii?Q?OfBAY08alPVhCcgad5JiePltXX9E3qvuml5KK3R6Rawu0NwNkXipUDH8zd16?=
- =?us-ascii?Q?so9kVkKEbsG7pmYErfHPYpGoIjPOOPuHWd6xP1DvkQfDb1V7dt62tlqHZtxc?=
- =?us-ascii?Q?59acGFYvCmiVauB8MXlVRj9XphbDMu2ncPQiNaXroAXO3SGftzUlMn8DDbBl?=
- =?us-ascii?Q?w51+Q9c88mXgBUUO777UATQ0a1cN7Cl5/vcNG0JmEHGmfjDA9elBmRoqDkPq?=
- =?us-ascii?Q?ZVhs/auAlMhkw+oVZOFs+SxSLlodfNtRg/Fkhh6GRkXRARz+AvWz2oJ01xIx?=
- =?us-ascii?Q?cRZK17Pd9vB4etSB1nwDPINFfbeMjLUAc5xIkDkH8mygLcUPYfKu181udowz?=
- =?us-ascii?Q?YIyHEtbc0fvV9yRIfEwu8+slxgVxlBHh1YnvUOpTR4WcofF+J2DfzTSFgIvK?=
- =?us-ascii?Q?dft6ZHUj0CBXnl46UHSb7zC9D/XD8TB106rngramUhaPftKMjxcJiUMcNw2u?=
- =?us-ascii?Q?P4t8i16O+PrRX1g1IbVEZRCkgJlw4I8kHxzhwHsQTDWMXJcttoc/9gaPrwp9?=
- =?us-ascii?Q?z277zyPCTkKK/rByc5996rV4acYsh7udtkZOYJFHqCyQLz2qkhFz16YUWqQq?=
- =?us-ascii?Q?JWEuhfEMokLbnqEcnYj7bfK0RGPYajzOwkSltRvqQxg7Ry6BxeYhSTu7CLFW?=
- =?us-ascii?Q?thKPr237cdjccgDiMekIqoyw4oIUilF0S55k9LJcCduCEbPXOtOptgJ0eUyM?=
- =?us-ascii?Q?uV9BfVACw9I1GwkhgD41PYBtlwWEtaDpmOgB/mkvC8L2pjhjoF8gbz690K7a?=
- =?us-ascii?Q?BV8yQW0yEAhl5Gi7zzvtO8MSRb4IXnuyNuLat0nKl3C6APawkaD3+MhlSlMJ?=
- =?us-ascii?Q?1QTjVl+1k2rHVQc/M8KBfxWaDFI6YAg/l5Xsu2Js2ODxEfuSYLRfynQkM0Fb?=
- =?us-ascii?Q?yFCU3BBoGAT+lJXg7cYOmMheoroYVvwQ6sFenu2Sz6veQU5Hws5iRWvvVcM9?=
- =?us-ascii?Q?QxELsGF2229cUeexvhIsVoJPxAqgWMY3S7ZgBAq0bICVYN0jZz7a82EHTF9i?=
- =?us-ascii?Q?lm/atI/iRR4uOmDCdQL9jgJcnuQcrglnifyDyN5uTi8KpwPraVZXiGJIk7O6?=
- =?us-ascii?Q?HsSju2uemR8FfypJc7vyViXtkowaDb68NiKQBwSMghmTvs5P/Q/4JLEODAiZ?=
- =?us-ascii?Q?/edLUJTcLGYewTlcdZFavBwbWLoteje2wKxMFuSy9qO/cYXUf9MdfwnE2zAZ?=
- =?us-ascii?Q?eE4fGM9ZzXlml9P8F6Pzi3QfPCL1u8Xdlk8UvEZIrhPOOr12ycoQhby4iKAA?=
- =?us-ascii?Q?qstOk9JosK83lLdBj5CKVs8R60jaTu8YzFsD11nGgpNI8UWX0zc/gsx2MteH?=
- =?us-ascii?Q?bdcHrv94nR1xJDdFL/ubGS7EUCVAvAaEoJmnfX+OkbM2l7lvHk3MesAgDf+4?=
- =?us-ascii?Q?Odkzdw0rCAxncv63e3XIaVEh2kKjpvhjgYQ8GTja+LW1Q8Du7UWsu7LeFcuP?=
- =?us-ascii?Q?5cHIEuOouw=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: abc7a9ec-e39e-42db-061c-08de9c5e799a
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2026 08:51:11.6058
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u3tLXKNtCRcxD/EpTx8sEPFi9gjD/uqroTD7K7GXctqfkT6GboFVen2lb2+jpf0TC4u7pxT6IWM+U9bhzioh6g==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10949
+Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-3-a19c0dd8c9f6@collabora.com>
+References: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
+In-Reply-To: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_015117_573190_64E89F34 
-X-CRM114-Status: GOOD (  14.31  )
+X-CRM114-CacheID: sfid-20260417_022513_226833_C6D876B5 
+X-CRM114-Status: UNSURE (   9.80  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,45 +77,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 15, 2026 at 11:46:54AM +0800, Guoniu Zhou wrote:
-> Implement waiting for D-PHY lanes to enter stop state on i.MX93. This
-> ensures proper PHY initialization by verifying that the clock lane and
-> all active data lanes have entered the stop state before proceeding with
-> further operations.
->
-> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-> ---
-...
->
-> +static int imx93_csi2rx_wait_for_phy_stopstate(struct dw_mipi_csi2rx_device *csi2)
-> +{
-> +	struct device *dev = csi2->dev;
-> +	void __iomem *addr;
-> +	u32 stopstate_mask;
-> +	u32 val;
-> +	int ret;
-> +
-> +	if (!dw_mipi_csi2rx_has_reg(csi2, DW_MIPI_CSI2RX_PHY_STOPSTATE)) {
-> +		dev_err(dev, "phy_stopstate register not available\n");
-> +		return -ENXIO;
-> +	}
+The board exposes the GPIO2_B0 line to control the voltage bias on the
+HDMI data lines.  It must be asserted when operating in HDMI 2.1 FRL
+mode and deasserted for HDMI 1.4/2.0 TMDS mode.
 
-Needn't this check, you just implment this specfic callback for imx93, so
-DW_MIPI_CSI2RX_PHY_STOPSTATE must be there.
+Wire up the HDMI node to the GPIO line using the frl-enable-gpios
+property to allow adjusting the bias when transitioning between TMDS and
+FRL operating modes.
 
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-> +
-> +	stopstate_mask = DPHY_STOPSTATE_CLK_LANE | GENMASK(csi2->lanes_num - 1, 0);
-> +	addr = dw_mipi_csi2rx_get_regaddr(csi2, DW_MIPI_CSI2RX_PHY_STOPSTATE);
-> +
-> +	ret = readl_poll_timeout(addr, val, (val & stopstate_mask) != stopstate_mask,
-> +				 1000, 2000000);
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+index fb0dd1bc5148..b112432528ed 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
+@@ -370,6 +370,8 @@ &gpu {
+ };
+ 
+ &hdmi {
++	pinctrl-0 = <&hdmi_txm0_pins &hdmi_tx_scl &hdmi_tx_sda &hdmi_frl_en>;
++	frl-enable-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
+ 	status = "okay";
+ };
+ 
+@@ -895,6 +897,12 @@ host_wake_bt: host-wake-bt {
+ 		};
+ 	};
+ 
++	hdmi {
++		hdmi_frl_en: hdmi-frl-en {
++			rockchip,pins = <2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++		};
++	};
++
+ 	hym8563 {
+ 		rtc_int: rtc-int {
+ 			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
 
-There are dw_mipi_csi2rx_read() helper function. So you already use
+-- 
+2.53.0
 
-read_poll_timeout(dw_mipi_csi2rx_read, ...)
-
-Frank
 
 _______________________________________________
 Linux-rockchip mailing list
