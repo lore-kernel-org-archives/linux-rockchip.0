@@ -4,65 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9EFDF8D75E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 16 Apr 2026 15:49:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60D1AF8DFE3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 08:31:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=L5GQ7efLREXKUJnBHdcCEiXl/MpsaAYrU2E1/XlFAIM=; b=S//3dgiEoUgZ/u
-	SAN7+hRM4qasqBR5kFd/6dIQuB6qe5JjqiXXAho0g1g/R9fUl7p0GwP6qdllHYwyAQmHi6DXVFTwh
-	vQT6i7qS+bxJ16f8vkHnFf2K9f37Qr/rm0iBQN8RTmgsahkzh5/St5yQylIsrAZd601wSGVSwiLE5
-	igdzFjdQuxn39WVcE7KhTYrWaVwkcW6yvyy9QeiwE8asp41SsCz+fazqmvGgvt+W/0WGYkK9EoDnu
-	9RBZxemPUhl8eNtVvDrnjJ/riaoTb9PILexjBFyTt0jKXwxFQ+aQg3s3u9BLhBX9BBkgI2KZcxnD7
-	nAGnm/CvSOJ/1gwrNgwg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=R1rTM3J4u0jS+iKR1EzaGnFagIIe7jB6v8J5XahCAYQ=; b=3fJOJ71F+9kM74
+	Rqd/BX7GKTg7rb2joIuY6vyocI8NzFI+3z7QjEzz7XZ/G7LKKSUriygbHEnnvZAlGNRpMdW7/EN8v
+	y1prnP90Yr59hH+ItEY2fdvrlWIQrW2vhti29Tj3NR/42VL2x8UVYsN4N+jdNDmNR9Hrds2nxFiyW
+	RjRDefs3ojqcXJxDOZD9jXGH7q1H6a1YEYcTXcGhWJyJ7B96jiyKxoq0jadv0r6hs9KSkorTpgchu
+	ycHokUdGZuLtv70gvcBpqDYXbTaXrFl7rPzRpHdWPeCMkq+sQzG5k2eW+p+QUC3a6fQjMAbiTU8hX
+	1Sv589kjr1ng/w1ebIUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDOyO-00000002ddq-17Qo;
-	Thu, 16 Apr 2026 15:49:44 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1wDec0-00000003g4p-1map;
+	Fri, 17 Apr 2026 08:31:40 +0000
+Received: from mail-westeuropeazon11010024.outbound.protection.outlook.com ([52.101.69.24] helo=AM0PR83CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDOyK-00000002dcb-2avg
-	for linux-rockchip@lists.infradead.org;
-	Thu, 16 Apr 2026 15:49:42 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1776354578;
- bh=iZdfqgTzXtA3fPbIpl8GLH8neb3096MRhShKVT67buk=;
- b=MCl0POvdl4KVnynmurGEdVkDtm/c1qW5AF5DkD8NZh0TJg6D0xeNwzgvfsaKgi8IHVM3/b2YI
- /wYXvw2MmtY0qwObW/yAYFUYtx6JkyH90KmU5A09wvxv6IvsGpXT6qLHd69Cg8RY5TShEnlB20D
- dOveg6hE8AZ4JtSGStHf++HVSOL4vjc/CzD77wkBNs/m0dbVb5pHXm8dFeJJATLeuWyON4UgyG+
- bkpKwHV6XAxuoaR5FO/XWZe8YNnrK4wKiKq4d7w1vBGLG8VdgasSptSHU5u+Gq+vL9X1uRJT5kr
- fatwDmtQ9PVRVPJp8W75HOFombXGiedXnRkF1l0FIwJA==
-X-Forward-Email-ID: 69e1050d06b3fda24d33d578
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.7.3
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
+	id 1wDebx-00000003g4I-22FG;
+	Fri, 17 Apr 2026 08:31:38 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=S7ScVjN206kqzeJsizzfDtILdk7g4GLQWRnpPKixt2AFdDciOCn5F/D5MJ91QQ4bEjwambooTAG9ykTkTw+EOx9e7yGrLQiEtB1xVfHqY0K4RAZtXDaTbOAavO2eyl+cn3nnbwkTty5KsxEE5qu9lSNIqeGmt1yuDg6/QeCNx4YqF57uY7ZLYwXefc6E55wzago7L6lQpSI+iSVUPcFBnxFic3No/ASLx8aSgiyVuwwrgbPDTNKBBVaV45nqxx92g0ftadRHo8wimaRCP4BsYItk64nsV6g6ngW51fnclkpHQF3XOGO8Q3lWxIpdnslu7JXXvnRkJM9q6OjSP4AJqQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pjfXj6InpPkRn1FsOvgJmjTaCSScbcVVl437tH4xr2U=;
+ b=ke+tfCT+OTQHUZGQa3uzAtHenA5SBN9as+eyIJB3kST3dyvVLZJsjyl2sTfNjrkIXjrmSM1hQjgRGpx69SEA5pI+GbwfclCi//YQt83Gs334za9hBdpYrFTXEgfthjI2N4WD4AqWyoxXc7mJXvu9wxl4T7e+2B6Z7TZoRAL7wx7x80tLSgor9dHAK/GNKikizkJnI52ePJwQD3xAPUwGuc8BzWwteHY1Wca6vbHn5izVA2Mmb1/rCoUo5uOXCBt4hcx4qSqIhE387MNHl9dejSo1/zqlEcPIYSLFd2OuGnseTcWVq9AMaBwJwvBeJyFVaz2QWakElaGrb9ZPxxkUpw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=pjfXj6InpPkRn1FsOvgJmjTaCSScbcVVl437tH4xr2U=;
+ b=iELL1UAz9RLVmNekBOPJT93Ly3Wu4/MTbjmajGIPkzv/XItw7tOmVzMIKoigeu6Iz/CuwMI5sONGO1kWUanSOH3v93t9KK2LoVn0rbNP9PxHTa0/OHfTLWaPHOw0pPfCsLm5GEXujhcuzo4nLuMdwBnNutFXcJqdAibOY3e+TAcvcQCCrW81II1J0qJY7HmpOo0vhvEJ/uImzoXhhwbG1L3YT1RGd8XrQEssIj4iRQPagqXRyN6vN8LMyh2oINdoyYLgWm6dQ+4iyz8VrR1uouzBZdgr9VdQob+suh3uwTJxHteR6SCwTCEmCxusJ3ymh6UBdeJNdJHo1BrSgfeF9Q==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by PA1PR04MB11262.eurprd04.prod.outlook.com (2603:10a6:102:4eb::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.25; Fri, 17 Apr
+ 2026 08:31:29 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9818.023; Fri, 17 Apr 2026
+ 08:31:29 +0000
+Date: Fri, 17 Apr 2026 04:31:23 -0400
+From: Frank Li <Frank.li@nxp.com>
+To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Shawn Lin <shawn.lin@rock-chips.com>
-Cc: Jonas Karlman <jonas@kwiboo.se>,
-	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>,
-	linux-gpio@vger.kernel.org,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, imx@lists.linux.dev,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] gpio: rockchip: Fix GPIO after convert to dynamic base allocation
-Date: Thu, 16 Apr 2026 15:49:28 +0000
-Message-ID: <20260416154928.2103388-1-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.53.0
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 1/5] media: synopsys: Add support for RAW16 Bayer formats
+Message-ID: <aeHv20exJWWktk1w@lizhi-Precision-Tower-5810>
+References: <20260415-csi2_imx95-v1-0-7d63f3508719@oss.nxp.com>
+ <20260415-csi2_imx95-v1-1-7d63f3508719@oss.nxp.com>
+Content-Disposition: inline
+In-Reply-To: <20260415-csi2_imx95-v1-1-7d63f3508719@oss.nxp.com>
+X-ClientProxiedBy: SA9PR13CA0149.namprd13.prod.outlook.com
+ (2603:10b6:806:27::34) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|PA1PR04MB11262:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5fdc4fd5-1782-4bed-8fdb-08de9c5bb92c
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|19092799006|366016|1800799024|38350700014|56012099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: owIA0oJYMx00ONhLwBI/wM3tUFYIVJj2HiOgQCfB1Xi4hh4/C2JLAAU6SsZNt3s7V2MJ89H/K6Hx5eLUQB1P66VsnTTR4G0Qv6GxI9IYRLzHYh04tbJ28Shp4fyD/siaqqjoNvbprISwsfiBQps9YP4HIwAy/s98VTZhopNrEwg5pG7qpVgdqNEi2rkanEZBaGU9yP+epCRzWGQQj5RJVFgwVA/AVvMgx2BWM9e1CJJHIyA2Z5ATpXvXXILg/eesn4oh9lu0waFLhbYe40H3VkkR1qw3QcPaADmgwysn3EGu7fhc7y2Q3Wll+DoEUjx++q4hXP3ifxmcV/CQOZsUhI7iFB9Sw5uHfx4Pz7HjfqdqA2UAKitd1HYeTE1qz/r+JfTxlBrJmml8xDdE0GPydkouDvnhyK2p1WboPp45E9UCJRApVMS549PB424WTy5Bz3j2w4OZrmkFQFSk3XsaA3E1MgKaRRaDPPLKd/3nv4ADLm7QRLl5Vu3wtY44OhfkDVsP0V4+0q6KiIUdQCEjLq46iosp9o06kIpUb19TsEq7mJWHJ7jOK2jSsE0SRk85g+jPJTFpUeCPwH3fWptYiPRuxUg1xhVSZJI/k1cc6tBwOcTL1Ss2uGTmejzx0/Fa8HG9fO9LuKmzEp0jHiZuA6VmLmAnz/6s+YrfuhsGjPfuoaOYXYZ6MShCyX37BUBjw9NJD4sXS+YS8amNabMMdGlKCGFJerp0s24UKCoZXDfxpPYeWlXd0gRf8oYaGxrt3VccoqLYYXtibb0dXTLV6w0k4iNrqMjbnEktRlNeF3o=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(19092799006)(366016)(1800799024)(38350700014)(56012099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?8CciB13Rkr8q2QU/TwRAvasgNKhuzwh08J6kgpEvjy3UY7yyMvNAltkfq31w?=
+ =?us-ascii?Q?gUX8AVYoIhHv1RKC+XBRLAhKNBASV+UFgSafoxHdW8v9JXLdJmTzAcoz3VTo?=
+ =?us-ascii?Q?xznLOtVf3EUZ3WMAncbysBIs2fqYt78hWk/NO3ieXADit17YMT7UBWhYC2Rs?=
+ =?us-ascii?Q?nKfO/M94zboDn44I7VfDkXpTgurhoUdiOSLTy83/euLqro9Eg5OrhnwLxRHw?=
+ =?us-ascii?Q?B3rSpwABeRrhSRx+T29h/WyD2mdxF3bQ+2g+y7DAX/8MjBQ9oOunh7XjfIHk?=
+ =?us-ascii?Q?VgkkUG8b/kQeisbL/Bf7lYiBTeNKLl8roYzb4GueFkuA/gRhywVwJcBq41No?=
+ =?us-ascii?Q?S3U6ss4aUyVts58XBaP31kWMf7lJCAq2M5ID4YR6zECIj6VDi9e2mJnQDeqi?=
+ =?us-ascii?Q?RkBObSXbIyCHImfk1YcvcPHfmadyQaXVOVRHz5dNuYbaFy+i1HEsuCsbOVAk?=
+ =?us-ascii?Q?WK5jYILf+VN1/7aOffcNz5KQQgms8BlU0Oo3h6g2AheUaW2J+GYDjqhTYYdZ?=
+ =?us-ascii?Q?7u7tvF8hd4RfqYrafqb09VzS8ewrGqVi+4cJsoVhb6qxxuUbIq3Mk49wl7hC?=
+ =?us-ascii?Q?7MdhkfCkQQrNIkhmOk41h1xA0wM00SdAMBzSo+bm9kXJBSkByoyTN4UCrTJZ?=
+ =?us-ascii?Q?4nU0babyn2Gg6YqPCZYBDIyihZDhZ8Up2zOqS007Wf+ko+cSRO+T05Vmc6gp?=
+ =?us-ascii?Q?DVh+ZOTnbagb+CH4QGR6SjCkhgVSTb3MvV/n7yeMN1fTETsoLnN7Ql1cJJ4w?=
+ =?us-ascii?Q?yZRV1sVh/EwBkaNNk1pwcsUUVFdO/KReLaUPT0L97kPEvD97QhqXnq5upF90?=
+ =?us-ascii?Q?67v9NqeSfPZPxw98neq1gdlhkvZ9on1hN19qoXTnagkITfrRGiu9MUepjUM1?=
+ =?us-ascii?Q?ITAirNzbvjf0gJqjH0ddyW4HIh2SYU71IdOTXSNSzgD0pgMJmWhBgFX93GdL?=
+ =?us-ascii?Q?z/93nA5zCdi3dtZ/2JwbKSJh885vA/0ywvp3o7wXrrQHikTV4f63naBYsJ+p?=
+ =?us-ascii?Q?chcbBTXqru5J1t6NoBXBxfC5mp94t0Mf0uuRq8NseTyplBY9Mdi9O3gvUUVd?=
+ =?us-ascii?Q?y09IF5GZ/3tjsc9SmHt4TF1Z0MW7bRim0N4mD2AXlZUpuKqLRvwBz/ZQRdrG?=
+ =?us-ascii?Q?uAxOxJt+rk+pK7Di9BJ2x+rITyLV3Yrx+TvCdaCYGCCpdJ5dWd05qMSZB7Ju?=
+ =?us-ascii?Q?AUbEmXK1Ali+uCxtwup0YjBzOjgmnCu8Yfa87Lpi7OeYYLok32SLVMgRQ/EN?=
+ =?us-ascii?Q?vZnAfrLVAIcQ/A3eqksOWJXQiA+0W+vC8SAp5mRv2oBtX4viPnx9aLFjblqr?=
+ =?us-ascii?Q?m+KzJ1tnA5d5ebAo+JMfM/rddOXLbq0g5uTAPJwkb3MDFFHSj5EDmTYnWJm2?=
+ =?us-ascii?Q?IZJfu0dL36nh+eTAgs86GK8bcgor+5chXuBI8wHlr4vAbX9xzXspsSCdU6l8?=
+ =?us-ascii?Q?kJvzZ1Pxfb4pDwTj58nZp/Vi21n8jX/xXsSCyyDOjG+mCL7maHPLPIuYZdwI?=
+ =?us-ascii?Q?EmqlbhwDsJq1edigwzs0sK/atcSggEL6nz2ZI/WREnvRUfmbjMUKRsECZVxd?=
+ =?us-ascii?Q?n/UWLDpKGvpjSMX4jkgEc2sj7GMBlWjYPrSULkxX7tv8sbooLLPyIgPZCEgd?=
+ =?us-ascii?Q?qIaR+qHpStXMs0zj9oseImTpJ/O7O0mq9GqbBDDEmSnjnsI9gYso7ah/2ocf?=
+ =?us-ascii?Q?R3Ij+8Vzmm9+Dh0BvCS+2abi3PhO1+2Xjr8mv9KWTdALyLe0arNI4D94cphF?=
+ =?us-ascii?Q?jhr0dPNSkw=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5fdc4fd5-1782-4bed-8fdb-08de9c5bb92c
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Apr 2026 08:31:29.7672
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZPDEVoUjbMW0p58hG0U5G8aOBfVDN6ypt0A6VBi2H2mH29nwr8f08T53hADX84EZvhhmJj8aT5XHYrKm4tkx4g==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PR04MB11262
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260416_084940_835451_F0899AFB 
-X-CRM114-Status: GOOD (  11.04  )
+X-CRM114-CacheID: sfid-20260417_013137_552089_50A0EB34 
+X-CRM114-Status: GOOD (  16.99  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,81 +145,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The commit c8079f83e0bf ("gpio: rockchip: convert to dynamic GPIO base
-allocation") broke GPIO on devices using device trees which don't set
-the gpio-ranges property, something only Rockchip RK35xx SoC DTs do.
+On Wed, Apr 15, 2026 at 11:46:52AM +0800, Guoniu Zhou wrote:
+> This enables the driver to handle higher bit-depth raw image data
+> from image sensors that support 16-bit output.
 
-On a Rockchip RK3399 device something like following is now observed:
+wrap at 75 char,
 
-[    0.082771] rockchip-gpio ff720000.gpio: probed /pinctrl/gpio@ff720000
-[    0.083531] rockchip-gpio ff730000.gpio: probed /pinctrl/gpio@ff730000
-[    0.084110] rockchip-gpio ff780000.gpio: probed /pinctrl/gpio@ff780000
-[    0.084746] rockchip-gpio ff788000.gpio: probed /pinctrl/gpio@ff788000
-[    0.085389] rockchip-gpio ff790000.gpio: probed /pinctrl/gpio@ff790000
---
-[    0.212208] rockchip-pinctrl pinctrl: pin 637 is not registered so it cannot be requested
-[    0.212271] rockchip-pinctrl pinctrl: error -EINVAL: pin-637 (gpio3:637)
-[    0.212344] leds-gpio leds: error -EINVAL: Failed to get GPIO '/leds/led-0'
-[    0.212389] leds-gpio leds: probe with driver leds-gpio failed with error -22
---
-[    0.607545] rockchip-pinctrl pinctrl: pin 519 is not registered so it cannot be requested
-[    0.608775] rockchip-pinctrl pinctrl: error -EINVAL: pin-519 (gpio0:519)
-[    0.610003] dwmmc_rockchip fe320000.mmc: probe with driver dwmmc_rockchip failed with error -22
---
-[    0.805882] rockchip-pinctrl pinctrl: pin 547 is not registered so it cannot be requested
-[    0.806672] rockchip-pinctrl pinctrl: error -EINVAL: pin-547 (gpio1:547)
-[    0.807301] reg-fixed-voltage regulator-vbus-typec: error -EINVAL: can't get GPIO
-[    0.807307] rockchip-pinctrl pinctrl: pin 602 is not registered so it cannot be requested
-[    0.807970] reg-fixed-voltage regulator-vbus-typec: probe with driver reg-fixed-voltage failed with error -22
-[    0.808692] rockchip-pinctrl pinctrl: error -EINVAL: pin-602 (gpio2:602)
-[    0.810279] reg-fixed-voltage regulator-vcc3v3-pcie: error -EINVAL: can't get GPIO
-[    0.810284] rockchip-pinctrl pinctrl: pin 665 is not registered so it cannot be requested
-[    0.810299] rockchip-pinctrl pinctrl: error -EINVAL: pin-665 (gpio4:665)
-[    0.810960] reg-fixed-voltage regulator-vcc3v3-pcie: probe with driver reg-fixed-voltage failed with error -22
-[    0.811679] reg-fixed-voltage regulator-vcc5v0-host: error -EINVAL: can't get GPIO
-[    0.813943] reg-fixed-voltage regulator-vcc5v0-host: probe with driver reg-fixed-voltage failed with error -22
---
-[    0.867788] rockchip-pinctrl pinctrl: pin 522 is not registered so it cannot be requested
-[    0.868537] rockchip-pinctrl pinctrl: error -EINVAL: pin-522 (gpio0:522)
-[    0.869166] pwrseq_simple sdio-pwrseq: error -EINVAL: reset GPIOs not ready
-[    0.869798] pwrseq_simple sdio-pwrseq: probe with driver pwrseq_simple failed with error -22
---
-[    0.940365] rockchip-pinctrl pinctrl: pin 623 is not registered so it cannot be requested
-[    0.941084] rockchip-pinctrl pinctrl: error -EINVAL: pin-623 (gpio3:623)
-[    0.941823] rk_gmac-dwmac fe300000.ethernet: error -EINVAL: Cannot register the MDIO bus
-[    0.942542] rk_gmac-dwmac fe300000.ethernet: error -EINVAL: MDIO bus (id: 0) registration failed
-[    0.943772] rk_gmac-dwmac fe300000.ethernet: probe with driver rk_gmac-dwmac failed with error -22
+Add higher bit-depth raw image data support for the sensors, which supports
+16-bit output.
 
-Restore GPIO to a working state on devices using older Rockchip SoCs
-and/or DTs not having the gpio-ranges property set by restoring prior
-use of bank->pin_base as the pin_offset value.
-
-Also change to use bank->nr_pins as the npins value to align and prevent
-a possible future breakage if gc->ngpio is ever changed to match the 32
-GPIOs each controller theoretically can handle.
-
-Fixes: c8079f83e0bf ("gpio: rockchip: convert to dynamic GPIO base allocation")
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
- drivers/gpio/gpio-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 08ea64434f8f..44d7ebd12724 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -617,7 +617,7 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 			return -ENODEV;
- 
- 		ret = gpiochip_add_pin_range(gc, dev_name(pctldev->dev), 0,
--					     gc->base, gc->ngpio);
-+					     bank->pin_base, bank->nr_pins);
- 		if (ret) {
- 			dev_err(bank->dev, "Failed to add pin range\n");
- 			goto fail;
--- 
-2.53.0
-
+Frank
+>
+> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+> ---
+>  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 20 ++++++++++++++++++++
+>  1 file changed, 20 insertions(+)
+>
+> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> index ce17f986279e..46e2a4315ac2 100644
+> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> @@ -252,6 +252,26 @@ static const struct dw_mipi_csi2rx_format formats[] = {
+>  		.depth = 12,
+>  		.csi_dt = MIPI_CSI2_DT_RAW12,
+>  	},
+> +	{
+> +		.code = MEDIA_BUS_FMT_SBGGR16_1X16,
+> +		.depth = 16,
+> +		.csi_dt = MIPI_CSI2_DT_RAW16,
+> +	},
+> +	{
+> +		.code = MEDIA_BUS_FMT_SGBRG16_1X16,
+> +		.depth = 16,
+> +		.csi_dt = MIPI_CSI2_DT_RAW16,
+> +	},
+> +	{
+> +		.code = MEDIA_BUS_FMT_SGRBG16_1X16,
+> +		.depth = 16,
+> +		.csi_dt = MIPI_CSI2_DT_RAW16,
+> +	},
+> +	{
+> +		.code = MEDIA_BUS_FMT_SRGGB16_1X16,
+> +		.depth = 16,
+> +		.csi_dt = MIPI_CSI2_DT_RAW16,
+> +	},
+>  };
+>
+>  static inline struct dw_mipi_csi2rx_device *to_csi2(struct v4l2_subdev *sd)
+>
+> --
+> 2.34.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
