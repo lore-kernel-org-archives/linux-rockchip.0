@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B5BF43683
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 09:27:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E3E2F43683
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 09:27:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=m2a2d//1oFHRS8J4Oh9YY/NSu9ObdGZFD/eK0z1xdSA=; b=XcLSx3x6nkKOdS
-	ztNl0o6QG/rDzzRV0DoPdCbjcjWe7bpk654+ek7xq2gXfDWCB1f+OHyNWwC5tIlY3JcdvZme6XIt+
-	SsR95Mgte/F7IpMPm/ikzteCdk3ZZsoNdTA88iQrLigAr3Bzfq5NU6rOKd8Nt+HA/BKab2yxJete+
-	IhkhhzIU7hncDo0/BmxcY47F6YwMjhbkhC/9zNIislrYwei+aR94mfGxeNImVm1Vndm1+hlNq5/Qk
-	oC/S/4I0YdQuBzB3MSfP6TUyg8bPrID+Fkcj3H8kjHqOLzkVw7gBNzmKJyhCpk+GWneX/Low0PFXr
-	sA0CC6d8X0OIxeRwUGBw==;
+	List-Owner; bh=A+mDsZK+G07ryWRYW1Ug98nMvS+zquNbJSYYt/bqtCA=; b=LXLo4hIj5wV7E5
+	hdMVFppuSsLS9os88LuaOUKq8d1qRj8Cxt6jKKOIOhb70ncc9eNDFN3vVpi+RiL2KYtnY2F3HuDDv
+	QzD23Pc/Pf6dUhVPzOTo1MjrbQspP8JlMGlsRfdOceyI04jQskNCD2T0t3UfaMSiTdgeKY3dA+683
+	V+w3xaYBuci79LHU0hkLU1J3q0/793zODkqHHWtVfq2E5JGYCOTOQAX61VTSgUpp6smwVhSsldk6R
+	rBrWxDrPaaaOfDYRcL1J/PR0D2n5JpmuKHIxVFWsGG7+aNYqiD4LVPa4NYN5FZ7MFGYO/tnHJY5a8
+	bpYMh3IUdGRE3mHI0fdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfU0-00000003nG4-2p3W;
-	Fri, 17 Apr 2026 09:27:28 +0000
+	id 1wDfU2-00000003nHc-0Ld3;
+	Fri, 17 Apr 2026 09:27:32 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfSF-00000003l4F-0uVt;
+	id 1wDfSF-00000003l4C-0v3e;
 	Fri, 17 Apr 2026 09:25:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=5FSAEtMkSceTrshpBiiAm6ioxzukZODs0quNCtI9vA8=; b=mMTjcdD7/I+2rKZ9x4SnScHA/3
-	UUAkvMSZrQcSzUp3RLFSl9PBlfiTz29XIRe/Nx6eOWGwaV9OOHx3SxCuYX3PIxQE9EClrUUE4wB4W
-	k9lST8KF/kk0KRJimxIOZeMm5LOJ9L9aNiVqcYUn2l7BiwQDEQPnm2NWNEX/jBFAAKjeekh24dpQL
-	05okUC1rtnDU8i7fmUIjWRKDiD13dcFuYgKP7vVBzN5jgPYUNOt2X/kky3TqdYXaiPwGTMOffv1UW
-	yqK+fD21BHLAzXp7lCjUSi5eJ9UkaMtKBtBWwsTyZu/L4Yr53J0SE8Nzkgp5Qh7Z2a2w68X20RJ43
-	QL7PGIbA==;
+	bh=iQWD1j41bRKm1Fvq2Lg64QXlxlztQryWP5pazjrE12U=; b=E0eVSwTjVJagAckTAJCnuxjG/L
+	LVSYjszrxersfNg5izjoKU6QFgN6svE9vvOXGrIR2nFIj2KVn7dBRqJwn21nbWGdUjR5/9QrEHhx6
+	mz74ExPaTNxX6DnCc4bYYauwsHfexL4jKMvWYQ5KdAKXZ+UmDzggt58WmrqYmeayVcR78aFtLRD8m
+	H/8yH74CRiVJ6jgwFR44QbvQX+5G0BJ2xoTWYl4XBtpjweNu4/B4fhbd6EOQvC+nWJeWJIP8zFiZX
+	2vSY3gDFbezOdALD7tXG5AmhvXS2wFr0SlRX8UMNKf50+59uRnRESZsLXs0qYV7GcE9X6LUtGn7xr
+	EjPA3SpA==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfSA-000000054Pf-403h;
+	id 1wDfSA-000000054Pg-2I1p;
 	Fri, 17 Apr 2026 09:25:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1776417930;
-	bh=Mj96npqe5eWQyiE9xQJGP2k+rJjcyPso7RNDzVb3ixI=;
+	bh=sIRKXMueFzrkzlpoeuajGnJ/98eQezXWQwjtfTPs/QU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=hCVYC4vlBYbdG7U9oZ54/+F8L4WPyYxsTMzcCE9jgmF1bbRiLRbPj4rUmWD1ljOKm
-	 SmrzOkH0MGFQEjF76+1sRO8E4Ewtdo5G4YJN/iFmkkHRTSTrCqHzO/EdIboeMjnsW3
-	 VTnu0439lWdT0YZyp62t5DbQVtXmv0aO7akYoCrduXYn+pM9aKnIfKKKekeDW9wkrw
-	 7ws2AHRvD0xIb57o6ZxzhyxsgvWJ/SE+t5TNVNQxtp7zrV0DoFBizY05ZZ0Vm3TBd7
-	 pj/TPqyUOKaNrFXwKd7evJs9jWG5lxMoOS+uOlMRV+e+aCpwicfQsrKJQZeRFXpAKt
-	 lcGKWxb78h/Fg==
+	b=Kw9FyWBBO9sjMpwOQnvwhnblcB1qFLlEXPUPu3rh9/z33qUywiVeGQ0NAi6oM6Gi6
+	 lW1FQndBafI/kXeWQLBoLGjdaNG2bU3KorLAKgqJgW5Gka4L7J+nKH5f58bwPMawyZ
+	 a0QMp9XCP4pVAyUPAcGyLWb/t3dJq90TPaGZZecIsOa+4kZb7L4QFX1dFahauj0yK9
+	 BMHVtnwbD0mnKn/0X11OeIA76g1svCLQJO+4HQ+QpjxKIJqpvPphR3qz12Nf3BGv1K
+	 BUu13n4lUAzvmsxXQt7d4+vs0MLNOAP1QN6Bq0hHb+AhFpsRGl94S/9HxqsS9CwZzw
+	 g2ZrMIAxyAmIw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F20F117E137E;
-	Fri, 17 Apr 2026 11:25:29 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C215A17E1380;
+	Fri, 17 Apr 2026 11:25:30 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 17 Apr 2026 12:25:01 +0300
-Subject: [PATCH 27/40] arm64: dts: rockchip: Add frl-enable-gpios to
- rk3588-rock-5b-5bp-5t
+Date: Fri, 17 Apr 2026 12:25:02 +0300
+Subject: [PATCH 28/40] arm64: dts: rockchip: Add frl-enable-gpios to
+ rk3588-tiger
 MIME-Version: 1.0
-Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-27-a19c0dd8c9f6@collabora.com>
+Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-28-a19c0dd8c9f6@collabora.com>
 References: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
 In-Reply-To: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -72,9 +72,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_102535_178717_094539B7 
-X-CRM114-Status: UNSURE (   9.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260417_102534_788155_E36698DE 
+X-CRM114-Status: GOOD (  11.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,61 +90,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The board exposes the GPIO4_B1 and GPIO4_A1 lines to control the voltage
-bias on the data lines for the HDMI0 and HDMI1 ports.  These lines must
-be asserted when operating in HDMI 2.1 FRL mode and deasserted for HDMI
-1.4/2.0 TMDS mode.
+The board exposes the GPIO0_D3 line to control the voltage bias on the
+HDMI0 data lines.  It must be asserted when operating in HDMI 2.1 FRL
+mode and deasserted for HDMI 1.4/2.0 TMDS mode.
 
-Wire up both HDMI ports to their respective GPIO lines using the
-frl-enable-gpios property to allow adjusting the bias when transitioning
-between TMDS and FRL operating modes.
+Wire up the HDMI0 node to the GPIO line using the frl-enable-gpios
+property to allow adjusting the bias when transitioning between TMDS and
+FRL operating modes.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts | 3 ++-
+ arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi       | 9 ++++++++-
+ 2 files changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-index bf4a1d2e55ca..924de5a69570 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-@@ -183,6 +183,9 @@ &gpu {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+index caa43d1abf17..8401f7bebe86 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger-haikou.dts
+@@ -173,7 +173,8 @@ &hdmi0 {
+ 	 * connected on Haikou itself.
+ 	 */
+ 	pinctrl-names = "default";
+-	pinctrl-0 = <&hdmim0_tx0_hpd &hdmim1_tx0_scl &hdmim1_tx0_sda>;
++	pinctrl-0 = <&hdmim0_tx0_hpd &hdmim1_tx0_scl &hdmim1_tx0_sda
++		     &hdmi0_frl_en>;
+ 	status = "okay";
  };
  
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+index a0e97481afb7..ea0be7b6c935 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-tiger.dtsi
+@@ -150,7 +150,8 @@ &gpu {
  &hdmi0 {
-+	pinctrl-0 = <&hdmim0_tx0_cec &hdmim0_tx0_hpd
-+		     &hdmim0_tx0_scl &hdmim0_tx0_sda &hdmi0_frl_en>;
-+	frl-enable-gpios = <&gpio4 RK_PB1 GPIO_ACTIVE_LOW>;
- 	status = "okay";
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&hdmim1_tx0_cec &hdmim0_tx0_hpd &hdmim1_tx0_scl
+-		     &hdmim1_tx0_sda>;
++		     &hdmim1_tx0_sda &hdmi0_frl_en>;
++	frl-enable-gpios = <&gpio0 RK_PD3 GPIO_ACTIVE_LOW>;
  };
  
-@@ -204,7 +207,8 @@ &hdmi0_sound {
+ &i2c1 {
+@@ -349,6 +350,12 @@ eth_reset: eth-reset {
+ 		};
+ 	};
  
- &hdmi1 {
- 	pinctrl-0 = <&hdmim0_tx1_cec &hdmim0_tx1_hpd
--		     &hdmim1_tx1_scl &hdmim1_tx1_sda>;
-+		     &hdmim1_tx1_scl &hdmim1_tx1_sda &hdmi1_frl_en>;
-+	frl-enable-gpios = <&gpio4 RK_PA1 GPIO_ACTIVE_LOW>;
- 	status = "okay";
- };
- 
-@@ -505,6 +509,16 @@ &pd_npu {
- };
- 
- &pinctrl {
 +	hdmi {
 +		hdmi0_frl_en: hdmi0-frl-en {
-+			rockchip,pins = <4 RK_PB1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+
-+		hdmi1_frl_en: hdmi1-frl-en {
-+			rockchip,pins = <4 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
++			rockchip,pins = <0 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +
- 	hym8563 {
- 		hym8563_int: hym8563-int {
- 			rockchip,pins = <0 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
+ 	leds {
+ 		module_led_pin: module-led-pin {
+ 			rockchip,pins = <1 RK_PD3 RK_FUNC_GPIO &pcfg_pull_none>;
 
 -- 
 2.53.0
