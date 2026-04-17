@@ -4,78 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CDA0F436B9
-	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 15:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5345F436B7
+	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 15:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lqy/ZpQvpLn836X1Q/3MZYVciW3Kt/G50hj6RQMxsIU=; b=u8m1WZQR5mrzx3
-	pCFaWOk+GMZslgcmjaD6t/jGE7fV8sr/sUCVfrfjwflB1Jr7Cim1D0ppjpo4n+jGUPiy253naOGUi
-	PTZCPYZhkFpyZfzsG8slEyKAHbWn1JLL1Q3loJS7JMl5UBktz8PiGSfzMsGjS/AHJq0P9jYu9aBkT
-	8BcIClh69cxBPlJM018MLxIC6nVG+To5iLrxyH+x8GPsQPgWWIckOGQ2qCLFCVHN96EDDUVrOBuEt
-	WJp97Zzcw49+fa0bgayApc4xDPXmW/qIbG3/8LzQ3+NNK6nhJTTBk+bkF3Y0zsKLHvSFDW3Y2iOIr
-	3fu89+uTZb2+0KPv/OLQ==;
+	List-Owner; bh=GJDoTavvIWt8cN9+O1X6AayIWUgRKG47hV1A38BTo1c=; b=PulQe6aQgldAZD
+	Yc4iIJPfTRnjaXWGIUCxPtLssnctKJl8jI5V4OawNUDsL1Uqy+Mdcy6+VgUTrk0O2WOIFTedVHl+f
+	zawaXdM5J7DMNxutiFTgK0wGrRGkkLBPZfsI8Yo1HgqZvlLaaR0pFi4nGaSNJ8ITyfqcWLNMnfxqt
+	TSw9RiA/u9OlzOWVRjGkckTNNfwoy4dJt1L3OHoo5vafBm3aEWm+C8213xRthFq0z5odvnvYkbqpT
+	0nx8Bwabcu9aCyuy67KneVx+RtCxugd1ujd1bmnnSm8oa74FV495eW0afMFod2tD+TkEQAeOjcyUQ
+	h6xg2kHCKyJImKsD8qFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDkrc-00000004Bn2-2wgr;
-	Fri, 17 Apr 2026 15:12:12 +0000
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+	id 1wDkrT-00000004Bfm-49dG;
+	Fri, 17 Apr 2026 15:12:03 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDkrY-00000004Bhq-3Jmq
+	id 1wDkrR-00000004BdJ-25q4
 	for linux-rockchip@lists.infradead.org;
-	Fri, 17 Apr 2026 15:12:10 +0000
-Received: by mail-ej1-x633.google.com with SMTP id a640c23a62f3a-b9b1ffbb9f5so121194266b.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 17 Apr 2026 08:12:08 -0700 (PDT)
+	Fri, 17 Apr 2026 15:12:02 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-43cfde3c3f3so839898f8f.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 17 Apr 2026 08:12:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1776438727; x=1777043527; darn=lists.infradead.org;
+        d=flipper.net; s=google; t=1776438719; x=1777043519; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=VqX8mavnBNkgyap63RnjubBar/UFOY4VCctk2eUAZ6g=;
-        b=eWiB1F/k1h9zkuei47ow/wx1jqn1kBWAnmsL4TlvM7PyROo73fvcbiw+4EhP+Ohd3q
-         saiM7T2+tfKlFsNsGHACyHwbglzgzB9yUic0C2a7yxPNR2jOLm0dgF3vGE57hGXk6wLy
-         ENJhUGwpRl4EuQqxML06wWxPMUAKLUvMyEqTVKVCnJoDEQ9w3594lLDOPfSeMDrr4fHG
-         s/Hhdl+6MVPeLi2d2EiiOLP7J+fAcfYmLBfnNZ09TolIwqQ71CZi9yphxJALsGbHYdj6
-         axwjIWpQ+Zl57lbnGcl6UUUfUUyun/QJj+FvyR5g7WU9u2JYNJHSpYUP43d2CXR9xqD3
-         OhIQ==
+        bh=9FDj+1Kksm8urlrZ9+RrkwbXsGoKIaMKcDpK7X2i8Zs=;
+        b=AGp7Gy/BQbh3AN6e4okwmbu4dE3bPl900Ct6KjsNEPNJ1Cg+XGd5gjyup3RrU1UA+s
+         6zDTM9+fBC79wVwXfDOQK7PedeyMjWJgARFrPNnt6580SSFsenvtqcrhrVc53BnhNx4l
+         IBeraTLe3BYbnqeKQWs7LD/WL8zqhnJTMlrh6MtF6fvT0mnysYYpq8b/Vyqj7CQkIbBV
+         PGBM8UCskXk+oiSJM6iAYGteeXFtyd2qGmKY51d4zeoaCTmsWOUDGIVxDGj+Lkh2dfk9
+         yo8rpGpvyReTEkn+D5gc675dNWUicK5WGXeRjuwEJw2I3hH3OquzolCaGOotlDNB9C2+
+         0+Zw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776438727; x=1777043527;
+        d=1e100.net; s=20251104; t=1776438719; x=1777043519;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to;
-        bh=VqX8mavnBNkgyap63RnjubBar/UFOY4VCctk2eUAZ6g=;
-        b=feZRL+MJfY8JH8IN2liLHKWLf7opxiBOnM/BqDLgVOCVWBliB7md5f95X5RKv/c5lj
-         kAoPcXPgz0z9Idj1usLMXMULfgj8FYpaayBUpOGWBHUbNAF3FJCXxf0yNYOkBguc97HT
-         qMvHS5onaK0XJMyxyhcVqbH5PBvBrspb5L17m2hhSwyQBXd3BiFxlYVFxlQEFtssjjpg
-         6WHsqy1nkyv1l8d3inVop0P9OcbClXzNAuJacXVHeyo3Jt09eC5OwPOJlxAxzlaNRwZ9
-         zfoPKfECFPtgiVOl/a2QvQCr9zv7JRS9THArkLDRXuol35sW+UoZseCR2OsQZZtBOxoO
-         FfIg==
-X-Forwarded-Encrypted: i=1; AFNElJ92ttzqgUkVWtRT4YCOJa1xGJnpLJgr+hiPjt/UTKg7s6HLfF5/SwJ/Esr9TSdT6Zy0wh9LB/QQgf6kgD1W5g==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5farS3T1GsIT5UdkWOJdVyRsWjfB6bZiam4EoMGxgLv8+oWvi
-	oXWk0Qc5D6bG4n5EgFVffqYP5/PhvlsHVFJvT/QmP4XjzJ4mUDnKxoevRfGZZHHRbRQ=
-X-Gm-Gg: AeBDietaiso5n2KzwdC4ZCVB3EH3HyWGBh1xTRmWbkNA69bkTwreKEaldcKB0/Vk3jf
-	btI3QrMPyiBnH8ClJmp0/mEVq4TWpl8u+KoG94DfjDEAHz7C7lzfovw6qs7nIrlY7nvMDQeQJjc
-	ZQ7U8aGV/AKw5ca0S2aL8paXCgBK1EYnQ43qgmgi50WExqD1x6esBYeiowDQk66QrlRys/exL0S
-	r4eWNhP1qWt/TcAZaIdToU8VHUWfvuOEUls2lYMVlNgLAgem+4pYKLm1RUU4e/uighSfy8r3mmw
-	lZfmmdgk8OnJHvhxuFXUMwKHLFGuNN8Jv6ihwgDYUEnABC/0mqthHp/frHrCNsOjBjdJVnePZw2
-	YMLerxCOmLYyozMunah4nmG12BWCExV/VyTKwzMNFlxj+XgNVlbkYuKlaWpLW1jn+YYVrNkuNJF
-	YlxC2baY4BQvJNsXwTCwAkOXab2ydqolMQS/zg67JltcBTrntPKahO0wOg+YdRKW0/1HIh2b8Xw
-	oUb9t1HEzQ99fMQ/GXkA3lIqQQ=
-X-Received: by 2002:a17:907:3c8e:b0:b9c:b069:8abe with SMTP id a640c23a62f3a-ba418e853b7mr164954266b.12.1776438726689;
-        Fri, 17 Apr 2026 08:12:06 -0700 (PDT)
+        bh=9FDj+1Kksm8urlrZ9+RrkwbXsGoKIaMKcDpK7X2i8Zs=;
+        b=HIl1iHkhQlf/EYFV7u2XbGTwApcgFE5KgSjQtq/wCzT2cyDDiSeQoY4fKOmEzmpr/I
+         3q5ihxm31gwlk7pp/bV2ahcQ3r7+hHfQSspUNxmW3jJmdOPLOJjuQWpOxe4y4tef/BeL
+         +BVuTQowTfHYrHGOgTWGmaSKNg9e/N8CqcnDcEbwSfzZi2F4PZ2qCxSYSKdIPGH8NAdS
+         jx8V5H4etf7ufQ62hZyIB4JE2TyJaviUCbZd3WAHs2mADfz6Xj3s0fdTqADqlmig/YDV
+         j1Wa7t017NMpjChpUSYM3Q/IWGqFlrUWJyVbMi9LMVlH3Q7Wup1h7DoA+sNiZquWWRss
+         i3XA==
+X-Forwarded-Encrypted: i=1; AFNElJ9gWmr2cjAX75O4dF1/E8GlI2OVzyJfE3/5HzTSb+6txmXE6RiQPZnUXuH26VXwB5vK40zbtppzhbQBtNrWWw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyzL9ZG5kkcjoWdLagrHFSU9dheCUtU1TxFFUfJXb8ZZ6Vm7sfR
+	ByGrGpwzqVJxAXI0yG94pTDObt8jqsLuqNR6Rsg6bEZH7gjiVku6x3ZoRn4zzGPgfB6yY6BhMRW
+	vmOTz
+X-Gm-Gg: AeBDievg80Fj4Y5B6KvEdCp+BWVz9ZAA07e337g+7U1uFQeH8pabLNBIUytcfUVnrNF
+	dWjce7yQf74ohbcTWE/MEE3n7qpQBK+Iz4Zc0tfLqIP6nEzgZfLkR3dyaHiY5Kvo2VUK8VMWIAz
+	NIgtFNhkm7yPPs7ojXY2G8VeQ7TI5411dsIq9NG9DaDiNb4Jw/98Pl6xuebf4CFCthXLmwCEmuY
+	4GeP4uzCydPzIoLUSHDsmcJE0QHFJogs8FQD2uxevPRIom8KkJWW+qvI0Hla9fDkKnAGzX2vNfX
+	nNNvRL9CJy4bP7a0PfvpWvPeXEeZbYewJySTm39GFQzCioZ/CImU9tiW2Rg9VYIKb7O2ODp67bS
+	vXy0sA2bvge+fmZDJjNYOtMix9mplei1kPwwoBj9d+NVZzR8XsTKa7l0ravxWpK6BOyIX+how2n
+	0uHxcKSEwZL815xpWHmE5vfqPo36P3Z0uBVerNmTqbxQSKp9T2IaRkpCUQhOdhZ7PrgxiY1iTia
+	g+pD9YtlsFmbWIqiH9VnAuV3vA=
+X-Received: by 2002:a5d:5850:0:b0:43e:a69b:d803 with SMTP id ffacd0b85a97d-43fe3e23f23mr5312603f8f.47.1776438719544;
+        Fri, 17 Apr 2026 08:11:59 -0700 (PDT)
 Received: from alchark-surface.localdomain (bba-86-98-192-109.alshamil.net.ae. [86.98.192.109])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43fe4e591cesm7376426f8f.36.2026.04.17.08.12.03
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-43fe4e591cesm7376426f8f.36.2026.04.17.08.11.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 17 Apr 2026 08:12:06 -0700 (PDT)
+        Fri, 17 Apr 2026 08:11:59 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Fri, 17 Apr 2026 19:11:46 +0400
-Subject: [PATCH RFC 3/4] clk: rockchip: rk3576: allow dclk_vp1_src to
- propagate rate to parent PLL
+Date: Fri, 17 Apr 2026 19:11:44 +0400
+Subject: [PATCH RFC 1/4] arm64: dts: rockchip: rk3576: assign dclk_vp1_src
+ to VPLL
 MIME-Version: 1.0
-Message-Id: <20260417-rk3576-dclk-v1-3-26a9d0dcb2de@flipper.net>
+Message-Id: <20260417-rk3576-dclk-v1-1-26a9d0dcb2de@flipper.net>
 References: <20260417-rk3576-dclk-v1-0-26a9d0dcb2de@flipper.net>
 In-Reply-To: <20260417-rk3576-dclk-v1-0-26a9d0dcb2de@flipper.net>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -89,17 +90,18 @@ Cc: Pavel Zhovner <pavel@flipper.net>,
  linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, 
  Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1840; i=alchark@flipper.net;
- h=from:subject:message-id; bh=9E+GVCevJV58fhmm0CYyTjqLcW41sUgTRpTXQLHwLHc=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQ+8t127xRniY258Vemr65Gvz625DB3Scj+eCYSeP5gs
- fcvv3b1joksDGJcDJZiiixzvy2xnWrEN2uXh8dXmDmsTCBDpEUaGICAhYEvNzGv1EjHSM9U21DP
- 0EjHWMeIgYtTAKZ6aiEjQ3+bJOvdiLL/kZfbGnlnOLHPfHN8uXm/VpTI9PfMj8VenmJk2Fa/+au
- BLrPpiRN5S0p7vgYdNTL//2592W/rcMcA1r3zOQE=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=922; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=Iv35X0YItRmd6w3u4XU1Hvta1/Hwj6onkb318swFieU=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWQ+8t0WUda9/sCcx2V/UpPvama3/LOLkZC4de2NsUV4w
+ d15/X6HOiayMIhxMViKKbLM/bbEdqoR36xdHh5fYeawMoEMkRZpYAACFga+3MS8UiMdIz1TbUM9
+ QyMdYx0jBi5OAZjq4+8Z/pm8++hxhGN95La0mM1spzbpKOYuyp9U1rHvy478JHtJVxVGholr+4q
+ Yj3reCPmh7DNllRFXmllP+SNzNldHgX9nbs1ZxwcA
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_081208_854641_F30FC02C 
-X-CRM114-Status: GOOD (  12.24  )
+X-CRM114-CacheID: sfid-20260417_081201_560760_7B1C7BCD 
+X-CRM114-Status: UNSURE (   7.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,39 +118,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-dclk_vp1_src feeds the display clock for Video Port 1. When parented to
-the default GPLL (1188 MHz), the 8-bit divider cannot synthesize the
-248.88 MHz pixel clock required for 2560x1440@60 which VP1 supports:
-1188 / 5 = 237.6 MHz (-4.53% error). This exceeds DisplayPort's +/-0.5%
-tolerance and causes black screens on strict sinks.
-
-Add CLK_SET_RATE_PARENT so that when dclk_vp1_src is reparented to a
-programmable PLL (e.g. VPLL via assigned-clock-parents), the CCF divider
-can ask the PLL to retune. For example, VPLL at 1992 MHz / 8 = 249 MHz
-(0.048% error).
-
-This flag relies on reparenting the VP1 source clock to VPLL at DT level
-to ensure no consumer calls clk_set_rate on dclk_vp1 while its parent is
-set to the boot-time default of GPLL.
+Reparent dclk_vp1_src from GPLL to VPLL at the SoC level. VPLL is a
+programmable PLL with no other consumers, allowing the CRU to synthesize
+accurate pixel clocks for VP1's output with arbitrary display modes.
 
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- drivers/clk/rockchip/clk-rk3576.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/clk/rockchip/clk-rk3576.c b/drivers/clk/rockchip/clk-rk3576.c
-index 2557358e0b9d..28eb5a802e83 100644
---- a/drivers/clk/rockchip/clk-rk3576.c
-+++ b/drivers/clk/rockchip/clk-rk3576.c
-@@ -1105,7 +1105,7 @@ static struct rockchip_clk_branch rk3576_clk_branches[] __initdata = {
- 	COMPOSITE(DCLK_VP0_SRC, "dclk_vp0_src", gpll_cpll_vpll_bpll_lpll_p, CLK_SET_RATE_NO_REPARENT,
- 			RK3576_CLKSEL_CON(145), 8, 3, MFLAGS, 0, 8, DFLAGS,
- 			RK3576_CLKGATE_CON(61), 10, GFLAGS),
--	COMPOSITE(DCLK_VP1_SRC, "dclk_vp1_src", gpll_cpll_vpll_bpll_lpll_p, CLK_SET_RATE_NO_REPARENT,
-+	COMPOSITE(DCLK_VP1_SRC, "dclk_vp1_src", gpll_cpll_vpll_bpll_lpll_p, CLK_SET_RATE_NO_REPARENT | CLK_SET_RATE_PARENT,
- 			RK3576_CLKSEL_CON(146), 8, 3, MFLAGS, 0, 8, DFLAGS,
- 			RK3576_CLKGATE_CON(61), 11, GFLAGS),
- 	COMPOSITE(DCLK_VP2_SRC, "dclk_vp2_src", gpll_cpll_vpll_bpll_lpll_p, CLK_SET_RATE_NO_REPARENT,
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+index e12a2a0cfb89..2b05900c6c1c 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3576.dtsi
+@@ -1338,6 +1338,8 @@ vop: vop@27d00000 {
+ 				      "dclk_vp1",
+ 				      "dclk_vp2",
+ 				      "pll_hdmiphy0";
++			assigned-clocks = <&cru DCLK_VP1_SRC>;
++			assigned-clock-parents = <&cru PLL_VPLL>;
+ 			iommus = <&vop_mmu>;
+ 			power-domains = <&power RK3576_PD_VOP>;
+ 			rockchip,grf = <&sys_grf>;
 
 -- 
 2.52.0
