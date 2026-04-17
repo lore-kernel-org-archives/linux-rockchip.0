@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A60FF43683
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D8CAF43688
 	for <linux-rockchip@archiver.kernel.org>; Fri, 17 Apr 2026 09:25:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=t0S2Ijte3UeaWH+l8Z8fAZKvnJ4z5G3aN3z9Qk9jO28=; b=4JwS295C9osOQS
-	CPVNtfv4RuUjus3cJUm1Q4HORb1kdfyAZtYwmAxTxjUJPBTO7NLC2cED7ualW3/lVfOHZATIcP8it
-	0fSJLn4lS/wGxcwws15MA0uQHKxU2YZtzs1cegQbnixj65cuVlV4wiF5SQgr+5Rm9ngAXawwFksvX
-	zhjdFgc32v0nKoV9JpONiLFAupRz6TnCtkpjuebsQP9k2hVX5Xfi2tr4sUBnWRkhOxbE7M7OeY8aD
-	hHAuky4oh6Ee4bEClFnXkTXhzlOtX3R2IfvX5ubfMVRDjsY70qaGkSoM1gi7BpuuF+AFFDGwmhoPj
-	lK3rRTJYg4md6MVRDjUA==;
+	List-Owner; bh=3k3Ceuc1lU8t2oq3SXmXrrrVdjrzR9nnIua4mn0sau0=; b=sJZvW+gkh39U16
+	zrqsI3jPsUC9g7I7CLpQZGPcC49UumHVTCgw9HFdTEslHycARx3/ls0EJKBuQhBpqsgc/QwmLFTl5
+	5Ff/43BUeZ14rCUr9n+UwF6p8CFuJFX2116UxfobKKiHKfgewTq7pKnEtWBPVIlGARrL5feugukFx
+	XejIDkSdfpZiYfILklg8XCMSnsSGUfXrr/bOTj69LGWXbQPIO96GCE9xyAu25qqhBdMGUFi0p6OTM
+	GHFb6mJYO95vuzWO5MjLaiuM4MaaK9QjSDeGvL7pOqySmzg7Sn7nParpTYcBNjJKIRahXukGHG4aB
+	HOEs656vv6rpayfq9YqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfRs-00000003kcL-1jYg;
-	Fri, 17 Apr 2026 09:25:16 +0000
+	id 1wDfRv-00000003kf7-04T6;
+	Fri, 17 Apr 2026 09:25:19 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wDfRp-00000003ka6-0BUL;
+	id 1wDfRo-00000003ka4-3csh;
 	Fri, 17 Apr 2026 09:25:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1776417910;
-	bh=pIkr2lvmVoiMJarejipGAoVFydRK9sYCHg56kEfAWiI=;
+	s=mail; t=1776417909;
+	bh=d9hxhBPZejunPRDUDJgauWuYJADihmxbqrt2hTgM1KU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JtY6+cDqZPSv0LM5EWwQuGVclhFlfcSBVDKECLaI3lxcPunZvR1QS9fxoA5xJVe5C
-	 w7C01O6KiBGWszgM3gfgv8c7EGZWFjyaqwCn7D6VOfPK39RjT7A4jMg+6izzWK8HSY
-	 8bj1IRKybURM++38vS4XsUUzfwv7g2W6pSY6wvC5Woj0ap3ccSbbH5d2g1GwPccUna
-	 8TwmYjx9mpFO+LT0djemEiF8Khx19Oj3x6dYHyAC+bBY/GSzs7JZo6eS1Ia8Hj67mx
-	 /V8AWbxUvqrupDhdB2ty4SNHq9RV074V5yvQFx4WRtx2+fWaCh88sFzeLmHwQvX4Hw
-	 MavJSytWW3g4w==
+	b=VaNWlXp8xop58zCxKpkvCYqZm7Mxvb/g/zmSKP/qRSb/DO8NnXeDK+dNSAgmodCcZ
+	 rvWK5/GCdoPNNTcoXIP7hMCs+fsmK4A0weOESsxrpCz2vHCpJXhsXl+D4lXKQmZFj/
+	 vdtvbKL+P5/Co12o3HW1WwI1t+Xo+tiUg+O8XtsHD+zEWLuizWHrh3VbDAWrBn7Cuu
+	 1nABgGkyCtDJS9709dx/v03f5wwsyGAiORpXiMNn+JB+RUOMEwBqoW4CeZSp3TXiwZ
+	 EncFXSTS/TMwvjyQeAsA0qjEz4kW6SObLx7Z+cMQbmxudLgHQoZrYgAwKcZd/+jcvv
+	 /dKun2qIS96YA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5257217E137E;
-	Fri, 17 Apr 2026 11:25:10 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7E35E17E1340;
+	Fri, 17 Apr 2026 11:25:09 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Fri, 17 Apr 2026 12:24:37 +0300
-Subject: [PATCH 03/40] arm64: dts: rockchip: Add frl-enable-gpios to
- rk3576-evb1-v10
+Date: Fri, 17 Apr 2026 12:24:36 +0300
+Subject: [PATCH 02/40] arm64: dts: rockchip: Add frl-enable-gpios to
+ rk3576-armsom-sige5
 MIME-Version: 1.0
-Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-3-a19c0dd8c9f6@collabora.com>
+Message-Id: <20260417-dts-rk-frl-enable-gpios-v1-2-a19c0dd8c9f6@collabora.com>
 References: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
 In-Reply-To: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,7 +58,7 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260417_022513_226833_C6D876B5 
+X-CRM114-CacheID: sfid-20260417_022513_070326_0F4142E5 
 X-CRM114-Status: UNSURE (   9.80  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -87,14 +87,14 @@ FRL operating modes.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts | 8 ++++++++
+ arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts | 8 ++++++++
  1 file changed, 8 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-index fb0dd1bc5148..b112432528ed 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dts
-@@ -370,6 +370,8 @@ &gpu {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+index 1c100ffd1518..43a5c6859909 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
+@@ -304,6 +304,8 @@ &gpu {
  };
  
  &hdmi {
@@ -103,7 +103,7 @@ index fb0dd1bc5148..b112432528ed 100644
  	status = "okay";
  };
  
-@@ -895,6 +897,12 @@ host_wake_bt: host-wake-bt {
+@@ -819,6 +821,12 @@ hp_det_l: hp-det-l {
  		};
  	};
  
@@ -114,7 +114,7 @@ index fb0dd1bc5148..b112432528ed 100644
 +	};
 +
  	hym8563 {
- 		rtc_int: rtc-int {
+ 		hym8563_int: hym8563-int {
  			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
 
 -- 
