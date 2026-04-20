@@ -4,130 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C1EF99C86
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 05:42:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20EEEF36C2C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 06:59:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QSkeyb+URBoqN52YPr9OWEC2q0Vz9JRrlmQn68SrEXw=; b=xCogGRlKsc8+pU
-	oldGF0Z61T2LUcatdqJVoqHoFW7bblEMKg/fv7BzPG4TtVdCWux3qCso6eW99zZdlVNTPcC+/44Xw
-	XVgX4yxnqYZM9gq1dLPWBe1SXQ0zRKNq9KXPTbsWKMjpNEkp3E9OC7u5O0f+8+ej6BvCbul0I4TcP
-	6JFgZAOQVErD8Lyhr8sjDcsU3smFAVh0xfCsUzrLBCRgZnmRwOx2Iz3lt1HFBQXWnIf3JY1hhFZ9r
-	BZjQzdazzU/LWjX66inO4dokXdyzTh4UiQLqMShoNuLmmrgPS/D8F1zaXG1ukh6XJv4x+sH2zzhKE
-	DjeMN7E8OwdzkwAX1xzg==;
+	List-Owner; bh=9dryp+nxhAMciGj3eTZYFdv3mI8acrV0fFv9NIEdKhU=; b=hUEPg+MjofXt/o
+	PxP1SkUWoVhIj6J9TVN3PKqMy+6EscHXbkcRThI2pPyxEQMKI7aGvpMwCS7AJDJP6CDh3XNIegE1T
+	IqE7QhauAFGOHguG3GUYmKsEsiVxS2NI31Vte+GfThFkCAqSGy5eDBLpRhmg6dyWm3x+xxsXUMgZr
+	E5Jdb4c/rT0VRhHY2qigJnlLe38EvG4/ZdiFd/yF3fL9zJi0PCzleHpk0K4vuJA+N4WQfxTVpXlbC
+	RYqw+tSmEGu61E981PUsQXErUGgXViXuBBlyUkUM0PNd/EbGyZRrPHR62peS80elwoeM1MQy+w9wf
+	NXzKkgXQ7lWVz/JteL3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEhPG-00000006SHB-0HB6;
-	Mon, 20 Apr 2026 05:42:50 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1wEiar-00000006WSI-1FcR;
+	Mon, 20 Apr 2026 06:58:53 +0000
+Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEhPC-00000006SFw-3OoD;
-	Mon, 20 Apr 2026 05:42:48 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Sv/4jaL6YMllCGrFTZbbGxI4/vfhH9ac9x/T6hlexv5QL89hd0fIOrhWstaUOwjzKPQB8oQsXtEnXcJBv+ESXiqqAcEr/9CSgOcuA1tN5qzyoy8dmiECHh+gkM8mkUWMZELfkWGkizOV0s4/JnCpw8Ml+1oH9hEwi0K6VKTc6qY+w8LbGl5IukpYQbqisTx7SMrcQ4KGQczeJGz8NYi60cCOOiNvQ1NqvSLEcOFStQvAb405tbndb70tmqA4i1N87NVU9LkBxAlrWWXh//E9V44KqpB5ZjKxoa6Cw6xgOS9HXVLVqK7CpEa5iPgjkR8bhclR0a/gkp6ngI7/RgkhAw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=P/hJFDc/OXO+z1G1aFVdYtqUeTMvbhXCQaiOW6aQ2jU=;
- b=d46+bqK2YEyxPtqXGYe15HvqpM0IvrTZBbsGjorqozYDZEukMLR4uJDQT5/dOmwpX7iVk3TLzKLPZkIozgAglyXXGiOrZWUpdQrt6n9249sUkm/1uTY7o/ZhGBuE4KOUduZNgALqKlW/i9W8sg+VLd2uGg8F2rLujU2oxrq3RMmfA7sip8u1tgi8HQPfOtZDdqT22gcJlqmx9KrZu27NXdlxb8/aUPmutYnpZl0a5nlXyLMf7kjq4B8drsACMCTCgTy/DHq32Sc96qE/CxPBwalYlLY+E/4EdcjMX9BBzb04IA69FAO36kNIQ2MgIqQ2AlCVPr6w4CXHkWGwx5oC3g==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=P/hJFDc/OXO+z1G1aFVdYtqUeTMvbhXCQaiOW6aQ2jU=;
- b=ObTY2T4kwSIf5diyCIQ4DKUnH8PQfKNMO1PhjnyCEUxtHm4s2A6w5Dj/g+3gD6Zc4ojSwgS4jPYng9NFJ62dIZaMWFEcHnjCGtv+w1HxC/lMOiPoSABYb2T7TquEjzKQNLEEkLRZ4oHpwh4KNEr5RW+yxySTrHvDNiKnRY2O0hCnLSxYQYK70nyy3O7SI7EpqRE7LdmXQmrU7oSwHz6fJNve6q4fRyRDPnKsRcn3zSzzgj9mrlu7xeC37cPK+x7z3Sp272a7/1RZRL4RnuU8Wj+0eCj/swpZq9LYYKTBQANqV2FH4Q6UQws4xhmdg2Y4mw+kxI4rkHhKsIeOmh3Uig==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
- by DBAPR04MB7447.eurprd04.prod.outlook.com (2603:10a6:10:1b2::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.32; Mon, 20 Apr
- 2026 05:42:41 +0000
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9818.032; Mon, 20 Apr 2026
- 05:42:41 +0000
-Date: Mon, 20 Apr 2026 01:42:35 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH 2/5] media: synopsys: Add support for multiple streams
-Message-ID: <aeW8y9-Y-4yFKEZa@lizhi-Precision-Tower-5810>
-References: <20260415-csi2_imx95-v1-0-7d63f3508719@oss.nxp.com>
- <20260415-csi2_imx95-v1-2-7d63f3508719@oss.nxp.com>
-Content-Disposition: inline
-In-Reply-To: <20260415-csi2_imx95-v1-2-7d63f3508719@oss.nxp.com>
-X-ClientProxiedBy: SA1P222CA0125.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:3c5::19) To PA4PR04MB9366.eurprd04.prod.outlook.com
- (2603:10a6:102:2a9::8)
+	id 1wEiao-00000006WRV-3wBi
+	for linux-rockchip@lists.infradead.org;
+	Mon, 20 Apr 2026 06:58:52 +0000
+Received: by mail-dl1-x122a.google.com with SMTP id a92af1059eb24-12713e56abdso1508303c88.1
+        for <linux-rockchip@lists.infradead.org>; Sun, 19 Apr 2026 23:58:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1776668329; x=1777273129; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=T3r02hhZx3Vxqyj1q31IQgqGPj+UcnZ1kBemjU+jdaU=;
+        b=VB1xQeIpyAqymbttticMhp/qeHn1ZrSmDYFFOyUmbmK/iRbzY45nelNSi2eKaHekPk
+         dnG0iP8E/h97+/D6f44Cloy9r6ahZC4Mgdgw1ktqHC20tg0mre3cxcYG0dwN5UOCR72/
+         045QhTlSUZ5biT6765qhMynLlLUviY7UCnqaRewpIq3oGyd2bbtNqPel/GVXYHRIv1MO
+         uOVRLP7pJtF+vsqKigb3E8gidpk8odJXZMW/fFrOY5jN4/PPLjvQlKsvTlDeyjiunEy3
+         GfA/rHO2MguwlSyftZ3SRWfzYylIQkV5bVqB+z39X4mLIXuDRvfQ91dPiAxpOcSrHYdV
+         v5eg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776668329; x=1777273129;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to:subject
+         :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=T3r02hhZx3Vxqyj1q31IQgqGPj+UcnZ1kBemjU+jdaU=;
+        b=atiICZAElUHduKwHWoQl3L0QpXR5ZQRdxYUgiiQwBlHb+ML3szHT4ZWpKe67A9j/P9
+         wSkqWNvfD1pBekcFq2H9Qf76z4Tp4+yOAalDuk2/0k4x6XA9+BxXQ7WJt4epytaBjdcd
+         4gfj1oxGfcC4bSURjMb+shdIH9FsF/oGO203reOiAqYW4uVnzb1LjeZoZH8CTVsG//cd
+         5XEwXT4GsEAv7dVFlN606uzQnXa+kLft5iYxOFxzZ71Y2CM45D7O6BzhKMePrQtAHeq1
+         Mj5hISxv9XCq6HOzmKr7C19Sdw9Zt7+9hY2mGa8sTFt5pBfsorVS3X2XNlpqPkEJjrRs
+         XK4g==
+X-Forwarded-Encrypted: i=1; AFNElJ9p+nwdaK5C9tOoXaYane3vc63+EVWjnuE73m6LP7GUpeT6ARg8qHOqlk7PgAHLxd9bghXV9V1PNydeXjWfZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzUnHmHuKITEZ+Za9yHXm72IFReHaXwBDldUx21GaPl/VAhjh4P
+	BOEwtr8hN0xIUOPv5xofjMJLNY9eKICFBnXtnREke0BMxPqNChx6vZh6
+X-Gm-Gg: AeBDieuSEUhDtQRODzNwmFTTd6Q50H5OaHBU3kGPjIdWM2qzEq8AUmE0js912K4VXD4
+	xAaFCAi9of/eVbDP/t97qKj3REOxsHwph+jqHEDh0vp2+ezbBcJWmaUr2x3P9PwqMGgvRQ/5Wkp
+	+CXTDAIM7OmfnuOGtiN4pN47Vv8gnmf0QhM/W1xbYjZofQJqwWnSj5JptS29aCX8CIEBGPw4mow
+	H9crRgsT4WhNvH21Ym1PNfUNa2R4BoxnAl2maXt2FaENy4lCxUhDYUIvPwtZ61SJMy9F7PSAuuK
+	n1LjKJM0pRN6NiA5tPyNHtzVAvkWD8h7WV7O3z/s2oB4XtOO9tSU7cgEWLRFU6xDWbm5B/Qxrso
+	f3Af6aOemapDC6/Ad7XrFgKAoXg7gQhNKGxDRAO/7GWf96iqxk85oOOSRuPmSTzBYqRmlwv9lG3
+	QvOli1yKeA
+X-Received: by 2002:a05:7022:4191:b0:12c:427:dacf with SMTP id a92af1059eb24-12c73b05ceamr5070810c88.10.1776668329484;
+        Sun, 19 Apr 2026 23:58:49 -0700 (PDT)
+Received: from CNSZTL-PC.lan ([2607:f130:0:13b::3a])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-12c74a20b9csm13380651c88.12.2026.04.19.23.58.46
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sun, 19 Apr 2026 23:58:49 -0700 (PDT)
+Message-ID: <2d2b1e17-388f-431a-be86-a0f26b5be6cf@gmail.com>
+Date: Mon, 20 Apr 2026 14:58:44 +0800
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|DBAPR04MB7447:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7efd2e80-d64b-4ee9-5881-08de9e9fa354
-X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|366016|52116014|376014|7416014|1800799024|38350700014|56012099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: IF1rZsg5cVaDgHWWdiZzDsM1LZWhstxp1P4jLQhmDP1E4KBEp5peGLxnxk367Y2KzjtuckMRwO4ivDsFSpb47DlPF/zHbYAyDHiQj0nHsAPNX1F/eFCJMLihTb1c/6sZ+hOKMoh8nVWsZOibkoI8Rq7LGU2JEx73QFW3bngd3ml5Lvx5OAiQY60G77LJpZzlrFwEDTaVk/YSrCaHcY7bhjuDs/8/OVabV3p7LF+EYXk7UbgIlxs07VeeTk7h6mvy2HuNd9C8aQc1A83Aw+820SbNIgoGjbdQV4o3pOYoTIV5h6qBczpaH878UC4h1O02Ohh2MgyJFhSh0Xhuk1l2vWMW/dhRmGeRJd+mEAHtbrJ7Pqp3edPqoxnBD0q+/z9aTE4cs9Ndf0eKUpaCEg9Z6ODAcWLW+BmdcNsR6dWxfhzctxVlms1AaGr2zyrKcwWGn6oKmeccnz9RLcoos2KAfR9ATsZN4zPzC0hL1VuF0tIhVrubN56eQAvCi05SdxL9xkDF5+Xk9vErdw7YLGYxqb3g5CZdk/DpGPYQz3mmXbKaRcZwUUCjQqM0iMvKxUIcmGMwzpHfUJlDYzWKB9AsMyE9QaIJO6Wkc4NN1wXE8QYB4cAOfX9QMp886ZwurJfVZnaLSwGzA2zHKZIPzn41hhPVo5zjnfhhZ3GjGFcSEeT/EvrwRQMd7LzCE7jGljEBug+ZAJ0qiLUmo1C5XXbyYexxNScVVtVH+eeEnOnOlZE8vgc8L39LiUs0O4aXjBZQE5FqgIBc3XXBW8BB6KpzHrad7X9ULsIg8WLLYT0rglo=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(366016)(52116014)(376014)(7416014)(1800799024)(38350700014)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fv081oeamM5EdWwjZ0cDObSB7B7BRZjhQUpxFXNGwr7AR3gQ6xfwI9vEEsGt?=
- =?us-ascii?Q?yfLZ7Dy76Pc+QEWoYn5IGmojD07jVU0lrRyrhgBsTYhfceTjJ4kihiJ2nEtY?=
- =?us-ascii?Q?y7CFwk1NELH/8YS6m23kA9V6BV1rD+YKHcMWZhJcz66z+4TGZNxUvq3WJltb?=
- =?us-ascii?Q?LqlqRhREQsLtjhOh4NnURwLOcLCv5ofbhhnBUSyPK8F2QS19tF+pinNvlb59?=
- =?us-ascii?Q?4KEPM0PT/4qoKCJXSZtZ3KDm31qqIEbHNUE5+U3onUF+aAqW/FMqneZbpQrw?=
- =?us-ascii?Q?Vk5cl+EkHrOA11j9nmMiCHfgDWeq4VBzIq1hDaEzWVcbN8JQh0zjO7qp5Xaf?=
- =?us-ascii?Q?VgwKng7FrKuCmIjq3kDBqTP8GbCRVmaLeJR7Didg/y11xXROCl6hF1n92hpP?=
- =?us-ascii?Q?l4f8rlWcIgtNE2xdQBCfuD550BRX1+au1pVltvA+Q3bWMzNkRVFF3PLBOx3+?=
- =?us-ascii?Q?RfY0Imka8stAodsZZOkuSo/HV4/zs3H9XNzyjYWSXYhUoBJ9JIOT5v7b0MkS?=
- =?us-ascii?Q?C/Jh4h3ez7T7/AC3WoviTCqZpj63jlu/MmMytlU06OPvVrBUbIsjSaknElop?=
- =?us-ascii?Q?xIIoU0tkGb63+FctG98mHxjJDLIFBWHE/JWR+RdIDDY8tq8ew7zt+hsR8n2j?=
- =?us-ascii?Q?ZCOlGHUyM3s1FFgbF4nqQ+r7KkLgszvjCHlrv+pzsJoa1DLBfka/P5INEJoS?=
- =?us-ascii?Q?ho6iZYXyihedrD74m4VTAyy+dwzQvbdhCfh3oNSg8x8i9Nfsg1Grkp9lOFhl?=
- =?us-ascii?Q?oqOliCj8sQbX7T92l1l2OsCRGFcXArr2iVwQWTatXl0xA5FUxGTIUth79M+9?=
- =?us-ascii?Q?ZSQyeGC+dRnPDoRNkR+AWRLXqeWfliPV24wo35A8fg0C8XCYM+QbnBa5wEwe?=
- =?us-ascii?Q?TFcM/yrlu1MFrajqwr4XCwB43qr8bRLCvJUw3udh+v9Fij1w9dGCCt2AYn7K?=
- =?us-ascii?Q?NMWrp4HuOsa17rTaHHRDZJdQnWryKcoxm5RxImJlJpEavzxL3AxeCudFMm1M?=
- =?us-ascii?Q?CNIguTOwhU1K02kF6TEaWzlbJha5EVNmzrsfDj6LB80+6sNZ0fxFtC4fzZkb?=
- =?us-ascii?Q?rFsdbOZIm64XDuKMGTdIoQqfwVyGcrFG3mtPzfI5zobMMcRY4Wp3dPuQCMA3?=
- =?us-ascii?Q?eCKOFf+npV/mLDVzF3suINcx+AO00U6NCF7L/DVNnjx7DvMlZET86sQHv7Uk?=
- =?us-ascii?Q?aFb9uEw8M7tjsG/PzD1omj39XuPNaNg3X14fvbDE6nKZfG8rzRIu5Cnmw6Mi?=
- =?us-ascii?Q?y8eJE1qlH3JscyTYtkL1urVcgUbJGHt8aiM/L1ktiubf++MB82viVNt1Nwjn?=
- =?us-ascii?Q?DwHittvDAZ16bTmPVE/drRs1W47F8mErbjVz5ewugn4cutmjT0LrBXOiz3ix?=
- =?us-ascii?Q?9aKPbby4PO9heUHoa8EcGZcBgLJ8/DIr4chdHQpBFKUiWrfX2xsHWLwJsCA3?=
- =?us-ascii?Q?XRXa0EdL1cgSPUuChbKYiYXG/eiezQu9KYJ/qvinVIZ9S/O6iKpsU+pjSwMq?=
- =?us-ascii?Q?FGR2ppKKuL078bfXXFphu009qA2lJuMyX6MYw1ik7NG41i+IGpeDTmiEOofe?=
- =?us-ascii?Q?xM9v5rR01ODFXY0Q45OZ6yvOuwLV3PF7tHQxT78Bcw69+F+eAdpaxKO1Nwws?=
- =?us-ascii?Q?2NwLtnV73tbfj/Fe/RgIZruPM+LXAY5AXlKLwvFF3Q6gnvCSXUaf6GOPmwBm?=
- =?us-ascii?Q?juP2lwNQ5pePif1L1RIFiLv8tmMhC9ME0wMVCsL87LRyzweo?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7efd2e80-d64b-4ee9-5881-08de9e9fa354
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2026 05:42:41.3646
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 310qd3gZJruAgEaTIFAuNywHrEvzVPjHe4fe22VLfYfGBtN9UQuJXKQ7KnL37rqwO78QOFML1RpFZ3yOdUhixA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAPR04MB7447
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] arm64: dts: rockchip: Replace deprecated snps,* props
+ for NanoPi R5S
+To: Diederik de Haas <diederik@cknow-tech.com>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Arnd Bergmann <arnd@arndb.de>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Quentin Schulz <quentin.schulz@cherry.de>,
+ Jonas Karlman <jonas@kwiboo.se>
+References: <20260401131551.734456-1-diederik@cknow-tech.com>
+ <20260401131551.734456-3-diederik@cknow-tech.com>
+ <DHTSOV43O2EX.38TGASN7SQEZL@cknow-tech.com>
+From: Tianling Shen <cnsztl@gmail.com>
+In-Reply-To: <DHTSOV43O2EX.38TGASN7SQEZL@cknow-tech.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260419_224247_110010_6AFF8A01 
-X-CRM114-Status: GOOD (  22.83  )
+X-CRM114-CacheID: sfid-20260419_235851_265398_E5306896 
+X-CRM114-Status: GOOD (  18.22  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,126 +101,73 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, Apr 15, 2026 at 11:46:53AM +0800, Guoniu Zhou wrote:
-> The current driver only supports single stream operation. Add support
-> for multiple concurrent streams by tracking enabled streams with a
-> bitmask and only initializing the hardware once for the first stream.
->
-> This enables use cases such as surround view systems where multiple
-> camera streams need to be processed simultaneously through the same
-> CSI-2 receiver interface.
->
-> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-> ---
->  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 45 ++++++++++++++----------
->  1 file changed, 27 insertions(+), 18 deletions(-)
->
-> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> index 46e2a4315ac2..85a2a95bf080 100644
-> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
-> @@ -113,6 +113,7 @@ struct dw_mipi_csi2rx_device {
->
->  	enum v4l2_mbus_type bus_type;
->  	u32 lanes_num;
-> +	u64 enabled_streams;
->
->  	const struct dw_mipi_csi2rx_drvdata *drvdata;
->  };
-> @@ -528,28 +529,31 @@ static int dw_mipi_csi2rx_enable_streams(struct v4l2_subdev *sd,
->  					       DW_MIPI_CSI2RX_PAD_SRC,
->  					       &streams_mask);
->
+On 2026/4/15 22:23, Diederik de Haas wrote:
+> On Wed Apr 1, 2026 at 3:11 PM CEST, Diederik de Haas wrote:
+>> The various snps,reset-* properties are deprecated, so convert them into
+>> their replacements.
+>>
+>> Signed-off-by: Diederik de Haas <diederik@cknow-tech.com>
+>> ---
+>>   arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts | 7 +++----
+>>   1 file changed, 3 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+>> index 90ce6f0e1dcf..92d044ec696b 100644
+>> --- a/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+>> +++ b/arch/arm64/boot/dts/rockchip/rk3568-nanopi-r5s.dts
+>> @@ -85,10 +85,6 @@ &gmac0_tx_bus2
+>>   		     &gmac0_rx_bus2
+>>   		     &gmac0_rgmii_clk
+>>   		     &gmac0_rgmii_bus>;
+>> -	snps,reset-gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_LOW>;
+>> -	snps,reset-active-low;
+>> -	/* Reset time is 15ms, 50ms for rtl8211f */
+>> -	snps,reset-delays-us = <0 15000 50000>;
+>>   	tx_delay = <0x3c>;
+>>   	rx_delay = <0x2f>;
+>>   	status = "okay";
+>> @@ -100,6 +96,9 @@ rgmii_phy0: ethernet-phy@1 {
+>>   		reg = <1>;
+>>   		pinctrl-0 = <&gmac0_rstn_gpio0_c5_pin>;
+>>   		pinctrl-names = "default";
+>> +		reset-assert-us = <15000>;
+>> +		reset-deassert-us = <50000>;
+>> +		reset-gpios = <&gpio0 RK_PC5 GPIO_ACTIVE_LOW>;
+>>   	};
+>>   };
+>>   
+> 
+> Please disregard/drop this patch.
+> 
+> I was recently made aware of 'sashiko.dev' and checked whether it had
+> also checked my patch, which it did:
+> https://sashiko.dev/#/patchset/20260401131551.734456-1-diederik%40cknow-tech.com
+> 
+> And it turns out that the concern raised is valid (thanks Quentin!), so
+> this patch could introduce a regression.
+> So it looks like staying with the deprecated properties is actually
+> better (in this case?).
 
-It maybe simpler
+Well actually we more or less rely on U-Boot to reset the PHY first now. 
+Many rockchip boards in tree require a reset before the PHY can be 
+recognized, but we just use the generic "ethernet-phy-ieee802.3-c22" 
+compatible.
 
-	u64 enabled_streams = csi2->enabled_streams;
+Another option is to move the reset props to mdio node instead of PHY 
+node, though.
 
-	csi2->enabled_streams |= streams_mask;
+Thanks,
+Tianling.
 
-	if (!enabled_stream)
-		return 0;
+> 
+> Cheers,
+>    Diederik
 
-
-....
-
-err:
-	si2->enabled_streams &= ~streams_mask;
-
-
-Frank
-
-> -	ret = pm_runtime_resume_and_get(dev);
-> -	if (ret)
-> -		goto err;
-> +	if (!csi2->enabled_streams) {
-> +		ret = pm_runtime_resume_and_get(dev);
-> +		if (ret)
-> +			return ret;
->
-> -	ret = dw_mipi_csi2rx_start(csi2);
-> -	if (ret) {
-> -		dev_err(dev, "failed to enable CSI hardware\n");
-> -		goto err_pm_runtime_put;
-> +		ret = dw_mipi_csi2rx_start(csi2);
-> +		if (ret) {
-> +			pm_runtime_put(dev);
-> +			dev_err(dev, "failed to enable CSI hardware\n");
-> +			return ret;
-> +		}
->  	}
->
->  	ret = v4l2_subdev_enable_streams(remote_sd, remote_pad->index, mask);
-> -	if (ret)
-> -		goto err_csi_stop;
-> +	if (ret) {
-> +		if (!csi2->enabled_streams) {
-> +			dw_mipi_csi2rx_stop(csi2);
-> +			pm_runtime_put(dev);
-> +		}
-> +		return ret;
-> +	}
->
-> -	return 0;
-> +	csi2->enabled_streams |= streams_mask;
->
-> -err_csi_stop:
-> -	dw_mipi_csi2rx_stop(csi2);
-> -err_pm_runtime_put:
-> -	pm_runtime_put(dev);
-> -err:
-> -	return ret;
-> +	return 0;
->  }
->
->  static int dw_mipi_csi2rx_disable_streams(struct v4l2_subdev *sd,
-> @@ -572,10 +576,15 @@ static int dw_mipi_csi2rx_disable_streams(struct v4l2_subdev *sd,
->  					       &streams_mask);
->
->  	ret = v4l2_subdev_disable_streams(remote_sd, remote_pad->index, mask);
-> +	if (ret)
-> +		dev_err(dev, "failed to disable streams on remote subdev: %d\n", ret);
->
-> -	dw_mipi_csi2rx_stop(csi2);
-> +	csi2->enabled_streams &= ~streams_mask;
->
-> -	pm_runtime_put(dev);
-> +	if (!csi2->enabled_streams) {
-> +		dw_mipi_csi2rx_stop(csi2);
-> +		pm_runtime_put(dev);
-> +	}
->
->  	return ret;
->  }
->
-> --
-> 2.34.1
->
 
 _______________________________________________
 Linux-rockchip mailing list
