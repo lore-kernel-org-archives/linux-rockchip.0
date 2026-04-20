@@ -4,66 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F0B4F588EC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 15:53:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7666F588EE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 16:03:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=FE4AofLWCslhN7m3YmqnrTaLJA1rf1FNPOFr8HTVmJE=; b=KVVu21pjE4M6g4
-	u2nIQ1zCvbvOjS57Vb+eItucoYABl+Ml7IYPDnM2EJaX+6N9uZAj8RsSkBRtExXz+qxv/FU/Y1lcu
-	nOpxIkOH7PfN0pALL+nvynZzMpA3elnGXAp0gIk4a1/jkMcy82QLe5CzBZUJKH4SfOTeHtwH+SPzS
-	jcXGkmxqqtiKzaa+ivJRRC7YuPPzGjI0EVG2BjLHNLmpZ9U9FokGk29Pn98bKrN/6aQI4V4tH+Nei
-	4sjq+ScCoQX6a7lqI7nr8ok2LP0LqmGmknKyoS7a3yye5NqvOl29ep6RxZiDttkEl0D3JAnXm1mNH
-	mDwboF18O/0wV3paOcew==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=/APg9OxiKsOqg9z4CuwtLHnjYb1qjpQ6PkjOfuKRBJ4=; b=Xnk+KSY5T6isKmOEu1Mr4jlfz4
+	6TYmgKi7Fh8WDcZsqByJUshVixWrDNAv0RPESV5BbXn7dye4DeISjU1/z8Quw7mpe2b6TtnJjA627
+	aPfrRq5Eax2RT7HB209CzftAUfGqClGPHGjhP4NXsJsG134y64VBuADYYHEc1gEVIQsSeT8Gxo7lq
+	TQqLdU5f0XNEn1TC8lY2rj1hZk/ppT7/TmIEoOX/CwX/Mj88srmvJiq/UPlK6AHzYrzddOOBB1Ok1
+	1S5zfjUaIcpXMCpI2hqZUTLxuR5n28ogIq+8TZO7CITIAVD3DF/MrkKMgg8Ln3CyThvawPb8kXWLT
+	13l0ne7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEqwJ-00000007Nil-3GK7;
-	Mon, 20 Apr 2026 15:53:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wEr5g-00000007OGJ-1DlF;
+	Mon, 20 Apr 2026 16:03:16 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEqwH-00000007Ni5-20Zu;
-	Mon, 20 Apr 2026 15:53:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1776700406;
-	bh=AD5SU7VAHmOec5494xhlBBXbP87I8anCA//9QBwyto4=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=DqsBU3cAZqitqjmVK+sLr4bmFIpQ0J6XbYpByue8a6Mbcc3TfQS1UPd9g9fZ0wS4L
-	 2pmXCQHwczCr5cK9WTdkdbmG3PakX0/qnZnEl1vutxb6PLUYbOn4kZnpicMQtrGe7K
-	 bQ4AbJ7yV0Td+uwv+qzpGNzR9V+MgL/ydHQ2imXC46kmQidtbLOMQAOq3ucEaoRK2l
-	 /6Qv9yJzeadicJbQJSZoDDgDMODBTjzPqgKtE2Iesm3SYErdK7AHEr+lj26iBHecV6
-	 0o0mY/7DcEF3VN+kZwl2mYqxrfXss8KIP4iUdw7918pAagajKHrEYYgZeIVcykIJqR
-	 kHoRpmFhAvk+g==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9105517E137D;
-	Mon, 20 Apr 2026 17:53:26 +0200 (CEST)
-Message-ID: <693537c8-b7d9-40e9-9c53-284c1af78e06@collabora.com>
-Date: Mon, 20 Apr 2026 18:53:26 +0300
+	id 1wEr5d-00000007OE6-2klh
+	for linux-rockchip@lists.infradead.org;
+	Mon, 20 Apr 2026 16:03:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1776700986;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xEDfs81Jd47iepqrBF7xNRmRtmHijqCc+ulFumY0y9g=;
+	b=bO0FXgK1Z0vn0o2LuwctxRdeHmNDZ2nvqUsvwawurksW08UyYrameM2zYBl9whQ4H6Ux/Q
+	jYuuKxvH9w8IBlXv2akxrdwdwrJzipMuqnmtWVOj3p4k413URqUVR0V/flYZ1c1JNV/z5y
+	Xov9jfe0+6P5WEKu3ZKYzmi4yTfmN10=
+Received: from mail-ua1-f70.google.com (mail-ua1-f70.google.com
+ [209.85.222.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-204-gMvomZilNni_uClSLuJa6A-1; Mon, 20 Apr 2026 12:03:03 -0400
+X-MC-Unique: gMvomZilNni_uClSLuJa6A-1
+X-Mimecast-MFC-AGG-ID: gMvomZilNni_uClSLuJa6A_1776700983
+Received: by mail-ua1-f70.google.com with SMTP id a1e0cc1a2514c-948476b92e8so1137108241.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 20 Apr 2026 09:03:03 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776700983; x=1777305783;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=h9/x0FxU8GBGhtJj7ey+dB7jEGAG86JGELTylQtF5nc=;
+        b=GemxESIjEy4VIPZe+6S72OiSivt3PZE0Q80pb93Z3WsF/yvQi3xbrSuWgMJiHVdk+w
+         E5CA1t9Aiy9Weu73QscQ1iK10qZnA9bG63T/c+pWyAeQb8tu8iDYshB9sevNZPXhoBeL
+         LmPN0GDZHEiOQDzN0cJHNaT7PFOkNVm30rha3/v/zCImTdB2Ui8TevHj66N0Wff5TRcc
+         aRr8igpMWjm8xY6dqkLds3UCm1pc72NJKL9GBTaaSaDXg8Zla02UN2Cub9YfpyhBrTAS
+         7U6vp15POhxIB3YShkF5xiMsRg/Ur9jl1nwBA/EYhoLg02GxanfmKMZ2FBArIOPX20ax
+         xvzw==
+X-Forwarded-Encrypted: i=1; AFNElJ8VdM4VZFFE4GC9/tnHMBlGvAeVU7L0QlAJKoNPiiTIe3SxA8sPwn9vYLPOpKr+LEh20xiayu+S5MkEJTfvQg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxuoKmT6vW0E3XpC7OyhpSf2kqxDv2MVcJ83CpcMw9QFXXit9TD
+	DEjJ3YeHcMnF/+xZOa2PfRvwMhng9yhdkwTxiMqG9VmA40iwrF/0/gebkqHR10Jc+htjsjCT1uB
+	2mfTueqU8h5iMEZFuUG+L+V7iKptFsnBRSE+31ppo61itvlL5sJ2sRhTmPJonTMMOx90m4kSs/g
+	==
+X-Gm-Gg: AeBDieuieDY2ml0gvpLNnSLC7keMSClnRM4Ah1y3HQhLali0I1ZJD6cCJuJ6UZWWZa2
+	QsJE9wpmpCUzWA3L4pZt5nX5BfYYjZmky0jz/6Pjl7yuFFuog52/EMH5tM3FBZPhhuojJiYGIhf
+	zjMV3oF1I8QQcpnIBCX3CJcYXDO5meprN3NMyqDSFXO43QgWToIx68Uv+yq11l3nul6ydauUj1f
+	+qtik/hOGcx0AEIwTUUgePadeYLTBI+ZjbOt5lc4YhzDM5ZFcflTBTpvxPDhv12hQ72V75ILmJ2
+	esUsAd1l2MlUA4GdEDQjAe8KCGiIbPHXacZaI9ZagXgZpmkgrSId+CfynWox0Eu0MG8DVy0yfwZ
+	FoLmsXZintE4Oq4aGTvE7HiEgu0nzTSt0gna/owHTgJfCXt8a9IUVOZhMjkEfGonBmYw=
+X-Received: by 2002:a05:6102:5e98:b0:602:8ccb:c993 with SMTP id ada2fe7eead31-616f89b2062mr5555892137.24.1776700982374;
+        Mon, 20 Apr 2026 09:03:02 -0700 (PDT)
+X-Received: by 2002:a05:6102:5e98:b0:602:8ccb:c993 with SMTP id ada2fe7eead31-616f89b2062mr5555813137.24.1776700981596;
+        Mon, 20 Apr 2026 09:03:01 -0700 (PDT)
+Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-8e7d5fe9638sm840199685a.1.2026.04.20.09.02.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 20 Apr 2026 09:03:00 -0700 (PDT)
+Date: Mon, 20 Apr 2026 12:02:58 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Alexey Charkov <alchark@flipper.net>
+Subject: Re: [PATCH RFC 0/4] arm64: rockchip: The hunt for exact pixel clocks
+ on RK3576
+Message-ID: <aeZOMnZfBcBHzR8c@redhat.com>
+References: <20260417-rk3576-dclk-v1-0-26a9d0dcb2de@flipper.net>
+ <aeKtNf8CCAWduI-f@venus>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/40] arm64: dts: rockchip: Add frl-enable-gpios to
- rk3576-luckfox-core3576
-To: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260417-dts-rk-frl-enable-gpios-v1-0-a19c0dd8c9f6@collabora.com>
- <2282688.C4sosBPzcN@phil>
- <401a020f-ca5d-4c7d-941e-f0288e144357@collabora.com>
- <2480203.yKrmzQ4Hd0@phil>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <2480203.yKrmzQ4Hd0@phil>
+In-Reply-To: <aeKtNf8CCAWduI-f@venus>
+User-Agent: Mutt/2.3.1 (2026-03-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 6OFAt8bWCadh39098h1D1BKmbwNDFCE0jD0v5rh1aus_1776700983
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/mixed; boundary="vZqQeRlEnk8S7HaS"
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_085333_760104_DD3EE308 
-X-CRM114-Status: GOOD (  25.44  )
+X-CRM114-CacheID: sfid-20260420_090313_794635_35F20A9B 
+X-CRM114-Status: GOOD (  60.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,91 +106,180 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: Rob Herring <robh@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>, Michael Turquette <mturquette@baylibre.com>, linux-kernel@vger.kernel.org, Pavel Zhovner <pavel@flipper.net>, linux-rockchip@lists.infradead.org, Maxime Ripard <mripard@kernel.org>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gNC8yMC8yNiA2OjE4IFBNLCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPiBBbSBNb250YWcsIDIw
-LiBBcHJpbCAyMDI2LCAxMzowMDoyNSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hy
-aWViIENyaXN0aWFuIENpb2NhbHRlYToKPj4gSGkgSGVpa28sCj4+Cj4+IE9uIDQvMTgvMjYgMjox
-MiBBTSwgSGVpa28gU3R1ZWJuZXIgd3JvdGU6Cj4+PiBIaSBDcmlzdGlhbiwKPj4+Cj4+PiBBbSBG
-cmVpdGFnLCAxNy4gQXByaWwgMjAyNiwgMTg6MzQ6MTcgTWl0dGVsZXVyb3DDpGlzY2hlIFNvbW1l
-cnplaXQgc2NocmllYiBDcmlzdGlhbiBDaW9jYWx0ZWE6Cj4+Pj4gT24gNC8xNy8yNiAyOjMyIFBN
-LCBIZWlrbyBTdHVlYm5lciB3cm90ZToKPj4+Pj4gdGhlIGNvbW1lbnRzIGJlbG93IGFwcGx5IHNv
-cnQgb2YgdG8gYWxsIHBhdGNoZXMgaW4gdGhhdCBzZXJpZXMuCj4+Pj4+Cj4+Pj4+IEFtIEZyZWl0
-YWcsIDE3LiBBcHJpbCAyMDI2LCAxMToyNDozOSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVp
-dCBzY2hyaWViIENyaXN0aWFuIENpb2NhbHRlYToKPj4+Pj4+IFRoZSBib2FyZCBleHBvc2VzIHRo
-ZSBHUElPNF9DNiBsaW5lIHRvIGNvbnRyb2wgdGhlIHZvbHRhZ2UgYmlhcyBvbiB0aGUKPj4+Pj4+
-IEhETUkgZGF0YSBsaW5lcy4gIEl0IG11c3QgYmUgYXNzZXJ0ZWQgd2hlbiBvcGVyYXRpbmcgaW4g
-SERNSSAyLjEgRlJMCj4+Pj4+PiBtb2RlIGFuZCBkZWFzc2VydGVkIGZvciBIRE1JIDEuNC8yLjAg
-VE1EUyBtb2RlLgo+Pj4+Pj4KPj4+Pj4+IFdpcmUgdXAgdGhlIEhETUkgbm9kZSB0byB0aGUgR1BJ
-TyBsaW5lIHVzaW5nIHRoZSBmcmwtZW5hYmxlLWdwaW9zCj4+Pj4+PiBwcm9wZXJ0eSBhbmQgZHJv
-cCB0aGUgbGluZSBmcm9tIHRoZSB2Y2NfNXYwX2hkbWkgcmVndWxhdG9yIHRvIGFsbG93Cj4+Pj4+
-PiBhZGp1c3RpbmcgdGhlIGJpYXMgd2hlbiB0cmFuc2l0aW9uaW5nIGJldHdlZW4gVE1EUyBhbmQg
-RlJMIG9wZXJhdGluZwo+Pj4+Pj4gbW9kZXMuCj4+Cj4+IFsuLi5dCj4+Cj4+Pj4+Cj4+Pj4+Cj4+
-Pj4+PiBAQCAtMjMxLDYgKzIyOCw4IEBAICZncHUgewo+Pj4+Pj4gIH07Cj4+Pj4+PiAgCj4+Pj4+
-PiAgJmhkbWkgewo+Pj4+Pj4gKwlwaW5jdHJsLTAgPSA8JmhkbWlfdHhtMF9waW5zICZoZG1pX3R4
-X3NjbCAmaGRtaV90eF9zZGEgJmhkbWlfZnJsX2VuPjsKPj4+Pj4+ICsJZnJsLWVuYWJsZS1ncGlv
-cyA9IDwmZ3BpbzQgUktfUEM2IEdQSU9fQUNUSVZFX0xPVz47Cj4+Pj4+Cj4+Pj4+IHRoaXMgc2hv
-dWxkIGJlIHNvcnRlZCB0aGUgb3RoZXIgd2F5IGFyb3VuZCBJIHRoaW5rLgo+Pj4+Pgo+Pj4+PiBB
-bHNvIHBsZWFzZSBwcm92aWRlIGEgcGluY3RybC1uYW1lcyBwcm9wZXJ0eSB0b28uIElmIGZvciB3
-aGF0ZXZlciByZWFzb24KPj4+Pj4gdGhlIGR3LWhkbWkgYXF1aXJlcyBhIDJuZCBwaW5jdHJsIHN0
-YXRlIGluIHRoZSBmdXR1cmUsIHRoaXMgbWFrZXMgc3VyZQo+Pj4+PiBib2FyZCBEVHMgYXJlIHN0
-YXlpbmcgaW4gdGhlICJvbGQiIGNvbXBhdGlibGUgbW9kZSB1bnRpbCB0aGV5IGFyZSBhZGFwdGVk
-Lgo+Pj4+Cj4+Pj4gSnVzdCB0byBtYWtlIHN1cmUgSSBmdWxseSB1bmRlcnN0YW5kLCB0aGUgY29u
-dmVudGlvbiBpcyB0aGF0IAo+Pj4+Cj4+Pj4gICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+
-Pj4+Cj4+Pj4gc2hvdWxkIGJlIGFsd2F5cyBwcm92aWRlZCwgZXZlbiB3aGVuIHRoZSBub2RlIG92
-ZXJyaWRlcyBhbiBleGlzdGluZyBwaW5jdHJsLTAKPj4+PiBwcm9wZXJ0eT8KPj4+Pgo+Pj4+IEUu
-Zy4gaW4gcmszNTc2LmR0c2kgd2UgaGF2ZToKPj4+Pgo+Pj4+ICAgaGRtaTogaGRtaUAyN2RhMDAw
-MCB7Cj4+Pj4gICAgIC4uLgo+Pj4+ICAgICBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4+
-ICAgICBwaW5jdHJsLTAgPSA8JmhkbWlfdHhtMF9waW5zICZoZG1pX3R4X3NjbCAmaGRtaV90eF9z
-ZGE+Owo+Pj4+ICAgICAuLi4KPj4+PiAgIH0KPj4+Pgo+Pj4+IEhlbmNlIEkgb21pdHRlZCBwaW5j
-dHJsLW5hbWVzIHdoaWNoIGRvZXNuJ3QgY2hhbmdlIGFuZCBqdXN0IGFwcGVuZGVkCj4+Pj4gJmhk
-bWlfZnJsX2VuIHRvIHBpbmN0cmwtMCdzIG9yaWdpbmFsIHZhbHVlLgo+Pj4KPj4+IGNvcnJlY3Qs
-IHBsZWFzZSBhbHdheXMgcHJvdmlkZSBhIHBpbmN0cmwtbmFtZXMgZW50cnkgd2hlbiBzZXR0aW5n
-IGEgbmV3Cj4+PiBwaW5jdHJsLTAgLgo+Pj4KPj4+IFRoZSBiYWNrZ3JvdW5kIGlzLCBpbWFnaW5l
-IHlvdSBoYXZlIGEgYmFzZToKPj4+Cj4+PiBwaW5jdHJsLW5hbWVzID0gImRlZmF1bHQiOwo+Pj4g
-cGluc3RybC0wID0gPC4uLi4+Owo+Pj4KPj4+IGFuZCBvdmVycmlkZSBwaW5jdHJsLTAgaW4gYSBi
-b2FyZC4KPj4+Cj4+PiBOb3cgYSBuZXdlciBiaW5kaW5nIGludHJvZHVjZXMgYSAybmQgcGluY3Ry
-bCBzdGF0ZSAiZm9vIi4gT2YgY291cnNlCj4+PiB3ZSdyZSBiYWNrd2FyZHMgY29tcGF0aWJsZSwg
-YW5kIGJvdGggYXJlIHZhbGlkIGFuZCB0aGUgZHJpdmVyIGNoZWNrcwo+Pj4gd2hhdCBzdGF0ZXMg
-YXJlIGRlZmluZWQuCj4+Pgo+Pj4gU28gdGhlIGJhc2Ugc2V0czoKPj4+IHBpbmN0cmwtbmFtZXMg
-PSAiZGVmYXVsdCIsICJmb28iOwo+Pj4gcGluY3RybC0wID0gPC4uLj47Cj4+PiBwaW5jdHJsLTEg
-PSA8Li4uPjsKPj4+Cj4+PiBpbiB5b3VyIChvbGQpIGJvYXJkIHlvdSBvdmVycmlkZSBwaW5jdHJs
-LTAsIGJ1dCB0aGUgZHJpdmVyIHN0aWxsIHNlZXMKPj4+IHRoZSBuZXcgdmFyaWFudCB3aXRoIDIg
-cGluY3RybCBzdGF0ZXMsIHdoZXJlIGl0IHNob3VsZCd2ZSBzdGF5ZWQgd2l0aAo+Pj4gdGhlIGxl
-Z2FjeSAxLXN0YXRlLCB1bnRpbCB0aGUgYm9hcmQtZHRzIG1pZ2h0IGdldCBhZGFwdGVkIGluIHRo
-ZSBmdXR1cmUuCj4+Pgo+Pj4KPj4+IEFuZCBJIGtub3csIHdlJ3JlIGxpa2VseSBub3QgZG9pbmcg
-dGhhdCBldmVyeXdoZXJlLCBhbmQgYWxzbyBpbiBtb3N0Cj4+PiBjYXNlcyBpdCB3b24ndCByZWFs
-bHkgbWF0dGVyLCBidXQgc3RpbGwgaXQgaXMgc2FmZXIgYW5kIHNldHMgdGhlIGJldHRlcgo+Pj4g
-cHJlY2VkZW50IDotKSAuCj4+Cj4+IFRoYW5rcyBmb3IgdGhlIGRldGFpbGVkIGV4cGxhbmF0aW9u
-LCB0aGF0IGNsZWFycyB0aGluZ3MgdXAhCj4+Cj4+IFRoZXJlIGFyZSBzZXZlcmFsIG90aGVyIG5v
-ZGVzIChlLmcuIGkyYywgcHdtLCB1YXJ0KSB0aGF0IGFsc28gbGFjawo+PiBwaW5jdHJsLW5hbWVz
-IGRlc3BpdGUgcHJvdmlkaW5nIHBpbmN0cmwtMCAtIEkgY2FuIGFkZHJlc3MgdGhvc2UgaW4gYQo+
-PiBzZXBhcmF0ZSBwYXRjaC4KPiAKPiBBcyBzYWlkIGFib3ZlIGl0IGlzIGFuIGlkZWFsIHRvIGFz
-cGlyZSB0byAoaGF2aW5nIC1uYW1lcyB0b2dldGhlciB3aXRoCj4gZGVmaW5pbmcgc3RhdGVzKSwg
-YnV0IGlmIHlvdSB3YW50IHRvIGFkZCB0aGUgIm1pc3NpbmciIC1uYW1lcywKPiBnbyBhaGVhZCA6
-LSkgLgo+IAo+IAo+PiBJIGFsc28gbm90aWNlZCBhbiBpbmNvbnNpc3RlbmN5IGluIHByb3BlcnR5
-IG9yZGVyaW5nOiBzb21lIG5vZGVzIHBsYWNlCj4+IHBpbmN0cmwtbmFtZXMgYmVmb3JlIHBpbmN0
-cmwtPG4+IGFuZCBvdGhlcnMgYWZ0ZXIuICBJIGhhdmUgYWx3YXlzIHVzZWQKPj4gdGhlIGZvcm1l
-ciwgYnV0IHdlIHNob3VsZCBwcm9iYWJseSBwcmVmZXIgdGhlIGxhdHRlciB0byBzdGF5IGNvbnNp
-c3RlbnQKPj4gd2l0aCBob3cgY2xvY2tzLCByZXNldHMsIHBoeXMsIGV0Yy4gYXJlIG9yZGVyZWQu
-Cj4+Cj4+IFRob3VnaHRzPwo+IAo+IFRoZXJlIGlzIHNvcnQgb2YgYSAiY29uZmxpY3QiIGJldHdl
-ZW4gcmVndWxhciBvcmRlcmluZyBhbmQgcG9zc2libHkKPiBiZXR0ZXIgcmVhZGFiaWxpdHkuIEku
-ZS4gdGhlIGR0LXdyaXRpbmcgZ3VpZGVsaW5lcyBwcm9wb3NlIGFscGhhYmV0aWNhbAo+IG9yZGVy
-aW5nIHdoaWNoIEkgZ3Vlc3MgcHV0cyBudW1iZXJzIGJlZm9yZSBsZXR0ZXJzLgo+IAo+IE9uIHRo
-ZSBvdGhlciBoYW5kIHRoZSBzZW1hbnRpYyBkZWZpbml0aW9uIG9mIGxpc3QgdGhlIHN0YXRlcyBh
-bmQgdGhlbgo+IGRlZmluZSB0aGVtIChuYW1lcyBmaXJzdCwgLTAsIC0xLCBldGMgc2Vjb25kKSBs
-b29rcyBtb3JlIHNlbnNpYmxlIGZyb20KPiBhIHVuZGVyc3RhbmRpbmcgc3RhbmRwb2ludC4KPiAK
-PiAKPiBCdXQgdGhlcmUgd2UnZCBlbmQgdXAgd2l0aCBzcGVjaWFsIHJ1bGVzLCBzbyBqdXN0IHN0
-aWNraW5nIHRvIHRoZQo+IGJhc2Ugc29ydGluZyB3aWxsIGNhdXNlIGxlc3MgZnJpY3Rpb24gaW4g
-dGhlIGxvbmcgcnVuIEkgdGhpbmsuCj4gQWthLCAtMCwgLTEgZmlyc3Q7IC1uYW1lcyBhZnRlciwg
-Zm9sbG93cyB0aGUgbWFpbiBzb3J0aW5nIHN1Z2dlc3Rpb25zCj4gc28gaXQncyBlYXN5IHRvIGV4
-cGxhaW4gdG8gbmV3Y29tZXJzLgoKWWVzLCB0aGF0IHNlZW1zIGxpa2UgYSBnb29kIGVub3VnaCBy
-ZWFzb24gdG8gZ28gd2l0aCB0aGlzIGFwcHJvYWNoLgoKPiBCdXQgcGxlYXNlIGRvbid0IHJlLXNv
-cnQgZXhpc3RpbmcgZW50cmllcyA6LSkKCk9oLCBubywgaXQncyBqdXN0IGZvciB0aGUgY3VycmVu
-dCBjaGFuZ2VzLiA6LSkKClRoYW5rcywKQ3Jpc3RpYW4KCgpfX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGlu
-dXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9y
-Zy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+--vZqQeRlEnk8S7HaS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Hi Alexey,
+
+On Sat, Apr 18, 2026 at 12:24:57AM +0200, Sebastian Reichel wrote:
+> On Fri, Apr 17, 2026 at 07:11:43PM +0400, Alexey Charkov wrote:
+> > Dear all,
+> > 
+> > Need the help of the collective wisdom of the community.
+> > 
+> > The problem I'm trying to solve is reliably obtaining the exact pixel
+> > clock for arbitrary display modes supported by the RK3576 SoC.
+> > 
+> > Rockchip RK3576 has three display output processors VP0~VP2, each
+> > supporting different ranges of display modes, roughly as follows:
+> > - VP0: 4K 120Hz
+> > - VP1: 2.5k 60Hz
+> > - VP2: 1080p 60Hz
+> > 
+> > Each one obviously needs a pixel clock. The required frequencies for the
+> > pixel clocks vary greatly depending on the display mode, and need to be
+> > matched within a tight tolerance, or else many displays will refuse to
+> > work. E.g. the preferred (maximum) display mode out of VP1 is particularly
+> > awkward, because it requires a pixel clock of 248.88 MHz, which cannot
+> > be obtained using integer dividers from its default clock source (GPLL
+> > at 1188 MHz), and the nearest approximation is 237.6 MHz, which is well
+> > outside the tolerance of e.g. DP specification, resulting in a blank
+> > screen on most displays by default.
+> > 
+> > The clock sources are of course configurable, in particular there are muxes
+> > connected to each VP for selecting the source of the pixel clock:
+> > - Each VP can take the clock either from the (single!) HDMI PHY or from
+> >   its dedicated dclk_vpX_src mux
+> > - The dclk_vpX_src mux can select the clock from a number of system PLLs
+> >   (GPLL, CPLL, VPLL, BPLL, LPLL)
+> > 
+> > While the system PLLs can be configured to output a wide range of
+> > frequencies, they are shared between many system components. E.g. on the
+> > current mainline kernel on one of my RK3576 boards I've got the following:
+> > GPLL: 1188 MHz, enable count 20
+> > CPLL: 1000 MHz, enable count 17
+> > VPLL: 594 MHz, enable count 0 (yaay!)
+> > BPLL, LPLL: 816 MHz, enable count 0 (but these last ones don't have
+> >             predividers, so are less flexible)
+> > 
+> > So ultimately there is exactly one free fractional PLL (VPLL) which can be
+> > used to generate arbitrary pixel clocks, but we have up to three consumers
+> > trying to drive different display modes from it (e.g. HDMI on VP0, DP on
+> > VP1 and MIPI DSI on VP2). We also want to be able to adjust the PLL output
+> > frequency on the fly to satisfy the requirements of the selected display
+> > mode.
+> > 
+> > And this is where I'm stuck. Trying to satisfy the requirements of up to
+> > three consumers while changing the PLL frequency on the fly sounds like
+> > a poorly tractable mathematical problem (is it 3-SAT?). We can take the
+> > HDMI output out of the equation, because it can be driven from the HDMI
+> > PHY (which is capable of arbitrary rates) instead of the mux, but that
+> > makes the decision of which dclk source to use for a VP block dependent on
+> > which downstream consumer is connected to it (HDMI vs. something else).
+> 
+> It becomes more messy: The HDMI PHY cannot be used as clock source
+> for modes exceeding 4K@60Hz.
+> 
+> > Even then we somehow need two devices to cooperate in picking a PLL
+> > frequency that satisfies the requirements of both of them, and change to it
+> > without display corruption. I'm not even sure if the CCF has mechanisms
+> > for that?..
+> > 
+> > What follows is a brief set of patches which illustrate a partial solution
+> > for the case of "I just need 2.5k60Hz on VP1 via DP and don't care about
+> > the rest". It switches the VP1 unconditionally to use VPLL as the source
+> > for its dclk mux, allows changing the VPLL frequency on the fly, and also
+> > changes the frequency calculation logic to allow for nearest-match
+> > frequencies which are not necessarily rounded down. These are not meant
+> > to be merged as-is, as I see the following issues:
+> > - The flag allowing the PLL to change rate is in the clock driver, while
+> >   the reparenting to an unused PLL is in the device tree. If these go out
+> >   of sync, we might end up trying to change the frequency of a PLL which
+> >   is used by other consumers (I presume that could be dangerous)
+> 
+> It is a problem, see e.g. this patch from Heiko removing the flag
+> for an RK3588 VOP source clock:
+> 
+> https://lore.kernel.org/linux-rockchip/20251008133135.3745785-1-heiko@sntech.de/
+> 
+> Also note, that there is some more general ongoing work regarding
+> this:
+> 
+> See: https://lore.kernel.org/linux-clk/20260327-clk-scaling-v8-0-86cd0aba3c5f@redhat.com/
+
+I'm working on the patch set above to fix the clk scaling issues. You'll
+have issues on clks that have CLK_SET_RATE_PARENT enabled, and there are
+multiple children under that parent. Patches 2 and 4 in my series has
+kunit tests that demonstrates the current behavior.
+
+I attached a patch to drivers/clk/rockchip/clk-pll.c that adds support
+for the v2 rate negotiation logic. You'll need to apply this on top my
+clk scaling patch set. I only compile tested this, however it should work
+based on the changes that I made to clk-divider.c.
+
+You'll also need to add the flag CLK_V2_RATE_NEGOTIATION to your three
+display clks. Otherwise, without the flag, it will just fall back to the
+existing behavior.
+
+Hopefully this will let you be able to use one of the PLLs that has a
+high enable count as the parent.
+
+Feel free to reach out to me if you have any questions or issues with
+my patch set.
+
+Brian
+
+--vZqQeRlEnk8S7HaS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: attachment;
+	filename=0001-clk-rockchip-pll-add-support-for-v2-rate-negotiation.patch
+
+From 66b44d756dba0152b415cc8eb8528b55c4253058 Mon Sep 17 00:00:00 2001
+From: Brian Masney <bmasney@redhat.com>
+Date: Mon, 20 Apr 2026 11:13:53 -0400
+Subject: [PATCH] clk: rockchip: pll: add support for v2 rate negotiation logic
+Content-type: text/plain
+
+Signed-off-by: Brian Masney <bmasney@redhat.com>
+---
+ drivers/clk/rockchip/clk-pll.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/drivers/clk/rockchip/clk-pll.c b/drivers/clk/rockchip/clk-pll.c
+index 6b853800cb6b..30e0722f872f 100644
+--- a/drivers/clk/rockchip/clk-pll.c
++++ b/drivers/clk/rockchip/clk-pll.c
+@@ -66,8 +66,20 @@ static int rockchip_pll_determine_rate(struct clk_hw *hw,
+ {
+ 	struct rockchip_clk_pll *pll = to_rockchip_clk_pll(hw);
+ 	const struct rockchip_pll_rate_table *rate_table = pll->rate_table;
++	struct clk_hw *parent = req->best_parent_hw;
+ 	int i;
+ 
++	if (parent && (clk_hw_get_flags(hw) & CLK_SET_RATE_PARENT) &&
++	    clk_has_v2_rate_negotiation(parent->core)) {
++		unsigned long lcm_rate;
++
++		lcm_rate = clk_hw_get_children_lcm(parent, hw, req->rate);
++		if (lcm_rate > 0) {
++			lcm_rate = clk_hw_round_rate(parent, lcm_rate);
++			req->best_parent_rate = lcm_rate;
++		}
++	}
++
+ 	/* Assuming rate_table is in descending order */
+ 	for (i = 0; i < pll->rate_count; i++) {
+ 		if (req->rate >= rate_table[i].rate) {
+-- 
+2.53.0
+
+
+--vZqQeRlEnk8S7HaS
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--vZqQeRlEnk8S7HaS--
+
+
