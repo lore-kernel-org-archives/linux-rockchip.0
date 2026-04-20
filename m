@@ -4,151 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9104EA71B9
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 03:06:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3C1EF99C86
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 05:42:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KcuyGCQfN/iZ4G5DLcy9d4hiLWRwcWlXMzK2T/J2HbI=; b=PosqwoSvih/3ac
-	gQEeHDYi89IE9RUnqkOpeFkQYzFaH44Vj+maZjtG+BIedqR/MM3gT7aEoPZ1k4dGn4oLeTNn8JxFw
-	zruHAty2DsKaKYzh5dxHnHyoeNW0ue0Y+SOvLpZoREnikAguM/kdHUvizXYCy8amy9yGE8CghLzBj
-	6tHu4T6UERkYklqtBwr8nd87jHenCiJFeE8juiLRzLzBub+BtAuROXBhohyja1u5pmxrWcTvNyEgk
-	bYrM3AX41ZKC+otXXRLavUZrltAP8T3HPRNDV6UZBE6z0Vxsa5t1BLJf/q8pnzDEMbHDublFnKW3s
-	gAFEfyGMtgVQf1+YLgAw==;
+	List-Owner; bh=QSkeyb+URBoqN52YPr9OWEC2q0Vz9JRrlmQn68SrEXw=; b=xCogGRlKsc8+pU
+	oldGF0Z61T2LUcatdqJVoqHoFW7bblEMKg/fv7BzPG4TtVdCWux3qCso6eW99zZdlVNTPcC+/44Xw
+	XVgX4yxnqYZM9gq1dLPWBe1SXQ0zRKNq9KXPTbsWKMjpNEkp3E9OC7u5O0f+8+ej6BvCbul0I4TcP
+	6JFgZAOQVErD8Lyhr8sjDcsU3smFAVh0xfCsUzrLBCRgZnmRwOx2Iz3lt1HFBQXWnIf3JY1hhFZ9r
+	BZjQzdazzU/LWjX66inO4dokXdyzTh4UiQLqMShoNuLmmrgPS/D8F1zaXG1ukh6XJv4x+sH2zzhKE
+	DjeMN7E8OwdzkwAX1xzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEeyD-00000006LtG-12RI;
-	Mon, 20 Apr 2026 03:06:45 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wEhPG-00000006SHB-0HB6;
+	Mon, 20 Apr 2026 05:42:50 +0000
+Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEey9-00000006Ls4-3m6F
-	for linux-rockchip@lists.infradead.org;
-	Mon, 20 Apr 2026 03:06:43 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63JIrMOR2431668
-	for <linux-rockchip@lists.infradead.org>; Mon, 20 Apr 2026 03:06:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=rtl+6BW8W96h2knkFuBlb08o
-	nlTQOueBJrF/qpTFCGo=; b=EeAm3O+xDAnsqjBWSwWHXLk5w3dFL5VST11xec3M
-	cJUYoLpE/IFBcdaW2/WljOzUUeBxyoKuGjdMM6G8j1dRsN4CFMGXyZvBdwnTr/rE
-	7GOwa4sBPnBAmAFG29EyLqaSwdYlzw8WZAaAc5VeW8H6UVf5kvs4Cc81H8JvE0Xv
-	oRiUSzF9UPLUhbGVZ52mWGcXfFBY7c6krllIcr5bJr1J+R5Z0W6N2n6RvMeydSN3
-	A50LJttDcwowVNGL+wS95T2fADXR0GOyCkaOWhNvGXzFXx+iwI+2XE/56qmLNa3y
-	LxivIIS/zArdFaR5TDf/ANpnmhHnSHoBzFhVFsZ+8rR8yg==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dm0y63wfd-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Mon, 20 Apr 2026 03:06:40 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-50d5d1c2289so55715911cf.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 19 Apr 2026 20:06:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1776654400; x=1777259200; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=rtl+6BW8W96h2knkFuBlb08onlTQOueBJrF/qpTFCGo=;
-        b=Op1/IQlskcuQeeF5gO3hL0Fr2kwASPqCAetg0gfMk2j1CeCfXz7k0hHoBRudgw0f4Q
-         9WxPT0u0RB2kLAyVa55zLKMHQK/GLEVrj5KMqhcFk9l6BGkxjKLvRlqM3s7gTVvJIjU7
-         Bw5xsCbEtPwH9q10Zr5z+VfLm+rpXBxPbqikRrJ7eTNe1dtoLWG4DH9nbhGdinlKgel5
-         kKgLR6q6bA5L1gEmNG8Ede7XdQP2E0EbOjdsTL/ZbBOn66eWkgFkX/TFwYmZa1Z/Q836
-         CVpMgkZQhD3BaTBGfAQLzmLjb/HnLxZQ5vhEmQiIGbGxDBTAk22GBDwvQ106F29pGmOH
-         K1Nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776654400; x=1777259200;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=rtl+6BW8W96h2knkFuBlb08onlTQOueBJrF/qpTFCGo=;
-        b=EKN+YrqDe9ogGyeticmN1MtOP4R0H3ezrjrmPI7CEQsrTFBB6MRGBs7KlL4VX4UFhW
-         Npww8xPHbb1r9Z8sZKniv1hS/YSnhXpA8oDKqGPxx3EWfIhL8fFg2m0N1+0bos7aK5sb
-         aDdy63ZMOeqOxqTocjEloDOz3bBlMdfHjnZVAjFvIGes/wGt9mcHKizVUJU4uCA7YJ3q
-         j0k+n0N4PJZLl4r4OuVGvsUYvsT9hvq2AmBVtxk+aQSAeEf+Ae60emxBdhxfBIHcZM13
-         E2S80l1Fx9Rknd2lfb6pKEOYLRfIhcGoI+2CnCoUWzzs6B0fgJR/nnuxa3we27PWYaje
-         npcA==
-X-Forwarded-Encrypted: i=1; AFNElJ8PbdtjvGHp6x6NgAOQsUzWKSUeo3eY+X7AikeKdg9oXEYBSYiR1QXxIQUUJ8nnuvQzABZDFE4gRtYilrTRcw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxUtjhczp9W2bK+cGZOBEA6X7rhYL0UaK1YVYIwFNQInqn20M0K
-	hggOIsn3v/8bEEeCwYSJq+fyi78GAjXTcTYNj7+6GFhwAgIhxCLjcZ0u1DO28RJdaf4JNL0Pe34
-	2VxFFe0PY3BEvADkB3fXgTJQjokwZ7KxkmLM8dhRGV0P9hrMTzHkaiHzFqbheeJxqLK+E753+tt
-	k=
-X-Gm-Gg: AeBDieuO8FLRQB6+i6YDqJCmJ9qGB/7nWgTUun2Kkg+ocPCvN8POyoZ3AjzpV+H1VUb
-	qBjFk93a5I2rWXncFIueIlKDGNqoUB8t6Pjo+6xRahOEWTB8tAFxH1oS67PCS02D0xvczxn5rUP
-	qhAI2Yud5YL5X4j0GlvIwLu9XTchRAvHEs3bzZRgt0zMeD28gb+TN7djaDmumYRKusRQdLXcOS8
-	mk7NADM5IlaC4rtu4z/mivzfZZMI2ZJP2dx5RIMK9JOXMxnRU8xc3SxGVzWyPhVkwa6GSDYF+4r
-	hbCKucTf9sArzTlBIGzjelGICiNUYWDtdJPuok/PU4I1AXf8Z3U8VYklnZjHUrOmHZWZ0tdvVFe
-	hO5vDVWsLadqupBGnQTgDop6onwpFyLMLhIxUSBlZxago/pNV9LrmIN7B3R+CSmuqiN7Zxcxts7
-	tBYzLylaPmQGrWk2lOPPOg2QjfhF2towJdGVAQPZ56usLVaQ==
-X-Received: by 2002:a05:622a:4189:b0:509:35d1:ca37 with SMTP id d75a77b69052e-50e3693d07amr181294501cf.16.1776654400025;
-        Sun, 19 Apr 2026 20:06:40 -0700 (PDT)
-X-Received: by 2002:a05:622a:4189:b0:509:35d1:ca37 with SMTP id d75a77b69052e-50e3693d07amr181294201cf.16.1776654399547;
-        Sun, 19 Apr 2026 20:06:39 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a4187e1116sm2667146e87.54.2026.04.19.20.06.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 19 Apr 2026 20:06:38 -0700 (PDT)
-Date: Mon, 20 Apr 2026 06:06:35 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Dennis Gilmore <dennis@ausil.us>
-Cc: Alexey Charkov <alchark@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-        Andrzej Hajda <andrzej.hajda@intel.com>,
-        Chaoyi Chen <chaoyi.chen@rock-chips.com>,
-        Conor Dooley <conor+dt@kernel.org>, David Airlie <airlied@gmail.com>,
-        devicetree@vger.kernel.org, dri-devel@lists.freedesktop.org,
-        FUKAUMI Naoki <naoki@radxa.com>, Heiko Stuebner <heiko@sntech.de>,
-        Hsun Lai <i@chainsx.cn>, Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Jimmy Hon <honyuenkwun@gmail.com>, John Clark <inindev@gmail.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        linux-rockchip@lists.infradead.org,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Michael Opdenacker <michael.opdenacker@rootcommit.com>,
-        Michael Riesch <michael.riesch@collabora.com>,
-        Mykola Kvach <xakep.amatop@gmail.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Peter Robinson <pbrobinson@gmail.com>,
-        Quentin Schulz <quentin.schulz@cherry.de>,
-        Robert Foss <rfoss@kernel.org>, Rob Herring <robh@kernel.org>,
-        Simona Vetter <simona@ffwll.ch>,
-        Thomas Zimmermann <tzimmermann@suse.de>
-Subject: Re: [PATCH v7 3/6] drm/bridge: simple: Add the Lontium LT8711UXD
- DP-to-HDMI bridge
-Message-ID: <ilprfltw6ju2jpo4hrrypscljrlw3xqi7h2mf5sv2k2iy3xeu5@4d76innmpoav>
-References: <20260414214104.1363987-1-dennis@ausil.us>
- <20260414214104.1363987-4-dennis@ausil.us>
-MIME-Version: 1.0
+	id 1wEhPC-00000006SFw-3OoD;
+	Mon, 20 Apr 2026 05:42:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Sv/4jaL6YMllCGrFTZbbGxI4/vfhH9ac9x/T6hlexv5QL89hd0fIOrhWstaUOwjzKPQB8oQsXtEnXcJBv+ESXiqqAcEr/9CSgOcuA1tN5qzyoy8dmiECHh+gkM8mkUWMZELfkWGkizOV0s4/JnCpw8Ml+1oH9hEwi0K6VKTc6qY+w8LbGl5IukpYQbqisTx7SMrcQ4KGQczeJGz8NYi60cCOOiNvQ1NqvSLEcOFStQvAb405tbndb70tmqA4i1N87NVU9LkBxAlrWWXh//E9V44KqpB5ZjKxoa6Cw6xgOS9HXVLVqK7CpEa5iPgjkR8bhclR0a/gkp6ngI7/RgkhAw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=P/hJFDc/OXO+z1G1aFVdYtqUeTMvbhXCQaiOW6aQ2jU=;
+ b=d46+bqK2YEyxPtqXGYe15HvqpM0IvrTZBbsGjorqozYDZEukMLR4uJDQT5/dOmwpX7iVk3TLzKLPZkIozgAglyXXGiOrZWUpdQrt6n9249sUkm/1uTY7o/ZhGBuE4KOUduZNgALqKlW/i9W8sg+VLd2uGg8F2rLujU2oxrq3RMmfA7sip8u1tgi8HQPfOtZDdqT22gcJlqmx9KrZu27NXdlxb8/aUPmutYnpZl0a5nlXyLMf7kjq4B8drsACMCTCgTy/DHq32Sc96qE/CxPBwalYlLY+E/4EdcjMX9BBzb04IA69FAO36kNIQ2MgIqQ2AlCVPr6w4CXHkWGwx5oC3g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=P/hJFDc/OXO+z1G1aFVdYtqUeTMvbhXCQaiOW6aQ2jU=;
+ b=ObTY2T4kwSIf5diyCIQ4DKUnH8PQfKNMO1PhjnyCEUxtHm4s2A6w5Dj/g+3gD6Zc4ojSwgS4jPYng9NFJ62dIZaMWFEcHnjCGtv+w1HxC/lMOiPoSABYb2T7TquEjzKQNLEEkLRZ4oHpwh4KNEr5RW+yxySTrHvDNiKnRY2O0hCnLSxYQYK70nyy3O7SI7EpqRE7LdmXQmrU7oSwHz6fJNve6q4fRyRDPnKsRcn3zSzzgj9mrlu7xeC37cPK+x7z3Sp272a7/1RZRL4RnuU8Wj+0eCj/swpZq9LYYKTBQANqV2FH4Q6UQws4xhmdg2Y4mw+kxI4rkHhKsIeOmh3Uig==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by DBAPR04MB7447.eurprd04.prod.outlook.com (2603:10a6:10:1b2::14) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9818.32; Mon, 20 Apr
+ 2026 05:42:41 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9818.032; Mon, 20 Apr 2026
+ 05:42:41 +0000
+Date: Mon, 20 Apr 2026 01:42:35 -0400
+From: Frank Li <Frank.li@nxp.com>
+To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH 2/5] media: synopsys: Add support for multiple streams
+Message-ID: <aeW8y9-Y-4yFKEZa@lizhi-Precision-Tower-5810>
+References: <20260415-csi2_imx95-v1-0-7d63f3508719@oss.nxp.com>
+ <20260415-csi2_imx95-v1-2-7d63f3508719@oss.nxp.com>
 Content-Disposition: inline
-In-Reply-To: <20260414214104.1363987-4-dennis@ausil.us>
-X-Proofpoint-ORIG-GUID: 6VFi2X8cNTmsAVNOZhOuXcT1ghnYjAi6
-X-Authority-Analysis: v=2.4 cv=Fpo1OWrq c=1 sm=1 tr=0 ts=69e59840 cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=A5OVakUREuEA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=EUspDBNiAAAA:8
- a=R0GiLmRpmYWNx10LZcEA:9 a=CjuIK1q_8ugA:10 a=a_PwQJl-kcHnX1M80qC6:22
-X-Proofpoint-GUID: 6VFi2X8cNTmsAVNOZhOuXcT1ghnYjAi6
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIwMDAyNyBTYWx0ZWRfX2LvKTeQZpCmW
- NiWbYn3S8cRwjUGMerwrkgx90cz6LWDT30RWCpdpuWmT2fXRI3OvnfUn86W74RjF/Ipfp3Pfxt5
- /CoxGOd1j4nZLql3pAqFZqF2vkKhIOrSnmMyjijYsD0OvK1t6sfZ/WYtGOGMgA9AYlIRI7gOK4O
- 70O0MA8f94NQDmI2XFTqYMtQMTB/zr2IqmdtpqN5WFPKiI1TZn3JoKvW9uaQ04dVr4hne/TMBFi
- 9N4mWG+12IgCHwux3m695A1+fxqLrAizWpRGGPRRCaMW6YXEHctl/tLDaDp4rttmP1vtio1msL2
- Zib+k7qVMF6s4JZ7mhXP+WLHvgOCC3o2pFDLyVKkzf7b0/haNrP5iIKlcUVlmJ+Rb42nMIcD5mo
- ZPblkzpGGSr3wkgKJTRqy6Naq2vdHjh2+95cCoJlsBdu0CKoqt3GlsXCd5wvm3hluRmhchLqxlj
- iQTli6D3KeNJfumLkXQ==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-19_07,2026-04-17_04,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 phishscore=0 suspectscore=0 lowpriorityscore=0 bulkscore=0
- priorityscore=1501 clxscore=1015 adultscore=0 spamscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2604070000 definitions=main-2604200027
+In-Reply-To: <20260415-csi2_imx95-v1-2-7d63f3508719@oss.nxp.com>
+X-ClientProxiedBy: SA1P222CA0125.NAMP222.PROD.OUTLOOK.COM
+ (2603:10b6:806:3c5::19) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|DBAPR04MB7447:EE_
+X-MS-Office365-Filtering-Correlation-Id: 7efd2e80-d64b-4ee9-5881-08de9e9fa354
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|366016|52116014|376014|7416014|1800799024|38350700014|56012099003|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: IF1rZsg5cVaDgHWWdiZzDsM1LZWhstxp1P4jLQhmDP1E4KBEp5peGLxnxk367Y2KzjtuckMRwO4ivDsFSpb47DlPF/zHbYAyDHiQj0nHsAPNX1F/eFCJMLihTb1c/6sZ+hOKMoh8nVWsZOibkoI8Rq7LGU2JEx73QFW3bngd3ml5Lvx5OAiQY60G77LJpZzlrFwEDTaVk/YSrCaHcY7bhjuDs/8/OVabV3p7LF+EYXk7UbgIlxs07VeeTk7h6mvy2HuNd9C8aQc1A83Aw+820SbNIgoGjbdQV4o3pOYoTIV5h6qBczpaH878UC4h1O02Ohh2MgyJFhSh0Xhuk1l2vWMW/dhRmGeRJd+mEAHtbrJ7Pqp3edPqoxnBD0q+/z9aTE4cs9Ndf0eKUpaCEg9Z6ODAcWLW+BmdcNsR6dWxfhzctxVlms1AaGr2zyrKcwWGn6oKmeccnz9RLcoos2KAfR9ATsZN4zPzC0hL1VuF0tIhVrubN56eQAvCi05SdxL9xkDF5+Xk9vErdw7YLGYxqb3g5CZdk/DpGPYQz3mmXbKaRcZwUUCjQqM0iMvKxUIcmGMwzpHfUJlDYzWKB9AsMyE9QaIJO6Wkc4NN1wXE8QYB4cAOfX9QMp886ZwurJfVZnaLSwGzA2zHKZIPzn41hhPVo5zjnfhhZ3GjGFcSEeT/EvrwRQMd7LzCE7jGljEBug+ZAJ0qiLUmo1C5XXbyYexxNScVVtVH+eeEnOnOlZE8vgc8L39LiUs0O4aXjBZQE5FqgIBc3XXBW8BB6KpzHrad7X9ULsIg8WLLYT0rglo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(366016)(52116014)(376014)(7416014)(1800799024)(38350700014)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fv081oeamM5EdWwjZ0cDObSB7B7BRZjhQUpxFXNGwr7AR3gQ6xfwI9vEEsGt?=
+ =?us-ascii?Q?yfLZ7Dy76Pc+QEWoYn5IGmojD07jVU0lrRyrhgBsTYhfceTjJ4kihiJ2nEtY?=
+ =?us-ascii?Q?y7CFwk1NELH/8YS6m23kA9V6BV1rD+YKHcMWZhJcz66z+4TGZNxUvq3WJltb?=
+ =?us-ascii?Q?LqlqRhREQsLtjhOh4NnURwLOcLCv5ofbhhnBUSyPK8F2QS19tF+pinNvlb59?=
+ =?us-ascii?Q?4KEPM0PT/4qoKCJXSZtZ3KDm31qqIEbHNUE5+U3onUF+aAqW/FMqneZbpQrw?=
+ =?us-ascii?Q?Vk5cl+EkHrOA11j9nmMiCHfgDWeq4VBzIq1hDaEzWVcbN8JQh0zjO7qp5Xaf?=
+ =?us-ascii?Q?VgwKng7FrKuCmIjq3kDBqTP8GbCRVmaLeJR7Didg/y11xXROCl6hF1n92hpP?=
+ =?us-ascii?Q?l4f8rlWcIgtNE2xdQBCfuD550BRX1+au1pVltvA+Q3bWMzNkRVFF3PLBOx3+?=
+ =?us-ascii?Q?RfY0Imka8stAodsZZOkuSo/HV4/zs3H9XNzyjYWSXYhUoBJ9JIOT5v7b0MkS?=
+ =?us-ascii?Q?C/Jh4h3ez7T7/AC3WoviTCqZpj63jlu/MmMytlU06OPvVrBUbIsjSaknElop?=
+ =?us-ascii?Q?xIIoU0tkGb63+FctG98mHxjJDLIFBWHE/JWR+RdIDDY8tq8ew7zt+hsR8n2j?=
+ =?us-ascii?Q?ZCOlGHUyM3s1FFgbF4nqQ+r7KkLgszvjCHlrv+pzsJoa1DLBfka/P5INEJoS?=
+ =?us-ascii?Q?ho6iZYXyihedrD74m4VTAyy+dwzQvbdhCfh3oNSg8x8i9Nfsg1Grkp9lOFhl?=
+ =?us-ascii?Q?oqOliCj8sQbX7T92l1l2OsCRGFcXArr2iVwQWTatXl0xA5FUxGTIUth79M+9?=
+ =?us-ascii?Q?ZSQyeGC+dRnPDoRNkR+AWRLXqeWfliPV24wo35A8fg0C8XCYM+QbnBa5wEwe?=
+ =?us-ascii?Q?TFcM/yrlu1MFrajqwr4XCwB43qr8bRLCvJUw3udh+v9Fij1w9dGCCt2AYn7K?=
+ =?us-ascii?Q?NMWrp4HuOsa17rTaHHRDZJdQnWryKcoxm5RxImJlJpEavzxL3AxeCudFMm1M?=
+ =?us-ascii?Q?CNIguTOwhU1K02kF6TEaWzlbJha5EVNmzrsfDj6LB80+6sNZ0fxFtC4fzZkb?=
+ =?us-ascii?Q?rFsdbOZIm64XDuKMGTdIoQqfwVyGcrFG3mtPzfI5zobMMcRY4Wp3dPuQCMA3?=
+ =?us-ascii?Q?eCKOFf+npV/mLDVzF3suINcx+AO00U6NCF7L/DVNnjx7DvMlZET86sQHv7Uk?=
+ =?us-ascii?Q?aFb9uEw8M7tjsG/PzD1omj39XuPNaNg3X14fvbDE6nKZfG8rzRIu5Cnmw6Mi?=
+ =?us-ascii?Q?y8eJE1qlH3JscyTYtkL1urVcgUbJGHt8aiM/L1ktiubf++MB82viVNt1Nwjn?=
+ =?us-ascii?Q?DwHittvDAZ16bTmPVE/drRs1W47F8mErbjVz5ewugn4cutmjT0LrBXOiz3ix?=
+ =?us-ascii?Q?9aKPbby4PO9heUHoa8EcGZcBgLJ8/DIr4chdHQpBFKUiWrfX2xsHWLwJsCA3?=
+ =?us-ascii?Q?XRXa0EdL1cgSPUuChbKYiYXG/eiezQu9KYJ/qvinVIZ9S/O6iKpsU+pjSwMq?=
+ =?us-ascii?Q?FGR2ppKKuL078bfXXFphu009qA2lJuMyX6MYw1ik7NG41i+IGpeDTmiEOofe?=
+ =?us-ascii?Q?xM9v5rR01ODFXY0Q45OZ6yvOuwLV3PF7tHQxT78Bcw69+F+eAdpaxKO1Nwws?=
+ =?us-ascii?Q?2NwLtnV73tbfj/Fe/RgIZruPM+LXAY5AXlKLwvFF3Q6gnvCSXUaf6GOPmwBm?=
+ =?us-ascii?Q?juP2lwNQ5pePif1L1RIFiLv8tmMhC9ME0wMVCsL87LRyzweo?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7efd2e80-d64b-4ee9-5881-08de9e9fa354
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 Apr 2026 05:42:41.3646
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 310qd3gZJruAgEaTIFAuNywHrEvzVPjHe4fe22VLfYfGBtN9UQuJXKQ7KnL37rqwO78QOFML1RpFZ3yOdUhixA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAPR04MB7447
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260419_200642_047952_6E68474B 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20260419_224247_110010_6AFF8A01 
+X-CRM114-Status: GOOD (  22.83  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,23 +144,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 14, 2026 at 04:40:54PM -0500, Dennis Gilmore wrote:
-> The Lontium LT8711UXD is a high performance two lane Type-C/DP1.4
-> to HDMI2.0 converter, designed to connect a USB Type-C source or
-> a DP1.4 source to an HDMI2.0 sink.
-> 
-> Signed-off-by: Dennis Gilmore <dennis@ausil.us>
+On Wed, Apr 15, 2026 at 11:46:53AM +0800, Guoniu Zhou wrote:
+> The current driver only supports single stream operation. Add support
+> for multiple concurrent streams by tracking enabled streams with a
+> bitmask and only initializing the hardware once for the first stream.
+>
+> This enables use cases such as surround view systems where multiple
+> camera streams need to be processed simultaneously through the same
+> CSI-2 receiver interface.
+>
+> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
 > ---
->  drivers/gpu/drm/bridge/simple-bridge.c | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
+>  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 45 ++++++++++++++----------
+>  1 file changed, 27 insertions(+), 18 deletions(-)
+>
+> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> index 46e2a4315ac2..85a2a95bf080 100644
+> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> @@ -113,6 +113,7 @@ struct dw_mipi_csi2rx_device {
+>
+>  	enum v4l2_mbus_type bus_type;
+>  	u32 lanes_num;
+> +	u64 enabled_streams;
+>
+>  	const struct dw_mipi_csi2rx_drvdata *drvdata;
+>  };
+> @@ -528,28 +529,31 @@ static int dw_mipi_csi2rx_enable_streams(struct v4l2_subdev *sd,
+>  					       DW_MIPI_CSI2RX_PAD_SRC,
+>  					       &streams_mask);
+>
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+It maybe simpler
+
+	u64 enabled_streams = csi2->enabled_streams;
+
+	csi2->enabled_streams |= streams_mask;
+
+	if (!enabled_stream)
+		return 0;
 
 
--- 
-With best wishes
-Dmitry
+....
+
+err:
+	si2->enabled_streams &= ~streams_mask;
+
+
+Frank
+
+> -	ret = pm_runtime_resume_and_get(dev);
+> -	if (ret)
+> -		goto err;
+> +	if (!csi2->enabled_streams) {
+> +		ret = pm_runtime_resume_and_get(dev);
+> +		if (ret)
+> +			return ret;
+>
+> -	ret = dw_mipi_csi2rx_start(csi2);
+> -	if (ret) {
+> -		dev_err(dev, "failed to enable CSI hardware\n");
+> -		goto err_pm_runtime_put;
+> +		ret = dw_mipi_csi2rx_start(csi2);
+> +		if (ret) {
+> +			pm_runtime_put(dev);
+> +			dev_err(dev, "failed to enable CSI hardware\n");
+> +			return ret;
+> +		}
+>  	}
+>
+>  	ret = v4l2_subdev_enable_streams(remote_sd, remote_pad->index, mask);
+> -	if (ret)
+> -		goto err_csi_stop;
+> +	if (ret) {
+> +		if (!csi2->enabled_streams) {
+> +			dw_mipi_csi2rx_stop(csi2);
+> +			pm_runtime_put(dev);
+> +		}
+> +		return ret;
+> +	}
+>
+> -	return 0;
+> +	csi2->enabled_streams |= streams_mask;
+>
+> -err_csi_stop:
+> -	dw_mipi_csi2rx_stop(csi2);
+> -err_pm_runtime_put:
+> -	pm_runtime_put(dev);
+> -err:
+> -	return ret;
+> +	return 0;
+>  }
+>
+>  static int dw_mipi_csi2rx_disable_streams(struct v4l2_subdev *sd,
+> @@ -572,10 +576,15 @@ static int dw_mipi_csi2rx_disable_streams(struct v4l2_subdev *sd,
+>  					       &streams_mask);
+>
+>  	ret = v4l2_subdev_disable_streams(remote_sd, remote_pad->index, mask);
+> +	if (ret)
+> +		dev_err(dev, "failed to disable streams on remote subdev: %d\n", ret);
+>
+> -	dw_mipi_csi2rx_stop(csi2);
+> +	csi2->enabled_streams &= ~streams_mask;
+>
+> -	pm_runtime_put(dev);
+> +	if (!csi2->enabled_streams) {
+> +		dw_mipi_csi2rx_stop(csi2);
+> +		pm_runtime_put(dev);
+> +	}
+>
+>  	return ret;
+>  }
+>
+> --
+> 2.34.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
