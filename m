@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E275F36C5C
-	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 12:02:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C5BCF588C6
+	for <linux-rockchip@archiver.kernel.org>; Mon, 20 Apr 2026 13:31:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AbAYEn6i0BzTfA19rVZrxLDDuYD01DIMLjcmkGRWIfE=; b=bmdakiYRbbot/2
-	iHNlUGA3SkLaElzmFNmV2LQ8a12Z83bJIpFRpjhBOaGZph79wQmqxo8RpyAqRm/6rriaacqApAg+U
-	SDME+KanEIl0KrhusAVhPJPIf+Icf3JyEpyLnEiUHDuo/DIcWrBcNe8tLu3KkbOxXdcjhhrO6qBSL
-	QZeK6hCViG1Jc5CQcxSqiAN8WgsdjU8RcEbRV/IJhz3S+5PUYo6ehnHtquJ6ZN59Bvia3vcIC47Ig
-	exvHveRy9Yr/Xnoa+rFVxIAcs83TE90djNSDfP0KQ2+U3NhlnGV2VNEqgFTmOws8m/XysNfb1hd2e
-	cdCo9nPjG5wzqiYXS0HQ==;
+	List-Owner; bh=NocwSjSFvtxXl91zZ2Yumgb2LGGURl0z1+f6L4KxaBw=; b=aQ+iOW9mdkmnto
+	BqSwNnhpf8M0RUp2f71Y170VGxw6kCLTq22FkfymDN75nhWVrGiyCaINr3sFbpcnXMwAtsKLQC7Rk
+	yZKaVnIEwauWRhHKAhbxvnuGucLzDU0ay20ydNVJUE7T1epqpJwmXoxFbMUDN2eBKUfwL/MHWXGJC
+	NstswpckLMNB0PudFYErrOk1bVvmrX7gDL5drlC5uVgemPD7HiXuXe/yzX/THbbPtzW5xdLzmgkox
+	nM9HY5GGMDlHl2V6R7TeA0WRqtmTZB2UHktIyNJG86v0U5i5DR3ZeqcvG8g0PwoG3J/jq5xzes3hR
+	PfTwm2efZJU0qurLhRbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEnKh-00000006qjH-1P0T;
-	Mon, 20 Apr 2026 12:02:31 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wEoiX-000000072XL-1OLX;
+	Mon, 20 Apr 2026 13:31:13 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wEnKe-00000006qiT-0SK8;
-	Mon, 20 Apr 2026 12:02:30 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1776686532; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=D4wV3c/yZdK1eU7KT/phx0dwslxU6lVYK+XH3o6odSa2T2bsmVNuPGkpPokO9odCGebd1VL6x+JQmJochSSU2+ZygtUA8PJjzyUuX0A9Qrl0XWGmVojg77UaxS/3Sny5w7IefWTfwjsdGx5f10vKP7mNZOOq3/lOb08dGJ1R+HE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1776686532; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=x5mFNmk8QCjW303+12nnTbEnOf0gTpLfX0AgHqHSXVk=; 
-	b=O4SRXC9WiJ06iz4jU46oIS5HKKrQZDbZtgXUWFYVGQe2rswu3bj3BkygH+aWXgqxyyPaddoz9B1yPHO/KFVDzIh7GqYMIRjQejUCYGzFYaYlP5w7SL1/EArLcQBvCc9zv7INEtZGigKIoJ6D0I7RXLUuoYFc0bOQaEYeUm3rmnU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776686531;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=x5mFNmk8QCjW303+12nnTbEnOf0gTpLfX0AgHqHSXVk=;
-	b=JznioJN5R98NhLocaRwmQa8qpR7kvDOKjtwdelsT7L3l+7wbXLNSQEEGVvn+u95v
-	UZwrLnpD0cFG5havrVDsKzAvRnbR7/565GTMHbXmCLQpi0wwBdn9P0HWyPwh07tJV4A
-	s58b6CDl+WyyoJFKqUp6qGkh+0pcHFfjfmEpk9Mw=
-Received: by mx.zohomail.com with SMTPS id 1776686529459133.0396587303926;
-	Mon, 20 Apr 2026 05:02:09 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: William Breathitt Gray <wbg@kernel.org>
-Cc: William Breathitt Gray <wbg@kernel.org>,
- Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Lee Jones <lee@kernel.org>, kernel@collabora.com,
- Jonas Karlman <jonas@kwiboo.se>, Alexey Charkov <alchark@gmail.com>,
- linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org
-Subject: Re: [PATCH v3 4/5] counter: Add rockchip-pwm-capture driver
-Date: Mon, 20 Apr 2026 14:02:03 +0200
-Message-ID: <oA6h2S_2RQulBS91CKXxhw@collabora.com>
-In-Reply-To: <20251206093419.40067-1-wbg@kernel.org>
-References: <20251027-rk3576-pwm-v3-4-654a5cb1e3f8@collabora.com>
- <20251206093419.40067-1-wbg@kernel.org>
+	id 1wEoiT-000000072Vw-221c;
+	Mon, 20 Apr 2026 13:31:11 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 68A2460582;
+	Mon, 20 Apr 2026 13:31:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF8A3C19425;
+	Mon, 20 Apr 2026 13:31:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776691868;
+	bh=AihTpc5zkJtlqLbw58hois0YKMIhUHFtmGkHGFinRlA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=DXlSNuOkX1E6prdpOYzQjYgLYfzSipVs1hPKxKj1J7WZBU6ulLFt+8aqJQqBAylOr
+	 WGtKChpLkxzq7MgWpccH08Tho5rKsEKwQu2J0WmxcvBorGinm41LGG1PvcQriwSMAS
+	 shoTLfqy3EZaBkzydWKTJKml+4jE59hME/EYdR+Xg+MqxB56EaAh5x/a+UAyyM1fvL
+	 v+Yb46P9ugG7hW3PyJq4izHqN7du9YZUwY9p9pLkQg0Ce3EP/CnG9rbwCRYZDUpR7j
+	 9McXDbJ3cIjo8xfMK9nnP5f4G0WmpNE1dsMF3BUOSTJ6RFjcLuf24QGGf00xR+zmS9
+	 9eopClbdSIvEg==
+From: Sasha Levin <sashal@kernel.org>
+To: patches@lists.linux.dev,
+	stable@vger.kernel.org
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+	Sasha Levin <sashal@kernel.org>,
+	detlev.casanova@collabora.com,
+	ezequiel@vanguardiasur.com.ar,
+	mchehab@kernel.org,
+	heiko@sntech.de,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH AUTOSEL 6.18] media: rkvdec: reduce stack usage in rkvdec_init_v4l2_vp9_count_tbl()
+Date: Mon, 20 Apr 2026 09:20:35 -0400
+Message-ID: <20260420132314.1023554-241-sashal@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260420132314.1023554-1-sashal@kernel.org>
+References: <20260420132314.1023554-1-sashal@kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260420_050228_221796_5D9491C3 
-X-CRM114-Status: GOOD (  40.62  )
+X-stable: review
+X-Patchwork-Hint: Ignore
+X-stable-base: Linux 6.18.23
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,131 +82,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Arnd Bergmann <arnd@arndb.de>
 
-finally got an opportunity to work on this again.
+[ Upstream commit c03b7dec3c4ddc97872fa12bfca75bae9cb46510 ]
 
-I'll respond to some things in-line. If a review isn't directly
-addressed, you can assume I acknowledge it and will address it
-in the next revision with no further comment needed.
+The deeply nested loop in rkvdec_init_v4l2_vp9_count_tbl() needs a lot
+of registers, so when the clang register allocator runs out, it ends up
+spilling countless temporaries to the stack:
 
-On Saturday, 6 December 2025 10:34:17 Central European Summer Time William Breathitt Gray wrote:
-> > +struct rockchip_pwm_capture {
-> > +	struct rockchip_mfpwm_func *pwmf;
-> > +	struct counter_device *counter;
-> 
-> Is this structure member used at all? If not, you should just remove it.
+drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c:966:12: error: stack frame size (1472) exceeds limit (1280) in 'rkvdec_vp9_start' [-Werror,-Wframe-larger-than]
 
-The counter member is used in the interrupt handler. I actually
-noticed that I request the interrupt before pc->counter is set,
-so if an interrupt fires before the probe function finishes then
-I think the handler would run with a NULL counter member. Oops,
-I'll rectify that.
+Marking this function as noinline_for_stack keeps it out of
+rkvdec_vp9_start(), giving the compiler more room for optimization.
 
-> > +	bool is_enabled;
-> 
-> Does this device offer some way to probe whether PWM capture mode is
-> enabled? I suspect so, because I see PWM_ENABLE.pwm_en enables the
-> channel and PWM_CTRL.pwm_mode selects capture mode, so perhaps we're
-> able to read the current state of those registers. If you're able to
-> read those registers to determine the enable state, I'd suggest wrapping
-> that into a helper function and calling it when you need to determine
-> whether the capture mode is currently enabled.
+The resulting code is good enough that both the total stack usage
+and the loop get enough better to stay under the warning limit,
+though it's still slow, and would need a larger rework if this
+function ends up being called in a fast path.
 
-I'm going to read the hardware state in the next revision, you're right
-that this is generally a better idea.
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+---
 
-> 
-> If we're not able to probe the enable state, is it safe to assume we're
-> in a disabled state when the module loads, or should we ensure it by
-> unconditionally disabling PWM capture mode during
-> rockchip_pwm_capture_probe()?
+LLM Generated explanations, may be completely bogus:
 
-In my next revision, I've now modified it to mfpwm_acquire if the hardware
-state has the counter enabled during probe. This sounds niche but I'm also
-doing this on the PWM output side, where Uwe rightfully pointed out that
-a bootloader may have enabled PWM output in hardware and Linux needs to
-recognise that state without any heavy-handed actions. For the counter
-PWM capture side, resetting it to a known state wouldn't be disruptive in
-the same way as it would be for PWM output, but I think it's a good idea
-to keep the state as-is since we can read it.
+Error: Failed to generate final synthesis
 
-> [... snip ...]
+ drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> > +static int rkpwmc_count_read(struct counter_device *counter,
-> > +			     struct counter_count *count, u64 *value)
-> > +{
-> > +	struct rockchip_pwm_capture *pc = counter_priv(counter);
-> > +
-> > +	guard(spinlock)(&pc->enable_lock);
-> > +
-> > +	if (!pc->is_enabled) {
-> > +		*value = 0;
-> > +		return 0;
-> > +	}
-> 
-> I don't think there's a need to check whether capture mode is disabled.
-> The user should be aware of the enable state of the Count by checking
-> the respective "enable" attribute; and if they ignore that, a value of
-> "0" doesn't inherently tell them that the Count is disabled which makes
-> it moot to do so. I'd suggest just removing this check entirely and
-> returning the register values unconditionally.
-
-I see what you're going for, but if the counter isn't enabled, we can't
-rely in the counter having an mfpwm_acquire, and consequently, we can't
-rely on the PWM core clock being on, which is required for reading the
-registers.
-
-In my next revision, I'll still be returning 0 if the counter is disabled,
-but the is_enabled member is gone, so there's a new function called
-rkpwmc_acquire_if_enabled to still make this correct.
-
-I could of course also extend the core driver to let me poke at these
-non-shared registers without exclusive control over the hardware, but
-that may be more trouble than it's worth.
-
-I'll also no longer return 0 on bogus count IDs when the counter is
-disabled.
-
-> > +
-> > +	switch (count->id) {
-> > +	case COUNT_LPC:
-> > +		*value = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_LPC);
-> > +		return 0;
-> > +	case COUNT_HPC:
-> > +		*value = mfpwm_reg_read(pc->pwmf->base, PWMV4_REG_HPC);
-> > +		return 0;
-> > +	default:
-> > +		return -EINVAL;
-> > +	}
-> > +}
-> > +
-> > +static const struct counter_ops rkpwmc_ops = {
-> > +	.count_read = rkpwmc_count_read,
-> > +};
-> 
-> You should implement a signal_read() callback if its possible to probe
-> the current state of PWM Clock. You should implement action_read() if
-> its possible to probe the current polarity of "pwm_in" in order to set
-> which Synapse is currently active.
-
-Unfortunately, it doesn't seem like the hardware allows direct access to
-read the signal. "pwm_in" as it appears in the block diagram seems to be
-an entirely internal signal that's not accessible through MMIO.
-
-Thank you for the reviews!
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> William Breathitt Gray
-> 
-> [^1] https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
-> 
-
-
-
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+index 0e7e16f20eeb0..bc74d2d824ef2 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec-vp9.c
+@@ -923,7 +923,8 @@ static void rkvdec_vp9_done(struct rkvdec_ctx *ctx,
+ 	update_ctx_last_info(vp9_ctx);
+ }
+ 
+-static void rkvdec_init_v4l2_vp9_count_tbl(struct rkvdec_ctx *ctx)
++static noinline_for_stack void
++rkvdec_init_v4l2_vp9_count_tbl(struct rkvdec_ctx *ctx)
+ {
+ 	struct rkvdec_vp9_ctx *vp9_ctx = ctx->priv;
+ 	struct rkvdec_vp9_intra_frame_symbol_counts *intra_cnts = vp9_ctx->count_tbl.cpu;
+-- 
+2.53.0
 
 
 _______________________________________________
