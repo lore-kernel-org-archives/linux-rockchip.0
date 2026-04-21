@@ -4,78 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F4CCF327D3
-	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Apr 2026 09:45:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B01AF8FA90
+	for <linux-rockchip@archiver.kernel.org>; Tue, 21 Apr 2026 15:57:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Do2eNgXVdaL0Z0kf8g8STZw0UvVUtcTUxZU+w2mAsoM=; b=OmvFjgiHjHuE+d
-	RdXyI3x5B5TAX+MaRzBBnb3ShyLEiSt/UVeGFzEe7XMeqA+xSJ7oIRiZMmtPuhvR8OpeQ/u9MTocB
-	kMG7xWJXHmRHti0oRVrUynPLHTDF6YfRmrnBT7SFBz60uWGANL62xmR60/2gzuDk1X2Jau9hNMJ33
-	LdvIMv/kP+N59gjIHLVW11VH+JwgyXgORP+jc3cMPcWS8RiMuMzIIEq1yf0dhfbXc/ZA6GNcHVAeM
-	ljvkiRObnCJqL4p5TdwZyaO6X3mRGRWVdjga0/AcIlS3ksd33tdZWEdN6f4IgOPnEzUslhQ+ZHpqq
-	Ccb6QGpN0FuZzDiPjscw==;
+	List-Owner; bh=zHJXp1jeyzb+21jI5vkvYZfjSPz+kNAx7rbDY9OMopo=; b=hSGKBo9fa5ySBr
+	ASm32SIHym9ozGLHjj8GBJkQ07kX1XgVYfj/h3a/hK4LWfwsH0ipQXJ24MqZqGP2s2pSSK6Kbw70d
+	naTQIxvxswxgUkKtoWYlVLIbnY6uzDK37pIUEPAx1q7qLOTaBn2l+15iILPax/mUFUPOUo6idVVMt
+	Vbust1kwc4enkvo0TB5ksroHQzKzbdBFFSoAZDcCgXFvaEXg37fxFyW1yW0WXOw8bf/tvrtRUUapx
+	AmvE1SEQcpMgCICqyWfj9tQZxJ3vjkW82/z90Kc5eFPZysfYVaNKWF5/YCw5KDU/JrAj1GWMBVX2s
+	4XI3Dw7E7NfGidbk/6LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF7fn-00000008M8g-2XG0;
-	Tue, 21 Apr 2026 09:45:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wFDTH-00000008rza-1rN5;
+	Tue, 21 Apr 2026 15:57:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF7fm-00000008M6m-0MSP
-	for linux-rockchip@bombadil.infradead.org;
-	Tue, 21 Apr 2026 09:45:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=CV9c1b3x442J4d7fS2IkKGulkxFv3w2YEEORXf6cDj8=; b=EoJjiari4E5z/yTjDzksk4mhjI
-	D3R77Bt/oVgOxrVKNiccx9s40OTwJeyu/JUt1XW5pY3PmrNX5XPCeKCv4rXmkGQWfDEVULrCB+Xws
-	g7PAZP9fDK/kMgX7w14DCsTpFkvom9tXSsVB8sz9FCGUyJ8riV62zw3CXZbHfv6Fjsa2h2IEEdSR4
-	pftOAdw/Pq64W+8XSyxp+SyZAlfAbHzrPUEBUqwQEchDU1gM9OIgJR0MtOszsxAyjdYT9jgyeY19G
-	/Wp8pnjeaVdbrINDnW7IFqQp16XKAkaKBmuqi3ysyf8Nq8Yg7dJnCbgC67jIhfNvnYXHvxvLUHuZA
-	JywvWMiA==;
-Received: from smtp-190f.mail.infomaniak.ch ([185.125.25.15])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wF7fd-00000009Van-2KrS
-	for linux-rockchip@lists.infradead.org;
-	Tue, 21 Apr 2026 09:45:33 +0000
-Received: from smtp-4-0000.mail.infomaniak.ch (unknown [IPv6:2001:1600:7:10::a6b])
-	by smtp-4-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4g0HXM6MgnzXpK;
-	Tue, 21 Apr 2026 11:45:23 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0leil.net;
-	s=20231125; t=1776764723;
-	bh=CV9c1b3x442J4d7fS2IkKGulkxFv3w2YEEORXf6cDj8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MuBqGykWqgBJzLlqi7pe3zx6e3hd5EYSpG6cJ0iJiKGsy9flvPEmCZa7V2lTOnv70
-	 5T7ekGqlve+q3Ui5cwBSRVar4v+t4xTDA+5g3VUibJLiOBebp090IUfcCGqB5kaMpn
-	 n0VF9VymGzVM/SpU2J4uuYrDwRJlEKvXWR/pbU7KKV6j/zLQoBwEuGD6WleMsz7ILx
-	 po1tpN6CHfvgnd7qCu9xJym4owq09TQo5Kdgqe++7eApSy1DciZyG32QCaHWuWvrr5
-	 W/uDHntsHUZuU6mACQcv7fppI0njjp/wrxvw/7F9tuh7pfbVabXRtM+v+DPQRGiJKl
-	 /Ral8emt65UVg==
-Received: from unknown by smtp-4-0000.mail.infomaniak.ch (Postfix) with ESMTPA id 4g0HXL6s14zb5b;
-	Tue, 21 Apr 2026 11:45:22 +0200 (CEST)
-From: Quentin Schulz <foss+kernel@0leil.net>
-Date: Tue, 21 Apr 2026 11:45:06 +0200
-Subject: [PATCH v2 2/2] arm64: dts: rockchip: fix Ethernet PHY not found on
- PX30 Ringneck
+	id 1wFDTF-00000008ryk-2WMG;
+	Tue, 21 Apr 2026 15:57:05 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id B116E600CB;
+	Tue, 21 Apr 2026 15:57:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E06BFC2BCB3;
+	Tue, 21 Apr 2026 15:57:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1776787024;
+	bh=L6jvH0KdJ/2HnktukZo98gY67hTXlHukwUOYENICdEM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=PPXgxuERL7AW+4y8s76kQ7QH7zwyVD6XUCEvLOfHXtqa7ZqZ6db1DGYJ5QMECqtMt
+	 qkvfPYlinLnOFalZEzrzh1e1cWV6Z6u1iUjpt/aMYPmPZbxpUknCjTWnBlf0kq1m5B
+	 gzbpcwoo9pRWrq6hwwayrxAnWtTUAeCMdM/TtLTaP5b17jCDZA07EKtmxGqcNN+fCc
+	 6MjHWP/o/JFOBVDlD8/VNHUm8j3ProgEMufhzRK7c/9VX2Pgp0N674ZzPO1hOzvlkY
+	 SsNPZ9anUtD7OF6MVP/UxlJf95iolfVM17lw/WUXzc1ZEfvMUFBoKOgVdhs/ihjVnb
+	 z4qcRK0ceAruw==
+Date: Tue, 21 Apr 2026 16:56:56 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Lee Jones
+ <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>, Damon Ding
+ <damon.ding@rock-chips.com>, kernel@collabora.com, Jonas Karlman
+ <jonas@kwiboo.se>, Alexey Charkov <alchark@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, Conor Dooley
+ <conor.dooley@microchip.com>
+Subject: Re: [PATCH v5 0/6] Add Rockchip RK3576 PWM Support Through MFPWM
+Message-ID: <20260421165656.168fe262@jic23-huawei>
+In-Reply-To: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
+References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Message-Id: <20260421-px30-eth-phy-v2-2-68c375b120fd@cherry.de>
-References: <20260421-px30-eth-phy-v2-0-68c375b120fd@cherry.de>
-In-Reply-To: <20260421-px30-eth-phy-v2-0-68c375b120fd@cherry.de>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Andrew Lunn <andrew@lunn.ch>, Heiko Stuebner <heiko.stuebner@cherry.de>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Quentin Schulz <quentin.schulz@cherry.de>, stable@vger.kernel.org
-X-Mailer: b4 0.15-dev-47773
-X-Infomaniak-Routing: alpha
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260421_104532_038023_9C6B3356 
-X-CRM114-Status: GOOD (  14.76  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,55 +76,27 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Quentin Schulz <quentin.schulz@cherry.de>
+On Mon, 20 Apr 2026 15:52:37 +0200
+Nicolas Frattaroli <nicolas.frattaroli@collabora.com> wrote:
 
-When not passing the PHY ID with an ethernet-phy-idX.Y compatible
-property, the MDIO bus will attempt to auto-detect the PHY by reading
-its registers and then probing the appropriate driver. For this to work,
-the PHY needs to be in a working state.
+> This series introduces support for some of the functions of the new PWM
+> silicon found on Rockchip's RK3576 SoC. Due to the wide range of
+> functionalities offered by it, including many parts which this series'
+> first iteration does not attempt to implement for now. The drivers are
+> modelled as an MFD, with no leakage of the MFD-ness into the binding, as
+> it's a Linux implementation detail.
 
-Unfortunately, the net subsystem doesn't control the PHY reset GPIO when
-attempting to auto-detect the PHY. This means the PHY needs to be in a
-working state when entering the Linux kernel. This historically has been
-the case for this device, but only because the bootloader was taking
-care of initializing the Ethernet controller even when not using it.
-We're attempting to support the removal of the network stack in the
-bootloader, which means the Linux kernel will be entered with the PHY
-still in reset and now Ethernet doesn't work anymore.
+Just thought I'd point out that as this includes the linux-iio
+list sashiko took a look at it.  Quite a few things and at least
+the first one I looked at was valid (a dereference before a validity
+check)
 
-The devices in the field only ever had a TI DP83825, so let's simply
-bypass the auto-detection mechanism entirely by passing the appropriate
-PHY IDs via the compatible.
+https://sashiko.dev/#/patchset/20260420-rk3576-pwm-v5-0-ae7cfbbe5427%40collabora.com
 
-Note that this is only an issue since commit e463625af7f9 ("arm64: dts:
-rockchip: move reset to dedicated eth-phy node on ringneck") as before
-that commit the reset was done by the MAC controller before starting the
-MDIO auto-detection mechanism, via the snps,reset-* properties.
+Whilst this tool does generate some false positives, it also finds
+quite a few things it seems us humans fail to spot.
 
-Cc: stable@vger.kernel.org
-Fixes: e463625af7f9 ("arm64: dts: rockchip: move reset to dedicated eth-phy node on ringneck")
-Signed-off-by: Quentin Schulz <quentin.schulz@cherry.de>
----
- arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-index 4203b335a2633..973b4c5880e24 100644
---- a/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/px30-ringneck.dtsi
-@@ -344,7 +344,7 @@ &io_domains {
- 
- &mdio {
- 	dp83825: ethernet-phy@0 {
--		compatible = "ethernet-phy-ieee802.3-c22";
-+		compatible = "ethernet-phy-id2000.a140";
- 		reg = <0x0>;
- 		pinctrl-names = "default";
- 		pinctrl-0 = <&phy_rst>;
-
--- 
-2.53.0
-
+Jonathan
 
 _______________________________________________
 Linux-rockchip mailing list
