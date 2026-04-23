@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42AAAFDEE43
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 19:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A35FFDEE46
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 19:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BlBZa6dvZmq9h9yw7kHgEffOLK4am543Og5nQvlN1TM=; b=Nt2sss8kuGPT2Z
-	uVpcknu11I5AGBuNvA28bLLhfAAfcP8lrFET6fjgRmcxogSkTJPIn5tB9g50wJMHWal5DJXsdTs47
-	/eaIv0Ma/ih7waOiFH9JzQjZvW95W3u+YqCrGC2Oc1umcnVr49OXiWWACzXwldlUtaZ88YVPGan1C
-	1/Cgn0COYuaTzU24vmvHtgKphL5ooeLfSP7ndxMGrxOjbzaTc+kpprBC+FgepeH1pacS4NsI18HH2
-	UZ1Y2m2IWLi9wFQejMJFFxnBNfxfpbKDEKk+jEhIdH6yHUKSJkiwWj5qIvnRSjbwDNTzTGdItF4PT
-	mc0/MfFwDB6B041/9GVQ==;
+	List-Owner; bh=xLSNrogOp/edopkUHUZS/AmxbtuLQND8KvyuKaEpdL0=; b=EQHYqEVkL6APFt
+	JRokNrwkFzZ8g1WtEvVGB75VDNUuiVu2h2ae7DwRh3c5n3lTOdJsO1ncYw+z/gTic7CaZF5zAmTUo
+	Y/U3pVZVsznCgZRlj4w6DjR731LTmzGFNySnWKcIkNojCeY2Polz9gEiXn3Jw51fErUOHpICnLVht
+	o4heMx+3I1cxqZB44yzuHTSAB5MSZ3Cf43rYk10xuyTgzB3sbLurMlJ7PLAz/0qkSHMWj6EII8mih
+	IXUL81V0OfVdNQ52IGwWkV8cYmzYyM/1cg+bT1Rt/R8ueGWEjorurnwWma2EqlnmcA9gTLs7wbn0e
+	9W6Cz1xWnrvM9i1m/Rpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFzNj-0000000CB5J-3d0G;
-	Thu, 23 Apr 2026 19:06:35 +0000
+	id 1wFzNq-0000000CBCv-04cn;
+	Thu, 23 Apr 2026 19:06:42 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFzNY-0000000CAtX-2UkL;
-	Thu, 23 Apr 2026 19:06:27 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1776971120; cv=none; 
+	id 1wFzNk-0000000CB5r-2HXU;
+	Thu, 23 Apr 2026 19:06:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1776971156; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=D8pBdc3/tnggta8aXWJGkalpzLSoKkl9RI1kRRl8p4xXZ3tYdlAiPmqPEsRqtXhkAvIHZgReAjH7DG7x2D5wqH9COkZDwGlTer0zHP/7tw1XwzMNkWvOWM+e/GvXD9zAjRBmVK0wnBLlccu0yu4T4d5ta5WmZdZPmutMFdhhRAo=
+	b=JdJ3PgG9Gqtc9q89kP9LmCWk50En41yQhORDIwds/esKRYqC3gAKLykzueVmKDwI2kpAHcQjiu0OOnUnvRpH6BxnDKUDdlXxLWg2r+iNMBhLF+n78rg419TF20GE9s1ZPi5Kh9R0uZwxkRvos/r3Nuxx0a+Rvxnq3ETK71AwHgg=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1776971120; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=tTwgeWxJjTj3zgZ7H2pPIg1FKRse0ow00ezleoUdZMU=; 
-	b=g1SmoujqSrYvBw5rP1xPDBGHr2hCIAE11S0td7aLwyRhSQeSo2gvHsAQYCa32bLMw/qnHS+X6bf1PPju531+hMqyfiazXrIuDxxZTmJSr2U8ePcXdjg6Qne0ajmT/TuqmMiDCn50i/WQkEP1xCCAE0/T6F53+5inr7UD31qzLRs=
+	t=1776971156; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=be7cudcJCQUyOVOHwo1ND08VirjduJEwXA0KoZoROB4=; 
+	b=PAC6Is690zrWOpya/BPXy8jI5eECxfvUghFca13/J4qn6u4jkNDv4qBqtzRjTdJmxlRM3UuFdtMfnanBHKJfJtVqvoNat1UfF/jvMHawQjglxfodlINv/wCSEnIHc1wJouuave0sc4ozkp3dnjaQU1tIIiJXboYF/9LJ+xv4CD0=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776971120;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776971156;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=tTwgeWxJjTj3zgZ7H2pPIg1FKRse0ow00ezleoUdZMU=;
-	b=PW5IGQXn5/fqsoVnDzVpFnNW0j4+ag7FRX034TBZNlieh34iw9qrJPcwMZncfRo7
-	Ho2d8PS3SVCSWYO+MryNu8bjHp+2NhW7sTO7HtE+86jiYrANPfnxriA65VX2QNjmNc7
-	LYNMLDaeX42EC1kIVYSln9GBiC4eAXjW/HM9yy+o=
-Received: by mx.zohomail.com with SMTPS id 1776971117666621.558874860145;
-	Thu, 23 Apr 2026 12:05:17 -0700 (PDT)
+	bh=be7cudcJCQUyOVOHwo1ND08VirjduJEwXA0KoZoROB4=;
+	b=NXDfFj3bgTu0VgORBATMUBjjJWpuFnIxlfg7PQb2jEaanY/FqBhpYLdkKklvkqAX
+	E1cHxSwXr62PHwRCXXw+0JJ9BaoolcT82TMbaStank6z8jDBp64tjD+TLB6qCWGoyWa
+	+iRXksdLSWk+r4xxFKLuKAyneHVXcQUT3AO070LY=
+Received: by mx.zohomail.com with SMTPS id 1776971154816983.0495467161185;
+	Thu, 23 Apr 2026 12:05:54 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 23 Apr 2026 21:03:34 +0200
-Subject: [PATCH v14 11/28] drm/i915/hdmi: Add YCBCR444 handling for sink
- formats
+Date: Thu, 23 Apr 2026 21:03:39 +0200
+Subject: [PATCH v14 16/28] drm/rockchip: vop2: Add RK3576 to the RG swap
+ special case
 MIME-Version: 1.0
-Message-Id: <20260423-color-format-v14-11-449a419ccbd4@collabora.com>
+Message-Id: <20260423-color-format-v14-16-449a419ccbd4@collabora.com>
 References: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
 In-Reply-To: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -79,11 +79,12 @@ Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
  linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Andy Yan <andyshrk@163.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_120625_089024_3ECE16E5 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20260423_120636_676236_41C06FA4 
+X-CRM114-Status: GOOD (  10.72  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,83 +101,33 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In anticipation of userspace being able to explicitly select supported
-sink formats, add handling of the YCBCR444 sink format. The AUTO path
-does not choose this format, but with explicit format selection added to
-the driver, it becomes a possibility.
+Much like RK3588, RK3576 requires an RG swap to be performed for YUV444
+8-bit and YUV444 10-bit bus formats.
 
-Check for YCBCR444 support on the sink in sink_bpc_possible, and on the
-source and sink in sink_format_valid.
+Add its version to the already existing check for RK3588, so that YUV444
+output is correct on this platform.
 
+Fixes: 944757a4cba6 ("drm/rockchip: vop2: Add support for rk3576")
+Reviewed-by: Andy Yan <andyshrk@163.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/i915/display/intel_hdmi.c | 32 +++++++++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/drm/i915/display/intel_hdmi.c
-index 874076a29da4..ee7a7655e9b4 100644
---- a/drivers/gpu/drm/i915/display/intel_hdmi.c
-+++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
-@@ -1966,6 +1966,8 @@ static bool intel_hdmi_sink_bpc_possible(struct drm_connector *_connector,
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 843c7ef979b2..d3b76e7e785e 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -337,7 +337,8 @@ static bool vop2_output_uv_swap(u32 bus_format, u32 output_mode)
  
- 		if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR420)
- 			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_36;
-+		else if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR444)
-+			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_36;
- 		else
- 			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_36;
- 	case 10:
-@@ -1974,6 +1976,8 @@ static bool intel_hdmi_sink_bpc_possible(struct drm_connector *_connector,
- 
- 		if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR420)
- 			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_30;
-+		else if (sink_format == INTEL_OUTPUT_FORMAT_YCBCR444)
-+			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_30;
- 		else
- 			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_30;
- 	case 8:
-@@ -2021,6 +2025,27 @@ intel_hdmi_mode_clock_valid(struct drm_connector *_connector, int clock,
- 	return status;
- }
- 
-+/**
-+ * intel_hdmi_can_ycbcr444 - Check whether connector can output YCbCr444
-+ * @connector: pointer to &struct intel_connector to check
-+ *
-+ * Checks whether the hardware that backs @connector is capable of outputting
-+ * YCbCr444 video over HDMI. Does not check whether currently connected sink is
-+ * capable of receiving it.
-+ *
-+ * Returns: %true if source supports outputting YCbCr444, %false otherwise.
-+ */
-+static bool
-+intel_hdmi_can_ycbcr444(struct intel_connector *connector)
-+{
-+	const struct intel_display *display = to_intel_display(connector);
-+
-+	if (HAS_GMCH(display))
-+		return true;
-+
-+	return false;
-+}
-+
- static enum drm_mode_status
- intel_hdmi_sink_format_valid(struct intel_connector *connector,
- 			     const struct drm_display_mode *mode,
-@@ -2038,6 +2063,13 @@ intel_hdmi_sink_format_valid(struct intel_connector *connector,
- 
- 		return MODE_OK;
- 	case INTEL_OUTPUT_FORMAT_RGB:
-+		return MODE_OK;
-+	case INTEL_OUTPUT_FORMAT_YCBCR444:
-+		if (!intel_hdmi_can_ycbcr444(connector))
-+			return MODE_BAD;
-+		if (!(info->color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444)))
-+			return MODE_BAD;
-+
- 		return MODE_OK;
- 	default:
- 		MISSING_CASE(sink_format);
+ static bool vop2_output_rg_swap(struct vop2 *vop2, u32 bus_format)
+ {
+-	if (vop2->version == VOP_VERSION_RK3588) {
++	if (vop2->version == VOP_VERSION_RK3588 ||
++	    vop2->version == VOP_VERSION_RK3576) {
+ 		if (bus_format == MEDIA_BUS_FMT_YUV8_1X24 ||
+ 		    bus_format == MEDIA_BUS_FMT_YUV10_1X30)
+ 			return true;
 
 -- 
 2.53.0
