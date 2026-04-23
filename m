@@ -4,65 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17FA6F9935C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 09:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95872FDEE43
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 19:05:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=W9zbxedpRIff+F8UH5Bk0v92FY1acGQAzPwADki57Oc=; b=cqjy9mxenXLmjN
-	mc5rUqE+4SsD/gIhI+5OUCUGBuoYMacVlgU71AoQUk1PjmRGp7KU1jeIwAtOeI3lIPcCFtC0SdFiC
-	TQnyl1Jl1EcDjnvL26jHvFx0/uOanzgw4TFDWohGhTXxtpcKknzVwFU7q4Nx5dASSJHBJXfJSHNRP
-	mqTDGSXQYAEyrW0BdeeOkuTEQeJ53EzOUaH17Enqv5VB98NDAHgaRM5ppT75ZwygEjBbwK7vo7VvM
-	UGSAIaEl+hphXdyFuuNdXRcwJcu+1yxI/CzIq9OtdTvRv2rnZ7f9B2I80k7vKMgoCc+4WVFGhvULm
-	nroFLZc2LUv1Sr/Gi9LQ==;
+	List-Owner; bh=jNqopPIQZnBibx3Zc0fMNfVUrLnUbmfp+aPS4xjbZLQ=; b=xxscwHlXsMZy+7
+	yAMZhgkwFM+DhN6wW2yCWIM41vrfFoM6MRr9L9BM6fwZOjBbzTd0HACGn6a+LrnHvrf2fjE7jqHB1
+	4kufREuVr3VZAJ6mWxfinA3LWKLEUl/bh2IxN4LNFwkSaIK1PyxXTAlb8wJ1l3i/p6YoVLSRc9eTB
+	lkl01vS4mRmMobm/JWqc1veujtZfcVucUlj7nHOpsqU4vphLElft9bscoxTmZhcgA1bXEPUbhRtgt
+	e3PzDylhqnXhSb07XBQI+wVXJGNmcryVSIX/jmeanpyuzF0Lf4faZ0s41yurFfqNkS0zfFsCc5b+G
+	g1fPPgaXbksDSmwizh6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqE5-0000000BLAK-0MoB;
-	Thu, 23 Apr 2026 09:20:01 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wFzMA-0000000C9ql-3CzM;
+	Thu, 23 Apr 2026 19:04:58 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqE0-0000000BL8H-1gYA;
-	Thu, 23 Apr 2026 09:19:57 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A963C407D0;
-	Thu, 23 Apr 2026 09:19:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF4B2C2BCAF;
-	Thu, 23 Apr 2026 09:19:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1776935995;
-	bh=qKg5bxgpTTQfFUZxcCD9VWvBgzLKpR1Iot7so2sqo0I=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=mTxiAzAvZ7aeMDFlB8ptP+zBdIrxvGYToMwpCPaQ6IUiGmd97xPwNwHPocfDTmgfj
-	 3peDCXfEW1IXekkaN7ymT0Eg7CfcXEs/NT4dIaOj9viGUg6yLTF3TOlEXwNwgUKaUc
-	 Fma3Yv00kKTj39H1p2VWps07J+EnS8jthRfRNATnWi4ewy4w5+crY4zW6b0ViUNOUZ
-	 Kyr1tjayGCVhd9UhkCi7Ger/qDGRF1+ges/MpE7ol36Ngj6wF3AFkIb37XVeV910+T
-	 gRKeDo7bhtpmt2HbNL3t7JvKS4vaurM2H3dzdGDA3VJL/bZxcfdtII8+fLAE2JOpqY
-	 nIiCVR1XfZcdw==
-Date: Thu, 23 Apr 2026 11:19:53 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: phucduc.bui@gmail.com
-Cc: Lee Jones <lee@kernel.org>, Mark Brown <broonie@kernel.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Heiko Stuebner <heiko@sntech.de>, Joseph Chen <chenjh@rock-chips.com>, 
-	Chris Zhong <zyw@rock-chips.com>, Zhang Qing <zhangqing@rock-chips.com>, 
-	David Rau <David.Rau.opensource@dm.renesas.com>, Animesh Agarwal <animeshagarwal28@gmail.com>, 
-	devicetree@vger.kernel.org, linux-sound@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 2/2] ASoC: dt-bindings: drop redundant wakeup-source
- definitions
-Message-ID: <20260423-ingenious-psychedelic-jaybird-40bb4d@quoll>
-References: <20260423042831.21114-1-phucduc.bui@gmail.com>
- <20260423042831.21114-2-phucduc.bui@gmail.com>
+	id 1wFzM8-0000000C9pO-0jB3;
+	Thu, 23 Apr 2026 19:04:57 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1776971041; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=Ju6YYhr0+laHV6wEVKiHy7VGATV9hTtLts/TM3g9M8DHBBB77TNqnHgirB8pVYQRqm6rL6vW8RUDiFF2yk1G1D5qEbd2nc1EREdDqlmpaAZxhdXUiFlowpqFnm5y97gOvMnMZtxPhoAnuSIDU1DKC7L88y9QloQkmyhpcgt2JF4=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1776971041; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=u5Rc4MlgAeapp6Hu/AOUGak4lAh2UA9S1HxUWuw1EyA=; 
+	b=mSK32aQgxs8RwN+iA63KEgdZShbzkzE9tbsxPj+oheheoYc8AQPV1TpPXQ6zFRR5H4qaD2FFkHj9iqCT6AW+B+k2dJKqm/It79jKTQosbFH6wWwc4L3bU5W0oNW/C8b739N4eZjQnDmQQB7fI260LBoN5QWzCvkmFAnqBXSA9is=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776971041;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=u5Rc4MlgAeapp6Hu/AOUGak4lAh2UA9S1HxUWuw1EyA=;
+	b=gTZ2RbsdSii2RLUDM6EXTvaRvgG/JHw9E/CwjHSG7c8wLWAOV0ZMLRLvYwOUSpbp
+	mvRTHJPu8CAL4deuowbs1YdEqfWeKRpAa7EqplMypTaVv0aWjpZZaIhDDy4h2nvyhCj
+	LBO468sB67y4nLNLQDItynuriN8MMW9+e1W/g5m8=
+Received: by mx.zohomail.com with SMTPS id 1776971040810802.2313714730848;
+	Thu, 23 Apr 2026 12:04:00 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Thu, 23 Apr 2026 21:03:24 +0200
+Subject: [PATCH v14 01/28] drm/amd/display: Remove unnecessary
+ SIGNAL_TYPE_HDMI_TYPE_A check
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260423042831.21114-2-phucduc.bui@gmail.com>
+Message-Id: <20260423-color-format-v14-1-449a419ccbd4@collabora.com>
+References: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
+In-Reply-To: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Werner Sembach <wse@tuxedocomputers.com>, 
+ Andri Yngvason <andri@yngvason.is>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_021956_458420_500255CB 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20260423_120456_294190_C85587B9 
+X-CRM114-Status: GOOD (  12.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +102,50 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 23, 2026 at 11:28:31AM +0700, phucduc.bui@gmail.com wrote:
-> From: bui duc phuc <phucduc.bui@gmail.com>
-> 
-> The 'wakeup-source' property already has its type defined in the core
+From: Werner Sembach <wse@tuxedocomputers.com>
 
-TYPES. It is plural.
+Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check that was performed in the
+drm_mode_is_420_only() case, but not in the drm_mode_is_420_also() &&
+force_yuv420_output case.
 
-> schema. A number of sound binding files redundantly specify the
-> 'type: boolean' and provide descriptions which only repeat the generic
-> meaning of the property.
-> Drop these redundant definitions and descriptions to clean up the binding
-> files and rely on the core schema instead.
-> No functional change intended.
-> 
-> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
-> ---
->  Documentation/devicetree/bindings/sound/dialog,da7219.yaml  | 5 +----
->  Documentation/devicetree/bindings/sound/realtek,rt5514.yaml | 4 +---
->  2 files changed, 2 insertions(+), 7 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/dialog,da7219.yaml b/Documentation/devicetree/bindings/sound/dialog,da7219.yaml
-> index 19137abdba3e..fab37cd92e0d 100644
-> --- a/Documentation/devicetree/bindings/sound/dialog,da7219.yaml
-> +++ b/Documentation/devicetree/bindings/sound/dialog,da7219.yaml
-> @@ -45,10 +45,7 @@ properties:
->        - wakeup
->        - irq
->  
-> -  wakeup-source:
-> -    type: boolean
-> -    description:
-> -      Flag to indicate this device can wake system (suspend/resume).
-> +  wakeup-source: true
+Without further knowledge if YCbCr 4:2:0 is supported outside of HDMI,
+there is no reason to use RGB when the display
+reports drm_mode_is_420_only() even on a non HDMI connection.
 
-That's wrong. Commit msg is making here false statements that it is
-redundant. I checked (and you should too!) and driver does clearly
-device_property_read_bool() thus the property CANNOT be the second type.
+This patch also moves both checks in the same if-case. This  eliminates an
+extra else-if-case.
 
-Best regards,
-Krzysztof
+Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+Tested-by: Andri Yngvason <andri@yngvason.is>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+---
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index e96a12ff2d31..5b9fcfb45fd2 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6785,12 +6785,9 @@ static void fill_stream_properties_from_drm_display_mode(
+ 	timing_out->v_border_top = 0;
+ 	timing_out->v_border_bottom = 0;
+ 	/* TODO: un-hardcode */
+-	if (drm_mode_is_420_only(info, mode_in)
+-			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
+-		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+-	else if (drm_mode_is_420_also(info, mode_in)
+-			&& aconnector
+-			&& aconnector->force_yuv420_output)
++	if (drm_mode_is_420_only(info, mode_in) ||
++	    (aconnector && aconnector->force_yuv420_output &&
++	     drm_mode_is_420_also(info, mode_in)))
+ 		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+ 	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
+ 			&& aconnector
+
+-- 
+2.53.0
 
 
 _______________________________________________
