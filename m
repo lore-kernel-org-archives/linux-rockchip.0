@@ -4,52 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10881C44519
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89A20C4451C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WAsog0owbfBn4tEAjf7w72NXwcM++cZ6pxy5CYvZ1I4=; b=n372ytWnLdvPOy
-	/BFEyDjsWxAQ4LI7ujYI0bx0IjOrZlDgXYDjFGjJGDcECng1n0e2FnPUjCpcOxKXOVozfh5teFc/c
-	nPcROu5NucHkaGqUjYiZznTJihb0rtBo3foGZR/IdmYee8dbQX0e5wkmy8w08df/KijwG+feKurvH
-	l+SjK7RGvGoZUI5naOyF3j36F8exzyxDkuDkS6FaAmkkqtAYdDTkmKmZvVpb7KYbrlnqMomgFlTyV
-	iibKteWlb/DcQN2OmkgyWIV6r4lRq134Ga4fxE25KJW2TFlSpZVziGxlu+cROnlgVODJS2/AbgmuU
-	xcEBFL1my6bId5GvKCsQ==;
+	List-Owner; bh=Z2PmvLDjtKTejFHGdNSNA6MrKbCZT3rK98pI9iiDhYE=; b=mGCNN4BgcW1BlJ
+	LMe1hmF4MohN/PJrX6QjVYS9rzzZeXTduz/5G+sRQXYnvlcVR2sW5daN/uj6eX2POvBu/4IHTAN3L
+	G94+b//4KKGgr7BOkyKjAgK3xXMHrwe1eA2Ds7FDn5xhChagGtI+kj8iKBW1AJZ7UgAHO3wA14gVV
+	Tbsi0XvCtgvxRVTP7Iz7cfFv/HIHCw9VULgKHPxrIVKhBE/kdao1f/1nW/XVDdaLVGhQqJeXmORgH
+	vgRW3RidrlxpqVebuyEPMeG6dZQUXGpPZIieQZeH1SS+RIqc7Tvhl0NGTZf+hUHaHesbSTxRpv6G7
+	REYxsXotIRdsTY0G6dbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRM-00000001WjJ-2K31;
-	Thu, 09 Jul 2026 08:49:04 +0000
+	id 1whkRO-00000001Wp4-1lGP;
+	Thu, 09 Jul 2026 08:49:06 +0000
 Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqId-0000000BNMx-16W2
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Apr 2026 09:24:44 +0000
+	id 1wFqJN-0000000BNfP-0OuS;
+	Thu, 23 Apr 2026 09:25:30 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id B405A4E42AC1;
-	Thu, 23 Apr 2026 09:24:41 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 7156F4E42A97;
+	Thu, 23 Apr 2026 09:25:27 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7E981604EB;
-	Thu, 23 Apr 2026 09:24:41 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 25BA810460B45;
-	Thu, 23 Apr 2026 11:24:24 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 43ACE604EB;
+	Thu, 23 Apr 2026 09:25:27 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A649E10460A92;
+	Thu, 23 Apr 2026 11:25:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936278; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936323; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=r0h0s7YDyJyC9H8LCIfiFkqD68Ja76vmnmg5ZXo2XJk=;
-	b=lJ5BUIl6jzyCIPBW14RSkt+AhFJ18npjsk9n4Tkdpmc6n4Uu64oFZe9YUvanHhSum6Sm/e
-	6yfMyRJxbuRXHDey+CuShL/DoWK2p/mKyCyDw0FKekOWzTxVSRI88q/o2GuryhvHXnQvtS
-	AjroJA+GX5iVF5XrI9FEJKZeo5T1/ko/yjzsFN/fJU4gH548dLInDtGSVTtLi+MFRRpYi2
-	Sg7l9IyZw/z8IddM4vFBXxnzgahc5J0Mk3j7ZKapVsW8/xCL744lilMZp7fgb2zD65/UiD
-	Aw2EcZ3ZSq+jmBPh4nLNUwbS6nUyiWDI2CvdCRES7fCTVW6UjrK6/vct6Rartg==
+	bh=nCZtXt1wCZbeFGfu5CmYHKTGIDa/OGAtdmgwB2WpS+w=;
+	b=PGlR6GG0TLHDDbIK0mbh1puZ1Nla4S+hEeIhbeMT7ZbQOy1Yxb5SaPLYvRYVyWEJdVkrqw
+	WMJqNS06KjyMICox7QHvmEOBibcbdflyZqCGpPwGh1luCW5STfek1KW7od5csf15t4rS+Q
+	Kd1J1mLF0z9RASgPRZH4X2JwkWVaI6EnzEStqhpY1GTqy4u8zy+Y2STubSrdhNVx8JXtz4
+	SyRdHZhI+G3MxRcogf2DY67BhAFBsHDwLSX2ndx70VDV5amXpFfqxMNlTN/bBF3EY7E++h
+	tOytfi+0AMkgNz0rMpKvOrX4ed0yBvF76QPlCixiTfhe65DTO44HXg0a24n0dQ==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:20 +0200
-Subject: [PATCH v2 26/41] drm: rcar-du: encoder: remove now-redundant call
- to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:23 +0200
+Subject: [PATCH v2 29/41] drm/rockchip: dw_dp: remove now-redundant call to
+ drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-26-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-29-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -111,9 +110,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022443_580825_6FBE090B 
-X-CRM114-Status: UNSURE (   9.65  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_022529_407115_BC23A6AA 
+X-CRM114-Status: GOOD (  11.33  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -136,22 +134,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c | 2 +-
+ drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c b/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
-index 32ea09d65d76..db2088529b48 100644
---- a/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
-+++ b/drivers/gpu/drm/renesas/rcar-du/rcar_du_encoder.c
-@@ -142,7 +142,7 @@ int rcar_du_encoder_init(struct rcar_du_device *rcdu,
- 		return PTR_ERR(connector);
- 	}
+diff --git a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+index 22c0911f1896..a9a8bf43aa1d 100644
+--- a/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_dp-rockchip.c
+@@ -111,7 +111,7 @@ static int dw_dp_rockchip_bind(struct device *dev, struct device *master, void *
+ 		return dev_err_probe(dev, PTR_ERR(connector),
+ 				     "Failed to init bridge connector");
  
--	return drm_connector_attach_encoder(connector, &renc->base);
+-	return drm_connector_attach_encoder(connector, encoder);
 +	return 0;
  }
  
- void rcar_du_encoder_cleanup(struct rcar_du_device *rcdu)
+ static const struct component_ops dw_dp_rockchip_component_ops = {
 
 -- 
 2.53.0
