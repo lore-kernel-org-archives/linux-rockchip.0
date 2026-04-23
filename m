@@ -4,65 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10251C44514
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAC4BC4450D
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v1YjZsGXWmnoZMpmRPkrWVwdzhmVUnGDmM7u8Rz2048=; b=e+ZCjPWpw1EjhJ
-	ise2YHgNgrcVlcQrKxLDiVabePpgEoH/Y/IuvabCSYpo0MH1NQVQ2ieVTly45QSfB788bygTKjuOV
-	qjo/h63qWTxRv6vcxIqIVEHysCx2UycOoIyQa1IsFrleyghHe/a2c79xn4BdL3VHwY2EIye3ecloA
-	Y3keb3ci5UW4UnakE5kxLPquNBFHvi6GZF/8Dg69J8oxsvFEF8OAo0xcKnpvLshdBrrkf5GBHUJlW
-	z9GZWwfiAk8Auy2Fz3PHdyCJ3QBsGumL0uIV/0G+CKCCCf/XuS6+GchvbfczhVi3x+qmyepynPg88
-	S5NCCsdad9ZQHD83+5HQ==;
+	List-Owner; bh=BqABWGAsMXroIM2MgeP21+ModSQVd0BQ1K+7y41EKZ8=; b=Ofg7+vFo2WN9XV
+	dGEZbjxev0vt1CQAupJjqk28cqIvQ4ESGAzs1E2XDExV6f8M+8NiEXvqo+h76xGBr0iSBq1rX+qv0
+	CCB+OVO3mrLaqgJXD+qFHLrU1Xmxmx9FuVH4nToseoPUHzTbJrP/erfdH2QckG8PWmxlxRT0X4eLz
+	VD06DGWRK3LY2B7I7KyUjAes8yNcjtOSjsTudMnG5pEFSjNmmkGLFQ96cneONUbTb/ibVLGoOiDSO
+	ezMQGkTDd52tlldg+KwfH8sZ91rmS5axI/LHi/4uepNXF5b+F5m4W4Q27g+gYEs3ZhTam+w8Wi3Dd
+	eCFgMHMTx5ss1RnJfUFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRH-00000001WVQ-4562;
-	Thu, 09 Jul 2026 08:49:00 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1whkRB-00000001WB1-2XKz;
+	Thu, 09 Jul 2026 08:48:53 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqHD-0000000BMoG-227t;
-	Thu, 23 Apr 2026 09:23:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=; b=gkpn51Rp7Z0tlN4B3GvWtcKcmT
-	LzYNmrVACLz4x1BMv8BZYLhKcg77B+xS891vOxe/1QPdnrh7M6Az//adb3ZzIXBGWtUH6XaeDj2aO
-	+sdvOOe064j3rdZFfh7tsejYoPAL2KSVx5JZNDd4shEfF9s7gt3XbwrxGZY/eaf0i5iwvYN8kZ5BI
-	oFl6uXbub0m5u5zfZti/SaQw11RhwRn3qexrlehSnD78WJGec8wfoYVT4FQBRT2pikx/0SoEH/1dD
-	1nCIazQUi1cRfDqeJYosUNinRcFksoi5rK1LHuOBanK62EuZEc0iO5RUcmnB2WPODJD/16bKRCcVU
-	9MXJFiHA==;
-Received: from smtpout-03.galae.net ([185.246.85.4])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqHA-0000000Cj6h-2Mx5;
-	Thu, 23 Apr 2026 09:23:14 +0000
+	id 1wFqFf-0000000BM6R-0Vb6
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Apr 2026 09:21:41 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id E9AB54E42AC1;
-	Thu, 23 Apr 2026 09:23:11 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id A01811A33BC;
+	Thu, 23 Apr 2026 09:21:37 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id BBE28604EB;
-	Thu, 23 Apr 2026 09:23:11 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E1CE210460C10;
-	Thu, 23 Apr 2026 11:22:49 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 67FD860495;
+	Thu, 23 Apr 2026 09:21:37 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3AE4C10460A92;
+	Thu, 23 Apr 2026 11:21:16 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936187; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936092; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=;
-	b=Dela7PCeCwV0XP6Eyi/vlbmf9cbREWrhYbwPnig4s4rcV3znSzlbNANpR+ipalBu07dagp
-	7j8/FU1+/maQzP3BUPWOI6nmYPQlbyGFnBJ4lK/m5/sqBuzaFN7DeHLfRMyF4zgqoEMGoH
-	sJfzVnRGTwaTTQMcjm9Y0saGEOkpMT8Wv0xFpiRzpxVE4ph+WvNHtofcRHZ2UomfXz+mN8
-	kYlLp9KzVZwdQVCjy64+ebMaeeTzmtyxoHMAyh+6ZJMbWp1G8yjnC6Nk9p3fHVaPeDloIx
-	UxmZsqyPDFGPFOETUlH8ZFjR4jziTdzrNCahwz08HonIgA/IQuJjddG8gcdmDQ==
+	bh=CoQi3K/0LtPjlkd/ofY2xQBOg7L8vrBg6bgv49zK/6I=;
+	b=ap32Szs7o74unTJci2/Mp0ffJZTnCO8yzh6++TXA0UfN3oiEHSffW17s476WC4IZozxgCW
+	BzJLEwcBc1gYn/Xe1vhsUQkjrks7RFiqJL+ImIl31Kn2/KepZeRzKpRKTOk1yMWwKDI87f
+	oVfz0igvhSmvN4rv+iMcWkWlM3PnE7j1kU5KYBTaMLE8KR3/j0J5F38AsimwkUmNmrJCeT
+	YNEvBs01YES0vMs6dIEjn9eDzEjrhgLVqMOkchhdqUCHn8R+L0VXQlYSHuuHwUycFc4Kmy
+	esytq6NZ0yTTzguSuTsXLw1sDjBNzyxW+0lSywv9w8t9G1LdDdNj12M9Q5tyOA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:14 +0200
-Subject: [PATCH v2 20/41] drm/rockchip: rk3066_hdmi: remove now-redundant
+Date: Thu, 23 Apr 2026 11:17:08 +0200
+Subject: [PATCH v2 14/41] drm/meson: encoder_cvbs: remove now-redundant
  call to drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-20-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-14-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -124,8 +111,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_102312_839778_34088CBB 
-X-CRM114-Status: UNSURE (   7.74  )
+X-CRM114-CacheID: sfid-20260423_022139_916296_024D9680 
+X-CRM114-Status: UNSURE (   8.01  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -149,22 +136,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 --
+ drivers/gpu/drm/meson/meson_encoder_cvbs.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-index 9066ee2d1dff..b64cbed26312 100644
---- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-+++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
-@@ -731,8 +731,6 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
- 		return ret;
- 	}
+diff --git a/drivers/gpu/drm/meson/meson_encoder_cvbs.c b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
+index 41071d6e05e5..41ba6d2139ee 100644
+--- a/drivers/gpu/drm/meson/meson_encoder_cvbs.c
++++ b/drivers/gpu/drm/meson/meson_encoder_cvbs.c
+@@ -279,8 +279,6 @@ int meson_encoder_cvbs_probe(struct meson_drm *priv)
+ 		return dev_err_probe(priv->dev, PTR_ERR(connector),
+ 				     "Unable to create CVBS bridge connector\n");
  
--	drm_connector_attach_encoder(hdmi->connector, encoder);
+-	drm_connector_attach_encoder(connector, &meson_encoder_cvbs->encoder);
 -
- 	return 0;
- }
+ 	priv->encoders[MESON_ENC_CVBS] = meson_encoder_cvbs;
  
+ 	return 0;
 
 -- 
 2.53.0
