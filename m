@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A6B6C4450F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FD09C44509
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5wMVlIt7shabp8bzQdXhPWvaUsljVBrklNN/T8tOnyc=; b=MN5dVt4g6l56NR
-	Of6igSEbjJWTUB/O251EqUNXNe1Z+/phl3riU7yop/JWWM3W3sItAgwldvmLrJy6gh1ViIRnSVcqj
-	UFRHDN9dpJKu+OA8yhxdUukpLMWJbYGep9l5cYbqcbZV7rjBLpOKeibpj0pdwN9ZNdOR9/wKE+bZd
-	bgiAOYbrYdwqGXXixdPXpY64uKryjwl/CPRv1OjeZmEdmEegegEhvZ7fn2kw6GEiCX1DgbxLY6EJM
-	A6ABsUAGsO4n/XaZ2qpZNeFexHcu9/MZxXZkU/omMqFYo1RIFQv0tNTmVUGk60kpEzJFUN6uyq8dy
-	goVe+4dNbqiVnJkYNsZw==;
+	List-Owner; bh=4ujfL6OfwaYzUhDbW3vXGmVxHLoozgj4W33usIVsLhM=; b=a/q5CZ4KjKBdA8
+	djP6+nmFSwRo4Sptad059tFtec7erQFcAy3hDGB0SIx3gyanfYwiCVyXeoP8QsxlOgAi1lZqyz6Hf
+	9I5RpYQTgZL7OcsPaifhvMaWrIJX26SUCXnXvIZkTmXoRwytMirz1v/ZTsFxoJSVTkhykuKlfXO7a
+	hmvtrSZBJAV0oOaLGrlohokqbL77eWXBD87iBfJ4yS/7ZxWbB3RkMLd0TnwUmybcshc593cQY/1VA
+	yqFI9VnWr6Q8rc1SB6r6YpgXU1YQbaxIx+i4MeTw7ftqbP539bWM/+leJ69edvXa5gLYeNtJCyY+r
+	HO82hy2lB7ugwCUOUdpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRA-00000001W6h-2OFP;
-	Thu, 09 Jul 2026 08:48:52 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1whkR5-00000001Voi-1iUy;
+	Thu, 09 Jul 2026 08:48:47 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqF9-0000000BLf4-1VKd;
-	Thu, 23 Apr 2026 09:21:08 +0000
+	id 1wFqE8-0000000BLBM-1pzY
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Apr 2026 09:20:06 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id A661A1A33BD;
-	Thu, 23 Apr 2026 09:21:05 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id DDC4B4E42AC1;
+	Thu, 23 Apr 2026 09:20:02 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 6DACC604EB;
-	Thu, 23 Apr 2026 09:21:05 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1555210460B45;
-	Thu, 23 Apr 2026 11:20:45 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B0E8F60495;
+	Thu, 23 Apr 2026 09:20:02 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 176CA10460B45;
+	Thu, 23 Apr 2026 11:19:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936061; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776935998; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=V0GD2nqnSzzpjquMUJ8mqtlVUQN4wgFBtMOilnHNK4I=;
-	b=Is+rKdERp806BxK70sbFeNgsXGeCAWX33UWLZZ8wFSn0x17HDChyqo3VtAATPt00IVbNVi
-	p9if1wpyGalJdYxtTKPjE6CTAegh/GQSh6OKuq61WNUiSvuQaQl8eo6QnFBexafTlKmnhP
-	3LKQZMFioFSao2+Hn4pndBaOIwqMCZu0vG1XUlBhspRr9pSKW86F2Pf9c3W+DZwoxFYMZo
-	DJ1wrxAjMU9qLlJUOU/ALrsKIVW7Wm5txohbzd1sSVkegipejBssMgtaymOELHWMQWZRtm
-	mNheDL+OZhxE/5h0qsVS/VowQiCg/hz3PbtwuwDFsH1lrj0KvoAm+t/kdn0dhg==
+	bh=ASEN5iSe+7KTh/SjT1+17CeS94d84Fgv4bTew10HK+Q=;
+	b=FiIaBuEJaDhAl+DzNbMlwjNi0Vz+rthytpomLSBrB1ubfQOmTNhrkgIANbSIy7CMifeYC7
+	nGKrgNtcFVxAJotRI8VdFF3OzrxMasRYyuDQlAgQSK6OlqLDdLeJxu8J1WfM9SLNgI+RaT
+	/+/LQjwR/+k2bYlXcKrFCNeNiu38ewQmHGxOblAYdcuJr4xBDB2TLxVT5n1myV0Hp21WlT
+	K5IeTaPu0H5aTsCqObm3tEAVESkoK9yA8O3vZY5hX72XKSP2Y1DHD/3IwNEOmoE9OO0Q8Q
+	g0bULMKIo2B+FAwZlHRi8sELtXFkcIdepUcdlEd6BaQ0cjMBkKpvIAuOGvYyhA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:06 +0200
-Subject: [PATCH v2 12/41] drm/mediatek: mtk_dpi: remove now-redundant call
- to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:02 +0200
+Subject: [PATCH v2 08/41] drm/imx: parallel-display: remove now-redundant
+ call to drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-12-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-8-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -110,8 +111,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022107_534790_DE101D64 
-X-CRM114-Status: UNSURE (   9.30  )
+X-CRM114-CacheID: sfid-20260423_022004_753194_D1AA8981 
+X-CRM114-Status: UNSURE (   8.76  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -135,20 +136,21 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/imx/ipuv3/parallel-display.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 53360b5d12ba..cc6d74ce8b5e 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -1049,7 +1049,6 @@ static int mtk_dpi_bind(struct device *dev, struct device *master, void *data)
- 		ret = PTR_ERR(dpi->connector);
- 		goto err_cleanup;
- 	}
--	drm_connector_attach_encoder(dpi->connector, &dpi->encoder);
+diff --git a/drivers/gpu/drm/imx/ipuv3/parallel-display.c b/drivers/gpu/drm/imx/ipuv3/parallel-display.c
+index 6c505becb31d..0f06db95f00f 100644
+--- a/drivers/gpu/drm/imx/ipuv3/parallel-display.c
++++ b/drivers/gpu/drm/imx/ipuv3/parallel-display.c
+@@ -216,8 +216,6 @@ static int imx_pd_bind(struct device *dev, struct device *master, void *data)
+ 	if (IS_ERR(connector))
+ 		return PTR_ERR(connector);
  
+-	drm_connector_attach_encoder(connector, encoder);
+-
  	return 0;
+ }
  
 
 -- 
