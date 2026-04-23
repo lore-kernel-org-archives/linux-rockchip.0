@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35143C44517
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2277DC44516
 	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0wqlJ6zN8PNSiOkatrNBucBJ4e/RKGBD3Cu4AquwZFw=; b=tA7XKfT7msaFX6
-	ix883gXdaPit+jhEJHA5Rdjh/Cmq9K9CI/sHQixGJ8u+7VZoyF11HQuiJbIjEM6fXqFS2TZhoR9WY
-	/tQRp6HjuBean21lKoe3fAuL3XSEviSlD+CSRkbSamIRauB0ad9LzZ3eS0NH5qc89bSgRHRoVG3IR
-	zcC7wR85AIrcyaTev/YfTXVyM03ezIav9pqKD86deH3DH97HJn8xr9mm2PPjaeEpn5MPJmEC76Bj0
-	q4pqrgJbdQtsFP1+sxYqGcfgb0TpvnF4VBy+ES/0yZLct8lidyxmVDfcRdX1I4SphRxRx5OJVbvqh
-	Ezu1gMUvtqGcHbYhu/Ew==;
+	List-Owner; bh=/MxItthISxb4vBN1cbuua/W2TmmKAbIIV9BOnZ7MAlk=; b=BkuPMT9enJTGON
+	IvD3cB+tWAqQHQQGzjLYI0YxItEIY0m/VvMlNHsCI5kg+FHNp04txSRruYdCYwlOVLfbCtomX8V7/
+	ww/bMP2pFW67CFWiRRAQ+rmU2MG7yQHWqGUneXFB2sgwt1LojuE1wrk7pQ8u/N5lvziEDVG+eboCv
+	r+s0sLDdN0Pqip4Qq+niF7g4MYH+JwgQSkqvxVhv/Mbd7XDmj2573lZhkZva81tqM5vc6MWD9WKI4
+	u7DtuUFUImMho26S4tW00tVdF3hHRTrveuzhUCQmrfLccUo8y7r4uQr3pfIfUQfxulxhgSdf5XJrh
+	zFCeoYk+CYERHuxPLv+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRK-00000001Wbp-1Nkm;
-	Thu, 09 Jul 2026 08:49:02 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1whkRI-00000001WYc-45Yb;
+	Thu, 09 Jul 2026 08:49:01 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqHg-0000000BMzQ-0pAS;
-	Thu, 23 Apr 2026 09:23:46 +0000
+	id 1wFqHR-0000000BMt4-2jsl;
+	Thu, 23 Apr 2026 09:23:30 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 5D9781A33BB;
-	Thu, 23 Apr 2026 09:23:42 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id B7DA0C5EF0B;
+	Thu, 23 Apr 2026 09:24:08 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 3121C60495;
-	Thu, 23 Apr 2026 09:23:42 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E5F0110460BC3;
-	Thu, 23 Apr 2026 11:23:24 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 8123C60495;
+	Thu, 23 Apr 2026 09:23:27 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5890F10460A92;
+	Thu, 23 Apr 2026 11:23:08 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936218; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936203; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=SyGM6lnalo8SUYDUnk0Opf6fJW8aabjHkgHybym1yR0=;
-	b=ncTlmxeHom3yncUt0mbFkngS/N2x3/qlHVgheoB/D8+VNQjG65+zTN2wiOb4kuQ918Wy1L
-	o6gHrueOYz2I0/MEfO8Lfz6HDrNibXfh2KG6C4lagVGQhfTUne7IUe81XqWNf9UbpnmQM8
-	xFdb+14vn0fB/EFDJ4te20e5JHirH2B25hP7p0qlIdFCfpmYu2ct73/ei/wrziXDh75xXq
-	HmbXnL/COooChcs95XAQVUfCsys3x+rXr3crpHrFUOCCo9jMuO8jahfL6fL1mWLGwjG0Rk
-	JPtTbqLY6rkAHSRNyln0RHIGM88HP+IRrHpIOgwfQoCLNq0Rp5iN+INO+sIELw==
+	bh=zuskyB/Ofn9FQlEl+3ISgazhLidutYQWgyeE9Pw9W30=;
+	b=DgLcSltqddZ3BB0ynH7ct5WsU/8SdSikELjoxYCnaPzY8xtRPeQuKGmBGPZC9lW9fQ96u5
+	P/pQAJW/pSkAR9wdbq6iwJ/3zsIhpxf8e857W/P7qFLFTJ4y9S6bTavlNhjhigb6H/O59C
+	viPUSkphixvnCvVU8UqX+kuCnvZf+Fjhxv2/J9e2cYR/N2XNam5QCpUuAtt3d9WsIJpyj+
+	wceSsnXejQqvEorJs6sG9VnyEOpAlF+XG5UdIOryeZ89At1OWzCiQkLA2lPEFhH4sf2Xhw
+	YPaBKaSBMzFXaRbU+dVjMfczGIOBelZ3a+iaDya+hewPLkF0ferLkEy//Jn4bw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:16 +0200
-Subject: [PATCH v2 22/41] drm/tegra: rgb: remove now-redundant call to
+Date: Thu, 23 Apr 2026 11:17:15 +0200
+Subject: [PATCH v2 21/41] drm/tegra: hdmi: remove now-redundant call to
  drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-22-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-21-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -110,8 +110,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022344_364133_7AD9AA3E 
-X-CRM114-Status: UNSURE (   7.72  )
+X-CRM114-CacheID: sfid-20260423_022329_842107_BA180A46 
+X-CRM114-Status: UNSURE (   8.25  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -135,22 +135,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/tegra/rgb.c | 2 --
+ drivers/gpu/drm/tegra/hdmi.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/tegra/rgb.c b/drivers/gpu/drm/tegra/rgb.c
-index ff5a749710db..e67fbb2362e6 100644
---- a/drivers/gpu/drm/tegra/rgb.c
-+++ b/drivers/gpu/drm/tegra/rgb.c
-@@ -355,8 +355,6 @@ int tegra_dc_rgb_init(struct drm_device *drm, struct tegra_dc *dc)
+diff --git a/drivers/gpu/drm/tegra/hdmi.c b/drivers/gpu/drm/tegra/hdmi.c
+index 0adcd4244a42..10f02f35c866 100644
+--- a/drivers/gpu/drm/tegra/hdmi.c
++++ b/drivers/gpu/drm/tegra/hdmi.c
+@@ -1576,8 +1576,6 @@ static int tegra_hdmi_init(struct host1x_client *client)
  				connector);
  			return PTR_ERR(connector);
  		}
 -
--		drm_connector_attach_encoder(connector, &output->encoder);
- 	}
- 
- 	err = tegra_output_init(drm, output);
+-		drm_connector_attach_encoder(connector, &hdmi->output.encoder);
+ 	} else {
+ 		drm_connector_init_with_ddc(drm, &hdmi->output.connector,
+ 					    &tegra_hdmi_connector_funcs,
 
 -- 
 2.53.0
