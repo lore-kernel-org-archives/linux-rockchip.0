@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D234CC44513
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10251C44514
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BtP1OdYVvGPJvWKXWZ+yP2Z9yPx/4mRZ5F+o6FlHRq0=; b=KY0At12M+BehY3
-	rnJUKXMvIO5a7JLEWVONtJ22dC2Rfaobn2B3zgIf8LBvF8eLBip4d5QjA7O5GnauMpJVu6V3hNCxy
-	/jVnWACbz4s9YAlm3K2A+ZB+oo4d+sBWRelD3CUQNaNSTUB3UoXyFut8aLb5xxJ+qUalVN0gEXayq
-	ETSgmF+kOk3PFwIQGd86ThTTdeqMFpzKBlTcuaVShUdZHg2Q3luU0BC1bzXVy+bc2TxSQ+rcFuy3L
-	dSsr+nFXWNojLyeWX8R5+jSDfpALTwkEb59gW/FHLo7hSezXGoDALCR0GhAad3vVWrFdHURChTiSc
-	51OSvSCKbMh9Py6p0ePA==;
+	List-Owner; bh=v1YjZsGXWmnoZMpmRPkrWVwdzhmVUnGDmM7u8Rz2048=; b=e+ZCjPWpw1EjhJ
+	ise2YHgNgrcVlcQrKxLDiVabePpgEoH/Y/IuvabCSYpo0MH1NQVQ2ieVTly45QSfB788bygTKjuOV
+	qjo/h63qWTxRv6vcxIqIVEHysCx2UycOoIyQa1IsFrleyghHe/a2c79xn4BdL3VHwY2EIye3ecloA
+	Y3keb3ci5UW4UnakE5kxLPquNBFHvi6GZF/8Dg69J8oxsvFEF8OAo0xcKnpvLshdBrrkf5GBHUJlW
+	z9GZWwfiAk8Auy2Fz3PHdyCJ3QBsGumL0uIV/0G+CKCCCf/XuS6+GchvbfczhVi3x+qmyepynPg88
+	S5NCCsdad9ZQHD83+5HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRG-00000001WRT-43JL;
-	Thu, 09 Jul 2026 08:48:58 +0000
+	id 1whkRH-00000001WVQ-4562;
+	Thu, 09 Jul 2026 08:49:00 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqGv-0000000BMiW-3StP;
-	Thu, 23 Apr 2026 09:22:57 +0000
+	id 1wFqHD-0000000BMoG-227t;
+	Thu, 23 Apr 2026 09:23:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=XwidxyoogX5GWOhGVcE3zNBKFfumjMOvx5cL+pFRRzU=; b=D7t5SR+5+N+HNKKeBMm5pLRf6x
-	+ZUhxyNklmsuwihRZnGh5VkWZaWHP0HB+fISjyG9jd2nKo9ufI6GrowT2itVvGDZo1arVTrHrG8pL
-	Db6OAH8QmBW+OTDPcuVuaEFg6vCYPfPPAQ6hTg7G7uFlVzQ7rIn3kjFRXycFEMyGPcjWm1RK/dJLU
-	/QzqJP6ss+vc2+rtoGVGoKIfZjwqO8PNvsqxn31DOPneqYJIl9L4+gura34EZ2ls5h2WvPk9rdbMp
-	Z1YrNtwZ1ZnjzLvMCGoRlg2k6fHj2wk1R4XiyZ7CHKyOuMWzoS4NT4KsdxmyGuy7yR2YM/5+QwWBB
-	nuk7johw==;
+	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=; b=gkpn51Rp7Z0tlN4B3GvWtcKcmT
+	LzYNmrVACLz4x1BMv8BZYLhKcg77B+xS891vOxe/1QPdnrh7M6Az//adb3ZzIXBGWtUH6XaeDj2aO
+	+sdvOOe064j3rdZFfh7tsejYoPAL2KSVx5JZNDd4shEfF9s7gt3XbwrxGZY/eaf0i5iwvYN8kZ5BI
+	oFl6uXbub0m5u5zfZti/SaQw11RhwRn3qexrlehSnD78WJGec8wfoYVT4FQBRT2pikx/0SoEH/1dD
+	1nCIazQUi1cRfDqeJYosUNinRcFksoi5rK1LHuOBanK62EuZEc0iO5RUcmnB2WPODJD/16bKRCcVU
+	9MXJFiHA==;
 Received: from smtpout-03.galae.net ([185.246.85.4])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqGs-0000000Cj4j-0Z3j;
-	Thu, 23 Apr 2026 09:22:56 +0000
+	id 1wFqHA-0000000Cj6h-2Mx5;
+	Thu, 23 Apr 2026 09:23:14 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 29FF74E42A97;
-	Thu, 23 Apr 2026 09:22:53 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id E9AB54E42AC1;
+	Thu, 23 Apr 2026 09:23:11 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id F06B2604EB;
-	Thu, 23 Apr 2026 09:22:52 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 40E2210460A92;
-	Thu, 23 Apr 2026 11:22:33 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id BBE28604EB;
+	Thu, 23 Apr 2026 09:23:11 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E1CE210460C10;
+	Thu, 23 Apr 2026 11:22:49 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936168; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936187; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=XwidxyoogX5GWOhGVcE3zNBKFfumjMOvx5cL+pFRRzU=;
-	b=wS8GIDh5S8G5udsC+ODnCYvu80TbR8LbfjWIZhgwZOcYDJIWqxMQT8t35DO0qnRhaFU1JY
-	eBXWxyAQzjkUJ2mXjMRYjVcei+OeMwhXZnAHihYgIEo/URKYDREktKPnkgd4r2jhFPLop6
-	Z3yecuDvdB/Bio7gKXxe3qcYOLQIy9QkxIX+kKuYO0+IUoiwKpRvH4zYuXlqn8pwktL75P
-	M5pg+nrFdqF6x35Ofn/wwS3iK6Co4rtvoFj1HxNEB2YTvb6JFnyaRuntdx/V8sGjGCmopu
-	0C7JynkQSFMEG/SAhBVgEEM/sin0k5qHtuDZLX0hPhUxs7zLoI2TRhL/sowmqg==
+	bh=9rSCpGcHOa1+mXR0a2bgn/kZdo39DrzyrKDarx7ZrvQ=;
+	b=Dela7PCeCwV0XP6Eyi/vlbmf9cbREWrhYbwPnig4s4rcV3znSzlbNANpR+ipalBu07dagp
+	7j8/FU1+/maQzP3BUPWOI6nmYPQlbyGFnBJ4lK/m5/sqBuzaFN7DeHLfRMyF4zgqoEMGoH
+	sJfzVnRGTwaTTQMcjm9Y0saGEOkpMT8Wv0xFpiRzpxVE4ph+WvNHtofcRHZ2UomfXz+mN8
+	kYlLp9KzVZwdQVCjy64+ebMaeeTzmtyxoHMAyh+6ZJMbWp1G8yjnC6Nk9p3fHVaPeDloIx
+	UxmZsqyPDFGPFOETUlH8ZFjR4jziTdzrNCahwz08HonIgA/IQuJjddG8gcdmDQ==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:13 +0200
-Subject: [PATCH v2 19/41] rm/rockchip: cdn-dp: remove now-redundant call to
- drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:14 +0200
+Subject: [PATCH v2 20/41] drm/rockchip: rk3066_hdmi: remove now-redundant
+ call to drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-19-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-20-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -124,8 +124,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_102254_484796_1A95C607 
-X-CRM114-Status: UNSURE (   9.71  )
+X-CRM114-CacheID: sfid-20260423_102312_839778_34088CBB 
+X-CRM114-Status: UNSURE (   7.74  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -149,21 +149,21 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 2 --
+ drivers/gpu/drm/rockchip/rk3066_hdmi.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 177e30445ee8..f39450e12716 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -1024,8 +1024,6 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+diff --git a/drivers/gpu/drm/rockchip/rk3066_hdmi.c b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+index 9066ee2d1dff..b64cbed26312 100644
+--- a/drivers/gpu/drm/rockchip/rk3066_hdmi.c
++++ b/drivers/gpu/drm/rockchip/rk3066_hdmi.c
+@@ -731,8 +731,6 @@ rk3066_hdmi_register(struct drm_device *drm, struct rk3066_hdmi *hdmi)
  		return ret;
  	}
  
--	drm_connector_attach_encoder(connector, encoder);
+-	drm_connector_attach_encoder(hdmi->connector, encoder);
 -
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
+ 	return 0;
+ }
  
 
 -- 
