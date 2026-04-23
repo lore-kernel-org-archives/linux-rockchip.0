@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BED5C44503
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DAFEC4451F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C/Xs/h1agxl4Toku6u/jkWnvvQSy28p54NLv875NmPs=; b=XhZ1LSnV1TWSWy
-	EDvgDphoZg5Cz040ywXNEaPIr72SXTM5giiDkeIK2mhcOMyCrsOhkD3D+hEZLeqYa/PBw7HZhCc2g
-	Z+NwAkWNbSqFUq0221CT47WS6gt7O8fmA5XJLUe8Znluz1TQjiexwQ0zEI9ilKAscjgA6kd1qo1he
-	HAgpvWI6QXC6XP34XwDRjltGmd59j5mrHuJBxsKehny+t3nbsrABadh5MWhd2LaRReocvYSlgzrNp
-	RmUaiRGLd13f/GKtzaCwRmhOj7+UA6YrS8ZeMS1nILrVKyTSUjE4tvuAdvwvRCQ7zBdMx/UHWvj1U
-	wIGmaSurEHNhIZ9EMF2g==;
+	List-Owner; bh=r9L1+ZqlHXQzkQAgPiYlUUiJEvXkt0CPu1omnfQqeqU=; b=y/sqWgtVBwNv99
+	nJbDgJCooAVf89pvCWx5mInpKdQHa9tCKQpPEja9rCyeWvFDnjcsEtMvzx3aAmTr0QU3Nzypuu/4o
+	tlJcSJ6VMPbUDwhH0zMYDG2janhd3vAHTNdvM8Y1sjJ7B2SdLA+BkEsQW09vqfgk4bHznk3+gP4oN
+	YIY/t5rZ6I5zUddzgmJ++Us8PwVpd/dQ0qc+ts7MeoCdh3f53YxLqTqCUwCcsl5a0AYVjR2LPwMC1
+	nZ3/TKAjlYIx1ZeKi7uPmEUXX5u+3FeFCAve9KYyK2Fsst+QLpmwcCKNHpdwuTc0U5w2m2mt/ZZ/T
+	Acf/2uqOFKKJq5+JpGJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRL-00000001Weg-0got;
-	Thu, 09 Jul 2026 08:49:03 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1whkRO-00000001Wqw-43y5;
+	Thu, 09 Jul 2026 08:49:07 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqIA-0000000BNB8-3l5V;
-	Thu, 23 Apr 2026 09:24:16 +0000
+	id 1wFqJa-0000000BNm3-21V7;
+	Thu, 23 Apr 2026 09:25:44 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 355534E42A97;
-	Thu, 23 Apr 2026 09:24:13 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id DA2841A33BC;
+	Thu, 23 Apr 2026 09:25:40 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 0031A60495;
-	Thu, 23 Apr 2026 09:24:13 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5942D10460B12;
-	Thu, 23 Apr 2026 11:23:54 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id AD2B2604EB;
+	Thu, 23 Apr 2026 09:25:40 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A0F7C10460BE8;
+	Thu, 23 Apr 2026 11:25:24 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936249; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936337; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=hHreTF5UsM+/5KFOm8ixdx5rwjisLGM2O64i/IkGzAY=;
-	b=n74CTXJU78zzsgPjKkGkghfxZ9OtKVBW5Bn3VfQOrmW213MFdXW84egqu1ul/3W/jxfqhP
-	jp42EpKbXOVvBnQGS3VivkrIeOnTCBFos5/Yvvy32eRi3uPTRjWZs9pZlNIJJ/IFa7sX5/
-	nBBbHWDhqge9+iIfRGIGqUA3O1bFXoQg9IkqRWh6H0PMaWVPJDV0HeVF0HxgxbnM0+fZjf
-	ZeM7T46FVWR6mD1cg+NLqYsLM1C4aXLtvUREbzaKYfVpZOMfczWkDKF213l1O0t8a4yafT
-	xcTFjd/tOvxMwT5cIDa1WYYIuA1Ngng4tmYCmFQHCoE6tirpaBysjSfCmWn6mA==
+	bh=UVZBM3qKgBxuYxQMCLXJt4FD6qsQcz8YYge/VPeKv7I=;
+	b=qzqwO0hqG4LzYhnfHSCLlj+j24TbMGJSo1tWJMHmb3oKUbYPbPxinKvCXSYh19xeTbEVSt
+	e+5uoPusZCR+eslgsDCn2POgwAphNKP6kcSgwdx3tzQde2QipODHlq2wmzmI2wsXymPmZe
+	eZD+GOIYVv0zX3yCiEZxLRKyl0nG0wj/ISAxga6M1aAQ8NrlYtVoCZmkdpxQ0gyQ3NEG8M
+	iDVpwN3Rylgt1Goe2n8/8T60ccPDL1QhOiOaJuT7whfUkZE9iN8NM5X6SzbwC8yazI+FTP
+	slAKQC6aha6Er/vwwTxgdQKtBp2QHZHixeoaaecgin6I0vm6XMaSiYOFv9z+MA==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:18 +0200
-Subject: [PATCH v2 24/41] drm: verisilicon: remove now-redundant call to
- drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:24 +0200
+Subject: [PATCH v2 30/41] drm/rockchip: dw_hdmi_qp: remove now-redundant
+ call to drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-24-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-30-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -110,9 +110,8 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022415_063349_E96C3784 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260423_022542_690504_5C334633 
+X-CRM114-Status: GOOD (  10.91  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -135,21 +134,22 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/verisilicon/vs_bridge.c | 1 -
- 1 file changed, 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/verisilicon/vs_bridge.c b/drivers/gpu/drm/verisilicon/vs_bridge.c
-index 2a0ad00a94d6..83c91d5ce397 100644
---- a/drivers/gpu/drm/verisilicon/vs_bridge.c
-+++ b/drivers/gpu/drm/verisilicon/vs_bridge.c
-@@ -365,7 +365,6 @@ struct vs_bridge *vs_bridge_init(struct drm_device *drm_dev,
- 		ret = PTR_ERR(bridge->conn);
- 		return ERR_PTR(ret);
- 	}
--	drm_connector_attach_encoder(bridge->conn, bridge->enc);
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+index c78db7f8ab6c..f35484715c2d 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
+@@ -603,7 +603,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
+ 		return dev_err_probe(hdmi->dev, PTR_ERR(connector),
+ 				     "Failed to init bridge connector\n");
  
- 	return bridge;
+-	return drm_connector_attach_encoder(connector, encoder);
++	return 0;
  }
+ 
+ static void dw_hdmi_qp_rockchip_unbind(struct device *dev,
 
 -- 
 2.53.0
