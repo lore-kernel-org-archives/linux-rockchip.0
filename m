@@ -4,101 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E82C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6FCEC4451A
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:48:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zt0+2NiikF+upWZVJ4DrBif73bI5tDlx12WIafHS1r4=; b=b3pDEdkvB3sIsP
-	pzGXuF3AU0wixdPQ830+IRoC1Zy9w3rkF+ifbj5PqoNFLUz/scooCUyv6r1veut3miV0vDw+jH6WB
-	IzXF2sFkMk09nzUOttvcefSqk3tpaDccuf1IUgfw0ajDZKmYO2heXvUwFjAoL3zBY3IVWXiTeias9
-	aYCkoq0qC9czmBGJLmvGXDXYcALsdjriJr2ynKqP2K4Gj86gZj1SgbcFmG5kLAqAcSDOSlRxkyAau
-	nyhtG3iRo0YtRPQ2OVB+2IO/FGoN41vq344S8QNsBbCCut1jA622TLH4Q0/koN6yZZIjVGz/yILnC
-	+W1ppNsZk57rL9PWl5PQ==;
+	List-Owner; bh=+A8z0IKQHyodmLIDWDFRScOAhAOuhZ53Vg9QX3cObf8=; b=l+RkC4L1qcjop7
+	W1axFu85rfel4ZsVNllOMyi5oXAip+Kps2+WAg9fG5JxzOKFPzKGp9p63bWHLREM4ZaBXWYYxb/QW
+	9VEdScY87lasZsniewmEqYgu5MoBc5WYiJFIJKtWMiq/roHojz9gxJMrbkUMPDViUWKoGQQBPMpT9
+	1ebcZIlTKa97XFNbv2BL6LA4u0s5WlWeV+cZPA5iIQpLzr6BAij0XgiE1yQJsL14m8I+3JtNs3QhE
+	aQlzlPXPxjc+sBnw5Rj20xl7YOUlrANjQZZINLv40++FQzpvIsVD7fSmvPynTPvWNYsL1kHAS2X9l
+	6ZJjOAZ3bjiUWSwIiRCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkQp-00000001UsW-1TM1;
-	Thu, 09 Jul 2026 08:48:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1whkQy-00000001VNp-2gAz;
+	Thu, 09 Jul 2026 08:48:40 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1vyiZh-00000004rRh-3pCn;
-	Sat, 07 Mar 2026 03:43:35 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9A61C43C6A;
-	Sat,  7 Mar 2026 03:43:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B574C19422;
-	Sat,  7 Mar 2026 03:43:29 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1772855012;
-	bh=Npi1ivSwi9obv8U3L34yLEE92R/UJPUFNgtE+UQvMxI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=eEu0t4KqV0RXFs7ptg/3zuFhP8YGOnn/jnZa56ETLQ7fgpNICTk8CQhJZpG4tICj5
-	 9RlrKYLlJyDOyDPNeBLR9i/IjqdNks26GRcxcCKRkytQCHcQ6FoDX/kaYfzkVD4I29
-	 VM9fiopVVkrFjgAsAsP4yJKaVHQNAk5h1pWtGezpWDjiDE/LERIK9Eu1Hdtj4vsLVN
-	 H0PIpltzVprS8RunFG2e2J+vtV+FW1P/lak0nG4JwecP2NkAj4/C1wWxjJb+/LP9AH
-	 GyW7ZvTZlWI7b0Tg++YRXjC6U4V+brYhXf+KEuvVmI7jGUkI3lB5LBJNCK9YPVYeb/
-	 PrBzkjLXUw4jA==
-Date: Fri, 6 Mar 2026 19:43:28 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Cc: Bjorn Andersson <andersson@kernel.org>, Konrad Dybcio
- <konradybcio@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Richard
- Cochran <richardcochran@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet
- <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue
- <alexandre.torgue@foss.st.com>, Vinod Koul <vkoul@kernel.org>, Giuseppe
- Cavallaro <peppe.cavallaro@st.com>, Jose Abreu <joabreu@synopsys.com>,
- Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Samuel Holland <samuel@sholland.org>, Matthew Gerlach
- <matthew.gerlach@altera.com>, Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
- Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Keguang Zhang
- <keguang.zhang@gmail.com>, Shawn Guo <shawnguo@kernel.org>, Sascha Hauer
- <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Jan Petrous <jan.petrous@oss.nxp.com>,
- s32@nxp.com, Romain Gantois <romain.gantois@bootlin.com>, Lad Prabhakar
- <prabhakar.mahadev-lad.rj@bp.renesas.com>, Heiko Stuebner
- <heiko@sntech.de>, Chen Wang <unicorn_wang@outlook.com>, Inochi Amaoto
- <inochiama@gmail.com>, Emil Renner Berthing <kernel@esmil.dk>, Minda Chen
- <minda.chen@starfivetech.com>, Drew Fustini <fustini@kernel.org>, Guo Ren
- <guoren@kernel.org>, Fu Wei <wefu@redhat.com>, Nobuhiro Iwamatsu
- <nobuhiro.iwamatsu.x90@mail.toshiba>, Geert Uytterhoeven
- <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>, Maxime
- Ripard <mripard@kernel.org>, Shuang Liang <liangshuang@eswincomputing.com>,
- Zhi Li <lizhi2@eswincomputing.com>, Shangjuan Wei
- <weishangjuan@eswincomputing.com>, "G. Jaya Kumaran"
- <vineetha.g.jaya.kumaran@intel.com>, Clark Wang <xiaoning.wang@nxp.com>,
- Linux Team <linux-imx@nxp.com>, Frank Li <Frank.Li@nxp.com>, David Wu
- <david.wu@rock-chips.com>, Samin Guo <samin.guo@starfivetech.com>,
- Christophe Roullier <christophe.roullier@foss.st.com>, Swathi K S
- <swathi.ks@samsung.com>, Bartosz Golaszewski <brgl@kernel.org>, Mohd Ayaan
- Anwar <mohd.anwar@oss.qualcomm.com>, linux-arm-msm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- netdev@vger.kernel.org, linux-stm32@st-md-mailman.stormreply.com,
- linux-arm-kernel@lists.infradead.org, Drew Fustini
- <dfustini@tenstorrent.com>, linux-sunxi@lists.linux.dev,
- linux-amlogic@lists.infradead.org, linux-mips@vger.kernel.org,
- imx@lists.linux.dev, linux-renesas-soc@vger.kernel.org,
- linux-rockchip@lists.infradead.org, sophgo@lists.linux.dev,
- linux-riscv@lists.infradead.org, Bartosz Golaszewski
- <bartosz.golaszewski@linaro.org>, Krzysztof Kozlowski
- <krzysztof.kozlowski@oss.qualcomm.com>, Konrad Dybcio
- <konrad.dybcio@oss.qualcomm.com>
-Subject: Re: [PATCH net-next v7 0/7] net: stmmac: qcom-ethqos: add support
- for SCMI power domains
-Message-ID: <20260306194328.238d89ff@kernel.org>
-In-Reply-To: <20260306-qcom-sa8255p-emac-v7-0-d6a3013094b7@oss.qualcomm.com>
-References: <20260306-qcom-sa8255p-emac-v7-0-d6a3013094b7@oss.qualcomm.com>
+	id 1wFqCV-0000000BKO6-2hXT;
+	Thu, 23 Apr 2026 09:18:25 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 08E1C1A33BC;
+	Thu, 23 Apr 2026 09:18:22 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id CE520604EB;
+	Thu, 23 Apr 2026 09:18:21 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D01D510460BF2;
+	Thu, 23 Apr 2026 11:18:00 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1776935896; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=aHaNwGRsoUdIwFjwTHJYKxtK/qocJVFaiYxjNfS379g=;
+	b=U6lBAuEmyZoHG3q1xl3CbQJPPneyiYCEs2YwZYqICXGZKWZxlXouP2n3L1ivPvaUSnPKXU
+	fhpVUTKQKxjk2kpBfupJ6TM1i3mBVsi1Jv5srkhYO9d57SlD+VDBRu4diJki5VAfCCyjWX
+	zOvF6Wkn0EEczft1Zh0BsxePmCOYutw+8BjK4xrWrAHmQWJO0cqHkIWolSA1xTr5VTFNVF
+	oqmowl1dchpbhH4fKl/7c8KUccb+TXEoY4UBq1LB4upmeVqbRkSVlaikFzRxlvokl807WL
+	TMnvZd2SrhELR2OIgjWw5NdXHMStrd5O2kHYN0EBRHJsnzIcXLxZYHO22bffrg==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Date: Thu, 23 Apr 2026 11:16:56 +0200
+Subject: [PATCH v2 02/41] drm: adp: remove now-redundant call to
+ drm_connector_attach_encoder()
 MIME-Version: 1.0
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-2-2ae6ca69b390@bootlin.com>
+References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
+In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sasha Finkelstein <fnkl.kernel@gmail.com>, Janne Grunau <j@jannau.net>, 
+ Liu Ying <victor.liu@nxp.com>, Douglas Anderson <dianders@chromium.org>, 
+ Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>, 
+ Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Philipp Zabel <p.zabel@pengutronix.de>, 
+ Paul Cercueil <paul@crapouillou.net>, 
+ Anitha Chrisanthus <anitha.chrisanthus@intel.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Thierry Reding <thierry.reding@gmail.com>, 
+ Mikko Perttunen <mperttunen@nvidia.com>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, 
+ Icenowy Zheng <zhengxingda@iscas.ac.cn>, Jingoo Han <jingoohan1@gmail.com>, 
+ Inki Dae <inki.dae@samsung.com>, Seung-Woo Kim <sw0312.kim@samsung.com>, 
+ Kyungmin Park <kyungmin.park@samsung.com>, 
+ Krzysztof Kozlowski <krzk@kernel.org>, 
+ Alim Akhtar <alim.akhtar@samsung.com>, 
+ Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, 
+ Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
+ Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, 
+ Geert Uytterhoeven <geert+renesas@glider.be>, 
+ Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
+ Marek Vasut <marex@denx.de>, Stefan Agner <stefan@agner.ch>, 
+ Jyri Sarha <jyri.sarha@iki.fi>, Michal Simek <michal.simek@amd.com>
+Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>, 
+ Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, asahi@lists.linux.dev, 
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, 
+ linux-tegra@vger.kernel.org, linux-samsung-soc@vger.kernel.org, 
+ linux-renesas-soc@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260306_194334_006483_9A8F5AC0 
-X-CRM114-Status: GOOD (  13.03  )
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
+X-CRM114-CacheID: sfid-20260423_021823_954745_57FD6D74 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,33 +130,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 06 Mar 2026 16:46:38 +0100 Bartosz Golaszewski wrote:
-> Add support for the firmware-managed variant of the DesignWare MAC on
-> the sa8255p platform. This series contains new DT bindings and driver
-> changes required to support the MAC in the STMMAC driver.
-> 
-> It also reorganizes the ethqos code quite a bit to make the introduction
-> of power domains into the driver a bit easier on the eye.
-> 
-> The DTS changes will go in separately.
+drm_connector_attach_encoder() is now called by
+drm_bridge_connector_init().
 
-Looks like it conflicts with patches merged last night, please rebase
+Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+---
+ drivers/gpu/drm/adp/adp_drv.c | 2 --
+ 1 file changed, 2 deletions(-)
 
-Applying: dt-bindings: net: qcom: document the ethqos device for SCMI-based systems
-Applying: net: stmmac: qcom-ethqos: use generic device properties
-Using index info to reconstruct a base tree...
-M	drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-Falling back to patching base and 3-way merge...
-Auto-merging drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-CONFLICT (content): Merge conflict in drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c
-Recorded preimage for 'drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.c'
-error: Failed to merge in the changes.
-hint: Use 'git am --show-current-patch=diff' to see the failed patch
-hint: When you have resolved this problem, run "git am --continue".
-hint: If you prefer to skip this patch, run "git am --skip" instead.
-hint: To restore the original branch and stop patching, run "git am --abort".
-hint: Disable this message with "git config set advice.mergeConflict false"
-Patch failed at 0002 net: stmmac: qcom-ethqos: use generic device properties
+diff --git a/drivers/gpu/drm/adp/adp_drv.c b/drivers/gpu/drm/adp/adp_drv.c
+index 4554cf75565e..0a11820d5b8a 100644
+--- a/drivers/gpu/drm/adp/adp_drv.c
++++ b/drivers/gpu/drm/adp/adp_drv.c
+@@ -444,8 +444,6 @@ static int adp_setup_mode_config(struct adp_drv_private *adp)
+ 	if (IS_ERR(adp->connector))
+ 		return PTR_ERR(adp->connector);
+ 
+-	drm_connector_attach_encoder(adp->connector, adp->encoder);
+-
+ 	ret = drm_vblank_init(drm, drm->mode_config.num_crtc);
+ 	if (ret < 0) {
+ 		drm_err(drm, "failed to initialize vblank");
+
+-- 
+2.53.0
 
 
 _______________________________________________
