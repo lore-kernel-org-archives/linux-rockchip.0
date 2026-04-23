@@ -4,108 +4,206 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936C6C44507
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E35C44503
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:To:Cc:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dZ2GDkvteQ1Lwt963m3M/NLyS+bIxcG+v2BWNm0O9l0=; b=NYBH+z7R0g2oN+
-	asJSl6YQMohihBS+rP/w54NuA180knfJozHtRUC9wDdeNyu6amLuuG1vVbvHTaL+OS3VdeFfRDNZd
-	5sq25ZSg3do9lPEryc6mpLgyXL3aIP5rOjz2ds82nQeV7xXbPxCDdmygEYqgvAV4B07d+zQkyqy+u
-	h3SaOcPNxkwNPQWoUXZ99vT51ygHirWgr2+MVzUG3jmS4zS0gRpLviH7qWJyWBFis/hgPyV/GY22L
-	Sp7zI6m6/5lgwSDSM6+uvyi44aZs2EzE4DCFYeCCfJwt91oVNM4DosCg/B0HidofZqUmQ8dxDDR8A
-	H3WquJ+yBYwelV8dbAbg==;
+	List-Owner; bh=YUO55lEBsUfe3zqs735GSqR38bVfdOnfkkyZAsOaA2A=; b=L27x11eX861svh
+	Ab3EQkbVElBUgkvadBsSJaKy5EBZWQRq0ASVWSf204l1wpFwHO5K2A2wNipUwTTMXhVmPjRuzAJyn
+	fr80PNbqSadukXO/TRpzzgZWmzU6NgSXrnzM5Okf+GqysA3VvgB/KzAx1jxAJoSN8UWRKm47A0l7S
+	gW4dG/SkWz6bJOKDu/3+Nz8vZ6oiArSvEZSVJQKbXJjpoLw6O571Jc0A6RsiYCIvOud5GHKVPxySS
+	Q0EYRwFWhWoFvDDktbalEFL/EcffUnhWnynsQ1jooN36TNKxdiup5i3GeG2aUndOYpaCG5BgrVtIZ
+	hE+r/f+noElAu/0hPBtw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRm-00000001XiZ-1sCa;
-	Thu, 09 Jul 2026 08:49:30 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1whkRl-00000001XgR-1rOP;
+	Thu, 09 Jul 2026 08:49:29 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFxCC-0000000BzVf-1bt0;
-	Thu, 23 Apr 2026 16:46:33 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 1FB711A33CA;
-	Thu, 23 Apr 2026 16:46:29 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id E2194600DD;
-	Thu, 23 Apr 2026 16:46:28 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 66CE510720005;
-	Thu, 23 Apr 2026 18:46:01 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776962785; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=S05j6aseg7c7u3xV5vOsljLds3FQ6L9R3JcogXmLNZs=;
-	b=2l2tjOxbp/muwVUTt1iYaIz8b7OLe+mJ2gwHjUl/Zi9B+c+A9VYP6Ja5C2fCxD7EBcL8KE
-	tj9o1FWt6yl5MwmosOaOCmM5hg14Gf6FQCD6xO4NlTRrX8rWJO7AXZiqzKJUGSdGNfq0dX
-	90/Fet3eusoHdXKPgHJviW0bm/BmWmkW8WJGQJXu+6RINWTT2CgIMhDV/YcJ+q/TJAH7GV
-	wy8CB9xvhkE+fTuzqLnN9+emGn4BkhcJVhKXnLTSZCbNekK5oVrGCbiUFXMRSBxTBCE1Lo
-	fGJwcmZCjXWgzqASXiN/aqIJ5NiJ8amWgtQeCTnheHeEOAEeGBshs0HQdugKjg==
-Mime-Version: 1.0
-Date: Thu, 23 Apr 2026 18:46:00 +0200
-Message-Id: <DI0OQ6JRMPTR.1FP9UHPJBYI7M@bootlin.com>
-Subject: Re: [PATCH v2 00/41] drm/display: bridge-connector: attach encoder
- to the connector
-Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Maarten
- Lankhorst" <maarten.lankhorst@linux.intel.com>, "Maxime Ripard"
- <mripard@kernel.org>, "Thomas Zimmermann" <tzimmermann@suse.de>, "David
- Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Sasha
- Finkelstein" <fnkl.kernel@gmail.com>, "Janne Grunau" <j@jannau.net>, "Liu
- Ying" <victor.liu@nxp.com>, "Douglas Anderson" <dianders@chromium.org>,
- "Laurentiu Palcu" <laurentiu.palcu@oss.nxp.com>, "Lucas Stach"
- <l.stach@pengutronix.de>, "Frank Li" <Frank.Li@nxp.com>, "Sascha Hauer"
- <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
- <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Philipp
- Zabel" <p.zabel@pengutronix.de>, "Paul Cercueil" <paul@crapouillou.net>,
- "Anitha Chrisanthus" <anitha.chrisanthus@intel.com>, "Chun-Kuang Hu"
- <chunkuang.hu@kernel.org>, "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Kevin Hilman" <khilman@baylibre.com>, "Jerome Brunet"
- <jbrunet@baylibre.com>, "Martin Blumenstingl"
- <martin.blumenstingl@googlemail.com>, "Rob Clark"
- <robin.clark@oss.qualcomm.com>, "Dmitry Baryshkov" <lumag@kernel.org>,
- "Abhinav Kumar" <abhinav.kumar@linux.dev>, "Jessica Zhang"
- <jesszhan0024@gmail.com>, "Sean Paul" <sean@poorly.run>, "Marijn Suijten"
- <marijn.suijten@somainline.org>, "Tomi Valkeinen"
- <tomi.valkeinen@ideasonboard.com>, "Sandy Huang" <hjc@rock-chips.com>,
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, "Andy Yan"
- <andy.yan@rock-chips.com>, "Thierry Reding" <thierry.reding@gmail.com>,
- "Mikko Perttunen" <mperttunen@nvidia.com>, "Jonathan Hunter"
- <jonathanh@nvidia.com>, "Icenowy Zheng" <zhengxingda@iscas.ac.cn>, "Jingoo
- Han" <jingoohan1@gmail.com>, "Inki Dae" <inki.dae@samsung.com>, "Seung-Woo
- Kim" <sw0312.kim@samsung.com>, "Kyungmin Park" <kyungmin.park@samsung.com>,
- "Krzysztof Kozlowski" <krzk@kernel.org>, "Alim Akhtar"
- <alim.akhtar@samsung.com>, "Laurent Pinchart"
- <laurent.pinchart+renesas@ideasonboard.com>, "Tomi Valkeinen"
- <tomi.valkeinen+renesas@ideasonboard.com>, "Kieran Bingham"
- <kieran.bingham+renesas@ideasonboard.com>, "Geert Uytterhoeven"
- <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Biju
- Das" <biju.das.jz@bp.renesas.com>, "Marek Vasut" <marex@denx.de>, "Stefan
- Agner" <stefan@agner.ch>, "Jyri Sarha" <jyri.sarha@iki.fi>, "Michal Simek"
- <michal.simek@amd.com>, "Hui Pu" <Hui.Pu@gehealthcare.com>, "Ian Ray"
- <ian.ray@gehealthcare.com>, "Thomas Petazzoni"
- <thomas.petazzoni@bootlin.com>, <dri-devel@lists.freedesktop.org>,
- <linux-kernel@vger.kernel.org>, <asahi@lists.linux.dev>,
- <imx@lists.linux.dev>, <linux-arm-kernel@lists.infradead.org>,
- <linux-mips@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
- <linux-amlogic@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
- <freedreno@lists.freedesktop.org>, <linux-rockchip@lists.infradead.org>,
- <linux-tegra@vger.kernel.org>, <linux-samsung-soc@vger.kernel.org>,
- <linux-renesas-soc@vger.kernel.org>
-To: "Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-X-Mailer: aerc 0.20.1
-References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com> <wanzalswb3lez6kyklprqojcnidab5fkxgu57lfka45w2rt4ic@xdatq5o7yiub>
-In-Reply-To: <wanzalswb3lez6kyklprqojcnidab5fkxgu57lfka45w2rt4ic@xdatq5o7yiub>
-X-Last-TLS-Session-Version: TLSv1.3
+	id 1wFtQx-0000000Bfxd-0c2j
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 23 Apr 2026 12:45:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=casper.20170209; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=BWsj0dSc6URl6GzhKqtvvsA5lvMVdCA8oRPUY5tXRI4=; b=XiG35WbG1a+O2BKodaWRKHcMO6
+	9zBrg36t3I1rbDkKbsfJRv917BCOqzlJxHqrKAlxDMA30Gp42okLMFqc7sXYyLBEBci5Ws/PMxVtX
+	KlebOicGevifopBZjzTubct06acs1t3L5jAUHDyirILs0rmALbOQMpPoGEMsOCFloyeZVP2ebAK5o
+	gfXqimUYxgpE+Wcex+NdrTf8XRk2j0B+9lVNdvm67Y/GMLmZcld48tFiGAIFkc9Ah1qRdEVyiujkf
+	qC/ECrXwNKoNs7Jda7lb1YfFtX7RdPl6fL3Q0f9jZgH/4tEo+SJqOCNr9xs3SEHz9upXWdR3rZEIM
+	Kp00PDOw==;
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	by casper.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wFtQq-0000000DSLP-3Tb9
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Apr 2026 12:45:30 +0000
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63N96YjA1204882
+	for <linux-rockchip@lists.infradead.org>; Thu, 23 Apr 2026 12:43:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-type:date:from:in-reply-to:message-id:mime-version
+	:references:subject:to; s=qcppdkim1; bh=BWsj0dSc6URl6GzhKqtvvsA5
+	lvMVdCA8oRPUY5tXRI4=; b=kz7jLeBzJhutORDVFx2iCKLx6BbKBMv6ZD/OAzXy
+	A0y9fL8VJ5azBC4WAyY4ur8i751/Cb6BI3cUXuKQsmwXwY34+fQJImLA7H/88D4v
+	1BG5/aKfbFE/R3yiLswxqHx22LbWVldKcz8Z7n+9vvLF6H0umWX04940IYnC18qK
+	tqpEoazA4Gx/aTQtT+TClBki1rUGdP2FhQ9RJS7+TJ/lTUY5IZeO+dCzFtwCvg78
+	NWGFar9sZDj1b7ftpz2facMTIbdcJTW1sSKycWLMr7MmGIEbOm3qQC3OGbd5TyaF
+	4WBlrARrtwmAMfi0rdEMVIqZqVfGqYskKA29CbPTq0GlIQ==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dqggn8uxu-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Thu, 23 Apr 2026 12:43:20 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-50d9a6a853bso63596201cf.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 23 Apr 2026 05:43:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1776948200; x=1777553000; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=BWsj0dSc6URl6GzhKqtvvsA5lvMVdCA8oRPUY5tXRI4=;
+        b=MaZb8/bB2SUzG2Y7ZExdyQub5DLmpBlsWvPy62VQQPLsjDb6YnZS9XomBHbIRllsjg
+         +ewqbwBJ++ytvYtkktmumvivfrbyKrjsRxb0mnPmnbzZQHJw/duvsZpq0V7Q9axC+J82
+         9v3GeiDX25u8tN9J+bP0+79/nJEzIVtDDy2kMLBNJbSuSWNHJW1dcvUkeL3oWF94nFgI
+         MmDGbXMXV8YnzhRttBgUPPKV7q7Ddz1UyX+Wjrsr/td/D35xhbxwnaz6EML1m7dxI+Ba
+         bxBTDbNi96Ph/VciCPBP7ztReffh9rqSKuVfd3j2RzVO2/gtuYvBJWtEbwhCg3d5fcU5
+         NWag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776948200; x=1777553000;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=BWsj0dSc6URl6GzhKqtvvsA5lvMVdCA8oRPUY5tXRI4=;
+        b=LbUFTBhZrrVzirahFrgcCFJ+ifwUdIpHjIq2wRmTxkbVuVp1DY/+UEqHEDTdrY2GDF
+         lu0HFhjDWXNHRgI+GKhXm71Te0c77qAbu/QM5usPSSlIpIGnuDgsJKKeFsGH5DIXuGTs
+         JOXQVljXb61tfmth2b9xHnsTeRb1DnYPRD5uq4SJ1unYHJLTeFZjv+J9U/j8Zb0+vK70
+         37d3Z/spTOyU4597+Lg/4WX4fOT6gJhxIA6g7AlM4TzsG8r4RGL3ZzfTBsL8Gd7p5RYa
+         /TLcXA1xAeG9PS9SsjKETjHiQ972/GUZdffzhgSbzkXiTQtD5lJop5R4q70hAwSx9JpZ
+         UoXA==
+X-Forwarded-Encrypted: i=1; AFNElJ/dBukCu4CaOIQDgJ3CV5WlF7dv4x0m/nZn5jywtCGIVgP2i+8/vslNApge+wKSip2cSmv6Ejmz3ciEI5VseQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxjuGMHS/jbWcT2L/tRHMEpinpnzjSO4c4FkYAOHPsfY+XGcHvh
+	JXhLmHyQQ3GpjD2KeTCdwskI1C+vMw7edMn1ZLx158AVSEvHXvwm4zBhtz+9dvFL+L+HmWRcENC
+	i8SA+TyHQQGNzFmK2+zoHOXpIUgdiwZwoXZGTbb4Q7p0xdhZrRrznm8YIYXBQTFhcyJq/mtVF2/
+	8=
+X-Gm-Gg: AeBDiesWZrDhIKqhhEal/O9cT/6/2C3bN45Ku7nR+Z83DB1TZOBg7aRfnw2clCi1GBK
+	SNMg7pViRwzwB+rhQUmFxBxETORYUeW75H4/xhAAS2z0MAMdVrXE15Bg/cZNL7Xn/y0Z60vEdtO
+	rzaWqlu5vbgcze3P8LvSNgYFzKiQl1O1RKkBVBWMlVT27oCuJ77+1jvR4xA+NGWoMas37Z7lrUi
+	dFyh9CoEwtAu+eodnbg92iQvU+cjc/mkKJ5R8J8R0yLHj3/jYHgVcWx6718lDjL7ql1Ns/K5u5v
+	x8/QlD/eXIymg81ZW7VWlii0c7tYPjJ6GwsEI5YIA+V9if3VEouoVBzq4fhAnyRcx6StLUYc++o
+	yMQoG3q80ZXIJSwkYo+1gBWcjUfxOtGhuhS+zLj3locIghx9/mLFg/CkhRY950nnYKLGgTFM9bk
+	r/1QcwWXaSG6fDWnZjCmnNNe7M+NSqxZPDynABOx9ueqPVEQ==
+X-Received: by 2002:ac8:57c1:0:b0:50f:b6ef:e10b with SMTP id d75a77b69052e-50fb6f016cemr157721991cf.27.1776948199522;
+        Thu, 23 Apr 2026 05:43:19 -0700 (PDT)
+X-Received: by 2002:ac8:57c1:0:b0:50f:b6ef:e10b with SMTP id d75a77b69052e-50fb6f016cemr157720991cf.27.1776948198942;
+        Thu, 23 Apr 2026 05:43:18 -0700 (PDT)
+Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a4187e12d5sm5133222e87.41.2026.04.23.05.43.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 23 Apr 2026 05:43:17 -0700 (PDT)
+Date: Thu, 23 Apr 2026 15:43:15 +0300
+From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Robert Foss <rfoss@kernel.org>,
+        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+        Jonas Karlman <jonas@kwiboo.se>,
+        Jernej Skrabec <jernej.skrabec@gmail.com>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Sasha Finkelstein <fnkl.kernel@gmail.com>, Janne Grunau <j@jannau.net>,
+        Liu Ying <victor.liu@nxp.com>,
+        Douglas Anderson <dianders@chromium.org>,
+        Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>,
+        Lucas Stach <l.stach@pengutronix.de>, Frank Li <Frank.Li@nxp.com>,
+        Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Paul Cercueil <paul@crapouillou.net>,
+        Anitha Chrisanthus <anitha.chrisanthus@intel.com>,
+        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Kevin Hilman <khilman@baylibre.com>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
+        Sandy Huang <hjc@rock-chips.com>,
+        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+        Andy Yan <andy.yan@rock-chips.com>,
+        Thierry Reding <thierry.reding@gmail.com>,
+        Mikko Perttunen <mperttunen@nvidia.com>,
+        Jonathan Hunter <jonathanh@nvidia.com>,
+        Icenowy Zheng <zhengxingda@iscas.ac.cn>,
+        Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>,
+        Seung-Woo Kim <sw0312.kim@samsung.com>,
+        Kyungmin Park <kyungmin.park@samsung.com>,
+        Krzysztof Kozlowski <krzk@kernel.org>,
+        Alim Akhtar <alim.akhtar@samsung.com>,
+        Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>,
+        Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>,
+        Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Biju Das <biju.das.jz@bp.renesas.com>, Marek Vasut <marex@denx.de>,
+        Stefan Agner <stefan@agner.ch>, Jyri Sarha <jyri.sarha@iki.fi>,
+        Michal Simek <michal.simek@amd.com>, Hui Pu <Hui.Pu@gehealthcare.com>,
+        Ian Ray <ian.ray@gehealthcare.com>,
+        Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+        asahi@lists.linux.dev, imx@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
+        linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+        linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org,
+        linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org
+Subject: Re: [PATCH v2 41/41] drm: renesas: shmobile: remove now-redundant
+ call to drm_connector_attach_encoder()
+Message-ID: <kxltg2wx2zwuliguszipn3hldalok36finlqwxe4qh3e2mr3hv@ymc7gwkozlzo>
+References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
+ <20260423115550.444930-7-luca.ceresoli@bootlin.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260423115550.444930-7-luca.ceresoli@bootlin.com>
+X-Proofpoint-ORIG-GUID: MaLPvzxiEY829_Bc7dua23glv8bLfTGo
+X-Authority-Analysis: v=2.4 cv=YZeNIQRf c=1 sm=1 tr=0 ts=69ea13e8 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=A5OVakUREuEA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22 a=P-IC7800AAAA:8
+ a=W9-MdjkIhrGOmg5mk6gA:9 a=CjuIK1q_8ugA:10 a=kacYvNCVWA4VmyqE58fU:22
+ a=d3PnA9EDa4IxuAV0gXij:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDIzMDEyNiBTYWx0ZWRfXzww1cSRkH0Gt
+ C9SHGWFiC+CoN+QmL8wTdUYMI2YY6JGo1eF7zdHNVdBVsOWp6zLcM61fpc6AQb3qXrStu8tIBRb
+ Hy0MZZjkYjQGbbZgqO7VGGfV5KSFDjHVUdk0g44Azwu0zyPG0+cfegzvcE8Rvem3+EJ1GeItPWi
+ DpzWz33N0PL/Hd4sRWfXdU6EQv2rBuMaKLtotxiRcVDUKfOaEpTuY48JFJEBmfn/E7S44OuD86k
+ 3RInCqSwQ5NRnynxuRs4EkJXyvAsN8YfQDueYAjpEzIozgRBjf0s1Dn4oGHSo9oN20AiYf6YVCq
+ DbYpaVoVwcVCYJU4s/x4degh/G5M7Y4tOfc7ptrB/dfFO5Mcn3aP2yi5NeVnGfy474hYXTCJWn3
+ jDJk6FuUqJ0KLOpFUS4wfxi4gOCf7+bsTjofIfwbwan5vF+AfY0iuewAxVsNTrMGBorPaDjG1FQ
+ vB1lQ6esblBeCAmvOFw==
+X-Proofpoint-GUID: MaLPvzxiEY829_Bc7dua23glv8bLfTGo
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-04-23_03,2026-04-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 adultscore=0 bulkscore=0 phishscore=0 suspectscore=0
+ malwarescore=0 impostorscore=0 priorityscore=1501 lowpriorityscore=0
+ spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2604200000
+ definitions=main-2604230126
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_094632_679860_DDD0F869 
-X-CRM114-Status: GOOD (  12.23  )
+X-CRM114-CacheID: sfid-20260423_134525_218774_735C983A 
+X-CRM114-Status: GOOD (  19.75  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -123,39 +221,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu Apr 23, 2026 at 2:45 PM CEST, Dmitry Baryshkov wrote:
-> On Thu, Apr 23, 2026 at 11:16:54AM +0200, Luca Ceresoli wrote:
->> This series simplifies using the bridge-connector by removing the need to
->> attach the newly created connector to the encoder.
->>
->> == Series description
->>
->> Currently all users of the bridge-connector must call
->> drm_connector_attach_encoder() immediately after a successful
->> drm_bridge_connector_init().
->>
->> This is an unnecessary burden for users. Move the call to the end of
->> drm_bridge_connector_init() so all callers can be simplified.
->>
->
-> I don't know which one is more correct in this situation, but let it be
-> R-B for the series:
->
-> Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
->
-> Feel free to take the msm patches through drm-misc-next (A-b).
+On Thu, Apr 23, 2026 at 01:55:50PM +0200, Luca Ceresoli wrote:
+> shmob_drm_connector_create() can init the connector in two ways, based on
+> the 'if (sdev->pdata)':
+> 
+>  1. manually in shmob_drm_connector_create(), or
+>  2. delegating to drm_bridge_connector_init()
+> 
+> Whichever branch is taken, drm_connector_attach_encoder() is called
+> immediately after to attach the connector to the encoder.
+> 
+> Now drm_bridge_connector_init() calls drm_connector_attach_encoder() on the
+> connector so it is not needed anymore in case 2 and should be removed, but
+> it is still needed in case 1. Move drm_connector_attach_encoder() from the
+> common path to inside shmob_drm_connector_create() in order to get back to
+> a single drm_connector_attach_encoder() in both cases.
+> 
+> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - rewrote completely, fixing potential ERR_PTR deref and ending up with
+>   a cleaner patch
+> - also wrote more extensive commit message
+> ---
+>  .../gpu/drm/renesas/shmobile/shmob_drm_crtc.c    | 16 +++++++---------
+>  1 file changed, 7 insertions(+), 9 deletions(-)
 
-Meaning: Acked-by on the msm patches + Reviewed-by on all the series,
-right?
+LGTM now.
 
-Thank you very much!
-
-Luca
-
---
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+-- 
+With best wishes
+Dmitry
 
 _______________________________________________
 Linux-rockchip mailing list
