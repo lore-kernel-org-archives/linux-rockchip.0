@@ -4,100 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12324FAD3FE
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 04:29:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A502EF99344
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 08:21:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=D+0LS93mK74LcjKk+Hxfjq/QdbjXBiUKsFG4+X45JrQ=; b=SLIxyJuDIVDoVo
-	AGsQV/wo0m2iRtsOTtN2sJxva7N+ihvNUpAPZFgie1PvWqHyitoLau82fGIPTAk7mtCn1sGfArvf9
-	NswxiuOUFUwNkht4AzP+JJPWVq3Q1XVAeyC+UTNHpcNLfzlkAczYD5Vokah+FcIxmkyI3slPW6bzK
-	WyHGAuA4QgtYfzOslwnPToT7WiXjdxbRsnWChQSYafw6U6k2VCTWPJcAxOBt1YthOprLcNnmfKKbU
-	ZHu2AtpMRzgoN5ac4FsixPGNAbxOk43WdesxKHY7fjivdfpYOiq3CgLRYZB/7uC95ywM2g/fpByFb
-	g56HWE3+XX+bAKKaPNmg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Cc:To:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yBBJCTOFKb0OCGKqveBEIJd4huxVtPW/4xcIyhh+0xI=; b=VqfC6nx5hv189t
+	wsrhzDT+FJU+Ojcx/vzaiYYeG66ZIMeDI4f6xNrZEVrGne0F9uLGwsDEfvXR72BDkrNTbp9MdzT+0
+	4fYZIRovH1TIE+x/kgKyn3q5IHchtGpMdNvs2teSjMDbbS3rOgncM9OATLDkn/ayPt7yb0mUQ4Z79
+	yjEJHYuF3dkxV8rs5s009VxXi1nm4j6vRCv+xlWLEftYvvXa0b47OH/iSUKF5hFAWWb7cecgJDXFB
+	w0N8wxVe9W7agYrbkZbPy8jJo8GGGuMtFgihRD+7vjAFhRgSzW/ru6FoBegPAPflgcKV3eJE73D0o
+	dQSEWQNiFAlPCG910MVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFlgX-0000000B1mf-0Obe;
-	Thu, 23 Apr 2026 04:29:05 +0000
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+	id 1wFpIy-0000000BDdS-0kaI;
+	Thu, 23 Apr 2026 08:21:00 +0000
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFlgU-0000000B1ln-2tjz
-	for linux-rockchip@lists.infradead.org;
-	Thu, 23 Apr 2026 04:29:03 +0000
-Received: by mail-pj1-x102a.google.com with SMTP id 98e67ed59e1d1-35fc2b18363so6999328a91.0
-        for <linux-rockchip@lists.infradead.org>; Wed, 22 Apr 2026 21:29:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1776918542; x=1777523342; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ldKzYRVzGfk7M04BaN4noHVbGeTb3XbIYu+RVxu/5hQ=;
-        b=VLTL8xPHfROHzA5yh0Hk1woYWpYNHON+2sVLT4LdOBUGyJhy8hVhEnIS1cAxbd1ZtO
-         0p3gOAI/3W5R1R3NnRGCCrE8gH1IepHiAea4/vS0Uc5gW9gYWckl1lELQLpGelL3UJVi
-         WoaQS/gbFWnkr8wZRMFehO0Yhjix5qQLo0/GsbcOkuELC7zHCtAWXDNgEfI/qsCoZOpA
-         vJaCuNUXXy4HoETj9C9Gf3rSZEt4RJ7mg5700zDxRaMNx2Pt2Nn/xWyTizWqCUVUYkR0
-         7Z4Gx2si9E4fL0fN1WAATloETnLriCaGizXMFVYFD9DXSDHbh7s2HpLdsZ2apRW2sqvS
-         cSbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1776918542; x=1777523342;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=ldKzYRVzGfk7M04BaN4noHVbGeTb3XbIYu+RVxu/5hQ=;
-        b=oYH7JM9mPc3Pf6xfk+pyE5u6gXK8C/yhhfrzx2BwIb6Pp9/SyCzQFMwd6CZyhOqWin
-         OniccZOzgxuMKFRZnVy+qp0yPqdIxs/lDoC/aJONpuj9jbBgQiioZ2fe/3Q4t4JZH1e+
-         9v1sOth6hGpeHdkPKkyE/FeJT0MJdbHairi0IzEL3+vOjHylp1sDiA8ZsR+y325Hr1GJ
-         QK5hzFp4xUTtmQduwaeKJOXV4jIoN5gA2nwLBXrmEifviL394Rn4O5JNG0iIeyeYRjPJ
-         R7eb9n/LxM+JiDTMDYIiKaco8k2aJuxF+wTkGArlYcltzpGsQ9dKxP7+hSz3AkcFFCBy
-         VYdA==
-X-Forwarded-Encrypted: i=1; AFNElJ+2SGH2cuB842A9aZlulrRj8vEgeffaS81sCW/52xHxs85a2MBbj+9xCTEkJAc1Ha83PwAURWgIVfB3rvgFCg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yx5Jeyk/ZsB5tTelO1aYAP8RMJwWaxVSR1oGpARDdYQfWsLGvRC
-	ZnkQv4JUT5EKLdJ9THVeqMy3wLOfi2Tjc1clpX92UuF8ZNvdrWvQsYP8
-X-Gm-Gg: AeBDiesvBJkP5t/V9En3efV6YNybrEsFres4vXHaZ7NW/umktecDDW3U23W+W5TP+eF
-	7O7jLe126FZSn/HvH6VA9JdHI55PFifslHLz5y/EsPpcRI2m6HS9xDyyEZ2TwWRaKz25G2Qr8Ew
-	U1IDr2Z9PGi1ZRw4Ur+7H9fqpQ+IVxZkrVFAhz1Ha+75AiYKGeq3eQrkU4jg0ym/M7xNMgnb0cf
-	EEbObhrIm829Pt1hDMetQD7dXDxD9kgP0u39V7kDlvIo8igbEB8Jnssr3CHW5zd4yIk11zbHj4l
-	6yetbDbEM9TBVOa5eRI5C95amLTecpLxkfK8H2zNGASNGLkNcZhvi1129b/T+kP3uM/zvLMcjhw
-	D/6M2JX6J8TKoBZMdPQqQ8qVmhWtHqXLkZ3pq59SY83AtINb/X3h+/HXj+5/28qRfwuIEjASaZv
-	Ll6rPvLTc463FcudJ01YjvVRRIKdqAsI2+G6rTHLk52Xj9JEXrugdM00ZkAP4o0zHPYsYq
-X-Received: by 2002:a17:902:cec8:b0:2b0:5b4e:370c with SMTP id d9443c01a7336-2b5f9f8b3ccmr282724315ad.32.1776918541770;
-        Wed, 22 Apr 2026 21:29:01 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b5fab4049bsm165723755ad.77.2026.04.22.21.28.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 22 Apr 2026 21:29:01 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Lee Jones <lee@kernel.org>,
-	Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>
-Cc: Joseph Chen <chenjh@rock-chips.com>,
-	Chris Zhong <zyw@rock-chips.com>,
-	Zhang Qing <zhangqing@rock-chips.com>,
-	David Rau <David.Rau.opensource@dm.renesas.com>,
-	Animesh Agarwal <animeshagarwal28@gmail.com>,
-	devicetree@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 2/2] ASoC: dt-bindings: drop redundant wakeup-source definitions
-Date: Thu, 23 Apr 2026 11:28:31 +0700
-Message-ID: <20260423042831.21114-2-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260423042831.21114-1-phucduc.bui@gmail.com>
-References: <20260423042831.21114-1-phucduc.bui@gmail.com>
+	id 1wFpIs-0000000BDca-02Oz;
+	Thu, 23 Apr 2026 08:20:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dgHI11398w2ln0intr7zWUA7putLw+eqofe3f/aw4N2iwTPFO3Yc+xjlUtgm1Dc28oMdEiSAQNEokVSsOOE9GWlmDG9VslgGoTaOek+GJxNf2GRkqrmgTYpYyHxVFLEAyL2GZysX739IaETP2F2lcznKLo4gfUbwGsNZYMH1iYrwE9zrjDL2Recb5Y+U3Gs2lTg0Jcvn6Dr0ZvzcEBASladFslB/4jN68G4JQ+Dfp09Zx0wzxB9VWbBbJEDrplMbGOss41AD7C/nESNlyoe0htBzYBOXQA6iCLIdIHv+6yscMZDrSjatrr+dfM0bqsmnoqZIfopM8hQp915A1eDEBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3xVykDZMMxqcRbkI/OgsWF+lLAGvrt3jqKaNff6bj2o=;
+ b=jQE3ZUokzIfJorfqMIuGtmwneHpgfWqZ6RZgL/JbjotXcNWU7AuuKtj9HgjoXfpK0vRKwfzfgkql7knruKSSOM40FotzkOyPdWqIP4lQ8Gpm7exxweeoA1/XT8SSG7bLPXk6ixkfrD5AKEmT2YHIzOHNkDI1vkx5fLOVgTXWnvUiNjjn5tLKKF1XrXCt3iFxRKLg6I5c571d1f8K4CPq4FPZbmE1DY9Lk+NKMbHmjoXFZdCB20zpx0WC1G5qvAfgMnkozfRfJJu+VnmBwAIT0yMJ6H8bSwl7BIVotnFE80HnfYbL8xMjA5ndJuQgInuvxohz/PdVndA2XH5uyWanTQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3xVykDZMMxqcRbkI/OgsWF+lLAGvrt3jqKaNff6bj2o=;
+ b=jUEewTzG+rn2a0LjRUSoNkcMgLB1PlDtOXN97mmt5OYhZBK0YAwPaXRLAIQV/BjWWlg1Cr4nPaV6pqHujgB5NHzm14AJNByEbZcSFBvobgyyqoNyrkdlc8HcuGKYdpnq1+qWloj4qG0tRw5f+gknBTPiEUQic0l5fgpS/ItYUerABz5Gu7NvgLZ1qrJwAKETe8JJKzbTMKJM7b+78k/+SFWXxbWE3Nyc+LHpZTTDet6xTJ9pDjzbyyFoCYLqk+LeKSJqx2yq8qaO7lj+aXrfZzRs91q7iW9zmbz2ClS2jopFRweOaS4xsRISOcs3UzrptPe4x7g/SaUwk6VhlB4hPQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from AS8PR04MB9080.eurprd04.prod.outlook.com (2603:10a6:20b:447::16)
+ by PA1PR04MB10281.eurprd04.prod.outlook.com (2603:10a6:102:467::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.17; Thu, 23 Apr
+ 2026 08:20:45 +0000
+Received: from AS8PR04MB9080.eurprd04.prod.outlook.com
+ ([fe80::92c2:2e03:bf99:68eb]) by AS8PR04MB9080.eurprd04.prod.outlook.com
+ ([fe80::92c2:2e03:bf99:68eb%6]) with mapi id 15.20.9846.021; Thu, 23 Apr 2026
+ 08:20:45 +0000
+From: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+Subject: [PATCH v2 0/7] media: synopsys: enhancements and i.MX95 support
+Date: Thu, 23 Apr 2026 16:22:55 +0800
+Message-Id: <20260423-csi2_imx95-v2-0-934c02f3422a@oss.nxp.com>
+X-B4-Tracking: v=1; b=H4sIAN/W6WkC/03M0QqDIBTG8VeJcz1DLW11tfcYMURtnYsyPEMc0
+ bvPBYNd/j/4fjuQj+gJhmqH6BMShrWEvFRgZ7M+PUNXGiSXmreiZZZQPnDJvWJaGcd9N+mGGyi
+ HLfoJ84ndx9Iz0ivE92kn8V1/jPpnkmCcdU43U6P4tRP9LRDVa95qGxYYj+P4AEHtq4KmAAAA
+To: Michael Riesch <michael.riesch@collabora.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
+ Frank Li <Frank.Li@nxp.com>, Sakari Ailus <sakari.ailus@linux.intel.com>, 
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>, 
+ Mehdi Djait <mehdi.djait@linux.intel.com>, 
+ Hans Verkuil <hverkuil+cisco@kernel.org>
+Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ devicetree@vger.kernel.org, imx@lists.linux.dev, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+X-Mailer: b4 0.14.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1776932600; l=2161;
+ i=guoniu.zhou@oss.nxp.com; s=20250815; h=from:subject:message-id;
+ bh=85b0gJfRQSeLUrWu0Kjl18ZJuLyxOCXkeg39NR96Nzw=;
+ b=qCKap/RJYEOxyqm/ttxHFMPRLXM/ZnQMb05aRQJvQn6ycwj2be1oYwZhV9/VuQbEkUgi115Te
+ /7gu3fQ/LD2AgiLXX/7iV8bbD+gbc9BTTfyd0jYme7/CTwuD5KkF1ws
+X-Developer-Key: i=guoniu.zhou@oss.nxp.com; a=ed25519;
+ pk=MM+/XICg5S78/gs+f9wtGP6yIvkyjTdZwfaxXeu5rlo=
+X-ClientProxiedBy: SG2PR06CA0252.apcprd06.prod.outlook.com
+ (2603:1096:4:ac::36) To AS8PR04MB9080.eurprd04.prod.outlook.com
+ (2603:10a6:20b:447::16)
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS8PR04MB9080:EE_|PA1PR04MB10281:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0f71f765-e778-4f0d-4857-08dea11137b7
+X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|52116014|19092799006|1800799024|366016|18002099003|56012099003|921020|38350700014;
+X-Microsoft-Antispam-Message-Info: SsglkdLruaxtpGvUOACP3xhMZ0AYsw3qoDDkXdaBdjNrT3UJF9bF+JEfvWMEN4ZDdmlQQBSTR0A354vfwosigy4NxDSPmtGCsW1BRSeEfgUo9wTkM5/hx9OUz1OPdQ9ZHlWFM9Lsgms0ZylENq58sfL4DbkTAU83aDe1VR9vm7Ji5/Klci4/xEn86Wj42uhcGfv+Ti1EpriTRSJgQuJYKYwDKl3H9FWQ5fGcEUlw4sWchWKVSfC81GaRTseJJlQUMz+QLaSSETdsyFnyTCO2Pg2K2c9wYP3KeYVSMf8yrqfORbKyJxn+fQtvlCb75jspFOCMSdROpcg76oUcEqCOma4zt95Uveos4zArBqGu7UqgWUWxxeXz0UMlQd6c3262MquRGGAqndub6XcgKJQpshN/Ba/VW146jeE5JeTeqL25hA9GQFv6eW4CqIRrYmbGeVtQErMA2HnQsH3FgslF5TaeqVgiwCh1EVBnLVqDP7rsKL5MIhLGCc9MF9Y/y0RfCwj0tqZ/v+au0u3Rz7sUEcI1If22NqeOJNh817gsiRM0q1JEjni+Aipxbwv7AtKJOEFHx4l85GFzmnbx6CQIlr8WC2jpyJi52VbvJYw9eemPBzEgHvvyeLbjCMTt5gMLqzL41p6m1KhrPMuea1uJrHzg17zFIRSR+pYu2IOWfYynZ9FDqSaLFzJGCoY1WZ/GQMg6Mq8I4u8IFISyFy3BbaIabI1UXkx6G4SPW24Rx/oY1TYieehBh1V3gWJR1Qj3pBCEM/shHnKF4mGE3E+tV/YsnJxv3pMSszrebyRArzkTBjeo7860bQf62Kc03xrC
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB9080.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(52116014)(19092799006)(1800799024)(366016)(18002099003)(56012099003)(921020)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?bnp0SjR1eW5lUjhXa0NjRGszY2Jnd2tzTE1DSmN2VjhPQkwzSVZnbE4zTVBN?=
+ =?utf-8?B?SmZ5cDc4emJ1V1JuUXllRmdoRGJvK25RbXY0THdsUEptck1RUkRzUDREZTF0?=
+ =?utf-8?B?NTZFWDZ1QWhabDFRakxKVzJEaTdnMXg2Y2ZCdDYxNHFRY1U3QzlsenVMTUMz?=
+ =?utf-8?B?Skk3cWZTSlA5WDhhT2l6UkU2OXBNbllKdmt5SzE1cXZ0TkVJMTQvdDR3VkRw?=
+ =?utf-8?B?blVnNmZBZm1yYWtlNUgzNGkrM2ZTN0FhdWRzRzVHdzExc3AwdUNaeTlEYjNF?=
+ =?utf-8?B?OHVScmR0K1dJSG8veEhBdWxUQWU5YTYxUm5SR1doVldLQUVoc3BlMlBHUVlN?=
+ =?utf-8?B?di9MSjYwRmo4RVRXZEpMU2JFS1hZU2ZFTEFKTlhlU1Z2eUFwOTZvMjlpR2JJ?=
+ =?utf-8?B?S0dyWHdDWVFDalJHdm91ZU1BcngrUW1NRlQ4OVN1WUJrS0hhdk5sM0hzNHRC?=
+ =?utf-8?B?UVI0a2Zxa2lIYWd1bThOelhob2hPcmhXMEJQRTBGYk8vWWlnMGFqY2FWNUU1?=
+ =?utf-8?B?cmdiT1N6RklvN1lpUDNPZWk5WTJ4aUVzeFMvb21YN2x6c2twc3VmT2lNckpR?=
+ =?utf-8?B?RGNtQm8vdHM2UFkxWFVMeWxMWnc5NHYydnRZYTUwSjNyS1NSUzA3eXNaYzA4?=
+ =?utf-8?B?QWpBQWdJcWZrTHY2Y1hydWNORFhFZnYyWVV4Sk85eXJFb0NaRWl3VTlkZ0Fz?=
+ =?utf-8?B?NTBRaHVuc2ZjYjEzc1YyN1FMRWMvbnVkREtONGhudG9tZVlQR2dieUZ4NTFC?=
+ =?utf-8?B?bFBPdzFTRGtJMkluK01OWWZmMmN3TEp6cXhDZW92aWxwWGRvWStXZ0tnenJB?=
+ =?utf-8?B?VDNmWjFOMkx1bkgyWWc5ejRUem9wbnlCSGpwQUQxU3M5MUpMdnIrdXlkeHpX?=
+ =?utf-8?B?QVVHcXRUdDFKV3BwT0hYbG54c0dWbGlrakhRaFdGSi9haE9HWG5qK3VJS0VM?=
+ =?utf-8?B?TlhrMlVXTmRPc2RYOUZaQURxS1lmQ2pQMkZHTmZMdkNWbE80QTVLL09VT0Ft?=
+ =?utf-8?B?ZmY5cE9FS21VOU5KWlEvQlEwRk9EWHlJU1JYUnpuK21TNk1JRU1STDV1Rkdn?=
+ =?utf-8?B?Vk1DLzExdUlQcVZLaGdBUTEwQndMZXU0VUxtMnRWcitTQWRja1JVWUVQbnZz?=
+ =?utf-8?B?TnFNUUlZcmdsNjBiZ1RLOHpPdjJHcFVJc3BmdHZ6SmZpYUZLRnJmTUgwdU5C?=
+ =?utf-8?B?VEVtSDZvT3QrYXI5bk9FS1pKZGpQRXp4c25YcWxka1E1aXRvZHI1c25QMVZI?=
+ =?utf-8?B?bHhkeWZEREJUa1prS0pESlk2clVzTWZnU0xrOHIwbHVYKzE4dEpTaDFYcWtm?=
+ =?utf-8?B?WFdDbFlYVUwzMk1pdUlXbnFyc2docnNiQzQ4cktnK3kzQ0hqdDM1N0FRK25O?=
+ =?utf-8?B?OXJHMGt5clBzeVRuOGlnK0szMVBRbHZRck83TFJZWXFreENZL0lKQVZHRElV?=
+ =?utf-8?B?eEd4NzdmeEVXSUlMY0lzOUlxbXIwYjhZVjhFL0k1emxzeVBLR3lleEJtKzc1?=
+ =?utf-8?B?MmdlbDlNdHZhSFZNUFgvd09ZeEZUMWx5MG1lRk52T2JEMEpUaDhMRFhUUHJq?=
+ =?utf-8?B?Y1FFcHQxNFBDVlRGUWl3aXhoK1VxRmJVcWtxcjdNMWlhc2JGV284SVpqaEZW?=
+ =?utf-8?B?bUJUTFBLbWU5QndaTmJMM3YvK2lNUVlaWFBXYWkvRUVMYk4xbC9IUDdYY2hZ?=
+ =?utf-8?B?Smt5djc4c0FPMWZYYnhzbzF5b1d6T3dDSHdOdzFTbU4xR29QREkvbGl0Vnp5?=
+ =?utf-8?B?UEJoZy9Xb0VGRFZZRUtsdGxacWdRcHF0bGY0azBiZzBYUHZlSVlaM2NmaWM5?=
+ =?utf-8?B?UU85VWJYVUc1NklMQXJ3Q042UUk4dUNjcEhLeWRkTzZLT3RsVnBObW5CNVBp?=
+ =?utf-8?B?WkJTWW0rNEJaUEpjcFZMMG9oVEFkaTFIZGMzYTNMTi9oZFdxeE0ramFmTEhj?=
+ =?utf-8?B?Z0VuZVpFUklCSWxacVk3NEVZc0hjREdKeHA3Z3F2TStBcEJjTFFEdWtsZFNl?=
+ =?utf-8?B?THFzdDhaUUVHVUZVc2dDeVZVOUgwMTIzcUVVRldyNDQrZldPUEhjZThVRW05?=
+ =?utf-8?B?Mk5iOHY3Y2oxTEFFdVNGODhuWG1oQmFuU3pMMk5HNjBlVW0yeFdIemJLYVRw?=
+ =?utf-8?B?c2lBMnorYzEvMjBKMThUZklqWmp6TWVTc3djL1gvV3pKUW5JRzJ2NjlCbnkv?=
+ =?utf-8?B?YzRYS3dUditGeS9aZXdTOGcrRHM0VEM1dDA2ZXZUdVo5UlRKV1NEZmJuUUt2?=
+ =?utf-8?B?c3Q3RUNjaWdJWGlxWUtxNVl4bWdBNkNDVjNpTzNSemk4QUczdXV5NU9ZYzd5?=
+ =?utf-8?B?ZHgyTWVsUld0TVMxQ2VNbEM1bUxaOTBMSnkrd3I0VkhEUG1nVjFJUT09?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0f71f765-e778-4f0d-4857-08dea11137b7
+X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB9080.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Apr 2026 08:20:45.6675
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: Zh2Q64jzjno3rfqox6ul6sFP5wLpn1CIRDaPOBlOBEGuv2oe1OG19xIaTs510wRsKZa6Zl2m52HBUk+us6TLvg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PA1PR04MB10281
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260422_212902_735720_74DA7BC0 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20260423_012054_085543_9AFCE0E6 
+X-CRM114-Status: GOOD (  10.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,55 +165,56 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+This series enhances the Synopsys DesignWare MIPI CSI-2 receiver driver
+with multiple stream support and adds i.MX95 platform support.
 
-The 'wakeup-source' property already has its type defined in the core
-schema. A number of sound binding files redundantly specify the
-'type: boolean' and provide descriptions which only repeat the generic
-meaning of the property.
-Drop these redundant definitions and descriptions to clean up the binding
-files and rely on the core schema instead.
-No functional change intended.
+The i.MX95 variant is similar to i.MX93 but uses IDI instead of IPI. Since
+IDI is software transparent, only a different register map is needed.
 
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+Tested on i.MX93 and i.MX95 platforms.
+
+Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
 ---
- Documentation/devicetree/bindings/sound/dialog,da7219.yaml  | 5 +----
- Documentation/devicetree/bindings/sound/realtek,rt5514.yaml | 4 +---
- 2 files changed, 2 insertions(+), 7 deletions(-)
+Changes in v2:
+- Add two new patches
+- Simplify error handling by keeping goto labels instead of early returns
+- Removes redundant register availability check
+- Uses read_poll_timeout() with dw_mipi_csi2rx_read() instead of
+  readl_poll_timeout() with direct register address
+- Fixes stopstate condition logic
+- Check PHY stopstate after sensor enable instead of before to ensure
+  correct timing.
+- Optimize PHY stopstate polling parameters (1000us->10us, 2s->1ms) to
+  balance performance and responsiveness.
+- Add dedicated constraint block for i.MX95 to reflect different clock
+  requirements (only per clock needed vs i.MX93 which needs both per and
+  pixel clocks)
+- Update commit message to include more details about interface differences
+- Add Reviewed-by tag from Frank Li <Frank.Li@nxp.com>
+- Update commit message
+- See each patch's changelog for details.
+- Link to v1: https://lore.kernel.org/r/20260415-csi2_imx95-v1-0-7d63f3508719@oss.nxp.com
 
-diff --git a/Documentation/devicetree/bindings/sound/dialog,da7219.yaml b/Documentation/devicetree/bindings/sound/dialog,da7219.yaml
-index 19137abdba3e..fab37cd92e0d 100644
---- a/Documentation/devicetree/bindings/sound/dialog,da7219.yaml
-+++ b/Documentation/devicetree/bindings/sound/dialog,da7219.yaml
-@@ -45,10 +45,7 @@ properties:
-       - wakeup
-       - irq
- 
--  wakeup-source:
--    type: boolean
--    description:
--      Flag to indicate this device can wake system (suspend/resume).
-+  wakeup-source: true
- 
-   "#clock-cells":
-     const: 1
-diff --git a/Documentation/devicetree/bindings/sound/realtek,rt5514.yaml b/Documentation/devicetree/bindings/sound/realtek,rt5514.yaml
-index 7fbf7739c371..57e5c09c05c0 100644
---- a/Documentation/devicetree/bindings/sound/realtek,rt5514.yaml
-+++ b/Documentation/devicetree/bindings/sound/realtek,rt5514.yaml
-@@ -48,9 +48,7 @@ properties:
- 
-   spi-max-frequency: true
- 
--  wakeup-source:
--    type: boolean
--    description: Flag to indicate this device can wake system (suspend/resume).
-+  wakeup-source: true
- 
- required:
-   - compatible
+---
+Guoniu Zhou (7):
+      media: synopsys: Fix out-of-bounds check in enum_mbus_code
+      media: synopsys: Fix IPI using hardcoded datatype
+      media: synopsys: Add support for RAW16 Bayer formats
+      media: synopsys: Add support for multiple streams
+      media: synopsys: Add PHY stopstate wait for i.MX93
+      media: dt-bindings: add NXP i.MX95 compatible string
+      media: synopsys: Add support for i.MX95
+
+ .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  |  16 +++
+ drivers/media/platform/synopsys/dw-mipi-csi2rx.c   | 109 +++++++++++++++++++--
+ 2 files changed, 118 insertions(+), 7 deletions(-)
+---
+base-commit: 4fbeef21f5387234111b5d52924e77757626faa5
+change-id: 20260414-csi2_imx95-65ad0e7f630a
+
+Best regards,
 -- 
-2.43.0
+Guoniu Zhou <guoniu.zhou@oss.nxp.com>
 
 
 _______________________________________________
