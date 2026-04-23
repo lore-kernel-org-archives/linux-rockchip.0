@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DAFEC4451F
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CFAAC44506
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:49:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r9L1+ZqlHXQzkQAgPiYlUUiJEvXkt0CPu1omnfQqeqU=; b=y/sqWgtVBwNv99
-	nJbDgJCooAVf89pvCWx5mInpKdQHa9tCKQpPEja9rCyeWvFDnjcsEtMvzx3aAmTr0QU3Nzypuu/4o
-	tlJcSJ6VMPbUDwhH0zMYDG2janhd3vAHTNdvM8Y1sjJ7B2SdLA+BkEsQW09vqfgk4bHznk3+gP4oN
-	YIY/t5rZ6I5zUddzgmJ++Us8PwVpd/dQ0qc+ts7MeoCdh3f53YxLqTqCUwCcsl5a0AYVjR2LPwMC1
-	nZ3/TKAjlYIx1ZeKi7uPmEUXX5u+3FeFCAve9KYyK2Fsst+QLpmwcCKNHpdwuTc0U5w2m2mt/ZZ/T
-	Acf/2uqOFKKJq5+JpGJg==;
+	List-Owner; bh=yyFaIQ0SV8cpvt3DW/cQlU0s5hyV4KgdUTMYzYwisvg=; b=wogxmj4Xxv4b1l
+	muwgdEvG1ykuaqc0UyGiqsVpaHOcEmDsazGwz7ZopZpjclwjpDQbWetUoJh/s8TtSVJlbeJz2AcGo
+	1f+CjXcBv7oqmHHfyEmukHs4OcskekyF8JLqBltc8+/XF2izZgkUG0+chStDh6+FDQW6SKo3cnxPi
+	5NprBY9/qI74XI4iJFTK8VJMK3zR3WjBhhthbtdgp5Q6BLNgsihhOpOOzyCqcAXIrqtx6bVA0+Lsy
+	ZEG+jDx48U8vA1+fUTam5oG9xM0TB7ZSRTLgXZiutTrEHIm+wjSmylzBXNTbQc03AoDqbGoRs+Q0i
+	9NuBTceB73RYH/68Gjuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkRO-00000001Wqw-43y5;
-	Thu, 09 Jul 2026 08:49:07 +0000
+	id 1whkRS-00000001WxG-0gO9;
+	Thu, 09 Jul 2026 08:49:10 +0000
 Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFqJa-0000000BNm3-21V7;
-	Thu, 23 Apr 2026 09:25:44 +0000
+	id 1wFqK3-0000000BO3k-2X0S
+	for linux-rockchip@lists.infradead.org;
+	Thu, 23 Apr 2026 09:26:13 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id DA2841A33BC;
-	Thu, 23 Apr 2026 09:25:40 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 319DF1A33BD;
+	Thu, 23 Apr 2026 09:26:10 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id AD2B2604EB;
-	Thu, 23 Apr 2026 09:25:40 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A0F7C10460BE8;
-	Thu, 23 Apr 2026 11:25:24 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 022D8604EB;
+	Thu, 23 Apr 2026 09:26:10 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A050D10460BC3;
+	Thu, 23 Apr 2026 11:25:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1776936337; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1776936366; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=UVZBM3qKgBxuYxQMCLXJt4FD6qsQcz8YYge/VPeKv7I=;
-	b=qzqwO0hqG4LzYhnfHSCLlj+j24TbMGJSo1tWJMHmb3oKUbYPbPxinKvCXSYh19xeTbEVSt
-	e+5uoPusZCR+eslgsDCn2POgwAphNKP6kcSgwdx3tzQde2QipODHlq2wmzmI2wsXymPmZe
-	eZD+GOIYVv0zX3yCiEZxLRKyl0nG0wj/ISAxga6M1aAQ8NrlYtVoCZmkdpxQ0gyQ3NEG8M
-	iDVpwN3Rylgt1Goe2n8/8T60ccPDL1QhOiOaJuT7whfUkZE9iN8NM5X6SzbwC8yazI+FTP
-	slAKQC6aha6Er/vwwTxgdQKtBp2QHZHixeoaaecgin6I0vm6XMaSiYOFv9z+MA==
+	bh=puUy+SIf5/qKSteeednrIf5mLYz5IrBkti3jKdbP/U8=;
+	b=CO+COdkKAz7cQMOYAjz34tsoveju6S6rmROu9NnR2eqNDX5AG7jrJY7a0Edba8v847dlc3
+	yx8WNr52UOwI40ioF78sk/hrSxhW259FjpwHYhw7mqELkGCIlMeBJBYIbpKoq300XAHTZM
+	jzIpfh88ceXkgUdpSmkro+aQw+RISo13OND8pL2BTgMKQYy0oc6X9L5ZotjXxPyUx00AI9
+	L3kFUZFmzdVT3PuhnjMgQ1cOXEIgrh4WmUcgE89alYIBCXnbdqTjtqDugBiPMfvztmPUB6
+	piuA2fEp/Z2AoxU29ztMf/MkDazIQZgwFbepWF+PhkEMtfUbZnAoJxaSG1z6Nw==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Thu, 23 Apr 2026 11:17:24 +0200
-Subject: [PATCH v2 30/41] drm/rockchip: dw_hdmi_qp: remove now-redundant
- call to drm_connector_attach_encoder()
+Date: Thu, 23 Apr 2026 11:17:26 +0200
+Subject: [PATCH v2 32/41] drm/msm/mdp4: remove now-redundant call to
+ drm_connector_attach_encoder()
 MIME-Version: 1.0
-Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-30-2ae6ca69b390@bootlin.com>
+Message-Id: <20260423-drm-bridge-connector-attach_encoder-v2-32-2ae6ca69b390@bootlin.com>
 References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
 To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
@@ -110,8 +111,9 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_022542_690504_5C334633 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20260423_022611_790668_AA184085 
+X-CRM114-Status: UNSURE (   7.79  )
+X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,22 +136,27 @@ drm_bridge_connector_init().
 
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c | 7 -------
+ 1 file changed, 7 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index c78db7f8ab6c..f35484715c2d 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -603,7 +603,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		return dev_err_probe(hdmi->dev, PTR_ERR(connector),
- 				     "Failed to init bridge connector\n");
+diff --git a/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c b/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
+index 809ca191e9de..7726edb0d4ed 100644
+--- a/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
++++ b/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
+@@ -232,13 +232,6 @@ static int mdp4_modeset_init_intf(struct mdp4_kms *mdp4_kms,
+ 			return PTR_ERR(connector);
+ 		}
  
--	return drm_connector_attach_encoder(connector, encoder);
-+	return 0;
- }
- 
- static void dw_hdmi_qp_rockchip_unbind(struct device *dev,
+-		ret = drm_connector_attach_encoder(connector, encoder);
+-		if (ret) {
+-			DRM_DEV_ERROR(dev->dev, "failed to attach LVDS connector: %d\n", ret);
+-
+-			return ret;
+-		}
+-
+ 		break;
+ 	case DRM_MODE_ENCODER_TMDS:
+ 		encoder = mdp4_dtv_encoder_init(dev);
 
 -- 
 2.53.0
