@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA02FDEE49
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 19:07:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA55FDEE45
+	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 19:07:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ECSsUc9nPcikuAoUTRplg5J9s1WKjmf+H9+N2gF0pY0=; b=LsGKxZLGzAO+8Q
-	i3Xo4QitR80lahJe/xjUEAJKOWLQ5V0cv0wQkRGGBmhtxRs8zBG5e4XUaL+DypVXGFkKzOllbIfxG
-	xKYoPBfymYGCIUP+3u55AiAdRN8hpNlt6osDTJeFMq7bwPQ313sixLmN5PoeGTEFY9a5QaKAlFXQC
-	uZEu5Ra+8yzgeF/BbIcqKflnl8vEPhhesCLqZBAAVdrHsZbBSTRJhwXD+ueEggI+DhhqIcRXyDsUq
-	37pRvu9QLimAtGYPU14VolFjHK+dXNGCCpS9JegkNCFC9hQZAap2jSxcQ5D/lRFavctPz6WA33Kuz
-	0UhyLTBfY702E9u7Wthg==;
+	List-Owner; bh=//xSETTrV6aK522WK1mmZBkWDT76T2s1v/1sA+TuDvE=; b=j3vddPgTx3Wgn2
+	c27NXSWPT5ADNRhaa3MfGStBaLm9d7a29uUr/J0jSVqgsW3y4/Yu7hs/1t+CJmZrTJoRTFVfcut1E
+	VjZr1TlRiUbHHpm5ujtIyQcUkOg7+tHC3mWZv4m32gBAat++ih3XEft1/kC7gOvtIx+pK6/fzVYFE
+	cpqhe8rKHb9U+Mwb+EMSci5271otrYR3kloGtg56BIjtJ4Hd1sUnsk+IlKROPbfHF0RiWeeaGF3UU
+	yPY2MFa9ziZ2+GJwTDvku5r95jl+Dc5x7ivekjtwnq0qpyUPRkKs/RSdkglvghhpSVUS1wgVkRlkp
+	gkSbpyrVrUG55oiILHnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFzO6-0000000CBVl-3scK;
-	Thu, 23 Apr 2026 19:06:58 +0000
+	id 1wFzOH-0000000CBhs-3VLM;
+	Thu, 23 Apr 2026 19:07:09 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFzNz-0000000CBLz-1cKk;
-	Thu, 23 Apr 2026 19:06:56 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1776971178; cv=none; 
+	id 1wFzO7-0000000CBVZ-0MAC;
+	Thu, 23 Apr 2026 19:07:08 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1776971148; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=n5rHeV69vy/IH1I2tlYzPjMGjCLJDp7LRdp1XEYNmJzXTDCKJNjypBf2/FE7GHRov7ARRoPmTzkQg+8RX9PqBlLOkCgoAuG2LgkNg4+JDsMpEas3c5vH56eIDsX0f5a9wqm8mOXeJiG2QHVIULfwNQMP+i4N7VqwCKZNDU1ZRzQ=
+	b=NF6DydrZLyBiCugu8rR4XvNc2q+BMhEF8NBVCt+75ZYDRFnGW1YGrvbRs5F8/MFzoJ7SgliqSWxnhPqelwPs9iTZehK27i7z5qzvrtbCuono1BaN9bUAqUU2lOy626FSGoELpihv1Zv6dzMPw2DnZlfZ+YpUMYS+51vnUaC5C9A=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1776971178; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=+F2WuEiqCUVykRB3XRC/Bxq6Gy1eCIr0ZWhVWJ26imU=; 
-	b=ndEa/Y1KzBqpmeBtuTyne87hk5rcrJjKhJsADftVqM7zsGE+OwO8B4dAQAoeQEn7pLirB2vHAKwUlsLCpunlrtIkZeUQKKEgQiAtsXzazTw4OEq/3pByTQlniHIYbqwxPkCeEOgl455btL8Upm/Ukp6NtN/82UuhBU8XbV6ct4M=
+	t=1776971148; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=I6mnIoMwQGSuHjHjLVfRnXnzAB6xS7ZmlkuOJOt+Ckg=; 
+	b=WgA8cRuXdv2tQqj2KoOrzdUk6uBQ7/b52oA75MURllzKEAAkVti+EoUxSe00kue15NauEGhCbh+yYEl3Iz2GFkoLZ1e0tDCf36L0+D5K72tjws0sytRCSXFVxZCocp8/3FqhWBOloGpwvsk6HGYhrMwON+NVVCSxo0EU1h6QPLA=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776971178;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776971148;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=+F2WuEiqCUVykRB3XRC/Bxq6Gy1eCIr0ZWhVWJ26imU=;
-	b=FU1U6SOBCPyVGMby6msTd70G91EeGnG49QQyz3r4mlWmFgCosMcj4NrSfYtKmUVO
-	Y7DOslV170KZXTxcl8Mig9CED4srliKlu4IWXNud9TCd4VV9f1wPvKve0ga+y02Nwaj
-	Du89bLcuAqp4X2v7GdWfL+eSBtZM552VKWrTE2pM=
-Received: by mx.zohomail.com with SMTPS id 1776971177321905.6100501162525;
-	Thu, 23 Apr 2026 12:06:17 -0700 (PDT)
+	bh=I6mnIoMwQGSuHjHjLVfRnXnzAB6xS7ZmlkuOJOt+Ckg=;
+	b=BPo2Rv7B9Q5/oWVAWuMi9stEwQUC7qpl4f5VGvSHeWo8cPQMFAO3LR+p4qRgBvnT
+	zSEZoKEHM11hnrchE6xl9bilFIyWkwXbRhnmEE4j5XvQ17exxT9h+4Lh5C6cO7/gOzh
+	nrasvzbQqGHWVIPUrcD3UhfimUp2GTTy8+EM0b/4=
+Received: by mx.zohomail.com with SMTPS id 1776971147273150.05999320541366;
+	Thu, 23 Apr 2026 12:05:47 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 23 Apr 2026 21:03:42 +0200
-Subject: [PATCH v14 19/28] drm/bridge: dw-hdmi-qp: Use common HDMI output
- bus fmts helper
+Date: Thu, 23 Apr 2026 21:03:38 +0200
+Subject: [PATCH v14 15/28] drm/rockchip: Add YUV422 output mode constants
+ for VOP2
 MIME-Version: 1.0
-Message-Id: <20260423-color-format-v14-19-449a419ccbd4@collabora.com>
+Message-Id: <20260423-color-format-v14-15-449a419ccbd4@collabora.com>
 References: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
 In-Reply-To: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -74,10 +74,17 @@ To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
  Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
  Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
  Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Andy Yan <andyshrk@163.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_120651_670576_C3386E14 
-X-CRM114-Status: UNSURE (   9.13  )
+X-CRM114-CacheID: sfid-20260423_120659_307948_31AB35CF 
+X-CRM114-Status: UNSURE (   9.14  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,36 +97,42 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wayland-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com, intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Make use of the common drm_bridge_funcs.atomic_get_output_bus_fmts
-helper for HDMI bridge connectors.
+The Rockchip display controller has a general YUV422 output mode, and
+some SoC-specific connector-specific output modes for RK3576.
 
-This allows dw-hdmi-qp HDMI bridges to participate in recursive bus
-format selection in a meaningful way.
+Add them, based on the values in downstream and the TRM (dsp_out_mode in
+RK3576 TRM Part 2, register POST*_CTRL_POST_DSP_CTRL).
 
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Reviewed-by: Andy Yan <andyshrk@163.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index d649a1cf07f5..5380aa7d82a8 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -1192,6 +1192,7 @@ static int dw_hdmi_qp_cec_transmit(struct drm_bridge *bridge, u8 attempts,
- #endif /* CONFIG_DRM_DW_HDMI_QP_CEC */
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+index 2e86ad00979c..4705dc6b8bd7 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
+@@ -30,10 +30,14 @@
+ #define ROCKCHIP_OUT_MODE_P565		2
+ #define ROCKCHIP_OUT_MODE_BT656		5
+ #define ROCKCHIP_OUT_MODE_S888		8
++#define ROCKCHIP_OUT_MODE_YUV422	9
+ #define ROCKCHIP_OUT_MODE_S888_DUMMY	12
+ #define ROCKCHIP_OUT_MODE_YUV420	14
+ /* for use special outface */
+ #define ROCKCHIP_OUT_MODE_AAAA		15
++/* SoC specific output modes */
++#define ROCKCHIP_OUT_MODE_YUV422_RK3576_DP	12
++#define ROCKCHIP_OUT_MODE_YUV422_RK3576_HDMI	13
  
- static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
-+	.atomic_get_output_bus_fmts = drm_atomic_helper_bridge_get_hdmi_output_bus_fmts,
- 	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
- 	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
- 	.atomic_reset = drm_atomic_helper_bridge_reset,
+ /* output flags */
+ #define ROCKCHIP_OUTPUT_DSI_DUAL	BIT(0)
 
 -- 
 2.53.0
