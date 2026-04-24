@@ -4,80 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46D3EFDEE45
-	for <linux-rockchip@archiver.kernel.org>; Thu, 23 Apr 2026 19:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 788F9F589DF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Apr 2026 03:57:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dL4XnxiigIPbAXLML0XUnC32eiKJtF/0gbN/YEz9GuQ=; b=fWUQiRj84fF3ym
-	6FiAAOWkwBHnA6SjBEDqWnI9As3Nz4V1lZqjOmUOHSWxJOaGgjr/pQxoGmcdpDJlXX/+ma9t3FxZB
-	mXRuIYqVDtDvt2gH9F+H1Wi4C3apAb/Ass5GAYXdtR7hynqRmpKcszyUL8qB6/M9UVw8JFz6n9hYn
-	xfRqtSWVswoNL8AVo9IupboODi2TzZ6PbpO5SfN+X7IxTpktAonTIic9SEX6z6B7hF+Nj3r7K9qc3
-	Cl2AWQlJ45AZwjyrs8IGb/jWDy7Vu0Amjsw0MZXkt/izhizF80LodjZYv9zQpG5PRdpnuvbsPxrQ+
-	XZlWKxHVWGmMCKzAyZbA==;
+	List-Owner; bh=Jgg+cuyEWrOnr/wVQ7vjNz55e39zs6XcgyFWEnxD+7Y=; b=WGvmLmZE4ELaQV
+	MlrIva5/89+62H7BmRTHksGJZkx9s17UsbFHzrI3aJ4to1AwS60wxSYgS4fURWWi9iC7AHTmsk90q
+	HctxgNwlozLTyltEMHP13dPHHrQkKzpIdd0TyH2HJUC+6G3rpMl6QtoQurM+WweJUbKrCBU2/zxcw
+	tiF99hSZvC1gyVnwCVJ3sNGoNm2UUKW2IYF7rr1OgWG2kIYOb2oFbuKlfrx4hLuFCkUW5urPng6K7
+	hxCBL8ZtsfchH7SJQc7oab2r7VzfBQNlusiJJVeFxmPOhtHJd9pTgHXLqHOt54Yk/2lcEgsPp7Cch
+	BGmDoPmPQfNxfgYca7JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFzPu-0000000CDBI-3wn5;
-	Thu, 23 Apr 2026 19:08:50 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wG7fR-0000000Cbel-3LB7;
+	Fri, 24 Apr 2026 03:57:25 +0000
+Received: from mail-westeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c201::1] helo=AM0PR83CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wFzPi-0000000CD3K-2ohG;
-	Thu, 23 Apr 2026 19:08:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1776971186; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=NpfSPamOuKjZtWMSP3UWUUF+icZ732EAp4AzKd3ZsZmyySpYJhUJOqvhvKp5lSPOtgZJBtLVnW/SEWj2V1TTH//Bo9dd/qr2+aQ5dakjEwuRq5TEYfxMypbL1dC7eNjjfA0m/RR4Jb5aKqmBGlW+b5c8ixibhIq6gVj7xEw+NjE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1776971186; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=1toyQl9PlDZmXyta9t6WwBIRZZDVbhq3ThHcNDSRZd4=; 
-	b=g8vjTsq8M0/+t8Q3Tfl3wYou/SqD0Wl4c0/4i2QUvvdyk/iOdTAAtmYSf5+EKzTJM6aefOGwLwPOrbDoHJ2Ff/bLsYBBmSWESSah6tqZwxep+4eQNLRgpJXhFbTC+toIm3GJfE0G09z+2LVcR4kGhP7jl7nNVXGJ3/R4k5l2THw=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1776971186;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=1toyQl9PlDZmXyta9t6WwBIRZZDVbhq3ThHcNDSRZd4=;
-	b=H+FA1oHE4QSv+9YlSNt4vPMDb5GxUgUcqoyuJsPOejlynSmMZvvSAw9O2RTHvG7M
-	dSEiwsx0wdq6NkwcRflp27wUftGw75EDflYRkyt7XQENed3sHRPnraxWTgLzr/QrN/6
-	9qDaL5E59CXZObQcJnns+w8XHKUvBWevpQKOu+os=
-Received: by mx.zohomail.com with SMTPS id 1776971184812420.97567278254246;
-	Thu, 23 Apr 2026 12:06:24 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Thu, 23 Apr 2026 21:03:43 +0200
-Subject: [PATCH v14 20/28] drm/rockchip: dw_hdmi_qp: Implement "color
- format" DRM property
+	id 1wG7fP-0000000Cbe0-1V94;
+	Fri, 24 Apr 2026 03:57:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bIGjONNzZOndn6AMdXG3ZRgs3N+l91wfMmkU49nqxOkpKRM1dI/kkr8VqisNXYNu5CM5KvOxqbc5gz7FpZ6SetJCpsDYCZ8INHjxInmvmDOscdPDUrgB7Ps81vNI7X8QKQaZiNpyf9ZKFeLpzdZmGPtP5GYndyvJTBdeJTEwTFUSRgChqPSZSreAozQN8KzEy1OpWnZqzeSzJVqmKhUlWaIVEI6aBtAD6WE6ATgkSFzzXWEhLjEEYnV8NUJ//Bg7FmODKl0bmKMREOcnXV4k4mGXM9b0sChOqIy+zKO3fAib/YMFq+7BbyXOG7FXw2gnhSLSumSP8zBv4zRMZyyCww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=kL8qOHTr3hJYOZy0dnmNbnvOfeSAwlG9sPg5uAF6XQc=;
+ b=vIMAC72qTmelgEExcj5+tlYraJniIGRQLjCXZea8IbRQm8hMClugpJItD5MdAl6ECsCXOD6oU7OC9VVexqbuL0QBPhD69StM/efde0tzDhwJxl5ov+XQ4zAx/8+zoxd4hX35i/40taSRXV1zBhMWVGXqyKJGRhtLZ0L8PLwwYjN/oEIwuPzOn7fZRqryIkedxJ/C26b4iGcC6URf8lpzZVCwYQ5lyTvhh9A5NwmhNh574USZh00koUBUbNpcGdHWus9rlReb66D5eO28/MM+js+mSWo1baJIBAgy/WwMTA16B0FVS8R44p6gCxeUKceSbpzm0BAopKkOh3h+JLdj5g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=kL8qOHTr3hJYOZy0dnmNbnvOfeSAwlG9sPg5uAF6XQc=;
+ b=aMSlEKqHQUzKZc0DDgx7K3mlVAtDctxS29DDpEx4W3CmDhD1vRPP+xnJgKdy0lRpiaOvJllIrb55fSexOl38SmbRBYIBzRuF9zVf8BXLvLIZraPTiwZVOYOSg48J0llDhBDlQltshvOGn79WkXo0imoa8FaNuG2UOipVNpIMtu6LnrWIP4wBvdZW4csPlTjfI4gQUMmOpXLWvieM7uHU3XBJnCnJenW/4ykvnU9fwe6BjhtdFnNutUdiSMG0BuvPtk85Jy11gBCePYKxksYo0WG2L3CWclLxu+gC308D10SivswiI5XjSm1ybbTBSJIcaFJ/rnuNS/I4JiBwWpXj3w==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by AM9PR04MB8906.eurprd04.prod.outlook.com (2603:10a6:20b:409::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.22; Fri, 24 Apr
+ 2026 03:57:18 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9846.021; Fri, 24 Apr 2026
+ 03:57:18 +0000
+Date: Thu, 23 Apr 2026 23:57:10 -0400
+From: Frank Li <Frank.li@nxp.com>
+To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v2 1/7] media: synopsys: Fix out-of-bounds check in
+ enum_mbus_code
+Message-ID: <aerqFnwDrn7AXSJh@lizhi-Precision-Tower-5810>
+References: <20260423-csi2_imx95-v2-0-934c02f3422a@oss.nxp.com>
+ <20260423-csi2_imx95-v2-1-934c02f3422a@oss.nxp.com>
+Content-Disposition: inline
+In-Reply-To: <20260423-csi2_imx95-v2-1-934c02f3422a@oss.nxp.com>
+X-ClientProxiedBy: SA9PR13CA0127.namprd13.prod.outlook.com
+ (2603:10b6:806:27::12) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
 MIME-Version: 1.0
-Message-Id: <20260423-color-format-v14-20-449a419ccbd4@collabora.com>
-References: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
-In-Reply-To: <20260423-color-format-v14-0-449a419ccbd4@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
- Rodrigo Siqueira <siqueira@igalia.com>, 
- Alex Deucher <alexander.deucher@amd.com>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>
-X-Mailer: b4 0.15.2
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|AM9PR04MB8906:EE_
+X-MS-Office365-Filtering-Correlation-Id: bea5746b-4063-463a-6628-08dea1b5948d
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|52116014|7416014|376014|19092799006|1800799024|22082099003|56012099003|18002099003|38350700014;
+X-Microsoft-Antispam-Message-Info: lVUk3HCUNy7ThXnwCSNr+ne2bTHkbu1Mk/9IR1FckIV/FxvUcVGVVbKj2wW5dqWjptOi2lQi372bienM5oYU+VBn8hKO3vJL7dOyiLY95/7I8elNZjvxN3BfHNaszu8ZGDN9lH1aQJa7OGw4TASPrwxeZ8Fa71Z4stj7ebN9Xu7bSxNILPdcuwSh9MCrd0OSo283WNwlDL5ckgIc3gBdsKIRbpY5H8c2cYCP2fILxiQKUT/7x4pkVzm1XoPNljh8jAlILLFYVIl0RCPnLUCGegJP8ylFe/kZwuHUfba3d43Wp2FFV4DLVp93M4iXQ/teO6K/cDvlc+i0mEiEP3CZpNuxLVsGIMg5ijkbOZVS6/fjoARtbOwAy/HyULbtyaz+iHP6M3HfvoyXq3brJRrGzEAhpzY13Px/kigyuXUJ75iOH4pYZlMfHQtjE+3/5rknu80b0u5jXVUx5auzCdBzVVe3dq24A4oxE1vplVjvsJdyk6sIk2UrfVaKVXHP8MtDVwdXPOxSD+/AuaIGHshVI4gGoR+MLTSas+V4NsLGmYBHMlDqyR/vRIjbS+FIDyKBEbf1i5LDbSclu56+XkBNjafgN9dNsKTAnACQ8xVRQWZA7aIWurhP6gQkr0bNaf6/PYJFOozXzVDHmBYYdWwK4SC5w4xyjkpqb7T/hRN1v3l29zqw4ahXiyq4tIvmjLaxJDRJKPZ6pcMmLoSgNfwjcDj9WlbUEfZPoEseeBWocqnJKPCKz4aWYC5RQkocVW/4lBm+HgqXXazVyvAmBh1E73m368EyQyZarOrVfAtR2uc=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(52116014)(7416014)(376014)(19092799006)(1800799024)(22082099003)(56012099003)(18002099003)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?n9x9xhnKD/9Lf9gS07UUjRjVD8ryeUiasIELkBcVsntSNn/2KFS8nwI7Zcrf?=
+ =?us-ascii?Q?RouEGqeJKchFqUE0UkHg8ZlXG+ihVQjdj85GWH3WMwduhnmIHFY0Go+orPz6?=
+ =?us-ascii?Q?vfcZqFhEbA41DFu2KRvLAnq5yB4II5FFJnh4oI060hnuCTv1Rpt0I2vTbAGc?=
+ =?us-ascii?Q?q6OKL+LSQIZvXOpsR5O1AF+Wi6ENawrOO2n6GLAK2bQlQxvhLdqWnMPnafGJ?=
+ =?us-ascii?Q?rV4gQmWYVP42YLZMY/r3crASs6ztiLH38x39I4yZtG7+eOaTywCNK/2ibWhm?=
+ =?us-ascii?Q?1uBT7O7YwcnpGZoqA/Tr8HQjxkdxHmu7dAUqfiWpcTmjazz9pTAyyncpKNWE?=
+ =?us-ascii?Q?Mms1BD7d6nMZn3gC3m4zKbuOGkXqSrKhT1t67PCJIyGv4PYtdWRi1uTDsrwd?=
+ =?us-ascii?Q?/I0ZpgDEwS7NlVjJvkz2GcJDkjWbgS5X+JEXugsnfqWORR0PKmzQ/+4yjo7e?=
+ =?us-ascii?Q?zz/Zi6fyVVJzGCUPdG8aZxvBaD4D5g+H3Hh4f0aRwkyedj8wxyXvzMBHxjn/?=
+ =?us-ascii?Q?FayXhgXpja51p7fjnOwV/h1/K67lUeoQI0+UJS6xaODJgqK3IN767aft6KYn?=
+ =?us-ascii?Q?YSOZpf/Bo6LLF30HTM08PJgELvg3rt8vCPaI2T4/nLjZvF4q//FLeXC8OIAf?=
+ =?us-ascii?Q?0+a0nB9Tx9g0MFc2HqZTiQfQ4TiaCpLtOud/iw6rGqKWsAefXnn1WDCTtSYW?=
+ =?us-ascii?Q?XQS5KLTeM03pFmSZazCBczrrTI9detqdqEw9aeHOlUlk41fL84VblmwI+nV5?=
+ =?us-ascii?Q?+cFPywvY1KVltlR4kEFSqpjmP1b5AfSajSGia9aFFQvD5rZyUxeZksWHkIML?=
+ =?us-ascii?Q?Sqy+xpLeVa9w6TsP375wHzGZaSmO6jRCEQ141JhDW+LO3yO5bC95Lr6fRdKR?=
+ =?us-ascii?Q?I76ZkYalzjRL0PMWplG04AjohcvatGlWDvswpk1GgdW8NZC5XpL76nDeo7Kw?=
+ =?us-ascii?Q?/9s6m2KQf3nc1c23U/5lo03Xhv/73rGjGAPv6H0CeB9DUElN0zqcuB32w3s0?=
+ =?us-ascii?Q?c1AmzdwmJtQvIYEqjZnpWNVg0tzcgu+SPzw51BTyUQN3odso4xsWMQh5hybt?=
+ =?us-ascii?Q?VDXt2CLDI2joJ0oofNEl6P3oUhlTitIwJUgV/kqGD2sJlAGpE1otnYsKlEK6?=
+ =?us-ascii?Q?0fcYKLyDF4Sl0cI2d4LrmZwSttB3kl1wWyxNWwQcVo5gbovIvCejP6CML/r7?=
+ =?us-ascii?Q?hU23jx6ylQ8CY2BNJ9Kp/r7TTQGD3XRG/2JZoodUShLyvG2bS4pEIi6zavhY?=
+ =?us-ascii?Q?IpxgP8bfgMCDiaTB15jbKOsTjX81FFo+jXVTnf2caY/2ZNRZAAuxHlsclnjL?=
+ =?us-ascii?Q?m1sOXEzoO1+O+WTQMuZrPG4DPurbi0/P0V1whwZ2ZHjKUD5MMxpDQaU8pEUC?=
+ =?us-ascii?Q?W6TCbBPVK5vyzOFB8sVkVN3xcnZWJrl1aOuuQj4GlN9HQ0asicY4V8iyC0sh?=
+ =?us-ascii?Q?C9hYhpgppkdd5iGyttoJOCjTZfAHqRE+3+5N+Zn7e5qXnrue6EuYUE0cYqNj?=
+ =?us-ascii?Q?F62yNh7BSz2NrwK4tUN9mwXuhDFO+d/M3ceIFM7MsDdoCm2i3PXzRwOtRWf5?=
+ =?us-ascii?Q?ewR8lDqyujEjPY8/5qMv2fL5NeJ6ySYmgnhJhph0+CoJFmviN3VVF2vonpOW?=
+ =?us-ascii?Q?ikuJ55vWqv7uwbeZGFGfw93l+wQxh+Z6UD398h+QIMEeaVL7/f3TsVE76hzj?=
+ =?us-ascii?Q?+aLTeJiNzKT8XAqig1DX/MY35JqUKL9yG/Qa2CU4LqfrtMQDVadYxZp4uwNn?=
+ =?us-ascii?Q?Rq9ZyGaLUw=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: bea5746b-4063-463a-6628-08dea1b5948d
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Apr 2026 03:57:18.8250
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: HT7OFmijeU2M2Oqe0Dbma6bWojjCaP7b2mZ+xnsgyKnR2uoYdNo3RBdUSNA4KrZIgg+4RRQNA5ll1nGlka2mIA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8906
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_120838_767121_545A0F34 
-X-CRM114-Status: GOOD (  20.25  )
+X-CRM114-CacheID: sfid-20260423_205723_403287_0AA72DB0 
+X-CRM114-Status: GOOD (  18.26  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,234 +145,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wayland-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com, intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Switch between requested color formats by setting the right bus formats,
-configuring the VO GRF registers, and setting the right output mode.
+On Thu, Apr 23, 2026 at 04:22:56PM +0800, Guoniu Zhou wrote:
+> dw_mipi_csi2rx_enum_mbus_code() contains an off-by-one error in the
+> bounds check for code->index, allowing an access past the end of the
+> formats array.
+>
+> Fixes: 355a11004066 ("media: synopsys: add driver for the designware mipi csi-2 receiver")
+> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+> ---
 
-To do this, the encoder's atomic_check queries the bus format of the
-first bridge, which was determined by the bridge chain recursive format
-selection. Pick the input format if it's !FIXED, otherwise, pick the
-output format.
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
 
-The previously unused GRF register color format defines are redone as
-well. Both RK3588 and RK3576 use the same defines; it didn't look like
-this as there was a typo in the previously (unused) definition.
-
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 107 ++++++++++++++++++++++---
- 1 file changed, 98 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index c78db7f8ab6c..9bf727c1dd7d 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -11,6 +11,7 @@
- #include <linux/gpio/consumer.h>
- #include <linux/hw_bitfield.h>
- #include <linux/mfd/syscon.h>
-+#include <linux/media-bus-format.h>
- #include <linux/module.h>
- #include <linux/platform_device.h>
- #include <linux/phy/phy.h>
-@@ -44,10 +45,6 @@
- #define RK3576_8BPC			0x0
- #define RK3576_10BPC			0x6
- #define RK3576_COLOR_FORMAT_MASK	GENMASK(7, 4)
--#define RK3576_RGB			0x9
--#define RK3576_YUV422			0x1
--#define RK3576_YUV444			0x2
--#define RK3576_YUV420			0x3
- #define RK3576_CECIN_MASK		BIT(3)
- 
- #define RK3576_VO0_GRF_SOC_CON14	0x0038
-@@ -75,8 +72,6 @@
- #define RK3588_8BPC			0x0
- #define RK3588_10BPC			0x6
- #define RK3588_COLOR_FORMAT_MASK	GENMASK(3, 0)
--#define RK3588_RGB			0x0
--#define RK3588_YUV420			0x3
- #define RK3588_SCLIN_MASK		BIT(9)
- #define RK3588_SDAIN_MASK		BIT(10)
- #define RK3588_MODE_MASK		BIT(11)
-@@ -88,6 +83,11 @@
- #define HOTPLUG_DEBOUNCE_MS		150
- #define MAX_HDMI_PORT_NUM		2
- 
-+#define RK_COLOR_FMT_RGB		0x0
-+#define RK_COLOR_FMT_YUV422		0x1
-+#define RK_COLOR_FMT_YUV444		0x2
-+#define RK_COLOR_FMT_YUV420		0x3
-+
- struct rockchip_hdmi_qp {
- 	struct device *dev;
- 	struct regmap *regmap;
-@@ -116,6 +116,33 @@ static struct rockchip_hdmi_qp *to_rockchip_hdmi_qp(struct drm_encoder *encoder)
- 	return container_of(rkencoder, struct rockchip_hdmi_qp, encoder);
- }
- 
-+/**
-+ * dw_hdmi_qp_rockchip_bus_fmt_to_reg - converts a bus format to a GRF reg value
-+ * @bus_fmt: One of the MEDIA_BUS_FMT_s allowed by this driver's atomic_check
-+ *
-+ * Returns: an unshifted value to be written to the COLOR_FORMAT GRF register
-+ * on success, or %-EINVAL if the bus format is not supported.
-+ */
-+static int __pure dw_hdmi_qp_rockchip_bus_fmt_to_reg(u32 bus_fmt)
-+{
-+	switch (bus_fmt) {
-+	case MEDIA_BUS_FMT_RGB888_1X24:
-+	case MEDIA_BUS_FMT_RGB101010_1X30:
-+		return RK_COLOR_FMT_RGB;
-+	case MEDIA_BUS_FMT_UYVY8_1X16:
-+	case MEDIA_BUS_FMT_UYVY10_1X20:
-+		return RK_COLOR_FMT_YUV422;
-+	case MEDIA_BUS_FMT_YUV8_1X24:
-+	case MEDIA_BUS_FMT_YUV10_1X30:
-+		return RK_COLOR_FMT_YUV444;
-+	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-+	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
-+		return RK_COLOR_FMT_YUV420;
-+	}
-+
-+	return -EINVAL;
-+}
-+
- static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
- {
- 	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
-@@ -131,29 +158,83 @@ static void dw_hdmi_qp_rockchip_encoder_enable(struct drm_encoder *encoder)
- 		hdmi->ctrl_ops->enc_init(hdmi, to_rockchip_crtc_state(crtc->state));
- }
- 
-+/**
-+ * dw_hdmi_qp_rockchip_get_vop_format - get the bus format VOP should output
-+ * @encoder: pointer to a &struct drm_encoder
-+ * @conn_state: pointer to the current atomic &struct drm_connector_state
-+ *
-+ * Determines which bus format the Rockchip video processor should output as
-+ * to feed into the bridge chain.
-+ *
-+ * Returns a MEDIA_BUS_FMT_* on success, or %0 on error.
-+ */
-+static u32 dw_hdmi_qp_rockchip_get_vop_format(struct drm_encoder *encoder,
-+					      struct drm_connector_state *conn_state)
-+{
-+	struct drm_bridge *bridge __free(drm_bridge_put) = NULL;
-+	struct drm_bridge_state *bstate;
-+
-+	bridge = drm_bridge_chain_get_first_bridge(encoder);
-+	if (!bridge)
-+		return 0;
-+
-+	bstate = drm_atomic_get_bridge_state(conn_state->state, bridge);
-+	if (!bstate)
-+		return 0;
-+
-+	if (bstate->input_bus_cfg.format != MEDIA_BUS_FMT_FIXED)
-+		return bstate->input_bus_cfg.format;
-+
-+	return bstate->output_bus_cfg.format;
-+}
-+
- static int
- dw_hdmi_qp_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 					 struct drm_crtc_state *crtc_state,
- 					 struct drm_connector_state *conn_state)
- {
--	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
- 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-+	struct rockchip_hdmi_qp *hdmi = to_rockchip_hdmi_qp(encoder);
- 	union phy_configure_opts phy_cfg = {};
-+	u32 ingest_fmt;
- 	int ret;
- 
-+	ingest_fmt = dw_hdmi_qp_rockchip_get_vop_format(encoder, conn_state);
-+	if (!ingest_fmt)
-+		return -EINVAL;
-+
- 	if (hdmi->tmds_char_rate == conn_state->hdmi.tmds_char_rate &&
--	    s->output_bpc == conn_state->hdmi.output_bpc)
-+	    s->output_bpc == conn_state->hdmi.output_bpc &&
-+	    s->bus_format == ingest_fmt)
- 		return 0;
- 
-+	switch (ingest_fmt) {
-+	case MEDIA_BUS_FMT_RGB888_1X24:
-+	case MEDIA_BUS_FMT_RGB101010_1X30:
-+	case MEDIA_BUS_FMT_YUV8_1X24:
-+	case MEDIA_BUS_FMT_YUV10_1X30:
-+		s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
-+		break;
-+	case MEDIA_BUS_FMT_UYVY8_1X16:
-+		s->output_mode = ROCKCHIP_OUT_MODE_YUV422;
-+		break;
-+	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
-+	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
-+		s->output_mode = ROCKCHIP_OUT_MODE_YUV420;
-+		break;
-+	default:
-+		return -EINVAL;
-+	}
-+
- 	phy_cfg.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
- 	phy_cfg.hdmi.bpc = conn_state->hdmi.output_bpc;
- 
- 	ret = phy_configure(hdmi->phy, &phy_cfg);
- 	if (!ret) {
- 		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
--		s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
- 		s->output_type = DRM_MODE_CONNECTOR_HDMIA;
- 		s->output_bpc = conn_state->hdmi.output_bpc;
-+		s->bus_format = ingest_fmt;
- 	} else {
- 		dev_err(hdmi->dev, "Failed to configure phy: %d\n", ret);
- 	}
-@@ -383,6 +464,7 @@ static void dw_hdmi_qp_rk3588_io_init(struct rockchip_hdmi_qp *hdmi)
- static void dw_hdmi_qp_rk3576_enc_init(struct rockchip_hdmi_qp *hdmi,
- 				       struct rockchip_crtc_state *state)
- {
-+	int color = dw_hdmi_qp_rockchip_bus_fmt_to_reg(state->bus_format);
- 	u32 val;
- 
- 	if (state->output_bpc == 10)
-@@ -390,12 +472,16 @@ static void dw_hdmi_qp_rk3576_enc_init(struct rockchip_hdmi_qp *hdmi,
- 	else
- 		val = FIELD_PREP_WM16(RK3576_COLOR_DEPTH_MASK, RK3576_8BPC);
- 
-+	if (likely(color >= 0))
-+		val |= FIELD_PREP_WM16(RK3576_COLOR_FORMAT_MASK, color);
-+
- 	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON8, val);
- }
- 
- static void dw_hdmi_qp_rk3588_enc_init(struct rockchip_hdmi_qp *hdmi,
- 				       struct rockchip_crtc_state *state)
- {
-+	int color = dw_hdmi_qp_rockchip_bus_fmt_to_reg(state->bus_format);
- 	u32 val;
- 
- 	if (state->output_bpc == 10)
-@@ -403,6 +489,9 @@ static void dw_hdmi_qp_rk3588_enc_init(struct rockchip_hdmi_qp *hdmi,
- 	else
- 		val = FIELD_PREP_WM16(RK3588_COLOR_DEPTH_MASK, RK3588_8BPC);
- 
-+	if (likely(color >= 0))
-+		val |= FIELD_PREP_WM16(RK3588_COLOR_FORMAT_MASK, color);
-+
- 	regmap_write(hdmi->vo_regmap,
- 		     hdmi->port_id ? RK3588_GRF_VO1_CON6 : RK3588_GRF_VO1_CON3,
- 		     val);
-
--- 
-2.53.0
-
+> Changes in v2:
+> - New added in v2
+> ---
+>  drivers/media/platform/synopsys/dw-mipi-csi2rx.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> index ce17f986279e..02eb4a6cafad 100644
+> --- a/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> +++ b/drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> @@ -430,7 +430,7 @@ dw_mipi_csi2rx_enum_mbus_code(struct v4l2_subdev *sd,
+>
+>  		return 0;
+>  	case DW_MIPI_CSI2RX_PAD_SINK:
+> -		if (code->index > csi2->formats_num)
+> +		if (code->index >= csi2->formats_num)
+>  			return -EINVAL;
+>
+>  		code->code = csi2->formats[code->index].code;
+>
+> --
+> 2.34.1
+>
 
 _______________________________________________
 Linux-rockchip mailing list
