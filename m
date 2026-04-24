@@ -4,136 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B17DFAD41C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Apr 2026 04:05:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C3AFFE5208
+	for <linux-rockchip@archiver.kernel.org>; Fri, 24 Apr 2026 10:43:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EF/rfafVSSfABwyp07b7fxaFBSXWPMeKQXGpxK5aC6Y=; b=tCQKMkK+/ACCNI
-	hvuIQ+MSamgw9ZcWUnCdXVyxlPzohX8v4MBWZQojtlChGv3N+5lex/mt254BFZYiJntTp6ulfEdJS
-	BiGiScgm3Go2Cdz5sPTPk25ohZYqMmm/cE/i15aKhRGuXO/3CgzvggAjU+gTZg1mS1+Z/6rmZm7xw
-	y7DUolnnOmbEYz7qhggrB1oLMBoWC49w4Pl8mIz5rPdnKG7m+v0FckKhU5FDV1/LS3GSvRy431+ly
-	l80lPfIUoqB3/6qIJylsv3aR0c0D3wAUi/s+uMWS4yl4mmMiEDhhUSchx6Lj0eWVzGPTByzFPvyDZ
-	IomkdNOMnSyXwVmL2Q7g==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dD8RttWlDv/hAPX1UUV5dG54NK3VkpKK/oF6IdfWhvg=; b=pEIs71O4OwMNT29N3cwa8e16nq
+	8f8bg9o/iW3ZHztfhRazc+ybBH4g/rX8dxGc4lJShXBQS1w84Zj5xOdRfi8XhWm9bqAB9xFdVKCw1
+	xPH+Upqn7NKftEHKgUrJaGqpAnGyjo8hfz7BBno4zYAMIul/+Xjq2z4qaHirodu5+EuPJc6zxelne
+	HIocStun/jWrG9xb4H8EFbu3bQd7am4tBkmCjA8ognk97yHj7SwHGUghEqytm2ZBbhE7J2CgeCCEx
+	SJNMn2JWvKpI64v3RWB5DF0bYM0Gf+5ATT3tILtBTV2iVWY6TJb9+/33yE+KhsKiWmcIfGGPM1S19
+	+zhucYKA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wG7n7-0000000CcXj-16yf;
-	Fri, 24 Apr 2026 04:05:21 +0000
-Received: from mail-northeuropeazon11010037.outbound.protection.outlook.com ([52.101.84.37] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1wGE0U-0000000D3At-0aaM;
+	Fri, 24 Apr 2026 10:43:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wG7n5-0000000CcX2-1A6I;
-	Fri, 24 Apr 2026 04:05:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=seTzOxE3MXKBub7awaF34Cz2TkGltKEYpIkC07gO85gHU4Logs7+2KAt4KGXcxTbcZs+WiBRDUUa+RtAv3FMaglG9ATZAPIQudJqDFRcbx4edKQ8YHC+zPPEmSo6HqA/YsO3Ti1uGQjNPXsDvZu7l+3HUlL0LnNZhptmy8GpZFHvEyztySF+2AnkMnhFj+Ukv0w6BFL7H6uOngBMuwLwRSX5MEa1cnrDprnG45Jak5Da2JlVVFkO/R8TpX3D/EgLCsJa9Ffao5E1DbLmjpqsjJ1FfgVaHEVlTjELstgfvnoWBKi+OAl4+d2TUbWnndNOb+dx7YAd+4QOtopS6DNjdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=35G4XE/mIKGPsswZXiJ7PZUjKNqMilFlyMRO4sj9X70=;
- b=BfTmVAKXU+H3FmNSiL0CeYt9r1qtIXct1RjN81SVREaaHT5g7sSCjfDB0RguhpGfH+tzYOiafHUsd9mNgkYeNaPqBaL5Vl3sp0MFx0wf2OEVEvGpe7d5d7IC7YNXoQ3KysYdcz/lFBNiSgcIXI3hdYIBHZPQfFhPVt+4M12y4hym8hUef4+mf38xeYCHLuFx6+SFjMc09EU0fiQ0TV8ispt4mnFQDViihCLZkJ5ANj7RaxV+H0N00mW4hZ1IoFbHlF2HkdEitva6T3Fwmbmi4xx+OTDV3Icg8kjH3BvRUXmnry71ysQXd9ywS2UoVMi6K9d5avjFs6M8VnlnL4qG0A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=35G4XE/mIKGPsswZXiJ7PZUjKNqMilFlyMRO4sj9X70=;
- b=iQ38444ASl2a7Xfejb9GZakyO6wNTgT1V75BD4E0u/Yz7m0L/No8kDK/CGR4Bsp6ZuCxHCpnKr2WUKzOhKvFPaKf7E5Go+20C0GREl8vVNQ90tEWj/6p5YuWRFKtz0XbJt1DfFO66gvpnE8yS8x8Xt25MvzVkqWBMraXArBrKnRhP7/Ljqoiapisx2AUsoiRQjo0VJSJ/4ehcxDt873dAMH8uw46fY16nXLquXhtyB9M65hBCYZpbJSN2JjAtyt8cps37f7lsiqwuwUOboJVbU9tHZ8cQOSYa1z/FNud/tzPNKDV6JPV+oXoB/4OZobo9C/k4dKwlpjXRN1vY3LA2g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
- by FRRPR04MB12618.eurprd04.prod.outlook.com (2603:10a6:d10:1d0::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.16; Fri, 24 Apr
- 2026 04:05:15 +0000
-Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
- ([fe80::75e4:8143:ddbc:6588%6]) with mapi id 15.20.9846.021; Fri, 24 Apr 2026
- 04:05:14 +0000
-Date: Fri, 24 Apr 2026 00:05:05 -0400
-From: Frank Li <Frank.li@nxp.com>
-To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-Cc: Michael Riesch <michael.riesch@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v2 6/7] media: dt-bindings: add NXP i.MX95 compatible
- string
-Message-ID: <aerr8XazTpavGP5K@lizhi-Precision-Tower-5810>
-References: <20260423-csi2_imx95-v2-0-934c02f3422a@oss.nxp.com>
- <20260423-csi2_imx95-v2-6-934c02f3422a@oss.nxp.com>
-Content-Disposition: inline
-In-Reply-To: <20260423-csi2_imx95-v2-6-934c02f3422a@oss.nxp.com>
-X-ClientProxiedBy: PH8PR21CA0009.namprd21.prod.outlook.com
- (2603:10b6:510:2ce::26) To PA4PR04MB9366.eurprd04.prod.outlook.com
- (2603:10a6:102:2a9::8)
+	id 1wGE0T-0000000D3Af-0Pq4;
+	Fri, 24 Apr 2026 10:43:33 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 388096001A;
+	Fri, 24 Apr 2026 10:43:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5E2B3C19425;
+	Fri, 24 Apr 2026 10:43:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777027411;
+	bh=kknDDv9TuvxwgtonleSpBC/+VyXVDvyX2AE+3GnIAw4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=SDMQHrfzRkuh92o/aG4I5AFMn1snndSnL+7WSnv5nef9ruDSGgGHKYWXEj7SPnJRm
+	 LY24+LVI4JMn1/V+jz/EXg2ysR8wksLiEdHrEs4oDg2Sg77Yv95DdREYTz1A6MHlbm
+	 zahdprpJZ8p9EDrFlUBQYhcXq4HLG3Th+yEgwKzPFS4yBqgKcaW0Hsg5UewY116SPo
+	 /UW4PgZfJUoJBxnt0rZHnVuSWp1AVHunPk5zviLN7TnXoiGy9WO8r5RAPu5LgZ0YNi
+	 yt01acpjkuo++DRtrv2I/a5YrVDa3/WsYv1ERETrMb6GtLkE+eGYnzouqLWZH2mPGZ
+	 x4CrRrJbSwWVw==
+Date: Fri, 24 Apr 2026 12:43:29 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <ukleinek@kernel.org>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, Lee Jones <lee@kernel.org>, 
+	William Breathitt Gray <wbg@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, kernel@collabora.com, 
+	Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org, linux-pwm@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-iio@vger.kernel.org, 
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v5 0/6] Add Rockchip RK3576 PWM Support Through MFPWM
+Message-ID: <aetFgdIUlDG0AiMn@monoceros>
+References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
+ <20260421165656.168fe262@jic23-huawei>
+ <dB_doorKQsK5TdJ40Tv8Lw@collabora.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|FRRPR04MB12618:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0f7a0fc2-4266-4f2a-88a0-08dea1b6b033
-X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|19092799006|1800799024|366016|52116014|7416014|38350700014|22082099003|56012099003|18002099003;
-X-Microsoft-Antispam-Message-Info: TZSn4Tutz3JudH3tLJNiURPtSegYTI6kCK3knkC+yfwjq0rfL+iiC61IXVee3K7720N/ZbV5pXnPPIJyYFG40k3AKZ0ok0LYVsFhgc+4AvhXVHwcGp8Cf6eOAgBTDhvFBK1QZrGkHwuVF6kzGzRsRDPx1zkZi+BB4+Vk4GdqNitVXsCkTJEsUkGc6sVyKfFq3gYkMoZKtOvsZANwoGBdcWRC2Id1QZzhR8zH3jj/2gVgCJARsPakfPAYiV14twQc8dHzkaFRi6lQFRaTrGyqP9u804vilSuJwCSim7aJ+IzWR9FC7vlaiLNOlFCuTmky19EfOauDNv6POjZKOsqaIZcQzwLol9G9lplUe7AiPgTN91JsbLpb1w+EFzUuTl94aDDUxqhoN/bE/+cAXiGXZLbg5jFCAjyFlbRZTlwiYXBnFStNhzKxpgPBN3a5W/YbIZkOP1e+4aibgChiJIdaGvQafxr7hZ+P3OISYlldnxlgQbdyyi35PL/W632Q1sQMays+UWY5AXwcPnYsDhqP6qLXynpdiGwGrzpr5gJS42FeeW8O74y/BIEG2nVxenQT4SvH54DQQoiaa2Rqxh08pSo42MvjSO1yAyg50kzwU+4VMsxQTNztJIjxYPWi12/P+4YzHOSQfqLqr1FbRNtkRF73tgbl4Zcs3j7j41yxi1vQJd0QwcarrESGjANwMsAaLKZRoBM13BJ6lFQ+dTmylWj516NzTsuToA3NHcMjXiT9xuHRQzBIWa+o6xzevplE7b+iBNYENiIg70YhmcMDEh5dQArN1AM1LHXGHfoqeiM=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(19092799006)(1800799024)(366016)(52116014)(7416014)(38350700014)(22082099003)(56012099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?zmDVMleLd+o0zrozun4QMO4zOfl2sqoPu/urhEz5ptZPtZbvwPlTNtNxVgBy?=
- =?us-ascii?Q?ZMGNiDgDMMjKcK9I94rWSLFIi6n91iB78IxCkDxj9ToGxBQAQ1VEKXx4vXpF?=
- =?us-ascii?Q?+/Q6xGXKVYN5bCg/4PgY8RgNGvK3VU0MXOchuh4AHw8aU/CPyJ1tQTwvyF6m?=
- =?us-ascii?Q?ZTYhsk/MxEY0CjpSfeVLNEmCYbaaUaEYgyC32t40d9A69zFec57PjgQ/GA09?=
- =?us-ascii?Q?RtvFmE11m7KGTfDFvfltwRIwE6qSLidxOTBMUQW3yHTePEOrgbijlTdwD+/8?=
- =?us-ascii?Q?vA8oiaL+5TQNpfcRZjiqusHK0X0CKjz14LOb5Av/qscVqtthMwvh0Lafe8PW?=
- =?us-ascii?Q?XLtRil7Y1KFRidv/dVWCSZ90GNUhLHTWkvdEv+iG0WFhXP4NIsM6AIS/q7d+?=
- =?us-ascii?Q?cY3JRMbYI+0F4a5eHBA7WnIwPauRnc+iDGP9sJOV4w0j0RrI1T+1xHCL1u+4?=
- =?us-ascii?Q?yHv6urQcOh91IPsuPe24W5keqsGyc1pLYEg7Io28dEoK4zLfxbaWvFlDZX9J?=
- =?us-ascii?Q?gcalO0lBCjO724UL9JnM486xc2sAHW5VkFI+JGyN3u4M/tB2Le873osKaxU6?=
- =?us-ascii?Q?KbX93bQe0HTTIf0KlcIbHRlEAyWPbWcyrVFeyhPBadplaJkeqA0LdJ6XD39Q?=
- =?us-ascii?Q?KlramV/18fIU8U/lYINZsnqAsab0irfFGf856dKKcf1XTyB9vfniBu8WFohH?=
- =?us-ascii?Q?xYhLn3nnu0vvmqxq5tQxhTaFmziK37zlZfl0NtwGEqLT64Yd22EAT27OrDJ7?=
- =?us-ascii?Q?kEksDp9EWdMqOfSOL0FWV6WXuFUzWP7CLWJQYLI9wMPm0gI5GhikDNm9wR7Y?=
- =?us-ascii?Q?qM/db2esqOygnaxmk81SiOHFRkXNq64rJNjp8/kOcENIXxaGPUvZ/baubgU5?=
- =?us-ascii?Q?lu0tCqOrPs4LR/wMRj8x/J//f50mc4J+BQNsLmD4tdtyzb8XX/qqZRvEa7nR?=
- =?us-ascii?Q?YevCdmcnP1/UPou2NjPLhRaYN6ZWRZ8tQxsuHXGb8TK6LiM69IpOc0TcOn3u?=
- =?us-ascii?Q?xkWnbHjrLUZW2KH7r9U7s80IXoVb7fqR11T+G1tWr1GWxEsQh4VgFv+MWPHG?=
- =?us-ascii?Q?tADMkFuWM4nzn8Z2SeQ1vofy6OxN4NAD/m1jlX63DUVjyW+zRTW+5bNM05V8?=
- =?us-ascii?Q?FuHQZWdvLHePWxkGrvL6eRfDkLBDeoEqBEZ9APtRaTIYcEeE15PPqrelvkni?=
- =?us-ascii?Q?+84akvpkoHUI5f46Z+Iz1oTLAjWrwAF9BtOjD+/eZuy9RgZHiFhhTGtlB3sS?=
- =?us-ascii?Q?zZT13RSduWFaRZg7VxXtMxfhNog1/9YYDqwWSVRzWbuyrKkxn6wXfDueA4D1?=
- =?us-ascii?Q?wcoqxZR9F/FupkZx9iDEMEx3x51JqQWAQe8tUyWLMC/Ff7BgpQjX3sueiKK7?=
- =?us-ascii?Q?NOzrf0LYfCH2GDyssgoN99++fNCHFiC2A9IYqq0j8J+FeEnalb6qriCKI9Cp?=
- =?us-ascii?Q?utG2Ik+6LNnPNo2B1FnF5qE+D8//jMmU2Crk/w2gbiAHidIsUEy+2o3Egkbu?=
- =?us-ascii?Q?ENBAahW8gXjucDyUxivZiS734cBGHzvoL3/MjYr1PJJkpblpNAOVZXwYaCPk?=
- =?us-ascii?Q?0U7MaH7E4huSma80EOyVW0JohfzL09UaSZQg1oWyHBnnoATnr8XVrZK2pjkG?=
- =?us-ascii?Q?GthO+ApPKYahaPlWN9PzPd5mhNBdQs1O/e0rswizoUhNrB+klImbBUrJy16D?=
- =?us-ascii?Q?Lc33tyRqIUlY3mbaiPOASbdnQU8BFJI5n38bDEqg88WvDOM6Vv5Z0l19XZGZ?=
- =?us-ascii?Q?OTvBqt4G+Q=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0f7a0fc2-4266-4f2a-88a0-08dea1b6b033
-X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 24 Apr 2026 04:05:14.7163
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: +3F3hEuYKB9K6a7vjFtwiuh6JNEO+WBlIhsu3FBCT0PUsrczn9cLGcwLRwTG/C2ImajjPF9JGvwql2ljkSapUw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: FRRPR04MB12618
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260423_210519_341246_11394524 
-X-CRM114-Status: GOOD (  18.64  )
+In-Reply-To: <dB_doorKQsK5TdJ40Tv8Lw@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,84 +70,116 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============4095083516893638065=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Apr 23, 2026 at 04:23:01PM +0800, Guoniu Zhou wrote:
-> The i.MX95 CSI-2 controller is nearly identical to i.MX93, with the
-> main difference being the data output interface:
->
-> i.MX93 use IPI (Image Pixel Interface), which requires:
-> - Pixel clock input
-> - Software configuration through registers
->
-> i.MX95 uses IDI (Image Data Interface), which:
-> - Does not require pixel clock
-> - Is software transparent (no register configuration needed)
 
-Nit: Remove "Is", just "Software ... "
+--===============4095083516893638065==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nqpklusenoeywtel"
+Content-Disposition: inline
 
->
-> Due to these differences in register layout and initialization needs,
-> the two variants cannot share the same compatible string. The driver
-> needs to distinguish between them to handle the interface correctly.
->
-> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
-> ---
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+--nqpklusenoeywtel
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v5 0/6] Add Rockchip RK3576 PWM Support Through MFPWM
+MIME-Version: 1.0
 
-> Changes in v2:
-> - Add dedicated constraint block for i.MX95 to reflect different clock
->   requirements (only per clock needed vs i.MX93 which needs both per
->   and pixel clocks)
-> - Update commit message to include more details about interface differences
-> ---
->  .../bindings/media/rockchip,rk3568-mipi-csi2.yaml        | 16 ++++++++++++++++
->  1 file changed, 16 insertions(+)
->
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
-> index 4ac4a3b6f406..4e0bc75c2136 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-mipi-csi2.yaml
-> @@ -18,6 +18,7 @@ properties:
->    compatible:
->      enum:
->        - fsl,imx93-mipi-csi2
-> +      - fsl,imx95-mipi-csi2
->        - rockchip,rk3568-mipi-csi2
->
->    reg:
-> @@ -135,6 +136,21 @@ allOf:
->          clock-names:
->            minItems: 2
->
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: fsl,imx95-mipi-csi2
-> +    then:
-> +      properties:
-> +        interrupts:
-> +          maxItems: 1
-> +        interrupt-names: false
-> +        clocks:
-> +          maxItems: 1
-> +        clock-names:
-> +          maxItems: 1
-> +
->  examples:
->    - |
->      #include <dt-bindings/clock/rk3568-cru.h>
->
-> --
-> 2.34.1
->
+[Dropped Jonas Karlman from Cc:, their email bounced for me in the past]
+
+Hello Nicolas,
+
+On Wed, Apr 22, 2026 at 01:31:14PM +0200, Nicolas Frattaroli wrote:
+> On Tuesday, 21 April 2026 17:56:56 Central European Summer Time Jonathan =
+Cameron wrote:
+> > On Mon, 20 Apr 2026 15:52:37 +0200
+> > Nicolas Frattaroli <nicolas.frattaroli@collabora.com> wrote:
+> >=20
+> > > This series introduces support for some of the functions of the new P=
+WM
+> > > silicon found on Rockchip's RK3576 SoC. Due to the wide range of
+> > > functionalities offered by it, including many parts which this series'
+> > > first iteration does not attempt to implement for now. The drivers are
+> > > modelled as an MFD, with no leakage of the MFD-ness into the binding,=
+ as
+> > > it's a Linux implementation detail.
+> >=20
+> > Just thought I'd point out that as this includes the linux-iio
+> > list sashiko took a look at it.  Quite a few things and at least
+> > the first one I looked at was valid (a dereference before a validity
+> > check)
+> >=20
+> > https://sashiko.dev/#/patchset/20260420-rk3576-pwm-v5-0-ae7cfbbe5427%40=
+collabora.com
+> >=20
+> > Whilst this tool does generate some false positives, it also finds
+> > quite a few things it seems us humans fail to spot.
+> >=20
+> > Jonathan
+> >=20
+>=20
+> While I'm not entirely opposed to this, I do think reviews should happen
+> on-list when possible. Sashiko is a Google service, so it has about a 50%
+> chance of still being around in 2 years time. One of the benefits of the
+> kernel development workflow is that discussion going back decades is still
+> accessible.
+
+I mostly agree to your point. A possibility that I would consider
+compatible with on-list review is looking through what Sashiko found and
+address that on the list. Something like
+https://lore.kernel.org/all/20260420204647.1713944-2-u.kleine-koenig@baylib=
+re.com/
+
+> The reason why these aren't posted to list goes into the other thing
+> that I currently am not stoked about, which is that I'd have to act as
+> a filter for a Bring-Your-Own-Brain noise generator to pick out the
+> parts that aren't convincing lies.
+
+I didn't look through the complete feedback, but the part that I looked
+at (I'd say the rough half) seems to be legitimate.
+
+I'm also have reservations about AI, but my (little) experience with
+this one seems to show that it's in the better half of the scale between
+helpful and useless time consumer. So when I come around to review your
+series I will for sure look through their feedback in more detail. That
+means that if I'm too slow for you, looking through the feedback
+yourself and addressing that (or deciding against it) might be a good
+way to spend the waiting time and maybe even making it easier for me.
+
+Best regards
+Uwe
+
+--nqpklusenoeywtel
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmnrSU4ACgkQj4D7WH0S
+/k5RbwgAosunTIJtGGwUzsLZV8Zw2wd/vePOh4BvI6BFVJqacUQI3GU2p7tDClfB
+CdyBjNdiFYBInb1IzLr2sBOr089SEgf6BzpuZn/ZHATI8hGw+ZeAUkJDfVkeJtno
+qRd6UZuLbzftwQqGudASQBbgc4/mTSqFC9kL7GriORrJ3FJNhtZdoLfUpglbCP65
+G6q2RWvEGqhht5UMfc7cjUk8l67cMru0ctOP32tzCQVBXGpZdbM3cBdcs8ZtBwN0
+KouApV1mbrQhFVXtvCPFTYTosXBb+rsRnq/mO8UWBeOVboAxVASK9PhP1eHJgutn
+Tk3r77pzRnSnrSTnagBFPlKU45DHOg==
+=/p0a
+-----END PGP SIGNATURE-----
+
+--nqpklusenoeywtel--
+
+
+--===============4095083516893638065==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============4095083516893638065==--
+
