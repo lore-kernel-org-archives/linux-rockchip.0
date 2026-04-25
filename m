@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58041FF8861
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Apr 2026 03:10:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BDC0FF8850
+	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Apr 2026 03:10:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EQj43UlYI8wiR85Qx5xsxo9KPZrwWBctITAVDj1spwA=; b=FVx/8zI6y3Xc4I
-	l+ue8g+xOftp/nXUczVILh5OmyY9Q+WH+/bExHBb96mI1+FiRs5MGx+WchEA2Swfs6fxH3BSdlEU5
-	EeW3jYPfr+q6NxRuX120b+mYpM3GTdLm/DFQztTSp86ihQAUhSsZNu6GcBTBY503nm71zgL2fngCO
-	zGbLp20+zaA6Ljw/jnaW5R0YrNWG6o0NhxgeFxPlCeXEX0hz2zGeYfdQDgGApIkWl3pLDlY5ur1vp
-	m0rMCwnQr0JtAAgZIN44Vi7Ujl16kcA2mN8QvZfuV9Y+DyWKcMUL61rDtQ4OBXTn4Nbe+wIGQyytT
-	+hhjQjGGBqx49V1KS9EQ==;
+	List-Owner; bh=63SbpAhMG6JQTfmzOnyxe7nOw2kY/KQmqyvsHpEMWYA=; b=poeDUbKyhXtYYB
+	9Wh2xKPBiAI1OSfFdj7jfwg78Htp85BneIUPG9dSWii6dWn/YL551/7FST5POMZBD6dkoIs0ZptA6
+	+8U2qsSOmaIWuJ8YePP0fGsh1J1hu4gILvEZvRTo5s3+tY8sKmeX3vovhlcrUQtZQLOz3xj0zAhbC
+	QtWDJLm86DKkymEUDjCdCJLK8PMFQp/ykZoHeSJfqhLBO9+QwpK1Z40CFe6KwWkGL1O1ZSRF3+WBo
+	2b3YE7WdQocQJzjMYnikq81GTeIGTycyfppOrCorW2B81XzKwx6hN+O1umynGjLJAnHvkQN7RXenS
+	t8Q7eXVZSRb1lY5AmfbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGTPV-0000000E1et-1yKS;
-	Sat, 25 Apr 2026 03:10:25 +0000
+	id 1wGTPW-0000000E1ft-0Kuq;
+	Sat, 25 Apr 2026 03:10:26 +0000
 Received: from mail-dy1-x1362.google.com ([2607:f8b0:4864:20::1362])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGTPQ-0000000E1bK-2sAx
+	id 1wGTPS-0000000E1cJ-0jgw
 	for linux-rockchip@lists.infradead.org;
-	Sat, 25 Apr 2026 03:10:22 +0000
-Received: by mail-dy1-x1362.google.com with SMTP id 5a478bee46e88-2d96243c91fso13406651eec.1
-        for <linux-rockchip@lists.infradead.org>; Fri, 24 Apr 2026 20:10:20 -0700 (PDT)
+	Sat, 25 Apr 2026 03:10:23 +0000
+Received: by mail-dy1-x1362.google.com with SMTP id 5a478bee46e88-2d8ffdc31d0so2123202eec.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 24 Apr 2026 20:10:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ausil.us; s=google; t=1777086620; x=1777691420; darn=lists.infradead.org;
+        d=ausil.us; s=google; t=1777086621; x=1777691421; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=hzwyg+Q8PpdccnVWRF49NDrMOdX2e/qspSUaU1qJfGA=;
-        b=izXD3xNkioLXJ4dyy3bF2LhcmaWWO2diS56OL1w34TtapvKVHshpIV0k8vLSrGxPKk
-         rirWGscdEInuEj57AUNVyU4E19Arq3+OttcwSqsanblWqJM6ti3E6JVlFb131/AKgqQA
-         VLox0GwCCuRYbUoc9Kj4q8CK3+cbUu1tR90jwHIxKi7u6sU+AsAA0/nIq4ekhAVuZ+XR
-         XBDz2g/F5hDMdHf59YpwQndK4Hit1H8TE0lv+wqKIKZMUfIeYNFakHcTOsGoKN45YtCJ
-         Cj2uEy9gFosBljaAXkZxDDHqSHInKFZGAv1+kP4kyJxDJdRdy6Uv1CwlLy4CtCntuZjh
-         1ZdA==
+        bh=B2siy8AgvZkarnaqQ1iRlbYdPe6np7TX5Kc2BXRw5Y4=;
+        b=B7NxkdzdYrgKmjjYAtd42TOs4LvPB6FA/Laaji1xTsaWKQP2MN+TogHWNlu2E/4S9s
+         Z8DAlznnsIX0jNH/Y5XA1LPZighbiNu3nKi2ck9/+/fYSsoHmHs9hl1wFMc6qAiB0uhi
+         lsPv8lsRFhaYRb2LvvYn109cgpN7lpHCR2JHJBdH3tkDD3MMtrto/6lTvr8w4N41Qm20
+         rfF1tMV0pITJ315yLeqZBlHGIX9odxC74HfzdcZgSe6nzgwY3VV4u6gIxCTUbEnwBbh6
+         QJngqUs2D/EVFDFjuYNqQbIGupKy+mguDfiVWd8iXzk7ZgGw8Kn0Bm06NmMpKmaL5Oiz
+         FlEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777086620; x=1777691420;
+        d=1e100.net; s=20251104; t=1777086621; x=1777691421;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=hzwyg+Q8PpdccnVWRF49NDrMOdX2e/qspSUaU1qJfGA=;
-        b=Y6e2oLjd2LkhP/0jYcupBgCV4B4+JuHxt1TxiLTTghV4WcwgqirGnphGP51TUwL4hy
-         mH0mPDS5Y5cpld23voQA1q823tpLxdeAwIwmYxZ12/hqX86X++A/2E8mRX76TYG2y7Wm
-         BY5d0a+/sEgqFLsou4DNyrObsVf569rzmBJypUCGXmK+iYewa+KJhHJsK2lFn7isE/zb
-         HjHZZD0b31Nf/r7CIdVgWwRJ92z4swDngjm07KR6EebJeuHYzQSJejEjwJYw/92ZTCO+
-         YgLShkgjyQFNRXqQ+UfAIcx4QXycLMl1o/+4GI93GjZs+9d5y036xeHazV275XXgSDRR
-         19Cg==
-X-Forwarded-Encrypted: i=1; AFNElJ87yWoW2eR5W1yHGmlB56h8Xl+HI5FIjUd7FQKZdQntl7wDBGA9s1VbQPYQHKNczIzOWTBhneQTsuHOzBmkfg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzKRWK3xg+fJEat271Xj0krH0VyL4uYf28ysy73nVu9XGbRZg36
-	naVn8ft2pOhuS+vSLveXMIoWY+/+Jk4LBMyc78xGpMfAdf/bdzYCMP1+p8sQYFHpCuLEWynNgnZ
-	5PqytVaXnN4rHA7hggTq7BmEz1S58MKMGSg7Y
-X-Gm-Gg: AeBDievC+j+AbtLz/0hfKbQCPVQ8iC1+ERd6x4pvfRlPpaNp1FaA3v1WL23YFbnJo63
-	i0i1Aam+NZFUcpexavhqvsj/eHjQThom4+6E7vwKnhkyhzM+9/f2cy9w+5LFlc0EEZn8I/no68M
-	wSo3EM4HhqxYlxM+tGpLrnlMGAEkku2zXDLaM02kTBdlhicHcriz6GZiEQQuQCfgLcayKRkCXDp
-	ctcD8H36etcyKJ5yT+j0t8vgfDNs6it4djncCSjLNygYgWGOWXv7+eTYvhLcM6VHi1GsB/2oMiy
-	5qFOVV2OF8pbhZrD8fBBePW3WEs4zo+lpfin/ma5MM3Rqf7QuuKy9h0dqy2fIDewP57Q2EMpvgw
-	6DRFyqQcCwa5jv8D/HgcPX+VRuJksRf2W2jIKUhTlaIQ99DpDffEr/1U=
-X-Received: by 2002:a05:7301:3808:b0:2d8:7302:d21 with SMTP id 5a478bee46e88-2e479724538mr19046348eec.16.1777086619649;
-        Fri, 24 Apr 2026 20:10:19 -0700 (PDT)
+        bh=B2siy8AgvZkarnaqQ1iRlbYdPe6np7TX5Kc2BXRw5Y4=;
+        b=MMW3mWM67GUhSJYEGfRL2Sg+hc2bmHzUcuovGuIJsJ3MJndWtwnEgLZNUhX2IqUVmr
+         zlUZ+z+Et38K0h1tfipNXudWwuoC3Vw+jyW4eP2CGsFNCV6kQ4X2qvCXaRrZ4i04C3p4
+         QCIdbQVGniImfv+WLdGe6128f9a7dpkv9p+Iu4jZwiUnfrIA9P6M5SVE3/tF14aDGA3E
+         Hvi95uPurEdd2fH8sioBg6zAihok1vAmxubOB2Inq9JRrCepqY1zMDP7cgPxV401hYGQ
+         sHsRT+svjLVFze9ES/wBCbCq/CXb4iIHcw7EQMYYhOZG0ofszcDM6eC84igjFvgLmkmt
+         wNxg==
+X-Forwarded-Encrypted: i=1; AFNElJ+jTkOQdA4gT6HcShTXa1VnRKjTWjyt35m1vhOdWMgA+/i1J/donn/PzbZG11352OAEnD8PIUnsiVUnUrEl8A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/rh8zpP5wd669H+R8nHm+OMW+Ky74s776tZhe73V5rOc8fYMm
+	EvD1ftQKNZIY5f7vmoPJQQSTEbC+rtLRYzCik8wzfYv0ao0/v5yOokOJ6DnCLvZ88rNEuxN8Dy6
+	GuGRhfppV4g2my/njxhyhyPVD3fxaqkewm2oN
+X-Gm-Gg: AeBDiesaYuEXuY2U7AZYYL2ECIvkXSUVEsIrtVifs72AlymPNnlG4T597oFJXxgwkJa
+	GxzEgBjUnuvlvMR/yEx0mO5T5PEICkmrdB5wGDm5obzCYtQk5kKUwC0PWIGW546bVFxmovnuuH8
+	x/QPIbFYLlxtRshI9dh1uZ0pDuNId63KHDU35pcKfB9lgS1zgCxhej4RoZplLfeciYqR1noK1ib
+	LHJV/N3UHQZJDgNLdnEMx45WmbkkaosGau1AEwE7j58Ct0yc7MxWDYJJ4dXHhq+wypRmC32W7yh
+	bqTk3sX2IwLdlS5lbVPfJtYnLAxnoRyLdKWTesQ1oOxvHtNldOp+2x/LuUw5O3qojHw0S1RUnzh
+	2lXF34WkMVuCyUOzae5zbo07Y6YNq5VXvuqdqXmlAdN3iPQthjIpqK7g=
+X-Received: by 2002:a05:7301:1693:b0:2d2:129a:1682 with SMTP id 5a478bee46e88-2e4786460f9mr18795386eec.16.1777086621591;
+        Fri, 24 Apr 2026 20:10:21 -0700 (PDT)
 Received: from ryac.ausil.us (207-179-239-100.mtco.net. [207.179.239.100])
-        by smtp-relay.gmail.com with ESMTPS id 5a478bee46e88-2e53a3ae691sm1728646eec.11.2026.04.24.20.10.18
+        by smtp-relay.gmail.com with ESMTPS id 5a478bee46e88-2e53a3ae691sm1728646eec.11.2026.04.24.20.10.19
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 24 Apr 2026 20:10:19 -0700 (PDT)
+        Fri, 24 Apr 2026 20:10:21 -0700 (PDT)
 X-Relaying-Domain: ausil.us
 From: Dennis Gilmore <dennis@ausil.us>
 To: Heiko Stuebner <heiko@sntech.de>,
@@ -89,17 +89,17 @@ Cc: Rob Herring <robh@kernel.org>,
 	dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	Dennis Gilmore <dennis@ausil.us>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v8 2/6] dt-bindings: display: bridge: simple: document the Lontium LT8711UXD DP-to-HDMI bridge
-Date: Fri, 24 Apr 2026 22:10:07 -0500
-Message-ID: <20260425031011.2529364-3-dennis@ausil.us>
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Subject: [PATCH v8 3/6] drm/bridge: simple: Add the Lontium LT8711UXD DP-to-HDMI bridge
+Date: Fri, 24 Apr 2026 22:10:08 -0500
+Message-ID: <20260425031011.2529364-4-dennis@ausil.us>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260425031011.2529364-1-dennis@ausil.us>
 References: <20260425031011.2529364-1-dennis@ausil.us>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260424_201020_723237_29215AA6 
-X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-CacheID: sfid-20260424_201022_247432_1FEFDFDC 
+X-CRM114-Status: UNSURE (   9.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,23 +122,27 @@ to HDMI2.0 converter, designed to connect a USB Type-C source or
 a DP1.4 source to an HDMI2.0 sink.
 
 Signed-off-by: Dennis Gilmore <dennis@ausil.us>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 ---
- .../devicetree/bindings/display/bridge/simple-bridge.yaml        | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/bridge/simple-bridge.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml b/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml
-index e6808419f625..752c736c8f85 100644
---- a/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml
-+++ b/Documentation/devicetree/bindings/display/bridge/simple-bridge.yaml
-@@ -30,6 +30,7 @@ properties:
-           - algoltek,ag6311
-           - asl-tek,cs5263
-           - dumb-vga-dac
-+          - lontium,lt8711uxd
-           - parade,ps185hdm
-           - radxa,ra620
-           - realtek,rtd2171
+diff --git a/drivers/gpu/drm/bridge/simple-bridge.c b/drivers/gpu/drm/bridge/simple-bridge.c
+index 8aa31ca3c72d..42c1f3d5ba0c 100644
+--- a/drivers/gpu/drm/bridge/simple-bridge.c
++++ b/drivers/gpu/drm/bridge/simple-bridge.c
+@@ -270,6 +270,11 @@ static const struct of_device_id simple_bridge_match[] = {
+ 		.data = &(const struct simple_bridge_info) {
+ 			.connector_type = DRM_MODE_CONNECTOR_HDMIA,
+ 		},
++	}, {
++		.compatible = "lontium,lt8711uxd",
++		.data = &(const struct simple_bridge_info) {
++			.connector_type = DRM_MODE_CONNECTOR_HDMIA,
++		},
+ 	}, {
+ 		.compatible = "parade,ps185hdm",
+ 		.data = &(const struct simple_bridge_info) {
 -- 
 2.53.0
 
