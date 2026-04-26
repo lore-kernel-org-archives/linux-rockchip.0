@@ -4,110 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE553FF885A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 25 Apr 2026 23:53:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 490D0FF885A
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Apr 2026 00:20:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:
-	References:List-Owner; bh=Muiv1lWxR7k9ZZHGqSgK9VBfvAz7Wt+VnsBVYZ5IflM=; b=lMM
-	YU74oXs7I4U9rKsfq1YrWFByNULEVyO+AK1ccpEtsEhXVReu9/XGgxmU4mCV26PaLzb96NsY3ixir
-	jpylszIqt8jigtRSTvl5VclHbBnV1Mfrafwlk4GMSZevZutXgrL08TWurO6CIspIUDLMqK2jMt//e
-	t4J/J6V+UMEj3NwieB4so95fV07jYSun0/ZTfagYE/BlZ5THEK9+bgOHFV6R+p5ZSPIGMEdufQVBI
-	sCy3yI6PAso4GduClPOhy1rfSHzoE6yIi0ZpMaXpK+/xIF3/TkxiHGlraBm5GrYNLo/NjOSzr9nAt
-	DMD+Tl9dILX1Gd3kPKnjyE4qyMoF9Rw==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=vyTd11z7SSNdI1Ux7ITxktjrnI9pO8qOjzxXNJHOXKU=; b=XrfA6i7z3OCgG8
+	BD1zeTFzyjBXPfwIiBbQYurPa5C6aetJ9Iyf+nOzhJHEA0mcf+m0YtqaqYPsyIHfS1x4pjeUz2GJB
+	YugD2edtTesACM7/m1dJwiaJ3nJvLYClEDqgbOlDuNA+OcZqNwaweYc7FZGRyInLTnyTJaKBgDZQz
+	pT8TAhoc5hcMJ81dEAsQIfy8vJZCzTHV0LqOn58rrrrc5XrMlEoegwu0040zoYCsmAfv5iEvYL1SP
+	4asaWhow3HJZuVFU97jqRyPwphD8r8LuepVPOkTwmgxjJMndx4SmGokaXUtieJ4JIaWjj0Wx5VlFr
+	gWZ86V8ty9trpZyU53mg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGmoY-0000000F5YQ-3SSc;
-	Sat, 25 Apr 2026 23:53:34 +0000
-Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144])
+	id 1wGnEg-0000000F6iV-13mq;
+	Sun, 26 Apr 2026 00:20:34 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGmoW-0000000F5Y2-0nEm
-	for linux-rockchip@lists.infradead.org;
-	Sat, 25 Apr 2026 23:53:33 +0000
-Received: by mail-lf1-x144.google.com with SMTP id 2adb3069b0e04-5a0ff30b240so13576147e87.0
-        for <linux-rockchip@lists.infradead.org>; Sat, 25 Apr 2026 16:53:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777161209; cv=none;
-        d=google.com; s=arc-20240605;
-        b=kGlYE5dAer63AoruI8c5qXgmVvZ5BA+qVtYQSOfDvwB/hAn+H7ieuDc8HK7OWuZS/5
-         JzlyMqjN9PVHfOZMTB4rO454wpoiiqjp2ppaghsxhZPloH3SeBT/NFroAoE2TLuDYZJT
-         VOoh7ybwrf7kaJIYRu/iSr3byq+NI1i+zCyzbZvjR0cn9J1iRVdJbjQULkhYf3tV7pPM
-         BhniMhFnEftSbWgBZAkOMzrGK5jbVQd2yBzHnA5y03ZcrZG63KwOcoV91mKmJyNDQFvE
-         BHqInWxszHQjQD72EThJF9Tt3EZuufsdL7P/6Brd5zWexVr29KpPR7H4LCjTjAWV3dXo
-         Zdvg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=content-transfer-encoding:to:subject:message-id:date
-         :list-unsubscribe-post:feedback-id:list-unsubscribe:from
-         :mime-version:dkim-signature;
-        bh=xWs/nRpoIEssBID+DfsVj04PZPX2YSUr3KPIbro0cKQ=;
-        fh=+S59iss1khD7Phgpxaw6TfzdkZnYoHq76HDPsYgQzeQ=;
-        b=bTaSpfUj6dfjuJ8T8lY8uMotC6yFsOnxiJNdn7LtS8YcGuQqT1vXYL+W/IYWAATT2h
-         FDaKDSfCGf2CrECZ5i4h9BQpxn2QChNAfPDNXyTeWpOUIq0zxehQfbhyg9Vqd4Lj0A0R
-         Ass0tXjDsINzdsiICNRUh4AnYhQYSqAvUFwcruWtgDP/Oz7FrE//5qdBD/HviepfShcn
-         FNXWkWb540P1MDmeZRAGJJ/itx/RSfCV/WMFbx2IsMWz/D7Ky4iP/anIUP4dpyxMQ+sf
-         E8QfOn8cNVqRGDrDAdLk57uur8jWVdlOLXXQThL5IvYswyNWK49zeUf/pb++wBwE6wKB
-         AwPg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=shjpbrand.com; s=google; t=1777161209; x=1777766009; darn=lists.infradead.org;
-        h=content-transfer-encoding:to:subject:message-id:date
-         :list-unsubscribe-post:feedback-id:list-unsubscribe:from
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=xWs/nRpoIEssBID+DfsVj04PZPX2YSUr3KPIbro0cKQ=;
-        b=lvgKcv4kU43qbc61v316BTyyHDg7M2zSmwbCzn+Qi1c5LSKlUqXbdVKtGuGlXPHk26
-         /jgmqPOb+9ynyDqasaJdKKtAzeay0QW9joU0Tj7wPMnv+Fw11XcdjpIXIW9iQjLR5MgD
-         NjovE/JT13AjaSU7TSJgFcNu5VxXQCeWPkJtIluOVhp2y6wypL9w0yBF2heJUWi2Baib
-         B06IFYC7mcqyJ7sTyvqdvlh6jMu8XI7L17iI7bSsd0XNI1VP3jRrgp29o+/3VZDa7vVm
-         vn7jqOnIHu5rzUTl5HtTHe9d5vqJ732k4xohGHBty2bCxUwq35c2vO+0szBe/OMLPCma
-         69Nw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777161209; x=1777766009;
-        h=content-transfer-encoding:to:subject:message-id:date
-         :list-unsubscribe-post:feedback-id:list-unsubscribe:from
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xWs/nRpoIEssBID+DfsVj04PZPX2YSUr3KPIbro0cKQ=;
-        b=h21tEwHLWkzT95ivrDbddRW2XJmIm0MdddMSexONsD7c9l/KHAeJph6G1MWAbklH2d
-         1JtVhM8z/INug5+m7XS2f1vaJCvbERDRRZ+qMs/vY0U+EBhuSkDew9+JsiCf1nYauwwx
-         Oij/ubXz/aHz7XpBDWN0tB4no37ejX/hHXpBIYNmxGCF+PshXyGihtw3CHWJxdU7sGkV
-         aZiz0lafoCCyaQDkne2sevQwbfBy3VDzUJn2eMNQV+AXLI1YAIW1JwlvCKualpHcykK7
-         h+QgmPaWssflLd9tByy6eGntb4BXi13KsyUqHr3Dn+yWppbAOifBzea8kTlfC8VRyDOg
-         c5Ag==
-X-Gm-Message-State: AOJu0YxNLnWa9+7jqMcvfkoDbSBdBC17MCrGoXBwjEwdGrYJ6OA2yRqz
-	hzo6JhVhi706nVaVR0S14YmLZ4D6WcKQbJrg54ylUhPl+uykK8nV5dXelJdoCM32Gw8pBGDiBYo
-	GQMxE7W4foVTOpsRA8XJ/dnQynmSSS6Dc08nE94/Ygr0ZCr8fy/2Cy8WzDKY=
-X-Gm-Gg: AeBDietKleE6zdboEXiD2grBISVrHi07V/oo3djfrN21ca1KCFQ7ZseQMjfzbhUofdD
-	jqx2wYKKoHN63OhH/gcazgjqkBwsPffi5SBPHFk+Vw3VkiFAsyWbWyZx2iDDYF0AQVvORGYPwNm
-	NALEgi7+bTjcr6OEh7aQi+L+257K9+GH3LgzWbmCkqUHM917r72A1PazTaffW16I46JQ9XzagAF
-	W1tFj8YaZjb6gi6PZmrEPHN4d69oG9IbwO5TaNXhv1IOnMUnekCgEVcyLi03DsG6LF2dLKz/iD4
-	eQ==
-X-Received: by 2002:a05:6512:23a1:b0:5a4:a85:ba2d with SMTP id
- 2adb3069b0e04-5a4172c7b23mr11103021e87.16.1777161209032; Sat, 25 Apr 2026
- 16:53:29 -0700 (PDT)
-Received: from 784122980633 named unknown by gmailapi.google.com with
- HTTPREST; Sat, 25 Apr 2026 18:53:28 -0500
-Received: from 784122980633 named unknown by gmailapi.google.com with
- HTTPREST; Sat, 25 Apr 2026 18:53:28 -0500
+	id 1wGnEd-0000000F6gr-2ziF;
+	Sun, 26 Apr 2026 00:20:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1777162828;
+	bh=PhCBUZ9LP1QlSA5Vw3scKGIP9YUqVnd7mb1z6jP2Cgg=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=aIwmUvhZYNxAN75eBf2UNQliuzeBxHsJEEbVb1RCVGgUbMO9qeL5XU9gid7Qrzye8
+	 vZkHT8VBBeas2OJ0FZF5CXqEHikha37LCjau4Uc8gcgM/lzXbak/Dj5RcMYSyGhxrw
+	 /FRaR/J1Tz1PWz7ey2u+rR1LErU2N7UXhaDzJsAMQDAuVnx0eH2lnggmtMYAWrxoEs
+	 F2vN8moPy3BQJCfofzBJyJ0kPN4vb5gkQUDB8RXZC1gCoRLUTbjbF/6uS/TyPbTvJ3
+	 gGv9a+cs3ensFHMv7bt5+2UDsBHPF2dbZzL+X9i6tIlbMZINdi0aoxaRSvEWvTHti/
+	 JG2M/y0yUJqiQ==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B7BAB17E107E;
+	Sun, 26 Apr 2026 02:20:28 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Sun, 26 Apr 2026 03:20:14 +0300
+Subject: [PATCH v5 02/10] drm/bridge: Add detect_ctx hook and
+ drm_bridge_detect_ctx() helper
 MIME-Version: 1.0
-From: =?UTF-8?B?44GU5qGI5YaF?= <by@shjpbrand.com>
-X-Auto-Response-Suppress: OOF, AutoReply
-X-Entity-Ref-ID: Kz4QeYzPcVO93kbr8OX3mbpN
-Feedback-ID: camp_campaign_6819:node68:sys:mx.icloud.com
-X-Mailer: Microsoft Outlook 15.0
-List-Unsubscribe-Post: List-Unsubscribe=One-Click
-Date: Sat, 25 Apr 2026 18:53:28 -0500
-X-Gm-Features: AQROBzCbo5tY4sm0ULZuISkKzC0JA0EJkYt9hGUETg0m5gIORzvL25YSyRN3rRo
-Message-ID: <CAL=A5p3S-w68C2=ktOOQCUT4mmWG1Pn6GpX64ze12NZqY_YpGw@mail.gmail.com>
-Subject: =?UTF-8?B?44CQ5qW95aSp44Kr44O844OJ44CR5oyv5pu/5LiN6IO944Gr5Ly044GG44GK5pSv5omV?=
-	=?UTF-8?B?44GE5omL57aa44GN44Gu44GK6aGY44GE?=
-To: linux-rockchip@lists.infradead.org
+Message-Id: <20260426-dw-hdmi-qp-scramb-v5-2-d778e70c317b@collabora.com>
+References: <20260426-dw-hdmi-qp-scramb-v5-0-d778e70c317b@collabora.com>
+In-Reply-To: <20260426-dw-hdmi-qp-scramb-v5-0-d778e70c317b@collabora.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Maud Spierings <maud_spierings@hotmail.com>
+X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_165332_256091_40357F9F 
-X-CRM114-Status: UNSURE (  -0.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260425_172031_905275_61E8734C 
+X-CRM114-Status: GOOD (  18.84  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,36 +81,198 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-44GE44Gk44KC5qW95aSp44Kr44O844OJ44KS44GU5Yip55So44GE44Gf44Gg44GN44CB6Kqg44Gr
-44GC44KK44GM44Go44GG44GU44GW44GE44G+44GZ44CCDQoNCuOBlOeZu+mMsuOBhOOBn+OBoOOB
-hOOBpuOBiuOCiuOBvuOBmeOBiuaUr+aJleOBhOWPo+W6p+OCiOOCiuOAgeiHquWLleW8leOBjeiQ
-veOBqOOBl+OCkuWun+aWveOBhOOBn+OBl+OBvuOBl+OBn+OBjOOAgeiqoOOBq+aui+W/teOBquOB
-jOOCieaMr+abv+acqua4iO+8iOaui+mrmOS4jei2s+etie+8ieOBqOOBquOCiuOBvuOBl+OBn+OA
-gg0KDQrjgaTjgY3jgb7jgZfjgabjga/jgIHkuIvoqJjlhoXlrrnjgpLjgZTnorroqo3jga7jgYbj
-gYjjgIHoh7PmgKXjgIHjgYrmlK/miZXjgYTmiYvntprjgY3jgpLlrozkuobjgZXjgZvjgabjgYTj
-gZ/jgaDjgZHjgb7jgZnjgojjgYbjgYrpoZjjgYTnlLPjgZfkuIrjgZLjgb7jgZnjgIINCg0K4pag
-44GU6KuL5rGC5YaF5a65DQotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLQ0K44CQ44GU6KuL5rGC6YeR6aGN5ZCI6KiI44CRIDIzLDk2MOWGhg0K44CQ5pSv
-5omV5pyf6ZmQ44CRIDIwMjblubQ05pyIMjfml6UNCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tDQrilqDjgYrmlK/miZXjgYTmlrnms5UNCuePvuWcqOOA
-geWIqeS+v+aAp+WQkeS4iuOBruOBn+OCgeOAjFBheVBheeOAjeOBq+OCiOOCi+OCquODs+ODqeOC
-pOODs+axuua4iOOCkuaJv+OBo+OBpuOBiuOCiuOBvuOBmeOAgg0K5LiL6KiYVVJM44KI44KK44CB
-44GK5omL57aa44GN44KS44GK6aGY44GE44GE44Gf44GX44G+44GZ44CCDQoNCuKWvFBheVBheeax
-uua4iOOBiuaJi+e2muOBjeeqk+WPow0KaHR0cHM6Ly9wYXVsY29mZmVlamFwYW4uY29tL2luZm9y
-bWF0aW9uL25vdGljZQ0KDQrigLvmnKzjgYrmiYvntprjgY3jgavjgojjgovmiYvmlbDmlpnjga/j
-gYvjgYvjgorjgb7jgZvjgpPjgIINCuKAu+OBiuaUr+aJleOBhOOBrueiuuiqjeOBjOWPluOCjOOC
-i+OBvuOBp+OAgeOCq+ODvOODieOBruOBlOWIqeeUqOOBjOWItumZkOOBleOCjOOCi+WgtOWQiOOB
-jOOBlOOBluOBhOOBvuOBmeOAgg0KLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0NCuKWoOOBlOazqOaEj+S6i+mghQ0K44O75pys44Oh44O844Or44Go6KGM
-44GN6YGV44GE44Gr44GU5YWl6YeR44GE44Gf44Gg44GE44Gf5aC05ZCI44Gv44CB5L2V5Y2S44GU
-5a656LWm44GP44Gg44GV44GE44CCDQrjg7vmnKzjg6Hjg7zjg6vjga/pgIHkv6HlsILnlKjjga7j
-gZ/jgoHjgIHov5Tkv6HjgYTjgZ/jgaDjgY/jgZPjgajjga/jgafjgY3jgb7jgZvjgpPjgIINCg0K
-4pag55m66KGM5YWDDQrmpb3lpKnjgqvjg7zjg4nmoKrlvI/kvJrnpL4NCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+Add an atomic-aware .detect_ctx() callback to drm_bridge_funcs and a
+drm_bridge_detect_ctx() helper that accepts an optional
+drm_modeset_acquire_ctx.
+
+This enables bridge drivers to perform operations requiring modeset
+locking during connector detection, such as SCDC management for HDMI
+2.0.  When both ->detect_ctx and ->detect are defined, the former takes
+precedence.  When ctx is NULL, locking is managed internally with EDEADLK
+retry.
+
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/drm_bridge.c | 66 ++++++++++++++++++++++++++++++++++++++++----
+ include/drm/drm_bridge.h     | 43 +++++++++++++++++++++++++----
+ 2 files changed, 98 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+index 986e4c79a4e0..a5c6c2ea4ba6 100644
+--- a/drivers/gpu/drm/drm_bridge.c
++++ b/drivers/gpu/drm/drm_bridge.c
+@@ -1361,9 +1361,9 @@ EXPORT_SYMBOL(drm_atomic_bridge_chain_check);
+  * @connector: attached connector
+  *
+  * If the bridge supports output detection, as reported by the
+- * DRM_BRIDGE_OP_DETECT bridge ops flag, call &drm_bridge_funcs.detect for the
+- * bridge and return the connection status. Otherwise return
+- * connector_status_unknown.
++ * DRM_BRIDGE_OP_DETECT bridge ops flag, call &drm_bridge_funcs.detect_ctx
++ * or &drm_bridge_funcs.detect for the bridge and return the connection status.
++ * Otherwise return connector_status_unknown.
+  *
+  * RETURNS:
+  * The detection status on success, or connector_status_unknown if the bridge
+@@ -1372,12 +1372,68 @@ EXPORT_SYMBOL(drm_atomic_bridge_chain_check);
+ enum drm_connector_status
+ drm_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
+ {
++	return drm_bridge_detect_ctx(bridge, connector, NULL);
++}
++EXPORT_SYMBOL_GPL(drm_bridge_detect);
++
++/**
++ * drm_bridge_detect_ctx - check if anything is attached to the bridge output
++ * @bridge: bridge control structure
++ * @connector: attached connector
++ * @ctx: acquire_ctx, or NULL to let this function handle locking
++ *
++ * If the bridge supports output detection, as reported by the
++ * DRM_BRIDGE_OP_DETECT bridge ops flag, call &drm_bridge_funcs.detect_ctx
++ * or &drm_bridge_funcs.detect for the bridge and return the connection status.
++ * Otherwise return connector_status_unknown.
++ *
++ * RETURNS:
++ * The detection status on success, or connector_status_unknown if the bridge
++ * doesn't support output detection.
++ * If @ctx is set, it might also return -EDEADLK.
++ */
++int drm_bridge_detect_ctx(struct drm_bridge *bridge,
++			  struct drm_connector *connector,
++			  struct drm_modeset_acquire_ctx *ctx)
++{
++	struct drm_modeset_acquire_ctx br_ctx;
++	int ret;
++
+ 	if (!(bridge->ops & DRM_BRIDGE_OP_DETECT))
+ 		return connector_status_unknown;
+ 
+-	return bridge->funcs->detect(bridge, connector);
++	if (!bridge->funcs->detect_ctx)
++		return bridge->funcs->detect(bridge, connector);
++
++	if (ctx) {
++		ret = bridge->funcs->detect_ctx(bridge, connector, ctx);
++		if (ret == -EDEADLK)
++			return ret;
++
++		goto out;
++	}
++
++	drm_modeset_acquire_init(&br_ctx, 0);
++retry:
++	ret = drm_modeset_lock(&connector->dev->mode_config.connection_mutex,
++			       &br_ctx);
++	if (!ret)
++		ret = bridge->funcs->detect_ctx(bridge, connector, &br_ctx);
++
++	if (ret == -EDEADLK) {
++		drm_modeset_backoff(&br_ctx);
++		goto retry;
++	}
++
++	drm_modeset_drop_locks(&br_ctx);
++	drm_modeset_acquire_fini(&br_ctx);
++out:
++	if (WARN_ON(ret < 0))
++		ret = connector_status_unknown;
++
++	return ret;
+ }
+-EXPORT_SYMBOL_GPL(drm_bridge_detect);
++EXPORT_SYMBOL_GPL(drm_bridge_detect_ctx);
+ 
+ /**
+  * drm_bridge_get_modes - fill all modes currently valid for the sink into the
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index d6cd0f5af045..6c751b96c3c9 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -535,10 +535,12 @@ struct drm_bridge_funcs {
+ 	 *
+ 	 * Check if anything is attached to the bridge output.
+ 	 *
+-	 * This callback is optional, if not implemented the bridge will be
+-	 * considered as always having a component attached to its output.
+-	 * Bridges that implement this callback shall set the
+-	 * DRM_BRIDGE_OP_DETECT flag in their &drm_bridge->ops.
++	 * This is the non-atomic version of detect_ctx() callback, and is
++	 * optional. If both are implemented, it is ignored. If none is
++	 * implemented, the bridge will be considered as always having a
++	 * component attached to its output. Bridges that implement this
++	 * callback shall set the DRM_BRIDGE_OP_DETECT flag in their
++	 * &drm_bridge->ops.
+ 	 *
+ 	 * RETURNS:
+ 	 *
+@@ -547,6 +549,32 @@ struct drm_bridge_funcs {
+ 	enum drm_connector_status (*detect)(struct drm_bridge *bridge,
+ 					    struct drm_connector *connector);
+ 
++	/**
++	 * @detect_ctx:
++	 *
++	 * Check if anything is attached to the bridge output.
++	 *
++	 * This is the atomic version of detect() callback, and is optional.
++	 * If both are implemented, it takes precedence. If none is implemented,
++	 * the bridge will be considered as always having a component attached
++	 * to its output. Bridges that implement this callback shall set the
++	 * DRM_BRIDGE_OP_DETECT flag in their &drm_bridge->ops.
++	 *
++	 * To avoid races against concurrent connector state updates, the
++	 * helper libraries always call this with ctx set to a valid context,
++	 * and &drm_mode_config.connection_mutex will always be locked with
++	 * the ctx parameter set to this ctx. This allows taking additional
++	 * locks as required.
++	 *
++	 * RETURNS:
++	 *
++	 * &drm_connector_status indicating the bridge output status,
++	 * or the error code returned by drm_modeset_lock(), -EDEADLK.
++	 */
++	int (*detect_ctx)(struct drm_bridge *bridge,
++			  struct drm_connector *connector,
++			  struct drm_modeset_acquire_ctx *ctx);
++
+ 	/**
+ 	 * @get_modes:
+ 	 *
+@@ -1002,8 +1030,8 @@ struct drm_bridge_timings {
+ enum drm_bridge_ops {
+ 	/**
+ 	 * @DRM_BRIDGE_OP_DETECT: The bridge can detect displays connected to
+-	 * its output. Bridges that set this flag shall implement the
+-	 * &drm_bridge_funcs->detect callback.
++	 * its output. Bridges that set this flag shall implement either the
++	 * &drm_bridge_funcs->detect or &drm_bridge_funcs->detect_ctx callbacks.
+ 	 */
+ 	DRM_BRIDGE_OP_DETECT = BIT(0),
+ 	/**
+@@ -1565,6 +1593,9 @@ drm_atomic_helper_bridge_propagate_bus_fmt(struct drm_bridge *bridge,
+ 
+ enum drm_connector_status
+ drm_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector);
++int drm_bridge_detect_ctx(struct drm_bridge *bridge,
++			  struct drm_connector *connector,
++			  struct drm_modeset_acquire_ctx *ctx);
+ int drm_bridge_get_modes(struct drm_bridge *bridge,
+ 			 struct drm_connector *connector);
+ const struct drm_edid *drm_bridge_edid_read(struct drm_bridge *bridge,
+
+-- 
+2.53.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
