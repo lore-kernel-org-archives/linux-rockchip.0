@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF6FCFF8865
-	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Apr 2026 00:20:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B6CFF885C
+	for <linux-rockchip@archiver.kernel.org>; Sun, 26 Apr 2026 07:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YZ5Sc/jdgim4q+yBWgBkjGmg6Pv2ZWlEqW6/EF+hvHo=; b=1x4CmTfuPLraXa
-	bsLqUhws/GY6ZTUhrWQYn9CXwWrbeHUJ7hiFyXlsiOoEvASrtNvCvgSrh4j+fYqFxZn/e2T1gkLcP
-	UX8FVv8e+Z7f0vDOLv9nnsTP3qZU4HnHbCkJXafPGOkAtrwY9DOce93NO/Cl7hLdIbFuhYXj63U9/
-	zgeJDxIM8um8ZJQaZoz6H83H+GGWjmvpoX8MqsCRL4F5Ta4NLiRx4enSjm1yflQzVqknLv55fyeZQ
-	WHfV72TpuRfnh/cNe4zmHUTWbkdv7buHFxwKHyeid/+3Vwxh+mj8/eGTUoJyVGprb9WaY3Vdh5ukC
-	5oqbIB4ikqNIEeLNPfMg==;
+	List-Owner; bh=Zgmz5Vq2tURdvzAuT8C464gqCjct9d/UCMPGgIlS9js=; b=Dh9gHByRbRFC9q
+	bYckLEXGdCB+6QFkHMEPnl12mW9cXO4MfHTKMk67d2hb/uRKOl7BgZppgQ+Lr98QaV9aAMzRmMGzQ
+	JDlXlXI+aFP6milU8BohZbqmc7TXm6fQ8L892x4xYgoMoK7Go91jqu0YNMA7e9V3zjntbRk93t28K
+	V+82X91IhHLpqFB10YSZ5MguWUsS0+zDCm9CzIqJDaaUNj6lbjjXOq9N6xcJqN3qSHUtZSCEu/cEU
+	1yaXL1KKDErH06fm1a/DimL/gDBBgt2SGkpjONdKSO1LW+NiyPHzBYr4XHOMzJSfoVW3fZ5/aD7Jv
+	KkOyBpd/QNRpI7zzIiqw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGnEu-0000000F70j-1IBs;
-	Sun, 26 Apr 2026 00:20:48 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wGtpo-0000000FKXr-3HHt;
+	Sun, 26 Apr 2026 07:23:20 +0000
+Received: from mail-m83171.xmail.ntesmail.com ([156.224.83.171])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wGnEi-0000000F6jI-3916;
-	Sun, 26 Apr 2026 00:20:38 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777162835;
-	bh=jgysKGQ2uKrEiDbiSpIyt4MLZj/8UeOF2e7BOMrKLbA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Mfb60Yprpj/NPTxhsvkSQjfqWSBHgqZO7R2HTsn1Xaa8vaiH7xnfTnvlAKcLaNg65
-	 WkTZ/WQByzwl4aK8TY92PNosZvYthig1rzPiOJxRJ82vW00CVHuww/JLVDGF4cMqZ4
-	 0vGKGb2/EVKVfGWdDwhQegWV4wH70xQLZ6vqZvCS+jd3Kj2+WnBXV7Sgpi0IiyDpTz
-	 sAkYeNYrjPLmfhs2HIcKhtIeoDla8h0d1JeMuNBthV2wbrg8cz+OMRg34Dy4dhFpfS
-	 hU1f6gI2Y1P7mRNbR6+IixNZFdF1/Vr2pp7XZR5oAQyWhVfRVPGub/qUar8Pxsnlo8
-	 MYaGC6pXR6V4Q==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D29FB17E15A3;
-	Sun, 26 Apr 2026 02:20:34 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Sun, 26 Apr 2026 03:20:22 +0300
-Subject: [PATCH v5 10/10] drm/rockchip: dw_hdmi_qp: Restrict HPD event to
- the affected connector
+	id 1wGtpl-0000000FKXP-1fwA;
+	Sun, 26 Apr 2026 07:23:19 +0000
+Received: from [172.16.12.43] (unknown [58.22.7.114])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3c2a40191;
+	Sun, 26 Apr 2026 15:23:00 +0800 (GMT+08:00)
+Message-ID: <35afc21f-74c9-4f52-bdf1-18a34fb58578@rock-chips.com>
+Date: Sun, 26 Apr 2026 15:23:01 +0800
 MIME-Version: 1.0
-Message-Id: <20260426-dw-hdmi-qp-scramb-v5-10-d778e70c317b@collabora.com>
-References: <20260426-dw-hdmi-qp-scramb-v5-0-d778e70c317b@collabora.com>
-In-Reply-To: <20260426-dw-hdmi-qp-scramb-v5-0-d778e70c317b@collabora.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Diederik de Haas <diederik@cknow-tech.com>, 
- Maud Spierings <maud_spierings@hotmail.com>
-X-Mailer: b4 0.15.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5 6/6] arm64: dts: rockchip: Add cooling fan to ROCK 4D
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+ Lee Jones <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>
+Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
+ Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
+ linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-iio@vger.kernel.org
+References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
+ <20260420-rk3576-pwm-v5-6-ae7cfbbe5427@collabora.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260420-rk3576-pwm-v5-6-ae7cfbbe5427@collabora.com>
+X-HM-Tid: 0a9dc8ab938e03a3kunm608d0a1f13e627
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQ08YSVYZTU1PSUMeSh
+	hCHkxWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
+	tIVUpLSU9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=eUjhWMrcKnY5LlEG1ShyEX5gpPrTxsDLAiqhKFZuGYIn9YmGbcKOJ9cbbMupRyX0IHZsQ02lJAkUP5ZC3WtabW9h/ra6UnjQjpmj3VzuRn0rqLdsSmTHXj8Gmb0ysUl+tHUSOaVGyn5+pUgzHVTb8NidTbjAnCP+EAcvO7OceX0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=jVYUAUD3MtOhd5xJ/8bgt/jc3lNhNlVgEg2Y7JvdCe4=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260425_172036_997683_EBE172F4 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20260426_002318_018204_E7DE0496 
+X-CRM114-Status: GOOD (  15.31  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,100 +73,118 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Switch from drm_helper_hpd_irq_event(), which polls all connectors, to
-drm_connector_helper_hpd_irq_event(), which runs the detect cycle only
-on the affected connector.
+Hi Nicolas,
 
-This avoids unnecessary work and redundant detect calls on unrelated
-connectors.
+On 4/20/2026 9:52 PM, Nicolas Frattaroli wrote:
+> The ROCK 4D has a header to connect a small cooling fan. This fan is
+> driven by one of the SoC's PWM outputs driving a transistor, that in
+> turn controls the fan's power.
+> 
+> With the introduction of PWM support, add a description of this cooling
+> fan, as well as the additional trips and cooling-maps for it.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>   arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts | 50 +++++++++++++++++++++++++
+>   1 file changed, 50 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> index 899a84b1fbf9..2d5ede010ad0 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3576-rock-4d.dts
+> @@ -45,6 +45,14 @@ rfkill {
+>   		shutdown-gpios = <&gpio2 RK_PD1 GPIO_ACTIVE_HIGH>;
+>   	};
+>   
+> +	fan: pwm-fan {
+> +		compatible = "pwm-fan";
+> +		cooling-levels = <0 180 205 230 255>;
+> +		fan-supply = <&vcc_5v0_sys>;
+> +		pwms = <&pwm2_8ch_5 0 60000 0>;
+> +		#cooling-cells = <2>;
+> +	};
+> +
+>   	leds: leds {
+>   		compatible = "gpio-leds";
+>   		pinctrl-names = "default";
+> @@ -711,6 +719,36 @@ rgmii_phy0: ethernet-phy@1 {
+>   	};
+>   };
+>   
+> +&package_thermal {
+> +	polling-delay = <100>;
+> +
+> +	trips {
+> +		package_fan0: package-fan0 {
+> +			temperature = <50000>;
+> +			hysteresis = <2000>;
+> +			type = "active";
+> +		};
+> +
+> +		package_fan1: package-fan1 {
+> +			temperature = <60000>;
+> +			hysteresis = <2000>;
+> +			type = "active";
+> +		};
+> +	};
+> +
+> +	cooling-maps {
+> +		map1 {
+> +			trip = <&package_fan0>;
+> +			cooling-device = <&fan THERMAL_NO_LIMIT 1>;
+> +		};
+> +
+> +		map2 {
+> +			trip = <&package_fan1>;
+> +			cooling-device = <&fan 2 THERMAL_NO_LIMIT>;
+> +		};
+> +	};
+> +};
+> +
+>   &pcie0 {
+>   	pinctrl-names = "default";
+>   	pinctrl-0 = <&pcie_reset>;
+> @@ -720,6 +758,13 @@ &pcie0 {
+>   };
+>   
+>   &pinctrl {
+> +	fan {
+> +		fan_pwm: fan-pwm {
+> +			rockchip,pins =
+> +				<4 RK_PC5 14 &pcfg_pull_down_drv_level_5>;
+> +		};
+> +	};
+> +
+>   	hym8563 {
+>   		hym8563_int: hym8563-int {
+>   			rockchip,pins = <0 RK_PA0 RK_FUNC_GPIO &pcfg_pull_up>;
+> @@ -770,6 +815,11 @@ wifi_en_h: wifi-en-h {
+>   	};
+>   };
+>   
+> +&pwm2_8ch_5 {
+> +	pinctrl-0 = <&fan_pwm>;
 
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 21 +++++++++++----------
- 1 file changed, 11 insertions(+), 10 deletions(-)
+May I ask why the pinctrl does not directly use &pwm2m1_ch5?
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index fbbe26f8730c..d6338195a5b7 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -93,6 +93,7 @@ struct rockchip_hdmi_qp {
- 	struct regmap *regmap;
- 	struct regmap *vo_regmap;
- 	struct rockchip_encoder encoder;
-+	struct drm_connector *connector;
- 	struct dw_hdmi_qp *hdmi;
- 	struct phy *phy;
- 	struct gpio_desc *frl_enable_gpio;
-@@ -252,11 +253,10 @@ static void dw_hdmi_qp_rk3588_hpd_work(struct work_struct *work)
- 	struct rockchip_hdmi_qp *hdmi = container_of(work,
- 						     struct rockchip_hdmi_qp,
- 						     hpd_work.work);
--	struct drm_device *drm = hdmi->encoder.encoder.dev;
- 	bool changed;
- 
--	if (drm) {
--		changed = drm_helper_hpd_irq_event(drm);
-+	if (hdmi->connector) {
-+		changed = drm_connector_helper_hpd_irq_event(hdmi->connector);
- 		if (changed)
- 			dev_dbg(hdmi->dev, "connector status changed\n");
- 	}
-@@ -467,7 +467,6 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	struct dw_hdmi_qp_plat_data plat_data = {};
- 	const struct rockchip_hdmi_qp_cfg *cfg;
- 	struct drm_device *drm = data;
--	struct drm_connector *connector;
- 	struct drm_encoder *encoder;
- 	struct rockchip_hdmi_qp *hdmi;
- 	struct resource *res;
-@@ -589,12 +588,12 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		return dev_err_probe(dev, PTR_ERR(hdmi->hdmi),
- 				     "Failed to bind dw-hdmi-qp\n");
- 
--	connector = drm_bridge_connector_init(drm, encoder);
--	if (IS_ERR(connector))
--		return dev_err_probe(dev, PTR_ERR(connector),
-+	hdmi->connector = drm_bridge_connector_init(drm, encoder);
-+	if (IS_ERR(hdmi->connector))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->connector),
- 				     "Failed to init bridge connector\n");
- 
--	ret = drm_connector_attach_encoder(connector, encoder);
-+	ret = drm_connector_attach_encoder(hdmi->connector, encoder);
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to attach connector\n");
- 
-@@ -612,6 +611,8 @@ static void dw_hdmi_qp_rockchip_unbind(struct device *dev,
- 	struct rockchip_hdmi_qp *hdmi = dev_get_drvdata(dev);
- 
- 	cancel_delayed_work_sync(&hdmi->hpd_work);
-+
-+	hdmi->connector = NULL;
- }
- 
- static const struct component_ops dw_hdmi_qp_rockchip_ops = {
-@@ -646,8 +647,8 @@ static int __maybe_unused dw_hdmi_qp_rockchip_resume(struct device *dev)
- 
- 	dw_hdmi_qp_resume(dev, hdmi->hdmi);
- 
--	if (hdmi->encoder.encoder.dev)
--		drm_helper_hpd_irq_event(hdmi->encoder.encoder.dev);
-+	if (hdmi->connector)
-+		drm_connector_helper_hpd_irq_event(hdmi->connector);
- 
- 	return 0;
- }
+Is it because the default pin configuration cannot meet the requirements 
+of the fan?
 
--- 
-2.53.0
+> +	status = "okay";
+> +};
+> +
+>   &sai6 {
+>   	status = "okay";
+>   };
+> 
+
+Best regards,
+Damon
 
 
 _______________________________________________
