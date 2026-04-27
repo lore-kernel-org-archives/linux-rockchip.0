@@ -4,70 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D504FF8860
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 17:35:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A28FF8860
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 18:05:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cdNout/wRo1D07dpLM38sXCDTYKdYKOP6AMX9rgqdwA=; b=ioynTNg3csP18c
-	8h5kf6hAdNTkTZ+NNBymieMvphdRe2KDIhDBpTQ1qwdXJOW3CD1A+DUyuxW1q5Ijgbw5s2EsaTyn5
-	zbNPbpokXRwUm528bVZpj+OHu5Vigw6XnPrpAvzuLRgIEZWSrbd/OpIAKLidizKOa0VxE7bTzGZ+z
-	ptAVppfhjisWnHuqZ4lrEU4qVQ9PYT1p5slH8n/XepKqfOFKLHXEcJrjmpcQj3PTnXxf50f30IDO/
-	4aSuFqsokgqQUC3eP5SdltqgfQ5/bdd6+Aa+R1eFqwdF6hdfEfhe2L5UlnxLgD0+TrpKZt8zl4Wu1
-	74LxI46Gow0G2nargPrg==;
+	List-Owner; bh=68ZH78rEMC6N89OsM0RyNHsGfHL9Z80Al7IEJIiSGKQ=; b=onrl/5lBGRSjkx
+	ZdakQvm5DKdyxAW1XAdU3s98CgaPXX7e0P4+EAcMF/6BB2P5LXHfHamkaJZ+BxaIWlnhZd9+llKFo
+	gw2U/8jpNmaNE0HPK8JEPWpIydqbBUO11gU9Gn18ojjZRh6VzJetnF6lhMmE3/pbwCg6xrFUq41/i
+	zrBUopebVb9SryF+9TW2Q2zKcsiLvpYZQceminrDhfqx2TU4I9B73UePbqgiVSf0I3G3GEe+CyoDa
+	USbONi40EcfPu6hpD4+gc0+r/pwbq3kjm3MIDeMyCxcqw1Syf2C0/UHUKuPwGlO63Os9dt7ePFH88
+	Vq2kQ5SC1nsCLjSHSbhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHPsA-0000000HThr-3byM;
-	Mon, 27 Apr 2026 17:35:54 +0000
+	id 1wHQKM-0000000HXUP-37R0;
+	Mon, 27 Apr 2026 18:05:02 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHPs8-0000000HTgW-1In2;
-	Mon, 27 Apr 2026 17:35:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1777311340; cv=none; 
+	id 1wHQKK-0000000HXT6-0naF
+	for linux-rockchip@lists.infradead.org;
+	Mon, 27 Apr 2026 18:05:01 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1777313057; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=AD31+MNPTHWPoTYCQMpX7n3R0Er4g3R9tw0h41WKv3hmOvvgViSemwhfzgvt0V/Xr18hI/13AuZ0oc0jPRO1vaW8c/KDAqRL2r30pWhwGATOtKWmuq12DKZQQTOg1LqmiiHzVlG6YN2u+grPU4bwOqHmSMG/tOYf69jDCalMJLw=
+	b=nAvcNvQpM+gfhn2/3HLRBs0Lxyq9g3izU3YePHe4GZ9OWKwQ3UX69okS4N/2ImL5Bebzq6PPWL9034cwg51C0Bww3/A0kAcbIbCr7rS3irVTomncxzhNzCsTOcE6n14/ZmS4V9Q/urzR1wSGW2+DDiBkp7GdtyBtXW4c//Yh1X8=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1777311340; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=UmdZibbd/+Riw2ttNnhE20ZsNtrexm4/ybN5Xvwgvow=; 
-	b=LXggAq9qe3W+IUdyL2SssQt6RWKdrnslU1yGMFBo6D1XXM6lNMqddmD0wdndgrl7EWNOY6exIK0HAQ6yvlpkbRDJCviTPe9oD481ycqCzL3J9zoN6jg2Deoji6iwl5sUZScIEeeKqVMnoeHYRZ/tLdLuJClButw5EBNT31hnOHE=
+	t=1777313057; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=NSEXEwx9S+OeVaRRjXS9ZK8EIwQIZrHT5PwNt4KV1SE=; 
+	b=EsY0cGqnRzk/RCyADweX9Vyn05CU/UpD+rzGnwnm3dDK7Kxp7/v7YLlZCWTHcXEng5L6vg4sn+YWTeoEC6AyBMB38ZKAj2XVokIRpshMGagbxvyOdes+wCQXuyuCCUkEErYDBTh48mb4UD0L5EuaCBb4PrsPKF9REfAuNbKft6I=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1777311340;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1777313057;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=UmdZibbd/+Riw2ttNnhE20ZsNtrexm4/ybN5Xvwgvow=;
-	b=Zk7ogawB1ZqlMX1b33i7nQ48RAsz7BPFAlhFSMtpmi8D4JtbDjXDFb4ZwdMH1rlr
-	lehBH8gAk6rM/QAG7ZaQYWhFns4VQdtZ3tGA53rooZDa9H+oXX7voL4Z8XxCgCBA45i
-	s9i7M6LHzBfPYjGKSjicMwGrYclXUYxOUUbKXPDc=
-Received: by mx.zohomail.com with SMTPS id 1777311337704981.5046370792685;
-	Mon, 27 Apr 2026 10:35:37 -0700 (PDT)
+	bh=NSEXEwx9S+OeVaRRjXS9ZK8EIwQIZrHT5PwNt4KV1SE=;
+	b=avCR022qeDlbdkeJAGU3zhJUbIsjF8r9yuEc101tqxnIqbwLOS290IExQMzV8nU6
+	9PuAaFJUVgDUupEz16UKzQ36fAYx8vuk4U7EfzUXPwyJ52EmGMXcD0gcKHVtj8ttxHp
+	YZWf2q1Oas3TD8+sCgRRjkTB15U4OVSND959Nr+g=
+Received: by mx.zohomail.com with SMTPS id 1777313055502484.3747463385729;
+	Mon, 27 Apr 2026 11:04:15 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Lee Jones <lee@kernel.org>, William Breathitt Gray <wbg@kernel.org>,
- Damon Ding <damon.ding@rock-chips.com>
-Cc: kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
- Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org
-Subject: Re: [PATCH v5 4/6] counter: Add rockchip-pwm-capture driver
-Date: Mon, 27 Apr 2026 19:35:32 +0200
-Message-ID: <q0kG3ZZyT92lQlYsvZD_qg@collabora.com>
-In-Reply-To: <91eed9a4-4dc3-4846-baf3-e9cef53be79b@rock-chips.com>
-References: <20260420-rk3576-pwm-v5-0-ae7cfbbe5427@collabora.com>
- <20260420-rk3576-pwm-v5-4-ae7cfbbe5427@collabora.com>
- <91eed9a4-4dc3-4846-baf3-e9cef53be79b@rock-chips.com>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Lucas Stach <l.stach@pengutronix.de>, dri-devel@lists.freedesktop.org
+Cc: Christian Hewitt <christianshewitt@gmail.com>,
+ Diederik de Haas <diederik@cknow-tech.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Jonas Karlman <jonas@kwiboo.se>
+Subject: Re: [PATCH v3 02/13] drm: bridge: dw_hdmi: Only notify connected status on
+ HPD interrupt
+Date: Mon, 27 Apr 2026 20:04:10 +0200
+Message-ID: <5ozaSaKzQeSilqZavTuKOw@collabora.com>
+In-Reply-To: <20260403185303.80748-3-jonas@kwiboo.se>
+References: <20260403185303.80748-1-jonas@kwiboo.se>
+ <20260403185303.80748-3-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_103553_195040_331082D1 
-X-CRM114-Status: GOOD (  39.22  )
+X-CRM114-CacheID: sfid-20260427_110500_368591_7CB97A71 
+X-CRM114-Status: GOOD (  22.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,143 +87,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Damon,
-
-On Sunday, 26 April 2026 12:55:20 Central European Summer Time Damon Ding wrote:
-> Hi Nicolas,
+On Friday, 3 April 2026 20:52:48 Central European Summer Time Jonas Karlman wrote:
+> drm_helper_hpd_irq_event() and drm_bridge_hpd_notify() may incorrectly
+> be called with a connected status when HPD is high and RX sense is
+> changed. This typically happens when the HDMI cable is unplugged,
+> shortly before the HPD is changed to low.
 > 
-> On 4/20/2026 9:52 PM, Nicolas Frattaroli wrote:
-> > Among many other things, Rockchip's new PWMv4 IP in the RK3576 supports
-> > PWM capture functionality.
-> > 
-> > Add a basic driver for this that works to expose HPC/LPC counts and
-> > state change events to userspace through the counter framework. It's
-> > quite basic, but works well enough to demonstrate the device function
-> > exclusion stuff that mfpwm does, in order to eventually support all the
-> > functions of this device in drivers within their appropriate subsystems,
-> > without them interfering with each other.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > ---
-> >   MAINTAINERS                            |   1 +
-> >   drivers/counter/Kconfig                |  11 ++
-> >   drivers/counter/Makefile               |   1 +
-> >   drivers/counter/rockchip-pwm-capture.c | 307 +++++++++++++++++++++++++++++++++
-> >   4 files changed, 320 insertions(+)
-> > 
+> The original intent of commit da09daf88108 ("drm: bridge: dw_hdmi: only
+> trigger hotplug event on link change") was to signal hotplug event at
+> correct interrupt states.
 > 
-> For functional validation, I connected PWM0/PWM1 (continuous output)
-> to PWM2 (capture input) pairwise.
+> Based on the commit message the intent was to trigger hotplug event:
+> - when HPD goes high (plugin)
+> - when both HPD and RX sense has gone low (plugout)
 > 
-> I enabled the counter via:
-> /sys/bus/counter/devices/counter0/count0/enable
+> However, following interrupt state changes can typically be observed
+> when the HDMI cable is unplugged:
+> - RX interrupt:  HPD=high RX=low  -> triggers a connected event
+> - HPD interrupt: HPD=low  RX=low  -> triggers a disconnected event
 > 
-> Then I verified the functionality by reading the count values from:
-> /sys/bus/counter/devices/counter0/count0/count
-> /sys/bus/counter/devices/counter0/count1/count
+> Fix this by only notify connected status on the HPD interrupt when HPD
+> is going high, not on the RX sense interrupt when RX sense is changed.
 > 
-> Tested-by: Damon Ding <damon.ding@rock-chips.com>
-
-Thanks for testing! To make sure a bug on the pwm output driver won't
-be cancelled out by an equivalent bug in the counter driver, I did
-my counter driver testing by using an RK3588 as the source of the
-PWM signal, with the two boards sharing a common ground. Maybe I
-should get a proper function generator. :)
-
-> BTW: Is there any user-space test tool similar to libpwm for the
-> counter subsystem?
-
-I've tried looking for this as well, and couldn't find anything. If
-it exists then adding a mention of it to generic-counter.rst would
-be in order I think.
-
+> After this a connected event should be triggered when HPD=high at HPD
+> interrupt, and a disconnected event should be triggered when both
+> HPD=low and RX=low at either HPD or RX interrupt.
 > 
-> ......
-> > diff --git a/drivers/counter/rockchip-pwm-capture.c b/drivers/counter/rockchip-pwm-capture.c
-> > new file mode 100644
-> > index 000000000000..09a92f2bc409
-> > --- /dev/null
-> > +++ b/drivers/counter/rockchip-pwm-capture.c
-> > @@ -0,0 +1,307 @@
-> > +// SPDX-License-Identifier: GPL-2.0-or-later
-> > +/*
-> > + * Copyright (c) 2025 Collabora Ltd.
-> > + *
-> > + * A counter driver for the Pulse-Width-Modulation (PWM) hardware found on
-> > + * Rockchip SoCs such as the RK3576, internally referred to as "PWM v4". It
-> > + * allows for measuring the high cycles and low cycles of a PWM signal through
-> > + * the generic counter framework, while guaranteeing exclusive use over the
-> > + * MFPWM device while the counter is enabled.
-> > + *
-> > + * Authors:
-> > + *     Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> > + */
-> > +
-> > +#include <linux/cleanup.h>
-> > +#include <linux/counter.h>
-> > +#include <linux/devm-helpers.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/mfd/rockchip-mfpwm.h>
-> > +#include <linux/mod_devicetable.h>
-> > +#include <linux/of.h>
-> > +#include <linux/platform_device.h>
-> > +#include <linux/spinlock.h>
-> > +
-> > +#define RKPWMC_INT_MASK			(PWMV4_INT_LPC | PWMV4_INT_HPC)
-> > +
-> > +struct rockchip_pwm_capture {
-> > +	struct rockchip_mfpwm_func *pwmf;
-> > +	struct counter_device *counter;
-> > +};
-> > +
-> > +static struct counter_signal rkpwmc_signals[] = {
-> > +	{
-> > +		.id = 0,
-> > +		.name = "PWM Clock"
-> > +	},
-> > +};
-> > +
-> > +static const enum counter_synapse_action rkpwmc_hpc_lpc_actions[] = {
-> > +	COUNTER_SYNAPSE_ACTION_BOTH_EDGES,
-> > +	COUNTER_SYNAPSE_ACTION_NONE,
-> > +};
+> Fixes: da09daf88108 ("drm: bridge: dw_hdmi: only trigger hotplug event on link change")
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> ---
+> v3: Update commit message
+> v2: New patch
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> For the capture function, it uses the PWM's reference clock (dclk) as 
-> the time base to measure how many reference cycles the high and low 
-> levels of the input waveform last respectively.
-> 
-> I find it a bit strange to set COUNTER_SYNAPSE_ACTION_BOTH_EDGES for 
-> counting. If we treat the input waveform as a sequence of square waves 
-> sampled by dclk cycles, it feels like we should count on a single edge 
-> (rising edge only) rather than both edges.
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> index 9febcb58a1df..3b851f12adfe 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+> @@ -3140,7 +3140,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+>  			mutex_unlock(&hdmi->cec_notifier_mutex);
+>  		}
+>  
+> -		if (phy_stat & HDMI_PHY_HPD)
+> +		if ((intr_stat & HDMI_IH_PHY_STAT0_HPD) &&
+> +		    (phy_stat & HDMI_PHY_HPD))
+>  			status = connector_status_connected;
+>  
+>  		if (!(phy_stat & (HDMI_PHY_HPD | HDMI_PHY_RX_SENSE)))
 > 
 
-Yeah, that's a good point. I think I've been struggling to wrap my head
-around what the signal is and what the synapse should trigger on because
-the signal isn't something exposed in this case.
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Your explanation makes sense, and perhaps I should rename
-rkpwmc_hpc_lpc_actions as well. Currently it makes it seem like HPC
-and LPC are the signal, when actually the waveform is the signal, HPC
-and LPC are the counts, and the synapse is a sample every dclk spotting
-a transition if I understand this correctly.
-
-> > +
-> > +static struct counter_synapse rkpwmc_pwm_synapses[] = {
-> > +	{
-> > +		.actions_list = rkpwmc_hpc_lpc_actions,
-> > +		.num_actions = ARRAY_SIZE(rkpwmc_hpc_lpc_actions),
-> > +		.signal = &rkpwmc_signals[0]
-> > +	},
-> > +};
-> > +
-> 
-> Best regards,
-> Damon
-> 
-
-Kind regards,
-Nicolas Frattaroli
 
 
 
