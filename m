@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 357A4FF8862
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 12:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09572FF8869
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 12:24:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Xv6+nS9edKi/1VCqtCo71TBcK3zj9cXN33nBsHiJYGA=; b=DH5dcWIqSswUy5
-	0eHpfENGxldKlGWaGZFtwQb8bguh/7MzgKojQ6rJmyXaRWzOAYiOyEnV5DcvHxwslscg37AK0gVPC
-	LoOpMg0mV8dXyjPlRUrNl/2VZ7mLpeqni1VT3HBAsD9BWztvpC2FZmqIdL8P3TUVTRTtW/EUwZqe+
-	gDnSN+V8DVH7YQAcbIwcpNWABg1XduKnnDtWmFd8rWZqtFg6eRk4+uyGHo3gvvbh+1yKBNhg8NCp6
-	dT0b0hAUsELJ7vV/63myxzmmSY5cpr6uZHW3L9PLoK01CLwUIdwcgUoRegrd9hhJ7oIvqp8V1RQBc
-	QYIhcm1y5OWuABaIRR8Q==;
+	List-Owner; bh=8eFJ98EmqL1Nsq31dtXpq47mnwtkZm5QbrFg/M7uB6U=; b=4wXM4ol0tr59Ww
+	gp4uBBIX8NzTQIN7yQzH1DmNRUVHgW4ViGLrmHgwqKMuu4z3evs2ZaFYR2dX0I3a98q0wv1k8GTbY
+	odt/C7m4YALBAZDU+wYbZ8bPX2+Er4uvmHbyxaj40bpQlb3iy/cvVDJ3xH+ILk7NOxAUizhh8lzAb
+	nV69p91af8qXRz90HxSg3QlsPZDKgdRKjALMFX/vGjYvcMu7vKqWWi33zZyNkgsxDBrQLvDZyNCzN
+	KPXC6EqbBj8oY0eDpK4v6QvtvpOWhd9KLYfsMROU7c4TxFEhXd0R7sjTwHJmdcFafypK2E9zbv8dn
+	sXt8uNHLGyltYP4RDhvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHL0N-0000000GtJp-3mDX;
-	Mon, 27 Apr 2026 12:24:03 +0000
+	id 1wHL0P-0000000GtLf-0c78;
+	Mon, 27 Apr 2026 12:24:05 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHKzt-0000000Gt5j-0GAE;
-	Mon, 27 Apr 2026 12:23:35 +0000
+	id 1wHKzy-0000000Gt8p-0cnL;
+	Mon, 27 Apr 2026 12:23:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=uE986gg6nM72Izjx5bFVwuKM9D3x70M7dapwBTjDcY4=; b=bB+zpJOdC0HNgQrSiDejgSn50j
-	iWqMaJluZTxDFGPRSsmoFr/m07oe1sTBf9PpDNwiUw6hDpqgHGlHNcUrwr+T+d4qk0DEG2W/JjUuY
-	4Mj+bP2ZixSzPB4MC9DiEXfqIfnkrPp84Ts4oyhja1J5GIwfsjyEpLHIPa8OV36sCtR2pKoahYZak
-	In3s0WMe1lKhfVfbPhQRLPGOuFxOq7Pv68r0wIpSreg8taKf8EQt/r+6zkyXJVd5UUz0/otWZumLD
-	mZ1j7+gCPVgdnwmYkSOYWeJRg+5mhmdXQEI1+RWMTr37EGyi6gdFIRwR6byQKvzcjcFiy5OGpu0uf
-	wyaDGvqQ==;
+	bh=jjfLTmcyKD0hrkOGEYEgBYNd9aUyIP8bdXAALh7Ab8g=; b=qzViLN7HGQxYtfONvHpZgmKw3o
+	eJMHy8bhLVX624B78Rb2+FrCMB67RXfZmovbCA5qe6ZgW8NrKkaX0hqZc9E0OFTik5ldpsxIThJf7
+	GEZihLQ135ZMQVp6/ZgRxZdr/Z78OmQXVSR3m3mZvUbgMl2RLDpx/L/0kRVV1gYRvsbflv7hApfmE
+	v24OrauXEdTct7U2yFuqi6DPCuJm6gTwTByvqvk9MiRtcc9OkxCMDAxQ3HQ9aPIJQyswmhQYHMmZ0
+	4IXHF8KiLfY2HCv+DH3HBbqCTwA8Wk6XfdO5KGTx8NboZyFYtuRQFPy2ZbvDJQFH6PDfxu7g164Zy
+	Ti0PyRiw==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	Gray Huang <gray.huang@wesion.com>
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Daniele Briguglio <hello@superkali.me>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	linux-clk@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	nick@khadas.com
-Subject: Re: (subset) [PATCH 0/6] arm64: dts: rockchip: Add peripheral support for Khadas Edge 2L
-Date: Mon, 27 Apr 2026 14:23:20 +0200
-Message-ID: <177729258237.1866089.1613069864896514625.b4-ty@sntech.de>
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Ricardo Pardini <ricardo@pardini.net>
+Subject: Re: [PATCH v4 0/5] clk: rockchip: rk3588: add I2S MCLK output gate clocks
+Date: Mon, 27 Apr 2026 14:23:21 +0200
+Message-ID: <177729258228.1866089.5793149531492182650.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260325054614.1497147-1-gray.huang@wesion.com>
-References: <20260325054614.1497147-1-gray.huang@wesion.com>
+In-Reply-To: <20260419-rk3588-mclk-gate-grf-v4-0-513a42dd1dcc@superkali.me>
+References: <20260419-rk3588-mclk-gate-grf-v4-0-513a42dd1dcc@superkali.me>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_052333_135974_9659316D 
-X-CRM114-Status: GOOD (  11.36  )
+X-CRM114-CacheID: sfid-20260427_052338_207339_C65D65EC 
+X-CRM114-Status: GOOD (  10.69  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,25 +78,31 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 25 Mar 2026 13:46:08 +0800, Gray Huang wrote:
-> This patch series adds support for several key peripherals to the
-> Khadas Edge 2L board, which is based on the Rockchip RK3576 SoC.
+On Sun, 19 Apr 2026 13:43:05 +0200, Daniele Briguglio wrote:
+> On RK3588, the four I2S master clock (MCLK) outputs to external IO
+> pins are gated by bits in SYS_GRF SOC_CON6 (offset 0x0318). These
+> are set-to-disable gates with hiword mask semantics.
 > 
-> These patches build upon the basic board support that was previously
-> applied to the rockchip tree. This series enables essential
-> functionalities including power management, wireless connectivity,
-> graphics, display output, and USB support.
+> The TRM documents the reset value of these bits as 0 (gate open),
+> but in practice the Rockchip firmware (BL31) may set them during
+> early boot, preventing the MCLK signal from reaching external audio
+> codecs. The kernel should manage these gates explicitly so that
+> audio functionality does not depend on bootloader register state.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/6] arm64: dts: rockchip: Add PMIC support for Khadas Edge 2L
-      commit: 7cd8b37304be367106a02d4d902294e9bea3f45d
-[3/6] arm64: dts: rockchip: Enable GPU for Khadas Edge 2L
-      commit: 6d72e0d07145449a33678624436c73da09873c43
-[4/6] arm64: dts: rockchip: Add HDMI and VOP support for Khadas Edge 2L
-      commit: e9ec83fbc3d46b39fe92a0cbda4795ece30717f5
+[1/5] dt-bindings: clock: rockchip,rk3588-cru: add I2S MCLK output to IO clock IDs
+      commit: 56c2ca0ae7cb9254c4c2b82baa0afe29feaa274e
+[2/5] clk: rockchip: allow grf_type_sys lookup in aux_grf_table
+      commit: 28820fc7983b9c8e160c0095067a570bdfcae1f0
+[3/5] clk: rockchip: add helper to register auxiliary GRFs
+      commit: 32d1d88c4165d0da31d3bfda912e80e8110d6fc1
+[4/5] soc: rockchip: rk3588: add SYS_GRF SOC_CON6 register offset
+      commit: 06c990bffdbea7cf655e728f4423ecd13fb030f6
+[5/5] clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO
+      commit: 02b9b0bb626989b947d82bbe4e050f0254e2046d
 
 Best regards,
 -- 
