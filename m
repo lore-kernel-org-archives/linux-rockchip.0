@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3A28FF8860
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 18:05:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30F4BFF8868
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 18:28:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=68ZH78rEMC6N89OsM0RyNHsGfHL9Z80Al7IEJIiSGKQ=; b=onrl/5lBGRSjkx
-	ZdakQvm5DKdyxAW1XAdU3s98CgaPXX7e0P4+EAcMF/6BB2P5LXHfHamkaJZ+BxaIWlnhZd9+llKFo
-	gw2U/8jpNmaNE0HPK8JEPWpIydqbBUO11gU9Gn18ojjZRh6VzJetnF6lhMmE3/pbwCg6xrFUq41/i
-	zrBUopebVb9SryF+9TW2Q2zKcsiLvpYZQceminrDhfqx2TU4I9B73UePbqgiVSf0I3G3GEe+CyoDa
-	USbONi40EcfPu6hpD4+gc0+r/pwbq3kjm3MIDeMyCxcqw1Syf2C0/UHUKuPwGlO63Os9dt7ePFH88
-	Vq2kQ5SC1nsCLjSHSbhw==;
+	List-Owner; bh=RqKTvUbVhTKNdYOyY/u6t5MLyGJ9ClP1oVjn/OOu77g=; b=mipvfbJIL/Q7jq
+	xACXNmXTYesatXc+OTlKt5+gz3++1wQ+hoxtf1PFy004GKjwOeIec57U3m109zQM0xlFNZmT8f3qm
+	2raVFlxQde9C2Y1gN5Mke2UmzAFJ2+L6MulXARnS8lo9cgQiT3w6ca7tNEKUlaayKIqYq5U3BP8Mt
+	qL1/052Hu1IXzhOCcJwczlHoznUDF7rO6o+zhrHm9+x4Xrrx2SlH4HRzTdnWG+PhAvQmr6QHRdxpy
+	9axZrOXJxHNtb1XRZrdIjkFSCeyQZQjDHpiy7ttmbjVEw0S19mWqaEKjaHaMPCwNPtqtyftm/gkQb
+	iPNWYWmNGcLjMccVaKZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHQKM-0000000HXUP-37R0;
-	Mon, 27 Apr 2026 18:05:02 +0000
+	id 1wHQh4-0000000HZrY-0gkj;
+	Mon, 27 Apr 2026 18:28:30 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHQKK-0000000HXT6-0naF
+	id 1wHQh1-0000000HZrA-2VWb
 	for linux-rockchip@lists.infradead.org;
-	Mon, 27 Apr 2026 18:05:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1777313057; cv=none; 
+	Mon, 27 Apr 2026 18:28:28 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1777314485; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=nAvcNvQpM+gfhn2/3HLRBs0Lxyq9g3izU3YePHe4GZ9OWKwQ3UX69okS4N/2ImL5Bebzq6PPWL9034cwg51C0Bww3/A0kAcbIbCr7rS3irVTomncxzhNzCsTOcE6n14/ZmS4V9Q/urzR1wSGW2+DDiBkp7GdtyBtXW4c//Yh1X8=
+	b=FrmMSc0fozgscWvKszWOcrRi2fXjPcWvSQZt4y7Bc/1iiiwYjUx2j8hvm9g5fPGr0vD4al/H4EsFP0NQYbi7TpCP9P0ZuKVeqydw+iT5LlfhJlZznVQC4mF72Bz2qcK88++aUsPHAU7eW4+ij9XL9JP3JQr5sbghi+9Y/UJOAAc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1777313057; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=NSEXEwx9S+OeVaRRjXS9ZK8EIwQIZrHT5PwNt4KV1SE=; 
-	b=EsY0cGqnRzk/RCyADweX9Vyn05CU/UpD+rzGnwnm3dDK7Kxp7/v7YLlZCWTHcXEng5L6vg4sn+YWTeoEC6AyBMB38ZKAj2XVokIRpshMGagbxvyOdes+wCQXuyuCCUkEErYDBTh48mb4UD0L5EuaCBb4PrsPKF9REfAuNbKft6I=
+	t=1777314485; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=MgfLegG7FRAKWEkqVXfJrJQZt2+npwuUV6ms8XivFhk=; 
+	b=g5xRx1/U05V4VRYBIMEvE42JbEUc2r2ZwQdaSB0nExyXP1ARy9VBRzBeaOlatQ1PRe6qIImlaOl24JmSGAZ9PhU5Syi7Iw68zrK6VvvFqbhSb9x5u0grogNAKX6qNuyBzEAZCY7huQiu3pjc2nG9d9voTG7H7SOGXKlzRwpug7Y=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1777313057;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1777314485;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=NSEXEwx9S+OeVaRRjXS9ZK8EIwQIZrHT5PwNt4KV1SE=;
-	b=avCR022qeDlbdkeJAGU3zhJUbIsjF8r9yuEc101tqxnIqbwLOS290IExQMzV8nU6
-	9PuAaFJUVgDUupEz16UKzQ36fAYx8vuk4U7EfzUXPwyJ52EmGMXcD0gcKHVtj8ttxHp
-	YZWf2q1Oas3TD8+sCgRRjkTB15U4OVSND959Nr+g=
-Received: by mx.zohomail.com with SMTPS id 1777313055502484.3747463385729;
-	Mon, 27 Apr 2026 11:04:15 -0700 (PDT)
+	bh=MgfLegG7FRAKWEkqVXfJrJQZt2+npwuUV6ms8XivFhk=;
+	b=IdCG6f3EbHuV+iYNYyp2jCDP0SQsdYmPFzg3SDWWFAtedeDdIksPpGmoaXazjA7j
+	fAK/vqLLTBEx7yeEK5/+N5+bUYBJjf7LsUjGmAJkZNg15AaL+WnBW7FR04gjBfPKtP7
+	CkzblIk/rdHw2FgRt5AlZ1hj3coESB3Cpr4sejBs=
+Received: by mx.zohomail.com with SMTPS id 1777314483711367.61612657326896;
+	Mon, 27 Apr 2026 11:28:03 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
@@ -55,22 +55,22 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Lucas Stach <l.stach@pengutronix.de>, dri-devel@lists.freedesktop.org
+ dri-devel@lists.freedesktop.org
 Cc: Christian Hewitt <christianshewitt@gmail.com>,
  Diederik de Haas <diederik@cknow-tech.com>, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
  Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v3 02/13] drm: bridge: dw_hdmi: Only notify connected status on
- HPD interrupt
-Date: Mon, 27 Apr 2026 20:04:10 +0200
-Message-ID: <5ozaSaKzQeSilqZavTuKOw@collabora.com>
-In-Reply-To: <20260403185303.80748-3-jonas@kwiboo.se>
+Subject: Re: [PATCH v3 09/13] drm: bridge: dw_hdmi: Use delayed_work to debounce
+ hotplug event
+Date: Mon, 27 Apr 2026 20:27:58 +0200
+Message-ID: <y1d99UBuRDyCACvs45dokA@collabora.com>
+In-Reply-To: <20260403185303.80748-10-jonas@kwiboo.se>
 References: <20260403185303.80748-1-jonas@kwiboo.se>
- <20260403185303.80748-3-jonas@kwiboo.se>
+ <20260403185303.80748-10-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_110500_368591_7CB97A71 
-X-CRM114-Status: GOOD (  22.50  )
+X-CRM114-CacheID: sfid-20260427_112827_843719_289F09FC 
+X-CRM114-Status: GOOD (  25.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,59 +87,121 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Friday, 3 April 2026 20:52:48 Central European Summer Time Jonas Karlman wrote:
-> drm_helper_hpd_irq_event() and drm_bridge_hpd_notify() may incorrectly
-> be called with a connected status when HPD is high and RX sense is
-> changed. This typically happens when the HDMI cable is unplugged,
-> shortly before the HPD is changed to low.
+On Friday, 3 April 2026 20:52:55 Central European Summer Time Jonas Karlman wrote:
+> HDMI Specification Version 1.4b chapter 8.5 mentions:
 > 
-> The original intent of commit da09daf88108 ("drm: bridge: dw_hdmi: only
-> trigger hotplug event on link change") was to signal hotplug event at
-> correct interrupt states.
+>   An HDMI Sink shall not assert high voltage level on its Hot Plug
+>   Detect pin when the E-EDID is not available for reading.
 > 
-> Based on the commit message the intent was to trigger hotplug event:
-> - when HPD goes high (plugin)
-> - when both HPD and RX sense has gone low (plugout)
+>   A Source may use a high voltage level Hot Plug Detect signal to
+>   initiate the reading of E-EDID data.
 > 
-> However, following interrupt state changes can typically be observed
-> when the HDMI cable is unplugged:
-> - RX interrupt:  HPD=high RX=low  -> triggers a connected event
-> - HPD interrupt: HPD=low  RX=low  -> triggers a disconnected event
+>   An HDMI Sink shall indicate any change to the contents of the E-EDID
+>   by driving a low voltage level pulse on the Hot Plug Detect pin. This
+>   pulse shall be at least 100 msec.
 > 
-> Fix this by only notify connected status on the HPD interrupt when HPD
-> is going high, not on the RX sense interrupt when RX sense is changed.
+> Use a work queue to debounce reacting on HPD events to better handle a
+> HPD low voltage level pulse when a sink changes the EDID.
 > 
-> After this a connected event should be triggered when HPD=high at HPD
-> interrupt, and a disconnected event should be triggered when both
-> HPD=low and RX=low at either HPD or RX interrupt.
+> The 1100 msec hotplug debounce timeout was arbitrarily picked to match
+> other drivers using same const, and testing using a Raspberry Pi Monitor
+> seem to use a 200-300 msec pulse when going from standby to power on
+> state.
 > 
-> Fixes: da09daf88108 ("drm: bridge: dw_hdmi: only trigger hotplug event on link change")
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
-> v3: Update commit message
-> v2: New patch
+> v3: New patch
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++++++++----
+>  1 file changed, 20 insertions(+), 4 deletions(-)
 > 
 > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index 9febcb58a1df..3b851f12adfe 100644
+> index f3f8144ae98e..4d079b689b3b 100644
 > --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 > +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -3140,7 +3140,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
->  			mutex_unlock(&hdmi->cec_notifier_mutex);
->  		}
+> @@ -51,6 +51,8 @@
 >  
-> -		if (phy_stat & HDMI_PHY_HPD)
-> +		if ((intr_stat & HDMI_IH_PHY_STAT0_HPD) &&
-> +		    (phy_stat & HDMI_PHY_HPD))
->  			status = connector_status_connected;
+>  #define HDMI14_MAX_TMDSCLK	340000000
 >  
->  		if (!(phy_stat & (HDMI_PHY_HPD | HDMI_PHY_RX_SENSE)))
+> +#define HOTPLUG_DEBOUNCE_MS	1100
+> +
+>  static const u16 csc_coeff_default[3][4] = {
+>  	{ 0x2000, 0x0000, 0x0000, 0x0000 },
+>  	{ 0x0000, 0x2000, 0x0000, 0x0000 },
+> @@ -192,6 +194,7 @@ struct dw_hdmi {
+>  	hdmi_codec_plugged_cb plugged_cb;
+>  	struct device *codec_dev;
+>  	enum drm_connector_status last_connector_result;
+> +	struct delayed_work hpd_work;
+>  };
+>  
+>  const struct dw_hdmi_plat_data *dw_hdmi_to_plat_data(struct dw_hdmi *hdmi)
+> @@ -2528,6 +2531,7 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
+>  
+>  	mutex_lock(&hdmi->mutex);
+>  	hdmi->force = connector->force;
+> +	hdmi->last_connector_result = connector->status;
+>  	dw_hdmi_update_phy_mask(hdmi);
+>  	mutex_unlock(&hdmi->mutex);
+>  }
+> @@ -3046,6 +3050,16 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
+>  }
+>  EXPORT_SYMBOL_GPL(dw_hdmi_setup_rx_sense);
+>  
+> +static void dw_hdmi_hpd_work(struct work_struct *work)
+> +{
+> +	struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
+> +
+> +	if (hdmi->bridge.dev) {
+> +		drm_helper_hpd_irq_event(hdmi->bridge.dev);
+> +		drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
+
+I think you'll want to `mutex_lock(&hdmi->mutex);` (or better yet,
+`guard(mutex)(&hdmi->mutex)` or `scoped_guard(mutex, &hdmi->mutex) {`)
+here before reading last_connector_result, otherwise you'll have a
+data race with any writers.
+
+> +	}
+> +}
+> +
+>  static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+>  {
+>  	struct dw_hdmi *hdmi = dev_id;
+> @@ -3097,10 +3111,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+>  			status == connector_status_connected ?
+>  			"plugin" : "plugout");
+>  
+> -		if (hdmi->bridge.dev) {
+> -			drm_helper_hpd_irq_event(hdmi->bridge.dev);
+> -			drm_bridge_hpd_notify(&hdmi->bridge, status);
+> -		}
+> +		mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
+> +				 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
+>  	}
+>  
+>  	hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
+> @@ -3420,6 +3432,8 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
+>  		goto err_res;
+>  	}
+>  
+> +	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_hpd_work);
+> +
+>  	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_hardirq,
+>  					dw_hdmi_irq, IRQF_SHARED,
+>  					dev_name(dev), hdmi);
+> @@ -3552,6 +3566,8 @@ EXPORT_SYMBOL_GPL(dw_hdmi_probe);
+>  
+>  void dw_hdmi_remove(struct dw_hdmi *hdmi)
+>  {
+> +	disable_delayed_work_sync(&hdmi->hpd_work);
+> +
+>  	drm_bridge_remove(&hdmi->bridge);
+>  
+>  	if (hdmi->audio && !IS_ERR(hdmi->audio))
 > 
 
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
+Kind regards,
+Nicolas Frattaroli
 
 
 
