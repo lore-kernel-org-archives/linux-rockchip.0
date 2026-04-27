@@ -4,54 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B09EFF8860
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 12:27:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A477CFF8860
+	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 13:58:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gn5gmDjEwT4o5xgJz1cHdlxX7B7ac9ZHAHI5RMICEbg=; b=GJZarIE1EQQBsK
-	etx13xoTTkl76IVwwwv3VEYN3JtsxW/LnHwwyxHLFk++HkYC6QCghgtlks1HcGD7x6j6UqbXwCpGT
-	kKvggwGUbfLLNbWaZOIHFhau8a7xLFikvSItgJUEs4cNBlBXRYlrvx9S+wKOKb6dEhBJRC016vq1k
-	wlXfKu2Twt/MnjRuo71AKoK/31jF8Z60xg4mJZR3gd3NAdezVL+dgRoAfg+oK3ISPZ/q+jnlIExcb
-	AD0/gFE+fTS5fOuGcpgSdnW4t85w2vr6p5x6tCj8Qtx5ZCcXb8ZUCZ9p0e8qI+H3Zo0MCbMndjrAV
-	q6pT6HDrB1kOMqZMcI3Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Subject:Cc:To:From:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=M3nGC8CV0+qfNvJw0IdtmrwnnnsLAEe1T5HWW2j3Y84=; b=b9iM6Qh6QViAxk
+	pVCBilSdWrR8XP+2jdVJktAIqr391WW4XgS9J95BrHeF7bBA+sc+WpHJZLecm9VIa60rP0L6Kd0tU
+	gtWO3u0aZcAVbxWYXeVtSm0XWenLcq0SSxtw6ehXRa0WO7A4YG5wFJ0nxnzvc205oz6/Ar2cMlcCm
+	Ys3F+VB9/cenipvP9XeOQm4vUqadTIhtihjH8vJvaRYWpe8Fr7inr1XA5bpwa2m0eMHCANLU8Kuzh
+	Rs7M9RTxCcbn9JSO1QXRpR0mpaQZdTv7F4banftggK/rrQmjF+/1UQUuoym3ifdH8U8ZSWCZbKVL1
+	kpk2feYSqcd3/dPeZVyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHL48-0000000Gucx-1J0K;
-	Mon, 27 Apr 2026 12:27:56 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wHMTi-0000000H2VT-2FFn;
+	Mon, 27 Apr 2026 13:58:26 +0000
+Received: from xmbghk7.mail.qq.com ([43.163.128.49])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHL45-0000000Gubo-0Y2X;
-	Mon, 27 Apr 2026 12:27:54 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=N2Cr26LAuCrqLg1Hny+ypX+Am0Ky/eMd+gY1trdJd7A=; b=WKY9HC5fsXD6rXYzZo+QcOk10U
-	k8m2IYOWUqQDOsZAiYVzEUVY6pxyimRdVjBY4wUxFvAcx1pcMcUTUd0anXC8RU3u7QE3RF3EItV/h
-	SmOqB8VhxjKBVPEMx8ksdH1kjrAi5UHETGvIV0NMc8ZwzzUvVVYrtK0dapBOG6I8kavnDNwkuqXCq
-	MlvT3q6mxHAHGQxUxYgNucDi0ZKFMyOKaeJjaccwr/sFD1iQvk7EbdXFR4xzMu5bxuIeegxFrFNTf
-	q6vlw9KMnJHdZ3eA3Nn1cnx2hvx4GOZayPlOkBiZP/SrBB3uduOHzXMkzoXM4X9ooaL+L4VC1rUMY
-	QhPjRBqQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- Gray Huang <gray.huang@wesion.com>
-Cc: devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- nick@khadas.com, Gray Huang <gray.huang@wesion.com>
-Subject: Re: [PATCH 6/6] arm64: dts: rockchip: Add Bluetooth support for Khadas Edge
- 2L
-Date: Mon, 27 Apr 2026 14:27:51 +0200
-Message-ID: <3716011.atdPhlSkOF@phil>
-In-Reply-To: <20260325054614.1497147-7-gray.huang@wesion.com>
-References: <20260325054614.1497147-1-gray.huang@wesion.com>
- <20260325054614.1497147-7-gray.huang@wesion.com>
+	id 1wHMTe-0000000H2Uc-2YSB;
+	Mon, 27 Apr 2026 13:58:24 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1777298295; bh=uhZliK46vNmN06GpBmT72mPTDJjzjGf3JsziDVDaJI8=;
+	h=From:To:Cc:Subject:Date;
+	b=KzPfB0Y8oiTm/ItS/Qr0nm0KEq0eQ/DHqi5UYEyWJOj+qcOEu0MxAMRHERnIK5K6w
+	 TSCML3HvoVi7WB7NBt4u4jjY0giln7sSwMNYJaJFcx6EMqJZREC3XGlk9Cdq+6CyLA
+	 BOJ904WJg+0o7GyEuTANB1e12+UHWHPupxh08sZw=
+Received: from gwx-Ubuntu.. ([183.207.4.238])
+	by newxmesmtplogicsvrszc50-0.qq.com (NewEsmtp) with SMTP
+	id E860F2C8; Mon, 27 Apr 2026 21:58:06 +0800
+X-QQ-mid: xmsmtpt1777298286txx3ao52a
+Message-ID: <tencent_5035EEE630C845B1B51DEA4284DE23DCCE06@qq.com>
+X-QQ-XMAILINFO: OU8np720w0N4z9oo858OjYSsBcV8oimpQiPSUMGVq/7ow77ou3/FfoYom8RgNk
+	 KSHn+N5dq0/lG04kjGYkaUBVlVWAruhA0mIYv7N4PeaP+n6jJUdmyuJ0ELHAbdpTszJ17I8Xr9+0
+	 35cyfi3KcMZCJviFAIylT5dR+784ydOGIUs4dKQF+CZo5jlDxyv7bdJbkKoUqtNLVyeFTvNNOqH8
+	 SYnz0wjdbGJH5ExGXioHQeaTHVVx5i0oUjMy/zvzF2UgLVTlWUYrr33PZnbadTfu3gCq3htt0f5v
+	 B0mUb0HVGOgGQhqWa00rdTPjgol2DrKUZk2F/Sp4Y+mJVIdkvwv03CMYWl/mpDwobzx+DAURuxnK
+	 nSQ00nIcC07g02XcXX1qC8qE2ecnHNTb8IMyVhUTBZbZqOAswloNDaCdOdRfeWjrXuc8RW1QeFu3
+	 nts/4POZsMXPfWZBij9hXiXjKP32cbaT4Sf75VSGjnNsy5Lf8UHZbOEaut9+Ruj5a+ax+jEzbPuN
+	 3iak38TQZxcItD+nDq5TIPDKjdbPuv9xk+jiidZaZ3Jbv2Gq+dKDjy67deO2jYmvUwFQ1aC8NrnD
+	 mtrLyt/GJEQZCi3hhIH7xqXKznJH7Wfb+D6+InpSGI6JX4bmx7WduG7QNn1+8B0KE2T9XVDhh6IQ
+	 nkNZMBi+DucXp63VUzri937Co7zL9hZr0cDKPzc4lMvTovCpOnOVDLJYh6nmCSi9/2GBo7/hWPQf
+	 CYiygnnYNFecbzsGlKIv2Ho63txR1Es7TWdA/XM5npr5ouILdRhESnn985VSHoSSAZeLR7gq2Ukn
+	 AV1aFx+RufoxNiKsBrpUBIZmZBM2kH0LH56PwkaYgmp1uqN39Dg3xnKKH5IuiFZx+3cW+1FScmt5
+	 FzrwAUSlH4QaMV+TipXZGHyeHAnRsbv0wtffr9xjGlAcFLLOSptgJ43Gjjx3g1UkkPztnX8gnjOx
+	 /uGIMfLdl60fcp+Hh5jOPfUXzZ6IRTNqc7BsSmmfAc/JEp+tQ8AobEXUyahYGIcq6k8TKXv43TC9
+	 6Z6dIm1AGBur/jd7kAFV/XtdLQRB2XK/1iCYp5975UW6VlUSi8NvVFLUpJTHk5Xo32o5+kgyL5hy
+	 TMyWps3oL5YCVKDOioZn3mw7Yz24xjrVWkq6SC6pHq15S8ZJLVsWkpT2k8FWXIs1QZGZI/42vE2g
+	 qP5dI=
+X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+From: Weixin Guo <2298701336@qq.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	f.kardame@manjaro.org,
+	pgwipeout@gmail.com,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Weixin Guo <2298701336@qq.com>
+Subject: [PATCH v2] arm64: dts: rockchip: fix rk809 interrupt pin on rk3566-roc-pc
+Date: Mon, 27 Apr 2026 21:58:04 +0800
+X-OQ-MSGID: <20260427135804.754895-1-2298701336@qq.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_052753_169622_881CCC71 
-X-CRM114-Status: GOOD (  13.06  )
+X-CRM114-CacheID: sfid-20260427_065823_001286_4591CC72 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -63,35 +86,49 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTWl0dHdvY2gsIDI1LiBNw6RyeiAyMDI2LCAwNjo0NjoxNCBNaXR0ZWxldXJvcMOkaXNjaGUg
-U29tbWVyemVpdCBzY2hyaWViIEdyYXkgSHVhbmc6Cj4gRW5hYmxlIEJsdWV0b290aCBzdXBwb3J0
-IGZvciB0aGUgQW1wYWsgQVA2Mjc1UCBtb2R1bGUgb24gdGhlCj4gS2hhZGFzIEVkZ2UgMkwuIFRo
-aXMgaW52b2x2ZXMgZW5hYmxpbmcgdGhlIFVBUlQ1IGludGVyZmFjZSBmb3IKPiBIQ0kgY29tbXVu
-aWNhdGlvbiBhbmQgZGVmaW5pbmcgdGhlIHJlcXVpcmVkIHJlZ3VsYXRvcnMgYW5kCj4gcG93ZXIt
-c2VxdWVuY2UgcGlucy4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBHcmF5IEh1YW5nIDxncmF5Lmh1YW5n
-QHdlc2lvbi5jb20+Cj4gLS0tCj4gIC4uLi9kdHMvcm9ja2NoaXAvcmszNTc2LWtoYWRhcy1lZGdl
-LTJsLmR0cyAgICB8IDM1ICsrKysrKysrKysrKysrKysrKysKPiAgMSBmaWxlIGNoYW5nZWQsIDM1
-IGluc2VydGlvbnMoKykKPiAKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazM1NzYta2hhZGFzLWVkZ2UtMmwuZHRzIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2Nr
-Y2hpcC9yazM1NzYta2hhZGFzLWVkZ2UtMmwuZHRzCj4gaW5kZXggOGVjZDAwZjY2NDVkLi4zNDVk
-YzRjOTgxYzEgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-NzYta2hhZGFzLWVkZ2UtMmwuZHRzCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hp
-cC9yazM1NzYta2hhZGFzLWVkZ2UtMmwuZHRzCj4gQEAgLTU2MCw2ICs1NjAsMjAgQEAgdXNiX2hv
-c3RfcHdyZW46IHVzYi1ob3N0LXB3cmVuIHsKPiAgCQl9Owo+ICAJfTsKPiAgCj4gKwlibHVldG9v
-dGggewo+ICsJCWJ0X3JlZ19vbjogYnQtcmVnLW9uIHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDw0
-IFJLX1BCMiBSS19GVU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4gKwkJfTsKPiArCj4gKwkJYnRf
-d2FrZV9ob3N0OiBidC13YWtlLWhvc3Qgewo+ICsJCQlyb2NrY2hpcCxwaW5zID0gPDAgUktfUEIx
-IFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX2Rvd24+Owo+ICsJCX07Cj4gKwo+ICsJCWhvc3Rfd2Fr
-ZV9idDogaG9zdC13YWtlLWJ0IHsKPiArCQkJcm9ja2NoaXAscGlucyA9IDwwIFJLX1BBNSBSS19G
-VU5DX0dQSU8gJnBjZmdfcHVsbF91cD47Cj4gKwkJfTsKPiArCX07CgpzYW1lIHNvcnRpbmcgcHJv
-YmxlbSB3aXRoIGJsdWV0b290aCBiZXR3ZWVuIHVzYi1mb28gYW5kIHdpZmktZm9vLgoKPiArCj4g
-IAl3aWZpIHsKPiAgCQl3aWZpX3JlZ19vbjogd2lmaS1yZWctb24gewo+ICAJCQlyb2NrY2hpcCxw
-aW5zID0gPDQgUktfUEEyIFJLX0ZVTkNfR1BJTyAmcGNmZ19wdWxsX3VwPjsKCkhlaWtvCgoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+The RK809 PMIC interrupt pin on the Firefly ROC-RK3566-PC (Station M2)
+is physically connected to GPIO0_A3 (RK_PA3) according to the board's
+schematic.
+
+Currently, the PMIC node incorrectly specifies RK_PA7 for the interrupt,
+which prevents the PMIC from correctly signaling interrupts. (Note that
+the pinctrl node 'pmic_int' correctly configures RK_PA3).
+
+Fix this by updating the interrupts property to use RK_PA3.
+
+Fixes: 30ac9b4e25d8 ("arm64: dts: rockchip: add dts for Firefly Station M2 rk3566")
+
+Signed-off-by: Weixin Guo <2298701336@qq.com>
+---
+Changes in v2:
+- Updated author name to standard "Given name + Surname" format per maintainer's request.
+
+ arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+index 7e499064e035..985770e3a5e2 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3566-roc-pc.dts
+@@ -245,7 +245,7 @@ rk809: pmic@20 {
+ 		compatible = "rockchip,rk809";
+ 		reg = <0x20>;
+ 		interrupt-parent = <&gpio0>;
+-		interrupts = <RK_PA7 IRQ_TYPE_LEVEL_LOW>;
++		interrupts = <RK_PA3 IRQ_TYPE_LEVEL_LOW>;
+ 		clock-output-names = "rk808-clkout1", "rk808-clkout2";
+ 		assigned-clocks = <&cru I2S1_MCLKOUT_TX>;
+ 		assigned-clock-parents = <&cru CLK_I2S1_8CH_TX>;
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
