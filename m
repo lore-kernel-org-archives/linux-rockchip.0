@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58A64FF8864
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEC43FF8870
 	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 21:57:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oFYJPjWQfJFKVLpup3ZAa7CoEgIr/rD9d8JR22g7S+c=; b=lDvBxuSKjCPxTe
-	dqUkRPm7E/ZkdyZ9r3swHqH13Rbu/Y56WNwrtyFsW0Dwj2dX6HxpWkAAfHH37xYnhsQgJjeWYcnJq
-	q3H0vf+5lCAC/AZPO9wryZSnQ8T/mEO11AGCNQ/XnOcKgXEC/ldIXktgmWVWcU0Lky/z7tGNuL+pr
-	6bG2maqsMi10uwe6eOdxQ0Nfeqn5h/KhnjHL5ysEgMP1FT0d7EFsAHxBfmz5+zWB2+yHuJg0kzr8B
-	hwBnC+Ya1vD/Sj+VOC5PDM8ZiCQolxNUpDhBDc86KcL7G5rdktIwgY1OPzi41ALEFxnERWT1OnsVJ
-	8HBHdRkjf4hdc0Dm4xtw==;
+	List-Owner; bh=34oAD9w61nePW8mSIFl1OezdaVvwA4bHG/id+HwqhC0=; b=1eI4tpVxYXoYki
+	Gb0mTSXqnjuH93k4NoSyuEWh1VUcoevmjmMyxMhqVOMjGAPIxB6lttMXcIR+scyLnILNg9CKJvyr0
+	gSaLxzxMM922QfxlIrMNwjfvSAlH9zakRLM3pY2k8AgNkEn8dnKgcXxIRZrhcNEIyWM9AYbN4v/EF
+	vccMEIqT2zEJ3Jj2+a8YPs7XGKRJXEnmSOmJ9MiNW+FAYXKPwDDMlpuFoyp0xjDGEa/cZ+w8sBIZI
+	T5ySAnYVYso2mj8jRr2ZE2gOJXGbpnzy9wiPit7FN/qLCydYMjMfAiYdKDBtAyTF+i9jDudTavlzf
+	N8Av8OY/I1S5xzeX7xtA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHTxk-00000000DOu-0gCM;
+	id 1wHTxk-00000000DPY-2Sax;
 	Mon, 27 Apr 2026 21:57:56 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHTxa-00000000DEg-3Zgl;
+	id 1wHTxb-00000000DEw-3tsm;
 	Mon, 27 Apr 2026 21:57:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777327064;
-	bh=zhyJCoZrrjcFXrqebOcpw3bjPfuh5lPY066+qDv72rI=;
+	s=mail; t=1777327065;
+	bh=/vBqt9UZcZFgAFm1ZsAr9FZXZJaxsAIpfwkQQgR2SJM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=dYqZN9A5MNQw5/2Ml1+Wz98fulhnNPfA/3X/bpIe2n3tpwG4oaPoQJ8F016R0dChn
-	 gXkO7r0qi3CoP8HJzZXbodXjZ5wnFaPwn8tMXjYJQEKyNm12I5F29kO/d5cfJmJPSk
-	 og/7Z7rKEM4F8r2SS2z76BnHKgCBdGiO5vdBsqtEJQMmFq4k5auD0blWpyJWEj6S4S
-	 i907OGNh7HCcaAxx89YpGKLw/2fS0XD/IOVuY7nMoSCRJeLeTro4S7h/+RUGyDXiXv
-	 rRe4HZRpTkCvJe+Z+S9HiCR+oxw20JxX8MBCWN8SrqAs85x0I7cMIQu5hlVuX/LTN2
-	 PmrssxhUX2PtQ==
+	b=cdF06wVZD/rNIwL5iUuHOlH/u0AAsbFbiMf/jol7/U2i2VMxCs3608IFIPhn8oj1o
+	 m7D28H23UoYGpLOURhHVM1fqJsOHruJPNqx5UGv/56gOcdMSjDZ+GwTBbeilv/x8PD
+	 NDiBwzoMu5opewZayvBsgGXsj/KHxIjArPQchDqf3xr+Xy0V2VX2lxvLpjwgwvA1gq
+	 fdSpk8ks3HMTh5EgUoAtcm2fho67XGD2AclqD0GP3txToU3Qv3+KWnVhzZA7W+rC2h
+	 lkDWa62r2Cxw+ViuA4lAldXoAyMLR7u92mz2G7u573x0bZCI9XxM9guzjub0GzmUvv
+	 wRQzt69EZzpzw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4DE2517E1274;
-	Mon, 27 Apr 2026 23:57:44 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1FFBE17E141F;
+	Mon, 27 Apr 2026 23:57:45 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 28 Apr 2026 00:57:20 +0300
-Subject: [PATCH v2 02/13] arm64: dts: rockchip: Add frl-enable-gpios to
- rk3576-luckfox-core3576
+Date: Tue, 28 Apr 2026 00:57:21 +0300
+Subject: [PATCH v2 03/13] arm64: dts: rockchip: Add frl-enable-gpios to
+ rk3576-nanopi-r76s
 MIME-Version: 1.0
-Message-Id: <20260428-dts-rk-frl-enable-gpios-v2-2-924df9db884a@collabora.com>
+Message-Id: <20260428-dts-rk-frl-enable-gpios-v2-3-924df9db884a@collabora.com>
 References: <20260428-dts-rk-frl-enable-gpios-v2-0-924df9db884a@collabora.com>
 In-Reply-To: <20260428-dts-rk-frl-enable-gpios-v2-0-924df9db884a@collabora.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -58,8 +58,8 @@ Cc: kernel@collabora.com, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_145747_037459_0AA13A45 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20260427_145748_539761_BC152FEF 
+X-CRM114-Status: GOOD (  11.08  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,54 +83,46 @@ mode and deasserted for HDMI 1.4/2.0 TMDS mode.
 Wire up the hdmi node to its dedicated GPIO via frl-enable-gpios to
 allow adjusting the bias when transitioning between TMDS and FRL modes.
 
-Additionally, remove the now unnecessary workaround of using
-vcc_5v0_hdmi as hdmi-pwr-supply solely to drive the GPIO into its
-default state.
-
-Also rename the hdmi_con_en pinctrl to hdmi_tx_on_h to match the
-schematic naming.
+Additionally, drop the now unnecessary workaround of using vcc5v_hdmi_tx
+as hdmi-pwr-supply solely to drive the GPIO into its default state.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- .../boot/dts/rockchip/rk3576-luckfox-core3576.dtsi | 22 ++++------------------
- 1 file changed, 4 insertions(+), 18 deletions(-)
+ arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-luckfox-core3576.dtsi b/arch/arm64/boot/dts/rockchip/rk3576-luckfox-core3576.dtsi
-index 749f0a54b478..4fc8496828f8 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-luckfox-core3576.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-luckfox-core3576.dtsi
-@@ -26,7 +26,6 @@ chosen {
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts
+index 7ec27b05ff10..0a5cd5f6fd33 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-nanopi-r76s.dts
+@@ -70,7 +70,6 @@ led-2 {
  
  	hdmi-con {
  		compatible = "hdmi-connector";
--		hdmi-pwr-supply = <&vcc_5v0_hdmi>;
+-		hdmi-pwr-supply = <&vcc5v_hdmi_tx>;
  		type = "a";
  
  		port {
-@@ -138,22 +137,6 @@ regulator-state-mem {
- 		};
+@@ -109,18 +108,6 @@ vcc5v_dcin: regulator-vcc5v-dcin {
+ 		regulator-name = "vcc5v_dcin";
  	};
  
--	vcc_5v0_hdmi: regulator-vcc-5v0-hdmi {
+-	vcc5v_hdmi_tx: regulator-vcc5v-hdmi-tx {
 -		compatible = "regulator-fixed";
 -		enable-active-high;
 -		gpios = <&gpio4 RK_PC6 GPIO_ACTIVE_HIGH>;
 -		pinctrl-names = "default";
--		pinctrl-0 = <&hdmi_con_en>;
+-		pinctrl-0 = <&hdmi_tx_on_h>;
 -		regulator-min-microvolt = <5000000>;
 -		regulator-max-microvolt = <5000000>;
--		regulator-name = "vcc_5v0_hdmi";
--		vin-supply = <&vcc_5v0_sys>;
--
--		regulator-state-mem {
--			regulator-off-in-suspend;
--		};
+-		regulator-name = "vcc5v_hdmi_tx";
+-		vin-supply = <&vcc5v0_sys_s5>;
 -	};
 -
- 	vcc_5v0_host: regulator-vcc-5v0-host {
+ 	vcc5v0_device_s0: regulator-vcc5v0-device-s0 {
  		compatible = "regulator-fixed";
- 		enable-active-high;
-@@ -231,6 +214,9 @@ &gpu {
+ 		regulator-always-on;
+@@ -252,6 +239,9 @@ &gpu {
  };
  
  &hdmi {
@@ -140,15 +132,6 @@ index 749f0a54b478..4fc8496828f8 100644
  	status = "okay";
  };
  
-@@ -655,7 +641,7 @@ &pcie0 {
- 
- &pinctrl {
- 	hdmi {
--		hdmi_con_en: hdmi-con-en {
-+		hdmi_tx_on_h: hdmi-tx-on-h {
- 			rockchip,pins = <4 RK_PC6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
 
 -- 
 2.53.0
