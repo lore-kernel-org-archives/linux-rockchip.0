@@ -4,76 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C6DAFF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 14:30:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86962FF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 15:09:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=S6jsX4cEM/cD+FvzxJr7hUsET1UkJmvWYt7OhGpJLGk=; b=qFe1PBqLNywa3Hv8Rpx/bB0wxo
-	qWNJo7O1xii/vzOwiEHuzAB0XyzR4ECJ4kwBemA9VBSV4cZwlTaVuwAORq0HP9oxfbKQOPxy5Z8fZ
-	TT7MVTtJjyu/Xgy6rGueEMioj/V2f6k9ZM8RTvY4iahW1haR4kHUeuVPfBgiXBmpxNkg69M8V3Lod
-	yD+hTd/Fl6YHGGFW2yTit/6n1Lnxy0W8eP3XIXhv9FylFit6Yvvfm5KIItfOTqBvjkDlrq+3hj8JX
-	UVmriZ+Q4SnFUnqxBfKNiVwcW3ndOCnBXAlKgb5bpaoQAq7Jkc/xhYwo/+iW14T2kY3QfcWyDUh+n
-	pKCTorwA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=NgT+3c6rKrxagco07jZBG4ojtV1kBIiLOpiof7I+1vw=; b=QgjXGJvjE9bcxR
+	FB4XkPyHuQr6g0cDXVPP7DSiCWFAvIyclXJWHfgukd7Z6cI2sCvKdKuASN7snhcBN/TPdrNroWar3
+	lsOJMFnQ6Z5jMaonOpLwoyfpRWbXy/cwN75i4/3d0nJttRJe3+WBmJ/URzQ68w8aLOrXor+SJ1U3w
+	aXzpZ/pmHB1/w5Jmsb7astH7A1xbhaCiazT4I7Jy99TbmI2DJhx0r+1RWFEhVKiYgWCvFcPEj/3Ba
+	uggoXxdYn+5IGi8tssycI1KvObWMSwg/cmEmrFmY9rc0AxXkfQufFUa4ynYJ1yLfcQTzvmxKUpu1n
+	V6TkFMfxn5Wf8bA7ocLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHjSU-00000001f0S-2HFf;
-	Tue, 28 Apr 2026 14:30:42 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wHk3z-00000001iAH-2Aga;
+	Tue, 28 Apr 2026 15:09:27 +0000
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHjSS-00000001ezs-1BuX
+	id 1wHk3w-00000001i9v-2RYG
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 14:30:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777386636;
-	bh=O1d8jK3KEsymM222o8UDBPpnkBrW80wRlhGqFv91dGk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Dyey7wT3capCNy7S1aLuY9NyN8WtSPi39xVoU3y0AkWShbUKbk/hdvLH/a6uhSxnj
-	 jAPKA+SQVyzE2skrLg92ZhNI6lYix02pQ3Ks43ELwHHGDrAUhoa7zArCWtM8HLI6LL
-	 CEooSul6hqbptcddZIUh6en3TthoLvolbUz3LXkXjbDpn/hiTT42oLa2weM14022t3
-	 JDj6jiZs9eXQJiNQY7U8C7ATLrOfMxBPlsQdz+duYL07IhEPc3qStCy6KORnbK0KAG
-	 3Ui6c+O0pUhX6K9Ron+Yz/F1CJWRsQIO93ULPXaeQNbTmq389OZluqtOnG6xiQPsIJ
-	 dupXDP9BakdGQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ECA2317E0F33;
-	Tue, 28 Apr 2026 16:30:35 +0200 (CEST)
-Message-ID: <727f018e014b5965802f1b3369e1c118c487d0e6.camel@collabora.com>
-Subject: Re: [PATCH] media: verisilicon: Fix format enumeration when
- post-processor is mandatory
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>, 
-	p.zabel@pengutronix.de, mchehab@kernel.org, hverkuil@kernel.org
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, kernel@collabora.com
-Date: Tue, 28 Apr 2026 10:30:34 -0400
-In-Reply-To: <20260428083723.54314-1-benjamin.gaignard@collabora.com>
-References: <20260428083723.54314-1-benjamin.gaignard@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	Tue, 28 Apr 2026 15:09:26 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-479ef2b7979so5400354b6e.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 08:09:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1777388963; x=1777993763; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=eg7jclWUBdkcF9TMPmlkH1m3gUXCyVDg8YBU8lVWmQc=;
+        b=vO2xVYj+9m5tdtcuNAWLmBaNQg4fkx8SXreb0ie4P52CR0J8i+pf3KwhA2q1b/yHWo
+         5S4E1g6O/NF09SMqokyRZRn+m240AW9Z6xQfq/pCZyduWrDFD5lpY/fLq6oOpKUfPPt6
+         VeT8uHAyI2ApSA6q2jQdfnbOvMIQSNPGCcYf1DkNgPTisQ0svO+e/tF5VI0ScSYaYPq2
+         obkxfBvsDfXX/g8xuFfuVEKNO5mCasz1K4yOi9hsStG622VQijiOic4p/QkAewoXAEE/
+         LRbeA3GQBvpxRylhoHdyQMS7Cfvy2+vNTpt19Vb3+FHxI3aTDdSakjhvbydq0Wy2rxLj
+         1oTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777388963; x=1777993763;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=eg7jclWUBdkcF9TMPmlkH1m3gUXCyVDg8YBU8lVWmQc=;
+        b=gBMTweqLpQ9keFe/1tRQH61tAEzUolqGuaO62uiRkN8jYsRX8G1AqpwFEBdwGDDQlz
+         y4+1Fnk8Dx3HKy9AW0SVNQJiuAR0Zmuo27E4JHxWyNA4eKuijM2KDgfUE54LKtPJ3kGA
+         pLTLuzlLBBiAoky8qVfCjqa6mBaUI1M16iutf6lVCdEIPqyuJwQC0zv0nXt+jKjdfBYO
+         zVvi2NIjYxVqGKdwHhw6s7Sw7YsbxqxhQDeLhl/LOCSEjttR/QcKRZcVzo/97covYBp8
+         S1o6w+5tPPiDv73He42a3wths7MO3yxjbGlzKGGXemjDKDaoe6PblciRNN6DiFFwhlN+
+         lUAg==
+X-Forwarded-Encrypted: i=1; AFNElJ/sWMezWeUqmFF9DOaAp+wLZ0VQ9TwdqgSDoN1ols6z7qsYLCiL60hmw4Y/1bMTK51YMeEyrYBqA2X5FdBOkQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwBAY4KldVUXS1OYkKN46qjbxV6qnQLzpTqL19fQpH+Z4IpVwEI
+	YO6rWJx3RBFJpUavgnwNZ9QhhwM1jTJtz0OJ/OiW0tiSArIUt/bvP5/a2FTPxTJqm+E=
+X-Gm-Gg: AeBDieuQr1jyWXCHntZXKcsQ7OHkdvVnPswcd32fjq9sbdBVnOSp7YwDZolPIl2bkoH
+	ZeBg6PRxmzlDD8BdUs5uqSUC1Y9C+afQcUpCGaBiZWdM/EEb9bpXJ+9pCTj6zIKRZno4jGzII+I
+	BOiTxvXqTZNWujbUPo3BEWflcKwpmW9gLBQ0TeiBbJ3PwxMiTgrHtpriuQ+mgxny/BAkRQVGnWy
+	9FqwY3OqxIJwV0DIgHMEUMirZaLwXvO803aLs0UIrv8t0VUL6BtlaQ9dlFZNPu7ckuhab2zcQT/
+	GPdfLN1paGRnrEIJwrndK0JKIy4STGu9oSAfBJVB6neIF3L4sxXu3fIMHoKkbPYT82wjUf87YHT
+	47n6L5vj7DKxhLzPAwTEfX4obuj/mpYMOWZ3t1eGkG8uXMW0yFUHcXpgo+Jwy4cygNWecCx1PgU
+	n8YCyypu6CCVWAEolUmG/pC7RVwVlM4TQEa7ViW4z9dVO+a8JpBLdnWBhMdoDwN/lvKGT5wwtQ9
+	zmkgpt9haSR
+X-Received: by 2002:a05:6808:1590:b0:479:d57b:838a with SMTP id 5614622812f47-47c2902fb60mr1817804b6e.35.1777388962643;
+        Tue, 28 Apr 2026 08:09:22 -0700 (PDT)
+Received: from ?IPV6:2600:8803:e7e4:500:efba:bc47:a81b:dd0f? ([2600:8803:e7e4:500:efba:bc47:a81b:dd0f])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-47c28f50286sm1611696b6e.1.2026.04.28.08.09.20
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Apr 2026 08:09:22 -0700 (PDT)
+Message-ID: <6347ce16-bf5c-4da4-91ba-fe6c88713b51@baylibre.com>
+Date: Tue, 28 Apr 2026 10:09:20 -0500
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH V3 6/9] iio: imu: inv_icm42607: Add Accelerometer for
+ icm42607
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, jic23@kernel.org,
+ jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+References: <20260330195853.392877-1-macroalpha82@gmail.com>
+ <20260330195853.392877-7-macroalpha82@gmail.com>
+ <f1ae57fe-1ad5-46ee-9f0c-245f4deec7ce@baylibre.com>
+ <PH0PR19MB997338EE6A13BD08879C4B9B2BA5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+Content-Language: en-US
+From: David Lechner <dlechner@baylibre.com>
+In-Reply-To: <PH0PR19MB997338EE6A13BD08879C4B9B2BA5372@PH0PR19MB997338.namprd19.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_073040_471869_2B5A9461 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20260428_080924_642283_79A7BC9C 
+X-CRM114-Status: GOOD (  26.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,79 +104,125 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============4954038409899711379=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On 4/28/26 9:01 AM, Chris Morgan wrote:
+> On Fri, Apr 10, 2026 at 05:59:05PM -0500, David Lechner wrote:
+>> On 3/30/26 2:58 PM, Chris Morgan wrote:
+>>> From: Chris Morgan <macromorgan@hotmail.com>
+>>>
+>>> Add icm42607 accelerometer sensor for icm42607.
+>>>
+>>
 
---===============4954038409899711379==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-8Jpkvf0gMzcEeQQU4+Ih"
+...
 
+>>
+>> Usually we make these 2-D arrays for readability and then cast to int * if needed.
+>>
+>>> +static const int inv_icm42607_accel_scale[] = {
+>>> +	/* +/- 16G => 0.004788403 m/s-2 */
+>>> +	[2 * INV_ICM42607_ACCEL_FS_16G] = 0,
+>>> +	[2 * INV_ICM42607_ACCEL_FS_16G + 1] = 4788403,
+>>> +	/* +/- 8G => 0.002394202 m/s-2 */
+>>> +	[2 * INV_ICM42607_ACCEL_FS_8G] = 0,
+>>> +	[2 * INV_ICM42607_ACCEL_FS_8G + 1] = 2394202,
+>>> +	/* +/- 4G => 0.001197101 m/s-2 */
+>>> +	[2 * INV_ICM42607_ACCEL_FS_4G] = 0,
+>>> +	[2 * INV_ICM42607_ACCEL_FS_4G + 1] = 1197101,
+>>> +	/* +/- 2G => 0.000598550 m/s-2 */
+>>> +	[2 * INV_ICM42607_ACCEL_FS_2G] = 0,
+>>> +	[2 * INV_ICM42607_ACCEL_FS_2G + 1] = 598550,
+>>> +};
+>>> +
+> 
+> I've gone through and implemented all of the changes everyone suggested, though
+> this is one of the few on which I had a question. Obviously this driver was
+> cobbled together from 2 different sources and checked to the best of my ability
+> and tested/validated against the data sheet, but there are a few bits I'm not
+> fully clear on such as this.
+> 
+> What's the correct way to represent this data? Since it looks like one of the
+> values is always 0, should I just assume it's always 0 and only represent the
+> values that change in this scale?
+> 
 
---=-8Jpkvf0gMzcEeQQU4+Ih
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Picking a random driver, bma220 has the most usual way of doing it.
 
-Le mardi 28 avril 2026 =C3=A0 10:37 +0200, Benjamin Gaignard a =C3=A9crit=
-=C2=A0:
-> When a post-processor pixel format is mandatory (i.e. when an AV1
-> bitstream use film grain feature) the driver must only enumerate
-> post-processed format.
-> Use the context format to know what is suppose to be enumerated.
->=20
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Fixes: 80c7373a456e ("media: verisilicon: Conditionally ignore native for=
-mats")
+static const int bma220_scale_table[][2] = {
+	{ 0, 623000 }, { 1, 248000 }, { 2, 491000 }, { 4, 983000 },
+};
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+I do like using the enum to make it self documenting though (no
+comments needed), so for this driver...
 
-> ---
-> =C2=A0drivers/media/platform/verisilicon/hantro_v4l2.c | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/m=
-edia/platform/verisilicon/hantro_v4l2.c
-> index fcf3bd9bcda2..f538d4562744 100644
-> --- a/drivers/media/platform/verisilicon/hantro_v4l2.c
-> +++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
-> @@ -242,7 +242,7 @@ static int vidioc_enum_fmt(struct file *file, void *p=
-riv,
-> =C2=A0	 */
-> =C2=A0	skip_mode_none =3D capture =3D=3D ctx->is_encoder;
-> =C2=A0
-> -	formats =3D hantro_get_formats(ctx, &num_fmts, HANTRO_AUTO_POSTPROC);
-> +	formats =3D hantro_get_formats(ctx, &num_fmts, ctx->need_postproc);
-> =C2=A0	for (i =3D 0; i < num_fmts; i++) {
-> =C2=A0		bool mode_none =3D formats[i].codec_mode =3D=3D HANTRO_MODE_NONE;
-> =C2=A0		fmt =3D &formats[i];
-
---=-8Jpkvf0gMzcEeQQU4+Ih
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCafDEigAKCRDZQZRRKWBy
-9LkdAQD96Pf16DIobHW2seYVhEmFsDMuHmcO7zmAS3khX0ah6AEA2uEpp53yRK0B
-bRSnnBTnA08gAb9NtlQUvvTibfEDdg0=
-=hZwz
------END PGP SIGNATURE-----
-
---=-8Jpkvf0gMzcEeQQU4+Ih--
+static const int inv_icm42607_accel_scale_nano[][2] = {
+	[INV_ICM42607_ACCEL_FS_16G] = { 0, 4788403 },
+	...
+};
 
 
---===============4954038409899711379==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Then the read_avail callback in bma220 does:
+
+	case IIO_CHAN_INFO_SCALE:
+		*vals = (int *)bma220_scale_table;
+		*type = IIO_VAL_INT_PLUS_MICRO;
+		*length = ARRAY_SIZE(bma220_scale_table) * 2;
+		return IIO_AVAIL_LIST;
+
+Although the cast would be better as `(const int *)` and I assume
+you would want to use NANO instead of MICRO.
+
+
+
+>>
+>>> +int inv_icm42607_set_accel_conf(struct inv_icm42607_state *st,
+>>> +				struct inv_icm42607_sensor_conf *conf,
+>>> +				unsigned int *sleep_ms)
+>>> +{
+>>> +	struct inv_icm42607_sensor_conf *oldconf = &st->conf.accel;
+>>> +	unsigned int val;
+>>> +	int ret;
+>>> +
+>>> +	if (conf->mode < 0)
+>>> +		conf->mode = oldconf->mode;
+>>> +	if (conf->fs < 0)
+>>> +		conf->fs = oldconf->fs;
+>>> +	if (conf->odr < 0)
+>>> +		conf->odr = oldconf->odr;
+>>> +	if (conf->filter < 0)
+>>> +		conf->filter = oldconf->filter;
+>>> +
+>>> +	if (conf->fs != oldconf->fs || conf->odr != oldconf->odr) {
+>>
+>> We could use the regmap cache feature to avoid having to manual keep
+>> track of old values. Or just always write the same values anyway. I
+>> find that is nice when debugging hardware with a logic analyzer. Unless
+>> there is some measureable performance improvlment here?
+> 
+> This is another one I had a question on. I'm not entirely clear from the
+> datasheet which reg values are volatile and which ones are safe to cache.
+> Performance wise the 42607 series appears to be the *least* performant
+> in their lineup, so I don't imagine we care much either way. Should I just
+> not worry about the old values and always write? Do you think that would
+> work?
+> 
+My personal preference is to always do extra SPI writes for anything
+that is not performance critical. This makes debugging with a logic
+analyzer much easier.
+
+In cases where using caching makes sense, generally, "status" registers
+are volatile because the chip can change the value when status changes.
+"config" registers are not volatile because they don't change unless
+written to.
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============4954038409899711379==--
-
