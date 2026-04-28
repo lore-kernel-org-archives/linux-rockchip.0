@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5DF0FF885D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 07:48:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BC72FF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 07:49:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ixZ837dAbXn7GR0ci7UaRaI2j/ctdI8VBGOORhh4JWM=; b=2C5E4cdqHlnjoB
-	K9MEloHWlexYo3PfwCzIyfE92C1MsLnlCJkf1gl7aB02AmJtJ4r0NZ1ke55+HDRoB4w7y5lmcQipL
-	6K2KdTBLJVuFf++0179O3kvj5QO7z/UiQI7A8WUOpbWu9gxZXtCqUJO42NY4sFi41FJMwLIUnIzQO
-	8tS/T45S3HhNdoA4FvsbgYfvmA84feZ/p5UPeEA6xyCvn5xkg76dg6Msb3Rli8fxOpA1YdfPI6yU9
-	wcIzKGBj/w6FRmf54WX3qffAJ03DqkYCOW89kx8TBQtdN2B9Th1tkRa62LavByYba6pHPIyFsAexf
-	1AKMXrmo1R8XpbsfyBGg==;
+	List-Owner; bh=XKRO7nuGkfEHCFlRthx4FqtAExOX706THDF8VhQ/TE0=; b=OjSyl3V7By8VyL
+	P8wy/VUmiBC0JANliY6FnisSPo6E5R0NkkNm3mGg2IG+2+j7ZSPF9P0qNlWeE/IwJl+Zq3frc6yv+
+	CusY+CEDXFKQf790HDi+RdYW2LjaeknmRyn6xssm83T7yDSmDrms+3+Tek78zIbpdnfGkOeyCSB3Z
+	qQBY1+rzzIx3FPVnjjaeGiagvC18jAZO3D0uwqKasi8kwzN8QR66R+zZxRyYPcIRJXYOPix6YiY5m
+	cHZPhAqqmqQV3Cx0t8Y9SaXEK7IBN00Yvpo0xEU9OcpsI80jbD1qESEsMZWBJ1ikwJRrKJLJxPhg7
+	Z8u8tGJEH/KvPJYbfelg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHdB9-00000000o7W-2TsH;
-	Tue, 28 Apr 2026 07:48:23 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wHdCO-00000000oGI-2rWC;
+	Tue, 28 Apr 2026 07:49:40 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHdB7-00000000o7B-13l8
+	id 1wHdCN-00000000oEx-05p5
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 07:48:22 +0000
+	Tue, 28 Apr 2026 07:49:39 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0C6B3447B8;
-	Tue, 28 Apr 2026 07:48:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 417F1C2BCAF;
-	Tue, 28 Apr 2026 07:48:16 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 6BEEA60154;
+	Tue, 28 Apr 2026 07:49:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FD74C2BCB6;
+	Tue, 28 Apr 2026 07:49:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777362496;
-	bh=ft9oi09v7e6MaGktTxeycnqTmmPuYqwjGTgoOgQE+Ow=;
+	s=k20201202; t=1777362578;
+	bh=3ElNfMSZSM4UEx+D4roCAQFNWHGugNmlQtBq5aXJQ8o=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=s6UkoYPrXiTQxDUl4bAQiXStQr+Bh9R0gc3d4IMmW8E102PEGQWk6t84EZ/S9R4YD
-	 jZoKh7msf0blhF2IEbox08mZKBwat/WQyHJdW34XjqPWmVDwMR5pbiTwzoSGUwj6vy
-	 r6GZKn1YqdNrhkTZXmDhzOt29qh9WL17jyQ/SxPlknnGH0AouF0TmNYEibvTEs4mOa
-	 Vrw6bkNwXohgH1hcK2Sdb4fDCpXjrRTuwLedtrWvopNz/2W9MncfUna+8AyRriFDHH
-	 /GtTIEk5GxSrntSDuXmxYcI7bjFlbH7LgARBt/KwQ89lBam12gUx6OrQsl3AFqlmM4
-	 CUb9hBkz3HrUA==
-Date: Tue, 28 Apr 2026 09:48:14 +0200
+	b=QYu2LQAQ2bTwVIgJMiupZ1xKfY2vpDjaxpd8EnJGy1SX/ZZa+8niTzyTrDhCd6j3s
+	 AlzDvAoAhWuB6Pwp0J8RMdWayozbqMlgxyqkM4Xs/ftQePufk0+a6WEFHcfzak3BMN
+	 tDYAUtaP3/4ZYN+kmQKDaGQvbNlRbEjFYQ1sF7ermCGfdLwp/5gE5aAncpA12ApXcx
+	 rxee15S0csAOCdOBIC8lC6YDePeAFd8lpnlQWfP7TOB3F784KmvosGNmlkM+3KIXri
+	 17+IAykFGNqqIBFq5lcp+48EIcU7HRNJqipXN95nSiCCSaFvLjl8NpQb9WAn2vZtM3
+	 Kt+hJiUL0zsBA==
+Date: Tue, 28 Apr 2026 09:49:35 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
@@ -51,17 +51,14 @@ Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
 	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com, neil.armstrong@linaro.org, 
 	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 5/6] dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
-Message-ID: <20260428-vigilant-grebe-of-tempering-0b5e14@quoll>
+Subject: Re: [PATCH 3/6] dt-bindings: display: panel: document Anbernic
+ TD4310 panel
+Message-ID: <20260428-golden-tamarin-from-heaven-c500e8@quoll>
 References: <20260427170914.5062-1-macroalpha82@gmail.com>
- <20260427170914.5062-6-macroalpha82@gmail.com>
+ <20260427170914.5062-4-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260427170914.5062-6-macroalpha82@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_004821_307677_97E45044 
-X-CRM114-Status: UNSURE (   6.33  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260427170914.5062-4-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +75,67 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 27, 2026 at 12:09:13PM -0500, Chris Morgan wrote:
+On Mon, Apr 27, 2026 at 12:09:11PM -0500, Chris Morgan wrote:
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add compatible string for the Anbernic RG Vita-Pro.
+> The panel used by Anbernic in the RG Vita-Pro is a DSI panel based
+> on the TD4310 controller IC. It measures approximately 5.5 inches
+> diagonally and is 1080x1920 in resolution.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../display/panel/anbernic,td4310.yaml        | 63 +++++++++++++++++++
+>  1 file changed, 63 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml b/Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
+> new file mode 100644
+> index 000000000000..2da957cd5d49
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
+> @@ -0,0 +1,63 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/display/panel/anbernic,td4310.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Anbernic TD4310 Based Panels
+> +
+> +maintainers:
+> +  - Chris Morgan <macromorgan@hotmail.com>
+> +
+> +description:
+> +  Bindings for Anbernic TD4310 Based Panels, such as the RG-Vita-Pro
 
-You combined three completely independent subsystems into one patchset.
-Usually that's unnecessary burden on our mailboxes and instead of simple
-shazam of entire patchset maintainers need to pick up individual bits.
+Description says what the bindings are for. Your description says that
+bindings are for "bindings for"... Just describe the hardware.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+> +  panel (a 1080x1920 5.5 inch panel).
+> +
+> +allOf:
+> +  - $ref: panel-common.yaml#
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: anbernic,panel-vita-pro
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  vdd-supply:
+> +    description: Panel power supply
+> +
+> +required:
+> +  - compatible
+> +  - reg
+
+supply as well. most likely
+
+> +  - reset-gpios
+> +  - port
 
 Best regards,
 Krzysztof
