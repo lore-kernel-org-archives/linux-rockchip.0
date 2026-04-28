@@ -4,95 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86962FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 15:09:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 075D4FF8868
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 15:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NgT+3c6rKrxagco07jZBG4ojtV1kBIiLOpiof7I+1vw=; b=QgjXGJvjE9bcxR
-	FB4XkPyHuQr6g0cDXVPP7DSiCWFAvIyclXJWHfgukd7Z6cI2sCvKdKuASN7snhcBN/TPdrNroWar3
-	lsOJMFnQ6Z5jMaonOpLwoyfpRWbXy/cwN75i4/3d0nJttRJe3+WBmJ/URzQ68w8aLOrXor+SJ1U3w
-	aXzpZ/pmHB1/w5Jmsb7astH7A1xbhaCiazT4I7Jy99TbmI2DJhx0r+1RWFEhVKiYgWCvFcPEj/3Ba
-	uggoXxdYn+5IGi8tssycI1KvObWMSwg/cmEmrFmY9rc0AxXkfQufFUa4ynYJ1yLfcQTzvmxKUpu1n
-	V6TkFMfxn5Wf8bA7ocLA==;
+	List-Owner; bh=MwvRFKhyqck0MarVTRMrbDqRSpS10csyowJr0CdAcpc=; b=lph9pQrWllSgOj
+	0LyUPLADvDhJAZe8zJpTK1IIN1GKRxjOlutPFv9eghmxVATGtsk8DVABV1G8zTaVTZmbA8RytRBl4
+	nYptzI0Mnn9dgbZqz5+W6zKLncTZO9thh5LnUGtfx5IGhuo5TqiYFHCfJdQ9e3OLq0nMMnZd1A2Fk
+	narxxVCqF7Cno70RDup6c5LY/Hwz1usiYPSzsV8krI6q0NBnbvbjwDiUwUf4rKlhYtpubv+gVLJaH
+	XvNJzTFf8OYMwXtyQmH7X4+QUb9Br+l+KHf4KC6Z9sVZrXAvVl+lRbjMPnoXWQZuOlh+qSAz0sMiH
+	Go0QZV1o0DxarQOTiWWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHk3z-00000001iAH-2Aga;
-	Tue, 28 Apr 2026 15:09:27 +0000
-Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
+	id 1wHk4U-00000001iE6-3O9j;
+	Tue, 28 Apr 2026 15:09:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHk3w-00000001i9v-2RYG
+	id 1wHk4S-00000001iDj-22o3
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 15:09:26 +0000
-Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-479ef2b7979so5400354b6e.3
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 08:09:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre-com.20251104.gappssmtp.com; s=20251104; t=1777388963; x=1777993763; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=eg7jclWUBdkcF9TMPmlkH1m3gUXCyVDg8YBU8lVWmQc=;
-        b=vO2xVYj+9m5tdtcuNAWLmBaNQg4fkx8SXreb0ie4P52CR0J8i+pf3KwhA2q1b/yHWo
-         5S4E1g6O/NF09SMqokyRZRn+m240AW9Z6xQfq/pCZyduWrDFD5lpY/fLq6oOpKUfPPt6
-         VeT8uHAyI2ApSA6q2jQdfnbOvMIQSNPGCcYf1DkNgPTisQ0svO+e/tF5VI0ScSYaYPq2
-         obkxfBvsDfXX/g8xuFfuVEKNO5mCasz1K4yOi9hsStG622VQijiOic4p/QkAewoXAEE/
-         LRbeA3GQBvpxRylhoHdyQMS7Cfvy2+vNTpt19Vb3+FHxI3aTDdSakjhvbydq0Wy2rxLj
-         1oTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777388963; x=1777993763;
-        h=content-transfer-encoding:in-reply-to:from:content-language
-         :references:cc:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=eg7jclWUBdkcF9TMPmlkH1m3gUXCyVDg8YBU8lVWmQc=;
-        b=gBMTweqLpQ9keFe/1tRQH61tAEzUolqGuaO62uiRkN8jYsRX8G1AqpwFEBdwGDDQlz
-         y4+1Fnk8Dx3HKy9AW0SVNQJiuAR0Zmuo27E4JHxWyNA4eKuijM2KDgfUE54LKtPJ3kGA
-         pLTLuzlLBBiAoky8qVfCjqa6mBaUI1M16iutf6lVCdEIPqyuJwQC0zv0nXt+jKjdfBYO
-         zVvi2NIjYxVqGKdwHhw6s7Sw7YsbxqxhQDeLhl/LOCSEjttR/QcKRZcVzo/97covYBp8
-         S1o6w+5tPPiDv73He42a3wths7MO3yxjbGlzKGGXemjDKDaoe6PblciRNN6DiFFwhlN+
-         lUAg==
-X-Forwarded-Encrypted: i=1; AFNElJ/sWMezWeUqmFF9DOaAp+wLZ0VQ9TwdqgSDoN1ols6z7qsYLCiL60hmw4Y/1bMTK51YMeEyrYBqA2X5FdBOkQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwBAY4KldVUXS1OYkKN46qjbxV6qnQLzpTqL19fQpH+Z4IpVwEI
-	YO6rWJx3RBFJpUavgnwNZ9QhhwM1jTJtz0OJ/OiW0tiSArIUt/bvP5/a2FTPxTJqm+E=
-X-Gm-Gg: AeBDieuQr1jyWXCHntZXKcsQ7OHkdvVnPswcd32fjq9sbdBVnOSp7YwDZolPIl2bkoH
-	ZeBg6PRxmzlDD8BdUs5uqSUC1Y9C+afQcUpCGaBiZWdM/EEb9bpXJ+9pCTj6zIKRZno4jGzII+I
-	BOiTxvXqTZNWujbUPo3BEWflcKwpmW9gLBQ0TeiBbJ3PwxMiTgrHtpriuQ+mgxny/BAkRQVGnWy
-	9FqwY3OqxIJwV0DIgHMEUMirZaLwXvO803aLs0UIrv8t0VUL6BtlaQ9dlFZNPu7ckuhab2zcQT/
-	GPdfLN1paGRnrEIJwrndK0JKIy4STGu9oSAfBJVB6neIF3L4sxXu3fIMHoKkbPYT82wjUf87YHT
-	47n6L5vj7DKxhLzPAwTEfX4obuj/mpYMOWZ3t1eGkG8uXMW0yFUHcXpgo+Jwy4cygNWecCx1PgU
-	n8YCyypu6CCVWAEolUmG/pC7RVwVlM4TQEa7ViW4z9dVO+a8JpBLdnWBhMdoDwN/lvKGT5wwtQ9
-	zmkgpt9haSR
-X-Received: by 2002:a05:6808:1590:b0:479:d57b:838a with SMTP id 5614622812f47-47c2902fb60mr1817804b6e.35.1777388962643;
-        Tue, 28 Apr 2026 08:09:22 -0700 (PDT)
-Received: from ?IPV6:2600:8803:e7e4:500:efba:bc47:a81b:dd0f? ([2600:8803:e7e4:500:efba:bc47:a81b:dd0f])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-47c28f50286sm1611696b6e.1.2026.04.28.08.09.20
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Apr 2026 08:09:22 -0700 (PDT)
-Message-ID: <6347ce16-bf5c-4da4-91ba-fe6c88713b51@baylibre.com>
-Date: Tue, 28 Apr 2026 10:09:20 -0500
+	Tue, 28 Apr 2026 15:09:57 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id E9D1243929;
+	Tue, 28 Apr 2026 15:09:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 63A36C2BCAF;
+	Tue, 28 Apr 2026 15:09:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777388995;
+	bh=6Wn5RlgVJ7Tb8uQ9GRdxiAw+akTPiDx9gaJheqB2gfw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Pw5gTGfaVCzIb3NLSczGXOmu2MwATrBI5cEWgRCc2w92/GygUUobT0mRn64L/X/Zs
+	 qL6dFgnUIkx9mP+TQRkDEVfv+WW3EnvTQZazvLidM7wsmxVWxSbAytDQEVxoWqsrDL
+	 IkRQXgQ0hVysvPXX/tY1rzl/mmqoZIauopLlq+SH/qdS0YrA8qKN4M5qTRJiI8HOc8
+	 73zugE83OnDvWOVHOGUbym0Pmi4wQHdJiAZYvzAaa5yn0g5i1bLjV7QOUIBYQjHejp
+	 k1Jrk2OmAqJSPtxblv8DnAEFPZiuyWPCoamTTAz7g7iigCvul345fPPKc5jMxHNqvM
+	 xRp8CUvhuNtEQ==
+Message-ID: <534f0795-0002-4c04-a83c-fa1b3ce68216@kernel.org>
+Date: Tue, 28 Apr 2026 17:09:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V3 6/9] iio: imu: inv_icm42607: Add Accelerometer for
- icm42607
+Subject: Re: [PATCH 1/6] dt-bindings: power: supply: sgm41542: document
+ sgm41542
 To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
- andy@kernel.org, nuno.sa@analog.com, jic23@kernel.org,
- jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-References: <20260330195853.392877-1-macroalpha82@gmail.com>
- <20260330195853.392877-7-macroalpha82@gmail.com>
- <f1ae57fe-1ad5-46ee-9f0c-245f4deec7ce@baylibre.com>
- <PH0PR19MB997338EE6A13BD08879C4B9B2BA5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+ linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ xsf@rock-chips.com, sre@kernel.org, simona@ffwll.ch, airlied@gmail.com,
+ tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
+ jesszhan0024@gmail.com, neil.armstrong@linaro.org, heiko@sntech.de,
+ conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
+References: <20260427170914.5062-1-macroalpha82@gmail.com>
+ <20260427170914.5062-2-macroalpha82@gmail.com>
+ <20260428-bulky-nebulous-reindeer-ed45ed@quoll>
+ <PH0PR19MB997338F0B06B7B99AA0ED3C6C4A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
-From: David Lechner <dlechner@baylibre.com>
-In-Reply-To: <PH0PR19MB997338EE6A13BD08879C4B9B2BA5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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 a/A=
+In-Reply-To: <PH0PR19MB997338F0B06B7B99AA0ED3C6C4A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_080924_642283_79A7BC9C 
-X-CRM114-Status: GOOD (  26.03  )
+X-CRM114-CacheID: sfid-20260428_080956_577437_6087C83E 
+X-CRM114-Status: GOOD (  27.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,118 +125,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/28/26 9:01 AM, Chris Morgan wrote:
-> On Fri, Apr 10, 2026 at 05:59:05PM -0500, David Lechner wrote:
->> On 3/30/26 2:58 PM, Chris Morgan wrote:
+On 28/04/2026 16:09, Chris Morgan wrote:
+> On Tue, Apr 28, 2026 at 09:47:00AM +0200, Krzysztof Kozlowski wrote:
+>> On Mon, Apr 27, 2026 at 12:09:09PM -0500, Chris Morgan wrote:
 >>> From: Chris Morgan <macromorgan@hotmail.com>
 >>>
->>> Add icm42607 accelerometer sensor for icm42607.
+>>> Document the SG Micro sgm41542 battery charger/boost converter.
 >>>
+>>> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+>>> ---
+>>>  .../supply/sgmicro,sgm41542-charger.yaml      | 99 +++++++++++++++++++
+>>>  1 file changed, 99 insertions(+)
+>>>  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+>>>
+>>> diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+>>> new file mode 100644
+>>> index 000000000000..3e5041e5b551
+>>> --- /dev/null
+>>> +++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
 >>
-
-...
-
+>> Filename must match compatible.
+> 
+> Acknowledged.
+> 
 >>
->> Usually we make these 2-D arrays for readability and then cast to int * if needed.
->>
->>> +static const int inv_icm42607_accel_scale[] = {
->>> +	/* +/- 16G => 0.004788403 m/s-2 */
->>> +	[2 * INV_ICM42607_ACCEL_FS_16G] = 0,
->>> +	[2 * INV_ICM42607_ACCEL_FS_16G + 1] = 4788403,
->>> +	/* +/- 8G => 0.002394202 m/s-2 */
->>> +	[2 * INV_ICM42607_ACCEL_FS_8G] = 0,
->>> +	[2 * INV_ICM42607_ACCEL_FS_8G + 1] = 2394202,
->>> +	/* +/- 4G => 0.001197101 m/s-2 */
->>> +	[2 * INV_ICM42607_ACCEL_FS_4G] = 0,
->>> +	[2 * INV_ICM42607_ACCEL_FS_4G + 1] = 1197101,
->>> +	/* +/- 2G => 0.000598550 m/s-2 */
->>> +	[2 * INV_ICM42607_ACCEL_FS_2G] = 0,
->>> +	[2 * INV_ICM42607_ACCEL_FS_2G + 1] = 598550,
->>> +};
+>>> @@ -0,0 +1,99 @@
+>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>> +%YAML 1.2
+>>> +---
+>>> +$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml#
+>>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 >>> +
-> 
-> I've gone through and implemented all of the changes everyone suggested, though
-> this is one of the few on which I had a question. Obviously this driver was
-> cobbled together from 2 different sources and checked to the best of my ability
-> and tested/validated against the data sheet, but there are a few bits I'm not
-> fully clear on such as this.
-> 
-> What's the correct way to represent this data? Since it looks like one of the
-> values is always 0, should I just assume it's always 0 and only represent the
-> values that change in this scale?
-> 
-
-Picking a random driver, bma220 has the most usual way of doing it.
-
-static const int bma220_scale_table[][2] = {
-	{ 0, 623000 }, { 1, 248000 }, { 2, 491000 }, { 4, 983000 },
-};
-
-I do like using the enum to make it self documenting though (no
-comments needed), so for this driver...
-
-static const int inv_icm42607_accel_scale_nano[][2] = {
-	[INV_ICM42607_ACCEL_FS_16G] = { 0, 4788403 },
-	...
-};
-
-
-Then the read_avail callback in bma220 does:
-
-	case IIO_CHAN_INFO_SCALE:
-		*vals = (int *)bma220_scale_table;
-		*type = IIO_VAL_INT_PLUS_MICRO;
-		*length = ARRAY_SIZE(bma220_scale_table) * 2;
-		return IIO_AVAIL_LIST;
-
-Although the cast would be better as `(const int *)` and I assume
-you would want to use NANO instead of MICRO.
-
-
-
->>
->>> +int inv_icm42607_set_accel_conf(struct inv_icm42607_state *st,
->>> +				struct inv_icm42607_sensor_conf *conf,
->>> +				unsigned int *sleep_ms)
->>> +{
->>> +	struct inv_icm42607_sensor_conf *oldconf = &st->conf.accel;
->>> +	unsigned int val;
->>> +	int ret;
+>>> +title: SGM41542 Battery Charger
 >>> +
->>> +	if (conf->mode < 0)
->>> +		conf->mode = oldconf->mode;
->>> +	if (conf->fs < 0)
->>> +		conf->fs = oldconf->fs;
->>> +	if (conf->odr < 0)
->>> +		conf->odr = oldconf->odr;
->>> +	if (conf->filter < 0)
->>> +		conf->filter = oldconf->filter;
->>> +
->>> +	if (conf->fs != oldconf->fs || conf->odr != oldconf->odr) {
+>>> +description: |
 >>
->> We could use the regmap cache feature to avoid having to manual keep
->> track of old values. Or just always write the same values anyway. I
->> find that is nice when debugging hardware with a logic analyzer. Unless
->> there is some measureable performance improvlment here?
+>> Do not need '|' unless you need to preserve formatting.
+>>
 > 
-> This is another one I had a question on. I'm not entirely clear from the
-> datasheet which reg values are volatile and which ones are safe to cache.
-> Performance wise the 42607 series appears to be the *least* performant
-> in their lineup, so I don't imagine we care much either way. Should I just
-> not worry about the old values and always write? Do you think that would
-> work?
+> Will fix.
 > 
-My personal preference is to always do extra SPI writes for anything
-that is not performance critical. This makes debugging with a logic
-analyzer much easier.
+>>> +  The SGMicro SGM41542 is a single cell battery charger/boost controller.
+>>> +
+>>> +maintainers:
+>>> +  - Chris Morgan <macromorgan@hotmail.com>
+>>> +  - Xu Shengfei <xsf@rock-chips.com>
+>>> +
+>>> +properties:
+>>> +  compatible:
+>>> +    const: sgmicro,sgm41542
+>>> +
+>>> +  input-current-limit-microamp:
+>>
+>> Missing vendor prefix.
+>>
+> 
+> This *appears* to be a standard value (perhaps not formally, but in use by
+> enough devices to suggest a defacto standard), which is why I did not use
+> the vendor prefix here. Do I need to add that for this one?
 
-In cases where using caching makes sense, generally, "status" registers
-are volatile because the chip can change the value when status changes.
-"config" registers are not volatile because they don't change unless
-written to.
+I know, I found these other properties but I think they were just coming
+from old schema.
+
+If it is really a common property, then should be defined in a common
+schema and this did not happen.
+
+> 
+>>> +    description:
+>>> +      Optional value to clamp the maximum input current limit to for
+>>> +      the device. If omitted, the default value for the hardware will
+>>> +      be used (2400000).
+>>> +    minimum: 100000
+>>> +    maximum: 3800000
+>>> +
+>>> +  input-voltage-limit-microvolt:
+>>> +    description:
+>>> +      Optional value to clamp the maximum input voltage limit to for
+>>> +      the device. If omitted, the default value for the hardware will
+>>> +      be used (4500000).
+>>> +    minimum: 3900000
+>>> +    maximum: 12000000
+>>> +
+>>> +  interrupts:
+>>> +    maxItems: 1
+>>> +
+>>> +  monitored-battery:
+>>
+>> You miss definition of this property. I guess this is power supply, so
+>> reference proper schema for power supplies. Look at other bindings to
+>> for some example code.
+> 
+> I'll look at this some more, I might have a few more questions. But I will
+> make the changes requested.
+> 
+>>
+>>> +    description: |
+>>> +        A phandle to a monitored battery node. Values for the following
+>>> +        are used by the driver and if not present will result in default
+>>> +        values being applied:
+>>> +        constant-charge-current-max-microamp
+>>> +        constant-charge-voltage-max-microvolt
+>>> +        charge-term-current-microamp
+>>> +        precharge-current-microamp
+>>> +
+>>> +  reg:
+>>> +    maxItems: 1
+>>> +
+>>> +  regulators:
+>>
+>> No need for regulators node, just define here otg-vbus directly. But
+>> honestly, your example is incomplete or you defined something implied by
+>> the compatible. If you have a fixed 5V regulator, what is the point of
+>> defining it in the DT?
+> 
+> The regulator can be adjusted within a range around 5V, and is referenced
+> by the USB subsystem. Should I still omit it from the device tree or instead
+> define the min and max values?
+
+If it can be adjusted then it's fine, can stay.
 
 
-
+Best regards,
+Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
