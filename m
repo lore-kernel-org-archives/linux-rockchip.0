@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2262DFF886D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 20:07:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A638BFF886D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 20:08:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8WM7EffBSoj6EZeC3ByB/opjVAHkoBTntAI/R/xBjoo=; b=pxeCaVS/lHQAhp
-	ksjj55jHjK2uD72fn7/MqO+v/13V/dpysrL8QcfcV2uMUVKwton9VguZ0Pf96xvQgu+hwVDZshqZ0
-	Gcx1sQDo7IW55SuUi2eQvJH+V4KYJhW75gS8EOGrksRLJnzIXweRAWPuyGaQQQSK63TaQqME2Bz+S
-	c3K2GhXw6GPaXtn+AnpXhFbqbsSm1N6+938TGopSo1A9b47Wo4stViZMLORVc8AaOVhKTzX+rFBrr
-	j0gXRr5gH2ldNpQGKd/1N220zUYwDNlcO6gDH25mvsY6D6brT00oAljXr6EIxhU6mA+jxLc6WnDO7
-	l61bxoAC/2hc6adgGl7Q==;
+	List-Owner; bh=+LXGQzlEEu8zHjDelwU8dPzF0gmijJUHPzqmMa4feuk=; b=0LEBiHjeDcKv+L
+	6vceUtcxv1di3zYRn64XBVAZPKI711Favva42jln6mzVDuzj4LIdFPMjKLIQVCjS/NxFejpqyBrgn
+	77UPWJVoxzpQwAWhUUPqoITNMgopMzj3ygCrDqzLCplBpWBoV/aJVAFjTHWwfLJp49b0/56oGS43w
+	p9PYN+Gte1sa7X10i3la/WXsEp9xEAuK6dKeltybR9lxjOBb5z4CnLqtV8vHlZ+Ec81q9pj0elx7v
+	pEPcYwjGGqm3m1doA1ethlubC7tvUa0bwMVwR0jYp6C+Dkkj/93ci51BagVJPFv9XTqCAwL3N7u00
+	6mDWDy1fhcarGRLUveDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoid-00000002Cjo-35kW;
-	Tue, 28 Apr 2026 20:07:43 +0000
-Received: from mail-dy1-x1329.google.com ([2607:f8b0:4864:20::1329])
+	id 1wHojH-00000002DWl-05JP;
+	Tue, 28 Apr 2026 20:08:23 +0000
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoiV-00000002CV8-43jh
+	id 1wHoiZ-00000002CbB-2IfH
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 20:07:37 +0000
-Received: by mail-dy1-x1329.google.com with SMTP id 5a478bee46e88-2de831d2b20so4561190eec.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 13:07:35 -0700 (PDT)
+	Tue, 28 Apr 2026 20:07:41 +0000
+Received: by mail-dl1-x1236.google.com with SMTP id a92af1059eb24-12c8ccc7755so12672463c88.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 13:07:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777406855; x=1778011655; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1777406858; x=1778011658; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=wyEh8MUYI6uV1LBlX4TWKPlLf6Jaa4vkUqpt47EeXpM=;
-        b=FO79mpJrP/PVGulQ5HXyZad9M0D+yXZLDFbJAIbP4aOxN0VmuJYz7fYKI6a34ZCFwW
-         gn3uGI8nEdQEWg83zVl1Ph74YaaLHcpcOmpdtMjcjYyqqIouWXxeY99LV0J8A0Xheap2
-         rT9MAWsXe0N5pukX1wyY0pyaaZbGwK4BQMOlA=
+        bh=uToK6kNcjQgBzaJfDVLEV8EKOZh7WlLcbjBebhI/n24=;
+        b=Vxetu5mytK6pzMqSYfdxVVhF8B9UuijOtAGjnoM3EolFRNed75WvaPpWy3d8/2fc+/
+         FfStl9fmfZ0ivr9KIr22DdnHYuiSHXqK7WVhcA8WeTd2kzC89+ivlTK4XDavQUvuGXB2
+         f0HUaGERnCrEnp2SSi0b77hGZUcJ5pgznkJAc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777406855; x=1778011655;
+        d=1e100.net; s=20251104; t=1777406858; x=1778011658;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=wyEh8MUYI6uV1LBlX4TWKPlLf6Jaa4vkUqpt47EeXpM=;
-        b=JIjIkHYLxXfu0YX0qGHll055uHHPZt7Fk8npnQ3b1o5mx7a7YKmsLpdwHgxWZiJpPe
-         OQ0A1pe6MqFRD2MXedYEGcBqcD+ue7GU2bTQ4tLX7m4rJ3s8RPQFEjLHP+cHjoUsT8HG
-         DmxAVMlyLiRWmlBRjJoihGY9V8P4BMnUoDT9MdL6MwECSRYxrNChrD6v3hxRMHi5iF+A
-         OcHaMnfAog8IVKYgUGcs3jbA+08lin8Jbl3tyXfkdI1J+wfNLz3pH3BTZTTmt3aC3DfV
-         TSB57ZIueZJcpCAgfj4p35LXu2EsmpdpP0c66MpCUULX3taoM11PSePKxW9vz3DzTRjO
-         mokw==
-X-Forwarded-Encrypted: i=1; AFNElJ/JmT5onG4I+s2eVDFHAuJZyO/h230ON5FE4BDeCdS83+6mNgApT/wMVLYZWazIMFSk5VdvGyX7fk+890CkhA==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yz54AnnwlzZPHyZFKm68fMYQ+uTfC/CMBa7YBPZHr3dQ+u4BpTh
-	txbMEben4PfpkmrH72BMawiFg6cqlVRSdqdziPv2Ut4Wg5z1tX+F0KwTxYIf4FhgRg==
-X-Gm-Gg: AeBDievx5zH5aYPbFxDTHzE4LkBeY8tGprBJQWjBE0fJGUrXtNF7kuAqJbuihjSWIA5
-	M29ubv1Ezcfh2u5QUWuBxS6R+1bLbi6hBvfmkZgpJQpY7Vak9GSqjogJFXyPcNzZtTdCUsQiiUz
-	OrOyQSp9hpqMEplfCbeCNDAyu2QKinYCKt6hHuCFnWNAVtD6p6pKxvpP9GtqOQbJHD4iur8N60/
-	yrKpJJjPoM+YMIylcPXtZvkuN57gyop+nHA+rq/R1ms0Mj+lpmywnTEdgIB5VUyT3ujVChLGLY3
-	NYcxW62VKmJr6VlPD9b2QVkamYTj3T70E0tZ40OkqC8bJgTdQqvxir7X7YngWKXtukDmL36w10/
-	VLPVk0IKNEwLLe95QLIJuwgC+gQugz2vapqE+mtjTf24iqArXm0D8KhZMr9J0AHKlSWeYOYnGhA
-	EItK7/qxpz1hBQ4WMNH/vgAgtBlxMazHCGeYg409TtAOL4aaCphv7BEfERc5Z6DpAM32uEi6jkO
-	3pDMzK2kwI=
-X-Received: by 2002:a05:7300:5707:b0:2ed:e15:c924 with SMTP id 5a478bee46e88-2ed0e15ce32mr1940281eec.32.1777406854721;
-        Tue, 28 Apr 2026 13:07:34 -0700 (PDT)
+        bh=uToK6kNcjQgBzaJfDVLEV8EKOZh7WlLcbjBebhI/n24=;
+        b=GiCKY7d2/NUjdJwdPlBd5IzRZ8qhJXNLraDe35Vt7sQMVyeOSUzfjoAnys6nlnotkr
+         5NCeW/5fslgO5QJ/sgaQ+dGEJ4KwpTwl4Oya6ADm6dEFttIqPJzsE00Czghw4h89ADjp
+         XXkuuOaxHObrz032Tp0xtjZyCD/lIf/5x8IWJazK3tdcJJLcTWI8MAs2NflhhJ2q7mez
+         wH06ce4tCcGIKrB6bx5IlJD3LJoBovkMAGCzmSMoMNEgWTL1POcQAL6AGLRC1rryCioK
+         oW8qe22XxRIK6f0LVTIjS08rodv+CwaGvgKgwWRyG2zbprZ4enzq9ZJmPlJHLO/IfbGM
+         7Z7Q==
+X-Forwarded-Encrypted: i=1; AFNElJ/48VdRLmMGf7hvh0PGYgJVFQtI00oHWoWrLtzDc/n1wq7b863RSbqe89X/QGAdK+dFUsDyTgiIEFAhPvLS8Q==@lists.infradead.org
+X-Gm-Message-State: AOJu0YznMKNHg0MCL8apw2/f+RTDJpzxhCdtq1Kd50QDoiwbYm/v/vVd
+	atj+e/4uK4Q6LcLQYvKK60jIqNMByLefN8YBZmQ8h8ZIR1n5KwN/JtttDZZO8E4tHA==
+X-Gm-Gg: AeBDietWly0l+ssSGr/G+w0r9l4JwZT3AuYzUyR5dLEEFhvxJIC9HmnZfGeV4Gy9TmF
+	ytFr3DuGvc/ZEm/8MkKVxPYpPC9Jh7Ws2As6Gkoc8vjRtnJaLzyqsZX5J2I2f5MUEpjJAI9S690
+	Nr5xBdWF4SuZbQa5+rPk15gTSCtS8dKaisHlP/6VBeh3ENgPVr9HTOKDKxAlZVTULEYb6HAIi5i
+	z3At6WQdXsRQdaYPhuucJ0qREi2A1E18J0LjnNIqQp6gJ7Kb1F/pq6o5N6enTn6/hOlIhQgBW/K
+	TD9zkR006Q9FHBsIlMY+sMXWyvDBHQjcMkltyl5nZJkgXGbhFkFV/cgDqIbBNitx064zm6EsBX0
+	ZVCfiHL+fiKu7M+He6dSCtUBDWOQntxl4nbakS01lAeHJga1lZDa8+Uz3rGgZBnU2Ni2gsYb6Uy
+	H5z4RGUoEHbPipBKAwsa7jnCtmzEzBSjqe0UIdAjQIN+9PXmDWGU70Y11iQ9uzByvcEOWdRHpG
+X-Received: by 2002:a05:701b:2505:b0:12d:e126:b7c7 with SMTP id a92af1059eb24-12de126b941mr735154c88.14.1777406858194;
+        Tue, 28 Apr 2026 13:07:38 -0700 (PDT)
 Received: from localhost ([2a00:79e0:2e7c:8:4ff5:9607:c7e5:48f3])
-        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-2ed09fb6b8asm3015155eec.8.2026.04.28.13.07.32
+        by smtp.gmail.com with UTF8SMTPSA id a92af1059eb24-12ddd933044sm2796623c88.5.2026.04.28.13.07.36
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Apr 2026 13:07:34 -0700 (PDT)
+        Tue, 28 Apr 2026 13:07:37 -0700 (PDT)
 From: Brian Norris <briannorris@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -92,16 +91,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/7] ARM: dts: rockchip: Add #{address,size}-cells to Chromium-based /firmware
-Date: Tue, 28 Apr 2026 13:06:54 -0700
-Message-ID: <20260428200712.2660635-3-briannorris@chromium.org>
+Subject: [PATCH 3/7] ARM: dts: nvidia: Add #{address,size}-cells to Chromium-based /firmware
+Date: Tue, 28 Apr 2026 13:06:55 -0700
+Message-ID: <20260428200712.2660635-4-briannorris@chromium.org>
 X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
 In-Reply-To: <20260428200712.2660635-1-briannorris@chromium.org>
 References: <20260428200712.2660635-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_130736_037106_7A5EC95E 
-X-CRM114-Status: GOOD (  15.11  )
+X-CRM114-CacheID: sfid-20260428_130739_617339_FBCE1438 
+X-CRM114-Status: GOOD (  14.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,15 +122,15 @@ to a system's DTB under a /firmware node. A typical DT looks something
 like the following:
 
 / {
-	firmware {
-		ranges;
+        firmware {
+                ranges;
 
-		coreboot {
-			compatible = "coreboot";
-			reg = <...>;
-			...;
-		};
-	};
+                coreboot {
+                        compatible = "coreboot";
+                        reg = <...>;
+                        ...;
+                };
+        };
 };
 
 Notably, the /firmware node has an empty 'ranges', but does not have
@@ -161,15 +160,16 @@ Fixes: 6e5773d52f4a ("of/address: Fix WARN when attempting translating non-trans
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
 
- arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi | 5 +++++
- 1 file changed, 5 insertions(+)
+ arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi   | 5 +++++
+ arch/arm/boot/dts/nvidia/tegra124-venice2.dts | 5 +++++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi b/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi
-index 2d6cf08d00f9..ca8e8e735078 100644
---- a/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi
-+++ b/arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi
-@@ -18,6 +18,11 @@ chosen {
- 		stdout-path = "serial2:115200n8";
+diff --git a/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi b/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi
+index 974c76f007db..89a749cb8933 100644
+--- a/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi
++++ b/arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi
+@@ -14,6 +14,11 @@ chosen {
+ 		stdout-path = "serial0:115200n8";
  	};
  
 +	firmware {
@@ -178,8 +178,24 @@ index 2d6cf08d00f9..ca8e8e735078 100644
 +	};
 +
  	/*
- 	 * The default coreboot on veyron devices ignores memory@0 nodes
- 	 * and would instead create another memory node.
+ 	 * Note that recent version of the device tree compiler (starting with
+ 	 * version 1.4.2) warn about this node containing a reg property, but
+diff --git a/arch/arm/boot/dts/nvidia/tegra124-venice2.dts b/arch/arm/boot/dts/nvidia/tegra124-venice2.dts
+index df98dc2a67b8..059ee6c5b13c 100644
+--- a/arch/arm/boot/dts/nvidia/tegra124-venice2.dts
++++ b/arch/arm/boot/dts/nvidia/tegra124-venice2.dts
+@@ -18,6 +18,11 @@ chosen {
+ 		stdout-path = "serial0:115200n8";
+ 	};
+ 
++	firmware {
++		#address-cells = <1>;
++		#size-cells = <1>;
++	};
++
+ 	memory@80000000 {
+ 		reg = <0x0 0x80000000 0x0 0x80000000>;
+ 	};
 -- 
 2.54.0.545.g6539524ca2-goog
 
