@@ -4,62 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03702FF8864
-	for <linux-rockchip@archiver.kernel.org>; Mon, 27 Apr 2026 21:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5820BFF886C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 01:32:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b/4YWm0diGoAJNQQfY5JAblZmb3RVgplwHpT/DWnnow=; b=oikm+XorlnexES
-	KY0oo2v4c3H3rjTYR2BPBIKr9LaKWRtI3MlnOyMbJATSW08fEsxoW7boI5Ry+W42yp+3q/J9hAMwJ
-	tWsmoF4vDFL3takrU/WH16uhQ+bIwGyYqyBJCSGB8qI9RqRuNss6tD8zXq0dU8ZHMK80bYfln658T
-	PPNhOR/DnK1vNDv9Qj7vGd6y9HbDcf6TdmnjjBbEwdhyb3hLquCZiDy/FQ13dR/zWFdhVEOF501Cv
-	qkP132AsCjiuGkaZBsvyPHlJTXLMJ+Tsjwiz+4Qr5nvS/j5JaAY46MWPQhGxXb/rWcKpWa5jE77aS
-	BgZ6pD80tOF8e9F/mhnw==;
+	List-Owner; bh=1JnOEunjLK5Z2GkZg9PsWfwNDJKtyEFETcKVXweyvgg=; b=YEkNK5UBNOm7wt
+	Ckgp3mW9Gz+ljSHRE9pqy3a4h98hDnlTNzHTYTjyQtzNwNMakRtmZddT7Kuy+yBdAGkpGHE0XMasS
+	PNQ+sbGOuPn1o9RptdpxLTLUl5K32zKp19yr86K5/rtnljhf1sdIKveWyRSOkBAk0SEvi7Dbazdzw
+	qSC4pGFeU7ac8KvySQ0jupLOzvgrNs7/fjzjMXeLuywzAGzRzt1HjZOt35tz5uBsT+0xKZBWSWmvN
+	yUer3nPFshDQUp9F8DhBCuM1GRWCR2jbMd1L5Wz10SLpPZB7baWO33IYnTAEd7MfTR95OKmJpz6vg
+	nxLPhS/POo3Tqr0xfaBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHTxz-00000000DqH-3Xh9;
-	Mon, 27 Apr 2026 21:58:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wHXJH-00000000OFC-2C1X;
+	Tue, 28 Apr 2026 01:32:23 +0000
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHTxj-00000000DLl-1JwH;
-	Mon, 27 Apr 2026 21:57:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777327073;
-	bh=YdRIwqxOF7212PcAYjIGHNU8fspzvht9JZclE1blmgo=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Mw4iQqvadAmOphrPhpJVLo4xrwmSLa5UtdvdRNoXj3BrP5EUXXbfTTpU1EmaVjMug
-	 lcYe4BNTRujnnqcXt8Pfbz+RUTuUwWgeFqDqvsOsqq8x2PBPbu1Ck5t6wA/BKrz5tj
-	 ZDH3F3SQeR7C1vL8MBiRnwWQg2MuH4pkrLU59WPRXyzcGXNWGjT6ewdmogN/UUPwO+
-	 IETGUhKTSQM6XreXwl4MgKFhtJmmdH3xXwBX7Z2iSGJcODxO5h1r8Imo9UfLKDuSG7
-	 cqnZkxEjP8AhYvbt/xkGo5PLkj1/xNC9u41SrTKbotic5jVoBojX4HQVuLAW3VuXy4
-	 nF6q/1LLbPDEw==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 511F117E157E;
-	Mon, 27 Apr 2026 23:57:53 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 28 Apr 2026 00:57:31 +0300
-Subject: [PATCH v2 13/13] arm64: dts: rockchip: Add missing pinctrl-names
- to rk3588s boards
+	id 1wHXJE-00000000ODr-1gAy
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Apr 2026 01:32:22 +0000
+Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2b25cf1b5f0so59368035ad.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 27 Apr 2026 18:32:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=orb-net.20251104.gappssmtp.com; s=20251104; t=1777339939; x=1777944739; darn=lists.infradead.org;
+        h=references:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:message-id:subject:to:from:date
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=2PMSr9SUypRFje2+As/Y2378jivS1IQ2hBaeRfXknxc=;
+        b=OVqdSwwJRlIfGG8I17QVvMPlK06vPqpppLmqEoy00G/HDQQOASwAWqHcJKITNF7FR/
+         SsGlsSX1BUAp4Z/TfSBX+a42dCotrw4GNMRFFY7MZTlNC7HQ5JQaQgupLmGOYm6km6wJ
+         Ka2jxaoLUPDzOfcc/aVUshCAMWr/MLrPHfs5alp7RWzf9anmbauI6aAKwCg0vOMV4ThI
+         dfGLF1jLVR73O7vAGzqe8hXZ0I6uQgkQ2rqlyGHB7al6+ER2ys9WEE9+w/lKNmKWYbGL
+         BLZQZgkBLx5EVVBKDzn2QhIkDFCqqoO7lWYH2j+Z28t1dU680VsNqy2VayyLabib8dCi
+         xc1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777339939; x=1777944739;
+        h=references:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:message-id:subject:to:from:date
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=2PMSr9SUypRFje2+As/Y2378jivS1IQ2hBaeRfXknxc=;
+        b=oghmyhFF/Bu7OinDWwv6FTN63dSAXW5G881C8CBnPhNmsUT0GD95P3qZVP//3I6mVZ
+         C6WAnmOpOusQ/NAN8oZ4a4HHQB8k3Cn3C6hJPTnu2dFdhlGMUZpnky54Z5QLCu3dpFR2
+         Pikk5o658/U1m3dn0FOA225gAaYCHnMF9mIlyv74QWxyQgE5Z9lEv1J1CvYiATYBtAbB
+         iq6ORk+wCV0IsemEi0bSoFVLpT3n073OB7YokavE6fFKIf8dTWdIPOUAVv+vTtDOZjbc
+         9hBtVosyVNf/DG7YCNreiKdCGUNWdYO1kPju38wVLOgND/Kyvo2EDsaivJ3H6R9laESM
+         rj0Q==
+X-Forwarded-Encrypted: i=1; AFNElJ9UU6yccaGGAiY/L17Cv+Zp9RJsNlEFYCRMjkNKy2jOwd4s4up6etHR3tIN7TF5dEOWTkQOdJU+MuIDHk7Iiw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzfM/pb2uWc9W5SxZnF17TW9zULzwhnhQzf9uVP6MPbnMI/7TcN
+	zf2aE+PK5ZUm+rvpWHqt//3rO+wcCT7T06ioCsU8ZWgpdpoTHYIRS5b7ruqVyxU2hqQ=
+X-Gm-Gg: AeBDieuwDgdQMKUks9WAOaNjUxhTO/99CzYFmxzRqALz/H+ag6LD7HLx0qduduu6OkI
+	Wf9Sstlud5MKuzXGEFNz6k9O74Yr81pYtTRE+teSOrRNUnN5faC9FYXVvRKgjk/Mzji0XNLexGc
+	HbSlJ6eON5/w03mJXgEOvedQ2kFf8IVH2jyeFJy/Wp+nP3o0kEuJZ4s0//30RaYszchQi5rv2EP
+	GuwXIyesJCtJDjwe5wI5Js6FMX7w40y+M9Y/MLyjjCBy6Pnuk50PIFeIWliYkzEYtim3qd/i0lt
+	52FyKkAFL8tR7LXYefueL2MUKOVdYIx0KRSUwiomiB2vcKp2YDXRwPLWGliVDzFY68cU4qD+gEH
+	NVBU0v0pWgfBLEZOFEFuYl693IakxGigmm4G5ZFBDacp51+bIRAapJP3rCkO3/1EuRJ9t8dh5mG
+	R/rvRgCkYAtEek+n9/UgBa6Nufe7gj/wZ20bIoSMekeubOyF3TeR+uBY3P9CrAMuoid/y1+NxLR
+	wA7S+uZCww=
+X-Received: by 2002:a17:903:1cd:b0:2b7:a89d:6135 with SMTP id d9443c01a7336-2b97c3fab8amr9326525ad.13.1777339938955;
+        Mon, 27 Apr 2026 18:32:18 -0700 (PDT)
+Received: from claude-dev ([50.125.94.20])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2b97ac78880sm7441665ad.40.2026.04.27.18.32.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 27 Apr 2026 18:32:18 -0700 (PDT)
+Date: Tue, 28 Apr 2026 01:32:17 +0000
+From: Daniel Bozeman <daniel@orb.net>
+To: shawn.lin@rock-chips.com, finley.xiao@rock-chips.com, jonas@kwiboo.se,
+	ulf.hansson@linaro.org, heiko@sntech.de, linux-pm@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 1/2] pmdomain/rockchip: skip QoS operations for idle-only
+ domains
+Message-ID: <afAOIfNcy73GC7lU@claude-dev>
 MIME-Version: 1.0
-Message-Id: <20260428-dts-rk-frl-enable-gpios-v2-13-924df9db884a@collabora.com>
-References: <20260428-dts-rk-frl-enable-gpios-v2-0-924df9db884a@collabora.com>
-In-Reply-To: <20260428-dts-rk-frl-enable-gpios-v2-0-924df9db884a@collabora.com>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-X-Mailer: b4 0.15.1
+Content-Disposition: inline
+In-Reply-To: <adRH235mv00OdOsb@claude-dev>
+References: <20260331180223.1682283-1-daniel@orb.net>
+ <5c8732a3-6cc9-5d02-f56b-fc7ba29c7ce0@rock-chips.com>
+ <fbf16b5a-1565-39c9-0d92-33a7a577212f@rock-chips.com>
+ <f1b9a97a-f1f9-0757-5dc7-33960318be61@rock-chips.com>
+ <693c6c27-6ff2-4ab0-994f-3821e5ffcec8@kwiboo.se>
+ <adRH235mv00OdOsb@claude-dev>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_145755_562327_5B283EB3 
-X-CRM114-Status: GOOD (  11.42  )
+X-CRM114-CacheID: sfid-20260427_183220_668020_31E3E423 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,313 +104,19 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Several rk3588s board DTS files override pinctrl-0 for i2c, i2s, pwm,
-spi, tsadc and uart nodes without re-specifying pinctrl-names.  While
-the property is inherited from the base rk3588s.dtsi, add it explicitly
-to the board-level overrides for consistency with other nodes.
-
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts         | 6 ++++++
- arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts          | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts     | 7 +++++++
- arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts   | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts      | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi        | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi       | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5-base.dts | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5.dtsi     | 3 +++
- arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts            | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts           | 1 +
- arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts           | 1 +
- 12 files changed, 29 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-index 16f19109fca6..2e8661ac7fcf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-coolpi-4b.dts
-@@ -276,6 +276,7 @@ &hdptxphy0 {
- 
- &i2c0 {
- 	pinctrl-0 = <&i2c0m2_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	vdd_cpu_big0_s0: regulator@42 {
-@@ -336,6 +337,7 @@ regulator-state-mem {
- 
- &i2c6 {
- 	pinctrl-0 = <&i2c6m3_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	hym8563: rtc@51 {
-@@ -352,6 +354,7 @@ hym8563: rtc@51 {
- 
- &i2c7 {
- 	pinctrl-0 = <&i2c7m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	es8316: audio-codec@10 {
-@@ -377,6 +380,7 @@ &i2s0_mclk
- 		     &i2s0_sclk
- 		     &i2s0_sdi0
- 		     &i2s0_sdo0>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	i2s0_8ch_p0: port {
-@@ -469,6 +473,7 @@ wifi_poweren_pin: wifi-poweren-pin {
- 
- &pwm2 {
- 	pinctrl-0 = <&pwm2m1_pins>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-@@ -875,6 +880,7 @@ &u2phy3_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-index d6b62cd1b90b..c4ddb78f9bb2 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-evb1-v10.dts
-@@ -457,6 +457,7 @@ usbc0_int: usbc0-int {
- 
- &pwm12 {
- 	pinctrl-0 = <&pwm12m1_pins>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-index b657d54c2c59..230aac005e8f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-gameforce-ace.dts
-@@ -614,6 +614,7 @@ touchscreen@14 {
- 
- &i2c4 {
- 	pinctrl-0 = <&i2c4m2_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	ti_adc: adc@48 {
-@@ -650,6 +651,7 @@ imu@68 {
- 
- &i2c6 {
- 	pinctrl-0 = <&i2c6m3_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	fusb302: typec@22 {
-@@ -783,6 +785,7 @@ &i2s0_mclk
- 		     &i2s0_sclk
- 		     &i2s0_sdi0
- 		     &i2s0_sdo0>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-@@ -1026,11 +1029,13 @@ wifi_host_wake_irq: wifi-host-wake-irq {
- 
- &pwm12 {
- 	pinctrl-0 = <&pwm12m1_pins>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
- &pwm13 {
- 	pinctrl-0 = <&pwm13m1_pins>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-@@ -1432,11 +1437,13 @@ &u2phy0_otg {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
- &uart9 {
- 	pinctrl-0 = <&uart9m2_xfer>, <&uart9m2_ctsn>, <&uart9m2_rtsn>;
-+	pinctrl-names = "default";
- 	uart-has-rtscts;
- 	status = "okay";
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index f9e3c0134d5f..ed36c27c2320 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -368,6 +368,7 @@ regulator-state-mem {
- 
- &i2c6 {
- 	pinctrl-0 = <&i2c6m3_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	fusb302: typec-portc@22 {
-@@ -440,6 +441,7 @@ rtc_hym8563: rtc@51 {
- 
- &i2c7 {
- 	pinctrl-0 = <&i2c7m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	es8388: audio-codec@11 {
-@@ -973,6 +975,7 @@ &u2phy3_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-index 5afbc593341b..833f27fdd1c6 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-khadas-edge2.dts
-@@ -742,6 +742,7 @@ &tsadc {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-index b9c0a1a050a9..91b6eefd7abf 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-nanopi-r6.dtsi
-@@ -851,6 +851,7 @@ &u2phy2_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-index cd80cb15a405..9da13f96f13a 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
-@@ -847,6 +847,7 @@ &u2phy3_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5-base.dts b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5-base.dts
-index 20da0c2b3d92..0145e194841c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5-base.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5-base.dts
-@@ -173,6 +173,7 @@ &hdptxphy0 {
- 
- &i2c1 {
- 	pinctrl-0 = <&i2c1m2_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	rtc@51 {
-@@ -280,6 +281,7 @@ &pwm4 {
- 
- &pwm5 {
- 	pinctrl-0 = <&pwm5m1_pins>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-@@ -320,6 +322,7 @@ &u2phy2_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5.dtsi
-index 32357eba4b78..5d3dc21c4d61 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-cm5.dtsi
-@@ -64,6 +64,7 @@ &gpu {
- 
- &i2c0 {
- 	pinctrl-0 = <&i2c0m2_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	vdd_cpu_big0_s0: regulator@42 {
-@@ -142,6 +143,7 @@ &spi2 {
- 	assigned-clock-rates = <200000000>;
- 	num-cs = <1>;
- 	pinctrl-0 = <&spi2m2_cs0 &spi2m2_pins>;
-+	pinctrl-names = "default";
- 	status = "okay";
- 
- 	pmic@0 {
-@@ -468,5 +470,6 @@ &tsadc {
- 	 * through the CRU.
- 	 */
- 	pinctrl-0 = <&tsadc_gpio_func>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts b/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
-index aa02cf510d6d..d534d662c40f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-roc-pc.dts
-@@ -810,6 +810,7 @@ &uart2 {
- 
- &uart7 {
- 	pinctrl-0 = <&uart7m2_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-index ffd26b43ae8c..a76734da982f 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5a.dts
-@@ -827,6 +827,7 @@ &u2phy3_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-index 9d3d0791554d..e4784885c267 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-rock-5c.dts
-@@ -930,6 +930,7 @@ &u2phy3_host {
- 
- &uart2 {
- 	pinctrl-0 = <&uart2m0_xfer>;
-+	pinctrl-names = "default";
- 	status = "okay";
- };
- 
-
--- 
-2.53.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgSm9uYXMsCgpKdXN0IGZvbGxvd2luZyB1cCDigJQgSSBoYXZlIHRoZSBOYW5vUGkgWmVybzIg
+b24gbXkgYmVuY2ggYW5kIGFtCmhhcHB5IHRvIHJ1biBhbnkgdGVzdHMgaWYgdGhhdCB3b3VsZCBi
+ZSBoZWxwZnVsLgoKSSBjYW4gY29uZmlybSB0aGUgRVBST0JFX0RFRkVSIHRlYXJkb3duIGNyYXNo
+IGlzIHN0aWxsCnJlcHJvZHVjaWJsZSBvbiB5b3VyIG5leHQtMjAyNjA0MDMtcmszNTI4IGJyYW5j
+aCAoNy4wLXJjNikKd2l0aCB5b3VyIGNvbmRpdGlvbmFsIE5PX1NUQVlfT04gZml4IGFwcGxpZWQu
+IElmIHlvdSdkIGxpa2UKbWUgdG8gdGVzdCBhIGRpZmZlcmVudCBhcHByb2FjaCBvciBnYXRoZXIg
+YWRkaXRpb25hbCBkZWJ1ZwpvdXRwdXQsIGp1c3QgbGV0IG1lIGtub3cuCgpUaGFua3MsCkRhbmll
+bAoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgt
+cm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcK
+aHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hp
+cAo=
