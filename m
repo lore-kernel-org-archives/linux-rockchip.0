@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B62ECFF886D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 20:07:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4ADFF886D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 20:07:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=r/jiVEL/A+gL9skPJ+VDJepSPDai5UurTuHiTGpAJmg=; b=Oj2XwsTkYoGvgH
-	iTgOgLSucbsFW7JNVKqit+JqTmPLiEFPAzsfTenisunb7Lqh86/BaWGe/Sina26JLSiXXYX6s2hOq
-	FXPwgP8bpn9R8D1mu6Vg/ZMZkfpGkIiVK2uArNHgM5LWdh2OuIPkddSVijOOsFyQ18saITN8UE5Kv
-	lUYmnOd29ZhBlAIDZZk0tpQieif5J3l3y+nzsFxd9CUeQYkhbIykmLTuDu6FqCC8nQUNpJju6C/Qq
-	OPL55RHpRoZgqsZwRqsE35jA/6NwKCYq83FFdVsjYvY/l251fExndWPl6cTzCu6TJzrJKadp6pcB7
-	hnBgn3qDI3fVjgL0NxuA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=FVGe5tJr92/9Aii5xtxTZgP+BEKV8A7hlTqcK7f53ZM=; b=LGRPZbZZ8ygJMS
+	mLy9tty34nOZhnIffV5JyQD+AEqwEoU0jn6PkKUk8qNNy/0eI112c9dr6LqPS7QcMsVoGKJbnk+AG
+	45lahxhTk4zJ9i0iPXwLB+VLYbZW1ArQ/Vp4NzpR2Ap+0jiX3WLh8fHieewDKKux528qI34rrvt0/
+	ekLptLaTGI5nBw43I5JWHAB6FLCJHR/xqz7HsRJpASXszdaYFG07t/0XJLXJCvKTjsH0GXGgUjZZk
+	fKqA9QOY6TOq7CMbbgxdWcEvh6hMe8388K64JweK3LMfguBhqKJ/AernT4Q2bSGMxUTguzODnaLG5
+	Mxb8VDqix7kJguTL0upQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoiS-00000002CPs-1QL3;
-	Tue, 28 Apr 2026 20:07:32 +0000
-Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
+	id 1wHoiZ-00000002Cck-3C02;
+	Tue, 28 Apr 2026 20:07:39 +0000
+Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoiP-00000002CLO-3MuS
+	id 1wHoiS-00000002COd-1Src
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 20:07:31 +0000
-Received: by mail-dl1-x122a.google.com with SMTP id a92af1059eb24-12ddbe104ccso2053647c88.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 13:07:29 -0700 (PDT)
+	Tue, 28 Apr 2026 20:07:34 +0000
+Received: by mail-dy1-x132d.google.com with SMTP id 5a478bee46e88-2d9916deb14so20717612eec.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 13:07:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777406848; x=1778011648; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=oKQRvM+woDu6KBLreGPcHmP1j9kbXpV/WZYBI8HqOII=;
-        b=O9tYjILjux12o0ACRbUNDl17rG8nalo0mWRoIdkJzcQvnQZ8W0uJDJaoz5ZXtSgKOi
-         KFJuFNOI0fOCU1iBEvBI6yrYqnw1zgUdxY8W5JSTdoXk5eoPTtJSWEhs4NWe0jukszEP
-         ge+l34Kxf8Oh6wa/qxPFNCsgJsYuAxQdGllkk=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777406848; x=1778011648;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1777406851; x=1778011651; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=oKQRvM+woDu6KBLreGPcHmP1j9kbXpV/WZYBI8HqOII=;
-        b=TRzRyWkwCiD4jYuM8Kk4rAu1fm9sPWgwtdcvf1Jmxqcdj8dbJLFIPPoqI/faRXQKX2
-         lcrvNvyAJfpujWdRTqtAb2BATBGtsEHR96Ml/i19vDHB6rHMgpeK0n39rYqH0Bh0/J3s
-         oMeHGXTuBW+hqoPu9flCP9Maf/jDmn69R+QzvfJPltJS9kEFgjigjhxFTOJlmNJQaRh0
-         fpiLwDF5cp60XXndDNnYLU4m58NTuP8e4vfofl8NahEpnWi8wctdTdOPJ46QhWPAODp6
-         bLkqQXqIO3frbb60Atg9NmafztTQqCPqiTX1Wdx4cxZA8BAwtyrsVPj8uTqLxL61I2Vp
-         UOOw==
-X-Forwarded-Encrypted: i=1; AFNElJ+9WQB8YefoDYWePbaaQUQjHhS1othL2fHVXJGNQ+j/D5r+Kz6NOpDpFj2vP7HV9MuYXm0KRVp3zw4IYvBZHw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YymKP73mieC3+QgBPFqVwiOMxdVtCir4V6OP0s8BfGmpm9/X5GF
-	gU8jkRswViB+uKDF385HulHADxsptmFsaQAkP/kLo9Ltw2mS5VgeYFvXU/5GIH3eJQ==
-X-Gm-Gg: AeBDiesrUu6GbDAzDiD0nJ8z9i4NUmE2C2uzH1q4WDnvvp9WY2m8D5DODFocBviqaSB
-	0dRP2SW23pcLdWTS7uXO2UYybZd+5fIIFdqc4FfxstAWo/l/jn9Uu8bwexsUDsw8BeDkfOfeJQm
-	sQJlxt4s0w3K7Qtik4ufjnfPj65ubcaXmYR4zfZNZ4M5Eh4q+/V18j8nE6+Zjgz+2KWaHmu0sVC
-	dk0xP/V0u9v56qJAAjGjwqnEx9zvQi4T1h1EIqyWkGGn8nZXb1v6Rrsh7J1Dnxp906Q2cQg+Z3W
-	cmOtvC9lo9V5qnQxFiaBmAGyGmU3DMuRTnVqune9XxzIOQo8Ca9beOXZj4Oy/j350DZURKiKEsj
-	661jRyI32I8wLuw2v5a8zdcKvvOa8Pa0c808BUX9PUiUpyK60TnhPcYG5icZrci6iuYVQgcf7lD
-	WKazrDvPI94H1C7CGnwwjuZIYOpN/V0hnBGzI7IObTa38qt/TNj0wI2LKCf4qAgGKo48OJhatl
-X-Received: by 2002:a05:7022:fe06:b0:12d:de3f:d84d with SMTP id a92af1059eb24-12dde3fdd97mr1431757c88.38.1777406848179;
-        Tue, 28 Apr 2026 13:07:28 -0700 (PDT)
+        bh=oZddyefkooDQKnc5O6I7CXwcRuSu4lPrXGIxW3LQfo4=;
+        b=J205qqWu36zwJB1rAMnVc+2OqHgQ7bE8xm1mrzyExt5f4M1ekIrcmYnH8XK2AQuw/4
+         UToPBemcfkXgUogBc1liYkQkVSak2q5lfmD5DbgtGpV49S7yIiXsBlFc2PY3GBqjwbg/
+         nnAMoHRT3M1fCSz5lcbBdP25aO0Czu8XZgDCA=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777406851; x=1778011651;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=oZddyefkooDQKnc5O6I7CXwcRuSu4lPrXGIxW3LQfo4=;
+        b=sc8NLsVO6aAxtfJBscpWDDZ4vf9S5krpkiL5pbw7otCxCj6vW/nLKmHdX9HZ4xPqE3
+         CCl8UZqwaOpluJ22MDiMUb1SqtLKIEmJo/+LfSWS9EVdM+85O8StV0Ic+4MJcnB3X39H
+         hU5IRmHAqqaNqmDGFo2PRQP3VbfDeWnB+sX6hVPF4k7U42X7kaZMfhHMrZRJY4LEMmf/
+         Y+mBfFsikD8hIIcjxNfwvB1i8Sjl5j6WVLMPK27nFq35a1A/Cc8Mn8xmYkDy3YSilQv2
+         U+grIeiwEw5mDRvTSZEVnP57J4rJgK3yzMSjqAfAjIySCsbsnei8mP0V8AgVaji5u2fz
+         qyJA==
+X-Forwarded-Encrypted: i=1; AFNElJ8GRzedZKejEJQAgcJTFgfD3huIa8A3byUy7xlzAAIabxHCSfmnocGZgx446y+oeHZljLaTuMtgel4ACOUnvw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx5IXFir8pbHtprln/R6E41jMyxRM547yhjgQFxdyOBOmPGOZ8o
+	Xq14nLXOG64r8jkkiWcSvZbZquGCfxVVcjwR9pq2hixtqCFbG3gvx2KxamJVUNuqJQ==
+X-Gm-Gg: AeBDievj8G8ToeaT6VFrZtW5ArRBZXmsNNBoFbwEhbvNtddHpXN7YB5H9wMr5pQpAhe
+	hR7xTOjRhIZpY5Kz7XbmlA7ugkTNSfn1uLAH2UtxoL8X5vhiqg4qbfPKLVP8qY6smQzmKD77I3Q
+	I83JsDDX1nTO/QxQS0Y7yvpzbpcWCuHfoRWz9I56VQo1IUuMoXixw3330lLPO5U5Bw9cf3c9D2B
+	nqqULkaaI0W44JPja/yZj9BMwNdkYpC2IqR8W10wtjaTo/CSwOKUQUIV375Q1cytiGVY8JqIQRv
+	5iG4bMplUGU9ZXDxvhaCucnsDazV0SI9oazIqwjKLxrFzE/hq5LRnBOwJ8CprFmpm5MHeEi277P
+	Nn6oNobVG98CdLYporIgRaLVEHh98WWaTFnoE1+BNkQMkP4aFSGg690rGQdE33aqTErDAotjv0T
+	4lleKctUo3LIDTHT0qjhfMrNTWNmLJrZQKDopqEnIXB2SdPB7Uw7XFHfUwQPEloSs0+RD26TcL
+X-Received: by 2002:a05:7300:fd08:b0:2ed:e17:d50b with SMTP id 5a478bee46e88-2ed0e17d6eemr1499097eec.30.1777406851181;
+        Tue, 28 Apr 2026 13:07:31 -0700 (PDT)
 Received: from localhost ([2a00:79e0:2e7c:8:4ff5:9607:c7e5:48f3])
-        by smtp.gmail.com with UTF8SMTPSA id a92af1059eb24-12ddd93abadsm2784062c88.6.2026.04.28.13.07.25
+        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-2ed0a10650esm2873589eec.22.2026.04.28.13.07.29
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Apr 2026 13:07:27 -0700 (PDT)
+        Tue, 28 Apr 2026 13:07:30 -0700 (PDT)
 From: Brian Norris <briannorris@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -90,14 +91,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 0/7] dts: Add /firmware/#{address,size}-cells to Chromium-based DTs
-Date: Tue, 28 Apr 2026 13:06:52 -0700
-Message-ID: <20260428200712.2660635-1-briannorris@chromium.org>
+Subject: [PATCH 1/7] arm64: dts: rockchip: Add #{address,size}-cells to Chromium-based /firmware
+Date: Tue, 28 Apr 2026 13:06:53 -0700
+Message-ID: <20260428200712.2660635-2-briannorris@chromium.org>
 X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
+In-Reply-To: <20260428200712.2660635-1-briannorris@chromium.org>
+References: <20260428200712.2660635-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_130729_924356_178CF40C 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20260428_130732_430368_6AAD42F0 
+X-CRM114-Status: GOOD (  14.12  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,84 +156,42 @@ This leads to errors like the following:
 
 [    7.763870] coreboot_table firmware:coreboot: probe with driver coreboot_table failed with error -22
 
-This series adds appropriate #{address,size}-cells to the device trees
-used on Arm Chromebooks to work around the problem.
+Add appropriate #{address,size}-cells to work around the problem.
 
-Note that Google provides bootloader updates for some devices that add
-{address,size}-cells [1], but these are only delivered via Google OS
-updates. Not all users receive Google software updates, and even if they
-do, not all devices still receive bootloader updates from Google.
-
-This problem was first noticed in OpenWrt, where some Chromium-based
-routers ran into the same issue:
-
-https://github.com/openwrt/openwrt/issues/21243
-
-Relevant OpenWrt fixes: https://github.com/openwrt/openwrt/pull/22951
-
-There is also discussion at [2].
-
-I've currently only tested:
-1) the aforementioned OpenWrt routers (with non-upstream DTS/DTB)
-2) RK3399 Gru/Kevin Chromebook (patch 1)
-3) Qualcomm SC7280 Herobrine (patch 7)
-
-I assume the others should follow the same pattern. I don't know if I've
-covered every relevant Depthcharge-using device, but I've made a good
-attempt to identify them all.
-
-I reviewed Depthcharge code history and found that this problematic
-bootloader behavior dates back to at least 2014, with the Tegra/Nyan
-device. Older devices may have similar DTB structures, but I'm not sure
-if they have the same address-cells problems. In any case, these changes
-shouldn't hurt even if a device was not affected.
-
-Brian
+Note that Google has also patched the Depthcharge bootloader source to
+add {address,size}-cells [1], but bootloader updates are typically
+delivered only via Google OS updates. Not all users install Google
+software updates, and even if they do, Google may not produce updated
+binaries for all/older devices.
 
 [1] https://lore.kernel.org/all/20241209092809.GA3246424@google.com/
     https://crrev.com/c/6051580 ("coreboot: Insert #address-cells and
     #size-cells for firmware node")
 
-[2] [regression] of: mis-parsing Depthcharge's /firmware
-    https://lore.kernel.org/all/aeKlYzTiL0OB1y3g@google.com/
+Closes: https://lore.kernel.org/all/aeKlYzTiL0OB1y3g@google.com/
+Fixes: 6e5773d52f4a ("of/address: Fix WARN when attempting translating non-translatable addresses")
+Signed-off-by: Brian Norris <briannorris@chromium.org>
+---
 
+ arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Brian Norris (7):
-  arm64: dts: rockchip: Add #{address,size}-cells to Chromium-based
-    /firmware
-  ARM: dts: rockchip: Add #{address,size}-cells to Chromium-based
-    /firmware
-  ARM: dts: nvidia: Add #{address,size}-cells to Chromium-based
-    /firmware
-  ARM: dts: samsung: Add #{address,size}-cells to Chromium-based
-    /firmware
-  arm64: dts: mediatek: Add #{address,size}-cells to Chromium-based
-    /firmware
-  arm64: dts: nvidia: Add #{address,size}-cells to Chromium-based
-    /firmware
-  arm64: dts: qcom: Add #{address,size}-cells to Chromium-based
-    /firmware
-
- arch/arm/boot/dts/nvidia/tegra124-nyan.dtsi           | 5 +++++
- arch/arm/boot/dts/nvidia/tegra124-venice2.dts         | 5 +++++
- arch/arm/boot/dts/rockchip/rk3288-veyron.dtsi         | 5 +++++
- arch/arm/boot/dts/samsung/exynos5250-snow-common.dtsi | 5 +++++
- arch/arm/boot/dts/samsung/exynos5250-spring.dts       | 5 +++++
- arch/arm/boot/dts/samsung/exynos5420-peach-pit.dts    | 5 +++++
- arch/arm/boot/dts/samsung/exynos5800-peach-pi.dts     | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi          | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi        | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi      | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi       | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi      | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi       | 5 +++++
- arch/arm64/boot/dts/nvidia/tegra132-norrin.dts        | 5 +++++
- arch/arm64/boot/dts/nvidia/tegra210-smaug.dts         | 5 +++++
- arch/arm64/boot/dts/qcom/sc7180-trogdor.dtsi          | 5 +++++
- arch/arm64/boot/dts/qcom/sc7280-herobrine.dtsi        | 5 +++++
- arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi          | 5 +++++
- 18 files changed, 90 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+index 7eca1da78cff..2f9e39671efc 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-gru.dtsi
+@@ -18,6 +18,11 @@ chosen {
+ 		stdout-path = "serial2:115200n8";
+ 	};
+ 
++	firmware {
++		#address-cells = <2>;
++		#size-cells = <2>;
++	};
++
+ 	/*
+ 	 * Power Tree
+ 	 *
 -- 
 2.54.0.545.g6539524ca2-goog
 
