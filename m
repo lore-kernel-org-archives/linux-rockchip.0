@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04F54FF8868
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 12:40:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55A4FF8868
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 12:42:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=62rZoBbe3pJaSPxBCCMFOdMjO2jBJDtg0zRN29G54Og=; b=qi/I+i5aKGeGZO
-	3b1iokLTorI4fJJ+qZDxfVf7sH0/poDuAf+wpk5j/wJ9/qaFvHuzJVKGRj7cSrOG5DtKfiIJ4Cph8
-	VuTn0HAeqeeeE/q2xcleMLLj80NSIkxQgR7p6YNOD2Zsi9ZfaACFxIVOn8/Drjl5J+Hbt987ofSv9
-	2EMZ01NsIYvWnaIA8htcinTNJDChOm8vfgbIlv4FgW3s+4LMwqNWZcBSe93GLI1Waa4r8EcmCcmQC
-	+tD4cY89sGmDQKqYTWisrjHjh1VIhJtUKyopidFNYN4xla0YHnaBlJIQXQwrmvOxu2BPWSS+00PWf
-	G9RT7zw48juk/7rUF1AA==;
+	List-Owner; bh=CZho4SgZPQdNZoThhseh6A8WAY1DT6SaafWGTUr62CU=; b=kUPkc7k+2v5W7B
+	R5KzVE0nnhHLx/KZgdsSTiu6p7NQlXGIBdcwGoWNxf1fzlCo6fMYTWDB2cZhsUSHUy8oTfCd2caZF
+	fK6D4tCUdWWuKa0edpxozYdaM+SYjNoAHvCjjRJRqMaWO5D7ltR9Xe3T3oUyPNAhQeTIVUG8z1JdG
+	1cggxJOaMjWs/aUkOm0Qpz9OVR6ssMKoCdf3PWmFPMC7g9dd0CphTLem4IKikeGMT9NxZ6gaPeVS+
+	O2H97UC9DpJnpcDMiSVyyrreBHkFjAGXLtP/gc+4d76w6t7HpUX56IkGKuD1EmuWeIyuLPejoDXek
+	00S95MWlnUPEGBFX726Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHhjt-00000001Rvm-3J5S;
-	Tue, 28 Apr 2026 12:40:33 +0000
+	id 1wHhlc-00000001S2c-0mKS;
+	Tue, 28 Apr 2026 12:42:20 +0000
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHhjr-00000001RvN-25It
+	id 1wHhlZ-00000001S2C-0pWM
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 12:40:32 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63SAhOkq818799
-	for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 12:40:30 GMT
+	Tue, 28 Apr 2026 12:42:18 +0000
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63SA41pk3275348
+	for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 12:42:16 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=Uhjj67hXf7BIeABzuefc/MGP
-	fZZbHy7JAto/bctTxR4=; b=CKsIJOx1lRXbdaahx4+TZJq+jpJ4bTFxUYjB5k97
-	XBZYMJTHX+W2DjoOctzm/SMzYrzPqoBNdltYsEYYVsiQ8+xOPETf5WP+6cq/hBVg
-	IeEi011yBoJI64/nuV5/UlQ2LGJWlybcOgpB2xSaG9BFQT10VIKfnaBq0O0Sf3m9
-	zrmyU+n9qjF/1/GJK5/AQbTj0OrpNnNKCcGkXsvqt8GBb25qQ/QVy+ZHsLOAAHon
-	lQGMIcfi5VaoPRgnqP1WDWqKxuFPdqjLJlGj3ct2X2hmvA7T5lD+/2gmhUwGASbX
-	UikQagn8zH50OqeX2mhKZ3/3LynvjkOaWk+Cs2aquFqcdg==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dtud20cy8-1
+	:references:subject:to; s=qcppdkim1; bh=TMl0fceSXKB31QqIGUfwYqRH
+	eczNPrV43yKASyx3Yc8=; b=QIvMrmKJEm4qlgUHtl2HEaD+sQ9Ll0L4s+3yaYIZ
+	ZvU2SLCvPE/hfHnycy6rtGcPEFINGVF2ZkFaIJQmFDH0ftvCLDfD6ziq8HulS9Kn
+	4o9jao/OpJ05+HdV+nUF7OuYPdeVjLUOWya18JvFfn1gfOTYhPZOw2bTOyow30SE
+	y92KnZBMxd+3i1CGiQ+Xo5Yt/nTGQEZRW5YkIFmAJGWezTDElGCsRkIsa+69cWi3
+	Orz/3eoVbhHqoguUJG2M8mPN4vOiKQ77cmDtjaVRApAXJAAxA4NNnVv7BKI5G/5D
+	o5wY6V0OVwKNHRSnKYF+ZDwj5/TnYCgQnBjFQacBwx/62w==
+Received: from mail-vk1-f199.google.com (mail-vk1-f199.google.com [209.85.221.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dtttjgh48-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 12:40:30 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-50ff0bef198so66059751cf.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 05:40:30 -0700 (PDT)
+	for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 12:42:16 +0000 (GMT)
+Received: by mail-vk1-f199.google.com with SMTP id 71dfb90a1353d-56f67ce97a7so7354807e0c.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 05:42:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1777380030; x=1777984830; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1777380135; x=1777984935; darn=lists.infradead.org;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=Uhjj67hXf7BIeABzuefc/MGPfZZbHy7JAto/bctTxR4=;
-        b=OE8Ohjfd72hC8Isvfy0H72oGJKUqrZnHgOTO9kYBzt6KSPNgGJMWtBuJC6b8cjWdHn
-         yC6ZHQ6gvNYRb/VnYbv54Eyyy6djU/JZFFjUBfTM+2dPKgJMkIvUYtlwlAJOiSyBoHxf
-         CxSpTTfF9sziep4xL8TL3ZQFVz5++Klt1saywdOFhny0T6MP2WbD5rxT1mUWyr7ptgCI
-         raCWYkNEzAgvzosEBtRAQmChZ9w8IkGNiOsJ1c7p5WZkCNBnARBdXpDHOB2nOnfqLla3
-         l0H+G7vdHL4C3HiE23EOBkpZG4JK7evgGjOqhxp6+Z3uD1lXp8h+rbMAUs+n3WwBqh0R
-         PiSQ==
+        bh=TMl0fceSXKB31QqIGUfwYqRHeczNPrV43yKASyx3Yc8=;
+        b=dqr34gR2L5zCe5A3UVeQBAHGe5ZqsTq1vLFj6yelLWoj6V4OeXl+1lz9xtQlVu/IJg
+         ++dYWKW6FECrX/y4fRPpGM61+aVvg2QNPKR1CRrX/rUZPsQSHCTb/w+px2x3BQ2WSJ7N
+         nuDQSV0y7mwnHzP7zga45cKiYrIrCNLek5+UzQZ3CjspbLNiqsKju/u8aBbDJYMG0Zro
+         BWJaq9kj+i2ug0Zor6DjkvMlP51lFLkWnIvhdjvPub5LSUMMdr+Hx9PwOd5e+PSN/yIO
+         TlhvHLYLCAkCTcuml2WMAf4zl5FFTD124g7vRgaOpw9tTejChlP8FJ7u5ydtOBnMXaWo
+         Qj6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777380030; x=1777984830;
+        d=1e100.net; s=20251104; t=1777380135; x=1777984935;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=Uhjj67hXf7BIeABzuefc/MGPfZZbHy7JAto/bctTxR4=;
-        b=G+vmpYqds9/2x39NXeeC9gAA7It0rd9bbfDBLrkTnBhCaQKtPyAVG1s+JIzGA3tByV
-         OSADu0HD1yy1Hcnp61EmwP/QISSMoPHWJdFHgg0ASd6iRmJmLMFCfphwsQPD+tXVycIc
-         ll3KQEZA+vqFCaIHPpYzJcAKmp/SkRxtB3mwpL4TaPAyya7Ta88+ZwOSuah+xaBFVs0Z
-         dvVOW5VR1qA3eDmPfY8vxYT+cLh16Cew8e9S0RE6QlWZJi6jZis12sjRE8aqOyAz9VRX
-         deQl+0+zMmsP1zuz/eg0Uw9tM8gSd6/J5skWDXt620DkvHiUOQ46IR3JsOeHh/qi8OZA
-         Lhrw==
-X-Forwarded-Encrypted: i=1; AFNElJ9LPSYJiH93GgQhPzxhaMUWyhenKb0fl2r9yWZuQown/gSm5JzWmxy35VhvECxI/yyWlZAlOGzXV3paCw3qTg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzlgnDCeGRfhxzfokNfwLXQLXcWHdIZyS4UXpXd64FhT5xfk2Hk
-	aY5WBDLe7QcByaa45B7ag8fYqhsr5B4D8T/0P1jANTDBzWF8OuOGoQGTgN7KZDDfnXgbzd8Nbd5
-	g397tys/YmF5G2vSnQpJoAm6wsZV2aJZMzVf0q2avxoEgCJBF0U985xUgSExjR4AKJUCcXnbuET
-	s=
-X-Gm-Gg: AeBDieu/C4VRmTv4DsetFqqcxjePEHDreyrEzG6QDnqQc+GDmrgTiDuKYWVH9eHHzO3
-	NMU9c9SP9qo83SflXvzN+PFTcNGLamEqoc5jbJkheYY1NqeFOZDuFBlBuPRRQ4u5taxs1w2ce6Y
-	u9fBpbBdVg6eBH0AAnpVR+XDrjqdTWs8Zv4Nugv186n+AURRTgAb+mEqXN4IUog00kizrk2f32V
-	tOHm1xA23wg9xho7ORrrW9UzGxwmEXEr3/KJzX4/FD/RHJNxzVVg11VtDHbK7eQDNiYK9eSBbN2
-	J8gW5GaH7lhOey7HYYflTD+3xFS3KPxHsTOnA84HZ3m73LPzbgACEb2inBNW4QBCE7k2FIul37L
-	IMAJXYGlmqJQ4GstCVjDR7n/LeYRtwsSXqSCQRXBZy6hkh9+Lte2HGM/ENetiP6+c8SglOZfudN
-	fTHP5nyvp4xUQxtrYF4lYzXBmfArU6WcWJ9rq8IpAO5hzpbw==
-X-Received: by 2002:ac8:5a55:0:b0:50e:6054:b4 with SMTP id d75a77b69052e-5100e0f3b1amr38739871cf.7.1777380029643;
-        Tue, 28 Apr 2026 05:40:29 -0700 (PDT)
-X-Received: by 2002:ac8:5a55:0:b0:50e:6054:b4 with SMTP id d75a77b69052e-5100e0f3b1amr38739331cf.7.1777380029169;
-        Tue, 28 Apr 2026 05:40:29 -0700 (PDT)
+        bh=TMl0fceSXKB31QqIGUfwYqRHeczNPrV43yKASyx3Yc8=;
+        b=mLYzi9Pca7higvSSLUJm6G+LfilVpnTTBbvq3uWwUVGJKIDh5d/0lYcuL5NF0jSGVc
+         zKVZxVGymGnHy3X+rLMLlsGuZynvrqlLw6DL5dhfPoHhEoevH0NH86Gv7b+z8x8alv3w
+         r/Od/HxO4CcSouktgT1iWzncU5a2X9rkVrWOQADNEdMrlacvHmrwysIqJ5oO/EPRrGI8
+         ic7NiDh0iIly8THIduiewSGxV+WdXjpvU5Szjd6Vjl9KsWWkLvWV2CvtRBhteaQWfEPs
+         A0lJsXHAl91hRE7SZ2AF7D7SWp3ammnKb+2qFd42y8Ig11haVJIkllt/9EU8tNo7Ow5s
+         nzlg==
+X-Forwarded-Encrypted: i=1; AFNElJ9HjHNlVHjwl64F9QZP/MsNdP9lgK84gZo3zu6k6uVkxUXBP91sr02vff+rhMkgmrkXrqa2KWXxDXa3zlbaWA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzGIi97b59KIV5BdPrKIVJbUvb8aKscNykN1zS3/75AQhi3ypLf
+	rJ4pwvtQy48kxXZ8XFnZDwq1f5LkBW8R/TBnnweaczptyUwhqu5UtL8Y1eg0HqkeGmQw5rzJxUk
+	rORYrGYRsydIiseMLeekIVB+jEtDsw05zAT9rNBcEgv2vLS/ndXQosMkP04qomHYrZIao0cgE96
+	Y=
+X-Gm-Gg: AeBDievTQJeglsCgtleMBykwIMsgeU7a6pn3hIq/BqWiJplPz1QNenesXo8tX3GgsWl
+	OjM/wIuaxTDaGyeGvE77+Jvz48R4+Gbnyx8UL4763B90MT/kA1q1xK60QJXi4NUDqXnE28bTWig
+	sYRUwwwwGcW+sQpxViteWiFoRhmQaviyWd/zGjTv2WetqVsLrF/meaXaGFgrPhTfMMrLwBffaWv
+	y4DXOgEdOzHMCVejqv6+Qu2c1q24h3r+geUrdz0HQyvKlIrLXHO8tSAtc15Tl7mjVKVr248ebaE
+	qu5LDPZtIXS/jFM8F0ydjTIQ6SSHDeoDoaSCyGq1NoWkKEXIeCfJ0UasBzYJflpg+l4pgjrNtvI
+	DV/uMyarxCTDiPhwSgwMjvd1Ku4y68hGJGk5QqdBoN9/YAn/OwEwj8ClTQv4dBSMKM82Yb3ygKi
+	CRfq+934dcFZfpOF28XkZjDeuPG4tyU5/nWaL7Yl3+bjFihA==
+X-Received: by 2002:a05:6122:20a6:b0:56f:7300:37c9 with SMTP id 71dfb90a1353d-573a5674d9emr960551e0c.10.1777380135283;
+        Tue, 28 Apr 2026 05:42:15 -0700 (PDT)
+X-Received: by 2002:a05:6122:20a6:b0:56f:7300:37c9 with SMTP id 71dfb90a1353d-573a5674d9emr960538e0c.10.1777380134745;
+        Tue, 28 Apr 2026 05:42:14 -0700 (PDT)
 Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a7462cfef5sm596609e87.19.2026.04.28.05.40.27
+        by smtp.gmail.com with ESMTPSA id 38308e7fff4ca-3923f55f0e5sm6587151fa.34.2026.04.28.05.42.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 28 Apr 2026 05:40:28 -0700 (PDT)
-Date: Tue, 28 Apr 2026 15:40:26 +0300
+        Tue, 28 Apr 2026 05:42:13 -0700 (PDT)
+Date: Tue, 28 Apr 2026 15:42:12 +0300
 From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 To: Jonas Karlman <jonas@kwiboo.se>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
@@ -104,40 +104,41 @@ Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
         Diederik de Haas <diederik@cknow-tech.com>,
         dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
         linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v3 10/13] drm: bridge: dw_hdmi: Use
- drm_connector_helper_hpd_irq_event()
-Message-ID: <6n44goy63rcd44r3l3qliqgybd7f7kn7p3ktosrjdtphuid5hj@lkigypdzbn3q>
+Subject: Re: [PATCH v3 12/13] drm: bridge: dw_hdmi: Use
+ dw_hdmi_connector_status_update()
+Message-ID: <nsgxyv5sflscs66kxcgbyapivu3yjskfqzeqkt4yhnjfomyfav@rkxft2e6lqbd>
 References: <20260403185303.80748-1-jonas@kwiboo.se>
- <20260403185303.80748-11-jonas@kwiboo.se>
+ <20260403185303.80748-13-jonas@kwiboo.se>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260403185303.80748-11-jonas@kwiboo.se>
-X-Authority-Analysis: v=2.4 cv=a/0AM0SF c=1 sm=1 tr=0 ts=69f0aabe cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=A5OVakUREuEA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22 a=LKZhR2v9Hn7qEMR8X70A:9
- a=CjuIK1q_8ugA:10 a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-ORIG-GUID: 4qftgsMlPyMKvPFXLkh1uoL6UsxNdcjV
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI4MDExNyBTYWx0ZWRfXyu25K1f8bN/p
- q52SW8QKEzr+PvvNqLnaqvNR1cUVW8bM1faOzrFmKYXW6iMo5Z7gZbtfNO01DrwsGX/3ijImYWm
- XuwSo5ddDAiPKj11v3nypMipS0wlT8PphGZCQrn79jvJ/HDWVqSCleR3YJza9wvTmEJY6wxDett
- a5EVM0hCQ2uTBP/uK6Xa9fRwerJdyf2vuPHI0PMxGilpXrm7JlF+SkCHVxTp9QOhUisaJ4p5Tey
- v63kOzGSrRA9chE1T7br1khZLHErUvjW/V2fFd0VgcNWXJJS01el7H+T8eYG/E5Wza4EkeTKYSC
- X6gIF5MiEPgz88+JR+xvln0Yx3rxeBpxxIBJP+dJzTqduvwe60NjcFVjmiliUnm8d9CSf+M8Tyn
- YFtIwgKdkLw0kwS8asBUU//XOpnbXKeFVm7yGNdB3bfvm9xcAwHsDLT0icvAbAZhhGOQsUnjWM0
- wPt/OMaZBWoAc3SSnvg==
-X-Proofpoint-GUID: 4qftgsMlPyMKvPFXLkh1uoL6UsxNdcjV
+In-Reply-To: <20260403185303.80748-13-jonas@kwiboo.se>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI4MDExNyBTYWx0ZWRfX6KczzHXt0LR2
+ +vb4OHFjQsKXbJXafywdAmbrXHP59kK1tga1bFXUP0Vxpdx1U4kzJTYbb64K2ao4HZfdUf9sCnG
+ IophorGLhzEPx1hJFUY+WoAgcVU5b44n9ccDzlJg2y0fUgLjI4pEvc6MK7sF2Ymt53t6Wrvf3Dj
+ pli2m+6Kk58nc6B7hYge2CdBa2bOvDAg1yojTnDepMF8d13rzDpNv+/6swpFIfJ0Oao5g+VVVdU
+ 7xmxPo+mf58epvPnEsHTkvcIImxIMxlFxA48//fQRxH2f4dbK6OyTFmAd9+ZUNbeyPMdaWt4jLo
+ FHzyFAdH20v8LXXyyR2TLTfNKYo/AyEQfrFfyvzI58t0Wp4ds+H2JbkRKmjo28VhqibpH5mB9uK
+ 0c0e+k8a68SX6KnwZqz1K7M5gx2KiU4PUbFZQeDMrhrBlLfowxkGtywL/LM6m/cWhRENm5B2NY0
+ 2Dvzjn5chvgsnnFD25Q==
+X-Authority-Analysis: v=2.4 cv=TZKmcxQh c=1 sm=1 tr=0 ts=69f0ab28 cx=c_pps
+ a=+D9SDfe9YZWTjADjLiQY5g==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
+ a=A5OVakUREuEA:10 a=s4-Qcg_JpJYA:10 a=sWKEhP36mHoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=6So5M6-r7czCO2SscSEA:9 a=CjuIK1q_8ugA:10 a=zZCYzV9kfG8A:10
+ a=vmgOmaN-Xu0dpDh8OwbV:22
+X-Proofpoint-GUID: NXbj_7aM7NnbubqgXbJO7HovMSIhO6kj
+X-Proofpoint-ORIG-GUID: NXbj_7aM7NnbubqgXbJO7HovMSIhO6kj
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
  definitions=2026-04-28_03,2026-04-28_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 lowpriorityscore=0 adultscore=0 malwarescore=0
- spamscore=0 clxscore=1015 phishscore=0 bulkscore=0 priorityscore=1501
+ priorityscore=1501 spamscore=0 adultscore=0 phishscore=0 clxscore=1015
+ suspectscore=0 bulkscore=0 malwarescore=0 impostorscore=0 lowpriorityscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2604280117
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_054031_679820_8BF8F106 
-X-CRM114-Status: GOOD (  22.17  )
+X-CRM114-CacheID: sfid-20260428_054217_362797_2780CB79 
+X-CRM114-Status: GOOD (  15.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,49 +155,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Apr 03, 2026 at 06:52:56PM +0000, Jonas Karlman wrote:
-> Use drm_connector_helper_hpd_irq_event() or drm_helper_hpd_irq_event()
-> depending on if a dw-hdmi connector or bridge is used.
+On Fri, Apr 03, 2026 at 06:52:58PM +0000, Jonas Karlman wrote:
+> Update connector EDID and CEC phys addr from detect and force funcs to
+> ensure that userspace always have access to latest read EDID after a
+> sink use a HPD low voltage pulse to indicate that EDID has changed.
+> 
+> With EDID being updated in detect and force funcs, there should no
+> longer be a need to re-read EDID in get_modes funcs, so drop it.
+> 
+> This change make the dw-hdmi connector work more closely like the bridge
+> connector does with a hdmi bridge.
+
+Please consider using drm_atomic_helper_connector_hdmi_update()
+directly.
+
+
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
-> v3: New patch
+> v3: Reworked 'Update EDID during hotplug processing' patch
 > ---
->  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> index 4d079b689b3b..4a0498922476 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> @@ -3054,10 +3054,13 @@ static void dw_hdmi_hpd_work(struct work_struct *work)
->  {
->  	struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
->  
-> -	if (hdmi->bridge.dev) {
-> +	if (hdmi->connector.dev)
-> +		drm_connector_helper_hpd_irq_event(&hdmi->connector);
-> +	else if (hdmi->bridge.dev)
->  		drm_helper_hpd_irq_event(hdmi->bridge.dev);
-
-Okay, following the comment to the previous patch it should rather
-become:
-
-	if (hdmi->bridge.dev)
-		drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
-	else if (hdmi->connector.dev)
-		drm_connector_helper_hpd_irq_event(&hdmi->connector);
-
-
-> +
-> +	if (hdmi->bridge.dev)
->  		drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
-> -	}
->  }
->  
->  static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
-> -- 
-> 2.53.0
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++----------
+>  1 file changed, 14 insertions(+), 10 deletions(-)
 > 
 
 -- 
