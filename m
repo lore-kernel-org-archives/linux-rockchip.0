@@ -4,86 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10790FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 19:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 513EBFF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 19:55:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=G7+1ae67n2oHAcymDC3fZ4uCP/cKKAcntT2blvztpMA=; b=djL4IjuxC/VzgOO9KI6Fm/JMKj
-	Uv6wItvlpHxGiKXeil8pJqbGMu55oxSDe2nDvAiHP0IjgpfWsSkLNUmFj+/FaiPsJSgpwyzTfg3Yo
-	3xJWVfv4NTtFmXXfoKzOdYmPm3RPFk/S5YgHuhM5XFvxZknhkeVmh1aoPSB7m/qaG/UYCbw1BEcQB
-	clJCa6fZECAOkynrI2XHR2kLS6fAdsvrgbWgcUr8Y1ItIKQNJfDWO84LrN87K2ehfg6ky68ASFUw4
-	eD3hskBCfbJ3fLAZVuFqoEMxZOzrKw3If7XKRZlO2lVeTK9H1DpxSF1CtNSoxOSvXWAYs32VL5ce9
-	Cg5P1UQw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZLSQC/ybHfaGo3DjOzbQagpQ0kydTHLiSipIZ8hhBY0=; b=CXM/6fuTnRCe5J
+	NQBkTTqZLew/tpsnmjn3v08HOR0SPCAKJ17z86oxKwuEQRqKp+9QYjbL/EC9cQFnzKL9uI55lH27f
+	9XgmO2HoOPq0R3ykdkSyBLDU63ccKu/53Upe5HnvWI1UBBVuZSjHDB8r+K4XQqBqXjWFqnqQ1kGhi
+	DeErHC7T/yjvIgG7gi1ksA4l8iL7Hi81Ym1X5x9ZnU7V4xJGukSsSvR8ArKTUMiZvYqnmc4LjvMFS
+	oEBCS0SKHik8emCWjetHMQVBvDnTVGELs408dFX8dUowkEA/n4m4AqabU4kvFzfc1j+ELoAxbZG9v
+	kIbo4hjd1HhPU5xEcI+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoTn-00000002BRe-3E7a;
-	Tue, 28 Apr 2026 19:52:23 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wHoWS-00000002Bh2-3B6T;
+	Tue, 28 Apr 2026 19:55:08 +0000
+Received: from mail-centralusazolkn19011028.outbound.protection.outlook.com ([52.103.13.28] helo=DM5PR21CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoTl-00000002BQo-0a4d;
-	Tue, 28 Apr 2026 19:52:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777405938;
-	bh=AH3leimZQNaQooLaaL2o5U1miRlZsWgMsWKgQcdZ0xs=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=I7y91iV6D1SxsKsac2nK4RZTn3J3s0OIzeLhio2TgvqoWHsTZlcAbxbLFQkeSs83A
-	 GTucjVJM9ARxjT849GroUfTYbJeWhfIalwjqLEksLLQ1gqfDk2wF2JHRzq8EbCl6IP
-	 wm4rWguC4Lf7aL9kITGUIna8aOXFvWwWH3SyNCNK+G2I7blZN2dCRm1Sjj7yHN9Moq
-	 v73c0b73UEvEz7T8W/7OG8I1E5CEBM+6WsdYURzfio0q2MNJhIIvzjy+88QXqxkrxw
-	 a3e0UBQw7vtD+vo+5+by5oXqwC7/pQRFAR0YGQYCH6GWbRnsanxwj+r2LTtTxBV0SZ
-	 rAzM/4SNGHZAQ==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0CE4117E0EB6;
-	Tue, 28 Apr 2026 21:52:15 +0200 (CEST)
-Message-ID: <4c216c195d237e71188dfbdd54bbc1e234eff434.camel@collabora.com>
-Subject: Re: [PATCH 00/11] v4l2: Add tracing for stateless codecs
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>, 
-	linux-kernel@vger.kernel.org
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel	
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, Daniel Almeida <daniel.almeida@collabora.com>,
- Steven Rostedt	 <rostedt@goodmis.org>, Masami Hiramatsu
- <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Hans Verkuil <hverkuil@kernel.org>, Laurent Pinchart	
- <laurent.pinchart+renesas@ideasonboard.com>, Ricardo Ribalda	
- <ribalda@chromium.org>, Yunke Cao <yunkec@google.com>, Sakari Ailus	
- <sakari.ailus@linux.intel.com>, Pavan Bobba <opensource206@gmail.com>,
- James Cowgill <james.cowgill@blaize.com>, Ma Ke <make24@iscas.ac.cn>,
- Jacopo Mondi	 <jacopo.mondi@ideasonboard.com>, Daniel Scally
- <dan.scally@ideasonboard.com>, 	linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-trace-kernel@vger.kernel.org, 	kernel@collabora.com
-Date: Tue, 28 Apr 2026 15:52:14 -0400
-In-Reply-To: <20260212162328.192217-1-detlev.casanova@collabora.com>
-References: <20260212162328.192217-1-detlev.casanova@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1wHoWP-00000002Bg9-3QPe
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Apr 2026 19:55:07 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fu/W+M7idfwWq/z+QZvCOygORn3cGzKuDnNLUQLYFpLV0yhuLuW+FGxsctQPXh+VmmswIRy+tBNTSp9qq+09H0nUcT6jb6+thusA/YkJKqcO+SKI/6gnGb2p/MeodV8ZUZXkJfSY3ayTPSYvBZCqhIsG+3Y4DIaBoamEawoE8IPXW0TiPaYDSOq0XuGIp/C8AQXbQTsr5D0jE0dVonNFC1D3jKxwJfRZy3fWqUh14/u6WQ1RU935lugvEMdTqlImys1IAHnt4bJGtq6BafmyiKfAUwyIvu80Te677jMKenTylLyLxTX8eu0bF47LRg+yAznSFs1t9N9vFEa5dQvpBA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=gdwkifXSfo1jO1LRt/p15VSYC5QkPXq4/uqD6/sFveY=;
+ b=fi2xOXp1iggXvciFKo4TGpDJ92nAe5oN5XIuXQSARlT5xgv2EXWMHaxjODwcFagnRjq+mCL0UJzyMhLexRAH02AhDEc68udSIFNA7o4NumGNCVAnyBx7iy0LwEKy+AACY/DyfQvihIqh1WbJpl4dYZ+dlq4K0kEQYfukvzge7Ve2xwDU15Rsr1EFx7JlKEVWLMQGyUYeD/kIaGNGUXh0evMam848L4odxt2OVw3a/XLTCIk/BNprO7ivm0OPnEoztj3dP0dEBTBlDH2II+kg1noWX/zVfYjbYHOT3aXl5j2sO80nS2eqtDH4kOKrP98U2EzY9+x8MxfQI4Y6t4StXw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=gdwkifXSfo1jO1LRt/p15VSYC5QkPXq4/uqD6/sFveY=;
+ b=RFlarvXK8q+IpSAW1cA9F9tC+rOSnE8kQ0NqphufA893aBbxVYDWhIp85R56MHFEGLDpXBDPZokjszU+7uA19J4dJm7AgLpxPdnIes8OfrmTPtkV09zV39/5EDAIRjeRHyCAU79BMArfVRzoTWemPv/oevHffhiGuElWRkBTsFAQfqCn/O/CF2WpBqyZUu1DZzU3HiDwjQB+yeyu41wdIBnzVuFC1LJ+q+y2VY+s4UYLFbyuH99g3YMr+w5de0ZXn9BWd7W87sbiIk/hCWxFxY0bJVga5XClNmhm6PKbSFwLuUu/yPNzCfZ/7gEV8P+mk6LwUz4i28pP1ENfUCP/Fg==
+Received: from PH0PR19MB997338.namprd19.prod.outlook.com
+ (2603:10b6:510:3b1::18) by PH8PR19MB997230.namprd19.prod.outlook.com
+ (2603:10b6:510:3ab::7) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.26; Tue, 28 Apr
+ 2026 19:54:58 +0000
+Received: from PH0PR19MB997338.namprd19.prod.outlook.com
+ ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
+ ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.20.9846.025; Tue, 28 Apr 2026
+ 19:54:58 +0000
+Date: Tue, 28 Apr 2026 14:54:53 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>,
+	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+	xsf@rock-chips.com, sre@kernel.org, simona@ffwll.ch,
+	airlied@gmail.com, tzimmermann@suse.de, mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com,
+	neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org
+Subject: Re: [PATCH 1/6] dt-bindings: power: supply: sgm41542: document
+ sgm41542
+Message-ID: <PH0PR19MB99733813E0295B511539050BA9A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20260427170914.5062-1-macroalpha82@gmail.com>
+ <20260427170914.5062-2-macroalpha82@gmail.com>
+ <20260428-bulky-nebulous-reindeer-ed45ed@quoll>
+ <PH0PR19MB997338F0B06B7B99AA0ED3C6C4A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+ <534f0795-0002-4c04-a83c-fa1b3ce68216@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <534f0795-0002-4c04-a83c-fa1b3ce68216@kernel.org>
+X-ClientProxiedBy: SA1PR02CA0006.namprd02.prod.outlook.com
+ (2603:10b6:806:2cf::15) To PH0PR19MB997338.namprd19.prod.outlook.com
+ (2603:10b6:510:3b1::18)
+X-Microsoft-Original-Message-ID: <afEQjdHClHa8U3Nw@wintermute.localhost.fail>
 MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|PH8PR19MB997230:EE_
+X-MS-Office365-Filtering-Correlation-Id: 68e73f53-f0bd-45e6-6ac1-08dea560069c
+X-Microsoft-Antispam: BCL:0;ARA:14566002|37011999003|51005399006|25031999004|10092599007|461199028|23021999003|24021099003|20101099004|8060799015|15001099003|15080799012|5072599009|19110799012|6090799003|40105399003|3412199025|440099028|10035399007;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?Qkha1C4ia48eRZaegwcmDC8asxjBShi8YBnTYFvEP8BHREVvq7IqCFieTF6O?=
+ =?us-ascii?Q?VyrUBp5Jku32sng1MZcoeV/TQrkM3y2wQZmQhNnHW/BjurdcfVosE2Y88Z5q?=
+ =?us-ascii?Q?hGCCroMBH88bTEd4q+I9Ifrgc85mQmZ2b00xJxxB7oDasRlW8SYS6o8ZvxUL?=
+ =?us-ascii?Q?L9kMVl4y906NhY5tKlGI8nmmTP+nRS11krZkc0UHvxr7N2PKwEG1L9SfkKdX?=
+ =?us-ascii?Q?lQOmKd/SfEgSWUjbi75Igzywn041mnvULWnACSHbKCu6XkeXZQrxIATgXo16?=
+ =?us-ascii?Q?Vaayck+7KL8I4mFkMSq0j6uoMcn5Xh+cmnu/SSAJ4cREGE2CqRFQghjbNk8V?=
+ =?us-ascii?Q?WC5KmHvjN3cpMZSvIieFGFy0mqLcpoNASLbTXB32tjJQa1GvAHZfEl7HOi2J?=
+ =?us-ascii?Q?Fwt9pBUgkZBaSuu9dMFPfoNYRGcjQjeNK9qmrV3wTZrbl/3o6UMxDOyEhMk8?=
+ =?us-ascii?Q?S9pQfi1Cd6yQSUWudjIERKq0vgSeR84YajBjBCfX7Q5kkTHb7VIcFUkeqY3N?=
+ =?us-ascii?Q?/Npp0Lo0Dei7rAf+JUL/DnEZjRP+wA+JTpI2C0PWEBF2HEkH6ufl8M9kZtZS?=
+ =?us-ascii?Q?QUafkdAliJ5eVfVhf3jlE9w+z8Z3xDtX3v1mXP+5s2mpIyAeaQUzjWGRqjg0?=
+ =?us-ascii?Q?guGOFDWBfBgu/T/CANut9SXyODyzo4bJCaXfkyKdHugLdSUyUjRU1lIVF6gq?=
+ =?us-ascii?Q?B64mZmzAiCQy9ZjfE3LDMzD43a1T4Gi9C4QgJetIqnRFKuv1HXwS6jeRAzGH?=
+ =?us-ascii?Q?83UYtdOUai3wYWCZJCTS6fAUjf94iVAUCrSECgYnkFikBjN9qBs1gDHcFT0d?=
+ =?us-ascii?Q?eTAXqJpzk000W+XCrvhEE4SwF+WRzImFxtWPmC6zKqMPqLpRzBLhTI25vi+6?=
+ =?us-ascii?Q?XYsRIlMJRzpdLuiKzszArANxh87mcHfhK34cuuCrG3d5ekhxYEM/O7IV817a?=
+ =?us-ascii?Q?Oy5AfLmtJ/7pLNDQuS+FX2v03ctUKmh5qeYThIMKOpx7xw2MFVeG9z2E8Lvc?=
+ =?us-ascii?Q?6p/ID+d6WHkBfE0z9mOC0R6F0fHWAfwyBTIRYIqVq4Lg+UKaY4wWYHhaVQmo?=
+ =?us-ascii?Q?Kk1SA2/spnxb+kdZBbFpz55afYWdvMZaC4zlPdxQWUyy3QjVjU0=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?asuQZw+SuCV74UBzyPyQD9V+iWX9UYWT0RUqpOPstT1hOISEcLwJaHg5it6b?=
+ =?us-ascii?Q?lSJQw96uCU97MJr153wJFHh4UK8ILBBx9SnSOaT8zzTc0MUgKlEde9vCXU8+?=
+ =?us-ascii?Q?uNGq0aEwnDl/ZWFbbmezW6BJC9CTQxwpv/B2+YMs+2cqoTacOtNs1B882EYR?=
+ =?us-ascii?Q?mBPkyoRphV7ump+SZHBOQ0kQC0DfgNPlH3Aqq79B83ktUhjHtkrirE+iTJBt?=
+ =?us-ascii?Q?byGeDry68lT9whBDWGF1+jmACYosBA+6+lEp10lILLRfVCE2JhtyYVlaShnb?=
+ =?us-ascii?Q?G+5bmwZUy7+DuwMLkHVqDaRH7uA4xQ988yLgcy7dtG2+XXkkXilmPd30jkYc?=
+ =?us-ascii?Q?4Q5HcvGV+bBcD8BwmjrFWSERRGTKtPP1+8v7V1VK9lq/H3wCUcC6BapypcJ0?=
+ =?us-ascii?Q?1NxnR4EGKlExRgVuCg2U1ETjFpZoRqOcDMnNB4vFieuoApVvo2HwqSsk1CNm?=
+ =?us-ascii?Q?XoWmOcniOR3WOHPio10YbqEcYiHr7hFH0+G/oaaVMoS+AIDow7A6jZKrjmBH?=
+ =?us-ascii?Q?Zmv1WxIj1fGdwwhh1Si5hae2BAEI2ZDKPVgsZs5H+v25KuKZ8FwOMYv49vY+?=
+ =?us-ascii?Q?Q2ylQ+6cP6ioWfOExWvImiA82er7EG/sazxZsLNfNDz3nhZDGmFeJHMipf7F?=
+ =?us-ascii?Q?VTXTrkjVY8FboDNaBdOnnme4/OXUSSuDTWVQoMfRPxkrZawUWu8uxmptclG3?=
+ =?us-ascii?Q?2kPxu5L496Z8+l/yjKZNDTpFTg84dmuaE//puUdGjHPRqZwwKXnPBPsmuEP/?=
+ =?us-ascii?Q?Djn7UfrlNXvi/FpoICHtBe8SHSTyICwDaPe5NmnBQNr30paoSgB/i794x5yG?=
+ =?us-ascii?Q?XP97IrB+R6h89hk7zt2Owlf3sLRpp1HSzJclOKIwPRV/6M6veI3ZXa0Syqtd?=
+ =?us-ascii?Q?GSpna5cKwomCaB5fvhyy9q/QG1YO9c3+zTby9zIVHYGbGG2gs+RCjWCaZNVu?=
+ =?us-ascii?Q?lKe0U6zCH/401L9VTkA27UxCAHXPJuyAkyje8gSl0vbPcQIzKfqoJI1RPqED?=
+ =?us-ascii?Q?VeUJmrxc9FqYew0/LXmrHIcHEVuOLya+ifoi2KzkVfJrNxpsY+odVSFmV8VP?=
+ =?us-ascii?Q?DOthkTBBsfRivrvNiscrAGHFYS39HuDl0djVLQWzMA4VOBdG0ml5ZRG3ERiw?=
+ =?us-ascii?Q?0BZyYh0FdsvkXH/kpWELXlCH2stzLrcs5t/TOoWuTUYsSLouwLH4M13LM1TU?=
+ =?us-ascii?Q?FSyw7CPQDbAgGpiCm4UUPzNWlb9tk+1oY0xWHalOo5/0nsVU6SGLL0BdtvPE?=
+ =?us-ascii?Q?tjrORnHWrXNPeTbd1Cq0K15aDjGpXCOwb/cav1YMfr38aqf7F05l3J7soLZW?=
+ =?us-ascii?Q?ttWkwFrNA3YnHeQn4RlbIaD1+rob27HVn2Pv4GQqUq6Q1U7ARd3r1U1PrAnw?=
+ =?us-ascii?Q?4leFk563VxO9guLRG60XXdZesYRKkLo8jvGM1e+wNfRFQbBXlA=3D=3D?=
+X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 68e73f53-f0bd-45e6-6ac1-08dea560069c
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 Apr 2026 19:54:58.1682
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR19MB997230
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_125221_324454_3585819B 
-X-CRM114-Status: GOOD (  23.95  )
+X-CRM114-CacheID: sfid-20260428_125505_880316_13E89124 
+X-CRM114-Status: GOOD (  38.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,192 +149,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3133973922134535999=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, Apr 28, 2026 at 05:09:49PM +0200, Krzysztof Kozlowski wrote:
+> On 28/04/2026 16:09, Chris Morgan wrote:
+> > On Tue, Apr 28, 2026 at 09:47:00AM +0200, Krzysztof Kozlowski wrote:
+> >> On Mon, Apr 27, 2026 at 12:09:09PM -0500, Chris Morgan wrote:
+> >>> From: Chris Morgan <macromorgan@hotmail.com>
+> >>>
+> >>> Document the SG Micro sgm41542 battery charger/boost converter.
+> >>>
+> >>> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> >>> ---
+> >>>  .../supply/sgmicro,sgm41542-charger.yaml      | 99 +++++++++++++++++++
+> >>>  1 file changed, 99 insertions(+)
+> >>>  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> >>>
+> >>> diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> >>> new file mode 100644
+> >>> index 000000000000..3e5041e5b551
+> >>> --- /dev/null
+> >>> +++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> >>
+> >> Filename must match compatible.
+> > 
+> > Acknowledged.
+> > 
+> >>
+> >>> @@ -0,0 +1,99 @@
+> >>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> >>> +%YAML 1.2
+> >>> +---
+> >>> +$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml#
+> >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> >>> +
+> >>> +title: SGM41542 Battery Charger
+> >>> +
+> >>> +description: |
+> >>
+> >> Do not need '|' unless you need to preserve formatting.
+> >>
+> > 
+> > Will fix.
+> > 
+> >>> +  The SGMicro SGM41542 is a single cell battery charger/boost controller.
+> >>> +
+> >>> +maintainers:
+> >>> +  - Chris Morgan <macromorgan@hotmail.com>
+> >>> +  - Xu Shengfei <xsf@rock-chips.com>
+> >>> +
+> >>> +properties:
+> >>> +  compatible:
+> >>> +    const: sgmicro,sgm41542
+> >>> +
+> >>> +  input-current-limit-microamp:
+> >>
+> >> Missing vendor prefix.
+> >>
+> > 
+> > This *appears* to be a standard value (perhaps not formally, but in use by
+> > enough devices to suggest a defacto standard), which is why I did not use
+> > the vendor prefix here. Do I need to add that for this one?
+> 
+> I know, I found these other properties but I think they were just coming
+> from old schema.
+> 
+> If it is really a common property, then should be defined in a common
+> schema and this did not happen.
 
---===============3133973922134535999==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-dFN5ga/fGZ8ocfYM8b1y"
+Would now be a good time to add it to the power-supply.yaml document?
+It looks like this value is used by about 10 other devices.
 
+Thank you,
+Chris
 
---=-dFN5ga/fGZ8ocfYM8b1y
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le jeudi 12 f=C3=A9vrier 2026 =C3=A0 11:23 -0500, Detlev Casanova a =C3=A9c=
-rit=C2=A0:
-> Hi !
->=20
-> This patchset aims to improve codec event tracing in v4l2.
->=20
-> The traces added in visl by Daniel Almeida are moved to the global trace
-> events and slightly reworked to be printed in a more consistent format.
->=20
-> To each trace are also added a tgid and fd fields, helping userspace trac=
-k
-> different decoding sessions (contexts) based on the given file descriptor
-> used by the given process id.
->=20
-> Also for better tracking, stream on and stream off events are added as
-> well as HW run and HW done events to track decoder core usage.
->=20
-> Finally, add a show_fdinfo callback on video device files, allowing drive=
-rs
-> to expose usage information.
-> Currently only used for frame buffer memory usage.
->=20
-> The main focus is to be able to generate perfetto traces to show VPU usag=
-e,
-> a perfetto producer using this can be found at [1].
->=20
-> [1]:
-> https://gitlab.collabora.com/detlev/hantro-perf/-/tree/hantro-improved-in=
-fo
-
-I would recommend renaming this repo, as its not really evolving toward
-something truly hantro specific anymore, same goes for the code below appar=
-t
-from the run/done traces and the fdinfo that has to be opted in.
-
-There is effectively a bit of an overlap with the v4l2-tracer, but there is=
- also
-advantages having it in the kernel, as you source all the event, for the en=
-tire
-system, in one place, so I'm fine with that. Considering the possible large
-overhead of the full trace, I'd like to see the ability to filter what we w=
-ant
-to trace, with some level of granularity. Maybe we only need decode_params =
-for
-specific use case to be debugged, and don't care about large scaling list/m=
-atrix
-? I would also like to see some Documentation on the tracing, so that its u=
-sage
-is not only explained in a tool.
-
-To Hans, there is nice tools idea in there, the perfetto producer is simply=
- C++,
-and the v4l2top utility is Rust. Would you see these as tools v4l2-utils ? =
-For
-the rust part, we can either leave the build independent, and cargo would b=
-e
-used to build and run, or we can implement a meson wrapper around cargo. Bu=
-t I
-don't believe its a good idea to use native rustc support in meson for that=
- one
-because of the large number of third party crate needed.
-
-I like the direction, hope the feedback suite you well.
-
-Nicolas
-
->=20
-> Detlev Casanova (11):
-> =C2=A0 media: Move visl traces to v4l2-core
-> =C2=A0 media: Reformat v4l2-requests trace event printk
-> =C2=A0 media: Add tgid and fd fields in v4l2_fh struct
-> =C2=A0 media: Add tgid and fd to the v4l2-requests trace fields
-> =C2=A0 media: Add missing types to v4l2_ctrl_ptr
-> =C2=A0 media: Trace the stateless controls when set in v4l2-ctrls-core.c
-> =C2=A0 media: Add stream on/off traces and run them in the ioctl
-> =C2=A0 media: Add HW run/done trace events
-> =C2=A0 media: hantro: Add v4l2_hw run/done traces
-> =C2=A0 media: v4l2: Add callback for show_fdinfo
-> =C2=A0 media: hantro: Add fdinfo callback
->=20
-> =C2=A0drivers/media/platform/verisilicon/hantro.h=C2=A0=C2=A0 |=C2=A0=C2=
-=A0=C2=A0 2 +
-> =C2=A0.../media/platform/verisilicon/hantro_drv.c=C2=A0=C2=A0 |=C2=A0=C2=
-=A0 25 +
-> =C2=A0.../media/platform/verisilicon/hantro_v4l2.c=C2=A0 |=C2=A0=C2=A0 10=
- +-
-> =C2=A0.../verisilicon/rockchip_vpu981_regs.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 1 +
-> =C2=A0.../platform/verisilicon/rockchip_vpu_hw.c=C2=A0=C2=A0=C2=A0 |=C2=
-=A0=C2=A0=C2=A0 4 +
-> =C2=A0drivers/media/test-drivers/visl/Makefile=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 |=C2=A0=C2=A0=C2=A0 2 +-
-> =C2=A0drivers/media/test-drivers/visl/visl-dec.c=C2=A0=C2=A0=C2=A0 |=C2=
-=A0=C2=A0 76 -
-> =C2=A0.../media/test-drivers/visl/visl-trace-av1.h=C2=A0 |=C2=A0 314 ---
-> =C2=A0.../media/test-drivers/visl/visl-trace-fwht.h |=C2=A0=C2=A0 66 -
-> =C2=A0.../media/test-drivers/visl/visl-trace-h264.h |=C2=A0 349 ----
-> =C2=A0.../media/test-drivers/visl/visl-trace-hevc.h |=C2=A0 464 -----
-> =C2=A0.../test-drivers/visl/visl-trace-mpeg2.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 |=C2=A0=C2=A0 99 -
-> =C2=A0.../test-drivers/visl/visl-trace-points.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0=C2=A0 11 -
-> =C2=A0.../media/test-drivers/visl/visl-trace-vp8.h=C2=A0 |=C2=A0 156 --
-> =C2=A0.../media/test-drivers/visl/visl-trace-vp9.h=C2=A0 |=C2=A0 292 ---
-> =C2=A0drivers/media/v4l2-core/v4l2-ctrls-api.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0 |=C2=A0=C2=A0 10 +
-> =C2=A0drivers/media/v4l2-core/v4l2-ctrls-core.c=C2=A0=C2=A0=C2=A0=C2=A0 |=
-=C2=A0 114 +
-> =C2=A0drivers/media/v4l2-core/v4l2-dev.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 10 +
-> =C2=A0drivers/media/v4l2-core/v4l2-fh.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 1 +
-> =C2=A0drivers/media/v4l2-core/v4l2-ioctl.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 37 +-
-> =C2=A0drivers/media/v4l2-core/v4l2-trace.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0 48 +
-> =C2=A0include/media/v4l2-ctrls.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- |=C2=A0=C2=A0 19 +
-> =C2=A0include/media/v4l2-dev.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 1 +
-> =C2=A0include/media/v4l2-fh.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 4 +
-> =C2=A0include/trace/events/v4l2.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
-=A0=C2=A0 58 +
-> =C2=A0include/trace/events/v4l2_requests.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0 | 1836 +++++++++++++++++
-> =C2=A026 files changed, 2178 insertions(+), 1831 deletions(-)
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-av1.h
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-fwht.=
-h
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-h264.=
-h
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-hevc.=
-h
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-mpeg2=
-.h
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-point=
-s.c
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-vp8.h
-> =C2=A0delete mode 100644 drivers/media/test-drivers/visl/visl-trace-vp9.h
-> =C2=A0create mode 100644 include/trace/events/v4l2_requests.h
-
---=-dFN5ga/fGZ8ocfYM8b1y
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCafEP7gAKCRDZQZRRKWBy
-9NTJAP0YqNvV/84O5hkBh9cwbKajYgaeQztw7Mq1P5Rs+Ez7NQEAyYF4bxhDutfM
-ReHPqltREMum1sN79ByfaFmlDan+wQ4=
-=9UP6
------END PGP SIGNATURE-----
-
---=-dFN5ga/fGZ8ocfYM8b1y--
-
-
---===============3133973922134535999==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+> 
+> > 
+> >>> +    description:
+> >>> +      Optional value to clamp the maximum input current limit to for
+> >>> +      the device. If omitted, the default value for the hardware will
+> >>> +      be used (2400000).
+> >>> +    minimum: 100000
+> >>> +    maximum: 3800000
+> >>> +
+> >>> +  input-voltage-limit-microvolt:
+> >>> +    description:
+> >>> +      Optional value to clamp the maximum input voltage limit to for
+> >>> +      the device. If omitted, the default value for the hardware will
+> >>> +      be used (4500000).
+> >>> +    minimum: 3900000
+> >>> +    maximum: 12000000
+> >>> +
+> >>> +  interrupts:
+> >>> +    maxItems: 1
+> >>> +
+> >>> +  monitored-battery:
+> >>
+> >> You miss definition of this property. I guess this is power supply, so
+> >> reference proper schema for power supplies. Look at other bindings to
+> >> for some example code.
+> > 
+> > I'll look at this some more, I might have a few more questions. But I will
+> > make the changes requested.
+> > 
+> >>
+> >>> +    description: |
+> >>> +        A phandle to a monitored battery node. Values for the following
+> >>> +        are used by the driver and if not present will result in default
+> >>> +        values being applied:
+> >>> +        constant-charge-current-max-microamp
+> >>> +        constant-charge-voltage-max-microvolt
+> >>> +        charge-term-current-microamp
+> >>> +        precharge-current-microamp
+> >>> +
+> >>> +  reg:
+> >>> +    maxItems: 1
+> >>> +
+> >>> +  regulators:
+> >>
+> >> No need for regulators node, just define here otg-vbus directly. But
+> >> honestly, your example is incomplete or you defined something implied by
+> >> the compatible. If you have a fixed 5V regulator, what is the point of
+> >> defining it in the DT?
+> > 
+> > The regulator can be adjusted within a range around 5V, and is referenced
+> > by the USB subsystem. Should I still omit it from the device tree or instead
+> > define the min and max values?
+> 
+> If it can be adjusted then it's fine, can stay.
+> 
+> 
+> Best regards,
+> Krzysztof
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3133973922134535999==--
-
