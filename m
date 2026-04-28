@@ -4,82 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3F1FFF886F
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 07:27:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 734E0FF885D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 07:47:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
-	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=E7BrRDBwzCQ6xM07HwoXosrJysF5Ude6HgLkr2VqmKw=; b=Ov80nh8pT7+BCn
-	1D5apcDqPc31hAP5HoyNHlQV6GTCyMHXmfXhh/Fo5Sr9MxXPIU74v5fG2PSwfNf85xijdlXsN5/yu
-	EQAyJbg4t/5U3B0AtARwfkUKKPVaUd5aw4jwico+B11WuYycfqaf8wFMPoAgPddSdVq3TGTGG1Isw
-	WtRs8+3jRWbgJTHf85wenlumfdxInwW1t7f4ygWWT7RqWbJ3+cey6loYi+GpRA5nJ7KOj6ucIvYps
-	t808PFlveQRjrT/WGj0A1IPbfbBWH3bVKsFf+Rpb0Ct6O4QX16q3D0M4uyipmXpaOPQPxnWz5uPEK
-	atpL5x/GdA8pxrgM//ig==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Drdka1ul6tJVRX0MO/G3ik+z0WXkhNidoxP6VFrG07w=; b=ew3c0n5XRFwfWN
+	snrIjcBC2MNfJxcC5c3ln2O3DSzoDYOZp6RkFcbIISH6tVLx9Fdmut4/2rKy1eRa+xRw+enFl54H3
+	MqSdLai053ZOgl+lW86Wdox7kYGiKCnZEpaNcB2h6Aemb9d8CXySH6vFc2IppNlz82TCpE14PQ26I
+	0mvKjFDjRl5GOGaGHa25ARuyrjmpTIdGL7+Jl4tRNIVcyMmaZRVdPVrAu2OQiyfdXYDPdRpfkM6ZN
+	RRmJ/PqHt5/ZIuJBqwUex6wC3c16AqUHEpWxXNZgVHtjfL6NB1A4WslhXIS3kKUDe6pHhSGp01HNo
+	d6XG2rVrr5QBuEwZSpdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHcr0-00000000lnq-1Ugv;
-	Tue, 28 Apr 2026 07:27:34 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wHd9x-00000000nxk-148n;
+	Tue, 28 Apr 2026 07:47:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHcqt-00000000lj4-0ark;
-	Tue, 28 Apr 2026 07:27:28 +0000
+	id 1wHd9u-00000000nwv-2e8o
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Apr 2026 07:47:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 9BE6143E90;
-	Tue, 28 Apr 2026 07:27:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 729A2C2BCAF;
-	Tue, 28 Apr 2026 07:27:25 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D9C7544777;
+	Tue, 28 Apr 2026 07:47:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A5419C2BCAF;
+	Tue, 28 Apr 2026 07:47:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777361245;
-	bh=cOCFZjd7RXNktRNhFi+WwngiMUpyxWBbJzfzYRqEYPM=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=MXAjMJu7qhBYxlsWu1m6Z+YyoADU4pq3AHR/FtGTA+dXri+XlsJzi2BzYDt8ewVIM
-	 59X4t/jSEfy38wzaQ45KTxS+bnXK5y+JYaDxkLAi43f/9mejh6rO0kGVNhpSxuQl+t
-	 FASjZQuvUOo0v2BttYdfv8WfDuQkYE9DOT04J/7dM3IwCYKAQ4IIG5c5nqahm/Ha1v
-	 s9w79cmm9jCvbt3U0y+YNqX06ZtHbfsNnS2/5QP9foDiFVvITGNvxtYI9nDCQd5hWW
-	 QZaF6CuBqgacZsVevs23k1mgMvUfQR7HcUIhxmg/CwqbOe+neoBVL4ij8dzaCw7Ceo
-	 WBLP05no3EFEw==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 5E6CDFF885D;
-	Tue, 28 Apr 2026 07:27:25 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Subject: [PATCH v5 0/2] media: synopsys: csi2rx: add support for rk3588
- variant
-Date: Tue, 28 Apr 2026 09:27:22 +0200
-Message-Id: <20260305-rk3588-csi2rx-v5-0-3b7061d043ea@collabora.com>
+	s=k20201202; t=1777362423;
+	bh=LjvQWxO8MdqD3grX5Gi28h5ntU4nyt5GvckNuDrXREU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=jGyzS1vZsNCTz0eymCL2UyLf5YdAlcj+ArMyHL9o+qmE5VwKCXwnXdPD+oTzzMSfy
+	 o/QYaAc0xx+Bgx9s2NZf6vuu2yQN84Z/02GkbsBiV1NHTm8YaGpD8VesJrziCKQV5W
+	 nf+JrOYfdF3OjTkwRGGsU/6g+QlbYQ+eKXODcGv/3zitNDvDIDgJ0VVTZaerETeeoL
+	 PVpZ9nNoJURMOJxNIlCU7cBoCkQlPr/C4v7pCyGAUrtr8GHY+CI0orURgIR69Br+pM
+	 u8A25UTFSSbToxCtkCqVQcK0CJFi2II2elj4yXNCGQ0rRF22AZI/y5bHolqj3igpMl
+	 ikqYt2ZWlVMgw==
+Date: Tue, 28 Apr 2026 09:47:00 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, xsf@rock-chips.com, sre@kernel.org, 
+	simona@ffwll.ch, airlied@gmail.com, tzimmermann@suse.de, mripard@kernel.org, 
+	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com, neil.armstrong@linaro.org, 
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH 1/6] dt-bindings: power: supply: sgm41542: document
+ sgm41542
+Message-ID: <20260428-bulky-nebulous-reindeer-ed45ed@quoll>
+References: <20260427170914.5062-1-macroalpha82@gmail.com>
+ <20260427170914.5062-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAFph8GkC/33NzW7DIBAE4FeJOJeK5c+4p7xH1MOyhhrVNRUkV
- qrI716cY5T4OCPNNzdWQ0mhso/DjZWwpJry3IJ5OzAacf4KPA0tMymkFUoYXr6VcY5TTbJcOQL
- EjsCgFsjaxmMN3BecaWyr+TJNrfwtIabr/eT02fKY6jmXv/vnAlv7il+ACy5ocIP0UToSR8rTh
- D4XfKf8wzZtkbuCbELXDwK8BaOdfSaoXUFtgtG6U72DqPpngt4VdBMckPUUQ0SrHoV1Xf8By+V
- gWokBAAA=
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Frank Li <Frank.li@nxp.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Collabora Kernel Team <kernel@collabora.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.12.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1777361244; l=2718;
- i=michael.riesch@collabora.com; s=20250410; h=from:subject:message-id;
- bh=cOCFZjd7RXNktRNhFi+WwngiMUpyxWBbJzfzYRqEYPM=;
- b=b8eDH2iJ05fbZA2wyw0TtBzDDkPV2Zzh+lBJWn6y5BFw94DYqjngvqOHPn1r3X/lhDIcFPnw6
- uzKk2S0vf5+CBJx+SUaJ4mpulhuEzqL5FaXORdcnnCz35Umel6rJMt4
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=+MWX1fffLFZtTPG/I6XdYm/+OSvpRE8D9evQaWbiN04=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20250410
- with auth_id=371
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20260427170914.5062-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_002727_228590_0C1A8346 
-X-CRM114-Status: GOOD (  12.47  )
+X-CRM114-CacheID: sfid-20260428_004706_710960_BAC8361E 
+X-CRM114-Status: GOOD (  21.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,85 +73,153 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Habidere,
+On Mon, Apr 27, 2026 at 12:09:09PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Document the SG Micro sgm41542 battery charger/boost converter.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  .../supply/sgmicro,sgm41542-charger.yaml      | 99 +++++++++++++++++++
+>  1 file changed, 99 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> new file mode 100644
+> index 000000000000..3e5041e5b551
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
 
-The Rockchip RK3588 features six MIPI CSI-2 receiver units:
- - MIPI0: connected to MIPI DCPHY0
- - MIPI1: connected to MIPI DCPHY1
- - MIPI2: connected to MIPI DPHY0
- - MIPI3: connected to MIPI DPHY0-1 (only with split DPHY0)
- - MIPI4: connected to MIPI DPHY1
- - MIPI5: connected to MIPI DPHY1-1 (only with split DPHY1)
+Filename must match compatible.
 
-The MIPI DCPHYs (at least the CSI-2 features of them) as well as the split
-DPHY mode of the DPHYs are not yet supported by mainline. However, we can 
-already provide support for the MIPI2 and MIPI4 units.
+> @@ -0,0 +1,99 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: SGM41542 Battery Charger
+> +
+> +description: |
 
-When support for the split DPHY mode is introduced, the DPHY nodes should 
-have the property
-    #phy-cells = <1>;
-and the MIPI CSI-2 receiver nodes should have the property
-    phys = <&csi_dphy{0,1} {0,1}>;
-in case the split mode is desired. Since this is a board specific hardware 
-design, the properties need to be changed in the board device tree (or any 
-overlays).
+Do not need '|' unless you need to preserve formatting.
 
-As reasonable default, however, we can define, e.g., 
-    #phy-cells = <0>;
-and
-    phys = <&csi_dphy{0,1}>;
-in the SoC device tree include. This series introduces initial support for 
-this default configuration.
+> +  The SGMicro SGM41542 is a single cell battery charger/boost controller.
+> +
+> +maintainers:
+> +  - Chris Morgan <macromorgan@hotmail.com>
+> +  - Xu Shengfei <xsf@rock-chips.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: sgmicro,sgm41542
+> +
+> +  input-current-limit-microamp:
 
-Looking forward to your comments!
+Missing vendor prefix.
 
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
----
-Changes in v5:
-- rebased onto new media-committers/next (= v7.1-rc1)
-- reflowed commit messages (Sakari)
-- Link to v4: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v4-0-81c6bcfefa63@collabora.com
+> +    description:
+> +      Optional value to clamp the maximum input current limit to for
+> +      the device. If omitted, the default value for the hardware will
+> +      be used (2400000).
+> +    minimum: 100000
+> +    maximum: 3800000
+> +
+> +  input-voltage-limit-microvolt:
+> +    description:
+> +      Optional value to clamp the maximum input voltage limit to for
+> +      the device. If omitted, the default value for the hardware will
+> +      be used (4500000).
+> +    minimum: 3900000
+> +    maximum: 12000000
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  monitored-battery:
 
-Changes in v4:
-- rebased onto media-commiters/next again (as Frank's patches
-  are now there)
-- changed "oneOf entries to enum in dt binding (Rob)
-- Link to v3: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v3-0-754473981f39@collabora.com
+You miss definition of this property. I guess this is power supply, so
+reference proper schema for power supplies. Look at other bindings to
+for some example code.
 
-Changes in v3:
-- rebased onto Sakari's cleanup branch (as Frank's patches were merged)
-  (Sakari)
-- added Rob's Acked-by
-- Link to v2: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v2-0-79d01b615486@collabora.com
+> +    description: |
+> +        A phandle to a monitored battery node. Values for the following
+> +        are used by the driver and if not present will result in default
+> +        values being applied:
+> +        constant-charge-current-max-microamp
+> +        constant-charge-voltage-max-microvolt
+> +        charge-term-current-microamp
+> +        precharge-current-microamp
+> +
+> +  reg:
+> +    maxItems: 1
+> +
+> +  regulators:
 
-Changes in v2:
-- use fallback compatible instead of separate compatible (Krzysztof)
-- dropped patch 2 and 4 (as a consequence thereof)
-- Link to v1: https://lore.kernel.org/r/20260305-rk3588-csi2rx-v1-0-0cd8d2bf28c0@collabora.com
+No need for regulators node, just define here otg-vbus directly. But
+honestly, your example is incomplete or you defined something implied by
+the compatible. If you have a fixed 5V regulator, what is the point of
+defining it in the DT?
 
----
-Michael Riesch (2):
-      media: dt-bindings: rockchip,rk3568-mipi-csi2: add rk3588 compatible
-      arm64: dts: rockchip: add mipi csi-2 receiver nodes to rk3588
+> +    type: object
+> +    properties:
+> +      otg-vbus:
+> +        type: object
+> +        description: OTG boost regulator
+> +        $ref: /schemas/regulator/regulator.yaml
+> +        unevaluatedProperties: false
+> +    additionalProperties: false
+> +
+> +required:
+> +  - compatible
+> +  - reg
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    battery: battery {
+> +      compatible = "simple-battery";
+> +      constant-charge-current-max-microamp = <10000000>;
+> +      constant-charge-voltage-max-microvolt = <4350000>;
+> +      precharge-current-microamp = <180000>;
+> +      charge-term-current-microamp = <300000>;
+> +    };
+> +    #include <dt-bindings/gpio/gpio.h>
 
- .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  | 11 +++--
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi      | 52 ++++++++++++++++++++++
- 2 files changed, 60 insertions(+), 3 deletions(-)
----
-base-commit: 254f49634ee16a731174d2ae34bc50bd5f45e731
-change-id: 20260305-rk3588-csi2rx-a11f7c15a40a
+Drop this one
 
-Best regards,
--- 
-Michael Riesch <michael.riesch@collabora.com>
-
-
+> +    #include <dt-bindings/interrupt-controller/irq.h>
+> +    i2c {
+> +      #address-cells = <1>;
+> +      #size-cells = <0>;
+> +
+> +      charger@3b {
+> +        compatible = "sgmicro,sgm41542";
+> +        reg = <0x3b>;
+> +        input-current-limit-microamp = <3000000>;
+> +        input-voltage-limit-microvolt = <4500000>;
+> +        interrupt-parent = <&gpio0>;
+> +        interrupts = <26 IRQ_TYPE_EDGE_FALLING>;
+> +        monitored-battery = <&battery>;
+> +
+> +        regulators {
+> +          otg-vbus {
+> +            regulator-max-microvolt = <5000000>;
+> +            regulator-min-microvolt = <5000000>;
+> +          };
+> +        };
+> +      };
+> +    };
+> -- 
+> 2.43.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
