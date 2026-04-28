@@ -4,101 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E190CFF886D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 16:14:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D75EFF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 18:53:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=bxYbyQyXFmas/b66al84mEd8CZnE0bWGZFuQ846mSfk=; b=iNM6/r2oyZ7Q6/
-	jhMsi/yUtnwsA2RUhNnQWUBK262d3ET1dpGhuFG3JO0bDaHJRuWzV3kOivn+lPyFcYtc9vyYIUuRh
-	ZAYLGZrRWO4V7+CMoM8DL1US1r65SjOanyDv9+NW5v0alsHMghFWrvuAcugWgt4+Gh+eu2HIq8zTV
-	O5TbJ8VCWl/QuCFbfheUiuM7pS9GW5YLalbuB3NosdF08KcwwVgGXtA61E1VbtSdr/TqzQYzb3lMd
-	fqV06138GF/izxQWr92tCTNYKMgzrLCEEBJ2uWvPMw/p5LFeACOB0uJ46vBFntz2N3qOeofHuZAdq
-	+Hu321CsTOFGp60pNmoQ==;
+	List-Owner; bh=WmL4Qg4APxCulLJCfjpWm8Dkkj4zh7Ax6NunsecoNbo=; b=EH6ymJF2hNuM1X
+	woO4glOKI6b1IdjlE/Hn7Mm1h9ujTpR+D3oglUaV15MJHP+w4BVoW3vyWqLBc5N5MRzk4kbAKrbje
+	HFT6pcQyLfFioOVVQAKGl7kJW1iePqmuhT57pQ3k6ULTZPncWDoh7Ljv6A40bJ4HuYuXgSPtwMJfP
+	YLzjIU21fQys7znhO1HcG5sogiQRQqyYp4SX7hCLn0voXQgI2cYZHEJG6poxQ+L7mVeMxK3MdzYkl
+	TE6wyg2MPWBcHicInnBkx+pQE4rHFX6hCH3aBJvLNKNdJBRUQfmtNgbPM74vfJ1y+FpUEf4xgPfib
+	bxTRM2IjxqyxdM5FeLwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl5J-00000001tyt-41zc;
-	Tue, 28 Apr 2026 16:14:54 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wHnYv-000000027o0-3yBd;
+	Tue, 28 Apr 2026 18:53:37 +0000
+Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl4j-00000001svb-3UnT;
-	Tue, 28 Apr 2026 16:14:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=eu52mGUbetBRLmudxyVBLRUknGkgPUqu7SpGNBo93X8=; b=E0kJxIjkjiUv50AWrwfzouTYQI
-	E+Dhfk9IlBfLVy4Wt+meFkRo/Lu59SlIBIgcza0uAZLtwP6/PPbSYyXaRajGXKQU74jJIpsasQ2/C
-	C0TfYYr71XsWWP/4mlQZ+tsq3yerJUp5Z8hgbqCxYCP/Jl5HqU/PUgwKtoJyJKSFtZKQAarJx93Fb
-	niJGvPvGPLzkUAC8EYAqtahfzDw5V+5MstNi2TG6GAe0h/WJS/uV5KEdznOMEp8eulbmihQkm4ot3
-	rlUWi7yBagS7WFVDwPp3In80AeKjatcklfNjdUcvOVXgwtBrsGYU5CQDayLxJFxsXJbeAsH1BgolS
-	r0v6bBYw==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl4e-00000003ZLv-0ZTu;
-	Tue, 28 Apr 2026 16:14:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777392842;
-	bh=2RDTD3i97hvqpAcQDq/HnQnUMc4wftjxgYkOHKmJn4U=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=qYTwRCvVxitM2Pnu8Km8cp6ScTYqD4RSacdYSxr/PbVX4M1yw8egMkOxU7YEOoBzL
-	 byApT/yjPttVKFK9DBXahCesoPQPYJNHxF8C+H2C8pcPWLmJa2kD6UYQ4pe1pTdBzZ
-	 i7htOZClsGbBC6/DXpa5fh66XcT/S/fcnUa7R+TpOgZBa3bO8yRnvheStoRf4QbaKL
-	 j3jyDB+vn2TXb8IzWfzgJnhYZP6j+XuiC++ujaiURrZMG5q882jmilC58hmftyzdR4
-	 PCv6G01d5kDG0qBgK2Ph/7iqKRwcPWdbaT5HJKy7yujdYO/ywLoZvoi32yiS9PYOb4
-	 WCNGeNpKHCIgw==
-Received: from jupiter.universe (unknown [100.64.1.62])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4BF0617E15A3;
-	Tue, 28 Apr 2026 18:14:02 +0200 (CEST)
-Received: by jupiter.universe (Postfix, from userid 1000)
-	id 90311480052; Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 28 Apr 2026 18:13:50 +0200
-Subject: [PATCH v4 11/16] phy: rockchip: usbdp: Register DP aux bridge
+	id 1wHnYt-000000027md-1j3t
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Apr 2026 18:53:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1777402413;
+ bh=k9lpDu/EBPmysPoLDlLSYJQEimiqBesJ10bN4Ceg2ak=;
+ b=NB9aZ/jk1mzDj1Vl58xa82lrgI1BUKNOI8Yz4e6iCDQNi4yAmNsZrAzQxeSXHYdgB27WlQXp+
+ SjMnqbK61TKxPctUyaApDWDCDFE31Qf4Mizx5WlfmSWG42SToO/nxurPlZliFAz2jgCmaZUpMG3
+ yOF1Vv24OoZytwVnHyGYR0FxOW4531mIR1DhDtqCNEjmtQUaMU3h+9QFlY05UShAhAoLF9Z+Tye
+ P5KWC5+FyhxWEfFoMKUervK8lDmc0Nu+lBzpES/4jIyh/fsF5GZ1n2hFeoZpTGwdFFzaMiybO8X
+ Kp+zXdpzf5GoDg8CRTGgdAuyMtWnH9PlG6CIDIV8tqhQ==
+X-Forward-Email-ID: 69f1021fc8c0cea2868e9b35
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 149.28.215.223
+X-Forward-Email-Version: 2.7.7
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <d9d55427-2f56-4e3b-a476-f3981c9c20a2@kwiboo.se>
+Date: Tue, 28 Apr 2026 20:53:15 +0200
 MIME-Version: 1.0
-Message-Id: <20260428-rockchip-usbdp-cleanup-v4-11-7775671ece22@collabora.com>
-References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
-In-Reply-To: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>, 
- Yubing Zhang <yubing.zhang@rock-chips.com>, 
- Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com, 
- devicetree@vger.kernel.org, 
- Sebastian Reichel <sebastian.reichel@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2934;
- i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=2RDTD3i97hvqpAcQDq/HnQnUMc4wftjxgYkOHKmJn4U=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnw3MmQSSSwrcFXLHqHG6CyyOtH5uQtKKZOz
- +82bfniCOEglYkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp8NzJAAoJENju1/PI
- O/qam/4P/3vhs4uoTFTRp6OFin+UhI0KhjUsLWVjRF/uTJlIifjNAzP2AceepnakSsVbiFn3A7D
- e89Gq8BgbKfSlf/KrK/x411ZBfKWrjHDc0ks7sFKNW+l5U9df9bXvHhhZeNWvCzCfaRL0ZzRSlQ
- WuqZ4iDT1tfzLdGMugPWGCH57gYAyvZZMFRS7q7+SoKplmPNYXKUY1bvNHAwCQFbp46bk/1P1IY
- MH3zN5g7MUqkKv2VKUbPVandQEDtwvpS+F8+kKvLoaXAJdcNMf2n3fzgHsWJ4ovfDhYUS+FkK4I
- YhBJrJc5EzKymDNIq8omudVQDwy4jjE3KmeUbY3R68ySqPTdXNtN6fEb1Wz4ozQNrGMdDXWRSpZ
- 0P9t4l1egmQBY+2iSJ/v66BQxMV4pc4sMi4BSxSy0tQ75y7Dl9/Soce6Df9Y7Jv3+Vki7LANPDQ
- 3pZr5spNYsTeqFQpC407taDkjMIURi0tQPrJ1rM9CkWQai/0D8hJM/NT4qCETLzq3/hsQV062dI
- WHd+go/xyBuxsqkj2lOKtl8xn8ogAGwkzpZFtoBw+bQUdIRkSiZMLKXQ9hjKFKt9LacwUnQEo3F
- VsvxxTmyhGPr/U4USlal6mjkms172FRzxxb93wqaygfBqHeSgPlsD3NPMoAVx8AZYEsU01E5114
- dmUpA6ncUrKq3JrInpeUyAQ==
-X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
- fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 12/13] drm: bridge: dw_hdmi: Use
+ dw_hdmi_connector_status_update()
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Christian Hewitt <christianshewitt@gmail.com>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+References: <20260403185303.80748-1-jonas@kwiboo.se>
+ <20260403185303.80748-13-jonas@kwiboo.se>
+ <nsgxyv5sflscs66kxcgbyapivu3yjskfqzeqkt4yhnjfomyfav@rkxft2e6lqbd>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <nsgxyv5sflscs66kxcgbyapivu3yjskfqzeqkt4yhnjfomyfav@rkxft2e6lqbd>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_171412_410037_94BA6E08 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20260428_115335_761523_5956694E 
+X-CRM114-Status: GOOD (  14.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,91 +89,52 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add support to use USB-C connectors with the DP altmode helper code on
-devicetree based platforms. To get this working there must be a DRM
-bridge chain from the DisplayPort controller to the USB-C connector.
-E.g. on Rockchip RK3576:
+Hi Dmitry,
 
-root@rk3576 # cat /sys/kernel/debug/dri/0/encoder-0/bridges
-bridge[0]: dw_dp_bridge_funcs
-        refcount: 7
-        type: [10] DP
-        OF: /soc/dp@27e40000:rockchip,rk3576-dp
-        ops: [0x47] detect edid hpd
-bridge[1]: drm_aux_bridge_funcs
-        refcount: 4
-        type: [0] Unknown
-        OF: /soc/phy@2b010000:rockchip,rk3576-usbdp-phy
-        ops: [0x0]
-bridge[2]: drm_aux_hpd_bridge_funcs
-        refcount: 5
-        type: [10] DP
-        OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
-        ops: [0x4] hpd
+On 4/28/2026 2:42 PM, Dmitry Baryshkov wrote:
+> On Fri, Apr 03, 2026 at 06:52:58PM +0000, Jonas Karlman wrote:
+>> Update connector EDID and CEC phys addr from detect and force funcs to
+>> ensure that userspace always have access to latest read EDID after a
+>> sink use a HPD low voltage pulse to indicate that EDID has changed.
+>>
+>> With EDID being updated in detect and force funcs, there should no
+>> longer be a need to re-read EDID in get_modes funcs, so drop it.
+>>
+>> This change make the dw-hdmi connector work more closely like the bridge
+>> connector does with a hdmi bridge.
+> 
+> Please consider using drm_atomic_helper_connector_hdmi_update()
+> directly.
 
-Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
----
- drivers/phy/rockchip/Kconfig              |  2 ++
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 14 ++++++++++++++
- 2 files changed, 16 insertions(+)
+It is unfortunately not possible to use that helper unless
+connector->hdmi.funcs has been assigned a value, currently something
+that is only done in drmm_connector_hdmi_init().
 
-diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-index 14698571b607..39759bb2fa1d 100644
---- a/drivers/phy/rockchip/Kconfig
-+++ b/drivers/phy/rockchip/Kconfig
-@@ -136,8 +136,10 @@ config PHY_ROCKCHIP_USBDP
- 	tristate "Rockchip USBDP COMBO PHY Driver"
- 	depends on ARCH_ROCKCHIP && OF
- 	depends on TYPEC
-+	depends on DRM || DRM=n
- 	select GENERIC_PHY
- 	select USB_COMMON
-+	select DRM_AUX_BRIDGE if DRM_BRIDGE
- 	help
- 	  Enable this to support the Rockchip USB3.0/DP combo PHY with
- 	  Samsung IP block. This is required for USB3 support on RK3588.
-diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index beab20e4c512..77ad2a89d4f2 100644
---- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-+++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -6,6 +6,7 @@
-  * Copyright (C) 2024 Collabora Ltd
-  */
- 
-+#include <drm/bridge/aux-bridge.h>
- #include <dt-bindings/phy/phy.h>
- #include <linux/bitfield.h>
- #include <linux/bits.h>
-@@ -1434,6 +1435,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
- {
- 	struct device *dev = &pdev->dev;
- 	struct phy_provider *phy_provider;
-+	struct fwnode_handle *dp_aux_ep;
- 	struct resource *res;
- 	struct rk_udphy *udphy;
- 	void __iomem *base;
-@@ -1492,6 +1494,18 @@ static int rk_udphy_probe(struct platform_device *pdev)
- 			return ret;
- 	}
- 
-+	/*
-+	 * Only register the DRM bridge, if the DP aux channel is connected.
-+	 * Some boards use the USBDP PHY only for its USB3 capabilities.
-+	 */
-+	dp_aux_ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 3, 0, 0);
-+	if (dp_aux_ep) {
-+		ret = drm_aux_bridge_register(dev);
-+		fwnode_handle_put(dp_aux_ep);
-+		if (ret)
-+			return ret;
-+	}
-+
- 	udphy->phy_u3 = devm_phy_create(dev, dev->of_node, &rk_udphy_usb3_phy_ops);
- 	if (IS_ERR(udphy->phy_u3)) {
- 		ret = PTR_ERR(udphy->phy_u3);
+As briefly mentioned in the cover letter, I am working on converting
+dw-hdmi to be a hdmi bridge, so this function will be replaced/removed
+in a future series.
 
--- 
-2.53.0
+See [1] for a work-in-progres snapshot where dw-hdmi use the bridge
+connector and has been converted to a hdmi bridge. This works great on
+Rockchip RK3328, RK3399 and RK3568. More testing and cleanup is needed
+before something beyond the initial HPD, CEC and EDID rework/cleanup
+currently handled in this series is ready for posing to ML.
+
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20260427-rk-hdmi-v2/
+
+Regards,
+Jonas
+
+> 
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> v3: Reworked 'Update EDID during hotplug processing' patch
+>> ---
+>>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++----------
+>>  1 file changed, 14 insertions(+), 10 deletions(-)
+>>
+> 
 
 
 _______________________________________________
