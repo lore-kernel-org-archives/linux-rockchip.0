@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 311E0FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 20:09:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15547FF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 20:09:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=v8nPQJgkj43X7WpZxMS0nnXOviAXG7OdNAGtMUJUAsQ=; b=zSes3mJ/pb7sjC
-	rPJZHanNSyqfCy/Nwu35Xok3bURN/rUn3IHdTji+aDxRQGvqTgApAT4FkySb7dC7wA/nTOvCowJf/
-	5FIP1Zja6jos59lLrNQlunrsuOvFFgHTnv6wuSGLZdhpHoEqD/AsI1SeeMX89usskRXU4I7m9TWwm
-	EAqA1V3ts7PcgU2Q34r10sKvrFaAYhsV50KbZsC/IlWVSuj5C5kgMO8Xq+l6tDn+ggtop446CanK8
-	SSHqFP4BjrkI8X6CL4r3P6948gRAUi1VpspgtVakguhg3cA+KLKRQlXtFkuQwbkf1ysNEmfpg5J81
-	ZxNaOLMOOE8vyUL+XGiA==;
+	List-Owner; bh=IqnljJuIXL1VUL3gCINNF8WFQkdbxxheyLOi4NbPV9Y=; b=W2YWpkc20A32Vp
+	4c862YO8XdN1kt+UO8Pnqs3C52+qLofMmUuXfer0NYiXMBpRWLeNpOBxDWbO33suNYkEl03TCtln8
+	7XfrrTddV+iZGU7njTd0weREc2+WhLrTkbfyUyjzpzTTRJczIZJ8eY6lgKE1pA2CH02HkYgHz9WFc
+	ruGixiLuVktKhcEqJXHFKV9dEm7pIRAO35wmPEU8SZr5aDRfdVpl6xotnZWQmJYodxYmotwPg+GuK
+	iHn/5O2M945Xqjhn1eaaYfT8NF7lBw9GL+vWHxC9ywngxn2TL26sh8OwwUqvP9mVAeqXrKHgq8+5R
+	9FrgOfPzw6sQSOqowJAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHojy-00000002ESB-3gxo;
-	Tue, 28 Apr 2026 20:09:06 +0000
-Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
+	id 1wHokH-00000002Eug-3Sc1;
+	Tue, 28 Apr 2026 20:09:26 +0000
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoih-00000002Co0-2IrA
+	id 1wHoil-00000002Cu6-2Izz
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 20:07:49 +0000
-Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-12c565dd3a7so4087881c88.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 13:07:47 -0700 (PDT)
+	Tue, 28 Apr 2026 20:07:54 +0000
+Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-2ecf9e398f4so4432260eec.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 13:07:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1777406865; x=1778011665; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1777406869; x=1778011669; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4z+F35aj0Zw+rehp8tVxMlZOUqU6/YdKeXG9fNxlPfY=;
-        b=N3EwL31wkMBdT7F7ExoVp870nmh/tdDubNxgs0ompcEd5Uv3OpZyu8bba/brjwVw1k
-         js5o3EncgflzVC8TXGAqsRWdSwBG5o6XFLbz2kDLVG3KQU3XWkKGRJipo34bIqUVpn12
-         GH+b0giptGliCrP6Fw0OP7kKNYJ+o+0knYEN8=
+        bh=63kFLuS2ZunRuwIKFamabno0yfYzwQFLWtzreaffIiA=;
+        b=e41u0DG1rgLOU+PzCpZNKwGMQ0K7RJSfQe3+Jpmj3ZpqmxpTXl+PlB9PGk7CK/AIW3
+         bQta+9q/iQ2qdJCLwDJmRMPM4bMrmNmxFM/j560fMoTJAM2Yic3/COwRtpyiY2eWk73E
+         fWMOECMD0pAM4Mo3dm/7fdG9vaiYtFEej+e44=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777406865; x=1778011665;
+        d=1e100.net; s=20251104; t=1777406869; x=1778011669;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=4z+F35aj0Zw+rehp8tVxMlZOUqU6/YdKeXG9fNxlPfY=;
-        b=rzNOx8kws/7FJogTFtpVhXxNhy9wrLtBgwoDR+3Bqnof9rvNanghQLQWBtS+IR+t7x
-         tWNeJFUQSi4Hli4yqvSxgGfLTmDP+IaQpJpXNPoieJuSylEoxL7cHMnJX86LUR09bQXA
-         zgf50lzGvJQmhN+6j+fsy1qN6vowTEfi6dSc5yTOW2JxHwu4T4+gfROjifEFz7pS/QXS
-         KPde21gXeTvr/uBSYF4x9sdaftyiPjkPzx8FU4wZ/XQSn0RPBpa5l9DCtEo1nLACWjtM
-         Fe6PtmR9YJROWaMU4SmcjQ7szHlPGh47v5Bjf/rmASy1+qDdpSjUtOopYS8XW64UKShY
-         3geg==
-X-Forwarded-Encrypted: i=1; AFNElJ+DHK67rgHTfYzh6d9DllkdLpkJIYNjOktdf/G6A5+3AIasOZOQoxoPiQEdK1uoJ+WVkpB4GRIbE9ccD0PFCA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyXKq1gMXZauVktUTT5caQ58mgq5vV8bQlWcrsFvz4pfFw5EBRX
-	UkEpuRi6mqkgSzGiDcKz9Waj1TDmivwAviV5MQRic4TE8QtJGfsuLZsbHpSk4wvwTw==
-X-Gm-Gg: AeBDieuJOs+66U+hvVMsvjRO8hWm+Sz9/xWAwVPx5UY94Hcjl4sk28RRsCsuLCo3pk1
-	ROFCvDGqqRFWCov3OtvNivb3Z2vDc0gpohMvcwyQn9lCNBaEn/tllL9pdeBiAQDRmxf9epIwMW8
-	zL9wULPBoyaBz9RZwcLMLLRxueZgHSXc9tEfbP+OoRvFpwBe6u43TWYXXTDlJtkZ2sbh4cuVm8z
-	w3rMGpnXzheyVTl4ozo5gexI7sv7DVdfvA6RhWUhmbCKSUybejlBiMckhEiT7eWj0rFxkt8Wklf
-	DkMJOZ13lRq+eN+I6FJgRKA27v+pSfM58iegBAFomT572V3PXpECxul1wXgQtuBiqg8H76k9q5L
-	4jQtl+33r1+O6yZ2BTyaLI/wP4USvvdCw3dWoOIxlIauwx+EP0nUg63XN/bBxsTZ4mMDml9KUqC
-	DAue93GbGQ/XloNIIfz1Ypk45NKYVVyzIQRPHgnGCK6gzhcfxFZgx+n/AOzo1i1h6kdZgpX7z/
-X-Received: by 2002:a05:7022:660d:b0:12c:8b9:720c with SMTP id a92af1059eb24-12de2a330a7mr383827c88.18.1777406865408;
-        Tue, 28 Apr 2026 13:07:45 -0700 (PDT)
+        bh=63kFLuS2ZunRuwIKFamabno0yfYzwQFLWtzreaffIiA=;
+        b=qTb4pHWRd2uyk+rjbzibuL7An9SAS9LvOeL13seR3veSl7ZYiK1IklnzjaDHXrQszs
+         95xJZPgJmVV7H2vbYJnREO7B5jdbGY0MlU02mKkLtnC3poY8IPRd2j4rqXXamwPQ+/WN
+         69ZjAkmYbD0TcyvRogcJPm9qMxNqpYtT5c5Q3fErhu8qjqE1CZA6ZfJGuPgt/QcoHxlh
+         84fwxAFLQXSZjcw7APkO5An8Z7KKPQaD5onvYg2Gep5wYy/oZyYGB78Cda8WUjaOqRUf
+         1040AdS82fR2I4iWDjZPxzJn3P6PfsbCZAvMKYWnkSRGO9zwW1VZfOwdoD55Hn+2EVhH
+         dcWw==
+X-Forwarded-Encrypted: i=1; AFNElJ+ueEmiOG9VywFV+f3hm9L/2A+Ng/43yqHQvXKQ91Kr7MPE9ZiqbPCef1Y0BsjPGUvzYfkF/W68U9rLUqYbVg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yxnk/K1zruGVHihkLu75Ba7QebX3xwU1AEQqx2nLG/FuJxLgUV1
+	R/psqHfrC3OpbjcLO1sLgA+YDiu4GuBEX0ptsb46RxDp17eL/y2gGLNclt1h1ZuJCQ==
+X-Gm-Gg: AeBDieu6GfxhYcATL7ioI9jP/NAiS3q7TPKCRH4So4I3xX9P3CGzX7tmwfy9l9eMnNP
+	/1zYaMYZp3cSa60RQTG3BsAZE+e1eX6vE+C8+OWw0z8APkDcO6PG92DAbXbLlVqmcVJByMVD1mQ
+	CY75Q1dCvXYzxsOv0ldscZsdfYX3zzLEsprCEgffJUxOw9WI/sAcA1ho8MDFv1IIj4pJuF2++CB
+	vTe2BJZiUW20V6HYlZtsLH8MXejY+37Y+n11lPQPPWSSqJDdVRhrbrDZKRRgCjToeSIeteFBmN4
+	LrV2Gor3yRonvxWNeMXOAfPaYkwBu1JoKkD5BF2afJaa67m8bDn/buMWShPq4/uCUpebA3fh3UL
+	tIA2Yr/5JsuYPnhjpqzEbA4TY+SnhMpXUGGv5P9mbmuS3xR60+QGZw5Bemp57cDEr5XUn4yvp6W
+	3zU5AsR1D+5qVPYqkz3cSLroUfFYpXEwGq+DQvgPXWh4MWFXvTduTWoPZoYiLRWJQTFUOcP3/Y
+X-Received: by 2002:a05:7300:7255:b0:2ed:e12:3771 with SMTP id 5a478bee46e88-2ed1991b2a9mr467588eec.33.1777406869213;
+        Tue, 28 Apr 2026 13:07:49 -0700 (PDT)
 Received: from localhost ([2a00:79e0:2e7c:8:4ff5:9607:c7e5:48f3])
-        by smtp.gmail.com with UTF8SMTPSA id a92af1059eb24-12ddd9a63a7sm3079240c88.11.2026.04.28.13.07.43
+        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-2ed0a0ce761sm3064459eec.15.2026.04.28.13.07.47
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 28 Apr 2026 13:07:44 -0700 (PDT)
+        Tue, 28 Apr 2026 13:07:48 -0700 (PDT)
 From: Brian Norris <briannorris@chromium.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -91,16 +91,16 @@ Cc: devicetree@vger.kernel.org,
 	linux-tegra@vger.kernel.org,
 	linux-samsung-soc@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 5/7] arm64: dts: mediatek: Add #{address,size}-cells to Chromium-based /firmware
-Date: Tue, 28 Apr 2026 13:06:57 -0700
-Message-ID: <20260428200712.2660635-6-briannorris@chromium.org>
+Subject: [PATCH 6/7] arm64: dts: nvidia: Add #{address,size}-cells to Chromium-based /firmware
+Date: Tue, 28 Apr 2026 13:06:58 -0700
+Message-ID: <20260428200712.2660635-7-briannorris@chromium.org>
 X-Mailer: git-send-email 2.54.0.545.g6539524ca2-goog
 In-Reply-To: <20260428200712.2660635-1-briannorris@chromium.org>
 References: <20260428200712.2660635-1-briannorris@chromium.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_130747_712934_5841F583 
-X-CRM114-Status: GOOD (  14.82  )
+X-CRM114-CacheID: sfid-20260428_130751_918542_0B6163FC 
+X-CRM114-Status: GOOD (  13.67  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -160,51 +160,15 @@ Fixes: 6e5773d52f4a ("of/address: Fix WARN when attempting translating non-trans
 Signed-off-by: Brian Norris <briannorris@chromium.org>
 ---
 
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi     | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi   | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi  | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 5 +++++
- arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi  | 5 +++++
- 6 files changed, 30 insertions(+)
+ arch/arm64/boot/dts/nvidia/tegra132-norrin.dts | 5 +++++
+ arch/arm64/boot/dts/nvidia/tegra210-smaug.dts  | 5 +++++
+ 2 files changed, 10 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index a0573bc359fb..777da2129e77 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -16,6 +16,11 @@ aliases {
- 		mmc2 = &mmc3;
- 	};
- 
-+	firmware {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+	};
-+
- 	memory@40000000 {
- 		device_type = "memory";
- 		reg = <0 0x40000000 0 0x80000000>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-index a8e257b21a88..a906ec1ce672 100644
---- a/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8183-kukui.dtsi
-@@ -21,6 +21,11 @@ chosen {
- 		stdout-path = "serial0:115200n8";
- 	};
- 
-+	firmware {
-+		#address-cells <2>;
-+		#size-cells <2>;
-+	};
-+
- 	backlight_lcd0: backlight_lcd0 {
- 		compatible = "pwm-backlight";
- 		pwms = <&pwm0 0 500000>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-index ff20376a44d7..2b327d9ef65e 100644
---- a/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8186-corsola.dtsi
-@@ -26,6 +26,11 @@ chosen {
+diff --git a/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts b/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts
+index 683ac124523b..1f5222d43e62 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts
++++ b/arch/arm64/boot/dts/nvidia/tegra132-norrin.dts
+@@ -18,6 +18,11 @@ chosen {
  		stdout-path = "serial0:115200n8";
  	};
  
@@ -213,29 +177,13 @@ index ff20376a44d7..2b327d9ef65e 100644
 +		#size-cells = <2>;
 +	};
 +
- 	memory@40000000 {
+ 	memory@80000000 {
  		device_type = "memory";
- 		/* The size should be filled in by the bootloader. */
-diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-index 8e423504ec05..ed63c74cf238 100644
---- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-@@ -41,6 +41,11 @@ dmic-codec {
- 		wakeup-delay-ms = <100>;
- 	};
- 
-+	firmware {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+	};
-+
- 	memory@40000000 {
- 		device_type = "memory";
- 		/* The size will be filled in by the bootloader */
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index eadf1b2d156f..b3850be25594 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
+ 		reg = <0x0 0x80000000 0x0 0x80000000>;
+diff --git a/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts b/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts
+index f0b8c2c80aa5..a6d31650245d 100644
+--- a/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts
++++ b/arch/arm64/boot/dts/nvidia/tegra210-smaug.dts
 @@ -25,6 +25,11 @@ chosen {
  		stdout-path = "serial0:115200n8";
  	};
@@ -245,25 +193,9 @@ index eadf1b2d156f..b3850be25594 100644
 +		#size-cells = <2>;
 +	};
 +
- 	memory@40000000 {
+ 	memory@80000000 {
  		device_type = "memory";
- 		reg = <0 0x40000000 0 0x80000000>;
-diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-index f1ff64a84267..4992631dd504 100644
---- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
-@@ -42,6 +42,11 @@ dmic-codec {
- 		wakeup-delay-ms = <50>;
- 	};
- 
-+	firmware {
-+		#address-cells = <2>;
-+		#size-cells = <2>;
-+	};
-+
- 	memory@40000000 {
- 		device_type = "memory";
- 		reg = <0 0x40000000 0 0x80000000>;
+ 		reg = <0x0 0x80000000 0x0 0xc0000000>;
 -- 
 2.54.0.545.g6539524ca2-goog
 
