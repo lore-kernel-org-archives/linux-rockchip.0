@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72F83FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 16:14:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C016FF8868
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 16:14:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=IQ26b+O4kC+0HPj6vMNipZVCygXJYJ6kG/d7C9Wl6NI=; b=YmuS4vwlAhmVDJ
-	bjq/ejPmf8jB0t3rPSKu2ovbmLHLjmuKYsdG5I9E7n+0fZv+/Yv/zeJodhJliTutnrxcGiEXAbSbM
-	gTeWRK1pdwCMElKb4l++JWOqhntpnAjqHpdCykrXl0f74Oq0CzX70nFCLUocfEAL9gWhpBAjlIr8s
-	HtWC5qUbX9AjkZBb8hqaSsnkTpZWC4gbJ8HHXB8FYtpxk/o/MY4lU+XOOgaM//fvSWlyIDeM23t/u
-	zF3ytl+tllv1GnF6jxsP7sHOwbZ4SfH+YRrm92qIGtsVGldFEJdnxqabI5KJnfXl3d0HTh7eYoeSy
-	GM8k4MB3zI/9bAvj/rIQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ek2XqblYrKaAp+wUKRRhNXLIdF1FakrwQ0wfV0kUDKw=; b=Ju2Kh5vZc5OMBy
+	dRDTGLXOm8bqNxkUpSqG1R1j8bxssexIH5nZDWpqSVJafDqzEv4KLkh1jU/UoRBGuenM4Ty6GPzQT
+	Uxkztfr2J4Co1TfxzfPFzxtC9EgeDSHs437OHjvUAt5uZvsJ5/YcI4o1UDi8ZEUB7SM24ku8q3M7w
+	wU29nrm1feoAv0EIpjc74iqCc7F3P2CsQbs4gqY04msK2iUNdidFkAwYJxGagLcwS+U0LsL1278Um
+	M+8hcAxrlZUqPVvKABPPQvOtIr/A76s1Durxy4TnqnsuG/bo3KbDpUASu+Ieusan+p09EVFKQ12Gp
+	v2C2YsugH8FeUCjuxdDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl4c-00000001sla-2oFx;
-	Tue, 28 Apr 2026 16:14:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wHl4h-00000001su1-43Zv;
+	Tue, 28 Apr 2026 16:14:15 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl4X-00000001sfC-1aaa;
-	Tue, 28 Apr 2026 16:14:07 +0000
+	id 1wHl4b-00000001sge-0GD5;
+	Tue, 28 Apr 2026 16:14:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1777392842;
-	bh=qykRsMDcguHlP2jNIALoTrAWL1JNtvKt8qOtBH3+vFw=;
-	h=From:Subject:Date:To:Cc:From;
-	b=jYMf3PUlWrNAodfxX/o2djAU2WxbOsuOgLGFLLtaioICGm7/sVsFFJ5EomTioZZgH
-	 F7M/y9rFAebV9h0o7YVi8uVetaKBOYFFzjVojyPQ8Cu98TN3UnBiNrbNKg9bnrbRCw
-	 tlsfVl+fiGXUGp7N1slyf2veWIDXMup3NBLlvkW5JZNqyI1zA4TOP0bLZYtvDJ+WST
-	 bLbl88mBZPYTB2mz/JXzj6ZQjXQBwmGJeRx6WaPaqWVpkVc3ixsdxOAn3Q1Z9k06VV
-	 sg+IZ9rxCIgWQ08VZvq2RUXYFxwPh0GlGrhrRRpb++1ImrGncwBfGOQRgndKLTcPNl
-	 Pdlm/JzF439bA==
+	bh=44U1UChGeKh0HEiCvpuVJ49MDPkv3nQQ2Nz9Gq57yC0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=YLzpHbg6XSqh2vYW149Cb0Mr0ybRSIrbVSUVjwSs9LwXQJP8A+i7yrkNfTbNtlz/x
+	 ZUoJXNqSK0D0m6YKDrc2neDcLjT9sake1Y9gqmtRACliv0FnucCknafoX1GRq9HjPv
+	 y9BdQ7QWTHGiF3CV7Lil31x1k7Yp2SGZRB+DTwUJR5lRyuoC8PF8lEcd4V4T83fCBl
+	 mao1NWOFxFCPMfrO8jbjWfJ/bZjIkKqCYYATmR+znpbMXbODczPl5oVo1fsV4qIR8l
+	 0qAoYxOIGsv5JpzziPHSakzTD8sQF1wIXW3nGHILMi8qPNhIzeaZvLkMtpVZqIlzR6
+	 X5uMvquCybqzg==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C92C717E1513;
-	Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 22AF117E1553;
+	Tue, 28 Apr 2026 18:14:02 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 7E86248002C; Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
+	id 863AF480038; Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Subject: [PATCH v4 00/16] phy: rockchip: usbdp: Fixes, DP 1-lane support
- and cleanups
-Date: Tue, 28 Apr 2026 18:13:39 +0200
-Message-Id: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
+Date: Tue, 28 Apr 2026 18:13:44 +0200
+Subject: [PATCH v4 05/16] phy: rockchip: usbdp: Fix LFPS detect threshold
+ control
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIALPc8GkC/4XPSw7CIBCA4asY1mJ4CG1deQ/jAuhgibUQsI2m6
- d2l3WiMj+U/yXyTGVGC6CCh3WpEEQaXnO9ybNcrZBrVnQC7OjdihEnCCMfRm7NpXMB90nXApgX
- V9QELLaraaiGp4igvhwjW3Rb4cMzduHT18b7cGeg8/UsOFBNMpZK2YlDTQu6Nb1ulfVQb4y9oZ
- gf2QtHvFMuUlgUYxoStJHyi+JPiPyieKQ6lhbJSPL/9Tk3T9AAqUHs/VgEAAA==
-X-Change-ID: 20260203-rockchip-usbdp-cleanup-5b59dfb561a3
+Message-Id: <20260428-rockchip-usbdp-cleanup-v4-5-7775671ece22@collabora.com>
+References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
+In-Reply-To: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
  Neil Armstrong <neil.armstrong@linaro.org>, 
  Heiko Stuebner <heiko@sntech.de>, Frank Wang <frank.wang@rock-chips.com>, 
@@ -70,26 +67,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  Sebastian Reichel <sebastian.reichel@collabora.com>, 
  William Wu <william.wu@rock-chips.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3288;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1464;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=qykRsMDcguHlP2jNIALoTrAWL1JNtvKt8qOtBH3+vFw=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnw3Mg6MrE43uBsdB5nEHn4nfke9zSNw3v3X
- O6V7tVIDkUlJIkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp8NzIAAoJENju1/PI
- O/qagK4P/RRBziuTuVdFuCdrd+Z+aeCoVbRquVq3uj8OePyD9PbBtjHMxTnWQzWhxNazbgxipyZ
- buEMtei1fzi5HMaIGgBgUhemv+an/NUx1MFp+Ox8IxQpuauWzyhXqisdxzrAfPVSkOz3cPr0/J4
- W3df/thgqq9jkUvdwy4KqIO0WnHpK/D43M44wIVq1YZN2PYITIsoo7bNzhotsK33wDmeQVUyzFh
- g0OS/Rm4nZ/sZ7Zqrxrqbit9JSMkwUME7HFyHqCKei8dWJQFdN/dhHIU7YrhDashssXQbCxtASQ
- +3CLfu62xM5mzImuRRZkFZQ/2yTfwsfJuTFAZtDdQBOQSqrPLzmBmlRbfnBSdnuX1qvkLmMkVNB
- 5Xv6CUYlnXt4geNjktQlIly6y4wqIRYh6A09YP70VZg/U2zr6aZBtt77nM2zf5VEhI2MmuGo6JS
- XH75bBY6X1QsrvqWhSSGg2nUTs11SkZ7ydn2CJhB+7Hp/QxgkMNClqCHziSREtzNTHCvA0/VJM0
- 4ZGK7LXVQ74bP3SLInSUYoCYTU4GmeTMHcFtRAMmP3x5G6geC539cb89qx7sVcKjp7EMOA8UcES
- Br2oPewzC1QbYYikVMJFSS7cE/Dt+UJ7rA7c4ggRMu/wrFjjXpuFjNBdboWG4IGJluvRS5PJpc/
- wtFz1hUQloHphlD8PcsMy+A==
+ bh=eVOY3NqVA0ogxpiysvigAYrriG39FpovjHpdGuHvpr0=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnw3MmfN1guRhjMtYp9JkPPxN8GXqZLa1Fw3
+ +AZpTHqhhYZ9IkCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp8NzJAAoJENju1/PI
+ O/qayasQAJ7VUokwjwSLaNyTDCx4EDvrdj8WT91X64eLgL1YSZRX5VJXRA22KedRmXcFoKMFBeR
+ CPEYb1LCKDOVQ11dc/Ggbwgec1EqRtt0efChSWzIjsasQs4fH+wa69lsWqglGyTYZnkTFRbOmSA
+ lQBfkog5lRxvtY6qalkE6ERj8EokI0VigqxSUOAE37z7fPnkw4kbNs7/r5lUqzIBtJid1QsYDhH
+ pl0L9PtnYXiT5T2f9QjLvtW95NxUyJKcZXgwML+JAIYw75GtWdzhIEdbEQa+clv3EPpYYBnhtK8
+ b9RedvdRLHi2cWrywbHQcupCNakcW+9CgxJgTvMJuBF1amNa2+DZ5QmDrczf6Mk7zEFvHqtqatx
+ o9ZMa6eYbMh1MOYACjuSClnzARLc3sN6RH7f8zNogEgW44Efwvgmn8u9Kcks13a0RXUgvoznBvA
+ C+4Sc2d2D0s4hVyoWfi2yr2ZecfHpuhuSxCaak4r6g6d04dIS8pOzgiMRv4CsG/jEcv4pg2uR8q
+ 01V4vXcbytqE48kvGaQRs7TfCIz17BzO7mJzqEFv5N01gNrCvPNe5Lb9r9nVaAzqPY2N7iqVGSS
+ /Z2vR3d2Ot24AT+4tQSwz0fM9OGEgM/206G17/qAALXynyJ6Ve9C8YquhhOAziS2gCMAGvDRMrg
+ 1wWt4el7UIycW0B8dW5g1bQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_091405_569041_F30D010A 
-X-CRM114-Status: GOOD (  12.69  )
+X-CRM114-CacheID: sfid-20260428_091409_278890_3FD42241 
+X-CRM114-Status: GOOD (  11.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,79 +103,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series overhauls the Rockchip USBDP driver; apart from a
-a bunch of cleanups and small improvements the main goal is to
-get the driver ready for proper USB-C DP AltMode support.
+From: William Wu <william.wu@rock-chips.com>
 
-Once this series has landed, it unblocks enabling proper USB-C
-DP AltMode on the RK3588 and RK3576 platforms incl. runtime PM
-for the Synopsys DesignWare DisplayPort controller.
+According to the LFPS Tx Low Power/LFPS Rx Detect Threshold [1],
+the device under test(DUT) must not respond if LFPS below the
+minimum LFPS Rx Detect Threshold 100mV. Test fail on Rockchip
+platforms, because the default LFPS detect threshold is set to
+65mV.
 
-Apart from this series, further changes are required on the
-DRM side. There are no compile-time dependencies between the
-DRM side and the PHY side, but the PHY side must be applied
-to avoid SErrors once runtime PM is added to the DisplayPort
-controller driver. Thus it would be really good to land this
-series in the next merge window.
+The USBDP PHY LFPS detect threshold voltage could be set to
+30mV ~ 140mV, and since there could be 10-20% PVT variation,
+we set LFPS detect threshold voltage to 110mV.
 
-Changes in v4:
-- Link to v3: https://lore.kernel.org/r/20260313-rockchip-usbdp-cleanup-v3-0-3e8fe89a35b5@collabora.com
-- rebased to v7.1-rc1 (no changes)
-- Update DRM bridge registration patch to avoid registration when DP aux
-  port is not connected to anything, since this results in errors and some
-  boards use USBDP instances for USB3 only.
-- Add patch renaming mode_change into phy_needs_reinit
-- Add patch to re-init PHY on orientation change
-- Add patch to factor out lane_mux_sel setup
-- Add patch to handle mutex via guard functions
+[1] https://compliance.usb.org/resources/LFPS_Rx_Tx_Low_Power_Compliance_Update_Rev5.pdf
 
-Changes in v3:
-- Link to v2: https://lore.kernel.org/r/20260213-rockchip-usbdp-cleanup-v2-0-b67ec225f96e@collabora.com
-- Add patch to register the USBDP PHY as DRM bridge
-- Add patch to describe ports in DT binding (used by the DRM bridge)
-- Add patch to drop HPD handling from the PHY
-
-Changes in v2:
-- Link to v1: https://lore.kernel.org/r/20260203-rockchip-usbdp-cleanup-v1-0-16a6f92ed176@collabora.com
-- Added new patches to fix USB3 SError
-
+Signed-off-by: William Wu <william.wu@rock-chips.com>
+[Taken over from rockchip's kernel tree; the registers are not described
+in the TRM]
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
-Frank Wang (1):
-      phy: rockchip: usbdp: Amend SSC modulation deviation
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Sebastian Reichel (13):
-      dt-bindings: phy: rockchip-usbdp: add improved ports scheme
-      phy: rockchip: usbdp: Do not loose USB3 PHY status
-      phy: rockchip: usbdp: Keep clocks running on PHY re-init
-      phy: rockchip: usbdp: Add missing mode_change update
-      phy: rockchip: usbdp: Rename DP lane functions
-      phy: rockchip: usbdp: Use FIELD_PREP_WM16_CONST
-      phy: rockchip: usbdp: Cleanup DP lane selection function
-      phy: rockchip: usbdp: Register DP aux bridge
-      phy: rockchip: usbdp: Drop DP HPD handling
-      phy: rockchip: usbdp: Rename mode_change to phy_needs_reinit
-      phy: rockchip: usbdp: Re-init the PHY on orientation change
-      phy: rockchip: usbdp: Factor out lane_mux_sel setup
-      phy: rockchip: usbdp: Use guard functions for mutex
+diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+index 1f686844c337..97e53b933225 100644
+--- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
++++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
+@@ -413,7 +413,8 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x0024, 0x6e}
++	{0x20d4, 0x08}, {0x0024, 0x6e},
++	{0x09c0, 0x0a}, {0x19c0, 0x0a}
+ };
+ 
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
-William Wu (1):
-      phy: rockchip: usbdp: Fix LFPS detect threshold control
-
-Zhang Yubing (1):
-      phy: rockchip: usbdp: Support single-lane DP
-
- .../bindings/phy/phy-rockchip-usbdp.yaml           |  23 ++
- drivers/phy/rockchip/Kconfig                       |   2 +
- drivers/phy/rockchip/phy-rockchip-usbdp.c          | 302 +++++++++------------
- 3 files changed, 149 insertions(+), 178 deletions(-)
----
-base-commit: 254f49634ee16a731174d2ae34bc50bd5f45e731
-change-id: 20260203-rockchip-usbdp-cleanup-5b59dfb561a3
-
-Best regards,
 -- 
-Sebastian Reichel <sebastian.reichel@collabora.com>
+2.53.0
 
 
 _______________________________________________
