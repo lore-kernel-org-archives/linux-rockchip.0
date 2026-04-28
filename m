@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BC72FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 07:49:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35E10FF886D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 07:56:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XKRO7nuGkfEHCFlRthx4FqtAExOX706THDF8VhQ/TE0=; b=OjSyl3V7By8VyL
-	P8wy/VUmiBC0JANliY6FnisSPo6E5R0NkkNm3mGg2IG+2+j7ZSPF9P0qNlWeE/IwJl+Zq3frc6yv+
-	CusY+CEDXFKQf790HDi+RdYW2LjaeknmRyn6xssm83T7yDSmDrms+3+Tek78zIbpdnfGkOeyCSB3Z
-	qQBY1+rzzIx3FPVnjjaeGiagvC18jAZO3D0uwqKasi8kwzN8QR66R+zZxRyYPcIRJXYOPix6YiY5m
-	cHZPhAqqmqQV3Cx0t8Y9SaXEK7IBN00Yvpo0xEU9OcpsI80jbD1qESEsMZWBJ1ikwJRrKJLJxPhg7
-	Z8u8tGJEH/KvPJYbfelg==;
+	List-Owner; bh=RU4ld38KUqtJKRUcXvRGUhuHktlx9RRheYguFHxjwrU=; b=GDM15d4MBtkfuE
+	A9h5s0pbC2dvUCVU1CC3+0RWVe1KttHfXuAoldO39V4fsdLSuqUkjCQmfC7VfXyqW0BT4zfFfCoIJ
+	8PzC85QEpg9PQBsmBxvsFL7awLvWfrv6nfuKIjDXPEzssZD5wxUvQGCZnP0/XZJQtiafURl0YYfps
+	t1M9XxXR+fJ5zu52VipEJijxMvlJfNNCyEmPa1KiBDlvbTpek2Faz3WQOx2+ukCIFIadFvNiKTbJC
+	w2aZJ+4phKi1Bub3q8kz96a8KHxaIomWu0a7TEQS7D4ByamIZIVXA8rFGIORH1osDs1YUhk4t8SjM
+	770UgJJgKeh37fRHu/EA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHdCO-00000000oGI-2rWC;
-	Tue, 28 Apr 2026 07:49:40 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wHdJ6-00000000pNw-3Lv0;
+	Tue, 28 Apr 2026 07:56:36 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHdCN-00000000oEx-05p5
+	id 1wHdJ5-00000000pN1-2iZp
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 07:49:39 +0000
+	Tue, 28 Apr 2026 07:56:35 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6BEEA60154;
-	Tue, 28 Apr 2026 07:49:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9FD74C2BCB6;
-	Tue, 28 Apr 2026 07:49:37 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A9CF260142;
+	Tue, 28 Apr 2026 07:56:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7D66C2BCAF;
+	Tue, 28 Apr 2026 07:56:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777362578;
-	bh=3ElNfMSZSM4UEx+D4roCAQFNWHGugNmlQtBq5aXJQ8o=;
+	s=k20201202; t=1777362994;
+	bh=Mzlq90K/VTzR+F+26arnfLMjVpYCl7Zu2AB1/5S1PyI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=QYu2LQAQ2bTwVIgJMiupZ1xKfY2vpDjaxpd8EnJGy1SX/ZZa+8niTzyTrDhCd6j3s
-	 AlzDvAoAhWuB6Pwp0J8RMdWayozbqMlgxyqkM4Xs/ftQePufk0+a6WEFHcfzak3BMN
-	 tDYAUtaP3/4ZYN+kmQKDaGQvbNlRbEjFYQ1sF7ermCGfdLwp/5gE5aAncpA12ApXcx
-	 rxee15S0csAOCdOBIC8lC6YDePeAFd8lpnlQWfP7TOB3F784KmvosGNmlkM+3KIXri
-	 17+IAykFGNqqIBFq5lcp+48EIcU7HRNJqipXN95nSiCCSaFvLjl8NpQb9WAn2vZtM3
-	 Kt+hJiUL0zsBA==
-Date: Tue, 28 Apr 2026 09:49:35 +0200
+	b=cY/mOurfmE7MW35rMnA3eBhijxSBFke9z4rkAmG7LU/v+gt2QEXHGRGzRqHqjgZr0
+	 g9Z9+e1hlmA6psMDM97KuE9wpOGHHHXxVBQwUexE1J6eNwfCXKXAos1HwR93+77Ytr
+	 FiDLFjoo7k0+HjGtlzLiP2o8bl4JHz5OhXVUnEIPOqgNt6AKn7RINzjY0jqUoyPms5
+	 nYF1Bl0y59a/A6AuyCSNFc0PtkYsZgntKTPJpcr2KmnjuDOkc5qVHQqjACARtSSwQj
+	 m5Hibyqhg6s7h9T+2EdLCrGToPTepcMIVU6T6I/hwtc1mDm5Ue66tMdtDwR/JJWAXO
+	 x4h+gZHrWkx3w==
+Date: Tue, 28 Apr 2026 09:56:31 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, 
@@ -51,14 +51,14 @@ Cc: linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org,
 	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com, neil.armstrong@linaro.org, 
 	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org, 
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH 3/6] dt-bindings: display: panel: document Anbernic
- TD4310 panel
-Message-ID: <20260428-golden-tamarin-from-heaven-c500e8@quoll>
+Subject: Re: [PATCH 2/6] power: supply: sgm41542: Add SG Micro sgm41542
+ charger
+Message-ID: <20260428-vivacious-fearless-monkey-fe433e@quoll>
 References: <20260427170914.5062-1-macroalpha82@gmail.com>
- <20260427170914.5062-4-macroalpha82@gmail.com>
+ <20260427170914.5062-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260427170914.5062-4-macroalpha82@gmail.com>
+In-Reply-To: <20260427170914.5062-3-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,67 +75,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 27, 2026 at 12:09:11PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> The panel used by Anbernic in the RG Vita-Pro is a DSI panel based
-> on the TD4310 controller IC. It measures approximately 5.5 inches
-> diagonally and is 1080x1920 in resolution.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../display/panel/anbernic,td4310.yaml        | 63 +++++++++++++++++++
->  1 file changed, 63 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
-> 
-> diff --git a/Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml b/Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
-> new file mode 100644
-> index 000000000000..2da957cd5d49
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
-> @@ -0,0 +1,63 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/display/panel/anbernic,td4310.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+On Mon, Apr 27, 2026 at 12:09:10PM -0500, Chris Morgan wrote:
+> +	strscpy(sgm->model_name, id->name, I2C_NAME_SIZE);
 > +
-> +title: Anbernic TD4310 Based Panels
+> +	sgm->regmap = devm_regmap_init_i2c(client, &sgm4154x_regmap_config);
+> +	if (IS_ERR(sgm->regmap))
+> +		return dev_err_probe(dev, PTR_ERR(sgm->regmap),
+> +				     "Failed to allocate register map\n");
 > +
-> +maintainers:
-> +  - Chris Morgan <macromorgan@hotmail.com>
+> +	i2c_set_clientdata(client, sgm);
 > +
-> +description:
-> +  Bindings for Anbernic TD4310 Based Panels, such as the RG-Vita-Pro
+> +	ret = sgm4154x_hw_chipid_detect(sgm);
+> +	if (ret)
+> +		dev_err_probe(dev, ret, "Unable to read HW ID\n");
+> +
+> +	device_init_wakeup(dev, 1);
+> +
+> +	if (client->irq) {
+> +		ret = devm_request_threaded_irq(dev, client->irq, NULL,
+> +						sgm4154x_irq_handler_thread,
+> +						IRQF_TRIGGER_FALLING |
+> +						IRQF_ONESHOT,
+> +						"sgm41542-irq", sgm);
 
-Description says what the bindings are for. Your description says that
-bindings are for "bindings for"... Just describe the hardware.
+Interrupt should be requested and enabled at the end or almost at the
+end. If it is triggered now, which supply are you marking as "changed"?
 
+Code looks at least correct in relation between interrupt and workqueue,
+but it is not really obvious and thus not following established coding
+practice. Practice is usually: first you allocate driver-like or
+memory-like resources, then you request hardware related resources.
+That's why every probe starts with devm_kzalloc(). Similarly with
+workqueue, initializing power supply etc.
 
-> +  panel (a 1080x1920 5.5 inch panel).
+> +		if (ret)
+> +			return ret;
+> +		enable_irq_wake(client->irq);
+> +	}
 > +
-> +allOf:
-> +  - $ref: panel-common.yaml#
+> +	ret = sgm4154x_power_supply_init(sgm, dev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Failed to register power supply\n");
 > +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: anbernic,panel-vita-pro
+> +	ret = sgm4154x_hw_init(sgm);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "Cannot initialize the chip.\n");
 > +
-> +  reg:
-> +    maxItems: 1
+> +	sgm->sgm_monitor_wq = alloc_ordered_workqueue("%s",
+> +			WQ_MEM_RECLAIM | WQ_FREEZABLE, "sgm-monitor-wq");
+> +	if (!sgm->sgm_monitor_wq)
+> +		return -EINVAL;
 > +
-> +  vdd-supply:
-> +    description: Panel power supply
-> +
-> +required:
-> +  - compatible
-> +  - reg
+> +	ret = devm_add_action_or_reset(dev, sgm4154x_destroy_workqueue,
+> +				       sgm->sgm_monitor_wq);
 
-supply as well. most likely
-
-> +  - reset-gpios
-> +  - port
+Use rather devm_alloc_ordered_workqueue().
 
 Best regards,
 Krzysztof
