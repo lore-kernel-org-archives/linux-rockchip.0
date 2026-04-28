@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53AD0FF886D
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 19:33:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F1FFF886D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 19:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yuqLaKE264cyGUF4uSF12gHpL5amRBZMRWESElHfitY=; b=jKgA2/4THBeg3rtI2KVX76ZyDU
-	FMAnzSCq2v+GfTgVM7ix2HXWC37MsGSZg1k77nzaC6ta11cjPp4njS7VWo6ZDEUBjEL7VY0LNaPBs
-	n+ovkvRgwC4txcn+Jmi1QqjPFpzWV0D8GuPkALmE4t2FO4e/efbEhzqrCWehoXXTpn8OyzVCxaKQ1
-	HldJxHS2AjnYRXEBz5nal5zL7Kob7994Kak379uR94TSZ25m35gOYtJOwvEt9hH7FM2F4og9rEFRu
-	O/6acy8kmG8fNws+4kMUuSrljs8dsFy0IujWIDMVj44XmNDfplMVb0pr2LJJvSsszSb8gbfq8HF3T
-	1Gn3hgag==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=AqIWNqZm5GZPlkg/1f1Z3omCOdhRNiAHseD1vLtRi6o=; b=Ntp7hKEOoMGu4J
+	0sBhQpW/YEQFEoNNpH4bAZXA54Kh3ThxvKprj8YF58Hfd2W4DbYbyX0AVU6mEd4nIJ2j132R2a0VX
+	X2DdlWD9N4r1XYGGimK/dpNbPua21l8zmTAX57SNGG8dst6phQo6GZyXUIxlV823rVB9Rbeic38ig
+	q88HZdYK/VWaQG66Ng30Fn2UzS2uC3Pi0XU2YTAdmB1Ihz89qkfPUUygHZoctBQ1cLoWnii0IVgM2
+	8X9aM3rfxzidH+VJQB0W9pAtOqPxqUs8VdD3cJJNJF+9rHbnY80MlgEvejsahlFtEZ2FFjpRbjysl
+	q4OSy+vlRkNXPk3dpCPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoBb-00000002A8B-11nV;
-	Tue, 28 Apr 2026 19:33:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wHoCa-00000002AHj-33yo;
+	Tue, 28 Apr 2026 19:34:36 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHoBY-00000002A6f-3Asx;
-	Tue, 28 Apr 2026 19:33:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777404810;
-	bh=2LdnTY48/H/yha0KYzVqcMjcIVLdxMiWb7hNSxtHY+M=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=qUykUPwcCCIPuq7Wqrt85Z/b3AfB+1ST11wPC5r0cdUZ2p31oOZLb2hKK77Mb9x5r
-	 V/s6YGZD8qFdlJwoQaoolKEaypjd0Rn7Zsxe42Ma+H8hsET+CSHOasKYdgker9mir1
-	 mBDFJvt67LN5/nBXxI9pJidYyftREqKVxymMqkCj/9tDwDMhtkEbFm+0MUqcZGkzcR
-	 jujeJdcz55p908BnTLYVyvGVuYaI41R99BoyzYggU+02ClYVLscdN1QSn7PhYqH2lZ
-	 A3btaL6ZokckYSowJraz0b/EvgPOK/5yl8l5xcE3Xk96SEC//4PF4mvralVImlZ+2Z
-	 1d9j6kANOv3dg==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9F05617E0ED6;
-	Tue, 28 Apr 2026 21:33:27 +0200 (CEST)
-Message-ID: <0acd45d0b10ba0f8f8c31ab3d59bb5591be41e96.camel@collabora.com>
-Subject: Re: [PATCH 05/11] media: Add missing types to v4l2_ctrl_ptr
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Detlev Casanova <detlev.casanova@collabora.com>, 
-	linux-kernel@vger.kernel.org
-Cc: Benjamin Gaignard <benjamin.gaignard@collabora.com>, Philipp Zabel	
- <p.zabel@pengutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, Heiko
- Stuebner <heiko@sntech.de>, Daniel Almeida <daniel.almeida@collabora.com>,
- Steven Rostedt	 <rostedt@goodmis.org>, Masami Hiramatsu
- <mhiramat@kernel.org>, Mathieu Desnoyers <mathieu.desnoyers@efficios.com>,
- Hans Verkuil <hverkuil@kernel.org>, Laurent Pinchart	
- <laurent.pinchart+renesas@ideasonboard.com>, Ricardo Ribalda	
- <ribalda@chromium.org>, Yunke Cao <yunkec@google.com>, Sakari Ailus	
- <sakari.ailus@linux.intel.com>, Pavan Bobba <opensource206@gmail.com>,
- James Cowgill <james.cowgill@blaize.com>, Ma Ke <make24@iscas.ac.cn>,
- Jacopo Mondi	 <jacopo.mondi@ideasonboard.com>, Daniel Scally
- <dan.scally@ideasonboard.com>, 	linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, 	linux-arm-kernel@lists.infradead.org,
- linux-trace-kernel@vger.kernel.org, 	kernel@collabora.com
-Date: Tue, 28 Apr 2026 15:33:26 -0400
-In-Reply-To: <20260212162328.192217-6-detlev.casanova@collabora.com>
-References: <20260212162328.192217-1-detlev.casanova@collabora.com>
-	 <20260212162328.192217-6-detlev.casanova@collabora.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1wHoCX-00000002AHA-0q1O
+	for linux-rockchip@lists.infradead.org;
+	Tue, 28 Apr 2026 19:34:34 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1777404871;
+ bh=tyuMmKgL6oRWTBJMy9sHFgkkcCZP0KsDIP4M04imiag=;
+ b=sthPP9DiTNCoFl/eQ24MW/+ikwoABVzC1oG8cZBBn81aWpFBEu9l8poBjBykH2vxxtUre19yP
+ 0K6aFK49EyUQFepmxR/3drEyH8U5j1Jk43F+kVwRaxnmKJL/Yg6/oBAJQgEaZVxLrGsVHHCyYAm
+ W2nbJs3MTry98V86mUAZpMERAkK2i/sKGwb6CCwsVZKItwHe1s2/5KxhJp0gfDzHti3GJ2RnFG0
+ M/n23XoyrH6BCMGCr0/+kC1Xm/ohxmVQFj+Ntis8grEWGJnKEffboPFGUYGuZAA9sixRNF7WLTm
+ ybZMXWDPUOkQUjdfcbjwo0fRQslqRl6jMU1sXx1KyyOA==
+X-Forward-Email-ID: 69f10bc5a2c58f47e2133329
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 2.7.7
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <9b4a676e-cf8f-4708-b580-8140a2e7a805@kwiboo.se>
+Date: Tue, 28 Apr 2026 21:34:25 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 09/13] drm: bridge: dw_hdmi: Use delayed_work to
+ debounce hotplug event
+To: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Christian Hewitt <christianshewitt@gmail.com>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+References: <20260403185303.80748-1-jonas@kwiboo.se>
+ <20260403185303.80748-10-jonas@kwiboo.se>
+ <go5i5iiwra426hydnvc5thhgtknv3fa7ti35q3et6frroxag2n@tfbfiyjmtzkk>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <go5i5iiwra426hydnvc5thhgtknv3fa7ti35q3et6frroxag2n@tfbfiyjmtzkk>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_123332_973630_619EADC2 
-X-CRM114-Status: GOOD (  13.57  )
+X-CRM114-CacheID: sfid-20260428_123433_337183_07A78547 
+X-CRM114-Status: GOOD (  25.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,91 +84,162 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3553800391342655743=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi Dmitry,
 
---===============3553800391342655743==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-BWVk2ZDdh0XDsilTNcWN"
+On 4/28/2026 2:38 PM, Dmitry Baryshkov wrote:
+> On Fri, Apr 03, 2026 at 06:52:55PM +0000, Jonas Karlman wrote:
+>> HDMI Specification Version 1.4b chapter 8.5 mentions:
+>>
+>>   An HDMI Sink shall not assert high voltage level on its Hot Plug
+>>   Detect pin when the E-EDID is not available for reading.
+>>
+>>   A Source may use a high voltage level Hot Plug Detect signal to
+>>   initiate the reading of E-EDID data.
+>>
+>>   An HDMI Sink shall indicate any change to the contents of the E-EDID
+>>   by driving a low voltage level pulse on the Hot Plug Detect pin. This
+>>   pulse shall be at least 100 msec.
+>>
+>> Use a work queue to debounce reacting on HPD events to better handle a
+>> HPD low voltage level pulse when a sink changes the EDID.
+>>
+>> The 1100 msec hotplug debounce timeout was arbitrarily picked to match
+>> other drivers using same const, and testing using a Raspberry Pi Monitor
+>> seem to use a 200-300 msec pulse when going from standby to power on
+>> state.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> v3: New patch
+>> ---
+>>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++++++++----
+>>  1 file changed, 20 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> index f3f8144ae98e..4d079b689b3b 100644
+>> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+>> @@ -51,6 +51,8 @@
+>>  
+>>  #define HDMI14_MAX_TMDSCLK	340000000
+>>  
+>> +#define HOTPLUG_DEBOUNCE_MS	1100
+>> +
+>>  static const u16 csc_coeff_default[3][4] = {
+>>  	{ 0x2000, 0x0000, 0x0000, 0x0000 },
+>>  	{ 0x0000, 0x2000, 0x0000, 0x0000 },
+>> @@ -192,6 +194,7 @@ struct dw_hdmi {
+>>  	hdmi_codec_plugged_cb plugged_cb;
+>>  	struct device *codec_dev;
+>>  	enum drm_connector_status last_connector_result;
+>> +	struct delayed_work hpd_work;
+>>  };
+>>  
+>>  const struct dw_hdmi_plat_data *dw_hdmi_to_plat_data(struct dw_hdmi *hdmi)
+>> @@ -2528,6 +2531,7 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
+>>  
+>>  	mutex_lock(&hdmi->mutex);
+>>  	hdmi->force = connector->force;
+>> +	hdmi->last_connector_result = connector->status;
+>>  	dw_hdmi_update_phy_mask(hdmi);
+>>  	mutex_unlock(&hdmi->mutex);
+>>  }
+>> @@ -3046,6 +3050,16 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
+>>  }
+>>  EXPORT_SYMBOL_GPL(dw_hdmi_setup_rx_sense);
+>>  
+>> +static void dw_hdmi_hpd_work(struct work_struct *work)
+>> +{
+>> +	struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
+>> +
+>> +	if (hdmi->bridge.dev) {
+>> +		drm_helper_hpd_irq_event(hdmi->bridge.dev);
+> 
+> Nit: please consider this for the followup cleanup. The
+> drm_helper_hpd_irq_event() is not very effective: we already know which
+> bridge (and thus connector) caused the HPD event.
+> 
+> Moreover, the call should be redundant as drm_bridge_hpd_notify will
+> call the registered callback, which normally would be
+> drm_bridge_connector_hpd_cb(). Internally, this function calls
+> drm_kms_helper_connector_hotplug_event().
 
+I disagree in part, based on my testing, without a call to
+drm_helper_hpd_irq_event() or drm_connector_helper_hpd_irq_event() the
+internal check_connector_changed() never seem to be reached to detect
+any connector->status and/or connector->epoch_counter changes.
 
---=-BWVk2ZDdh0XDsilTNcWN
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In my ongoing work to convert dw-hdmi to become a hdmi bridge, I have 
+actually done the opposite to what you suggest here and instead fully
+dropped the call to drm_bridge_hpd_notify() made here.
 
-Le jeudi 12 f=C3=A9vrier 2026 =C3=A0 11:23 -0500, Detlev Casanova a =C3=A9c=
-rit=C2=A0:
-> The v4l2_ctrl_ptr union contains pointers for all control types, but
-> v4l2_ctrl_hevc_decode_params and v4l2_ctrl_hevc_scaling_matrix are missin=
-g.
->=20
-> Add them.
->=20
-> Signed-off-by: Detlev Casanova <detlev.casanova@collabora.com>
+drm_bridge_connector_detect() calls drm_bridge_connector_hpd_notify()
+so any bridges should already be notified as part of any internal
+check_connector_changed() handling.
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Maybe something like following could be an option:
 
-> ---
-> =C2=A0include/media/v4l2-ctrls.h | 4 ++++
-> =C2=A01 file changed, 4 insertions(+)
->=20
-> diff --git a/include/media/v4l2-ctrls.h b/include/media/v4l2-ctrls.h
-> index 327976b14d50..a2b4c96a9a6f 100644
-> --- a/include/media/v4l2-ctrls.h
-> +++ b/include/media/v4l2-ctrls.h
-> @@ -49,6 +49,8 @@ struct video_device;
-> =C2=A0 * @p_hevc_sps:			Pointer to an HEVC sequence parameter
-> set structure.
-> =C2=A0 * @p_hevc_pps:			Pointer to an HEVC picture parameter
-> set structure.
-> =C2=A0 * @p_hevc_slice_params:	Pointer to an HEVC slice parameters
-> structure.
-> + * @p_hevc_decode_params:	Pointer to an HEVC decode parameters
-> structure.
-> + * @p_hevc_scaling_matrix	Pointer to an HEVC scaling matrix structure.
-> =C2=A0 * @p_hdr10_cll:		Pointer to an HDR10 Content Light Level
-> structure.
-> =C2=A0 * @p_hdr10_mastering:		Pointer to an HDR10 Mastering Display
-> structure.
-> =C2=A0 * @p_area:			Pointer to an area.
-> @@ -81,6 +83,8 @@ union v4l2_ctrl_ptr {
-> =C2=A0	struct v4l2_ctrl_hevc_sps *p_hevc_sps;
-> =C2=A0	struct v4l2_ctrl_hevc_pps *p_hevc_pps;
-> =C2=A0	struct v4l2_ctrl_hevc_slice_params *p_hevc_slice_params;
-> +	struct v4l2_ctrl_hevc_decode_params *p_hevc_decode_params;
-> +	struct v4l2_ctrl_hevc_scaling_matrix *p_hevc_scaling_matrix;
-> =C2=A0	struct v4l2_ctrl_vp9_compressed_hdr *p_vp9_compressed_hdr_probs;
-> =C2=A0	struct v4l2_ctrl_vp9_frame *p_vp9_frame;
-> =C2=A0	struct v4l2_ctrl_hdr10_cll_info *p_hdr10_cll;
+	changed = drm_connector_helper_hpd_irq_event(connector);
+	if (changed)
+		drm_bridge_hpd_notify(bridge, connector->status);
 
---=-BWVk2ZDdh0XDsilTNcWN
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+I will likely keep this as-is to keep existing behavior in a v4, as this
+patch was just about de-bouncing the existing calls being made at HPD.
 
------BEGIN PGP SIGNATURE-----
+Regards,
+Jonas
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCafELhgAKCRDZQZRRKWBy
-9Jw1AQCtkGFJo+V/dxiDLgp25Afo2/2Srsfj8WlBLY8Sax0oBAD/VPHQzDb4Kngc
-cfQ5FyVVoCgUFbHWqCpU1pyk4dtJBww=
-=dk1T
------END PGP SIGNATURE-----
+> 
+>> +		drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
+>> +	}
+>> +}
+>> +
+>>  static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+>>  {
+>>  	struct dw_hdmi *hdmi = dev_id;
+>> @@ -3097,10 +3111,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
+>>  			status == connector_status_connected ?
+>>  			"plugin" : "plugout");
+>>  
+>> -		if (hdmi->bridge.dev) {
+>> -			drm_helper_hpd_irq_event(hdmi->bridge.dev);
+>> -			drm_bridge_hpd_notify(&hdmi->bridge, status);
+>> -		}
+>> +		mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
+>> +				 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
+>>  	}
+>>  
+>>  	hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
+>> @@ -3420,6 +3432,8 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
+>>  		goto err_res;
+>>  	}
+>>  
+>> +	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_hpd_work);
+>> +
+>>  	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_hardirq,
+>>  					dw_hdmi_irq, IRQF_SHARED,
+>>  					dev_name(dev), hdmi);
+>> @@ -3552,6 +3566,8 @@ EXPORT_SYMBOL_GPL(dw_hdmi_probe);
+>>  
+>>  void dw_hdmi_remove(struct dw_hdmi *hdmi)
+>>  {
+>> +	disable_delayed_work_sync(&hdmi->hpd_work);
+>> +
+>>  	drm_bridge_remove(&hdmi->bridge);
+>>  
+>>  	if (hdmi->audio && !IS_ERR(hdmi->audio))
+>> -- 
+>> 2.53.0
+>>
+> 
 
---=-BWVk2ZDdh0XDsilTNcWN--
-
-
---===============3553800391342655743==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3553800391342655743==--
-
