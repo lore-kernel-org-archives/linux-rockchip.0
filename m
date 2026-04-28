@@ -4,75 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE614FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 22:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFB21FF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 22:16:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=iZqs7CF2RXgHV/Y3uJobpMbLf/Y1tFaytBh0efN210c=; b=p5LBXjg+LHG5FM
-	e+keSgHzu8XkxZwZ1Gd6+bOke2Afb2D+7k/lAMmZ8gLxT9AHfp2qvgB9cMfVw+OoU0KNnFNHF44ny
-	XbEVR0wlK/doBumzNRzT0rr+2Nh6BXo/G3S1vGelcZ9/k7nQvTAP+dRhi+QlljtRuoWKcu5mKHXie
-	PI74wS9KCpysGpbqMzAIj7My+8aD5ryhkrADBb1YsuF0rLgZ63dmRQfM7aYtm2oc+oen4fjZDgCn9
-	bEuj7LRgNyAIt13gxseoyPmg67xN0IRL5EaKjaZIb4bZYp50fhrGSpKHyp3UGHQjQiBuPSNXlR9/5
-	nvBhRof9YTXjjsKDX3/w==;
+	List-Owner; bh=CnC+hSMpFzH1CL+zY+3MY0tmCcv885dDh/d5QBiEczc=; b=j7EagTmvBJ/mpW
+	PKP/DwECQ51F6eYDB+XmuXFL6SJj0CbGvodqbzg3olfcXIrkjl315gsTKgmGxNl6FzqVs7FFC3UYe
+	hcKGxHpKsEJ1nN0Vmm1dLT/AFnYHnBx7oOe0N3M8cQHfp7IoBTOCsZB3X3jMDmDV+hDMhRF+pWX14
+	zFnhZGlef4z/3nUs8XK2zyX8u5GtcSNzRBxC9Az9/yFzMwLosH1rVqp84eMoPMFDDReQ/DyVxUWF/
+	44wy/sNSLdf28ANd8fbIkgCmIFP44KHvAOgcjLvoJjT49nNnCtvvDfX+JCv5HZ+WQ4FhX0Ll4aCH5
+	pDpvo+BJfQzj+kaM+1ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHqfE-00000002YDz-3gD4;
-	Tue, 28 Apr 2026 22:12:20 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1wHqio-00000002YSC-3GnB;
+	Tue, 28 Apr 2026 22:16:02 +0000
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHqfB-00000002YDZ-3Owu
+	id 1wHqim-00000002YQp-0GvO
 	for linux-rockchip@lists.infradead.org;
-	Tue, 28 Apr 2026 22:12:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1777414336;
- bh=4Wn6FNQkWVZhm1Jo6+p0qU6roeRRL+Rp43SxbUMbzBo=;
- b=Kp+CYy+mFm9a6JNTFyYfr1qSHs7l403knfv2ObqDEWt9FJiIBB02MxbURx7hzol9U/5f9wbpA
- tYzM4I0B95zh/gTcFuQlvCSQ2C63KuexXFUbkBW3wIQPaf5vya1Swq9jW8UFjAgzcqpFGOODRm9
- oGegdSpGuhGEqWbcNQqxIDTe74tWCnJl2kOY5ZVOmQufYV2F/9fBRwz1b5WPiU8DG7hqQ2IxfXF
- GHIgmzuD7uHpRV3rPyEnCCyvOjiTqKnkn7iZvt/s0f0h/tpx6zEVntBfSjOdSWQKJrRoTMzUETT
- aVAsenfM8Hld8MK6rBvBFbfQ5KorifkNUsmSQyMWCZTQ==
-X-Forward-Email-ID: 69f130bf1c18ffbd317efb1a
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.7.7
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <76999c96-3e3e-40f2-923e-75a30abaf5db@kwiboo.se>
-Date: Wed, 29 Apr 2026 00:12:11 +0200
+	Tue, 28 Apr 2026 22:16:01 +0000
+Received: by mail-dy1-x1334.google.com with SMTP id 5a478bee46e88-2e221a71e19so12019711eec.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 15:15:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1777414559; x=1778019359; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
+        bh=IRuOpUnKlyxobyVU18RBjJjL20LQKeUc7Tn5BEfMoeM=;
+        b=d+84qQ7grA8CQjXiNTHjZPWYE2LNFnB1/2cg+SlSQDsbxoVxcFClTCAunTigEAl6hg
+         dd7rWCkAlJpJAuQ2bEGGFIq2Y0jm+Ce5M9kgUEMPx/+Ac/YuzKc9mUafkWt1YGV61JgM
+         tfuwuQIc148kgd7N3MZLKCsn0FJ8cEhj8tSes=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777414559; x=1778019359;
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to;
+        bh=IRuOpUnKlyxobyVU18RBjJjL20LQKeUc7Tn5BEfMoeM=;
+        b=icfni89aCVz4nV1QQ553Lu1xT/jJhK0uffqVmHHKy+wWRUY/s0e48Fu202pUmRxrfy
+         BJ/3uSCddY/Ky2xsavQn9D5LShgB8gCwTRoyrl1fs2ZqkztOWa2haM8ZoYbUm1JP1rwW
+         F9BRcfQqCJ/0yVfq6uCVfrx+iroLq8uVFOGEo86mFC64rW7ps065eHBXi9HNpkSMDZSS
+         lukzBHvnsxpbuY2JJ5/vvwoIbQoIDREeC5NCrsabCQjq/8G2Zc8PuX/grf/LI0O9nr+W
+         U7ZbvMhRRa29ifqi3UIhaDeUDaFH3d864CZqs1TqLwDkyrAoZaxl21PsTNN7jHkPNHWv
+         USrw==
+X-Forwarded-Encrypted: i=1; AFNElJ813+u35icBk1b0wc09BN/xj4DG9hASOKrIKL9YPbTNCUGEqpX0fSKV8iwvAKMyk+gHthi37cwx8FTcfSNZtA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzJMRAk/klMkf+vboon0hqN1mRMpQDfOtnsFq92XBtu6jBXZWI8
+	AEEleezFPNIypkDozhdi7UjggsrHtLM7sDsfhWnf83sdFvdBhgkZ2ZroL3upLV0f+A==
+X-Gm-Gg: AeBDiet4Sv/W7F3gRMmBpTSiYrJ6FfWGZg5U8jP5OxM7ZDUsj8GZJ7c9NEQCDoNAV7Z
+	bWszvKYEP7AZtB86DwDBzEyZv851AyMs88h3+emoOf7HziAm8obAJ4ExgjFsydtYhhvBI7RHBTT
+	zPpxG7b2C3GTX5DXznid2SR+6zRBVsNV6i32heARSQdLnqL3yMfDnIueo0ZT1Quk/3YyW7L+xbc
+	+ja4uwNvHGpcCRVdqBU9MER1WerVDb0R352DHHUC0Ja4i+9Hh000aTqCBtkRTaL0Dove/ljwoBp
+	YcSZJLgXK6V6pSqMH4Ga/effv5U5eltaycxeXB9279LhRHrYr6k4AkdvF3xcymq7z8t/qaylrCz
+	lXokIAKEnxQ2X9MZ4BFD5t9RjhblOvaNGg50jOl1WUbQYfbsllBwCdPKxQ0AliI+AMPVpdDNMoP
+	PYw89SuCPX6/BUG3aDYiZVKo9hMX7cJcg7YaEEm+clrxK+ytRUhyatQchdU2iJYVURBU4Le9+U
+X-Received: by 2002:a05:7301:fa10:b0:2ed:75d:fe40 with SMTP id 5a478bee46e88-2ed0a084038mr2613645eec.15.1777414558981;
+        Tue, 28 Apr 2026 15:15:58 -0700 (PDT)
+Received: from localhost ([2a00:79e0:2e7c:8:4ff5:9607:c7e5:48f3])
+        by smtp.gmail.com with UTF8SMTPSA id 5a478bee46e88-2ed1c070523sm162156eec.19.2026.04.28.15.15.57
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 28 Apr 2026 15:15:58 -0700 (PDT)
+Date: Tue, 28 Apr 2026 15:15:55 -0700
+From: Brian Norris <briannorris@chromium.org>
+To: Julius Werner <jwerner@chromium.org>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Konrad Dybcio <konradybcio@kernel.org>, devicetree@vger.kernel.org,
+	Doug Anderson <dianders@chromium.org>,
+	linux-arm-kernel@lists.infradead.org,
+	Tzung-Bi Shih <tzungbi@kernel.org>, chrome-platform@lists.linux.dev,
+	linux-rockchip@lists.infradead.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	cros-qcom-dts-watchers@chromium.org, linux-arm-msm@vger.kernel.org,
+	linux-tegra@vger.kernel.org, linux-samsung-soc@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/7] dts: Add /firmware/#{address,size}-cells to
+ Chromium-based DTs
+Message-ID: <afExm9HeB-FMmP4P@google.com>
+References: <20260428200712.2660635-1-briannorris@chromium.org>
+ <CAODwPW-YuhQxyGSeahp8+i-bz_hAvPQQCNWxaZCjrbvkHOQa7A@mail.gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/13] drm: bridge: dw_hdmi: Use delayed_work to
- debounce hotplug event
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Christian Hewitt <christianshewitt@gmail.com>,
- Diederik de Haas <diederik@cknow-tech.com>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-References: <20260403185303.80748-1-jonas@kwiboo.se>
- <20260403185303.80748-10-jonas@kwiboo.se>
- <y1d99UBuRDyCACvs45dokA@collabora.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <y1d99UBuRDyCACvs45dokA@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <CAODwPW-YuhQxyGSeahp8+i-bz_hAvPQQCNWxaZCjrbvkHOQa7A@mail.gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_151217_959675_81C7BD40 
-X-CRM114-Status: GOOD (  24.73  )
+X-CRM114-CacheID: sfid-20260428_151600_287274_564C5B72 
+X-CRM114-Status: GOOD (  16.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,143 +112,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Nicolas,
-
-On 4/27/2026 8:27 PM, Nicolas Frattaroli wrote:
-> On Friday, 3 April 2026 20:52:55 Central European Summer Time Jonas Karlman wrote:
->> HDMI Specification Version 1.4b chapter 8.5 mentions:
->>
->>   An HDMI Sink shall not assert high voltage level on its Hot Plug
->>   Detect pin when the E-EDID is not available for reading.
->>
->>   A Source may use a high voltage level Hot Plug Detect signal to
->>   initiate the reading of E-EDID data.
->>
->>   An HDMI Sink shall indicate any change to the contents of the E-EDID
->>   by driving a low voltage level pulse on the Hot Plug Detect pin. This
->>   pulse shall be at least 100 msec.
->>
->> Use a work queue to debounce reacting on HPD events to better handle a
->> HPD low voltage level pulse when a sink changes the EDID.
->>
->> The 1100 msec hotplug debounce timeout was arbitrarily picked to match
->> other drivers using same const, and testing using a Raspberry Pi Monitor
->> seem to use a 200-300 msec pulse when going from standby to power on
->> state.
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->> v3: New patch
->> ---
->>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++++++++----
->>  1 file changed, 20 insertions(+), 4 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> index f3f8144ae98e..4d079b689b3b 100644
->> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> @@ -51,6 +51,8 @@
->>  
->>  #define HDMI14_MAX_TMDSCLK	340000000
->>  
->> +#define HOTPLUG_DEBOUNCE_MS	1100
->> +
->>  static const u16 csc_coeff_default[3][4] = {
->>  	{ 0x2000, 0x0000, 0x0000, 0x0000 },
->>  	{ 0x0000, 0x2000, 0x0000, 0x0000 },
->> @@ -192,6 +194,7 @@ struct dw_hdmi {
->>  	hdmi_codec_plugged_cb plugged_cb;
->>  	struct device *codec_dev;
->>  	enum drm_connector_status last_connector_result;
->> +	struct delayed_work hpd_work;
->>  };
->>  
->>  const struct dw_hdmi_plat_data *dw_hdmi_to_plat_data(struct dw_hdmi *hdmi)
->> @@ -2528,6 +2531,7 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
->>  
->>  	mutex_lock(&hdmi->mutex);
->>  	hdmi->force = connector->force;
->> +	hdmi->last_connector_result = connector->status;
->>  	dw_hdmi_update_phy_mask(hdmi);
->>  	mutex_unlock(&hdmi->mutex);
->>  }
->> @@ -3046,6 +3050,16 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
->>  }
->>  EXPORT_SYMBOL_GPL(dw_hdmi_setup_rx_sense);
->>  
->> +static void dw_hdmi_hpd_work(struct work_struct *work)
->> +{
->> +	struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
->> +
->> +	if (hdmi->bridge.dev) {
->> +		drm_helper_hpd_irq_event(hdmi->bridge.dev);
->> +		drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
+On Tue, Apr 28, 2026 at 02:43:21PM -0700, Julius Werner wrote:
+> > I reviewed Depthcharge code history and found that this problematic
+> > bootloader behavior dates back to at least 2014, with the Tegra/Nyan
+> > device. Older devices may have similar DTB structures, but I'm not sure
+> > if they have the same address-cells problems. In any case, these changes
+> > shouldn't hurt even if a device was not affected.
 > 
-> I think you'll want to `mutex_lock(&hdmi->mutex);` (or better yet,
-> `guard(mutex)(&hdmi->mutex)` or `scoped_guard(mutex, &hdmi->mutex) {`)
-> here before reading last_connector_result, otherwise you'll have a
-> data race with any writers.
+> I can confirm that Nyan was the first Arm device shipping with
+> depthcharge. Note that the Exynos devices are all older and shipped
+> with an old fork of U-Boot that probably handled this very differently
+> (I believe they had `/firmware/chromeos` but not `/firmware/coreboot`,
+> so they wouldn't have had a `reg` node and should need no `ranges`).
 
-Thanks, I will adjust to something like that in a v4.
+OK, so that makes patch 4 unnecessary:
 
-With the first call to drm_helper_hpd_irq_event() the dw_hdmi_detect()
-that updates the last_connector_result value should have been called.
-So by the time drm_bridge_hpd_notify() is called we should have the
-latest connector->status value in last_connector_result.
+  [PATCH 4/7] ARM: dts: samsung: Add #{address,size}-cells to Chromium-based /firmware
 
-Ideally I would like to fully drop the drm_bridge_hpd_notify() call here
-and instead only call drm_connector_helper_hpd_irq_event() to detect any
-connector changes due to HPD and/or EDID changes. Something to look
-closer at in a future series :-)
+If I respin this, I can drop it. Or if it otherwise looks good,
+presumably folks can just skip patch 4.
 
-Regards,
-Jonas
-
-> 
->> +	}
->> +}
->> +
->>  static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
->>  {
->>  	struct dw_hdmi *hdmi = dev_id;
->> @@ -3097,10 +3111,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
->>  			status == connector_status_connected ?
->>  			"plugin" : "plugout");
->>  
->> -		if (hdmi->bridge.dev) {
->> -			drm_helper_hpd_irq_event(hdmi->bridge.dev);
->> -			drm_bridge_hpd_notify(&hdmi->bridge, status);
->> -		}
->> +		mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
->> +				 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
->>  	}
->>  
->>  	hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
->> @@ -3420,6 +3432,8 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
->>  		goto err_res;
->>  	}
->>  
->> +	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_hpd_work);
->> +
->>  	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_hardirq,
->>  					dw_hdmi_irq, IRQF_SHARED,
->>  					dev_name(dev), hdmi);
->> @@ -3552,6 +3566,8 @@ EXPORT_SYMBOL_GPL(dw_hdmi_probe);
->>  
->>  void dw_hdmi_remove(struct dw_hdmi *hdmi)
->>  {
->> +	disable_delayed_work_sync(&hdmi->hpd_work);
->> +
->>  	drm_bridge_remove(&hdmi->bridge);
->>  
->>  	if (hdmi->audio && !IS_ERR(hdmi->audio))
->>
-> 
-> Kind regards,
-> Nicolas Frattaroli
-> 
-> 
-
+Thanks,
+Brian
 
 _______________________________________________
 Linux-rockchip mailing list
