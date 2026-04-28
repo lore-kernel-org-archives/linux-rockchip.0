@@ -4,53 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F1BFF8876
-	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 16:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57E35FF886D
+	for <linux-rockchip@archiver.kernel.org>; Tue, 28 Apr 2026 16:14:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DH5FEjK2pub6ao7m6dBChAU7LI5QcwRwJW+L3RFE+Sw=; b=Tapv82LNrRoQLf
-	5hwgZs/zNTbGkg/zWtkcUk99/36uCbDXW/GddDJIP3EJjK2s6fSv9oOJvO7s7JKvqYzMJau1MbJ9A
-	JWKFysgvJs9yZt+jJtz4SPICX7ankBwwBQyVNWk8b40WMTmoSOOBIxf/4XHCF1RIvIDEMCYPAzfbH
-	pOH9vDkwHgIb2x2V35v9NWkziGp507jCW+AR7bTr0WaCsXK1wufhKBPgoEo8/VDiulEluahme2bM4
-	csZIJykfFZ1wk4xWOdOGLUKX+I93bXqHj1zLTMYnlS7mHBYarrH5H7Qrv1+GUyUHsbKHFFNBytUQf
-	DT3O1tQyzb8IihCqahwQ==;
+	List-Owner; bh=+ATOobSqdA8/sW2GUcDe82dHxh4M/YgUuE8XbZlLi/Q=; b=tjGRCRG5CaNEKm
+	oM+fqMdS0eDWFT2/l4BrQqA2evpH+tPgK9OGJ8TjPI67GfOl1yFuf1TQ9pGoCSOomJ++sLxLYiQH9
+	17I3wHUsZij4/6kpXjRavBbECI6DIEpqH+GAb6pkIcpKjL5YnLoLHo6pTLWVZqDT5wgugr0K2cwXf
+	GjmWdkOqia9J1ZM5dQ2aVBW2+eulRzCFi2es2dBx8OgQvArtuyBYfFb8jb8zPELAzGhu/Pk+EANml
+	w/L54zNH8aVoylH1IF+lojNVYsRhx/8kvgRrfuFAsX+K429GMJyVDM7bi9OCr2QcUuKDuw4OYtopH
+	W2/f5VEr8WORyp7dZFpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl4l-00000001t05-3R2X;
-	Tue, 28 Apr 2026 16:14:19 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wHl4q-00000001tA4-3nZp;
+	Tue, 28 Apr 2026 16:14:24 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHl4b-00000001shK-2DMi;
-	Tue, 28 Apr 2026 16:14:11 +0000
+	id 1wHl4f-00000001snj-03wX;
+	Tue, 28 Apr 2026 16:14:13 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=VVRlio72xleVZvWU+duz/++jEhYo25d0y78NhTHTYRo=; b=imyanuYHhDEhbQvoSa7fIyX89t
+	1t+WZtUuf966xmx62seTIb7t9Hd8fOPr1kQfQm7AVf7dO44qg25OCbrJUxO55G1OHZt4KobM97vus
+	+AHRvnjrCoRMW4J9fnTJa75rUWGm8NxTrAQi2vvJaJ1oAa6ubiezgER2Mgrv3HKkgPPy78h+eHjYz
+	3jO2GV/7rnnIN0AB08HNOeVfHEa2ydaXhC/Sx87FSsWKameDcCuZJ0SinL2yL3rsj0hXHSeY3uHQN
+	gyIfwkQKe2hl+fUYLW50a0Nkkzmv4/mMV0VOVk9m21Y/r5I9c6AqqfbuTV3V7haaWyezRmD7dJ2Jf
+	97H8nAPQ==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wHl4a-00000003ZKD-0yZK;
+	Tue, 28 Apr 2026 16:14:10 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1777392842;
-	bh=jN3EWA7Y+IO1E1+ctlqunQ4afKe4Rg68KcoQplL5rMI=;
+	bh=0XX4vVa/0GPAugnfThIRtqHaHn956POvyh55GofpEvI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=gkF0O/HwmgHNMX9ayjQ0cJ8nZNMsER1zPFPJnVHuUgTeXgkCreT7jzJPyDO8Sm4rD
-	 5wPW/vzCw3JcyjYPhdeNAK/Whq0Mzubi4G++psJ0jQfovejFYbHVsQM3w6jpCwvZ/Y
-	 uVvI7RMOF6wfdEGKD6zJSuR/v93iMTdwYoKhErPENJc+DYBFl8Gm0bjtuRXBMmZs+E
-	 TsGk6VLfCElHaeCpwcXi1s2aznHyrZ9CUp/hdmP2lt+TR4xhgxuwsTc1k4F+jqdeYT
-	 k+7T3pfkhN/vk0wVcCjU8R8U0rf544OgBz7gQwdosBKQNC1IrEwj7QBm7ND1MD5iY8
-	 jk/MlFMC5NRmA==
+	b=LLCEyRfh/f8c6ZwocfwlBbkwybR71sOgPU2xaEX92cAp3+jbVit4H3LxqODmmsehh
+	 vUyE9Tou3fIfsLvo8ITsyDwetys066uccZOgiC5QxHmurKmFh83puZoCxQwnNUFgFZ
+	 uGoXAGsw6FglqB//WZ6FsBy0PjueoItq84g/G3hca9flERCxclVUyamxc9BN9j99R5
+	 sg3HfPQQsE5lZ9YClIQW4WMBNoRnjrI5pvOK/msdrDkwoUycfrvRjHoEkb4dEEcScc
+	 Onf0PHMyrx+Rps/dVfDQIacWWDh4e3rD9sIf+U4aNuf+9pCRLFqb1NBgb5D/mawDa+
+	 RuRlwVrbO59/g==
 Received: from jupiter.universe (unknown [100.64.1.62])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: sre)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 24D2A17E1562;
-	Tue, 28 Apr 2026 18:14:02 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CBB0017E1537;
+	Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
 Received: by jupiter.universe (Postfix, from userid 1000)
-	id 87F6348003A; Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
+	id 849F2480035; Tue, 28 Apr 2026 18:14:01 +0200 (CEST)
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
-Date: Tue, 28 Apr 2026 18:13:45 +0200
-Subject: [PATCH v4 06/16] phy: rockchip: usbdp: Add missing mode_change
- update
+Date: Tue, 28 Apr 2026 18:13:43 +0200
+Subject: [PATCH v4 04/16] phy: rockchip: usbdp: Amend SSC modulation
+ deviation
 MIME-Version: 1.0
-Message-Id: <20260428-rockchip-usbdp-cleanup-v4-6-7775671ece22@collabora.com>
+Message-Id: <20260428-rockchip-usbdp-cleanup-v4-4-7775671ece22@collabora.com>
 References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
 In-Reply-To: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
 To: Vinod Koul <vkoul@kernel.org>, 
@@ -66,26 +80,26 @@ Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
  devicetree@vger.kernel.org, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1949;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1708;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=jN3EWA7Y+IO1E1+ctlqunQ4afKe4Rg68KcoQplL5rMI=;
- b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnw3MnLtB8nOxEXUVhTmg2XYLHFs60idx6Vj
- FjOT2c9a7ivKokCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp8NzJAAoJENju1/PI
- O/qa5gkP/RdMPWyyzXlIZAxDzVUlY4nV3vFAKU59lKk7BbvtSN9nPI28xd4KWhd30imgyra2EPo
- tSp+lI1lIUciR34/pwcd8zNaZ3jzYjX5Ge84heJNULnxKtoW0zwKQSdCz+14sDbreXC4spAtjQc
- i2H6sDF5EBqh2tVonardS/xnWN3cOdMfS5jrVwyvqbXHml1GgpHHwtLalYqRtY29WDkp+pM0zhx
- QOGUTSHWal4QU7+DGzWWMYDu47puZ0MQT03mWYuzx5nUW75Z2eETrW0C8583mlK8y8GmwGOsGmL
- WQplNGL/2UkCOyScfCju1sA5gMxL623U5yvi5fL4l9LEPSJKiknRrGZGShuKFaAm9/ryiG46IDr
- sO+/R1EflsElfQk8LP0jcNjHrleIIFMms4+sMDAetvS10+6NV/S7eG61+qDnEC1fXDf+4ax1aPb
- FZj123ur4Iq0+XtDX98iAA+zddB1VAvn2pNn2YyOwxOS+N4TtFVSRKoLy3hpX2FLPc309l/GsWK
- Z4oft72s4L4N01Eaib1V/v1iAkS7/jkgYUYTiXBID1163JIHwUIg8rziyMCjH5juwL4HEspVBk5
- yuLeFMGD9eTB6pywxnYN9tV5Y8mfURTe/NEdROxUQHbRlVVJAPaAKQ9Pk1nqG5NCkNfWc+uFV9c
- nbURqjmZXuM6MlOPlgikvPg==
+ bh=n8lRzOlMyygGbWhWimK1M+yPX1RbWFhy4RXxCi2HYdw=;
+ b=owJ4nAFtApL9kA0DAAoB2O7X88g7+poByyZiAGnw3MjgjA0lE+iTwOFRwAegngadQ8WC4GWmZ
+ S+yAiWJpPsQ6okCMwQAAQoAHRYhBO9mDQdGP4tyanlUE9ju1/PIO/qaBQJp8NzIAAoJENju1/PI
+ O/qaIHAP/At6d+Rx9C0Xn01ry0teoum+lfMfUBebklnK/mfOu7IC+XbNKo866CWkwtQ+5Sq7WXC
+ 2p71qOtmod5u6Tz8rh0jFWM10oVFUvkY2MHCGwvKfNUPNt0FkUSciyKrZyYhec3P+pDjXUvcFH6
+ xFeeiVYDJlnnmVkpLEZgsj92/ZTzZrnoF/Led4cdC2womD/CoKiaTVyx0+P8Bmvy+Yx7tlw4wZ6
+ kblD9XSJBlGykVIt0Gn4EM2HBbduSLHxISQXozKadVr6CMkj6TP44punSV75TtGelC9IwxbLBNU
+ QSyx3uwk0jG9nKtoUOa0OUGQJMEFBYuGzaErjYtMkD4G/PqFpPEo+RMoRFzkrxM8v12Vvne8Ing
+ QLu2SZfBh5oBSvDY7cgiVWOjPuJ5/VSllQwpbcfia2E/kWEqCqoVjebs6WcAKDiQBip66AK1hVr
+ MDBB1z64fgjK/P0lndVSTa7B0Ld15MMwdO2I2nWI8yIe7QGF8RD3NQHhPeXBEXiCutVtVsFf8yB
+ 8IRjp0oPHysxNUsM3bwagRMlPs5Zdy8o0Lv+f9/KGBPTfIdz1BjSWRLoBPTQIlPQZfuNUlhmnAE
+ 1OrhX5mki0fFia1kE8jlAAre2lXKlwgV+jGHAd5NlfJboDueyVjgdmSUK5Evlycdj8Zf72yCFWv
+ DaelxzUiD/yBMmeO5osQqqQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_091409_792715_94FCDC8E 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20260428_171408_473212_FB59341B 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,59 +116,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rk_udphy_set_typec_default_mapping() updates the available modes,
-but does not set the mode_change as required. This results in
-missing re-initialization and thus non-working DisplayPort.
+From: Frank Wang <frank.wang@rock-chips.com>
 
-Fix this issue by introducing a new helper to update the available
-modes.
+Move SSC modulation deviation into private config of clock
 
+ - 24M: 0x00d4[5:0] = 0x30
+ - 26M: 0x00d4[5:0] = 0x33
+
+Signed-off-by: Frank Wang <frank.wang@rock-chips.com>
+[Taken over from rockchip's kernel tree; register 0x00d4 is not
+described in the TRM]
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- drivers/phy/rockchip/phy-rockchip-usbdp.c | 16 +++++++++++-----
- 1 file changed, 11 insertions(+), 5 deletions(-)
+ drivers/phy/rockchip/phy-rockchip-usbdp.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-index 97e53b933225..febc148a754e 100644
+index 98562a888b42..1f686844c337 100644
 --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
 +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-@@ -619,6 +619,15 @@ static void rk_udphy_dp_hpd_event_trigger(struct rk_udphy *udphy, bool hpd)
- 	rk_udphy_grfreg_write(udphy->vogrf, &cfg->vogrfcfg[udphy->id].hpd_trigger, hpd);
- }
+@@ -350,7 +350,8 @@ static const struct reg_sequence rk_udphy_24m_refclk_cfg[] = {
+ 	{0x0a64, 0xa8}, {0x1a3c, 0xd0},
+ 	{0x1a44, 0xd0}, {0x1a48, 0x01},
+ 	{0x1a4c, 0x0d}, {0x1a54, 0xe0},
+-	{0x1a5c, 0xe0}, {0x1a64, 0xa8}
++	{0x1a5c, 0xe0}, {0x1a64, 0xa8},
++	{0x00d4, 0x30}
+ };
  
-+static void rk_udphy_mode_set(struct rk_udphy *udphy, u8 mode)
-+{
-+	if (udphy->mode == mode)
-+		return;
-+
-+	udphy->mode_change = true;
-+	udphy->mode = mode;
-+}
-+
- static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
- {
- 	if (udphy->flip) {
-@@ -649,7 +658,7 @@ static void rk_udphy_set_typec_default_mapping(struct rk_udphy *udphy)
- 		gpiod_set_value_cansleep(udphy->sbu2_dc_gpio, 1);
- 	}
+ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+@@ -377,7 +378,7 @@ static const struct reg_sequence rk_udphy_26m_refclk_cfg[] = {
+ 	{0x0c30, 0x0e}, {0x0c48, 0x06},
+ 	{0x1c30, 0x0e}, {0x1c48, 0x06},
+ 	{0x028c, 0x18}, {0x0af0, 0x00},
+-	{0x1af0, 0x00}
++	{0x1af0, 0x00}, {0x00d4, 0x33}
+ };
  
--	udphy->mode = UDPHY_MODE_DP_USB;
-+	rk_udphy_mode_set(udphy, UDPHY_MODE_DP_USB);
- }
+ static const struct reg_sequence rk_udphy_init_sequence[] = {
+@@ -412,8 +413,7 @@ static const struct reg_sequence rk_udphy_init_sequence[] = {
+ 	{0x0070, 0x7d}, {0x0074, 0x68},
+ 	{0x0af4, 0x1a}, {0x1af4, 0x1a},
+ 	{0x0440, 0x3f}, {0x10d4, 0x08},
+-	{0x20d4, 0x08}, {0x00d4, 0x30},
+-	{0x0024, 0x6e},
++	{0x20d4, 0x08}, {0x0024, 0x6e}
+ };
  
- static int rk_udphy_orien_sw_set(struct typec_switch_dev *sw,
-@@ -1385,10 +1394,7 @@ static int rk_udphy_typec_mux_set(struct typec_mux_dev *mux,
- 			usleep_range(750, 800);
- 			rk_udphy_dp_hpd_event_trigger(udphy, true);
- 		} else if (data->status & DP_STATUS_HPD_STATE) {
--			if (udphy->mode != mode) {
--				udphy->mode = mode;
--				udphy->mode_change = true;
--			}
-+			rk_udphy_mode_set(udphy, mode);
- 			rk_udphy_dp_hpd_event_trigger(udphy, true);
- 		} else {
- 			rk_udphy_dp_hpd_event_trigger(udphy, false);
+ static inline int rk_udphy_grfreg_write(struct regmap *base,
 
 -- 
 2.53.0
