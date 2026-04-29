@@ -4,156 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7697FFF885A
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Apr 2026 01:57:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A37E6FF885A
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Apr 2026 02:47:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CQPit6F6CI7GI9Kn5wI/D0/LGgi4OPHiV0Xi9fm+sCY=; b=AunQZGS9r3ebJK
-	PvrpdJYK/YqZohqbJeUGs97YKb1htyZF+dnG/aIoIhYrg7Jloa7uvbn9/JmTrngepGUoR8oEDB0/h
-	BmPPT/nz8AYB+TrLdNrwr/hbDh6K8OKT4sjQv95ohr99Mb5rLmLP2MkJGzYcFF6vyd61brm+kVc04
-	6tsi1Z+h0lbhB3O2Z/Si2KLpVBi+CgaRbNcuUnZl8wj7Ey45f9Da4wQNLtOABCX56JLnrzODTzp2t
-	5z6BBd/Ip9+4PQNHwmJ4P3E/HbiYdKCukDI5rBGgJ30wy8djk9JaDfB6om+JduKKRd4agNrG/fgsw
-	MKddibAW5liGTDNqb9og==;
+	List-Owner; bh=3X3QaNilQPpdmPR57AWfq0yYIwiSzq/XDsXv90S1JFE=; b=38JI7mK/dvYISe
+	IT9Vg0In68qK4J12y0i8iaEFsbUsdr7IUcoEC/QMSl0gFeOiJp/NEQJieui/7MYZbxRu0Uzfg0jp8
+	w2JUDz6VpvtHoQJ7Vs2+Eli4LspUshckXynpoD0hVGsBSvGINn2hUqLJyh+V1b0vLAKFdFT7oGhpa
+	iAtUV3zrG9ZKddE7T50yuO6lyk6PDWdUWZ4DoDolYZjr+T/SkPwW0hJSutiejANrBQz9HSRsnUvxN
+	1msiZI4uAspp1/A19vPbaJX6mBE13FFlYpRYI1E7WRojh0IKdh0oixcsV/lA7Y/FZu99wNZCVU4yZ
+	iqcWs3/y4zBGuAEkHQRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHuBE-00000002krh-1EYp;
-	Wed, 29 Apr 2026 01:57:36 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1wHuxp-00000002nnF-18ka;
+	Wed, 29 Apr 2026 02:47:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHuBC-00000002krI-0B4t
+	id 1wHuxn-00000002nls-0XfC
+	for linux-rockchip@bombadil.infradead.org;
+	Wed, 29 Apr 2026 02:47:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=hI3It/TBwNAH4is3Y19ZdHuT8VgKHisEZqEHUOa55pA=; b=Q4wYGm9Csc2Pd4vexONGEdpcJ+
+	kK9AEEnLP/nHkVmn3Txq47Vv+CMzFlcp5EE4DPydFadwWBa0LI4jw+6/LzsNRR8naQCvRpTYuK+NJ
+	jtaB1cq8earE5ckiHhs2wGq84oEJ+i2pV1zb6h6bjbZB6X/DVLDEXJzhAYemEB5Kd47QYwN/OQxI2
+	lkwzkZoO91u1+0qggznAtL9ShjYrKxaG9rp/+rgVV6O5VEbw5saRctIIaaMNGHyJ1HmPEV6HdZNp1
+	TH5Y2D1PFuueRTcp4ZDQNXUSSlhyEKAKLSSERZQmUcXw9RZCA5CupoV/qMp0D/2Ip6po3ICD3Ur/v
+	1VPbo4Kw==;
+Received: from mail-ot1-x362.google.com ([2607:f8b0:4864:20::362])
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wHuxj-00000004Ur1-3m54
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Apr 2026 01:57:35 +0000
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 63T14TKP4070689
-	for <linux-rockchip@lists.infradead.org>; Wed, 29 Apr 2026 01:57:33 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=4urT4VP+Xz6y27POMSX0r8FX
-	LKE43oUrv36tFzO1cFQ=; b=UaYN3e1tz/BlSRGuiLMZgQCQBm7D/jlmTF5PuOEK
-	CbXSaPNBlvaMscixaephMeAGZIKp1qa4l7EBI7Y1Ge4TCw559dKawe4TWJuBjMS0
-	1veAsgDktw5zfx31BiEIZ/+UzH/ElWvFXMh66WSStb1MKrzcUUzwQL8Nea8oorOu
-	ubZ8Ts8nhayImGm8bOfxzqAvh65MPGZDY4cnS6z/m5Z1N08mHw8U2BKu7lWBtczz
-	XsmFU3P1pxAZfgGbsfIwa6Cu1Lqk1hpDg4tXIsIFXVpCCpSA2zBE3FPbgVN3aedQ
-	qMzioi1d7/KWzqFjNxN3CLq1PX9f1Br6lVYeuBM3xeVj9A==
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com [209.85.216.69])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dtttjk7er-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Wed, 29 Apr 2026 01:57:32 +0000 (GMT)
-Received: by mail-pj1-f69.google.com with SMTP id 98e67ed59e1d1-362eaa3aa61so6374812a91.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 18:57:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777427852; cv=none;
-        d=google.com; s=arc-20240605;
-        b=QsJ4mykGPNUrIcnxjjwa6heTt+JrOupciryl6ulKpszvjkGY0fNtos9sNwvo7sURqs
-         PwbTxyMkwLPqs+TLjU2VNR1Z9D7OmEwSnVQTCDYHhP6FeRiQjwI+II/azsBoruiAAn/t
-         0INliiKp76HHF/RE9XgZeCUM8VCe0BWkS4vVCTEsCvj1+nfrMlpa0dKqjKJcZHXRCAjQ
-         SfHIepxFu8AfdlNOvDzuhm9cFIQ3L/1CX/olQu4wI7KsDBfte3mE4J1jwKe5UQO0xlRO
-         eUwbepxhUDxOaou724zMPycmpUmS+eREaWoTEm/AZyFCiyTvufAXzOBbLmD2GO9y13Jd
-         zpdg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=4urT4VP+Xz6y27POMSX0r8FXLKE43oUrv36tFzO1cFQ=;
-        fh=TC/KwVLudkbVsXNQXnYAwwaI+B57AvyGUCQ+ykqf0MM=;
-        b=GKCIW+HBQAqDhbHDO0m/XifOSBde5/ahD77CBpGoDI42a+NcrWjJO0bmRriFO9DKZP
-         MwScjSF5WuvlVavEe3l8eD8mXd0fLE6DgcbllkkezatljGR05vVywpnP8nTZiEhoLWf4
-         IMt3Jg0OudeINb4aUTmQeemo/tqY7BK6+1qQfLd+VRRv7s4cgrhF3KThQdz1Or/66k94
-         mHNg5Md4KagbfB6rBreO6FZDgIJv6uqzqHUUJ1UP7NNRrcCcUnq089U4AZzoYEzOGGNw
-         vfD/OrVcbM7ZKGhmVpQ7I3NjQV8e5R0WgJJ4ojL6b0Q1rTDFuttruWM7YoK86J47Deqn
-         0ejQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 29 Apr 2026 02:47:46 +0000
+Received: by mail-ot1-x362.google.com with SMTP id 46e09a7af769-7dcdaf06498so5531434a34.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 28 Apr 2026 19:47:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1777427852; x=1778032652; darn=lists.infradead.org;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:from:to:cc:subject:date:message-id:reply-to;
-        bh=4urT4VP+Xz6y27POMSX0r8FXLKE43oUrv36tFzO1cFQ=;
-        b=NRXj4nwsag9jJzMZ9tgE8v6aEI7UBB4BiHA1C6u+MjVplqHY/m8s4urtEoGEy7KuBW
-         ZiKneoxq/xPDfQ5KQV4GxkE5kxSJfGu9Gl50LUa2hp1XOZmn1HZ6YAbadd+0VKvvTt8l
-         Zahae9ua5twQfXwUx5u20WpM2iWCnnRbiIve/UQpHsOM4j3MPytoP5zODcJSfuf9m7oY
-         KvmhCPeAVQyTIIAw0Lt9J31W7LfP8s0zRVjLVKdAhtaT49dvyrcOeZg1Zc9B8a91Eb3f
-         uq/80oi6P+9Jv6kBFj1Z4T36OMhw752Nr7kg+n2twUHQEybTPjS35F7q6ttO5rLvI47J
-         YZiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777427852; x=1778032652;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=ausil.us; s=google; t=1777430861; x=1778035661; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=4urT4VP+Xz6y27POMSX0r8FXLKE43oUrv36tFzO1cFQ=;
-        b=GTdxLkccCaZNKRQ/HdEjGy+/sQZyyFuK8xZR45vexVfV0Nk7Qqmb/zpqV8q9FMrWE0
-         QOjHmsYbUpVIe5xAnkhmVgdueCmGhhifdAmerWkc20exc925dOXELQSC5hmG/3R24+dp
-         dCdCenKGhwH+2CxcHrF/IytiXzzPJ846UWidw8BEWzHPUajdwhG8AXReo2sBno710cj8
-         KHPgnbtXAQ/Rg/bX/bmfjsj4Gfoeu9a/XylUxuO0I+HY3Xt1D+aNIwi5XN9p4x6Zq7dc
-         6fwLobffknI6IThHLPH6mVYuxyXqd1Pp/F/bafmN5KL1arkG0EnD+gs3Gxb8CTuChTTn
-         5khg==
-X-Forwarded-Encrypted: i=1; AFNElJ/4ldXMHOKe9/unu+KerWP7UPQE37bvCxg/+mCUW/AcSCzCaJU4espuqKJJXuo6g6EATI3MuWPHQ+1leSoqwg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzTz0q/BjhYg7vCDzpXjnkBvYqBJiHMMQUWoxbnIWVwuAalbD4b
-	697L+DRTqITtwLRxhzKasN8I6my6ykKOUsMLR4Q0nQ82a09kfIK8w6UBK9AVmLiJidhEyXgJIUK
-	3x61yz49upw+mRAd0SZ8AW0FIZyX6gd3SBp04p/tMhXGp8Nde++RfnCYllF7G2Ey06XqBOl4g1D
-	II4uJYfOgfuu9up8mqhZUQ+v6eojjayMD4GDEI3Ys9Co+yHkIUeA==
-X-Gm-Gg: AeBDieuuBHAEZyvUmJFGRwP3NzgufdK740oeb6oc2sG8Cx/gj8JkN3l+/4Tz0CMcA2s
-	OdWi6sgyHX5fuIjMmHidV/nAxBVOd/IuI23I7/sGqjObnSw8feLvoLnvxdwUTNX9wXUSMa4NYwW
-	cSgLufI8nIHq1vafqbTvYEY65W0xG2MZw5J7RVs5b2GRjK1em9tjcjDI69aQQCuQp7Hx+7vybPI
-	qFrloLClLf5TjWeElKUk5y3u3kF029QwXjrqfInFOePPRM1
-X-Received: by 2002:a17:90a:d00f:b0:364:6558:99be with SMTP id 98e67ed59e1d1-364a0f54fd5mr1869799a91.22.1777427851571;
-        Tue, 28 Apr 2026 18:57:31 -0700 (PDT)
-X-Received: by 2002:a17:90a:d00f:b0:364:6558:99be with SMTP id
- 98e67ed59e1d1-364a0f54fd5mr1869773a91.22.1777427851045; Tue, 28 Apr 2026
- 18:57:31 -0700 (PDT)
+        bh=hI3It/TBwNAH4is3Y19ZdHuT8VgKHisEZqEHUOa55pA=;
+        b=M4iH1HjYN51441MU/+7zlz9qDZKeSVk1lHDudlYOEBmgo7UkMx9z9ISdtbhyrUcVpS
+         Z84DldR38esU4UyevpNRBYpGojqUgRt4GvKsRjeWBIPLt4NHTxSN2VlS854ypc9/AYKw
+         LknrYcCmzF6XOO3yfsDmwg//Zy5rx6OMeFlmM78tsJgRjuVhU9S74yOTSY4w8XF2RhwU
+         khR97PZ5up+l2Vy9tZH+5EUTsrgG2LoJWiGVkgdYlGavFFMk8/+tQ7QUDVjqCBUhCKAO
+         KyIUVkBp58jmsoWmRTK+tA+/AUxfPEuKri6DGYkkiCIf+eS5lUVWmuuH6rRht6n4eMdW
+         MXXw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777430861; x=1778035661;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=hI3It/TBwNAH4is3Y19ZdHuT8VgKHisEZqEHUOa55pA=;
+        b=pvGBPi8tCfFjQFtk4wLK7Ua8NC1Ni6snFDE0Vk5EI4rBcSREV46gxE3JSw2iHiYcr8
+         hhquy3kMBPa0/snuEO42c+4VnUxyHKJYGSm8g3cBB0zm/V6EAcOjIYqnUZdqCSpBupjY
+         47GXVeDo38yh+eTgcwZXMxZL0emXuGJ5t+aCWJzraYNjDu6/drIemBQ7YyPUj+ZBRwec
+         ZOdHTuj+ZTCKr5k5JuhCCa0nfZp+NxGKnG7G5ETiQeyr7MtCEffpWp08bRfia2M0t9hv
+         T0CFKybgZPniHdb6BK3AfeNNd0gGLHgoBRxL0Af9QHY/8GaV9juS9UEVml9rFQ0gkrNW
+         Q7Bg==
+X-Forwarded-Encrypted: i=1; AFNElJ/CDz/U/p/+NvO9ywo55QN/URQJrSthGrJdojhmHzR/NtgW4qW8Jd1fRJHxEIgMloLIA3oSI/cTAw7+YyCSlw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxFxhNGVfDR1ti64JIqR1FL5rjD0SP3Xop7ognWRl9HSoOtox0q
+	57gLxoDVtgsLu5ddWwtVfNxmQhVBwzeRsF0vZIBSPWADlk6sV39aE6kiYJ4oMPCoTGWs/35ec++
+	p+sbcQdRkIM9Egqnw0e/V+53qYKbBxtCBz9MR
+X-Gm-Gg: AeBDietMlrlDZdL7IUNeYmGcyRFKEJ/O+M0GLCoJ5M3k0cyuHK/HwMcRXlKGzgUoAds
+	vEx+PsQig7eaMBqquXel8d/MfEIrkObdDrLCoZyUivD5qPCHc/xIKfFFz7s1pAKFqjTZqg9lr1B
+	Z2nKOfW9Y00coCnezoDWZPx6f655meg4A9hWvC2/Y0NgdZXiZykwGsNKPUZY31ARtm5dQZJMMq+
+	3WpH77yYJo96SL2nbfuv4HrawzLpTZaeBfKnTBRZibP9qtkYw9/Ld2Brfp2RxjkKg0h3WXcmsYg
+	AxyejUhpqMeJmdd8qaOfamKAx8hiIe6yM0zEBUhIBqSONTWU8z7nKK2R3hdtnjg012lKSpvUZmX
+	JqH1e5bG7b/ALB1mTdXsoTTNxu/mGZaz9JtYdWR6EjwZL6nhWvotjg6A=
+X-Received: by 2002:a05:6820:61d:b0:694:8ba4:e3bd with SMTP id 006d021491bc7-6965cb725e7mr2917108eaf.36.1777430861570;
+        Tue, 28 Apr 2026 19:47:41 -0700 (PDT)
+Received: from ryac.ausil.us (207-179-239-100.mtco.net. [207.179.239.100])
+        by smtp-relay.gmail.com with ESMTPS id 586e51a60fabf-4340e711c00sm110958fac.5.2026.04.28.19.47.40
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 28 Apr 2026 19:47:41 -0700 (PDT)
+X-Relaying-Domain: ausil.us
+From: Dennis Gilmore <dennis@ausil.us>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Alexey Charkov <alchark@gmail.com>,
+	Quentin Schulz <quentin.schulz@cherry.de>,
+	FUKAUMI Naoki <naoki@radxa.com>,
+	Peter Robinson <pbrobinson@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Dennis Gilmore <dennis@ausil.us>
+Subject: [PATCH v9 2/4] arm64: dts: rockchip: rk3588s-orangepi-5: rename PLDO regulator labels to match schematic
+Date: Tue, 28 Apr 2026 21:47:33 -0500
+Message-ID: <20260429024737.544813-3-dennis@ausil.us>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260429024737.544813-1-dennis@ausil.us>
+References: <20260429024737.544813-1-dennis@ausil.us>
 MIME-Version: 1.0
-References: <20260403185303.80748-1-jonas@kwiboo.se> <20260403185303.80748-10-jonas@kwiboo.se>
- <go5i5iiwra426hydnvc5thhgtknv3fa7ti35q3et6frroxag2n@tfbfiyjmtzkk> <9b4a676e-cf8f-4708-b580-8140a2e7a805@kwiboo.se>
-In-Reply-To: <9b4a676e-cf8f-4708-b580-8140a2e7a805@kwiboo.se>
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-Date: Wed, 29 Apr 2026 04:57:20 +0300
-X-Gm-Features: AVHnY4IYQX_h8aB5YnKvkJJ7Oy4QIDyzxAhVuaSDWbswPbN5Is-XUGtjvSm4n90
-Message-ID: <CAO9ioeVb3KMao_jKraAjXUXqOVC=2bLgRA-Q-5DPArFYrgFFwA@mail.gmail.com>
-Subject: Re: [PATCH v3 09/13] drm: bridge: dw_hdmi: Use delayed_work to
- debounce hotplug event
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Christian Hewitt <christianshewitt@gmail.com>,
-        Diederik de Haas <diederik@cknow-tech.com>,
-        "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
-        "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNDI5MDAxNiBTYWx0ZWRfXwbXYx9llOYiE
- nPtU3EePLvb9BQC2NLJamKhI4uvVlG7XLEnp5DLm+t5AmCm1H+Wwz144FLLn2E9m80rM2wSNfZr
- uDLNV02SlpQBhURsYBx2+PG4N/uRJRWashjnCasT/r5HwydiUzHB50UCb0PVaB7WPWsjz3EAFz3
- PSf9FK835QnHIQPK+B5PxtXklvyqRB8vXZvijCGOKiDogogN+V5MTMid1Kntg304R75OdPpHoHx
- mHOGFJEPgBBJby8Y1vhiPPLrd3TI/G98ifnUHyaSg3YdDiNNnp1SgFB8eChU0oKPMRDgx1mqsll
- XBHfaVxoHDL5t70+T/BcnLviND31RZRjUTULdSakN+tsrSmQ1KxEBJcDf6LVme2AeBfQnz/5UQU
- cQ7dZMM9mQ7CCoJbnTaBudnzwotATGi0DA4/p+sOPkNq4m5SFxJwNmi7HSPlKRjFDpnQJuVXgYY
- XV6D/nD/YkHANu9+fbQ==
-X-Authority-Analysis: v=2.4 cv=TZKmcxQh c=1 sm=1 tr=0 ts=69f1658c cx=c_pps
- a=vVfyC5vLCtgYJKYeQD43oA==:117 a=IkcTkHD0fZMA:10 a=A5OVakUREuEA:10
- a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=ZpdpYltYx_vBUK5n70dp:22 a=c8wtwwsRZL7ZEJ2JRekA:9 a=QEXdDO2ut3YA:10
- a=rl5im9kqc5Lf4LNbBjHf:22
-X-Proofpoint-GUID: xW-E7e580oKOHMXO7fcpWC0uL1iFPCur
-X-Proofpoint-ORIG-GUID: xW-E7e580oKOHMXO7fcpWC0uL1iFPCur
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-04-28_05,2026-04-28_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 spamscore=0 adultscore=0 phishscore=0 clxscore=1015
- suspectscore=0 bulkscore=0 malwarescore=0 impostorscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2604290016
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260428_185734_228624_897A23F0 
-X-CRM114-Status: GOOD (  40.84  )
+X-CRM114-CacheID: sfid-20260429_034744_323988_DF91796A 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,174 +127,98 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 28 Apr 2026 at 22:34, Jonas Karlman <jonas@kwiboo.se> wrote:
->
-> Hi Dmitry,
->
-> On 4/28/2026 2:38 PM, Dmitry Baryshkov wrote:
-> > On Fri, Apr 03, 2026 at 06:52:55PM +0000, Jonas Karlman wrote:
-> >> HDMI Specification Version 1.4b chapter 8.5 mentions:
-> >>
-> >>   An HDMI Sink shall not assert high voltage level on its Hot Plug
-> >>   Detect pin when the E-EDID is not available for reading.
-> >>
-> >>   A Source may use a high voltage level Hot Plug Detect signal to
-> >>   initiate the reading of E-EDID data.
-> >>
-> >>   An HDMI Sink shall indicate any change to the contents of the E-EDID
-> >>   by driving a low voltage level pulse on the Hot Plug Detect pin. This
-> >>   pulse shall be at least 100 msec.
-> >>
-> >> Use a work queue to debounce reacting on HPD events to better handle a
-> >> HPD low voltage level pulse when a sink changes the EDID.
-> >>
-> >> The 1100 msec hotplug debounce timeout was arbitrarily picked to match
-> >> other drivers using same const, and testing using a Raspberry Pi Monitor
-> >> seem to use a 200-300 msec pulse when going from standby to power on
-> >> state.
-> >>
-> >> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> >> ---
-> >> v3: New patch
-> >> ---
-> >>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++++++++----
-> >>  1 file changed, 20 insertions(+), 4 deletions(-)
-> >>
-> >> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> index f3f8144ae98e..4d079b689b3b 100644
-> >> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> @@ -51,6 +51,8 @@
-> >>
-> >>  #define HDMI14_MAX_TMDSCLK  340000000
-> >>
-> >> +#define HOTPLUG_DEBOUNCE_MS 1100
-> >> +
-> >>  static const u16 csc_coeff_default[3][4] = {
-> >>      { 0x2000, 0x0000, 0x0000, 0x0000 },
-> >>      { 0x0000, 0x2000, 0x0000, 0x0000 },
-> >> @@ -192,6 +194,7 @@ struct dw_hdmi {
-> >>      hdmi_codec_plugged_cb plugged_cb;
-> >>      struct device *codec_dev;
-> >>      enum drm_connector_status last_connector_result;
-> >> +    struct delayed_work hpd_work;
-> >>  };
-> >>
-> >>  const struct dw_hdmi_plat_data *dw_hdmi_to_plat_data(struct dw_hdmi *hdmi)
-> >> @@ -2528,6 +2531,7 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
-> >>
-> >>      mutex_lock(&hdmi->mutex);
-> >>      hdmi->force = connector->force;
-> >> +    hdmi->last_connector_result = connector->status;
-> >>      dw_hdmi_update_phy_mask(hdmi);
-> >>      mutex_unlock(&hdmi->mutex);
-> >>  }
-> >> @@ -3046,6 +3050,16 @@ void dw_hdmi_setup_rx_sense(struct dw_hdmi *hdmi, bool hpd, bool rx_sense)
-> >>  }
-> >>  EXPORT_SYMBOL_GPL(dw_hdmi_setup_rx_sense);
-> >>
-> >> +static void dw_hdmi_hpd_work(struct work_struct *work)
-> >> +{
-> >> +    struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
-> >> +
-> >> +    if (hdmi->bridge.dev) {
-> >> +            drm_helper_hpd_irq_event(hdmi->bridge.dev);
-> >
-> > Nit: please consider this for the followup cleanup. The
-> > drm_helper_hpd_irq_event() is not very effective: we already know which
-> > bridge (and thus connector) caused the HPD event.
-> >
-> > Moreover, the call should be redundant as drm_bridge_hpd_notify will
-> > call the registered callback, which normally would be
-> > drm_bridge_connector_hpd_cb(). Internally, this function calls
-> > drm_kms_helper_connector_hotplug_event().
->
-> I disagree in part, based on my testing, without a call to
-> drm_helper_hpd_irq_event() or drm_connector_helper_hpd_irq_event() the
-> internal check_connector_changed() never seem to be reached to detect
-> any connector->status and/or connector->epoch_counter changes.
->
-> In my ongoing work to convert dw-hdmi to become a hdmi bridge, I have
-> actually done the opposite to what you suggest here and instead fully
-> dropped the call to drm_bridge_hpd_notify() made here.
+The Orange Pi 5, 5B and 5 Pro schematics label the RK806 PLDO outputs
+using the pattern VCC_*_S0 / VCCA_*_S0 / VDDA_*_S0. Rename the base
+dtsi regulator labels (and the es8388 supply references) to match:
 
-That doesnt' sound correct, but maybe it's because dw_hdmi isn't using
-drm_bridge_conenctor. The latter one registers a hook in the HPD
-bridge, which then receives the event and performs all the
-notifications. If the dw_hdmi doesn't do it (because you don't need
-it), then it's fine for now. When you work on conveting dw_hdmi to
-DBC, I'd recommend using the bridge notification instead (as it would
-then play nice with the rest of the bridge and HDMI framework).
+  pldo-reg1: avcc_1v8_s0 -> vcc_1v8_s0
+  pldo-reg2: vcc_1v8_s0  -> vcca_1v8_s0
+  pldo-reg3: avdd_1v2_s0 -> vdda_1v2_s0
+  pldo-reg4: vcc_3v3_s0  -> vcca_3v3_s0
 
->
-> drm_bridge_connector_detect() calls drm_bridge_connector_hpd_notify()
-> so any bridges should already be notified as part of any internal
-> check_connector_changed() handling.
->
-> Maybe something like following could be an option:
->
->         changed = drm_connector_helper_hpd_irq_event(connector);
->         if (changed)
->                 drm_bridge_hpd_notify(bridge, connector->status);
->
-> I will likely keep this as-is to keep existing behavior in a v4, as this
-> patch was just about de-bouncing the existing calls being made at HPD.
+Also update the saradc vref-supply reference to track the pldo-reg1
+rename. No functional change.
 
-Yep.
+Signed-off-by: Dennis Gilmore <dennis@ausil.us>
+---
+ .../boot/dts/rockchip/rk3588s-orangepi-5.dtsi | 26 +++++++++----------
+ 1 file changed, 13 insertions(+), 13 deletions(-)
 
->
-> Regards,
-> Jonas
->
-> >
-> >> +            drm_bridge_hpd_notify(&hdmi->bridge, hdmi->last_connector_result);
-> >> +    }
-> >> +}
-> >> +
-> >>  static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
-> >>  {
-> >>      struct dw_hdmi *hdmi = dev_id;
-> >> @@ -3097,10 +3111,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
-> >>                      status == connector_status_connected ?
-> >>                      "plugin" : "plugout");
-> >>
-> >> -            if (hdmi->bridge.dev) {
-> >> -                    drm_helper_hpd_irq_event(hdmi->bridge.dev);
-> >> -                    drm_bridge_hpd_notify(&hdmi->bridge, status);
-> >> -            }
-> >> +            mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
-> >> +                             msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
-> >>      }
-> >>
-> >>      hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
-> >> @@ -3420,6 +3432,8 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
-> >>              goto err_res;
-> >>      }
-> >>
-> >> +    INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_hpd_work);
-> >> +
-> >>      ret = devm_request_threaded_irq(dev, irq, dw_hdmi_hardirq,
-> >>                                      dw_hdmi_irq, IRQF_SHARED,
-> >>                                      dev_name(dev), hdmi);
-> >> @@ -3552,6 +3566,8 @@ EXPORT_SYMBOL_GPL(dw_hdmi_probe);
-> >>
-> >>  void dw_hdmi_remove(struct dw_hdmi *hdmi)
-> >>  {
-> >> +    disable_delayed_work_sync(&hdmi->hpd_work);
-> >> +
-> >>      drm_bridge_remove(&hdmi->bridge);
-> >>
-> >>      if (hdmi->audio && !IS_ERR(hdmi->audio))
-> >> --
-> >> 2.53.0
-> >>
-> >
->
-
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+index dafad29f9854..fd5c6a025cd1 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588s-orangepi-5.dtsi
+@@ -274,10 +274,10 @@ es8388: audio-codec@10 {
+ 		compatible = "everest,es8388", "everest,es8328";
+ 		reg = <0x10>;
+ 		clocks = <&cru I2S1_8CH_MCLKOUT>;
+-		AVDD-supply = <&vcc_3v3_s0>;
+-		DVDD-supply = <&vcc_1v8_s0>;
+-		HPVDD-supply = <&vcc_3v3_s0>;
+-		PVDD-supply = <&vcc_3v3_s0>;
++		AVDD-supply = <&vcca_3v3_s0>;
++		DVDD-supply = <&vcca_1v8_s0>;
++		HPVDD-supply = <&vcca_3v3_s0>;
++		PVDD-supply = <&vcca_3v3_s0>;
+ 		assigned-clocks = <&cru I2S1_8CH_MCLKOUT>;
+ 		assigned-clock-rates = <12288000>;
+ 		#sound-dai-cells = <0>;
+@@ -441,7 +441,7 @@ &rknn_mmu_2 {
+ };
+ 
+ &saradc {
+-	vref-supply = <&avcc_1v8_s0>;
++	vref-supply = <&vcc_1v8_s0>;
+ 	status = "okay";
+ };
+ 
+@@ -666,8 +666,8 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
+-			avcc_1v8_s0: pldo-reg1 {
+-				regulator-name = "avcc_1v8_s0";
++			vcc_1v8_s0: pldo-reg1 {
++				regulator-name = "vcc_1v8_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <1800000>;
+@@ -678,8 +678,8 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
+-			vcc_1v8_s0: pldo-reg2 {
+-				regulator-name = "vcc_1v8_s0";
++			vcca_1v8_s0: pldo-reg2 {
++				regulator-name = "vcca_1v8_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <1800000>;
+@@ -691,8 +691,8 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
+-			avdd_1v2_s0: pldo-reg3 {
+-				regulator-name = "avdd_1v2_s0";
++			vdda_1v2_s0: pldo-reg3 {
++				regulator-name = "vdda_1v2_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <1200000>;
+@@ -703,8 +703,8 @@ regulator-state-mem {
+ 				};
+ 			};
+ 
+-			vcc_3v3_s0: pldo-reg4 {
+-				regulator-name = "vcc_3v3_s0";
++			vcca_3v3_s0: pldo-reg4 {
++				regulator-name = "vcca_3v3_s0";
+ 				regulator-always-on;
+ 				regulator-boot-on;
+ 				regulator-min-microvolt = <3300000>;
 -- 
-With best wishes
-Dmitry
+2.54.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
