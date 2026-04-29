@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3BFEFF8867
-	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Apr 2026 09:47:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A27BFF8875
+	for <linux-rockchip@archiver.kernel.org>; Wed, 29 Apr 2026 11:58:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SoyutYWAuZwyhcoRabS164Q3dJ0JB6i01aZTx4b7TbE=; b=eE3LPyVt0uXzoi
-	ON9KDdkpAUEvOnXWfuk0Y84D8thXogv6db25kS7AsDKAslFYNklbKMJvzznP9yPMFDim+MyNoHrmZ
-	3w1d1ytrE6xgz2NEkoZ2nLUDYcyt31wkN2ZQenwBmHNLeSvwhWJsyX7KrkAB649l4Znayr68tH/+c
-	++J22wJ8m/rvAsKLLA4oz0y/5JA8yl3niOHxEZgLEZnfs0anv7uZo63n+ZTUmnVAUaeGPWalcpWLW
-	EFxREwJZkm+CcAAY9ADtd8xxUAwUGzRruIB0zxFuEsLVBmaxvhR4Bj+pYt7+Bt8Cq0q3QoOe2P8AB
-	oiZ+DjjsZ3EC3uKAtZ9A==;
+	List-Owner; bh=83ou5hjPM2bIBdl2cjSa8B7xNb0erwOz4Vygh+wzdRI=; b=Faek5YHI2V5xiK
+	So8xRoVf9Pq84sDu3qTErrziJdHqTbVh2mmmv18PS+Hac+jt4O4LwwZvFIk8nSQTy+kxzCox+mOEg
+	mX35efde2zwfFhxEEGxmpzjewpL5FR60m4M76rGnRTfntp/y2n6VGZGz9dwIIE6W9LyVFxzFjIxgU
+	LCP/9beIibz4Ui90oI2v10CuWis7gAPoWzNNQHAAHnaufsSxi6Hh5pLSJyZ4tEpFUiU14SIK86g0n
+	8MsmulBgjalbgjqKy2/50qK3pUjJNspEkgI6NvDTOh2e4X8eoFJX2LAb9gTWOK4Znepv7OxkTaeo2
+	g5Gay+b99YJ0DlrPwBPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Vu-00000003NuZ-12IU;
-	Wed, 29 Apr 2026 09:47:26 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wI3Yh-00000003XxK-2EIy;
+	Wed, 29 Apr 2026 11:58:27 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wI1Vr-00000003Nu8-3nq8
+	id 1wI3Yf-00000003XxE-4Avi
 	for linux-rockchip@lists.infradead.org;
-	Wed, 29 Apr 2026 09:47:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1777456014; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=eKHfovDPQgr2fPEt1XWPinNpVELxOklgDcFz1FJm/w+UbJ3PgdCqJZHw4wOSSQ7iBVlQ17nMhoqG+fXdu0NFTb8yTV+sTseotwA6LnUBWCsz9Jb0xVoBCp2v5HpSWyLdbH9xnxErpM+SSs8r75f6U+Lf8pKijnqNZnhzsIDuGfM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1777456014; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=jAaTwhfdTs2KVc0ERnCjQQSQfIwX10BpA06KZqYKFIw=; 
-	b=RU7CnYlRN3Km7Oji0QNF5n9aD0sLCTzSZo0YNQdHEp6LkN+1KQl0/sAgn9CbTDtRQZ9pbc/gxqTO1URkuV82X2CMsb24AwjaxxrmmJuG5TLOV8xVpQ3c40wY2S6L0i74ewGLtyZSjBd/fZSYbcTwh89DR7HApCF/ZFWjh0OcU9E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1777456014;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=jAaTwhfdTs2KVc0ERnCjQQSQfIwX10BpA06KZqYKFIw=;
-	b=a/uw/Zq7uX5YrjK0XGuc0OtIKxsywI+tq1qUE4gihLSzMpQz3iKnb9/GlmVl8UbM
-	pldvmFVqPVpXWNS/uSF3ZsI5kWJEDuc07cqf0KBEewoQnhN4xatmJlXt8qIRNVEdt7E
-	LWeZiTBIPwT/fErnmHO0AFv0SDGLLKkBsmsdv3ds=
-Received: by mx.zohomail.com with SMTPS id 1777456012729340.64420652132355;
-	Wed, 29 Apr 2026 02:46:52 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- Christian Hewitt <christianshewitt@gmail.com>,
- Diederik de Haas <diederik@cknow-tech.com>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH v3 12/13] drm: bridge: dw_hdmi: Use
- dw_hdmi_connector_status_update()
-Date: Wed, 29 Apr 2026 11:46:47 +0200
-Message-ID: <t6tzNvxITwKmJ_hq7-0DLA@collabora.com>
-In-Reply-To: <4f69e6f2-fb26-4b41-b1a7-d6f16f0191bc@kwiboo.se>
-References: <20260403185303.80748-1-jonas@kwiboo.se>
- <PBiPnzTQRjaAl3CkZ0Zsjw@collabora.com>
- <4f69e6f2-fb26-4b41-b1a7-d6f16f0191bc@kwiboo.se>
+	Wed, 29 Apr 2026 11:58:26 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0C4BB60018;
+	Wed, 29 Apr 2026 11:58:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 55EB8C19425;
+	Wed, 29 Apr 2026 11:58:24 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777463904;
+	bh=tc1x2jFTiS6LhuWXCPLieRSj6Q/gppWfSAnb8qnejuE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=QQC0WLW4S7uH5MRDcyQoXC+Q5Yk9pkq0jUEVDOB41gvOk4I+/t3GCO8tM7RLlMP4U
+	 eZSNx7aYxglGV7RjSQleKBtaQ81faWIlY975sQntD+D9oJxqRJDalQTHFk5RCZK2v8
+	 P29HH0IhBCqmf0rEEkeIP9BGiRPCtKd5hhZik/26VjglbsTPGuO/EYqoNu4iTmpWEj
+	 zeRnCRNxdf3aIfydquon806G/im0+rwiTIQMJUPtj+5mQYJA2j8lCdyULBWQlSgzdI
+	 opEYVKiELwOlx9/VjoAfynGSocsN9rUTLJt6lE/3Vn4A/QeidMPTgFur81eudNp7Gf
+	 033itvB5gus8Q==
+Date: Wed, 29 Apr 2026 13:58:22 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, 
+	linux-rockchip@lists.infradead.org, linux-pm@vger.kernel.org, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, xsf@rock-chips.com, sre@kernel.org, simona@ffwll.ch, 
+	airlied@gmail.com, tzimmermann@suse.de, mripard@kernel.org, 
+	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com, neil.armstrong@linaro.org, 
+	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org
+Subject: Re: [PATCH 1/6] dt-bindings: power: supply: sgm41542: document
+ sgm41542
+Message-ID: <20260429-boisterous-cyber-hyena-ce870a@quoll>
+References: <20260427170914.5062-1-macroalpha82@gmail.com>
+ <20260427170914.5062-2-macroalpha82@gmail.com>
+ <20260428-bulky-nebulous-reindeer-ed45ed@quoll>
+ <PH0PR19MB997338F0B06B7B99AA0ED3C6C4A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
+ <534f0795-0002-4c04-a83c-fa1b3ce68216@kernel.org>
+ <PH0PR19MB99733813E0295B511539050BA9A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260429_024723_979049_4CFD14ED 
-X-CRM114-Status: GOOD (  33.84  )
+Content-Disposition: inline
+In-Reply-To: <PH0PR19MB99733813E0295B511539050BA9A5372@PH0PR19MB997338.namprd19.prod.outlook.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,169 +79,87 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tuesday, 28 April 2026 23:47:40 Central European Summer Time Jonas Karlman wrote:
-> Hi Nicolas,
-> 
-> On 4/28/2026 1:53 PM, Nicolas Frattaroli wrote:
-> > On Friday, 3 April 2026 20:52:58 Central European Summer Time Jonas Karlman wrote:
-> >> Update connector EDID and CEC phys addr from detect and force funcs to
-> >> ensure that userspace always have access to latest read EDID after a
-> >> sink use a HPD low voltage pulse to indicate that EDID has changed.
-> >>
-> >> With EDID being updated in detect and force funcs, there should no
-> >> longer be a need to re-read EDID in get_modes funcs, so drop it.
-> >>
-> >> This change make the dw-hdmi connector work more closely like the bridge
-> >> connector does with a hdmi bridge.
-> >>
-> >> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> >> ---
-> >> v3: Reworked 'Update EDID during hotplug processing' patch
-> >> ---
-> >>  drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 24 +++++++++++++----------
-> >>  1 file changed, 14 insertions(+), 10 deletions(-)
-> >>
-> >> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> index 0d42fdf9a386..5b5654ef6015 100644
-> >> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> @@ -2474,33 +2474,36 @@ dw_hdmi_connector_status_update(struct drm_connector *connector,
-> >>  	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
-> >>  	const struct drm_edid *drm_edid;
-> >>  
-> >> +	if (status == connector_status_disconnected) {
-> >> +		drm_edid_connector_update(connector, NULL);
-> >> +		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
-> >> +		return;
-> >> +	}
-> >> +
-> >>  	drm_edid = dw_hdmi_edid_read(hdmi, connector);
-> >>  	drm_edid_connector_update(connector, drm_edid);
-> >>  	drm_edid_free(drm_edid);
-> >>  
-> >> -	cec_notifier_set_phys_addr(hdmi->cec_notifier,
-> >> -				   connector->display_info.source_physical_address);
-> >> +	if (status == connector_status_connected)
-> >> +		cec_notifier_set_phys_addr(hdmi->cec_notifier,
-> >> +				connector->display_info.source_physical_address);
-> >>  }
-> >>  
-> >>  static enum drm_connector_status
-> >>  dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
-> >>  {
-> >> -	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi,
-> >> -					     connector);
-> >> +	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
-> >>  	enum drm_connector_status status;
-> >>  
-> >>  	status = dw_hdmi_detect(hdmi);
-> >>  
-> >> -	if (status == connector_status_disconnected)
-> >> -		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
-> >> +	dw_hdmi_connector_status_update(connector, status);
-> >>  
-> >>  	return status;
-> >>  }
-> >>  
-> >>  static int dw_hdmi_connector_get_modes(struct drm_connector *connector)
-> >>  {
-> >> -	dw_hdmi_connector_status_update(connector, connector->status);
-> >> -
-> >>  	return drm_edid_connector_add_modes(connector);
-> >>  }
+On Tue, Apr 28, 2026 at 02:54:53PM -0500, Chris Morgan wrote:
+> On Tue, Apr 28, 2026 at 05:09:49PM +0200, Krzysztof Kozlowski wrote:
+> > On 28/04/2026 16:09, Chris Morgan wrote:
+> > > On Tue, Apr 28, 2026 at 09:47:00AM +0200, Krzysztof Kozlowski wrote:
+> > >> On Mon, Apr 27, 2026 at 12:09:09PM -0500, Chris Morgan wrote:
+> > >>> From: Chris Morgan <macromorgan@hotmail.com>
+> > >>>
+> > >>> Document the SG Micro sgm41542 battery charger/boost converter.
+> > >>>
+> > >>> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > >>> ---
+> > >>>  .../supply/sgmicro,sgm41542-charger.yaml      | 99 +++++++++++++++++++
+> > >>>  1 file changed, 99 insertions(+)
+> > >>>  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> > >>>
+> > >>> diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> > >>> new file mode 100644
+> > >>> index 000000000000..3e5041e5b551
+> > >>> --- /dev/null
+> > >>> +++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542-charger.yaml
+> > >>
+> > >> Filename must match compatible.
+> > > 
+> > > Acknowledged.
+> > > 
+> > >>
+> > >>> @@ -0,0 +1,99 @@
+> > >>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> > >>> +%YAML 1.2
+> > >>> +---
+> > >>> +$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml#
+> > >>> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> > >>> +
+> > >>> +title: SGM41542 Battery Charger
+> > >>> +
+> > >>> +description: |
+> > >>
+> > >> Do not need '|' unless you need to preserve formatting.
+> > >>
+> > > 
+> > > Will fix.
+> > > 
+> > >>> +  The SGMicro SGM41542 is a single cell battery charger/boost controller.
+> > >>> +
+> > >>> +maintainers:
+> > >>> +  - Chris Morgan <macromorgan@hotmail.com>
+> > >>> +  - Xu Shengfei <xsf@rock-chips.com>
+> > >>> +
+> > >>> +properties:
+> > >>> +  compatible:
+> > >>> +    const: sgmicro,sgm41542
+> > >>> +
+> > >>> +  input-current-limit-microamp:
+> > >>
+> > >> Missing vendor prefix.
+> > >>
+> > > 
+> > > This *appears* to be a standard value (perhaps not formally, but in use by
+> > > enough devices to suggest a defacto standard), which is why I did not use
+> > > the vendor prefix here. Do I need to add that for this one?
 > > 
-> > Are we absolutely sure status_update is called before this, so that the
-> > EDID doesn't need to be re-read? E.g. drm_connector_helper_get_modes
-> > does do an EDID read beforehand.
-> 
-> With the change to re-read EDID at .detect() we should not need to
-> re-read EDID at .get_modes(). This also closely match how the bridge
-> connector handle EDID update at .detect() and not .get_modes() for hdmi
-> bridges.
-> 
-> At least following call paths should ensure EDID have been re-read:
-> 
-> drm_helper_probe_single_connector_modes():
->  -> connector->funcs->force()
->     -> dw_hdmi_connector_force()
->        -> dw_hdmi_connector_status_update()
->           -> drm_edid_connector_update()             <<-- here
->  -> drm_helper_probe_detect()
->     -> detect_connector_status()
->        -> connector->funcs->detect();
->           -> dw_hdmi_connector_detect()
->              -> dw_hdmi_connector_status_update()
->                 -> drm_edid_connector_update()       <<-- or here
->  -> drm_helper_probe_get_modes()
->     -> connector_funcs->get_modes()
->        -> dw_hdmi_connector_get_modes()              <<-- now updated
-> 
-> drm_helper_hpd_irq_event():
->  -> detect_connector_status()
->     -> connector->funcs->detect();
->        -> dw_hdmi_connector_detect()
->           -> dw_hdmi_connector_status_update()
->              -> drm_edid_connector_update()          <<-- also after HPD
-> 
-> > Speaking of which: if we had connector->ddc set, we could just use
-> > drm_connector_helper_get_modes for this callback. But maybe it's not
-> > worth spending the time refactoring the resource handling around
-> > hdmi->ddc when the eventual goal is to refactor this all into using
-> > a bridge connector anyway.
-> 
-> Correct, hopefully all connector related functions can be dropped from
-> dw-hdmi in a near future when dw-hdmi is converted to a hdmi bridge.
-> 
-> I currently have a work-in-progress snapshot at [1] where dw-hdmi have
-> been converted to a hdmi bridge and a bridge connector is used instead.
-> 
-> The changes in this series only aim to align dw-hdmi to the hdmi bridge
-> where possible to reduce any functional change in such future series.
-> 
-> I will likely keep this as-is in a v4 unless there is some objections.
-
-With that explanation, I'm on board with this. So:
-
-Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> [1] https://github.com/Kwiboo/linux-rockchip/commits/next-20260427-rk-hdmi-v2/
-> 
-> Regards,
-> Jonas
-> 
-> >>  
-> >> @@ -2530,14 +2533,15 @@ static int dw_hdmi_connector_atomic_check(struct drm_connector *connector,
-> >>  
-> >>  static void dw_hdmi_connector_force(struct drm_connector *connector)
-> >>  {
-> >> -	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi,
-> >> -					     connector);
-> >> +	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
-> >>  
-> >>  	mutex_lock(&hdmi->mutex);
-> >>  	hdmi->force = connector->force;
-> >>  	hdmi->last_connector_result = connector->status;
-> >>  	dw_hdmi_update_phy_mask(hdmi);
-> >>  	mutex_unlock(&hdmi->mutex);
-> >> +
-> >> +	dw_hdmi_connector_status_update(connector, connector->status);
-> >>  }
-> >>  
-> >>  static const struct drm_connector_funcs dw_hdmi_connector_funcs = {
-> >>
+> > I know, I found these other properties but I think they were just coming
+> > from old schema.
 > > 
-> > 
-> > 
-> > 
+> > If it is really a common property, then should be defined in a common
+> > schema and this did not happen.
 > 
-> 
+> Would now be a good time to add it to the power-supply.yaml document?
+> It looks like this value is used by about 10 other devices.
 
+I have mixed feelings. Adding it there would mean that all schemas using
+unevaluatedProperties will get that property. That suggests they have
+such limiting ability in hardware or this ABI is implemented in some
+generic part of the kernel.
 
+None of these are true, I think.
 
+Maybe we need some documented guidance on usage of common schemas.
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
