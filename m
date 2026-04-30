@@ -4,101 +4,168 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8555DCCFA13
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Apr 2026 12:07:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 760C3CCFA13
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Apr 2026 13:14:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=c9/nAbSobRFLNY3STfJIRsl14M5fBMdBe58IXy8eHq8=; b=D4TXjMNfYnXOw5
-	uvxWeNoYA/yGr/m+UU1gxUHlXzsFT2m0kaV8LD3xLAadAptaXujtmmF/jf9/4YC0HUpckbpw9/LkZ
-	18s9mOcUSBLc8Phh2ocsx89qKG08kBD8DKym0rVLqgtmpDe+fV/f8Vtg0XFqMXPtEM5xrnEfW5VFg
-	tfosSj4IqOkDRku4XtijCv9F2jPZtEQs2V19VPWJwfxy+8C0KKEuoxv7WSMntLC9Kba1g4gVTYHxF
-	zqVeMP/t0a2+8JQ8kOecoLQzGuHf8TiJ+hONu9z/PVYJk3d9hD9hiC7TpIeaUCPovIMu2p+1PCZpn
-	V6rO//bfFnqo9AU/nK7g==;
+	List-Owner; bh=ktiKjp9wKegq1vOZWTHM73rtPzmF7caBDoe3GfFlIhk=; b=sKAA7g2v215Q/d
+	LLOYPDdVRsksPOlEfsCEc9Z+fMzSFJY1vs+KY2qazwJ+A+9EqYnbv4ay4q+jChO9OG1NWc3bU4eOR
+	VC27pWbJ3BNENYtTJBQ156hMlonCnbUE0Qi3dfz8tPanKer58aLR5CagklusXN3wIFO32om5643vJ
+	/y4pH4CVKnfPXIsH62CR3LJRsjjwEdz9f8lZ/0mtoBq6nG7Pqu0iZ1UiwTWkUrmX2U7UfAm1AMA53
+	t2AS6jQHSNLd3vEO3ZtqHk0PVxuCg9H++pWuDSn8IS8ckz5k2693PHG9UD0H1bLjPAxUMD9qIatkx
+	6UAazzxp+agnMosYIvTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIQB8-00000005Qh4-11na;
-	Thu, 30 Apr 2026 12:07:38 +0000
-Received: from mail-oi1-f174.google.com ([209.85.167.174])
+	id 1wIRDg-00000005WCL-13M6;
+	Thu, 30 Apr 2026 13:14:20 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIQB6-00000005Qg5-00GE
-	for linux-rockchip@lists.infradead.org;
-	Thu, 30 Apr 2026 12:07:36 +0000
-Received: by mail-oi1-f174.google.com with SMTP id 5614622812f47-479d4df9035so1134933b6e.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Apr 2026 05:07:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777550855; x=1778155655;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=ksIL4rip+tLI1Yx6QhQXSN6krUTnsd9SRkVzjQXrZjA=;
-        b=RJFbri4zpWPcFrZXfMZPr3muiQtDRYkikAio3XCitKati2q0xTW18ZHUiASUllmUf2
-         XncfH04OEWw1Ex9bvDG6xUAScm135nU3yLRGqEC/At/Wk8u4aeUF+6tx7soTLmZML2T/
-         7qnIto/4d8oNnPK2bjyvhtEnbD5cWdjSM/nJr1ZaeQWW2K12onj+JlUP0YScd5PhRKUy
-         a4+fbe2uGBBcFYC1tB3hF9pk9G3Zrlqc9QL4tRcZHF4SpoqeWtDI2YXTL3lclkg/vCW2
-         zOmKw8/1k3zrb58jd+B7kxgTshR4HRjVBH06sNjf7n5YJXEOiekuhr5gFGLhRYQ+Mnb7
-         4+TQ==
-X-Forwarded-Encrypted: i=1; AFNElJ9U+5Cg1P52qQip7GT9sk0nGydu9MWQ23b50Zpdx+JcESqcfACuSt9QwYDTq8Vs2YT4PfEje5mhQRpZ5Zj0OQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzhxEcOR4NEXJ6vkNmw1gtl+1cxRb4aCWmagXfH2oz2JrQ2MhAd
-	NZkxUepf4vD+v4scQIU9o5y3vreMF02EsWC4tEiGzOcoK0bTFSS86y0MHI+JsMDO63I=
-X-Gm-Gg: AeBDieu5VWnRmq2ALm3hoM5VshlcbfTu2ViI8XEXX9ssQlH1OmRlnEynmIQBXlUi95l
-	Fyr5+7rfcXn9DqJ+qNMdWvyIHnd/SONPq3THkECURmHhO6OuQFaEIBtKLtfBibl7e9C3kBMdXAl
-	7Xhnqvy91NfbAqSF7BtJRnrY0iXjubGXkn2T61xmQdWDNzVqcfe6WS74vpvSQYSTK/oAETXA2Av
-	WRJUq+uLMPKH7e/QA6yj5PXR1DNg6i4NMmmApC5UNM+/d5MSnsupxsEFb9ko4FQ8sWDhN2ez2Lf
-	hyZi2FsJjOtqgj/gtk3EuWGunIGxhWSOzMxUUX4gB/3qjwhlOVWCZIrWdXgyAmBgQuC7QVPO9cq
-	JizZn6GTeUSgcXkgyNBPssKV1b+6k+ohSXE6oMeclJVPQEdgVpWko7FwzsIdwoH+2eYnwassb5H
-	LCRc6pPnUudSgkG9G11cm9wtOBjmjqbqc+tc2tPCZc6jioRsSSBLZNjio8U4wvVmYL/XEuZgE=
-X-Received: by 2002:a05:6808:e8d8:10b0:479:d674:dce9 with SMTP id 5614622812f47-47c61f95166mr520484b6e.1.1777550855051;
-        Thu, 30 Apr 2026 05:07:35 -0700 (PDT)
-Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com. [209.85.210.49])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-47c43ee0400sm2748253b6e.7.2026.04.30.05.07.34
-        for <linux-rockchip@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 30 Apr 2026 05:07:34 -0700 (PDT)
-Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-7dcdca9aa0bso1421338a34.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 30 Apr 2026 05:07:34 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ+JKs8eOYUqqRgBDIIxHBaB88b+vXr+hWFN8GLJ5aZOSrBU3QpAWyOBJX/3ho1gRPyMhC9cisQsWbcOcbR1WQ==@lists.infradead.org
-X-Received: by 2002:a67:e708:0:b0:610:347f:9f3b with SMTP id
- ada2fe7eead31-62afc506100mr613209137.3.1777550404889; Thu, 30 Apr 2026
- 05:00:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260430110652.558622-1-vladimir.oltean@nxp.com> <20260430110652.558622-18-vladimir.oltean@nxp.com>
-In-Reply-To: <20260430110652.558622-18-vladimir.oltean@nxp.com>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 30 Apr 2026 13:59:53 +0200
-X-Gmail-Original-Message-ID: <CAMuHMdWbeeRmLf6Ae0Fr0un=-z7z5ONc_hDdjebP=KVkXHPbhw@mail.gmail.com>
-X-Gm-Features: AVHnY4K0yYb6vTu9KdtDciwvAziqboYRX_ITZ386sa6ttixZ1EP_Mzy9gi4Pi0E
-Message-ID: <CAMuHMdWbeeRmLf6Ae0Fr0un=-z7z5ONc_hDdjebP=KVkXHPbhw@mail.gmail.com>
+	id 1wIRDe-00000005WBS-19E6;
+	Thu, 30 Apr 2026 13:14:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:In-Reply-To:Content-Type:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=Ir7o8M6GivbIaDlTA/aJPIPbDzPTKaLGkUcXrqV20XE=; b=kM28kmrCSfWLSP4eZJX258UFHC
+	C0Y79YAuomLz7bZ4JusqgPYLIc2kt2Jmn2mLKEZjtrDPipYDJ2uNcfl1os0SsIZ5Gl6PCu1zVDrQ0
+	asrCKUhjVv4tAG2lGrz3ftX7JCzJXlBVrvYCzztk5nAc3jDMsn7L5XL2rQKKxAH2RzQnlgFwvf7Ei
+	wjugxRSRmcEczn7Xr2CDQwDjK4X1m2Nz/8MfYtseUgN9zE8T8WDSaIw8TbrPwZuGgji5nhKV+Agd0
+	dyA0jAVR750oapjSHY0qqvf5yLTOiouhQ9GBZs8GEpLIoNtPYzlc8tlZVuH6CrO871xlx0vV2XnVc
+	1YS/JZ6Q==;
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
+	id 1wIRDb-00000007QdX-0Yjz;
+	Thu, 30 Apr 2026 13:14:16 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=RLhdMTISKU7PRkyW6hdPNgraN2Gz2+t3bhE3Ps34yTmK9Nm6NM/dxtRJvJo7VCxLaI5iLTKeUTaBg/Fxg68rA90LWmnUqmqmSpNrU9/sm1A7PlJ3AndOXyWK1t3lmQenF0CHIWUhIODEOJFJwg93AOO2sCsveNz/zC5lNr1mNccxcONnH4MEKt1G3+nCzNwX5bEEUqcboCLDSQrluk10V3iNieFG6AU2GsjCIl0vw6mDaq5klyPRDlpVBBCDulX6fqZvd2mGzkSGmz+0wNiyrHfSmIRuMO+97rHCOAFY3Yu7mR0rMEEQEEdKJuZo5mbWmi4qPiwTk/sBh3syBQRwGQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Ir7o8M6GivbIaDlTA/aJPIPbDzPTKaLGkUcXrqV20XE=;
+ b=fMsk6UqnihgPu2FEwiIfF78nXhPaea+aBLVr6NBSWCoywUHgtSAjwHhOdREGYjn834qtf2HQmsnMjdVjE/fR3QkMnepM2SbrBLKBYsMA45gOkU+WEZW6ADguCB40kjnl2xR3HM+9k6F2cDMriOZdu4kGTrAUuMW2UHvT88bo26Qr5SmAeteW2XQWiZ9rMTrl9oe6+1LLQr9arlx5C/txzI+Mu5BpOIoIjCAxw7jWOgonQDlGy+21khlVK5lJyVcrVZkwzDsnkGmXZdisxV6PhnoMJ51+mS8K1fViOauQjerXAST1TC5coDPrEW6kg0nXXwvfNH7ayUFbqn/lqdPMpA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Ir7o8M6GivbIaDlTA/aJPIPbDzPTKaLGkUcXrqV20XE=;
+ b=Ha51BWrGR4kddN0/cHpg4c3jCRBqMMkMLyJcc5ePTRMy1tuxgodL0rl8b1oBjAcAH+yiUwez4P15vCpDkiBTNFjlu1qy6/omHWyORiGyX6ECZuEwS6PvMEPJp3tvjcY5l+9yffrO52IL99wPk2lnarnIZwbnD3po3F9czkjexl+adXAlmGt0DucJr3TpGttDhOM0Zre4X2IppJRYEkKOnXCwkyx3ve70X6YLG4OxK4hmON1Pb5eaLfMqkasaL3pl3i24ibgz0XfYQrB9Cj90SbwGs00eS1/mXLkp3EFpbMWnVHK9OYaCdyhpvbfBXid5hcfqqnoPOzKDVTmNz3w6Sw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by PAXPR04MB8319.eurprd04.prod.outlook.com (2603:10a6:102:1c3::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.20; Thu, 30 Apr
+ 2026 13:14:08 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9846.025; Thu, 30 Apr 2026
+ 13:14:08 +0000
+Date: Thu, 30 Apr 2026 16:14:03 +0300
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: Geert Uytterhoeven <geert@linux-m68k.org>
+Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
+	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
+	spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
+	Markus Schneider-Pargmann <msp@baylibre.com>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Marc Kleine-Budde <mkl@pengutronix.de>,
+	Vincent Mailhol <mailhol@kernel.org>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Magnus Damm <magnus.damm@gmail.com>
 Subject: Re: [PATCH v7 phy-next 17/27] phy: introduce phy_get_max_link_rate()
  helper for consumers
-To: Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org, 
-	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
-	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
-	linux-usb@vger.kernel.org, netdev@vger.kernel.org, spacemit@lists.linux.dev, 
-	UNGLinuxDriver@microchip.com, Markus Schneider-Pargmann <msp@baylibre.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Andy Yan <andy.yan@rock-chips.com>, Marc Kleine-Budde <mkl@pengutronix.de>, 
-	Vincent Mailhol <mailhol@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>
+Message-ID: <20260430131403.2elptecuozimo76s@skbuf>
+References: <20260430110652.558622-1-vladimir.oltean@nxp.com>
+ <20260430110652.558622-18-vladimir.oltean@nxp.com>
+ <CAMuHMdWbeeRmLf6Ae0Fr0un=-z7z5ONc_hDdjebP=KVkXHPbhw@mail.gmail.com>
+Content-Disposition: inline
+In-Reply-To: <CAMuHMdWbeeRmLf6Ae0Fr0un=-z7z5ONc_hDdjebP=KVkXHPbhw@mail.gmail.com>
+X-ClientProxiedBy: VI1PR07CA0251.eurprd07.prod.outlook.com
+ (2603:10a6:803:b4::18) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|PAXPR04MB8319:EE_
+X-MS-Office365-Filtering-Correlation-Id: 30868a1a-e1ac-4785-a287-08dea6ba5ca6
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|10070799003|19092799006|366016|7416014|376014|22082099003|56012099003|18002099003;
+X-Microsoft-Antispam-Message-Info: zG4OVrLhrR2CtNxfHJ+fxxLlwDVlo1AU9V0vSMrDQg5bpwrhVd/yPdZ3GTlbTCldqDLGgClISrdkibbiRwYW7/VxQHqV+KxY2m043uwPU9fSaBbar+ZxNl14hUH/033+zaDU1WABuyomn7zqljYvcccXo6zzY6F+3gQvCmD0XTI5CUNsn5OLh0T8xK40rfo1/Lf9p9bxU7cqzdDjVB0OvZVnPA0t/j16J8tn8zCvOEfFTHkEmMGg4kYdGQTePTGYczjsygdioNretm0IcKDN3GA/kfuCLP274g9Iy50Srhhke6z/JOqL58fitmGGDqTt6th5u60u6dXsb6Uj7WNfmzSnAlnCm5xp6mzmcOO2Xz4GNzx6Y5YsNphv3DpdgmQ4CTciQlYr33lUG7K/QlPbZOApzWu8dSvD5eKv0SZuU7ryto9aYJ+UJhGg55KiQ6b1Z6/iETwBoeJ1XU1UC0EGFv79HSSZEF1Czspy44c3CPJAmifSioc6xUmFYgEx8pgqJHkUMMQTbZxExl1xYc5F2dAf+ehSFS11W1zxo7OBLdCbzYeKh0Ez077DOieFnv0qH4dSvTGUR4qT3Eqafz/BhMFRNLR93afpj9yq4xbKvrtTjzEUzLQ95wp6wEAHa5cK2UewbNwIfkSnQXw+QfqfQtxEbdrD+aBZu9YRGEAbB5DrWHoaFOh9wI9zcvlGJOAStWak7Ur61oZ/AkUXN0yYXWj1vtz7+Kscu3CMWd7BqjA=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(10070799003)(19092799006)(366016)(7416014)(376014)(22082099003)(56012099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?DaWeOPM0rFyvex+WWp5ITc8x4qrI5NGNETDRXepVXtKOhi9/+dvqGxNncnC2?=
+ =?us-ascii?Q?bJtZTthLSeN3n8g11s/dNjMAzIjn1/VAtr6OP3QfR9R37W5h9pnqXDy3sDB3?=
+ =?us-ascii?Q?RKtleIKTKJgvyOhN2XBiH2dtXrvwwYKLNIsq9q7XmIb5jP/eJnF8igtO2t+1?=
+ =?us-ascii?Q?VeyZFdOqSVq42JdrWfAw/fxcrzfOQ1fsH6EpzxAI5Y7T/yZafCmpwkmv1qPv?=
+ =?us-ascii?Q?s6QtsQMU/5W/s3IsWm3QSLo7fFoPU6XXbvXuLFDU/lQI//HQDPLCOiWwdOHp?=
+ =?us-ascii?Q?/nI3yVtZiFLqE6OiaY0cuNPn9xbCXBz4LdJ032yHIK7JNneIWRBfRu1eTI+h?=
+ =?us-ascii?Q?FXRsou20xrvMjnvu+hwb9W5e7NcL0RqnBRZb0Z/4KUFRs+yKwc305QD6ipCf?=
+ =?us-ascii?Q?9SDR2O9wEyv4jlsB40D9CehLALM5bQXOEIK+Yci8HTouxU9Q12+aGjKttA4F?=
+ =?us-ascii?Q?JZrS5EecPXOPzCnpX6GbMAQVrWvqZC4ZPAm+6Ie3ea/FOoVoElAOmE70IgKk?=
+ =?us-ascii?Q?MXKYpfcimbNVGIeFMEY3XcRNFSUH1+4kivS3xhDo1kCVeqJu7do65iRl0QKe?=
+ =?us-ascii?Q?aih4+SEqUx654qV94j38IvP1nAwZIykMcRNc7O90jDlvzGC+3P08UaOBZAee?=
+ =?us-ascii?Q?R8NJBgBszRHD1j0U+bFX95Zn9Q24eJSPYprP90LbG9PcI/gwtsDzZxIpLRty?=
+ =?us-ascii?Q?jLpU46dpAsNsSV3DJUiEchZMhjiKvyEK/18ii/icjY4Frd+teqTRLyLuMDR4?=
+ =?us-ascii?Q?ZRJKm9LphwKdrM6orWgnKJ8pZ+7C7qp47sCmcWHfl9RL0CV9mciFKBUlrCqb?=
+ =?us-ascii?Q?+M1VjSIvWKDtA8a3WCVXVys87fB8bp+YMwEFxg0lg+UflqVp405cAi96u/R5?=
+ =?us-ascii?Q?3FcZzbEol7/wu8dE1i5kxF3P784DjjGsu2NMr+76R4z7SwLAYRcETTk521Db?=
+ =?us-ascii?Q?QwYpxhma51yDPvKF3aCAGgq0pRTNiNu2WaG1QzBAA0dhfkuNnfFMb7FSr73d?=
+ =?us-ascii?Q?kswdUjWNlPf88AKcqeqsqhbEBOU6MWlspG+jCv8W47cNMNmFw8r2pw2Ivpav?=
+ =?us-ascii?Q?k0x1vu3WqRGwAVlkZrgt/SH30SgjeDjlO6NEFk0gqVo7D/O+ml8znDwOOR3H?=
+ =?us-ascii?Q?4Wzf9fAYBIUYPc3/lxw1G5+pjCV6IqcmJrdIYEV5N6vIh2WRPYe6eUNSdfJE?=
+ =?us-ascii?Q?MKVHfFpYyBD+rQLjSFCQO+0MMr3wkp48zhB1pgpbyne2S/27qxNauKfpPc+9?=
+ =?us-ascii?Q?FvGd9i5NmdGS27b0YSbVpx+WHQCD+jwfsI3zd96ese3uuCfzzBThHc045b+P?=
+ =?us-ascii?Q?kKlAhCqPsMJJXw9IN8/40bQvzUYxKYFHAaNvM1tTc850yM0kMM2OR32cMZ+j?=
+ =?us-ascii?Q?uvYK6IUpBDrpfg9vUAFE0ztnR6hlXQA6QCmluRSjgyNpnpv9mBzOVrF+tC8X?=
+ =?us-ascii?Q?4mhf5EhwmR5dKV6DTCW//KlY+d8he1x7siRCLd0HdehelPvY9DLksN33tX+5?=
+ =?us-ascii?Q?Q5twCDgk8BMP3DRTjTk1LPaPqOhgYY/wcnRqsQNMSkuIhVqblRBOwvD00v+w?=
+ =?us-ascii?Q?FmWBOxVlrKqpM0TDPSzLcROy7L3OKxFZO7AQRMsGdEFP0xDYLhQ34N+Tc4If?=
+ =?us-ascii?Q?of+Nq/+Cdp2GnTqDFe2wwOGxF9aq055hHlhpxuRtalbdALHYLFEwaxbhY5DQ?=
+ =?us-ascii?Q?OzjqueXmRCQYJei5oNejuC9aLMCMIpF2lgOZOFggHDTuXSwzAY5FdjP6HfKa?=
+ =?us-ascii?Q?vSkh0RQfm0sD5lMQQV5vDKvD+kSsVJ9WmKFTyuORV8DeUwkI/FhENd5aYVWB?=
+X-MS-Exchange-AntiSpam-MessageData-1: +FM0dUh4+P1/QtJYMlCx5UgQ7Z0z6huRmuE=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 30868a1a-e1ac-4785-a287-08dea6ba5ca6
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2026 13:14:08.3527
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: O+VO9Uo5tAfPp1U/YaBx1A7LlceKzVPqUF/50dds5Vafhpn61OZf6qHabYRl6Z9sm9SsgcFDEpimlVx67Ms/ww==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB8319
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260430_050736_040370_BBA53395 
-X-CRM114-Status: GOOD (  22.71  )
+X-CRM114-CacheID: sfid-20260430_141415_374031_7F5253DD 
+X-CRM114-Status: GOOD (  11.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,54 +182,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Vladimir,
+On Thu, Apr 30, 2026 at 01:59:53PM +0200, Geert Uytterhoeven wrote:
+> Acked-by: Geert Uytterhoeven <geert+renesas@glider.be> # rcar_canfd
 
-On Thu, 30 Apr 2026 at 13:07, Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
-> Consumer drivers shouldn't dereference struct phy, not even to get to
-> its attributes.
->
-> We have phy_get_bus_width() as a precedent for getting the bus_width
-> attribute, so let's add phy_get_max_link_rate() and use it in DRM and
-> CAN drivers.
->
-> In CAN drivers, the transceiver is acquired through devm_phy_optional_get()
-> and NULL is given by the API as a non-error case, so the PHY API should
-> also tolerate NULL coming back to it. This means we can further simplify
-> the call sites that test for the NULL quality of the transceiver.
->
-> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-> Acked-by: Markus Schneider-Pargmann <msp@baylibre.com> # m_can
+Thanks.
 
-Thanks for your patch!
+> > --- a/include/linux/phy/phy.h
+> > +++ b/include/linux/phy/phy.h
+> > @@ -57,6 +57,7 @@ int phy_notify_disconnect(struct phy *phy, int port);
+> >  int phy_notify_state(struct phy *phy, union phy_notify state);
+> >  int phy_get_bus_width(struct phy *phy);
+> >  void phy_set_bus_width(struct phy *phy, int bus_width);
+> > +u32 phy_get_max_link_rate(struct phy *phy);
+> 
+> This (and all the existing getters) should take a "const struct phy *".
 
->  drivers/net/can/rcar/rcar_canfd.c                   | 3 +--
+Yeah... Let's see what other review comments pop up (including Sashiko,
+which would be seeing this series for the first time) and decide
+afterwards whether to make the argument const for the new getters as
+part of a separate set, or in v8.
 
-Acked-by: Geert Uytterhoeven <geert+renesas@glider.be> # rcar_canfd
-
-> --- a/include/linux/phy/phy.h
-> +++ b/include/linux/phy/phy.h
-> @@ -57,6 +57,7 @@ int phy_notify_disconnect(struct phy *phy, int port);
->  int phy_notify_state(struct phy *phy, union phy_notify state);
->  int phy_get_bus_width(struct phy *phy);
->  void phy_set_bus_width(struct phy *phy, int bus_width);
-> +u32 phy_get_max_link_rate(struct phy *phy);
-
-This (and all the existing getters) should take a "const struct phy *".
-
->  #else
->  static inline struct phy *phy_get(struct device *dev, const char *string)
->  {
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
--- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+I don't think that modifying the existing getters is in scope for this
+27 patch set.
 
 _______________________________________________
 Linux-rockchip mailing list
