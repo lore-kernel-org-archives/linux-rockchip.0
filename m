@@ -4,145 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6806CFF8875
-	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Apr 2026 11:10:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8555DCCFA13
+	for <linux-rockchip@archiver.kernel.org>; Thu, 30 Apr 2026 12:07:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=g9EbQApEbBRx1Y91G/lC2QU62NgxbifbZEmXcBW94LI=; b=dt1U7onFzgQTZr
-	yLbLHp9bXnfyrQUlfD5u3q9j4BPNifNVmQSpkePhmiQHvtQUfL+moQKn9KwlFyJ9vwn2AKuHXcZkd
-	9wluXqAbgM98a7U0XjKZ8XRGzc4M9SX9q4pksPPeVFBI2y/TYwQeyZ3CdKRzvIhMlKvNKoH+INnDp
-	ewWeaagAxQcPJFBKtT+qnH4JtfSchhA+dA6fJ/PLISmVvw8ixJj5pMuQcAbJgrVkt0Yp0UB+3MiSG
-	trOzxmoOSFhyim0OWA1D+zRoVMOVGifTEeLZ51Gh+6sQm92QiSYD+NewB8t3FruXebME7UjA8nMQQ
-	fN85KFoyPRUQrPtT95HQ==;
+	List-Owner; bh=c9/nAbSobRFLNY3STfJIRsl14M5fBMdBe58IXy8eHq8=; b=D4TXjMNfYnXOw5
+	uvxWeNoYA/yGr/m+UU1gxUHlXzsFT2m0kaV8LD3xLAadAptaXujtmmF/jf9/4YC0HUpckbpw9/LkZ
+	18s9mOcUSBLc8Phh2ocsx89qKG08kBD8DKym0rVLqgtmpDe+fV/f8Vtg0XFqMXPtEM5xrnEfW5VFg
+	tfosSj4IqOkDRku4XtijCv9F2jPZtEQs2V19VPWJwfxy+8C0KKEuoxv7WSMntLC9Kba1g4gVTYHxF
+	zqVeMP/t0a2+8JQ8kOecoLQzGuHf8TiJ+hONu9z/PVYJk3d9hD9hiC7TpIeaUCPovIMu2p+1PCZpn
+	V6rO//bfFnqo9AU/nK7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIPHe-00000005Jff-2RRT;
-	Thu, 30 Apr 2026 11:10:18 +0000
-Received: from mail-westeuropeazon11013037.outbound.protection.outlook.com ([52.101.72.37] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1wIQB8-00000005Qh4-11na;
+	Thu, 30 Apr 2026 12:07:38 +0000
+Received: from mail-oi1-f174.google.com ([209.85.167.174])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wIPFM-00000005G2z-3dmW;
-	Thu, 30 Apr 2026 11:07:58 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=BLJc1VgreyofW9zkWA3kEjiwP98aLghx1V9eCBTVBiBFLGWsGq2M18dWy//FPpBfhqHWblRFCCMZkDwdTBgdPFdO/cYCN4OoRTa3nwrCYFatxzM8hZfAzMUgcoiMivK6X2fMPI9IlOgr/F28ODo8HHD7j3YF7VZWmJcQ8NUhUSRb77WTnarE7yGCM/aUt0cbWe1iDgMsk0qQUpyvsYKhCUr4k7QP4yo7fsy5O+5n7muc1MIeROVjw/afThMzANKvVHOfEBGw9kbVnipG47LGF4vtbpVm/ne+qCQuU0/Pxjrfthi8g0Vok7wYppZrGWd3RL/i0eJ9tEEnyZS+agFRag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=bBQyVg+wqXolpAD2t1BSBahJ+IliGRyZtnS8+K5AfYM=;
- b=ZHk+oFJXYRuGyPPA+AfwIyWFqz1ZU4JocfqlsMalVhaLTTuX0r/cZ5f1h2tnE1/b93hvSW6kcTcs+ORCsIdQnoCnF3sQa5dt9rzuLW5EdTnTykcKOIUCJ38CRBoOBflPN8fBhINR11aL+nmNRYdoswZ2RPfUxgowzs3hiXSR8HLnmlnGWfojtc5xsI07AlducWyHNGzom7SmCqrSu5qKLTB1kKlbsZXMSobjMk20cZIBBtWLleGvOd5zfy5gbH8oFm601I7jdbEKnxERqYaUQb2hPDNby6fXFphDBIQ5307GkaaVEVC/IOXYNz2JEQ1siFYbGRDsblZgXPj91GvlHQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=bBQyVg+wqXolpAD2t1BSBahJ+IliGRyZtnS8+K5AfYM=;
- b=PkxTZ5IUVHE5OXaaNzkar93KGNLI4Qvvde/KbQaVkeWV66FzViVZRQ5j9uWWNlMHl5euwq55k5Bku9zWZHFdTl5BfoNG228YK++e8OH7untwKNHcoE/pcBHfqzkcsljCvBvQTkMuPe+QXSdmwEXf119hC8uzCp4iNSqlzef7TAeeL/xlQTQHOskeIUtJLOvinuDZaSDAtk+kjQ64XdiYL87RzvBiVzRzhe/K6QOZIA40kCA08tuz7GO5tMXCGjXauyUy1gt5+JorWBhb6J9ruiaFCkzrYLAvFBzKxDlHSqrZxGk/qITU8x4nN7QTTOLw/j6sNUL/ynrP21V/7iHsLw==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by VI1PR04MB7182.eurprd04.prod.outlook.com (2603:10a6:800:121::7) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.20; Thu, 30 Apr
- 2026 11:07:35 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9846.025; Thu, 30 Apr 2026
- 11:07:35 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: linux-phy@lists.infradead.org
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-scsi@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org,
-	spacemit@lists.linux.dev,
-	UNGLinuxDriver@microchip.com,
-	Linus Walleij <linusw@kernel.org>,
-	Thierry Reding <thierry.reding@gmail.com>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH v7 phy-next 22/27] pinctrl: tegra-xusb: include PHY provider header
-Date: Thu, 30 Apr 2026 14:06:47 +0300
-Message-Id: <20260430110652.558622-23-vladimir.oltean@nxp.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260430110652.558622-1-vladimir.oltean@nxp.com>
-References: <20260430110652.558622-1-vladimir.oltean@nxp.com>
-X-ClientProxiedBy: AS4P189CA0028.EURP189.PROD.OUTLOOK.COM
- (2603:10a6:20b:5db::18) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	id 1wIQB6-00000005Qg5-00GE
+	for linux-rockchip@lists.infradead.org;
+	Thu, 30 Apr 2026 12:07:36 +0000
+Received: by mail-oi1-f174.google.com with SMTP id 5614622812f47-479d4df9035so1134933b6e.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Apr 2026 05:07:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1777550855; x=1778155655;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ksIL4rip+tLI1Yx6QhQXSN6krUTnsd9SRkVzjQXrZjA=;
+        b=RJFbri4zpWPcFrZXfMZPr3muiQtDRYkikAio3XCitKati2q0xTW18ZHUiASUllmUf2
+         XncfH04OEWw1Ex9bvDG6xUAScm135nU3yLRGqEC/At/Wk8u4aeUF+6tx7soTLmZML2T/
+         7qnIto/4d8oNnPK2bjyvhtEnbD5cWdjSM/nJr1ZaeQWW2K12onj+JlUP0YScd5PhRKUy
+         a4+fbe2uGBBcFYC1tB3hF9pk9G3Zrlqc9QL4tRcZHF4SpoqeWtDI2YXTL3lclkg/vCW2
+         zOmKw8/1k3zrb58jd+B7kxgTshR4HRjVBH06sNjf7n5YJXEOiekuhr5gFGLhRYQ+Mnb7
+         4+TQ==
+X-Forwarded-Encrypted: i=1; AFNElJ9U+5Cg1P52qQip7GT9sk0nGydu9MWQ23b50Zpdx+JcESqcfACuSt9QwYDTq8Vs2YT4PfEje5mhQRpZ5Zj0OQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzhxEcOR4NEXJ6vkNmw1gtl+1cxRb4aCWmagXfH2oz2JrQ2MhAd
+	NZkxUepf4vD+v4scQIU9o5y3vreMF02EsWC4tEiGzOcoK0bTFSS86y0MHI+JsMDO63I=
+X-Gm-Gg: AeBDieu5VWnRmq2ALm3hoM5VshlcbfTu2ViI8XEXX9ssQlH1OmRlnEynmIQBXlUi95l
+	Fyr5+7rfcXn9DqJ+qNMdWvyIHnd/SONPq3THkECURmHhO6OuQFaEIBtKLtfBibl7e9C3kBMdXAl
+	7Xhnqvy91NfbAqSF7BtJRnrY0iXjubGXkn2T61xmQdWDNzVqcfe6WS74vpvSQYSTK/oAETXA2Av
+	WRJUq+uLMPKH7e/QA6yj5PXR1DNg6i4NMmmApC5UNM+/d5MSnsupxsEFb9ko4FQ8sWDhN2ez2Lf
+	hyZi2FsJjOtqgj/gtk3EuWGunIGxhWSOzMxUUX4gB/3qjwhlOVWCZIrWdXgyAmBgQuC7QVPO9cq
+	JizZn6GTeUSgcXkgyNBPssKV1b+6k+ohSXE6oMeclJVPQEdgVpWko7FwzsIdwoH+2eYnwassb5H
+	LCRc6pPnUudSgkG9G11cm9wtOBjmjqbqc+tc2tPCZc6jioRsSSBLZNjio8U4wvVmYL/XEuZgE=
+X-Received: by 2002:a05:6808:e8d8:10b0:479:d674:dce9 with SMTP id 5614622812f47-47c61f95166mr520484b6e.1.1777550855051;
+        Thu, 30 Apr 2026 05:07:35 -0700 (PDT)
+Received: from mail-ot1-f49.google.com (mail-ot1-f49.google.com. [209.85.210.49])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-47c43ee0400sm2748253b6e.7.2026.04.30.05.07.34
+        for <linux-rockchip@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 30 Apr 2026 05:07:34 -0700 (PDT)
+Received: by mail-ot1-f49.google.com with SMTP id 46e09a7af769-7dcdca9aa0bso1421338a34.0
+        for <linux-rockchip@lists.infradead.org>; Thu, 30 Apr 2026 05:07:34 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ+JKs8eOYUqqRgBDIIxHBaB88b+vXr+hWFN8GLJ5aZOSrBU3QpAWyOBJX/3ho1gRPyMhC9cisQsWbcOcbR1WQ==@lists.infradead.org
+X-Received: by 2002:a67:e708:0:b0:610:347f:9f3b with SMTP id
+ ada2fe7eead31-62afc506100mr613209137.3.1777550404889; Thu, 30 Apr 2026
+ 05:00:04 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|VI1PR04MB7182:EE_
-X-MS-Office365-Filtering-Correlation-Id: 263809ad-d37c-444a-a556-08dea6a8af23
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|10070799003|7416014|376014|366016|19092799006|1800799024|18002099003|56012099003|22082099003;
-X-Microsoft-Antispam-Message-Info: diq379iFo3tgUPy+oHXf36HFNV+UJsCoH0dtRgmtqAYsi/pQI9QnaUeDNPLTiuRPte82SD7VXlXUaHSUNf31FYeIw/HUCHsYDkmMLGuEw8E82avXbQ9EGf+1c4hX4v83x4j4Et9RkbM5ZpN3RdSwhFvTRthDSOuZ9ziQuOc7NO65fnuz9JCG4A5IKmMgb0hsQXkvypS0uFSnNjf9qJj3kh8Dc1pzamVYM2S7gIFRJhAJKJyGUFxi5vzAz3MEM2nfwzC2oMtzvqr+jUjphc8SMVVC1TYV41loiiZJfutzGAXpaecCZ6vR32fbDkGwJg9sH0/F5NOktPUfvWdDG11osQ7KADpwLniOj7lhD39ljNHEttzgG+CaFjwhUM+ix1EL9OO8HXVuXNHPTa/YH9WaGdAD6IkxWa9vTMrfuLBwAzw0lyTpG/dpRGbumpHa7HLAjEzk232kWD5p1HV92fS2+mWEVU2245ELUAs+OWFue8D+aYki7XgB/35bU1bpjCsG7f1nJHVIti4XWUiYY9RnHf7e2KePfGZlmvE6c+ss4cRVMe1OZTUHGqJlpLEP9Grvzxf5WKLA34CejKQMkyK6X0t+MpTx4VrWEe/FEjuDR6l70M/nrQLJkB5ZtQGgJSBzis6p4V4NACCQiQ6BV51XRdc1fRHEuNWMa+8pwC9MWHi1l2Xv1kNl+dYq7SBYVJGscsb3KXGkbMIKEunV2uj4wJntUd2xv5uu4ooC2EA8+Uc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(10070799003)(7416014)(376014)(366016)(19092799006)(1800799024)(18002099003)(56012099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rk/m8tN5Xc7Oe9RgDJXB7MG0JDi51Ly43CHGGRMjnxJpzYByC67pRzSXFc62?=
- =?us-ascii?Q?ezHkElcLC+xQSH+tab/TNP85jmVMEN0OnnQqNenpgGFLdFBY40Amzi3cNfh2?=
- =?us-ascii?Q?sr/yF2zSDKYoV8xAjxUdO7t3HghtnUpGnFg6LZwdbGxCFqyMsrumGB5jiyme?=
- =?us-ascii?Q?mNOEOMaWBytX+v+WPN7kim+z0qxrN1VgvywLxbPvZuJ+TIQYH74lD6B/5b++?=
- =?us-ascii?Q?a2aMKyd2PWLdk1vHIiyd6tv11A8j67hFqfb8Urh8GPs0HX1/Vnj4kLPBFCdP?=
- =?us-ascii?Q?+owUpaE2ZRvEfzElsHk+NXuvjERF4GJFrN6IG1m/XZFd9PcME+4JCk1J8yZH?=
- =?us-ascii?Q?5Z9UbY1eeJ8AoMwi1DRdbzijqyuj5cyqEurxvisygYeue9cI0ob68AvxdzFk?=
- =?us-ascii?Q?PCWVXwWGpWYfy3NdDu+gpFIYr/rcEaN9h4kgYrbo/jpbGpU3U+RE3KzzbbBt?=
- =?us-ascii?Q?LxiirAqE4p8Z/kvZpeGACOdkjtLs5AU8ZzQbN5DWTML8UXAHxRBkypOVq564?=
- =?us-ascii?Q?6KRuucE2VYrkVxrEJNz4Yq4V6NBZ8Gfsy+wzL7uIPTiEeRipl/Cp4PMbPYBt?=
- =?us-ascii?Q?3wolcxHLKYgZC4H6947JGcUBlDWfJAU3ufy6G6mNiz/ELfz6UYDZeP20gveq?=
- =?us-ascii?Q?mXhCRDoWToOZoUCHtY5PVtYpr4sUdhzvQhhb0PwW9zFseu5cx5k9MwdFu8U4?=
- =?us-ascii?Q?efooqrXg2CPcg+inLqpv+ZDcceyFezT0gWD0oEVwP/thCm+F1fHvOMQDdejr?=
- =?us-ascii?Q?3a3Cf+FOiDXapt4+KFEzuZ0waoe0cFb1lB94SajApYEm1PYTT6LLcyAdaNWi?=
- =?us-ascii?Q?DjhZEutB2tndP0pV6ubxYFm3hEKP9XSF1a3MukJ2irFEExBcdn+RSEB/ud6g?=
- =?us-ascii?Q?h6tVD7AU2mRkNVEbBNk8y632B08c97a63Db70qe2oSvmYOUaq7gllTMdQaVR?=
- =?us-ascii?Q?q+XUGOnyHhZGAIQqLkJdFsn0n9KTz5j6tf6hWqkIvFUJNexRfoUeTkZn39Iy?=
- =?us-ascii?Q?nrzIyDupLzGiQFze8d87HNgLw2BNJQOiAdRcy4NnQOE0/+1epcDiZbsTa2AW?=
- =?us-ascii?Q?W7njVJ0Vtsas0TID2c/jawu75BSMznkIjICczr9ON6mxJhKJMRa1C39cBTeD?=
- =?us-ascii?Q?IrCPmShjDd3LsCQkwLN/RRpYUH4PPkTRunvyz9l+uTFuW3B6P8XKZqSYsDGy?=
- =?us-ascii?Q?LKzSZQ51oZkk5wieVTkNBmyl2yn6bXf1SkSuVxZSlPsOGwmyC74ODHoajwoI?=
- =?us-ascii?Q?im7qH4qRnPfht+nDclZvq+fmnsd1qKIzYd23e6wdKj6dUn4Vx6qlEK4GV7Qm?=
- =?us-ascii?Q?eHl+XdGJEmB7hqaiMq/lJtBoW3mc9XgM8dpZgTwTULavRtRFJsuJiwfE4IJB?=
- =?us-ascii?Q?HQdSqURbK3tPWkVHmrubaYKp/aZusl2W/KdAvSY20Wms08sQsM8f0586O//2?=
- =?us-ascii?Q?RpvcqNDHcdOuE8R3vuh3MeVrEI0lsLX6IGdZP+WNO2CJe2sZapQYpV3cDGQO?=
- =?us-ascii?Q?1x3L4kFtCm9UxXv5IgG3A5X0wqnpROvEpO7WU3qEYgRkpWmEVn5QVoo85DR3?=
- =?us-ascii?Q?I3NM2dcquEOfybAYntQpVlqNBsCki6c19NI+U+GK7bC2/o84k3y5LkBur4lD?=
- =?us-ascii?Q?hQWYUcyMNO1AmI71ZCPHh4Zr2rEy4ObJAqapcVwpBxiHenUPpgMtz1yOBbug?=
- =?us-ascii?Q?BFTPp5vEL4XAWB1LzH1vzIRGb3PQOqakMQb3v3Kj+5Ez8k7jZ4GtLUWi9Do2?=
- =?us-ascii?Q?5GoeiwaIyJ9+vPXi4bfZUM3ZhHxSS7v765WRt5ML1XpxjoVEDxO6?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 263809ad-d37c-444a-a556-08dea6a8af23
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 30 Apr 2026 11:07:35.7179
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: nE32EiJ87BE2HptDJv+Kjqmu/chVEyJQ55r+Mrvf8QXNbXwGf5rPrn3YJ/FLfesnZqoL2htPhU824YrNQa7hmg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB7182
+References: <20260430110652.558622-1-vladimir.oltean@nxp.com> <20260430110652.558622-18-vladimir.oltean@nxp.com>
+In-Reply-To: <20260430110652.558622-18-vladimir.oltean@nxp.com>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 30 Apr 2026 13:59:53 +0200
+X-Gmail-Original-Message-ID: <CAMuHMdWbeeRmLf6Ae0Fr0un=-z7z5ONc_hDdjebP=KVkXHPbhw@mail.gmail.com>
+X-Gm-Features: AVHnY4K0yYb6vTu9KdtDciwvAziqboYRX_ITZ386sa6ttixZ1EP_Mzy9gi4Pi0E
+Message-ID: <CAMuHMdWbeeRmLf6Ae0Fr0un=-z7z5ONc_hDdjebP=KVkXHPbhw@mail.gmail.com>
+Subject: Re: [PATCH v7 phy-next 17/27] phy: introduce phy_get_max_link_rate()
+ helper for consumers
+To: Vladimir Oltean <vladimir.oltean@nxp.com>
+Cc: linux-phy@lists.infradead.org, Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, dri-devel@lists.freedesktop.org, 
+	freedreno@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-can@vger.kernel.org, 
+	linux-gpio@vger.kernel.org, linux-ide@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-pci@vger.kernel.org, linux-renesas-soc@vger.kernel.org, 
+	linux-riscv@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org, 
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
+	linux-usb@vger.kernel.org, netdev@vger.kernel.org, spacemit@lists.linux.dev, 
+	UNGLinuxDriver@microchip.com, Markus Schneider-Pargmann <msp@baylibre.com>, 
+	Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Andy Yan <andy.yan@rock-chips.com>, Marc Kleine-Budde <mkl@pengutronix.de>, 
+	Vincent Mailhol <mailhol@kernel.org>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Magnus Damm <magnus.damm@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260430_040756_981574_4EB2CA6D 
-X-CRM114-Status: GOOD (  12.35  )
+X-CRM114-CacheID: sfid-20260430_050736_040370_BBA53395 
+X-CRM114-Status: GOOD (  22.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,51 +115,54 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The tegra-xusb pinctrl driver is also a PHY provider (calls
-devm_phy_create() for PCIe and SATA). However, according to Vinod Koul,
-having PHY provider drivers outside of drivers/phy/ is discouraged,
-although it would be difficult for me to address a proper movement here.
+Hi Vladimir,
 
-Include the private provider API header from drivers/phy/, but leave a
-FIXME in place. It will have to be moved, eventually.
+On Thu, 30 Apr 2026 at 13:07, Vladimir Oltean <vladimir.oltean@nxp.com> wrote:
+> Consumer drivers shouldn't dereference struct phy, not even to get to
+> its attributes.
+>
+> We have phy_get_bus_width() as a precedent for getting the bus_width
+> attribute, so let's add phy_get_max_link_rate() and use it in DRM and
+> CAN drivers.
+>
+> In CAN drivers, the transceiver is acquired through devm_phy_optional_get()
+> and NULL is given by the API as a non-error case, so the PHY API should
+> also tolerate NULL coming back to it. This means we can further simplify
+> the call sites that test for the NULL quality of the transceiver.
+>
+> Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
+> Acked-by: Markus Schneider-Pargmann <msp@baylibre.com> # m_can
 
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
-Reviewed-by: Linus Walleij <linusw@kernel.org>
----
-Cc: Linus Walleij <linusw@kernel.org>
-Cc: Thierry Reding <thierry.reding@gmail.com>
-Cc: Jonathan Hunter <jonathanh@nvidia.com>
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Thanks for your patch!
 
-v2->v7: none
-v1->v2: collect tag
----
- drivers/pinctrl/tegra/pinctrl-tegra-xusb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/net/can/rcar/rcar_canfd.c                   | 3 +--
 
-diff --git a/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c b/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c
-index c6a51bb21215..6b609bf685c7 100644
---- a/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c
-+++ b/drivers/pinctrl/tegra/pinctrl-tegra-xusb.c
-@@ -7,7 +7,6 @@
- #include <linux/io.h>
- #include <linux/module.h>
- #include <linux/of.h>
--#include <linux/phy/phy.h>
- #include <linux/platform_device.h>
- #include <linux/reset.h>
- #include <linux/seq_file.h>
-@@ -19,6 +18,7 @@
- 
- #include <dt-bindings/pinctrl/pinctrl-tegra-xusb.h>
- 
-+#include "../../phy/phy-provider.h" /* FIXME */
- #include "../core.h"
- #include "../pinctrl-utils.h"
- 
+Acked-by: Geert Uytterhoeven <geert+renesas@glider.be> # rcar_canfd
+
+> --- a/include/linux/phy/phy.h
+> +++ b/include/linux/phy/phy.h
+> @@ -57,6 +57,7 @@ int phy_notify_disconnect(struct phy *phy, int port);
+>  int phy_notify_state(struct phy *phy, union phy_notify state);
+>  int phy_get_bus_width(struct phy *phy);
+>  void phy_set_bus_width(struct phy *phy, int bus_width);
+> +u32 phy_get_max_link_rate(struct phy *phy);
+
+This (and all the existing getters) should take a "const struct phy *".
+
+>  #else
+>  static inline struct phy *phy_get(struct device *dev, const char *string)
+>  {
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
 -- 
-2.34.1
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
 
+In personal conversations with technical people, I call myself a hacker. But
+when I'm talking to journalists I just say "programmer" or something like that.
+                                -- Linus Torvalds
 
 _______________________________________________
 Linux-rockchip mailing list
