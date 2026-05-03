@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F19FCD3426
-	for <linux-rockchip@archiver.kernel.org>; Sun,  3 May 2026 10:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0D2CD3426
+	for <linux-rockchip@archiver.kernel.org>; Sun,  3 May 2026 11:06:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UOQFqePbf8AuM6MhJWW0v/4RMgZjTfPYKphM5OvCc3Q=; b=gDfrCRp0yX3Ig5
-	zA4uhfchOcUxfEvRuAO/fwS6vi8eEiYVrIK5Les5F9nzEKVsigafMeecLPCAOd+yAPSju3ryNX2on
-	HR4jXxuyw/nV8NWmQK+DhvhEg5T0d/Wn8KXwqt99NXgA7qOKzpmUnQB6r+vS5pJFaDODWivXPfmvQ
-	dObno9ft6E1LMaXDGM1a9UoBZnICDO5m9KLzMGByxNtLvyMQY2sBRa9khvv0TRAIAzSfofGwso6yA
-	drl0G1W9zwaO6VhBlxulBLu/yMULRA0jNXSywZ/BBg4xPD7d88O1/5OANXL7LS71TMjQnUikGOZTh
-	ztPtvwTbHQ5cMR2WbabQ==;
+	List-Owner; bh=y7jJjiY6coNIG5CvRkWK80JrH3a40n/Qy7TSfNt9AhI=; b=nXCruFQqW72Knk
+	y2CPlBo6XkVI4Iu5zag5n6Jh158mNMImCctYAOibmt4rhWKgz3rhl26b1/pzIJ0QVwMtkrPeirzsK
+	4iK9U560DVmNId2dr+xkV/RMj0Lfu8ytpLYHflCsHP85JwhUeBgcdokqrgTBD4WWSHogs3yY9sh44
+	y9pxyWG5fdU72t+UN0AGy7/4E6JEdd/2wpRv9JTmiwFFTTHj+bb651blkBV+vmh4x5f4BChPWPwUa
+	EVUCjcKFD3kxXZJigeUA+COL2xA04SLBe00YPA59XpuozI5wyyfNPupkSClqNP2b4j3c89c+74aye
+	A+c5+mWJRJI5t6nIQu4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJULv-0000000Ap6D-0dyZ;
-	Sun, 03 May 2026 10:47:11 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wJUf1-0000000Aqru-1G0k;
+	Sun, 03 May 2026 11:06:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJULs-0000000Ap5g-1zAC;
-	Sun, 03 May 2026 10:47:09 +0000
+	id 1wJUez-0000000AqrZ-2wTQ;
+	Sun, 03 May 2026 11:06:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 219D743306;
-	Sun,  3 May 2026 10:47:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C8D55C2BCB4;
-	Sun,  3 May 2026 10:46:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C93F360120;
+	Sun,  3 May 2026 11:06:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2CDBC2BCB4;
+	Sun,  3 May 2026 11:06:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777805227;
-	bh=3pCV6LH2vYCWmblublKkhdz5LTIMxW5qGQGwzJOdVX4=;
+	s=k20201202; t=1777806411;
+	bh=YQOeN5BLc+pPy9v92y0mrqvir0VtBXLhse/m+6gpt68=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=fG3TWM1OI4lfJrryBwdIAdznMDOynkpdZwkjn+94qy9ryuZ63cyDMfYzi8S2tttrF
-	 LQkV3+9X4DgYua95Zh14HzfdI3uuWJjFHzQepL9ecI+iB6RelRvyl9mTspJOeK0Mcp
-	 40U0W2lkPR58VnW8Kf4ce/cwqjG0a2kO26uE/j8KxPAd/Ffqx1v0YvckMjxoAgInsh
-	 koiR2Q+6DeAjqR4oANnzSszFgfm/BKGstmVsLJVmuoSphzppCsVQIUqWLJR6gheZW2
-	 ECtV7Dz+5WcF4814BWPgHkdl2kltuktC6+IDE7Ba+vAs/eUaUCO9x9mygNT3CrLGHc
-	 dgX6i5kBujJHg==
+	b=sY0hxcxN2yrN+m4OPBZeYw7pWttaE94uan/AjdsPJ22WWMqj9w+YEXvNrBN2YghwE
+	 cJif5MIeR+0k7UfKSilTVqQhmEJUMrx+fb0GwFHigphtEtCBViuKon7aTuj1jPnCsz
+	 TxrwxKcvkMXboPsYcpBKrWuVSAZaBLUdMfR7Kffaa/QYtuxzBhCETgsZC51q3kD9WD
+	 xodr5pu/pX/B4QQknUmOuKJawGk9ol3G4gpmuMcDVidKp7AVgweAX93PJFAG2Ezjty
+	 CUWvVeyxRci7R8KJuv4D8Avt2l7290SzMvkXgoTNe59gXbsOSoM/CMpwUP51m8Mqxf
+	 o5PliNtcqHYnw==
 From: William Breathitt Gray <wbg@kernel.org>
 To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Cc: William Breathitt Gray <wbg@kernel.org>,
@@ -59,19 +59,17 @@ Cc: William Breathitt Gray <wbg@kernel.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org
+	linux-iio@vger.kernel.org,
+	fabrice.gasnier@foss.st.com
 Subject: Re: [PATCH v5 4/6] counter: Add rockchip-pwm-capture driver
-Date: Sun,  3 May 2026 19:46:23 +0900
-Message-ID: <20260503104624.459765-1-wbg@kernel.org>
+Date: Sun,  3 May 2026 20:06:43 +0900
+Message-ID: <20260503110644.462016-1-wbg@kernel.org>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260420-rk3576-pwm-v5-4-ae7cfbbe5427@collabora.com>
-References: <20260420-rk3576-pwm-v5-4-ae7cfbbe5427@collabora.com>
+In-Reply-To: <q0kG3ZZyT92lQlYsvZD_qg@collabora.com>
+References: <q0kG3ZZyT92lQlYsvZD_qg@collabora.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=6676; i=wbg@kernel.org; h=from:subject; bh=3pCV6LH2vYCWmblublKkhdz5LTIMxW5qGQGwzJOdVX4=; b=owGbwMvMwCW21SPs1D4hZW3G02pJDJnf1WOOPLL01ulYkW+90T/xlOzJv6dzgwQ3lk9Rt/h3c +pitsUnO0pZGMS4GGTFFFl6zc/efXBJVePHi/nbYOawMoEMYeDiFICJWDxj+F/u9FK8KipthVvW yvy/19g2f8l/fshgx8nnp958vVZnWcPNyPAzoaz5sN3KeOdpR2sXK6zl7zh+0ffthWsHTl88Wmy ovIoNAA==
+X-Developer-Signature: v=1; a=openpgp-sha256; l=758; i=wbg@kernel.org; h=from:subject; bh=YQOeN5BLc+pPy9v92y0mrqvir0VtBXLhse/m+6gpt68=; b=owGbwMvMwCW21SPs1D4hZW3G02pJDJnfdXSjr+uG9LolLH+69rEAp8L++Qpsv/iEOfd9/7FYO 2LLJdsNHaUsDGJcDLJiiiy95mfvPrikqvHjxfxtMHNYmUCGMHBxCsBE0l8xMnTNE9hydJfidDbB cPdjUssKRfzfqV9z5XlTyWx3+odinREjwyLnzQ2Vefe9l7o67xPmtlsRfTpUcf3xbRJmKg/1F7m vYgYA
 X-Developer-Key: i=wbg@kernel.org; a=openpgp; fpr=8D37CDDDE0D22528F8E89FB6B54856CABE12232B
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260503_034708_614942_257BCE05 
-X-CRM114-Status: GOOD (  28.93  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,172 +86,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 20, 2026 at 03:52:41PM +0200, Nicolas Frattaroli wrote:
-> Among many other things, Rockchip's new PWMv4 IP in the RK3576 supports
-> PWM capture functionality.
+On Mon, Apr 27, 2026 at 07:35:32PM +0200, Nicolas Frattaroli wrote:
+> On Sunday, 26 April 2026 12:55:20 Central European Summer Time Damon Ding wrote:
+> > BTW: Is there any user-space test tool similar to libpwm for the
+> > counter subsystem?
 > 
-> Add a basic driver for this that works to expose HPC/LPC counts and
-> state change events to userspace through the counter framework. It's
-> quite basic, but works well enough to demonstrate the device function
-> exclusion stuff that mfpwm does, in order to eventually support all the
-> functions of this device in drivers within their appropriate subsystems,
-> without them interfering with each other.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> I've tried looking for this as well, and couldn't find anything. If
+> it exists then adding a mention of it to generic-counter.rst would
+> be in order I think.
 
-Hi Nicolas,
+Fabrice Gasnier added a Counter chrdev userspace test application to
+watch Counter events; it's at tools/counter/counter_watch_events.c if
+you are interested in trying it out.
 
-Forgive me if I asked this before, but I'm having trouble finding it
-online: do you have a link to a publicly available RK357 technical
-reference manual? I think that will help me better understand how this
-PWMv4 IP works.
-
-Regardless, some comments inline below from my current understanding.
-
-> +static struct counter_signal rkpwmc_signals[] = {
-> +	{
-> +		.id = 0,
-> +		.name = "PWM Clock"
-> +	},
-> +};
-
-If the capture mode is used to measure the duty cycle of the PWM input,
-then we actually have two Signals to define here: "PWM Clock" and "PWM
-Input".
-
-I imagine the capture mode waveforms look something like this:
-
-               __    __    __    __    __    __    __
-    clk     __|  |__|  |__|  |__|  |__|  |__|  |__|  |__
-    
-                      __________________ LPC: 2 edges ____
-    pwm_in  _________|   HPC: 3 edges   |____________|
-
-So the level of the pwm_in signal is counted each rising edge of clk;
-the number of clk edges while pwm_in is high is the HPC count, whereas
-the number of clk edges while pwm_in is low is the LPC count.
-
-In the Generic Counter paradigm, this would look like the following:
-
-    Signals             Synapses              Counts
-    =======             ========              ======
-    +-----------+                               _______________________
-    |           | <---- "Rising Edge" ---+---> /                       \
-    |"PWM Clock"|                        |     |"High Polarity Capture"|
-    |           |                    +---|---> \                       /
-    +-----------+                    |   |      -----------------------
-                                     |   |
-    +-----------+                    |   |      _______________________
-    |           |                    |   +---> /                       \
-    |"PWM Input"|                    |         | "Low Polarity Capture |
-    |           | <---- "None" ------+-------> \                       /
-    +-----------+                               -----------------------
-
-The key idea is that the clock and PWM input Signals are associated to
-both Counts (HPC and LPC) through their respective Synapses. However,
-while the clock Synapse ("Rising Edge") indicates the clock Signal
-state triggers updates in the Counts, the PWM input Synapse ("None")
-indicates the PWM input Signal state does not trigger but is simply
-evaluated to determine the new Count value.
-
-> +static const enum counter_synapse_action rkpwmc_hpc_lpc_actions[] = {
-> +	COUNTER_SYNAPSE_ACTION_BOTH_EDGES,
-> +	COUNTER_SYNAPSE_ACTION_NONE,
-> +};
-
-To simplify my above example, I assumed that the HPC and LPC counts are
-only updated on rising edges of the clock Signal. If the Count values
-actually update on both edges, then you don't need to make a change
-here. Otherwise, change the "both edges" enum constant to "rising edge"
-or "falling edge" as required.
-
-> +static struct counter_synapse rkpwmc_pwm_synapses[] = {
-> +	{
-> +		.actions_list = rkpwmc_hpc_lpc_actions,
-> +		.num_actions = ARRAY_SIZE(rkpwmc_hpc_lpc_actions),
-> +		.signal = &rkpwmc_signals[0]
-> +	},
-> +};
-
-Add a Synapse here for the "PWM Input" Signal.
-
-You should also implement an action_read() callback. Check the value of
-synapse->signal->id to determine which Signal is associated to the
-Synapse and set the respective action; i.e. for the PWM clock set
-COUNTER_SYNAPSE_ACTION_BOTH_EDGES, while for the PWM input set
-COUNTER_SYNAPSE_ACTION_NONE.
-
-> +static const enum counter_function rkpwmc_functions[] = {
-> +	COUNTER_FUNCTION_INCREASE,
-> +};
-
-I wonder if we need a new enum counter_function constant to express
-what's happening in this driver. In theory, the
-COUNTER_FUNCTION_INCREASE represent a Count whose value only increases,
-but what we're describing here is more of a duty cycle sample, right?
-
-I haven't made up my mind on this, so for now you can stick with
-COUNTER_FUNCTION_INCREASE. I'll reconsider it in the next revision.
-
-> +static int rkpwmc_enable_write(struct counter_device *counter,
-> +			       struct counter_count *count,
-> +			       u8 enable)
-> +{
-> +	struct rockchip_pwm_capture *pc = counter_priv(counter);
-> +	int ret;
-> +
-> +	ret = mfpwm_acquire(pc->pwmf);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (!!enable != rkpwmc_is_enabled(pc->pwmf)) {
-
-The Counter subsystem gurantees enable is a boolean value so there's no
-need for the double negation here in the conditional.
-
-Also, instead of checking if the enable value is different from
-rkpwm_is_enabled(), check if it is the same and exit early. That will
-avoid the large conditional block as what you have inside can now move
-outside after the conditional check.
-
-> +		if (enable) {
-> +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> +					 PWMV4_EN(false));
-> +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_CTRL,
-> +					 PWMV4_CTRL_CAP_FLAGS);
-> +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_INT_EN,
-> +					 PWMV4_INT_LPC_W(true) |
-> +					 PWMV4_INT_HPC_W(true));
-> +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> +					 PWMV4_EN(true) | PWMV4_CLK_EN(true));
-> +
-> +			ret = clk_enable(pc->pwmf->core);
-> +			if (ret)
-> +				goto err_release;
-> +
-> +			ret = clk_rate_exclusive_get(pc->pwmf->core);
-> +			if (ret)
-> +				goto err_disable_pwm_clk;
-> +
-> +			ret = mfpwm_acquire(pc->pwmf);
-> +			if (ret)
-> +				goto err_unprotect_pwm_clk;
-> +		} else {
-> +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_INT_EN,
-> +					 PWMV4_INT_LPC_W(false) |
-> +					 PWMV4_INT_HPC_W(false));
-> +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> +					 PWMV4_EN(false) | PWMV4_CLK_EN(false));
-> +			clk_rate_exclusive_put(pc->pwmf->core);
-> +			clk_disable(pc->pwmf->core);
-> +			mfpwm_release(pc->pwmf);
-> +		}
-> +	}
-> +
-> +	mfpwm_release(pc->pwmf);
-
-The call to mfpwm_release() in the else block is redundant because it is
-called immediately again here.
+I do need to update generic-counter.rst to add a few new things we've
+picked up over the years, so it is on my general to-do list.
 
 William Breathitt Gray
 
