@@ -4,72 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0D2CD3426
-	for <linux-rockchip@archiver.kernel.org>; Sun,  3 May 2026 11:06:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DAA1CD3424
+	for <linux-rockchip@archiver.kernel.org>; Sun,  3 May 2026 12:18:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=y7jJjiY6coNIG5CvRkWK80JrH3a40n/Qy7TSfNt9AhI=; b=nXCruFQqW72Knk
-	y2CPlBo6XkVI4Iu5zag5n6Jh158mNMImCctYAOibmt4rhWKgz3rhl26b1/pzIJ0QVwMtkrPeirzsK
-	4iK9U560DVmNId2dr+xkV/RMj0Lfu8ytpLYHflCsHP85JwhUeBgcdokqrgTBD4WWSHogs3yY9sh44
-	y9pxyWG5fdU72t+UN0AGy7/4E6JEdd/2wpRv9JTmiwFFTTHj+bb651blkBV+vmh4x5f4BChPWPwUa
-	EVUCjcKFD3kxXZJigeUA+COL2xA04SLBe00YPA59XpuozI5wyyfNPupkSClqNP2b4j3c89c+74aye
-	A+c5+mWJRJI5t6nIQu4A==;
+	List-Owner; bh=JGm5URrHs/3TtyYxDfJ/kyorw0zRaEntdIv52EzaVCU=; b=AcRqtun+bNH+SC
+	egViMqlE1pJSkSoQU1a6HwwPj9gqqvmtVHrN5B2zE37kCyTmLE0ALy9mZMATw68d9q3SqTn7rbuoc
+	KJFFUJwlMI6IXxixqI9lX4/VcyxMxxqKKBBDSpXAEtZETWQn1uOVV5lvjbZRWP9WNyy8JeR5OLEE1
+	BanSTZmUWB49bG3jySZgF/hu66GdNNprdQXUU6zYtjeblBwukcebVsIRRbXOZZJC9za4YLDUc5VB2
+	jEmvLx1pZM8G4P5wwnJnn73i2ACWHzojd5As1/uTk/UCT/z0Xkgw/EoYgUShqDKW5TyDTVCDovv/R
+	nDFAOivaJ4d6MfyMFjZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJUf1-0000000Aqru-1G0k;
-	Sun, 03 May 2026 11:06:55 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wJVmC-0000000Awxc-05Jp;
+	Sun, 03 May 2026 12:18:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJUez-0000000AqrZ-2wTQ;
-	Sun, 03 May 2026 11:06:53 +0000
+	id 1wJVm9-0000000Awx9-4049
+	for linux-rockchip@lists.infradead.org;
+	Sun, 03 May 2026 12:18:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id C93F360120;
-	Sun,  3 May 2026 11:06:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E2CDBC2BCB4;
-	Sun,  3 May 2026 11:06:47 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 001CD40A83;
+	Sun,  3 May 2026 12:18:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44E41C2BCB4;
+	Sun,  3 May 2026 12:18:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777806411;
-	bh=YQOeN5BLc+pPy9v92y0mrqvir0VtBXLhse/m+6gpt68=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=sY0hxcxN2yrN+m4OPBZeYw7pWttaE94uan/AjdsPJ22WWMqj9w+YEXvNrBN2YghwE
-	 cJif5MIeR+0k7UfKSilTVqQhmEJUMrx+fb0GwFHigphtEtCBViuKon7aTuj1jPnCsz
-	 TxrwxKcvkMXboPsYcpBKrWuVSAZaBLUdMfR7Kffaa/QYtuxzBhCETgsZC51q3kD9WD
-	 xodr5pu/pX/B4QQknUmOuKJawGk9ol3G4gpmuMcDVidKp7AVgweAX93PJFAG2Ezjty
-	 CUWvVeyxRci7R8KJuv4D8Avt2l7290SzMvkXgoTNe59gXbsOSoM/CMpwUP51m8Mqxf
-	 o5PliNtcqHYnw==
-From: William Breathitt Gray <wbg@kernel.org>
-To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Cc: William Breathitt Gray <wbg@kernel.org>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <ukleinek@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Lee Jones <lee@kernel.org>,
-	Damon Ding <damon.ding@rock-chips.com>,
-	kernel@collabora.com,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Alexey Charkov <alchark@gmail.com>,
-	linux-rockchip@lists.infradead.org,
-	linux-pwm@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-iio@vger.kernel.org,
-	fabrice.gasnier@foss.st.com
-Subject: Re: [PATCH v5 4/6] counter: Add rockchip-pwm-capture driver
-Date: Sun,  3 May 2026 20:06:43 +0900
-Message-ID: <20260503110644.462016-1-wbg@kernel.org>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <q0kG3ZZyT92lQlYsvZD_qg@collabora.com>
-References: <q0kG3ZZyT92lQlYsvZD_qg@collabora.com>
+	s=k20201202; t=1777810700;
+	bh=28GAAFJ421w0XWMH4drfFPlHwieGcI6o85CEVhBum7o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=aSCiTw2+hJswJvWiLC8GOMQaGNbSdxX0t3dkiPKrb7E8PYcXoihpBSOhKGHe2E+rq
+	 UNMDfun8KGnkix0oVacwpi7n2n/+l9WckABOludkyMSOJ3HPCzleRNYfzNZS8fswIA
+	 1suSwrJCcaAX0koHgWa6dlHuNXsH+joS3us06kLe7oVLdEtRGvmBWxbB+DbkHt2Xt/
+	 xGjf4pXz5EC5i0LctI7Ci02d7U8NMvwld3FQtSXmgP+HaAxwOy/blciTw3dOlmhOan
+	 G6gXnQtcnN6fckToN/F1GfYmqhJHZBNhokX+bmOZ/V5x7ZmvYUj+Gy0HKS4rtLqb1G
+	 YY2Xh8aKyGynQ==
+Date: Sun, 3 May 2026 14:18:18 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com, 
+	dlechner@baylibre.com, jic23@kernel.org, jean-baptiste.maneyrol@tdk.com, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, 
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V4 01/10] dt-bindings: iio: imu: icm42600: Add icm42607
+ binding
+Message-ID: <20260503-convivial-aquatic-yak-d2dbeb@quoll>
+References: <20260501221152.194251-1-macroalpha82@gmail.com>
+ <20260501221152.194251-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=758; i=wbg@kernel.org; h=from:subject; bh=YQOeN5BLc+pPy9v92y0mrqvir0VtBXLhse/m+6gpt68=; b=owGbwMvMwCW21SPs1D4hZW3G02pJDJnfdXSjr+uG9LolLH+69rEAp8L++Qpsv/iEOfd9/7FYO 2LLJdsNHaUsDGJcDLJiiiy95mfvPrikqvHjxfxtMHNYmUCGMHBxCsBE0l8xMnTNE9hydJfidDbB cPdjUssKRfzfqV9z5XlTyWx3+odinREjwyLnzQ2Vefe9l7o67xPmtlsRfTpUcf3xbRJmKg/1F7m vYgYA
-X-Developer-Key: i=wbg@kernel.org; a=openpgp; fpr=8D37CDDDE0D22528F8E89FB6B54856CABE12232B
+Content-Disposition: inline
+In-Reply-To: <20260501221152.194251-2-macroalpha82@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260503_051822_030573_9430C41A 
+X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,23 +78,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Apr 27, 2026 at 07:35:32PM +0200, Nicolas Frattaroli wrote:
-> On Sunday, 26 April 2026 12:55:20 Central European Summer Time Damon Ding wrote:
-> > BTW: Is there any user-space test tool similar to libpwm for the
-> > counter subsystem?
+On Fri, May 01, 2026 at 05:11:40PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> I've tried looking for this as well, and couldn't find anything. If
-> it exists then adding a mention of it to generic-counter.rst would
-> be in order I think.
+> Add devicetree binding for the Invensense ICM42607 and Invensense
+> ICM42607P inertial measurement unit. This unit is a combined
+> accelerometer, gyroscope, and thermometer available via I2C or SPI.
+> 
+> This device is functionally very similar to the icm42600 series with a
+> very different register layout. Additionally, add mount-matrix
+> attribute to schema.
 
-Fabrice Gasnier added a Counter chrdev userspace test application to
-watch Counter events; it's at tools/counter/counter_watch_events.c if
-you are interested in trying it out.
+Why adding it? Is it something new? Is it applicable to other variants?
+If not, why it is allowed for them?
 
-I do need to update generic-counter.rst to add a few new things we've
-picked up over the years, so it is on my general to-do list.
+Do not say WHAT you did, say why you did it.
 
-William Breathitt Gray
+Best regards,
+Krzysztof
+
 
 _______________________________________________
 Linux-rockchip mailing list
