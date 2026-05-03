@@ -4,64 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DAA1CD3424
-	for <linux-rockchip@archiver.kernel.org>; Sun,  3 May 2026 12:18:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8846BCD3427
+	for <linux-rockchip@archiver.kernel.org>; Sun,  3 May 2026 16:50:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JGm5URrHs/3TtyYxDfJ/kyorw0zRaEntdIv52EzaVCU=; b=AcRqtun+bNH+SC
-	egViMqlE1pJSkSoQU1a6HwwPj9gqqvmtVHrN5B2zE37kCyTmLE0ALy9mZMATw68d9q3SqTn7rbuoc
-	KJFFUJwlMI6IXxixqI9lX4/VcyxMxxqKKBBDSpXAEtZETWQn1uOVV5lvjbZRWP9WNyy8JeR5OLEE1
-	BanSTZmUWB49bG3jySZgF/hu66GdNNprdQXUU6zYtjeblBwukcebVsIRRbXOZZJC9za4YLDUc5VB2
-	jEmvLx1pZM8G4P5wwnJnn73i2ACWHzojd5As1/uTk/UCT/z0Xkgw/EoYgUShqDKW5TyDTVCDovv/R
-	nDFAOivaJ4d6MfyMFjZA==;
+	List-Owner; bh=b2KjFw2l+sVLCXZLZGvPn2yR0VNd1S0TQ29pNEddNQ0=; b=UCyWmtX8Ay3abP
+	lKqdXNrqXdr1De0MPc9M1D+SmXG/Na5zhS5IyFnzZLqnfclzAcsughY5kf+jn/xad1lROfacNiuHU
+	mq+hjY3CMm0wiU6Ow0Z/HrudbOlaqLYXa/MyklLze96pK02NIy+tT3AIk0o/XsghZufccMB3tnYNw
+	OfvUJBx8ni3fUGbOZe/lfPqOimOw0jT5n80be2oviTQ129D3sowGVH9d/8xzFXDWTmfavWjBAkfnS
+	O4lSGL5lj/rS6NXSvIiZbAcDYglceiwWFpsWSboN6z3Ib6otGCZivnpBE4uFbSOqze8z+YsZPyF0O
+	jziumUxybNcJ9qmSRasA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJVmC-0000000Awxc-05Jp;
-	Sun, 03 May 2026 12:18:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wJa1L-0000000BKv4-1U4Y;
+	Sun, 03 May 2026 16:50:19 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJVm9-0000000Awx9-4049
-	for linux-rockchip@lists.infradead.org;
-	Sun, 03 May 2026 12:18:23 +0000
+	id 1wJa1J-0000000BKuM-3S1q;
+	Sun, 03 May 2026 16:50:17 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 001CD40A83;
-	Sun,  3 May 2026 12:18:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 44E41C2BCB4;
-	Sun,  3 May 2026 12:18:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CBC95600C3;
+	Sun,  3 May 2026 16:50:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CB70C2BCB4;
+	Sun,  3 May 2026 16:50:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777810700;
-	bh=28GAAFJ421w0XWMH4drfFPlHwieGcI6o85CEVhBum7o=;
+	s=k20201202; t=1777827016;
+	bh=EcIJ+6nR1kdFOG4fTTp8uLBQCqZk2MyerUY14rOlOSA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=aSCiTw2+hJswJvWiLC8GOMQaGNbSdxX0t3dkiPKrb7E8PYcXoihpBSOhKGHe2E+rq
-	 UNMDfun8KGnkix0oVacwpi7n2n/+l9WckABOludkyMSOJ3HPCzleRNYfzNZS8fswIA
-	 1suSwrJCcaAX0koHgWa6dlHuNXsH+joS3us06kLe7oVLdEtRGvmBWxbB+DbkHt2Xt/
-	 xGjf4pXz5EC5i0LctI7Ci02d7U8NMvwld3FQtSXmgP+HaAxwOy/blciTw3dOlmhOan
-	 G6gXnQtcnN6fckToN/F1GfYmqhJHZBNhokX+bmOZ/V5x7ZmvYUj+Gy0HKS4rtLqb1G
-	 YY2Xh8aKyGynQ==
-Date: Sun, 3 May 2026 14:18:18 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com, 
-	dlechner@baylibre.com, jic23@kernel.org, jean-baptiste.maneyrol@tdk.com, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, 
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V4 01/10] dt-bindings: iio: imu: icm42600: Add icm42607
- binding
-Message-ID: <20260503-convivial-aquatic-yak-d2dbeb@quoll>
-References: <20260501221152.194251-1-macroalpha82@gmail.com>
- <20260501221152.194251-2-macroalpha82@gmail.com>
+	b=lp0gv1z/9St8x7kSEsE5qrH6Uk67Q5ty4kT1IqtUMgeaA7dCVtmxE4u34QRnuxklE
+	 O2I60cgzCIEnUc6iUZjOu3togYE/T2wlhMgXbWAgiBkuJqBYWfOONaPoUvwXBQhh/8
+	 JZoiQ4rxka0GpD5g+h1EiI+StNJc95GjUTd90E/EKWYWCIjdJMeTquz1mjRKJ6aa+G
+	 pYJ0hFTVoliKB2hwUpP5xD5t8lAB9/MRgG4F9+MBiPH8bndVILIIZDUe93HgMXtmi3
+	 ZQjsW8/FQxyvlO8+PIQW9YBtvnfYaU7H7TA7KeFBqzma0aQIgXYOvES/mUIb9XkYhW
+	 7GPvp1xrhWmFQ==
+Date: Sun, 3 May 2026 22:20:12 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com, devicetree@vger.kernel.org,
+	William Wu <william.wu@rock-chips.com>
+Subject: Re: [PATCH v4 00/16] phy: rockchip: usbdp: Fixes, DP 1-lane support
+ and cleanups
+Message-ID: <afd8xMS2hz208Lcl@vaman>
+References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260501221152.194251-2-macroalpha82@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260503_051822_030573_9430C41A 
-X-CRM114-Status: UNSURE (   9.23  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +81,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 01, 2026 at 05:11:40PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+Hi Sebastian,
+
+On 28-04-26, 18:13, Sebastian Reichel wrote:
+> This series overhauls the Rockchip USBDP driver; apart from a
+> a bunch of cleanups and small improvements the main goal is to
+> get the driver ready for proper USB-C DP AltMode support.
 > 
-> Add devicetree binding for the Invensense ICM42607 and Invensense
-> ICM42607P inertial measurement unit. This unit is a combined
-> accelerometer, gyroscope, and thermometer available via I2C or SPI.
+> Once this series has landed, it unblocks enabling proper USB-C
+> DP AltMode on the RK3588 and RK3576 platforms incl. runtime PM
+> for the Synopsys DesignWare DisplayPort controller.
 > 
-> This device is functionally very similar to the icm42600 series with a
-> very different register layout. Additionally, add mount-matrix
-> attribute to schema.
+> Apart from this series, further changes are required on the
+> DRM side. There are no compile-time dependencies between the
+> DRM side and the PHY side, but the PHY side must be applied
+> to avoid SErrors once runtime PM is added to the DisplayPort
+> controller driver. Thus it would be really good to land this
+> series in the next merge window.
 
-Why adding it? Is it something new? Is it applicable to other variants?
-If not, why it is allowed for them?
+Looks like sasiko has flagged 8 high warning, can you please check them
 
-Do not say WHAT you did, say why you did it.
-
-Best regards,
-Krzysztof
-
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
