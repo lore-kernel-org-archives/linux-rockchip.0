@@ -4,63 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C011CD3427
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 18:15:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B663CD3427
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 18:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=rKRXiX455ZRBoJ+ocqVDjZNo6wMKLSUzlauTTuBvRzU=; b=Q1Ch1VlY3jcSj+
-	CE0PnvXtbq800JB+BYgR5C0JjiuYG3RM6aLMf2CHXwR1nchfo8H1jzhT9D+7kmJwP3U4e2EHuLamY
-	32NdrFpMar1JV+24aKKSTzsSXgOk3yTEwUrnrlpPShXN2kQONBViGMx6nXMRFPjMv2F3MxSM4OjOp
-	jNJtY0uElGkFklaMGTACBaf4dV/p+wO0ui4ExkLSYamw0s/yu5+C27R3PUXh1FHcGyHISq58hYoAX
-	KjMAERto9QaCnhMFeQSIXHssioPKTyaMqTHrlUVfuZ2Hi04ZJOdqyqJyhF+CMxyLsvk/QGM/FSe8o
-	DUzmLdA/b6sTF3d3LvGw==;
+	List-Owner; bh=RjAJIBfV+qE1olr7oI7LCg0chAMB4jj6E47ti80n3Gw=; b=PMMfM8bbKq5HKr
+	HS0u6OwEFhyFaNqvDmj/IK0/wcNXbr77TUDw7oZgCA7iHZBHUQG8Ah92CnDPSZOWqaCH8qIOPnw4n
+	bYsQcDIYdUfRKuM/C0oflzWoADI5sWcypoTgyjAfT7o/TALnU6ZatJTCa3FbY56UPj/wxeQbeV4jw
+	z8Jgi0cZco9S+IHY3iPz/as6wKH+m/rutzuKqBgDhGjuzMQcTzN+3OaXWOvzbGxNU2neR4taOOozk
+	uzrOC3lDwWAyytCqOfLq1QhUJV0M3T6Pd7qIK1vMx1gskE12ED6aeHBxEUOslwk57A6mIiHMQmNDY
+	sFj6LcQ5stPPLbv3ILxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxpf-0000000Dx9Q-18Dx;
-	Mon, 04 May 2026 18:15:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wJxyF-0000000DxvI-3yQZ;
+	Mon, 04 May 2026 18:24:44 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxpd-0000000Dx8x-0qLA
-	for linux-rockchip@lists.infradead.org;
-	Mon, 04 May 2026 18:15:50 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4CA5E41808;
-	Mon,  4 May 2026 18:15:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 091FAC2BCB8;
-	Mon,  4 May 2026 18:15:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777918548;
-	bh=Jo0bMb9H44ijTSfFfhQ4fargPipTvFE09gFg7hlCjbw=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=gtHGlM7zpqqSdMOZYaEx9y3VmiBII1XKpmFJzGucchUKn/fPExUVSlmpihllna2fq
-	 BjuO2LHH6T+mFh7YS+VYd+tLj0MEBb/YrbpLxCcb6rJqyRsY1jeqxFk3kEtNAOUnKl
-	 qk/WSuvC3l3dQZCMzso9o/tTrwrGP6YKKIwuo+BD1opYEP1iKsCgkgXQ1IXP9KBRo8
-	 R87DHXeM9ZuHDPTK7X8QX4Z2CFjaH1Ax/S+WPmme4yrQ46hJPjiwsc/bflYW40P/2z
-	 6Sohm6DCSgmXAxKl5cYo3r7PnX0clQDx7mRTaOJ/bfQFZb8HQQkohsB5JI9Mb5mtbh
-	 nK17mxPE3iX8w==
-Date: Mon, 4 May 2026 19:15:37 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
- dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
- andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V4 03/10] iio: imu: inv_icm42607: Add I2C and SPI For
- icm42607
-Message-ID: <20260504191537.17fb8d05@jic23-huawei>
-In-Reply-To: <20260501221152.194251-4-macroalpha82@gmail.com>
-References: <20260501221152.194251-1-macroalpha82@gmail.com>
-	<20260501221152.194251-4-macroalpha82@gmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wJxy8-0000000Dxr1-38Uk;
+	Mon, 04 May 2026 18:24:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1777919073;
+	bh=CrUMD80L0tPh/ReWZWhyFAP6sKoT7Ci2SErvfpP/5Yw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=JP5VsES8QC1489VuseSPugmyxnxbDiuYlt8+kzwVkBDDylqpXKJusT9MIQh5C1sMG
+	 y3E83asCjPuVmbkyDC2EjGW/npf9cwyZ4bfqf3S+XwcU40F55chYjBX3eg7quNLeVl
+	 wV2eZ9wtDrpTTc6RmF094up8hDhZP+kHwe1QcjXZ6TDXzpCD+Eduno4ZlQJ9Jivh68
+	 cNReNQaFZaZEvD5EWv/V15iriP/1qxDfCYIWDR8IVphwDyFFe67Hb19CSKEpv3Gsax
+	 POgzyFY7MWM672rRs87w2g0v5dRz0OAFNeWz6fVu4Yry6Lv0/WNOp1pTgj5M3vAIJd
+	 BTsCn7Man/5ow==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B448717E1544;
+	Mon,  4 May 2026 20:24:33 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Mon, 04 May 2026 21:24:01 +0300
+Subject: [PATCH 3/5] drm/rockchip: vop2: Delay old_{layer|port}_sel updates
+ in setup_layer_mixer()
 MIME-Version: 1.0
+Message-Id: <20260504-vop2-layer-cfg-tmout-v1-3-730226a7331e@collabora.com>
+References: <20260504-vop2-layer-cfg-tmout-v1-0-730226a7331e@collabora.com>
+In-Reply-To: <20260504-vop2-layer-cfg-tmout-v1-0-730226a7331e@collabora.com>
+To: Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_111549_289777_B7E30E8E 
-X-CRM114-Status: GOOD (  17.91  )
+X-CRM114-CacheID: sfid-20260504_112436_959813_89A959B1 
+X-CRM114-Status: GOOD (  12.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,60 +80,106 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri,  1 May 2026 17:11:42 -0500
-Chris Morgan <macroalpha82@gmail.com> wrote:
+The old_layer_sel and old_port_sel local variables were introduced to
+hold the previous VP configuration for comparisons and wait targets,
+working around the premature update of vop2->old_layer_sel and
+vop2->old_port_sel earlier in the function.
 
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add I2C and SPI driver support for InvenSense ICM-42607 devices.
-> Add necessary Kconfig and Makefile to allow building of (incomplete)
-> driver.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Remove these superfluous locals and instead defer the assignments of
+vop2->old_layer_sel and vop2->old_port_sel to just before the
+corresponding shadow register writes, where the transition from old to
+new logically belongs.
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
-> new file mode 100644
-> index 000000000000..7a02bbab3a63
-> --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+No functional change intended.
 
-> +static const struct of_device_id inv_icm42607_of_matches[] = {
-> +	{
-> +		.compatible = "invensense,icm42607",
-> +		.data = (void *)INV_CHIP_ICM42607,
-> +	},
-> +	{
-> +		.compatible = "invensense,icm42607p",
-> +		.data = (void *)INV_CHIP_ICM42607P,
-> +	},
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);
-> +
-> +static const struct spi_device_id inv_icm42607_spi_id_table[] = {
-> +	{ "icm42607", INV_CHIP_ICM42607 },
-> +	{ "icm42607p", INV_CHIP_ICM42607P },
-Very strong preference in new code to not use enums for the data.
-That explains why you need the magic invalid in previous patch.
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 21 +++++++++------------
+ 1 file changed, 9 insertions(+), 12 deletions(-)
 
-Can we instead just use pointers to the per chip data relevant
-to each one? That usually means some externs in the header.
+diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+index 5206f01ec787..1f5e8c2acecd 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
++++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
+@@ -2136,9 +2136,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 	struct drm_plane *plane;
+ 	u32 layer_sel = 0;
+ 	u32 port_sel;
+-	u32 old_layer_sel = 0;
+ 	u32 atv_layer_sel = 0;
+-	u32 old_port_sel = 0;
+ 	u8 layer_id;
+ 	u8 old_layer_id;
+ 	u8 layer_sel_id;
+@@ -2161,8 +2159,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 	else
+ 		ovl_ctrl &= ~RK3568_OVL_CTRL__YUV_MODE(vp->id);
+ 
+-	old_port_sel = vop2->old_port_sel;
+-	port_sel = old_port_sel;
++	port_sel = vop2->old_port_sel;
+ 	port_sel &= RK3568_OVL_PORT_SEL__SEL_PORT;
+ 
+ 	if (vp0->nlayers)
+@@ -2188,8 +2185,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 		port_sel |= FIELD_PREP(RK3588_OVL_PORT_SET__PORT3_MUX, 7);
+ 
+ 	atv_layer_sel = vop2_readl(vop2, RK3568_OVL_LAYER_SEL);
+-	old_layer_sel = vop2->old_layer_sel;
+-	layer_sel = old_layer_sel;
++	layer_sel = vop2->old_layer_sel;
+ 
+ 	ofs = 0;
+ 	for (i = 0; i < vp->id; i++)
+@@ -2273,8 +2269,6 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 			     old_win->data->layer_sel_id[vp->id]);
+ 	}
+ 
+-	vop2->old_layer_sel = layer_sel;
+-	vop2->old_port_sel = port_sel;
+ 	/*
+ 	 * As the RK3568_OVL_LAYER_SEL and RK3568_OVL_PORT_SEL are shared by all Video Ports,
+ 	 * and the configuration take effect by one Video Port's vsync.
+@@ -2290,7 +2284,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 	 *    of the new VP.
+ 	 */
+ 
+-	if (layer_sel != old_layer_sel && atv_layer_sel != old_layer_sel) {
++	if (layer_sel != vop2->old_layer_sel && atv_layer_sel != vop2->old_layer_sel) {
+ 		cfg_done = vop2_readl(vop2, RK3568_REG_CFG_DONE);
+ 		cfg_done &= (BIT(vop2->data->nr_vps) - 1);
+ 		cfg_done &= ~BIT(vp->id);
+@@ -2298,20 +2292,23 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 		 * Changes of other VPs' overlays have not taken effect
+ 		 */
+ 		if (cfg_done)
+-			rk3568_vop2_wait_for_layer_cfg_done(vop2, old_layer_sel);
++			rk3568_vop2_wait_for_layer_cfg_done(vop2, vop2->old_layer_sel);
+ 	}
+ 
+-	if (layer_sel != old_layer_sel || port_sel != old_port_sel)
++	if (layer_sel != vop2->old_layer_sel || port_sel != vop2->old_port_sel)
+ 		ovl_ctrl |= FIELD_PREP(RK3568_OVL_CTRL__LAYERSEL_REGDONE_SEL, vp->id);
+ 	vop2_writel(vop2, RK3568_OVL_CTRL, ovl_ctrl);
+ 
+-	if (port_sel != old_port_sel) {
++	if (port_sel != vop2->old_port_sel) {
++		vop2->old_port_sel = port_sel;
+ 		vop2_writel(vop2, RK3568_OVL_PORT_SEL, port_sel);
+ 		vop2_cfg_done(vp);
+ 		rk3568_vop2_wait_for_port_mux_done(vop2);
+ 	}
+ 
++	vop2->old_layer_sel = layer_sel;
+ 	vop2_writel(vop2, RK3568_OVL_LAYER_SEL, layer_sel);
++
+ 	mutex_unlock(&vop2->ovl_lock);
+ }
+ 
 
-We used to do things how you have it here, but the enums always
-end up proving a pain as drivers get more complex.  They also
-encourage part specific code when it should almost always be
-part specific constant data.
+-- 
+2.53.0
 
-Currently I'm not sure what is different between these parts.
-If nothing yet from point of view of what the driver supports
-then don't bother providing data 'yet'.
-
-Jonathan
-
-
-
-> +	{ }
-> +};
 
 _______________________________________________
 Linux-rockchip mailing list
