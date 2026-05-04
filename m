@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA94FCD343D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 18:24:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F2F7CD342F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 18:24:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NQlQJTjs2EJ10bTRQYJE1EsCiYUDqmakYB1YCaiSwik=; b=eLWgxKBu2jzhVI
-	mWhJbd5SiB1jtfvM7NPKXRpIzSwcuPX+rLtSSaMVvQ73YA9lAF7/sGjowE1ZRglz3bBBA/ybdoS2O
-	1UV/PtVL5DjBMac1x24DKlvglQQ0kWAu+d0xPQWJZfFaejmd65vyY12T0dDDbUIj4QRoIJH0lFYdC
-	WH4pjLZ0HLb5CdZe8cL/QbAxd74BKMFnaZiAWNZz9NfP55EAkh/spxjhtQLGFwKyxtTyYK5TP8rS1
-	MkW1SySxDabYGxNqITgdbN0nzabHLxzC44qCQnbsCjkxG8s2ie/8zWtVtBeRIs5mOgMb8uNWa4vXo
-	7iXT8upGfz4fWduVjSUw==;
+	List-Owner; bh=ZQQcKf4d0xxWO9s6UHV7xTyB+7mXDlnUpksMA1G3UfA=; b=XGVovOaDBgqSFX
+	ajoxuTl2QsUIPksQ8oMUACg+g5ZuJK77Fsci2xLaS9iO9+VoRZG3Atcyz/HhjK4PVCjWc6IsZ8y7C
+	/uBklFnOlAuw+KtbJazioZ1tU8oUrtKRymQ08kG6TdXONeq00o4nVtzEnazJWu6WC96MgicL8sXVo
+	ooY51CB1aHij5ifKwJvUhzpk/gmkVnTVAAkDSONUBtGGfv59UWOkLC2mtFg725T2bElcuZ9JDk+NZ
+	TbFdyGKN9LQjvzIUNqVXvXN3vsUhoAkFgw+7UvPH6nsczCu1hzDxWQw0IDUP4KBSBX2RY0zvkYYUI
+	CBOnwtmDhUIwKVxQXXqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyH-0000000DxxY-41kV;
-	Mon, 04 May 2026 18:24:45 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wJxyB-0000000Dxt0-380x;
+	Mon, 04 May 2026 18:24:39 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJxyB-0000000DxsA-2UE5;
-	Mon, 04 May 2026 18:24:40 +0000
+	id 1wJxy8-0000000DxqS-2nxL;
+	Mon, 04 May 2026 18:24:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1777919074;
-	bh=ZPL0/m2C5FPMkrDboCKPEVtxYEWiPUuSLnVJOAS9x2Q=;
+	s=mail; t=1777919072;
+	bh=LIaSlxFKDMGdLUeGmCaMWboNkyhoBoZUFgC5ptDTBTY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JINh5v7PHzTOk4WwFMRRwKsYD0iu2f1S9ZWkPcCc+AA1dbNcNblQEab8oRf22wRzw
-	 YKwVzvBfMSYejLfsOYBU3KuVO/3VvEk0CM97dT7HIizUt3uSxVWELoqvvOAyhEqKAQ
-	 Tr7jIXJMrEHD026rseSnW0BgxY/jI8Q09qpZp25JfW/MC51zhh4m3Iovw+ehPqZ/Pu
-	 PA0yo0YS4UlCJ531HLt7lvjtCKHi8c/jo09YCZLufQph2a40vDpgpxNVZ9XW57eFID
-	 ChYRAHkuYACULx3dWlN+5UiPTys+21Arw6g7a6fAWEwtVm0QsoGkNltkolSk8/D4qh
-	 mG8snLKNYH6QQ==
+	b=dHOSERktEipbU+Wy5cUpTDKMgYTumbdri8JkAkRQx8MyFLu1p8Q8dmBxIMPiaDVJ0
+	 LYPgZ23rp4iDtFnvdH6yV/I2idGqV/U6rXewcU1tGeyN6IY2Op/F5Zyjt/J7lw6jJM
+	 XC8qF7J2Aff+pvBonsUcvNSHkMxH5WoRiTk3uGshvfnEEbwntiQkGGXE79LCMmqlKI
+	 Nab986FKJVQtoexN1/0dulZd+j+xOP+DC51j5W56tXb7AhUgvKATpZXHuRU/mI1wSl
+	 DvG4T2Ee/aHvKPAws6G16WI2hfEjlze156z9+oxVP49QjzWiaPTal1paHuqwvtfwza
+	 tljjXr3RF7LAw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 846D417E156E;
-	Mon,  4 May 2026 20:24:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0FBFC17E12EB;
+	Mon,  4 May 2026 20:24:32 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Mon, 04 May 2026 21:24:02 +0300
-Subject: [PATCH 4/5] drm/rockchip: vop2: Drop redundant zero-init in
- setup_layer_mixer()
+Date: Mon, 04 May 2026 21:23:59 +0300
+Subject: [PATCH 1/5] drm/rockchip: vop2: Fix wrong wait target in layer cfg
+ done check
 MIME-Version: 1.0
-Message-Id: <20260504-vop2-layer-cfg-tmout-v1-4-730226a7331e@collabora.com>
+Message-Id: <20260504-vop2-layer-cfg-tmout-v1-1-730226a7331e@collabora.com>
 References: <20260504-vop2-layer-cfg-tmout-v1-0-730226a7331e@collabora.com>
 In-Reply-To: <20260504-vop2-layer-cfg-tmout-v1-0-730226a7331e@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
@@ -62,9 +62,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_112439_792338_A53290F3 
-X-CRM114-Status: UNSURE (   9.63  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260504_112436_878528_9293A972 
+X-CRM114-Status: GOOD (  12.54  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,34 +80,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The layer_sel and atv_layer_sel local variables in
-rk3568_vop2_setup_layer_mixer() are unconditionally assigned from
-vop2->old_layer_sel and the RK3568_OVL_LAYER_SEL register read,
-respectively, before any use.
+rk3568_vop2_setup_layer_mixer() waits for the previous Video Port (VP)
+layer configuration to take effect before writing a new one to the
+shared RK3568_OVL_LAYER_SEL shadow register.  However, it passes
+vop2->old_layer_sel to rk3568_vop2_wait_for_layer_cfg_done() as the
+expected value, which at that point already contains the new VP layer.
 
-Remove the superfluous zero-initializers.
+This causes the wait to poll for a value that has not been written to
+the shadow register yet, resulting in spurious timeouts when two
+non-blocking atomic commits race:
 
+  rockchip-drm display-subsystem: [drm] *ERROR* wait layer cfg done timeout [...]
+
+Pass the local old_layer_sel instead, which still holds the value
+captured from vop2->old_layer_sel before it was overwritten, i.e. the
+previous VP target that the hardware is expected to latch.
+
+Fixes: 3e89a8c68354 ("drm/rockchip: vop2: Fix the update of LAYER/PORT select registers when there are multi display output on rk3588/rk3568")
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-index 1f5e8c2acecd..0849bd922ffb 100644
+index 02a788a4dfdd..edca0fb16e08 100644
 --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
 +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-@@ -2134,9 +2134,9 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
- {
- 	struct vop2 *vop2 = vp->vop2;
- 	struct drm_plane *plane;
--	u32 layer_sel = 0;
-+	u32 layer_sel;
- 	u32 port_sel;
--	u32 atv_layer_sel = 0;
-+	u32 atv_layer_sel;
- 	u8 layer_id;
- 	u8 old_layer_id;
- 	u8 layer_sel_id;
+@@ -2307,7 +2307,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
+ 		 * Changes of other VPs' overlays have not taken effect
+ 		 */
+ 		if (cfg_done)
+-			rk3568_vop2_wait_for_layer_cfg_done(vop2, vop2->old_layer_sel);
++			rk3568_vop2_wait_for_layer_cfg_done(vop2, old_layer_sel);
+ 	}
+ 
+ 	vop2_writel(vop2, RK3568_OVL_LAYER_SEL, layer_sel);
 
 -- 
 2.53.0
