@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EEA8FF885A
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 19:12:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0054CD3427
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 19:12:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=q9bzvRvadBRnZA7WFfXmltMAV9InqbxvgDlXuZt/m78=; b=d2M7Vdy7/8iuIW
-	xvmLE4UatFu8wwCsZOcLczv0WbhqAHD+itEOvS1UPxCEJ6RwOEiX5B+xBZ7Nl/uBwxTEGZQ/S4InC
-	AZuZ/wF0vOparE9d/uw4TGKkUM5IBdo7pbli7za1MHgjyTaKvRsiKSSobMXT+NiDCSxM0WjNN90VI
-	EK6Tz3y+Hh+w1EyA96KWxGxsxK3eYFMYkKX+UWv1nzWLUb+Q1VPH4J1DGqMAN4s6KPX6b2inKf4N7
-	4pqhUUdV9nQZ5xfK2Mw5BmpRmvc9ZrduGbPHP5B6PcGaV5caID4kjQMhyxMZx8sd/QeLilUqZivjU
-	CL9NkgByoFtL+T9g0IDA==;
+	List-Owner; bh=pNhZt6Tjzpg9S3iw4bQ+cAUTeDgdWvbHBzhocS7nFJU=; b=gcffVU5f+3EqT3
+	l0AfJ4X8NCe7jsGSTHA/7O28WSOCGwnvMDMzjEz5vVmoZtYz4GQPHVOmuF/zvWRjB1qfTgNZ1oZVK
+	LebCJF8MC/VD6cCGrd1RlmU8Un17ds7STtR1lvabrs+vpnHTHs4LPLl9lBft0ZDWqAdrPs+fPRjLe
+	sslheQ12rSqbvLQKFYDlCgpXzMP+IqHBDT+E2HWC0Om+Z7MviABds19uH7zHf76o7V5MYDY6e+GtQ
+	ALUr97SKIbtKTmzizOvNXkWY4ZQ7UW0msHypI9DAsqio9j6QqnVVCnGnZ3OMoGkSmhx9YQAzDm71d
+	lxDZNJqbPhBJFhgQI9Ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJyic-0000000E6mr-3fdy;
-	Mon, 04 May 2026 19:12:38 +0000
+	id 1wJyig-0000000E6sy-3LI7;
+	Mon, 04 May 2026 19:12:42 +0000
 Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJyiL-0000000E6Lq-1N3i
+	id 1wJyiM-0000000E6Me-0Az2
 	for linux-rockchip@lists.infradead.org;
 	Mon, 04 May 2026 19:12:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1777921940; bh=qxYOBVl4LCfBulQcyEr5FKsY3yyCVbMO03DTb8QuT/M=;
- b=ghEQ3Vh9T3Q+J9VfZsEoTHryGGQ++pfAxSYrqS1izljafaCMXxDonSlljOFxEBi51v7kv7Fev
- Ej0RG5olbxPlvazHWPVeO/s0Uo7QoCfQ+3hutYNIRZnhlntHt0RiwW/R3LQARmIAsxXZNzvcEJP
- MaGbn//A+EaFjwxE/4hUnziX1OWBCM+BFyrDQG4pcy8qYgp9abiSJMYAzDC+VZSLtRArPDaLd/q
- hC0bRFmujnrp62r/fUY+Sew3Np37TWb+zLxL/bGXAg2d/jbZ4P3TiMnCeGybHxJCYzo2DxqQaqL
- MdNnj5lmaiFNXXllBJswDtsRR9LEF42kqS9CY9f+813Q==
-X-Forward-Email-ID: 69f8ef9104bb1dff846bba02
+ t=1777921940; bh=Y+1StOusjSb1aRabYMvL/79aSphsLY0CpDZ9HI5qZek=;
+ b=xa88nWAdeXqOjqsexvFh+Z9MJ4OvaDFCNc+VeH+wTAwlMtsgxozxmlc7uQ99hqPw9aSUzuvbY
+ jmfglfPXjc6krcHgpMCoBGPTJUqJMvBLGtidpyPZyq3Bclc+6GhgXlgNNfhd8LXCDU33Otje8KH
+ JygNv8BaFod3V/zFis4j7ku1PFGKU8/eIRwyFHX1/HV2y7AT8hYHGa6WqvgPY0D7qRrthiTfJoQ
+ oJ4awhe0hr/8qgqyg5kwT821/1YlVdM1s3tg8OW5ByDJxAtcDUqCA/uyZO31QQNhUogH09EIcdt
+ XVwCP+VJjNYwdFJXi+Ce1twQ4sXVsiy1MQzF5bpnFIKA==
+X-Forward-Email-ID: 69f8ef8d04bb1dff846bb9e7
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.66
 X-Forward-Email-Version: 2.7.7
@@ -49,6 +49,7 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
 	Robert Foss <rfoss@kernel.org>,
 	Heiko Stuebner <heiko@sntech.de>,
+	Liu Ying <victor.liu@nxp.com>,
 	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
 	Jonas Karlman <jonas@kwiboo.se>,
 	Jernej Skrabec <jernej.skrabec@gmail.com>,
@@ -56,12 +57,16 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: Liu Ying <victor.liu@nxp.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
 	Sandy Huang <hjc@rock-chips.com>,
 	Andy Yan <andy.yan@rock-chips.com>,
 	Chen-Yu Tsai <wens@kernel.org>,
-	Christian Hewitt <christianshewitt@gmail.com>,
+	Samuel Holland <samuel@sholland.org>
+Cc: Christian Hewitt <christianshewitt@gmail.com>,
 	Diederik de Haas <diederik@cknow-tech.com>,
 	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
 	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
@@ -72,16 +77,16 @@ Cc: Liu Ying <victor.liu@nxp.com>,
 	linux-sunxi@lists.linux.dev,
 	imx@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 17/17] drm: bridge: dw_hdmi: Merge top and bottom half IRQ handlers
-Date: Mon,  4 May 2026 19:10:54 +0000
-Message-ID: <20260504191059.275928-18-jonas@kwiboo.se>
+Subject: [PATCH v4 16/17] drm: bridge: dw_hdmi: Remove the empty dw_hdmi_phy_update_hpd()
+Date: Mon,  4 May 2026 19:10:53 +0000
+Message-ID: <20260504191059.275928-17-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260504191059.275928-1-jonas@kwiboo.se>
 References: <20260504191059.275928-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_121221_526340_67AE5798 
-X-CRM114-Status: GOOD (  10.64  )
+X-CRM114-CacheID: sfid-20260504_121222_325694_D779EB47 
+X-CRM114-Status: GOOD (  10.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,82 +103,119 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The bottom half IRQ handler only modify delay of or queue a delayed work
-used for HPD handling. The mod_delayed_work() called is documented as
-being safe to call from any context including IRQ handler.
-
-Merge top and bottom half IRQ handlers to simplify IRQ handling now that
-HPD event is handled using a delayed work.
+The dw_hdmi_phy_update_hpd() helper is empty and no longer needed after
+recent RXSENSE and HPD rework, remove it.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v4: New patch
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 32 +++++++----------------
- 1 file changed, 10 insertions(+), 22 deletions(-)
+ drivers/gpu/drm/bridge/imx/imx8mp-hdmi-tx.c | 1 -
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c   | 7 -------
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 2 --
+ drivers/gpu/drm/sun4i/sun8i_hdmi_phy.c      | 2 --
+ include/drm/bridge/dw_hdmi.h                | 4 ----
+ 5 files changed, 16 deletions(-)
 
+diff --git a/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-tx.c b/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-tx.c
+index 8e8cfd66f23b..20d389dbfdc5 100644
+--- a/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-tx.c
++++ b/drivers/gpu/drm/bridge/imx/imx8mp-hdmi-tx.c
+@@ -78,7 +78,6 @@ static const struct dw_hdmi_phy_ops imx8mp_hdmi_phy_ops = {
+ 	.disable	= imx8mp_hdmi_phy_disable,
+ 	.setup_hpd	= im8mp_hdmi_phy_setup_hpd,
+ 	.read_hpd	= dw_hdmi_phy_read_hpd,
+-	.update_hpd	= dw_hdmi_phy_update_hpd,
+ };
+ 
+ static int imx8mp_dw_hdmi_bind(struct device *dev)
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index c0ed067154c7..a42c45ff0ade 100644
+index 60b887249eba..c0ed067154c7 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2971,24 +2971,12 @@ static irqreturn_t dw_hdmi_hardirq(int irq, void *dev_id)
- 	if (hdmi->i2c)
- 		ret = dw_hdmi_i2c_irq(hdmi);
- 
--	intr_stat = hdmi_readb(hdmi, HDMI_IH_PHY_STAT0);
-+	intr_stat = hdmi_readb(hdmi, HDMI_IH_PHY_STAT0) & HDMI_IH_PHY_STAT0_HPD;
- 	if (intr_stat) {
--		hdmi_writeb(hdmi, ~0, HDMI_IH_MUTE_PHY_STAT0);
--		return IRQ_WAKE_THREAD;
--	}
--
--	return ret;
--}
--
--static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
--{
--	struct dw_hdmi *hdmi = dev_id;
--	u8 intr_stat;
--
--	intr_stat = hdmi_readb(hdmi, HDMI_IH_PHY_STAT0);
--	if (intr_stat & HDMI_IH_PHY_STAT0_HPD) {
- 		enum drm_connector_status status;
- 
-+		hdmi_writeb(hdmi, ~0, HDMI_IH_MUTE_PHY_STAT0);
-+
- 		/* Set HPD interrupt polarity based on current HPD status. */
- 		status = dw_hdmi_phy_read_hpd(hdmi, hdmi->phy.data);
- 		hdmi_modb(hdmi, status == connector_status_connected ?
-@@ -3000,12 +2988,13 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
- 
- 		mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
- 				 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
--	}
- 
--	hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
--	hdmi_writeb(hdmi, ~HDMI_IH_PHY_STAT0_HPD, HDMI_IH_MUTE_PHY_STAT0);
-+		hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
-+		hdmi_writeb(hdmi, ~HDMI_IH_PHY_STAT0_HPD, HDMI_IH_MUTE_PHY_STAT0);
-+		ret = IRQ_HANDLED;
-+	}
- 
--	return IRQ_HANDLED;
-+	return ret;
+@@ -1687,12 +1687,6 @@ enum drm_connector_status dw_hdmi_phy_read_hpd(struct dw_hdmi *hdmi,
  }
+ EXPORT_SYMBOL_GPL(dw_hdmi_phy_read_hpd);
  
- static void dw_hdmi_hpd_work(struct work_struct *work)
-@@ -3305,9 +3294,8 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
- 	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_hpd_work);
- 	disable_delayed_work(&hdmi->hpd_work);
+-void dw_hdmi_phy_update_hpd(struct dw_hdmi *hdmi, void *data,
+-			    bool force, bool disabled, bool rxsense)
+-{
+-}
+-EXPORT_SYMBOL_GPL(dw_hdmi_phy_update_hpd);
+-
+ void dw_hdmi_phy_setup_hpd(struct dw_hdmi *hdmi, void *data)
+ {
+ 	/*
+@@ -1716,7 +1710,6 @@ static const struct dw_hdmi_phy_ops dw_hdmi_synopsys_phy_ops = {
+ 	.init = dw_hdmi_phy_init,
+ 	.disable = dw_hdmi_phy_disable,
+ 	.read_hpd = dw_hdmi_phy_read_hpd,
+-	.update_hpd = dw_hdmi_phy_update_hpd,
+ 	.setup_hpd = dw_hdmi_phy_setup_hpd,
+ };
  
--	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_hardirq,
--					dw_hdmi_irq, IRQF_SHARED,
--					dev_name(dev), hdmi);
-+	ret = devm_request_irq(dev, irq, dw_hdmi_hardirq, IRQF_SHARED,
-+			       dev_name(dev), hdmi);
- 	if (ret)
- 		goto err_res;
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 0dc1eb5d2ae3..7136e713df2e 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -413,7 +413,6 @@ static const struct dw_hdmi_phy_ops rk3228_hdmi_phy_ops = {
+ 	.init		= dw_hdmi_rockchip_genphy_init,
+ 	.disable	= dw_hdmi_rockchip_genphy_disable,
+ 	.read_hpd	= dw_hdmi_phy_read_hpd,
+-	.update_hpd	= dw_hdmi_phy_update_hpd,
+ 	.setup_hpd	= dw_hdmi_rk3228_setup_hpd,
+ };
  
+@@ -449,7 +448,6 @@ static const struct dw_hdmi_phy_ops rk3328_hdmi_phy_ops = {
+ 	.init		= dw_hdmi_rockchip_genphy_init,
+ 	.disable	= dw_hdmi_rockchip_genphy_disable,
+ 	.read_hpd	= dw_hdmi_rk3328_read_hpd,
+-	.update_hpd	= dw_hdmi_phy_update_hpd,
+ 	.setup_hpd	= dw_hdmi_rk3328_setup_hpd,
+ };
+ 
+diff --git a/drivers/gpu/drm/sun4i/sun8i_hdmi_phy.c b/drivers/gpu/drm/sun4i/sun8i_hdmi_phy.c
+index 4fa69c463dc4..2ac99b8ce8c4 100644
+--- a/drivers/gpu/drm/sun4i/sun8i_hdmi_phy.c
++++ b/drivers/gpu/drm/sun4i/sun8i_hdmi_phy.c
+@@ -221,7 +221,6 @@ static const struct dw_hdmi_phy_ops sun8i_a83t_hdmi_phy_ops = {
+ 	.init		= sun8i_a83t_hdmi_phy_config,
+ 	.disable	= sun8i_a83t_hdmi_phy_disable,
+ 	.read_hpd	= dw_hdmi_phy_read_hpd,
+-	.update_hpd	= dw_hdmi_phy_update_hpd,
+ 	.setup_hpd	= dw_hdmi_phy_setup_hpd,
+ };
+ 
+@@ -395,7 +394,6 @@ static const struct dw_hdmi_phy_ops sun8i_h3_hdmi_phy_ops = {
+ 	.init		= sun8i_h3_hdmi_phy_config,
+ 	.disable	= sun8i_h3_hdmi_phy_disable,
+ 	.read_hpd	= dw_hdmi_phy_read_hpd,
+-	.update_hpd	= dw_hdmi_phy_update_hpd,
+ 	.setup_hpd	= dw_hdmi_phy_setup_hpd,
+ };
+ 
+diff --git a/include/drm/bridge/dw_hdmi.h b/include/drm/bridge/dw_hdmi.h
+index a612b9fa6dbb..10013b8d3adb 100644
+--- a/include/drm/bridge/dw_hdmi.h
++++ b/include/drm/bridge/dw_hdmi.h
+@@ -118,8 +118,6 @@ struct dw_hdmi_phy_ops {
+ 		    const struct drm_display_mode *mode);
+ 	void (*disable)(struct dw_hdmi *hdmi, void *data);
+ 	enum drm_connector_status (*read_hpd)(struct dw_hdmi *hdmi, void *data);
+-	void (*update_hpd)(struct dw_hdmi *hdmi, void *data,
+-			   bool force, bool disabled, bool rxsense);
+ 	void (*setup_hpd)(struct dw_hdmi *hdmi, void *data);
+ };
+ 
+@@ -213,8 +211,6 @@ void dw_hdmi_phy_gen2_reset(struct dw_hdmi *hdmi);
+ 
+ enum drm_connector_status dw_hdmi_phy_read_hpd(struct dw_hdmi *hdmi,
+ 					       void *data);
+-void dw_hdmi_phy_update_hpd(struct dw_hdmi *hdmi, void *data,
+-			    bool force, bool disabled, bool rxsense);
+ void dw_hdmi_phy_setup_hpd(struct dw_hdmi *hdmi, void *data);
+ 
+ bool dw_hdmi_bus_fmt_is_420(struct dw_hdmi *hdmi);
 -- 
 2.54.0
 
