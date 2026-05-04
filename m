@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04B36CD3427
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 19:12:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80C5DFF885A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 19:12:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=boAPjpHnoOfqEzt/AyJw1uNp/9j2VJP6XkbmYVCxO9g=; b=f7y8MLVnl81unb
-	W263L3uKyzLwr3B9/nUPdCKtUX0przwDnEjx7N27aMgkf+PuytmTA7UoQZyYsGiAtrYtDTlWpx4s9
-	/OS4N/wp6MAR+VP8O04oklQHr1Not94+yBTGUTMRgt0WgCkwfE6G+OOtfxCR3X1lumo3vpKewJ7Wj
-	YDcMFX1uknoxPWicJZ8hZ5FFTe9rAcy08AlqyZ4dSvaoh8+qc0Omw4YP3zRX7V7WinVnOsx3wEH+C
-	lq6WbgFVAZX3G1gEC1Pqs8hBsKFxnPG9q1FjHQ95CQPeQyqyWAvuH56MgShmY2jr4vaCnGb1xFYbV
-	3CgEIwIRhVodV1ZkP08g==;
+	List-Owner; bh=GKdExqL3BY/ZqjoI9UAguYuEELQxW+B/grZFQEYCY14=; b=cq+wX1gS71lMjs
+	cbLb+xSw2EjX1nbMQ01Y4DCar8rUFvDxFyUCwmvFclJ5O+/eVovUh+QqNzQwGEtJI9p0OjXC/p3Ya
+	/KQRFfIXetpta/zTS8jnO2GBuQaD3ANRy5oj15H9XpHDgD5y5dcmg+MG+bAmbmN4/uMxHIxeopF0Y
+	XlhpzfxMUOb41Bycj2uxjmQBi2rdzweVYjbDxH5iY6en8cQbVB9nLg8pUyXzbk80NvsKBjKrjfKvi
+	2epxR3s26aoI+WxSTQuIzm4O6IEmpNyTcTI/eiK4BB9UH3hRnaRNYeKSdEUn5lmfZovRDTVpD1H9r
+	aOs8XtESRZ4u+Gz+6IuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJyi1-0000000E5kg-1KRK;
-	Mon, 04 May 2026 19:12:01 +0000
+	id 1wJyi2-0000000E5nk-3tpP;
+	Mon, 04 May 2026 19:12:02 +0000
 Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJyhm-0000000E5Ig-11qq
+	id 1wJyhq-0000000E5Qk-45gJ
 	for linux-rockchip@lists.infradead.org;
-	Mon, 04 May 2026 19:11:48 +0000
+	Mon, 04 May 2026 19:11:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1777921905; bh=XGUigRl0dHn2l3h5bXexuTyn8UnpuWF+VIfFWcyqNco=;
- b=bgxIznRC56ZmS+lqYa5dxbcJxl5AXAH1I2wybp/wJ9WYzEtaeFf7LNG/kA7NUn8kmSYoimoE7
- lvhRZyFlBMJw9SKpffoyQdBkQ8ndIFyPYKl4V+s9sHca62UrKCxg0h/YOXGPWj4kTBriIabZaGo
- ekM0CCW/gcydie2+MlRrik8Z6DS5Fg6VTfkCjTXjP1NJT105Tom+Cqd1qQ5atGC2KaiiyxB5rzv
- TqS/GgF7L20naP6r/yapDmbpr4nKqJHFXJFCzruCSPx5bAIFUQYwRwGPbRYJTsDdrQ5e8Wlr68q
- QCTbMBtZGFv4EIAdwTfu3qbXG1jLM5cNactjbO0LhyEQ==
-X-Forward-Email-ID: 69f8ef6b04bb1dff846bb8db
+ t=1777921910; bh=tJeJ6vpBhtsiw1KolH4aIn7bCSe8O7mTHyzB0UBThGs=;
+ b=Kc+uzIiIQVCdE0jXmZi4iI1bkeU4kTxfQ9LJTkKHTQpbmYtGieUJjbjGCkjk37/H9VRJhiNcn
+ ljGnRf70DS3v4DryxNqX+43kfu39vGSyVmojuYeD4kAfERAB5w5pFXRQ/qesqxVhpN1pGcRCnvF
+ spfbIuprVgCQp7eq/iX6IFvAalDRNWmdm3/9LWXbfRW8q5rVyykW8uth64nR33/ii5OExjftmth
+ GwjYr8PfQicknxtfaQugKNnFSHPF8J9qzmloAHt0pEdUdqAR1YvSybZiJTX87YmCGQm8AlbHev4
+ 2s/e25C8cRj/Z2HDMJDHoyTVHc7O7fnf2+RTWb408qvQ==
+X-Forward-Email-ID: 69f8ef7304bb1dff846bb92e
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.66
 X-Forward-Email-Version: 2.7.7
@@ -72,17 +72,16 @@ Cc: Liu Ying <victor.liu@nxp.com>,
 	linux-sunxi@lists.linux.dev,
 	imx@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v4 08/17] drm: bridge: dw_hdmi: Remove cec_notifier_mutex
-Date: Mon,  4 May 2026 19:10:45 +0000
-Message-ID: <20260504191059.275928-9-jonas@kwiboo.se>
+Subject: [PATCH v4 10/17] drm: bridge: dw_hdmi: Use dw_hdmi_connector_status_update()
+Date: Mon,  4 May 2026 19:10:47 +0000
+Message-ID: <20260504191059.275928-11-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260504191059.275928-1-jonas@kwiboo.se>
 References: <20260504191059.275928-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_121146_478516_62A9BF11 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260504_121151_182378_2E80BB47 
+X-CRM114-Status: GOOD (  11.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,73 +98,93 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With CEC phys addr invalidation moved away from the irq handler there is
-no longer a need for cec_notifier_mutex, remove it.
+Update connector EDID and CEC phys addr from detect and force funcs to
+ensure that userspace always have access to latest read EDID after a
+sink use a HPD low voltage pulse to indicate that EDID has changed.
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+With EDID being updated in detect and force funcs, there should no
+longer be a need to re-read EDID in get_modes funcs, so drop it.
+
+This change make the dw-hdmi connector work more closely like the bridge
+connector does with a hdmi bridge.
+
+Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-v4: No change
-v3: No change
-v2: Collect r-b tag
+v4: Move last_connector_result assign in force ops to this patch,
+    Collect r-b tag
+v3: Reworked 'Update EDID during hotplug processing' patch
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 11 +----------
- 1 file changed, 1 insertion(+), 10 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 25 ++++++++++++++---------
+ 1 file changed, 15 insertions(+), 10 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 059f1d241fef..fc4f255c2a2f 100644
+index 0b56ad7316e3..47616c11fcd7 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -189,7 +189,6 @@ struct dw_hdmi {
- 	void (*enable_audio)(struct dw_hdmi *hdmi);
- 	void (*disable_audio)(struct dw_hdmi *hdmi);
+@@ -2473,33 +2473,36 @@ dw_hdmi_connector_status_update(struct drm_connector *connector,
+ 	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
+ 	const struct drm_edid *drm_edid;
  
--	struct mutex cec_notifier_mutex;
- 	struct cec_notifier *cec_notifier;
++	if (status == connector_status_disconnected) {
++		drm_edid_connector_update(connector, NULL);
++		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
++		return;
++	}
++
+ 	drm_edid = dw_hdmi_edid_read(hdmi, connector);
+ 	drm_edid_connector_update(connector, drm_edid);
+ 	drm_edid_free(drm_edid);
  
- 	hdmi_codec_plugged_cb plugged_cb;
-@@ -2476,11 +2475,8 @@ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
+-	cec_notifier_set_phys_addr(hdmi->cec_notifier,
+-				   connector->display_info.source_physical_address);
++	if (status == connector_status_connected)
++		cec_notifier_set_phys_addr(hdmi->cec_notifier,
++				connector->display_info.source_physical_address);
+ }
+ 
+ static enum drm_connector_status
+ dw_hdmi_connector_detect(struct drm_connector *connector, bool force)
+ {
+-	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi,
+-					     connector);
++	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
+ 	enum drm_connector_status status;
  
  	status = dw_hdmi_detect(hdmi);
  
--	if (status == connector_status_disconnected) {
--		mutex_lock(&hdmi->cec_notifier_mutex);
-+	if (status == connector_status_disconnected)
- 		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
--		mutex_unlock(&hdmi->cec_notifier_mutex);
--	}
+-	if (status == connector_status_disconnected)
+-		cec_notifier_phys_addr_invalidate(hdmi->cec_notifier);
++	dw_hdmi_connector_status_update(connector, status);
  
  	return status;
  }
-@@ -2594,9 +2590,7 @@ static int dw_hdmi_connector_create(struct dw_hdmi *hdmi)
- 	if (!notifier)
- 		return -ENOMEM;
  
--	mutex_lock(&hdmi->cec_notifier_mutex);
- 	hdmi->cec_notifier = notifier;
--	mutex_unlock(&hdmi->cec_notifier_mutex);
- 
- 	return 0;
- }
-@@ -2910,10 +2904,8 @@ static void dw_hdmi_bridge_detach(struct drm_bridge *bridge)
+ static int dw_hdmi_connector_get_modes(struct drm_connector *connector)
  {
- 	struct dw_hdmi *hdmi = bridge->driver_private;
- 
--	mutex_lock(&hdmi->cec_notifier_mutex);
- 	cec_notifier_conn_unregister(hdmi->cec_notifier);
- 	hdmi->cec_notifier = NULL;
--	mutex_unlock(&hdmi->cec_notifier_mutex);
+-	dw_hdmi_connector_status_update(connector, connector->status);
+-
+ 	return drm_edid_connector_add_modes(connector);
  }
  
- static enum drm_mode_status
-@@ -3316,7 +3308,6 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
+@@ -2529,13 +2532,15 @@ static int dw_hdmi_connector_atomic_check(struct drm_connector *connector,
  
- 	mutex_init(&hdmi->mutex);
- 	mutex_init(&hdmi->audio_mutex);
--	mutex_init(&hdmi->cec_notifier_mutex);
- 	spin_lock_init(&hdmi->audio_lock);
+ static void dw_hdmi_connector_force(struct drm_connector *connector)
+ {
+-	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi,
+-					     connector);
++	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
  
- 	ddc_node = of_parse_phandle(np, "ddc-i2c-bus", 0);
+ 	mutex_lock(&hdmi->mutex);
+ 	hdmi->force = connector->force;
++	hdmi->last_connector_result = connector->status;
+ 	dw_hdmi_update_phy_mask(hdmi);
+ 	mutex_unlock(&hdmi->mutex);
++
++	dw_hdmi_connector_status_update(connector, connector->status);
+ }
+ 
+ static const struct drm_connector_funcs dw_hdmi_connector_funcs = {
 -- 
 2.54.0
 
