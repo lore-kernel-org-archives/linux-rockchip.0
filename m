@@ -4,58 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2359CD3423
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 07:21:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A389CD3423
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 07:58:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ScyR1tW9OYCFIj7juDJRe+CwNnAGen5BXd3aJL8iBNA=; b=2dxRyl8F3wNd/h
-	KqJrAt0rYa8O+M88RWjn3RITD9E21HT3v1xAY6zTkjUBZBGgPBiIYepyxbHj8FNm+CqnjtUcavp3y
-	xJNPayJWH26l0+CUX7R9iN2nMqfw641CHmvO1rHdjPV0kWACxhFx0AjnmyMN8LfF0gtNue2aUEK84
-	ACSvb6m2nOLBUt2CT7Cof98GbnaqZFfg8dBckRQVCjnHh8IHoMwGstmdpD47ICUY14gDZcoLeGU6w
-	hEcG7yq22mzp0MjF43EC8quEFIdajOZDi6B06BQ7v7udiv9XUvKT6Jq9doEJYaREYC3kbb6Wkx6m4
-	EVwdN/6bunyz8YWJGyCQ==;
+	List-Owner; bh=4ci27kq4mSJj3vQXqZaPqnWlOX0NNQQ46bGb/rRJhHQ=; b=bsvUdSe3TGzuvX
+	FfU/LAPHkHC6ugWERrOl/4eFVUImAKKL7c3NQ7m7knBwDbjEB01Pn15KUAry4NLEY+z5/g0uukQBF
+	rvCzAuK0F+coW7h4N9L627LkSiL3ZxmIuQhtWJShIRl2GixitWvmA5smVT7eXASNgHSUpNbHhuykn
+	5FiZ9pSEQQwG6tV8F6UK7gi1UoIv9b8UG6Wkd1IZApxgJJ+oNnQAnggBjUsaoIvnA8nbVQXYfYHjF
+	N+NM5aX5m0SFVPgWDoOxGiDiOwx5DYyW9JCmeS95UXxleCqURh0Enmigw9ee8zcvO944hJdP8mBAs
+	GWe4LBbLAPlY7lcThE4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJnc3-0000000CapQ-0UUZ;
-	Mon, 04 May 2026 07:21:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wJoBk-0000000CfH3-0IxQ;
+	Mon, 04 May 2026 07:58:00 +0000
+Received: from mail-westeuropeazon11013006.outbound.protection.outlook.com ([52.101.72.6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJnc0-0000000CaoV-33iQ;
-	Mon, 04 May 2026 07:21:04 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id B1346600C3;
-	Mon,  4 May 2026 07:21:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 58871C2BCB8;
-	Mon,  4 May 2026 07:21:01 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777879263;
-	bh=oxZ5xE3hnOgV2qemIIXx4AHL9CvGZqqSqt4lMVdq0y8=;
-	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
-	b=P10dqKw85reUAS1+Xv6AphOAZ00jnttdCHGWLwTwEXxrIagE996uCJt/e7Ji0M9Gt
-	 OQHzuzJgj4cyJqSgq0LZL/XDvo9ISxzU50XqNx7eGZcvCrz0fxa0rDBDPLslIP/GRx
-	 eL9CGoBDCj2G9mownmCyJD/pUrdqfH3Vm0h4wujnUN2JQkkdE69flxZ0znMoUQF1Cd
-	 YfCEyQHt+pvjJtExrKl1Sixzd5wGRLrsKgxG5SQfVgXllwzi5wjrs3P+pByqs96HL/
-	 yaw+yY1LEfb3GYpblavn1f9PqLH7rbA9Ts/TJZ/TfN9xcSefVd4vXlxonbpT3+7zQa
-	 Uj5SJdioX08Fg==
-Message-ID: <8f29d271-da7d-4456-9427-2fb66136747a@kernel.org>
-Date: Mon, 4 May 2026 09:20:59 +0200
+	id 1wJoBh-0000000CfFf-1WBw;
+	Mon, 04 May 2026 07:57:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=pNnSjlgqQ9mu64HM93qhv+j/BPmjKWq06Vw5FUl/MpiJK7O48Y5ZkdGpeDr+RLAsG3bD4m1MQj++jsqYHDhFLmSZ5zpMQ8jqAy3ZTKLMriPOi6faQk2E6kzM96L7OPWSvp+JWM085Q1lmk5RRrQOeSLk0xO4OiU7sqhrtqXPyJv2769muBydBuIzOb+Y2T+yCqqNpX1pq6fqhbmZCdZYovkoMLuMKF4YDRe44t5cNGg4sMDtGk6GXjcFlUhFIQuH5ZRhfaUs/tszMI47wKm5VvrDOVSo3B251R8iTs24txl8YlwZcJss91IFDm1kJbf+3HrOefgLyrqZ3jbW2NXd6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=mIyqoNMaqF7PcSsq3Vf4/2r/EknapHaMFFAC23Z0fWk=;
+ b=u/5vHVU/ZwWk0vXcfhC+ZvVj8TSqXPilWXe4zkw8nJXsnptXkI4ThoxIr0qjkFcBaQrdNu3mgiq0LeVT7yP8R6450cWoARy9vT0s0FG6X1duwz1EmElLoN4b7Xu2ubhZ5ZVowjf2F2KcMlQlzrG4OQDlFwzRW3vJWVV4e/2+A0jL79gLCNsXVMdUW3e7PHOZzud3P2DXNv59hKBqcDMJDgKnD5ysdtOX27rA7t+RVsOZ0Kllrj/49y6yCyEqm4Faqh0KjsN1o/xAx/+iowsYAG6TSrNh9u/i+qZiOs3lJmEggz4Oxil30mlSG8yW5FEo36P9vhUhX4+fr8ujas7lJg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=mIyqoNMaqF7PcSsq3Vf4/2r/EknapHaMFFAC23Z0fWk=;
+ b=LBxmIe4j4c0f8XCDOmIwHQsDwUevTUlG2XSG5rVjJwhpeujlIC35stBUnSYac3YgUbfWXU/Ium9MufmIzh/C+KhNrkBY1ZDnp4CYpRingmBtEGzB3SfBK52lARJku8VclM7COSg7ZsWfCvgZk2E4fYFebSvxLc+Q/yrR1Gl4kGJAEQloY9aurINdIdFPw0k9ZA36UuM5EBsnJtQcc9n4cbBYLXGLUsYbsmVfktuWW/kofa4hS2LLo7iYd9kWfAeKOQ6906aMVPLLYIP+Mi37NRoNNzDN/ToqimoCrHJ/Jbmdpw03gWsxeJwcgrSHG/XQtN77oHVntlLQXVY5+pxblQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by GV2PR04MB11800.eurprd04.prod.outlook.com (2603:10a6:150:2d1::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.25; Mon, 4 May
+ 2026 07:57:48 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9870.023; Mon, 4 May 2026
+ 07:57:46 +0000
+Date: Mon, 4 May 2026 10:57:42 +0300
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: linux-phy@lists.infradead.org, Bjorn Helgaas <bhelgaas@google.com>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
+	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
+	spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Vignesh Raghavendra <vigneshr@ti.com>,
+	Siddharth Vadapalli <s-vadapalli@ti.com>
+Subject: Re: [PATCH v7 phy-next 08/27] PCI: Remove device links to PHY
+Message-ID: <20260504075742.ixt7phu4cpp433q5@skbuf>
+References: <20260430110652.558622-1-vladimir.oltean@nxp.com>
+ <20260430110652.558622-1-vladimir.oltean@nxp.com>
+ <20260430110652.558622-9-vladimir.oltean@nxp.com>
+ <20260430110652.558622-9-vladimir.oltean@nxp.com>
+Content-Disposition: inline
+In-Reply-To: <20260430110652.558622-9-vladimir.oltean@nxp.com>
+ <20260430110652.558622-9-vladimir.oltean@nxp.com>
+X-ClientProxiedBy: WA2PEPF000008AF.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d8::657) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Hans Verkuil <hverkuil+cisco@kernel.org>
-Subject: Re: [PATCH v3] media: verisilicon: Create AV1 helper library
-To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
- nicolas.dufresne@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
- heiko@sntech.de
-Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- kernel@collabora.com
-References: <20260415073801.58369-1-benjamin.gaignard@collabora.com>
-Content-Language: en-US, nl
-In-Reply-To: <20260415073801.58369-1-benjamin.gaignard@collabora.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|GV2PR04MB11800:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4c875e1e-ca31-4828-710b-08dea9b2d44c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|19092799006|7416014|376014|10070799003|1800799024|56012099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: HEAXu0UJ9P3VzL00TQ5M3z2crujXl382jiCiUZ8AjCp92Sg3OB/js+tp8eYXGFCwTg4KC58dkU749B4w9rSUDmOeHKbS0d1VunRrO+0OtdmhVfIDbyWfd68zd/UwthW2bRoM12WmYcfW+QITvv60QYEZ3Kg4C9ooCFWab7uNzFwTYCMVln/v4nDI7PA+84MsJRghdBRjtrzVdqUpokYrKrv/vPQ8UdETapxfYG4x02T8oJJuR8rwqlgl1y/1JCDwDYxOrDpVfe+N/b9b2OMuKXyU8kTLFDV2up3MVC5GOnlCnnlwO+8ZalNICpxGxx4yrr9ReK56HR7wQ+EleiGOwqmjXSseI4g7FzN/Bm4ILnOoxXySX1YImvrFAsqP2ONeZCRRLqDcEN2K+zjhQYoc9vIaUwwAH1owrJMiNqLPK1BBMV6XA4WG3u1dohQzwWRk9J6ZB3Mq9zeKK39RKMh7AVi9wOOTuYnE26otczBMnVKu7BD58vY6ONRIqYZiqnt/i1+rsMLaDWvZTybIZj8YOv22IJFCrUZq8pvT2T2vn4k5ykcL4wBm5+ReTtYtHnCrP7+s6kJjJcCVv/9pxQ51KpGJL1D7rMiYVbvAYjGTnZjLEkc3qSGjgZbvixZN6L75/bYZOjGOt6ePctFGSO6QX6HJX8OyaoKsPtRjRZPN33ZGE71bvSFRxzkCOrB5x2Bz
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(19092799006)(7416014)(376014)(10070799003)(1800799024)(56012099003)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?RsEOHz6cOvr61ub/jxNnNVotOrCIljo7elUReRA064caS/5whesT2J9KGG1W?=
+ =?us-ascii?Q?0L4rUUrOsc6Ddsc0U9zeiJJ6LTVI5b1GVFb8eTU0+6LuW5h/yQgVUJr1EInh?=
+ =?us-ascii?Q?h3qoiM4jWG/uDASftINhtbByfh3a6xoV/kg8gRbeKBjVV2gNyAry3SA5nj4N?=
+ =?us-ascii?Q?KCjDY+RNqRFoI4CzsYBaA8Xtc3HoOPpWw4m7TCLeoVjN0SnCPZPUiHzUe0Ku?=
+ =?us-ascii?Q?uEdZbRJoc0TSiSmy/v1wQ94hyS0eGVKAgbCemhE32p7jBBUgtIA0m8eTnakr?=
+ =?us-ascii?Q?m0cP7Dg2Rgwdxn7Htvb29f2qN+h6gLjG+Z664xypN2PMh3YLasYwpaSw2/TU?=
+ =?us-ascii?Q?bw5aX6pbPDj21gqqtcD307swHztnNZfL/1dTTTOyGSIk+QiGf5HJV3w0Mpry?=
+ =?us-ascii?Q?JpJarUj9oRVOjrGtKp/vY9tpuo9YY3vnT8M3X+nfOsxTlKWyquIqkJPWpVmz?=
+ =?us-ascii?Q?VOavSuUc4gC6hW7c9IcLsof89g+BkZd5zg5T5ERE7Ospd/knF6e9NLD5mTR7?=
+ =?us-ascii?Q?jBOgYJoaUrf15GXhmW74pfE25hnfa9hP4J2aVQ5pwuTWEeN0LJqZRS39I129?=
+ =?us-ascii?Q?3rIi4E5g5x4hDYkpoRt7001EdShWNGsyOkDcJ9H/+0syBS/du94bxvTKwLPH?=
+ =?us-ascii?Q?Q4GnTHTU+7TxqRDrsv1QcAQIzI7jqQ3fT9B11Au82fQ8GuGLcpmBkRg+vut9?=
+ =?us-ascii?Q?pH4YLzfQ95YVVl5v0/TYyT1S3CA/lQJ25Yqqug07H0lHJnmtxejGsraBekx5?=
+ =?us-ascii?Q?y41Rcf2cbgkltnYu4p1dF0uMYh39FoeWXDtpN+ZIPtfJIwEcmcK2nptUQ4sW?=
+ =?us-ascii?Q?3DzsXI4fwDver+dSZUKzoxLnMgBGix83Nz4yP3H591HzSGqCJq4Ahq6aoTwO?=
+ =?us-ascii?Q?vdkKRgJFouBysTNrWXm3Dhzk4TnLnT9odECnZdpEQXPDPHJR3IP9bVK+zT1J?=
+ =?us-ascii?Q?fLAVSpZnuQEMH5z5QzO/tQlLnYggNWfN/av4tmiEG5CnEop8o28JSu7G4Awa?=
+ =?us-ascii?Q?up8YeGzW63waghEtGCWWKM/nzOeGz5zZpKi9SP/1pyp60N4GqqN22qQyhYzp?=
+ =?us-ascii?Q?aCKS10hT18/N0yhdpk7jCf4i+yQ6DEEAq2pIERPpC84+uRhnZvl3ORsF/2K7?=
+ =?us-ascii?Q?mWhMQBv5m16eu1/7qrqQY/YIG+HpoNDlyao1iUd1MlUjvKA9pYYsn0zBnzEr?=
+ =?us-ascii?Q?r1/1FKCk64nnJ3XoYYg1n3aWkPPcrSSmZ/1bVrtxagz/tGXcS/mMFYMiVeag?=
+ =?us-ascii?Q?wHnhQh64Gzqb3nJPvIkn36Fh08SWpSAziFlLTy0HZcxRbhHAkSGjGzUhuPYt?=
+ =?us-ascii?Q?mGgO74dOzXOaE/PgSGHRsgx+VcvSa9fvXYMfTz4uqunO/H45oI6UyCu3J3ob?=
+ =?us-ascii?Q?rYOgwDx7iyA4v/06pCB+/WSx3UQJn6x7h/Lbra8FvBlwTHLti7Tlf768GM91?=
+ =?us-ascii?Q?zStbCV1u7IAwq7cFLKsf0tCdwLMzckOHhgor23phsP229u+/oB1kKARQWlsE?=
+ =?us-ascii?Q?F4CeMARInjuQNYzC3iRUYHMZwA1WmAc34VPcgN/mRwZXJsRUKcY8Yf8fFdyL?=
+ =?us-ascii?Q?1Gg/0tnWaNA7RjxqS5Tx9Ovad5xiHpTKJPEPofz6T7e0SU+svwcatycFidc/?=
+ =?us-ascii?Q?HPIpeq7CsTfPh2qupxa/DBLR+lZiUAxA3J4I759eadMjgtywW2aXkJ9oQ5zX?=
+ =?us-ascii?Q?7PG6hJ42ZnL1f97rlTIMOg5vJghuNVEfuxia/ORrTh1o5pTLCr87B8hulxXf?=
+ =?us-ascii?Q?mpHVVmdt5W3ZcR65RWqjhzxD83ghUIQ56YzAk+fEVJPF4Vwe2/hEMHSwv46x?=
+X-MS-Exchange-AntiSpam-MessageData-1: qAbWhMSQ+tDz/g==
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4c875e1e-ca31-4828-710b-08dea9b2d44c
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 May 2026 07:57:46.6958
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: MKHLfxUQD4j6O1JnGXUiro3PKaKtFhDedU9fqi7AkBqWytZKCuHAp76HHMA+3Egs5mL1VqDhZ+adhJvqpx+FhQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV2PR04MB11800
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260504_005757_452135_0515017E 
+X-CRM114-Status: GOOD (  24.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,170 +156,117 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Benjamin,
-
-I have a few comments about this:
-
-On 15/04/2026 09:38, Benjamin Gaignard wrote:
-> Regroup all none hardware related AV1 functions into a helper library.
-> The goal is to avoid code duplication for futur AV1 codecs.
-
-futur -> future
-
+Sashiko says:
+> commit e4f495a9118b40f8a77e8dc097821d2c846ed1fc
+> Author: Vladimir Oltean <vladimir.oltean@nxp.com>
 > 
-> Tested on rock 5b board Fluster score remains the same 204/241.
+> PCI: Remove device links to PHY
+> This commit removes device links between the PCIe controllers and PHY
+> providers across several drivers, since the PHY core already creates consumer
+> device links.
 > 
-> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> ---
-> changes in version 3:
->  - Remove useless wrapper functions.
+> > diff --git a/drivers/pci/controller/cadence/pcie-cadence-plat.c b/drivers/pci/controller/cadence/pcie-cadence-plat.c
+> > index b067a3296dd37..fc39c01b79648 100644
+> > --- a/drivers/pci/controller/cadence/pcie-cadence-plat.c
+> > +++ b/drivers/pci/controller/cadence/pcie-cadence-plat.c
+> [ ... ]
+> > @@ -122,9 +121,6 @@ static int cdns_plat_pcie_probe(struct platform_device *pdev)
+> >  	pm_runtime_put_sync(dev);
+> >  	pm_runtime_disable(dev);
+> >  	cdns_pcie_disable_phy(cdns_plat_pcie->pcie);
+> > -	phy_count = cdns_plat_pcie->pcie->phy_count;
+> > -	while (phy_count--)
+> > -		device_link_del(cdns_plat_pcie->pcie->link[phy_count]);
+> >
+> >  	return 0;
 > 
->  drivers/media/platform/verisilicon/Makefile   |   7 +-
->  .../media/platform/verisilicon/hantro_av1.c   | 780 +++++++++++++++
->  .../media/platform/verisilicon/hantro_av1.h   |  62 ++
->  ...entropymode.c => hantro_av1_entropymode.c} |  18 +-
->  ...entropymode.h => hantro_av1_entropymode.h} |  18 +-
->  ...av1_filmgrain.c => hantro_av1_filmgrain.c} |  82 +-
->  .../verisilicon/hantro_av1_filmgrain.h        |  44 +
->  .../media/platform/verisilicon/hantro_hw.h    |   7 +-
->  .../verisilicon/rockchip_av1_filmgrain.h      |  36 -
->  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 935 ++----------------
->  .../platform/verisilicon/rockchip_vpu_hw.c    |   7 +-
->  11 files changed, 1041 insertions(+), 955 deletions(-)
->  create mode 100644 drivers/media/platform/verisilicon/hantro_av1.c
->  create mode 100644 drivers/media/platform/verisilicon/hantro_av1.h
->  rename drivers/media/platform/verisilicon/{rockchip_av1_entropymode.c => hantro_av1_entropymode.c} (99%)
->  rename drivers/media/platform/verisilicon/{rockchip_av1_entropymode.h => hantro_av1_entropymode.h} (95%)
->  rename drivers/media/platform/verisilicon/{rockchip_av1_filmgrain.c => hantro_av1_filmgrain.c} (92%)
->  create mode 100644 drivers/media/platform/verisilicon/hantro_av1_filmgrain.h
->  delete mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.h
+> This isn't a bug introduced by your patch, but I noticed the error path in
+> cdns_plat_pcie_probe() returns 0.
+> Does this cause the driver core to consider the probe successful even when
+> host or endpoint setup steps fail? It looks like the device would be left
+> in an uninitialized and disabled state while still being bound to the driver.
+> Should this return ret instead?
 > 
 
-<snip>
+The condition does not appear intentional. Commit bd22885aa188 ("PCI:
+cadence: Refactor driver to use as a core library") changed
+cdns_pcie_host_probe() which properly returned ret on error with
+cdns_plat_pcie_probe() which doesn't.
 
-> diff --git a/drivers/media/platform/verisilicon/hantro_av1.c b/drivers/media/platform/verisilicon/hantro_av1.c
-> new file mode 100644
-> index 000000000000..5a51ac877c9c
-> --- /dev/null
-> +++ b/drivers/media/platform/verisilicon/hantro_av1.c
-> @@ -0,0 +1,780 @@
+I will add a preparatory patch which replaces "return 0" with "return ret"
+in cdns_plat_pcie_probe(), blaming that commit.
 
-<snip>
+> >  }
+> > diff --git a/drivers/pci/controller/dwc/pci-dra7xx.c b/drivers/pci/controller/dwc/pci-dra7xx.c
+> > index cd904659c3216..9c1aef4d0bd1c 100644
+> > --- a/drivers/pci/controller/dwc/pci-dra7xx.c
+> > +++ b/drivers/pci/controller/dwc/pci-dra7xx.c
+> [ ... ]
+> > @@ -852,10 +840,6 @@ static int dra7xx_pcie_probe(struct platform_device *pdev)
+> >  	pm_runtime_disable(dev);
+> >  	dra7xx_pcie_disable_phy(dra7xx);
+> >
+> > -err_link:
+> > -	while (--i >= 0)
+> > -		device_link_del(link[i]);
+> > -
+> >  	return ret;
+> >  }
+> 
+> This isn't a bug introduced by your changes, but looking closely at the error
+> path right above this hunk, there is a call to pm_runtime_put(dev) immediately
+> followed by pm_runtime_disable(dev):
+> err_gpio:
+> err_get_sync:
+> 	pm_runtime_put(dev);
+> 	pm_runtime_disable(dev);
+> Does this sequence create a power management race condition? The pending
+> asynchronous idle/suspend work can be abruptly cancelled by
+> pm_runtime_disable(), leaving the hardware in an incorrect or unpredictable
+> power state.
+> Should this use pm_runtime_put_sync() instead?
+> 
+> > diff --git a/drivers/pci/controller/dwc/pci-keystone.c b/drivers/pci/controller/dwc/pci-keystone.c
+> > index fe4836925c4e3..cab9fad212add 100644
+> > --- a/drivers/pci/controller/dwc/pci-keystone.c
+> > +++ b/drivers/pci/controller/dwc/pci-keystone.c
+> [ ... ]
+> > @@ -1337,25 +1321,18 @@ static int ks_pcie_probe(struct platform_device *pdev)
+> >  	pm_runtime_disable(dev);
+> >  	ks_pcie_disable_phy(ks_pcie);
+> >
+> > -err_link:
+> > -	while (--i >= 0 && link[i])
+> > -		device_link_del(link[i]);
+> > -
+> > +err:
+> >  	return ret;
+> >  }
+> >
+> >  static void ks_pcie_remove(struct platform_device *pdev)
+> >  {
+> >  	struct keystone_pcie *ks_pcie = platform_get_drvdata(pdev);
+> > -	struct device_link **link = ks_pcie->link;
+> > -	int num_lanes = ks_pcie->num_lanes;
+> >  	struct device *dev = &pdev->dev;
+> >
+> >  	pm_runtime_put(dev);
+> >  	pm_runtime_disable(dev);
+> 
+> Similar to the question above, is it possible this asynchronous put causes
+> a race when immediately followed by pm_runtime_disable() during removal?
+> 
+> >  	ks_pcie_disable_phy(ks_pcie);
+> > -	while (num_lanes--)
+> > -		device_link_del(link[num_lanes]);
+> >  }
 
-> +
-> +int hantro_av1_tile_log2(int target)
-> +{
-> +	int k;
-> +
-> +	/*
-> +	 * returns the smallest value for k such that 1 << k is greater
-> +	 * than or equal to target
-> +	 */
-> +	for (k = 0; (1 << k) < target; k++);
-
-Checkpatch gives:
-
-ERROR: trailing statements should be on next line
-#637: FILE: drivers/media/platform/verisilicon/hantro_av1.c:568:
-+       for (k = 0; (1 << k) < target; k++);
-
-Just move the ';' to the next line.
-
-> +
-> +	return k;
-> +}
-> +
-
-<snip>
-
-> diff --git a/drivers/media/platform/verisilicon/hantro_av1_filmgrain.h b/drivers/media/platform/verisilicon/hantro_av1_filmgrain.h
-> new file mode 100644
-> index 000000000000..5593e84114d0
-> --- /dev/null
-> +++ b/drivers/media/platform/verisilicon/hantro_av1_filmgrain.h
-> @@ -0,0 +1,44 @@
-> +/* SPDX-License-Identifier: GPL-2.0-only */
-> +
-> +#ifndef _HANTRO_AV1_FILMGRAIN_H_
-> +#define _HANTRO_AV1_FILMGRAIN_H_
-> +
-> +#include <linux/types.h>
-> +
-> +struct hantro_av1_film_grain {
-> +	u8 scaling_lut_y[256];
-> +	u8 scaling_lut_cb[256];
-> +	u8 scaling_lut_cr[256];
-> +	s16 cropped_luma_grain_block[4096];
-> +	s16 cropped_chroma_grain_block[1024 * 2];
-> +};
-
-This struct is not used in hantro_av1_filmgrain.c/h.
-
-Does this belong here?
-
-> +
-> +void hantro_av1_generate_luma_grain_block(s32 (*luma_grain_block)[73][82],
-> +					  s32 bitdepth,
-> +					  u8 num_y_points,
-> +					  s32 grain_scale_shift,
-> +					  s32 ar_coeff_lag,
-> +					  s32 (*ar_coeffs_y)[24],
-> +					  s32 ar_coeff_shift,
-> +					  s32 grain_min,
-> +					  s32 grain_max,
-> +					  u16 random_seed);
-> +
-> +void hantro_av1_generate_chroma_grain_block(s32 (*luma_grain_block)[73][82],
-> +					    s32 (*cb_grain_block)[38][44],
-> +					    s32 (*cr_grain_block)[38][44],
-> +					    s32 bitdepth,
-> +					    u8 num_y_points,
-> +					    u8 num_cb_points,
-> +					    u8 num_cr_points,
-> +					    s32 grain_scale_shift,
-> +					    s32 ar_coeff_lag,
-> +					    s32 (*ar_coeffs_cb)[25],
-> +					    s32 (*ar_coeffs_cr)[25],
-> +					    s32 ar_coeff_shift,
-> +					    s32 grain_min,
-> +					    s32 grain_max,
-> +					    u8 chroma_scaling_from_luma,
-> +					    u16 random_seed);
-> +
-
-I get a lot of checkpatch warnings of this type:
-
-WARNING: function definition argument 's32' should also have an identifier name
-#1205: FILE: drivers/media/platform/verisilicon/hantro_av1_filmgrain.h:16:
-+void hantro_av1_generate_luma_grain_block(s32 (*luma_grain_block)[73][82],
-Looking at how it is used in rockchip_vpu981_av1_dec_set_fgs() I think this
-can be done a lot easier if you add a new struct here containing those
-arrays. E.g.:
-
-struct hantro_av1_coeffs_grain_block {
-        s32 ar_coeffs_y[24];
-        s32 ar_coeffs_cb[25];
-        s32 ar_coeffs_cr[25];
-        s32 luma_grain_block[73][82];
-        s32 cb_grain_block[38][44];
-        s32 cr_grain_block[38][44];
-};
-
-Then in rockchip_vpu981_av1_dec_set_fgs you can just kzalloc that struct
-and pass it to these filmgrain functions.
-
-Also consider using #defines for the array sizes.
-
-If you decide not to use a struct, then you can at least change simply use
-'s32 luma_grain_block[73][82]' as arguments to these helper functions. There
-is no need to complicate the function prototypes.
-
-But I think creating a struct is a cleaner approach.
-
-Regards,
-
-	Hans
+It seems plausible that the pm_runtime_put() -> pm_runtime_disable()
+pattern is ineffective, i.e. one of two things can happen: either
+pm_runtime_put() runs to completion by chance, or pm_runtime_disable()
+cancels it. However I am not very familiar with the runtime PM API and
+its effects, and unless a maintainer tells me to, I would prefer leaving
+these code paths alone.
 
 _______________________________________________
 Linux-rockchip mailing list
