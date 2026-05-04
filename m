@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B435CD3423
-	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 08:26:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6643FF885A
+	for <linux-rockchip@archiver.kernel.org>; Mon,  4 May 2026 10:26:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QjeptuqnDYkujG2oKyf35igvNzh8C/ZYecGEPWrgWdg=; b=fwitbc1zc8Z/Nv
-	+NcEOoJ5HnMe21pk/NbYYtIwfD8M2x9L3by+6Mr486ImfJT8yeMrM+sLXf3bb6ssB7JFQZ/9gBr4Y
-	vg/g462NNKx6qaweU/qTgevjML1+HguM1ldBaVLiCDtE3mklbIuIVLVZUMDKrGgQQFNJpJ29/ddCB
-	THnrGiwv+Irf4+Ly+QWwgTy1h1rw3/1EPDUuW/Sg+dsGtfq/G/7YHmqK3CI3x8c3vUWKs+LOcjO6y
-	XJEWYnplzcQ1ApB53UNNOlCTeNrNoTPGSkRHIxgn8bvVcsI4pmAoIBTFVAhIYH+WGwVpWwhM2JAkG
-	7Ec2w1S+7QdKC+0pUMFA==;
+	List-Owner; bh=lr7RvEYnwKkWq+rzw3EQNa7zYkry+UiXwaQsVlupyoM=; b=qunR7GbZyNjuPO
+	rhC9qdMtZ5kBUV1mFfYtpnhPzzw2raFMe3Cv8r7VbpbVJ7KdR8xBYTAQrk8S4K6rU9Wpa9MVrZ5oD
+	ShUvWQ0ggG2TQiYeuRCRDjVTmJK6u0bpiKkfT9ChEBmatuuugIAesqwzhtdZYdrsASBHSagb4Zr+B
+	wrQitpGsXxibL7QFdY1vRhCHI6QB2WmrO3deHZZmIuYPbvkZLnM32JUkJ04cqYkttrzwV4cxVI5X1
+	sQi4qRO3NpkVlJ1NkqSgZMKeol8QqRmdQP2T9056BkZzaxLOzKvrKr1M2zY5fc8kpzYahcUGQN4LQ
+	MegNK3Dwof//mxGegV3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJocl-0000000CiNT-3RlB;
-	Mon, 04 May 2026 08:25:55 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wJqV1-0000000CvPV-1Z3Y;
+	Mon, 04 May 2026 10:26:03 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wJocj-0000000CiM9-0JVk;
-	Mon, 04 May 2026 08:25:54 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1777883135; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=ZDOJ1iMS6BbjMpR1z418oEEtC0vqd6UCTO8avOjxc9wKbIZvKMysUmvzYNo3OKqQRYH5hXNMTe6aN5S9gmzgIZDjsTH79Dpl3o0RahmWU/liu8PTQlduTe/TV+97iKlCALhnCQbNgO2qH+/Zw2pkfR4mQTBweCEjcVEKAlU3GTI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1777883135; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=z489JKPDHOfXIXMi7nlez8unyEO4hm8q1SkFaDGqzso=; 
-	b=HM5LnyZzYOs7p1xoYLDvpzbLC6UwWoMjy5ahsaqaNOLhmCPuQ/1c+7cLq2M4qjyc5hO88K40GRqrTOFt7UsB6+TFkZjdyQ2cnUhPuk5YkAKD/9yrplzjwTEnCy40WuQcC/0hPajSr50LihYshcN2cLYnYgSqjwTFxqopnqw019A=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1777883135;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:To:To:Cc:Cc:Subject:Subject:Date:Date:Message-ID:In-Reply-To:References:MIME-Version:Content-Transfer-Encoding:Content-Type:Message-Id:Reply-To;
-	bh=z489JKPDHOfXIXMi7nlez8unyEO4hm8q1SkFaDGqzso=;
-	b=d12UfRqJgDEnkLM63lrzTbsNQ4liJzdOrXDlr8ZK58jJ3QQw8+/+Q/Zon2veh6xG
-	vaAW1Z9AKv8Xmap8IiniyV5tNQNRldwzWazlMIDiog4lqZzPv31i53xeOpgNaJvQ9fH
-	+m4SpSYaj8LCg+hPTQordubO0FlnfZSvkX3qY/wI=
-Received: by mx.zohomail.com with SMTPS id 1777883133012498.91425057032257;
-	Mon, 4 May 2026 01:25:33 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-To: William Breathitt Gray <wbg@kernel.org>
-Cc: William Breathitt Gray <wbg@kernel.org>,
- Uwe =?UTF-8?B?S2xlaW5lLUvDtm5pZw==?= <ukleinek@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Lee Jones <lee@kernel.org>, Damon Ding <damon.ding@rock-chips.com>,
- kernel@collabora.com, Jonas Karlman <jonas@kwiboo.se>,
- Alexey Charkov <alchark@gmail.com>, linux-rockchip@lists.infradead.org,
- linux-pwm@vger.kernel.org, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-iio@vger.kernel.org
-Subject: Re: [PATCH v5 4/6] counter: Add rockchip-pwm-capture driver
-Date: Mon, 04 May 2026 10:25:27 +0200
-Message-ID: <4Sq7M_BvSOqHZS-Mve-Dmg@collabora.com>
-In-Reply-To: <20260503104624.459765-1-wbg@kernel.org>
-References: <20260420-rk3576-pwm-v5-4-ae7cfbbe5427@collabora.com>
- <20260503104624.459765-1-wbg@kernel.org>
+	id 1wJqUx-0000000CvOi-28Ox;
+	Mon, 04 May 2026 10:26:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1777890355;
+	bh=fjaSYhZE4oRr9d4UaGHL4ThyVOGWeqOjO28JE4crRLo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=m+ahxMvQWuVt3kHngI21TEZjivfCGliowz1eIGVTxtsJJvR/gc7NVYlM35vbMI8Bx
+	 i+7JQuNoOnD78k61oLohXy7UIqvuTvbRxbW1QHKORRwOmNf/XJyLP4azeZ6ObLXWFo
+	 ekujQFqDnhQwKhUSxOTlI/FuS0mcpLr+ySOYAQPCX8Let6t4Qkmnc5c55bM1q3zs+y
+	 qhxtZwdqqapMWvnSFSkZcZKAOLCZLZtBOHGnOiBbgEzTdVh6IaixVqoTlz6637GWzj
+	 cz64JExVd2/4RMr13BWiHXo+AbAA9nWfEUA3JnVYdzmF/DAWxahrAULEeuy2DF/W9s
+	 GXw81I9KOEP4w==
+Received: from [100.64.1.43] (unknown [100.64.1.43])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: benjamin.gaignard)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CD2E217E12EB;
+	Mon,  4 May 2026 12:25:54 +0200 (CEST)
+Message-ID: <da591ba8-9563-4e89-88c2-bf18d41d1bee@collabora.com>
+Date: Mon, 4 May 2026 12:25:54 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] media: verisilicon: Create AV1 helper library
+To: Hans Verkuil <hverkuil+cisco@kernel.org>, nicolas.dufresne@collabora.com,
+ p.zabel@pengutronix.de, mchehab@kernel.org, heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20260415073801.58369-1-benjamin.gaignard@collabora.com>
+ <8f29d271-da7d-4456-9427-2fb66136747a@kernel.org>
+Content-Language: en-US
+From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+In-Reply-To: <8f29d271-da7d-4456-9427-2fb66136747a@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_012553_178813_E4902E3C 
-X-CRM114-Status: GOOD (  47.37  )
+X-CRM114-CacheID: sfid-20260504_032559_720047_160B7620 
+X-CRM114-Status: GOOD (  30.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,256 +72,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="utf-8"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sunday, 3 May 2026 12:46:23 Central European Summer Time William Breathitt Gray wrote:
-> On Mon, Apr 20, 2026 at 03:52:41PM +0200, Nicolas Frattaroli wrote:
-> > Among many other things, Rockchip's new PWMv4 IP in the RK3576 supports
-> > PWM capture functionality.
-> > 
-> > Add a basic driver for this that works to expose HPC/LPC counts and
-> > state change events to userspace through the counter framework. It's
-> > quite basic, but works well enough to demonstrate the device function
-> > exclusion stuff that mfpwm does, in order to eventually support all the
-> > functions of this device in drivers within their appropriate subsystems,
-> > without them interfering with each other.
-> > 
-> > Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> 
-> Hi Nicolas,
-> 
-> Forgive me if I asked this before, but I'm having trouble finding it
-> online: do you have a link to a publicly available RK357 technical
-> reference manual? I think that will help me better understand how this
-> PWMv4 IP works.
-
-Hi!
-
-The RK3576 TRM isn't public, but the same hardware is used in the
-RK3506, which does have its TRM online from Rockchip themselves:
-https://opensource.rock-chips.com/images/3/36/Rockchip_RK3506_TRM_Part_1_V1.2-20250811.pdf
-
-See chapter 31 of this. Right now, this counter driver implements
-what's briefly described in Chapter 31.3.1 "Capture Mode".
-
-> 
-> Regardless, some comments inline below from my current understanding.
-> 
-> > +static struct counter_signal rkpwmc_signals[] = {
-> > +	{
-> > +		.id = 0,
-> > +		.name = "PWM Clock"
-> > +	},
-> > +};
-> 
-> If the capture mode is used to measure the duty cycle of the PWM input,
-> then we actually have two Signals to define here: "PWM Clock" and "PWM
-> Input".
-> 
-> I imagine the capture mode waveforms look something like this:
-> 
->                __    __    __    __    __    __    __
->     clk     __|  |__|  |__|  |__|  |__|  |__|  |__|  |__
->     
->                       __________________ LPC: 2 edges ____
->     pwm_in  _________|   HPC: 3 edges   |____________|
-> 
-> So the level of the pwm_in signal is counted each rising edge of clk;
-> the number of clk edges while pwm_in is high is the HPC count, whereas
-> the number of clk edges while pwm_in is low is the LPC count.
-
-Correct. In fact, your diagram is very close to what's in the
-aforementioned chapter.
-
-> 
-> In the Generic Counter paradigm, this would look like the following:
-> 
->     Signals             Synapses              Counts
->     =======             ========              ======
->     +-----------+                               _______________________
->     |           | <---- "Rising Edge" ---+---> /                       \
->     |"PWM Clock"|                        |     |"High Polarity Capture"|
->     |           |                    +---|---> \                       /
->     +-----------+                    |   |      -----------------------
->                                      |   |
->     +-----------+                    |   |      _______________________
->     |           |                    |   +---> /                       \
->     |"PWM Input"|                    |         | "Low Polarity Capture |
->     |           | <---- "None" ------+-------> \                       /
->     +-----------+                               -----------------------
-> 
-> The key idea is that the clock and PWM input Signals are associated to
-> both Counts (HPC and LPC) through their respective Synapses. However,
-> while the clock Synapse ("Rising Edge") indicates the clock Signal
-> state triggers updates in the Counts, the PWM input Synapse ("None")
-> indicates the PWM input Signal state does not trigger but is simply
-> evaluated to determine the new Count value.
-> 
-> > +static const enum counter_synapse_action rkpwmc_hpc_lpc_actions[] = {
-> > +	COUNTER_SYNAPSE_ACTION_BOTH_EDGES,
-> > +	COUNTER_SYNAPSE_ACTION_NONE,
-> > +};
-> 
-> To simplify my above example, I assumed that the HPC and LPC counts are
-> only updated on rising edges of the clock Signal. If the Count values
-> actually update on both edges, then you don't need to make a change
-> here. Otherwise, change the "both edges" enum constant to "rising edge"
-> or "falling edge" as required.
-
-I checked the TRM and couldn't see any word on whether the count
-is updated on the clock's rising edge only, but judging by Damon
-Ding's review, I assume that is the case. I'll modify it to
-reflect that.
-
-> > +static struct counter_synapse rkpwmc_pwm_synapses[] = {
-> > +	{
-> > +		.actions_list = rkpwmc_hpc_lpc_actions,
-> > +		.num_actions = ARRAY_SIZE(rkpwmc_hpc_lpc_actions),
-> > +		.signal = &rkpwmc_signals[0]
-> > +	},
-> > +};
-> 
-> Add a Synapse here for the "PWM Input" Signal.
-> 
-> You should also implement an action_read() callback. Check the value of
-> synapse->signal->id to determine which Signal is associated to the
-> Synapse and set the respective action; i.e. for the PWM clock set
-> COUNTER_SYNAPSE_ACTION_BOTH_EDGES, while for the PWM input set
-> COUNTER_SYNAPSE_ACTION_NONE.
-
-Will do!
-
-> 
-> > +static const enum counter_function rkpwmc_functions[] = {
-> > +	COUNTER_FUNCTION_INCREASE,
-> > +};
-> 
-> I wonder if we need a new enum counter_function constant to express
-> what's happening in this driver. In theory, the
-> COUNTER_FUNCTION_INCREASE represent a Count whose value only increases,
-> but what we're describing here is more of a duty cycle sample, right?
-
-Yeah, that's a great point. I think we can say it "increases",
-in that either HPC or LPC are increased by the pwm_clk signal
-based on the value of the pwm_in signal by the hardware.
-
-But of course, the two counts are limited by the full period
-of the PWM waveform. So reading a counter will give the
-reader a snapshot view of the high cycles vs. low cycles of
-the last observed PWM waveform period, which is both a duty
-cycle sample and a period length sample, as the counts are
-in clock cycles, so if we add the counts together we get the
-PWM signal period in clock cycles.
-
-This is also why you saw me convert counts to nanoseconds in a
-previous revision; it felt like I should decouple it from the clock,
-but I think the can of worms that this opens isn't worth it.
-
-> 
-> I haven't made up my mind on this, so for now you can stick with
-> COUNTER_FUNCTION_INCREASE. I'll reconsider it in the next revision.
-> 
-> > +static int rkpwmc_enable_write(struct counter_device *counter,
-> > +			       struct counter_count *count,
-> > +			       u8 enable)
-> > +{
-> > +	struct rockchip_pwm_capture *pc = counter_priv(counter);
-> > +	int ret;
-> > +
-> > +	ret = mfpwm_acquire(pc->pwmf);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	if (!!enable != rkpwmc_is_enabled(pc->pwmf)) {
-> 
-> The Counter subsystem gurantees enable is a boolean value so there's no
-> need for the double negation here in the conditional.
-> 
-> Also, instead of checking if the enable value is different from
-> rkpwm_is_enabled(), check if it is the same and exit early. That will
-> avoid the large conditional block as what you have inside can now move
-> outside after the conditional check.
-
-Good call, will do.
-
-> 
-> > +		if (enable) {
-> > +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> > +					 PWMV4_EN(false));
-> > +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_CTRL,
-> > +					 PWMV4_CTRL_CAP_FLAGS);
-> > +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_INT_EN,
-> > +					 PWMV4_INT_LPC_W(true) |
-> > +					 PWMV4_INT_HPC_W(true));
-> > +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> > +					 PWMV4_EN(true) | PWMV4_CLK_EN(true));
-> > +
-> > +			ret = clk_enable(pc->pwmf->core);
-> > +			if (ret)
-> > +				goto err_release;
-> > +
-> > +			ret = clk_rate_exclusive_get(pc->pwmf->core);
-> > +			if (ret)
-> > +				goto err_disable_pwm_clk;
-> > +
-> > +			ret = mfpwm_acquire(pc->pwmf);
-> > +			if (ret)
-> > +				goto err_unprotect_pwm_clk;
-> > +		} else {
-> > +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_INT_EN,
-> > +					 PWMV4_INT_LPC_W(false) |
-> > +					 PWMV4_INT_HPC_W(false));
-> > +			mfpwm_reg_write(pc->pwmf->base, PWMV4_REG_ENABLE,
-> > +					 PWMV4_EN(false) | PWMV4_CLK_EN(false));
-> > +			clk_rate_exclusive_put(pc->pwmf->core);
-> > +			clk_disable(pc->pwmf->core);
-> > +			mfpwm_release(pc->pwmf);
-> > +		}
-> > +	}
-> > +
-> > +	mfpwm_release(pc->pwmf);
-> 
-> The call to mfpwm_release() in the else block is redundant because it is
-> called immediately again here.
-
-It's actually intentional, and not redundant. The if (enable) branch
-does an mfpwm_acquire() so that as long as the counter functionality
-is enabled, the use count remains > 0. This way, the PWM output
-driver can't tell the mfpwm driver that it'd like to have exclusive
-use of the PWM device now, as the counter driver is claiming it.
-
-To balance this, the else block here needs to release it.
-
-The release outside the else block is to balance the acquire
-earlier in the function, the pair of which is there to ensure
-mfpwm has powered on the hardware and associated clocks for
-the register reads and writes.
-
-Admittedly, I could get rid of the additional mfpwm_acquire
-in the if (enable) branch by letting the function entry acquire
-"leak" on purpose, by getting rid of the function end mfpwm_release.
-But this feels less obvious to me than the current way. I'll
-definitely add comments though to indicate what's going on, and
-maybe even define a cleanup.h guard() class for the function
-level acquire-release.
-
-Thanks for the review, and especially the explanations.
-
-Kind regards,
-Nicolas Frattaroli
-
-> 
-> William Breathitt Gray
-> 
-
-
-
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkxlIDA0LzA1LzIwMjYgw6AgMDk6MjAsIEhhbnMgVmVya3VpbCBhIMOpY3JpdMKgOgo+IEhpIEJl
+bmphbWluLAo+Cj4gSSBoYXZlIGEgZmV3IGNvbW1lbnRzIGFib3V0IHRoaXM6Cj4KPiBPbiAxNS8w
+NC8yMDI2IDA5OjM4LCBCZW5qYW1pbiBHYWlnbmFyZCB3cm90ZToKPj4gUmVncm91cCBhbGwgbm9u
+ZSBoYXJkd2FyZSByZWxhdGVkIEFWMSBmdW5jdGlvbnMgaW50byBhIGhlbHBlciBsaWJyYXJ5Lgo+
+PiBUaGUgZ29hbCBpcyB0byBhdm9pZCBjb2RlIGR1cGxpY2F0aW9uIGZvciBmdXR1ciBBVjEgY29k
+ZWNzLgo+IGZ1dHVyIC0+IGZ1dHVyZQo+Cj4+IFRlc3RlZCBvbiByb2NrIDViIGJvYXJkIEZsdXN0
+ZXIgc2NvcmUgcmVtYWlucyB0aGUgc2FtZSAyMDQvMjQxLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBC
+ZW5qYW1pbiBHYWlnbmFyZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPj4gUmV2
+aWV3ZWQtYnk6IE5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAY29sbGFib3JhLmNv
+bT4KPj4gLS0tCj4+IGNoYW5nZXMgaW4gdmVyc2lvbiAzOgo+PiAgIC0gUmVtb3ZlIHVzZWxlc3Mg
+d3JhcHBlciBmdW5jdGlvbnMuCj4+Cj4+ICAgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2ls
+aWNvbi9NYWtlZmlsZSAgIHwgICA3ICstCj4+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxp
+Y29uL2hhbnRyb19hdjEuYyAgIHwgNzgwICsrKysrKysrKysrKysrKwo+PiAgIC4uLi9tZWRpYS9w
+bGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fYXYxLmggICB8ICA2MiArKwo+PiAgIC4uLmVudHJv
+cHltb2RlLmMgPT4gaGFudHJvX2F2MV9lbnRyb3B5bW9kZS5jfSB8ICAxOCArLQo+PiAgIC4uLmVu
+dHJvcHltb2RlLmggPT4gaGFudHJvX2F2MV9lbnRyb3B5bW9kZS5ofSB8ICAxOCArLQo+PiAgIC4u
+LmF2MV9maWxtZ3JhaW4uYyA9PiBoYW50cm9fYXYxX2ZpbG1ncmFpbi5jfSB8ICA4MiArLQo+PiAg
+IC4uLi92ZXJpc2lsaWNvbi9oYW50cm9fYXYxX2ZpbG1ncmFpbi5oICAgICAgICB8ICA0NCArCj4+
+ICAgLi4uL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19ody5oICAgIHwgICA3ICst
+Cj4+ICAgLi4uL3ZlcmlzaWxpY29uL3JvY2tjaGlwX2F2MV9maWxtZ3JhaW4uaCAgICAgIHwgIDM2
+IC0KPj4gICAuLi4vdmVyaXNpbGljb24vcm9ja2NoaXBfdnB1OTgxX2h3X2F2MV9kZWMuYyAgfCA5
+MzUgKystLS0tLS0tLS0tLS0tLS0tCj4+ICAgLi4uL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3JvY2tj
+aGlwX3ZwdV9ody5jICAgIHwgICA3ICstCj4+ICAgMTEgZmlsZXMgY2hhbmdlZCwgMTA0MSBpbnNl
+cnRpb25zKCspLCA5NTUgZGVsZXRpb25zKC0pCj4+ICAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZl
+cnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2F2MS5jCj4+ICAgY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2F2MS5o
+Cj4+ICAgcmVuYW1lIGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24ve3JvY2tjaGlw
+X2F2MV9lbnRyb3B5bW9kZS5jID0+IGhhbnRyb19hdjFfZW50cm9weW1vZGUuY30gKDk5JSkKPj4g
+ICByZW5hbWUgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi97cm9ja2NoaXBfYXYx
+X2VudHJvcHltb2RlLmggPT4gaGFudHJvX2F2MV9lbnRyb3B5bW9kZS5ofSAoOTUlKQo+PiAgIHJl
+bmFtZSBkcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL3tyb2NrY2hpcF9hdjFfZmls
+bWdyYWluLmMgPT4gaGFudHJvX2F2MV9maWxtZ3JhaW4uY30gKDkyJSkKPj4gICBjcmVhdGUgbW9k
+ZSAxMDA2NDQgZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fYXYxX2Zp
+bG1ncmFpbi5oCj4+ICAgZGVsZXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbWVkaWEvcGxhdGZvcm0v
+dmVyaXNpbGljb24vcm9ja2NoaXBfYXYxX2ZpbG1ncmFpbi5oCj4+Cj4gPHNuaXA+Cj4KPj4gZGlm
+ZiAtLWdpdCBhL2RyaXZlcnMvbWVkaWEvcGxhdGZvcm0vdmVyaXNpbGljb24vaGFudHJvX2F2MS5j
+IGIvZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9oYW50cm9fYXYxLmMKPj4gbmV3
+IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAwMDAwMDAwLi41YTUxYWM4NzdjOWMKPj4g
+LS0tIC9kZXYvbnVsbAo+PiArKysgYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29u
+L2hhbnRyb19hdjEuYwo+PiBAQCAtMCwwICsxLDc4MCBAQAo+IDxzbmlwPgo+Cj4+ICsKPj4gK2lu
+dCBoYW50cm9fYXYxX3RpbGVfbG9nMihpbnQgdGFyZ2V0KQo+PiArewo+PiArCWludCBrOwo+PiAr
+Cj4+ICsJLyoKPj4gKwkgKiByZXR1cm5zIHRoZSBzbWFsbGVzdCB2YWx1ZSBmb3IgayBzdWNoIHRo
+YXQgMSA8PCBrIGlzIGdyZWF0ZXIKPj4gKwkgKiB0aGFuIG9yIGVxdWFsIHRvIHRhcmdldAo+PiAr
+CSAqLwo+PiArCWZvciAoayA9IDA7ICgxIDw8IGspIDwgdGFyZ2V0OyBrKyspOwo+IENoZWNrcGF0
+Y2ggZ2l2ZXM6Cj4KPiBFUlJPUjogdHJhaWxpbmcgc3RhdGVtZW50cyBzaG91bGQgYmUgb24gbmV4
+dCBsaW5lCj4gIzYzNzogRklMRTogZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2lsaWNvbi9o
+YW50cm9fYXYxLmM6NTY4Ogo+ICsgICAgICAgZm9yIChrID0gMDsgKDEgPDwgaykgPCB0YXJnZXQ7
+IGsrKyk7Cj4KPiBKdXN0IG1vdmUgdGhlICc7JyB0byB0aGUgbmV4dCBsaW5lLgoKT0sgSSB3aWxs
+IGRvIHRoYXQuCgo+Cj4+ICsKPj4gKwlyZXR1cm4gazsKPj4gK30KPj4gKwo+IDxzbmlwPgo+Cj4+
+IGRpZmYgLS1naXQgYS9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19h
+djFfZmlsbWdyYWluLmggYi9kcml2ZXJzL21lZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRy
+b19hdjFfZmlsbWdyYWluLmgKPj4gbmV3IGZpbGUgbW9kZSAxMDA2NDQKPj4gaW5kZXggMDAwMDAw
+MDAwMDAwLi41NTkzZTg0MTE0ZDAKPj4gLS0tIC9kZXYvbnVsbAo+PiArKysgYi9kcml2ZXJzL21l
+ZGlhL3BsYXRmb3JtL3ZlcmlzaWxpY29uL2hhbnRyb19hdjFfZmlsbWdyYWluLmgKPj4gQEAgLTAs
+MCArMSw0NCBAQAo+PiArLyogU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IEdQTC0yLjAtb25seSAq
+Lwo+PiArCj4+ICsjaWZuZGVmIF9IQU5UUk9fQVYxX0ZJTE1HUkFJTl9IXwo+PiArI2RlZmluZSBf
+SEFOVFJPX0FWMV9GSUxNR1JBSU5fSF8KPj4gKwo+PiArI2luY2x1ZGUgPGxpbnV4L3R5cGVzLmg+
+Cj4+ICsKPj4gK3N0cnVjdCBoYW50cm9fYXYxX2ZpbG1fZ3JhaW4gewo+PiArCXU4IHNjYWxpbmdf
+bHV0X3lbMjU2XTsKPj4gKwl1OCBzY2FsaW5nX2x1dF9jYlsyNTZdOwo+PiArCXU4IHNjYWxpbmdf
+bHV0X2NyWzI1Nl07Cj4+ICsJczE2IGNyb3BwZWRfbHVtYV9ncmFpbl9ibG9ja1s0MDk2XTsKPj4g
+KwlzMTYgY3JvcHBlZF9jaHJvbWFfZ3JhaW5fYmxvY2tbMTAyNCAqIDJdOwo+PiArfTsKPiBUaGlz
+IHN0cnVjdCBpcyBub3QgdXNlZCBpbiBoYW50cm9fYXYxX2ZpbG1ncmFpbi5jL2guCj4KPiBEb2Vz
+IHRoaXMgYmVsb25nIGhlcmU/CgpUaGUgc2FtZSBzdHJ1Y3R1cmUgY2FuIHVzZWQgZm9yIGZ1dHVy
+ZSBWZXJpc2lsaWNvbiBoYXJkd2FyZSBibG9jayBzbyBJIHdvdWxkIHByZWZlciB0bwprZWVwIGl0
+IGhlcmUuCgo+Cj4+ICsKPj4gK3ZvaWQgaGFudHJvX2F2MV9nZW5lcmF0ZV9sdW1hX2dyYWluX2Js
+b2NrKHMzMiAoKmx1bWFfZ3JhaW5fYmxvY2spWzczXVs4Ml0sCj4+ICsJCQkJCSAgczMyIGJpdGRl
+cHRoLAo+PiArCQkJCQkgIHU4IG51bV95X3BvaW50cywKPj4gKwkJCQkJICBzMzIgZ3JhaW5fc2Nh
+bGVfc2hpZnQsCj4+ICsJCQkJCSAgczMyIGFyX2NvZWZmX2xhZywKPj4gKwkJCQkJICBzMzIgKCph
+cl9jb2VmZnNfeSlbMjRdLAo+PiArCQkJCQkgIHMzMiBhcl9jb2VmZl9zaGlmdCwKPj4gKwkJCQkJ
+ICBzMzIgZ3JhaW5fbWluLAo+PiArCQkJCQkgIHMzMiBncmFpbl9tYXgsCj4+ICsJCQkJCSAgdTE2
+IHJhbmRvbV9zZWVkKTsKPj4gKwo+PiArdm9pZCBoYW50cm9fYXYxX2dlbmVyYXRlX2Nocm9tYV9n
+cmFpbl9ibG9jayhzMzIgKCpsdW1hX2dyYWluX2Jsb2NrKVs3M11bODJdLAo+PiArCQkJCQkgICAg
+czMyICgqY2JfZ3JhaW5fYmxvY2spWzM4XVs0NF0sCj4+ICsJCQkJCSAgICBzMzIgKCpjcl9ncmFp
+bl9ibG9jaylbMzhdWzQ0XSwKPj4gKwkJCQkJICAgIHMzMiBiaXRkZXB0aCwKPj4gKwkJCQkJICAg
+IHU4IG51bV95X3BvaW50cywKPj4gKwkJCQkJICAgIHU4IG51bV9jYl9wb2ludHMsCj4+ICsJCQkJ
+CSAgICB1OCBudW1fY3JfcG9pbnRzLAo+PiArCQkJCQkgICAgczMyIGdyYWluX3NjYWxlX3NoaWZ0
+LAo+PiArCQkJCQkgICAgczMyIGFyX2NvZWZmX2xhZywKPj4gKwkJCQkJICAgIHMzMiAoKmFyX2Nv
+ZWZmc19jYilbMjVdLAo+PiArCQkJCQkgICAgczMyICgqYXJfY29lZmZzX2NyKVsyNV0sCj4+ICsJ
+CQkJCSAgICBzMzIgYXJfY29lZmZfc2hpZnQsCj4+ICsJCQkJCSAgICBzMzIgZ3JhaW5fbWluLAo+
+PiArCQkJCQkgICAgczMyIGdyYWluX21heCwKPj4gKwkJCQkJICAgIHU4IGNocm9tYV9zY2FsaW5n
+X2Zyb21fbHVtYSwKPj4gKwkJCQkJICAgIHUxNiByYW5kb21fc2VlZCk7Cj4+ICsKPiBJIGdldCBh
+IGxvdCBvZiBjaGVja3BhdGNoIHdhcm5pbmdzIG9mIHRoaXMgdHlwZToKPgo+IFdBUk5JTkc6IGZ1
+bmN0aW9uIGRlZmluaXRpb24gYXJndW1lbnQgJ3MzMicgc2hvdWxkIGFsc28gaGF2ZSBhbiBpZGVu
+dGlmaWVyIG5hbWUKPiAjMTIwNTogRklMRTogZHJpdmVycy9tZWRpYS9wbGF0Zm9ybS92ZXJpc2ls
+aWNvbi9oYW50cm9fYXYxX2ZpbG1ncmFpbi5oOjE2Ogo+ICt2b2lkIGhhbnRyb19hdjFfZ2VuZXJh
+dGVfbHVtYV9ncmFpbl9ibG9jayhzMzIgKCpsdW1hX2dyYWluX2Jsb2NrKVs3M11bODJdLAo+IExv
+b2tpbmcgYXQgaG93IGl0IGlzIHVzZWQgaW4gcm9ja2NoaXBfdnB1OTgxX2F2MV9kZWNfc2V0X2Zn
+cygpIEkgdGhpbmsgdGhpcwo+IGNhbiBiZSBkb25lIGEgbG90IGVhc2llciBpZiB5b3UgYWRkIGEg
+bmV3IHN0cnVjdCBoZXJlIGNvbnRhaW5pbmcgdGhvc2UKPiBhcnJheXMuIEUuZy46Cj4KPiBzdHJ1
+Y3QgaGFudHJvX2F2MV9jb2VmZnNfZ3JhaW5fYmxvY2sgewo+ICAgICAgICAgIHMzMiBhcl9jb2Vm
+ZnNfeVsyNF07Cj4gICAgICAgICAgczMyIGFyX2NvZWZmc19jYlsyNV07Cj4gICAgICAgICAgczMy
+IGFyX2NvZWZmc19jclsyNV07Cj4gICAgICAgICAgczMyIGx1bWFfZ3JhaW5fYmxvY2tbNzNdWzgy
+XTsKPiAgICAgICAgICBzMzIgY2JfZ3JhaW5fYmxvY2tbMzhdWzQ0XTsKPiAgICAgICAgICBzMzIg
+Y3JfZ3JhaW5fYmxvY2tbMzhdWzQ0XTsKPiB9Owo+Cj4gVGhlbiBpbiByb2NrY2hpcF92cHU5ODFf
+YXYxX2RlY19zZXRfZmdzIHlvdSBjYW4ganVzdCBremFsbG9jIHRoYXQgc3RydWN0Cj4gYW5kIHBh
+c3MgaXQgdG8gdGhlc2UgZmlsbWdyYWluIGZ1bmN0aW9ucy4KCkkgd2lsbCBkbyB0aGF0LgoKPgo+
+IEFsc28gY29uc2lkZXIgdXNpbmcgI2RlZmluZXMgZm9yIHRoZSBhcnJheSBzaXplcy4KCkNoYXB0
+ZXIgIjcuMTguMy4zLiBHZW5lcmF0ZSBncmFpbiBwcm9jZXNzIiBvZiBBVjEgc3BlYyBkb2Vzbid0
+IGRlZmluZS9uYW1lCnRoZXNlIHZhbHVlcyBzbyBrZWVwIHRoZW0gbGlrZSB0aGlzIG1ha2UgdGhl
+IGNvZGUgbW9yZSBlYXN5IHRvIHJldmlldyB3aXRoCnRoZSBzcGVjLgoKaHR0cHM6Ly9hb21lZGlh
+Y29kZWMuZ2l0aHViLmlvL2F2MS1zcGVjLyNnZW5lcmF0ZS1ncmFpbi1wcm9jZXNzCgpUaGF0IHNh
+aWQgSSdtIGFsd2F5cyBmb3IgbmFtaW5nIHZhbHVlcyBzbyBnb29kIHN1Z2dlc3Rpb24gYXJlIHdl
+bGNvbWUuCgpUaGFua3MsCkJlbmphbWluCgo+Cj4gSWYgeW91IGRlY2lkZSBub3QgdG8gdXNlIGEg
+c3RydWN0LCB0aGVuIHlvdSBjYW4gYXQgbGVhc3QgY2hhbmdlIHNpbXBseSB1c2UKPiAnczMyIGx1
+bWFfZ3JhaW5fYmxvY2tbNzNdWzgyXScgYXMgYXJndW1lbnRzIHRvIHRoZXNlIGhlbHBlciBmdW5j
+dGlvbnMuIFRoZXJlCj4gaXMgbm8gbmVlZCB0byBjb21wbGljYXRlIHRoZSBmdW5jdGlvbiBwcm90
+b3R5cGVzLgo+Cj4gQnV0IEkgdGhpbmsgY3JlYXRpbmcgYSBzdHJ1Y3QgaXMgYSBjbGVhbmVyIGFw
+cHJvYWNoLgo+Cj4gUmVnYXJkcywKPgo+IAlIYW5zCj4KCl9fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51
+eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3Jn
+L21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
