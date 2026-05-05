@@ -4,163 +4,210 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4953C4450C
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:50:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B23C8C4450F
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qadRmSMKiBrvdpxLWReZy2mvM0XZwrn0DIV2wHBTGL8=; b=oifl1cBWKeVDUe
-	+Qd9H8tzz4liD0dSSaCB1GiSDkFwKkpfXBNsGT9PCHCQEnzWj9/ICg6hX5l8W30mNxCnCbds9/qGU
-	6mt/wnT3l8vCCN36SwkoCMWUojs81NOjXRfBGrCqxBSjnSe7xv8BPFbTbf+HXJqa1Bb8eDr7pfQzB
-	DGhZ9+i6+w6T+0RweWS82m7K8hr3UopMHWc9hf3xGf7R/uo9rVz2SeahoncyGRMYzoXwMhhee6JgC
-	RbEF/kgwNouxA+3wpbOIM2/LxkfRhXtCa3Zvg4mcOZBpKtpcImk+JDMTAdXo0hUhogR91rN85lM3T
-	Q49zAgixfUGfIubfEfEA==;
+	List-Owner; bh=YAID2dJe8QfJLPl7jJUnVNz9UikRPxuh5i/RJ0YgzG8=; b=kytSB6AjOMOhFt
+	+T6JYr5SISd6qh1U1Y75z+1kxea4xnB8FwpVgbFW/8iurCNztE01I3UbsPQepq1OuTkGlNkyG2FxJ
+	jtJxTRbM9KLqXSAUEWUmHNqZckPi12IFZdnT0RXrzoVGJanyGTSjtlkfMzwdf11HftUgJhFotQRhL
+	AD6M3mgV3aJJIjbf8iS3e6Zh9h5ZXU3YGnCT6Gh5z1gpa/NJx1bXPolf7Z4IcxvVFxhzvpoFn3LDB
+	yRdzcosOgjpivVLoKFCvR6KIRc4YJheCszg+7F6Xo1xBrLZ4FazRkjoex/E915Z8p78lJ+7TA6AHR
+	gnBiH0kbOzjZ4PLxYzBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkSY-00000001ZTB-23z6;
-	Thu, 09 Jul 2026 08:50:18 +0000
-Received: from mail-northeuropeazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c200::1] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1whkSb-00000001ZZW-1ENn;
+	Thu, 09 Jul 2026 08:50:21 +0000
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wHGGi-0000000GMXm-10bc;
-	Mon, 27 Apr 2026 07:20:37 +0000
+	id 1wKC78-0000000Ffmc-2hFT;
+	Tue, 05 May 2026 09:30:51 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=jfKrQ9XrVv+L2gYC4xCYDY9dymdJ0qC84B3UUhSFFzLO5ol6aNDqoLMIDRPp5Z1tC9iDxrXi29zqSqQkj+sb7iaZjYQPxQ26NBBzzGYdHwssStG05IDnK9Ar63W2AHA41OlL/3OP1+IFyneq489lY5IdUcZa4gev++LH5b2hZMPqafFMpqpvVacOtaXHX+HJXaede2TFx0JfzkaNANYFrAmp/IdOCSVdqnjREPGpFf0S8jRTlBoj/x78xe+RQaYJSvBiGcdAH0ALqnAIj+Qae61GJwoJpAxu5fyG4yCaoltCVHAPj6MxlbX5AxxZI2t7v7Aj6uq6qR0JM+PlRirW3A==
+ b=aU9zGRIR3Yqssvlv6dvxzFhnHC4HYZKYn2eawG/0vIOxr6Wc5y4yXwi+1GgZocRlyHaWcuphwUGz+VCdgg1bn0zmW97zWtDrpdoqN9AEo+VJumkt6HQHSEi9D4P/fgOlBCaygjO0/Kv+5sP8KbgiiVrHCpnMPMQ6E4I/GNKsafQpAT1ga150AZtXhytA5IdxtHu34KQyc/BFJraTkkG/eYDtoWcgUxNNkKOq0n1Yzs3/Zip/eHcLZePnAAtzLpnUahPTeVsmCgm05CTRByWffq9svsmUnHaJPkTg6r02sKtRzrt7ModejrMcdlU6rD56IAaCMjBaz04J2Q05C2PJbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gBhaC1RBr5+6/NYOOt7Qzlu1aHl7Fqeg/S9CESwLIE4=;
- b=kB8Ls+APomvF5SGytNOccnd4YLFIc3rGtqebvUaQEk+58ydXop54/e3GoeADfS7k1lllcacMPd0QTCBIXVQg5ymsd3e7TPLryiouWmzHK2hAceTL5lkQggYYT/B6Vg0x9p5n33wGY8d6N2Zyn3nJAoIdXOOnR0ezLK0UrPjW1/18/trPMN7kdY1wCAF2xXk5FHOfd4S7T1y0U5FcnYrPiFvPU3RUz43El8vzu33vMSEoWBFjX97Kl8YPWUJR9GhVk09FlBW7UqqnmIyP820Mip7HEeItzIa5p+cUrKan11qGGIpJ05SHsGpBWJFbP9Wpul1abawCDVDZTfPI01XhCA==
+ bh=buMu2dCWSqT2zwkuvzvOyaoMh5IAF1ls0sy2X5mRtfM=;
+ b=wXyJViAG1QQ4ySMYZpCn7xm5hwTvoR5PkUhdohDjHqn0CAtWIaNd5650RTqbjJwZggiEZj1FSHbIALR0E6JC9IBtmnnKRSc8FXY8qITw7fKUSEy8jrIJ7Y5Tr8QXQcFTcB1FSjgNIYKnVc9ZMsjQf3bPijDchy+D2lveAUJe1LRZzjnvoOSz5zfqktg4tUxb+VFYbqBLM/O30nzRVxnvGZ6faD+Fy0XSKRHkTvpfIaGpPBn+XEEpKJog93Tih2VNHudKWWG85YT6tPQwtCwkN6pnVYyv8H6E9wfLS1d3ytohnTpU5awMTVvOruuZC3qpN1Knc2QFCThntSz7dl1yuQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gBhaC1RBr5+6/NYOOt7Qzlu1aHl7Fqeg/S9CESwLIE4=;
- b=qZbHVvQjwWsc5VAB5eHvIJaUqmFtFy07HZxd3D1IHIeNg5OH4UF2KWQvVq2EV3AnKyA2RvJgkrHD6nZvBrqgxU/JeaNN6/EPwgLjCVZYjCverIJYddf289rscOClfD/V0VLdkCCdsvMswFtO2rRWQdCEMSIQhJFT1rwbfYQniGy+V7zcZyoTsymWD5bcwr33LOhdsunC+i1/5Up8k+Cna8N7JYhSdvmkkwiBP8zYiOeJ2HJpftt1TNHhZ8MAEZy91TmYrrMTCUJB4PziOoxwaIZt94fq4qKdBqeg3OBt5qWgcbFVm2x8pPmFt3xCei3icy01c1rg0KJ8iRh6oU1wCg==
+ bh=buMu2dCWSqT2zwkuvzvOyaoMh5IAF1ls0sy2X5mRtfM=;
+ b=e7Pv1Xcx8u3eW3ACjTXISArGZN9QSv62Oo5Rm7qzQ+ZXi4Kbag3X7+yksoIAQgfyRGHX7tpWvv29FA0amvAePzsDDt1knvr3db/cF88ZmVMi8duj75U0H4jOSm+hMv051jnn26npr+kDW0SDtULrGN7l38dNSw7+O07wfz1boDfGek6eabdbzV/wRlyrcmgP1ebIiqgfgUOkb+/KJLbfY6Zg27WW8ecxOmPTs3kJRg2V7C6p8wBSaA/hfvKY0LTVbupNm8AiGWUERmN/eb1sX/uRejTdjZ0rmlJVjvYlDp4CbbWHW/uOfzs5+yqKYxF5kRU+lblPzqzfDjSxc1VHAQ==
 Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV1PR04MB9135.eurprd04.prod.outlook.com (2603:10a6:150:26::19)
- by DU4PR04MB12299.eurprd04.prod.outlook.com (2603:10a6:10:62b::14) with
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
+ by GV4PR04MB11305.eurprd04.prod.outlook.com (2603:10a6:150:297::13) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9846.26; Mon, 27 Apr
- 2026 07:20:26 +0000
-Received: from GV1PR04MB9135.eurprd04.prod.outlook.com
- ([fe80::3826:2706:1e81:c9e2]) by GV1PR04MB9135.eurprd04.prod.outlook.com
- ([fe80::3826:2706:1e81:c9e2%5]) with mapi id 15.20.9846.025; Mon, 27 Apr 2026
- 07:20:26 +0000
-Date: Mon, 27 Apr 2026 10:20:15 +0300
-From: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Robert Foss <rfoss@kernel.org>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
-	Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sasha Finkelstein <fnkl.kernel@gmail.com>, 
-	Janne Grunau <j@jannau.net>, Liu Ying <victor.liu@nxp.com>, 
-	Douglas Anderson <dianders@chromium.org>, Lucas Stach <l.stach@pengutronix.de>, 
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Paul Cercueil <paul@crapouillou.net>, 
-	Anitha Chrisanthus <anitha.chrisanthus@intel.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Kevin Hilman <khilman@baylibre.com>, 
-	Jerome Brunet <jbrunet@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>, 
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Thierry Reding <thierry.reding@gmail.com>, Mikko Perttunen <mperttunen@nvidia.com>, 
-	Jonathan Hunter <jonathanh@nvidia.com>, Icenowy Zheng <zhengxingda@iscas.ac.cn>, 
-	Jingoo Han <jingoohan1@gmail.com>, Inki Dae <inki.dae@samsung.com>, 
-	Seung-Woo Kim <sw0312.kim@samsung.com>, Kyungmin Park <kyungmin.park@samsung.com>, 
-	Krzysztof Kozlowski <krzk@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laurent Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Tomi Valkeinen <tomi.valkeinen+renesas@ideasonboard.com>, 
-	Kieran Bingham <kieran.bingham+renesas@ideasonboard.com>, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	Magnus Damm <magnus.damm@gmail.com>, Biju Das <biju.das.jz@bp.renesas.com>, 
-	Marek Vasut <marex@denx.de>, Stefan Agner <stefan@agner.ch>, Jyri Sarha <jyri.sarha@iki.fi>, 
-	Michal Simek <michal.simek@amd.com>, Hui Pu <Hui.Pu@gehealthcare.com>, 
-	Ian Ray <ian.ray@gehealthcare.com>, Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, asahi@lists.linux.dev, 
-	imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	freedreno@lists.freedesktop.org, linux-rockchip@lists.infradead.org, linux-tegra@vger.kernel.org, 
-	linux-samsung-soc@vger.kernel.org, linux-renesas-soc@vger.kernel.org
-Subject: Re: [PATCH v2 06/41] drm/imx/dcss: remove now-redundant call to
- drm_connector_attach_encoder()
-Message-ID: <ybgfrjkjwbjcpc2aw24kodcim2lf7c37qlwwh67as5otiogxp3@c2ndw3f2d6qr>
-References: <20260423-drm-bridge-connector-attach_encoder-v2-0-2ae6ca69b390@bootlin.com>
- <20260423-drm-bridge-connector-attach_encoder-v2-6-2ae6ca69b390@bootlin.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.25; Tue, 5 May
+ 2026 09:30:39 +0000
+Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
+ ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9870.023; Tue, 5 May 2026
+ 09:30:39 +0000
+Date: Tue, 5 May 2026 12:30:31 +0300
+From: Vladimir Oltean <vladimir.oltean@nxp.com>
+To: linux-phy@lists.infradead.org
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	dri-devel@lists.freedesktop.org, freedreno@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+	linux-can@vger.kernel.org, linux-gpio@vger.kernel.org,
+	linux-ide@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org, linux-riscv@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-samsung-soc@vger.kernel.org, linux-scsi@vger.kernel.org,
+	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org,
+	linux-usb@vger.kernel.org, netdev@vger.kernel.org,
+	spacemit@lists.linux.dev, UNGLinuxDriver@microchip.com,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	=?utf-8?B?QW5kcsOp?= Draszik <andre.draszik@linaro.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Chanho Park <chanho61.park@samsung.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Damien Le Moal <dlemoal@kernel.org>,
+	Daniel Machon <daniel.machon@microchip.com>,
+	David Airlie <airlied@gmail.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Eric Dumazet <edumazet@google.com>,
+	Fabio Estevam <festevam@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
+	Inki Dae <inki.dae@samsung.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	"James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+	JC Kuo <jckuo@nvidia.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Jessica Zhang <jesszhan0024@gmail.com>,
+	Joe Perches <joe@perches.com>,
+	Johan Hovold <johan+linaro@kernel.org>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Kevin Xie <kevin.xie@starfivetech.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Magnus Damm <magnus.damm@gmail.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Marc Kleine-Budde <mkl@pengutronix.de>,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Markus Schneider-Pargmann <msp@baylibre.com>,
+	"Martin K. Petersen" <martin.petersen@oracle.com>,
+	Mathias Nyman <mathias.nyman@intel.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Maxime Ripard <mripard@kernel.org>,
+	Michael Dege <michael.dege@renesas.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Niklas Cassel <cassel@kernel.org>,
+	Nitin Rawat <quic_nitirawa@quicinc.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Peter Chen <peter.chen@kernel.org>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Robert Foss <rfoss@kernel.org>, Rob Herring <robh@kernel.org>,
+	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
+	Samuel Holland <samuel@sholland.org>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>, Sean Paul <sean@poorly.run>,
+	Sebastian Reichel <sre@kernel.org>,
+	Shawn Guo <shawn.guo@linaro.org>,
+	Shawn Lin <shawn.lin@rock-chips.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Steen Hegelund <Steen.Hegelund@microchip.com>,
+	Thierry Reding <thierry.reding@gmail.com>,
+	Thinh Nguyen <Thinh.Nguyen@synopsys.com>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Tudor Ambarus <tudor.ambarus@linaro.org>,
+	Vincent Mailhol <mailhol@kernel.org>, Yixun Lan <dlan@kernel.org>,
+	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>
+Subject: Re: [PATCH v7 phy-next 15/27] phy: move provider API out of public
+ <linux/phy/phy.h>
+Message-ID: <20260505093031.zjewnvpvyiptxz6f@skbuf>
+References: <20260430110652.558622-1-vladimir.oltean@nxp.com>
+ <20260430110652.558622-16-vladimir.oltean@nxp.com>
 Content-Disposition: inline
-In-Reply-To: <20260423-drm-bridge-connector-attach_encoder-v2-6-2ae6ca69b390@bootlin.com>
-X-ClientProxiedBy: FR4P281CA0433.DEUP281.PROD.OUTLOOK.COM
- (2603:10a6:d10:d1::15) To GV1PR04MB9135.eurprd04.prod.outlook.com
- (2603:10a6:150:26::19)
+In-Reply-To: <20260430110652.558622-16-vladimir.oltean@nxp.com>
+X-ClientProxiedBy: VI1PR08CA0215.eurprd08.prod.outlook.com
+ (2603:10a6:802:15::24) To AM9PR04MB8585.eurprd04.prod.outlook.com
+ (2603:10a6:20b:438::13)
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV1PR04MB9135:EE_|DU4PR04MB12299:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3821bb78-7613-4c75-2784-08dea42d73ba
-X-MS-Exchange-SharedMailbox-RoutingAgent-Processed: True
+X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|GV4PR04MB11305:EE_
+X-MS-Office365-Filtering-Correlation-Id: d4591da2-10e3-4859-6d51-08deaa88f835
 X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|19092799006|366016|7416014|376014|22082099003|18002099003|56012099003;
-X-Microsoft-Antispam-Message-Info: db5x2kgA0DkMV/TxDKBe/q1GDNYIluCduHX1TZx6q+OwEo35vzqDtS0jNL3+8sSsiGlr+Lyc+X54v0ecOua+L1zIsUUU2XX0tly0B/y0f2LhDFOcnJDcz9KtgxlQCbfOgd769Y09J9gg1NPdByD9D4ir+5hj9BVkxpQ3VFkJNvDMSOOwPS079+WaCdSfvmKjmrAjWjritmwcGLBfAUk92kmm+IwZpKl+E8p4mNsERRLXuP5AGgoSR5P47ei/V8U9eAbJyuMUp0M7a/9wHVnMRiUwncBeB+4q2qi5tS4NCW7I4EvOjX0KlELlh0ljoN9x9ildugSGf3MDMrsSrtUe+VT9c0c6C8g/nWuKQ9Lu18VJvsgrldkMxeEw6FOXIBP9VjbscehehYLMCoYBdxRL9RZStXxxEwebmcuUDF/wX7dfmv//YQhd7RcY60HKfxptHx9h/hPHwJ9e4l5nc1uz1/2xzE0i5NPIpZ7XtxfLaQJL500YRfmtO23/eNH5kHZ6T7dpNjw980SqU7TFxKqOdT7S99bSpR98s3Pzoe8GdJp5EBgbF6QCaVDfMsqnLw/4wmBwOB+9YH8k3mewFu1AyItnbBo4+GnvH+anojLAQwWeZsylNvyOdIdVXLJLB/9Nytk0gMlOAbuNX7the2allNR+V/cufTRfHgRICtgc8Pxv1sQbK/XReXAEBwKTHJT2tPZ7JiXCzHYjcn5FoWP5DC2yY7CKixFFV2NTaEMMhss=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV1PR04MB9135.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(19092799006)(366016)(7416014)(376014)(22082099003)(18002099003)(56012099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9WLRojYWt9FM4ds6PakXqpZ/2Btox4BFPoY/7PrkDv72XGQeOQX5e18winbF?=
- =?us-ascii?Q?bDIWynbRD5L3+N2gvMfdM6yUaIIQ8tEZZE+RQ/ZHnZwvlCY4TlVys3DsUAtJ?=
- =?us-ascii?Q?PjcinghyI1BYDGEBaPyvqAFUj9Nc6mamszc3Hgq/rw9IBZE2QcgEBkLEIYTc?=
- =?us-ascii?Q?B9HNfDLLSIyHndp8AMbHhD1zbCMY2/GtK9WEYUZy3gqdK+LWOb143bMpgkZV?=
- =?us-ascii?Q?JX82/MfhkyQk1in6pa7epTVk7KJ8EOBpHcTNnW4Je/SzxnjVFRXZjJ1cv223?=
- =?us-ascii?Q?lb6m1fGCGVN0ryGCieWHTSAaGJotHoaLCOfO8Qxi7fpXvBD0Q8Fk2jUzmaqW?=
- =?us-ascii?Q?Wx9veG2JiQKcukhn10UKwoHInr2NhHULJkVJkvrWI3LkWNCApj2/D1/2F01L?=
- =?us-ascii?Q?Q40Qcf0gj6W+3PkmyG6+6QeHD4ROIffTCYJX4R1QQ8JDFzqfPyuZK2oWxcet?=
- =?us-ascii?Q?HIkqScKFbnRNhW1+sBjaTL32msbUlz7XT6RXNP0av7Xjao64imu19jOJoLfK?=
- =?us-ascii?Q?ltMumOQu92mn5/QOn8hU9s/dtajHauGLxfBVUVSuKl3Xg9yVuOZ77e4bJAGN?=
- =?us-ascii?Q?/jLDlhWfPd/NU5Ss3O1tVOZKxdTqjiD4rxXeR3H25YXQmFGpacxGrdvv8cVL?=
- =?us-ascii?Q?LVyuWVizkw5/Qp33w2FfvgUVz9XhPrw9TcsSJRzz80DnV4cZOstHj5Ocs02P?=
- =?us-ascii?Q?aikUnB+sNBWMP++SuEf00AXgPr38uDZRxQ1q/QWM+82U5Qa4Js+9ZlmCkpF1?=
- =?us-ascii?Q?hNWwE7kDEy50s3GVoKoBUyKRcmbaHuysTkATdxr2+auCDR/ZhFP+My7AEnD9?=
- =?us-ascii?Q?u5NlwndzSYWboMUdGCsIeY+kj74G6hiZuthbfCwuCovEB1kFzRV57pt174qI?=
- =?us-ascii?Q?n9vgbdjZ3rsNSYED2TFWhaJb/CWKPFU/z70ic9hprjpknihXiZHjSX4JdFO3?=
- =?us-ascii?Q?tsfncGNfmYHnREJnunn0cGTZ2N1RAp55e55+OcvRBthvvCl/1dmskEKpIoTQ?=
- =?us-ascii?Q?g8Wsc2Z6IXRKlmuFEVjFf1PWbTwk0a3vRexuLbYiaIs7pW4uVx+qI4Zep6Cj?=
- =?us-ascii?Q?daF90p55pIUjmY3X7KXvCkxD5gPIR4yxUtLmXbR3pC/FgYBGI6dmH2M8zgcM?=
- =?us-ascii?Q?P5xuO9JDZgXd3dLhiYkFHhHDaCLihKU/qUxeTkzisvwTSPTQaIhHJcBUkP3U?=
- =?us-ascii?Q?6hwE1HU5btuYsZ+2mPrU6FQzGu+SCvkvi+YRaWQiSvjAqusdd7wmefDdJGCV?=
- =?us-ascii?Q?pX4NrUtpombBX5YN8CB0lNwmFST1HgfWCHv+Yp31EBAXv9CZXm6eZwcdoney?=
- =?us-ascii?Q?ff2yuC8N0DuCLgY7maXfOSyf/4EBcUzJqsWjodLaZmT6OzdVr/R1UepIwAdK?=
- =?us-ascii?Q?gk8MLdEhnykQkuyWR5eGMrqZU1gf01wi46WG7JDYksX7Mwlqakm/CAEAx+W1?=
- =?us-ascii?Q?RoFP8CqVgqWUHy+GkMIoPLxnYvJ7jtvfSRA/v+ZVIarDtWrUiifRuods3dD4?=
- =?us-ascii?Q?E5p4eQrH/jzWl7gcoXSJkeMxT9raEvxJrsoOozgSFyveU9b8PR4OROz1eJI2?=
- =?us-ascii?Q?lmIAPrtoWbBHAtA/bBuFVS3ciRWx7G47+iT4n9XxQgwk5ABdwTmKntWSQ4cJ?=
- =?us-ascii?Q?6Dde5modogh6WxtPa1ZOiqCA5eOJO3RI075zqq7OuYH1HsDETASdJXD8ibPM?=
- =?us-ascii?Q?ELn376Q35sf4aL4z59bx8vOY8H1ANWeIsPUJ14fDBdoSqwoxd9Ol+iaEXuUD?=
- =?us-ascii?Q?RWHPOOWUapMPCb5MQ3AS0XSGyaUgscs=3D?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3821bb78-7613-4c75-2784-08dea42d73ba
-X-MS-Exchange-CrossTenant-AuthSource: GV1PR04MB9135.eurprd04.prod.outlook.com
+X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|1800799024|366016|7416014|376014|10070799003|22082099003|56012099003|18002099003;
+X-Microsoft-Antispam-Message-Info: 6xY0Nr6S4qKu7jd+eHgx4rLlps2tc/iWiqVGcbHplpY9OF/Syt5PMpxldumR8pWkUgIlu2LY42tftrQHrYNdcuLkT22HhsVYO28fVo0nhi7heDN4LBqsMRrexw2YGUda2TqhQ9dQHBO9jvBmJW+h6zTodbRuo6UL1R0TLpq+D8JaqrkHiS3MSxLuGIGffkSvWfXKiRaDu4hDkWFlJqUA6PB+UIz5hlIk9Sxo89inihM0nWLWxD2EMmyKrxrEhw2bZ6THcjjKkKkQApXLCZfXBqMTXNxh7PK/rPuY/JtBL+HCpJYF2B/DJ+UEIQN4Z+QdpjfWv7WotyoSlUT4gQyfnb07XXeJ8K/BmnTR1r2gJB12YLX3R2dYnNounD5hY4X2MdwF5PdavVghzwzFtl+h8IkMHFUZ59gjFe6XW4PeaXwivvj3TCd+/QyjrFiHV5RFialOWVEd35VmmS02DWjFfM1ww4IV0F86gmWv43lnMTqEq5XXdi23+Q8eO9HHz7N3P1JX0EGzIwDz0jukpVOKHvyF9MB8LAq9494xMC7cUYAfNRas/NPH+wzFki7nPgdcZzZLsqak3d5EVZVVVnMWtm3BbLgQmcfHbuUzPW4oLbnp+Tr0MaZ+4fTjLhGn8Ed/zqbQvec74Lw3hXQ+S7NLfUEEbkyB5fcCXzs9xI7GCnsvIxP+Yr7vm5qq0e6pKzoJ
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(1800799024)(366016)(7416014)(376014)(10070799003)(22082099003)(56012099003)(18002099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?PyL9NOA2fBkuYBkBFWRmfBNNoJJ6oZOHiG6678lJXvmieFUx4dppjBn7tV6v?=
+ =?us-ascii?Q?1sx9YSUJCypa8XZNiwAA3piz1/wG/g5/xU52Nl4zZ+76gNxLSvadY/ciBQT3?=
+ =?us-ascii?Q?jqudsYlFaCWbrFO5UFEt1hN1zivnNfmtpD6z/FmmOcskhsMwOH3EE+w0ucNT?=
+ =?us-ascii?Q?G+aQmSLibMXtsvvmJwyHYaxSwhysEk+9XhK5hxmAIzEdZwMtl3I/20G7C7wl?=
+ =?us-ascii?Q?3sgknUfNVkOrWsZvhvUMUucgWWyVhvIHLsn1qkQx03KlF3LktKxATf5X8tiU?=
+ =?us-ascii?Q?C4cnSmBAF+xzqzViwy7qyW+FOx1q7yt+AC7pv0mRUnsUvD4UR3BYtIqSLqek?=
+ =?us-ascii?Q?8l4TgFKJicbs6vNJQ/X5GZativC9OLMZm8MRglciu0EQcPlkd95hSu/OpH3b?=
+ =?us-ascii?Q?wt0FYjbb+TEzIoejX0jxy9JKXDqRbqF3oNH+iu+igJl0m44HZTXNYW3bPd0C?=
+ =?us-ascii?Q?xFO3+Fm/xWdDu0aXdQNJ7IlNUgnflzJBZZAgCBUzyy0uQdlyS5Qde0gXjm6G?=
+ =?us-ascii?Q?LJ0pazb8Ct1ZEtxi1xrFHzTHhU4HrOFSjX4qDYQNP7ymMEAvmlwZeAldSBo3?=
+ =?us-ascii?Q?0ccmICVcD4AY3Hl4N64Z4JJrsFRlv1VPMKZfI3JmPJ6mwr9bggDrL8M3Met1?=
+ =?us-ascii?Q?EdUlp7gbl7ksPEYBljmxea0d74hOsFtY6dD1HXSR/Da/n+ehNS1NvjNHQFNQ?=
+ =?us-ascii?Q?awuIG11KazVXaOupWT47T0DvukY17s+ju6QmFvFSUXvL7dj7gscb96kz0U3U?=
+ =?us-ascii?Q?S7cTxks87nxFVvbrAPWXyGD3tEhDqV/PxDbTIILHDJnxwuk8uAdaw2m2FbYD?=
+ =?us-ascii?Q?q1XIoUylGy/b7Y0jqBB4T6WuIUDv51yvLVk/Mtk5qE72OLcQ6azfBI1ER51D?=
+ =?us-ascii?Q?os348whgQSS0wJ4PGURnd5vLaVI5IA06PQ54zG0yKheYiATA714i5Nv1bguI?=
+ =?us-ascii?Q?GtwLK3pX67P5JYs/8xmn0nx/yPYk+29UdiEP21Ax1MkCNM7CEbBwJtpYmdFJ?=
+ =?us-ascii?Q?XlEJbIKE+JXWIWSYMBNMcGeLqOzTUK0Db2POZPm8CRVd0CxFgyw0cKB4/2VS?=
+ =?us-ascii?Q?X7j+1pcThGtdXmgpf3+Ny9MJcelGO5nFDG5XRNCVvYqlzU71ZgFEceIaR/nH?=
+ =?us-ascii?Q?2dnrjKBxv8wYfZ4PcsDW3r1U/Hba5kelx31LA+X8BfWW7ttl7Y4OFHc/fQ5Z?=
+ =?us-ascii?Q?nrRgmShubwbZE7R7bMuDNH5b1WKyriQi2ixvlnbXl91jhyVv+kTqVcbH+Y0C?=
+ =?us-ascii?Q?HXN6qqAR5079yyR6Yr+jcfG2um3gs6zHuyC1RHKRZHrgRoHXZYBvNFTuvB6O?=
+ =?us-ascii?Q?t21qzM10EcjuHLnsMkqi2yPXzmNR8E69p49UwO6TYIC6Sai62J5QkkslAEvn?=
+ =?us-ascii?Q?yULaRGIU1plNc1VPYnmIzJD5hLs8IZEP8F9o+Kwf+BUvH3Lc0Yw3xMKjkHiz?=
+ =?us-ascii?Q?5oAl5rnz0IgIoLvT61ZPix2Fzx/dIT637mB/LHYnG5bOrJd/2vtFE0tT38yv?=
+ =?us-ascii?Q?PMtA2nobz27pg8IZu/+epdUNs7JAT0ATix0EHU102rw48x+z3FjiXY4H4F37?=
+ =?us-ascii?Q?yZAZCIFEQq+YPFiXMMGHZN0Gkr/lBRD50rrpu4fKF5ETovlyElrHYAKB+X0Z?=
+ =?us-ascii?Q?1VAjoWbjbBUT+a/xc/2mthYRWTMIMWJ+ELyQjk12PWpiOHxli2Jq28+/aOY2?=
+ =?us-ascii?Q?svTzPYvkLy97MFz2mTu729oUjziVN3nqmX8g6WrAxL2E5BVxX1xjaiWgU7UM?=
+ =?us-ascii?Q?lR/rHmz9zntS5FrAQaeELrgMQMR9RIjaBzvGoWkiQsQGJYUlvxQx32+CIUnj?=
+X-MS-Exchange-AntiSpam-MessageData-1: hxYglHDTIzGfqSbgtIeQxF1qnkmjxvCb/wg=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: d4591da2-10e3-4859-6d51-08deaa88f835
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Apr 2026 07:20:25.8524
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 May 2026 09:30:39.5222
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: w8NBPTOAP+2fWpIT/IlNAsTt+NqRAYj4JNbe01eF1VaHlIR1ntfYyC/e+faaIGHZOrz/43r6IBn+j0mS7fhfPA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB12299
+X-MS-Exchange-CrossTenant-UserPrincipalName: UpodD0h0Y+qFHJFnV+zFvLz3JOETD18Xns2JkYQZ7/rjZzqjbRG1wBsGSizQedJx0xrLgIQy0xm9cxcB+fItbw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GV4PR04MB11305
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260427_002036_305562_3C3493A5 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
-X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
+X-CRM114-CacheID: sfid-20260505_023050_826783_963630B3 
+X-CRM114-Status: GOOD (  24.95  )
+X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -177,19 +224,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Luca,
-
-On Thu, Apr 23, 2026 at 11:17:00AM +0200, Luca Ceresoli wrote:
-> drm_connector_attach_encoder() is now called by
-> drm_bridge_connector_init().
+Sashiko says:
+> commit 65f3c7aba94024fd51e12abfeeb5cdaae7e123cd
+> Author: Vladimir Oltean <vladimir.oltean@nxp.com>
+> phy: move provider API out of public <linux/phy/phy.h>
 > 
-> Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+> The major goal is to hide the contents of struct phy from consumer
+> drivers by moving the provider API out of the public linux/phy/phy.h
+> header and into drivers/phy/phy-provider.h. For temporary compatibility,
+> the consumer header currently includes the provider header via a relative
+> path.
+> 
+> > diff --git a/drivers/phy/phy-core.c b/drivers/phy/phy-core.c
+> > index 21aaf2f76e53e..a1aff00fba7c5 100644
+> > --- a/drivers/phy/phy-core.c
+> > +++ b/drivers/phy/phy-core.c
+> [ ... ]
+> > @@ -606,6 +622,24 @@ int phy_validate(struct phy *phy, enum phy_mode mode, int submode,
+> >  }
+> >  EXPORT_SYMBOL_GPL(phy_validate);
+> >
+> > +enum phy_mode phy_get_mode(struct phy *phy)
+> > +{
+> > +	return phy->attrs.mode;
+> 
+> The PHY framework supports optional PHYs (represented as NULL pointers via
+> devm_phy_optional_get()). Does this unconditional dereference cause a NULL
+> pointer dereference if called with an optional PHY?
+> 
+> I noticed this was also the case in the previous inline implementation, and
+> that a fix is provided later in the series in the commit "phy: make
+> phy_get_mode(), phy_(get|set)_bus_width() NULL tolerant".
+> 
+> > +}
+> > +EXPORT_SYMBOL_GPL(phy_get_mode);
+> > +
+> > +int phy_get_bus_width(struct phy *phy)
+> > +{
+> > +	return phy->attrs.bus_width;
+> 
+> Can this also cause a NULL pointer dereference when called with an optional
+> PHY?
+> 
+> > +}
+> > +EXPORT_SYMBOL_GPL(phy_get_bus_width);
+> > +
+> > +void phy_set_bus_width(struct phy *phy, int bus_width)
+> > +{
+> > +	phy->attrs.bus_width = bus_width;
+> 
+> Can this also cause a NULL pointer dereference when called with an optional
+> PHY?
 
-Reviewed-by: Laurentiu Palcu <laurentiu.palcu@oss.nxp.com>
+It was a conscious decision to move code first and then to start fixing
+it up later, so that more context is present in 'git blame'. So I will
+ignore these comments for issues that are resolved later in the series.
 
--- 
-Thanks,
-Laurentiu
+> > +}
+> > +EXPORT_SYMBOL_GPL(phy_set_bus_width);
+> [ ... ]
+> > diff --git a/include/linux/phy/phy.h b/include/linux/phy/phy.h
+> > index ea47975e288ae..f208edd25afee 100644
+> > --- a/include/linux/phy/phy.h
+> > +++ b/include/linux/phy/phy.h
+> > @@ -1,246 +1,38 @@
+> >  /* SPDX-License-Identifier: GPL-2.0-or-later */
+> >  /*
+> > - * phy.h -- generic phy header file
+> > + * phy.h -- Generic PHY consumer API
+> [ ... ]
+> > -#include <linux/phy/phy-mipi-dphy.h>
+> > +#include <linux/phy/phy-props.h>
+> >
+> > +#include "../../../drivers/phy/phy-provider.h"
+> 
+> Does this relative include of a private driver header break out-of-tree
+> module builds?
+> 
+> Out-of-tree modules compile against kernel headers packages that typically do
+> not contain the private drivers/ directory tree, which would cause
+> compilation to fail with a missing file error.
+> 
+> I note this is resolved later in the series in the commit "phy: remove
+> temporary provider compatibility from consumer header".
+
+Yes, out of tree building will temporarily be broken but resolved by the
+end of the series for PHY consumers (but remains broken for PHY providers).
+My understanding is that support for out of tree modules is best effort,
+and I don't see how breakage could be avoided, given Vinod's request to
+have phy-provider.h be a non-public header.
 
 _______________________________________________
 Linux-rockchip mailing list
