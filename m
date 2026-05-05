@@ -4,72 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75FA4CD3441
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 18:19:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA5C1FF8855
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 18:22:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vO6mMSLSgYBg1SvuQ7dWUqsJvDX2AG/XP0udN3MrPKQ=; b=RTbwQ5TySt6kG4
-	0bZdhMpZ9l2YKgALn/3KoZulLag6mTMmyvwDI6FQOZkrcZualIrEOJNvKRc4t+lfe2U1ih5BFVJrK
-	eEnvuI2YzPyGtNB9XRAAH6Aa9ndvWyTtqdMhin1GOtuzjO9CNcSP4bNP5XoxVAPzUXxhGt8QCzsjh
-	SuskomhjcAVWwThHpfD/rs7N8N7ODQhSfZu8POprKHvx/8RBPp7OiUuC2EFTswsJUgtrLGeqom3Gy
-	xEKznbKlJSq9Ytu0dCQHUBEehFlnnJtSZRd4LPh+1Qx6Bor5DhPHFBxjHa+r8D4PUzJy582qk8uWc
-	1gjA8MQDS/PJqWkj8tqw==;
+	List-Owner; bh=dvzbzOuUFq5BN2sRrx0e2UsnZcw6g5wRfr7/Lc1g7ZQ=; b=T+g5SdF9etkTpn
+	skuJCQMkv2e9udvADkRyoL2LlffJrSkZA0BBsz0NWXyIvv7hTpHEBRovjFaPp4J3JQjQONnUIVWtm
+	Z6qel5cJF/8t0Jr9/dypmal7U+xYhy/bVxAETwhSaaS7ZMsMUn2Wc91cwgWY4XvXL9feIbOcYmt42
+	z4V8k6lYtd34recrnZ4AmCbOL3SV8sIMX93aPQTfFiUIugX5yGX0tHZNWU63zFl537evnhz0HxOjT
+	/FCwYyyFn5NzCZDpxxmaZIejF/pbCVRDdltGz0yNkw8iiXBtyYfEMBTX7Joe8aoacQS6pN0SI8SQB
+	aprzuow4W49pVgfSIz0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKKMk-0000000H9Ba-0vF9;
-	Tue, 05 May 2026 18:19:30 +0000
+	id 1wKKPA-0000000H9ed-3Odx;
+	Tue, 05 May 2026 18:22:00 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKKMh-0000000H99L-1FLQ;
-	Tue, 05 May 2026 18:19:28 +0000
+	id 1wKKP8-0000000H9dm-1xaa;
+	Tue, 05 May 2026 18:21:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=CZieGdswKQbAOybvHi0PMqwJLD1M3MBzPazARBFonZA=; b=eveGNBORgDJ20PJlLoNRQhaMgV
-	cts1zTnfdjoMi0WghO+3TnFOgTrS0fd173ms8UnoRGUIhXCNlsz/uIDZ89vOiYo7dEQM633M23WHo
-	DxyysTzdgLniY+9H/XYKgpFj/oRx2KB1p+4fIUhoR3ncoFa5zhNscugF7TsQNlEuX9a83b22cQcdm
-	fxuzxHLN9ks+Os1DVlGI/r0WnBZczEBlt+yJoCCh+WXpyI8UKIDh2MqcrOkvjRy7WX2tIxNnajgRg
-	eoCBwkS7QYJ7ZZ719f8TKMjYuclU9iXoPPKUY258ND2tPTJbIKVGWeMg+Yo0ZY9lVAFtMe0FwAZ+4
-	OWL0bNTg==;
+	bh=+NayYgMtDF6eMt5wHcIeABn7hW6nMct4NLsdgagcCG4=; b=BPhLWpWMSlCd4dQZCMXdrt+E7g
+	U1rDZPA7oP8C9wFmkslYXlBEXjttrLKH2kfJai9yOkEmtTdYNfYKr1rTnDBjABxU1J/bTgrwlzNcL
+	f0ZPFAEU/wVkrAGPAK26DUonBOQ/Z6y5ItfE/LIYl3b3IIVz373YiN8xj8dociyLc7KuxMBKSwAK4
+	feBoo+ybUh4W6huGMs3Mc5308LZOwntKCM6g+OLEDsM3PMm06N/D7C9mNYQYv269On8iKsQo+we6i
+	AXrTS3V6IrgMfMVb0r00TDx2cD60z5diWQYRPvuxHqnrlJKkQvRT2Rumx/oBDpzOKrR7vygkqeqlH
+	qWzHyiLQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Konrad Dybcio <konradybcio@kernel.org>,
-	Brian Norris <briannorris@chromium.org>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	devicetree@vger.kernel.org,
-	Doug Anderson <dianders@chromium.org>,
-	linux-arm-kernel@lists.infradead.org,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	chrome-platform@lists.linux.dev,
-	linux-rockchip@lists.infradead.org,
-	Julius Werner <jwerner@chromium.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	cros-qcom-dts-watchers@chromium.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-tegra@vger.kernel.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: (subset) [PATCH 0/7] dts: Add /firmware/#{address,size}-cells to Chromium-based DTs
-Date: Tue,  5 May 2026 20:19:08 +0200
-Message-ID: <177800448363.3286457.17373798042642521210.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260428200712.2660635-1-briannorris@chromium.org>
-References: <20260428200712.2660635-1-briannorris@chromium.org>
+To: Gray Huang <gray.huang@wesion.com>, Jimmy Hon <honyuenkwun@gmail.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ nick@khadas.com
+Subject: Re: [PATCH v2 5/7] arm64: dts: rockchip: Add HDMI and VOP support for Khadas
+ Edge 2L
+Date: Tue, 05 May 2026 20:21:52 +0200
+Message-ID: <4540610.k3LOHGUjKi@phil>
+In-Reply-To: <CALWfF7K+g0sYLDQ9ROo1nGR9EADK44kVKQ_x=zonWD9eJLMDng@mail.gmail.com>
+References: <20260429063712.2150938-1-gray.huang@wesion.com>
+ <20260429063712.2150938-6-gray.huang@wesion.com>
+ <CALWfF7K+g0sYLDQ9ROo1nGR9EADK44kVKQ_x=zonWD9eJLMDng@mail.gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_111927_335620_2F608EF5 
-X-CRM114-Status: GOOD (  10.32  )
+X-CRM114-CacheID: sfid-20260505_112158_502645_3317F4D8 
+X-CRM114-Status: GOOD (  12.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,56 +64,24 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Tue, 28 Apr 2026 13:06:52 -0700, Brian Norris wrote:
-> Chromium/Depthcharge bootloaders may dynamically add a few device nodes
-> to a system's DTB under a /firmware node. A typical DT looks something
-> like the following:
-> 
->   ## From a RK3399 Gru/Kevin Chromebook:
->   # find /sys/firmware/devicetree/base/firmware
->   /sys/firmware/devicetree/base/firmware
->   /sys/firmware/devicetree/base/firmware/coreboot
->   /sys/firmware/devicetree/base/firmware/coreboot/ram-code
->   /sys/firmware/devicetree/base/firmware/coreboot/compatible
->   /sys/firmware/devicetree/base/firmware/coreboot/board-id
->   /sys/firmware/devicetree/base/firmware/coreboot/reg
->   /sys/firmware/devicetree/base/firmware/coreboot/name
->   /sys/firmware/devicetree/base/firmware/chromeos
->   /sys/firmware/devicetree/base/firmware/chromeos/readonly-firmware-version
->   /sys/firmware/devicetree/base/firmware/chromeos/active-ec-firmware
->   /sys/firmware/devicetree/base/firmware/chromeos/firmware-version
->   /sys/firmware/devicetree/base/firmware/chromeos/nonvolatile-context-storage
->   /sys/firmware/devicetree/base/firmware/chromeos/vboot-shared-data
->   /sys/firmware/devicetree/base/firmware/chromeos/nonvolatile-context-size
->   /sys/firmware/devicetree/base/firmware/chromeos/nonvolatile-context-offset
->   /sys/firmware/devicetree/base/firmware/chromeos/hardware-id
->   /sys/firmware/devicetree/base/firmware/chromeos/compatible
->   /sys/firmware/devicetree/base/firmware/chromeos/firmware-type
->   /sys/firmware/devicetree/base/firmware/chromeos/fmap-offset
->   /sys/firmware/devicetree/base/firmware/chromeos/name
->   /sys/firmware/devicetree/base/firmware/ranges
->   /sys/firmware/devicetree/base/firmware/name
-> 
-> [...]
-
-Applied, thanks!
-
-[1/7] arm64: dts: rockchip: Add #{address,size}-cells to Chromium-based /firmware
-      commit: 0b74f1a037672980c477bbe6b3848fb5341eb4f1
-[2/7] ARM: dts: rockchip: Add #{address,size}-cells to Chromium-based /firmware
-      commit: 98461edf564a35ee00a97a64f5463eaece586546
-
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gU2Ftc3RhZywgMi4gTWFpIDIwMjYsIDE5OjE5OjU4IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21t
+ZXJ6ZWl0IHNjaHJpZWIgSmltbXkgSG9uOgo+IE9uIFdlZCwgQXByIDI5LCAyMDI2IGF0IDE6Mzji
+gK9BTSBHcmF5IEh1YW5nIDxncmF5Lmh1YW5nQHdlc2lvbi5jb20+IHdyb3RlOgo+ID4KPiA+IEVu
+YWJsZSB0aGUgVmlkZW8gT3V0cHV0IFByb2Nlc3NvciAoVk9QKSBhbmQgdGhlIEhETUkgVFggY29u
+dHJvbGxlcgo+ID4gdG8gc3VwcG9ydCBIRE1JIGRpc3BsYXkgb3V0cHV0IG9uIHRoZSBLaGFkYXMg
+RWRnZSAyTC4gQWxzbywgZW5hYmxlCj4gPiB0aGUgYXNzb2NpYXRlZCBIRE1JIFBIWS4KPiA+Cj4g
+PiBTaWduZWQtb2ZmLWJ5OiBHcmF5IEh1YW5nIDxncmF5Lmh1YW5nQHdlc2lvbi5jb20+Cj4gCj4g
+PCBzbmlwID4KPiAKPiA+ICsKPiA+ICsmaGRtaV9zb3VuZCB7Cj4gPiArICAgICAgIHN0YXR1cyA9
+ICJva2F5IjsKPiA+ICt9Owo+IFRvIGhhdmUgaGRtaSBzb3VuZCB3b3JraW5nLCB5b3UnbGwgYWxz
+byBuZWVkIHRvIGVuYWJsZSBzYWk2LiBTaW1pbGFyCj4gdG8gdGhlIHVwZGF0ZSBmb3Igcm9jay00
+ZAo+IGU2MDY2ZWRjOTQxMzE5MTQ3OWIwNTU5NmJhMDZjNDA5MDhmNDRlMjIKCkkndmUgYWxyZWFk
+eSBhcHBsaWVkIHRoZSBoZG1pK3ZvcCBwYXRjaCBmcm9tIHYxLCBzbyBpZiB5b3Ugd2FudCB0bwpk
+byB0aGlzLCBwbGVhc2UgZG8gYSBzZXBhcmF0ZSBwYXRjaC4KClRoYW5rcwpIZWlrbwoKCgpfX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
+cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
+bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
