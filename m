@@ -4,148 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74F47FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 00:45:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF54DFF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 08:18:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mX+/9GNBXN8RXMYbiM8OtTQ6Z4dLcZ9usheMwMSkd3I=; b=VlxV2pq1OM1Vya
-	tuc0AF4V/c4LlyCRphdbAGKw28x2Cr9h0i4w1h/UUc1J4A+Fs99HOJ1FbpLepsWWlVevmq6TtwPA+
-	e7Z/LYyMNJqJ3AiQMYtIQ1P+USIjfORWrrx6/6eXTQ3pCXPW2x9k4v8if9mbV8Z/3/fJH6rILlFP4
-	bAU+A72QTnLZ/txc5xKHBKDwa9VRdxGtwR9WtwANliMWt1aS9S/g5w29W6hdAo8rJRswjKoxPWOqR
-	zEmZPtKzwLaDZj/Wj1C2LxrJy1Y7EcOmRRpsmXcFe3+tLscY8ydWepz7g8ouNL5XFukgOIfD0/4gj
-	CiSbNSMyWwfIkCltvPqA==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=7hVafIyMFb6xMPEMcEdRby/J0S2fwdJmxQ8wW3ajC1A=; b=hfPGQPpL6YSpHJ
+	2JxDt7MhYcdcmwe5SR99CqEoB6yErMUFchxA5ETex9Q5x0JviAKW6Dj8gjQLeEsE6JQS8G3zn14bA
+	3zg2NKBIvTWKOsrIRN+hBH6JQdo6vGEl0Vbh1mrsi5PXSbvV236MQ88u+e5ymnA8xijeRJlTQnuK4
+	FNNrw0sX1q8tay+begJYF8ghQ+OgjTzHE0Xuh8ijEU6CQMuBLu5fkGaGb2dAmZX7lyoOUACP+jVMI
+	0ddNI+XxW5tuRYd5z2LxyMs4GMgQ5mTlPBrWoKeoq3vuHdEy1KMx9VfW3zIijCZiUzezpTQ2M0Hba
+	l8R2ySyYWh3OypL2vNDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wK3uS-0000000EkJh-0cRV;
-	Tue, 05 May 2026 00:45:12 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1wKAzI-0000000FVby-0MgG;
+	Tue, 05 May 2026 08:18:40 +0000
+Received: from mail-australiaeastazon11021138.outbound.protection.outlook.com ([40.107.39.138] helo=SY2PR01CU004.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wK3uQ-0000000EkIt-1wku
+	id 1wKAzG-0000000FVbF-1GLv
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 May 2026 00:45:11 +0000
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 644NULiw1346173
-	for <linux-rockchip@lists.infradead.org>; Tue, 5 May 2026 00:45:09 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=eignGx7fjusmcXSJihfEr7oP
-	7drwG9sN6dcSfX4AaRM=; b=oxhvehG6tytp3ZNyHh/gRhnPbZw+SQZnQLCMlx/K
-	oCNkZ1kd5jHpoqEi2sYGsZBovFKweRs6TabXCamJ3SvMzj+SOI0TrxeYtH+ITokf
-	AI3qOhOi2z6kbsg0R+Lj40uIzjCLhVPUKh39UjdAqcId6rRWgotq381p0YiTdlWa
-	aYfgABgUxNQM+R3LXCFSXmAiM57LF/iFurQ2ruCW0K+mU9HLjwNPGku2Qij5NELs
-	/pPCzz8RKiQ7a1EtB4UWeyVAt50IdY8k5HxaV5uZzPFQ5IpbOkPdYayqoJP3Q11T
-	a8X1tlyVnbY8RJJkLKPH47UGlHwObP5wGIuPEPf4VRBT2g==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4dxx2x9sfp-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-rockchip@lists.infradead.org>; Tue, 05 May 2026 00:45:08 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-51306c1076dso10104391cf.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 04 May 2026 17:45:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1777941908; x=1778546708; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
-        bh=eignGx7fjusmcXSJihfEr7oP7drwG9sN6dcSfX4AaRM=;
-        b=gkV+7s/zQ1wCByBLfkuoryoLS0h9fEHhgrppkucncgr1z48MO/R/RN70K2NtMc8fNm
-         5U20HSm83q9nBjJCUQuQGflotcsZiNd2AUIhziYvF95F70dmxUJpVxh3rq1Y5tbW60EZ
-         E1WqlvN9evHaAPXoQyngLfdyk8A/Lu/XJZx3G6HC2QvoOSJ9NasATbX4BdydAe7euj3A
-         ziDAvHlynI6GY6cYajMEbMCt7vcb9pAbYkdRDo/0fbEzFDpNgm29NIX62N1pNvHiCQ8g
-         XDcPm31YBijJ9RJnwhM/2cOWT7Ziy1yh538Ne9dGlfScTnwNsNNgoMVOZZMtP+IwkD86
-         Garg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1777941908; x=1778546708;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=eignGx7fjusmcXSJihfEr7oP7drwG9sN6dcSfX4AaRM=;
-        b=CCJEB1BZ5FW3PT7TSUZ9/CfCMtI3dRgnmUBDhro+sR89c1dfzTf5e1J/hSSXIfGpAA
-         Lu2d7arh80rkpGRBPRZN5yDobF/R+ejb9wNjAAo1IBd40vNvzFif8JSpjr1/c1muGHkj
-         V0NzFApHLOyF6Mk3wkyQQ5PkDCY8EDeiCiCJJWE/iFEEnbiWXyohCYOrmRXczyFDEhB6
-         sN05yzpYaxhbKXP8ZZPEOKHANr71+5+4zJBwdPOfKDAsLRjFQsvEUwZTAK3wDrJWSSQj
-         8xLy8L3kqhUeRYGndVGFZMEhoRrDQczwiGa3Lv1o6ogHfBk+OWqC2PQcZ5qb8hN6sMAv
-         N/+w==
-X-Forwarded-Encrypted: i=1; AFNElJ8DeaUMjMWoA7FL7RbfO3EXZNc15ra7CXF5UaoJg5kUqn2/2qv7qA4Lhrpx68tn1MhjRghWLS1K1qmvk+6Sjg==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy+1oHs3N6TgL/48wz7ucePllWEs9pL2EOIOTzawjUCZqQYpOSc
-	qnEGzBstkP8YoKEeOQCP/kbwVwqfHfJ+3mqGz7DhGMCkwfAeoO3x2agtDypCFx9xcvvpss4UzLC
-	Uz0i7zXTZF/9lMTDdJ8T/P3WelSL+iS8sgQX0fA8wNsr2l6srnh4DipihZAPYIi52tVxYq8Tn2u
-	8=
-X-Gm-Gg: AeBDieuQYzt/Vu24ludBxPKXiTXMl8Mo+ItSvDoDNQVlcFLMzWiZweMaioN4VRkHkMj
-	IfWNheQfWjwES4gmRjQNY/yqPSeNVQdgqtDj14oaQbftfWo+PQM6hnVWFWSH3TQWFQu3FgTYEB9
-	HF58f67yCD7o2AkPXDhg/vUp9/KH0zuYQ+LZmcMJ7HcuBa7wOOMg7tfdbCZvP4b/dX4cTeY5U5p
-	Hy6NZwmxxvtn4Zka+CsAuxr4Xy/8UbCvRz2aSyR5g2aBKBlDUcxxyof4IRKSaD93+vP2ix4+u3K
-	x9bFMUf93Hb6D4ULk12PqYzBSIdpBDtiCg3iMsgcQsJQsdF0BE+UL76RdnTxbLyuuUDy96KT3OY
-	oMY+i2fPJl36lB3QSIvYXVyjLbrQ+MVKbIqDG3+CLHl/xB6fSl9T8DgP12aqYB+4z7uEB2n9agU
-	nPIBaZ0g2+MyIKuSig0+dKXVd7k/qB93KsnbwCkRO7dGAObA==
-X-Received: by 2002:a05:622a:244e:b0:50d:6baa:9e8c with SMTP id d75a77b69052e-5130695b1cemr15250011cf.12.1777941907643;
-        Mon, 04 May 2026 17:45:07 -0700 (PDT)
-X-Received: by 2002:a05:622a:244e:b0:50d:6baa:9e8c with SMTP id d75a77b69052e-5130695b1cemr15249611cf.12.1777941907177;
-        Mon, 04 May 2026 17:45:07 -0700 (PDT)
-Received: from umbar.lan (2001-14ba-a073-af00-264b-feff-fe8b-be8a.rev.dnainternet.fi. [2001:14ba:a073:af00:264b:feff:fe8b:be8a])
-        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5a85c230e16sm3444610e87.30.2026.05.04.17.45.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 04 May 2026 17:45:04 -0700 (PDT)
-Date: Tue, 5 May 2026 03:45:01 +0300
-From: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
-        Neil Armstrong <neil.armstrong@linaro.org>,
-        Robert Foss <rfoss@kernel.org>,
-        Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-        Jonas Karlman <jonas@kwiboo.se>,
-        Jernej Skrabec <jernej.skrabec@gmail.com>,
-        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-        Maxime Ripard <mripard@kernel.org>,
-        Thomas Zimmermann <tzimmermann@suse.de>,
-        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-        Sandy Huang <hjc@rock-chips.com>,
-        Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>,
-        Andy Yan <andy.yan@rock-chips.com>, kernel@collabora.com,
-        dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org,
-        Diederik de Haas <diederik@cknow-tech.com>,
-        Maud Spierings <maud_spierings@hotmail.com>
-Subject: Re: [PATCH v5 05/10] drm/bridge: dw-hdmi-qp: Add HDMI 2.0 SCDC
- scrambling and high TMDS clock ratio support
-Message-ID: <b25unnbxzzpmi3sr4dwpmq2tofriczjshmq2o67xwqsfuh3elr@gdtornkrplol>
-References: <20260426-dw-hdmi-qp-scramb-v5-0-d778e70c317b@collabora.com>
- <20260426-dw-hdmi-qp-scramb-v5-5-d778e70c317b@collabora.com>
- <m5fxlfktxtvki5yaxhkx4h3hsjj5266stwvfdykhqkgcjbz5bk@s5gggcd45abm>
- <539f1bb9-6509-40c7-8692-bb3cdee33f91@collabora.com>
+	Tue, 05 May 2026 08:18:39 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=lxIv2VO3ciOaKagG0KUTWfpFP8XuqS0jrZpOUkRPA3D+LKrnGgZKDs3hsJs/+GCsBt8SFoQoovY4FEx15u81hYj98sLHfPiDOorcohYciskimpL0sZC5+6911OFt9IMtyX0ItyGZAXhuG3tdmVyU5PrqyslsquCUt0kmhjN2nvmC8I+586rxJHUSnZD/K3cbD2iKRxhNsn6aMaefbeoYn1opFkPTZwPWe2A7q1JEXOnLbbQRsd5OBqQXxNzHlvfsWn2RMt7bRbP6/beFr3OK2BYStJ+8SmFmM3N9+uToBnwUMg+g2AINdK5UQqTdil4NayqVjPSAM/udcIj8MgZA5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DS3V035sUgUaiiI0gKwY+3h91n89PIYJDCHe7lliinc=;
+ b=YyAjsgt1g/VppqC+OftFXjyn4t1UWv1OcWUOgIBbXrDmBKFkf+YZBIoET6wNx+qi7ASfqOLcG+aAWATWSV257D08TIHEDGRGsDq+km1ahzin6oNUYflnSyXkUHHdRxDeHXgyw4na58ZVxVdFEeqr4rih/UDwhMNEmFNFWTT7DsJYinKDD7kESarXd0fc/Y08RHGTcpts+YlaUw0JhVrtp09a8ObAM/u3dxkfgEsqThqkU3ndgQ1TW+R9tRhP01qxCyL5QR/p9q6C3aKHJRVRdfGc8A/iuZsk08/wrGlcSVBGCcoC5MJxXSUJ1jBQCfRE2K1ndZ0VLa75qiACuXl8tA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=symple.nz; dmarc=pass action=none header.from=symple.nz;
+ dkim=pass header.d=symple.nz; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=symple.nz;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DS3V035sUgUaiiI0gKwY+3h91n89PIYJDCHe7lliinc=;
+ b=Y9hN9eF9NinjinaV/Gl2H1AHje9M00gOhMAIyW3NeS/YNWKNXfFAfmiA6JG/HbZwvE81qc+TNnsQcxpgcS8/HYTvBMN+i1syE1JE1/Q/ta0c5Af8OxEZQ0QL/YN4U7wxsG2ZS3NpOgRe78o7hdR/rPClCviAEzGwS1ygMsFjhP7cUam8II42X+vcsmbdWW9zr0j1DOzWNXZgtvlRZNRM4QuG4aNLnQq30CldXYxEVVcAQYXe1bpXBo8kIHw8cWoUCpQod451WslIz6CTvsSRR3b0ZcVk3GWxfsKWhGJW33DIc3aFoEtNt6t2bCC9puPX0LELHVukgaTGrR7p3EhmQg==
+Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
+ by ME4P282MB0981.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:96::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.25; Tue, 5 May
+ 2026 08:18:17 +0000
+Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::4619:bdb0:3293:3834]) by ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::4619:bdb0:3293:3834%5]) with mapi id 15.20.9870.023; Tue, 5 May 2026
+ 08:18:17 +0000
+From: Simon Wright <Simon@symple.nz>
+To: "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
+Subject: drm/bridge: dw-hdmi-qp: seamless handoff sets wrong tmds_char_rate,
+ breaking audio on strict HDMI 2.1 sinks
+Thread-Topic: drm/bridge: dw-hdmi-qp: seamless handoff sets wrong
+ tmds_char_rate, breaking audio on strict HDMI 2.1 sinks
+Thread-Index: AQHc3GbSunaFBhX++0C913TIa5mDpg==
+Date: Tue, 5 May 2026 08:18:17 +0000
+Message-ID: <ME3P282MB21960D9D68BFF520316BDFCEA83E2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM>
+Accept-Language: en-NZ, en-US
+Content-Language: en-NZ
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=symple.nz;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: ME3P282MB2196:EE_|ME4P282MB0981:EE_
+x-ms-office365-filtering-correlation-id: ae178c21-20ec-4795-52bf-08deaa7edc48
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|376014|38070700021|7055299006|56012099003|18002099003;
+x-microsoft-antispam-message-info: dCuj2AUWTWaeTkOIrgi1HRhjYf8it6Mr7zwXq+SzqZr3niD0TvT+MNRcHcMvMRyUMqv3yAVoQ/pcIudXI4KApWDYxcfPgAQbKfLPQMlHYJF5Jf8YzvgOBu6IsLbss8NviaR4QDIxP9+Ay3zAxfXnkbEpEpyKqZGmvkdmuB5AX3gnqhWnjAqAN8SjCFZJA9fnWzzavyNVjGl/HkmqVpN1bxT7EqZx7ZYWw0cuVasquallz9ux9uX2ZzzbOuZd7FUDDw8in8OidKxCQUqPEtasAelnoC6pMFdLGhcIBJB3+VYNdShz4GAWst5Ja+RChpbjK6xx0dKjJXZeuI1PDmATOlJY25alXTcTo72ImNtU4uYb/B0nC+lREXZYaKuXPXn0xLu7mD9iXXe9dOk6sDjTl8MyBr8uDH4H04yg8zt7qe51NnGyBINpw8igR+AV/LhmK11VH7MR2MzrIlLfFsbQBeEZemF1V1k81HWrmIqWnNQseSwr2XXptVAPV7FT/qXmMi0+gPkExUyljNMlvPYGaojUpoBFM4OhfU9DepUreSVJ0nTORRwUQdW2m70zqVkhv3aa4n5CcZ/LQIpqXYnWgJRpt47Hio3PSD4HxBSZKnU+aTqCyFZ6Jq/lB+9No4cmFd2GPTAANRaJOi7nnqUQj3oe580/SRJR/uF4/EVUEZhxYGfYlTJ33x6gZYSPx1wpkCO18RW0RIMB/rSprCMdAjCJBfOEBdNKjH9LTzzovc2GZ5vZBdgfA6Tri0I/Eh1Y+HbHJ/Ar7Ja9NjRv6Ac6Dw==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(376014)(38070700021)(7055299006)(56012099003)(18002099003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?Windows-1252?Q?h2rWL9QYOLw1rYYzeg9tL1O2nkwGqgRS5ZC1ciItFlrPPR7PE8db+1g2?=
+ =?Windows-1252?Q?Avy0sBnCfhlpRhzK7TkiCR57B5+RMRLHNdoshtBPrbfHJyDkNnbwA3En?=
+ =?Windows-1252?Q?dKdxzbMhq8oSpf541vmfng6xLaerSxyO7ZfYJOoC1XxUvhG+KxH4s4zD?=
+ =?Windows-1252?Q?Lp074OukjYp/uOjrFFhNYhqnINUMuHC6jgJR3c6yCOy9DFHirCP7jPkd?=
+ =?Windows-1252?Q?ui6L2v5bXx1yqCKNyBq0z56mhe/tGzbO225tXzuGGrMT4UyxJAr2sy5z?=
+ =?Windows-1252?Q?8D9GRPaHRQogQbUe5A0unNtN2nhvqEvvODf60LbtrzPWdUv7qK57rCGm?=
+ =?Windows-1252?Q?v8g0pHVHQ9p4JlX+XsvzIMrH8ybnJkxjFdWS5iGw2PyEE2otrBEfa624?=
+ =?Windows-1252?Q?ogfoBSEZZumeEuHEqAax9TqTej6YnxpjUn8SiAIxrCvS8qbY9vovINXu?=
+ =?Windows-1252?Q?jGtynFRIyalw66Bv0IuHetQWepFbhjgS690PEU+YiHtnKF5mfZWQVJ2J?=
+ =?Windows-1252?Q?AC+ITOQgJ5nx+jtokyGbyxvyaiCqZzo+TSFDkR7z63jFrIhoabaeg1vN?=
+ =?Windows-1252?Q?q1IbFteTAgjJgZnyjIwKNZtHZIL0spmmQC+9JtQ4sF59hair4N39VEnf?=
+ =?Windows-1252?Q?g7BOfXQV/OvIBZScLJmmhtf9lUUTArbhp8N9Lya09/U29/g57ER+/jwe?=
+ =?Windows-1252?Q?3c3qQci1XAI3WOZEtiStVZr64gM/dhqNM+zJ+3x3w4zjtKnLUYluQ84H?=
+ =?Windows-1252?Q?N9elFfIMOwYfQU4A2885zftOoLptlSC0mHtHB0oFTJWZSpDmkHAVbs4l?=
+ =?Windows-1252?Q?7499mpcitfp4W1ugMvWo1gpHXBLxDb4lSvQq0qiL1w3gtWgcKS8FWtoj?=
+ =?Windows-1252?Q?YBtHfulKeY5NcQPgo2Ux/xK68QU83W9XVd4Hh4l595HC/nrBCbH3sfLE?=
+ =?Windows-1252?Q?3ohbq1iqGP6w8Fe64TfVS0s4ck+Ww6GJMjhJzPqsg9k58rZHCzh66zFi?=
+ =?Windows-1252?Q?RIE68CNcgqWTuPnZIcJIwe4Nz/9BMEaHeT9IzdDUFfsWOkUIURJt0M2d?=
+ =?Windows-1252?Q?sWpmwJX2MFkOSi4HKu6xUssflGFXWSiLeF/HFQa9vHVlDYeLypdhA0Jr?=
+ =?Windows-1252?Q?kFY97s66R8F+XSLP/S3Svlg4Ge4IlQXG4ajDBkaBJStLN0bDGT4T55wL?=
+ =?Windows-1252?Q?SHbCOema7B06zttNEw2Px0Lmxmy70rX5Jw9oRgeX7ZV2lzXpIjdP11+W?=
+ =?Windows-1252?Q?t5N895YyCsSGzGn89wZdEaMIWEq88WWHbo6vrRoh76embQLPeacGE3B6?=
+ =?Windows-1252?Q?DckKT4YqCmXbN52u5nZucrqD7YHW8m6zEtVBzvVyRu6vNdlc530lTtcz?=
+ =?Windows-1252?Q?O+GUojE+QO6WbOnPaPUtYHlNiCtV3UpK/xuy3EqpXQXpQZswUPaKJQVR?=
+ =?Windows-1252?Q?/IYGdD+sDo/Qjx9HQHeXPVejDxoNNpvkWf2vmDIiHe8guyW9ryY6gwRf?=
+ =?Windows-1252?Q?SAT9TpApgzsAFcabzlTDK4lRL4EdSV2CyIUWb1AYXGxyOBHPukcM/ZC/?=
+ =?Windows-1252?Q?DC2T1Ds4TtPDp8qME6HHviU4SgIbiuCXOoX9YP/fUhToC0300MFyKU//?=
+ =?Windows-1252?Q?i37/2MLbtNuJvqyitBN9FkvH6Ga0L835dM3y/yG4NV5mpL6ovoz7FjGY?=
+ =?Windows-1252?Q?+DkasUwewi5a1QKxAEEjRWK8GFmKqX0HFi7Wszi/5BNm6nSs6lzn7Sfw?=
+ =?Windows-1252?Q?btYsk8wPN0XLd7AFtWqNgwgUazFroe49lvdxhZ7zIpnitLNxYUM+HNBu?=
+ =?Windows-1252?Q?T0863uF6Y8QZRmTa0PC5MQE5wEwQvw/gFxd3nzIFPwjlpUgE?=
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <539f1bb9-6509-40c7-8692-bb3cdee33f91@collabora.com>
-X-Authority-Analysis: v=2.4 cv=U9eiy+ru c=1 sm=1 tr=0 ts=69f93d94 cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=xqWC_Br6kY4A:10 a=kj9zAlcOel0A:10
- a=NGcC8JguVDcA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22 a=MTERcTr8AAAA:8
- a=69EAbJreAAAA:8 a=QX4gbG5DAAAA:8 a=v_zPfFD72SJ5nyloC-oA:9 a=CjuIK1q_8ugA:10
- a=uxP6HrT_eTzRwkO_Te1X:22 a=1w2Y23rLpnaGpkO2nlKf:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-ORIG-GUID: 0bmc_--NIW82w4yeE5iA39mU9Mv_sfiw
-X-Proofpoint-GUID: 0bmc_--NIW82w4yeE5iA39mU9Mv_sfiw
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTA1MDAwNCBTYWx0ZWRfX5Jv3uwbz0mD4
- WKo2921AfpXsFXY/+4f90M3ErxBhcvg97F9jHNeRN6SwlFjcVTg63CjEyALgqGz1Q0esl4eva8s
- a/PUPL6ufjiooibndDj9BW/325psYkB3AW9usS9OH/PjhCWffUF1As3Oxe3I1rTD/yDUVL8FdJ4
- NCja1FPLtBDPAWPSKtimsQBfqZ0PQySZ666y0a9gRZFF9j491OSWc2Tfx88L4wCs+762higHRHE
- zerQEPCQkXbzbNVGjnIEgik2WvSHM/ca3l8C8gC2wrodWDAfyZzQkiHKv7oYvX//IISLxQLqnuW
- 06F7kuprA2pbXW6ns/ZuKZcZkOo0d2dU6zSns0naO0vlz+DpM3nFXVP9J+wHB+dr0+/bAc+6qk3
- AJLXwMgi8J7NNGDD5d5/rfGHughlw4llssoM4bIFN+v28D9gep8T+MvUZk0slq3OAcBWIzFIFyH
- 9bTn+oo61YpBSQPzN6A==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-04_06,2026-04-30_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 lowpriorityscore=0 adultscore=0 phishscore=0 spamscore=0
- bulkscore=0 priorityscore=1501 impostorscore=0 clxscore=1015 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2605050004
+X-OriginatorOrg: symple.nz
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-Network-Message-Id: ae178c21-20ec-4795-52bf-08deaa7edc48
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 May 2026 08:18:17.0964
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 9531f271-068a-4210-b471-bd8da91491c5
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: J9hWWWV/yLUGrF0xJqKeLO4oJgxla8IxtAaSZyQX32i0HlQVIaYzRZyTcwj8UFsY
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME4P282MB0981
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260504_174510_512271_6C6DBE37 
-X-CRM114-Status: GOOD (  28.12  )
+X-CRM114-CacheID: sfid-20260505_011838_488818_FF574E54 
+X-CRM114-Status: GOOD (  10.13  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,67 +133,209 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: "kernel@collabora.com" <kernel@collabora.com>, "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>
+Content-Type: text/plain; charset="windows-1252"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, Apr 28, 2026 at 04:51:46PM +0300, Cristian Ciocaltea wrote:
-> Hi Dmitry,
-> 
-> Thanks for taking the time to review the series!
-> 
-> On 4/28/26 4:38 AM, Dmitry Baryshkov wrote:
-> > On Sun, Apr 26, 2026 at 03:20:17AM +0300, Cristian Ciocaltea wrote:
-> >> Enable HDMI 2.0 display modes (e.g. 4K@60Hz) by adding SCDC management
-> >> for the high TMDS clock ratio and scrambling, required when the TMDS
-> >> character rate exceeds the 340 MHz HDMI 1.4b limit.
-> >>
-> >> A periodic work item monitors the sink's scrambling status to recover
-> >> from sink-side resets.  On hotplug detect, if SCDC scrambling state is
-> >> out of sync with the driver, trigger a CRTC reset to re-establish the
-> >> link.
-> >>
-> >> Reject modes requiring TMDS rates above 600 MHz, as those fall in the
-> >> HDMI 2.1 FRL domain which is not supported. In no_hpd configurations,
-> >> further restrict to 340 MHz since SCDC requires a connected sink.
-> >>
-> >> Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-> >> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-> >> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> >> ---
-> >>  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 188 ++++++++++++++++++++++++---
-> >>  1 file changed, 172 insertions(+), 16 deletions(-)
-> > 
-> > My main issue with this patch (sorry) is that this adds yet another copy
-> > of SCDC-related helpers into the driver which already OP_HDMI and other
-> > helpers.
-> > 
+[Resent in plain text =97 first attempt was rejected by the list's HTML fil=
+ter.]
 
-> 
-> >> +
-> >> +	drm_atomic_helper_connector_hdmi_hotplug(connector,
-> >> +						 connector_status_connected);
-> > 
-> > I don't see a forced hotplug event in the existing drivers. Why is it
-> > necessary? This function is being called from the detect() path.
-> 
-> For some reason, without it, the connector seems to lose its state after reset:
-> 
-> [ 2142.982967] dwhdmiqp-rockchip fde80000.hdmi: resetting crtc
-> [ 2142.994132] rockchip-drm display-subsystem: [drm] HDMI Sink doesn't support RGB, something's wrong.
-> [ 2143.140827] dwhdmiqp-rockchip fde80000.hdmi: dw_hdmi_qp_bridge_atomic_enable mode=DVI
-> 
-> Will recheck if that's still the case after the HPD handling rework.
+Hi,
 
-I think so. If it doesn't help, please check that
-drm_bridge_connector_detect() is called for each hotplug event from the
-hardware. It should take care of parsing EDID (and thus updating HDMI
-Sink properties).
+I have tracked down a bug in dw-hdmi-qp that silences audio on strict
+HDMI 2.1 sinks (tested: LG G3 OLED) when booting with HDMI seamless
+handoff from U-Boot. HDMI 2.0 sinks are unaffected. The root cause is
+a mismatch between the AVI InfoFrame colour depth and the ACR embedded
+CTS value.
 
--- 
-With best wishes
-Dmitry
+Hardware tested:
+  Source:       ArmSoM Sige5 (Rockchip RK3576)
+                Armbian-edge kernel 7.0.2 (Linux mainline v7.0 plus
+                Armbian board-enable patches; not a BSP kernel)
+  Failing sink: LG G3 OLED 4K (HDMI 2.1, strict embedded-CTS mode)
+  Passing sink: Various HDMI 2.0 TVs (self-measuring CTS, unaffected)
+
+The bug is structural and is expected to affect RK3588 under the same
+boot sequence.
+
+
+Root cause
+----------
+
+When the system boots with seamless handoff active, U-Boot has configured
+the PHY for 8-bit 1080p60 (TMDS =3D 148,500,000 Hz). The DRM connector
+state, negotiated from EDID, selects 10-bit deep colour (TMDS =3D
+185,625,000 Hz). In dw_hdmi_qp_bridge_atomic_enable():
+
+    hdmi->tmds_char_rate =3D conn_state->hdmi.tmds_char_rate;
+
+This stores 185,625,000. The PHY ops->init() is called but the PHY is
+already running at 148,500,000 from U-Boot and is not reconfigured.
+
+The result is an inconsistency between what the sink is told over HDMI
+and what the wire actually carries:
+
+  AVI InfoFrame:     declares 10-bit deep colour at the connector-state
+                     TMDS rate (185.625 MHz)
+  ACR embedded CTS:  driver uses hdmi->tmds_char_rate =3D 185,625,000 Hz
+                     to compute CTS via dw_hdmi_qp_set_sample_rate(),
+                     producing CTS =3D 185,625 (internally consistent
+                     with the AVI declaration)
+  Wire TMDS clock:   PHY untouched from U-Boot, still running at
+                     148,500,000 Hz (8-bit)
+
+The dmesg signature (full pr_err output, lower in this report) confirms
+both AVI and ACR are computed from the nominal 185.625 MHz value:
+"tmds=3D185625000 ... cts=3D185625".
+
+A standard HDMI 2.0 sink does not cross-check AVI against the wire TMDS
+in any way that matters for audio, so the mismatch is harmless. A strict
+HDMI 2.1 sink (LG G3) measures the wire TMDS and verifies it matches the
+AVI declaration; with declared 185.625 MHz vs measured 148.5 MHz, the
+check fails and audio is muted, permanently, until the next mode set.
+
+The N/CTS values themselves are correct CEA-861 ratios. At a wire TMDS
+of 148.5 MHz with N=3D6144, CTS=3D148,500 yields f_audio =3D 48 kHz; at a
+wire TMDS of 185.625 MHz with N=3D6144, CTS=3D185,625 also yields f_audio
+=3D 48 kHz. The driver picks one TMDS, computes a self-consistent N/CTS
+pair, and embeds it. The bug is solely that the TMDS the driver picks
+(connector-state nominal) differs from the TMDS on the wire (PHY
+actual).
+
+
+Dmesg diagnostic signature
+--------------------------
+
+Failing (seamless handoff, DRM selects 10-bit 1080p from EDID):
+
+    dwhdmiqp-rockchip 27da0000.hdmi: atomic_enable: \
+        tmds_candidate=3D185625000 is_hdmi=3D1
+    DW_HDMI_QP set_sample_rate: tmds=3D185625000 sr=3D48000 n=3D6144 cts=3D=
+185625
+    [audio silent on LG G3]
+
+Working (8-bit mode forced, see workaround below):
+
+    dwhdmiqp-rockchip 27da0000.hdmi: atomic_enable: \
+        tmds_candidate=3D148500000 is_hdmi=3D1
+    DW_HDMI_QP set_sample_rate: tmds=3D148500000 sr=3D48000 n=3D6144 cts=3D=
+148500
+    [audio working on LG G3]
+
+The difference is entirely in which tmds_char_rate bridge_atomic_enable()
+receives. If the PHY and DRM state agree (both 148.5 MHz), audio works
+because what the AVI declares matches what the wire carries. If they
+disagree (DRM: 185.625 MHz, PHY: 148.5 MHz), the AVI declares 185.625
+but the wire carries 148.5, and any sink that cross-checks the wire
+TMDS against the declared rate (e.g. LG G3 OLED) mutes audio.
+
+
+Confirmed workaround
+--------------------
+
+In dw_hdmi_qp_bridge_tmds_char_rate_valid(), reject 185,625,000 Hz:
+
+    if (rate =3D=3D 185625000)
+        return MODE_CLOCK_HIGH;
+
+This forces DRM to select 8-bit mode (148,500,000 Hz). bridge_atomic_enable=
+()
+then stores the correct tmds_char_rate, the AVI InfoFrame declares 8-bit,
+the ACR CTS is computed correctly, and the LG G3 produces audio.
+
+Note: 185,625,000 Hz (1080p@60 10-bit) is only selected via EDID
+negotiation during seamless handoff. A genuine modeset at that rate would
+correctly reconfigure the PHY and the AVI/ACR inconsistency would not
+arise. Blocking this rate in tmds_char_rate_valid() therefore has no
+correct-use-case cost on RK3576 with the current BSP. 4K@60Hz (594 MHz)
+is unaffected and continues to work correctly, including audio.
+
+
+Proposed proper fix
+-------------------
+
+The fundamental issue is that bridge_atomic_enable() accepts
+conn_state->hdmi.tmds_char_rate without verifying it against the PHY's
+actual output frequency.
+
+Option A (no display disruption):
+
+  The HDPTX PHY PLL is already registered as a clock provider. On
+  RK3576, rk3576.dtsi gives the hdptxphy node #clock-cells =3D <0>;
+  VOP2 consumes it as "pll_hdmiphy0". If the bridge driver adds a
+  new clk pointer (e.g. hdmi->tmds_clk) populated via
+  devm_clk_get_optional() at probe and queries clk_get_rate()
+  in bridge_atomic_enable(), it can detect the seamless-handoff
+  mismatch and use the actual rate:
+
+      /* hdmi->tmds_clk added in struct dw_hdmi_qp; populated at
+       * probe via devm_clk_get_optional(dev, "tmds") or similar */
+      actual_rate =3D hdmi->tmds_clk ? clk_get_rate(hdmi->tmds_clk) : 0;
+      if (actual_rate && actual_rate !=3D conn_state->hdmi.tmds_char_rate) {
+          dev_warn(hdmi->dev,
+              "seamless handoff: PHY at %lu Hz, DRM selected %llu Hz; "
+              "using actual PHY rate for audio\n",
+              actual_rate, conn_state->hdmi.tmds_char_rate);
+          hdmi->tmds_char_rate =3D actual_rate;
+      } else {
+          hdmi->tmds_char_rate =3D conn_state->hdmi.tmds_char_rate;
+      }
+
+  This corrects the ACR CTS and AVI InfoFrame without touching the
+  PHY configuration or causing a display blank.
+
+Option B (correct but causes brief blank):
+
+  If the driver detects a mismatch, call phy.ops->init() to bring
+  the PHY into agreement with the DRM-negotiated state. All
+  parameters become consistent at the cost of a single mode change
+  on first enable after seamless handoff. This is arguably the more
+  correct approach if the intent is to honour what the EDID reports.
+
+Option A is preferred for a seamless user experience. Option B is
+preferable if the seamless-handoff-inherited U-Boot mode is not
+otherwise suitable for production use.
+
+
+Relation to Collabora's HDMI 2.0 patch series
+----------------------------------------------
+
+The "Add HDMI 2.0 support to DW HDMI QP TX" series (v3, January 2026)
+addresses high-TMDS-clock-ratio and scrambling. It does not appear to
+address the seamless-handoff tmds_char_rate mismatch described here.
+If a revision of that series reads PHY state at probe time it may
+incidentally close this gap, but that is not a stated goal. Reviewers
+may wish to verify the seamless-handoff path is exercised in testing.
+
+
+Summary
+-------
+
+  Bug:        bridge_atomic_enable() takes EDID-negotiated
+              tmds_char_rate (185,625,000) while PHY runs at U-Boot
+              rate (148,500,000); the AVI InfoFrame and the ACR CTS
+              both reflect the connector-state nominal value, but
+              the wire TMDS clock disagrees with what AVI declares
+  Symptom:    audio silent on any HDMI 2.1 sink that cross-checks
+              wire TMDS against the AVI declaration; HDMI 2.0 sinks
+              unaffected (no such cross-check)
+  Scope:      RK3576 confirmed; RK3588 structurally identical
+  Not a bug:  N/CTS table, IEC60958 channel status, ARC, ALSA path
+  Workaround: reject 185,625,000 Hz in tmds_char_rate_valid() so
+              DRM picks 8-bit 1080p (148,500,000 Hz) which matches
+              the actual PHY rate
+  Fix:        compare conn_state->hdmi.tmds_char_rate against actual
+              PHY clock at bridge_atomic_enable() and use the
+              measured rate when they disagree (Option A) or
+              reconfigure the PHY (Option B)
+
+I am happy to test patches on Sige5 + LG G3.
+
+Regards,
+Simon
+Symple Solutions, Dunedin, New Zealand
 
 _______________________________________________
 Linux-rockchip mailing list
