@@ -4,58 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB22ACD3427
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 18:32:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF8BCD3427
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 18:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fMoshZfCKiOsivCO5N/EtlJUL1ZtGaBdNKiYJstoDVQ=; b=pmE9Ovf/GkREty
-	Jh7J+upHa22FIVd76EryIq7k1QffUbTOMR9+zYMp1n3YDSpCkYJVVhpuMXnKijrFFy+EioPnF205+
-	bUeuV9JU1Zh0IdA1DWA5ZlofZ75sSY9c1PWkFiQYyjS7AxLwi7Na8flwzMuCQo2V6G8SSJ8ExeQC6
-	CaocsYRXaAfdtqgLXRYAhag7kYXqrLRPDfXuhwaSqbKGVBTf+L4sYXqQpPpHC1VxHggfsf1GfqbC7
-	KYb8WEaLoTzAl6Bw7kP/KLsMMjRE6D13qqYEBHMmFaFPiE6xRTE6EO54iY7PtQfoFuUYNsWTLivkl
-	tPiIullgNcnX2Xu4Z86A==;
+	List-Owner; bh=0rTRx9E9cv/7o2JuDV/MiPDrzGMezjC5y9S1FRlKa5g=; b=oOVqAmxJrgi7jk
+	in4Rs6+Ay7Jmbq92OMwv9TZ126yNlaZwvbO8XhVVeerUPB7JZId62GfuNn6xh5Hddj4th0N+O0vhn
+	NppY5vK98MU7qjoKbrqtkruk1csXPCB5EIb+INinmIu5LECJBmq0TgVdjenirvMKcMH4vM4I3Xl37
+	3bN0cJ1XwC8CxpUxFqol328iGP6sx1R09xEPqcaGNzow2uGQF2wssQ2ze3Zj3I4L4Uf1zFXBmNEAG
+	jUK4zTmi2clzGJXCYxOW6E3d11BtI+lkS4lg72/sb+NqAxYfm5ajlO0WCafrBNQ1O/rUMUdlNOjB7
+	gkr7Tpist/5mQqWYFANQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKKZd-0000000HByY-14Rg;
-	Tue, 05 May 2026 18:32:49 +0000
+	id 1wKKvN-0000000HEGf-2oqf;
+	Tue, 05 May 2026 18:55:17 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKKZa-0000000HBxr-41FG;
-	Tue, 05 May 2026 18:32:48 +0000
+	id 1wKKvL-0000000HEFl-1IP2;
+	Tue, 05 May 2026 18:55:16 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=8XLywXLhWtlTlBR18sfqteObM8GZewXIF3W7Z1e289s=; b=u4hhcy2bO54pmQJm1LJusecOJf
-	AYn8xH4o6FndxOJ34cYYYs9dWmAd7VHE08vyjd9h+yQvTmrn0+ykAdncYSsOJsiTujLd5ABpqgTh8
-	X1HU7GpdO2esO5kTE9srB+RpoOV06LiQbuJbPfiDRxCDkk0/uHIXoYtbzp2Hr6gWWJLAE77tz7clS
-	hLMK5e7Dsyn7T9IFdP7TN4TzYodeqegaIUk4N8xb3mDUUyFLb2tl5Fd+CWdQhmWIctKacDVfmjAfd
-	W/C3ykqo8MVvCN+E0cj/kMTSUtLM5d6+wh2vtCqhED9flFcVbrIhKErU4v52+LyrRRFYxzwGxdkCe
-	luKunzHA==;
+	bh=EdUe4UPi1xfrH6SeZFh0BDIwDN7xDOV5Uww/aWy2a1s=; b=lWWGss4A+4AyrPW69TEmA9O98n
+	3luVcHPpCd55cDntRjiHdHeN0CKdMkn5Va2DankgUsHK5gvtEP0s/TK6VcXoKnNzg6bwhkB+IrdNJ
+	rh9FMCyXucbX08zIXSkHikJ5lwdAWE8NMTlJehqORiYOC9k/f56kFWTxA5YunsbOIaX8ezGxOoRa2
+	z1LOx5LSU4QWL22axnWabxNUiqBHwvkaRzUw3/4KsapoQQepYTHPyTxdZpTDctIUIiXy25002lx2I
+	TcuUL4Ro2HP+OXmTar1l/l79oSiX2e2XO4bN1BfUwP+0QQPzNzKhr8GLaRRqPiW0l9zLDnev7yHwR
+	vynbPytg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Rob Herring <robh@kernel.org>,
+To: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Frank Li <Frank.li@nxp.com>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+	Kever Yang <kever.yang@rock-chips.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Michael Riesch <michael.riesch@collabora.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
+	linux-media@vger.kernel.org,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 00/13] arm64: dts: rockchip: Wire up frl-enable-gpios for RK3576/RK3588 boards
-Date: Tue,  5 May 2026 20:32:40 +0200
-Message-ID: <177800595582.3294944.15259294512505640833.b4-ty@sntech.de>
+Subject: Re: (subset) [PATCH v5 0/2] media: synopsys: csi2rx: add support for rk3588 variant
+Date: Tue,  5 May 2026 20:55:02 +0200
+Message-ID: <177800729427.3301010.1526029967373808485.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260428-dts-rk-frl-enable-gpios-v2-0-924df9db884a@collabora.com>
-References: <20260428-dts-rk-frl-enable-gpios-v2-0-924df9db884a@collabora.com>
+In-Reply-To: <20260305-rk3588-csi2rx-v5-0-3b7061d043ea@collabora.com>
+References: <20260305-rk3588-csi2rx-v5-0-3b7061d043ea@collabora.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_113246_997646_C4844F4E 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20260505_115515_348776_8210F722 
+X-CRM114-Status: UNSURE (   9.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,48 +80,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 28 Apr 2026 00:57:18 +0300, Cristian Ciocaltea wrote:
-> Several boards based on the RK3576 and RK3588(S) SoCs use a
-> GPIO-controlled voltage bias circuit on the HDMI data lines that must be
-> switched according to the active link mode: asserted for HDMI 2.1 FRL
-> and deasserted for HDMI 1.4/2.0 TMDS.
+On Tue, 28 Apr 2026 09:27:22 +0200, Michael Riesch wrote:
+> Habidere,
 > 
-> This series adds the frl-enable-gpios property to the HDMI nodes of all
-> boards for which the GPIO configuration could be identified from vendor
-> BSP kernel sources and/or schematics where available.  In a small number
-> of cases it was necessary to extract and disassemble the DTB from the
-> vendor firmware image.
+> The Rockchip RK3588 features six MIPI CSI-2 receiver units:
+>  - MIPI0: connected to MIPI DCPHY0
+>  - MIPI1: connected to MIPI DCPHY1
+>  - MIPI2: connected to MIPI DPHY0
+>  - MIPI3: connected to MIPI DPHY0-1 (only with split DPHY0)
+>  - MIPI4: connected to MIPI DPHY1
+>  - MIPI5: connected to MIPI DPHY1-1 (only with split DPHY1)
 > 
 > [...]
 
 Applied, thanks!
 
-[01/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3576 boards
-        commit: 2cd97880fbc434b49a211784561586f0397499b7
-[02/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3576-luckfox-core3576
-        commit: 12eb09ee67cba1e3cc0c75149d0a04a5187ca575
-[03/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3576-nanopi-r76s
-        commit: ba0d7cfb9870064296a8d4d57ff2c230166ada3c
-[04/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3588 boards
-        commit: 643d6733e58c663b66defea758bfb8d336047456
-[05/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3588s boards
-        commit: 3305c44489505e98e794cacce80cb1de9f1b81ad
-[06/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3588s-gameforce-ace
-        commit: cb3ee61e35a9d60e6410526fec7b74af9be22d88
-[07/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3588s-khadas-edge2
-        commit: bb85f4f5541de9abbe7e300e94d58ea888dd3b33
-[08/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3588s-orangepi-cm5-base
-        commit: 640c768d315b25f8e56844d1d71c8d0040dfd88b
-[09/13] arm64: dts: rockchip: Add frl-enable-gpios to rk3588s-roc-pc
-        commit: 0c58a27bf04d88c979dc8ce86c62bb13d15626e4
-[10/13] arm64: dts: rockchip: Drop unnecessary #{address,size}-cells from rk3588-jaguar
-        commit: 161e023cafaca600aa7e5d5fab437334e6e6bcca
-[11/13] arm64: dts: rockchip: Add missing pinctrl-names to rk3576 boards
-        commit: 78f650c45ec342c16f80c50e7ee77272e76f179e
-[12/13] arm64: dts: rockchip: Add missing pinctrl-names to rk3588 boards
-        commit: 0c2c0b6cdd71c5a43f83db2e0dcffe4701d10b87
-[13/13] arm64: dts: rockchip: Add missing pinctrl-names to rk3588s boards
-        commit: 224aa83f3f73a8b17051c1639125260cc04617bc
+[2/2] arm64: dts: rockchip: add mipi csi-2 receiver nodes to rk3588
+      commit: 5052c99cf05271b91fe2b4e6540f7a7d9b6db62f
 
 Best regards,
 -- 
