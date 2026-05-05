@@ -4,54 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0915FF8855
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 16:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0155CD343B
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 17:04:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
 	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=aQaDTGNZnoCZy5FcFw6hD+jNr6DQRVNsD/v+OXYAomA=; b=u2Y/6FXIBqnWwr
-	Hpjh4IUnTLYqrv4WUPDrNuV+34TBT9qNoid/0Ylfk1KRMYABnstyZAI4NEi+CXpUQEacKgHfkJOz5
-	6969qAOUndd7ocbrXVHin0xFmjun1BW3A1bL84hIobOpzJ1LS92SbBC1nUbbFpndXHo/z755sI1jQ
-	R30Ba5wbsD0W/NdOzQ57+dfdZ9Pzz4fgiFFWCbwauoNA+i9mon2pyAxDkbq5Tdbkp6Sj98yoQXRTL
-	MyjmfPvVp/aoxzuGm7+dK2sU4ZGAd6MJF6Q/AbH1I1bkBQRvVoeAhu4YN6nI02FsYvMHyUhI6uCgC
-	1NGsRDtzKP+mzg0+RfHw==;
+	List-Owner; bh=MjA+6MX8z50i1TxnPjTlqK/1bJtaeMd2yYTLHxCzMnI=; b=v4dDHKJhP00qgE
+	Nq85h/SN2PwC6QzbrYOMsI56I8fn9XO4Nx3AU7IKr9gt3nihgSlBZptH4T04EIQ0VAyofZNQa9/qx
+	FUKpasv5CZiQZbjApBNovHnhzYEb0bDrL5mKPqB62rHU882a0306ofyG5o85IjAvzmmr+ADIvXeK2
+	CeP/4dJGYccPBmNR5+MEMcLbjGhaQKZ4DCWRy3TQEIUX8jB6AwTxj+yMJRY99TEWbWGqs0EaPneb9
+	6s3eS22MktKh/5dOkSrncP+Azq3hQ63J48or8AP1xb9o1MGHhQsQF0RT7BntUbNCD+4fC4vL9nsDU
+	z2GA1bQ+DrJMRJ4Ljlzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJ0w-0000000Gxci-0myA;
-	Tue, 05 May 2026 16:52:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wKJC4-0000000Gz3l-3LtQ;
+	Tue, 05 May 2026 17:04:24 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJ0t-0000000Gxbm-3JOp
-	for linux-rockchip@lists.infradead.org;
-	Tue, 05 May 2026 16:52:52 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id DECC060181;
-	Tue,  5 May 2026 16:52:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AD9BC2BCB4;
-	Tue,  5 May 2026 16:52:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777999970;
-	bh=Uy45pCjpPeeuNDhKg0dzbRSP55OqbZOrzQT7aVDR/oc=;
-	h=From:To:Cc:Subject:Date:From;
-	b=tT6snsA3UR8645dy8SL2WuRvtEdwbs0owuBANHJ7aCnMXwoI2UhJ+wsjyHUOl+pmq
-	 rKJQzhjLShcOhy+C/FkF1GmC0U3RIjGv2mMKr0MlIfD9qWYXWIltGuUk2ATcFlNqL+
-	 1O33UMz2j2I+BKKYCH8Tut/GRJNxlNy+GnIVXPuLADIyeOJ/adaPRpCM1sq2Kj9NkE
-	 fRHf0URJlrx6YvvI44c7mcv64NyutX7PPaFLNDvfkv6O8xY82fKndwfv0llAXefBPZ
-	 Gea5rrxVd1aodJsf8LeR17wSMN1u+Dcydei/LNmrC/HMRY+LySNXrV+HEREASYFPlL
-	 wmJ2YNULWuvTw==
-From: Chen-Yu Tsai <wens@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Chen-Yu Tsai <wens@kernel.org>,
+	id 1wKJC0-0000000Gz0A-1rhK;
+	Tue, 05 May 2026 17:04:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
+	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
+	bh=93gcAeK+pFauxx7NJKjEKC10Wy8T4t0qkj8Q59r5KXI=; b=NAcz8RqXkqY5dOxTG9K1dh/z/f
+	52boxihZa0OxOBTr7wVTslPE+R0F5KYS2UGdNYUXW4wh+hCPsuND80dRa8FpMux5t1bPzmG39tK4J
+	zzbx8H5vAUmf/lFQmajJjfw8N3CrJn4L8U59oSTyvdTd0gOlxdt+CXNMTJSVHUdDlBdephBLnQeog
+	ppEQMXggCNno0ikQ4s9JIdbbiiQc6c+t8VCOqZ+xv+yACb3fisEG2popgjk5e/w+5v41AH1y1gMaC
+	joKorJNIOBF+y8+TFSlz7UdYnEZ/tcReyEXKSupcJxJdMZfa4PS2MMcKjTzjetZJUeHzMPv1NC6Wh
+	M8ZRbXjA==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: vkoul@kernel.org
+Cc: neil.armstrong@linaro.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH] arm64: dts: rockchip: rk3399-nanopi-r4s-enterprise: Fix EEPROM compatible
-Date: Wed,  6 May 2026 00:52:43 +0800
-Message-ID: <20260505165244.1902-1-wens@kernel.org>
+	linux-kernel@vger.kernel.org,
+	jonas@kwiboo.se
+Subject: [PATCH v2 0/5] rockchip: Add USB 2.0 support for RK3528
+Date: Tue,  5 May 2026 19:04:05 +0200
+Message-ID: <20260505170410.3265305-1-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260505_100420_482220_8877489C 
+X-CRM114-Status: UNSURE (   9.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,35 +73,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The EEPROM used on the R4S (enterprise) is the 24AA025E48T-I/OT from
-MicroChip. This is a 2-Kbit EEPROM with 16-byte page size. The latter
-half of the EEPROM is read-only, and the last 48 bits contain a globally
-unique MAC address. That is to say this is not an ordinary EEPROM.
+This series adds support for USB 2.0 on Rockchip RK3528 to the
+Innosilicon usbphy driver.
 
-The compatible for this type of EEPROM was introduced later that the
-board. Switch over to the correct compatible now that it is available.
+The usb3 support has already been merge for the naneng combophy
+last year.
 
-Signed-off-by: Chen-Yu Tsai <wens@kernel.org>
----
-This should probably not be backported without the matching changes
-to the DT binding and the at24 driver.
+Changes in v2:
+- rebase on top of v7.1-rc1
+- split off dwc3 compatible and dts changes
+- add error handling to regmap_write (Vinod)
+- v1 is here
+  https://lore.kernel.org/linux-rockchip/20250723122323.2344916-1-jonas@kwiboo.se/
 
- arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Jianwei Zheng (1):
+  phy: rockchip: inno-usb2: Add support for RK3528
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
-index b76f98962076..e366f1a04b32 100644
---- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s-enterprise.dts
-@@ -16,7 +16,7 @@ &gmac {
- 
- &i2c2 {
- 	eeprom@51 {
--		compatible = "microchip,24c02", "atmel,24c02";
-+		compatible = "microchip,24aa025e48";
- 		reg = <0x51>;
- 		pagesize = <16>;
- 		size = <256>;
+Jonas Karlman (4):
+  dt-bindings: phy: rockchip,inno-usb2phy: Require GRF for RK3568/RV1108
+  phy: rockchip: inno-usb2: Simplify rockchip,usbgrf handling
+  dt-bindings: phy: rockchip,inno-usb2phy: Add compatible for RK3528
+  phy: rockchip: inno-usb2: Add clkout_ctl_phy support
+
+ .../bindings/phy/rockchip,inno-usb2phy.yaml   |  44 +++-
+ drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 191 +++++++++++++-----
+ 2 files changed, 176 insertions(+), 59 deletions(-)
+
 -- 
 2.47.3
 
