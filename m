@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20F4FCD3445
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C88DCD3439
 	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 17:12:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qP2W6pEaa88U41tHJ/aJJsBTasHY/1OENC4dONMMDDk=; b=TFMlZ+a7xF+LWx
-	7Yz+f6GP4hkqlnPmGI1w8ZVoMyeUlCuYyysbOJDY+PhSQfS8e0//vABi5Nxm9+d2eB3oFVqyy3V5y
-	+wBk5hnPpccxbVvFWXC0rJ66oY/hfvtrt8O2ek0ZfltfteHk/4DCMaalmuzomZz6s5OovgfTnm4xz
-	xAyzV8lbZOauQSAI3QpsxvlMn4gyh2yZLtiNgcw76n4iexXdxdcP3FXmfOTCdkT3Tk+/ebUiJNFpe
-	NceHjOkO8XbbQj+o60TMObjAkyK/wFyu13rLO/O95trolyMerYFmw7CdUX77cFj1jCLFZS+UUm+Qk
-	GX7w8cOae2ywp29Uo3Hg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=VSCaVo/pj3Qy+LG/azcU78zriJvpmc+kgDa1UHAnEO8=; b=LwssoZM+5fA+A1
+	u036IBw176w+zB96mEi4QJKE7vewQArCLhytGmQI5S/iN6hWXEyV2bbfjce7W6goR3t5Zc2A+Jydo
+	3dMLWcXmdtFp13lWR99YMNgo96KUSd/ju33S2N62ScvlqPbe0A5QJ143hYDSCNcWqCh/cx9fxRfFQ
+	9/8yCjcuW9SdM2zY23/yK2bsgQF+yoAPy5m0SgMh91TSj5MyqCEPAQ9weRS0cRzA9FpB/z/b8cHZo
+	vvV3dsyzRvnTtDIcATXNxmNZO4u7QvN0dEiC+jeVPtqgMKX9M3XW1y/3InvD8DfcvOmzA33pcDoH0
+	80IolFpHrW/ju9pkT4Jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJv-0000000H11v-0UOz;
+	id 1wKJJv-0000000H13D-36Gf;
 	Tue, 05 May 2026 17:12:31 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJr-0000000H0v0-1Ial;
+	id 1wKJJr-0000000H0wB-44vA;
 	Tue, 05 May 2026 17:12:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=5RFjcKGymVRRwjpeRMIjqqFXUaYlskpsob4xR/vtkac=; b=VYZT1QMeOOEeWYT813oOhOEc4l
-	4QyF5VWsg9BkPALpYJJHezDMGAUEEIbdgc0MbJArVFZM8Mq1JXoxYwONlUMYAWKZxkoM7d2Tr0aL7
-	0URwQdrOQUc8d+qToQDZ4Mkc4dR53itkKBSAqamwRKHxpznvLAXfCo5SM3NZHytTg8VMHrQY6PMrO
-	nlOBIF6mGiCsmP0n8n9NpgEiEDO07y2Mr39GViTfSaxZkUqmOs63Ie5UxxhpUfV8/mG4QHPUqUtFj
-	zuMf36kxNPdcE9hZG/vX6Fkjtz+QMjR80iiXDFSpd5O8jsQfRk1xXRfTRLMjW2Nqp88PxZyxNk6B4
-	mmBDugQg==;
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=UQYb9cx7Qy9HM2zG1blx8dDESq371LLINBDgwuG2XgM=; b=C5gbFqFSgN+Y5S3ACphkwJOBM/
+	D7rlCCaffTtUgYumlyjC6W8Pt0cSaSfDEddlsu+INX6BMg8Jo6Ma2TAGWRHF+mwUSaWoqMTEioK6c
+	M+Hh7DQwcbhMBA6h9FrcCUJbMYGMvno6hGPRxNnU9mdvcz3lvaWaD1LJBeI0KVpRvx9C166C8M7D8
+	wzkEEyBCnKUl33TF0e07XWKAW4YN3AH9J+xrk98WSg4W4v/jICtkGrmzf5GcEsAvSg0On55suL1oN
+	2DKrZm46rnbWFR7nBdK1P4lilpi/ndOXCsTPEcT81NZNkpABIgeKdF8Aemfn8Uhpv1mpjrrg2nm94
+	eaVdxtfg==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJm-0000000E83Y-2vgp;
+	id 1wKJJp-0000000E85D-0jIe;
 	Tue, 05 May 2026 17:12:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=5RFjcKGymVRRwjpeRMIjqqFXUaYlskpsob4xR/vtkac=; b=fMEviG25nEoAfrXnTwyoO78Pp8
-	kUWMWvK0ZL2gsL6NaqCDxi6q4Dond6B4MvPD8oL4KIr0MI46jUB/jV6uP+ezacF+scT2XBczj31Em
-	S14NtgI0l9cEDNSUCny60QbzIwyrKUMyJkTJyv2BXvB+WZ78Z9aZBoXHlv0YvVa8wgCKiFVXe3RYt
-	x3LK2pEyuIXzHESymxN79olHKFjnYlAlAUCaeSeuX+ts0YljNiUFPoYGwkR5BnFqLmzHr26biLeS5
-	A4OdcOZWCGlkWsFCdfxrONh7n5kyIY895tsKN9PLr+6FK/YqBxp93HKemD8ktANhnLvnojAAH3g/b
-	JEfQSOHQ==;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
+	bh=UQYb9cx7Qy9HM2zG1blx8dDESq371LLINBDgwuG2XgM=; b=M+TyBoi5RbYqE5X3+oLFHJXzIf
+	kHSu1/BoxKyQlALWb7jDAN3l9PENbcTjYVK/3qH5yE3aJIbJzLnQCB+MJsImcoEImhc4BoZP+5RxT
+	+W2lS5fJ6pdkKbQpLO0sW7FzO2qUrowP41pqq6bWIhRHdDG4n1ek0+oWmGFjISZSzec+dg3DL/Sqy
+	d0y7nJLK25DmIaXZiquXSizgjTeX1/RJARU3gHdQ/RnTda5SX4JkLXs0trXPEqBswvPGUrEixTQbO
+	1J8idjx6VG/3p4SzWmA+QeBvA3Bz3rQMrjm2zoCsv1txIXG7s2qq1M9sw9uUUzDhR1JutWOnIJM7D
+	00qnKENA==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: jonas@kwiboo.se,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/5] rockchip: add USB nodes for RK3528
-Date: Tue,  5 May 2026 19:12:03 +0200
-Message-ID: <20260505171208.3267387-1-heiko@sntech.de>
+Subject: [PATCH v2 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
+Date: Tue,  5 May 2026 19:12:07 +0200
+Message-ID: <20260505171208.3267387-5-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260505171208.3267387-1-heiko@sntech.de>
+References: <20260505171208.3267387-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_181223_000109_EE6E26C4 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260505_181225_341351_5C1CC454 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,32 +81,53 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This adds the USB nodes to RK3528 and therefore needs both the dwc3
-compatible [0], as well as the phy support [1] to be merged first.
+From: Jonas Karlman <jonas@kwiboo.se>
 
-changes in v2:
-- split off from original series [2], that added all 3 parts
+The ArmSoM Sige1 has two USB 2.0 Type-A HOST ports behind an onboard
+USB hub, and one USB 2.0 Type-C OTG port.
 
-[0] https://lore.kernel.org/all/20260505164509.3254707-1-heiko@sntech.de
-[1] https://lore.kernel.org/all/20260505170410.3265305-1-heiko@sntech.de
-[2] https://lore.kernel.org/all/20250723122323.2344916-1-jonas@kwiboo.se/
+Add support for using the USB 2.0 ports on ArmSoM Sige1.
 
-Jonas Karlman (5):
-  arm64: dts: rockchip: Add USB nodes for RK3528
-  arm64: dts: rockchip: Enable USB 2.0 ports on Radxa E20C
-  arm64: dts: rockchip: Enable USB ports on Radxa ROCK 2A/2F
-  arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
-  arm64: dts: rockchip: Enable USB 2.0 ports on NanoPi Zero2
+The onboard USB hub handles OHCI so only the EHCI controller is enabled.
 
- .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 24 ++++++
- .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 30 ++++++++
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 48 ++++++++++++
- .../boot/dts/rockchip/rk3528-rock-2.dtsi      | 17 ++++
- .../boot/dts/rockchip/rk3528-rock-2a.dts      | 13 ++++
- .../boot/dts/rockchip/rk3528-rock-2f.dts      | 13 ++++
- arch/arm64/boot/dts/rockchip/rk3528.dtsi      | 77 +++++++++++++++++++
- 7 files changed, 222 insertions(+)
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
 
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+index c41af8fc0c8d..e15a4b2a1208 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+@@ -480,3 +480,27 @@ bluetooth {
+ 		vddio-supply = <&vcc_1v8>;
+ 	};
+ };
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_xhci {
++	extcon = <&usb2phy>;
++	maximum-speed = "high-speed";
++	phys = <&usb2phy_otg>;
++	phy-names = "usb2-phy";
++	status = "okay";
++};
++
++&usb2phy {
++	status = "okay";
++};
++
++&usb2phy_host {
++	status = "okay";
++};
++
++&usb2phy_otg {
++	status = "okay";
++};
 -- 
 2.47.3
 
