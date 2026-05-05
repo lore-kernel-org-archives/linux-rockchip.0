@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 070B9CD3427
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 17:04:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47DE2FF8855
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 17:04:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MJIUvXdNjVr7pPzSE+FRDxqkBZw4PNTLH5lh4Qh/O3M=; b=czH643HihF0UnI
-	NcIkd0zRW6bm2TRegr/Q7NQ2ORlc81W3/l1CfxtN+0wQp4jIaCl/X39wOOpp4h41FsoI2bmPJPPz4
-	7/2dV1hCOginNkpmUD57zwUoMTAfVo+meo81+6SmtuKAaLg1djoL2yXjaShR6Ra+0/0dbw61ulLVq
-	CaVPzaYcjr1b8zmsVfzwJOE77uwE1H3Jw4j9628eZCHbikCqFuZfB7SYS48xrFeCuAMpZsQCRdvZp
-	85m0IP1DmBkWZ3DesiQwHL0W/saS7v4CtcpJolfXgN9CiZ9R3j8AS347lO1TGBRjmQwsuDOpQdTME
-	T5vGCwCg1Yv0IIxh76cw==;
+	List-Owner; bh=5g46byhOZxFk7agmrt8CfH5A/lu2riM5pPln3h2JIpU=; b=pQ8u8HQ7MLUsxj
+	tM4CbP8wo7mSKgzFf3EF1MFKzpAEwjvnQAQBFGyc3rg5t1X9of9XO4oa5VDR2BG6cb5yocC36mUma
+	lqyxMky0sSW4EgcO61ADufpcI76tlBclIoGBz0Nue+jFOMJCeNTSr6wrgfIy9kh8yZt9U5REo1wIE
+	4LMe19csM8i805xt8LKtEMcMVS/yO5ShwIg41Z/NCHYCAcJX6Jcl1uCd3mQITb5mipZ3ZGkuGSM6K
+	BQa7A2VTikYMY5YQ+ZdRcOwvy1FMnxmwGRcgT/Sa9nEIHz8emu0uYbGYN6dLV60IiZAVaJh0dpAnl
+	D5MkXb1rOyPH2D97Ivaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJC6-0000000Gz6n-2e4I;
-	Tue, 05 May 2026 17:04:26 +0000
+	id 1wKJCK-0000000GzJY-0kpr;
+	Tue, 05 May 2026 17:04:40 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJC3-0000000Gz1t-46VK;
-	Tue, 05 May 2026 17:04:24 +0000
+	id 1wKJCB-0000000GzAy-2waG;
+	Tue, 05 May 2026 17:04:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=7mMTfDZ4nl8ekfgg7b9H2X02Eg7cD6K21MT96h6gSgM=; b=GZ/Nl2HVVn4n+i6w+GehBF8GT+
-	Yzv0L8SWm5DySUsKN/XaQsykko3r/7lYoBNPBytLFHYPfO2MCeE9PrStcWgdeY5GDSqDRbxkzBGAZ
-	UtM+MdVLEaefKVVRYBJf/YChAF0D/uc+Iriz3WVFi3l2Mia9KhI3Od0bFreIoZh7oRN+AlPOSxfAa
-	QTF8sRwWbNCBVN80DuP5P9fx4cBnnOMBwLgxJ6WDuJOVv0D/DG5YF9R3XUj3n/wooKwdlAkCY6PvY
-	+gOUfLAythSkE0M3KAElY7xS94LcEooAD4FlBFdDpoCmEHWWAKXfyDbK7dliFYTpsYTkc5fyFmgDE
-	46jZ+aWw==;
+	bh=a7ZZa2fA4GJyEXrtVvhdL02eBrNP1m57y2wG+TdNGvk=; b=qZWwVxedLGGe4XD/tHTt2y07HR
+	aajWx9DstqdFIC7RATGfMSgO4onccRcueTfqDc0BIUUAit05PQV4wH4dhcgBIWF3H8CXsUJjSj9g9
+	+7Td+q4mddQ82v43/cQTqqwD3N2v4X9Rgl1bjo5un9nNO5IPKQOtwjDWRalnaeB64LKU3S6nGe5aw
+	Iro4xmOTW1mYo0muSzLgNVPMwnBJITmunxjQIJvo4SZtxBkR8LvfrsP4FVu0UIL+nJHXzTdQwphad
+	MQaVgOYIiaqK09oPPhenZ1MMUwxljouqghiylTbcIN+L6B+7gA0OsCUwomwFIzy3ocFflaN68PKq9
+	BwIAsWqg==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJC1-0000000E6jE-0A1h;
-	Tue, 05 May 2026 17:04:22 +0000
+	id 1wKJC8-0000000E6jD-3IFf;
+	Tue, 05 May 2026 17:04:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=7mMTfDZ4nl8ekfgg7b9H2X02Eg7cD6K21MT96h6gSgM=; b=lqrs5NaiurW/3Qzu8QxAnQ4eZR
-	7q8u2pxSBzFPxzE0f3Zf5vR3dU2hNLVeKug5EK4Xi52Pyl8qBj1lD/beJxEnb142Tk6qyxdzU/8g8
-	t4hAq7d1ZR66opWn8q20kdcuXd8it0YlP01CfkZC/LwSzidwHl6Xv5OmaK0u9E24y3hczLfOYvILK
-	gjNjA1S312f5bKTU2qg44u/bcF9z9cdXmW80FPprWCivMi40U1rSob5WHJu2E2tb/dLyG9z6++Oln
-	8PaDqwxZqWSxhs37g84NqqM+NYUWoz5ufhlGY2qsbkJaKtGthFiSuKSRrcAjUJH1zKnnfuHasFDpl
-	+/6HbvwQ==;
+	bh=a7ZZa2fA4GJyEXrtVvhdL02eBrNP1m57y2wG+TdNGvk=; b=LLQKluJeH1HhlGVbCfL3AwRHIL
+	sGFth6sZmW2GTqGnBYAF6i2nMdbP7RRxIvmt5IFOXxB112Me+NrmXsauMNVtPzaz/tpAZFMG3tDMu
+	FwOkbkx7DcaiuWJpkzOF9VSClFLex+iE3d2sLB0EY5b8idLV3P4z57nwer+oT5MpPT8tNFCt/3zqA
+	bR8CA6eCG89onkgWH84Rx/zULqhTBVccH8kRucH7UP/wO+w3X0o/zE5kzJ2MOa0wAbd0TNsrZIU6N
+	Dvl8wS/e4kDXmYgQY9AV6KH9MG68uKfw23rhWkYnr3Hcn6EPc+9CqeQ5Lc3BGvGo3lgVDMp8On3uW
+	9vOS9W6g==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: vkoul@kernel.org
 Cc: neil.armstrong@linaro.org,
@@ -62,16 +62,16 @@ Cc: neil.armstrong@linaro.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	jonas@kwiboo.se
-Subject: [PATCH v2 4/5] phy: rockchip: inno-usb2: Add clkout_ctl_phy support
-Date: Tue,  5 May 2026 19:04:09 +0200
-Message-ID: <20260505170410.3265305-5-heiko@sntech.de>
+Subject: [PATCH v2 3/5] dt-bindings: phy: rockchip,inno-usb2phy: Add compatible for RK3528
+Date: Tue,  5 May 2026 19:04:08 +0200
+Message-ID: <20260505170410.3265305-4-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260505170410.3265305-1-heiko@sntech.de>
 References: <20260505170410.3265305-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_180421_209782_379CDA11 
-X-CRM114-Status: GOOD (  17.18  )
+X-CRM114-CacheID: sfid-20260505_180428_975985_251DC529 
+X-CRM114-Status: GOOD (  10.38  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,127 +90,88 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-The 480m clk is controlled using regs in the PHY address space and not
-in the USB GRF address space on e.g. RK3528 and RK3506.
+The embedded USB2 PHY on RK3528 is very similar to the one in RK3568,
+the main difference being that it only uses two clocks instead of three.
 
-Add a clkout_ctl_phy usb2phy_reg to handle enable/disable of the 480m
-clk on these SoCs.
+Add compatible to support the USB2 PHY in RK3528.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- drivers/phy/rockchip/phy-rockchip-inno-usb2.c | 47 +++++++++++++++----
- 1 file changed, 38 insertions(+), 9 deletions(-)
+ .../bindings/phy/rockchip,inno-usb2phy.yaml   | 30 ++++++++++++++++---
+ 1 file changed, 26 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-index 7cec45192393..d8879fcd4291 100644
---- a/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-+++ b/drivers/phy/rockchip/phy-rockchip-inno-usb2.c
-@@ -179,6 +179,7 @@ struct rockchip_usb2phy_cfg {
- 	unsigned int	num_ports;
- 	int (*phy_tuning)(struct rockchip_usb2phy *rphy);
- 	struct usb2phy_reg	clkout_ctl;
-+	struct usb2phy_reg	clkout_ctl_phy;
- 	const struct rockchip_usb2phy_port_cfg	port_cfgs[USB2PHY_NUM_PORTS];
- 	const struct rockchip_chg_det_reg	chg_det;
- };
-@@ -228,6 +229,7 @@ struct rockchip_usb2phy_port {
-  * struct rockchip_usb2phy - usb2.0 phy driver data.
-  * @dev: pointer to device.
-  * @grf: General Register Files regmap.
-+ * @phy_base: USB PHY regmap.
-  * @clks: array of phy input clocks.
-  * @clk480m: clock struct of phy output clk.
-  * @clk480m_hw: clock struct of phy output clk management.
-@@ -245,6 +247,7 @@ struct rockchip_usb2phy_port {
- struct rockchip_usb2phy {
- 	struct device	*dev;
- 	struct regmap	*grf;
-+	struct regmap	*phy_base;
- 	struct clk_bulk_data	*clks;
- 	struct clk	*clk480m;
- 	struct clk_hw	clk480m_hw;
-@@ -312,15 +315,33 @@ static void rockchip_usb2phy_clk_bulk_disable(void *data)
- 	clk_bulk_disable_unprepare(rphy->num_clks, rphy->clks);
- }
+diff --git a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+index b95c9e3e44fe..f50fc69fbbe4 100644
+--- a/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
++++ b/Documentation/devicetree/bindings/phy/rockchip,inno-usb2phy.yaml
+@@ -20,6 +20,7 @@ properties:
+       - rockchip,rk3328-usb2phy
+       - rockchip,rk3366-usb2phy
+       - rockchip,rk3399-usb2phy
++      - rockchip,rk3528-usb2phy
+       - rockchip,rk3562-usb2phy
+       - rockchip,rk3568-usb2phy
+       - rockchip,rk3576-usb2phy
+@@ -41,11 +42,15 @@ properties:
+     maxItems: 3
  
--static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
-+static void
-+rockchip_usb2phy_clk480m_clkout_ctl(struct clk_hw *hw, struct regmap **base,
-+				    const struct usb2phy_reg **clkout_ctl)
- {
- 	struct rockchip_usb2phy *rphy =
- 		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
+   clock-names:
+-    minItems: 1
+-    items:
++    oneOf:
+       - const: phyclk
+-      - const: aclk
+-      - const: aclk_slv
++      - items:
++          - const: phyclk
++          - const: pclk
++      - items:
++          - const: phyclk
++          - const: aclk
++          - const: aclk_slv
+ 
+   assigned-clocks:
+     description:
+@@ -65,6 +70,9 @@ properties:
+     description: Muxed interrupt for both ports
+     maxItems: 1
+ 
++  power-domains:
++    maxItems: 1
 +
-+	if (rphy->phy_cfg->clkout_ctl_phy.enable) {
-+		*base = rphy->phy_base;
-+		*clkout_ctl = &rphy->phy_cfg->clkout_ctl_phy;
-+	} else {
-+		*base = rphy->grf;
-+		*clkout_ctl = &rphy->phy_cfg->clkout_ctl;
-+	}
-+}
+   resets:
+     maxItems: 2
+ 
+@@ -150,6 +158,7 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - rockchip,rk3528-usb2phy
+               - rockchip,rk3568-usb2phy
+               - rockchip,rv1108-usb2phy
+     then:
+@@ -218,6 +227,19 @@ allOf:
+         clock-names:
+           maxItems: 1
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3528-usb2phy
++    then:
++      properties:
++        clocks:
++          minItems: 2
++        clock-names:
++          minItems: 2
 +
-+static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
-+{
-+	const struct usb2phy_reg *clkout_ctl;
-+	struct regmap *base;
- 	int ret;
- 
-+	rockchip_usb2phy_clk480m_clkout_ctl(hw, &base, &clkout_ctl);
-+
- 	/* turn on 480m clk output if it is off */
--	if (!property_enabled(rphy->grf, &rphy->phy_cfg->clkout_ctl)) {
--		ret = property_enable(rphy->grf, &rphy->phy_cfg->clkout_ctl, true);
-+	if (!property_enabled(base, clkout_ctl)) {
-+		ret = property_enable(base, clkout_ctl, true);
- 		if (ret)
- 			return ret;
- 
-@@ -333,19 +354,23 @@ static int rockchip_usb2phy_clk480m_prepare(struct clk_hw *hw)
- 
- static void rockchip_usb2phy_clk480m_unprepare(struct clk_hw *hw)
- {
--	struct rockchip_usb2phy *rphy =
--		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-+	const struct usb2phy_reg *clkout_ctl;
-+	struct regmap *base;
-+
-+	rockchip_usb2phy_clk480m_clkout_ctl(hw, &base, &clkout_ctl);
- 
- 	/* turn off 480m clk output */
--	property_enable(rphy->grf, &rphy->phy_cfg->clkout_ctl, false);
-+	property_enable(base, clkout_ctl, false);
- }
- 
- static int rockchip_usb2phy_clk480m_prepared(struct clk_hw *hw)
- {
--	struct rockchip_usb2phy *rphy =
--		container_of(hw, struct rockchip_usb2phy, clk480m_hw);
-+	const struct usb2phy_reg *clkout_ctl;
-+	struct regmap *base;
-+
-+	rockchip_usb2phy_clk480m_clkout_ctl(hw, &base, &clkout_ctl);
- 
--	return property_enabled(rphy->grf, &rphy->phy_cfg->clkout_ctl);
-+	return property_enabled(base, clkout_ctl);
- }
- 
- static unsigned long
-@@ -1336,9 +1361,13 @@ static int rockchip_usb2phy_probe(struct platform_device *pdev)
- 
- 	if (!dev->parent || !dev->parent->of_node ||
- 	    of_property_present(np, "rockchip,usbgrf")) {
-+		rphy->phy_base = device_node_to_regmap(np);
-+		if (IS_ERR(rphy->phy_base))
-+			return PTR_ERR(rphy->phy_base);
- 		rphy->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,usbgrf");
- 	} else {
- 		rphy->grf = syscon_node_to_regmap(dev->parent->of_node);
-+		rphy->phy_base = rphy->grf;
- 	}
- 	if (IS_ERR(rphy->grf))
- 		return PTR_ERR(rphy->grf);
+   - if:
+       properties:
+         compatible:
 -- 
 2.47.3
 
