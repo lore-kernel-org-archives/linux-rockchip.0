@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D287FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 10:47:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B94CFF885A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 12:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AQq2tYYxDkDDzCC+2MTlwPw9UgdrvPHOUD130JfhkpY=; b=LjL7FXyjTiT2Ru
-	APpnsWZEnlEHYud6xp+EQZk64SgTPf9F4U+xFfZ7/5H23197RJodXYv7I0YWyrYXCSqrEnDuCvkoE
-	ed8FdBfIpL1aSwD6F4JZLndX6LJY1FhMnrt9oANBojKiv8/gYwOHrZ22NSz5WxN5BEjTn1ABd+S/2
-	zbh1TJcU5AEpySb1A5KveWxx/uTejtNjgPnkM2KnS8Q3mBWFWShg0WA5JJ/IND16Z1ZK8adFpVafa
-	0sSd1GO2B92m5w6OzkevcP1CkzGO8NXbPjSHwBoVUv5wXh8IwCEXtmVnLJi5OrIhKdO8RnZE0arTr
-	BpJsNm6RmHh0NyrPzxqA==;
+	List-Owner; bh=XhZDHYxO8WhRkFN9WoQ9ofqnbUjWQbJBA8Ou1HFGHa4=; b=5BTGXhnOt6s4Dr
+	wvHzO4NvPIRtfIrpCZm6gmn4j9/JYtifK4GmdKR/kWfA0hm2/nrKQBWodbioUx8EgBksMYniusH4K
+	bq5gz2kavKR4ymzEDRHOS56h24lab7zvDg1LDVrindABBT5tZwMgbQ6qG6gND/8LyvkZyZ2P4vsxN
+	wtR0QMwKa0d7M3r6uVztHL8cSR3yFACXXAN1K8Zyo1FOsBdjzsN8v2/Gd48isQcpxdRm6RWqPmIZv
+	86E6b9dBcbKZhH5SGxcySkGGLFNtGHK0XF2lWZmHcFEzQw4YiWv9l3UCV/ORuPqxeqB+nvNhpS7X6
+	wo35QMPB+mT/k5df80nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKDIu-0000000FwGX-1IZm;
-	Tue, 05 May 2026 10:47:04 +0000
+	id 1wKFKI-0000000GFgp-24W4;
+	Tue, 05 May 2026 12:56:38 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKDIs-0000000FwGE-360C
+	id 1wKFKG-0000000GFfo-2h5w
 	for linux-rockchip@lists.infradead.org;
-	Tue, 05 May 2026 10:47:02 +0000
+	Tue, 05 May 2026 12:56:36 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2B26160128;
-	Tue,  5 May 2026 10:47:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A848CC2BCB4;
-	Tue,  5 May 2026 10:46:56 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id DE7DA6014C
+	for <linux-rockchip@lists.infradead.org>; Tue,  5 May 2026 12:56:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 94EE1C2BCF4
+	for <linux-rockchip@lists.infradead.org>; Tue,  5 May 2026 12:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777978021;
-	bh=32TlcTEMx1Mbzn0Gs/lnWQJYQ/HQQGkV76hj7abltnI=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Lq4H0nb5HiXE61wqdYfomuRUiD/XFJrizuaazj16cX+AMeQtPAns4fqnENEEoHLag
-	 PwV+IjgIA/8cMIUw7xWpxi+stmkPnj1CblvqwwOwgWxQ1PoVu3//SZgvQBv4hAgmrj
-	 3w8+IvDH1PgO3OZ8RvdawYWTdSh4QtsZCqoXN1NDC9X3z8QXwokzsoEHxqFw72m3Ax
-	 dhE0Tani24Z7b3BYSA4NQkFYshXM/C3Be/wAqq4GTvLbnccMais6kc9kvqLUCj/WYG
-	 mSaDhlqetBgjda78DEd9GoogfqaWcMIaIdqWbemgPmoud3zd48fH54TdZWvoHLn7iM
-	 +IgcsDzwDPkWg==
-Date: Tue, 5 May 2026 11:46:51 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
- dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
- andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V4 09/10] iio: imu: inv_icm42607: Add Gyroscope to
- icm42607
-Message-ID: <20260505114651.57adbadf@jic23-huawei>
-In-Reply-To: <20260501221152.194251-10-macroalpha82@gmail.com>
-References: <20260501221152.194251-1-macroalpha82@gmail.com>
-	<20260501221152.194251-10-macroalpha82@gmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	s=k20201202; t=1777985795;
+	bh=ZUs4wo3g3+7GpdmJ7ncT0CXa7bmF1VEsrvwglg4jLoE=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
+	b=hzodQ2NCG9zoh2XqXyjZl5yyYhCcjuWCm9xc/oDTNJN1WJLwwL4HFEEMw9c8vQxSB
+	 //Xl5vKkviuGByHP5wUr5ppSPYKuYFZ9OO0iUFN3H3myUY7ktL+tolifDlitP26ngm
+	 P2Ng3zfyVql6y1Oc8dn9tQA25C4f7gJ1V3P6lr+Dy5b8QDs61od9yKdadTwEqofx7E
+	 Iux2b2dydeMXEVmqSYTJjk9HGstHpKXAO8vFfXpOiEYdHQ91v0SIZi5qVgvaVmyMys
+	 EbFAso9I0L52rHJC+2erRMZ8fQaDgGu0r7ZbzddawxTG6n08oAPfF2l+Dt5FJRIgUN
+	 IED1yLyvleX7A==
+Received: by mail-lj1-f179.google.com with SMTP id 38308e7fff4ca-3937014be0cso31957071fa.0
+        for <linux-rockchip@lists.infradead.org>; Tue, 05 May 2026 05:56:35 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ/3Nmis1uE8+vbgKJZTQdT0NhbBxxCo3Dj3CTNb6AbMfGCk7rKs3wLIp7jcA1JGdHVa2WhRSFrBTLkA3HNLEg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzwfYx+gz4AHjofNjbE/NnRHEBE+TfPdFSMzr4LujlGmLhwN+CT
+	Yvg3VbfN5zpMW3VjsODaix5m+zBOCfZvfN3KI82G9Br4VYjBr0XAJ5BJjmM/rpcz5r2uaz+qrOX
+	RSBSA3wuVJS5uelookz0B2361RNxfzZc=
+X-Received: by 2002:a05:651c:324e:b0:38e:aeab:9ba6 with SMTP id
+ 38308e7fff4ca-3937850065bmr44277651fa.24.1777985794358; Tue, 05 May 2026
+ 05:56:34 -0700 (PDT)
 MIME-Version: 1.0
+References: <20260505094321.75040-3-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260505094321.75040-3-krzysztof.kozlowski@oss.qualcomm.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Tue, 5 May 2026 14:56:23 +0200
+X-Gmail-Original-Message-ID: <CAD++jLmzzcp+CUKmr6-WLcDmB2zaOki_DTkvADOQ6V-1g710HA@mail.gmail.com>
+X-Gm-Features: AVHnY4L5pGyidj4m0uJSds10p3ObB3yt2OdQMJ_NihpEGQGZ3UJKnYpGnOY1ZG8
+Message-ID: <CAD++jLmzzcp+CUKmr6-WLcDmB2zaOki_DTkvADOQ6V-1g710HA@mail.gmail.com>
+Subject: Re: [PATCH 1/2] pinctrl: bcm: Move MODULE_DEVICE_TABLE next to the
+ table itself
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
+	Scott Branden <sbranden@broadcom.com>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,27 +78,21 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri,  1 May 2026 17:11:48 -0500
-Chris Morgan <macroalpha82@gmail.com> wrote:
-
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add gyroscope functions to the icm42607 driver.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-From a quick look, feedback will be near identical to the accelerometer
-driver, so just check this for similar things to change.
-
-Thanks,
-
-Jonathan
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBNYXkgNSwgMjAyNiBhdCAxMTo0M+KAr0FNIEtyenlzenRvZiBLb3psb3dza2kKPGty
+enlzenRvZi5rb3psb3dza2lAb3NzLnF1YWxjb21tLmNvbT4gd3JvdGU6Cgo+IEJ5IGNvbnZlbnRp
+b24gTU9EVUxFX0RFVklDRV9UQUJMRSgpIGltbWVkaWF0ZWx5IGZvbGxvd3MgdGhlIElEIHRhYmxl
+IGl0Cj4gZXhwb3J0cywgYmVjYXVzZSB0aGlzIGlzIGVhc2llciB0byByZWFkIGFuZCB2ZXJpZnku
+ICBJdCBhbHNvIG1ha2VzIG1vcmUKPiBzZW5zZSBzaW5jZSAjaWZkZWYgZm9yIEFDUEkgb3IgT0Yg
+Y291bGQgaGlkZSBib3RoIG9mIHRoZW0uCj4KPiBNb3N0IG9mIHRoZSBwaW4gY29udHJvbGxlciBk
+cml2ZXJzIGFscmVhZHkgaGF2ZSB0aGlzIGNvcnJlY3RseSBwbGFjZWQsCj4gc28gYWRqdXN0IHRo
+ZSBvdGhlciBkcml2ZXJzLiAgTm8gZnVuY3Rpb25hbCBpbXBhY3QuCj4KPiBTaWduZWQtb2ZmLWJ5
+OiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQG9zcy5xdWFsY29tbS5j
+b20+CgpQYXRjaCBhcHBsaWVkLgoKWW91cnMsCkxpbnVzIFdhbGxlaWoKCl9fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
+bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
+YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
