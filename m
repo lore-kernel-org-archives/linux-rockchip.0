@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B29ECD3427
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 13:23:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19FFAFF8855
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 15:44:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=o3kvbtp1TCglhwsLVFZy2WfIRn214l3TDcuj4K0HeKI=; b=H7yiy0XWpwoqbB
-	RfUPHvmP9VgvPkhoLy4st6roMGsfkLTcCHsL+xOcbEWEgtWj/U1iRuD081vJH12YeBruhJs42tu9x
-	O9uHAGSTQ8tNj2G+MFzqVm36E7GPXkMudqBbRnnh00UUeMlka1Xd9SGnQKv5g8fwXkHtonO/K1p9Y
-	2OS3FO/0xJs2ExZMMAgeVY7rXHI+fx6Gzwh8KIDqQ6vegGsi6a+B0/4AdSbTyJp6l9F4sBQr3X7wT
-	jkDnIcweNlgmICRefkETs91kyk35cIeGOA96KyR0u55SLFSDcj4eaSGRTi6jo/i7zCZpH1SYOaouz
-	bi1a3mRe3PHVZE8NgU8g==;
+	List-Owner; bh=QenSE31+PMtIJJ9yvUXLhwoxpKRO4WcEoDJQcqqJ508=; b=hx1RUMdWX21sBO
+	ejXFC8lBz5QP7ojBHZvv54npJk3lYutvq5T1dvjVwLAvlbtNRCK9GV9japoJ5zNxwSTD/ruWGfTOK
+	bANXI50a8aQLOlNWi0P2AQEW2x5QatfMfE2pKGfIaBfPPzj4j+Rwa5Hp3S21jdEO57bthmaPwrWUz
+	FmCjA576PLei8VhakzmZXIoIKcFCS/xvOVxrgffYo7v5hS9kDYGXULugs6NoTWScCMq3BiH9SbPwS
+	LZuIKSAP/AKXFfS+0vlxQ+enV7S3jDNvaozvD6ccKnrLtmoMOPhuxaIUOaoQ7y0kNPtNmo9SIRPfz
+	DQOStZZTRWU9IYm+1aog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKFk2-0000000GKWm-3r3A;
-	Tue, 05 May 2026 13:23:14 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wKHwW-0000000GhOI-3e9R;
+	Tue, 05 May 2026 15:44:16 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKFk1-0000000GKWD-2Tuy;
-	Tue, 05 May 2026 13:23:13 +0000
+	id 1wKHwT-0000000GhN6-191B;
+	Tue, 05 May 2026 15:44:14 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id BBFA760154;
-	Tue,  5 May 2026 13:23:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D97E4C2BCB4;
-	Tue,  5 May 2026 13:23:09 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 73CB744301;
+	Tue,  5 May 2026 15:44:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F875C4DDFD;
+	Tue,  5 May 2026 15:44:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777987392;
-	bh=cefudk32snOl/nbbvFdfp5Vnw/EQCTWqq5PCVaxb3Qo=;
-	h=From:To:In-Reply-To:References:Subject:Date:From;
-	b=rkYpK2pRxq7d9ml/8BrXHNIVzBelWfsJF2TH3LPXWtB2cV99dAyBvB8zTqqJXZnMY
-	 MzHCKiIqtcRuCca4DVRjOlq24BbpNH8loMORCuNiLuidLcuyfq8fMWYLwVlH+cc+tn
-	 7TOhhYZZNerTdS6IAH071Sefz4k1vRepSAf1aO9bFGH+F2H3Vxe3BpJfeTYbAcEsXD
-	 UYZiG38zX72VdeyPFbEd9XK6Klt52t2oiZRzQmbjcnVcfw0ZaclgMXLjly2uVhuryc
-	 FPcb9uNNExz1rcKi68iJgudygnnibYVnBZd7/Ee2XjrwByZ01X6MPPx6rN1OJDY3p6
-	 FgYTwwru7c00w==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
- Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
- Thierry Reding <thierry.reding@kernel.org>, 
- Jonathan Hunter <jonathanh@nvidia.com>, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-In-Reply-To: <20260505102803.183455-3-krzysztof.kozlowski@oss.qualcomm.com>
-References: <20260505102803.183455-3-krzysztof.kozlowski@oss.qualcomm.com>
-Subject: Re: [PATCH 1/2] ASoC: tegra: Move MODULE_DEVICE_TABLE next to the
- table itself
-Message-Id: <177798325040.568329.5475184475659729159.b4-ty@b4>
-Date: Tue, 05 May 2026 21:14:10 +0900
+	s=k20201202; t=1777995852;
+	bh=bCfTXkwP7yBiyRfwzj60VulBmDVM9WEMccCuTjm8a+s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=ZItYsX404FwWlF0T8mi9a5gwpg1xS41MfCS9MNaiGaB2WjaQsjD3dfU6iyll1hJV1
+	 iE3Y0c/oCc/l/ZdDFpvgdQiVc7ZvSPMCRVaN8snLZQWqfShFEOQvkkQtjcMiOuWdzd
+	 N/NG3vthwJ2EAX2ZqVXUjIe4AHv9HVNKY5VoAFPh0JSEz8sceIzornRjw151FFfXHh
+	 WOH15wrp6LvGmPgcB+XS/l2acxvKxxTcq/8GZM7xfwPqFor+XCNn9KSDjLVOnE8q4q
+	 BjzoDFMCTNtn52QKhSo4KtP+uADnPkFo9mwz8YuFKyFoRAshHQiFgF570WPgEEE2az
+	 0qgmDcLEIIvZg==
+Date: Tue, 5 May 2026 10:44:10 -0500
+From: Rob Herring <robh@kernel.org>
+To: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Frank Wang <frank.wang@rock-chips.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Yubing Zhang <yubing.zhang@rock-chips.com>,
+	Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	kernel@collabora.com, devicetree@vger.kernel.org
+Subject: Re: [PATCH v4 01/16] dt-bindings: phy: rockchip-usbdp: add improved
+ ports scheme
+Message-ID: <20260505154410.GA2973821-robh@kernel.org>
+References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
+ <20260428-rockchip-usbdp-cleanup-v4-1-7775671ece22@collabora.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.16-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1281; i=broonie@kernel.org;
- h=from:subject:message-id; bh=cefudk32snOl/nbbvFdfp5Vnw/EQCTWqq5PCVaxb3Qo=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp+e88pPymfwqltCc9XAr3YDRsUA7DBlqSCA6Is
- JH013PlTkaJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCafnvPAAKCRAk1otyXVSH
- 0IFdB/wM8EiD0jprJ3GQuxIGKno9/xqIRj95icFwM4m1Ni+Xe9fgCyCV0qOqEv2oLeAfHUmypV2
- pB5UfRncjVuIpLh07vtuCI2wDBP91FZOLI31oSWi31Zt0nHoQ8AFOPpifk6jRY/eaPQjrd0PyqT
- 8wz9pBYX+fxyPMXbi8emdbChfpZqtaGdd6L+4uwMH2bdFBTBGj15A/IA+QKf+3Tmx7he98vHZH0
- Czk3cuNpRDfyLgS4EgHv5pK2wiXMRpHBbpAn0Qwbh04h6gNQIfkvixhLUHkSX7VlheOOo1IWwjm
- QYXgcnoo6ACsHm4/+Oqz8fCEUxz1EHkBqH092FhhNUIjRpl5
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Disposition: inline
+In-Reply-To: <20260428-rockchip-usbdp-cleanup-v4-1-7775671ece22@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260505_084413_351047_3580305E 
+X-CRM114-Status: GOOD (  20.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,39 +84,64 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, 05 May 2026 12:28:04 +0200, Krzysztof Kozlowski wrote:
-> ASoC: tegra: Move MODULE_DEVICE_TABLE next to the table itself
+On Tue, Apr 28, 2026 at 06:13:40PM +0200, Sebastian Reichel wrote:
+> Currently the Rockchip USBDP PHY is missing a documented port scheme.
+> Meanwhile upstream RK3588 DTS files are a bit messy and use different
+> port schemes. The upstream USBDP PHY Linux kernel driver does not yet
+> parse the ports at all and thus does not create any implicit ABI either.
+> 
+> But with the current mess it is not possible to properly support USB-C
+> DP AltMode. Thus this introduces a proper port scheme following roughly
+> the ports design of the Qualcomm QMP USB4-USB3-DP PHY controller binding
+> with a slight difference that there is an additional port for the
+> USB-C SBU port as the Rockchip USB-DP PHY also contains the SBU mux.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Applied to
+Missing my tag.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
-
-Thanks!
-
-[1/2] ASoC: tegra: Move MODULE_DEVICE_TABLE next to the table itself
-      https://git.kernel.org/broonie/sound/c/a28d17fdd3f7
-[2/2] ASoC: rockchip: Move MODULE_DEVICE_TABLE next to the table itself
-      https://git.kernel.org/broonie/sound/c/7ed0e11bea0e
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+> ---
+>  .../bindings/phy/phy-rockchip-usbdp.yaml           | 23 ++++++++++++++++++++++
+>  1 file changed, 23 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+> index 8b7059d5b182..f728acf057e4 100644
+> --- a/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+> +++ b/Documentation/devicetree/bindings/phy/phy-rockchip-usbdp.yaml
+> @@ -114,6 +114,29 @@ properties:
+>        A port node to link the PHY to a TypeC controller for the purpose of
+>        handling orientation switching.
+>  
+> +  ports:
+> +    $ref: /schemas/graph.yaml#/properties/ports
+> +    properties:
+> +      port@0:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          Output endpoint of the PHY for USB (or DP when configured into 4 lane
+> +          mode), which should point to the superspeed port of a USB connector.
+> +
+> +      port@1:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Incoming endpoint from the USB controller
+> +
+> +      port@2:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description: Incoming endpoint from the DisplayPort controller
+> +
+> +      port@3:
+> +        $ref: /schemas/graph.yaml#/properties/port
+> +        description:
+> +          Output endpoint of the PHY for DP, which should either point to the
+> +          SBU port of a USB-C connector or a DisplayPort connector input port.
+> +
+>  required:
+>    - compatible
+>    - reg
+> 
+> -- 
+> 2.53.0
+> 
 
 _______________________________________________
 Linux-rockchip mailing list
