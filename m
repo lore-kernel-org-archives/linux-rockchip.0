@@ -4,67 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C88DCD3439
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 17:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE8AFFF8855
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 17:29:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VSCaVo/pj3Qy+LG/azcU78zriJvpmc+kgDa1UHAnEO8=; b=LwssoZM+5fA+A1
-	u036IBw176w+zB96mEi4QJKE7vewQArCLhytGmQI5S/iN6hWXEyV2bbfjce7W6goR3t5Zc2A+Jydo
-	3dMLWcXmdtFp13lWR99YMNgo96KUSd/ju33S2N62ScvlqPbe0A5QJ143hYDSCNcWqCh/cx9fxRfFQ
-	9/8yCjcuW9SdM2zY23/yK2bsgQF+yoAPy5m0SgMh91TSj5MyqCEPAQ9weRS0cRzA9FpB/z/b8cHZo
-	vvV3dsyzRvnTtDIcATXNxmNZO4u7QvN0dEiC+jeVPtqgMKX9M3XW1y/3InvD8DfcvOmzA33pcDoH0
-	80IolFpHrW/ju9pkT4Jw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=nrcpsu7PiRDLtW5lIP+0B0GmxtybnNWk0lrSP8FqjLg=; b=p7Z86w7gm6VtLY
+	p7g32SxRj18rzaE7N0gDhb16fD4KCsVg0T4RbuSo5lO8upHujdonRDZ06gmPh1k4WXg/D01U11YOD
+	9+lADd1h0H1nq6s1oIRMuwP8kJywF0P3EdMyazeWfswcWm7bFFhVx56p5pUHvXv3nGKOewXj7mdFl
+	wPafmhbYuv+YJAHpRGrtOMVGcqqLcJSstjFVGgFBYeiQU4xocq0vv9qbzjLUHrp3WopER9NVbnf/t
+	TyDlUmdobxFnfsVmrXPWsqnVKGjNiagHo+dhHsfWrs+eZradXl6X8xvQW4iiqUOp8efQ7HtIIjlZG
+	syS4ktqzaC9RkQKbuzHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJv-0000000H13D-36Gf;
-	Tue, 05 May 2026 17:12:31 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wKJa9-0000000H3cC-0oM6;
+	Tue, 05 May 2026 17:29:17 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJr-0000000H0wB-44vA;
-	Tue, 05 May 2026 17:12:27 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=UQYb9cx7Qy9HM2zG1blx8dDESq371LLINBDgwuG2XgM=; b=C5gbFqFSgN+Y5S3ACphkwJOBM/
-	D7rlCCaffTtUgYumlyjC6W8Pt0cSaSfDEddlsu+INX6BMg8Jo6Ma2TAGWRHF+mwUSaWoqMTEioK6c
-	M+Hh7DQwcbhMBA6h9FrcCUJbMYGMvno6hGPRxNnU9mdvcz3lvaWaD1LJBeI0KVpRvx9C166C8M7D8
-	wzkEEyBCnKUl33TF0e07XWKAW4YN3AH9J+xrk98WSg4W4v/jICtkGrmzf5GcEsAvSg0On55suL1oN
-	2DKrZm46rnbWFR7nBdK1P4lilpi/ndOXCsTPEcT81NZNkpABIgeKdF8Aemfn8Uhpv1mpjrrg2nm94
-	eaVdxtfg==;
-Received: from gloria.sntech.de ([185.11.138.130])
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKJJp-0000000E85D-0jIe;
-	Tue, 05 May 2026 17:12:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=UQYb9cx7Qy9HM2zG1blx8dDESq371LLINBDgwuG2XgM=; b=M+TyBoi5RbYqE5X3+oLFHJXzIf
-	kHSu1/BoxKyQlALWb7jDAN3l9PENbcTjYVK/3qH5yE3aJIbJzLnQCB+MJsImcoEImhc4BoZP+5RxT
-	+W2lS5fJ6pdkKbQpLO0sW7FzO2qUrowP41pqq6bWIhRHdDG4n1ek0+oWmGFjISZSzec+dg3DL/Sqy
-	d0y7nJLK25DmIaXZiquXSizgjTeX1/RJARU3gHdQ/RnTda5SX4JkLXs0trXPEqBswvPGUrEixTQbO
-	1J8idjx6VG/3p4SzWmA+QeBvA3Bz3rQMrjm2zoCsv1txIXG7s2qq1M9sw9uUUzDhR1JutWOnIJM7D
-	00qnKENA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: jonas@kwiboo.se,
-	linux-arm-kernel@lists.infradead.org,
+	id 1wKJa6-0000000H3bc-2DU9
+	for linux-rockchip@lists.infradead.org;
+	Tue, 05 May 2026 17:29:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id BB20442A81;
+	Tue,  5 May 2026 17:29:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A70FCC2BCB4;
+	Tue,  5 May 2026 17:29:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778002153;
+	bh=a2VxScLn6dlcb/B5AXY9SHUXcMy7dE/2xkJkiH/Eh64=;
+	h=From:To:Cc:Subject:Date:From;
+	b=GG+WlmF81wNTntNhmwTh+yozRh7WXzFRPrLxFe5qtm8PDNgQQ7GMWVQkCL0zAoOGj
+	 UkPotkAd/zlKhVaS1zZb9ZKKvsvuizmVFUUKc9sP3d8DB+V8+tbkXsG7/378gegIQK
+	 6+SgiH8AOiMdlyzQsyMYY7LscWi0kvKqD1yPLEBl2xBKuEqU5Czz6JRYIoubzsTssC
+	 JIz7YBmDStHS/iurX91bFDcZ6sETLo6JZSks3LvPQphOtkEfgVWODbSRJTQkeomn2H
+	 ZS7V/pnYFMNh8i1RbEUfSxV7rgjbVioCIc+2mj1FFeDnJvknwvFM9LYsnlJxdgqllg
+	 nAeWRu7l8G3cg==
+From: Chen-Yu Tsai <wens@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Chen-Yu Tsai <wens@kernel.org>,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH v2 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
-Date: Tue,  5 May 2026 19:12:07 +0200
-Message-ID: <20260505171208.3267387-5-heiko@sntech.de>
+	devicetree@vger.kernel.org
+Subject: [PATCH] arm64: dts: rockchip: rk3399-nanopi-r4s: Disable removed devices
+Date: Wed,  6 May 2026 01:29:02 +0800
+Message-ID: <20260505172903.33271-1-wens@kernel.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260505171208.3267387-1-heiko@sntech.de>
-References: <20260505171208.3267387-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_181225_341351_5C1CC454 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20260505_102914_611636_7F8D00EA 
+X-CRM114-Status: UNSURE (   8.21  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,53 +72,134 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+While the design of the NanoPi R4S is based on the common NanoPi 4
+family, it is trimmed down a lot.
 
-The ArmSoM Sige1 has two USB 2.0 Type-A HOST ports behind an onboard
-USB hub, and one USB 2.0 Type-C OTG port.
+Disable all the peripherals on the SoC that are not used, and delete
+all the external components that are not present.
 
-Add support for using the USB 2.0 ports on ArmSoM Sige1.
-
-The onboard USB hub handles OHCI so only the EHCI controller is enabled.
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+Signed-off-by: Chen-Yu Tsai <wens@kernel.org>
 ---
- .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 24 +++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ .../boot/dts/rockchip/rk3399-nanopi-r4s.dtsi  | 68 +++++++++++++++++++
+ 1 file changed, 68 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-index c41af8fc0c8d..e15a4b2a1208 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-@@ -480,3 +480,27 @@ bluetooth {
- 		vddio-supply = <&vcc_1v8>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+index 3a9a10f531bd..4274d1b6e80a 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3399-nanopi-r4s.dtsi
+@@ -66,16 +66,41 @@ &emmc_phy {
+ 	status = "disabled";
+ };
+ 
++/* No USB type-C PD power manager */
++/delete-node/ &fusb0;
++
++&i2c1 {
++	status = "disabled";
++};
++
+ &i2c4 {
+ 	status = "disabled";
+ };
+ 
++&i2c7 {
++	status = "disabled";
++};
++
++&i2s2 {
++	status = "disabled";
++};
++
++&hdmi {
++	status = "disabled";
++};
++
++&hdmi_sound {
++	status = "disabled";
++};
++
+ &pcie0 {
+ 	num-lanes = <1>;
+ 	vpcie3v3-supply = <&vcc3v3_sys>;
+ };
+ 
+ &pinctrl {
++	/delete-node/ fusb30x;
++
+ 	gpio-leds {
+ 		/delete-node/ status-led-pin;
+ 
+@@ -101,14 +126,21 @@ reset_button_pin: reset-button-pin {
  	};
  };
-+
-+&usb_host0_ehci {
-+	status = "okay";
+ 
++&pwm0 {
++	status = "disabled";
 +};
 +
-+&usb_host0_xhci {
-+	extcon = <&usb2phy>;
-+	maximum-speed = "high-speed";
-+	phys = <&usb2phy_otg>;
-+	phy-names = "usb2-phy";
-+	status = "okay";
+ &sdhci {
+ 	status = "disabled";
+ };
+ 
+ &sdio0 {
++	/delete-property/ mmc-pwrseq;
+ 	status = "disabled";
+ };
+ 
++/delete-node/ &sdio_pwrseq;
++
+ &u2phy0_host {
+ 	phy-supply = <&vdd_5v>;
+ };
+@@ -119,12 +151,48 @@ &u2phy1_host {
+ 
+ &uart0 {
+ 	status = "disabled";
++
++	/delete-node/ bluetooth;
+ };
+ 
++&u2phy1_host {
++	status = "disabled";
 +};
 +
-+&usb2phy {
-+	status = "okay";
++&usb_host1_ehci {
++	status = "disabled";
 +};
 +
-+&usb2phy_host {
-+	status = "okay";
++&usb_host1_ohci {
++	status = "disabled";
++};
+ &usbdrd_dwc3_0 {
+ 	dr_mode = "host";
+ };
+ 
++/delete-node/ &vbus_typec;
++
+ &vcc3v3_sys {
+ 	vin-supply = <&vcc5v0_sys>;
+ };
++
++&vopb {
++	status = "disabled";
 +};
 +
-+&usb2phy_otg {
-+	status = "okay";
++&vopb_mmu {
++	status = "disabled";
 +};
++
++&vopl {
++	status = "disabled";
++};
++
++&vopl_mmu {
++	status = "disabled";
++};
++
++/delete-node/ &bt_host_wake_l;
++/delete-node/ &bt_reg_on_h;
++/delete-node/ &bt_wake_l;
++/delete-node/ &wifi_reg_on_h;
 -- 
 2.47.3
 
