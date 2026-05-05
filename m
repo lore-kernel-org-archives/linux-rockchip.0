@@ -4,73 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81DF1FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 12:56:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B29ECD3427
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 13:23:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:To:From:Reply-To:Cc:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XhZDHYxO8WhRkFN9WoQ9ofqnbUjWQbJBA8Ou1HFGHa4=; b=e1d2GeK07eE/+9
-	ZJkM5A/vZtru8BhicAbubO7SW5MY2e/7OjV7axpoK12fwDjPb5w+fkbY3yHfWQ4c37JkbIgCak1CP
-	j8nQPxjKVW3+QeKUgBMc1zo9u8tUzwDwkEVL4xmz8np8mYpripUdmCac/rLXJnQrf15vZzmYBlnRl
-	tjQUsK7oMqQbuSXIaGRki3isg0iy9fKLM8bTyOTeRMqyWihFzwLjgxM6qBh8HNbnNzEHuCYiRwUfJ
-	jVAkoEW703QDhlqMouyRlNh93FQM4je13Wzwgz8gggvndu0haWwPGR+jH9E1y8onx09wFQjXIxpXG
-	cM5Wc7D6f+/3ULWkgnpw==;
+	List-Owner; bh=o3kvbtp1TCglhwsLVFZy2WfIRn214l3TDcuj4K0HeKI=; b=H7yiy0XWpwoqbB
+	RfUPHvmP9VgvPkhoLy4st6roMGsfkLTcCHsL+xOcbEWEgtWj/U1iRuD081vJH12YeBruhJs42tu9x
+	O9uHAGSTQ8tNj2G+MFzqVm36E7GPXkMudqBbRnnh00UUeMlka1Xd9SGnQKv5g8fwXkHtonO/K1p9Y
+	2OS3FO/0xJs2ExZMMAgeVY7rXHI+fx6Gzwh8KIDqQ6vegGsi6a+B0/4AdSbTyJp6l9F4sBQr3X7wT
+	jkDnIcweNlgmICRefkETs91kyk35cIeGOA96KyR0u55SLFSDcj4eaSGRTi6jo/i7zCZpH1SYOaouz
+	bi1a3mRe3PHVZE8NgU8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKFKX-0000000GFmP-1YN6;
-	Tue, 05 May 2026 12:56:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wKFk2-0000000GKWm-3r3A;
+	Tue, 05 May 2026 13:23:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKFKU-0000000GFl4-3E3B
-	for linux-rockchip@lists.infradead.org;
-	Tue, 05 May 2026 12:56:51 +0000
+	id 1wKFk1-0000000GKWD-2Tuy;
+	Tue, 05 May 2026 13:23:13 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6AF8F43892
-	for <linux-rockchip@lists.infradead.org>; Tue,  5 May 2026 12:56:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C0F5C2BCC7
-	for <linux-rockchip@lists.infradead.org>; Tue,  5 May 2026 12:56:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BBFA760154;
+	Tue,  5 May 2026 13:23:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D97E4C2BCB4;
+	Tue,  5 May 2026 13:23:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1777985810;
-	bh=ZUs4wo3g3+7GpdmJ7ncT0CXa7bmF1VEsrvwglg4jLoE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc:From;
-	b=TW8pdnz6ylCu+n5A3jS6uOFfm1r+mrh5QJj/b5ngfXVDaIb6sHGRAklRK+cd8AwyJ
-	 LM4uXqHWrv1OQYhOadPOWdI0+97b/ql0+GrGkVegK8/S2QGKL5MSYZaa71wfnd8cPI
-	 BtaZlO4QuaxNAyVQCaqeW8pMIP9qhv1FpLcMKgHItIIKnZn+Wc9rdz4yx5dy5wT5PO
-	 t/CZudqTq/6Q/Ajl0B6O+Cp5L/3u5wVQrHWbmJYuJ7pg4XoxkaBSFzCIDYWaJm9JQD
-	 h4c5Z+uVfXj3DdraDaZGDRkC9kELRIYwtQQwaE2rmuZiTAm9RtmBcbK/VRcD310Tg9
-	 A8JBWqsMhnijQ==
-Received: by mail-lj1-f182.google.com with SMTP id 38308e7fff4ca-3870778358aso36558871fa.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 05 May 2026 05:56:50 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AFNElJ+ZLx+wchICPz1LH5g44Ts7PCKeaht+8GDfSUTIuMoo7WpQgaMq8MSYcgRr9MZgxMrXA2DwgPRFFB0u+qHQtw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YzGz6HWW1HXUO61uHuBUd47QeGzh7G5+vbTCJuhlk4ZYED8yMDz
-	VlgCGOPET3yfciEKpoJD0QxXqmG/Fpp+MZsWiYZ5JXikq/J5hPQ8s5mF0wFOaPGCmLUdjdp8A+F
-	op0FOuBTP5SAbrzRSdoQZ//4TXzf4epk=
-X-Received: by 2002:a2e:be0c:0:b0:38a:a77a:b0b2 with SMTP id
- 38308e7fff4ca-393785870femr48588051fa.30.1777985808984; Tue, 05 May 2026
- 05:56:48 -0700 (PDT)
+	s=k20201202; t=1777987392;
+	bh=cefudk32snOl/nbbvFdfp5Vnw/EQCTWqq5PCVaxb3Qo=;
+	h=From:To:In-Reply-To:References:Subject:Date:From;
+	b=rkYpK2pRxq7d9ml/8BrXHNIVzBelWfsJF2TH3LPXWtB2cV99dAyBvB8zTqqJXZnMY
+	 MzHCKiIqtcRuCca4DVRjOlq24BbpNH8loMORCuNiLuidLcuyfq8fMWYLwVlH+cc+tn
+	 7TOhhYZZNerTdS6IAH071Sefz4k1vRepSAf1aO9bFGH+F2H3Vxe3BpJfeTYbAcEsXD
+	 UYZiG38zX72VdeyPFbEd9XK6Klt52t2oiZRzQmbjcnVcfw0ZaclgMXLjly2uVhuryc
+	 FPcb9uNNExz1rcKi68iJgudygnnibYVnBZd7/Ee2XjrwByZ01X6MPPx6rN1OJDY3p6
+	 FgYTwwru7c00w==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Heiko Stuebner <heiko@sntech.de>, 
+ Nicolas Frattaroli <frattaroli.nicolas@gmail.com>, 
+ Thierry Reding <thierry.reding@kernel.org>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-tegra@vger.kernel.org, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260505102803.183455-3-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20260505102803.183455-3-krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH 1/2] ASoC: tegra: Move MODULE_DEVICE_TABLE next to the
+ table itself
+Message-Id: <177798325040.568329.5475184475659729159.b4-ty@b4>
+Date: Tue, 05 May 2026 21:14:10 +0900
 MIME-Version: 1.0
-References: <20260505094321.75040-3-krzysztof.kozlowski@oss.qualcomm.com> <20260505094321.75040-4-krzysztof.kozlowski@oss.qualcomm.com>
-In-Reply-To: <20260505094321.75040-4-krzysztof.kozlowski@oss.qualcomm.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Tue, 5 May 2026 14:56:37 +0200
-X-Gmail-Original-Message-ID: <CAD++jLn-QPagz4m6jkYU6JJS22cRZrsGA=h20JiSvn-3Pxq=Dg@mail.gmail.com>
-X-Gm-Features: AVHnY4Igt9-o67zqCdCfXKKYOq79SDn0cypO6X1gGr102Z0s00tmMJ-a4onPwSE
-Message-ID: <CAD++jLn-QPagz4m6jkYU6JJS22cRZrsGA=h20JiSvn-3Pxq=Dg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] pinctrl: rockchip: Move MODULE_DEVICE_TABLE next to
- the table itself
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: =?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <rjui@broadcom.com>, 
-	Scott Branden <sbranden@broadcom.com>, Heiko Stuebner <heiko@sntech.de>, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_055650_824316_15EF8DC2 
-X-CRM114-Status: UNSURE (   9.56  )
-X-CRM114-Notice: Please train this message.
+X-Mailer: b4 0.16-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1281; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=cefudk32snOl/nbbvFdfp5Vnw/EQCTWqq5PCVaxb3Qo=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBp+e88pPymfwqltCc9XAr3YDRsUA7DBlqSCA6Is
+ JH013PlTkaJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCafnvPAAKCRAk1otyXVSH
+ 0IFdB/wM8EiD0jprJ3GQuxIGKno9/xqIRj95icFwM4m1Ni+Xe9fgCyCV0qOqEv2oLeAfHUmypV2
+ pB5UfRncjVuIpLh07vtuCI2wDBP91FZOLI31oSWi31Zt0nHoQ8AFOPpifk6jRY/eaPQjrd0PyqT
+ 8wz9pBYX+fxyPMXbi8emdbChfpZqtaGdd6L+4uwMH2bdFBTBGj15A/IA+QKf+3Tmx7he98vHZH0
+ Czk3cuNpRDfyLgS4EgHv5pK2wiXMRpHBbpAn0Qwbh04h6gNQIfkvixhLUHkSX7VlheOOo1IWwjm
+ QYXgcnoo6ACsHm4/+Oqz8fCEUxz1EHkBqH092FhhNUIjRpl5
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,21 +80,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gVHVlLCBNYXkgNSwgMjAyNiBhdCAxMTo0M+KAr0FNIEtyenlzenRvZiBLb3psb3dza2kKPGty
-enlzenRvZi5rb3psb3dza2lAb3NzLnF1YWxjb21tLmNvbT4gd3JvdGU6Cgo+IEJ5IGNvbnZlbnRp
-b24gTU9EVUxFX0RFVklDRV9UQUJMRSgpIGltbWVkaWF0ZWx5IGZvbGxvd3MgdGhlIElEIHRhYmxl
-IGl0Cj4gZXhwb3J0cywgYmVjYXVzZSB0aGlzIGlzIGVhc2llciB0byByZWFkIGFuZCB2ZXJpZnku
-ICBJdCBhbHNvIG1ha2VzIG1vcmUKPiBzZW5zZSBzaW5jZSAjaWZkZWYgZm9yIEFDUEkgb3IgT0Yg
-Y291bGQgaGlkZSBib3RoIG9mIHRoZW0uCj4KPiBNb3N0IG9mIHRoZSBwaW4gY29udHJvbGxlciBk
-cml2ZXJzIGFscmVhZHkgaGF2ZSB0aGlzIGNvcnJlY3RseSBwbGFjZWQsCj4gc28gYWRqdXN0IHRo
-ZSBvdGhlciBkcml2ZXJzLiAgTm8gZnVuY3Rpb25hbCBpbXBhY3QuCj4KPiBTaWduZWQtb2ZmLWJ5
-OiBLcnp5c3p0b2YgS296bG93c2tpIDxrcnp5c3p0b2Yua296bG93c2tpQG9zcy5xdWFsY29tbS5j
-b20+CgpQYXRjaCBhcHBsaWVkLgoKWW91cnMsCkxpbnVzIFdhbGxlaWoKCl9fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcg
-bGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+On Tue, 05 May 2026 12:28:04 +0200, Krzysztof Kozlowski wrote:
+> ASoC: tegra: Move MODULE_DEVICE_TABLE next to the table itself
+
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.2
+
+Thanks!
+
+[1/2] ASoC: tegra: Move MODULE_DEVICE_TABLE next to the table itself
+      https://git.kernel.org/broonie/sound/c/a28d17fdd3f7
+[2/2] ASoC: rockchip: Move MODULE_DEVICE_TABLE next to the table itself
+      https://git.kernel.org/broonie/sound/c/7ed0e11bea0e
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
