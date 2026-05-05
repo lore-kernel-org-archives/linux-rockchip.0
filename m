@@ -4,156 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E73FF885A
-	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 10:08:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80337CD342F
+	for <linux-rockchip@archiver.kernel.org>; Tue,  5 May 2026 10:14:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NtXPiAlDz5s3PjfpgqnJRmvdbDD9p6aSHyW6KfTxZSI=; b=HnAFQ+uIWqkO7S
-	YYR/lpx9Eu53Bn+UU7tiCxh74qTm9gdLDirWy6VGYvcNMN++ctWFsfUjUCGm+BGBILfupwE/19M6P
-	VwbcEQxLAN54tagsgF3JVa5Q/NIp4OfyG77C9cJaXi961W4pi4lCm0a7qwg8KfV0PGPTos1jt4gCc
-	qUtzJDmLy/mgVBwBT9CwXLImeybBtQ7l+HqjJouzJsZDcyHu8+ohJVJehE0RWZhvgd4e8JZ8aynIO
-	+KTN/CrTBKYb1WCc/TxuYvK9joIBAwiDBqPCEFsbp1l10ydA9BxZOS+2WaU2wZkuG36xsEDfEmqpO
-	iwWPJOeOBb89hSxdXUrw==;
+	List-Owner; bh=dKN3EciYOHq0XglrU+q1tiCrVI5a7XS2gwXfjPIskto=; b=4Q0GuodWu19Wjw
+	DHxgZMxGFUkd4VAY4O8Zifpg9g5IcnV72JpjsXBWUH2xCwR/cQu4HlIfOI5PSj2gUt5IPEpMC7fPp
+	6t9qGAr9UyjUMbB6Li6gHT+oT7SV+l4F2FVykiztWU2AezKuKVzLvipTjr/O53YJ+GhKtrs5q00Cc
+	rM51gaD/BxiUiLxtsE4jyyFASbOuQjmvOma91s5EDpZZE9mDRnSpxad3UdYRz1rsoIb0Vr+kzcQSw
+	2Lqhpqhvvd12nmaanyS6VUApGnBGTSxtecewyH005dnn3v3y4jXZLRkRULI6ai9ZhxlxqEPFNhg4W
+	w4ArVtCGmYGg4NGW3GhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKChl-0000000Fp9H-03wG;
-	Tue, 05 May 2026 10:08:41 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wKCnQ-0000000FqoQ-1Juu;
+	Tue, 05 May 2026 10:14:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCgF-0000000FmRK-1zSe;
-	Tue, 05 May 2026 10:07:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:
-	Content-Transfer-Encoding:References:In-Reply-To:Message-Id:Date:Subject:Cc:
-	To:From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=qKTVOqUBH8QtKpRjECrCqFpDhqx+n7aHbc5h/JJ9rB4=; b=JqhcGA6jxhtnd1DKzXIWUcdwno
-	iwvA3+78dYOPhKmx0NhZ+myzo+lKZ7TGCH4zxsqQK5mBKVPiT/sfmu0vBIAdMfODV4FeZW53Hz2Z7
-	wzDF/dCHGvq3ikEsvql5f7SHFCas+wf4iGa7cYDeSK2C7lVuNiT8lNazH6zjDgFTORniMdHiEW2sE
-	JbP31bS7SHZE8/1On12XlY0kQrSJhnBrxIRNjnFT7ulAbCZycWnBoIK0wscpsFI9EsET/gLTpdxfc
-	sYtAEGvTwjOpdlxrkT5CRpiyRCDd9tzoXR9hP5gfER14ewSJgEuMNKBT/7u2EeAcRjDnqf9nPmgo2
-	kQgY29Vg==;
-Received: from mail-northeuropeazon11011013.outbound.protection.outlook.com ([52.101.65.13] helo=DU2PR03CU002.outbound.protection.outlook.com)
-	by desiato.infradead.org with esmtps (Exim 4.98.2 #2 (Red Hat Linux))
-	id 1wKCgC-0000000D7xU-0YCp;
-	Tue, 05 May 2026 10:07:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=OCB39w2PjkpZXPvz1OidQY00H5eh4yCVPTDCSdZdZJRbmqkpRw2e2y2ih3IZEyzf9rdxnVZCJ55P573eLbozWKufJ0zy59NgbHPBLcPZOyVj6JX+i0KXf0wTF5EhrU1ERFQO4AIWlNVcrei98dqN6MZVYeR4iu1bza7g+7McYgvEESlIfiKQcMhLG9Z/zJEasJAqoIJNL/F+iczWQNcgeAeeZCvNZgAJqY2Adh+/DlErHdLhm45KlpOf2EVBobrgEzvwjUpL0q9qn+RhUBQe5SH1jp4DpPnh9yDtQ9P2Z5/gdQDK4aMvU6XyPTd1XVS6GL3IDn0aHORNCiCWLW0PyQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=qKTVOqUBH8QtKpRjECrCqFpDhqx+n7aHbc5h/JJ9rB4=;
- b=mWAc7B4Zlamimps4WDTsVUXPt5/YtZCuAI+E327iUPHTkb8zMOM+qOhulFbzVUgdn+Z0vAHwVrIMbrkWhEe91/6iW1nWoZ7mPHej81QUMtn2oJrLbMNlE6LFKwO4zpr7EJCyekL8UKNlDUCm24CRIaseQdqxzrX+N3HpzNtlMXIhj1bGGJyjWtlg3esfPnfFqqmpW817N3b3uTLs0guTbD6oIemLCXpjJcHWfEFwEwUEy8DGU7C1FdBY4FP2/+aC6NXJ36Wx3UrOam6JIhcZoAvOd+HPQruN0idxDiiO/WBjAOKtXqWreUamke49VgDwcq0Rnwz+Ba0bGr6vmbJ5qA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
- header.d=nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=qKTVOqUBH8QtKpRjECrCqFpDhqx+n7aHbc5h/JJ9rB4=;
- b=mXAXBv/pYjGaJtVDFf/lSlLQ+8/R2urc5eFkOeK6CcyC5JOiNQBuUzneIeVi1n0PchXVJb4/YXPp0T3QlUe/JTN5lfqy7PEwzTUnVWClfQsqao6B/CwW66LJ1VbPoiWl6evLUBvFpx7EaiN2ZW8snNVvqgg74rVMhWEEvYBs63uIorGZ+0vmudJvLM5KJVFQVIuxOrxzQHSg5QMHzv2PX4MpDizNqKZm/+NhTIDVkrUlVuJSJ+NoLjVoQhXSDu8DngMmUdw506xmOc+FCI7/+idntMjaSGigoMstNqkW8jama8KyBSMb4UK+O5UMMZfwaSqThNOjNwLBjR/WGZdSjA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nxp.com;
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com (2603:10a6:20b:438::13)
- by AM9PR04MB8308.eurprd04.prod.outlook.com (2603:10a6:20b:3e3::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9870.25; Tue, 5 May
- 2026 10:06:51 +0000
-Received: from AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4]) by AM9PR04MB8585.eurprd04.prod.outlook.com
- ([fe80::f010:fca8:7ef:62f4%4]) with mapi id 15.20.9870.023; Tue, 5 May 2026
- 10:06:51 +0000
-From: Vladimir Oltean <vladimir.oltean@nxp.com>
-To: linux-phy@lists.infradead.org
-Cc: Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	dri-devel@lists.freedesktop.org,
-	freedreno@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	linux-can@vger.kernel.org,
-	linux-gpio@vger.kernel.org,
-	linux-ide@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-pci@vger.kernel.org,
-	linux-renesas-soc@vger.kernel.org,
-	linux-riscv@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-samsung-soc@vger.kernel.org,
-	linux-scsi@vger.kernel.org,
-	linux-sunxi@lists.linux.dev,
-	linux-tegra@vger.kernel.org,
-	linux-usb@vger.kernel.org,
-	netdev@vger.kernel.org,
-	spacemit@lists.linux.dev,
-	UNGLinuxDriver@microchip.com,
-	Joe Perches <joe@perches.com>
-Subject: [PATCH v8 phy-next 31/31] MAINTAINERS: add regexes for linux-phy
-Date: Tue,  5 May 2026 13:05:23 +0300
-Message-Id: <20260505100523.1922388-32-vladimir.oltean@nxp.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260505100523.1922388-1-vladimir.oltean@nxp.com>
-References: <20260505100523.1922388-1-vladimir.oltean@nxp.com>
-X-ClientProxiedBy: AS4P190CA0006.EURP190.PROD.OUTLOOK.COM
- (2603:10a6:20b:5de::9) To AM9PR04MB8585.eurprd04.prod.outlook.com
- (2603:10a6:20b:438::13)
+	id 1wKCnN-0000000Fqjv-1Dtd
+	for linux-rockchip@lists.infradead.org;
+	Tue, 05 May 2026 10:14:30 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A8B7240277;
+	Tue,  5 May 2026 10:14:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BC4AC2BCC7;
+	Tue,  5 May 2026 10:14:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1777976068;
+	bh=bOnZxTjoqYVWdZLxp/MVHtyMN09VkAKH5iOG5FMq6jw=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=fy4p20IJP0f4K09+dyh54G62rzT4ojNKP6HS/6mMx8iGKZ1TNZ2vq5BGg7Yc1Yez7
+	 BQqJ/7p8Vv+81iz5I98HAyqCXluNxwjJRxypeid5a6nZsytsImBBYkf50P1oN9SURt
+	 IBGG1ccKx1LqgtBmOWgsT6b/76JL/LRSp3/J4cr+ZzAeH4trmWLn9JjBF9z2vpgT3W
+	 dCZvOPRrx1x6Fdb0y/FA778MfdYUzcRsvioj4CcwVpuThzAVcx0N9LNNqD3awm80nq
+	 72OqaQgw9b1ODNbkAtLlljT1TZ5Xqm+qDU9Tx37bsbnJ/BaYL9HxIIgJstxboH8Me0
+	 7xfBWZ0q7pGEA==
+Date: Tue, 5 May 2026 11:14:18 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+ dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V4 05/10] iio: imu: inv_icm42607: Add Buffer support for
+ icm42607
+Message-ID: <20260505111418.48ea6f25@jic23-huawei>
+In-Reply-To: <20260501221152.194251-6-macroalpha82@gmail.com>
+References: <20260501221152.194251-1-macroalpha82@gmail.com>
+	<20260501221152.194251-6-macroalpha82@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM9PR04MB8585:EE_|AM9PR04MB8308:EE_
-X-MS-Office365-Filtering-Correlation-Id: 81316246-3822-4ff9-6cee-08deaa8e072f
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|19092799006|376014|7416014|1800799024|56012099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: Tr6N73yKU4jVUqrCYRzWyGNUzDQedFywIG6xvx9rVYrCdzkOobUHMNJfo8Zzn3LHzPj+Q4VgJ95G3BwQA5X02WwAfaTZEqclrqUXWb/Nu6RiC1VgM6ioXXv2RieyTAkmMkYvLuBuquKJPci4B2vnQDEfvsUbFuWJ7i/CyJmjC63horv9X0btXTgjleFivSrx1bKUWkyMUVoH95DdjejzP1B5pttWc580luVW3Hg8nAGucZI6QpgRGCE/w+A9V9DL1c7Bb3lKw8VEX8a0AIG36GRlJw6tiEuQlI+W+46jskZGeWL7BjTV41GSyVh2VuESVa8kmgBlml67Saw9DLhIvfYD3C02oGQ+NcI4+REzjGnGkUkwv2i/XPmPQgPcrB+JhQ4dQ5/TZSivuZUk8bal9zXhQY5RuZ89RmBJlxqXlCqYFFcHQyVRehXg9dj+pj47Q95Idc6AMoE1qEYrFZFtHGm8DtaB4rpUqEsYq1X1yVqjHv+QEosm+FIq0nDZBPmmzg+KKqmVf7ddimU08WKLX1G+D73ndSy32GP3S5TouZKnK6fZNp7D0l6qfAFk5nV4Md7p7wvtIaKJYB1hqALPRZpv9i8CGy7l/AD3Jltrp9DC79YXkKF/j0dZrv9c3GaaP+Spa4vNPzmE/zSECN/M5Kn+B3qRJ0Cg6mYeCCtFZjDlEt4VDeUwm3KiwrH3/RxiHVHhQ8nJXw6/ohUsnzgMHQ==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM9PR04MB8585.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(19092799006)(376014)(7416014)(1800799024)(56012099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?7jl2Efzb+BdIM5dq6qSAbxw+LHeU/+tFx1FO29asejOC9G6o/g17ovNuI/tW?=
- =?us-ascii?Q?MSi+7PxhVbRz5R6U8nMHE1VZQeVmzRZdOa7VwFbsDdL09WxIkffFepSgVGnJ?=
- =?us-ascii?Q?M1fAWIYDad+J79eBEN4YreyUhHWW+L4/9lES0+lGhThCygZzHOKoz3Y+G11P?=
- =?us-ascii?Q?CxB9hiEtQI3NsI2m7ptj1A6JUw6LO+luswJ6HO1looHdekmzbt5JzZ1fE/g2?=
- =?us-ascii?Q?ftGw4OEJg/5jC1ig438MAbYiJWXCkAajraEVk8nij4yQzhgdMo6L2Fa2NXYn?=
- =?us-ascii?Q?5qHPtm6N2//T6Nn8okYQun6FktC5BM7BHp0nCkXiMrEkKJQxtXw6jED5i6Cl?=
- =?us-ascii?Q?DcblCu12kl2PUHTAhzVvTAu7PduMlCBazHrCpEga3RGnsBgHR5AQYF3nvCjc?=
- =?us-ascii?Q?DhjNqTAnQZg9XK52allR9O2tfoCNIc5Qvb6QOEj/nFTMCXoKzToM27a7F5hJ?=
- =?us-ascii?Q?tbosn4MNsWXlOF0fn6XP8nId4xvah74xvRr9d10f//RdOnxjJvcCCZINUnG4?=
- =?us-ascii?Q?pdVYi9YGQzNQXiyuUN6nFYsyWwpIfGgmn0Thlszqnorj3Fhc+MGgcGTQY0Kc?=
- =?us-ascii?Q?o1d39vmSBYjje62QIOi1Qas00Fa5az/a38m9SgY3dCh5ajHBw4DpXOq+Wy+E?=
- =?us-ascii?Q?UWYOyFjUQPW3w/W3wL5+Wdscl46o7Zyeg/ebhyJ3Ms1FYSktQclPYjqno9dO?=
- =?us-ascii?Q?8qBrQJFVAGY+tmpJITwCfxdQQ36J1oaRzsDtmTSCbzCs+psXvggry8Hksmwp?=
- =?us-ascii?Q?gaPWxzSl10LNtC9T/kaIRKT/ot0BiKr9i3FFCJKBJdMIAg/8c7FwCTUa6u5A?=
- =?us-ascii?Q?kUe6AZCL8NnN5PcDkqcRwuMqqDUL/aCMEE/yAXhk3AhGqkyqQb/HS+dFDoYE?=
- =?us-ascii?Q?69eLWF9JWR5A2EmkHuXABzKg5l6AaOX7244/cCPR2sIdmn4Wnzuk/gmwREPb?=
- =?us-ascii?Q?QO4aME1IOA3bS+/BK6yb4ZvVT9ru3tgOjdHYjehVSTfiISqA8Too+6LqwM4t?=
- =?us-ascii?Q?g6qDpGPOyawDf9Jv4bdNJ7Pgcg9THoyhQ6g7bXvrSt3XFHs56YKi9mShgh42?=
- =?us-ascii?Q?JSUXmD/8dQUxJOtgt0MsotDW8CsqmntrSAZNpbuafhN08an2PGlUOkpPxcOT?=
- =?us-ascii?Q?+WtFSdOFJJ1gjU/RKm7I4PcXrqLsnEA4oJOYKs7SG/Sou1pTdaHEZfyIeIiQ?=
- =?us-ascii?Q?WTvouOS4lzZQbb4aSrE/+VAd5xwvs5Dqq75Nfk8xjnqj0wf6rrtOlJaGhHxg?=
- =?us-ascii?Q?DkabHNmmRiHUV/ElwfE/Dxf7Mfwo0l5QvYxEH/7GyQqej4IzTGLe/nwWbPs2?=
- =?us-ascii?Q?mPGdudQGVrjdFefCNpT9/RE4G0joddfXhqVXMb5eKlOTEiHBkJfekjbvLUVf?=
- =?us-ascii?Q?vpKoH3YN2/mgRGIcrUVZ5EaksKEJ4TtfCEovoTLgkOLk5dpSDcQP/mt5rTYc?=
- =?us-ascii?Q?hjavf5WS2YQ/9x1Do+PEAIAmN4Wrvg15Cay8nm/2lTwMIVZwzCdnIGNT9rJc?=
- =?us-ascii?Q?a0sgBw4o7/xvr4m59eLwMikJfJqKTLBSE2hPGov3Kj97zn20gs+mBnthrDok?=
- =?us-ascii?Q?C4T/FQIQFpEhC1exOOxrMEduUixoe1GEUNiK6hfTNeLeagcSp5s2Q8YccGk+?=
- =?us-ascii?Q?IGiGiXD4tLaspIQBm4sqFGWmk7t2H6bErBDIVqnLeX1xddgVez+nfXCDaKvg?=
- =?us-ascii?Q?KdyVFBKwBfkgPDFeLm4obFb4V1csxINd5uMPXt76s2+h6xieUQ5KCDKFP0nl?=
- =?us-ascii?Q?BbZphSmVbw=3D=3D?=
-X-OriginatorOrg: nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81316246-3822-4ff9-6cee-08deaa8e072f
-X-MS-Exchange-CrossTenant-AuthSource: AM9PR04MB8585.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 05 May 2026 10:06:51.8300
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 8DzyuBiofOXIqhCsNWrUzQMXKLrJkczddBNGfmLDb8aKoRyh+ga884gTROknFOHU6LFBDwTkJSmnorVViPPRQg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8308
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.8.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260505_110704_260943_F9D1DA49 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20260505_031429_407722_3728273F 
+X-CRM114-Status: GOOD (  46.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -170,78 +77,586 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Some pragmatic shortcuts are being taken by PHY consumer driver authors,
-which put a burden on the framework. A lot of these can be caught during
-review.
+On Fri,  1 May 2026 17:11:44 -0500
+Chris Morgan <macroalpha82@gmail.com> wrote:
 
-Make sure the linux-phy list is copied on as many keywords that regexes
-can reasonably catch.
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add all FIFO parsing and reading functions to support> inv_icm42607 hardware.
+Generally wrap commit messages to 75 ish characters.
 
-Some considerations that led to this solution and not a simpler one:
-- Consumers may be located anywhere, and their file naming provides no
-  indication whatsoever that they are PHY API consumers.
-- The network PHY API has similarly sounding API: phy_start(),
-  phy_connect(), etc. Similarly, matching on "phy" would hit
-  phys_addr_t, "cryptography", etc.
-- The header files themselves need attention to avoid matching on
-  include/linux/phy.h (network PHY), include/linux/usb/phy.h,
-  drivers/net/vendor/device/phy.h, etc.
-- At least for a transitional period, I suppose developers will still
-  try to add PHY providers outside the subsystem (which is discouraged).
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
-So I used \b to try to match on actual word boundaries and I went for
-listing all markers of PHY API use as they may appear in patch contexts.
+Hi Chris
 
-Bit rot is a valid concern. I will add a test to the build automation
-that newly introduced struct and function names in include/linux/phy.h,
-include/linux/phy-props.h and drivers/phy/phy-provider.h are matched by
-the MAINTAINERS entry K: patterns.
+Various comments inline.  Biggest set seem to be on making
+use of min() / max() to do clamping. They are generally as
+easy to read as using a conditional and often more compact.
 
-The keyword patterns were written with great help from Joe Perches
-<joe@perches.com>.
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> new file mode 100644
+> index 000000000000..5c67f6a37520
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> @@ -0,0 +1,489 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#include <linux/delay.h>
+> +#include <linux/minmax.h>
+> +#include <linux/mutex.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +
+> +#include <linux/iio/buffer.h>
+> +#include <linux/iio/common/inv_sensors_timestamp.h>
 
-Signed-off-by: Vladimir Oltean <vladimir.oltean@nxp.com>
----
-Cc: Joe Perches <joe@perches.com>
+I'd put this one in it's own block between the iio generic headers
+and the very driver specific ones given its specific to invensense
+sensors.
 
-v7->v8: match phy_request_bus_width()
-v3->v7: none
-v2->v3:
-- escape forward slash in linux/phy/phy.h in regex pattern:
-  https://lore.kernel.org/linux-phy/9fd14d166e860f26febfbc9061a6dcae6a166961.camel@perches.com/
-v1->v2:
-- split into multiple regex patterns
-- use matching-only (insted of capturing) regex patterns
-- adjust commit message to reflect the Q&A from v1
----
- MAINTAINERS | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+> +#include <linux/iio/iio.h>
+> +
+> +#include "inv_icm42607.h"
+> +#include "inv_icm42607_buffer.h"
+> +
+> +/* FIFO header: 1 byte */
+> +#define INV_ICM42607_FIFO_HEADER_MSG		BIT(7)
+> +#define INV_ICM42607_FIFO_HEADER_ACCEL		BIT(6)
+> +#define INV_ICM42607_FIFO_HEADER_GYRO		BIT(5)
+> +#define INV_ICM42607_FIFO_HEADER_TMST_FSYNC	GENMASK(3, 2)
+> +#define INV_ICM42607_FIFO_HEADER_ODR_ACCEL	BIT(1)
+> +#define INV_ICM42607_FIFO_HEADER_ODR_GYRO	BIT(0)
+> +
+> +struct inv_icm42607_fifo_1sensor_packet {
+> +	u8 header;
+> +	struct inv_icm42607_fifo_sensor_data data;
+> +	s8 temp;
+> +} __packed;
+> +#define INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE		8
+> +
+> +struct inv_icm42607_fifo_2sensors_packet {
+> +	u8 header;
+> +	struct inv_icm42607_fifo_sensor_data accel;
+> +	struct inv_icm42607_fifo_sensor_data gyro;
+> +	s8 temp;
+> +	__be16 timestamp;
+> +} __packed;
+> +#define INV_ICM42607_FIFO_2SENSORS_PACKET_SIZE		16
+> +
+> +ssize_t inv_icm42607_fifo_decode_packet(const void *packet, const void **accel,
+> +					const void **gyro, const int8_t **temp,
+> +					const void **timestamp, unsigned int *odr)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2fb1c75afd16..67318abfd91c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -10799,6 +10799,18 @@ F:	Documentation/devicetree/bindings/phy/
- F:	drivers/phy/
- F:	include/dt-bindings/phy/
- F:	include/linux/phy/
-+K:	(?:linux\/phy\/phy\.h|phy-props\.h|phy-provider\.h)
-+K:	\b(?:__)?(?:devm_)?(?:of_)?phy_(?:create|destroy|provider_(?:un)?register)\b
-+K:	\bphy_(?:create|remove)_lookup\b
-+K:	\bphy_(?:get|set)_drvdata\b
-+K:	\b(?:devm_)?(?:of_)?phy_(?:optional_)?(?:get|put)(?:_by_index)?\b
-+K:	\bphy_pm_runtime_(?:get|put)(?:_sync)?\b
-+K:	\bphy_(?:init|exit|power_(?:on|off))\b
-+K:	\bphy_(?:get|set)_(?:mode(?:_ext)?|media|speed|max_link_rate)\b
-+K:	\bphy_(?:get|set|request)_bus_width\b
-+K:	\bphy_(?:reset|configure|validate|calibrate)\b
-+K:	\bphy_notify_(?:connect|disconnect|state)\b
-+K:	\bstruct\s+phy(?:_ops|_attrs|_lookup|_provider)?\b
- 
- GENERIC PINCTRL I2C DEMULTIPLEXER DRIVER
- M:	Wolfram Sang <wsa+renesas@sang-engineering.com>
--- 
-2.34.1
+
+For now at least odr doesn't seem to be used at the caller.  So I'd drop
+it from the function signature until it is useful.
+
+> +{
+> +	const struct inv_icm42607_fifo_1sensor_packet *pack1 = packet;
+> +	const struct inv_icm42607_fifo_2sensors_packet *pack2 = packet;
+> +	u8 header = *((const u8 *)packet);
+> +
+> +	/* FIFO empty */
+> +	if (header & INV_ICM42607_FIFO_HEADER_MSG) {
+> +		*accel = NULL;
+> +		*gyro = NULL;
+> +		*temp = NULL;
+> +		*timestamp = NULL;
+> +		*odr = 0;
+> +		return 0;
+> +	}
+> +
+> +	/* handle odr flags */
+> +	*odr = 0;
+> +	if (header & INV_ICM42607_FIFO_HEADER_ODR_GYRO)
+> +		*odr |= INV_ICM42607_SENSOR_GYRO;
+> +	if (header & INV_ICM42607_FIFO_HEADER_ODR_ACCEL)
+> +		*odr |= INV_ICM42607_SENSOR_ACCEL;
+> +
+> +	/* accel + gyro */
+> +	if ((header & INV_ICM42607_FIFO_HEADER_ACCEL) &&
+> +	    (header & INV_ICM42607_FIFO_HEADER_GYRO)) {
+> +		*accel = &pack2->accel;
+> +		*gyro = &pack2->gyro;
+> +		*temp = &pack2->temp;
+> +		*timestamp = &pack2->timestamp;
+> +		return INV_ICM42607_FIFO_2SENSORS_PACKET_SIZE;
+> +		}
+
+Odd indent.  Should be one less tab.
+
+> +
+> +	/* accel only */
+> +	if (header & INV_ICM42607_FIFO_HEADER_ACCEL) {
+> +		*accel = &pack1->data;
+> +		*gyro = NULL;
+> +		*temp = &pack1->temp;
+> +		*timestamp = NULL;
+> +		return INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE;
+> +	}
+> +
+> +	/* gyro only */
+> +	if (header & INV_ICM42607_FIFO_HEADER_GYRO) {
+> +		*accel = NULL;
+> +		*gyro = &pack1->data;
+> +		*temp = &pack1->temp;
+> +		*timestamp = NULL;
+> +		return INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE;
+> +	}
+> +
+> +	/* invalid packet if here */
+> +	return -EINVAL;
+> +}
+
+> +
+> +static unsigned int inv_icm42607_wm_truncate(unsigned int watermark,
+> +					     size_t packet_size)
+> +{
+> +	size_t wm_size;
+> +
+> +	wm_size = watermark * packet_size;
+> +	if (wm_size > INV_ICM42607_FIFO_WATERMARK_MAX)
+> +		wm_size = INV_ICM42607_FIFO_WATERMARK_MAX;
+
+	wm_size = min(watermark * packet_size, INV_ICM42607_FIFO_WATERMARK_MAX);
+
+> +
+> +	return wm_size / packet_size;
+> +}
+> +
+> +/**
+> + * inv_icm42607_buffer_update_watermark - update watermark FIFO threshold
+> + * @st:	driver internal state
+> + *
+> + * Returns 0 on success, a negative error code otherwise.
+> + */
+> +int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st)
+> +{
+> +	size_t packet_size, wm_size;
+> +	unsigned int wm_gyro, wm_accel, watermark;
+> +	u32 period_gyro, period_accel;
+> +	u32 latency_gyro, latency_accel, latency;
+> +	bool restore;
+> +	__le16 raw_wm;
+> +	int ret;
+> +
+> +	packet_size = inv_icm42607_get_packet_size(st->fifo.en);
+> +
+> +	/* compute sensors latency, depending on sensor watermark and odr */
+> +	wm_gyro = inv_icm42607_wm_truncate(st->fifo.watermark.gyro, packet_size);
+> +	wm_accel = inv_icm42607_wm_truncate(st->fifo.watermark.accel, packet_size);
+> +	/* use us for odr to avoid overflow using 32 bits values */
+> +	period_gyro = inv_icm42607_odr_to_period(st->conf.gyro.odr) / 1000UL;
+> +	period_accel = inv_icm42607_odr_to_period(st->conf.accel.odr) / 1000UL;
+> +	latency_gyro = period_gyro * wm_gyro;
+> +	latency_accel = period_accel * wm_accel;
+> +
+> +	/* 0 value for watermark means that the sensor is turned off */
+> +	if (wm_gyro == 0 && wm_accel == 0)
+> +		return 0;
+> +
+> +	if (latency_gyro == 0) {
+> +		watermark = wm_accel;
+> +		st->fifo.watermark.eff_accel = wm_accel;
+> +	} else if (latency_accel == 0) {
+> +		watermark = wm_gyro;
+> +		st->fifo.watermark.eff_gyro = wm_gyro;
+> +	} else {
+> +		/* compute the smallest latency that is a multiple of both */
+> +		if (latency_gyro <= latency_accel)
+> +			latency = latency_gyro - (latency_accel % latency_gyro);
+> +		else
+> +			latency = latency_accel - (latency_gyro % latency_accel);
+> +		/* all this works because periods are multiple of each others */
+> +		watermark = latency / min(period_gyro, period_accel);
+> +		if (watermark < 1)
+> +			watermark = 1;
+		watermark = max(watermark, 1);
+
+> +		/* update effective watermark */
+> +		st->fifo.watermark.eff_gyro = latency / period_gyro;
+> +		if (st->fifo.watermark.eff_gyro < 1)
+> +			st->fifo.watermark.eff_gyro = 1;
+		st->fifo.watermark.eff_gyro = max(latency / period_gyro, 1);
+is clear and shorter.
+
+
+> +		st->fifo.watermark.eff_accel = latency / period_accel;
+> +		if (st->fifo.watermark.eff_accel < 1)
+> +			st->fifo.watermark.eff_accel = 1;
+
+same again
+
+> +	}
+> +
+> +	/* compute watermark value in bytes */
+> +	wm_size = watermark * packet_size;
+
+I'd push this down to nearer where it's used.
+
+> +
+> +	/* changing FIFO watermark requires to turn off watermark interrupt */
+> +	ret = regmap_update_bits_check(st->map, INV_ICM42607_REG_INT_SOURCE0,
+> +				       INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
+> +				       0, &restore);
+> +	if (ret)
+> +		return ret;
+> +
+So here.
+> +	raw_wm = INV_ICM42607_FIFO_WATERMARK_VAL(wm_size);
+> +	memcpy(st->buffer, &raw_wm, sizeof(raw_wm));
+> +	ret = regmap_bulk_write(st->map, INV_ICM42607_REG_FIFO_CONFIG2,
+> +				st->buffer, sizeof(raw_wm));
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* restore watermark interrupt */
+> +	if (restore) {
+> +		ret = regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
+> +					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
+> +					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static int inv_icm42607_buffer_preenable(struct iio_dev *indio_dev)
+> +{
+> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
+> +	struct device *dev = regmap_get_device(st->map);
+> +	struct inv_icm42607_sensor_state *sensor_st = iio_priv(indio_dev);
+> +	struct inv_sensors_timestamp *ts = &sensor_st->ts;
+> +
+> +	pm_runtime_get_sync(dev);
+
+Maybe check the error return from this. Though as the docs suggest
+better to use
+	ret = pm_runtime_resume_and_get(dev);
+as that doesn't leave ref count raised on failure.
+
+> +
+> +	guard(mutex)(&st->lock);
+> +	inv_sensors_timestamp_reset(ts);
+> +
+> +	return 0;
+> +}
+> +
+> +/*
+> + * update_scan_mode callback is turning sensors on and setting data FIFO enable
+> + * bits.
+> + */
+> +static int inv_icm42607_buffer_postenable(struct iio_dev *indio_dev)
+> +{
+> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	/* exit if FIFO is already on */
+> +	if (st->fifo.on) {
+> +		st->fifo.on++;
+> +		return 0;
+> +	}
+> +
+> +	/* set FIFO threshold interrupt */
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
+> +				 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
+> +				 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
+	ret = regmap_set_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
+			      INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
+
+Might as well save a line on these.
+
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* flush FIFO data */
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
+> +			   INV_ICM42607_SIGNAL_PATH_RESET_FIFO_FLUSH);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* set FIFO in streaming mode */
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
+> +			   INV_ICM42607_FIFO_CONFIG1_MODE);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* workaround: first read of FIFO count after reset is always 0 */
+> +	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_FIFO_COUNTH, st->buffer, 2);
+
+I think you read this as explicitly going into a __be16 elsewhere.
+Good to size this either from sizeof(st->buffer[0]) or sizeof(__be16) rather
+than a magic 2.
+
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->fifo.on++;
+> +
+> +	return 0;
+> +}
+
+
+> +int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
+> +				  unsigned int max)
+> +{
+> +	size_t max_count;
+> +	__be16 *raw_fifo_count;
+> +	ssize_t i, size;
+> +	const void *accel, *gyro, *timestamp;
+
+Where no other reason for ordering applies use reverse xmas tree.
+If this is meant to be order of first use, that tends to be much
+more fragile to code movement than reverse xmas tree hence
+the preference.
+
+> +	const s8 *temp;
+> +	unsigned int odr;
+> +	int ret;
+> +
+> +	/* reset all samples counters */
+> +	st->fifo.count = 0;
+> +	st->fifo.nb.gyro = 0;
+> +	st->fifo.nb.accel = 0;
+> +	st->fifo.nb.total = 0;
+> +
+> +	/* compute maximum FIFO read size */
+> +	if (max == 0)
+> +		max_count = sizeof(st->fifo.data);
+> +	else
+> +		max_count = max * inv_icm42607_get_packet_size(st->fifo.en);
+> +
+> +	/* read FIFO count value */
+> +	raw_fifo_count = (__be16 *)st->buffer;
+
+I think st->buffer is __be16 [3] so no cast needed here maybe make
+it clear you want the first element with &st->buffer[0];
+
+However I'd be tempted to just use that directly and drop the local
+variable as adding little when we only use it so locally.
+
+> +	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_FIFO_COUNTH,
+> +			       raw_fifo_count, sizeof(*raw_fifo_count));
+> +	if (ret)
+> +		return ret;
+> +	st->fifo.count = be16_to_cpup(raw_fifo_count);
+> +
+> +	/* check and clamp FIFO count value */
+> +	if (st->fifo.count == 0)
+> +		return 0;
+
+I'd add a blank line here, just to make it easier to spot this
+successful exit path.
+
+> +	if (st->fifo.count > max_count)
+> +		st->fifo.count = max_count;
+
+	st->fifo.count = max(st->fifo.count, max_count);
+is slightly more readable.
+
+> +
+> +	/* read all FIFO data in internal buffer */
+> +	ret = regmap_noinc_read(st->map, INV_ICM42607_REG_FIFO_DATA,
+> +				st->fifo.data, st->fifo.count);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* compute number of samples for each sensor */
+> +	for (i = 0; i < st->fifo.count; i += size) {
+	for (size_t i = 0; < st->fifo.count...
+
+I'm curious on why it's signed. Should be fine to use an unsigned iterator as
+only add positive values of size.
+
+> +		size = inv_icm42607_fifo_decode_packet(&st->fifo.data[i],
+> +				&accel, &gyro, &temp, &timestamp, &odr);
+> +		if (size <= 0)
+> +			break;
+> +		if (gyro != NULL && inv_icm42607_fifo_is_data_valid(gyro))
+> +			st->fifo.nb.gyro++;
+> +		if (accel != NULL && inv_icm42607_fifo_is_data_valid(accel))
+> +			st->fifo.nb.accel++;
+> +		st->fifo.nb.total++;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
+> +				     unsigned int count)
+> +{
+> +	s64 gyro_ts, accel_ts;
+> +	int ret;
+> +
+> +	gyro_ts = iio_get_time_ns(st->indio_gyro);
+> +	accel_ts = iio_get_time_ns(st->indio_accel);
+> +
+> +	ret = inv_icm42607_buffer_fifo_read(st, count);
+> +
+
+To avoid a bit of churn later you could do
+	if (ret)
+		return ret;
+
+	return 0;
+now but not that important.
+
+
+> +	return ret;
+> +}
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+> new file mode 100644
+> index 000000000000..2df49e795ad1
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+> @@ -0,0 +1,101 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+
+Given you are using gmail / hotmail, just to confirm, is this work
+being paid for by InvenSense? If it's based on other work of theirs
+then there should be more detail on why this copyright notice so
+we have that recorded for the long term.
+
+> + */
+> +
+> +#ifndef INV_ICM42607_BUFFER_H_
+> +#define INV_ICM42607_BUFFER_H_
+> +
+> +#include <linux/kernel.h>
+
+For new code we avoid including linux/kernel.h but instead
+use more specific headers.  Not entirely sure what you need here
+but definitely something for the endian swap.
+Also you need to have a forwards def for the 
+struct inv_icm42607_state; maybe others.
+
+> +#include <linux/bitops.h>
+> +
+> +struct inv_icm42607_state;
+> +
+> +#define INV_ICM42607_SENSOR_GYRO	BIT(0)
+> +#define INV_ICM42607_SENSOR_ACCEL	BIT(1)
+> +#define INV_ICM42607_SENSOR_TEMP	BIT(2)
+> +
+> +/**
+> + * struct inv_icm42607_fifo - FIFO state variables
+> + * @on:		reference counter for FIFO on.
+> + * @en:		bits field of INV_ICM42607_SENSOR_* for FIFO EN bits.
+> + * @period:	FIFO internal period.
+> + * @watermark:	watermark configuration values for accel and gyro.
+> + * @count:	number of bytes in the FIFO data buffer.
+> + * @nb:		gyro, accel and total samples in the FIFO data buffer.
+> + * @data:	FIFO data buffer aligned for DMA (2kB + 32 bytes of read cache).
+> + */
+> +struct inv_icm42607_fifo {
+> +	unsigned int on;
+> +	unsigned int en;
+> +	u32 period;
+> +	struct {
+> +		unsigned int gyro;
+> +		unsigned int accel;
+> +		unsigned int eff_gyro;
+> +		unsigned int eff_accel;
+> +	} watermark;
+> +	size_t count;
+> +	struct {
+> +		size_t gyro;
+> +		size_t accel;
+> +		size_t total;
+> +	} nb;
+> +	u8 data[2080] __aligned(IIO_DMA_MINALIGN);
+> +};
+> +
+> +/* FIFO data packet */
+> +struct inv_icm42607_fifo_sensor_data {
+> +	__be16 x;
+> +	__be16 y;
+> +	__be16 z;
+> +};
+> +
+> +#define INV_ICM42607_FIFO_DATA_INVALID		-32768
+> +
+> +static inline s16 inv_icm42607_fifo_get_sensor_data(__be16 d)
+> +{
+> +	return be16_to_cpu(d);
+
+Is this helper worth bothering with?  Seems like it would be pretty
+clear what was going on if the be16_to_cpu() was just inline?
+
+
+> +}
+> +
+> +static inline bool
+> +inv_icm42607_fifo_is_data_valid(const struct inv_icm42607_fifo_sensor_data *s)
+> +{
+> +	s16 x, y, z;
+> +
+> +	x = inv_icm42607_fifo_get_sensor_data(s->x);
+> +	y = inv_icm42607_fifo_get_sensor_data(s->y);
+> +	z = inv_icm42607_fifo_get_sensor_data(s->z);
+> +
+> +	if (x == INV_ICM42607_FIFO_DATA_INVALID &&
+> +		y == INV_ICM42607_FIFO_DATA_INVALID &&
+> +		z == INV_ICM42607_FIFO_DATA_INVALID)
+
+Align this as:
+	if (x == INV_ICM42607_FIFO_DATA_INVALID &&
+	    y == INV_ICM42607_FIFO_DATA_INVALID &&
+	    z == INV_ICM42607_FIFO_DATA_INVALID)
+
+You could flip this around and do
+	__be16 be_inval_marker = cpu_to_be16(INV_ICM42607_FIFO_DATA_INVALID);
+
+	if (s->x == be_inval_marker &&
+	    s->y == be_inval_marker &&
+	    s->z == be_inval_marker)
+		return false;
+
+> +		return false;
+> +
+> +	return true;
+> +}
+> +
+> +ssize_t inv_icm42607_fifo_decode_packet(const void *packet, const void **accel,
+> +					const void **gyro, const s8 **temp,
+> +					const void **timestamp, unsigned int *odr);
+
+> +
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> index af3784040b7a..7b9c05df820a 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> @@ -16,6 +16,7 @@
+>  #include <linux/slab.h>
+>  
+>  #include "inv_icm42607.h"
+> +#include "inv_icm42607_buffer.h"
+>  
+>  static const struct regmap_range_cfg inv_icm42607_regmap_ranges[] = {
+>  	{
+> @@ -163,6 +164,7 @@ static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+>  	return 0;
+>  }
+>  
+> +
+
+Stray change. Remember to check your patches for these.
+we all introduce them whilst editing a series, so it's always a case
+of taking a look at the final result to catch them.
+
+>  int inv_icm42607_debugfs_reg(struct iio_dev *indio_dev, unsigned int reg,
 
 
 _______________________________________________
