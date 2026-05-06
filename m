@@ -4,92 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 825F8CD343B
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 May 2026 14:56:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E22BCD3440
+	for <linux-rockchip@archiver.kernel.org>; Wed,  6 May 2026 15:00:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JXRQ1o9Dqo0oDUrX1nJqzP27mdWUdJniHC7WvovFTh4=; b=eD5I9WVzcNvNu1KUbQ9sME1FbB
-	Lq0HkxkR/aL39pxNd6/TNAUqj09lpqFiqSFvwBWCuJsg8F2d0EIUU6FrqgwIcmRLZvrmevhDrm9hv
-	FoHKOm06jLt+p88Vjv6dxS0Ssm6P3jd8xnsj8nDrJ2Wak1fCitpfHlsmSObgwS5Ed0voNZux2uIdW
-	K7wF7rxeuMkBMuxqeoSn3q+BUaUwyHwd9F4MWSkYp8wGvJRzxEEddAZvcySpPgki85TwhKogtfxqJ
-	Oh70cfHXuK1Aam1dYZct1Gq3HVz839T+BTqUD39dXV3PI3m4g7GnjFP15BmcuFoDbQrP84Sgtdrzd
-	4QDJT3mg==;
+	bh=hyCvTzZTBM5yf8GZCBO0j3vEKrWUhcaT627tKE3lqLs=; b=gqNQ3/QCywhSQ69v6ykr5mi1fy
+	sI5p3Wo8wjSuib8DJrNxAZloNLTH23dQgUYiQUqNVMlSXtoeuYYajiKyfQOb9G62qPBYboWoc2URk
+	IiJ0ewtZHmOTYjy0iISmMjNxLKH74TfVO/P71wUNkYJY05EJ23vXnG84UXEgAE/mkhILRFC+IaGbr
+	9dTbclLaWkTxnrf3tyWbxhzWDPmnyJj0oCy3PQraDyFPwXXrBqoIq+cQgcYCaP6u7DXG36HlKYklE
+	y9F5l3CzINNK0C1zQUrZGh0pox6tVWou6ftlJuw4E3qDnZLBlFc0j0QfYawLOMJVRF9ydsp8ZGfV5
+	mzbqk8Eg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKdfk-00000001CLC-3ymO;
-	Wed, 06 May 2026 14:56:24 +0000
-Received: from mail-oa1-x30.google.com ([2001:4860:4864:20::30])
+	id 1wKdk5-00000001DUM-2Nni;
+	Wed, 06 May 2026 15:00:53 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKdfi-00000001CIy-0NSL
+	id 1wKdk4-00000001DSl-3SkR
 	for linux-rockchip@lists.infradead.org;
-	Wed, 06 May 2026 14:56:23 +0000
-Received: by mail-oa1-x30.google.com with SMTP id 586e51a60fabf-4043b27ddeaso3437254fac.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 May 2026 07:56:21 -0700 (PDT)
+	Wed, 06 May 2026 15:00:52 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-43d77f6092eso4122246f8f.2
+        for <linux-rockchip@lists.infradead.org>; Wed, 06 May 2026 08:00:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1778079381; x=1778684181; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1778079651; x=1778684451; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=lqwubmezLdUWi5nwdGm9inEyQvRDdNL1kdWWslX4DTM=;
-        b=HuSHiR3U6W28JpcXZ0eSs5Px+PBzHq3j6a8sA1meJ6r5gxKLdiFUwV+EIAFOLJj1er
-         GhWxjTDQidgp+TK5jwHw5KhodbFVnfFXsDYCBCQk3b1SnupRMD3IGsMIXUrTIA/KH832
-         5PGJOTLR3HQ+iQNlRVb154dYHabtE0WHHtBJkfEjI425twvPWpi9pC29r17hOL/oxE0u
-         d/DmumXqnNB5m/vjuiTbjFRLJ9V/O6x7kPwOdfmBDXtWl2MS5GhW77mt2hsvU2/+DPu8
-         iONeNukpi65EM+auyBhZ+3iqYSYUSB9uHkSnn9TjoAcjF4BdvjVletdHLglo0YLzGdDO
-         VdDw==
+        bh=0/W7qZT5O8z085sn4mW/UkbICY8RKtYfsrB4Yj1GnNQ=;
+        b=UYPSC9K1HhAD56HRaAtuUjnlMNWneIHALp1h7eUPcxAxpRAK64XoddBmRBYWNZKt9+
+         Yn69ByOBY+Ab8ANQMclTw9ch/b2r23l4N541d81PdUn6KzrZtQU+3x+1W6CSRUtmEbhI
+         5RjiTJSUk/eMclwWcxT0x4Zk9zwpaOcYwn4Zv3dHuhn2b/cXKfG/6f9RNpW/lI8wZiH9
+         CeHu4NdqnW/bmapBgUuhbXM05/mS/awa+eNEj40L7bB7vNU7lZnhwPnKOVQh/kKKZ8fV
+         KA1w5AL0o6qlcuaZWt9jEs7RSCEsWUUtJURIkI0sXjv7GnjYobWfSEATbUXEzt+sE52W
+         tfaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778079381; x=1778684181;
+        d=1e100.net; s=20251104; t=1778079651; x=1778684451;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=lqwubmezLdUWi5nwdGm9inEyQvRDdNL1kdWWslX4DTM=;
-        b=ChpuFf8AaHD3ZBr1dZ0hDxnStc3+zKB3rzAqbtAf1GdxG/doaaylLZpxjozI695fRr
-         3QIOLzzIs6n38FYtQOgPWz3RnocirS83AHo0Bux5weVNsvH1m3+AYSu2XftqqY9EsZ4I
-         ic60cs7M376erf8bTRI+HKfwjLrwZawXrlDssk1jru2gtj1Yz2Bv3LKiv0SvexenBRXP
-         q/s3GN4NDEDRAGNLd6bsakIzLKJy0x/gsW98AaLPcHOK8E5qS3QBfu+CqBskCjCLV/V4
-         JTrt1H8AXVy+G2jsjAcqgjZPw8RormfkBOs5FN+mvUIdIbN9+kIoF1ckrd0giQebXoL2
-         aS5Q==
-X-Forwarded-Encrypted: i=1; AFNElJ8LgTUiMI/60EimYF8snCwwcTTjuO0Lm50lH50wquNMcJ8Co/S0qjqmb1+cWwxuXmPbSE1NZRsw6EpCHIN9TQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwVsetUclvf5Ms7cZ3Pwdp19F9fYyS0tSLc6oiMnBSbfj3Cm56t
-	GsD8H/pveK44oKP1fNKF1XvoRmeaF5Dp0J/UqfnVlXJfGtdfr3PMr5I+2g87f/KOsnA=
-X-Gm-Gg: AeBDietC5G/wO0sHSAX/U+CZJXigyZDvLtImMeJ1GqFmDbHMtXq3Q49z6aj8xxfXxcX
-	Qx3ozu8wXhvkSINX1DojIIzXXUiCh1ZSuFO9a8KQVkZVilaCL20ZVogTf1QDj6mcFyNIyx039fr
-	Ys5CioL1XKGZGyUb3VW6rhe+0n/CTTdpt3plF9c0LhQ8GS5jRBwDsBZ0SwKkLTYOiKiX9hEqfGC
-	JxklJR9Gstn1W2B8i7MjzFHtTEtl8gtverFrOkEyCnBjdFNuiElTUKtBLD37lU7ByYNgStPiae7
-	9ozglrT9xHesISO+5VbaR2xuV7QQkih+08q5+PtMHopkRh6WNkYLD3xeaLCYa8is8l1tcnnJC0f
-	l0ubV5x6RPMvXQAK1+YYxBWhKH3fSMcMuo9kMUYeUyXnIhfGGqP0n//PHzzx7f8w7QPMq2+gOJc
-	PpmvaGseIvVW5dfVG10QHKTvkSS9+ETYdhl2Hxb+y2uqkjasNHYZyuyXdUrEQqFEKN0ZncIP3N6
-	qVV71BlnOmh94FPUNCo99F/nlFC
-X-Received: by 2002:a05:6871:e48b:b0:417:6237:cf7e with SMTP id 586e51a60fabf-434f5cd2ed9mr2538133fac.8.1778079380535;
-        Wed, 06 May 2026 07:56:20 -0700 (PDT)
+        bh=0/W7qZT5O8z085sn4mW/UkbICY8RKtYfsrB4Yj1GnNQ=;
+        b=cKwwIlreCuuvEbnPFY3lH3P/qsqRYQQxNedySFq757Ojfz9bEkIxcuIOrerQJhTUbN
+         wCW47NLyET+jWU2uGqA91WDI7NQ+Dg/5+YjHpiSXb2uTcIuiBm9/Zwb8nv7TrvoBkSc6
+         Nj5vykmk3X7LhX8QY2wlVtIQ5hwzllq78peubp1MguI7/ORuaXB5nDGaVSaJnVla2RQS
+         ll9NH8roPo3oy/A9vJ+6k4lhHgRtcnV4MMJhGs0+dao/7aGCQZBY9jrwt0Lb7HK1HM1N
+         tVqiJdnFowIX2E9hh6FXfwwnG4czmVGHT6r0mHeAdqzMos8bwenLLTHOOILB92ueCbSo
+         5zNg==
+X-Forwarded-Encrypted: i=1; AFNElJ+ERZLyt76UOQB1UJp0WFMdC08qF7Dj48hSUVwY6zm9zKOZ2Um5v6P9HbJ7uFsMQQldHuyvf8+JhhCPbhiaMw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyJTDtscFC0FSN2XfB4mEs7Pa8J6KWL+HPka7nLkqrCnvKRE3aZ
+	QazFaXnMVEy87Fg93a/WTSVK6MGGz1YQoSPls0Rll2tnHeniLgpzpkCH8BIWE61s8UA=
+X-Gm-Gg: AeBDieus1b+ofrvLVg0boIpq77Shvs+ylxSNuWGXOspFw/7f7ImPKT/ulYcN02Sk+oy
+	Bjy4+5kS+K/CbiYM2+FZMd8nvwcODdjCyYw+odnrdt1axCbDXvbVNdIyklsjEnBYv7pTR+720SX
+	xPHBuYy9R1TRJIdRoxtZH8C5Pezcg6bxC6855+7eAe1Xc7KHrt4fqtLHnNmoPUEFieGYavA9Rl+
+	NQnrwtrvVmb4sTZ0n0NKp35dIGB6Gml5RBgSKV1lVlH21mBrd0/C6Gl6DNp7bbIH+fokyYsZgi5
+	3CJ0nzuQ228OVHr1PJlm9Zu3MSXWfpZbLXI39rZYSC6L15P06lor1ifwJRrpDQkIkRejqBC4L2R
+	Tm20LwlCPIsOQRpFQ7RVgln6YUwiEQGHX3iBeKMAHlALNJvWpOeKIMPlmPArqNM7vqTDjjLM0+c
+	h6AMncv9z057nB3/u2rxBUZ3FZvk1Z8cvuaYjQMMHM5b0fMvmstEIpMduE5xsSTM5aYJ3KZ0wDy
+	9/vHgPUBamcgQ0Bd3+5usEz96vX
+X-Received: by 2002:a05:6000:18a6:b0:43d:761d:5423 with SMTP id ffacd0b85a97d-4515ad767eamr7192146f8f.16.1778079650163;
+        Wed, 06 May 2026 08:00:50 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:106d:1080:5798:67fd:c866:b378? ([2a01:e0a:106d:1080:5798:67fd:c866:b378])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-43454d8ed0dsm15613477fac.17.2026.05.06.07.56.17
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45054b03df9sm12728674f8f.24.2026.05.06.08.00.48
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 06 May 2026 07:56:20 -0700 (PDT)
-Message-ID: <cb419510-b9ab-4a62-b210-ce07383c564b@linaro.org>
-Date: Wed, 6 May 2026 16:56:15 +0200
+        Wed, 06 May 2026 08:00:49 -0700 (PDT)
+Message-ID: <4d77bbef-6350-48e1-93a5-d256fc8bc8cd@linaro.org>
+Date: Wed, 6 May 2026 17:00:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH v4 11/16] phy: rockchip: usbdp: Register DP aux bridge
-To: Sebastian Reichel <sebastian.reichel@collabora.com>,
- Vinod Koul <vkoul@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
- Frank Wang <frank.wang@rock-chips.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>
-Cc: Andy Yan <andy.yan@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>,
- Yubing Zhang <yubing.zhang@rock-chips.com>,
- Alexey Charkov <alchark@gmail.com>, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, kernel@collabora.com,
- devicetree@vger.kernel.org
-References: <20260428-rockchip-usbdp-cleanup-v4-0-7775671ece22@collabora.com>
- <20260428-rockchip-usbdp-cleanup-v4-11-7775671ece22@collabora.com>
+Subject: Re: [PATCH] phy: rockchip: inno-hdmi: Change TMDS rate handling to
+ configure() ops
+To: Jonas Karlman <jonas@kwiboo.se>, Vinod Koul <vkoul@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>
+Cc: linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260503172936.194003-1-jonas@kwiboo.se>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -116,10 +110,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <20260428-rockchip-usbdp-cleanup-v4-11-7775671ece22@collabora.com>
+In-Reply-To: <20260503172936.194003-1-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_075623_268771_C3CFB983 
-X-CRM114-Status: GOOD (  21.01  )
+X-CRM114-CacheID: sfid-20260506_080052_906696_A82E4B95 
+X-CRM114-Status: GOOD (  23.41  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,95 +131,100 @@ Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 4/28/26 18:13, Sebastian Reichel wrote:
-> Add support to use USB-C connectors with the DP altmode helper code on
-> devicetree based platforms. To get this working there must be a DRM
-> bridge chain from the DisplayPort controller to the USB-C connector.
-> E.g. on Rockchip RK3576:
+On 5/3/26 19:29, Jonas Karlman wrote:
+> The commit 10ed34d6eaaf ("phy: Add HDMI configuration options")
+> introduced a way for HDMI PHYs to be configured through the generic
+> phy_configure() function.
 > 
-> root@rk3576 # cat /sys/kernel/debug/dri/0/encoder-0/bridges
-> bridge[0]: dw_dp_bridge_funcs
->          refcount: 7
->          type: [10] DP
->          OF: /soc/dp@27e40000:rockchip,rk3576-dp
->          ops: [0x47] detect edid hpd
-> bridge[1]: drm_aux_bridge_funcs
->          refcount: 4
->          type: [0] Unknown
->          OF: /soc/phy@2b010000:rockchip,rk3576-usbdp-phy
->          ops: [0x0]
-> bridge[2]: drm_aux_hpd_bridge_funcs
->          refcount: 5
->          type: [10] DP
->          OF: /soc/i2c@2ac50000/typec-portc@22/connector:usb-c-connector
->          ops: [0x4] hpd
+> This driver currently derives the TMDS character rate from the pixel
+> clock and the PHY bus width setting. However, no in-tree consumer of
+> this PHY has ever called phy_set_bus_width() to change the TMDS rate.
 > 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> Change the TMDS character rate handling to depend on the configure() ops
+> before any PHY consumer needs to configure a TMDS character rate that is
+> different from the pixel clock rate.
+> 
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->   drivers/phy/rockchip/Kconfig              |  2 ++
->   drivers/phy/rockchip/phy-rockchip-usbdp.c | 14 ++++++++++++++
->   2 files changed, 16 insertions(+)
+> A near future drm/rockchip: dw_hdmi: series plans to include a call to
+> phy_configure() to configure this HDMI PHYs TMDS character rate.
+> ---
+>   drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 30 ++++++++++---------
+>   1 file changed, 16 insertions(+), 14 deletions(-)
 > 
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> index 14698571b607..39759bb2fa1d 100644
-> --- a/drivers/phy/rockchip/Kconfig
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -136,8 +136,10 @@ config PHY_ROCKCHIP_USBDP
->   	tristate "Rockchip USBDP COMBO PHY Driver"
->   	depends on ARCH_ROCKCHIP && OF
->   	depends on TYPEC
-> +	depends on DRM || DRM=n
->   	select GENERIC_PHY
->   	select USB_COMMON
-> +	select DRM_AUX_BRIDGE if DRM_BRIDGE
->   	help
->   	  Enable this to support the Rockchip USB3.0/DP combo PHY with
->   	  Samsung IP block. This is required for USB3 support on RK3588.
-> diff --git a/drivers/phy/rockchip/phy-rockchip-usbdp.c b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> index beab20e4c512..77ad2a89d4f2 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-usbdp.c
-> @@ -6,6 +6,7 @@
->    * Copyright (C) 2024 Collabora Ltd
->    */
+> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+> index 1483907413fa..7f0563d4d482 100644
+> --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+> @@ -245,6 +245,7 @@ struct inno_hdmi_phy {
+>   	struct clk *phyclk;
+>   	unsigned long pixclock;
+>   	unsigned long tmdsclock;
+> +	struct phy_configure_opts_hdmi hdmi_cfg;
+>   };
 >   
-> +#include <drm/bridge/aux-bridge.h>
->   #include <dt-bindings/phy/phy.h>
->   #include <linux/bitfield.h>
->   #include <linux/bits.h>
-> @@ -1434,6 +1435,7 @@ static int rk_udphy_probe(struct platform_device *pdev)
+>   struct pre_pll_config {
+> @@ -554,19 +555,10 @@ static inline void inno_update_bits(struct inno_hdmi_phy *inno, u8 reg,
+>   static unsigned long inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy *inno,
+>   					       unsigned long rate)
 >   {
->   	struct device *dev = &pdev->dev;
->   	struct phy_provider *phy_provider;
-> +	struct fwnode_handle *dp_aux_ep;
->   	struct resource *res;
->   	struct rk_udphy *udphy;
->   	void __iomem *base;
-> @@ -1492,6 +1494,18 @@ static int rk_udphy_probe(struct platform_device *pdev)
->   			return ret;
+> -	int bus_width = phy_get_bus_width(inno->phy);
+> -
+> -	switch (bus_width) {
+> -	case 4:
+> -	case 5:
+> -	case 6:
+> -	case 10:
+> -	case 12:
+> -	case 16:
+> -		return (u64)rate * bus_width / 8;
+> -	default:
+> -		return rate;
+> -	}
+> +	if (inno->hdmi_cfg.tmds_char_rate)
+> +		return inno->hdmi_cfg.tmds_char_rate;
+> +
+> +	return rate;
+
+Can't you keep both until dw-hdmi calls the configure op ?
+
+>   }
+>   
+>   static irqreturn_t inno_hdmi_phy_rk3328_hardirq(int irq, void *dev_id)
+> @@ -602,6 +594,16 @@ static irqreturn_t inno_hdmi_phy_rk3328_irq(int irq, void *dev_id)
+>   	return IRQ_HANDLED;
+>   }
+>   
+> +static int inno_hdmi_phy_configure(struct phy *phy,
+> +				   union phy_configure_opts *opts)
+> +{
+> +	struct inno_hdmi_phy *inno = phy_get_drvdata(phy);
+> +
+> +	inno->hdmi_cfg = opts->hdmi;
+> +
+> +	return 0;
+> +}
+> +
+>   static int inno_hdmi_phy_power_on(struct phy *phy)
+>   {
+>   	struct inno_hdmi_phy *inno = phy_get_drvdata(phy);
+> @@ -668,6 +670,7 @@ static int inno_hdmi_phy_power_off(struct phy *phy)
+>   
+>   static const struct phy_ops inno_hdmi_phy_ops = {
+>   	.owner = THIS_MODULE,
+> +	.configure = inno_hdmi_phy_configure,
+>   	.power_on = inno_hdmi_phy_power_on,
+>   	.power_off = inno_hdmi_phy_power_off,
+>   };
+> @@ -1392,7 +1395,6 @@ static int inno_hdmi_phy_probe(struct platform_device *pdev)
 >   	}
 >   
-> +	/*
-> +	 * Only register the DRM bridge, if the DP aux channel is connected.
-> +	 * Some boards use the USBDP PHY only for its USB3 capabilities.
-> +	 */
-> +	dp_aux_ep = fwnode_graph_get_endpoint_by_id(dev_fwnode(dev), 3, 0, 0);
-> +	if (dp_aux_ep) {
-> +		ret = drm_aux_bridge_register(dev);
-> +		fwnode_handle_put(dp_aux_ep);
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
->   	udphy->phy_u3 = devm_phy_create(dev, dev->of_node, &rk_udphy_usb3_phy_ops);
->   	if (IS_ERR(udphy->phy_u3)) {
->   		ret = PTR_ERR(udphy->phy_u3);
-> 
+>   	phy_set_drvdata(inno->phy, inno);
+> -	phy_set_bus_width(inno->phy, 8);
+>   
+>   	if (inno->plat_data->ops->init) {
+>   		ret = inno->plat_data->ops->init(inno);
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-
-Thanks,
-Neil
 
 _______________________________________________
 Linux-rockchip mailing list
