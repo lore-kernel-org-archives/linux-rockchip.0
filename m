@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3AB5FCD3442
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E40CCCD343F
 	for <linux-rockchip@archiver.kernel.org>; Thu,  7 May 2026 18:04:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,57 +12,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=amoEurQvefiASHM0FwKR+TChx8ZEKIZV4hMjQ61eyT4=; b=B4/MFRnHdVv7BI
-	HDrASUTCKEt+RNeZtYxERSzTEv/0UIs+hqm5wROaGbqInLiRtLX+aLF/ni3Uve/k0JGoHUKDe5cxR
-	lpfphxIIxtSOZCLOk66i5Dn5cF6YhKf6gFBbJ9RHcO+ATtR0ZsnPRlxyiKLo7Aa1XktpsPsQSF0uj
-	mkwRGj89oWdb6RECyDScFGwxzj34rV5/yNAzoHIpzdOHWx46XavuzOQwm4rRsDQVLpRCQH18u+Jj4
-	U5nNfn+EiLyfZjom5303qAbZ0ZBgbHab7WImg9/lJnp2okZsjiMk0dk0lzMgVQu27ZiB1VYUPeJL2
-	/k+KSmgbl756h4cDFm1w==;
+	List-Owner; bh=r1RQXGHkS1m2cxLb0I68lQb8LtQVpOsiqOuaqpwix9g=; b=B/VWADm9k5mlr6
+	011zGGALrTWpAiX7eUcf/T04/uPPIgI6qqrUKrLCep7X3QQy7sfgWQ6vdvPZdeZfn+fiy29eoYVuI
+	759b6kmvJRIVv8uPEtisFVjo4W31pXDfAqz+CaJ+NEdiTpt/R2NV84fhGHUNZOfRfBGQxoV7A0EpA
+	xENMcmsbZJKlhYuv3QEawDmND1ljXsYfRTUYa1LV9YqRWHNoooAJAJn0j3aHf8FpRARtmXPFN2zYn
+	lFbnAqhJ8qsjGtxwmtwtl1RZOcgTrnOM/tbVT0yN1VOc4Gx6SQNgCD9pxq3Fh0orX0BVRYYjuf8Tc
+	s9EukoNp73lQhV7Zoegw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL34d-00000004Xkn-3dfZ;
-	Thu, 07 May 2026 18:03:47 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wL34k-00000004Xn2-0EgC;
+	Thu, 07 May 2026 18:03:54 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wL34b-00000004XkD-0mcV
+	id 1wL34h-00000004Xl4-0IBD
 	for linux-rockchip@lists.infradead.org;
-	Thu, 07 May 2026 18:03:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778177021;
-	bh=wrAzBvN495bkOFIYpdDRCnF+YrgQs4GzP4K6gY0sbCs=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=FVNZ2V1ljY17TcqsYRfPWcEBQrta29nFZ3RXvLSJOEmF29w0NjZ+OPh0wTpu3hKLj
-	 sbw51M5WTlBuW0nKCNCThTdufmmF7bLS9tLoYVi4ci+1xnU7wzCj43cC2W7SPBtbu7
-	 5AYB7/1xg03gwukRgeEX6sBWk1CeTABv2G1TRWESZvCl8kijgqB/WfAem/zZaSaSCd
-	 XsTsKhkICnHHamrzikqtCCPfrqST/boWNczs9trdpwOI4mRC+IRtQ7Tlv3QQhgpvMM
-	 o2s6fi8wORceosUTI6ez87f3iLqy4UvKyeMXbV+IsE4Ag+jQIzkqdWl3lvrvm8G+uY
-	 w+jJfRAJaMq7g==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 681C617E125C;
-	Thu,  7 May 2026 20:03:41 +0200 (CEST)
-Message-ID: <61e86f45-cc62-433b-b929-2df66ab0f1ff@collabora.com>
-Date: Thu, 7 May 2026 21:03:40 +0300
+	Thu, 07 May 2026 18:03:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1778177028;
+ bh=cZAoLcKv/IcNdiZDfzcbMbcVDOeuM0B0mAKB2TAuBuA=;
+ b=AL3dcN13DDgdlvbx7f1NdvZtY8MN9fjtqNcQwM0IwYiPECDc5nUXODNTaN/Sjjr27m2bLcApN
+ g8KiRjNnKFAG0yl/+z5WGC08AFj4CB0h/FRR3lTM1QHCeI248/lA+u8dv8mTeR5q/zDzuz7fg2o
+ zLgkZjuPBS1TPbg/ArgOOmm7S4xdl6N++dprDqRrm6De6lqts/JQamo+ieO5u0LWAG7Pp6WavER
+ J7uSd9dIzKtzKiJE3vN0IkiRzZgXDC05S1fZXlv7jjS6mOmArrDZsaDuc0fEFtHM8r5KT62jGt5
+ 29cGo/RCLg4B5eHgOlsx0Z8BNg9+thD3HVxqYsepT1bw==
+X-Forward-Email-ID: 69fcd3fe717d2f6fd6afcf98
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.73
+X-Forward-Email-Version: 2.7.7
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <a9f86194-a96b-4f9b-b8a6-f074e0746dd5@kwiboo.se>
+Date: Thu, 7 May 2026 20:03:39 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: drm/bridge: dw-hdmi-qp: seamless handoff sets wrong
- tmds_char_rate, breaking audio on strict HDMI 2.1 sinks
-To: Simon Wright <Simon@symple.nz>,
- "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>
-Cc: "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "kernel@collabora.com" <kernel@collabora.com>
-References: <ME3P282MB21960D9D68BFF520316BDFCEA83E2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM>
- <38b2e226-c8f0-44b4-bf71-66caa0b27d43@collabora.com>
- <ME3P282MB2196C1D097CB4A61D2376FAFA83C2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM>
+Subject: Re: [PATCH] phy: rockchip: inno-hdmi: Change TMDS rate handling to
+ configure() ops
+To: Neil Armstrong <neil.armstrong@linaro.org>, Vinod Koul
+ <vkoul@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: "linux-phy@lists.infradead.org" <linux-phy@lists.infradead.org>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+References: <20260503172936.194003-1-jonas@kwiboo.se>
+ <4d77bbef-6350-48e1-93a5-d256fc8bc8cd@linaro.org>
 Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <ME3P282MB2196C1D097CB4A61D2376FAFA83C2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM>
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <4d77bbef-6350-48e1-93a5-d256fc8bc8cd@linaro.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_110345_436526_C3700267 
-X-CRM114-Status: GOOD (  30.97  )
+X-CRM114-CacheID: sfid-20260507_110351_512932_49950562 
+X-CRM114-Status: GOOD (  21.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,124 +82,124 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+Hi Neil,
 
-On 5/7/26 1:39 PM, Simon Wright wrote:
-> Hi Cristian,
+On 5/6/2026 5:00 PM, Neil Armstrong wrote:
+> On 5/3/26 19:29, Jonas Karlman wrote:
+>> The commit 10ed34d6eaaf ("phy: Add HDMI configuration options")
+>> introduced a way for HDMI PHYs to be configured through the generic
+>> phy_configure() function.
+>>
+>> This driver currently derives the TMDS character rate from the pixel
+>> clock and the PHY bus width setting. However, no in-tree consumer of
+>> this PHY has ever called phy_set_bus_width() to change the TMDS rate.
+>>
+>> Change the TMDS character rate handling to depend on the configure() ops
+>> before any PHY consumer needs to configure a TMDS character rate that is
+>> different from the pixel clock rate.
+>>
+>> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+>> ---
+>> A near future drm/rockchip: dw_hdmi: series plans to include a call to
+>> phy_configure() to configure this HDMI PHYs TMDS character rate.
+>> ---
+>>   drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 30 ++++++++++---------
+>>   1 file changed, 16 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+>> index 1483907413fa..7f0563d4d482 100644
+>> --- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+>> +++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+>> @@ -245,6 +245,7 @@ struct inno_hdmi_phy {
+>>   	struct clk *phyclk;
+>>   	unsigned long pixclock;
+>>   	unsigned long tmdsclock;
+>> +	struct phy_configure_opts_hdmi hdmi_cfg;
+>>   };
+>>   
+>>   struct pre_pll_config {
+>> @@ -554,19 +555,10 @@ static inline void inno_update_bits(struct inno_hdmi_phy *inno, u8 reg,
+>>   static unsigned long inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy *inno,
+>>   					       unsigned long rate)
+>>   {
+>> -	int bus_width = phy_get_bus_width(inno->phy);
+>> -
+>> -	switch (bus_width) {
+>> -	case 4:
+>> -	case 5:
+>> -	case 6:
+>> -	case 10:
+>> -	case 12:
+>> -	case 16:
+>> -		return (u64)rate * bus_width / 8;
+>> -	default:
+>> -		return rate;
+>> -	}
+>> +	if (inno->hdmi_cfg.tmds_char_rate)
+>> +		return inno->hdmi_cfg.tmds_char_rate;
+>> +
+>> +	return rate;
 > 
-> Thanks for the pointer. Quick test results before writing back.
-> 
-> Test rig: NanoPi R76S (RK3576) on Armbian-edge mainline 7.0.1, LG G3
-> OLED sink (the same strict HDMI 2.1 sink that surfaced the original
-> audio bug). Stack: hdptx-clk-fixes v1 + frl-enable-gpios v2 patch 3/13
-> + SCDC v5 patch 5 (hand-ported to v7.0; `.detect` kept instead of
-> `.detect_ctx` so the OOT module loads against unpatched vmlinux).
-> 
-> Tested-by for hdptx-clk-fixes v1: dmesg shows phy_configure /
-> phy_power_on / atomic_enable consistent at rate=185625000 bpc=10 with
-> no recalc drift -- exactly what the cover letter promises. Happy to
-> add the trailer to the v1 cover and any individual patch.
+> Can't you keep both until dw-hdmi calls the configure op ?
 
-Please provide the trailer and maybe also a kind reminder for the maintainers to
-get the series applied.. :-)
+I probably could, just not sure how much use it will be. I could split
+the changes in two different patches for a v2 if that is preferred?
 
-> 
-> That said, audio still mutes at high-bpc / high-TMDS rates on the
-> LG G3 even with your series applied:
-> 
->     1080p60  8-bit (148.5  MHz): audio plays  -- already worked
->     1080p60 10-bit (185.625 MHz): muted        -- original bug regime
->     4K@60   8-bit (594.0  MHz):  muted        -- production cast path
-> 
-> The "muted" rates are precisely those not in `common_tmds_cts_table[]`.
-> For those, `dw_hdmi_qp_find_cts()` returns 0, the override path is
-> skipped, and the QP IP falls back to its auto-CTS measurement -- which
-> the LG G3 cross-check rejects. The BSP-derived dw-hdmi-qp.c
-> (develop-6.6) carries an in-source comment attributing this to the
-> auto-circuit measuring at half the actual TMDS rate; I haven't read
-> that register out myself to confirm the specific value, so I can only
-> report that empirically the override path with explicit CTS works on
-> the LG G3 and the bare auto path doesn't.
-> 
-> The fix is to compute CTS from N when the table misses, and feed it
-> through the standard override path. Six lines + comment in
-> `dw_hdmi_qp_set_sample_rate()`, between find_cts() and set_cts_n():
-> 
->     /*
->      * When no CTS table entry exists for the given TMDS rate, compute
->      * CTS from N rather than relying on the IP's auto-measure path,
->      * which mis-measures on this controller at high TMDS rates and
->      * produces incorrect ACR timing on strict HDMI 2.1 sinks.
->      * Computed CTS = (TMDS * N) / (128 * Fs) per HDMI spec.
->      */
->     if (!cts && n) {
->         u64 computed = (u64)tmds_char_rate * n;
->         do_div(computed, 128ULL * sample_rate);
->         cts = (unsigned int)computed;
->     }
-> 
-> With this on top of your series, all three regimes above play audio
-> cleanly -- including the 1080p 10-bit case from my original bug
-> report and the 4K@60 path on our production cast rig.
-> 
-> That makes my earlier rate-block patch
-> (linux-rockchip 2026-May/070673) redundant -- I'm happy to withdraw
-> it on its thread once you've decided where the CTS-from-N fix should
-> land.
+The only known user that calls phy_set_bus_width() for this PHY are my
+out-of-tree HDMI 2.0 patches for Rockchip RK3228/RK3328, i.e. those
+originating from LibreELEC (also carried by other distros), and also the
+downstream vendor kernel use a different implementation.
 
-Nice catch, will try to reproduce this on my end. 
+I am currently re-working those HDMI 2.0 patches, current working tree
+can be found at [1], where the patch "drm/rockchip: dw_hdmi: configure
+PHY in atomic_mode_set" [2] adds a call to phy_configure(). That part
+of the multi-series effort should reach mailing list any day now.
 
-Regardless, the fix should be submitted as a separate patch, as it's not
-(directly) related to any of the existing serieses posted on ML. 
-I.e. you mentioned "... mis-measures on this controller at high TMDS rates", but
-the 1080p60 10-bit (185.625 MHz) use case falls under HDMI 1.4, hence the
-problem doesn't seem to be limited to HDMI 2.x.
-
-> 
-> Two questions:
-> 
-> 1. Where would you like the CTS-from-N fix? Its own small thread, 
-
-Yep, dedicated submission, per the above.
-
-a
->    trailer on hdptx-clk-fixes, or folded into the SCDC series --
->    whichever fits your workflow.
-> 
-> 2. The kernel 7.0 announcement flagged controller-side FRL as "not
->    yet landed". Is that still on Collabora's roadmap
-
-Yes, I'm currently preparing a new revision of the HDMI 2.0 patchset, then I
-will focus on the HDMI 2.1 FRL support. The latest version of these patches is
-already available in our rockchip-devel branch, which contains all the
-necessary dependencies:
-
- https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux/-/commits/rockchip-devel?ref_type=heads
-
-> , or open for me
->    to send a develop-6.6-derived prototype as RFC once I've ported it
->    to mainline? Happy to wait if you have a series in flight.
-> 
-> Reproducer for the audio fix is the stack above plus a small libdrm
-> helper to hold the mode against fbcon (modetest releases DRM master
-> on exit). I can share the helper if useful.
-
-Yes, please detail the reproducer steps.  So far, I've only tried playing audio
-using speaker-test while switching the modes via modetest and it works as
-expected.
-
-> 
-> Sige5/Sige7 DTS follow-ups to your frl-enable-gpios v2 series are in
-> draft against the schematics; both boards are on order so I'll
-> validate on my own hardware before sending. I'll start a separate
-> thread on the v2 series for those rather than burying them here.
-
-That series has been applied and is available in linux-next since next-20260506.
-It also handles the rk3576-armsom-sige5 board, do you need anything else for
-this particular one?
+[1] https://github.com/Kwiboo/linux-rockchip/commits/next-20260430-rk-hdmi-v2/
+[2] https://github.com/Kwiboo/linux-rockchip/commit/555dfa562f40d22a63577c746ab42b0ec1f3ebee
 
 Regards,
-Cristian
+Jonas
+
+> 
+>>   }
+>>   
+>>   static irqreturn_t inno_hdmi_phy_rk3328_hardirq(int irq, void *dev_id)
+>> @@ -602,6 +594,16 @@ static irqreturn_t inno_hdmi_phy_rk3328_irq(int irq, void *dev_id)
+>>   	return IRQ_HANDLED;
+>>   }
+>>   
+>> +static int inno_hdmi_phy_configure(struct phy *phy,
+>> +				   union phy_configure_opts *opts)
+>> +{
+>> +	struct inno_hdmi_phy *inno = phy_get_drvdata(phy);
+>> +
+>> +	inno->hdmi_cfg = opts->hdmi;
+>> +
+>> +	return 0;
+>> +}
+>> +
+>>   static int inno_hdmi_phy_power_on(struct phy *phy)
+>>   {
+>>   	struct inno_hdmi_phy *inno = phy_get_drvdata(phy);
+>> @@ -668,6 +670,7 @@ static int inno_hdmi_phy_power_off(struct phy *phy)
+>>   
+>>   static const struct phy_ops inno_hdmi_phy_ops = {
+>>   	.owner = THIS_MODULE,
+>> +	.configure = inno_hdmi_phy_configure,
+>>   	.power_on = inno_hdmi_phy_power_on,
+>>   	.power_off = inno_hdmi_phy_power_off,
+>>   };
+>> @@ -1392,7 +1395,6 @@ static int inno_hdmi_phy_probe(struct platform_device *pdev)
+>>   	}
+>>   
+>>   	phy_set_drvdata(inno->phy, inno);
+>> -	phy_set_bus_width(inno->phy, 8);
+>>   
+>>   	if (inno->plat_data->ops->init) {
+>>   		ret = inno->plat_data->ops->init(inno);
+> 
+
 
 _______________________________________________
 Linux-rockchip mailing list
