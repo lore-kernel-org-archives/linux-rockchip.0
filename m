@@ -4,87 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9E28CD342C
-	for <linux-rockchip@archiver.kernel.org>; Wed,  6 May 2026 17:30:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BFEFCD342C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 May 2026 03:08:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sVf2XJep7ZJkYWmMAIg6C0yeo8rh7m/hnu1uYt5qiOk=; b=n6SI2YgXJN2fj/
-	nuCDuz9eJfLmswVJz1YG0tIDkfQGKP8hmrZ+GSD7wKPPKeb9hhDn9imHgaELs9xPCFQyih4yVsrNp
-	mDcdf1sIXPcQT3Xj4djnwtBMLCoP7O5yT8Yr06Kw5VYe0/IjTcK189hm35e9V2uO/L3wrmY/rha+D
-	jK6xXzQk0UF5WbEIbbZZUyjH8j0TN2WtIS7TF9ozNRkqC+FtODTdCQP8oQPBOWcxqNdDuKDiUqNzo
-	t7Hfk8oVDdw7IFJ/q13bvw900A72rmeRnqsnwBu2aWqETvznvGuGPkHG6JkAO/6WmNtKxCMY47FwU
-	9fJJgRh4rKUl19mckENA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=NV6wiQkzLGh0leBzxYmQsnimKJLj4UTRixlC5w+tXd0=; b=Sm5GxH5EB+j5FG
+	fYYFJxt4c1LmnpVfF0zH1AZmIF3MmN81jnEHA4UAX+yOWpqZBG50ScyksAWTmiNJNYNIBosQasSmw
+	C++Wiw2YbnqBnrL0EN7+9e0/fuG5vmGgfN6SniRaYWPLqgvxmUbgqkQE1YRKaogiryEa56TUH6quw
+	BJ1VRgVqqKlyCJ6iCpCk2b4uNanrkzotRjmo56JiVP0CfJVLc5P7DwpRKHQ70ho2S3s3g8MDycUJi
+	wwd5bO4Nz6rkkLp3FC0nbU1VmuYZiJpuHPILOCFMNAc9dPOREf+5TepM3rv8K9XaJLjEWHiodp0Jp
+	hwoNHbpoCN2nvBxVTnNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKg5H-00000001fFg-1DWK;
-	Wed, 06 May 2026 17:30:55 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1wKp5v-00000002b6W-2Hs9;
+	Thu, 07 May 2026 03:08:11 +0000
+Received: from mail-southcentralusazolkn19012070.outbound.protection.outlook.com ([52.103.14.70] helo=SN4PR2101CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKg5F-00000001fEl-1SDv
-	for linux-rockchip@lists.infradead.org;
-	Wed, 06 May 2026 17:30:53 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-35fb0bb27e7so4556028a91.1
-        for <linux-rockchip@lists.infradead.org>; Wed, 06 May 2026 10:30:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1778088652; x=1778693452; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=q92pYl98bSnKhgO0g+LA6h/wojvjo0EO8G9dXoXq+H4=;
-        b=ZTEBbl9ngzE7cwB89IxAL5fTf0+t1n/xRcZrIH42Op7hUlhXpGtwUHgyo8XEg0wa1t
-         78c5jANCq9io4WfADzSRQGgukYZpXW+jBYcIEfO1HNr17dPBK5jxeBweHk30xmEfM6PE
-         exGVtyEspv7udAvgOzAsuYMDoBaW4Cw2+jrfoPT1yQdtR2WsfZ9xMHOaEpki0FOP8o+E
-         AMuHlV/5yuj+xJr02DELJu8bLS4YydEgjpCiicbxNr5dgQvbLafHN/Nhh+wgGAvsu3g8
-         S1KHHhKnKc8n8E/DITTbVFWZi4BY48s+zbRUAWrlkCxU384GYzNF1oTLZLH6SNUOlIVT
-         +CRA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778088652; x=1778693452;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:sender:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=q92pYl98bSnKhgO0g+LA6h/wojvjo0EO8G9dXoXq+H4=;
-        b=sBuWGw14IsR4pVWKq19P79iWi3j73lgFTBR7JYzYdA1ctDnyePza1cBCWb2xU4jR6N
-         4ehFb8knxQvI0WtKvasr8HmYdQR/MjYB26mkUP7vE2oa1RKudYbIW2KcMuT4QsQoZ4+W
-         embhW4pHgrqJO8aeWJA7ZpWUtczpCVq0PHHESmKVTetH0X1BPDtxYcfoSkVvKUiRLNCE
-         bc61cyR0DMnGGKJDiVD3TUDWoiFrL08AgY5HwRD/AIWxkTbk3+PivOmmCiIx56mC81DR
-         DXT90FI+xYPTw5gzBj6Dz4o5yW/pld4salfwSmHEwVVxAB2NT1QUTBrtE1Nb+KggBXlz
-         bUAQ==
-X-Forwarded-Encrypted: i=1; AFNElJ86LL9uTFBP19xvNdKSgTDok+ARrc7rPd7yatZqRCf4WrC6bbQzb7R5Bj7XEvsG1CvQvTkeV38VKfQDcRmveA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxMVr3dRsKanbQ8LI/TIBl0T6A6YZR0GpLZpDVkCiQv/lnzu+uA
-	GgOVVqfekjqgqG3FI7DHiQ5ZkOx7vsIf1i0waVArthOnq78pZ/tmaHAF
-X-Gm-Gg: AeBDietEEtm6/BjZcFvMOnffVQxe82JITjkRchzSY2kIAnyGjcCb/O/ObKtAFOcfXLc
-	HXJ7vU1G1Z/GKEMAxx6t2ulslbFkGYBjQmPDaG4mSps4+XKdvGazUVuHFz+JJWMYJWlO0JW07QA
-	vwQiolaE/ms1kpSjjCvS/m/4vezpZLKF9MyD0qzer+l3ebtoFMmkk5EYpRP/lxIYQnGZNg11a93
-	JyWuKZYVTiLT38UJYWQW3h0OC6A5ps4RYJ8hyI0VYobKSJfMaWwpETKWv5oXuJ3UatRyS7RGRnX
-	ROeqslLpHySe20LKgTmpe1a5jjCOazrfCQQTC1YrnBfqEz67Kfj9fNDcc+jTfsIPbri5AOPcd9E
-	J8fbjfkE12OxmaDeImnhYQKPrLXo+ecNm2we6Sqq/5SsbzfniQltkOj5/DbNrHwiEAgomQjJP7v
-	WbmSFFxFM5PIksPgw+p+oWSJ1VFOUumr6iCHhcA5Qkf9xqq1oOkOPkw4siKg==
-X-Received: by 2002:a17:90b:264e:b0:35b:e553:9cc2 with SMTP id 98e67ed59e1d1-365ac89cf2cmr4261014a91.26.1778088651264;
-        Wed, 06 May 2026 10:30:51 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-365cad597c3sm1338302a91.4.2026.05.06.10.30.50
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 May 2026 10:30:50 -0700 (PDT)
-Date: Wed, 6 May 2026 10:30:49 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: wim@linux-watchdog.org, robh@kernel.org, krzk+dt@kernel.org,
-	conor+dt@kernel.org, linux-watchdog@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH] dt-bindings: watchdog: Add watchdog compatible for RK3528
-Message-ID: <2ee02f9b-56cf-4dbe-9312-e2ba85d44de1@roeck-us.net>
-References: <20260506092420.3320031-1-heiko@sntech.de>
+	id 1wKp5u-00000002b5s-2LtD;
+	Thu, 07 May 2026 03:08:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=X96bA1SboiMbuz4cV7UCV9RWWvjlCjo/Skrg9TkkZz12wM6sWZyoJew99ASxPDcfjYU/o5bTLWaIm0F+f/yi+qZHPbbhgDJnU0VnbVTEm3MGtv5ykypU6XmFoKvlvHMeO12Tz80pBBDSAlXIRj5s+smAogqh+48beXCORJk1AUvzYYQRGBo2qVUIiCNjFy3bexPboTCUXvATpjDQCsALIgbfEIb5lDp9oid25m3M7s9SSgi52YWpYP21SDDWTlBNk9aRDkhDg7WJtYsojQRbdnlRp7x+E49YjFuVkWuriXMfFiG6MiNsNp+aOFuvwG6SsCM2ylkQQxv400CLDPMiow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nJMwf5lAOGoS9RXayozvp0480cGIqKJvu67ipdgEP2g=;
+ b=PDYyg9rtVFQYKM5b0flNLi+WfzyMRBczvYg3qMw+jQr74zBYp8Ca305DBn4Bw9eTtmBp2nXYaXlNDw44v+SaqTYmmXnoTWaBV8CBDSr2+wG/aLVVBE383GeaExGQPuQ9qcwa0dfJUS6mi5wh+rV4+MEM32I6VW9xhdOWG4k3iCr7tE6pHtJ9mDMP0I/HnflKMEXs/lJq3SQj4QgeflNApgczpKZ4JXtQG1055eIFZMTlr9f8wgst5ccRkiTY7PxWOf7x7ZndYMtSMeDLV4QZQ3tbOBRrfQNt7wWqPrXWXg60s7sMOpLfNpNLJmtQ1JVORS1GBn21bCaUstD74BDSLw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=outlook.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=nJMwf5lAOGoS9RXayozvp0480cGIqKJvu67ipdgEP2g=;
+ b=Iiu3ewY11mVUdfsFRpbD/m7opABr1V4N31ri7+BVE1O8XFJjJnSBRPXbvSF5fEBFrHxF/bz1HcEDElHwrhCGw3GPhCK5LyAiJZIl/WFIIIfQjzz5X7J1RDNDS5kGEFefdFctfIBV6bFryj7OsIWDyhPQLOPKZseR5WqeXvhBPk33WyA+bqAo8f1DVIL7X3BZsFR3LjZGbafb/uwBUre2RQK5W6QuEgiE4Z2AA7gQro3L2MY5Mmq8dNa0xbrQTq7OaU/J1Vu4ymV6T+Co75J+Z8NhlG1cSVOJJbuvV4/B1m2mzM+nPDy27yrmuVjb3w93ZdbiLXJclR8kQ1xabovd3Q==
+Received: from MN0PR19MB6091.namprd19.prod.outlook.com (2603:10b6:208:382::21)
+ by PH7PR19MB8235.namprd19.prod.outlook.com (2603:10b6:510:2f2::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.15; Thu, 7 May
+ 2026 03:08:03 +0000
+Received: from MN0PR19MB6091.namprd19.prod.outlook.com
+ ([fe80::af9a:4cc3:facf:9374]) by MN0PR19MB6091.namprd19.prod.outlook.com
+ ([fe80::af9a:4cc3:facf:9374%5]) with mapi id 15.20.9891.008; Thu, 7 May 2026
+ 03:08:03 +0000
+From: Liu Changjie <liucj1228@outlook.com>
+To: heiko@sntech.de
+Cc: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Liu Changjie <liucj1228@outlook.com>
+Subject: [PATCH 1/2] dt-bindings: arm: rockchip: Add LCKFB Taishan Pi 3M
+Date: Thu,  7 May 2026 11:07:52 +0800
+Message-ID: <MN0PR19MB6091C07C729B83E594722E84AC3C2@MN0PR19MB6091.namprd19.prod.outlook.com>
+X-Mailer: git-send-email 2.50.0
+X-ClientProxiedBy: PH8PR05CA0012.namprd05.prod.outlook.com
+ (2603:10b6:510:2cc::11) To MN0PR19MB6091.namprd19.prod.outlook.com
+ (2603:10b6:208:382::21)
+X-Microsoft-Original-Message-ID: <20260507030753.24079-1-liucj1228@outlook.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260506092420.3320031-1-heiko@sntech.de>
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: MN0PR19MB6091:EE_|PH7PR19MB8235:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0f96ec43-9acd-4b55-d35a-08deabe5da12
+X-Microsoft-Antispam: BCL:0;ARA:14566002|461199028|37011999003|39105399006|24021099003|22141099003|8060799015|5062599005|5072599009|23021999003|15080799012|19110799012|40105399003|440099028|3412199025|3430499032|26104999009|1710799026;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?/pdxEak0pilWKBHtjD0rCUBDyJY4zh27wsWUGSUk0qi+JU7JA9jOEJ9gYLTU?=
+ =?us-ascii?Q?niuv7IUXd1bHj5SdFOmcOhzLcrdSWxRpIedhTp92grsecto6YWB+zyRfPbMy?=
+ =?us-ascii?Q?UzSycLYvit5Wc94jRGhlRnL1FpfIhtydEFSch7vy+2uRddRii2/zWr4xVl1Z?=
+ =?us-ascii?Q?Wu2d0uvHwLw1AMNruH3Vk7Ays8RdqJTQ679WTbmk2+7eT5ZqpN/vHON+hSCh?=
+ =?us-ascii?Q?RqESISi5wN6uYSOl3//fw3DNIK7ptc5JtEweUX7NAl8ul+oo6O8lIs3FqKld?=
+ =?us-ascii?Q?YQY0NmdQ8hakMKsZI0CtRrJXEA/woVcOeDdlkXM1VEgaK4Y65gFE9ms7uvNJ?=
+ =?us-ascii?Q?8/VD/UTcrF4VkoDGXej2FVqkDRNsidLMjsR39TTJoX84fuNPS08s4HRCBlA2?=
+ =?us-ascii?Q?o/QOgFuvaNJ1IE7QilpDktW5W/au8ZNI+OJDW6fhYA7PpXeqDSQwmXZBNNus?=
+ =?us-ascii?Q?XgfBrid3S3opJ7yVmqpic0qherzIH6HBGofzGMcJK6lrmbhMbO4x6Pq5qyt7?=
+ =?us-ascii?Q?zvk10X6HcwC4mtWh2r7p7Vl007JAjrwTeSdLtTYu/YOwGQJiYZvz85bhfiHA?=
+ =?us-ascii?Q?zpAXpl4uDRV/PnnMbKR4+zy71tIfMNb19hkpBsolOKEZ7CjciMv8oUjcYheb?=
+ =?us-ascii?Q?mHMWca5NBcMMEZErI7+xi+7cBGePkJDL6s6zjIhXQQgnxIdogRcqbQ592k8d?=
+ =?us-ascii?Q?cBA+7U6oaJVykaNHAq6ddVLca/bPy9kzhqCA/vBXh8h4eUlMUVIZFrSKHvxW?=
+ =?us-ascii?Q?pfmVlT+thSJY7H8jD+0aYOmwTOD+yB2BNzuPDEWh5qOaU3y+MWOu8D/P2Zio?=
+ =?us-ascii?Q?4XqXhU2BuogDvy1ZCSgxFvGfmVluI1DpIGZ/9/ApGsLou6IpMd0sDcUwyvkh?=
+ =?us-ascii?Q?oz0npC0BCujSFiPjoAuk0gMOtEjdkOSjL5NM/RSKoOJ/buBUbQJZ5Er9cHDY?=
+ =?us-ascii?Q?4xdh/nrs/8jRQQE3/9T2KIsgq/VDBl8oDro6sA+9Ml6R4mr+toyqZqZICjEj?=
+ =?us-ascii?Q?ezjgLRvcDMJAdBQ0wDM0rYC4IT+QML8Ri6t1Nenf4VmVJUliL+yxJA6tvQNe?=
+ =?us-ascii?Q?whE55Wfw?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?6nIUSVZDhrqAAoOuReH21VJPNMpIOGfq8V/Omc6eqAhuDiGWw/E2/vJT3GNe?=
+ =?us-ascii?Q?KlUyLwVgUwgtYb9FJJAZ3P/pG4CDRJkOmq+zOLh84VJdaP0mzrUihs7UAila?=
+ =?us-ascii?Q?/+RKyiv+ZC60OJecYHvmDGEpjEOFqiGv+uFBFBXTGiFtYbqY5ll9Ta7o2rOO?=
+ =?us-ascii?Q?I41kzWH23dXqQ9LqIUxV/U1HGAycLbZdtQAJXrpIrQFG0OSUTm5GDVBK7046?=
+ =?us-ascii?Q?svLyATNRFaLQzeK8+EgTHX640DtZo6ZKm6owS2j+CnNmSnG4IqJmeffBYodu?=
+ =?us-ascii?Q?FM/AE8BQ3SAg9cPFwOFIIutinIHel5xa8ktWanduMvtuyhmzkBA84V1vgPOD?=
+ =?us-ascii?Q?0x8sGdYrxsGQ7wdypTx2yCu/ZEQcFubewMiW65/Npt/PmJcvw+e8xf+7+0iv?=
+ =?us-ascii?Q?/bf00IKG6Il3Mgi9vEY1FkH/kIjMIh01wSI3apJuIzNdQv7j7QdX25+qi8Lx?=
+ =?us-ascii?Q?R/1CT2l10wrsH6QcWiFq0Kd+8JkCNZ3mHW3Toav6rnBvFTo2QXWDH9LS4r+c?=
+ =?us-ascii?Q?on0R0T9bxgCetKYX3blVU7h144IfYGglHGvZv6xlWtlpYuEuoipntMwGNdQz?=
+ =?us-ascii?Q?+orQ5W6Ng8ihhkRnpmQ36IJsqPVEozhEiVXQy2IWmiKLJKSeVACCMX1iXV2U?=
+ =?us-ascii?Q?TTlYvW+YEgRdz8qpYexrvPYr+McXf+E111rkC+OXFzQHIALANNTjU3h4qZgk?=
+ =?us-ascii?Q?IcarrjZURdCYrVKPQXI3Qb89TZW/fbFjyOFF23e5QQ6kUHMQeI5g+g6bbCFF?=
+ =?us-ascii?Q?6vYlZUcQQn1vGaCSA0evQuE4sPjDu5OqQenGh4sI2YA+I3BrREthR8uqHeis?=
+ =?us-ascii?Q?l3yYi9lsG2haIkD0PAf/K0RD5QgweuQV8eOeqejXs5P54EUW59CnqCqNwyc3?=
+ =?us-ascii?Q?2RJW6SDfEteF30cbgoXtvB7CJHR0myu1HgwgJ8F2buA18KfrHZaXWFwVo3At?=
+ =?us-ascii?Q?v80piLWQ5LLW6d7CCFec6AX3Pi9AVNzu/6Bx311c2UvxjO4QRFwaJ/OmYEK4?=
+ =?us-ascii?Q?N79CsP2Mxa0RmUR0ukfdYQGfDfk+1aXByhBzg7DdpoxXWgT9kC02P8+23L4d?=
+ =?us-ascii?Q?G4urt8J3eebchcbLRnJ4+0n73hZL1m0SoV4P7U6o5aD+CYmYF17w7XuPEBC8?=
+ =?us-ascii?Q?FzdFOeWiHPLo74lvMLwkP4MQ+qiw7/nkrLXEOFWof7O2OczLLhdaVRh1mS3p?=
+ =?us-ascii?Q?DqaYiQNdHTsmf5A0cZFioBTFTkMHBBHxArOnpEMpHkXXAFOIT8x6rydjJprf?=
+ =?us-ascii?Q?C0+Wv29MXBtqltMefdnPGgEoCWtNwLnXmBK3FfdhVhzXOGnV+AtbmYo7pQsX?=
+ =?us-ascii?Q?Yc90QTNcmKLakAqWiACbS8lImWdRXZybufoLqqe2bRlKyZmH6g0eCHw6Cd9G?=
+ =?us-ascii?Q?arzB+0kkxEiRCeJaCTL1W0IrLw++?=
+X-OriginatorOrg: outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0f96ec43-9acd-4b55-d35a-08deabe5da12
+X-MS-Exchange-CrossTenant-AuthSource: MN0PR19MB6091.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2026 03:08:03.1179
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR19MB8235
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_103053_386563_276F1178 
-X-CRM114-Status: GOOD (  14.50  )
+X-CRM114-CacheID: sfid-20260506_200810_607838_8AA9C79A 
+X-CRM114-Status: UNSURE (   7.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,37 +147,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Wed, May 06, 2026 at 11:24:20AM +0200, Heiko Stuebner wrote:
-> From: Jonas Karlman <jonas@kwiboo.se>
-> 
-> The RK3528 uses the same watchdog block as all previous Rockchip SoCs.
-> So add a compatible for it to the soc-list.
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> Signed-off-by: Heiko Stuebner <heiko@sntech.de>
-> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Add the compatible string for LCKFB Taishan Pi 3M, a board based on
+the Rockchip RK3576 SoC.
 
-Applied to my watchdog-next branch.
+Signed-off-by: Liu Changjie <liucj1228@outlook.com>
+---
+ Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Thanks,
-Guenter
+diff --git a/Documentation/devicetree/bindings/arm/rockchip.yaml b/Documentation/devicetree/bindings/arm/rockchip.yaml
+index 1a9dde18626d..322bcc726a26 100644
+--- a/Documentation/devicetree/bindings/arm/rockchip.yaml
++++ b/Documentation/devicetree/bindings/arm/rockchip.yaml
+@@ -779,6 +779,11 @@ properties:
+           - const: lckfb,tspi-rk3566
+           - const: rockchip,rk3566
+ 
++      - description: LCKFB Taishan Pi 3M RK3576
++        items:
++          - const: lckfb,tspi-3m-rk3576
++          - const: rockchip,rk3576
++
+       - description: LinkEase EasePi R1
+         items:
+           - const: linkease,easepi-r1
 
-> ---
->  Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> index 609e98cdaaff..731794dccd4a 100644
-> --- a/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> +++ b/Documentation/devicetree/bindings/watchdog/snps,dw-wdt.yaml
-> @@ -29,6 +29,7 @@ properties:
->                - rockchip,rk3368-wdt
->                - rockchip,rk3399-wdt
->                - rockchip,rk3506-wdt
-> +              - rockchip,rk3528-wdt
->                - rockchip,rk3562-wdt
->                - rockchip,rk3568-wdt
->                - rockchip,rk3576-wdt
+base-commit: 74fe02ce122a6103f207d29fafc8b3a53de6abaf
+-- 
+2.47.3
+
 
 _______________________________________________
 Linux-rockchip mailing list
