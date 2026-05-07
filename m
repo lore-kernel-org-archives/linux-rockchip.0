@@ -4,66 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 613B7CD3444
-	for <linux-rockchip@archiver.kernel.org>; Thu,  7 May 2026 11:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7441BCD3442
+	for <linux-rockchip@archiver.kernel.org>; Thu,  7 May 2026 11:40:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+rYFZrZ7LS/8tZw0DPeBjIQk+zEkvkv8g1tSf39aJP4=; b=D5KUFGFZekDB9N
-	qU7m/BPUk02EWkpyTW+VDT9mdOiQd78socnfZl2Guc5dmiDIuNl5ycv2m+Pl2uyDVq2coCLQtLvnG
-	nPWXSt7qgdEHqSXJPcA32tvzg/NHwQNGFkI11bVD2XUZJEbjLP6618eA6RUwAbXL3DyY0ZX1yLRYu
-	5NHlcUZCyibcow1AXlsvIQoICQP08dc0LSySw841u1D+fgBlH2xCsH8Cjj8CjxVWYDDgsHdvYUK+F
-	QKFa5m9jO+DREieDV94zN8GHG5NsIaqtuaBBMn7NY6exKwgiecl0V8ls1wj8mVpCHVNg9oRE0fukg
-	Hc/wOHX7sJ4Y65rK8lqA==;
+	List-Owner; bh=p9C01DR5A4eFDq/BLEiBMAR/tXrLVCWdMMj/SY+B9TQ=; b=e+ekjrBKrirTzS
+	lM453Z8aCHfBJuw0qrGhx8H2/LLkIu4VuNaypsjIGQ0PaD/z5XJwX3blGTUGivro16ssRrAeNjwTI
+	+NjceN9xA2D0WeCI4YuYN83TV+BNhEc+O8s/HIctObe7ndAQccWnQLlPZsByRMWXoj6RO5ktbOi3D
+	immJSoEom3dKNoo0O2ET09lSyk7dWt9cIDbAeCfuVkbetn/M9cU5CjHC/BWIcHs9G3OyOpK9lYp7/
+	gY5oh53kNFxQDv4M/vDBy5sLmz8jZ3Mik3eH1o6mO+pIl+nI1pbaNkJrJSJ30t0MJADZVEoFNQrIp
+	YvA4RASZJ8jK81zsYZaQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKx0c-00000003dg0-409I;
-	Thu, 07 May 2026 11:35:15 +0000
-Received: from mail-m49218.qiye.163.com ([45.254.49.218])
+	id 1wKx60-00000003g3u-2hvt;
+	Thu, 07 May 2026 11:40:48 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKx0a-00000003dZ3-1cq0;
-	Thu, 07 May 2026 11:35:13 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3d7b63a6e;
-	Thu, 7 May 2026 19:30:08 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Subject: [PATCH v3 08/10] drm/bridge: analogix_dp: Rename and simplify is_rockchip()
-Date: Thu,  7 May 2026 19:29:46 +0800
-Message-Id: <20260507112948.1115003-9-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260507112948.1115003-1-damon.ding@rock-chips.com>
+	id 1wKx5x-00000003g2b-0ymo;
+	Thu, 07 May 2026 11:40:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=WLd8tadd6RgVQITSoROvnyWzRDgtw6k0fr0kVxewnoo=; b=uZP5i3W2+KimMtmYaSf/uCvKZV
+	KEyBd0w83gRrX+PTidaEPIilv/qhe62UYI2lAj/K0byTUqyJbwrGo2gCcbCK4LPkVtg6wPs5ftYjX
+	ozIbvqSh9uiA3fJ7f0VEp4u7jKiOczy7T+68cEov9WxUeFFsjwT+ZB3nFSwLA6tOoN8tXLo6FVRtU
+	QGTTbDH6fkRLN7I/FE/0hdXG3WlkRH5cabBBT6Ik3cyVaXKP2AIYfax4nTSUkKy3LdLnNDKF2StmK
+	NdX1WdSgOYlF8/0gtt7OVnSyZ7jSgNyGIsqgHIa8XFIZ0Su/0YfPFQBRuI5NDdMq9IEmEASsswJYs
+	o+u0eUSQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: hjc@rock-chips.com, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+ rfoss@kernel.org, Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v3 01/10] dt-bindings: display: rockchip: analogix-dp: Expand
+ clock-names "hclk" for the third clock
+Date: Thu, 07 May 2026 13:40:09 +0200
+Message-ID: <6496645.8F6SAcFxjW@phil>
+In-Reply-To: <20260507112948.1115003-2-damon.ding@rock-chips.com>
 References: <20260507112948.1115003-1-damon.ding@rock-chips.com>
+ <20260507112948.1115003-2-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e0233c61103a3kunm4d1cbcd72724
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGR8aVk5CSklCGkpKTkkfS1YVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=TCpLxdThrUwHdhggNzCo7rZFnWPGLHoodtlNrV56KmLr6IwOSdQDvXDTJeCEx0qQa0VE45bPqgwnVYfpvDQ2pQqaSoUZLMymkQQVvSkjyI7oPxOCyOlhWMR5ckRWseJGoEZk/IFpxqMH2JgUzl54uT5D6co94VsbKBfBdMTGFI4=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=yxyhioPJ/C/ruQxeu+dWUVuehT1Lu+ASVR8wSqPK8uo=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260507_043512_660799_9176241D 
-X-CRM114-Status: GOOD (  12.82  )
+X-CRM114-CacheID: sfid-20260507_044045_270071_E699B198 
+X-CRM114-Status: GOOD (  14.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,151 +64,36 @@ List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
 Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename is_rockchip() to analogix_dp_is_rockchip() for naming consistency
-and readability, and simplify the code with switch.
-
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Suggested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
----
-
-Changes in v3:
-- Add Reviewed-by tag.
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c |  2 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c  | 18 +++++++++---------
- include/drm/bridge/analogix_dp.h               | 11 +++++++++--
- 3 files changed, 19 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 3e46350170d4..d45c81c1d77a 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -870,7 +870,7 @@ static int analogix_dp_bridge_atomic_check(struct drm_bridge *bridge,
- 	struct drm_display_info *di = &conn_state->connector->display_info;
- 	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
- 
--	if (is_rockchip(dp->plat_data->dev_type)) {
-+	if (analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		if ((di->color_formats & mask)) {
- 			DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
- 			di->color_formats &= ~mask;
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 38fd8d5014d2..6207ded7ffd5 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -72,7 +72,7 @@ void analogix_dp_init_analog_param(struct analogix_dp_device *dp)
- 	reg = SEL_24M | TX_DVDD_BIT_1_0625V;
- 	writel(reg, dp->reg_base + ANALOGIX_DP_ANALOG_CTL_2);
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		reg = REF_CLK_24M;
- 		if (dp->plat_data->dev_type == RK3288_DP)
- 			reg ^= REF_CLK_MASK;
-@@ -123,7 +123,7 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
- 	analogix_dp_stop_video(dp);
- 	analogix_dp_enable_video_mute(dp, 0);
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		reg = RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N |
- 			SW_FUNC_EN_N;
- 	else
-@@ -233,7 +233,7 @@ void analogix_dp_set_pll_power_down(struct analogix_dp_device *dp, bool enable)
- 	u32 mask = DP_PLL_PD;
- 	u32 pd_addr = ANALOGIX_DP_PLL_CTL;
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		pd_addr = ANALOGIX_DP_PD;
- 		mask = RK_PLL_PD;
- 	}
-@@ -254,12 +254,12 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 	u32 phy_pd_addr = ANALOGIX_DP_PHY_PD;
- 	u32 mask;
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		phy_pd_addr = ANALOGIX_DP_PD;
- 
- 	switch (block) {
- 	case AUX_BLOCK:
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			mask = RK_AUX_PD;
- 		else
- 			mask = AUX_PD;
-@@ -317,7 +317,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 		 * to power off everything instead of DP_PHY_PD in
- 		 * Rockchip
- 		 */
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			mask = DP_INC_BG;
- 		else
- 			mask = DP_PHY_PD;
-@@ -329,7 +329,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 			reg &= ~mask;
- 
- 		writel(reg, dp->reg_base + phy_pd_addr);
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			usleep_range(10, 15);
- 		break;
- 	case POWER_ALL:
-@@ -465,7 +465,7 @@ void analogix_dp_init_aux(struct analogix_dp_device *dp)
- 	analogix_dp_reset_aux(dp);
- 
- 	/* AUX_BIT_PERIOD_EXPECTED_DELAY doesn't apply to Rockchip IP */
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		reg = 0;
- 	else
- 		reg = AUX_BIT_PERIOD_EXPECTED_DELAY(3);
-@@ -837,7 +837,7 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp)
- 	u32 reg;
- 
- 	reg = readl(dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		reg &= ~(RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N);
- 	} else {
- 		reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 854af692229b..7b670dd769e9 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -19,9 +19,16 @@ enum analogix_dp_devtype {
- 	RK3588_EDP,
- };
- 
--static inline bool is_rockchip(enum analogix_dp_devtype type)
-+static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
- {
--	return type == RK3288_DP || type == RK3399_EDP || type == RK3588_EDP;
-+	switch (type) {
-+	case RK3288_DP:
-+	case RK3399_EDP:
-+	case RK3588_EDP:
-+		return true;
-+	default:
-+		return false;
-+	}
- }
- 
- struct analogix_dp_plat_data {
--- 
-2.34.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGkgRGFtb24sCgpBbSBEb25uZXJzdGFnLCA3LiBNYWkgMjAyNiwgMTM6Mjk6MzkgTWl0dGVsZXVy
+b3DDpGlzY2hlIFNvbW1lcnplaXQgc2NocmllYiBEYW1vbiBEaW5nOgo+IFRoZSBSSzM1ODggZURQ
+IGNvbnRyb2xsZXIgbmVlZHMgdGhlIHZpZGVvIGRhdGFwYXRoIGNsb2NrICJoY2xrIiB0byB3b3Jr
+Cj4gd2VsbC4gUHJldmlvdXNseSwgaXQgd29ya3Mgd2l0aG91dCBleHBsaWNpdGx5IGFkZGluZyB0
+aGlzIGNsb2NrIGJlY2F1c2UKPiB0aGUgJ3JvY2tjaGlwLHZvLWdyZiA9IDwmdm8xX2dyZj4nIHBy
+b3BlcnR5IGltcGxpY2l0bHkgZW5hYmxlcyBIQ0xLX1ZPMS4KPgo+IEZpeGVzOiBmODU1MTQ2MjYz
+YjEgKCJkdC1iaW5kaW5nczogZGlzcGxheTogcm9ja2NoaXA6IGFuYWxvZ2l4LWRwOiBBZGQgc3Vw
+cG9ydCBmb3IgUkszNTg4IikKPiBTaWduZWQtb2ZmLWJ5OiBEYW1vbiBEaW5nIDxkYW1vbi5kaW5n
+QHJvY2stY2hpcHMuY29tPgo+IC0tLQo+ICAuLi4vYmluZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9y
+b2NrY2hpcCxhbmFsb2dpeC1kcC55YW1sICAgICAgIHwgNCArKystCj4gIDEgZmlsZSBjaGFuZ2Vk
+LCAzIGluc2VydGlvbnMoKyksIDEgZGVsZXRpb24oLSkKPiAKPiBkaWZmIC0tZ2l0IGEvRG9jdW1l
+bnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2NoaXAsYW5h
+bG9naXgtZHAueWFtbCBiL0RvY3VtZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9kaXNwbGF5
+L3JvY2tjaGlwL3JvY2tjaGlwLGFuYWxvZ2l4LWRwLnlhbWwKPiBpbmRleCBkOTliMjNiODhjYzUu
+LmQyYmM4NjM2YjYyNiAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmlu
+ZGluZ3MvZGlzcGxheS9yb2NrY2hpcC9yb2NrY2hpcCxhbmFsb2dpeC1kcC55YW1sCj4gKysrIGIv
+RG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL2Rpc3BsYXkvcm9ja2NoaXAvcm9ja2No
+aXAsYW5hbG9naXgtZHAueWFtbAo+IEBAIC0yNiw3ICsyNiw5IEBAIHByb3BlcnRpZXM6Cj4gICAg
+ICBpdGVtczoKPiAgICAgICAgLSBjb25zdDogZHAKPiAgICAgICAgLSBjb25zdDogcGNsawo+IC0g
+ICAgICAtIGNvbnN0OiBncmYKPiArICAgICAgLSBlbnVtOgo+ICsgICAgICAgICAgLSBncmYKPiAr
+ICAgICAgICAgIC0gaGNsawoKYXJlIHlvdSBzdXJlIGFib3V0IHRoYXQ/CgpUaGUgZWRwIHVzZXMg
+dGhlIHZvMS1ncmYgLSBzbyB3aGF0IGVuYWJsZXMgaXRzIGNsb2NrPwpGb3IgZXhhbXBsZSB0aGUg
+aGRtaSBjb250cm9sbGVycyBvbiByazM1ODggYWxzbyB1c2UgdGhlIHZvMS1ncmYgYW5kCmV4cGxp
+Y2l0bHkgaGFuZGxlIHRoYXQgY2xvY2suCgpTbyB3aG8gZG9lcyBpdCBmb3IgdGhlIGVEUD8KCgpI
+ZWlrbwoKPiAgCj4gICAgcG93ZXItZG9tYWluczoKPiAgICAgIG1heEl0ZW1zOiAxCj4gCgoKCgoK
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9j
+a2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0
+cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
