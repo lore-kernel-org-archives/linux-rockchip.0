@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7053CD342C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC57ACD3444
 	for <linux-rockchip@archiver.kernel.org>; Thu,  7 May 2026 03:36:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=HoBVRZZrqRQn6nNu+mgkNf3ae92Iq9DqA7BdZcdh1cY=; b=FeZ1sy4AV8Wh43
-	LnHsl8XyFfKny0j3IC8RZEZSHfvoRtM/WVq8WDnlG6wAEfox8WrKO+X3Na/1dyKSaYqeyOXBuY99P
-	evd0lJV6IAtrI+6WR0kHb8GcHb91VYKh0NeB6uLvx8Kw8h4owmcM7GpPKXhzSvUrg4bOcrx79qUeA
-	R+SPq2ykOTSm0SYyODCtpDpji5xGCf75Njt67Wvzpeq23ih1ixl9loj+ILMEZ2q2/qiRGOqkhV++p
-	sSrhwqvfaj+jjeyxA6LheULlq0jlWr5BmcKkl/MLs1SjD/BXHDPAWDUmtaWDAHIRppTIq0QZdjQIz
-	8H/GmwTWTbN4B3DlX3+Q==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=u5aP7D4MHbzi2BIQcfi68WjBvsyQ0WWO2e9Puu5GfLc=; b=gJivX0t2+p23zN
+	p6OBmjKjlEzTENeT3LsH9bhLxhOxK1ewrtN7nsgVjjRFdSswaLuuB9jB2NbexI+5F5eOzZ3TmWGPN
+	mjvInRMUXFVphlfdsEpK82jyomz0eV6SCreAPRlHy5rTiANkjPT920f3Vddb+P3nOi6Jyc3EJSERM
+	t+Jp54k+LHEw+r2oa6k+7YrFxKwpIEP94XuH0GiOq5jYEu5m6tnB8hGdIDKpBt5iCRCjFTS2sRkpg
+	jkPm1mvvXHf2NHcRFiFtmvJM42wReXU093CRlWKIn3jyoEKFZpyp3aQan6Q5Y5668R5RrWtUHB86N
+	xPM51JyoP4C9oTcryGaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKpXG-00000002e9t-09ks;
-	Thu, 07 May 2026 03:36:26 +0000
+	id 1wKpXI-00000002eBV-1kRY;
+	Thu, 07 May 2026 03:36:28 +0000
 Received: from mail-koreacentralazon11023074.outbound.protection.outlook.com ([40.107.44.74] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wKpXE-00000002e86-2ObT;
-	Thu, 07 May 2026 03:36:24 +0000
+	id 1wKpXF-00000002e86-3UXd;
+	Thu, 07 May 2026 03:36:25 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kvkL3nMbiixsKpMVMde2xcMxsPo84qLGrenPUmj4UCt8yHbTE7fmJj4Oc5nJ9WPU6/s+mmtPdxkFDMsQ/0mGAQJEO2If+/493/MdZTOK8fmD64MO1k97G4k5KtHhiuQ197Do6zcOzySXKSWCn6UGRPaIw/T3pY5El9SUgNSet2ewoekVyhRe/WZ4Rl4BAVuFbQk8rl2BsNTVCfIdFn1IcY7DpA9IlWFAwPPFDUjPQS+R3fT8QNDb0ymcoWlj4p//ubLhk6myIhnqUmZcyphK759KgvwMluOs2YHbhCGYcPjAqzAYwt+BZp3M99HQBsGQ+lQed9PFIhTlFBGmge/Z6g==
+ b=kmgRfJRHgoLm4uX0J2tg3XiUqlC+wIkW1fYypmfvYIYys364hCs91LhbSo96TQ0yOIrF5DQACt2SITwyK5jUXO3b7bST3QVU5qHzq9vwP9MPNY+iZAgJkRs078juZxZoit2N1YHDIGK949Ovt/DfNzkLV4pdfZx6oON/nvYs9PtHfqeBeULdQubUe17tKKtTpoAhUSJoJpLY7V45tGfVenfV9H0tga3WFQ0QOFK2BK/zSKZfdizptEJOKGRviaXauZMlpyOcbIH2SMRLTDD7CJ26jyGOF/jeudqb8Zb8c0vOA3R0du0bhWztkpsinwN6QP0R4c+3r4+vDoKhvJhIog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=HkGrvwSYcZPcDfC0pfw0bv9JB93chWUpKKjmghSlYXg=;
- b=RBpiD4FEBWMqGKJZgSX17tcJASBi+AykKCja6KnGrF04Q++gbsFUlRUAwiY5aVC0v77zSaZ4wbaOc/OnJjAd9B2I36JNELo0Oo930FyzImpR2opRaA1GPs+dDbLwMLwMpbC6fZf0iBvSWZ3fg0YFIHQE0UNpDyJ9S3Ld3wVDYPtv0X2xzUSAl5ghjYJv0mX/ZGkoI4Oq9PgowljhkHZ9iGZci4gwxTcbfBHVJA+88RR9+e+h0+IqjPGbISdZwmusRM56Q8ZAfOUgtKM/X7+r7Iq+4y4DOsmxMGKD2Rz6/or1eJW+Zdp3fNf6kz4f+zH/98C1pNHjlOPtfVqdl8/wCA==
+ bh=r99aOQbqBEVaFG7rvg1sBi1c5qVVYxsDfADifN8ZMiw=;
+ b=HL87XpiY5a8XckBH4q3hbC9TT64HVbXid463nZ/WXXj8N5lJiFrngTD7pj2gWt+aYjSsOJv83EI5rXuvhDjTbJbOqqmWyKYOWek3T8RKg5n4pJ919zuMo63hi9B2pnyIDYXZ+P8JjkoJI3/KvpZh9mzK/H1PG0kL98wJFrohBIE0M7tvPYb1bwJ5v8icqjtt/4Xkt0aTlNONMTvfazAk+XyEAybSTsKG59+gh4EhSjRuzB0G1uZ6HUnakJAfBOdQsFhNj+5V9HoWw+6adiOLTpFUX5aJGjRCVVUsjZnXJ/IcTvw4Sj/IyXo1DhY+wRDYtCyIjNdeaSp89dnQSOXBIA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=wesion.com; dmarc=pass action=none header.from=wesion.com;
  dkim=pass header.d=wesion.com; arc=none
@@ -42,11 +42,11 @@ Received: from JH0PR03MB8617.apcprd03.prod.outlook.com (2603:1096:990:91::14)
  by SE3PR03MB9965.apcprd03.prod.outlook.com (2603:1096:101:32d::6) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.12; Thu, 7 May
- 2026 03:36:10 +0000
+ 2026 03:36:18 +0000
 Received: from JH0PR03MB8617.apcprd03.prod.outlook.com
  ([fe80::28d:6503:f51c:11b7]) by JH0PR03MB8617.apcprd03.prod.outlook.com
  ([fe80::28d:6503:f51c:11b7%5]) with mapi id 15.20.9891.008; Thu, 7 May 2026
- 03:36:09 +0000
+ 03:36:18 +0000
 From: Gray Huang <gray.huang@wesion.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
@@ -58,66 +58,69 @@ Cc: devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	nick@khadas.com,
 	Gray Huang <gray.huang@wesion.com>
-Subject: [PATCH v3 0/2] arm64: dts: rockchip: Add peripheral support for Khadas Edge 2L
-Date: Thu,  7 May 2026 11:35:39 +0800
-Message-Id: <20260507033541.2576335-1-gray.huang@wesion.com>
+Subject: [PATCH v3 2/2] arm64: dts: rockchip: Add Bluetooth support for Khadas Edge 2L
+Date: Thu,  7 May 2026 11:35:41 +0800
+Message-Id: <20260507033541.2576335-3-gray.huang@wesion.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260507033541.2576335-1-gray.huang@wesion.com>
+References: <20260507033541.2576335-1-gray.huang@wesion.com>
 X-ClientProxiedBy: TP0P295CA0028.TWNP295.PROD.OUTLOOK.COM (2603:1096:910:5::8)
  To JH0PR03MB8617.apcprd03.prod.outlook.com (2603:1096:990:91::14)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: JH0PR03MB8617:EE_|SE3PR03MB9965:EE_
-X-MS-Office365-Filtering-Correlation-Id: 097bb0c4-55fb-459a-2ec9-08deabe9c767
+X-MS-Office365-Filtering-Correlation-Id: 2b89e079-ea7f-4bb0-2efa-08deabe9ccc2
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024|52116014|18002099003|38350700014|3023799003|56012099003;
-X-Microsoft-Antispam-Message-Info: vBVNCEMjIe/aKatl1qIQt/eAJbHQDgGFkHMb2XVGXNHT7XSOk/BVVULWz8DUr9Hen2DGP5mBdyeJRL4QbCtOgCBl/YgEFmt33M9lOsQaTJV7nu7OTHPldnQDfz6HyU6q3umaWc5I/WPZuDCmNdv8Zd6labgersyY8ynZvcljmdX+sBh5iQCp3e9jooZ8JgkXfyHJM5GSvVcE4khUz5FjX3c5KQPHHbzI5m3LdQgsX5UsQFZCAb6ghYPMxGc+7D55zrLtps6UQyuYUlKnOKO02XSsUPdokJEtD6z0GtGIENsoFh3hGcS9uvplLtVUiDUeq4zBzn5TZYT88Emzj/FEKj0dwHkxgB7NwMq8yTzx7krdL5/GK5VN+fgi5etswkNzugwt7uyEiIEeHWErkZosJ6azITBV010lrbFV4ueA0dx+PI3A5mL5SyBRhODZgqtKchxVs+RvPMJdgO7IrgC+Z1rJJ3YUspXfe5uJxoh0a6VDSqpy3nptYdFacCNOHnFXz3tA62HQ/yQrlzpN2Ld1ZJtMsOcOoSWM5NrnV97Iw95uytD/XgA+nt+bFD+FhsrkUR15l8Py8s/Ds7AMc+69eyhqK7mEjN9cHVQQDwV0tEBWTCdKek9il2FoCXWLsYN06NJvQCqx+Jkq+t+Wc7+k+I1/ADBGwtuku7AKGnNEYGGVj+qKzMFUfssc5hwWBehz7pYzQ4fJeQXfGS6WH2yC3Cf0OYax0EDZixSopUS/nSg1ZhnbQxVMITeokTNo/PPP
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:JH0PR03MB8617.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024)(52116014)(18002099003)(38350700014)(3023799003)(56012099003);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024|52116014|18002099003|22082099003|38350700014|56012099003;
+X-Microsoft-Antispam-Message-Info: gaJZF3T5ToAZhhMVI9gUUBZvk2hUtLXQcEA54NxSjC6DGAreD7Qq5ShpWBFLVfBRGVXvAq3MEQZ/XhhRlreUjjMvtFZV5t2dYcCY06gJPakAqq9nLoDHCnrnqcid8blR4apCsdrsN+0v+1NTSo0EgYpyYHD1QPtFAjj5XEj2btcfNMoV5tIyyK4PMgrZvEB9Tb8exJOh4tSbHH04OXgp5MjiBmysygGv7/TYQgo9CrlRSSrnNZopyPtlNul1wyU9R3rM/PJoOWiO2gawScsRg5CllWdE8jPYUPrtCtSF32yvZt3E3wS/QbKEkxTugazcmn3PlW+plYWL6qYhjK43XAN7WnfxnL8aBeQKVEDDhXZ6HX3X27t43pkr876GcVxFEsYrfY+xPLHoUJhU7Zw9uaR4koEXzhJq6pANlMYQHhLhgrCP/9QoAgby+1kH94iF4y+Mzw/kKfHaTZhYtUxjXW4FCVgTZkisWfPmBOu1Ttw9rinpMop1WYFkFfe2x6jeHsdvT/VZ1cvmehpnYrsyIVcFJgO/EXlr16JDa23DUc0ZWLX9IFuX1yeTLE/uJfV/z8Ru3XB3XNSamHyf2DvkUbeLvhrXMtu/YafIEQ6Ks8XB54jiXQ+1+qmQGJBrYFvmdDmJ18IonY/96nvB92G4Exm+3W8Mr74FfNuOQWzFMh3Zjqb8JwHWNhoofceW8yA3R8l+lsEEKtb4DNO0NJdhudIO3HlJhyr2zf0MGBdrhvj2z+9QovPsK+L52atE9RBw
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:JH0PR03MB8617.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024)(52116014)(18002099003)(22082099003)(38350700014)(56012099003);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?QBbBmfwFImztEzmGeXh+cNELKQbBnAIrGuvFmGRMFZkxRsUUiyXd/ilhLujL?=
- =?us-ascii?Q?60i6c6VUKpZbrdcdoeOtmK8Pawn6JJZUZVp/l9qpHn7o811hTWYMiwlcaYI1?=
- =?us-ascii?Q?29PUnkGpPbVL9yw7zxkZYdwT+9mukdQI8O9o40m6v1+3hhW8jAK0QPORRUtV?=
- =?us-ascii?Q?a6qe3ouGvNsVaqdUjc50dAUi/juLCDk12yhkiPQmdjFgYWBWpP8T8kQIdz4K?=
- =?us-ascii?Q?ANYMyJ5D6DRo5I3uzQ0fT/SjYuL9vnLrMb2e7Fi+UxbFY2hjMp6DOehtCZ9z?=
- =?us-ascii?Q?tRmot+0hApjsKQgRoZq/BlEi+p3bHrfpzoOM9RPgMWriintSIbzZAJDoe7y5?=
- =?us-ascii?Q?X5fOsRMLHKRFs7WNpoLR1jRCQuLISl6pSiXrAeP67UqK26+LZcX79Zx3y22s?=
- =?us-ascii?Q?Ziv+A9p2nweJE20lG3Uul0pOSWZMGbKUTTMefZqw5SJ4nNHDaw4gaBokzcTk?=
- =?us-ascii?Q?GTVZfUeE9VMOMRkl3c3ueEwQg6AQY0+F57iTd6fotAL9KXnomClUq2HYq9rJ?=
- =?us-ascii?Q?ie9EMuNCCpdlGJosYW7Y9mSTzBnpjNlC4dZcFgCvlXOTag49LvH1sCSiFpXH?=
- =?us-ascii?Q?YaD4OPTsGddQ0VwFBeSVk7/4s+1x+dLfgu+NHv8FN2solAN5QzP1Mcpq9SZR?=
- =?us-ascii?Q?i4jhBMRIVBFUuzr2Zy4FmdQHX/L0TMAYNQKYCnHEeX1IRV8SBqYj9fdP/SJm?=
- =?us-ascii?Q?T0ZP78JPxZszUaa91OiqaDp7uFzbA5i/P80Wn0fkWBmOc/aGJyLq/KEQkXds?=
- =?us-ascii?Q?LPRJbhvEQZnI6MTljtAXs4BlHMll/+00vDxV072yWS6JqzLfcMawwVrDYlDj?=
- =?us-ascii?Q?fIhLS7kHP5sw/KMx0ZTyA5UrjOUOJEMrG9f+mV9QjLESqaBhlFi1BiLANbTD?=
- =?us-ascii?Q?O8RUoQLEZZNZ7g/Ga1lsLVDq7bDM4In58Plp5c3I25Etro0k2aHRVC1vRpEx?=
- =?us-ascii?Q?JsUcfIQlPVD+BQiOBKbOBZKuwx/A34N+ocyC0diOOK+2MVv8Y1hOZAlby9F1?=
- =?us-ascii?Q?0Pu/cprkmqCyePnUCvYxU8ZPeg6hGGX6uKmGViO1m764HHtDh0SQx3mCc47L?=
- =?us-ascii?Q?gfY+I3jJ77wVJ0y8VOFHY3vukhX+VttHvzebvwMQuu55on6sXNQCgVOXMAwE?=
- =?us-ascii?Q?9s8cVfgQGSM7vvDTNsC/LOrmBg/LcsRHg2O04JghKyuD/L3TF0g5r56l/G5V?=
- =?us-ascii?Q?69qQyPJh22/VB4dYiEe7rp0UH6eBSBajtg54u4xkiqFGcSBTYZU56MNXFXPP?=
- =?us-ascii?Q?RuHW+nb8tsQrMXQ9UJ29ZPTdaiBXM6JYPfsboMBhpYo/xZ48FBCjBR7RINhG?=
- =?us-ascii?Q?og6yiFAHqZPQzGq3K1lT7mtJ2IdxHzDLwdHErFZkFrJd5M3EOlLz24MikYrP?=
- =?us-ascii?Q?mPE3mlwAoNAlnbBSfH9qXjPogH+uFPAcqZQS+gt9eZMqGTyYL1oH/4GWNfXA?=
- =?us-ascii?Q?Ra16wbbkr/+S6uGTjFAIZSdyaGE2bg+l1J76dwbUg3j5uDBynlZWlsW52OAZ?=
- =?us-ascii?Q?0woYQy/92UBMsH9lUYO+beiBAd/qvkf7eXJn7GS1poP2FVrgBzrbJrG94qop?=
- =?us-ascii?Q?2J9WbxvSNNtnBpWS1/qyPpEFr0bXi8Ww7jMYHc/JOH2aishBkZqNRflw9+ro?=
- =?us-ascii?Q?QRI/gZz1g+xJU7N1NguhQ+Xk03EKy7AJz8yEEfjlajk85CMH+5gM+kGKI3+/?=
- =?us-ascii?Q?ph61gS40cxhBMxpfc+5Ga/lCXz+0cK/Mv9KNlxsDuWi2r+pz/0RxJya3i0wb?=
- =?us-ascii?Q?m2LLOWpH3Q=3D=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qiylRB/nIGye0mPl6kpC4xD2b/2TqBisgiudQ6uQWVPqhKYCArDaJmm7vjVb?=
+ =?us-ascii?Q?ro/C8fjcL+tP7eTRl8CXQQjuABlicj2URYOqQO3NKWjLrp3UeB59bqMRm1yG?=
+ =?us-ascii?Q?6rMO8b89a5SMjg7Q4bzY6D3CmAUe82FeElaIcSIQVRmMFeae8SkelcQQmmV/?=
+ =?us-ascii?Q?NtAu/42j1JJHYLQs1Q49ME8dvg/2EsoBzEU3SXyy3p9U6ilrKNxLG7PMqdE4?=
+ =?us-ascii?Q?T+pW8htVaLwOHyE4USXrEim0Z0J2WZlOBeJTK1hvo9LdZS5ZHEBWXn7/9718?=
+ =?us-ascii?Q?E6Qce6P6MOvS+VVk8zKBOlGRimpp/3g4ziahCB4WVDfhGAen9ZkN3oJyUQNx?=
+ =?us-ascii?Q?gAjhpTXpbXGRZCWkLCkEQ1jZEUaAYCEZYStBxbs7Li5JAWaonA1gtbTELOC4?=
+ =?us-ascii?Q?ns3Q2X1EmDW1bhyjcfa2ULzGslcm9br8Wj2g5dY9ujaGs8zGPT1zrSjGI/86?=
+ =?us-ascii?Q?Uh3ujbshHIYImiWSg5b3a7ZKYrk+/+xYBIgmEfWPWBD5wBBF4DfHcsNhBzuo?=
+ =?us-ascii?Q?sCnw+AleR/PLd6mLWQNH0quHHRD7N/3P8dIrMgll0e8DOAi398ZLLwNhzvsN?=
+ =?us-ascii?Q?z6RRQ/2L0RdandyJQ1GMw6uk+wjYczFV2hy9xR7wz/P5EP1/GRuYYSZEzdez?=
+ =?us-ascii?Q?cafcdUk3rKTqLsb5c8CATCiuQjnWrNJLsgW/SB4zL4HMOnbKKwjb+bcEAc/n?=
+ =?us-ascii?Q?nx2/2RF0JIuQ+stxt7jbMpbyHDLFd3vagyqORjjdtsU11yMUWR18a5fZVwho?=
+ =?us-ascii?Q?ZDrjqhHAUS7nWJHCmvbg3m32OCLoTbGH/si7ylYIkb7p//JMgAl2RBf9s/4s?=
+ =?us-ascii?Q?EJtLHpnQxwc5lPW0ZwbvkwJ05Zg/lk0DmfRE/cDBIF08uwr93iPin+hwA1PE?=
+ =?us-ascii?Q?34P58Hp/uZtNsk0e0QAAF60h7fXwOKqVXFQperHVdr3R+Ay/lTTvmnZq1AjK?=
+ =?us-ascii?Q?gx0kPLi9WvDMcU58cZAW5pD9z8zgFcKiEBanNfFN5McpnoDILDNodxOcdKDV?=
+ =?us-ascii?Q?jzYO0awzf4ZObEmjyu0Ud4UwTF9ucuSC1INL9UW8EXz/TSR9QNB5ERWTpFAn?=
+ =?us-ascii?Q?XlBBHEJEQVFNf0MjGVlcsEpMIjNWOBdVWOS52Aq2YhWXdw/TbL62rJxtxA+2?=
+ =?us-ascii?Q?j6akvi81JNiVlx7Xrsew3WPJKdxYSM3G7jNUEI9ff+zyo4Oh4KHpmla5q8kI?=
+ =?us-ascii?Q?a1J1gPf7JMyIlLkuMsehUYB9IhD9ZdDVa8C1VSs5ZW/swTyKDuvlZsWrEqvb?=
+ =?us-ascii?Q?ZiWYC/b0XAvvEGaT2V4XCAWwjNXWKQEHtUDeQ+hi32HNri1nSJ9nF2481atE?=
+ =?us-ascii?Q?8VlqEIZeikO5rkbV8u/XkugerBubaohm3QLgQGxEpFQPrC5Thl3u565mJeKS?=
+ =?us-ascii?Q?GuUfhXeLBxR6d8C8x8QjCEyMisT2SrArH2w0bFLUvI9z/xOiNPdxV3XwqLON?=
+ =?us-ascii?Q?jMY2v9YWhXNKxlj9mK36DK1vJDsjgSiCOuobtSbK1i1tyc3Q9i/scDkiZKSN?=
+ =?us-ascii?Q?EGPsQua+6CnrzmvrXKCvPsXNbxmfLkhlR1ygubZABJeE+JZgf6XuY61C0z2p?=
+ =?us-ascii?Q?BuC26QuJu6QkyzrMmLtGqUNkF6GITdSVr1qNLdaVUzKBFwqTzxYL14o1RdMG?=
+ =?us-ascii?Q?EB7Zhi8xXOW/32sKFu2yGKFcVBIACU9wxC4Cu5+vbLrmLyIYKrS88+Ayei9Y?=
+ =?us-ascii?Q?qSzUOpiPQ9iMrQf8R9w1/60OOebvYgJdrENhhect8UFFvLI7J3lHJRNO3hqB?=
+ =?us-ascii?Q?jfRBIyZn0A=3D=3D?=
 X-OriginatorOrg: wesion.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 097bb0c4-55fb-459a-2ec9-08deabe9c767
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2b89e079-ea7f-4bb0-2efa-08deabe9ccc2
 X-MS-Exchange-CrossTenant-AuthSource: JH0PR03MB8617.apcprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2026 03:36:09.7324
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 May 2026 03:36:18.6073
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 2dc3bd76-7ac2-4780-a5b7-6c6cc6b5af9b
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mReYBMygH1LqmhGsfLBdkERC6WTcVe8oljQAJDbArFFJ11bcK2gkQ50kFPSKW7Ythtj64qTj13x5Q/W1k4PN8g==
+X-MS-Exchange-CrossTenant-UserPrincipalName: kKrQmNxk574+Wr9M0W5KWnkO9Z78AI/nEn/hi5pVAzLZ7MT2EgMPXDnFVmF7buu+9HZdP73nNAj00WEZ61rPHg==
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE3PR03MB9965
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260506_203624_617073_74E11350 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20260506_203625_868291_D16896A8 
+X-CRM114-Status: UNSURE (   8.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -134,39 +137,69 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This patch series adds support for several key peripherals to the
-Khadas Edge 2L board, which is based on the Rockchip RK3576 SoC.
+Enable Bluetooth support for the Ampak AP6275P module on the
+Khadas Edge 2L. This involves enabling the UART5 interface for
+HCI communication and defining the required regulators and
+power-sequence pins.
 
-These patches build upon the basic board support that was previously
-applied to the rockchip tree. This series enables essential
-functionalities including power management, RTC, wireless connectivity,
-graphics, display output, and USB support.
+Signed-off-by: Gray Huang <gray.huang@wesion.com>
+---
+ .../dts/rockchip/rk3576-khadas-edge-2l.dts    | 35 +++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-Summary of changes:
-- Enable USB 3.0 Host and USB 2.0 (via internal hub).
-- Enable Bluetooth (UART5) for the Ampak module.
-
-Changes in v2:
-- Split the former AP6275P wireless patch into separate HYM8563 RTC and
-  AP6275P Wi-Fi patches.
-- Reorder DTS override nodes to follow the requested placement and
-  alphabetical grouping.
-
-Changes in v3:
-- This series now only contains the remaining USB and Bluetooth patches.
-  Rebase on top of the latest for-next branch.
-- The previous patches in the series (PMIC, RTC, Wi-Fi, GPU, HDMI) have
-  already been applied.
-- link to v2: https://patchwork.kernel.org/project/linux-rockchip/cover/20260429063712.2150938-1-gray.huang@wesion.com/
-
-
-Gray Huang (2):
-  arm64: dts: rockchip: Enable USB for Khadas Edge 2L
-  arm64: dts: rockchip: Add Bluetooth support for Khadas Edge 2L
-
- .../dts/rockchip/rk3576-khadas-edge-2l.dts    | 82 +++++++++++++++++++
- 1 file changed, 82 insertions(+)
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3576-khadas-edge-2l.dts b/arch/arm64/boot/dts/rockchip/rk3576-khadas-edge-2l.dts
+index 0c55ff5331ce..8d65e1fe9ca0 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3576-khadas-edge-2l.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3576-khadas-edge-2l.dts
+@@ -552,6 +552,20 @@ wifi: wifi@0,0 {
+ };
+ 
+ &pinctrl {
++	bluetooth {
++		bt_reg_on: bt-reg-on {
++			rockchip,pins = <4 RK_PB2 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++
++		bt_wake_host: bt-wake-host {
++			rockchip,pins = <0 RK_PB1 RK_FUNC_GPIO &pcfg_pull_down>;
++		};
++
++		host_wake_bt: host-wake-bt {
++			rockchip,pins = <0 RK_PA5 RK_FUNC_GPIO &pcfg_pull_up>;
++		};
++	};
++
+ 	pcie0 {
+ 		pcie0_rst: pcie0-rst {
+ 			rockchip,pins = <4 RK_PB4 RK_FUNC_GPIO &pcfg_pull_none>;
+@@ -598,6 +612,27 @@ &uart0 {
+ 	status = "okay";
+ };
+ 
++&uart5 {
++	pinctrl-0 = <&uart5m1_xfer &uart5m1_ctsn &uart5m1_rtsn>;
++	pinctrl-names = "default";
++	uart-has-rtscts;
++	status = "okay";
++
++	bluetooth {
++		compatible = "brcm,bcm43438-bt";
++		clocks = <&hym8563>;
++		clock-names = "lpo";
++		device-wakeup-gpios = <&gpio0 RK_PA5 GPIO_ACTIVE_HIGH>;
++		interrupt-parent = <&gpio0>;
++		interrupts = <RK_PB1 IRQ_TYPE_LEVEL_HIGH>;
++		pinctrl-0 = <&bt_reg_on &bt_wake_host &host_wake_bt>;
++		pinctrl-names = "default";
++		shutdown-gpios = <&gpio4 RK_PB2 GPIO_ACTIVE_HIGH>;
++		vbat-supply = <&vcc_3v3_s3>;
++		vddio-supply = <&vcc_1v8_s3>;
++	};
++};
++
+ &usb_drd1_dwc3 {
+ 	dr_mode = "host";
+ 	status = "okay";
 -- 
 2.34.1
 
