@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A381CD3445
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92972CD37B5
 	for <linux-rockchip@archiver.kernel.org>; Fri,  8 May 2026 19:32:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ewE6UO7ERHSmHbuDTWifTI/epKlSP09KKbQ7kIqTYoo=; b=QRh98WtVCFgRao
-	8bEtxYdtuCgyA4zky9STaxOXxytEiTALvK/IqJS6hFzTTYB5JjzkR13C54Y7BrNcpJXLI1SVI44v8
-	mWhg9Uk7JNaqYIceeUVnB7R7Oav9ZT6rB5xejtq/5Z/LSUrxRaGIdIoYup/TvdLcIn0wo+McCskCJ
-	S2Xv9yESSN/fvQ4BUg2u5KtmSGJXY0UPFhwbcV5kCAB578PiIuyEignSwDvYU/UttswkPg4pYOvL7
-	IcnxFuZTpI8F5XeWZJnSZAxW5DYNgEnck7+usyFIH/R7ctoWly4OWw0nyiQG7jT+yUXcWwEfi3PIO
-	UQR3puOeqawq5dcE6NoA==;
+	List-Owner; bh=Jfhq3SAVX93P2qAUCdNkOaa34T1qYmylu8NdQTWTIRA=; b=ssbktq4JKEwZCx
+	je0Bohkky8uc/JLTbuRxNGbbSVdklu3e30TQMPBl9OsG/BMR72f+n/shjMTm8Q8PzEzExjZDGTyGb
+	shn4K2h7bJe2NWa+rOCvMM969jWPGpumyFfhxU4akjrwzQ5gOUySvEkwCiGpZo58o/dmSYqop63X+
+	sBBbTbi7zwB/T2nXO6JwU/bJDg8KX8gt3KroTV/hJ9/unGemUNaDfiTECGRky2BNvi0OzQ8AaZHKD
+	jTtYT5mMXKVQ7Dm54iuhHArVUhBhVs+Vb2H/tjQBQFRFedyS9GmKzXpMKUIXZf/aXRjIHCziXfZT0
+	tqbGr9vx3RV1HFm3SM0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLQvj-00000007MKX-3U1k;
-	Fri, 08 May 2026 19:32:11 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wLQvb-00000007MAq-3qXw;
+	Fri, 08 May 2026 19:32:03 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLQvc-00000007MAy-17rz;
-	Fri, 08 May 2026 19:32:06 +0000
+	id 1wLQvY-00000007M7t-23tv;
+	Fri, 08 May 2026 19:32:00 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3228843EE2;
+	by tor.source.kernel.org (Postfix) with ESMTP id 1783460583;
 	Fri,  8 May 2026 19:31:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CC91CC4AF0F;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B9F69C2BCFB;
 	Fri,  8 May 2026 19:31:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1778268718;
-	bh=GvfgvZED8ovEP/sr2vgQj8tDELp0fpA9+wyHVXzY/pY=;
+	bh=5GdndQH11O0jnQvspCfNA/O+zyU14vg0pR6Vqar72vk=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=SlEgM1MKTX9/Aoru0LTvQzcVSWHcYRdoJy+veEC57gumMxYKLhr4ksX63Ak4GyoC3
-	 S5kUUe5sz3/AHROL1ds13SdJM8sgVxqVZNSyMoXK6r4fLeQXIWJIBTLEW4M6Sl51nu
-	 rU4x6nq9v26cQIf/CtdJMAZegB2/+g+SGflvaabMvGme9sm1rdiEhVcJHHNBBd+Gt5
-	 yB79FdQsH1lmy5u30AKMfz0UnQbwZph6uuhh4MZ2ohno49jTOHq293sci3sqSS9C2k
-	 Kck6fMf8sgVNnRfSyPsHjJHdDXphhY4muECwuVjxaio8Efk5dCRwxdKozNVyDMZYqG
-	 uoBXK+XCoyB4w==
+	b=dd4Ez4GEK7tAdNAbHU29w7Lw2/3pxuwwey92LkraeBpn2ReB3ieFDl9p1rJN0nN+s
+	 faoWzI+3vlFPQJHSJN7TnE0uIQNDpPwZPioic1bRMuQhQEMHehkN0JhFWnbzQ2muAY
+	 mV8K7LyJeUc2SKwQFn3DSSZNBmoa9hp72n0Kpzx9I4NAaQNqbzwpFDDKA8o+pNREXD
+	 7ezxXt/dJzvl7YiqjwhbNQCqZlL4GhEqaGgKeME5rNQ6xqZTtmKbYju/9d4Z1U1GQC
+	 sme2NumTyvv+0nLMHY5kUX5f1omh5yYdPiMkYv+qVaRXZDpWCgpq0xDIsKMzjHmfKG
+	 MI9Ai9Tt+HpSQ==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id C3305CD3445;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id B18F6CD37B2;
 	Fri,  8 May 2026 19:31:58 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 08 May 2026 21:31:50 +0200
-Subject: [PATCH v4 7/8] arm64: dts: rockchip: add radxa camera 4k on rock
- 5b+ cam1
+Date: Fri, 08 May 2026 21:31:49 +0200
+Subject: [PATCH v4 6/8] arm64: dts: rockchip: add radxa camera 4k on rock
+ 5b+ cam0
 MIME-Version: 1.0
-Message-Id: <20260508-rk3588-vicap-v4-7-6a6cd6f7c90b@collabora.com>
+Message-Id: <20260508-rk3588-vicap-v4-6-6a6cd6f7c90b@collabora.com>
 References: <20260508-rk3588-vicap-v4-0-6a6cd6f7c90b@collabora.com>
 In-Reply-To: <20260508-rk3588-vicap-v4-0-6a6cd6f7c90b@collabora.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
@@ -69,19 +69,16 @@ Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1778268716; l=4388;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1778268716; l=4379;
  i=michael.riesch@collabora.com; s=20260428; h=from:subject:message-id;
- bh=RftYePeWXUUid7upV6ga5pVg+NAmwZ320HDRp8cMYOc=;
- b=LqOkFNrCoJdcRThCXR/xB4esf5SUk7ytNyot5nc084Lf6fh7Z/KbQMco0QdaBEMTzgtrOkRhk
- s2HmFlLwVAnDr8KSOJcaIg1mN30QX+J39A+Ntb1Qjcx1zhU6bfrlqIE
+ bh=3FVePkpPkw9zXNZmHFNf4wZoNKo/VGldfB5CgIPNdtw=;
+ b=GcdMDOgNjJ6gNrNnNjIs64/mGdHAFuxpUqhkkC+ZXJyA4zfpw049Q4qotDQ57BhmSFSoziLYd
+ rJEj5Oat2EcC0q+UMnnt1XxPCM2b3bkROSTxbi7hjBz/LnNLDIqQ9rx
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=tAbmpPTE1MELYweXqqDU40fa18uCO6s32GJL/RzyW2Y=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20260428
  with auth_id=759
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260508_123204_396077_A5CD9366 
-X-CRM114-Status: GOOD (  14.39  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,45 +99,46 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 From: Michael Riesch <michael.riesch@collabora.com>
 
 Add device tree overlay for the Radxa Camera 4K (featuring the Sony IMX415
-image sensor) to applied on the Radxa ROCK 5B+ CAM1 port.
+image sensor) to applied on the Radxa ROCK 5B+ CAM0 port.
 
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |  4 +-
- .../rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso      | 99 ++++++++++++++++++++++
- 2 files changed, 102 insertions(+), 1 deletion(-)
+ arch/arm64/boot/dts/rockchip/Makefile              |  5 ++
+ .../rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso      | 99 ++++++++++++++++++++++
+ 2 files changed, 104 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index d4ff476fb9814b18c74c6d59d73cf5d8e6ee9ca7..761d82b4f4f2ac7f0f4ba5e1f94f495b2160a059 100644
+index cb55c6b70d0e569abd9efc4e88ff908b6a682cf1..d4ff476fb9814b18c74c6d59d73cf5d8e6ee9ca7 100644
 --- a/arch/arm64/boot/dts/rockchip/Makefile
 +++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -207,6 +207,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
+@@ -206,6 +206,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-cam4k-cam1.dtbo
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5t.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
-@@ -324,7 +325,8 @@ rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
+@@ -321,6 +322,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtb
+ rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
+ 	rk3588-rock-5b-pcie-srns.dtbo
  
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-4k-cam.dtb
- rk3588-rock-5b-plus-radxa-4k-cam-dtbs := rk3588-rock-5b-plus.dtb \
--	rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
-+	rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo \
-+	rk3588-rock-5b-plus-radxa-cam4k-cam1.dtbo
- 
++dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-4k-cam.dtb
++rk3588-rock-5b-plus-radxa-4k-cam-dtbs := rk3588-rock-5b-plus.dtb \
++	rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
++
  dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-haikou-video-demo.dtb
  rk3588-tiger-haikou-haikou-video-demo-dtbs := rk3588-tiger-haikou.dtb \
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso
+ 	rk3588-tiger-haikou-video-demo.dtbo
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
 new file mode 100644
-index 0000000000000000000000000000000000000000..96b8df4ed3540df69e997aa9967168c4249dbf52
+index 0000000000000000000000000000000000000000..ee9ecf68a88663a04e1c33a718894490ef475203
 --- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam1.dtso
++++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
 @@ -0,0 +1,99 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * Device tree overlay for the Radxa Camera 4K attached to the CAM1 port of
++ * Device tree overlay for the Radxa Camera 4K attached to the CAM0 port of
 + * the Radxa ROCK 5B+.
 + */
 +
@@ -152,81 +150,81 @@ index 0000000000000000000000000000000000000000..96b8df4ed3540df69e997aa9967168c4
 +#include <dt-bindings/pinctrl/rockchip.h>
 +
 +&{/} {
-+	savdd_cam1: regulator-savdd-cam1 {
++	savdd_cam0: regulator-savdd-cam0 {
 +		compatible = "regulator-fixed";
 +		regulator-min-microvolt = <2900000>;
 +		regulator-max-microvolt = <2900000>;
-+		regulator-name = "savdd_cam1";
++		regulator-name = "savdd_cam0";
 +		vin-supply = <&vcc_3v3_s3>;
 +	};
 +
-+	sdvdd_cam1: regulator-sdvdd-cam1 {
++	sdvdd_cam0: regulator-sdvdd-cam0 {
 +		compatible = "regulator-fixed";
 +		regulator-min-microvolt = <1100000>;
 +		regulator-max-microvolt = <1100000>;
-+		regulator-name = "sdvdd_cam1";
++		regulator-name = "sdvdd_cam0";
 +		vin-supply = <&vcc5v0_sys>;
 +	};
 +
-+	siovdd_cam1: regulator-siovdd-cam1 {
++	siovdd_cam0: regulator-siovdd-cam0 {
 +		compatible = "regulator-fixed";
 +		regulator-min-microvolt = <1800000>;
 +		regulator-max-microvolt = <1800000>;
-+		regulator-name = "siovdd_cam1";
++		regulator-name = "siovdd_cam0";
 +		vin-supply = <&vcc_3v3_s3>;
 +	};
 +};
 +
-+&i2c4 {
++&i2c3 {
 +	#address-cells = <1>;
 +	#size-cells = <0>;
 +	status = "okay";
 +
-+	cam1_imx415: camera-sensor@1a {
++	imx415: camera-sensor@1a {
 +		compatible = "sony,imx415";
 +		reg = <0x1a>;
-+		assigned-clocks = <&cru CLK_MIPI_CAMARAOUT_M4>;
++		assigned-clocks = <&cru CLK_MIPI_CAMARAOUT_M3>;
 +		assigned-clock-rates = <37125000>;
-+		avdd-supply = <&savdd_cam1>;
-+		clocks = <&cru CLK_MIPI_CAMARAOUT_M4>;
-+		dvdd-supply = <&sdvdd_cam1>;
++		avdd-supply = <&savdd_cam0>;
++		clocks = <&cru CLK_MIPI_CAMARAOUT_M3>;
++		dvdd-supply = <&sdvdd_cam0>;
 +		orientation = <2>; /* External */
-+		ovdd-supply = <&savdd_cam1>;
++		ovdd-supply = <&siovdd_cam0>;
 +		pinctrl-names = "default";
-+		pinctrl-0 = <&cam1_rstn &mipim0_camera4_clk>;
-+		reset-gpios = <&gpio2 RK_PB0 GPIO_ACTIVE_LOW>;
++		pinctrl-0 = <&cam0_rstn &mipim0_camera3_clk>;
++		reset-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
 +
 +		port {
-+			cam1_imx415_output: endpoint {
++			imx415_output: endpoint {
 +				data-lanes = <1 2 3 4>;
 +				link-frequencies = /bits/ 64 <445500000>;
-+				remote-endpoint = <&csi4_input>;
++				remote-endpoint = <&csi2_input>;
 +			};
 +		};
 +	};
 +};
 +
 +&pinctrl {
-+	cam1 {
-+		cam1_rstn: cam1-rstn-pinctrl {
-+			rockchip,pins = <2 RK_PB0 RK_FUNC_GPIO &pcfg_pull_none>;
++	cam0 {
++		cam0_rstn: cam0-rstn-pinctrl {
++			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
 +		};
 +	};
 +};
 +
-+&csi4 {
++&csi2 {
 +	status = "okay";
 +};
 +
-+&csi4_in {
-+	csi4_input: endpoint {
++&csi2_in {
++	csi2_input: endpoint {
 +		data-lanes = <1 2 3 4>;
 +		link-frequencies = /bits/ 64 <445500000>;
-+		remote-endpoint = <&cam1_imx415_output>;
++		remote-endpoint = <&imx415_output>;
 +	};
 +};
 +
-+&csi_dphy1 {
++&csi_dphy0 {
 +	status = "okay";
 +};
 +
