@@ -4,51 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C025ACD37B6
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 May 2026 19:32:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04276CD37B2
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 May 2026 19:32:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=p/Mm8tkLAqKlR+3LkhQeYC9X4C2nNpibFoRBgdnI7BM=; b=1hcYspoLyOZs07
-	mrPaVupBJtzH4XzA87rmRNycGs3nqqpVDJO4WdzO8hLz3KZXpgrClrnvPOcO4VyY1v4MPzvwOq0mS
-	K/ZO2MH6/u3KOERZPt1E3Eg10buLIXZ/8SALkQjgXv8HwGZYZSpE8FdZDPsUDTazKMZNHiJhbynA8
-	qldbyTmTJuMgPQAAKtSp1iAWWJsVw/yuCxu3Qkt03fsYR61/TcCzBjuecKb0GLtZTc+11QyQiZVdb
-	Jar1fOrXuRWa1tj89rBV/xGZqM3D7IGW+ziKgizEfMumDU/3GGUGt/JwN8A7q79cMNSO3662CdsMl
-	o5ISN3t9UbkYnIiq7C7g==;
+	List-Owner; bh=KS9Y3uXMc7t6MElDmf4DhvdS/7WqUD1S82P2hNTd3Qc=; b=obwQjYPgqjUBJU
+	5yOo17pbKKQ8Ud1/EGWLHI5cK3zLJMyXqgYRoy3sabNoTvF9mjBXltBnAn/wzC2BgQHu4KKXvkIMY
+	Wm6lQ7yszqWGUWLtbh/k3vRx4aiJc7WPbhaXe/FPD7z+upomCvqv/3LTMFWRLVgvIV5efu29ghRaT
+	SlfzgKOKXWN3P8cTaqTYFDkBQcDkaGc7/j7MKF7bTzSCS/Vk+sfA5T8kHsF7AgI47JhJRusZFqo99
+	X0gEVTVFc/WLexaICLrdoo4F57ZcnKwwZJePxphxf6wirUH48mHxsqpaYKxaa6yzNOPQppEe7a9jN
+	jp9Eat9vj1hjQt8RjKNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLQvh-00000007MFP-0VCa;
-	Fri, 08 May 2026 19:32:09 +0000
+	id 1wLQvi-00000007MHN-36B8;
+	Fri, 08 May 2026 19:32:10 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLQva-00000007M7n-0P3F;
-	Fri, 08 May 2026 19:32:03 +0000
+	id 1wLQva-00000007M7o-0PZR;
+	Fri, 08 May 2026 19:32:04 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id A457B443F7;
+	by sea.source.kernel.org (Postfix) with ESMTP id B2B0D4444C;
 	Fri,  8 May 2026 19:31:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 7D567C2BCF4;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 8B39FC2BCF5;
 	Fri,  8 May 2026 19:31:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1778268718;
-	bh=nNh4UI8zUdnsYf6c3yY+Rxwff13VAYpHvEdFXX6II5s=;
+	bh=pKv+CLxX/UD2XMS8J60dQhiP9h0ZtZrxBBY7ona1uZE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=Qj15xbw6e2wtkF3aGoeOjnYNINoSNugoiYi1rXjIxtUvrRJK3TWBivjpdsOYuhbo4
-	 d7EmjMCCi3kyG79Z6GFB0EY7J7RMCbLNALf7HdyTDeXBpM1Ad/VZDpvf6RkHerTZaJ
-	 /rR0bQ94puv5p7qU917OCG/OwsdbbM+B2+UUvnhv0nnE/imU1oY+3lQnJnOiMU+xmZ
-	 ODaR4AqtD7bp8BrUZoNhgkGzdc38CspCHyplICone7JR3niKucMD8zor/YmICOFbpf
-	 WCjwZdIkb/HkVWAUi6HZYd3HZ496qvMOeM05mAsE9x5hf/CGCuxPOM+M7MeEw9V3sF
-	 9PcdEfbSpw9GA==
+	b=epdGHLWLYacX6bXfOb5RsLkZmDcSpHWTtg9FDPU1GORkIbh1zWXnSg4A9JhtcoxY6
+	 6GpeDPp6G3xHmX690eRpShbSOXFkQNsgUqXViYHm4vjW5GPVC+hqH0QrnawGJ/iYkH
+	 bFVKP1QBiJ24ALTywVcakiv03DcuG1zpiEs0ebbv8K86Fc+n/w84c0Z06PqaTbQN6F
+	 7rGJ6lEfxPwG/XAMcvHBqL4UWuTHo3dQW5xFluENvFX81OtOchLo2EzF0a+SytOLY/
+	 0EelipO1klFl8zZ9HVair96e+Wx5eFHOZ6WOMgMnqrZamhThADadsGASQcGzPuy4zS
+	 MWN7ltxb9esFw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 6F584CD37B1;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8017BCD3445;
 	Fri,  8 May 2026 19:31:58 +0000 (UTC)
 From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 08 May 2026 21:31:45 +0200
-Subject: [PATCH v4 2/8] media: dt-bindings: add rockchip rk3588 vicap
+Date: Fri, 08 May 2026 21:31:46 +0200
+Subject: [PATCH v4 3/8] media: rockchip: rkcif: add support for rk3588
+ vicap mipi capture
 MIME-Version: 1.0
-Message-Id: <20260508-rk3588-vicap-v4-2-6a6cd6f7c90b@collabora.com>
+Message-Id: <20260508-rk3588-vicap-v4-3-6a6cd6f7c90b@collabora.com>
 References: <20260508-rk3588-vicap-v4-0-6a6cd6f7c90b@collabora.com>
 In-Reply-To: <20260508-rk3588-vicap-v4-0-6a6cd6f7c90b@collabora.com>
 To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
@@ -66,22 +67,21 @@ To: Mehdi Djait <mehdi.djait@linux.intel.com>,
  Sakari Ailus <sakari.ailus@linux.intel.com>
 Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>, 
- Conor Dooley <conor.dooley@microchip.com>
+ linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
 X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1778268716; l=6664;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1778268716; l=8442;
  i=michael.riesch@collabora.com; s=20260428; h=from:subject:message-id;
- bh=MB2lleeaGfpkbdhgTXXp4XKQh5zMC0P0DcNIMyC6fmY=;
- b=XJoI0fZNnztASZOkRLnbaF1URsqneqh8Mjkub4osBOqzvVU0d5Hd/YHIlRMDFGxYsJIBrzJMs
- ed6800azDNLDnLxhPBCgBW5eP86DOYEpqlryltYNW/gMbwEksfpKQ4r
+ bh=BEPt6zq8R4Qn045fTzP3Nui1jBoi10qh3WpXM8Ex6Kw=;
+ b=MMm70nE9R4J8Xe969EFIQaGZYgysk4V7l6ZfJJkxEnWhBsvp8gcZO2mhI/EcJVE2Q640pdcrH
+ SgR+6lkeEaSANg/z5W+ZqtvkAFoqS3VokuOeP9VTKVcpWntBOVTAj5I
 X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
  pk=tAbmpPTE1MELYweXqqDU40fa18uCO6s32GJL/RzyW2Y=
 X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20260428
  with auth_id=759
 X-Original-From: Michael Riesch <michael.riesch@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260508_123202_223961_35F0EA0E 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20260508_123202_260722_06C3136A 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,261 +101,246 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Michael Riesch <michael.riesch@collabora.com>
 
-Add documentation for the Rockchip RK3588 Video Capture (VICAP) unit. To
-that end, make the existing rockchip,rk3568-vicap documentation more
-general and introduce variant specific constraints.
+The RK3588 Video Capture (VICAP) unit features a Digital Video Port (DVP)
+and six MIPI CSI-2 capture interfaces. Add initial support for this variant
+to the rkcif driver and enable the MIPI CSI-2 capture interfaces.
 
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
 Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
 ---
- .../bindings/media/rockchip,rk3568-vicap.yaml      | 187 ++++++++++++++++++---
- 1 file changed, 163 insertions(+), 24 deletions(-)
+ .../platform/rockchip/rkcif/rkcif-capture-mipi.c   | 141 +++++++++++++++++++++
+ .../platform/rockchip/rkcif/rkcif-capture-mipi.h   |   1 +
+ .../media/platform/rockchip/rkcif/rkcif-common.h   |   2 +-
+ drivers/media/platform/rockchip/rkcif/rkcif-dev.c  |  18 +++
+ 4 files changed, 161 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-index 18cd0a5a5318174910e04f6ef7558c92cbfec899..897ed00c239bdfe33777a8f8474fb27fa6265e49 100644
---- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-+++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
-@@ -15,9 +15,15 @@ description:
-   the data from camera sensors, video decoders, or other companion ICs and
-   transfers it into system main memory by AXI bus.
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+index 9e67160a16e468401af32ed5672da8b6a0d86ef2..ad083dc9f5addbd4da29fac1f29d668f276e2593 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.c
+@@ -30,6 +30,14 @@
+ #define RK3568_MIPI_CTRL0_CROP_EN     BIT(5)
+ #define RK3568_MIPI_CTRL0_WRDDR(type) ((type) << 1)
  
-+  The Rockchip RK3588 Video Capture (VICAP) is similar to its RK3568
-+  counterpart, but features six MIPI CSI-2 ports and additional connections
-+  to the image signal processor (ISP) blocks.
++#define RK3588_MIPI_CTRL0_DMA_EN      BIT(28)
++#define RK3588_MIPI_CTRL0_HIGH_ALIGN  BIT(27)
++#define RK3588_MIPI_CTRL0_WRDDR(type) ((type) << 5)
++#define RK3588_MIPI_CTRL0_CROP_EN     BIT(4)
++#define RK3588_MIPI_CTRL0_PARSE(type) ((type) << 1)
 +
- properties:
-   compatible:
--    const: rockchip,rk3568-vicap
-+    enum:
-+      - rockchip,rk3568-vicap
-+      - rockchip,rk3588-vicap
++#define RK3588_MIPI_CTRL_CAP_EN       BIT(0)
++
+ #define RKCIF_MIPI_CTRL0_DT_ID(id)    ((id) << 10)
+ #define RKCIF_MIPI_CTRL0_VC_ID(id)    ((id) << 8)
+ #define RKCIF_MIPI_CTRL0_CAP_EN	      BIT(0)
+@@ -481,6 +489,132 @@ const struct rkcif_mipi_match_data rkcif_rk3568_vicap_mipi_match_data = {
+ 	},
+ };
  
-   reg:
-     maxItems: 1
-@@ -26,37 +32,23 @@ properties:
-     maxItems: 1
++static u32
++rkcif_rk3588_mipi_ctrl0(struct rkcif_stream *stream,
++			const struct rkcif_output_fmt *active_out_fmt)
++{
++	u32 ctrl0 = 0;
++
++	ctrl0 |= RK3588_MIPI_CTRL0_DMA_EN;
++	ctrl0 |= RKCIF_MIPI_CTRL0_DT_ID(active_out_fmt->mipi.dt);
++	ctrl0 |= RK3588_MIPI_CTRL0_CROP_EN;
++	ctrl0 |= RKCIF_MIPI_CTRL0_CAP_EN;
++
++	switch (active_out_fmt->mipi.type) {
++	case RKCIF_MIPI_TYPE_RAW8:
++		break;
++	case RKCIF_MIPI_TYPE_RAW10:
++		ctrl0 |= RK3588_MIPI_CTRL0_PARSE(0x1);
++		if (!active_out_fmt->mipi.compact)
++			ctrl0 |= RK3588_MIPI_CTRL0_WRDDR(0x1);
++		break;
++	case RKCIF_MIPI_TYPE_RAW12:
++		ctrl0 |= RK3588_MIPI_CTRL0_PARSE(0x2);
++		if (!active_out_fmt->mipi.compact)
++			ctrl0 |= RK3588_MIPI_CTRL0_WRDDR(0x1);
++		break;
++	case RKCIF_MIPI_TYPE_RGB888:
++		break;
++	case RKCIF_MIPI_TYPE_YUV422SP:
++		ctrl0 |= RK3588_MIPI_CTRL0_WRDDR(0x4);
++		break;
++	case RKCIF_MIPI_TYPE_YUV420SP:
++		ctrl0 |= RK3588_MIPI_CTRL0_WRDDR(0x5);
++		break;
++	case RKCIF_MIPI_TYPE_YUV400:
++		ctrl0 |= RK3588_MIPI_CTRL0_WRDDR(0x3);
++		break;
++	default:
++		break;
++	}
++
++	return ctrl0;
++}
++
++const struct rkcif_mipi_match_data rkcif_rk3588_vicap_mipi_match_data = {
++	.mipi_num = 6,
++	.mipi_ctrl0 = rkcif_rk3588_mipi_ctrl0,
++	.regs = {
++		[RKCIF_MIPI_CTRL] = 0x20,
++		[RKCIF_MIPI_INTEN] = 0x74,
++		[RKCIF_MIPI_INTSTAT] = 0x78,
++	},
++	.regs_id = {
++		[RKCIF_ID0] = {
++			[RKCIF_MIPI_CTRL0] = 0x00,
++			[RKCIF_MIPI_CTRL1] = 0x04,
++			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x24,
++			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x2c,
++			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x34,
++			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x28,
++			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x30,
++			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_CROP_START] = 0x8c,
++		},
++		[RKCIF_ID1] = {
++			[RKCIF_MIPI_CTRL0] = 0x08,
++			[RKCIF_MIPI_CTRL1] = 0x0c,
++			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x38,
++			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x40,
++			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x48,
++			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x3c,
++			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x44,
++			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_CROP_START] = 0x90,
++		},
++		[RKCIF_ID2] = {
++			[RKCIF_MIPI_CTRL0] = 0x10,
++			[RKCIF_MIPI_CTRL1] = 0x14,
++			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x4c,
++			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x54,
++			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x5c,
++			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x50,
++			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x58,
++			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_CROP_START] = 0x94,
++		},
++		[RKCIF_ID3] = {
++			[RKCIF_MIPI_CTRL0] = 0x18,
++			[RKCIF_MIPI_CTRL1] = 0x1c,
++			[RKCIF_MIPI_FRAME0_ADDR_Y] = 0x60,
++			[RKCIF_MIPI_FRAME0_ADDR_UV] = 0x68,
++			[RKCIF_MIPI_FRAME0_VLW_Y] = 0x70,
++			[RKCIF_MIPI_FRAME0_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_ADDR_Y] = 0x64,
++			[RKCIF_MIPI_FRAME1_ADDR_UV] = 0x6c,
++			[RKCIF_MIPI_FRAME1_VLW_Y] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_FRAME1_VLW_UV] = RKCIF_REGISTER_NOTSUPPORTED,
++			[RKCIF_MIPI_CROP_START] = 0x98,
++		},
++	},
++	.blocks = {
++		{
++			.offset = 0x100,
++		},
++		{
++			.offset = 0x200,
++		},
++		{
++			.offset = 0x300,
++		},
++		{
++			.offset = 0x400,
++		},
++		{
++			.offset = 0x500,
++		},
++		{
++			.offset = 0x600,
++		},
++	},
++};
++
+ static inline unsigned int rkcif_mipi_get_reg(struct rkcif_interface *interface,
+ 					      unsigned int index)
+ {
+@@ -631,6 +765,13 @@ static int rkcif_mipi_start_streaming(struct rkcif_stream *stream)
+ 	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL1, ctrl1);
+ 	rkcif_mipi_stream_write(stream, RKCIF_MIPI_CTRL0, ctrl0);
  
-   clocks:
--    items:
--      - description: ACLK
--      - description: HCLK
--      - description: DCLK
--      - description: ICLK
-+    minItems: 4
-+    maxItems: 5
++	/*
++	 * TODO: This bit has a different meaning on the RK3568, but it is
++	 * set there by default anyway. While correct, this is not exactly
++	 * nice and shall be reworked during the next refactoring.
++	 */
++	rkcif_mipi_write(interface, RKCIF_MIPI_CTRL, RK3588_MIPI_CTRL_CAP_EN);
++
+ 	ret = 0;
  
-   clock-names:
--    items:
--      - const: aclk
--      - const: hclk
--      - const: dclk
--      - const: iclk
-+    minItems: 4
-+    maxItems: 5
+ out:
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
+index 7f16eadc474c3b40078b8e9074dbfbd13ce95317..7edaca44f653ca405562ac1d91d0fea721eff3ce 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-capture-mipi.h
+@@ -13,6 +13,7 @@
+ #include "rkcif-common.h"
  
-   iommus:
-     maxItems: 1
+ extern const struct rkcif_mipi_match_data rkcif_rk3568_vicap_mipi_match_data;
++extern const struct rkcif_mipi_match_data rkcif_rk3588_vicap_mipi_match_data;
  
-   resets:
--    items:
--      - description: ARST
--      - description: HRST
--      - description: DRST
--      - description: PRST
--      - description: IRST
-+    minItems: 5
-+    maxItems: 9
+ int rkcif_mipi_register(struct rkcif_device *rkcif);
  
-   reset-names:
--    items:
--      - const: arst
--      - const: hrst
--      - const: drst
--      - const: prst
--      - const: irst
-+    minItems: 5
-+    maxItems: 9
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-common.h b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+index dd92cfbc879f01fec0983cc722c86c8da239a987..4d9211ba9bda8d8018c99fa3595ff7cac70be3c7 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-common.h
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-common.h
+@@ -27,7 +27,7 @@
+ #include "rkcif-regs.h"
  
-   rockchip,grf:
-     $ref: /schemas/types.yaml#/definitions/phandle
-@@ -67,8 +59,15 @@ properties:
+ #define RKCIF_DRIVER_NAME "rockchip-cif"
+-#define RKCIF_CLK_MAX	  4
++#define RKCIF_CLK_MAX	  5
  
-   ports:
-     $ref: /schemas/graph.yaml#/properties/ports
-+    additionalProperties: false
+ enum rkcif_format_type {
+ 	RKCIF_FMT_TYPE_INVALID,
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
+index b4cf1146f13118ef77a49005af1edad96b793c41..c8542398b7f0139640976d0451a6c9cd8651da26 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-dev.c
+@@ -53,6 +53,20 @@ static const struct rkcif_match_data rk3568_vicap_match_data = {
+ 	.mipi = &rkcif_rk3568_vicap_mipi_match_data,
+ };
  
-     properties:
-+      "#address-cells":
-+        const: 1
++static const char *const rk3588_vicap_clks[] = {
++	"aclk",
++	"hclk",
++	"dclk",
++	"iclk0",
++	"iclk1",
++};
 +
-+      "#size-cells":
-+        const: 0
++static const struct rkcif_match_data rk3588_vicap_match_data = {
++	.clks = rk3588_vicap_clks,
++	.clks_num = ARRAY_SIZE(rk3588_vicap_clks),
++	.mipi = &rkcif_rk3588_vicap_mipi_match_data,
++};
 +
-       port@0:
-         $ref: /schemas/graph.yaml#/$defs/port-base
-         unevaluatedProperties: false
-@@ -100,13 +99,75 @@ properties:
- 
-       port@1:
-         $ref: /schemas/graph.yaml#/properties/port
--        description: Port connected to the MIPI CSI-2 receiver output.
-+        description: Port connected to the MIPI CSI-2 receiver 0 output.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
-+
-+      port@2:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the MIPI CSI-2 receiver 1 output.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
-+
-+      port@3:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the MIPI CSI-2 receiver 2 output.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
-+
-+      port@4:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the MIPI CSI-2 receiver 3 output.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
-+
-+      port@5:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the MIPI CSI-2 receiver 4 output.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
-+
-+      port@6:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the MIPI CSI-2 receiver 5 output.
- 
-         properties:
-           endpoint:
-             $ref: video-interfaces.yaml#
-             unevaluatedProperties: false
- 
-+      port@10:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the ISP0 input.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
-+
-+      port@11:
-+        $ref: /schemas/graph.yaml#/properties/port
-+        description: Port connected to the ISP1 input.
-+
-+        properties:
-+          endpoint:
-+            $ref: video-interfaces.yaml#
-+            unevaluatedProperties: false
- required:
-   - compatible
-   - reg
-@@ -114,6 +175,84 @@ required:
-   - clocks
-   - ports
- 
-+allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3568-vicap
-+    then:
-+      properties:
-+        clocks:
-+          maxItems: 4
-+
-+        clock-names:
-+          items:
-+            - const: aclk
-+            - const: hclk
-+            - const: dclk
-+            - const: iclk
-+
-+        resets:
-+          maxItems: 5
-+
-+        reset-names:
-+          items:
-+            - const: arst
-+            - const: hrst
-+            - const: drst
-+            - const: prst
-+            - const: irst
-+
-+        ports:
-+          properties:
-+            port@2: false
-+
-+            port@3: false
-+
-+            port@4: false
-+
-+            port@5: false
-+
-+            port@6: false
-+
-+            port@10: false
-+
-+            port@11: false
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: rockchip,rk3588-vicap
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 5
-+
-+        clock-names:
-+          items:
-+            - const: aclk
-+            - const: hclk
-+            - const: dclk
-+            - const: iclk0
-+            - const: iclk1
-+
-+        resets:
-+          minItems: 9
-+
-+        reset-names:
-+          items:
-+            - const: arst
-+            - const: hrst
-+            - const: drst
-+            - const: irst0
-+            - const: irst1
-+            - const: irst2
-+            - const: irst3
-+            - const: irst4
-+            - const: irst5
-+
- additionalProperties: false
- 
- examples:
+ static const struct of_device_id rkcif_plat_of_match[] = {
+ 	{
+ 		.compatible = "rockchip,px30-vip",
+@@ -62,6 +76,10 @@ static const struct of_device_id rkcif_plat_of_match[] = {
+ 		.compatible = "rockchip,rk3568-vicap",
+ 		.data = &rk3568_vicap_match_data,
+ 	},
++	{
++		.compatible = "rockchip,rk3588-vicap",
++		.data = &rk3588_vicap_match_data,
++	},
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, rkcif_plat_of_match);
 
 -- 
 2.47.3
