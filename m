@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19805CD342F
-	for <linux-rockchip@archiver.kernel.org>; Fri,  8 May 2026 21:18:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 503FBCD342F
+	for <linux-rockchip@archiver.kernel.org>; Fri,  8 May 2026 22:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
 	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
 	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wMIuBdCF7Xhi+WX4gq7bTU9Noo8u7Vgc+Ln4Us2kQfw=; b=Dh9a6jbfwKmwTjC8J/9jGurD0j
-	rkioJCptt6aTXwZphvJ9QIo2xoHZRqLjpt/wQGqBkN1CSfJE95oAuktCpJ9MkKIHKdvOyah/tTNIw
-	uBZdthcis5Fn9IeV++l0U2igVo0t4qjXXUfaUTamzYGW2IdfgcAEjRo15xAiJP+Ns+QuxC27E34kb
-	YcIwaTm+ndXnNSkVEaWpSeRvAWsgj0lyjjDC987y0BXyUY+q1VETJ2wz8tMmIKglOpapMq7pPs6D5
-	dKijQG41skn+ctUAk6LXOzoeGC43uT7vg5NrLWycHENgDARqgf0N++njmzmmZiWHdtaQRfnqLfjy5
-	54UvwNEA==;
+	bh=7tf7mSbzRCoL/b4mq1rTUZkcJIkmCv+B1mvPYZnZ/Xc=; b=bzncoCbKG5JV2fVRXwH0trOcbD
+	vNoPCfOtP3tpEQ+FVdG3iW4q1gUNd3rstgNWcqze8q9CNHhWBuVJEWoWC5hOyMebVIVQwy/rRXCnr
+	brlbQJI+vknWGzsy4pZbl8Z2Fq+6izhR9y7waYJFQ7KvfHzNiYqVdqQPTSqEMJVf2CUx8zrmEfRjf
+	QCcqvTVma2zh/0KdLXIgs3qzBJ7Gg9lkXM3EgQxwGIMI5S3w/N2o0FwrOv8Tx/ZedKWBkZ//vLUIY
+	tblbHrcR2JOQcnuH1R2f9N1vgR1XWsxUbMf9E35TMxP4Hwf1rLUh0q4GzXquZaAwcKMGzPm8SmL7W
+	6+oEkD9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLSay-00000007X7V-2TWH;
-	Fri, 08 May 2026 21:18:52 +0000
-Received: from mail-qt1-x82c.google.com ([2607:f8b0:4864:20::82c])
+	id 1wLTQ2-00000007cUv-2AYk;
+	Fri, 08 May 2026 22:11:38 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLSaw-00000007X6h-0Qxn
+	id 1wLTPz-00000007cTu-1jtw
 	for linux-rockchip@lists.infradead.org;
-	Fri, 08 May 2026 21:18:51 +0000
-Received: by mail-qt1-x82c.google.com with SMTP id d75a77b69052e-50d876329bbso22315101cf.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 08 May 2026 14:18:49 -0700 (PDT)
+	Fri, 08 May 2026 22:11:36 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-8acb3dab8dfso16605066d6.1
+        for <linux-rockchip@lists.infradead.org>; Fri, 08 May 2026 15:11:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1778275129; x=1778879929; darn=lists.infradead.org;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1778278294; x=1778883094; darn=lists.infradead.org;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=NuDyd+pdDE/YN+9KZpt+S8gMDx02yjwA/CK1DnFyXwo=;
-        b=fbXEn+IZhvqJRgmzmmN3IAvQJgTL5j3QAu2JUkvDbwUjwHKeF/RByQxKT7yYkI2+Ng
-         JgBKEFZ70hx9w/RSHVccTxiU7ZPkWB4Mjb6bJUPA7z0Xh2aUD9Vswb9sBQKJt36x+lN3
-         ++wioAH/fdUGIFP3muXfelbfbzm8RMHaEqJFO7fx+oZxdR/3jc4EZbKFihrSH2LzvyMY
-         IiUpUZg2vV/1IRLuxnUh1A0P3m8w+9/rKCmEBGdvwMK0KtRc2FsP2pdEVPUzr+185W1u
-         xqAb2O2Zaod6eJKdPM7PUO76Hmpz/u5gghxnkyNoM5xF4OzJh19w6IhqcX5XRYWB0+Gu
-         8Ljg==
+        bh=423hWhSi5+hijWcsdmhIbZKRcVhHLdzm80D5vMOt0CA=;
+        b=Gd+xnCAtBNR5HnuVI1ypx5QmN9f63POdjxYAFAbwmEQ+652hpbbvTd0d+aEQe3N265
+         cBiid2YENtsTjMHBtSVsITDZc0Fi5cLltkzR5sv8JboMJjtoa9CguHj3oHmdoY2akLDZ
+         uqtiBel4AqU0AZ+qTePZssKROsr5FjJ1J2cZNDebriFscmBRzRlp1szAaAobGYezXsyA
+         5Lt0Dij3E/qyQ3zL4LUB9Nt4y7LkDTRFVe2xofr407+Jn6KLB2WJRF9l95tXawvHD7Pb
+         +MyG9k5n2BiN/aGblZrAx6h0vnfTiVrLXcdN05SIVcDzFjhkRyPswaGSvfaZ66n+IrMm
+         V42g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778275129; x=1778879929;
+        d=1e100.net; s=20251104; t=1778278294; x=1778883094;
         h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
          :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=NuDyd+pdDE/YN+9KZpt+S8gMDx02yjwA/CK1DnFyXwo=;
-        b=Gcg8L7xJ3LCqOdzJl0C6k2BxUmSzIVUvtTamGfKUNAW+JuVAqyDWl+LOJ0Yhm4U35H
-         M9lAxKevqpUmYaAgxI6dwPSXSfabN1eeFadzFaJQRzw20G5q7vIwWO9o7dk+sb2eAKJR
-         1PKKAA5hQ7AuFhRcikH73R/PH3mN8EHFFQqNHatXaRKwmAma5fQZ/4bxCicDJrvSgRuS
-         4YceB2TVcXd5JJZF5u5OdJhlCsQoQSPAarhckSesWTDpbpOoA+qbQuodsjDIyyz7CB9N
-         qydw4WSd483tpJ+Q2N7bQNNdXeq1HmEILPw2mSDLgu64iVDmz2sDGjQQUkVq9in581Zc
-         Sy1g==
-X-Forwarded-Encrypted: i=1; AFNElJ9GB36n7XvMEC4m+gfJc0cU3j+tjRTjt5awAajlwstK5/TaNIOJmnSB8XAGaeRPpYY35rRh5R+Ix0jrywdQsQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyNkKWAQWdvliuZgsU1cHARO41q2fY0f440LplUsFTcrxdFHiGJ
-	woNGZ+vmTImR73I4S8kV6XmSOdYns90kSTgTXf4dWaIiMZPrSZo8vwLQtAIq7LEIoTI=
-X-Gm-Gg: AeBDies8pVt6LjfYQi7P782ZZnuXgBz+quM5S4y77rMdMMHRKeOdOBQ9OJ+km49YFKt
-	PBxYo+QWK1zikZKMjmZbOXULY3OiTcZemZu3dDXBz0dLR8CJclvc/qWe6Caghtf+UBR25wssBCd
-	2RqJy6v4L/o36mJO7nE7eM6kYI9lrDB3XQol6w2Q2Hf4Mk+/f9+4n2YTo2Ik9vOMCTkfgnGx+LV
-	O+vYlcxKa5wcfeLJCUTo8UlDNMmO0dQPNSGUNt3+VlqxQ/d7wTc/kLY/zrrC1OvNvP9N5cWAdl7
-	aPUG1vmFzIoO2tzS/bLklw2Gw6cvfYfKVG8Lxvhz/natXK5l+uq85msHB1DFvVBDc3pJomTvzli
-	KRQcfy0n7XDi8qQcQyz1ey95oEL7J0EZnAX8X750pxXUKsq7ArDYZUa0+3S8l94J4fv2LPaiXNU
-	z01Fnj64dcW4ciQ21nrdNb4EJ6cotW01yy8iaHjvI=
-X-Received: by 2002:a05:622a:4d4e:b0:50b:5336:1d20 with SMTP id d75a77b69052e-514621d5127mr196554381cf.53.1778275128704;
-        Fri, 08 May 2026 14:18:48 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:15:e06b::c41? ([2606:6d00:15:e06b::c41])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8bf3b0c7600sm28019116d6.1.2026.05.08.14.18.47
+        bh=423hWhSi5+hijWcsdmhIbZKRcVhHLdzm80D5vMOt0CA=;
+        b=bxXGWs9a4GAWGim+a8eG09RJ6TbPDwUJ/zEeJS241mWwy9ROKnqAFLLFlYeMxt9Roh
+         NPSLY4/S2PGV//0rp3asySEo7f84+NcnxHbtwrpu/Gv9PEeBUrNfC7WJPWIpFScgZlYm
+         TnOojBrr1BVW/XTFjG7qobiRt5cmdEo6jOoqEztUipCuE30DfyV9FHcXGdOP24IapIKO
+         9JgK8BuwgbCfRE4eij8WrP7tqVl9CTSdkm2zYpYDX0kz5znJLzuzU+cORzCD0jiE3Rdq
+         yOWLsmZ4CiAA0JR300uhOkeafQNolADJlyAfhxMcklgdm1/MLlvMSzLM+bUvk1hf2P09
+         nGZw==
+X-Forwarded-Encrypted: i=1; AFNElJ/gq/rkTaoEK/ScdkkBhcazamnR0AovKH8Pg4AY2VBI6F7P4Gnjatrc0cvZXctuIz+BrnIlcC4fmqVMWyJ3Gw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxIE72n0zskERSmTSvy7XdTKsV7TRqMIXgZlm17y6jqOvHaKr/l
+	Do0oh2S5fUZw1BPyvnLcR56Hs+X72jL/GTcGoZ0mEbRcyS4YfcKZZbvepugZDxSYbOs=
+X-Gm-Gg: Acq92OF7bYx2oMFpHUU4jEyMZJlE4P6K9LFgpStJEsnc7Ezc3y7SvNB+9yzngUOKeNF
+	QXzxj56Z3TtiSNa7sGOFEyI7fxKR91PIXTNgRmTf4ABR1ojnndBnRJ9dmncFApcOl0dRT1QPAcq
+	J6OsK6lsQbM/EVecUoIuCz7u+J3BlJyx9Kmzp3scWduQiZgCc9aFTbV1tjOQaYYoilzRtitI6rX
+	ILqqlY3mNiLemO3AyUUNC1vLSXshQSVwuk/gNzV5P8taS/frPUaKeDcu7bPIG1Wyvm81D+B3Dqb
+	xn1QvhmOWB8q3Vreghepi19lPwvPaOow4cxhknaGdEnTSp/zQsg1DoeOwDTHflYdZxjS33+gJQG
+	QYfMt8L86Lf4FT/ON56TJIG2HVXaPUD5cJSErll1o8B9oSucQvkShaaNfyZhE9kfCC1DyFMckTx
+	/uvf7+3M5AOIgaSzdpz3JAyyH8PDCN
+X-Received: by 2002:a05:6214:8082:b0:8ac:b1ce:3244 with SMTP id 6a1803df08f44-8bc42f522e5mr198672566d6.19.1778278293937;
+        Fri, 08 May 2026 15:11:33 -0700 (PDT)
+Received: from ?IPv6:2606:6d00:15:e06b::5ac? ([2606:6d00:15:e06b::5ac])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8bf3a43636fsm29335326d6.21.2026.05.08.15.11.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 08 May 2026 14:18:47 -0700 (PDT)
-Message-ID: <4f5e481c8883b358ee4cef64f26f3f00f0ac7304.camel@ndufresne.ca>
-Subject: Re: [PATCH v5 12/29] media: rockchip: rga: avoid odd frame sizes
- for YUV formats
+        Fri, 08 May 2026 15:11:33 -0700 (PDT)
+Message-ID: <ebe5cd6689923eb1e2124e177f694895383fba54.camel@ndufresne.ca>
+Subject: Re: [PATCH v5 16/29] media: rockchip: rga: split flip and rotate
+ into separate function
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
 	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
@@ -82,10 +82,10 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	devicetree@vger.kernel.org, kernel@pengutronix.de, 
 	sebastian.reichel@collabora.com
-Date: Fri, 08 May 2026 17:18:46 -0400
-In-Reply-To: <20260428-spu-rga3-v5-12-eb7f5d019d86@pengutronix.de>
+Date: Fri, 08 May 2026 18:11:31 -0400
+In-Reply-To: <20260428-spu-rga3-v5-16-eb7f5d019d86@pengutronix.de>
 References: <20260428-spu-rga3-v5-0-eb7f5d019d86@pengutronix.de>
-	 <20260428-spu-rga3-v5-12-eb7f5d019d86@pengutronix.de>
+	 <20260428-spu-rga3-v5-16-eb7f5d019d86@pengutronix.de>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -102,8 +102,8 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
 User-Agent: Evolution 3.60.1 (3.60.1-1.fc44) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260508_141850_200213_0B0126CA 
-X-CRM114-Status: GOOD (  19.57  )
+X-CRM114-CacheID: sfid-20260508_151135_565834_0F6084D5 
+X-CRM114-Status: GOOD (  25.49  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,115 +115,187 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============0365852573730296555=="
+Content-Type: multipart/mixed; boundary="===============7655219674128070193=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============0365852573730296555==
+--===============7655219674128070193==
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-qZ2RVVDen/K+BWJk4jzk"
+	protocol="application/pgp-signature"; boundary="=-lVlR1XuC3qO6FqUNpkDq"
 
 
---=-qZ2RVVDen/K+BWJk4jzk
+--=-lVlR1XuC3qO6FqUNpkDq
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
 Le mardi 28 avril 2026 =C3=A0 11:00 +0200, Sven P=C3=BCschel a =C3=A9crit=
 =C2=A0:
-> Avoid odd frame sizes for YUV formats, as they may cause undefined
-> behavior. This is done in preparation for the RGA3, which hangs when the
-> output format is set to 129x129 pixel YUV420 SP (NV12).
->=20
-> This requirement is documented explicitly for the RGA3 in=C2=A0 section 5=
-.6.3
-> of the RK3588 TRM Part 2. For the RGA2 the RK3588 TRM Part 2
-> (section 6.1.2) and RK3568 TRM Part 2 (section 14.2) only mentions the
-> x/y offsets and stride aligning requirements. But the vendor driver for
-> the RGA2 also contains checks for the width and height to be aligned to
-> 2 bytes.
+> Split the flip and rotate command configuration into a separate
+> function in preparation of filling the command stream at streamon.
+> As the userspace can change the flipping and rotation controls while
+> streaming, we have to update them with each new frame to prevent the
+> user being unable to change them while streaming.
 >=20
 > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
-> ---
-> =C2=A0drivers/media/platform/rockchip/rga/rga.c | 19 ++++++++++++++-----
-> =C2=A01 file changed, 14 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/pl=
-atform/rockchip/rga/rga.c
-> index f599c992829dd..77b8c7ab74274 100644
-> --- a/drivers/media/platform/rockchip/rga/rga.c
-> +++ b/drivers/media/platform/rockchip/rga/rga.c
-> @@ -337,6 +337,19 @@ static int vidioc_try_fmt(struct file *file, void *p=
-riv, struct v4l2_format *f)
-> =C2=A0	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
-> =C2=A0	const struct rga_hw *hw =3D ctx->rga->hw;
-> =C2=A0	struct rga_fmt *fmt;
-> +	struct v4l2_frmsize_stepwise frmsize =3D {
-> +		.min_width =3D hw->min_width,
-> +		.max_width =3D hw->max_width,
-> +		.min_height =3D hw->min_height,
-> +		.max_height =3D hw->max_height,
-> +		.step_width =3D 1,
-> +		.step_height =3D 1,
-> +	};
-> +
-> +	if (v4l2_is_format_yuv(v4l2_format_info(pix_fmt->pixelformat))) {
-> +		frmsize.step_width =3D 2;
-> +		frmsize.step_height =3D 2;
 
-I think its fine like this, so let's start with:
+For code point of view, everything seems fine, but the commit message leave=
+ me a
+bit wondering. Any rotation that isn't 180 degree will cause the width and
+height to be reversed, and a new stride is needed to present the buffer
+correctly. Meaning the capture format can be affected by this change.
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+To stick with the spec, the capture format needs to be updated, and it need=
+s to
+happen in a way user can be able to read it back for the correct frame if
+userspace make use of the queues. I see 3 options, let me know what you thi=
+nk,
+or what is later implemented if you already thought about that.
 
-But it does not feel like a hardware alignment to me. When we process in
-software these things, the minimum alignment is bound to the subsampling, s=
-ince
-there is no way to store half or quarter pixels, the padded width/height
-requires a step that follow the subsampling, something like:
+1. Synchronously update the capture format width/height, document in the
+respective control this behaviour, leaving to userspace to remember which f=
+rames
+the change will apply to.
 
-		frmsize.step_width =3D finfo->hdiv;
-		frmsize.step_height =3D finfo->vdiv;
+This works nicely for this type of HW, but would be a bit complicated for a
+deinterlacer, since the buffering might be HW specific. It also make usage =
+of
+queues harder, less independent.
 
+2. Force a drain/stop/start for any 90 degree rotation
+
+This might impose a longer idle time for the converter core, and is kind of
+opposite of your commit message. But requires no spec work.
+
+3. Emit SRC_CH, implement the drain procedure typical to decoder resolution
+change.
+
+Typically it means userspace can keep buffering on the OUTPUT queue, and on=
+ce
+the LAST buffer is met, it can simply read the new format (and new stride, =
+since
+due to alignment, this might be hardware specific) and toggle streamoff/on =
+only
+on capture queue to reactivate the processing.
+
+The 3. is more complex for the driver, but its a proven race-free method fo=
+r
+decoders already. 2 would be statusquo to get this series in, and we could =
+post-
+poned more advance work for seamless 90degree rorations. 1., I don't really=
+ like
+that solution, it not quite generic enough.
+
+feedback welcome,
 Nicolas
 
-
+> ---
+> =C2=A0drivers/media/platform/rockchip/rga/rga-hw.c | 57 +++++++++++++++++=
+-----------
+> =C2=A01 file changed, 34 insertions(+), 23 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/rockchip/rga/rga-hw.c b/drivers/media=
+/platform/rockchip/rga/rga-hw.c
+> index dac3cb6aa17d3..6c1956b04f6ba 100644
+> --- a/drivers/media/platform/rockchip/rga/rga-hw.c
+> +++ b/drivers/media/platform/rockchip/rga/rga-hw.c
+> @@ -156,7 +156,38 @@ static void rga_cmd_set_dst_addr(struct rga_ctx *ctx=
+, dma_addr_t dma_addr)
+> =C2=A0	dest[reg >> 2] |=3D 0x7 << 8;
+> =C2=A0}
+> =C2=A0
+> -static void rga_cmd_set_trans_info(struct rga_ctx *ctx)
+> +static void rga_cmd_set_flip_rotate_info(struct rga_ctx *ctx)
+> +{
+> +	u32 *dest =3D ctx->cmdbuf_virt;
+> +	union rga_src_info src_info;
+> +
+> +	src_info.val =3D dest[(RGA_SRC_INFO - RGA_MODE_BASE_REG) >> 2];
+> +
+> +	if (ctx->vflip)
+> +		src_info.data.mir_mode |=3D RGA_SRC_MIRR_MODE_X;
+> +
+> +	if (ctx->hflip)
+> +		src_info.data.mir_mode |=3D RGA_SRC_MIRR_MODE_Y;
+> +
+> +	switch (ctx->rotate) {
+> +	case 90:
+> +		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_90_DEGREE;
+> +		break;
+> +	case 180:
+> +		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_180_DEGREE;
+> +		break;
+> +	case 270:
+> +		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_270_DEGREE;
+> +		break;
+> +	default:
+> +		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_0_DEGREE;
+> +		break;
 > +	}
+> +
+> +	dest[(RGA_SRC_INFO - RGA_MODE_BASE_REG) >> 2] =3D src_info.val;
+> +}
+> +
+> +static void rga_cmd_set_format_scale_info(struct rga_ctx *ctx)
+> =C2=A0{
+> =C2=A0	struct rockchip_rga *rga =3D ctx->rga;
+> =C2=A0	u32 *dest =3D ctx->cmdbuf_virt;
+> @@ -219,27 +250,6 @@ static void rga_cmd_set_trans_info(struct rga_ctx *c=
+tx)
+> =C2=A0		}
+> =C2=A0	}
 > =C2=A0
-> =C2=A0	if (V4L2_TYPE_IS_CAPTURE(f->type)) {
-> =C2=A0		const struct rga_frame *frm;
-> @@ -358,11 +371,7 @@ static int vidioc_try_fmt(struct file *file, void *p=
-riv, struct v4l2_format *f)
-> =C2=A0	if (!fmt)
-> =C2=A0		fmt =3D &hw->formats[0];
-> =C2=A0
-> -	pix_fmt->width =3D clamp(pix_fmt->width,
-> -			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hw->min_width, hw->max_width);
-> -	pix_fmt->height =3D clamp(pix_fmt->height,
-> -				hw->min_height, hw->max_height);
+> -	if (ctx->vflip)
+> -		src_info.data.mir_mode |=3D RGA_SRC_MIRR_MODE_X;
 > -
-> +	v4l2_apply_frmsize_constraints(&pix_fmt->width, &pix_fmt->height, &frms=
-ize);
-> =C2=A0	v4l2_fill_pixfmt_mp(pix_fmt, fmt->fourcc, pix_fmt->width, pix_fmt-=
->height);
-> =C2=A0	pix_fmt->field =3D V4L2_FIELD_NONE;
+> -	if (ctx->hflip)
+> -		src_info.data.mir_mode |=3D RGA_SRC_MIRR_MODE_Y;
+> -
+> -	switch (ctx->rotate) {
+> -	case 90:
+> -		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_90_DEGREE;
+> -		break;
+> -	case 180:
+> -		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_180_DEGREE;
+> -		break;
+> -	case 270:
+> -		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_270_DEGREE;
+> -		break;
+> -	default:
+> -		src_info.data.rot_mode =3D RGA_SRC_ROT_MODE_0_DEGREE;
+> -		break;
+> -	}
+> -
+> =C2=A0	/*
+> =C2=A0	 * Calculate the up/down scaling mode/factor.
+> =C2=A0	 *
+> @@ -431,7 +441,8 @@ static void rga_cmd_set(struct rga_ctx *ctx,
+> =C2=A0
+> =C2=A0	rga_cmd_set_src_info(ctx, &src->offset);
+> =C2=A0	rga_cmd_set_dst_info(ctx, &dst->offset);
+> -	rga_cmd_set_trans_info(ctx);
+> +	rga_cmd_set_format_scale_info(ctx);
+> +	rga_cmd_set_flip_rotate_info(ctx);
+> =C2=A0
+> =C2=A0	rga_write(rga, RGA_CMD_BASE, ctx->cmdbuf_phy);
 > =C2=A0
 
---=-qZ2RVVDen/K+BWJk4jzk
+--=-lVlR1XuC3qO6FqUNpkDq
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaf5TNgAKCRDZQZRRKWBy
-9K22AP9NA5svkOS4YL++qXSzMq8kynIFrKCnDRWKeJx++AbT9AD/dLvKF5HRQ8Cf
-i9PlqWBZXkzVLS+1T8+GiOLpb3UFXAQ=
-=85ga
+iHQEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaf5fkwAKCRDZQZRRKWBy
+9LC3APdmFKAFkqTp6qEPlQCir+NJJOXQVBYZ7bHoVHuXUem7AQC4zPYGkGqV7x4I
+JShJJJ7CiYN1opexRldmsDpBBgQYCA==
+=Cg+D
 -----END PGP SIGNATURE-----
 
---=-qZ2RVVDen/K+BWJk4jzk--
+--=-lVlR1XuC3qO6FqUNpkDq--
 
 
---===============0365852573730296555==
+--===============7655219674128070193==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -234,5 +306,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============0365852573730296555==--
+--===============7655219674128070193==--
 
