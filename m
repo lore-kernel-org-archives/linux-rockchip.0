@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC045CD37AC
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFEB7CD3447
 	for <linux-rockchip@archiver.kernel.org>; Sat,  9 May 2026 02:22:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Message-ID:
-	Subject:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Gdr6oouLrLy6LKQ+T3QIOBV6xA9B5d7k7Bv+WiYEVUA=; b=Mdui0Yn2q+U6bf
-	p1dOUVThiV3OY6UgN73VWS4qQvKD5y2uXS2o7VQiaFc7OjiYX3f4QcuS0c2u0XHfl/IK8xdQpeG/a
-	2PFi+ZH9XTDeF2egf2YIuhQ0Ldr4jE3RlTd2Gb1E+kkuNoYeHlR1vHe93/L+uIpHMR/A+comzwRnM
-	KM7oD2b9dllf+0XVWZ7A/9gexmzZ6mIJJZWztxe+YW/E7xP5s5nyBdLz9CGWLJVgh/O2y2bywHwOV
-	zdzItnVr2BeW5JFCOpgE4t/DE6u/s1381Ic+dXMqq/RtvNKlz5PYzKukWJkpYW+zCghvyNnOdAzzV
-	1J+OoC2TRXo79GQKSWyQ==;
+	List-Archive:List-Unsubscribe:List-Id:Date:Message-ID:Subject:Cc:To:From:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=G2Vgrw7haXmF509ghxXcE21Yyh6DT+Qj2G/Mukk83uo=; b=R/JQqzcCU+sUML
+	UuB6fwtVzPrBus8QWfEXwCRLeFrcT4ZB2RlakG2YEBTqWMSUv/BAs/g/qku2cES9T6o09zfN3t0Nu
+	nWXobpCC/3Atwa3KzjfcfqxYbMfOjcgKTC0+ukelqOz9+UagWUo5gRDchddCatz8zSqGyHyosTSJd
+	j2jd5RovSLAhxf0YWlSVpM3GRzU+zbWOUoav7QXqE1JJInCLrMYFwR4Ft2hiprJ0wJk/ZIeSITTCd
+	+2GCqqJLMHNx6dL/oY0RbeUIMptR358Dsl/fl+2lHk/mzG8lRFX2cbUqWuIudcCHHgAq+GtE7Z0oZ
+	xSLKl1g/CFip9F8dmIfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLXKd-00000007zYg-3ZSc;
-	Sat, 09 May 2026 02:22:19 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1wLXKa-00000007zWd-1GIY;
+	Sat, 09 May 2026 02:22:16 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLXKX-00000007zUL-3w7I;
-	Sat, 09 May 2026 02:22:15 +0000
+	id 1wLXKW-00000007zTn-09Pk;
+	Sat, 09 May 2026 02:22:14 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Content-Type:MIME-Version:From:To:Subject:
-	Message-ID:Date; bh=7v8CJ0e4//stA9Xc55Ta1qaFTlw77C4x6BLM2ypR4Sc=;
-	b=ajDoNrHletOKCVbSvQ6x5nvgyGU5mxoVGsSRs6d//JZnWocsMZ8cvZvNPiy7km
-	lvzmnXJdFjSE/sHHdm1E5SztRLX4hPv2WxNkxTxhNytUuRyhNtFgsvQvUriPWPXl
-	m+llYyZ10Vgij8o0g3XiXcL+ZEXXie1tEsI9F2/N2J1TE=
+	Message-ID:Date; bh=7edoRH6rJpdI38RUa1hZTvGslhZW1R8r4luZRYeOTK8=;
+	b=dwOgoAk36toC7MxRIhDvL2x2ZjnB8CATUALHU2Q9zziMme725NcjA2QAHWnnyc
+	glvZB3hS4bFNl0Pd+8bEHI0vHkM356CZCeUblxsoDXABfa72WAgki3jlCc4gr4xg
+	Ah/VsKMcnh3/mRBapqlISF2mdEFtU05hOLhBhtNSMOzhc=
 Received: from [127.0.1.1] (unknown [])
-	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wDnP49Gmv5pCAI+AQ--.52851S2;
-	Sat, 09 May 2026 10:22:00 +0800 (CST)
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wDHLAs9mv5piBw7AQ--.41485S2;
+	Sat, 09 May 2026 10:21:51 +0800 (CST)
 MIME-Version: 1.0
 From: Jiaqi <shijiaqi_develop@163.com>
 To: dri-devel@lists.freedesktop.org
 Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/6] drm/rockchip: Fix of_node reference leak in rockchip_drm_encoder_set_crtc_endpoint_id()
-Message-ID: <177829331772.202156.3836399936739886169@openclaw.local>
-Date: Sat, 09 May 2026 10:21:57 +0800
-In-Reply-To: <177829330856.202156.9366848570650672090@openclaw.local>
-References: <177829330856.202156.9366848570650672090@openclaw.local>
-X-CM-TRANSID: _____wDnP49Gmv5pCAI+AQ--.52851S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CF4UWr18Xry5ZFW3Zw17trb_yoW8Ar13pa
-	n3Gr9Yvr48GrWfWr10yr47ArySkws2va17CF97C3W3Zan3ArnYyw1fKF1vgr15ArWxuFyj
-	yrs7Ga4j9F17urUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j1VbkUUUUU=
+Subject: [PATCH 0/6] drm/rockchip: Fix error handling and resource leaks in Rockchip DRM drivers
+Message-ID: <177829330856.202156.9366848570650672090@openclaw.local>
+Date: Sat, 09 May 2026 10:21:48 +0800
+X-Patch-Series: drm/rockchip: Fix error handling and resource leaks
+X-CM-TRANSID: _____wDHLAs9mv5piBw7AQ--.41485S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WF1UGr45JFWxZrW8uryDZFb_yoW8Zr1Upr
+	Z8u390vr48GrWS9rs3AF4xAryF9ws2vayxKr97K34fZF15uF17A34Igw1kuFy3Ar97A3W7
+	trnrJrWrCr4jvrUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j1E_NUUUUU=
 X-Originating-IP: [43.248.8.92]
-X-CM-SenderInfo: xvklyxpdtlsvxhyhz0rs6rljoofrz/xtbC8AnSJmn+mkkVTgAA3S
+X-CM-SenderInfo: xvklyxpdtlsvxhyhz0rs6rljoofrz/xtbC8ADQJGn+mkAUhQAA3Y
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260508_192214_315981_25583879 
-X-CRM114-Status: GOOD (  11.14  )
+X-CRM114-CacheID: sfid-20260508_192212_386278_EBA26219 
+X-CRM114-Status: UNSURE (   9.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,61 +70,48 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The function rockchip_drm_encoder_set_crtc_endpoint_id() acquires device
-tree node references via of_graph_get_endpoint_by_regs() and
-of_graph_get_remote_endpoint(), but never releases them. This happens on
-all exit paths, including the success path.
+This patch series fixes 6 bugs in the Rockchip DRM driver subsystem,
+identified through static code analysis and confirmed by technical review.
 
-This leads to reference count leaks that accumulate during encoder probe.
-In deferred probe scenarios or module reload, the leaked references can
-cause of_node_get() to eventually return -ENOMEM, breaking subsequent
-device tree parsing.
+The bugs range from Critical (of_node reference leaks, use-after-free)
+to Medium (unchecked return values), and span 5 different source files.
+Each patch addresses exactly one bug to facilitate review and bisection.
 
-Fix by adding the corresponding of_node_put() calls for both 'en' and
-'ren', and use a unified error path to avoid duplication.
+Summary of fixes:
+
+  Patch 1/6 (Critical): Fix of_node reference leak in
+    rockchip_drm_encoder_set_crtc_endpoint_id(). Both success and error
+    paths leaked references acquired via of_graph helpers.
+
+  Patch 2/6 (Critical): Fix dangling crtc->state in vop2_crtc_reset().
+    kzalloc() failure left crtc->state as a use-after-free pointer.
+
+  Patch 3/6 (High): Fix vop2_create_crtcs() error path cleanup in
+    vop2_bind(). Failures returned directly without calling
+    vop2_destroy_crtcs(), leaking of_node references.
+
+  Patch 4/6 (High): Fix vmap address caching in
+    rockchip_gem_prime_vmap(). New vmap() results were not saved to
+    rk_obj->kvaddr, causing repeated mappings and potential leaks.
+
+  Patch 5/6 (High): Fix leaked vblank event in
+    vop_crtc_atomic_disable(). Pending vop->event was warned but never
+    sent, causing userspace hangs and vblank reference leaks.
+
+  Patch 6/6 (Medium): Check return value of cdn_dp_grf_write() in
+    cdn_dp_enable_phy() error path. Ignored return value could leave
+    GRF registers in an inconsistent state.
+
+All patches have been verified against checkpatch.pl --strict.
 
 Signed-off-by: Jiaqi <shijiaqi_develop@163.com>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 14 +++++++++----
- 1 file changed, 9 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-index 8afabe2118a9..1234567890ab 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
-@@ -278,18 +278,22 @@ int rockchip_drm_encoder_set_crtc_endpoint_id(struct rockchip_encoder *rkencoder,
- {
- 	struct of_endpoint ep;
- 	struct device_node *en, *ren;
- 	int ret;
-
- 	en = of_graph_get_endpoint_by_regs(np, port, reg);
- 	if (!en)
- 		return -ENOENT;
-
- 	ren = of_graph_get_remote_endpoint(en);
- 	if (!ren)
--		return -ENOENT;
-+		goto err_put_en;
-
- 	ret = of_graph_parse_endpoint(ren, &ep);
- 	if (ret)
--		return ret;
-+		goto err_put_ren;
-
- 	rkencoder->crtc_endpoint_id = ep.id;
-
--	return 0;
-+err_put_ren:
-+	of_node_put(ren);
-+err_put_en:
-+	of_node_put(en);
-+	return ret;
- }
-
- /*
---
-2.40.0
+ drivers/gpu/drm/rockchip/cdn-dp-core.c       |  5 +++--
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c  | 14 +++++++++----
+ drivers/gpu/drm/rockchip/rockchip_drm_gem.c  |  1 +
+ drivers/gpu/drm/rockchip/rockchip_drm_vop.c  | 11 ++++++++++-
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 13 ++++++++++--
+ 5 files changed, 35 insertions(+), 9 deletions(-)
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
