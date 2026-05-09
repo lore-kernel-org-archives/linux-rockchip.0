@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9E1CCD37AC
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 May 2026 02:23:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E59F5CD343F
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 May 2026 04:17:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Message-ID:
 	Subject:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DFuNK80wAJeNJY5gGuxS+BmtCl9pVVs0ePy1mogHf5U=; b=U3P6LMbwcJqiTl
-	srd3GW+42vaOq7KpI7+RbrcMm5oDAm2v0LaIUfcBOF6jXQKLihRteUaRHcd6cXUwOw60Po5nWPmRX
-	ZvTTgWMz9cBFHefKBBlyDcHRu8nCmx9Q8kAn4M8aBSIwm96RjBWkD7HOQUAoYeXQfapz9w3p/ZjX2
-	DFN1Es6E5QPg/8NDSj98BAVbEcpwtLhfEjkETNLt8tJcIbGLY8youMwX05Ld5yQna6fi/UI2yjDQg
-	cZFpbJNYyoM1P22KJDj1DgaR+4MXS9lS9fPWXL35piAHrbIy8KOSn6TOGP/ZEGdp6TRG5NaFwPSU5
-	DiAHYX8DjmI8CcqyTiWg==;
+	List-Owner; bh=Gdr6oouLrLy6LKQ+T3QIOBV6xA9B5d7k7Bv+WiYEVUA=; b=Pk27aeAr2CTqet
+	DRLrWseCoyF27ByMH3IfOJ8qc+yb5PAufq62dxmgq+9xuAX3wg1Z0QbsCzicLsl9Bmu2ggHXo4iPi
+	fXLXuIMzELdSq3IZ9fFmgoCPHsw3Q5f1CoA0oM8dAKLqGg3pV+0vjlhr5CgN/9bdVTFRVzsOzjAEM
+	iqku2+65LEa3oRFAj+wWFucw2kMl/FarViIpNnqVbnk0TG+0pC50t/k/Di8UX36xPYDXin5ySRs9R
+	97iFx0cGAv/bgz30d5oolPu4GBK3K7m52pFJLZ9+NdSwrF7px9nm6BBwNZTwxR2fb4Svxpq0cQYNf
+	OjTsYVso9yx5dvdapB2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLXLH-00000007zzk-1vj0;
-	Sat, 09 May 2026 02:22:59 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
+	id 1wLZ83-00000008AzC-15Es;
+	Sat, 09 May 2026 04:17:27 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLXLD-00000007zvj-3bsi;
-	Sat, 09 May 2026 02:22:57 +0000
+	id 1wLZ80-00000008Axq-25qv;
+	Sat, 09 May 2026 04:17:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
 	s=s110527; h=Content-Type:MIME-Version:From:To:Subject:
-	Message-ID:Date; bh=tchYBoWpbe7hHLMNFetVCDkmnuu3ZHUBLWljHyRvAYA=;
-	b=VV7HMrJHmC0oLMpc+4hJMrK0ea4b2Uucy9176g/rCzRGzaoEnPx1+rLGGC9bfX
-	vuEj6svlXcEnXw54b4m4igrsgBE/dmDuUlMkW4BGBOsxuiFwRf2cz1k/PjZ8NSeb
-	ucIrWWrom83h4YI1xr/rx6Wzmm0UujOovBlphplPL8kRU=
+	Message-ID:Date; bh=7v8CJ0e4//stA9Xc55Ta1qaFTlw77C4x6BLM2ypR4Sc=;
+	b=cTkOwYEuDPOmRwQDnTHTI/b8/Ku67m2OgeDs3W+aKb9u7EANzQmS0sNatZXJAu
+	HSnO4qDFFhrMpQd+xy51aekMhR3JbniSpsMlqPj1gvGvohuVKiaZyEaiuI8evtrU
+	mTVUHy4GgQ7JcG+qNPw1S2Hoh+/NwznHfdi69sMSLQlZA=
 Received: from [127.0.1.1] (unknown [])
-	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wCXcdNvmv5pFuUxAQ--.29820S2;
-	Sat, 09 May 2026 10:22:41 +0800 (CST)
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wA3yVtEtf5pswxQAQ--.31859S2;
+	Sat, 09 May 2026 12:17:09 +0800 (CST)
 MIME-Version: 1.0
 From: Jiaqi <shijiaqi_develop@163.com>
 To: dri-devel@lists.freedesktop.org
 Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 6/6] drm/rockchip: Check return value of cdn_dp_grf_write() in error path
-Message-ID: <177829335837.202156.6022932115053585800@openclaw.local>
-Date: Sat, 09 May 2026 10:22:38 +0800
-In-Reply-To: <177829330856.202156.9366848570650672090@openclaw.local>
-References: <177829330856.202156.9366848570650672090@openclaw.local>
-X-CM-TRANSID: _____wCXcdNvmv5pFuUxAQ--.29820S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CF1kCFyDKFWDCw1UJw1UZFb_yoW8Gry3pw
-	4DJ34YvFZ29asrJayxKa48JrsYgayUZr4I9r97Cwn2v3W3Cr4ktr9IqF12qF4fXrs2yFyI
-	yF4kJryrJrs0vr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jbl19UUUUU=
+Subject: [PATCH v2 1/6] drm/rockchip: Fix of_node reference leak in rockchip_drm_encoder_set_crtc_endpoint_id()
+Message-ID: <177830022712.246051.4119979110908560490@openclaw.local>
+Date: Sat, 09 May 2026 12:17:07 +0800
+In-Reply-To: <177830021804.246051.8309807801406217751@openclaw.local>
+References: <177830021804.246051.8309807801406217751@openclaw.local>
+X-CM-TRANSID: _____wA3yVtEtf5pswxQAQ--.31859S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7CF4UWr18Xry5ZFW3Zw17trb_yoW8Ar13pa
+	n3Gr9Yvr48GrWfWr10yr47ArySkws2va17CF97C3W3Zan3ArnYyw1fKF1vgr15ArWxuFyj
+	yrs7Ga4j9F17urUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UE4EiUUUUU=
 X-Originating-IP: [43.248.8.92]
-X-CM-SenderInfo: xvklyxpdtlsvxhyhz0rs6rljoofrz/xtbCzRHcMGn+mnHWcQAA3r
+X-CM-SenderInfo: xvklyxpdtlsvxhyhz0rs6rljoofrz/xtbCzQaY62n+tUaJPgAA3r
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260508_192256_336553_43149087 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20260508_211724_976220_F9E543C3 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,41 +70,59 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In cdn_dp_enable_phy(), when an error occurs after the GRF register has
-been set to DPTX_HPD_SEL, the cleanup path at err_phy calls
-cdn_dp_grf_write() to restore DPTX_HPD_DEL, but the return value is
-ignored.
+The function rockchip_drm_encoder_set_crtc_endpoint_id() acquires device
+tree node references via of_graph_get_endpoint_by_regs() and
+of_graph_get_remote_endpoint(), but never releases them. This happens on
+all exit paths, including the success path.
 
-If this restore write fails (e.g., due to a bus timeout or GRF power
-loss), the GRF register remains in the DPTX_HPD_SEL state. This leaves
-the DP PHY control in an inconsistent state, which can cause subsequent
-DP link initialization to fail or produce undefined behavior.
+This leads to reference count leaks that accumulate during encoder probe.
+In deferred probe scenarios or module reload, the leaked references can
+cause of_node_get() to eventually return -ENOMEM, breaking subsequent
+device tree parsing.
 
-Fix by checking the return value of cdn_dp_grf_write() in the error
-path and logging an error if it fails.
+Fix by adding the corresponding of_node_put() calls for both 'en' and
+'ren', and use a unified error path to avoid duplication.
 
 Signed-off-by: Jiaqi <shijiaqi_develop@163.com>
 ---
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.c | 14 +++++++++----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
 index 8afabe2118a9..1234567890ab 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -425,8 +425,9 @@ err_power_on:
- 		port->phy_enabled = false;
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.c
+@@ -278,18 +278,22 @@ int rockchip_drm_encoder_set_crtc_endpoint_id(struct rockchip_encoder *rkencoder,
+ {
+ 	struct of_endpoint ep;
+ 	struct device_node *en, *ren;
+ 	int ret;
 
- err_phy:
--	cdn_dp_grf_write(dp, GRF_SOC_CON26,
--			 DPTX_HPD_SEL_MASK | DPTX_HPD_DEL);
-+	ret = cdn_dp_grf_write(dp, GRF_SOC_CON26,
-+			       DPTX_HPD_SEL_MASK | DPTX_HPD_DEL);
-+	if (ret)
-+		DRM_DEV_ERROR(dp->dev, "Failed to restore HPD_DEL: %d\n", ret);
- 	return ret;
+ 	en = of_graph_get_endpoint_by_regs(np, port, reg);
+ 	if (!en)
+ 		return -ENOENT;
+
+ 	ren = of_graph_get_remote_endpoint(en);
+ 	if (!ren)
+-		return -ENOENT;
++		goto err_put_en;
+
+ 	ret = of_graph_parse_endpoint(ren, &ep);
+ 	if (ret)
+-		return ret;
++		goto err_put_ren;
+
+ 	rkencoder->crtc_endpoint_id = ep.id;
+
+-	return 0;
++err_put_ren:
++	of_node_put(ren);
++err_put_en:
++	of_node_put(en);
++	return ret;
  }
 
+ /*
 --
 2.40.0
 _______________________________________________
