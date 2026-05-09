@@ -4,56 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F171CD3447
-	for <linux-rockchip@archiver.kernel.org>; Sat,  9 May 2026 08:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B614BCD343F
+	for <linux-rockchip@archiver.kernel.org>; Sat,  9 May 2026 13:52:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:Date:Message-ID:
-	Subject:Cc:To:From:MIME-Version:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LZ+hcD18NDjaVhGg3OHNI3qCZaXAJPRRJVDNe36LhF8=; b=3u/TbhxhzgZjcc
-	1PtwST99XYEpDJwaakFK4E0UXRLt9Nv/O25NTLCrfHeOMd0wJlYE3ANeX+EXGiVcQIWPsZlGXMwTg
-	IY38GFuYAgaheJvntNsXRlVVb0PV4yIm1blN5M4PN5Uls3grOwIFQtR45vI7r5kNYijAOotOcS5HO
-	D2HMmabZ76UnLjJLZUt0zHTYkeFnJAo53Bjay//R+MZ2h/4NPfnetkFhnICij9agFjPxtc2LEhJaM
-	AuC3FAiq6dlzCBvhF7caCjNziQI/NB4C9NVgnSH0Y0AUYqU8R2+5N/e7dAgzPGbG42UpSf3KEGm6h
-	YOoKx2fEEev56OBfmAtw==;
+	List-Owner; bh=5+AMcSMVm8yf7wGDerCpPQyNn8Mm3Y8Ucg7JeMiyl/c=; b=PzPWWr5W5rjf/J
+	DuKt9Q6/t8wu+zrSrMF0ZXgHRy7OAqbrDtM1ZOMnwcTTS8Ergy+D3tGIfFLbFQX+XiKEZRW4QQC2D
+	riwVtqb7saqRpeHXQ71/ewdCG/uWc5dCG7lbsX3u9y377U3tseosqcRBuemtBgC3sz18l6+xkq5AP
+	EzlZ9VplF80tI29xMcfrdLIi5fEn88OIMuOavQbQ1kX6h7TbJ77rTRwQugjVRRciAcI4tgdVB52w/
+	gFt6Oh2LWr36KmVfU0/YorHyjG2oOJUgW3rThTUzBIdjNgnaM96ZJoUS37tcIzJu4W3QHPK2Z1BzW
+	GMJuqTYlUzjGnKiMQpJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLd8h-00000008aon-0XGk;
-	Sat, 09 May 2026 08:34:23 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1wLi6Y-0000000945Q-1mrt;
+	Sat, 09 May 2026 13:52:30 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLd8b-00000008ai4-3cXR;
-	Sat, 09 May 2026 08:34:21 +0000
+	id 1wLi6U-0000000943j-2eRw;
+	Sat, 09 May 2026 13:52:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Content-Type:MIME-Version:From:To:Subject:
-	Message-ID:Date; bh=7nY8bbpnmeu2LuUe3UlRYz1YYTlxMg6MG2wDblyfVdk=;
-	b=eo6iC6XZoS/6m/5V3TfBOQnc1CEVw29zSOqtekSAG7lfcV9/aJ3jzZfa90LWM7
-	lJqpEMs/Btmx+tsK6eJXIqJjfvyWmrt+V2dX/yBhvJ9oeaIN7vKJ1aMYu3cH2FZe
-	HIiOAQqyV19ubRXBwc7qg+lPQtw8psVmu8U2ZlxHtNW1c=
-Received: from [127.0.1.1] (unknown [])
-	by gzga-smtp-mtada-g1-2 (Coremail) with SMTP id _____wBnHxd88f5pRVN0AQ--.35430S2;
-	Sat, 09 May 2026 16:34:05 +0800 (CST)
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=LT
+	H5VZR3wbji2shWxUMqCGICYtJFJYr1trTdG4CcqwA=; b=Au0TXh4Zc5TrHQ8/OC
+	ZGsjr7P+w0iJx7MFRGdSSw6hCgJdXQpdZ0P6Y9VbjenliJC6iKlJlWGUJ1DnFc4w
+	wkbsjW1cHk13iEITJDfiJF57uzeZKGWEyUZeBxp7ACJMKSLEOyL/reQY/dEqBEyy
+	IEkq33Cfj1mv6Tbny8VtbKYM0=
+Received: from Precision-7960.. (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wDXLzL8O_9p486jAQ--.37610S3;
+	Sat, 09 May 2026 21:51:58 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: bhelgaas@google.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	jingoohan1@gmail.com
+Cc: mx@lists.linux.dev,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-amlogic@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	sophgo@lists.linux.dev,
+	linux-riscv@lists.infradead.org,
+	spacemit@lists.linux.dev,
+	linux-tegra@vger.kernel.org,
+	linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH 1/3] PCI: dwc: Add pcie_cap field and helper in designware header
+Date: Sat,  9 May 2026 21:51:50 +0800
+Message-Id: <20260509135152.2241235-2-18255117159@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260509135152.2241235-1-18255117159@163.com>
+References: <20260509135152.2241235-1-18255117159@163.com>
 MIME-Version: 1.0
-From: Jiaqi <shijiaqi_develop@163.com>
-To: dri-devel@lists.freedesktop.org
-Cc: Sandy Huang <hjc@rock-chips.com>, Heiko Stuebner <heiko@sntech.de>, David Airlie <airlied@gmail.com>, Daniel Vetter <daniel@ffwll.ch>, Philipp Zabel <p.zabel@pengutronix.de>, linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v3 6/6] drm/rockchip: Check return value of cdn_dp_grf_write() in error path
-Message-ID: <177831564430.322716.2622130527771792842@163.com>
-Date: Sat, 09 May 2026 16:34:04 +0800
-In-Reply-To: <177831560568.322716.7926332149561323511@163.com>
-References: <177831560568.322716.7926332149561323511@163.com>
-X-CM-TRANSID: _____wBnHxd88f5pRVN0AQ--.35430S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7CF1kCFyDKFWDCw1UJw1UZFb_yoW8Gry3pw
-	4DJ34YvFZ29asrJayxKa48JrsYgayUZr4I9r97Cwn2v3W3Cr4ktr9IqF12qF4fXrs2yFyI
-	yF4kJryrJrs0vr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jUfHbUUUUU=
-X-Originating-IP: [42.63.126.112]
-X-CM-SenderInfo: xvklyxpdtlsvxhyhz0rs6rljoofrz/xtbCzR21CWn+8X0oggAA3d
+X-CM-TRANSID: _____wDXLzL8O_9p486jAQ--.37610S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7KFWxCF4kArWUWw4fGr1fXrb_yoW8Ww45pa
+	y3JFySkF48AFWava13AanxZr15tas3ArW7Ga9rKw1SqF9xCFyUGa18AryYyF17Kr4Ikrya
+	kw45t34rCFn8JFUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zE3CzZUUUUU=
+X-Originating-IP: [140.206.53.66]
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbCxB5oDGn-O-4CewAA3U
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260509_013420_167841_FC38E837 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20260509_065227_032220_F5CB6D12 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,43 +87,55 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-In cdn_dp_enable_phy(), when an error occurs after the GRF register has
-been set to DPTX_HPD_SEL, the cleanup path at err_phy calls
-cdn_dp_grf_write() to restore DPTX_HPD_DEL, but the return value is
-ignored.
+Add a pcie_cap field to struct dw_pcie to store the offset of the
+PCI Express Capability structure. Provide a helper dw_pcie_get_pcie_cap()
+which performs the capability search on first call and caches the result.
 
-If this restore write fails (e.g., due to a bus timeout or GRF power
-loss), the GRF register remains in the DPTX_HPD_SEL state. This leaves
-the DP PHY control in an inconsistent state, which can cause subsequent
-DP link initialization to fail or produce undefined behavior.
+This is a preparatory step for replacing repetitive capability searches
+in both core and platform drivers.
 
-Fix by checking the return value of cdn_dp_grf_write() in the error
-path and logging an error if it fails.
-
-Signed-off-by: Jiaqi <shijiaqi_develop@163.com>
+Signed-off-by: Hans Zhang <18255117159@163.com>
 ---
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/pci/controller/dwc/pcie-designware.h | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 8afabe2118a9..1234567890ab 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -425,8 +425,9 @@ err_power_on:
- 		port->phy_enabled = false;
-
- err_phy:
--	cdn_dp_grf_write(dp, GRF_SOC_CON26,
--			 DPTX_HPD_SEL_MASK | DPTX_HPD_DEL);
-+	ret = cdn_dp_grf_write(dp, GRF_SOC_CON26,
-+			       DPTX_HPD_SEL_MASK | DPTX_HPD_DEL);
-+	if (ret)
-+		DRM_DEV_ERROR(dp->dev, "Failed to restore HPD_DEL: %d\n", ret);
- 	return ret;
+diff --git a/drivers/pci/controller/dwc/pcie-designware.h b/drivers/pci/controller/dwc/pcie-designware.h
+index 3e69ef60165b..4baf7eb072eb 100644
+--- a/drivers/pci/controller/dwc/pcie-designware.h
++++ b/drivers/pci/controller/dwc/pcie-designware.h
+@@ -568,6 +568,8 @@ struct dw_pcie {
+ 	 * use_parent_dt_ranges to true to avoid this warning.
+ 	 */
+ 	bool			use_parent_dt_ranges;
++
++	u8			pcie_cap;	/* PCIe capability offset */
+ };
+ 
+ #define to_dw_pcie_from_pp(port) container_of((port), struct dw_pcie, pp)
+@@ -805,6 +807,21 @@ static inline void dw_pcie_dbi_ro_wr_dis(struct dw_pcie *pci)
+ 	dw_pcie_writel_dbi(pci, reg, val);
  }
-
---
-2.40.0
+ 
++/**
++ * dw_pcie_get_pcie_cap() - Return cached PCIe Capability offset
++ * @pci: DWC instance
++ *
++ * Finds and caches the offset of PCI_CAP_ID_EXP on first call.
++ * Returns 0 if the capability is not present.
++ */
++static inline u8 dw_pcie_get_pcie_cap(struct dw_pcie *pci)
++{
++	if (!pci->pcie_cap)
++		pci->pcie_cap = dw_pcie_find_capability(pci, PCI_CAP_ID_EXP);
++
++	return pci->pcie_cap;
++}
++
+ static inline int dw_pcie_start_link(struct dw_pcie *pci)
+ {
+ 	if (pci->ops && pci->ops->start_link)
+-- 
+2.34.1
 
 
 _______________________________________________
