@@ -4,59 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98A60CD3427
-	for <linux-rockchip@archiver.kernel.org>; Sun, 10 May 2026 07:36:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B10CD37AF
+	for <linux-rockchip@archiver.kernel.org>; Sun, 10 May 2026 08:56:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=cBj9XrpI9Y1T+UiRjix1hCG1ZLVje1jM6ViRBlcnXWI=; b=31mNwtiYpDpuKg
-	ql4NNWrbVbqIA6A1FOlA7VvvMX048dJAE+bwTdTdNqL3ICWgy1ObBRIqpa5j+tH78UmkWae1qc3gZ
-	0px4+smpUbzhMD42evl6AjqGZ9PCLjTCU2Cszk5e6OxV/yzeyO3c9I8aG6SWjjQ+EA2sDJ+kgyEVh
-	8g8flykGtFAlCTgNk4BMGYqtWg/mfSXXKQolkhCdy24tDZsSHfOjK+fnoFh9IKYvMXYqbCNcC1PEn
-	1dGBI+YlSUXGDgolrrDLvXvDVDYtkqh2QowXPkqTl0sCZKzFHrRdIiNDmjAR5vc/COt0ejTz6FRYh
-	dw1iwnQR0qu8dBYT1AIQ==;
+	List-Owner; bh=+ccs898CbFzyruBPQQMNLJ0n3b6g+nw+9UMylIvA5t4=; b=sp8Qe7EhBAia4r
+	8sMqD1BMrzjdSow56sQbcVev/j4iiZNBNk0bnqcYGGdrDlAp/OEq28aanmmxOEKOr/QxU+BWIAWGo
+	4in1i4mUruGiadk+kUsKkJJVw9n63XjgyJHvF7vuVWRxwwioQVIT/UsFemQ7BVUhOcSODeuOn/V/h
+	YhuxJn8VkA5Fd2l3hhn64orImMifVEbnh8r9URvIpsctgLKkSX/xK2T0ISLsz5Z2mR1NboeSqFx7m
+	hCg3+D4rIPZENHg+PVQNvB0k6XwFiefaGk6APRNjAtb7M4H3xc++fG9U0lcRyJUnMP0P7zyTsxrYY
+	WRe/eK3bc9181MecbmYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLyiB-0000000ALxJ-30Eh;
-	Sun, 10 May 2026 07:36:27 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wLzxA-0000000ARiI-15xT;
+	Sun, 10 May 2026 08:56:00 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wLyiA-0000000ALwW-1QEi;
-	Sun, 10 May 2026 07:36:26 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 569456132E;
-	Sun, 10 May 2026 07:36:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 87E05C2BCB8;
-	Sun, 10 May 2026 07:36:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778398584;
-	bh=BPNo5pN9Nh0GjrveqNQIy/7dB1DQCVUuMTqlOt1ZeBk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PCGcnOgRXDuMvtvCY2xs7f69k5bAD2hjMPy6D7dQb6oqVYLrWc6UtBd4DVVsAa9IO
-	 AUiqzWiHjZ0EqyPIiGtyndWuJHbEWUTxyAngADzSdeZ+t2kBDML3QJfxjxHLbyCMln
-	 EV9Qi5w/56HlHLaDt4zmaw35XM2t7O5PVnvoc3aCBjcWxNwE68gHipux7zNZPlTS/t
-	 y7Xm8e3UnoZe/N/ywiuKtlkiSrk4wUSrvHt36ks3yuXaHMAq8QwtvtE1/YG1HssPNy
-	 WpDwyDbnyUt1uNNXGP+wUf/eNp/JAYku7TSpOwvWmC64XtBvKg+sEusbPgk3M2GU3P
-	 SZzMJKkpjjj/Q==
-Date: Sun, 10 May 2026 13:06:20 +0530
-From: Vinod Koul <vkoul@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Neil Armstrong <neil.armstrong@linaro.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Algea Cao <algea.cao@rock-chips.com>,
-	Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com,
-	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+	id 1wLzx6-0000000ARgs-2Rh8;
+	Sun, 10 May 2026 08:55:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1778403351;
+	bh=YwiW+Q760MzYPbYvu9d9Xiw/mH/fNOhKEvXvG0HvquM=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QFE5N1A3ga/Uu86j6mV7t3ln6mwZ1ZepXAvnVa8kVVlSGomKkqDfL4Dd8xoPkSgid
+	 RXCobStc/4gG8ymUdAmhwuEB1q2NlbHf3r1zmIFmdCsX47j1BvvyT4zNV8E9/p7ats
+	 LIt88bgCnLWvpv3zvTGpM3Y9QsngbCCkuA+/BkcPvdtP4FvdkvdvPz9IA/rjlNyfCC
+	 DlZuoEUMW0FnCzogFBS4Vh1tCfNjH5m6Qz73ywUdGDU29zP6194sCg5R4CdpUlydw4
+	 sp7ITNzvHApAAk572rSvCT6mWEHj/CDaGeGpx1r7d1ENBUSCTw/BfYKtKSDNfuNxPS
+	 y7AV31Hxou9xg==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B4AED17E0EB6;
+	Sun, 10 May 2026 10:55:50 +0200 (CEST)
+Message-ID: <c76d7020-2b3b-4f30-ab40-a8442c953966@collabora.com>
+Date: Sun, 10 May 2026 11:55:50 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 0/6] phy: rockchip: samsung-hdptx: Clock fixes and API
  transition cleanups
-Message-ID: <agA1dFpheTaBfyUt@vaman>
+To: Vinod Koul <vkoul@kernel.org>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+ Heiko Stuebner <heiko@sntech.de>, Algea Cao <algea.cao@rock-chips.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
+ <agA1dFpheTaBfyUt@vaman>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <agA1dFpheTaBfyUt@vaman>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260510_015556_788372_5E68E7BE 
+X-CRM114-Status: GOOD (  12.77  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,31 +79,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 27-02-26, 22:48, Cristian Ciocaltea wrote:
-> This series provides a set of bug fixes and cleanups for the Rockchip
-> Samsung HDPTX PHY driver.
-> 
-> The first part of the series (i.e. PATCH 1 & 2) addresses clock rate
-> calculation and synchronization issues.  Specifically, it fixes edge
-> cases where the PHY PLL is pre-programmed by an external component (like
-> a bootloader) or when changing the color depth (bpc) while keeping the
-> modeline constant.  Because the Common Clock Framework .set_rate()
-> callback might not be invoked if the pixel clock remains unchanged, this
-> previously led to out-of-sync states between CCF and the actual HDMI PHY
-> configuration.
-> 
-> The second part focuses on code cleanups and modernizing the register
-> access.  Now that dw_hdmi_qp driver has fully switched to using
-> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
-> and the restrict_rate_change flag logic.  Finally, it refactors the
-> driver to consistently use standard bitfield macros.
+Hi Vinod,
 
-Sorry looks like I have missed to review this one.
-Can you please rebase on phy/fixes and send...
+On 5/10/26 10:36 AM, Vinod Koul wrote:
+> On 27-02-26, 22:48, Cristian Ciocaltea wrote:
+>> This series provides a set of bug fixes and cleanups for the Rockchip
+>> Samsung HDPTX PHY driver.
+>>
+>> The first part of the series (i.e. PATCH 1 & 2) addresses clock rate
+>> calculation and synchronization issues.  Specifically, it fixes edge
+>> cases where the PHY PLL is pre-programmed by an external component (like
+>> a bootloader) or when changing the color depth (bpc) while keeping the
+>> modeline constant.  Because the Common Clock Framework .set_rate()
+>> callback might not be invoked if the pixel clock remains unchanged, this
+>> previously led to out-of-sync states between CCF and the actual HDMI PHY
+>> configuration.
+>>
+>> The second part focuses on code cleanups and modernizing the register
+>> access.  Now that dw_hdmi_qp driver has fully switched to using
+>> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
+>> and the restrict_rate_change flag logic.  Finally, it refactors the
+>> driver to consistently use standard bitfield macros.
+> 
+> Sorry looks like I have missed to review this one.
+> Can you please rebase on phy/fixes and send...
 
-Thanks
--- 
-~Vinod
+I've just verified and it applies cleanly on top of phy/fixes.
+Do you still need a resend?
+
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
