@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0E81CD3427
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD99ECD37B5
 	for <linux-rockchip@archiver.kernel.org>; Sun, 10 May 2026 18:32:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,33 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Sw2rR1Yw4XYmH+H9/jUrNNsXr3/4V/gjdVIysOokXHc=; b=Wbe6SdDGuTxY/0
-	pNQTq0Ra8JCgL/73HNpGBSz39JrWtukadiMQ1AKMmqujFoBhDbCspuF0ptp63r6/U5MID/ZZJ+lVZ
-	YHGLUWu9+GJ6Pq7hOvZW/b6VBg+UKYV8gPL68ufRWNniap5LOwgrP9SK17kcsR7HCpKnqlXm78/eZ
-	DC3Bd6iiB/t7Z2/V2NmnRLiW19w+z/YNA3tLUg7L/KocKLqQcuYuFx5l+gDkOSN4Bs2r6/WRBasN8
-	aiLM7399o67PPBykGUYewOe94bGz+9yl/HC4FQSdgf2nLh4unZ3YC1nWXgGnkMbPpszMf5ZUfh7lN
-	qJqkOhI0bWIb/boTlJRQ==;
+	List-Owner; bh=bdB6y7oqgvRrWElkTpzZQbv0Rwb0srMTl/qQWSLoIXo=; b=VAj67pAEVCsQP7
+	UlBfpGAvLf2ptcKvqQY9DvEX4YjzxCH0dY9gIyPSi5KgjqeSCn1+We7tt0LN0nCq8rxYjOylN0LUb
+	MwRTDGrf20JrEOLKZyYsnPJygNgGvCGP2Dzs3Jx7sm/hdscaDY7x2UrCkVWkq/Qs9DGRHxkDPZqZb
+	05wCKEcFcc+J2iki8ml46emZRhllkNZcpV9phFiFFe52gnIn8/TwEEKaCN4co/z6iwLKRUSwrouJE
+	0PQwPUwg5apRukjhhHZoJc0rLSnpMN0qG0uP933hRmlBUMgCF2+X3qtRFhZnPMosWSFOaQFnUpFk7
+	fWWk3vElxE6wjT2CW3ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wM8wh-0000000BMTm-2eSK;
+	id 1wM8wh-0000000BMTA-0npi;
 	Sun, 10 May 2026 18:32:07 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wM8we-0000000BMJp-1cqM
+	id 1wM8wc-0000000BMKA-35wc
 	for linux-rockchip@lists.infradead.org;
-	Sun, 10 May 2026 18:32:06 +0000
+	Sun, 10 May 2026 18:32:05 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1778437899; bh=H1waIzTgCsXz9ZAL00Qf3J9pZA3q1fbfXo1eGGcAxvc=;
- b=JWuxLNPl+mLwdk0/Ya04pSX3Qn1iMcWV0hvO6jEXfc0DkPDUkU+R31gH9jd3kxhshQ/5AQUYZ
- vxY58by18pr0nwPlgjYFPUkoKWdHOzOW6/V7I/nxOUU3GL/YkpHsLMYE2cNMNPP9o00PxkhKwcV
- 87F7QfDG2+tIE2YxY5rwu0lQ6hI0KcCEO35KdF0y7PAr3COoK+zduIwxPDeCa+GqtuRIIgfUS+y
- Dfoai1PqsTUGlZTw0fN+H8JGtxw3jHXcT/C/LSIjPb4ZC7x7lQH0TQtc+xA6trU4L6Ix70xuG5P
- rUGWJZnNfwqa4MCu1OnOfebDY+oShcvjT57QlkvhiRQw==
-X-Forward-Email-ID: 6a00cf0061db3ab145b0f241
+ t=1778437915; bh=VXsm+Lz0ARZMn6U4p+eyz1KbjJttmC6qCFCIJTnnoGU=;
+ b=tuus9Nsf2DX+mh5d5lKujaZu8WnKNUYppUgMXGb6zFHtjqkF6vLw72cV8fNQrhfwhEH0pnYo2
+ s4Ro9tODKAI5Pu0FYnHTdDU0YlNbXlOnbz0jE9DHB9OmDgtWHxO6hSG1ANcff+VBAJJjgs3R4Gj
+ 7Z83x/Suq2gpVzRyiW6TcZYrC8jSIoLw3OutUu5z46DvWygsH4WdfF42VQDWcH47yOiHHx4nTvf
+ Jt8f2btu3K8mcMEKvCm/XeeSSvKvAiDZ8bIIcQCVxKwvWHQgLe7+ZppxE1P4vBTW70kTsY/MS25
+ zOIg47lyZDrCdcmxh5AzwJSrstOTn/j5u7AQV43jgxGg==
+X-Forward-Email-ID: 6a00cf0761db3ab145b0f277
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
+ 121.127.44.73
 X-Forward-Email-Version: 2.8.0
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -58,17 +58,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH 02/10] drm/rockchip: dw_hdmi: Use local dev variable consistently in bind()
-Date: Sun, 10 May 2026 18:31:03 +0000
-Message-ID: <20260510183114.1248840-3-jonas@kwiboo.se>
+Subject: [PATCH 04/10] drm/rockchip: dw_hdmi: Inline resource lookup into bind()
+Date: Sun, 10 May 2026 18:31:05 +0000
+Message-ID: <20260510183114.1248840-5-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260510183114.1248840-1-jonas@kwiboo.se>
 References: <20260510183114.1248840-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260510_113204_640853_AB11A862 
-X-CRM114-Status: UNSURE (   9.14  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260510_113203_856138_6E7F333E 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,55 +84,111 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace indirect struct device accesses via hdmi->dev and pdev->dev with
-the local dev parameter already available in dw_hdmi_rockchip_bind(),
-for consistency and readability.
+Inline rockchip_hdmi_parse_dt() into dw_hdmi_rockchip_bind() so the
+probe path is easier to follow in one place. Also ensure failures in
+bind() use dev_err_probe() so probe deferrals and errors are reported
+consistently.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 74 +++++++++------------
+ 1 file changed, 30 insertions(+), 44 deletions(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 34a2248f6b4b..435352f91b88 100644
+index 982d0829f278..c5cdf2d1f04b 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -550,16 +550,15 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	if (!drv_data)
- 		return -ENODEV;
+@@ -196,41 +196,6 @@ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
+ 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
+ };
  
--	hdmi = devm_kzalloc(&pdev->dev, sizeof(*hdmi), GFP_KERNEL);
-+	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
- 	if (!hdmi)
- 		return -ENOMEM;
+-static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
+-{
+-	struct device_node *np = hdmi->dev->of_node;
+-	int ret;
+-
+-	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+-	if (IS_ERR(hdmi->regmap)) {
+-		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
+-		return PTR_ERR(hdmi->regmap);
+-	}
+-
+-	hdmi->ref_clk = devm_clk_get_optional_enabled(hdmi->dev, "ref");
+-	if (!hdmi->ref_clk)
+-		hdmi->ref_clk = devm_clk_get_optional_enabled(hdmi->dev, "vpll");
+-
+-	if (IS_ERR(hdmi->ref_clk)) {
+-		ret = PTR_ERR(hdmi->ref_clk);
+-		return dev_err_probe(hdmi->dev, ret, "failed to get reference clock\n");
+-	}
+-
+-	hdmi->grf_clk = devm_clk_get_optional(hdmi->dev, "grf");
+-	if (IS_ERR(hdmi->grf_clk)) {
+-		ret = PTR_ERR(hdmi->grf_clk);
+-		return dev_err_probe(hdmi->dev, ret, "failed to get grf clock\n");
+-	}
+-
+-	ret = devm_regulator_get_enable(hdmi->dev, "avdd-0v9");
+-	if (ret)
+-		return ret;
+-
+-	ret = devm_regulator_get_enable(hdmi->dev, "avdd-1v8");
+-
+-	return ret;
+-}
+-
+ static enum drm_mode_status
+ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
+ 			    const struct drm_display_info *info,
+@@ -578,18 +543,39 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	 * the required CRTC is added later.
+ 	 */
+ 	if (encoder->possible_crtcs == 0)
+-		return -EPROBE_DEFER;
++		return dev_err_probe(dev, -EPROBE_DEFER,
++				     "failed to find possible crtcs\n");
  
--	plat_data = devm_kmemdup(&pdev->dev, drv_data,
--				 sizeof(*drv_data), GFP_KERNEL);
-+	plat_data = devm_kmemdup(dev, drv_data, sizeof(*drv_data), GFP_KERNEL);
- 	if (!plat_data)
- 		return -ENOMEM;
- 
--	hdmi->dev = &pdev->dev;
-+	hdmi->dev = dev;
- 	hdmi->plat_data = plat_data;
- 	hdmi->chip_data = plat_data->phy_data;
- 	plat_data->phy_data = hdmi;
-@@ -581,13 +580,13 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 
- 	ret = rockchip_hdmi_parse_dt(hdmi);
- 	if (ret) {
--		return dev_err_probe(hdmi->dev, ret, "Unable to parse OF data\n");
-+		return dev_err_probe(dev, ret, "Unable to parse OF data\n");
- 	}
+-	ret = rockchip_hdmi_parse_dt(hdmi);
+-	if (ret) {
+-		return dev_err_probe(dev, ret, "Unable to parse OF data\n");
+-	}
++	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
++	if (IS_ERR(hdmi->regmap))
++		return dev_err_probe(dev, PTR_ERR(hdmi->regmap),
++				     "failed to get rockchip,grf\n");
++
++	hdmi->ref_clk = devm_clk_get_optional_enabled(dev, "ref");
++	if (!hdmi->ref_clk)
++		hdmi->ref_clk = devm_clk_get_optional_enabled(dev, "vpll");
++
++	if (IS_ERR(hdmi->ref_clk))
++		return dev_err_probe(dev, PTR_ERR(hdmi->ref_clk),
++				     "failed to get reference clock\n");
++
++	hdmi->grf_clk = devm_clk_get_optional(dev, "grf");
++	if (IS_ERR(hdmi->grf_clk))
++		return dev_err_probe(dev, PTR_ERR(hdmi->grf_clk),
++				     "failed to get grf clock\n");
++
++	ret = devm_regulator_get_enable(dev, "avdd-0v9");
++	if (ret)
++		return dev_err_probe(dev, ret, "failed to enable avdd-0v9\n");
++
++	ret = devm_regulator_get_enable(dev, "avdd-1v8");
++	if (ret)
++		return dev_err_probe(dev, ret, "failed to enable avdd-1v8\n");
  
  	hdmi->phy = devm_phy_optional_get(dev, "hdmi");
- 	if (IS_ERR(hdmi->phy)) {
- 		ret = PTR_ERR(hdmi->phy);
--		return dev_err_probe(hdmi->dev, ret, "failed to get phy\n");
-+		return dev_err_probe(dev, ret, "failed to get phy\n");
- 	}
+-	if (IS_ERR(hdmi->phy)) {
+-		ret = PTR_ERR(hdmi->phy);
+-		return dev_err_probe(dev, ret, "failed to get phy\n");
+-	}
++	if (IS_ERR(hdmi->phy))
++		return dev_err_probe(dev, PTR_ERR(hdmi->phy),
++				     "failed to get phy\n");
  
  	index = of_property_match_string(np, "phy-names", "hdmi");
+ 	if (index >= 0) {
 -- 
 2.54.0
 
