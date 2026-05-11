@@ -4,98 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE6BCD37BE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 16:06:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF30CCD4840
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 16:19:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=r5rX/R8bpf5AMmfdSAmPsi3/1PQYuhCkoOZUhgLFyw4=; b=a5d5THDTnWfCXl
-	zaAVPF4Ss0TLyxmpppDXhpjKBpkpE4/5uBvm8Kv5Y6m2V2gO1HxT1IU07FLzwbVegeZjtzPILXPLa
-	PuYTrJl0hHOWFMV0ZKW6Bp42pJ7rz6goacqj+IjhRxASEcMi6h+s6f6no+zzAKuVY7VEA5kiP2V1I
-	NhTApqeuNeEgkp4CZ9sakf2cOLFeSm3n+lClxRfwCeQy55LLhDrI6fDhhmloiTCQCgmGY6ODjqV0B
-	3RIa5j0OOU0GCls8P/bibryYZ3cndNm5L1wQk8xcBrPjTEbgzsgjgOlH+5UyAMoeZ5jyizoP/PY2k
-	08beEPc6EFueAtp/CEJA==;
+	List-Owner; bh=Ho1E4aEKrBb/TmfbC3sFe5BAYveNY+Qw16Lbce4pSrk=; b=ZhBQlCEIlKIwM6
+	dwEbP7nuZpLFKXKGBEoLURVXaYYzILssTmiyPNbyyOgtfvjjqPa5i2YXd1LnLRur6kKib4Pgz92+Q
+	KUjXzAgSdtzYeVHJm1SwygtTadBqKVIUhKlp5KJ7Ndv4yqpydzRsHdtHxca4P0ri3AAtieO9vVfCi
+	iKs4t9j3pqQB0YkSTqUl1ggF/8yrcZ6V9Yz2RrkXlvvD54+hLMY2olBdFwObDLGqyfJ+28I0X377T
+	lG4BPfv+d/M76TzrgxWLFhPKwzenS2TLmTDY6XCpxm9gs+Df0RHmC9ZGkK2KydbdH9LW7X0ARukOl
+	EEY1Yyo+InIT4PVO2e/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMT9b-0000000E9F0-1hLs;
-	Mon, 11 May 2026 16:06:47 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wMTLN-0000000EBDq-3OUi;
+	Mon, 11 May 2026 16:18:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMT9U-0000000E9DY-1xzp
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 May 2026 16:06:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1778515599;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=WwCAGmH0U4Nhy4j6grH3+nSMTDhiVfCng6CUAeJVa7Q=;
-	b=F0+1//NOn5BqXDVeiWvW0k/oynQBeRtkhTEUu9ZRT5RtqqXSqHJUSQfThsYejU2w2mGT/3
-	zl+qfQ8/DZpdu3z7FnM5gQFNWKG1XiwhXLX20Lzi6M/F13xbtnMZJR0SdHEFlChcAWqVnH
-	TCxDeqYqu4wUTM9k3z1aRCtAWA8ke3I=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-3-ZUWBzJajMjG9HiWQpm4N7Q-1; Mon, 11 May 2026 12:06:37 -0400
-X-MC-Unique: ZUWBzJajMjG9HiWQpm4N7Q-1
-X-Mimecast-MFC-AGG-ID: ZUWBzJajMjG9HiWQpm4N7Q_1778515597
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-8b1f39c5827so54276376d6.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 11 May 2026 09:06:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778515597; x=1779120397;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=WwCAGmH0U4Nhy4j6grH3+nSMTDhiVfCng6CUAeJVa7Q=;
-        b=jKtQ2D8TeBazej3To7OAFZjuoSUNYAcin2IwR1ymPsUpptM/Rn233X4XVIuGipJB6a
-         7JhO2X9V2PVkxkT4Ut1fbYs4xzNCIUPu12SZ9amdQHMYxsywozu36zGsKinJVJRAN5Ke
-         YC+1R6y3NlbPHPt8LyXGKO1Pmq+Gdm6TA0aGZtvRIlL/Fp7hWDR1K2HLdf9VcIUAfchp
-         AiUOMxkN6iD0jkIsRyr6HeyWytRxhAovxIUaPnBRHxMg9XzIUbt03RzcNT4C4OacUZuF
-         +WG4kEVxqp6B7H5d6WrZn7oEGmxjZPgRupfQUtU7kddL7gCCv69ieT+3EFzVrEHiET3d
-         iw5A==
-X-Forwarded-Encrypted: i=1; AFNElJ/q+dQrH02G6gTrnyhbaFV6j/AMtBAbb0Li+G1e+zFGyEXs0WlJraiOnPUA4Mo5GZVlpcB3Xo+vkiL+3ZpaTw==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy/XhCks77gJV08iDJDdj+OFqwE49ZCQp9sV9ECfftGlh1wmS2Q
-	dWWfUkFua1yJej7o/6dsMTQI3QQg4QXy18/J0D2Jt6wt+Qpvz+zv6oqpPa+nxScSOwbW1+2RnN/
-	Q469x2u8x6gz0mfHYiRxf1rNw8gSro+E+RvU15axwtci1Jb/R7zitx7y3yOv9d/Sof+kjlNKEAQ
-	==
-X-Gm-Gg: Acq92OHs5OCM4NlaX8Pr/cLdQj8TGZmXnNfktFO2O2JFFPz5s+BFNnEQXiImDvDwN+L
-	2Z/zyMiwoTgrpQRQjQJTNr8I3JhXUFzqhRAt8exrxWqDJ4upe2q5oTJOD77IBY1LKS9s5xZ/PDW
-	VyL7l4G+5XGISsyrI7xjb7W6bNtnUmzhJl+ZjiZftqLCQWCezQ6MYVocvERtdJeQbYKIGZi3iu1
-	baxncEI+69b3F6ezkuHuvfSGVpaqZnXCREYlfSbHyiY2m2aLtZbyLiScHM7WYM45exOaLw4DPGZ
-	bICgOCf5bbUpLAeM35b0eSDRhjlG41SFRmMJL4jMbeZ039crvUthaNizmT08YsffVhb5CHcaaHC
-	5byOe45GmjnHxZvo3YADJWqQm1Yq5RvfxJf6cQC84njl9TgvRh6NTnmDd
-X-Received: by 2002:a05:6214:468f:b0:8ae:6d63:3066 with SMTP id 6a1803df08f44-8c1af2eec23mr162718436d6.38.1778515597146;
-        Mon, 11 May 2026 09:06:37 -0700 (PDT)
-X-Received: by 2002:a05:6214:468f:b0:8ae:6d63:3066 with SMTP id 6a1803df08f44-8c1af2eec23mr162717886d6.38.1778515596574;
-        Mon, 11 May 2026 09:06:36 -0700 (PDT)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8bf88247a3csm93252456d6.11.2026.05.11.09.06.35
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 May 2026 09:06:35 -0700 (PDT)
-Date: Mon, 11 May 2026 12:06:34 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH] clk: rockchip: Use flexible array for clock table
-Message-ID: <agH-ivEdw12_3OJz@redhat.com>
-References: <20260511032252.361906-1-rosenp@gmail.com>
+	id 1wMTLL-0000000EBCa-2ggQ;
+	Mon, 11 May 2026 16:18:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1C86B600CB;
+	Mon, 11 May 2026 16:18:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F270C2BCB0;
+	Mon, 11 May 2026 16:18:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778516334;
+	bh=U42E3LWzv0TbWP6oMpvlSaV2MRzXzGekhXV6lEcRbbw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=bp5IggbtfeBSdhgblUSlx5B9HKMPMNBePGqseTxadNe/RW825h2Z3OeVKgEDn3tcd
+	 xR3p4DuwGz3q9YXyxWYPblbXKoiI/tl6KzE3P2pfCLBgMHVySY/JLfAe77NL7aVBJZ
+	 Gp6TKLJ0a/MSOsI9UmCKZJxU020GgO6lwRQs3sLdLbdgfXGNyewkbUCc91qq4YOKDu
+	 xvMiYzOipBjq2iJvWHbxoWmxAFedqQd4iXjrt6KNElYEJ2qH5z+Bk0UQHqR4IxMIrx
+	 9MQmVrHtTuLRxBojQCIvevJ6espW6NozkWG+87beE1gvTi9gls3oCzx98M5NWzqzuz
+	 t/g6f7FJAkwVg==
+Date: Mon, 11 May 2026 21:48:51 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Algea Cao <algea.cao@rock-chips.com>,
+	Dmitry Baryshkov <lumag@kernel.org>, kernel@collabora.com,
+	linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/6] phy: rockchip: samsung-hdptx: Clock fixes and API
+ transition cleanups
+Message-ID: <agIBa7qxIGgqCYZ1@vaman>
+References: <20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com>
+ <agA1dFpheTaBfyUt@vaman>
+ <c76d7020-2b3b-4f30-ab40-a8442c953966@collabora.com>
 MIME-Version: 1.0
-In-Reply-To: <20260511032252.361906-1-rosenp@gmail.com>
-User-Agent: Mutt/2.3.1 (2026-03-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: YRSOuSt0qPnZpUtZMToZIzWTcdkoMA2fyFVs8H08OYQ_1778515597
-X-Mimecast-Originator: redhat.com
 Content-Disposition: inline
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_090640_611379_36B1A850 
-X-CRM114-Status: GOOD (  20.52  )
+In-Reply-To: <c76d7020-2b3b-4f30-ab40-a8442c953966@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,101 +75,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Rosen,
-
-On Sun, May 10, 2026 at 08:22:52PM -0700, Rosen Penev wrote:
-> Store the clock lookup table in the Rockchip clock provider
-> allocation instead of allocating it separately.
+On 10-05-26, 11:55, Cristian Ciocaltea wrote:
+> Hi Vinod,
 > 
-> This ties the table lifetime directly to the provider and removes a
-> separate allocation failure path while preserving the clk_onecell_data
-> lookup interface.
+> On 5/10/26 10:36 AM, Vinod Koul wrote:
+> > On 27-02-26, 22:48, Cristian Ciocaltea wrote:
+> >> This series provides a set of bug fixes and cleanups for the Rockchip
+> >> Samsung HDPTX PHY driver.
+> >>
+> >> The first part of the series (i.e. PATCH 1 & 2) addresses clock rate
+> >> calculation and synchronization issues.  Specifically, it fixes edge
+> >> cases where the PHY PLL is pre-programmed by an external component (like
+> >> a bootloader) or when changing the color depth (bpc) while keeping the
+> >> modeline constant.  Because the Common Clock Framework .set_rate()
+> >> callback might not be invoked if the pixel clock remains unchanged, this
+> >> previously led to out-of-sync states between CCF and the actual HDMI PHY
+> >> configuration.
+> >>
+> >> The second part focuses on code cleanups and modernizing the register
+> >> access.  Now that dw_hdmi_qp driver has fully switched to using
+> >> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
+> >> and the restrict_rate_change flag logic.  Finally, it refactors the
+> >> driver to consistently use standard bitfield macros.
+> > 
+> > Sorry looks like I have missed to review this one.
+> > Can you please rebase on phy/fixes and send...
 > 
-> Assisted-by: Codex:GPT-5.5
-> Signed-off-by: Rosen Penev <rosenp@gmail.com>
-> ---
->  drivers/clk/rockchip/clk.c | 17 ++++-------------
->  drivers/clk/rockchip/clk.h |  2 ++
->  2 files changed, 6 insertions(+), 13 deletions(-)
-> 
-> diff --git a/drivers/clk/rockchip/clk.c b/drivers/clk/rockchip/clk.c
-> index ee8c79b938d3..dbb4b6f33abb 100644
-> --- a/drivers/clk/rockchip/clk.c
-> +++ b/drivers/clk/rockchip/clk.c
-> @@ -359,26 +359,21 @@ static struct rockchip_clk_provider *rockchip_clk_init_base(
->  		unsigned long nr_clks, bool has_late_clocks)
->  {
->  	struct rockchip_clk_provider *ctx;
-> -	struct clk **clk_table;
->  	struct clk *default_clk_val;
->  	int i;
->  
->  	default_clk_val = ERR_PTR(has_late_clocks ? -EPROBE_DEFER : -ENOENT);
->  
-> -	ctx = kzalloc_obj(struct rockchip_clk_provider);
-> +	ctx = kzalloc_flex(*ctx, clk_table, nr_clks);
->  	if (!ctx)
->  		return ERR_PTR(-ENOMEM);
->  
-> -	clk_table = kzalloc_objs(struct clk *, nr_clks);
-> -	if (!clk_table)
-> -		goto err_free;
-> -
->  	for (i = 0; i < nr_clks; ++i)
-> -		clk_table[i] = default_clk_val;
-> +		ctx->clk_table[i] = default_clk_val;
->  
-> -	ctx->reg_base = base;
-> -	ctx->clk_data.clks = clk_table;
->  	ctx->clk_data.clk_num = nr_clks;
-> +	ctx->clk_data.clks = ctx->clk_table;
+> I've just verified and it applies cleanly on top of phy/fixes.
+> Do you still need a resend?
 
-Where's the __counted_by? Also struct clk_onecell_data is embedded
-inside struct rockchip_clk_provider, and I'm not sure offhand how
-that'll work.
+Yes please, it didnt apply for me
 
-Brian
-
-
-> +	ctx->reg_base = base;
->  	ctx->cru_node = np;
->  	spin_lock_init(&ctx->lock);
->  
-> @@ -388,10 +383,6 @@ static struct rockchip_clk_provider *rockchip_clk_init_base(
->  						   "rockchip,grf");
->  
->  	return ctx;
-> -
-> -err_free:
-> -	kfree(ctx);
-> -	return ERR_PTR(-ENOMEM);
->  }
->  
->  struct rockchip_clk_provider *rockchip_clk_init(struct device_node *np,
-> diff --git a/drivers/clk/rockchip/clk.h b/drivers/clk/rockchip/clk.h
-> index 9e3503e2ffc2..d4033bf750f5 100644
-> --- a/drivers/clk/rockchip/clk.h
-> +++ b/drivers/clk/rockchip/clk.h
-> @@ -604,6 +604,7 @@ struct rockchip_aux_grf {
->   * @grf: regmap of the general-register-files syscon
->   * @aux_grf_table: hashtable of auxiliary GRF regmaps, indexed by grf_type
->   * @lock: maintains exclusion between callbacks for a given clock-provider.
-> + * @clk_table: clock lookup table.
->   */
->  struct rockchip_clk_provider {
->  	void __iomem *reg_base;
-> @@ -612,6 +613,7 @@ struct rockchip_clk_provider {
->  	struct regmap *grf;
->  	DECLARE_HASHTABLE(aux_grf_table, GRF_HASH_ORDER);
->  	spinlock_t lock;
-> +	struct clk *clk_table[];
->  };
->  
->  struct rockchip_pll_rate_table {
-> -- 
-> 2.54.0
-> 
-
+-- 
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
