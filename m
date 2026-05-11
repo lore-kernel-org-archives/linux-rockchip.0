@@ -4,136 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE34ACD484E
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 19:25:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE85ECD37BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 20:42:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CytGZ4tmz/yzKiTx28zCmB3Jo9piu7GX9kFFfANfToA=; b=jRcqjkxdSmLqfa
-	PuPR3Zb+YTEKZiA1ooU2XD0Pw+wgGUBooIG67lwMtktYXdyGHlSLo4jE5BPdUOLyDxMqFBgdNlV+Z
-	Mz3Wbv3za4k/3EAaPPUcXJ3gSLBtMSnPWQ3Y7LZiJjxjylOHljaGlcjfnpv6mXBoo01C3K+0FnAim
-	AN8floJxFdiUp+0xDC7qk8V3WPXI9cxkOtdljjkg13JVBk/rU2tp4LXem3l1YVmFV+vE/+TaTS2iY
-	QBhkFwXhNBfDxkpcsDzOacv5fWVI7tWF73mjH9G1WhQOcg3QOZJkCSe0gP9nNb/vNWzX6+BRVIHI6
-	GcWnodBHl9QjefCUMN0g==;
+	List-Owner; bh=YtB96lOilx1u2utDzEPCZfqQpOhncs7akYBBw0bCVd0=; b=cLrh51FjymJ2SY
+	e1J0y53fB7ps2mnj7eIVbGRcuJar8q8BHiHPhyue9ee7r8UyUUIRUy8voWCOGkpPQJu/6gaKsa2mC
+	5rk6LLurK7573djWjSvd+gU0pnHM8ZH9DK/GNZFLJ87mXjOCBASS+x6+XVxQDmDnjXBflz+LiMxpE
+	82Khu6pkQcpFYcGRKxVeCXQGC62ysZbYXJNvLqrHRIohM8FhC8mM+H4dl8ditTiSOVRW8Y51CcUTz
+	8xvh5SPOoVEYMfk8PGsYJmezSLdlEtFTY4yKXd8WJTP7IjlMDTPbIOCYhHNhuYU12ooNP8wOuW6Aq
+	nplUIpAvNkKA0be+rbqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMWFt-0000000EbWS-34qS;
-	Mon, 11 May 2026 19:25:29 +0000
-Received: from mail-southcentralusazolkn19013045.outbound.protection.outlook.com ([52.103.14.45] helo=SA9PR02CU001.outbound.protection.outlook.com)
+	id 1wMXRl-0000000Ejim-2VXz;
+	Mon, 11 May 2026 20:41:49 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMWFr-0000000EbVk-16OY
+	id 1wMXRf-0000000EjhW-19fD
 	for linux-rockchip@lists.infradead.org;
-	Mon, 11 May 2026 19:25:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=I9RtX1MqLW7bDInxCZuLW9M/oqfBWLn10mbwyuqf0QYxzw7PsQrpe62KUCT4ZwOnA0bcXiXPDjqc63ovlrOMnsPHr7uVjDmOSUPNcUWS11d6Cc0eBrKTi+haQe0R9KTWKbkOOkVYLc4VhReN6yLFgUfmoC4jI9Yszl735ig8pQA7cicr7IbSdZZ386JL0WUBibTjv1RdqWGtqTLciLmOznKc1fLKUomqMqwwrMYTrGPKjyTmTvSxmdkew+byfzF338F9X/Of0Xo30q4ADH2xkIAIs2ylvF32HjPuZEUKdmDgaQOe90oVqGFecPltRjwbb3Hxk+qSOD1iV+1MTFfkBQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3KdFOPhCS/c5QHsItFlhPsdfjtqymjAOOzrBfYwWOQg=;
- b=Jc5z6sG13J6I51u8Qkz/RNUWLJj3RE8M1pHqUWoakFvlmMu23aE/OtQNZkt26sK/W4/n00xof0O/MaI/obw2fE2o2kx+LDJNrcFOwNXV/2N7o+xQRqC5gI5LkwBYi5PufhEtiNGbuMPrGb6fSt5KtTDFJa3n0+mV9cMfLiC9j6IXoIcZpLYHzUvr/bpEBbk0s/373vOCLtLRklenlQp/itFvBRhzymIsCwbMyvAkRgQBeko3cDc4rD9WVyxs0/Oip7G44fqhtoSO0/ETG2TnRdkVU/meNcZJsRFV9q+/TZyM6a4hqy8Z5Nd7gh+dYozh4E1y9zJteqUve1PbsIUIZg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3KdFOPhCS/c5QHsItFlhPsdfjtqymjAOOzrBfYwWOQg=;
- b=XOakkhP8fKp4OineSTEg+6Vg/F6x0lHNNN4BxqMvn4KwsUgfwXLZCpSdE/TwE7J0CL92Tl+FnUTvxJHtn89mvRmsDkN8c1u4pUcWcQjpGBPfoWADsYKnAFFxROXNCOJn8T61/lFm0QR+k9H0Yy9Z2fUbT1GEBRYEVR5ms7Zv4V7pj4QbePGiNHTqN+Edte1lEIc0jL0UYp1oRC/j3YW+flw+FjT4XemiH0Nxkr1UPH1keN4+3RcTUsLl2quGCue/JZd9U5Fw+ydyYcQbaXRLKxPIZWYY9I+oIvoAq1Q6WyTei2uq5yp+pc9RAYDfc9dR/362qtpDx1pqZgUbPBjpww==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by MN2PR19MB3807.namprd19.prod.outlook.com
- (2603:10b6:208:1e8::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9891.15; Mon, 11 May
- 2026 19:25:21 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.20.9891.021; Mon, 11 May 2026
- 19:25:21 +0000
-Date: Mon, 11 May 2026 14:25:19 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V5 03/11] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <PH0PR19MB9973387CE20819398ADA732F7FA5382@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260509191907.24734-1-macroalpha82@gmail.com>
- <20260509191907.24734-4-macroalpha82@gmail.com>
- <20260511182835.3754c543@jic23-huawei>
-Content-Disposition: inline
-In-Reply-To: <20260511182835.3754c543@jic23-huawei>
-X-ClientProxiedBy: SA9PR13CA0037.namprd13.prod.outlook.com
- (2603:10b6:806:22::12) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <agItH8oXdEqEgQkA@wintermute.localhost.fail>
+	Mon, 11 May 2026 20:41:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1778532101;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=xDfLIv6tiWpmACcsMnlD5yn+pQeqBizpoJHnp+m+Mek=;
+	b=J5BjjX6BWmkvVStnPPEJnJ0dpkln2l9LC7c7EkwUk9MiwKsoEFOCFOpOnr53maUczpjNPs
+	omxafssGgLLGafekPODPMMr8GFx45GXlWDN3n8bvDTJ87G43mMbtIXG43vCYiKYilQHzON
+	O8hijnVC8dd3dIq1Eckwlz3oW1xpXxE=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-191-eCRtTRYDPt-7jF0_JKEpAg-1; Mon, 11 May 2026 16:41:40 -0400
+X-MC-Unique: eCRtTRYDPt-7jF0_JKEpAg-1
+X-Mimecast-MFC-AGG-ID: eCRtTRYDPt-7jF0_JKEpAg_1778532099
+Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-8b55b5aa8c7so105299156d6.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 11 May 2026 13:41:40 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778532099; x=1779136899;
+        h=user-agent:in-reply-to:content-transfer-encoding
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=xDfLIv6tiWpmACcsMnlD5yn+pQeqBizpoJHnp+m+Mek=;
+        b=hphunst3KkB2TRY4gAV7XM5Uf2jc1mL/a9ddxEdhCDp1PBd7D/H1X1TUAuKBAmaDW+
+         WFSsQnQDPAUXKwR3Y6POXzXgBUaifqJixV8CoH3xjCuFQsRUE+E93BL9Y2H591utMcfX
+         Gd2CzQZLK0Cp3/vgl/GbTghOoWN2LB1UISMSyFzpgdJOLCUopcpW7bk9ZMrbt15iviPY
+         My5HaueMXUfd+2gxq9PC3X1hvLzzqLNn7Mh7uz9L0LEIq+UGSbJxkrwD8K3X/8N57w8F
+         wfwd/NP72y5BLrjcCNuyOHiYDXFQsUWgG+Mm7GOkbMF39A5fS0hpW7M4ZEYKrvv1mgBU
+         dBSA==
+X-Forwarded-Encrypted: i=1; AFNElJ/CINCf708zfw1albZrtNvxZCFEeuhk4xpLutaiiM7zexqUn0DEDIIksVsjRzkn7Tbvrb4mT6L9IT3iziP5Nw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwDFMum6JHWMTCr0Zi7UzIzjZhSkGYL/+KiPont3ydP1hsQi7eg
+	c2k4f/968XYHm4rEu4A7iOaJid17YlPI8ow70iQmZ8XQboNWQ2nA64rQifU5U8YmIonCIY1yODW
+	/2CDcPOATuusU0pWhHE3MgYDvtZlbR7u18OR03RD4gZj/N03psRtcbEqIYP8tHCI16P31ekygfw
+	==
+X-Gm-Gg: Acq92OFY4hzf3N4AsvGbNjL7aDsJF9Lapsxs819yfXGVbFLtrJdZIyfTod1i3UTka7k
+	OI8yW9MR73oa+L8UNYHn0SKtfp5+U2MKkQgkslcr56l/3EcF3CyclBCpr8v7DLgob6DqDfVxwRR
+	kY/0CKugay6cwChNXqWLM9DRyz/u8rC5nJiwgbRttoSXh8w9G0XWL6bRrYLNP+CSP2t2v8+y5mx
+	YwCmfAKShwBYgWmFTJQsFjZlYECKFva7a24rhgX3mHoMwVE/QXIaC86Is8SZbG4JUz2S2+G4K8/
+	XZvHe+TmkJnt81urT4/fcwQmUvDOVLgNomGEAwml9B6GFGqK9ko62KH/hOIR59P3aW36emnY54J
+	syLY17e5UcQZGaueGiJ5NCjGwCGubyHVZt5MshXXYi+LtIkxsP3KhPw7S
+X-Received: by 2002:a05:6214:3c8c:b0:8ba:942:3e38 with SMTP id 6a1803df08f44-8c661e86acdmr4794236d6.19.1778532099475;
+        Mon, 11 May 2026 13:41:39 -0700 (PDT)
+X-Received: by 2002:a05:6214:3c8c:b0:8ba:942:3e38 with SMTP id 6a1803df08f44-8c661e86acdmr4793766d6.19.1778532098935;
+        Mon, 11 May 2026 13:41:38 -0700 (PDT)
+Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8bf3b0c4c9dsm108806616d6.5.2026.05.11.13.41.37
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 11 May 2026 13:41:38 -0700 (PDT)
+Date: Mon, 11 May 2026 16:41:36 -0400
+From: Brian Masney <bmasney@redhat.com>
+To: Rosen Penev <rosenp@gmail.com>
+Cc: linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
+	open list <linux-kernel@vger.kernel.org>,
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>
+Subject: Re: [PATCH] clk: rockchip: Use flexible array for clock table
+Message-ID: <agI_ANymmPyyWxuE@redhat.com>
+References: <20260511032252.361906-1-rosenp@gmail.com>
+ <agH-ivEdw12_3OJz@redhat.com>
+ <CAKxU2N-nEx-=KFh9djQRGZVTR_HJTSrJYzAa8NR+4QcNvbkxqw@mail.gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|MN2PR19MB3807:EE_
-X-MS-Office365-Filtering-Correlation-Id: c2ef74c4-0fc1-4471-3708-08deaf930ab4
-X-Microsoft-Antispam: BCL:0;ARA:14566002|6090799003|12121999013|37011999003|25031999004|51005399006|24021099003|41001999006|23021999003|5072599009|19110799012|8060799015|15080799012|56899033|1602099012|40105399003|1141799003|4302099013|3412199025|440099028|10035399007;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?4jw2Mf2dk6QLcgKtv19HP5WB23u67k0nWLsrZzGrrGOXoBlqYlsIzlG6OCxX?=
- =?us-ascii?Q?lCv0ouVTp88TZ/FLBxhpDECRjrbUAi3q+GCZ1yie1Oc5sIEF0nMInpKuj9TN?=
- =?us-ascii?Q?DGea4GfCIEWs7GPWdll37Po9gGX4xPEp7TXVRRhGCxJAOd2ytZCsPcR4v8N4?=
- =?us-ascii?Q?5UhRc/IIaAYAp3yNhQ50Ablfw+JSha3qAuBjmQybHyG304P5XW8W/G50NbZz?=
- =?us-ascii?Q?Dk5/uzPdpVXIx8/kcdSqwyAGol0PKuUJ29EfdYxo3Atw62ZSUGd37VFimOD6?=
- =?us-ascii?Q?ovsqdY70Fb9/ZG4mvC6aKj2AUQsYc6oevSzC6dej3uDbag2zBHBJwWPw/0T0?=
- =?us-ascii?Q?CSuUfkICW3ah5QJr5brWawjJuw4gxkAVvkqPvH2hy1sjWA2j1VQieVzhZyun?=
- =?us-ascii?Q?WB5L/i7kpocLIbX/fmsH6E13+BNzo/D14/gkFBRCizVDmgznNWcUbFFl28hw?=
- =?us-ascii?Q?V6WhjdE538Ta6ZuS+MdIfwehSXovqMe7d2Gs6GNk0wNUePx3r+j2miNgVztw?=
- =?us-ascii?Q?SB+3E9OifbxQoLWCvD+lRjAXQuTJOLp2uLHNIbcQCSy0E1RIiuUjBaPXu/64?=
- =?us-ascii?Q?KTKWv2jjfTFJHiB3ZbqBBglDncazaBzr6gsyTgN346zSej9GGCNOOrGHZR9m?=
- =?us-ascii?Q?e+njy32CPCfjjhbuw3979Ve+mvgwn6uDi8gCVqUORvmreNbPpa2OETe8M5YM?=
- =?us-ascii?Q?83IQt8YH56vC/ypQC/yLqUshLu0PIrMd3oBs/azx3x7uEZTpDpD5iNDbLGPH?=
- =?us-ascii?Q?tpfou6cnV/yJo7KNYtIHm1duJngjIwiVkMvw4wRUJjo/HCWZZHLBXiAd+Yr1?=
- =?us-ascii?Q?X6IWicbJ0L3R05C6Bclslttq+WBieqzpEJt6dblH15MIWRPnOZdAShOkbcod?=
- =?us-ascii?Q?4NKFhusHg6mKJC9cFcw9QcIe6MmEqVLB54s2CdiXBHXC4Hor/PslVsnuZIKr?=
- =?us-ascii?Q?yv1bEKVg26KnDm2Lazptlik86B0i53cpdgxCl/VL6LVTJSQKuPvWEYIjfyRa?=
- =?us-ascii?Q?4uGFgVetGzZZ/sUT4equl71Mhe6X+KyStaGQHC85tS6To29HNK9yX42qMcf0?=
- =?us-ascii?Q?IOee4teZICUfa8x0MuL+JRGnB5r6Y4amoMrbBC3Xq64B23HqMk6ps6EthPlY?=
- =?us-ascii?Q?NOdPk5QKqkDOmGRma9DwIa+hdrEf0gOe/IjEkAAxXNvaqMvOaWI2dz0=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?f7Zm49u4Mkd5evURaFWYe6XygZ+Knv5UYIsg/pMtdy3Qzkco4TNawHeZXSc0?=
- =?us-ascii?Q?9ltbllkics8XSJgWabuHSUhMGMgu0o0x32IjApQZwmTey1z2vhA8uumIEB0j?=
- =?us-ascii?Q?IQLWnlq6euZ7fDXmr+O/p7CwuMDY61n0AlDItVXVM8hyWmYMp6q8Hz50UPq8?=
- =?us-ascii?Q?jcyrEHP/3PaSE+cyLgDFub5KGr06fvWkcIfudgOZUD99cTp0o6OS324P1qDM?=
- =?us-ascii?Q?MPAx1mn1ZmhZNrnSVQA1ibVZOS7WdmmRAD0NQkd7vfCN4En/3NZ9qqdYvdQv?=
- =?us-ascii?Q?QU5HzkH+8MAEiG1Y5DzJlW6Q9nurNEZ0Ecl4lOwxBNToR6hkSRJcXp/2iH0c?=
- =?us-ascii?Q?0BNoHWgGKv98K2NaosCec+MkrHcix1HD0IZsf9YCrvt7eCUnI9ukers6CSbf?=
- =?us-ascii?Q?Tvy+UwbKteahzsn64XSe190G9U2fLY3pJrpYK1wvzT4YWRyQaWnO1YAzIRN9?=
- =?us-ascii?Q?aQNga4NXPUOI7S3x+qFrOdPg8doguPYL5a3E0BTmbVMYssJ95mXXQuMnHyo/?=
- =?us-ascii?Q?++zShxOA8WFcdRVQuC/dg05B2aYxLGTh0DumNjt1UbWM62Lld3BSn2FnWO4n?=
- =?us-ascii?Q?fM6MphyYqKodwVPUpR76TkooHGvUM9FeLN2HcDJlTpTskTJeSq1nL4PMo6Q6?=
- =?us-ascii?Q?ZIkJZ/8nJQUPOtp6qB5rgObpmDsPbsAsGST2cnIkK27efFWC6glxGjdXGNZN?=
- =?us-ascii?Q?6a/Qi1EbzKIsh7PJSFLJtI9w5JrNRnbia909UoZCHy0/Q/6kHPszMdcQ5Bwo?=
- =?us-ascii?Q?BOg6YzYOc60OAby55klFtkBEMOieFJJDsHX6c/3i7ffMMyps8/zK3XRHbzCB?=
- =?us-ascii?Q?SkDmlnoCcBFWtYkPHQlALLhFSGKXP+RIVMEDCVMmUkiweDn+OUscVlssT89j?=
- =?us-ascii?Q?Jglbm1a0EGTcbwBO7Z411FPIR87carWdrPusBfCoQ8+OwDxzUgmktyVJ6Uta?=
- =?us-ascii?Q?e8aZOUc9rmgJG92diXtllWx0eyGOh59s67vnbny1qCgJY+i8A4wch3RFr3jD?=
- =?us-ascii?Q?v6UQfhuOEoocMqbyWKeORV7sREPwY/4DxJCqKeQX2RL2dm1CPVfTS2Q5kYQM?=
- =?us-ascii?Q?iUk2ipi8/LkgyGIWAKZJf2mT/W4iYZHPpWM13Fj1IUvtsN5nzOus9XiDxzuo?=
- =?us-ascii?Q?bKAnNSftW3L2QUGpReIwSs+naj2s1aKAa67P2hGmlwp7G7DT2t+Il0nllwCr?=
- =?us-ascii?Q?jX5c7ezYcvKhq+bpam0xlwvF9T9eFFePZ71DIxUFEPspIY/i3ioMxNSVd8Uz?=
- =?us-ascii?Q?a4RX8679R+2+zyKnlY+Qy7XQGEeYCxmjWFEC+2J8jK9FWknw/DFDQLr9vWSf?=
- =?us-ascii?Q?u8eQILhND29tlFsL1Ek8USac+BzskZHyXLC4/LqXgtyVPLybgewnR23VsuMY?=
- =?us-ascii?Q?0/dX2S7jUfw+j4Gc49wPS+F4b0KRGDrot1Tn+2s/ffzsmCIzVw=3D=3D?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: c2ef74c4-0fc1-4471-3708-08deaf930ab4
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 May 2026 19:25:21.0544
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR19MB3807
+In-Reply-To: <CAKxU2N-nEx-=KFh9djQRGZVTR_HJTSrJYzAa8NR+4QcNvbkxqw@mail.gmail.com>
+User-Agent: Mutt/2.3.1 (2026-03-20)
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: mKRTPZH6SGfedKFr1K-V_XX8kfpzt8n-b1JmAu-Blm8_1778532099
+X-Mimecast-Originator: redhat.com
+Content-Disposition: inline
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_122527_313894_DB9DE255 
-X-CRM114-Status: GOOD (  29.05  )
+X-CRM114-CacheID: sfid-20260511_134143_386585_89302F8F 
+X-CRM114-Status: GOOD (  23.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,101 +112,55 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, May 11, 2026 at 06:28:35PM +0100, Jonathan Cameron wrote:
-> On Sat,  9 May 2026 14:18:57 -0500
-> Chris Morgan <macroalpha82@gmail.com> wrote:
-> 
-> > From: Chris Morgan <macromorgan@hotmail.com>
-> > 
-> > Add the core component of a new inv_icm42607 driver. This includes
-> > a few setup functions and the full register definition in the
-> > header file.
-> > 
-> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> Hi Chris
-> 
-> The sashiko bot has taken a look and had some comments
-> and one in this patch is valid.
-> 
-> https://sashiko.dev/#/patchset/20260509191907.24734-1-macroalpha82%40gmail.com
-> 
-> It's minor though so if everything else looks good I might
-> just tweak whilst applying.
-
-I see a few things in the bot's comments that seem valid, so I'll try to
-address them an do another revision. I think the only one I disagreed with
-was the stuff about "keeping the temperature sensor enabled", because if
-I read the data sheet right the temperature sensor really isn't doing anything
-unless the gyro or accelerometer is also enabled.
-
-> 
-> 
-> > ---
-> >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 332 ++++++++++++++++++
-> >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 210 +++++++++++
-> >  2 files changed, 542 insertions(+)
-> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > 
-> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > new file mode 100644
-> > index 000000000000..10dcd3473e9c
-> > --- /dev/null
-> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > new file mode 100644
-> > index 000000000000..e84e84416dab
-> > --- /dev/null
-> > +/**
-> > + *  inv_icm42607_setup() - check and setup chip
-> > + *  @st:	driver internal state
-> > + *  @bus_setup:	callback for setting up bus specific registers
-> > + *
-> > + *  Returns 0 on success, a negative error code otherwise.
-> > + */
-> > +static int inv_icm42607_setup(struct inv_icm42607_state *st,
-> > +			      inv_icm42607_bus_setup bus_setup)
-> > +{
-> > +	const struct device *dev = regmap_get_device(st->map);
-> > +	unsigned int val;
-> > +	int ret;
-> > +
-> > +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	if (val != st->hw->whoami)
-> > +		dev_warn_probe(dev, -ENODEV,
-> > +			       "invalid whoami %#02x expected %#02x (%s)\n",
-> > +			       val, st->hw->whoami, st->hw->name);
-> Sashiko correctly called this out as a bit nonsensical.
-> dev_warn_probe() is useful for dealing with deferral or that can't happen
-> with allowing a return dev_warn_probe() type call.
-> 
-> In this particular case it brings us nothing over dev_warn() so better
-> to just use that.
-
-Yeah, I think I called that twice in various places but didn't return
-from it, so I can change them to just "dev_warn" which makes more sense.
-
-> 
-> > +
-> > +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
-> > +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
-> > +	if (ret)
-> > +		return ret;
-> 
-> 
-
-Thank you,
-Chris
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+KyBHdXN0YXZvCgpPbiBNb24sIE1heSAxMSwgMjAyNiBhdCAxMjowODo1NlBNIC0wNzAwLCBSb3Nl
+biBQZW5ldiB3cm90ZToKPiBPbiBNb24sIE1heSAxMSwgMjAyNiBhdCA5OjA24oCvQU0gQnJpYW4g
+TWFzbmV5IDxibWFzbmV5QHJlZGhhdC5jb20+IHdyb3RlOgo+ID4KPiA+IEhpIFJvc2VuLAo+ID4K
+PiA+IE9uIFN1biwgTWF5IDEwLCAyMDI2IGF0IDA4OjIyOjUyUE0gLTA3MDAsIFJvc2VuIFBlbmV2
+IHdyb3RlOgo+ID4gPiBTdG9yZSB0aGUgY2xvY2sgbG9va3VwIHRhYmxlIGluIHRoZSBSb2NrY2hp
+cCBjbG9jayBwcm92aWRlcgo+ID4gPiBhbGxvY2F0aW9uIGluc3RlYWQgb2YgYWxsb2NhdGluZyBp
+dCBzZXBhcmF0ZWx5Lgo+ID4gPgo+ID4gPiBUaGlzIHRpZXMgdGhlIHRhYmxlIGxpZmV0aW1lIGRp
+cmVjdGx5IHRvIHRoZSBwcm92aWRlciBhbmQgcmVtb3ZlcyBhCj4gPiA+IHNlcGFyYXRlIGFsbG9j
+YXRpb24gZmFpbHVyZSBwYXRoIHdoaWxlIHByZXNlcnZpbmcgdGhlIGNsa19vbmVjZWxsX2RhdGEK
+PiA+ID4gbG9va3VwIGludGVyZmFjZS4KPiA+ID4KPiA+ID4gQXNzaXN0ZWQtYnk6IENvZGV4OkdQ
+VC01LjUKPiA+ID4gU2lnbmVkLW9mZi1ieTogUm9zZW4gUGVuZXYgPHJvc2VucEBnbWFpbC5jb20+
+Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMgfCAxNyArKysrLS0t
+LS0tLS0tLS0tLQo+ID4gPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmggfCAgMiArKwo+ID4g
+PiAgMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQo+ID4g
+Pgo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMgYi9kcml2ZXJz
+L2Nsay9yb2NrY2hpcC9jbGsuYwo+ID4gPiBpbmRleCBlZThjNzliOTM4ZDMuLmRiYjRiNmYzM2Fi
+YiAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMKPiA+ID4gKysr
+IGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMKPiA+ID4gQEAgLTM1OSwyNiArMzU5LDIxIEBA
+IHN0YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX3Byb3ZpZGVyICpyb2NrY2hpcF9jbGtfaW5pdF9i
+YXNlKAo+ID4gPiAgICAgICAgICAgICAgIHVuc2lnbmVkIGxvbmcgbnJfY2xrcywgYm9vbCBoYXNf
+bGF0ZV9jbG9ja3MpCj4gPiA+ICB7Cj4gPiA+ICAgICAgIHN0cnVjdCByb2NrY2hpcF9jbGtfcHJv
+dmlkZXIgKmN0eDsKPiA+ID4gLSAgICAgc3RydWN0IGNsayAqKmNsa190YWJsZTsKPiA+ID4gICAg
+ICAgc3RydWN0IGNsayAqZGVmYXVsdF9jbGtfdmFsOwo+ID4gPiAgICAgICBpbnQgaTsKPiA+ID4K
+PiA+ID4gICAgICAgZGVmYXVsdF9jbGtfdmFsID0gRVJSX1BUUihoYXNfbGF0ZV9jbG9ja3MgPyAt
+RVBST0JFX0RFRkVSIDogLUVOT0VOVCk7Cj4gPiA+Cj4gPiA+IC0gICAgIGN0eCA9IGt6YWxsb2Nf
+b2JqKHN0cnVjdCByb2NrY2hpcF9jbGtfcHJvdmlkZXIpOwo+ID4gPiArICAgICBjdHggPSBremFs
+bG9jX2ZsZXgoKmN0eCwgY2xrX3RhYmxlLCBucl9jbGtzKTsKPiA+ID4gICAgICAgaWYgKCFjdHgp
+Cj4gPiA+ICAgICAgICAgICAgICAgcmV0dXJuIEVSUl9QVFIoLUVOT01FTSk7Cj4gPiA+Cj4gPiA+
+IC0gICAgIGNsa190YWJsZSA9IGt6YWxsb2Nfb2JqcyhzdHJ1Y3QgY2xrICosIG5yX2Nsa3MpOwo+
+ID4gPiAtICAgICBpZiAoIWNsa190YWJsZSkKPiA+ID4gLSAgICAgICAgICAgICBnb3RvIGVycl9m
+cmVlOwo+ID4gPiAtCj4gPiA+ICAgICAgIGZvciAoaSA9IDA7IGkgPCBucl9jbGtzOyArK2kpCj4g
+PiA+IC0gICAgICAgICAgICAgY2xrX3RhYmxlW2ldID0gZGVmYXVsdF9jbGtfdmFsOwo+ID4gPiAr
+ICAgICAgICAgICAgIGN0eC0+Y2xrX3RhYmxlW2ldID0gZGVmYXVsdF9jbGtfdmFsOwo+ID4gPgo+
+ID4gPiAtICAgICBjdHgtPnJlZ19iYXNlID0gYmFzZTsKPiA+ID4gLSAgICAgY3R4LT5jbGtfZGF0
+YS5jbGtzID0gY2xrX3RhYmxlOwo+ID4gPiAgICAgICBjdHgtPmNsa19kYXRhLmNsa19udW0gPSBu
+cl9jbGtzOwo+ID4gPiArICAgICBjdHgtPmNsa19kYXRhLmNsa3MgPSBjdHgtPmNsa190YWJsZTsK
+PiA+Cj4gPiBXaGVyZSdzIHRoZSBfX2NvdW50ZWRfYnk/IEFsc28gc3RydWN0IGNsa19vbmVjZWxs
+X2RhdGEgaXMgZW1iZWRkZWQKPiA+IGluc2lkZSBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX3Byb3ZpZGVy
+LCBhbmQgSSdtIG5vdCBzdXJlIG9mZmhhbmQgaG93Cj4gPiB0aGF0J2xsIHdvcmsuCj4gTm90IHBy
+ZXNlbnQuIF9fY291bnRlZF9ieSBkb2VzIG5vdCB3b3JrIHdpdGggZW1iZWRkZWQgc3RydWN0IG1l
+bWJlcnMuCj4gTm8gbmVlZCB0byBhZGQgb25lIElNTy4KCkknbGwgYmUgaG9uZXN0IHRoYXQgSSdt
+IG5vdCBzdXJlIHdoYXQncyBjb3JyZWN0IGhlcmUuIEkgYWRkZWQgR3VzdGF2bwpzaW5jZSBJIHNh
+dyBjb21tZW50cyBmcm9tIGhpbSBiZWZvcmUgYWJvdXQgdGhlc2UgdHlwZXMgb2YgY2hhbmdlcy4K
+CkJyaWFuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
+TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
+ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
+b2NrY2hpcAo=
