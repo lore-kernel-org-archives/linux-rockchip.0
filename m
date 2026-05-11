@@ -4,66 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C6DDCD37AC
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 07:22:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41F6ACD37B5
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 08:02:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=6393OBQ3P2lLeu3U8c3v6dTyMiW3CMGR37ZL34pmZdc=; b=k1VQOMcRVYlKhl
-	0R8Fv83HJYJjVbjvh7f0gZZi0iFgd6Bf9rZvcR6NnGyI/QIH+TV5lVGHRUdb32u4kwb+S0Eme38NO
-	aL8oumHFHWyg51Tl+sjkJgeWjaHYHbTIjzSvHwzGIZ54Z429G6X1AXHmXyegJS5AOd2Khr69Dn1Xr
-	f4yBaBM8NP9sKzzSMkyNCsM9MiyBUHmwE9NzdCrdjcEekuUUgJnzSYX6dCZu8j8ZRBuuIVlJ/Y1xk
-	DR6ZrsnIhEbPn0vNyINLfsZhflxFG0hVkbXRciP+y7gOqIq6Ueaeg0a01qQqH7VPh81WqmqtDcob1
-	6tOwTWkXCpxAAgpV+4rQ==;
+	List-Owner; bh=nTrtlIL+pFa8eA3vBByvEKuxUEXhcCnMP/9oD/0dDpY=; b=Zeum+KFOMTiQ2l
+	GVXqcgghQ1Tj4aPeQYwGbNK4RV31jLSLAzUM7+GeSQwg3kPtjD4jp7HvXHeNPJJY4Kr0+5enmPRWh
+	UBrpi9sLAWOReWpnj/IbnywOv1BgInJlE+WH73fQIjXCM2Cz03CrDwi3qFALjX3/Bf0pDwB9WDUQD
+	Y5BqgpPL9XPPk5eDY5Sevcv8ZOZNMv2xepLRpDtW/BzAKnacQ3soVPESKaShVJhDpzrP2MaTNLttm
+	3rc50PHa5yeyhjJ0+0UZJdWa0oQHEliXBlIzVC2C/0X31ze2lN9CfvCiAb2I6N/LM6z3d5hwPl4u6
+	afrBACu8F0he6hbvlhRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMKxu-0000000CaaG-0THN;
-	Mon, 11 May 2026 07:22:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMKxq-0000000CaZV-2AM9;
-	Mon, 11 May 2026 07:22:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1778484121;
-	bh=sFa6mjTeZA+YdjdzIRkDzWZvvTvkozLyw4GG3pLu5g8=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=R0ATEsm367q/tkMguEZtJEF8nYKvKUL0gTj0GCcC8/uZna4C01SpMlCgkLx2kQYk0
-	 O5H+L/N0pbg0Oz228uuYg+9w152APlplCi51FE76IIfaJp3/Ao5751ugoplRzFLXdN
-	 g9jttptHdPwZRptAyQbvZw67uX58bZAMEZO8TB6j7UetCC5jYJkcUdwj4+lqte2MYg
-	 15hnSw+r9vFlVNlzqozLqLBGEz/SYnR94ROkin6AdwacWP9rDGsiFITS/v7IhvDaDU
-	 R6ZSKwaTYUi0tjHH9K/+vSP4xTPTQtu1fjZ3KxWhwRiGMuX6Mfx3guxwFpoZ9DJw0E
-	 s3THntGpbBFrw==
-Received: from [100.64.1.43] (unknown [100.64.1.43])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	id 1wMLaY-0000000CghW-1c5S;
+	Mon, 11 May 2026 08:02:06 +0000
+Received: from mail.8bytes.org ([2a01:238:42d9:3f00:e505:6202:4f0c:f051])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wMLaV-0000000CggC-01EN;
+	Mon, 11 May 2026 08:02:04 +0000
+Received: from 8bytes.org (p200300f6af1d9600f5faa5cebd6c042e.dip0.t-ipconnect.de [IPv6:2003:f6:af1d:9600:f5fa:a5ce:bd6c:42e])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: benjamin.gaignard)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8C5AE17E05FC;
-	Mon, 11 May 2026 09:22:01 +0200 (CEST)
-Message-ID: <36e114a3-8240-480b-a53a-6aa3810bf089@collabora.com>
-Date: Mon, 11 May 2026 09:22:00 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v14 1/5] dt-bindings: vendor-prefixes: Add Verisilicon
-To: Diederik de Haas <diederik@cknow-tech.com>, joro@8bytes.org,
- will@kernel.org, robin.murphy@arm.com, krzk+dt@kernel.org,
- conor+dt@kernel.org, heiko@sntech.de
-Cc: iommu@lists.linux.dev, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, kernel@collabora.com,
- Conor Dooley <conor.dooley@microchip.com>
+	by mail.8bytes.org (Postfix) with ESMTPSA id 723AC1C41F2;
+	Mon, 11 May 2026 10:02:01 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=8bytes.org;
+	s=default; t=1778486521;
+	bh=C4+jOE7NnKqR3CmE/a0VMxJT4JgooAYRBeQzipN8SAk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=lHkPDpLOV9pYetKrrbAwRHCkzRl6i8mpLC6SS8PPg0h7g0QdV1s/ZQie2S+0lr1yz
+	 Cc4DXNqfNTWcrDPeR0uwQHZIoJ9wLPiLX5knWOOdAbrUSWERFQW/VtVdFU4Wg+WKUG
+	 sCwYDeh3if9B28GGoTCzG8QFUL8bThS1lWi7WviANes8QwJjxBgoQCRPKh2Z3HInWS
+	 f6B6aX1MnPCniGWkMaPdJR7bMpj7OeECgY4gVTA2O0toQlILbjpE+Qe8pYkjFyo00V
+	 vU1r3i6U3U+aFFjIOsIlCgKFL8a75vbjbD8eC5+3NLvH5B/WwlwI4m7T3fIeDg/pR9
+	 EgAPWkXCqYuCA==
+Date: Mon, 11 May 2026 10:01:59 +0200
+From: =?utf-8?B?SsO2cmcgUsO2ZGVs?= <joro@8bytes.org>
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+Cc: will@kernel.org, robin.murphy@arm.com, krzk+dt@kernel.org, 
+	conor+dt@kernel.org, heiko@sntech.de, iommu@lists.linux.dev, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, kernel@collabora.com
+Subject: Re: [PATCH v14 0/5] Add support for Verisilicon IOMMU used by media
+ codec blocks
+Message-ID: <33nsz23rcstwznq6dnsuibndbwtoc767evshltj35kgysdg63r@fxhwobu53cww>
 References: <20260415072349.44237-1-benjamin.gaignard@collabora.com>
- <20260415072349.44237-2-benjamin.gaignard@collabora.com>
- <DIEC8YT0XK4O.VAG6G4H31KJM@cknow-tech.com>
-Content-Language: en-US
-From: Benjamin Gaignard <benjamin.gaignard@collabora.com>
-In-Reply-To: <DIEC8YT0XK4O.VAG6G4H31KJM@cknow-tech.com>
+MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260415072349.44237-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_002206_704400_43EBC166 
-X-CRM114-Status: GOOD (  10.21  )
+X-CRM114-CacheID: sfid-20260511_010203_286424_0AC47512 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,37 +70,34 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-CkxlIDA5LzA1LzIwMjYgw6AgMTk6NTYsIERpZWRlcmlrIGRlIEhhYXMgYSDDqWNyaXTCoDoKPiBP
-biBXZWQgQXByIDE1LCAyMDI2IGF0IDk6MjMgQU0gQ0VTVCwgQmVuamFtaW4gR2FpZ25hcmQgd3Jv
-dGU6Cj4+IFZlcmlzaWxpY29uIE1pY3JvZWxlY3Ryb25pY3MgaXMgYSBjb21wYW55IGJhc2VkIGlu
-IFNoYW5naGFpLCBDaGluYSwKPj4gZGV2ZWxvcHBpbmcgaGFyZHdhcmUgYmxvY2tzIGZvciBTb0Mu
-Cj4+Cj4+IGh0dHBzOi8vdmVyaXNpbGljb24uY29tLwo+Pgo+PiBBZGQgdGhlaXIgbmFtZSB0byB0
-aGUgbGlzdCBvZiB2ZW5kb3JzLgo+Pgo+PiBTaWduZWQtb2ZmLWJ5OiBCZW5qYW1pbiBHYWlnbmFy
-ZCA8YmVuamFtaW4uZ2FpZ25hcmRAY29sbGFib3JhLmNvbT4KPj4gQWNrZWQtYnk6IENvbm9yIERv
-b2xleSA8Y29ub3IuZG9vbGV5QG1pY3JvY2hpcC5jb20+Cj4+IC0tLQo+PiAgIERvY3VtZW50YXRp
-b24vZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3ItcHJlZml4ZXMueWFtbCB8IDIgKysKPj4gICAx
-IGZpbGUgY2hhbmdlZCwgMiBpbnNlcnRpb25zKCspCj4+Cj4+IGRpZmYgLS1naXQgYS9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwgYi9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKPj4gaW5kZXgg
-ZWU3ZmQzY2ZlMjAzLi5lYmQ5MDcyMzAwYTggMTAwNjQ0Cj4+IC0tLSBhL0RvY3VtZW50YXRpb24v
-ZGV2aWNldHJlZS9iaW5kaW5ncy92ZW5kb3ItcHJlZml4ZXMueWFtbAo+PiArKysgYi9Eb2N1bWVu
-dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvdmVuZG9yLXByZWZpeGVzLnlhbWwKPj4gQEAgLTE3
-NjEsNiArMTc2MSw4IEBAIHBhdHRlcm5Qcm9wZXJ0aWVzOgo+PiAgICAgICBkZXNjcmlwdGlvbjog
-VmFyaXNjaXRlIEx0ZC4KPj4gICAgICJedmRsLC4qIjoKPj4gICAgICAgZGVzY3JpcHRpb246IFZh
-biBkZXIgTGFhbiBiLnYuCj4+ICsgICJedmVyaXNpbGljb24sLioiOgo+PiArICAgIGRlc2NyaXB0
-aW9uOiBWZXJpU2lsaWNvbiBNaWNyb2VsZWN0cm9uaWNzCj4+ICAgICAiXnZlcnRleGNvbSwuKiI6
-Cj4+ICAgICAgIGRlc2NyaXB0aW9uOiBWZXJ0ZXhjb20gVGVjaG5vbG9naWVzLCBJbmMuCj4+ICAg
-ICAiXnZpYSwuKiI6Cj4gRlRSOiBBbm90aGVyIHZlcnNpb24gb2YgdGhpcyBwYXRjaCBpcyBhbHJl
-YWR5IHByZXNlbnQgaW4gTGludXMnIHRyZWU6Cj4gYzEzMWQ3ODg0MGQ3ICgiZHQtYmluZGluZ3M6
-IHZlbmRvci1wcmVmaXhlczogYWRkIHZlcmlzaWxpY29uIikKCkl0IHNlZW1zIGl0IGhhcyBiZWVu
-IG1lcmdlZCByaWdodCA3LjAtcmMxIHRoYXQgSSB1c2VkIGZvciB0aGlzIHNlcmllcy4KQm90aCBh
-cmUgYWxtb3N0IGlkZW50aWNhbCBzbyB3ZSBjYW4gaWdub3JlIG1pbmUuCgpSZWdhcmRzLApCZW5q
-YW1pbgoKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxp
-bnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9j
-a2NoaXAK
+On Wed, Apr 15, 2026 at 09:23:36AM +0200, Benjamin Gaignard wrote:
+> Benjamin Gaignard (5):
+>   dt-bindings: vendor-prefixes: Add Verisilicon
+>   dt-bindings: iommu: verisilicon: Add binding for VSI IOMMU
+>   iommu: Add verisilicon IOMMU driver
+>   arm64: dts: rockchip: Add verisilicon IOMMU node on RK3588
+>   arm64: defconfig: enable Verisilicon IOMMU for Rockchip RK3588
+> 
+>  .../bindings/iommu/verisilicon,iommu.yaml     |  71 ++
+>  .../devicetree/bindings/vendor-prefixes.yaml  |   2 +
+>  MAINTAINERS                                   |   8 +
+>  arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  11 +
+>  arch/arm64/configs/defconfig                  |   1 +
+>  drivers/iommu/Kconfig                         |  11 +
+>  drivers/iommu/Makefile                        |   1 +
+>  drivers/iommu/vsi-iommu.c                     | 796 ++++++++++++++++++
+>  8 files changed, 901 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/iommu/verisilicon,iommu.yaml
+>  create mode 100644 drivers/iommu/vsi-iommu.c
+
+Applied to the new verisilicon branch.
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
