@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2607BCD4840
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 17:47:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53A40CD37BE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 18:12:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MjdB6z1Y3KZzwACLs7/sioGxKZ8Ry7vQ8rTONjC8npg=; b=Rc3CWui4QTgCFQ
-	w4Gxx6FBCElBM+hBy61AAIz3ArqJssmOKbqR2Onfn4EGKM/qV1kacG+P5deymjUUN0NP2TeSz1mLr
-	S2A0XaCqdXmvVLmn5haCLgACbrfbQe4/EPDOY4Hl1UrvZqYiC1PnzRqGAvLbK/BRiMO2Zs9dyezEJ
-	SYRFI9bjskKVeMEd2bkqDGELCczn9gu4N5arH0wqJHyHMyOymgETV6PAJFDkoxFV1net7zUofXyCr
-	2L6MVJ0k9o4mv7Y+WYL1F3gP+GYd9zD27IQa/H6P6rvHpqvFQw8r1gUDxyXJ0OKyDFy/66/UxxkWE
-	vmRUhc+FVrt1xP2hTo8A==;
+	List-Owner; bh=fSxdOJEdlsnIlswRhl7VEheMmiqrrEcKa5593qjbtDc=; b=AAM6yGEPOy9S2J
+	gpP2mB5rSVtRFC0PQt3rX6KaCyGqHKsL0duHGYsRbJ/iWcArJZgAicaxu9dSoO1djXMAq4FTu90iX
+	xTqQfVSndEhskjDKfKE6ZnLbCgiWnz9DZRFdmFWZ518hfEB/pT1jEC2DkYy4TCBXQT8oagoeVeju3
+	bXRUmnc6ca08zLCvnz1qzqAwLp3Xy9nBOzUqM5xgmuJYWAgozt339Lsrubte1hGqMUI3osr3PYnTu
+	JIMjDvq3VzWSiQLqbgQLnMcjvstN7RUy3TIq8ycIJ1//1t3XTmCXnvP66igJvrOGLa+ID6AgLS/D/
+	EnZJIcOqxge8Tdg7Fm2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMUj2-0000000EPFZ-3Fbs;
-	Mon, 11 May 2026 17:47:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wMV6j-0000000ESZf-2ke0;
+	Mon, 11 May 2026 18:11:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMUj1-0000000EPF3-1w3D
+	id 1wMV6i-0000000ESZS-2SdH
 	for linux-rockchip@lists.infradead.org;
-	Mon, 11 May 2026 17:47:27 +0000
+	Mon, 11 May 2026 18:11:56 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 77FB060121;
-	Mon, 11 May 2026 17:47:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DE963C2BCB0;
-	Mon, 11 May 2026 17:47:20 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 84DE86001A;
+	Mon, 11 May 2026 18:11:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3FFC6C2BCB0;
+	Mon, 11 May 2026 18:11:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778521646;
-	bh=QmRYWIMkg1MB8d9jDcohL4aT5ukaVYi60uXAtNhG2cw=;
+	s=k20201202; t=1778523115;
+	bh=iviSYU3TUQ6cSqfQ5jF36SN6Bsw2WrvBmkllqgT37LY=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=om8J1lF2QP8ZI05Bk+9cTWhDmaZvl9HN6kUREBpluMzORnMhYSe7cz3VdgZ6F1t5D
-	 skeLnwybUhpr11CRWxfVad+aReb4W6YXNaqSwgsxmbNZ2M6ElZyi3bRutb0mK4pxHR
-	 aNO1z8xreEexPpm29Zg8NsgIxNDvFtK853rWvgLw6YCQ0pqBEPz1RuYDnCNmzHgp0b
-	 EBOakKk1wrozSEtrEwEHrhSs2rDVRTzeLyoRpBogQC4q89f/3KTLggRRSy6LueY4kA
-	 4vd0tFabDWnr9b9y2o0UXlRPXL4P/bOG818N74hUA7gnCsfsI3LP1sTOG7tb+qybaL
-	 8/wSNyWE2QvfQ==
-Date: Mon, 11 May 2026 18:47:15 +0100
+	b=XWdrd0ExOQIFvLj+qwu85fmTnB9sJVrmttZi9bYYY+MCz39LWGc+ZVkWf/5BR42Ow
+	 +xggTXa6UATfN2mAB9+nke1/CplPunb+6M0IoSqz2tBxdlv4vzmyPFSMTJibw00FGn
+	 pzGWpzH5mH571GwpJnOUCNTkgY3IMZzkBuaABAGSPacleqNOGAB2a65Yn4qEQOpNOh
+	 YNemxw8ouhAfOIcaVSwE5KoGu8CPAYTYYDe4OkTWsQR90TdsU+sBa+dHIU+mZEcTUQ
+	 Pwo05VgTHtuNayi/6ySMxNLWUPqmoQ2M8Eb8Ji7RsUHmeOTOyiUCiuQlrD32indAqJ
+	 2cPFdM9zB/lKw==
+Date: Mon, 11 May 2026 19:11:45 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,12 +50,12 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V5 04/11] iio: imu: inv_icm42607: Add I2C and SPI For
+Subject: Re: [PATCH V5 05/11] iio: imu: inv_icm42607: Add PM support for
  icm42607
-Message-ID: <20260511184715.241be1f1@jic23-huawei>
-In-Reply-To: <20260509191907.24734-5-macroalpha82@gmail.com>
+Message-ID: <20260511191145.4d853e9d@jic23-huawei>
+In-Reply-To: <20260509191907.24734-6-macroalpha82@gmail.com>
 References: <20260509191907.24734-1-macroalpha82@gmail.com>
-	<20260509191907.24734-5-macroalpha82@gmail.com>
+	<20260509191907.24734-6-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,72 +74,310 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Sat,  9 May 2026 14:18:58 -0500
+On Sat,  9 May 2026 14:18:59 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add I2C and SPI driver support for InvenSense ICM-42607 devices.
-> Add necessary Kconfig and Makefile to allow building of (incomplete)
-> driver.
+> Add power management support for the ICM42607 device driver.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+More stuff in here from sashikio.
 
-Sashiko got busy and found something that I now realize I didn't
-understand at all :(
+The runtime pm comment in particular feeds into a couple of
+other ongoing threads if true:
+
+https://sashiko.dev/#/patchset/20260509191907.24734-1-macroalpha82%40gmail.com
+
+ [PATCH 3/8] iio: magnetometer: ak8975: switch to using managed resources
+is the other thread where we have a similar but subtly different setup.
 
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> index e84e84416dab..8ff51711ab1f 100644
-> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> @@ -15,6 +15,57 @@
+One other thing inline that is related to this. I just left the whole
+thing here so we have the code to discuss ways around this runtime_pm devm mess :(
+
+Fairly sure this runs into the other problem we had which
+is that the devm_ regulator cleanup can run before we have any
+valid state for runtime pm.
+
+I don't have anything setup to hammer these corners of runtime PM.
+I can probably get something up in a few days. Overall I think we
+really need to find and test a pattern that actually works and
+gets the reference counting right for this devm regulator + runtime suspend
+regulator combination.  We have gotten it wrong too often :(
+
+Jonathan
+
+> ---
+>  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  10 ++
+>  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 148 +++++++++++++++++-
+>  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   1 +
+>  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |   1 +
+>  4 files changed, 159 insertions(+), 1 deletion(-)
+> 
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> index 3ebc06025051..623ff3936b4b 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> @@ -10,6 +10,7 @@
+>  #include <linux/bitops.h>
+>  #include <linux/iio/iio.h>
+>  #include <linux/mutex.h>
+> +#include <linux/pm.h>
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
 >  
->  #include "inv_icm42607.h"
+> @@ -96,6 +97,12 @@ struct inv_icm42607_hw {
+>  	const struct inv_icm42607_conf *conf;
+>  };
 >  
-> +static const struct regmap_range_cfg inv_icm42607_regmap_ranges[] = {
-> +	{
-> +		.name = "user bank",
-> +		.range_min = 0x0000,
-> +		.range_max = 0x00FF,
-> +		.window_start = 0,
-> +		.window_len = 0x0100,
-
-I'd never really looked at this bit of regmap before but sashiko
-did suggest a possible issue and from the documentation it appears it
-might be right. 
- * Registers, mapped to this virtual range, are accessed in two steps:
- *     1. page selector register update;
- *     2. access through data window registers.
-
-So whether or not we want one the page selector infrastructure is
-used.
-
-So Sashiko suggested we'll get a bank setting write to register 0
-with value 0.
-
-Having dug around I found a 42607-c datasheet:
-https://www.lcsc.com/datasheet/C2879807.pdf?spm=wm.sxq.inf.ggs&lcsc_vid=EVNXBlQAR1RZAwIHTwMLUVcEFgVcAQdQQgVeBlJSQAIxVlNRT1RcVldeQlZeVzsOAxUeFF5JWBYZEEoBGA4JCwFIFA4DSA%3D%3D
-
-That suggests there is a bank select register but at 0x7c which isn't
-documented for the 42607P :(
-
-It also doesn't correspond to conventional window / bank arrangement so
-this probably doesn't apply anyway.
-
-
-> +	},
+> +struct inv_icm42607_suspended {
+> +	enum inv_icm42607_sensor_mode gyro;
+> +	enum inv_icm42607_sensor_mode accel;
+> +	bool temp;
 > +};
 > +
-> +const struct regmap_config inv_icm42607_regmap_config = {
-> +	.reg_bits = 8,
-> +	.val_bits = 8,
-> +	.max_register = 0x00FF,
-> +	.ranges = inv_icm42607_regmap_ranges,
-> +	.num_ranges = ARRAY_SIZE(inv_icm42607_regmap_ranges),
-> +	.cache_type = REGCACHE_NONE,
+>  /**
+>   *  struct inv_icm42607_state - driver state variables
+>   *  @lock:		lock for serializing multiple registers access.
+> @@ -105,6 +112,7 @@ struct inv_icm42607_hw {
+>   *  @irq:		chip irq, required to enable/disable and set wakeup
+>   *  @orientation:	sensor chip orientation relative to main hardware.
+>   *  @conf:		chip sensors configurations.
+> + *  @suspended:		suspended sensors configuration.
+>   */
+>  struct inv_icm42607_state {
+>  	struct mutex lock;
+> @@ -114,6 +122,7 @@ struct inv_icm42607_state {
+>  	int irq;
+>  	struct iio_mount_matrix orientation;
+>  	struct inv_icm42607_conf conf;
+> +	struct inv_icm42607_suspended suspended;
+>  };
+>  
+>  /* Virtual register addresses: @bank on MSB (4 upper bits), @address on LSB */
+> @@ -337,6 +346,7 @@ typedef int (*inv_icm42607_bus_setup)(struct inv_icm42607_state *);
+>  extern const struct regmap_config inv_icm42607_regmap_config;
+>  extern const struct inv_icm42607_hw inv_icm42607_hw_data;
+>  extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
+> +extern const struct dev_pm_ops inv_icm42607_pm_ops;
+>  
+>  int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
+>  			    inv_icm42607_bus_setup bus_setup);
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> index 8ff51711ab1f..047de1b40550 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> @@ -9,6 +9,7 @@
+>  #include <linux/irq.h>
+>  #include <linux/module.h>
+>  #include <linux/mutex.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/property.h>
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
+> @@ -66,6 +67,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+>  };
+>  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+>  
+> +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> +				      enum inv_icm42607_sensor_mode gyro,
+> +				      enum inv_icm42607_sensor_mode accel,
+> +				      bool temp, unsigned int *sleep_ms)
+> +{
+> +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
+> +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
+> +	bool oldtemp = st->conf.temp_en;
+> +	unsigned int sleepval;
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
+> +		return 0;
+> +
+> +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
+> +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> +	if (!temp)
+> +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->conf.gyro.mode = gyro;
+> +	st->conf.accel.mode = accel;
+> +	st->conf.temp_en = temp;
+> +
+> +	sleepval = 0;
+> +	if (temp && !oldtemp) {
+> +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
+> +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
+> +	}
+> +	if (accel != oldaccel && oldaccel == INV_ICM42607_SENSOR_MODE_OFF) {
+> +		usleep_range(200, 300);
+> +		if (sleepval < INV_ICM42607_ACCEL_STARTUP_TIME_MS)
+> +			sleepval = INV_ICM42607_ACCEL_STARTUP_TIME_MS;
+> +	}
+> +	if (gyro != oldgyro) {
+> +		if (oldgyro == INV_ICM42607_SENSOR_MODE_OFF) {
+> +			usleep_range(200, 300);
+> +			if (sleepval < INV_ICM42607_GYRO_STARTUP_TIME_MS)
+> +				sleepval = INV_ICM42607_GYRO_STARTUP_TIME_MS;
+> +		} else if (gyro == INV_ICM42607_SENSOR_MODE_OFF) {
+> +			if (sleepval < INV_ICM42607_GYRO_STOP_TIME_MS)
+> +				sleepval = INV_ICM42607_GYRO_STOP_TIME_MS;
+> +		}
+> +	}
+> +
+> +	if (sleep_ms)
+> +		*sleep_ms = sleepval;
+> +	else if (sleepval)
+> +		msleep(sleepval);
+> +
+> +	return 0;
+> +}
+> +
+>  static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
+>  				 const struct inv_icm42607_conf *conf)
+>  {
+> @@ -192,8 +249,10 @@ static int inv_icm42607_enable_vddio_reg(struct inv_icm42607_state *st)
+>  static void inv_icm42607_disable_vddio_reg(void *_data)
+>  {
+>  	struct inv_icm42607_state *st = _data;
+> +	struct device *dev = regmap_get_device(st->map);
+>  
+> -	regulator_disable(st->vddio_supply);
+> +	if (!pm_runtime_suspended(dev))
+
+Can this run before we've set the state up?  We had some previous issues with
+needing to set active earlier just so the status check would not indicate
+it was suspended.
+
+> +		regulator_disable(st->vddio_supply);
+>  }
+>  
+>  int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
+> @@ -251,10 +310,97 @@ int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw
+>  	if (ret)
+>  		return ret;
+>  
+> +	ret = devm_pm_runtime_set_active_enabled(dev);
+> +	if (ret)
+> +		return ret;
+> +
+> +	pm_runtime_set_autosuspend_delay(dev, INV_ICM42607_SUSPEND_DELAY_MS);
+> +	pm_runtime_use_autosuspend(dev);
+> +
+>  	return 0;
+>  }
+>  EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
+>  
+> +/*
+> + * Suspend saves sensors state and turns everything off.
+> + * Check first if runtime suspend has not already done the job.
+> + */
+> +static int inv_icm42607_suspend(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	if (pm_runtime_suspended(dev))
+> +		return 0;
+> +
+> +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+> +					 INV_ICM42607_SENSOR_MODE_OFF,
+> +					 false, NULL);
+> +	if (ret)
+> +		return ret;
+> +	regulator_disable(st->vddio_supply);
+> +
+> +	return 0;
+> +}
+> +
+> +/*
+> + * System resume gets the system back on and restores the sensors state.
+> + * Manually put runtime power management in system active state.
+> + */
+> +static int inv_icm42607_resume(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	if (pm_runtime_suspended(dev))
+> +		return 0;
+> +
+> +	ret = inv_icm42607_enable_vddio_reg(st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Nothing else to restore at this time. */
+> +
+> +	return 0;
+> +}
+> +
+> +static int inv_icm42607_runtime_suspend(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	int ret = 0;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+> +					 INV_ICM42607_SENSOR_MODE_OFF, false,
+> +					 NULL);
+> +	if (ret)
+> +		return ret;
+> +
+> +	regulator_disable(st->vddio_supply);
+> +
+> +	return 0;
+> +}
+> +
+> +static int inv_icm42607_runtime_resume(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	return inv_icm42607_enable_vddio_reg(st);
+> +}
+> +
+> +EXPORT_NS_GPL_DEV_PM_OPS(inv_icm42607_pm_ops, IIO_ICM42607) = {
+> +	SYSTEM_SLEEP_PM_OPS(inv_icm42607_suspend, inv_icm42607_resume)
+> +	RUNTIME_PM_OPS(inv_icm42607_runtime_suspend,
+> +		       inv_icm42607_runtime_resume, NULL)
 > +};
-> +EXPORT_SYMBOL_NS_GPL(inv_icm42607_regmap_config, "IIO_ICM42607");
+> +
+>  MODULE_AUTHOR("InvenSense, Inc.");
+>  MODULE_DESCRIPTION("InvenSense ICM-42607x device driver");
+>  MODULE_LICENSE("GPL");
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> index 3859517f88c9..d4fab3d12753 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+> @@ -72,6 +72,7 @@ static struct i2c_driver inv_icm42607_driver = {
+>  	.driver = {
+>  		.name = "inv-icm42607-i2c",
+>  		.of_match_table = inv_icm42607_of_matches,
+> +		.pm = pm_ptr(&inv_icm42607_pm_ops),
+>  	},
+>  	.id_table = inv_icm42607_id,
+>  	.probe = inv_icm42607_probe,
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> index 4a38a11f2bae..23204194eca5 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> @@ -79,6 +79,7 @@ static struct spi_driver inv_icm42607_driver = {
+>  	.driver = {
+>  		.name = "inv-icm42607-spi",
+>  		.of_match_table = inv_icm42607_of_matches,
+> +		.pm = pm_ptr(&inv_icm42607_pm_ops),
+>  	},
+>  	.id_table = inv_icm42607_spi_id_table,
+>  	.probe = inv_icm42607_probe,
 
 
 _______________________________________________
