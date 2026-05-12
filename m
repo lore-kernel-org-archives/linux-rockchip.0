@@ -4,103 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE85ECD37BE
-	for <linux-rockchip@archiver.kernel.org>; Mon, 11 May 2026 20:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C648CD37BE
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 01:09:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=YtB96lOilx1u2utDzEPCZfqQpOhncs7akYBBw0bCVd0=; b=cLrh51FjymJ2SY
-	e1J0y53fB7ps2mnj7eIVbGRcuJar8q8BHiHPhyue9ee7r8UyUUIRUy8voWCOGkpPQJu/6gaKsa2mC
-	5rk6LLurK7573djWjSvd+gU0pnHM8ZH9DK/GNZFLJ87mXjOCBASS+x6+XVxQDmDnjXBflz+LiMxpE
-	82Khu6pkQcpFYcGRKxVeCXQGC62ysZbYXJNvLqrHRIohM8FhC8mM+H4dl8ditTiSOVRW8Y51CcUTz
-	8xvh5SPOoVEYMfk8PGsYJmezSLdlEtFTY4yKXd8WJTP7IjlMDTPbIOCYhHNhuYU12ooNP8wOuW6Aq
-	nplUIpAvNkKA0be+rbqA==;
+	List-Owner; bh=ip43Lvnv+AGwxuNQSDG+ekNcw7hRG4SMfGXDpEsfB+Y=; b=KddZHLDMWEUTvy
+	Q6HJ3QQsVBSlzBXUhykWudk5Jy2pqXBilMw+m7TBd5WRob0MA84+FZO3R/zDq/1+LMK8acDFL2sbl
+	h4YhJkOZzJwBnDcIEJ+lepw05/5v+R4vw2Jr79bexr+b+UqzAgYqPg0h+h2I3MTiIuWGmmct4Z6kX
+	KH0u11XJfGHiX4kt7IXFh8Sjl8nlxXicM1+eFvlL0jb8knGtfzxP6kgkR9l12ltbxTc6MmXDOj7YK
+	gIVYFd5YyOpLOdl0Ari6gc67OW7UeyQvwjLbNJ9Up3zv3bKIt9PywaeHAXgNlTSd/xRzhVMt93dwO
+	enWAx2U7o1ztDc313Wjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMXRl-0000000Ejim-2VXz;
-	Mon, 11 May 2026 20:41:49 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+	id 1wMbcR-0000000F91A-0xz2;
+	Tue, 12 May 2026 01:09:07 +0000
+Received: from smtpbgbr1.qq.com ([54.207.19.206])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMXRf-0000000EjhW-19fD
-	for linux-rockchip@lists.infradead.org;
-	Mon, 11 May 2026 20:41:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1778532101;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xDfLIv6tiWpmACcsMnlD5yn+pQeqBizpoJHnp+m+Mek=;
-	b=J5BjjX6BWmkvVStnPPEJnJ0dpkln2l9LC7c7EkwUk9MiwKsoEFOCFOpOnr53maUczpjNPs
-	omxafssGgLLGafekPODPMMr8GFx45GXlWDN3n8bvDTJ87G43mMbtIXG43vCYiKYilQHzON
-	O8hijnVC8dd3dIq1Eckwlz3oW1xpXxE=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-191-eCRtTRYDPt-7jF0_JKEpAg-1; Mon, 11 May 2026 16:41:40 -0400
-X-MC-Unique: eCRtTRYDPt-7jF0_JKEpAg-1
-X-Mimecast-MFC-AGG-ID: eCRtTRYDPt-7jF0_JKEpAg_1778532099
-Received: by mail-qv1-f69.google.com with SMTP id 6a1803df08f44-8b55b5aa8c7so105299156d6.0
-        for <linux-rockchip@lists.infradead.org>; Mon, 11 May 2026 13:41:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778532099; x=1779136899;
-        h=user-agent:in-reply-to:content-transfer-encoding
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=xDfLIv6tiWpmACcsMnlD5yn+pQeqBizpoJHnp+m+Mek=;
-        b=hphunst3KkB2TRY4gAV7XM5Uf2jc1mL/a9ddxEdhCDp1PBd7D/H1X1TUAuKBAmaDW+
-         WFSsQnQDPAUXKwR3Y6POXzXgBUaifqJixV8CoH3xjCuFQsRUE+E93BL9Y2H591utMcfX
-         Gd2CzQZLK0Cp3/vgl/GbTghOoWN2LB1UISMSyFzpgdJOLCUopcpW7bk9ZMrbt15iviPY
-         My5HaueMXUfd+2gxq9PC3X1hvLzzqLNn7Mh7uz9L0LEIq+UGSbJxkrwD8K3X/8N57w8F
-         wfwd/NP72y5BLrjcCNuyOHiYDXFQsUWgG+Mm7GOkbMF39A5fS0hpW7M4ZEYKrvv1mgBU
-         dBSA==
-X-Forwarded-Encrypted: i=1; AFNElJ/CINCf708zfw1albZrtNvxZCFEeuhk4xpLutaiiM7zexqUn0DEDIIksVsjRzkn7Tbvrb4mT6L9IT3iziP5Nw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwDFMum6JHWMTCr0Zi7UzIzjZhSkGYL/+KiPont3ydP1hsQi7eg
-	c2k4f/968XYHm4rEu4A7iOaJid17YlPI8ow70iQmZ8XQboNWQ2nA64rQifU5U8YmIonCIY1yODW
-	/2CDcPOATuusU0pWhHE3MgYDvtZlbR7u18OR03RD4gZj/N03psRtcbEqIYP8tHCI16P31ekygfw
-	==
-X-Gm-Gg: Acq92OFY4hzf3N4AsvGbNjL7aDsJF9Lapsxs819yfXGVbFLtrJdZIyfTod1i3UTka7k
-	OI8yW9MR73oa+L8UNYHn0SKtfp5+U2MKkQgkslcr56l/3EcF3CyclBCpr8v7DLgob6DqDfVxwRR
-	kY/0CKugay6cwChNXqWLM9DRyz/u8rC5nJiwgbRttoSXh8w9G0XWL6bRrYLNP+CSP2t2v8+y5mx
-	YwCmfAKShwBYgWmFTJQsFjZlYECKFva7a24rhgX3mHoMwVE/QXIaC86Is8SZbG4JUz2S2+G4K8/
-	XZvHe+TmkJnt81urT4/fcwQmUvDOVLgNomGEAwml9B6GFGqK9ko62KH/hOIR59P3aW36emnY54J
-	syLY17e5UcQZGaueGiJ5NCjGwCGubyHVZt5MshXXYi+LtIkxsP3KhPw7S
-X-Received: by 2002:a05:6214:3c8c:b0:8ba:942:3e38 with SMTP id 6a1803df08f44-8c661e86acdmr4794236d6.19.1778532099475;
-        Mon, 11 May 2026 13:41:39 -0700 (PDT)
-X-Received: by 2002:a05:6214:3c8c:b0:8ba:942:3e38 with SMTP id 6a1803df08f44-8c661e86acdmr4793766d6.19.1778532098935;
-        Mon, 11 May 2026 13:41:38 -0700 (PDT)
-Received: from redhat.com (c-73-183-52-120.hsd1.pa.comcast.net. [73.183.52.120])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8bf3b0c4c9dsm108806616d6.5.2026.05.11.13.41.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 11 May 2026 13:41:38 -0700 (PDT)
-Date: Mon, 11 May 2026 16:41:36 -0400
-From: Brian Masney <bmasney@redhat.com>
-To: Rosen Penev <rosenp@gmail.com>
-Cc: linux-clk@vger.kernel.org, Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	"moderated list:ARM/Rockchip SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC support" <linux-rockchip@lists.infradead.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>
-Subject: Re: [PATCH] clk: rockchip: Use flexible array for clock table
-Message-ID: <agI_ANymmPyyWxuE@redhat.com>
-References: <20260511032252.361906-1-rosenp@gmail.com>
- <agH-ivEdw12_3OJz@redhat.com>
- <CAKxU2N-nEx-=KFh9djQRGZVTR_HJTSrJYzAa8NR+4QcNvbkxqw@mail.gmail.com>
+	id 1wMbcN-0000000F8yx-1ixH;
+	Tue, 12 May 2026 01:09:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
+	s=altu2504; t=1778548078;
+	bh=RI1LKPQBSFQGNx/RTpgPitop3o0KUtZZu7uLCufWIB0=;
+	h=Message-ID:Date:MIME-Version:Subject:To:From;
+	b=S7A2YmsA6fEl5C3RBQpGxMay4ow2yaS4xbRCSOgVLwOvjdC6xKdiAXhtJPRpmhLK/
+	 kLC8mXrPexkxCAVV8/weIrTfyuxe1XfeRkV5eYOyPNYaWnrhf2Zez8lRlFfg+8Sjyy
+	 rpyOJZI+zkbwpteo/edngd/MLjgz3llCPIZybGC4=
+X-QQ-mid: zesmtpgz6t1778548076ta5496fac
+X-QQ-Originating-IP: VqDSdyIt6ayYF87ktnGO0QYcuHE+i5xXTIoANh/OHyk=
+Received: from [172.16.12.51] ( [58.22.7.114])
+	by bizesmtp.qq.com (ESMTP) with 
+	id ; Tue, 12 May 2026 09:07:54 +0800 (CST)
+X-QQ-SSF: 0000000000000000000000000000000
+X-QQ-GoodBg: 0
+X-BIZMAIL-ID: 628164798136935440
+EX-QQ-RecipientCnt: 14
+Message-ID: <90EB6258578AF9E7+a9f8705d-48dc-4a3f-809a-fef9c8a5674e@airkyi.com>
+Date: Tue, 12 May 2026 09:07:52 +0800
 MIME-Version: 1.0
-In-Reply-To: <CAKxU2N-nEx-=KFh9djQRGZVTR_HJTSrJYzAa8NR+4QcNvbkxqw@mail.gmail.com>
-User-Agent: Mutt/2.3.1 (2026-03-20)
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mKRTPZH6SGfedKFr1K-V_XX8kfpzt8n-b1JmAu-Blm8_1778532099
-X-Mimecast-Originator: redhat.com
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] drm/rockchip: dsi: Add maximum per lane bit rate
+ calculation
+To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
+Cc: Chaoyi Chen <kernel@airkyi.com>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Guochun Huang <hero.huang@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260324085838.90-1-kernel@airkyi.com>
+Content-Language: en-US
+From: Chaoyi Chen <kernel@airkyi.com>
+In-Reply-To: <20260324085838.90-1-kernel@airkyi.com>
+X-QQ-SENDSIZE: 520
+Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
+X-QQ-XMAILINFO: Ma4CB9LXNscG/qoZMz1+xRUpjQmuWBwkmEd1e5BhyZgZasHwpQcL3CCd
+	Bp6JEOT9t0EBSUdRKsJaxI6S9Xx77aG+4tvSbXW3aRf4gsno0L61YSL9d+XLUIYgfkhgmI5
+	0cuFF752v/L7YVrJypVxQ22aGLbRp/WNyRLQQhRT7+OKgEpdZotP1TH1pxDmJatUwVyfGie
+	lCv+i9du/4s3fKjQvGt7TD+qqGzDNQUsMLMmkQXSzXboq41qTXqi9BPxvwZxhd+ioEdXbvK
+	qCm0Y/mvg0OGKyeTXFbXmITlZnI3He+IcgluGz3x95xsrCOjqz5NAfaMqbfdKXKh+c74KBu
+	Pw41phwa2qKPMcyQ4ZSB9/mQ0zRBzQzMI8Oy+1T8jTp5bxT8VhxG+IBD+ZHLpM59dl5UJJD
+	MKFB+Vn/tZEzpun2tcZ+DcexTpWYHBNeAiSdQSjV3AKngJyeh6ZtkVd7tijibmKwAKTZg9y
+	DkmO04sb85SNvLIyoxVjxual7KLLLYYl6uwFnP6VSqFiPnaNQ1Ay+IjXTLDqRgTg1ejN3Jq
+	GiwuKP7zylRsRZbEIl+l9auDjCPtgDpZCVhyiNtPhg1IXSBOtZ/PH2s6YeJAK/57SJ7RGbb
+	ak0SpGrhIw0Kzx9QxTgpSdwMOyfW7RYUapU6MRHeCfvd/2e5QQNswNUah58Ig7AK3WVy9Mv
+	b2hQgVmHiTTP6wlSjC79h+2KElMR06GinKZJh19x8STZSnX9fRE2DsxaI6bOd++/RHYnZSs
+	08rz0ZRh+uFueKGZkL1jfOxpv/CFL5O6Jlbf6mHqmU5Z7r8Si4Lg9CYvV43lA7RaT40wq8t
+	MkTSiWl3xLh5rKTHHCQgQ/eYFZPd/CmN9s1eLIVY4RDivxeqfkoBLVI4xNjVXt5Mm5mzmUZ
+	r9Ukv70kTzMR+r6HDe1KhOrbmy+2MRJ8UtOdUbwVfiy8+4mGNfD5qq8zhDtES7MLmkRPnvH
+	46Q3uYLs4gAOIcXZBBPGBQM6bRF1yvspCUk5VFzYWJE1mPhYrXU4IUA6S1YXnV9Tst5cmKb
+	T4RXiVmEQXPOaQaJ4a
+X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
+X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_134143_386585_89302F8F 
-X-CRM114-Status: GOOD (  23.33  )
+X-CRM114-CacheID: sfid-20260511_180904_282294_8168266D 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,55 +95,175 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-KyBHdXN0YXZvCgpPbiBNb24sIE1heSAxMSwgMjAyNiBhdCAxMjowODo1NlBNIC0wNzAwLCBSb3Nl
-biBQZW5ldiB3cm90ZToKPiBPbiBNb24sIE1heSAxMSwgMjAyNiBhdCA5OjA24oCvQU0gQnJpYW4g
-TWFzbmV5IDxibWFzbmV5QHJlZGhhdC5jb20+IHdyb3RlOgo+ID4KPiA+IEhpIFJvc2VuLAo+ID4K
-PiA+IE9uIFN1biwgTWF5IDEwLCAyMDI2IGF0IDA4OjIyOjUyUE0gLTA3MDAsIFJvc2VuIFBlbmV2
-IHdyb3RlOgo+ID4gPiBTdG9yZSB0aGUgY2xvY2sgbG9va3VwIHRhYmxlIGluIHRoZSBSb2NrY2hp
-cCBjbG9jayBwcm92aWRlcgo+ID4gPiBhbGxvY2F0aW9uIGluc3RlYWQgb2YgYWxsb2NhdGluZyBp
-dCBzZXBhcmF0ZWx5Lgo+ID4gPgo+ID4gPiBUaGlzIHRpZXMgdGhlIHRhYmxlIGxpZmV0aW1lIGRp
-cmVjdGx5IHRvIHRoZSBwcm92aWRlciBhbmQgcmVtb3ZlcyBhCj4gPiA+IHNlcGFyYXRlIGFsbG9j
-YXRpb24gZmFpbHVyZSBwYXRoIHdoaWxlIHByZXNlcnZpbmcgdGhlIGNsa19vbmVjZWxsX2RhdGEK
-PiA+ID4gbG9va3VwIGludGVyZmFjZS4KPiA+ID4KPiA+ID4gQXNzaXN0ZWQtYnk6IENvZGV4OkdQ
-VC01LjUKPiA+ID4gU2lnbmVkLW9mZi1ieTogUm9zZW4gUGVuZXYgPHJvc2VucEBnbWFpbC5jb20+
-Cj4gPiA+IC0tLQo+ID4gPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMgfCAxNyArKysrLS0t
-LS0tLS0tLS0tLQo+ID4gPiAgZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmggfCAgMiArKwo+ID4g
-PiAgMiBmaWxlcyBjaGFuZ2VkLCA2IGluc2VydGlvbnMoKyksIDEzIGRlbGV0aW9ucygtKQo+ID4g
-Pgo+ID4gPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMgYi9kcml2ZXJz
-L2Nsay9yb2NrY2hpcC9jbGsuYwo+ID4gPiBpbmRleCBlZThjNzliOTM4ZDMuLmRiYjRiNmYzM2Fi
-YiAxMDA2NDQKPiA+ID4gLS0tIGEvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMKPiA+ID4gKysr
-IGIvZHJpdmVycy9jbGsvcm9ja2NoaXAvY2xrLmMKPiA+ID4gQEAgLTM1OSwyNiArMzU5LDIxIEBA
-IHN0YXRpYyBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX3Byb3ZpZGVyICpyb2NrY2hpcF9jbGtfaW5pdF9i
-YXNlKAo+ID4gPiAgICAgICAgICAgICAgIHVuc2lnbmVkIGxvbmcgbnJfY2xrcywgYm9vbCBoYXNf
-bGF0ZV9jbG9ja3MpCj4gPiA+ICB7Cj4gPiA+ICAgICAgIHN0cnVjdCByb2NrY2hpcF9jbGtfcHJv
-dmlkZXIgKmN0eDsKPiA+ID4gLSAgICAgc3RydWN0IGNsayAqKmNsa190YWJsZTsKPiA+ID4gICAg
-ICAgc3RydWN0IGNsayAqZGVmYXVsdF9jbGtfdmFsOwo+ID4gPiAgICAgICBpbnQgaTsKPiA+ID4K
-PiA+ID4gICAgICAgZGVmYXVsdF9jbGtfdmFsID0gRVJSX1BUUihoYXNfbGF0ZV9jbG9ja3MgPyAt
-RVBST0JFX0RFRkVSIDogLUVOT0VOVCk7Cj4gPiA+Cj4gPiA+IC0gICAgIGN0eCA9IGt6YWxsb2Nf
-b2JqKHN0cnVjdCByb2NrY2hpcF9jbGtfcHJvdmlkZXIpOwo+ID4gPiArICAgICBjdHggPSBremFs
-bG9jX2ZsZXgoKmN0eCwgY2xrX3RhYmxlLCBucl9jbGtzKTsKPiA+ID4gICAgICAgaWYgKCFjdHgp
-Cj4gPiA+ICAgICAgICAgICAgICAgcmV0dXJuIEVSUl9QVFIoLUVOT01FTSk7Cj4gPiA+Cj4gPiA+
-IC0gICAgIGNsa190YWJsZSA9IGt6YWxsb2Nfb2JqcyhzdHJ1Y3QgY2xrICosIG5yX2Nsa3MpOwo+
-ID4gPiAtICAgICBpZiAoIWNsa190YWJsZSkKPiA+ID4gLSAgICAgICAgICAgICBnb3RvIGVycl9m
-cmVlOwo+ID4gPiAtCj4gPiA+ICAgICAgIGZvciAoaSA9IDA7IGkgPCBucl9jbGtzOyArK2kpCj4g
-PiA+IC0gICAgICAgICAgICAgY2xrX3RhYmxlW2ldID0gZGVmYXVsdF9jbGtfdmFsOwo+ID4gPiAr
-ICAgICAgICAgICAgIGN0eC0+Y2xrX3RhYmxlW2ldID0gZGVmYXVsdF9jbGtfdmFsOwo+ID4gPgo+
-ID4gPiAtICAgICBjdHgtPnJlZ19iYXNlID0gYmFzZTsKPiA+ID4gLSAgICAgY3R4LT5jbGtfZGF0
-YS5jbGtzID0gY2xrX3RhYmxlOwo+ID4gPiAgICAgICBjdHgtPmNsa19kYXRhLmNsa19udW0gPSBu
-cl9jbGtzOwo+ID4gPiArICAgICBjdHgtPmNsa19kYXRhLmNsa3MgPSBjdHgtPmNsa190YWJsZTsK
-PiA+Cj4gPiBXaGVyZSdzIHRoZSBfX2NvdW50ZWRfYnk/IEFsc28gc3RydWN0IGNsa19vbmVjZWxs
-X2RhdGEgaXMgZW1iZWRkZWQKPiA+IGluc2lkZSBzdHJ1Y3Qgcm9ja2NoaXBfY2xrX3Byb3ZpZGVy
-LCBhbmQgSSdtIG5vdCBzdXJlIG9mZmhhbmQgaG93Cj4gPiB0aGF0J2xsIHdvcmsuCj4gTm90IHBy
-ZXNlbnQuIF9fY291bnRlZF9ieSBkb2VzIG5vdCB3b3JrIHdpdGggZW1iZWRkZWQgc3RydWN0IG1l
-bWJlcnMuCj4gTm8gbmVlZCB0byBhZGQgb25lIElNTy4KCkknbGwgYmUgaG9uZXN0IHRoYXQgSSdt
-IG5vdCBzdXJlIHdoYXQncyBjb3JyZWN0IGhlcmUuIEkgYWRkZWQgR3VzdGF2bwpzaW5jZSBJIHNh
-dyBjb21tZW50cyBmcm9tIGhpbSBiZWZvcmUgYWJvdXQgdGhlc2UgdHlwZXMgb2YgY2hhbmdlcy4K
-CkJyaWFuCgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18K
-TGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVh
-ZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1y
-b2NrY2hpcAo=
+Hi,
+
+On 3/24/2026 4:58 PM, Chaoyi Chen wrote:
+> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> 
+> Different chips have varying support for the maximum bit rate per lane.
+> 
+> Add calculation for the maximum per lane bit rate for various chip
+> platforms, and relax the bandwidth margin requirements.
+> 
+> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> ---
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 21 +++++++++++++++----
+>  1 file changed, 17 insertions(+), 4 deletions(-)
+> 
+> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> index 3547d91b25d3..d3bacfae174e 100644
+> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
+> @@ -268,6 +268,7 @@ struct rockchip_dw_dsi_chip_data {
+>  
+>  	unsigned int flags;
+>  	unsigned int max_data_lanes;
+> +	unsigned long max_bit_rate_per_lane;
+>  };
+>  
+>  struct dw_mipi_dsi_rockchip {
+> @@ -565,7 +566,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  	int bpp;
+>  	unsigned long mpclk, tmp;
+>  	unsigned int target_mbps = 1000;
+> -	unsigned int max_mbps = dppa_map[ARRAY_SIZE(dppa_map) - 1].max_mbps;
+> +	unsigned int max_mbps;
+>  	unsigned long best_freq = 0;
+>  	unsigned long fvco_min, fvco_max, fin, fout;
+>  	unsigned int min_prediv, max_prediv;
+> @@ -573,6 +574,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  	unsigned long _fbdiv, best_fbdiv;
+>  	unsigned long min_delta = ULONG_MAX;
+>  
+> +	max_mbps = dsi->cdata->max_bit_rate_per_lane;
+>  	dsi->format = format;
+>  	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
+>  	if (bpp < 0) {
+> @@ -584,8 +586,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  
+>  	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
+>  	if (mpclk) {
+> -		/* take 1 / 0.8, since mbps must big than bandwidth of RGB */
+> -		tmp = mpclk * (bpp / lanes) * 10 / 8;
+> +		/* take 1 / 0.9, since mbps must big than bandwidth of RGB */
+> +		tmp = mpclk * (bpp / lanes) * 10 / 9;
+>  		if (tmp < max_mbps)
+>  			target_mbps = tmp;
+>  		else
+> @@ -595,7 +597,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
+>  
+>  	/* for external phy only a the mipi_dphy_config is necessary */
+>  	if (dsi->phy) {
+> -		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 8,
+> +		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 9,
+>  						 bpp, lanes,
+>  						 &dsi->phy_opts.mipi_dphy);
+>  		dsi->lane_mbps = target_mbps;
+> @@ -1503,6 +1505,7 @@ static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
+>  						PX30_DSI_FORCETXSTOPMODE), 0),
+>  
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1000000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+> @@ -1515,6 +1518,7 @@ static const struct rockchip_dw_dsi_chip_data rk3128_chip_data[] = {
+>  						RK3128_DSI_FORCERXMODE |
+>  						RK3128_DSI_FORCETXSTOPMODE), 0),
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1000000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+> @@ -1527,6 +1531,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
+>  		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI0_LCDC_SEL, 1),
+>  
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1500000000UL,
+>  	},
+>  	{
+>  		.reg = 0xff964000,
+> @@ -1535,6 +1540,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
+>  		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI1_LCDC_SEL, 1),
+>  
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1500000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+> @@ -1547,6 +1553,7 @@ static const struct rockchip_dw_dsi_chip_data rk3368_chip_data[] = {
+>  						RK3368_DSI_FORCETXSTOPMODE |
+>  						RK3368_DSI_FORCERXMODE), 0),
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1500000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+> @@ -1634,6 +1641,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+>  
+>  		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1500000000UL,
+>  	},
+>  	{
+>  		.reg = 0xff968000,
+> @@ -1658,6 +1666,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
+>  
+>  		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1500000000UL,
+>  
+>  		.dphy_rx_init = rk3399_dphy_tx1rx1_init,
+>  		.dphy_rx_power_on = rk3399_dphy_tx1rx1_power_on,
+> @@ -1674,6 +1683,7 @@ static const struct rockchip_dw_dsi_chip_data rk3506_chip_data[] = {
+>  			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCERXMODE, 0) |
+>  			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCETXSTOPMODE, 0)),
+>  		.max_data_lanes = 2,
+> +		.max_bit_rate_per_lane = 1500000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+> @@ -1687,6 +1697,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
+>  			     FIELD_PREP_WM16_CONST(RK3568_DSI0_TURNDISABLE, 0) |
+>  			     FIELD_PREP_WM16_CONST(RK3568_DSI0_FORCERXMODE, 0)),
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1200000000UL,
+>  	},
+>  	{
+>  		.reg = 0xfe070000,
+> @@ -1696,6 +1707,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
+>  			     FIELD_PREP_WM16_CONST(RK3568_DSI1_TURNDISABLE, 0) |
+>  			     FIELD_PREP_WM16_CONST(RK3568_DSI1_FORCERXMODE, 0)),
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1200000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+> @@ -1708,6 +1720,7 @@ static const struct rockchip_dw_dsi_chip_data rv1126_chip_data[] = {
+>  			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCERXMODE, 0) |
+>  			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCETXSTOPMODE, 0)),
+>  		.max_data_lanes = 4,
+> +		.max_bit_rate_per_lane = 1000000000UL,
+>  	},
+>  	{ /* sentinel */ }
+>  };
+
+Gentle ping about this.
+
+Thanks!
+
+-- 
+Best, 
+Chaoyi
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
