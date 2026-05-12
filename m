@@ -4,86 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C648CD37BE
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 01:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C6A3CD484E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 06:33:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ip43Lvnv+AGwxuNQSDG+ekNcw7hRG4SMfGXDpEsfB+Y=; b=KddZHLDMWEUTvy
-	Q6HJ3QQsVBSlzBXUhykWudk5Jy2pqXBilMw+m7TBd5WRob0MA84+FZO3R/zDq/1+LMK8acDFL2sbl
-	h4YhJkOZzJwBnDcIEJ+lepw05/5v+R4vw2Jr79bexr+b+UqzAgYqPg0h+h2I3MTiIuWGmmct4Z6kX
-	KH0u11XJfGHiX4kt7IXFh8Sjl8nlxXicM1+eFvlL0jb8knGtfzxP6kgkR9l12ltbxTc6MmXDOj7YK
-	gIVYFd5YyOpLOdl0Ari6gc67OW7UeyQvwjLbNJ9Up3zv3bKIt9PywaeHAXgNlTSd/xRzhVMt93dwO
-	enWAx2U7o1ztDc313Wjg==;
+	List-Owner; bh=4BpDB1h1Fd7Tr5y7sFJUUItgn7iXmWHgFVV39fiqjs0=; b=ykf/4GX1l5q0zo
+	2yRN26TIaMa6/wUACkHEXNkO9jvxtj/eCPfj+IHZnf4cbFqhi0xPeBXrTfF+GFxil0a9JrDLnicGq
+	hLsfec3RwmI0X45KxipE9B+L671tP7hn0w/vRBEOYWxmcf+QQBnJ25LNdLxoZRq2HI5qSzWqKkOkW
+	0HALlZsCYr4/ZcTqYd1XNymi95AyX9OGw0zqRYnJfHJo0JvEe0w2Vwnul3lRXamaIMwuwLamZQqMK
+	TFhkXFnWXxN2TCY/UUg/ukUo94HrbTq5tH0Kpd8k2V4wURZunfRzBa4LprGiZCnZjNj4DaZR0pv2p
+	piz8mIcteBW/PxLQNElw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMbcR-0000000F91A-0xz2;
-	Tue, 12 May 2026 01:09:07 +0000
-Received: from smtpbgbr1.qq.com ([54.207.19.206])
+	id 1wMggW-0000000FmhV-1Llw;
+	Tue, 12 May 2026 06:33:40 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMbcN-0000000F8yx-1ixH;
-	Tue, 12 May 2026 01:09:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1778548078;
-	bh=RI1LKPQBSFQGNx/RTpgPitop3o0KUtZZu7uLCufWIB0=;
-	h=Message-ID:Date:MIME-Version:Subject:To:From;
-	b=S7A2YmsA6fEl5C3RBQpGxMay4ow2yaS4xbRCSOgVLwOvjdC6xKdiAXhtJPRpmhLK/
-	 kLC8mXrPexkxCAVV8/weIrTfyuxe1XfeRkV5eYOyPNYaWnrhf2Zez8lRlFfg+8Sjyy
-	 rpyOJZI+zkbwpteo/edngd/MLjgz3llCPIZybGC4=
-X-QQ-mid: zesmtpgz6t1778548076ta5496fac
-X-QQ-Originating-IP: VqDSdyIt6ayYF87ktnGO0QYcuHE+i5xXTIoANh/OHyk=
-Received: from [172.16.12.51] ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Tue, 12 May 2026 09:07:54 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 628164798136935440
-EX-QQ-RecipientCnt: 14
-Message-ID: <90EB6258578AF9E7+a9f8705d-48dc-4a3f-809a-fef9c8a5674e@airkyi.com>
-Date: Tue, 12 May 2026 09:07:52 +0800
+	id 1wMggS-0000000Fmgk-3xLz;
+	Tue, 12 May 2026 06:33:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id B0B2F4371F;
+	Tue, 12 May 2026 06:33:35 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 567B5C2BCB0;
+	Tue, 12 May 2026 06:33:33 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778567615;
+	bh=xNi1kd8WlkN8N33Jaa7B4JWe6dw8RcmXjGPDaus5LMs=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
+	b=KWmpC+3Cmdqc1z5w9jHAEyOWFkhE+mOlkgUJLCATGk3QZbur2g/7vN5hXVfAAJapx
+	 XLBOMg7dUkNVeDdXE8eB8btK+/g+FqVtLpHzo9fwknFyNtCB1rlcYxaLrzwG2ER04t
+	 5itqeOxxFnnua6/VMiaoTJSHD1f70I19459mtQX93FmSXliKm3Zn4mfocx+b7s6Zjd
+	 h+cc1Qi+NAz+KSt4hbqtxxtoeQ/xbXc8pCDolrlz/91hapoNCaDpZglKJp/edTcWMP
+	 bV1oCLtvui0ENgxwwxB7mwRbtZpZr1rynu2jxsxFa1JFhgTB0UZ4+LEyfAclCNdhNF
+	 004I2/kXre37w==
+Message-ID: <1f48d0fd-729e-4694-bb8a-4ce6c6f3675f@kernel.org>
+Date: Tue, 12 May 2026 08:33:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] drm/rockchip: dsi: Add maximum per lane bit rate
- calculation
-To: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>
-Cc: Chaoyi Chen <kernel@airkyi.com>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Guochun Huang <hero.huang@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <20260324085838.90-1-kernel@airkyi.com>
-Content-Language: en-US
-From: Chaoyi Chen <kernel@airkyi.com>
-In-Reply-To: <20260324085838.90-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpgz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: Ma4CB9LXNscG/qoZMz1+xRUpjQmuWBwkmEd1e5BhyZgZasHwpQcL3CCd
-	Bp6JEOT9t0EBSUdRKsJaxI6S9Xx77aG+4tvSbXW3aRf4gsno0L61YSL9d+XLUIYgfkhgmI5
-	0cuFF752v/L7YVrJypVxQ22aGLbRp/WNyRLQQhRT7+OKgEpdZotP1TH1pxDmJatUwVyfGie
-	lCv+i9du/4s3fKjQvGt7TD+qqGzDNQUsMLMmkQXSzXboq41qTXqi9BPxvwZxhd+ioEdXbvK
-	qCm0Y/mvg0OGKyeTXFbXmITlZnI3He+IcgluGz3x95xsrCOjqz5NAfaMqbfdKXKh+c74KBu
-	Pw41phwa2qKPMcyQ4ZSB9/mQ0zRBzQzMI8Oy+1T8jTp5bxT8VhxG+IBD+ZHLpM59dl5UJJD
-	MKFB+Vn/tZEzpun2tcZ+DcexTpWYHBNeAiSdQSjV3AKngJyeh6ZtkVd7tijibmKwAKTZg9y
-	DkmO04sb85SNvLIyoxVjxual7KLLLYYl6uwFnP6VSqFiPnaNQ1Ay+IjXTLDqRgTg1ejN3Jq
-	GiwuKP7zylRsRZbEIl+l9auDjCPtgDpZCVhyiNtPhg1IXSBOtZ/PH2s6YeJAK/57SJ7RGbb
-	ak0SpGrhIw0Kzx9QxTgpSdwMOyfW7RYUapU6MRHeCfvd/2e5QQNswNUah58Ig7AK3WVy9Mv
-	b2hQgVmHiTTP6wlSjC79h+2KElMR06GinKZJh19x8STZSnX9fRE2DsxaI6bOd++/RHYnZSs
-	08rz0ZRh+uFueKGZkL1jfOxpv/CFL5O6Jlbf6mHqmU5Z7r8Si4Lg9CYvV43lA7RaT40wq8t
-	MkTSiWl3xLh5rKTHHCQgQ/eYFZPd/CmN9s1eLIVY4RDivxeqfkoBLVI4xNjVXt5Mm5mzmUZ
-	r9Ukv70kTzMR+r6HDe1KhOrbmy+2MRJ8UtOdUbwVfiy8+4mGNfD5qq8zhDtES7MLmkRPnvH
-	46Q3uYLs4gAOIcXZBBPGBQM6bRF1yvspCUk5VFzYWJE1mPhYrXU4IUA6S1YXnV9Tst5cmKb
-	T4RXiVmEQXPOaQaJ4a
-X-QQ-XMRINFO: NS+P29fieYNwqS3WCnRCOn9D1NpZuCnCRA==
-X-QQ-RECHKSPAM: 0
+From: Hans Verkuil <hverkuil+cisco@kernel.org>
+Subject: Re: [PATCH v4] media: verisilicon: Create AV1 helper library
+To: Benjamin Gaignard <benjamin.gaignard@collabora.com>,
+ nicolas.dufresne@collabora.com, p.zabel@pengutronix.de, mchehab@kernel.org,
+ heiko@sntech.de
+Cc: linux-kernel@vger.kernel.org, linux-media@vger.kernel.org,
+ linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com
+References: <20260505081939.17230-1-benjamin.gaignard@collabora.com>
+Content-Language: en-US, nl
+In-Reply-To: <20260505081939.17230-1-benjamin.gaignard@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260511_180904_282294_8168266D 
-X-CRM114-Status: GOOD (  18.90  )
+X-CRM114-CacheID: sfid-20260511_233337_048685_284F45E9 
+X-CRM114-Status: GOOD (  24.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,168 +75,1063 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Hi Benjamin,
 
-On 3/24/2026 4:58 PM, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+It looks much better now that it uses a struct.
+
+I have some other comments, though:
+
+On 05/05/2026 10:19, Benjamin Gaignard wrote:
+> Regroup all none hardware related AV1 functions into a helper library.
+> The goal is to avoid code duplication for future AV1 codecs.
 > 
-> Different chips have varying support for the maximum bit rate per lane.
+> Tested on rock 5b board Fluster score remains the same 204/241.
 > 
-> Add calculation for the maximum per lane bit rate for various chip
-> platforms, and relax the bandwidth margin requirements.
-> 
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+> Signed-off-by: Benjamin Gaignard <benjamin.gaignard@collabora.com>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 > ---
->  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 21 +++++++++++++++----
->  1 file changed, 17 insertions(+), 4 deletions(-)
+> version 4:
+> - change functions prototypes to use a structure.
+> - rebased on v7.1-rc2 tag.
 > 
-> diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> index 3547d91b25d3..d3bacfae174e 100644
-> --- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-> @@ -268,6 +268,7 @@ struct rockchip_dw_dsi_chip_data {
->  
->  	unsigned int flags;
->  	unsigned int max_data_lanes;
-> +	unsigned long max_bit_rate_per_lane;
->  };
->  
->  struct dw_mipi_dsi_rockchip {
-> @@ -565,7 +566,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  	int bpp;
->  	unsigned long mpclk, tmp;
->  	unsigned int target_mbps = 1000;
-> -	unsigned int max_mbps = dppa_map[ARRAY_SIZE(dppa_map) - 1].max_mbps;
-> +	unsigned int max_mbps;
->  	unsigned long best_freq = 0;
->  	unsigned long fvco_min, fvco_max, fin, fout;
->  	unsigned int min_prediv, max_prediv;
-> @@ -573,6 +574,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  	unsigned long _fbdiv, best_fbdiv;
->  	unsigned long min_delta = ULONG_MAX;
->  
-> +	max_mbps = dsi->cdata->max_bit_rate_per_lane;
->  	dsi->format = format;
->  	bpp = mipi_dsi_pixel_format_to_bpp(dsi->format);
->  	if (bpp < 0) {
-> @@ -584,8 +586,8 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  
->  	mpclk = DIV_ROUND_UP(mode->clock, MSEC_PER_SEC);
->  	if (mpclk) {
-> -		/* take 1 / 0.8, since mbps must big than bandwidth of RGB */
-> -		tmp = mpclk * (bpp / lanes) * 10 / 8;
-> +		/* take 1 / 0.9, since mbps must big than bandwidth of RGB */
-> +		tmp = mpclk * (bpp / lanes) * 10 / 9;
->  		if (tmp < max_mbps)
->  			target_mbps = tmp;
->  		else
-> @@ -595,7 +597,7 @@ dw_mipi_dsi_get_lane_mbps(void *priv_data, const struct drm_display_mode *mode,
->  
->  	/* for external phy only a the mipi_dphy_config is necessary */
->  	if (dsi->phy) {
-> -		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 8,
-> +		phy_mipi_dphy_get_default_config(mode->clock * 1000 * 10 / 9,
->  						 bpp, lanes,
->  						 &dsi->phy_opts.mipi_dphy);
->  		dsi->lane_mbps = target_mbps;
-> @@ -1503,6 +1505,7 @@ static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
->  						PX30_DSI_FORCETXSTOPMODE), 0),
->  
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1000000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
-> @@ -1515,6 +1518,7 @@ static const struct rockchip_dw_dsi_chip_data rk3128_chip_data[] = {
->  						RK3128_DSI_FORCERXMODE |
->  						RK3128_DSI_FORCETXSTOPMODE), 0),
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1000000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
-> @@ -1527,6 +1531,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
->  		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI0_LCDC_SEL, 1),
->  
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1500000000UL,
->  	},
->  	{
->  		.reg = 0xff964000,
-> @@ -1535,6 +1540,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
->  		.lcdsel_lit = FIELD_PREP_WM16_CONST(RK3288_DSI1_LCDC_SEL, 1),
->  
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1500000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
-> @@ -1547,6 +1553,7 @@ static const struct rockchip_dw_dsi_chip_data rk3368_chip_data[] = {
->  						RK3368_DSI_FORCETXSTOPMODE |
->  						RK3368_DSI_FORCERXMODE), 0),
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1500000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
-> @@ -1634,6 +1641,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
->  
->  		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1500000000UL,
->  	},
->  	{
->  		.reg = 0xff968000,
-> @@ -1658,6 +1666,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
->  
->  		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1500000000UL,
->  
->  		.dphy_rx_init = rk3399_dphy_tx1rx1_init,
->  		.dphy_rx_power_on = rk3399_dphy_tx1rx1_power_on,
-> @@ -1674,6 +1683,7 @@ static const struct rockchip_dw_dsi_chip_data rk3506_chip_data[] = {
->  			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCERXMODE, 0) |
->  			     FIELD_PREP_WM16_CONST(RK3506_DSI_FORCETXSTOPMODE, 0)),
->  		.max_data_lanes = 2,
-> +		.max_bit_rate_per_lane = 1500000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
-> @@ -1687,6 +1697,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
->  			     FIELD_PREP_WM16_CONST(RK3568_DSI0_TURNDISABLE, 0) |
->  			     FIELD_PREP_WM16_CONST(RK3568_DSI0_FORCERXMODE, 0)),
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1200000000UL,
->  	},
->  	{
->  		.reg = 0xfe070000,
-> @@ -1696,6 +1707,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
->  			     FIELD_PREP_WM16_CONST(RK3568_DSI1_TURNDISABLE, 0) |
->  			     FIELD_PREP_WM16_CONST(RK3568_DSI1_FORCERXMODE, 0)),
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1200000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
-> @@ -1708,6 +1720,7 @@ static const struct rockchip_dw_dsi_chip_data rv1126_chip_data[] = {
->  			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCERXMODE, 0) |
->  			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCETXSTOPMODE, 0)),
->  		.max_data_lanes = 4,
-> +		.max_bit_rate_per_lane = 1000000000UL,
->  	},
->  	{ /* sentinel */ }
->  };
+>  drivers/media/platform/verisilicon/Makefile   |   7 +-
+>  .../media/platform/verisilicon/hantro_av1.c   | 782 ++++++++++++++
+>  .../media/platform/verisilicon/hantro_av1.h   |  62 ++
+>  ...entropymode.c => hantro_av1_entropymode.c} |  18 +-
+>  ...entropymode.h => hantro_av1_entropymode.h} |  18 +-
+>  ...av1_filmgrain.c => hantro_av1_filmgrain.c} | 125 ++-
+>  .../verisilicon/hantro_av1_filmgrain.h        |  48 +
+>  .../media/platform/verisilicon/hantro_hw.h    |   7 +-
+>  .../verisilicon/rockchip_av1_filmgrain.h      |  36 -
+>  .../verisilicon/rockchip_vpu981_hw_av1_dec.c  | 977 ++----------------
+>  .../platform/verisilicon/rockchip_vpu_hw.c    |   7 +-
+>  11 files changed, 1076 insertions(+), 1011 deletions(-)
+>  create mode 100644 drivers/media/platform/verisilicon/hantro_av1.c
+>  create mode 100644 drivers/media/platform/verisilicon/hantro_av1.h
+>  rename drivers/media/platform/verisilicon/{rockchip_av1_entropymode.c => hantro_av1_entropymode.c} (99%)
+>  rename drivers/media/platform/verisilicon/{rockchip_av1_entropymode.h => hantro_av1_entropymode.h} (95%)
+>  rename drivers/media/platform/verisilicon/{rockchip_av1_filmgrain.c => hantro_av1_filmgrain.c} (85%)
+>  create mode 100644 drivers/media/platform/verisilicon/hantro_av1_filmgrain.h
+>  delete mode 100644 drivers/media/platform/verisilicon/rockchip_av1_filmgrain.h
+> 
 
-Gentle ping about this.
+<snip>
 
-Thanks!
+> diff --git a/drivers/media/platform/verisilicon/hantro_av1.c b/drivers/media/platform/verisilicon/hantro_av1.c
+> new file mode 100644
+> index 000000000000..7258a749f7b5
+> --- /dev/null
+> +++ b/drivers/media/platform/verisilicon/hantro_av1.c
+> @@ -0,0 +1,782 @@
 
--- 
-Best, 
-Chaoyi
+<snip>
 
+> +int hantro_av1_get_frame_index(struct hantro_ctx *ctx, int ref)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	u64 timestamp;
+> +	int i, idx = frame->ref_frame_idx[ref];
 
+It's probably wise to check that 'ref' isn't out of bounds (< 0 or
+>= V4L2_AV1_REFS_PER_FRAME).
+
+> +
+> +	if (idx >= V4L2_AV1_TOTAL_REFS_PER_FRAME || idx < 0)
+> +		return AV1_INVALID_IDX;
+> +
+> +	timestamp = frame->reference_frame_ts[idx];
+> +	for (i = 0; i < AV1_MAX_FRAME_BUF_COUNT; i++) {
+> +		if (!av1_dec->frame_refs[i].used)
+> +			continue;
+> +		if (av1_dec->frame_refs[i].timestamp == timestamp)
+> +			return i;
+> +	}
+> +
+> +	return AV1_INVALID_IDX;
+> +}
+> +
+> +int hantro_av1_get_order_hint(struct hantro_ctx *ctx, int ref)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	int idx = hantro_av1_get_frame_index(ctx, ref);
+> +
+> +	if (idx != AV1_INVALID_IDX)
+> +		return av1_dec->frame_refs[idx].order_hint;
+> +
+> +	return 0;
+> +}
+> +
+> +int hantro_av1_frame_ref(struct hantro_ctx *ctx, u64 timestamp)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	int i;
+> +
+> +	for (i = 0; i < AV1_MAX_FRAME_BUF_COUNT; i++) {
+> +		int j;
+> +
+> +		if (av1_dec->frame_refs[i].used)
+> +			continue;
+> +
+> +		av1_dec->frame_refs[i].width = frame->frame_width_minus_1 + 1;
+> +		av1_dec->frame_refs[i].height = frame->frame_height_minus_1 + 1;
+> +		av1_dec->frame_refs[i].mi_cols = DIV_ROUND_UP(frame->frame_width_minus_1 + 1, 8);
+> +		av1_dec->frame_refs[i].mi_rows = DIV_ROUND_UP(frame->frame_height_minus_1 + 1, 8);
+> +		av1_dec->frame_refs[i].timestamp = timestamp;
+> +		av1_dec->frame_refs[i].frame_type = frame->frame_type;
+> +		av1_dec->frame_refs[i].order_hint = frame->order_hint;
+> +		av1_dec->frame_refs[i].vb2_ref = hantro_get_dst_buf(ctx);
+> +
+> +		for (j = 0; j < V4L2_AV1_TOTAL_REFS_PER_FRAME; j++)
+> +			av1_dec->frame_refs[i].order_hints[j] = frame->order_hints[j];
+> +		av1_dec->frame_refs[i].used = true;
+> +		av1_dec->current_frame_index = i;
+> +
+> +		return i;
+> +	}
+> +
+> +	return AV1_INVALID_IDX;
+> +}
+> +
+> +static void hantro_av1_frame_unref(struct hantro_ctx *ctx, int idx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +
+> +	if (idx >= 0)
+> +		av1_dec->frame_refs[idx].used = false;
+> +}
+> +
+> +void hantro_av1_clean_refs(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +
+> +	int ref, idx;
+> +
+> +	for (idx = 0; idx < AV1_MAX_FRAME_BUF_COUNT; idx++) {
+> +		u64 timestamp = av1_dec->frame_refs[idx].timestamp;
+> +		bool used = false;
+> +
+> +		if (!av1_dec->frame_refs[idx].used)
+> +			continue;
+> +
+> +		for (ref = 0; ref < V4L2_AV1_TOTAL_REFS_PER_FRAME; ref++) {
+> +			if (ctrls->frame->reference_frame_ts[ref] == timestamp)
+> +				used = true;
+> +		}
+> +
+> +		if (!used)
+> +			hantro_av1_frame_unref(ctx, idx);
+> +	}
+> +}
+> +
+> +size_t hantro_av1_luma_size(struct hantro_ctx *ctx)
+> +{
+> +	return ctx->ref_fmt.plane_fmt[0].bytesperline * ctx->ref_fmt.height;
+> +}
+> +
+> +size_t hantro_av1_chroma_size(struct hantro_ctx *ctx)
+> +{
+> +	size_t cr_offset = hantro_av1_luma_size(ctx);
+> +
+> +	return ALIGN((cr_offset * 3) / 2, 64);
+> +}
+> +
+> +static void hantro_av1_tiles_free(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_dev *vpu = ctx->dev;
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +
+> +	if (av1_dec->db_data_col.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->db_data_col.size,
+> +				  av1_dec->db_data_col.cpu,
+> +				  av1_dec->db_data_col.dma);
+> +	av1_dec->db_data_col.cpu = NULL;
+> +
+> +	if (av1_dec->db_ctrl_col.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->db_ctrl_col.size,
+> +				  av1_dec->db_ctrl_col.cpu,
+> +				  av1_dec->db_ctrl_col.dma);
+> +	av1_dec->db_ctrl_col.cpu = NULL;
+> +
+> +	if (av1_dec->cdef_col.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->cdef_col.size,
+> +				  av1_dec->cdef_col.cpu, av1_dec->cdef_col.dma);
+> +	av1_dec->cdef_col.cpu = NULL;
+> +
+> +	if (av1_dec->sr_col.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->sr_col.size,
+> +				  av1_dec->sr_col.cpu, av1_dec->sr_col.dma);
+> +	av1_dec->sr_col.cpu = NULL;
+> +
+> +	if (av1_dec->lr_col.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->lr_col.size,
+> +				  av1_dec->lr_col.cpu, av1_dec->lr_col.dma);
+> +	av1_dec->lr_col.cpu = NULL;
+> +}
+> +
+> +static int hantro_av1_tiles_reallocate(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_dev *vpu = ctx->dev;
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_av1_tile_info *tile_info = &ctrls->frame->tile_info;
+> +	unsigned int num_tile_cols = tile_info->tile_cols;
+> +	unsigned int height = ALIGN(ctrls->frame->frame_height_minus_1 + 1, 64);
+> +	unsigned int height_in_sb = height / 64;
+> +	unsigned int stripe_num = ((height + 8) + 63) / 64;
+> +	size_t size;
+> +
+> +	if (av1_dec->db_data_col.size >=
+> +	    ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols)
+> +		return 0;
+> +
+> +	hantro_av1_tiles_free(ctx);
+> +
+> +	size = ALIGN(height * 12 * ctx->bit_depth / 8, 128) * num_tile_cols;
+> +	av1_dec->db_data_col.cpu = dma_alloc_coherent(vpu->dev, size,
+> +						      &av1_dec->db_data_col.dma,
+> +						      GFP_KERNEL);
+> +	if (!av1_dec->db_data_col.cpu)
+> +		goto buffer_allocation_error;
+> +	av1_dec->db_data_col.size = size;
+> +
+> +	size = ALIGN(height * 2 * 16 / 4, 128) * num_tile_cols;
+> +	av1_dec->db_ctrl_col.cpu = dma_alloc_coherent(vpu->dev, size,
+> +						      &av1_dec->db_ctrl_col.dma,
+> +						      GFP_KERNEL);
+> +	if (!av1_dec->db_ctrl_col.cpu)
+> +		goto buffer_allocation_error;
+> +	av1_dec->db_ctrl_col.size = size;
+> +
+> +	size = ALIGN(height_in_sb * 44 * ctx->bit_depth * 16 / 8, 128) * num_tile_cols;
+> +	av1_dec->cdef_col.cpu = dma_alloc_coherent(vpu->dev, size,
+> +						   &av1_dec->cdef_col.dma,
+> +						   GFP_KERNEL);
+> +	if (!av1_dec->cdef_col.cpu)
+> +		goto buffer_allocation_error;
+> +	av1_dec->cdef_col.size = size;
+> +
+> +	size = ALIGN(height_in_sb * (3040 + 1280), 128) * num_tile_cols;
+> +	av1_dec->sr_col.cpu = dma_alloc_coherent(vpu->dev, size,
+> +						 &av1_dec->sr_col.dma,
+> +						 GFP_KERNEL);
+> +	if (!av1_dec->sr_col.cpu)
+> +		goto buffer_allocation_error;
+> +	av1_dec->sr_col.size = size;
+> +
+> +	size = ALIGN(stripe_num * 1536 * ctx->bit_depth / 8, 128) * num_tile_cols;
+> +	av1_dec->lr_col.cpu = dma_alloc_coherent(vpu->dev, size,
+> +						 &av1_dec->lr_col.dma,
+> +						 GFP_KERNEL);
+> +	if (!av1_dec->lr_col.cpu)
+> +		goto buffer_allocation_error;
+> +	av1_dec->lr_col.size = size;
+> +
+> +	av1_dec->num_tile_cols_allocated = num_tile_cols;
+> +	return 0;
+> +
+> +buffer_allocation_error:
+> +	hantro_av1_tiles_free(ctx);
+> +	return -ENOMEM;
+> +}
+> +
+> +void hantro_av1_exit(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_dev *vpu = ctx->dev;
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +
+> +	if (av1_dec->global_model.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->global_model.size,
+> +				  av1_dec->global_model.cpu,
+> +				  av1_dec->global_model.dma);
+> +	av1_dec->global_model.cpu = NULL;
+> +
+> +	if (av1_dec->tile_info.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->tile_info.size,
+> +				  av1_dec->tile_info.cpu,
+> +				  av1_dec->tile_info.dma);
+> +	av1_dec->tile_info.cpu = NULL;
+> +
+> +	if (av1_dec->film_grain.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->film_grain.size,
+> +				  av1_dec->film_grain.cpu,
+> +				  av1_dec->film_grain.dma);
+> +	av1_dec->film_grain.cpu = NULL;
+> +
+> +	if (av1_dec->prob_tbl.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->prob_tbl.size,
+> +				  av1_dec->prob_tbl.cpu, av1_dec->prob_tbl.dma);
+> +	av1_dec->prob_tbl.cpu = NULL;
+> +
+> +	if (av1_dec->prob_tbl_out.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->prob_tbl_out.size,
+> +				  av1_dec->prob_tbl_out.cpu,
+> +				  av1_dec->prob_tbl_out.dma);
+> +	av1_dec->prob_tbl_out.cpu = NULL;
+> +
+> +	if (av1_dec->tile_buf.cpu)
+> +		dma_free_coherent(vpu->dev, av1_dec->tile_buf.size,
+> +				  av1_dec->tile_buf.cpu, av1_dec->tile_buf.dma);
+> +	av1_dec->tile_buf.cpu = NULL;
+> +
+> +	hantro_av1_tiles_free(ctx);
+> +}
+> +
+> +int hantro_av1_init(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_dev *vpu = ctx->dev;
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +
+> +	memset(av1_dec, 0, sizeof(*av1_dec));
+> +
+> +	av1_dec->global_model.cpu = dma_alloc_coherent(vpu->dev, GLOBAL_MODEL_SIZE,
+> +						       &av1_dec->global_model.dma,
+> +						       GFP_KERNEL);
+> +	if (!av1_dec->global_model.cpu)
+> +		return -ENOMEM;
+> +	av1_dec->global_model.size = GLOBAL_MODEL_SIZE;
+> +
+> +	av1_dec->tile_info.cpu = dma_alloc_coherent(vpu->dev, AV1_TILE_INFO_SIZE,
+> +						    &av1_dec->tile_info.dma,
+> +						    GFP_KERNEL);
+> +	if (!av1_dec->tile_info.cpu)
+> +		return -ENOMEM;
+> +	av1_dec->tile_info.size = AV1_TILE_INFO_SIZE;
+> +
+> +	av1_dec->film_grain.cpu = dma_alloc_coherent(vpu->dev,
+> +						     ALIGN(sizeof(struct hantro_av1_film_grain),
+> +							   2048),
+> +						     &av1_dec->film_grain.dma,
+> +						     GFP_KERNEL);
+> +	if (!av1_dec->film_grain.cpu)
+> +		return -ENOMEM;
+> +	av1_dec->film_grain.size = ALIGN(sizeof(struct hantro_av1_film_grain), 2048);
+> +
+> +	av1_dec->prob_tbl.cpu = dma_alloc_coherent(vpu->dev,
+> +						   ALIGN(sizeof(struct av1cdfs), 2048),
+> +						   &av1_dec->prob_tbl.dma,
+> +						   GFP_KERNEL);
+> +	if (!av1_dec->prob_tbl.cpu)
+> +		return -ENOMEM;
+> +	av1_dec->prob_tbl.size = ALIGN(sizeof(struct av1cdfs), 2048);
+> +
+> +	av1_dec->prob_tbl_out.cpu = dma_alloc_coherent(vpu->dev,
+> +						       ALIGN(sizeof(struct av1cdfs), 2048),
+> +						       &av1_dec->prob_tbl_out.dma,
+> +						       GFP_KERNEL);
+> +	if (!av1_dec->prob_tbl_out.cpu)
+> +		return -ENOMEM;
+> +	av1_dec->prob_tbl_out.size = ALIGN(sizeof(struct av1cdfs), 2048);
+> +	av1_dec->cdfs = &av1_dec->default_cdfs;
+> +	av1_dec->cdfs_ndvc = &av1_dec->default_cdfs_ndvc;
+> +
+> +	hantro_av1_set_default_cdfs(av1_dec->cdfs, av1_dec->cdfs_ndvc);
+> +
+> +	av1_dec->tile_buf.cpu = dma_alloc_coherent(vpu->dev,
+> +						   AV1_TILE_SIZE,
+> +						   &av1_dec->tile_buf.dma,
+> +						   GFP_KERNEL);
+> +	if (!av1_dec->tile_buf.cpu)
+> +		return -ENOMEM;
+> +	av1_dec->tile_buf.size = AV1_TILE_SIZE;
+> +
+> +	return 0;
+> +}
+> +
+> +int hantro_av1_prepare_run(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +
+> +	ctrls->sequence = hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_SEQUENCE);
+> +	if (WARN_ON(!ctrls->sequence))
+> +		return -EINVAL;
+> +
+> +	ctrls->tile_group_entry =
+> +	    hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_TILE_GROUP_ENTRY);
+> +	if (WARN_ON(!ctrls->tile_group_entry))
+> +		return -EINVAL;
+> +
+> +	ctrls->frame = hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_FRAME);
+> +	if (WARN_ON(!ctrls->frame))
+> +		return -EINVAL;
+> +
+> +	ctrls->film_grain =
+> +	    hantro_get_ctrl(ctx, V4L2_CID_STATELESS_AV1_FILM_GRAIN);
+> +
+> +	return hantro_av1_tiles_reallocate(ctx);
+> +}
+> +
+> +static int hantro_av1_get_msb(u32 n)
+> +{
+> +	if (n == 0)
+> +		return 0;
+> +	return 31 ^ __builtin_clz(n);
+> +}
+> +
+> +static short hantro_av1_resolve_divisor_32(u32 d, short *shift)
+> +{
+> +	int f;
+> +	u64 e;
+> +
+> +	*shift = hantro_av1_get_msb(d);
+> +	/* e is obtained from D after resetting the most significant 1 bit. */
+> +	e = d - ((u32)1 << *shift);
+> +	/* Get the most significant DIV_LUT_BITS (8) bits of e into f */
+> +	if (*shift > DIV_LUT_BITS)
+> +		f = AV1_DIV_ROUND_UP_POW2(e, *shift - DIV_LUT_BITS);
+> +	else
+> +		f = e << (DIV_LUT_BITS - *shift);
+> +	if (f > DIV_LUT_NUM)
+> +		return -1;
+> +	*shift += DIV_LUT_PREC_BITS;
+> +	/* Use f as lookup into the precomputed table of multipliers */
+> +	return div_lut[f];
+> +}
+> +
+> +static void hantro_av1_get_shear_params(const u32 *params, s64 *alpha,
+> +					s64 *beta, s64 *gamma, s64 *delta)
+> +{
+> +	const int *mat = params;
+> +	short shift;
+> +	short y;
+> +	long long gv, dv;
+> +
+> +	if (mat[2] <= 0)
+> +		return;
+> +
+> +	*alpha = clamp_val(mat[2] - (1 << WARPEDMODEL_PREC_BITS), S16_MIN, S16_MAX);
+> +	*beta = clamp_val(mat[3], S16_MIN, S16_MAX);
+> +
+> +	y = hantro_av1_resolve_divisor_32(abs(mat[2]), &shift) * (mat[2] < 0 ? -1 : 1);
+> +
+> +	gv = ((long long)mat[4] * (1 << WARPEDMODEL_PREC_BITS)) * y;
+> +
+> +	*gamma = clamp_val((int)AV1_DIV_ROUND_UP_POW2_SIGNED(gv, shift), S16_MIN, S16_MAX);
+> +
+> +	dv = ((long long)mat[3] * mat[4]) * y;
+> +	*delta = clamp_val(mat[5] -
+> +		(int)AV1_DIV_ROUND_UP_POW2_SIGNED(dv, shift) - (1 << WARPEDMODEL_PREC_BITS),
+> +		S16_MIN, S16_MAX);
+> +
+> +	*alpha = AV1_DIV_ROUND_UP_POW2_SIGNED(*alpha, WARP_PARAM_REDUCE_BITS)
+> +		 * (1 << WARP_PARAM_REDUCE_BITS);
+> +	*beta = AV1_DIV_ROUND_UP_POW2_SIGNED(*beta, WARP_PARAM_REDUCE_BITS)
+> +		* (1 << WARP_PARAM_REDUCE_BITS);
+> +	*gamma = AV1_DIV_ROUND_UP_POW2_SIGNED(*gamma, WARP_PARAM_REDUCE_BITS)
+> +		 * (1 << WARP_PARAM_REDUCE_BITS);
+> +	*delta = AV1_DIV_ROUND_UP_POW2_SIGNED(*delta, WARP_PARAM_REDUCE_BITS)
+> +		* (1 << WARP_PARAM_REDUCE_BITS);
+> +}
+> +
+> +void hantro_av1_set_global_model(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	const struct v4l2_av1_global_motion *gm = &frame->global_motion;
+> +	u8 *dst = av1_dec->global_model.cpu;
+> +	int ref_frame, i;
+> +
+> +	memset(dst, 0, GLOBAL_MODEL_SIZE);
+> +	for (ref_frame = 0; ref_frame < V4L2_AV1_REFS_PER_FRAME; ++ref_frame) {
+> +		s64 alpha = 0, beta = 0, gamma = 0, delta = 0;
+> +
+> +		for (i = 0; i < 6; ++i) {
+> +			if (i == 2)
+> +				*(s32 *)dst =
+> +					gm->params[V4L2_AV1_REF_LAST_FRAME + ref_frame][3];
+> +			else if (i == 3)
+> +				*(s32 *)dst =
+> +					gm->params[V4L2_AV1_REF_LAST_FRAME + ref_frame][2];
+> +			else
+> +				*(s32 *)dst =
+> +					gm->params[V4L2_AV1_REF_LAST_FRAME + ref_frame][i];
+> +			dst += 4;
+> +		}
+> +
+> +		if (gm->type[V4L2_AV1_REF_LAST_FRAME + ref_frame] <= V4L2_AV1_WARP_MODEL_AFFINE)
+> +			hantro_av1_get_shear_params(&gm->params[V4L2_AV1_REF_LAST_FRAME + ref_frame][0],
+> +						    &alpha, &beta, &gamma, &delta);
+> +
+> +		*(s16 *)dst = alpha;
+> +		dst += 2;
+> +		*(s16 *)dst = beta;
+> +		dst += 2;
+> +		*(s16 *)dst = gamma;
+> +		dst += 2;
+> +		*(s16 *)dst = delta;
+> +		dst += 2;
+> +	}
+> +}
+> +
+> +int hantro_av1_tile_log2(int target)
+> +{
+> +	int k;
+> +
+> +	/*
+> +	 * returns the smallest value for k such that 1 << k is greater
+> +	 * than or equal to target
+> +	 */
+> +	for (k = 0; (1 << k) < target; k++)
+> +		;
+> +
+> +	return k;
+> +}
+> +
+> +int hantro_av1_get_dist(struct hantro_ctx *ctx, int a, int b)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	int bits = ctrls->sequence->order_hint_bits - 1;
+> +	int diff, m;
+> +
+> +	if (!ctrls->sequence->order_hint_bits)
+> +		return 0;
+> +
+> +	diff = a - b;
+> +	m = 1 << bits;
+> +	diff = (diff & (m - 1)) - (diff & m);
+> +
+> +	return diff;
+> +}
+> +
+> +void hantro_av1_set_frame_sign_bias(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	const struct v4l2_ctrl_av1_sequence *sequence = ctrls->sequence;
+> +	int i;
+> +
+> +	if (!sequence->order_hint_bits || IS_INTRA(frame->frame_type)) {
+> +		for (i = 0; i < V4L2_AV1_TOTAL_REFS_PER_FRAME; i++)
+> +			av1_dec->ref_frame_sign_bias[i] = 0;
+> +
+> +		return;
+> +	}
+> +	// Identify the nearest forward and backward references.
+> +	for (i = 0; i < V4L2_AV1_TOTAL_REFS_PER_FRAME - 1; i++) {
+> +		if (hantro_av1_get_frame_index(ctx, i) >= 0) {
+> +			int rel_off =
+> +			    hantro_av1_get_dist(ctx,
+> +						hantro_av1_get_order_hint(ctx, i),
+> +						frame->order_hint);
+> +			av1_dec->ref_frame_sign_bias[i + 1] = (rel_off <= 0) ? 0 : 1;
+> +		}
+> +	}
+> +}
+> +
+> +void hantro_av1_init_scaling_function(const u8 *values, const u8 *scaling,
+> +				      u8 num_points, u8 *scaling_lut)
+> +{
+> +	int i, point;
+> +
+> +	if (num_points == 0) {
+> +		memset(scaling_lut, 0, 256);
+> +		return;
+> +	}
+> +
+> +	for (point = 0; point < num_points - 1; point++) {
+> +		int x;
+> +		s32 delta_y = scaling[point + 1] - scaling[point];
+> +		s32 delta_x = values[point + 1] - values[point];
+> +		s64 delta =
+> +		    delta_x ? delta_y * ((65536 + (delta_x >> 1)) /
+> +					 delta_x) : 0;
+> +
+> +		for (x = 0; x < delta_x; x++) {
+> +			scaling_lut[values[point] + x] =
+> +			    scaling[point] +
+> +			    (s32)((x * delta + 32768) >> 16);
+> +		}
+> +	}
+> +
+> +	for (i = values[num_points - 1]; i < 256; i++)
+> +		scaling_lut[i] = scaling[num_points - 1];
+> +}
+> +
+> +void hantro_av1_set_tile_info(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_av1_tile_info *tile_info = &ctrls->frame->tile_info;
+> +	const struct v4l2_ctrl_av1_tile_group_entry *group_entry =
+> +	    ctrls->tile_group_entry;
+> +	u8 *dst = av1_dec->tile_info.cpu;
+> +	int tile0, tile1;
+> +
+> +	memset(dst, 0, av1_dec->tile_info.size);
+> +
+> +	for (tile0 = 0; tile0 < tile_info->tile_cols; tile0++) {
+> +		for (tile1 = 0; tile1 < tile_info->tile_rows; tile1++) {
+> +			int tile_id = tile1 * tile_info->tile_cols + tile0;
+> +			u32 start, end;
+> +			u32 y0 =
+> +			    tile_info->height_in_sbs_minus_1[tile1] + 1;
+> +			u32 x0 = tile_info->width_in_sbs_minus_1[tile0] + 1;
+> +
+> +			/* tile size in SB units (width,height) */
+> +			*dst++ = x0;
+> +			*dst++ = 0;
+> +			*dst++ = 0;
+> +			*dst++ = 0;
+> +			*dst++ = y0;
+> +			*dst++ = 0;
+> +			*dst++ = 0;
+> +			*dst++ = 0;
+> +
+> +			/* tile start position */
+> +			start = group_entry[tile_id].tile_offset - group_entry[0].tile_offset;
+> +			*dst++ = start & 255;
+> +			*dst++ = (start >> 8) & 255;
+> +			*dst++ = (start >> 16) & 255;
+> +			*dst++ = (start >> 24) & 255;
+> +
+> +			/* number of bytes in tile data */
+> +			end = start + group_entry[tile_id].tile_size;
+> +			*dst++ = end & 255;
+> +			*dst++ = (end >> 8) & 255;
+> +			*dst++ = (end >> 16) & 255;
+> +			*dst++ = (end >> 24) & 255;
+> +		}
+> +	}
+> +}
+> +
+> +bool hantro_av1_is_lossless(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	const struct v4l2_av1_segmentation *segmentation = &frame->segmentation;
+> +	const struct v4l2_av1_quantization *quantization = &frame->quantization;
+> +	int i;
+> +
+> +	for (i = 0; i < V4L2_AV1_MAX_SEGMENTS; i++) {
+> +		int qindex = quantization->base_q_idx;
+> +
+> +		if (segmentation->feature_enabled[i] &
+> +		    V4L2_AV1_SEGMENT_FEATURE_ENABLED(V4L2_AV1_SEG_LVL_ALT_Q)) {
+> +			qindex += segmentation->feature_data[i][V4L2_AV1_SEG_LVL_ALT_Q];
+> +		}
+> +		qindex = clamp(qindex, 0, 255);
+> +
+> +		if (qindex ||
+> +		    quantization->delta_q_y_dc ||
+> +		    quantization->delta_q_u_dc ||
+> +		    quantization->delta_q_u_ac ||
+> +		    quantization->delta_q_v_dc ||
+> +		    quantization->delta_q_v_ac)
+> +			return false;
+> +	}
+> +
+> +	return true;
+> +}
+> +
+> +void hantro_av1_update_prob(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	bool frame_is_intra = IS_INTRA(frame->frame_type);
+> +	struct av1cdfs *out_cdfs = (struct av1cdfs *)av1_dec->prob_tbl_out.cpu;
+> +	int i;
+> +
+> +	if (frame->flags & V4L2_AV1_FRAME_FLAG_DISABLE_FRAME_END_UPDATE_CDF)
+> +		return;
+> +
+> +	for (i = 0; i < NUM_REF_FRAMES; i++) {
+> +		if (frame->refresh_frame_flags & BIT(i)) {
+> +			struct mvcdfs stored_mv_cdf;
+> +
+> +			hantro_av1_get_cdfs(ctx, i);
+> +			stored_mv_cdf = av1_dec->cdfs->mv_cdf;
+> +			*av1_dec->cdfs = *out_cdfs;
+> +			if (frame_is_intra) {
+> +				av1_dec->cdfs->mv_cdf = stored_mv_cdf;
+> +				*av1_dec->cdfs_ndvc = out_cdfs->mv_cdf;
+> +			}
+> +			hantro_av1_store_cdfs(ctx, frame->refresh_frame_flags);
+> +			break;
+> +		}
+> +	}
+> +}
+> +
+> +void hantro_av1_set_prob(struct hantro_ctx *ctx)
+> +{
+> +	struct hantro_av1_dec_hw_ctx *av1_dec = &ctx->av1_dec;
+> +	struct hantro_av1_dec_ctrls *ctrls = &av1_dec->ctrls;
+> +	const struct v4l2_ctrl_av1_frame *frame = ctrls->frame;
+> +	const struct v4l2_av1_quantization *quantization = &frame->quantization;
+> +	bool error_resilient_mode =
+> +	    !!(frame->flags & V4L2_AV1_FRAME_FLAG_ERROR_RESILIENT_MODE);
+> +	bool frame_is_intra = IS_INTRA(frame->frame_type);
+> +
+> +	if (error_resilient_mode || frame_is_intra ||
+> +	    frame->primary_ref_frame == AV1_PRIMARY_REF_NONE) {
+> +		av1_dec->cdfs = &av1_dec->default_cdfs;
+> +		av1_dec->cdfs_ndvc = &av1_dec->default_cdfs_ndvc;
+> +		hantro_av1_default_coeff_probs(quantization->base_q_idx,
+> +					       av1_dec->cdfs);
+> +	} else {
+> +		hantro_av1_get_cdfs(ctx, frame->ref_frame_idx[frame->primary_ref_frame]);
+
+There is no sanity check for frame->primary_ref_frame to prevent out of bounds
+array access. But perhaps this has to be checked elsewhere?
+
+> +	}
+> +	hantro_av1_store_cdfs(ctx, frame->refresh_frame_flags);
+> +
+> +	memcpy(av1_dec->prob_tbl.cpu, av1_dec->cdfs, sizeof(struct av1cdfs));
+> +
+> +	if (frame_is_intra) {
+> +		int mv_offset = offsetof(struct av1cdfs, mv_cdf);
+> +		/* Overwrite MV context area with intrabc MV context */
+> +		memcpy(av1_dec->prob_tbl.cpu + mv_offset, av1_dec->cdfs_ndvc,
+> +		       sizeof(struct mvcdfs));
+> +	}
+> +}
+
+<snip>
+
+> diff --git a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> index e4e21ad37323..5bf1f2689fbc 100644
+> --- a/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> +++ b/drivers/media/platform/verisilicon/rockchip_vpu981_hw_av1_dec.c
+> @@ -7,622 +7,35 @@
+<snip>
+
+>  static void rockchip_vpu981_av1_dec_set_cdef(struct hantro_ctx *ctx)
+> @@ -1617,12 +846,12 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  	int ref_ind = 0;
+>  	int rf, idx;
+>  
+> -	alt_frame_offset = rockchip_vpu981_get_order_hint(ctx, ALT_BUF_IDX);
+> -	gld_frame_offset = rockchip_vpu981_get_order_hint(ctx, GLD_BUF_IDX);
+> -	bwd_frame_offset = rockchip_vpu981_get_order_hint(ctx, BWD_BUF_IDX);
+> -	alt2_frame_offset = rockchip_vpu981_get_order_hint(ctx, ALT2_BUF_IDX);
+> +	alt_frame_offset = hantro_av1_get_order_hint(ctx, ALT_BUF_IDX);
+> +	gld_frame_offset = hantro_av1_get_order_hint(ctx, GLD_BUF_IDX);
+> +	bwd_frame_offset = hantro_av1_get_order_hint(ctx, BWD_BUF_IDX);
+> +	alt2_frame_offset = hantro_av1_get_order_hint(ctx, ALT2_BUF_IDX);
+>  
+> -	idx = rockchip_vpu981_get_frame_index(ctx, LST_BUF_IDX);
+> +	idx = hantro_av1_get_frame_index(ctx, LST_BUF_IDX);
+>  	if (idx >= 0) {
+>  		int alt_frame_offset_in_lst =
+>  			av1_dec->frame_refs[idx].order_hints[V4L2_AV1_REF_ALTREF_FRAME];
+> @@ -1644,8 +873,8 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  		ref_stamp--;
+>  	}
+>  
+> -	idx = rockchip_vpu981_get_frame_index(ctx, BWD_BUF_IDX);
+> -	if (rockchip_vpu981_av1_dec_get_dist(ctx, bwd_frame_offset, cur_frame_offset) > 0) {
+> +	idx = hantro_av1_get_frame_index(ctx, BWD_BUF_IDX);
+
+Can idx be AV1_INVALID_IDX? It's checked for LST_BUF_IDX, but not for BWD_BUF_IDX and others below.
+
+> +	if (hantro_av1_get_dist(ctx, bwd_frame_offset, cur_frame_offset) > 0) {
+>  		int bwd_mi_cols = av1_dec->frame_refs[idx].mi_cols;
+>  		int bwd_mi_rows = av1_dec->frame_refs[idx].mi_rows;
+>  		bool bwd_intra_only =
+> @@ -1659,8 +888,8 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  		}
+>  	}
+>  
+> -	idx = rockchip_vpu981_get_frame_index(ctx, ALT2_BUF_IDX);
+> -	if (rockchip_vpu981_av1_dec_get_dist(ctx, alt2_frame_offset, cur_frame_offset) > 0) {
+> +	idx = hantro_av1_get_frame_index(ctx, ALT2_BUF_IDX);
+> +	if (hantro_av1_get_dist(ctx, alt2_frame_offset, cur_frame_offset) > 0) {
+>  		int alt2_mi_cols = av1_dec->frame_refs[idx].mi_cols;
+>  		int alt2_mi_rows = av1_dec->frame_refs[idx].mi_rows;
+>  		bool alt2_intra_only =
+> @@ -1674,8 +903,8 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  		}
+>  	}
+>  
+> -	idx = rockchip_vpu981_get_frame_index(ctx, ALT_BUF_IDX);
+> -	if (rockchip_vpu981_av1_dec_get_dist(ctx, alt_frame_offset, cur_frame_offset) > 0 &&
+> +	idx = hantro_av1_get_frame_index(ctx, ALT_BUF_IDX);
+> +	if (hantro_av1_get_dist(ctx, alt_frame_offset, cur_frame_offset) > 0 &&
+>  	    ref_stamp >= 0) {
+>  		int alt_mi_cols = av1_dec->frame_refs[idx].mi_cols;
+>  		int alt_mi_rows = av1_dec->frame_refs[idx].mi_rows;
+> @@ -1690,7 +919,7 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  		}
+>  	}
+>  
+> -	idx = rockchip_vpu981_get_frame_index(ctx, LST2_BUF_IDX);
+> +	idx = hantro_av1_get_frame_index(ctx, LST2_BUF_IDX);
+>  	if (idx >= 0 && ref_stamp >= 0) {
+>  		int lst2_mi_cols = av1_dec->frame_refs[idx].mi_cols;
+>  		int lst2_mi_rows = av1_dec->frame_refs[idx].mi_rows;
+> @@ -1706,14 +935,14 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  	}
+>  
+>  	for (rf = 0; rf < V4L2_AV1_TOTAL_REFS_PER_FRAME - 1; ++rf) {
+> -		idx = rockchip_vpu981_get_frame_index(ctx, rf);
+> +		idx = hantro_av1_get_frame_index(ctx, rf);
+>  		if (idx >= 0) {
+> -			int rf_order_hint = rockchip_vpu981_get_order_hint(ctx, rf);
+> +			int rf_order_hint = hantro_av1_get_order_hint(ctx, rf);
+>  
+>  			cur_offset[rf] =
+> -			    rockchip_vpu981_av1_dec_get_dist(ctx, cur_frame_offset, rf_order_hint);
+> +			    hantro_av1_get_dist(ctx, cur_frame_offset, rf_order_hint);
+>  			cur_roffset[rf] =
+> -			    rockchip_vpu981_av1_dec_get_dist(ctx, rf_order_hint, cur_frame_offset);
+> +			    hantro_av1_get_dist(ctx, rf_order_hint, cur_frame_offset);
+>  		} else {
+>  			cur_offset[rf] = 0;
+>  			cur_roffset[rf] = 0;
+> @@ -1736,32 +965,32 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  	if (use_ref_frame_mvs && ref_ind > 0 &&
+>  	    cur_offset[mf_types[0] - V4L2_AV1_REF_LAST_FRAME] <= MAX_FRAME_DISTANCE &&
+>  	    cur_offset[mf_types[0] - V4L2_AV1_REF_LAST_FRAME] >= -MAX_FRAME_DISTANCE) {
+> -		int rf = rockchip_vpu981_get_order_hint(ctx, refs_selected[0]);
+> -		int idx = rockchip_vpu981_get_frame_index(ctx, refs_selected[0]);
+> +		int rf = hantro_av1_get_order_hint(ctx, refs_selected[0]);
+> +		int idx = hantro_av1_get_frame_index(ctx, refs_selected[0]);
+
+There is no AV1_INVALID_IDX check here either.
+
+I think it might be helpful if there is a comment in the cases where idx is always
+valid. I don't know enough about this to be able to tell if it is a potential
+out-of-bounds access or not.
+
+>  		u32 *oh = av1_dec->frame_refs[idx].order_hints;
+>  		int val;
+>  
+>  		hantro_reg_write(vpu, &av1_use_temporal0_mvs, 1);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_last_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST2_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST2_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_last2_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST3_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST3_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_last3_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_GOLDEN_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_GOLDEN_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_golden_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_BWDREF_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_BWDREF_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_bwdref_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF2_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF2_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_altref2_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf1_altref_offset, val);
+>  	}
+>  
+> @@ -1776,32 +1005,32 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  	if (use_ref_frame_mvs && ref_ind > 1 &&
+>  	    cur_offset[mf_types[1] - V4L2_AV1_REF_LAST_FRAME] <= MAX_FRAME_DISTANCE &&
+>  	    cur_offset[mf_types[1] - V4L2_AV1_REF_LAST_FRAME] >= -MAX_FRAME_DISTANCE) {
+> -		int rf = rockchip_vpu981_get_order_hint(ctx, refs_selected[1]);
+> -		int idx = rockchip_vpu981_get_frame_index(ctx, refs_selected[1]);
+> +		int rf = hantro_av1_get_order_hint(ctx, refs_selected[1]);
+> +		int idx = hantro_av1_get_frame_index(ctx, refs_selected[1]);
+
+Ditto.
+
+>  		u32 *oh = av1_dec->frame_refs[idx].order_hints;
+>  		int val;
+>  
+>  		hantro_reg_write(vpu, &av1_use_temporal1_mvs, 1);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_last_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST2_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST2_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_last2_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST3_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST3_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_last3_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_GOLDEN_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_GOLDEN_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_golden_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_BWDREF_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_BWDREF_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_bwdref_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF2_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF2_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_altref2_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf2_altref_offset, val);
+>  	}
+>  
+> @@ -1816,32 +1045,32 @@ static void rockchip_vpu981_av1_dec_set_other_frames(struct hantro_ctx *ctx)
+>  	if (use_ref_frame_mvs && ref_ind > 2 &&
+>  	    cur_offset[mf_types[2] - V4L2_AV1_REF_LAST_FRAME] <= MAX_FRAME_DISTANCE &&
+>  	    cur_offset[mf_types[2] - V4L2_AV1_REF_LAST_FRAME] >= -MAX_FRAME_DISTANCE) {
+> -		int rf = rockchip_vpu981_get_order_hint(ctx, refs_selected[2]);
+> -		int idx = rockchip_vpu981_get_frame_index(ctx, refs_selected[2]);
+> +		int rf = hantro_av1_get_order_hint(ctx, refs_selected[2]);
+> +		int idx = hantro_av1_get_frame_index(ctx, refs_selected[2]);
+
+Ditto.
+
+>  		u32 *oh = av1_dec->frame_refs[idx].order_hints;
+>  		int val;
+>  
+>  		hantro_reg_write(vpu, &av1_use_temporal2_mvs, 1);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_last_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST2_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST2_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_last2_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST3_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_LAST3_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_last3_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_GOLDEN_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_GOLDEN_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_golden_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_BWDREF_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_BWDREF_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_bwdref_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF2_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF2_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_altref2_offset, val);
+>  
+> -		val = rockchip_vpu981_av1_dec_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF_FRAME]);
+> +		val = hantro_av1_get_dist(ctx, rf, oh[V4L2_AV1_REF_ALTREF_FRAME]);
+>  		hantro_reg_write(vpu, &av1_mf3_altref_offset, val);
+>  	}
+>  
+> @@ -1883,7 +1112,7 @@ static void rockchip_vpu981_av1_dec_set_reference_frames(struct hantro_ctx *ctx)
+>  
+>  	if (!allow_intrabc) {
+>  		for (i = 0; i < V4L2_AV1_REFS_PER_FRAME; i++) {
+> -			int idx = rockchip_vpu981_get_frame_index(ctx, i);
+> +			int idx = hantro_av1_get_frame_index(ctx, i);
+>  
+>  			if (idx >= 0)
+>  				ref_count[idx]++;
+> @@ -1898,7 +1127,7 @@ static void rockchip_vpu981_av1_dec_set_reference_frames(struct hantro_ctx *ctx)
+>  	}
+>  	hantro_reg_write(vpu, &av1_ref_frames, ref_frames);
+>  
+> -	rockchip_vpu981_av1_dec_set_frame_sign_bias(ctx);
+> +	hantro_av1_set_frame_sign_bias(ctx);
+>  
+>  	for (i = V4L2_AV1_REF_LAST_FRAME; i < V4L2_AV1_TOTAL_REFS_PER_FRAME; i++) {
+>  		u32 ref = i - 1;
+> @@ -1910,8 +1139,8 @@ static void rockchip_vpu981_av1_dec_set_reference_frames(struct hantro_ctx *ctx)
+>  			width = frame->frame_width_minus_1 + 1;
+>  			height = frame->frame_height_minus_1 + 1;
+>  		} else {
+> -			if (rockchip_vpu981_get_frame_index(ctx, ref) > 0)
+> -				idx = rockchip_vpu981_get_frame_index(ctx, ref);
+> +			if (hantro_av1_get_frame_index(ctx, ref) > 0)
+> +				idx = hantro_av1_get_frame_index(ctx, ref);
+
+Can idx be AV1_INVALID_IDX here?
+
+>  			width = av1_dec->frame_refs[idx].width;
+>  			height = av1_dec->frame_refs[idx].height;
+>  		}
+> @@ -1943,20 +1172,6 @@ static void rockchip_vpu981_av1_dec_set_reference_frames(struct hantro_ctx *ctx)
+>  	rockchip_vpu981_av1_dec_set_other_frames(ctx);
+>  }
+>  
+> -static int rockchip_vpu981_av1_get_hardware_tx_mode(enum v4l2_av1_tx_mode tx_mode)
+> -{
+> -	switch (tx_mode) {
+> -	case V4L2_AV1_TX_MODE_ONLY_4X4:
+> -		return ROCKCHIP_AV1_TX_MODE_ONLY_4X4;
+> -	case V4L2_AV1_TX_MODE_LARGEST:
+> -		return ROCKCHIP_AV1_TX_MODE_32x32;
+> -	case V4L2_AV1_TX_MODE_SELECT:
+> -		return ROCKCHIP_AV1_TX_MODE_SELECT;
+> -	}
+> -
+> -	return ROCKCHIP_AV1_TX_MODE_32x32;
+> -}
+> -
+>  static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+>  {
+>  	struct hantro_dev *vpu = ctx->dev;
+> @@ -2029,7 +1244,7 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+>  	hantro_reg_write(vpu, &av1_comp_pred_mode,
+>  			 (ctrls->frame->flags & V4L2_AV1_FRAME_FLAG_REFERENCE_SELECT) ? 2 : 0);
+>  
+> -	tx_mode = rockchip_vpu981_av1_get_hardware_tx_mode(ctrls->frame->tx_mode);
+> +	tx_mode = hantro_av1_get_hardware_tx_mode(ctrls->frame->tx_mode);
+>  	hantro_reg_write(vpu, &av1_transform_mode, tx_mode);
+>  	hantro_reg_write(vpu, &av1_max_cb_size,
+>  			 (ctrls->sequence->flags
+> @@ -2061,7 +1276,7 @@ static void rockchip_vpu981_av1_dec_set_parameters(struct hantro_ctx *ctx)
+>  		hantro_reg_write(vpu, &av1_qmlevel_v, 0xff);
+>  	}
+>  
+> -	hantro_reg_write(vpu, &av1_lossless_e, rockchip_vpu981_av1_dec_is_lossless(ctx));
+> +	hantro_reg_write(vpu, &av1_lossless_e, hantro_av1_is_lossless(ctx));
+>  	hantro_reg_write(vpu, &av1_quant_delta_v_dc, ctrls->frame->quantization.delta_q_v_dc);
+>  	hantro_reg_write(vpu, &av1_quant_delta_v_ac, ctrls->frame->quantization.delta_q_v_ac);
+>  
+> @@ -2109,8 +1324,8 @@ rockchip_vpu981_av1_dec_set_output_buffer(struct hantro_ctx *ctx)
+>  	struct hantro_decoded_buffer *dst;
+>  	struct vb2_v4l2_buffer *vb2_dst;
+>  	dma_addr_t luma_addr, chroma_addr, mv_addr = 0;
+> -	size_t cr_offset = rockchip_vpu981_av1_dec_luma_size(ctx);
+> -	size_t mv_offset = rockchip_vpu981_av1_dec_chroma_size(ctx);
+> +	size_t cr_offset = hantro_av1_luma_size(ctx);
+> +	size_t mv_offset = hantro_av1_chroma_size(ctx);
+>  
+>  	vb2_dst = av1_dec->frame_refs[av1_dec->current_frame_index].vb2_ref;
+>  	dst = vb2_to_hantro_decoded_buf(&vb2_dst->vb2_buf);
+> @@ -2134,7 +1349,7 @@ int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+>  
+>  	hantro_start_prepare_run(ctx);
+>  
+> -	ret = rockchip_vpu981_av1_dec_prepare_run(ctx);
+> +	ret = hantro_av1_prepare_run(ctx);
+>  	if (ret)
+>  		goto prepare_error;
+>  
+> @@ -2144,8 +1359,8 @@ int rockchip_vpu981_av1_dec_run(struct hantro_ctx *ctx)
+>  		goto prepare_error;
+>  	}
+>  
+> -	rockchip_vpu981_av1_dec_clean_refs(ctx);
+> -	rockchip_vpu981_av1_dec_frame_ref(ctx, vb2_src->vb2_buf.timestamp);
+> +	hantro_av1_clean_refs(ctx);
+> +	hantro_av1_frame_ref(ctx, vb2_src->vb2_buf.timestamp);
+>  
+>  	rockchip_vpu981_av1_dec_set_parameters(ctx);
+>  	rockchip_vpu981_av1_dec_set_global_model(ctx);
+Regards,
+
+	Hans
 
 _______________________________________________
 Linux-rockchip mailing list
