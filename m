@@ -4,108 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36D7CCD4F24
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 15:09:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CAC4CD4851
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 15:35:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PwCqUCm3ZN59Nz4Gq6mgAKzLcwRNDpUOEpTA1gRwfeM=; b=1r7YjSsGH/H5qM8d+sUr0GCFI5
-	CozlasWdtMGg9G0pjnL9ndm8Gf/sbVMPzzDGYnRkXADEMHJg6iUHGF9m7ZguHqQX9yWrIEmzjx0tx
-	RbR0/xIxLymbKB+R80AT/ppIowj9nnYUgco5fA7EG2pwX8BVrvM7CKk26Y5dIUX9EGzGzA5D+BXNk
-	hWjnmhvHvTSX8GUwAdXh7XG+TKRQM9ouuRwgNmQJmFY3BdhQoUbbq0QVnKYlF75BgWzhg3s0oijWZ
-	//49g5jf8CezK6czS33RYSwPldK8xuf9jtKYYo5s5rmcWJUuyDubmQQM6YCLKdGqFkg26wzIaFaGz
-	Y01XDdPg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=EAa4vlm6gpMptsqzI4ADz7qoHSfJ40m6QHtE+XTwSng=; b=kdTx7Y3YS33Oy7
+	JDM6ZMv23uNgM9NRIPZi6cDhr7uu7oWsGsN97WkVMMuycFypLD17p/m4Fzqap33aZIRi4eVgnbFjn
+	EJu0RjiPL1NhSArtrIVgBc2b3bp3W8VAIygUeFNTz3B9YavPE48LBm9XjlDh8Ycecd9xWay4S7xLY
+	JZlrN7ftKnwLJnJPW5m1e7u5bJz9A1VcwjRq8KH7tJHyXLmIz6aMlYenpWm63Bp9iYjdBW7Etxl7X
+	3S+GAtk6y7CPgp/0lBMyrl//JG1Ar/FzUC+diNtg1I94GBTyGdkdtlsaDAqDSfpFWLOXHe2Nzr5Oo
+	0AFiotWrJHmVLW9GO8xA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMojx-0000000HA7q-02pg;
-	Tue, 12 May 2026 15:09:45 +0000
-Received: from mail-qt1-x843.google.com ([2607:f8b0:4864:20::843])
+	id 1wMp8v-0000000HE6O-1yAx;
+	Tue, 12 May 2026 15:35:33 +0000
+Received: from mail-francesouthazon11011004.outbound.protection.outlook.com ([40.107.130.4] helo=MRWPR03CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMojs-0000000HA6V-2Dse
-	for linux-rockchip@lists.infradead.org;
-	Tue, 12 May 2026 15:09:42 +0000
-Received: by mail-qt1-x843.google.com with SMTP id d75a77b69052e-51306c36c3eso51720621cf.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 12 May 2026 08:09:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1778598579; x=1779203379; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=e1GJZ3i503zdsckWYgIltPX4s+TXFKGqeqpxW9ex+gs=;
-        b=NrTLTUeY/m9CFrQmIZLz7FvpF7dhAWIS6gyVV5rIjqx+JKxGySwAyDF334yY+gKM64
-         q/oB7O8D/2auAMAxR7NP1iqMlm6Y49/imwkHN8od4a9tiaOAagBmDajtAgTtzpzq9io2
-         G6iRgO3n5N3CWVhEszmLHtEz33My3zyrzGUcNWGMK1ZeokgIlZHa3X4m7Oru02AuD3qg
-         R2af7ZTp1F9vBPej9Jv1VlDmRDnQPqQmIeclXX0AXoo4p74NLfd8lCwkLN3qg5o9wP9P
-         ztrZTRwCVqJ+J1gJOGtcAUY3W6Y+t3w0deiM8mAK65cJBrS9CZBGqQ3kjFg5ZGXI3KzQ
-         tP/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778598579; x=1779203379;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=e1GJZ3i503zdsckWYgIltPX4s+TXFKGqeqpxW9ex+gs=;
-        b=eD537h4zHuaVL9ViCaCzg4y8gs8wkbOf7MPbhyNU+4ENJvW+gWi+76nE9FJ0efBzpQ
-         gHOUjF8GfO09kkyp/BlTcBpsLYp6mL3yOgzLEZXV/dQBzeInMKEtJoGmO2XB4mG22AcZ
-         2Hz5+H/Y/qRxzV3cv4sdJkfy3yfK/VoLpjEN4CQcB2k62D3DqAKCtYRp42ZbPjN35BRK
-         7Z8iQ41OzXWAVx6NFWY/Z8Saa6AmgInH552ZQf/Bzdt2SUsDLbnLKqbkZ4WXnlouggbM
-         dmzrKVN+LBj70T4XVWI8QnM/saD1MPk3VtToH1q6yfp+B8iLlks0V5Ma8NN/WyNIsJc0
-         VaEQ==
-X-Forwarded-Encrypted: i=1; AFNElJ+KAAhN9/4s80l7WEfXpD0HGTx6EcMmEyZofrMH4oGaVsEeTNn8+bkJjXVD7OO50IBdEjU1W2una3DSB5LYbQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyyBTotHXHR1uN5JrI+IEWQY2EOCzxYumwinxupePDnhMAWeOiJ
-	Kfaaq563ICQ93AEYm71K6+bXNa+3PpbIZjMCW2cbkqg4F2jsKPLx6+k56yaXmBWPzD0=
-X-Gm-Gg: Acq92OERGFv8PCtpgwpMdXfsKuZeJ4KYfTmA14wduGGViJ6DSS5zaghKjoeQKCOr6OF
-	LU5hg/uTigPHdCY7uBrVB5uh3jinXeuiu5+J7n6flCY1NG785tmsDCN9D1wFrJ0z3URqLYfy7k1
-	N8A+LLSjnW6XKjTdAFDLnaHtRLD4zgcIcc5oE6h0rkDFY8j2EgSPWJQ/7xZY0vp8DWbX+P/SXh6
-	DREhzlpi5srPO3g1XvOWp50zA1RiY5PlhT9Hr59Q6tksd+oBkTDJ9SmRsS7zxfatznkMUm1yFfs
-	5LD7aV1MUaFBhulezeaunKmVaLlQmotQ/tb6mpTzABTEGAEJs0p64b9IF9QoTeF9uFmi25Wcuwt
-	ddCO3/40Mfj52VqtTL7iZ0WiuP8KjET1SdmIO6Pbwb5E/oDN299Cd+vCW5w+g9dmA/0EfCu0G/h
-	ABZtVcWJB47pjG/0yvupso8s4gxilXNQH0Hgr6goc=
-X-Received: by 2002:a05:622a:341:b0:510:138e:b83c with SMTP id d75a77b69052e-514d20e0341mr47122861cf.33.1778598578821;
-        Tue, 12 May 2026 08:09:38 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:15:e06b::c41? ([2606:6d00:15:e06b::c41])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-5148e656452sm136800971cf.7.2026.05.12.08.09.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 12 May 2026 08:09:37 -0700 (PDT)
-Message-ID: <b354afdfd28ec3736791755d9ce8cae49a744a96.camel@ndufresne.ca>
-Subject: Re: [PATCH v5 12/29] media: rockchip: rga: avoid odd frame sizes
- for YUV formats
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Sven =?ISO-8859-1?Q?P=FCschel?= <s.pueschel@pengutronix.de>, Jacob Chen
-	 <jacob-chen@iotwrt.com>, Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>, 
- Mauro Carvalho Chehab
-	 <mchehab@kernel.org>, Heiko Stuebner <heiko@sntech.de>, Rob Herring
-	 <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	 <conor+dt@kernel.org>, Hans Verkuil <hverkuil@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	devicetree@vger.kernel.org, kernel@pengutronix.de, 
-	sebastian.reichel@collabora.com
-Date: Tue, 12 May 2026 11:09:35 -0400
-In-Reply-To: <e6d562e7-a9d2-4a1a-a139-c6e05eb4aaef@pengutronix.de>
-References: <20260428-spu-rga3-v5-0-eb7f5d019d86@pengutronix.de>
-	 <20260428-spu-rga3-v5-12-eb7f5d019d86@pengutronix.de>
-	 <4f5e481c8883b358ee4cef64f26f3f00f0ac7304.camel@ndufresne.ca>
-	 <e6d562e7-a9d2-4a1a-a139-c6e05eb4aaef@pengutronix.de>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-User-Agent: Evolution 3.60.1 (3.60.1-1.fc44) 
+	id 1wMp8r-0000000HE55-39vM;
+	Tue, 12 May 2026 15:35:31 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=xavyOKIKOGyuMGtmQYmhNY0x1OrlnEPeMzmyN96HoHVqcAZRLlR3k5g5ZfceQCo2cjiHJYLyeCyKVL79Ro3cljOX7rRQF0mr8rvWRIj4oaSLM/vjR4p+i/9dvoZuUIRf/eEF0qQKeSMUcL+/jXGxdNy80Hej4RAi+ujWRMQmtEOFvDzL4LvmqmDqOIeOmqXTI/dkJRWF7iSxRLILU94ixORCX0GMvn9G8lrbRbV/TArNCAF91icDKh3VUh8iDwr9cAr0muboDbp8dMy0XO4xkcRjIx91Wl0terTxNuxk/F/wn625LDt0MgYQfavLggoKOBWVSDPk/lJkwZRyyDad3A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=YvL1QLKqJKWudv8DUYocx6jzbOiTP5ZfL5aDyvY85Rw=;
+ b=nw9lYGnpcvta4rMFdK3/u5XmgGImaLldDGlRXj/PfjtQbO/lT+Q0JqrC5gR6CYVLAiI2w8clnoQCLy/H1KV4I5ml0JEgU1EOmulhcEFUEOyTssr2Xnuusv7/9pLZnE3oT0akstrg5fMLgj4v1WIKYBluV1VFUyaXbtd2xBKvhEPSnzEdxcz7CR626W+A3l07tnq17FS5P0Z9vWlm43rvzkq3t6aS6p0dMtGJqRv4gi1W3exG7+8r+/RxZaVOpFlx5ETFoyjq4QE2i8BpcuvRiHHBCBAXV1aVnj+P+GIG2Td84cYKIcXyd4PHat+vpgbUteb0ja1QdUba+GOQscWmYA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=YvL1QLKqJKWudv8DUYocx6jzbOiTP5ZfL5aDyvY85Rw=;
+ b=lvZVrwRcH2LzD/cottMfXLOes3vfccTXlqTVnCiqoA2KXYuQ+Yh8QcVDMPg7CznZ8VWZUi3bwdtGpfv7QTXfLzsdVBVHZCC2bOPyZ+iqtUmSLJnzf2cjLbeULoEOvVMJCmIg+cfdrfIVo0s+LCDDtVG8CCuGUBgKwUq4knzprarIrGhSlrvo5/Eu8VgO7yJr3EFRZxnymErMds+gdd+6ocO/tlf9QivoOAHVvOOzoiTm4/7LpOe12GXXDu0MeAUCIaxNDnVz0HqDuiCql6fN5X9RqjsC91ICdqxcpw6iR0TpoDsnQhwugzA+gaVY2RyxlSPLCaknDlqcNsprbEf0nw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com (2603:10a6:102:2a9::8)
+ by AM9PR04MB8456.eurprd04.prod.outlook.com (2603:10a6:20b:3df::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.11; Tue, 12 May
+ 2026 15:35:24 +0000
+Received: from PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588]) by PA4PR04MB9366.eurprd04.prod.outlook.com
+ ([fe80::75e4:8143:ddbc:6588%3]) with mapi id 15.20.9891.021; Tue, 12 May 2026
+ 15:35:24 +0000
+Date: Tue, 12 May 2026 11:35:15 -0400
+From: Frank Li <Frank.li@nxp.com>
+To: Alexander Stein <alexander.stein@ew.tq-group.com>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	Guoniu Zhou <guoniu.zhou@oss.nxp.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	imx@lists.linux.dev,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH v3 0/6] media: synopsys: Add imx93 support
+Message-ID: <agNIs4GLcrMLWjZ1@lizhi-Precision-Tower-5810>
+References: <20260216-imx93-dw-csi2-v3-0-aabafee10923@nxp.com>
+ <5993213.DvuYhMxLoT@steina-w>
+Content-Disposition: inline
+In-Reply-To: <5993213.DvuYhMxLoT@steina-w>
+X-ClientProxiedBy: SJ0PR05CA0052.namprd05.prod.outlook.com
+ (2603:10b6:a03:33f::27) To PA4PR04MB9366.eurprd04.prod.outlook.com
+ (2603:10a6:102:2a9::8)
 MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PA4PR04MB9366:EE_|AM9PR04MB8456:EE_
+X-MS-Office365-Filtering-Correlation-Id: 5eb19b00-f87a-4840-ec1f-08deb03c15c6
+X-LD-Processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|52116014|7416014|376014|366016|19092799006|1800799024|56012099003|18002099003|11063799003|22082099003|38350700014;
+X-Microsoft-Antispam-Message-Info: 9hHSr2iVvgF0oPV1N7gQcBAeYfUMiUixuoibZ+oziYnVnVzat9b8IgV2cBeSRBRRrnPSc+KhwIR0B4KxducozeHF//1pfh3EapiSobZ+A8m4/ZToCF5i4HdMUJjXzCAk87lQZfvVy6UYQ8oqbyi/VcdYAu42I3K9cvhVcRS0tzHRZqRLzEOTb4CpQCl96OYt6UQ9NCC3iqLgzDBjR+RalMgXHbdvqGF2rsasi7XV1f0KJDCoOXG1X/rPjS1xW5VzQf+gDWLp3OSFzgYTC0a3Cnqd1+PR+zgnFBPYXkw+XsWZzt2wX02h9oIm/wVx/khScZtKy8eRhs6mfBa4/bLbNsy8DZQi6xP4cQBsS/2BIBOZtI/YcUnhy0FIiUvI54IdN3mMV7vr0sAf65cCfCpM4DMGC0pLmWqs5kzfc3act3AzK4nDz/2Og7xUe0gbr0nkm4dFbRtZaan6N1WoiPr7hIFiSvbIh/W1EEKvY7yaXzdtXFFjWBNuhhv5QfpmMWKuKMzDZpbzdv2uo6pVXpM198SDQmfrOhs2/Q+qf5X+yE3009xguvfvOMS4pxftydY15ohbJFxwA56xe9rR4my2CrI+eEfGAiwZ+Ig/L4xOuTnKeBdtH1HqKEf5dYVev82crCG6CVwQfMUZUMyGyBMbCegCfyzWnD+7OieFb5FAGtV4FpGnos2Rxqsg3IsB1yix
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PA4PR04MB9366.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(52116014)(7416014)(376014)(366016)(19092799006)(1800799024)(56012099003)(18002099003)(11063799003)(22082099003)(38350700014);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?G8KDcb/jJfXwR7N7VLG/R3vkkyk9NbUuln64Kwv/IH9GdGy7C4dQkwamfa?=
+ =?iso-8859-1?Q?yd8C0dulCdM1bHuaJymduxuWjnqDFOjLWScTALgOyj8UrpleEbXPlDnO0F?=
+ =?iso-8859-1?Q?m37yxsU/YX9u4mfcmM+itS1VmWPCh5g+mvne8dp7WUVHkCKV0i1Gx5/PL7?=
+ =?iso-8859-1?Q?X/UHy6/ESoXTSE/mjqILquWyuENUpMaUs9Fcl4wKkt9JvtBlpQwxMiTl3M?=
+ =?iso-8859-1?Q?FuAoRrXHXZYoxHtS7ITyxs8gwp7Qk9RPCl6BoelPFWchfBCFCKfJVAne22?=
+ =?iso-8859-1?Q?O9/4StFOhMOiEAvk3iFK0weHucosLhkyPv97UEAZwHUoC/69ukG9E1AKXH?=
+ =?iso-8859-1?Q?K9zhaDt3CueGr55hhz95Opd2bIrutIYqxlI6msLGb9KUCcxIjywTUX3XUq?=
+ =?iso-8859-1?Q?EJRWpM9fy1da9i/0q6tzCK6wH6zBHbukKQq9wqFy03GKNf2aTS09QVNphP?=
+ =?iso-8859-1?Q?JfppGTlIy01/YV0J0bxoynw0UQ3SV0/GSlFOCZkc4CdwTTqK7zskdtClyD?=
+ =?iso-8859-1?Q?qccEmw/s+W0V3J3lQq7mBjsXhskGQrXohmke2sLf77ykrdxnaP18JtMZek?=
+ =?iso-8859-1?Q?AX94iJunQaWBWnPmR9Xq2KThquvQz9aevJOGNVeK7R1fQJUJbQTd0CopnA?=
+ =?iso-8859-1?Q?UZPBU+FD3dH0Z4/GIGkneho7KUjfB0O0WPKMk72Zw3zF/cQoS8G1BMObCr?=
+ =?iso-8859-1?Q?j+ZX2x6Qw3J7T4gXOfv3Ur3pTvFMPUAT6RduqYYukGAlhRdo27n1YXJu9X?=
+ =?iso-8859-1?Q?TNMtvz5aCVT9i5ECecWe3f0uWc+ZyKN2F/QybzvehjCrW9BVzPh0G5dJzh?=
+ =?iso-8859-1?Q?EP770TYt9uqxkMeJGHg4h8+SWnwpJ7VS6ugvZDjVdHpygYFH/2s4wkhusC?=
+ =?iso-8859-1?Q?19xpUUT66qp48ajc0NT7P8sX0TYXFyQlAjNKw3e8uyWp94qq87mWCw/dB3?=
+ =?iso-8859-1?Q?LMpFPftzU8nPbhCVsFHb8zl9vjtQDR+Zk+k2jx9+tnfXjWithQZSO5apd7?=
+ =?iso-8859-1?Q?cMkJVBRziJgzZu+wWd50PlN7dtmooCXhqZ6hpemD7JhruzI3Qclk9qi6z6?=
+ =?iso-8859-1?Q?5zfUkBSuAwJY6WGFkS2Wlh4a9DuvtpUENLjWO2r483PPE2cPYDMkIl7VjL?=
+ =?iso-8859-1?Q?CFRTJJxP+zSYtKbUAaHBnAzoNILfsg9U127UgzQBL68ol/wuCbl1MRXuwB?=
+ =?iso-8859-1?Q?pQjGUfgPXAmziiF0zuuPEM+h2WGVpWKTv+XVTqqSIY3rmSe2YH9HX2GUos?=
+ =?iso-8859-1?Q?kyoiA52E3YcAZuyTdW5p/xtL+dGAbcEQQ2r4MoSS6YBNPbqFmp+o2+v4hz?=
+ =?iso-8859-1?Q?7ccfgXCqLu83q9XkO5mcx1MkjcAHrBptyZGbzWvFWycdpzExHur9LSdPuy?=
+ =?iso-8859-1?Q?jQq8NmWz60N1uB076lurQ3HHQw1Nano/LrkGiZAcOdaDAbq00u9oVOc/25?=
+ =?iso-8859-1?Q?NINTDGvCwSNzYtzegWml/+ZeCjxYMhR4FL8Q+jsX8ai8biqGp7Vh0PcfQo?=
+ =?iso-8859-1?Q?PHb48wgQeFa05+9qOF1ZHj+RzxVfuIMxg7EVQzgpi9YThSE9qfK3hx8VEa?=
+ =?iso-8859-1?Q?z286kmaWMok/wh45jKcu0wOdygLG+6kozIuEEjofuW7jbKrOeEbZsM0BZa?=
+ =?iso-8859-1?Q?NVmcJxoXoeMwm9diouVXXcmqYprJUnCsjAtUchwRb+FBq6LyQJ6Bgemzkj?=
+ =?iso-8859-1?Q?kIhwlqNF07Und/axYFWUtp/fnOtNyk46mW9B8ngFrBUe93ryI/ar3u/nrL?=
+ =?iso-8859-1?Q?lL7x6zmCeEMSbFbyEi3klm41NS+nB0UV16yUUEFK0AvZF4/G7dzILiisgp?=
+ =?iso-8859-1?Q?I2eZYaj33Q=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5eb19b00-f87a-4840-ec1f-08deb03c15c6
+X-MS-Exchange-CrossTenant-AuthSource: PA4PR04MB9366.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2026 15:35:24.4853
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ddu4vtNp+3E6qzxW/R2NKTT399BhSwp4egq7WzaM2zPFJE7Rxysa6Imhy6B7uV/SUqX+1j9Hjau8Gv4pmenZEg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AM9PR04MB8456
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_080940_589645_FBF12103 
-X-CRM114-Status: GOOD (  32.07  )
+X-CRM114-CacheID: sfid-20260512_083529_812179_FD147D01 
+X-CRM114-Status: GOOD (  25.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,175 +144,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============2315260426404149568=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Tue, May 12, 2026 at 05:02:42PM +0200, Alexander Stein wrote:
+> Hi Frank,
+>
+> Am Montag, 16. Februar 2026, 20:18:38 CEST schrieb Frank Li:
+> > This 3rd time try to support DW CSI2RX support for imx93.
+> >
+> > 1st: Create new dw csi2 driver
+> > https://lore.kernel.org/all/20250701-95_cam-v1-5-c5172bab387b@nxp.com/
+> >
+> > 2nd: Based on legacy imx6's DW CSI2 constroller.
+> > https://lore.kernel.org/imx/20250821-95_cam-v3-0-c9286fbb34b9@nxp.com/
+> >
+> > Now rockchip create a common DW CSI2RX driver at
+> > drivers/media/platform/synopsys/dw-mipi-csi2rx.c
+> >
+> > This time base on rockchip's implement.
+> >
+> > i.MX93's version is newer than rockchip one. i.MX6's is more similar wi=
+th
+> > rockchips.
+> >
+> > But i.MX6 is too old. So start at i.MX93 firstly even it has bigger
+> > difference.
+> >
+> > Signed-off-by: Frank Li <Frank.Li@nxp.com>
+>
+> I'm trying to give this a try. Did you actually manage to run a CSI pipel=
+ine?
+> What did you do for the D-PHY driver? (please refer to csi2->phy =3D devm=
+_phy_get(dev, NULL);)
 
---===============2315260426404149568==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-qN1+gvfnAtUxv/ubnzMi"
+Use old thread PHY driver
+https://lore.kernel.org/imx/20250701-95_cam-v1-2-c5172bab387b@nxp.com/
 
+Frank
 
---=-qN1+gvfnAtUxv/ubnzMi
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Le mardi 12 mai 2026 =C3=A0 16:56 +0200, Sven P=C3=BCschel a =C3=A9crit=C2=
-=A0:
-> Hi Nicolas,
->=20
-> On 5/8/26 11:18 PM, Nicolas Dufresne wrote:
-> > Le mardi 28 avril 2026 =C3=A0 11:00 +0200, Sven P=C3=BCschel a =C3=A9cr=
-it=C2=A0:
-> > > Avoid odd frame sizes for YUV formats, as they may cause undefined
-> > > behavior. This is done in preparation for the RGA3, which hangs when =
-the
-> > > output format is set to 129x129 pixel YUV420 SP (NV12).
-> > >=20
-> > > This requirement is documented explicitly for the RGA3 in=C2=A0 secti=
-on 5.6.3
-> > > of the RK3588 TRM Part 2. For the RGA2 the RK3588 TRM Part 2
-> > > (section 6.1.2) and RK3568 TRM Part 2 (section 14.2) only mentions th=
-e
-> > > x/y offsets and stride aligning requirements. But the vendor driver f=
-or
-> > > the RGA2 also contains checks for the width and height to be aligned =
-to
-> > > 2 bytes.
-> > >=20
-> > > Signed-off-by: Sven P=C3=BCschel <s.pueschel@pengutronix.de>
-> > > ---
-> > > =C2=A0=C2=A0drivers/media/platform/rockchip/rga/rga.c | 19 ++++++++++=
-++++-----
-> > > =C2=A0=C2=A01 file changed, 14 insertions(+), 5 deletions(-)
-> > >=20
-> > > diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/medi=
-a/platform/rockchip/rga/rga.c
-> > > index f599c992829dd..77b8c7ab74274 100644
-> > > --- a/drivers/media/platform/rockchip/rga/rga.c
-> > > +++ b/drivers/media/platform/rockchip/rga/rga.c
-> > > @@ -337,6 +337,19 @@ static int vidioc_try_fmt(struct file *file, voi=
-d *priv, struct v4l2_format *f)
-> > > =C2=A0=C2=A0	struct rga_ctx *ctx =3D file_to_rga_ctx(file);
-> > > =C2=A0=C2=A0	const struct rga_hw *hw =3D ctx->rga->hw;
-> > > =C2=A0=C2=A0	struct rga_fmt *fmt;
-> > > +	struct v4l2_frmsize_stepwise frmsize =3D {
-> > > +		.min_width =3D hw->min_width,
-> > > +		.max_width =3D hw->max_width,
-> > > +		.min_height =3D hw->min_height,
-> > > +		.max_height =3D hw->max_height,
-> > > +		.step_width =3D 1,
-> > > +		.step_height =3D 1,
-> > > +	};
-> > > +
-> > > +	if (v4l2_is_format_yuv(v4l2_format_info(pix_fmt->pixelformat))) {
-> > > +		frmsize.step_width =3D 2;
-> > > +		frmsize.step_height =3D 2;
-> > I think its fine like this, so let's start with:
-> >=20
-> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> >=20
-> > But it does not feel like a hardware alignment to me. When we process i=
-n
-> > software these things, the minimum alignment is bound to the subsamplin=
-g, since
-> > there is no way to store half or quarter pixels, the padded width/heigh=
-t
-> > requires a step that follow the subsampling, something like:
-> >=20
-> > 		frmsize.step_width =3D finfo->hdiv;
-> > 		frmsize.step_height =3D finfo->vdiv;
->=20
-> I agree that this looks better. My main intention is to be more=20
-> conservative, as the Rockchip related code/docs seem to always ensure a=
-=20
-> 2 pixel alignment in both directions even for formats like YUV422, where=
-=20
-> we shouldn't have an alignment requirement in the height. Besides the=20
-> vendor driver and TRM mentioned in the datasheet, the librga and it's=20
-> docs also mention an alignment of 2 (pixels?!) for all YUV formats (see=
-=20
-> format alignment list in [1] and Q2.5 in [2]).
->=20
-> Given that the driver currently doesn't have any way to get the cores=20
-> unstuck/reset in case of a hang, I'd like to play it more safely by=20
-> adhering to what the vendor does instead of trying to do more and=20
-> therefore allowing some potential breaking format. E.g. I've also=20
-> experimented with sizes of=C2=A068x2, which the librga allows as input/ou=
-tput=20
-> of the RGA3 (whereas the TRM specifies a min size of 128x128), but=20
-> quickly dropped it as it produced some interesting broken outputs.
-
-Agreed, simply preserve my Rb in next version.
-
-cheers,
-Nicolas
-
->=20
-> Sincerely
-> =C2=A0=C2=A0 =C2=A0 Sven
->=20
->=20
-> [1]=20
-> https://codeberg.org/airockchip/librga/src/branch/main/docs/Rockchip_Deve=
-loper_Guide_RGA_EN.md#image-format-alignment-instructions
->=20
-> [2]=20
-> https://codeberg.org/airockchip/librga/src/branch/main/docs/Rockchip_FAQ_=
-RGA_EN.md
->=20
-> >=20
-> > Nicolas
-> >=20
-> >=20
-> > > +	}
-> > > =C2=A0=20
-> > > =C2=A0=C2=A0	if (V4L2_TYPE_IS_CAPTURE(f->type)) {
-> > > =C2=A0=C2=A0		const struct rga_frame *frm;
-> > > @@ -358,11 +371,7 @@ static int vidioc_try_fmt(struct file *file, voi=
-d *priv, struct v4l2_format *f)
-> > > =C2=A0=C2=A0	if (!fmt)
-> > > =C2=A0=C2=A0		fmt =3D &hw->formats[0];
-> > > =C2=A0=20
-> > > -	pix_fmt->width =3D clamp(pix_fmt->width,
-> > > -			=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 hw->min_width, hw->max_width=
-);
-> > > -	pix_fmt->height =3D clamp(pix_fmt->height,
-> > > -				hw->min_height, hw->max_height);
-> > > -
-> > > +	v4l2_apply_frmsize_constraints(&pix_fmt->width, &pix_fmt->height, &=
-frmsize);
-> > > =C2=A0=C2=A0	v4l2_fill_pixfmt_mp(pix_fmt, fmt->fourcc, pix_fmt->width=
-, pix_fmt->height);
-> > > =C2=A0=C2=A0	pix_fmt->field =3D V4L2_FIELD_NONE;
-> > > =C2=A0=20
-
---=-qN1+gvfnAtUxv/ubnzMi
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCagNCsAAKCRDZQZRRKWBy
-9C0fAP457K60/ZJ3ZLSyjkjg60UiJKpqRH2brs1rrxHPVXniJgEA9cbujVJ5Cbin
-Jn9LmlNpceZNGbjSuImEtMjHkEqw3AU=
-=l7Hh
------END PGP SIGNATURE-----
-
---=-qN1+gvfnAtUxv/ubnzMi--
-
-
---===============2315260426404149568==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>
+> Best regards,
+> Alexander
+>
+> > ---
+> > Changes in v3:
+> > - use dw_mipi_csi2rx_has_reg().
+> > - detail change see each patches's change log
+> > - Link to v2: https://lore.kernel.org/r/20260213-imx93-dw-csi2-v2-0-8be=
+6039f44c6@nxp.com
+> >
+> > Changes in v2:
+> > - use enum and array map to real register offset.
+> > - Please keep the order:
+> >  - #includes
+> >  - #defines
+> >  - enum and struct definitions
+> >  - the rest
+> > - detail change see each patches's change log
+> > - Link to v1: https://lore.kernel.org/r/20260210-imx93-dw-csi2-v1-0-696=
+67bb86bfa@nxp.com
+> >
+> > ---
+> > Frank Li (6):
+> >       media: synopsys: csi2rx: use devm_reset_control_get_optional_excl=
+usive()
+> >       media: synopsys: csi2rx: only check errors from devm_clk_bulk_get=
+_all()
+> >       media: synopsys: csi2rx: implement .get_frame_desc() callback
+> >       media: synopsys: csi2rx: Use enum and u32 array for register offs=
+ets
+> >       media: dt-bindings: add NXP i.MX93 compatible string
+> >       media: synopsys: csi2rx: add i.MX93 support
+> >
+> >  .../bindings/media/rockchip,rk3568-mipi-csi2.yaml  |  47 +++-
+> >  drivers/media/platform/synopsys/dw-mipi-csi2rx.c   | 278 +++++++++++++=
+++++++--
+> >  2 files changed, 303 insertions(+), 22 deletions(-)
+> > ---
+> > base-commit: ada3fa02f7a95623b724dfe300fce6f49cc2d75a
+> > change-id: 20260128-imx93-dw-csi2-b472ddcb176a
+> >
+> > Best regards,
+> > --
+> > Frank Li <Frank.Li@nxp.com>
+> >
+> >
+> >
+>
+>
+> --
+> TQ-Systems GmbH | M=FChlstra=DFe 2, Gut Delling | 82229 Seefeld, Germany
+> Amtsgericht M=FCnchen, HRB 105018
+> Gesch=E4ftsf=FChrer: Detlef Schneider, R=FCdiger Stahl, Stefan Schneider
+> http://www.tq-group.com/
+>
+>
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2315260426404149568==--
-
