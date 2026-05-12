@@ -4,101 +4,182 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAF9C4450A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DAFBC4451E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:Subject:Message-ID:Date:From:
-	In-Reply-To:References:MIME-Version:Reply-To:Cc:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=LVeuxfHiBvpvuLNy3k+QYYKk6WyS938SnWqfb5L3cI0=; b=S7F/uGxfXnInXJS3/9+9MENsoX
-	4IKKW/0wpZNmSH5q9NEdG4b5o6a1F6wMDYUmik70TKIMkEoUOyKJdCKKahP0W8HGvY/M4Irq8pmfz
-	B47zs+KOwmubIwkvl9q1HSfyytQTVJiAxfXRzCy6OOfg+HPlXzENsmfl9KBsuZuqg63qbWZOgLXkA
-	GO5szx1RAU8wskf/DnkX292Io8ig5JaHmBgWIWp6ofnYRBBbHgZLy9cHoSq7J3TwYfLgmXvTRvEsu
-	QuN5cL1I+7hhkT5aF40IHT8xYDD0GQQO7JZvf8qbkQDDp2yUvDOzQ73+oyB1skqmTHyoY2dk9AXxW
-	nAXry0nA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=15gOWkOQBt3mu1J9d/qstm13GyL5Z9r0bggr6js8Fcc=; b=KOP9IeNNEVIf/D
+	gCJ6PX6iI5VSAipcf1tae01x32x7FF97nVpsqg5rJGWcykrgiM7Uo8QHjOYlS8vd2EkQCvK9isSON
+	sF7c2vX43X2pk7F9Jh70sPsZqg84IiM2lxjMfcaZAeR86Sg3BjlN0px349pj5AdEXx6qJE1BtxRts
+	4qMIZ6Y9XPaSka2b84lYFQ+ZfPlIDHa8RtOhjnZkZAD0zAl+vmqXC7MQ9j+id4ANAeR6hB32PGIZX
+	uroLUlYLy4DJv338hHDDoQxgcMjeBOSpbxW6h6jhJjToZ1+DL7PN0EWAHIv4tFdcX6afWHct9miP/
+	lFLCtIYR4ByJAjY81KfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVg-00000001bRV-0nJL;
-	Thu, 09 Jul 2026 08:53:32 +0000
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+	id 1whkVd-00000001bHL-2j1f;
+	Thu, 09 Jul 2026 08:53:29 +0000
+Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOgXc-0000000DGTy-0RgD
-	for linux-rockchip@lists.infradead.org;
-	Sun, 17 May 2026 18:48:45 +0000
-Received: by mail-lf1-x132.google.com with SMTP id 2adb3069b0e04-5a887ebb416so1788325e87.2
-        for <linux-rockchip@lists.infradead.org>; Sun, 17 May 2026 11:48:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779043722; cv=none;
-        d=google.com; s=arc-20240605;
-        b=e6aOwdBjRUhECJBzqa2dh7iq7X8gteowj/TIsOB6iFMeiZsJ8woGBpMtFNxvDhwn/r
-         ytZs+2vHEE2N0jDEjsL1yEgQEEJG8mKH1mdvq+VZI/auEG0xNiekVMEtEdnWOUrP0h51
-         5ko1Zry/mGMlOJ+RchmdEhumpQ5OTrxXftkM1NurzTaGXcrO27Wu2PLkSFxFPh9sFfEY
-         wP2Oxr0xpDt/MhKunR7zC11wwfSIz1QMvZz3hgWj6qoctqCnIQWP3s24ygCejlV8sPE7
-         PMxGf00wk0egiz4d6NwKAcPefWiK77UNi6ljPyXcEV+EzqvfDpIfNnwZ984XcdC5VAjk
-         ZnnQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=t3QLGLhBaygDygKakS8Kb34ZiRXWe1j8uoA8+Q6jqbk=;
-        fh=+S59iss1khD7Phgpxaw6TfzdkZnYoHq76HDPsYgQzeQ=;
-        b=TUTwIuAaq17krpVet2OXDNEY0KypVf5Mrpn7zb0Qy7VA6zD130FLMJ76vxuaxopwVY
-         d+cVkYQkl/rIvhd9nQ2hvO8fYqgU6jSpOrxHdfuFzyGmHeGwPER7fWZilQeyMG3nMCsY
-         B/b8AuRFSEIG19jm7tg4ya9TDAcdiDTOd9SU8egKlKRADlaAwAIt/YUVF0E6wTJtD+Ce
-         Spp+JyUPvmC1Nc7wjZ9Pw/WjbmGxQ4f6UV9BP5T/mm9Jt6qUjsv7LWfdrlcLtLIVBILE
-         cpuE2t7tHRqj+tfhLB9Zn9zGip9tU06qWfJM3W2IK5+3uUPoVJbn6sJ3VGphkjt0YQ7o
-         SDqg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779043722; x=1779648522; darn=lists.infradead.org;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :from:to:cc:subject:date:message-id:reply-to;
-        bh=t3QLGLhBaygDygKakS8Kb34ZiRXWe1j8uoA8+Q6jqbk=;
-        b=r5CcZtu0P+TuWrcZHfOYuOmliDjoFBmkJbqWwVdB7sqpVNde+D45mHSmKng+9u7EY1
-         ZqZ71CRGg0gbsI7NKZfK5pfbt6CyASF6qNlpYx39LIA6mra/wFPR0WrnuyJP9TIy+/JB
-         RMYI7N35I8f1E9PrloQ3enzE5xG/a1XNCjIOa9V8j1+kxBlQl2rqJnb6Srt6aly7hJFd
-         T2+E8x7IOTC2F3f8hr9AFAwkRoy79xso1JHedYH63FhvqUlBcYRjZaWi9c/ifnwb6OnD
-         Fs903+6nCY1ov6/dTaGLrYf8+Sr6XlqkwJnsNetubNa0RWR35MdvoGzielIEXzoEdsur
-         vJBw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779043722; x=1779648522;
-        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=t3QLGLhBaygDygKakS8Kb34ZiRXWe1j8uoA8+Q6jqbk=;
-        b=Js/sxEsOZUnMlOZDcWCjMolezxLOubl3IykY7LdO1hIndicUwSSIX3q2YPUjROhzZ8
-         XcHbu/WzWM8zbapIm846Ypg0gtxVkQP0qLJp3jzaMP7G7m2jKtLJ48EtJWtXwS26eSC3
-         5mwZn8Dx3bNc0vhZJWDGddQSA5P0U7ACymW/SQus4Hs4XzBobj+wYuL7JxxMyPMit19u
-         Q4taMnmwQmmCKaMXzc8jRE8OyS5yDhqlp9kaMiNZnvnQSDh3/6Duh+ioj6ihqGeJ+0qg
-         RDHM7PCQxciZElchaUXZVPynDEoxJrY7HxQNhqp/Yu9B53Vy2RO4O+jroCgvJGPrsVlF
-         Utpw==
-X-Gm-Message-State: AOJu0Yyp4FQrZoMjfmipQM28YNVWUpZUAlqAjn9N0Qp/UZbsMvpHn071
-	gLjt/IIRgoCSURpMzvq9d1+kXNWw42e6rF79s3a6ANjMkQtu880To6ipvpZgLVAoJWSKasNQco9
-	ilc+MEP8kytY6DXFJ7k0qhshDXfxbbGllXQ==
-X-Gm-Gg: Acq92OEeApRcUetTFtzQ6KLm06nwKkkZf5/bNspu1XbyddT5BT4E9xyU4arwXH/byxI
-	tGVi93Fxp4j4o4n/aeyHpunH1z8Bi3ZIVF20h5sDKyEB7u432Z63sTeSsO+3HOsgDKqKXQnMdhQ
-	TfYr5LNVDD3XcLDIe0t3r96JF+GeU62NTuZRsa+VIotKFRV6eHdAvLlSKtdJeGf5G25yMaSj0Dp
-	yA4zZqCNrQzJyOjolSYLjvIYWVntPs8nNLZ7br0v5JiV8UnyMn31qqotXXtSItaWAJwPrfADJHR
-	XmjQH6cxnykY2z98jqn88GN0HSDfppYfgmpXkw==
-X-Received: by 2002:a05:6512:10c4:b0:5a8:65ce:e832 with SMTP id
- 2adb3069b0e04-5aa0e74caa6mr3728243e87.36.1779043721801; Sun, 17 May 2026
- 11:48:41 -0700 (PDT)
+	id 1wMdIn-0000000FJZd-1X0n;
+	Tue, 12 May 2026 02:56:58 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=ljwebpQxParQKqTnSQpkYNpkxpqzBB5zXyggCQTFWMv4uMvRe6D1XxBhLx70ve3r8kD9aoFZoL6I0MlkDFLJQKE9Cy3dfDA8M7Xo6Sz56ORYIPM7z3ia+QadO+2YputWg5efzXRSlHUjcfeRS7b9vFazNQ6JtbY9Nul44pSJKmxpu64DtAH7INiAyzcfR4jnZ5mfPUPxnMrxli/u+kNuqqJrBarIL2uumwrtY0h5YuvvI+jSa4TiLEIrViFCxQmTd01QTO21YscY+5D5QCvnoMsqSDXlJcO4d4MeoNRFSNwpBgTDpXwjq4s433dy/EV4jDi2h5YlxmgBzW9rBZxyNg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=qB9Z1XISuE5TmIN+wzSo7EmWgnYHriGeI4H1K/EhnJ8=;
+ b=eEb4Pyamym4ocKFJxNlp3bNJka+3HQZcY4ESB4xB3No+GRxLkD+N/RXVZYqbC+Bu8hnKA8DHTndg55+kIEp0S5t2Ea0RIGsiPL6OGPkZyZWAy5K7sxdUkrahYpUXRizvvJyroSkwIqOsNCScZ1NCSonYsxLmH4F5T479bBPmgfuA5dQEtNrqvyGK8XxIHn0vXdv4VA53Ka+4euBWlUtnJ28ASKH5EaQ7DhRnSJBbNmC5BG+zm/MV9PTM30DvL9tCK1ovPHZ7J4p/XAw5E3jS260G3XPdaIiF0wAw5TO0x4b36EqDCBHzgBqY+FS5ziastbCfz8DYqXcFlzzJGjwtJQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=qB9Z1XISuE5TmIN+wzSo7EmWgnYHriGeI4H1K/EhnJ8=;
+ b=i0iMKBqDCDZ5li+h2EM3uIkh8Vs0s6qHfX3sH+quHmuZ2MF3Pjn6F8nZ9fGXIj/qLn3L/zpACEWCXaG/D+r/2GE1o2SjFSQgTNSd9eDdcm39Vm9a3UoON4USBqwvhigEwpcA2p3KJCKkYTPVK9tmrVTBTHNo1RSESldpDA5aXWN5HP+vJht7ZjLnjgqKujb+zR/wOc/0au/Bk+m/KOpKwl4+/bkZaDRqWU3o9ZMZW+IMxG+0xcsyeY7NyERdSztDFXgrN8caj5mVJqstmkds59M4bFVtq6e912gx3QwodZqhDn0Zc8udedKuIEjSKsTnFgMiBdbm3rzdHV4kq77CVw==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nxp.com;
+Received: from AS1PR04MB9287.eurprd04.prod.outlook.com (2603:10a6:20b:4dd::8)
+ by PAXPR04MB9023.eurprd04.prod.outlook.com (2603:10a6:102:212::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9913.11; Tue, 12 May
+ 2026 02:56:49 +0000
+Received: from AS1PR04MB9287.eurprd04.prod.outlook.com
+ ([fe80::6f30:763d:17d2:b79c]) by AS1PR04MB9287.eurprd04.prod.outlook.com
+ ([fe80::6f30:763d:17d2:b79c%3]) with mapi id 15.20.9891.021; Tue, 12 May 2026
+ 02:56:48 +0000
+Date: Tue, 12 May 2026 10:57:59 +0800
+From: Liu Ying <victor.liu@nxp.com>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Sean Paul <sean@poorly.run>, Konrad Dybcio <konradybcio@kernel.org>,
+	Akhil P Oommen <akhilpo@oss.qualcomm.com>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>,
+	Jessica Zhang <jesszhan0024@gmail.com>,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Vinod Koul <vkoul@kernel.org>,
+	Nas Chung <nas.chung@chipsnmedia.com>,
+	Jackson Lee <jackson.lee@chipsnmedia.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Mirela Rabulea <mirela.rabulea@nxp.com>,
+	Detlev Casanova <detlev.casanova@collabora.com>,
+	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Hugues Fruchet <hugues.fruchet@foss.st.com>,
+	Alain Volmat <alain.volmat@foss.st.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	MD Danish Anwar <danishanwar@ti.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Parvathi Pudi <parvathi@couthit.com>,
+	Mohan Reddy Putluru <pmohan@couthit.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	Michal Simek <michal.simek@amd.com>,
+	Mark Brown <broonie@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Lorenzo Bianconi <lorenzo@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+	"Andrew F. Davis" <afd@ti.com>,
+	Hussain Khaja <basharath@couthit.com>, Suman Anna <s-anna@ti.com>,
+	Ben Levinsky <ben.levinsky@amd.com>,
+	Tanmay Shah <tanmay.shah@amd.com>,
+	Erwan Leray <erwan.leray@foss.st.com>,
+	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
+	Roger Quadros <rogerq@ti.com>, dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+	dmaengine@vger.kernel.org, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org, linux-amlogic@lists.infradead.org,
+	linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
+Message-ID: <agKXN3Nmfqcdu8XZ@raspi>
+References: <20260511165942.2774868-1-robh@kernel.org>
+Content-Disposition: inline
+In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
+X-ClientProxiedBy: MA1P287CA0005.INDP287.PROD.OUTLOOK.COM
+ (2603:1096:a00:35::19) To AS1PR04MB9287.eurprd04.prod.outlook.com
+ (2603:10a6:20b:4dd::8)
 MIME-Version: 1.0
-References: <CAGUWaEG5tzSm+J4KDdWHadQjn+XhfGVcsEK-cdpm9hkZj00aWw@mail.gmail.com>
-In-Reply-To: <CAGUWaEG5tzSm+J4KDdWHadQjn+XhfGVcsEK-cdpm9hkZj00aWw@mail.gmail.com>
-From: "Owen O'Hehir" <electronicconsult1@gmail.com>
-Date: Sun, 17 May 2026 19:48:30 +0100
-X-Gm-Features: AVHnY4IHc5IYmDKCCYu4oXhXSOG2tZo3uqhP3RxZslFbXGgow-DO57h3MG_ECEU
-Message-ID: <CAGUWaEGi15x2LFB_airz6gSTpyKYPb_vhBrcb-WvBXNpS2UpGg@mail.gmail.com>
-Subject: Fwd: RK3506B: what enables FW_DDR (0xff5f0000) region enforcement
- from the secure monitor?
-To: linux-rockchip@lists.infradead.org
-X-Bad-Reply: References and In-Reply-To but no 'Re:' in Subject.
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AS1PR04MB9287:EE_|PAXPR04MB9023:EE_
+X-MS-Office365-Filtering-Correlation-Id: fae848d6-322c-4c53-1174-08deafd21c4d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|19092799006|7416014|376014|366016|56012099003|18002099003|22082099003|11063799003;
+X-Microsoft-Antispam-Message-Info: i65/kxoFCtN8uVYhAkDIwx6i4aXCDz8yhOgmByjJxx8iqrRME3ifmpANzfsXijKEiIUm93iNUbooyZssin+4SeeJAYuDYoHNp8ruFz2SBCC+KMoUElkoBkR6UDyBwZwmfapJkD6026qbu6bjDVNPoUXWZd2tydBt1SfyxgVTcnEZQnWhG5hBAyZa+iVwICsXD+zjLq1oykP9Crxxqc25rzvog56dpuz7q8k9cQ6R1xj5+WS2WUa1ZJWE7Yw4ij4wg9WMag5xnSn+zAo/S9SchXbGhQSEpakiv4KWDbCoWtNQhGhZQXKXkiICROP+jwNffAbV0TNfSj2JHW09rKbJAH36a5b7y16wwsxJF+funirRN1YoJZ1F9GSMePKANv70k8Nmsd1pT1CMMd3Os4RYvClPwda9QyR0dnmpdkaNGS4sPP0zTXLBPPrd5HnUqrIVIJjEpel38TqLyE95/vhpTLl1KFh0WQQ7b4tOEunpngSteTjLXeIOzM+JHhxJrmxUCXR+y/601lISVlZcJ1lNBDCXa+vwfPEKp2QW5M0zsrtyQZqHEB5d50FgDs9XqsTCoRjP/1RvujCL157ODD1q/Tj3VoGwBJ863Ph36AnDWmHqUfRq0I6XGqjdrN0487G9kfqCeqv2IaSAQec/9iYlpdonSzjhUynUNY/rc/Wp15mR+uf2WdRltdVWsKPuZvwh
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS1PR04MB9287.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(19092799006)(7416014)(376014)(366016)(56012099003)(18002099003)(22082099003)(11063799003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FqDaVSi8/2cSWzMoof3hJoHqJ8Akda0YefkoOhWp5frsAFmOLN/C40sMnJ1c?=
+ =?us-ascii?Q?iRk5nLOKLDBaPZYEAaFqZ+6WNUqZsaBxR4NDraO1BCL13cWwK3CZQIAsWZyu?=
+ =?us-ascii?Q?gx/vMJhVG5q3pi/XbkAOY+9UFJMOyaH7ck9f0E4pAU2RScfXjUngpLHaqHap?=
+ =?us-ascii?Q?mfTQI+/isiCTfp2qJmtHobLvkoxpmQ25+kfb0oGQZ5wdvTaS/p3siGV8g8Cw?=
+ =?us-ascii?Q?J+U4t2kAEXaDQWApPS1GQq2kl9d6xyCo6qMOjGFvixGQ4+Xfdi+PwiCPbpbt?=
+ =?us-ascii?Q?uLz/g7zW5rS+RpyWzcNsMQO60a/qL32LMz2IFNrSK2FWtcXGwzbgd66nO6PX?=
+ =?us-ascii?Q?kcGq0gEPqfHFFjaVdYp++dOw7gx/T5BPA16WMZLQSrhCtImc6HpfiS4uFAev?=
+ =?us-ascii?Q?HdYP4pzffXolHjv+oKfguMm7cgc+2XG1QbmenQFn+Q5hActpPxB8afbolm2r?=
+ =?us-ascii?Q?KGdK/zEeC+jN55hWBmjCep5/jqHbBpa9PMVJfmer5h5MHkPgPL8DQ6euVCVL?=
+ =?us-ascii?Q?DuXUcjGTdk8EqDpjVhPqfOVJ15kdGiFtwogjZBN5/nKUJ59k151g5JotW+pa?=
+ =?us-ascii?Q?2239PqNfYRMr1ThNBvSMcEXJS5XLkMrYN+JnUOoiLjvsX/zcqpS0GkZIGYgz?=
+ =?us-ascii?Q?JDuVEIo/pqlfJp5dSq1s0uHzUSjiwDoztbZQAAWG+GHEBR7NZa3TPwYnbXuD?=
+ =?us-ascii?Q?Dw/8XqvBu61rm5GKNAcG/kPNbROngtBN6TUE0HbXv8vHpzQ/GMO3pkEytMZl?=
+ =?us-ascii?Q?DmY8o9knZ0d9BzeB3POofqZY32JA2bMvcTI/VvmN0UWw5wXqCezM8OuIgAzs?=
+ =?us-ascii?Q?tw2fpkJxrbVnyuGGuYDUZjFkkVXDyfQE0NhzHVcWj99B8UWDHNeg5FpEBJrr?=
+ =?us-ascii?Q?9Hunv2nfXSxE8xfr0DgY6M2bPBLuwm1m8+jh/w7DhmSaLZUEQhJP42LvFGwt?=
+ =?us-ascii?Q?1UQqFXXqFscKWpNUWsRbUWlpN9E4JTMiluYAXRlMRQsMkS2Fk/LjXfVYROCx?=
+ =?us-ascii?Q?Cv+fRzAxs8G3tffVvK1hX13EDWG8ZDHVaMmQCaLBz2ueeHGo86FH4jGQRaQx?=
+ =?us-ascii?Q?8jNVua1Waq4jMKmaMg9SnqyuXoUPGsoWX7CqCf4Vg2PysRl4zArreDgrBdCG?=
+ =?us-ascii?Q?KvW7NNy/cVMgmscLC7qtKUa6IiFmUF8RvHIJbUn7ZCrRTlKKcU4nBoMCweIW?=
+ =?us-ascii?Q?sgzJmAFy+/HAgN3zBR9u2zjvwCgtorj29wz3bAtxaUxOalaeNAQQPBRlgaLy?=
+ =?us-ascii?Q?x+B7ZgYaCnJNK7r/9IjIu/yPPmMy1H6AXwNYd7JFy25PKH6Qa9nhHTQ15CXZ?=
+ =?us-ascii?Q?FVlB9n4sVsSasOZVSJSTucLquHOtf6qaLFiyjrDt51JpZgCrYf2Hv2bvB26X?=
+ =?us-ascii?Q?wuPSz0e+vK/Rbl0ohQJA+PBSiLSJXJGfylhNFM2VZPv75BzYrjeiNd+AHBR5?=
+ =?us-ascii?Q?+GK1LY8YFRx9FGfPexkusYOxKTmOdG3lpFCHUUCzdXY4pxR40HEB5HfPY1/p?=
+ =?us-ascii?Q?oNjT01A9vVCIpPuELU7Fv42bdXH7MmfNYRLTFaRCs65ezYS74qWIayTiXdti?=
+ =?us-ascii?Q?UFElTtQjNfVl/TTDKkr7+i6HhH9eQ9gOnNprMJwB3jflijZSOYQiJfM4Gqyl?=
+ =?us-ascii?Q?ot7ZZiUPK8dOaca8lg6Xs+2/O8uVEQCE9Ra/1r5vpVpRtu5ZE6w7YZ/c85Xo?=
+ =?us-ascii?Q?dsqR51RTJ3xjzx1kEY7HTfMQCoH9AHgXcPwfeM7/ZBpmQpnNayr36b6CkNbX?=
+ =?us-ascii?Q?54DsVfYq8g=3D=3D?=
+X-OriginatorOrg: nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: fae848d6-322c-4c53-1174-08deafd21c4d
+X-MS-Exchange-CrossTenant-AuthSource: AS1PR04MB9287.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 May 2026 02:56:48.8907
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ujWXCB0yCLO6GHxiUCgb/xLJDnkArGspbiq1fTy9hRS7tcGIMY11BXjON09xMtd+4uLGrsCR6DShxJtMKl1wmw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAXPR04MB9023
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_114844_166859_95C8ADCC 
-X-CRM114-Status: UNSURE (   7.77  )
+X-CRM114-CacheID: sfid-20260511_195657_407090_D84BA666 
+X-CRM114-Status: UNSURE (   9.06  )
 X-CRM114-Notice: Please train this message.
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:24 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -117,35 +198,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello all,
+On Mon, May 11, 2026 at 11:59:36AM -0500, Rob Herring (Arm) wrote:
+>  .../imx/fsl,imx8qxp-dc-command-sequencer.yaml |  2 +-
 
-I've been working on replacing the closed `rk3506_tee` blob on an
-RK3506B (Luckfox Lyra Ultra) with an upstream from-source OP-TEE
-build. I've made decent progress but one part that I'm stuck on is DDR
-firewall (FW_DDR, base `0xff5f0000`) locking the secure DRAM region
-against the non-secure CPU master. So far I can:
+Reviewed-by: Liu Ying <victor.liu@nxp.com> #fsl,imx8qxp-dc-command-sequencer.yaml
 
-- program the region-map + CON + per-master (MST) registers and can
-read them back,
-- reproduce the exact register/value/ordering sequence that the vendor
-secure firmware uses.
-
-I've verified
-- With the same idbloader/SPL (mainline-style U-Boot  `arch_cpu_init`,
-which only does the MST grants), the vendor TEE enforces but my OP-TEE
-does not, NS still reads/writes the region.
-- The SGRF slave-security set is identical between the two.
-
-So there appears to be a precondition outside the FW_DDR register
-block that is set by the vendor secure firmware's broader init that
-makes region checks actually apply to the A7 NS master.
-
-Any pointers to the FW_DDR register summary or how to set this would
-be gratefully appreciated!
-
+-- 
 Regards,
-
-Owen
+Liu Ying
 
 _______________________________________________
 Linux-rockchip mailing list
