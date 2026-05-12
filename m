@@ -4,57 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94862CD4F24
-	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 17:13:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5222CD343F
+	for <linux-rockchip@archiver.kernel.org>; Tue, 12 May 2026 20:07:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I5NCHxd79L55rpj8cDpCf1h0hooE9RW4S9ldLn25lx8=; b=htsE3+wAXn92xW2MfQCygpKG0/
-	XNyTA3vMZcrbHkIXEZCrjtM9ZLf0iwt/tnOyJPsrtK/Kv+5vq9Ir9c88SHQbbA2DFcvGAZVifu7Xx
-	VEbxfgvIsqf81SaYLqURizJqacx24CnYLBO/UyFE09CzTbtAvjGfkPdujfOv6t0+iAC5xcbVhDXG/
-	5fDN11z/Jb1p6+vcs5HeKY1Wr8iulo9fPGqnBJoNMQJ68xoXqADzPzH5Za6QBmrGN2bTc75BNpFiV
-	etvHZUHUgLeQjbiydOuUkyzYkn71x7oYSuyc6U/i1SxOKrkqBrpZRIC2QZ6QNGANl3PoNsEM6omiq
-	QYFviTAQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=e6EfBgoSXK60zTksaKfyZmk5A4VAKytBYvVz7qPdxs8=; b=PRrCRPDFim2y52
+	3imk/7z4R+QYi2nTmOXZETHxB6vUZGayxdUnhNQQYhXk+u4i76xo6Z9jeCGPMVdMvxkn6qB3v512N
+	QN1Q8XMHXPdG6+JVAfA9hpBPSsnNetP57EJMiXfWcFzxM6FB+YkL4NuUxMA4JkiL+PcOFE7QoLIyX
+	3ieiv0KGeSwB6XdnupgI4ppjQAiLrTjphqWFrlhlbqr0fJMP4fx+2jt9QptlVfBpqvx4KGTpQh/P2
+	yLOKA9wxbwtEdxcD1WfdwWSjGDBtlXotv3UhNmgOp+byeN9QGQlwUUCQvhuUGP1QObRmAKb9UX6hz
+	zjuB+p5RX2EIhba8y7+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqfc-0000000HVqI-23HZ;
-	Tue, 12 May 2026 17:13:24 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wMtNY-00000000IHR-12pN;
+	Tue, 12 May 2026 20:06:56 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMqfa-0000000HVpE-02v8;
-	Tue, 12 May 2026 17:13:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id AE7BC43259;
-	Tue, 12 May 2026 17:13:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 51735C2BCB0;
-	Tue, 12 May 2026 17:13:15 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778606000;
-	bh=8dJ437SwzWerjVhp2FPxWDg3Khh2qq97aoIYw1v5qC4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=PgYYVw9Ln1aTB+ILwFsfNGPuJv+Fr+qMEWe7B84d5OM/+cyn9Xc8HvsmLRXYmUXG8
-	 hZ1atECGinAhohzrV9wykd98LaCvDKwdAP33oEA+hJe2El5BbeTANxxJUFMNxuQZuz
-	 bRuOPQ/zpjOBtvFn/bfaSzD2RwFuWRNcwMKNq6hJEm6bLpozuytw3m2KbTcyLikvJz
-	 8kESW0dRPS8pdorYfn9hdCaBsdVHBgeTAASmzIK4/GqjkP3hMDt9NfgArQZnxTL5sM
-	 5bBhgl3/fSA44gTNlA+QAyQHqdu5uWoViuuvtWWP7u5IZXZsIbTPS5rQ0kLRF7wIBX
-	 3CyM5X2C7qlgg==
-Date: Tue, 12 May 2026 18:13:13 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v4 06/10] dt-bindings: display: rockchip: analogix-dp:
- Add support for RK3576
-Message-ID: <20260512-grandma-traverse-5dad619eaeb3@spud>
-References: <20260512095644.1946084-1-damon.ding@rock-chips.com>
- <20260512095644.1946084-7-damon.ding@rock-chips.com>
+	id 1wMtNV-00000000IGh-32TS
+	for linux-rockchip@lists.infradead.org;
+	Tue, 12 May 2026 20:06:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1778616413; x=1810152413;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=A3BxN281PT5rUnAJb5+V9/2gOQ2KSzOgieKPmyoh/pY=;
+  b=Riuvf3H8//q7G0sb8zvRcPAjUXDb9jwbZFP8Hqud9qO+vk1jX+eC675C
+   8D9Z9sflqCX2ZOSortBrqburjmpDYSaJvVquVVKOTNF1Q1y+e7S8ecXYz
+   zBJweCmGVwVhW1P7DWl5EEvrlcvljumvsfGkVlfnUzqN0eARG1bEvbnNm
+   yQkBBKnAyJZBEyjqAP31I6JtWmzwJ7j5MdanTgfX3R2CjFyE3oz3IyfMr
+   zuz5uTUTvOpLwZredrq7q4/YLXvEm4Mv2kWzfWQgGe+wkhAreN12uqB0x
+   NLrtIJCBxages3zl/vmmngM4q/0xkvPOYAPPNJejqCuD4PwiBd7HTgMjj
+   A==;
+X-CSE-ConnectionGUID: 2+45sMJSRPKRPtg7v3vFvA==
+X-CSE-MsgGUID: zPH8ZsrzTPmth/SHuK+HyQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11784"; a="90235344"
+X-IronPort-AV: E=Sophos;i="6.23,231,1770624000"; 
+   d="scan'208";a="90235344"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 13:06:51 -0700
+X-CSE-ConnectionGUID: fB5s0Bl1Q/yFcyCchVcgug==
+X-CSE-MsgGUID: Gu9jvxAHRcGaLxis4W+0Zg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,231,1770624000"; 
+   d="scan'208";a="231478266"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.244])
+  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 12 May 2026 13:06:48 -0700
+Date: Tue, 12 May 2026 23:06:46 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V5 04/11] iio: imu: inv_icm42607: Add I2C and SPI For
+ icm42607
+Message-ID: <agOIVqDOr1LsdSi8@ashevche-desk.local>
+References: <20260509191907.24734-1-macroalpha82@gmail.com>
+ <20260509191907.24734-5-macroalpha82@gmail.com>
+ <20260511184715.241be1f1@jic23-huawei>
 MIME-Version: 1.0
-In-Reply-To: <20260512095644.1946084-7-damon.ding@rock-chips.com>
+Content-Disposition: inline
+In-Reply-To: <20260511184715.241be1f1@jic23-huawei>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260512_101322_070719_B5E5ACF1 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260512_130653_773638_68CE3087 
+X-CRM114-Status: GOOD (  10.65  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,56 +88,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Type: multipart/mixed; boundary="===============8979190957741226054=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Mon, May 11, 2026 at 06:47:15PM +0100, Jonathan Cameron wrote:
+> On Sat,  9 May 2026 14:18:58 -0500
+> Chris Morgan <macroalpha82@gmail.com> wrote:
 
---===============8979190957741226054==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DR4aWqEz4ku+XB0E"
-Content-Disposition: inline
+...
+
+> > +static const struct regmap_range_cfg inv_icm42607_regmap_ranges[] = {
+> > +	{
+> > +		.name = "user bank",
+
+> > +		.range_min = 0x0000,
+
+range_min == 0 is a bug for sure. Yet it may work with current regmap
+implementation, it has to be fixed. See, for example, this pending patch:
+https://git.kernel.org/pub/scm/linux/kernel/git/broonie/ci.git/commit/?h=regmap-warn-range-overlap&id=062bb97410835055036490c96cf77898f90d34ea
+
+> > +		.range_max = 0x00FF,
+> > +		.window_start = 0,
+> > +		.window_len = 0x0100,
+
+This makes no sense. If you have a page enabled the range max has to be PAGES *
+window_len value. This suggests that we have a single page, means no paging is
+used. Very confusing.
+
+...
+
+> > +const struct regmap_config inv_icm42607_regmap_config = {
+> > +	.reg_bits = 8,
+> > +	.val_bits = 8,
+> > +	.max_register = 0x00FF,
+> > +	.ranges = inv_icm42607_regmap_ranges,
+> > +	.num_ranges = ARRAY_SIZE(inv_icm42607_regmap_ranges),
+
+> > +	.cache_type = REGCACHE_NONE,
+
+Why no cache?
+
+> > +};
+
+-- 
+With Best Regards,
+Andy Shevchenko
 
 
---DR4aWqEz4ku+XB0E
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, May 12, 2026 at 05:56:40PM +0800, Damon Ding wrote:
-> RK3576 integrates an eDP TX controller compatible with the existing
-> RK3588 hardware design, reuse the same binding configuration directly.
->=20
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-pw-bot: not-applicable
-
---DR4aWqEz4ku+XB0E
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCagNfqQAKCRB4tDGHoIJi
-0h8RAQCJTlZsXRmNLgBlSs928sr0deie257zWwDqaX3AsCGzkgEA0OcwIc3s0QD+
-JJvyYNtUuzeP8VU4GtaHEx5Y25VqQgA=
-=g0FX
------END PGP SIGNATURE-----
-
---DR4aWqEz4ku+XB0E--
-
-
---===============8979190957741226054==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8979190957741226054==--
-
