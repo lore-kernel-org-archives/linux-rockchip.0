@@ -4,63 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16097CD37B6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 May 2026 10:38:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C37AFCD4F24
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 May 2026 12:49:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=08CalfE1EPzxIVEmn80cv7TWnbztwv3cOQPekPFI+GI=; b=VkpNoCeJeA+iq+
-	86mNIkkyme8LqzOuiuW5EvQfGNUNFYAXtW2S7800bh21yBPrxycgB86apG8xg+e/1e5NwOx4jCWH7
-	UGrDh8MhjvGkdFU5hQYGERd51/78X7zLhZhek7aaPODT4Y2ZjF9wZbiyfFELVxyloyZ1i/GEUZ/Un
-	EDzyhr95WzW0Rmin9Yx1CKP2knWjdLp7ukgxhAj9e1Sa8UalNF2irARWzl3Stmaduv8AqCskpCC7Q
-	rEr2iKKys8CL7FSef02/Y2s/3pquC/8ouv2uYfHlPyy/Gn1CNCmINaieP5R9pkjNu5FfxxiXw/gj8
-	lhJOMFu6GeNB8ll/apRg==;
+	List-Owner; bh=UZdfgtQZKUF9jP+T0KGxtdtGtkCdRFWAezGqsPv2ab0=; b=qKcCURA6Ww9TLt
+	IcjnAzGRiIHlc2GJQiGl89TPRWds2DABo1jOx6LwTc8gO1Tjc1FN3hmozwkQ32LVu0NAfZMlcr9kc
+	mGLw6SOAC6EXyoPh0SYt5CQcf/3pVooI5wmktJ8S9q7AYwe6QqRaEs5qEGdcZCrMzccomZmrgZSrp
+	rG0/0vAh8Ua0e89qWqatAY18Q5wcu5K3Ey7xd+PJYJbdHD4QOYhTdo31F41gUAGj8rpkU7jHZtbDl
+	w2Q+F+V8T5l/H5U4p1Vx4edyGic6ZFVh/UBhHN31j44n8TZgPz3tn2MbJuSlH91/GnydJDNa1RKER
+	PcPm4vB8S2VqlPWT+eag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN6yM-00000002DM7-23zs;
-	Wed, 13 May 2026 10:37:50 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wN91L-00000002YZk-01FG;
+	Wed, 13 May 2026 12:49:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN6yJ-00000002DKv-3BZS;
-	Wed, 13 May 2026 10:37:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=xfLB7UCd1FxhnipHP74KybOFTqY+Qa3iF1Dpbphypnk=; b=XmEQNcMu3kYeKzGVmVJg2R7QEt
-	ccGBPq4XrtkEbOK90ewHWnU1SnCWIrGXz5gPuKSBo0ralsj5l9THdY5y3m5m32krKfQJ+x2amR8Nt
-	qRSpYebR/eXuyjG5ova73aCb8kHqdTyLtGNGAsgZIST8Qy4o6Q2Ou+cPqX8YBW59FHQaZG0yyVlKX
-	yDIckFXK6V9Hpyf/Lur3MWYcsvcqLm3FLU9cXRxo6GknBL3IRmjqwtkBmzwkWCuDPaBlmggoEVbbc
-	Y/IE9kHvWbrbPmKry2N9D6fR4g2tW9VZ93R98Qu2F0LvGYpCrmbMuhNG4dXl+nW2yaq2TvwJcKEwB
-	zW7U6hMQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: linux-rockchip@lists.infradead.org,
-	Rosen Penev <rosenp@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney@redhat.com>,
-	Nathan Chancellor <nathan@kernel.org>,
-	Nick Desaulniers <nick.desaulniers+lkml@gmail.com>,
-	Bill Wendling <morbo@google.com>,
-	Justin Stitt <justinstitt@google.com>,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	id 1wN91K-00000002YYt-0dTY;
+	Wed, 13 May 2026 12:49:02 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 35D6660128;
+	Wed, 13 May 2026 12:49:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9CD63C2BCB7;
+	Wed, 13 May 2026 12:49:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1778676540;
+	bh=ZES+3v/n1Nkqlggfz/vnQ3phe7aIMIcVw0d8QGWt8OM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=Kc6vRVH5PTNBaRNaERh7Vz/ywZYymqZ+dSWs+mq6C/kx7Ek9LoRhk7Ag0kpM63FG/
+	 wg6JnHqWTHLAy5mOECKmWAE81lJ/7utzV/wYWaezNXHxbhhqB+MC34kQQrJVMeHHhh
+	 96vJoeVvCeU/FkrcXilIyAKd8UvxlZnr+vG2Nj6OvyjnPwzqOTHoBlCH8OC/Aluk23
+	 qCRKf4ozX/mYVcJn40iP8rd4JZK14w2xT7gZm2hjXyhjUxuVefl/d6sG9jZ/18A7JI
+	 NKh3sA4eh/iR+hL6MhmlDCNYGpfdTL2j0Open63lzcaYPHCY0H8uuUmzyXmNK1Siid
+	 7+VTyoX9zwnXQ==
+Date: Wed, 13 May 2026 07:48:58 -0500
+From: Rob Herring <robh@kernel.org>
+To: Michael Riesch <michael.riesch@collabora.com>
+Cc: Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Kever Yang <kever.yang@rock-chips.com>,
+	Jagan Teki <jagan@amarulasolutions.com>,
+	=?utf-8?B?0JrRg9C30L3QtdGG0L7QsiDQnNC40YXQsNC40Ls=?= <mai.kuznetsov.misha@gmail.com>,
+	Charalampos Mitrodimas <charmitro@posteo.net>,
+	Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Collabora Kernel Team <kernel@collabora.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	llvm@lists.linux.dev
-Subject: Re: [PATCH] clk: rockchip: allow COMPILE_TEST builds
-Date: Wed, 13 May 2026 12:37:13 +0200
-Message-ID: <177866861364.141763.5731097553415107944.b4-ty@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260509003602.956186-1-rosenp@gmail.com>
-References: <20260509003602.956186-1-rosenp@gmail.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: Re: [PATCH v4 2/8] media: dt-bindings: add rockchip rk3588 vicap
+Message-ID: <20260513124858.GA585254-robh@kernel.org>
+References: <20260508-rk3588-vicap-v4-0-6a6cd6f7c90b@collabora.com>
+ <20260508-rk3588-vicap-v4-2-6a6cd6f7c90b@collabora.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_033747_820619_E58475A0 
-X-CRM114-Status: UNSURE (   8.66  )
-X-CRM114-Notice: Please train this message.
+Content-Disposition: inline
+In-Reply-To: <20260508-rk3588-vicap-v4-2-6a6cd6f7c90b@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,26 +85,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Fri, 08 May 2026 17:36:02 -0700, Rosen Penev wrote:
-> COMMON_CLK_ROCKCHIP already gates the Rockchip clock objects inside the
-> Rockchip clock Makefile.  Allow selecting it for COMPILE_TEST and use it
-> for the parent Makefile descent instead of ARCH_ROCKCHIP.
+On Fri, May 08, 2026 at 09:31:45PM +0200, Michael Riesch wrote:
+> Add documentation for the Rockchip RK3588 Video Capture (VICAP) unit. To
+> that end, make the existing rockchip,rk3568-vicap documentation more
+> general and introduce variant specific constraints.
 > 
-> The per-SoC Rockchip clock symbols already have COMPILE_TEST dependencies,
-> so this exposes the existing build coverage to other architectures without
-> selecting the Rockchip platform.
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+> ---
+>  .../bindings/media/rockchip,rk3568-vicap.yaml      | 187 ++++++++++++++++++---
+>  1 file changed, 163 insertions(+), 24 deletions(-)
 > 
-> [...]
+> diff --git a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> index 18cd0a5a5318174910e04f6ef7558c92cbfec899..897ed00c239bdfe33777a8f8474fb27fa6265e49 100644
+> --- a/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> +++ b/Documentation/devicetree/bindings/media/rockchip,rk3568-vicap.yaml
+> @@ -15,9 +15,15 @@ description:
+>    the data from camera sensors, video decoders, or other companion ICs and
+>    transfers it into system main memory by AXI bus.
+>  
+> +  The Rockchip RK3588 Video Capture (VICAP) is similar to its RK3568
+> +  counterpart, but features six MIPI CSI-2 ports and additional connections
+> +  to the image signal processor (ISP) blocks.
+> +
+>  properties:
+>    compatible:
+> -    const: rockchip,rk3568-vicap
+> +    enum:
+> +      - rockchip,rk3568-vicap
+> +      - rockchip,rk3588-vicap
+>  
+>    reg:
+>      maxItems: 1
+> @@ -26,37 +32,23 @@ properties:
+>      maxItems: 1
+>  
+>    clocks:
+> -    items:
+> -      - description: ACLK
+> -      - description: HCLK
+> -      - description: DCLK
+> -      - description: ICLK
+> +    minItems: 4
+> +    maxItems: 5
+>  
+>    clock-names:
+> -    items:
+> -      - const: aclk
+> -      - const: hclk
+> -      - const: dclk
+> -      - const: iclk
 
-Applied, thanks!
+Just keep this here and add iclk1 on the end along with 'minItems: 4'.
 
-[1/1] clk: rockchip: allow COMPILE_TEST builds
-      commit: 7edfb7fb58ee058298e18fde76a6077ef17d19d8
+> +    minItems: 4
+> +    maxItems: 5
 
-Best regards,
--- 
-Heiko Stuebner <heiko@sntech.de>
 
 _______________________________________________
 Linux-rockchip mailing list
