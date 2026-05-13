@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C229CD37B6
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 May 2026 08:19:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7927CD37B6
+	for <linux-rockchip@archiver.kernel.org>; Wed, 13 May 2026 08:59:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=l/5QitUOryYr++IzTEMPd588bf3l0uLg6SMcYvR+2GA=; b=3JAGdsRdfakP4n
-	UhU6Ng/72JYwgQakl4+kA8fhiFevjvgiedBMEcZt0qXq5zDUG9+NEayvA4STkHBSxXXa7Agx9Qf7D
-	/a8QH84fP2uVVwuzuXdordkAsJKX7hexvp2x/ttwxJeiUURJhM+cwgyDx6l/yX2E/5bJgdqxOQtbz
-	HI6zD4S2gnSC+m3a4BxHZA4dAmyZYV94G845EAFe0YdHcKAtS3bX/2WtnEicsYVuCPVYb8xrIME++
-	rSwdKT4YedJxd50Aka2rDelSAsQu0BFiiH1fFEFRH3+EbIWlVqnRaAwWP6EH6O/KY2dhBs44F3/xj
-	3wqrttAT7drGDlFg4DAw==;
+	List-Owner; bh=F92UwfU3dy/gSQy02Ag7C+dy42jT4bGz5LgGJcZP8lo=; b=L3nT+VpWu0YodK
+	VaB/NjOYfW3XmSOPORePeSurc6VwMPneGaT40NvlNr8Gbo7OK2HgI5OFztGJLlxJtg5upkq2tnOPD
+	xNQbilkgmEKlhSly0prFeuVJjdWPugMTnrNXDJi3KmO3GoPKGyH1z+Kx/7xOUfestRdTTHrL0WSCU
+	zMxHvTlBjh2fHPrlb9gx1jqOHbUPKhju9FXYJMnj1dQ+fiOw+lKGEDtCXNZp9kQ7fVRChrCfccLgt
+	8B+cD+AaBY5p8PVqtCgC9gT89vyd5UqtxqvCSDNx+mhG51CQgM7BoleEB1rsGdSP4TtzSEHcdjcRh
+	ZP86WAXNRV4VGYKMvsOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN4on-00000001iSy-344h;
-	Wed, 13 May 2026 08:19:49 +0000
-Received: from mail-m3283.qiye.163.com ([220.197.32.83])
+	id 1wN5RN-00000001pJ4-2nAF;
+	Wed, 13 May 2026 08:59:41 +0000
+Received: from mail-m49232.qiye.163.com ([45.254.49.232])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wN4oj-00000001iR9-3JiE;
-	Wed, 13 May 2026 08:19:47 +0000
+	id 1wN5RK-00000001pHm-224O;
+	Wed, 13 May 2026 08:59:40 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3e3a94d10;
-	Wed, 13 May 2026 15:44:36 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3e3a94ca1;
+	Wed, 13 May 2026 15:44:24 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: hjc@rock-chips.com,
 	heiko@sntech.de,
@@ -44,26 +44,26 @@ To: hjc@rock-chips.com,
 	andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
 	rfoss@kernel.org
-Subject: [PATCH v5 09/10] drm/bridge: analogix_dp: Add support for RK3576
-Date: Wed, 13 May 2026 15:44:13 +0800
-Message-Id: <20260513074414.2053435-10-damon.ding@rock-chips.com>
+Subject: [PATCH v5 01/10] dt-bindings: display: rockchip: analogix-dp: Fix hclk as third clock for RK3588
+Date: Wed, 13 May 2026 15:44:05 +0800
+Message-Id: <20260513074414.2053435-2-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260513074414.2053435-1-damon.ding@rock-chips.com>
 References: <20260513074414.2053435-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e204b764003a3kunm7763bb985612f
+X-HM-Tid: 0a9e204b43e603a3kunm7763bb98560af
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDH0MdVk0YThlCGhhITRlOS1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHkMZVhpMGUlMTktOHkMZTVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=AgaNhvE360cO6ycHh2DqDMrxuJmQQnN+ovg8JTmIKiCYgvF6QMmmOoHU2BNOcstSIcMBDboojsVacmpTVxDWULFSN93F3FniTQQmXGG98fJJW6LvJBqZ+E3NXRiqzzoyt5D1mkZcxr8k0YRKpg7kEFWKVTOmnV1CLBx6jiDpRLs=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=y9jiAV7nJYVINfhoPhgzP8Bt0PPOyyTicmKndbXdNQY=;
+	b=ffmp9B74H7E8xEHpgZzT9wQNwDiZK7mcB+pVe2pSNKi40b/m5SL7H0gRzofUwoIjchYYCBizY6++3oKmXwaGG6zah1L5SJEaRgz/wgmf3DY3+YmFvA2sL6kPhSVpH8Sx8D+DUO4lClnQZrC+ESW7JowwDJT1B1X+VNM6abamOc4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=s0H+jTBh6HzhJTEMD0zzMObmLU//UpQjlUmHCRbCXx4=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_011946_319718_9DE49820 
-X-CRM114-Status: UNSURE (   8.02  )
+X-CRM114-CacheID: sfid-20260513_015939_033197_9A3DFCFA 
+X-CRM114-Status: UNSURE (   7.31  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,59 +82,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add RK3576_EDP device type entry and extend Rockchip check
-to match existing hardware capabilities shared with RK3588.
+RK3588 eDP controller requires HCLK_VO1 (video output bus clock)
+to access the VO1 GRF registers and enable the video datapath.
 
-Set identical maximum link rate and lane count parameters
-for RK3576 eDP controller to reuse existing RK3588 config.
+Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
+phandle reference, which allowed the eDP to work without explicitly
+managing the hclk_vo1 clock. However, this is not safe or explicit.
 
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Enforce the correct third clock name on a per-compatible basis to
+standardize clock requirements per SoC. This makes the clock
+dependency clear and removes reliance on implicit clock enablement
+from GRF phandle.
+
+Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
 
-Changes in v3:
-- Add Reviewed-by tag.
-
 Changes in v4:
 - Modify the commit msg.
----
- drivers/gpu/drm/bridge/analogix/analogix_dp_core.c | 1 +
- include/drm/bridge/analogix_dp.h                   | 2 ++
- 2 files changed, 3 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 116de3bd83a3..c8eb3511f92a 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -1249,6 +1249,7 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
- 		video_info->max_link_rate = 0x0A;
- 		video_info->max_lane_count = 0x04;
- 		break;
-+	case RK3576_EDP:
- 	case RK3588_EDP:
- 		video_info->max_link_rate = 0x14;
- 		video_info->max_lane_count = 0x04;
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 7b670dd769e9..0e0b87abee59 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -16,6 +16,7 @@ enum analogix_dp_devtype {
- 	EXYNOS_DP,
- 	RK3288_DP,
- 	RK3399_EDP,
-+	RK3576_EDP,
- 	RK3588_EDP,
- };
+Changes in v5:
+- Enforce the correct third clock name on a per-compatible basis.
+- Modify the commit msg simultaneously.
+---
+ .../rockchip/rockchip,analogix-dp.yaml        | 37 +++++++++++++++++--
+ 1 file changed, 33 insertions(+), 4 deletions(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+index d99b23b88cc5..8001c1facf98 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+@@ -23,10 +23,7 @@ properties:
  
-@@ -24,6 +25,7 @@ static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
- 	switch (type) {
- 	case RK3288_DP:
- 	case RK3399_EDP:
-+	case RK3576_EDP:
- 	case RK3588_EDP:
- 		return true;
- 	default:
+   clock-names:
+     minItems: 2
+-    items:
+-      - const: dp
+-      - const: pclk
+-      - const: grf
++    maxItems: 3
+ 
+   power-domains:
+     maxItems: 1
+@@ -60,6 +57,33 @@ required:
+ allOf:
+   - $ref: /schemas/display/bridge/analogix,dp.yaml#
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3288-dp
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: dp
++            - const: pclk
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3399-edp
++    then:
++      properties:
++        clock-names:
++          items:
++            - const: dp
++            - const: pclk
++            - const: grf
++
+   - if:
+       properties:
+         compatible:
+@@ -68,6 +92,11 @@ allOf:
+               - rockchip,rk3588-edp
+     then:
+       properties:
++        clock-names:
++          items:
++            - const: dp
++            - const: pclk
++            - const: hclk
+         resets:
+           minItems: 2
+         reset-names:
 -- 
 2.34.1
 
