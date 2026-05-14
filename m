@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2108CD4F25
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 May 2026 16:18:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E93CD4F39
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 May 2026 18:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
-	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G2f9YhSAdpPIduTsTK+aFNJHP6gzQ16PB0yuKday9V8=; b=u2ROQqr53/a0CS
-	TQeRZHrQ46pRCHmPFKaqzYS3p5IilPkuVpfLDZRnEjLRgE6JUTnIRXu3fWy6LAz8izNw11bINq/qX
-	O1iNOzsUk3RYn/2HmH+70Brz9Km0KVKZE9T//d4a6X1x5v1xRAf6pi5yjrRDd6/2b8xQzYW1mKiEf
-	XwmG2kmO0HggS6lZf3CVME4BYW7aBgjdrDfgPyjgZeWtJt/C20NsIlpwd9lwy6Ggjyw3o1Ncki2uW
-	9vprA6F4rsuTqDpmd/k3Aasf0ZFW5gQX8yW0mXLBG3si1bT/OgZsAX6IzLaS7rGRd0vrWcCF61Apc
-	PDLJn2oTfDQ0PvljdyVQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=YvopkT3+FVIbnAxrxjBLPFg9Gssd0kZ+2rQZ1qV0NSo=; b=XMwnyWDGeBuJ3/tHKVK+3x/Xbo
+	BJVzUnmpwSTVMcPJHqmQmyEEjz/2m2D7yPxC+DmAuGjqVOh5rn2fx1DYSqZqO4FPgH5ge5YwuSsPg
+	8YtNdghC6J0DdqybJQPKbYcP77nIY86QSXNtACnAIQuYuWwOxu0R/ZLfsYGWMNpiLCfYRSyx3OPjf
+	LRaXMdEdHTqwu29Nt69T7oun74wnpjS8b4nT7jf5U1MayI9aE+t/C0kKYWkVR7NazgHmZU+RO1eoZ
+	EjFDEy3CcSUE02sG5tGLmmvvr9PbR5bi6UXWky35RkdzinyPIeVXwsqezaokGEUcrFbxyKUsayT4P
+	yE2L5X/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNYlB-000000061a3-3jp5;
-	Thu, 14 May 2026 16:18:05 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wNabu-00000006IId-1k3Y;
+	Thu, 14 May 2026 18:16:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNYl8-000000061YC-3foP;
-	Thu, 14 May 2026 16:18:04 +0000
+	id 1wNabr-00000006IHh-3jmP;
+	Thu, 14 May 2026 18:16:37 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 44870444E3;
-	Thu, 14 May 2026 16:18:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20EC7C2BCB3;
-	Thu, 14 May 2026 16:17:58 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D6BE1444AD;
+	Thu, 14 May 2026 18:16:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77756C2BCB3;
+	Thu, 14 May 2026 18:16:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778775482;
-	bh=hyF5D8Pc/kYQIaWvIB9S8/rv8IKNlIdZ14J3dKVxG7o=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=MY5L+XXfqtr6WnaCfpqdESQw0LlnFZidXkjWb7IM5EBPu/biNN2ouhUUqHoXdPyU3
-	 bLxduLXK8kEDtK39M04WPNZZBMu7kfUlfh1TaaDvyDXKKJ8S9PPtNNtL50LPCXeS8G
-	 JU/gACrG59F/ZbGrJ4AykiuDWL9NJdmIkd1uQGg9TlSiCOn6Q6sxJM9eZ9cOHY8Of1
-	 h3VzdWsvKljBY3A8swYkAO8nipCiR5GsOkx8odm0DvlsGYY/pmMpVizkKCUpcZlVyH
-	 Ki+/faUSa9P8O+dVaOOxG+ViiGmtzF05o8AmZMiDHNhajwqe3jhEspqACex6e/1anr
-	 ElP+VOG9XGxJg==
-From: Vinod Koul <vkoul@kernel.org>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: neil.armstrong@linaro.org, robh@kernel.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, linux-phy@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- jonas@kwiboo.se
-In-Reply-To: <20260505170410.3265305-1-heiko@sntech.de>
-References: <20260505170410.3265305-1-heiko@sntech.de>
-Subject: Re: [PATCH v2 0/5] rockchip: Add USB 2.0 support for RK3528
-Message-Id: <177877547874.1092446.2280455106153826984.b4-ty@kernel.org>
-Date: Thu, 14 May 2026 21:47:58 +0530
+	s=k20201202; t=1778782594;
+	bh=fJEm25dH1y6EOkMRRYqO7y8ORNR0reygkJUR3Cbg4Yo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RFLSa1Esfxz7x1JwzdViATqXIRSaoQSXevi1OJtbMbtHqLQpSO+ZcPMKkh1nlyS2M
+	 R8lt7VLW3yJKEd+3CNLstb03LDrHISdsQhyrbbpKI3UmA6QpTU1qiB67R0W2r7Q4t2
+	 jCuphqpdWqDq6hTtuKhzk0755NkrH/8ECe0xluGyh5sUZeZ1Jb4YMquxEg3NHmeva8
+	 Ze2GuxElc4KboQwjoTCDYiWEGi4pw7sP4nVJ4aol82oJfFPVM5en06KmgFt/MZ5GrG
+	 JVFSdyuTMbgaIdvvSSdILDiLs7PAOdr16jSpYckBeFCqy089YAb3ZhhaIn7XyCuult
+	 94RlkDoAGH0Wg==
+Date: Thu, 14 May 2026 19:16:27 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v1 1/3] dt-bindings: display: rockchip: analogix-dp:
+ Expose inherited properties
+Message-ID: <20260514-upstate-sneer-0b6e78682798@spud>
+References: <20260514070133.2275069-1-damon.ding@rock-chips.com>
+ <20260514070133.2275069-2-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-Mailer: b4 0.13.0
+In-Reply-To: <20260514070133.2275069-2-damon.ding@rock-chips.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260514_091802_951306_D2EA3316 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20260514_111635_950840_8EF3FFF6 
+X-CRM114-Status: GOOD (  13.71  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,48 +65,87 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: multipart/mixed; boundary="===============0409989158552588578=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 05 May 2026 19:04:05 +0200, Heiko Stuebner wrote:
-> This series adds support for USB 2.0 on Rockchip RK3528 to the
-> Innosilicon usbphy driver.
-> 
-> The usb3 support has already been merge for the naneng combophy
-> last year.
-> 
-> Changes in v2:
-> - rebase on top of v7.1-rc1
-> - split off dwc3 compatible and dts changes
-> - add error handling to regmap_write (Vinod)
-> - v1 is here
->   https://lore.kernel.org/linux-rockchip/20250723122323.2344916-1-jonas@kwiboo.se/
-> 
-> [...]
-
-Applied, thanks!
-
-[1/5] dt-bindings: phy: rockchip,inno-usb2phy: Require GRF for RK3568/RV1108
-      commit: a896852613136e6babe6036567ab0989fb322a57
-[2/5] phy: rockchip: inno-usb2: Simplify rockchip,usbgrf handling
-      commit: be29cd958f5393004a24cd7b5b1da88dd90a651b
-[3/5] dt-bindings: phy: rockchip,inno-usb2phy: Add compatible for RK3528
-      commit: c430f042f4ba2c5abd592b6924f028d3bb09d4cf
-[4/5] phy: rockchip: inno-usb2: Add clkout_ctl_phy support
-      commit: 2775541de0580ab1cd077dfef710e6316563d567
-[5/5] phy: rockchip: inno-usb2: Add support for RK3528
-      commit: 864b3617df827865a95a06f06f09a8d57a795b91
-
-Best regards,
--- 
-~Vinod
+--===============0409989158552588578==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mVkoKuQ4tnstZXFd"
+Content-Disposition: inline
 
 
+--mVkoKuQ4tnstZXFd
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, May 14, 2026 at 03:01:31PM +0800, Damon Ding wrote:
+> Expose the inherited properties from the base analogix-dp schema
+> to satisfy unevaluatedProperties constraints.
+>=20
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+
+Given it's unevaluatedProperties, not addtionalProperties, this patch
+shouldn't be needed?
+
+> ---
+>  .../bindings/display/rockchip/rockchip,analogix-dp.yaml    | 7 +++++++
+>  1 file changed, 7 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,=
+analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockc=
+hip,analogix-dp.yaml
+> index bb75d898a5c5..896ded87880f 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
+x-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
+x-dp.yaml
+> @@ -50,6 +50,13 @@ properties:
+>    aux-bus:
+>      $ref: /schemas/display/dp-aux-bus.yaml#
+> =20
+> +  reg: true
+> +  interrupts: true
+> +  phys: true
+> +  phy-names: true
+> +  force-hpd: true
+> +  ports: true
+> +
+>  required:
+>    - compatible
+>    - clocks
+> --=20
+> 2.34.1
+>=20
+>=20
+
+--mVkoKuQ4tnstZXFd
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCagYRewAKCRB4tDGHoIJi
+0gh6AQDIt0Wy+KmYo0XcRM9NN7v66Y9rNrmbrCAaSxSTx2tAuwD/XM5Y1B12VcMT
+yz1+fUbrvZi2xJUPMA4qhMFXCvAXGgA=
+=+BYe
+-----END PGP SIGNATURE-----
+
+--mVkoKuQ4tnstZXFd--
+
+
+--===============0409989158552588578==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============0409989158552588578==--
+
