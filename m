@@ -4,60 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99954CD4F39
-	for <linux-rockchip@archiver.kernel.org>; Thu, 14 May 2026 06:49:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C396CCD4851
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 May 2026 07:02:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KP8F7cyZR3EYAW5ma6ZuInOhNOghVXLWFI15XErSYCA=; b=L2s0YBn2v0Kd5f
-	JZKPKWoBTpqwN6rrpf0y4e6YfUv/9bcDF7SqoCg+PS1wahi3/6pab949SwZarglQSchX4uqkiIQoC
-	9gUJTDRN7UNdye8Jl0EwWW6gWs1LtoQnB3U/wqOzeSWoPcErpesgM8OzP8ZItOzoZhpbRDpbqP8+u
-	usstIXyHQYAOPAcj8/vcOVOlX14DIhdXKxjEZ1J8JxR+wGpJSBkQLr/DjQ2VO16I0dDyC133PBDcc
-	85hAqat7Tw4l1i2E8mzJCkYXFpOlWXgOD5Gv4jfXEHVNJiuZIA3g0harztFWumdiFAeYCXDR5Ixz1
-	JG3xnbyhUnR5FTe9CImQ==;
+	List-Owner; bh=IEnS+3M5qDlEtJjdCBHPI0CV2jUCsiLc7hACM7Rwsgc=; b=pf0UrpJFgsbuzG
+	t6U3qWEcRGhYrma2Bn4RJVKLZ10ylEK0KU6++H9yfZyp+1TkQtmgiYtthZijoJ3bc9t4P/EnzwTP5
+	txsoH1EnPqD9VXqf/1Fn4N3xx3UrPfd6nDRpYD95ODFxx+sbK1sSu8ePghMNRN3nvpsJL6CpoO+Yy
+	DvayfH1ZnFaH8r4c/4RyJUkh3DC9ZAQd2R42v8HO3gDfE2C7n+dmg90bzzzwLxnfmBP8ujy1yhbL+
+	yl38oAettnYlwpIpJIHrxv9aRazImv3Nl05wi0UE45mBg0uPr8i11zkWxZgJboxDzp9OuSGgJ+oz2
+	brV35kEBIQROd7ulE5xw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNPsV-00000004ki6-2vIO;
-	Thu, 14 May 2026 06:49:03 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wNQ55-00000004mH8-0C8x;
+	Thu, 14 May 2026 07:02:03 +0000
+Received: from mail-m10227.netease.com ([154.81.10.227])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNPsU-00000004khj-2ejN
-	for linux-rockchip@lists.infradead.org;
-	Thu, 14 May 2026 06:49:02 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E896F60126;
-	Thu, 14 May 2026 06:49:01 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18B6DC2BCC6;
-	Thu, 14 May 2026 06:49:00 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778741341;
-	bh=kV2o7etbiZ1xCvqmtMuywQhhRRr9HS66gjhYQJ3K4ZU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=Btuh47GbvI3I1oCGW2UgyyI/bokQrBi1bCH27SWwJgV6o30DAmiXr666HA6hBjKpU
-	 osqSwAGpNim0btT5qrBPlOO9dzx6pygFnEDrxIWjaBKxJhwcPrG0+RLI0EcmBzHk7v
-	 JLl/rucGHc50nC7YZBH/WQLK73sA7Oo6xjUMREuEYLOxyV+KRSGSn8aMiO6BKjp/3w
-	 nhZl/D45kayoeUz4bG+taqd3Llf0OCoBkplKgK+Q4hTzDjiCcHRiJnanEjWsaWNBmT
-	 Bv3rzRnyVaS/qR3rW8eXZZrS+oa+fv7s0+WK9Uxb1WMpYZHBkf/OYvqKxdfunTpI7I
-	 EGc29mH0DQNRA==
-Date: Thu, 14 May 2026 08:48:59 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com, 
-	dlechner@baylibre.com, jic23@kernel.org, jean-baptiste.maneyrol@tdk.com, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, 
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V6 02/11] dt-bindings: iio: imu: icm42600: Add icm42607
- binding
-Message-ID: <20260514-optimal-warping-donkey-fbf24c@quoll>
-References: <20260512221634.256747-1-macroalpha82@gmail.com>
- <20260512221634.256747-3-macroalpha82@gmail.com>
+	id 1wNQ4x-00000004mBw-3ZVo;
+	Thu, 14 May 2026 07:01:59 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3e617edca;
+	Thu, 14 May 2026 15:01:39 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Subject: [PATCH v1 1/3] dt-bindings: display: rockchip: analogix-dp: Expose inherited properties
+Date: Thu, 14 May 2026 15:01:31 +0800
+Message-Id: <20260514070133.2275069-2-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260514070133.2275069-1-damon.ding@rock-chips.com>
+References: <20260514070133.2275069-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260512221634.256747-3-macroalpha82@gmail.com>
+X-HM-Tid: 0a9e254a7c6103a3kunm8191ae6fc25f3
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZHR8aVkkZTEMfHxoZSkxIHlYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=bF3XB/NxtfQOdzSctQkKF3XU229TaU+05o8zkZGETUQMaD+NbJYBPn90txPuIu4Ji2T3dbnQahqfjxrfLAJkbCb6VPFszt6OCkR43iSxNgVILoFi4iP5u6GOyWyCX+wnPlLWYWMhX8cBfrQQJF4knrw0wAg5QXfJr6MIfBM60xQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=PnQAO4hrda8Ee7d8bYmPsv3T8ksDqN93d0yp7NLmvfY=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260514_000156_095277_E8797544 
+X-CRM114-Status: UNSURE (   4.89  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,30 +76,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Tue, May 12, 2026 at 05:16:23PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
-> 
-> Add devicetree binding for the Invensense ICM42607 and Invensense
-> ICM42607P inertial measurement unit. This unit is a combined
-> accelerometer, gyroscope, and thermometer available via I2C or SPI.
-> 
-> This device is functionally very similar to the icm42600 series with a
-> very different register layout.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
->  1 file changed, 2 insertions(+)
+Expose the inherited properties from the base analogix-dp schema
+to satisfy unevaluatedProperties constraints.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+---
+ .../bindings/display/rockchip/rockchip,analogix-dp.yaml    | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Best regards,
-Krzysztof
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+index bb75d898a5c5..896ded87880f 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+@@ -50,6 +50,13 @@ properties:
+   aux-bus:
+     $ref: /schemas/display/dp-aux-bus.yaml#
+ 
++  reg: true
++  interrupts: true
++  phys: true
++  phy-names: true
++  force-hpd: true
++  ports: true
++
+ required:
+   - compatible
+   - clocks
+-- 
+2.34.1
 
 
 _______________________________________________
