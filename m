@@ -4,58 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA8ACCD37AC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 13 May 2026 19:21:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD808CD4851
+	for <linux-rockchip@archiver.kernel.org>; Thu, 14 May 2026 06:48:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ci26oriE1HcyX+/IKmMFOpuUQxAPIty+0MFXRbJnSIg=; b=oCCRZNNTs+g2jP
-	TOfwPmMjg0V8pcFV1eGfjI9PgA0ditfXAKTG12ADEVL20+RnQxGrFiSvTJsaVfYqD9atFZ7BgnoYD
-	Gf9t4L4CqbvVxoUtmzxDH9hyswbAaUbbGSKJoeS2dh+zRIrmGPBFbznGEj5N0SVpw9oEbIghG2KZY
-	0K7H8f+g10U54fphfeLsvFIV6wWGCBVaITNbruhae1RXye/hFWQ+KXQExZzgEW+q+gnph+Pn70+5n
-	f73FV/Fx9Hrb3efI1lIGxwDnyv4rs23BWiK96AFD7fHcLAdpZ40Y2MqucZ+RtGdjsts+8+dRiy2Ut
-	K5QGC78Y7DAdyNX3mQkA==;
+	List-Owner; bh=665MmcAKlFqFGJa5ZPYvR3LK3f+pa2U3BNe29+quDcI=; b=TAjzJK0ScMx7gy
+	rvy5ZYMRjX7tKF3kfy8w1Z3G660a7FAcSTNTjMw3GL0+g4+Q3ArWQ6VqOYT8Ac4H6Fq1vBAi3IL5t
+	q9EiLPKRjCbNB8yDqkaZPyTZ9B+614Yj9kTC+Is/OKv58LUAGVrfdreeJ2j8tilqhY4j7X6DMuf8e
+	GqqkaQWf5EirmQNRp0Pr7sp5Eo4QXW/3mwFqRV1t/HL8/Wa/5S2uzcMV0UE0c93K5CSB09K5mFhNo
+	f9XtsZPQCQKvguyU/fYG/Dw/lvFt3S7QxjaaHLWKUKL8eiuUbI8JQKbf525bYcERrJkL45cbm5Tyn
+	9mVKiAwCEOANhtsV/jFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNF9E-00000003Z1p-2FAt;
-	Wed, 13 May 2026 19:21:36 +0000
+	id 1wNPsD-00000004kf4-2cqx;
+	Thu, 14 May 2026 06:48:45 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNF9B-00000003Z17-3ydE;
-	Wed, 13 May 2026 19:21:35 +0000
+	id 1wNPsB-00000004keX-17di
+	for linux-rockchip@lists.infradead.org;
+	Thu, 14 May 2026 06:48:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3EB5742D8C;
-	Wed, 13 May 2026 19:21:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAB02C19425;
-	Wed, 13 May 2026 19:21:32 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C2DFE406A1;
+	Thu, 14 May 2026 06:48:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 22412C2BCB7;
+	Thu, 14 May 2026 06:48:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778700093;
-	bh=lWXs1bqOmPoc46gGSfD4IrJfDLSHEiOP2ZwgIfqFCeE=;
+	s=k20201202; t=1778741322;
+	bh=WCHZYIPH+iaGTxC80/OSWRgwos4c3asSFe3qsQ8TwXg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=MDDXiRpAo6z5wRS/5+yaIYY4EQErovhLH41ZDVkr0qB8WpqWuFgcJLMgOy/H/Q3N1
-	 Jji9uMHWIExSdd3X4E/ua7UQ0tp1T6G4c0x2G3u89CKeAy76o9LIM4yjFVtClZUj7w
-	 33R0wttETSyam5oZ/LMjoTJYcP1gc1T2kpJqTbxPUB4ARyk8aeOWdhePWqWLyWmt3v
-	 vyy6ueMehMy2siXqW5O72ZBjxGvvMe6Q4F6b4vH88WXDE52mB4yxag2RHIi9WN5/rQ
-	 aWKP0muE7fpTNSCMxT5Wlc1s5uPsv+9NQe8Sxfp4ftwQ7x3d+riQ/9arfYg+oUdmsc
-	 LqRy4Ur0wODZw==
-Date: Wed, 13 May 2026 14:21:30 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Liu Changjie <liucj1228@outlook.com>
-Cc: devicetree@vger.kernel.org, conor+dt@kernel.org, heiko@sntech.de,
-	linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 1/2] dt-bindings: arm: rockchip: Add LCKFB Taishan Pi 3M
-Message-ID: <177870008974.1728187.1071588098659841130.robh@kernel.org>
-References: <MN0PR19MB6091C07C729B83E594722E84AC3C2@MN0PR19MB6091.namprd19.prod.outlook.com>
+	b=uX298jPBDF7o+eqVd9BfP4F2VfmWcnnlGfI9rWhTeqpBuLRxa6KRXL9BDtz1Lmx+E
+	 QF67ol5dEtzZJKBgKITXZeatRLdL9NjuOyFYaVauBsFnRCYQozpmXNxS2CaU3F3jgk
+	 CFgVeXTKx68/VE5ynNbjORuAiwmzz+yWrUVJdDyHA8TySBylMKhe/KAsaydHsMakIn
+	 Ms9vSG1kzrgpkwU/hHDthRxR4fGmBwNkj8sGbHNms2uWGsuLDFL3uhp1DhmN4CyMy+
+	 P3E/FAX693Xh3A6h4hcE7vtDgumwPitFt9EXpmPs3AWlYq3vy5LqaQaFsZSxYdnXGB
+	 FqUGYY7xP+qHw==
+Date: Thu, 14 May 2026 08:48:40 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com, 
+	dlechner@baylibre.com, jic23@kernel.org, jean-baptiste.maneyrol@tdk.com, 
+	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, 
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V6 01/11] dt-bindings: iio: imu: icm42600: Add
+ mount-matrix to icm42600
+Message-ID: <20260514-fractal-falcon-of-domination-4704e2@quoll>
+References: <20260512221634.256747-1-macroalpha82@gmail.com>
+ <20260512221634.256747-2-macroalpha82@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <MN0PR19MB6091C07C729B83E594722E84AC3C2@MN0PR19MB6091.namprd19.prod.outlook.com>
+In-Reply-To: <20260512221634.256747-2-macroalpha82@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260513_122134_008744_28CAF007 
-X-CRM114-Status: UNSURE (   8.71  )
+X-CRM114-CacheID: sfid-20260513_234843_326749_FDACB43F 
+X-CRM114-Status: UNSURE (   8.54  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,18 +78,21 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-On Thu, 07 May 2026 11:07:52 +0800, Liu Changjie wrote:
-> Add the compatible string for LCKFB Taishan Pi 3M, a board based on
-> the Rockchip RK3576 SoC.
+On Tue, May 12, 2026 at 05:16:22PM -0500, Chris Morgan wrote:
+> From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Signed-off-by: Liu Changjie <liucj1228@outlook.com>
+> Add mount-matrix attribute to schema. This attribute has been supported
+> since the first revision of this driver, but was not documented.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > ---
->  Documentation/devicetree/bindings/arm/rockchip.yaml | 5 +++++
->  1 file changed, 5 insertions(+)
-> 
+>  .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+Best regards,
+Krzysztof
 
 
 _______________________________________________
