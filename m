@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 744F1CD4F3C
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 18:31:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8798CD343F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 18:43:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=GjDTGWyWkFyxNhiLArVYGW6/ocEHApCrLTy0sDwG3PU=; b=KqqK8a0N8DPQDI
-	Djly3skcvH9XWZxHbpf9SP6b1kYnW24dh52qjW+4DoWMqSZ+IunzvOAL7qgQ9sXokKAep8PqDzJAv
-	LRdQqaIct/DT/VDHXXdNQnrJG2uDSQGj1+X3v7moSFNpeVmsUph3n/ZZf1Ll3L+LSiMcAgZ/XAktI
-	SbKUSQ80nefh0qQ32yeuhPlLSVrF4Pma9IeLZcpLegoY+BwGH0M31GgjoJvpyJXX4jFLpm7mi6mND
-	eDOEk43I4Uhk95OHwdnpvOOVh8jHgc8OrmBOT/tFRxxfjpg+m7Qw3Cr/DsfdMko0sdc6bFz1xVL01
-	F2pDIL3xS/AwoULKNEcA==;
+	List-Owner; bh=94ctG7fc7NJiLYNAoGyxuC5b15XDbhrpzM64GMa5XXg=; b=fWZ3N8uB0Vo5L9
+	o0HY2nI08f97QT26QaZBpX0ettpCxYzIOVbOUezYfyXLoIQDWWYU60cenkZPxxFjOdjBB5hxZTHDh
+	Rarip8Ms670xFZXlV1K5l5o7HVpKKpIBN+nDcq1tVNktVbdPQiM0KVN9WU/P3qEwrPOSlxDeQn32q
+	t8GC+bFKTAdeH9+cM1vpdhvCnI0VoGX9U8d6ZV3AXxVE7YKa4jmI/USFK55mcDCGInvC88WBoTTU4
+	3Ur2N7Wvy0C9oEcJ6XTnscs0+MsGP5J8pJ/pCFYhAGgiPoNUmlQeSO7Kix51/51mgUVH4Clbu2zTa
+	6oDjqXiJDxlJo46K29ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNxJc-000000095uc-1nJE;
-	Fri, 15 May 2026 18:31:16 +0000
+	id 1wNxVL-000000096zP-2kkn;
+	Fri, 15 May 2026 18:43:23 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNxJZ-000000095u2-3cou
+	id 1wNxVJ-000000096yt-0k9B
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 May 2026 18:31:15 +0000
+	Fri, 15 May 2026 18:43:22 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id B53AB43B42;
-	Fri, 15 May 2026 18:31:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 368A5C2BCB0;
-	Fri, 15 May 2026 18:31:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 60F4D44181;
+	Fri, 15 May 2026 18:43:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC384C2BCB0;
+	Fri, 15 May 2026 18:43:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778869872;
-	bh=IIaeX4/HmJDDekNk9hp/2YTL5IRngsNl+EbSt49v2KM=;
+	s=k20201202; t=1778870600;
+	bh=5tR1Qq6xXLAVWqV0dkBVwnCvUhjaha/lBnGmx1miMN4=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=iRFj+s3+dHm7RQ2Z9GIB4uybsFHCumaD/HASJvfaOk/NeZbQqeMKdPK36+pqEwCm3
-	 HHf+uEoJBbossOeTiqMwTQASiWNyofbyK6bJkwshcd7zyv89sOhu/WtwYDRFktotro
-	 bv66McWalv1TqRhoA4LQAwAlYoahuVLoZZcmnKssXt79n+FiM5wx5vh7VleK+6NSX7
-	 +lma0g532JA1frXr5XTc48sWFgq1eKPv4pwz/mSosMdkPyffUuA2Zjj4U5/bBXwgxz
-	 9US61oUFvH5S8r3Mptbxk++GxAKXf+TYO9ZrdmlO4SOkT74RJaFNbmY9Qw1smNzd1g
-	 WzCxHaGhBmbgQ==
-Date: Fri, 15 May 2026 19:31:02 +0100
+	b=PG3fN/s00vPlguRABctf1XyvtT7LxFl38BgcWW3iuZl+rxXwOte//qx3tcUDBdqWz
+	 vlVD+et8rq3B35sMYC1+6KYdUdnKNNx6DrZsg6RVjn4iQP2O+FEZc8Hu9hqkqvIW00
+	 iaiQ4kB/Qt6gjzEs4hl8saGH3m8hHVsn+hbhbHSIU7LJ/yvBWo2Ar8Cycu7Y45b6OH
+	 uO7cNbAZ+XofZM1B9azZvXScfJiQ7pVVzThHCt7SF61EE9mK9WPTPyc1DVFqCmWuSB
+	 JpfzhrD74D9t+N7EO6b5RWt1ZP6mbmEjk3DrHFFZwxLHj/pf2DIB6i3vhslMrAJp0S
+	 77DrEUkl1uQSA==
+Date: Fri, 15 May 2026 19:43:10 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,17 +50,17 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V7 03/11] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <20260515193102.123b664a@jic23-huawei>
-In-Reply-To: <20260515130018.237378-4-macroalpha82@gmail.com>
+Subject: Re: [PATCH V7 04/11] iio: imu: inv_icm42607: Add I2C and SPI For
+ icm42607
+Message-ID: <20260515194310.49fa6fb0@jic23-huawei>
+In-Reply-To: <20260515130018.237378-5-macroalpha82@gmail.com>
 References: <20260515130018.237378-1-macroalpha82@gmail.com>
-	<20260515130018.237378-4-macroalpha82@gmail.com>
+	<20260515130018.237378-5-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_113113_966301_9A8A9BCC 
-X-CRM114-Status: GOOD (  41.74  )
+X-CRM114-CacheID: sfid-20260515_114321_277370_DECFA179 
+X-CRM114-Status: GOOD (  32.61  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,343 +77,191 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 May 2026 08:00:08 -0500
+On Fri, 15 May 2026 08:00:09 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add the core component of a new inv_icm42607 driver. This includes
-> a few setup functions and the full register definition in the
-> header file.
+> Add I2C and SPI driver support for InvenSense ICM-42607 devices.
+> Add necessary Kconfig and Makefile to allow building of (incomplete)
+> driver.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+I'm a little amused that sashiko seems to have halucinated part of the
+previous patch as part of this one as so repeated some comments. Oh well.
+Some of it's other comments are correct.
 
-Sashiko led you into the weeks with irq request return values.
-It was less broken in v6 :(
+The only thing I added was a few formatting things.
 
-As to it's other comments on checking for line high/low values (0x00 / 0xFF)
-for whoami is something we don't normally bother with but you could if you like.
-I'm fairly sure we've had both those values turn up as valid in some devices
-in the past.
-
-Otherwise just trivial stuff I noticed whilst having a fresh read through.
-All stuff I might have tweaked whilst applying or just let through but
-seeing as you are going to be doing a v8, please take a look.
-
-Jonathan
-
-
-> ---
->  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 334 ++++++++++++++++++
->  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 207 +++++++++++
->  2 files changed, 541 insertions(+)
->  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
->  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> new file mode 100644
-> index 000000000000..1916e0b08bca
-> --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> @@ -0,0 +1,334 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +/*
-> + * Copyright (C) 2026 InvenSense, Inc.
-> + */
-> +
-> +#ifndef INV_ICM42607_H_
-> +#define INV_ICM42607_H_
-> +
-> +#include <linux/bitfield.h>
-> +#include <linux/bitops.h>
-> +#include <linux/iio/iio.h>
-> +#include <linux/mutex.h>
-> +#include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
-> +
-> +enum inv_icm42607_sensor_mode {
-> +	INV_ICM42607_SENSOR_MODE_OFF,
-> +	INV_ICM42607_SENSOR_MODE_STANDBY,
-> +	INV_ICM42607_SENSOR_MODE_LOW_POWER,
-> +	INV_ICM42607_SENSOR_MODE_LOW_NOISE,
-> +	INV_ICM42607_SENSOR_MODE_NB
-> +};
-> +
-> +/* gyroscope fullscale values */
-> +enum inv_icm42607_gyro_fs {
-> +	INV_ICM42607_GYRO_FS_2000DPS,
-> +	INV_ICM42607_GYRO_FS_1000DPS,
-> +	INV_ICM42607_GYRO_FS_500DPS,
-> +	INV_ICM42607_GYRO_FS_250DPS,
-> +	INV_ICM42607_GYRO_FS_NB
-> +};
-> +
-> +/* accelerometer fullscale values */
-> +enum inv_icm42607_accel_fs {
-> +	INV_ICM42607_ACCEL_FS_16G,
-> +	INV_ICM42607_ACCEL_FS_8G,
-> +	INV_ICM42607_ACCEL_FS_4G,
-> +	INV_ICM42607_ACCEL_FS_2G,
-> +	INV_ICM42607_ACCEL_FS_NB
-> +};
-> +
-> +/* ODR values */
-> +enum inv_icm42607_odr {
-> +	INV_ICM42607_ODR_1600HZ = 5,
-> +	INV_ICM42607_ODR_800HZ,
-> +	INV_ICM42607_ODR_400HZ,
-> +	INV_ICM42607_ODR_200HZ,
-> +	INV_ICM42607_ODR_100HZ,
-> +	INV_ICM42607_ODR_50HZ,
-> +	INV_ICM42607_ODR_25HZ,
-> +	INV_ICM42607_ODR_12_5HZ,
-> +	INV_ICM42607_ODR_6_25HZ_LP,
-> +	INV_ICM42607_ODR_3_125HZ_LP,
-> +	INV_ICM42607_ODR_1_5625HZ_LP,
-> +	INV_ICM42607_ODR_NB
-> +};
-> +
-> +enum inv_icm42607_filter_bw {
-> +	/* Low-Noise mode sensor data filter (bandwidth) */
-> +	INV_ICM42607_FILTER_BYPASS,
-> +	INV_ICM42607_FILTER_BW_180HZ,
-> +	INV_ICM42607_FILTER_BW_121HZ,
-> +	INV_ICM42607_FILTER_BW_73HZ,
-> +	INV_ICM42607_FILTER_BW_53HZ,
-> +	INV_ICM42607_FILTER_BW_34HZ,
-> +	INV_ICM42607_FILTER_BW_25HZ,
-> +	INV_ICM42607_FILTER_BW_16HZ
-
-That isn't a terminating entry so it should have a ,
-Rules on this are a bit obscure - but basically _NB type entries
-should never have a , anything else should - even if it's
-a register field enum where we know all values are there.
-
-> +};
-
-
-> +/* Sleep times required by the driver */
-> +#define INV_ICM42607_POWER_UP_TIME_US			100000
-> +#define INV_ICM42607_RESET_TIME_MS			1
-> +#define INV_ICM42607_ACCEL_STARTUP_TIME_MS		20
-> +#define INV_ICM42607_GYRO_STARTUP_TIME_MS		60
-> +#define INV_ICM42607_GYRO_STOP_TIME_MS			150
-> +#define INV_ICM42607_TEMP_STARTUP_TIME_MS		14
-> +#define INV_ICM42607_SUSPEND_DELAY_MS			2000
-
-Can we have spec references for these?  We often hit problems later
-with devices that are a little bit slow and no one is sure if it's because
-the sleeps are wrong or device is actually out of spec. Hence
-it is useful to be able to quickly check these.
-
-> +
-> +typedef int (*inv_icm42607_bus_setup)(struct inv_icm42607_state *);
-> +
-> +extern const struct regmap_config inv_icm42607_regmap_config;
-> +
-> +int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
-> +			    inv_icm42607_bus_setup bus_setup);
-> +
-> +#endif
 > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> new file mode 100644
-> index 000000000000..9784709319b9
-> --- /dev/null
+> index 9784709319b9..1088c5c7076f 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
 > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> @@ -0,0 +1,207 @@
+BOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+> +
+>  static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
+>  				 const struct inv_icm42607_conf *conf)
+>  {
+> @@ -81,6 +138,14 @@ static int inv_icm42607_setup(struct inv_icm42607_state *st,
+>  	unsigned int val;
+>  	int ret;
+>  
+> +	/*
+> +	 * Setup the bus first in case we need to set the SPI mode or
+> +	 * change the slew rate in order.
+
+Short wrap.  change at least shold be on the line above.
+
+> +	 */
+> +	ret = bus_setup(st);
+> +	if (ret)
+> +		return ret;
+> +
+>  	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
+>  	if (ret)
+>  		return ret;
+> @@ -94,20 +159,27 @@ static int inv_icm42607_setup(struct inv_icm42607_state *st,
+>  	if (ret)
+>  		return ret;
+>  
+> -	fsleep(1000);
+> +	/*
+> +	 * In order to confirm a reset is complete, we need to read the reset
+> +	 * bit, but in certain circumstances we need to set the bus up before
+> +	 * we can do a read. So we should wait the required amount of time
+> +	 * per the datasheet first, then set the bus up again, then read to
+> +	 * ensure the reset status is done. Invalidate the regmap cache since
+> +	 * we're doing a hardware reset.
+> +	 */
+> +	regcache_mark_dirty(st->map);
+Sashiko has some comments here as well:
+"
+Because regcache_mark_dirty() only flags the cache as needing a sync but does
+not clear the cached values, will regmap_update_bits() in this second
+bus_setup() call silently skip the hardware writes?
+The cache would still show the bits as set from the first bus_setup(), leaving
+the hardware in its default reset state.
+Would regcache_sync() or regcache_drop_region() be more appropriate here to
+force the actual hardware writes?"
+
+>  
+> -	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
+> -				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
+> -				       INV_ICM42607_RESET_TIME_MS * 100,
+> -				       INV_ICM42607_RESET_TIME_MS * 1000);
+> -	if (ret)
+> -		return dev_err_probe(dev, ret,
+> -				     "reset error, reset done bit not set\n");
+> +	fsleep(INV_ICM42607_RESET_TIME_MS * 1000);
+>  
+>  	ret = bus_setup(st);
+>  	if (ret)
+>  		return ret;
+>  
+> +	ret = regmap_read(st->map, INV_ICM42607_REG_INT_STATUS, &val);
+> +	if (ret || (!(val & INV_ICM42607_INT_STATUS_RESET_DONE)))
+I agree with sashiko here. If you get ret you should return it.
+
+	if (ret)
+		return dev_err_probe(dev, ret, "reset error\n");
+	if (!(val & INV...))
+		return dev_err_probe(dev, -EIO, "reset done bit not set\n");
+or something like that.
+ 
+> +		return dev_err_probe(dev, -EIO,
+> +				     "reset error, reset done bit not set\n");
+> +
+>  	ret = regmap_set_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
+>  			      INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN);
+>  	if (ret)
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> new file mode 100644
+> index 000000000000..49438fa6f867
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+> @@ -0,0 +1,102 @@
 > +// SPDX-License-Identifier: GPL-2.0-or-later
 > +/*
 > + * Copyright (C) 2026 InvenSense, Inc.
 > + */
 > +
-> +#include <linux/delay.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/iio/iio.h>
-> +#include <linux/irq.h>
+> +#include <linux/device.h>
+> +#include <linux/mod_devicetable.h>
 > +#include <linux/module.h>
-> +#include <linux/mutex.h>
 > +#include <linux/property.h>
 > +#include <linux/regmap.h>
-> +#include <linux/regulator/consumer.h>
+> +#include <linux/spi/spi.h>
 > +
 > +#include "inv_icm42607.h"
 > +
-> +static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
-> +				 const struct inv_icm42607_conf *conf)
-> +{
-> +	unsigned int val;
-> +	int ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK,
-> +			 conf->gyro.mode);
-> +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK,
-> +			  conf->accel.mode);
-
-As below - I'm fine with these going on one line (first is 80 chars, second just over)
-
-> +	/*
-> +	 * No temperature enable reg in datasheet, but BSP driver
-> +	 * selected RC oscillator clock in LP mode when temperature
-> +	 * was disabled.
-> +	 */
-	/*
-	 * No temperature enable reg in datasheet, but BSP driver selected 
-	 * RC oscillator clock in LP mode when temperature was disabled.
-	 */
-
-Basically go up to 80 chars. Here I think keeping RC oscillator on one line
-is a good idea though.
-
-
-> +	if (!conf->temp_en)
-> +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK,
-> +			 conf->gyro.fs);
-It's under 80 chars on one line so don't wrap.
-
-> +	val |= FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_ODR_MASK,
-> +			  conf->gyro.odr);
-
-As is this.
-
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_FS_SEL_MASK, conf->accel.fs);
-> +	val |= FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_ODR_MASK, conf->accel.odr);
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG0, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG1_FILTER_MASK,
-> +			 conf->gyro.filter);
-
-Whilst this one and next are a tiny bit over 80 chars, if you want to I don't
-mind those being a little long as single lines.
-
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG1, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK,
-> +			 conf->accel.filter);
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG1, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	st->conf = *conf;
-> +
-> +	return 0;
-> +}
-> +
-> +/**
-> + *  inv_icm42607_setup() - check and setup chip
-> + *  @st:	driver internal state
-> + *  @bus_setup:	callback for setting up bus specific registers
-> + *
-> + *  Returns 0 on success, a negative error code otherwise.
-> + */
-> +static int inv_icm42607_setup(struct inv_icm42607_state *st,
-> +			      inv_icm42607_bus_setup bus_setup)
+> +static int inv_icm42607_spi_bus_setup(struct inv_icm42607_state *st)
 > +{
 > +	const struct device *dev = regmap_get_device(st->map);
+> +	const struct spi_device *spi = to_spi_device(dev);
 > +	unsigned int val;
 > +	int ret;
 > +
-> +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	if (val != st->hw->whoami)
-> +		dev_warn(dev, "invalid whoami %#02x expected %#02x (%s)\n",
-> +			 val, st->hw->whoami, st->hw->name);
-> +
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
-> +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
-> +	if (ret)
-> +		return ret;
-> +
-> +	fsleep(1000);
+> +	if (spi->mode & SPI_3WIRE)
+> +		ret = regmap_clear_bits(st->map, INV_ICM42607_REG_DEVICE_CONFIG,
+> +					INV_ICM42607_DEVICE_CONFIG_SPI_AP_4WIRE);
+> +	else
+> +		ret = regmap_set_bits(st->map, INV_ICM42607_REG_DEVICE_CONFIG,
+> +				      INV_ICM42607_DEVICE_CONFIG_SPI_AP_4WIRE);
 
-Do we need an explicit sleep here, or is the idea just to save on
-a read that can't succeed in the poll that follows?  I'd be tempted
-to drop this if it's not absolutely needed just to avoid explaining it.
-This isn't fast path code. If we need to leave the device alone after
-reset for a bit then a datasheet reference is needed.
+I'm inclined to agree with sashiko on these.  You need a 'write' not an update
+as the read in a read / modify / write cycle will fail if you are in the wrong mode.
+https://sashiko.dev/#/patchset/20260515130018.237378-1-macroalpha82%40gmail.com
 
-> +
-> +	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
-> +				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
-> +				       INV_ICM42607_RESET_TIME_MS * 100,
-> +				       INV_ICM42607_RESET_TIME_MS * 1000);
-> +	if (ret)
-> +		return dev_err_probe(dev, ret,
-> +				     "reset error, reset done bit not set\n");
-> +
-> +	ret = bus_setup(st);
+Given we are near merging this it can be helpful that if you disagree with sashiko's
+comments reply to say so and why.
+
+
 > +	if (ret)
 > +		return ret;
 > +
-> +	ret = regmap_set_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
-> +			      INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN);
+> +	ret = regmap_clear_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
+> +				INV_ICM42607_INTF_CONFIG1_I3C_DDR_EN |
+> +				INV_ICM42607_INTF_CONFIG1_I3C_SDR_EN);
 > +	if (ret)
 > +		return ret;
 > +
-> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
-> +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK,
-> +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL);
+> +	val = FIELD_PREP(INV_ICM42607_DRIVE_CONFIG3_SPI_MASK,
+> +			 INV_ICM42607_SLEW_RATE_INF_2NS);
+> +	ret = regmap_update_bits(st->map, INV_ICM42607_REG_DRIVE_CONFIG3,
+> +				 INV_ICM42607_DRIVE_CONFIG3_SPI_MASK, val);
 > +	if (ret)
 > +		return ret;
 > +
-> +	return inv_icm42607_set_conf(st, st->hw->conf);
+> +	return regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
+> +				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
+> +				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_I2C_DIS);
 > +}
-
-> +int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
-> +			    inv_icm42607_bus_setup bus_setup)
+> +
+> +static int inv_icm42607_probe(struct spi_device *spi)
 > +{
-> +	struct device *dev = regmap_get_device(regmap);
-> +	struct fwnode_handle *fwnode = dev_fwnode(dev);
-> +	struct inv_icm42607_state *st;
-> +	int irq;
-> +	int ret;
+> +	const struct inv_icm42607_hw *hw;
+> +	struct regmap *regmap;
 > +
-> +	irq = fwnode_irq_get_byname(fwnode, "INT1");
-Trivial but if fwnode is only used here (I didn't check later patches) then
-put the dev_fwnode() inline.
-
-I've never really understood why we don't have device_ variant of that - perhaps
-because it's hard to come up with a clear name.
-
-> +	if (!(irq > 0))
-> +		return dev_err_probe(dev, -EINVAL, "Unable to get INT1 interrupt\n");
-
-I assume this is in response to sashiko saying fwnode_irq_get_byname() can in some
-corner cases (where I suspect things are broken enough the system probably won't boot)
-return 0.   If we are actually going to defend against that then you need
-to special case it.  New sashiko review correctly reports this breaks probe
-deferal if say the interrupt chip driver hasn't loaded yet.
-
-	if (irq < 0) {
-		return dev_err_probe(dev, irq, ...);
-	if (irq == 0)
-		/* Odd corner case... */
-		return dev_err_probe(dev, -EINVAL, ...);
-
-However I'm deeply suspicious of whether the code paths that return 0 can happen in
-practice.  Given you have a suitable DT, can you try seeing if you can actually make
-it return 0 by messing around with the interrupt mappings?
-
-
+> +	hw = spi_get_device_match_data(spi);
+> +	if (!hw)
+> +		return dev_err_probe(&spi->dev, -ENODEV,
+> +				     "Failed to get SPI data\n");
 > +
-> +	st = devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
-> +	if (!st)
-> +		return -ENOMEM;
+> +	regmap = devm_regmap_init_spi(spi, &inv_icm42607_regmap_config);
+> +	if (IS_ERR(regmap))
+> +		return dev_err_probe(&spi->dev, PTR_ERR(regmap),
+> +				     "Failed to register spi regmap %ld\n",
+> +				     PTR_ERR(regmap));
+> +
+> +	return inv_icm42607_core_probe(regmap, hw,
+> +				       inv_icm42607_spi_bus_setup);
 
+Fits on one line under 80 chars.  Have another scan through the whole
+series for places where edits during revisions might now allow for
+less wrapping.
+
+> +}
 
 _______________________________________________
 Linux-rockchip mailing list
