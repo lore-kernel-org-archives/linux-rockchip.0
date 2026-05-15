@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E88ECD343F
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 19:00:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2212ECD343F
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 19:20:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9k4HfJhjNETqrwp8uSvt0209IEcqWlX1MVgCcY2+5Ak=; b=YtRL9F3I+/P8SQ
-	xsiC98qFLVFtikwyGz3bFb5YXjgHzl1m3hYXSjTq91Ugu3sS2gnVcS2Rhqs3gnNqUJSVfuo9W84ZF
-	4HSOSFb1PYjOs9YYWlL/5zx6p2VFm0K4vrO3UQxe1MRsdq+N1o68AbPEr+jUmhXVnI0m/6MlXiwJ2
-	iciJp9UV1NIUpyBZgOW/7v6ZAwm9DRzsN5nuIb/YOf9ddFB71iVzFocEO3bLEMyDqHm0ejDVpw9sC
-	RdeIMa9hO7Qf/YFq6ZWkpLeuC0q9xbh/CABGY5myFpHSUEaYvIkp1JzR8dtzCRV+0CMjEtdHlKW77
-	Fo7++tb0KcXraNohqUUw==;
+	List-Owner; bh=oe+vuxaMy5OPqHG7X7HvzkZlQO3plnHV8ge4Exk32Js=; b=V1hHHhr3oXq9uA
+	S8JAJ29uUsaKxE+2lC8IEDQctl9sG3aQF46YDLO24LA7znrWy3HYM0PsaigjvPt2VqX8RXUY5KqH6
+	p2WvA00Azy/6e/1nd48OGsgYhCLvOSXKCcRRkRVLCtvCB5JoxxgQVs+rJwe3SlxWOKRqWkl8DUYki
+	5pQ7mJXjRWCQG+5tXUsFWiyL30/8WlsQSm23bMtqa0H0NBGDWjKnpUPe0vd1OxbQ+Nxp7xfNTZsx3
+	Bwytk9kFA82CzqqSVPZzQU74c0a1WOUhtNuRabDzviEANt2w8UmYX27e4EgSqh0q8XIdpu/fwh2kA
+	7IMlQA2teUziiJpyZupw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNxlX-00000009Ag1-32nf;
-	Fri, 15 May 2026 19:00:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wNy5d-00000009CLv-2rHw;
+	Fri, 15 May 2026 19:20:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNxlW-00000009AfF-3Tfj
+	id 1wNy5c-00000009CLm-41DK
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 May 2026 19:00:06 +0000
+	Fri, 15 May 2026 19:20:53 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EBD76600FC;
-	Fri, 15 May 2026 19:00:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A52EC2BCB0;
-	Fri, 15 May 2026 18:59:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1D53060098;
+	Fri, 15 May 2026 19:20:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1E81C2BCF6;
+	Fri, 15 May 2026 19:20:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778871605;
-	bh=uoOw1fEfymbsBl96G2s/lqTMA1cP1P2Jc7bAjsYjRT0=;
+	s=k20201202; t=1778872851;
+	bh=g9luOAZQIlOMKkj2tUnIXZCX/r1kCQ5t04vIydNyo5c=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=Y/3bG04dizxBnLYBcnQJFTADNXIs1EiHrg6IcPkcZHhT75GXJx7HkVFEA5gI/kycg
-	 RFe9P/+FIXPZi+ecJBvrSbLKdObdXYsG66yQbxF6ZL9c9on5KcO3jNOHlavW9uZz/L
-	 /Vs/+cht6KWAErBxo9szrGeDNRtcGqW+wW1CZwgu+mUzXkkt8Oo5n72Te7bWWSoewk
-	 mspeTg/E5+zhME20JMEpEE8NdMdvIYZT9ekGuirHKT3luJd0ZWPhFla/ARVT9mzeFC
-	 J7aUwWm3A1gJ9CWdW2TcpF9nov7t/oQLVXeTjdEKmzNWQfNX1nnFLDuiLeVK3hXiKM
-	 bxF7wFO/01zIQ==
-Date: Fri, 15 May 2026 19:59:54 +0100
+	b=n2kt7l+W2CBL8fIN9AS0PfqH+SapQ3BnEyHVcmn69/4DYk7h9B4Gixp2DDsFkqPpC
+	 i28GAZYh/EE+vnpzPWbwE/Urly1n3TPx6OgWvM7Ykq/sVbdKvMB/FwJoVUPwNKmcJ0
+	 sw2nCNCR07CmJWR3atQhEQrN8fhx1Cr1f2qC5KdpnwBtaAfHj1u754uNeEpTiskASU
+	 7UioQrm3MXET4Y9DhgtMhus+4Z2bUywtY4/3YMv0fylkS0SINOoTE0jj3e+cXWbaMv
+	 ougWJSVQHfnFq8t28GXP1tsdbW3WLQKLbPpMj/z0JgsLltmuiglD5+iwmMK+CbpEul
+	 H1D6NNMSgNF1w==
+Date: Fri, 15 May 2026 20:20:43 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,12 +50,12 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V7 05/11] iio: imu: inv_icm42607: Add PM support for
+Subject: Re: [PATCH V7 06/11] iio: imu: inv_icm42607: Add Buffer support for
  icm42607
-Message-ID: <20260515195954.0cafbaa7@jic23-huawei>
-In-Reply-To: <20260515130018.237378-6-macroalpha82@gmail.com>
+Message-ID: <20260515202043.251a14fd@jic23-huawei>
+In-Reply-To: <20260515130018.237378-7-macroalpha82@gmail.com>
 References: <20260515130018.237378-1-macroalpha82@gmail.com>
-	<20260515130018.237378-6-macroalpha82@gmail.com>
+	<20260515130018.237378-7-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,123 +74,207 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 May 2026 08:00:10 -0500
+On Fri, 15 May 2026 08:00:11 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add power management support for the ICM42607 device driver.
+> Add all FIFO parsing and reading functions to support
+> inv_icm42607 hardware.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Sashiko didn't do so well on this one so some of what it raised
+looks wrong.  E.g. the fifo stuff where you are deliberately clearing
+bits with the writes rather than 'accidentally' writing over them.
 
-Sashiko had a comment but I'd ignore it as it's about the rather
-complex magic that lets us do various forms of PM configs without
-lots of __maybe_unused etc and it works so don't touch it :)
-I'm too lazy to check what the dependency ordering is other than
-pm_ptr() is true in cases where pm_sleep_ptr() whereas the
-opposite is not true and that means the actual dead code removal
-occurs at a different point in the code those macros are producing.
 
-Anyhow a few really minor things inline. Otherwise LGTM
+There is one odd misbalance in here for fifo_en() calls
+that I'd like a some comments on in the code.
+It's not unheard of that we can't deal with the complexity
+of update_scan_mode() only occuring in setup path for buffers
+but most of the time we can by pushing stuff to posteenable()
+/predisable()
+
+The model for how the buffer setup flow works vs tear down doesn't
+quite fit everything despite there being a lot of possible callbacks
+so what you have may well be the best that we can do.  However it
+isn't obviously correct so a few comments please!
 
 > ---
->  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  12 ++
->  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 143 ++++++++++++++++++
->  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   1 +
->  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |   1 +
->  4 files changed, 157 insertions(+)
+>  drivers/iio/imu/inv_icm42607/Makefile         |   1 +
+>  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  27 +
+>  .../imu/inv_icm42607/inv_icm42607_buffer.c    | 483 ++++++++++++++++++
+>  .../imu/inv_icm42607/inv_icm42607_buffer.h    |  93 ++++
+>  .../iio/imu/inv_icm42607/inv_icm42607_core.c  |  54 +-
+>  5 files changed, 657 insertions(+), 1 deletion(-)
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+>  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
 > 
+> diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
+> index be109102e203..3c9d08509793 100644
+> --- a/drivers/iio/imu/inv_icm42607/Makefile
+> +++ b/drivers/iio/imu/inv_icm42607/Makefile
+> @@ -2,6 +2,7 @@
+>  
+>  obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
+>  inv-icm42607-y += inv_icm42607_core.o
+> +inv-icm42607-y += inv_icm42607_buffer.o
+>  
+>  obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
+>  inv-icm42607-i2c-y += inv_icm42607_i2c.o
 > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> index 2c20e95b237a..5f37999e39a5 100644
+> index 5f37999e39a5..b00ee6a4d451 100644
 > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
 > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> index 1088c5c7076f..e27ad0319a12 100644
-> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-
->  static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
->  				 const struct inv_icm42607_conf *conf)
->  {
-> @@ -198,11 +255,15 @@ static int inv_icm42607_enable_vddio_reg(struct inv_icm42607_state *st)
->  {
->  	int ret;
+> @@ -14,6 +14,10 @@
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
 >  
-> +	if (st->vddio_en)
-> +		return 0;
+> +#include <linux/iio/common/inv_sensors_timestamp.h>
 > +
->  	ret = regulator_enable(st->vddio_supply);
->  	if (ret)
->  		return ret;
->  
->  	fsleep(INV_ICM42607_POWER_UP_TIME_US);
-> +	st->vddio_en = 1;
+> +#include "inv_icm42607_buffer.h"
+> +
+>  /* serial bus slew rates */
+>  enum inv_icm42607_slew_rate {
+>  	INV_ICM42607_SLEW_RATE_20_60NS,
+> @@ -84,6 +88,7 @@ struct inv_icm42607_sensor_conf {
+>  	int odr;
+>  	int filter;
+>  };
+> +#define INV_ICM42607_SENSOR_CONF_INIT		{-1, -1, -1, -1}
+Spaces after { and before } but perhaps more interestingly - why is this
+here given I don't see it used in this patch?
 
-It's a bool (which is good) so = true
 
->  
->  	return 0;
->  }
-> @@ -211,7 +272,10 @@ static void inv_icm42607_disable_vddio_reg(void *_data)
->  {
->  	struct inv_icm42607_state *st = _data;
->  
-> +	if (!st->vddio_en)
-> +		return;
->  	regulator_disable(st->vddio_supply);
-> +	st->vddio_en = 0;
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> new file mode 100644
+> index 000000000000..74e5213d9267
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
 
-= false
 
->  }
-
->  
-> +static int inv_icm42607_suspend(struct device *dev)
+> +
+> +static int inv_icm42607_buffer_postdisable(struct iio_dev *indio_dev)
 > +{
-> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
+> +	struct device *dev = regmap_get_device(st->map);
+> +	unsigned int sensor;
+> +	unsigned int *watermark;
+> +	unsigned int sleep_temp = 0;
+> +	unsigned int sleep_sensor = 0;
+> +	unsigned int sleep;
 > +	int ret;
 > +
-> +	guard(mutex)(&st->lock);
+> +	if (indio_dev == st->indio_gyro) {
+> +		sensor = INV_ICM42607_SENSOR_GYRO;
+> +		watermark = &st->fifo.watermark.gyro;
+> +	} else if (indio_dev == st->indio_accel) {
+> +		sensor = INV_ICM42607_SENSOR_ACCEL;
+> +		watermark = &st->fifo.watermark.accel;
+> +	} else {
+> +		return -EINVAL;
+> +	}
 > +
-> +	if (pm_runtime_suspended(dev))
-> +		return 0;
+> +	mutex_lock(&st->lock);
 > +
-> +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
-> +					 INV_ICM42607_SENSOR_MODE_OFF,
-> +					 false, NULL);
+> +	ret = inv_icm42607_buffer_set_fifo_en(st, st->fifo.en & ~sensor);
+
+This is a little odd as normally I'd expect to see balance between
+preenable and postdisable.
+
+Seems you are unwinding stuff that ends up ultimately in update_scan_mode
+If that's absolutely necessary (and you can't shift to the balanced calls
+- given it's late in sequence postenable / predisable probably..)
+then add a comment here.
+
 > +	if (ret)
-> +		return ret;
-
-Trivial but blank line here
-
-> +	inv_icm42607_disable_vddio_reg(st);
+> +		goto out_unlock;
 > +
-> +	return 0;
+> +	*watermark = 0;
+> +	ret = inv_icm42607_buffer_update_watermark(st);
+> +	if (ret)
+> +		goto out_unlock;
+> +
+> +out_unlock:
+> +	mutex_unlock(&st->lock);
+> +
+> +	/* sleep maximum required time */
+> +	sleep = max(sleep_sensor, sleep_temp);
+> +	if (sleep)
+> +		msleep(sleep);
+
+Maybe introduce this stuff only when the values are not 0.
+
+> +
+> +	pm_runtime_put_autosuspend(dev);
+> +
+> +	return ret;
 > +}
-
 > +
-> +static int inv_icm42607_runtime_suspend(struct device *dev)
+> +const struct iio_buffer_setup_ops inv_icm42607_buffer_ops = {
+> +	.preenable = inv_icm42607_buffer_preenable,
+> +	.postenable = inv_icm42607_buffer_postenable,
+> +	.predisable = inv_icm42607_buffer_predisable,
+> +	.postdisable = inv_icm42607_buffer_postdisable,
+> +};
+> +
+
+
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> index e27ad0319a12..d5885fc3f7da 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/regulator/consumer.h>
+>  
+>  #include "inv_icm42607.h"
+> +#include "inv_icm42607_buffer.h"
+>  
+>  static bool inv_icm42607_is_volatile_reg(struct device *dev, unsigned int reg)
+>  {
+> @@ -73,6 +74,40 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+>  };
+>  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+>  
+> +u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr)
 > +{
-> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
-> +	int ret = 0;
+> +	static const u32 odr_periods[INV_ICM42607_ODR_NB] = {
+> +		/* Reserved values */
+> +		0, 0, 0, 0, 0,
+> +		/* 1600Hz */
+[INV_ICM42607_ODR_1600HZ] = 625000,
+etc and drop the comments.
 
-Assigned in all paths I think?  If that stops being true I'd probably still
-introduce the assignment when it becomes the case even though it's a little
-more code churn.
+> +		625000,
+> +		/* 800Hz */
+> +		1250000,
+> +		/* 400Hz */
+> +		2500000,
+> +		/* 200Hz */
+> +		5000000,
+> +		/* 100 Hz */
+> +		10000000,
+> +		/* 50Hz */
+> +		20000000,
+> +		/* 25Hz */
+> +		40000000,
+> +		/* 12.5Hz */
+> +		80000000,
+> +		/* 6.25Hz */
+> +		160000000,
+> +		/* 3.125Hz */
+> +		320000000,
+> +		/* 1.5625Hz */
+> +		640000000,
+> +	};
+> +
+> +	odr = clamp(odr, INV_ICM42607_ODR_1600HZ, INV_ICM42607_ODR_1_5625HZ_LP);
+
+Then this clamp will be more obviously correct.
 
 > +
-> +	guard(mutex)(&st->lock);
-> +
-> +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
-> +					 INV_ICM42607_SENSOR_MODE_OFF, false,
-> +					 NULL);
-> +	if (ret)
-> +		return ret;
-> +
-> +	inv_icm42607_disable_vddio_reg(st);
-> +
-> +	return 0;
+> +	return odr_periods[odr];
 > +}
 
 
