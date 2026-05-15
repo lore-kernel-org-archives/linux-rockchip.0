@@ -4,65 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DCB4CD4851
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 21:06:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76724CD4851
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 22:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1bBw2ssGhu1EwamNwINWcl7YmQ6/tUwEKclg1qzaAOw=; b=RN2DyndQH5eebn
-	nnflovrsYmyyEUsR6sEXoxzmIAAQtsBj3jsMwtJBlcu9gWanv1I9F7s/IYPDGINAWI0npJjAdKD8t
-	6fJ170hd5c8jYLaXFQkNp802ejJ63Oqxd6wVEZkcNCyXY0k6u6f7qdF6VBH5FN3wtVZ8j7Jbv0eqL
-	+wicJ2Yqb+14FcsHh5C+lFIYE+TSyZTeuVgMc2y4hQjivAdxwYGHZ+ZEe7sr8ArJtexBzJps96Lv9
-	Wc3V1Fi0KLZr24IIjRdsZ1FyhAW16mn9jp8EijICjA6gN/DiIxxhLaPHcHHHyZHL3Xy1WRhgyCVO5
-	mqckIw9tK/ouDFtdPuYw==;
+	List-Owner; bh=pzIHNG1VoJzHZc5Q7VqktaMW0v+uvX4o8IEie9cbQ94=; b=NUIVW6faMijjrB
+	J3df1YjDt/3l0v7o2GwpBET2PdoxDodhppMDuKh4edfM+wj6m2s/Xxi2dX4xUCAwrGkZnxipvq9xx
+	S2j+OTjarkEWU2zweiuoKftuLOLXpfNh8iVZA6lonibPTIH08vNewX9lN+nGkVNDiNQ7zkCu79qxG
+	9sgNzJoAR6I5uKCiT4IADB1l+gRiIqnI/F3h5G+vJGVU3lJoK3rT2c5mSXBDb3A+dmmFbsGPxHqJ7
+	Rjp/Ef6oMzwoWYdF57GOUgyZafdpc1J2AnaiTo7wSGLpAcCsR4Gc0It+ZXtUb1e9LirHnKRuHGGxi
+	oFec7h9uC1oKZHn3NmXg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNzjZ-00000009S0d-0yiF;
-	Fri, 15 May 2026 21:06:13 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1wO0vE-00000009cV4-3VsO;
+	Fri, 15 May 2026 22:22:20 +0000
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNzjS-00000009RvG-2F89
+	id 1wO0vA-00000009cSF-29KY
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 May 2026 21:06:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1778879149;
- bh=dbjZStXLEh138nsa2G4YhX1F04rK5mkTXOocNIIQ7A8=;
- b=wk+oQ3DdC0udryFJbxD0GbokjKy9R8CGReaS9CxLsJQ/UWxNQH5rjs+RM/71ojLPiRHeYmNSm
- aCI6WhDONR7bNwPE4Q57cemQLaXd+nRFYmU/k1mkrHVDRpvNn6cZEMIgXNSkcNCKW3rAGLawJA9
- 86QsAZfz8ozB7HHqNoPJaM4kUp6MXInGeLhFkcP5SUTheDxj8+1SSyzvTnHMwzq8ZaHnjVkhWpz
- /0W4qB2NcKh/aPAjah+vDXLkDzzFQUcvLHr9UdD6MMZkXSRDIhcwyckPlNUHr4MPOYsSV7rQYfP
- s51Bptx5KMkyBHTDHHDDQzh/9Uz4Jjx8XHs68QOI2u1Q==
-X-Forward-Email-ID: 6a078a7e26842e7d336abf95
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.8.12
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <d69b500b-0473-496d-b17e-c60ce9839e0c@kwiboo.se>
-Date: Fri, 15 May 2026 23:04:58 +0200
+	Fri, 15 May 2026 22:22:17 +0000
+Received: by mail-oi1-x235.google.com with SMTP id 5614622812f47-463f00cda04so292511b6e.2
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 May 2026 15:22:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1778883735; x=1779488535; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eWRRU0GvDFaf4a964FT+cr5rSIOhJbhEFzH95X7dSHg=;
+        b=TYoCgljDfUaSX6W2NecjT/UNn++4AxrJd51o5sPhWeV4mtHfjrBldmqeAESlI/RLmA
+         yXU7mgsj2HApQPW6y0hr2+44Wi8yUg8zP84XQrLiKjocUtryGpm4y4/la8KKVA+fpT0f
+         N0Q7ncEp9dKqC4OaXVztGkVeqSx5Y13oPVaob13j3WaiDxDzp44boViXvdfSIGgIQU13
+         KbwxdbWi8nk39MT+TGpT0HjhNFQ9/yMlzQlTQBqhfuYjRkE5wCSwvfBOIdH2eZ+gXQEA
+         85NcQIoTcGMncKyD2IDqXrjJXk86K+sJ36FgjUENfZWg3T2DfjiH4Q3iHAvFP1KKi32M
+         rFjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1778883735; x=1779488535;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=eWRRU0GvDFaf4a964FT+cr5rSIOhJbhEFzH95X7dSHg=;
+        b=jNDGE0UyOBxpk99dIFMbNsPY37zpmEWgHAwTesqOGbJhxSk6qyNHFbxPhTdpvtdzvW
+         Lwbg0NCILzNzkz5MdumiKMfd5ulKKzx7bDjEPeArOLzPilvH6tFgiMb9qYkF8twUvBDu
+         7gZn2C2tsExWiSCNEriv5d+9BaLPL9FedMtFVdjXFV6b0+jrlaNHJkI8++OTUFuRoUFJ
+         fyMhb8h4NYQinkjwYxr1CMCoU3TyicW//K1NjbfyAy2mUzjT+8NY2c5hmFlDLGqVm8Qa
+         ZkyWQut/J4d/61E+Nvine2UD4B6STeEnE6bk59qxOoMs+Ql+tl7zPg6q+z8DAWXPIIuk
+         KV+w==
+X-Gm-Message-State: AOJu0Yyk+taC/rtZP6FjVyMukuN9caEiQBjuvsDbvVTWLr5rLufwunY6
+	HTqMGEr8IGtBQ5Zi8nQbyZCFuTfXgxAu6+SBFO1jnVCS0r3jLfR8yraGel11U/P9
+X-Gm-Gg: Acq92OGhmLQJpqeH2mNLv3xPoTFe0W/FrXq7Bx/nBLbRD1iuiOGKEDJnFc4uOqOvSZE
+	fAky1cFbIBNPXaww5Ga70erhZUNjvqF4bl6Sy54xetUoVwvX90KrrydYf4OJ93vca4QQdhwcXxd
+	PvfgBnOtTL3R/j4Y8tIIxJUgkLcodHBTiRYEfnSRkrEFDabaMt4xEzKp2mpR+Hz4Axx9nhJVT2w
+	kTUhQhhTBLwYr02/AA3Rr0Q7VBWf5yTwoSSBlg3yEYi+fiCuJNJMvlO5jNKDeJ/f+IzWLfxqJT5
+	jpLuv2WISE5QE8ZgTy/Ecowp+3b8TI0Hlr08F9fA1glWt6drUx7NTLUZ5gpj0uBniPLFFKqyGSj
+	41KtvCst96QiN4RazAK2qHJSFmufDOYjx4zIYNkbPCzsI+zVFcAqqojuZCmV8KiFMNJ3hCADzUz
+	HMo8T1VeIP2dNm2OuPUMAlCPoZjECUG9eqeo47QiJymg==
+X-Received: by 2002:a05:6808:3204:b0:47c:6c9c:607d with SMTP id 5614622812f47-482e55a978bmr4321044b6e.2.1778883735358;
+        Fri, 15 May 2026 15:22:15 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0:8c2e:6a8e:445a:9169])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e568c0d889sm980764a34.9.2026.05.15.15.22.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 May 2026 15:22:14 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	xsf@rock-chips.com,
+	sre@kernel.org,
+	simona@ffwll.ch,
+	airlied@gmail.com,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	jesszhan0024@gmail.com,
+	neil.armstrong@linaro.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V2 1/6] dt-bindings: power: supply: sgm41542: document sgm41542
+Date: Fri, 15 May 2026 17:19:42 -0500
+Message-ID: <20260515221947.299229-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260515221947.299229-1-macroalpha82@gmail.com>
+References: <20260515221947.299229-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/2] phy: rockchip: inno-hdmi: Add configure() and
- validate() ops
-To: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
- <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: linux-phy@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260515195512.1757363-1-jonas@kwiboo.se>
- <20260515195512.1757363-2-jonas@kwiboo.se>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260515195512.1757363-2-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_140610_028590_F2AF02FF 
-X-CRM114-Status: GOOD (  19.41  )
+X-CRM114-CacheID: sfid-20260515_152216_557249_2D08D0F6 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,86 +111,127 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On 5/15/2026 9:55 PM, Jonas Karlman wrote:
-> The commit 10ed34d6eaaf ("phy: Add HDMI configuration options")
-> introduced a way for HDMI PHYs to be configured through the generic
-> phy_configure() function.
-> 
-> This driver derives the TMDS character rate from the pixel clock and the
-> PHY bus width setting. However, no in-tree consumer of this PHY has ever
-> called phy_set_bus_width() to change the TMDS character rate as only
-> 8-bit RGB output is supported by the HDMI display driver.
-> 
-> Add configure() and validate() ops to allow consumers to configure the
-> TMDS character rate using phy_configure(). Fallback to the deprecated
-> way of using the PHY bus width to configure the TMDS character rate.
-> 
-> A typical call chain during DRM modeset on a RK3328 device:
-> 
->   dw_hdmi_rockchip_encoder_atomic_check():
->   - inno_hdmi_phy_validate(): pixclock 148500000 tmdsclock 594000000
-> 
->   dw_hdmi_rockchip_encoder_atomic_mode_set():
->   - inno_hdmi_phy_configure(): pixclock 148500000
->     - inno_hdmi_phy_validate(): pixclock 148500000 tmdsclock 594000000
-> 
->   vop_crtc_atomic_enable():
->   - inno_hdmi_phy_rk3328_clk_set_rate(): rate 594000000 tmdsclk 594000000
->   - inno_hdmi_phy_rk3328_clk_set_rate(): pixclock 594000000 tmdsclock 594000000
->   - inno_hdmi_phy_rk3328_clk_recalc_rate(): pixclock 594000000 vco 594000000
-> 
->   dw_hdmi_rockchip_encoder_enable():
->   - inno_hdmi_phy_power_on(): Inno HDMI PHY Power On
->   - inno_hdmi_phy_rk3328_clk_set_rate(): rate 594000000 tmdsclk 594000000
-> 
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> Changes in v3:
-> - Change validate() ops to only validate tmdsclock
-> - Add comments about expected consumer usage
-> - Update commit message with a typical call chain
-> Changes in v2:
-> - Add validate() ops to validate that the TMDS rate is supported
-> - Split out parts that remove the old workaround into a separate patch
-> 
-> Patch "drm/rockchip: dw_hdmi: Configure HDMI PHY in atomic_mode_set()"
-> at [1] adds phy_validate() and phy_configure() calls for this HDMI PHY.
-> 
-> [1] https://lore.kernel.org/dri-devel/20260510183114.1248840-10-jonas@kwiboo.se/
-> ---
->  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 60 ++++++++++++++++++-
->  1 file changed, 59 insertions(+), 1 deletion(-)
+Document the SG Micro sgm41542 battery charger/boost converter.
+The parameters of input-current-limit-microamp and
+input-voltage-limit-microvolt are defined as such since they are in
+common use among multiple bindings currently.
 
-[snip]
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ .../power/supply/sgmicro,sgm41542.yaml        | 99 +++++++++++++++++++
+ 1 file changed, 99 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
 
-> +static int inno_hdmi_phy_validate(struct phy *phy, enum phy_mode mode,
-> +				  int submode, union phy_configure_opts *opts)
-> +{
-> +	const struct pre_pll_config *cfg = pre_pll_cfg_table;
-> +	unsigned long tmdsclock;
-> +
-> +	if (!(mode == PHY_MODE_HDMI && submode == PHY_HDMI_MODE_TMDS))
-> +		return -EINVAL;
-> +
-> +	if (!opts->hdmi.tmds_char_rate || opts->hdmi.tmds_char_rate > 594000000)
-> +		return -EINVAL;
+diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
+new file mode 100644
+index 000000000000..fa0d31e496f7
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
+@@ -0,0 +1,99 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: SGM41542 Battery Charger
++
++description:
++  The SGMicro SGM41542 is a single cell battery charger/boost controller.
++
++maintainers:
++  - Chris Morgan <macromorgan@hotmail.com>
++  - Xu Shengfei <xsf@rock-chips.com>
++
++properties:
++  compatible:
++    const: sgmicro,sgm41542
++
++  input-current-limit-microamp:
++    description:
++      Optional value to clamp the maximum input current limit to for
++      the device. If omitted, the default value for the hardware will
++      be used (2400000).
++    minimum: 100000
++    maximum: 3800000
++
++  input-voltage-limit-microvolt:
++    description:
++      Optional value to clamp the maximum input voltage limit to for
++      the device. If omitted, the default value for the hardware will
++      be used (4500000).
++    minimum: 3900000
++    maximum: 12000000
++
++  interrupts:
++    maxItems: 1
++
++  monitored-battery:
++    description: |
++        A phandle to a monitored battery node. Values for the following
++        are used by the driver and if not present will result in default
++        values being applied:
++        constant-charge-current-max-microamp
++        constant-charge-voltage-max-microvolt
++        charge-term-current-microamp
++        precharge-current-microamp
++
++  reg:
++    maxItems: 1
++
++  regulators:
++    type: object
++    properties:
++      otg-vbus:
++        type: object
++        description: OTG boost regulator
++        $ref: /schemas/regulator/regulator.yaml
++        unevaluatedProperties: false
++    additionalProperties: false
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    battery: battery {
++      compatible = "simple-battery";
++      constant-charge-current-max-microamp = <10000000>;
++      constant-charge-voltage-max-microvolt = <4350000>;
++      precharge-current-microamp = <180000>;
++      charge-term-current-microamp = <300000>;
++    };
++    #include <dt-bindings/gpio/gpio.h>
++    #include <dt-bindings/interrupt-controller/irq.h>
++    i2c {
++      #address-cells = <1>;
++      #size-cells = <0>;
++
++      charger@3b {
++        compatible = "sgmicro,sgm41542";
++        reg = <0x3b>;
++        input-current-limit-microamp = <3000000>;
++        input-voltage-limit-microvolt = <4500000>;
++        interrupt-parent = <&gpio0>;
++        interrupts = <26 IRQ_TYPE_EDGE_FALLING>;
++        monitored-battery = <&battery>;
++
++        regulators {
++          otg-vbus {
++            regulator-max-microvolt = <5000000>;
++            regulator-min-microvolt = <5000000>;
++          };
++        };
++      };
++    };
+-- 
+2.43.0
 
-Sashiko reasoning log pointed out that a consumer of phy_validate() or
-phy_configure() can make a call with opts=NULL, so I may likely send a
-v4 of this series to fix such possible NULL pointer dereference here.
-
-Or is that something that possible should be checked before phy core
-calls the .validate()/.configure() ops?
-
-Multiple other phy .configure() ops seem to dereference opts members
-without any type of opts NULL check. (next-20260508)
-
-Regards,
-Jonas
-
-[snip]
 
 _______________________________________________
 Linux-rockchip mailing list
