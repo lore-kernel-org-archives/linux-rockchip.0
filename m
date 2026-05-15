@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 048A2CD4851
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A89ACD4F46
 	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 13:02:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,61 +12,61 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QkyKVCOa+G5GL+zhbhPxJlGfDO/uj4HB0jCKSU7nJMc=; b=hNfm7RKZK2Ulpi
-	clU30OGwpBNW2mqGWxsquG8sU7jHEEyXnnkr0KtkKBmuMQ3yf5LgHtiqj/Ha5ppU3KImZbVas8t8a
-	5vUXPKMRlLragY45sjtW3NtdfUdotFD7Yb6GiI44dTyPMfnrqnYoJp9XGKaw/PMs8K3Q3jTqXE3ZY
-	/ExenWCHYIEUBgKi4pacnFKIwrP04iF2RRlCr2mVtg+1WmT6jhzqT8cGKORMnk9LXcsW3pv8Duo4V
-	Q7h7+dX1VwxahaoRXQ6lW2TYI7rWjHZpRO+9wN7mKqJAp7AcLstf9T5abTbDZukUQRa1WXZ8sK2Kt
-	qCHYuxsVFBlROrVWNjvg==;
+	List-Owner; bh=7UlIqkfsBlheCSHoOKgvSDWn/YQ9FB4iCyH900/hvpw=; b=0ZUmYn+GBRWdKB
+	Gdb/JnrCRTYvCdA8l1THg98jtTntJ1dw53z8uiIteEb7t9IlgNE7fbUYXgukLpIPEVlG+OD4VTxls
+	WuMUgddbO1eP90cRNxIy1TFsVMMSeyBfRj7nWXxuKZxQdRB4yWvbQ9/WsXllkGAAyebeDCuCo5+XR
+	8aate++Nwmy+TuZc+nY7jjJ9w1i3soAj6LNXCWlVB+qWNI9A7uW92+gWD1wtr2yG4iCjbz9J18ebi
+	xCH+x90rg2tOk2KwQoXTgD2UAEf8scjVh/17yrvt1TNm6gND7YLGF4Sg8h7qek2EIHXOPFts6s/qc
+	5GgnU73HZ5hMbByY14og==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNsBh-00000008OFE-1QKK;
+	id 1wNsBh-00000008OFA-1DZo;
 	Fri, 15 May 2026 13:02:45 +0000
-Received: from mail-oa1-x34.google.com ([2001:4860:4864:20::34])
+Received: from mail-oa1-x35.google.com ([2001:4860:4864:20::35])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNsBf-00000008ODr-2CJQ
+	id 1wNsBe-00000008ODW-3dZV
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 May 2026 13:02:44 +0000
-Received: by mail-oa1-x34.google.com with SMTP id 586e51a60fabf-40946982a78so3358235fac.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 May 2026 06:02:43 -0700 (PDT)
+	Fri, 15 May 2026 13:02:43 +0000
+Received: by mail-oa1-x35.google.com with SMTP id 586e51a60fabf-4358f61c9c8so3073063fac.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 May 2026 06:02:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20251104; t=1778850162; x=1779454962; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=Q+2ydEn6hztRE9Iv70/dCmwY4D4SjSGA68XyIdXdlEs=;
-        b=fODqP+8MKP3cLF1ONmTwhMHgzSn37fgUS27m3DZrsKP+m96Ipg77U2nD866jMyyCyL
-         1etY94CafrvF6AE08FMMDNfJrKTFxYFTohjBWiQM4ZdenBXOgjXBgqz0w/HurQsGrehI
-         L7v8zCq/cvrFA9E1l1P5szE5b0cgs13PfstQUPWP+UCJg6MlMR2/yo4ccteGXaEC7VSh
-         eZYcpW87B5ECZ7SDJ/AvhKjYwkxWYcjeeUuGFg1r21ETp9he48+C8HRj7+4tAGQt4lOK
-         J2QMpjwkUunyz4E0ijbb1WkhpaN35f9A67DXWKi7l8GJfdoquudjCbhrWM4bu+2FOCQd
-         Z3PQ==
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=U45vWbECRUe9NkB+CjYTcfd8bqpTgZl5UxUep+ywrrkx/nGwf8QgdGs5S33AJF6gLP
+         ERmdMfrjMOhLttGyBAoh3pYtgt6PnqrGdww+ATMYrcCobVOednp/W+Cr+Za+5TFTqJyk
+         lcDKH740EJcJ8396obwNAENg77URMqOkogrMWfVXNbyu4xqjJsjO2Jom4Wj36NZgDmqa
+         YBqwlclmtHW862UNZ4tAVgzWbNdZNL3jU8lDxaWVxeglCky75x1/DARthBJMvXYV5zZS
+         Z8/6aDOxWqmbJ1r7EAuQZbEK+KqHMMCLk63x5qhaGquPl0IRCO8381dH5RMAvK6FkIzv
+         RIcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20251104; t=1778850162; x=1779454962;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=Q+2ydEn6hztRE9Iv70/dCmwY4D4SjSGA68XyIdXdlEs=;
-        b=I6a1xpLn3ApNZ8uU1h5vV+nTrm8dppxpRFZqwEsJUsyGrSWoco08tVbhjd4DTzjzEh
-         qmeAdcdJCkW63RIJyerTlhgnX0Q8cH9UvU3owKiUlnb3SWM7h/wTua9TvY9M/J+tZPUQ
-         Hssn8bfSLVJxLNY29BvgHWtCZpvniOCiE9SiKk+4H4W0LhFsr67xnzSLNWTeJOk6ochY
-         JYt5KSJpG8gmxdUAzcL5LzqJx7J7R8XjnhdjfKg2nPFtgwF+PK0I/HUH6CvwEBPXv0YC
-         vFi9UhuljKawlJr35hz2VQDeus4T4Euo+WkVHA+mO7UK8n4xkf2EirR4JBLr7ljF2F6i
-         eoig==
-X-Forwarded-Encrypted: i=1; AFNElJ8yU5k4+OXrLWaOXKzG7emSY/KpT4jrttdTy+TUJrNy1rkLmsvkP8BkCfoRLwJYBeSlqH3UDpxDXPzWxlXWqg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQHUUk0H/MOCWUjNRIJs3OTZoslxQ1J/KQ6uCTYPSamEPoIA2Q
-	+k7NX9BRwX85V9v/Ay+D3r0zYa6zgnXUOTtWxG30d2yDVrkMCa42yK1o
-X-Gm-Gg: Acq92OFD5lLnzilEtxpHKt5sESfIGlnHgaachw8l94gS0hyavQoYohtC0Mfs/1JwjbH
-	RS4Q4GSn4AI3rzHcyEmxD+BllcgckOgH2ZDQn9WwqTBRSMGGEFJdQdJFr9y4tfE0/YUW9p1TvWi
-	Nwn8WLEGUOAR8Eo6eiJjAwlxy6W6FWNc+Kjh+1LyxjISTk7S4a7puR4Cpg2AoPZbU4KVPiInnlb
-	8l8DnoAv2qNa+ZN+hEZw4UYNRHuJtHldVjR/91Qy6KveyOYJPaBJPhljEf90g2R/ixF/e+/8LY8
-	tXTkrBlrM+Xg4qwm1gJYcsRl6B36vjN0/TkWUJyMd8eG9VxP4stlTh/THQpm/8q36Y9JAfKEuYU
-	e4AwA71P+jMX3IFPSnViqbxQ1DRP/CYcEcwny8s+XZCGRLycTwJrBybPKTL6erZ9orlNDzgyfxn
-	6qE+Xx6ybF/UKQrz93vgI+m4uYQwu+S5zE8a8LAjFN+w==
-X-Received: by 2002:a05:6871:68a:b0:439:c869:f5d6 with SMTP id 586e51a60fabf-43a2decabadmr2469552fac.36.1778850162214;
-        Fri, 15 May 2026 06:02:42 -0700 (PDT)
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=N8OwRvZhd/YHckr++XwJ2TBGb7rl4yPO/0NyffnBCiAnD8X2KvQA8L5uoAZ9Fgs0FY
+         wgzSGpzinsh5WMchea4waXdX5boi0HGzJyW8o6Wkn6vt7LdLJH+YfvSR2Fu3SyIa99/8
+         wCy98T0VBqeaG3uWA3OgFSiz4Acf2FZQvtO4o+AKXIVFMP1Ja980Xc2rnvh8QzMZmZ2P
+         Wr39tXaiT64/5ktQ6bSjkBB12qDF92JHSuX6nywbDttC/CG7usIaDHiWxLxmveKz/oMK
+         K+e1hzDd6FgLEZ1cyLDHDewXqTNs9suBJ1aWRGYBq5K2lL+6DE1DdHD5AG9QkLcpn1pt
+         0CnQ==
+X-Forwarded-Encrypted: i=1; AFNElJ8FiP0cIsG76JWqa8buLmRJl35XumpFZzlYHKTaMXWYCqocqFKR1UhbDeDxTjyp7TEEFcbkQj08n59KvTy0CQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwxSxp9k63whUHrNj6F4vtKO6mB49qX3MyXX5A8PbL8+/uhfU9s
+	Hnpgw8NXPJDctIYJwNBbmZ2DWAoPYeMHqUpDeo2XCrRt9L+9PoLEXTm7
+X-Gm-Gg: Acq92OH96hkOXViRQolE+zvAl6gwBHM0ZQx/Wj8TlfAdSqsDKnkXDS01Bd4qoBoM7ut
+	SQMmXPVEh2ZFAgpSBoMOzerXKNo4zeCUgYCe0IZdy9hoRDZHxMd54/sx1GMgkWnBmTeGkYg1sDV
+	zdjzMF7UzM4F17c2hJiPAvxyXknY81Zmonh1IpGeKRyK0pTb8ywlKAadUC0f+on8v0mNNoGD1mI
+	lgdGkMfwG3b2kZasEU8XrJ/YG61PBms2S2zWFT31OTI3QKux7h7PNMwTDiL7QEUzctyUpLpX8Bp
+	4L8IyWpRIjX5sjGMU8dYbxinychb+TTQ6vORRn2h+HpjaVrSrpFBANgR+87JeN9swiptZq6OEbT
+	WZ1wazzfOXpirsOXGj/nHTjG6oY8yYeywtFhAmd7smSXVeMkXpJ9vnLKHbHvgQ2/QAYa4K6tmdW
+	N47BQlgDW9Gpf8ATHbo5cJ1k9kuf0JW4AytokfMiGz/Q==
+X-Received: by 2002:a05:6870:548a:b0:42c:5ca:e7f8 with SMTP id 586e51a60fabf-43a2dd598a4mr2483451fac.26.1778850161483;
+        Fri, 15 May 2026 06:02:41 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0:8c2e:6a8e:445a:9169])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-439fc53f2acsm4155822fac.14.2026.05.15.06.02.41
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-439fc53f2acsm4155822fac.14.2026.05.15.06.02.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Fri, 15 May 2026 06:02:41 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
@@ -85,16 +85,16 @@ Cc: andy@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>,
 	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: [PATCH V7 02/11] dt-bindings: iio: imu: icm42600: Add icm42607 binding
-Date: Fri, 15 May 2026 08:00:07 -0500
-Message-ID: <20260515130018.237378-3-macroalpha82@gmail.com>
+Subject: [PATCH V7 01/11] dt-bindings: iio: imu: icm42600: Add mount-matrix to icm42600
+Date: Fri, 15 May 2026 08:00:06 -0500
+Message-ID: <20260515130018.237378-2-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260515130018.237378-1-macroalpha82@gmail.com>
 References: <20260515130018.237378-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_060243_567247_F8379E2C 
-X-CRM114-Status: UNSURE (   9.07  )
+X-CRM114-CacheID: sfid-20260515_060242_906789_44B32363 
+X-CRM114-Status: UNSURE (   8.48  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,32 +114,28 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add devicetree binding for the Invensense ICM42607 and Invensense
-ICM42607P inertial measurement unit. This unit is a combined
-accelerometer, gyroscope, and thermometer available via I2C or SPI.
-
-This device is functionally very similar to the icm42600 series with a
-very different register layout.
+Add mount-matrix attribute to schema. This attribute has been supported
+since the first revision of this driver, but was not documented.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
  .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
-index 9b2af104f186..b69c6bbb6f6b 100644
+index 119e28a833fd..9b2af104f186 100644
 --- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
 +++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
-@@ -30,6 +30,8 @@ properties:
-       - invensense,icm42600
-       - invensense,icm42602
-       - invensense,icm42605
-+      - invensense,icm42607
-+      - invensense,icm42607p
-       - invensense,icm42622
-       - invensense,icm42631
-       - invensense,icm42686
+@@ -53,6 +53,8 @@ properties:
+   drive-open-drain:
+     type: boolean
+ 
++  mount-matrix: true
++
+   vdd-supply:
+     description: Regulator that provides power to the sensor
+ 
 -- 
 2.43.0
 
