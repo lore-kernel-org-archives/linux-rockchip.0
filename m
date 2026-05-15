@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76724CD4851
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD431CD4F4A
 	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 22:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=pzIHNG1VoJzHZc5Q7VqktaMW0v+uvX4o8IEie9cbQ94=; b=NUIVW6faMijjrB
-	J3df1YjDt/3l0v7o2GwpBET2PdoxDodhppMDuKh4edfM+wj6m2s/Xxi2dX4xUCAwrGkZnxipvq9xx
-	S2j+OTjarkEWU2zweiuoKftuLOLXpfNh8iVZA6lonibPTIH08vNewX9lN+nGkVNDiNQ7zkCu79qxG
-	9sgNzJoAR6I5uKCiT4IADB1l+gRiIqnI/F3h5G+vJGVU3lJoK3rT2c5mSXBDb3A+dmmFbsGPxHqJ7
-	Rjp/Ef6oMzwoWYdF57GOUgyZafdpc1J2AnaiTo7wSGLpAcCsR4Gc0It+ZXtUb1e9LirHnKRuHGGxi
-	oFec7h9uC1oKZHn3NmXg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=4tIsGYPYVjTP34FBC5zv2v1ExuH5pxIMkdKg/RwUZXg=; b=kIjWM39k6j6R8y
+	tDLsaVf9ve1kGxgHESWF9VapRyJZIG0HDn6Lzdy3IAf746G37VM79VZJwanCzGyb1LmRzDaB6Azw7
+	RkVTytxowR6KiT8VlYYmNSsm3rePh0fiQXTz9k8JpRAfXAdmZRy2LWmKIXb/3/xFEhSoJYKDOjRw6
+	Wq94lZfD+1o/dR4kBuQMO+KTfMf74H50BMVYyQNaQgxDVXhqO4lYF2dnjFD1YqqMGuS7jvRb1NPwQ
+	/pHeUlB972b9vYUlqIzXmo1/KIWh8vA9BCtYE6tpNnzTElPDuLX0kPBJevTVu97+Lo9KI+GIWkqzw
+	Aikdtt52LC2Ism+hr1FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO0vE-00000009cV4-3VsO;
-	Fri, 15 May 2026 22:22:20 +0000
-Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
+	id 1wO0vC-00000009cTg-2G3K;
+	Fri, 15 May 2026 22:22:18 +0000
+Received: from mail-ot1-x336.google.com ([2607:f8b0:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wO0vA-00000009cSF-29KY
+	id 1wO0v9-00000009cSA-3aeE
 	for linux-rockchip@lists.infradead.org;
 	Fri, 15 May 2026 22:22:17 +0000
-Received: by mail-oi1-x235.google.com with SMTP id 5614622812f47-463f00cda04so292511b6e.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 15 May 2026 15:22:16 -0700 (PDT)
+Received: by mail-ot1-x336.google.com with SMTP id 46e09a7af769-7e568ab0bc5so415161a34.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 15 May 2026 15:22:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1778883735; x=1779488535; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=eWRRU0GvDFaf4a964FT+cr5rSIOhJbhEFzH95X7dSHg=;
-        b=TYoCgljDfUaSX6W2NecjT/UNn++4AxrJd51o5sPhWeV4mtHfjrBldmqeAESlI/RLmA
-         yXU7mgsj2HApQPW6y0hr2+44Wi8yUg8zP84XQrLiKjocUtryGpm4y4/la8KKVA+fpT0f
-         N0Q7ncEp9dKqC4OaXVztGkVeqSx5Y13oPVaob13j3WaiDxDzp44boViXvdfSIGgIQU13
-         KbwxdbWi8nk39MT+TGpT0HjhNFQ9/yMlzQlTQBqhfuYjRkE5wCSwvfBOIdH2eZ+gXQEA
-         85NcQIoTcGMncKyD2IDqXrjJXk86K+sJ36FgjUENfZWg3T2DfjiH4Q3iHAvFP1KKi32M
-         rFjg==
+        d=gmail.com; s=20251104; t=1778883734; x=1779488534; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=nzgPino86LaQeP8b63WXKQ8PXEYI7/0fnGLVDfvDc4M=;
+        b=pQSaRMn6Z0o5svdRMqIRln8hgi343+sIk6tZkb1sHhtWwlu55Prj0Bq+XJo/MJuFPB
+         1BhMXPdNkwxWglEZGJgzv1jz8+9xBMaPUPUPjhakOyHVL7fx/dzcs/7YDapC7RsESvi7
+         OeUYXQbu90vDvoLTBvU5InFY5fpm+Tj5Pla9nNtOAqwyb59WU+aTvEjFLMLwgeeaqhnf
+         IvrwoblRIiZXlB75tH7YcVcVrOQzjkDZzUi5TN3EGNUMP2idD4vgZJjvtY3yG/ori0H/
+         yi3AkiInu91GDIYcgxbqMX2cFaNH15xmROXuqqWfrzA9XssJNJfzmB7gm6ZVS0wM3/cJ
+         BEKQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1778883735; x=1779488535;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=eWRRU0GvDFaf4a964FT+cr5rSIOhJbhEFzH95X7dSHg=;
-        b=jNDGE0UyOBxpk99dIFMbNsPY37zpmEWgHAwTesqOGbJhxSk6qyNHFbxPhTdpvtdzvW
-         Lwbg0NCILzNzkz5MdumiKMfd5ulKKzx7bDjEPeArOLzPilvH6tFgiMb9qYkF8twUvBDu
-         7gZn2C2tsExWiSCNEriv5d+9BaLPL9FedMtFVdjXFV6b0+jrlaNHJkI8++OTUFuRoUFJ
-         fyMhb8h4NYQinkjwYxr1CMCoU3TyicW//K1NjbfyAy2mUzjT+8NY2c5hmFlDLGqVm8Qa
-         ZkyWQut/J4d/61E+Nvine2UD4B6STeEnE6bk59qxOoMs+Ql+tl7zPg6q+z8DAWXPIIuk
-         KV+w==
-X-Gm-Message-State: AOJu0Yyk+taC/rtZP6FjVyMukuN9caEiQBjuvsDbvVTWLr5rLufwunY6
-	HTqMGEr8IGtBQ5Zi8nQbyZCFuTfXgxAu6+SBFO1jnVCS0r3jLfR8yraGel11U/P9
-X-Gm-Gg: Acq92OGhmLQJpqeH2mNLv3xPoTFe0W/FrXq7Bx/nBLbRD1iuiOGKEDJnFc4uOqOvSZE
-	fAky1cFbIBNPXaww5Ga70erhZUNjvqF4bl6Sy54xetUoVwvX90KrrydYf4OJ93vca4QQdhwcXxd
-	PvfgBnOtTL3R/j4Y8tIIxJUgkLcodHBTiRYEfnSRkrEFDabaMt4xEzKp2mpR+Hz4Axx9nhJVT2w
-	kTUhQhhTBLwYr02/AA3Rr0Q7VBWf5yTwoSSBlg3yEYi+fiCuJNJMvlO5jNKDeJ/f+IzWLfxqJT5
-	jpLuv2WISE5QE8ZgTy/Ecowp+3b8TI0Hlr08F9fA1glWt6drUx7NTLUZ5gpj0uBniPLFFKqyGSj
-	41KtvCst96QiN4RazAK2qHJSFmufDOYjx4zIYNkbPCzsI+zVFcAqqojuZCmV8KiFMNJ3hCADzUz
-	HMo8T1VeIP2dNm2OuPUMAlCPoZjECUG9eqeo47QiJymg==
-X-Received: by 2002:a05:6808:3204:b0:47c:6c9c:607d with SMTP id 5614622812f47-482e55a978bmr4321044b6e.2.1778883735358;
-        Fri, 15 May 2026 15:22:15 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bc0:8c2e:6a8e:445a:9169])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e568c0d889sm980764a34.9.2026.05.15.15.22.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        d=1e100.net; s=20251104; t=1778883734; x=1779488534;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=nzgPino86LaQeP8b63WXKQ8PXEYI7/0fnGLVDfvDc4M=;
+        b=CVmO1+aQ2DTPGmsJBucXEXOZQLGISCGHUPMaspuIBsnhMsAQbDHbhUla03soMR0FA9
+         DfcmeS384oKvQLZ5yF2rD7YAhyeqipEfVtIGgYhZIXuAkYl2wpm5Uqvu4vMakneWbNBK
+         rtmVPZPyPSP33BOw+PkFWNA+xVcjeG7dsVcyjS/m9aTCrS4dbT9825lqfQJ9SneQkida
+         k810iaOP3+jSQ7efXP6rYzkd6upKlYq8CNg26NnyPjrXMRUaFloHVHDLefbBOvzcIk1L
+         grM/w1t5dDvuWLyrJnja2LieMc08ZxX0BRkKBeW3aLSPdmi8woeodLiefMvbus2aBKgr
+         RzbQ==
+X-Gm-Message-State: AOJu0Yx31JoMvkEUT8zNDt8yYgFSGmlgkwsZlyYjUPiTCNrpI0KE5stY
+	YsMfGz5rdg2ltUxJ3FsTSK2HUs/fTUtFsaYsmc5XuiHtHmK6gBRTb0qXti0WqnNn
+X-Gm-Gg: Acq92OFnR/AMdUsV8ZMvEqTz1MRNH46/1hh9Usn6JzOE8S1hupFpmnBzgpkfpHqeYtr
+	h8G7sfiwx33YLtlwVAXAnvxBet1WYd7TjHBkgbbNfriSaakkjd/bCiiS4n+BES12hQ+gsNG6izP
+	AE7WMIXH2RI9ak5M5FsLYYH8AlpJLkMzx3qkZszeprpb7Zruf5IvSV4apMviAkUR7LnQKDsbZjt
+	IjOjrePAk/2633U9MaPlGjh3LpJ8+OKBZIrGtfQNoFMVFj9Vfnou4JIxDAe+kGDkNvLTmlfyn4J
+	VzbvnXpDE8v8H9BqH8R1h4hH365g3RGKMlD54VELEaQ+oxD+55cPGo3hQ9YXSUbdjhed4GLx8WX
+	uAPkfuoFy4hEBTQPHUpFVfzUZWXlAOFbyWy8X8UHOFWzGBOoTUE7xHpNpDKJcyFTtV6E6xQUaxw
+	tGO2TCutYOiRsBPp07e9XXwcsmASPXya3Tp8oRy5yyj4XE4j6jGgB8
+X-Received: by 2002:a05:6830:2a08:b0:7d7:f70b:5b0e with SMTP id 46e09a7af769-7e4a400124dmr3371261a34.12.1778883734287;
         Fri, 15 May 2026 15:22:14 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0:8c2e:6a8e:445a:9169])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e568c0d889sm980764a34.9.2026.05.15.15.22.13
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 15 May 2026 15:22:13 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -85,16 +84,14 @@ Cc: devicetree@vger.kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V2 1/6] dt-bindings: power: supply: sgm41542: document sgm41542
-Date: Fri, 15 May 2026 17:19:42 -0500
-Message-ID: <20260515221947.299229-2-macroalpha82@gmail.com>
+Subject: [PATCH V2 0/6] Add Anbernic RG Vita-Pro
+Date: Fri, 15 May 2026 17:19:41 -0500
+Message-ID: <20260515221947.299229-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260515221947.299229-1-macroalpha82@gmail.com>
-References: <20260515221947.299229-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_152216_557249_2D08D0F6 
-X-CRM114-Status: GOOD (  14.34  )
+X-CRM114-CacheID: sfid-20260515_152215_928842_00B4264D 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,122 +110,39 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Document the SG Micro sgm41542 battery charger/boost converter.
-The parameters of input-current-limit-microamp and
-input-voltage-limit-microvolt are defined as such since they are in
-common use among multiple bindings currently.
+Add support for the Anbernic RG Vita-Pro, based on the Rockchip RK3576 SoC.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../power/supply/sgmicro,sgm41542.yaml        | 99 +++++++++++++++++++
- 1 file changed, 99 insertions(+)
+Changes Since V1:
+ - Updated documentation filename to matche compatible string.
+ - Corrected order of allocating IRQ in charger driver and switched
+   to using devm managed function to allocate work queue.
+
+Chris Morgan (6):
+  dt-bindings: power: supply: sgm41542: document sgm41542
+  power: supply: sgm41542: Add SG Micro sgm41542 charger
+  dt-bindings: display: panel: document Anbernic TD4310 panel
+  drm/panel: anbernic-td4310: Add RG Vita Pro panel
+  dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
+  arm64: dts: rockchip: Add Anbernic RG Vita-Pro
+
+ .../devicetree/bindings/arm/rockchip.yaml     |    6 +
+ .../display/panel/anbernic,td4310.yaml        |   64 +
+ .../power/supply/sgmicro,sgm41542.yaml        |   99 ++
+ arch/arm64/boot/dts/rockchip/Makefile         |    3 +
+ .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 1317 +++++++++++++++++
+ drivers/gpu/drm/panel/Kconfig                 |   10 +
+ drivers/gpu/drm/panel/Makefile                |    1 +
+ drivers/gpu/drm/panel/panel-anbernic-td4310.c |  291 ++++
+ drivers/power/supply/Kconfig                  |    8 +
+ drivers/power/supply/Makefile                 |    1 +
+ drivers/power/supply/sgm41542_charger.c       | 1035 +++++++++++++
+ 11 files changed, 2835 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+ create mode 100644 drivers/gpu/drm/panel/panel-anbernic-td4310.c
+ create mode 100644 drivers/power/supply/sgm41542_charger.c
 
-diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
-new file mode 100644
-index 000000000000..fa0d31e496f7
---- /dev/null
-+++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
-@@ -0,0 +1,99 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: SGM41542 Battery Charger
-+
-+description:
-+  The SGMicro SGM41542 is a single cell battery charger/boost controller.
-+
-+maintainers:
-+  - Chris Morgan <macromorgan@hotmail.com>
-+  - Xu Shengfei <xsf@rock-chips.com>
-+
-+properties:
-+  compatible:
-+    const: sgmicro,sgm41542
-+
-+  input-current-limit-microamp:
-+    description:
-+      Optional value to clamp the maximum input current limit to for
-+      the device. If omitted, the default value for the hardware will
-+      be used (2400000).
-+    minimum: 100000
-+    maximum: 3800000
-+
-+  input-voltage-limit-microvolt:
-+    description:
-+      Optional value to clamp the maximum input voltage limit to for
-+      the device. If omitted, the default value for the hardware will
-+      be used (4500000).
-+    minimum: 3900000
-+    maximum: 12000000
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  monitored-battery:
-+    description: |
-+        A phandle to a monitored battery node. Values for the following
-+        are used by the driver and if not present will result in default
-+        values being applied:
-+        constant-charge-current-max-microamp
-+        constant-charge-voltage-max-microvolt
-+        charge-term-current-microamp
-+        precharge-current-microamp
-+
-+  reg:
-+    maxItems: 1
-+
-+  regulators:
-+    type: object
-+    properties:
-+      otg-vbus:
-+        type: object
-+        description: OTG boost regulator
-+        $ref: /schemas/regulator/regulator.yaml
-+        unevaluatedProperties: false
-+    additionalProperties: false
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    battery: battery {
-+      compatible = "simple-battery";
-+      constant-charge-current-max-microamp = <10000000>;
-+      constant-charge-voltage-max-microvolt = <4350000>;
-+      precharge-current-microamp = <180000>;
-+      charge-term-current-microamp = <300000>;
-+    };
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    i2c {
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+
-+      charger@3b {
-+        compatible = "sgmicro,sgm41542";
-+        reg = <0x3b>;
-+        input-current-limit-microamp = <3000000>;
-+        input-voltage-limit-microvolt = <4500000>;
-+        interrupt-parent = <&gpio0>;
-+        interrupts = <26 IRQ_TYPE_EDGE_FALLING>;
-+        monitored-battery = <&battery>;
-+
-+        regulators {
-+          otg-vbus {
-+            regulator-max-microvolt = <5000000>;
-+            regulator-min-microvolt = <5000000>;
-+          };
-+        };
-+      };
-+    };
 -- 
 2.43.0
 
