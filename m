@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5036CCD4F46
-	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 19:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 866F0CD4F46
+	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 19:55:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=RV58SzsnapLXY6EUIYC3HA9d/r8xWwDpdAEHnr8+95c=; b=ePMKD0g17FaJe2
-	qllFxFKSZYs94KhPyHOh2wJm5qoL4+zbGtrrA0ufpDcmHBlhzF27KxwnYWhaS4PPfiHtMAqPEp/e6
-	svz8EKambfIl2ntj1CCqI7l75NsW7AUov6clze0jM2C+YwktU5AkoUzEeGP842wFfuPGfCe5gWN6r
-	t63OmP95bZpjLfL6OBbWvvJOdieJHnVG9m9PxqLk9PTnOOmsAK105bxNDJ4PtWLW/wK8nQeoSycIw
-	+LuYdNLKr16GJFTgVjMjTux6U7zpRSdTk9BgqTK5EmVfSGQ2V/b8cEPQANmX20VsVmaJFdU7/D2Er
-	/LxeGYL5M76/llXUJFnA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=G7C0T137DS7tBgI52VobZoH9Q9adhF5fd13WEqWhh0g=; b=BOfFIwPStOdDzA
+	gWLdRmUWI6KJPOwwpKzhkuipcj8hZ1eZ3Cs5wOtxZAMumsHGeL4rLgTO8IPWm65r1nvDm604NT5is
+	Qvhy3bE+AVPiCQ0GuN9ba55yUSM5Gv5P5voOLoxQR6EtrJR6uPoPcDoKifEWfN/jeReWtBb0TKf7M
+	ZtB/wYgsW0H2CJJJRslvhJMogWFyQslWVy2JEykW+Xo+FeYtdlNU1Ji3eq9mOFDJWTDh7pwCQ0F0u
+	3gz49aPyrJrEgQoZ5nFnSc7NLudeaUBFrLYUy+6xpgePMHSQ/jjUrZQ35Xs/XWsfQJKkJeCpcDQp9
+	4D7ALFVKiTBk1e8gQsHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNydB-00000009GU5-1k37;
-	Fri, 15 May 2026 19:55:33 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wNydP-00000009GZX-39s6;
+	Fri, 15 May 2026 19:55:47 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNyd8-00000009GRq-3U2j
+	id 1wNydH-00000009GUC-058E
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 May 2026 19:55:32 +0000
+	Fri, 15 May 2026 19:55:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1778874929;
- bh=bgXVtKq/ijQaurjlwStMuZUnlY7VktYBvewGw94cJtQ=;
- b=xFO+ueJFlMpt9PEa2U1/nMWAHy8GvijjSUxlLR7aIeEGB9HmZV3wpHmT4nJO6F1UPpfcWAfwO
- w3Vqud9rCmsV1Gui4P75Fv1oruYx/cUHy3mrBi+QRCRsq8PGbG+Y6LavakiiHfUBjtUmg3LYyBk
- 0bs7OIS2uXUX3qdcy8rPVCKAcguB6L/v2+AxhkdnLE4acpNnmyQGJDTKTrAd++6MfIpGfxIm+iN
- jKkYgYA4RvHyjpU68eISyS+WHlnezKRb3SV+m/vcdefpq5luWPNRiiReXg0VdGpJkvQ2AMveQnu
- iXw/O6GqONjzqo1MOCGw/TomGoyt3qqIA3Q2OWyno9gw==
-X-Forward-Email-ID: 6a077a24ad7e292af75a1078
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1778874933; bh=tFwTKW3kDBLJUKllmiRBoo0ahcgcG8TLGz1il3QI99Q=;
+ b=i5McVhVn5EXASLepLZsk2wKjAWgyR8crx29bzl8MmGVQtuf57y/i0J5wTLZG2fTVnouxnpdVx
+ NWiHoUjCWBhRVaxxRNWAxlwnscbL7m8e7JMdT4QAnALNvySTk0Nzg08Zdq2yKG7Q9a1FqEt+LZ2
+ 8fNBf/wNJurnt85o/VexfMeKLEAoOb/+bF0B0nGrONu1adsA4C4OqQUyqxf/bnsKYgMD50Dhnvp
+ UFfqU4UNSLNy7cpR5HOtkDfO2xaC2OiW9UvC3lkK0Z+Zm/WfHSKFQZm3nCsl4fB9Fb7LjuGB7uo
+ +yYlZLj0v0baW5mAHrXUJP3wjf5eExplIXFuG3JnVSjw==
+X-Forward-Email-ID: 6a077a28ad7e292af75a10b0
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 2.8.12
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -53,15 +53,16 @@ Cc: linux-phy@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 0/2] phy: rockchip: inno-hdmi: Change TMDS rate handling to configure() ops
-Date: Fri, 15 May 2026 19:55:09 +0000
-Message-ID: <20260515195512.1757363-1-jonas@kwiboo.se>
+Subject: [PATCH v3 2/2] phy: rockchip: inno-hdmi: Remove deprecated way to configure TMDS rate
+Date: Fri, 15 May 2026 19:55:11 +0000
+Message-ID: <20260515195512.1757363-3-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260515195512.1757363-1-jonas@kwiboo.se>
+References: <20260515195512.1757363-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_125531_360354_2BFD9FB0 
-X-CRM114-Status: UNSURE (   8.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260515_125545_957921_E709AAB8 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,52 +79,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds support for using phy_validate() and phy_configure()
-with this HDMI PHY as an alternative to current in-tree unused way of
-using PHY bus width to configure the TMDS character rate.
+The TMDS character rate of this PHY is configured using PHY bus width
+in downstream vendor kernel and out-of-tree patches, however no in-tree
+consumer of this PHY has ever called phy_set_bus_width() to change the
+TMDS character rate as currently only 8-bit RGB output is supported by
+the HDMI display driver.
 
-The only known users that calls phy_set_bus_width() on this PHY are my
-out-of-tree HDMI 2.0 patches for Rockchip RK3228/RK3328, i.e. those
-originating from LibreELEC (also carried by other distros), the
-downstream vendor kernel uses a different implementation that also calls
-phy_set_bus_width() on this PHY.
+The series "Split Generic PHY consumer and provider" clarifies that
+phy_set_bus_width() is intended as a provider-only function.
 
-Patch "drm/rockchip: dw_hdmi: Configure HDMI PHY in atomic_mode_set()"
-that calls phy_validate() and phy_configure() on this PHY can be found
-at [1].
+Remove the deprecated unused fallback way to configure TMDS character
+rate now that this HDMI PHY support using phy_configure() to configure
+the TMDS character rate.
 
-[1] https://lore.kernel.org/dri-devel/20260510183114.1248840-10-jonas@kwiboo.se/
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v3: No change
+v2: New patch, split from original patch
+---
+ drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 17 +----------------
+ 1 file changed, 1 insertion(+), 16 deletions(-)
 
-This series is part of a larger multi series effort to:
-- phy: rockchip: inno-hdmi: Change TMDS rate handling to configure() ops [v3]
-- drm/rockchip: dw_hdmi: Misc cleanup and propagate bus format [v1]
-- drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup [v5]
-- drm/bridge: dw-hdmi: Improve input/output bus format handling
-- drm/bridge: dw-hdmi: Convert to a HDMI bridge and use of bridge connector
-- drm/bridge: dw-hdmi: Add and use tmds_char_rate_valid() plat data ops
-- drm/meson: hdmi: Misc cleanup and use CEC notifier helpers
-- drm/rockchip: dw_hdmi: Enable YCbCr and Deep Color modes
-Link to snapshot: https://github.com/Kwiboo/linux-rockchip/commits/next-20260508-rk-hdmi-v4/
-
-Changes in v3:
-- Change validate() ops to only validate tmdsclock
-- Add comments about expected consumer usage
-- Update commit message with a typical call chain
-Link to v2: https://lore.kernel.org/linux-phy/20260510095731.1222705-1-jonas@kwiboo.se/
-
-Changes in v2:
-- Split into two patches, one that adds new ops and a second that remove
-  the old and unused workaround
-- Add validate() ops to validate that the TMDS rate is supported
-Link to v1: https://lore.kernel.org/linux-phy/20260503172936.194003-1-jonas@kwiboo.se/
-
-Jonas Karlman (2):
-  phy: rockchip: inno-hdmi: Add configure() and validate() ops
-  phy: rockchip: inno-hdmi: Remove deprecated way to configure TMDS rate
-
- drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 71 +++++++++++++++----
- 1 file changed, 57 insertions(+), 14 deletions(-)
-
+diff --git a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+index efa95c22b3bb..3bc73f0cff70 100644
+--- a/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
++++ b/drivers/phy/rockchip/phy-rockchip-inno-hdmi.c
+@@ -555,24 +555,10 @@ static inline void inno_update_bits(struct inno_hdmi_phy *inno, u8 reg,
+ static unsigned long inno_hdmi_phy_get_tmdsclk(struct inno_hdmi_phy *inno,
+ 					       unsigned long rate)
+ {
+-	int bus_width;
+-
+ 	if (inno->hdmi_cfg.tmds_char_rate)
+ 		return inno->hdmi_cfg.tmds_char_rate;
+ 
+-	bus_width = phy_get_bus_width(inno->phy);
+-
+-	switch (bus_width) {
+-	case 4:
+-	case 5:
+-	case 6:
+-	case 10:
+-	case 12:
+-	case 16:
+-		return (u64)rate * bus_width / 8;
+-	default:
+-		return rate;
+-	}
++	return rate;
+ }
+ 
+ static irqreturn_t inno_hdmi_phy_rk3328_hardirq(int irq, void *dev_id)
+@@ -1450,7 +1436,6 @@ static int inno_hdmi_phy_probe(struct platform_device *pdev)
+ 
+ 	phy_set_drvdata(inno->phy, inno);
+ 	phy_set_mode_ext(inno->phy, PHY_MODE_HDMI, PHY_HDMI_MODE_TMDS);
+-	phy_set_bus_width(inno->phy, 8);
+ 
+ 	if (inno->plat_data->ops->init) {
+ 		ret = inno->plat_data->ops->init(inno);
 -- 
 2.54.0
 
