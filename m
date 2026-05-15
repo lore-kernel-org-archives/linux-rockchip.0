@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10270CD343F
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4BB14CD4851
 	for <linux-rockchip@archiver.kernel.org>; Fri, 15 May 2026 13:02:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,63 +12,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=j0kyv0hhg2rykQj7DTlFgcOuS/FIzeh7rYOI3jn5/fk=; b=3LuITAmcNU3PQ+
-	XbDllrvXfapviDh3hcB8MODRtv+tV/qMLapicP4qzuzumpKtL1IkzMFOCsSFs34jx/PigSZKEz6jL
-	ZxyykoqHrmgUa6y2ZuJ7ZAKJYs0SDLchz5WiTaGarmxrwW9aJzFGjlp9ML85YeBon6ID/9dzmz7hJ
-	5+JZ+GTUntZ4E6b3hndA4I8dD9AP9OoT0XLb9247oLQMwF0+1CoY+72NE2mceKFpu/GHoIkasX1N/
-	eZ0u23t19S4Mv1eCvH31i73FMJ3PPRO1MWMaQnDofisTW/prfqSnxZnLOUF90dkV0aUsvROFJpGTk
-	dAplmet7BtnVE4K+52yw==;
+	List-Owner; bh=aIJfPE6S/1xKQ/OwZ6XVB6flUNHgMOhFg2MjJCrIpww=; b=Q3iFhM24G2K4L/
+	kWCn0Q6KwbQwoThAdCCtAEYvbXh+xe3f3nEfyMPE5Eou5XvrI95MXgzNEcFMPs3YOnAbiuNVndSTH
+	mPkMJ3cEvUz49agzyES/mnNwWc7kk1bbbQ3MSmLweDKF1bCan0UUh26rEwZmAYW9RlHkTFE1n6ZTu
+	qtTP1V0cPMezBNensCUGxtFeYMNiFTJBLCaarm9bvJMLjvEXx+0NpFe8qnxkESsIcry0CPRN9olwU
+	qD60bHR+RF9hXw/2/4hkTnTEUvdq/8Zqr6AYAq/LDmygo6jhF7x/nIUvr6y0huTSlLBAe1SF26YTV
+	HGvk9vk3l9oIC+Eng8Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNsBo-00000008OMX-3UK1;
+	id 1wNsBp-00000008ON3-0qoY;
 	Fri, 15 May 2026 13:02:53 +0000
-Received: from mail-ot1-x331.google.com ([2607:f8b0:4864:20::331])
+Received: from mail-oi1-x22c.google.com ([2607:f8b0:4864:20::22c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wNsBk-00000008OHC-3dDE
+	id 1wNsBl-00000008OHR-0VCs
 	for linux-rockchip@lists.infradead.org;
-	Fri, 15 May 2026 13:02:49 +0000
-Received: by mail-ot1-x331.google.com with SMTP id 46e09a7af769-7e568ab0bc5so28804a34.0
+	Fri, 15 May 2026 13:02:50 +0000
+Received: by mail-oi1-x22c.google.com with SMTP id 5614622812f47-4670464029eso5479864b6e.2
         for <linux-rockchip@lists.infradead.org>; Fri, 15 May 2026 06:02:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20251104; t=1778850168; x=1779454968; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=2Y2OV2cc3iX7IKI47a9x0/0LXCU3agE/55sUdLS/+ps=;
-        b=KzbpSq5ST8yIDkKaBU5Mqmby7AgUi4TMgZIZiPCweBFQWCCkUhrDg+VSVTRO1c+Ejz
-         KjnquFMy1Ao9owgHE8RdSXC8r5PJH3hUB0whNKpdwXYc1VQ/lOodQfl+B1r0upoCIK1Y
-         o7gGpZcuf87+VyQJKJI/RUSUs+2xh5hBfbnEHpHuRn6/UGCVdYfqtRS3mcE9uH2684ID
-         3cBo8nkXKVd9rJ8FNH3a/OhvHS6Glw4Ui+zElTBUQLH0lNrugaLnOO6Ry/+O9hVXtxYl
-         +PqzjvsMSpvmaKLAWTcHLLUEoW9FIQSZ2PgJxviJ53eYapMXsiX8AlUrsO8EDbwf6xME
-         GS7A==
+        bh=OB7Wwc9DD/0adCh8C56gZIHxIIFu4p3jr9IKZXtgLAo=;
+        b=gLd9lcoVz6OViclMFNKAiiSCGbFJrqfhiN00SOjV1k1FB3FYacZ2aDDXsd6XxGpCHN
+         F4n3jNPFRE8qiTQQpGiWzIVdrMcna1O7zCrT2dtjPBe+ME9+xjTkqB/WXusIgpcCmoGJ
+         92AMeGbnuGj6hIOBgbveMf0e4v275TflZWmv3Z/HVSzM8pU3gMmjxkIyJHO7/kYqzigz
+         FJzvk57Y6n+dGLHx5rEGDmPY7f/HmIrYA3mWpqNWTy8t1OAeogJgQ0E76Icj6hmpeL+B
+         7eRi3xuL4fr+mZTF1YHoEC+hP5aq+gdIxexU2LMCeHAiHuTIH8fNo+XkkiKtbQy/BEFH
+         7Npg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20251104; t=1778850168; x=1779454968;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=2Y2OV2cc3iX7IKI47a9x0/0LXCU3agE/55sUdLS/+ps=;
-        b=eU/9ezHg5yfIe8+QgtVGtCBh29EKRa2WvbPITLG+otuFiDUlPouBobSoCFM1Yu81+P
-         7+4fEpffyewXlDZAHZdg+552Jt7BuPGJO97tAOPerB/O+UM1oBnLrPd93yXjCJ0OpnQX
-         hGiETfUBmAeMdZ3cIrNr0hLB/tzaN6eGqSB9BoRWr70QFFN0lFXJTjsxLKWpxE+5UMcV
-         1RvretLCyaDr+sw42MbPoju8VKHYZXTOvHtoTU1bu2Xalj2AoCdOMEKilrLdhAcb1bkF
-         1LZJpAxrCFZAQgZbVLpuC0qZhv5teGG2XYXmSuLLejriLgz7L95+XSv14TVAMLAJSVjm
-         0DQQ==
-X-Forwarded-Encrypted: i=1; AFNElJ/3+ctcaP7wA/TtLTuu7x7ZEah70DjhGA4EvkUw26/I7Eq1pXM9WRQvnyGp7OyLVKsfMZmRvVNnOFmQlqIrIQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyoEIikZObcAhqFlv+zb16y4rDqDbkvx9y2UDd8HO6SCVCvd8sB
-	eoNxxZewEAelm36gauw3O/boSpe+5HecM5bHUtSVU0heGs5Yu4M4LG/i
-X-Gm-Gg: Acq92OEO4X0F6il/IqBFcGoaNZEBDsa+IJ5D6Hi2WzXpNAHFZ6Ue2/LZCEMX3//QsCv
-	xRhiXNMPUx+0eb0uBQgfiQMRDIvqs071/YNY3+UVZFHnf3Ib0ZxL7YmcAAFKSlFIVmaNishhaJE
-	g9wY9Y+2eAP6ZCaM9lm9yraqNP4lRsOEf+gbTuTQKUsccj+e9uBg6XNmmvxQYAJW3KnWNK1vuGT
-	AWG2fqP4zR7nvJRiVScWEJZBFrVB+gY7kDguGhAruMAU2CyX2E3b09gavx94yGVGfHV3b7c8ZzC
-	43156pNzK8X03ahLEMS7Lzvp4xRB6T3/geBvEiZrMyUG14331KsdfOLRkLbkfDx4fDN2ixPbi9s
-	szYOBobZ9b+ZMSccAuFrklPtDOw4Fc5ZgzkhCBzL//dkcCHx8selMV2MfA6BJb+x4ZidGLULxbc
-	cfQneUdnHYBwp0uOoSdyzVpPaHlwO+Lq/K8UKmiNgLEA==
-X-Received: by 2002:a05:6830:658b:b0:7db:a297:9e62 with SMTP id 46e09a7af769-7e3f1030402mr4593862a34.8.1778850167599;
-        Fri, 15 May 2026 06:02:47 -0700 (PDT)
+        bh=OB7Wwc9DD/0adCh8C56gZIHxIIFu4p3jr9IKZXtgLAo=;
+        b=NFhmjLIVDstbv2PrrmyDxlnLiAHrQcOn/F04s8luwNjckUNOIBQQcaoC1rhrebKRtU
+         ++XGVG/7cL5PxMiUuvkqcureN5eRTf0ZHQQyJXdXefWsbef7dwDlxqVlxoRxNYHQrBDl
+         t5aOCacV3W34tluF4yNeTtARPsdCaGr7w00RsrmVl0+epFb0kGvVmIJ/sL/mOlOaF1Eu
+         AE1QYE4mENQOwDhyWcjDhi8Wc8EXL50ywo8SH5nkKI+sm7JdUTeC1Tj6se1VdUQMbo7+
+         qJNKzZ01RCM4eWe770f/VRROGK48aI+UKWxcyNQq/zxPun5dvzCzXPlAmNu7a7tzjwUh
+         PRAg==
+X-Forwarded-Encrypted: i=1; AFNElJ918iV6UwSlm2u9ByD/q4bxzQK1qVXBqIFvAsgWJiUgMIhKQSFkCLRVSne4DhfH8yJR6Tdsf3ZEfURWWxbKTg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YzC+1DRiB9lUiv45NElQL7tflSUbisWklJTaJpG5kbGtWR9onej
+	y9nieoPewGfcw74akBGHQh3NNhRcL816JFmXWzjq8Ov3YJ5TGIh5dr1h
+X-Gm-Gg: Acq92OEnYJIdL3Q0kvZ9m+NoonoNLnOrvbg5TGkb48mYV7UzjaTPlGah/nAnTq5jkpD
+	rlzbrGMRURuyUG6bBE7fkIRHIRObpzVfykEtSrGA6T+XbXHxoZ6uuW1EPoTqA2aynIhUxgcIvII
+	ZWGZJQDUvqr4gPMDrv8htTgm+vGb5pGCPOLUh3VaimqiFGllw3/z1+As3iaPnzEHWOwmPnbWctC
+	GuWkWCzMju7UUXG0F4Csi7z1GCzXqOoS+cu0d0EFFIA4SCBLQv9wKxAevOxz5yYV4+ENN8bDWKL
+	bh6GMc2bqnIcZSHDMrvmfEVGEVL54kYCUOF3mAoubAWeGBoKaEopyrGtfnJ/58kaGQDHa18X/6+
+	ClT/1RAZjqLfpsWaEqYKSvhPaUmO2/CT2wFPiYnis60Bfwx1kW9AwqUYLYjXdXyKJYCjlSna740
+	ERiXusO+sS90Hs/qsfAMeHdc9PyAezxR3zoMdyYF8QNLu4i3AOFyGZ
+X-Received: by 2002:a05:6870:c270:b0:435:9a81:f35f with SMTP id 586e51a60fabf-43a2dcc6faemr2638055fac.21.1778850165718;
+        Fri, 15 May 2026 06:02:45 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0:8c2e:6a8e:445a:9169])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-439fc53f2acsm4155822fac.14.2026.05.15.06.02.46
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-439fc53f2acsm4155822fac.14.2026.05.15.06.02.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 15 May 2026 06:02:47 -0700 (PDT)
+        Fri, 15 May 2026 06:02:45 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -84,16 +84,16 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V7 07/11] iio: imu: inv_icm42607: Add Temp Support in icm42607
-Date: Fri, 15 May 2026 08:00:12 -0500
-Message-ID: <20260515130018.237378-8-macroalpha82@gmail.com>
+Subject: [PATCH V7 05/11] iio: imu: inv_icm42607: Add PM support for icm42607
+Date: Fri, 15 May 2026 08:00:10 -0500
+Message-ID: <20260515130018.237378-6-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260515130018.237378-1-macroalpha82@gmail.com>
 References: <20260515130018.237378-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260515_060248_928283_72694481 
-X-CRM114-Status: GOOD (  18.07  )
+X-CRM114-CacheID: sfid-20260515_060249_184115_A4ED8ACD 
+X-CRM114-Status: GOOD (  21.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,113 +105,299 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KCkFkZCBmdW5jdGlv
-bnMgZm9yIHJlYWRpbmcgdGVtcGVyYXR1cmUgc2Vuc29yIGRhdGEuCgpTaWduZWQtb2ZmLWJ5OiBD
-aHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgotLS0KIGRyaXZlcnMvaWlvL2lt
-dS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgICAgICAgICB8ICAxICsKIGRyaXZlcnMvaWlvL2ltdS9p
-bnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3LmggICB8ICAzICsKIC4uLi9paW8vaW11L2ludl9pY200
-MjYwNy9pbnZfaWNtNDI2MDdfY29yZS5jICB8IDE4ICsrKysrCiAuLi4vaWlvL2ltdS9pbnZfaWNt
-NDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYyAgfCA4MCArKysrKysrKysrKysrKysrKysrCiAuLi4v
-aWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaCAgfCAzMyArKysrKysrKwog
-NSBmaWxlcyBjaGFuZ2VkLCAxMzUgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYwogY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAu
-aAoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgYi9k
-cml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2VmaWxlCmluZGV4IDNjOWQwODUwOTc5My4u
-Y2NiOGUwMDdjZGViIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01h
-a2VmaWxlCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUKQEAgLTMs
-NiArMyw3IEBACiBvYmotJChDT05GSUdfSU5WX0lDTTQyNjA3KSArPSBpbnYtaWNtNDI2MDcubwog
-aW52LWljbTQyNjA3LXkgKz0gaW52X2ljbTQyNjA3X2NvcmUubwogaW52LWljbTQyNjA3LXkgKz0g
-aW52X2ljbTQyNjA3X2J1ZmZlci5vCitpbnYtaWNtNDI2MDcteSArPSBpbnZfaWNtNDI2MDdfdGVt
-cC5vCiAKIG9iai0kKENPTkZJR19JTlZfSUNNNDI2MDdfSTJDKSArPSBpbnYtaWNtNDI2MDctaTJj
-Lm8KIGludi1pY200MjYwNy1pMmMteSArPSBpbnZfaWNtNDI2MDdfaTJjLm8KZGlmZiAtLWdpdCBh
-L2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3LmggYi9kcml2ZXJzL2lp
-by9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwNy5oCmluZGV4IGIwMGVlNmE0ZDQ1MS4uNGUw
-NTMyODFkYzU1IDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9p
-Y200MjYwNy5oCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3
-LmgKQEAgLTM3OSw2ICszNzksOSBAQCBleHRlcm4gY29uc3Qgc3RydWN0IGRldl9wbV9vcHMgaW52
-X2ljbTQyNjA3X3BtX29wczsKIAogdTMyIGludl9pY200MjYwN19vZHJfdG9fcGVyaW9kKGVudW0g
-aW52X2ljbTQyNjA3X29kciBvZHIpOwogCitpbnQgaW52X2ljbTQyNjA3X3NldF90ZW1wX2NvbmYo
-c3RydWN0IGludl9pY200MjYwN19zdGF0ZSAqc3QsIGJvb2wgZW5hYmxlLAorCQkJICAgICAgIHVu
-c2lnbmVkIGludCAqc2xlZXBfbXMpOworCiBpbnQgaW52X2ljbTQyNjA3X2NvcmVfcHJvYmUoc3Ry
-dWN0IHJlZ21hcCAqcmVnbWFwLCBjb25zdCBzdHJ1Y3QgaW52X2ljbTQyNjA3X2h3ICpodywKIAkJ
-CSAgICBpbnZfaWNtNDI2MDdfYnVzX3NldHVwIGJ1c19zZXR1cCk7CiAKZGlmZiAtLWdpdCBhL2Ry
-aXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X2NvcmUuYyBiL2RyaXZlcnMv
-aWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X2NvcmUuYwppbmRleCBkNTg4NWZjM2Y3
-ZGEuLjlkNmQ3ZDEzYzliOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYw
-Ny9pbnZfaWNtNDI2MDdfY29yZS5jCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcv
-aW52X2ljbTQyNjA3X2NvcmUuYwpAQCAtMTY0LDYgKzE2NCwyNCBAQCBzdGF0aWMgaW50IGludl9p
-Y200MjYwN19zZXRfcHdyX21nbXQwKHN0cnVjdCBpbnZfaWNtNDI2MDdfc3RhdGUgKnN0LAogCXJl
-dHVybiAwOwogfQogCitpbnQgaW52X2ljbTQyNjA3X3NldF90ZW1wX2NvbmYoc3RydWN0IGludl9p
-Y200MjYwN19zdGF0ZSAqc3QsIGJvb2wgZW5hYmxlLAorCQkJICAgICAgIHVuc2lnbmVkIGludCAq
-c2xlZXBfbXMpCit7CisJdW5zaWduZWQgaW50IHZhbDsKKwlpbnQgcmV0OworCisJdmFsID0gRklF
-TERfUFJFUChJTlZfSUNNNDI2MDdfVEVNUF9DT05GSUcwX0ZJTFRFUl9NQVNLLAorCQkJIElOVl9J
-Q000MjYwN19GSUxURVJfQldfMzRIWik7CisJcmV0ID0gcmVnbWFwX3VwZGF0ZV9iaXRzKHN0LT5t
-YXAsIElOVl9JQ000MjYwN19SRUdfVEVNUF9DT05GSUcwLAorCQkJCSBJTlZfSUNNNDI2MDdfVEVN
-UF9DT05GSUcwX0ZJTFRFUl9NQVNLLCB2YWwpOworCWlmIChyZXQpCisJCXJldHVybiByZXQ7CisK
-KwlyZXR1cm4gaW52X2ljbTQyNjA3X3NldF9wd3JfbWdtdDAoc3QsIHN0LT5jb25mLmd5cm8ubW9k
-ZSwKKwkJCQkJICBzdC0+Y29uZi5hY2NlbC5tb2RlLCBlbmFibGUsCisJCQkJCSAgc2xlZXBfbXMp
-OworfQorCiBzdGF0aWMgaW50IGludl9pY200MjYwN19zZXRfY29uZihzdHJ1Y3QgaW52X2ljbTQy
-NjA3X3N0YXRlICpzdCwKIAkJCQkgY29uc3Qgc3RydWN0IGludl9pY200MjYwN19jb25mICpjb25m
-KQogewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2
-MDdfdGVtcC5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVt
-cC5jCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uN2U5Y2IwNzJhMDEx
-Ci0tLSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNt
-NDI2MDdfdGVtcC5jCkBAIC0wLDAgKzEsODAgQEAKKy8vIFNQRFgtTGljZW5zZS1JZGVudGlmaWVy
-OiBHUEwtMi4wLW9yLWxhdGVyCisvKgorICogQ29weXJpZ2h0IChDKSAyMDI2IEludmVuU2Vuc2Us
-IEluYy4KKyAqLworCisjaW5jbHVkZSA8bGludXgvZGV2aWNlLmg+CisjaW5jbHVkZSA8bGludXgv
-aWlvL2lpby5oPgorI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+CisjaW5jbHVkZSA8bGludXgvcG1f
-cnVudGltZS5oPgorI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgorCisjaW5jbHVkZSAiaW52X2lj
-bTQyNjA3LmgiCisjaW5jbHVkZSAiaW52X2ljbTQyNjA3X3RlbXAuaCIKKworc3RhdGljIGludCBp
-bnZfaWNtNDI2MDdfdGVtcF9yZWFkKHN0cnVjdCBpbnZfaWNtNDI2MDdfc3RhdGUgKnN0LCBzMTYg
-KnRlbXApCit7CisJc3RydWN0IGRldmljZSAqZGV2ID0gcmVnbWFwX2dldF9kZXZpY2Uoc3QtPm1h
-cCk7CisJX19iZTE2ICpyYXc7CisJaW50IHJldDsKKworCVBNX1JVTlRJTUVfQUNRVUlSRV9BVVRP
-U1VTUEVORChkZXYsIHBtKTsKKwlpZiAoUE1fUlVOVElNRV9BQ1FVSVJFX0VSUigmcG0pKQorCQly
-ZXR1cm4gLUVOWElPOworCisJZ3VhcmQobXV0ZXgpKCZzdC0+bG9jayk7CisKKwlyZXQgPSBpbnZf
-aWNtNDI2MDdfc2V0X3RlbXBfY29uZihzdCwgdHJ1ZSwgTlVMTCk7CisJaWYgKHJldCkKKwkJcmV0
-dXJuIHJldDsKKworCXJhdyA9ICZzdC0+YnVmZmVyWzBdOworCXJldCA9IHJlZ21hcF9idWxrX3Jl
-YWQoc3QtPm1hcCwgSU5WX0lDTTQyNjA3X1JFR19URU1QX0RBVEExLCByYXcsIHNpemVvZigqcmF3
-KSk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKKworCSp0ZW1wID0gYmUxNl90b19jcHVwKHJh
-dyk7CisJaWYgKCp0ZW1wID09IElOVl9JQ000MjYwN19EQVRBX0lOVkFMSUQpCisJCXJldHVybiAt
-RUlOVkFMOworCisJcmV0dXJuIDA7Cit9CisKK2ludCBpbnZfaWNtNDI2MDdfdGVtcF9yZWFkX3Jh
-dyhzdHJ1Y3QgaWlvX2RldiAqaW5kaW9fZGV2LAorCQkJCXN0cnVjdCBpaW9fY2hhbl9zcGVjIGNv
-bnN0ICpjaGFuLAorCQkJCWludCAqdmFsLCBpbnQgKnZhbDIsIGxvbmcgbWFzaykKK3sKKwlzdHJ1
-Y3QgaW52X2ljbTQyNjA3X3N0YXRlICpzdCA9IGlpb19kZXZpY2VfZ2V0X2RydmRhdGEoaW5kaW9f
-ZGV2KTsKKwlzMTYgdGVtcDsKKwlpbnQgcmV0OworCisJaWYgKGNoYW4tPnR5cGUgIT0gSUlPX1RF
-TVApCisJCXJldHVybiAtRUlOVkFMOworCisJc3dpdGNoIChtYXNrKSB7CisJY2FzZSBJSU9fQ0hB
-Tl9JTkZPX1JBVzoKKwkJaWYgKCFpaW9fZGV2aWNlX2NsYWltX2RpcmVjdChpbmRpb19kZXYpKQor
-CQkJcmV0dXJuIC1FQlVTWTsKKwkJcmV0ID0gaW52X2ljbTQyNjA3X3RlbXBfcmVhZChzdCwgJnRl
-bXApOworCQlpaW9fZGV2aWNlX3JlbGVhc2VfZGlyZWN0KGluZGlvX2Rldik7CisJCWlmIChyZXQp
-CisJCQlyZXR1cm4gcmV0OworCQkqdmFsID0gdGVtcDsKKwkJcmV0dXJuIElJT19WQUxfSU5UOwor
-CS8qCisJICogVMKwQyA9ICh0ZW1wIC8gMTI4KSArIDI1CisJICogVG3CsEMgPSAxMDAwICogKCh0
-ZW1wICogMTAwIC8gMTI4MDApICsgMjUpCisJICogc2NhbGU6IDEwMDAwMCAvIDEyODAwIH49IDcu
-ODEyNQorCSAqIG9mZnNldDogMzIwMAorCSAqLworCWNhc2UgSUlPX0NIQU5fSU5GT19TQ0FMRToK
-KwkJKnZhbCA9IDc7CisJCSp2YWwyID0gODEyNTAwMDAwOworCQlyZXR1cm4gSUlPX1ZBTF9JTlRf
-UExVU19OQU5POworCWNhc2UgSUlPX0NIQU5fSU5GT19PRkZTRVQ6CisJCSp2YWwgPSAzMjAwOwor
-CQlyZXR1cm4gSUlPX1ZBTF9JTlQ7CisJZGVmYXVsdDoKKwkJcmV0dXJuIC1FSU5WQUw7CisJfQor
-fQpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdf
-dGVtcC5oIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5o
-Cm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uZTAzOTI0ZTMwODY2Ci0t
-LSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2
-MDdfdGVtcC5oCkBAIC0wLDAgKzEsMzMgQEAKKy8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBH
-UEwtMi4wLW9yLWxhdGVyICovCisvKgorICogQ29weXJpZ2h0IChDKSAyMDI2IEludmVuU2Vuc2Us
-IEluYy4KKyAqLworCisjaWZuZGVmIElOVl9JQ000MjYwN19URU1QX0hfCisjZGVmaW5lIElOVl9J
-Q000MjYwN19URU1QX0hfCisKKyNpbmNsdWRlIDxsaW51eC9iaXRvcHMuaD4KKworc3RydWN0IGlp
-b19kZXY7CitzdHJ1Y3QgaWlvX2NoYW5fc3BlYzsKKworI2RlZmluZSBJTlZfSUNNNDI2MDdfVEVN
-UF9DSEFOKF9pbmRleCkJCQkJXAorewkJCQkJCQkJXAorCS50eXBlID0gSUlPX1RFTVAsCQkJCQlc
-CisJLmluZm9fbWFza19zZXBhcmF0ZSA9CQkJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX1JBVykg
-fAkJCVwKKwkJQklUKElJT19DSEFOX0lORk9fT0ZGU0VUKSB8CQkJXAorCQlCSVQoSUlPX0NIQU5f
-SU5GT19TQ0FMRSksCQkJXAorCS5zY2FuX2luZGV4ID0gX2luZGV4LAkJCQkJXAorCS5zY2FuX3R5
-cGUgPSB7CQkJCQkJXAorCQkuc2lnbiA9ICdzJywJCQkJCVwKKwkJLnJlYWxiaXRzID0gMTYsCQkJ
-CQlcCisJCS5zdG9yYWdlYml0cyA9IDE2LAkJCQlcCisJfSwJCQkJCQkJXAorfQorCitpbnQgaW52
-X2ljbTQyNjA3X3RlbXBfcmVhZF9yYXcoc3RydWN0IGlpb19kZXYgKmluZGlvX2RldiwKKwkJCSAg
-ICAgICBzdHJ1Y3QgaWlvX2NoYW5fc3BlYyBjb25zdCAqY2hhbiwKKwkJCSAgICAgICBpbnQgKnZh
-bCwgaW50ICp2YWwyLCBsb25nIG1hc2spOworCisjZW5kaWYKLS0gCjIuNDMuMAoKCl9fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
-aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
-cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Chris Morgan <macromorgan@hotmail.com>
+
+Add power management support for the ICM42607 device driver.
+
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  12 ++
+ .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 143 ++++++++++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   1 +
+ .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |   1 +
+ 4 files changed, 157 insertions(+)
+
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+index 2c20e95b237a..5f37999e39a5 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+@@ -10,6 +10,7 @@
+ #include <linux/bitops.h>
+ #include <linux/iio/iio.h>
+ #include <linux/mutex.h>
++#include <linux/pm.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+ 
+@@ -96,24 +97,34 @@ struct inv_icm42607_hw {
+ 	const struct inv_icm42607_conf *conf;
+ };
+ 
++struct inv_icm42607_suspended {
++	enum inv_icm42607_sensor_mode gyro;
++	enum inv_icm42607_sensor_mode accel;
++	bool temp;
++};
++
+ /**
+  *  struct inv_icm42607_state - driver state variables
+  *  @lock:		lock for serializing multiple registers access.
+  *  @hw:		Hardware specific data.
+  *  @map:		regmap pointer.
+  *  @vddio_supply:	I/O voltage regulator for the chip.
++ *  @vddio_en:		I/O voltage status for runtime PM.
+  *  @irq:		chip irq, required to enable/disable and set wakeup
+  *  @orientation:	sensor chip orientation relative to main hardware.
+  *  @conf:		chip sensors configurations.
++ *  @suspended:		suspended sensors configuration.
+  */
+ struct inv_icm42607_state {
+ 	struct mutex lock;
+ 	const struct inv_icm42607_hw *hw;
+ 	struct regmap *map;
+ 	struct regulator *vddio_supply;
++	bool vddio_en;
+ 	int irq;
+ 	struct iio_mount_matrix orientation;
+ 	struct inv_icm42607_conf conf;
++	struct inv_icm42607_suspended suspended;
+ };
+ 
+ /* Virtual register addresses: @bank on MSB (4 upper bits), @address on LSB */
+@@ -339,6 +350,7 @@ typedef int (*inv_icm42607_bus_setup)(struct inv_icm42607_state *);
+ extern const struct regmap_config inv_icm42607_regmap_config;
+ extern const struct inv_icm42607_hw inv_icm42607_hw_data;
+ extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
++extern const struct dev_pm_ops inv_icm42607_pm_ops;
+ 
+ int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
+ 			    inv_icm42607_bus_setup bus_setup);
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+index 1088c5c7076f..e27ad0319a12 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+@@ -9,6 +9,7 @@
+ #include <linux/irq.h>
+ #include <linux/module.h>
+ #include <linux/mutex.h>
++#include <linux/pm_runtime.h>
+ #include <linux/property.h>
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+@@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+ };
+ EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+ 
++static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
++				      enum inv_icm42607_sensor_mode gyro,
++				      enum inv_icm42607_sensor_mode accel,
++				      bool temp, unsigned int *sleep_ms)
++{
++	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
++	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
++	bool oldtemp = st->conf.temp_en;
++	unsigned int sleepval;
++	unsigned int val;
++	int ret;
++
++	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
++		return 0;
++
++	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
++	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
++	if (!temp)
++		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
++	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
++	if (ret)
++		return ret;
++
++	st->conf.gyro.mode = gyro;
++	st->conf.accel.mode = accel;
++	st->conf.temp_en = temp;
++
++	sleepval = 0;
++	if (temp && !oldtemp) {
++		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
++			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
++	}
++	if (accel != oldaccel && oldaccel == INV_ICM42607_SENSOR_MODE_OFF) {
++		usleep_range(200, 300);
++		if (sleepval < INV_ICM42607_ACCEL_STARTUP_TIME_MS)
++			sleepval = INV_ICM42607_ACCEL_STARTUP_TIME_MS;
++	}
++	if (gyro != oldgyro) {
++		if (oldgyro == INV_ICM42607_SENSOR_MODE_OFF) {
++			usleep_range(200, 300);
++			if (sleepval < INV_ICM42607_GYRO_STARTUP_TIME_MS)
++				sleepval = INV_ICM42607_GYRO_STARTUP_TIME_MS;
++		} else if (gyro == INV_ICM42607_SENSOR_MODE_OFF) {
++			if (sleepval < INV_ICM42607_GYRO_STOP_TIME_MS)
++				sleepval = INV_ICM42607_GYRO_STOP_TIME_MS;
++		}
++	}
++
++	if (sleep_ms)
++		*sleep_ms = sleepval;
++	else if (sleepval)
++		msleep(sleepval);
++
++	return 0;
++}
++
+ static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
+ 				 const struct inv_icm42607_conf *conf)
+ {
+@@ -198,11 +255,15 @@ static int inv_icm42607_enable_vddio_reg(struct inv_icm42607_state *st)
+ {
+ 	int ret;
+ 
++	if (st->vddio_en)
++		return 0;
++
+ 	ret = regulator_enable(st->vddio_supply);
+ 	if (ret)
+ 		return ret;
+ 
+ 	fsleep(INV_ICM42607_POWER_UP_TIME_US);
++	st->vddio_en = 1;
+ 
+ 	return 0;
+ }
+@@ -211,7 +272,10 @@ static void inv_icm42607_disable_vddio_reg(void *_data)
+ {
+ 	struct inv_icm42607_state *st = _data;
+ 
++	if (!st->vddio_en)
++		return;
+ 	regulator_disable(st->vddio_supply);
++	st->vddio_en = 0;
+ }
+ 
+ int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
+@@ -269,10 +333,89 @@ int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw
+ 	if (ret)
+ 		return ret;
+ 
++	ret = devm_pm_runtime_set_active_enabled(dev);
++	if (ret)
++		return ret;
++
++	pm_runtime_set_autosuspend_delay(dev, INV_ICM42607_SUSPEND_DELAY_MS);
++	pm_runtime_use_autosuspend(dev);
++
+ 	return 0;
+ }
+ EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
+ 
++static int inv_icm42607_suspend(struct device *dev)
++{
++	struct inv_icm42607_state *st = dev_get_drvdata(dev);
++	int ret;
++
++	guard(mutex)(&st->lock);
++
++	if (pm_runtime_suspended(dev))
++		return 0;
++
++	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
++					 INV_ICM42607_SENSOR_MODE_OFF,
++					 false, NULL);
++	if (ret)
++		return ret;
++	inv_icm42607_disable_vddio_reg(st);
++
++	return 0;
++}
++
++static int inv_icm42607_resume(struct device *dev)
++{
++	struct inv_icm42607_state *st = dev_get_drvdata(dev);
++	int ret;
++
++	guard(mutex)(&st->lock);
++
++	if (pm_runtime_suspended(dev))
++		return 0;
++
++	ret = inv_icm42607_enable_vddio_reg(st);
++	if (ret)
++		return ret;
++
++	/* Nothing else to restore at this time. */
++
++	return 0;
++}
++
++static int inv_icm42607_runtime_suspend(struct device *dev)
++{
++	struct inv_icm42607_state *st = dev_get_drvdata(dev);
++	int ret = 0;
++
++	guard(mutex)(&st->lock);
++
++	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
++					 INV_ICM42607_SENSOR_MODE_OFF, false,
++					 NULL);
++	if (ret)
++		return ret;
++
++	inv_icm42607_disable_vddio_reg(st);
++
++	return 0;
++}
++
++static int inv_icm42607_runtime_resume(struct device *dev)
++{
++	struct inv_icm42607_state *st = dev_get_drvdata(dev);
++
++	guard(mutex)(&st->lock);
++
++	return inv_icm42607_enable_vddio_reg(st);
++}
++
++EXPORT_NS_GPL_DEV_PM_OPS(inv_icm42607_pm_ops, IIO_ICM42607) = {
++	SYSTEM_SLEEP_PM_OPS(inv_icm42607_suspend, inv_icm42607_resume)
++	RUNTIME_PM_OPS(inv_icm42607_runtime_suspend,
++		       inv_icm42607_runtime_resume, NULL)
++};
++
+ MODULE_AUTHOR("InvenSense, Inc.");
+ MODULE_DESCRIPTION("InvenSense ICM-42607x device driver");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+index 8631579a609a..a51c764bf1dc 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+@@ -77,6 +77,7 @@ static struct i2c_driver inv_icm42607_driver = {
+ 	.driver = {
+ 		.name = "inv-icm42607-i2c",
+ 		.of_match_table = inv_icm42607_of_matches,
++		.pm = pm_ptr(&inv_icm42607_pm_ops),
+ 	},
+ 	.id_table = inv_icm42607_id,
+ 	.probe = inv_icm42607_probe,
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+index 49438fa6f867..9ba3dd0c689a 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+@@ -90,6 +90,7 @@ static struct spi_driver inv_icm42607_driver = {
+ 	.driver = {
+ 		.name = "inv-icm42607-spi",
+ 		.of_match_table = inv_icm42607_of_matches,
++		.pm = pm_ptr(&inv_icm42607_pm_ops),
+ 	},
+ 	.id_table = inv_icm42607_spi_id_table,
+ 	.probe = inv_icm42607_probe,
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
