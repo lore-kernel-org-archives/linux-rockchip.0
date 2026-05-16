@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93670CD4F3C
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 May 2026 12:42:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 581BDCD4F21
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 May 2026 15:08:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=5lQoIgcOJzNtcTkPOFL1fo11dbBf/wHKnIrEMHag92o=; b=pYpCQb+aSi7iff4YfCEp+SIaen
-	e17bk+bZ8VP10QcdE87/5qbFMA+14Kpiaxv82fFEhVK3VXmc/M0U/uK/JZ8OPxJpE7wP52MZhS3e7
-	Ds51t6xL2PtOgHhKQg/nPVtvgd8vrTgBApT9wTGd1MvgvNwvGTBRgxxonPukq/vEz4UR5k0gp7j1K
-	ccCvu+akSL3WsvcjO/U4A/SO6zPuoViaBeNEXd3HXDM73nQiNqi4ch+nvagyAo6E0HEj1ohVtg3WE
-	rxzAA48Q5quUbeECDiwBndUegxBCtOIHuuHhxbyrA1zqrOR0hvK/EQbCNtgkEkvyd27CCcOimsNOQ
-	bHEZy+gA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=ZKpiLUii0BP3woPjHLM1Wx2f2CHVLNoGBMDdLC2r3+A=; b=qIs0u0f3ncKUHs
+	p6u/IjgGcFWXXamsMVdP1J/DzNhc4hK6yoDAEoz/ZqHaM90V6yblgBNNQQ1URFbFH4vDOEkZ/CNp7
+	7zv5X+cE80+7MjMPHUdqIgT1V1cBYaHCpVr2EN6biZlv1wisBtp3wGWgLM/D00uv0WzMc5oicHFhO
+	XfIv1CF/76P/lAXsC+ZIEC2BmJk2hQslXIHhjdsUV7gb2KkkdrnkHpKGbqEHg9Fw8baFzQgHKqe+x
+	3gZjg05H3glwIjnmAPcGDNH1zWvidy15MUFN4dK+pvx8j7SIBH+nVLRQv/qfFzAZEnIWSeIRZ692k
+	tRSTPBrf7pBSxGJzTg4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOEL7-0000000AjW6-3S41;
-	Sat, 16 May 2026 12:41:57 +0000
+	id 1wOGca-0000000AukO-3BCI;
+	Sat, 16 May 2026 15:08:08 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOEL5-0000000AjVR-3EPf
+	id 1wOGcY-0000000Aujz-1K7F
 	for linux-rockchip@lists.infradead.org;
-	Sat, 16 May 2026 12:41:57 +0000
+	Sat, 16 May 2026 15:08:07 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 180CE4050C;
-	Sat, 16 May 2026 12:41:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CD969C19425;
-	Sat, 16 May 2026 12:41:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 99D1B439DE;
+	Sat, 16 May 2026 15:08:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 505AEC19425;
+	Sat, 16 May 2026 15:07:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778935314;
-	bh=uYafgBDc4WEjuXohm6hvbshSIPL2XPQptSXqJkiZvW4=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject:From;
-	b=bBr43OrKVxmHLhzjL8BPK46Q9NRIOnq4JbrF9ODqS1yZZs5bg/xePiRcXC5oZmlTb
-	 0Agw0sy/cYmzOARqeAYVv+8V6Qg6ltR44889O3d83yh6yLTA63ZoSWDEsJ6/hvDQh7
-	 24ZQZPP1cKGnIsReS3vaGVCvAyw36LeDauE1bkkjNr6KEc/QtDd/tjK9qFEEYXbpyF
-	 1yvDAsFNTT9aZm7ztrxO5a7ylHRkf/EZVtHmf1CSPjQm+Yi16luHxJM3DwHyWP3SaW
-	 qetMchGxn1aXyH2lov07umZI+kAL8sUUCvBfqavzDmQw05p0ZRFXL0RQJA7MWF9cg3
-	 fpeeOGrUzZGyg==
-Date: Sat, 16 May 2026 07:41:51 -0500
+	s=k20201202; t=1778944085;
+	bh=jho9MdaE5yAkm0BJknveYPFKVoDYTuZ4VchAhGg/BK4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
+	b=n0LfOzImIclfoGNYZLw0Gsjg8a8TTDP/OnSDzlX9OwzLL+qHTlOF7LZGcMStxaVKc
+	 k5pv/PQ0Iiwsa39jk8JStUBycGHary6q0rlul+LooZe5TsoC2BbcJg09HoJQUwIAjR
+	 MXy2Y6ZTWGndxP6JUIczhTyx6Ul/oMXsth4II/hgXDyY80kcVkVwsPqjaGHCgtYaen
+	 soyuWtA+E1oEPqW92MfQA8WSwPZNS/vTdOUvCT5lua+ncepOkWRZkjwdLU9X73sWVi
+	 ou/4T/WGXrmNxPACe+fZY/P8Em4TRg4fz20Vw8P1+LbfcihRoI/Ez6uRi2s57z+xZI
+	 tkgwnBuFvSo8w==
+Date: Sat, 16 May 2026 16:07:54 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+ jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V7 03/11] iio: imu: inv_icm42607: Add inv_icm42607 Core
+ Driver
+Message-ID: <20260516160754.08e8e2e4@jic23-huawei>
+In-Reply-To: <DS4PR19MB997335152F245D758A97162671A5052@DS4PR19MB997335.namprd19.prod.outlook.com>
+References: <20260515130018.237378-1-macroalpha82@gmail.com>
+	<20260515130018.237378-4-macroalpha82@gmail.com>
+	<20260515193102.123b664a@jic23-huawei>
+	<DS4PR19MB997335152F245D758A97162671A5052@DS4PR19MB997335.namprd19.prod.outlook.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-rockchip@lists.infradead.org, simona@ffwll.ch, 
- neil.armstrong@linaro.org, devicetree@vger.kernel.org, tzimmermann@suse.de, 
- mripard@kernel.org, conor+dt@kernel.org, 
- Chris Morgan <macromorgan@hotmail.com>, sre@kernel.org, xsf@rock-chips.com, 
- krzk+dt@kernel.org, jesszhan0024@gmail.com, heiko@sntech.de, 
- maarten.lankhorst@linux.intel.com, airlied@gmail.com
-To: Chris Morgan <macroalpha82@gmail.com>
-In-Reply-To: <20260515221947.299229-2-macroalpha82@gmail.com>
-References: <20260515221947.299229-1-macroalpha82@gmail.com>
- <20260515221947.299229-2-macroalpha82@gmail.com>
-Message-Id: <177893531159.3189712.12987656927149699382.robh@kernel.org>
-Subject: Re: [PATCH V2 1/6] dt-bindings: power: supply: sgm41542: document
- sgm41542
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260516_054155_830666_1595A9B5 
-X-CRM114-Status: UNSURE (   9.66  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260516_080806_405325_998B3AB9 
+X-CRM114-Status: GOOD (  61.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,47 +79,182 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+On Fri, 15 May 2026 20:51:01 -0500
+Chris Morgan <macromorgan@hotmail.com> wrote:
 
-On Fri, 15 May 2026 17:19:42 -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+> On Fri, May 15, 2026 at 07:31:02PM +0100, Jonathan Cameron wrote:
+> > On Fri, 15 May 2026 08:00:08 -0500
+> > Chris Morgan <macroalpha82@gmail.com> wrote:
+> >   
+> > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > 
+> > > Add the core component of a new inv_icm42607 driver. This includes
+> > > a few setup functions and the full register definition in the
+> > > header file.
+> > > 
+> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>  
+> > 
+> > Sashiko led you into the weeks with irq request return values.
+> > It was less broken in v6 :(
+> > 
+> > As to it's other comments on checking for line high/low values (0x00 / 0xFF)
+> > for whoami is something we don't normally bother with but you could if you like.
+> > I'm fairly sure we've had both those values turn up as valid in some devices
+> > in the past.
+> > 
+> > Otherwise just trivial stuff I noticed whilst having a fresh read through.
+> > All stuff I might have tweaked whilst applying or just let through but
+> > seeing as you are going to be doing a v8, please take a look.
+> > 
+> > Jonathan  
 > 
-> Document the SG Micro sgm41542 battery charger/boost converter.
-> The parameters of input-current-limit-microamp and
-> input-voltage-limit-microvolt are defined as such since they are in
-> common use among multiple bindings currently.
+> I think I'll ignore that comment about the high-low values, but it does make
+> valid points about using the wrong call to invalidate the regmap cache and
+> also the wrong call to set the SPI_MODE_3 stuff.
 > 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../power/supply/sgmicro,sgm41542.yaml        | 99 +++++++++++++++++++
->  1 file changed, 99 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
+> All in all I'll try to post another version in another day or two with the
+> recommended fixes (as best I can) and see if it still complains. I'm expecting
+> a few complaints like the 0x00/0xFF or some stuff about "keeping the temp sensor
+> enabled" which is a non-issue per the datasheet. Hopefully I'm near the finish
+> line either way.
 > 
+Yup. It's a useful tool but not perfect!
 
-My bot found errors running 'make dt_binding_check' on your patch:
+> > 
+> >   
+> > > ---
+> > >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 334 ++++++++++++++++++
+> > >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 207 +++++++++++
+> > >  2 files changed, 541 insertions(+)
+> > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > 
+> > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > > new file mode 100644
+> > > index 000000000000..1916e0b08bca
+> > > --- /dev/null
+> > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
 
-yamllint warnings/errors:
+> >   
+> > > +/* Sleep times required by the driver */
+> > > +#define INV_ICM42607_POWER_UP_TIME_US			100000
+> > > +#define INV_ICM42607_RESET_TIME_MS			1
+> > > +#define INV_ICM42607_ACCEL_STARTUP_TIME_MS		20
+> > > +#define INV_ICM42607_GYRO_STARTUP_TIME_MS		60
+> > > +#define INV_ICM42607_GYRO_STOP_TIME_MS			150
+> > > +#define INV_ICM42607_TEMP_STARTUP_TIME_MS		14
+> > > +#define INV_ICM42607_SUSPEND_DELAY_MS			2000  
+> > 
+> > Can we have spec references for these?  We often hit problems later
+> > with devices that are a little bit slow and no one is sure if it's because
+> > the sleeps are wrong or device is actually out of spec. Hence
+> > it is useful to be able to quickly check these.  
+> 
+> I took these from the driver I basically copied wholesale and changed
+> the registers for according to the datasheet, but I didn't take a very
+> close look at these (which I am now).
+> 
+> The POWER_UP_TIME_US, assuming it's the same as "Supply Ramp Time" from
+> the datasheet is 100ms which matches. Likewise, the "Start-up time for
+> register read/write" listed under "Power-On Reset" shows 1ms, which
+> matches.
+> 
+> The ACCEL_STARTUP_TIME_MS should probably be 10ms, and the
+> GYRO_STARTUP_TIME_MS should probably be 30ms. I don't see a startup
+> time listed for the temperature sensor but I do see "Stabilization
+> Time" which lists 77us. Gyro stop time and suspend delay time I cannot
+> find a reference for... logically if those values are needed I think
+> they should likely be the same as the gyro start time and power up
+> time, respectively right?
 
-dtschema/dtc warnings/errors:
-/builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml: $id: Cannot determine base path from $id, relative path/filename doesn't match actual path or filename
-	 $id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542-charger.yaml
-	file: /builds/robherring/dt-review-ci/linux/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
+Stops tend to be pretty quick as no need to wait for stuff to stabilize.
+It's pretty rare to have a value for them - however, I guess if there
+was one in the driver maybe just add a comment that says 'from driver
++ link'.
 
-doc reference errors (make refcheckdocs):
+> 
+> The values I am referencing now appear under the electrical
+> characteristics section (section 3) of the datasheet for both the
+> icm42607p (my test devices, over i2c) and the icm42607(c).
+> 
+Nice.
 
-See https://patchwork.kernel.org/project/devicetree/patch/20260515221947.299229-2-macroalpha82@gmail.com
+> > > +static int inv_icm42607_setup(struct inv_icm42607_state *st,
+> > > +			      inv_icm42607_bus_setup bus_setup)
+> > > +{
+> > > +	const struct device *dev = regmap_get_device(st->map);
+> > > +	unsigned int val;
+> > > +	int ret;
+> > > +
+> > > +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	if (val != st->hw->whoami)
+> > > +		dev_warn(dev, "invalid whoami %#02x expected %#02x (%s)\n",
+> > > +			 val, st->hw->whoami, st->hw->name);
+> > > +
+> > > +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
+> > > +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	fsleep(1000);  
+> > 
+> > Do we need an explicit sleep here, or is the idea just to save on
+> > a read that can't succeed in the poll that follows?  I'd be tempted
+> > to drop this if it's not absolutely needed just to avoid explaining it.
+> > This isn't fast path code. If we need to leave the device alone after
+> > reset for a bit then a datasheet reference is needed.
+> >   
+> 
+> Data sheet only really says that the time required after a *hard* reset
+> is 1ms, it honestly doesn't say anything about a soft reset.
+> 
+> I also thought I got rid of the read_poll_timeout, since I'm already
+> waiting 1ms... if you think this fsleep is needed or not I'll defer
+> to you.
+If you are sleeping long enough a single check + fail if not ready is fine.
 
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
+> 
+> Honestly this whole path thing got messed up when we wanted to code for
+> 3 wire SPI. For 3 wire I need to make sure I enable it as soon as the reset
+> completes, so it's probably not even right here. I need to add bus_setup()
+> before the read not after. So to support 3-wire it needs to go:
+> bus_setup()
+> whoami check
+> reset
+> wait (maybe)
+> bus_setup() again
+> check int_status (if we can after the bus_setup)
+> do the rest
+> 
+> whereas if we explicitly say no 3-wire then we can drop the first bus setup
+> and use regmap_read_poll_timeout to get the status.
 
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
+Can do no 3 wire initially as long as we check for dt-binding and error
+out with a helpful message.  It'll be a feature someone else can figure
+out how to add later.
 
-pip3 install dtschema --upgrade
 
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+> 
+> >   
+> > > +
+> > > +	st = devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
+> > > +	if (!st)
+> > > +		return -ENOMEM;  
+> >   
+> 
+> I sincerely appreciate all your help on this. Here I was thinking this would
+> be easy and I could focus on a joystick/LED driver next... how wrong I was!
+
+IMUs are about as hard as it gets for sensors!  This one is far from the most complex, but
+none the less there are a lot of things going on.
+
+Jonathan
+
+> 
+> Chris
 
 
 _______________________________________________
