@@ -4,65 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 581BDCD4F21
-	for <linux-rockchip@archiver.kernel.org>; Sat, 16 May 2026 15:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E382ACD4F3C
+	for <linux-rockchip@archiver.kernel.org>; Sat, 16 May 2026 18:39:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ZKpiLUii0BP3woPjHLM1Wx2f2CHVLNoGBMDdLC2r3+A=; b=qIs0u0f3ncKUHs
-	p6u/IjgGcFWXXamsMVdP1J/DzNhc4hK6yoDAEoz/ZqHaM90V6yblgBNNQQ1URFbFH4vDOEkZ/CNp7
-	7zv5X+cE80+7MjMPHUdqIgT1V1cBYaHCpVr2EN6biZlv1wisBtp3wGWgLM/D00uv0WzMc5oicHFhO
-	XfIv1CF/76P/lAXsC+ZIEC2BmJk2hQslXIHhjdsUV7gb2KkkdrnkHpKGbqEHg9Fw8baFzQgHKqe+x
-	3gZjg05H3glwIjnmAPcGDNH1zWvidy15MUFN4dK+pvx8j7SIBH+nVLRQv/qfFzAZEnIWSeIRZ692k
-	tRSTPBrf7pBSxGJzTg4w==;
+	List-Owner; bh=w3mIh2yhmb571xMmofCPYryCEIRsPYbk9krIRimuY4s=; b=DSoWoI59DvbWJA
+	oCdq+K1q0WxOMElF3ipqgfr8WR+ev2jxJ3Ke0onIWJZ0/9tJJnYtbOfFruUcZK9uEW0jNRI+Pc2dU
+	3IJXUFJ95JQKTpBQp+e/JKYrXSC0LKvfdJbcivn2gBReIxQ6a4+Lw5AaG08V4/i8eq6hgp9bs8GFN
+	Cb0ChQ3IaUxBziiY4JlRhMS8RAy7JWVAHQqlXXh6CEC33W7+G0RyCkrXqucEvDcZRo/LI6pNjf4rP
+	RtEYFOW8BnMLTyxGwdJXOSGzk7W6KtUz0apey9WwAHr1RoD98gWtUfakXLWZyCdp8CUq6bRTBnvx9
+	tprc7x/Mkl/1MIxdJCFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOGca-0000000AukO-3BCI;
-	Sat, 16 May 2026 15:08:08 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wOJuh-0000000BEfN-0RfZ;
+	Sat, 16 May 2026 18:39:03 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOGcY-0000000Aujz-1K7F
+	id 1wOJua-0000000BEbD-0OzV
 	for linux-rockchip@lists.infradead.org;
-	Sat, 16 May 2026 15:08:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 99D1B439DE;
-	Sat, 16 May 2026 15:08:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 505AEC19425;
-	Sat, 16 May 2026 15:07:59 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778944085;
-	bh=jho9MdaE5yAkm0BJknveYPFKVoDYTuZ4VchAhGg/BK4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
-	b=n0LfOzImIclfoGNYZLw0Gsjg8a8TTDP/OnSDzlX9OwzLL+qHTlOF7LZGcMStxaVKc
-	 k5pv/PQ0Iiwsa39jk8JStUBycGHary6q0rlul+LooZe5TsoC2BbcJg09HoJQUwIAjR
-	 MXy2Y6ZTWGndxP6JUIczhTyx6Ul/oMXsth4II/hgXDyY80kcVkVwsPqjaGHCgtYaen
-	 soyuWtA+E1oEPqW92MfQA8WSwPZNS/vTdOUvCT5lua+ncepOkWRZkjwdLU9X73sWVi
-	 ou/4T/WGXrmNxPACe+fZY/P8Em4TRg4fz20Vw8P1+LbfcihRoI/Ez6uRi2s57z+xZI
-	 tkgwnBuFvSo8w==
-Date: Sat, 16 May 2026 16:07:54 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
- andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
- jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V7 03/11] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <20260516160754.08e8e2e4@jic23-huawei>
-In-Reply-To: <DS4PR19MB997335152F245D758A97162671A5052@DS4PR19MB997335.namprd19.prod.outlook.com>
-References: <20260515130018.237378-1-macroalpha82@gmail.com>
-	<20260515130018.237378-4-macroalpha82@gmail.com>
-	<20260515193102.123b664a@jic23-huawei>
-	<DS4PR19MB997335152F245D758A97162671A5052@DS4PR19MB997335.namprd19.prod.outlook.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	Sat, 16 May 2026 18:39:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1778956734; bh=QosCojTWludr4NWZrChxbWqZ5P3GAyS/u/IZWtni4VU=;
+ b=HXPOy7gHlZLGhLuDeYN81TWflYL1MDWoPSIKLTp1fvZjyQjJbjwKXO/Ggun77vxYSkC4PyvjS
+ QMbPap457Hp9etWfppbSIqgqjKG1bB15LH+xhQUSKil8O7xH5bgKh0VzOJOEPbLwKNezJ8LhRG4
+ YHwX9eshU8XixNTU79SCaZF4pXnoqgL5tLUs+U+RqN+2abrgRwkA2yR3m5iVEBTMdXnNqVfQeer
+ l0XGM/hspCFIpxzWR+aOJ6m8mFOTvG4/KMe0Ya/DBrbbMG4lQwawIORLa7KHjNTp3jgvwdII+1X
+ ugXMnXPRvjec4AAkVX03srmFR9rrrrv6qnG1zior8qLQ==
+X-Forward-Email-ID: 6a08b9b979c7625f20eeed07
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.66
+X-Forward-Email-Version: 2.8.12
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>
+Cc: Liu Ying <victor.liu@nxp.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Christian Hewitt <christianshewitt@gmail.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	imx@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Christopher Obbard <chris.obbard@collabora.com>
+Subject: [PATCH v6 01/22] drm: bridge: dw_hdmi: Disable scrambler feature when not supported
+Date: Sat, 16 May 2026 18:38:11 +0000
+Message-ID: <20260516183838.2024991-2-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260516183838.2024991-1-jonas@kwiboo.se>
+References: <20260516183838.2024991-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260516_080806_405325_998B3AB9 
-X-CRM114-Status: GOOD (  61.29  )
+X-CRM114-CacheID: sfid-20260516_113856_809178_4034B2F9 
+X-CRM114-Status: GOOD (  10.68  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,182 +100,46 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 15 May 2026 20:51:01 -0500
-Chris Morgan <macromorgan@hotmail.com> wrote:
+The scrambler feature can be left enabled when hotplugging from a sink
+and mode that require scrambling to a sink that does not support SCDC or
+scrambling.
 
-> On Fri, May 15, 2026 at 07:31:02PM +0100, Jonathan Cameron wrote:
-> > On Fri, 15 May 2026 08:00:08 -0500
-> > Chris Morgan <macroalpha82@gmail.com> wrote:
-> >   
-> > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > 
-> > > Add the core component of a new inv_icm42607 driver. This includes
-> > > a few setup functions and the full register definition in the
-> > > header file.
-> > > 
-> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>  
-> > 
-> > Sashiko led you into the weeks with irq request return values.
-> > It was less broken in v6 :(
-> > 
-> > As to it's other comments on checking for line high/low values (0x00 / 0xFF)
-> > for whoami is something we don't normally bother with but you could if you like.
-> > I'm fairly sure we've had both those values turn up as valid in some devices
-> > in the past.
-> > 
-> > Otherwise just trivial stuff I noticed whilst having a fresh read through.
-> > All stuff I might have tweaked whilst applying or just let through but
-> > seeing as you are going to be doing a v8, please take a look.
-> > 
-> > Jonathan  
-> 
-> I think I'll ignore that comment about the high-low values, but it does make
-> valid points about using the wrong call to invalidate the regmap cache and
-> also the wrong call to set the SPI_MODE_3 stuff.
-> 
-> All in all I'll try to post another version in another day or two with the
-> recommended fixes (as best I can) and see if it still complains. I'm expecting
-> a few complaints like the 0x00/0xFF or some stuff about "keeping the temp sensor
-> enabled" which is a non-issue per the datasheet. Hopefully I'm near the finish
-> line either way.
-> 
-Yup. It's a useful tool but not perfect!
+Typically a blank screen or 'no signal' message can be observed after
+using a HDMI 2.0 4K@60Hz mode and then hotplugging to a sink that only
+support HDMI 1.4.
 
-> > 
-> >   
-> > > ---
-> > >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 334 ++++++++++++++++++
-> > >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 207 +++++++++++
-> > >  2 files changed, 541 insertions(+)
-> > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > >  create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > 
-> > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> > > new file mode 100644
-> > > index 000000000000..1916e0b08bca
-> > > --- /dev/null
-> > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+Fix this by disabling the scrambler feature when SCDC is not supported.
 
-> >   
-> > > +/* Sleep times required by the driver */
-> > > +#define INV_ICM42607_POWER_UP_TIME_US			100000
-> > > +#define INV_ICM42607_RESET_TIME_MS			1
-> > > +#define INV_ICM42607_ACCEL_STARTUP_TIME_MS		20
-> > > +#define INV_ICM42607_GYRO_STARTUP_TIME_MS		60
-> > > +#define INV_ICM42607_GYRO_STOP_TIME_MS			150
-> > > +#define INV_ICM42607_TEMP_STARTUP_TIME_MS		14
-> > > +#define INV_ICM42607_SUSPEND_DELAY_MS			2000  
-> > 
-> > Can we have spec references for these?  We often hit problems later
-> > with devices that are a little bit slow and no one is sure if it's because
-> > the sleeps are wrong or device is actually out of spec. Hence
-> > it is useful to be able to quickly check these.  
-> 
-> I took these from the driver I basically copied wholesale and changed
-> the registers for according to the datasheet, but I didn't take a very
-> close look at these (which I am now).
-> 
-> The POWER_UP_TIME_US, assuming it's the same as "Supply Ramp Time" from
-> the datasheet is 100ms which matches. Likewise, the "Start-up time for
-> register read/write" listed under "Power-On Reset" shows 1ms, which
-> matches.
-> 
-> The ACCEL_STARTUP_TIME_MS should probably be 10ms, and the
-> GYRO_STARTUP_TIME_MS should probably be 30ms. I don't see a startup
-> time listed for the temperature sensor but I do see "Stabilization
-> Time" which lists 77us. Gyro stop time and suspend delay time I cannot
-> find a reference for... logically if those values are needed I think
-> they should likely be the same as the gyro start time and power up
-> time, respectively right?
+Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
+Reported-by: Christopher Obbard <chris.obbard@collabora.com>
+Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # Rock64, RockPro64, Quartz64-B
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v6: Collect t-b tag
+v5: No change
+v4: No change
+v3: Collect r-b tag
+v2: New patch
+---
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Stops tend to be pretty quick as no need to wait for stuff to stabilize.
-It's pretty rare to have a value for them - however, I guess if there
-was one in the driver maybe just add a comment that says 'from driver
-+ link'.
-
-> 
-> The values I am referencing now appear under the electrical
-> characteristics section (section 3) of the datasheet for both the
-> icm42607p (my test devices, over i2c) and the icm42607(c).
-> 
-Nice.
-
-> > > +static int inv_icm42607_setup(struct inv_icm42607_state *st,
-> > > +			      inv_icm42607_bus_setup bus_setup)
-> > > +{
-> > > +	const struct device *dev = regmap_get_device(st->map);
-> > > +	unsigned int val;
-> > > +	int ret;
-> > > +
-> > > +	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	if (val != st->hw->whoami)
-> > > +		dev_warn(dev, "invalid whoami %#02x expected %#02x (%s)\n",
-> > > +			 val, st->hw->whoami, st->hw->name);
-> > > +
-> > > +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
-> > > +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	fsleep(1000);  
-> > 
-> > Do we need an explicit sleep here, or is the idea just to save on
-> > a read that can't succeed in the poll that follows?  I'd be tempted
-> > to drop this if it's not absolutely needed just to avoid explaining it.
-> > This isn't fast path code. If we need to leave the device alone after
-> > reset for a bit then a datasheet reference is needed.
-> >   
-> 
-> Data sheet only really says that the time required after a *hard* reset
-> is 1ms, it honestly doesn't say anything about a soft reset.
-> 
-> I also thought I got rid of the read_poll_timeout, since I'm already
-> waiting 1ms... if you think this fsleep is needed or not I'll defer
-> to you.
-If you are sleeping long enough a single check + fail if not ready is fine.
-
-> 
-> Honestly this whole path thing got messed up when we wanted to code for
-> 3 wire SPI. For 3 wire I need to make sure I enable it as soon as the reset
-> completes, so it's probably not even right here. I need to add bus_setup()
-> before the read not after. So to support 3-wire it needs to go:
-> bus_setup()
-> whoami check
-> reset
-> wait (maybe)
-> bus_setup() again
-> check int_status (if we can after the bus_setup)
-> do the rest
-> 
-> whereas if we explicitly say no 3-wire then we can drop the first bus setup
-> and use regmap_read_poll_timeout to get the status.
-
-Can do no 3 wire initially as long as we check for dt-binding and error
-out with a helpful message.  It'll be a feature someone else can figure
-out how to add later.
-
-
-> 
-> >   
-> > > +
-> > > +	st = devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
-> > > +	if (!st)
-> > > +		return -ENOMEM;  
-> >   
-> 
-> I sincerely appreciate all your help on this. Here I was thinking this would
-> be easy and I could focus on a joystick/LED driver next... how wrong I was!
-
-IMUs are about as hard as it gets for sensors!  This one is far from the most complex, but
-none the less there are a lot of things going on.
-
-Jonathan
-
-> 
-> Chris
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+index 41b3a9cfa2f5..d3e6a6562870 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
+@@ -2135,6 +2135,8 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
+ 				    HDMI_MC_SWRSTZ);
+ 			drm_scdc_set_scrambling(hdmi->curr_conn, 0);
+ 		}
++	} else if (hdmi->version >= 0x200a) {
++		hdmi_writeb(hdmi, 0, HDMI_FC_SCRAMBLER_CTRL);
+ 	}
+ 
+ 	/* Set up horizontal active pixel width */
+-- 
+2.54.0
 
 
 _______________________________________________
