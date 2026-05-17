@@ -4,89 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5088ACD37AC
-	for <linux-rockchip@archiver.kernel.org>; Sun, 17 May 2026 11:37:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3196FCD4F47
+	for <linux-rockchip@archiver.kernel.org>; Sun, 17 May 2026 16:55:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=riYUCOYXFLLTnbthmvLkJ63O3TrdRlfJkFIBmpMUofU=; b=38bRE43g/0X0n5
-	jfAtXf6fQpP4gNarLtmq0l/odQc+0E2W3DDsEfpL0brx6JuHI/W6f786sVO5oNvApS3dYYpYy3ufA
-	Wol83Ps2JdAcgV3zPMeU/21hTqxCZLZcKzafjqHB/DzAQ59LNeyqxva/HRgVWkH6ISWW2Zm9/RKJk
-	/uKU3sPv2wYT5CGhEDGlqATjpIe3awzuiqcfTLKPuhPG4+LOlfnrnnXJ1m/RKWxHG2C/kmQkqFbfE
-	s1AIWxHgEYrSzj176/xx/7/PPkPF5ECc41ScldocE1WX0kCiAI/PRyGMvKBfkfqqAhGHxeRjR8Qu7
-	HCBCJa92QAlHXhbuu26g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=J8E//p8Q+8m9ajp9aOi2TEbkX0vDaBM8JR0NkyMWsnw=; b=Rysf+r/FaxbGRV
+	lp70dGIOqNkhxl9FPuzHLY5Tyb3VX67ER/ycMTJVhWkjonKs15KjPR2iiGLpsqLEiie9kPuMwPnZI
+	JVkOFzClRsD88IPcN63PSs9FqwXjfJQiohlgFBxl6bXVKHTyeV+RxfO0lJS/Wk4y6DEvOfIrSxWDt
+	//So5R4YOw4wd/Dva9R6skX9N1qnGTGotnMyHZ6uFi/NwuOlyNQcKctFQXysD39KBuaA9isfs0Zyf
+	z0mmPhl/FefOVMA9lHcHzT4qd/aTID5Nim3yCsVRIgk2BZ85rn+gIw77H2QeKdHWLPhN5bFcxJ6/L
+	h2SXlXAo4U+60Uxw2w0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOZoA-0000000CcOE-0TDx;
-	Sun, 17 May 2026 11:37:22 +0000
-Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+	id 1wOelR-0000000D3d4-0USO;
+	Sun, 17 May 2026 16:54:53 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOZo7-0000000CcN2-44SU
-	for linux-rockchip@lists.infradead.org;
-	Sun, 17 May 2026 11:37:21 +0000
-Received: by mail-pj1-x1035.google.com with SMTP id 98e67ed59e1d1-3697c35eab7so452999a91.0
-        for <linux-rockchip@lists.infradead.org>; Sun, 17 May 2026 04:37:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779017839; x=1779622639; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=YwCtNa2bNCMGQ/e87qwfib5kmy7GWvXNJtX206pcf+A=;
-        b=Au8rJfnYjR4RuT8FIOFN5OBL2voHbuoBlbLyhy27ffS9C3I6w2QFLD7+CssjEdhK+P
-         9XYSjEKWW7Maj5VF0P5kj++2KHuhkzclkW4ucaDfo+uW83AxHF+jpnEsyBBjdcdmLisL
-         v+h64hZCmTEzYP4HVO8QIuFEZ9OIBYE8OTOaEJ5cvZ0xGjVYAxpEy/v878M+LiLmNvVJ
-         0dbNpWwjWP2xMMigecnM+9fhmqlrxFF59s0KOUILyEblVnLyQnCw+L88dz36LPZoLWqr
-         9p5d7MMJmkkOD6yj6BPobvvD0xOZVfzZCJsjk6yRT566e87/cYvfTHLxPKGduwcPB6cY
-         fBMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779017839; x=1779622639;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=YwCtNa2bNCMGQ/e87qwfib5kmy7GWvXNJtX206pcf+A=;
-        b=SJ+kjOLtwgG+sYQupwpukpOFAymE1Evvhd5v+r5JL5KBkysn0l0oH10KbewOoQrccc
-         NBzR5Yi4rN+pBL/Hm9JlUuk60G4Ky4U9Y3NmL+3dNKhSbI36URxbOI9W587fR1ZEHJd1
-         fXxY/6F+q/45j7UWmjnc3qMGwtDpExmm0TKLXs1+RxRdwM15213DWQ2gUuMibsQCmX40
-         Q11mAugdnXY48GoO6DrUuc9QLHcprBRFUMGVXgS35dgr+A57z98dWC8F07/rm+qbjIN5
-         V0IbmJpewZlAq6w8dwofdWFVWpEFQnEodDfGOZc/PZIwZznuAnFmG4ZSqHVphyvJWmcK
-         KviA==
-X-Forwarded-Encrypted: i=1; AFNElJ9tNCBgRqN2ZmxoHvnUW1ynqN7vGMVICJbUIif2LzsZQphjeHenhQCrcF0vpwAl2aRxk9bye9dUyq2RhVQfwQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YyfmAkHjkH1W7u9UVl44sCWYP407HvF7OyWJMp+glcPL7A7eHty
-	sOSJGP7HgYNvNoIYiw6d8fWqz/StwA6/3Lahiz0I5YsWil9fC6dmyHVw
-X-Gm-Gg: Acq92OHoHMH46C7IL6/V5/OScS+qe670PW+3dETbiVst8o36jtp2g5epByUKQrhp/lw
-	t3fQySzR1wUPX9gTJWvtbs6N9JhjTYBJHLGoMvKZrIqUaOJMp95f+/D+713PMBDyobP3vn2XMjF
-	m52llUJaET+8c8F2A3Wf9Icw2oBklXeUTMa2oVRP7jtVAeSDND/ED8X49y7WJaCRjXA6NQV9BNw
-	/iU3SJi2nLtgio4zK+RqWwby0kjWRtB7rePibWH9DZNIa/Be1foX0/763VKJBCHXNeL4RRo1OGP
-	HZ2CwQBcv2mj6SU2IKLy/IhscIIFb0iYfzJFbrz1iW+KczU/FgvFANC9Pxv+yXT+eAlQjIrfuDO
-	MWw4W6DIFZIa/hMvxiDsbmQblZDO6ZgE3nGOj4poD/jpWKWZUrun7DY3n/kCnCxXspWAF7CEw+k
-	0JjccGCQ==
-X-Received: by 2002:a17:90a:d648:b0:368:95e1:8d45 with SMTP id 98e67ed59e1d1-36951cb7706mr10428613a91.26.1779017838713;
-        Sun, 17 May 2026 04:37:18 -0700 (PDT)
-Received: from lgs.. ([2001:250:5800:1000::f280])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36957261d59sm3162871a91.4.2026.05.17.04.37.14
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 17 May 2026 04:37:18 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Jacob Chen <jacob-chen@iotwrt.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	linux-media@vger.kernel.org,
+	id 1wOelO-0000000D3bz-2IV0;
+	Sun, 17 May 2026 16:54:52 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id A4293416A7;
+	Sun, 17 May 2026 16:54:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EEE6BC2BCB0;
+	Sun, 17 May 2026 16:54:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1779036888;
+	bh=rl8/+H7UrkvD6Wm6GXhI3VO843IjVdH5GorUML886+s=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=JsbuppPfeqHH826a2rLBZNT3CPj7ruSwlDcOIGBAMfxGU0LFwgx2/s+KvhkULmoY0
+	 hyccBDN6SGggxgqY8GCkNqjMwJZ9va5Q1N3NBASYSJpnBtrjcSDOVo0RLgW9g78nIj
+	 BJzZSnp4D1aNaNNENmFUit0Fd5u2FagM0CS2EtbQMWMD4wHj5d5byfx1QD7vP81eg4
+	 EqNlosfLq58w3zL8FXfGeDAI5fM5ke012FrHi6w0loU111sRbhVyedtdPTt7wsNQiE
+	 /ZXLzavaTaJsqsl+B48Wh43rpbgslHByU9QG5hF+V7LD5pixVnEOUwqpyyAZnylaw2
+	 /OhcjcWFm6lhw==
+Date: Sun, 17 May 2026 22:24:44 +0530
+From: Vinod Koul <vkoul@kernel.org>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Neil Armstrong <neil.armstrong@linaro.org>,
+	Heiko Stuebner <heiko@sntech.de>, linux-phy@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Cc: Guangshuo Li <lgs201920130244@gmail.com>
-Subject: [PATCH] media: rockchip: rga: avoid double free on video register failure
-Date: Sun, 17 May 2026 19:34:49 +0800
-Message-ID: <20260517113449.949222-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v3 1/2] phy: rockchip: inno-hdmi: Add configure() and
+ validate() ops
+Message-ID: <agny1ER5j6om9hIT@vaman>
+References: <20260515195512.1757363-1-jonas@kwiboo.se>
+ <20260515195512.1757363-2-jonas@kwiboo.se>
+ <d69b500b-0473-496d-b17e-c60ce9839e0c@kwiboo.se>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <d69b500b-0473-496d-b17e-c60ce9839e0c@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_043720_008546_DAAEE994 
-X-CRM114-Status: GOOD (  10.73  )
+X-CRM114-CacheID: sfid-20260517_095450_628726_56C554FE 
+X-CRM114-Status: GOOD (  27.14  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,63 +76,97 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-rga_probe() allocates a video_device with video_device_alloc() and
-releases it from the rel_vdev error path if video_register_device()
-fails.
+On 15-05-26, 23:04, Jonas Karlman wrote:
+> Hi,
+> 
+> On 5/15/2026 9:55 PM, Jonas Karlman wrote:
+> > The commit 10ed34d6eaaf ("phy: Add HDMI configuration options")
+> > introduced a way for HDMI PHYs to be configured through the generic
+> > phy_configure() function.
+> > 
+> > This driver derives the TMDS character rate from the pixel clock and the
+> > PHY bus width setting. However, no in-tree consumer of this PHY has ever
+> > called phy_set_bus_width() to change the TMDS character rate as only
+> > 8-bit RGB output is supported by the HDMI display driver.
+> > 
+> > Add configure() and validate() ops to allow consumers to configure the
+> > TMDS character rate using phy_configure(). Fallback to the deprecated
+> > way of using the PHY bus width to configure the TMDS character rate.
+> > 
+> > A typical call chain during DRM modeset on a RK3328 device:
+> > 
+> >   dw_hdmi_rockchip_encoder_atomic_check():
+> >   - inno_hdmi_phy_validate(): pixclock 148500000 tmdsclock 594000000
+> > 
+> >   dw_hdmi_rockchip_encoder_atomic_mode_set():
+> >   - inno_hdmi_phy_configure(): pixclock 148500000
+> >     - inno_hdmi_phy_validate(): pixclock 148500000 tmdsclock 594000000
+> > 
+> >   vop_crtc_atomic_enable():
+> >   - inno_hdmi_phy_rk3328_clk_set_rate(): rate 594000000 tmdsclk 594000000
+> >   - inno_hdmi_phy_rk3328_clk_set_rate(): pixclock 594000000 tmdsclock 594000000
+> >   - inno_hdmi_phy_rk3328_clk_recalc_rate(): pixclock 594000000 vco 594000000
+> > 
+> >   dw_hdmi_rockchip_encoder_enable():
+> >   - inno_hdmi_phy_power_on(): Inno HDMI PHY Power On
+> >   - inno_hdmi_phy_rk3328_clk_set_rate(): rate 594000000 tmdsclk 594000000
+> > 
+> > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+> > ---
+> > Changes in v3:
+> > - Change validate() ops to only validate tmdsclock
+> > - Add comments about expected consumer usage
+> > - Update commit message with a typical call chain
+> > Changes in v2:
+> > - Add validate() ops to validate that the TMDS rate is supported
+> > - Split out parts that remove the old workaround into a separate patch
+> > 
+> > Patch "drm/rockchip: dw_hdmi: Configure HDMI PHY in atomic_mode_set()"
+> > at [1] adds phy_validate() and phy_configure() calls for this HDMI PHY.
+> > 
+> > [1] https://lore.kernel.org/dri-devel/20260510183114.1248840-10-jonas@kwiboo.se/
+> > ---
+> >  drivers/phy/rockchip/phy-rockchip-inno-hdmi.c | 60 ++++++++++++++++++-
+> >  1 file changed, 59 insertions(+), 1 deletion(-)
+> 
+> [snip]
+> 
+> > +static int inno_hdmi_phy_validate(struct phy *phy, enum phy_mode mode,
+> > +				  int submode, union phy_configure_opts *opts)
+> > +{
+> > +	const struct pre_pll_config *cfg = pre_pll_cfg_table;
+> > +	unsigned long tmdsclock;
+> > +
+> > +	if (!(mode == PHY_MODE_HDMI && submode == PHY_HDMI_MODE_TMDS))
+> > +		return -EINVAL;
+> > +
+> > +	if (!opts->hdmi.tmds_char_rate || opts->hdmi.tmds_char_rate > 594000000)
+> > +		return -EINVAL;
+> 
+> Sashiko reasoning log pointed out that a consumer of phy_validate() or
+> phy_configure() can make a call with opts=NULL, so I may likely send a
+> v4 of this series to fix such possible NULL pointer dereference here.
 
-This can double free the video_device when __video_register_device()
-reaches device_register() and that call fails:
+Yes please
 
-  video_register_device()
-    -> __video_register_device()
-       -> device_register() fails
-          -> put_device(&vdev->dev)
-             -> v4l2_device_release()
-                -> vdev->release(vdev)
-                   -> video_device_release(vdev)
+> 
+> Or is that something that possible should be checked before phy core
+> calls the .validate()/.configure() ops?
 
-  rga_probe()
-    -> rel_vdev
-       -> video_device_release(vfd)
+The opts is an optional argument depending upon the mode to be valid. So
+we cant do that in the core...
 
-Use video_device_release_empty() while registering the device so that
-registration failure paths do not free vfd through vdev->release().
-rga_probe() then releases vfd exactly once from rel_vdev. Restore
-video_device_release() after successful registration so the registered
-device keeps its normal lifetime handling.
+> 
+> Multiple other phy .configure() ops seem to dereference opts members
+> without any type of opts NULL check. (next-20260508)
 
-This issue was found by a static analysis tool I am developing.
+We should fix these
 
-Fixes: f7e7b48e6d79 ("[media] rockchip/rga: v4l2 m2m support")
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
----
- drivers/media/platform/rockchip/rga/rga.c | 3 +++
- 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/media/platform/rockchip/rga/rga.c b/drivers/media/platform/rockchip/rga/rga.c
-index fea63b94c5f3..90ae01de3216 100644
---- a/drivers/media/platform/rockchip/rga/rga.c
-+++ b/drivers/media/platform/rockchip/rga/rga.c
-@@ -851,6 +851,7 @@ static int rga_probe(struct platform_device *pdev)
- 		goto unreg_v4l2_dev;
- 	}
- 	*vfd = rga_videodev;
-+	vfd->release = video_device_release_empty;
- 	vfd->lock = &rga->mutex;
- 	vfd->v4l2_dev = &rga->v4l2_dev;
- 
-@@ -895,6 +896,8 @@ static int rga_probe(struct platform_device *pdev)
- 		goto free_dma;
- 	}
- 
-+	vfd->release = video_device_release;
-+
- 	v4l2_info(&rga->v4l2_dev, "Registered %s as /dev/%s\n",
- 		  vfd->name, video_device_node_name(vfd));
- 
+PS: Any reason why you are sending encypted emails?
+
 -- 
-2.43.0
-
+~Vinod
 
 _______________________________________________
 Linux-rockchip mailing list
