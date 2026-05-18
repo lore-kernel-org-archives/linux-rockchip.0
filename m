@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FDD9CD4F4A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:38:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67DA8CD4F57
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:38:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xGLmZspgzEWM3R/DLAulyIFxhFJCXsmENTRzgnVyKM0=; b=FJMF0pyVvhzLIX
-	bfmSjPco0yHkQ23gc2JfAyC/HVav6JSJIQsB41sDbmfX3Ax47b3BnPD+5RlB+0+RJ0UUadsJbEmvQ
-	lDac36d0x5phmVBj25B3uxSI5GII5Yy9PlwunqTqAoqXbLCIcyRRgMIxi/F9yPkxROdDxkNuGxUKo
-	Tv0Y9U/nh4raAedwoLtsxjpnHLISX55O9HnllV7xw0VXzJhZjcfawa5jfMkFcmtq7bDitpsgOyFRC
-	bWtbwfpWO6sddEVBx6Z1U6mY+hRI1OthrPjXkcH5Wc/pmPETf1Gx4se/RNmuJBwowkmaYlp8BPBQd
-	v+I+/b8B+RD4P49p+giQ==;
+	List-Owner; bh=UBc1a1Nzv5+rCa/5dCnE/6NkSG8GjPV6pBvap0WTyAs=; b=dPpRNjuPiSut7j
+	oUumdcGUF+9rl6+yTCogbBYc94ne3Fsle3m7P+e+8g+Dm26xv49/fdiqvu0PExh2RALEd8aVSqw3E
+	0+4Wu29LP2OX/L2YU0nhTt5WrVWCGd/bxZNnttNVyfe1839aYbQJu20LqhXJnjtoqKaSTM+a/lpI2
+	23IctE5a1PiGNHRiDa6KdN9tA/EwniJE4xUHGic+2GcG+pROOuX9J1Jxmwhb4SCKIU/MwNhWLp29l
+	2YBDbDcG6eCF/nq4wjnyRHACavchJljmdeojz3Ee9q5TBtZ0Ij90UisyrU7ItM5O6wHY0HvmEf1XA
+	QQUyznV6oheV9zN6Smlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3nM-0000000GiAV-0Qqx;
-	Mon, 18 May 2026 19:38:32 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wP3nT-0000000GiJv-2PsY;
+	Mon, 18 May 2026 19:38:39 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3n7-0000000Ghuq-1Fd3
+	id 1wP3nR-0000000GiH1-23wT
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 19:38:20 +0000
+	Mon, 18 May 2026 19:38:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133096; bh=qoxUWyo9gdy2DESJxBXzDzmP4EJJbwI5fCPj+AITnn4=;
- b=EChF0gE3aYWZ2+5GN6AaIz6vB0v2gqhMuuyLyLjeTdAkqo691IOHiKERBYNkoCZGObuO/Ow95
- SJRqB/LucGonwvMUVT8Hb7zGqhxcJ24sBDEXmh3OMhXRFkZrjQE/kta6pFU0h89dHGpNhD/aVTP
- XQSz7rdx6GE7UQEdrJOemJuUHNdJXPDlL2065e43Ek2l3fLQJF0d0eOoDCgibhL+3Zl7Kx+FC06
- k9rc7Yy72Z9SG9nlEOMOAMZlDyLHskPWoxpNYoAyVGP7wWBEMuC8KHFnQw9S1JEMKPmPQcpas1a
- e9enDqRk4WXgxDs5GzQG6x7bDrL+AStZfdfV0AEKVvjw==
-X-Forward-Email-ID: 6a0b6aa1486b4b38b826fa0b
+ t=1779133116; bh=szs3Fi24AawsCdvDh+JSgiByUZb/uysg/b3saRWp/iE=;
+ b=hZzjNzKXEyJJ1e/14kA48hMrzmaSkj1Du5miq/xIVEtgtJJVNu9MVOpNmZUb6AC2cs2O9dpbs
+ ZeLoZV7ABzMT0jcZ1YDvCN+4B+mZxypMBIazBCBY2EaTYqFRCLb2LthC7eul9++OEspfIzgjsSD
+ FJ/c2Tyj/OJOT2rcL6iSaLCZtsC5BCJdPmy7CNRisLxkhetrnwHBdF059UmZ+5TH25eMbNRZKYz
+ nj2BAAOifEfP3+nSGRLCY/N7qwKoUMAa7pOYLG/yqBPt5BPOuZE3dDZBQUT/SsAEoDArfQ6+zPw
+ lqat8LhABWIg1Z5XflKI1ITJMPUq7o3IGvWdAWv64YNQ==
+X-Forward-Email-ID: 6a0b6ab8486b4b38b826fac1
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 2.8.12
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -58,16 +58,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 04/11] drm/rockchip: dw_hdmi: Inline resource lookup into bind()
-Date: Mon, 18 May 2026 19:37:38 +0000
-Message-ID: <20260518193748.2482823-5-jonas@kwiboo.se>
+Subject: [PATCH v2 10/11] drm/rockchip: dw_hdmi: Propagate bus format to display driver
+Date: Mon, 18 May 2026 19:37:44 +0000
+Message-ID: <20260518193748.2482823-11-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260518193748.2482823-1-jonas@kwiboo.se>
 References: <20260518193748.2482823-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_123818_394807_22035545 
-X-CRM114-Status: GOOD (  10.95  )
+X-CRM114-CacheID: sfid-20260518_123837_627274_50C85E4E 
+X-CRM114-Status: GOOD (  14.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,113 +84,95 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Inline rockchip_hdmi_parse_dt() into dw_hdmi_rockchip_bind() so the
-probe path is easier to follow in one place. Also ensure failures in
-bind() use dev_err_probe() so probe deferrals and errors are reported
-consistently.
+The HDMI block is currently hardcoded to expect RGB output from the
+display controller. However, the VOP in some SoCs are capable of YCbCr
+output to the HDMI block.
+
+Read the negotiated bus format from the bridge state and propagate it to
+the CRCT state in form of output mode and bus format. Treat the format
+MEDIA_BUS_FMT_FIXED as RGB888 and reject any unsupported formats.
+
+This has no inpact until dw-hdmi bridge is fully converted to a HDMI
+bridge and also adds support for the "color format" connector property.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
 v2: No change
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 74 +++++++++------------
- 1 file changed, 30 insertions(+), 44 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 44 ++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 12a7c989c4ee..8c26223b70b5 100644
+index 4e7fd4b80d76..0133a4b67b3b 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -196,41 +196,6 @@ static const struct dw_hdmi_phy_config rockchip_phy_config[] = {
- 	{ ~0UL,	     0x0000, 0x0000, 0x0000}
- };
+@@ -5,6 +5,7 @@
  
--static int rockchip_hdmi_parse_dt(struct rockchip_hdmi *hdmi)
--{
--	struct device_node *np = hdmi->dev->of_node;
--	int ret;
--
--	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
--	if (IS_ERR(hdmi->regmap)) {
--		dev_err(hdmi->dev, "Unable to get rockchip,grf\n");
--		return PTR_ERR(hdmi->regmap);
--	}
--
--	hdmi->ref_clk = devm_clk_get_optional_enabled(hdmi->dev, "ref");
--	if (!hdmi->ref_clk)
--		hdmi->ref_clk = devm_clk_get_optional_enabled(hdmi->dev, "vpll");
--
--	if (IS_ERR(hdmi->ref_clk)) {
--		ret = PTR_ERR(hdmi->ref_clk);
--		return dev_err_probe(hdmi->dev, ret, "failed to get reference clock\n");
--	}
--
--	hdmi->grf_clk = devm_clk_get_optional(hdmi->dev, "grf");
--	if (IS_ERR(hdmi->grf_clk)) {
--		ret = PTR_ERR(hdmi->grf_clk);
--		return dev_err_probe(hdmi->dev, ret, "failed to get grf clock\n");
--	}
--
--	ret = devm_regulator_get_enable(hdmi->dev, "avdd-0v9");
--	if (ret)
--		return ret;
--
--	ret = devm_regulator_get_enable(hdmi->dev, "avdd-1v8");
--
--	return ret;
--}
--
- static enum drm_mode_status
- dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
- 			    const struct drm_display_info *info,
-@@ -578,18 +543,39 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	 * the required CRTC is added later.
- 	 */
- 	if (encoder->possible_crtcs == 0)
--		return -EPROBE_DEFER;
-+		return dev_err_probe(dev, -EPROBE_DEFER,
-+				     "failed to find possible crtcs\n");
+ #include <linux/clk.h>
+ #include <linux/hw_bitfield.h>
++#include <linux/media-bus-format.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/module.h>
+ #include <linux/platform_device.h>
+@@ -275,6 +276,26 @@ static void dw_hdmi_rockchip_encoder_enable(struct drm_encoder *encoder)
+ 	dev_dbg(hdmi->dev, "vop %s output to hdmi\n", ret ? "LIT" : "BIG");
+ }
  
--	ret = rockchip_hdmi_parse_dt(hdmi);
--	if (ret) {
--		return dev_err_probe(dev, ret, "Unable to parse OF data\n");
--	}
-+	hdmi->regmap = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
-+	if (IS_ERR(hdmi->regmap))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->regmap),
-+				     "failed to get rockchip,grf\n");
++static u32 dw_hdmi_rockchip_get_bus_format(struct drm_encoder *encoder,
++					   struct drm_connector_state *conn_state)
++{
++	struct drm_bridge *bridge __free(drm_bridge_put) = NULL;
++	struct drm_bridge_state *bridge_state;
 +
-+	hdmi->ref_clk = devm_clk_get_optional_enabled(dev, "ref");
-+	if (!hdmi->ref_clk)
-+		hdmi->ref_clk = devm_clk_get_optional_enabled(dev, "vpll");
++	bridge = drm_bridge_chain_get_first_bridge(encoder);
++	if (!bridge)
++		return 0;
 +
-+	if (IS_ERR(hdmi->ref_clk))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->ref_clk),
-+				     "failed to get reference clock\n");
++	bridge_state = drm_atomic_get_bridge_state(conn_state->state, bridge);
++	if (!bridge_state)
++		return 0;
 +
-+	hdmi->grf_clk = devm_clk_get_optional(dev, "grf");
-+	if (IS_ERR(hdmi->grf_clk))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->grf_clk),
-+				     "failed to get grf clock\n");
++	if (bridge_state->input_bus_cfg.format != MEDIA_BUS_FMT_FIXED)
++		return bridge_state->input_bus_cfg.format;
 +
-+	ret = devm_regulator_get_enable(dev, "avdd-0v9");
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to enable avdd-0v9\n");
++	return bridge_state->output_bus_cfg.format;
++}
 +
-+	ret = devm_regulator_get_enable(dev, "avdd-1v8");
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to enable avdd-1v8\n");
+ static int
+ dw_hdmi_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
+ 				      struct drm_crtc_state *crtc_state,
+@@ -283,9 +304,30 @@ dw_hdmi_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
+ 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
+ 	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
+ 	union phy_configure_opts opts = {};
++	u32 bus_format;
++
++	bus_format = dw_hdmi_rockchip_get_bus_format(encoder, conn_state);
++
++	switch (bus_format) {
++	case MEDIA_BUS_FMT_FIXED:
++		bus_format = MEDIA_BUS_FMT_RGB888_1X24;
++		fallthrough;
++	case MEDIA_BUS_FMT_RGB888_1X24:
++	case MEDIA_BUS_FMT_RGB101010_1X30:
++	case MEDIA_BUS_FMT_YUV8_1X24:
++	case MEDIA_BUS_FMT_YUV10_1X30:
++		s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
++		break;
++	case MEDIA_BUS_FMT_UYYVYY8_0_5X24:
++	case MEDIA_BUS_FMT_UYYVYY10_0_5X30:
++		s->output_mode = ROCKCHIP_OUT_MODE_YUV420;
++		break;
++	default:
++		return -EINVAL;
++	}
  
- 	hdmi->phy = devm_phy_optional_get(dev, "hdmi");
--	if (IS_ERR(hdmi->phy)) {
--		ret = PTR_ERR(hdmi->phy);
--		return dev_err_probe(dev, ret, "failed to get phy\n");
--	}
-+	if (IS_ERR(hdmi->phy))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->phy),
-+				     "failed to get phy\n");
+-	s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
+ 	s->output_type = DRM_MODE_CONNECTOR_HDMIA;
++	s->bus_format = bus_format;
  
- 	index = of_property_match_string(np, "phy-names", "hdmi");
- 	if (index >= 0) {
+ 	if (!hdmi->phy || !conn_state->hdmi.tmds_char_rate)
+ 		return 0;
 -- 
 2.54.0
 
