@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4E87CD4F54
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:48:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A00CD4F54
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:48:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=C+chq+4GyXBXtqvQxu2u0dvrYrMEVaQTK1DI8lVe3DI=; b=WNBFKJX7/jGxR/
-	HWmhGMggRNzIfRlRXTU1PTPxNwVwff5CkR0z4ZMc4sD075w0aYNM96kirKWIpKbpbSuqQrA7wCBdc
-	WTa9ZVFVH8vuR6MswRSESS3RVvPVq8t+/VGIDIJzrjWNWLQyX30iO81O3K9LlltrgybeC5SGq2tG0
-	PcTFmw+dQGHlnuy7kvO+XauK1OZEvDilWp1/75XKo70UKftDGkSsohdtQgX2xcMSBMIN6wIdR4vts
-	5hl0gjK2PZ2CPqw1rcRC46ArYpnIpjDR8Xmk0NPdmCVmMl2lkh0/8A/eS0soWPp7ddnaAZYK6zYcw
-	rBjopK54abok8WtHq1EQ==;
+	List-Owner; bh=TOEk45x6yS6dwFdx5/VR5d9ngEFW8FSSJLBPZ0mevM0=; b=sHbXvRKrTtZYuo
+	cxHskOC06WsU+ZnWqlY/5nrxWz+WrDLMBLvpRfOOMcCUiK+mQ6jOuS22c1/frah9mTkS2avxfFBhl
+	sLQh0oMFmqM77lkq9HIn9es7gPRPDQKrv/MuhT5Idfd9Mi/JhiAH2yLCdmWlrFi3soANcvxYuU105
+	VnhvovHBsYMZE8MiGHP0LdkIIfL3++8b2KWb5TT3OkkDWIcv7y99PoNtOi7om354+01U8lG94Jti4
+	KB72lTeUkKwuE7z3Z12I5g28Op3b3xT6I3xpCO8Mc5Xzk3QfyKjL5wsotckntzS7h1phtHf4pIgOZ
+	O1EpC+mz/EWWv83IhZqA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xF-0000000Gm3V-3uUb;
-	Mon, 18 May 2026 19:48:45 +0000
+	id 1wP3xI-0000000Gm85-2et7;
+	Mon, 18 May 2026 19:48:48 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xB-0000000Glpc-1JRe
+	id 1wP3xE-0000000Gm1x-3qWF
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 19:48:42 +0000
+	Mon, 18 May 2026 19:48:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133710; bh=kjTG1Ak+F+PLmCEEhmKg5bB7H85Hff4CbMbJgrGq+P0=;
- b=Oa277U2JYRDVah99BGQ8ZNXYDM+NSa42eRqPyIx80rGTV0kNgqHg4LBwL1XlS6FdJI17VjeKr
- Y/TcvFG20iZYj3J/v10Y70XKCEvgvbYh4BUUBuVX5zud6WFAO4HqGAW/6jlteaZjCpZBcIbU8cD
- C3QtIfOPWwoTiL7SMr2/n4IL9lj0atGR1ntx2VuREhC/+UvtK3542OOQRTo85p+ByMdVzih7dXe
- 9pyGJ8stciUA2zncD1B2D25RoxyfhC4bFAxptiBCp0aJ7PNbemr2ScoQRB4q00r7vTWJsaXqNzg
- t0Rbk+swjmxhkmBu8xYIVxt0iYS8jFF1ettAV5Y90ZPQ==
-X-Forward-Email-ID: 6a0b6cf5b74b0ebd362eee56
+ t=1779133724; bh=FcxEYOPmNuM9yRHj6lWDMsbsVp/OdK4Trn0fMntUI3A=;
+ b=XimB3cVrd35e5vnp1WvQSGuTJCgqs25pAywG9GRJMSnTOXDl1zdyyECMqnYJzV3Wribng9Yt6
+ OWGDhLQBtPVh//srdUmyIMbXewpIyvEOC8F49i70zofnXRNXQd82JFb7kmirYhtQO81MLHs7uJ8
+ gh/uxeq6/GwUoZ58SC8HCYLLUrFX4W/a4FEEUd31ujFzVHObbFztJN6P8tSjpOW5K86LsQ9UJj4
+ MUfrJnvSosm3Bm2QVCtMisafjytPXj+WNZQGyPGgmysTzk0aLod7QoAxIYNJAkmKEggMU1V4E/D
+ 5gHH7ZgGXL6yJ/+Z7bP+SIWcORnbUUjiq07l3JN9Vrjw==
+X-Forward-Email-ID: 6a0b6d02b74b0ebd362eeec6
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 2.8.12
@@ -61,16 +61,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 03/13] drm/meson: dw-hdmi: Call dw_hdmi_remove() consistently
-Date: Mon, 18 May 2026 19:47:31 +0000
-Message-ID: <20260518194744.2483580-4-jonas@kwiboo.se>
+Subject: [PATCH 06/13] drm/meson: encoder_hdmi: Use bridge connector CEC notifier
+Date: Mon, 18 May 2026 19:47:34 +0000
+Message-ID: <20260518194744.2483580-7-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260518194744.2483580-1-jonas@kwiboo.se>
 References: <20260518194744.2483580-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_124841_363006_45DFC5C9 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20260518_124845_058862_913C5102 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,55 +87,193 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-dw-hdmi export two similar pair of functions to probe()/remove() and
-bind()/unbind(), update to use dw_hdmi_remove() for consistency.
+The dw-hdmi bridge detect() func now updates EDID and CEC phys addr for
+the connector and any registered generic CEC notifier.
 
-dw_hdmi_probe() will drm_bridge_add() the dw-hdmi bridge, so it is
-expected that of_drm_find_and_get_bridge() always return the dw-hdmi
-bridge. Regardless, validate that the dw-hdmi can be found for
-consistent error handling.
-
-Also always ensure the IRQ handler and bridge is released before
-dw_hdmi_remove() is called.
+Replace the open-coded CEC notifier handling with use of the bridge CEC
+notifier op.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/meson/meson_dw_hdmi.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/meson/Kconfig              |  1 +
+ drivers/gpu/drm/meson/meson_encoder_hdmi.c | 85 +++++-----------------
+ 2 files changed, 19 insertions(+), 67 deletions(-)
 
-diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-index eafe7daf6ff1..9aafdc768f2b 100644
---- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
-+++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-@@ -775,10 +775,17 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
- 	platform_set_drvdata(pdev, meson_dw_hdmi);
+diff --git a/drivers/gpu/drm/meson/Kconfig b/drivers/gpu/drm/meson/Kconfig
+index 417f79829cf8..0dc5ca21e4fc 100644
+--- a/drivers/gpu/drm/meson/Kconfig
++++ b/drivers/gpu/drm/meson/Kconfig
+@@ -13,6 +13,7 @@ config DRM_MESON
+ 	select REGMAP_MMIO
+ 	select MESON_CANVAS
+ 	select CEC_CORE if CEC_NOTIFIER
++	select DRM_DISPLAY_HDMI_CEC_NOTIFIER_HELPER if CEC_NOTIFIER
  
- 	meson_dw_hdmi->hdmi = dw_hdmi_probe(pdev, &meson_dw_hdmi->dw_plat_data);
--	if (IS_ERR(meson_dw_hdmi->hdmi))
-+	if (IS_ERR(meson_dw_hdmi->hdmi)) {
-+		devm_free_irq(dev, irq, meson_dw_hdmi);
- 		return PTR_ERR(meson_dw_hdmi->hdmi);
-+	}
+ config DRM_MESON_DW_HDMI
+ 	tristate "HDMI Synopsys Controller support for Amlogic Meson Display"
+diff --git a/drivers/gpu/drm/meson/meson_encoder_hdmi.c b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
+index 1b9a1d9ed3d3..45104ef35344 100644
+--- a/drivers/gpu/drm/meson/meson_encoder_hdmi.c
++++ b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
+@@ -16,8 +16,6 @@
+ #include <linux/regulator/consumer.h>
+ #include <linux/reset.h>
  
- 	meson_dw_hdmi->bridge = of_drm_find_and_get_bridge(pdev->dev.of_node);
-+	if (!meson_dw_hdmi->bridge) {
-+		devm_free_irq(dev, irq, meson_dw_hdmi);
-+		dw_hdmi_remove(meson_dw_hdmi->hdmi);
-+		return -ENODEV;
-+	}
+-#include <media/cec-notifier.h>
+-
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_bridge.h>
+ #include <drm/drm_bridge_connector.h>
+@@ -41,7 +39,6 @@ struct meson_encoder_hdmi {
+ 	struct drm_connector *connector;
+ 	struct meson_drm *priv;
+ 	unsigned long output_bus_fmt;
+-	struct cec_notifier *cec_notifier;
+ };
  
- 	DRM_DEBUG_DRIVER("HDMI controller initialized\n");
- 
-@@ -793,8 +800,8 @@ static void meson_dw_hdmi_unbind(struct device *dev, struct device *master,
- 	int irq = platform_get_irq(pdev, 0);
- 
- 	devm_free_irq(dev, irq, meson_dw_hdmi);
--	dw_hdmi_unbind(meson_dw_hdmi->hdmi);
- 	drm_bridge_put(meson_dw_hdmi->bridge);
-+	dw_hdmi_remove(meson_dw_hdmi->hdmi);
+ #define bridge_to_meson_encoder_hdmi(x) \
+@@ -57,14 +54,6 @@ static int meson_encoder_hdmi_attach(struct drm_bridge *bridge,
+ 				 &encoder_hdmi->bridge, flags);
  }
  
- static const struct component_ops meson_dw_hdmi_ops = {
+-static void meson_encoder_hdmi_detach(struct drm_bridge *bridge)
+-{
+-	struct meson_encoder_hdmi *encoder_hdmi = bridge_to_meson_encoder_hdmi(bridge);
+-
+-	cec_notifier_conn_unregister(encoder_hdmi->cec_notifier);
+-	encoder_hdmi->cec_notifier = NULL;
+-}
+-
+ static void meson_encoder_hdmi_set_vclk(struct meson_encoder_hdmi *encoder_hdmi,
+ 					const struct drm_display_mode *mode)
+ {
+@@ -321,27 +310,9 @@ static int meson_encoder_hdmi_atomic_check(struct drm_bridge *bridge,
+ 	return 0;
+ }
+ 
+-static void meson_encoder_hdmi_hpd_notify(struct drm_bridge *bridge,
+-					  struct drm_connector *connector,
+-					  enum drm_connector_status status)
+-{
+-	struct meson_encoder_hdmi *encoder_hdmi = bridge_to_meson_encoder_hdmi(bridge);
+-
+-	if (!encoder_hdmi->cec_notifier)
+-		return;
+-
+-	if (status == connector_status_connected)
+-		cec_notifier_set_phys_addr(encoder_hdmi->cec_notifier,
+-					   connector->display_info.source_physical_address);
+-	else
+-		cec_notifier_phys_addr_invalidate(encoder_hdmi->cec_notifier);
+-}
+-
+ static const struct drm_bridge_funcs meson_encoder_hdmi_bridge_funcs = {
+ 	.attach = meson_encoder_hdmi_attach,
+-	.detach = meson_encoder_hdmi_detach,
+ 	.mode_valid = meson_encoder_hdmi_mode_valid,
+-	.hpd_notify = meson_encoder_hdmi_hpd_notify,
+ 	.atomic_enable = meson_encoder_hdmi_atomic_enable,
+ 	.atomic_disable = meson_encoder_hdmi_atomic_disable,
+ 	.atomic_get_input_bus_fmts = meson_encoder_hdmi_get_inp_bus_fmts,
+@@ -374,9 +345,9 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
+ 
+ 	meson_encoder_hdmi->bridge.next_bridge = of_drm_find_and_get_bridge(remote);
+ 	if (!meson_encoder_hdmi->bridge.next_bridge) {
+-		ret = dev_err_probe(priv->dev, -EPROBE_DEFER,
+-				    "Failed to find HDMI transceiver bridge\n");
+-		goto err_put_node;
++		of_node_put(remote);
++		return dev_err_probe(priv->dev, -EPROBE_DEFER,
++				     "Failed to find HDMI transceiver bridge\n");
+ 	}
+ 
+ 	/* HDMI Encoder Bridge */
+@@ -384,6 +355,13 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
+ 	meson_encoder_hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
+ 	meson_encoder_hdmi->bridge.interlace_allowed = true;
+ 
++	pdev = of_find_device_by_node(remote);
++	of_node_put(remote);
++	if (pdev) {
++		meson_encoder_hdmi->bridge.ops |= DRM_BRIDGE_OP_HDMI_CEC_NOTIFIER;
++		meson_encoder_hdmi->bridge.hdmi_cec_dev = &pdev->dev;
++	}
++
+ 	drm_bridge_add(&meson_encoder_hdmi->bridge);
+ 
+ 	meson_encoder_hdmi->priv = priv;
+@@ -391,30 +369,24 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
+ 	/* Encoder */
+ 	ret = drm_simple_encoder_init(priv->drm, &meson_encoder_hdmi->encoder,
+ 				      DRM_MODE_ENCODER_TMDS);
+-	if (ret) {
+-		dev_err_probe(priv->dev, ret, "Failed to init HDMI encoder\n");
+-		goto err_put_node;
+-	}
++	if (ret)
++		return dev_err_probe(priv->dev, ret, "Failed to init HDMI encoder\n");
+ 
+ 	meson_encoder_hdmi->encoder.possible_crtcs = BIT(0);
+ 
+ 	/* Attach HDMI Encoder Bridge to Encoder */
+ 	ret = drm_bridge_attach(&meson_encoder_hdmi->encoder, &meson_encoder_hdmi->bridge, NULL,
+ 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
+-	if (ret) {
+-		dev_err_probe(priv->dev, ret, "Failed to attach bridge\n");
+-		goto err_put_node;
+-	}
++	if (ret)
++		return dev_err_probe(priv->dev, ret, "Failed to attach bridge\n");
+ 
+ 	/* Initialize & attach Bridge Connector */
+ 	meson_encoder_hdmi->connector = drm_bridge_connector_init(priv->drm,
+ 							&meson_encoder_hdmi->encoder);
+-	if (IS_ERR(meson_encoder_hdmi->connector)) {
+-		ret = dev_err_probe(priv->dev,
+-				    PTR_ERR(meson_encoder_hdmi->connector),
+-				    "Unable to create HDMI bridge connector\n");
+-		goto err_put_node;
+-	}
++	if (IS_ERR(meson_encoder_hdmi->connector))
++		return dev_err_probe(priv->dev,
++				     PTR_ERR(meson_encoder_hdmi->connector),
++				     "Unable to create HDMI bridge connector\n");
+ 
+ 	/*
+ 	 * We should have now in place:
+@@ -437,32 +409,11 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
+ 	/* Handle this here until handled by drm_bridge_connector_init() */
+ 	meson_encoder_hdmi->connector->ycbcr_420_allowed = true;
+ 
+-	pdev = of_find_device_by_node(remote);
+-	of_node_put(remote);
+-	if (pdev) {
+-		struct cec_connector_info conn_info;
+-		struct cec_notifier *notifier;
+-
+-		cec_fill_conn_info_from_drm(&conn_info, meson_encoder_hdmi->connector);
+-
+-		notifier = cec_notifier_conn_register(&pdev->dev, NULL, &conn_info);
+-		if (!notifier) {
+-			put_device(&pdev->dev);
+-			return -ENOMEM;
+-		}
+-
+-		meson_encoder_hdmi->cec_notifier = notifier;
+-	}
+-
+ 	priv->encoders[MESON_ENC_HDMI] = meson_encoder_hdmi;
+ 
+ 	dev_dbg(priv->dev, "HDMI encoder initialized\n");
+ 
+ 	return 0;
+-
+-err_put_node:
+-	of_node_put(remote);
+-	return ret;
+ }
+ 
+ void meson_encoder_hdmi_remove(struct meson_drm *priv)
 -- 
 2.54.0
 
