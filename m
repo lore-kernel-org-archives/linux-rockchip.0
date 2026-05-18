@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9A00CD4F54
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43086CD4F57
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TOEk45x6yS6dwFdx5/VR5d9ngEFW8FSSJLBPZ0mevM0=; b=sHbXvRKrTtZYuo
-	cxHskOC06WsU+ZnWqlY/5nrxWz+WrDLMBLvpRfOOMcCUiK+mQ6jOuS22c1/frah9mTkS2avxfFBhl
-	sLQh0oMFmqM77lkq9HIn9es7gPRPDQKrv/MuhT5Idfd9Mi/JhiAH2yLCdmWlrFi3soANcvxYuU105
-	VnhvovHBsYMZE8MiGHP0LdkIIfL3++8b2KWb5TT3OkkDWIcv7y99PoNtOi7om354+01U8lG94Jti4
-	KB72lTeUkKwuE7z3Z12I5g28Op3b3xT6I3xpCO8Mc5Xzk3QfyKjL5wsotckntzS7h1phtHf4pIgOZ
-	O1EpC+mz/EWWv83IhZqA==;
+	List-Owner; bh=zgZNPOISGLgspknV3l/LH+YfnCW0T40gGhx+X0y1PJE=; b=wmESM8e1S5e1Zo
+	KPKODo2rTIt5f5jrb23fEMdlNogbtRUplIDEkBi3IlWjMutLog15bJCkNCT2u/5Sv8jRR/QNozzmH
+	/BHZtDevkFfpOKuciW4sI+wZeTBif7vU4vfAw03yN1r3tPgnDi2t/tBV7gTeMe5ta0SBwybNIJbr3
+	Pcgyeoi2UzaSUh0pyK4QDoHguJqoHhlGAte23ZIyyNPbTCSb0wN0bro7guzj3w8I5Ozhd+cF5qwW9
+	sN0/VpE+B/RblnN1lo6gLUl0Ii+dF4WZmFLr6X254lpR0+eJfwtPw4HCGjgS61UcTcNE+06vWrNNk
+	hfsJdQ2LLGB5ApgLbfJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xI-0000000Gm85-2et7;
-	Mon, 18 May 2026 19:48:48 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wP3xP-0000000GmMb-0Lp8;
+	Mon, 18 May 2026 19:48:55 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xE-0000000Gm1x-3qWF
+	id 1wP3xK-0000000GmBC-16qL
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 19:48:47 +0000
+	Mon, 18 May 2026 19:48:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133724; bh=FcxEYOPmNuM9yRHj6lWDMsbsVp/OdK4Trn0fMntUI3A=;
- b=XimB3cVrd35e5vnp1WvQSGuTJCgqs25pAywG9GRJMSnTOXDl1zdyyECMqnYJzV3Wribng9Yt6
- OWGDhLQBtPVh//srdUmyIMbXewpIyvEOC8F49i70zofnXRNXQd82JFb7kmirYhtQO81MLHs7uJ8
- gh/uxeq6/GwUoZ58SC8HCYLLUrFX4W/a4FEEUd31ujFzVHObbFztJN6P8tSjpOW5K86LsQ9UJj4
- MUfrJnvSosm3Bm2QVCtMisafjytPXj+WNZQGyPGgmysTzk0aLod7QoAxIYNJAkmKEggMU1V4E/D
- 5gHH7ZgGXL6yJ/+Z7bP+SIWcORnbUUjiq07l3JN9Vrjw==
-X-Forward-Email-ID: 6a0b6d02b74b0ebd362eeec6
+ t=1779133729; bh=P1OIqjzoD97WJDMvkcHJxKFh2vpQep87U1vwwejFjdw=;
+ b=fVOt15BeTWyTPIU2qQfZ6QRyqwW0EiB9CMAkNgnY3DbjtAfYCyCp8DhJ8KvaGOXYoW461GUd7
+ xH9RsHbGX0ilnzCMKGrlFWH25E1d/xmRETq8x/8bvFSNMTgf9Urn7yMTZvdKClvvdEwMvlkKX3o
+ zNld1lspSzw97TtjqwV8PBMLpNtQqrI1trupptwicuWSXj82CnKrMKObKINSpsnNyDgdWd10H3O
+ UQoSGJDwlo3n25vjYZIQesL3EBzA1KlZ9Br8RHtjaYdWvUpan//4X8NS2WQHR9JlkS4u62QztJt
+ BJfQ3fCAsZyW5Ba+NJO6zTR7WZ5ZIjZsGwNi11wotujg==
+X-Forward-Email-ID: 6a0b6d1cb74b0ebd362eef6a
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 2.8.12
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -61,16 +61,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 06/13] drm/meson: encoder_hdmi: Use bridge connector CEC notifier
-Date: Mon, 18 May 2026 19:47:34 +0000
-Message-ID: <20260518194744.2483580-7-jonas@kwiboo.se>
+Subject: [PATCH 12/13] drm/meson: dw-hdmi: Use dw_hdmi_schedule_hpd_work() helper
+Date: Mon, 18 May 2026 19:47:40 +0000
+Message-ID: <20260518194744.2483580-13-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260518194744.2483580-1-jonas@kwiboo.se>
 References: <20260518194744.2483580-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_124845_058862_913C5102 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20260518_124850_433032_015BF69A 
+X-CRM114-Status: GOOD (  12.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,193 +87,75 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The dw-hdmi bridge detect() func now updates EDID and CEC phys addr for
-the connector and any registered generic CEC notifier.
+Change to use the dw-hdmi HPD delayed work to handle HPD events.
 
-Replace the open-coded CEC notifier handling with use of the bridge CEC
-notifier op.
+Also merge top and bottom half IRQ handlers to simplify IRQ handling now
+that HPD event is handled using a delayed work.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/meson/Kconfig              |  1 +
- drivers/gpu/drm/meson/meson_encoder_hdmi.c | 85 +++++-----------------
- 2 files changed, 19 insertions(+), 67 deletions(-)
+ drivers/gpu/drm/meson/meson_dw_hdmi.c | 26 +++++---------------------
+ 1 file changed, 5 insertions(+), 21 deletions(-)
 
-diff --git a/drivers/gpu/drm/meson/Kconfig b/drivers/gpu/drm/meson/Kconfig
-index 417f79829cf8..0dc5ca21e4fc 100644
---- a/drivers/gpu/drm/meson/Kconfig
-+++ b/drivers/gpu/drm/meson/Kconfig
-@@ -13,6 +13,7 @@ config DRM_MESON
- 	select REGMAP_MMIO
- 	select MESON_CANVAS
- 	select CEC_CORE if CEC_NOTIFIER
-+	select DRM_DISPLAY_HDMI_CEC_NOTIFIER_HELPER if CEC_NOTIFIER
- 
- config DRM_MESON_DW_HDMI
- 	tristate "HDMI Synopsys Controller support for Amlogic Meson Display"
-diff --git a/drivers/gpu/drm/meson/meson_encoder_hdmi.c b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-index 1b9a1d9ed3d3..45104ef35344 100644
---- a/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-+++ b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
-@@ -16,8 +16,6 @@
- #include <linux/regulator/consumer.h>
- #include <linux/reset.h>
- 
--#include <media/cec-notifier.h>
--
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_bridge_connector.h>
-@@ -41,7 +39,6 @@ struct meson_encoder_hdmi {
- 	struct drm_connector *connector;
- 	struct meson_drm *priv;
- 	unsigned long output_bus_fmt;
--	struct cec_notifier *cec_notifier;
+diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
+index 1dd59196ff7f..7b465e216759 100644
+--- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
++++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
+@@ -145,7 +145,6 @@ struct meson_dw_hdmi {
+ 	struct reset_control *hdmitx_apb;
+ 	struct reset_control *hdmitx_ctrl;
+ 	struct reset_control *hdmitx_phy;
+-	u32 irq_stat;
+ 	struct dw_hdmi *hdmi;
+ 	struct drm_bridge *bridge;
  };
+@@ -498,10 +497,10 @@ static irqreturn_t dw_hdmi_top_irq(int irq, void *dev_id)
+ 	stat = dw_hdmi->data->top_read(dw_hdmi, HDMITX_TOP_INTR_STAT);
+ 	dw_hdmi->data->top_write(dw_hdmi, HDMITX_TOP_INTR_STAT_CLR, stat);
  
- #define bridge_to_meson_encoder_hdmi(x) \
-@@ -57,14 +54,6 @@ static int meson_encoder_hdmi_attach(struct drm_bridge *bridge,
- 				 &encoder_hdmi->bridge, flags);
- }
- 
--static void meson_encoder_hdmi_detach(struct drm_bridge *bridge)
--{
--	struct meson_encoder_hdmi *encoder_hdmi = bridge_to_meson_encoder_hdmi(bridge);
--
--	cec_notifier_conn_unregister(encoder_hdmi->cec_notifier);
--	encoder_hdmi->cec_notifier = NULL;
--}
--
- static void meson_encoder_hdmi_set_vclk(struct meson_encoder_hdmi *encoder_hdmi,
- 					const struct drm_display_mode *mode)
- {
-@@ -321,27 +310,9 @@ static int meson_encoder_hdmi_atomic_check(struct drm_bridge *bridge,
- 	return 0;
- }
- 
--static void meson_encoder_hdmi_hpd_notify(struct drm_bridge *bridge,
--					  struct drm_connector *connector,
--					  enum drm_connector_status status)
--{
--	struct meson_encoder_hdmi *encoder_hdmi = bridge_to_meson_encoder_hdmi(bridge);
--
--	if (!encoder_hdmi->cec_notifier)
--		return;
--
--	if (status == connector_status_connected)
--		cec_notifier_set_phys_addr(encoder_hdmi->cec_notifier,
--					   connector->display_info.source_physical_address);
--	else
--		cec_notifier_phys_addr_invalidate(encoder_hdmi->cec_notifier);
--}
--
- static const struct drm_bridge_funcs meson_encoder_hdmi_bridge_funcs = {
- 	.attach = meson_encoder_hdmi_attach,
--	.detach = meson_encoder_hdmi_detach,
- 	.mode_valid = meson_encoder_hdmi_mode_valid,
--	.hpd_notify = meson_encoder_hdmi_hpd_notify,
- 	.atomic_enable = meson_encoder_hdmi_atomic_enable,
- 	.atomic_disable = meson_encoder_hdmi_atomic_disable,
- 	.atomic_get_input_bus_fmts = meson_encoder_hdmi_get_inp_bus_fmts,
-@@ -374,9 +345,9 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
- 
- 	meson_encoder_hdmi->bridge.next_bridge = of_drm_find_and_get_bridge(remote);
- 	if (!meson_encoder_hdmi->bridge.next_bridge) {
--		ret = dev_err_probe(priv->dev, -EPROBE_DEFER,
--				    "Failed to find HDMI transceiver bridge\n");
--		goto err_put_node;
-+		of_node_put(remote);
-+		return dev_err_probe(priv->dev, -EPROBE_DEFER,
-+				     "Failed to find HDMI transceiver bridge\n");
+-	/* HPD Events, handle in the threaded interrupt handler */
++	/* HPD Events, handle in delayed work */
+ 	if (stat & (HDMITX_TOP_INTR_HPD_RISE | HDMITX_TOP_INTR_HPD_FALL)) {
+-		dw_hdmi->irq_stat = stat;
+-		return IRQ_WAKE_THREAD;
++		dw_hdmi_schedule_hpd_work(dw_hdmi->hdmi);
++		return IRQ_HANDLED;
  	}
  
- 	/* HDMI Encoder Bridge */
-@@ -384,6 +355,13 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
- 	meson_encoder_hdmi->bridge.type = DRM_MODE_CONNECTOR_HDMIA;
- 	meson_encoder_hdmi->bridge.interlace_allowed = true;
- 
-+	pdev = of_find_device_by_node(remote);
-+	of_node_put(remote);
-+	if (pdev) {
-+		meson_encoder_hdmi->bridge.ops |= DRM_BRIDGE_OP_HDMI_CEC_NOTIFIER;
-+		meson_encoder_hdmi->bridge.hdmi_cec_dev = &pdev->dev;
-+	}
-+
- 	drm_bridge_add(&meson_encoder_hdmi->bridge);
- 
- 	meson_encoder_hdmi->priv = priv;
-@@ -391,30 +369,24 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
- 	/* Encoder */
- 	ret = drm_simple_encoder_init(priv->drm, &meson_encoder_hdmi->encoder,
- 				      DRM_MODE_ENCODER_TMDS);
--	if (ret) {
--		dev_err_probe(priv->dev, ret, "Failed to init HDMI encoder\n");
--		goto err_put_node;
--	}
-+	if (ret)
-+		return dev_err_probe(priv->dev, ret, "Failed to init HDMI encoder\n");
- 
- 	meson_encoder_hdmi->encoder.possible_crtcs = BIT(0);
- 
- 	/* Attach HDMI Encoder Bridge to Encoder */
- 	ret = drm_bridge_attach(&meson_encoder_hdmi->encoder, &meson_encoder_hdmi->bridge, NULL,
- 				DRM_BRIDGE_ATTACH_NO_CONNECTOR);
--	if (ret) {
--		dev_err_probe(priv->dev, ret, "Failed to attach bridge\n");
--		goto err_put_node;
--	}
-+	if (ret)
-+		return dev_err_probe(priv->dev, ret, "Failed to attach bridge\n");
- 
- 	/* Initialize & attach Bridge Connector */
- 	meson_encoder_hdmi->connector = drm_bridge_connector_init(priv->drm,
- 							&meson_encoder_hdmi->encoder);
--	if (IS_ERR(meson_encoder_hdmi->connector)) {
--		ret = dev_err_probe(priv->dev,
--				    PTR_ERR(meson_encoder_hdmi->connector),
--				    "Unable to create HDMI bridge connector\n");
--		goto err_put_node;
--	}
-+	if (IS_ERR(meson_encoder_hdmi->connector))
-+		return dev_err_probe(priv->dev,
-+				     PTR_ERR(meson_encoder_hdmi->connector),
-+				     "Unable to create HDMI bridge connector\n");
- 
- 	/*
- 	 * We should have now in place:
-@@ -437,32 +409,11 @@ int meson_encoder_hdmi_probe(struct meson_drm *priv)
- 	/* Handle this here until handled by drm_bridge_connector_init() */
- 	meson_encoder_hdmi->connector->ycbcr_420_allowed = true;
- 
--	pdev = of_find_device_by_node(remote);
--	of_node_put(remote);
--	if (pdev) {
--		struct cec_connector_info conn_info;
--		struct cec_notifier *notifier;
--
--		cec_fill_conn_info_from_drm(&conn_info, meson_encoder_hdmi->connector);
--
--		notifier = cec_notifier_conn_register(&pdev->dev, NULL, &conn_info);
--		if (!notifier) {
--			put_device(&pdev->dev);
--			return -ENOMEM;
--		}
--
--		meson_encoder_hdmi->cec_notifier = notifier;
--	}
--
- 	priv->encoders[MESON_ENC_HDMI] = meson_encoder_hdmi;
- 
- 	dev_dbg(priv->dev, "HDMI encoder initialized\n");
- 
- 	return 0;
--
--err_put_node:
--	of_node_put(remote);
--	return ret;
+ 	/* HDMI Controller Interrupt */
+@@ -513,20 +512,6 @@ static irqreturn_t dw_hdmi_top_irq(int irq, void *dev_id)
+ 	return IRQ_HANDLED;
  }
  
- void meson_encoder_hdmi_remove(struct meson_drm *priv)
+-/* Threaded interrupt handler to manage HPD events */
+-static irqreturn_t dw_hdmi_top_thread_irq(int irq, void *dev_id)
+-{
+-	struct meson_dw_hdmi *dw_hdmi = dev_id;
+-	u32 stat = dw_hdmi->irq_stat;
+-
+-	/* HPD Events */
+-	if (stat & (HDMITX_TOP_INTR_HPD_RISE | HDMITX_TOP_INTR_HPD_FALL) &&
+-	    dw_hdmi->bridge)
+-		drm_helper_hpd_irq_event(dw_hdmi->bridge->dev);
+-
+-	return IRQ_HANDLED;
+-}
+-
+ /* DW HDMI Regmap */
+ 
+ static int meson_dw_hdmi_reg_read(void *context, unsigned int reg,
+@@ -715,9 +700,8 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
+ 	if (irq < 0)
+ 		return irq;
+ 
+-	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_top_irq,
+-					dw_hdmi_top_thread_irq, IRQF_SHARED,
+-					"dw_hdmi_top_irq", meson_dw_hdmi);
++	ret = devm_request_irq(dev, irq, dw_hdmi_top_irq, IRQF_SHARED,
++			       "dw_hdmi_top_irq", meson_dw_hdmi);
+ 	if (ret)
+ 		return dev_err_probe(dev, ret,
+ 				     "Failed to request hdmi top irq\n");
 -- 
 2.54.0
 
