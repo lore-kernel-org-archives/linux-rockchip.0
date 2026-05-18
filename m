@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93B93CD4F54
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:38:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0E4CCD4F4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:38:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ls0VqCNTFQa711tqHp6Hj4hwoINNE4uEjdnN25PVAq4=; b=BRqaRJKvMuy1/O
-	MF/fJ+2JUzDmOYvCiJ0MPzEPTqfHP/vW0C/exoineraORQMLrXDKBD3jkXMpbfX6GiDc0sTfaB3ar
-	Ow8Ty+a6K48AV4V2JNlw8kGykSN0a0BesVTmol60AC5X2WBskmYDp6kI1iMTBrQOM5Y6ZoLLJvbGM
-	tOER3rL8EhkWugjmwqbDMpyHHA4Wy+abZTZDTGd4BwnAVt9VxGPGiCvWJWtyybwqyOQR2BTQ+9ETq
-	2FSxRfJctpGroKcLxlFObGmZmt/h9jTCvioHa/j5M0xjP2yc34dL4jsZMuOXfCGtGvgyFjX13RPzX
-	FDbGf8oSzEZDmtFkPkhg==;
+	List-Owner; bh=qWmtyEb7C7m2uRWB2AOOwySRllSHiQGLme0ct/l1KyA=; b=YHspoG48VHYED0
+	wDnMU7RhwS+OpuKhe2oGTyKxmi9H6xWgsVwVDiJd/tUXFy3lqxU4wcwhis8r0en5s4KEqjwdu9w61
+	0VVrSH+bGyxpLDgxXCwwtrq47agbNBFHG+0UqFlp5jv47MR3NC9mC205DU+faSFdFS2r6XoKA9KG0
+	T+Rf3lipVGWxakV/4swE3IJOQJytYfMj3meXpuh3UY6NzxANhSVpeCEsq+shqPDN4QyCBHqFijmRk
+	JPV4XI9vNh8fB35T3OLZzbQKz4QJpHlajJ5+0f7Jt0EMeRvf/aoXhqoHK2le4eItPszTzrwRHSKrn
+	zr7VCM7IEk9PZAmBuQdA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3n5-0000000Ghu1-2R2y;
-	Mon, 18 May 2026 19:38:15 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1wP3nC-0000000Gi2C-3mmf;
+	Mon, 18 May 2026 19:38:22 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3n1-0000000Ghom-0J91
+	id 1wP3n7-0000000Ghup-1EqS
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 19:38:14 +0000
+	Mon, 18 May 2026 19:38:19 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133089; bh=ThbLfdSHfpoHWBkpdG7GEcedzyok/O/FgpfO8mmac0M=;
- b=syCMpMd7V4ZeV3x3PiezY27IHLCLmLWb3TQ6KyeE1qY96YqdtLf2Lye6c+DrdpD8RWn0xjy1m
- l3ScYlTS9nmzZ5lweHs7nhrnpyvNkcJOrcDNmL92W11ofY4PBj0/csaF2lQjHmulyt4Wb+xfnIW
- H4N+DVTCGKxHEEIdr0OdaPGsLbJ/bLQKGarpbK5c/xZs6YLmRJ/ygSfKNvSMT9WqJaVplda3djE
- aBp0I/R8bOqsgiYfkumGGyDnhFVMn1MmKGmhYc2KvmE21mkMsc/llmUrJUgdMQakfSGCWagWaes
- h6PutMeMQD/Ay48RqZ4hLMw+DaARhveihC+tdMLhI5jg==
-X-Forward-Email-ID: 6a0b6a9e486b4b38b826f9f0
+ t=1779133096; bh=Ige+NfQAL/cmeNHtDcasRRc+phKqB217iKqo21sCGF4=;
+ b=eGVb+uOlmGwnvFUXKw+G/qHK6CMvQhP9S4toOB4kGxLJl5bcK6WBMpsVH6lskTZ2T63Anl76B
+ CL9BBja9I1AbYZd29/p9hRhijB0mgcyT4NdxoiW9cPwlaNIGxuaxmhXBmpiK8B08ogtxVHekSlZ
+ WO7asVpjhNJ8K7CNPdYqVgkXFmK7NgbD1nh94o1qkbTD/wGmrwcLlkh2V2H+SHM14QH/kpJfzsC
+ cUKxsBZzCXHinfZJTn1p+OL6d00pj8u/nrHgXG6e9SkqbCc3yNZacY+OGcsHpGj0BqsFY1fQqY6
+ hB04WivNOxyrQgk/B1vfsv1QmgaO+hy1UR/uH47bimwQ==
+X-Forward-Email-ID: 6a0b6aa5486b4b38b826fa26
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
+ 121.127.44.73
 X-Forward-Email-Version: 2.8.12
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -58,16 +58,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 03/11] drm/rockchip: dw_hdmi: Use drmres helpers for encoder resources
-Date: Mon, 18 May 2026 19:37:37 +0000
-Message-ID: <20260518193748.2482823-4-jonas@kwiboo.se>
+Subject: [PATCH v2 05/11] drm/rockchip: dw_hdmi: Hold a reference to the dw-hdmi bridge
+Date: Mon, 18 May 2026 19:37:39 +0000
+Message-ID: <20260518193748.2482823-6-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260518193748.2482823-1-jonas@kwiboo.se>
 References: <20260518193748.2482823-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_123813_363657_78613266 
-X-CRM114-Status: GOOD (  13.36  )
+X-CRM114-CacheID: sfid-20260518_123818_409604_A81653D8 
+X-CRM114-Status: GOOD (  11.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,90 +84,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change to use drmres helpers drmm_kzalloc() to allocate driver data
-and drmm_encoder_init() to initialize the encoder. With use of drmres
-the manual encoder cleanup in failure path and unbind is also removed.
+Take a reference on the dw-hdmi bridge during bind and drop it again
+from unbind to ensure the bridge is kept alive for the lifetime of the
+encoder component.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-v2: Adjust error message related to dw-hdmi bridge
+v2: Use dw_hdmi_unbind() and adjust the error message
 ---
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 29 ++++++++-------------
- 1 file changed, 11 insertions(+), 18 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 0d5d60c315c6..12a7c989c4ee 100644
+index 8c26223b70b5..538906e342d2 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -14,6 +14,7 @@
+@@ -79,6 +79,7 @@ struct rockchip_hdmi {
+ 	struct clk *hdmiphy_clk;
+ 	struct clk *ref_clk;
+ 	struct clk *grf_clk;
++	struct drm_bridge *bridge;
+ 	struct dw_hdmi *hdmi;
+ 	struct phy *phy;
+ };
+@@ -609,6 +610,13 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 		return dev_err_probe(dev, PTR_ERR(hdmi->hdmi),
+ 				     "failed to probe dw-hdmi bridge\n");
  
- #include <drm/bridge/dw_hdmi.h>
- #include <drm/drm_edid.h>
-+#include <drm/drm_managed.h>
- #include <drm/drm_of.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
-@@ -550,13 +551,14 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 	if (!drv_data)
- 		return -ENODEV;
- 
--	hdmi = devm_kzalloc(dev, sizeof(*hdmi), GFP_KERNEL);
-+	hdmi = drmm_kzalloc(drm, sizeof(*hdmi), GFP_KERNEL);
- 	if (!hdmi)
- 		return -ENOMEM;
- 
--	plat_data = devm_kmemdup(dev, drv_data, sizeof(*drv_data), GFP_KERNEL);
-+	plat_data = drmm_kzalloc(drm, sizeof(*drv_data), GFP_KERNEL);
- 	if (!plat_data)
- 		return -ENOMEM;
-+	memcpy(plat_data, drv_data, sizeof(*drv_data));
- 
- 	hdmi->dev = dev;
- 	hdmi->plat_data = plat_data;
-@@ -608,28 +610,20 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
- 			     FIELD_PREP_WM16(RK3568_HDMI_SCLIN_MSK, 1));
- 	}
- 
-+	ret = drmm_encoder_init(drm, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to init encoder\n");
++	hdmi->bridge = of_drm_find_and_get_bridge(np);
++	if (!hdmi->bridge) {
++		dw_hdmi_unbind(hdmi->hdmi);
++		return dev_err_probe(dev, -ENODEV,
++				     "failed to find dw-hdmi bridge\n");
++	}
 +
- 	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
--	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
- 
- 	platform_set_drvdata(pdev, hdmi);
- 
- 	hdmi->hdmi = dw_hdmi_bind(pdev, encoder, plat_data);
--
--	/*
--	 * If dw_hdmi_bind() fails we'll never call dw_hdmi_unbind(),
--	 * which would have called the encoder cleanup.  Do it manually.
--	 */
--	if (IS_ERR(hdmi->hdmi)) {
--		ret = PTR_ERR(hdmi->hdmi);
--		goto err_bind;
--	}
-+	if (IS_ERR(hdmi->hdmi))
-+		return dev_err_probe(dev, PTR_ERR(hdmi->hdmi),
-+				     "failed to probe dw-hdmi bridge\n");
- 
  	return 0;
--
--err_bind:
--	drm_encoder_cleanup(encoder);
--
--	return ret;
  }
  
- static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
-@@ -638,7 +632,6 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+@@ -617,6 +625,7 @@ static void dw_hdmi_rockchip_unbind(struct device *dev, struct device *master,
+ {
  	struct rockchip_hdmi *hdmi = dev_get_drvdata(dev);
  
++	drm_bridge_put(hdmi->bridge);
  	dw_hdmi_unbind(hdmi->hdmi);
--	drm_encoder_cleanup(&hdmi->encoder.encoder);
  }
  
- static const struct component_ops dw_hdmi_rockchip_ops = {
 -- 
 2.54.0
 
