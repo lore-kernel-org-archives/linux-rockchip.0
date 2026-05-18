@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36927CD4F4A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 18:03:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C5A0CD4F3C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 18:03:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=fNCrMyTzCY5291dgt6oQurtG/0L7TOEBHKi+DKjIf2M=; b=tjHXEbEQ7B8wQs
-	Y7g2kl6li++zzj691gKg00K2JTFKVxYWHVQauM09lmO5/J2K7BAqCea3s3q4sqiIbqAfkCYgqpVoT
-	nkByVW4uQF76UAh2w+x5wbNGR4scNobf71/VuDaSzzEPlXI1nG0DMxDkSw9a1A1Yijs2Q2WGVkfnV
-	M19ycxJxVH4UK4OnEJwx76GQn/l9Zu39OBedWlxI9KI0i2VMOYH4rSa3wJ1jMk6qk5BmWMCw+Np3x
-	bQT1n+Y6iM4ZSBjkz+A8IQeiPOym9ScPdG2qxLLj9gts/OgByju4Yn0LBtaYpQH52FUB+2JWDxP8u
-	L02H/KmEtvXrzawaUXrg==;
+	List-Owner; bh=Ari4cffJwzEQ9ncEaAOtTt9k3r31j4ZBre6JKJLviQc=; b=z3fQaiWxFjaWsY
+	1LBiScSA7BqFOQ5Xl5LBrHEoC/OU2pL+3RX9GCC4uWl8q+lBBR5/M50k7Pcz4WuI8leqAUqP35LR7
+	nkKcjDUFEf29y78+mVh3v8mQl7Mqhr0cHUb5nStT3Tm13d+TtxTv8rUIsKqUlSMgYhMPH+Zcje60K
+	uC3TBqa3+Bef5VIhQnRcQKyKb7B+yG4QuoyUPqbo798d9UA9mv9aCjSFwmcHDxUN/iADVbVAxf071
+	xyRxbjFvUIXZK1ukhw7U5FvC0yN9rPLRcZ9pV7o49q8GB3pboPm15VoK4aFDYI+yWO0ssqhBPoCTE
+	pQbi4sB71Pzf2uL1VZPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP2JO-0000000GU2G-427Z;
-	Mon, 18 May 2026 18:03:30 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wP2JW-0000000GUGX-0oU7;
+	Mon, 18 May 2026 18:03:38 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP2JI-0000000GTr3-1IMg
+	id 1wP2JP-0000000GU2c-2xKp
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 18:03:28 +0000
+	Mon, 18 May 2026 18:03:36 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779127398; bh=6RF7BKuGakMjKCbN9mlVwwIB3PRUeYCX0ksZtYl9O4g=;
- b=d48VFCV2e+rfUWyaXByQ4JDNxOJpEUA4a0A4Looap29WoRICY9lkkw0bQWyNYTopsvL5fPW40
- GsrNMBcR1/aca3XCtwsBNr2BXRvQy+hRVYweM/0TJZxj0WZTeQOMpUWfpl9DijX8EyAPwI2qZ1A
- ssHRir8HgALtkY62CDQXjopDtsV58vyPl7xyTvt1F5/1J30MECnZDwQy7YN0d2Pyq18jRgd9IEE
- jOzBaUz/yVPR2wq600AzTRBhXOL1uaJa8MVNuBWniQwPLP+yTKJooilQIHbLAWo7AnFqccJixum
- l/PsPGKe0pce8LVj2mhWcRJ58A5zOxfeFlC+WgsBHXeA==
-X-Forward-Email-ID: 6a0b5429b84dbc72d2274daf
+ t=1779127411; bh=HKqZrWH/mIENot9S0r7SqDZlavFSRVbiuTr0NBVKdNk=;
+ b=l8eHPFv0TmAuE5YrdT6n7leBO/3MCxmMkzPr36OOoa1EzoHVYffsNv0dQlT0TKPqgq9J+RieA
+ voIrVa76jwrzVHpqGbBDhpdcUB0VeJ0rHtjJoVtdyIBFidSgOmLtCTKrEbFGnkwSQOlWhQjeoS6
+ eXbyZqFvpL1sfchRxuS79+Cv2qzRa8SM/U/KTqTEGHK3SWJi5lJNiFBRkX2FvqwO0/wvi9t0Rb0
+ IOpYafFlN11d8K3pRJLAQOLNqBGf55Vh71ri4VW+7qqbPlcGhryaujlHvYRIQlXJnOU4nX5BZXn
+ UFX2+phIfONpO3FnAzZDCcDGBDg26kGSQ8+NoGJs58Gw==
+X-Forward-Email-ID: 6a0b546eb84dbc72d2274f74
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.66
 X-Forward-Email-Version: 2.8.12
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
@@ -72,18 +72,18 @@ Cc: Liu Ying <victor.liu@nxp.com>,
 	linux-amlogic@lists.infradead.org,
 	linux-sunxi@lists.linux.dev,
 	imx@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	Christopher Obbard <chris.obbard@collabora.com>
-Subject: [PATCH v7 01/23] drm: bridge: dw_hdmi: Disable scrambler feature when not supported
-Date: Mon, 18 May 2026 18:01:37 +0000
-Message-ID: <20260518180206.2480119-2-jonas@kwiboo.se>
+	linux-kernel@vger.kernel.org
+Subject: [PATCH v7 17/23] drm: bridge: dw_hdmi: Declare bridge CEC notifier support
+Date: Mon, 18 May 2026 18:01:53 +0000
+Message-ID: <20260518180206.2480119-18-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260518180206.2480119-1-jonas@kwiboo.se>
 References: <20260518180206.2480119-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_110324_358519_97C572D9 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20260518_110331_893996_9DADE127 
+X-CRM114-Status: UNSURE (   8.61  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,45 +100,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The scrambler feature can be left enabled when hotplugging from a sink
-and mode that require scrambling to a sink that does not support SCDC or
-scrambling.
+EDID and CEC phys addr is now being updated in bridge detect() func,
+making it possible to have CEC notifier support using the bridge
+connector.
 
-Typically a blank screen or 'no signal' message can be observed after
-using a HDMI 2.0 4K@60Hz mode and then hotplugging to a sink that only
-support HDMI 1.4.
+Add the CEC notifier bridge op to instruct the bridge connector to make
+use of the generic CEC notifier helpers.
 
-Fix this by disabling the scrambler feature when SCDC is not supported.
-
-Fixes: 264fce6cc2c1 ("drm/bridge: dw-hdmi: Add SCDC and TMDS Scrambling support")
-Reported-by: Christopher Obbard <chris.obbard@collabora.com>
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-Tested-by: Diederik de Haas <diederik@cknow-tech.com>  # Rock64, RockPro64, Quartz64-B
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
-v7: No change
-v6: Collect t-b tag
-v5: No change
-v4: No change
-v3: Collect r-b tag
-v2: New patch
+v7: Only declare CEC notifier support when CEC device register succeeds
+v6: New patch
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 2 ++
- 1 file changed, 2 insertions(+)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-index 41b3a9cfa2f5..d3e6a6562870 100644
+index 0c4388e7aa5e..5dacb8a99715 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-@@ -2135,6 +2135,8 @@ static void hdmi_av_composer(struct dw_hdmi *hdmi,
- 				    HDMI_MC_SWRSTZ);
- 			drm_scdc_set_scrambling(hdmi->curr_conn, 0);
- 		}
-+	} else if (hdmi->version >= 0x200a) {
-+		hdmi_writeb(hdmi, 0, HDMI_FC_SCRAMBLER_CTRL);
+@@ -3515,6 +3515,10 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
+ 		pdevinfo.dma_mask = 0;
+ 
+ 		hdmi->cec = platform_device_register_full(&pdevinfo);
++		if (!IS_ERR(hdmi->cec)) {
++			hdmi->bridge.ops |= DRM_BRIDGE_OP_HDMI_CEC_NOTIFIER;
++			hdmi->bridge.hdmi_cec_dev = hdmi->dev;
++		}
  	}
  
- 	/* Set up horizontal active pixel width */
+ 	drm_bridge_add(&hdmi->bridge);
 -- 
 2.54.0
 
