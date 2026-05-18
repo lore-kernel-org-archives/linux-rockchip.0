@@ -4,96 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5D66CD343F
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 20:08:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6110CD4F4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 21:27:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=T22qfWBy9ZHgyoyda7G2Ezkr8Rjjt/hkULpIiyX8d94=; b=xdbrwOWAFAQDPX
-	R5ggIkUg5EYrXc3TrOPvwLEgjrnVw5tWEGxnXUkxNboVNdA9b9oF9JUTkXRNT3pCyuv1UCHkxR4eH
-	nagmZ+4k4+Etpuzy58meUeIAVvZ+Ae7vwpfRFz7H8k/r0KOoKaqnqiPjlAz28IfSEVpQbxA3aEEvU
-	8KVMM0TUb6C1w0I0NauRf9X7b7/6uq61d267EmcOBC9hgG1Tpqjf6WRthO0dQIOEp0V1FFaEizPkI
-	aNkS6n/OMlOMgYXMChHQ591iycEg06VTUOnhzVJwquElOxTVHzbgSqRPYUloHQdUsnaG7aqEJa3p3
-	/ERe+jyoNvNm4vfgl0/A==;
+	List-Owner; bh=hZHkbKv98YsC6KEKN+Yuj5wg08iM+DtGQgciWgDAxYU=; b=a/nxC+uWXE/Wfl
+	bi+fKcNAMmxTuCqLvIBOO3NTpv7gG5Z5mga2VdYA4/4jEhgLfR6M8yRGqDJqAS6buGr95Qj1QSzAG
+	+lgrIvEVnltVmu3jL8XCDoLZA1BDnTFhXRw1hB1VOVTWkQYv7In0r/iUsmwlEFebvjTEjFqxThWge
+	kI6jElC41yvmfefQFvhmli9mANMpzhbpDu7fGMEIQf/e1wWTx2oTfoCxct0vap6ZeRTb8k1iJfI5q
+	CHPW8ZWhUFI1XpoBTr7Ce2RwlMKPKL03TDL8M/Lx15Qson796Nw2ku3N65KzT1waVqL9SqGETueCn
+	t18QJbM20qgqermyRikw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP4Fy-0000000GqSb-1r0R;
-	Mon, 18 May 2026 20:08:06 +0000
-Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+	id 1wP5UL-0000000GzrI-3m77;
+	Mon, 18 May 2026 21:27:01 +0000
+Received: from mgamail.intel.com ([198.175.65.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP4Fr-0000000GqK3-2cTG
-	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 20:08:01 +0000
-Received: by mail-ot1-x332.google.com with SMTP id 46e09a7af769-7dbd801138eso2358339a34.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 18 May 2026 13:07:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1779134878; x=1779739678; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=wNoA18UrHfHWWifSIaqhsuJYv6mLpyyKyk6HN99Blw8=;
-        b=OGKL2TnPd9xksBGc7f2eFav5fssRicNOcfSFmKcYtG7cB+QbSdsw2Ddmy2Bi4MagQI
-         GavAme4XE9JmMtFwMccAio81emrAW10Q/pyAbqKicJCrp0GQUePCUOAaKIj8l/Psdg3l
-         PdWMzhytIgvYFRTB2BipsVNBY/manEjnILpeUQZ10FEI6WiI6YfsYEmHxBTuC7nlLg5W
-         FDsxS5DZP96PeDuxmuS1U0L2cbfzXkrPLP1FvK9KCw8taBKqHvuVa1bH8QaBsCWsEzp3
-         t2HYasqi+x/ZFd6kT5FtK54WVq2GVcIN8+fh8JDMN0h02U57YRNIZXM0tLdJBG7U/vfN
-         WXpQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779134878; x=1779739678;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=wNoA18UrHfHWWifSIaqhsuJYv6mLpyyKyk6HN99Blw8=;
-        b=otfNqYKPX0ZLZLhzpqU0jt/57nq77s2cQXnJGG9PTwPxJoEwdXJjYtXb9xMpnCoZZD
-         ANVqj76dLpII4pHJO230PfxTYGH1STK5/wW8CDLjvkosgE2bSCtLl4msLtTFjshBBGqY
-         yNS95Grvw/Q6YFAtyGUCe+zeoB1lusxFGy8yx3fEBs/zz1D+8LuPbXZOZPfT20MXxeb2
-         dcoRItib+0Uu6pmH/AOMMqbN75X1RFBL8M+rmyEl3CP3T5EyQHtvmsM7guREKOkp1c4G
-         2JaEeB09QguxGtIx6aNTCtpJfe6/H7xv6Lt0R2IfKQFa4c6dpCwOv3zCjJ3+1kYkzmkq
-         vxTA==
-X-Forwarded-Encrypted: i=1; AFNElJ/vYxKwxXf0Uyu7Q4fGdMpjU6Z/9NU/BPSPka8PpcYiemet5Tz9iUWIwVYN74/iIGqhwzb75szXciovvI5IGw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwJbFbDX6MuFwSTPXYNG7h2+hL0qQUL72GLbLBMluESaeMXOUyp
-	E3uRaKTBhbhUP3qhzN+EW73MrjWr+vF/kV/r2LUs3aNKAaM8zCOe5+5H
-X-Gm-Gg: Acq92OFJzzTmVE3h0N3dxW0mnWTE1VueL9z99NhO2Xg6UDB4ty1SmhFvFee4NKpbwyr
-	kvSyf5xI0im/DIhKo7j53BrQ7P0/sEV3FUs3uTp9CYhz+0fBhYA1zoTu/7OW1ogVbVTLj/ICTD8
-	FhNbrpJEy1t2CkpeZ519xfuslz+yoaZHGyziOzSahkKkUu9EjpRzCAb7336emST6ZzJTie/eZF8
-	1WY59xCmf7xr+5hB0p3XGrnU2gFjLXsiNZlMhRTnQq8jH2/NTYj9rf1ys6SeJKSywbfWYPQfs0l
-	mRn4IplVY6BYuOsCkhHbEA3rLPjZqzzXBzML7lX2Zs5/cnizSfGGIIOZ63aTLzC08GfCVhU4QY/
-	HfSoOxX6ULY+yhaT2+3h8FWTSxpYr0GyiFIQbkjMoQGeGYBPA4mJ767YxZvdStCFwFegT/s4VVM
-	fyfP4UOWbT5kVJpVg24rSUfo5s1X+tUE8=
-X-Received: by 2002:a05:6820:1b05:b0:682:ecb8:c2b with SMTP id 006d021491bc7-69c5d3b8b7cmr8844624eaf.6.1779134878528;
-        Mon, 18 May 2026 13:07:58 -0700 (PDT)
-Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-69d0462e85esm6113360eaf.6.2026.05.18.13.07.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 18 May 2026 13:07:58 -0700 (PDT)
-From: Chris Morgan <macroalpha82@gmail.com>
-To: linux-iio@vger.kernel.org
-Cc: andy@kernel.org,
-	nuno.sa@analog.com,
-	dlechner@baylibre.com,
-	jic23@kernel.org,
-	jean-baptiste.maneyrol@tdk.com,
+	id 1wP5UJ-0000000Gzeg-1tNL;
+	Mon, 18 May 2026 21:27:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1779139620; x=1810675620;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=c2kzgtlmuCmGBxKQy6f/nzlz7pz4BpR6cOyGsGOmzIs=;
+  b=Zh1Fd206sJ0Q3kkY7f4rGqlpln5h0v7xxzmk3fbwVZUYbi3IgqyFa7l2
+   /vo5zC+cOE7+gW+ZXRvISgGVTvue8+6K9dkQJIN5mrmZdzcgU+q/61aNH
+   hCBbtmp1a1Qy24P3BkP/kVWH52bxbZ7p50vIEp9NQQNiSyz4ELDTPNXi9
+   0VTYeY91L9NOUeUeNcyZ63mfywAk6DYFrUqS5H2mZJMFMlxIVzviO27lV
+   /P2R0nsoY++dMjbmlAel94TkTI4w/rt579UA26Ljif8vYnbtn42K2b8cz
+   rbuvdx/qasiIyl441EVVVuNpTzB2Z+7R3n25h5l7i0tSE5Wbuh4CI1lBH
+   w==;
+X-CSE-ConnectionGUID: /TfpM8K5Rt2Kf4tDMDDatw==
+X-CSE-MsgGUID: ffIB+CsYTdCunu9oJbgjjw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11790"; a="79971698"
+X-IronPort-AV: E=Sophos;i="6.23,242,1770624000"; 
+   d="scan'208";a="79971698"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 May 2026 14:24:57 -0700
+X-CSE-ConnectionGUID: vHo2P8J4SIeUpFshKCynYg==
+X-CSE-MsgGUID: 2qCXkziwRuezElfXAOBE0w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.23,242,1770624000"; 
+   d="scan'208";a="244553350"
+Received: from amilburn-desk.amilburn-desk (HELO kekkonen.fi.intel.com) ([10.245.244.139])
+  by fmviesa005-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 May 2026 14:24:53 -0700
+Received: from kekkonen.localdomain (localhost [IPv6:::1])
+	by kekkonen.fi.intel.com (Postfix) with SMTP id A0FE1120E58;
+	Tue, 19 May 2026 00:24:55 +0300 (EEST)
+Date: Tue, 19 May 2026 00:24:55 +0300
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6 krs, Bertel Jungin Aukio 5, 02600 Espoo
+From: Sakari Ailus <sakari.ailus@linux.intel.com>
+To: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+Cc: Michael Riesch <michael.riesch@collabora.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+	Mehdi Djait <mehdi.djait@linux.intel.com>,
+	Hans Verkuil <hverkuil+cisco@kernel.org>,
+	linux-media@vger.kernel.org, linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	heiko@sntech.de,
-	conor+dt@kernel.org,
-	krzk+dt@kernel.org,
-	robh@kernel.org,
-	andriy.shevchenko@intel.com,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V8 10/10] arm64: dts: rockchip: Add icm42607p IMU for RG-DS
-Date: Mon, 18 May 2026 15:05:25 -0500
-Message-ID: <20260518200526.458421-11-macroalpha82@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260518200526.458421-1-macroalpha82@gmail.com>
-References: <20260518200526.458421-1-macroalpha82@gmail.com>
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH v3 0/7] media: synopsys: enhancements and i.MX95 support
+Message-ID: <aguDpxP4SIcJWdcc@kekkonen.localdomain>
+References: <20260506-csi2_imx95-v3-0-953b6e1a80dd@oss.nxp.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260506-csi2_imx95-v3-0-953b6e1a80dd@oss.nxp.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_130759_676691_854CEEA5 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20260518_142659_539959_7D7B95AB 
+X-CRM114-Status: GOOD (  11.57  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,57 +101,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
+Hi Guoniu,
 
-Add the Invensense ICM42607P IMU for the Anbernic RG-DS. Mount-matrix
-was tested with iio-sensor-proxy and reports correct orientation.
+Thanks for the set.
 
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- .../dts/rockchip/rk3568-anbernic-rg-ds.dts    | 20 ++++++++++++++++++-
- 1 file changed, 19 insertions(+), 1 deletion(-)
+On Wed, May 06, 2026 at 04:53:59PM +0800, Guoniu Zhou wrote:
+> This series enhances the Synopsys DesignWare MIPI CSI-2 receiver driver
+> with multiple stream support and adds i.MX95 platform support.
+> 
+> The i.MX95 variant is similar to i.MX93 but uses IDI instead of IPI. Since
+> IDI is software transparent, only a different register map is needed.
+> 
+> Tested on i.MX93 and i.MX95 platforms.
+> 
+> Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
-index 8d906ab02c5f..875ca884deca 100644
---- a/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3568-anbernic-rg-ds.dts
-@@ -871,7 +871,18 @@ aw87391_pa_r: audio-codec@5b {
- 		sound-name-prefix = "Right Amp";
- 	};
- 
--	/* invensense,icm42607p at 0x68 */
-+	icm42607p: imu@68 {
-+		compatible = "invensense,icm42607p";
-+		reg = <0x68>;
-+		interrupt-names = "INT1";
-+		interrupt-parent = <&gpio0>;
-+		interrupts = <RK_PD6 IRQ_TYPE_EDGE_FALLING>;
-+		mount-matrix = "-1", "0", "0",
-+			       "0", "1", "0",
-+			       "0", "0", "-1";
-+		pinctrl-0 = <&accel_irq>;
-+		pinctrl-names = "default";
-+	};
- };
- 
- &i2c3 {
-@@ -932,6 +943,13 @@ &i2s1_8ch {
- };
- 
- &pinctrl {
-+	accel {
-+		accel_irq: accel-irq {
-+			rockchip,pins =
-+				<0 RK_PD6 RK_FUNC_GPIO &pcfg_pull_up>;
-+		};
-+	};
-+
- 	gpio-keys {
- 		vol_keys_l: vol-keys_l {
- 			rockchip,pins =
+This doesn't seem to apply to the media committers' tree anymore. Could you
+rebase it, please? (Or are there dependencies still out there?)
+
 -- 
-2.43.0
+Kind regards,
 
+Sakari Ailus
 
 _______________________________________________
 Linux-rockchip mailing list
