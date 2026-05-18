@@ -4,59 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA8B1CD4F3D
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 02:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECB7BCD4F3C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 06:22:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5Ot6GuU9Q54Bmf1qcvzv3OHYQLyKHcN7pcJnJFm1BUs=; b=w2pgkVHoMUIREzXxTMXutgTNBI
-	mLtnphQmO3K5dHkjG4K+LWOG89XpTjqy32c71RiB67KUms2PgBvAwC64QQTUhh7zkfXBGgWiNHfSW
-	AlDT/wAHyVDCOFXy5E/r0cs7NDk530oi7fOIO4r0n+ve2xa5KjT74FMtyOTtqq4P9MHeZOJBUuOMe
-	0vk0H72SHqVty0mffmbmjvWFZeradoo55E5i8JLhux5Dj2HFOIwLUzwCKxAxxBdXqYOPdJrp7F8Zi
-	BJ6p+ULYsCwMaZI5mc3F0+mHoROUO6tWLBqax5J3lB7MN4m41Xn4wOnZpBjJW40DKBtdHXemvxaS5
-	3Ba1kpKw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=C5f57eMtOX85Rd/9c+/humWzVDBPf4KgRYezVZAH8GM=; b=Idzwx/vOkk0ddk
+	1zZHgrE6hj+4owpYl/zGWnxtANsbgGvd+wNG7Wt9eKEyy18e7I6lXUBXZ9qs7zsYdnDJCuHzBo18v
+	HH29SWiLnfoORHKLr1/0cECur8ub8f8iS6xe9AHWTjkDQT4Nu3bE8uc8EaaeayBSqT2Tjon0VwpuJ
+	GXZzdUbgddjEIsy+oCEzAw3jOWiR1po3CpMXCZnalvh/Oh3XyAV+8KhwAbqqqs1td8JbX12o3+Df1
+	ffWfN2d1eGIb1ofWcWSUXXdDUwWjgImvUiEe5Kwl2rtKvmQaA2fmHBSB2cp6dNTK0n7UA3+5DQfGF
+	/OeRasmG7m8mhLXE21oA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOnyL-0000000DyK8-04qb;
-	Mon, 18 May 2026 02:44:49 +0000
-Received: from mail-m12785.qiye.163.com ([115.236.127.85])
+	id 1wOrMl-0000000EPlv-3Xdc;
+	Mon, 18 May 2026 06:22:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOnyH-0000000DyIo-0ETo;
-	Mon, 18 May 2026 02:44:48 +0000
-Received: from [172.16.12.43] (unknown [58.22.7.114])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3ec15c82d;
-	Mon, 18 May 2026 10:44:29 +0800 (GMT+08:00)
-Message-ID: <a7ab01f6-78a4-405f-8160-8af31a8ef99c@rock-chips.com>
-Date: Mon, 18 May 2026 10:44:29 +0800
+	id 1wOrMk-0000000EPkU-0gQp;
+	Mon, 18 May 2026 06:22:15 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 05EE640DBC;
+	Mon, 18 May 2026 06:22:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2A01CC2BCB7;
+	Mon, 18 May 2026 06:22:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1779085332;
+	bh=zkFDJF7fz51FV37iDY2VAna6p1X471J7zJme82WLsjs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=S+kE7lokwNjnm9hvlBCtnLv445qG+GCXIVjLfHmeChC4oyGZnd/ILC768x1ScWGb7
+	 GvnjSzMy7vYc5k+AqXhnZcQ4h9c7m3vrO9MBM/QOqMv6dXuiUlmFvip/GX+7jnfw7T
+	 OohmcKlf7aH+0dKHk5EY0JoQSb1OrL7wyVYnq/Dmp4d8+52y5HJK0DX+7VpqX13DR5
+	 EXSDqXNCb97kCJBHm7KOsbaUAniKBxvLmrtOjkAjsuUMFcKKPxY3LQYs9XqfJaJe8d
+	 A1t65qfPm/zHB2RUDbCOeYniRrnfabTDQRI7AE8OEWqId1Fb5l9+IgOMefKbErftE2
+	 0f6l7jrFmYABw==
+Date: Mon, 18 May 2026 11:51:56 +0530
+From: Manivannan Sadhasivam <mani@kernel.org>
+To: Niklas Cassel <cassel@kernel.org>
+Cc: manivannan.sadhasivam@oss.qualcomm.com, 
+	Bjorn Helgaas <bhelgaas@google.com>, Mahesh J Salgaonkar <mahesh@linux.ibm.com>, 
+	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>, 
+	Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	Wilfred Mallawa <wilfred.mallawa@wdc.com>, Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, 
+	Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>, 
+	Brian Norris <briannorris@chromium.org>, Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>
+Subject: Re: [PATCH v7 0/4] PCI: Add support for resetting the Root Ports in
+ a platform specific way
+Message-ID: <tgsh3cum6qxrqjzbdeqjsp6bf7cqedj7il77hww3oxecadndin@idjnwib7cz4z>
+References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
+ <abFMa6DCGGLUHddA@fedora>
+ <dp2rem4gj7zhfgykvekmcrhq4ticm6m6ido6tbgflwzfcuuwkl@4wuxgle27eyx>
+ <srdn3bspgwff7f7tnst7wzg4us4buifrv7o3ylo527hmuciyl3@6ioyrl6rfhaz>
+ <abk3rU2EDKjkefUD@ryzen>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/3] dt-bindings: display: rockchip: analogix-dp:
- Expose inherited properties
-To: Conor Dooley <conor.dooley@microchip.com>
-References: <20260514070133.2275069-1-damon.ding@rock-chips.com>
- <20260514070133.2275069-2-damon.ding@rock-chips.com>
- <20260514-upstate-sneer-0b6e78682798@spud>
- <2f653664-27e9-4632-97e9-8b59cf7e585e@rock-chips.com>
- <20260515-confess-hungrily-4f64ce0d8de2@wendy>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260515-confess-hungrily-4f64ce0d8de2@wendy>
-X-HM-Tid: 0a9e38f87b4603a3kunm9c63833a220204
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFDSUNOT01LS0k3V1kYFggdWUFKV1ktWUFJV1kPCRoVCBIfWUFZQk1DSlZISUJPHkwfS0
-	pMH0JWFRQJFhoXVRMBExYaEhckFA4PWVdZGBILWUFZTkNVSUlVTFVKSk9ZV1kWGg8SFR0UWUFZT0
-	tIVUpLSEpKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=FwLaaBmhRyX/1x2IvWIC8qOmg34/xaCXClSHSdAJaEUcRSf5nX3SBXOZhMb994CUmRYQeSsjZ6y0NOI6bU0UW1xVnMC9WLJxklcjrM2drB63dzkXrU7kaLlmYkFEXYIvDYF0lijlkN3eymJS+Yf77EsmSG7sshWzf/Qm15GFjng=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=mmp02j+JTh/LSA7GCH0kahZIKzpGQLcvXOXcVOAsbFw=;
-	h=date:mime-version:subject:message-id:from;
+Content-Disposition: inline
+In-Reply-To: <abk3rU2EDKjkefUD@ryzen>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260517_194445_678410_75580B0B 
-X-CRM114-Status: GOOD (  22.93  )
+X-CRM114-CacheID: sfid-20260517_232214_244564_CCBC2A3D 
+X-CRM114-Status: GOOD (  42.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,138 +80,107 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, Conor Dooley <conor@kernel.org>, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Conor,
-
-On 5/15/2026 5:04 PM, Conor Dooley wrote:
-> On Fri, May 15, 2026 at 11:57:58AM +0800, Damon Ding wrote:
->> Hi Conor,
->>
->> On 5/15/2026 2:16 AM, Conor Dooley wrote:
->>> On Thu, May 14, 2026 at 03:01:31PM +0800, Damon Ding wrote:
->>>> Expose the inherited properties from the base analogix-dp schema
->>>> to satisfy unevaluatedProperties constraints.
->>>>
->>>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>>
->>> Given it's unevaluatedProperties, not addtionalProperties, this patch
->>> shouldn't be needed?
->>>
->>
->> When I remove both the top-level data-lanes property and those explicit
->> "xxx: true" property entries and run the dtbs check with:
->>
->> make CHECK_DTBS=y CROSS_COMPILE=aarch64-linux-gnu- LT0=none LLVM=1
->> LLVM_IAS=1 ARCH=arm64 rockchip/rk3588-evb1-v10.dtb
->> rockchip/rk3588s-evb1-v10.dtb rockchip/rk3399-sapphire-excavator.dtb
->> rockchip/rk3576-evb1-v10.dtb -j4
->>
->> It results in validation errors like these:
->>
->> /home/ding/drm-misc/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb:
->> edp@27dc0000: ports:port@1:endpoint: Unevaluated properties are not allowed
->> ('data-lanes' was unexpected)
->>          from schema $id:
->> http://devicetree.org/schemas/display/rockchip/rockchip,analogix-dp.yaml#
->> /home/ding/drm-misc/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb:
->> edp@27dc0000: Unevaluated properties are not allowed ('force-hpd',
->> 'interrupts', 'phy-names', 'phys', 'ports', 'reg' were unexpected)
->>          from schema $id:
->> http://devicetree.org/schemas/display/rockchip/rockchip,analogix-dp.yaml#
->>
->> I suspect that the properties defined in the child binding are
->> overriding/masking all the inherited properties from the parent Analogix DP
->> schema.
->>
->> Is there a better way to fix this issue without explicitly listing all
->> inherited properties as true?
-> 
-> The example in this file uses most of the properties that you mention
-> above:
->      dp@ff970000 {
->        compatible = "rockchip,rk3288-dp";
->        reg = <0xff970000 0x4000>;
->        interrupts = <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
->        clocks = <&cru SCLK_EDP>, <&cru PCLK_EDP_CTRL>;
->        clock-names = "dp", "pclk";
->        phys = <&dp_phy>;
->        phy-names = "dp";
->        resets = <&cru 111>;
->        reset-names = "dp";
->        rockchip,grf = <&grf>;
->        pinctrl-0 = <&edp_hpd>;
->        pinctrl-names = "default";
-> 
-> dt_binding_check reports no problems with this node, so I think the
-> problem might lie elsewhere?
-> There's no edp node in the dts you mention above, so this looks like an
-> interaction with something that's not yet upstream.
-
-Ah, I see.
-
-I did add extra changes to the edp node on my local rk3576-evb1 board 
-DTS, which indeed caused this 'asymmetric information' issue and made 
-the validation fail incorrectly.
-
-I will try adding the data-lanes property to the example in the binding 
-document to ensure dt_binding_check passes cleanly.
-
-> 
-> If this is required for the rk3576 edp, then you should include this
-> patch in the rk3576 edp support series rather than this one anyway where
-> it can actually be evaluated alongside the node it apparently causes
-> problems with.
-
-The data-lanes property is actually applicable and useful for all 
-Rockchip eDP platforms, not just rk3576.
-
-In the next version, I will modify the series to better separate this 
-common data-lanes change from the rk3576 specific eDP support patches.
-
-> 
-> pw-bot: changes-requested
-> 
->>
->> Best regards,
->> Damon
->>
->>>> ---
->>>>    .../bindings/display/rockchip/rockchip,analogix-dp.yaml    | 7 +++++++
->>>>    1 file changed, 7 insertions(+)
->>>>
->>>> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->>>> index bb75d898a5c5..896ded87880f 100644
->>>> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->>>> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->>>> @@ -50,6 +50,13 @@ properties:
->>>>      aux-bus:
->>>>        $ref: /schemas/display/dp-aux-bus.yaml#
->>>> +  reg: true
->>>> +  interrupts: true
->>>> +  phys: true
->>>> +  phy-names: true
->>>> +  force-hpd: true
->>>> +  ports: true
->>>> +
->>>>    required:
->>>>      - compatible
->>>>      - clocks
->>>> -- 
->>>> 2.34.1
->>>>
->>>>
->>
-
-Best regards,
-Damon
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gVHVlLCBNYXIgMTcsIDIwMjYgYXQgMTI6MTY6NDdQTSArMDEwMCwgTmlrbGFzIENhc3NlbCB3
+cm90ZToKPiBPbiBXZWQsIE1hciAxMSwgMjAyNiBhdCAwODo0NDoxNVBNICswNTMwLCBNYW5pdmFu
+bmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4gPiBPbiBXZWQsIE1hciAxMSwgMjAyNiBhdCAwODowOTo1
+M1BNICswNTMwLCBNYW5pdmFubmFuIFNhZGhhc2l2YW0gd3JvdGU6Cj4gPiA+IE9uIFdlZCwgTWFy
+IDExLCAyMDI2IGF0IDEyOjA1OjE1UE0gKzAxMDAsIE5pa2xhcyBDYXNzZWwgd3JvdGU6Cj4gPiA+
+ID4gT24gVHVlLCBNYXIgMTAsIDIwMjYgYXQgMDc6MzE6NThQTSArMDUzMCwgTWFuaXZhbm5hbiBT
+YWRoYXNpdmFtIHZpYSBCNCBSZWxheSB3cm90ZToKPiA+ID4gPiA+IENoYW5nZXMgaW4gdjc6Cj4g
+PiA+ID4gPiAtIERyb3BwZWQgUm9ja2NoaXAgUm9vdCBwb3J0IHJlc2V0IHBhdGNoIGR1ZSB0byBy
+ZXBvcnRlZCBpc3N1ZXMuIEJ1dCB0aGUgc2VyaWVzCj4gPiA+ID4gPiAgIHdvcmtzIG9uIG90aGVy
+IHBsYXRmb3JtcyBhcyB0ZXN0ZWQgYnkgb3RoZXJzLgo+ID4gPiA+IAo+ID4gPiA+IEFyZSB5b3Ug
+cmVmZXJyaW5nIHRvCj4gPiA+ID4gCj4gPiA+ID4gIyMgT24gRVAgc2lkZToKPiA+ID4gPiAjIGVj
+aG8gMCA+IC9zeXMva2VybmVsL2NvbmZpZy9wY2lfZXAvY29udHJvbGxlcnMvYTQwMDAwMDAwLnBj
+aWUtZXAvc3RhcnQgJiYgXAo+ID4gPiA+ICAgc2xlZXAgMC4xICYmIGVjaG8gMSA+IC9zeXMva2Vy
+bmVsL2NvbmZpZy9wY2lfZXAvY29udHJvbGxlcnMvYTQwMDAwMDAwLnBjaWUtZXAvc3RhcnQKPiA+
+ID4gPiAKPiA+ID4gPiBUaGVuIHJ1bm5pbmcgcGNpdGVzdCBvbmx5IGhhdmluZyA3IC8gMTYgdGVz
+dHMgcGFzc2VkID8KPiA+ID4gPiAKPiA+ID4gPiBJZiBzbywgaXNuJ3QgdGhhdCBhIHByb2JsZW0g
+YWxzbyBmb3IgcWNvbT8KPiA+ID4gPiAKPiA+ID4gCj4gPiA+IE5vLCB0ZXN0cyBhcmUgcGFzc2lu
+ZyBvbiBteSBzZXR1cCBhZnRlciBsaW5rIHVwLgo+ID4gPiAKPiA+ID4gPiAKPiA+ID4gPiBUaGVy
+ZSBpcyBubyBjaGFuY2UgdGhhdCB0aGUgcGF0Y2g6Cj4gPiA+ID4gIm1pc2M6IHBjaV9lbmRwb2lu
+dF90ZXN0OiBBZGQgQUVSIGVycm9yIGhhbmRsZXJzIgo+ID4gPiA+IGltcHJvdmVzIHRoaW5ncyBp
+biB0aGlzIHJlZ2FyZD8KPiA+ID4gPiAKPiA+ID4gPiBPciB3aWxsIGl0IHNpbXBseSBhdm9pZCB0
+aGUgIkFFUjogZGV2aWNlIHJlY292ZXJ5IGZhaWxlZCIgcHJpbnQ/Cj4gPiA+ID4gCj4gPiA+IAo+
+ID4gPiBZZXMsIGFzIG1lbnRpb25lZCBpbiB0aGUgY29tbWl0IG1lc3NhZ2UsIGl0IGp1c3QgYXZv
+aWRzIHRoZSBBRVIgcmVjb3ZlcnkgZmFpbHVyZQo+ID4gPiBtZXNzYWdlLgo+ID4gPiAKPiA+IAo+
+ID4gSSBhbHNvIHJlYWxpemVkIHRoYXQgRW5kcG9pbnQgc3RhdGUgaXMgbm90IHNhdmVkIGluIGFs
+bCB0aGUgY29kZSBwYXRocy4gU28gdGhlCj4gPiBwY2lfZW5kcG9pbnRfdGVzdCBkcml2ZXIgaGFz
+IHRvIHNhdmUvcmVzdG9yZSB0aGUgc3RhdGUgYWxzby4gQnV0IGl0IGlzIHN0aWxsIG5vdAo+ID4g
+Y2xlYXIgd2h5IHRoYXQgZGlkbid0IGhlbHAgeW91Lgo+ID4gCj4gPiBDYW4geW91IHNoYXJlIHRo
+ZSBzbmFwc2hvdCBvZiB0aGUgZW50aXJlIGNvbmZpZyBzcGFjZSBiZWZvcmUgYW5kIGFmdGVyIHJl
+c2V0Cj4gPiB1c2luZyAnbHNwY2kgLXh4eHggLXMgIjAwMDA6MDE6MDAiJz8KPiAKPiBJZiBJIGRv
+bid0IGFkZCBzb21ldGhpbmcgbGlrZToKPiAKPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9taXNjL3Bj
+aV9lbmRwb2ludF90ZXN0LmMgYi9kcml2ZXJzL21pc2MvcGNpX2VuZHBvaW50X3Rlc3QuYwo+IGlu
+ZGV4IDFlY2VkN2E0MTllYi4uOWQ3ZWUzOTE2NGQ0IDEwMDY0NAo+IC0tLSBhL2RyaXZlcnMvbWlz
+Yy9wY2lfZW5kcG9pbnRfdGVzdC5jCj4gKysrIGIvZHJpdmVycy9taXNjL3BjaV9lbmRwb2ludF90
+ZXN0LmMKPiBAQCAtMTA1OSw2ICsxMDU5LDkgQEAgc3RhdGljIGludCBwY2lfZW5kcG9pbnRfdGVz
+dF9zZXRfaXJxKHN0cnVjdCBwY2lfZW5kcG9pbnRfdGVzdCAqdGVzdCwKPiAgICAgICAgICAgICAg
+ICAgcmV0dXJuIHJldDsKPiAgICAgICAgIH0KPiAgCj4gKyAgICAgICBwcl9pbmZvKCJzYXZpbmcg
+UENJIHN0YXRlIChpcnFfdHlwZTogJWQpXG4iLCByZXFfaXJxX3R5cGUpOwo+ICsgICAgICAgcGNp
+X3NhdmVfc3RhdGUocGRldik7Cj4gKwo+ICAgICAgICAgcmV0dXJuIDA7Cj4gIH0KPiAgCj4gQEAg
+LTE0NTMsNiArMTQ1Niw3IEBAIHN0YXRpYyBwY2lfZXJzX3Jlc3VsdF90IHBjaV9lbmRwb2ludF90
+ZXN0X2Vycm9yX2RldGVjdGVkKHN0cnVjdCBwY2lfZGV2ICpwZGV2LAo+ICAKPiAgc3RhdGljIHBj
+aV9lcnNfcmVzdWx0X3QgcGNpX2VuZHBvaW50X3Rlc3Rfc2xvdF9yZXNldChzdHJ1Y3QgcGNpX2Rl
+diAqcGRldikKPiAgewo+ICsgICAgICAgcGNpX3Jlc3RvcmVfc3RhdGUocGRldik7Cj4gICAgICAg
+ICByZXR1cm4gUENJX0VSU19SRVNVTFRfUkVDT1ZFUkVEOwo+ICB9Cj4gCj4gT24gdG9wIG9mIHlv
+dXIgcGF0Y2guCj4gCj4gVGhlbiBhbGwgdGhlIEJBUiB0ZXN0cyArIE1TSSBhbmQgTVNJLVggdGVz
+dHMgZmFpbC4KPiAKPiBUaGVyZSBpcyBhIGh1Z2UgZGlmZmVyZW5jZSBpbiBsc3BjaSAtdnZ2IG91
+dHB1dCAoYXMgSSBndWVzcyBpcyBleHBlY3RlZCksCj4gaW5jbHVkaW5nIGFsbCBCQVJzIGJlaW5n
+IG1hcmtlZCBhcyBkaXNhYmxlZC4KPiAKPiAKPiBXaXRoIHRoZSBwYXRjaCBhYm92ZS4gVGhlcmUg
+aXMgemVybyBkaWZmZXJlbmNlIGJlZm9yZS9hZnRlciByZXNldCwgYW5kIGFsbAo+IHRoZSBCQVIg
+dGVzdHMgcGFzcy4gSG93ZXZlciwgTVNJL01TSS1YIHRlc3RzIHN0aWxsIGZhaWwgd2l0aDoKPiAK
+PiAjIHBjaV9lbmRwb2ludF90ZXN0LmM6MTQzOk1TSV9URVNUOkV4cGVjdGVkIDAgKDApID09IHJl
+dCAoLTExMCkgCj4gIyBwY2lfZW5kcG9pbnRfdGVzdC5jOjE0MzpNU0lfVEVTVDpUZXN0IGZhaWxl
+ZCBmb3IgTVNJMQo+IAo+IEVUSU1FRE9VVC4KPiAKPiBUaGlzIHN1Z2dlc3RzIHRoYXQgcGNpX2Vu
+ZHBvaW50X3Rlc3Qgb24gdGhlIGhvc3Qgc2lkZSBkaWQgbm90IHJlY2VpdmUgYW4KPiBpbnRlcnJ1
+cHQuCj4gCj4gSSBkb24ndCBrbm93IHdoeSwgYnV0IGNvbnNpZGVyaW5nIHRoYXQgbHNwY2kgb3V0
+cHV0IGlzIG5vdyAod2l0aCB0aGUKPiBzYXZlK3Jlc3RvcmUpIGlkZW50aWNhbCwgSSBhc3N1bWUg
+dGhhdCB0aGUgcHJvYmxlbSBpcyBub3QgcmVsYXRlZCB0bwo+IHRoZSBob3N0LiBVbmxlc3Mgc29t
+ZWhvdyB0aGUgaG9zdCB3aWxsIHVzZSBhIG5ldy9kaWZmZXJlbnQgTVNJIGFkZHJlc3MKPiBhZnRl
+ciB0aGUgcm9vdCBwb3J0IGhhcyBiZWVuIHJlc2V0LCBhbmQgd2UgcmVzdG9yZSB0aGUgb2xkIE1T
+SSBhZGRyZXNzLAo+IGJ1dCBsb29raW5nIGF0IHRoZSBjb2RlLCBkd19wY2llX21zaV9pbml0KCkg
+aXMgY2FsbGVkIGJ5Cj4gZHdfcGNpZV9zZXR1cF9yYygpLCBzbyBJIHdvdWxkIGV4cGVjdCB0aGUg
+TVNJIGFkZHJlc3MgdG8gYmUgdGhlIHNhbWUuCj4gCgpIaSBOaWtsYXMsCgpXaGVuIEkgcmViYXNl
+ZCB0aGlzIHNlcmllcyBvbiB0b3Agb2YgdjcuMS1yYzEsIEkgZW5kZWQgdXAgc2VlaW5nIHRoZSBp
+c3N1ZSB3aGF0CnlvdSBkZXNjcmliZWQgaGVyZSAobm90IHN1cmUgd2h5IEkgZGlkbid0IHNlZSBp
+dCBlYXJsaWVyKS4gU28gYWZ0ZXIgdGhlIFJvb3QKUG9ydCByZXNldCwgTVNJIHRlc3RzIGZhaWws
+IGJ1dCBCQVIgdGVzdHMgc3VjY2VlZC4gQWxzbywgSSBnb3QgSU9NTVUgZmF1bHRzIG9uCnRoZSBo
+b3N0IGFmdGVyIGVuZHBvaW50IHRyaWdnZXJzIE1TSS4KCkkgaW52ZXN0aWdhdGVkIGl0IGFuZCBm
+b3VuZCB0aGF0IHRoZSBNU0kgaUFUVSBtYXBwaW5nIGdldHMgY2xlYXJlZCBpbiBodyBhZnRlcgpM
+RG4gaGFwcGVucy4gQnV0IHRoZSBob3N0IGNvbnRpbnVlcyB0byB1c2UgdGhlIHNhbWUgYWRkcmVz
+cy9zaXplIGZvciB0aGUKZW5kcG9pbnQgTVNJIGV2ZW4gYWZ0ZXIgcmVzZXQuIER1ZSB0byB0aGlz
+LCB0aGUgZXhpc3RpbmcgY2hlY2tzIGluCmR3X3BjaWVfZXBfcmFpc2VfbXNpX2lycSgpIGRvbid0
+IHBhc3MgYW5kIHRoZSBzdGFsZSBNU0kgaUFUVSBtYXBwaW5nIGdldHMKcmV1c2VkLgoKVGhlIGZp
+eCB3b3VsZCBiZSB0byBjbGVhciB0aGUgbWFwcGluZyBpbiBkd19wY2llX2VwX2NsZWFudXAoKSwg
+d2hpY2ggZ2V0cyBjYWxsZWQKYXMgcGFydCBvZiB0aGUgUEVSU1QjIGFzc2VydC9kZWFzc2VydCBz
+ZXF1ZW5jZSBwb3N0IExEbiBhbmQgYWxzbyBzZXQKbXNpX2lhdHVfbWFwcGVkIGZsYWcgdG8gJ2Zh
+bHNlJy4gVGhpcyB3aWxsIGZvcmNlIGR3X3BjaWVfZXBfcmFpc2VfbXNpX2lycSgpIHRvCnVzZSBm
+cmVzaCBpQVRVIG1hcHBpbmcgd2hlbiBpdCBnZXRzIGNhbGxlZCBmb3IgdGhlIGZpcnN0IHRpbWU6
+CgpkaWZmIC0tZ2l0IGEvZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJl
+LWVwLmMgYi9kcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWRlc2lnbndhcmUtZXAuYwpp
+bmRleCBkNGRjM2IyNGRhNjAuLjRhZTBlMWI1NWYzOSAxMDA2NDQKLS0tIGEvZHJpdmVycy9wY2kv
+Y29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWVwLmMKKysrIGIvZHJpdmVycy9wY2kvY29u
+dHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWVwLmMKQEAgLTEwMzUsNiArMTAzNSwxMSBAQCB2
+b2lkIGR3X3BjaWVfZXBfY2xlYW51cChzdHJ1Y3QgZHdfcGNpZV9lcCAqZXApCiB7CiAgICAgICAg
+c3RydWN0IGR3X3BjaWUgKnBjaSA9IHRvX2R3X3BjaWVfZnJvbV9lcChlcCk7CiAKKyAgICAgICBp
+ZiAoZXAtPm1zaV9pYXR1X21hcHBlZCkgeworICAgICAgICAgICAgICAgZHdfcGNpZV9lcF91bm1h
+cF9hZGRyKGVwLT5lcGMsIDAsIDAsIGVwLT5tc2lfbWVtX3BoeXMpOworICAgICAgICAgICAgICAg
+ZXAtPm1zaV9pYXR1X21hcHBlZCA9IGZhbHNlOworICAgICAgIH0KKwogICAgICAgIGR3Y19wY2ll
+X2RlYnVnZnNfZGVpbml0KHBjaSk7CiAgICAgICAgZHdfcGNpZV9lZG1hX3JlbW92ZShwY2kpOwog
+fQoKV2l0aCB0aGlzIGNoYW5nZSwgTVNJIHdvcmtzIGFmdGVyIFJvb3QgUG9ydCByZXNldCB3aXRo
+b3V0IGFueSBpc3N1ZXMgb24gb3VyIFFjb20KZW5kcG9pbnQvaG9zdCBzZXR1cC4KClBsZWFzZSB0
+ZXN0IHRoaXMgY2hhbmdlIG9uIHlvdXIgcm9ja2NoaXAgc2V0dXAgYXMgd2VsbC4gWW91IGhhdmUg
+dG8gbWFrZSBzdXJlCnRoYXQgZHdfcGNpZV9lcF9jbGVhbnVwKCkgaXMgY2FsbGVkIGR1cmluZyBQ
+RVJTVCMgYXNzZXJ0L2RlYXNzZXJ0LgoKSSdtIGdvaW5nIHRvIHJlc3BpbiB0aGUgc2VyaWVzIHdp
+dGggdGhpcyBmaXguIElmIHlvdSBjb25maXJtIGl0IHdvcmtzIGZvciB5b3UsCnRoZW4gd2UgY2Fu
+IG1lcmdlIHlvdXIgUm9ja2NoaXAgUm9vdCBQb3J0IGNoYW5nZS4KCi0gTWFuaQoKLS0gCuCuruCu
+o+Cuv+CuteCuo+CvjeCuo+CuqeCvjSDgrprgrqTgrr7grprgrr/grrXgrq7gr40KCl9fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1h
+aWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0
+cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
