@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43086CD4F57
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84523CD4F58
 	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:48:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,31 +12,31 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=zgZNPOISGLgspknV3l/LH+YfnCW0T40gGhx+X0y1PJE=; b=wmESM8e1S5e1Zo
-	KPKODo2rTIt5f5jrb23fEMdlNogbtRUplIDEkBi3IlWjMutLog15bJCkNCT2u/5Sv8jRR/QNozzmH
-	/BHZtDevkFfpOKuciW4sI+wZeTBif7vU4vfAw03yN1r3tPgnDi2t/tBV7gTeMe5ta0SBwybNIJbr3
-	Pcgyeoi2UzaSUh0pyK4QDoHguJqoHhlGAte23ZIyyNPbTCSb0wN0bro7guzj3w8I5Ozhd+cF5qwW9
-	sN0/VpE+B/RblnN1lo6gLUl0Ii+dF4WZmFLr6X254lpR0+eJfwtPw4HCGjgS61UcTcNE+06vWrNNk
-	hfsJdQ2LLGB5ApgLbfJQ==;
+	List-Owner; bh=fFfecqF2gKTa5SisdNP8MJEdryJa6dJgNu3XlmiyauA=; b=IN5oJv6thHfxD/
+	478pDuHJ5DVLg2eXUmpy2Ihd86QpWDnSU5WFN9eZuNIRbnAfcb3Z2A7FCifOmXH0brYQXrMCv39k9
+	U8Wy8B39TPbrLq5X4cIpJSjt3LjcK4PZY/WVpGKINtQHIuSq7arnVQEaiZtvaxufpPaF+xYIspIW5
+	4qXZGlgF6kQQaWSj5LQHcvXNcJ+a7v6pnGxvJEGeeTrk8qspP9gQc22/LX/VNVm9xMBaeNjSakwRr
+	uD8myyMIrmlIARM2q9/0ry30646YX/KNVQ391vIRvgr0jc41qIPdjmzt6dR/miqeH35M9UyngoFUG
+	QcmyGxZd2ULMJT3l5gvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xP-0000000GmMb-0Lp8;
+	id 1wP3xP-0000000GmN1-1Oe1;
 	Mon, 18 May 2026 19:48:55 +0000
 Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xK-0000000GmBC-16qL
+	id 1wP3xJ-0000000GmAD-47g2
 	for linux-rockchip@lists.infradead.org;
 	Mon, 18 May 2026 19:48:53 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
  h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
  Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133729; bh=P1OIqjzoD97WJDMvkcHJxKFh2vpQep87U1vwwejFjdw=;
- b=fVOt15BeTWyTPIU2qQfZ6QRyqwW0EiB9CMAkNgnY3DbjtAfYCyCp8DhJ8KvaGOXYoW461GUd7
- xH9RsHbGX0ilnzCMKGrlFWH25E1d/xmRETq8x/8bvFSNMTgf9Urn7yMTZvdKClvvdEwMvlkKX3o
- zNld1lspSzw97TtjqwV8PBMLpNtQqrI1trupptwicuWSXj82CnKrMKObKINSpsnNyDgdWd10H3O
- UQoSGJDwlo3n25vjYZIQesL3EBzA1KlZ9Br8RHtjaYdWvUpan//4X8NS2WQHR9JlkS4u62QztJt
- BJfQ3fCAsZyW5Ba+NJO6zTR7WZ5ZIjZsGwNi11wotujg==
-X-Forward-Email-ID: 6a0b6d1cb74b0ebd362eef6a
+ t=1779133729; bh=l5OMj0CSdajzATG6j/dCDhDtBgJ3gMytB+btoMqUqdQ=;
+ b=eyczZspXGNb5oSD3Vtvvv2v/EWuMO8WkyaAFnH841dfF7TmamPLt4js8zjgQx/lF0BxWJ4ZhP
+ 9oml/ak0TmkssAHCXoXeoajCwK6dZHEKU7YVrtN01Kip4oRRVjovXR3U0XNw25LNp+e6Wg9QQgG
+ ez4VagmyAZV9EawgJUoR+YbHE5irLJkGBTOf7t1ju8IDigdPqFodcp1LLFXDt2yPawREDt1bOsz
+ I6Dygj8jgGRmMhdCSbnBwUjwc7fSMnJWzucKDXomwRWhT+wrk/JNuWDvOfGdQ4THGj4YNpmKHs2
+ UgBw5QDrUsMZbr08eZ3QuYtGLeXFyrCQ/jhPj2W3G9iw==
+X-Forward-Email-ID: 6a0b6d0fb74b0ebd362eef17
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  121.127.44.73
 X-Forward-Email-Version: 2.8.12
@@ -61,16 +61,16 @@ Cc: dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>,
 	linux-rockchip@lists.infradead.org
-Subject: [PATCH 12/13] drm/meson: dw-hdmi: Use dw_hdmi_schedule_hpd_work() helper
-Date: Mon, 18 May 2026 19:47:40 +0000
-Message-ID: <20260518194744.2483580-13-jonas@kwiboo.se>
+Subject: [PATCH 09/13] drm/meson: dw-hdmi: Use devm_clk_get_enabled() helper
+Date: Mon, 18 May 2026 19:47:37 +0000
+Message-ID: <20260518194744.2483580-10-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260518194744.2483580-1-jonas@kwiboo.se>
 References: <20260518194744.2483580-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_124850_433032_015BF69A 
-X-CRM114-Status: GOOD (  12.18  )
+X-CRM114-CacheID: sfid-20260518_124850_340343_034FA2DE 
+X-CRM114-Status: GOOD (  11.23  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,75 +87,89 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Change to use the dw-hdmi HPD delayed work to handle HPD events.
-
-Also merge top and bottom half IRQ handlers to simplify IRQ handling now
-that HPD event is handled using a delayed work.
+Change to use the devm_clk_get_enabled() helper instead of using an
+open-coded variant.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 ---
- drivers/gpu/drm/meson/meson_dw_hdmi.c | 26 +++++---------------------
- 1 file changed, 5 insertions(+), 21 deletions(-)
+ drivers/gpu/drm/meson/meson_dw_hdmi.c | 48 +++++++++------------------
+ 1 file changed, 16 insertions(+), 32 deletions(-)
 
 diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-index 1dd59196ff7f..7b465e216759 100644
+index fcd2426af9fc..d0cf2042d41c 100644
 --- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
 +++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-@@ -145,7 +145,6 @@ struct meson_dw_hdmi {
- 	struct reset_control *hdmitx_apb;
- 	struct reset_control *hdmitx_ctrl;
- 	struct reset_control *hdmitx_phy;
--	u32 irq_stat;
- 	struct dw_hdmi *hdmi;
- 	struct drm_bridge *bridge;
- };
-@@ -498,10 +497,10 @@ static irqreturn_t dw_hdmi_top_irq(int irq, void *dev_id)
- 	stat = dw_hdmi->data->top_read(dw_hdmi, HDMITX_TOP_INTR_STAT);
- 	dw_hdmi->data->top_write(dw_hdmi, HDMITX_TOP_INTR_STAT_CLR, stat);
+@@ -634,29 +634,6 @@ static void meson_dw_hdmi_init(struct meson_dw_hdmi *meson_dw_hdmi)
  
--	/* HPD Events, handle in the threaded interrupt handler */
-+	/* HPD Events, handle in delayed work */
- 	if (stat & (HDMITX_TOP_INTR_HPD_RISE | HDMITX_TOP_INTR_HPD_FALL)) {
--		dw_hdmi->irq_stat = stat;
--		return IRQ_WAKE_THREAD;
-+		dw_hdmi_schedule_hpd_work(dw_hdmi->hdmi);
-+		return IRQ_HANDLED;
- 	}
- 
- 	/* HDMI Controller Interrupt */
-@@ -513,20 +512,6 @@ static irqreturn_t dw_hdmi_top_irq(int irq, void *dev_id)
- 	return IRQ_HANDLED;
  }
  
--/* Threaded interrupt handler to manage HPD events */
--static irqreturn_t dw_hdmi_top_thread_irq(int irq, void *dev_id)
+-static void meson_disable_clk(void *data)
 -{
--	struct meson_dw_hdmi *dw_hdmi = dev_id;
--	u32 stat = dw_hdmi->irq_stat;
--
--	/* HPD Events */
--	if (stat & (HDMITX_TOP_INTR_HPD_RISE | HDMITX_TOP_INTR_HPD_FALL) &&
--	    dw_hdmi->bridge)
--		drm_helper_hpd_irq_event(dw_hdmi->bridge->dev);
--
--	return IRQ_HANDLED;
+-	clk_disable_unprepare(data);
 -}
 -
- /* DW HDMI Regmap */
+-static int meson_enable_clk(struct device *dev, char *name)
+-{
+-	struct clk *clk;
+-	int ret;
+-
+-	clk = devm_clk_get(dev, name);
+-	if (IS_ERR(clk)) {
+-		dev_err(dev, "Unable to get %s pclk\n", name);
+-		return PTR_ERR(clk);
+-	}
+-
+-	ret = clk_prepare_enable(clk);
+-	if (!ret)
+-		ret = devm_add_action_or_reset(dev, meson_disable_clk, clk);
+-
+-	return ret;
+-}
+-
+ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
+ 				void *data)
+ {
+@@ -666,6 +643,7 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
+ 	struct drm_device *drm = data;
+ 	struct meson_drm *priv = drm->dev_private;
+ 	struct dw_hdmi_plat_data *dw_plat_data;
++	struct clk *clk;
+ 	int irq;
+ 	int ret;
  
- static int meson_dw_hdmi_reg_read(void *context, unsigned int reg,
-@@ -715,9 +700,8 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
- 	if (irq < 0)
- 		return irq;
+@@ -716,17 +694,23 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
+ 	if (IS_ERR(meson_dw_hdmi->hdmitx))
+ 		return PTR_ERR(meson_dw_hdmi->hdmitx);
  
--	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_top_irq,
--					dw_hdmi_top_thread_irq, IRQF_SHARED,
--					"dw_hdmi_top_irq", meson_dw_hdmi);
-+	ret = devm_request_irq(dev, irq, dw_hdmi_top_irq, IRQF_SHARED,
-+			       "dw_hdmi_top_irq", meson_dw_hdmi);
- 	if (ret)
- 		return dev_err_probe(dev, ret,
- 				     "Failed to request hdmi top irq\n");
+-	ret = meson_enable_clk(dev, "isfr");
+-	if (ret)
+-		return ret;
++	clk = devm_clk_get_enabled(dev, "isfr");
++	if (IS_ERR(clk)) {
++		dev_err(dev, "Unable to get isfr pclk\n");
++		return PTR_ERR(clk);
++	}
+ 
+-	ret = meson_enable_clk(dev, "iahb");
+-	if (ret)
+-		return ret;
++	clk = devm_clk_get_enabled(dev, "iahb");
++	if (IS_ERR(clk)) {
++		dev_err(dev, "Unable to get iahb pclk\n");
++		return PTR_ERR(clk);
++	}
+ 
+-	ret = meson_enable_clk(dev, "venci");
+-	if (ret)
+-		return ret;
++	clk = devm_clk_get_enabled(dev, "venci");
++	if (IS_ERR(clk)) {
++		dev_err(dev, "Unable to get venci pclk\n");
++		return PTR_ERR(clk);
++	}
+ 
+ 	dw_plat_data->regm = devm_regmap_init(dev, NULL, meson_dw_hdmi,
+ 					      &meson_dw_hdmi_regmap_config);
 -- 
 2.54.0
 
