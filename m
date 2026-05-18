@@ -4,57 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965CECD4F49
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 16:31:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DF56CD4F3C
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 18:02:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dthZTqNZAUmi3XeVThvYjhAshn1GDONOYjDPo2LnLHA=; b=jIEPap/k4HvZLyAgvfMJcXpDra
-	oJkPbhEO3h46M9K5FOVDcOxQm1KFor6VbKHKvTxwa5HY9WYPoMlAL/p+859TSXuCVPQU/I+67zjmI
-	vsCQCllGTZil1yHqoHyaR43J9Sy8yHr11IM5sTv7ikFqKVEJXIHX1J90KbzwCOVlL5TlIeYpStu+k
-	MsTvgeXyw6XvktFo2UEXAA6PSXflr5rufU4Pm9oc0zK4+8SikvbXVEaf9zRLJjRugpvOZlWpb11Xi
-	WO9xAG71aEgOevBKeH7XfUM1Hzzf4S5Z/7i89PCT9/HHGkOS8eRnvyI95CPYEe2A+R8EhY+LT7UDb
-	aTYqWfJQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fQyJiGIX5xXgtYiwTomJHNdr7Un/0oxlZxR1wB3vnow=; b=j03k0eRBE65dDp
+	bQNO+523Y9KLA3CCrlJlWVTgC4kOkAp+oHcmHl+fhcb8lxmkBEmoFXywZKnjWSaKPbsFQrvHZ+5rB
+	Tf1+EcMgxarj3J3BAv5icKdp4rXHDYYgDMAGIj8tg1BKEIg1RuhUIEmumQZqCaQYJiSqHMXgp8cxE
+	aIhb3bZYlGiEHYmUCuWRO3NhXAtK2eOj5muKp4u8oJZOujoi6FDPiDab10U2Td6BdM3xX7g74O5zg
+	LFVd6gPIkiwX6tgvdoHvlzA/NU2bKa5A3tGL0Gd2wfz3ofL5Fn5P5hX2DfYtTCESG+d4vI9QXsP0N
+	cul7+rGHBcxgKcgfk3Tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP0sH-0000000GIxG-20IU;
-	Mon, 18 May 2026 16:31:25 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wP2IK-0000000GSY5-2QRb;
+	Mon, 18 May 2026 18:02:24 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP0sF-0000000GIwZ-1fBa;
-	Mon, 18 May 2026 16:31:23 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 70DFB6001A;
-	Mon, 18 May 2026 16:31:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9105C2BCB7;
-	Mon, 18 May 2026 16:31:16 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779121882;
-	bh=jMB5NoP0wP+6A9Zh0OD36Hq603Uurn3NLlC4stKV5Ag=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=m4vHn98Y6yqiR5nHUZYeHgIe1GYZOYxdaAUikdAIiclUlR6G0/TQadLFDESIfFWtx
-	 NAVKpOQRnJ+nc/mPfCztm3u6bR2H6K0grub1oakThM22+VJHHuLc58PBo15oAzJ91G
-	 fmtIaJIMaDtW5XxTdwpJeXJCrwKTCuZL3nkc2mEgCCYTLUyI2tk8Wxe3PT2ZWlfYZO
-	 P8h0kIgpuEKUOSr2QnSm0jZ0i9cC8d54ihfJYsTM3HkAfyNyIcu184dDHGMTb++Zd4
-	 RYmeY0C4vfm0QUnrJkvOKototuGqQl/n6C9mSOFMgc7H0eAXMLhqYCcvfOCnz5kf5C
-	 RfUETTXb/PvtA==
-Date: Mon, 18 May 2026 17:31:14 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v1 1/3] dt-bindings: display: rockchip: analogix-dp:
- Expose inherited properties
-Message-ID: <20260518-bootlace-afoot-8da24d7c9d13@spud>
-References: <20260514070133.2275069-1-damon.ding@rock-chips.com>
- <20260514070133.2275069-2-damon.ding@rock-chips.com>
- <20260514-upstate-sneer-0b6e78682798@spud>
- <2f653664-27e9-4632-97e9-8b59cf7e585e@rock-chips.com>
- <20260515-confess-hungrily-4f64ce0d8de2@wendy>
- <a7ab01f6-78a4-405f-8160-8af31a8ef99c@rock-chips.com>
+	id 1wP2IH-0000000GSWo-342b
+	for linux-rockchip@lists.infradead.org;
+	Mon, 18 May 2026 18:02:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1779127340;
+ bh=ucKXF6VzM30bPjxSkBsneInrw/BjvpOQxwAaTEJvKFc=;
+ b=v99VeLbOLxBR5/bSeFTG1qnLg147pZ8D/8TYXf8gh7KgRPpbyVhPYI+b4j40E4bVilMuEVIYo
+ zYicV3EY03EeLNHkzuukSIvS2DFOjF+JboGDrdtSqtcXW4sX+5+gzRAJ0uMop7stjJOUQl9rmuU
+ cqSxhNjyIl9U7bdgtBiXxdJVZ1eHHcj8bi0g2xAI7EmlrvIoDpzkReDU3TW/WvRNHg1mfX7+VJv
+ LPSiYuMu/Rkm3eCpSf0eslD8iaw2+Iqav0jOkUjDVW5dOzEiPZ5Ck8Jv4y7eGiqr4ii7T6PnUat
+ PT931lqi4dyR23FQY7pkXNpuiJn0o14B3Ut4IXCPAk2w==
+X-Forward-Email-ID: 6a0b5424b84dbc72d2274d94
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.66
+X-Forward-Email-Version: 2.8.12
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+From: Jonas Karlman <jonas@kwiboo.se>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Liu Ying <victor.liu@nxp.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Christian Hewitt <christianshewitt@gmail.com>,
+	Diederik de Haas <diederik@cknow-tech.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-amlogic@lists.infradead.org,
+	linux-sunxi@lists.linux.dev,
+	imx@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Jonas Karlman <jonas@kwiboo.se>
+Subject: [PATCH v7 00/23] drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup
+Date: Mon, 18 May 2026 18:01:36 +0000
+Message-ID: <20260518180206.2480119-1-jonas@kwiboo.se>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-In-Reply-To: <a7ab01f6-78a4-405f-8160-8af31a8ef99c@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260518_110222_196174_67180C80 
+X-CRM114-Status: GOOD (  15.78  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,147 +92,168 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Conor Dooley <conor.dooley@microchip.com>, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Type: multipart/mixed; boundary="===============3663678175346094083=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+This is a revival of an old dw-hdmi series and is the first series part
+of a new effort to upstream old LibreELEC HDMI 2.0 patches for Rockchip
+RK33xx devices.
 
---===============3663678175346094083==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="zu1z+34yeGAH2xIH"
-Content-Disposition: inline
+This series ensure poweron/poweroff and CEC phys addr invalidation is
+happening during normal DRM funcs, ensures EDID and CEC phys addr is
+updated in detect() similar to how the bridge connector works with a
+HDMI bridge attached, and also changes to debounce hotplug processing
+to prevent a full disable/enable cycle during a HPD low voltage pulse.
 
+After this series HPD, EDID and CEC handling should work very similar
+regardless is the dw-hdmi connector or the bridge connector is used.
+It should also help ensure a smoother transition when dw-hdmi is fully
+converted into a HDMI bridge in a future series.
 
---zu1z+34yeGAH2xIH
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+These changes have mainly been tested on Rockchip RK3328, RK3399 and
+RK3568 devices using both the dw-hdmi connector and also using a basic
+convert to use a bridge connector. The changes has also been tested on
+Amlogic S905X, S905Y2 and A311D devices that uses the bridge connector.
 
-On Mon, May 18, 2026 at 10:44:29AM +0800, Damon Ding wrote:
-> Hi Conor,
->=20
-> On 5/15/2026 5:04 PM, Conor Dooley wrote:
-> > On Fri, May 15, 2026 at 11:57:58AM +0800, Damon Ding wrote:
-> > > Hi Conor,
-> > >=20
-> > > On 5/15/2026 2:16 AM, Conor Dooley wrote:
-> > > > On Thu, May 14, 2026 at 03:01:31PM +0800, Damon Ding wrote:
-> > > > > Expose the inherited properties from the base analogix-dp schema
-> > > > > to satisfy unevaluatedProperties constraints.
-> > > > >=20
-> > > > > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> > > >=20
-> > > > Given it's unevaluatedProperties, not addtionalProperties, this pat=
-ch
-> > > > shouldn't be needed?
-> > > >=20
-> > >=20
-> > > When I remove both the top-level data-lanes property and those explic=
-it
-> > > "xxx: true" property entries and run the dtbs check with:
-> > >=20
-> > > make CHECK_DTBS=3Dy CROSS_COMPILE=3Daarch64-linux-gnu- LT0=3Dnone LLV=
-M=3D1
-> > > LLVM_IAS=3D1 ARCH=3Darm64 rockchip/rk3588-evb1-v10.dtb
-> > > rockchip/rk3588s-evb1-v10.dtb rockchip/rk3399-sapphire-excavator.dtb
-> > > rockchip/rk3576-evb1-v10.dtb -j4
-> > >=20
-> > > It results in validation errors like these:
-> > >=20
-> > > /home/ding/drm-misc/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb:
-> > > edp@27dc0000: ports:port@1:endpoint: Unevaluated properties are not a=
-llowed
-> > > ('data-lanes' was unexpected)
-> > >          from schema $id:
-> > > http://devicetree.org/schemas/display/rockchip/rockchip,analogix-dp.y=
-aml#
-> > > /home/ding/drm-misc/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb:
-> > > edp@27dc0000: Unevaluated properties are not allowed ('force-hpd',
-> > > 'interrupts', 'phy-names', 'phys', 'ports', 'reg' were unexpected)
-> > >          from schema $id:
-> > > http://devicetree.org/schemas/display/rockchip/rockchip,analogix-dp.y=
-aml#
-> > >=20
-> > > I suspect that the properties defined in the child binding are
-> > > overriding/masking all the inherited properties from the parent Analo=
-gix DP
-> > > schema.
-> > >=20
-> > > Is there a better way to fix this issue without explicitly listing all
-> > > inherited properties as true?
-> >=20
-> > The example in this file uses most of the properties that you mention
-> > above:
-> >      dp@ff970000 {
-> >        compatible =3D "rockchip,rk3288-dp";
-> >        reg =3D <0xff970000 0x4000>;
-> >        interrupts =3D <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
-> >        clocks =3D <&cru SCLK_EDP>, <&cru PCLK_EDP_CTRL>;
-> >        clock-names =3D "dp", "pclk";
-> >        phys =3D <&dp_phy>;
-> >        phy-names =3D "dp";
-> >        resets =3D <&cru 111>;
-> >        reset-names =3D "dp";
-> >        rockchip,grf =3D <&grf>;
-> >        pinctrl-0 =3D <&edp_hpd>;
-> >        pinctrl-names =3D "default";
-> >=20
-> > dt_binding_check reports no problems with this node, so I think the
-> > problem might lie elsewhere?
-> > There's no edp node in the dts you mention above, so this looks like an
-> > interaction with something that's not yet upstream.
->=20
-> Ah, I see.
->=20
-> I did add extra changes to the edp node on my local rk3576-evb1 board DTS,
-> which indeed caused this 'asymmetric information' issue and made the
-> validation fail incorrectly.
->=20
-> I will try adding the data-lanes property to the example in the binding
-> document to ensure dt_binding_check passes cleanly.
->=20
-> >=20
-> > If this is required for the rk3576 edp, then you should include this
-> > patch in the rk3576 edp support series rather than this one anyway where
-> > it can actually be evaluated alongside the node it apparently causes
-> > problems with.
->=20
-> The data-lanes property is actually applicable and useful for all Rockchip
-> eDP platforms, not just rk3576.
->=20
-> In the next version, I will modify the series to better separate this com=
-mon
-> data-lanes change from the rk3576 specific eDP support patches.
+Testing with a Rock Pi 4 (RK3399) using a Reaspberry Pi Monitor with
+Linux kms client console using drm.debug=0xe should log something like
+following:
 
-To be clear, I wasn't talking about data-lanes here, I was talking about
-this patch that addressed the properties inherited from the common
-analogix-dp.yaml.
+ Power cycle monitor using the power button:
+  [CONNECTOR:68:HDMI-A-1] CEA VCDB 0x4a
+  [CONNECTOR:68:HDMI-A-1] HDMI: DVI dual 0, max TMDS clock 0 kHz
+  [CONNECTOR:68:HDMI-A-1] ELD monitor RPI MON156
+  [CONNECTOR:68:HDMI-A-1] HDMI: latency present 0 0, video latency 0 0, audio latency 0 0
+  [CONNECTOR:68:HDMI-A-1] ELD size 36, SAD count 1
+  [CONNECTOR:68:HDMI-A-1] Same epoch counter 10
 
---zu1z+34yeGAH2xIH
-Content-Type: application/pgp-signature; name="signature.asc"
+ Cable unplugged:
+  [CONNECTOR:68:HDMI-A-1] EDID changed, epoch counter 11
+  [CONNECTOR:68:HDMI-A-1] status updated from connected to disconnected
+  [CONNECTOR:68:HDMI-A-1] Changed epoch counter 10 => 12
+  [CONNECTOR:68:HDMI-A-1] generating connector hotplug event
+  [CONNECTOR:68:HDMI-A-1] Sent hotplug event
 
------BEGIN PGP SIGNATURE-----
+ Cable connected:
+  [CONNECTOR:68:HDMI-A-1] CEA VCDB 0x4a
+  [CONNECTOR:68:HDMI-A-1] HDMI: DVI dual 0, max TMDS clock 0 kHz
+  [CONNECTOR:68:HDMI-A-1] ELD monitor RPI MON156
+  [CONNECTOR:68:HDMI-A-1] HDMI: latency present 0 0, video latency 0 0, audio latency 0 0
+  [CONNECTOR:68:HDMI-A-1] ELD size 36, SAD count 1
+  [CONNECTOR:68:HDMI-A-1] status updated from disconnected to connected
+  [CONNECTOR:68:HDMI-A-1] Changed epoch counter 12 => 13
+  [CONNECTOR:68:HDMI-A-1] generating connector hotplug event
+  [CONNECTOR:68:HDMI-A-1] Sent hotplug event
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCags+0gAKCRB4tDGHoIJi
-0r+xAQCCA3hrAk8UTFXKlAQIK/tQrNfrXeTUlCpoCL4QRVIvSQEAlMrMbINx6Xd0
-QZxf04KGcPEvkVb/5IExzbmxUZ8p7Ak=
-=TgMj
------END PGP SIGNATURE-----
+This series has evolved into an initial part of a larger multi series
+effort to:
+- drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup [v7]
+- drm/bridge: dw-hdmi: Improve input/output bus format handling
+- drm/bridge: dw-hdmi: Convert to a HDMI bridge and use of bridge connector
+- drm/bridge: dw-hdmi: Add and use tmds_char_rate_valid() plat data ops
+- drm/meson: hdmi: Misc cleanup and use CEC notifier helpers [v1]
+- phy: rockchip: inno-hdmi: Change TMDS rate handling to configure() ops [v4]
+- drm/rockchip: dw_hdmi: Misc cleanup and propagate bus format [v2]
+- drm/rockchip: dw_hdmi: Enable YCbCr and Deep Color modes
+Link to snapshot: https://github.com/Kwiboo/linux-rockchip/commits/next-20260518-rk-hdmi-v5/
 
---zu1z+34yeGAH2xIH--
+Changes in v7:
+- Add patch to fix use-after-free when CEC adapter is unregistered
+- Only declare CEC notifier support when CEC device register succeeds
+- Re-order patches to drop drm_edid_raw() use before exposing more usage
+- Change to free irq before mute and clear using IH regs
+- Rebased on next-20260518
+Link to v6: https://lore.kernel.org/dri-devel/20260516183838.2024991-1-jonas@kwiboo.se/
 
+Changes in v6:
+- Update EDID and CEC phys addr in the bridge detect() func
+- Add CEC notifier bridge op for the bridge connector
+- Change back to disable_delayed_work_sync() in hpd disable ops,
+  a possible deadlock is avoided by not using drm_bridge_hpd_notify()
+- Drop use of a suspend helper now that hpd disable ops use sync() calls
+- Ensure HPD interrupt is masked and IRQ handler is disabled early
+  in dw_hdmi_remove() to prevent any irq re-arming of delayed work
+- Update a few commit messages and cover letter
+- Collect t-b tags
+Link to v5: https://lore.kernel.org/dri-devel/20260510124111.1226584-1-jonas@kwiboo.se/
 
---===============3663678175346094083==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Changes in v5:
+- Add patch that holds a bridge ref until connector cleanup, to fix
+  a use-after-free issue during connector cleanup
+- Add patch that unregister CEC notifier during connector cleanup
+- Add patch that adds a common suspend helper
+- Add patch that drops call to drm_bridge_hpd_notify()
+- Collect r-b tag
+- Rebased on next-20260508
+Link to v4: https://lore.kernel.org/dri-devel/20260504191059.275928-1-jonas@kwiboo.se/
+
+Changes in v4:
+- Change to use generic CEC notifier helpers
+- Disable/mask hpd_work until enable_hpd()/hpd_enable()
+- Read connector status directly from HW regs in hpd_work
+- Continued rework of HDP and RXSENSE interrupt handling
+- Collect r-b tags
+- Rebased on next-20260430
+Link to v3: https://lore.kernel.org/dri-devel/20260403185303.80748-1-jonas@kwiboo.se/
+
+Changes in v3:
+- Rework EDID refresh handling to closer match bridge connector
+- Use delayed work to debounce HPD processing
+- Update commit messages
+- Collect r-b tags
+- Rebased on next-20260401
+Link to v2: https://lore.kernel.org/dri-devel/20240908132823.3308029-1-jonas@kwiboo.se/
+
+Changes in v2:
+- Add patch to disable scrambler feature when not supported
+- Add patch to only notify connected status on HPD interrupt
+- Update commit messages
+- Collect r-b tags
+- Rebased on next-20240906
+Link to v1: https://lore.kernel.org/dri-devel/20240611155108.1436502-1-jonas@kwiboo.se/
+
+Jonas Karlman (23):
+  drm: bridge: dw_hdmi: Disable scrambler feature when not supported
+  drm: bridge: dw_hdmi: Only notify connected status on HPD interrupt
+  drm: bridge: dw_hdmi: Free IRQ before CEC adapter is unregistered
+  drm: bridge: dw_hdmi: Hold bridge ref until connector cleanup
+  drm: bridge: dw_hdmi: Call poweron/poweroff from atomic enable/disable
+  drm: bridge: dw_hdmi: Use passed mode instead of stored previous_mode
+  drm: bridge: dw_hdmi: Fold poweron and setup functions
+  drm: bridge: dw_hdmi: Remove previous_mode and mode_set
+  drm: bridge: dw_hdmi: Unregister CEC notifier during connector cleanup
+  drm: bridge: dw_hdmi: Invalidate CEC phys addr from connector detect
+  drm: bridge: dw_hdmi: Remove cec_notifier_mutex
+  drm: bridge: dw_hdmi: Extract dw_hdmi_connector_status_update()
+  drm: bridge: dw_hdmi: Use dw_hdmi_connector_status_update()
+  drm: bridge: dw_hdmi: Use display_info is_hdmi and has_audio
+  drm: bridge: dw_hdmi: Use generic CEC notifier helpers
+  drm: bridge: dw_hdmi: Update EDID and CEC phys addr in bridge detect()
+  drm: bridge: dw_hdmi: Declare bridge CEC notifier support
+  drm: bridge: dw_hdmi: Drop call to drm_bridge_hpd_notify()
+  drm: bridge: dw_hdmi: Use delayed_work to debounce hotplug event
+  drm: bridge: dw_hdmi: Rework HDP and RXSENSE interrupt handling
+  drm: bridge: dw_hdmi: Remove the empty dw_hdmi_setup_rx_sense()
+  drm: bridge: dw_hdmi: Remove the empty dw_hdmi_phy_update_hpd()
+  drm: bridge: dw_hdmi: Merge top and bottom half IRQ handlers
+
+ drivers/gpu/drm/bridge/imx/imx8mp-hdmi-tx.c   |   1 -
+ drivers/gpu/drm/bridge/synopsys/Kconfig       |   1 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-cec.c |   1 +
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c     | 502 +++++++-----------
+ drivers/gpu/drm/meson/meson_dw_hdmi.c         |   3 -
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |   2 -
+ drivers/gpu/drm/sun4i/sun8i_hdmi_phy.c        |   2 -
+ include/drm/bridge/dw_hdmi.h                  |   6 -
+ 8 files changed, 192 insertions(+), 326 deletions(-)
+
+-- 
+2.54.0
+
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3663678175346094083==--
-
