@@ -4,72 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67E62CD4F52
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 10:50:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 24440CD4F52
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 10:54:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:Subject:From:
-	To:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9Ihi2agsNnlQGtDFiuUclAR2funnKmX80mSK+lFH170=; b=c415WcGus2iLVv
-	05guqdsmsZQSa4U/YHgSWmp4tIxTpzXIzHcjAlKPD/0zOMtRwKYOW48ucDYJGphVehHQ/+itY0JlV
-	yt9rivvApTRq3Iw3QrTFohD2Dtl+1ldBfuAUkPvKYtZdZwvCRU2gQ8aUlDkrr7XRxq6N6WZKnjoNv
-	hppIG0gb7tJuvGRuyzWFHl8WirxPzkgtVJ4iJjlQI3pijEZXvK8sF51/Ms2GRfL7IDG4sTyGEI0xQ
-	2BA1kS4grF0olT9ReDVjq5EcSgZBjtYIyeVLuI6xSVWxqAnmezTNILOFCkEamGhAmOVbySc54frVf
-	vQILnC94tTZALvBZ4Xog==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=miHSqmdJR3dzQY5SbI9EEcw1wm0dR1CBEEJiHqpRoew=; b=21CjmCVqosi/c4
+	LBaAJBYq3DCUDrpW8tu+AMFcdxJTEbrFsn7SEigQ2bb4vyTOdYyc6wvI8IWDQWHEgrEyzgFDnYjNo
+	egjE1YKiumfYksN72Ly8wm4cgyWBJItMqeAZEARfKM4VhhjXBLjJ7zcauatRn5Bv3+5Ob7Eo03/OH
+	LdE09WRXjKi4vsdbp7ljfjn0txRRpl+2WYNIOe8BYovvCxWVhGh3k/L5TTg3kE2U8edafYMMIYcwp
+	riMc8mFn9k+e7aM0PD2C1lTqWcqBNXCzXnTLQmYoa9u32tPxUAKx5Ij73kwVYHCYj/1g8GqlQrP/Y
+	CXf2Oog3okFZNjt1lBMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOvYS-0000000FJpT-1FDk;
-	Mon, 18 May 2026 10:50:38 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1wOvcD-0000000FKiX-29HF;
+	Mon, 18 May 2026 10:54:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOvYP-0000000FJmp-02dZ
+	id 1wOvcB-0000000FKha-11wj
+	for linux-rockchip@bombadil.infradead.org;
+	Mon, 18 May 2026 10:54:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=Hl/m7s8+gdhaAEkK8F8CgPM1JiiK905rKoY3T49KXgs=; b=l+uFslNW56qTBjl4MjaVTkbIqB
+	s1W08tgx/wkcA3fO+pgO77g565ZKiDEODNxI4abrpO5mkr6F2xQe/aZMNaHRGAnRIZdAVGo2QmMrI
+	RBAZNyfTwmS6rv/uodi9LmWU6l5bMZRJD824alSgOiLbB07R2doVlkACi1HsfErgMkYFGyKtZ7eMX
+	lSlKAB19W8OshTYUpeEhDHiSSAIMot1ZsFvA3axFOf/h1kkq4lLNDswqymz+MlG77/0K2WsH4iVxh
+	zaet2Kasee/WoPExgGQQZuHkphQ3aiO3pi3WqzHQnD9sz5ESuQjp6EggF/HF14MNO5nByL8L+oSIB
+	rVxamoHw==;
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wOvc8-0000000ApzN-0H2o
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 10:50:35 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 694BBC2B9E6;
-	Mon, 18 May 2026 10:51:21 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 741C95FFA3;
-	Mon, 18 May 2026 10:50:28 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 685B811AF8493;
-	Mon, 18 May 2026 12:50:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1779101427; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=9/zO0zp2r2FGgOERfPfiqfEES0NFm6hJuu5wdDFRS34=;
-	b=heXyafCM/wLX2BEnRUVB6I1LvciXkXkGOp1QVSXzvEVNPgbmW4kOe5GBgki6tpZrpmEpQm
-	XYGDYYm87gHlRs/wz1vK2gz227wopf/fMYJaEHGmOWDznkO4nyZAoHhGILrwsTcM5RWIxD
-	mbiCD94a95vAXB5AzxHG96indCe5cXxpC0GLXk/mnorsK6skaw8EstUgNekqTXNg9O4qbF
-	ae87N/6mNYw99dtmyztg5Krr+bq4yxC9LZ3Nxk9bYxZmzQVZifp8IH5R0aJov160Zs+mtv
-	5N04Gbbpo2IUhzf0uzLgITVYZMF3IEv9ClgD7I+6IHOa++cAstqYqOUsnjHzbw==
-Mime-Version: 1.0
-Date: Mon, 18 May 2026 12:50:18 +0200
-Message-Id: <DILQTGH47XGL.1K6I6UI6IXP92@bootlin.com>
-To: "Simon Wright" <simon@symple.nz>, "Cristian Ciocaltea"
- <cristian.ciocaltea@collabora.com>
-From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
-Subject: Re: [PATCH] drm/bridge: dw-hdmi-qp: compute audio CTS from N when
- not in TMDS table
-Cc: "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
- <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
- Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
- <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "David
- Airlie" <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Heiko
- Stuebner" <heiko@sntech.de>, "Andy Yan" <andy.yan@rock-chips.com>,
- "Sebastian Reichel" <sebastian.reichel@collabora.com>, "Dmitry Baryshkov"
- <dmitry.baryshkov@oss.qualcomm.com>, "Algea Cao"
- <algea.cao@rock-chips.com>, <dri-devel@lists.freedesktop.org>,
- <linux-rockchip@lists.infradead.org>,
- <linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-X-Mailer: aerc 0.20.1
-References: <92aa4191-2a2a-41e3-badb-c0a5b1fbb957@symple.nz>
-In-Reply-To: <92aa4191-2a2a-41e3-badb-c0a5b1fbb957@symple.nz>
-X-Last-TLS-Session-Version: TLSv1.3
+	Mon, 18 May 2026 10:54:26 +0000
+Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-48909558b3aso22925865e9.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 May 2026 03:54:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779101662; x=1779706462; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=Hl/m7s8+gdhaAEkK8F8CgPM1JiiK905rKoY3T49KXgs=;
+        b=gs3KWbJ6KrQUNjarRbT615ZBqhNDWfNK1QButBe43d0G8ZzATI5VB97KsDEoop/R19
+         ji0KKw0B0nzErdQ7nZNh6ctcctiCDyRXKFaft773DjGEiIjcaAHWUOYBD07WCsyUI9tJ
+         DZ1dOWjC9TBIWiGTJDV9SuL0D7TOn3tB5ISnvysMec/Xj1qfjyzThDdcm5R+aDeXT5hi
+         AMCbXKWSLwV7TEzSiHqkpKMejHPypl8p4Y4ZE4caLQzMqQBRhtZZS7FY0rc8TFBt1xOf
+         bQ92toL4CwVdJkihpSaR1LilUDYBkVqSwST+HaNfzfMIbFY+N5ZnyHTh/i2js/PjoqDV
+         mXqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779101662; x=1779706462;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=Hl/m7s8+gdhaAEkK8F8CgPM1JiiK905rKoY3T49KXgs=;
+        b=ZJISezrmE5FqWB+s8J3GYrtms25DswmxtajZ7pl+SM64LIXRIxkwElwsi/Jinwzo/G
+         Psj3Br7lPg19EJQgJ7NuZaAy5LCl9sloVcptqQCCKsHeDDbrt1h6wd/a/9kXl8G6vdZw
+         9MVKiKMT+EfNamlzo2OZNOkhSqG/jwpd0JX++pKBYKdfN5UjY9hMUBR9ADyyikhdk43s
+         heqXxhsIdpTh+iyMOZGvG8kJm9xiTUftjIOzrBhV/UgBmZK439JmxVcpDZgPnPFCEr4d
+         h9s/PNyxaD5LmnL/DK4nR9cgrU+1IF72UkQFqADCIRawx76PFMk2bs1Ane+KnSjwiF2z
+         Ccxg==
+X-Forwarded-Encrypted: i=1; AFNElJ/kC/DquLJGU/gP55mSWAEtDvVFyDpEirNVU6ccUNA6hPmduYN+9mgCUoqvrxXsD9YNGudCuXzY9Ni30yDjZw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz6pxf2DhX/AjfbZN0z6LcMSTXRqar7ays8R9ND13KJaXgTd7m2
+	3mj2JiS+RRc4p7xHSJldUUfOuAagAxVrgpYmfDvNmjXhFlNphycKa1U=
+X-Gm-Gg: Acq92OGmPvLJHtEvz7yUGoAWBZngZRe9GSKF2ZCEksNaYf4UmAqLDACBDJXbdo69JFY
+	uamfTVE6uWcMeAcItJ8DUBDGAFDyYf5yQQhvC2aJ7e+ROuH3RriCcHidJFrWePpnEnoTiEXImt0
+	XS0t53cteSA6auEuJjBZ33ZkLYVMlxRHMQ2FZCmIXn7ke+TFgd/KjMiNVAeVywKLtGE57H1i1h/
+	at6m4iEWfu/KqgC5pTIfpzTyqKGO7N+B5Y+yRb9SSX6GDt007B7vq8/JMnQBnVZn5dV5xNnSymL
+	nYahOuVTTHTgutd1EsBj88tJpn1uAdkUSmG9JKoJ0Yd8mW0Znvk7sh3B/KZ0RddYGRGPPtR0u8e
+	Sv8ORZ/qlFoP8GrdkB9D+yCbyBucINKMgC+HH0FGU/jQ53tARZsvWrVl+uI8J9tgPo/P6c4+0wp
+	gO6gP942vPDfsWX43CA3ZPlgGqVucAu+VFKs3FWQH1zL9gOe2Ptu/A/+7lumi2Rffs04NiGcCNv
+	kqgeMJ0dky//Q==
+X-Received: by 2002:a05:600c:c0db:b0:48e:8499:4be0 with SMTP id 5b1f17b1804b1-48fe60ee481mr163456935e9.15.1779101662049;
+        Mon, 18 May 2026 03:54:22 -0700 (PDT)
+Received: from localhost.localdomain ([151.57.14.108])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48fe5694f2csm249429345e9.4.2026.05.18.03.54.20
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 18 May 2026 03:54:21 -0700 (PDT)
+From: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+To: jonas@kwiboo.se,
+	detlev.casanova@collabora.com,
+	nicolas.dufresne@collabora.com,
+	hverkuil@kernel.org,
+	mchehab@kernel.org
+Cc: ezequiel@vanguardiasur.com.ar,
+	heiko@sntech.de,
+	linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] media: rkvdec: fix PM runtime teardown ordering in remove
+Date: Mon, 18 May 2026 12:54:13 +0200
+Message-ID: <20260518105413.42147-1-pavone.lawyer@gmail.com>
+X-Mailer: git-send-email 2.54.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_035033_206625_44C945B2 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20260518_115424_542167_C7965249 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,102 +115,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGVsbG8gU2ltb24sCgpPbiBTYXQgTWF5IDksIDIwMjYgYXQgOTowOSBBTSBDRVNULCBTaW1vbiBX
-cmlnaHQgd3JvdGU6Cj4gZHdfaGRtaV9xcF9maW5kX2N0cygpIHJldHVybnMgMCBmb3IgYW55IFRN
-RFMgY2hhcmFjdGVyIHJhdGUgbm90Cj4gcHJlc2VudCBpbiBjb21tb25fdG1kc19jdHNfdGFibGVb
-XSAod2hpY2ggdGVybWluYXRlcyBhdCAxNDguNSBNSHopLgo+IEluIHRoYXQgY2FzZSBkd19oZG1p
-X3FwX3NldF9zYW1wbGVfcmF0ZSgpIGNhbGxzIGR3X2hkbWlfcXBfc2V0X2N0c19uKCkKPiB3aXRo
-IGN0cyA9PSAwLCB3aGljaCBsZWF2ZXMgQVVEUEtUX0FDUl9DVFNfT1ZSX0VOIGNsZWFyIGFuZCBm
-YWxscwo+IGJhY2sgdG8gdGhlIGNvbnRyb2xsZXIncyBpbnRlcm5hbCBDVFMgYXV0by1tZWFzdXJl
-bWVudC4KPiBPbiBhdCBsZWFzdCB0aGUgUkszNTc2IGhkcHR4IGludGVncmF0aW9uLCBzdHJpY3Qg
-SERNSSBzaW5rcyBtdXRlCj4gYXVkaW8gaW4gdGhpcyBjb25maWd1cmF0aW9uLiDCoFRoZSBiZWhh
-dmlvdXIgcmVwcm9kdWNlcyBhdCBhbnkgcmF0ZQo+IG5vdCBwcmVzZW50IGluIHRoZSB0YWJsZSAt
-LSBpdCBpcyBub3Qgc3BlY2lmaWMgdG8gSERNSSAyLng6Cj4gMTkyMHgxMDgwQDYwIHdpdGggMTAt
-Yml0IGRlZXAgY29sb3VyICgxODUuNjI1IE1IeiwgSERNSSAxLjQpIGlzCj4gYWZmZWN0ZWQsIGFz
-IGlzIDM4NDB4MjE2MEA2MCA4LWJpdCAoNTk0IE1IeiwgSERNSSAyLjApLiDCoFN1cHBseWluZwo+
-IGV4cGxpY2l0IENUUyB2aWEgdGhlIHN0YW5kYXJkIHNldF9jdHNfbigpIG92ZXJyaWRlIHBhdGgg
-cmVzb2x2ZXMKPiB0aGUgbXV0ZS4KPiBUaGUgZHJpdmVyIGFscmVhZHkgaGFzIHRoZSBzeW1tZXRy
-aWMgbWFjaGluZXJ5IGZvciB0aGUgTi10YWJsZS1taXNzCj4gY2FzZTogZHdfaGRtaV9xcF9jb21w
-dXRlX24oKSBmYWxscyBiYWNrIHRvIGEgZHluYW1pYyBzZWFyY2ggdXNpbmcKPiBkd19oZG1pX3Fw
-X2F1ZGlvX21hdGhfZGlmZigpICgocGl4ZWxfY2xrICogbikgLyAoMTI4ICogZnJlcSkpIHdoZW4K
-PiBubyB0YWJsZSBlbnRyeSBtYXRjaGVzLiDCoFRoZSBDVFMgcGF0aCBsYWNrcyB0aGUgZXF1aXZh
-bGVudCBmYWxsYmFjay4KPiBDb21wdXRlIENUUyBpbmxpbmUgaW4gZHdfaGRtaV9xcF9zZXRfc2Ft
-cGxlX3JhdGUoKSBmcm9tIE4gcGVyIHRoZQo+IEhETUkgc3BlYyAoQ1RTID0gVE1EUyAqIE4gLyAo
-MTI4ICogRnMpKSB3aGVuIGZpbmRfY3RzKCkgcmV0dXJucyAwLgo+IFRoZSBzYW1lIGZvcm11bGEg
-YXBwZWFycyBpbiB0aGUgbGVnYWN5IERlc2lnbldhcmUgSERNSSBkcml2ZXIKPiAoZHJpdmVycy9n
-cHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLmMsIGhkbWlfc2V0X2Nsa19yZWdlbmVyYXRv
-cigpKQo+IHVuZGVyIGl0cyBBSEIgLyBHUCBhdWRpbyBwYXRocy4KPiBUZXN0ZWQgb24gUjc2UyAo
-UkszNTc2KSBvbiBBcm1iaWFuLWVkZ2UgbWFpbmxpbmUgNy4wLjEgd2l0aCBDcmlzdGlhbgo+IENp
-b2NhbHRlYSdzIGhkcHR4LWNsay1maXhlcyB2MSBzZXJpZXMgYXBwbGllZDoKPiAgwqAgVE1EUyDC
-oCDCoCDCoCDCoCBNb2RlIMKgIMKgIMKgIMKgIMKgIMKgIEluIHRhYmxlPyDCoEF1ZGlvIHdpdGgg
-Zml4Cj4gIMKgIDE0OC41IE1IeiDCoCDCoDEwODBwNjAgwqA4LWJpdCDCoCB5ZXMgwqAgwqAgwqAg
-wqBwbGF5cyAocmVncmVzc2lvbiBjaGVjaykKPiAgwqAgMTg1LjYyNSBNSHogwqAxMDgwcDYwIDEw
-LWJpdCDCoCBubyDCoCDCoCDCoCDCoCBwbGF5cwo+ICDCoCAyOTcgTUh6IMKgIMKgIMKgMzg0MHAz
-MCDCoDgtYml0IMKgIG5vIMKgIMKgIMKgIMKgIHBsYXlzCj4gIMKgIDU5NCBNSHogwqAgwqAgwqAz
-ODQwcDYwIMKgOC1iaXQgwqAgbm8gwqAgwqAgwqAgwqAgcGxheXMKPiBTaW5rcyB0ZXN0ZWQ6IExH
-IEczIE9MRUQsIExHIEM0IE9MRUQsIFRDTCA3NVA3SyBRTEVELCBLb2dhbgo+IEtBTEVENDNYVTky
-MTBTVEEgKENoYW5naG9uZy1PRU0gNEsgTEVEKS4gwqBXaXRob3V0IHRoZSBmaXgsIHRoZSBMRwo+
-IEczIG11dGVzIGF1ZGlvIC0tIHRoaXMgaXMgdGhlIG9yaWdpbmFsbHkgcmVwb3J0ZWQgYnVnCj4g
-KGxpbnV4LXJvY2tjaGlwIDA3MDYzMykuIMKgVGhlIExHIEM0IHdhcyB2ZXJpZmllZCBkdXJpbmcg
-dGhpcyBjeWNsZQo+IHRvIG11dGUgYXQgMTg1LjYyNSBNSHogKDEwODBwNjAgMTAtYml0KSB3aXRo
-IHRoZSB1bnBhdGNoZWQgbW9kdWxlLgo+IFRoZSBLb2dhbiBUViBwbGF5cyBhdWRpbyB3aXRoIG9y
-IHdpdGhvdXQgdGhlIGZpeDsgaXQgaXMgYQo+IHBlcm1pc3NpdmUgSERNSSAyLjAgaW1wbGVtZW50
-YXRpb24gdGhhdCBkb2VzIG5vdCBzdHJpY3RseSBjcm9zcy0KPiBjaGVjayBBQ1IgdGltaW5nLiDC
-oFRoZSBUQ0wgNzVQN0sgd2FzIHRlc3RlZCB3aXRoIHRoZSBmaXggbG9hZGVkCj4gb25seS4KPiBB
-dWRpbyBwbGF5cyBhdCBldmVyeSBzdXBwb3J0ZWQgc2FtcGxlIHJhdGUgKDMyIC8gNDQuMSAvIDQ4
-IC8gOTYgLwo+IDE5MiBrSHopIHZlcmlmaWVkIG9uIHRoZSBUQ0wgYXQgdGhlIDE4NS42MjUgTUh6
-IG91dC1vZi10YWJsZSBUTURTCj4gcmF0ZSAtLSB0aGUgZmFsbGJhY2sncyBDVFMgPSAoVE1EUyAq
-IE4pIC8gKDEyOCAqIEZzKSBjb21wdXRhdGlvbiBpcwo+IGluZGVwZW5kZW50IG9mIHNhbXBsZSBy
-YXRlLCBhcyBleHBlY3RlZC4KPiBUaGUgTEcgQzQncyBDVEEtODYxIFNWRHMgZG8gbm90IGFkdmVy
-dGlzZSAzODQweDIxNjBANjAgb3ZlciBUTURTCj4gKGl0IGlzIHNpZ25hbGxlZCBGUkwtb25seSBv
-biB0aGF0IG1vZGVsKSwgc28gdGhhdCBvbmUgcm93IGlzIE4vQQo+IG9uIHRoZSBDNC4gwqBUaGUg
-c2FtZSBhdWRpby1wYXRoIGNvZGUgaXMgZXhlcmNpc2VkIGF0IDI5NyBNSHogb24KPiB0aGF0IHNp
-bmsgYW5kIGJlaGF2ZXMgaWRlbnRpY2FsbHkgdG8gdGhlIEczLgo+IFJlcG9ydGVkLWJ5OiBTaW1v
-biBXcmlnaHQgPHNpbW9uQHN5bXBsZS5uej4KPiBDbG9zZXM6Cj4gaHR0cHM6Ly9saXN0cy5pbmZy
-YWRlYWQub3JnL3BpcGVybWFpbC9saW51eC1yb2NrY2hpcC8yMDI2LU1heS8wNzA2MzMuaHRtbAo+
-IFN1Z2dlc3RlZC1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlhbi5jaW9jYWx0ZWFAY29s
-bGFib3JhLmNvbT4KPiBUZXN0ZWQtYnk6IFNpbW9uIFdyaWdodCA8c2ltb25Ac3ltcGxlLm56Pgo+
-IFNpZ25lZC1vZmYtYnk6IFNpbW9uIFdyaWdodCA8c2ltb25Ac3ltcGxlLm56Pgo+IC0tLQo+ICDC
-oGRyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1xcC5jIHwgMTUgKysrKysr
-KysrKysrKysrCj4gIMKgMSBmaWxlIGNoYW5nZWQsIDE1IGluc2VydGlvbnMoKykKPiBkaWZmIC0t
-Z2l0IGEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9zeW5vcHN5cy9kdy1oZG1pLXFwLmMKPiBiL2Ry
-aXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3BzeXMvZHctaGRtaS1xcC5jCj4gaW5kZXggMGRiYjEy
-NzQzNjAuLjI1YWM4ZDNjZmM4IDEwMDY0NAo+IC0tLWEvZHJpdmVycy9ncHUvZHJtL2JyaWRnZS9z
-eW5vcHN5cy9kdy1oZG1pLXFwLmMKPiArKytiL2RyaXZlcnMvZ3B1L2RybS9icmlkZ2Uvc3lub3Bz
-eXMvZHctaGRtaS1xcC5jCj4gQEAtNDYxLDYgKzQ2MSwyMSBAQHN0YXRpYyB2b2lkIGR3X2hkbWlf
-cXBfc2V0X3NhbXBsZV9yYXRlKHN0cnVjdAo+IGR3X2hkbWlfcXAgKmhkbWksIHVuc2lnbmVkIGxv
-bmcgbG8KPiAgwqAgbiA9IGR3X2hkbWlfcXBfZmluZF9uKGhkbWksIHRtZHNfY2hhcl9yYXRlLCBz
-YW1wbGVfcmF0ZSk7Cj4gIMKgIGN0cyA9IGR3X2hkbWlfcXBfZmluZF9jdHMoaGRtaSwgdG1kc19j
-aGFyX3JhdGUsIHNhbXBsZV9yYXRlKTsKPiArIC8qCj4gKyDCoCogZHdfaGRtaV9xcF9maW5kX2N0
-cygpIHJldHVybnMgMCBmb3IgYW55IFRNRFMgcmF0ZSBub3QgaW4KPiArIMKgKiBjb21tb25fdG1k
-c19jdHNfdGFibGVbXS4gwqBGYWxsaW5nIHRocm91Z2ggdG8gdGhlIGNvbnRyb2xsZXIncwo+ICsg
-wqAqIGF1dG8tbWVhc3VyZSBwYXRoIG11dGVzIGF1ZGlvIG9uIHN0cmljdCBIRE1JIHNpbmtzIGF0
-IG91dC1vZi0KPiArIMKgKiB0YWJsZSByYXRlcyAoZS5nLiAxODUuNjI1IE1IeiwgMjk3IE1Ieiwg
-NTk0IE1IeikuIMKgQ29tcHV0ZSBDVFMKPiArIMKgKiBmcm9tIE4gcGVyIEhETUkgc3BlYyBpbnN0
-ZWFkLCBzbyB0aGUgc3RhbmRhcmQgb3ZlcnJpZGUgcGF0aAo+ICsgwqAqIHN1cHBsaWVzIGl0IG9u
-IHRoZSB3aXJlLgo+ICsgwqAqLwo+ICsgaWYgKCFjdHMgJiYgbikgewo+ICsgwqAgdTY0IGNvbXB1
-dGVkID0gKHU2NCl0bWRzX2NoYXJfcmF0ZSAqIG47Cj4gKwo+ICsgwqAgZG9fZGl2KGNvbXB1dGVk
-LCAxMjhVTEwgKiBzYW1wbGVfcmF0ZSk7Cj4gKyDCoCBjdHMgPSAodW5zaWduZWQgaW50KWNvbXB1
-dGVkOwo+ICsgfQo+ICsKPiAgwqAgZHdfaGRtaV9xcF9zZXRfY3RzX24oaGRtaSwgY3RzLCBuKTsK
-PiAgwqB9CgpUaGFua3MgZm9yIHlvdXIgcGF0Y2guIEkgY2Fubm90IGNvbW1lbnQgb24gdGhlIGNv
-bnRlbnQgYnV0IEkgY2FuIHBvaW50IGZvcgpmb3JtYWwgaXNzdWVzIHdpdGggeW91ciBzdWJtaXNz
-aW9uLgoKWW91ciBwYXRjaCBnb3QgbWFuZ2xlZCBieSB5b3VyIG1haWxlciBhbmQgY2Fubm90IGJl
-IGFwcGxpZWQuIFBsZWFzZSBkb24ndAp0cnkgdG8gY29udmluY2UgeW91ciBtYWlsZXIgdG8gc2Vu
-ZCBwYXRjaGVzIHRoZSByaWdodCB3YXk6IHNhdmUgeW91ciB0aW1lCmFuZCB1c2UgImdpdC1mb3Jt
-YXQgcGF0Y2ggKyBnaXQgc2VuZC1lbWFpbCIsIG9yIGV2ZW4gYmV0dGVyIHVzZSBiNC4KCkFsc28g
-eW91ciBjb21taXQgbWVzc2FnZSBpcyB2ZXJ5IGRldGFpbGVkLCBhbmQgdGhpbmsgaXQgd291bGQg
-YmUgbW9yZQpyZWFkYWJsZSBpZiBzcGxpdCBpbiBwYXJhZ3JhcGhzLiBZb3UgY2FuIGhhdmUgYSBs
-b29rIGF0IHZhcmlvdXMgY29tbWl0cyBpbgp0aGUga2VybmVsIGxvZyBmb3IgaW5zcGlyYXRpb24u
-CgpUaGVyZSdzIHBsZW50eSBvZiBzdWdnZXN0aW9ucyBvbiBob3cgdG8gc2VuZCBwYXRjaGVzIGlu
-IFswXSwgZW5zdXJlIHlvdQpyZWFkIHRoZW0gYWxsLgoKWzBdIGh0dHBzOi8vZG9jcy5rZXJuZWwu
-b3JnL3Byb2Nlc3Mvc3VibWl0dGluZy1wYXRjaGVzLmh0bWwKClRoYW5rcyEKCkx1Y2EKCi0tCkx1
-Y2EgQ2VyZXNvbGksIEJvb3RsaW4KRW1iZWRkZWQgTGludXggYW5kIEtlcm5lbCBlbmdpbmVlcmlu
-ZwpodHRwczovL2Jvb3RsaW4uY29tCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBA
-bGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xp
-c3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Jonas Karlman <jonas@kwiboo.se>
+
+The current remove() path calls rkvdec_v4l2_cleanup() and
+pm_runtime_disable() before pm_runtime_dont_use_autosuspend(), and
+frees the empty IOMMU domain after that. With autosuspend still
+armed when the domain goes away, the VDPU381 can be left in a dirty
+state across module reload and suspend/resume cycles.
+
+On RK3588 this surfaces as a VP9 inter-prediction bug: from the
+second ALTREF frame onward, motion blocks decode with U=V=0 (BT.709
+green), while intra and static blocks stay correct. Reordering the
+teardown to dont_use_autosuspend() -> iommu_domain_free() ->
+pm_runtime_disable() -> v4l2_cleanup() makes the symptom go away.
+
+Tested on a Radxa Rock 5B+ (RK3588, 8 GB LPDDR5) with both the
+libva-v4l2-request mpv pipeline and Chromium's V4L2 stateless
+decoder. With the fix, 300 random pixel samples on VP9 Profile 0
+clips at 1080p and 1440p match a libvpx software reference exactly
+(worst delta 0). Without it, the same 1080p sample at frame 4,
+pixel (960, 270) reads HW=(0,112,0) vs SW=(204,147,116). HEVC and
+H.264 stateless decoding via mpv keep running on hardware with no
+fallback.
+
+Fixes: ff8c5622f9f7 ("media: rkvdec: Restore iommu addresses on errors")
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Tested-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+Signed-off-by: Francesco Saverio Pavone <pavone.lawyer@gmail.com>
+---
+ drivers/media/platform/rockchip/rkvdec/rkvdec.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/media/platform/rockchip/rkvdec/rkvdec.c b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+index 6f5f0422d317..bb95b090a25b 100644
+--- a/drivers/media/platform/rockchip/rkvdec/rkvdec.c
++++ b/drivers/media/platform/rockchip/rkvdec/rkvdec.c
+@@ -2066,12 +2066,13 @@ static void rkvdec_remove(struct platform_device *pdev)
+ 
+ 	cancel_delayed_work_sync(&rkvdec->watchdog_work);
+ 
+-	rkvdec_v4l2_cleanup(rkvdec);
+-	pm_runtime_disable(&pdev->dev);
+ 	pm_runtime_dont_use_autosuspend(&pdev->dev);
+ 
+ 	if (rkvdec->empty_domain)
+ 		iommu_domain_free(rkvdec->empty_domain);
++
++	pm_runtime_disable(&pdev->dev);
++	rkvdec_v4l2_cleanup(rkvdec);
+ }
+ 
+ #ifdef CONFIG_PM
+-- 
+2.45.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
