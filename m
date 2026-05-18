@@ -4,73 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6163CD4F54
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A4BCD343F
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 20:07:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=b4kVWMb4TDZbstD3l/9dNiBRm0HD55ZKd1NueTZ0Y3c=; b=Rml7ZbYk5iBak9
-	x73cPmh3bO1gVkH2Vc8N7RP468N9kFa/jQ7YoJQRrOBwa54MIWRvujpnBkUAARgQ+iEXQUaQ/V4Rh
-	m3GA2BbuGXGtZYANxEs2wX4mUPMvyGdMUJ9yAx+QTFg+RKdqvcmejrb5SmTS9dgddujSbJ65oWxD/
-	KzgswDdsoPn8uDcrYXxAvLDCDOPEOoXpU4cU7M7crzd/Tsj975q8IX0V1eELfdYUz/Xl/JpZ76zAQ
-	No+ylDHtCDapzm7IlgbpPmPcqwmO5bXDc5b6WhbQ4K57+OQe1HQ3PpdPjFtmW6c4i3EKnGcX3mVgu
-	AJe1QqFeD4gt+ugqLSyw==;
+	List-Owner; bh=7UlIqkfsBlheCSHoOKgvSDWn/YQ9FB4iCyH900/hvpw=; b=eJ3PdOPCI+DBW5
+	NORGurgktcgupBQZdWm2p4f9qO+x/Hhb3YHq4z3KLYS4aJoeH+dZD6LwI2jCZw7nX+ltgc+d54grt
+	lV+3YvzKqIQMFuxw8gIxuYq0FczmZYVNwMGsmnXC3C1fyEZFu+/prhmSOeSUHUbseu0wkfw0GVRv1
+	asP5o3cmR3JpGGYJ6MQx20+5ZQpi3YI240wUP6WuaWXQ7WR7/jIEny7RJaAk/i3bpAeV8YD470l8E
+	H/bgG5o0wLijKq9lU1tBuxtGoNxHGyVAGx+HuqIfZJbqZkgIOwaTWwzK8WlDkIgEU+6rWzjldKxMX
+	qkL+IBFmh7XD4vkWuQog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xi-0000000GmvN-2RzI;
-	Mon, 18 May 2026 19:49:14 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wP4Fm-0000000GqE0-32Wq;
+	Mon, 18 May 2026 20:07:54 +0000
+Received: from mail-oo1-xc33.google.com ([2607:f8b0:4864:20::c33])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3xe-0000000GmoI-1SZE
+	id 1wP4Fk-0000000GqCU-1i1V
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 19:49:12 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133750; bh=7oMd33Pu3qFKqhyhcRlxwcdcgttbfUQtZ40oIOhs3ik=;
- b=IrXVFYT4MNE24CFZ18fTTzIWu/DlfJz5Po3jNYrPWcdCpHJPsxsEo/5+QwsJ55fuavsrVMeJR
- Am6MDRFu6BzXFbrmjsCZofBat63R4d+pmiUwGnslcskF+XB2XQLuHfuVew2Lh7+w2FqAI79H70O
- jiPnVZICTO8q0HZSQmpkmIOnqO5nDVWAaHst8Y4LNNYPTn5jTgk6bTRGdTvX682eRlz1enwy7LV
- /ua7lk2QOrYD/AlA8h5y0TcY1DihAMdo4LU5InKGxE4xe9yO2ZcK9zjEUAKmZKWRa1q01JVebzM
- AFS+Vo6DqD/E0oNpqSNRhyl4fp28ztlpKWQcZyB7n3Nw==
-X-Forward-Email-ID: 6a0b6d21b74b0ebd362eef85
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
-X-Forward-Email-Version: 2.8.12
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-From: Jonas Karlman <jonas@kwiboo.se>
-To: Neil Armstrong <neil.armstrong@linaro.org>,
-	Kevin Hilman <khilman@baylibre.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Jerome Brunet <jbrunet@baylibre.com>,
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-amlogic@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>,
-	linux-rockchip@lists.infradead.org
-Subject: [PATCH 13/13] drm/meson: dw-hdmi: Use suspend_late/resume_early/resume_noirq pm ops
-Date: Mon, 18 May 2026 19:47:41 +0000
-Message-ID: <20260518194744.2483580-14-jonas@kwiboo.se>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260518194744.2483580-1-jonas@kwiboo.se>
-References: <20260518194744.2483580-1-jonas@kwiboo.se>
+	Mon, 18 May 2026 20:07:53 +0000
+Received: by mail-oo1-xc33.google.com with SMTP id 006d021491bc7-69b4f7d66e2so646515eaf.0
+        for <linux-rockchip@lists.infradead.org>; Mon, 18 May 2026 13:07:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779134871; x=1779739671; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=iVzCnMjCJpglDIb0wy9kN9Ix7DaLh3EYCWWU5UGwsk37W6wXpFHHlSK7T5Bur1IWKZ
+         Ax5bQUiUKn7+Blmngw2N4ru2xSYsndBFmhmAriPAAInJ0DxglNTEvOC5DHoD3KmzNz09
+         tJZav2UyrYp+gZ0cpoCUxDhS7aSdxzb+N45BEwknyVup/oIaQsvZPXTX/bxQYWsV6/Rq
+         6m53N5m74fQiKZafNKpqjdWA5qILaw9DEwIlBTCfomu0t043sP1BE8fIL8agQgDx9bc0
+         niSJw7Fy7GagGm5rdWVMmVHbxwLk0EzY3E94TEnLv70k+CVdAj6CminJmVREX9iVq4Ws
+         XkZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779134871; x=1779739671;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=KaUmQ9JpbnpkUCaTH5UXy4GKoNzMoHaVL3LWpQbAxts=;
+        b=T/RRjICCLQmgXmULHiyv4+WHsTn20XfA44OzYxsJajDye2EIH4D6aDrHhA1F0OX4LF
+         VmFp2hx7JNsc1cbQSYoqjz6kMRqIBJdxgWtDwmxU+d3MNBb7+pfbZZtlJx2qSW06PD+K
+         ADUtAanyMporaiSypdDXdiwrSvHc9FAsYAkCCaKQ18lAynQsISbjUmU0Ok4j0RUUmtui
+         DrhVQOJkFgAZbf/0ns7OmGYV0qN/dY6+mRmYQcV+F/uvEobIoJEN3lnEHYIL9SVyTcLt
+         j+F41FEYHWtl2lj89W2YY4oU6D78iQ2OOl0rYPWjpEZDlz+xC/zWWYKhJqfsi1IOfXY1
+         /U/w==
+X-Forwarded-Encrypted: i=1; AFNElJ942T8AzonDQLKR7IwoHFknrkswbuoRNrj9h/mudrfILAliMbbyuT4M6y9SW/tnXUvVcs43KaiXavS/9zZNCg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyAvoCal22khUd9vVrNUkOeWBBCZROTf20jpi4uguOpejCx8MX6
+	+EdJtvifja7549rr/YXNvGQSVWqzJGFBZXdC8i2GgztxA0OuNp4LlHlh
+X-Gm-Gg: Acq92OF/BvuGh7WteTQ47DI7E37nc+5NBLXG4pIjf6/dPcvLZjDticN4rEsgbcmtETY
+	GEDLtJMIrzV+9tNEH1IU3gHcrX+CwEx5HWgD4f1v+ybkeR8Sa9+YA9TXHs/29J6eKHYyL3OtmhS
+	zT9CzJcph0Na5KVb+3wsHMKyPzP+KKWIs0RbA9qysbuuKTCiO2YJojlU43SGFVUQp3Wx1X1Ynuj
+	JuYRJ09LBLZmODPy6FTXhg0xCrvZAqcWG5zaa2znvlY5Fyyzv2fCJdT1TMXcmqH5jNLIc589b0d
+	nPTpiPomEX5iOReqlyu1ruHb9lfiHeZEeu2uwvymJzitycULEzm7GWDtR5+JjAiOdjrdQAMbUr9
+	LlZLPx3b/8RDZDx3CjKVWf0VqRyC1Wg2dymjTmNt9AxAOn2QJeGEKvTC5Hx4ykFnZrHrXFWkky3
+	h12p3pig6Up7HSohUwZHZ8
+X-Received: by 2002:a05:6820:221e:b0:694:a362:e3ba with SMTP id 006d021491bc7-69c955c7f57mr9560119eaf.48.1779134871241;
+        Mon, 18 May 2026 13:07:51 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-69d0462e85esm6113360eaf.6.2026.05.18.13.07.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 18 May 2026 13:07:50 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-iio@vger.kernel.org
+Cc: andy@kernel.org,
+	nuno.sa@analog.com,
+	dlechner@baylibre.com,
+	jic23@kernel.org,
+	jean-baptiste.maneyrol@tdk.com,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	andriy.shevchenko@intel.com,
+	Chris Morgan <macromorgan@hotmail.com>,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH V8 01/10] dt-bindings: iio: imu: icm42600: Add mount-matrix to icm42600
+Date: Mon, 18 May 2026 15:05:16 -0500
+Message-ID: <20260518200526.458421-2-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260518200526.458421-1-macroalpha82@gmail.com>
+References: <20260518200526.458421-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_124910_403721_A57011FE 
-X-CRM114-Status: GOOD (  15.15  )
+X-CRM114-CacheID: sfid-20260518_130752_441578_1FA45F16 
+X-CRM114-Status: UNSURE (   8.66  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,151 +112,32 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-meson_drv_pm_suspend()/drm_mode_config_helper_suspend() and
-meson_drv_pm_resume()/drm_mode_config_helper_resume() is called
-after/before the suspend/resume pm ops of dw-hdmi.
+From: Chris Morgan <macromorgan@hotmail.com>
 
-This result in atomic_disable() being called after
-meson_dw_hdmi_pm_suspend() and atomic_enable() before
-meson_dw_hdmi_pm_resume()/dw_hdmi_resume() is called.
+Add mount-matrix attribute to schema. This attribute has been supported
+since the first revision of this driver, but was not documented.
 
-Suspend (without changes):
-- meson_dw_hdmi_pm_suspend()
-- meson_drv_pm_suspend()
-  - drm_mode_config_helper_suspend()
-    - atomic_disable()
-
-Resume (without changes):
-- resume_irq()            <<-- system freeze at hdmi-tx irq on G12B
-- meson_drv_pm_resume()
-  - drm_mode_config_helper_resume()
-    - atomic_enable()
-- meson_dw_hdmi_pm_resume()
-  - meson_dw_hdmi_init()
-  - dw_hdmi_resume()
-    - dw_hdmi_init_hw()
-
-Change to use suspend_late/resume_early pm ops for system suspend to
-ensure pm ops for dw-hdmi is run after/before meson_drv pm ops.
-
-The G12B can trigger an IRQ (stat=0x40) very early during resume_irq
-that causes a system freeze. Move the meson_dw_hdmi_init() call to
-resume_noirq pm ops to resolve the system freeze.
-
-Also move meson_dw_hdmi_init() to run before interrupt allocation to
-ensure HW has been initialized when first IRQ is triggered.
-
-Suspend (with changes):
-- meson_drv_pm_suspend()
-  - drm_mode_config_helper_suspend()
-    - atomic_disable()
-- meson_dw_hdmi_pm_suspend_late()
-
-Resume (with changes):
-- meson_dw_hdmi_pm_resume_noirq()
-  - meson_dw_hdmi_init()
-- resume_irq()
-- meson_dw_hdmi_pm_resume_early()
-  - dw_hdmi_resume()
-    - dw_hdmi_init_hw()
-- meson_drv_pm_resume()
-  - drm_mode_config_helper_resume()
-    - atomic_enable()
-
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 ---
-This can be tested using CONFIG_PM_DEBUG with a simulated suspend:
-  echo N > /sys/module/printk/parameters/console_suspend
-  echo 1 > /sys/power/pm_debug_messages
-  echo platform > /sys/power/pm_test
-  echo mem > /sys/power/state
-or using something like following for real suspend/resume:
-  echo N > /sys/module/printk/parameters/console_suspend
-  rtcwake -m mem -s 5 -d /dev/rtc1
+ .../devicetree/bindings/iio/imu/invensense,icm42600.yaml        | 2 ++
+ 1 file changed, 2 insertions(+)
 
-On S905X a simulated platform pm_test could only be tested. On G12A both
-simulated and real suspend works. And on G12B the board seems to freeze
-at a later stage when taking out of real suspend, however platform
-pm_test works.
----
- drivers/gpu/drm/meson/meson_dw_hdmi.c | 27 +++++++++++++++++++--------
- 1 file changed, 19 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-index 7b465e216759..16f15466a6f4 100644
---- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
-+++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-@@ -696,6 +696,8 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
- 	if (IS_ERR(dw_plat_data->regm))
- 		return PTR_ERR(dw_plat_data->regm);
+diff --git a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+index 119e28a833fd..9b2af104f186 100644
+--- a/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
++++ b/Documentation/devicetree/bindings/iio/imu/invensense,icm42600.yaml
+@@ -53,6 +53,8 @@ properties:
+   drive-open-drain:
+     type: boolean
  
-+	meson_dw_hdmi_init(meson_dw_hdmi);
++  mount-matrix: true
 +
- 	irq = platform_get_irq(pdev, 0);
- 	if (irq < 0)
- 		return irq;
-@@ -706,8 +708,6 @@ static int meson_dw_hdmi_bind(struct device *dev, struct device *master,
- 		return dev_err_probe(dev, ret,
- 				     "Failed to request hdmi top irq\n");
+   vdd-supply:
+     description: Regulator that provides power to the sensor
  
--	meson_dw_hdmi_init(meson_dw_hdmi);
--
- 	/* Bridge / Connector */
- 
- 	dw_plat_data->priv_data = meson_dw_hdmi;
-@@ -763,7 +763,7 @@ static const struct component_ops meson_dw_hdmi_ops = {
- 	.unbind	= meson_dw_hdmi_unbind,
- };
- 
--static int __maybe_unused meson_dw_hdmi_pm_suspend(struct device *dev)
-+static int __maybe_unused meson_dw_hdmi_pm_suspend_late(struct device *dev)
- {
- 	struct meson_dw_hdmi *meson_dw_hdmi = dev_get_drvdata(dev);
- 
-@@ -777,7 +777,19 @@ static int __maybe_unused meson_dw_hdmi_pm_suspend(struct device *dev)
- 	return 0;
- }
- 
--static int __maybe_unused meson_dw_hdmi_pm_resume(struct device *dev)
-+static int __maybe_unused meson_dw_hdmi_pm_resume_early(struct device *dev)
-+{
-+	struct meson_dw_hdmi *meson_dw_hdmi = dev_get_drvdata(dev);
-+
-+	if (!meson_dw_hdmi)
-+		return 0;
-+
-+	dw_hdmi_resume(meson_dw_hdmi->hdmi);
-+
-+	return 0;
-+}
-+
-+static int __maybe_unused meson_dw_hdmi_pm_resume_noirq(struct device *dev)
- {
- 	struct meson_dw_hdmi *meson_dw_hdmi = dev_get_drvdata(dev);
- 
-@@ -786,8 +798,6 @@ static int __maybe_unused meson_dw_hdmi_pm_resume(struct device *dev)
- 
- 	meson_dw_hdmi_init(meson_dw_hdmi);
- 
--	dw_hdmi_resume(meson_dw_hdmi->hdmi);
--
- 	return 0;
- }
- 
-@@ -802,8 +812,9 @@ static void meson_dw_hdmi_remove(struct platform_device *pdev)
- }
- 
- static const struct dev_pm_ops meson_dw_hdmi_pm_ops = {
--	SET_SYSTEM_SLEEP_PM_OPS(meson_dw_hdmi_pm_suspend,
--				meson_dw_hdmi_pm_resume)
-+	SET_LATE_SYSTEM_SLEEP_PM_OPS(meson_dw_hdmi_pm_suspend_late,
-+				     meson_dw_hdmi_pm_resume_early)
-+	SET_NOIRQ_SYSTEM_SLEEP_PM_OPS(NULL, meson_dw_hdmi_pm_resume_noirq)
- };
- 
- static const struct of_device_id meson_dw_hdmi_of_table[] = {
 -- 
-2.54.0
+2.43.0
 
 
 _______________________________________________
