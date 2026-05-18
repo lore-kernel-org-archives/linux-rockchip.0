@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B06CD4F50
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB881CD4F58
 	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 14:59:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,44 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
 	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=brbJOgkjT4lJaKZdwyNVwxZAgv0gnR06Eg7+SIhvyhw=; b=z2J/FpsRrJYEqe
-	GZtwZpL49V6P/55okZRpwTbm3qhC2TYuy7f8xLJ9pDN7kuGfdPtmRH4DqZa2Cyzv/k/H7+tXEp1B4
-	xYsSykFOs/slw7Bc6wa8L3KEklDzyEx+ZtUZeH1P7LegZDVStqUAKLA5wnwsib/mt4hnt7iG6AnUJ
-	DrGCDTSzkWQT1pw2FGQSALFnRptZ5vtpYYiuNpf8n904GIhTFwC7xl1BQMJsIVh0c47KJ03NacsnW
-	Hg9tMsiLtC44K2a4s3G1Ga8v3aROD6D4e1cXapGyWUNHT8ucCK51+aBgPXFH3DUQGPopnzq5fV6Ej
-	TxOov5+ObqsRUv9W8sfA==;
+	List-Owner; bh=DSdrUqha46ijk3NeCp3v4DRwXPO40TvPGsD/D0ZxtOQ=; b=p6Z2Rj5HQ7UQxk
+	++pNbjFaNbWKAh2GozyPVip8HNIv29MEKJ1EoiVY+QxTHeTCKL0NAIrFJLEgb9kCVhpMAl1OuhEkT
+	jGc6/xG++M4KexqBp/tbl+cyxl9YnCLuTwHf8mHZz1g9HkaRTYutug/XYsxP/cxqhppy7RoZamfPI
+	tB8xwSp8d7A/zR7znE5WwpRn7t5J2P7JvtD0QQF5kJOigYYpE2ko0Pw7eSJ51jSMfjERALb2bKdR2
+	qRGaUeiZFQA3k+vFRmdIATDDB2bpSZUzEhEbqePAmZ/+Aiism8w4mWOlkDiXCKsey11FEJnftMtBh
+	gtn6OCfucrdMjXx3/t2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOzRd-0000000G4nQ-199f;
+	id 1wOzRd-0000000G4mY-02WO;
 	Mon, 18 May 2026 14:59:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOzRR-0000000G4cr-2e1k;
+	id 1wOzRR-0000000G4dD-3gzM;
 	Mon, 18 May 2026 14:59:40 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DCCB44456B;
-	Mon, 18 May 2026 14:59:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id AF662C2BCC6;
+	by sea.source.kernel.org (Postfix) with ESMTP id 18A34445DC;
+	Mon, 18 May 2026 14:59:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id E6071C2BCFA;
 	Mon, 18 May 2026 14:59:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779116376;
-	bh=5tZEGCo7wCfylxqFJDnXkP1AKDZPWVP0KlTUW5f53Fs=;
+	s=k20201202; t=1779116377;
+	bh=2BlXOqN2MZMWBnpX9YhHPFj1hDHvw8PDo9sAAleLcKQ=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=naUlmNLdzZNdmF7I8FSq4MwSTlr544XWn9m+fXzeUJkpc9N/dije1ZXLtebKtGzq7
-	 TDA0XIb8bj9GWvSTkRvHot5/WNhv1k0oO8UD/6uJG8dNDaPgWdPNph+E8VINcC2lgQ
-	 W928pSMWtGdDEiGTQ377zxGrn4V4CBt+593BBFP6efF7if9GE2QkkBIOyDNizF29Na
-	 mPOawKdW3CJXxLikh4Hws1jLR4peo0MUBRY9cKNR57GembAPZvkkDWJVIUx5ROZRta
-	 JYb5OECoxx9HXbSCeX0Yuu1Jt+rxtyGUqr28rDHa1cJTw5nKxbkGdanxZS3IA4OQBi
-	 I5Qy64WH5aZXA==
+	b=rSFNQyejJN1StW2jxZXu4JYK0fBi4R7e50XyaCZdoKCJrc88c/HBcQUE+XFczKXln
+	 7GCFjGgUbJfUnABpYaJYIZldk/dzVUkNZXjp7pgUqmHm2NJizrZEgAs93NuyHoRs5u
+	 ORUL/OQt4EG9yUeTchQzypVNqwGZpaMXK1d2UG+SZ9bZ4RqNAYTpLVANp5VHBsjgEt
+	 0XC1RmRbEzLdSO7N7nGg60yPvelPhzBNyjEMQfEcxkMaR09wvdKZBE3/OSxndVe4KC
+	 NOmISQynSe7AzFcBX3BHpjXWTeEVzED1TZHtas+ifUE/JUkVSJNMYv5Bs7cFVDkYFD
+	 +AvF2Yeuctw0Q==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A0E8FCD4F4A;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id DA44ECD4F49;
 	Mon, 18 May 2026 14:59:36 +0000 (UTC)
 From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.oss.qualcomm.com@kernel.org>
-Date: Mon, 18 May 2026 20:29:14 +0530
-Subject: [PATCH v8 2/5] PCI/ERR: Add support for resetting the Root Ports
- in a platform specific way
+Date: Mon, 18 May 2026 20:29:17 +0530
+Subject: [PATCH v8 5/5] misc: pci_endpoint_test: Add AER error handlers
 MIME-Version: 1.0
-Message-Id: <20260518-pci-port-reset-v8-2-eb5a7d331dfc@oss.qualcomm.com>
+Message-Id: <20260518-pci-port-reset-v8-5-eb5a7d331dfc@oss.qualcomm.com>
 References: <20260518-pci-port-reset-v8-0-eb5a7d331dfc@oss.qualcomm.com>
 In-Reply-To: <20260518-pci-port-reset-v8-0-eb5a7d331dfc@oss.qualcomm.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, 
@@ -68,27 +67,26 @@ Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org,
  mani@kernel.org, Lukas Wunner <lukas@wunner.de>, 
  Richard Zhu <hongxing.zhu@nxp.com>, Brian Norris <briannorris@chromium.org>, 
  Wilson Ding <dingwei@marvell.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>, 
- Frank Li <Frank.Li@nxp.com>, Manivannan Sadhasivam <mani@kernel.org>
+ Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3066;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1915;
  i=manivannan.sadhasivam@oss.qualcomm.com; h=from:subject:message-id;
- bh=fadAkZ1kLRIswT7sEoWlHZDHy4GXaK/5Uzi4qJOgymI=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqCylUQC0CnLltOm2LNknUaTUAACpnCJ3VV59Bw
- 195OG/pDUuJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCagspVAAKCRBVnxHm/pHO
- 9Ub5B/wJfDUeumCQbnp9zPxpqe1kXfqsDRckD1Y5ckykPBLsLrTsZvBCYNgP40Uiypr1/Coi7ii
- uYM6xto+vGX13yv/p3MQMaWV2oi56o1f93EGeMLvTPJF7Qiy84R27MhA3mcx0P++l7TtopIXRmn
- SE4LeuFrPvyR5Xn5g6pIplxseyrK+JZml11C9C7jb/9PDcYHQIScAKsqoxmp6mI7uf6o7yFdewa
- a3fdUuBCrXostKMruQIAgv7ZPND7Dbg1+bdPC088nKamGAJ7rLST2LgiyAQI/7i65wdM6qcziYE
- /HK1vK7WcJA9s/F9r+k5K+TLAu5/YkNJAR7UnQ6AA+cN8nHS
+ bh=JH7YrfnPbbQwcHA61MAIZvihPkNzj1YvLFKf+5eniiA=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqCylVusbtosdeWvULWFlkHh78IbQMGqm1IAOx+
+ tGRKk7zI06JATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCagspVQAKCRBVnxHm/pHO
+ 9WBGB/9M4YSDd/u8GygRb+Q9NR+sR+xkzlGX6Arf72nQo8iLfuIZSfmmo3tNIE252mRjE4SBjep
+ u9Mu4Rk2sVPFLvxd+u5GSzGgsDTa8tcVuYDAtw+xFjz5MRwDWTgKgxr38lidrHbLRqiqtzL5uz4
+ KychY6gPdaMcbHKno6gaMz9PA9pV3VzJGng6rKL8yL8uODtIyLvIlMslDX2Hq190bXbkex0fwWC
+ cjULNwNhFecOlIu5lUUhaomXfvTFH0/sue5mbjRY9aOppS+5rzT7TOHdXs3ETXD0xXVSgMt/306
+ Ux/uIMKhNVNouKfGHOjox249GhFX61Hck5JeWw2KFHfEmY46
 X-Developer-Key: i=manivannan.sadhasivam@oss.qualcomm.com; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
 X-Endpoint-Received: by B4 Relay for
  manivannan.sadhasivam@oss.qualcomm.com/default with auth_id=461
 X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_075937_831381_005F966E 
-X-CRM114-Status: GOOD (  14.75  )
+X-CRM114-CacheID: sfid-20260518_075937_993072_1D506C41 
+X-CRM114-Status: GOOD (  12.81  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,83 +104,65 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Manivannan Sadhasivam <mani@kernel.org>
+From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
-Some host bridge devices require resetting the Root Ports in a platform
-specific way to recover them from error conditions such as Fatal AER
-errors, Link Down etc... So introduce pci_host_bridge::reset_root_port()
-callback and call it from pcibios_reset_secondary_bus() if available. Also,
-save the Root Port config space before reset and restore it afterwards.
+This Endpoint test driver doesn't need to do anything fancy in its error
+handlers, but just restore the config space that was saved during probe and
+report the correct result. This helps in making sure that the AER recovery
+succeeds.
 
-The 'reset_root_port' callback is responsible for resetting the given Root
-Port referenced by the 'pci_dev' pointer in a platform specific way and
-bring it back to the working state if possible. If any error occurs during
-the reset operation, relevant errno should be returned.
-
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@linaro.org>
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Tested-by: Brian Norris <briannorris@chromium.org>
-Tested-by: Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>
-Tested-by: Richard Zhu <hongxing.zhu@nxp.com>
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
 ---
- drivers/pci/pci.c      | 13 +++++++++++++
- drivers/pci/pcie/err.c |  5 -----
- include/linux/pci.h    |  1 +
- 3 files changed, 14 insertions(+), 5 deletions(-)
+ drivers/misc/pci_endpoint_test.c | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
 
-diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
-index 8f7cfcc00090..651505b3bd60 100644
---- a/drivers/pci/pci.c
-+++ b/drivers/pci/pci.c
-@@ -4809,6 +4809,19 @@ void pci_reset_secondary_bus(struct pci_dev *dev)
- 
- void __weak pcibios_reset_secondary_bus(struct pci_dev *dev)
- {
-+	struct pci_host_bridge *host = pci_find_host_bridge(dev->bus);
-+	int ret;
-+
-+	if (pci_is_root_bus(dev->bus) && host->reset_root_port) {
-+		ret = host->reset_root_port(host, dev);
-+		if (ret)
-+			pci_err(dev, "Failed to reset Root Port: %d\n", ret);
-+		else
-+			pci_restore_state(dev);
-+
-+		return;
-+	}
-+
- 	pci_reset_secondary_bus(dev);
- }
- 
-diff --git a/drivers/pci/pcie/err.c b/drivers/pci/pcie/err.c
-index bebe4bc111d7..13b9d9eb714f 100644
---- a/drivers/pci/pcie/err.c
-+++ b/drivers/pci/pcie/err.c
-@@ -256,11 +256,6 @@ pci_ers_result_t pcie_do_recovery(struct pci_dev *dev,
+diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
+index dbd017cabbb9..3e89bd48c196 100644
+--- a/drivers/misc/pci_endpoint_test.c
++++ b/drivers/misc/pci_endpoint_test.c
+@@ -1327,6 +1327,8 @@ static int pci_endpoint_test_probe(struct pci_dev *pdev,
+ 		goto err_kfree_name;
  	}
  
- 	if (status == PCI_ERS_RESULT_NEED_RESET) {
--		/*
--		 * TODO: Should call platform-specific
--		 * functions to reset slot before calling
--		 * drivers' slot_reset callbacks?
--		 */
- 		status = PCI_ERS_RESULT_RECOVERED;
- 		pci_dbg(bridge, "broadcast slot_reset message\n");
- 		pci_walk_bridge(bridge, report_slot_reset, &status);
-diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 2c4454583c11..439dbd0d9184 100644
---- a/include/linux/pci.h
-+++ b/include/linux/pci.h
-@@ -646,6 +646,7 @@ struct pci_host_bridge {
- 	void (*release_fn)(struct pci_host_bridge *);
- 	int (*enable_device)(struct pci_host_bridge *bridge, struct pci_dev *dev);
- 	void (*disable_device)(struct pci_host_bridge *bridge, struct pci_dev *dev);
-+	int (*reset_root_port)(struct pci_host_bridge *bridge, struct pci_dev *dev);
- 	void		*release_data;
- 	unsigned int	ignore_reset_delay:1;	/* For entire hierarchy */
- 	unsigned int	no_ext_tags:1;		/* No Extended Tags */
++	pci_save_state(pdev);
++
+ 	return 0;
+ 
+ err_kfree_name:
+@@ -1448,12 +1450,33 @@ static const struct pci_device_id pci_endpoint_test_tbl[] = {
+ };
+ MODULE_DEVICE_TABLE(pci, pci_endpoint_test_tbl);
+ 
++static pci_ers_result_t pci_endpoint_test_error_detected(struct pci_dev *pdev,
++					      pci_channel_state_t state)
++{
++	if (state == pci_channel_io_perm_failure)
++		return PCI_ERS_RESULT_DISCONNECT;
++
++	return PCI_ERS_RESULT_NEED_RESET;
++}
++
++static pci_ers_result_t pci_endpoint_test_slot_reset(struct pci_dev *pdev)
++{
++	pci_restore_state(pdev);
++	return PCI_ERS_RESULT_RECOVERED;
++}
++
++static const struct pci_error_handlers pci_endpoint_test_err_handler = {
++	.error_detected = pci_endpoint_test_error_detected,
++	.slot_reset = pci_endpoint_test_slot_reset,
++};
++
+ static struct pci_driver pci_endpoint_test_driver = {
+ 	.name		= DRV_MODULE_NAME,
+ 	.id_table	= pci_endpoint_test_tbl,
+ 	.probe		= pci_endpoint_test_probe,
+ 	.remove		= pci_endpoint_test_remove,
+ 	.sriov_configure = pci_sriov_configure_simple,
++	.err_handler    = &pci_endpoint_test_err_handler,
+ };
+ module_pci_driver(pci_endpoint_test_driver);
+ 
 
 -- 
 2.48.1
