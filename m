@@ -4,39 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D63B5CD4F4A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07B10CD4F54
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:38:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TsdYy3K8xFwYseZwr2r0bnHLuFzN6vakJHGW0tZKQGs=; b=alRP3/gbs9XFqR
-	QWYTjy2GJHw4u9OSSQ7P4A12uaxW6dzTGr5/H56A258s8s2Xox2rjbetuPYvjvee8SirQL3lfpUU0
-	xmlnBFw+jBU2OhOhk+yPte2q/J1xv43+57Grq+HV2amuTLNPPnvrNHBd/kwArfN/dmro+SPz0mJms
-	26J6hB/YwbunWqGX6W+j1s7Pv838oJAuYaerlrNgDJWebRMkeJEFqStXQlKcnsl5jFtq6akkBgJs2
-	5sq66sE59IVcePVwcNEQBxixq5qvANFaVrDiQV+sfCW1OOcLgUhmgmdJDlRs1uyFtpMeirZTaPcvP
-	z7sC5kmOb3ZUY+GisR3A==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=JL88ANGbuaxBTQiXhzV9jar6Bg2L8nVdoGWFFfiMayc=; b=0DoXZrBEjTzYW3
+	vvF2lXjVTqXnkoOxksXlRhRWb63GvqxNdKHe9kIcahSP6gYQUL/GSW2CNY94PzX19vsVW2lr4S9mg
+	xuQC2fuNO6Xe+dvEmNzdMzaMRCqCEKV0Zh8l2noTYIwdNT+erhv2lL7WSNhIe75aZXoOH7D1GGzaD
+	oM1Xbx7dAExP4iZYybnoj5sa6O8JF5tIRg2UQHuOwV3KuzESaVrNR2MZ7XBPqpsDuWDd9D1IFm6IG
+	1dJrXKBmwSmg6PSvvS9NfR5M47JmyXYuuC54qnK0SZLTdLU60QoPqD0ZFlJ37Q2RDXZd5yz0k/SsS
+	vBwBpFY+ZArNyxN2PGcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3mz-0000000GhoP-0DML;
-	Mon, 18 May 2026 19:38:09 +0000
+	id 1wP3my-0000000GhoA-40xU;
+	Mon, 18 May 2026 19:38:08 +0000
 Received: from smtp.forwardemail.net ([149.28.215.223])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3mw-0000000Ghlx-0Wtx
+	id 1wP3mw-0000000GhmK-2SfG
 	for linux-rockchip@lists.infradead.org;
 	Mon, 18 May 2026 19:38:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
- To: From; q=dns/txt; s=fe-e1b5cab7be; t=1779133085;
- bh=TlU0GMVOxYk1PemQNJopSc+GPnvpfNyuL2IXfnUOPOA=;
- b=FYWYnBgP7YnHqxVLYY1xrQIV9CikUdFvybkT+zWeHyCw1257/t3oxGhsW0KHoEeQPM+nW5P6n
- gOVHVRkzbc3niQBFBGn8/8rErO5X19wqyRx9gB4ZvEqDQuGn3dL00GXBvHzDIpROdATfwna2QW4
- TATjEDt4ZtthkpfG/nX1ESGnOk2iZ0TWYb4xxYhV8et2Gx8oFOOkpJDTds5lfMuPT2P61Lp990w
- UAen8TrlusbaD8v15bP7QDLYYSfYQTa5oh7W1KnQV2y7EzjNkDx08m9oTADUvyttJBTSbcTJWqB
- 1Ml9mFe/RpY+lOVRoVLRLZR9UvXrB/aUxlmFU+zofL2w==
-X-Forward-Email-ID: 6a0b6a92486b4b38b826f99f
+ h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
+ Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
+ t=1779133086; bh=2z4VxKDs/PdZygrKT0+7hbj3H+IMEjk3pxkj8X3h2NE=;
+ b=ad8XU+PE+3MVu2S5bEr0pzGFwEfRTBZfILY4sp6nRD8Dw4QC66rMVYmqlJhGLs5jItuJvaOI1
+ tMqgRaYvtVeE084JAphWQX4TBYJ6fOc4UPSSWQhSX/YeYU8jGsqlT3F/JqoS/JvTOzA0FDIz2Xp
+ Kc2AvfRDjYpI/lJeAOzSd/8/yUqFXdC7g7PvDmOW4wBN2iJs3SuZmO2LnOCYYD/53sgYjS4DHEm
+ teWO053jxd8AonHf8FPcB8nVYhjwOSdxZ6Xz15dACZwnS0P6m86hfZEIxzH8dkhr16qYm2Dc2mw
+ XcfqTPOYZnrz4zcSwA0Ytr96ULskU2cN82fFUznblYcQ==
+X-Forward-Email-ID: 6a0b6a96486b4b38b826f9ba
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
  149.28.215.223
 X-Forward-Email-Version: 2.8.12
@@ -47,26 +47,27 @@ X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
 To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
 	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
+	Simona Vetter <simona@ffwll.ch>
+Cc: dri-devel@lists.freedesktop.org,
 	linux-rockchip@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 00/11] drm/rockchip: dw_hdmi: Misc cleanup and propagate bus format
-Date: Mon, 18 May 2026 19:37:34 +0000
-Message-ID: <20260518193748.2482823-1-jonas@kwiboo.se>
+Subject: [PATCH v2 01/11] drm/rockchip: dw_hdmi: Use of_device_get_match_data() to get match data
+Date: Mon, 18 May 2026 19:37:35 +0000
+Message-ID: <20260518193748.2482823-2-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260518193748.2482823-1-jonas@kwiboo.se>
+References: <20260518193748.2482823-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_123806_486684_8A2E91F7 
-X-CRM114-Status: UNSURE (   7.86  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260518_123806_625895_3965DDA8 
+X-CRM114-Status: GOOD (  10.53  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,55 +84,51 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series include misc cleanup of the dwhdmi-rockchip driver and
-prepares for future support of YCbCr output and Deep Color modes.
+Change to use of_device_get_match_data() to get match data prior to
+allocating private data. All current entries in the of_device_id match
+table provide match data, so no functional change is intended.
 
-Patch 1-7 cleanup and changes to use drmres helpers for the encoder.
-Patch 8 prepare for use of a display-connector bridge for RK3568/RK3566.
-Patch 9-10 prepares for future support of YCbCr and Deep Color modes.
-Patch 11 changes to use resume_early pm ops for system suspend.
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+---
+v2: No change
+---
+ drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-This series depends on the patch "drm/rockchip: dw_hdmi: avoid direct
-dereference of phy->dev.of_node" [1] from the series "Split Generic PHY
-consumer and provider API" [2].
-
-[1] https://lore.kernel.org/linux-phy/20260505100523.1922388-16-vladimir.oltean@nxp.com/
-[2] https://lore.kernel.org/linux-phy/20260505100523.1922388-1-vladimir.oltean@nxp.com/
-
-This series is part of a multi series effort to:
-- phy: rockchip: inno-hdmi: Change TMDS rate handling to configure() ops [v4]
-- drm/rockchip: dw_hdmi: Misc cleanup and propagate bus format [v2]
-- drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup [v7]
-- drm/meson: hdmi: Misc cleanup and use CEC notifier helpers [v1]
-- drm/bridge: dw-hdmi: Improve input/output bus format handling
-- drm/bridge: dw-hdmi: Convert to a HDMI bridge and use of bridge connector
-- drm/bridge: dw-hdmi: Add and use tmds_char_rate_valid() plat data ops
-- drm/rockchip: dw_hdmi: Enable YCbCr and Deep Color modes
-Link to snapshot: https://github.com/Kwiboo/linux-rockchip/commits/next-20260518-rk-hdmi-v5/
-
-Changes in v2:
-- Add patch to use resume_early pm ops for system suspend
-- Adjust error messages related to the dw-hdmi bridge
-- Use dw_hdmi_unbind() instead of dw_hdmi_remove()
-Link to v1: https://lore.kernel.org/dri-devel/20260510183114.1248840-1-jonas@kwiboo.se/
-
-Jonas Karlman (11):
-  drm/rockchip: dw_hdmi: Use of_device_get_match_data() to get match
-    data
-  drm/rockchip: dw_hdmi: Use local dev variable consistently in bind()
-  drm/rockchip: dw_hdmi: Use drmres helpers for encoder resources
-  drm/rockchip: dw_hdmi: Inline resource lookup into bind()
-  drm/rockchip: dw_hdmi: Hold a reference to the dw-hdmi bridge
-  drm/rockchip: dw_hdmi: Remove empty encoder helper funcs
-  drm/rockchip: dw_hdmi: Clean up whitespace
-  drm/rockchip: dw_hdmi: Set output_port for RK3568/RK3566
-  drm/rockchip: dw_hdmi: Configure HDMI PHY in atomic_mode_set()
-  drm/rockchip: dw_hdmi: Propagate bus format to display driver
-  drm/rockchip: dw_hdmi: Use resume_early pm ops for system suspend
-
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 227 ++++++++++++--------
- 1 file changed, 133 insertions(+), 94 deletions(-)
-
+diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+index 40df6d1be2bf..fd7cc1572a40 100644
+--- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
++++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
+@@ -536,8 +536,8 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ {
+ 	struct platform_device *pdev = to_platform_device(dev);
+ 	struct device_node *np = dev_of_node(dev);
++	const struct dw_hdmi_plat_data *drv_data;
+ 	struct dw_hdmi_plat_data *plat_data;
+-	const struct of_device_id *match;
+ 	struct drm_device *drm = data;
+ 	struct drm_encoder *encoder;
+ 	struct rockchip_hdmi *hdmi;
+@@ -546,13 +546,16 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
+ 	if (!np)
+ 		return -ENODEV;
+ 
++	drv_data = of_device_get_match_data(dev);
++	if (!drv_data)
++		return -ENODEV;
++
+ 	hdmi = devm_kzalloc(&pdev->dev, sizeof(*hdmi), GFP_KERNEL);
+ 	if (!hdmi)
+ 		return -ENOMEM;
+ 
+-	match = of_match_node(dw_hdmi_rockchip_dt_ids, np);
+-	plat_data = devm_kmemdup(&pdev->dev, match->data,
+-					     sizeof(*plat_data), GFP_KERNEL);
++	plat_data = devm_kmemdup(&pdev->dev, drv_data,
++				 sizeof(*drv_data), GFP_KERNEL);
+ 	if (!plat_data)
+ 		return -ENOMEM;
+ 
 -- 
 2.54.0
 
