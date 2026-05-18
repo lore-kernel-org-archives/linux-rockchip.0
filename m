@@ -4,70 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BD7CD4F4A
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:39:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE921CD4F4A
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 19:48:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SGuiJpDNfVnhzuSZPJsusZEfNqkVK3XaDX7aAILAjlQ=; b=g3gWEAMJFQl4OZ
-	KPCqwFF3UoElVMk/QymEHtGVI3IwNERq4zTW+Kt9E5R934Un4+vMXsX1uNQKmdhm8LVvkSwys1kN/
-	vhIn9a2p3TKDsfcvvsaaZbmJyetrJBD2ASaWLo8uWf7MGCONG+Ppp5y636d0yviLRey1jzY8E4oX8
-	133x1tzYBO+rqBI9aTRdIMgdS4ug8jM0USgGkS639Rti33dZK6nDGoj5PJaADn4G6x7zAvgv+BXgf
-	+NxsH4ZEXEgOxX8uAGKMSYH7aSScSwt93IDNwZr76u1g6iwZSaQ4ErucyRs+RwZyBvto0eQ5MT69w
-	AqSCqgG4EakN1x0EU12w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=OLS8paFwZPfxOjvJVameLzwXKl2qytqtG5npIwVvYXk=; b=OnIXTvPRQvrSkX
+	LIgu6gNsPnGOyhn2xzgPmxUG+WC+ZzNb0iuEqx7s9UJcjFAr2TIX5q93CfBdzsMNrxQonIjnX96we
+	P4TVfy4yXnIQexUtSsQhHyfRXAL48kmK1CiyqqgjyOjGByW3vwyI+DvfkpuiGnN6hXuv+fKlmzSsB
+	x0K51pZKgOjBrmYCSrW0Q0oWDr0Urda39RL/wgElqtsE4Qzbr9rysJvcyK/reBe60vTgRx1zXVYGl
+	ck7KjuFRIVdWIc0ZiusD1oefWXIkxLYZe8PGAbNUu3mbQnI3nXUgxIsvCimyY97HMDjbNk30qy02u
+	tl72dy1Wk7gatrE9IjoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3ns-0000000Givl-0BcL;
-	Mon, 18 May 2026 19:39:04 +0000
-Received: from smtp.forwardemail.net ([149.28.215.223])
+	id 1wP3wd-0000000GlAF-2Sqb;
+	Mon, 18 May 2026 19:48:07 +0000
+Received: from smtp.forwardemail.net ([121.127.44.73])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wP3nn-0000000GipV-2fRi
+	id 1wP3wa-0000000Gl7H-21aw
 	for linux-rockchip@lists.infradead.org;
-	Mon, 18 May 2026 19:39:02 +0000
+	Mon, 18 May 2026 19:48:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: MIME-Version: References: In-Reply-To:
- Message-ID: Date: Subject: Cc: To: From; q=dns/txt; s=fe-e1b5cab7be;
- t=1779133139; bh=Rmq5rXYq2R8CPfydo2bXTvXYgpGKdl/FCPluNApQXPM=;
- b=LuyV3UNY8RrWn1LUIKNCQjrI7ieqi0Bx3GKnueVy8jgo72ZdjMKUwYn0RdTjyQxaCNyNg6C73
- Iuj0EEHWjHdfZl4DU1bY0wdvPP6UdgeB7wfh4sVTwhukZghQouz/uVb6Pyl6X5+X87u4AOyj3FO
- G9Y+cw8LDVsV4ador1ks0KiMKJjiZlsBFpdBRH7IrjEt9QRirwiHFNxw5xq3rQOAyk5jJf8qilT
- kyvFclElXmAr4xDpnp8TT05No1SzhyGmKBwjobqv/T3j6ZA5KlA3YVH3r4+hYuPxjMXs3o6wt9P
- EiURxpVmPKOM8LTDiWlhpFpNyk3tUDjJML500y1AXxmA==
-X-Forward-Email-ID: 6a0b6ab4486b4b38b826fa92
+ h=Content-Transfer-Encoding: MIME-Version: Message-ID: Date: Subject: Cc:
+ To: From; q=dns/txt; s=fe-e1b5cab7be; t=1779133680;
+ bh=mc7nblQbAWFFELQ9xDqrj2Jacy9OF+Rdr+ldOYLP6HQ=;
+ b=bpeEtfsqCPpw2Uu4ETHBM8aGVyZSbA0enjMEdnMrfx2JGd7Sn69QzCam+ZY/ssPlEXZgTgv3r
+ ojBBZvLM/GsKhNAtQn6mleMxrMpjtO0fpTBnF8JaYRHFQ9WLX/mKaPPRG7qxaD6HHnrDHU7PNWK
+ lzzdXOqPhF6uI5/jU86vEsmE3QqwVEaaxgxiEs6v4apPHQVn5ljX9kAPJm69Q2csaXWEzCWds4r
+ wbobLkAj+3dSpwst1obF2BEcsW/1zQgF3aoGtSYCo6x4q+lycEFsCnyZ/LKXxZ8s1vptG6grtIh
+ yuD0pTRCBzPDVgFtumpaOy3vFCg4HOjNJ0JnE7uLGBpA==
+X-Forward-Email-ID: 6a0b6ce8b74b0ebd362eee05
 X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 149.28.215.223
+ 121.127.44.73
 X-Forward-Email-Version: 2.8.12
 X-Forward-Email-Website: https://forwardemail.net
 X-Complaints-To: abuse@forwardemail.net
 X-Report-Abuse: abuse@forwardemail.net
 X-Report-Abuse-To: abuse@forwardemail.net
 From: Jonas Karlman <jonas@kwiboo.se>
-To: =?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
+To: Neil Armstrong <neil.armstrong@linaro.org>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Heiko Stuebner <heiko@sntech.de>
+Cc: Jerome Brunet <jbrunet@baylibre.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
 	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-rockchip@lists.infradead.org,
+	Simona Vetter <simona@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-amlogic@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Jonas Karlman <jonas@kwiboo.se>
-Subject: [PATCH v2 09/11] drm/rockchip: dw_hdmi: Configure HDMI PHY in atomic_mode_set()
-Date: Mon, 18 May 2026 19:37:43 +0000
-Message-ID: <20260518193748.2482823-10-jonas@kwiboo.se>
+	Jonas Karlman <jonas@kwiboo.se>,
+	linux-rockchip@lists.infradead.org
+Subject: [PATCH 00/13] drm/meson: dw-hdmi: Misc cleanup and use CEC notifier helpers
+Date: Mon, 18 May 2026 19:47:28 +0000
+Message-ID: <20260518194744.2483580-1-jonas@kwiboo.se>
 X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260518193748.2482823-1-jonas@kwiboo.se>
-References: <20260518193748.2482823-1-jonas@kwiboo.se>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_123859_695404_38323F82 
-X-CRM114-Status: GOOD (  12.28  )
+X-CRM114-CacheID: sfid-20260518_124804_614663_6824CEEF 
+X-CRM114-Status: UNSURE (   6.23  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,77 +86,57 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The HDMI helpers negotiated TMDS character rate and output bpc are
-available from the connector state. Change the encoder helper from
-mode_set() to atomic_mode_set() so these values can be used to configure
-the HDMI PHY using phy_configure().
+This series include misc cleanup of the meson-dw-hdmi driver, changes to
+use the bridge CEC notifier op and to use the dw-hdmi delayed work for
+HPD event handling.
 
-This has no impact until the dw-hdmi bridge is fully converted into a
-HDMI bridge and HDMI helpers are used to assign hdmi.tmds_char_rate.
+Patch 1 ensure connector status is based on HPD bit
+Patch 2 protect from a possible NULL pointer dereference during bind()
+Patch 4 reduce number of hotplug uevents and hpd_notify() calls
+Patch 6 changes to use bridge connector CEC notifier
+Patch 3,5,7-10 cleanup code for consistency
+Patch 11-12 changes to use dw-hdmi HPD delayed work at HPD event
+Patch 13 changes to use suspend_late/resume_early/resume_noirq pm ops
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
----
-v2: No change
----
- drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c | 29 +++++++++++++++++----
- 1 file changed, 24 insertions(+), 5 deletions(-)
+This series depends on improvements made in the series "drm: bridge:
+dw_hdmi: Misc enable/disable, CEC and EDID cleanup" [1].
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-index 6c4923b9b659..4e7fd4b80d76 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-@@ -226,11 +226,22 @@ dw_hdmi_rockchip_mode_valid(struct dw_hdmi *dw_hdmi, void *data,
- 	return MODE_OK;
- }
- 
--static void dw_hdmi_rockchip_encoder_mode_set(struct drm_encoder *encoder,
--					      struct drm_display_mode *mode,
--					      struct drm_display_mode *adj_mode)
-+static void
-+dw_hdmi_rockchip_encoder_atomic_mode_set(struct drm_encoder *encoder,
-+					 struct drm_crtc_state *crtc_state,
-+					 struct drm_connector_state *conn_state)
- {
- 	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
-+	struct drm_display_mode *adj_mode = &crtc_state->adjusted_mode;
-+
-+	if (hdmi->phy && conn_state->hdmi.tmds_char_rate) {
-+		union phy_configure_opts opts = {};
-+
-+		opts.hdmi.bpc = conn_state->hdmi.output_bpc;
-+		opts.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
-+
-+		phy_configure(hdmi->phy, &opts);
-+	}
- 
- 	clk_set_rate(hdmi->ref_clk, adj_mode->clock * 1000);
- }
-@@ -270,15 +281,23 @@ dw_hdmi_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
- 				      struct drm_connector_state *conn_state)
- {
- 	struct rockchip_crtc_state *s = to_rockchip_crtc_state(crtc_state);
-+	struct rockchip_hdmi *hdmi = to_rockchip_hdmi(encoder);
-+	union phy_configure_opts opts = {};
- 
- 	s->output_mode = ROCKCHIP_OUT_MODE_AAAA;
- 	s->output_type = DRM_MODE_CONNECTOR_HDMIA;
- 
--	return 0;
-+	if (!hdmi->phy || !conn_state->hdmi.tmds_char_rate)
-+		return 0;
-+
-+	opts.hdmi.bpc = conn_state->hdmi.output_bpc;
-+	opts.hdmi.tmds_char_rate = conn_state->hdmi.tmds_char_rate;
-+
-+	return phy_validate(hdmi->phy, PHY_MODE_HDMI, PHY_HDMI_MODE_TMDS, &opts);
- }
- 
- static const struct drm_encoder_helper_funcs dw_hdmi_rockchip_encoder_helper_funcs = {
--	.mode_set = dw_hdmi_rockchip_encoder_mode_set,
-+	.atomic_mode_set = dw_hdmi_rockchip_encoder_atomic_mode_set,
- 	.enable = dw_hdmi_rockchip_encoder_enable,
- 	.atomic_check = dw_hdmi_rockchip_encoder_atomic_check,
- };
+[1] https://patchwork.freedesktop.org/series/134727/
+
+This series is part of a multi series effort to:
+- drm: bridge: dw_hdmi: Misc enable/disable, CEC and EDID cleanup [v7]
+- drm/meson: hdmi: Misc cleanup and use CEC notifier helpers [v1]
+- drm/bridge: dw-hdmi: Improve input/output bus format handling
+- drm/bridge: dw-hdmi: Convert to a HDMI bridge and use of bridge connector
+- drm/bridge: dw-hdmi: Add and use tmds_char_rate_valid() plat data ops
+- phy: rockchip: inno-hdmi: Change TMDS rate handling to configure() ops [v4]
+- drm/rockchip: dw_hdmi: Misc cleanup and propagate bus format [v2]
+- drm/rockchip: dw_hdmi: Enable YCbCr and Deep Color modes
+Link to snapshot: https://github.com/Kwiboo/linux-rockchip/commits/next-20260518-rk-hdmi-v5/
+
+Jonas Karlman (13):
+  drm/meson: dw-hdmi: Report connector status based on HPD bit
+  drm/meson: dw-hdmi: Protect from possible NULL pointer dereference
+  drm/meson: dw-hdmi: Call dw_hdmi_remove() consistently
+  drm/meson: dw-hdmi: Drop call to drm_bridge_hpd_notify()
+  drm/meson: encoder_hdmi: Use CEC phys addr from display_info
+  drm/meson: encoder_hdmi: Use bridge connector CEC notifier
+  drm/meson: encoder_hdmi: Report ycbcr_420_allowed from encoder
+  drm/meson: dw-hdmi: Use local dev variable consistently in bind()
+  drm/meson: dw-hdmi: Use devm_clk_get_enabled() helper
+  drm/meson: dw-hdmi: Use dev_err_probe() to report errors
+  drm/bridge: dw-hdmi: Export dw_hdmi_schedule_hpd_work() helper
+  drm/meson: dw-hdmi: Use dw_hdmi_schedule_hpd_work() helper
+  drm/meson: dw-hdmi: Use suspend_late/resume_early/resume_noirq pm ops
+
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi.c  |  11 +-
+ drivers/gpu/drm/meson/Kconfig              |   1 +
+ drivers/gpu/drm/meson/meson_dw_hdmi.c      | 169 +++++++++------------
+ drivers/gpu/drm/meson/meson_dw_hdmi.h      |   3 +
+ drivers/gpu/drm/meson/meson_encoder_hdmi.c | 107 +++----------
+ include/drm/bridge/dw_hdmi.h               |   2 +
+ 6 files changed, 106 insertions(+), 187 deletions(-)
+
 -- 
 2.54.0
 
