@@ -4,89 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB881CD4F58
-	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 14:59:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 965CECD4F49
+	for <linux-rockchip@archiver.kernel.org>; Mon, 18 May 2026 16:31:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=DSdrUqha46ijk3NeCp3v4DRwXPO40TvPGsD/D0ZxtOQ=; b=p6Z2Rj5HQ7UQxk
-	++pNbjFaNbWKAh2GozyPVip8HNIv29MEKJ1EoiVY+QxTHeTCKL0NAIrFJLEgb9kCVhpMAl1OuhEkT
-	jGc6/xG++M4KexqBp/tbl+cyxl9YnCLuTwHf8mHZz1g9HkaRTYutug/XYsxP/cxqhppy7RoZamfPI
-	tB8xwSp8d7A/zR7znE5WwpRn7t5J2P7JvtD0QQF5kJOigYYpE2ko0Pw7eSJ51jSMfjERALb2bKdR2
-	qRGaUeiZFQA3k+vFRmdIATDDB2bpSZUzEhEbqePAmZ/+Aiism8w4mWOlkDiXCKsey11FEJnftMtBh
-	gtn6OCfucrdMjXx3/t2w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=dthZTqNZAUmi3XeVThvYjhAshn1GDONOYjDPo2LnLHA=; b=jIEPap/k4HvZLyAgvfMJcXpDra
+	oJkPbhEO3h46M9K5FOVDcOxQm1KFor6VbKHKvTxwa5HY9WYPoMlAL/p+859TSXuCVPQU/I+67zjmI
+	vsCQCllGTZil1yHqoHyaR43J9Sy8yHr11IM5sTv7ikFqKVEJXIHX1J90KbzwCOVlL5TlIeYpStu+k
+	MsTvgeXyw6XvktFo2UEXAA6PSXflr5rufU4Pm9oc0zK4+8SikvbXVEaf9zRLJjRugpvOZlWpb11Xi
+	WO9xAG71aEgOevBKeH7XfUM1Hzzf4S5Z/7i89PCT9/HHGkOS8eRnvyI95CPYEe2A+R8EhY+LT7UDb
+	aTYqWfJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOzRd-0000000G4mY-02WO;
-	Mon, 18 May 2026 14:59:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wP0sH-0000000GIxG-20IU;
+	Mon, 18 May 2026 16:31:25 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wOzRR-0000000G4dD-3gzM;
-	Mon, 18 May 2026 14:59:40 +0000
+	id 1wP0sF-0000000GIwZ-1fBa;
+	Mon, 18 May 2026 16:31:23 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 18A34445DC;
-	Mon, 18 May 2026 14:59:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id E6071C2BCFA;
-	Mon, 18 May 2026 14:59:36 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 70DFB6001A;
+	Mon, 18 May 2026 16:31:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A9105C2BCB7;
+	Mon, 18 May 2026 16:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779116377;
-	bh=2BlXOqN2MZMWBnpX9YhHPFj1hDHvw8PDo9sAAleLcKQ=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=rSFNQyejJN1StW2jxZXu4JYK0fBi4R7e50XyaCZdoKCJrc88c/HBcQUE+XFczKXln
-	 7GCFjGgUbJfUnABpYaJYIZldk/dzVUkNZXjp7pgUqmHm2NJizrZEgAs93NuyHoRs5u
-	 ORUL/OQt4EG9yUeTchQzypVNqwGZpaMXK1d2UG+SZ9bZ4RqNAYTpLVANp5VHBsjgEt
-	 0XC1RmRbEzLdSO7N7nGg60yPvelPhzBNyjEMQfEcxkMaR09wvdKZBE3/OSxndVe4KC
-	 NOmISQynSe7AzFcBX3BHpjXWTeEVzED1TZHtas+ifUE/JUkVSJNMYv5Bs7cFVDkYFD
-	 +AvF2Yeuctw0Q==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id DA44ECD4F49;
-	Mon, 18 May 2026 14:59:36 +0000 (UTC)
-From: Manivannan Sadhasivam via B4 Relay <devnull+manivannan.sadhasivam.oss.qualcomm.com@kernel.org>
-Date: Mon, 18 May 2026 20:29:17 +0530
-Subject: [PATCH v8 5/5] misc: pci_endpoint_test: Add AER error handlers
+	s=k20201202; t=1779121882;
+	bh=jMB5NoP0wP+6A9Zh0OD36Hq603Uurn3NLlC4stKV5Ag=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=m4vHn98Y6yqiR5nHUZYeHgIe1GYZOYxdaAUikdAIiclUlR6G0/TQadLFDESIfFWtx
+	 NAVKpOQRnJ+nc/mPfCztm3u6bR2H6K0grub1oakThM22+VJHHuLc58PBo15oAzJ91G
+	 fmtIaJIMaDtW5XxTdwpJeXJCrwKTCuZL3nkc2mEgCCYTLUyI2tk8Wxe3PT2ZWlfYZO
+	 P8h0kIgpuEKUOSr2QnSm0jZ0i9cC8d54ihfJYsTM3HkAfyNyIcu184dDHGMTb++Zd4
+	 RYmeY0C4vfm0QUnrJkvOKototuGqQl/n6C9mSOFMgc7H0eAXMLhqYCcvfOCnz5kf5C
+	 RfUETTXb/PvtA==
+Date: Mon, 18 May 2026 17:31:14 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v1 1/3] dt-bindings: display: rockchip: analogix-dp:
+ Expose inherited properties
+Message-ID: <20260518-bootlace-afoot-8da24d7c9d13@spud>
+References: <20260514070133.2275069-1-damon.ding@rock-chips.com>
+ <20260514070133.2275069-2-damon.ding@rock-chips.com>
+ <20260514-upstate-sneer-0b6e78682798@spud>
+ <2f653664-27e9-4632-97e9-8b59cf7e585e@rock-chips.com>
+ <20260515-confess-hungrily-4f64ce0d8de2@wendy>
+ <a7ab01f6-78a4-405f-8160-8af31a8ef99c@rock-chips.com>
 MIME-Version: 1.0
-Message-Id: <20260518-pci-port-reset-v8-5-eb5a7d331dfc@oss.qualcomm.com>
-References: <20260518-pci-port-reset-v8-0-eb5a7d331dfc@oss.qualcomm.com>
-In-Reply-To: <20260518-pci-port-reset-v8-0-eb5a7d331dfc@oss.qualcomm.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, 
- Mahesh J Salgaonkar <mahesh@linux.ibm.com>, 
- Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>, 
- Lorenzo Pieralisi <lpieralisi@kernel.org>, 
- =?utf-8?q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Heiko Stuebner <heiko@sntech.de>, Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-pci@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linuxppc-dev@lists.ozlabs.org, linux-arm-kernel@lists.infradead.org, 
- linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
- Niklas Cassel <cassel@kernel.org>, 
- Wilfred Mallawa <wilfred.mallawa@wdc.com>, 
- Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>, 
- mani@kernel.org, Lukas Wunner <lukas@wunner.de>, 
- Richard Zhu <hongxing.zhu@nxp.com>, Brian Norris <briannorris@chromium.org>, 
- Wilson Ding <dingwei@marvell.com>, 
- Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1915;
- i=manivannan.sadhasivam@oss.qualcomm.com; h=from:subject:message-id;
- bh=JH7YrfnPbbQwcHA61MAIZvihPkNzj1YvLFKf+5eniiA=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqCylVusbtosdeWvULWFlkHh78IbQMGqm1IAOx+
- tGRKk7zI06JATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCagspVQAKCRBVnxHm/pHO
- 9WBGB/9M4YSDd/u8GygRb+Q9NR+sR+xkzlGX6Arf72nQo8iLfuIZSfmmo3tNIE252mRjE4SBjep
- u9Mu4Rk2sVPFLvxd+u5GSzGgsDTa8tcVuYDAtw+xFjz5MRwDWTgKgxr38lidrHbLRqiqtzL5uz4
- KychY6gPdaMcbHKno6gaMz9PA9pV3VzJGng6rKL8yL8uODtIyLvIlMslDX2Hq190bXbkex0fwWC
- cjULNwNhFecOlIu5lUUhaomXfvTFH0/sue5mbjRY9aOppS+5rzT7TOHdXs3ETXD0xXVSgMt/306
- Ux/uIMKhNVNouKfGHOjox249GhFX61Hck5JeWw2KFHfEmY46
-X-Developer-Key: i=manivannan.sadhasivam@oss.qualcomm.com; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
-X-Endpoint-Received: by B4 Relay for
- manivannan.sadhasivam@oss.qualcomm.com/default with auth_id=461
-X-Original-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_075937_993072_1D506C41 
-X-CRM114-Status: GOOD (  12.81  )
+In-Reply-To: <a7ab01f6-78a4-405f-8160-8af31a8ef99c@rock-chips.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,78 +66,147 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: manivannan.sadhasivam@oss.qualcomm.com
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Conor Dooley <conor.dooley@microchip.com>, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: multipart/mixed; boundary="===============3663678175346094083=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
-This Endpoint test driver doesn't need to do anything fancy in its error
-handlers, but just restore the config space that was saved during probe and
-report the correct result. This helps in making sure that the AER recovery
-succeeds.
-
-Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
----
- drivers/misc/pci_endpoint_test.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
-
-diff --git a/drivers/misc/pci_endpoint_test.c b/drivers/misc/pci_endpoint_test.c
-index dbd017cabbb9..3e89bd48c196 100644
---- a/drivers/misc/pci_endpoint_test.c
-+++ b/drivers/misc/pci_endpoint_test.c
-@@ -1327,6 +1327,8 @@ static int pci_endpoint_test_probe(struct pci_dev *pdev,
- 		goto err_kfree_name;
- 	}
- 
-+	pci_save_state(pdev);
-+
- 	return 0;
- 
- err_kfree_name:
-@@ -1448,12 +1450,33 @@ static const struct pci_device_id pci_endpoint_test_tbl[] = {
- };
- MODULE_DEVICE_TABLE(pci, pci_endpoint_test_tbl);
- 
-+static pci_ers_result_t pci_endpoint_test_error_detected(struct pci_dev *pdev,
-+					      pci_channel_state_t state)
-+{
-+	if (state == pci_channel_io_perm_failure)
-+		return PCI_ERS_RESULT_DISCONNECT;
-+
-+	return PCI_ERS_RESULT_NEED_RESET;
-+}
-+
-+static pci_ers_result_t pci_endpoint_test_slot_reset(struct pci_dev *pdev)
-+{
-+	pci_restore_state(pdev);
-+	return PCI_ERS_RESULT_RECOVERED;
-+}
-+
-+static const struct pci_error_handlers pci_endpoint_test_err_handler = {
-+	.error_detected = pci_endpoint_test_error_detected,
-+	.slot_reset = pci_endpoint_test_slot_reset,
-+};
-+
- static struct pci_driver pci_endpoint_test_driver = {
- 	.name		= DRV_MODULE_NAME,
- 	.id_table	= pci_endpoint_test_tbl,
- 	.probe		= pci_endpoint_test_probe,
- 	.remove		= pci_endpoint_test_remove,
- 	.sriov_configure = pci_sriov_configure_simple,
-+	.err_handler    = &pci_endpoint_test_err_handler,
- };
- module_pci_driver(pci_endpoint_test_driver);
- 
-
--- 
-2.48.1
+--===============3663678175346094083==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zu1z+34yeGAH2xIH"
+Content-Disposition: inline
 
 
+--zu1z+34yeGAH2xIH
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, May 18, 2026 at 10:44:29AM +0800, Damon Ding wrote:
+> Hi Conor,
+>=20
+> On 5/15/2026 5:04 PM, Conor Dooley wrote:
+> > On Fri, May 15, 2026 at 11:57:58AM +0800, Damon Ding wrote:
+> > > Hi Conor,
+> > >=20
+> > > On 5/15/2026 2:16 AM, Conor Dooley wrote:
+> > > > On Thu, May 14, 2026 at 03:01:31PM +0800, Damon Ding wrote:
+> > > > > Expose the inherited properties from the base analogix-dp schema
+> > > > > to satisfy unevaluatedProperties constraints.
+> > > > >=20
+> > > > > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> > > >=20
+> > > > Given it's unevaluatedProperties, not addtionalProperties, this pat=
+ch
+> > > > shouldn't be needed?
+> > > >=20
+> > >=20
+> > > When I remove both the top-level data-lanes property and those explic=
+it
+> > > "xxx: true" property entries and run the dtbs check with:
+> > >=20
+> > > make CHECK_DTBS=3Dy CROSS_COMPILE=3Daarch64-linux-gnu- LT0=3Dnone LLV=
+M=3D1
+> > > LLVM_IAS=3D1 ARCH=3Darm64 rockchip/rk3588-evb1-v10.dtb
+> > > rockchip/rk3588s-evb1-v10.dtb rockchip/rk3399-sapphire-excavator.dtb
+> > > rockchip/rk3576-evb1-v10.dtb -j4
+> > >=20
+> > > It results in validation errors like these:
+> > >=20
+> > > /home/ding/drm-misc/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb:
+> > > edp@27dc0000: ports:port@1:endpoint: Unevaluated properties are not a=
+llowed
+> > > ('data-lanes' was unexpected)
+> > >          from schema $id:
+> > > http://devicetree.org/schemas/display/rockchip/rockchip,analogix-dp.y=
+aml#
+> > > /home/ding/drm-misc/arch/arm64/boot/dts/rockchip/rk3576-evb1-v10.dtb:
+> > > edp@27dc0000: Unevaluated properties are not allowed ('force-hpd',
+> > > 'interrupts', 'phy-names', 'phys', 'ports', 'reg' were unexpected)
+> > >          from schema $id:
+> > > http://devicetree.org/schemas/display/rockchip/rockchip,analogix-dp.y=
+aml#
+> > >=20
+> > > I suspect that the properties defined in the child binding are
+> > > overriding/masking all the inherited properties from the parent Analo=
+gix DP
+> > > schema.
+> > >=20
+> > > Is there a better way to fix this issue without explicitly listing all
+> > > inherited properties as true?
+> >=20
+> > The example in this file uses most of the properties that you mention
+> > above:
+> >      dp@ff970000 {
+> >        compatible =3D "rockchip,rk3288-dp";
+> >        reg =3D <0xff970000 0x4000>;
+> >        interrupts =3D <GIC_SPI 98 IRQ_TYPE_LEVEL_HIGH>;
+> >        clocks =3D <&cru SCLK_EDP>, <&cru PCLK_EDP_CTRL>;
+> >        clock-names =3D "dp", "pclk";
+> >        phys =3D <&dp_phy>;
+> >        phy-names =3D "dp";
+> >        resets =3D <&cru 111>;
+> >        reset-names =3D "dp";
+> >        rockchip,grf =3D <&grf>;
+> >        pinctrl-0 =3D <&edp_hpd>;
+> >        pinctrl-names =3D "default";
+> >=20
+> > dt_binding_check reports no problems with this node, so I think the
+> > problem might lie elsewhere?
+> > There's no edp node in the dts you mention above, so this looks like an
+> > interaction with something that's not yet upstream.
+>=20
+> Ah, I see.
+>=20
+> I did add extra changes to the edp node on my local rk3576-evb1 board DTS,
+> which indeed caused this 'asymmetric information' issue and made the
+> validation fail incorrectly.
+>=20
+> I will try adding the data-lanes property to the example in the binding
+> document to ensure dt_binding_check passes cleanly.
+>=20
+> >=20
+> > If this is required for the rk3576 edp, then you should include this
+> > patch in the rk3576 edp support series rather than this one anyway where
+> > it can actually be evaluated alongside the node it apparently causes
+> > problems with.
+>=20
+> The data-lanes property is actually applicable and useful for all Rockchip
+> eDP platforms, not just rk3576.
+>=20
+> In the next version, I will modify the series to better separate this com=
+mon
+> data-lanes change from the rk3576 specific eDP support patches.
+
+To be clear, I wasn't talking about data-lanes here, I was talking about
+this patch that addressed the properties inherited from the common
+analogix-dp.yaml.
+
+--zu1z+34yeGAH2xIH
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCags+0gAKCRB4tDGHoIJi
+0r+xAQCCA3hrAk8UTFXKlAQIK/tQrNfrXeTUlCpoCL4QRVIvSQEAlMrMbINx6Xd0
+QZxf04KGcPEvkVb/5IExzbmxUZ8p7Ak=
+=TgMj
+-----END PGP SIGNATURE-----
+
+--zu1z+34yeGAH2xIH--
+
+
+--===============3663678175346094083==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============3663678175346094083==--
+
