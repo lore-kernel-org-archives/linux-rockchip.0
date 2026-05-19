@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9774CD4F3C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 07:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A69D5CD4F5E
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 07:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
 	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5F0K+7+m57+HiKSojeBce/YnpG4EuEy40oRS9WqiqL0=; b=Sp+dTyDGxPa52ZG0q7TMXxiROR
-	NKLRZCmalFsaFHNg4mPDwMK0+pOWlugJapRykZlxQYj1DxrsHcmHGOZObXHBS6vIfV9WCnCkbCU48
-	h+qoRFmHEXF+eqzqEVrkoBBgaBLKVL/fMAe8RZIdDltrS/REC8y07pF42i3q5FsqHcLdyGQsEf0aO
-	JfBKB9VWUqbgpiVVmHxCsF3GPh1K0meaLI4cIJxQkRD5w71614iXmftXmsVtGm2p/5fWPHoTnG9MV
-	Qz0bFyMXvEj4cB/kegzL0rEbudpB4oK38ly5/EiJDaPk1s5JpXPKc/qjcZwI6RuW2gP/HJL8gVf04
-	48gw0IXg==;
+	bh=cGWVvSsZCIgGPuuLyy7o/GMUwWh14tZpl5u7SYLa0JY=; b=4I2ug23y1KBN7v5YcyZNh4JrcB
+	5GaqCuLNu9AGmtjr2MLPQ8tLlAVS3KJ3gf/LXfAAS0LWQQ5SNiMDwqzrngdoliA4zjCz9WsK3hoj8
+	En+S5N3mnF6pC9HZNDB1spLtl/iu6c7pGhqpVvWB2VvX2uFRoUq4opyAK7eX24Ed1LkL60F4fguea
+	YzloWYwhxfZfTtaaJGgIbpA4ob642TN31+kQhC7QH9GJlb3o1FqrAl1tYSpAdYyHwnITzaq4wp7xI
+	TPUFIV/uuUd+A1DbnWNMNj86o0uRPfx4fh41AdAc2TcJ6DIKOJNrPyiAETrArk0e9OdLo4VJdr2i+
+	K4gUAmNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPEq2-00000000UR6-03Ez;
-	Tue, 19 May 2026 07:26:02 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1wPErj-00000000Ulc-1r9C;
+	Tue, 19 May 2026 07:27:47 +0000
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPEpy-00000000UPB-3mOc
+	id 1wPErh-00000000Ujp-0PnG
 	for linux-rockchip@lists.infradead.org;
-	Tue, 19 May 2026 07:26:01 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-44ccbd3290aso2940929f8f.2
-        for <linux-rockchip@lists.infradead.org>; Tue, 19 May 2026 00:25:57 -0700 (PDT)
+	Tue, 19 May 2026 07:27:46 +0000
+Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-488b150559bso24484645e9.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 19 May 2026 00:27:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1779175556; x=1779780356; darn=lists.infradead.org;
+        d=linaro.org; s=google; t=1779175663; x=1779780463; darn=lists.infradead.org;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:from:to:cc:subject:date:message-id
          :reply-to;
-        bh=U/UrhAX2VwHcFosaazEyQ389tsED90O5GiFK+5wV2WI=;
-        b=lE3g3lbjDh7rlEwkeTcrYZO81mDYNwmHn3AntowQrYhVCSMUo8OC9Q++uo86Z2KiOA
-         8y62/yoEHh5cx1vi5yT8H8LaVTNzvnXHnNCG/p+xlZSUIXmbY7MHyovCFsEoyam7IeuP
-         LFkwAOsGrOUafa+LFgR7w+/xuLGrShOWqwVOgi6hhCOM7gyDG3FpSxCwz5/PbcfoA8vc
-         Cw8mUV8k1pVdbZn2+GiJ4NeEFWs8j6+JU5E87Hhum3Hnn2K5Wv6xhNua+Go0RS5vKF9c
-         wEEf4zaU3Crv52fZCxF7ajR/0uALL9heCghzwMaUJKHBdBNeP1sHXpnCys+YfRK6CUHg
-         OELA==
+        bh=3zpUdooh7j5y1dGwvoNb/vpfm79eAZcPY2dZ8iHzeV8=;
+        b=H8yr1F/PKbipzimUtt5OCHWwA38BZFWq/ZAkHhDZ0Z3yKvUAox/HNaiwIxxUTYHrqZ
+         O2A10BAaDaRD3gqZ66OWPYZ7QhhuEKztEko3jyr73s1RWNfVW7TPGlyH8WPmJnscYD1p
+         zRltxktprFvU491vOTLfz/Pz4RZG77wsD4oRTRSU3K/3QdgdEng27MbmLZk76PzqCieR
+         K4iVOKULOMbAuJFxZWiUWnD51/kFvXPUM5/gmaT66T+E0EQS3bQo9CoGpWOU0b3jMn+X
+         v74FfHgnM7RmNO/OkcNJgn5/OPiTYYKGQW1Ap7LkAyQ5m2aBprhIFTs/W13jv9y3fdnA
+         KSiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779175556; x=1779780356;
+        d=1e100.net; s=20251104; t=1779175663; x=1779780463;
         h=content-transfer-encoding:in-reply-to:organization:autocrypt
          :content-language:references:cc:to:subject:reply-to:from:user-agent
          :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to;
-        bh=U/UrhAX2VwHcFosaazEyQ389tsED90O5GiFK+5wV2WI=;
-        b=DrGXCStBd639dMMpGuspCNgaSysVSpT1mnksKv0bClo61tmHRdzuKw9PeCrWk6hDkp
-         w859gr7TWGRB5uof/1sMCJgmYnCgMK4aRVaoKwVaKlB14zi5Gty5cpwtBU/GN7SQHmzg
-         LxdNFEX+J9ZXV67+fn9Nhe097d7Y23r8nKSkGobI40tl3AUesKc1siiaAPvJhM3UE4wX
-         EcWr94Y2SoW7NwkbcfGTEV+WH54G5uHbqqpzQpp/gNBbd6rax3LEwwECCq5cwqmuagbT
-         ZPIZ6fMpBH7hGO8PQEafGu2ofY33Y06Odi3HxqX9FfQkBj2E+Y8yaWhi8FYBDUYOWnv9
-         bBfw==
-X-Forwarded-Encrypted: i=1; AFNElJ9gcTWsJQvYR6UNdtsjt4pT00Ne52ID0NPEWj9zmA3gM5sOnPyleRJVYYY0caWyRtD1WI355vW9O7QehmO+FQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yy2OQOBqOoqee/5u8pJ/6jnWWiDGpZcmpyh11liYQZIa2BWKtok
-	C8utAG84pprbIr4GtLl796rUZu2tiHMiXbipMceXhjy8XZgXhtH4IxEMNW1jZfm6DOg=
-X-Gm-Gg: Acq92OEX+LAUTH5v5NI7TMVM5V0aQWlu8U8vcb2SqLsXOgbQ/ghbbWOvVkjnXH1Xd/n
-	pyKvMjeHE/E/2AtR9lEBN96D0iHhX5bYNJ7ZI1Jj5QugezEJqgyZTNJMyP3kejur7Y905iTXGXs
-	a7YSQWlSpKl9v6LN6FYrbmwq38F5gVfND+aCz0PGH74c71fGesU6hyeaSUVuFRl0DQX99PqqHkG
-	Gj8PHhCaTSn9TptLERRKCsZtMOVK3o/q6aUqf/TvCylCv4qDCJAc2v/Tpj2acOe5Yab9Mf2/Nrx
-	Wq0mx9igLILbc9itL/JC3f+p66CVt2lnvjVGj1KmM5439LQmu1DE3mQD1euRtNZD6yW862cnetq
-	lHY0Z5odcegYu/QstseaKjGkYr1BvDgd7qbmaSZ/VEr8bRJr4w/jI71l0BPZ2Np5q/uGZuMHVvp
-	JhrjPhqlwWL8K/deICgez4QPezjkDAev0fvVzXR4jXwT2TdPdH3kDukRoURIQ3nlkDHubSMIa+Y
-	y3rsMprzpHZ0e0=
-X-Received: by 2002:a5d:5d0e:0:b0:44e:639b:7d0f with SMTP id ffacd0b85a97d-45e5c36bd17mr28618808f8f.12.1779175556033;
-        Tue, 19 May 2026 00:25:56 -0700 (PDT)
+        bh=3zpUdooh7j5y1dGwvoNb/vpfm79eAZcPY2dZ8iHzeV8=;
+        b=Rrz08I9LJiFMqtLrtR9FJ3nO+7U7LXGQ5IfqD2cUqb40JqKDMghCy3AOZHlIyLJIr1
+         c4NjRcPCyhIfYqFaS0rAVnK3wWOPendIq6FUQIHSUGRf1PIeU2y7JF+UKgqYHopS4VLX
+         kqIWr9m8JCSKOxBaMHKPLRwV+RXEFEheIMI9k/KexKOjk/9DirhaEO/omxxyc0INdOtB
+         lO0rOcrRf5OmL5tUWwquyfcfEUpQ9BCJx/7JvPvlleOE3MXEorfVCashQUcCMYllr3wj
+         B4BKEj6uVfJyrpiag8aBoBf1D/ZhzcUwQ8W5MF5kU78TMK+nP19cmI1dhIa9Abi8vPtq
+         g42A==
+X-Forwarded-Encrypted: i=1; AFNElJ+cj5IiXVGs/tps1+ZiRWDzd9yf2QZNoOJBDdFv2edXFtbV/FYlg1Gam74b1QaPFTPtwTAeWRD0J4A7CQsEPQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yw0CmJRqwpY588Pu6sBrRT/I1B5z7t+EcA48oNyWgulXHEa5H1d
+	aTny8iG/u2aqIpHWHkoTCDWLQ8XHVXR4klkOIRebVsAoR+9UKVKB76oeOabpsTphuXw=
+X-Gm-Gg: Acq92OHVFoWGhs7GD1lWoNjxdrQ8NOasnlR6zePpR2upas16X7r0rjffuNG08/sX11e
+	49NpVryqtifgz8ZKNRfiETzYdSIIN9ZB5Cp4XK4P8hYV4Wme8X2k9hsOJ9+GKcXvNISGNPkf7oW
+	bOwQ7UA83ibBpH60HPu2jTBylUPw3XElI0WtF3LbQ3KuhKURZ4B/+DU4x6mF4kMW3zA8Cl+DC6G
+	e9uV5PAhwwjdEdnpnRXrgVuL2qfwWE2bwtheQGuTLKRHWwOQKR44MxKCLdBoZMP3rhZSFopMgY5
+	tJY1tFnhBvjFtTVF775i+8w/VG4JNQdDw6U8X3ZO5PMcY15N2opInhiOz3BXTZL6Kok95i8V9Ik
+	fRDodiuNug7BvUSUXO7HVdcuF7vOvTD9aTmygqtgyhbbms+1fHtwwQ/maeke6cHep29UpVN7B61
+	DQqACQM3WgtpO6mr08Hg3g8rK+NGyVFeQV/uYQSaQwULX1Z2p4+vDXmlT5J7xJ/S+UCXfoIViIy
+	oy5
+X-Received: by 2002:a05:600c:a406:b0:489:e126:b757 with SMTP id 5b1f17b1804b1-48fe63297b9mr233398525e9.25.1779175663120;
+        Tue, 19 May 2026 00:27:43 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:106d:1080:1d4b:274c:94d:a69f? ([2a01:e0a:106d:1080:1d4b:274c:94d:a69f])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45d9ed30110sm47358336f8f.13.2026.05.19.00.25.55
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-48fe4c88495sm299805555e9.4.2026.05.19.00.27.42
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 May 2026 00:25:55 -0700 (PDT)
-Message-ID: <0a91bf03-c94f-4519-a69c-b7f5e505ec1d@linaro.org>
-Date: Tue, 19 May 2026 09:25:55 +0200
+        Tue, 19 May 2026 00:27:42 -0700 (PDT)
+Message-ID: <21609bd9-7a94-41cc-bbe2-2478278b0497@linaro.org>
+Date: Tue, 19 May 2026 09:27:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH 04/13] drm/meson: dw-hdmi: Drop call to
- drm_bridge_hpd_notify()
+Subject: Re: [PATCH 05/13] drm/meson: encoder_hdmi: Use CEC phys addr from
+ display_info
 To: Jonas Karlman <jonas@kwiboo.se>, Kevin Hilman <khilman@baylibre.com>,
  Heiko Stuebner <heiko@sntech.de>,
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
@@ -90,7 +90,7 @@ Cc: dri-devel@lists.freedesktop.org, linux-amlogic@lists.infradead.org,
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
  linux-rockchip@lists.infradead.org
 References: <20260518194744.2483580-1-jonas@kwiboo.se>
- <20260518194744.2483580-5-jonas@kwiboo.se>
+ <20260518194744.2483580-6-jonas@kwiboo.se>
 Content-Language: en-US, fr
 Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
@@ -117,10 +117,10 @@ Autocrypt: addr=neil.armstrong@linaro.org; keydata=
  4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
  QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
 Organization: Linaro
-In-Reply-To: <20260518194744.2483580-5-jonas@kwiboo.se>
+In-Reply-To: <20260518194744.2483580-6-jonas@kwiboo.se>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_002558_981175_3E757A16 
-X-CRM114-Status: GOOD (  16.79  )
+X-CRM114-CacheID: sfid-20260519_002745_162317_56435B3A 
+X-CRM114-Status: GOOD (  18.29  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,45 +139,55 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 On 5/18/26 21:47, Jonas Karlman wrote:
-> Calls to both drm_helper_hpd_irq_event() and drm_bridge_hpd_notify() in
-> the IRQ handler causes multiple hotplug uevents and modesets during an
-> HPD interrupt.
+> The dw-hdmi bridge detect() func now updates EDID for the connector.
+> Something that ensures that display_info.source_physical_address has an
+> updated CEC phys addr when the hpd_notify() func is called.
 > 
-> Change to only call drm_helper_hpd_irq_event() in IRQ handler to ensure
-> only one hotplug uevent is triggered when the connection status or EDID
-> has changed.
-> 
-> The bridge connectors detect() func help ensure that any hpd_notify()
-> func is called for all bridges in the chain.
+> Change to use display_info source_physical_address directly instead of
+> re-reading EDID to set the CEC phys addr at HPD interrupt.
 > 
 > Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 > ---
->   drivers/gpu/drm/meson/meson_dw_hdmi.c | 11 +----------
->   1 file changed, 1 insertion(+), 10 deletions(-)
+>   drivers/gpu/drm/meson/meson_encoder_hdmi.c | 26 ++++------------------
+>   1 file changed, 4 insertions(+), 22 deletions(-)
 > 
-> diff --git a/drivers/gpu/drm/meson/meson_dw_hdmi.c b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-> index 9aafdc768f2b..30099bf71aad 100644
-> --- a/drivers/gpu/drm/meson/meson_dw_hdmi.c
-> +++ b/drivers/gpu/drm/meson/meson_dw_hdmi.c
-> @@ -521,17 +521,8 @@ static irqreturn_t dw_hdmi_top_thread_irq(int irq, void *dev_id)
+> diff --git a/drivers/gpu/drm/meson/meson_encoder_hdmi.c b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
+> index 55c0601df3c6..1b9a1d9ed3d3 100644
+> --- a/drivers/gpu/drm/meson/meson_encoder_hdmi.c
+> +++ b/drivers/gpu/drm/meson/meson_encoder_hdmi.c
+> @@ -330,28 +330,10 @@ static void meson_encoder_hdmi_hpd_notify(struct drm_bridge *bridge,
+>   	if (!encoder_hdmi->cec_notifier)
+>   		return;
 >   
->   	/* HPD Events */
->   	if (stat & (HDMITX_TOP_INTR_HPD_RISE | HDMITX_TOP_INTR_HPD_FALL) &&
-> -	    dw_hdmi->bridge) {
-> -		bool hpd_connected = false;
+> -	if (status == connector_status_connected) {
+> -		const struct drm_edid *drm_edid;
+> -		const struct edid *edid;
 > -
-> -		if (stat & HDMITX_TOP_INTR_HPD_RISE)
-> -			hpd_connected = true;
+> -		drm_edid = drm_bridge_edid_read(encoder_hdmi->bridge.next_bridge,
+> -						encoder_hdmi->connector);
+> -		if (!drm_edid)
+> -			return;
 > -
-> +	    dw_hdmi->bridge)
->   		drm_helper_hpd_irq_event(dw_hdmi->bridge->dev);
-> -		drm_bridge_hpd_notify(dw_hdmi->bridge,
-> -				      hpd_connected ? connector_status_connected
-> -						    : connector_status_disconnected);
-> -	}
->   
->   	return IRQ_HANDLED;
+> -		/*
+> -		 * FIXME: The CEC physical address should be set using
+> -		 * cec_notifier_set_phys_addr(encoder_hdmi->cec_notifier,
+> -		 * connector->display_info.source_physical_address) from a path
+> -		 * that has read the EDID and called
+> -		 * drm_edid_connector_update().
+> -		 */
+> -		edid = drm_edid_raw(drm_edid);
+> -
+> -		cec_notifier_set_phys_addr_from_edid(encoder_hdmi->cec_notifier, edid);
+> -
+> -		drm_edid_free(drm_edid);
+> -	} else
+> +	if (status == connector_status_connected)
+> +		cec_notifier_set_phys_addr(encoder_hdmi->cec_notifier,
+> +					   connector->display_info.source_physical_address);
+> +	else
+>   		cec_notifier_phys_addr_invalidate(encoder_hdmi->cec_notifier);
 >   }
+>   
 
 Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
 
