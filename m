@@ -4,140 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CF77CD4F3C
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 02:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65995CD4F3C
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 06:21:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
+	From:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QyTZHOW8kIbgC8vOV87QyhEtfQm28yAvA5CNaV0nRmQ=; b=1LMmScj3eurUI+
-	6UNuxik4IIdVAMG5ZTemXT+IraHvEvfkCFO5XJTsc4yKjjdzZGwy/WGvjO+yasyOnZwv2V1f7lugV
-	hv1Y6efaP9xklu6WKjGsW8e/OU9G8IgV61Wv+yNi/3xgr5YeJFTqtMNLp1yXKM53XjV1D70PJ4Ghx
-	Tzluc5pNTWEe3zyiseDnoy7Dl3bncDbuTtaiWY+vc/gMWucT1uFJ18L+sjaNS6vXv8FzgW2GVnPvy
-	A73luD2JEuoCHQPkfeVd8o4wSJ3KXYwbSIIbVkCgeu7hP7/XldmxLLdtsqpIpv/1bfDh2SKC/7m3M
-	vDoYSeuNUmma/ZG28Jlg==;
+	List-Owner; bh=cJmhLcQ1TIjlxFoh5fUbpj1+hOxLZlBhjfnAFwqRYYQ=; b=OxfrszT9qEidk1
+	mjDLjxy7Yon4zr63kZVN4PXfjPsjQkm2lAPZxFJSqaN39QGubQJFraV2dm+lfdOqVR91KiZqthHgd
+	weUMUKtA17g3jDhaJwZgpUSupK+8Ciat/5kxr2TJrMk3DGF/vnC62+5krESMQ9c0qbSnuY1eG/M3G
+	uuYpmgISA/7ETtu0e1pgTwQWTB476GJ/Tp78hO6Hzmx0D9VlmylHaC4u32cOYsxN+4ZZr7n+Kpg4X
+	EP0zIwWGQr4lM0jVM7E5ZSHzK0NMNQ2eRNpldus/qmUrAWXGES40RKSQPuzG4c/ElKuGxr0sfIAFg
+	3fIIGVkY4WkWs4cNmwGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPA4I-0000000HS32-0nWC;
-	Tue, 19 May 2026 02:20:26 +0000
-Received: from mail-francecentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20a::7] helo=PA4PR04CU001.outbound.protection.outlook.com)
+	id 1wPDpk-00000000JN8-0Shu;
+	Tue, 19 May 2026 06:21:40 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPA4G-0000000HS1K-2hOb;
-	Tue, 19 May 2026 02:20:25 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=QJSSQwCuZUNnWhREK8KPF2CwNA1UY4tP3qOtNqetlFx+APNI6GiqEyhojmAp4GdFITAmHCnFjcCJTZEQprHOQNNrZXyu5HoKhDHv5pI4JCou3YID3lrQyC/VcmmXjYKYU519Pjxg95jkOFUT8yHb6Rmg2+bQ/D7faW+X4xWjPZD5Ikf8K5rBGB6HJ3XaRsHJXNWb2THWjPY0fgzDnPd88BrzHU38/fWPJNRNX3JO+9hli6Z5/oMIs6rojiE9RvhkYaT3u46Jrzt5syTPduYHaiMHl+7YBvEefsKNIH8wMrPZhRbcAFi5yguhcVCM8PXPLWEuWHMtXn9csZ7yeuM2+w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EpGK1nbZGPnhpUHRfm9n2tL3vIeotP1zYrXhaFXnqCw=;
- b=unjdvYoKJ7kKRIutr7qi6VYS/5yiGarWAGJLqsNYDCsa2tCgUgPV3nxu+knUNnvpYN4jQzUS9n4twviEXO52AbNgi2OpT/tDJZBPXVlvj4zDsMBxdvKHhyy27kwxTMEgpX8NWMdsTSe2ij4b+zh7DTj3QaO5abWgV4BnJsx6VEdTFRrQNlW0xBub9CpdmSPWrpTizAxybOQ7VMbuWYdTNEXqRemGFurECpvDjCwLNKU4aYLwjSKKDC3Ycrd3ETCIYkzGk+Jh929XFlLKomxc/Ts7O3IDsdW5TRokB/cOfGmeM8+FTvvbb94Z+b9quKyvtdTeJrKru+YdjoLsnZGV4Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EpGK1nbZGPnhpUHRfm9n2tL3vIeotP1zYrXhaFXnqCw=;
- b=KVI0uhMBntiH37QjYjvpDxpc8222nH/1ADZegcD0U1chDtvmMOeujS/LLhP1fvRTy4xopIEw0tLe7qMetH2ub8xgv4p0aqjzXLkCHHo52PpOsvaJlKzRwFgZb07slY0Sxqna0+XQvbqKSsN6St6nEwf/QIeqtTB4ahYAY3gRrIfTSGKKfyshAbPPgpSCl6LbLuTTgjS3GwjFd5VW35LQSQxKUNX+/Z6wqk00SRxNPdMAcMG5XDxmzwtFe2OY9971ijuS6GaKM7ULdTHhgcjs9OBAbkcohCAUveCaygKJAFIgR0Wd3UgRiKa+Vh4wDBm4QapmA4U+QONCa8Um2p6J8A==
-Received: from AS8PR04MB9080.eurprd04.prod.outlook.com (2603:10a6:20b:447::16)
- by DU4PR04MB12129.eurprd04.prod.outlook.com (2603:10a6:10:643::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.22; Tue, 19 May
- 2026 02:20:17 +0000
-Received: from AS8PR04MB9080.eurprd04.prod.outlook.com
- ([fe80::92c2:2e03:bf99:68eb]) by AS8PR04MB9080.eurprd04.prod.outlook.com
- ([fe80::92c2:2e03:bf99:68eb%6]) with mapi id 15.21.0025.023; Tue, 19 May 2026
- 02:20:17 +0000
-From: "G.N. Zhou (OSS)" <guoniu.zhou@oss.nxp.com>
-To: Sakari Ailus <sakari.ailus@linux.intel.com>, "G.N. Zhou (OSS)"
-	<guoniu.zhou@oss.nxp.com>
-CC: Michael Riesch <michael.riesch@collabora.com>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
-	<krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner
-	<heiko@sntech.de>, Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Frank Li <frank.li@nxp.com>, Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
-	Mehdi Djait <mehdi.djait@linux.intel.com>, Hans Verkuil
-	<hverkuil+cisco@kernel.org>, "linux-media@vger.kernel.org"
-	<linux-media@vger.kernel.org>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "devicetree@vger.kernel.org"
-	<devicetree@vger.kernel.org>, "imx@lists.linux.dev" <imx@lists.linux.dev>,
-	"linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-rockchip@lists.infradead.org"
-	<linux-rockchip@lists.infradead.org>, Krzysztof Kozlowski
-	<krzysztof.kozlowski@oss.qualcomm.com>
-Subject: RE: [PATCH v3 0/7] media: synopsys: enhancements and i.MX95 support
-Thread-Topic: [PATCH v3 0/7] media: synopsys: enhancements and i.MX95 support
-Thread-Index: AQHc3TWPeAvGhgkyLU+6F1+1rfzOdbYUXx+AgABRJAA=
-Date: Tue, 19 May 2026 02:20:17 +0000
-Message-ID: <AS8PR04MB908026DC0DE479110FD13DC1FA002@AS8PR04MB9080.eurprd04.prod.outlook.com>
-References: <20260506-csi2_imx95-v3-0-953b6e1a80dd@oss.nxp.com>
- <aguDpxP4SIcJWdcc@kekkonen.localdomain>
-In-Reply-To: <aguDpxP4SIcJWdcc@kekkonen.localdomain>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-x-ms-exchange-messagesentrepresentingtype: 1
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: AS8PR04MB9080:EE_|DU4PR04MB12129:EE_
-x-ms-office365-filtering-correlation-id: 9a6e9c3a-49b5-4e28-001e-08deb54d2b2d
-x-ms-exchange-sharedmailbox-routingagent-processed: True
-x-ld-processed: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635,ExtAddr
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;ARA:13230040|376014|7416014|19092799006|1800799024|366016|38070700021|4143699003|11063799003|18002099003|22082099003|56012099003;
-x-microsoft-antispam-message-info: 6tprE1Vw+XaYl1xA/EPGIMDRDyOP5BU+ZtKUo0xS89u8J8eZlhg1ebquD2LdePlHvWSFa4AjyKRgqSPr1e0r4Kck5TsFCFUgG85Q24t/kUgKbFrGEdnBtLVFx4MxnvCKSM3MHft2flDTziAS4WyUFZxJoqEE1ncsWZTJ4JAaWHvYHsUevvbyw482zaVRYjffpobjbH/qPbeUVfQ7B1OewyTPpNRk0BBQEyx3Cq645FmZT6wWynlXHUcwa209axN55scDexdkR+mm3ItZ6z850FQ642py5fZGklRRCYDP9YswB6LQkgougQcSCVFwwBqpCxUB1tAymjDS8ajbma5v5FY/iYp00scPp2nMXnNHAAATSCumGq7uk18n8If9Rm4B9pPiNiV/LHQ8Se2NXJGsiiBLEE3N1j6VWGP3uL7PTFX+2EUIFa5xC9x0zE8IhEVhh3nRvtk4ZYRrqjBF0MM5FJ7gBe8hRZcBOq41yDhkzZX3J8w8KEoUksp0GhdM2jBKyxSJrHfto+76qAjb9AMvs/fUHlL56s/s1Z+xnL6vdC2Jr1EDQ+xdkVHPQ5ZueujIYKl0gPCIb3P7saCN3QA9beUP+21Ufa1dCO6hfU+H51KVhEW4uQ6FUOn6DbzT3c4zsQTBvkcLn7CfIrjJ/zA8BCUKZDd5Cp/QnzTfmA9nNXaViGmFv353OwJSLHyAgO6L4MRwrgpBWb1luQe49vCdO8GwUkFLdEzez9ukT5VOtqAeLIbAeqvxzNyAYqoD5o1d
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AS8PR04MB9080.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(19092799006)(1800799024)(366016)(38070700021)(4143699003)(11063799003)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1101;
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?8xGcehPSOtP8og6pYtUG9cMEXfh/nu0+raKgPVcX+SzxVrVVP4sRbAAM6ie8?=
- =?us-ascii?Q?wNy/1IIWK6M0PrEHgMNn6yI4mL8rrYxGt3iy7ELalRdKvb1hTCO8ftkwmR88?=
- =?us-ascii?Q?srI7TabeJ9z2PUq29l6m0TyL23ZGoXsA6Yki5xPCAR2WBOCqdkbP9x3Ruric?=
- =?us-ascii?Q?x5v6EPW4+ToM+RqT8zCcpW+xe471YXC4EXKqTCJQqcshypvgWrH0hWqpGdQy?=
- =?us-ascii?Q?wLEAVNAHk1Ih5kMAcmtok3ofHvwRws6MJfF9PM4hkun8TJvRJOE0hyVuBnk6?=
- =?us-ascii?Q?3ciDiOPeTeJM2XLg1zHKFlsas9a14DlJFk9PPu8ZeyZASrDiaI5RSshefE2f?=
- =?us-ascii?Q?FoyTwBrcClMBGqG2cSJyjANM25MOWX+oYsRNj7UGcXJLMVkLvO187EDO0sBI?=
- =?us-ascii?Q?2GEVIFXnq+K53WStT6EFl0oBzgmrP49ON62hvn6N01JjF/pCvJyzJ3zRGUZx?=
- =?us-ascii?Q?6eom1W/kCbXlb/k0V9pX1xb3j3o7OhA3GOXaSWATW5V8Kxeo6n7XKk/LGHgm?=
- =?us-ascii?Q?EQa0lE8FKSLbTjxO1PqVyLJxlCeRLXi6BaApdfvQBPrpoVZiFnaTE9eo8wVe?=
- =?us-ascii?Q?5CC+bGM3opmC8DhdjupE6ZRWjid9xwG9qPpzM4KkVSNgb4EZp3pdIVmzxSgG?=
- =?us-ascii?Q?espYp/F8ZjO89cM1JOD5tsBDQLYKzgH8dz/irF3R8N0UngeT2qfzXG0kkkKa?=
- =?us-ascii?Q?dtuBgep861jktW7MgtK9862BiVwBnQKBWElLsO5P6Lcl4d2cpZTZcsNWIUSe?=
- =?us-ascii?Q?ntfxk2U2j3E1LX+4oGbr4KApM+06f3eqSJUTSMnF55aOVuU4ieU2+zbsf7Sm?=
- =?us-ascii?Q?+d6VBtBTH90puNyKQckX5xAxFc9eFFB56deGBx19Sdud2f/hSOUJENaOkvYj?=
- =?us-ascii?Q?3Dt2zSwKD4nfjb0RfhKWtoMB85F/WMygA6XhjczZIMW4yNBzzo01bmx/0m8X?=
- =?us-ascii?Q?bt2qhQ6ReCbfJPwbCdfFmnSg4iGADF/uV/D0362M1+Ok65On01b4NCeUtLK0?=
- =?us-ascii?Q?svH/UiNTlTNPPkdojvf5uBRKLix/dOmTbwhdjThSssNjQxZ2uzXbA4xe3WTv?=
- =?us-ascii?Q?kiZplcRWsc0r1S+4+kAoW5mLDk9wOIMnVQtsAWbctKzYn135/RPhL++rB04U?=
- =?us-ascii?Q?B/nSNrJvKLXzceeL0OJ6GIYRWb8efGZUc/vh0UI/DIy3VcCAhFbv2V6qrsPX?=
- =?us-ascii?Q?b8p1ZhFlJ62vwNdNw0hnYFvqfa7Q93JWbzdy75S6ZpBgNHGqmuyDLpG1QQ2l?=
- =?us-ascii?Q?toOkbCyhCjFG3CH7Ovh6l8PtHHKXtiGbd4hByobd2pTi8eNbg41UOrkC8ECP?=
- =?us-ascii?Q?OOfITWfarH4WrHDSinlUQEgDZgVyCTz1SL71hXhRQ/Gl9OJbywBSYC/0oGCR?=
- =?us-ascii?Q?LDbkItb6d+46QGeGWv0jB9OxsbZyTHl39JVTWsrrv0PxI2jvdwi/SKL6aDEe?=
- =?us-ascii?Q?0PGGukKc4VOwHvxX29f6yP8lTi8SzIu2V0BXwM8XQmj9rp8FRQ126BLaaN3J?=
- =?us-ascii?Q?M71GD+iUK9zE+JFmaaZUi6L018dEmSKbsr6fx+zwMYo8hw3U5RfVNuCIjDv5?=
- =?us-ascii?Q?oIR7q5EaonEVmH2tUiHD8f6wu3x1q6JZ26NCHZ+lsIcbHIuYmZawO2/yxnW1?=
- =?us-ascii?Q?ecDtfVpdzW94gCDwL8zexLUpI9ITOXisLdA2hdwFqNWO1m4lf/Xx1LLed9cZ?=
- =?us-ascii?Q?53HgqPg1TtSNMEHDEbD4JbUBddTAVoGuyy8Aqhdn3Z0jVYyfdmz96Up267JS?=
- =?us-ascii?Q?y/SVoc4oig=3D=3D?=
+	id 1wPDpi-00000000JMM-2wmv;
+	Tue, 19 May 2026 06:21:38 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id DF74060052;
+	Tue, 19 May 2026 06:21:37 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 91448C2BCB3;
+	Tue, 19 May 2026 06:21:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1779171697;
+	bh=bI1+JJlEbofJwf56QKg8oCf2syw9NjpmEZehTGAplJQ=;
+	h=Date:From:Subject:To:Cc:References:In-Reply-To:From;
+	b=WWVuvCg3lq9kj/W9OHODE0FAt4VK9CPQwu6zrFMcsNHdAqHhuzXGUZGwy47s+6CJa
+	 72YU4jF38E/VoKdeqoOIf5/QWpSv8RvP81fnP/amdv5Atnb8XbyxcH68VxhFGCx3ps
+	 WslsvsyfQ2rbuY7x6SBVCsHXrAwRQvdmM7k8Yq0Hg+Pylth9J7eDPnvJGfCMhsGgGK
+	 neW3YY0ok1Q6kxW+5X/1OzpeDgTPpOBbYkjnqhb6PDYNe5BWbfv8/IIAH583IJVKgb
+	 OSCoe7lNCaR78GmefFw7YcG3rj6IFuKpUu6uf9VY2+GBWUMQYIa+Tni5LvSrU8pACF
+	 UWv2Xe4Ihmgtw==
+Message-ID: <a34f5914-80b7-4d95-a220-79001309214a@kernel.org>
+Date: Tue, 19 May 2026 08:21:30 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: AS8PR04MB9080.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9a6e9c3a-49b5-4e28-001e-08deb54d2b2d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 19 May 2026 02:20:17.4400
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: P4zS7xw4RhPRjBFpz9UdquGokrJdvUpYpVUeO5wOAzEojvsmyrUzcIlxsiOIcgSdyWjFHUYthqjcemLnnKPfGw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU4PR04MB12129
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260518_192024_687532_D7037C2D 
-X-CRM114-Status: GOOD (  18.55  )
+User-Agent: Mozilla Thunderbird
+From: Hans Verkuil <hverkuil+cisco@kernel.org>
+Subject: Re: [PATCH v7 03/23] drm: bridge: dw_hdmi: Free IRQ before CEC
+ adapter is unregistered
+To: Jonas Karlman <jonas@kwiboo.se>, Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Russell King <rmk+kernel@armlinux.org.uk>, Hans Verkuil
+ <hverkuil@kernel.org>, Archit Taneja <architt@codeaurora.org>
+Cc: Liu Ying <victor.liu@nxp.com>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@kernel.org>,
+ Christian Hewitt <christianshewitt@gmail.com>,
+ Diederik de Haas <diederik@cknow-tech.com>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
+ linux-kernel@vger.kernel.org
+References: <20260518180206.2480119-1-jonas@kwiboo.se>
+ <20260518180206.2480119-4-jonas@kwiboo.se>
+Content-Language: en-US, nl
+In-Reply-To: <20260518180206.2480119-4-jonas@kwiboo.se>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,60 +89,77 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Sakari,
-
-Thanks for letting me know.
-
-> -----Original Message-----
-> From: Sakari Ailus <sakari.ailus@linux.intel.com>
-> Sent: Tuesday, May 19, 2026 5:25 AM
-> To: G.N. Zhou (OSS) <guoniu.zhou@oss.nxp.com>
-> Cc: Michael Riesch <michael.riesch@collabora.com>; Mauro Carvalho Chehab
-> <mchehab@kernel.org>; Rob Herring <robh@kernel.org>; Krzysztof Kozlowski
-> <krzk+dt@kernel.org>; Conor Dooley <conor+dt@kernel.org>; Heiko Stuebner
-> <heiko@sntech.de>; Laurent Pinchart <laurent.pinchart@ideasonboard.com>;
-> Frank Li <frank.li@nxp.com>; Bryan O'Donoghue
-> <bryan.odonoghue@linaro.org>; Mehdi Djait <mehdi.djait@linux.intel.com>;
-> Hans Verkuil <hverkuil+cisco@kernel.org>; linux-media@vger.kernel.org; linux-
-> kernel@vger.kernel.org; devicetree@vger.kernel.org; imx@lists.linux.dev; linux-
-> arm-kernel@lists.infradead.org; linux-rockchip@lists.infradead.org; Krzysztof
-> Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> Subject: Re: [PATCH v3 0/7] media: synopsys: enhancements and i.MX95
-> support
+On 18/05/2026 20:01, Jonas Karlman wrote:
+> The interrupt allocated with devm_request_threaded_irq() can be
+> use-after-free when the devres release action try to free_irq().
 > 
-> Hi Guoniu,
+> KASAN report a slab-use-after-free in dw_hdmi_cec_hardirq during unbind:
 > 
-> Thanks for the set.
+> Call trace:
+>   [...]
+>   dw_hdmi_cec_hardirq+0x4cc/0x560
+>   free_irq+0x48c/0x7e4
+>   devm_irq_release+0x54/0x90
+>   dr_node_release+0x38/0x5c
+>   release_nodes+0xac/0x130
+>   devres_release_all+0xf4/0x1b0
+>   device_unbind_cleanup+0x28/0x1f8
+>   device_release_driver_internal+0x358/0x470
+>   device_release_driver+0x18/0x24
+>   bus_remove_device+0x33c/0x4f0
+>   device_del+0x2d8/0x790
+>   platform_device_del+0x34/0x1e0
+>   platform_device_unregister+0x14/0x3c
+>   dw_hdmi_remove+0x74/0x180
+>   [...]
 > 
-> On Wed, May 06, 2026 at 04:53:59PM +0800, Guoniu Zhou wrote:
-> > This series enhances the Synopsys DesignWare MIPI CSI-2 receiver
-> > driver with multiple stream support and adds i.MX95 platform support.
-> >
-> > The i.MX95 variant is similar to i.MX93 but uses IDI instead of IPI.
-> > Since IDI is software transparent, only a different register map is needed.
-> >
-> > Tested on i.MX93 and i.MX95 platforms.
-> >
-> > Signed-off-by: Guoniu Zhou <guoniu.zhou@oss.nxp.com>
+> Freed by:
+>   [...]
+>   kfree+0x1dc/0x5dc
+>   cec_delete_adapter+0xd4/0x118
+>   cec_devnode_release+0xa4/0xe0
+>   device_release+0xa0/0x200
+>   kobject_put+0x14c/0x26c
+>   put_device+0x14/0x30
+>   cec_unregister_adapter+0x20c/0x280
+>   dw_hdmi_cec_remove+0x8c/0xd0
+>   [...]
 > 
-> This doesn't seem to apply to the media committers' tree anymore. Could you
-> rebase it, please? (Or are there dependencies still out there?)
+> Explicitly devm_free_irq() before the CEC adapter is unregistered to
+> fix this possible use-after-free issue.
+> 
+> Fixes: a616e63c56ef ("drm/bridge: dw-hdmi: add cec driver")
+> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 
-The conflict is caused by commit 658810422076 ("media: dt-bindings:
-rockchip,rk3568-mipi-csi2: add rk3588 compatible") which touches the
-same area as my patch. There are no other dependencies.
+Acked-by: Hans Verkuil <hverkuil+cisco@kernel.org>
 
-I have already rebased and addressed this in v4 of the series, which
-has been sent to the list. Could you please check if v4 applies cleanly?
+Regards,
 
-Best Regards
-G.N Zhou
+	Hans
 
+> ---
+> v7: New patch
 > 
-> --
-> Kind regards,
+> KASAN report a slab-use-after-free in dw_hdmi_cec_hardirq when,
+>   echo fe0a0000.hdmi > /sys/bus/platform/drivers/dwhdmi-rockchip/unbind
+> on a Rockchip RK3566 device prior to this fix.
+> ---
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi-cec.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> Sakari Ailus
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-cec.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-cec.c
+> index 9549dabde941..67a2a242d3ca 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-cec.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-cec.c
+> @@ -309,6 +309,7 @@ static void dw_hdmi_cec_remove(struct platform_device *pdev)
+>  	struct dw_hdmi_cec *cec = platform_get_drvdata(pdev);
+>  
+>  	cec_notifier_cec_adap_unregister(cec->notify, cec->adap);
+> +	devm_free_irq(&pdev->dev, cec->irq, cec->adap);
+>  	cec_unregister_adapter(cec->adap);
+>  }
+>  
+
 
 _______________________________________________
 Linux-rockchip mailing list
