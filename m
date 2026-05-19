@@ -4,61 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F101CD4F57
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 11:09:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29C33CD4F57
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 12:07:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Cc:To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=vqNyQnTSavWnR7uZ3a1XIpCTIaUwZQDP67SCyQQqGhU=; b=xJ9vZCTwTpOH/V
-	cauVus2JRsxvbdI4R7a2NfwRaKDviG5/e8d92/KNrBI2TsAkj2L6BL60NL6dKhbNdYMJ2M6dwGoJO
-	/Kik4WyY+eEJlWn9Vsxe7qHut+iH733cwskAKeHM3GtytbznuK7s97m1lxFz68Bfk7XQ6lI9tbyMu
-	dynogXPlJemI7ULW0ff24J1+7LFqRIL3QWo/IaNCCYRGTdGKTSXVrcaOGBzP4r0FvrAHXW94PaCBh
-	Gql1tIx55ICuy1eubY8/fALfUDQcu5rzAE6eB6Iw/qqkbKnkdmq3bJuMpNgNFQJeMQJVtOIoRnDdd
-	cg1o9JAcSyV1D8v3ctQg==;
+	List-Owner; bh=hNVk5tmhi+Q2tmeSuPDwFIFhyUyKpvbicXbhSDTCouw=; b=Hg2ucuRBU++VbO
+	lqBGuZPZju5yz2Nh7kusAPiierlpnvKymhkeonQrw/HPFqfSuSh0HiCY81lV52oVU373u0+hHzUDQ
+	bV8HstieQ6N+YPUuLfdgkMT2OcBspIDn0bJLcjk4eEGA/nKCHUZMER40P7Nw3HWKla2KntQGHRAIz
+	gMmYj+B6W9ePdaAw5yCDT2iS46YFLl6Shl5xJqeu3tnW8QPiEDBlnuBsjBRu06+KmSDdvJWJC5V04
+	/UeIHjRuUNpx4NBURjgVIfCgLUSRruHYJq2vAxlVYDR2JSRYkYQ7kWKx/L91TIzG4C4cjZqCWr77h
+	FM9/JqS181RJBbaVQW+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPIJw-00000001GSU-3zEU;
-	Tue, 19 May 2026 11:09:08 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1wPJEP-00000001Q2U-48a8;
+	Tue, 19 May 2026 12:07:29 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPIJs-00000001GQl-3YV6
+	id 1wPJEN-00000001PzH-1FTY
 	for linux-rockchip@lists.infradead.org;
-	Tue, 19 May 2026 11:09:07 +0000
+	Tue, 19 May 2026 12:07:28 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 382FC4E42CEF;
-	Tue, 19 May 2026 11:09:01 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id DF5281A362C;
+	Tue, 19 May 2026 12:07:25 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id D99A0606E9;
-	Tue, 19 May 2026 11:09:00 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 115D5107E8B31;
-	Tue, 19 May 2026 13:08:48 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id A26235FFC8;
+	Tue, 19 May 2026 12:07:25 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 23AB7107E8EB4;
+	Tue, 19 May 2026 14:07:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1779188939; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1779192443; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=rZpvAdTidzv5frFA2Fh59VQYe4hvOqmAQpFG53pkriM=;
-	b=lPPJ03+beU7EqTBcCvAJlMCYn4/SnelIvqTJz0zwMbjb08bZHBlSuK8JTIQ4+0DVnfCr46
-	yvyCl6mMLegw+jVfHXVbvNa7IiW1FgaGBLE6+7zJBeOKrD8zGLYlVYy7AkT6JFsJApPs0K
-	9+v70l4hOu8w7CIXxQAVLnQ5+UfxFJ1bk9goDmnsWq9qc5fPFXtpkC8eW+6ODZzAcp5ns5
-	7ya1T7M3Ozz4N7mOGMzhYeQY5GBha93i11thrrL6mpl2VY23vJON/iwSxeqjperT0VmeCM
-	i8QrljjzudkimZwllny+bcsjBmbZZpiea83vxwFXZHwRP4smcr6j/dExBvVBig==
+	bh=NWhA2l3IClL+43G9DNlRymSvZYf9QjyK4ldzTg5asIU=;
+	b=m1WzIo1BcY7oz/3VzBb1IIj5Ph5RHz8dP2VKTmCId9aZNKTn4VmfDWNwS9w/m8lsZCKNoX
+	WRxjG5moVsvq5yKK7UTUAK/iI8MUVS1EBF+B+CZ1rjLHHkHHVwWpAyrYrwaV7KD1S40mth
+	HbxCCYsExdf9SBZQigzkET7gxIKf5USZCnrMXlfAWF85r1KI748FL0sgD/JIclJqT3GLWj
+	abBe7ew7HMe7K6G3dGQdqblic4KP63IXlp1UVyGenxyz3No4rRaC64nR22z+q39rXPgsjJ
+	zVNAK3g+nq2gfgPKaQdFzcr1TU9ROlyvEpfmMM8csp0yme3jwRfCpHaqUFliyA==
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 05/12] drm/bridge: synopsys: dw-dp: Add follow-up
- bridge support
+Subject: Re: [PATCH v7 09/23] drm: bridge: dw_hdmi: Unregister CEC notifier
+ during connector cleanup
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-In-Reply-To: <20260501-synopsys-dw-dp-improvements-v2-5-d7e7f6bac77f@collabora.com>
-References: <20260501-synopsys-dw-dp-improvements-v2-0-d7e7f6bac77f@collabora.com>
- <20260501-synopsys-dw-dp-improvements-v2-5-d7e7f6bac77f@collabora.com>
-Date: Tue, 19 May 2026 13:08:43 +0200
-Message-Id: <177918892313.537125.10814687633426590148.b4-review@b4>
+To: Jonas Karlman <jonas@kwiboo.se>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Liu Ying <victor.liu@nxp.com>, Sandy Huang <hjc@rock-chips.com>, 
+ Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@kernel.org>, 
+ Christian Hewitt <christianshewitt@gmail.com>, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, imx@lists.linux.dev, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20260518180206.2480119-10-jonas@kwiboo.se>
+References: <20260518180206.2480119-1-jonas@kwiboo.se>
+ <20260518180206.2480119-10-jonas@kwiboo.se>
+Date: Tue, 19 May 2026 14:06:59 +0200
+Message-Id: <177919241969.545972.1258246873508613782.b4-review@b4>
 X-Mailer: b4 0.15.2
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_040905_297306_BABE4ED7 
-X-CRM114-Status: GOOD (  10.77  )
+X-CRM114-CacheID: sfid-20260519_050727_474169_9BA32C70 
+X-CRM114-Status: UNSURE (   6.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,36 +90,22 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, 01 May 2026 00:20:32 +0200, Sebastian Reichel <sebastian.reichel@collabora.com> wrote:
+On Mon, 18 May 2026 18:01:45 +0000, Jonas Karlman <jonas@kwiboo.se> wrote:
+> The CEC notifier is being unregistered when the bridge detach,
+> something that happens earlier than normal connector cleanup.
+> 
+> Change to unregister the CEC notifier at connector cleanup, in the
+> connector .destroy() func, to align the lifetime of the connector and
+> the CEC notifier and closer match a drmres handled generic CEC notifier.
+> 
+> [...]
 
-Hello Sebastian,
-
->
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> index fc4ddb7792d7..ccc55e40e81c 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
-> @@ -2064,6 +2064,20 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
->  		goto unregister_aux;
->  	}
->  
-> +	next_bridge = devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
-
-devm_drm_of_get_bridge() looks for either a panel or a bridge. Is it
-possible to have a panel connected here?
-
-If it isn't, then using of_drm_get_bridge_by_endpoint() which has just been
-merged [0] would be much simpler and cleaner.
-
-[0] https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/03d1078112fddd706b2c1e4a7d98cf18700eb5df
-
-Luca
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 -- 
 Luca Ceresoli, Bootlin
