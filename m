@@ -4,59 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E5C5CD4F5B
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 13:58:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 623F2CD4F5B
+	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 14:11:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Date:Message-Id:Subject:
+	References:In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=G9BuPX3jHzrAozNTyXHwInj3rv4Ms5hDcaEO6mn+hmk=; b=OjxjQnsnnwtJZb
-	V08f9lV2I0ZreHG76kGCe20rRcLuew6t+FcZ7hEKj47xiWz0BqQHq65C0iTn7Ug5TCoYdocfjnSys
-	9dhU/Fd1aAnx3jA6eCnxVltRqK/j6aqm95mBjAhSHKtPAgBNdOSNLndJ4NZEFSlF6E/8Hkew/tc9C
-	rEQIWWRdy5djSfcZuo6/nTypPWAzdfTdEuXaLSdhPqL5nUi6LPIwXfn72d7tqWhWlrw3zoFLNHvvV
-	AgnUr/zV/cx/69Ys5rpZ7xOcU1D93YXdCF29hPQn1EmgbgN6APnl3z9dkKMqpuf+hg8NYc1PCN7yf
-	LAbCg/pmjYLcb16TjcQg==;
+	List-Owner; bh=ePEV8ec8doFv56Zp3FEOlGEoAvkaqjYfkApeAfxTUeo=; b=2JdJxcdiaoyZCh
+	UPJsrOUeFEQJMd3yMsQHHKDbnwVGsMlc/5SEfQ5elYdYEo+asTZfOUZqTHceufSF/NfoQNqUaD7zr
+	x2Jc8R0OYARzRzMePhdyFw1dRnHeEoc93Lzs6mNGipjqcr2INh+YHTAuqK8oPHuuyzoQIio71cuvY
+	XBx/GsCxuwiRQ9B8iKO8HjCC/H463Zq/WJJykyjDO023emZzPacl87gFBR3j+E/izVm392lwP/8JM
+	q2WnZ+tGUsFzlry4OibXQSM/Z55uF2jGMrZG/ONjHC9HjOQbgakUdJnLpYAORupJ/FPcR2IwB6MFX
+	GuJ4b4IBKG8s5SM10ccA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPKxS-00000001k5U-0c7z;
-	Tue, 19 May 2026 13:58:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wPLAV-00000001mI1-1Kmq;
+	Tue, 19 May 2026 14:11:35 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPKxP-00000001k3y-2Ot2;
-	Tue, 19 May 2026 13:58:03 +0000
+	id 1wPLAS-00000001mGN-3Ck0;
+	Tue, 19 May 2026 14:11:33 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id E04B160121;
-	Tue, 19 May 2026 13:58:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 76AC3C2BCB3;
-	Tue, 19 May 2026 13:57:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E769A4452D;
+	Tue, 19 May 2026 14:11:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E9502C2BCB8;
+	Tue, 19 May 2026 14:11:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779199082;
-	bh=nfEX+4aODCvAUv+wyKcqPTid35QTc5cD/VwXCz3ADcs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=IjXyKLC6RnfU2IV5vALZIj8Ip/8qoyK/R3psuwMTG3JXO9BTcuOc3el0D8NNI8chT
-	 s0gGRepmdjn02maEMVKdztKHkmL0PIRI1De0REdgunGfSBH+Jxn7oMMz0xGiu00Bnm
-	 V2FTqeNiIYu+Dh6VViDLtkb4Ds0j2QzD96R1MrZyXxs7u8yH5s+l1TzD4x35lylgJ3
-	 9/G+prDp/+eIrDIqw6OrAJVNIFWXJr5E3BqmCHSGMhvHJnGYTvBoElvWGf0y8kqAcN
-	 2Iq5THM2nomRkDRaKihObdG6sjEnVdNnX2RH/YlaWNy/FEJXedmSno2xWIrD0A4HU7
-	 zfFdSHFaj+oqg==
-Date: Tue, 19 May 2026 19:27:53 +0530
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Hans Zhang <18255117159@163.com>
-Cc: bhelgaas@google.com, lpieralisi@kernel.org, kwilczynski@kernel.org, 
-	jingoohan1@gmail.com, mx@lists.linux.dev, linuxppc-dev@lists.ozlabs.org, 
-	linux-amlogic@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-arm-msm@vger.kernel.org, sophgo@lists.linux.dev, linux-riscv@lists.infradead.org, 
-	spacemit@lists.linux.dev, linux-tegra@vger.kernel.org, linux-pci@vger.kernel.org, 
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/3] PCI: dwc: Cache PCIe capability offset and simplify
- drivers
-Message-ID: <beqy5ykxgo4ianya6r4mahkkyujs6lly475u26vqaemgqsdnhp@2pn5ipczwc34>
-References: <20260509135152.2241235-1-18255117159@163.com>
+	s=k20201202; t=1779199891;
+	bh=CML8wQQQnEYiEBpZ7VT51bfzANNXcuhqHggg1/opl0A=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=Yla8ZKAy4zzcpnSGQk4VI/SvwGSxc8EoNamnxjgyMswf06h7muZppi2F+I7f+A5jl
+	 I5S5vZswyqAQL98lhfRR0pL8wTYrqCsDQ7uzzzGiH/ksCiwwzPW2UnW/OJtmIAF03Q
+	 Og4v8bfHCXvXtwHMbJsUsVLXfzgJypUMje3g14nqQBbZ8nZCVyEbJ1FvweumVa+QMW
+	 qmnXTav1k5vLg0iDReocAMa1S+vclaeWeH0XwMLuDL9icmkVUXpi4akDznn/K1zQnF
+	 I4LsLzibfXQMuELQmmbdrK7iOOvLrMzr/V7Mzu7OlTJIh/ND3oo76OIAT9psIWd5i1
+	 YtawsGl/SNO4w==
+From: Srinivas Kandagatla <srini@kernel.org>
+To: linux-rockchip@lists.infradead.org, Rosen Penev <rosenp@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20260408230153.20726-1-rosenp@gmail.com>
+References: <20260408230153.20726-1-rosenp@gmail.com>
+Subject: Re: [PATCH] nvmem: rockchip-otp: alloc clks with main struct
+Message-Id: <177919989065.21890.1676967854888899743.b4-ty@kernel.org>
+Date: Tue, 19 May 2026 15:11:30 +0100
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260509135152.2241235-1-18255117159@163.com>
+X-Mailer: b4 0.14.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260519_071132_854821_AC0CB59B 
+X-CRM114-Status: UNSURE (   5.34  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,50 +67,29 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gU2F0LCBNYXkgMDksIDIwMjYgYXQgMDk6NTE6NDlQTSArMDgwMCwgSGFucyBaaGFuZyB3cm90
-ZToKPiBUaGUgRFdDIFBDSWUgY29yZSBhbmQgaXRzIG1hbnkgcGxhdGZvcm0gZHJpdmVycyByZXBl
-YXRlZGx5IGNhbGwKPiBkd19wY2llX2ZpbmRfY2FwYWJpbGl0eShwY2ksIFBDSV9DQVBfSURfRVhQ
-KSB0byBvYnRhaW4gdGhlIG9mZnNldCBvZiB0aGUKPiBQQ0kgRXhwcmVzcyBDYXBhYmlsaXR5IHN0
-cnVjdHVyZS4gVGhpcyBpcyB3YXN0ZWZ1bCBhbmQgbWFrZXMgdGhlIGNvZGUKPiB2ZXJib3NlLiBB
-bmQgc29tZSBldmVuIHNlYXJjaCBmb3IgdGhlIFBDSV9DQVBfSURfRVhQIG9mZnNldCB2YWx1ZSB3
-aXRoaW4KPiB0aGUgc3VzcGVuZC9yZXN1bWUgZnVuY3Rpb25zLgo+IAoKU2FzaGlrbyBoYXMgZmxh
-Z2dlZCBzb21lIHJlYWwgaXNzdWVzIHdpdGggdGhpcyBzZXJpZXMgaW4gYWNjZXNzaW5nIERCSSBz
-cGFjZQp2ZXJ5IGVhcmx5IGFuZCAncGNpLT5wY2llX2NhcCcgYmVpbmcgMC4KClRob3NlIG5lZWRz
-IHRvIGJlIGZpeGVkLgoKLSBNYW5pCgo+IEFkZCBhIGNhY2hlZCBwY2llX2NhcCBmaWVsZCBpbiBz
-dHJ1Y3QgZHdfcGNpZSBhbmQgYSBoZWxwZXIKPiBkd19wY2llX2dldF9wY2llX2NhcCgpIHRvIGlu
-aXRpYWxpemUgaXQgb25jZSBhdCBwcm9iZSB0aW1lLiBUaGVuIHJlcGxhY2UKPiBhbGwgZXhwbGlj
-aXQgY2FwYWJpbGl0eSBzZWFyY2hlcyB3aXRoIHRoZSBjYWNoZWQgdmFsdWUgYWNyb3NzIHRoZQo+
-IGVudGlyZSBkd2Mgc3VidHJlZS4KPiAKPiBIYW5zIFpoYW5nICgzKToKPiAgIFBDSTogZHdjOiBB
-ZGQgcGNpZV9jYXAgZmllbGQgYW5kIGhlbHBlciBpbiBkZXNpZ253YXJlIGhlYWRlcgo+ICAgUENJ
-OiBkd2M6IFVzZSBjYWNoZWQgUENJZSBjYXBhYmlsaXR5IG9mZnNldCBpbiBjb3JlCj4gICBQQ0k6
-IGR3YzogU2ltcGxpZnkgcGxhdGZvcm0gZHJpdmVycyB1c2luZyBjYWNoZWQgY2FwYWJpbGl0eSBv
-ZmZzZXQKPiAKPiAgZHJpdmVycy9wY2kvY29udHJvbGxlci9kd2MvcGNpLWlteDYuYyAgICAgICAg
-IHwgIDYgKy0tCj4gIC4uLi9wY2kvY29udHJvbGxlci9kd2MvcGNpLWxheWVyc2NhcGUtZXAuYyAg
-ICB8ICA0ICstCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaS1tZXNvbi5jICAgICAg
-ICB8ICA0ICstCj4gIC4uLi9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWVwLmMg
-ICB8ICA0ICstCj4gIC4uLi9wY2kvY29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWhvc3Qu
-YyB8ICA0ICstCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZGVzaWdud2FyZS5j
-ICB8IDE2ICsrKy0tLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2llLWRlc2lnbndh
-cmUuaCAgfCAxNyArKysrKysrCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3BjaWUtZHct
-cm9ja2NoaXAuYyB8IDE1ICsrKy0tLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWVzd2luLmMgICAgICAgfCAgMyArLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWZ1NzQwLmMgICAgICAgfCAgMiArLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LWludGVsLWd3LmMgICAgfCAgMiArLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy9wY2ll
-LXFjb20tZXAuYyAgICAgfCAxMSArKy0tCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xsZXIvZHdjL3Bj
-aWUtcWNvbS5jICAgICAgICB8IDI0ICsrKystLS0tLQo+ICBkcml2ZXJzL3BjaS9jb250cm9sbGVy
-L2R3Yy9wY2llLXNvcGhnby5jICAgICAgfCAgOCArKy0KPiAgZHJpdmVycy9wY2kvY29udHJvbGxl
-ci9kd2MvcGNpZS1zcGFjZW1pdC1rMS5jIHwgIDUgKy0KPiAgZHJpdmVycy9wY2kvY29udHJvbGxl
-ci9kd2MvcGNpZS1zcGVhcjEzeHguYyAgIHwgIDYgKy0tCj4gIGRyaXZlcnMvcGNpL2NvbnRyb2xs
-ZXIvZHdjL3BjaWUtdGVncmExOTQuYyAgICB8IDUxICsrKysrKystLS0tLS0tLS0tLS0KPiAgMTcg
-ZmlsZXMgY2hhbmdlZCwgODUgaW5zZXJ0aW9ucygrKSwgOTcgZGVsZXRpb25zKC0pCj4gCj4gCj4g
-YmFzZS1jb21taXQ6IDcwMzkwNTAxZDE5NDRkNGU1YjhmNzM1MmJlMTgwZmNlYjNhNDQxMzIKPiAt
-LSAKPiAyLjM0LjEKPiAKCi0tIArgrq7grqPgrr/grrXgrqPgr43grqPgrqngr40g4K6a4K6k4K6+
-4K6a4K6/4K614K6u4K+NCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMu
-aW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZv
-L2xpbnV4LXJvY2tjaGlwCg==
+
+On Wed, 08 Apr 2026 16:01:53 -0700, Rosen Penev wrote:
+> Use a flexible array member to simplify allocation slightly. No need for
+> a separate calloc.
+> 
+> 
+
+Applied, thanks!
+
+[1/1] nvmem: rockchip-otp: alloc clks with main struct
+      commit: 44cf48f1f7c5061e65c48c782b79df6e7f8e0668
+
+Best regards,
+-- 
+Srinivas Kandagatla <srini@kernel.org>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
