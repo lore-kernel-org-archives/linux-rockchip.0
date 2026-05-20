@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 499F2CD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:38:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66A36CD5BAE
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:38:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=uF6t5W6YQFI848aPtPljGpbFmJiTtMI6eEc5z+I0q4k=; b=n95+AhEzg1zi07
-	E0k2wbVJGqOIKdIBB5OSw380UkKyFIHNApziG8+BUQf/jqUeC+wpYogKP1m324FlSWGXqShOHitDC
-	YNVMsQeLNdCgyuNJ5lSdIxepeXsqhtEqQkOq56mrBfUOaxSrmNia8T76b2cxQhIIQrKztHxJAU9Jb
-	2i0dU0zDsOQzNvuO0MJ/83UBPyzthln4UPwBBHclF4qAE7T2ykRN9CCyGOyPB9XHNIY3ht25g5Goz
-	oqSPtvnXy6PFxxDiz+Kvq+VV/EY2lEr51MQ5l6+BS9PczR1Iu3QqgJBq97iiSwGgJzJg66OJvL0xN
-	BcG5e567H1N7vltHkQEw==;
+	List-Owner; bh=2TpcLU6wVzXdzdqfubn6qMwq0aXZE5R7Y/VMAJurcls=; b=sgfE0Qm1ypDz3g
+	1edCN8elSaE8fA83f6BHS1aAlcpcy/MtRSs0QIqBeeJb/Gi7ftATiCuKfBzjH35u+nW96BhDLhtsl
+	8/9Z+5ygWLXTj3bwlavD1mJZheifwjmpQvgAU+A8+83ZF9t3pc3ExN4vaYV6pYchmZzRI/nnCCYvJ
+	mb/5AO15/EOvH9/BkWt+xXG6gMTwYZJvsU5z1Mufy+N0UQ1dfHYWriAUq8ksKOEwPQLxU6yTAT2ox
+	9SmW4uw72uWGEpqkPcFvc9G5ywL2se1cGM/+0SK5G1JoaCFZoZVKmIXYxromuRzACuyQiliQT4Iox
+	zr+wEnMmm/ijw5nWZ6/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlom-00000005T6x-0i6z;
-	Wed, 20 May 2026 18:38:56 +0000
+	id 1wPlon-00000005TA1-0iwz;
+	Wed, 20 May 2026 18:38:57 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPloV-00000005Sjn-2ji0;
-	Wed, 20 May 2026 18:38:42 +0000
+	id 1wPloV-00000005SkA-3rZc;
+	Wed, 20 May 2026 18:38:43 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779302314;
-	bh=PMazGqrcLk62NiMiM9e91vC9gW9B5kWfiknu5e2hMqQ=;
+	s=mail; t=1779302317;
+	bh=6Efa10mhYY74QgNr/e6CEThORVt8xA18BjD8AhQSdBU=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=MWk9NuHFft+ssCnRSNfAq9lIBXdSiTZj8eyoUn1w2i16+mCvg+qB1GdU5jg34Gak9
-	 4Xn1HUmKXzeLkyRygE2iGwYXPCCSYG4wkLCuSD40w+aZtM+6StO/GDAhOKpKoR8NtK
-	 whN0sfmD7mMyDqIlfUQWaQKoh4xajv6w7d7AW2dmEBysqMUycGxVnHzFwEdmhVYPwp
-	 VSok+yeSBU54gG9r6Glv/wjqgkY4srQu9WS5PpvsgDm2+4KTk9le+bkSmfPhrS/EWY
-	 nqSthg2/bTB8kH+H9Ue6DGfU5b5MEc+Bi98+7BCnyfOFoWMjeZsnD3w58zOY0qep3Z
-	 rrSitDbXy4QYQ==
+	b=G1xqVO9uMzbsIYCYRLUVQBc34SOwPceRSGP1U7zpkcCXhpAtHC8W5N+wWxUfRX/kO
+	 tX20jnbJUr7zon5Phv9S3cA6tzj9Wm6IjiaK2svZUyctmdX/IGK+iceWSYLa/O2c5W
+	 NLzOetbvoMCp0J0G4juQtU8eBl4DjW9YIaMlhBNnq4D5b0lTxZ5WkA262PL5uQmdSb
+	 io5d8IO+50DFbcTtFL+fcXw3gNb76zyWnsXG2ixXxz4O3QP5Uy+EAxn3z4276HxfPg
+	 c/i88d729oe7Oifao3CaHIuSZ5esBvcZbgQxVh9C0ufq1DD0szIO4n+pWCEE1Pa73Y
+	 VGOxkW4zuoE/A==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C0CE517E1454;
-	Wed, 20 May 2026 20:38:34 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C110B17E1507;
+	Wed, 20 May 2026 20:38:37 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 20 May 2026 21:38:16 +0300
-Subject: [PATCH v6 05/22] drm/display: hdmi_state_helper: Add ctx-aware
- hotplug helper for SCDC sync
+Date: Wed, 20 May 2026 21:38:20 +0300
+Subject: [PATCH v6 09/22] drm/display: bridge_connector: Switch to
+ .detect_ctx() connector helper
 MIME-Version: 1.0
-Message-Id: <20260520-dw-hdmi-qp-scramb-v6-5-24b74603b782@collabora.com>
+Message-Id: <20260520-dw-hdmi-qp-scramb-v6-9-24b74603b782@collabora.com>
 References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -65,11 +65,14 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Daniel Stone <daniels@collabora.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
+ linux-rockchip@lists.infradead.org, 
+ Diederik de Haas <diederik@cknow-tech.com>, 
+ Maud Spierings <maud_spierings@hotmail.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_113839_868175_A324DC13 
-X-CRM114-Status: GOOD (  14.39  )
+X-CRM114-CacheID: sfid-20260520_113840_121843_96F17C70 
+X-CRM114-Status: GOOD (  13.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,130 +89,128 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Introduce drm_atomic_helper_connector_hdmi_hotplug_ctx(), a variant of
-drm_atomic_helper_connector_hdmi_hotplug() that accepts a
-drm_modeset_acquire_ctx.
+Replace the .detect() connector_funcs callback with the atomic-aware
+.detect_ctx() connector_helper_funcs hook.
 
-This enables SCDC status synchronization on hotplug events, which
-requires lock acquisition context for performing the CRTC reset
-triggered by drm_scdc_sync_status().
+This propagates the modeset acquire context through
+drm_atomic_helper_connector_hdmi_hotplug_ctx() to the HDMI connector
+framework, enabling SCDC state recovery via CRTC reset when the sink
+reconnects during an active display pipeline.
 
+Tested-by: Diederik de Haas <diederik@cknow-tech.com>
+Tested-by: Maud Spierings <maud_spierings@hotmail.com>
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 36 ++++++++++++++++++++-----
- include/drm/display/drm_hdmi_state_helper.h     |  4 +++
- 2 files changed, 33 insertions(+), 7 deletions(-)
+ drivers/gpu/drm/display/drm_bridge_connector.c | 74 ++++++++++++++------------
+ 1 file changed, 40 insertions(+), 34 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index 4867edbf2622..26c491047a6a 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -12,6 +12,7 @@
- #include <drm/display/drm_hdmi_cec_helper.h>
- #include <drm/display/drm_hdmi_helper.h>
- #include <drm/display/drm_hdmi_state_helper.h>
-+#include <drm/display/drm_scdc_helper.h>
- 
- /**
-  * DOC: hdmi helpers
-@@ -1149,18 +1150,20 @@ drm_atomic_helper_connector_hdmi_clear_audio_infoframe(struct drm_connector *con
- }
- EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_clear_audio_infoframe);
- 
--static void
-+static int
- drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
--					enum drm_connector_status status)
-+					enum drm_connector_status status,
-+					struct drm_modeset_acquire_ctx *ctx)
- {
- 	const struct drm_edid *drm_edid;
-+	int ret = 0;
- 
- 	if (status == connector_status_disconnected) {
--		// TODO: also handle scramber, HDMI sink disconnected.
-+		drm_scdc_sync_status(connector, false, ctx);
- 		drm_connector_hdmi_audio_plugged_notify(connector, false);
- 		drm_edid_connector_update(connector, NULL);
- 		drm_connector_cec_phys_addr_invalidate(connector);
--		return;
-+		return 0;
- 	}
- 
- 	if (connector->hdmi.funcs->read_edid)
-@@ -1173,10 +1176,12 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
- 	drm_edid_free(drm_edid);
- 
- 	if (status == connector_status_connected) {
--		// TODO: also handle scramber, HDMI sink is now connected.
-+		ret = drm_scdc_sync_status(connector, true, ctx);
- 		drm_connector_hdmi_audio_plugged_notify(connector, true);
- 		drm_connector_cec_phys_addr_set(connector);
- 	}
-+
-+	return ret;
- }
- 
- /**
-@@ -1190,10 +1195,27 @@ drm_atomic_helper_connector_hdmi_update(struct drm_connector *connector,
- void drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
- 					      enum drm_connector_status status)
- {
--	drm_atomic_helper_connector_hdmi_update(connector, status);
-+	drm_atomic_helper_connector_hdmi_update(connector, status, NULL);
- }
- EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug);
- 
-+/**
-+ * drm_atomic_helper_connector_hdmi_hotplug_ctx - Handle the hotplug event for the HDMI connector
-+ * @connector: A pointer to the HDMI connector
-+ * @status: Connection status
-+ * @ctx: Lock acquisition context to be used for resetting CRTC
-+ *
-+ * This function should be called as a part of the .detect() / .detect_ctx()
-+ * callbacks for all status changes.
-+ */
-+int drm_atomic_helper_connector_hdmi_hotplug_ctx(struct drm_connector *connector,
-+						 enum drm_connector_status status,
-+						 struct drm_modeset_acquire_ctx *ctx)
-+{
-+	return drm_atomic_helper_connector_hdmi_update(connector, status, ctx);
-+}
-+EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug_ctx);
-+
- /**
-  * drm_atomic_helper_connector_hdmi_force - HDMI Connector implementation of the force callback
-  * @connector: A pointer to the HDMI connector
-@@ -1205,6 +1227,6 @@ EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_hotplug);
+diff --git a/drivers/gpu/drm/display/drm_bridge_connector.c b/drivers/gpu/drm/display/drm_bridge_connector.c
+index b69785eb49e2..47bb0dcf509f 100644
+--- a/drivers/gpu/drm/display/drm_bridge_connector.c
++++ b/drivers/gpu/drm/display/drm_bridge_connector.c
+@@ -208,39 +208,6 @@ static void drm_bridge_connector_disable_hpd(struct drm_connector *connector)
+  * Bridge Connector Functions
   */
- void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connector)
+ 
+-static enum drm_connector_status
+-drm_bridge_connector_detect(struct drm_connector *connector, bool force)
+-{
+-	struct drm_bridge_connector *bridge_connector =
+-		to_drm_bridge_connector(connector);
+-	struct drm_bridge *detect = bridge_connector->bridge_detect;
+-	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
+-	enum drm_connector_status status;
+-
+-	if (detect) {
+-		status = detect->funcs->detect(detect, connector);
+-
+-		if (hdmi)
+-			drm_atomic_helper_connector_hdmi_hotplug(connector, status);
+-
+-		drm_bridge_connector_hpd_notify(connector, status);
+-	} else {
+-		switch (connector->connector_type) {
+-		case DRM_MODE_CONNECTOR_DPI:
+-		case DRM_MODE_CONNECTOR_LVDS:
+-		case DRM_MODE_CONNECTOR_DSI:
+-		case DRM_MODE_CONNECTOR_eDP:
+-			status = connector_status_connected;
+-			break;
+-		default:
+-			status = connector_status_unknown;
+-			break;
+-		}
+-	}
+-
+-	return status;
+-}
+-
+ static void drm_bridge_connector_force(struct drm_connector *connector)
  {
--	drm_atomic_helper_connector_hdmi_update(connector, connector->status);
-+	drm_atomic_helper_connector_hdmi_update(connector, connector->status, NULL);
- }
- EXPORT_SYMBOL(drm_atomic_helper_connector_hdmi_force);
-diff --git a/include/drm/display/drm_hdmi_state_helper.h b/include/drm/display/drm_hdmi_state_helper.h
-index 0adc30c55ec9..a572fe2bf9aa 100644
---- a/include/drm/display/drm_hdmi_state_helper.h
-+++ b/include/drm/display/drm_hdmi_state_helper.h
-@@ -7,6 +7,7 @@ struct drm_atomic_commit;
- struct drm_connector;
- struct drm_connector_state;
- struct drm_display_mode;
-+struct drm_modeset_acquire_ctx;
- struct hdmi_audio_infoframe;
+ 	struct drm_bridge_connector *bridge_connector =
+@@ -278,7 +245,6 @@ static void drm_bridge_connector_reset(struct drm_connector *connector)
  
- enum drm_connector_status;
-@@ -24,6 +25,9 @@ int drm_atomic_helper_connector_hdmi_update_infoframes(struct drm_connector *con
- 						       struct drm_atomic_commit *state);
- void drm_atomic_helper_connector_hdmi_hotplug(struct drm_connector *connector,
- 					      enum drm_connector_status status);
-+int drm_atomic_helper_connector_hdmi_hotplug_ctx(struct drm_connector *connector,
-+						 enum drm_connector_status status,
-+						 struct drm_modeset_acquire_ctx *ctx);
- void drm_atomic_helper_connector_hdmi_force(struct drm_connector *connector);
+ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+ 	.reset = drm_bridge_connector_reset,
+-	.detect = drm_bridge_connector_detect,
+ 	.force = drm_bridge_connector_force,
+ 	.fill_modes = drm_helper_probe_single_connector_modes,
+ 	.atomic_duplicate_state = drm_atomic_helper_connector_duplicate_state,
+@@ -291,6 +257,45 @@ static const struct drm_connector_funcs drm_bridge_connector_funcs = {
+  * Bridge Connector Helper Functions
+  */
  
- enum drm_mode_status
++static int drm_bridge_connector_detect_ctx(struct drm_connector *connector,
++					   struct drm_modeset_acquire_ctx *ctx,
++					   bool force)
++{
++	struct drm_bridge_connector *bridge_connector =
++		to_drm_bridge_connector(connector);
++	struct drm_bridge *detect = bridge_connector->bridge_detect;
++	struct drm_bridge *hdmi = bridge_connector->bridge_hdmi;
++	enum drm_connector_status status;
++	int ret;
++
++	if (detect) {
++		status = detect->funcs->detect(detect, connector);
++
++		if (hdmi) {
++			ret = drm_atomic_helper_connector_hdmi_hotplug_ctx(connector,
++									   status, ctx);
++			if (ret == -EDEADLOCK)
++				return ret;
++		}
++
++		drm_bridge_connector_hpd_notify(connector, status);
++	} else {
++		switch (connector->connector_type) {
++		case DRM_MODE_CONNECTOR_DPI:
++		case DRM_MODE_CONNECTOR_LVDS:
++		case DRM_MODE_CONNECTOR_DSI:
++		case DRM_MODE_CONNECTOR_eDP:
++			status = connector_status_connected;
++			break;
++		default:
++			status = connector_status_unknown;
++			break;
++		}
++	}
++
++	return status;
++}
++
+ static int drm_bridge_connector_get_modes_edid(struct drm_connector *connector,
+ 					       struct drm_bridge *bridge)
+ {
+@@ -382,6 +387,7 @@ static int drm_bridge_connector_atomic_check(struct drm_connector *connector,
+ 
+ static const struct drm_connector_helper_funcs drm_bridge_connector_helper_funcs = {
+ 	.get_modes = drm_bridge_connector_get_modes,
++	.detect_ctx = drm_bridge_connector_detect_ctx,
+ 	.mode_valid = drm_bridge_connector_mode_valid,
+ 	.enable_hpd = drm_bridge_connector_enable_hpd,
+ 	.disable_hpd = drm_bridge_connector_disable_hpd,
 
 -- 
 2.53.0
