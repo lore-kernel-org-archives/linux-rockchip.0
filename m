@@ -4,145 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C6CCCD4F54
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 09:34:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7542CD4F3C
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 09:38:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=Kb+PEJSSbgCF99HzVcxoZkCybnGRUuBqS+Nh4COjGqg=; b=w74v5VRhgX9cNRGN/OWjO3Xjyu
-	xAV6yRA8Zm4vzRRYTHQFVQH+zSJs17QJSEz0ZuNgn9zP5WzCVNWjvVXJn9jvY2zrOMDtMGnalIMCM
-	8mIi+QSJB/7MzAdK+p+Ro+ay+ktJ8+0nUQSXQJTHkxXvDMpVzYQ7vwA5BtA7pO/I/JBAxZMzTi+NC
-	vcto+FYXqlCSyZnHqrlKzl2OxGz+zXZzJHQfF2CoTToVP/aiiC4zFKoaghSeLW8Dsn0Wldz6Pjej7
-	O+AocJDmmcxoFlcfmNKd6I17V0fyXBaeLmvpKyUB55MMkTdMo8cLdyiUic2DAObXAfd8tuGWztWL5
-	3hiT3H2g==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=mBwfHvLnpDdMsE8W/pm5PCX5qY//emOh1NRqFHTK52c=; b=raMc7jzLCNuPr7
+	VSx9Ug/OnpSvYPCwrTgeIFBP+Na16WAMPHazwhh51HwOn4ckbnQu/pVhjUZ6nHQLEWLJaKhoVaGii
+	VZpojJFv2Ou6Z38ToR2qhxNXqTWyR12MFuGK5NOXW7LlaO/e1cEFD1AG7cCEgAUjsn+ajOw3HBJVn
+	6Kjqf5qMB6kwgyKWMglb0OKDCPGLYTY6uhGxwj9802J2fKNVeHo0XcL3H6aLu7+/1jJySoj4oRoFs
+	lqtJ6zlUbbP2mWRhQnCYrQDV9RmBUsiOoE/JACEJXdxUwR9efv4BALiilOH0FHo7ALF0Xk/CPesEY
+	4/WQaZwVqqu5U28Q6D9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPdJc-00000004BW7-1lI7;
-	Wed, 20 May 2026 09:34:12 +0000
-Received: from mail-australiaeastazon11021095.outbound.protection.outlook.com ([40.107.39.95] helo=SY2PR01CU004.outbound.protection.outlook.com)
+	id 1wPdNk-00000004CUd-1yiw;
+	Wed, 20 May 2026 09:38:28 +0000
+Received: from smtp.forwardemail.net ([121.127.44.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPdJZ-00000004BVJ-2SA5;
-	Wed, 20 May 2026 09:34:10 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fGoxrYpy2j+r31+fhmgoFqOB36JFmguB4+KSvSR51a9fO8iwzEX28wY0Kngsa+0pBLXcqhvlp5Y6mp5XeDPbzZIRImBeUvHFiPJQf0RbqYEa+hQnpw6Qs3nADKRoHlrDGUEbQujmnzq86eNxeMpD9c0X2Rx0QFD9nrrb7Dn+3lI1wwNzelCf+vUPJ/iK0z0BHyUxAocdchUMEbeXAx0DpGBFxi8iLcSSJgA4jU9NblWD1OP8c098RNfAXGtGC1n+M5Z/qyEbcwd75zWxs/uU2v9QB8kHx9uH0CES9qPMEFzkiEH7x7Hh/r83NRn0hxdj56dfBoMxjt+2YZml63z6BQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=f1ijuG8Gs5bAn+3NfTBS2UgsQzmam1uT+U6TLSy6mgo=;
- b=ATC6t5XR0Tiifw5S1hQ/k7qwsXWodd7xRu/DecS5w9Hx05c40s9LEkjg+/LoDyI/Hzw5lYVSh+zdxdJ5qRxhl9jhafEAUdI4gTIG+j9ayLtvoAb4ey5MiuNY+ke9xn58sKE7aJnPYPS7TOhuETxR4ZO/hjg8NdgrE9JdiAjXFc6PjGdVgqDkC/SxGBHrovbX+bR+fi3QrWqbwONyNAODkqPxHFGCETakDJ5YBzQ3aVIXW7Tcv5Iphtdd2miLQ5CKbxN1Yo5emt33DM8FORauMqkCQeB6o5cbnaRz1+Yk2biiEOwiGYNIDQ8Cg43HfRE/+nw1oo2YMUxITqY4QsGeAA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=symple.nz; dmarc=pass action=none header.from=symple.nz;
- dkim=pass header.d=symple.nz; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=symple.nz;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=f1ijuG8Gs5bAn+3NfTBS2UgsQzmam1uT+U6TLSy6mgo=;
- b=mOA3u0qYZ2UwiZTyVs7K3OG5s+bzG3JDNN5pMSNL+5dxJMrFmQfdAreaflj98oOWzMrnhtHb5RcoamuxmZFwPPXzjUhJzAgnsnb1UeR0hSfCK0/vI7g9ZwkAmhJOLGJyNHWh8NNMzlAlR1c6iYRVAJN2aAQTcuVKPMjlTETj5jL7aUuoCY6DnN87TNXkSpKaCpIg0grN2o9Trd3vCEvwHQ0YoU13LHwoSa5Q8UbaQKuadwm6FwsJrin9NcYb3TxzT8pfRpbruC+itRsOXNHLPZGo2rYO3zSjNeIe32P7cugYTeunbqYrwmGJRhnRmR7wyfrReWL2168+4NZ1RDsHYA==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=symple.nz;
-Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
- by SY7P282MB4691.AUSP282.PROD.OUTLOOK.COM (2603:10c6:10:278::15) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.24; Wed, 20 May
- 2026 09:33:51 +0000
-Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- ([fe80::4619:bdb0:3293:3834]) by ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- ([fe80::4619:bdb0:3293:3834%5]) with mapi id 15.21.0048.013; Wed, 20 May 2026
- 09:33:50 +0000
-Message-ID: <bc1a6f07-7251-4c8a-bad2-5a606f935353@symple.nz>
-Date: Wed, 20 May 2026 21:33:49 +1200
+	id 1wPdNh-00000004CU3-2qcK
+	for linux-rockchip@lists.infradead.org;
+	Wed, 20 May 2026 09:38:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
+ h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
+ Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
+ s=fe-e1b5cab7be; t=1779269905;
+ bh=j4o1v6ER7nCE4/2KsRiGeQnk/i44U1HKfe8zXxUu+Hs=;
+ b=gf5bqsdWPiRqM8RfHelKBMgZA6SLozEXf9VgbdD8C8U5FL5Tqggj5psopmML5FdCIwoJjTB2C
+ Bac1heE6pavkEfNyw+8uo2rZ6CCa1fwQyBGkinlBDJEXseTZp5pNWSHmjY7tFlwPFa2iALP9ScD
+ wQHRHHKI8Bayk3I4uoa87BjkZJkBDRbO8AnaKcbNiJgQWX7p0MNJRm+4/36LzXgO9VM1jiYIskX
+ 7i/JX+xkk/ps0YfSiSc3/3YU/f40Kl16W2rcRB0jwzmAPSckCJ4b1ngJKkhar8cNB/NPJV39IYq
+ H+FMj4wLJjLOeSYANBTHH+B/ajXow61VWIRoCgrER1pw==
+X-Forward-Email-ID: 6a0d810b40ac652fcd447b18
+X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
+ 121.127.44.66
+X-Forward-Email-Version: 2.8.15
+X-Forward-Email-Website: https://forwardemail.net
+X-Complaints-To: abuse@forwardemail.net
+X-Report-Abuse: abuse@forwardemail.net
+X-Report-Abuse-To: abuse@forwardemail.net
+Message-ID: <81944af1-c9e3-4a45-ad42-3426dcab0777@kwiboo.se>
+Date: Wed, 20 May 2026 11:38:14 +0200
+MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] drm/bridge: dw-hdmi-qp: compute audio CTS from N when not
- in TMDS table
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>,
+Subject: Re: [PATCH v2] drm/bridge: dw-hdmi-qp: compute audio CTS from N when
+ not in TMDS table
+To: Simon Wright <simon@symple.nz>,
  Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
  Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
  Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
  Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Sebastian Reichel <sebastian.reichel@collabora.com>,
  Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
  Algea Cao <algea.cao@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <92aa4191-2a2a-41e3-badb-c0a5b1fbb957@symple.nz>
- <DILQTGH47XGL.1K6I6UI6IXP92@bootlin.com>
-Content-Language: en-NZ
-From: Simon Wright <simon@symple.nz>
-In-Reply-To: <DILQTGH47XGL.1K6I6UI6IXP92@bootlin.com>
-X-ClientProxiedBy: AK0P299CA0013.NZLP299.PROD.OUTLOOK.COM
- (2603:10c6:108:15::17) To ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:220:b2::11)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: ME3P282MB2196:EE_|SY7P282MB4691:EE_
-X-MS-Office365-Filtering-Correlation-Id: 939b2918-9726-4845-67c6-08deb652e656
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|18002099003|4143699003|56012099003|22082099003;
-X-Microsoft-Antispam-Message-Info: m2n1KUS7P6XevuqkdVdJi+Mjultpl26DlpXB+Z2xylw08E4pXzUgL4ri0L9yfwB7nLXrEcD9V56IS9VmO8cVhg82MfeYtxe+Fgj/DOjxJMTlqO3bzzY+Adx9EtOtnHP0yFuK6DoRcZGHmv9NrYadEg+zQyy3b96/ZV1qq2/nw/hUW1bgU2SmMr3cVwQvQUnu2SAqMtdDAQHMd4nlqadmcCGnw4oFtgeaSnOD+f9gGDKbMIQpJYzOrRe3y++jB28YYK+v8NQJaVAS0aEDZK3kzut3xLnJhL+7Otz5d8HICwvqILBz6ctzHUQHFQp/2ZmEVWVjeGJdiHzpdoakfXGPH9rGjKc4oC5dq7okY6Je9Noa9rHtuV+gBGsbZVYItj/RS/bhPrOxncUVv5h9hKrehKo//b1lw28rWwcMyr+VdwOJSIWS0cOgLliD6BE2TGxcRPdvodZ+EpNTKaLHBCFhnhx3E5eikMKtGNeHPBr4nsjCWqBXSqfDbwpC5SrWTM2mSxCiyO1QukyhDQeQY08IYkRU3B72eTKR+EXrcuFY0gIXLSWtTd6aB74BWrbJYSnPLGd60vw/p3MHpsCPkDPsgKt2MMDj2YM5QbDekKEgO4jRy5FnWLEPvyo8gQCFhxqXJ5C23rA3z/1imcEuZ/mB2RaEKIq2AZfVA/0//0MonHNgWl0KJMsjc2YRqH91g8tr
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(18002099003)(4143699003)(56012099003)(22082099003);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?WXVDY2pWREFmK3ZRSHVBcEZMQmVsSTNqWkxlZ1BITXorUzVyVjRrQlNqQkNi?=
- =?utf-8?B?Y1RvZXBvOW9nR2NRQjI1citnNGJ2QXZjYTQ5QUdFOUxVb2YxWkVIWW5NbXRN?=
- =?utf-8?B?WDhrMW1RMXk2Nms3VUpXWlY3Z1BhZ05Rd0FRWFJwZ0NlV2JCTit1TnZvTm1Q?=
- =?utf-8?B?YWQ5QTRpTy9rZzRtMjNvamVVT1pzSjIzMHNWT1dzS2FzeGNEV2tNd0U5Z0k0?=
- =?utf-8?B?WndabVk5aWdaVERFaGIrU3BrOEY0KzE1L0VrNVNaZHZRREJzV3dVQThuMmFh?=
- =?utf-8?B?QjllYnp3dklSYVBjOHJleGloUFFCM2ErTXVjRm9lWDF4Q2hoZnovZFh1TUlw?=
- =?utf-8?B?bWVjaUQ3N3M2L25RWVN5bFpNWVh0VFdYOHdteW9SUUdabjg5Qyt0dy9lVWxZ?=
- =?utf-8?B?Z1g0bHBRM3NleHNUTDF4NzdoSWZZblV6bENOeUF1MkVMOXRvSmVlZjcvVXZH?=
- =?utf-8?B?TVNvZEtxaFhPUVBuU29aa0tldGdFN1UwRFhzNVJnQWNzWWFtV09BV252Zmt4?=
- =?utf-8?B?QnA4RHpFTC95VjFMUTBtdmRQMDF3YlNnTXZWTjl1NGFzeTBxNnR2ZkF2ZkJx?=
- =?utf-8?B?OW44TVhlV3RQRmJwK3E0MTFuekIzYmVXK0pXcUdEdlc1K0IwdmY1WGQ3aEtL?=
- =?utf-8?B?QXVsYUZvZ1hLN0h1MDJNL2JvY3ZSYlRzb2kyVEhXNkJMR0FsbWF5NFJGRTBm?=
- =?utf-8?B?R0JTY0xMZDk2bkJaTkErRGIxVFE1OEYrOGFGc2VuNk9aSllaWmg2QU1TV3B2?=
- =?utf-8?B?bW13bjdJS0x6TmRGRXIyWUttSGZlUWxjUGI3OG13bUM1WnhEOEd0eXVtWWZu?=
- =?utf-8?B?MW5UeTBUbTJzcFNoS0MxNVZkdnFJSDRIWVllRlM3a0xGM3dEL0krU1hFY1oy?=
- =?utf-8?B?ZDZjcUxZLzA2Uk45Wktib01Tc0FEcXZ5SWVJZ2lCek5FK3lPNlg0Vk5KSnk1?=
- =?utf-8?B?cFI2Z01CNzlxM2NZeHJxOWNGUnBrd0tWOWRaSnJObE9qU1ZVV0pURkZUR0w5?=
- =?utf-8?B?TGkwSVpJeHEwVnkzMHQyb2xZbFloUkdXUEhOcnloeW0zNzVWQWhJZWU2Qk1q?=
- =?utf-8?B?Ym9KZi91TkI0ZjlXMU1rbjlVeWhHblpvMGRreVVkL1dVY1F3a0JZRU00TXEz?=
- =?utf-8?B?UldZQ0l2Z2VMcUQ5WnlveGlPYTFlR1V3a3oyLzdQbkFXUENMSjVQM3c2bUJ0?=
- =?utf-8?B?bGJqdlZnNXpvVnRObEhaVkxPY3doSUpKU3ZZQ0JsclJCenVwNm9oYVJBbmd3?=
- =?utf-8?B?VWdNSkZMMmgzRWNmbGRpZm5oYWxUb204djNrS3NKbTRmMjRFKzBVM0xUOVNL?=
- =?utf-8?B?QXlhU3hWYlRoc1VRM3JncmdTNGhQSmJhcUpwRVZYTktYRjZHVExoejRpb3Jh?=
- =?utf-8?B?ODFaMVJlSFd1QkpkUW16bWdlcnF5dGQ4a0JPSU9oL2ZvY0NQdlNYRGJ5Q1Jw?=
- =?utf-8?B?cHRBWTZNZmtkTFpnMVJrNjdXMElUclY5MEdtTHpYaEtjbGx2ZEtjaXBpemtM?=
- =?utf-8?B?VloyL1R5bTFXRDJ0WVUrM0ZBWHdXSHdMRmczT3IyelB0WEo0VjNLb2NiTFho?=
- =?utf-8?B?am5CamR4bklSdnUwem5rOEtkaFNpZkRIY0haNmhpcGZsY1Q3TkRqZmFPRktp?=
- =?utf-8?B?SUwwbU90dnJuaHFoeGJnUlJwNEV6aTFackVYTHdOYXZ6Z05uWWUwaWFvd3lJ?=
- =?utf-8?B?czZ2dVA1Z1JaRktYTEFzbWJlWVJOZnpCbzRyRzJQTUgycnVvSTI1eWtwcWZB?=
- =?utf-8?B?RVBOL3EyUXdUSGx1QjJnMXVCZXNOZkxzZUFldjlDN2RKY0c0bC9FVjRObHl3?=
- =?utf-8?B?L3Q2ajk3V3ljR2V0U0tudzlyNThCekx4MEdSTnJaejNCTUNaa2hab2hXYkVV?=
- =?utf-8?B?dFRaa3dxWlNtZ3Bkci9nTmRCem0xenlwZHZFSGdXOXVJWU1uYVpzWm9XQWYv?=
- =?utf-8?B?Nkw5eElVWVBLWGxIRFVJZ05nWnBqRTQ0cFRJK1JZNDZmd2JoejhZRjZEUnJ3?=
- =?utf-8?B?VjNaSXl2TDVDZllmdG9WNjFuejNpOVBCUVpib2FXVERrSS9kUUxJMmM3MDkr?=
- =?utf-8?B?QXg1clUyc1J0VCtUbTd0RFd1Tk9USGRPY3h2QWtYZ1dhMmxQTWJjK0ZKYnJz?=
- =?utf-8?B?bVRqbHRqcFJGemlQK09yV2w3OGJlbmZ1TmR2bWpMYkp0dGVId205eVZEK2RY?=
- =?utf-8?B?Qm01dSs5MjA2alFhL0NRN3NNTVBrcFpZRWpYNjhBSytoSE9IaGtIVFd4N2Ur?=
- =?utf-8?B?VzNPbE1FT1FqTXFFSFVyV3pnOE02T2lxTFFTa2FTUWhZL1prd2JRNVVrOEVt?=
- =?utf-8?Q?oQd90nQH7NT8WiOlOU?=
-X-OriginatorOrg: symple.nz
-X-MS-Exchange-CrossTenant-Network-Message-Id: 939b2918-9726-4845-67c6-08deb652e656
-X-MS-Exchange-CrossTenant-AuthSource: ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 May 2026 09:33:50.2541
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 9531f271-068a-4210-b471-bd8da91491c5
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Aw7znfqa+v27L4PV11YcHnQUIleJcaQ4+q/Pa9JdP2Ungu1t/KHAnnu0rIHZfd5K
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SY7P282MB4691
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <00a34a82-213b-4b03-801c-3c10b163d643@symple.nz>
+Content-Language: en-US
+From: Jonas Karlman <jonas@kwiboo.se>
+In-Reply-To: <00a34a82-213b-4b03-801c-3c10b163d643@symple.nz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_023409_633106_BC1FA544 
-X-CRM114-Status: UNSURE (   7.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260520_023826_125835_A2AA8616 
+X-CRM114-Status: GOOD (  30.30  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -159,17 +88,129 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 18/05/2026 10:50 pm, Luca Ceresoli wrote:
-> Your patch got mangled by your mailer and cannot be applied.
-> [...]
-> Also your commit message is very detailed, and think it would be more
-> readable if split in paragraphs.
+Hi Simon,
 
-Thanks Luca. v2 with paragraph breaks:
+On 5/20/2026 11:10 AM, Simon Wright wrote:
+> dw_hdmi_qp_find_cts() returns 0 for any TMDS character rate not
+> present in common_tmds_cts_table[], which terminates at 148.5 MHz.
+> In that case dw_hdmi_qp_set_sample_rate() calls dw_hdmi_qp_set_cts_n()
+> with cts == 0, which leaves AUDPKT_ACR_CTS_OVR_EN clear and falls
+> back to the controller's internal CTS auto-measurement.
+> 
+> On at least the RK3576 hdptx integration, the auto-measure path
+> produces incorrect ACR timing on the wire at TMDS rates above the
+> table's coverage.  Strict HDMI sinks that cross-check the ACR CTS
+> against the AVI/GCP and the actual TMDS clock then mute audio.
+> 
+> The issue is reproducible at any rate not present in the table, and
+> is not specific to HDMI 2.x: 1920x1080@60 with 10-bit deep colour
+> (185.625 MHz, HDMI 1.4) is affected, as is 3840x2160@60 8-bit
+> (594 MHz, HDMI 2.0).
+> 
+> The driver already has the symmetric machinery for the N-table-miss
+> case: dw_hdmi_qp_compute_n() falls back to a dynamic search via
+> dw_hdmi_qp_audio_math_diff() ((pixel_clk * n) / (128 * freq)) when
+> no table entry matches.  The CTS path lacks the equivalent fallback.
+> 
+> Compute CTS inline in dw_hdmi_qp_set_sample_rate() from N per the
+> HDMI spec (CTS = TMDS * N / (128 * Fs)) when find_cts() returns 0.
+> The standard override path then supplies the correct value on the
+> wire instead of falling through to auto-measure.
+> 
+> The legacy DesignWare HDMI driver (drivers/gpu/drm/bridge/synopsys/
+> dw-hdmi.c, hdmi_set_clk_regenerator()) computes CTS from N via the
+> same formula when AHB or GP audio is active, so the pattern is
+> already established within the family.
+> 
+> Tested on R76S (RK3576) on Armbian-edge mainline 7.0.1 with Cristian
+> Ciocaltea's hdptx-clk-fixes v1 series applied, against four sinks
+> at four TMDS rates spanning HDMI 1.4 and HDMI 2.0:
+> 
+>   TMDS         Mode                In table?  G3     C4     TCL    Kogan
+>   148.5 MHz    1080p60  8-bit      yes        audio  audio  audio  audio
+>   185.625 MHz  1080p60 10-bit      no         audio  audio  audio  audio
+>   297 MHz      3840p30  8-bit      no         audio  audio  audio  audio
+>   594 MHz      3840p60  8-bit      no         audio  N/A    audio  audio
+> 
+> Without this fix, all four sinks mute audio at the rates marked "no"
+> above.  With the fix, audio plays cleanly.  The 148.5 MHz row is a
+> regression check confirming the in-table path is unchanged.
+> 
+> The LG C4 OLED's CTA-861 SVDs do not advertise 3840x2160@60 over
+> TMDS (it is signalled FRL-only in this model's EDID), so that
+> specific case is untestable on the C4 over the TMDS path.  The
+> same audio-path code is exercised on the C4 at 297 MHz and behaves
+> identically to the G3.
+> 
+> More-permissive sinks (older HDMI 2.0 TVs tested informally) play
+> audio at all rates with or without the fix because they do not
+> strictly cross-check ACR CTS against the TMDS clock.
+> 
+> Reported-by: Simon Wright <simon@symple.nz>
+> Closes: https://lore.kernel.org/linux-rockchip/ME3P282MB21960D9D68BFF520316BDFCEA83E2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM/
+> Suggested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> Tested-by: Simon Wright <simon@symple.nz>
+> Assisted-by: Claude:claude-opus-4-7
+> Signed-off-by: Simon Wright <simon@symple.nz>
+> ---
+> Changes in v2:
+>   - Resend after v1 was mailer-mangled and unapplyable (reported by
+>     Luca Ceresoli).
+>   - Body split into shorter paragraphs for readability per Luca's
+>     review.
+>   - Original LG G3 report (linux-rockchip 070633) moved from inline
+>     prose to a Closes: trailer paired with Reported-by:, per
+>     Documentation/process/submitting-patches.rst.
+>   - Add Assisted-by: trailer per
+>     Documentation/process/coding-assistants.rst.
+>   - No code or test-result changes.
+> 
+> v1: https://lore.kernel.org/linux-rockchip/92aa4191-2a2a-41e3-badb-c0a5b1fbb957@symple.nz/
+> 
+>  drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 17 +++++++++++++++++
+>  1 file changed, 17 insertions(+)
+> 
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> index 0dbb1274360..b7203787057 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+> @@ -461,6 +461,23 @@ static void dw_hdmi_qp_set_sample_rate(struct dw_hdmi_qp *hdmi, unsigned long lo
+>  	n = dw_hdmi_qp_find_n(hdmi, tmds_char_rate, sample_rate);
+>  	cts = dw_hdmi_qp_find_cts(hdmi, tmds_char_rate, sample_rate);
+>  
+> +	/*
+> +	 * When no CTS table entry exists for the given TMDS rate, compute
+> +	 * CTS from N rather than letting the hardware auto-measure.  The
+> +	 * auto-CTS circuit produces incorrect audio timing at out-of-table
+> +	 * rates (e.g. 185.625 MHz, 297 MHz, 594 MHz), causing strict HDMI
+> +	 * sinks to mute audio.  Computed CTS = (TMDS * N) / (128 * Fs) per
+> +	 * HDMI spec; the standard override path then supplies it on the
+> +	 * wire.  Mirrors hdmi_set_clk_regenerator() in the legacy dw-hdmi
+> +	 * driver.
+> +	 */
+> +	if (!cts && n) {
+> +		u64 computed = (u64)tmds_char_rate * n;
+> +
+> +		do_div(computed, 128ULL * sample_rate);
+> +		cts = (unsigned int)computed;
+> +	}
 
-https://lore.kernel.org/linux-rockchip/00a34a82-213b-4b03-801c-3c10b163d643@symple.nz/
+Could this function instead be converted to use the helper
+drm_hdmi_acr_get_n_cts() to lookup/calculate the n and cts value?
 
-Simon
+At first glance it looks to produce same/similar values as this driver
+tries to do open-coded.
+
+Regards,
+Jonas
+
+> +
+>  	dw_hdmi_qp_set_cts_n(hdmi, cts, n);
+>  }
+>  
+> 
+> base-commit: c1079aebb4de218caa86c44f9a53700d1a582683
+
 
 _______________________________________________
 Linux-rockchip mailing list
