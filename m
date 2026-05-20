@@ -4,73 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE833CD5BAC
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:39:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89CF8CD4F3D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 19:06:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+zxtp+hBc3b5lOUn00zX1ouCaE1RF8TD2Bny+k2ZrE0=; b=F6j3d7JPHHU/qt
-	0MmaFt1pK5FGXFqitO0m8fZrgENpUhqwl7en1YduzjOkwdVmx5p4ZeI1Bg9NapJGgcZ3ouHYwN1G3
-	iFP159ISqKt/8q5ps5/xpMzr4uVpYtJwom7A09rMriYm7r4MtWy9Hyh181antqofsRFwEhLz+NynB
-	B/LqcEfhiFlf630QiuSnseSjp5xi2RS36ZDrFlVbZ+Du5c84jgGmNRr+NGJfbLAKDkRluhtwCwM9u
-	FSi8XtWBGG7v/wgKmylrItUxCBLYb+u2sPWutyb+2Qrgl4R16dGdjMghytrO/MRjgPs9AJLJ37C5D
-	1KTRI+oPu3d7glwzkYeg==;
+	List-Owner; bh=dKAynPjLPcUW/ykqaPQ5RMEHa5p8SH5LZeReDxhT/8k=; b=b35U9Ro2wBhdrs
+	UdbhUcclVLWlcLnpbpl5yznQRDgmfIDe+CHlQAweKRiwhd2vbWR1VB2KT92B8CtW1UXw3NdU/eBL5
+	5maeHrf9f90n2l5klkuc4cR3rhSzcGqcvTSMYZqmg7sxdMT/ysaRae2AD8xuHlXkeUcXwQjba5d2z
+	DzTneNNPJa/IBthOKVjeFMS4LigNCufm2dfN0/JyJ/iv0kHV9990969yc9a0ylILcgCl3J2qZPzui
+	zxAdYpdcSyotXLEmsgx9aKrddOW6CHskZuWSW3BZ0CD2sQKHFs1cXxBfIEYyru87aSDJbHhaHLu4w
+	eOxY196vSq3Brn1Z/beA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlpB-00000005U5b-2v8t;
-	Wed, 20 May 2026 18:39:22 +0000
+	id 1wPmF0-00000005Yp1-1IqN;
+	Wed, 20 May 2026 19:06:02 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlog-00000005Swi-0twC;
-	Wed, 20 May 2026 18:38:52 +0000
+	id 1wPmEw-00000005Yo6-2TBk;
+	Wed, 20 May 2026 19:06:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779302327;
-	bh=gfw+VOnsxyeQOB9qQkKs2AR4t78caZyAmSm1XPJ+q0U=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=IlPnSplwEZ8eLtoVLTzEWvtpRgb1peF7OcTqACYlOOsXbEZUXlYDhRitRt0m6ioVK
-	 2bB5gohIKOH3hHdFXtClB+zWT98elyOfLncOds5/1jd6TnqPwVUmjhdce6FWHyW1t2
-	 PfbRqOPGEUA7ZmqgTs/hYo6EvWNiy1ObgCF5uC+BDAAY1utnQoueg7YNX6bYH0196S
-	 01WiPxBADSzLyIT7mnzJvroKX3Hv8F+LsAR1yCZ41wWuXmICZo2J1lEDKDC9y05u+h
-	 1Nci5rMagryw6kY3vVF20JG8uQlC119E+pIa5w9XIZnbkNSHKLjmy5X4VRsCihSX1n
-	 YrZtePcwEnlpg==
-Received: from localhost (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1779303956;
+	bh=KYn8dC36s4oAqc2bX5pRtUBYi3uO991GaG9uze+YAO4=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=BeqGrNY7I4gNL5OvXErhv+AhbcMqZgGJh1MFaVE/PitbJs+wRu6ugj9oEzpuEsNz4
+	 5cp0kbpbWBnq/lr7gxU9nFfTv8lzU77Z/x8trQho2YUSp455Q0HB9v6PvfUwGLDrUk
+	 a5/3GLIXH4HsTQ/zc/Lmz3vzdth85RoXJrQfeAiJtKjanZ/wwlMpVQwLV9NdEAEahl
+	 yAu4rj7dUxTB3CI/IG3qSGTqLsNPa9p6brGgowT0O7usxKb80TxbX98smjIwfi8ZWG
+	 EI9QqFCWcY1WmDyWkHov++eurHvEnkuP2Acvn0z2/ZgFD/ELZRzUJ0P6w3uNvuvsjK
+	 KJG0PCqUQXl9g==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AEFAE17E1591;
-	Wed, 20 May 2026 20:38:47 +0200 (CEST)
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 20 May 2026 21:38:33 +0300
-Subject: [PATCH v6 22/22] drm/bridge: dw-hdmi-qp: Remove obsolete
- .setup_hpd() phy op
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B478717E143F;
+	Wed, 20 May 2026 21:05:55 +0200 (CEST)
+Message-ID: <e0eeb794-11b9-4ba6-bee2-f6cc607d3a16@collabora.com>
+Date: Wed, 20 May 2026 22:05:55 +0300
 MIME-Version: 1.0
-Message-Id: <20260520-dw-hdmi-qp-scramb-v6-22-24b74603b782@collabora.com>
-References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
-In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Daniel Stone <daniels@collabora.com>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.15.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/6] phy: rockchip: samsung-hdptx: Clock fixes and API
+ transition cleanups
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?Q?Thomas_Niederpr=C3=BCm?=
+ <dubito@online.de>, Simon Wright <simon@symple.nz>
+References: <20260511-hdptx-clk-fixes-v2-0-664e41379cab@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260511-hdptx-clk-fixes-v2-0-664e41379cab@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_113851_027621_259CBA18 
-X-CRM114-Status: UNSURE (   8.98  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260520_120558_783400_A96DDDB4 
+X-CRM114-Status: GOOD (  16.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,45 +79,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the completed transition to .{enable|disable}_hpd() phy ops,
-.setup_hpd() became obsolete and unused.  Drop it.
+Hi Vinod,
 
-Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
----
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 3 ---
- include/drm/bridge/dw_hdmi_qp.h              | 1 -
- 2 files changed, 4 deletions(-)
+On 5/11/26 9:21 PM, Cristian Ciocaltea wrote:
+> This series provides a set of bug fixes and cleanups for the Rockchip
+> Samsung HDPTX PHY driver.
+> 
+> The first part of the series (i.e. PATCH 1 & 2) addresses clock rate
+> calculation and synchronization issues.  Specifically, it fixes edge
+> cases where the PHY PLL is pre-programmed by an external component (like
+> a bootloader) or when changing the color depth (bpc) while keeping the
+> modeline constant.  Because the Common Clock Framework .set_rate()
+> callback might not be invoked if the pixel clock remains unchanged, this
+> previously led to out-of-sync states between CCF and the actual HDMI PHY
+> configuration.
+> 
+> The second part focuses on code cleanups and modernizing the register
+> access.  Now that dw_hdmi_qp driver has fully switched to using
+> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
+> and the restrict_rate_change flag logic.  Finally, it refactors the
+> driver to consistently use standard bitfield macros.
+> 
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+> Changes in v2:
+> - Collected Tested-by tags from Thomas and Simon
+> - Fixed a typo in commit description of patch 1
+> - Added a comment in patch 2 explaining why PLL config errors are
+>   ignored for rk_hdptx_phy_consumer_get()
+> - Added a missed FIELD_GET conversion for lcpll_hw.pms_sdiv in patch 6
+> - Rebased onto latest phy/fixes
+> - Link to v1: https://lore.kernel.org/r/20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index ed0c68d6c6fd..f626cf4bdda9 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -1316,9 +1316,6 @@ static void dw_hdmi_qp_init_hw(struct dw_hdmi_qp *hdmi)
- 	/* Clear DONE and ERROR interrupts */
- 	dw_hdmi_qp_write(hdmi, I2CM_OP_DONE_CLEAR | I2CM_NACK_RCVD_CLEAR,
- 			 MAINUNIT_1_INT_CLEAR);
--
--	if (hdmi->phy.ops->setup_hpd)
--		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
- }
- 
- struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
-diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
-index b4fb1c578a5b..ad33f9cafdeb 100644
---- a/include/drm/bridge/dw_hdmi_qp.h
-+++ b/include/drm/bridge/dw_hdmi_qp.h
-@@ -16,7 +16,6 @@ struct dw_hdmi_qp_phy_ops {
- 	int (*init)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*disable)(struct dw_hdmi_qp *hdmi, void *data);
- 	enum drm_connector_status (*read_hpd)(struct dw_hdmi_qp *hdmi, void *data);
--	void (*setup_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*enable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*disable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- };
+In case you missed my comments from last week on the Sashiko AI review findings
+- in short, I don't think there is anything to worry about and the series should
+be fine to apply as-is.  Please let me know if you would still prefer a new
+revision.
 
--- 
-2.53.0
-
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
