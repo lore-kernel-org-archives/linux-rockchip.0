@@ -4,58 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6061DCD4F3D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 17:41:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2425CD5BA4
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:03:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=WwMEVthebfooMTHrw97snXUpxcRaJXubTKXLK//lzSg=; b=LrwHBn5OSvEseT
-	eIjDXxegTM+umrYf7BQShm4CjFo6I8Vdi34M4xTwiFe3JjAASHPWC9+sroKsD3g4ZINNnIJCLK43Q
-	9TllTmaICWyxOhU9CfZ7aa/9bLjzFLJxAK6M9O0BKbJWm5YRUbN79/MHCqXSjAzlD8/R7ZmXYtaCF
-	t8RZwvt4svorYgMlcMsgkUJILNVO2oqWIy//izX5sHgqmoOsnb6rBu0JcX8qyGjcSPsl09LaQl7AJ
-	pV9GoduWoY5DvawbvVv32/Gdw6nIUhg/20y3aj4Bu0wj6wZwIMdBLwlkcKW0aSDu/albHkCuHdW+h
-	azGevJiUAACY+VQnct1g==;
+	List-Owner; bh=bpLMgTliamvuVp3HlLr2Co/3NI+yQrwqteOvK0AXWpw=; b=d428pNnCe3qMcy
+	DKGPScLMuTPiv5IdXqdi+R+mMTzMBQcPDAT2z7djQjAQUUxestkrI++ARJdx7TviRwAUhN2Iw2zB6
+	pGlykb7JmMfvXGPTXSGyYU5VNFLoZqEM9vMTeBBTmtrafDZCIZbiK+JukPL+axrQ1A4euSavXkPqc
+	sHKAzIpujIQoPmyNZ854Yq/mPZ6tf/TVMULmdCCRgWo1Me7rv7PtZigPn9F0MnUNkj8loMwgB3odJ
+	tLQCw8QniJMhQjHnpnpSP89dOB/4bmyILAkNa6IdooTv0lCFY3NpuAoCmiN+JRk9LqZTaqtnKF4/0
+	p0qXa/GyemtKymnYcH9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPkv8-00000005Kja-0OqQ;
-	Wed, 20 May 2026 17:41:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wPlGB-00000005O9i-317a;
+	Wed, 20 May 2026 18:03:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPkv6-00000005KjJ-3VHu
+	id 1wPlG9-00000005O9Y-3b34
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 May 2026 17:41:24 +0000
+	Wed, 20 May 2026 18:03:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1DA7060132;
-	Wed, 20 May 2026 17:41:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE5401F000E9;
-	Wed, 20 May 2026 17:41:18 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4C49160126;
+	Wed, 20 May 2026 18:03:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CF38C1F000E9;
+	Wed, 20 May 2026 18:03:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779298883;
-	bh=GqncshP8bMhCZVCkr7YP7QMNen7yCu2zNyWcT7d0fMk=;
+	s=k20260515; t=1779300189;
+	bh=T07RLv8Nfn1pn/pjdddxibNYnRTBPWv6CXG78yzMqlM=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=SKezlBOCJ6eoZX3fHZUhYpvz7fbxd6+kEoMMa2UKmXrNd22Bewl/2BuO8NgAyEc0V
-	 Wd3n2G0axhVntgOU4mZe9fMpnN7+ZguFipT5sV/g8vJQf2oGMSOqQ7PeLakDJfolEs
-	 XI2j69UVRwdVQj7oTtVGQruqBHdS9BIBkYyyOu3/RpLdjGPr8wixo1xY8+WJMFLcrA
-	 6c6HCJH9VkLGYiTLEIn6zsdYOf/5VeqnNbCb1VoEd5OQ6eYO5blhFKBqd2BUajBGVw
-	 WVNlEis1vTnOI9Hs3fA7xv776ucl0Fa5Mn4t5S0/6bEG+jNyNUwf66mI6zJFaasG5K
-	 MRaMaTKEhzw3Q==
-Date: Wed, 20 May 2026 18:41:13 +0100
+	b=SNqwosJDtP3IuS7IRmCb15eC3eThYkHq9/j1RjksCRWWDnJEQXKghyxS+RguCp9yC
+	 zU1ScLZJRtX0NADuh2tLwgc16fmyYgropgTHQx4M5dsTDHGdvL1DD0Pc+TfCrA9MPq
+	 v5c3jD0DHlEEeLJYQbkBk8Hgtg45ys+b3w4JVT3hsBepq77x33KHtWQw7yPJ+lAfTj
+	 +/GY9W2W13bOWgO7atefpqZ3PlQDIYl9O4OLqe4ZIqykQF1nFHVPQnNX+790t/jcyp
+	 c5YvaBJpJPMkvuWT7xSBGDcpSBvU2HGU52y+j8F6do3kvZBdvkgB1Kkc43KK+OZZt2
+	 tKwY++z/NkA+g==
+Date: Wed, 20 May 2026 19:02:59 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org
+To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
- linux-rockchip@lists.infradead.org, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, Chris
- Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V8 06/10] iio: imu: inv_icm42607: Add Buffer support for
+ linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+ heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
+ andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V8 08/10] iio: imu: inv_icm42607: Add Accelerometer for
  icm42607
-Message-ID: <20260520184113.2c36f49a@jic23-huawei>
-In-Reply-To: <20260518200526.458421-7-macroalpha82@gmail.com>
+Message-ID: <20260520190259.14be7925@jic23-huawei>
+In-Reply-To: <20260518200526.458421-9-macroalpha82@gmail.com>
 References: <20260518200526.458421-1-macroalpha82@gmail.com>
-	<20260518200526.458421-7-macroalpha82@gmail.com>
+	<20260518200526.458421-9-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-BeenThere: linux-rockchip@lists.infradead.org
@@ -74,434 +74,165 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 May 2026 15:05:21 -0500
+On Mon, 18 May 2026 15:05:23 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add all FIFO parsing and reading functions to support
-> inv_icm42607 hardware.
+> Add icm42607 accelerometer sensor for icm42607.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-
 https://sashiko.dev/#/patchset/20260518200526.458421-1-macroalpha82%40gmail.com
-Is unhappy.  I haven't checked closely though - might be wrong.
+More feedback. Some of it looks valid. I haven't looked at all of them.
 
-> ---
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+A few other bits and some comments on one or two of the sashiko ones
+that stood out to me.
+
+Thanks,
+
+Jonathan
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> index 2542ad1bee51..c646c22b5e0e 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> @@ -82,12 +82,24 @@ enum inv_icm42607_filter_bw {
+>  	INV_ICM42607_FILTER_BW_16HZ,
+>  };
+>  
+> +enum inv_icm42607_filter_avg {
+> +	/* Low-Power mode sensor data filter (averaging) */
+> +	INV_ICM42607_FILTER_AVG_2X = 0,
+> +	INV_ICM42607_FILTER_AVG_4X,
+> +	INV_ICM42607_FILTER_AVG_8X,
+> +	INV_ICM42607_FILTER_AVG_16X,
+> +	INV_ICM42607_FILTER_AVG_32X,
+> +	INV_ICM42607_FILTER_AVG_64X
+trailing comma should be there.
+
+> +	/* values 7 and 8 also correspond to 64x. */
+> +};
+> +
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
 > new file mode 100644
-> index 000000000000..a011f1f728b9
+> index 000000000000..623d60704609
 > --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
-> @@ -0,0 +1,482 @@
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +/*
-> + * Copyright (C) 2026 InvenSense, Inc.
-> + */
-> +
-> +#include <linux/delay.h>
-> +#include <linux/iio/buffer.h>
-> +#include <linux/iio/iio.h>
-> +#include <linux/minmax.h>
-> +#include <linux/mutex.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/regmap.h>
-> +
-> +#include <linux/iio/common/inv_sensors_timestamp.h>
-> +
-> +#include "inv_icm42607.h"
-> +#include "inv_icm42607_buffer.h"
-> +
-> +/* FIFO header: 1 byte */
-> +#define INV_ICM42607_FIFO_HEADER_MSG		BIT(7)
-> +#define INV_ICM42607_FIFO_HEADER_ACCEL		BIT(6)
-> +#define INV_ICM42607_FIFO_HEADER_GYRO		BIT(5)
-> +#define INV_ICM42607_FIFO_HEADER_TMST_FSYNC	GENMASK(3, 2)
-> +#define INV_ICM42607_FIFO_HEADER_ODR_ACCEL	BIT(1)
-> +#define INV_ICM42607_FIFO_HEADER_ODR_GYRO	BIT(0)
-> +
-> +struct inv_icm42607_fifo_1sensor_packet {
-> +	u8 header;
-> +	struct inv_icm42607_fifo_sensor_data data;
-One of the things sashiko doesn't like is pointers to unaligned
-structures.  I'm not sure what architectures we have that really
-don't like these still but it is correct that they can be a problem.
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+> @@ -0,0 +1,587 @@
 
-Ultimately you need to use unaligned accessors
-
-> +	s8 temp;
-> +} __packed;
-> +
-> +struct inv_icm42607_fifo_2sensors_packet {
-> +	u8 header;
-> +	struct inv_icm42607_fifo_sensor_data accel;
-> +	struct inv_icm42607_fifo_sensor_data gyro;
-> +	s8 temp;
-> +	__be16 timestamp;
-> +} __packed;
-
-
-> +int inv_icm42607_buffer_set_fifo_en(struct inv_icm42607_state *st,
-> +				    unsigned int fifo_en)
+> +static int inv_icm42607_accel_read_sensor(struct iio_dev *indio_dev,
+> +					  struct iio_chan_spec const *chan,
+> +					  s16 *val)
 > +{
-> +	unsigned int val;
+> +	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
+> +	struct inv_icm42607_sensor_state *accel_st = iio_priv(indio_dev);
+> +	struct device *dev = regmap_get_device(st->map);
+> +	struct inv_icm42607_sensor_conf conf = INV_ICM42607_SENSOR_CONF_INIT;
+> +	unsigned int reg;
+> +	__be16 *data;
 > +	int ret;
 > +
-> +	/* update FIFO EN bits for accel and gyro */
-> +	val = 0;
-> +	if (fifo_en & INV_ICM42607_SENSOR_GYRO)
-> +		val |= INV_ICM42607_FIFO_CONFIG1_MODE;
-> +	if (fifo_en & INV_ICM42607_SENSOR_ACCEL)
-> +		val |= INV_ICM42607_FIFO_CONFIG1_MODE;
-> +	if (fifo_en & INV_ICM42607_SENSOR_TEMP)
-> +		val |= INV_ICM42607_FIFO_CONFIG1_MODE;
-Odd to see these all set same bit like this.  Why not something
-that will stop confusing sashiko (and me ;) because it explicitly
-sets teh value only once.
+> +	if (chan->type != IIO_ACCEL)
+> +		return -EINVAL;
+> +
+> +	switch (chan->channel2) {
+> +	case IIO_MOD_X:
+> +		reg = INV_ICM42607_REG_ACCEL_DATA_X1;
+I didn't notice this until now, but you don't have anything using
+chan->address.  This is what would typically go in there.
+If you need multiple registers that would normally be an index into
+an array of per channel structures used to look up any register.
 
-	if (fifo_en & (INV_ICM42607_SENSOR_GYRO |
-		       INV_ICM42607_SENSOR_ACCEL |
-		       INV_ICM42607_SENSOR_TEMP))
-		val = INV_...
+Not that important but would move this 'code' into 'data' which would
+be nice.
 
-
- 
-> +
-> +	ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1, val);
-> +	if (ret)
-> +		return ret;
-> +
-> +	st->fifo.en = fifo_en;
-> +	inv_icm42607_buffer_update_fifo_period(st);
-> +
-> +	return 0;
-> +}
-
-> +
-> +/**
-> + * inv_icm42607_buffer_update_watermark - update watermark FIFO threshold
-> + * @st:	driver internal state
-> + *
-> + * Returns 0 on success, a negative error code otherwise.
-> + */
-> +int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st)
-> +{
-> +	const struct device *dev = regmap_get_device(st->map);
-> +	unsigned int wm_gyro, wm_accel, watermark;
-> +	u32 latency_gyro, latency_accel, latency;
-> +	u32 period_gyro, period_accel;
-> +	size_t packet_size, wm_size;
-> +	__le16 raw_wm;
-> +	bool restore;
-> +	int ret;
-> +
-> +	packet_size = inv_icm42607_get_packet_size(st->fifo.en);
-> +
-> +	/* compute sensors latency, depending on sensor watermark and odr */
-> +	wm_gyro = inv_icm42607_wm_truncate(st->fifo.watermark.gyro, packet_size);
-> +	wm_accel = inv_icm42607_wm_truncate(st->fifo.watermark.accel, packet_size);
-> +	/* use us for odr to avoid overflow using 32 bits values */
-> +	period_gyro = inv_icm42607_odr_to_period(st->conf.gyro.odr) / 1000UL;
-> +	period_accel = inv_icm42607_odr_to_period(st->conf.accel.odr) / 1000UL;
-> +	latency_gyro = period_gyro * wm_gyro;
-> +	latency_accel = period_accel * wm_accel;
-> +
-> +	/* 0 value for watermark means that the sensor is turned off */
-> +	if (wm_gyro == 0 && wm_accel == 0)
-> +		return 0;
-> +
-> +	if (latency_gyro == 0) {
-> +		watermark = wm_accel;
-> +		st->fifo.watermark.eff_accel = wm_accel;
-> +	} else if (latency_accel == 0) {
-> +		watermark = wm_gyro;
-> +		st->fifo.watermark.eff_gyro = wm_gyro;
-> +	} else {
-> +		/* compute the smallest latency that is a multiple of both */
-> +		if (latency_gyro <= latency_accel)
-> +			latency = latency_gyro - (latency_accel % latency_gyro);
-> +		else
-> +			latency = latency_accel - (latency_gyro % latency_accel);
-> +		/* all this works because periods are multiple of each others */
-> +		watermark = latency / min(period_gyro, period_accel);
-> +		watermark = max(watermark, 1);
-> +		/* update effective watermark */
-> +		st->fifo.watermark.eff_gyro = max(latency / period_gyro, 1);
-> +		st->fifo.watermark.eff_accel = max(latency / period_accel, 1);
+> +		break;
+> +	case IIO_MOD_Y:
+> +		reg = INV_ICM42607_REG_ACCEL_DATA_Y1;
+> +		break;
+> +	case IIO_MOD_Z:
+> +		reg = INV_ICM42607_REG_ACCEL_DATA_Z1;
+> +		break;
+> +	default:
+> +		return -EINVAL;
 > +	}
 > +
-> +	/* changing FIFO watermark requires to turn off watermark interrupt */
-> +	ret = regmap_update_bits_check(st->map, INV_ICM42607_REG_INT_SOURCE0,
-> +				       INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
-> +				       0, &restore);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* compute watermark value in bytes */
-> +	wm_size = watermark * packet_size;
-> +	raw_wm = INV_ICM42607_FIFO_WATERMARK_VAL(wm_size);
-> +	memcpy(st->buffer, &raw_wm, sizeof(raw_wm));
-
-Shout a bit (comment) about this being le vs the be buffer. 
-
-> +	ret = regmap_bulk_write(st->map, INV_ICM42607_REG_FIFO_CONFIG2,
-> +				st->buffer, sizeof(raw_wm));
-> +	if (ret) {
-> +		dev_err(dev, "Unable to change watermark value: %d\n", ret);
-> +		if (restore)
-> +			regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
-> +					   INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
-> +					   INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
-regmap_set_bits()
-> +		return ret;
-> +	}
-> +
-> +	/* restore watermark interrupt */
-> +	if (restore) {
-> +		ret = regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
-> +					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
-> +					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
-regmap_set_bits()
-> +		if (ret)
-> +			return ret;
-> +	}
-> +
-> +	return 0;
-> +}
->
-
-> +int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
-> +				  unsigned int max)
-> +{
-> +	const void *accel, *gyro, *timestamp;
-> +	size_t i, max_count;
-> +	const s8 *temp;
-> +	ssize_t size;
-> +	int ret;
+> +	PM_RUNTIME_ACQUIRE_AUTOSUSPEND(dev, pm);
+> +	if (PM_RUNTIME_ACQUIRE_ERR(&pm))
+> +		return -ENXIO;
 > +
 > +	guard(mutex)(&st->lock);
 > +
-> +	/* reset all samples counters */
-> +	st->fifo.count = 0;
-> +	st->fifo.nb.gyro = 0;
-> +	st->fifo.nb.accel = 0;
-> +	st->fifo.nb.total = 0;
-> +
-> +	/* compute maximum FIFO read size */
-> +	if (max == 0)
-> +		max_count = sizeof(st->fifo.data);
-> +	else
-> +		max_count = min((max * inv_icm42607_get_packet_size(st->fifo.en)),
-> +				sizeof(st->fifo.data));
-> +
-> +	/* read FIFO count value */
-> +	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_FIFO_COUNTH,
-> +			       st->buffer, sizeof(u8) * 2);
-Given buffer is an array of __be16, use size of buffer[0] to say you want to 
-read one value.
-
-> +	if (ret)
-> +		return ret;
-> +	st->fifo.count = be16_to_cpup(st->buffer);
-whilst it is the same thing we can use the easier to read
-	st->fifo.count = be16_to_cpu(st->buffer[0]);
-again making it clear this is just using one __be16 from
-the array.
-
-> +
-> +	/* check and clamp FIFO count value */
-> +	if (st->fifo.count == 0)
-> +		return 0;
-> +
-> +	st->fifo.count = min(st->fifo.count, max_count);
-> +
-> +	/* read all FIFO data in internal buffer */
-> +	ret = regmap_noinc_read(st->map, INV_ICM42607_REG_FIFO_DATA,
-> +				st->fifo.data, st->fifo.count);
+> +	/* enable accel sensor */
+> +	conf.mode = accel_st->power_mode;
+> +	conf.filter = accel_st->filter;
+> +	ret = inv_icm42607_set_accel_conf(st, &conf, NULL);
 > +	if (ret)
 > +		return ret;
 > +
-> +	/* compute number of samples for each sensor */
-> +	for (i = 0; i < st->fifo.count; i += size) {
-> +		size = inv_icm42607_fifo_decode_packet(&st->fifo.data[i],
-> +				&accel, &gyro, &temp, &timestamp);
-> +		/* Make sure the size is at least 1 valid packet. */
-> +		if (size < INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE)
-> +			break;
-> +		/* Error if we are going to overflow the buffer. */
-> +		if (i + size > st->fifo.count)
-> +			return -EIO;
-> +		if (gyro != NULL && inv_icm42607_fifo_is_data_valid(gyro))
-> +			st->fifo.nb.gyro++;
-> +		if (accel != NULL && inv_icm42607_fifo_is_data_valid(accel))
-> +			st->fifo.nb.accel++;
-> +		st->fifo.nb.total++;
-> +	}
+> +	/* read accel register data */
+> +	data = &st->buffer[0];
+> +	ret = regmap_bulk_read(st->map, reg, data, sizeof(*data));
+> +	if (ret)
+> +		return ret;
+> +
+> +	*val = be16_to_cpup(data);
+> +	if (*val == INV_ICM42607_DATA_INVALID)
+> +		return -EINVAL;
 > +
 > +	return 0;
 > +}
 
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
-> new file mode 100644
-> index 000000000000..b77deb66f8bd
-> --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
-> @@ -0,0 +1,93 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +/*
-> + * Copyright (C) 2026 InvenSense, Inc.
-> + */
-> +
-> +#ifndef INV_ICM42607_BUFFER_H_
-> +#define INV_ICM42607_BUFFER_H_
-> +
-> +#include <linux/bitops.h>
-> +
-> +struct inv_icm42607_state;
-> +
-> +#define INV_ICM42607_SENSOR_GYRO	BIT(0)
-> +#define INV_ICM42607_SENSOR_ACCEL	BIT(1)
-> +#define INV_ICM42607_SENSOR_TEMP	BIT(2)
-> +
-> +/**
-> + * struct inv_icm42607_fifo - FIFO state variables
-> + * @on:		reference counter for FIFO on.
-> + * @en:		bits field of INV_ICM42607_SENSOR_* for FIFO EN bits.
-> + * @period:	FIFO internal period.
-> + * @watermark:	watermark configuration values for accel and gyro.
-> + * @count:	number of bytes in the FIFO data buffer.
-> + * @nb:		gyro, accel and total samples in the FIFO data buffer.
-> + * @data:	FIFO data buffer aligned for DMA (2kB + 32 bytes of read cache).
-> + */
-> +struct inv_icm42607_fifo {
-> +	unsigned int on;
-> +	unsigned int en;
-> +	u32 period;
-> +	struct {
-> +		unsigned int gyro;
-> +		unsigned int accel;
-> +		unsigned int eff_gyro;
-> +		unsigned int eff_accel;
-> +	} watermark;
-> +	size_t count;
-> +	struct {
-> +		size_t gyro;
-> +		size_t accel;
-> +		size_t total;
-> +	} nb;
-> +	u8 data[2080] __aligned(IIO_DMA_MINALIGN);
-> +};
-> +
-> +/* FIFO data packet */
-> +struct inv_icm42607_fifo_sensor_data {
-> +	__be16 x;
-> +	__be16 y;
-> +	__be16 z;
-> +};
-> +
-> +#define INV_ICM42607_FIFO_DATA_INVALID		-32768
-> +
-> +static inline bool
-> +inv_icm42607_fifo_is_data_valid(const struct inv_icm42607_fifo_sensor_data *s)
-> +{
-> +	s16 x, y, z;
-> +
-> +	x = be16_to_cpu(s->x);
-> +	y = be16_to_cpu(s->y);
-> +	z = be16_to_cpu(s->z);
-
-The input structure is unaligned and I think so are these so you need
-get_unaligned_be16() 
-
-
-> +
-> +	if (x == INV_ICM42607_FIFO_DATA_INVALID &&
-> +	    y == INV_ICM42607_FIFO_DATA_INVALID &&
-> +	    z == INV_ICM42607_FIFO_DATA_INVALID)
-> +		return false;
-> +
-> +	return true;
 > +}
 > +
-> +ssize_t inv_icm42607_fifo_decode_packet(const void *packet, const void **accel,
-> +					const void **gyro, const s8 **temp,
-> +					const void **timestamp);
-> +
-> +extern const struct iio_buffer_setup_ops inv_icm42607_buffer_ops;
-> +
-> +int inv_icm42607_buffer_init(struct inv_icm42607_state *st);
-> +
-> +void inv_icm42607_buffer_update_fifo_period(struct inv_icm42607_state *st);
-> +
-> +int inv_icm42607_buffer_set_fifo_en(struct inv_icm42607_state *st,
-> +				    unsigned int fifo_en);
-> +
-> +int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st);
-> +
-> +int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
-> +				  unsigned int max);
-> +
-> +int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
-> +				     unsigned int count);
-> +
-> +#endif
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> index bc0cefa2fb77..29573d4fc0f0 100644
-> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> @@ -15,6 +15,7 @@
->  #include <linux/regulator/consumer.h>
->  
->  #include "inv_icm42607.h"
-> +#include "inv_icm42607_buffer.h"
->  
->  static bool inv_icm42607_is_volatile_reg(struct device *dev, unsigned int reg)
->  {
-> @@ -73,6 +74,38 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
->  };
->  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
->  
-> +u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr)
+> +static int inv_icm42607_accel_read_avail(struct iio_dev *indio_dev,
+> +					 struct iio_chan_spec const *chan,
+> +					 const int **vals,
+> +					 int *type, int *length, long mask)
 > +{
-> +	static const u32 odr_periods[INV_ICM42607_ODR_NB] = {
-> +		/* 1600Hz */
-
-No need for comment as it's now obvious
-
-> +		[INV_ICM42607_ODR_1600HZ] = 625000,
-> +		/* 800Hz */
-
-Do [] = assignment for all of them and drop all the comments as they
-will be unneeded.
-
-> +		1250000,
-> +		/* 400Hz */
-> +		2500000,
-> +		/* 200Hz */
-> +		5000000,
-> +		/* 100 Hz */
-> +		10000000,
-> +		/* 50Hz */
-> +		20000000,
-> +		/* 25Hz */
-> +		40000000,
-> +		/* 12.5Hz */
-> +		80000000,
-> +		/* 6.25Hz */
-> +		160000000,
-> +		/* 3.125Hz */
-> +		320000000,
-> +		/* 1.5625Hz */
-> +		640000000,
-> +	};
+> +	if (chan->type != IIO_ACCEL)
+> +		return -EINVAL;
 > +
-> +	odr = clamp(odr, INV_ICM42607_ODR_1600HZ, INV_ICM42607_ODR_1_5625HZ_LP);
-> +
-> +	return odr_periods[odr];
+> +	switch (mask) {
+> +	case IIO_CHAN_INFO_SCALE:
+> +		*vals = (const int *)inv_icm42607_accel_scale_nano;
+> +		*type = IIO_VAL_INT_PLUS_NANO;
+> +		*length = ARRAY_SIZE(inv_icm42607_accel_scale_nano) * 2;
+> +		return IIO_AVAIL_LIST;
+> +	case IIO_CHAN_INFO_SAMP_FREQ:
+> +		*vals = (const int *)inv_icm42607_accel_odr;
+Sashiko is correctly pointing out that this is going to print a bunch
+of leading 0s as the array is only useful from 5 onwards.  Start
+there rather than at the beginning.
+
+> +		*type = IIO_VAL_INT_PLUS_MICRO;
+> +		*length = ARRAY_SIZE(inv_icm42607_accel_odr) * 2;
+> +		return IIO_AVAIL_LIST;
+> +	default:
+> +		return -EINVAL;	
+> +	}
 > +}
-> +
 >
+> +struct iio_dev *inv_icm42607_accel_init(struct inv_icm42607_state *st)
+> +{
+
+> +	/* accel events are wakeup capable */
+> +	ret = devm_device_init_wakeup(&indio_dev->dev);
+Sashiko points out correctly that should probably be on the
+physical bus device rather than this one. Mind you I think for now you
+ripped that out anyway so don't set it at all.
+> +	if (ret)
+> +		return ERR_PTR(ret);
+> +
+> +	ret = devm_iio_device_register(dev, indio_dev);
+> +	if (ret)
+> +		return ERR_PTR(ret);
+> +
+> +	return indio_dev;
+> +}
+
 
 _______________________________________________
 Linux-rockchip mailing list
