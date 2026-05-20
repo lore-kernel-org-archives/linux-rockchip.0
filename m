@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 889FFCD5BAF
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE833CD5BAC
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:39:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=CR2W4U+hq2djaas8hnBQr0sySw9cO5I0zNpOm/wRsjU=; b=qADaMx8itU8RUW
-	3OrGYWB0kv4rIqVNl7H+dvyfBET9jxM/v/RVXrLGfmSxJA0JDebgpxTsYNKMHy8izOPiTSMWQU5xe
-	WOiCNMAQ5/2p4uS5FU6kXuSkC0pXU66N4PpbGuByUHUeyYuleMC5lLNRDVxJwj/t+1C13+ihs9NoU
-	cv8tmEpAb+06AXCg/aWJ8dH+ADRbhbLFsG+WCBpexpzC5+6lp2VcHEY5OE/uBBmmMO24wkqdCnyia
-	arcnq2WZ5nPdSaZMx0tlLhF0aYwi6eME6SEYbl5fdPgu3n2gKbTKgCMO7p515I5D1bGFgIHZEQr+h
-	309xZrVYTVByZyNgJoKA==;
+	List-Owner; bh=+zxtp+hBc3b5lOUn00zX1ouCaE1RF8TD2Bny+k2ZrE0=; b=F6j3d7JPHHU/qt
+	0MmaFt1pK5FGXFqitO0m8fZrgENpUhqwl7en1YduzjOkwdVmx5p4ZeI1Bg9NapJGgcZ3ouHYwN1G3
+	iFP159ISqKt/8q5ps5/xpMzr4uVpYtJwom7A09rMriYm7r4MtWy9Hyh181antqofsRFwEhLz+NynB
+	B/LqcEfhiFlf630QiuSnseSjp5xi2RS36ZDrFlVbZ+Du5c84jgGmNRr+NGJfbLAKDkRluhtwCwM9u
+	FSi8XtWBGG7v/wgKmylrItUxCBLYb+u2sPWutyb+2Qrgl4R16dGdjMghytrO/MRjgPs9AJLJ37C5D
+	1KTRI+oPu3d7glwzkYeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlp5-00000005Tqw-0RI1;
-	Wed, 20 May 2026 18:39:15 +0000
+	id 1wPlpB-00000005U5b-2v8t;
+	Wed, 20 May 2026 18:39:22 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlod-00000005SuM-2x4k;
-	Wed, 20 May 2026 18:38:49 +0000
+	id 1wPlog-00000005Swi-0twC;
+	Wed, 20 May 2026 18:38:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779302325;
-	bh=equcMxzWcJstN1bNv/FIKCDiolbRap3E7iZIA4ACfEE=;
+	s=mail; t=1779302327;
+	bh=gfw+VOnsxyeQOB9qQkKs2AR4t78caZyAmSm1XPJ+q0U=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=JVFjJSeosRY/oISZ5z9PpA+BAMO2awxTNm0+X8gj6PwXc+nRoZaYC/MO7bS1Wx66p
-	 PmIvMbXe+ofu9vFkntY9DsXKBbUushgoo8QMPdKxn/VqKix81E6njWreZAzXo9u+8g
-	 ofbWbKDi66bTxAoKWkxl7PajWa0m3BRWGPd35/uFiSzkBvUpUIZrcgz9lKDo8YPVDz
-	 9D/gR0RxHMb++8zQ27bE1NU5LIZIj2PTOamk+LCpdDyWreKZNWCiFDpAI/QqKTtnVO
-	 kSM8Thw82SQ2is7SYOUjLvnPN8cfkZVCULxi7qii1OYDls/NLI2JVDcDHFbxb0cX6t
-	 6w5ry1wjaj+2Q==
+	b=IlPnSplwEZ8eLtoVLTzEWvtpRgb1peF7OcTqACYlOOsXbEZUXlYDhRitRt0m6ioVK
+	 2bB5gohIKOH3hHdFXtClB+zWT98elyOfLncOds5/1jd6TnqPwVUmjhdce6FWHyW1t2
+	 PfbRqOPGEUA7ZmqgTs/hYo6EvWNiy1ObgCF5uC+BDAAY1utnQoueg7YNX6bYH0196S
+	 01WiPxBADSzLyIT7mnzJvroKX3Hv8F+LsAR1yCZ41wWuXmICZo2J1lEDKDC9y05u+h
+	 1Nci5rMagryw6kY3vVF20JG8uQlC119E+pIa5w9XIZnbkNSHKLjmy5X4VRsCihSX1n
+	 YrZtePcwEnlpg==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6BDED17E157E;
-	Wed, 20 May 2026 20:38:45 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AEFAE17E1591;
+	Wed, 20 May 2026 20:38:47 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 20 May 2026 21:38:30 +0300
-Subject: [PATCH v6 19/22] drm/rockchip: dw_hdmi_qp: Mask HPD IRQ in
- rk3576_io_init()
+Date: Wed, 20 May 2026 21:38:33 +0300
+Subject: [PATCH v6 22/22] drm/bridge: dw-hdmi-qp: Remove obsolete
+ .setup_hpd() phy op
 MIME-Version: 1.0
-Message-Id: <20260520-dw-hdmi-qp-scramb-v6-19-24b74603b782@collabora.com>
+Message-Id: <20260520-dw-hdmi-qp-scramb-v6-22-24b74603b782@collabora.com>
 References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -68,8 +68,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_113847_930338_402EB5BC 
-X-CRM114-Status: GOOD (  10.31  )
+X-CRM114-CacheID: sfid-20260520_113851_027621_259CBA18 
+X-CRM114-Status: UNSURE (   8.98  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,28 +87,41 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Mask the RK3576 HPD interrupt in io_init() so it starts disabled,
-matching the RK3588 behavior.  This prevents spurious interrupts before
-the bridge framework enables HPD via the .hpd_enable() callback.
+With the completed transition to .{enable|disable}_hpd() phy ops,
+.setup_hpd() became obsolete and unused.  Drop it.
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 3 ---
+ include/drm/bridge/dw_hdmi_qp.h              | 1 -
+ 2 files changed, 4 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 27342094958c..62ea5c7cbbe6 100644
---- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -346,7 +346,7 @@ static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
- 
- 	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON14, val);
- 
--	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
-+	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
- 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index ed0c68d6c6fd..f626cf4bdda9 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -1316,9 +1316,6 @@ static void dw_hdmi_qp_init_hw(struct dw_hdmi_qp *hdmi)
+ 	/* Clear DONE and ERROR interrupts */
+ 	dw_hdmi_qp_write(hdmi, I2CM_OP_DONE_CLEAR | I2CM_NACK_RCVD_CLEAR,
+ 			 MAINUNIT_1_INT_CLEAR);
+-
+-	if (hdmi->phy.ops->setup_hpd)
+-		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
  }
  
+ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index b4fb1c578a5b..ad33f9cafdeb 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -16,7 +16,6 @@ struct dw_hdmi_qp_phy_ops {
+ 	int (*init)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*disable)(struct dw_hdmi_qp *hdmi, void *data);
+ 	enum drm_connector_status (*read_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+-	void (*setup_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*enable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ 	void (*disable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+ };
 
 -- 
 2.53.0
