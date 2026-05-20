@@ -4,77 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF22DCD4F5E
-	for <linux-rockchip@archiver.kernel.org>; Tue, 19 May 2026 17:20:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7A7FCD4F54
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 01:14:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LyDnZx1EgwKQxomL9p8sUoIyJVyjwOTBwOhojD+4j7g=; b=N1CL14eBnRZqvj
-	bg93UNJl1Lul9i0616Llzezl6J5xGQosKJePCfVRo+qrkdhQzamCUtQ+la2rztsSXcKlrJ+lcsklG
-	OwXzu6wWNonYIDbSgk8N9uWXfpV5iG/5/rIAnuV4RZFCzVGES2ne0x700fbn3zLQm6pj7iz33uqGd
-	F9KJLDHsG5P7f2DnKJkGbRl4AfP1zjLRRGon4cEggP7ty7ZW15b9QKcu58v3IikVxnIel5x+NOdpS
-	qcMeCsOkn2euN1OIeRD3XN7g3WxfEoMvN4bsNY7EwDoAMOEKn94e8eZAQk7ZiWvBrVQzKj63wYjgK
-	GolgHuNXTeXSrQpoQH0w==;
+	List-Owner; bh=TY5aJMgpfo8XkEE85oB1fvOP75NC1YJkrnyUg7Nx2rQ=; b=o8ZORyeKV0c5nw
+	AS+pfrI+VOkmmRVKnElUBtcLNtSUQE2Wfi+VxSl8oa63gxXfk2gdjk0N6m+warnJdqbS8HZ/8thL/
+	9G9PSN2Ksui9FT4YAEBPczdkULF1hVxXa29ZUj+pAmXqiLMrICjk/ghcbHO2BfdnjWXKZrnkdEa1P
+	0oKnZNfNEtSvhSSem3LLwu1AqS77eIa0ysQHJtRe8ExSQlzYZUxERdV76yfG32YYUdle7Zla4FHa4
+	GAtArD3bQCv34W3wUp039m6+x9+zj5n4FkH2SgOlCeQGpg2f3wQ3zkDjngTaZ8nAkIScH+A7NvZUm
+	sug1MS4EoKesKGfgt4hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPO6t-00000002MQf-2qsw;
-	Tue, 19 May 2026 17:20:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wPVVZ-00000003D2C-0Tw2;
+	Wed, 20 May 2026 01:14:01 +0000
+Received: from mail-m60156.netease.com ([210.79.60.156])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPO6q-00000002MP4-2I75;
-	Tue, 19 May 2026 17:20:01 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E531442DD5;
-	Tue, 19 May 2026 17:19:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE02BC2BCB3;
-	Tue, 19 May 2026 17:19:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779211198;
-	bh=PcQgZeciD6zTFbc/Al2Qw1LpZV+52E8Gj2OSIzC9Qss=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=XbBBzI6BMmc2qi3CO/PJ03L/0BLjVUWyHeawfD9cL5/Zzfr6WScpP28XVy2zTPt2a
-	 ljZxJD6N9ASkopYjKp67ifLM3nvk+x3bNgJjQ3DEk+H1XdQoY5pVyxFITJh/YqBggM
-	 /7KGybNccUvfeB0gUVw/ZKhWVoQwjtBHNrtclXL7HSsCBMRekKdsE56dzcCpTohR21
-	 p+DQfqk6jZLV2LDjGtesHbn1XRL0vzBGFqNoE6wXGIwVw8slCzZUQsO1BZgApb5mii
-	 Cb0kl7/79jR/btL5zrqnIi3y47jE3yZzzRC0fdAju6hYf6U5Zf98CCl3/IBjZZJ0ex
-	 NqYjdckOwMG0w==
-Date: Tue, 19 May 2026 19:19:51 +0200
-From: Niklas Cassel <cassel@kernel.org>
-To: Manivannan Sadhasivam <mani@kernel.org>
-Cc: manivannan.sadhasivam@oss.qualcomm.com,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Mahesh J Salgaonkar <mahesh@linux.ibm.com>,
-	Oliver O'Halloran <oohall@gmail.com>, Will Deacon <will@kernel.org>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Rob Herring <robh@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-	Philipp Zabel <p.zabel@pengutronix.de>, linux-pci@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	Wilfred Mallawa <wilfred.mallawa@wdc.com>,
-	Krishna Chaitanya Chundru <krishna.chundru@oss.qualcomm.com>,
-	Lukas Wunner <lukas@wunner.de>, Richard Zhu <hongxing.zhu@nxp.com>,
-	Brian Norris <briannorris@chromium.org>,
-	Wilson Ding <dingwei@marvell.com>, Frank Li <Frank.Li@nxp.com>
-Subject: Re: [PATCH v7 0/4] PCI: Add support for resetting the Root Ports in
- a platform specific way
-Message-ID: <agybt3onTAJO2Dl9@ryzen>
-References: <20260310-pci-port-reset-v7-0-9dd00ccc25ab@oss.qualcomm.com>
- <abFMa6DCGGLUHddA@fedora>
- <dp2rem4gj7zhfgykvekmcrhq4ticm6m6ido6tbgflwzfcuuwkl@4wuxgle27eyx>
- <srdn3bspgwff7f7tnst7wzg4us4buifrv7o3ylo527hmuciyl3@6ioyrl6rfhaz>
- <abk3rU2EDKjkefUD@ryzen>
- <tgsh3cum6qxrqjzbdeqjsp6bf7cqedj7il77hww3oxecadndin@idjnwib7cz4z>
+	id 1wPVVV-00000003D0u-1DiI;
+	Wed, 20 May 2026 01:13:59 +0000
+Received: from [172.16.12.51] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3f0f4bf32;
+	Wed, 20 May 2026 09:13:41 +0800 (GMT+08:00)
+Message-ID: <c0bc4796-afe5-40ff-8816-9605a6114d23@rock-chips.com>
+Date: Wed, 20 May 2026 09:13:25 +0800
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <tgsh3cum6qxrqjzbdeqjsp6bf7cqedj7il77hww3oxecadndin@idjnwib7cz4z>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v15 0/9] Add Type-C DP support for RK3399 EVB IND board
+To: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+Cc: Chaoyi Chen <kernel@airkyi.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Peter Chen <hzpeterchen@gmail.com>, Luca Ceresoli
+ <luca.ceresoli@bootlin.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>,
+ linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ dri-devel@lists.freedesktop.org
+References: <20260304094152.92-1-kernel@airkyi.com> <agxo8ic94e81nQRx@kuha>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <agxo8ic94e81nQRx@kuha>
+X-HM-Tid: 0a9e42f214cf03abkunmde1056153a93c
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQkoaVhhOGE9LGE9LQ01JTFYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pPSExVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=gwTF78PPuLUm1sysWyZUVBaAIEKd3WixyNY3bmjSc5enP6t3T7LjW1vDPot1Ro5hpeJzDUUuaKmRf3Cz6DX9uu/L1JxbBv2q7RmlverbAPspYQqTopSj5X3/+EdlkoFK2PHIs+UdzLX137UjUapaHB2spXQq0d9N+RLByQu9LFk=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=Puww1BH0j/oGm+Paq7ifcsE10dx5Hg0yZyciu4GUl4o=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_102000_629621_9BEB8643 
-X-CRM114-Status: GOOD (  33.37  )
+X-CRM114-CacheID: sfid-20260519_181357_878603_EB04483E 
+X-CRM114-Status: GOOD (  13.75  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,97 +94,37 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Mani,
+Hello Heikki,
 
-On Mon, May 18, 2026 at 11:51:56AM +0530, Manivannan Sadhasivam wrote:
-> > 
-> > With the patch above. There is zero difference before/after reset, and all
-> > the BAR tests pass. However, MSI/MSI-X tests still fail with:
-> > 
-> > # pci_endpoint_test.c:143:MSI_TEST:Expected 0 (0) == ret (-110) 
-> > # pci_endpoint_test.c:143:MSI_TEST:Test failed for MSI1
-> > 
-> > ETIMEDOUT.
-> > 
-> > This suggests that pci_endpoint_test on the host side did not receive an
-> > interrupt.
-> > 
-> > I don't know why, but considering that lspci output is now (with the
-> > save+restore) identical, I assume that the problem is not related to
-> > the host. Unless somehow the host will use a new/different MSI address
-> > after the root port has been reset, and we restore the old MSI address,
-> > but looking at the code, dw_pcie_msi_init() is called by
-> > dw_pcie_setup_rc(), so I would expect the MSI address to be the same.
-> > 
+On 5/19/2026 9:43 PM, Heikki Krogerus wrote:
+> Hi,
 > 
-> Hi Niklas,
+> On Wed, Mar 04, 2026 at 05:41:43PM +0800, Chaoyi Chen wrote:
+>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>
+>> This series focuses on adding Type-C DP support for USBDP PHY and DP
+>> driver. The USBDP PHY and DP will perceive the changes in cable status
+>> based on the USB PD and Type-C state machines provided by TCPM. Before
+>> this, the USBDP PHY and DP controller of RK3399 sensed cable state
+>> changes through extcon, and devices such as the RK3399 Gru-Chromebook
+>> rely on them. This series should not break them.
 > 
-> When I rebased this series on top of v7.1-rc1, I ended up seeing the issue what
-> you described here (not sure why I didn't see it earlier). So after the Root
-> Port reset, MSI tests fail, but BAR tests succeed. Also, I got IOMMU faults on
-> the host after endpoint triggers MSI.
+> What's the status with this series?
+> Are these inteded to go via the DRM tree?
 > 
-> I investigated it and found that the MSI iATU mapping gets cleared in hw after
-> LDn happens. But the host continues to use the same address/size for the
-> endpoint MSI even after reset. Due to this, the existing checks in
-> dw_pcie_ep_raise_msi_irq() don't pass and the stale MSI iATU mapping gets
-> reused.
+> thanks,
 > 
-> The fix would be to clear the mapping in dw_pcie_ep_cleanup(), which gets called
-> as part of the PERST# assert/deassert sequence post LDn and also set
-> msi_iatu_mapped flag to 'false'. This will force dw_pcie_ep_raise_msi_irq() to
-> use fresh iATU mapping when it gets called for the first time:
-> 
-> diff --git a/drivers/pci/controller/dwc/pcie-designware-ep.c b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> index d4dc3b24da60..4ae0e1b55f39 100644
-> --- a/drivers/pci/controller/dwc/pcie-designware-ep.c
-> +++ b/drivers/pci/controller/dwc/pcie-designware-ep.c
-> @@ -1035,6 +1035,11 @@ void dw_pcie_ep_cleanup(struct dw_pcie_ep *ep)
->  {
->         struct dw_pcie *pci = to_dw_pcie_from_ep(ep);
->  
-> +       if (ep->msi_iatu_mapped) {
-> +               dw_pcie_ep_unmap_addr(ep->epc, 0, 0, ep->msi_mem_phys);
-> +               ep->msi_iatu_mapped = false;
-> +       }
-> +
->         dwc_pcie_debugfs_deinit(pci);
->         dw_pcie_edma_remove(pci);
->  }
-> 
-> With this change, MSI works after Root Port reset without any issues on our Qcom
-> endpoint/host setup.
-> 
-> Please test this change on your rockchip setup as well. You have to make sure
-> that dw_pcie_ep_cleanup() is called during PERST# assert/deassert.
-> 
-> I'm going to respin the series with this fix. If you confirm it works for you,
-> then we can merge your Rockchip Root Port change.
 
-I am happy to hear that you managed to find the root cause!
+Thank you very much for your continued attention to this series.
+The maintainers seem quite busy... Despite there being no further review
+comments, this series have yet to be merged into the DRM tree. 
 
-Hopefully your series can finally move forward :)
+And some of my other patches are in the same situation. 
+Do you happen to know what the next steps should be? Thank you.
 
-While e.g. RK3588 does have a PERST# input GPIO, so it could theoretically
-add a perst_deassert()/assert() function. However, when the EPC support was
-added, you did not want that, since I remember that you said that you only
-wanted that for drivers that required an external refclock.
-
-Thus, for drivers that do not require an external refclock, should we
-perhaps add your suggested code in dw_pcie_ep_linkdown()?
-
-E.g. pcie-tegra194.c does not call dw_pcie_ep_linkdown(), so I'm not
-sure if we can simply move it from dw_pcie_ep_cleanup() to
-dw_pcie_ep_linkdown() either...
-
-Perhaps we need the code in both functions?
-
-(pcie-qcom-ep.c seems to be the only function that will call both
-dw_pcie_ep_linkdown() and dw_pcie_ep_cleanup().)
-
-
-Kind regards,
-Niklas
+-- 
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
