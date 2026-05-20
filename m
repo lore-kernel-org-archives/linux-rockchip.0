@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3242CD5BB0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCAAECD5BAF
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:39:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=w5ipJsAio/2Y2HDa3mKQXNn77dCj/Fhc7xdd1ls3YD0=; b=k4C80swm4x3BIC
-	xeAo5GgEBkz/DEptol/tHvo4n/cYBrz93ohpequI55qru86MW+v+cRJz3WfTWtOS49GzZD3pGngnM
-	8jAlM6OUtgzSk2gGIGNxYgaAPYfCC70LMQwCxHwl/mvbZYlZUnhmd7aXaXkriTGj0mvyVFdEG1jYk
-	uOO9DjXfCgVCi9hShqTzpk/2y5SSjV9qBrPflfibxtyUCXgRj+aEOIJokpeMjzqXFo1BSfUeEyT8I
-	TvbKAiijBg4M293rMUqyBG7i/Mvk6gS2uMuS6hkNSUVr44tFMQZfHDgtI3fgLTmBsLgtvXRTJ784e
-	k2ClY4Tg3xKcqtBG3r8g==;
+	List-Owner; bh=5E1jaOkwYOPOpveXWCVh4ZaP4Slr3YyFcUNhEv7Xr4I=; b=Pinj+3YI0mRG64
+	Ne3EekB6jIbGeENptI9dKf6oQVxCDZJEwDrDN+iX6nlA4WPcCPQYE3gDnCW2CugoXjuAF5z24Bptj
+	nf9LK4m6pQpSBbRCMvwForFygO5/uJWVFFnnct7mNV7siZD4UNyww4OYJKROsLK4BFL3VnNlLF48m
+	F+EILFQ0pZU++VA6h3nN4/CeIx5amHTn8hnAutV1MtYd8HhSLeDBBtMckRhpr/hwu1wYniAlCAKxO
+	3bBRtCm9uIMfzMNxMHBlkF4BWzQDknLUe74zWNiE5lJGVtbbglQzU8NhjN2lVE6rXlp7+uzl01gMS
+	yMEut31FObTGEXmBLfag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPloq-00000005TL3-48hp;
-	Wed, 20 May 2026 18:39:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wPlos-00000005TPS-1uHi;
+	Wed, 20 May 2026 18:39:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPloX-00000005SmL-1TT9;
-	Wed, 20 May 2026 18:38:44 +0000
+	id 1wPloZ-00000005Sox-2Oyg;
+	Wed, 20 May 2026 18:38:45 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779302319;
-	bh=zRAMF8LCrzPkFCNWukKT3/YcDY/hXgpwyElLxCxAEnA=;
+	s=mail; t=1779302321;
+	bh=PEemA0WqVIoGoj8101WfnirTaDx5o3iLNMAMLvYhVdM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=ghOj7+Y2WqaLBmb1fhjpcjGt8NbL/wiQX/eKzhq0lp7uWth+ZSGn8TeiS2UCbeHlJ
-	 o2Ck+AsfzKkzOoTwrZ9/cjdJeOML+1nm1ywKAws0L+gZ45+rQUS8KylovagRNSSwpF
-	 9/2210zFk0lWSMPBnxlja1ETmDdt+KNQanKEcovx5VEJGHzL1tmcP3CG1Auji57Jm7
-	 PPSbCaHj2NPXjOBqpy32KNx18+KnZ746IiI3UeACn6jC4POSISVy1OHiPBjGSlxL7b
-	 vPx0aYwh5nCrDEjG4duxwbgRs9JhZZxpGAYET2O+FjxPiHYkHkh/VZciTsJuSPQYuW
-	 jOK8O0c6P5OsA==
+	b=bOTrab0tw2qVYqDV74j15s/lk/v+liWC4KXy0cSJGeOruqzoGD3+tZpZay/2FK/sZ
+	 38O0BvNQOI1pZkXywV2Wczu1pIaE2MXUVHOspfvmEv/gorJMtKKXFjKQRpWdZSlv+/
+	 58M8pHWUpkdKNWandprIxZxRv2ZL2EtgHapaYoIpQQkICZfufGY3La1nj7JVfsHCbT
+	 GiZke9Ytlxxw/PjY1HbkWQtpSsCXOVxE1aWsZrbahkvOzfAmvv8wBztsYvsiR+TYY0
+	 vEk31trLsio6cPBYCIQTacQyL/5jfwmG6/1kORYdBpkeahbx+cNX0wRZ0NggAJyuLB
+	 mYCRXP6UxsGdA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4D51D17E1523;
-	Wed, 20 May 2026 20:38:39 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 97C7B17E1544;
+	Wed, 20 May 2026 20:38:41 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 20 May 2026 21:38:22 +0300
-Subject: [PATCH v6 11/22] drm/bridge: dw-hdmi-qp: Rate limit i2c read error
- messages
+Date: Wed, 20 May 2026 21:38:25 +0300
+Subject: [PATCH v6 14/22] drm/bridge: dw-hdmi-qp: Provide
+ dw_hdmi_qp_hpd_notify() helper
 MIME-Version: 1.0
-Message-Id: <20260520-dw-hdmi-qp-scramb-v6-11-24b74603b782@collabora.com>
+Message-Id: <20260520-dw-hdmi-qp-scramb-v6-14-24b74603b782@collabora.com>
 References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -68,8 +68,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_113841_599187_12192718 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20260520_113843_790235_FE1AED6F 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,45 +86,79 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-During EDID reads, repeated i2c errors can flood the kernel log:
+Export dw_hdmi_qp_hpd_notify() for platform drivers to report hot-plug
+detection events.  Unlike drm_helper_hpd_irq_event() which polls all
+connectors, this helper targets only the affected connector and ensures
+.detect_ctx() is invoked on reconnection events to trigger SCDC state
+recovery.
 
-[   25.361716] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-[   25.363376] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-...
-[   25.368671] dwhdmiqp-rockchip fde80000.hdmi: i2c read error
-[   25.369440] dwhdmiqp-rockchip fde80000.hdmi: failed to get edid
-
-Switch to dev_err_ratelimited() in dw_hdmi_qp_i2c_read() to reduce log
-spam while still reporting the condition.
-
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 31 ++++++++++++++++++++++++++++
+ include/drm/bridge/dw_hdmi_qp.h              |  1 +
+ 2 files changed, 32 insertions(+)
 
 diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index 0dbb12743609..59da91eca929 100644
+index 001916a98da8..ed0c68d6c6fd 100644
 --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
 +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -563,7 +563,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
- 				dev_dbg_ratelimited(hdmi->dev,
- 						    "i2c read timed out\n");
- 			else
--				dev_err(hdmi->dev, "i2c read timed out\n");
-+				dev_err_ratelimited(hdmi->dev, "i2c read timed out\n");
- 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
- 			return -EAGAIN;
- 		}
-@@ -574,7 +574,7 @@ static int dw_hdmi_qp_i2c_read(struct dw_hdmi_qp *hdmi,
- 				dev_dbg_ratelimited(hdmi->dev,
- 						    "i2c read error\n");
- 			else
--				dev_err(hdmi->dev, "i2c read error\n");
-+				dev_err_ratelimited(hdmi->dev, "i2c read error\n");
- 			dw_hdmi_qp_write(hdmi, 0x01, I2CM_CONTROL0);
- 			return -EIO;
- 		}
+@@ -29,6 +29,7 @@
+ #include <drm/drm_edid.h>
+ #include <drm/drm_modes.h>
+ #include <drm/drm_print.h>
++#include <drm/drm_probe_helper.h>
+ 
+ #include <media/cec.h>
+ 
+@@ -1431,6 +1432,36 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ }
+ EXPORT_SYMBOL_GPL(dw_hdmi_qp_bind);
+ 
++/**
++ * dw_hdmi_qp_hpd_notify() - Notify a hot-plug detection event
++ * @hdmi: pointer to the DW HDMI QP controller
++ *
++ * Platform drivers should call this from their HPD interrupt handler
++ * or work function to notify the bridge of a connection status change.
++ * The bridge's .read_hpd() phy_ops callback is used to read the current
++ * connection status.
++ */
++void dw_hdmi_qp_hpd_notify(struct dw_hdmi_qp *hdmi)
++{
++	enum drm_connector_status status;
++
++	status = hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
++	dev_dbg(hdmi->dev, "%s status=%d\n", __func__, status);
++
++	/*
++	 * When the display pipeline has been already active, switch to
++	 * drm_connector_helper_hpd_irq_event() to ensure .detect_ctx()
++	 * gets invoked, i.e. via drm_helper_probe_detect(), because
++	 * drm_bridge_hpd_notify() defers to a delayed hotplug path in
++	 * this case.
++	 */
++	if (hdmi->curr_conn && status == connector_status_connected)
++		drm_connector_helper_hpd_irq_event(hdmi->curr_conn);
++	else
++		drm_bridge_hpd_notify(&hdmi->bridge, status);
++}
++EXPORT_SYMBOL_GPL(dw_hdmi_qp_hpd_notify);
++
+ void dw_hdmi_qp_suspend(struct device *dev, struct dw_hdmi_qp *hdmi)
+ {
+ 	disable_irq(hdmi->main_irq);
+diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
+index b80fceffc315..b4fb1c578a5b 100644
+--- a/include/drm/bridge/dw_hdmi_qp.h
++++ b/include/drm/bridge/dw_hdmi_qp.h
+@@ -36,6 +36,7 @@ struct dw_hdmi_qp_plat_data {
+ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
+ 				   struct drm_encoder *encoder,
+ 				   const struct dw_hdmi_qp_plat_data *plat_data);
++void dw_hdmi_qp_hpd_notify(struct dw_hdmi_qp *hdmi);
+ void dw_hdmi_qp_suspend(struct device *dev, struct dw_hdmi_qp *hdmi);
+ void dw_hdmi_qp_resume(struct device *dev, struct dw_hdmi_qp *hdmi);
+ #endif /* __DW_HDMI_QP__ */
 
 -- 
 2.53.0
