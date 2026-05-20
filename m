@@ -4,67 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3362CCD4F3D
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 17:18:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6061DCD4F3D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 17:41:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=f4635L7U5AR/sYI4hNdQtmC+IzijxWwg6HxMRb/cPQo=; b=GuPS5AGeWvMxQd
-	QfWWMRH1QVvmS/EM+68CrVKUc1zANIiSJ2BzsKn40VEDopW/3uX/+ihWEG3beZPnlqbQh6OYYQonx
-	rBkUN7/hUOekRIBeIoImzsTbR7B1L2cDgNxQuQ9ey/DgaoNj9CdwuvZ9fL/Um/oRUapCDmsyQgOvu
-	BdjqWXUHDPji9CH/tgdD27zv/L2VtH9iUnGpQwvxx1Ea5xb/xjYOg6b7B/PnNbfPGc7SnvuINQ1Zp
-	W5pVLG0IQqjnOmKBd7/jwCYTUOWCjWeeJ8M2cgibRuTTV6U6WOdBNvxgcGYjG8Kd0y5ouALPbEvrn
-	usgbZ8Bwd06i7o9wvZJQ==;
+	List-Owner; bh=WwMEVthebfooMTHrw97snXUpxcRaJXubTKXLK//lzSg=; b=LrwHBn5OSvEseT
+	eIjDXxegTM+umrYf7BQShm4CjFo6I8Vdi34M4xTwiFe3JjAASHPWC9+sroKsD3g4ZINNnIJCLK43Q
+	9TllTmaICWyxOhU9CfZ7aa/9bLjzFLJxAK6M9O0BKbJWm5YRUbN79/MHCqXSjAzlD8/R7ZmXYtaCF
+	t8RZwvt4svorYgMlcMsgkUJILNVO2oqWIy//izX5sHgqmoOsnb6rBu0JcX8qyGjcSPsl09LaQl7AJ
+	pV9GoduWoY5DvawbvVv32/Gdw6nIUhg/20y3aj4Bu0wj6wZwIMdBLwlkcKW0aSDu/albHkCuHdW+h
+	azGevJiUAACY+VQnct1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPkYf-00000005HcT-2VXH;
-	Wed, 20 May 2026 17:18:13 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wPkv8-00000005Kja-0OqQ;
+	Wed, 20 May 2026 17:41:26 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPkYd-00000005Hbr-0p67
+	id 1wPkv6-00000005KjJ-3VHu
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 May 2026 17:18:12 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1779297488; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=csS68DZzvSHu5gw7WMKqVFQxaoX1AuHVDHCGdxum/O74zC3ZfyqzU8+ceCIWbSZAT9ArebEWTTrxxiVExYurVpF7f02nuwFAdlosqErCniML1bwLFLioBHtVN6tMBdAUdc4z3fc/nj7BXkNUh8Sd/htODgX8u98S6MU3Y3s/JKI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1779297488; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=NeBwgyjZK25hQAT87Hew+crfp0Rqyjwr0cIr0wqwf44=; 
-	b=PWlGSxANwL5uhStuHeoVZT2HYxWUeHNGQ0sRl7LFANDsx2VTvdobddyYKyzp91wT13aPstBr1DdwO6ryGXQcrViyLboU8N37PP34EKW/4nhZTHZnM80V8XrXk85vuvUxR8w2iPPvECNqP0s5y8npJBGZ+EZE6Je47bvCy8It6so=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=detlev.casanova@collabora.com;
-	dmarc=pass header.from=<detlev.casanova@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1779297488;
-	s=zohomail; d=collabora.com; i=detlev.casanova@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=NeBwgyjZK25hQAT87Hew+crfp0Rqyjwr0cIr0wqwf44=;
-	b=KU5B8iiWjz18uha7sJPTtOHXqTABo34Ham0Cf7HwJ83WtcSOu/E6xZaWyXprIKPR
-	r+Bpke6scgdHD7DQAWs6xamTSKgEjEjRNlROwPMI0tvEpUp4NkvJDkDJpixO2ptBTBy
-	BqOdA/8Z6DSCzVE1y+5uk8kMJw4Hw7jbzRWOBLr4=
-Received: by mx.zohomail.com with SMTPS id 1779297486565731.5417719790839;
-	Wed, 20 May 2026 10:18:06 -0700 (PDT)
-Message-ID: <e3b93bda-fed8-4f21-b3d8-cdf28bfaba1c@collabora.com>
-Date: Wed, 20 May 2026 13:18:05 -0400
+	Wed, 20 May 2026 17:41:24 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1DA7060132;
+	Wed, 20 May 2026 17:41:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id CE5401F000E9;
+	Wed, 20 May 2026 17:41:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779298883;
+	bh=GqncshP8bMhCZVCkr7YP7QMNen7yCu2zNyWcT7d0fMk=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=SKezlBOCJ6eoZX3fHZUhYpvz7fbxd6+kEoMMa2UKmXrNd22Bewl/2BuO8NgAyEc0V
+	 Wd3n2G0axhVntgOU4mZe9fMpnN7+ZguFipT5sV/g8vJQf2oGMSOqQ7PeLakDJfolEs
+	 XI2j69UVRwdVQj7oTtVGQruqBHdS9BIBkYyyOu3/RpLdjGPr8wixo1xY8+WJMFLcrA
+	 6c6HCJH9VkLGYiTLEIn6zsdYOf/5VeqnNbCb1VoEd5OQ6eYO5blhFKBqd2BUajBGVw
+	 WVNlEis1vTnOI9Hs3fA7xv776ucl0Fa5Mn4t5S0/6bEG+jNyNUwf66mI6zJFaasG5K
+	 MRaMaTKEhzw3Q==
+Date: Wed, 20 May 2026 18:41:13 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>, devicetree@vger.kernel.org
+Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
+ dlechner@baylibre.com, jean-baptiste.maneyrol@tdk.com,
+ linux-rockchip@lists.infradead.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, Chris
+ Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V8 06/10] iio: imu: inv_icm42607: Add Buffer support for
+ icm42607
+Message-ID: <20260520184113.2c36f49a@jic23-huawei>
+In-Reply-To: <20260518200526.458421-7-macroalpha82@gmail.com>
+References: <20260518200526.458421-1-macroalpha82@gmail.com>
+	<20260518200526.458421-7-macroalpha82@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
- edges y=4 and y=12
-To: Simon Wright <simon@symple.nz>, linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
- <5797ac61-dc61-4182-ac60-cc377564ff90@collabora.com>
- <2565c949-a558-415f-8c79-e47812db8341@symple.nz>
-Content-Language: en-US
-From: Detlev Casanova <detlev.casanova@collabora.com>
-In-Reply-To: <2565c949-a558-415f-8c79-e47812db8341@symple.nz>
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_101811_295105_E8ED38DF 
-X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,77 +69,441 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: base64
-Content-Type: text/plain; charset="utf-8"; Format="flowed"
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgU2ltb24sCgpPbiA1LzIwLzI2IDAyOjQ1LCBTaW1vbiBXcmlnaHQgd3JvdGU6Cj4gSGkgRGV0
-bGV2LAo+Cj4+IFdlIGRvIG5vdCBoYXZlIGRvY3VtZW50YXRpb24gZm9yIHRoaXMgZGVjb2Rlciwg
-YnV0IGNvdWxkIHlvdSBjaGVjawo+PiB5b3VyIGRlY29kZXIgdmVyc2lvbiA/IEl0IGlzIHN0b3Jl
-IGluIHJlZ2lzdGVyIDAgYW5kIEkgZ2V0IDB4MzgzMjE3NDYuCj4gcmVhZGwoMHgyN2IwMDEwMCkg
-cmVhZHMgMHgzODMyMTc0NiBvbiBib3RoIG15IFJLMzU3NiBib2FyZHM6Cj4KPiAgICBOYW5vUGkg
-Ujc2UyAoRnJpZW5kbHlFbGVjKTogIDB4MzgzMjE3NDYKPiAgICBBcm1Tb00gU2lnZTU6ICAgICAg
-ICAgICAgICAgIDB4MzgzMjE3NDYKPiAgICBSYWR4YSBSb2NrIDREICh5b3Vycyk6ICAgICAgIDB4
-MzgzMjE3NDYKPgo+IFNhbWUgc2lsaWNvbiByZXZpc2lvbiBhY3Jvc3MgdGhyZWUgZGlmZmVyZW50
-IHZlbmRvcnMnIGJvYXJkcy4KR29vZCwgdGhhdCdzIG9uZSB0aGluZyBsZXNzIHRvIHdvcnJ5IGFi
-b3V0Lgo+PiBXaGF0IEkgZG9uJ3QgaGF2ZSBpcyBhIHRlc3Qgc2hvd2luZyB0aGF0IHRoZSBoYXJk
-d2FyZSBiZWhhdmVzCj4+IHByb3Blcmx5IHdpdGggdGhlIHZlbmRvciBkcml2ZXIuCj4+IElzIHRo
-YXQgc29tZXRoaW5nIHlvdSBjb3VsZCB0cnkgb24gdGhlIE5hbm9QaSA/Cj4gRG9uZS4gIFRoZSBS
-NzZTIGhhcyB0aGUgRnJpZW5kbHlFbGVjIEJTUCBvbiBlTU1DLCBzbyBJIGJvb3RlZCBmcm9tCj4g
-ZU1NQyAoa2VybmVsIDYuMS4xNDEsIE1QUCBjMWYxYzEyZCAyMDI1LTA5LTMwKSBhbmQgcmFuCj4g
-bXBpX2RlY190ZXN0IG9uIGxvbmcuaDI2NCAoMTkyMHgxMDgwIEguMjY0LCBvcGVuaDI2NGVuYyBT
-TVBURSBiYXJzKS4KPiBUaGVuIHJlYm9vdGVkIHRoZSBzYW1lIGJvYXJkIGZyb20gU0QgaW50byBB
-cm1iaWFuIDcuMC4xLWVkZ2Utcm9ja2NoaXA2NAo+IGFuZCByYW4gdGhlIHNhbWUgZmlsZSB0aHJv
-dWdoIHY0bDJzbGgyNjRkZWMuCj4KPiAoQXJtYmlhbidzIGJ1aWxkIG9mIExpbnV4IDcuMC54IGNh
-cnJpZXMgb25lIHVucmVsYXRlZCBya3ZkZWMuYyBwYXRjaAo+IHRoYXQgcmVtb3ZlcyBhIHZiMl9p
-c19idXN5IGNoZWNrIGluIHJrdmRlY19zX2N0cmw7IHJrdmRlYy12ZHB1MzgzLWgyNjQuYwo+IGlz
-IGJ5dGUtaWRlbnRpY2FsIHRvIHRvcnZhbGRzL2xpbnV4IG1hc3Rlci4pCj4KPiAxMCBmcmFtZXMg
-b2YgTlYxMiB2cyBhbiBhdmRlY19oMjY0IFNXIHJlZmVyZW5jZToKPgo+ICAgIEJvYXJkICAgICAg
-ICAgS2VybmVsICsgZHJpdmVyICAgICAgICAgICAgICAgRnJhbWUgMCBkaWZmCj4gICAgUjc2UyAg
-ICAgICAgICA2LjEuMTQxIHZlbmRvciBNUFAgICAgICAgICAgICAwIC8gMywxMTAsNDAwIChNQVRD
-SCkKPiAgICBSNzZTICAgICAgICAgIDcuMC4xICAgcmt2ZGVjLXZkcHUzODMtaDI2NCAgIDczMiww
-OTQgKDIzLjU0JSkKPiAgICBTaWdlNSAgICAgICAgIDcuMC42ICAgcmt2ZGVjLXZkcHUzODMtaDI2
-NCAgIDYzOSw3MjEgKDIwLjU3JSkKPgo+IFNhbWUgY2hpcCwgc2FtZSBOYW5vUGkgYm9hcmQsIHNh
-bWUgaW5wdXQsIHNhbWUgU1cgcmVmZXJlbmNlLiAgVmVuZG9yCj4gTVBQIHByb2R1Y2VzIGJpdC1l
-eGFjdCBjb3JyZWN0IG91dHB1dCBvbiBhbGwgMTAgZnJhbWVzICgwIGRpZmZlcmVuY2VzCj4gb24g
-ZXZlcnkgUC1mcmFtZSB0b28pOyB0aGUgdXBzdHJlYW0gZHJpdmVyIGNvcnJ1cHRzIGV2ZXJ5IGZy
-YW1lLiAgVGhlCj4gU2lnZTUgbGluZSBpcyBhIGRpZmZlcmVudCB2ZW5kb3IncyBQQ0Igb24gYSBz
-bGlnaHRseSBuZXdlciBBcm1iaWFuCj4gcG9pbnQgcmVsZWFzZSBydW5uaW5nIHRoZSBzYW1lIHVw
-c3RyZWFtIGRyaXZlciwgaW5jbHVkZWQgdG8gcnVsZSBvdXQKPiBhIE5hbm9QaSBib2FyZC1zcGVj
-aWZpYyBpc3N1ZS4KSSBhbHNvIGhhdmUgYW4gQXJtc29tIFNpZ2U1LCBvbiB3aGljaCBJIGNhbid0
-IHJlcHJvZHVjZSB0aGlzIGVpdGhlci4KQnV0IGl0IGlzIGEgZ29vZCB0aGluZyB0aGF0IHRoZSB2
-ZW5kb3IgZHJpdmVyIGlzIG5vdCBhZmZlY3RlZCwgaXQgYWxzbyAKcnVsZXMgb3V0IGhhcmR3YXJl
-IGlzc3Vlcy4KPj4gVGhlIG90aGVyIHJlcG9ydCBhbHNvIG1lbnRpb25lZCB0aGF0IHRoZSBpc3N1
-ZSB3YXMgaGFwcGVuaW5nIDEwJQo+PiBvZiB0aGUgdGltZSwgYnV0IHlvdSBzZWVtIHRvIHNlZSBp
-dCBldmVyeSB0aW1lLCBjb3VsZCBiZSBub3RoaW5nCj4+IHRob3VnaC4KPiAxMDAlIGhlcmUuICBF
-dmVyeSBmcmFtZSwgZXZlcnkgdGVzdCBzdHJlYW0sIG11bHRpcGxlIGlucHV0IHNvdXJjZXMKPiAo
-b3BlbmgyNjRlbmMsIHgyNjQsIE5WRU5DLCBRU1YpLCB0d28gaW5kZXBlbmRlbnQgVjRMMiB1c2Vy
-c3BhY2UKPiBpbXBsZW1lbnRhdGlvbnMgKEdTdHJlYW1lciAxLjI4LjIgdjRsMnNsaDI2NGRlYyBh
-bmQgYSBoYW5kLXdyaXR0ZW4KPiBSdXN0IHN1Ym1pdHRlcikuICBSb3dzIDQgYW5kIDEyIG1vZCAx
-NiBhcmUgZnVsbHkgY29ycnVwdGVkIGV2ZXJ5Cj4gcnVuLiAgVGhlIGV4YWN0IHBlcmNlbnRhZ2Ug
-ZHJpZnRzICgyMC4zJSBpbiB0aGUgb3JpZ2luYWwgcmVwb3J0LAo+IDIwLjU3JSBvbiBTaWdlNSB0
-b2RheSwgMjMuNTQlIG9uIFI3NlMgdG9kYXkpIGJlY2F1c2UgZnJlc2hseS0KPiBnZW5lcmF0ZWQg
-c3RyZWFtcyBoYXZlIGRpZmZlcmVudCBpbnRyYS1wcmVkaWN0aW9uIG1vZGVzLCBidXQgdGhlCj4g
-cm93cy00LzEyLW1vZC0xNiBwYXR0ZXJuIGlzIGludmFyaWFudC4KPgo+IEkgY2FuIGhvc3QgdGhl
-IGxvbmcuaDI2NCArIHN3X3JlZi5udjEyICsgaHdfYnNwLm52MTIgKwo+IGh3X21haW5saW5lLm52
-MTIgYnVuZGxlICh+MTE1IE1CKSBvbiBhIHB1YmxpYyBVUkwgaWYgaXQgd291bGQKPiBoZWxwIHlv
-dXIgcmVwcm9kdWN0aW9uLiAgQWxzbyBoYXBweSB0byBkdW1wIG1vcmUgcmVnaXN0ZXJzLAo+IGlu
-c3RydW1lbnQgdGhlIGRyaXZlciwgb3IgdGVzdCBwYXRjaGVzIHlvdSdkIGxpa2UgbWUgdG8gdHJ5
-LgpJdCBjb3VsZCBoZWxwIHRvIHVzZSB0aGUgc2FtZSBpbnB1dCBmaWxlIGFzIHlvdSAobWF5YmUg
-ZGlmZmVyZW50IHZlcnNpb24gCm9mIGVuY29kZXJzIGdlbmVyYXRlIGRpZmZlcmVudCBmaWxlcyku
-CkJ1dCB0aGUgb3V0cHV0IGZpbGVzIHdvbid0IGJlIG5lZWRlZC4KCkFub3RoZXIgdGhpbmcgdGhh
-dCBjb3VsZCBiZSBoZWxwZnVsIGlzIGluZm9ybWF0aW9uIGFib3V0IEJMMzEuCldoaWNoIHZlcnNp
-b24gYXJlIHlvdSB1c2luZyA/CkNhbiB5b3Ugc2hhcmUgdGhlIGJvb3Rsb2FkZXIgYmluYXJ5IHlv
-dSB1c2Ugb24gdGhlIFNpZ2U1ID8KSXMgdGhlIHZlbmRvciBpbWFnZSBib290ZWQgd2l0aCB0aGUg
-c2FtZSBib290bG9hZGVyIGFzIHRoZSB1cHN0cmVhbSBvbmUgPwoKIEZyb20gdGhlIHNlcmlhbCwg
-b24gbXkgc2lnZTUsIEkgZ2V0OgoKSU5GTzrCoCDCoCBQcmVsb2FkZXIgc2VyaWFsOiAwCk5PVElD
-RTrCoCBCTDMxOiB2Mi4zKCk6djIuMy04NTktZ2M0ODFlNTM2ODpkZXJyaWNrLmh1YW5nLCBmd3Zl
-cjogdjEuMTQKTk9USUNFOsKgIEJMMzE6IEJ1aWx0IDogMDk6Mzc6MjgsIE5vdsKgIDggMjAyNApJ
-TkZPOsKgIMKgIGV4dCAzMmsgaXMgZGV0ZWN0ZWQKSU5GTzrCoCDCoCBTT0MgKDB4MzU3NjAxMDEp
-CklORk86wqAgwqAgc3BlYzogMHgxCklORk86wqAgwqAgc29jIGNvbGQgYm9vdApJTkZPOsKgIMKg
-IEFSTSBHSUN2MiBkcml2ZXIgaW5pdGlhbGl6ZWQKSU5GTzrCoCDCoCBieXBhc3MgbWVtb3J5IHJl
-cGFpcgoKUmVnYXJkcywKRGV0bGV2LgoKX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlw
-QGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9s
-aXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+On Mon, 18 May 2026 15:05:21 -0500
+Chris Morgan <macroalpha82@gmail.com> wrote:
+
+> From: Chris Morgan <macromorgan@hotmail.com>
+> 
+> Add all FIFO parsing and reading functions to support
+> inv_icm42607 hardware.
+> 
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+
+https://sashiko.dev/#/patchset/20260518200526.458421-1-macroalpha82%40gmail.com
+Is unhappy.  I haven't checked closely though - might be wrong.
+
+> ---
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> new file mode 100644
+> index 000000000000..a011f1f728b9
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+> @@ -0,0 +1,482 @@
+> +// SPDX-License-Identifier: GPL-2.0-or-later
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#include <linux/delay.h>
+> +#include <linux/iio/buffer.h>
+> +#include <linux/iio/iio.h>
+> +#include <linux/minmax.h>
+> +#include <linux/mutex.h>
+> +#include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+> +
+> +#include <linux/iio/common/inv_sensors_timestamp.h>
+> +
+> +#include "inv_icm42607.h"
+> +#include "inv_icm42607_buffer.h"
+> +
+> +/* FIFO header: 1 byte */
+> +#define INV_ICM42607_FIFO_HEADER_MSG		BIT(7)
+> +#define INV_ICM42607_FIFO_HEADER_ACCEL		BIT(6)
+> +#define INV_ICM42607_FIFO_HEADER_GYRO		BIT(5)
+> +#define INV_ICM42607_FIFO_HEADER_TMST_FSYNC	GENMASK(3, 2)
+> +#define INV_ICM42607_FIFO_HEADER_ODR_ACCEL	BIT(1)
+> +#define INV_ICM42607_FIFO_HEADER_ODR_GYRO	BIT(0)
+> +
+> +struct inv_icm42607_fifo_1sensor_packet {
+> +	u8 header;
+> +	struct inv_icm42607_fifo_sensor_data data;
+One of the things sashiko doesn't like is pointers to unaligned
+structures.  I'm not sure what architectures we have that really
+don't like these still but it is correct that they can be a problem.
+
+Ultimately you need to use unaligned accessors
+
+> +	s8 temp;
+> +} __packed;
+> +
+> +struct inv_icm42607_fifo_2sensors_packet {
+> +	u8 header;
+> +	struct inv_icm42607_fifo_sensor_data accel;
+> +	struct inv_icm42607_fifo_sensor_data gyro;
+> +	s8 temp;
+> +	__be16 timestamp;
+> +} __packed;
+
+
+> +int inv_icm42607_buffer_set_fifo_en(struct inv_icm42607_state *st,
+> +				    unsigned int fifo_en)
+> +{
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	/* update FIFO EN bits for accel and gyro */
+> +	val = 0;
+> +	if (fifo_en & INV_ICM42607_SENSOR_GYRO)
+> +		val |= INV_ICM42607_FIFO_CONFIG1_MODE;
+> +	if (fifo_en & INV_ICM42607_SENSOR_ACCEL)
+> +		val |= INV_ICM42607_FIFO_CONFIG1_MODE;
+> +	if (fifo_en & INV_ICM42607_SENSOR_TEMP)
+> +		val |= INV_ICM42607_FIFO_CONFIG1_MODE;
+Odd to see these all set same bit like this.  Why not something
+that will stop confusing sashiko (and me ;) because it explicitly
+sets teh value only once.
+
+	if (fifo_en & (INV_ICM42607_SENSOR_GYRO |
+		       INV_ICM42607_SENSOR_ACCEL |
+		       INV_ICM42607_SENSOR_TEMP))
+		val = INV_...
+
+
+ 
+> +
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->fifo.en = fifo_en;
+> +	inv_icm42607_buffer_update_fifo_period(st);
+> +
+> +	return 0;
+> +}
+
+> +
+> +/**
+> + * inv_icm42607_buffer_update_watermark - update watermark FIFO threshold
+> + * @st:	driver internal state
+> + *
+> + * Returns 0 on success, a negative error code otherwise.
+> + */
+> +int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st)
+> +{
+> +	const struct device *dev = regmap_get_device(st->map);
+> +	unsigned int wm_gyro, wm_accel, watermark;
+> +	u32 latency_gyro, latency_accel, latency;
+> +	u32 period_gyro, period_accel;
+> +	size_t packet_size, wm_size;
+> +	__le16 raw_wm;
+> +	bool restore;
+> +	int ret;
+> +
+> +	packet_size = inv_icm42607_get_packet_size(st->fifo.en);
+> +
+> +	/* compute sensors latency, depending on sensor watermark and odr */
+> +	wm_gyro = inv_icm42607_wm_truncate(st->fifo.watermark.gyro, packet_size);
+> +	wm_accel = inv_icm42607_wm_truncate(st->fifo.watermark.accel, packet_size);
+> +	/* use us for odr to avoid overflow using 32 bits values */
+> +	period_gyro = inv_icm42607_odr_to_period(st->conf.gyro.odr) / 1000UL;
+> +	period_accel = inv_icm42607_odr_to_period(st->conf.accel.odr) / 1000UL;
+> +	latency_gyro = period_gyro * wm_gyro;
+> +	latency_accel = period_accel * wm_accel;
+> +
+> +	/* 0 value for watermark means that the sensor is turned off */
+> +	if (wm_gyro == 0 && wm_accel == 0)
+> +		return 0;
+> +
+> +	if (latency_gyro == 0) {
+> +		watermark = wm_accel;
+> +		st->fifo.watermark.eff_accel = wm_accel;
+> +	} else if (latency_accel == 0) {
+> +		watermark = wm_gyro;
+> +		st->fifo.watermark.eff_gyro = wm_gyro;
+> +	} else {
+> +		/* compute the smallest latency that is a multiple of both */
+> +		if (latency_gyro <= latency_accel)
+> +			latency = latency_gyro - (latency_accel % latency_gyro);
+> +		else
+> +			latency = latency_accel - (latency_gyro % latency_accel);
+> +		/* all this works because periods are multiple of each others */
+> +		watermark = latency / min(period_gyro, period_accel);
+> +		watermark = max(watermark, 1);
+> +		/* update effective watermark */
+> +		st->fifo.watermark.eff_gyro = max(latency / period_gyro, 1);
+> +		st->fifo.watermark.eff_accel = max(latency / period_accel, 1);
+> +	}
+> +
+> +	/* changing FIFO watermark requires to turn off watermark interrupt */
+> +	ret = regmap_update_bits_check(st->map, INV_ICM42607_REG_INT_SOURCE0,
+> +				       INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
+> +				       0, &restore);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* compute watermark value in bytes */
+> +	wm_size = watermark * packet_size;
+> +	raw_wm = INV_ICM42607_FIFO_WATERMARK_VAL(wm_size);
+> +	memcpy(st->buffer, &raw_wm, sizeof(raw_wm));
+
+Shout a bit (comment) about this being le vs the be buffer. 
+
+> +	ret = regmap_bulk_write(st->map, INV_ICM42607_REG_FIFO_CONFIG2,
+> +				st->buffer, sizeof(raw_wm));
+> +	if (ret) {
+> +		dev_err(dev, "Unable to change watermark value: %d\n", ret);
+> +		if (restore)
+> +			regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
+> +					   INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
+> +					   INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
+regmap_set_bits()
+> +		return ret;
+> +	}
+> +
+> +	/* restore watermark interrupt */
+> +	if (restore) {
+> +		ret = regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
+> +					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
+> +					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
+regmap_set_bits()
+> +		if (ret)
+> +			return ret;
+> +	}
+> +
+> +	return 0;
+> +}
+>
+
+> +int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
+> +				  unsigned int max)
+> +{
+> +	const void *accel, *gyro, *timestamp;
+> +	size_t i, max_count;
+> +	const s8 *temp;
+> +	ssize_t size;
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	/* reset all samples counters */
+> +	st->fifo.count = 0;
+> +	st->fifo.nb.gyro = 0;
+> +	st->fifo.nb.accel = 0;
+> +	st->fifo.nb.total = 0;
+> +
+> +	/* compute maximum FIFO read size */
+> +	if (max == 0)
+> +		max_count = sizeof(st->fifo.data);
+> +	else
+> +		max_count = min((max * inv_icm42607_get_packet_size(st->fifo.en)),
+> +				sizeof(st->fifo.data));
+> +
+> +	/* read FIFO count value */
+> +	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_FIFO_COUNTH,
+> +			       st->buffer, sizeof(u8) * 2);
+Given buffer is an array of __be16, use size of buffer[0] to say you want to 
+read one value.
+
+> +	if (ret)
+> +		return ret;
+> +	st->fifo.count = be16_to_cpup(st->buffer);
+whilst it is the same thing we can use the easier to read
+	st->fifo.count = be16_to_cpu(st->buffer[0]);
+again making it clear this is just using one __be16 from
+the array.
+
+> +
+> +	/* check and clamp FIFO count value */
+> +	if (st->fifo.count == 0)
+> +		return 0;
+> +
+> +	st->fifo.count = min(st->fifo.count, max_count);
+> +
+> +	/* read all FIFO data in internal buffer */
+> +	ret = regmap_noinc_read(st->map, INV_ICM42607_REG_FIFO_DATA,
+> +				st->fifo.data, st->fifo.count);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* compute number of samples for each sensor */
+> +	for (i = 0; i < st->fifo.count; i += size) {
+> +		size = inv_icm42607_fifo_decode_packet(&st->fifo.data[i],
+> +				&accel, &gyro, &temp, &timestamp);
+> +		/* Make sure the size is at least 1 valid packet. */
+> +		if (size < INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE)
+> +			break;
+> +		/* Error if we are going to overflow the buffer. */
+> +		if (i + size > st->fifo.count)
+> +			return -EIO;
+> +		if (gyro != NULL && inv_icm42607_fifo_is_data_valid(gyro))
+> +			st->fifo.nb.gyro++;
+> +		if (accel != NULL && inv_icm42607_fifo_is_data_valid(accel))
+> +			st->fifo.nb.accel++;
+> +		st->fifo.nb.total++;
+> +	}
+> +
+> +	return 0;
+> +}
+
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+> new file mode 100644
+> index 000000000000..b77deb66f8bd
+> --- /dev/null
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+> @@ -0,0 +1,93 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +/*
+> + * Copyright (C) 2026 InvenSense, Inc.
+> + */
+> +
+> +#ifndef INV_ICM42607_BUFFER_H_
+> +#define INV_ICM42607_BUFFER_H_
+> +
+> +#include <linux/bitops.h>
+> +
+> +struct inv_icm42607_state;
+> +
+> +#define INV_ICM42607_SENSOR_GYRO	BIT(0)
+> +#define INV_ICM42607_SENSOR_ACCEL	BIT(1)
+> +#define INV_ICM42607_SENSOR_TEMP	BIT(2)
+> +
+> +/**
+> + * struct inv_icm42607_fifo - FIFO state variables
+> + * @on:		reference counter for FIFO on.
+> + * @en:		bits field of INV_ICM42607_SENSOR_* for FIFO EN bits.
+> + * @period:	FIFO internal period.
+> + * @watermark:	watermark configuration values for accel and gyro.
+> + * @count:	number of bytes in the FIFO data buffer.
+> + * @nb:		gyro, accel and total samples in the FIFO data buffer.
+> + * @data:	FIFO data buffer aligned for DMA (2kB + 32 bytes of read cache).
+> + */
+> +struct inv_icm42607_fifo {
+> +	unsigned int on;
+> +	unsigned int en;
+> +	u32 period;
+> +	struct {
+> +		unsigned int gyro;
+> +		unsigned int accel;
+> +		unsigned int eff_gyro;
+> +		unsigned int eff_accel;
+> +	} watermark;
+> +	size_t count;
+> +	struct {
+> +		size_t gyro;
+> +		size_t accel;
+> +		size_t total;
+> +	} nb;
+> +	u8 data[2080] __aligned(IIO_DMA_MINALIGN);
+> +};
+> +
+> +/* FIFO data packet */
+> +struct inv_icm42607_fifo_sensor_data {
+> +	__be16 x;
+> +	__be16 y;
+> +	__be16 z;
+> +};
+> +
+> +#define INV_ICM42607_FIFO_DATA_INVALID		-32768
+> +
+> +static inline bool
+> +inv_icm42607_fifo_is_data_valid(const struct inv_icm42607_fifo_sensor_data *s)
+> +{
+> +	s16 x, y, z;
+> +
+> +	x = be16_to_cpu(s->x);
+> +	y = be16_to_cpu(s->y);
+> +	z = be16_to_cpu(s->z);
+
+The input structure is unaligned and I think so are these so you need
+get_unaligned_be16() 
+
+
+> +
+> +	if (x == INV_ICM42607_FIFO_DATA_INVALID &&
+> +	    y == INV_ICM42607_FIFO_DATA_INVALID &&
+> +	    z == INV_ICM42607_FIFO_DATA_INVALID)
+> +		return false;
+> +
+> +	return true;
+> +}
+> +
+> +ssize_t inv_icm42607_fifo_decode_packet(const void *packet, const void **accel,
+> +					const void **gyro, const s8 **temp,
+> +					const void **timestamp);
+> +
+> +extern const struct iio_buffer_setup_ops inv_icm42607_buffer_ops;
+> +
+> +int inv_icm42607_buffer_init(struct inv_icm42607_state *st);
+> +
+> +void inv_icm42607_buffer_update_fifo_period(struct inv_icm42607_state *st);
+> +
+> +int inv_icm42607_buffer_set_fifo_en(struct inv_icm42607_state *st,
+> +				    unsigned int fifo_en);
+> +
+> +int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st);
+> +
+> +int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
+> +				  unsigned int max);
+> +
+> +int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
+> +				     unsigned int count);
+> +
+> +#endif
+> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> index bc0cefa2fb77..29573d4fc0f0 100644
+> --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> @@ -15,6 +15,7 @@
+>  #include <linux/regulator/consumer.h>
+>  
+>  #include "inv_icm42607.h"
+> +#include "inv_icm42607_buffer.h"
+>  
+>  static bool inv_icm42607_is_volatile_reg(struct device *dev, unsigned int reg)
+>  {
+> @@ -73,6 +74,38 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+>  };
+>  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+>  
+> +u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr)
+> +{
+> +	static const u32 odr_periods[INV_ICM42607_ODR_NB] = {
+> +		/* 1600Hz */
+
+No need for comment as it's now obvious
+
+> +		[INV_ICM42607_ODR_1600HZ] = 625000,
+> +		/* 800Hz */
+
+Do [] = assignment for all of them and drop all the comments as they
+will be unneeded.
+
+> +		1250000,
+> +		/* 400Hz */
+> +		2500000,
+> +		/* 200Hz */
+> +		5000000,
+> +		/* 100 Hz */
+> +		10000000,
+> +		/* 50Hz */
+> +		20000000,
+> +		/* 25Hz */
+> +		40000000,
+> +		/* 12.5Hz */
+> +		80000000,
+> +		/* 6.25Hz */
+> +		160000000,
+> +		/* 3.125Hz */
+> +		320000000,
+> +		/* 1.5625Hz */
+> +		640000000,
+> +	};
+> +
+> +	odr = clamp(odr, INV_ICM42607_ODR_1600HZ, INV_ICM42607_ODR_1_5625HZ_LP);
+> +
+> +	return odr_periods[odr];
+> +}
+> +
+>
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
