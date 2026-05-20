@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E242CD5BAA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA7F0CD4F3D
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:39:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=S/HUmnR7v1S3MeAhHt8Gs6jTG4qpok5Q84BPDHYvmzs=; b=brkeF5KJOg2pwh
-	M5S7NPHX+wNRPm5rn6y77zFdZPD8yJ3kpLftOQjtp4M9Bg8SLXHgHuqiFkmCIzlEODv0F4lizvjlc
-	OxsN4bTJdJpLiasaLgnNT+0wMvQbgNvUxL9OqBeQieKpwtBnL6nazyzMaQdORL+Dh7y7hHVA1PPoq
-	NpzuVNanPTXUh+Ny9wbF5I2WBJIuRv2HEA+QuwW2CFnjHBK+Fd9B4hb5KTcbUVc+15Nyj5z/IlOx/
-	acvxAOBGq2ZhKujI7Dpo3+NLpMjQF62/1XGkmRcfPp7aJLwO+TbVSuta9I5aJI8Xt5xpMMoUcX4PK
-	qNqJ9nPMvM3Y9wLUyjkQ==;
+	List-Owner; bh=qzSBTsSG+BSQaO2TDLdtCNpudiVdNO69jkFCFqr+1mE=; b=JxLNsyL7mITHI7
+	zkLdSJwOrhNq8tR9j1hxvyrk4E3UOH73Zmq4lG5j4cl/PD1exynXvOiqt+Sq7fvuwgdvPy/LaUp6/
+	OOxlqpgvULBR3063jQmFx3e3ruYevXk+2AW0V9VMr4MMirZ4tDWvuieKrlKofCSCvT7v5vfpL1Od/
+	sx63ROqDjNKuOdSPx2a5FMRaWVfKUE5kiEChlBzNK0UmyMp8PU3gJ71zvMW7KKdthL+WFJnWW4HqW
+	aYPqKjj2vJgFBk8m7u4DWcHsXfntlOVkHwm6Lax+xanUsCJVBlt5d1lSpApbDTQEKS0o9kSAvoxNt
+	hasMAszQZHcX9Jn+o3OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlp1-00000005Tkf-1qVB;
-	Wed, 20 May 2026 18:39:11 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wPlp0-00000005Tha-19lF;
+	Wed, 20 May 2026 18:39:10 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPloc-00000005SsS-22xg;
+	id 1wPlob-00000005SrR-3b5B;
 	Wed, 20 May 2026 18:38:47 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1779302324;
-	bh=/GXMxiVPMFLDQraehtjCiHmR576DEWNcKvvfOLlYRVQ=;
+	bh=ezpQnhTTmg3Hdk8LgylA5qYr3YAkIuSG1s5I1ynHNvE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=UMF/5/w2Zj6v105rT61hV4o/R6HIQ2nF7z/RSjZ2uede/+iYx7zg/AYlw2DLkhaQI
-	 qGTE4COzDqP2dh+gSnfdveUdI2VFVHnusbHNXCO5QIHnX0pR12nS6afa2Pyy/k1vwE
-	 GDcSF16iELyqwZqhS+gvQu11B3mchyDp/e7dsV6QcojSRrMNmZlgkmIR0+vMTjxLES
-	 9EztAaonx0E9prktFxZwCNtExG0NL0WD6DeoOpBP7JoUVhwP8oIr3+ccLVtw+jebdv
-	 lQSazE5EI0uvmGtlqOqII9Rsdz6vbtjTZQTECzm3E9Hvt2lixkMAHOeW3oovFX5h92
-	 6JTXLcrwGJOog==
+	b=ZrgsGHb7LQxOSWs1KCUJ6V/gzfimdfaW9Ayb4KyqjYboVm57o+T3Y2odtXdjehOFX
+	 w4E6CweLOZ1T4R3wkq6IC1ezVSL8uyKlp7TnbC+/34eoW+9l1quYPXY+8/s1hBx5fm
+	 eZWzYJ51lei7ghT+lnwpxy2f32lBnhaA6/B8jB9fqT2ON1+B++mGSE4rIx1am6obFG
+	 cj2SgAkltwZzQqRJMPYlE4hSqRNppPUhNe0HQXzpxS2qCsFU3h1nTabTfCGIanb+Wx
+	 WgaYxJ8itBhQawQgkCdEJEZWskvI83r0Rwz2T2vC6137sxL1qHcmAEds3Fc79E3wNJ
+	 8/nW+d+JL6SqA==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A9D9817E1574;
-	Wed, 20 May 2026 20:38:44 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DF8DB17E1562;
+	Wed, 20 May 2026 20:38:43 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 20 May 2026 21:38:29 +0300
-Subject: [PATCH v6 18/22] drm/rockchip: dw_hdmi_qp: Defer HPD IRQ enable
- until after connector setup
+Date: Wed, 20 May 2026 21:38:28 +0300
+Subject: [PATCH v6 17/22] drm/rockchip: dw_hdmi_qp: Drop unnecessary
+ #include
 MIME-Version: 1.0
-Message-Id: <20260520-dw-hdmi-qp-scramb-v6-18-24b74603b782@collabora.com>
+Message-Id: <20260520-dw-hdmi-qp-scramb-v6-17-24b74603b782@collabora.com>
 References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -65,12 +65,12 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Daniel Stone <daniels@collabora.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_113846_688711_7B4462FE 
-X-CRM114-Status: GOOD (  11.67  )
+X-CRM114-CacheID: sfid-20260520_113846_048418_97258ACF 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,42 +87,25 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Request the HPD IRQ early in bind() with IRQF_NO_AUTOEN, keeping it
-disabled until all DRM resources are fully initialized, at which point
-enable_irq() arms it.  This prevents premature interrupt delivery
-without forcing devm_request_threaded_irq() to the very end of the
-initialization sequence, which would complicate error unwinding.
+drm/drm_simple_kms_helper.h is no longer used, remove the include
+directive.
 
-Note that IRQF_NO_AUTOEN is incompatible with IRQF_SHARED; the latter is
-dropped as this IRQ has no other users.
-
-Suggested-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 1 -
+ 1 file changed, 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 8d64b76a1aa5..27342094958c 100644
+index 46df5abe31a4..8d64b76a1aa5 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -579,7 +579,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	ret = devm_request_threaded_irq(dev, irq,
- 					cfg->ctrl_ops->hardirq_callback,
- 					cfg->ctrl_ops->irq_callback,
--					IRQF_SHARED, "dw-hdmi-qp-hpd",
-+					IRQF_NO_AUTOEN, "dw-hdmi-qp-hpd",
- 					hdmi);
- 	if (ret)
- 		return ret;
-@@ -601,6 +601,8 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		return dev_err_probe(dev, PTR_ERR(connector),
- 				     "Failed to init bridge connector\n");
+@@ -24,7 +24,6 @@
+ #include <drm/drm_managed.h>
+ #include <drm/drm_of.h>
+ #include <drm/drm_probe_helper.h>
+-#include <drm/drm_simple_kms_helper.h>
  
-+	enable_irq(irq);
-+
- 	return 0;
- }
+ #include "rockchip_drm_drv.h"
  
 
 -- 
