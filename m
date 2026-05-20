@@ -4,63 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4360ACD4F54
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 06:46:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7C23CD4F54
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 06:46:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U3IWAdXR12ZIrvC2xxGtJ1KZJ8t3dOYRlI20YUumLe8=; b=LlnknbWC0vkLbR
-	TFqpfXCfYHyhdHGcob8Bj8fyKM0HfHPTPTu1MxjzNJEYbPjd6y3Fqe4hMApcGLGVPcU1dkYJtRIY8
-	oeDh4fZHr/MDkCtJx/OvN81bb1Gbv8xW2vQtSUg79wOOrN01oKfpcmdS5P4UsXUPIicdLkxUWwkLB
-	+hKoWDC0/8q5AJMAJoblbuA2TYC5b2PWj9j3uLYNJkDzeBE1TSRqs76XKgx0iG0VDlYCnxspSKiJE
-	VoRbdpuWbGNe2bRN9elDYu9etBO9VRSknCaoipP4/8FTHeVZ1s+GUxLIMjFdVqiLt4hKzTp1Ho1xl
-	7Mx1EsxeeyGiR2xSeX8A==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=7AYl4imnEYz2GApQJvuYJvB6KFLiPqoBES/CrJ3iwVM=; b=n61LXKFNTfnD0kS1mVP/qSPzBV
+	D+V5xD74KQz/uLLvfmG/KrrR5mghhxPZenZPkCOgbQgZBvrTUMKMR9l+cPdBMKzQPRlha1gyDSu/2
+	YvBXJCkhJI9/Cfuxm13x1uwZcGRC/CQol1IBRppPu3+lwvf6Ihbf4HUTBLOVXSdXuCho1ZKBCBRg4
+	k4tDJlzhxMtDf21pQVlxXHfWkQsXzuXgD2g/LutQ8bJ1CDmZHx2eBa/a9kMqLODHhsWsqf+94H8HF
+	Eqm4T77MfhOeZDC7mU3nfnbVVWsGQSNjT6CC5KwkjURtoLVZ0V2Lv8sEhpDcPcEyh5hus3pb17R29
+	Mg4TUZyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPah3-00000003haU-21ZS;
-	Wed, 20 May 2026 06:46:13 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1wPahJ-00000003hfG-2JMX;
+	Wed, 20 May 2026 06:46:29 +0000
+Received: from mail-australiaeastazon11020074.outbound.protection.outlook.com ([52.101.150.74] helo=SY8PR01CU002.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPagz-00000003hYf-0tT3
+	id 1wPahF-00000003hbm-0qXz
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 May 2026 06:46:11 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 72426C2B9FA;
-	Wed, 20 May 2026 06:46:58 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id AC8436070E;
-	Wed, 20 May 2026 06:46:04 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7F087107E8EB1;
-	Wed, 20 May 2026 08:45:51 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1779259562; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=dKcYje4RS7cFmYoZ2tIYKDA+VMl5+PAkjiozJ5zsCH4=;
-	b=MPo/MyjFKZ6BLm7Xiy+fB0ERKTpIT0x6QG+V098ck6ZrRqCxnovmlWjPKem/Awa8nRtVV+
-	I7TOtCWoxJEkX1bOZTr8+JUy26Fm7leRcwuQQFlxzJWJZbVOgmhNoDitsYwqnkKJqipDxb
-	wiKdpc1Vmww38H2Xkj5bjaekS8bK8sdcWHRGOCiVYkeTHonfCOH8g8BKk+x2s8TPSUrDGA
-	FEczjeTg5EUO/2/MDs29H+6Jq/BSFK9aNLeTpyFGmiUK4/rB4fFd68inDJvxE0BjyFkUBt
-	q8c4k1nLmHbvNtJbKPg0Ce8TtFJzhug7firDgpkrVHalWizJUAcg2FPap/P3VA==
+	Wed, 20 May 2026 06:46:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=NHscXc6Eom0E6SNJ7aM1dAVh7cFl91wPVOWvS3dVh4lcwGhwnv82wg0TnkBWDWmn7Pwy8RVoiVrz68v2m7ubqClMbFFThRzoQgW4TSdFFdney3CIQe3Wk76JOtWAh+t5A7y7W9oemaYK76XFwohVEqJbGwaNB7f++BbrL1uSJbvw64vfpqEAtYmykie8CEWb69ZnDttVOLgQHdWGv2kdFVWFuX+vck3MxgBUysV6w2+j5jaJ9e25vtbm8NxpbiwDlqGhj/vM9sp6EzWgF89b0s6umgpxhRJ7VG1LAoXpOXa2fuUpj7YoGBS6hldgfoV9EQXSnpfryfizdo9GrHdOKw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=SXSbnCRGS5jGwmn6tEsG1hy78vJP4CRC6mKBKDRWRlI=;
+ b=uiZ7YCUOQ+yEucaMmlZ1nBiWX2HI6w5aGPbGjxx6zlGK08Js4hY1qls+kOUMw1A5Me7wI4l4JRFLX/JnuOABtOY29/UN7QDPjws6yPxNYM6msCHJbyad8BVzyZ+NGhKdRNm37D2tK2zbrIHQ3JC4iKM601Ob4qhXcqVjB+26kI47fOncpHivU8jYTDUiK1vduFe7gfhGwKlA9BDSH/709J09cE6Xrc+YkqS3OT64EwhMfqT3KiVRRlQSDeeltG0hqtIHvrCZCukEuukIUuaMPUgcojVsqsJLnimDZCvUviSRmTM/JlrVmfJz+K9DCp8ymuLL5th1p1xff0eBIYSR6g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=symple.nz; dmarc=pass action=none header.from=symple.nz;
+ dkim=pass header.d=symple.nz; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=symple.nz;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SXSbnCRGS5jGwmn6tEsG1hy78vJP4CRC6mKBKDRWRlI=;
+ b=BgXNkKZoPq6c2fQ4AMdcGfdBmUYEhr91qqLTraDvGgtI0agYpfNOa4qTFIbgqALQ+ZFrUtgLa8GlFYPSHZGK7RtDKDtnzkSgAdrlnoRv6ErailoGE7PWVO9tNWfPWWDvLlfI3vkDmlPUc1J5JPN66LnL4MAtdJIFBFtQssISajLqp+A28f3FKkU9AwCuoZxmMl+X8X61/qIGYK7C05U9WEFBCYce6QWdAgk3xuKqHpZrzWN+taXZDJjfEXrXVP4pAgTxrbvZ2P/2Xc3mwTzzSu0IH+umVlKk4q5mVTQyLGx2JTA8EEb+2vIcSZM/AY/Fmvw8vwoJSNVHB8rXIvjnkQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=symple.nz;
+Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
+ by ME3P282MB3790.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:1bd::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.14; Wed, 20 May
+ 2026 06:46:01 +0000
+Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::4619:bdb0:3293:3834]) by ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::4619:bdb0:3293:3834%5]) with mapi id 15.21.0048.013; Wed, 20 May 2026
+ 06:46:00 +0000
+Message-ID: <2565c949-a558-415f-8c79-e47812db8341@symple.nz>
+Date: Wed, 20 May 2026 18:45:57 +1200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
+ edges y=4 and y=12
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
+ <5797ac61-dc61-4182-ac60-cc377564ff90@collabora.com>
+Content-Language: en-NZ
+From: Simon Wright <simon@symple.nz>
+In-Reply-To: <5797ac61-dc61-4182-ac60-cc377564ff90@collabora.com>
+X-ClientProxiedBy: AK0P299CA0022.NZLP299.PROD.OUTLOOK.COM
+ (2603:10c6:108:15::27) To ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:220:b2::11)
 MIME-Version: 1.0
-Subject: Re: [PATCH v7 04/23] drm: bridge: dw_hdmi: Hold bridge ref until
- connector cleanup
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <e90eddfc-2f57-418a-ae05-43a411d72b99@kwiboo.se>
-References: <20260518180206.2480119-1-jonas@kwiboo.se>
- <20260518180206.2480119-5-jonas@kwiboo.se>
- <177919241969.545972.18169905222569864569.b4-review@b4>
- <e90eddfc-2f57-418a-ae05-43a411d72b99@kwiboo.se>
-Date: Wed, 20 May 2026 08:45:49 +0200
-Message-Id: <177925954999.1337464.14745526881417951688.b4-reply@b4>
-X-Mailer: b4 0.15.2
-X-Last-TLS-Session-Version: TLSv1.3
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: ME3P282MB2196:EE_|ME3P282MB3790:EE_
+X-MS-Office365-Filtering-Correlation-Id: 00a66189-9513-46e6-abca-08deb63b7301
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|376014|1800799024|3023799007|5023799004|4143699003|18002099003|22082099003|56012099003;
+X-Microsoft-Antispam-Message-Info: ohkr4CQJfxbqKeapemqxu9KLe1Dzdm+Ce1upgk+g2no18wRuj5+pxTofxyjfo/+rjaFLqD7Z47ULppK1vXtXJv/lWdGwe2Xt/t9u+BjKYKlJel2q85mF1gmcawjmnop/uHJUmSzajowuuJlYJGUrzUxTAX1AyuZooY2V05l4/GJOjji1dvNO0pfJvK1LS3q1kXvdGfHT27YtYJhkqQ6ewBSzL1IqYEgJyOopuIn8P2xWEpRVxqb0WBlNaAi1KnhjMLkMM/7uT5UlhqLHDF4HekB8i6hAKgk6jaYtaHOeP2geohva4v2CEKyIuhf89O1Cj36NKTyJtdZw/ajNDzq8uPYbNx1Be0jo9ueWcN4Yg0PpcwegnXWtnPqMJxlI9RIXLH+pWceH3kI8TRglbOvdFKu0ri5LwdsJ3NZpwcM0qHsjyYem5lnZ8G5kGXTKc++lkhulnwmcw9b5rgVtr8PCNQtcHYqP7u3MWPP0iEFfDIXHZKkfsA9Yl0Vp/0t3LrrgL5AjTlPx5dWopN8MoUIKWNZU8jBpy8KRLTPPNJMJZgsJsnPr26LOdLQVjr8UE7H92Ybfap3tJVg1B9LbgsJ72UHS8MTB1pBiY/fgk6sN4dMdiyhOkWWufuKGL9XXzdpgQhcctVGIHFoSLcoN20Rp9lyHJ4ZQ3M+MztXyhkcfhtnUnWciHl3ovZ4bqM61t2a/
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(366016)(376014)(1800799024)(3023799007)(5023799004)(4143699003)(18002099003)(22082099003)(56012099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RmxEWEsrOWoxTTgzTkNoQmJwaERzc0lsRmZGWk8ydW9xQXpuaHZEaGlFYjJZ?=
+ =?utf-8?B?SkpXb0Z5Sks4S1VWcXFSdDA3SjR0SGpReTN6UWhHL1lOL0g4Y3ZMZnlramdu?=
+ =?utf-8?B?VFF3R09HZDBkYzZUcWZ5bXFmNlN3cytuSW9ZTUt5OEhWa0dqRWNQRjROSzhZ?=
+ =?utf-8?B?enlSMmR3Y0RXYVNQZkpuSVZkMnliVUVsajVyTW96K01zSGptcjJYd2cyOWNM?=
+ =?utf-8?B?b1l3dVZMZzZlY25jSGcrMEFQOWpQTWdscndUMmptYmVJQzEwSEFJTExuUitk?=
+ =?utf-8?B?aDRLZGlnNVhYcExDeGw3NWU4VE1XZ3BMYnFqRXVhZ25TcHBQSTEybU5yZ0E3?=
+ =?utf-8?B?L3JyQVdKTW1aN05ibW1yRk1WcEUvb2tlV0cyd24vejBDLzErK0FUcmYybGFx?=
+ =?utf-8?B?SE5sZ3VlMnRpM2U3WjRpOCs4WFlveGp3YXdydWU5MFJRZXdLb0xVNlE0T1Bv?=
+ =?utf-8?B?UFNkbHkzb0FKY3dQYWZmRFdUeFNiSFdsRExaZkhGdDFWUHZyVEJPZk8vNFBN?=
+ =?utf-8?B?ZVdLR2xsMFc4UUoyQ2dpU0g4b1pSRVhtS0VHU3IxL3lzWmtWMnNBWDA3bVFO?=
+ =?utf-8?B?bGdFK0Rtb2hHZjJxMHp0RG5EaWRiS2xzbkhxTk5EVWRFb1BnaDkwVjVsMHNB?=
+ =?utf-8?B?czI3UEpwbTcvNGdEWVdaa1hudW9WRHpWMFg5dHZqVXRYOER1SkR4VmV2MnRT?=
+ =?utf-8?B?SFFzVFRNdWdsaFViQTVubWYzcWxoMEdESmNQMi93YlFTTldQWjI4R2w0NTJO?=
+ =?utf-8?B?V3d5eDFwbnRCZmltYks5MUYxUkExWU1BYzRzZ3l6NmFrYlB4OHJUR21tYThP?=
+ =?utf-8?B?WUdaU1B4SytYZ1YyZmtyN1ZQTmtxaXZpTW1QZy9aY3hDUUFQT0czRFFPbExs?=
+ =?utf-8?B?Z1Z4eklZMk00TVRPUEs5S1dJeC9CZ3ZiaWltMEFVUUlDTElldnFRemxOVXZa?=
+ =?utf-8?B?OGNHMWlzS3RPbmlwekxOczc4SGtxZGJ3OHJ1VnM4N3pXd0NzNTVBVG9WN1lu?=
+ =?utf-8?B?bUpwYUh1WDJ1NFZYN3UrYTNGaDRiYW9IczJ3d0NwZDZDcTh6bWN4bUZMamVy?=
+ =?utf-8?B?eXhkd29nQ3ZkWVlPbitvK3Z0RFIvUmVtZzZPSFFTU2NDTGhoMnBWeDU1NDcv?=
+ =?utf-8?B?YjdCanBmNXJnekJaY0dvZk1ucmhMWGZaOUxOZUVoQjJRU0xCbHg3NzJhODU5?=
+ =?utf-8?B?aHN0ZkY0MzYzS2Fyb3JnalVxM0Z0U0NzSHNYUDdLd3VDQnozV09SWFdGczBr?=
+ =?utf-8?B?OEVuWHZRLy94bDFhdWpLZi9RR29DMWU1YXJ1YktJVEErWlorVEE0dFdjUnNs?=
+ =?utf-8?B?VWFITmZuQUQxU09kYmlwMjA2T3lyd1N5ekNYZ0VtSFRHYUxiMWdmckY1Zmdj?=
+ =?utf-8?B?ZzljT09GY25ITTYxSVoyeWVuNU5zUWpKVjRtbzRRYmRSYWR3SXNCZHJlZHpE?=
+ =?utf-8?B?L0pqOHcyNXZnRVE0K3VzWC9yYUhSRURjRnVOS3ZYN243YS9ZZlNYaWVKTVRu?=
+ =?utf-8?B?QmhjOTVidlhoV0pmNitjc3BGRXlhbTNqNjFBUXFtSXZHUXlpSnpZVUxLdDI3?=
+ =?utf-8?B?OTF4ZUF1M1JBRitiQzJmdGI3eis2Zjd2YkthTncvVnJFcWFFV2p1SUxuV2FD?=
+ =?utf-8?B?L2lsNUZBZ3F1WXhPVFljc2w5ekgyZ2pDcUFwL2E5d1FFZ0xNSVpxd3hZQjAr?=
+ =?utf-8?B?M3hGTG9pa0NYYnpRajNhbEg3RGplTi9tV2hNRGRIM09MOXlHdDFwckJEMWIx?=
+ =?utf-8?B?WUxFWStjL05SWE1lOWZ6RmFIT0tzM3U0NmQxRHJoQllqTy9KZjhIZHNpM2o2?=
+ =?utf-8?B?dGFtV0F6ekdXMENIaVJaYkdTMmtSUU5IY3A5ZGtGN0hPRWpUQXBqd0RKOHcv?=
+ =?utf-8?B?RmhoS3hQbklXVnN0ZEwvemxPZno0cEVyVys1bVBpZmhIYnIvSjlhY3VHVktL?=
+ =?utf-8?B?R0ozRFI3b0xITnpkMlZ6WFUvM0NpMlRIUU1zNll3WmJicU1rVHREOGJuV0xx?=
+ =?utf-8?B?bjhOZnM5OGhQQkkzMGVLZmVZN25Hb0lvRS80Mlp3QjFSYW01dy9McmhtM2xX?=
+ =?utf-8?B?clFPUUxzTnVwaXlMOHoxMkRBU3owWHJRNS9STTk3NzVjY1lLRXNTTytrZnhN?=
+ =?utf-8?B?Z0l1dFhTaDk3UVVnRWMxSW1HUllPSkFkV3lHZXFERjlhcEF4MzRoTVF2NTkw?=
+ =?utf-8?B?UlgvdzBIL25tRVJPd1Y2M295LzZYcVRPSWFndHJDc1NPN2tLZkRqa3hteGt6?=
+ =?utf-8?B?aDloOGU2VkNaS3JKemVudk40U1M0blVRWGRGTFc4dXNLUkowU2RjQVRXR1Jt?=
+ =?utf-8?Q?2EHyUbbdccFUdW2zmL?=
+X-OriginatorOrg: symple.nz
+X-MS-Exchange-CrossTenant-Network-Message-Id: 00a66189-9513-46e6-abca-08deb63b7301
+X-MS-Exchange-CrossTenant-AuthSource: ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 20 May 2026 06:46:00.2742
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 9531f271-068a-4210-b471-bd8da91491c5
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: iJA7PJxWVDjo0ombHGcxsQHI+Y8XA5o8MWOq+T2Q5G6C1SRkzMdP/OwSe8Nf6vnI
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME3P282MB3790
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260519_234609_562323_DB8D7F96 
-X-CRM114-Status: GOOD (  22.40  )
+X-CRM114-CacheID: sfid-20260519_234626_260917_97297B89 
+X-CRM114-Status: GOOD (  14.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,73 +144,72 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: imx@lists.linux.dev, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Diederik de Haas <diederik@cknow-tech.com>, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-sunxi@lists.linux.dev, Liu Ying <victor.liu@nxp.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, linux-amlogic@lists.infradead.org, Chen-Yu Tsai <wens@kernel.org>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Louis Chauvet <louis.chauvet@bootlin.com>, Christian Hewitt <christianshewitt@gmail.com>, Sandy Huang <hjc@rock-chips.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Jonas,
+Hi Detlev,
 
-On 2026-05-19 17:18 +0200, Jonas Karlman wrote:
-> Hello Luca,
->
-> On 5/19/2026 2:06 PM, Luca Ceresoli wrote:
-> > On Mon, 18 May 2026 18:01:40 +0000, Jonas Karlman <jonas@kwiboo.se> wrote:
-> >
-> > Hello Jonas,
-> >
-> >>
-> >> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> index b7bfc0e9a6b2..9d795c550f8a 100644
-> >> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
-> >> @@ -2600,10 +2609,14 @@ static int dw_hdmi_connector_create(struct dw_hdmi *hdmi)
-> >>
-> >>  	drm_connector_helper_add(connector, &dw_hdmi_connector_helper_funcs);
-> >>
-> >> -	drm_connector_init_with_ddc(hdmi->bridge.dev, connector,
-> >> -				    &dw_hdmi_connector_funcs,
-> >> -				    DRM_MODE_CONNECTOR_HDMIA,
-> >> -				    hdmi->ddc);
-> >> +	ret = drm_connector_init_with_ddc(hdmi->bridge.dev, connector,
-> >> +					  &dw_hdmi_connector_funcs,
-> >> +					  DRM_MODE_CONNECTOR_HDMIA,
-> >> +					  hdmi->ddc);
-> >> +	if (ret)
-> >> +		return ret;
-> >> +
-> >> +	drm_bridge_get(&hdmi->bridge);
-> >
-> > I'm not fully following the code paths, but both the report and the fix
-> > make sense to me. Only I'd move the drm_bridge_get() before
-> > drm_connector_init_with_ddc(), to avoid a short window where no reference
-> > is held and the bridge might be destroyed before drm_bridge_get() is
-> > called. I'm not sure this can happen, but it's better to write the code in
-> > a way that clearly makes it impossible.
->
-> dw_hdmi_connector_create() is only called from dw_hdmi_bridge_attach()
-> so the bridge should already have a ref for the lifetime of this call.
+> We do not have documentation for this decoder, but could you check
+> your decoder version ? It is store in register 0 and I get 0x38321746.
 
-Ah, that's true. So the patch is correct.
+readl(0x27b00100) reads 0x38321746 on both my RK3576 boards:
 
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+  NanoPi R76S (FriendlyElec):  0x38321746
+  ArmSoM Sige5:                0x38321746
+  Radxa Rock 4D (yours):       0x38321746
 
-In case you send a new iteration, please add this extra explanation to the
-commit message, similar to the above paragraph.
+Same silicon revision across three different vendors' boards.
 
-> I explicitly chose the placement after drm_connector_init_with_ddc()
-> to ensure ref count is correctly balanced without having to add a
-> drm_bridge_put() call in any error path. I.e. connector destroy() is
-> only called when drm_connector_init_with_ddc() succeeds.
->
-> This code/call is also planned to be removed in a future series,
+> What I don't have is a test showing that the hardware behaves
+> properly with the vendor driver.
+> Is that something you could try on the NanoPi ?
 
-In order to remove the !DRM_BRIDGE_ATTACH_NO_CONNECTOR case? That would be
-welcome!
+Done.  The R76S has the FriendlyElec BSP on eMMC, so I booted from
+eMMC (kernel 6.1.141, MPP c1f1c12d 2025-09-30) and ran
+mpi_dec_test on long.h264 (1920x1080 H.264, openh264enc SMPTE bars).
+Then rebooted the same board from SD into Armbian 7.0.1-edge-rockchip64
+and ran the same file through v4l2slh264dec.
 
-Luca
+(Armbian's build of Linux 7.0.x carries one unrelated rkvdec.c patch
+that removes a vb2_is_busy check in rkvdec_s_ctrl; rkvdec-vdpu383-h264.c
+is byte-identical to torvalds/linux master.)
 
+10 frames of NV12 vs an avdec_h264 SW reference:
+
+  Board         Kernel + driver               Frame 0 diff
+  R76S          6.1.141 vendor MPP            0 / 3,110,400 (MATCH)
+  R76S          7.0.1   rkvdec-vdpu383-h264   732,094 (23.54%)
+  Sige5         7.0.6   rkvdec-vdpu383-h264   639,721 (20.57%)
+
+Same chip, same NanoPi board, same input, same SW reference.  Vendor
+MPP produces bit-exact correct output on all 10 frames (0 differences
+on every P-frame too); the upstream driver corrupts every frame.  The
+Sige5 line is a different vendor's PCB on a slightly newer Armbian
+point release running the same upstream driver, included to rule out
+a NanoPi board-specific issue.
+
+> The other report also mentioned that the issue was happening 10%
+> of the time, but you seem to see it every time, could be nothing
+> though.
+
+100% here.  Every frame, every test stream, multiple input sources
+(openh264enc, x264, NVENC, QSV), two independent V4L2 userspace
+implementations (GStreamer 1.28.2 v4l2slh264dec and a hand-written
+Rust submitter).  Rows 4 and 12 mod 16 are fully corrupted every
+run.  The exact percentage drifts (20.3% in the original report,
+20.57% on Sige5 today, 23.54% on R76S today) because freshly-
+generated streams have different intra-prediction modes, but the
+rows-4/12-mod-16 pattern is invariant.
+
+I can host the long.h264 + sw_ref.nv12 + hw_bsp.nv12 +
+hw_mainline.nv12 bundle (~115 MB) on a public URL if it would
+help your reproduction.  Also happy to dump more registers,
+instrument the driver, or test patches you'd like me to try.
+
+Regards,
+Simon
 
 _______________________________________________
 Linux-rockchip mailing list
