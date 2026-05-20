@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C11B0CD5BAB
-	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 16:58:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F096CD4F3D
+	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 17:14:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=aY5Ec1mdqC+4Xh8kMApsM/pU6elR+rLNOdXs7Gfec4o=; b=CJix9oiKlYfw+9
-	bfEy2WB1k7WZW1okpB1cxLXlBLVl5w2dlqGTdhfW+LYlIzNOeDIz0Uhy2xrdzibFoSGYkKlBhtsbi
-	XzDrRT+HBWLagswN7KHluISilLxF9K+Vqd8D/590YI57goYIguo2GQ1/NvKEr+w9nXFwcOb0iRit0
-	f5wCw1/9Z+ALQ4OhAa0OX59LojXTl1H1Kz4Y8dz/pWX7Tt3DQMrv6C5+gvG7hNNV3WWdOpDgCu7Dn
-	c3F6q6zE0O7EQjcUR7vZixCA/DGb2K7c1y2W6yiPCHaUW+MqS5cn8svwi1xol29wnhQu60muDo+r8
-	7CpweyK8+s9on8zRiPTA==;
+	List-Owner; bh=VOwjn3nkjwPHC52Oo+bVXMuBex4opg1T3XRXgRY3Q0Q=; b=rfrfI1GJWAyW40
+	envPywg9ZEtohgXAuFY+/lT7C28dFNrPj7YyPTlxLTnseXnIy4pDJS9qMgUqoYydXTRInOt5DVkME
+	tvba4J8GOoTUjS2uKQn//Y2dGx4gchXZQjWY0qxyVG75YD7NVKaiS/I4eyDEg72QMEHQflzq/+NTL
+	1dg1YYizuwo1OlDshuyCKaZ0O9J7GF+3ijxjEhfbQL6gcu8tlA/lkjunJv4blNmsDiyfFgtzRstts
+	TANfUwjVQFn+pfDY6s5RS29SdGfvsUMRnIN+Mgkxl5MZmlfzjvZSCy3hUcjadLrwNQQsEM1w2hq4u
+	sjYL738lnNBZspiPY2Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPkFM-00000005EPY-1dEZ;
-	Wed, 20 May 2026 16:58:16 +0000
+	id 1wPkUi-00000005H96-0IBG;
+	Wed, 20 May 2026 17:14:08 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPkFJ-00000005EOg-3LXV
+	id 1wPkUe-00000005H7y-3dfm
 	for linux-rockchip@lists.infradead.org;
-	Wed, 20 May 2026 16:58:14 +0000
+	Wed, 20 May 2026 17:14:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 27AB5418B6;
-	Wed, 20 May 2026 16:58:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A97911F00893;
-	Wed, 20 May 2026 16:58:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A3DCC4346E;
+	Wed, 20 May 2026 17:14:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D04C11F00894;
+	Wed, 20 May 2026 17:13:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779296292;
-	bh=Q+RGdBV1fAOjSGTl0MP2/NwsWkgq8a03gaD/eAA0qA4=;
+	s=k20260515; t=1779297243;
+	bh=O9qgPLHr7QL0P1uZ8nEtWqDN2bcDhBU6RkhI9zGyM4o=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=Q2LljfgR9q6D6w2BBozfsmTSjs40lP/A9aBt7eRofslSeK8zDJexEq2DM6d3ZmZG+
-	 BipsDXqAfw/rgJaaodgLmV1kMbMAnnIf0yDqqSun2tQhlzjlFYMP+l8fM5IcnI4daT
-	 XnZrXD56lT/9WCXkf1x+AsHVig/YwzKViUuPmrqjjYjTz6CrFTMoXSR/FdUnDzvyoE
-	 ftR3fJTbIkvP4t3rsyBOD/W9MK5aazyGhHKAgA+UxzTTpQt9KnibapSQRSWYTrmLpJ
-	 sE8BS0CFH1cM8ukvwUUmqhiR4BDAnAYEo/CbLhv2DPCLq/EVVq75ilokaDTql08fwm
-	 CR9xlBtgUdFRw==
-Date: Wed, 20 May 2026 17:58:01 +0100
+	b=HLNG1H6nlR1VlzFKDngGW+MuSrpjMZCAftunfsuU+/dDKM7Mr0NDVEl8YYg9yoxlZ
+	 qxfMquRjwL2m3+CHL97Xhmr8fEeVFMrUhgh30TuW6eTENshYdZL7RqCBSaoFIrHCKT
+	 F7UEwfs3PMCMsLE+o2V+ntBIceDoyAjyFBWhxZvi4IUfCTcrVjXbWawcPp+c313L++
+	 KFGxGlZn8nQSqhOXHas4A1DkSwEYVazcmvHl7bvcMHEdgee/hnPEKF0rmO+dYhAk9r
+	 25DJVUDrTr/b2G9KtxI8ZKmWkkVT7oyK8aSBoprpY/tmQcs7DbZCqDiEVgUkMrph7m
+	 pRY0bZo8EeBgA==
+Date: Wed, 20 May 2026 18:13:53 +0100
 From: Jonathan Cameron <jic23@kernel.org>
 To: Chris Morgan <macroalpha82@gmail.com>
 Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
@@ -50,17 +50,17 @@ Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com,
  linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
  heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, robh@kernel.org,
  andriy.shevchenko@intel.com, Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V8 04/10] iio: imu: inv_icm42607: Add I2C and SPI For
+Subject: Re: [PATCH V8 05/10] iio: imu: inv_icm42607: Add PM support for
  icm42607
-Message-ID: <20260520175801.12f74521@jic23-huawei>
-In-Reply-To: <20260518200526.458421-5-macroalpha82@gmail.com>
+Message-ID: <20260520181353.0a0371cb@jic23-huawei>
+In-Reply-To: <20260518200526.458421-6-macroalpha82@gmail.com>
 References: <20260518200526.458421-1-macroalpha82@gmail.com>
-	<20260518200526.458421-5-macroalpha82@gmail.com>
+	<20260518200526.458421-6-macroalpha82@gmail.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_095813_883562_B9812B1E 
-X-CRM114-Status: GOOD (  27.45  )
+X-CRM114-CacheID: sfid-20260520_101404_959737_683381B1 
+X-CRM114-Status: GOOD (  29.47  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,188 +77,246 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 18 May 2026 15:05:19 -0500
+On Mon, 18 May 2026 15:05:20 -0500
 Chris Morgan <macroalpha82@gmail.com> wrote:
 
 > From: Chris Morgan <macromorgan@hotmail.com>
 > 
-> Add I2C and SPI driver support for InvenSense ICM-42607 devices.
-> Add necessary Kconfig and Makefile to allow building of (incomplete)
-> driver.
+> Add power management support for the ICM42607 device driver.
 > 
 > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 
-Hi Chris.
+Hi Chris,  runtime PM is my current place to look closest
+for bugs because we've had a lot of them recently.
 
-More trivial stuff. Some of which is just to save
-having to do a follow up patch to move to named initializers
-for the id tables.
+Anyhow, took another look and here I think we can optimize
+things a little more.
 
-Thanks,
-
-Jonathan
-
+> ---
+>  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  18 +++
+>  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 147 ++++++++++++++++++
+>  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   1 +
+>  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |   1 +
+>  4 files changed, 167 insertions(+)
+> 
 > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> index 6c5e7d9b08b7..74d8d3d7c890 100644
+> index 74d8d3d7c890..b05828415053 100644
 > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
 > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-> @@ -13,6 +13,16 @@
+> @@ -10,6 +10,7 @@
+>  #include <linux/bitops.h>
+>  #include <linux/iio/iio.h>
+>  #include <linux/mutex.h>
+> +#include <linux/pm.h>
 >  #include <linux/regmap.h>
 >  #include <linux/regulator/consumer.h>
 >  
-> +/* serial bus slew rates */
-> +enum inv_icm42607_slew_rate {
-> +	INV_ICM42607_SLEW_RATE_20_60NS,
-> +	INV_ICM42607_SLEW_RATE_12_36NS,
-> +	INV_ICM42607_SLEW_RATE_6_18NS,
-> +	INV_ICM42607_SLEW_RATE_4_12NS,
-> +	INV_ICM42607_SLEW_RATE_2_6NS,
-> +	INV_ICM42607_SLEW_RATE_INF_2NS
-Probably missing trailing comma. Mind you I'm confused
-on what the meaning is of INF_2NS - so maybe a comment?
-
+> @@ -96,24 +97,34 @@ struct inv_icm42607_hw {
+>  	const struct inv_icm42607_conf *conf;
+>  };
+>  
+> +struct inv_icm42607_suspended {
+> +	enum inv_icm42607_sensor_mode gyro;
+> +	enum inv_icm42607_sensor_mode accel;
+> +	bool temp;
 > +};
 > +
->  enum inv_icm42607_sensor_mode {
->  	INV_ICM42607_SENSOR_MODE_OFF,
->  	INV_ICM42607_SENSOR_MODE_STANDBY,
-> @@ -325,6 +335,8 @@ struct inv_icm42607_state {
->  typedef int (*inv_icm42607_bus_setup)(struct inv_icm42607_state *);
->  
->  extern const struct regmap_config inv_icm42607_regmap_config;
-This is only introduced in this patch.  I'd argue maybe that
-should have been in the earlier one?
+>  /**
+>   *  struct inv_icm42607_state - driver state variables
+>   *  @lock:		lock for serializing multiple registers access.
+>   *  @hw:		Hardware specific data.
+>   *  @map:		regmap pointer.
+>   *  @vddio_supply:	I/O voltage regulator for the chip.
+> + *  @vddio_en:		I/O voltage status for runtime PM.
+>   *  @irq:		chip irq, required to enable/disable and set wakeup
+>   *  @orientation:	sensor chip orientation relative to main hardware.
+>   *  @conf:		chip sensors configurations.
+> + *  @suspended:		suspended sensors configuration.
+>   */
+>  struct inv_icm42607_state {
+>  	struct mutex lock;
+>  	const struct inv_icm42607_hw *hw;
+>  	struct regmap *map;
+>  	struct regulator *vddio_supply;
+> +	bool vddio_en;
+>  	int irq;
+>  	struct iio_mount_matrix orientation;
+>  	struct inv_icm42607_conf conf;
+> +	struct inv_icm42607_suspended suspended;
 
-> +extern const struct inv_icm42607_hw inv_icm42607_hw_data;
-> +extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
-I'd also have been tempted to push these into the previous patch
-even though like the regmap they would have had no users briefly.
+Is this used?  If not bring it in only when needed.
 
->  
->  int inv_icm42607_core_probe(struct regmap *regmap, const struct inv_icm42607_hw *hw,
->  			    inv_icm42607_bus_setup bus_setup);
+>  };
+
 > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> index b270d48335ba..e9c81b52f9ef 100644
+> index e9c81b52f9ef..bc0cefa2fb77 100644
 > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
 > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-
->  static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
->  				 const struct inv_icm42607_conf *conf)
->  {
-> @@ -95,6 +152,11 @@ static int inv_icm42607_setup(struct inv_icm42607_state *st,
->  		return dev_err_probe(dev, ret,
->  				     "reset error, reset done bit not set\n");
+> @@ -9,6 +9,7 @@
+>  #include <linux/irq.h>
+>  #include <linux/module.h>
+>  #include <linux/mutex.h>
+> +#include <linux/pm_runtime.h>
+>  #include <linux/property.h>
+>  #include <linux/regmap.h>
+>  #include <linux/regulator/consumer.h>
+> @@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+>  };
+>  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
 >  
-> +	/* Sync the regcache again after a reset. */
-> +	ret = regcache_sync(st->map);
+> +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> +				      enum inv_icm42607_sensor_mode gyro,
+> +				      enum inv_icm42607_sensor_mode accel,
+> +				      bool temp, unsigned int *sleep_ms)
+> +{
+> +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
+> +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
+> +	bool oldtemp = st->conf.temp_en;
+> +	unsigned int sleepval;
+> +	unsigned int val;
+> +	int ret;
+> +
+> +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
+> +		return 0;
+> +
+> +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
+> +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> +	if (!temp)
+> +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> +	if (ret)
+> +		return ret;
+> +
+> +	st->conf.gyro.mode = gyro;
+> +	st->conf.accel.mode = accel;
+> +	st->conf.temp_en = temp;
+> +
+> +	sleepval = 0;
+> +	if (temp && !oldtemp) {
+> +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
+> +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
+		sleepval = max(sleepval,)
+or just assign it here if not later patches add stuff in between
+the assignment to 0 and here.
+> +	}
+> +	if (accel != oldaccel && oldaccel == INV_ICM42607_SENSOR_MODE_OFF) {
+> +		usleep_range(200, 300);
 
-Silly question but what has this to do with the bus support?  Should
-it be in the previous patch.  I suppose you could argue this is where the
-cache got introduced.  
+fsleep() + add a comment on why we are sleeping in here.
+
+> +		if (sleepval < INV_ICM42607_ACCEL_STARTUP_TIME_MS)
+> +			sleepval = INV_ICM42607_ACCEL_STARTUP_TIME_MS;
+		sleepval = max(sleepval, INV...);
+
+> +	}
+> +	if (gyro != oldgyro) {
+> +		if (oldgyro == INV_ICM42607_SENSOR_MODE_OFF) {
+> +			usleep_range(200, 300);
+
+fsleep()
+
+> +			if (sleepval < INV_ICM42607_GYRO_STARTUP_TIME_MS)
+> +				sleepval = INV_ICM42607_GYRO_STARTUP_TIME_MS;
+I'd use max for these as well.
+
+> +		} else if (gyro == INV_ICM42607_SENSOR_MODE_OFF) {
+> +			if (sleepval < INV_ICM42607_GYRO_STARTUP_TIME_MS)
+> +				sleepval = INV_ICM42607_GYRO_STARTUP_TIME_MS;
+> +		}
+> +	}
+> +
+> +	if (sleep_ms)
+> +		*sleep_ms = sleepval;
+> +	else if (sleepval)
+> +		msleep(sleepval);
+> +
+> +	return 0;
+> +}
+
+>  
+> +static int inv_icm42607_suspend(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+Could you use pm_runtime_force_suspend()?
+> +	if (pm_runtime_suspended(dev))
+> +		return 0;
+> +
+> +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+> +					 INV_ICM42607_SENSOR_MODE_OFF,
+> +					 false, NULL);
+> +	if (ret)
+> +		return ret;
+> +
+> +	inv_icm42607_disable_vddio_reg(st);
+> +
+> +	return 0;
+> +}
+> +
+> +static int inv_icm42607_resume(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+Given the bunch of stuff we've run into recently around these
+I'm getting more paranoid.
+Similar to above, could you use pm_runtime_force_resume()
+You would need to gate stuff added later to not occur
+though if it wasn't runtime suspended.
+
+
+> +	if (pm_runtime_suspended(dev))
+> +		return 0;
+> +
+> +	ret = inv_icm42607_enable_vddio_reg(st);
+> +	if (ret)
+> +		return ret;
+> +
+> +	/* Nothing else to restore at this time. */
+> +
+> +	return 0;
+> +}
+> +
+> +static int inv_icm42607_runtime_suspend(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +	int ret;
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+> +					 INV_ICM42607_SENSOR_MODE_OFF, false,
+> +					 NULL);
+Different alignment to above - aim for consistent choices on this.
 
 > +	if (ret)
 > +		return ret;
 > +
->  	ret = bus_setup(st);
->  	if (ret)
->  		return ret;
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
-> new file mode 100644
-> index 000000000000..8631579a609a
-> --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
-> @@ -0,0 +1,89 @@
-
+> +	inv_icm42607_disable_vddio_reg(st);
 > +
-> +static const struct i2c_device_id inv_icm42607_id[] = {
-> +	{ "icm42607", (kernel_ulong_t)&inv_icm42607_hw_data },
-> +	{ "icm42607p", (kernel_ulong_t)&inv_icm42607p_hw_data },
-Named initializers please. (see below)
-> +	{ }
+> +	return 0;
+> +}
+> +
+> +static int inv_icm42607_runtime_resume(struct device *dev)
+> +{
+> +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> +
+> +	guard(mutex)(&st->lock);
+> +
+> +	return inv_icm42607_enable_vddio_reg(st);
+> +}
+> +
+> +EXPORT_NS_GPL_DEV_PM_OPS(inv_icm42607_pm_ops, IIO_ICM42607) = {
+> +	SYSTEM_SLEEP_PM_OPS(inv_icm42607_suspend, inv_icm42607_resume)
+> +	RUNTIME_PM_OPS(inv_icm42607_runtime_suspend,
+> +		       inv_icm42607_runtime_resume, NULL)
 > +};
-> +MODULE_DEVICE_TABLE(i2c, inv_icm42607_id);
 > +
-> +static const struct of_device_id inv_icm42607_of_matches[] = {
-> +	{
-> +		.compatible = "invensense,icm42607",
-> +		.data = &inv_icm42607_hw_data,
-> +	}, {
-> +		.compatible = "invensense,icm42607p",
-> +		.data = &inv_icm42607p_hw_data,
-> +	},
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);
-> +
-> +static struct i2c_driver inv_icm42607_driver = {
-> +	.driver = {
-> +		.name = "inv-icm42607-i2c",
-> +		.of_match_table = inv_icm42607_of_matches,
-> +	},
-> +	.id_table = inv_icm42607_id,
-> +	.probe = inv_icm42607_probe,
-> +};
-> +module_i2c_driver(inv_icm42607_driver);
-> +
-> +MODULE_AUTHOR("InvenSense, Inc.");
-> +MODULE_DESCRIPTION("InvenSense ICM-42607x I2C driver");
-> +MODULE_LICENSE("GPL");
-> +MODULE_IMPORT_NS("IIO_ICM42607");
-> diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
-> new file mode 100644
-> index 000000000000..960b5d3e9abc
-> --- /dev/null
-> +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
-> @@ -0,0 +1,101 @@
-
-> +static const struct of_device_id inv_icm42607_of_matches[] = {
-> +	{
-> +		.compatible = "invensense,icm42607",
-> +		.data = &inv_icm42607_hw_data,
-> +	},
-> +	{
-> +		.compatible = "invensense,icm42607p",
-> +		.data = &inv_icm42607p_hw_data,
-> +	},
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);
-> +
-> +static const struct spi_device_id inv_icm42607_spi_id_table[] = {
-> +	{ "icm42607", (kernel_ulong_t)&inv_icm42607_hw_data },
-> +	{ "icm42607p", (kernel_ulong_t)&inv_icm42607p_hw_data },
-Please use named initializers (see the work Uwe is doing currently to 
-clean this up). It has always been odd that we do it for of_ but
-not spi_device_id / i2c_device_id.
-
-That work from Uwe crossed with the development of this series
-but I'd rather avoid an immediate follow up patch if we can just
-tidy it up from the start.  I'd definitely have fixed this whilst
-applying if there was no other reason for a v9.
-
-
-Jonathan
-
-
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(spi, inv_icm42607_spi_id_table);
-> +
-> +static struct spi_driver inv_icm42607_driver = {
-> +	.driver = {
-> +		.name = "inv-icm42607-spi",
-> +		.of_match_table = inv_icm42607_of_matches,
-> +	},
-> +	.id_table = inv_icm42607_spi_id_table,
-> +	.probe = inv_icm42607_probe,
-> +};
-> +module_spi_driver(inv_icm42607_driver);
-> +
-> +MODULE_AUTHOR("InvenSense, Inc.");
-> +MODULE_DESCRIPTION("InvenSense ICM-42607x SPI driver");
-> +MODULE_LICENSE("GPL");
-> +MODULE_IMPORT_NS("IIO_ICM42607");
-
 
 _______________________________________________
 Linux-rockchip mailing list
