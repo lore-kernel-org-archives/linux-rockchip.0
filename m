@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4567ECD5BAA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF666CD4F3D
 	for <linux-rockchip@archiver.kernel.org>; Wed, 20 May 2026 18:38:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,43 +12,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=VxlCvyKqD17HbHJg3otIoyB/27sX7+Cx3yK9Iz/+DrQ=; b=ZJT2Jb5EJPzHg6
-	mcOY2CSYVLlQALCs+y8EYX9auciPjn57XNSBwSlvlOwvyDdkXmYS9iQJPkmatqTbosnnxrpCfz9Qf
-	XgvGAqhv9qTs7IK0NJSG1npzfZE3BLjDDEZ0PWih/mLp8UPVhkF+jdAsq2wbksN6ryOF/yh2KOjnK
-	wQs+uYvA3Tl9a4yeEYbyN4XE1jS46JjTc54DJ0USVR7gooiLfloyDKLjocUc/vXnKQJklDQxFQgMk
-	kab1EWaTgUZJl1V2Rd5rhqaYjHXiTPMH0vvi0WVVRG1+uPaYiVCcNa0nq+qPWAB8XJ/npwf925NME
-	ni4nRTDjgZ0uzGTQXIUg==;
+	List-Owner; bh=QIwnUzbSwnaUkLuXKolLlcKuz8RnlpbACnE2yB8qo38=; b=sIfEkBJdwHogW+
+	0nwlMwN0ThVDOlDg0G74iQlvfuOtgVFbq0t08AyBDBzIbqVuc4rb/rMpVKs2HD2cAjVF1cbtcS18W
+	LFsY1Xkjwj400tbfXm4C4cFBF8S6XnjbVHJXOmpTqJnr9ch+L3dh1Ip3+cLfro23T4GDJXhbglitw
+	H8UVKqwOayxkNbkME/oO3Jw9zYE0qh7zmXAvhro1yq/ho1klBeVxPQXktuArEibz3Y33c50rbow8R
+	hyjN3qNvJopYhP1OqJIKujBUlxz/YSzozTBUcvxBnKubDt7HgEkfNNSMmft2X6CEwwdV8lJcb7wi9
+	dHeYj7duJDLPAvDIe+Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPlok-00000005T3R-3uuq;
-	Wed, 20 May 2026 18:38:54 +0000
+	id 1wPlol-00000005T4G-0x0I;
+	Wed, 20 May 2026 18:38:55 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPloV-00000005SjS-12Wq;
-	Wed, 20 May 2026 18:38:40 +0000
+	id 1wPloV-00000005Sjm-23Wy;
+	Wed, 20 May 2026 18:38:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779302315;
-	bh=7OTwCMF8wJOc4Hjs8SJmTuTCvuPd0TbfOCgAGCzQHM4=;
+	s=mail; t=1779302316;
+	bh=Vinl3H8Sv0aiM6aJ68yze1Wzhzorcj3ktQ602i1XvWM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=H6vyJyDrGEn7ej8lwfh6solQE+7LKI83GMwsBcmJEc0XI2SvuKtzPjAq/szGt+jAb
-	 lhJ+s5loC2TP9fbe5RvSipke1pfgJpxCy+u4gcLc52sd5EvalqzH96wyMquroTDMu8
-	 ynXCKhxlEtA1l+I11i5albHffQ7Q9Hg3FGO0HoOl+nSRO/VMSgHjRm6osR/mnvUdAf
-	 khNhEemb11w9/IbKhsALykPAvioDMFL21EfIia48FV7rHWPssdBm/4ZcPn8OGV0qF5
-	 8iJKQ+xKus6q0OR0exCv4CdaKuVlY6nok+j3za8xzt8qHrkGIY08/QHg47O7TQ5TGA
-	 OEYwTzZCGIaHg==
+	b=UTUpNffRRth/UkSEmZ/7D9lYEtMHkbsy2yZQPKxqjUR53PPmf569XB8J+D8Pzddw7
+	 UWA7cmRSUeLQPi+nkJe1mXxZaL3j7Zp4/SCz9yINQvAn5NP7fFi+WO6arwyQbjM5/K
+	 /7r3etbd3hfzIm8lAF2NCFclMks+MtA1V5+8gZQoOJ2hABDIHwu1YRGjBgu/AbMRDi
+	 fmI9NEfKUTLunkFipC5NzvF/FvfYyOl7ct1rhm7IheDUmRhg0U7zPGnEJCALex53Ga
+	 1NRc/sidb+/Fmnyals0eWxYR3F/Jxebp5JPd7zb6Ij67QfDo81I0QMbAf97cKR1W+j
+	 t6EDEjdZUTpYw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7EA1817E14A9;
-	Wed, 20 May 2026 20:38:35 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3F6A017E0566;
+	Wed, 20 May 2026 20:38:36 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Wed, 20 May 2026 21:38:17 +0300
-Subject: [PATCH v6 06/22] drm/bridge: Remove redundant error check in
- drm_bridge_helper_reset_crtc()
+Date: Wed, 20 May 2026 21:38:18 +0300
+Subject: [PATCH v6 07/22] drm/bridge: Add HDMI 2.0 scrambler bridge
+ operation and callbacks
 MIME-Version: 1.0
-Message-Id: <20260520-dw-hdmi-qp-scramb-v6-6-24b74603b782@collabora.com>
+Message-Id: <20260520-dw-hdmi-qp-scramb-v6-7-24b74603b782@collabora.com>
 References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -65,13 +65,11 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
  Daniel Stone <daniels@collabora.com>
 Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, 
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+ linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.1
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_113839_463001_881F7061 
-X-CRM114-Status: UNSURE (   9.90  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260520_113839_689826_ECDD0AA5 
+X-CRM114-Status: GOOD (  10.97  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,29 +86,62 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove the no-op error check after drm_atomic_helper_reset_crtc() since
-the goto target is the immediately following label and the return value
-is already propagated correctly without it.
+Add DRM_BRIDGE_OP_HDMI_SCRAMBLER bridge operation flag and the
+corresponding .hdmi_scrambler_{enable|disable}() bridge funcs callbacks.
 
-Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Bridge drivers set DRM_BRIDGE_OP_HDMI_SCRAMBLER to advertise that they
+implement source-side scrambling control, which the bridge connector
+layer uses to wire up the connector's scrambler callbacks.
+
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_bridge_helper.c | 2 --
- 1 file changed, 2 deletions(-)
+ include/drm/drm_bridge.h | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_bridge_helper.c b/drivers/gpu/drm/drm_bridge_helper.c
-index 420f29cf3e54..0a3c8fee66b3 100644
---- a/drivers/gpu/drm/drm_bridge_helper.c
-+++ b/drivers/gpu/drm/drm_bridge_helper.c
-@@ -50,8 +50,6 @@ int drm_bridge_helper_reset_crtc(struct drm_bridge *bridge,
+diff --git a/include/drm/drm_bridge.h b/include/drm/drm_bridge.h
+index 4ba3a5deef9a..a0fcbbc7086e 100644
+--- a/include/drm/drm_bridge.h
++++ b/include/drm/drm_bridge.h
+@@ -667,6 +667,26 @@ struct drm_bridge_funcs {
+ 				     const struct drm_display_mode *mode,
+ 				     unsigned long long tmds_rate);
  
- 	crtc = connector->state->crtc;
- 	ret = drm_atomic_helper_reset_crtc(crtc, ctx);
--	if (ret)
--		goto out;
++	/**
++	 * @hdmi_scrambler_enable:
++	 *
++	 * Enable HDMI 2.0 SCDC scrambling and high TMDS clock ratio.
++	 *
++	 * This callback is optional but it must be implemented by bridges that
++	 * set the DRM_BRIDGE_OP_HDMI_SCRAMBLER flag in their &drm_bridge->ops.
++	 */
++	int (*hdmi_scrambler_enable)(struct drm_bridge *bridge);
++
++	/**
++	 * @hdmi_scrambler_disable:
++	 *
++	 * Disable HDMI 2.0 SCDC scrambling and high TMDS clock ratio.
++	 *
++	 * This callback is optional but it must be implemented by bridges that
++	 * set the DRM_BRIDGE_OP_HDMI_SCRAMBLER flag in their &drm_bridge->ops.
++	 */
++	int (*hdmi_scrambler_disable)(struct drm_bridge *bridge);
++
+ 	/**
+ 	 * @hdmi_clear_avi_infoframe:
+ 	 *
+@@ -1092,6 +1112,12 @@ enum drm_bridge_ops {
+ 	 * &drm_bridge_funcs->hdmi_clear_spd_infoframe callbacks.
+ 	 */
+ 	DRM_BRIDGE_OP_HDMI_SPD_INFOFRAME = BIT(10),
++	/**
++	 * @DRM_BRIDGE_OP_HDMI_SCRAMBLER: The bridge supports
++	 * &drm_bridge_funcs->hdmi_scrambler_enable and
++	 * &drm_bridge_funcs->hdmi_scrambler_disable callbacks.
++	 */
++	DRM_BRIDGE_OP_HDMI_SCRAMBLER = BIT(11),
+ };
  
- out:
- 	drm_modeset_unlock(&dev->mode_config.connection_mutex);
+ /**
 
 -- 
 2.53.0
