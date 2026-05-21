@@ -4,137 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46699CD343F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 07:00:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3868FCD343F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 07:37:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
-	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=DqIkhu0E9ZoGl/6IwkEiIh+Q1v5DSbXg+PtRKP3XQvw=; b=hF2ep0KlOeUaE9GFhOLD2OBgdG
-	xksf1PM1Pq6/Du421wCnK7a5j/bNz6aaxJiFDa5+iBo0XPCAlU+iQ3337r5hyilRgscbQV9ydXgMK
-	NLm847qKipwr51fDouF6lnf2JO6ZfroJQrszEuHqVyOlXMxGlUXgaJair3vNxnruURe3d0iZJq1RF
-	dM0Fc/OMDQUQqIwOejzXyQu+KmADKbFmqLqjy8PEjcfmpVPfGIyK6ZhPnfoE1cWDwJIyqptd1MTlU
-	IOy6aSsQGet4RtVIw5jqkM5H9sojc2UII1D0oW+hGVd1QIhQwfQwnvpm2t0q5Ti8u17vE2b/qUCkh
-	FkDpEqJA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Subject:From:Cc:To:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=oDEQ6Rx8Q+uv/EvP2o7Lmwgo9M+aN+V5A1EHQ6hxnCU=; b=Xcp0GwAe0aWSq1
+	IuYPAwo/Axc5TfMAP4/2Ng/wAzfk7sec5b/Q3XVKLxAYsezTZzYrP5kiZ62BDEX9Nasn6SMZ3jRf3
+	c2TmqFhtFq14s9K9KqGNK1jEYQ2w8Yjipj91WzEq+zdyH04zEbLdFFSOn54+DYieYxaKdxaIF/LAn
+	ehsboR94S6mXzSX7y10JY+M+MGblI6T6u/47rat6yXtpY1zZTwI7dLGD3B60ULkSphJbzC0j9263H
+	CS5Inj27MWVJtvYXN4G/TMDK0Sg7wghT7zsbTvgW4kyla0XemQTeLodo/KW0HiuCaGxPpInSUONMF
+	uJ45v9sODIPd50SI4jKg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPxNs-00000006tMg-3J2W;
-	Thu, 21 May 2026 06:59:56 +0000
-Received: from mail-australiasoutheastazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c40e::1] helo=MEUPR01CU001.outbound.protection.outlook.com)
+	id 1wPxy4-00000006z7B-0ZpE;
+	Thu, 21 May 2026 07:37:20 +0000
+Received: from mail-australiasoutheastazon11020111.outbound.protection.outlook.com ([52.101.152.111] helo=MEUPR01CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPxNq-00000006tLX-2AAy
+	id 1wPxy0-00000006z6I-2YyZ
 	for linux-rockchip@lists.infradead.org;
-	Thu, 21 May 2026 06:59:55 +0000
+	Thu, 21 May 2026 07:37:18 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=W4W/niDw5+yTrGrLxuDvx3PQ527goAhy38vU27xe98iTitiSY0nLZJun8IVxYfZa00FfTct8EHQzbxxOvOj/EOzY4Rtps/Zih8Z9/08I1Y7mBq/PzVyBQ6+hjquVX8AdRKPqNiy3SehjgFfS3IRnXqpnEX6U9ij3rSh15N3wy2SsTPsE5dZ+1uiE9tPLcf/YCnaI4WtI3R/D/O7HBLBr5DTTOP895CJ+OsWIiRXqVjxIf/ZPopcQ9WAQVJBPy1oTnGL51WTC93Ec6xpS1h/lD52jyxS1AAIPYiH5qdq7Woy0OoKUXNFjc9kQ8acxpmRC1Vz86vwn6ASjsYDRwcFG4w==
+ b=v7IuF4O7wZdQ5IctT332qLqraZ90wqvW1auoLVcCxYxTIUiGP7ubVPmgg/taXBbU2OGLkzB+mZl7DvBoJ4XA+g2EYlVAZsLNSWhSYTeOStOUiUQeo+aQRS9KqwBDDuD8ErRh6ZijI37NUwIKG5Kp1w00poMQC6epiZy3mMBtuB/FIi+8Xj3KISh7TVugU2aLVORNnQtY+Q9pqo9C/pw8bNWntckn4DKrPL1b36hTuNx7aMAcI0wpkXjejp6h/imaicfCZT35n96Cicf9xndNezdig0um9Wg4E4a/EPQbB4QSOOtW+2OtSzkJ2Q3praUIb26GnPWLZ7wJI96b9AcQYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=QuLY1QVtwFR4tbv0LN+RrLaTvM2+To9ZzTMYk2/yroM=;
- b=Oh42xIAc2RSUaLJ1ft4Z4Uh7uT5xZm1QCNKdni6VhiA+K6+JZsBHwrgwJHXiW83N2BMcypJEdWABg9fhL7Ps9WAMOU29YOAYb9JCZ5ma+/RUoYPUGPgyPpLdnjn44jpvf6CLBBHggGwq82YUYKC8BRX5Ez9heYY3wlg/5h2bYCepsnIieQeaxDMW890RNxDk9+CWHiE0Heh/cAGxxvxGwoZBoaxU1C2taqI0sd40w4njJp6TJXB8JXZTnsMpHF2MwIBQffql7EjpMQ+x/8Zc5vyIrURpQmtfhOOl3+ffzluql//Q7xU9Uly8rCfIplaQwpnAk4OlN4FwbZk9rNFwfg==
+ bh=HrQfdagMbbT1Uskc/vJZIwRiDfVJQdtw71QXOjgE9W0=;
+ b=ea7uvfKwC+v6254sTZ1XdDVhG2cuFK9QfHd2ELJoOmC1HCXkrOsHiEtfyfstHVLGMGVJai3J8wzla8bdYl3R3mcvfDM8kw2NGpFanGXhM6IQRAUeylrxZcB5d3x5RBrsED+y0kNNvvYxZ/oag2RdtaCgGXakFnp/CnUo+3TFSVSPlniN3QbisoauqwHR7uu4DojYaQv3xcI12U6Gjpq4MW6xOQMZtyl2Wi5/Gwe1RjviZpXpy3eZdqjLfnSWhRsEVXCWoP0AKcOS1XtyUPn9eQMwwXvt54R2o/W0EYpIc1+vvMz0B08xGgXiT+yfaKqrmEFeIwmGxjczEwc1OlKURA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=symple.nz; dmarc=pass action=none header.from=symple.nz;
  dkim=pass header.d=symple.nz; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=symple.nz;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=QuLY1QVtwFR4tbv0LN+RrLaTvM2+To9ZzTMYk2/yroM=;
- b=q3g+9oRj0scVilZPr+/1qAROSLT9kRV816wPCYyzo9P1LBxSCZEwQUekSv3QMVFdUvBQdavdX8kAP3aBYzCZ3d6+Jbpr+QMoWFaqZbdXPNRMNn052sxRNZ1JUydgTyIcMdbgl9D1+lkTtbOnTzHDo0kwoyyM4XKaGK4FKK5eBIQdPU8P7RuzYXjnvttqjTXqPwAIgQILzMqgMAkYLCKI4Doaqx4ozF9m+Ykl3RF7tfop9KfDNrzedeOY7kOGx9Fqp6idJmzhssisLzB8P4OyWjz9yNDdF0PcTznMgrjjkFQNND3U4rv/Dh4bAmFrQvqfYOFyUHzxb8oJWw53hJ8wBQ==
+ bh=HrQfdagMbbT1Uskc/vJZIwRiDfVJQdtw71QXOjgE9W0=;
+ b=c0Im7K0f6pg9CWUPQGEAnSgKJ35nku0jo+0zS7EqlxK05MEEKV5LMkGZla22WbheYgKPsVraYw6MG1Qd6xTr4d4GUPn0u0y2VnNwF8I+NaLcKZ8S9zZvSPTBvzTYLevNyH8o5VRNmJDKmY1ZB+okcCzMuVf3tee3AOgv9FvACOOdJOTalA4hDJ/aqr/rcH0mkSa11pj7WV6d16w3BOWbtnzofU7C75Xqya4BBwBN+0XqK5oVO2pf0yUI409i9WsnYxHdeHg1By0Ad9HL9Cull0FH3LLo+0TcfnA6OPBTL6/2qB7pwDPoZVW6bnoS209HE8zcmo51Ttcg6kJESagzJg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=symple.nz;
 Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
- by SY0P282MB6431.AUSP282.PROD.OUTLOOK.COM (2603:10c6:10:340::12) with
+ by ME0P282MB5210.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:23e::9) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.16; Thu, 21 May
- 2026 06:59:32 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.23; Thu, 21 May
+ 2026 07:37:02 +0000
 Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
  ([fe80::4619:bdb0:3293:3834]) by ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
  ([fe80::4619:bdb0:3293:3834%5]) with mapi id 15.21.0048.016; Thu, 21 May 2026
- 06:59:32 +0000
-Message-ID: <4358f22d-247c-43d3-89d4-27b57bbe90aa@symple.nz>
-Date: Thu, 21 May 2026 18:59:29 +1200
+ 07:37:01 +0000
+Message-ID: <86fcf349-0a7a-4618-9001-612371b0f71b@symple.nz>
+Date: Thu, 21 May 2026 19:36:47 +1200
 User-Agent: Mozilla Thunderbird
-Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
- edges y=4 and y=12
-To: Detlev Casanova <detlev.casanova@collabora.com>,
- linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
- <5797ac61-dc61-4182-ac60-cc377564ff90@collabora.com>
- <2565c949-a558-415f-8c79-e47812db8341@symple.nz>
- <e3b93bda-fed8-4f21-b3d8-cdf28bfaba1c@collabora.com>
 Content-Language: en-NZ
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Algea Cao <algea.cao@rock-chips.com>, dri-devel@lists.freedesktop.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
 From: Simon Wright <simon@symple.nz>
-In-Reply-To: <e3b93bda-fed8-4f21-b3d8-cdf28bfaba1c@collabora.com>
-X-ClientProxiedBy: SY5P282CA0101.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:10:204::16) To ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
- (2603:10c6:220:b2::11)
+Subject: [PATCH v3] drm/bridge: dw-hdmi-qp: use drm_hdmi_acr_get_n_cts()
+ helper for audio N/CTS
+X-ClientProxiedBy: DM6PR01CA0024.prod.exchangelabs.com (2603:10b6:5:296::29)
+ To ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: ME3P282MB2196:EE_|SY0P282MB6431:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2217c5d5-c62f-41d0-4e6a-08deb7068211
+X-MS-TrafficTypeDiagnostic: ME3P282MB2196:EE_|ME0P282MB5210:EE_
+X-MS-Office365-Filtering-Correlation-Id: 70a583cb-3daa-4db4-d30e-08deb70bbf48
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016|4143699003|22082099003|18002099003|56012099003|6133799003;
-X-Microsoft-Antispam-Message-Info: 4Vap5umc0gW78fNbrgnSuhdiD7fgepeQ2bftw0qikUCrZIekySJe7hYHpYYgUgBadazgd6oJXOBvsWUHGGgKXMGqxl/ehXHI8r2EYOye5f2JaOaURF75ntM6vmi123JnYQhw4jMVlfMCyoZFT1Onxf8wL9JLx7tWwAYz7chsrJiT+fUTgeVukLT47V6D9TEQiXjj1wpMUmddM75VrQeTe8Vvk8g3zQwOS4lg+M6LJ9vnyBMGJGbVv984r2BBaeMfVM9vG6sQBwOQVbZ2S6ZHeJiwhDwmAh+iSsDavZpmLjeQ83AQstl38dCWd9acOEnemEOIwDdA9yKbARBJEmgSdiF/2IVNvU9Y3WGZfWd7Ngf/05BersyY7Zbg8PFO0gbtF7C0NSs3GASr1/mcEGDC8KiiS8HUmziaCQY+IIFl//+JkIylZLpIHcHeT54Uvqh0XNBbIPN35yzGGh1ii9TZ6vwauEGQJYfZ7sGxMweLNo32um99wZhjv+v8JsuSUMeAxEUENBdUNdsu1i0GVVcK0Ur/sTks/lrcQenyTXIZU3Ty8P48iY0qiqEs2Om/bm4VXY83gkZ8aKq3WgGvJmdAqGaNiYmrxF+CmhxkySC1OYMx7Gz9pP0ggiBASirjWenL8STlEkf8t8Wnr8YRMmHnrjox7LJzmpnVWw8zJoP5czNaHzRC4dTOv6jmJFOgFYba
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016)(4143699003)(22082099003)(18002099003)(56012099003)(6133799003);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|366016|56012099003|18002099003|6133799003;
+X-Microsoft-Antispam-Message-Info: 54LQ8srIG9CtQiBkwO/8DbNAIXdtTjtwgAI+MmBN+UYtpm3a25k2iCiRq3BF2+FRI4mKkWQFeclbGmYM4oE4rgsYBSBSJm+ozt7WOY+gSPZ6/gmNGz+U/7XvhTChmMe/2pp2jYtXd6IoQSBjujnrOZxLY2o9d0VT8cnhZ2o2+MMAmV+xJO8n+ofeBvqhlnd0wgwEL6WKq9r3vCjmGiA3Xd/6EhApDloHiWy+GkLBQfT+v3SaqR6mZCA9IS2qqGB6D2yH/xfgL4OPTszLEAYeBVML7MKOz/A+/IezuOdISBoMSkCJGn3QxqRwZkkUxs/NSXtGLtbdo6f4TTq9jQCtZ/BMx6jazmyvBWMinr/bygDo4q8J/u7pMHvlNedA/VAFHZ2vYIMwKIDuRDxDV1KkHtWXEELmJNfZY3ds0KEv5ulJuQKDfC5Mq0kHEmYYRPwD3Ps/Avz1l/cZ5gN1SMNDdOm9jFRIAPuFvgYGKL5Dlacg4KhgeJi+Ax+pqfz2udiF8a0l+W9Q5hPYOXIbIMgNikDkHtAr7QLYnyXj1lq8jbxNr3Q0qL1PS2BysXdFLPyITtrdpAhZtIIb9K6eFKQjcTyLoXzVFc/+X6lZsYddf77lM9HYpq48an1QrUrUp95gUqQeyGd6OsdDWI8KTU1OWXlTP5Sk8ln1gOTN6jgClyaDESabQIZxxttAqjlWvrFo1fR0M1FBhCpTUjErlEZCyA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(366016)(56012099003)(18002099003)(6133799003);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Sk1DZTY3Q0NpSmFyU3JIZnEwTlAvbVRObCtId2FETDZocGwrRGQrdnl4VEY3?=
- =?utf-8?B?NkQ1OURnejZ2dU5wdjJpZVAvMnJTVW41NUIwOWUwRHhQTXpVWTI4elVBakZx?=
- =?utf-8?B?a2hRNldRUkxGelc3dVF0TlFwL3RIYk5NTXpLenpXSmhMQVc3R1htQi9ySmJy?=
- =?utf-8?B?NXNkdkt4a2hHUTkrWGtrcWEyU0tOZTM1MGN4UGNtYUNiRlZyblBZbWYxVjh2?=
- =?utf-8?B?T2tCdnVBeldXTXM3YXI1UEJkZVJXMUxVWVZiTVZrRWNQM2dGSHlXNSt5QndU?=
- =?utf-8?B?cDI2Yng5RTNXWlRVTllwblZod1EvYVN1V3YzVTl1K1FIMnRIWHRqVGtwVlIz?=
- =?utf-8?B?TDd4anBIYkc3V0E0S2lVbUlia2J0L2x5SjJUMENJa0NOY2FPTFNGa2VEL096?=
- =?utf-8?B?am52S0FjZEFVakFDTUdKbWh0U3pkTFB6SlF5aENxcWFUVVBmeGd2TGxNLzRH?=
- =?utf-8?B?NUZoemVNUVBNM3JEdDVTNFJ0VnRRSXpiZ0NVL0JMK245MEFoeHh3OXZackJ2?=
- =?utf-8?B?Nm8zNGs2WlFDbkk4MEdFUVhoOE0zM1hXRUpiZU1iZVJSYkkrdFE2ZW9Od096?=
- =?utf-8?B?TWdtcXZLY0xWT3llOE5kbEFsVmdvRy9Yay9Qd25yY2NNNVJjSzY1REtGa1l5?=
- =?utf-8?B?RW9icWpsM3k1Rzl2eTFjK0w0aCtNdDlwMHgwQkx4MWJZMmxrdDhlWUo5UjFP?=
- =?utf-8?B?MnFCQ3JDQTV3RlpKaVAzOHU2OXo2ekpneDhPUEY3ZHF5b2FNN3VYSG5KaHhR?=
- =?utf-8?B?eGJCNnAwMFl1elQwZFlJM0Jmc0VUc3RTbGdyYzhESHQzUllhU1FlUDlKVlBM?=
- =?utf-8?B?RTU3bjhBQVNUeHY3VDlCWG9ZZjA2T1U3VUltRlFXSGp2SC9qU0RQQnd3MG1P?=
- =?utf-8?B?ZDRyTFFlb1lzc3JHN3ZqcnFPTmFtb3U5aDBZTlkxVzBTM05RZWEyK004V2Ey?=
- =?utf-8?B?OUtnd2Z1U2pZMDNDbE51aElhclZ3VGRoLzlmZExUcE9xVmRyemxKSm9RVHFy?=
- =?utf-8?B?S0RLMmxoblFJZzNTTnVPMDA0SElkbjRZRyt3OEpiSWRWNWVFZG9CNWJMb2hw?=
- =?utf-8?B?QTR4WTY3ZEpNLzlObEpSKzlFVjg3UVFDTGFHTjkyajJGdVc0QmZaWFFPZ2hq?=
- =?utf-8?B?MUdpTXFMeTFFRTNPWHBhZXlHMktGZXJUUmlSLzYyeUtUSTFxWkQyZXd1eDR2?=
- =?utf-8?B?ckM0MFNwL3NFaDJqcUY5Uks5b3c3QW9aRWxpeTNjZmc5WEJVbzFvZkhDYnRR?=
- =?utf-8?B?RzJKU1RHZTBDeWNabDlOeUpHZDRIRlo0NStIdTBHYUN0WU12TEwrbXRKNXcz?=
- =?utf-8?B?Tm9WaElsNVZwVGt2eUcyU2JrSzI4c0pSMmRzeEF5MXg5YnJNYWg3ckZSWDdT?=
- =?utf-8?B?ZExPZXBIbHNXTmJLb3FTWGF2aXk3VjVHTCttaW5IYi9MY3Fabll1aWxuMjlM?=
- =?utf-8?B?RGRLaTh6L2Fadmh4TUliLzlua2MxZGJGQ2JjUHpWSUUyb05TYUo2QzJQQWFJ?=
- =?utf-8?B?NWgxYUVtcmo5TFkzZjNrWE5ac2wrVEh4eXpRMjNOcWF0a09OQmJQcE9MKzRy?=
- =?utf-8?B?c09QbGdpNTYza3FlTTN0L0cvTVZUZDFhOXFsMzEzZ0xDMEQ5L2lNT0h6aWpK?=
- =?utf-8?B?YVJvK1VlaTI1ZC8xQ0pkL013cXBFZW9oQUZ0Zzl6ZTNLZEhtTERjYUtmY3Fn?=
- =?utf-8?B?V1dSZFV4MzAxOU93NXl0TDJKWXBpTUllcDdTZkNPZUlNL1d0Z2ttRzVKS1p4?=
- =?utf-8?B?T0xKREVvWUtkVUNMRDlFUXA5bVRRMHRIa2VHM1VlN2Q4WU1ydEFZWCtsRHFT?=
- =?utf-8?B?Nk5DTXI5RlJ4VjNYQmJYRWFvM3FudHBmL1dmM3M0cFNyZmd6dDNkWFFmbWhX?=
- =?utf-8?B?em1OQTF0MDIzWk9yUlJodENUQXppdXRvQ0d1YU5PL3NVODhBY2ZlM3lkNjB2?=
- =?utf-8?B?RWMrSHV3ZDNSME5mRldZRTRySlNoSnJyZUQrczJLV3c2YUl2b0NNdC95clpi?=
- =?utf-8?B?eDN3TUowQ1VsN0d6SW5PRkNka2ZxSVhHRzdKUkJ0N2szQ0kzSStPcFNzeTZH?=
- =?utf-8?B?YjhVeGdQQTRheWFoaXhSTmlwYm1ZY0xOMFRVQzh6TTU0cEt3TzF0UUpQbUt1?=
- =?utf-8?B?YWhrWVY2UEhaMjd4bHYwR2x6MHdFOWJnbitxSERUaTJDUmZPYWtGRmNmeXE0?=
- =?utf-8?B?UUQxbUtWbENMQ1hRT29ETGZlNUxXMVhTYUczK1Erb2x5dHFQTHQ1QnhQbHZj?=
- =?utf-8?B?dURYYlM5R1NsdTFLb0VnemRLZ1pCdnNHTGtCZ2haVWVFbnhzalZFZVI4eUc4?=
- =?utf-8?Q?f6ahtf7NhGiREPaFfF?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?b3RNcXJRRmdUSUN1WFBzRGloSEJJaytzVVdDTmZSSDdPcGVGQmdGSmpQZUpP?=
+ =?utf-8?B?cmJ5MVByV1FpUThxV3YxL0plcTl2cHdsWk9WL1l2L09PYkFZTGl3b1gzem14?=
+ =?utf-8?B?OUV0SU0xRUJnWVU4Zk1HRnYveGZWSm45RCtZUWhWaE1qVTFGYjRLdmZyYU4v?=
+ =?utf-8?B?RmlaTWFNQUUwdjhjTmcxQnlhaGhLcUFITzZXKzdWREp4Q0dZb2VxU05LQUZ0?=
+ =?utf-8?B?U2RhbTZISzdaZ3FHbDBQOXZNSzNCTEJ6WDV3bVliMjhSWVpuME5jendpWjRy?=
+ =?utf-8?B?b05wWnhHTllxa2NRSVU2UkttSi9SVkVuTWd3V3F2ZXhEMnV3Tm1zUW4wQUFF?=
+ =?utf-8?B?REhGS3hacHFnS2lHcGpjd2xrcWltQmV3NVI2MTk0WUFvN0xZOHl6NmdFbDBL?=
+ =?utf-8?B?WjA5RXd2b1lTTC9UMkhTVy8zRXoxYjV0OW5wWDl0MG50L2FTbDMwOTBscVQy?=
+ =?utf-8?B?WFltZTVwd1NpTjhPM3FUall4NTFJeU9VYmhHUTJ5VHpMbzBrODFTYUVzekZj?=
+ =?utf-8?B?Q2NYbVY5L3BVWkxyQTN3SEEzUHdEWSs1UE1UQXJWS1dNUXE5b3FnS0ZlbjFE?=
+ =?utf-8?B?L08zaVBzTUJUbjNLcG5Ob2FORTdqNzBhSXR5WEdlSHc5cjZoWlRFVHVOM1RV?=
+ =?utf-8?B?MTV5SEdQQmxNNHI4SXk1Y0ZSekVJdlQxSi9ENm1KZ092STBKakszYTFYd24z?=
+ =?utf-8?B?aGp5WHc3RGsxY1plWnZBRm9IanVMaHM4Q29GMWkzZmhZSEEwOTUzNnVRN3Vj?=
+ =?utf-8?B?Skhwa2oydFMvUU5Mdkt5MVB3RDRKTjZCN1k3YnFVaklBYnEzYmRWNFJ3ckdX?=
+ =?utf-8?B?aDhPbzhuOFNPeFZnRW1QSlpSNlF5SnF2QzRSRWpLc2RONDE5eUdsUU13N0FF?=
+ =?utf-8?B?bkVVQnVBUkdXZ3JBK2dJVVE3YVdNdzBYMlVpcG9XRC9TVENjeW9JcVpUUXFH?=
+ =?utf-8?B?OHUyMG1wTndvN2doTkQ2ajh1dUpRU3pIYkZHd1hMcWJ5MWxnQlFXL0RWdzl6?=
+ =?utf-8?B?VW1TVXpDTUYvT2VKUW1Eb243VDFqUncvR1VEY2VtTEtxbGk1S0Z3cS8ra1BY?=
+ =?utf-8?B?NTM3dDFZWVdVd3FCc1h6b1dEc0R2TmdTZFVLb1JMV0syUXVHYytkNzlEQ1Qr?=
+ =?utf-8?B?bGxCLzBUWUgzdnE3SG1hQUVGY2tvN0pXYThERUx6cHo1b0tnV1lyMDBkcHBI?=
+ =?utf-8?B?REpzbnU1QTUrNHc1aWQ1UmU2bVhxeW9xTDdqSk4xYnFBSFBKRklqak1NRlFx?=
+ =?utf-8?B?R0lSalBuZG5MKzJQaE5LakIxTDdVYnhDQkZ5WWNBK3QyZExhZnJ0aFdBN0F3?=
+ =?utf-8?B?eWJNc2R4MDFBbjNFS3RkV2tRQ2RaeHVDUUFLVktqeTQrRUpCZmFXcW5HNFZn?=
+ =?utf-8?B?NG1McUsrUXE0Yk94N092WXFncjBxeGNDMUttMENEOWtPRWN5VDBjTW9OaW1O?=
+ =?utf-8?B?MFUwSy9yVWxGcHhMMnV2Vy9aTCsvOWh5c3ByeDlxNUhTNmJKK09ZMXhCaEZv?=
+ =?utf-8?B?Y2ovUHFla3J4RDZmMjNLdDYvZnh6dno2Zm01VkJneVFicGdPdXNaMVBzZGtq?=
+ =?utf-8?B?cm9MVUVJbEJYU0puZTBQYkp3NGU5WHhnZmJhdlQ1OTk5Mk5yS3FvZkM4Qkl5?=
+ =?utf-8?B?RkJrb21XTVg2M2dCb2NENXBtdmMwNTFYL1A5cjE4VkZYQ0hocG10Q1g3TEF4?=
+ =?utf-8?B?a3hMK1ZCRndTM3F1N3ZoLy9FbHhnRU9NQ0dhNHNEV3h2di9EQkx6UjRQM1Fh?=
+ =?utf-8?B?UHYrRXI5SGpPbFFoaGJTR3VWWkdQQWRUZTNGQ0JzZUV5Mnp4WjRuN0d5VkJi?=
+ =?utf-8?B?NDJwTWRVYjVQWEo2N2tuTjdtTWpYWFZjZ0U2Y204aStPNnk4K3FmN3M1UVhE?=
+ =?utf-8?B?U0RqUERvSGJpSVRiRXg1d21YMVlKcllhSlYvMGtBUm1RZERqS0RDVVRCT2Y1?=
+ =?utf-8?B?SFY2Q3dzTXFiT1lPK0RzaFBGeVpxSFNMRC9SZ2Y4YWZ1TDNUN0UvT1ZwVElh?=
+ =?utf-8?B?K25mcys2TyswNGlhdXNUbTIvaXJBRzBjZmtWblI5VTlnTE83cXpXQVVCUTZD?=
+ =?utf-8?B?ZVo1SXZJT2tkNFY0REpsYTJNZElsLzBMQXQzK2Y0UnFSM0o5NkhFNUpBbTVx?=
+ =?utf-8?B?aExsbDRBbmlpNGl2NjdkMDFKU1ZmQTFuMFhXM1cwWW5ONWtVc0c1RzN6empF?=
+ =?utf-8?B?UUJDUklTRkhsL3g4clkvVEF5MHdKNnBkeko3MnZoenpFcUltOTZMcFA5V0ND?=
+ =?utf-8?B?aTJ1ZG5GOWNWNzl3OE81OVN0bWNqeGp3YTBJWGFqMFU3ejRibU5MZHc4OHhk?=
+ =?utf-8?Q?ONnnpbrs9gghWBAEaZ?=
 X-OriginatorOrg: symple.nz
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2217c5d5-c62f-41d0-4e6a-08deb7068211
+X-MS-Exchange-CrossTenant-Network-Message-Id: 70a583cb-3daa-4db4-d30e-08deb70bbf48
 X-MS-Exchange-CrossTenant-AuthSource: ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2026 06:59:31.8875
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2026 07:37:01.6457
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 9531f271-068a-4210-b471-bd8da91491c5
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hOmJH/P6TjVgy3L2kJ+uWDCDoDUbRdyBmXCd3tMn+q1Zrgkmda0iogPtcilnSZXI
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SY0P282MB6431
+X-MS-Exchange-CrossTenant-UserPrincipalName: Mh4vY1S/O6TH/37NBJ3rqoCft4tq6mNLbQIRJWWu9dBTmtyNceeXzHZYV/yNpkri
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: ME0P282MB5210
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_235954_578415_63AF82C6 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20260521_003716_822508_EA20976E 
+X-CRM114-Status: GOOD (  18.06  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -151,62 +154,340 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Detlev,
+dw_hdmi_qp_set_sample_rate() open-coded its own N and CTS lookup
+tables and search/compute helpers, but it lacked the out-of-table
+CTS fallback needed by strict HDMI sinks at TMDS rates not in the
+table.  The original LG G3 OLED audio mute (linux-rockchip 070633)
+was caused by dw_hdmi_qp_find_cts() returning 0 at 185.625 MHz,
+leaving AUDPKT_ACR_CTS_OVR_EN clear and falling back to the
+controller's internal CTS auto-measurement, which produces incorrect
+timing on the wire at out-of-table rates.
 
-> Another thing that could be helpful is information about BL31.
-> Which version are you using ?
-> Can you share the bootloader binary you use on the Sige5 ?
-> Is the vendor image booted with the same bootloader as the upstream
-> one ?
+The shared drm_hdmi_acr_get_n_cts() helper in
+drivers/gpu/drm/display/drm_hdmi_helper.c already implements the
+correct behaviour: it has the HDMI 1.4b spec N/CTS tables, and for
+TMDS rates not in the table it computes CTS = (TMDS * N) / (128 * Fs)
+inline (the canonical HDMI spec formula).  It is already used by
+drivers/gpu/drm/msm/hdmi/hdmi_audio.c.
 
-BL31 banners pulled from a 16 MiB strings dump of each boot device.
-Our Armbian build and yours both carry the same derrick.huang
-builder identity, so we're on different revisions of the same
-upstream Rockchip ATF tree:
+Convert dw_hdmi_qp_set_sample_rate() to call the helper.  This
+removes ~200 lines of open-coded tables and search functions
+(dw_hdmi_qp_find_n, _compute_n, _find_cts, _audio_math_diff,
+_match_tmds_n_table, common_tmds_n_table[], common_tmds_cts_table[])
+and fixes the strict-sink audio mute as a side effect of using the
+helper's complete N+CTS path.
 
-  Stack                    BL31 commit          fwver  DDR fw
-  Sige5 Armbian (eMMC)     v2.3-931-g4d7e811c6  v1.20  v1.08
-  R76S  Armbian (SD)       v2.3-931-g4d7e811c6  v1.20  v1.08
-  R76S  FriendlyElec eMMC  (not in strings)     v1.17  v1.09
-  Your Sige5               v2.3-859-gc481e5368  v1.14  ?
+Tested on R76S (RK3576) running Linux 7.0.1, against the LG G3 OLED
+(the sink that originally reported the mute in linux-rockchip
+070633) at four TMDS rates spanning HDMI 1.4 and HDMI 2.0:
 
-Sige5 Armbian kernel cmdline also carries
-"androidboot.fwver=ddr-v1.08-fcb0cfd52f,bl31-v1.20,uboot-rmbian-201-
-05/10/2026" which confirms v1.20 from a second source.
+  TMDS         Mode              Audio with v3
+  148.5 MHz    1080p60   8-bit   plays
+  185.625 MHz  1080p60  10-bit   plays
+  297 MHz      1080p100  8-bit   plays
+  594 MHz      3840p60   8-bit   plays
 
-The pattern from four BL31 builds tested across both boards:
+Without this change, the LG G3 mutes audio at 185.625, 297, and
+594 MHz (every rate outside dw-hdmi-qp's open-coded CTS table,
+which contained only 148.5 MHz and below).  With this change,
+drm_hdmi_acr_get_n_cts() supplies the correct CTS at every rate --
+table-canonical at 148.5 / 297 / 594 MHz, and computed via the
+HDMI 1.4b formula at 185.625 MHz.  The 148.5 MHz row is a
+regression check confirming the in-table path is unchanged.
 
-  v1.14 (your Sige5):                     clean
-  v1.17 (FriendlyElec BSP on R76S):       clean
-  v1.20 (Armbian, R76S SD + Sige5 eMMC):  broken on BOTH boards
+The Kogan KALED43XU9210STA (a permissive HDMI 2.0 sink that plays
+audio at all rates with or without this change) was used as a
+no-regression control: audio plays at 594 MHz with v3 loaded.
 
-That rules out PCB-specific factors (Armbian v1.20 reproduces the
-bug on both a NanoPi R76S and an ArmSoM Sige5 with the same kernel
-driver), and it also softens the original BSP-vs-Armbian conclusion
-from my last mail: the BSP stack has a different BL31 (v1.17) AND a
-different DDR firmware (v1.09 vs v1.08, dated 25/03/04 vs 24/10/09)
-AND an old vendor u-boot 2017.09, so it wasn't a kernel-only A/B.
-BL31 looks like the most likely differential given your question and
-the v1.14/v1.17 clean / v1.20 broken split.
+The open-coded N table in dw-hdmi-qp included optimised N values
+for some TMDS rates that are not in the helper's table (e.g.
+various non-CEA rates between 28-162 MHz).  For those rates the
+helper's fallback returns N = 128 * Fs / 1000, which is the same
+value dw_hdmi_qp_compute_n() returned when no table optimisation
+was needed; no audio regression has been observed at the rates
+tested above.
 
-> Can you share the bootloader binary you use on the Sige5 ?
+Reported-by: Simon Wright <simon@symple.nz>
+Closes: https://lore.kernel.org/linux-rockchip/ME3P282MB21960D9D68BFF520316BDFCEA83E2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM/
+Suggested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Suggested-by: Jonas Karlman <jonas@kwiboo.se>
+Tested-by: Simon Wright <simon@symple.nz>
+Assisted-by: Claude:claude-opus-4-7
+Signed-off-by: Simon Wright <simon@symple.nz>
+---
+Changes in v3:
+  - Switch to drm_hdmi_acr_get_n_cts() helper as suggested by Jonas
+    Karlman, instead of adding the cts-from-N fallback inline.
+    Removes ~200 lines of open-coded N/CTS tables and search code,
+    and brings dw-hdmi-qp in line with msm/hdmi.
+  - Re-tested on the LG G3 OLED (the sink that originally reported
+    the mute) at all four TMDS rates (148.5 / 185.625 / 297 / 594
+    MHz); audio plays at every rate.  v3 has not been re-tested on
+    the LG C4 OLED or TCL 75P7K QLED that v2 included; those sinks
+    are expected to behave the same as G3 since the helper returns
+    spec-canonical HDMI 1.4b values.
+  - Also addresses a do_div() divisor-type style issue flagged by
+    sashiko's automated review of v2 (the offending line is removed
+    by the helper switch).
+  - Add Suggested-by: Jonas Karlman.
+  - Rebased onto current drm-misc-next.
 
-Uploaded everything to a public GitHub repo:
+Changes in v2:
+  - Resend after v1 was mailer-mangled and unapplyable (reported by
+    Luca Ceresoli).
+  - Body split into shorter paragraphs for readability per Luca's
+    review.
+  - Original LG G3 report (linux-rockchip 070633) moved from inline
+    prose to a Closes: trailer paired with Reported-by:, per
+    Documentation/process/submitting-patches.rst.
+  - Add Assisted-by: trailer per
+    Documentation/process/coding-assistants.rst.
 
-  https://github.com/SympleNZ/rkvdec-vdpu383-h264-bug
+v2: https://lore.kernel.org/linux-rockchip/00a34a82-213b-4b03-801c-3c10b163d643@symple.nz/
+v1: https://lore.kernel.org/linux-rockchip/92aa4191-2a2a-41e3-badb-c0a5b1fbb957@symple.nz/
 
-Contains:
+ drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 209 +------------------
+ 1 file changed, 1 insertion(+), 208 deletions(-)
 
-  long.h264                    (the 1920x1080 SMPTE H.264 test input)
-  sige5_armbian_emmc_boot.bin  (Sige5 Armbian eMMC, BL31 v1.20, broken)
-  r76s_sd_armbian_boot.bin     (R76S  Armbian SD,   BL31 v1.20, broken)
-  r76s_emmc_bsp_boot.bin       (R76S  FriendlyElec, BL31 v1.17, clean)
+diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+index 0dbb1274360..4e745e2c97b 100644
+--- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
++++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
+@@ -42,88 +42,6 @@
+ 
+ #define SCRAMB_POLL_DELAY_MS	3000
+ 
+-/*
+- * Unless otherwise noted, entries in this table are 100% optimization.
+- * Values can be obtained from dw_hdmi_qp_compute_n() but that function is
+- * slow so we pre-compute values we expect to see.
+- *
+- * The values for TMDS 25175, 25200, 27000, 54000, 74250 and 148500 kHz are
+- * the recommended N values specified in the Audio chapter of the HDMI
+- * specification.
+- */
+-static const struct dw_hdmi_audio_tmds_n {
+-	unsigned long tmds;
+-	unsigned int n_32k;
+-	unsigned int n_44k1;
+-	unsigned int n_48k;
+-} common_tmds_n_table[] = {
+-	{ .tmds = 25175000,  .n_32k = 4576,  .n_44k1 = 7007,  .n_48k = 6864, },
+-	{ .tmds = 25200000,  .n_32k = 4096,  .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 27000000,  .n_32k = 4096,  .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 28320000,  .n_32k = 4096,  .n_44k1 = 5586,  .n_48k = 6144, },
+-	{ .tmds = 30240000,  .n_32k = 4096,  .n_44k1 = 5642,  .n_48k = 6144, },
+-	{ .tmds = 31500000,  .n_32k = 4096,  .n_44k1 = 5600,  .n_48k = 6144, },
+-	{ .tmds = 32000000,  .n_32k = 4096,  .n_44k1 = 5733,  .n_48k = 6144, },
+-	{ .tmds = 33750000,  .n_32k = 4096,  .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 36000000,  .n_32k = 4096,  .n_44k1 = 5684,  .n_48k = 6144, },
+-	{ .tmds = 40000000,  .n_32k = 4096,  .n_44k1 = 5733,  .n_48k = 6144, },
+-	{ .tmds = 49500000,  .n_32k = 4096,  .n_44k1 = 5488,  .n_48k = 6144, },
+-	{ .tmds = 50000000,  .n_32k = 4096,  .n_44k1 = 5292,  .n_48k = 6144, },
+-	{ .tmds = 54000000,  .n_32k = 4096,  .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 65000000,  .n_32k = 4096,  .n_44k1 = 7056,  .n_48k = 6144, },
+-	{ .tmds = 68250000,  .n_32k = 4096,  .n_44k1 = 5376,  .n_48k = 6144, },
+-	{ .tmds = 71000000,  .n_32k = 4096,  .n_44k1 = 7056,  .n_48k = 6144, },
+-	{ .tmds = 72000000,  .n_32k = 4096,  .n_44k1 = 5635,  .n_48k = 6144, },
+-	{ .tmds = 73250000,  .n_32k = 11648, .n_44k1 = 14112, .n_48k = 6144, },
+-	{ .tmds = 74250000,  .n_32k = 4096,  .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 75000000,  .n_32k = 4096,  .n_44k1 = 5880,  .n_48k = 6144, },
+-	{ .tmds = 78750000,  .n_32k = 4096,  .n_44k1 = 5600,  .n_48k = 6144, },
+-	{ .tmds = 78800000,  .n_32k = 4096,  .n_44k1 = 5292,  .n_48k = 6144, },
+-	{ .tmds = 79500000,  .n_32k = 4096,  .n_44k1 = 4704,  .n_48k = 6144, },
+-	{ .tmds = 83500000,  .n_32k = 4096,  .n_44k1 = 7056,  .n_48k = 6144, },
+-	{ .tmds = 85500000,  .n_32k = 4096,  .n_44k1 = 5488,  .n_48k = 6144, },
+-	{ .tmds = 88750000,  .n_32k = 4096,  .n_44k1 = 14112, .n_48k = 6144, },
+-	{ .tmds = 97750000,  .n_32k = 4096,  .n_44k1 = 14112, .n_48k = 6144, },
+-	{ .tmds = 101000000, .n_32k = 4096,  .n_44k1 = 7056,  .n_48k = 6144, },
+-	{ .tmds = 106500000, .n_32k = 4096,  .n_44k1 = 4704,  .n_48k = 6144, },
+-	{ .tmds = 108000000, .n_32k = 4096,  .n_44k1 = 5684,  .n_48k = 6144, },
+-	{ .tmds = 115500000, .n_32k = 4096,  .n_44k1 = 5712,  .n_48k = 6144, },
+-	{ .tmds = 119000000, .n_32k = 4096,  .n_44k1 = 5544,  .n_48k = 6144, },
+-	{ .tmds = 135000000, .n_32k = 4096,  .n_44k1 = 5488,  .n_48k = 6144, },
+-	{ .tmds = 146250000, .n_32k = 11648, .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 148500000, .n_32k = 4096,  .n_44k1 = 6272,  .n_48k = 6144, },
+-	{ .tmds = 154000000, .n_32k = 4096,  .n_44k1 = 5544,  .n_48k = 6144, },
+-	{ .tmds = 162000000, .n_32k = 4096,  .n_44k1 = 5684,  .n_48k = 6144, },
+-
+-	/* For 297 MHz+ HDMI spec have some other rule for setting N */
+-	{ .tmds = 297000000, .n_32k = 3073,  .n_44k1 = 4704,  .n_48k = 5120, },
+-	{ .tmds = 594000000, .n_32k = 3073,  .n_44k1 = 9408,  .n_48k = 10240,},
+-
+-	/* End of table */
+-	{ .tmds = 0,         .n_32k = 0,     .n_44k1 = 0,     .n_48k = 0,    },
+-};
+-
+-/*
+- * These are the CTS values as recommended in the Audio chapter of the HDMI
+- * specification.
+- */
+-static const struct dw_hdmi_audio_tmds_cts {
+-	unsigned long tmds;
+-	unsigned int cts_32k;
+-	unsigned int cts_44k1;
+-	unsigned int cts_48k;
+-} common_tmds_cts_table[] = {
+-	{ .tmds = 25175000,  .cts_32k = 28125,  .cts_44k1 = 31250,  .cts_48k = 28125,  },
+-	{ .tmds = 25200000,  .cts_32k = 25200,  .cts_44k1 = 28000,  .cts_48k = 25200,  },
+-	{ .tmds = 27000000,  .cts_32k = 27000,  .cts_44k1 = 30000,  .cts_48k = 27000,  },
+-	{ .tmds = 54000000,  .cts_32k = 54000,  .cts_44k1 = 60000,  .cts_48k = 54000,  },
+-	{ .tmds = 74250000,  .cts_32k = 74250,  .cts_44k1 = 82500,  .cts_48k = 74250,  },
+-	{ .tmds = 148500000, .cts_32k = 148500, .cts_44k1 = 165000, .cts_48k = 148500, },
+-
+-	/* End of table */
+-	{ .tmds = 0,         .cts_32k = 0,      .cts_44k1 = 0,      .cts_48k = 0,      },
+-};
+-
+ struct dw_hdmi_qp_i2c {
+ 	struct i2c_adapter	adap;
+ 
+@@ -215,130 +133,6 @@ static void dw_hdmi_qp_set_cts_n(struct dw_hdmi_qp *hdmi, unsigned int cts,
+ 		       AUDPKT_ACR_CONTROL1);
+ }
+ 
+-static int dw_hdmi_qp_match_tmds_n_table(struct dw_hdmi_qp *hdmi,
+-					 unsigned long pixel_clk,
+-					 unsigned long freq)
+-{
+-	const struct dw_hdmi_audio_tmds_n *tmds_n = NULL;
+-	int i;
+-
+-	for (i = 0; common_tmds_n_table[i].tmds != 0; i++) {
+-		if (pixel_clk == common_tmds_n_table[i].tmds) {
+-			tmds_n = &common_tmds_n_table[i];
+-			break;
+-		}
+-	}
+-
+-	if (!tmds_n)
+-		return -ENOENT;
+-
+-	switch (freq) {
+-	case 32000:
+-		return tmds_n->n_32k;
+-	case 44100:
+-	case 88200:
+-	case 176400:
+-		return (freq / 44100) * tmds_n->n_44k1;
+-	case 48000:
+-	case 96000:
+-	case 192000:
+-		return (freq / 48000) * tmds_n->n_48k;
+-	default:
+-		return -ENOENT;
+-	}
+-}
+-
+-static u32 dw_hdmi_qp_audio_math_diff(unsigned int freq, unsigned int n,
+-				      unsigned int pixel_clk)
+-{
+-	u64 cts = mul_u32_u32(pixel_clk, n);
+-
+-	return do_div(cts, 128 * freq);
+-}
+-
+-static unsigned int dw_hdmi_qp_compute_n(struct dw_hdmi_qp *hdmi,
+-					 unsigned long pixel_clk,
+-					 unsigned long freq)
+-{
+-	unsigned int min_n = DIV_ROUND_UP((128 * freq), 1500);
+-	unsigned int max_n = (128 * freq) / 300;
+-	unsigned int ideal_n = (128 * freq) / 1000;
+-	unsigned int best_n_distance = ideal_n;
+-	unsigned int best_n = 0;
+-	u64 best_diff = U64_MAX;
+-	int n;
+-
+-	/* If the ideal N could satisfy the audio math, then just take it */
+-	if (dw_hdmi_qp_audio_math_diff(freq, ideal_n, pixel_clk) == 0)
+-		return ideal_n;
+-
+-	for (n = min_n; n <= max_n; n++) {
+-		u64 diff = dw_hdmi_qp_audio_math_diff(freq, n, pixel_clk);
+-
+-		if (diff < best_diff ||
+-		    (diff == best_diff && abs(n - ideal_n) < best_n_distance)) {
+-			best_n = n;
+-			best_diff = diff;
+-			best_n_distance = abs(best_n - ideal_n);
+-		}
+-
+-		/*
+-		 * The best N already satisfy the audio math, and also be
+-		 * the closest value to ideal N, so just cut the loop.
+-		 */
+-		if (best_diff == 0 && (abs(n - ideal_n) > best_n_distance))
+-			break;
+-	}
+-
+-	return best_n;
+-}
+-
+-static unsigned int dw_hdmi_qp_find_n(struct dw_hdmi_qp *hdmi, unsigned long pixel_clk,
+-				      unsigned long sample_rate)
+-{
+-	int n = dw_hdmi_qp_match_tmds_n_table(hdmi, pixel_clk, sample_rate);
+-
+-	if (n > 0)
+-		return n;
+-
+-	dev_warn(hdmi->dev, "Rate %lu missing; compute N dynamically\n",
+-		 pixel_clk);
+-
+-	return dw_hdmi_qp_compute_n(hdmi, pixel_clk, sample_rate);
+-}
+-
+-static unsigned int dw_hdmi_qp_find_cts(struct dw_hdmi_qp *hdmi, unsigned long pixel_clk,
+-					unsigned long sample_rate)
+-{
+-	const struct dw_hdmi_audio_tmds_cts *tmds_cts = NULL;
+-	int i;
+-
+-	for (i = 0; common_tmds_cts_table[i].tmds != 0; i++) {
+-		if (pixel_clk == common_tmds_cts_table[i].tmds) {
+-			tmds_cts = &common_tmds_cts_table[i];
+-			break;
+-		}
+-	}
+-
+-	if (!tmds_cts)
+-		return 0;
+-
+-	switch (sample_rate) {
+-	case 32000:
+-		return tmds_cts->cts_32k;
+-	case 44100:
+-	case 88200:
+-	case 176400:
+-		return tmds_cts->cts_44k1;
+-	case 48000:
+-	case 96000:
+-	case 192000:
+-		return tmds_cts->cts_48k;
+-	default:
+-		return -ENOENT;
+-	}
+-}
+-
+ static void dw_hdmi_qp_set_audio_interface(struct dw_hdmi_qp *hdmi,
+ 					   struct hdmi_codec_daifmt *fmt,
+ 					   struct hdmi_codec_params *hparms)
+@@ -458,8 +252,7 @@ static void dw_hdmi_qp_set_sample_rate(struct dw_hdmi_qp *hdmi, unsigned long lo
+ {
+ 	unsigned int n, cts;
+ 
+-	n = dw_hdmi_qp_find_n(hdmi, tmds_char_rate, sample_rate);
+-	cts = dw_hdmi_qp_find_cts(hdmi, tmds_char_rate, sample_rate);
++	drm_hdmi_acr_get_n_cts(tmds_char_rate, sample_rate, &n, &cts);
+ 
+ 	dw_hdmi_qp_set_cts_n(hdmi, cts, n);
+ }
 
-Each .bin is the first 16 MiB of the underlying mmcblk device.
-README has the full BL31 / fwver / DDR fw table.
+base-commit: a48bbcc7ac739e93562d6148c6fa504c2e9f22f8
+-- 
+2.53.0
 
-Regards,
-Simon
 
 _______________________________________________
 Linux-rockchip mailing list
