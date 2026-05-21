@@ -4,66 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77E32CD4F5E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 08:10:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9F47CD5BAA
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 08:49:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XVHQwfuo6QdhbvKXKiMznFPJZKhR9tIFYv67uRqX/tU=; b=S4KvxNEdfz3sAUqKUIyV8+JH+J
-	souRFQ42XQLOUfrxGsuZgk6UnzjxrtJezidw6K0GPtrXuohnXJpsuJ9bFXhCReqnWx5JzfpBa1/FX
-	MhsjvhhM+gWm5CXM21ihnHndj/2dfFr36EJ/eZ853ApdaV4HfvEUfyzIGFA0I+MG028TWluB/RObj
-	36Y3BFzPbxGXAu3qaCpJB6+UHOCWsedWvn1B0nSBGFQntYFp9XWm86Ke5kWW/VozmGPZ1KMvsd2cs
-	ECK7OnT/J4oELHTqar+2+m0owaG8FWBUR+NZ6me3mpPKCeQdkEG+z21RJJ44xTPBP8kSxq3UqsyPJ
-	sglY5dHg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=naesYMr+4ojYHhinR5kKmP/OxUZ9r0/uMem/CXA9AxA=; b=byH60/rfY5s7Qw
+	g0dNOKOXiFh0xnlI+INXJ7jqX7dEJZJF8duqjcoPpFLwyDuH/xo1EJK0acE1+fMGrgy3nBlWIN3SH
+	6vBceNV5zQiNZ8lTgvnqoXJarCv3R5h+WN1glW4geTTJFWz+Jl45LzINwFfa4dyzUT0tQnHp5QZF6
+	I6N9jf7GW7kvFzYb7sZVEqYva6P6Eegh9W0OvYIPpo7FkTcIusJBTbv534MVnyZOA0aJUa1nIVU05
+	T4zFeQgsrkzDUeIKZmsHOMfPPLJ+xE2SkmqmKNAXpBBEtBJQr5g5iIysWEKgbebz5J1zig6vtBSab
+	CUIZTTGdzEo2ILGeVtxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPyUZ-0000000754C-16SB;
-	Thu, 21 May 2026 08:10:55 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wPz5t-00000007Cro-3fMi;
+	Thu, 21 May 2026 08:49:29 +0000
+Received: from mail.mainlining.org ([5.75.144.95])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPyUX-0000000753Y-0XD1;
-	Thu, 21 May 2026 08:10:54 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 247144090A;
-	Thu, 21 May 2026 08:10:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F85B1F000E9;
-	Thu, 21 May 2026 08:10:51 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779351052;
-	bh=eysZ0brE9mz3y7rR8Bm3ba3XnNZCC556oDpeNj1X7E8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=mlnP2rHdZlypMCrRK+7hSNoTYjSXBuTGXxsQge3wdBqdzo6LSgbgjuynh8LjRUq6M
-	 1y4DsKad1xt8e3wXgljctmFP7K9dFnfx4GthOmt4iRs7JZtshGWSTPv9v+1TZ9wjMo
-	 /zZW/aUnP+o8yLyFYnxkcLdD0mLjW6hciKvjvq/FWiHpTQq0zyzhkZJ+irdIwh180E
-	 SI1B+vpwtI+EP2/2zyH1TLeVxkVnqh2Tv3Gp+FSQBaI9Ke8c61ofLBKJcHHC7WfHxb
-	 AV3aqFWdaUYKlgHDutF4HtH85dzM4hvLJl4yEZtOfSt5VMsuAYPVlpGj6RGSDLOuPf
-	 2W3bEMBjVw3mg==
-Date: Thu, 21 May 2026 10:10:49 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 04/22] drm/display: scdc_helper: Add HDMI 2.0
- scrambling management helpers
-Message-ID: <20260521-chestnut-harrier-of-enhancement-2bcfa2@penduick>
-References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
- <20260520-dw-hdmi-qp-scramb-v6-4-24b74603b782@collabora.com>
+	id 1wPz5p-00000007Cqe-14mK
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 May 2026 08:49:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
+	h=Message-ID:Subject:To:From:Date; t=1779353355; bh=tboziFN+P1ZHSCtpnTlFnif
+	oXEx/CvZ7qbR4+LAHbVg=; b=GcRfYq3FC2ZG2tG85sYa2zzPtoXV1GWkmCd+DfBdpFhEvcHKqw
+	9YCEV4+VOqAOBohXRJfrIz9PL0+lTDBJR1dQHJ8sQncqk0mM07t9WW9QqcJbj41UVZu/cDfWwp9
+	DxC5hOJndfLUDdOokszLDOd7m1sfZnZX4umbw5soH2sZsukd6uTSNUC+5hk2cq6r0yW7wz1VpW+
+	+FwJGhqOyY1yjT7LbA6YCBeTfHpgUxYelxdSQlftTcb8qJ3A353/ZHpB9nBEqP0Ngzu0le6krc0
+	DZPz0TNaersdxVVXrqMNJH9HZ9X6qyBuKoya3CtG1PYMe5qhHCwhK45hJa/PKqYchVQ==;
+DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
+	h=Message-ID:Subject:To:From:Date; t=1779353355; bh=tboziFN+P1ZHSCtpnTlFnif
+	oXEx/CvZ7qbR4+LAHbVg=; b=ZwMEa5Z9ssHwbtLxOKe8JMfUOHSaEd+h6PFWZvoBfqUj6gNw8p
+	7wUZUI0+uz1hoXkzfvgc4fg4poReBzfYgcCQ==;
+Date: Thu, 21 May 2026 15:49:10 +0700
+From: Dang Huynh <dang.huynh@mainlining.org>
+To: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
+Cc: Heiko Stuebner <heiko@sntech.de>, 
+	Tobias Schramm <t.schramm@manjaro.org>, devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH] arm64: dts: rockchip: Fix vcc_sdio regulator max voltage
+ on Pinebook Pro
+Message-ID: <ag7Edg9sgEXLuOc3@meltbook-pro>
+References: <20260519094439.7918-1-hugo@whynothugo.nl>
 MIME-Version: 1.0
-In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-4-24b74603b782@collabora.com>
+Content-Disposition: inline
+In-Reply-To: <20260519094439.7918-1-hugo@whynothugo.nl>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_011053_207195_DCBBC0AD 
-X-CRM114-Status: GOOD (  35.14  )
+X-CRM114-CacheID: sfid-20260521_014925_433678_6DD870BF 
+X-CRM114-Status: GOOD (  17.04  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,252 +64,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8974505692918809841=="
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hi,
 
---===============8974505692918809841==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="aijmi3x6lmhfe6cy"
-Content-Disposition: inline
+On Tue, May 19, 2026 at 11:44:39AM +0200, Hugo Osvaldo Barrera wrote:
+> The vcc_sdio regulator supports 1.8V to 3.4V output range according to
+> its datasheet.
+> =
 
+> The current DT incorrectly limits the max voltage to 3.0V. This limit
+> causes issues issues downstream with u-boot, which refuses to apply the
 
---aijmi3x6lmhfe6cy
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 04/22] drm/display: scdc_helper: Add HDMI 2.0
- scrambling management helpers
-MIME-Version: 1.0
+Just a heads up, you can run mainline U-Boot on the Pinebook Pro without
+any modification.
 
-On Wed, May 20, 2026 at 09:38:15PM +0300, Cristian Ciocaltea wrote:
-> Add drm_scdc_start_scrambling(), drm_scdc_stop_scrambling() and
-> drm_scdc_sync_status() helpers to manage the full lifecycle of HDMI 2.0
-> SCDC scrambling on both source and sink sides.
->=20
-> drm_scdc_start_scrambling() configures SCDC scrambling and high TMDS
-> clock ratio and starts a periodic work item that monitors the sink's
-> SCDC scrambling status, retrying setup when the sink loses state.
->=20
-> drm_scdc_stop_scrambling() tears down scrambling on both sides and
-> cancels the monitoring work.
->=20
-> drm_scdc_sync_status() triggers a CRTC reset on reconnection to restore
-> SCDC state lost during sink disconnects within an active display
-> pipeline.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+But after looking at the datasheet for the AP6256, I can confirm that
+this change matches perfectly with the recommended ratings.
+
+Reviewed-by: Dang Huynh <dang.huynh@mainlining.org>
+
+> out-of range value, and falls back to the minimum in that range: 1.8V.
+> This is insufficient to power the SD card, so driver initialisation
+> fails and booting from it does not work.
+> =
+
+> Set regulator-max-microvolt to 3400000 =B5V to match hardware capability.
+> This matches the rk3399-orangepi for the same regulator.
+> =
+
+> Signed-off-by: Hugo Osvaldo Barrera <hugo@whynothugo.nl>
 > ---
->  drivers/gpu/drm/display/drm_scdc_helper.c | 235 ++++++++++++++++++++++++=
-+++++-
->  include/drm/display/drm_scdc_helper.h     |   6 +-
->  2 files changed, 236 insertions(+), 5 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/display/drm_scdc_helper.c b/drivers/gpu/drm/=
-display/drm_scdc_helper.c
-> index cb6632346aad..5bacb886d373 100644
-> --- a/drivers/gpu/drm/display/drm_scdc_helper.c
-> +++ b/drivers/gpu/drm/display/drm_scdc_helper.c
-> @@ -21,16 +21,22 @@
->   * DEALINGS IN THE SOFTWARE.
->   */
-> =20
-> +#include <linux/delay.h>
->  #include <linux/export.h>
->  #include <linux/i2c.h>
-> +#include <linux/minmax.h>
->  #include <linux/slab.h>
-> -#include <linux/delay.h>
-> =20
-> -#include <drm/display/drm_scdc_helper.h>
-> +#include <drm/drm_atomic.h>
-> +#include <drm/drm_atomic_helper.h>
-> +#include <drm/drm_bridge_helper.h>
->  #include <drm/drm_connector.h>
-> +#include <drm/drm_crtc.h>
->  #include <drm/drm_device.h>
->  #include <drm/drm_print.h>
-> =20
-> +#include <drm/display/drm_scdc_helper.h>
-> +
->  /**
->   * DOC: scdc helpers
->   *
-> @@ -50,10 +56,14 @@
->   * has to track the connector status changes using interrupts and
->   * restore the SCDC status. The typical solution for this is to trigger =
-an
->   * empty modeset in drm_connector_helper_funcs.detect_ctx(), like what v=
-c4 does
-> - * in vc4_hdmi_reset_link().
-> + * in vc4_hdmi_reset_link(). Alternatively, use the HDMI connector frame=
-work
-> + * which ensures drm_scdc_sync_status() is called in the context of
-> + * drm_atomic_helper_connector_hdmi_hotplug_ctx().
->   */
-> =20
-> -#define SCDC_I2C_SLAVE_ADDRESS 0x54
-> +#define SCDC_I2C_SLAVE_ADDRESS		0x54
-> +#define SCDC_MAX_SOURCE_VERSION		0x1
-> +#define SCDC_STATUS_POLL_DELAY_MS	3000
-> =20
->  #define drm_scdc_dbg(connector, fmt, ...)					\
->  	drm_dbg_kms((connector)->dev, "[CONNECTOR:%d:%s] " fmt,			\
-> @@ -270,3 +280,220 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_=
-connector *connector,
->  	return true;
->  }
->  EXPORT_SYMBOL(drm_scdc_set_high_tmds_clock_ratio);
-> +
-> +static int drm_scdc_setup_scrambler(struct drm_connector *connector)
-> +{
-> +	bool done;
-> +
-> +	done =3D drm_scdc_set_high_tmds_clock_ratio(connector, true);
-> +	if (!done)
-> +		return -EIO;
-> +
-> +	done =3D drm_scdc_set_scrambling(connector, true);
-> +	if (!done)
-> +		return -EIO;
-> +
-> +	schedule_delayed_work(&connector->hdmi.scdc_work,
-> +			      msecs_to_jiffies(SCDC_STATUS_POLL_DELAY_MS));
-> +	return 0;
-> +}
+>  arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> =
 
-There's a very tight deadline in the spec to enable the scrambler
-relative to the video. Debouncing (I assume?) for three seconds break
-it. Drivers might not be able to do better, but it's really not
-something we should entertain at the framework level and we should call
-the callback straight-away.
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts b/arch/=
+arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> index b5c05928142c..f21fcdc1b49a 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> +++ b/arch/arm64/boot/dts/rockchip/rk3399-pinebook-pro.dts
+> @@ -526,7 +526,7 @@ vcc_sdio: LDO_REG4 {
+>  				regulator-always-on;
+>  				regulator-boot-on;
+>  				regulator-min-microvolt =3D <1800000>;
+> -				regulator-max-microvolt =3D <3000000>;
+> +				regulator-max-microvolt =3D <3400000>;
+>  =
 
-> +static void drm_scdc_monitor_scrambler(struct drm_connector *connector)
-> +{
-> +	if (READ_ONCE(connector->hdmi.scrambler_enabled) &&
-> +	    !drm_scdc_get_scrambling_status(connector))
-> +		drm_scdc_setup_scrambler(connector);
-> +}
-> +
-> +static int drm_scdc_reset_crtc(struct drm_connector *connector,
-> +			       struct drm_modeset_acquire_ctx *ctx)
-> +{
-> +	struct drm_crtc *crtc;
-> +	u8 config;
-> +	int ret;
-> +
-> +	if (!ctx || !connector->state)
-> +		return 0;
-> +
-> +	crtc =3D connector->state->crtc;
-> +	if (!crtc || !crtc->state || !crtc->state->active)
-> +		return 0;
-> +
-> +	ret =3D drm_scdc_readb(connector->ddc, SCDC_TMDS_CONFIG, &config);
-> +	if (ret) {
-> +		drm_scdc_dbg(connector, "Failed to read TMDS config: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	if ((config & SCDC_SCRAMBLING_ENABLE) &&
-> +	    (config & SCDC_TMDS_BIT_CLOCK_RATIO_BY_40))
-> +		return 0;
-> +
-> +	/*
-> +	 * Reset the CRTC to suspend TMDS transmission, conforming to HDMI 2.0
-> +	 * spec which requires scrambled data not to be sent before the sink is
-> +	 * configured, and TMDS clock to be suspended while changing the clock
-> +	 * ratio.  The disable/re-enable cycle triggered by the reset should
-> +	 * call drm_scdc_start_scrambling() during re-enable, properly
-> +	 * configuring the sink before data transmission resumes.
-> +	 */
-> +
-> +	drm_scdc_dbg(connector, "Resetting CRTC to restore SCDC status\n");
-> +
-> +	ret =3D drm_atomic_helper_reset_crtc(crtc, ctx);
-> +	if (ret && ret !=3D -EDEADLOCK)
-> +		drm_scdc_dbg(connector, "Failed to reset CRTC: %d\n", ret);
-> +
-> +	return ret;
-> +}
-
-locking is a bit more involved than that, I'd suggest to take
-vc4_hdmi_reset_link() and turn it into a helper.
-
-> +/**
-> + * drm_scdc_start_scrambling - activate scrambling and monitor SCDC stat=
-us
-> + * @connector: connector
-> + *
-> + * Enables scrambling and high TMDS clock ratio on both source and sink =
-sides.
-> + * Additionally, use a delayed work item to monitor the scrambling statu=
-s on
-> + * the sink side and retry the operation, as some displays refuse to set=
- the
-> + * scrambling bit right away.
-> + *
-> + * Returns:
-> + * Zero if scrambling is set successfully, an error code otherwise.
-> + */
-> +int drm_scdc_start_scrambling(struct drm_connector *connector)
-> +{
-> +	struct drm_display_info *info =3D &connector->display_info;
-> +	struct drm_connector_hdmi *hdmi =3D &connector->hdmi;
-> +	int ret;
-> +	u8 ver;
-> +
-> +	if (!hdmi->funcs ||
-> +	    !hdmi->funcs->scrambler_src_enable ||
-> +	    !hdmi->funcs->scrambler_src_disable) {
-> +		drm_scdc_dbg(connector, "Function not implemented, bailing.\n");
-> +		return -EINVAL;
-> +	}
-
-This case shouldn't be a thing. The driver must not probe if it's not set.
-
-> +	if (!info->is_hdmi ||
-> +	    !info->hdmi.scdc.supported ||
-> +	    !info->hdmi.scdc.scrambling.supported) {
-> +		drm_scdc_dbg(connector, "Sink doesn't support scrambling.\n");
-> +		return -EINVAL;
-> +	}
-
-You should also compute whether we actually need to enable the scrambler
-here, based on the mode, format and bpc.
-
-I'd also like to see what a !bridge user of this would look like. The
-vc4 driver has all the infrastructure you need already, so converting it
-to it would be great.
-
-Maxime
-
---aijmi3x6lmhfe6cy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCag6+CAAKCRAnX84Zoj2+
-digcAYC6mYTbuFts3kUAKfaX5VEZQlbMpu45A7Gzl+Uakxh7tLKXWhIv0/CEzDTg
-6LW9dp4BfjD9VAKlmP3xOHohqH376xkcmXLyIhTtSfuyx0rO1XxWRJNtlqsiK4YC
-tuaIPgWpGA==
-=IpgX
------END PGP SIGNATURE-----
-
---aijmi3x6lmhfe6cy--
-
-
---===============8974505692918809841==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+>  				regulator-state-mem {
+>  					regulator-on-in-suspend;
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============8974505692918809841==--
-
