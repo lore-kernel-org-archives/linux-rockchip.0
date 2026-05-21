@@ -4,56 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B322CD4F3D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 19:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 731D7CD5BAC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 20:08:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b07RPtHfoKMOgYoX+gC7lO4NJGv5WV2QqOJD3DzyPeA=; b=bIqDP7dFqO4uL5wO/kiZ0LfCnY
-	clUcInEBBlKyxUerFqS0SIs7j/rxv0Ou4YoP5VXD9cFS4YNBYKunl7rUj/Om5GMW20G9qJE3cApCb
-	QMFEFg4b+kozubF8R7NSW8u9EzIVTGH/zvTqVg2pmZ1ZTEvpAft5JFYsKVd7txm/A6fQS0CmTcvXP
-	whfYjXotbqfPOfdmkcCqBAC9ung66TCpJ+bkFQONTnOgnC4oIQrd8wzC5KdgEH+vusnBaHcFG3zaE
-	nAgJELFN8z2KAFTy1Hu+BAKxAm6236xbcS49PV9DWucvEFv3ZQxNtfk3UCZciEDYoviaISHEWG/Ox
-	yz6Kn+Qg==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1PZLooI3spjIe+56WxO6/P6PNDUE0Bh28+oa5ddKfmg=; b=ryHQ8margrc20MJPuZ0EVX4H2c
+	8K5Mo9e3+Hljr/jUOPvLsPKL1V8p6NNohqfg10Qp8e1iExmHD6jv/yCivN+Oqk1Vo6yDf9li1bl3n
+	uOjIQ9Cs9Gyo9AezccbxCHTQlsbEoL7ppdmt0dhaTu/EYcKhd87+Au9J3ZGZeFrxCHrbW/Nv66WqA
+	nLE4WvTFlKpDpWiQTbYzc9Xbc8kX2RZW9Ku1m0hJ9RBMhMkNbO5EnE/JCuYXwiH0sROF9a6VWB3lS
+	UG4z9nJh8xlFaFjGeD0EKR4oi+mHL4lM70QNplI0/MWZ5PYxLqzeurbHRpG+iB3Iz5MUkAI5dleiX
+	2DMrX1nQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ9TO-00000008xjy-3eIx;
-	Thu, 21 May 2026 19:54:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wQ9gl-00000008z1P-0F1x;
+	Thu, 21 May 2026 20:08:15 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ9TM-00000008xjF-0HdC;
-	Thu, 21 May 2026 19:54:25 +0000
+	id 1wQ9gj-00000008z19-0plc
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 May 2026 20:08:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7E3EF44458;
-	Thu, 21 May 2026 19:54:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D5881F000E9;
-	Thu, 21 May 2026 19:54:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 934D360098;
+	Thu, 21 May 2026 20:08:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5A1E01F000E9;
+	Thu, 21 May 2026 20:08:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779393263;
-	bh=E5qxMVU7KNeTp5Z9eD048xkheSqBuHU9Rf+lOSg5bZE=;
+	s=k20260515; t=1779394092;
+	bh=707jK27ZELdllgXoMxuZs9+Kj+Za41Z+d79jxmYPrkQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WW+dJHmQVUmrlw5Sloc8UtUUdypQ0KChM61ytPXX9nOujJfAjfWMoKFbvKQzSXmK3
-	 JgizcQbvjJC+Zku1kqiWdFglDskPLCY//fkdHRlrUksi/I3iMSyjck49TIakUCXbgn
-	 M0kIJLSg9Zd03uvzutcXmITcSxCYG9l+KDNFDxZSVQ/S1pC+fHt0dw1gXU32o2looB
-	 /1LFgjkGQzXbF6loAylfFmyv+AgUjqqv3I2p+F2PnrPArq4p130j7DTK47rrC/nP21
-	 I2L2bHwkqjMaduSJ2RyGDy9zATsiCAHW9BInQ/hBKcf3eWQ6/WlKVUPhn1youHLV7t
-	 p66IaHTQnSviw==
-Date: Thu, 21 May 2026 20:54:16 +0100
+	b=XnQhC89x81h+yCkodScj88ddByjv2tXNQ9ox5EpkfYEkbUqs6gFJeqYItZinvYTvY
+	 nGOei2abuhB6Yz/cursfuF2ME+VN5H4K7gQJN1Ryot1KMbKKg+tfwgeUkoQtfdps6Z
+	 A+P60g/kPyvcov6QxzohAuStjaHKdz+bDuukmJ6yL5pBZsmgJdPRlhjBIZ2UzIxIT7
+	 a4Gm1egxLXUBTJbqwcyZPK60MTOhifSBlpPf5qDoY06uuzTYWxprsFwCj4OuIItsN+
+	 wn5p5pqW0A2yQuIXw7PM0vY6X0xFH5ttinTitzWsZsw+JDxM8/Eh6URlmHtnNdKdto
+	 bGbABwQtCXzXw==
+Date: Thu, 21 May 2026 21:08:07 +0100
 From: Conor Dooley <conor@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v6 01/10] dt-bindings: display: rockchip: analogix-dp:
- Fix hclk as third clock for RK3588
-Message-ID: <20260521-waking-case-cd709f0a7712@spud>
-References: <20260521080835.1362416-1-damon.ding@rock-chips.com>
- <20260521080835.1362416-2-damon.ding@rock-chips.com>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH V8 02/10] dt-bindings: iio: imu: icm42600: Add icm42607
+ binding
+Message-ID: <20260521-challenge-flaccid-26b6f5d2d0bd@spud>
+References: <20260518200526.458421-1-macroalpha82@gmail.com>
+ <20260518200526.458421-3-macroalpha82@gmail.com>
+ <20260520174217.6ca98524@jic23-huawei>
+ <20260521-premium-afterlife-0d7a22b77517@spud>
+ <PH0PR19MB99733879756FFB321CDCDD9B81A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
 MIME-Version: 1.0
-In-Reply-To: <20260521080835.1362416-2-damon.ding@rock-chips.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_125424_151899_495E1C08 
-X-CRM114-Status: GOOD (  21.56  )
+In-Reply-To: <PH0PR19MB99733879756FFB321CDCDD9B81A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,182 +73,79 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Type: multipart/mixed; boundary="===============7509254402820552022=="
+Content-Type: multipart/mixed; boundary="===============1618513737920739205=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============7509254402820552022==
+--===============1618513737920739205==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="b8RwqbhFD4vyJf2C"
+	protocol="application/pgp-signature"; boundary="wintQjHsEd+E3xkx"
 Content-Disposition: inline
 
 
---b8RwqbhFD4vyJf2C
+--wintQjHsEd+E3xkx
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, May 21, 2026 at 04:08:26PM +0800, Damon Ding wrote:
-> RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
-> registers and enable the video datapath.
+On Thu, May 21, 2026 at 12:43:09PM -0500, Chris Morgan wrote:
+> On Thu, May 21, 2026 at 05:44:21PM +0100, Conor Dooley wrote:
+> > On Wed, May 20, 2026 at 05:42:17PM +0100, Jonathan Cameron wrote:
+> > > On Mon, 18 May 2026 15:05:17 -0500
+> > > Chris Morgan <macroalpha82@gmail.com> wrote:
+> > >=20
+> > > > From: Chris Morgan <macromorgan@hotmail.com>
+> > > >=20
+> > > > Add devicetree binding for the Invensense ICM42607 and Invensense
+> > > > ICM42607P inertial measurement unit. This unit is a combined
+> > > > accelerometer, gyroscope, and thermometer available via I2C or SPI.
+> > > >=20
+> > > > This device is functionally very similar to the icm42600 series wit=
+h a
+> > > > very different register layout.
+> > > >=20
+> > > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> > > > Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> > > Note that Sashiko has highlighted that the binding this being added to
+> > > has a potential problem.
+> > >=20
+> > > interrupts are required but interrupt-names are not.
+> > > That would be fine but the binding doesn't say there is a default
+> > > ordering for the interrupts - so if we don't have names we have no
+> > > idea which interrupt it is.
+> > >=20
+> > > This needs fixing - probably by adding a default
+> >=20
+> > Worth pointing out that this isn't an issue with this particular patch,
+> > the problem exists in mainline.
 >=20
-> Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
-> phandle reference, which allowed the eDP to work without explicitly
-> managing the hclk_vo1 clock. However, this is not safe or explicit.
+> The driver I lovingly borrowed this code from seems to have fallback
+> logic, basically picking the first interrupt if it couldn't find one
+> named "INT1". I was told early on not to do this that way, so in my
+> case the interrupt-names would be required (but not for the existing
+> driver because of this fallback).
 >=20
-> To make the clock dependency explicit, enforce per-SoC clock-names
-> requirements:
->  - RK3288: 2 clocks (dp, pclk)
->  - RK3399: 3 clocks (dp, pclk, grf)
->  - RK3588: 3 clocks (dp, pclk, hclk)
->=20
-> Do not reuse the 'grf' clock name for RK3588 because it represents
-> a different clock with distinct control logic:
-> - The 'grf' clock is only for GRF register access and is toggled
->   dynamically during register access.
-> - The 'hclk' clock controls both GRF access and video datapath
->   gating, and must remain enabled during probe.
->=20
-> Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add su=
-pport for RK3588")
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->=20
-> ---
->=20
-> Changes in v4:
-> - Modify the commit msg.
->=20
-> Changes in v5:
-> - Enforce the correct third clock name on a per-compatible basis.
-> - Modify the commit msg simultaneously.
->=20
-> Changes in v6:
-> - Expand more detail commit msg about using hclk instead of grf clock.
-> ---
->  .../rockchip/rockchip,analogix-dp.yaml        | 37 +++++++++++++++++--
->  1 file changed, 33 insertions(+), 4 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,=
-analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockc=
-hip,analogix-dp.yaml
-> index d99b23b88cc5..8001c1facf98 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
-x-dp.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
-x-dp.yaml
-> @@ -23,10 +23,7 @@ properties:
-> =20
->    clock-names:
->      minItems: 2
-> -    items:
-> -      - const: dp
-> -      - const: pclk
-> -      - const: grf
+> Should I make the requirement conditional just to my compatible
+> strings?
 
-Instead of removing this, you can make it
+Sure, sounds like a good idea to me.
 
-items:
- - const: dp
- - const pclk
- - enum:
-     - grf
-     - hclk
-
-> +    maxItems: 3
-
-And delete this.
-
-> =20
->    power-domains:
->      maxItems: 1
-> @@ -60,6 +57,33 @@ required:
->  allOf:
->    - $ref: /schemas/display/bridge/analogix,dp.yaml#
-> =20
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3288-dp
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          items:
-> +            - const: dp
-> +            - const: pclk
-
-Then this becomes
-  clock-names:
-    maxItems: 2
-  clocks:
-    maxItems: 2
-
-> +
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - rockchip,rk3399-edp
-> +    then:
-> +      properties:
-> +        clock-names:
-> +          items:
-> +            - const: dp
-> +            - const: pclk
-> +            - const: grf
-
-maybe this needs a minItems: 3? Depends on if the grf clock is
-mandatory. Also probably needs a
-clocks:
-  minItems: 3
-if that's the case.
-
-> +
->    - if:
->        properties:
->          compatible:
-> @@ -68,6 +92,11 @@ allOf:
->                - rockchip,rk3588-edp
->      then:
->        properties:
-> +        clock-names:
-> +          items:
-> +            - const: dp
-> +            - const: pclk
-> +            - const: hclk
-
-And the same here as for the 3399.
-
-Cheers,
-Conor.
-
->          resets:
->            minItems: 2
->          reset-names:
-> --=20
-> 2.34.1
->=20
->=20
-
---b8RwqbhFD4vyJf2C
+--wintQjHsEd+E3xkx
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCag9i6AAKCRB4tDGHoIJi
-0qOeAP4/TIm4lNwVPo8oG7XgOK2ViaUmDDyl9A6OWsGUOnJ6mAD/VEkf8xDaid1h
-UX09FkCBYAnUiKsUzJi5SK/3mw2M8w4=
-=FcL6
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCag9mJwAKCRB4tDGHoIJi
+0uWgAP96xINoifZYfEqvlm8mnXkLoTpcNpRpexPVhkPesyjNSgEAyT1KnP4I+z5d
+not7x1APCxb9+VXz2wgU/dZA0O48bAo=
+=yomg
 -----END PGP SIGNATURE-----
 
---b8RwqbhFD4vyJf2C--
+--wintQjHsEd+E3xkx--
 
 
---===============7509254402820552022==
+--===============1618513737920739205==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -251,5 +156,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============7509254402820552022==--
+--===============1618513737920739205==--
 
