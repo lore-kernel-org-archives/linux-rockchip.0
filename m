@@ -4,121 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0029CD4F3C
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 07:47:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90CC8CD4F5E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 07:52:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Reply-To:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9EhbYaISQPt30GV6IYZ8sD4JgvMlCi7NMP/xKjRc3IA=; b=WDljNRIb1e1AI/5bzzWMpSIxBg
-	7H7s78w8/txJ+UZchq5WYq+AAlGiHWBpWY/QHQDNXQpo7QCcLooxSWOquPHE2HfHfdoFxRpbb+Mxp
-	JhzmYzyLf3kuGXVaMuIxPXsPJkRWQnXVyLvOtVCwslzt3HDxK9PVX0WXBsWptdi+0b6na90VGYZdA
-	VjWmjH6UfC5hM5iInqGxtti12K5p38JDEMuU1zkxsmwTSP6AFRp5bA0CstSHQqeLXLAm1FGgCMyis
-	l9KbooMCZ5dpAbWDRPbzp9E9jjIDGmvFWsYF9fPhYp5+68z9HneSlE5hlP4W2aNdMb2LP9Yo1T/Gl
-	T4+We4NA==;
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6qviRrdhbxtl5cOESDrpMsV+IivTMwvYB4ASm3zyMnQ=; b=Mz4I6Mtal0Bc0GV/WFt0NaYDxS
+	Sk94y3V+s0l2ciwibgF/n//fgxULRDEBNl9/KToNiEdjYnjvx8XGcM+o3ogRI37lXu7aThn+3GkT+
+	+orEJU3DgwmBrwEZCfVT/mEp4DYpAKZ2/iW0KW4hPZmcet1A+fCisFi1uAuTdeW/cC7sxppA4v+1W
+	a6I+fx3v8SuV/rS6j+njdqlS72BqiQZTUU4hr4uRk4HHHhyXZoxHUh2q8DvnW4Tbk4wsHVBqZTC88
+	efaY18zao0YXQKPM1GZ2oA3wDQhUKUoTqBQBrxP87DelNInD7epaNypcln0Of9g0ZUdx3mohDtAV5
+	11y2rBqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPy7q-000000070MQ-19dZ;
-	Thu, 21 May 2026 07:47:26 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1wPyD0-00000007101-1aEk;
+	Thu, 21 May 2026 07:52:46 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPy7n-000000070Lr-19D1
-	for linux-rockchip@lists.infradead.org;
-	Thu, 21 May 2026 07:47:24 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4903cbfad68so648965e9.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 21 May 2026 00:47:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1779349641; x=1779954441; darn=lists.infradead.org;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=hQfvvIZHcwDFSAgb014S9o2dz5FFVIJPNRzHERKBSM0=;
-        b=UZlMS0PVPXKpJkvj5ltiRluzC1Zk8FgDgOzYY6hmo06GgM97+L4W3oSq576TgOYiut
-         IBRao7xG5BjubLmGh+GDbE2GBRD+bzhsC9+hr68ii8JUOxv6wSkodrleGQ76qrnpKH78
-         tSpJfsEq9ZKzUJgwXMgKwDNrDuWjlzLWNFtUvW6TAVjUj4xFovy1f6iI18u/VVXG2yhw
-         tQ60gvssIcHbuHpxmBCID/MTJ7tmnUimeJQ3MdQs/R1XdeV0uPkyrtvne0rzQr2OEJ3N
-         hP3dRbzskD9ACyOK9rJWDLvdVR36fAGgBr7UCvYbtSVnWJGN1hOpprM85oMHhr5LPX5J
-         pesw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1779349641; x=1779954441;
-        h=content-transfer-encoding:in-reply-to:organization:autocrypt
-         :content-language:references:cc:to:subject:reply-to:from:user-agent
-         :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=hQfvvIZHcwDFSAgb014S9o2dz5FFVIJPNRzHERKBSM0=;
-        b=U0BKgoPCL0joT0wqkP6QGP0VQFi4u0Lngkccu/bJyZCzd+JAt+O4RX9mfLt7GZG/Ml
-         NO378AOrlaHK/+NIUUbFeOr5HrX+fa9k9HJDUd5zpEMLPA2IaukbhMN9c4EsD9rzj8HN
-         FuLKrRBQmP+2qiW4mfrA4XARFzsFO+3H/UQmPxIqVAHBwTW+hLDT2OwiFidP2LCvB2iX
-         qv8a+bqKLzaLTvcKzDiVNaZVLX3qxH1L31skVPL+Kukc4x+uDTwbg1s9v5qzJAbQo+ix
-         UpPSt9jhh0IxAjG3BR1+c2F7BKrpriMNRWL8C4pZKR9AVKrJuGDGjwabpnxE1RtudDX+
-         IAZA==
-X-Forwarded-Encrypted: i=1; AFNElJ/nH76BRzAyr/9M2lvDYtmdvqQ5DXw4L5ePqpQ/59TjfuoFMReELCQz382cNxf8DDeIERXSPE1/9pWdjmqPZA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxW3HirRbdPWryjtbUCf+BPr3SvTTA+oyBu/TEofCBwt2fiUSK1
-	PQyUNlyrGtJ9yFbBWF6Q3aFJmuJfu5FJIxteVID2wQhQbngglcnhyV3RqYEePaMFtR0=
-X-Gm-Gg: Acq92OGKuO02wBAsp8MeFQwVyz88xWxl64xBrlWz3LjQHCZV0blBHZf/lJ1VhIULIl8
-	OKr5MiAQx07+Qr2HGOBqGBXM7sQ4wW74drRWrn+xkuiMb/f+5i0/huSC6iLShvazSBpS3FboZ6v
-	ccKMcyEOxqQKGg4b9xciRPIxNNU5ptSmH6q39pviiD74EKIJZRak4EPgkDjNblw1w0ldGnMhW/p
-	7deTByFmGqj2uIDtwaS3vceLm/4G+kLIK+1WKdgudROdyQ5jQO+oVSB45P1nCxLYhZZsaPGDzb9
-	izWl3kvybJJGMTF+FkGNqKnt7grytS3uGxA4T9tZDMSt/s8tl5DFKdwrJXLpnsw25X53TaNeBu8
-	z8DrbaJJupS2X2fZAsteRklKtun0qGjINHOqnS0m4N/kFIRRYZhLPDqMdY7YSsrXK5K9gdMd9Mi
-	Ulkospta+TLkIPH2tqvJiMmrLIUee/B7bctzsuZqcCMzsiDy5gTWMTMC1Edgn9bx8JP3LFz0/fB
-	9tkp08=
-X-Received: by 2002:a05:600c:4849:b0:48a:761:5816 with SMTP id 5b1f17b1804b1-4903608030amr10856805e9.8.1779349640664;
-        Thu, 21 May 2026 00:47:20 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:106d:1080:e038:7e8a:7467:8c6c? ([2a01:e0a:106d:1080:e038:7e8a:7467:8c6c])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4903caede9fsm6987345e9.14.2026.05.21.00.47.19
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 21 May 2026 00:47:20 -0700 (PDT)
-Message-ID: <fb1c86bf-44ea-46ed-b93b-6cee579647d8@linaro.org>
-Date: Thu, 21 May 2026 09:47:19 +0200
+	id 1wPyCz-000000070zO-19WB;
+	Thu, 21 May 2026 07:52:45 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 79B3460172;
+	Thu, 21 May 2026 07:52:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA61A1F000E9;
+	Thu, 21 May 2026 07:52:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779349964;
+	bh=99oskG8ubBjeKtd2Yc7IdU7MjYpfc9O1o+mlnd5bJ64=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=VY9uYzHGIt/BsHyCKP9I1NqWgX9O4iTlWhh2Rp9yo3C4d9f7BE3dbELq/xo24h8UF
+	 ZdkprFalox6G3NFRy2H9iccPb2+XRJvsHF+Eswz7k8ySSbB2nibIGi6bjEEuuYFUDI
+	 AJvUKOJ6RW3AIMn88VPG2ObB4uI6YYwrSKx/YLVVRIbKXyLoJShJt9i2xJyPsIfe7j
+	 wyowEfKbTWlInSw2RqinKKXH8wDSDqwQ5w+mQU2UjhA0exLlbI9qbQDRHzGZujyV+1
+	 wMrQo6RvEc4IsehY0JtUOuMGjHNLyl2PvipzKCMKpdw6IoFQeewU/WcbUUuH/UF5Fh
+	 Nocb94U9AVTmA==
+Date: Thu, 21 May 2026 09:52:41 +0200
+From: Maxime Ripard <mripard@kernel.org>
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
+	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
+	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
+	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
+	Luca Ceresoli <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>, kernel@collabora.com, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
+Subject: Re: [PATCH v6 02/22] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+Message-ID: <20260521-sweet-devout-panther-44d73c@penduick>
+References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
+ <20260520-dw-hdmi-qp-scramb-v6-2-24b74603b782@collabora.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH V2 4/6] drm/panel: anbernic-td4310: Add RG Vita Pro panel
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>,
- linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
- xsf@rock-chips.com, sre@kernel.org, simona@ffwll.ch, airlied@gmail.com,
- tzimmermann@suse.de, mripard@kernel.org, maarten.lankhorst@linux.intel.com,
- jesszhan0024@gmail.com, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org
-References: <20260515221947.299229-1-macroalpha82@gmail.com>
- <20260515221947.299229-5-macroalpha82@gmail.com>
- <c5ea73cc-ac1f-43ba-bcf1-0083a59bbef9@linaro.org>
- <PH0PR19MB9973388E4A62128DAC3D571E25A5012@PH0PR19MB997338.namprd19.prod.outlook.com>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <PH0PR19MB9973388E4A62128DAC3D571E25A5012@PH0PR19MB997338.namprd19.prod.outlook.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_004723_349795_F4BF1FBE 
-X-CRM114-Status: GOOD (  16.46  )
+In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-2-24b74603b782@collabora.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,125 +72,199 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: multipart/mixed; boundary="===============9107472257013438527=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/20/26 16:29, Chris Morgan wrote:
-> On Mon, May 18, 2026 at 03:55:08PM +0200, neil.armstrong@linaro.org wrote:
->> On 5/16/26 00:19, Chris Morgan wrote:
->>> From: Chris Morgan <macromorgan@hotmail.com>
->>>
 
-<snip>
+--===============9107472257013438527==
+Content-Type: multipart/signed; micalg=pgp-sha384;
+	protocol="application/pgp-signature"; boundary="7urdiivgg5qj3q55"
+Content-Disposition: inline
 
->>> +
->>> +	return dsi_ctx.accum_err;
->>> +
->>> +err_reset:
->>
->> And you don't check it here
-> 
-> Should I check the value and print an error if it fails? I had planned
-> on continuing even after a failure with the shutdown so it could turn
-> the device off, unless that's incorrect.
 
-yeah continue and ignore the return value on the error path
+--7urdiivgg5qj3q55
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 02/22] drm/connector: Add HDMI 2.0 scrambler
+ infrastructure
+MIME-Version: 1.0
 
-> 
->>
+Hi,
 
-<snip>
+Thanks for working on this!
 
->>> +
->>> +static void panel_anbernic_td4310_remove(struct mipi_dsi_device *dsi)
->>> +{
->>> +	struct anbernic_panel_td4310 *ctx = mipi_dsi_get_drvdata(dsi);
->>> +	int ret;
->>> +
->>> +	ret = mipi_dsi_detach(dsi);
->>> +	if (ret < 0)
->>> +		dev_err(&dsi->dev, "Failed to detach from DSI host: %d\n", ret);
->>> +
->>> +	drm_panel_remove(&ctx->panel);
->>> +}
->>
->> And drop remove completely
->>
-> 
-> I take it the devm calls above remove the need for a remove callback?
-> I take it that's new? Thank you.
+On Wed, May 20, 2026 at 09:38:13PM +0300, Cristian Ciocaltea wrote:
+> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
+>=20
+> - .scrambler_src_{enable|disable}() callbacks in
+>   drm_connector_hdmi_funcs for source-side scrambling control
+> - A delayed work item (scdc_work) with an associated callback (scdc_cb)
+>   for periodic monitoring of sink-side scrambling status
+> - A scrambler_enabled flag to track whether scrambling is currently
+>   active
+>=20
+> These are intended to be used by SCDC scrambling helpers to coordinate
+> scrambling setup and teardown between the source driver and the DRM
+> core.
+>=20
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+> ---
+>  drivers/gpu/drm/drm_connector.c | 14 +++++++++++
+>  include/drm/drm_connector.h     | 52 +++++++++++++++++++++++++++++++++++=
+++++++
+>  2 files changed, 66 insertions(+)
 
-Yep !
+So we would need kunit tests for this.
 
-> 
->>> +
->>> +static const struct drm_display_mode anbernic_vitapro_modes[] = {
->>> +	{
->>> +		.clock = 140020,
->>> +		.hdisplay = 1080,
->>> +		.hsync_start = 1080 + 50,
->>> +		.hsync_end = 1080 + 50 + 4,
->>> +		.htotal = 1080 + 50 + 4 + 50,
->>> +		.vdisplay = 1920,
->>> +		.vsync_start = 1920 + 15,
->>> +		.vsync_end = 1920 + 15 + 4,
->>> +		.vtotal = 1920 + 15 + 4 + 32,
->>> +		.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
->>> +	},
->>> +};
->>> +
->>> +static const struct anbernic_panel_td4310_info anbernic_vitapro_info = {
->>> +	.display_modes = anbernic_vitapro_modes,
->>> +	.num_modes = ARRAY_SIZE(anbernic_vitapro_modes),
->>> +	.width_mm = 69,
->>> +	.height_mm = 121,
->>> +	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
->>> +	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
->>> +		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
->>> +		      MIPI_DSI_CLOCK_NON_CONTINUOUS,
->>> +	.format = MIPI_DSI_FMT_RGB888,
->>> +	.lanes = 4,
->>> +	.prepare_delay = 50,
->>> +	.reset_delay = 220,
->>> +	.enable_delay = 120,
->>> +	.disable_delay = 50,
->>> +	.unprepare_delay = 20,
->>> +};
->>> +
->>> +static const struct of_device_id panel_anbernic_td4310_of_match[] = {
->>> +	{
->>> +		.compatible = "anbernic,panel-vita-pro",
->>> +		.data = &anbernic_vitapro_info,
->>> +	},
->>> +	{ },
->>> +};
->>> +MODULE_DEVICE_TABLE(of, panel_anbernic_td4310_of_match);
->>> +
->>> +static struct mipi_dsi_driver anbernic_panel_td4310_driver = {
->>> +	.driver = {
->>> +		.name = "panel-anbernic-td4310",
->>> +		.of_match_table = panel_anbernic_td4310_of_match,
->>> +	},
->>> +	.probe	= panel_anbernic_td4310_probe,
->>> +	.remove = panel_anbernic_td4310_remove,
->>> +};
->>> +module_mipi_dsi_driver(anbernic_panel_td4310_driver);
->>> +
->>> +MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
->>> +MODULE_DESCRIPTION("DRM driver for Anbernic TD4310 MIPI DSI panels");
->>> +MODULE_LICENSE("GPL");
->>
->> Thanks,
->> Neil
-> 
-> Thank you,
-> Chris
+> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
+tor.c
+> index 3fa4d2082cd7..91e58362fbc0 100644
+> --- a/drivers/gpu/drm/drm_connector.c
+> +++ b/drivers/gpu/drm/drm_connector.c
+> @@ -220,6 +220,19 @@ void drm_connector_free_work_fn(struct work_struct *=
+work)
+>  	}
+>  }
+> =20
+> +static void drm_connector_hdmi_scdc_work(struct work_struct *work)
+> +{
+> +	struct drm_connector *connector;
+> +	struct drm_connector_hdmi *hdmi;
+> +
+> +	hdmi =3D container_of(to_delayed_work(work), struct drm_connector_hdmi,
+> +			    scdc_work);
+> +	connector =3D container_of(hdmi, struct drm_connector, hdmi);
+> +
+> +	if (hdmi->scdc_cb)
+> +		hdmi->scdc_cb(connector);
+> +}
+> +
+>  static int drm_connector_init_only(struct drm_device *dev,
+>  				   struct drm_connector *connector,
+>  				   const struct drm_connector_funcs *funcs,
+> @@ -285,6 +298,7 @@ static int drm_connector_init_only(struct drm_device =
+*dev,
+>  	mutex_init(&connector->edid_override_mutex);
+>  	mutex_init(&connector->hdmi.infoframes.lock);
+>  	mutex_init(&connector->hdmi_audio.lock);
+> +	INIT_DELAYED_WORK(&connector->hdmi.scdc_work, drm_connector_hdmi_scdc_w=
+ork);
+>  	connector->edid_blob_ptr =3D NULL;
+>  	connector->epoch_counter =3D 0;
+>  	connector->tile_blob_ptr =3D NULL;
+> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
+> index 5ad62c207d00..49eaa30b1329 100644
+> --- a/include/drm/drm_connector.h
+> +++ b/include/drm/drm_connector.h
+> @@ -28,6 +28,7 @@
+>  #include <linux/ctype.h>
+>  #include <linux/hdmi.h>
+>  #include <linux/notifier.h>
+> +#include <linux/workqueue.h>
+>  #include <drm/drm_mode_object.h>
+>  #include <drm/drm_util.h>
+>  #include <drm/drm_property.h>
+> @@ -1358,6 +1359,36 @@ struct drm_connector_hdmi_funcs {
+>  	 */
+>  	const struct drm_edid *(*read_edid)(struct drm_connector *connector);
+> =20
+> +	/**
+> +	 * @scrambler_src_enable:
+> +	 *
+> +	 * This callback is invoked through @drm_scdc_start_scrambling during
+> +	 * a commit to setup SCDC scrambling and high TMDS clock ratio on
+> +	 * source side.
+> +	 *
+> +	 * The @scrambler_src_enable callback is mandatory if HDMI 2.0 is
+> +	 * to be supported.
+> +	 *
+> +	 * Returns:
+> +	 * 0 on success, a negative error code otherwise
+> +	 */
+> +	int (*scrambler_src_enable)(struct drm_connector *connector);
+> +
+> +	/**
+> +	 * @scrambler_src_disable:
+> +	 *
+> +	 * This callback is invoked through @drm_scdc_stop_scrambling during
+> +	 * a commit to disable SCDC scrambling and high TMDS clock ratio on
+> +	 * source side.
+> +	 *
+> +	 * The @scrambler_src_disable callback is mandatory if HDMI 2.0 is
+> +	 * to be supported.
+> +	 *
+> +	 * Returns:
+> +	 * 0 on success, a negative error code otherwise
+> +	 */
+> +	int (*scrambler_src_disable)(struct drm_connector *connector);
+> +
+>  	/**
+>  	 * @avi:
+>  	 *
+> @@ -1944,6 +1975,27 @@ struct drm_connector_hdmi {
+>  	 */
+>  	unsigned long supported_formats;
+> =20
+> +	/**
+> +	 * @scrambler_enabled: Tracks whether HDMI 2.0 scrambler is currently e=
+nabled.
+> +	 */
+> +	bool scrambler_enabled;
+> +
+> +	/**
+> +	 * @scdc_work: Work item currently used to monitor sink-side scrambling
+> +	 * status and retry setup if the sink resets it.
+> +	 */
+> +	struct delayed_work scdc_work;
+> +
+> +	/** @scdc_cb: Callback to be invoked as part of @scdc_work.
+> +	 *
+> +	 * Currently used to monitor sink-side scrambling status and retry
+> +	 * setup if the sink resets it.
+> +	 *
+> +	 * This is assigned by the framework when making use of
+> +	 * drm_scdc_start_scrambling() helper.
+> +	 */
+> +	void (*scdc_cb)(struct drm_connector *connector);
+> +
 
+I'm really not sure what the monitor thing is about. If we have setup
+the scrambler at enable time, and we set it again on hotplugging, why
+would we need to monitor anything?
+
+Also, scrambling is only relevant for HDMI 2.0. We need a way to expose
+that somehow and make sure that HDMI 2.0 drivers actually have
+scrambling setup.
+
+Maxime
+
+--7urdiivgg5qj3q55
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCag65yQAKCRAnX84Zoj2+
+dll/AX9tG3cFDmLeklMW+rTi4SvWHROIptUKpuz9LyW39s751r/XlVPbiMZzGzln
+wOcOdVgBgOFZq4n9DJJiQB+RNsx5GUFvhIPAEhol5wo1K6QtdXFp5MVvpk7rmgb8
+wlbWVhy0VA==
+=R3rI
+-----END PGP SIGNATURE-----
+
+--7urdiivgg5qj3q55--
+
+
+--===============9107472257013438527==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============9107472257013438527==--
+
