@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FC2FCD5BAC
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 09:41:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA5EDCD4F5E
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 11:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=yGbQnNdrIP7hg5Z6EsluqcOGxe0fj5SddZNcqX5+6mQ=; b=CSXk3RfiGoaYVE
-	vUZHR+3jEk/UGpb5N1RLqTfqF43piE3lIPVOhOLkLZhs9u7RHRqbdrXjHqAWCbrO7068bWGyf+A/r
-	ck/ctWaWWEChXKn6bm3P8UUxpZZgPJwOujjViKOp1Pwzp/F/N0yPT1z5lXeeFuCSKKm6hVV6BUwHr
-	EYT97ufsSJKGSs5Qe+eOfIjVqAtDaRhDMhzso00u06rRhlLA5aLnCQj6BDy8j8jgO0Loqjj/ukJoj
-	F1tLOqRRqc4Rb1Y1hyCsJx0CIo2+DK/QdsXoJFlDH6S5stgJgiD0s07rT3bJKk9uqanfgPblIapd/
-	qhqaqB9wvUhGw5Redt/A==;
+	List-Owner; bh=PEFbUGPu53+7tHOls1d3XUs9Kp8K+HQPjfJ/9Nln88w=; b=0lYl+33U2K/m3K
+	MRqcPiRPhUKdOCX5eIJ8lc7OwWkTYUVhvd1+mCgHmhJV+64jQtTxEcGC4/mVtJCw0X9fNcPDeZwbS
+	9SqdArST8598QjlWtCoNtsF0I2G3Uk9glbKx7Kh9MIa3hOuKVyUMyRaRUHMevUU3YCd3Jp+HaPthB
+	xnO4zK0BzFuZf/C97nTh9rTCWr+D0aJPUg7RpG4544bMAHbRputpZ86vS66AZsTtXgxtv5ch1FjtX
+	gTsOiNVYUUgXc8g0e6YV1XgeplKwUfUOWfA9fR53rEWmQuQnu21eHf43FnQx+0Oz9824jYIv0sCAX
+	PImHVsteepqyrU40kL2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPztk-00000007L0t-0979;
-	Thu, 21 May 2026 09:41:00 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wQ1q9-00000007daR-15mc;
+	Thu, 21 May 2026 11:45:25 +0000
+Received: from mail-m93178.xmail.ntesmail.com ([103.126.93.178])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPzti-00000007L02-19Zd;
-	Thu, 21 May 2026 09:40:59 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=FVUeWlKKpdLIZvOOLJnl3h9BUHCCwQDUhwgZkOAnPCw=; b=egc7+pmFKxo9bXuGpGKaODVu3c
-	mInxx6dPQ5IWFQ5XLFIMeAvngzaZwCRkpWjbw4o0Vbr84YasEymd02U5+/aenR1B7qNm1ozn/294+
-	7xX9kzv9kJcE1QgREU7dUHnDu+aO5shFIN/vyUl0PAVRh/losQwesRsQF+4Z8vHy79tusnVCe4KCn
-	jryUgY8KouDTZAhJKHpRWtlre4uIcYbBog+8gsgAyAH0zF+KjS3b5HDdEYus5x9nhHVjyXT2ZwCqg
-	LgPmP1CmSK04D/2jnqNMsSK8JatYzo2bfhiPhdB0Csca4gn1bd7s6ptPPqY/R5DsVhzdkXVMgIc+A
-	XeujQ25w==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>, Andy Yan <andy.yan@rock-chips.com>,
- Jonas Karlman <jonas@kwiboo.se>, Vladimir Oltean <vladimir.oltean@nxp.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Jonas Karlman <jonas@kwiboo.se>
-Subject: Re: [PATCH v2 00/11] drm/rockchip: dw_hdmi: Misc cleanup and propagate bus
- format
-Date: Thu, 21 May 2026 11:40:48 +0200
-Message-ID: <5220966.G96rZvMJ2N@phil>
-In-Reply-To: <20260518193748.2482823-1-jonas@kwiboo.se>
-References: <20260518193748.2482823-1-jonas@kwiboo.se>
+	id 1wQ1q4-00000007dY3-3PQO;
+	Thu, 21 May 2026 11:45:23 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3f5009439;
+	Thu, 21 May 2026 19:45:16 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Subject: [PATCH v2 3/3] drm/bridge: analogix_dp: Add support for optional data-lanes mapping
+Date: Thu, 21 May 2026 19:44:59 +0800
+Message-Id: <20260521114459.1394264-4-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260521114459.1394264-1-damon.ding@rock-chips.com>
+References: <20260521114459.1394264-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
+X-HM-Tid: 0a9e4a5aaae503a3kunmad9184e677777
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZGhhJVkxCSEsdHk0YQ0xPSVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=RUFo+PjgbR1zAlAiaOXr46eNbQpXSpl5SoOmFGDefG36kcsPc1VPXG4HC0x1nXfPl0B5AvvznvKh0pepSZGZoukN0tkUDvTiHOc+lvarp4RsJOCdZDzrAZdC/nVyV7QcTwQYoxEOtdEg2dGBDK4ddWycO2pw7gec/sKcW7LTkd4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=MGZJIkp+bxuC8sN+1d1VBd1BwHThYFGRrqxTQBMfj8w=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_024058_310546_A604A67D 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260521_044521_261966_95FCBC10 
+X-CRM114-Status: GOOD (  18.17  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,31 +75,190 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gTW9udGFnLCAxOC4gTWFpIDIwMjYsIDIxOjM3OjM0IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21t
-ZXJ6ZWl0IHNjaHJpZWIgSm9uYXMgS2FybG1hbjoKPiBUaGlzIHNlcmllcyBpbmNsdWRlIG1pc2Mg
-Y2xlYW51cCBvZiB0aGUgZHdoZG1pLXJvY2tjaGlwIGRyaXZlciBhbmQKPiBwcmVwYXJlcyBmb3Ig
-ZnV0dXJlIHN1cHBvcnQgb2YgWUNiQ3Igb3V0cHV0IGFuZCBEZWVwIENvbG9yIG1vZGVzLgo+IAo+
-IFBhdGNoIDEtNyBjbGVhbnVwIGFuZCBjaGFuZ2VzIHRvIHVzZSBkcm1yZXMgaGVscGVycyBmb3Ig
-dGhlIGVuY29kZXIuCj4gUGF0Y2ggOCBwcmVwYXJlIGZvciB1c2Ugb2YgYSBkaXNwbGF5LWNvbm5l
-Y3RvciBicmlkZ2UgZm9yIFJLMzU2OC9SSzM1NjYuCj4gUGF0Y2ggOS0xMCBwcmVwYXJlcyBmb3Ig
-ZnV0dXJlIHN1cHBvcnQgb2YgWUNiQ3IgYW5kIERlZXAgQ29sb3IgbW9kZXMuCj4gUGF0Y2ggMTEg
-Y2hhbmdlcyB0byB1c2UgcmVzdW1lX2Vhcmx5IHBtIG9wcyBmb3Igc3lzdGVtIHN1c3BlbmQuCj4g
-Cj4gVGhpcyBzZXJpZXMgZGVwZW5kcyBvbiB0aGUgcGF0Y2ggImRybS9yb2NrY2hpcDogZHdfaGRt
-aTogYXZvaWQgZGlyZWN0Cj4gZGVyZWZlcmVuY2Ugb2YgcGh5LT5kZXYub2Zfbm9kZSIgWzFdIGZy
-b20gdGhlIHNlcmllcyAiU3BsaXQgR2VuZXJpYyBQSFkKPiBjb25zdW1lciBhbmQgcHJvdmlkZXIg
-QVBJIiBbMl0uCj4gCj4gWzFdIGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2xpbnV4LXBoeS8yMDI2
-MDUwNTEwMDUyMy4xOTIyMzg4LTE2LXZsYWRpbWlyLm9sdGVhbkBueHAuY29tLwo+IFsyXSBodHRw
-czovL2xvcmUua2VybmVsLm9yZy9saW51eC1waHkvMjAyNjA1MDUxMDA1MjMuMTkyMjM4OC0xLXZs
-YWRpbWlyLm9sdGVhbkBueHAuY29tLwoKV2l0aCBWbGFkaW1pcidzIGFncmVlbWVudCwgSSd2ZSBw
-dWxsZWQgdGhhdCBwYXRjaCBvdXQgb2YgdGhlIHBoeS1zZXJpZXMKYW5kIGFwcGxpZWQgaXQgdG8g
-ZHJtLW1pc2MtbmV4dCAtIGFzIGl0J3MgYSBjaGFuZ2UgdGhhdCBjYW4gc3RhbmQgb24KaXRzIG93
-bi4KClNlcmllczoKVGVzdGVkLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPiAj
-cmszMzI4CgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-XwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFk
-ZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4
-LXJvY2tjaGlwCg==
+Parse the optional 'data-lanes' device tree property to support
+custom physical lane mapping configuration.
+
+If no valid configuration is found, fall back to the default
+lane map (0, 1, 2, 3) automatically and keep the driver running.
+
+Lane mapping is mainly used for below scenarios:
+1. Correct PCB lane swap and differential line routing crossover
+   without hardware changes;
+2. Adapt mismatched lane pin definitions between SoC and eDP panel;
+3. Support multiple panel hardware variants on the same board
+   by configuring data-lanes in device tree only.
+
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+
+---
+
+Changes in v2:
+- Add lane mapping application scenarios in commit message.
+---
+ .../drm/bridge/analogix/analogix_dp_core.c    | 56 +++++++++++++++++++
+ .../drm/bridge/analogix/analogix_dp_core.h    |  4 +-
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 15 +++--
+ .../gpu/drm/bridge/analogix/analogix_dp_reg.h |  4 ++
+ 4 files changed, 70 insertions(+), 9 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+index 5dc07ff84cd3..d1c6365118de 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
+@@ -1234,6 +1234,59 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
+ 	.detect = analogix_dp_bridge_detect,
+ };
+ 
++static int analogix_dp_dt_parse_lanes_map(struct analogix_dp_device *dp)
++{
++	struct video_info *video_info = &dp->video_info;
++	struct device_node *endpoint;
++	u32 tmp[LANE_COUNT4];
++	u32 map[LANE_COUNT4] = {0, 1, 2, 3};
++	bool used[LANE_COUNT4] = {false};
++	int num_lanes;
++	int ret, i;
++
++	memcpy(video_info->lane_map, map, sizeof(map));
++
++	num_lanes = drm_of_get_data_lanes_count_ep(dp->dev->of_node, 1, 0, 1,
++						   video_info->max_lane_count);
++	if (num_lanes < 0)
++		return -EINVAL;
++
++	endpoint = of_graph_get_endpoint_by_regs(dp->dev->of_node, 1, -1);
++	if (!endpoint)
++		return -EINVAL;
++
++	ret = of_property_read_u32_array(endpoint, "data-lanes", tmp, num_lanes);
++	of_node_put(endpoint);
++	if (ret)
++		return -EINVAL;
++
++	for (i = 0; i < num_lanes; i++) {
++		if (tmp[i] >= LANE_COUNT4) {
++			dev_dbg(dp->dev, "data-lanes[%d] = %u is out of range\n", i, tmp[i]);
++			return -EINVAL;
++		}
++
++		if (used[tmp[i]]) {
++			dev_dbg(dp->dev, "data-lanes[%d] = %u is duplicate\n", i, tmp[i]);
++			return -EINVAL;
++		}
++
++		used[tmp[i]] = true;
++		map[i] = tmp[i];
++	}
++
++	for (i = 0; i < LANE_COUNT4 && num_lanes < LANE_COUNT4; i++) {
++		if (!used[i])
++			map[num_lanes++] = i;
++	}
++
++	dev_dbg(dp->dev, "Using parsed lane map: <%u %u %u %u>\n", map[0], map[1], map[2], map[3]);
++
++	memcpy(video_info->lane_map, map, sizeof(map));
++
++	return 0;
++}
++
+ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
+ {
+ 	struct device_node *dp_node = dp->dev->of_node;
+@@ -1266,6 +1319,9 @@ static int analogix_dp_dt_parse_pdata(struct analogix_dp_device *dp)
+ 		break;
+ 	}
+ 
++	if (analogix_dp_dt_parse_lanes_map(dp))
++		dev_dbg(dp->dev, "No valid data-lanes found, using default lane map\n");
++
+ 	return 0;
+ }
+ 
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+index 94348c4e3623..a75d0fb8f980 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.h
+@@ -137,6 +137,8 @@ struct video_info {
+ 
+ 	int max_link_rate;
+ 	enum link_lane_count_type max_lane_count;
++
++	u32 lane_map[LANE_COUNT4];
+ };
+ 
+ struct link_train {
+@@ -175,7 +177,7 @@ struct analogix_dp_device {
+ /* analogix_dp_reg.c */
+ void analogix_dp_enable_video_mute(struct analogix_dp_device *dp, bool enable);
+ void analogix_dp_stop_video(struct analogix_dp_device *dp);
+-void analogix_dp_lane_swap(struct analogix_dp_device *dp, bool enable);
++void analogix_dp_lane_mapping(struct analogix_dp_device *dp);
+ void analogix_dp_init_analog_param(struct analogix_dp_device *dp);
+ void analogix_dp_init_interrupt(struct analogix_dp_device *dp);
+ void analogix_dp_reset(struct analogix_dp_device *dp);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+index ea8401293a23..c1344a3f013a 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
+@@ -48,16 +48,15 @@ void analogix_dp_stop_video(struct analogix_dp_device *dp)
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_VIDEO_CTL_1);
+ }
+ 
+-void analogix_dp_lane_swap(struct analogix_dp_device *dp, bool enable)
++void analogix_dp_lane_mapping(struct analogix_dp_device *dp)
+ {
++	u32 *lane_map = dp->video_info.lane_map;
+ 	u32 reg;
+ 
+-	if (enable)
+-		reg = LANE3_MAP_LOGIC_LANE_0 | LANE2_MAP_LOGIC_LANE_1 |
+-		      LANE1_MAP_LOGIC_LANE_2 | LANE0_MAP_LOGIC_LANE_3;
+-	else
+-		reg = LANE3_MAP_LOGIC_LANE_3 | LANE2_MAP_LOGIC_LANE_2 |
+-		      LANE1_MAP_LOGIC_LANE_1 | LANE0_MAP_LOGIC_LANE_0;
++	reg = lane_map[0] << LANE0_MAP_SHIFT;
++	reg |= lane_map[1] << LANE1_MAP_SHIFT;
++	reg |= lane_map[2] << LANE2_MAP_SHIFT;
++	reg |= lane_map[3] << LANE3_MAP_SHIFT;
+ 
+ 	writel(reg, dp->reg_base + ANALOGIX_DP_LANE_MAP);
+ }
+@@ -140,7 +139,7 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
+ 
+ 	usleep_range(20, 30);
+ 
+-	analogix_dp_lane_swap(dp, 0);
++	analogix_dp_lane_mapping(dp);
+ 
+ 	writel(0x0, dp->reg_base + ANALOGIX_DP_SYS_CTL_1);
+ 	writel(0x40, dp->reg_base + ANALOGIX_DP_SYS_CTL_2);
+diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+index 12735139046c..ac914e37089b 100644
+--- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
++++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.h
+@@ -209,6 +209,10 @@
+ #define LANE0_MAP_LOGIC_LANE_1			(0x1 << 0)
+ #define LANE0_MAP_LOGIC_LANE_2			(0x2 << 0)
+ #define LANE0_MAP_LOGIC_LANE_3			(0x3 << 0)
++#define LANE3_MAP_SHIFT				(6)
++#define LANE2_MAP_SHIFT				(4)
++#define LANE1_MAP_SHIFT				(2)
++#define LANE0_MAP_SHIFT				(0)
+ 
+ /* ANALOGIX_DP_ANALOG_CTL_1 */
+ #define TX_TERMINAL_CTRL_50_OHM			(0x1 << 4)
+-- 
+2.34.1
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
