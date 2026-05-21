@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55ED0CD5BAB
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 21:10:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9766CD5BAF
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 21:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=U++FhvMVmBRyHwZZvvn0K3szUPjN+Bz0D9V/aA34MRA=; b=WFgIPLQCsJHkHy
-	eRBt3xjN6qHxvhYW+HjZHnJ2hnarAPmVoPvLguAXKGTTg8GE8jwfVXZRSSbh3+j43Lmi4Rjf5Qex8
-	7O1i156mO+9UpI6zBl8cR9ryAGfUr5CAWKWTSCF+E+zamXX1lOfIZ/m5NYxuzhxYPSuwH1VXEs9xf
-	8AlXzk0Arwkiy0DEGiuhA0YcJsCrhi5QKR3YruEqywQbVEum5qEmJFg/rxffrGMfdesAlpfjPbs6z
-	8OUI75ggFFNtN51SJ1Jt4ggYyfUU9/qdw5m1ZUaI9o5zJA0fpFeIYya4IkmeaLiFGOGF1wtZUhx5d
-	/vy5IFHbfyCv16tsXiWQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Q7umvkPZl/SaT75e+qANB2iN5S0EvEWOnv4xzOiHNdQ=; b=G5tgvSmOF2jY6J
+	SuuQVpBu8owhIm5Mr4amfZC+zMbRzLFDtBRy1PYGLIXEVFMrKDx6EFvo0zrVQwHzZNHHdJvd1Md5O
+	PUgovwikx9XDMlcymIYb7z4HMWhgM+KJ5stjiq2QU7rZrr96QeGyp1FTDvNhk6xl1+xe4SdHdBZcc
+	ypisBBgL2XZ+WPf9mCy/7IQrRtwHsE37zD5+i+uC+UThFaXw+CCfAv5ExnGybV7IBfF/l+qVbH38l
+	/NP0oU7NfwddqatNYxhT1PLJSFloohnKscn4vf28HPTDwH+CRxTbAXbLf4D6PvyE/OuneiiCwmfkS
+	gx3XClvTdICG1Du0spCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQAeY-000000096Bf-3K3u;
-	Thu, 21 May 2026 21:10:02 +0000
+	id 1wQAiI-000000096dt-140P;
+	Thu, 21 May 2026 21:13:54 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQAeV-000000096AP-2PHe;
-	Thu, 21 May 2026 21:10:01 +0000
+	id 1wQAiG-000000096dT-1IFD;
+	Thu, 21 May 2026 21:13:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=/fWdBi3lEWqAo5CRxVaCXmu8gWoMPqZQtnPYtc6jRHg=; b=UwbC+UtxHegdmoiMGuK7H2ZegJ
-	gowd2UeuB3T4g5zw9IYrOOmjZnb1IfCcuFz1eMDzhzjZmFgB2F+lN1fH8rquU0yZh1M2kd8fGtzs1
-	YH724ORu3o52LfrMRGRUses9Cm3tUrqbdx2me3fSHioHP0trY+NiJOKe0tsslIxKEADkPsqcFX3O5
-	3LM0ewlk1asRIg90LoOfQplhWtgQdK6ZWiII8rjWcuZIe9L/Y2XrpZoCqoYWwYkWI5YLaUFwOBNUz
-	B7tqF1ERsPqlVYeWAIA/bQrMYSSwJftlACEqcnCeojWGM7SWHgfNaBUZxuwEG/B9niys/nwsmCrwa
-	av7HKPBA==;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Sy4BKpHNHM+d+C5MQaz0Pfp3rV7HUmKvJcZNuYOmGCA=; b=dRlk4x/TVNfepMEunR/XV2wW7L
+	+WXTOyoyTUWwOxrmoxDIbupQ6QBb7znQJlAD3qmn1PhbXU34c9c4XpvLGIIz4kYGmiPpFk88o4jVF
+	NGN4JtqfKA3NGtTCtb1+Wq/KIHlbJWtJobTsFhmnPGrHlRpdIAqo2ihKpryJXmjGiOfpUVrOsqsrt
+	VQbQE9ThBCrzU+vqwxg4seKk3Fq3PWvuD+GttqyZopEwDBNhETZnimPE7Ecr1hUqDcleooMIdyFvG
+	/se18GXFughT6PzGlk5+phHuHJTjRyUa8gGT3wN4LEwVxOBCCrY/3GAv4upZVXuyvWXaau9eGXQ7d
+	CRKoR7fg==;
 Received: from gloria.sntech.de ([185.11.138.130])
 	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQAe0-00000002x1R-1lYx;
-	Thu, 21 May 2026 21:09:57 +0000
+	id 1wQAiC-00000002xRu-0ey0;
+	Thu, 21 May 2026 21:13:50 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=/fWdBi3lEWqAo5CRxVaCXmu8gWoMPqZQtnPYtc6jRHg=; b=VHS8L7ypYhBmB3Ap6+zpqNRR8/
-	fa1efYwrtgDBEZPBSJMwlYaVXuXVdr7/PavL21JOxRNnZVVSrcxe894JAXviHL7Ko0AEPtoBpILbx
-	z4RV2y2vL8DR0hu8j4Y3Ct3LMogv13JRMTbHF6wc+Isg1WBJeNMppGKAz2BBChzYqkW5s4XUKrcXY
-	8H8pXWxBq73s7xwSGZn1ooqIhF3ou2Ktkdy+ZNCavUnTbNSeDAIBUiIx402/JPQIgiFVYbJVkUSEc
-	JBUln3X72PclkRlIfeib9CVWbzfwMywRqqWTgQMEVllb4mzeX3gIVKuku/pr0B4vZcv6WZNqZI4Yi
-	RKaiTUrA==;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=Sy4BKpHNHM+d+C5MQaz0Pfp3rV7HUmKvJcZNuYOmGCA=; b=M5tdlvk2EZxV1mvppezSooHfQG
+	VAniydlKL1Ot1Fgfr0pur2EWaHcb4YnxDtLKOYP25T8rmUcf9rmzdxIp51bRlmCC6GYWtIzC0XLBp
+	rbP/jf8iJHYXlpLxYqiJic8r8+umWHLXnHHzAYpDyhHRxIWDmwwPnOLZUaIODWy/9aZKgz4i9vY/P
+	SJiRxJHRFZV+s127ZrNwDhldbuD01dtGLeeB9r5micviUE8Cgoqax2oWhtRs1oT+3vw1Hx/jz+/Wv
+	+F0fOWjU1j675w03m96k90rAakIbhc69K55T8o5j9KYp3UjotNiR+6zkgGoyFVKkh0wXXsfPBaYhz
+	bXfqFfiw==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Steven Price <steven.price@arm.com>
-Subject: [PATCH] ARM: rockchip: keep reset control around
-Date: Thu, 21 May 2026 23:09:15 +0200
-Message-ID: <20260521210915.2331176-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.3
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Steven Price <steven.price@arm.com>,
+ Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH] ARM: rockchip: keep reset control around
+Date: Thu, 21 May 2026 23:13:46 +0200
+Message-ID: <12983716.zapYfy813O@phil>
+In-Reply-To: <20260521210915.2331176-1-heiko@sntech.de>
+References: <20260521210915.2331176-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_220951_121332_353EFB14 
-X-CRM114-Status: GOOD (  14.23  )
+X-CRM114-CacheID: sfid-20260521_221348_740854_F79AE2BD 
+X-CRM114-Status: GOOD (  21.16  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,81 +74,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Do not put the reset control, retain exclusive control over it.
-After turning on a CPU, the corresponding reset line must stay
-deasserted.
-
-This also avoids calling reset_control_put() before workqueues
-are operational.
-
-Fixes: 78ebbff6d1a0 ("reset: handle removing supplier before consumers")
-Signed-off-by: Philipp Zabel <p.zabel@pengutronix.de>
-Tested-by: Steven Price <steven.price@arm.com>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm/mach-rockchip/platsmp.c | 16 ++++++++++------
- 1 file changed, 10 insertions(+), 6 deletions(-)
-
-diff --git a/arch/arm/mach-rockchip/platsmp.c b/arch/arm/mach-rockchip/platsmp.c
-index f432d22bfed8..f659d894bfae 100644
---- a/arch/arm/mach-rockchip/platsmp.c
-+++ b/arch/arm/mach-rockchip/platsmp.c
-@@ -34,6 +34,7 @@ static int ncores;
- 
- static struct regmap *pmu;
- static int has_pmu = true;
-+static struct reset_control *cpu_rstc[4];
- 
- static int pmu_power_domain_is_on(int pd)
- {
-@@ -64,9 +65,11 @@ static struct reset_control *rockchip_get_core_reset(int cpu)
- static int pmu_set_power_domain(int pd, bool on)
- {
- 	u32 val = (on) ? 0 : BIT(pd);
--	struct reset_control *rstc = rockchip_get_core_reset(pd);
-+	struct reset_control *rstc;
- 	int ret;
- 
-+	rstc = pd < ARRAY_SIZE(cpu_rstc) ? cpu_rstc[pd] : ERR_PTR(-EINVAL);
-+
- 	if (IS_ERR(rstc) && read_cpuid_part() != ARM_CPU_PART_CORTEX_A9) {
- 		pr_err("%s: could not get reset control for core %d\n",
- 		       __func__, pd);
-@@ -100,11 +103,8 @@ static int pmu_set_power_domain(int pd, bool on)
- 		}
- 	}
- 
--	if (!IS_ERR(rstc)) {
--		if (on)
--			reset_control_deassert(rstc);
--		reset_control_put(rstc);
--	}
-+	if (!IS_ERR(rstc) && on)
-+		reset_control_deassert(rstc);
- 
- 	return 0;
- }
-@@ -312,6 +312,10 @@ static void __init rockchip_smp_prepare_cpus(unsigned int max_cpus)
- 		ncores = ((l2ctlr >> 24) & 0x3) + 1;
- 	}
- 
-+	/* Collect cpu core reset control for each core */
-+	for (i = 0; i < ncores; i++)
-+		cpu_rstc[i] = rockchip_get_core_reset(i);
-+
- 	/* Make sure that all cores except the first are really off */
- 	for (i = 1; i < ncores; i++)
- 		pmu_set_power_domain(0 + i, false);
--- 
-2.47.3
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMjEuIE1haSAyMDI2LCAyMzowOToxNSBNaXR0ZWxldXJvcMOkaXNjaGUg
+U29tbWVyemVpdCBzY2hyaWViIEhlaWtvIFN0dWVibmVyOgo+IERvIG5vdCBwdXQgdGhlIHJlc2V0
+IGNvbnRyb2wsIHJldGFpbiBleGNsdXNpdmUgY29udHJvbCBvdmVyIGl0Lgo+IEFmdGVyIHR1cm5p
+bmcgb24gYSBDUFUsIHRoZSBjb3JyZXNwb25kaW5nIHJlc2V0IGxpbmUgbXVzdCBzdGF5Cj4gZGVh
+c3NlcnRlZC4KPiAKPiBUaGlzIGFsc28gYXZvaWRzIGNhbGxpbmcgcmVzZXRfY29udHJvbF9wdXQo
+KSBiZWZvcmUgd29ya3F1ZXVlcwo+IGFyZSBvcGVyYXRpb25hbC4KPiAKPiBGaXhlczogNzhlYmJm
+ZjZkMWEwICgicmVzZXQ6IGhhbmRsZSByZW1vdmluZyBzdXBwbGllciBiZWZvcmUgY29uc3VtZXJz
+IikKPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRl
+Pgo+IFRlc3RlZC1ieTogU3RldmVuIFByaWNlIDxzdGV2ZW4ucHJpY2VAYXJtLmNvbT4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgoKRm9yZ290IHRvIGFk
+ZCBCYXJ0b3N6IHRvIHRoZSBDYyBsaXN0LCBzb3JyeQoKCkhlaWtvCgo+IC0tLQo+ICBhcmNoL2Fy
+bS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYyB8IDE2ICsrKysrKysrKystLS0tLS0KPiAgMSBmaWxl
+IGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAtLWdp
+dCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcGxhdHNtcC5jIGIvYXJjaC9hcm0vbWFjaC1yb2Nr
+Y2hpcC9wbGF0c21wLmMKPiBpbmRleCBmNDMyZDIyYmZlZDguLmY2NTlkODk0YmZhZSAxMDA2NDQK
+PiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYwo+ICsrKyBiL2FyY2gvYXJt
+L21hY2gtcm9ja2NoaXAvcGxhdHNtcC5jCj4gQEAgLTM0LDYgKzM0LDcgQEAgc3RhdGljIGludCBu
+Y29yZXM7Cj4gIAo+ICBzdGF0aWMgc3RydWN0IHJlZ21hcCAqcG11Owo+ICBzdGF0aWMgaW50IGhh
+c19wbXUgPSB0cnVlOwo+ICtzdGF0aWMgc3RydWN0IHJlc2V0X2NvbnRyb2wgKmNwdV9yc3RjWzRd
+Owo+ICAKPiAgc3RhdGljIGludCBwbXVfcG93ZXJfZG9tYWluX2lzX29uKGludCBwZCkKPiAgewo+
+IEBAIC02NCw5ICs2NSwxMSBAQCBzdGF0aWMgc3RydWN0IHJlc2V0X2NvbnRyb2wgKnJvY2tjaGlw
+X2dldF9jb3JlX3Jlc2V0KGludCBjcHUpCj4gIHN0YXRpYyBpbnQgcG11X3NldF9wb3dlcl9kb21h
+aW4oaW50IHBkLCBib29sIG9uKQo+ICB7Cj4gIAl1MzIgdmFsID0gKG9uKSA/IDAgOiBCSVQocGQp
+Owo+IC0Jc3RydWN0IHJlc2V0X2NvbnRyb2wgKnJzdGMgPSByb2NrY2hpcF9nZXRfY29yZV9yZXNl
+dChwZCk7Cj4gKwlzdHJ1Y3QgcmVzZXRfY29udHJvbCAqcnN0YzsKPiAgCWludCByZXQ7Cj4gIAo+
+ICsJcnN0YyA9IHBkIDwgQVJSQVlfU0laRShjcHVfcnN0YykgPyBjcHVfcnN0Y1twZF0gOiBFUlJf
+UFRSKC1FSU5WQUwpOwo+ICsKPiAgCWlmIChJU19FUlIocnN0YykgJiYgcmVhZF9jcHVpZF9wYXJ0
+KCkgIT0gQVJNX0NQVV9QQVJUX0NPUlRFWF9BOSkgewo+ICAJCXByX2VycigiJXM6IGNvdWxkIG5v
+dCBnZXQgcmVzZXQgY29udHJvbCBmb3IgY29yZSAlZFxuIiwKPiAgCQkgICAgICAgX19mdW5jX18s
+IHBkKTsKPiBAQCAtMTAwLDExICsxMDMsOCBAQCBzdGF0aWMgaW50IHBtdV9zZXRfcG93ZXJfZG9t
+YWluKGludCBwZCwgYm9vbCBvbikKPiAgCQl9Cj4gIAl9Cj4gIAo+IC0JaWYgKCFJU19FUlIocnN0
+YykpIHsKPiAtCQlpZiAob24pCj4gLQkJCXJlc2V0X2NvbnRyb2xfZGVhc3NlcnQocnN0Yyk7Cj4g
+LQkJcmVzZXRfY29udHJvbF9wdXQocnN0Yyk7Cj4gLQl9Cj4gKwlpZiAoIUlTX0VSUihyc3RjKSAm
+JiBvbikKPiArCQlyZXNldF9jb250cm9sX2RlYXNzZXJ0KHJzdGMpOwo+ICAKPiAgCXJldHVybiAw
+Owo+ICB9Cj4gQEAgLTMxMiw2ICszMTIsMTAgQEAgc3RhdGljIHZvaWQgX19pbml0IHJvY2tjaGlw
+X3NtcF9wcmVwYXJlX2NwdXModW5zaWduZWQgaW50IG1heF9jcHVzKQo+ICAJCW5jb3JlcyA9ICgo
+bDJjdGxyID4+IDI0KSAmIDB4MykgKyAxOwo+ICAJfQo+ICAKPiArCS8qIENvbGxlY3QgY3B1IGNv
+cmUgcmVzZXQgY29udHJvbCBmb3IgZWFjaCBjb3JlICovCj4gKwlmb3IgKGkgPSAwOyBpIDwgbmNv
+cmVzOyBpKyspCj4gKwkJY3B1X3JzdGNbaV0gPSByb2NrY2hpcF9nZXRfY29yZV9yZXNldChpKTsK
+PiArCj4gIAkvKiBNYWtlIHN1cmUgdGhhdCBhbGwgY29yZXMgZXhjZXB0IHRoZSBmaXJzdCBhcmUg
+cmVhbGx5IG9mZiAqLwo+ICAJZm9yIChpID0gMTsgaSA8IG5jb3JlczsgaSsrKQo+ICAJCXBtdV9z
+ZXRfcG93ZXJfZG9tYWluKDAgKyBpLCBmYWxzZSk7Cj4gCgoKCgoKX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGluZyBsaXN0
+CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmluZnJhZGVh
+ZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
