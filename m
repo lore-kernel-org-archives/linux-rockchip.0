@@ -4,81 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EE93CD4F3D
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 20:13:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3630BCD5BAB
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 20:42:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8tP+h+YW/embD4jQke9pKvHeWnFkX83bqJSGM70WARM=; b=T1TtfwXGosi6/a
-	c2JsKwzIGu9nzFg3B3DLFbm2t9fE4KEJpezxlMupFA9ZWBzURitUAAA8Mon1eAaSYv/3+RczwLY8i
-	+KRozjDyAG4iDgrLxCyy/ZGm5UM69S5XPzNjlYtQx7xUhJPFYfUjB8WlXuLkkF6kEhDrgWEzwptWG
-	wTQ9/3glw0m/UayuBjdPL4izorvO+Du4zk1KMmTEVK9PDceYL2CErB941nEm1v3CNLpJRcGoTsgAO
-	azOFsQddCdRpfHyiyplxFQupFmoMa4IoBTY8jvm1TnJ/5NRxyHumNvs34HrgMRbrD8P1FYFo1B92Q
-	1rp14d95kUesjnqPqcDQ==;
+	List-Owner; bh=OzoT2nd4y0/iQx0jJ/k6jypVHifwBV/d2t80cgvRCVw=; b=Vw+GKILilIKteB
+	pdGxalPH8136TtKW84O/smNdTzfrKG60SDu82OpnnhImTvehcnmsVdyJyVxjTe+VupUNfP8DvUnHT
+	YSYyrs3qmICsv4PA/4S5V20xHhIcosdf11rLHrhXz6zrsymltqoHtKTucLiGcj44G8BbcgTwus1Iz
+	f8M25o9Gjpdem5O+V0msmJtwZhzlMM+INOtysbbn3gt7OdqpFjUFavoLunH/bCuqFyopMEkvXVLw4
+	EFRKpxoU1dPvIHgLwPp+SHJ21PnGXMJXu+tIXvYm0ldQuYZNnkvw8+ZbuTz0BI/LdA7k/nFi0KH72
+	fM3fqn4uCHOtAs/Y2G6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ9lt-00000008zdB-3xSo;
-	Thu, 21 May 2026 20:13:33 +0000
-Received: from smtp.forwardemail.net ([121.127.44.73])
+	id 1wQAED-000000093A2-1nNl;
+	Thu, 21 May 2026 20:42:49 +0000
+Received: from mail-eastusazolkn190110000.outbound.protection.outlook.com ([2a01:111:f403:d100::] helo=BL2PR02CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQ9lq-00000008zbR-3v8o
+	id 1wQAEA-0000000939P-2nri
 	for linux-rockchip@lists.infradead.org;
-	Thu, 21 May 2026 20:13:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1779394409;
- bh=G6x1g9xJdqk+zdBPwW6rPVSmR2PUbPlPZx4/m/V3gy8=;
- b=zq65cyKtroOx5rq6cNvHw7bjYjKVvbGV6vrwO42FBDJ4ZtvzmoXnoPHtjXL96dfrUvD7TFquW
- Byud5VnbC2BthebBpzM/D4c3gO7IiujSAaKvc/etE+bAUvbsgoTim1KaPdexMkVIf1YfAuW5F+s
- lEdrrId01TWDbeA9tWFpx/j9dvVK/ZX7RWoj8cX3dmjUXnt/GDTPLz8MTut0HynjnKJuUcx3Mwj
- 7ZrQCYKQJyAnxYLh5FuDoEJWUIcN2zvu6R7m18zV+jzYTRq0y5C0Y4UCtaKpFiPUT1JvkgnYN4m
- sWvGYa0WQDetJikJADfikjAFO2MX9mzO4kSZg1cDSqOg==
-X-Forward-Email-ID: 6a0f67626fd0f8c2ba150eb6
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.73
-X-Forward-Email-Version: 2.8.15
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <310e7a75-62e2-463c-b471-fcaaa3acfef5@kwiboo.se>
-Date: Thu, 21 May 2026 22:13:15 +0200
+	Thu, 21 May 2026 20:42:48 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=S/8+av/RhmHRdotS3B6nErAHBpd7l9cIoqPDHPT8QW714PdkmX29qEgGpQshbYEVK42RTjW56g5a1l09i8SJFWIhqnL4M2AtyT2kXsRSHJfbv8ctUsfLMzh3a9Bj2NuG6C4jK8sSwtQD3JgpwkV9EsK8MzlhvEyGtmsdee65Kqy3wBMf5MRfg/ZE1RiUL0yq+QBBr9ce70hDbmmK6bJtyCTsfcqWu2aZ3Nmktl+UTEgbc/RpOU1xuKJTJSJTb4aSlYhIWdpnSUBAg1l8oyz+VqXcOtusDjO/42q5sGhyokdgVxOtT3loDLNOYgmHW239zbctGYnxBI7MTFypM4Vn0w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=7Hcr5Li5wI115T0Tor3VH8aCQ5jxR9RXyAOn+os69zo=;
+ b=VaqwCpPbQznfBOcbulcdp2rcItVqeAIqaU30qhmEVjIoArLmnUWLqatR3tFPDrDEaxeGJk3VxR19QkA33+iGPpIaMOGIKg7pt4+hBpZmPCXy216TPInZbsUoOWCtuk5icpWGD83z5yUl7EmLm3gdVX9EHUUfdhJqH2SKwdSaMt6w5NgCgJePgdUI/xuvF9qS83AjcS4N5YCdBt4HzoVpnuKFBgcrbG4LGg4FRohpwNR4nrH5hkX2E+222SBGRqjVAWl2xXF5RY29EvXCiuiKYBTSfzoAyYmaWdabe9FsFuO4zVTFBAv/taG5avUCZy4fQHU1b04KSvVjP3hCdodz/w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=7Hcr5Li5wI115T0Tor3VH8aCQ5jxR9RXyAOn+os69zo=;
+ b=gAOUJxARBO1NrDJDUsxoUG8pVWuDuob30hEkivHWlUwKBtXyGLU6MS4Gawjz8cQBC+uv/CQSZF1oqvjEvWhSOgHW8MesRc8QO2SLQyF1L9MjJycOp5MTcPco+n5+SBbpz1IqRidcNoCjgdHIwSPjkfu79Q2f14jm+aHEPzUmwu1TrQh7L55079Uw2SBEXnRTMmarY6CAujdsl6AK3n0F1g+IPXEVIX9tXC4EWX6QuWtIs7MA+o4OFGkEGiD+J/kyOllrXasgIdlha5KiiQXURVx4t0gaEhd4qHsBd58bwnRwmClMh1nD0KOKVqoXe0gVgu2ZV8NN+2ceNq/cKve9Iw==
+Received: from PH0PR19MB997338.namprd19.prod.outlook.com
+ (2603:10b6:510:3b1::18) by CO6PR19MB5419.namprd19.prod.outlook.com
+ (2603:10b6:303:14e::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.16; Thu, 21 May
+ 2026 20:42:41 +0000
+Received: from PH0PR19MB997338.namprd19.prod.outlook.com
+ ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
+ ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0025.023; Thu, 21 May 2026
+ 20:42:41 +0000
+Date: Thu, 21 May 2026 15:42:38 -0500
+From: Chris Morgan <macromorgan@hotmail.com>
+To: Jonathan Cameron <jic23@kernel.org>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V8 05/10] iio: imu: inv_icm42607: Add PM support for
+ icm42607
+Message-ID: <PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20260518200526.458421-1-macroalpha82@gmail.com>
+ <20260518200526.458421-6-macroalpha82@gmail.com>
+ <20260520181353.0a0371cb@jic23-huawei>
+Content-Disposition: inline
+In-Reply-To: <20260520181353.0a0371cb@jic23-huawei>
+X-ClientProxiedBy: SA0PR12CA0008.namprd12.prod.outlook.com
+ (2603:10b6:806:6f::13) To PH0PR19MB997338.namprd19.prod.outlook.com
+ (2603:10b6:510:3b1::18)
+X-Microsoft-Original-Message-ID: <ag9uPpL5BN2trJSo@wintermute.localhost.fail>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v7 19/23] drm: bridge: dw_hdmi: Use delayed_work to
- debounce hotplug event
-To: Neil Armstrong <neil.armstrong@linaro.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, Robert Foss <rfoss@kernel.org>,
- Heiko Stuebner <heiko@sntech.de>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Liu Ying <victor.liu@nxp.com>, Sandy Huang <hjc@rock-chips.com>,
- Andy Yan <andy.yan@rock-chips.com>, Chen-Yu Tsai <wens@kernel.org>,
- Christian Hewitt <christianshewitt@gmail.com>,
- Diederik de Haas <diederik@cknow-tech.com>,
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-amlogic@lists.infradead.org,
- linux-sunxi@lists.linux.dev, imx@lists.linux.dev,
- linux-kernel@vger.kernel.org
-References: <20260518180206.2480119-1-jonas@kwiboo.se>
- <20260518180206.2480119-20-jonas@kwiboo.se>
- <e584ab2b-677d-4893-95c9-7b68165633c6@linaro.org>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <e584ab2b-677d-4893-95c9-7b68165633c6@linaro.org>
+X-MS-Exchange-MessageSentRepresentingType: 1
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|CO6PR19MB5419:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3fe660f0-614b-4e86-7aba-08deb77980a2
+X-MS-Exchange-SLBlob-MailProps: Vs63Iqe4sQmM7KNZxyCfd+5xcyAOZnIEmumAQVuHi7MmdhTJfF5hRYAhfvXSrq/9TY3ve1Iis3n4BqS2AiqvYlEGRH0RlUH1USS6OoaiayTOpR/K7eEvOo3pwwKhYtXTW9FZiumjwsf74djTLzQ2ivTJXXyLZpAbPL4DTVJGTLGDjDpYpl9IS4uO9es/Czql4Z70d0m4MPVrp9l3Y5dPfmohQUuIcbyhmKaaNkKfSqjeo0zWCbF/BmFeE/MwozKY9IMXwBDDbb6ATtzeTswH1uQqLTEkDMrsEtEnDcuKlJYtrp/gvXSdjCgwvSXPVKU5IbxuDmGSZEthApuv04RDZUxM42bxjlpTJt4YouhOWrbBVWDB088umvQ6GjXlJjQm5m0SEyUpD47iA4krqiu11EQ787Nmp0852JuDxuS/WNss28pT4P3wbNoIZCPmDOxSUbWzjzWfFequXKIo49ZOd20qMPPnIZHsm3uO48R14UcTuFgGM3/PJobyT+Zl7QMCk/OBS0MkkRwWbPgfYUaYPWvmiOAgNE3aUDz4oVj07mfIf2FQD9J9gYiZsofPoOdyydf9pwVD7SQoilHYIBiCM8gbLEFroX9FUnV9NyoTNgOklo0Yn3xjlaJJB9LoGMdMtPTViW1CAjP/pDJ+asPKdWDqnfHZvTBsl1c2igzXI9afHayNyOEKrOsAV460aPdxkgviAKbbXjZzLX07qmdkV1JDuCZDs4TAmrdcmlVgPf8=
+X-Microsoft-Antispam: BCL:0;ARA:14566002|5072599009|15080799012|8060799015|19110799012|23021999003|41001999006|24021099003|6090799003|51005399006|37011999003|25031999004|3412199025|440099028|40105399003;
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?SbOGB5XB4ONsCNNB/vMS+uKnLbV/NM2D33iwdmtnVKSycSau0P+XbBv9+bl8?=
+ =?us-ascii?Q?aUccc2l32NgUZcJvtlCLkllgEe1DTQPjQZWqX4+eFNMw+MajkO29TLQZZCdU?=
+ =?us-ascii?Q?6LdHQWacqRxHh5qjA1DyDy3MhrjO+YrpglWN8MWBha26SYvBagIr6dRDPyz4?=
+ =?us-ascii?Q?JZBbOtnl/FWyXLsi9dTNQoz+jdCIK/01GMW7N4XQ8F/RsqfkAEe7nKL5udwi?=
+ =?us-ascii?Q?gn3WuJeE6Pt55LBMWjIunmNfRrpG3hTN0jQA81nUwpPf0DIRQbsrbRumItI8?=
+ =?us-ascii?Q?oL6VRXgia3FNZD1FWnxEvWgpsvpK+Q+6EzHhOE5PNd7zPYSnUbQdWvmxOtAL?=
+ =?us-ascii?Q?MtJtk/7VYwY+EMmaAXXfm7H0XxwCexAt8JLnR3SwB/3NCaYjSMyDxegqpJO3?=
+ =?us-ascii?Q?1mQf74McQ9VFjFfUG87eJefwijRG4k1zhLSUkvKkzwuJl2j6JsJ2rN7jrJjo?=
+ =?us-ascii?Q?RWVe0v7vyONeHFmYrBgsvaDJzcesFji8AUijdd65xoPf7UlwNzKy0VTjuHmD?=
+ =?us-ascii?Q?Pq75cqmg5XECMse96DHSxveUppd27eJeGKNC/NeAjYXAsR0WWE7WE/P6MhEp?=
+ =?us-ascii?Q?WkDzu1jIbDI6RaqMnKrX0fyvLq4lp6ifTkahr/1IyZdH79dkCub69ps2w7EV?=
+ =?us-ascii?Q?VlHricy6RNS+ppUtYGVOUnC2xBEJ3FINevOFPa9J1gpQt1+bLPs6dlvE/9OK?=
+ =?us-ascii?Q?jsLLAXtqWrrs2zHT/e4FtDP8/0XtnWj5aOCx/0F6kPjg1rK3KW2HU3Gi/LDB?=
+ =?us-ascii?Q?ug53KrQDapRg1nxw9WRpwlwCD6tGnWQbSf9pXWovSNXqX64jdxsqlDNGz6Kw?=
+ =?us-ascii?Q?gEoGBG/e41235vHo9PX6+N6u+EEPHfF7vhI4EyGxju5eobY4eJs0GYLgFBAH?=
+ =?us-ascii?Q?TPx/U/EydnBpbQTUmBTajljemlQ2tR9/3MEg3x+N218h5TESyxVaMJh7p1LV?=
+ =?us-ascii?Q?uqcG/mwrBh/CUV2uS5ZBZ/Axe/GbofUgIvo3q8mt8UrPk5699/jiohEBfKHm?=
+ =?us-ascii?Q?lWTcTfaIe32eKYL68rhrYe1aFyXFtIzTEJXN9q/lrJC3V54=3D?=
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?SmNvDXi9Z5QZSaUF3r0h6FM9j29upwMUV5At+AihR1o5Of6T2MWiYfqeFP/l?=
+ =?us-ascii?Q?0VQUbC0hSbirR6QqAfhIrEZiismT0J9ZXEzZTwCAuM9alJjKiL+Q9diz1mj9?=
+ =?us-ascii?Q?yYChvyU0Z30VzMJrZbPNC2fz2/BvUhe8gUZZe+3wCFfGuKG2/uC5KxUUDVLV?=
+ =?us-ascii?Q?+HwYPX9YLeUJ92a+2+KkU0Ps+tprbb9xe3vIaS+rsjaoaZ43NcZAgmLDCNP+?=
+ =?us-ascii?Q?AbLkOF9IE/RXkMAjoci7ydo3vkktJFlQJUP2vc0dmqyIUG9gKLJP6szj8/WT?=
+ =?us-ascii?Q?iZhMnTiG//BtqwwDqgclGIBu1v6mgdg2IwURzGUPo6iGDHsGNwQLXDJdXFh9?=
+ =?us-ascii?Q?1WAiWqyRuw1+foYGR6+YhI1nqjQmAmBRFCeaA+na2tE49q7l0U3pkw3IBQLD?=
+ =?us-ascii?Q?YQ4WD+n9vqMWBZLmfBdrA7DmTXRAf1m/uDc6wZKtymi8gE8wRtz7P2huyaRB?=
+ =?us-ascii?Q?l6yAvHKChOPO1dDCBb5Cj1CO3Zxu/z/SBesxUKNYH5+3EogAeB6FATnrAlEJ?=
+ =?us-ascii?Q?uPWgxLASR9qc+JBeVaoaBEGUkg461OkyVFp969YjPin+3QyAg4kz+lvsz/6Z?=
+ =?us-ascii?Q?xwxj1O9tvL+RDWeVF3xswSP2cNX4RLuMdZPDlpvjVMqaiHnlotxf/GEtJxeo?=
+ =?us-ascii?Q?LGRDTHYOvF0dMXCzpIpbC2IWm6JwfSObur3gP5nCtUGU73bH64m7xcdxHXVR?=
+ =?us-ascii?Q?997A8VfZ6a3zzP6a2I3JWETfN7oULMPnigjb70vgWIaotdrEKX4epykh18qk?=
+ =?us-ascii?Q?x29sauP5mBJanEpjR93LzWUH2folU/E+7BszhdazXcXvI+Wha1RO7VXreVKh?=
+ =?us-ascii?Q?ICdzO2aEUId3ykAD7h5cNRnB50qtG4kLmykTz/wxPxc54IJDSjb2kqQ8/lDb?=
+ =?us-ascii?Q?KywrBKNxTyWy6PdBSUMDf86Ox3W8Benj6z8RKsYop2Hllvs3ks9Cu+zsbpC2?=
+ =?us-ascii?Q?j7rSJuMkUlatoRW74xL1pGU79rRRrn3+ijOcBT0IGUl/b83mQ0PLfMYqEIxM?=
+ =?us-ascii?Q?481uANKxLZPcySSMEg40IQaXMOj+eTV713cl1dl5i4KKwuiXU0EI0iIMvwW1?=
+ =?us-ascii?Q?RDauWEuR/ACy5ElSJObg/i8eb94wVzn0SFF5Nw4X9GQdgYFJhDkDPuQOSBGo?=
+ =?us-ascii?Q?xWNYzOih4WSRpKf3FTiBLEtXq4v4r2j4trYapB8g/Rze7k3moDmQeLJNoXak?=
+ =?us-ascii?Q?gDxmLZb48i0BDSXhDiMeSUALhqa40jGRbGbh/BmYdO+66zjdFeLBKLdhvxdO?=
+ =?us-ascii?Q?8377RqymnUWKlGfFY1FHsOVZAqvj1/GInFIbcahoYsLJAvx5hHuF8MShvj0t?=
+ =?us-ascii?Q?P7BCkwfHbo5yiMZ6JE3uY3qfdE1OTtSff2SFZzyH5zMQmHeO0Glpf841a9aV?=
+ =?us-ascii?Q?9/tq/1IKWKujw1TcDHLrNPNv1bP1yv141ibYJKRV7TP1al1Hgw=3D=3D?=
+X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3fe660f0-614b-4e86-7aba-08deb77980a2
+X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2026 20:42:41.2694
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR19MB5419
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_131331_377193_A4A9A986 
-X-CRM114-Status: GOOD (  40.68  )
+X-CRM114-CacheID: sfid-20260521_134246_909745_B0DD8F46 
+X-CRM114-Status: GOOD (  35.92  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,356 +149,272 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Neil,
-
-On 5/20/2026 11:58 AM, Neil Armstrong wrote:
-> Hi,
+On Wed, May 20, 2026 at 06:13:53PM +0100, Jonathan Cameron wrote:
+> On Mon, 18 May 2026 15:05:20 -0500
+> Chris Morgan <macroalpha82@gmail.com> wrote:
 > 
-> On 5/18/26 20:01, Jonas Karlman wrote:
->> HDMI Specification Version 1.4b chapter 8.5 mentions:
->>
->>    An HDMI Sink shall not assert high voltage level on its Hot Plug
->>    Detect pin when the E-EDID is not available for reading.
->>
->>    A Source may use a high voltage level Hot Plug Detect signal to
->>    initiate the reading of E-EDID data.
->>
->>    An HDMI Sink shall indicate any change to the contents of the E-EDID
->>    by driving a low voltage level pulse on the Hot Plug Detect pin. This
->>    pulse shall be at least 100 msec.
->>
->> Use a delayed work to debounce reacting on HPD events to improve
->> handling of a HPD low voltage level pulse when a sink changes the EDID.
->>
->> The delayed work is only enabled between enable_hpd()/hpd_enable() and
->> disable_hpd()/hpd_disable() calls from core, i.e. enabled after
->> attach/bind/resume and disabled before detach/unbind/suspend.
->>
->> The 1100 msec hotplug debounce timeout was arbitrarily picked to match
->> other drivers using same const, and testing using a Raspberry Pi Monitor
->> seem to use a 200-300 msec pulse when going from standby to power on
->> state.
+> > From: Chris Morgan <macromorgan@hotmail.com>
+> > 
+> > Add power management support for the ICM42607 device driver.
+> > 
+> > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 > 
-> The logic looks ok, but I'm puzzled by the 1.1 sec debounce, which after
-> plugging in a monitor will only send an irq event after 1.1s which is very long.
+> Hi Chris,  runtime PM is my current place to look closest
+> for bugs because we've had a lot of them recently.
 > 
-> Since the spec says 100ms and the real worls values are more like 200-300ms,
-> I would first reduce this to 500ms.
-
-You are correct, this value was picked based on existing values used by
-other drivers:
-
-  exynos/exynos_hdmi.c:#define HOTPLUG_DEBOUNCE_MS                1100
-  bridge/ti-tfp410.c:#define HOTPLUG_DEBOUNCE_MS          1100
-  amd/display/amdgpu_dm/amdgpu_dm.h:#define AMDGPU_DM_MAX_HDMI_HPD_DEBOUNCE_MS 5000
-  rockchip/dw_hdmi_qp-rockchip.c:#define HOTPLUG_DEBOUNCE_MS              150
-
-150 ms was too short for my test monitor (Raspberry Pi Monitor), it
-does a HPD low voltage level pulse when powering on of around 200+ ms.
-
-  [82.641903] dw_hdmi_hardirq: EVENT=plugout
-  [82.841939] dw_hdmi_hardirq: EVENT=plugin
-
-And on my LG OLED 4K TV there was typically a pulse of around 700-900 ms.
-So the 1.1 seconds used by other drivers seemed like a good candidate :-)
-
-> But as I understand the code right now, on the first HPD front the irq work
-> is programmed to run after the debounce time, but if it's a pulse the irq would
-> also trigger on the second HPD front and then delay again the work after the
-> debounce time.
-
-Your analysis is correct, any HPD event would keep debouncing adding 1.1
-timout from each HPD irq, both plugout and plugin.
-
-The intention was to allow for up to 1.1 seconds to pass between a
-plugout and a plugin, before we treated a plugout as a full disconnect
-event, and not to delay a possible connected event by 1.1 seconds.
-
-> My understanding of a debounce was that we "ignore" the pulse by only generating
-> a single irq event when the pulse is finished.
-
-Correct, as long as the pulse was less than 1.1 seconds.
-
-> The current code does that, we will only have a single irq event and the HPD
-> will return as connected state, good. But this delays the irq event 1.1s _after_
-> the end of the pulse, which I would expect the event to be send at tht debounce
-> time after the start of the pulse.
-
-Good catch and I agree, we should delay/timeout the disconnected state
-longer than plugin and react on plugin almost immediately.
-
-> Like, program the work at the beginning of the pulse, if somehow the pulse ends before
-> the debounce time, send the irq event immediately, otherwise let the debounce
-> work run after the debounce time which will trigger a disconnect event.
+> Anyhow, took another look and here I think we can optimize
+> things a little more.
 > 
-> But the delay is too high, 1.1s could be a manual unplug/plug or bad connector
-> with false contact on the hpd pin.
+> > ---
+> >  drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  18 +++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 147 ++++++++++++++++++
+> >  .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |   1 +
+> >  .../iio/imu/inv_icm42607/inv_icm42607_spi.c   |   1 +
+> >  4 files changed, 167 insertions(+)
+> > 
+> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > index 74d8d3d7c890..b05828415053 100644
+> > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
+> > @@ -10,6 +10,7 @@
+> >  #include <linux/bitops.h>
+> >  #include <linux/iio/iio.h>
+> >  #include <linux/mutex.h>
+> > +#include <linux/pm.h>
+> >  #include <linux/regmap.h>
+> >  #include <linux/regulator/consumer.h>
+> >  
+> > @@ -96,24 +97,34 @@ struct inv_icm42607_hw {
+> >  	const struct inv_icm42607_conf *conf;
+> >  };
+> >  
+> > +struct inv_icm42607_suspended {
+> > +	enum inv_icm42607_sensor_mode gyro;
+> > +	enum inv_icm42607_sensor_mode accel;
+> > +	bool temp;
+> > +};
+> > +
+> >  /**
+> >   *  struct inv_icm42607_state - driver state variables
+> >   *  @lock:		lock for serializing multiple registers access.
+> >   *  @hw:		Hardware specific data.
+> >   *  @map:		regmap pointer.
+> >   *  @vddio_supply:	I/O voltage regulator for the chip.
+> > + *  @vddio_en:		I/O voltage status for runtime PM.
+> >   *  @irq:		chip irq, required to enable/disable and set wakeup
+> >   *  @orientation:	sensor chip orientation relative to main hardware.
+> >   *  @conf:		chip sensors configurations.
+> > + *  @suspended:		suspended sensors configuration.
+> >   */
+> >  struct inv_icm42607_state {
+> >  	struct mutex lock;
+> >  	const struct inv_icm42607_hw *hw;
+> >  	struct regmap *map;
+> >  	struct regulator *vddio_supply;
+> > +	bool vddio_en;
+> >  	int irq;
+> >  	struct iio_mount_matrix orientation;
+> >  	struct inv_icm42607_conf conf;
+> > +	struct inv_icm42607_suspended suspended;
 > 
-> I would rather reduce this to something more realistic like 500ms or less and
-> try to better handle the pulse somehow. But I don't have any idea if the scheme
-> I described is doable.
-
-We can configure different delays for plugout and plugin, I am currently
-testing something like following:
-
-  #define HOTPLUG_CONNECTED_DEBOUNCE_MS		150
-  #define HOTPLUG_DISCONNECTED_DEBOUNCE_MS	500
-
-  delay = status == connector_status_connected ?
-		    HOTPLUG_CONNECTED_DEBOUNCE_MS :
-		    HOTPLUG_DISCONNECTED_DEBOUNCE_MS;
-  mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
-		   msecs_to_jiffies(delay));
-
-That would mean:
-- at plugout we (re-)start the timer to trigger in 500ms
-- at plugin we (re-)start the timer to trigger in 150ms
-- whenever the timer triggers the hpd_work is started
-- the hpw_work trigger normal detect() handling to determin if
-  connector status (or EDID) has changed
-
-Example during power on of a Raspberry Pi Monitor:
-
-  [82.641903] dw_hdmi_hardirq: EVENT=plugout
-  [82.648276] dw_hdmi_schedule_hpd_work(status=2)
-  [82.841939] dw_hdmi_hardirq: EVENT=plugin
-  [82.848211] dw_hdmi_schedule_hpd_work(status=1)
-  [83.008573] dw_hdmi_hpd_work(): START
-  [83.020358] dw_hdmi_bridge_detect()
-  [83.034958] dw_hdmi_bridge_edid_read()
-  [83.187102] [drm:update_display_info.part.0] [CONNECTOR:55:HDMI-A-1] CEA VCDB 0x4a
-  [83.194471] [drm:update_display_info.part.0] [CONNECTOR:55:HDMI-A-1] HDMI: DVI dual 0, max TMDS clock 0 kHz
-  [83.201755] [drm:update_display_info.part.0] [CONNECTOR:55:HDMI-A-1] ELD monitor RPI MON156
-  [83.208968] [drm:update_display_info.part.0] [CONNECTOR:55:HDMI-A-1] HDMI: latency present 0 0, video latency 0 0, audio latency 0 0
-  [83.216588] [drm:update_display_info.part.0] [CONNECTOR:55:HDMI-A-1] ELD size 36, SAD count 1
-  [83.224445] [drm:check_connector_changed] [CONNECTOR:55:HDMI-A-1] Same epoch counter 2
-  [83.231553] dw_hdmi_hpd_work(): END
-
-Around 205ms between HPD=0 and HPD=1 and around 160ms from plugin until
-delayed hpd_work starts.
-
-And at full plugout the debounce time is around 497 ms:
-
-  [95.125105] dw_hdmi_hardirq: EVENT=plugout
-  [95.147586] dw_hdmi_schedule_hpd_work(status=2)
-  [95.645277] dw_hdmi_hpd_work(): START
-  [95.667741] dw_hdmi_bridge_detect()
-  [95.691523] [drm:drm_edid_connector_update] [CONNECTOR:55:HDMI-A-1] EDID changed, epoch counter 3
-  [95.709861] [drm:check_connector_changed] [CONNECTOR:55:HDMI-A-1] status updated from connected to disconnected
-  [95.722674] [drm:check_connector_changed] [CONNECTOR:55:HDMI-A-1] Changed epoch counter 2 => 4
-  [95.735173] [drm:drm_sysfs_connector_hotplug_event] [CONNECTOR:55:HDMI-A-1] generating connector hotplug event
-  [95.746326] [drm:drm_fb_helper_hotplug_event]
-  [95.754871] [drm:drm_client_modeset_probe]
-  [95.762429] [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:55:HDMI-A-1]
-  [95.769758] dw_hdmi_bridge_detect()
-  [95.776597] [drm:drm_helper_probe_single_connector_modes] [CONNECTOR:55:HDMI-A-1] disconnected
-  [95.784389] [drm:drm_client_modeset_probe] No connectors reported connected with modes
-  [95.791865] [drm:drm_client_modeset_probe] [CONNECTOR:55:HDMI-A-1] enabled? no
-  [95.799426] [drm:drm_client_firmware_config.isra.0] Not using firmware configuration
-  [95.807140] [drm:drm_client_modeset_probe] picking CRTCs for 1920x1080 config
-  [95.818422] dw_hdmi_bridge_atomic_disable()
-  [95.826412] [drm:vop2_plane_atomic_disable] Smart0-win0 disable
-  [95.868341] [drm:drm_client_hotplug] fbdev: ret=0
-  [95.878206] dw_hdmi_hpd_work(): END
-
-With a much quicker reaction on plugin event maybe the 1.1 seconds could
-stay to avoid having to do a full teardown, disable() + enable() cycle,
-at slightly longer HPD pulses.
-
-Or maybe it is time to re-spin an old cec-adapter debounce series [1]
-that can allow for some additional time until the CEC phys addr is fully
-invalidated at a longer HPD low voltage level pulse.
-
-[1] https://lore.kernel.org/linux-media/HE1PR06MB40115700084D1D875673D60EAC9D0@HE1PR06MB4011.eurprd06.prod.outlook.com/
-
-Regards,
-Jonas
-
+> Is this used?  If not bring it in only when needed.
 > 
-> Neil
+> >  };
 > 
->>
->> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
->> ---
->> v7: Change to free irq before mute and clear using IH regs, also include
->>      clear of STAT0_RX_SENSE
->> v6: Change back to disable_delayed_work_sync() in hpd disable ops,
->>      Ensure HPD interrupt is masked and IRQ handler is disabled early
->>      in dw_hdmi_remove() to prevent any irq re-arming of delayed work,
->>      Drop use of suspend helper
->> v5: Change to none-sync disable_delayed_work() in hpd disable ops,
->>      Change to cancel_delayed_work_sync() in remove,
->>      Add cancel_delayed_work_sync() to new suspend helper
->> v4: Disable/mask delayed_work until enable_hpd()/hpd_enable(),
->>      Read connector status directly from HW regs in hpd_work
->> v3: New patch
->> ---
->>   drivers/gpu/drm/bridge/synopsys/dw-hdmi.c | 80 +++++++++++++++++++++--
->>   1 file changed, 75 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> index 8afc9d240121..270db58a0e7c 100644
->> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi.c
->> @@ -50,6 +50,8 @@
->>   
->>   #define HDMI14_MAX_TMDSCLK	340000000
->>   
->> +#define HOTPLUG_DEBOUNCE_MS	1100
->> +
->>   static const u16 csc_coeff_default[3][4] = {
->>   	{ 0x2000, 0x0000, 0x0000, 0x0000 },
->>   	{ 0x0000, 0x2000, 0x0000, 0x0000 },
->> @@ -185,6 +187,7 @@ struct dw_hdmi {
->>   	hdmi_codec_plugged_cb plugged_cb;
->>   	struct device *codec_dev;
->>   	enum drm_connector_status last_connector_result;
->> +	struct delayed_work hpd_work;
->>   };
->>   
->>   const struct dw_hdmi_plat_data *dw_hdmi_to_plat_data(struct dw_hdmi *hdmi)
->> @@ -2517,6 +2520,20 @@ static void dw_hdmi_connector_force(struct drm_connector *connector)
->>   	dw_hdmi_connector_status_update(hdmi, connector, connector->status);
->>   }
->>   
->> +static void dw_hdmi_connector_enable_hpd(struct drm_connector *connector)
->> +{
->> +	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
->> +
->> +	enable_delayed_work(&hdmi->hpd_work);
->> +}
->> +
->> +static void dw_hdmi_connector_disable_hpd(struct drm_connector *connector)
->> +{
->> +	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
->> +
->> +	disable_delayed_work_sync(&hdmi->hpd_work);
->> +}
->> +
->>   static void dw_hdmi_connector_destroy(struct drm_connector *connector)
->>   {
->>   	struct dw_hdmi *hdmi = container_of(connector, struct dw_hdmi, connector);
->> @@ -2538,6 +2555,8 @@ static const struct drm_connector_funcs dw_hdmi_connector_funcs = {
->>   static const struct drm_connector_helper_funcs dw_hdmi_connector_helper_funcs = {
->>   	.get_modes = dw_hdmi_connector_get_modes,
->>   	.atomic_check = dw_hdmi_connector_atomic_check,
->> +	.enable_hpd = dw_hdmi_connector_enable_hpd,
->> +	.disable_hpd = dw_hdmi_connector_disable_hpd,
->>   };
->>   
->>   static int dw_hdmi_connector_create(struct dw_hdmi *hdmi)
->> @@ -2968,6 +2987,20 @@ static const struct drm_edid *dw_hdmi_bridge_edid_read(struct drm_bridge *bridge
->>   	return dw_hdmi_edid_read(hdmi, connector);
->>   }
->>   
->> +static void dw_hdmi_bridge_hpd_enable(struct drm_bridge *bridge)
->> +{
->> +	struct dw_hdmi *hdmi = bridge->driver_private;
->> +
->> +	enable_delayed_work(&hdmi->hpd_work);
->> +}
->> +
->> +static void dw_hdmi_bridge_hpd_disable(struct drm_bridge *bridge)
->> +{
->> +	struct dw_hdmi *hdmi = bridge->driver_private;
->> +
->> +	disable_delayed_work_sync(&hdmi->hpd_work);
->> +}
->> +
->>   static const struct drm_bridge_funcs dw_hdmi_bridge_funcs = {
->>   	.atomic_duplicate_state = drm_atomic_helper_bridge_duplicate_state,
->>   	.atomic_destroy_state = drm_atomic_helper_bridge_destroy_state,
->> @@ -2981,6 +3014,8 @@ static const struct drm_bridge_funcs dw_hdmi_bridge_funcs = {
->>   	.mode_valid = dw_hdmi_bridge_mode_valid,
->>   	.detect = dw_hdmi_bridge_detect,
->>   	.edid_read = dw_hdmi_bridge_edid_read,
->> +	.hpd_enable = dw_hdmi_bridge_hpd_enable,
->> +	.hpd_disable = dw_hdmi_bridge_hpd_disable,
->>   };
->>   
->>   /* -----------------------------------------------------------------------------
->> @@ -3101,8 +3136,8 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
->>   			status == connector_status_connected ?
->>   			"plugin" : "plugout");
->>   
->> -		if (hdmi->bridge.dev)
->> -			drm_helper_hpd_irq_event(hdmi->bridge.dev);
->> +		mod_delayed_work(system_percpu_wq, &hdmi->hpd_work,
->> +				 msecs_to_jiffies(HOTPLUG_DEBOUNCE_MS));
->>   	}
->>   
->>   	hdmi_writeb(hdmi, intr_stat, HDMI_IH_PHY_STAT0);
->> @@ -3112,6 +3147,29 @@ static irqreturn_t dw_hdmi_irq(int irq, void *dev_id)
->>   	return IRQ_HANDLED;
->>   }
->>   
->> +static void dw_hdmi_hpd_work(struct work_struct *work)
->> +{
->> +	struct dw_hdmi *hdmi = container_of(work, struct dw_hdmi, hpd_work.work);
->> +	struct drm_device *dev = hdmi->bridge.dev;
->> +
->> +	if (WARN_ON(!dev))
->> +		return;
->> +
->> +	/*
->> +	 * Notify the DRM core of the HPD event using drm_helper_hpd_irq_event()
->> +	 * instead of drm_bridge_hpd_notify(). This will cause the DRM function
->> +	 * check_connector_changed() to be called, which in turn calls the
->> +	 * connector detect()/force() funcs to detect any connection status or
->> +	 * epoch changes. The bridge connector detect() func also ensures that
->> +	 * any hpd_notify() funcs are called for all bridges in the chain.
->> +	 *
->> +	 * drm_bridge_hpd_notify() shares a mutex with drm_bridge_hpd_disable(),
->> +	 * and can result in a deadlock due to the disable_delayed_work_sync()
->> +	 * call to wait on work to complete in dw_hdmi_bridge_hpd_disable().
->> +	 */
->> +	drm_helper_hpd_irq_event(dev);
->> +}
->> +
->>   static const struct dw_hdmi_phy_data dw_hdmi_phys[] = {
->>   	{
->>   		.type = DW_HDMI_PHY_DWC_HDMI_TX_PHY,
->> @@ -3396,6 +3454,9 @@ struct dw_hdmi *dw_hdmi_probe(struct platform_device *pdev,
->>   		goto err_res;
->>   	}
->>   
->> +	INIT_DELAYED_WORK(&hdmi->hpd_work, dw_hdmi_hpd_work);
->> +	disable_delayed_work(&hdmi->hpd_work);
->> +
->>   	ret = devm_request_threaded_irq(dev, irq, dw_hdmi_hardirq,
->>   					dw_hdmi_irq, IRQF_SHARED,
->>   					dev_name(dev), hdmi);
->> @@ -3532,6 +3593,18 @@ EXPORT_SYMBOL_GPL(dw_hdmi_probe);
->>   
->>   void dw_hdmi_remove(struct dw_hdmi *hdmi)
->>   {
->> +	struct platform_device *pdev = to_platform_device(hdmi->dev);
->> +	int irq = platform_get_irq(pdev, 0);
->> +
->> +	/* Free, mute and clear phy interrupts */
->> +	devm_free_irq(hdmi->dev, irq, hdmi);
->> +	hdmi_writeb(hdmi, ~0, HDMI_IH_MUTE_PHY_STAT0);
->> +	hdmi_writeb(hdmi, HDMI_IH_PHY_STAT0_HPD | HDMI_IH_PHY_STAT0_RX_SENSE,
->> +		    HDMI_IH_PHY_STAT0);
->> +
->> +	/* Cancel any pending hot plug work */
->> +	cancel_delayed_work_sync(&hdmi->hpd_work);
->> +
->>   	drm_bridge_remove(&hdmi->bridge);
->>   
->>   	if (hdmi->audio && !IS_ERR(hdmi->audio))
->> @@ -3539,9 +3612,6 @@ void dw_hdmi_remove(struct dw_hdmi *hdmi)
->>   	if (!IS_ERR(hdmi->cec))
->>   		platform_device_unregister(hdmi->cec);
->>   
->> -	/* Disable all interrupts */
->> -	hdmi_writeb(hdmi, ~0, HDMI_IH_MUTE_PHY_STAT0);
->> -
->>   	if (hdmi->i2c)
->>   		i2c_del_adapter(&hdmi->i2c->adap);
->>   	else
+> > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > index e9c81b52f9ef..bc0cefa2fb77 100644
+> > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > @@ -9,6 +9,7 @@
+> >  #include <linux/irq.h>
+> >  #include <linux/module.h>
+> >  #include <linux/mutex.h>
+> > +#include <linux/pm_runtime.h>
+> >  #include <linux/property.h>
+> >  #include <linux/regmap.h>
+> >  #include <linux/regulator/consumer.h>
+> > @@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+> >  };
+> >  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+> >  
+> > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> > +				      enum inv_icm42607_sensor_mode gyro,
+> > +				      enum inv_icm42607_sensor_mode accel,
+> > +				      bool temp, unsigned int *sleep_ms)
+> > +{
+> > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
+> > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
+> > +	bool oldtemp = st->conf.temp_en;
+> > +	unsigned int sleepval;
+> > +	unsigned int val;
+> > +	int ret;
+> > +
+> > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
+> > +		return 0;
+> > +
+> > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
+> > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> > +	if (!temp)
+> > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	st->conf.gyro.mode = gyro;
+> > +	st->conf.accel.mode = accel;
+> > +	st->conf.temp_en = temp;
+> > +
+> > +	sleepval = 0;
+> > +	if (temp && !oldtemp) {
+> > +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
+> > +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
+> 		sleepval = max(sleepval,)
+> or just assign it here if not later patches add stuff in between
+> the assignment to 0 and here.
+
+I'm going to assign it to 0 here (unless you think I should define it
+at the beginning as 0) and then tweak as needed. I think this code
+here can be further optimized, especially if we make the assumption
+that START and STOP time for each sensor is comparable (the datasheet
+doesn't say, so I'm going to go with yes since that greatly simplifies
+things).
+
+> > +	}
+> > +	if (accel != oldaccel && oldaccel == INV_ICM42607_SENSOR_MODE_OFF) {
+> > +		usleep_range(200, 300);
+> 
+> fsleep() + add a comment on why we are sleeping in here.
 > 
 
+Just going to delete these usleep_ranges since 1) I can't find them
+documented in the datasheet and 2) we sleep later on anyway if this
+condition is met.
+
+> > +		if (sleepval < INV_ICM42607_ACCEL_STARTUP_TIME_MS)
+> > +			sleepval = INV_ICM42607_ACCEL_STARTUP_TIME_MS;
+> 		sleepval = max(sleepval, INV...);
+> 
+> > +	}
+> > +	if (gyro != oldgyro) {
+> > +		if (oldgyro == INV_ICM42607_SENSOR_MODE_OFF) {
+> > +			usleep_range(200, 300);
+> 
+> fsleep()
+> 
+> > +			if (sleepval < INV_ICM42607_GYRO_STARTUP_TIME_MS)
+> > +				sleepval = INV_ICM42607_GYRO_STARTUP_TIME_MS;
+> I'd use max for these as well.
+> 
+> > +		} else if (gyro == INV_ICM42607_SENSOR_MODE_OFF) {
+> > +			if (sleepval < INV_ICM42607_GYRO_STARTUP_TIME_MS)
+> > +				sleepval = INV_ICM42607_GYRO_STARTUP_TIME_MS;
+> > +		}
+> > +	}
+> > +
+> > +	if (sleep_ms)
+> > +		*sleep_ms = sleepval;
+> > +	else if (sleepval)
+> > +		msleep(sleepval);
+> > +
+> > +	return 0;
+> > +}
+> 
+> >  
+> > +static int inv_icm42607_suspend(struct device *dev)
+> > +{
+> > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> > +	int ret;
+> > +
+> > +	guard(mutex)(&st->lock);
+> > +
+> Could you use pm_runtime_force_suspend()?
+> > +	if (pm_runtime_suspended(dev))
+> > +		return 0;
+> > +
+> > +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+> > +					 INV_ICM42607_SENSOR_MODE_OFF,
+> > +					 false, NULL);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	inv_icm42607_disable_vddio_reg(st);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int inv_icm42607_resume(struct device *dev)
+> > +{
+> > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> > +	int ret;
+> > +
+> > +	guard(mutex)(&st->lock);
+> > +
+> Given the bunch of stuff we've run into recently around these
+> I'm getting more paranoid.
+> Similar to above, could you use pm_runtime_force_resume()
+> You would need to gate stuff added later to not occur
+> though if it wasn't runtime suspended.
+
+This I'm having trouble understanding. If I use
+pm_force_runtime_resume() I'm assuming that either I got an error (in
+which case I'd return the error) or the device is runtime resumed
+after the call completes. If that's the case, wouldn't my suspend and
+resume steps just be pm_force_runtime_suspend/resume, and enabling the
+regulator (first for resume) or disabling the regulator (last for
+suspend) as needed?
+
+> 
+> 
+> > +	if (pm_runtime_suspended(dev))
+> > +		return 0;
+> > +
+> > +	ret = inv_icm42607_enable_vddio_reg(st);
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	/* Nothing else to restore at this time. */
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int inv_icm42607_runtime_suspend(struct device *dev)
+> > +{
+> > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> > +	int ret;
+> > +
+> > +	guard(mutex)(&st->lock);
+> > +
+> > +	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+> > +					 INV_ICM42607_SENSOR_MODE_OFF, false,
+> > +					 NULL);
+> Different alignment to above - aim for consistent choices on this.
+> 
+> > +	if (ret)
+> > +		return ret;
+> > +
+> > +	inv_icm42607_disable_vddio_reg(st);
+> > +
+> > +	return 0;
+> > +}
+> > +
+> > +static int inv_icm42607_runtime_resume(struct device *dev)
+> > +{
+> > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> > +
+> > +	guard(mutex)(&st->lock);
+> > +
+> > +	return inv_icm42607_enable_vddio_reg(st);
+> > +}
+> > +
+> > +EXPORT_NS_GPL_DEV_PM_OPS(inv_icm42607_pm_ops, IIO_ICM42607) = {
+> > +	SYSTEM_SLEEP_PM_OPS(inv_icm42607_suspend, inv_icm42607_resume)
+> > +	RUNTIME_PM_OPS(inv_icm42607_runtime_suspend,
+> > +		       inv_icm42607_runtime_resume, NULL)
+> > +};
+> > +
+
+Thank you,
+Chris
 
 _______________________________________________
 Linux-rockchip mailing list
