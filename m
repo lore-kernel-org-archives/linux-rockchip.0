@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90CC8CD4F5E
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 07:52:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81E7CCD5BAC
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 08:09:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6qviRrdhbxtl5cOESDrpMsV+IivTMwvYB4ASm3zyMnQ=; b=Mz4I6Mtal0Bc0GV/WFt0NaYDxS
-	Sk94y3V+s0l2ciwibgF/n//fgxULRDEBNl9/KToNiEdjYnjvx8XGcM+o3ogRI37lXu7aThn+3GkT+
-	+orEJU3DgwmBrwEZCfVT/mEp4DYpAKZ2/iW0KW4hPZmcet1A+fCisFi1uAuTdeW/cC7sxppA4v+1W
-	a6I+fx3v8SuV/rS6j+njdqlS72BqiQZTUU4hr4uRk4HHHhyXZoxHUh2q8DvnW4Tbk4wsHVBqZTC88
-	efaY18zao0YXQKPM1GZ2oA3wDQhUKUoTqBQBrxP87DelNInD7epaNypcln0Of9g0ZUdx3mohDtAV5
-	11y2rBqg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=UsNUScsZDzZZYHVHMYLihHOXno60Z5RhnJQQwa5oGt4=; b=dy3qM/P32E/7dB
+	hebSn4MGbpdbbPeBUNsMBB7Mao416l9vVaicGW14uAZwcRUbnScTdgy63K3FtKlrE+qJs6kAruC/n
+	sE+c3QMYffrhWAXJPrFxL4L5HgPGrtF2UIATAKkVXyOBBItiWncEHphuVKDnVFHRWtP1NUsFwo8TG
+	wxg0IpR/G8dRXErR9BAt4tQwiHD/2vxY7h8MsYpVS7f1ad6tQQc0dVEz/YzEKoQTYWeJjleTKtyY1
+	j0t0ufUxUqJmyUsr+PtDo+u2zeX0DuLupgLnCrWopd7H/AiAo/FG8P/fPYsG+8/opXOU4WjkS/5k4
+	X3afw42XUKXAFuaVXlSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPyD0-00000007101-1aEk;
-	Thu, 21 May 2026 07:52:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wPySw-000000073cW-0vU3;
+	Thu, 21 May 2026 08:09:14 +0000
+Received: from mail-m8257.xmail.ntesmail.com ([156.224.82.57])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPyCz-000000070zO-19WB;
-	Thu, 21 May 2026 07:52:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 79B3460172;
-	Thu, 21 May 2026 07:52:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BA61A1F000E9;
-	Thu, 21 May 2026 07:52:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779349964;
-	bh=99oskG8ubBjeKtd2Yc7IdU7MjYpfc9O1o+mlnd5bJ64=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=VY9uYzHGIt/BsHyCKP9I1NqWgX9O4iTlWhh2Rp9yo3C4d9f7BE3dbELq/xo24h8UF
-	 ZdkprFalox6G3NFRy2H9iccPb2+XRJvsHF+Eswz7k8ySSbB2nibIGi6bjEEuuYFUDI
-	 AJvUKOJ6RW3AIMn88VPG2ObB4uI6YYwrSKx/YLVVRIbKXyLoJShJt9i2xJyPsIfe7j
-	 wyowEfKbTWlInSw2RqinKKXH8wDSDqwQ5w+mQU2UjhA0exLlbI9qbQDRHzGZujyV+1
-	 wMrQo6RvEc4IsehY0JtUOuMGjHNLyl2PvipzKCMKpdw6IoFQeewU/WcbUUuH/UF5Fh
-	 Nocb94U9AVTmA==
-Date: Thu, 21 May 2026 09:52:41 +0200
-From: Maxime Ripard <mripard@kernel.org>
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
-	Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>, 
-	Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>, kernel@collabora.com, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v6 02/22] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-Message-ID: <20260521-sweet-devout-panther-44d73c@penduick>
-References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
- <20260520-dw-hdmi-qp-scramb-v6-2-24b74603b782@collabora.com>
+	id 1wPySq-000000073Y6-38YP;
+	Thu, 21 May 2026 08:09:11 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3f48aae78;
+	Thu, 21 May 2026 16:09:01 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Subject: [PATCH v6 05/10] drm/rockchip: analogix_dp: Enable hclk for RK3588
+Date: Thu, 21 May 2026 16:08:30 +0800
+Message-Id: <20260521080835.1362416-6-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260521080835.1362416-1-damon.ding@rock-chips.com>
+References: <20260521080835.1362416-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-In-Reply-To: <20260520-dw-hdmi-qp-scramb-v6-2-24b74603b782@collabora.com>
+X-HM-Tid: 0a9e4994b11e03a3kunm810e96ea5ebbc
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZQk5IVh4aSUkdQkhMGkxDSVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=PlXgBDPs2t6r+a0Jjclu1UpkMh5hcsFbRwK7vGEQ9yYcAPHunpBWYKBGvP74/WWuk/SIvMTiPjsdXmPBKu973g/kV7JP4SS4t5UEdPR4Z/fLwTViVAUZ5bKkFQ5097Tyj1OHFjJZXi1xN7YlEMkTY+G94eFZzQdiX4XJQgMLN78=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=qzrSU6F51VUS8IVrczy9Q/DVSlabFI0ne4m7RTJg/xI=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260521_010909_293541_B27FB0FC 
+X-CRM114-Status: UNSURE (   9.36  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,199 +76,61 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============9107472257013438527=="
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Acquire and enable the HCLK_VO1 bus clock explicitly for RK3588
+eDP controller to guarantee register and datapath access.
 
---===============9107472257013438527==
-Content-Type: multipart/signed; micalg=pgp-sha384;
-	protocol="application/pgp-signature"; boundary="7urdiivgg5qj3q55"
-Content-Disposition: inline
+The clock was previously enabled implicitly via rockchip,vo-grf
+phandle reference, which relies on side effect and is fragile.
 
+Fetch optional "hclk" clock in driver to align with updated device
+tree binding and keep consistent with hardware clock dependency.
 
---7urdiivgg5qj3q55
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH v6 02/22] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-MIME-Version: 1.0
+Fixes: 729f8eefdcad ("drm/rockchip: analogix_dp: Add support for RK3588")
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
-Hi,
+---
 
-Thanks for working on this!
+Changes in v4:
+- Modify the commit msg.
+---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-On Wed, May 20, 2026 at 09:38:13PM +0300, Cristian Ciocaltea wrote:
-> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
->=20
-> - .scrambler_src_{enable|disable}() callbacks in
->   drm_connector_hdmi_funcs for source-side scrambling control
-> - A delayed work item (scdc_work) with an associated callback (scdc_cb)
->   for periodic monitoring of sink-side scrambling status
-> - A scrambler_enabled flag to track whether scrambling is currently
->   active
->=20
-> These are intended to be used by SCDC scrambling helpers to coordinate
-> scrambling setup and teardown between the source driver and the DRM
-> core.
->=20
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->  drivers/gpu/drm/drm_connector.c | 14 +++++++++++
->  include/drm/drm_connector.h     | 52 +++++++++++++++++++++++++++++++++++=
-++++++
->  2 files changed, 66 insertions(+)
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index 06072efd7fca..d2af5eb29dbb 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -311,6 +311,7 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+ {
+ 	struct device *dev = dp->dev;
+ 	struct device_node *np = dev->of_node;
++	struct clk *clk;
+ 
+ 	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
+ 	if (IS_ERR(dp->grf))
+@@ -327,6 +328,11 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
+ 		return dev_err_probe(dev, PTR_ERR(dp->pclk),
+ 				     "failed to get pclk property\n");
+ 
++	clk = devm_clk_get_optional_enabled(dev, "hclk");
++	if (IS_ERR(clk))
++		return dev_err_probe(dev, PTR_ERR(clk),
++				     "failed to get hclk property\n");
++
+ 	dp->rst = devm_reset_control_get(dev, "dp");
+ 	if (IS_ERR(dp->rst))
+ 		return dev_err_probe(dev, PTR_ERR(dp->rst),
+-- 
+2.34.1
 
-So we would need kunit tests for this.
-
-> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connec=
-tor.c
-> index 3fa4d2082cd7..91e58362fbc0 100644
-> --- a/drivers/gpu/drm/drm_connector.c
-> +++ b/drivers/gpu/drm/drm_connector.c
-> @@ -220,6 +220,19 @@ void drm_connector_free_work_fn(struct work_struct *=
-work)
->  	}
->  }
-> =20
-> +static void drm_connector_hdmi_scdc_work(struct work_struct *work)
-> +{
-> +	struct drm_connector *connector;
-> +	struct drm_connector_hdmi *hdmi;
-> +
-> +	hdmi =3D container_of(to_delayed_work(work), struct drm_connector_hdmi,
-> +			    scdc_work);
-> +	connector =3D container_of(hdmi, struct drm_connector, hdmi);
-> +
-> +	if (hdmi->scdc_cb)
-> +		hdmi->scdc_cb(connector);
-> +}
-> +
->  static int drm_connector_init_only(struct drm_device *dev,
->  				   struct drm_connector *connector,
->  				   const struct drm_connector_funcs *funcs,
-> @@ -285,6 +298,7 @@ static int drm_connector_init_only(struct drm_device =
-*dev,
->  	mutex_init(&connector->edid_override_mutex);
->  	mutex_init(&connector->hdmi.infoframes.lock);
->  	mutex_init(&connector->hdmi_audio.lock);
-> +	INIT_DELAYED_WORK(&connector->hdmi.scdc_work, drm_connector_hdmi_scdc_w=
-ork);
->  	connector->edid_blob_ptr =3D NULL;
->  	connector->epoch_counter =3D 0;
->  	connector->tile_blob_ptr =3D NULL;
-> diff --git a/include/drm/drm_connector.h b/include/drm/drm_connector.h
-> index 5ad62c207d00..49eaa30b1329 100644
-> --- a/include/drm/drm_connector.h
-> +++ b/include/drm/drm_connector.h
-> @@ -28,6 +28,7 @@
->  #include <linux/ctype.h>
->  #include <linux/hdmi.h>
->  #include <linux/notifier.h>
-> +#include <linux/workqueue.h>
->  #include <drm/drm_mode_object.h>
->  #include <drm/drm_util.h>
->  #include <drm/drm_property.h>
-> @@ -1358,6 +1359,36 @@ struct drm_connector_hdmi_funcs {
->  	 */
->  	const struct drm_edid *(*read_edid)(struct drm_connector *connector);
-> =20
-> +	/**
-> +	 * @scrambler_src_enable:
-> +	 *
-> +	 * This callback is invoked through @drm_scdc_start_scrambling during
-> +	 * a commit to setup SCDC scrambling and high TMDS clock ratio on
-> +	 * source side.
-> +	 *
-> +	 * The @scrambler_src_enable callback is mandatory if HDMI 2.0 is
-> +	 * to be supported.
-> +	 *
-> +	 * Returns:
-> +	 * 0 on success, a negative error code otherwise
-> +	 */
-> +	int (*scrambler_src_enable)(struct drm_connector *connector);
-> +
-> +	/**
-> +	 * @scrambler_src_disable:
-> +	 *
-> +	 * This callback is invoked through @drm_scdc_stop_scrambling during
-> +	 * a commit to disable SCDC scrambling and high TMDS clock ratio on
-> +	 * source side.
-> +	 *
-> +	 * The @scrambler_src_disable callback is mandatory if HDMI 2.0 is
-> +	 * to be supported.
-> +	 *
-> +	 * Returns:
-> +	 * 0 on success, a negative error code otherwise
-> +	 */
-> +	int (*scrambler_src_disable)(struct drm_connector *connector);
-> +
->  	/**
->  	 * @avi:
->  	 *
-> @@ -1944,6 +1975,27 @@ struct drm_connector_hdmi {
->  	 */
->  	unsigned long supported_formats;
-> =20
-> +	/**
-> +	 * @scrambler_enabled: Tracks whether HDMI 2.0 scrambler is currently e=
-nabled.
-> +	 */
-> +	bool scrambler_enabled;
-> +
-> +	/**
-> +	 * @scdc_work: Work item currently used to monitor sink-side scrambling
-> +	 * status and retry setup if the sink resets it.
-> +	 */
-> +	struct delayed_work scdc_work;
-> +
-> +	/** @scdc_cb: Callback to be invoked as part of @scdc_work.
-> +	 *
-> +	 * Currently used to monitor sink-side scrambling status and retry
-> +	 * setup if the sink resets it.
-> +	 *
-> +	 * This is assigned by the framework when making use of
-> +	 * drm_scdc_start_scrambling() helper.
-> +	 */
-> +	void (*scdc_cb)(struct drm_connector *connector);
-> +
-
-I'm really not sure what the monitor thing is about. If we have setup
-the scrambler at enable time, and we set it again on hotplugging, why
-would we need to monitor anything?
-
-Also, scrambling is only relevant for HDMI 2.0. We need a way to expose
-that somehow and make sure that HDMI 2.0 drivers actually have
-scrambling setup.
-
-Maxime
-
---7urdiivgg5qj3q55
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iJUEABMJAB0WIQTkHFbLp4ejekA/qfgnX84Zoj2+dgUCag65yQAKCRAnX84Zoj2+
-dll/AX9tG3cFDmLeklMW+rTi4SvWHROIptUKpuz9LyW39s751r/XlVPbiMZzGzln
-wOcOdVgBgOFZq4n9DJJiQB+RNsx5GUFvhIPAEhol5wo1K6QtdXFp5MVvpk7rmgb8
-wlbWVhy0VA==
-=R3rI
------END PGP SIGNATURE-----
-
---7urdiivgg5qj3q55--
-
-
---===============9107472257013438527==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============9107472257013438527==--
-
