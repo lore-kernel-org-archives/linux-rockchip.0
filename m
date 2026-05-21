@@ -4,97 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 595EBCD343F
-	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 03:30:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46699CD343F
+	for <linux-rockchip@archiver.kernel.org>; Thu, 21 May 2026 07:00:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3p2NG5D8IkR30DE7UlDv0whj+1rG2gFajZhirOM75d0=; b=BzJt54Zj8eJG+S
-	saCBbcFncEATY0fdVhsg5yOROP3Fo41xO5m5jGuVEREtmJ8QEHFTA1KEc9Kh38XMi/h8cz3AfGTXN
-	qYPCu+FatPfvdoGQMNXW0H7Amkc2cSREDc5N4Lwany5d/pQ029qw0X/3TUjKBiw5r6EOBCNEGwtmD
-	aAcxhUCgN50vAzrFpKHLnnRDZBd5nmSFh7YVxjsvA/6pbbj1jvqmOMRUZ4VbSb+zY+UFm917XAMOX
-	ZLl4DM7c0RokNJylN7gir3fJd7sbzWRb+p6vDn2fal6Nq3IsAkYzgM5H+6OAT3nFWDPhu+JKYPVXo
-	8azFxQIWhM62kOZuoUyg==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:From:
+	References:Cc:To:Subject:Date:Message-ID:Reply-To:Content-ID:
+	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+	:Resent-Message-ID:List-Owner;
+	bh=DqIkhu0E9ZoGl/6IwkEiIh+Q1v5DSbXg+PtRKP3XQvw=; b=hF2ep0KlOeUaE9GFhOLD2OBgdG
+	xksf1PM1Pq6/Du421wCnK7a5j/bNz6aaxJiFDa5+iBo0XPCAlU+iQ3337r5hyilRgscbQV9ydXgMK
+	NLm847qKipwr51fDouF6lnf2JO6ZfroJQrszEuHqVyOlXMxGlUXgaJair3vNxnruURe3d0iZJq1RF
+	dM0Fc/OMDQUQqIwOejzXyQu+KmADKbFmqLqjy8PEjcfmpVPfGIyK6ZhPnfoE1cWDwJIyqptd1MTlU
+	IOy6aSsQGet4RtVIw5jqkM5H9sojc2UII1D0oW+hGVd1QIhQwfQwnvpm2t0q5Ti8u17vE2b/qUCkh
+	FkDpEqJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPu7J-00000006YTW-3HNC;
-	Thu, 21 May 2026 03:30:37 +0000
-Received: from smtpbgbr2.qq.com ([54.207.22.56])
+	id 1wPxNs-00000006tMg-3J2W;
+	Thu, 21 May 2026 06:59:56 +0000
+Received: from mail-australiasoutheastazlp170100001.outbound.protection.outlook.com ([2a01:111:f403:c40e::1] helo=MEUPR01CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wPu7G-00000006YDq-0od4;
-	Thu, 21 May 2026 03:30:36 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1779334185;
-	bh=6Blt27VidEVpijM8X7bK9ygiXu5vv9uysAwWQfZr3MA=;
-	h=From:To:Subject:Date:Message-Id;
-	b=LCbgyyVN8Y3VWy0AWeivpnVl52Ob19FHASafPAW8FxnSKQYaHN6hrgKVuyff0PYGv
-	 WCjbZuC4yoEjRLiwYhzVlnaqspLN6F00NfGyvrZIvSjuEzjpJp91qXbhoqRWOaE/7+
-	 iLMES5soyz21YNPtl6RObzgTArM7d4ezmtCV12Bc=
-X-QQ-mid: zesmtpsz7t1779334176t8f9eb7f1
-X-QQ-Originating-IP: d9IETWuCTenKIZFLByWwMHwi0SPZNsWnhksHBq1ofsE=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Thu, 21 May 2026 11:29:31 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 16407384103375472347
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Vinod Koul <vkoul@kernel.org>
-Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	linux-kernel@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 4/5] drm/rockchip: cdn-dp: Support handle lane info without extcon
-Date: Thu, 21 May 2026 11:28:53 +0800
-Message-Id: <20260521032854.103-5-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260521032854.103-1-kernel@airkyi.com>
-References: <20260521032854.103-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NYG9n5uPxz1WzqGisP2RA1C47w4anwHznAWnLiTn0NxmUUnajisSSOtu
-	J9jspH4MXKVpQblgmvcRwFJypGUaDcWqrUtDNCaMtc/F9DPpeVerPOgmjKHRe/oNtgGKHqI
-	rGwWstzredojZ7AVeBzQIO2OvD2/Qfc4izBQFfTapo/cVhRwWDmMAdZkEld48+yDBav6HJU
-	Bmi/q2Hjn+zo7dM2mCd0prC216cma/hrNONDt1R3yDDUYRv//JRTeybcvGvOsqc4q9VqCWc
-	aCR4EgXr1Ft/YU80qLgeCNd14X46D5gJdvkxqSkyC6CqVQCjnLT6EBbRFXte8kwbxnMulDk
-	T9se5keNBC5V/WU3JHjZR40QpR4ymPyLUCtfc3aUxswzVvx7Ebfqw0PIeG7SF13+gxnl9v2
-	+Uaf8WjRrh9ZT4Bp7bEDIDlkf0MFrzQ0jD07EyXj6uTKqsxFkq1bRxaJPMTjc6WHsfROMVu
-	4m182/PLoOA/mHXqyf7YkdSZvBoMokMz9DC7a2IezoTjVKzjIcmFw8FbEZKAGPt5UdT0jop
-	miZhYtPQyaWUhUJwNfMgyJ/oNyyyj2K5LDdkbGGW69c3jbTE8CDLywbh2hateCpBGhRwQmH
-	sBneenwEPPttZ0zikviXFob0S0peOaE8jB+U+L07KBvQyHehV8I/dDBbbdFaP3FGu3pI1s0
-	Ia4CTO9fOFqyx3Wmb9gqI9gUIUiTl5ftknEpHUqWHdB7NaENgsVfZTJPxNoF2sd17+rAFCm
-	VH01jfURXG0yazrOa9k5QrLaPP12owWOtS6j91hWq+nqM2IuAHvoEvU16uM+AnT/gNgp4q/
-	je2mhIXRtgQvGMkOoCc+Dg7m5x17tatxOXPlfI8Sq/I+DAr4s4BpuKuoPmhVwcQ2iWkTft9
-	8X9MaC20A82gicFjcwottTwB6I/Udd56+N8FxEDvz9JZ9+VcOLIAis/cD6nR6YnGBi5iInQ
-	FVd2w6IMuTcnAs5WmIvejWyFtaZqDe0qsHAGBgwuH9BlWdRql1FozYy7455VjnJ35pUa4hQ
-	ymsBIHsnyzYvfYQQLJHBXt29Irq9d+tsRF3mJyD4YZko0mQCIFXN5HPA5EsS4=
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
-X-QQ-RECHKSPAM: 0
+	id 1wPxNq-00000006tLX-2AAy
+	for linux-rockchip@lists.infradead.org;
+	Thu, 21 May 2026 06:59:55 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=W4W/niDw5+yTrGrLxuDvx3PQ527goAhy38vU27xe98iTitiSY0nLZJun8IVxYfZa00FfTct8EHQzbxxOvOj/EOzY4Rtps/Zih8Z9/08I1Y7mBq/PzVyBQ6+hjquVX8AdRKPqNiy3SehjgFfS3IRnXqpnEX6U9ij3rSh15N3wy2SsTPsE5dZ+1uiE9tPLcf/YCnaI4WtI3R/D/O7HBLBr5DTTOP895CJ+OsWIiRXqVjxIf/ZPopcQ9WAQVJBPy1oTnGL51WTC93Ec6xpS1h/lD52jyxS1AAIPYiH5qdq7Woy0OoKUXNFjc9kQ8acxpmRC1Vz86vwn6ASjsYDRwcFG4w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=QuLY1QVtwFR4tbv0LN+RrLaTvM2+To9ZzTMYk2/yroM=;
+ b=Oh42xIAc2RSUaLJ1ft4Z4Uh7uT5xZm1QCNKdni6VhiA+K6+JZsBHwrgwJHXiW83N2BMcypJEdWABg9fhL7Ps9WAMOU29YOAYb9JCZ5ma+/RUoYPUGPgyPpLdnjn44jpvf6CLBBHggGwq82YUYKC8BRX5Ez9heYY3wlg/5h2bYCepsnIieQeaxDMW890RNxDk9+CWHiE0Heh/cAGxxvxGwoZBoaxU1C2taqI0sd40w4njJp6TJXB8JXZTnsMpHF2MwIBQffql7EjpMQ+x/8Zc5vyIrURpQmtfhOOl3+ffzluql//Q7xU9Uly8rCfIplaQwpnAk4OlN4FwbZk9rNFwfg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=symple.nz; dmarc=pass action=none header.from=symple.nz;
+ dkim=pass header.d=symple.nz; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=symple.nz;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=QuLY1QVtwFR4tbv0LN+RrLaTvM2+To9ZzTMYk2/yroM=;
+ b=q3g+9oRj0scVilZPr+/1qAROSLT9kRV816wPCYyzo9P1LBxSCZEwQUekSv3QMVFdUvBQdavdX8kAP3aBYzCZ3d6+Jbpr+QMoWFaqZbdXPNRMNn052sxRNZ1JUydgTyIcMdbgl9D1+lkTtbOnTzHDo0kwoyyM4XKaGK4FKK5eBIQdPU8P7RuzYXjnvttqjTXqPwAIgQILzMqgMAkYLCKI4Doaqx4ozF9m+Ykl3RF7tfop9KfDNrzedeOY7kOGx9Fqp6idJmzhssisLzB8P4OyWjz9yNDdF0PcTznMgrjjkFQNND3U4rv/Dh4bAmFrQvqfYOFyUHzxb8oJWw53hJ8wBQ==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=symple.nz;
+Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM (2603:10c6:220:b2::11)
+ by SY0P282MB6431.AUSP282.PROD.OUTLOOK.COM (2603:10c6:10:340::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.48.16; Thu, 21 May
+ 2026 06:59:32 +0000
+Received: from ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::4619:bdb0:3293:3834]) by ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ ([fe80::4619:bdb0:3293:3834%5]) with mapi id 15.21.0048.016; Thu, 21 May 2026
+ 06:59:32 +0000
+Message-ID: <4358f22d-247c-43d3-89d4-27b57bbe90aa@symple.nz>
+Date: Thu, 21 May 2026 18:59:29 +1200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal de-blocking
+ edges y=4 and y=12
+To: Detlev Casanova <detlev.casanova@collabora.com>,
+ linux-media@vger.kernel.org
+Cc: linux-rockchip@lists.infradead.org
+References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
+ <5797ac61-dc61-4182-ac60-cc377564ff90@collabora.com>
+ <2565c949-a558-415f-8c79-e47812db8341@symple.nz>
+ <e3b93bda-fed8-4f21-b3d8-cdf28bfaba1c@collabora.com>
+Content-Language: en-NZ
+From: Simon Wright <simon@symple.nz>
+In-Reply-To: <e3b93bda-fed8-4f21-b3d8-cdf28bfaba1c@collabora.com>
+X-ClientProxiedBy: SY5P282CA0101.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:10:204::16) To ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+ (2603:10c6:220:b2::11)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: ME3P282MB2196:EE_|SY0P282MB6431:EE_
+X-MS-Office365-Filtering-Correlation-Id: 2217c5d5-c62f-41d0-4e6a-08deb7068211
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|1800799024|366016|4143699003|22082099003|18002099003|56012099003|6133799003;
+X-Microsoft-Antispam-Message-Info: 4Vap5umc0gW78fNbrgnSuhdiD7fgepeQ2bftw0qikUCrZIekySJe7hYHpYYgUgBadazgd6oJXOBvsWUHGGgKXMGqxl/ehXHI8r2EYOye5f2JaOaURF75ntM6vmi123JnYQhw4jMVlfMCyoZFT1Onxf8wL9JLx7tWwAYz7chsrJiT+fUTgeVukLT47V6D9TEQiXjj1wpMUmddM75VrQeTe8Vvk8g3zQwOS4lg+M6LJ9vnyBMGJGbVv984r2BBaeMfVM9vG6sQBwOQVbZ2S6ZHeJiwhDwmAh+iSsDavZpmLjeQ83AQstl38dCWd9acOEnemEOIwDdA9yKbARBJEmgSdiF/2IVNvU9Y3WGZfWd7Ngf/05BersyY7Zbg8PFO0gbtF7C0NSs3GASr1/mcEGDC8KiiS8HUmziaCQY+IIFl//+JkIylZLpIHcHeT54Uvqh0XNBbIPN35yzGGh1ii9TZ6vwauEGQJYfZ7sGxMweLNo32um99wZhjv+v8JsuSUMeAxEUENBdUNdsu1i0GVVcK0Ur/sTks/lrcQenyTXIZU3Ty8P48iY0qiqEs2Om/bm4VXY83gkZ8aKq3WgGvJmdAqGaNiYmrxF+CmhxkySC1OYMx7Gz9pP0ggiBASirjWenL8STlEkf8t8Wnr8YRMmHnrjox7LJzmpnVWw8zJoP5czNaHzRC4dTOv6jmJFOgFYba
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016)(4143699003)(22082099003)(18002099003)(56012099003)(6133799003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Sk1DZTY3Q0NpSmFyU3JIZnEwTlAvbVRObCtId2FETDZocGwrRGQrdnl4VEY3?=
+ =?utf-8?B?NkQ1OURnejZ2dU5wdjJpZVAvMnJTVW41NUIwOWUwRHhQTXpVWTI4elVBakZx?=
+ =?utf-8?B?a2hRNldRUkxGelc3dVF0TlFwL3RIYk5NTXpLenpXSmhMQVc3R1htQi9ySmJy?=
+ =?utf-8?B?NXNkdkt4a2hHUTkrWGtrcWEyU0tOZTM1MGN4UGNtYUNiRlZyblBZbWYxVjh2?=
+ =?utf-8?B?T2tCdnVBeldXTXM3YXI1UEJkZVJXMUxVWVZiTVZrRWNQM2dGSHlXNSt5QndU?=
+ =?utf-8?B?cDI2Yng5RTNXWlRVTllwblZod1EvYVN1V3YzVTl1K1FIMnRIWHRqVGtwVlIz?=
+ =?utf-8?B?TDd4anBIYkc3V0E0S2lVbUlia2J0L2x5SjJUMENJa0NOY2FPTFNGa2VEL096?=
+ =?utf-8?B?am52S0FjZEFVakFDTUdKbWh0U3pkTFB6SlF5aENxcWFUVVBmeGd2TGxNLzRH?=
+ =?utf-8?B?NUZoemVNUVBNM3JEdDVTNFJ0VnRRSXpiZ0NVL0JMK245MEFoeHh3OXZackJ2?=
+ =?utf-8?B?Nm8zNGs2WlFDbkk4MEdFUVhoOE0zM1hXRUpiZU1iZVJSYkkrdFE2ZW9Od096?=
+ =?utf-8?B?TWdtcXZLY0xWT3llOE5kbEFsVmdvRy9Yay9Qd25yY2NNNVJjSzY1REtGa1l5?=
+ =?utf-8?B?RW9icWpsM3k1Rzl2eTFjK0w0aCtNdDlwMHgwQkx4MWJZMmxrdDhlWUo5UjFP?=
+ =?utf-8?B?MnFCQ3JDQTV3RlpKaVAzOHU2OXo2ekpneDhPUEY3ZHF5b2FNN3VYSG5KaHhR?=
+ =?utf-8?B?eGJCNnAwMFl1elQwZFlJM0Jmc0VUc3RTbGdyYzhESHQzUllhU1FlUDlKVlBM?=
+ =?utf-8?B?RTU3bjhBQVNUeHY3VDlCWG9ZZjA2T1U3VUltRlFXSGp2SC9qU0RQQnd3MG1P?=
+ =?utf-8?B?ZDRyTFFlb1lzc3JHN3ZqcnFPTmFtb3U5aDBZTlkxVzBTM05RZWEyK004V2Ey?=
+ =?utf-8?B?OUtnd2Z1U2pZMDNDbE51aElhclZ3VGRoLzlmZExUcE9xVmRyemxKSm9RVHFy?=
+ =?utf-8?B?S0RLMmxoblFJZzNTTnVPMDA0SElkbjRZRyt3OEpiSWRWNWVFZG9CNWJMb2hw?=
+ =?utf-8?B?QTR4WTY3ZEpNLzlObEpSKzlFVjg3UVFDTGFHTjkyajJGdVc0QmZaWFFPZ2hq?=
+ =?utf-8?B?MUdpTXFMeTFFRTNPWHBhZXlHMktGZXJUUmlSLzYyeUtUSTFxWkQyZXd1eDR2?=
+ =?utf-8?B?ckM0MFNwL3NFaDJqcUY5Uks5b3c3QW9aRWxpeTNjZmc5WEJVbzFvZkhDYnRR?=
+ =?utf-8?B?RzJKU1RHZTBDeWNabDlOeUpHZDRIRlo0NStIdTBHYUN0WU12TEwrbXRKNXcz?=
+ =?utf-8?B?Tm9WaElsNVZwVGt2eUcyU2JrSzI4c0pSMmRzeEF5MXg5YnJNYWg3ckZSWDdT?=
+ =?utf-8?B?ZExPZXBIbHNXTmJLb3FTWGF2aXk3VjVHTCttaW5IYi9MY3Fabll1aWxuMjlM?=
+ =?utf-8?B?RGRLaTh6L2Fadmh4TUliLzlua2MxZGJGQ2JjUHpWSUUyb05TYUo2QzJQQWFJ?=
+ =?utf-8?B?NWgxYUVtcmo5TFkzZjNrWE5ac2wrVEh4eXpRMjNOcWF0a09OQmJQcE9MKzRy?=
+ =?utf-8?B?c09QbGdpNTYza3FlTTN0L0cvTVZUZDFhOXFsMzEzZ0xDMEQ5L2lNT0h6aWpK?=
+ =?utf-8?B?YVJvK1VlaTI1ZC8xQ0pkL013cXBFZW9oQUZ0Zzl6ZTNLZEhtTERjYUtmY3Fn?=
+ =?utf-8?B?V1dSZFV4MzAxOU93NXl0TDJKWXBpTUllcDdTZkNPZUlNL1d0Z2ttRzVKS1p4?=
+ =?utf-8?B?T0xKREVvWUtkVUNMRDlFUXA5bVRRMHRIa2VHM1VlN2Q4WU1ydEFZWCtsRHFT?=
+ =?utf-8?B?Nk5DTXI5RlJ4VjNYQmJYRWFvM3FudHBmL1dmM3M0cFNyZmd6dDNkWFFmbWhX?=
+ =?utf-8?B?em1OQTF0MDIzWk9yUlJodENUQXppdXRvQ0d1YU5PL3NVODhBY2ZlM3lkNjB2?=
+ =?utf-8?B?RWMrSHV3ZDNSME5mRldZRTRySlNoSnJyZUQrczJLV3c2YUl2b0NNdC95clpi?=
+ =?utf-8?B?eDN3TUowQ1VsN0d6SW5PRkNka2ZxSVhHRzdKUkJ0N2szQ0kzSStPcFNzeTZH?=
+ =?utf-8?B?YjhVeGdQQTRheWFoaXhSTmlwYm1ZY0xOMFRVQzh6TTU0cEt3TzF0UUpQbUt1?=
+ =?utf-8?B?YWhrWVY2UEhaMjd4bHYwR2x6MHdFOWJnbitxSERUaTJDUmZPYWtGRmNmeXE0?=
+ =?utf-8?B?UUQxbUtWbENMQ1hRT29ETGZlNUxXMVhTYUczK1Erb2x5dHFQTHQ1QnhQbHZj?=
+ =?utf-8?B?dURYYlM5R1NsdTFLb0VnemRLZ1pCdnNHTGtCZ2haVWVFbnhzalZFZVI4eUc4?=
+ =?utf-8?Q?f6ahtf7NhGiREPaFfF?=
+X-OriginatorOrg: symple.nz
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2217c5d5-c62f-41d0-4e6a-08deb7068211
+X-MS-Exchange-CrossTenant-AuthSource: ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 May 2026 06:59:31.8875
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 9531f271-068a-4210-b471-bd8da91491c5
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: hOmJH/P6TjVgy3L2kJ+uWDCDoDUbRdyBmXCd3tMn+q1Zrgkmda0iogPtcilnSZXI
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SY0P282MB6431
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260520_203035_095538_4ACFF076 
-X-CRM114-Status: GOOD (  16.89  )
+X-CRM114-CacheID: sfid-20260520_235954_578415_63AF82C6 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,101 +146,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Hi Detlev,
 
-This patch add support for get PHY lane info without help of extcon.
+> Another thing that could be helpful is information about BL31.
+> Which version are you using ?
+> Can you share the bootloader binary you use on the Sige5 ?
+> Is the vendor image booted with the same bootloader as the upstream
+> one ?
 
-There is no extcon needed if the Type-C controller is present. In this
-case, the lane info can be get from PHY instead of extcon.
+BL31 banners pulled from a 16 MiB strings dump of each boot device.
+Our Armbian build and yours both carry the same derrick.huang
+builder identity, so we're on different revisions of the same
+upstream Rockchip ATF tree:
 
-The extcon device should still be supported if Type-C controller is
-not present.
+  Stack                    BL31 commit          fwver  DDR fw
+  Sige5 Armbian (eMMC)     v2.3-931-g4d7e811c6  v1.20  v1.08
+  R76S  Armbian (SD)       v2.3-931-g4d7e811c6  v1.20  v1.08
+  R76S  FriendlyElec eMMC  (not in strings)     v1.17  v1.09
+  Your Sige5               v2.3-859-gc481e5368  v1.14  ?
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/gpu/drm/rockchip/cdn-dp-core.c | 25 +++++++++++++++++--------
- 1 file changed, 17 insertions(+), 8 deletions(-)
+Sige5 Armbian kernel cmdline also carries
+"androidboot.fwver=ddr-v1.08-fcb0cfd52f,bl31-v1.20,uboot-rmbian-201-
+05/10/2026" which confirms v1.20 from a second source.
 
-diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-index 177e30445ee8..9068118859e2 100644
---- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
-+++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
-@@ -157,6 +157,9 @@ static int cdn_dp_get_port_lanes(struct cdn_dp_port *port)
- 	int dptx;
- 	u8 lanes;
- 
-+	if (!edev)
-+		return phy_get_bus_width(port->phy);
-+
- 	dptx = extcon_get_state(edev, EXTCON_DISP_DP);
- 	if (dptx > 0) {
- 		extcon_get_property(edev, EXTCON_DISP_DP,
-@@ -220,7 +223,7 @@ static bool cdn_dp_check_sink_connection(struct cdn_dp_device *dp)
- 	 * some docks need more time to power up.
- 	 */
- 	while (time_before(jiffies, timeout)) {
--		if (!extcon_get_state(port->extcon, EXTCON_DISP_DP))
-+		if (port->extcon && !extcon_get_state(port->extcon, EXTCON_DISP_DP))
- 			return false;
- 
- 		if (!cdn_dp_get_sink_count(dp, &sink_count))
-@@ -386,11 +389,14 @@ static int cdn_dp_enable_phy(struct cdn_dp_device *dp, struct cdn_dp_port *port)
- 		goto err_power_on;
- 	}
- 
--	ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
--				  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
--	if (ret) {
--		DRM_DEV_ERROR(dp->dev, "get property failed\n");
--		goto err_power_on;
-+	property.intval = 0;
-+	if (port->extcon) {
-+		ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
-+					  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
-+		if (ret) {
-+			DRM_DEV_ERROR(dp->dev, "get property failed\n");
-+			goto err_power_on;
-+		}
- 	}
- 
- 	port->lanes = cdn_dp_get_port_lanes(port);
-@@ -1029,6 +1035,9 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
- 	for (i = 0; i < dp->ports; i++) {
- 		port = dp->port[i];
- 
-+		if (!port->extcon)
-+			continue;
-+
- 		port->event_nb.notifier_call = cdn_dp_pd_event;
- 		ret = devm_extcon_register_notifier(dp->dev, port->extcon,
- 						    EXTCON_DISP_DP,
-@@ -1121,14 +1130,14 @@ static int cdn_dp_probe(struct platform_device *pdev)
- 		    PTR_ERR(phy) == -EPROBE_DEFER)
- 			return -EPROBE_DEFER;
- 
--		if (IS_ERR(extcon) || IS_ERR(phy))
-+		if (IS_ERR(phy) || PTR_ERR(extcon) != -ENODEV)
- 			continue;
- 
- 		port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
- 		if (!port)
- 			return -ENOMEM;
- 
--		port->extcon = extcon;
-+		port->extcon = IS_ERR(extcon) ? NULL : extcon;
- 		port->phy = phy;
- 		port->dp = dp;
- 		port->id = i;
--- 
-2.53.0
+The pattern from four BL31 builds tested across both boards:
 
+  v1.14 (your Sige5):                     clean
+  v1.17 (FriendlyElec BSP on R76S):       clean
+  v1.20 (Armbian, R76S SD + Sige5 eMMC):  broken on BOTH boards
+
+That rules out PCB-specific factors (Armbian v1.20 reproduces the
+bug on both a NanoPi R76S and an ArmSoM Sige5 with the same kernel
+driver), and it also softens the original BSP-vs-Armbian conclusion
+from my last mail: the BSP stack has a different BL31 (v1.17) AND a
+different DDR firmware (v1.09 vs v1.08, dated 25/03/04 vs 24/10/09)
+AND an old vendor u-boot 2017.09, so it wasn't a kernel-only A/B.
+BL31 looks like the most likely differential given your question and
+the v1.14/v1.17 clean / v1.20 broken split.
+
+> Can you share the bootloader binary you use on the Sige5 ?
+
+Uploaded everything to a public GitHub repo:
+
+  https://github.com/SympleNZ/rkvdec-vdpu383-h264-bug
+
+Contains:
+
+  long.h264                    (the 1920x1080 SMPTE H.264 test input)
+  sige5_armbian_emmc_boot.bin  (Sige5 Armbian eMMC, BL31 v1.20, broken)
+  r76s_sd_armbian_boot.bin     (R76S  Armbian SD,   BL31 v1.20, broken)
+  r76s_emmc_bsp_boot.bin       (R76S  FriendlyElec, BL31 v1.17, clean)
+
+Each .bin is the first 16 MiB of the underlying mmcblk device.
+README has the full BL31 / fwver / DDR fw table.
+
+Regards,
+Simon
 
 _______________________________________________
 Linux-rockchip mailing list
