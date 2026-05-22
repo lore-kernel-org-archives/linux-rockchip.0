@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5854CD5BB0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 11:05:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D27CD5BB1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 11:42:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=0SFo1/VbZ6FJoj4DYvc0U4iyC7CcRpzSU8VxoyRWOyA=; b=g4kAnfNfrLeJli
-	sV/B38FrBlxpXnNLfR6aGEn6yTD+4DBbXZ7ADRuYH5IBihz6Eap1vQySuAC4w+Qs9CopZC9O9xy+C
-	v3JmpQjnfJqR+zhnEzmHqs2E8fixku7GsIubOetP7JgMKZUiknFufxqGQFOId/2A8CGeCig8Ect5p
-	dZjfZCZTy58Bpo/8RuJ+/aNh5nABrBBJz6UWW2Kz8kBQITcgvrwzEhOS0KbIEGHWj5YhvsZTjucp2
-	MrTqeS2t4D9MOC+rirta+RpwksV5AeNkbL/KS4vedXXui5DFImFwphZESIRwIM97pZbd+gdFBt2p5
-	0UXFt1m5wrg1jHfMYhzw==;
+	List-Owner; bh=kqqcJXVmGQZnTpneZ2//K1qQsRRafBXOcFUJyAPxCjk=; b=ZvRjMyMqGm83OL
+	kSsi10XR+UCt5B+6BAY/njqrEmDqVo7uNK51ws0tM1lcB4Jko72LgKk7GBU0YBMpWDSopnHpvMUiX
+	V1XTuCODmns6cFKeVuNkRDD8LughaMRATtmbY4Eau5H4nsb0PV7LJgWi2fTri84hZEFYLpOoJKrA/
+	6TrGn5k6Vtay4LKu1QcR3asVm1V6IeDN7wpMvXE+oXu15nabENA9kCdPyTUPfGn3VOf/Kl0aboq5y
+	SQm8NdRjYN45/JimJkRYuqOtLQlhQfHxATRiAGK5S6doEhNirLuKNxL4jYpgaUZwfwuUT19gM+NDS
+	YI9NNz1SuFEiGXSYD7Ww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQNh0-0000000AaXr-2bv4;
-	Fri, 22 May 2026 11:05:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wQOHE-0000000Af2d-167D;
+	Fri, 22 May 2026 11:42:52 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQNgz-0000000AaXH-0Cb6
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 May 2026 11:05:26 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1C55F4427B;
-	Fri, 22 May 2026 11:05:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B619D1F00A3D;
-	Fri, 22 May 2026 11:05:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779447924;
-	bh=kCVDMXk8BSvTV3swsaD3sQl1nb6y+ZB9kYJDzjWXNe4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=KvveBzsBhN+YrlDAQGNepk+tKWX10yJiPqoJCK4JkBlwIrocbLr4WABVuJWqoYEML
-	 0JL1TUWc1197UpsT0vPS1cd3TVdN2c8d0Bblo6GyVqnzxvgFsn+ZsHk9OSSg3/6t/M
-	 infmv0E9WKD1Gjd2m1CXljHmr+IIA6AtqQGk8yaRFKe6QsPL4BJQgil4milKLIy4/R
-	 dZhM4iJuy20DYEAawpxoO0Keqtpqz9Fm7/qHypFGXBbHOw2tUKTiEPfaH0THy9mNtD
-	 CHSMaKflcddIIg5SiDCDoyF0cegKcL96mtMr7CIAIE2ak7I8qthUDOUNl/+Bw19Eme
-	 u+LusebYU/akQ==
-Date: Fri, 22 May 2026 12:05:15 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
- andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
- jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V8 05/10] iio: imu: inv_icm42607: Add PM support for
- icm42607
-Message-ID: <20260522120515.652661ed@jic23-huawei>
-In-Reply-To: <PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260518200526.458421-1-macroalpha82@gmail.com>
-	<20260518200526.458421-6-macroalpha82@gmail.com>
-	<20260520181353.0a0371cb@jic23-huawei>
-	<PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wQOHB-0000000Af1d-1gjL;
+	Fri, 22 May 2026 11:42:50 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1779450166;
+	bh=eEnxhVP7h9oNVDGsBLFcwZgYtanJdNFLIjNzXRvxveg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=pQIbBUKfLUUcBeUIyJLFkWg85GrWbe3+dbaliKFQTozycasoD6CoVrro0PxJL8Rse
+	 pKiRSM/4ODqb/IYIBpQIT/uar68Rg3pWgbECr1h+oNU+gYPzfLvHxiQimyUkfM28Cq
+	 FgjsLmQE9E6g9aC1SHo0NN1rrFUr3WWwuzVgVeh57CRfOtvPDmdUonIolcuxwqEmNy
+	 nznWdddZfPNEZl7JQ6uwKqOxCR5JZskhIc9Hh/6dew0r9X9niUqiDhIoWY6m0ir+l9
+	 JD8ycgKgs+5IGbNuHbCo5bulYhm4FATTK2jpvwKE/9R1CY86LMYuMeRZq04gxhZ5eu
+	 bbkR3rq9UMdzw==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B903917E0550;
+	Fri, 22 May 2026 13:42:45 +0200 (CEST)
+Message-ID: <64a21a69-d99b-4ae3-9477-dd0f6b37f689@collabora.com>
+Date: Fri, 22 May 2026 14:42:45 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 04/22] drm/display: scdc_helper: Add HDMI 2.0
+ scrambling management helpers
+To: Maxime Ripard <mripard@kernel.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Andy Yan <andy.yan@rock-chips.com>, Luca Ceresoli
+ <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>,
+ kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
+ <20260520-dw-hdmi-qp-scramb-v6-4-24b74603b782@collabora.com>
+ <20260521-chestnut-harrier-of-enhancement-2bcfa2@penduick>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <20260521-chestnut-harrier-of-enhancement-2bcfa2@penduick>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_040525_138826_549FD5AF 
-X-CRM114-Status: GOOD (  36.18  )
+X-CRM114-CacheID: sfid-20260522_044249_605131_65CB2FF9 
+X-CRM114-Status: GOOD (  40.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,142 +88,246 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-> >   
-> > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > index e9c81b52f9ef..bc0cefa2fb77 100644
-> > > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > @@ -9,6 +9,7 @@
-> > >  #include <linux/irq.h>
-> > >  #include <linux/module.h>
-> > >  #include <linux/mutex.h>
-> > > +#include <linux/pm_runtime.h>
-> > >  #include <linux/property.h>
-> > >  #include <linux/regmap.h>
-> > >  #include <linux/regulator/consumer.h>
-> > > @@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
-> > >  };
-> > >  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
-> > >  
-> > > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
-> > > +				      enum inv_icm42607_sensor_mode gyro,
-> > > +				      enum inv_icm42607_sensor_mode accel,
-> > > +				      bool temp, unsigned int *sleep_ms)
-> > > +{
-> > > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
-> > > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
-> > > +	bool oldtemp = st->conf.temp_en;
-> > > +	unsigned int sleepval;
-> > > +	unsigned int val;
-> > > +	int ret;
-> > > +
-> > > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
-> > > +		return 0;
-> > > +
-> > > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
-> > > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
-> > > +	if (!temp)
-> > > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
-> > > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	st->conf.gyro.mode = gyro;
-> > > +	st->conf.accel.mode = accel;
-> > > +	st->conf.temp_en = temp;
-> > > +
-> > > +	sleepval = 0;
-> > > +	if (temp && !oldtemp) {
-> > > +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
-> > > +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;  
-> > 		sleepval = max(sleepval,)
-> > or just assign it here if not later patches add stuff in between
-> > the assignment to 0 and here.  
-Wow I write some garbage English sometimes (no excuse, it is my
-native language!) 
+On 5/21/26 11:10 AM, Maxime Ripard wrote:
+> On Wed, May 20, 2026 at 09:38:15PM +0300, Cristian Ciocaltea wrote:
+>> Add drm_scdc_start_scrambling(), drm_scdc_stop_scrambling() and
+>> drm_scdc_sync_status() helpers to manage the full lifecycle of HDMI 2.0
+>> SCDC scrambling on both source and sink sides.
+>>
+>> drm_scdc_start_scrambling() configures SCDC scrambling and high TMDS
+>> clock ratio and starts a periodic work item that monitors the sink's
+>> SCDC scrambling status, retrying setup when the sink loses state.
+>>
+>> drm_scdc_stop_scrambling() tears down scrambling on both sides and
+>> cancels the monitoring work.
+>>
+>> drm_scdc_sync_status() triggers a CRTC reset on reconnection to restore
+>> SCDC state lost during sink disconnects within an active display
+>> pipeline.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>>  drivers/gpu/drm/display/drm_scdc_helper.c | 235 +++++++++++++++++++++++++++++-
+>>  include/drm/display/drm_scdc_helper.h     |   6 +-
+>>  2 files changed, 236 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/drivers/gpu/drm/display/drm_scdc_helper.c b/drivers/gpu/drm/display/drm_scdc_helper.c
+>> index cb6632346aad..5bacb886d373 100644
+>> --- a/drivers/gpu/drm/display/drm_scdc_helper.c
+>> +++ b/drivers/gpu/drm/display/drm_scdc_helper.c
+>> @@ -21,16 +21,22 @@
+>>   * DEALINGS IN THE SOFTWARE.
+>>   */
+>>  
+>> +#include <linux/delay.h>
+>>  #include <linux/export.h>
+>>  #include <linux/i2c.h>
+>> +#include <linux/minmax.h>
+>>  #include <linux/slab.h>
+>> -#include <linux/delay.h>
+>>  
+>> -#include <drm/display/drm_scdc_helper.h>
+>> +#include <drm/drm_atomic.h>
+>> +#include <drm/drm_atomic_helper.h>
+>> +#include <drm/drm_bridge_helper.h>
+>>  #include <drm/drm_connector.h>
+>> +#include <drm/drm_crtc.h>
+>>  #include <drm/drm_device.h>
+>>  #include <drm/drm_print.h>
+>>  
+>> +#include <drm/display/drm_scdc_helper.h>
+>> +
+>>  /**
+>>   * DOC: scdc helpers
+>>   *
+>> @@ -50,10 +56,14 @@
+>>   * has to track the connector status changes using interrupts and
+>>   * restore the SCDC status. The typical solution for this is to trigger an
+>>   * empty modeset in drm_connector_helper_funcs.detect_ctx(), like what vc4 does
+>> - * in vc4_hdmi_reset_link().
+>> + * in vc4_hdmi_reset_link(). Alternatively, use the HDMI connector framework
+>> + * which ensures drm_scdc_sync_status() is called in the context of
+>> + * drm_atomic_helper_connector_hdmi_hotplug_ctx().
+>>   */
+>>  
+>> -#define SCDC_I2C_SLAVE_ADDRESS 0x54
+>> +#define SCDC_I2C_SLAVE_ADDRESS		0x54
+>> +#define SCDC_MAX_SOURCE_VERSION		0x1
+>> +#define SCDC_STATUS_POLL_DELAY_MS	3000
+>>  
+>>  #define drm_scdc_dbg(connector, fmt, ...)					\
+>>  	drm_dbg_kms((connector)->dev, "[CONNECTOR:%d:%s] " fmt,			\
+>> @@ -270,3 +280,220 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector,
+>>  	return true;
+>>  }
+>>  EXPORT_SYMBOL(drm_scdc_set_high_tmds_clock_ratio);
+>> +
+>> +static int drm_scdc_setup_scrambler(struct drm_connector *connector)
+>> +{
+>> +	bool done;
+>> +
+>> +	done = drm_scdc_set_high_tmds_clock_ratio(connector, true);
+>> +	if (!done)
+>> +		return -EIO;
+>> +
+>> +	done = drm_scdc_set_scrambling(connector, true);
+>> +	if (!done)
+>> +		return -EIO;
+>> +
+>> +	schedule_delayed_work(&connector->hdmi.scdc_work,
+>> +			      msecs_to_jiffies(SCDC_STATUS_POLL_DELAY_MS));
+>> +	return 0;
+>> +}
 > 
-> I'm going to assign it to 0 here (unless you think I should define it
-> at the beginning as 0) and then tweak as needed. I think this code
-> here can be further optimized, especially if we make the assumption
-> that START and STOP time for each sensor is comparable (the datasheet
-> doesn't say, so I'm going to go with yes since that greatly simplifies
-> things).
+> There's a very tight deadline in the spec to enable the scrambler
+> relative to the video. Debouncing (I assume?) for three seconds break
+> it. Drivers might not be able to do better, but it's really not
+> something we should entertain at the framework level and we should call
+> the callback straight-away.
 
-I'm a bit lost. Suggestion was just to do
-		sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
-as we know it is 0.   Probably not worth it though as ends up with fragile
-code.  Fine to keep it to what you have but use max() rather than
-if()
+In drm_scdc_start_scrambling() we call this function directly, the callback is
+only meant to retry the call if the sink didn't set the scrambling for whatever
+reason.
 
-...
+Or do you mean we shouldn't wait that long before retrying? vc4 uses 1s, I got
+some mixed results in a few occasions and experimented with increased values,
+but I'll revert or we can adjust to whatever you think it'd be more sensible.
 
-> > > +static int inv_icm42607_resume(struct device *dev)
-> > > +{
-> > > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
-> > > +	int ret;
-> > > +
-> > > +	guard(mutex)(&st->lock);
-> > > +  
-> > Given the bunch of stuff we've run into recently around these
-> > I'm getting more paranoid.
-> > Similar to above, could you use pm_runtime_force_resume()
-> > You would need to gate stuff added later to not occur
-> > though if it wasn't runtime suspended.  
+>> +static void drm_scdc_monitor_scrambler(struct drm_connector *connector)
+>> +{
+>> +	if (READ_ONCE(connector->hdmi.scrambler_enabled) &&
+>> +	    !drm_scdc_get_scrambling_status(connector))
+>> +		drm_scdc_setup_scrambler(connector);
+>> +}
+>> +
+>> +static int drm_scdc_reset_crtc(struct drm_connector *connector,
+>> +			       struct drm_modeset_acquire_ctx *ctx)
+>> +{
+>> +	struct drm_crtc *crtc;
+>> +	u8 config;
+>> +	int ret;
+>> +
+>> +	if (!ctx || !connector->state)
+>> +		return 0;
+>> +
+>> +	crtc = connector->state->crtc;
+>> +	if (!crtc || !crtc->state || !crtc->state->active)
+>> +		return 0;
+>> +
+>> +	ret = drm_scdc_readb(connector->ddc, SCDC_TMDS_CONFIG, &config);
+>> +	if (ret) {
+>> +		drm_scdc_dbg(connector, "Failed to read TMDS config: %d\n", ret);
+>> +		return ret;
+>> +	}
+>> +
+>> +	if ((config & SCDC_SCRAMBLING_ENABLE) &&
+>> +	    (config & SCDC_TMDS_BIT_CLOCK_RATIO_BY_40))
+>> +		return 0;
+>> +
+>> +	/*
+>> +	 * Reset the CRTC to suspend TMDS transmission, conforming to HDMI 2.0
+>> +	 * spec which requires scrambled data not to be sent before the sink is
+>> +	 * configured, and TMDS clock to be suspended while changing the clock
+>> +	 * ratio.  The disable/re-enable cycle triggered by the reset should
+>> +	 * call drm_scdc_start_scrambling() during re-enable, properly
+>> +	 * configuring the sink before data transmission resumes.
+>> +	 */
+>> +
+>> +	drm_scdc_dbg(connector, "Resetting CRTC to restore SCDC status\n");
+>> +
+>> +	ret = drm_atomic_helper_reset_crtc(crtc, ctx);
+>> +	if (ret && ret != -EDEADLOCK)
+>> +		drm_scdc_dbg(connector, "Failed to reset CRTC: %d\n", ret);
+>> +
+>> +	return ret;
+>> +}
 > 
-> This I'm having trouble understanding. If I use
-> pm_force_runtime_resume() I'm assuming that either I got an error (in
-> which case I'd return the error) or the device is runtime resumed
-> after the call completes. If that's the case, wouldn't my suspend and
-> resume steps just be pm_force_runtime_suspend/resume, and enabling the
-> regulator (first for resume) or disabling the regulator (last for
-> suspend) as needed?
+> locking is a bit more involved than that, I'd suggest to take
+> vc4_hdmi_reset_link() and turn it into a helper.
 
-If you call pm_runtime_force_resume() it will do the right thing
-wrt to runtime PM state prior to suspend.  If it wasn't runtime suspended
-it will runtime resume - if it was it'll no do anything. It won't
-directly tell you which one it did though.
+The current non-NULL ctx call chain goes through drm_helper_probe_detect_ctx()
+-> .detect_ctx -> ... -> drm_scdc_sync_status() -> drm_scdc_reset_crtc(), and
+the connection mutex is already held by drm_helper_probe_detect() in that path. 
 
-The extra stuff that you know can't be the case if runtime pm is on
-will need some sort of gating.  However, looking again it may already
-be protected by more specific checks.
+I'll make the helper safe under any caller by taking the connection_mutex via
+the supplied ctx, since re-acquiring it with the same context when it is already
+held should be a no-op.  Moreover, the racy crtc->state->active early out could
+be dropped: when the CRTC is inactive, drm_atomic_helper_reset_crtc() should
+result in a no-op commit anyway, so the check is at best an optimisation. 
+This mirrors what drm_bridge_helper_reset_crtc() does.
 
-
-	pm_runtime_force_resume();
-
-	if (st->fifo.on) { //I'd failed to look at what was added.
-		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
-				   INV_ICM42607_FIFO_CONFIG1_MODE);
-		if (ret)
-			return ret;
-	}
-
-That if (st->fifo.on) previously didn't get checked if we were runtime
-suspended because in fifo mode we never are.  So I was thinking you'd
-need that check to be
-	if (!pm_runtime_suspended(dev) && st->fifo.on)
-but the fifo.on check is sufficient by the same argument that if fifo.on
-is true we aren't in runtime suspend.
-
-Basically I overthought it and didn't check what got added where the
-comment is in this patch.
-
- 
+>> +/**
+>> + * drm_scdc_start_scrambling - activate scrambling and monitor SCDC status
+>> + * @connector: connector
+>> + *
+>> + * Enables scrambling and high TMDS clock ratio on both source and sink sides.
+>> + * Additionally, use a delayed work item to monitor the scrambling status on
+>> + * the sink side and retry the operation, as some displays refuse to set the
+>> + * scrambling bit right away.
+>> + *
+>> + * Returns:
+>> + * Zero if scrambling is set successfully, an error code otherwise.
+>> + */
+>> +int drm_scdc_start_scrambling(struct drm_connector *connector)
+>> +{
+>> +	struct drm_display_info *info = &connector->display_info;
+>> +	struct drm_connector_hdmi *hdmi = &connector->hdmi;
+>> +	int ret;
+>> +	u8 ver;
+>> +
+>> +	if (!hdmi->funcs ||
+>> +	    !hdmi->funcs->scrambler_src_enable ||
+>> +	    !hdmi->funcs->scrambler_src_disable) {
+>> +		drm_scdc_dbg(connector, "Function not implemented, bailing.\n");
+>> +		return -EINVAL;
+>> +	}
 > 
-> > 
-> >   
-> > > +	if (pm_runtime_suspended(dev))
-> > > +		return 0;
-> > > +
-> > > +	ret = inv_icm42607_enable_vddio_reg(st);
-> > > +	if (ret)
-> > > +		return ret;
-> > > +
-> > > +	/* Nothing else to restore at this time. */
-> > > +
-> > > +	return 0;
-> > > +}
+> This case shouldn't be a thing. The driver must not probe if it's not set.
 
+When advertising DRM_BRIDGE_OP_HDMI_SCRAMBLER, drm_bridge_connector_init() will
+fail if the scrambler hooks are not provided.  However, the check would be still
+useful if one missed to set DRM_BRIDGE_OP_HDMI_SCRAMBLER before adding the
+bridge.  I'll try to also handle non-bridge usecases - pls see the proposal
+below.
+
+>> +	if (!info->is_hdmi ||
+>> +	    !info->hdmi.scdc.supported ||
+>> +	    !info->hdmi.scdc.scrambling.supported) {
+>> +		drm_scdc_dbg(connector, "Sink doesn't support scrambling.\n");
+>> +		return -EINVAL;
+>> +	}
+> 
+> You should also compute whether we actually need to enable the scrambler
+> here, based on the mode, format and bpc.
+
+I'm thinking to mirror the existing supported_formats / ycbcr_420_allowed
+plumbing:
+
+- Add a 'scrambling_supported' flag to struct drm_connector_hdmi and let
+  drm_bridge_connector_init() to propagates it from the HDMI bridge before
+  calling drmm_connector_hdmi_init().
+
+- drmm_connector_hdmi_init() validates that the capability is consistent with
+  the provided callbacks: when scrambling_supported is true, both
+  scrambler_src_enable() and scrambler_src_disable() must be provided.
+
+- Add a 'scrambling_needed' flag to struct drm_connector_hdmi_state to be set by
+  hdmi_compute_clock() based on the TMDS character rate and the source/sink
+  scrambling capabilities.
+
+- Ensure hdmi_clock_valid() rejects modes having TMDS character rate exceeding
+  340 MHz when either the source or the sink lacks the required SCDC scrambling
+  capability.
+
+> I'd also like to see what a !bridge user of this would look like. The
+> vc4 driver has all the infrastructure you need already, so converting it
+> to it would be great.
+
+Sure, will do.  I've just ordered a RPI5 board, so I should be able to properly
+validate this.
+
+Thanks,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
