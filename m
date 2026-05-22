@@ -4,63 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B85CD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 08:20:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABC3CD5BB1
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 08:25:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Date:Cc:To:From:Subject:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XhP8KMnwl/6brOGGqzBiCOZYSGtxXntzy5iGis6Atc8=; b=nEmHU6eriXpXn0
-	t1Vcn3njk8hqy36hOYrOlEr3Bo61dFVWAqtguQKgZxGZaWp/piHNqttHJ/rqCUP2NZawIzuav+k5o
-	C4PUogSzIZFnf+C4c2QGfKSAOpYENd+MMpjZ/nVl0O3bp/+cIk/LjvVBGWhlYkNvskBaqM6fdM1YA
-	UssJjfPIB8C36wk70Q0irbpIsFKi6ccQcGKEgyb5pSr+pLbYyOhHjOr2g7KE6cGr5xt0X4A15UxHc
-	xMBDf4ERMneHrZjJV2Bqa6x1t9SQBaLyhOMRphob5PleEdhjnoGS25fPJigTlIs+72pljdZsomHRc
-	No8TXdWOVE708a96G7MA==;
+	List-Owner; bh=krrFfXGHyGK26CuaoDcRGuvxbFAVYLInYGVFbgniOBM=; b=uRU3abDKqxEmnJ
+	aF+HQPsNiJIPMBpM2kkp68xwa2Z+B0ZD3+nJYI9+mytdg1KC3e4aEydk56DvswRruQv804yNlVS7T
+	KBMqSme+Fsb0/RSG3Sn6tf4X2ICJm9PqvWg7yxhqW06l5nrImhYeTaquhOsj9kb+9HFlODqssLO68
+	drRo4SBN7tboKvbBeG5y4zS9s/XchuiFENJh0WuioG7xecXRkD8SGbQ8zJMVqGbfHOOAZay4cjZl4
+	S71xgdTg9FuMMcQmwgMTvxeTJ6aG0c+hRH0Yc+QRP6yORLcBCddXyszPNttm2rRo/0N+feaqqFB7E
+	GZFZFh64Uh33FxUJBMgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQL75-0000000ABIm-3XVM;
-	Fri, 22 May 2026 08:20:11 +0000
-Received: from metis.whiteo.stw.pengutronix.de ([2a0a:edc0:2:b01:1d::104])
+	id 1wQLCO-0000000AC16-1jRo;
+	Fri, 22 May 2026 08:25:40 +0000
+Received: from mgamail.intel.com ([198.175.65.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQL73-0000000ABHY-2bLQ
-	for linux-rockchip@lists.infradead.org;
-	Fri, 22 May 2026 08:20:11 +0000
-Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
-	by metis.whiteo.stw.pengutronix.de with esmtp (Exim 4.92)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wQL71-0002DV-9m; Fri, 22 May 2026 10:20:07 +0200
-Received: from lupine.office.stw.pengutronix.de ([2a0a:edc0:0:900:1d::4e] helo=lupine)
-	by drehscheibe.grey.stw.pengutronix.de with esmtps  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wQL6z-001EoG-2l;
-	Fri, 22 May 2026 10:20:06 +0200
-Received: from pza by lupine with local (Exim 4.98.2)
-	(envelope-from <p.zabel@pengutronix.de>)
-	id 1wQL70-000000006RI-1SZQ;
-	Fri, 22 May 2026 10:20:06 +0200
-Message-ID: <74844de05ed99d29424ba71e3c625020afdddf61.camel@pengutronix.de>
-Subject: Re: [PATCH] ARM: rockchip: keep reset control around
-From: Philipp Zabel <p.zabel@pengutronix.de>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,  Steven Price <steven.price@arm.com>,
- Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Date: Fri, 22 May 2026 10:20:06 +0200
-In-Reply-To: <7845032.1B3tZ46Xf9@phil>
-References: <20260521210915.2331176-1-heiko@sntech.de>
-	 <7845032.1B3tZ46Xf9@phil>
-User-Agent: Evolution 3.56.2-0+deb13u1 
+	id 1wQLCL-0000000AC0T-2uu1;
+	Fri, 22 May 2026 08:25:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1779438337; x=1810974337;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Wig18oMoF2h7CU1hfyPk9X2nSxt/aprardkBIspwbSA=;
+  b=MRn84S8GEHS+8PiK6kJeXPcnMmkpYpFtoJZ/ub929GsA/iIFosOUOeVN
+   7omh9gt9MK403qum8Mf1loYPlq7SI9jrvymHmaWLnn/KGCUSbGHqHupfq
+   bpPekMekPj8NgImyir1JvCHrVQV5WACBMljuyR1F8f69Kk15fQjevv7xc
+   fcJFxITIUo1S3rJuFwbDGnBtpdGIXtN8hRIyP4qzxYwFa/blTuO+8i/4l
+   5KUddZgk8iRUzqRAQIieOi/+/OGoPnDLJAkjcDALUkSpY8hyaZhi3GhRK
+   B8JT5WONH3i0jkbyniOsCWlcXcftdHEfTwCuAdw+HyjBbyD+nxSDSwgTy
+   g==;
+X-CSE-ConnectionGUID: 7XRilWgxQdeleof5LNg6xQ==
+X-CSE-MsgGUID: EUm9L0SKQum4z1A7kVDVBw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11793"; a="90664136"
+X-IronPort-AV: E=Sophos;i="6.24,162,1774335600"; 
+   d="scan'208";a="90664136"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 May 2026 01:25:36 -0700
+X-CSE-ConnectionGUID: 24HI4OtNRwaIvNcadNz6UA==
+X-CSE-MsgGUID: OtKb06yyTouwMKypEtH3Hg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,162,1774335600"; 
+   d="scan'208";a="278964990"
+Received: from rvuia-mobl.ger.corp.intel.com (HELO mdjait-mobl) ([10.245.245.3])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 May 2026 01:25:34 -0700
+Date: Fri, 22 May 2026 10:25:25 +0200
+From: Mehdi Djait <mehdi.djait@linux.intel.com>
+To: Chen Ni <nichen@iscas.ac.cn>
+Cc: michael.riesch@collabora.com, mchehab@kernel.org, heiko@sntech.de, 
+	hverkuil+cisco@kernel.org, gerald.loacker@wolfvision.net, bryan.odonoghue@linaro.org, 
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] media: rockchip: rkcif: Fix error handling for
+ media_entity_remote_source_pad_unique()
+Message-ID: <ahAR0-zm1Jue6pGl@mdjait-mobl>
+References: <20260522065548.2438545-1-nichen@iscas.ac.cn>
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
-X-SA-Exim-Mail-From: p.zabel@pengutronix.de
-X-SA-Exim-Scanned: No (on metis.whiteo.stw.pengutronix.de); SAEximRunCond expanded to false
-X-PTX-Original-Recipient: linux-rockchip@lists.infradead.org
+Content-Disposition: inline
+In-Reply-To: <20260522065548.2438545-1-nichen@iscas.ac.cn>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_012009_659729_C1ECD898 
-X-CRM114-Status: GOOD (  19.79  )
+X-CRM114-CacheID: sfid-20260522_012537_811778_3BE3524B 
+X-CRM114-Status: GOOD (  16.85  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,45 +81,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gRnIsIDIwMjYtMDUtMjIgYXQgMDk6MjAgKzAyMDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+
-IEFtIERvbm5lcnN0YWcsIDIxLiBNYWkgMjAyNiwgMjM6MDk6MTUgTWl0dGVsZXVyb3DDpGlzY2hl
-IFNvbW1lcnplaXQgc2NocmllYiBIZWlrbyBTdHVlYm5lcjoKPiA+IERvIG5vdCBwdXQgdGhlIHJl
-c2V0IGNvbnRyb2wsIHJldGFpbiBleGNsdXNpdmUgY29udHJvbCBvdmVyIGl0Lgo+ID4gQWZ0ZXIg
-dHVybmluZyBvbiBhIENQVSwgdGhlIGNvcnJlc3BvbmRpbmcgcmVzZXQgbGluZSBtdXN0IHN0YXkK
-PiA+IGRlYXNzZXJ0ZWQuCj4gPiAKPiA+IFRoaXMgYWxzbyBhdm9pZHMgY2FsbGluZyByZXNldF9j
-b250cm9sX3B1dCgpIGJlZm9yZSB3b3JrcXVldWVzCj4gPiBhcmUgb3BlcmF0aW9uYWwuCj4gPiAK
-PiA+IEZpeGVzOiA3OGViYmZmNmQxYTAgKCJyZXNldDogaGFuZGxlIHJlbW92aW5nIHN1cHBsaWVy
-IGJlZm9yZSBjb25zdW1lcnMiKQo+ID4gU2lnbmVkLW9mZi1ieTogUGhpbGlwcCBaYWJlbCA8cC56
-YWJlbEBwZW5ndXRyb25peC5kZT4KPiA+IFRlc3RlZC1ieTogU3RldmVuIFByaWNlIDxzdGV2ZW4u
-cHJpY2VAYXJtLmNvbT4KPiA+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
-bnRlY2guZGU+Cj4gPiAtLS0KPiA+ICBhcmNoL2FybS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYyB8
-IDE2ICsrKysrKysrKystLS0tLS0KPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0aW9ucygr
-KSwgNiBkZWxldGlvbnMoLSkKPiA+IAo+ID4gZGlmZiAtLWdpdCBhL2FyY2gvYXJtL21hY2gtcm9j
-a2NoaXAvcGxhdHNtcC5jIGIvYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9wbGF0c21wLmMKPiA+IGlu
-ZGV4IGY0MzJkMjJiZmVkOC4uZjY1OWQ4OTRiZmFlIDEwMDY0NAo+ID4gLS0tIGEvYXJjaC9hcm0v
-bWFjaC1yb2NrY2hpcC9wbGF0c21wLmMKPiA+ICsrKyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAv
-cGxhdHNtcC5jCj4gPiBAQCAtMzQsNiArMzQsNyBAQCBzdGF0aWMgaW50IG5jb3JlczsKPiA+ICAK
-PiA+ICBzdGF0aWMgc3RydWN0IHJlZ21hcCAqcG11Owo+ID4gIHN0YXRpYyBpbnQgaGFzX3BtdSA9
-IHRydWU7Cj4gPiArc3RhdGljIHN0cnVjdCByZXNldF9jb250cm9sICpjcHVfcnN0Y1s0XTsKPiAK
-PiBBZnRlciBzbGVlcGluZyBvbiB0aGF0LCB0aGlzIHNob3VsZCBiZSBjcHVfcnN0Y1s1XTsKPiAK
-PiBDb3JldHgtQTkgU29DcyBuZWVkIHRvIGVuYWJsZSB0aGUgU0NVIHBvd2VyLWRvbWFpbiB3aGlj
-aCB0aGFua2Z1bGx5Cj4gc2l0cyBhdCBpbmRleCA0IG9mIHRoZSBwb3dlci1kb21haW4gcmVnaXN0
-ZXIuCj4gCj4gU28gd2hpbGUgd2UgKGFscmVhZHkpIGV4cGVjdCBubyByZXNldCBjb250cm9sIGZv
-ciB0aGF0LCB3ZSBuZWVkIGF0IGxlYXN0Cj4gbWFrZSBzdXJlLCBpdCdzIG5vdCByZWFkaW5nIGlu
-dG8gdW5kZWZpbmVkIG1lbW9yeQoKVGhlIGFjY2VzcyBpbiBwbXVfc2V0X3Bvd2VyX2RvbWFpbigp
-IGlzIGdhdGVkIGJ5CihwZCA8IEFSUkFZX1NJWkUoY3B1X3JzdGMpKS4gQW5kIG5jb3JlcyBpbiBy
-b2NrY2hpcF9zbXBfcHJlcGFyZV9jcHVzKCkKY2FuIG5vdCBiZSBsYXJnZXIgdGhhbiA0LgoKPiBh
-bmQgdGh1cyBuZWVkIHRoYXQgZW1wdHkgZmllbGQgaW4gdGhlIGFycmF5LgoKV2UgY291bGQgZHJv
-cCB0aGUgQVJSQVlfU0laRSBjaGVjayBhbmQgYWRkIGEgcGxhY2Vob2xkZXIgdG8gdGhlIGFycmF5
-LApidXQgaXQgd291bGQgbmVlZCB0byBiZSBzZXQgdG8gRVJSX1BUUigtRUlOVkFMKS4gT3RoZXJ3
-aXNlIHdlJ2QgaGF2ZSB0bwpyZXBsYWNlIGFsbCB0aGUgSVNfRVJSKHJzdGMpIGNoZWNrcyBhcyB3
-ZWxsLiBJIHRoaW5rIHRoYXQgd291bGQgYmUgYQpnb29kIGZvbGxvdy11cCBjaGFuZ2UuCgpyZWdh
-cmRzClBoaWxpcHAKCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZy
-YWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGlu
-dXgtcm9ja2NoaXAK
+Hello Chen,
+
+Thank you for the patch.
+
+I see this issue in the rpi cfe driver also.
+
+On Fri, May 22, 2026 at 02:55:48PM +0800, Chen Ni wrote:
+> The media_entity_remote_source_pad_unique() function returns an error
+> pointer on failure, not NULL. Fix the check to use IS_ERR() and return
+> PTR_ERR() to correctly handle allocation failures.
+> 
+> Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
+
+Reviewed-by: Mehdi Djait <mehdi.djait@linux.intel.com>
+
+> Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+> ---
+>  drivers/media/platform/rockchip/rkcif/rkcif-stream.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> index 3130d420ad55..542aa877919d 100644
+> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+> @@ -466,7 +466,7 @@ static int rkcif_stream_link_validate(struct media_link *link)
+>  	struct rkcif_stream *stream = to_rkcif_stream(vdev);
+>  	int ret = -EINVAL;
+>  
+> -	if (!media_entity_remote_source_pad_unique(link->sink->entity))
+> +	if (IS_ERR(media_entity_remote_source_pad_unique(link->sink->entity)))
+>  		return -ENOTCONN;
+>  
+>  	sd = media_entity_to_v4l2_subdev(link->source->entity);
+
+--
+Kind Regards
+Mehdi Djait
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
