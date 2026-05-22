@@ -4,139 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC19ECD5BB0
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 16:24:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD29CCD5BB0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 17:49:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=2fMzQUrFAQe/sYwnfKtN9yOT/4nEVpqbuP87VesaqfM=; b=ZNdfhEk3pSzBj5
-	/zNbkbeHjX1edpKVNyVHcIxRBKRLIwMYTO7ONDFxJv0dyCoGTj9woc4Q6kpBm1tOWTCk0uz1p027M
-	HaEGYLyn0SY26fcmpedWSGTlO5gp5bmjDJGZ4hGttk47hrm8YoHS9uRicf8h0gNF5puy1oDzFSadK
-	swg02A+EudXZwRCFxUYBj6Pm+haJilXfI1AsjKxgqs9+n8m0xvTwUKfZ7VboF1alyeY+XBuipk+Bf
-	D0xLeLDWgUbYrYrRDd+ve8tH2JW2z5Cp91WkVaKmELlg8eisxPkbgizhUFY+DyOe2P/licF7WJopa
-	FJfekL8qOagXzsnfSzQA==;
+	List-Owner; bh=2sy9YlvmAiLgh3pEEuuti4qcY2VBHxNLcGhTvBy9hn8=; b=ZG3k5QMqAUHEG5
+	bkTDP395avcN/TUPw0J42gPqnPwc5YLP4ELCtzDqLHZWV9vt2UGwHqp0/tRq/CMsrj53nFfzwVn73
+	b7Wn33YUDsVXtKoKsXaEh+qeIOTOl0beTwjz5Y0q7ZXEFj3j/XzjOIerbRewak2jX9e/OhA9mKYxM
+	/1FxrVnN/JsHKun6QPY8GtxKKcePJaesX+3SPIisQ7vrWR5OxJLFBl2PUUwUGL3GbhYDtbRI8zFSs
+	KerKhG1iHZ5WsXHgyRuSsk98Ek+pXo4WQ1bqwk1IP5S+nerPNjuNA/TsfdVgbhoUwo/h7Ce3BRHHr
+	xagNx2XJVoixlzva71uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQSfT-0000000BQ20-17gl;
-	Fri, 22 May 2026 16:24:11 +0000
-Received: from mail-westcentralusazolkn19010041.outbound.protection.outlook.com ([52.103.7.41] helo=CY7PR03CU001.outbound.protection.outlook.com)
+	id 1wQU06-0000000BbWk-1AWG;
+	Fri, 22 May 2026 17:49:34 +0000
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQSfQ-0000000BQ1L-0f1N
+	id 1wQU03-0000000BbVP-3oE3
 	for linux-rockchip@lists.infradead.org;
-	Fri, 22 May 2026 16:24:09 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=nMlSWB4Yr2uVGPxmcvTH4cuCvgtN/knIvE1xcoOrKvBI0bkBKLtdNQCikwK28I9g7B53y/w6Nj8btdM6h2JpuyD7tjo1gzVpD0qgADOQCZNk5lTGXL1A3LMu0jlGsmYtSzAzYEA0SMn+0xV1f6S0p+c+Uiqm++0b8NYZ1rP4KCVHQ4oPOM5ONAyWWHeuwkg7SLR2ed6mMMH4xjsc9002ecM/BOeUpT17uSkE2GO14WxGZ0QOw3s5FU8iTKy3PX8wRopWKRMNZDE7C//HGdwz6o73ztsHBGpFqKb532fOsrv0AoPcPkw9LgezTIq9NNEqBCFQWZfFRv2vS8KhfeYytw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=U5fLxz1VSSGLMZYndel7pzh6AOVHOju0vi7lHJYWfuo=;
- b=Ofh8xP7BDOEMTE330CkOBftgcoyxZujaFw7RgU+i6LEai7sqvITtbHQv2G7lWSkg83eilRXro0bQfYr90RKUGl5wmUoXRM8vmioetqJ3hNWhnX7WUinPTWqd/kYGAi5+owQd1xS+j1/Ppx3FLBk3qw8yw+l+Le1vOSHrdbo4lEX4aYE7agv4fiToxIl5jYWfAd4aOKJn0AQYIATvyEP1vZUe0kxsN1xvGaajsNqDwM+1PV6uhj/m7lVEtJ9Vx1Ek+Dk6v2jS1h64LtCGr32JHS5Wke/IH8R67NEds0m+Al8ihWWZDA3wGivo2V5+oMdFZtyyqGebx+NuCvSBSV17vQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=U5fLxz1VSSGLMZYndel7pzh6AOVHOju0vi7lHJYWfuo=;
- b=G167tvwe8sKCj8Ln7bHs5TNKmUKfZIxW+vC13g8yGxQzf+BsQOdyVfg+7b6oYEjoQqtNtHqHuJJOg8mJbSfvNJHl/xHRjW23ZqNSMPMiaDM0Tvuo9ly62LGFYSEICik+eoxLkEGp0GqTQNbeOLClNJD82dPk0n6GjlM/aL6zCBZlWAQ6oTLaSZfax0BLo66LdC+/YRL+/rCjAi8Oh2Ka4zum9pnt48WTuGqgAFbNmP77trkTU2oL0fuNLuA/T0debbb6M3/Ys+sFML5LqC/NfdwtNs4VPxw3uqgbGmwo3/GaRiVT4F1lLyXeQbxejB4TA8RhJ6cfSDTrivpcGVmVSg==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by DS7PR19MB7628.namprd19.prod.outlook.com
- (2603:10b6:8:ef::9) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.25.23; Fri, 22 May
- 2026 16:24:02 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0048.016; Fri, 22 May 2026
- 16:24:02 +0000
-Date: Fri, 22 May 2026 11:23:59 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Jonathan Cameron <jic23@kernel.org>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V8 05/10] iio: imu: inv_icm42607: Add PM support for
- icm42607
-Message-ID: <PH0PR19MB99733838CE49A3752AAEA250ABA50F2@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260518200526.458421-1-macroalpha82@gmail.com>
- <20260518200526.458421-6-macroalpha82@gmail.com>
- <20260520181353.0a0371cb@jic23-huawei>
- <PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
- <20260522120515.652661ed@jic23-huawei>
-Content-Disposition: inline
-In-Reply-To: <20260522120515.652661ed@jic23-huawei>
-X-ClientProxiedBy: SN6PR16CA0067.namprd16.prod.outlook.com
- (2603:10b6:805:ca::44) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <ahCDHxLhE22Qah6c@wintermute.localhost.fail>
+	Fri, 22 May 2026 17:49:33 +0000
+Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-bdb3eb93e20so475569566b.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 22 May 2026 10:49:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=amarulasolutions.com; s=google; t=1779472170; x=1780076970; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sLvNmT5N9xfhkp9ppRLQBuLBsM9Wf1Ff3VMJ6yk6VUQ=;
+        b=cNjzM2KCTBQMh3zJXw9NNEDhJW9jk5Mxna9qrBRv+4+I3gktLyenNJVrlPW3apOPAB
+         axASD3YnKFIu7WNaPLRDmiMHe2RH1EinibL9RnV7gHamrH1sCf7cZMXLbDwfD4iteev2
+         PEackU28Abd8RkD33mflq1bw6jTP6ISqJ2zdI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779472170; x=1780076970;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=sLvNmT5N9xfhkp9ppRLQBuLBsM9Wf1Ff3VMJ6yk6VUQ=;
+        b=R66fr4t63EL/xd67a/3E9jLy2VfCKnuXxFKyJneU+sGO2adE/GbOMyI0XhRq0vED9q
+         OK1YfoECSY5Sxf2xXNd60JNNP7/ZnaPRHZaXJRD82Rev88QIqR+0n04Lg9EPNyNE3pCN
+         ggvLzI+KjUt3zw1uqwbjZx6Ry/kPyunCtyw9LWI9foV5QNqH7L8ZDu9i8o5XjgZR2I7G
+         tOOpjzv8iQT1/mKuaOWzAc9t+RfrtodSLvqGXcIWs8QCX5rIHgbRIRptirdHTWdkUbXc
+         sJYaaQ4vGs6WMtAx3Ay42CGBhVM3e5l9Nqds/gPp2DyHOV8xVhjT3bhPp+QxJb3CgJqT
+         XzDQ==
+X-Forwarded-Encrypted: i=1; AFNElJ/ByYqlRWfCiR9khpRYpuR3bdsslyCDvc6UCd300LxjeXTAhvO20/LzDDi0/ux5yXLJDhecOkTGP1/8nxfcHg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxweXxm6i1oAqAkTqKMTG01wo8V59vtZ6/zCdGRPWxY62IXlbsa
+	y4SEL+hL2wVBTDTjhw+1DuQIF8iSewhQcBVMrh0Wd/uUNhAakGOXclhQPBZrM9eBpZA=
+X-Gm-Gg: Acq92OFnldTOm5sUD/QgKglWi3dbYnApYNtgOdDRFF1EJl4IVmGF6uvjoAbVRZoe3Qf
+	lYnBLtQ3WJgQPE8HevSFY7c43K/zAXhDFqELi58bg/24WnIfG/qUfQ6VbMk3cmnmul0L5hbH6rU
+	XpuY85s3C3aHSkJ5N6U9+HoGJPkYC2lLRFGqAuTRL7G0HDTL14otqV6mU+MnrjV67qiYIFOcHSQ
+	hRWjo3lv0sQ+vcwmY7PgNFIPwog5pivLwdqGTzCLWdDVyL37cWogeYVupQeIj6RXNoYwtyvBgFU
+	TiqjAG/jyemcLIxD97JpUXNwz225ZrM+JxePw0GeX4TJLT/L4tE6SM9Ww2taNQe0weS6uUv2VkV
+	CjF4fe+93INbiE1fH5C0r8RSfi8NRCV1yskdYzA+6ss0QXLV5EpZwUKbG9KrlieEO7el6JG2lGH
+	bJrt3qfLj+E/LRjM0RndPhmI5L1JbN2hkrEMTTULf/5j7RZ3yO7JAPMlmCSfcUnGXiytDXYA==
+X-Received: by 2002:a17:907:75d4:b0:bd5:405c:7964 with SMTP id a640c23a62f3a-bdd26fcb78amr208821466b.48.1779472169899;
+        Fri, 22 May 2026 10:49:29 -0700 (PDT)
+Received: from thinkpat.amarulasolutions.com ([94.162.24.211])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-bddc5eca6f9sm74302366b.38.2026.05.22.10.49.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 May 2026 10:49:28 -0700 (PDT)
+From: Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
+To: devicetree@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org
+Cc: linux-amarula@amarulasolutions.com,
+	michael@amarulasolutions.com,
+	dario.binacchi@amarulasolutions.com,
+	Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
+Subject: [PATCH 1/3] dt-bindings: vendor-prefixes: Add Axelera AI
+Date: Fri, 22 May 2026 19:49:16 +0200
+Message-ID: <20260522174918.61523-2-patrick.barsanti@amarulasolutions.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260522174918.61523-1-patrick.barsanti@amarulasolutions.com>
+References: <20260522174918.61523-1-patrick.barsanti@amarulasolutions.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|DS7PR19MB7628:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8c2a4b9a-611c-49dc-3168-08deb81e8925
-X-MS-Exchange-SLBlob-MailProps: Vs63Iqe4sQk9yDZfcyB2aQXfgqZWb+OOmJP02r5goILS2Npf15Dv9706SF/yW0BOulCo688KN+40p7frfmIPz7/KeYIXQNNwFlODkA7ffQzDEA8SaGuJX1TXaK9z+uhnnXMMkNKIO600E4gkAwUcdvFbkoprwTt4pEJ7+ZeqgEGH5IQkVlUsEShzHiE8butgYwFizH3Af2I92TNcFKByW/GfrIq+dlqQVchwbJG2dYH4oAIoHkAu4lUfR++JfHo+ax6//PbNr8HAYEY9c2yE8OXz9A5E7BDFVQn7ySDAauYwd1G2J+1Os2yNhNkjMvT1+L3AoPK0vM/hJrvxwbEtCWc46IpocbAY5lHEXtTa9pKuDXL9rm2NiVuDQiJaUpk4mU6wQd4qtilIPo6uMFPBkSpjk7VEQxoR1L9FqGi12/7Wr2aFF3F+LNKxyGQUYPLNkuUV/D5BKhMk/xhgZCDDOY8zhQNeximON0fNJ6vrjrkzIuIuedn7I1OlF78qpCiEgDIG1gtrjsxKgJ24JdHrbKt1Xk5InYdBhzMhxIRVKGy4M90B+ukmPZj0PdA347X07kmfX39duxfnuiQhVUVSMGNfqZAZYAW424FGLOXwwx+sp2CirsH4LcfcjPYPtnIbMyNcSjG9g0MO8nBrm0WvSptB8yZLqP/tI7yZjIL1mDrY5lh6XWikC+t9EVzlpe0EC2a3eiP/FTTs9cZO8ZVWPQT9hXH+G9LRd2oyf9wxzJo=
-X-Microsoft-Antispam: BCL:0;ARA:14566002|25031999004|51005399006|37011999003|24021099003|41001999006|6090799003|5072599009|19110799012|8060799015|15080799012|23021999003|12121999013|40105399003|440099028|3412199025;
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?mrIFqJWMESSuP8rp9Uj1R3xvVZvzOygpGdw34II6960SaotPr+ukQqPxgcWI?=
- =?us-ascii?Q?S/YhXYAPyjJLlTk+3+4xwY6de07Nqt5Qfz1WFVfPTiMID14kZnwSyAkrzGFx?=
- =?us-ascii?Q?37PKKoz1NMu7UoDvFglurDb/D9gTRWftlVBCTcxg9FspKls0VwBcYZgqs4vP?=
- =?us-ascii?Q?5g9uggXvRA8JQn76UTkWl2x84s26OGPCJCupYN8qHRFR153bDOvTSmT5iKa2?=
- =?us-ascii?Q?vnJ0994GfNafNz/lqzn6VCGmz2lq4QKFk/pzKh9SdNiFeLOao9lbStVZGqfm?=
- =?us-ascii?Q?0jjAcfugkt129ZK+OYfJaRWifQ33MnE5NRFui0uRuWWlQY+sfsoYFiQo1CuX?=
- =?us-ascii?Q?KtHGDMXmIQ6rX0M7DJ4Qnz5uusXVONJ9bxtI4eCP7h2upz4MO8qfhOnln98Y?=
- =?us-ascii?Q?RqTxz3zfuP2uoH3bjg9CDyRbPQHiysTMBvL6OS6xE0cK+YrTDjMEI2k0IrJi?=
- =?us-ascii?Q?NUCeZEkliaoo9dCDHkrWAoVdEiN5ic2lSIc5oRq93e13EzJi8QNCDAlYKgqu?=
- =?us-ascii?Q?oWpKFrjyzsmDZh1w+rRHqjj68fKmlGsyrGbWBxiZPsv3pQ50XFnCxOfCwqOt?=
- =?us-ascii?Q?MgJvaPTXzWFDkK6bAcADLybOE9Gv9RFOjA93U8T7N1E/uNMz/JaDxMAwg49f?=
- =?us-ascii?Q?v2nZUunzGLazj6dicvOZK+5hk7wx/9smhAxR8Yv2EoBvm1bzHb/6jUHAww5j?=
- =?us-ascii?Q?/6fz5wuL35GwJ/pl5OinL6rclZk6goGLsmyjEVo4WnHem4GY7zxZD8NAtu2y?=
- =?us-ascii?Q?yYGH+/7W5Exumf0vS20zWAPcaZHd8iNg0fJkovSLapNECrI9QtQ5z02yNqG6?=
- =?us-ascii?Q?v0jRZC0GAWFiRj6k0mDdITuqoxHLXae9sTUErtJ+YqIZE7Q8eaDbh8YKLJgU?=
- =?us-ascii?Q?bvQWS/IiY62ALDbK6Q9Q9ttcFfimfF48v2IW0cMu7zHe8DSnwcXP+fcCH3Os?=
- =?us-ascii?Q?J0ZlmqqgAMUC5HZiUpsSZTpU90Ma4MM9xnG/ROD3wVO6zWws2xSPwFmuVeXr?=
- =?us-ascii?Q?qSaiUDc2ehEKr/7qsurqQnlR9AkpMtvOEqCT/x3eagcw+dJOIqIcgdZd8tc2?=
- =?us-ascii?Q?ilI097tXSpj3lw8WB4nlLKq/VuKf0g=3D=3D?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KgHK3oeHZmBsFlzbBJp+Iuav4UkCRnpiw7yBgc5XGbdCSU2iU2L2Mn/Sw5k7?=
- =?us-ascii?Q?xyUR/3pj4b/hfaHQklTFy2MhSUGE1AJasXCiyiswxMwaPI+XaJUYuqCKgeh0?=
- =?us-ascii?Q?ltR0raKFA6qL+O3dcrtHyP5IQ6EMyRVMR0BABZLCVqopr9xIk32kkA4LsSFk?=
- =?us-ascii?Q?vbBLnL/Z3BOPQ7mhwHgNNmwMjDQNXk9otvwjFkkIUPT0xNPA90zXLQS6JQTK?=
- =?us-ascii?Q?jW52i1cvOR9tBYYbl3gyEw3jLh1j/LdX0yJTnY646tcrvg4s4KDifdcA5adt?=
- =?us-ascii?Q?qpnc5yP8RC9Ib/tT728Ygtap1BKaDrWPDV7pWAgF7qDTJOi1Ea7XgbrqCFcC?=
- =?us-ascii?Q?YAtHPmq8Q1GIJYlw94P/9hmFMu5lCtC3sR8ScrXyBHjnNltN522Q5cmWzClD?=
- =?us-ascii?Q?M+WK7Qky2twFVwFQrY25BxmKdel/ogZNWqKchQ/hwfb1RljJDygrNIsHVbLb?=
- =?us-ascii?Q?YywtwjiAXaYaS+kvnKU5J7pabPXTrEnWcnvKGxNPbZ9WVZtcVcQYya8jzdjA?=
- =?us-ascii?Q?9gH5Mg9XaMsMkNlvj7pRbfpaeFln++EnBxLxJZMUUrUOSJX/JOpfUXLC/lMo?=
- =?us-ascii?Q?2bMQPH5Uap4+X/1/meyGXTxr8/SCnNeWS35E+820u9aYFBd5Yzl2e84xkaJk?=
- =?us-ascii?Q?OIaTetoTeH7K7HuwQEWBr6vqYFpW6K54Wym3zkntqEg8BNE5WcJhfM2e0KH2?=
- =?us-ascii?Q?2Ou/ATzGT6ZVx+m1Fwo4vjwS4Gh34tdsrIIrwocpT6AreQOKSDpvZjVVFYif?=
- =?us-ascii?Q?GwIZ6f3EoCjzsy3aIQZuuxTOHKMa/Nt34kn9VxRiyhz7y4525Vsut+VvRcg3?=
- =?us-ascii?Q?37eV6CAZVZ7+kYuVHLDzQP1tRKn0OPyZE5qLAmS3Ol7WAfAnl7JhBBiLPNIS?=
- =?us-ascii?Q?zElDtzC/bKhNUEUnn1l+UxEyZW28VP2eGVtsArjfp+xkNwPN28ha2KiPPTsD?=
- =?us-ascii?Q?HH7bsnPzGwkJTRjM90WZoNa8VrekoM+aZNcQs+VhrfIg4f11gdAos9NTi1fs?=
- =?us-ascii?Q?y5YdnBvVqVKSWco1p84I19LEVZYHkU5fUgvZ/HT/uIYaP2ZSBE+T+o+l1+ch?=
- =?us-ascii?Q?mUFSIE1JXVajqeGp7npNCcCu1x/jweH9DRuHlH49IzANNZOvKs+8rVmbo3yj?=
- =?us-ascii?Q?Um/ec/xscK0fd7o7YEeSx39nvxIWUSochLhuJ170lUxtLgt4UMJN7K+X/8rL?=
- =?us-ascii?Q?ecFMW/zzD8JySO/lSo7tBbR/h/dew4t1LQ4L9hIg7awew0X6xF+cUpK16EW9?=
- =?us-ascii?Q?fjkTxE88WY26VfTU70hDUoquCqxRiiflsy0NkcqC6IRKQqUX1dI9c7pDqK/2?=
- =?us-ascii?Q?HFghbeu8GtrZSB/87d9FImYBjSxomVDciaYjN6m8XltBSXxOGLUxz0U3hNFs?=
- =?us-ascii?Q?5C4y2qtgA+SjRcEv5FBPknQI3EDRGWuyLl++hY3kvnsXwndGFVSSP+WXBePD?=
- =?us-ascii?Q?KtToj09bWQQJK3DVSEhPaVM1UoWHqrnE?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8c2a4b9a-611c-49dc-3168-08deb81e8925
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 May 2026 16:24:02.5003
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR19MB7628
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_092408_454877_E3162BA0 
-X-CRM114-Status: GOOD (  46.00  )
+X-CRM114-CacheID: sfid-20260522_104931_960424_EB83A703 
+X-CRM114-Status: UNSURE (   7.35  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,152 +105,30 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 22, 2026 at 12:05:15PM +0100, Jonathan Cameron wrote:
-> 
-> > >   
-> > > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > > index e9c81b52f9ef..bc0cefa2fb77 100644
-> > > > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-> > > > @@ -9,6 +9,7 @@
-> > > >  #include <linux/irq.h>
-> > > >  #include <linux/module.h>
-> > > >  #include <linux/mutex.h>
-> > > > +#include <linux/pm_runtime.h>
-> > > >  #include <linux/property.h>
-> > > >  #include <linux/regmap.h>
-> > > >  #include <linux/regulator/consumer.h>
-> > > > @@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
-> > > >  };
-> > > >  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
-> > > >  
-> > > > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
-> > > > +				      enum inv_icm42607_sensor_mode gyro,
-> > > > +				      enum inv_icm42607_sensor_mode accel,
-> > > > +				      bool temp, unsigned int *sleep_ms)
-> > > > +{
-> > > > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
-> > > > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
-> > > > +	bool oldtemp = st->conf.temp_en;
-> > > > +	unsigned int sleepval;
-> > > > +	unsigned int val;
-> > > > +	int ret;
-> > > > +
-> > > > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
-> > > > +		return 0;
-> > > > +
-> > > > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
-> > > > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
-> > > > +	if (!temp)
-> > > > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
-> > > > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	st->conf.gyro.mode = gyro;
-> > > > +	st->conf.accel.mode = accel;
-> > > > +	st->conf.temp_en = temp;
-> > > > +
-> > > > +	sleepval = 0;
-> > > > +	if (temp && !oldtemp) {
-> > > > +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
-> > > > +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;  
-> > > 		sleepval = max(sleepval,)
-> > > or just assign it here if not later patches add stuff in between
-> > > the assignment to 0 and here.  
-> Wow I write some garbage English sometimes (no excuse, it is my
-> native language!) 
-> > 
-> > I'm going to assign it to 0 here (unless you think I should define it
-> > at the beginning as 0) and then tweak as needed. I think this code
-> > here can be further optimized, especially if we make the assumption
-> > that START and STOP time for each sensor is comparable (the datasheet
-> > doesn't say, so I'm going to go with yes since that greatly simplifies
-> > things).
-> 
-> I'm a bit lost. Suggestion was just to do
-> 		sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
-> as we know it is 0.   Probably not worth it though as ends up with fragile
-> code.  Fine to keep it to what you have but use max() rather than
-> if()
-> 
-> ...
-> 
-> > > > +static int inv_icm42607_resume(struct device *dev)
-> > > > +{
-> > > > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
-> > > > +	int ret;
-> > > > +
-> > > > +	guard(mutex)(&st->lock);
-> > > > +  
-> > > Given the bunch of stuff we've run into recently around these
-> > > I'm getting more paranoid.
-> > > Similar to above, could you use pm_runtime_force_resume()
-> > > You would need to gate stuff added later to not occur
-> > > though if it wasn't runtime suspended.  
-> > 
-> > This I'm having trouble understanding. If I use
-> > pm_force_runtime_resume() I'm assuming that either I got an error (in
-> > which case I'd return the error) or the device is runtime resumed
-> > after the call completes. If that's the case, wouldn't my suspend and
-> > resume steps just be pm_force_runtime_suspend/resume, and enabling the
-> > regulator (first for resume) or disabling the regulator (last for
-> > suspend) as needed?
-> 
-> If you call pm_runtime_force_resume() it will do the right thing
-> wrt to runtime PM state prior to suspend.  If it wasn't runtime suspended
-> it will runtime resume - if it was it'll no do anything. It won't
-> directly tell you which one it did though.
-> 
-> The extra stuff that you know can't be the case if runtime pm is on
-> will need some sort of gating.  However, looking again it may already
-> be protected by more specific checks.
-> 
-> 
-> 	pm_runtime_force_resume();
-> 
-> 	if (st->fifo.on) { //I'd failed to look at what was added.
-> 		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
-> 				   INV_ICM42607_FIFO_CONFIG1_MODE);
-> 		if (ret)
-> 			return ret;
-> 	}
-> 
-> That if (st->fifo.on) previously didn't get checked if we were runtime
-> suspended because in fifo mode we never are.  So I was thinking you'd
-> need that check to be
-> 	if (!pm_runtime_suspended(dev) && st->fifo.on)
-> but the fifo.on check is sufficient by the same argument that if fifo.on
-> is true we aren't in runtime suspend.
-> 
-> Basically I overthought it and didn't check what got added where the
-> comment is in this patch.
+Axelera AI is an EU-based provider of AIPUs for edge AI inference.
 
-I'm still lost here... are you saying the existing logic is sufficient or
-that we need to do something more (like force the runtime resume/suspend
-in different places).
+Link: https://axelera.ai/
+Signed-off-by: Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
+---
+ Documentation/devicetree/bindings/vendor-prefixes.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Thank you again for all of your help, you've been amazing.
+diff --git a/Documentation/devicetree/bindings/vendor-prefixes.yaml b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+index 28784d66ae7b..595ad9423ece 100644
+--- a/Documentation/devicetree/bindings/vendor-prefixes.yaml
++++ b/Documentation/devicetree/bindings/vendor-prefixes.yaml
+@@ -217,6 +217,8 @@ patternProperties:
+     description: Avnet, Inc.
+   "^awinic,.*":
+     description: Shanghai Awinic Technology Co., Ltd.
++  "^axelera,.*":
++    description: Axelera AI
+   "^axentia,.*":
+     description: Axentia Technologies AB
+   "^axiado,.*":
+-- 
+2.53.0
 
-Chris
-
-> 
->  
-> > 
-> > > 
-> > >   
-> > > > +	if (pm_runtime_suspended(dev))
-> > > > +		return 0;
-> > > > +
-> > > > +	ret = inv_icm42607_enable_vddio_reg(st);
-> > > > +	if (ret)
-> > > > +		return ret;
-> > > > +
-> > > > +	/* Nothing else to restore at this time. */
-> > > > +
-> > > > +	return 0;
-> > > > +}
-> 
 
 _______________________________________________
 Linux-rockchip mailing list
