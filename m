@@ -4,74 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9028BCD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 10:57:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5854CD5BB0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 11:05:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=sqk7Rl3ZaTm0sXVYXLiJOkDROB9CeY6KjzRXOwMogSQ=; b=dS4jHN6jJThede
-	cy+Zjl+8m8mi1QnJFX+aBlldHhDd8i2pqyGodpVF/C+L6ylezUMcxXrAMZb+C1gx5Ugwu7eaexw26
-	4XU3tz0JIBM7KMokFavbnTph3N8n6dLU+ykghkn2Geasmovtrh2hcgE25XIKzRxr0/G2I+Xzt2AjV
-	pAnnF2H+murFqM+q7SIbA452uMlBrsC2tSCb13p7lCwtmlSx6ogo9Tpbhggm4qj0D25OrBGSY7EEv
-	uK6C5MDLz2heLURwyL8+PCBJHRrT1sXLcAGOXh1O0Mjq5B3GFbOs77wikcTAtWD9hgCzJmNejOATe
-	YhWwoSOWodVY25G+K2Pg==;
+	List-Owner; bh=0SFo1/VbZ6FJoj4DYvc0U4iyC7CcRpzSU8VxoyRWOyA=; b=g4kAnfNfrLeJli
+	sV/B38FrBlxpXnNLfR6aGEn6yTD+4DBbXZ7ADRuYH5IBihz6Eap1vQySuAC4w+Qs9CopZC9O9xy+C
+	v3JmpQjnfJqR+zhnEzmHqs2E8fixku7GsIubOetP7JgMKZUiknFufxqGQFOId/2A8CGeCig8Ect5p
+	dZjfZCZTy58Bpo/8RuJ+/aNh5nABrBBJz6UWW2Kz8kBQITcgvrwzEhOS0KbIEGHWj5YhvsZTjucp2
+	MrTqeS2t4D9MOC+rirta+RpwksV5AeNkbL/KS4vedXXui5DFImFwphZESIRwIM97pZbd+gdFBt2p5
+	0UXFt1m5wrg1jHfMYhzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQNZH-0000000AZ5l-0K9x;
-	Fri, 22 May 2026 10:57:27 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wQNh0-0000000AaXr-2bv4;
+	Fri, 22 May 2026 11:05:26 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQNZD-0000000AZ47-20gM;
-	Fri, 22 May 2026 10:57:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779447438;
-	bh=RaCiD9C9ee+AQyy4fknkK+gihP8GQ7R1bKyeCWj4GDI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=JaBfUJfNr5zqyyEI/gZ60k0uCx5ucNwCUpCb+nz04In5Nr63IGybolGcpcf16P+uB
-	 +FvtjHNPxh/5FZKqhnRpMPt7HeklNlIZdeA2eniYfEQYkyfyc+flXL8vunV+BFRZrs
-	 GL34YSlf46DWcQF79YZ4aA/dazoqE9dXAoeC+r3b2keMJxHm3/THxSyqC1+TV37aLz
-	 TU5ZWAxsNihkH2i/H+cmbJnuqJWGVSZZ+Q80GnFvBEehoLGLGcdxp32PVN7sCRj2RY
-	 mlKXZnNftdV6nYkp1r1rCxbV0thIPb6P/SGkaZg9XCieytEFhOkDQztSU0J2F3NY7F
-	 7l+qHsLkBBHyA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 621F117E0550;
-	Fri, 22 May 2026 12:57:17 +0200 (CEST)
-Message-ID: <bfdbf194-b400-4de3-bb68-74652dece74d@collabora.com>
-Date: Fri, 22 May 2026 13:57:16 +0300
+	id 1wQNgz-0000000AaXH-0Cb6
+	for linux-rockchip@lists.infradead.org;
+	Fri, 22 May 2026 11:05:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1C55F4427B;
+	Fri, 22 May 2026 11:05:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B619D1F00A3D;
+	Fri, 22 May 2026 11:05:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779447924;
+	bh=kCVDMXk8BSvTV3swsaD3sQl1nb6y+ZB9kYJDzjWXNe4=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=KvveBzsBhN+YrlDAQGNepk+tKWX10yJiPqoJCK4JkBlwIrocbLr4WABVuJWqoYEML
+	 0JL1TUWc1197UpsT0vPS1cd3TVdN2c8d0Bblo6GyVqnzxvgFsn+ZsHk9OSSg3/6t/M
+	 infmv0E9WKD1Gjd2m1CXljHmr+IIA6AtqQGk8yaRFKe6QsPL4BJQgil4milKLIy4/R
+	 dZhM4iJuy20DYEAawpxoO0Keqtpqz9Fm7/qHypFGXBbHOw2tUKTiEPfaH0THy9mNtD
+	 CHSMaKflcddIIg5SiDCDoyF0cegKcL96mtMr7CIAIE2ak7I8qthUDOUNl/+Bw19Eme
+	 u+LusebYU/akQ==
+Date: Fri, 22 May 2026 12:05:15 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+ jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V8 05/10] iio: imu: inv_icm42607: Add PM support for
+ icm42607
+Message-ID: <20260522120515.652661ed@jic23-huawei>
+In-Reply-To: <PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20260518200526.458421-1-macroalpha82@gmail.com>
+	<20260518200526.458421-6-macroalpha82@gmail.com>
+	<20260520181353.0a0371cb@jic23-huawei>
+	<PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 02/22] drm/connector: Add HDMI 2.0 scrambler
- infrastructure
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
- <20260520-dw-hdmi-qp-scramb-v6-2-24b74603b782@collabora.com>
- <20260521-sweet-devout-panther-44d73c@penduick>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260521-sweet-devout-panther-44d73c@penduick>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_035723_678747_64B1AB35 
-X-CRM114-Status: GOOD (  24.25  )
+X-CRM114-CacheID: sfid-20260522_040525_138826_549FD5AF 
+X-CRM114-Status: GOOD (  36.18  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,87 +79,142 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Maxime,
 
-On 5/21/26 10:52 AM, Maxime Ripard wrote:
-> Hi,
+> >   
+> > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > index e9c81b52f9ef..bc0cefa2fb77 100644
+> > > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > @@ -9,6 +9,7 @@
+> > >  #include <linux/irq.h>
+> > >  #include <linux/module.h>
+> > >  #include <linux/mutex.h>
+> > > +#include <linux/pm_runtime.h>
+> > >  #include <linux/property.h>
+> > >  #include <linux/regmap.h>
+> > >  #include <linux/regulator/consumer.h>
+> > > @@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+> > >  };
+> > >  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+> > >  
+> > > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> > > +				      enum inv_icm42607_sensor_mode gyro,
+> > > +				      enum inv_icm42607_sensor_mode accel,
+> > > +				      bool temp, unsigned int *sleep_ms)
+> > > +{
+> > > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
+> > > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
+> > > +	bool oldtemp = st->conf.temp_en;
+> > > +	unsigned int sleepval;
+> > > +	unsigned int val;
+> > > +	int ret;
+> > > +
+> > > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
+> > > +		return 0;
+> > > +
+> > > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
+> > > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> > > +	if (!temp)
+> > > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> > > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	st->conf.gyro.mode = gyro;
+> > > +	st->conf.accel.mode = accel;
+> > > +	st->conf.temp_en = temp;
+> > > +
+> > > +	sleepval = 0;
+> > > +	if (temp && !oldtemp) {
+> > > +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
+> > > +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;  
+> > 		sleepval = max(sleepval,)
+> > or just assign it here if not later patches add stuff in between
+> > the assignment to 0 and here.  
+Wow I write some garbage English sometimes (no excuse, it is my
+native language!) 
 > 
-> Thanks for working on this!
+> I'm going to assign it to 0 here (unless you think I should define it
+> at the beginning as 0) and then tweak as needed. I think this code
+> here can be further optimized, especially if we make the assumption
+> that START and STOP time for each sensor is comparable (the datasheet
+> doesn't say, so I'm going to go with yes since that greatly simplifies
+> things).
 
-Thanks for your quick review! :-)
+I'm a bit lost. Suggestion was just to do
+		sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
+as we know it is 0.   Probably not worth it though as ends up with fragile
+code.  Fine to keep it to what you have but use max() rather than
+if()
 
+...
+
+> > > +static int inv_icm42607_resume(struct device *dev)
+> > > +{
+> > > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> > > +	int ret;
+> > > +
+> > > +	guard(mutex)(&st->lock);
+> > > +  
+> > Given the bunch of stuff we've run into recently around these
+> > I'm getting more paranoid.
+> > Similar to above, could you use pm_runtime_force_resume()
+> > You would need to gate stuff added later to not occur
+> > though if it wasn't runtime suspended.  
 > 
-> On Wed, May 20, 2026 at 09:38:13PM +0300, Cristian Ciocaltea wrote:
->> Add the connector-level infrastructure to support HDMI 2.0 scrambling:
->>
->> - .scrambler_src_{enable|disable}() callbacks in
->>   drm_connector_hdmi_funcs for source-side scrambling control
->> - A delayed work item (scdc_work) with an associated callback (scdc_cb)
->>   for periodic monitoring of sink-side scrambling status
->> - A scrambler_enabled flag to track whether scrambling is currently
->>   active
->>
->> These are intended to be used by SCDC scrambling helpers to coordinate
->> scrambling setup and teardown between the source driver and the DRM
->> core.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/drm_connector.c | 14 +++++++++++
->>  include/drm/drm_connector.h     | 52 +++++++++++++++++++++++++++++++++++++++++
->>  2 files changed, 66 insertions(+)
+> This I'm having trouble understanding. If I use
+> pm_force_runtime_resume() I'm assuming that either I got an error (in
+> which case I'd return the error) or the device is runtime resumed
+> after the call completes. If that's the case, wouldn't my suspend and
+> resume steps just be pm_force_runtime_suspend/resume, and enabling the
+> regulator (first for resume) or disabling the regulator (last for
+> suspend) as needed?
+
+If you call pm_runtime_force_resume() it will do the right thing
+wrt to runtime PM state prior to suspend.  If it wasn't runtime suspended
+it will runtime resume - if it was it'll no do anything. It won't
+directly tell you which one it did though.
+
+The extra stuff that you know can't be the case if runtime pm is on
+will need some sort of gating.  However, looking again it may already
+be protected by more specific checks.
+
+
+	pm_runtime_force_resume();
+
+	if (st->fifo.on) { //I'd failed to look at what was added.
+		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
+				   INV_ICM42607_FIFO_CONFIG1_MODE);
+		if (ret)
+			return ret;
+	}
+
+That if (st->fifo.on) previously didn't get checked if we were runtime
+suspended because in fifo mode we never are.  So I was thinking you'd
+need that check to be
+	if (!pm_runtime_suspended(dev) && st->fifo.on)
+but the fifo.on check is sufficient by the same argument that if fifo.on
+is true we aren't in runtime suspend.
+
+Basically I overthought it and didn't check what got added where the
+comment is in this patch.
+
+ 
 > 
-> So we would need kunit tests for this.
+> > 
+> >   
+> > > +	if (pm_runtime_suspended(dev))
+> > > +		return 0;
+> > > +
+> > > +	ret = inv_icm42607_enable_vddio_reg(st);
+> > > +	if (ret)
+> > > +		return ret;
+> > > +
+> > > +	/* Nothing else to restore at this time. */
+> > > +
+> > > +	return 0;
+> > > +}
 
-Ack.
-
-> 
->> diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
->> index 3fa4d2082cd7..91e58362fbc0 100644
->> --- a/drivers/gpu/drm/drm_connector.c
->> +++ b/drivers/gpu/drm/drm_connector.c
->> @@ -220,6 +220,19 @@ void drm_connector_free_work_fn(struct work_struct *work)
->>  	}
->>  }
-
-[...]
-
->> +	/**
->> +	 * @scdc_work: Work item currently used to monitor sink-side scrambling
->> +	 * status and retry setup if the sink resets it.
->> +	 */
->> +	struct delayed_work scdc_work;
->> +
->> +	/** @scdc_cb: Callback to be invoked as part of @scdc_work.
->> +	 *
->> +	 * Currently used to monitor sink-side scrambling status and retry
->> +	 * setup if the sink resets it.
->> +	 *
->> +	 * This is assigned by the framework when making use of
->> +	 * drm_scdc_start_scrambling() helper.
->> +	 */
->> +	void (*scdc_cb)(struct drm_connector *connector);
->> +
-> 
-> I'm really not sure what the monitor thing is about. If we have setup
-> the scrambler at enable time, and we set it again on hotplugging, why
-> would we need to monitor anything?
-
-This is similar to 257d36d493e9 ("drm/vc4: hdmi: Add a workqueue to set
-scrambling") in order to deal with some displays needing a retry on scrambling
-setup.
-
-> Also, scrambling is only relevant for HDMI 2.0. We need a way to expose
-> that somehow and make sure that HDMI 2.0 drivers actually have
-> scrambling setup.
-
-I assumed drivers that do not reject the HDMI 2.0 rates in their
-.tmds_char_rate_valid() are implicitly expected to support scrambling. 
-Thinking again we could extend the framework to provide some additional checks,
-but let's discuss the topic on the SCDC patch.
-
-Regards,
-Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
