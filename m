@@ -4,52 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BBF40CD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 08:43:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89BC5CD5BAC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 10:03:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ctRdYf2W0M5LAQ18w87Y2TM8QXim7zK+OC8ilcom7yw=; b=qaM/N3g2CiMWuy
-	6oWO6oEFeJJN5UVTe1/z4mCUKJygIuWqtRfUKtYeZGmx3u4FjcXPa07+mB4UjVH5ccJcB6+LK4b10
-	E1RmEAUE8ZW003EE9oU8xjVeXwZ5GnIGEUWKh0wzxHS3CugwC9nqoeZjuKjX9At5YCYEdhr1faPj6
-	psBCqT6hEYSqki8i+x5RUzeTIlFbKvj9qAvlprZUjDrks/C+y7S0F7iIeIXNDckfhZ9sWmJTEyuCz
-	VSnOqq9/ORTBeHyNI5f/8PLhF7cfkVZr7zQ7vYHPqXfzK1BG7RbsKt76pBOS311WdRiWIN51/9sv6
-	7cPWl4up8sQDIGz9Iwlw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=64vA2RtiaoIzp4YxChOMv6JyTGytO4DlbSQ2j3Z6j1U=; b=V2ysGdqKeE79CJ
+	3qJFbW7Sb4ZcWflQFsKMutU5hhXQ63LvBSjd2EGBPA6IjKQ83nPjCRU3kcwx2hcNOhJPu4P9eeN0h
+	3xLvYkC4hl8vDNEoITwiQyDto45hje7UjVOzSzvUt6RzoaD7R7GIzg1UuUpmGkkzEzB51mUTRObLS
+	lkvDsT60rvfSm7PcfeQUSOxwrThsfQfUWFS8nSmhI3ejxSwi8C7ocyJy/rDggtGxckUcDOcCA8Mzs
+	x+vG3STQjpnvtgSwIOTPfGW80ITn0Y9T3kSw7LMtdTmC1y1BXrzbIUv7ZOsG2t/SJOrJcpAchvP4j
+	fjdMAD7gJhnaEofv+KCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQLTP-0000000ADqi-3lsQ;
-	Fri, 22 May 2026 08:43:15 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wQMjC-0000000AQQg-1koa;
+	Fri, 22 May 2026 10:03:38 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQLTN-0000000ADpm-2Gff;
-	Fri, 22 May 2026 08:43:14 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=Gotifz0xhZuJ54eoZRFKuXrlKTTQrnNqUx9KJdbsj+o=; b=dh8JJPWgyuzJYiQNgKow0kB4t/
-	j2vVPeJ040BzACNCJQ1Zi0eWE8FNqz/vPBkQ9GqZTD+lFd2tEVqViqNz2NLHGqJ3+idC5xNDxsu7o
-	F5YKWgmh+bE2G1d8JoZM+14voH0RZ2v06kb393p6NzokjRLNtglCPZxSxbxURMR8d77/VUQt3zIHn
-	+p2eSbmmhxwN1WtlmglJvzwbwR1Iqb5QjNo/af8x29muOGCGI8zLgcaYtmZ4y2xhXV47RlXoqT5DD
-	k0RBpJhV0Fm3Kr7qAdgq/THYoL4S8RmWYNwsdpmFTUkzy35uP/OPIcClUT97zHU10+9roTy04hpEk
-	Mz3I8cxQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Philipp Zabel <p.zabel@pengutronix.de>
-Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- Steven Price <steven.price@arm.com>,
- Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: Re: [PATCH] ARM: rockchip: keep reset control around
-Date: Fri, 22 May 2026 10:43:09 +0200
-Message-ID: <4223462.bcXerOTE6V@phil>
-In-Reply-To: <74844de05ed99d29424ba71e3c625020afdddf61.camel@pengutronix.de>
-References: <20260521210915.2331176-1-heiko@sntech.de> <7845032.1B3tZ46Xf9@phil>
- <74844de05ed99d29424ba71e3c625020afdddf61.camel@pengutronix.de>
+	id 1wQMj9-0000000AQOh-3SxV
+	for linux-rockchip@lists.infradead.org;
+	Fri, 22 May 2026 10:03:36 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2b9e9a6802aso30376995ad.3
+        for <linux-rockchip@lists.infradead.org>; Fri, 22 May 2026 03:03:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1779444215; x=1780049015; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=eiBRTRZTJBLsm6cC7zO439AbTyaUXaT32zIuFaYd3eo=;
+        b=LsGalFVLpuORJv7j7xne/Jl/v8RqPv5Yk0hs1LwSqIkUupmmn8bssf5ItjQ2pzPz2U
+         An3zN+BhoQb4So/IDX/Mf3OFNBEcnlyZj3VmJHoeNG7d76MznHGQuOKMFw/PUyDWO3v3
+         eEQcDdMHu4WmPeymj+22S9R7akqUL7qux/NQdPjWgxYXRBzBZ2Apaptb6/PlYhwkY19v
+         V+8CFVWualwua3TeYXlEC2I7Wu4fXZhEuWxg565YaMT9G81ZTeC3JjRkzDOWDyuOZG6W
+         k3msHB73pvAccFbA2aVha4KF1a6FsB21Uq4DrKroL5nDH+GxxXZhhi5iZS2i2x/GZ2XO
+         XjyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1779444215; x=1780049015;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=eiBRTRZTJBLsm6cC7zO439AbTyaUXaT32zIuFaYd3eo=;
+        b=SbFcxBVWgAvYAAZGXA8K7/+Fx/YQn6Z1EXGtUXhsY9fUckTob3w7rpdnRhi9cZT28p
+         M22GsxwsKgaZBlZba9I6H4gnujIr7k/59YvEZZx6uto7kKm35KkOiDeEhmwKjcqTyKsM
+         9ZA9TvecOE7MrAfQItKJCm9yLJYx4LWKDrD5Bsepnbfl60wyTBK9FebuVbJVv5+fYo4T
+         wRdqkwCXMY9D5T4D2hSsRA6d7MBdPQUSZiwlDcwQY69dEXzf2orC+j3nBVFFVFF9tPJW
+         PhJrZrnTt94laRvm8ZeMx8FRT6B1zt3LCKu5B317Px6Ku+x0hPpteKaerRlrcsgGRm8z
+         +3sg==
+X-Forwarded-Encrypted: i=1; AFNElJ9PRvXm9sP5Hea8c9/t0UwDoQm6ax1emuurLrCPhONI3HDD7J3V1zfPzhimU41CNZQROospRD+1frob3jEDcA==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyjyNxynUgFb+CMU4TzOx0L3ey80yTzCb6pg1lKcCUgq/d9weKl
+	CEmpJxz45uB8X1vN85tWIuWhg2xlm96woZd43ozPx+DmYVjMZPSsU6fP
+X-Gm-Gg: Acq92OFVIyW6J8umJpC48ijrWZw4lPpw63Hwt5KgYMwMgEHCNd/clS9THb9nI05qv5A
+	iVcCsZQcHPaEF/yRbzRD70cXaUOR+fXOenzRcItQVUm02tW2KzAdSLgdtfTewVZCOVYUjai9tCy
+	gEobuf9vIWa7/kLPwQXl488OVbHjhIXQu3q0TWs/TuJa58NGCyr65u2QKX5mqcJz5cTWwWPCnPh
+	CJ+3fRCaPkycF8jkPF3gETPFaUCqrqx8GLJzxoXTQiyCYSqvGPztsa/a5ywNBmqYDIMIdCU9qqV
+	kH50I6XAmKQMpsV8F8zkcY5xghrpS74Yk0vxeXpuXrUZoN4+v5otrIGnnZmx/a5qoX3lRtJkQXX
+	j7PB/luzxOG5HcH9UWaV0XxqW3Ez64EtUNm4kRJit8QZn2jXgY9qISPMLg8g19mkoRWqu535LbP
+	3pfhDAGPKB81y8S9P5BQyARS5+AkYo2Mv+7NCl3dlzlJ34kacWjFZ+z1xOhw==
+X-Received: by 2002:a17:902:fc48:b0:2b0:c45a:bc2 with SMTP id d9443c01a7336-2beb059cebcmr32443895ad.16.1779444214757;
+        Fri, 22 May 2026 03:03:34 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2beb56f4343sm18683455ad.36.2026.05.22.03.03.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 22 May 2026 03:03:34 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: broonie@kernel.org
+Cc: lgirdwood@gmail.com,
+	perex@perex.cz,
+	tiwai@suse.com,
+	heiko@sntech.de,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-sound@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	devicetree@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 0/3] ASoC: rockchip: Reorder clock enable sequence
+Date: Fri, 22 May 2026 17:03:15 +0700
+Message-ID: <20260522100318.73474-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_014313_642652_8F9D698D 
-X-CRM114-Status: GOOD (  26.88  )
+X-CRM114-CacheID: sfid-20260522_030335_865029_81714F87 
+X-CRM114-Status: UNSURE (   7.22  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,50 +103,40 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-QW0gRnJlaXRhZywgMjIuIE1haSAyMDI2LCAxMDoyMDowNiBNaXR0ZWxldXJvcMOkaXNjaGUgU29t
-bWVyemVpdCBzY2hyaWViIFBoaWxpcHAgWmFiZWw6Cj4gT24gRnIsIDIwMjYtMDUtMjIgYXQgMDk6
-MjAgKzAyMDAsIEhlaWtvIFN0dWVibmVyIHdyb3RlOgo+ID4gQW0gRG9ubmVyc3RhZywgMjEuIE1h
-aSAyMDI2LCAyMzowOToxNSBNaXR0ZWxldXJvcMOkaXNjaGUgU29tbWVyemVpdCBzY2hyaWViIEhl
-aWtvIFN0dWVibmVyOgo+ID4gPiBEbyBub3QgcHV0IHRoZSByZXNldCBjb250cm9sLCByZXRhaW4g
-ZXhjbHVzaXZlIGNvbnRyb2wgb3ZlciBpdC4KPiA+ID4gQWZ0ZXIgdHVybmluZyBvbiBhIENQVSwg
-dGhlIGNvcnJlc3BvbmRpbmcgcmVzZXQgbGluZSBtdXN0IHN0YXkKPiA+ID4gZGVhc3NlcnRlZC4K
-PiA+ID4gCj4gPiA+IFRoaXMgYWxzbyBhdm9pZHMgY2FsbGluZyByZXNldF9jb250cm9sX3B1dCgp
-IGJlZm9yZSB3b3JrcXVldWVzCj4gPiA+IGFyZSBvcGVyYXRpb25hbC4KPiA+ID4gCj4gPiA+IEZp
-eGVzOiA3OGViYmZmNmQxYTAgKCJyZXNldDogaGFuZGxlIHJlbW92aW5nIHN1cHBsaWVyIGJlZm9y
-ZSBjb25zdW1lcnMiKQo+ID4gPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVs
-QHBlbmd1dHJvbml4LmRlPgo+ID4gPiBUZXN0ZWQtYnk6IFN0ZXZlbiBQcmljZSA8c3RldmVuLnBy
-aWNlQGFybS5jb20+Cj4gPiA+IFNpZ25lZC1vZmYtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0Bz
-bnRlY2guZGU+Cj4gPiA+IC0tLQo+ID4gPiAgYXJjaC9hcm0vbWFjaC1yb2NrY2hpcC9wbGF0c21w
-LmMgfCAxNiArKysrKysrKysrLS0tLS0tCj4gPiA+ICAxIGZpbGUgY2hhbmdlZCwgMTAgaW5zZXJ0
-aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKPiA+ID4gCj4gPiA+IGRpZmYgLS1naXQgYS9hcmNoL2Fy
-bS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYyBiL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcGxhdHNt
-cC5jCj4gPiA+IGluZGV4IGY0MzJkMjJiZmVkOC4uZjY1OWQ4OTRiZmFlIDEwMDY0NAo+ID4gPiAt
-LS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYwo+ID4gPiArKysgYi9hcmNoL2Fy
-bS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYwo+ID4gPiBAQCAtMzQsNiArMzQsNyBAQCBzdGF0aWMg
-aW50IG5jb3JlczsKPiA+ID4gIAo+ID4gPiAgc3RhdGljIHN0cnVjdCByZWdtYXAgKnBtdTsKPiA+
-ID4gIHN0YXRpYyBpbnQgaGFzX3BtdSA9IHRydWU7Cj4gPiA+ICtzdGF0aWMgc3RydWN0IHJlc2V0
-X2NvbnRyb2wgKmNwdV9yc3RjWzRdOwo+ID4gCj4gPiBBZnRlciBzbGVlcGluZyBvbiB0aGF0LCB0
-aGlzIHNob3VsZCBiZSBjcHVfcnN0Y1s1XTsKPiA+IAo+ID4gQ29yZXR4LUE5IFNvQ3MgbmVlZCB0
-byBlbmFibGUgdGhlIFNDVSBwb3dlci1kb21haW4gd2hpY2ggdGhhbmtmdWxseQo+ID4gc2l0cyBh
-dCBpbmRleCA0IG9mIHRoZSBwb3dlci1kb21haW4gcmVnaXN0ZXIuCj4gPiAKPiA+IFNvIHdoaWxl
-IHdlIChhbHJlYWR5KSBleHBlY3Qgbm8gcmVzZXQgY29udHJvbCBmb3IgdGhhdCwgd2UgbmVlZCBh
-dCBsZWFzdAo+ID4gbWFrZSBzdXJlLCBpdCdzIG5vdCByZWFkaW5nIGludG8gdW5kZWZpbmVkIG1l
-bW9yeQo+IAo+IFRoZSBhY2Nlc3MgaW4gcG11X3NldF9wb3dlcl9kb21haW4oKSBpcyBnYXRlZCBi
-eQo+IChwZCA8IEFSUkFZX1NJWkUoY3B1X3JzdGMpKS4gQW5kIG5jb3JlcyBpbiByb2NrY2hpcF9z
-bXBfcHJlcGFyZV9jcHVzKCkKPiBjYW4gbm90IGJlIGxhcmdlciB0aGFuIDQuCgphcmdoIC4uLiB5
-b3UncmUgcmlnaHQgb2YgY291cnNlLiBTbyB0aGUgcGF0Y2ggY2FuIHN0YXkgYXMgaXQgaXMuClNo
-b3VsZCBub3QgdGhpbmsgYWJvdXQgY29kZSBiZWZvcmUgZ29pbmcgdG8gc2xlZXAgOy0pCgoKSGVp
-a28KCj4gPiBhbmQgdGh1cyBuZWVkIHRoYXQgZW1wdHkgZmllbGQgaW4gdGhlIGFycmF5Lgo+IAo+
-IFdlIGNvdWxkIGRyb3AgdGhlIEFSUkFZX1NJWkUgY2hlY2sgYW5kIGFkZCBhIHBsYWNlaG9sZGVy
-IHRvIHRoZSBhcnJheSwKPiBidXQgaXQgd291bGQgbmVlZCB0byBiZSBzZXQgdG8gRVJSX1BUUigt
-RUlOVkFMKS4gT3RoZXJ3aXNlIHdlJ2QgaGF2ZSB0bwo+IHJlcGxhY2UgYWxsIHRoZSBJU19FUlIo
-cnN0YykgY2hlY2tzIGFzIHdlbGwuIEkgdGhpbmsgdGhhdCB3b3VsZCBiZSBhCj4gZ29vZCBmb2xs
-b3ctdXAgY2hhbmdlLgo+IAo+IHJlZ2FyZHMKPiBQaGlsaXBwCj4gCgoKCgoKX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAgbWFpbGlu
-ZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xpc3RzLmlu
-ZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
+From: bui duc phuc <phucduc.bui@gmail.com>
+
+Hi all,
+
+This series reorders the runtime resume clock enable
+sequence in the Rockchip SPDIF and PDM drivers to enable
+the bus clock before the functional controller clock.
+
+It also updates the SPDIF DT binding clock descriptions to
+match the actual clock usage in the driver.
+
+Best Regards,
+Phuc
+
+bui duc phuc (3):
+  ASoC: dt-bindings: rockchip-spdif: Correct SPDIF clock descriptions
+  ASoC: rockchip: spdif: Reorder clock enable sequence
+  ASoC: rockchip: rockchip_pdm: Reorder clock enable sequence
+
+ .../devicetree/bindings/sound/rockchip-spdif.yaml      |  2 +-
+ sound/soc/rockchip/rockchip_pdm.c                      | 10 +++++-----
+ sound/soc/rockchip/rockchip_spdif.c                    | 10 +++++-----
+ 3 files changed, 11 insertions(+), 11 deletions(-)
+
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
