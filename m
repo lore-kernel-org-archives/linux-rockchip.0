@@ -4,55 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 883D6CD5BB3
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 18:43:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25CE2CD5BAC
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 19:15:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2ZUCK0LHIB7YKTWcFX0x+HMpO0/b0qozavTDke0WPmU=; b=r2JtpGPG3nLOH1
-	GAEmQ43YtcjYMWlHDvqmoTs5q63v5uLwaUqkhAQwfn62rd8n6r6BKoOQNq9Ei/xqvJq0ACJ3R1Tkd
-	yBL9Bk7QeR9Nc6ULhJqbr1j2ZKyVNpHZ2AXg+EFJMPiRP7I9KBWLuf6MjarVZdQkFaYPIsFRUr7No
-	BSh7r+nRrhAoIY0iQ2SgneuSh5IRiSRqlNIbM3TbrDHACS+JCbzXEG6E8ZUI0vr1pWJTnXiM3ZVUa
-	KO6/e0QTVC1EDHWIrwnydZAkJn8XI6b4Zr9nh0wWuslKG7CA9hRA4iCaF6IYgwvgOy/ZdafDyRYSq
-	M/KJBPil64D3OyiUKdyA==;
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=nmo0+Hbmspdzx1g061XtKOzW1TGBe9uQQ5EB+uHSCq4=; b=2LbtiETrCqT2dn
+	pRWWqOl6jdaOcCIhxWOEErZm/AnDDNw+gnX8QyNjysaDjH8rTl/3lQ3fT4FX/IjuTHwh1+RQbHUnW
+	eQhXbjbE2WYGSsucuqcGHps9O9Gn4SyzpvnBRWGJdTwBGDXFzGP2NdRHvvO5zZfT7dD2+Tp+N1LVY
+	TMOtXCf/+QMc+pAHmLCEQRLDz5v8fz+Dtn2GBUo8gBe9ozTjA4cbKJ5Mlct9vF10uh0V5FaQpXwRX
+	cHzNqTVQr+wvl0KKilGeC1HZJcSx4SJsdygFw8vZnwUDE3M0otVVtF6eEMfnue8+1ylJtkrsp+LkU
+	ga+ayaj3vMXn+uvgH3Rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQUqG-0000000BhWu-37QA;
-	Fri, 22 May 2026 18:43:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wQVKt-0000000BkbT-0Q3C;
+	Fri, 22 May 2026 19:15:07 +0000
+Received: from mgamail.intel.com ([198.175.65.13])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQUqD-0000000BhWA-3SsF;
-	Fri, 22 May 2026 18:43:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:Message-ID:Date:
-	Subject:Cc:To:From:Reply-To:Content-Type:In-Reply-To:References;
-	bh=CnSgnNA0hMubCrJhiT7jVUAm7Vyf++O7TFQWPZMuzJA=; b=p2ekR4DKpYWIAobDNwopGJBeGQ
-	D/Kh6/wKWBwyxMcJwp1ZgBj4gK5AIFZfN1aulnX1Z8w4hSD9YCkFwpEVs2JeuKrROdJP6ek94el1f
-	W9oUzwsUSXvp4ZNHvNeA7Q5dpIATU0aHOkGOc71MWOCsjkxYBMFWHJCQvquGo6kOY6LwA/82JUv3g
-	Pv1hWCQ6L1V5vjkEEvQTvJOXfiMnxv93r2GUcqf4lNHPuZrSp8y0g15ov4tC5vUPUAh+xFMZXbMNF
-	AepjagtA8rzxG0r1GfX9MpccglvI2Fk4i1UlMJK3YLbXpd+YRX2d6fJTwVccj/EsYz00+hkFC8QPL
-	f3c9QZrQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: ulfh@kernel.org,
-	shawn.lin@rock-chips.com,
-	jh80.chung@samsung.com
-Cc: heiko@sntech.de,
-	linux-mmc@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH] mmc: dw_mmc-rockchip: Add missing private data for very old controllers
-Date: Fri, 22 May 2026 20:43:07 +0200
-Message-ID: <20260522184307.2979579-1-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.3
+	id 1wQVKq-0000000BkNb-33KM;
+	Fri, 22 May 2026 19:15:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1779477304; x=1811013304;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=3IfPthyDl2oPPglM9oqDGvx1An2T/XqIOjxgRfcIt3I=;
+  b=N7B0+UW4NId10hczx9hBHn33/GgXaCHsPuq1D8ftkyJnf7KMXcx9Qk0i
+   +SstgJS1ermYWuGiu1yazpvRYHDBjtvXbKV+V/qVcvFQQ/nWQ2KF87PXg
+   476oMpJF0f26r0ELe9t4FjgkHcLRkwn2poaBh0HD7m33+LPgvxuCUVjXw
+   CouVw15bWU0QIWfjYqukQK8LKik7pKDYeRndijqVUyJv1XFRpynb5vqVN
+   l66MhWcZpw3TXG9JfRixgB8bNR6dRtPTA6TpuJS4dVajlC0qR4Ydtku4G
+   ZVAJLNRio8CxRlKa4/RINQmojVUDWxZTtM7fZOK3pivaSIghtBoj8gy7J
+   w==;
+X-CSE-ConnectionGUID: eynAzArWSFuFBh4Ydf422A==
+X-CSE-MsgGUID: TuiaywdnTC6yTEcOcIIuoQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11794"; a="91522275"
+X-IronPort-AV: E=Sophos;i="6.24,162,1774335600"; 
+   d="scan'208";a="91522275"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 May 2026 12:13:00 -0700
+X-CSE-ConnectionGUID: 7NpFBSNpQWaxr5HTnm4f4A==
+X-CSE-MsgGUID: J5AfsVnqQKOwWRpPLh2Bsg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.24,162,1774335600"; 
+   d="scan'208";a="245281652"
+Received: from pgcooper-mobl3.ger.corp.intel.com (HELO localhost) ([10.245.245.71])
+  by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 22 May 2026 12:12:53 -0700
+Date: Fri, 22 May 2026 22:12:47 +0300
+From: Ville =?iso-8859-1?Q?Syrj=E4l=E4?= <ville.syrjala@linux.intel.com>
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
+	Rodrigo Siqueira <siqueira@igalia.com>,
+	Alex Deucher <alexander.deucher@amd.com>,
+	Christian =?iso-8859-1?Q?K=F6nig?= <christian.koenig@amd.com>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Sandy Huang <hjc@rock-chips.com>,
+	Heiko =?iso-8859-1?Q?St=FCbner?= <heiko@sntech.de>,
+	Andy Yan <andy.yan@rock-chips.com>,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Rob Herring <robh@kernel.org>, Jonathan Corbet <corbet@lwn.net>,
+	Shuah Khan <skhan@linuxfoundation.org>,
+	Daniel Stone <daniel@fooishbar.org>, kernel@collabora.com,
+	amd-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, intel-gfx@lists.freedesktop.org,
+	intel-xe@lists.freedesktop.org, linux-doc@vger.kernel.org,
+	wayland-devel@lists.freedesktop.org
+Subject: Re: [PATCH v15 11/28] drm/i915/hdmi: Add YCBCR444 handling for sink
+ formats
+Message-ID: <ahCqmuF7_LywzRGP@intel.com>
+References: <20260522-color-format-v15-0-21fb136c9df2@collabora.com>
+ <20260522-color-format-v15-11-21fb136c9df2@collabora.com>
 MIME-Version: 1.0
+Content-Disposition: inline
+In-Reply-To: <20260522-color-format-v15-11-21fb136c9df2@collabora.com>
+X-Patchwork-Hint: comment
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_114325_864108_9BFA87F1 
-X-CRM114-Status: GOOD (  12.74  )
+X-CRM114-CacheID: sfid-20260522_121504_807903_5B5F9692 
+X-CRM114-Status: GOOD (  24.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,73 +112,129 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The really old controllers (rk2928, rk3066, rk3188) do not support UHS
-speeds at all, and thus never handled phase data.
+On Fri, May 22, 2026 at 02:32:02PM +0200, Nicolas Frattaroli wrote:
+> In anticipation of userspace being able to explicitly select supported
+> sink formats, add handling of the YCBCR444 sink format. The AUTO path
+> does not choose this format, but with explicit format selection added to
+> the driver, it becomes a possibility.
+> =
 
-For that reason it never had a parse_dt callback and no driver private
-data at all.
+> Check for YCBCR444 support on the sink in sink_bpc_possible, and on the
+> source and sink in sink_format_valid.
+> =
 
-Commit ff6f0286c896 ("mmc: dw_mmc-rockchip: Add memory clock auto-gating
-support") makes the private data sort of mandatory, because the init
-function checks whether phases are configured internally or through the
-clock controller.
+> Acked-by: Daniel Stone <daniel@fooishbar.org>
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> ---
+>  drivers/gpu/drm/i915/display/intel_hdmi.c | 32 +++++++++++++++++++++++++=
+++++++
+>  1 file changed, 32 insertions(+)
+> =
 
-This results in the old SoCs then experiencing NULL-pointer dereferences
-when they try to access that private-data struct.
+> diff --git a/drivers/gpu/drm/i915/display/intel_hdmi.c b/drivers/gpu/drm/=
+i915/display/intel_hdmi.c
+> index 9076c2b176ec..97cb321e6568 100644
+> --- a/drivers/gpu/drm/i915/display/intel_hdmi.c
+> +++ b/drivers/gpu/drm/i915/display/intel_hdmi.c
+> @@ -1966,6 +1966,8 @@ static bool intel_hdmi_sink_bpc_possible(struct drm=
+_connector *_connector,
+>  =
 
-While we could have if (priv) conditionals in all places, it's way less
-cluttery to just give the old types their private-data struct.
+>  		if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR420)
+>  			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_36;
+> +		else if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR444)
+> +			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_36;
+>  		else
+>  			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_36;
+>  	case 10:
+> @@ -1974,6 +1976,8 @@ static bool intel_hdmi_sink_bpc_possible(struct drm=
+_connector *_connector,
+>  =
 
-Fixes: ff6f0286c896 ("mmc: dw_mmc-rockchip: Add memory clock auto-gating support")
-Cc: stable@vger.kernel.org
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- drivers/mmc/host/dw_mmc-rockchip.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+>  		if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR420)
+>  			return hdmi->y420_dc_modes & DRM_EDID_YCBCR420_DC_30;
+> +		else if (sink_format =3D=3D INTEL_OUTPUT_FORMAT_YCBCR444)
+> +			return info->edid_hdmi_ycbcr444_dc_modes & DRM_EDID_HDMI_DC_30;
+>  		else
+>  			return info->edid_hdmi_rgb444_dc_modes & DRM_EDID_HDMI_DC_30;
+>  	case 8:
+> @@ -2021,6 +2025,27 @@ intel_hdmi_mode_clock_valid(struct drm_connector *=
+_connector, int clock,
+>  	return status;
+>  }
+>  =
 
-diff --git a/drivers/mmc/host/dw_mmc-rockchip.c b/drivers/mmc/host/dw_mmc-rockchip.c
-index c6eece4ec3fd..75c82ff20f17 100644
---- a/drivers/mmc/host/dw_mmc-rockchip.c
-+++ b/drivers/mmc/host/dw_mmc-rockchip.c
-@@ -441,6 +441,22 @@ static int dw_mci_common_parse_dt(struct dw_mci *host)
- 	return 0;
- }
- 
-+static int dw_mci_rk2928_parse_dt(struct dw_mci *host)
-+{
-+	struct dw_mci_rockchip_priv_data *priv;
-+	int err;
-+
-+	err = dw_mci_common_parse_dt(host);
-+	if (err)
-+		return err;
-+
-+	priv = host->priv;
-+
-+	priv->internal_phase = false;
-+
-+	return 0;
-+}
-+
- static int dw_mci_rk3288_parse_dt(struct dw_mci *host)
- {
- 	struct dw_mci_rockchip_priv_data *priv;
-@@ -514,6 +530,7 @@ static int dw_mci_rockchip_init(struct dw_mci *host)
- 
- static const struct dw_mci_drv_data rk2928_drv_data = {
- 	.init			= dw_mci_rockchip_init,
-+	.parse_dt		= dw_mci_rk2928_parse_dt,
- };
- 
- static const struct dw_mci_drv_data rk3288_drv_data = {
--- 
-2.47.3
+> +/**
+> + * intel_hdmi_can_ycbcr444 - Check whether connector can output YCbCr444
+> + * @connector: pointer to &struct intel_connector to check
+> + *
+> + * Checks whether the hardware that backs @connector is capable of outpu=
+tting
+> + * YCbCr444 video over HDMI. Does not check whether currently connected =
+sink is
+> + * capable of receiving it.
+> + *
+> + * Returns: %true if source supports outputting YCbCr444, %false otherwi=
+se.
+> + */
 
+We don't need kernel docs for internal stuff.
+
+> +static bool
+> +intel_hdmi_can_ycbcr444(struct intel_connector *connector)
+> +{
+> +	const struct intel_display *display =3D to_intel_display(connector);
+> +
+> +	if (HAS_GMCH(display))
+> +		return true;
+
+Exactly the wrong way around.
+
+> +
+> +	return false;
+> +}
+> +
+>  static enum drm_mode_status
+>  intel_hdmi_sink_format_valid(struct intel_connector *connector,
+>  			     const struct drm_display_mode *mode,
+> @@ -2038,6 +2063,13 @@ intel_hdmi_sink_format_valid(struct intel_connecto=
+r *connector,
+>  =
+
+>  		return MODE_OK;
+
+I would put the 444 stuff here between 420 and RGB. Then we logically go
+from YCbCr420 -> YCbCr444 -> RGB when reading the code.
+
+>  	case INTEL_OUTPUT_FORMAT_RGB:
+> +		return MODE_OK;
+> +	case INTEL_OUTPUT_FORMAT_YCBCR444:
+> +		if (!intel_hdmi_can_ycbcr444(connector))
+> +			return MODE_BAD;
+
+We're missing the has_hdmi_sink check as well.
+
+> +		if (!(info->color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444)))
+> +			return MODE_BAD;
+> +
+>  		return MODE_OK;
+>  	default:
+>  		MISSING_CASE(sink_format);
+> =
+
+> -- =
+
+> 2.54.0
+
+-- =
+
+Ville Syrj=E4l=E4
+Intel
 
 _______________________________________________
 Linux-rockchip mailing list
