@@ -4,74 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57D27CD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 11:42:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BA2CCD5BB0
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 12:03:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kqqcJXVmGQZnTpneZ2//K1qQsRRafBXOcFUJyAPxCjk=; b=ZvRjMyMqGm83OL
-	kSsi10XR+UCt5B+6BAY/njqrEmDqVo7uNK51ws0tM1lcB4Jko72LgKk7GBU0YBMpWDSopnHpvMUiX
-	V1XTuCODmns6cFKeVuNkRDD8LughaMRATtmbY4Eau5H4nsb0PV7LJgWi2fTri84hZEFYLpOoJKrA/
-	6TrGn5k6Vtay4LKu1QcR3asVm1V6IeDN7wpMvXE+oXu15nabENA9kCdPyTUPfGn3VOf/Kl0aboq5y
-	SQm8NdRjYN45/JimJkRYuqOtLQlhQfHxATRiAGK5S6doEhNirLuKNxL4jYpgaUZwfwuUT19gM+NDS
-	YI9NNz1SuFEiGXSYD7Ww==;
+	List-Owner; bh=LY3PZJAURVWu4Zxti/X505HEhRRjfWvVLY5MZpunjWo=; b=k9xbtRZ/ylL6OE
+	AjJ9D7677CUyDD9iXTiCOkb/yYl+cXnngJ4KTYq25oDtZ7LKmv6gBrcCVMqMiaevf5YzHXZvF5Kjd
+	ea95tCQPBFInLObbUVm33abrjmpPg299A4HkUAbWjM+rqK8vc8HJo6aV3uFtNh3y38ES0P8I+UhLD
+	Nu6A/hZFQbjOlORnXyoOUtWSknbYmq0LQf054a6aUckz+HakfGRKpGm4/O3vHCV0UDzMRSZtKwWEl
+	QB8TSlj0MaIXWRtziIe+sYg1h81zpg0exdLgkdT9uxwuKXsBzo4SKrOd0wCXqPKsZwtR1aO/YW0W2
+	M8Kutp2lUgNCwAwry1QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQOHE-0000000Af2d-167D;
-	Fri, 22 May 2026 11:42:52 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wQOas-0000000AiJV-0kZi;
+	Fri, 22 May 2026 12:03:10 +0000
+Received: from www537.your-server.de ([188.40.3.216])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQOHB-0000000Af1d-1gjL;
-	Fri, 22 May 2026 11:42:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1779450166;
-	bh=eEnxhVP7h9oNVDGsBLFcwZgYtanJdNFLIjNzXRvxveg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pQIbBUKfLUUcBeUIyJLFkWg85GrWbe3+dbaliKFQTozycasoD6CoVrro0PxJL8Rse
-	 pKiRSM/4ODqb/IYIBpQIT/uar68Rg3pWgbECr1h+oNU+gYPzfLvHxiQimyUkfM28Cq
-	 FgjsLmQE9E6g9aC1SHo0NN1rrFUr3WWwuzVgVeh57CRfOtvPDmdUonIolcuxwqEmNy
-	 nznWdddZfPNEZl7JQ6uwKqOxCR5JZskhIc9Hh/6dew0r9X9niUqiDhIoWY6m0ir+l9
-	 JD8ycgKgs+5IGbNuHbCo5bulYhm4FATTK2jpvwKE/9R1CY86LMYuMeRZq04gxhZ5eu
-	 bbkR3rq9UMdzw==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B903917E0550;
-	Fri, 22 May 2026 13:42:45 +0200 (CEST)
-Message-ID: <64a21a69-d99b-4ae3-9477-dd0f6b37f689@collabora.com>
-Date: Fri, 22 May 2026 14:42:45 +0300
+	id 1wQOap-0000000AiDe-43Th;
+	Fri, 22 May 2026 12:03:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=ew.tq-group.com; s=default2602; h=Content-Type:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender
+	:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
+	bh=npoaRceVSKcBIA7XnqArtD5X9kOzz4sAZEkny7h7tJ4=; b=hQLcA1R414V+btOIJDOD+tGBES
+	uDEs/ZrExwzWFrdgA2r4itlz8ocKj3qVx/Px03FRFevQRRMraNv3f7W2bvjBN5kFIOJGeb8k7IBXZ
+	6LsHV3nrbRV68SeA96efVg2L53IrdTQBf+ImquXkal8G8iu4FOBfNKYxhu7b5kXN5A4k6B/EG2y0j
+	A2SlkcEx8m3sDfRMwjkN7Q/kmEW5OifhXxKxD9djBPHAr4PZ3yNKA/6oGESvfHi4Gm9OmH4ztnnRQ
+	29d2UdC5J1Q//bqZXoOXiBdQk8M5YpAoUZEm98OEJBD/d6E0QF0umpnWhFoj8xl6vPFKe6cX/3cY2
+	L34qoIfQ==;
+Received: from sslproxy08.your-server.de ([78.47.166.52])
+	by www537.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.96.2)
+	(envelope-from <alexander.stein@ew.tq-group.com>)
+	id 1wQOag-000FcQ-0J;
+	Fri, 22 May 2026 14:02:58 +0200
+Received: from localhost ([127.0.0.1])
+	by sslproxy08.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim 4.96)
+	(envelope-from <alexander.stein@ew.tq-group.com>)
+	id 1wQOae-000ErM-1x;
+	Fri, 22 May 2026 14:02:57 +0200
+From: Alexander Stein <alexander.stein@ew.tq-group.com>
+To: Michael Riesch <michael.riesch@collabora.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Heiko Stuebner <heiko@sntech.de>,
+ Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
+ Frank Li <frank.li@nxp.com>, Sakari Ailus <sakari.ailus@linux.intel.com>,
+ Bryan O'Donoghue <bryan.odonoghue@linaro.org>,
+ Mehdi Djait <mehdi.djait@linux.intel.com>,
+ Hans Verkuil <hverkuil+cisco@kernel.org>,
+ "G.N. Zhou (OSS)" <guoniu.zhou@oss.nxp.com>,
+ "G.N. Zhou (OSS)" <guoniu.zhou@oss.nxp.com>,
+ "G.N. Zhou (OSS)" <guoniu.zhou@oss.nxp.com>
+Cc: "linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ "imx@lists.linux.dev" <imx@lists.linux.dev>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-rockchip@lists.infradead.org" <linux-rockchip@lists.infradead.org>,
+ "G.N. Zhou (OSS)" <guoniu.zhou@oss.nxp.com>
+Subject: Re: [PATCH v4 4/6] media: synopsys: Add PHY stopstate wait for i.MX93
+Date: Fri, 22 May 2026 14:02:56 +0200
+Message-ID: <118820958.nniJfEyVGO@steina-w>
+Organization: TQ-Systems GmbH
+In-Reply-To: <AS8PR04MB9080844E610F8E8012647B39FA0F2@AS8PR04MB9080.eurprd04.prod.outlook.com>
+References: <20260519-csi2_imx95-v4-0-84ea4bb78a88@oss.nxp.com>
+ <3606153.44csPzL39Z@steina-w>
+ <AS8PR04MB9080844E610F8E8012647B39FA0F2@AS8PR04MB9080.eurprd04.prod.outlook.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 04/22] drm/display: scdc_helper: Add HDMI 2.0
- scrambling management helpers
-To: Maxime Ripard <mripard@kernel.org>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Sandy Huang <hjc@rock-chips.com>,
- =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
- Andy Yan <andy.yan@rock-chips.com>, Luca Ceresoli
- <luca.ceresoli@bootlin.com>, Daniel Stone <daniels@collabora.com>,
- kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org
-References: <20260520-dw-hdmi-qp-scramb-v6-0-24b74603b782@collabora.com>
- <20260520-dw-hdmi-qp-scramb-v6-4-24b74603b782@collabora.com>
- <20260521-chestnut-harrier-of-enhancement-2bcfa2@penduick>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <20260521-chestnut-harrier-of-enhancement-2bcfa2@penduick>
+X-Virus-Scanned: Clear (ClamAV 1.4.3/28008/Fri May 22 08:24:46 2026)
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_044249_605131_65CB2FF9 
-X-CRM114-Status: GOOD (  40.32  )
+X-CRM114-CacheID: sfid-20260522_050308_237015_9F3918C3 
+X-CRM114-Status: GOOD (  29.48  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,253 +94,119 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/21/26 11:10 AM, Maxime Ripard wrote:
-> On Wed, May 20, 2026 at 09:38:15PM +0300, Cristian Ciocaltea wrote:
->> Add drm_scdc_start_scrambling(), drm_scdc_stop_scrambling() and
->> drm_scdc_sync_status() helpers to manage the full lifecycle of HDMI 2.0
->> SCDC scrambling on both source and sink sides.
->>
->> drm_scdc_start_scrambling() configures SCDC scrambling and high TMDS
->> clock ratio and starts a periodic work item that monitors the sink's
->> SCDC scrambling status, retrying setup when the sink loses state.
->>
->> drm_scdc_stop_scrambling() tears down scrambling on both sides and
->> cancels the monitoring work.
->>
->> drm_scdc_sync_status() triggers a CRTC reset on reconnection to restore
->> SCDC state lost during sink disconnects within an active display
->> pipeline.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->>  drivers/gpu/drm/display/drm_scdc_helper.c | 235 +++++++++++++++++++++++++++++-
->>  include/drm/display/drm_scdc_helper.h     |   6 +-
->>  2 files changed, 236 insertions(+), 5 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/display/drm_scdc_helper.c b/drivers/gpu/drm/display/drm_scdc_helper.c
->> index cb6632346aad..5bacb886d373 100644
->> --- a/drivers/gpu/drm/display/drm_scdc_helper.c
->> +++ b/drivers/gpu/drm/display/drm_scdc_helper.c
->> @@ -21,16 +21,22 @@
->>   * DEALINGS IN THE SOFTWARE.
->>   */
->>  
->> +#include <linux/delay.h>
->>  #include <linux/export.h>
->>  #include <linux/i2c.h>
->> +#include <linux/minmax.h>
->>  #include <linux/slab.h>
->> -#include <linux/delay.h>
->>  
->> -#include <drm/display/drm_scdc_helper.h>
->> +#include <drm/drm_atomic.h>
->> +#include <drm/drm_atomic_helper.h>
->> +#include <drm/drm_bridge_helper.h>
->>  #include <drm/drm_connector.h>
->> +#include <drm/drm_crtc.h>
->>  #include <drm/drm_device.h>
->>  #include <drm/drm_print.h>
->>  
->> +#include <drm/display/drm_scdc_helper.h>
->> +
->>  /**
->>   * DOC: scdc helpers
->>   *
->> @@ -50,10 +56,14 @@
->>   * has to track the connector status changes using interrupts and
->>   * restore the SCDC status. The typical solution for this is to trigger an
->>   * empty modeset in drm_connector_helper_funcs.detect_ctx(), like what vc4 does
->> - * in vc4_hdmi_reset_link().
->> + * in vc4_hdmi_reset_link(). Alternatively, use the HDMI connector framework
->> + * which ensures drm_scdc_sync_status() is called in the context of
->> + * drm_atomic_helper_connector_hdmi_hotplug_ctx().
->>   */
->>  
->> -#define SCDC_I2C_SLAVE_ADDRESS 0x54
->> +#define SCDC_I2C_SLAVE_ADDRESS		0x54
->> +#define SCDC_MAX_SOURCE_VERSION		0x1
->> +#define SCDC_STATUS_POLL_DELAY_MS	3000
->>  
->>  #define drm_scdc_dbg(connector, fmt, ...)					\
->>  	drm_dbg_kms((connector)->dev, "[CONNECTOR:%d:%s] " fmt,			\
->> @@ -270,3 +280,220 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector,
->>  	return true;
->>  }
->>  EXPORT_SYMBOL(drm_scdc_set_high_tmds_clock_ratio);
->> +
->> +static int drm_scdc_setup_scrambler(struct drm_connector *connector)
->> +{
->> +	bool done;
->> +
->> +	done = drm_scdc_set_high_tmds_clock_ratio(connector, true);
->> +	if (!done)
->> +		return -EIO;
->> +
->> +	done = drm_scdc_set_scrambling(connector, true);
->> +	if (!done)
->> +		return -EIO;
->> +
->> +	schedule_delayed_work(&connector->hdmi.scdc_work,
->> +			      msecs_to_jiffies(SCDC_STATUS_POLL_DELAY_MS));
->> +	return 0;
->> +}
-> 
-> There's a very tight deadline in the spec to enable the scrambler
-> relative to the video. Debouncing (I assume?) for three seconds break
-> it. Drivers might not be able to do better, but it's really not
-> something we should entertain at the framework level and we should call
-> the callback straight-away.
-
-In drm_scdc_start_scrambling() we call this function directly, the callback is
-only meant to retry the call if the sink didn't set the scrambling for whatever
-reason.
-
-Or do you mean we shouldn't wait that long before retrying? vc4 uses 1s, I got
-some mixed results in a few occasions and experimented with increased values,
-but I'll revert or we can adjust to whatever you think it'd be more sensible.
-
->> +static void drm_scdc_monitor_scrambler(struct drm_connector *connector)
->> +{
->> +	if (READ_ONCE(connector->hdmi.scrambler_enabled) &&
->> +	    !drm_scdc_get_scrambling_status(connector))
->> +		drm_scdc_setup_scrambler(connector);
->> +}
->> +
->> +static int drm_scdc_reset_crtc(struct drm_connector *connector,
->> +			       struct drm_modeset_acquire_ctx *ctx)
->> +{
->> +	struct drm_crtc *crtc;
->> +	u8 config;
->> +	int ret;
->> +
->> +	if (!ctx || !connector->state)
->> +		return 0;
->> +
->> +	crtc = connector->state->crtc;
->> +	if (!crtc || !crtc->state || !crtc->state->active)
->> +		return 0;
->> +
->> +	ret = drm_scdc_readb(connector->ddc, SCDC_TMDS_CONFIG, &config);
->> +	if (ret) {
->> +		drm_scdc_dbg(connector, "Failed to read TMDS config: %d\n", ret);
->> +		return ret;
->> +	}
->> +
->> +	if ((config & SCDC_SCRAMBLING_ENABLE) &&
->> +	    (config & SCDC_TMDS_BIT_CLOCK_RATIO_BY_40))
->> +		return 0;
->> +
->> +	/*
->> +	 * Reset the CRTC to suspend TMDS transmission, conforming to HDMI 2.0
->> +	 * spec which requires scrambled data not to be sent before the sink is
->> +	 * configured, and TMDS clock to be suspended while changing the clock
->> +	 * ratio.  The disable/re-enable cycle triggered by the reset should
->> +	 * call drm_scdc_start_scrambling() during re-enable, properly
->> +	 * configuring the sink before data transmission resumes.
->> +	 */
->> +
->> +	drm_scdc_dbg(connector, "Resetting CRTC to restore SCDC status\n");
->> +
->> +	ret = drm_atomic_helper_reset_crtc(crtc, ctx);
->> +	if (ret && ret != -EDEADLOCK)
->> +		drm_scdc_dbg(connector, "Failed to reset CRTC: %d\n", ret);
->> +
->> +	return ret;
->> +}
-> 
-> locking is a bit more involved than that, I'd suggest to take
-> vc4_hdmi_reset_link() and turn it into a helper.
-
-The current non-NULL ctx call chain goes through drm_helper_probe_detect_ctx()
--> .detect_ctx -> ... -> drm_scdc_sync_status() -> drm_scdc_reset_crtc(), and
-the connection mutex is already held by drm_helper_probe_detect() in that path. 
-
-I'll make the helper safe under any caller by taking the connection_mutex via
-the supplied ctx, since re-acquiring it with the same context when it is already
-held should be a no-op.  Moreover, the racy crtc->state->active early out could
-be dropped: when the CRTC is inactive, drm_atomic_helper_reset_crtc() should
-result in a no-op commit anyway, so the check is at best an optimisation. 
-This mirrors what drm_bridge_helper_reset_crtc() does.
-
->> +/**
->> + * drm_scdc_start_scrambling - activate scrambling and monitor SCDC status
->> + * @connector: connector
->> + *
->> + * Enables scrambling and high TMDS clock ratio on both source and sink sides.
->> + * Additionally, use a delayed work item to monitor the scrambling status on
->> + * the sink side and retry the operation, as some displays refuse to set the
->> + * scrambling bit right away.
->> + *
->> + * Returns:
->> + * Zero if scrambling is set successfully, an error code otherwise.
->> + */
->> +int drm_scdc_start_scrambling(struct drm_connector *connector)
->> +{
->> +	struct drm_display_info *info = &connector->display_info;
->> +	struct drm_connector_hdmi *hdmi = &connector->hdmi;
->> +	int ret;
->> +	u8 ver;
->> +
->> +	if (!hdmi->funcs ||
->> +	    !hdmi->funcs->scrambler_src_enable ||
->> +	    !hdmi->funcs->scrambler_src_disable) {
->> +		drm_scdc_dbg(connector, "Function not implemented, bailing.\n");
->> +		return -EINVAL;
->> +	}
-> 
-> This case shouldn't be a thing. The driver must not probe if it's not set.
-
-When advertising DRM_BRIDGE_OP_HDMI_SCRAMBLER, drm_bridge_connector_init() will
-fail if the scrambler hooks are not provided.  However, the check would be still
-useful if one missed to set DRM_BRIDGE_OP_HDMI_SCRAMBLER before adding the
-bridge.  I'll try to also handle non-bridge usecases - pls see the proposal
-below.
-
->> +	if (!info->is_hdmi ||
->> +	    !info->hdmi.scdc.supported ||
->> +	    !info->hdmi.scdc.scrambling.supported) {
->> +		drm_scdc_dbg(connector, "Sink doesn't support scrambling.\n");
->> +		return -EINVAL;
->> +	}
-> 
-> You should also compute whether we actually need to enable the scrambler
-> here, based on the mode, format and bpc.
-
-I'm thinking to mirror the existing supported_formats / ycbcr_420_allowed
-plumbing:
-
-- Add a 'scrambling_supported' flag to struct drm_connector_hdmi and let
-  drm_bridge_connector_init() to propagates it from the HDMI bridge before
-  calling drmm_connector_hdmi_init().
-
-- drmm_connector_hdmi_init() validates that the capability is consistent with
-  the provided callbacks: when scrambling_supported is true, both
-  scrambler_src_enable() and scrambler_src_disable() must be provided.
-
-- Add a 'scrambling_needed' flag to struct drm_connector_hdmi_state to be set by
-  hdmi_compute_clock() based on the TMDS character rate and the source/sink
-  scrambling capabilities.
-
-- Ensure hdmi_clock_valid() rejects modes having TMDS character rate exceeding
-  340 MHz when either the source or the sink lacks the required SCDC scrambling
-  capability.
-
-> I'd also like to see what a !bridge user of this would look like. The
-> vc4 driver has all the infrastructure you need already, so converting it
-> to it would be great.
-
-Sure, will do.  I've just ordered a RPI5 board, so I should be able to properly
-validate this.
-
-Thanks,
-Cristian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+SGksCgpBbSBGcmVpdGFnLCAyMi4gTWFpIDIwMjYsIDAzOjU4OjU2IENFU1Qgc2NocmllYiBHLk4u
+IFpob3UgKE9TUyk6Cj4gPiA+IFRoYW5rcyBmb3IgdGVzdGluZy4gUmVnYXJkaW5nIHRoZSBsYW5l
+IHN0b3Agc3RhdGUgZXJyb3Igb24gaS5NWDkzIHdpdGgKPiA+IGlteDMyNzoKPiA+ID4KPiA+ID4g
+VGhpcyBlcnJvciBpbmRpY2F0ZXMgdGhlIENTSS0yIGxhbmVzIGFyZSBub3QgaW4gTFAtMTEgKHN0
+b3ApIHN0YXRlCj4gPiA+IHdoZW4gZXhwZWN0ZWQuIFBsZWFzZSBjaGVjazoKPiA+ID4KPiA+ID4g
+MSkgVmVyaWZ5IHRoZSBzZW5zb3IgUEhZIGlzIGluIExQLTExIHN0YXRlIGJlZm9yZSByZXR1cm5p
+bmcgZnJvbSB0aGUgc2Vuc29yJ3MKPiA+ID4gICAgc19zdHJlYW0oMSkgY2FsbC4gVGhlIENTSS0y
+IHJlY2VpdmVyIGV4cGVjdHMgbGFuZXMgdG8gYmUgaW4gc3RvcCBzdGF0ZQo+ID4gPiAgICBpbml0
+aWFsbHkuCj4gPiAKPiA+IFdlbGwsIHRoaXMgbWlnaHQgYmUgdHJpY2t5IGFzIEkgZG9uJ3QgaGF2
+ZSBELVBIWSBjYXBhYmxlIHNjb3Blcy4KPiA+IEkgY2FuIHN1Y2Nlc3NmdWxseSB1c2UgdGhpcyBz
+ZW5zb3Igb24gYSBpbXg4bXAsIHNvIEkgYW0gZXhwZWN0aW5nIHRoaXMgdG8gYmUKPiA+IG9rYXku
+Cj4gPiAKPiA+ID4gMikgQ2hlY2sgaWYgdGhlIGlteDMyNyBkcml2ZXIgaGFzIGEgZGVsYXkgYmV0
+d2VlbiBzdGFydGluZyB0aGUgc3RyZWFtIGFuZAo+ID4gPiAgICByZXR1cm5pbmcgZnJvbSBzX3N0
+cmVhbSgpLiBJZiB0aGUgc2Vuc29yIHRyYW5zaXRpb25zIFBIWSBvdXQgb2YgTFAtMTEKPiA+ID4g
+ICAgc3RhdGUgZHVyaW5nIHRoaXMgZGVsYXksIHRoZSBDU0kgZHJpdmVyJ3MgbGFuZSBzdGF0ZSBj
+aGVjayB3aWxsIGZhaWwKPiA+ID4gICAgd2hlbiBpdCBydW5zIGxhdGVyLiBUaGUgc2Vuc29yIHNo
+b3VsZCByZW1haW4gaW4gTFAtMTEgdW50aWwgdGhlIENTSQo+ID4gPiAgICBjb250cm9sbGVyIGNv
+bXBsZXRlcyBpdHMgaW5pdGlhbGl6YXRpb24uCj4gPiAKPiA+IEluIGlteDI5MF9zZXRfc3RyZWFt
+KCkgYW5kIHN1YnNlcXVlbnRseSBpbXgyOTBfc3RhcnRfc3RyZWFtaW5nKCkgc2V0dGluZwo+ID4g
+SU1YMjkwX1hNU1RBIHN0YXJ0cyB0aGUgc3RyZWFtLiBJIGV4cGVjdCB0aGlzIGlzIHRoZSBwb2lu
+dCB3aGVuIHRoZSBzZW5zb3JzCj4gPiBzd2l0Y2hlcyBmcm9tIExQLTExIHRvIEhTLiBCdXQgYWdh
+aW4sIEkgY2FuJ3QgdmVyaWZ5Lgo+IAo+IEFzIG1lbnRpb25lZCBpbiAjMiwgSSByZXZpZXdlZCBk
+cml2ZXJzL21lZGlhL2kyYy9pbXgyOTAuYyBhbmQgaWRlbnRpZmllZCBhIDMwbXMKPiBkZWxheSB0
+aGF0IGFwcGVhcnMgdG8gYmUgdGhlIHJvb3QgY2F1c2Ugb2YgdGhpcyBpc3N1ZS4KPiAKPiBUaGUg
+cHJvYmxlbSBvY2N1cnMgYmVjYXVzZToKPiAKPiBUaGUgc2Vuc29yIGV4aXRzIExQLTExIHN0YXRl
+IGFuZCB0cmFuc2l0aW9ucyB0byBIUyBtb2RlIGFmdGVyIElNWDI5MF9YTVNUQSBpcyB3cml0dGVu
+Cj4gVGhlIDMwbXMgZGVsYXkgaW4gc19zdHJlYW0oKSBjYXVzZXMgdGhlIGZ1bmN0aW9uIHRvIHJl
+dHVybiBsYXRlCj4gQnkgdGhlIHRpbWUgdGhlIENTSSBjb250cm9sbGVyIHBlcmZvcm1zIGl0cyBs
+YW5lIHN0YXRlIGNoZWNrLCB0aGUgc2Vuc29yIGhhcyBhbHJlYWR5IHN3aXRjaGVkCj4gZnJvbSBM
+UC0xMSB0byBIUyBtb2RlLCBjYXVzaW5nIHRoZSBjaGVjayB0byBmYWls44CCCgpUaGlzIHNvdW5k
+cyB3cm9uZywgc2VlIGJlbG93LgoKPiAKPiBQcm9wb3NlZCBmaXg6Cj4gCj4gZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvbWVkaWEvaTJjL2lteDI5MC5jIGIvZHJpdmVycy9tZWRpYS9pMmMvaW14MjkwLmMK
+PiBpbmRleCAyMWNiYzgxY2IyZWQuLjUxOWFhMzM2MjQ5YSAxMDA2NDQKPiAtLS0gYS9kcml2ZXJz
+L21lZGlhL2kyYy9pbXgyOTAuYwo+ICsrKyBiL2RyaXZlcnMvbWVkaWEvaTJjL2lteDI5MC5jCj4g
+QEAgLTEwNTksNyArMTA1OSw2IEBAIHN0YXRpYyBpbnQgaW14MjkwX3N0YXJ0X3N0cmVhbWluZyhz
+dHJ1Y3QgaW14MjkwICppbXgyOTAsCj4gIAo+ICAgICAgICAgY2NpX3dyaXRlKGlteDI5MC0+cmVn
+bWFwLCBJTVgyOTBfU1RBTkRCWSwgMHgwMCwgJnJldCk7Cj4gIAo+IC0gICAgICAgbXNsZWVwKDMw
+KTsKPiAgCj4gICAgICAgICAvKiBTdGFydCBzdHJlYW1pbmcgKi8KPiAgICAgICAgIHJldHVybiBj
+Y2lfd3JpdGUoaW14MjkwLT5yZWdtYXAsIElNWDI5MF9YTVNUQSwgMHgwMCwgJnJldCk7Cj4gCj4g
+UmVtb3ZpbmcgdGhpcyBkZWxheSBhbGxvd3Mgc19zdHJlYW0oKSB0byByZXR1cm4gaW1tZWRpYXRl
+bHksIGdpdmluZyB0aGUgQ1NJIGNvbnRyb2xsZXIKPiB0aW1lIHRvIGNvbXBsZXRlIGl0cyBpbml0
+aWFsaXphdGlvbiBiZWZvcmUgdGhlIHNlbnNvciB0cmFuc2l0aW9ucyBQSFkgc3RhdGUuCj4gCj4g
+Q291bGQgeW91IHRlc3QgdGhpcyBwYXRjaCBhbmQgY29uZmlybSBpZiBpdCByZXNvbHZlcyB0aGUg
+bGFuZSBzdGF0ZSBjaGVjayBmYWlsdXJlPwoKUmVtb3ZpbmcgdGhlc2UgMzBtcyBkb2VzIG5vdCBm
+aXggdGhlIHByb2JsZW0uIEFjdHVhbGx5IHRoZSBkZWxheSBjaGFuZ2UgaXMKaGFyZGx5IG1lYXN1
+cmFibGUsIGFzIHRoZSBpMmMgdHJhbnNmZXIgdGFrZSBtdWNoIG1vcmUgdGltZS4gSSBhZGRlZCBh
+IG1lc3NhZ2UKZm9yIHN0YXJ0L2V4aXQgb2YgaW14MjkwX2VuYWJsZV9zdHJlYW1zKCkuIEp1c3Qg
+dGhlIHRyYW5zZmVycyB0YWtlID42MDBtcy4KCi0tODwtLQpbICAgNDAuNTA3MjczXSBwbGFuZSAw
+OiBieXRlc3BlcmxpbmU9Mzg0MCBzaXplaW1hZ2U9NDE0NzIwMApbICAgNDAuNTEyNjI4XSBteGMt
+aXNpIDRhZTQwMDAwLmlzaTogdmFsaWRhdGluZyBsaW5rICJjcm9zc2JhciI6MiAtPiAibXhjX2lz
+aS4wIjowClsgICA0MC41MTk5NDVdIG14Yy1pc2kgNGFlNDAwMDAuaXNpOiB2YWxpZGF0aW5nIHN0
+cmVhbSAiY3Jvc3NiYXIiOjI6MCAtPiAibXhjX2lzaS4wIjowOjAKWyAgIDQwLjUyNzc4OV0gbXhj
+LWlzaSA0YWU0MDAwMC5pc2k6IHZhbGlkYXRpbmcgbGluayAiZHctbWlwaS1jc2kycnggNGFlMDAw
+MDAubWlwaS1jc2kiOjEgLT4gImNyb3NzYmFyIjowClsgICA0MC41MzcxMDVdIG14Yy1pc2kgNGFl
+NDAwMDAuaXNpOiB2YWxpZGF0aW5nIHN0cmVhbSAiZHctbWlwaS1jc2kycnggNGFlMDAwMDAubWlw
+aS1jc2kiOjE6MCAtPiAiY3Jvc3NiYXIiOjA6MApbICAgNDAuNTQ2OTQwXSBteGMtaXNpIDRhZTQw
+MDAwLmlzaTogdmFsaWRhdGluZyBsaW5rICJpbXgzMjcgNC0wMDFhIjowIC0+ICJkdy1taXBpLWNz
+aTJyeCA0YWUwMDAwMC5taXBpLWNzaSI6MApbICAgNDAuNTU2NjgwXSBteGMtaXNpIDRhZTQwMDAw
+LmlzaTogdmFsaWRhdGluZyBzdHJlYW0gImlteDMyNyA0LTAwMWEiOjA6MCAtPiAiZHctbWlwaS1j
+c2kycnggNGFlMDAwMDAubWlwaS1jc2kiOjA6MApbICAgNDAuNTczMzMyXSBteGMtaXNpIDRhZTQw
+MDAwLmlzaTogZW5hYmxlIHN0cmVhbXMgImNyb3NzYmFyIjoyLzB4MQpbICAgNDAuNTc5NDQ2XSBt
+eGMtaXNpIDRhZTQwMDAwLmlzaTogY29sbGVjdF9zdHJlYW1zOiAiY3Jvc3NiYXIiOjI6IGZvdW5k
+IDB4MSBlbmFibGVkIDB4MApbICAgNDAuNTg3MzczXSBpbXgyOTAgNC0wMDFhOiBGcmFtZSBkZXNj
+cmlwdG9yIG9uIHBhZCAwLCB0eXBlIENTSS0yClsgICA0MC41OTMzOTBdIGlteDI5MCA0LTAwMWE6
+ICAgc3RyZWFtIDAsIGNvZGUgMHgzMDBmLCBsZW5ndGggMCwgZmxhZ3MgMHgwMDAwLCB2YyAwLCBk
+dCAweDJiClsgICA0MC42MDE0ODldIGR3LW1pcGktY3NpMnJ4IDRhZTAwMDAwLm1pcGktY3NpOiBG
+cmFtZSBkZXNjcmlwdG9yIG9uIHBhZCAxLCB0eXBlIENTSS0yClsgICA0MC42MDkxNDddIGR3LW1p
+cGktY3NpMnJ4IDRhZTAwMDAwLm1pcGktY3NpOiAgICAgICAgc3RyZWFtIDAsIGNvZGUgMHgzMDBm
+LCBsZW5ndGggMCwgZmxhZ3MgMHgwMDAwLCB2YyAwLCBkdCAweDJiClsgICA0MC42MTg4OTRdIG14
+Yy1pc2kgNGFlNDAwMDAuaXNpOiBlbmFibGUgc3RyZWFtcyAiZHctbWlwaS1jc2kycnggNGFlMDAw
+MDAubWlwaS1jc2kiOjEvMHgxClsgICA0MC42MjcwODJdIGR3LW1pcGktY3NpMnJ4IDRhZTAwMDAw
+Lm1pcGktY3NpOiBjb2xsZWN0X3N0cmVhbXM6ICJkdy1taXBpLWNzaTJyeCA0YWUwMDAwMC5taXBp
+LWNzaSI6MTogZm91bmQgMHgxIGVuYWJsZWQgMHgwClsgICA0MC42MzgxODRdIG14Yy1pc2kgNGFl
+NDAwMDAuaXNpOiBlbmFibGUgc3RyZWFtcyAiaW14MzI3IDQtMDAxYSI6MC8weDEKWyAgIDQwLjY0
+NDcyOF0gaW14MjkwIDQtMDAxYTogY29sbGVjdF9zdHJlYW1zOiBzdWItZGV2aWNlICJpbXgzMjcg
+NC0wMDFhIiBkb2VzIG5vdCBzdXBwb3J0IHN0cmVhbXMKWyAgIDQwLjY1MzQzMV0gaW14MjkwIDQt
+MDAxYTogaW14MjkwX2VuYWJsZV9zdHJlYW1zIHN0YXJ0ClsgICA0MS4yOTQ5NjddIGlteDI5MCA0
+LTAwMWE6IGlteDI5MF9lbmFibGVfc3RyZWFtcyBleGl0ClsgICA0MS4zMDEwNjRdIGR3LW1pcGkt
+Y3NpMnJ4IDRhZTAwMDAwLm1pcGktY3NpOiBsYW5lcyBhcmUgbm90IGluIHN0b3Agc3RhdGU6IDB4
+MCwgZXhwZWN0ZWQgMHgxMDAwMwpbICAgNDEuMzA5ODg0XSBteGMtaXNpIDRhZTQwMDAwLmlzaTog
+ZGlzYWJsZSBzdHJlYW1zICJpbXgzMjcgNC0wMDFhIjowLzB4MQpbICAgNDEuMzE2NTM0XSBpbXgy
+OTAgNC0wMDFhOiBjb2xsZWN0X3N0cmVhbXM6IHN1Yi1kZXZpY2UgImlteDMyNyA0LTAwMWEiIGRv
+ZXMgbm90IHN1cHBvcnQgc3RyZWFtcwpbICAgNDEuMzYxNDAxXSBteGMtaXNpIDRhZTQwMDAwLmlz
+aTogZW5hYmxlIHN0cmVhbXMgMToweDEgZmFpbGVkOiAtMTEwClsgICA0MS4zNjc2OTBdIG14Yy1p
+c2kgNGFlNDAwMDAuaXNpOiBmYWlsZWQgdG8gZW5hYmxlIHN0cmVhbXMgMHgxIG9uICdkdy1taXBp
+LWNzaTJyeCA0YWUwMDAwMC5taXBpLWNzaSc6MTogLTExMApbICAgNDEuMzc5ODU0XSBteGMtaXNp
+IDRhZTQwMDAwLmlzaTogZW5hYmxlIHN0cmVhbXMgMjoweDEgZmFpbGVkOiAtMTEwClsgICA0MS4z
+ODczMjVdIG14Yy1pc2kgNGFlNDAwMDAuaXNpOiBGYWlsZWQgdG8gZW5hYmxlIHBpcGUgMApbICAg
+NDEuMzk5MjMxXSB2aWRlbzA6IFZJRElPQ19TVFJFQU1PTjogZXJyb3IgLTExMDogdHlwZT12aWQt
+Y2FwLW1wbGFuZQpbICAgNDEuNDA4MzQwXSB2aWRlb2RldjogdjRsMl9yZWxlYXNlOiB2aWRlbzA6
+IHJlbGVhc2UKLS04PC0tCgpHaXZlbiB0aGlzIEkgd291bGQgYWd1ZSB0aGUgQ1NJIGhvc3QgaW5p
+dGlhbGl6YXRpb24gb3JkZXIgaXMgd3JvbmcuIFRoZQpkb2N1bWVudGF0aW9uIGZvciBlbmFibGVf
+c3RyZWFtcyBzdGF0ZXM6Cj4gVGhlIHN0cnVjdCB2NGwyX3N1YmRldl9wYWRfb3BzLT5lbmFibGVf
+c3RyZWFtcygpIGFuZCBzdHJ1Y3QKPiB2NGwyX3N1YmRldl9wYWRfb3BzLT5kaXNhYmxlX3N0cmVh
+bXMoKSBjYWxsYmFja3MgYXJlIHVzZWQgYnkgdGhlIHJlY2VpdmVyIGRyaXZlcgo+IHRvIGNvbnRy
+b2wgdGhlIHRyYW5zbWl0dGVyIGRyaXZlcidzIHN0cmVhbWluZyBzdGF0ZS4KClNvIElNSE8gY2Fs
+bGluZyBlbmFibGVfc3RyZWFtcyBpdCBpcyBleHBlY3RlZCB0aGUgc2Vuc29ycyBzd2l0Y2hlZCB0
+bwpIUyBtb2RlLiBVbmZvcnR1bmF0ZWx5IGV2ZW4gY2hlY2tpbmcgUEhZIHN0b3BzdGF0ZSBiZWZv
+cmUgZW5hYmxpbmcgdGhlIHN1YmRldgpzdHJlYW1zIGRvZXMgbm90IGZpeCB0aGlzIGVycm9yIG1l
+c3NhZ2UuClRoZXJlIGlzIHN0aWxsIAo+IGR3LW1pcGktY3NpMnJ4IDRhZTAwMDAwLm1pcGktY3Np
+OiBsYW5lcyBhcmUgbm90IGluIHN0b3Agc3RhdGU6IDB4MCwgZXhwZWN0ZWQgMHgxMDAwMwoKSSBh
+bHNvIG5vdGljZWQgdGhhdCBiZWZvcmUgdGhlIHNfc3RyZWFtIGNhbGwgKGlteDI5MF9zZXRfc3Ry
+ZWFtKSBjYWxsIHRoZQpkZXZpY2UgaXMgcG93ZXJlZCBkb3duLiBUaGF0IG1pZ2h0IGV4cGxhaW5n
+IHRoYXQgcmV2ZXJzaW5nIHRoZSBvcmRlciB3aWxsCm5vdCBoZWxwLgoKQmVzdCByZWdhcmRzLApB
+bGV4YW5kZXIKLS0gClRRLVN5c3RlbXMgR21iSCB8IE3DvGhsc3RyYcOfZSAyLCBHdXQgRGVsbGlu
+ZyB8IDgyMjI5IFNlZWZlbGQsIEdlcm1hbnkKQW10c2dlcmljaHQgTcO8bmNoZW4sIEhSQiAxMDUw
+MTgKR2VzY2jDpGZ0c2bDvGhyZXI6IERldGxlZiBTY2huZWlkZXIsIFLDvGRpZ2VyIFN0YWhsLCBT
+dGVmYW4gU2NobmVpZGVyCmh0dHA6Ly93d3cudHEtZ3JvdXAuY29tLwoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
