@@ -4,72 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC319CD5BAF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 06:59:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB586CD5BB3
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 07:20:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=6B5tFv0Ib4Uk4R2VmH2k7l4ShacYsDY/2zEQtgolnwo=; b=FdJto3SdkwkyGE
-	/b2DXq/QigQfrrDMp6onulboCRgEwKLrBJhihJHExkc6PWJI8/6IlGQJQ5SM2iF7gcUZjnTytuDFM
-	xeYNEvsfLQaCWPkT5ZQudQSPs292y3maUkq0VlWmWF7oulM2fUVkPXRfkDPqeIcBz6g7Dr/YHdSdF
-	ul4KaivfQioYdYfU4mqSqz61qUNE888yp9ZYxS9A1m8Qqy46jQgvRiye0JB2okQbXnO913d7vUzoF
-	ZsdAqQjNI0ghWgk3cZsK8I3C1QMyOll1Yc7PD7GczRnv2OU8ci9kgfbNRazd1RWRXqoPzb72vlbyx
-	rCwUTSE25oMym6w2jWIQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=8QJShRGeFpw8RC25CYn4eGHqpkrKIps8Iyqz73CEiDQ=; b=B58lhuCTSCVu5T
+	oH3+vyHeDvFKs5jZRnXNsf+1PT0z+wwXjE5fLOEdyGAj2Z4qCxKoV1R2ftCaZQrkOQpA7zba4xLMz
+	aG6468laMqWHpkO7sy7ZJc46dmuWOI0Z9EqTrc4GaE/uh7X2HU3wbq7LLqF654FB3ae/VJG373e+G
+	jwtXnrcT/9Xm/9mAYlR7BS5XTGJI1YYDA6Ze0f1OhkZA1c+v+U3MxpKVs6w3LMQ930V5wEYuwQ46V
+	IqEamopdM1BVPxcVahTPbaLIhpRQZSKbYeEbDegfPpuP8y2otIf9Wpszd11/c+li1ZxIIlzhQ8zLM
+	UmhjbMwdfsjzMwFTxE2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQJr5-0000000A1hL-1qJ7;
-	Fri, 22 May 2026 06:59:35 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1wQKBN-0000000A43H-0RGn;
+	Fri, 22 May 2026 07:20:33 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQJr0-0000000A1g5-46a9;
-	Fri, 22 May 2026 06:59:33 +0000
-Received: from localhost (unknown [36.110.52.2])
-	by APP-01 (Coremail) with SMTP id qwCowAAXvmnG_g9qxkskEQ--.2633S2;
-	Fri, 22 May 2026 14:59:18 +0800 (CST)
-From: Chen Ni <nichen@iscas.ac.cn>
-To: mehdi.djait@linux.intel.com,
-	michael.riesch@collabora.com
-Cc: mchehab@kernel.org,
-	heiko@sntech.de,
-	hverkuil+cisco@kernel.org,
-	gerald.loacker@wolfvision.net,
-	bryan.odonoghue@linaro.org,
-	linux-media@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Chen Ni <nichen@iscas.ac.cn>
-Subject: [PATCH] media: rockchip: rkcif: Fix error handling for media_entity_remote_source_pad_unique()
-Date: Fri, 22 May 2026 14:55:48 +0800
-Message-Id: <20260522065548.2438545-1-nichen@iscas.ac.cn>
-X-Mailer: git-send-email 2.25.1
+	id 1wQKBK-0000000A421-1Bci;
+	Fri, 22 May 2026 07:20:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=+2URYXFsdVZ7zfE6UHaRcVDaEOGeqXpHsK6sM6HYXxw=; b=UV9FlgTJ+SpBVSlQknaczKW1He
+	0KdJMHYQO06VGWA2ke80QVYABG29Wjp2+inK0WpjBCWHQWKWu51yEzHk4cnqUpXgCr9LHdEZzAND4
+	HixlCGro6pQBcX/IKZOlsY86FmBmLLWnDQglnk06zfl6wi4BrW7sWDPDjAlvcR+HGShk3FTAjdvf9
+	vp+JBtgg59CjIs9vKc0bqvhv5OJQ0pTzdyXYCMJXVc2fHkDwiIMKhJsUX7xtEFCYYrVBqC/m8tESA
+	EeKM5Q7FICE+UhXPl1y4pKqiMgFTzLI5+fq0WjqLWnDXyc2rxqv5JOueMCiqD1BoUGe949aLeNJQV
+	4AXKitKQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ Philipp Zabel <p.zabel@pengutronix.de>, Steven Price <steven.price@arm.com>,
+ Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: Re: [PATCH] ARM: rockchip: keep reset control around
+Date: Fri, 22 May 2026 09:20:23 +0200
+Message-ID: <7845032.1B3tZ46Xf9@phil>
+In-Reply-To: <20260521210915.2331176-1-heiko@sntech.de>
+References: <20260521210915.2331176-1-heiko@sntech.de>
 MIME-Version: 1.0
-X-CM-TRANSID: qwCowAAXvmnG_g9qxkskEQ--.2633S2
-X-Coremail-Antispam: 1UD129KBjvdXoW7JFW8tw47GFWUtFWkKrWrAFb_yoWktwc_XF
-	Z2yFZxWF10yrs0kwsrtrWru3y5t39I9Fn5JaySka13GF98Cas5AF1jvrW3X3WxJryY9F1U
-	Grn8KFyUua1rCjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUb38FF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
-	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
-	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
-	Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s
-	1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0
-	cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJVW8Jw
-	ACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2Y2ka
-	0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7
-	v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF
-	1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIx
-	AIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI
-	42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWI
-	evJa73UjIFyTuYvjfU5iihUUUUU
-X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_235931_386838_BF6248CF 
-X-CRM114-Status: UNSURE (   9.33  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260522_002030_349355_7DA308A6 
+X-CRM114-Status: GOOD (  22.00  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,39 +60,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The media_entity_remote_source_pad_unique() function returns an error
-pointer on failure, not NULL. Fix the check to use IS_ERR() and return
-PTR_ERR() to correctly handle allocation failures.
-
-Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
-Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
----
- drivers/media/platform/rockchip/rkcif/rkcif-stream.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-index 3130d420ad55..542aa877919d 100644
---- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-+++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-@@ -466,7 +466,7 @@ static int rkcif_stream_link_validate(struct media_link *link)
- 	struct rkcif_stream *stream = to_rkcif_stream(vdev);
- 	int ret = -EINVAL;
- 
--	if (!media_entity_remote_source_pad_unique(link->sink->entity))
-+	if (IS_ERR(media_entity_remote_source_pad_unique(link->sink->entity)))
- 		return -ENOTCONN;
- 
- 	sd = media_entity_to_v4l2_subdev(link->source->entity);
--- 
-2.25.1
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gRG9ubmVyc3RhZywgMjEuIE1haSAyMDI2LCAyMzowOToxNSBNaXR0ZWxldXJvcMOkaXNjaGUg
+U29tbWVyemVpdCBzY2hyaWViIEhlaWtvIFN0dWVibmVyOgo+IERvIG5vdCBwdXQgdGhlIHJlc2V0
+IGNvbnRyb2wsIHJldGFpbiBleGNsdXNpdmUgY29udHJvbCBvdmVyIGl0Lgo+IEFmdGVyIHR1cm5p
+bmcgb24gYSBDUFUsIHRoZSBjb3JyZXNwb25kaW5nIHJlc2V0IGxpbmUgbXVzdCBzdGF5Cj4gZGVh
+c3NlcnRlZC4KPiAKPiBUaGlzIGFsc28gYXZvaWRzIGNhbGxpbmcgcmVzZXRfY29udHJvbF9wdXQo
+KSBiZWZvcmUgd29ya3F1ZXVlcwo+IGFyZSBvcGVyYXRpb25hbC4KPiAKPiBGaXhlczogNzhlYmJm
+ZjZkMWEwICgicmVzZXQ6IGhhbmRsZSByZW1vdmluZyBzdXBwbGllciBiZWZvcmUgY29uc3VtZXJz
+IikKPiBTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwIFphYmVsIDxwLnphYmVsQHBlbmd1dHJvbml4LmRl
+Pgo+IFRlc3RlZC1ieTogU3RldmVuIFByaWNlIDxzdGV2ZW4ucHJpY2VAYXJtLmNvbT4KPiBTaWdu
+ZWQtb2ZmLWJ5OiBIZWlrbyBTdHVlYm5lciA8aGVpa29Ac250ZWNoLmRlPgo+IC0tLQo+ICBhcmNo
+L2FybS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYyB8IDE2ICsrKysrKysrKystLS0tLS0KPiAgMSBm
+aWxlIGNoYW5nZWQsIDEwIGluc2VydGlvbnMoKyksIDYgZGVsZXRpb25zKC0pCj4gCj4gZGlmZiAt
+LWdpdCBhL2FyY2gvYXJtL21hY2gtcm9ja2NoaXAvcGxhdHNtcC5jIGIvYXJjaC9hcm0vbWFjaC1y
+b2NrY2hpcC9wbGF0c21wLmMKPiBpbmRleCBmNDMyZDIyYmZlZDguLmY2NTlkODk0YmZhZSAxMDA2
+NDQKPiAtLS0gYS9hcmNoL2FybS9tYWNoLXJvY2tjaGlwL3BsYXRzbXAuYwo+ICsrKyBiL2FyY2gv
+YXJtL21hY2gtcm9ja2NoaXAvcGxhdHNtcC5jCj4gQEAgLTM0LDYgKzM0LDcgQEAgc3RhdGljIGlu
+dCBuY29yZXM7Cj4gIAo+ICBzdGF0aWMgc3RydWN0IHJlZ21hcCAqcG11Owo+ICBzdGF0aWMgaW50
+IGhhc19wbXUgPSB0cnVlOwo+ICtzdGF0aWMgc3RydWN0IHJlc2V0X2NvbnRyb2wgKmNwdV9yc3Rj
+WzRdOwoKQWZ0ZXIgc2xlZXBpbmcgb24gdGhhdCwgdGhpcyBzaG91bGQgYmUgY3B1X3JzdGNbNV07
+CgpDb3JldHgtQTkgU29DcyBuZWVkIHRvIGVuYWJsZSB0aGUgU0NVIHBvd2VyLWRvbWFpbiB3aGlj
+aCB0aGFua2Z1bGx5CnNpdHMgYXQgaW5kZXggNCBvZiB0aGUgcG93ZXItZG9tYWluIHJlZ2lzdGVy
+LgoKU28gd2hpbGUgd2UgKGFscmVhZHkpIGV4cGVjdCBubyByZXNldCBjb250cm9sIGZvciB0aGF0
+LCB3ZSBuZWVkIGF0IGxlYXN0Cm1ha2Ugc3VyZSwgaXQncyBub3QgcmVhZGluZyBpbnRvIHVuZGVm
+aW5lZCBtZW1vcnkgYW5kIHRodXMgbmVlZCB0aGF0CmVtcHR5IGZpZWxkIGluIHRoZSBhcnJheS4K
+CgpIZWlrbwoKPiAgCj4gIHN0YXRpYyBpbnQgcG11X3Bvd2VyX2RvbWFpbl9pc19vbihpbnQgcGQp
+Cj4gIHsKPiBAQCAtNjQsOSArNjUsMTEgQEAgc3RhdGljIHN0cnVjdCByZXNldF9jb250cm9sICpy
+b2NrY2hpcF9nZXRfY29yZV9yZXNldChpbnQgY3B1KQo+ICBzdGF0aWMgaW50IHBtdV9zZXRfcG93
+ZXJfZG9tYWluKGludCBwZCwgYm9vbCBvbikKPiAgewo+ICAJdTMyIHZhbCA9IChvbikgPyAwIDog
+QklUKHBkKTsKPiAtCXN0cnVjdCByZXNldF9jb250cm9sICpyc3RjID0gcm9ja2NoaXBfZ2V0X2Nv
+cmVfcmVzZXQocGQpOwo+ICsJc3RydWN0IHJlc2V0X2NvbnRyb2wgKnJzdGM7Cj4gIAlpbnQgcmV0
+Owo+ICAKPiArCXJzdGMgPSBwZCA8IEFSUkFZX1NJWkUoY3B1X3JzdGMpID8gY3B1X3JzdGNbcGRd
+IDogRVJSX1BUUigtRUlOVkFMKTsKPiArCj4gIAlpZiAoSVNfRVJSKHJzdGMpICYmIHJlYWRfY3B1
+aWRfcGFydCgpICE9IEFSTV9DUFVfUEFSVF9DT1JURVhfQTkpIHsKPiAgCQlwcl9lcnIoIiVzOiBj
+b3VsZCBub3QgZ2V0IHJlc2V0IGNvbnRyb2wgZm9yIGNvcmUgJWRcbiIsCj4gIAkJICAgICAgIF9f
+ZnVuY19fLCBwZCk7Cj4gQEAgLTEwMCwxMSArMTAzLDggQEAgc3RhdGljIGludCBwbXVfc2V0X3Bv
+d2VyX2RvbWFpbihpbnQgcGQsIGJvb2wgb24pCj4gIAkJfQo+ICAJfQo+ICAKPiAtCWlmICghSVNf
+RVJSKHJzdGMpKSB7Cj4gLQkJaWYgKG9uKQo+IC0JCQlyZXNldF9jb250cm9sX2RlYXNzZXJ0KHJz
+dGMpOwo+IC0JCXJlc2V0X2NvbnRyb2xfcHV0KHJzdGMpOwo+IC0JfQo+ICsJaWYgKCFJU19FUlIo
+cnN0YykgJiYgb24pCj4gKwkJcmVzZXRfY29udHJvbF9kZWFzc2VydChyc3RjKTsKPiAgCj4gIAly
+ZXR1cm4gMDsKPiAgfQo+IEBAIC0zMTIsNiArMzEyLDEwIEBAIHN0YXRpYyB2b2lkIF9faW5pdCBy
+b2NrY2hpcF9zbXBfcHJlcGFyZV9jcHVzKHVuc2lnbmVkIGludCBtYXhfY3B1cykKPiAgCQluY29y
+ZXMgPSAoKGwyY3RsciA+PiAyNCkgJiAweDMpICsgMTsKPiAgCX0KPiAgCj4gKwkvKiBDb2xsZWN0
+IGNwdSBjb3JlIHJlc2V0IGNvbnRyb2wgZm9yIGVhY2ggY29yZSAqLwo+ICsJZm9yIChpID0gMDsg
+aSA8IG5jb3JlczsgaSsrKQo+ICsJCWNwdV9yc3RjW2ldID0gcm9ja2NoaXBfZ2V0X2NvcmVfcmVz
+ZXQoaSk7Cj4gKwo+ICAJLyogTWFrZSBzdXJlIHRoYXQgYWxsIGNvcmVzIGV4Y2VwdCB0aGUgZmly
+c3QgYXJlIHJlYWxseSBvZmYgKi8KPiAgCWZvciAoaSA9IDE7IGkgPCBuY29yZXM7IGkrKykKPiAg
+CQlwbXVfc2V0X3Bvd2VyX2RvbWFpbigwICsgaSwgZmFsc2UpOwo+IAoKCgoKCl9fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxp
+bmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5p
+bmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
