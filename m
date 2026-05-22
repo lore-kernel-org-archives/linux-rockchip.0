@@ -4,57 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25C3BCD5BAF
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 06:29:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC319CD5BAF
+	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 06:59:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uGcq1SLg5rpMl030wlaSRKqI1aTie7tnW92KjE7yt7I=; b=DIWq1xQTpHzf9/2Ov3TuX9vdGl
-	eoN2wpfGhrQ7Llya3eZxZe/wHuYfHyys7ZmBYgg3Vhgb+2sQrLU9/o8ny73eckkEDijTQTKEOpE3Z
-	jnpNqZjRke54yfezE/NeeM6ptmqQO5NyEU5GzIKtqOCgwLkoY83HCrZwIBkU6Ko55q5mZOMmC2mS2
-	BbLN4GWsZxEie+44UaIhbd32ll+ppbhKti/WRfGGjG6yrJtSQJXF8r/G3CR7Dt01UNEgARUI9yjG6
-	mQqfPBaZRDBHUYMOPD19MMH/IzDqhVuZ0kPNnYJPCMyDSu1CKARvBRVzLFIFMhIkl0S227Z61Nxal
-	+05GH1nw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=6B5tFv0Ib4Uk4R2VmH2k7l4ShacYsDY/2zEQtgolnwo=; b=FdJto3SdkwkyGE
+	/b2DXq/QigQfrrDMp6onulboCRgEwKLrBJhihJHExkc6PWJI8/6IlGQJQ5SM2iF7gcUZjnTytuDFM
+	xeYNEvsfLQaCWPkT5ZQudQSPs292y3maUkq0VlWmWF7oulM2fUVkPXRfkDPqeIcBz6g7Dr/YHdSdF
+	ul4KaivfQioYdYfU4mqSqz61qUNE888yp9ZYxS9A1m8Qqy46jQgvRiye0JB2okQbXnO913d7vUzoF
+	ZsdAqQjNI0ghWgk3cZsK8I3C1QMyOll1Yc7PD7GczRnv2OU8ci9kgfbNRazd1RWRXqoPzb72vlbyx
+	rCwUTSE25oMym6w2jWIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQJNu-00000009yLe-0Wnc;
-	Fri, 22 May 2026 06:29:26 +0000
-Received: from mail-m82130.xmail.ntesmail.com ([156.224.82.130])
+	id 1wQJr5-0000000A1hL-1qJ7;
+	Fri, 22 May 2026 06:59:35 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQJNp-00000009yKe-0bgr;
-	Fri, 22 May 2026 06:29:24 +0000
-Received: from [172.16.12.43] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3f6a8ca63;
-	Fri, 22 May 2026 14:29:13 +0800 (GMT+08:00)
-Message-ID: <32192c5f-cc25-4a2d-ada6-53f28edb6cbb@rock-chips.com>
-Date: Fri, 22 May 2026 14:29:12 +0800
+	id 1wQJr0-0000000A1g5-46a9;
+	Fri, 22 May 2026 06:59:33 +0000
+Received: from localhost (unknown [36.110.52.2])
+	by APP-01 (Coremail) with SMTP id qwCowAAXvmnG_g9qxkskEQ--.2633S2;
+	Fri, 22 May 2026 14:59:18 +0800 (CST)
+From: Chen Ni <nichen@iscas.ac.cn>
+To: mehdi.djait@linux.intel.com,
+	michael.riesch@collabora.com
+Cc: mchehab@kernel.org,
+	heiko@sntech.de,
+	hverkuil+cisco@kernel.org,
+	gerald.loacker@wolfvision.net,
+	bryan.odonoghue@linaro.org,
+	linux-media@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Chen Ni <nichen@iscas.ac.cn>
+Subject: [PATCH] media: rockchip: rkcif: Fix error handling for media_entity_remote_source_pad_unique()
+Date: Fri, 22 May 2026 14:55:48 +0800
+Message-Id: <20260522065548.2438545-1-nichen@iscas.ac.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 01/10] dt-bindings: display: rockchip: analogix-dp: Fix
- hclk as third clock for RK3588
-To: Krzysztof Kozlowski <krzk@kernel.org>
-References: <20260521080835.1362416-1-damon.ding@rock-chips.com>
- <20260521080835.1362416-2-damon.ding@rock-chips.com>
- <20260522-demonic-shaggy-wasp-a3f261@quoll>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260522-demonic-shaggy-wasp-a3f261@quoll>
-X-HM-Tid: 0a9e4e5fadf103a3kunmc160eef7c9158
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSx0dVh0aQ0sYS00ZSk5IHlYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=Ge2Vi3wu2ir9dKSljIze3RU0HI4ooU+nbjYYN4NtZj672UOwX4tXHZTNQBewK8gB1YpVxTOQiJbWg6hCG5TY5DkfojEbr4ySYSz6NS7/DhB3GUh9wi1h+ORTDA9wJNNjA9a563651C6YEN+H6GxyCjSRhiEP3Y5LAchPv2jlqA0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=qMah8/jyNcPvAfqkwCIR/RWKyy2WqG3nOuBp+tSy2AA=;
-	h=date:mime-version:subject:message-id:from;
+X-CM-TRANSID: qwCowAAXvmnG_g9qxkskEQ--.2633S2
+X-Coremail-Antispam: 1UD129KBjvdXoW7JFW8tw47GFWUtFWkKrWrAFb_yoWktwc_XF
+	Z2yFZxWF10yrs0kwsrtrWru3y5t39I9Fn5JaySka13GF98Cas5AF1jvrW3X3WxJryY9F1U
+	Grn8KFyUua1rCjkaLaAFLSUrUUUUbb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUb38FF20E14v26r4j6ryUM7CY07I20VC2zVCF04k26cxKx2IYs7xG
+	6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
+	A2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Gr0_
+	Cr1l84ACjcxK6I8E87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s
+	1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0
+	cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJVW8Jw
+	ACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2Y2ka
+	0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7
+	v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF
+	1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIx
+	AIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI
+	42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWI
+	evJa73UjIFyTuYvjfU5iihUUUUU
+X-Originating-IP: [36.110.52.2]
+X-CM-SenderInfo: xqlfxv3q6l2u1dvotugofq/
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260521_232921_847701_1ACFD5A5 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20260521_235931_386838_BF6248CF 
+X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,101 +81,36 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+The media_entity_remote_source_pad_unique() function returns an error
+pointer on failure, not NULL. Fix the check to use IS_ERR() and return
+PTR_ERR() to correctly handle allocation failures.
 
-On 5/22/2026 2:11 PM, Krzysztof Kozlowski wrote:
-> On Thu, May 21, 2026 at 04:08:26PM +0800, Damon Ding wrote:
->> RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
->> registers and enable the video datapath.
->>
->> Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
->> phandle reference, which allowed the eDP to work without explicitly
->> managing the hclk_vo1 clock. However, this is not safe or explicit.
->>
->> To make the clock dependency explicit, enforce per-SoC clock-names
->> requirements:
->>   - RK3288: 2 clocks (dp, pclk)
->>   - RK3399: 3 clocks (dp, pclk, grf)
->>   - RK3588: 3 clocks (dp, pclk, hclk)
->>
->> Do not reuse the 'grf' clock name for RK3588 because it represents
->> a different clock with distinct control logic:
->> - The 'grf' clock is only for GRF register access and is toggled
->>    dynamically during register access.
->> - The 'hclk' clock controls both GRF access and video datapath
->>    gating, and must remain enabled during probe.
->>
->> Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
->> Changes in v4:
->> - Modify the commit msg.
->>
->> Changes in v5:
->> - Enforce the correct third clock name on a per-compatible basis.
->> - Modify the commit msg simultaneously.
->>
->> Changes in v6:
->> - Expand more detail commit msg about using hclk instead of grf clock.
->> ---
->>   .../rockchip/rockchip,analogix-dp.yaml        | 37 +++++++++++++++++--
->>   1 file changed, 33 insertions(+), 4 deletions(-)
->>
->> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->> index d99b23b88cc5..8001c1facf98 100644
->> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->> @@ -23,10 +23,7 @@ properties:
->>   
->>     clock-names:
->>       minItems: 2
->> -    items:
->> -      - const: dp
->> -      - const: pclk
->> -      - const: grf
->> +    maxItems: 3
->>   
->>     power-domains:
->>       maxItems: 1
->> @@ -60,6 +57,33 @@ required:
->>   allOf:
->>     - $ref: /schemas/display/bridge/analogix,dp.yaml#
->>   
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - rockchip,rk3288-dp
->> +    then:
->> +      properties:
->> +        clock-names:
->> +          items:
->> +            - const: dp
->> +            - const: pclk
-> 
-> Why aren't there constraints for clocks? They always must come together.
-> 
-> Please open any other binding and look how it is done there.
-> 
-> 
+Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
+Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
+---
+ drivers/media/platform/rockchip/rkcif/rkcif-stream.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Yes, as Conor's suggestion, the right way is to keep all valid clock 
-names at the top level, and use only minItems/maxItems in allOf to 
-differentiate clocks and clock-names of platforms.
-
-I will update this in next version.
-
-Best regards,
-Damon
+diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+index 3130d420ad55..542aa877919d 100644
+--- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
++++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
+@@ -466,7 +466,7 @@ static int rkcif_stream_link_validate(struct media_link *link)
+ 	struct rkcif_stream *stream = to_rkcif_stream(vdev);
+ 	int ret = -EINVAL;
+ 
+-	if (!media_entity_remote_source_pad_unique(link->sink->entity))
++	if (IS_ERR(media_entity_remote_source_pad_unique(link->sink->entity)))
+ 		return -ENOTCONN;
+ 
+ 	sd = media_entity_to_v4l2_subdev(link->source->entity);
+-- 
+2.25.1
 
 
 _______________________________________________
