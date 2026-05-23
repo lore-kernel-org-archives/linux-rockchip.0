@@ -4,84 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8C7CCD5BB8
-	for <linux-rockchip@archiver.kernel.org>; Fri, 22 May 2026 21:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96369CD5BC6
+	for <linux-rockchip@archiver.kernel.org>; Sat, 23 May 2026 19:45:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:
-	Message-Id:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Jfhq3SAVX93P2qAUCdNkOaa34T1qYmylu8NdQTWTIRA=; b=LvO6gYpQ7womW2
-	RfFffGK0t6NrVaWLTXQkvCNQSDvLSv7wuNVnODG5OJpe/IAHVcJ8e9p2zr/q8DAESqyoB26cmnjGX
-	X4uoCVmLDKfNEhoM0QlImRtr8GzLb08IiMdbqNeb7OxtRcIg1jqchzkmP0xh17WKAOynKhlokb16d
-	nSoRb/uoJzBp8HyRpHg6CpOa7bHU22x9P04cU0Dk4i+L0ExagFLQS1QMfxc8swqfE34hTONJetwVj
-	eMYLOV9REluJc+29FAjCUtzpR31hBHme3Wg2sQuHXIZwKmsbYRbtBgg3NTLB9KPtcor/OvYklrvgo
-	Df9CzHsjhupLmQSf3ZrQ==;
+	List-Owner; bh=mHolg2qkhqaNeL3vZdfeMSBNE1gn0FAHJAz71Ix08Mo=; b=DzUY9h9wd5bFD6
+	nqumCKSnfn+f8GguCa1OR3Codqa7gRvOM4s4G/nWY8oL5mPJ+A9xO6yXUCK+4XuKSGrdmsS59e9TU
+	mIrO8z4BswB345Yx04CLdwohRPQDCtgVRqVLH4Eq7Z2qPBauMPEoJxNdrEV69BM+Rph6D++NhQzxQ
+	AS8ShvV9oNMXK1FK6tYSWuUcz2nUHSxjr4kcKjKLXeLKnuMXoujbKSDgxDB2p18p6fFv19l77AZVu
+	OjWMB2jcVtHsN57khbh7rh6WeqZLAwZnQzr3WrakfKJXaDtteVygMOoD4QwgekEdwgSaZhHevczD0
+	xkY4v+h89MxdHjXCXiNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQXLH-0000000ByN5-3GGm;
-	Fri, 22 May 2026 21:23:39 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1wQsHv-0000000Dop0-3Mul;
+	Sat, 23 May 2026 19:45:35 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQXKx-0000000By4E-1fFM;
-	Fri, 22 May 2026 21:23:21 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3888843EBD;
-	Fri, 22 May 2026 21:23:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 19F89C2BCC6;
-	Fri, 22 May 2026 21:23:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779484997;
-	bh=5GdndQH11O0jnQvspCfNA/O+zyU14vg0pR6Vqar72vk=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=RNG6Kc9DQB/BK3j7ylCU+8Q11VmJe/exGVVJTG6T57SuKM9jWRzWwg2kIWfRXIbaY
-	 6hPgzuJytHdAUbtuKrzW0t5HB38w1Ae4zLBI1sbRY8G73oMeWN8EIWMUN/XoEc7Lxe
-	 6MKV2E4nt2yz0apC26wbC5A+jNtUEnOYTdXA9cpIzkXAz1fYPCXsiS/rOQKL5Ruazh
-	 8W17CiE98drOKEnvn+WJ9bm4oO7Vq2qtApVpPUuYTafrxOkKpjsLCai0cXRoBj5LjC
-	 JHpaTWrz7Nc2HxfKz37YMSSLhkjTJk77ver563IdJAqSJCaumG9Oscb5ahr0ebDL4u
-	 aNWhbG/i5lKnA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 104D3CD5BB3;
-	Fri, 22 May 2026 21:23:17 +0000 (UTC)
-From: Michael Riesch via B4 Relay <devnull+michael.riesch.collabora.com@kernel.org>
-Date: Fri, 22 May 2026 23:23:12 +0200
-Subject: [PATCH v5 6/8] arm64: dts: rockchip: add radxa camera 4k on rock
- 5b+ cam0
+	id 1wQsHs-0000000DonN-2eEV;
+	Sat, 23 May 2026 19:45:34 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1779565488; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=GeW0j8HgfdnTz/6VO/sIo4i6siH4Y2uICsByq8WzQ08xC2z5CIohPUCw6eapODwdcJem9J9kjIHu5IUkLF4dRldrlofQ7G62DsnpQV5afKN5iOzMMtcVTd6/+BG9vEJOr4FQ5m9g57jQvp0ueA17h11vwV4f0Jq5HoQvJUA5XY0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1779565488; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=uMEEZn+x23X3/iGLCH74HTpR0e0r7hhMuh0rntSsrbY=; 
+	b=j0yrkzvB+4OGrnyHRIkkGTX97ahcewFaCNupHxmKhKl/5Q7f4kbEiFsYpOSCcK/9vuuHIXF33b3sQneUez9CZdh05SqGtvglbn3R/efQDqRDZnI5lv0ddOp2AF5GGWa3bIE21DHbBWerEd5/e8hfHX8Fj0wDJoJsWN4NinzVmIQ=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
+	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1779565487;
+	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
+	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
+	bh=uMEEZn+x23X3/iGLCH74HTpR0e0r7hhMuh0rntSsrbY=;
+	b=AuTtPEmZzY7WREJoBUB3CUFqgr+IScEBNoMDYDFQ1rZsZS6T+STalkSLJKEKPXKK
+	2bIwDf4497PrknHu1TanCVK55rn2ztJAt/QmpRUb1uvyzWaxBBKemAvXe1CSW3JnaLU
+	L1ezBjRjWPzIipF0HholfjcSgO34BfdhbLspD5Lk=
+Received: by mx.zohomail.com with SMTPS id 1779565485684287.4308773740099;
+	Sat, 23 May 2026 12:44:45 -0700 (PDT)
+From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Date: Sat, 23 May 2026 21:43:36 +0200
+Subject: [PATCH v16 01/28] drm/amd/display: Remove unnecessary
+ SIGNAL_TYPE_HDMI_TYPE_A check
 MIME-Version: 1.0
-Message-Id: <20260522-rk3588-vicap-v5-6-d1d1f5265c56@collabora.com>
-References: <20260522-rk3588-vicap-v5-0-d1d1f5265c56@collabora.com>
-In-Reply-To: <20260522-rk3588-vicap-v5-0-d1d1f5265c56@collabora.com>
-To: Mehdi Djait <mehdi.djait@linux.intel.com>, 
- Laurent Pinchart <laurent.pinchart@ideasonboard.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
- Kever Yang <kever.yang@rock-chips.com>, 
- Jagan Teki <jagan@amarulasolutions.com>, 
- =?utf-8?q?=D0=9A=D1=83=D0=B7=D0=BD=D0=B5=D1=86=D0=BE=D0=B2_=D0=9C=D0=B8=D1=85=D0=B0=D0=B8=D0=BB?= <mai.kuznetsov.misha@gmail.com>, 
- Charalampos Mitrodimas <charmitro@posteo.net>, 
- Sebastian Reichel <sebastian.reichel@collabora.com>, 
- Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Collabora Kernel Team <kernel@collabora.com>, 
- Sakari Ailus <sakari.ailus@linux.intel.com>
-Cc: linux-media@vger.kernel.org, devicetree@vger.kernel.org, 
+Message-Id: <20260523-color-format-v16-1-24340c5e4732@collabora.com>
+References: <20260523-color-format-v16-0-24340c5e4732@collabora.com>
+In-Reply-To: <20260523-color-format-v16-0-24340c5e4732@collabora.com>
+To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
+ Rodrigo Siqueira <siqueira@igalia.com>, 
+ Alex Deucher <alexander.deucher@amd.com>, 
+ =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
+ Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
+ Daniel Stone <daniel@fooishbar.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-kernel@vger.kernel.org, Michael Riesch <michael.riesch@collabora.com>
-X-Mailer: b4 0.14.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1779484994; l=4379;
- i=michael.riesch@collabora.com; s=20260428; h=from:subject:message-id;
- bh=3FVePkpPkw9zXNZmHFNf4wZoNKo/VGldfB5CgIPNdtw=;
- b=dXlPWHRhG7N7qb1aI6XvzLAM05XK0ttu4qAeAF2h57WMpeIbuiImP0+prMxXejmCJP5dLTbiA
- jKNx1T6L1CVC/GsMirVc7ClOPrcxHGNxMS73Q4pAD+YbooRpn2Xltzk
-X-Developer-Key: i=michael.riesch@collabora.com; a=ed25519;
- pk=tAbmpPTE1MELYweXqqDU40fa18uCO6s32GJL/RzyW2Y=
-X-Endpoint-Received: by B4 Relay for michael.riesch@collabora.com/20260428
- with auth_id=759
-X-Original-From: Michael Riesch <michael.riesch@collabora.com>
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Werner Sembach <wse@tuxedocomputers.com>, 
+ Andri Yngvason <andri@yngvason.is>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260522_142319_491866_2D69025B 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20260523_124532_697933_3D972051 
+X-CRM114-Status: GOOD (  12.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,155 +98,56 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: michael.riesch@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Michael Riesch <michael.riesch@collabora.com>
+From: Werner Sembach <wse@tuxedocomputers.com>
 
-Add device tree overlay for the Radxa Camera 4K (featuring the Sony IMX415
-image sensor) to applied on the Radxa ROCK 5B+ CAM0 port.
+Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check that was performed in the
+drm_mode_is_420_only() case, but not in the drm_mode_is_420_also() &&
+force_yuv420_output case.
 
-Signed-off-by: Michael Riesch <michael.riesch@collabora.com>
+Without further knowledge if YCbCr 4:2:0 is supported outside of HDMI,
+there is no reason to use RGB when the display
+reports drm_mode_is_420_only() even on a non HDMI connection.
+
+This patch also moves both checks in the same if-case. This  eliminates an
+extra else-if-case.
+
+Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+Tested-by: Andri Yngvason <andri@yngvason.is>
+Reviewed-by: Daniel Stone <daniel@fooishbar.org>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/Makefile              |  5 ++
- .../rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso      | 99 ++++++++++++++++++++++
- 2 files changed, 104 insertions(+)
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/Makefile b/arch/arm64/boot/dts/rockchip/Makefile
-index cb55c6b70d0e569abd9efc4e88ff908b6a682cf1..d4ff476fb9814b18c74c6d59d73cf5d8e6ee9ca7 100644
---- a/arch/arm64/boot/dts/rockchip/Makefile
-+++ b/arch/arm64/boot/dts/rockchip/Makefile
-@@ -206,6 +206,7 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-ep.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus.dtb
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5t.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou.dtb
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-video-demo.dtbo
-@@ -321,6 +322,10 @@ dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-pcie-srns.dtb
- rk3588-rock-5b-pcie-srns-dtbs := rk3588-rock-5b.dtb \
- 	rk3588-rock-5b-pcie-srns.dtbo
- 
-+dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-rock-5b-plus-radxa-4k-cam.dtb
-+rk3588-rock-5b-plus-radxa-4k-cam-dtbs := rk3588-rock-5b-plus.dtb \
-+	rk3588-rock-5b-plus-radxa-cam4k-cam0.dtbo
-+
- dtb-$(CONFIG_ARCH_ROCKCHIP) += rk3588-tiger-haikou-haikou-video-demo.dtb
- rk3588-tiger-haikou-haikou-video-demo-dtbs := rk3588-tiger-haikou.dtb \
- 	rk3588-tiger-haikou-video-demo.dtbo
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
-new file mode 100644
-index 0000000000000000000000000000000000000000..ee9ecf68a88663a04e1c33a718894490ef475203
---- /dev/null
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-plus-radxa-cam4k-cam0.dtso
-@@ -0,0 +1,99 @@
-+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
-+/*
-+ * Device tree overlay for the Radxa Camera 4K attached to the CAM0 port of
-+ * the Radxa ROCK 5B+.
-+ */
-+
-+/dts-v1/;
-+/plugin/;
-+
-+#include <dt-bindings/clock/rockchip,rk3588-cru.h>
-+#include <dt-bindings/gpio/gpio.h>
-+#include <dt-bindings/pinctrl/rockchip.h>
-+
-+&{/} {
-+	savdd_cam0: regulator-savdd-cam0 {
-+		compatible = "regulator-fixed";
-+		regulator-min-microvolt = <2900000>;
-+		regulator-max-microvolt = <2900000>;
-+		regulator-name = "savdd_cam0";
-+		vin-supply = <&vcc_3v3_s3>;
-+	};
-+
-+	sdvdd_cam0: regulator-sdvdd-cam0 {
-+		compatible = "regulator-fixed";
-+		regulator-min-microvolt = <1100000>;
-+		regulator-max-microvolt = <1100000>;
-+		regulator-name = "sdvdd_cam0";
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
-+	siovdd_cam0: regulator-siovdd-cam0 {
-+		compatible = "regulator-fixed";
-+		regulator-min-microvolt = <1800000>;
-+		regulator-max-microvolt = <1800000>;
-+		regulator-name = "siovdd_cam0";
-+		vin-supply = <&vcc_3v3_s3>;
-+	};
-+};
-+
-+&i2c3 {
-+	#address-cells = <1>;
-+	#size-cells = <0>;
-+	status = "okay";
-+
-+	imx415: camera-sensor@1a {
-+		compatible = "sony,imx415";
-+		reg = <0x1a>;
-+		assigned-clocks = <&cru CLK_MIPI_CAMARAOUT_M3>;
-+		assigned-clock-rates = <37125000>;
-+		avdd-supply = <&savdd_cam0>;
-+		clocks = <&cru CLK_MIPI_CAMARAOUT_M3>;
-+		dvdd-supply = <&sdvdd_cam0>;
-+		orientation = <2>; /* External */
-+		ovdd-supply = <&siovdd_cam0>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&cam0_rstn &mipim0_camera3_clk>;
-+		reset-gpios = <&gpio4 RK_PA0 GPIO_ACTIVE_LOW>;
-+
-+		port {
-+			imx415_output: endpoint {
-+				data-lanes = <1 2 3 4>;
-+				link-frequencies = /bits/ 64 <445500000>;
-+				remote-endpoint = <&csi2_input>;
-+			};
-+		};
-+	};
-+};
-+
-+&pinctrl {
-+	cam0 {
-+		cam0_rstn: cam0-rstn-pinctrl {
-+			rockchip,pins = <4 RK_PA0 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+};
-+
-+&csi2 {
-+	status = "okay";
-+};
-+
-+&csi2_in {
-+	csi2_input: endpoint {
-+		data-lanes = <1 2 3 4>;
-+		link-frequencies = /bits/ 64 <445500000>;
-+		remote-endpoint = <&imx415_output>;
-+	};
-+};
-+
-+&csi_dphy0 {
-+	status = "okay";
-+};
-+
-+&vicap {
-+	status = "okay";
-+};
-+
-+&vicap_mmu {
-+	status = "okay";
-+};
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index ba7f98a87808..dfe97897127c 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6917,12 +6917,9 @@ static void fill_stream_properties_from_drm_display_mode(
+ 	timing_out->v_border_top = 0;
+ 	timing_out->v_border_bottom = 0;
+ 	/* TODO: un-hardcode */
+-	if (drm_mode_is_420_only(info, mode_in)
+-			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
+-		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+-	else if (drm_mode_is_420_also(info, mode_in)
+-			&& aconnector
+-			&& aconnector->force_yuv420_output)
++	if (drm_mode_is_420_only(info, mode_in) ||
++	    (aconnector && aconnector->force_yuv420_output &&
++	     drm_mode_is_420_also(info, mode_in)))
+ 		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+ 	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
+ 			&& aconnector
 
 -- 
-2.47.3
-
+2.54.0
 
 
 _______________________________________________
