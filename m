@@ -4,87 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21AD8CD5BB8
-	for <linux-rockchip@archiver.kernel.org>; Sat, 23 May 2026 19:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B218DCD5BAB
+	for <linux-rockchip@archiver.kernel.org>; Sun, 24 May 2026 16:27:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7zApLSjwFUWiZbWzQVzosHsCldypoQgcl4jOGG8iIqg=; b=VJK9VRRT6NPBaK
-	Trmxnb7eMkwrA26BEftb7/Feq833c+SkSlbcd7KSOXrsqZn5NNiCx8/5qKUa9GXgZQwyf+SCXxyt8
-	uCuKg0R7yECSvw+FVe3af8dWWPZQSNTVPcw0F3mmjVuwL7Y0dzp6jMjhmDtdu3Nm1g0EbonqT0+qc
-	9IjGkeBxzzexeeFLQaQKYrE01WJu29j/umt0eueqDGr07DFM+XUW46oGs0DA2peAE2L0GpssSCvSB
-	LSy2O56cBSAVAIhL3Nex99U2WvirMe8WzHlfmcKe5314o81EyiTF4MkSDCIYoJVKa95SWunrknOEH
-	F+7GG4Hcqwtmw4XF/RcQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zcUlH4S1mQPttk+hQw7qn6YP2oWQ+2SuBGgilYdQa+c=; b=nikcEr5DMAlduc
+	2huiRETjiPVG6UDPj2nxPfwN25yFaeoHLaZ7cfjx8lBawi7v2owGSzGoGxNEtYXeogAEDaymFtggJ
+	8TgBbK0aidD6RS38kt2DGJJsAjaIkFaWg6MKrqU17umCbYWcIj+VxAatm9/3jrSa+QtCw95ghcufQ
+	wAZq0bQTZKr8D3GtobAHtHBE86nAXgmoDnRyWXZy7woSd7FcCr5B4k4SjnesPie+dc3GdcQspQNlU
+	+Sp7bYInXcG3N6HdP7v1D5NnDO/Q200rhZo4+qSet6EfVTTfWjgljjpghYg1LfG7S83mLuSmMyuBE
+	gWTKgobK04V5j/T3OXpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQsLe-0000000DsKf-0ZJU;
-	Sat, 23 May 2026 19:49:26 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wRBg4-0000000FGfv-0FXn;
+	Sun, 24 May 2026 16:27:48 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wQsLU-0000000DsBq-1gdK;
-	Sat, 23 May 2026 19:49:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1779565726; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=YivRdyVdIUyefuyRo7wM018X8HLm1qVWQ9Hbl73R7Qb+sM4fwrqfQrccVXONNbNPudCu7CKKmlAOXzUTpT3sYqzgzK4coTMRVxwOxEOOA8US0QS1MMiUZ87iugfBWw7V8SKrB7P0T/JejsY0OyEEyyoGsUW7R/bqVUzYM+a4fLo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1779565726; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=26EFTuIhlqnsc4uUzyuaHx+9wSdJArl+zaLC9veBaX4=; 
-	b=BXYniJO0Clx+DFYzVCJmbmcziRtNTI6T9eHiSp+LkDpp3YMyKJC/arcT1M2JJFUSpyD6zNlVOpiLO5JKxnHQyizdwMcLLRs/TsjYRPO00CxyqBxwH8p6mRKnVvWo/Vd2OyxzMuSVBt2TZXV7oNIjQeaeAKlR+wxIk39hOsLdrpY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
-	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1779565726;
-	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
-	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=26EFTuIhlqnsc4uUzyuaHx+9wSdJArl+zaLC9veBaX4=;
-	b=DHJpKuP0sXDC1x7Nl/iQacLFQF9x8ET0NvL/bls/uu+59nJ9K7HxFhCJAKCosk3o
-	Ck9w5iITProSiAUZVc8NkadC5s7XzRbD/IHjRW5WWH4gjcaqojvM6UreaNhIdQHEJ7E
-	lJlHd5ZnXFDWpvR5Cj5oNOif8XII3xByZGWaQFlQ=
-Received: by mx.zohomail.com with SMTPS id 177956572445825.918389143356876;
-	Sat, 23 May 2026 12:48:44 -0700 (PDT)
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Sat, 23 May 2026 21:44:03 +0200
-Subject: [PATCH v16 28/28] drm/connector: Update docs of "colorspace" for
- color format prop
+	id 1wRBg1-0000000FGeb-2UwU;
+	Sun, 24 May 2026 16:27:46 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1779640062;
+	bh=QFCgggknjOATRW/TDy4B91bZJukHxDqEhm2761Ixqtw=;
+	h=From:Subject:Date:To:Cc:From;
+	b=o7izL9+O6MhzByckC2blHRZQN5pNHxAK4XT2KWmx/sneSlmeVKJ8siB0P5jftYFdY
+	 qY5NERwfXXEsxJsu0IQcCnH1Yw+hvC5Rdywi/5lFowb5xLn9KPk84XB+7trtCKBXHo
+	 bW0NFYsk7DENKZqE/HJUYxNdX7sjBW3f7+55DPNtX+FteQNVZodct5r4Mfzpuph6L1
+	 A+lNa34GXp5KUJDcKOqEjWwbZXtYIGajhCAktXqfh1sPKawnX8YYj12dptA3GJBbnm
+	 B6/TIzo5i/aQEgaiQZo60eXlF0EB9f1CqaMNJYM9UAtWNfCuK6vMmYGrOeQHfjvBZI
+	 xdCaNbd2h6Uzg==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1B97217E093F;
+	Sun, 24 May 2026 18:27:42 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Subject: [PATCH 0/2] YUV support for VOP2 background color
+Date: Sun, 24 May 2026 19:27:27 +0300
+Message-Id: <20260524-vop2-bg-yuv-v1-0-dcb6a52923f5@collabora.com>
 MIME-Version: 1.0
-Message-Id: <20260523-color-format-v16-28-24340c5e4732@collabora.com>
-References: <20260523-color-format-v16-0-24340c5e4732@collabora.com>
-In-Reply-To: <20260523-color-format-v16-0-24340c5e4732@collabora.com>
-To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
- Rodrigo Siqueira <siqueira@igalia.com>, 
- Alex Deucher <alexander.deucher@amd.com>, 
- =?utf-8?q?Christian_K=C3=B6nig?= <christian.koenig@amd.com>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Sandy Huang <hjc@rock-chips.com>, 
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQ5AMBBA4avIrE1SjZ/UVcRCa9RYIC0NEXdXL
+ L/Fexd4ckwe6uQCR4E9L3NEliZgxm62hNxHgxSyFIXMMSyrRG3x3ANmWlDZCWWKSkEsVkcDH9+
+ taX/7XU9ktncB9/0A2WOk528AAAA=
+X-Change-ID: 20260524-vop2-bg-yuv-1b0e6a09c579
+To: Sandy Huang <hjc@rock-chips.com>, 
  =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  Andy Yan <andy.yan@rock-chips.com>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, Dmitry Baryshkov <lumag@kernel.org>, 
- Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
- Daniel Stone <daniel@fooishbar.org>
-Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
- dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
- linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+ linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260523_124916_493666_879CEE93 
-X-CRM114-Status: GOOD (  12.32  )
+X-CRM114-CacheID: sfid-20260524_092745_784251_A99B4C4B 
+X-CRM114-Status: UNSURE (   6.19  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,39 +82,29 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The colorspace property's documentation states that BT2020_RGB and
-BT2020_YCC are equivalent, and the output format depends on the driver.
+Since commit bec7cbfa7d4f ("drm/rockchip: vop2: Support setting custom
+background color") the VOP2 display controller allows configuring the
+background color of each video output port.
 
-Now that there is a "color format" property that userspace can use to
-explicitly set a format, update the colorspace docs to mention this.
+However, this is currently limited to RGB formats.  When operating in
+YUV overlay mode, the color must be programmed using YUV format.
 
-The behaviour here is not changed for userspace that doesn't know about
-the color format property yet, as the color format property defaults to
-"AUTO", where the choice of output format is left up to drivers.
+Add the necessary RGB-to-YCbCr conversion logic, covering all color
+spaces supported by the display controller: BT601L, BT601F, BT709L and
+BT2020L.
 
-Reviewed-by: Daniel Stone <daniel@fooishbar.org>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/drm_connector.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Cristian Ciocaltea (2):
+      drm/rockchip: vop2: Rename CSC_BT2020 to CSC_BT2020L
+      drm/rockchip: vop2: Add YUV support to background color
 
-diff --git a/drivers/gpu/drm/drm_connector.c b/drivers/gpu/drm/drm_connector.c
-index b91c1f76355e..52f9a6a8daf7 100644
---- a/drivers/gpu/drm/drm_connector.c
-+++ b/drivers/gpu/drm/drm_connector.c
-@@ -2573,7 +2573,8 @@ EXPORT_SYMBOL(drm_mode_create_aspect_ratio_property);
-  *		conversion matrix and convert to the appropriate quantization
-  *		range.
-  *		The variants BT2020_RGB and BT2020_YCC are equivalent and the
-- *		driver chooses between RGB and YCbCr on its own.
-+ *		driver chooses between RGB and YCbCr based on the color format
-+ *		property.
-  *
-  *	SMPTE_170M_YCC:
-  *	BT709_YCC:
-
--- 
-2.54.0
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 154 ++++++++++++++++++++++++---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |   2 +-
+ 2 files changed, 139 insertions(+), 17 deletions(-)
+---
+base-commit: 213c92ac9717e4951f052a499f91c89302889813
+change-id: 20260524-vop2-bg-yuv-1b0e6a09c579
 
 
 _______________________________________________
