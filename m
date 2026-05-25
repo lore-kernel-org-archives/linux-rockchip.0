@@ -4,66 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 194B8CD5BDF
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 08:21:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F45ACD5BBF
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 09:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=kDLPN98rFOkMOovLdl9jEGUBLbcyVfCBuvMBE2fCttw=; b=Do080cug72KliI
-	ZVXKW/jQCN2YN9irw7Tr046xxK38zO7eJExWeXt2ogHCTJh49h2xwO6zDKGe6XxSoJlU+Hoczp5o3
-	r5DjY9wjTvNpo+8iYvsyZfLq8kS+KmWZpjRdKc30pcYhjSRCIaFNvxD9YjRg317jkSpstQWVnOmO4
-	BmTAGT/3PD/7eFXzQZx6Ocd2tCP03j1psPdxrQ8/bN6yR3nvB+kSS6ekEuHPtw6n7sk9LYLYO3a5I
-	8hMRR6/HelkQTrEGXuoTRzKg3tsm9Qxj81dhC6mpDf+j0zR6wAerW6/HFg+McidgQ/NsFmWzZzSie
-	MO8crCuun8pRLPoSYOAA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=eJZdVmiFMym5PGvab/VMgYfAi2WMYFIKCTBFjhDNidM=; b=uQvTF29gGCZV7wPP2hPcs5N4bb
+	5k5UzuwZncvTvvNS/jXQMEYzFo3JoxKhlzM7CSmMLVp07s7UTzsvctl/TGDtLYdrEzmW1gNgVQE1s
+	yChWsK3VpPh5Hnc8Hz9eko1pLqaSO9PMMVnV8X6TDLoVxsln3A68Ju/5kg6XSKQtCQWYnKmzufn40
+	iJupV4YRRMPM2k79H5XF7ZMvWbgOMMVDw7527jqhr/mayKL46uSFnvhkaXiOsB/oivCz0z1qxyxfc
+	eByuPgohjDPkBrdyKargwBheK/kF2TXURLqwAFGO1msoXEGg/iVsWfR8TBq9Sh7sFbtKShtMXHxTc
+	/kOExmRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRQYw-0000000GdDp-32mV;
-	Mon, 25 May 2026 08:21:26 +0000
-Received: from mail-m82211.xmail.ntesmail.com ([156.224.82.211])
+	id 1wRRpE-0000000GqUn-3yyP;
+	Mon, 25 May 2026 09:42:20 +0000
+Received: from mail-m8182.xmail.ntesmail.com ([156.224.81.82])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRQYZ-0000000Gcmj-1YnE;
-	Mon, 25 May 2026 08:21:05 +0000
-Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3fb20c07a;
-	Mon, 25 May 2026 16:20:55 +0800 (GMT+08:00)
-From: Damon Ding <damon.ding@rock-chips.com>
-To: hjc@rock-chips.com,
-	heiko@sntech.de,
-	andy.yan@rock-chips.com,
-	maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org,
-	tzimmermann@suse.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org,
-	rfoss@kernel.org
-Subject: [PATCH v7 08/10] drm/bridge: analogix_dp: Rename and simplify is_rockchip()
-Date: Mon, 25 May 2026 16:20:31 +0800
-Message-Id: <20260525082033.117569-9-damon.ding@rock-chips.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260525082033.117569-1-damon.ding@rock-chips.com>
-References: <20260525082033.117569-1-damon.ding@rock-chips.com>
+	id 1wRRpC-0000000GqTs-2IF3;
+	Mon, 25 May 2026 09:42:20 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3fb5a1dcd;
+	Mon, 25 May 2026 17:42:08 +0800 (GMT+08:00)
+Message-ID: <c3c81cc7-6c5e-44b4-892b-c5b4199452ec@rock-chips.com>
+Date: Mon, 25 May 2026 17:42:07 +0800
 MIME-Version: 1.0
-X-HM-Tid: 0a9e5e39056903a3kunmb64b982110267f
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 01/10] dt-bindings: display: rockchip: analogix-dp: Fix
+ hclk as third clock for RK3588
+To: hjc@rock-chips.com, heiko@sntech.de, andy.yan@rock-chips.com,
+ maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
+ airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, andrzej.hajda@intel.com, neil.armstrong@linaro.org,
+ rfoss@kernel.org
+References: <20260525082033.117569-1-damon.ding@rock-chips.com>
+ <20260525082033.117569-2-damon.ding@rock-chips.com>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260525082033.117569-2-damon.ding@rock-chips.com>
+X-HM-Tid: 0a9e5e835f7703a3kunmae9bfcda10eb2a
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQ08eVhgdSR0eTx8ZS0gfTVYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGh9NVkNPHxgYGB9LT0hNTVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=kvNw+nUMvrS3BfyoFBr4tR/0q3If9m7sY+q8LnTFQ24B8Eru1pjzjd4bRJKbRPzmkjlHA9oIsktTNU+NtA0vUoeo/9gB22GZ8vPGLEe0Zp7hf66FUjUZimxPsqK/bkkXOZtNv0lEarZSwaak0Hukbv/MCrWmyUiEYfamD4mcReA=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=Iic8eH/ZjacAbCYnZDsN1M7HxjET5lpUzehxwlD86N0=;
+	b=Nv/exr7AsXooqkxImwxXo6jSxa80U8X1v8eE9880g+5wTjsSfrFu/nYbd7R3+3fm+kswG7ONUngoAn2OjhHJvkZYNBFRtLobTuZ8f4zxo3IF196fLscVp94xRG9cx7NwP6qx+FLnqpNhUGX9bglXhf0iCjlXU+1XBZd6pMh6294=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=sL2k1TVhyRJKaVnuqZpKLrU4rtjpfO7R4bvt8rDkFus=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_012103_716235_D5299CB4 
-X-CRM114-Status: GOOD (  12.89  )
+X-CRM114-CacheID: sfid-20260525_024218_873739_5C3274E4 
+X-CRM114-Status: GOOD (  16.03  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,155 +69,123 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
-Content-Type: text/plain; charset="us-ascii"
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename inline helper is_rockchip() to analogix_dp_is_rockchip()
-to follow driver namespace convention consistently across code.
+On 5/25/2026 4:20 PM, Damon Ding wrote:
+> RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
+> registers and enable the video datapath.
+> 
+> Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
+> phandle reference, which allowed the eDP to work without explicitly
+> managing the hclk_vo1 clock. However, this is not safe or explicit.
+> 
+> To make the clock dependency explicit, enforce per-SoC clock-names
+> requirements:
+>   - RK3288: 2 clocks (dp, pclk)
+>   - RK3399: 3 clocks (dp, pclk, grf)
+>   - RK3588: 3 clocks (dp, pclk, hclk)
+> 
+> Do not reuse the 'grf' clock name for RK3588 because it represents
+> a different clock with distinct control logic:
+> - The 'grf' clock is only for GRF register access and is toggled
+>    dynamically during register access.
+> - The 'hclk' clock controls both GRF access and video datapath
+>    gating, and must remain enabled during probe.
+> 
+> Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v4:
+> - Modify the commit msg.
+> 
+> Changes in v5:
+> - Enforce the correct third clock name on a per-compatible basis.
+> - Modify the commit msg simultaneously.
+> 
+> Changes in v6:
+> - Expand more detail commit msg about using hclk instead of grf clock.
+> 
+> Changes in v7:
+> - List all valid clock names at the top level, and constrain the clock
+>    count for each platform with minItems/maxItems in allOf.
+> ---
+>   .../rockchip/rockchip,analogix-dp.yaml        | 34 ++++++++++++++++++-
+>   1 file changed, 33 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> index d99b23b88cc5..7fe7655c1f37 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+> @@ -26,7 +26,9 @@ properties:
+>       items:
+>         - const: dp
+>         - const: pclk
+> -      - const: grf
+> +      - enum:
+> +        - grf
+> +        - hclk
 
-Replace chained equality comparisons with switch-case layout
-to improve readability and simplify adding new SoC entries later.
+./Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml:34:9: 
+[warning] wrong indentation: expected 10 but found 8 (indentation)
 
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Suggested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Will fix in v8.
 
----
+Best regards,
+Damon
 
-Changes in v3:
-- Add Reviewed-by tag.
-
-Changes in v4:
-- Modify the commit msg.
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c |  2 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c  | 18 +++++++++---------
- include/drm/bridge/analogix_dp.h               | 11 +++++++++--
- 3 files changed, 19 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 573900c2cefc..c2fd5b978fc0 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -870,7 +870,7 @@ static int analogix_dp_bridge_atomic_check(struct drm_bridge *bridge,
- 	struct drm_display_info *di = &conn_state->connector->display_info;
- 	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
- 
--	if (is_rockchip(dp->plat_data->dev_type)) {
-+	if (analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		if ((di->color_formats & mask)) {
- 			DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
- 			di->color_formats &= ~mask;
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index f84c1d48d671..ea8401293a23 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -72,7 +72,7 @@ void analogix_dp_init_analog_param(struct analogix_dp_device *dp)
- 	reg = SEL_24M | TX_DVDD_BIT_1_0625V;
- 	writel(reg, dp->reg_base + ANALOGIX_DP_ANALOG_CTL_2);
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		reg = REF_CLK_24M;
- 		if (dp->plat_data->dev_type == RK3288_DP)
- 			reg ^= REF_CLK_MASK;
-@@ -123,7 +123,7 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
- 	analogix_dp_stop_video(dp);
- 	analogix_dp_enable_video_mute(dp, 0);
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		reg = RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N |
- 			SW_FUNC_EN_N;
- 	else
-@@ -233,7 +233,7 @@ void analogix_dp_set_pll_power_down(struct analogix_dp_device *dp, bool enable)
- 	u32 mask = DP_PLL_PD;
- 	u32 pd_addr = ANALOGIX_DP_PLL_CTL;
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		pd_addr = ANALOGIX_DP_PD;
- 		mask = RK_PLL_PD;
- 	}
-@@ -254,12 +254,12 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 	u32 phy_pd_addr = ANALOGIX_DP_PHY_PD;
- 	u32 mask;
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		phy_pd_addr = ANALOGIX_DP_PD;
- 
- 	switch (block) {
- 	case AUX_BLOCK:
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			mask = RK_AUX_PD;
- 		else
- 			mask = AUX_PD;
-@@ -317,7 +317,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 		 * to power off everything instead of DP_PHY_PD in
- 		 * Rockchip
- 		 */
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			mask = DP_INC_BG;
- 		else
- 			mask = DP_PHY_PD;
-@@ -329,7 +329,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 			reg &= ~mask;
- 
- 		writel(reg, dp->reg_base + phy_pd_addr);
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			usleep_range(10, 15);
- 		break;
- 	case POWER_ALL:
-@@ -465,7 +465,7 @@ void analogix_dp_init_aux(struct analogix_dp_device *dp)
- 	analogix_dp_reset_aux(dp);
- 
- 	/* AUX_BIT_PERIOD_EXPECTED_DELAY doesn't apply to Rockchip IP */
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		reg = 0;
- 	else
- 		reg = AUX_BIT_PERIOD_EXPECTED_DELAY(3);
-@@ -837,7 +837,7 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp)
- 	u32 reg;
- 
- 	reg = readl(dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		reg &= ~(RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N);
- 	} else {
- 		reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 854af692229b..7b670dd769e9 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -19,9 +19,16 @@ enum analogix_dp_devtype {
- 	RK3588_EDP,
- };
- 
--static inline bool is_rockchip(enum analogix_dp_devtype type)
-+static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
- {
--	return type == RK3288_DP || type == RK3399_EDP || type == RK3588_EDP;
-+	switch (type) {
-+	case RK3288_DP:
-+	case RK3399_EDP:
-+	case RK3588_EDP:
-+		return true;
-+	default:
-+		return false;
-+	}
- }
- 
- struct analogix_dp_plat_data {
--- 
-2.34.1
+>   
+>     power-domains:
+>       maxItems: 1
+> @@ -60,6 +62,32 @@ required:
+>   allOf:
+>     - $ref: /schemas/display/bridge/analogix,dp.yaml#
+>   
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3288-dp
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 2
+> +        clock-names:
+> +          maxItems: 2
+> +
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - rockchip,rk3399-edp
+> +    then:
+> +      properties:
+> +        clocks:
+> +          minItems: 3
+> +        clock-names:
+> +          minItems: 3
+> +
+>     - if:
+>         properties:
+>           compatible:
+> @@ -68,6 +96,10 @@ allOf:
+>                 - rockchip,rk3588-edp
+>       then:
+>         properties:
+> +        clocks:
+> +          minItems: 3
+> +        clock-names:
+> +          minItems: 3
+>           resets:
+>             minItems: 2
+>           reset-names:
 
 
 _______________________________________________
