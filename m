@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01205CD5BD2
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 12:54:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56A29CD5BDE
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 12:54:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UsNUScsZDzZZYHVHMYLihHOXno60Z5RhnJQQwa5oGt4=; b=2Hzw6Cr64yCfzb
-	+agrUWKfAYyGLdrAhcPL6zM8UPHOYE+raNjkB40rqbuIuU1OyMcsb8odbyroT2C9fukj+Xw6yukqU
-	TckyXoCcqmlGoepV53CqloLzSs9iLGyUvH/13Kp7ib+YYoRIIA66y0mtov4zo0wRpanvqEXf50Lwi
-	RGZuBjCJA9pbiSk5ecYLW6hnt2/JrOExYNnoVFq7pz1rsWg6G72MAM4DpD/fHdwZr2nQhtNyewCw6
-	mQqPScK1CYREchyBMhRP/8smcZ4wXKGvA7IsEsTpildvmgDjwwyxXTWLvUZxhG6QEFV2Qsd55Sg6o
-	ILlCEi1zUumx3QKDBAAw==;
+	List-Owner; bh=+YuZjm1aFnAKbudP1MhfVMA0Bqh5r+6hU77zc+7sqh0=; b=IgzH0/54TWwHGL
+	LwOtTMSjwu3M/eHhcsHpxXeKQ59t9mDAwv6fSSN1KQIZslhCwdS+Y0RdSBZUZUX19xlsgFM8enh+r
+	NdZpNBB1VP2KsBgt/sguQW6gZpOBp69lO5CMdXXpxkzOsS9CvVbjDQNiKZaW7dAN7sfsxrSLkjPgz
+	qV48pN+AV6zu01NdX0EtJLIKXSTvvUuVQ3mmRngZTGNHagya5WcmcbMiY9cRL7ZKRrZQZncKyELcT
+	O4e7o+8To5+V6wrubUxYuI6Hbgi5vaCTX3abqeV8NDyTpxVis9KjKAAa9DOUrmaE6oD3WBBMoKRJy
+	V36ZdTPMZjDfBH2vqi0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRUp3-0000000HF7d-33Rs;
-	Mon, 25 May 2026 12:54:21 +0000
-Received: from mail-m254104.xmail.ntesmail.com ([103.129.254.104])
+	id 1wRUp4-0000000HF8m-0KIw;
+	Mon, 25 May 2026 12:54:22 +0000
+Received: from mail-m93183.xmail.ntesmail.com ([103.126.93.183])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRUol-0000000HEq9-3H9X;
-	Mon, 25 May 2026 12:54:05 +0000
+	id 1wRUom-0000000HErN-3XZ6;
+	Mon, 25 May 2026 12:54:06 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3fbb28c45;
-	Mon, 25 May 2026 20:53:59 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3fbb28c4d;
+	Mon, 25 May 2026 20:54:00 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: hjc@rock-chips.com,
 	heiko@sntech.de,
@@ -44,26 +44,26 @@ To: hjc@rock-chips.com,
 	andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
 	rfoss@kernel.org
-Subject: [PATCH v8 05/10] drm/rockchip: analogix_dp: Enable hclk for RK3588
-Date: Mon, 25 May 2026 20:53:26 +0800
-Message-Id: <20260525125331.140059-6-damon.ding@rock-chips.com>
+Subject: [PATCH v8 06/10] dt-bindings: display: rockchip: analogix-dp: Add support for RK3576
+Date: Mon, 25 May 2026 20:53:27 +0800
+Message-Id: <20260525125331.140059-7-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260525125331.140059-1-damon.ding@rock-chips.com>
 References: <20260525125331.140059-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e5f3304f803a8kunm7b8971f5af5cc5
+X-HM-Tid: 0a9e5f3309fb03a8kunm7b8971f5af5cd0
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSx1DVkhNSklJHUNCGElCS1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGExCVkNKGk0dHRgZTx8YS1YVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=ZYD/90zY8kQTz0Hc0lpwQh+LoydrKWIfTntfRLG+YaW2FdQ8ZdDrBiLboBmGALveo53paxfOyhUuWVGRt0qMXMWmstrPmP18CQ1STX5Ap/vSZBHO6Uvy9hEspnp6qUdfbslmMQAHrPX9nDdYeck/x/6ImuJkEeB8wrIUy3l+6Fo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=qzrSU6F51VUS8IVrczy9Q/DVSlabFI0ne4m7RTJg/xI=;
+	b=RkaWYUgSLv+wXF7hagamawazwvuBbNcoPOW1/8UmAQaIIfjFAGSEEf+VlIK1y7znrExmAd5M+wuJ+j/PyVIzLZa3i/eMVTzk6JSzhpQgjeywK2TlyEXrJhR6HHX/HXu+RP1eNzHziIxiJCc8qCKWSOQQpCqpnAllgzpPxkxFRwc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=Wq5cmhS0GV6CtraW6c9p5/KD9D7G03yRQwNsdL57E3k=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_055404_037323_1FE93CA9 
-X-CRM114-Status: UNSURE (   9.31  )
+X-CRM114-CacheID: sfid-20260525_055405_100898_83C824F7 
+X-CRM114-Status: UNSURE (   8.03  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,56 +76,52 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Acquire and enable the HCLK_VO1 bus clock explicitly for RK3588
-eDP controller to guarantee register and datapath access.
+RK3576 integrates an eDP TX controller compatible with the existing
+RK3588 hardware design, reuse the same binding configuration directly.
 
-The clock was previously enabled implicitly via rockchip,vo-grf
-phandle reference, which relies on side effect and is fragile.
-
-Fetch optional "hclk" clock in driver to align with updated device
-tree binding and keep consistent with hardware clock dependency.
-
-Fixes: 729f8eefdcad ("drm/rockchip: analogix_dp: Add support for RK3588")
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
 
-Changes in v4:
-- Modify the commit msg.
----
- drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+Changes in v2:
+- Split out a separate patch to add the "hclk" clock reference.
 
-diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-index 06072efd7fca..d2af5eb29dbb 100644
---- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
-@@ -311,6 +311,7 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- {
- 	struct device *dev = dp->dev;
- 	struct device_node *np = dev->of_node;
-+	struct clk *clk;
+Chanegs in v4:
+- Modify the commit msg.
+
+Changes in v5:
+- Add Acked-by tag.
+---
+ .../bindings/display/rockchip/rockchip,analogix-dp.yaml         | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+index 81240ad67385..033eefcab2e8 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+@@ -15,6 +15,7 @@ properties:
+     enum:
+       - rockchip,rk3288-dp
+       - rockchip,rk3399-edp
++      - rockchip,rk3576-edp
+       - rockchip,rk3588-edp
  
- 	dp->grf = syscon_regmap_lookup_by_phandle(np, "rockchip,grf");
- 	if (IS_ERR(dp->grf))
-@@ -327,6 +328,11 @@ static int rockchip_dp_of_probe(struct rockchip_dp_device *dp)
- 		return dev_err_probe(dev, PTR_ERR(dp->pclk),
- 				     "failed to get pclk property\n");
- 
-+	clk = devm_clk_get_optional_enabled(dev, "hclk");
-+	if (IS_ERR(clk))
-+		return dev_err_probe(dev, PTR_ERR(clk),
-+				     "failed to get hclk property\n");
-+
- 	dp->rst = devm_reset_control_get(dev, "dp");
- 	if (IS_ERR(dp->rst))
- 		return dev_err_probe(dev, PTR_ERR(dp->rst),
+   clocks:
+@@ -96,6 +97,7 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - rockchip,rk3576-edp
+               - rockchip,rk3588-edp
+     then:
+       properties:
 -- 
 2.34.1
 
