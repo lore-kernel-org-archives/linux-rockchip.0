@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46FF8CD5BD2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26FF8CD5BD0
 	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 11:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,48 +12,48 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
 	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
 	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TCr0fyQI5WNS+mHvqq8EQHIuhh33L1T7tN381MW+uZw=; b=RonYauabbSndY8
-	MeaIGYaBGxFMUtoel2mzDfMx0zC6bp0f1Q2laTrR+T0BpIRVS33yPK6ag66RqvrWh2060K2BcLHT8
-	3sZIhtwWcaCMHP5m3ma4rN+gur+lWcixpY+HnGEKIz8vCHiQob7XbVyrrxBbuTryfRCBmoFnKE2+x
-	8TvchOnaJmT9qnkE8TahENbiiqXRPQGIPkfvP+cJQSHb2kXK5yblUScIPw8NVmGFlyJtn85ffz21p
-	zipgZGdtDw3QL0bhFtnRGF2m2klvC5KIX/k15WfKR4TLn1Oatd/LB5CDZ+Oz+zyLDd5eznf8MTMY5
-	devHY9SI/k7hqXuA/pLg==;
+	List-Owner; bh=LXk9sNTNGB9VYEPNi2jecW40/f4E7DaGTgE7bBF6j/g=; b=3CKPWeQzs0Iw0y
+	hchALYS82D8JXu8SPBgSV26H+mBg1FprnwyYAziCdB8rvot61utFYhXoURPMrfZDcCc0T3/420FAi
+	F1arY0/3ovrjKZpqrWZGbj1FIkdPV01NvSPZPk795gCEKm1ojoLL+u4EeYiFsBH6tyL0DWtkUVqQO
+	J2GF/3gOr3+kysGN7uLCBovuvYFZd15OFBha8/VqOU3EoHKGCVtBYZs0UyRx043di5Dx5HjXPnkha
+	zW+RZmfIGiIFJUL8t4B7NCKXFQYOW1Zko1opiVGouCQi4X7zEJwQH243f32MdLCfu4d1kBA8uNzSE
+	I2MZobcvidAAR/y2WvnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRTFm-0000000H3Kf-3FKj;
+	id 1wRTFm-0000000H3Kb-2zPV;
 	Mon, 25 May 2026 11:13:50 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRTFk-0000000H3JC-2YBr;
+	id 1wRTFk-0000000H3Ix-1cZ0;
 	Mon, 25 May 2026 11:13:49 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2EDCC43B7E;
-	Mon, 25 May 2026 11:13:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFB331F00A3A;
+	by sea.source.kernel.org (Postfix) with ESMTP id 83B9043EF2;
+	Mon, 25 May 2026 11:13:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49B321F000E9;
 	Mon, 25 May 2026 11:13:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779707628;
-	bh=gzBDFr43Boq9Lj7lrwvex2le7up+8Wg9eGEwYQ+PjtU=;
+	s=k20260515; t=1779707627;
+	bh=NXobWrGdt7/K85JfkhbiE1Xx6KirCAh53EJ7f9blg18=;
 	h=Date:From:Cc:To:In-Reply-To:References:Subject;
-	b=DOzzvhQSiS34iWE7nXECeeQpcxWWsGg/C9aX/BghWrz+rvSMthodByxXcIe2gTPn1
-	 frRj9aAbz9cFPG+jTgToU6avpbHx5CJrJf2YC6R4DMwn28O+lXO3eAucd2tyFiPTae
-	 zMAQZxXfUzM1gt4rvwfBKhgk5zcbHC9vxFX/eL3Kx0MSplvx+mOvzndibbwCnWYr8m
-	 81deYGQtF89WAPPHMTAzCz2VrFYfom70TOUbauHvXMQR4Kjq2uXrt4Zid/Cat4knP/
-	 /NTqdujID3PpecLSePgSx/DyFTN66aS601brDxoDcIYE0JaGgrv8e7wU0rC3WeEBAh
-	 Bnix/jWsap93w==
-Date: Mon, 25 May 2026 06:13:47 -0500
+	b=MwGjr4Ae3OPcbzZnE8QRWERBbD6DYQu8iwXRrVD5GSs3vkDaTTz7KBGzwdO/LgoBC
+	 +i4+Ax7paoavAuTFOW6nKtToXREgoQUeWie3rTnB+xTpntqNuce0VO8t0gSGYT1XA4
+	 PFFV01ZTwMnbZw3rv8x32LDiJTQUyJ264oKnyTHgj95MOtbObrFdOYOZdb4Iptgz8R
+	 WjH716z9j8wUz+aFOGsESfBvdCxMZrFKA9bCQPNbfz0cI2MXvte3/7ZXLhBj8Mg/UB
+	 k6gtNJoOkMqcv6Kdx3xYmikEnwVTEO/fho/Ja1wPW3HCOCUsmXJSc/38hoQ3ZOwejS
+	 uKXdidvqYPhzA==
+Date: Mon, 25 May 2026 06:13:46 -0500
 MIME-Version: 1.0
 From: "Rob Herring (Arm)" <robh@kernel.org>
 To: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260525082033.117569-7-damon.ding@rock-chips.com>
+In-Reply-To: <20260525082033.117569-3-damon.ding@rock-chips.com>
 References: <20260525082033.117569-1-damon.ding@rock-chips.com>
- <20260525082033.117569-7-damon.ding@rock-chips.com>
-Message-Id: <177970762670.3598384.1698792096821270137.robh@kernel.org>
-Subject: Re: [PATCH v7 06/10] dt-bindings: display: rockchip: analogix-dp:
- Add support for RK3576
+ <20260525082033.117569-3-damon.ding@rock-chips.com>
+Message-Id: <177970762578.3598344.16093942078468322022.robh@kernel.org>
+Subject: Re: [PATCH v7 02/10] dt-bindings: display: rockchip: analogix-dp:
+ Add per-clock descriptions
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_041348_663558_E1CD7533 
-X-CRM114-Status: GOOD (  12.37  )
+X-CRM114-CacheID: sfid-20260525_041348_442987_2303ED6A 
+X-CRM114-Status: GOOD (  11.96  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,45 +65,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dianders@chromium.org, heiko@sntech.de, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, Conor Dooley <conor.dooley@microchip.com>, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, Conor Dooley <conor.dooley@microchip.com>, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, dianders@chromium.org, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 25 May 2026 16:20:29 +0800, Damon Ding wrote:
-> RK3576 integrates an eDP TX controller compatible with the existing
-> RK3588 hardware design, reuse the same binding configuration directly.
+On Mon, 25 May 2026 16:20:25 +0800, Damon Ding wrote:
+> Supplement dedicated description for each clock in the clocks
+> property, clarifying the function of each clock input for the
+> Analogix DP controller binding.
 > 
 > Acked-by: Conor Dooley <conor.dooley@microchip.com>
 > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 > 
 > ---
 > 
-> Changes in v2:
-> - Split out a separate patch to add the "hclk" clock reference.
-> 
-> Chanegs in v4:
+> Changes in v4:
 > - Modify the commit msg.
 > 
 > Changes in v5:
 > - Add Acked-by tag.
 > ---
->  .../bindings/display/rockchip/rockchip,analogix-dp.yaml         | 2 ++
->  1 file changed, 2 insertions(+)
+>  .../bindings/display/rockchip/rockchip,analogix-dp.yaml      | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 > 
 
 My bot found errors running 'make dt_binding_check' on your patch:
 
 yamllint warnings/errors:
-./Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml:34:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
+./Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml:33:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
 
 dtschema/dtc warnings/errors:
 
 doc reference errors (make refcheckdocs):
 
-See https://patchwork.kernel.org/project/devicetree/patch/20260525082033.117569-7-damon.ding@rock-chips.com
+See https://patchwork.kernel.org/project/devicetree/patch/20260525082033.117569-3-damon.ding@rock-chips.com
 
 The base for the series is generally the latest rc1. A different dependency
 should be noted in *this* patch.
