@@ -4,76 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05A97CD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 16:43:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B550CD5BC9
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 16:43:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TSAEcfSJvZKgiUSqC7oCCBmUxUG//+EU8B1muSk+wdo=; b=I4bcMIDobNDxgc
-	5lNDtFsGQYTi4drOehF6La3qUHxSm+8v/uSFlKwfWLgjPsys5a/oysvlneRByFIFNJbSSJgHc687b
-	CRecCwmyStdYsVSlms4x066n0lpBw1YY0zBcQ8cXvLAfL7VxDcwIS4UjQ5ImcJC2jxucy5HvVh/Bb
-	WXF7NKGUw/3YAlgM7DE4nOhY4wx1PtlvnhN+oKHh8hjZh8q4LAkuLOjEXRrrb5ToXn+qShOcCitJa
-	8dL42KIA9j1NC4qK9AparuhodSKY1EPkj1qZVza8cQt7M8SV4m+tnMXOrg6dT8JulUNYHAk64USrv
-	7fq3C64KXvC7ND/LeVOQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=55CAAyuWWMxzQEICSLWmZkBfiSKM2gcQpDLpwHCHl8A=; b=NBgglOoixtFk0UVuz2THH3RKp9
+	4opnYHimFeh1WxvBRQ9wFHkTY2g47VCY0xOi8ZFDGBWBE1JzOkMS49Ix6Y2gvb5z54AKpKfwJwpkP
+	BScwSEJdNyZuAr70Yw5VkW2h3cDzQb5JbyX1DxTb7YC7amrpWp/mM2+BVsQeKU9/Wsaz/zRRXYuO1
+	mKJBLyo5dnZgJ2yRO9+xzewH/lkaQ1NmzC2OaI6L9PM1XaSHHrExA0E3uDkZyBeo6S5K86chK+Ege
+	yjJZ968GYhg/vB+B1PMkY/YcbpQi5kpQgM7JzCylxBruUcrV8oRUPw5SeM0KqHr8PNc6IhA1ojnxj
+	/3DXJQCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRYOW-000000002Zd-3B5p;
-	Mon, 25 May 2026 16:43:12 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1wRYP3-000000002nu-41AK;
+	Mon, 25 May 2026 16:43:45 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRYOV-000000002Xv-2Y6D;
-	Mon, 25 May 2026 16:43:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=TAn1iVwcK/413PZPddrDU1ztUBuGSDHSiAFobjoCu98=; b=VgKoxqXuoROXf4zxYwkxtAxuwc
-	A0JlCHdbnoVSDKmtfGBfA7R3XrhWe5VZy9RjKwLb5jzokwyEt3oWUmNLbuumXPmbMfDFDYv8UHez6
-	Q2F8npe6IoLI+pxwU92ZGFpmHxjr+5VLpwbCjnkpQMeKBCvIBXcP0h24kICHtqgUbKBJht3H+M74g
-	u1U6ghOPHfOuOP8sYCC/AjS6Wkl1pMc0dQCNIGN1OkjxSYn3875UvLM2C/iRZWnw+pkiiPXKHHF2z
-	D4eJLbV2zWvU8B5258DimknF099DP63FLhojsgtueTfzKHDJNfjSOHfrGfX2BLN3ZfHa/FJId6V6D
-	YvurVGZw==;
-Received: from layka.disroot.org ([178.21.23.139])
-	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRYOS-00000009cXB-2FbI;
-	Mon, 25 May 2026 16:43:10 +0000
-Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id E0B2A27202;
-	Mon, 25 May 2026 18:42:46 +0200 (CEST)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id lNK1EPbJY_67; Mon, 25 May 2026 18:42:46 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1779727366; bh=tYb7EiJrA7HY9h6NF25A/246WD8DV5q9e0H5fLjg+M4=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=hp0HLQvqO1mb5Dsk6KPITtG7rPvFkpEOi2o/Oru9pe0b0MeolFOwfLECjLDA//ZGp
-	 fTVwOWbtCJyskqQEmqg2jDO3pF7ULnA4nzf458Ai0aFExLs77d0UrOiedpeHU8s5+j
-	 Imb5RzFMtBIJ6w0fqxyUp7H+2IYSybOsv33d7S5sVBy4PQvX49ohnjkycTfGvKJoim
-	 1Dixd7VCGjW5/UHi1JPGQWXqatHABzYyZ1MPQBoKve+qgz2cvWBhOUaD3a995YCgJ7
-	 Wcp/ji0TLGbQwZZhHUWdbNiqF1oHX0zndh+mI0j7T+GnhLQ8gakq64DhKk15KTpO9/
-	 0580b2POZm1zQ==
-From: "Marco Scardovi (scardracs)" <scardracs@disroot.org>
-To: linusw@kernel.org,
-	brgl@kernel.org,
-	heiko@sntech.de
-Cc: linux-gpio@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	"Marco Scardovi (scardracs)" <scardracs@disroot.org>
-Subject: [PATCH 2/2] gpio: rockchip: fix teardown bugs and resource leaks
-Date: Mon, 25 May 2026 18:39:39 +0200
-Message-ID: <20260525164230.43307-3-scardracs@disroot.org>
-In-Reply-To: <20260525164230.43307-1-scardracs@disroot.org>
-References: <20260525164230.43307-1-scardracs@disroot.org>
+	id 1wRYP2-000000002nR-2SiZ
+	for linux-rockchip@lists.infradead.org;
+	Mon, 25 May 2026 16:43:44 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id ADC036008A;
+	Mon, 25 May 2026 16:43:43 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 49BDB1F000E9;
+	Mon, 25 May 2026 16:43:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779727423;
+	bh=OgsDFyP42Vfjuq6OtI+aOC2Wv89vd3+bjandhQMxepc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=fCu7yDOZyggX2FSu9uIyU4+X5Ymjl/iMEyoZv8QPH1Z3OXcUm6cVj28CSPbofYdLr
+	 6Wqry44T1/Clwkp0BN0PiKHJUJ4Y25k8zM4vhNq56r9rfD20AEqN6603p92ljAkR6P
+	 PJPJ5v77+6b+gpB7PX7+WpFThAmRejKMZjGzFgMRpEY5gZjj1I0vztjFmwUtvKstqH
+	 6rH51B0E0CgZ5b0792IZZj3K/AxIhCNz1nwjvEUc1T8e8ocdrilHSGPUSflb4G1HDe
+	 Ng+Hl56lVmKNybXf8qTJqwgQzZQbXqVExMnD30v3KGAiEcVCdJa4v7jBnc0y167rER
+	 nv3Fodai6UA+g==
+Date: Mon, 25 May 2026 17:43:39 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
+Cc: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org, heiko@sntech.de, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org,
+	linux-amarula@amarulasolutions.com, michael@amarulasolutions.com,
+	dario.binacchi@amarulasolutions.com
+Subject: Re: [PATCH 1/3] dt-bindings: vendor-prefixes: Add Axelera AI
+Message-ID: <20260525-prototype-dingbat-1aa80f9a112e@spud>
+References: <20260522174918.61523-1-patrick.barsanti@amarulasolutions.com>
+ <20260522174918.61523-2-patrick.barsanti@amarulasolutions.com>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_174308_908670_64ECAE4C 
-X-CRM114-Status: GOOD (  14.48  )
+In-Reply-To: <20260522174918.61523-2-patrick.barsanti@amarulasolutions.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,89 +67,50 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============2419304855809567359=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This commit addresses several teardown issues and resource leaks in the
-driver's remove path and error handling:
 
-1. Debounce clock reference leak: The debounce clock (bank->db_clk) was
-   obtained using of_clk_get() which increments the clock's reference
-   count, but clk_put() was never called. A devm action is now registered
-   to cleanly release it on unbind. Note that of_clk_get(..., 1) remains
-   necessary over devm_clk_get() because the DT binding does not define
-   clock-names, precluding name-based lookup.
+--===============2419304855809567359==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="yU57OYvm+3N+PKUP"
+Content-Disposition: inline
 
-2. Unregistered chained IRQ handler: The chained IRQ handler was not
-   disconnected in remove(). If a stray interrupt fired after the driver
-   was removed, the kernel would attempt to execute a stale handler,
-   leading to a panic. This is fixed by clearing the handler in remove().
 
-3. IRQ domain leak: The linear IRQ domain and its generic chips were
-   allocated manually during probe but never removed. The IRQ domain is
-   now removed during driver teardown to free the associated generic chips
-   and mappings.
+--yU57OYvm+3N+PKUP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Assisted-by: Antigravity:gemini-3.5-flash
-Signed-off-by: Marco Scardovi <scardracs@disroot.org>
----
- drivers/gpio/gpio-rockchip.c | 19 ++++++++++++++++++-
- 1 file changed, 18 insertions(+), 1 deletion(-)
+With the changed company name
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 
-diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index 33580093a4e7..c804f970d823 100644
---- a/drivers/gpio/gpio-rockchip.c
-+++ b/drivers/gpio/gpio-rockchip.c
-@@ -638,10 +638,17 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
- 	return ret;
- }
- 
-+static void rockchip_clk_put(void *data)
-+{
-+	struct clk *clk = data;
-+
-+	clk_put(clk);
-+}
-+
- static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- {
- 	struct resource res;
--	int id = 0;
-+	int id = 0, ret;
- 
- 	if (of_address_to_resource(bank->of_node, 0, &res)) {
- 		dev_err(bank->dev, "cannot find IO resource for bank\n");
-@@ -673,6 +680,13 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
- 			dev_err(bank->dev, "cannot find debounce clk\n");
- 			return -EINVAL;
- 		}
-+
-+		ret = devm_add_action_or_reset(bank->dev, rockchip_clk_put,
-+					       bank->db_clk);
-+		if (ret) {
-+			dev_err(bank->dev, "failed to register debounce clk action\n");
-+			return ret;
-+		}
- 		break;
- 	case GPIO_TYPE_V1:
- 		bank->gpio_regs = &gpio_regs_v1;
-@@ -789,6 +803,9 @@ static void rockchip_gpio_remove(struct platform_device *pdev)
- {
- 	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
- 
-+	irq_set_chained_handler_and_data(bank->irq, NULL, NULL);
-+	if (bank->domain)
-+		irq_domain_remove(bank->domain);
- 	gpiochip_remove(&bank->gpio_chip);
- }
- 
--- 
-2.54.0
+pw-bot: changes-requested
 
+--yU57OYvm+3N+PKUP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCahR8OwAKCRB4tDGHoIJi
+0pziAP4xs1iS8eMho7n65WZfzFGlOikZNpNfbCAqCzQB4jjgYwD+KNZpr8CllB8D
+wuCtPYseppNZoAc4eOeohE6q3dAU7AQ=
+=5Eju
+-----END PGP SIGNATURE-----
+
+--yU57OYvm+3N+PKUP--
+
+
+--===============2419304855809567359==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============2419304855809567359==--
+
