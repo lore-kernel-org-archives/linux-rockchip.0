@@ -4,79 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75E55CD5BC8
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 10:12:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46FF8CD5BD2
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 11:13:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:MIME-Version
-	:Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=2ld5iLjR1jrJtiWxMSuKs87uYaO21Gn2ZipKAKxC0fc=; b=CV1/pJSwNDB9xU
-	fJEKEGN3A+CyCzwwQKu7rQ9nfrFrM4Tmfy/mvs0fWbfBDBZHT1mEj3sTqAJvF8MYhIzfu8aDzvEUI
-	0m6lnoFKRUvnAc/O5NXwP/1NptNOoOuoWzGizW9NxUSsUs1FQey1p5Pvcnr4zl4qc/LWpZND6wyw3
-	otCSq4g8JEs96yqji7r+FiOyOGu05FNTGSqUErKT7Iv/Tk9JUczM5z8ZAPqNLKH/saLulZj2oThEc
-	wvXmGwgQlFZMzFTWw1yqK8tCWBBBUriY1gJR0S047tSO7bNWakf8EWx0F1YBv5f/T1bQKHH9l/lxM
-	nRfnszWr2mvRE4cgA0bQ==;
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
+	In-Reply-To:To:From:MIME-Version:Date:Reply-To:Content-ID:Content-Description
+	:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=TCr0fyQI5WNS+mHvqq8EQHIuhh33L1T7tN381MW+uZw=; b=RonYauabbSndY8
+	MeaIGYaBGxFMUtoel2mzDfMx0zC6bp0f1Q2laTrR+T0BpIRVS33yPK6ag66RqvrWh2060K2BcLHT8
+	3sZIhtwWcaCMHP5m3ma4rN+gur+lWcixpY+HnGEKIz8vCHiQob7XbVyrrxBbuTryfRCBmoFnKE2+x
+	8TvchOnaJmT9qnkE8TahENbiiqXRPQGIPkfvP+cJQSHb2kXK5yblUScIPw8NVmGFlyJtn85ffz21p
+	zipgZGdtDw3QL0bhFtnRGF2m2klvC5KIX/k15WfKR4TLn1Oatd/LB5CDZ+Oz+zyLDd5eznf8MTMY5
+	devHY9SI/k7hqXuA/pLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRSID-0000000Guzb-0CtB;
-	Mon, 25 May 2026 10:12:17 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wRTFm-0000000H3Kf-3FKj;
+	Mon, 25 May 2026 11:13:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRSIB-0000000Guyv-1W5V;
-	Mon, 25 May 2026 10:12:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8B6EF600BB;
-	Mon, 25 May 2026 10:12:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 2A8E9C2BCB7;
-	Mon, 25 May 2026 10:12:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1779703934;
-	bh=R1GgFe59YMZX6danIrFGUoWQKiOB3++Y2+t6P2g9wRo=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=NiJtpp1JxeiDN7T4QZ9Qez9xO/ym5qQAquuF6u0Ej/NvKNyG6x5WOTyQHQqcLpUw1
-	 i8a49TlJBrPOOCkJaq7VZ2XN8MEogdoA/4hn2xAiWuq7IHGBfqiwMVmwdweWnL8Y/o
-	 1cHVa1zhKwCAzSDsoykOz8d+U1jvCvH67ilSdCdKF1sRE1eb8NYuWrb3aCgLUrgwJU
-	 FDNcVMdA2Lp8Dhi5QSVaI4f9bMhIZ/89ZNtXwwQXHOgo5oVpEQkloVYaQiy4Oi+PLg
-	 Hw2w8Hu0HZE+RAM0p03UQ/YBDZLzMKWRdC0Ev2mU/KNf7DJNbcztD4LVX/ZRkU/R5N
-	 7huBJ4tvl9K2Q==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2278ACD5BD0;
-	Mon, 25 May 2026 10:12:14 +0000 (UTC)
-From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
-Date: Mon, 25 May 2026 12:12:12 +0200
-Subject: [PATCH] arm64: dts: rockchip: describe PCIe Ethernet controllers
- on NanoPC-T6
+	id 1wRTFk-0000000H3JC-2YBr;
+	Mon, 25 May 2026 11:13:49 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2EDCC43B7E;
+	Mon, 25 May 2026 11:13:48 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFB331F00A3A;
+	Mon, 25 May 2026 11:13:47 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779707628;
+	bh=gzBDFr43Boq9Lj7lrwvex2le7up+8Wg9eGEwYQ+PjtU=;
+	h=Date:From:Cc:To:In-Reply-To:References:Subject;
+	b=DOzzvhQSiS34iWE7nXECeeQpcxWWsGg/C9aX/BghWrz+rvSMthodByxXcIe2gTPn1
+	 frRj9aAbz9cFPG+jTgToU6avpbHx5CJrJf2YC6R4DMwn28O+lXO3eAucd2tyFiPTae
+	 zMAQZxXfUzM1gt4rvwfBKhgk5zcbHC9vxFX/eL3Kx0MSplvx+mOvzndibbwCnWYr8m
+	 81deYGQtF89WAPPHMTAzCz2VrFYfom70TOUbauHvXMQR4Kjq2uXrt4Zid/Cat4knP/
+	 /NTqdujID3PpecLSePgSx/DyFTN66aS601brDxoDcIYE0JaGgrv8e7wU0rC3WeEBAh
+	 Bnix/jWsap93w==
+Date: Mon, 25 May 2026 06:13:47 -0500
 MIME-Version: 1.0
-Message-Id: <20260525-rk3588-dts-rtl-eth-describe-dt-alias-v1-1-a6fcda563ac7@pardini.net>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXNSw7CMAxF0a1UHmMpCQ2N2ApikI+hhqogO6BKV
- fdOgOF5g/tWUBImhWO3gtCblR9zg911kMc4Xwm5NIMz7mC861Huex8ClqoodUKqIxbSLJyojRg
- njorZUrFhSEP2BlrqKXTh5XdzOv+tr3SjXL9t2LYPxz+gY4gAAAA=
-X-Change-ID: 20260524-rk3588-dts-rtl-eth-describe-dt-alias-c1ed187b7c50
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
-Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Ricardo Pardini <ricardo@pardini.net>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3532;
- i=ricardo@pardini.net; h=from:subject:message-id;
- bh=ATDxgV+aVRYA1qwVl5QQNVkoTUqIMI+aNMm96MahMCc=;
- b=owEBiQF2/pANAwAIATteP+Oex+3pAcsmYgBqFCB9KNIKy16b9ZOZvEfenPlRdjMemK/hkmuEK
- v7F67/+EWSJAU8EAAEIADkWIQSsGCMM9q/qytxIiJM7Xj/jnsft6QUCahQgfRsUgAAAAAAEAA5t
- YW51MiwyLjUrMS4xMiwwLDMACgkQO14/457H7ekCeAgAhETNghtgglmhDGNt9QFfL3n73Tw10Gc
- FzHh8hLZmz5mFgbpWN31ixqkFdOtvj6xz4ba3rSh/T0zezG3EObvlNMtmyPe9YfaDtOtSndYlMZ
- 4mKo83ioOZWwzJJMxuXdWWxe6siI7IWEQ7Zz0861Tf1qDaGyeDMj45dKMZq5bFhpsg8n619HJNd
- IVF7Mhc9uWFnTmE3V0xxaVl2sOc60rjztOgkT8EgUH9gEhk9ygegkxGOPs+jDIUDvYo+frdpe5c
- UVuwbJ6ax1BCseH9JqPOpLh38agQGmxWxXQBXlNAtVA2GEz8yfLj/qLIlfgjz89zkNa9C6f9q+F
- u96ZM+5/MSg==
-X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
- fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
-X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
- auth_id=588
-X-Original-From: Ricardo Pardini <ricardo@pardini.net>
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260525082033.117569-7-damon.ding@rock-chips.com>
+References: <20260525082033.117569-1-damon.ding@rock-chips.com>
+ <20260525082033.117569-7-damon.ding@rock-chips.com>
+Message-Id: <177970762670.3598384.1698792096821270137.robh@kernel.org>
+Subject: Re: [PATCH v7 06/10] dt-bindings: display: rockchip: analogix-dp:
+ Add support for RK3576
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260525_041348_663558_E1CD7533 
+X-CRM114-Status: GOOD (  12.37  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,122 +65,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Reply-To: ricardo@pardini.net
+Cc: dianders@chromium.org, heiko@sntech.de, dri-devel@lists.freedesktop.org, hjc@rock-chips.com, Conor Dooley <conor.dooley@microchip.com>, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Ricardo Pardini <ricardo@pardini.net>
 
-The FriendlyElec NanoPC-T6 carries two on-board Realtek RTL8125BG
-(r8169 family, PCI 10ec:8125) NICs, each behind its own RK3588 PCIe2x1
-controller (pcie2x1l1 and pcie2x1l2). Both host bridges were already
-enabled by the board DT, but the Ethernet function nodes themselves
-were not described, leaving the kernel without DT handles on the two
-NICs.
+On Mon, 25 May 2026 16:20:29 +0800, Damon Ding wrote:
+> RK3576 integrates an eDP TX controller compatible with the existing
+> RK3588 hardware design, reuse the same binding configuration directly.
+> 
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+> 
+> ---
+> 
+> Changes in v2:
+> - Split out a separate patch to add the "hclk" clock reference.
+> 
+> Chanegs in v4:
+> - Modify the commit msg.
+> 
+> Changes in v5:
+> - Add Acked-by tag.
+> ---
+>  .../bindings/display/rockchip/rockchip,analogix-dp.yaml         | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
 
-Describe the fixed PCI function nodes and attach ethernet0/ethernet1
-aliases to them.
+My bot found errors running 'make dt_binding_check' on your patch:
 
-Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
----
-This describes the two on-board Realtek RTL8125BG PCIe Ethernet
-controllers on the FriendlyElec NanoPC-T6 (RK3588) board and aliases
-them to ethernet0/ethernet1.
+yamllint warnings/errors:
+./Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml:34:9: [warning] wrong indentation: expected 10 but found 8 (indentation)
 
-Many Rockchip boards have on-board RTL8125 PCIe NICs, wired to
-pcie2x1l1 and pcie2x1l2. The controllers were already enabled in the
-board DT, but the Ethernet function nodes themselves are not
-described, so the kernel (and u-boot) has no DT handle on the NICs.
+dtschema/dtc warnings/errors:
 
-Adding the function nodes lets us:
-- expose stable ethernet0/ethernet1 aliases for the two NICs, the
-  same way other rk3588 boards alias their GMAC interfaces; and
-- let U-Boot's fdt_fixup_ethernet() patch mac-address properties in
-  at boot time from its ethaddr/eth1addr environment - useful on
-  boards (like this one) whose on-NIC EEPROM is not pre-programmed
-  with a unique MAC. The kernel and U-Boot then agree on the MAC,
-  which matters for network-boot setups.
+doc reference errors (make refcheckdocs):
 
-Checkpatch warnings:
--  WARNING: DT compatible string "pci10ec,8125" appears un-documented
--  WARNING: DT compatible string vendor "pci10ec" appears un-documented
-Both are expected. "pciVVVV,DDDD" is the Open Firmware PCI Bus
-Binding spelling, where VVVV/DDDD are the PCI vendor and device IDs
-allocated by the PCI-SIG (10ec = Realtek, 8125 = RTL8125). It is not a
-DT vendor prefix.
+See https://patchwork.kernel.org/project/devicetree/patch/20260525082033.117569-7-damon.ding@rock-chips.com
 
-If this is seen as a good thing, it would apply very similarly to
-the Radxa Rock 5 series and others.
----
- arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 30 ++++++++++++++++++++++
- 1 file changed, 30 insertions(+)
+The base for the series is generally the latest rc1. A different dependency
+should be noted in *this* patch.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-index 84b6b53f016ab..5d28c74847c58 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
-@@ -20,6 +20,8 @@ / {
- 	compatible = "friendlyarm,nanopc-t6", "rockchip,rk3588";
- 
- 	aliases {
-+		ethernet0 = &rtl_eth0;
-+		ethernet1 = &rtl_eth1;
- 		mmc0 = &sdhci;
- 		mmc1 = &sdmmc;
- 	};
-@@ -643,6 +645,20 @@ &pcie2x1l1 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie2_1_rst>;
- 	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x200000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x20 0x2f>;
-+
-+		rtl_eth0: ethernet@0,0 {
-+			compatible = "pci10ec,8125";
-+			reg = <0x210000 0 0 0 0>;
-+		};
-+	};
- };
- 
- &pcie2x1l2 {
-@@ -651,6 +667,20 @@ &pcie2x1l2 {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&pcie2_2_rst>;
- 	status = "okay";
-+
-+	pcie@0,0 {
-+		reg = <0x400000 0 0 0 0>;
-+		#address-cells = <3>;
-+		#size-cells = <2>;
-+		ranges;
-+		device_type = "pci";
-+		bus-range = <0x40 0x4f>;
-+
-+		rtl_eth1: ethernet@0,0 {
-+			compatible = "pci10ec,8125";
-+			reg = <0x410000 0 0 0 0>;
-+		};
-+	};
- };
- 
- &pcie30phy {
+If you already ran 'make dt_binding_check' and didn't see the above
+error(s), then make sure 'yamllint' is installed and dt-schema is up to
+date:
 
----
-base-commit: e7ae89a0c97ce2b68b0983cd01eda67cf373517d
-change-id: 20260524-rk3588-dts-rtl-eth-describe-dt-alias-c1ed187b7c50
+pip3 install dtschema --upgrade
 
-Best regards,
---  
-Ricardo Pardini <ricardo@pardini.net>
-
+Please check and re-submit after running the above command yourself. Note
+that DT_SCHEMA_FILES can be set to your schema file to speed up checking
+your schema. However, it must be unset to test all examples with your schema.
 
 
 _______________________________________________
