@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDB21CD5BC0
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 06:50:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CE26CD5BC0
+	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 07:00:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=7KufJvC7pbTGDfz3uVlBCZpK7xGDja3O6RAQLcn2XJs=; b=fsy0Dk0JVioQKI
-	fq/PlAlqkf7U5hin1O+yH7zU9DPDIYR0hRvIh6ua4PLTDRkL2gZg0/addpNEotC3dmcdC0NfKvDLz
-	BC5C0abyEJDUY6RW4XKi7Fd+oR6yftqK6/4N0jesJ5MzFRyHvfL+tpAS7di3Yw09yUrBQREmPD95w
-	jnDnkd8o9qhOmrPTLaSQGH6jTdDAF64siSA2IsjokaVh/6FVo3MlGBBQDtbrU9UKxeI+WDVAaUiK6
-	jIWQiXT7gLNh5kuVtXRjjE7cAT4lIyisxwvrUYB1yo0eLaiudkQ26nNasfQrnSd9XLaSwhOVehccp
-	bkqnc9v3nAzWOdpQQWRg==;
+	List-Owner; bh=Ibrmw+JMTHfJsyeW0LHzvIuCaQFitczj25ue1uva7NA=; b=C3CTxlicEnyE2Y
+	Cx0Z1Ug9EpCe/pMG3oq44nq++qDmNxgwjFpIMewXHOvAk2/OgOZKSnJlMyh0FMNDWG6r2C5/QVTj9
+	cEf8WN0Il5qnO/+68mREfbX0gS31JVyWoh+aCDxrBdOQhFQCAEKTg6Im80kGziFlXKkv3bH9mShl6
+	9UW21Kt4oFumiaUBwsLPpl7L6aRvZK5WuNGU0yrpP9w+nWPX4Mk90s65vJIGMbLVGa4+V+2AE3m2/
+	P+XsgIW2aVrUr63i+t7BO4LCOpwD/EA+L/nsNPa+brR62I0V5i/ZVESbRJ/dLveHr2Vr1uQJIK/1E
+	JTHP6zEyylTdUxB0oVsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRP8q-0000000GSam-1GI2;
-	Mon, 25 May 2026 06:50:24 +0000
-Received: from mail-m93134.xmail.ntesmail.com ([103.126.93.134])
+	id 1wRPIc-0000000GTzr-0mWq;
+	Mon, 25 May 2026 07:00:30 +0000
+Received: from mail-m17234.xmail.ntesmail.com ([45.195.17.234])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRP8n-0000000GSZd-3dmN;
-	Mon, 25 May 2026 06:50:23 +0000
+	id 1wRPIa-0000000GTzH-0LUo;
+	Mon, 25 May 2026 07:00:29 +0000
 Received: from Vostro-3710.. (unknown [113.80.141.91])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3faddbbba;
-	Mon, 25 May 2026 14:50:12 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3fae795b2;
+	Mon, 25 May 2026 15:00:22 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: heiko@sntech.de
 Cc: jonas@kwiboo.se,
@@ -36,22 +36,22 @@ Cc: jonas@kwiboo.se,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
 	Chukun Pan <amadeus@jmu.edu.cn>
-Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: Enable USB 2.0 ports on Radxa E20C
-Date: Mon, 25 May 2026 14:50:05 +0800
-Message-Id: <20260525065005.1056845-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
+Date: Mon, 25 May 2026 15:00:10 +0800
+Message-Id: <20260525070010.1060602-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260505171208.3267387-3-heiko@sntech.de>
-References: <20260505171208.3267387-3-heiko@sntech.de>
+In-Reply-To: <20260505171208.3267387-5-heiko@sntech.de>
+References: <20260505171208.3267387-5-heiko@sntech.de>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e5de5f50303a2kunm593068b6a1b50
+X-HM-Tid: 0a9e5def463103a2kunmd5eb258ea242f
 X-HM-MType: 10
 X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCGR8YVkMeT0MeGRhCTUMaT1YeHw
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSh4YVhhJH0tOHR1IQxodQ1YeHw
 	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKSkhVQ0tVSk9KVUJKWVdZFhoPEhUdFFlBWUtVS1VLVUtZBg
 	++
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260524_235022_122381_76319551 
-X-CRM114-Status: UNSURE (   6.25  )
+X-CRM114-CacheID: sfid-20260525_000028_324512_6CC4B2CC 
+X-CRM114-Status: UNSURE (   4.73  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,13 +77,17 @@ Hi,
 > +	phys = <&usb2phy_otg>;
 > +	phy-names = "usb2-phy";
 
-I received this warning for this otg port:
-[    0.163307] dwc3 fe500000.usb: Configuration mismatch. dr_mode forced to host
+The same warning for this otg port:
+[    0.232211] dwc3 fe500000.usb: Configuration mismatch. dr_mode forced to host
 
-> +	snps,dis_u2_susphy_quirk;
+> +&usb2phy_otg {
+> +	status = "okay";
+> +};
 
-This property is missing in the sige1 patch. Since this property
-is related to phy vbus detection, can we move it to rk3528.dtsi?
+OTG port missing: `vbus-supply = <&vcc5v0_usb_otg>;` [1]
+
+[1]
+https://drive.google.com/drive/folders/15uvc2lcOAKP0enXezASUhVFLuzkq3IEX
 
 Thanks,
 Chukun
