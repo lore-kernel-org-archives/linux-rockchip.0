@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB0E7CD5BD0
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5172CD5BB1
 	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 12:54:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,23 +12,23 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=mi56idSot1Nw90d+9Ah5TqESRmdudGXs7aN4FCGc70Q=; b=jA/Zt4dC7sA77V
-	P8XEVGyU7sPDObWamsonWu8oUrxDQSgi2I2T0laRIQ/hKl9lWQLQCusS+eOqojuNg/OodZqcUhBCx
-	8l4IeeifDXuCm1zQ9AvvwAO1JpyDkQvKEexWsmumOsIfUDsxOmR3NhQ75b5+F69Cy+XH+qf0cihDM
-	P7LcpEv/giVW2mtoX0h95pcDcRv1OTttz9PbWIPvnm+dICgW8yvGZnc6F22CGBEQztAXAnb18YhXP
-	JM0cMyuKk7zdtEV5u4c7juh2a2Jk8ytmKttQBBjbuDNOYvrXAauMc+mr5pjxWiiaq4i3dfaAyXROb
-	hc3Gm4qYfcJPJxmjKyHA==;
+	List-Owner; bh=I6h8BfDweGDe506aS2EgvOgMNN3m9M5p+AzoHDGkja0=; b=kPlCkkdI8OKr3o
+	TwJd+T/8WqFvZdP0Uigz5i2WX3thN9vTZshvi+NPPwzfzWbbOyEDqiwGxLtvdTZ+2Y9vv2jrZoc8e
+	pMETf8kMIPxD4Yc2/lO3Rw6dwkyeIf6xvSv3upVaGloDiNV+0sqTHY3vqugiydFBc12CtZ7kZGN0E
+	aSQp0Kg30GmAdtLx9MpqH0vvwDWhPj12lCXzsFJ47xtEhS/wM+ym/C6nO8kqNQQawfZ1lxvCkxJQj
+	UHP5dCTrSdJsC59u3ASCReZ7bvqb9v0TPNqAmMz83W7V1Qpq3eCIlKg78sdg+TEaZn2CfoKYXEn/i
+	DhrENpyNi26ZZAqNY2+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRUov-0000000HF01-1gwE;
-	Mon, 25 May 2026 12:54:13 +0000
-Received: from mail-m82126.xmail.ntesmail.com ([156.224.82.126])
+	id 1wRUon-0000000HEtb-0nR2;
+	Mon, 25 May 2026 12:54:05 +0000
+Received: from mail-m12811.netease.com ([103.209.128.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRUoj-0000000HEp0-1e7n;
-	Mon, 25 May 2026 12:54:02 +0000
+	id 1wRUoh-0000000HEov-332S;
+	Mon, 25 May 2026 12:54:01 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3fbb28c3e;
-	Mon, 25 May 2026 20:53:57 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3fbb28c3b;
+	Mon, 25 May 2026 20:53:55 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: hjc@rock-chips.com,
 	heiko@sntech.de,
@@ -44,26 +44,26 @@ To: hjc@rock-chips.com,
 	andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
 	rfoss@kernel.org
-Subject: [PATCH v8 03/10] arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
-Date: Mon, 25 May 2026 20:53:24 +0800
-Message-Id: <20260525125331.140059-4-damon.ding@rock-chips.com>
+Subject: [PATCH v8 02/10] dt-bindings: display: rockchip: analogix-dp: Add per-clock descriptions
+Date: Mon, 25 May 2026 20:53:23 +0800
+Message-Id: <20260525125331.140059-3-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260525125331.140059-1-damon.ding@rock-chips.com>
 References: <20260525125331.140059-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e5f32faa003a8kunm7b8971f5af5cb7
+X-HM-Tid: 0a9e5f32f3f403a8kunm7b8971f5af5cb1
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaTUkYVh4ZQ0pITUNOTENPTFYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaThlJVh8dGU1DGkkaShoYTlYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=YaDNrOPVmHBdKItOjfrTcaUs+B2k5bqYUSr2FlB9n/5DK3Uop55V5ETAQBa1ehHaKST45/IPePkFKbWU1w5a1BXfSjfH3zEZGF2JS4p20HDCZUr25QNMsR7yEB0TGsEqYMqlXWZiv97XvW68zjL7oYULYoqvB2ziIJm4MQOGPX4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=cQJ/4r16q/9Bq/DzJvmBXTuihGNdr3jzwWB+vDNpPpo=;
+	b=XXeo+ZkS9GpvLDX4WzINKecB9azQuiwgEEfOhOqZg7/RUL3cCGLV7GRKkllv+hb1re/tmxkcVgSN+YexsPdNbawmGWblHbrsbSOikTytnOpmQDtWuOSo2qlGEX6Bhu62CEqRmf3691n1CUovyKwuZMGS4nbYPbVuiUH9EQWpWSM=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=lPaPwbKLMiVGoyEqHuWPPFV5Jeqqnimp8X8CsnMk95E=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_055401_707030_35C448CE 
-X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-CacheID: sfid-20260525_055359_976741_44EFBDC4 
+X-CRM114-Status: UNSURE (   8.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,45 +76,46 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the required HCLK_VO1 bus clock to RK3588 eDP0 node with
-corresponding clock-name "hclk". This clock is necessary for the
-eDP controller to access video output GRF and work properly.
+Supplement dedicated description for each clock in the clocks
+property, clarifying the function of each clock input for the
+Analogix DP controller binding.
 
-Previously the clock was enabled implicitly via GRF phandle
-reference. Add it explicitly now to align with updated binding.
-
-Fixes: dc79d3d5e7c7 ("arm64: dts: rockchip: Add eDP0 node for RK3588")
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
 
 Changes in v4:
 - Modify the commit msg.
----
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-index 4fb8888c281c..24a5ccbac08c 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-base.dtsi
-@@ -1712,8 +1712,8 @@ hdmi0_out: port@1 {
- 	edp0: edp@fdec0000 {
- 		compatible = "rockchip,rk3588-edp";
- 		reg = <0x0 0xfdec0000 0x0 0x1000>;
--		clocks = <&cru CLK_EDP0_24M>, <&cru PCLK_EDP0>;
--		clock-names = "dp", "pclk";
-+		clocks = <&cru CLK_EDP0_24M>, <&cru PCLK_EDP0>, <&cru HCLK_VO1>;
-+		clock-names = "dp", "pclk", "hclk";
- 		interrupts = <GIC_SPI 163 IRQ_TYPE_LEVEL_HIGH 0>;
- 		phys = <&hdptxphy0>;
- 		phy-names = "dp";
+Changes in v5:
+- Add Acked-by tag.
+---
+ .../bindings/display/rockchip/rockchip,analogix-dp.yaml      | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+index a1ab7a77bdd3..81240ad67385 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+@@ -19,7 +19,10 @@ properties:
+ 
+   clocks:
+     minItems: 2
+-    maxItems: 3
++    items:
++      - description: Reference clock
++      - description: APB bus clock
++      - description: GRF or AHB bus clock
+ 
+   clock-names:
+     minItems: 2
 -- 
 2.34.1
 
