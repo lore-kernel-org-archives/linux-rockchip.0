@@ -4,56 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50776CD5BC8
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 16:39:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3755CD5BB1
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 17:11:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4A3OSM474s4no+YXRdfyS14nOQa2yTapaVuXn7g3k54=; b=ukRtJf2bAkTNTS5j8Gb0PNlT8o
-	m0zBm9zcpasnuc3Z/6O62FhMYjgT3MeRNFMb3jUHbquKO4ci/Lew1GQoiXrovQtW8MDFXYx3NMYmE
-	8tFPrXwAjcIjUEFnK1wEZYYDCIw5Cb/pnN1+pSpdmtD1K3BA+eTlu2hIpvLb/60xVJwpZERIEcqIa
-	5fjB/e81Q24O/6GhNqQvwtyFx91/Qkl4mdWcEoObjoVEVEQ8lLLHn2D/SoLAIxCX/uw0QdH1dU+hw
-	Xim94+CBLbZQ90JA9SGwcTpQb8HPG8oM2P1ua67EfKz2lXOHXvOSj3SZaeuVPN4CwK0jg/3fbWsT4
-	QHAqXdNw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=gO7hU30VnZCjc7uPxFrOuh5TEHPn3t/4Dd0WyIZvaJI=; b=ROSHp55FGEhzZt
+	rji8MZzQvit2RL1s2uGn79HiVqz+q3i81aYkrbypLX31Oh6BPqv0kMfhU2wr0XqpjoPKcWuXm76ab
+	06k7YOU1LFFub/Yoe1Y1LCpss34dWfazVl3Ph6kqYWfq3vfhQY7ZgwDINZk39RT8I/U4dtQWwW2Zg
+	jqYbJXqrRINQtWFqvw+wAVNZ/+Uz79gvyNnrVo38gmNWhiedA2PCEY48fJ7qHLiaahe3bxfS/htzs
+	lgw5BGe3HRrtLTF5xAnmJ7qAZGK0VKnPqTUDUL3w5dKTcOhOJmWVHzzkYhN2lQassr6OZwngcPh1s
+	OgrylQ7eE8jt9TTk/8gQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRuop-00000002XRT-3jOk;
-	Tue, 26 May 2026 16:39:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wRvJD-00000002fFZ-2JRL;
+	Tue, 26 May 2026 17:11:15 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRuoo-00000002XQz-2SUG;
-	Tue, 26 May 2026 16:39:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C9AD2600FC;
-	Tue, 26 May 2026 16:39:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A92B51F000E9;
-	Tue, 26 May 2026 16:39:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1779813589;
-	bh=muQvscvrR0GygbyWY9xTCCnVzYrNRWHq2FyEs8Z2mhg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WV0ha9NBjJDXnyInyw9E6XVFcsb46b1ZidB7yHTv2A+62lesDDMgl4Ymotk9a0Vd6
-	 gdgMrxkfiiZJGFM7Pot5NNyYqyjkfWkhmvm1xZ9Z5+juouZQPlB4Svurg7ThTkimJB
-	 10SKX7kYGXG4sRSwJdYmfM+1TAMz924wXhe0OrXk42QpO+0EkKI2M+1f7qGxtR4GPp
-	 yj5VUIG7Ds8Qmu4CauXb709S45fG7bAZuTjLEeCewOsYnjgwcldzqA4q03TUKCos/k
-	 koeE75BD5mx9DGn4KHXb8E2l6zE69d2n3mzEfI6tjQKNzk8/E0E+EHJz5Bt9c7N6Z3
-	 KUgoUzz4UEDNg==
-Date: Tue, 26 May 2026 17:39:42 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v8 01/10] dt-bindings: display: rockchip: analogix-dp:
- Fix hclk as third clock for RK3588
-Message-ID: <20260526-sizing-slush-ebb20673cdc9@spud>
-References: <20260525125331.140059-1-damon.ding@rock-chips.com>
- <20260525125331.140059-2-damon.ding@rock-chips.com>
- <20260525-ominous-hurling-c24874030f5a@spud>
- <f6c2f07b-52b8-4181-aa1d-a7d8dcda245c@rock-chips.com>
- <0c6299ce-29a6-4443-9877-498d65c8881b@rock-chips.com>
+	id 1wRvJA-00000002fEX-36T0;
+	Tue, 26 May 2026 17:11:14 +0000
+Received: from mail01.disroot.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id C740A26FB1;
+	Tue, 26 May 2026 19:11:07 +0200 (CEST)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id KdRAlyE6vvhA; Tue, 26 May 2026 19:11:07 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1779815467; bh=nG8T2sDyMTvq1VTUzB4uTiqI65Ywba/cU0io/fgNHAM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=brMpP/3uRaqBFyS/3FuWaqj1LkIPLM+tFUWQRmjORbIzViIkjkFoIPeTkRbUS8zKs
+	 T1lRwi0t99btr6XxUHAVG4C867WQISraNMZIsSq24o+dcwB1tXcVQIAz46Yh2bvpCu
+	 JgxJHhkG4XyFoYHChl+8F6RP/G28Wj3wGQdNDiVyYd1q2i5OeRYb4N44AuWaxPU8wV
+	 cDiG69QFl4XFcpm8RbK5qeD/h/21HpPgUfOryzfzHg3bFWUz6ZGXaYH3ODantIsYCH
+	 jZeX0y86TV0PKcZeFCmMbsqNpvYcwszxdeD/c5Uy6Cgotvehm5IEut3i+vkoFwoctl
+	 9CYvG703MaCow==
+From: Marco Scardovi <scardracs@disroot.org>
+To: brgl@kernel.org
+Cc: heiko@sntech.de,
+	linusw@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	scardracs@disroot.org
+Subject: [PATCH v2 2/2] gpio: rockchip: teardown bugs and resource leaks
+Date: Tue, 26 May 2026 19:02:46 +0200
+Message-ID: <20260526171050.12785-3-scardracs@disroot.org>
+In-Reply-To: <20260526171050.12785-1-scardracs@disroot.org>
+References: <CAMRc=Mfk9tP091DN=5kjb8fvFhj1=MiBZSq4NJ7+k5LNCVy9bw@mail.gmail.com>
+ <20260526171050.12785-1-scardracs@disroot.org>
 MIME-Version: 1.0
-In-Reply-To: <0c6299ce-29a6-4443-9877-498d65c8881b@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260526_101113_186997_5DF76877 
+X-CRM114-Status: GOOD (  14.09  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,248 +72,90 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Type: multipart/mixed; boundary="===============7324432414839061843=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Address several teardown issues and resource leaks in the driver's remove
+path and error handling:
 
---===============7324432414839061843==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Zfz/XMY9sGbWvmeP"
-Content-Disposition: inline
+1. Debounce clock reference leak: The debounce clock (bank->db_clk) is
+   obtained using of_clk_get() which increments the clock's reference
+   count, but clk_put() is never called. Register a devm action to
+   cleanly release it on unbind. Note that of_clk_get(..., 1) remains
+   necessary over devm_clk_get() because the DT binding does not define
+   clock-names, precluding name-based lookup.
 
+2. Unregistered chained IRQ handler: The chained IRQ handler is not
+   disconnected in remove(). If a stray interrupt fires after the driver
+   is removed, the kernel attempts to execute a stale handler, leading
+   to a panic. Fix this by clearing the handler in remove().
 
---Zfz/XMY9sGbWvmeP
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+3. IRQ domain leak: The linear IRQ domain and its generic chips are
+   allocated manually during probe but never removed. Remove the IRQ
+   domain during driver teardown to free the associated generic chips
+   and mappings.
 
-On Tue, May 26, 2026 at 07:27:55PM +0800, Damon Ding wrote:
-> Hi Conor,
->=20
-> On 5/26/2026 8:54 AM, Damon Ding wrote:
-> > Hi Conor,
-> >=20
-> > On 5/26/2026 12:54 AM, Conor Dooley wrote:
-> > > On Mon, May 25, 2026 at 08:53:22PM +0800, Damon Ding wrote:
-> > > > RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
-> > > > registers and enable the video datapath.
-> > > >=20
-> > > > Previously, the clock was enabled implicitly via the 'rockchip,vo-g=
-rf'
-> > > > phandle reference, which allowed the eDP to work without explicitly
-> > > > managing the hclk_vo1 clock. However, this is not safe or explicit.
-> > > >=20
-> > > > To make the clock dependency explicit, enforce per-SoC clock-names
-> > > > requirements:
-> > > > =A0 - RK3288: 2 clocks (dp, pclk)
-> > > > =A0 - RK3399: 3 clocks (dp, pclk, grf)
-> > > > =A0 - RK3588: 3 clocks (dp, pclk, hclk)
-> > > >=20
-> > > > Do not reuse the 'grf' clock name for RK3588 because it represents
-> > > > a different clock with distinct control logic:
-> > > > - The 'grf' clock is only for GRF register access and is toggled
-> > > > =A0=A0 dynamically during register access.
-> > > > - The 'hclk' clock controls both GRF access and video datapath
-> > > > =A0=A0 gating, and must remain enabled during probe.
-> > > >=20
-> > > > Fixes: f855146263b1 ("dt-bindings: display: rockchip:
-> > > > analogix-dp: Add support for RK3588")
-> > > > Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-> > > >=20
-> > > > ---
-> > > >=20
-> > > > Changes in v4:
-> > > > - Modify the commit msg.
-> > > >=20
-> > > > Changes in v5:
-> > > > - Enforce the correct third clock name on a per-compatible basis.
-> > > > - Modify the commit msg simultaneously.
-> > > >=20
-> > > > Changes in v6:
-> > > > - Expand more detail commit msg about using hclk instead of grf clo=
-ck.
-> > > >=20
-> > > > Changes in v7:
-> > > > - List all valid clock names at the top level, and constrain the cl=
-ock
-> > > > =A0=A0 count for each platform with minItems/maxItems in allOf.
-> > > >=20
-> > > > Changes in v8:
-> > > > - Fix indentation to 10 for enum in clock-names property.
-> > > > ---
-> > > > =A0 .../rockchip/rockchip,analogix-dp.yaml=A0=A0=A0=A0=A0=A0=A0 | 3=
-4 ++++++++++++++++++-
-> > > > =A0 1 file changed, 33 insertions(+), 1 deletion(-)
-> > > >=20
-> > > > diff --git a/Documentation/devicetree/bindings/display/rockchip/
-> > > > rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/
-> > > > display/rockchip/rockchip,analogix-dp.yaml
-> > > > index d99b23b88cc5..a1ab7a77bdd3 100644
-> > > > --- a/Documentation/devicetree/bindings/display/rockchip/
-> > > > rockchip,analogix-dp.yaml
-> > > > +++ b/Documentation/devicetree/bindings/display/rockchip/
-> > > > rockchip,analogix-dp.yaml
-> > > > @@ -26,7 +26,9 @@ properties:
-> > > > =A0=A0=A0=A0=A0 items:
-> > > > =A0=A0=A0=A0=A0=A0=A0 - const: dp
-> > > > =A0=A0=A0=A0=A0=A0=A0 - const: pclk
-> > > > -=A0=A0=A0=A0=A0 - const: grf
-> > > > +=A0=A0=A0=A0=A0 - enum:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - grf
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 - hclk
-> > > > =A0=A0=A0 power-domains:
-> > > > =A0=A0=A0=A0=A0 maxItems: 1
-> > > > @@ -60,6 +62,32 @@ required:
-> > > > =A0 allOf:
-> > > > =A0=A0=A0 - $ref: /schemas/display/bridge/analogix,dp.yaml#
-> > > > +=A0 - if:
-> > > > +=A0=A0=A0=A0=A0 properties:
-> > > > +=A0=A0=A0=A0=A0=A0=A0 compatible:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 contains:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 enum:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 - rockchip,rk3288-dp
-> > > > +=A0=A0=A0 then:
-> > > > +=A0=A0=A0=A0=A0 properties:
-> > > > +=A0=A0=A0=A0=A0=A0=A0 clocks:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 maxItems: 2
-> > > > +=A0=A0=A0=A0=A0=A0=A0 clock-names:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 maxItems: 2
-> > > > +
-> > > > +=A0 - if:
-> > > > +=A0=A0=A0=A0=A0 properties:
-> > > > +=A0=A0=A0=A0=A0=A0=A0 compatible:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 contains:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 enum:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0=A0 - rockchip,rk3399-edp
-> > > > +=A0=A0=A0 then:
-> > > > +=A0=A0=A0=A0=A0 properties:
-> > > > +=A0=A0=A0=A0=A0=A0=A0 clocks:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 minItems: 3
-> > > > +=A0=A0=A0=A0=A0=A0=A0 clock-names:
-> > > > +=A0=A0=A0=A0=A0=A0=A0=A0=A0 minItems: 3
-> > >=20
-> > > If you go back to v6, you'll see that I never asked you to remove the
-> > > explict clock-names from here or below. Only the one from the 3288
-> > > section. The minItems was an addition, not a replacement.
-> > >=20
-> > > pw-bot: changes-requested
-> > >=20
-> >=20
-> > Sorry for the misunderstanding. I will restore the explicit clock-names
-> > definitions and fix this in next version.
-> >=20
->=20
-> Sorry to bother you. I attempted to place the explicit clock-names under
-> minItems:
->=20
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,=
-analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockc=
-hip,analogix-dp.yaml
-> index a1ab7a77bdd3..ef03edf52de8 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
-x-dp.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
-x-dp.yaml
-> @@ -87,6 +87,10 @@ allOf:
->            minItems: 3
->          clock-names:
->            minItems: 3
-> +          items:
-> +            - const: dp
-> +            - const: pclk
-> +            - const: grf
->=20
->    - if:
->        properties:
-> @@ -100,6 +104,10 @@ allOf:
->            minItems: 3
->          clock-names:
->            minItems: 3
-> +          items:
-> +            - const: dp
-> +            - const: pclk
-> +            - const: hclk
->          resets:
->            minItems: 2
->          reset-names:
->=20
-> make dt_binding_check DT_SCHEMA_FILES=3DDocumentation/devicetree/bindings=
-/display/rockchip/rockchip,analogix-dp.yaml
->=20
-> Then the following errors occurred:
->=20
->   SCHEMA  Documentation/devicetree/bindings/processed-schema.json
->   CHKDT   ./Documentation/devicetree/bindings
-> /home/ding/drm-misc/Documentation/devicetree/bindings/display/rockchip/ro=
-ckchip,analogix-dp.yaml:
-> allOf:2:then:properties:clock-names: 'oneOf' conditional failed, one must=
- be
-> fixed:
->         False schema does not allow 3
->         [{'const': 'dp'}, {'const': 'pclk'}, {'const': 'grf'}] is too long
->         [{'const': 'dp'}, {'const': 'pclk'}, {'const': 'grf'}] is too sho=
-rt
->         1 was expected
->         3 is greater than the maximum of 2
->         hint: "minItems" is only needed if less than the "items" list len=
-gth
->         from schema $id: http://devicetree.org/meta-schemas/items.yaml
-> /home/ding/drm-misc/Documentation/devicetree/bindings/display/rockchip/ro=
-ckchip,analogix-dp.yaml:
-> allOf:3:then:properties:clock-names: 'oneOf' conditional failed, one must=
- be
-> fixed:
->         False schema does not allow 3
->         [{'const': 'dp'}, {'const': 'pclk'}, {'const': 'hclk'}] is too lo=
-ng
->         [{'const': 'dp'}, {'const': 'pclk'}, {'const': 'hclk'}] is too sh=
-ort
->         1 was expected
->         3 is greater than the maximum of 2
->         hint: "minItems" is only needed if less than the "items" list len=
-gth
->         from schema $id: http://devicetree.org/meta-schemas/items.yaml
->   LINT    ./Documentation/devicetree/bindings
->   DTEX Documentation/devicetree/bindings/display/rockchip/rockchip,analog=
-ix-dp.example.dts
->   DTC [C] Documentation/devicetree/bindings/display/rockchip/rockchip,ana=
-logix-dp.example.dtb
->=20
-> Neither keeping only minItems nor only the explicit clock-names causes any
-> errors. Would it be a better idea to keep just the explicit clock-names
-> here?
+Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
+Assisted-by: Antigravity:gemini-3.5-flash
+Signed-off-by: Marco Scardovi <scardracs@disroot.org>
+---
+ drivers/gpio/gpio-rockchip.c | 19 ++++++++++++++++++-
+ 1 file changed, 18 insertions(+), 1 deletion(-)
 
-Sure.
+diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
+index 33580093a4e7..c804f970d823 100644
+--- a/drivers/gpio/gpio-rockchip.c
++++ b/drivers/gpio/gpio-rockchip.c
+@@ -638,10 +638,17 @@ static int rockchip_gpiolib_register(struct rockchip_pin_bank *bank)
+ 	return ret;
+ }
+ 
++static void rockchip_clk_put(void *data)
++{
++	struct clk *clk = data;
++
++	clk_put(clk);
++}
++
+ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ {
+ 	struct resource res;
+-	int id = 0;
++	int id = 0, ret;
+ 
+ 	if (of_address_to_resource(bank->of_node, 0, &res)) {
+ 		dev_err(bank->dev, "cannot find IO resource for bank\n");
+@@ -673,6 +680,13 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ 			dev_err(bank->dev, "cannot find debounce clk\n");
+ 			return -EINVAL;
+ 		}
++
++		ret = devm_add_action_or_reset(bank->dev, rockchip_clk_put,
++					       bank->db_clk);
++		if (ret) {
++			dev_err(bank->dev, "failed to register debounce clk action\n");
++			return ret;
++		}
+ 		break;
+ 	case GPIO_TYPE_V1:
+ 		bank->gpio_regs = &gpio_regs_v1;
+@@ -789,6 +803,9 @@ static void rockchip_gpio_remove(struct platform_device *pdev)
+ {
+ 	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
+ 
++	irq_set_chained_handler_and_data(bank->irq, NULL, NULL);
++	if (bank->domain)
++		irq_domain_remove(bank->domain);
+ 	gpiochip_remove(&bank->gpio_chip);
+ }
+ 
+-- 
+2.54.0
 
-This feels like a bug because I have no idea where the "maximum of 2" is
-coming from. I'll ask Rob about it.
-
---Zfz/XMY9sGbWvmeP
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHQEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCahXMywAKCRB4tDGHoIJi
-0nNxAPdSXs3+yTeA4WF2uX8dr8/6syoPbTc3u7WbdikCLqnCAP41C/X0iWwW3uhW
-CtmWRM45+bFWCcZWdgPOHmBAXes6Ag==
-=H19y
------END PGP SIGNATURE-----
-
---Zfz/XMY9sGbWvmeP--
-
-
---===============7324432414839061843==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============7324432414839061843==--
-
