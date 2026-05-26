@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AB83CD5BD0
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 12:08:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55AE3CD5BD0
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 12:29:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:In-Reply-To:
-	To:From:Subject:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=8K6eFZmX5vCzNpEI4+XPvII/J1o0d6cL3GRoEBnNbuU=; b=jXeafKjGHzkrWe
-	jbFDRYHVwzSyYQicGiBtmEz1G6SdaEj4DaU1YaDBSzUjmYEi8kjrX9ojds+QpENGRkBQyxq0BTJH0
-	pFAi3WYFxPDy273ufv2xFKgQ5Y+F5zpIcNzolDKDglpYRB5GODqsYT2005dCkHrkEuJ0nSFgHwWKn
-	VHlwarev4K+Uc4O79Zy/lcJQ/cFSMclyCWecr9lK/j0KzyPUzbG30A2ODttJqqJCgtd8LnwF3Gb7q
-	nKLrnrLRJ7HuBU8NdNo3vIXpzIiwgiCP+JdqGx/ptVIZo/tspdd/6Ra3HAUSnSXAK72vINuOP24xw
-	I+4dyYYTR18NlnUtdoxw==;
+	List-Owner; bh=09xj6VMN8vXZhJy5AGLOcXibn07sWZ00qyiutkZfo84=; b=0OXX1GzDoJCkOL
+	ZkyUe5dG1Xtbk9m1931Rvnj6YvXTPltOpEcBBZGshebPb5z6+ivZehHRtHWAk4m3GcnJqnN34BNNr
+	0nlO9YsImDxNg4y6V0HfqalJzse7N73xDFzCH2wWwSSWJMzRBAz30gmKYTVLgqTAfiQK5m/ppkXZ0
+	L2YuyVneeDNXtQoY+AmKv0tIzhnBQQYMZ5WQpsaDHi8RrTRTO5SCYH8nRAezaopWPyBH0XACpdc0B
+	6XRVKbe9CvlxR2TwTSG7kMQRmRpRv6apFS56oMi9oqRki8QEG5vi9M2E8ZVuPMf12oCX3rltCrze5
+	UNDbXpVEh1Xt5KcZtCRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRqa5-00000001sia-2ipU;
-	Tue, 26 May 2026 12:08:21 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1wRqut-00000001usw-2uSX;
+	Tue, 26 May 2026 12:29:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRqa2-00000001shC-2xpP
+	id 1wRquq-00000001usS-3zEz
 	for linux-rockchip@lists.infradead.org;
-	Tue, 26 May 2026 12:08:21 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id B6FFE1A36D2;
-	Tue, 26 May 2026 12:08:13 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 866A56011D;
-	Tue, 26 May 2026 12:08:13 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7181C10888356;
-	Tue, 26 May 2026 14:07:55 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1779797292; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=DK8eA9/GN7NzLuxBx/GTovhK/apGoGFfUGeCC5d5iyI=;
-	b=RNU5++s0L9bfnoxU24iB+xsMHm5P0Ae9cOJvZKPHxeM97AF368q8RuNWiwcQLO12P9CZ6o
-	moU9/AUpCKd8iyFRV54iR+l+nhFxSXVFwjQn4i9RbIvM26ms7QueBOCrGZ0MMKChE14P7P
-	HZ4an8aN8PC+KrEOHJu3tLBY7Zi/DIs7l3U2GzxAYnRfA3DEp2mUT0jZPfnbEJn4DAORa7
-	xVj58D97QdBzzHxdheW2w2kq4sIQtzS+j2fdh6rSwYZIdd5EZ0oVBR7inInOpoANc0OCpg
-	LhcQsFUfMpAh+toIhmX2aljXCS2HNweQL5NuMs0i3q0TuPvtlh6+YQ76VYqetA==
+	Tue, 26 May 2026 12:29:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 0006241753;
+	Tue, 26 May 2026 12:29:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92C5F1F000E9;
+	Tue, 26 May 2026 12:29:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779798587;
+	bh=oUNsGHdOmMSQXK0Lu7gexvE/BygIT4cqeMVi5MZV/4c=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=i+rR01GTB536M7SDkkVuqMD9mOL9yBlQJihdQ2oIzdjispo8VIrdsDRN/GIUgCSZT
+	 XaG7Vwc3/xYj0bsjzjAfU0GQsr2bmR1V/IZNSbivAO3OvAx43KGURpEvi3TF+GJpJd
+	 9v97PiJQ3MKClrZuPT//wr9D+liW2Fm/3/AT/Jg0ElWho0bmJZXndQq5OxfxCxWJqA
+	 rOBVL/hBhRyJ/Y97oMDrZEHEfrE6Bh5qQbt8o1kAforDsjCGIRPG8B0yndvNDEnMV4
+	 C62NRJaIDxvzeUJyGiOLzgN7n0Y5K4Xsr7azbMCW8V1YiZG2fmCBuODM8cRP28OQlh
+	 zDe00NXnh/7sQ==
+Date: Tue, 26 May 2026 13:29:37 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Chris Morgan <macromorgan@hotmail.com>
+Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
+ andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
+ jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
+ devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
+ krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
+Subject: Re: [PATCH V8 05/10] iio: imu: inv_icm42607: Add PM support for
+ icm42607
+Message-ID: <20260526132937.491f75af@jic23-huawei>
+In-Reply-To: <PH0PR19MB99733838CE49A3752AAEA250ABA50F2@PH0PR19MB997338.namprd19.prod.outlook.com>
+References: <20260518200526.458421-1-macroalpha82@gmail.com>
+	<20260518200526.458421-6-macroalpha82@gmail.com>
+	<20260520181353.0a0371cb@jic23-huawei>
+	<PH0PR19MB9973386EF146AD6590DE5508F5A50E2@PH0PR19MB997338.namprd19.prod.outlook.com>
+	<20260522120515.652661ed@jic23-huawei>
+	<PH0PR19MB99733838CE49A3752AAEA250ABA50F2@PH0PR19MB997338.namprd19.prod.outlook.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 2/2] drm/bridge: analogix_dp: Add support for
- optional data-lanes mapping
-From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-To: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260525094731.121380-3-damon.ding@rock-chips.com>
-References: <20260525094731.121380-1-damon.ding@rock-chips.com>
- <20260525094731.121380-3-damon.ding@rock-chips.com>
-Date: Tue, 26 May 2026 14:07:50 +0200
-Message-Id: <177979727057.297330.10691183273720133245.b4-review@b4>
-X-Mailer: b4 0.15.2
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260526_050818_885620_9633F083 
-X-CRM114-Status: GOOD (  10.55  )
+X-CRM114-CacheID: sfid-20260526_052949_039700_21C8EBDB 
+X-CRM114-Status: GOOD (  53.11  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,44 +76,172 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 25 May 2026 17:47:31 +0800, Damon Ding <damon.ding@rock-chips.com> wrote:
+On Fri, 22 May 2026 11:23:59 -0500
+Chris Morgan <macromorgan@hotmail.com> wrote:
 
-Hello Damon,
+> On Fri, May 22, 2026 at 12:05:15PM +0100, Jonathan Cameron wrote:
+> >   
+> > > >     
+> > > > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > > > index e9c81b52f9ef..bc0cefa2fb77 100644
+> > > > > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+> > > > > @@ -9,6 +9,7 @@
+> > > > >  #include <linux/irq.h>
+> > > > >  #include <linux/module.h>
+> > > > >  #include <linux/mutex.h>
+> > > > > +#include <linux/pm_runtime.h>
+> > > > >  #include <linux/property.h>
+> > > > >  #include <linux/regmap.h>
+> > > > >  #include <linux/regulator/consumer.h>
+> > > > > @@ -72,6 +73,62 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+> > > > >  };
+> > > > >  EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+> > > > >  
+> > > > > +static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+> > > > > +				      enum inv_icm42607_sensor_mode gyro,
+> > > > > +				      enum inv_icm42607_sensor_mode accel,
+> > > > > +				      bool temp, unsigned int *sleep_ms)
+> > > > > +{
+> > > > > +	enum inv_icm42607_sensor_mode oldgyro = st->conf.gyro.mode;
+> > > > > +	enum inv_icm42607_sensor_mode oldaccel = st->conf.accel.mode;
+> > > > > +	bool oldtemp = st->conf.temp_en;
+> > > > > +	unsigned int sleepval;
+> > > > > +	unsigned int val;
+> > > > > +	int ret;
+> > > > > +
+> > > > > +	if (gyro == oldgyro && accel == oldaccel && temp == oldtemp)
+> > > > > +		return 0;
+> > > > > +
+> > > > > +	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, gyro);
+> > > > > +	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, accel);
+> > > > > +	if (!temp)
+> > > > > +		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
+> > > > > +	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
+> > > > > +	if (ret)
+> > > > > +		return ret;
+> > > > > +
+> > > > > +	st->conf.gyro.mode = gyro;
+> > > > > +	st->conf.accel.mode = accel;
+> > > > > +	st->conf.temp_en = temp;
+> > > > > +
+> > > > > +	sleepval = 0;
+> > > > > +	if (temp && !oldtemp) {
+> > > > > +		if (sleepval < INV_ICM42607_TEMP_STARTUP_TIME_MS)
+> > > > > +			sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;    
+> > > > 		sleepval = max(sleepval,)
+> > > > or just assign it here if not later patches add stuff in between
+> > > > the assignment to 0 and here.    
+> > Wow I write some garbage English sometimes (no excuse, it is my
+> > native language!)   
+> > > 
+> > > I'm going to assign it to 0 here (unless you think I should define it
+> > > at the beginning as 0) and then tweak as needed. I think this code
+> > > here can be further optimized, especially if we make the assumption
+> > > that START and STOP time for each sensor is comparable (the datasheet
+> > > doesn't say, so I'm going to go with yes since that greatly simplifies
+> > > things).  
+> > 
+> > I'm a bit lost. Suggestion was just to do
+> > 		sleepval = INV_ICM42607_TEMP_STARTUP_TIME_MS;
+> > as we know it is 0.   Probably not worth it though as ends up with fragile
+> > code.  Fine to keep it to what you have but use max() rather than
+> > if()
+> > 
+> > ...
+> >   
+> > > > > +static int inv_icm42607_resume(struct device *dev)
+> > > > > +{
+> > > > > +	struct inv_icm42607_state *st = dev_get_drvdata(dev);
+> > > > > +	int ret;
+> > > > > +
+> > > > > +	guard(mutex)(&st->lock);
+> > > > > +    
+> > > > Given the bunch of stuff we've run into recently around these
+> > > > I'm getting more paranoid.
+> > > > Similar to above, could you use pm_runtime_force_resume()
+> > > > You would need to gate stuff added later to not occur
+> > > > though if it wasn't runtime suspended.    
+> > > 
+> > > This I'm having trouble understanding. If I use
+> > > pm_force_runtime_resume() I'm assuming that either I got an error (in
+> > > which case I'd return the error) or the device is runtime resumed
+> > > after the call completes. If that's the case, wouldn't my suspend and
+> > > resume steps just be pm_force_runtime_suspend/resume, and enabling the
+> > > regulator (first for resume) or disabling the regulator (last for
+> > > suspend) as needed?  
+> > 
+> > If you call pm_runtime_force_resume() it will do the right thing
+> > wrt to runtime PM state prior to suspend.  If it wasn't runtime suspended
+> > it will runtime resume - if it was it'll no do anything. It won't
+> > directly tell you which one it did though.
+> > 
+> > The extra stuff that you know can't be the case if runtime pm is on
+> > will need some sort of gating.  However, looking again it may already
+> > be protected by more specific checks.
+> > 
+> > 
+> > 	pm_runtime_force_resume();
+> > 
+> > 	if (st->fifo.on) { //I'd failed to look at what was added.
+> > 		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
+> > 				   INV_ICM42607_FIFO_CONFIG1_MODE);
+> > 		if (ret)
+> > 			return ret;
+> > 	}
+> > 
+> > That if (st->fifo.on) previously didn't get checked if we were runtime
+> > suspended because in fifo mode we never are.  So I was thinking you'd
+> > need that check to be
+> > 	if (!pm_runtime_suspended(dev) && st->fifo.on)
+> > but the fifo.on check is sufficient by the same argument that if fifo.on
+> > is true we aren't in runtime suspend.
+> > 
+> > Basically I overthought it and didn't check what got added where the
+> > comment is in this patch.  
+> 
+> I'm still lost here... are you saying the existing logic is sufficient or
+> that we need to do something more (like force the runtime resume/suspend
+> in different places).
 
->
-> diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> index 8cf6b73bceac..d53ab25bc57b 100644
-> --- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> +++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-> @@ -1234,6 +1234,59 @@ static const struct drm_bridge_funcs analogix_dp_bridge_funcs = {
-> [ ... skip 11 lines ... ]
-> +	int ret, i;
-> +
-> +	memcpy(video_info->lane_map, map, sizeof(map));
-> +
-> +	num_lanes = drm_of_get_data_lanes_count_ep(dp->dev->of_node, 1, 0, 1,
-> +						   video_info->max_lane_count);
+I'm saying you should call pm_runtime_force_resume() in the resume()
+callback and the equivalent in the suspend() callback + call anything
+extra that is done in those callbacks in appropriate order.
 
-Should num_lanes be > 4, the buffers could overflow. I realize it should
-not happen, but analogix_dp_dt_parse_pdata() can set max_lane_count from
-the device tree, so a bogus dtb could cause such overflow.
+My original thought that some of the 'extra' stuff not covered by
+pm_runtime_force...() would need extra gating but I think what you have
+there is effectively the same via checks that happen to align with the
+runtime resume / suspend states.
 
-Perhaps you should just (in a separate patch) error out in
-analogix_dp_dt_parse_pdata() to prevent this. And maybe even adding an
-BUG_ON(lane_count > 4) here.
+Jonathan
 
-Otherwise LGTM.
-
--- 
-Luca Ceresoli, Bootlin
-Embedded Linux and Kernel engineering
-https://bootlin.com
+> 
+> Thank you again for all of your help, you've been amazing.
+> 
+> Chris
+> 
+> > 
+> >    
+> > >   
+> > > > 
+> > > >     
+> > > > > +	if (pm_runtime_suspended(dev))
+> > > > > +		return 0;
+> > > > > +
+> > > > > +	ret = inv_icm42607_enable_vddio_reg(st);
+> > > > > +	if (ret)
+> > > > > +		return ret;
+> > > > > +
+> > > > > +	/* Nothing else to restore at this time. */
+> > > > > +
+> > > > > +	return 0;
+> > > > > +}  
+> >   
 
 
 _______________________________________________
