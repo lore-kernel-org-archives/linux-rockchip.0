@@ -4,57 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190F3CD5BC9
-	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 00:55:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BAFFCD5BC8
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 10:53:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tMbRHKKANYbj2e7sUsgh9qYDBNz2+RLLDP6itLVvoNI=; b=kjFtmUog/yC0nxmvKvIZN5Noxe
-	5/a87gpfrE1lwTcNKmMWjpe0abOuG97raHgW7rvCUf3Qx3lC2FRIHFJis1YDX829kZcma3jXY71Ot
-	EbDfOC2hDFmi2tMLuY6ScZiGJpM0uW6AY5CI8qGFqZjCOBe5a/HBsMXEdnsh8wF9WbqGfwpKkivbF
-	vpiK1qT1RGIJY1ZeTi5ZCeZJo1v/NkRNJJteXei7iPQxYOHVd+kbGNB6IwO16yGxiYvvKBlhDZ9nd
-	Z8HTGmypQasKOe7WIqhiwasaLBHJi06uK+TVjfsWmSw9R0SEV7SgsUI4N3EQoz0NgKfead0WXZHOC
-	86jP1KEQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:Subject:Message-ID:Date:From:
+	In-Reply-To:References:MIME-Version:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=lCAqB7XeXyrOWVBLhLO9rzojKM7I0/zpTu691pXQCl4=; b=wGN/q11XWxRiIY
+	uYJX3wphVEV6KK+veOybeAAY9GKh4C7dHqkJGDVR4OvnT6Wy2CioirlXgEjXz+DSIRV4v7MhaHZ5f
+	gHsEX+4jmUxelaUj9dcisOjo5irTiJgeD59TzF1V88dKSKTQW5SnvH2Qf9rNnZjOuvh8oXWuZMLmq
+	8keneIRvdKdXg/3HQOKniD8HFuV5gF/calNz5gUnGmvVcFVgNsvGvPu8xPaISy6jKRTMCp+Qi4UIG
+	eSa16SdpQRs11AEU2viGBeU1H8PY5H2nd0JxPznxK5xcqi4o32WQ6GOA+e7wMhQZLZg0zIbRuEjh4
+	A/P1BWo1K14jT2CpfhEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRg4V-00000000jkk-0aUt;
-	Tue, 26 May 2026 00:55:03 +0000
-Received: from mail-m60152.netease.com ([210.79.60.152])
+	id 1wRpPs-00000001hRT-2Z3S;
+	Tue, 26 May 2026 10:53:44 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRg4R-00000000jjg-3nni;
-	Tue, 26 May 2026 00:55:02 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 3fc9780e3;
-	Tue, 26 May 2026 08:54:53 +0800 (GMT+08:00)
-Message-ID: <f6c2f07b-52b8-4181-aa1d-a7d8dcda245c@rock-chips.com>
-Date: Tue, 26 May 2026 08:54:52 +0800
+	id 1wRpPp-00000001hQK-3olf
+	for linux-rockchip@lists.infradead.org;
+	Tue, 26 May 2026 10:53:44 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 30721443CC
+	for <linux-rockchip@lists.infradead.org>; Tue, 26 May 2026 10:53:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 153C41F00A3E
+	for <linux-rockchip@lists.infradead.org>; Tue, 26 May 2026 10:53:41 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1779792821;
+	bh=WhuqxR/QIe3nS20UsYxd6qka1LHnS/Vv+3trUyjXJgY=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=oL2Gh0JsgYvwkQlyQh9IICOYgChS38+93irPAGfuq9/vZ9gxJ9VXQbee7s2dv3A5n
+	 VLjuylBuUJtjOZ9C7X7zM1TN5puJ8UyHYCdzbbIO3u6FqfdYLTzWyK01KThe+QLC1l
+	 bdIiooU3boem5n37PN4Q4JQoAdO+6xrzFG8MTy7QTWcmWPKHck/4rhVKi3cnVoAAF1
+	 B2zhCztsa0+ScJTcM/wkjP/N1W1VvgVvzXxQrvSxYEFx5lbvxAIfAzhwbAZ652q0Jv
+	 7AHUjLSHy9BzwYdZb/oAOuYJZi94BoR2IRGdJlpLoSwqRTkM1pUv1EZ3/zcyLWXjAy
+	 i5uYyX3KlEIqw==
+Received: by mail-lf1-f46.google.com with SMTP id 2adb3069b0e04-5a4113ab355so5131091e87.1
+        for <linux-rockchip@lists.infradead.org>; Tue, 26 May 2026 03:53:40 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AFNElJ+YcC4UbZGVAPUhc4jPOQHCLQA8StTkBbVT5P27VHyNvolbHdrrEP1nO+ZT1RLX/qyDkvhzbpeHf+yPlK0rSQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwwCp+dZoo/UUr7g2PSCzdfOc1DRyod5jaQsrTuvcfZ9+CqxvR5
+	XctX2WgUpqLq1FCuRZsVy5ClO0dKzL/Bsx7RFQkOhNzwRcnqOwm6huZDg5xtM3xlFLoM5bdjJnk
+	ax0VID9jInX+iTGcjZKZhBV7rj/lH02T8ZQFKiw8PjA==
+X-Received: by 2002:ac2:4c4d:0:b0:5a8:7ca9:9f81 with SMTP id
+ 2adb3069b0e04-5aa322fed0amr7213835e87.0.1779792819733; Tue, 26 May 2026
+ 03:53:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 01/10] dt-bindings: display: rockchip: analogix-dp: Fix
- hclk as third clock for RK3588
-To: Conor Dooley <conor@kernel.org>
-References: <20260525125331.140059-1-damon.ding@rock-chips.com>
- <20260525125331.140059-2-damon.ding@rock-chips.com>
- <20260525-ominous-hurling-c24874030f5a@spud>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <20260525-ominous-hurling-c24874030f5a@spud>
-X-HM-Tid: 0a9e61c7054903a8kunme36fcba8b2de2a
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQklPVhkaQk9IQ04eGUNLHVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=PA/SyP4K+3grpZhgwmugkGiLt2pakSPtQ7es0kjAWOvTdXRwXKV6BimEu7C/BasjL1kJAzUkHcfN+YefohHLGhWK3aWZuc+8/cQIc8VD48Pmx6uXYVz0FJe6YDtfBPb5WFxdAy3Rqu3i+m/PXKguBe7PZbxwk9+lyuvkogi6ec4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=97IIq8lVfoxPcx9z1ZIELY50Kibd7E9gbr5EXk5ek/k=;
-	h=date:mime-version:subject:message-id:from;
+References: <20260525164230.43307-1-scardracs@disroot.org> <20260525164230.43307-3-scardracs@disroot.org>
+In-Reply-To: <20260525164230.43307-3-scardracs@disroot.org>
+From: Bartosz Golaszewski <brgl@kernel.org>
+Date: Tue, 26 May 2026 12:53:27 +0200
+X-Gmail-Original-Message-ID: <CAMRc=Mfk9tP091DN=5kjb8fvFhj1=MiBZSq4NJ7+k5LNCVy9bw@mail.gmail.com>
+X-Gm-Features: AVHnY4I2BwinMwSq8u5U4_yQOEEUDoRNRKEENiOHIvRdG1GkR8xNAptPz-zlq5o
+Message-ID: <CAMRc=Mfk9tP091DN=5kjb8fvFhj1=MiBZSq4NJ7+k5LNCVy9bw@mail.gmail.com>
+Subject: Re: [PATCH 2/2] gpio: rockchip: fix teardown bugs and resource leaks
+To: "Marco Scardovi (scardracs)" <scardracs@disroot.org>
+Cc: linusw@kernel.org, heiko@sntech.de, linux-gpio@vger.kernel.org, 
+	linux-rockchip@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_175500_509811_60DE035D 
-X-CRM114-Status: GOOD (  17.33  )
+X-CRM114-CacheID: sfid-20260526_035341_993177_AB8D1C26 
+X-CRM114-Status: GOOD (  27.50  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,142 +78,70 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Conor,
-
-On 5/26/2026 12:54 AM, Conor Dooley wrote:
-> On Mon, May 25, 2026 at 08:53:22PM +0800, Damon Ding wrote:
->> RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
->> registers and enable the video datapath.
->>
->> Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
->> phandle reference, which allowed the eDP to work without explicitly
->> managing the hclk_vo1 clock. However, this is not safe or explicit.
->>
->> To make the clock dependency explicit, enforce per-SoC clock-names
->> requirements:
->>   - RK3288: 2 clocks (dp, pclk)
->>   - RK3399: 3 clocks (dp, pclk, grf)
->>   - RK3588: 3 clocks (dp, pclk, hclk)
->>
->> Do not reuse the 'grf' clock name for RK3588 because it represents
->> a different clock with distinct control logic:
->> - The 'grf' clock is only for GRF register access and is toggled
->>    dynamically during register access.
->> - The 'hclk' clock controls both GRF access and video datapath
->>    gating, and must remain enabled during probe.
->>
->> Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
->> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
->>
->> ---
->>
->> Changes in v4:
->> - Modify the commit msg.
->>
->> Changes in v5:
->> - Enforce the correct third clock name on a per-compatible basis.
->> - Modify the commit msg simultaneously.
->>
->> Changes in v6:
->> - Expand more detail commit msg about using hclk instead of grf clock.
->>
->> Changes in v7:
->> - List all valid clock names at the top level, and constrain the clock
->>    count for each platform with minItems/maxItems in allOf.
->>
->> Changes in v8:
->> - Fix indentation to 10 for enum in clock-names property.
->> ---
->>   .../rockchip/rockchip,analogix-dp.yaml        | 34 ++++++++++++++++++-
->>   1 file changed, 33 insertions(+), 1 deletion(-)
->>
->> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->> index d99b23b88cc5..a1ab7a77bdd3 100644
->> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
->> @@ -26,7 +26,9 @@ properties:
->>       items:
->>         - const: dp
->>         - const: pclk
->> -      - const: grf
->> +      - enum:
->> +          - grf
->> +          - hclk
->>   
->>     power-domains:
->>       maxItems: 1
->> @@ -60,6 +62,32 @@ required:
->>   allOf:
->>     - $ref: /schemas/display/bridge/analogix,dp.yaml#
->>   
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - rockchip,rk3288-dp
->> +    then:
->> +      properties:
->> +        clocks:
->> +          maxItems: 2
->> +        clock-names:
->> +          maxItems: 2
->> +
->> +  - if:
->> +      properties:
->> +        compatible:
->> +          contains:
->> +            enum:
->> +              - rockchip,rk3399-edp
->> +    then:
->> +      properties:
->> +        clocks:
->> +          minItems: 3
->> +        clock-names:
->> +          minItems: 3
-> 
-> If you go back to v6, you'll see that I never asked you to remove the
-> explict clock-names from here or below. Only the one from the 3288
-> section. The minItems was an addition, not a replacement.
-> 
-> pw-bot: changes-requested
-> 
-
-Sorry for the misunderstanding. I will restore the explicit clock-names 
-definitions and fix this in next version.
-
-Best regards,
-Damon
-
-> 
->> +
->>     - if:
->>         properties:
->>           compatible:
->> @@ -68,6 +96,10 @@ allOf:
->>                 - rockchip,rk3588-edp
->>       then:
->>         properties:
->> +        clocks:
->> +          minItems: 3
->> +        clock-names:
->> +          minItems: 3
->>           resets:
->>             minItems: 2
->>           reset-names:
->> -- 
->> 2.34.1
->>
->>
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+T24gTW9uLCBNYXkgMjUsIDIwMjYgYXQgNjo0MuKAr1BNIE1hcmNvIFNjYXJkb3ZpIChzY2FyZHJh
+Y3MpCjxzY2FyZHJhY3NAZGlzcm9vdC5vcmc+IHdyb3RlOgo+Cj4gVGhpcyBjb21taXQgYWRkcmVz
+c2VzIHNldmVyYWwgdGVhcmRvd24gaXNzdWVzIGFuZCByZXNvdXJjZSBsZWFrcyBpbiB0aGUKPiBk
+cml2ZXIncyByZW1vdmUgcGF0aCBhbmQgZXJyb3IgaGFuZGxpbmc6Cj4KPiAxLiBEZWJvdW5jZSBj
+bG9jayByZWZlcmVuY2UgbGVhazogVGhlIGRlYm91bmNlIGNsb2NrIChiYW5rLT5kYl9jbGspIHdh
+cwo+ICAgIG9idGFpbmVkIHVzaW5nIG9mX2Nsa19nZXQoKSB3aGljaCBpbmNyZW1lbnRzIHRoZSBj
+bG9jaydzIHJlZmVyZW5jZQo+ICAgIGNvdW50LCBidXQgY2xrX3B1dCgpIHdhcyBuZXZlciBjYWxs
+ZWQuIEEgZGV2bSBhY3Rpb24gaXMgbm93IHJlZ2lzdGVyZWQKPiAgICB0byBjbGVhbmx5IHJlbGVh
+c2UgaXQgb24gdW5iaW5kLiBOb3RlIHRoYXQgb2ZfY2xrX2dldCguLi4sIDEpIHJlbWFpbnMKPiAg
+ICBuZWNlc3Nhcnkgb3ZlciBkZXZtX2Nsa19nZXQoKSBiZWNhdXNlIHRoZSBEVCBiaW5kaW5nIGRv
+ZXMgbm90IGRlZmluZQo+ICAgIGNsb2NrLW5hbWVzLCBwcmVjbHVkaW5nIG5hbWUtYmFzZWQgbG9v
+a3VwLgo+Cj4gMi4gVW5yZWdpc3RlcmVkIGNoYWluZWQgSVJRIGhhbmRsZXI6IFRoZSBjaGFpbmVk
+IElSUSBoYW5kbGVyIHdhcyBub3QKPiAgICBkaXNjb25uZWN0ZWQgaW4gcmVtb3ZlKCkuIElmIGEg
+c3RyYXkgaW50ZXJydXB0IGZpcmVkIGFmdGVyIHRoZSBkcml2ZXIKPiAgICB3YXMgcmVtb3ZlZCwg
+dGhlIGtlcm5lbCB3b3VsZCBhdHRlbXB0IHRvIGV4ZWN1dGUgYSBzdGFsZSBoYW5kbGVyLAo+ICAg
+IGxlYWRpbmcgdG8gYSBwYW5pYy4gVGhpcyBpcyBmaXhlZCBieSBjbGVhcmluZyB0aGUgaGFuZGxl
+ciBpbiByZW1vdmUoKS4KPgo+IDMuIElSUSBkb21haW4gbGVhazogVGhlIGxpbmVhciBJUlEgZG9t
+YWluIGFuZCBpdHMgZ2VuZXJpYyBjaGlwcyB3ZXJlCj4gICAgYWxsb2NhdGVkIG1hbnVhbGx5IGR1
+cmluZyBwcm9iZSBidXQgbmV2ZXIgcmVtb3ZlZC4gVGhlIElSUSBkb21haW4gaXMKPiAgICBub3cg
+cmVtb3ZlZCBkdXJpbmcgZHJpdmVyIHRlYXJkb3duIHRvIGZyZWUgdGhlIGFzc29jaWF0ZWQgZ2Vu
+ZXJpYyBjaGlwcwo+ICAgIGFuZCBtYXBwaW5ncy4KPgoKSSBzdXBwb3NlIHRoZSBkZXNjcmlwdGlv
+biBjb21lcyBmcm9tIHRoZSBMTU0uIFBsZWFzZSB1c2UgaW1wZXJhdGl2ZQptb2RlIGFzIGlzIGN1
+c3RvbWFyeSBpbiBrZXJuZWwgY29tbWl0IG1lc3NhZ2VzLgoKPiBBc3Npc3RlZC1ieTogQW50aWdy
+YXZpdHk6Z2VtaW5pLTMuNS1mbGFzaAo+IFNpZ25lZC1vZmYtYnk6IE1hcmNvIFNjYXJkb3ZpIDxz
+Y2FyZHJhY3NAZGlzcm9vdC5vcmc+Cj4gLS0tCj4gIGRyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlw
+LmMgfCAxOSArKysrKysrKysrKysrKysrKystCj4gIDEgZmlsZSBjaGFuZ2VkLCAxOCBpbnNlcnRp
+b25zKCspLCAxIGRlbGV0aW9uKC0pCj4KPiBkaWZmIC0tZ2l0IGEvZHJpdmVycy9ncGlvL2dwaW8t
+cm9ja2NoaXAuYyBiL2RyaXZlcnMvZ3Bpby9ncGlvLXJvY2tjaGlwLmMKPiBpbmRleCAzMzU4MDA5
+M2E0ZTcuLmM4MDRmOTcwZDgyMyAxMDA2NDQKPiAtLS0gYS9kcml2ZXJzL2dwaW8vZ3Bpby1yb2Nr
+Y2hpcC5jCj4gKysrIGIvZHJpdmVycy9ncGlvL2dwaW8tcm9ja2NoaXAuYwo+IEBAIC02MzgsMTAg
+KzYzOCwxNyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2dwaW9saWJfcmVnaXN0ZXIoc3RydWN0IHJv
+Y2tjaGlwX3Bpbl9iYW5rICpiYW5rKQo+ICAgICAgICAgcmV0dXJuIHJldDsKPiAgfQo+Cj4gK3N0
+YXRpYyB2b2lkIHJvY2tjaGlwX2Nsa19wdXQodm9pZCAqZGF0YSkKPiArewo+ICsgICAgICAgc3Ry
+dWN0IGNsayAqY2xrID0gZGF0YTsKPiArCj4gKyAgICAgICBjbGtfcHV0KGNsayk7Cj4gK30KPiAr
+Cj4gIHN0YXRpYyBpbnQgcm9ja2NoaXBfZ2V0X2JhbmtfZGF0YShzdHJ1Y3Qgcm9ja2NoaXBfcGlu
+X2JhbmsgKmJhbmspCj4gIHsKPiAgICAgICAgIHN0cnVjdCByZXNvdXJjZSByZXM7Cj4gLSAgICAg
+ICBpbnQgaWQgPSAwOwo+ICsgICAgICAgaW50IGlkID0gMCwgcmV0Owo+Cj4gICAgICAgICBpZiAo
+b2ZfYWRkcmVzc190b19yZXNvdXJjZShiYW5rLT5vZl9ub2RlLCAwLCAmcmVzKSkgewo+ICAgICAg
+ICAgICAgICAgICBkZXZfZXJyKGJhbmstPmRldiwgImNhbm5vdCBmaW5kIElPIHJlc291cmNlIGZv
+ciBiYW5rXG4iKTsKPiBAQCAtNjczLDYgKzY4MCwxMyBAQCBzdGF0aWMgaW50IHJvY2tjaGlwX2dl
+dF9iYW5rX2RhdGEoc3RydWN0IHJvY2tjaGlwX3Bpbl9iYW5rICpiYW5rKQo+ICAgICAgICAgICAg
+ICAgICAgICAgICAgIGRldl9lcnIoYmFuay0+ZGV2LCAiY2Fubm90IGZpbmQgZGVib3VuY2UgY2xr
+XG4iKTsKPiAgICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gLUVJTlZBTDsKPiAgICAgICAg
+ICAgICAgICAgfQo+ICsKPiArICAgICAgICAgICAgICAgcmV0ID0gZGV2bV9hZGRfYWN0aW9uX29y
+X3Jlc2V0KGJhbmstPmRldiwgcm9ja2NoaXBfY2xrX3B1dCwKPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJhbmstPmRiX2Nsayk7CgpJcyB0aGVyZSBhbnkg
+cmVhc29uIHRvIG5vdCBjb252ZXJ0IGhpcyBjYWxsIGludG8gYSBkZXZtX2Nsa19nZXQoKSB2YXJp
+YW50IHRvbz8KCj4gKyAgICAgICAgICAgICAgIGlmIChyZXQpIHsKPiArICAgICAgICAgICAgICAg
+ICAgICAgICBkZXZfZXJyKGJhbmstPmRldiwgImZhaWxlZCB0byByZWdpc3RlciBkZWJvdW5jZSBj
+bGsgYWN0aW9uXG4iKTsKPiArICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gcmV0Owo+ICsg
+ICAgICAgICAgICAgICB9Cj4gICAgICAgICAgICAgICAgIGJyZWFrOwo+ICAgICAgICAgY2FzZSBH
+UElPX1RZUEVfVjE6Cj4gICAgICAgICAgICAgICAgIGJhbmstPmdwaW9fcmVncyA9ICZncGlvX3Jl
+Z3NfdjE7Cj4gQEAgLTc4OSw2ICs4MDMsOSBAQCBzdGF0aWMgdm9pZCByb2NrY2hpcF9ncGlvX3Jl
+bW92ZShzdHJ1Y3QgcGxhdGZvcm1fZGV2aWNlICpwZGV2KQo+ICB7Cj4gICAgICAgICBzdHJ1Y3Qg
+cm9ja2NoaXBfcGluX2JhbmsgKmJhbmsgPSBwbGF0Zm9ybV9nZXRfZHJ2ZGF0YShwZGV2KTsKPgo+
+ICsgICAgICAgaXJxX3NldF9jaGFpbmVkX2hhbmRsZXJfYW5kX2RhdGEoYmFuay0+aXJxLCBOVUxM
+LCBOVUxMKTsKPiArICAgICAgIGlmIChiYW5rLT5kb21haW4pCj4gKyAgICAgICAgICAgICAgIGly
+cV9kb21haW5fcmVtb3ZlKGJhbmstPmRvbWFpbik7Cj4gICAgICAgICBncGlvY2hpcF9yZW1vdmUo
+JmJhbmstPmdwaW9fY2hpcCk7Cj4gIH0KPgo+IC0tCj4gMi41NC4wCj4KPgoKQmFydAoKX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX18KTGludXgtcm9ja2NoaXAg
+bWFpbGluZyBsaXN0CkxpbnV4LXJvY2tjaGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKaHR0cDovL2xp
+c3RzLmluZnJhZGVhZC5vcmcvbWFpbG1hbi9saXN0aW5mby9saW51eC1yb2NrY2hpcAo=
