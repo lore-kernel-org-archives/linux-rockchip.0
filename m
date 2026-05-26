@@ -4,55 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47AE2CD5BB1
-	for <linux-rockchip@archiver.kernel.org>; Mon, 25 May 2026 20:55:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190F3CD5BC9
+	for <linux-rockchip@archiver.kernel.org>; Tue, 26 May 2026 00:55:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hxkpsDmG9s/UY6YNoer+8fvc+B8/hO9Y3rxOQcE+JC0=; b=lrCKZF+dsg88oZ
-	5KhWK0Ize3Gj1Iki62wsbUDAOK2wcp7OVSUdBCB9qMprTjCNKkGgkuA6Ownxf1nIlePCMYbHvcKcd
-	MTAe+DHw3/UiV8bPeiMVlhzwhmqEjUAoDXSGZ5084Tp6WgdvZBSUb3Z3PzAjORTFGUhfYglwDksOS
-	2Un98GZygmgoQywZYglOFhgXEk6r6WXlK7jwtZXtwu6K4brbhHa8goCWve8yW1EHCXuQObzu9sk4u
-	IeOuOxAlEx6hvIdricqbda1aqbTJZQRb5DtIwg+FoA4rsNgmheX30s+eY8nFVuQIo8YZrdDbjaM0v
-	czI6Eda0rPoM7qGzTQNA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
+	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tMbRHKKANYbj2e7sUsgh9qYDBNz2+RLLDP6itLVvoNI=; b=kjFtmUog/yC0nxmvKvIZN5Noxe
+	5/a87gpfrE1lwTcNKmMWjpe0abOuG97raHgW7rvCUf3Qx3lC2FRIHFJis1YDX829kZcma3jXY71Ot
+	EbDfOC2hDFmi2tMLuY6ScZiGJpM0uW6AY5CI8qGFqZjCOBe5a/HBsMXEdnsh8wF9WbqGfwpKkivbF
+	vpiK1qT1RGIJY1ZeTi5ZCeZJo1v/NkRNJJteXei7iPQxYOHVd+kbGNB6IwO16yGxiYvvKBlhDZ9nd
+	Z8HTGmypQasKOe7WIqhiwasaLBHJi06uK+TVjfsWmSw9R0SEV7SgsUI4N3EQoz0NgKfead0WXZHOC
+	86jP1KEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRcKV-00000000Smi-1uo1;
-	Mon, 25 May 2026 20:55:19 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wRg4V-00000000jkk-0aUt;
+	Tue, 26 May 2026 00:55:03 +0000
+Received: from mail-m60152.netease.com ([210.79.60.152])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wRcKS-00000000Slm-2PmY
-	for linux-rockchip@lists.infradead.org;
-	Mon, 25 May 2026 20:55:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=xryexlahrodjfyHGFiLzNy4TNoT6+1ZUHKzJpXj+s8g=; b=g/KgF4urScPdkul43AgBJJA3kQ
-	a0YeSLIS/quWTGXvPwRLDSUpK12AjfBChS7p8CWcQlSpmE2G2UvId2iw6k7aWVjuFbEwLpfPnZ0WN
-	wm+eRvJxUCU1rptmTQX6RD5yUxoROlcvuxMjJODm3b0zO0F7sieQmcOdL2NrUhzniipEMTKQOHcBK
-	SMbU/zLiVLZb8/SW43R45gX4O1RJED9GKhAxSxKgF4hTbTA7dEJWxaVtEhz75/9YCuEsk3B0p67H/
-	EO8ZFk6+Fp84XK1czfqzqfc30z/dAL2BkufFVbUaUScOjfGq/tFYh9qf/fvnXyPzFfUGIE5yG2Qwv
-	lhXZxiGw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: devicetree@vger.kernel.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
-Cc: linux-amarula@amarulasolutions.com, michael@amarulasolutions.com,
- dario.binacchi@amarulasolutions.com,
- Patrick Barsanti <patrick.barsanti@amarulasolutions.com>
-Subject: Re: [PATCH 3/3] arm64: dts: rockchip: Add Axelera AI metis-sbc
-Date: Mon, 25 May 2026 22:54:14 +0200
-Message-ID: <4976330.xgJ6IN8ObU@phil>
-In-Reply-To: <20260522174918.61523-4-patrick.barsanti@amarulasolutions.com>
-References: <20260522174918.61523-1-patrick.barsanti@amarulasolutions.com>
- <20260522174918.61523-4-patrick.barsanti@amarulasolutions.com>
+	id 1wRg4R-00000000jjg-3nni;
+	Tue, 26 May 2026 00:55:02 +0000
+Received: from [172.16.12.74] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 3fc9780e3;
+	Tue, 26 May 2026 08:54:53 +0800 (GMT+08:00)
+Message-ID: <f6c2f07b-52b8-4181-aa1d-a7d8dcda245c@rock-chips.com>
+Date: Tue, 26 May 2026 08:54:52 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v8 01/10] dt-bindings: display: rockchip: analogix-dp: Fix
+ hclk as third clock for RK3588
+To: Conor Dooley <conor@kernel.org>
+References: <20260525125331.140059-1-damon.ding@rock-chips.com>
+ <20260525125331.140059-2-damon.ding@rock-chips.com>
+ <20260525-ominous-hurling-c24874030f5a@spud>
+Content-Language: en-US
+From: Damon Ding <damon.ding@rock-chips.com>
+In-Reply-To: <20260525-ominous-hurling-c24874030f5a@spud>
+X-HM-Tid: 0a9e61c7054903a8kunme36fcba8b2de2a
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaQklPVhkaQk9IQ04eGUNLHVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=PA/SyP4K+3grpZhgwmugkGiLt2pakSPtQ7es0kjAWOvTdXRwXKV6BimEu7C/BasjL1kJAzUkHcfN+YefohHLGhWK3aWZuc+8/cQIc8VD48Pmx6uXYVz0FJe6YDtfBPb5WFxdAy3Rqu3i+m/PXKguBe7PZbxwk9+lyuvkogi6ec4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=97IIq8lVfoxPcx9z1ZIELY50Kibd7E9gbr5EXk5ek/k=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260525_135517_168257_2F434D40 
-X-CRM114-Status: GOOD (  10.36  )
+X-CRM114-CacheID: sfid-20260525_175500_509811_60DE035D 
+X-CRM114-Status: GOOD (  17.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,41 +66,142 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBGcmVpdGFnLCAyMi4gTWFpIDIwMjYsIDE5OjQ5OjE4IE1pdHRlbGV1cm9ww6Rpc2No
-ZSBTb21tZXJ6ZWl0IHNjaHJpZWIgUGF0cmljayBCYXJzYW50aToKClsuLi5dCgo+ICsJcGNpZTIw
-X2F2ZGQwdjg1OiBwY2llMjAtYXZkZDB2ODUgewoKUmVndWxhdG9yIG5vZGVzIHNob3VsZCBzdGFy
-dCB3aXRoICJyZWd1bGF0b3ItIiwgc28KCiAgICBwY2llMjBfYXZkZDB2ODU6IHJlZ3VsYXRvci1w
-Y2llMjAtYXZkZDB2ODUKCnNhbWUgZm9yIGFsbCBvdGhlcnMuCgoKPiArCQljb21wYXRpYmxlID0g
-InJlZ3VsYXRvci1maXhlZCI7Cj4gKwkJcmVndWxhdG9yLWFsd2F5cy1vbjsKPiArCQlyZWd1bGF0
-b3ItYm9vdC1vbjsKPiArCQlyZWd1bGF0b3ItbWluLW1pY3Jvdm9sdCA9IDw4NTAwMDA+Owo+ICsJ
-CXJlZ3VsYXRvci1tYXgtbWljcm92b2x0ID0gPDg1MDAwMD47Cj4gKwkJcmVndWxhdG9yLW5hbWUg
-PSAicGNpZTIwX2F2ZGQwdjg1IjsKPiArCQl2aW4tc3VwcGx5ID0gPCZ2ZGRhXzB2ODVfczA+Owo+
-ICsJfTsKCgoKPiArJmNwdV9iMCB7Cj4gKwljcHUtc3VwcGx5ID0gPCZ2ZGRfY3B1X2JpZzBfczA+
-Owo+ICsJbWVtLXN1cHBseSA9IDwmdmRkX2NwdV9iaWcwX3MwPjsKPiArfTsKClRoZXJlIGlzIG5v
-IG1lbS1zdXBwbHkgaW4gdGhlIG1haW5saW5lIGJpbmlkbmcsIGFuZCBpdCdzIHRoZSBzYW1lCnJl
-Z3VsYXRvcnMgYW55d2F5LiBBZ2Fpbiwgc2FtZSBmb3IgYWxsIGNwdSBub2Rlcy4KCllvdSBzaG91
-bGQgYmUgYWJsZSB0byBydW4gc29tZXRoaW5nIGxpa2UKCiAgbWFrZSBBUkNIPWFybTY0IC4uLi4g
-Q0hFQ0tfRFRCUz15IHJvY2tjaGlwL3JrMzU4OC1tZXRpcy1zYmMuZHRiCgp0byBmaW5kIGFsbCB0
-aGUgYmluZGluZyBwcm9ibGVtcy4KCgo+ICsmZ21hYzAgewo+ICsJY2xvY2tfaW5fb3V0ID0gIm91
-dHB1dCI7Cj4gKwlwaHktaGFuZGxlID0gPCZyZ21paV9waHkwPjsKPiArCS8qIFVzZSByZ21paS1y
-eGlkIG1vZGUgdG8gZGlzYWJsZSByeCBkZWxheSBpbnNpZGUgU29jICovCgpubyBuZWVkIGZvciB0
-aGF0IGNvbW1lbnQKCj4gKwlwaHktbW9kZSA9ICJyZ21paS1yeGlkIjsKPiArCXBpbmN0cmwtMCA9
-IDwmZ21hYzBfbWlpbQo+ICsJCSAgICAgJmdtYWMwX3R4X2J1czIKPiArCQkgICAgICZnbWFjMF9y
-eF9idXMyCj4gKwkJICAgICAmZ21hYzBfcmdtaWlfY2xrCj4gKwkJICAgICAmZ21hYzBfcmdtaWlf
-YnVzPjsKCnBsZWFzZSBhZGQgYSBwaW5jdHJsIGVudHJ5IChzZXR0aW5nIHRvIEdQSU8pIGZvciB0
-aGF0IHJlc2V0LXBpbgpUaG91Z2ggLi4uIGlzIHRoYXQgdGhlIHBoeS1yZXNldCAuLi4gdGhpcyBz
-aG91bGQgYmUgaWRlYWxseQpkZXNjcmliZWQgdGhlIHBoeSBub2RlIHdpdGggaXRzIHJlc2V0LWdw
-aW9zIHByb3BlcnR5LgoKPiArCXBpbmN0cmwtbmFtZXMgPSAiZGVmYXVsdCI7Cj4gKwl0eF9kZWxh
-eSA9IDwweDQ0PjsKPiArCXNucHMscmVzZXQtZ3BpbyA9IDwmZ3BpbzQgUktfUEIzIEdQSU9fQUNU
-SVZFX0xPVz47IC8qIEdNQUMwX1JTVF9OICovCj4gKwlzbnBzLHJlc2V0LWFjdGl2ZS1sb3c7Cj4g
-KwkvKiBSZXNldCB0aW1lIGlzIDIwbXMsIDEwMG1zIGZvciBydGw4MjExZiAqLwo+ICsJc25wcyxy
-ZXNldC1kZWxheXMtdXMgPSA8MCAyMDAwMCAxMDAwMDA+Owo+ICsJc3RhdHVzID0gIm9rYXkiOwo+
-ICt9Owo+ICsKCgpUaGF0J3MgaG93IGZhciBJIGdvdCB0b2RheSA6LSkKCgpIZWlrbwoKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi Conor,
+
+On 5/26/2026 12:54 AM, Conor Dooley wrote:
+> On Mon, May 25, 2026 at 08:53:22PM +0800, Damon Ding wrote:
+>> RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
+>> registers and enable the video datapath.
+>>
+>> Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
+>> phandle reference, which allowed the eDP to work without explicitly
+>> managing the hclk_vo1 clock. However, this is not safe or explicit.
+>>
+>> To make the clock dependency explicit, enforce per-SoC clock-names
+>> requirements:
+>>   - RK3288: 2 clocks (dp, pclk)
+>>   - RK3399: 3 clocks (dp, pclk, grf)
+>>   - RK3588: 3 clocks (dp, pclk, hclk)
+>>
+>> Do not reuse the 'grf' clock name for RK3588 because it represents
+>> a different clock with distinct control logic:
+>> - The 'grf' clock is only for GRF register access and is toggled
+>>    dynamically during register access.
+>> - The 'hclk' clock controls both GRF access and video datapath
+>>    gating, and must remain enabled during probe.
+>>
+>> Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
+>> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>>
+>> ---
+>>
+>> Changes in v4:
+>> - Modify the commit msg.
+>>
+>> Changes in v5:
+>> - Enforce the correct third clock name on a per-compatible basis.
+>> - Modify the commit msg simultaneously.
+>>
+>> Changes in v6:
+>> - Expand more detail commit msg about using hclk instead of grf clock.
+>>
+>> Changes in v7:
+>> - List all valid clock names at the top level, and constrain the clock
+>>    count for each platform with minItems/maxItems in allOf.
+>>
+>> Changes in v8:
+>> - Fix indentation to 10 for enum in clock-names property.
+>> ---
+>>   .../rockchip/rockchip,analogix-dp.yaml        | 34 ++++++++++++++++++-
+>>   1 file changed, 33 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+>> index d99b23b88cc5..a1ab7a77bdd3 100644
+>> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+>> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+>> @@ -26,7 +26,9 @@ properties:
+>>       items:
+>>         - const: dp
+>>         - const: pclk
+>> -      - const: grf
+>> +      - enum:
+>> +          - grf
+>> +          - hclk
+>>   
+>>     power-domains:
+>>       maxItems: 1
+>> @@ -60,6 +62,32 @@ required:
+>>   allOf:
+>>     - $ref: /schemas/display/bridge/analogix,dp.yaml#
+>>   
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            enum:
+>> +              - rockchip,rk3288-dp
+>> +    then:
+>> +      properties:
+>> +        clocks:
+>> +          maxItems: 2
+>> +        clock-names:
+>> +          maxItems: 2
+>> +
+>> +  - if:
+>> +      properties:
+>> +        compatible:
+>> +          contains:
+>> +            enum:
+>> +              - rockchip,rk3399-edp
+>> +    then:
+>> +      properties:
+>> +        clocks:
+>> +          minItems: 3
+>> +        clock-names:
+>> +          minItems: 3
+> 
+> If you go back to v6, you'll see that I never asked you to remove the
+> explict clock-names from here or below. Only the one from the 3288
+> section. The minItems was an addition, not a replacement.
+> 
+> pw-bot: changes-requested
+> 
+
+Sorry for the misunderstanding. I will restore the explicit clock-names 
+definitions and fix this in next version.
+
+Best regards,
+Damon
+
+> 
+>> +
+>>     - if:
+>>         properties:
+>>           compatible:
+>> @@ -68,6 +96,10 @@ allOf:
+>>                 - rockchip,rk3588-edp
+>>       then:
+>>         properties:
+>> +        clocks:
+>> +          minItems: 3
+>> +        clock-names:
+>> +          minItems: 3
+>>           resets:
+>>             minItems: 2
+>>           reset-names:
+>> -- 
+>> 2.34.1
+>>
+>>
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
