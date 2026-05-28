@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FEB0C44501
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42AD7C43458
 	for <linux-rockchip@archiver.kernel.org>; Tue,  7 Jul 2026 15:31:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,33 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:Mime-Version:References:In-Reply-To:
 	Message-Id:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Pwbqf4NdHmISkXLNlQlCgpGfqul1n8jtcw6FhrmZjVg=; b=VZX4xi0cjvbTDl
-	5glAYRbkayvrCTXbdsMZmi5IGX4VFaAYJLjtwUDrwKCntIgbenwrTaFU7UCpR3LR++uI+NIW4sNSy
-	Sm/7/ZXIhvJ+Tfi047vLci/j1UzdA6NSi8Zgr4fkZlipLdFI4DNBlse/AyVhEfnl7YsLadchB7Rv/
-	0XE8i949YHvsFkXfWUsf1LkKlAIS2FBtMPnQI8GiVKRJ4FSp6+71jcq9uxx5hpldRPyW7xCEuGCIm
-	f1CxlMzl2jt/ZNobSb32RgCDj0R82qaxqQahFTEf80IEVEeGhHJciV/OOd+/TZ5tNRt5Ko3sa86ww
-	ClLQwjZtNP+0rH8Qhayw==;
+	List-Owner; bh=iyTHxJTfbjHH8XRTBC8OwNinhABpjF7R+MxWOjfRY58=; b=A6ZdJzGKJKJyx9
+	9qpDFEGX8ouujvFOvL4BlllW+gC/BOyl46Vsjlv6OSYlkR0vFEsYMT416AIeqfQkfy7Hijhidql7X
+	sqWxfPpMr/tXh4ohOHaCV+JroUVRPrNsgNbGX+8QsgOXVhMeqpiTMGPlFpoYZLJ+UM0QWbkwm25bK
+	JGtOuGVP5vGlWJ6vg+sqNV601NPgcm7nca3pLQO/JAWbZTgV3aygBARdNaLcbtsKQDRGstijZXz5r
+	D6CybfgMCOEVEOS3ucQmbG75DMe/sh9WQn6IWJUtPUYlQ+5Znhf0HffwcRDYBTpO9WXDqvT6jg7of
+	kro6o/W5jRLWEj++Hhjw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wh7lq-0000000FJAm-0K5J;
+	id 1wh7lq-0000000FJBm-20Q1;
 	Tue, 07 Jul 2026 15:31:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSgF9-00000006Gli-2chT;
-	Thu, 28 May 2026 19:18:13 +0000
+	id 1wSgPj-00000006HFC-3jVG;
+	Thu, 28 May 2026 19:29:09 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 037CD4099B;
-	Thu, 28 May 2026 19:18:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 468F61F000E9;
-	Thu, 28 May 2026 19:18:07 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B27DC43A95;
+	Thu, 28 May 2026 19:29:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9D6A1F000E9;
+	Thu, 28 May 2026 19:29:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=linux-foundation.org; s=korg; t=1779995889;
-	bh=Ir8iU0d381Bl8diafHd1bBGaGKtd10rJAv1XyjVdWDg=;
+	d=linux-foundation.org; s=korg; t=1779996546;
+	bh=MSiMjOGrOVK1ttm0stik2ZlQrpSNhFeLqSO2+tHJw3w=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=xeuAPYEZUVLnSxRyYCz4I9aGX07le7zxUwEI88HQ0OzLXuz7PQD+jEo75ksqEWczO
-	 KVuLk9KTY9ygfmH8DaX0v2cG2XsYKSxE0/FM8zHN+44tZszrU7LLWMR31TUGb+6lmK
-	 gP6ik/Q/RUjqOh0z2IwvVSzOnVcXrshU7xNTe5fA=
-Date: Thu, 28 May 2026 12:18:06 -0700
+	b=BRfl3ZQdtekMjXz41Z8wneFS2c5zENMxRZFUvr/BbdCqcHgGbHBwuUxEpoBCkK0bm
+	 r867gjFOjqye3YVQEflgnVpeg6LvNVfv8SBMh04YGmEJfesoWrvEl2nFSR93pegYLq
+	 fp34L3J88lYd0UVwVNcBdPtfPdvU3mSjv+LeVEdU=
+Date: Thu, 28 May 2026 12:29:03 -0700
 From: Andrew Morton <akpm@linux-foundation.org>
 To: Yury Norov <ynorov@nvidia.com>
 Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>, Russell King
@@ -91,17 +91,19 @@ Cc: Rasmus Villemoes <linux@rasmusvillemoes.dk>, Russell King
  linux-fpga@vger.kernel.org, linux-rdma@vger.kernel.org,
  nvdimm@lists.linux.dev, linux-pci@vger.kernel.org,
  linux-amlogic@lists.infradead.org, linux-cxl@vger.kernel.org,
- linux-arm-msm@vger.kernel.org
+ linux-arm-msm@vger.kernel.org, Roman Gushchin <roman.gushchin@linux.dev>
 Subject: Re: [PATCH 00/16] lib/cpumask: get rid of cpumap_print_to_pagebuf()
-Message-Id: <20260528121806.2b54606ba6e42f7f371d95c3@linux-foundation.org>
-In-Reply-To: <20260528183625.870813-1-ynorov@nvidia.com>
+Message-Id: <20260528122903.cf74cf905418ab2d144607c3@linux-foundation.org>
+In-Reply-To: <ahiW5LKLiPMC6il_@yury>
 References: <20260528183625.870813-1-ynorov@nvidia.com>
+	<20260528121806.2b54606ba6e42f7f371d95c3@linux-foundation.org>
+	<ahiW5LKLiPMC6il_@yury>
 X-Mailer: Sylpheed 3.7.0 (GTK+ 2.24.33; x86_64-pc-linux-gnu)
 Mime-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260528_121812_041742_D7EFC1D4 
-X-CRM114-Status: GOOD (  15.11  )
-X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:51 -0700
+X-CRM114-CacheID: sfid-20260528_122907_994276_4725AEAB 
+X-CRM114-Status: GOOD (  20.94  )
+X-Mailman-Approved-At: Tue, 07 Jul 2026 08:29:52 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,22 +120,35 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, 28 May 2026 14:36:07 -0400 Yury Norov <ynorov@nvidia.com> wrote:
+On Thu, 28 May 2026 15:26:28 -0400 Yury Norov <ynorov@nvidia.com> wrote:
 
-> cpumap_print_to_pagebuf() is the equivalent for the "&*pb[l]" notation
-> in printk-like functions. In some cases, it makes people to create
-> temporary buffers for the printed cpumasks, where it can be avoided.
+> On Thu, May 28, 2026 at 12:18:06PM -0700, Andrew Morton wrote:
+> > On Thu, 28 May 2026 14:36:07 -0400 Yury Norov <ynorov@nvidia.com> wrote:
+> > 
+> > > cpumap_print_to_pagebuf() is the equivalent for the "&*pb[l]" notation
+> > > in printk-like functions. In some cases, it makes people to create
+> > > temporary buffers for the printed cpumasks, where it can be avoided.
+> > > 
+> > > Get rid of it in a favor of more standard printing API.
+> > > 
+> > > Each patch, except for the last one, is independent and may be moved with
+> > > the corresponding subsystem. Or I can take it in bitmap-for-next, at
+> > > maintainers' discretion.
+> > > 
+> > > On top of bitmap-for-next.
+> > 
+> > Sashiko doesn't attempt bitmap-for-next, so it couldn't apply this series.
+> > 	https://sashiko.dev/#/patchset/20260528183625.870813-1-ynorov@nvidia.com
 > 
-> Get rid of it in a favor of more standard printing API.
-> 
-> Each patch, except for the last one, is independent and may be moved with
-> the corresponding subsystem. Or I can take it in bitmap-for-next, at
-> maintainers' discretion.
-> 
-> On top of bitmap-for-next.
+> OK... What should I do about that?
 
-Sashiko doesn't attempt bitmap-for-next, so it couldn't apply this series.
-	https://sashiko.dev/#/patchset/20260528183625.870813-1-ynorov@nvidia.com
+Rebase onto something which Sashiko *does* attempt.  Mainline, a few
+mm.git branches.  Maybe linux-next.
+
+Roman, is there a list of trees/branches which Sashiko tries to apply
+series to?
+
+Thanks.
 
 _______________________________________________
 Linux-rockchip mailing list
