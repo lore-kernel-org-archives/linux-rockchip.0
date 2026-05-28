@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CD15CD6E4C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9166CD6E4E
 	for <linux-rockchip@archiver.kernel.org>; Thu, 28 May 2026 23:24:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+zgxvm2wQxHvie2IEHWkX9nZKWQMsqN7lxyBX9eQRtY=; b=WAfLieteZJ8mc6
-	dPVGjryKpWYDUUxQkpKSDu+36dQ9aXqHyxqgdCnOT9OvuSjkU8uPhZNkoFJsm7hFbLb61stMN1/yN
-	my529K65DD8yYF1lgXpJViHrwKNblnv22bWdvg5bgkG2wcaTEQ5/1jqy/czIN/7FQOnebxR+Ow8Hr
-	nqC2jB23J9VReK2hC0qPClgB8uSBHsYbltFECtDvbe4GtTFf+jY96wjPIBJ+XQr/gsn9Cs12Cxofg
-	hTQh0/ns0jlHJblAbi9WXGqa/kscKn90v8BRrUQzPM6NvWRyUdx2b41f/Di1ifptMAk2Gabwf0BaT
-	V9IqOQiYGWKO0Jqmx9Tg==;
+	List-Owner; bh=J2XByHapn66deufRNslihyq4OkhfP5OsYiFZCVkGW7w=; b=uHuc4RuL3wF32b
+	4XQQQvJQFbyU3cEJpWxLXDlVGkXzn/Z6fz33rAooCHy+dOP1q/XmIuwcEwfISY2kP2C/2m21vW5Px
+	V35J/fCMZDdzbDUfND6WNqpReIU3T4lekrVs8cFPmQDynasvj6hFt8XMAQQO4H/E0sv8URxjn2eot
+	Xt6ZDDOngi44xshaD667Ebk/M6u2jC/21OiUasvXArgZT/UFAsWIhn2F0k8ZevRzmnx5k6ysoVS1d
+	kbZ7VrVtTDmd24eGZXyyqgD9FPD/yTRyzanRrgtCZ6sf42PPBqEJIy/sa0NNpTZw0jkZU673eDDqk
+	pQ8tXFgjGBEm0FYzz4PA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSk5W-00000006WgY-0LCt;
+	id 1wSk5W-00000006WiR-2wOj;
 	Thu, 28 May 2026 23:24:30 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSk5N-00000006Wbs-2wUS;
-	Thu, 28 May 2026 23:24:23 +0000
+	id 1wSk5N-00000006Wbp-2vOH;
+	Thu, 28 May 2026 23:24:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=riwqpIc/BJQ8B4CkbSd+6uS23zDTy4cQCG9vwCchFO4=; b=KeOt7vobk1jsLoGeeEi9DdY1Gb
-	pgOTxR13Sx/Rsl8uvxIgHiUHAW6ulmh6oOXOwzxDcc2tBGWa5Uzp4wtQruJCH1c32ZmA9lJIIKPhz
-	FCPcjcwJGmzipDPyZAvZ4CtQEuS8eiJx2yBqLanSfg32/Xc8sjt8zW37Lg3Pn8NJsg+zEQ8QPLrCc
-	Rjk3l99HHpYKSYZw+zfgRNV7lutOJIwQO9bj0geqbc9+kN15WNq7edMNYxjH1GXduz3WnatXhuGLW
-	mM7K2HaN7XT3knDw12Mm37FFYD1R6EC50sb5g//QyKoCosTzNKMx4MHtuZktnzRkk/aONEkhuVtMd
-	gEvK6fEw==;
+	bh=N8H5DQ7CcaB8f4L2bn2qFR3HsY7e4EIJ4njM/r7R9UU=; b=q/fCHDNXDeDF6M7cnzkE73d4Sz
+	TBZM0jlszXZyqnf5AL2keJd2Pr2bIOSGY8AhCqOCfZfoxo/r3j+IZsjyQHX5uxKQ4b1vJEktH7Tie
+	DlSxhTol2PF/lFnIQA0U6TIMKL13gQkJqJj7BHMx7zkrBCSbZ/gtW5FV/YCh/IbPf0bWCvZGI5YT9
+	Y56Qp6jC/IwGVN+q9gK+AQtf/aKSoPTlSxpHQo9UBMcsPETi/lT5LsHXXvolzkklmHQULXnHdYd26
+	tH7BS86QffL/LSSzghQHH2Kb1VQ0PGzH5M6dYWOSLWmQGDwYbrn/NqWxtE6d1voZ/nZMccxZP3k8h
+	0UzeUNTg==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,16 @@ Cc: linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	amadeus@jmu.edu.cn,
 	jonas@kwiboo.se
-Subject: [PATCH v3 2/5] arm64: dts: rockchip: Enable USB 2.0 ports on Radxa E20C
-Date: Fri, 29 May 2026 01:23:55 +0200
-Message-ID: <20260528232358.4054610-3-heiko@sntech.de>
+Subject: [PATCH v3 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
+Date: Fri, 29 May 2026 01:23:57 +0200
+Message-ID: <20260528232358.4054610-5-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260528232358.4054610-1-heiko@sntech.de>
 References: <20260528232358.4054610-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260528_162421_817461_1636411F 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20260528_162421_811594_876E826D 
+X-CRM114-Status: GOOD (  10.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,84 +70,38 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-The Radxa E20C has one USB2.0 Type-A HOST port and one USB2.0 Type-C OTG
-port.
+The ArmSoM Sige1 has two USB 2.0 Type-A HOST ports behind an onboard
+USB hub, and one USB 2.0 Type-C OTG port.
 
-Add support for using the USB 2.0 ports on Radxa E20C.
+Add support for using the USB 2.0 ports on ArmSoM Sige1.
+
+The onboard USB hub handles OHCI so only the EHCI controller is enabled.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../boot/dts/rockchip/rk3528-radxa-e20c.dts   | 60 +++++++++++++++++++
- 1 file changed, 60 insertions(+)
+ .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-index b32452756155..f872b8d20ebc 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-radxa-e20c.dts
-@@ -134,6 +134,18 @@ vcc5v0_sys: regulator-5v0-vcc-sys {
- 		regulator-max-microvolt = <5000000>;
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+index c41af8fc0c8d..51ae8e2d4566 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+@@ -480,3 +480,28 @@ bluetooth {
+ 		vddio-supply = <&vcc_1v8>;
  	};
- 
-+	vcc5v0_usb20: regulator-5v0-vcc-usb20 {
-+		compatible = "regulator-fixed";
-+		enable-active-high;
-+		gpios = <&gpio0 RK_PA1 GPIO_ACTIVE_HIGH>;
-+		pinctrl-names = "default";
-+		pinctrl-0 = <&usb_host_en>;
-+		regulator-name = "vcc5v0_usb20";
-+		regulator-min-microvolt = <5000000>;
-+		regulator-max-microvolt = <5000000>;
-+		vin-supply = <&vcc5v0_sys>;
-+	};
-+
- 	vccio_sd: regulator-vccio-sd {
- 		compatible = "regulator-gpio";
- 		gpios = <&gpio4 RK_PB6 GPIO_ACTIVE_HIGH>;
-@@ -273,6 +285,12 @@ sdmmc_vol_ctrl_h: sdmmc-vol-ctrl-h {
- 			rockchip,pins = <4 RK_PB6 RK_FUNC_GPIO &pcfg_pull_none>;
- 		};
- 	};
-+
-+	usb {
-+		usb_host_en: usb-host-en {
-+			rockchip,pins = <0 RK_PA1 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
- };
- 
- &pwm1 {
-@@ -320,3 +338,45 @@ &uart0 {
- 	pinctrl-0 = <&uart0m0_xfer>;
- 	status = "okay";
  };
 +
 +&usb_host0_ehci {
 +	status = "okay";
 +};
 +
-+&usb_host0_ohci {
-+	status = "okay";
-+};
-+
-+/*
-+ * The usb controller can only work in peripheral mode, as it is
-+ * connected to one of the ports of an outward-facing usb hub.
-+ *
-+ * type_c-port (hub-input)
-+ *          |
-+ *       usb-hub
-+ *     |         |
-+ * uart-usb   usb-host0
-+ *     |
-+ *   uart0
-+ */
 +&usb_host0_xhci {
-+	dr_mode = "peripheral";
 +	extcon = <&usb2phy>;
 +	maximum-speed = "high-speed";
 +	phys = <&usb2phy_otg>;
 +	phy-names = "usb2-phy";
++	vbus-supply = <&vcc5v0_usb_otg>
 +	status = "okay";
 +};
 +
@@ -156,7 +110,6 @@ index b32452756155..f872b8d20ebc 100644
 +};
 +
 +&usb2phy_host {
-+	phy-supply = <&vcc5v0_usb20>;
 +	status = "okay";
 +};
 +
