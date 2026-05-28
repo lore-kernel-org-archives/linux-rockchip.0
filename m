@@ -4,114 +4,208 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94808C43458
-	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4E70C4450C
+	for <linux-rockchip@archiver.kernel.org>; Thu,  9 Jul 2026 08:53:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zTBEw078lI3Ni8q86OVyUYnIgqtBIZkx3RzIHslpLtw=; b=ScdRLOeo8xgHhnLeYMtszYwUng
-	buJ5sJRAa3nTT2TRCuAYjUE416ISB9m0d5h5TzOtbOSapQOdbZgve0WG3uBbNznYqzIsiqkEkXWX3
-	WxTCQ7x4aJ+QusCuptKl6/YC0TlTNEtwrv+HlNQeY48N6XOojeu3W9FuT1iUY/hhQaVcJMdtcgw/n
-	EpyyITwbD4zUfxpF2YaWUc2gO/gBPPHj+4YOx847ns4AQVUas9JeaI5Hm0jtGKCBJISbYB+JQWKet
-	9oUBm7kEl7AAfkepOcQJxohz/LKdjLheIfSmQntkJJzb6Z1qzgCYrL6BXkFHhcjhCElB/ZDGNWiz7
-	Y12DM6mg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Z4dlh9meJAYnTp/5vhAmgw1CAMfdihNIWVeIHMssj8Q=; b=MGxgkJ9v0v+bxA
+	+vD9K9aCln6/LkN2mGit2ZgX8/+vEgEYzZRsJBZlYzWt+nWpVr+5EQ8MuOJUpi6LsnxEDt80es75i
+	hbqDTykJLKhFarg4Qu/QBPM5ntreA0eNUxtSWC+aQGocqzCOd3Rk1ezkDHDAC+yD0BkEmzSi9zZQU
+	jWPQMyUdWk2lX5q8sJZ8B92wmRc5b7OFu4HFdZogzGowVHxslvlWjKVipBlSbWgmCY1l27uLXhjsO
+	FShPdVhzrCraRtIxUdb45OtXdmgkQpAgM6IZJEPRH/NSecOETdGO639LVyXhiaPLTydD0TyYEUgE+
+	+XaEGSdWa/FLk0QreFDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1whkVd-00000001bIb-3wfm;
-	Thu, 09 Jul 2026 08:53:30 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1whkVh-00000001bVE-00s4;
+	Thu, 09 Jul 2026 08:53:33 +0000
+Received: from mail-centralusazlp170110009.outbound.protection.outlook.com ([2a01:111:f403:c111::9] helo=DM5PR21CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wMjCt-0000000GEHu-3Ovk;
-	Tue, 12 May 2026 09:15:15 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id 260ED600CB;
-	Tue, 12 May 2026 09:15:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 56EA8C2BCB0;
-	Tue, 12 May 2026 09:15:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1778577314;
-	bh=tQrx4ZRS7IpQ4Yeb3zvXcMC5gRyGgc0EqCTTskuD72c=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=C0JSfZQZpjD/Tvilt+ZydSoCODb9Cfdg9R/yccRDlcfaoqRM8iSMCNxRaMjr8pF/7
-	 PxuXXBLtVyINXXEJr8VmMbnEE0/2uqGdkKSzC5ft2lBFgjHBi9yZiITxp1XcstcHE8
-	 EK0wfXtuOs/5/GoVOCWIbJO9H5aWRYiL2sW/8mKhWqyNPtknH75fuBTGJanoB7tqpX
-	 +cGkXvFkkkcFpNm7iZLpVnNQbTZqufS2LlzPV9BVyeUykqzjr9aaSWmCmrrMhNnzm9
-	 IA1oPOljf0GEIfzjcMt4eZSfvURwoY6rIUz8dwJ6TrRoOWfY0pZEi/8r4DRSb4tS/f
-	 A6nDUfzh5Gj5Q==
-Date: Tue, 12 May 2026 11:15:12 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Liu Ying <victor.liu@nxp.com>, Philipp Zabel <p.zabel@pengutronix.de>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Frank Li <Frank.Li@nxp.com>,
+	id 1wSfb8-00000006BwX-1wlf;
+	Thu, 28 May 2026 18:36:51 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=MOfxfN1ibw9h6u4LEDGPlFX/R28UgHznH6XDjSfdleG1DwkcyFsMlEaGyMdiiZjeogjTyIOI/fCNjnEz2HTC9NHpOgwomLn+Z2p0P3NFfmwRZKX3BhWAdqS2g5CGNtGq4J9YyOHwyWc/YlVzKd2ys7vGINKTBqyzvnMMRELKKii+vyQ4vMEAWGgMGn9i2GP/2Is5xO2fTaagjDGSEZyqxL7hvRV+FVu1ygP/+y7Q2nClEbfAArHEuniIfU4IeiyYWYAXRDtfGBXxdQPCn45ZIqVYNvIsApRy/J6hJDPcORtLqnvnC7b7FEYH0IUYGFzdl3/RKV2a8rsD7zvXcmGiOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ylgiIxoa3e8e4ig0emG9sOC1BZq6t2kXTmXhSilmt+8=;
+ b=u8NF+G0ioG6WpEw7SJ3SYQNZT4syXGSibOPrSHkEhY2EcCNBI9z5aJPcVrXVkL50NhzVBbGLYM5jGlzTKojm/t1BhSLIOpCvav+OP/I2ZDHOMChb7RrgASrObEZ4P4ftmcXjJsoH+WPqSX4XffBCe4roD8U7K+FO91nJcMddNjDvt1YPFVZtS5MQgX+2FxEgczvrKB3eTFtN8ZZo0C/sXyqWRtGZbJNE5JEh+wkFjMwsC93CTMKvQEtxswpAvIJ2NicZiD6QMUyYHjA6hKD3yxUlu4t10IhVdvOqPP+fB0WNtxYc6pfIphaCektbQo6QTa4qVOj3R3X35z62kLeUaQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ylgiIxoa3e8e4ig0emG9sOC1BZq6t2kXTmXhSilmt+8=;
+ b=EauhGIgl984TSrWepFekEdzgjMh1bw2D8YbFrR5OSc8nrfjFoSE9nx59nrTzzrLY6R5EvTLLdqPhbs9Pyp2aEb+NrzKwuf7YTcB+G2fVc+NKQzL2R2F/pKLv1JsjDiZfGhxWimuI78d/T79UZrNKGT4baLALMIfykC/sY9hJPHde2gMUflqOMw17np6iYHcO3vreDtqHbFZ0kT1qnplo23P0Ox9fDXZcHKTtg1bfqkttwGhmQe/ivfro3BqBbJCaxwOyZl8nbWEjoSviZki0n/0sWsyC1949cPfiv1hivofDAJyhigYXFKtYa0yq9Fh7hjZkvnNOVntRoIeh1O9Ang==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from LV3PR12MB9356.namprd12.prod.outlook.com (2603:10b6:408:20c::21)
+ by SA3PR12MB9228.namprd12.prod.outlook.com (2603:10b6:806:39c::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.13; Thu, 28 May
+ 2026 18:36:34 +0000
+Received: from LV3PR12MB9356.namprd12.prod.outlook.com
+ ([fe80::1c36:31b4:c420:6286]) by LV3PR12MB9356.namprd12.prod.outlook.com
+ ([fe80::1c36:31b4:c420:6286%5]) with mapi id 15.21.0071.011; Thu, 28 May 2026
+ 18:36:34 +0000
+From: Yury Norov <ynorov@nvidia.com>
+To: Andrew Morton <akpm@linux-foundation.org>,
+	Rasmus Villemoes <linux@rasmusvillemoes.dk>,
+	Yury Norov <ynorov@nvidia.com>
+Cc: Russell King <linux@armlinux.org.uk>,
+	Frank Li <Frank.Li@nxp.com>,
 	Sascha Hauer <s.hauer@pengutronix.de>,
 	Pengutronix Kernel Team <kernel@pengutronix.de>,
 	Fabio Estevam <festevam@gmail.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Sean Paul <sean@poorly.run>, Konrad Dybcio <konradybcio@kernel.org>,
-	Akhil P Oommen <akhilpo@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jesszhan0024@gmail.com>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Vinod Koul <vkoul@kernel.org>,
-	Nas Chung <nas.chung@chipsnmedia.com>,
-	Jackson Lee <jackson.lee@chipsnmedia.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Mirela Rabulea <mirela.rabulea@nxp.com>,
-	Detlev Casanova <detlev.casanova@collabora.com>,
-	Ezequiel Garcia <ezequiel@vanguardiasur.com.ar>,
+	Madhavan Srinivasan <maddy@linux.ibm.com>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Nicholas Piggin <npiggin@gmail.com>,
+	"Christophe Leroy (CS GROUP)" <chleroy@kernel.org>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Ingo Molnar <mingo@redhat.com>,
+	Arnaldo Carvalho de Melo <acme@kernel.org>,
+	Namhyung Kim <namhyung@kernel.org>,
+	Mark Rutland <mark.rutland@arm.com>,
+	Alexander Shishkin <alexander.shishkin@linux.intel.com>,
+	Jiri Olsa <jolsa@kernel.org>,
+	Ian Rogers <irogers@google.com>,
+	Adrian Hunter <adrian.hunter@intel.com>,
+	James Clark <james.clark@linaro.org>,
+	Thomas Gleixner <tglx@kernel.org>,
+	Borislav Petkov <bp@alien8.de>,
+	Dave Hansen <dave.hansen@linux.intel.com>,
+	"H. Peter Anvin" <hpa@zytor.com>,
+	"Rafael J. Wysocki" <rafael@kernel.org>,
+	Len Brown <lenb@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Danilo Krummrich <dakr@kernel.org>,
+	Chanwoo Choi <cw00.choi@samsung.com>,
+	MyungJoo Ham <myungjoo.ham@samsung.com>,
+	Kyungmin Park <kyungmin.park@samsung.com>,
 	Heiko Stuebner <heiko@sntech.de>,
-	Hugues Fruchet <hugues.fruchet@foss.st.com>,
-	Alain Volmat <alain.volmat@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	MD Danish Anwar <danishanwar@ti.com>,
-	Roger Quadros <rogerq@kernel.org>,
-	Parvathi Pudi <parvathi@couthit.com>,
-	Mohan Reddy Putluru <pmohan@couthit.com>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Xu Yilun <yilun.xu@intel.com>,
+	Tom Rix <trix@redhat.com>,
+	Moritz Fischer <mdf@kernel.org>,
+	Yicong Yang <yangyicong@hisilicon.com>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Dennis Dalessandro <dennis.dalessandro@cornelisnetworks.com>,
+	Jason Gunthorpe <jgg@ziepe.ca>,
+	Leon Romanovsky <leon@kernel.org>,
+	Dan Williams <djbw@kernel.org>,
+	Vishal Verma <vishal.l.verma@intel.com>,
+	Dave Jiang <dave.jiang@intel.com>,
+	Ira Weiny <ira.weiny@intel.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Shuai Xue <xueshuai@linux.alibaba.com>,
+	Will Deacon <will@kernel.org>,
+	Jiucheng Xu <jiucheng.xu@amlogic.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
 	Kevin Hilman <khilman@baylibre.com>,
 	Jerome Brunet <jbrunet@baylibre.com>,
 	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-	Michal Simek <michal.simek@amd.com>,
-	Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Linus Walleij <linusw@kernel.org>, Felix Fietkau <nbd@nbd.name>,
-	"Andrew F. Davis" <afd@ti.com>,
-	Hussain Khaja <basharath@couthit.com>, Suman Anna <s-anna@ti.com>,
-	Ben Levinsky <ben.levinsky@amd.com>,
-	Tanmay Shah <tanmay.shah@amd.com>,
-	Erwan Leray <erwan.leray@foss.st.com>,
-	Fabrice Gasnier <fabrice.gasnier@foss.st.com>,
-	Roger Quadros <rogerq@ti.com>, dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
-	dmaengine@vger.kernel.org, linux-media@vger.kernel.org,
+	Robin Murphy <robin.murphy@arm.com>,
+	Jing Zhang <renyu.zj@linux.alibaba.com>,
+	Xu Yang <xu.yang_2@nxp.com>,
+	Linu Cherian <lcherian@marvell.com>,
+	Gowthami Thiagarajan <gthiagarajan@marvell.com>,
+	Ji Sheng Teoh <jisheng.teoh@starfivetech.com>,
+	Khuong Dinh <khuong@os.amperecomputing.com>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Zhang Rui <rui.zhang@intel.com>,
+	Lukasz Luba <lukasz.luba@arm.com>,
+	Yury Norov <yury.norov@gmail.com>,
+	Kees Cook <kees@kernel.org>,
+	=?UTF-8?q?Thomas=20Wei=C3=9Fschuh?= <thomas.weissschuh@linutronix.de>,
+	Aboorva Devarajan <aboorvad@linux.ibm.com>,
+	"Ritesh Harjani (IBM)" <ritesh.list@gmail.com>,
+	Ilkka Koskinen <ilkka@os.amperecomputing.com>,
+	Besar Wicaksono <bwicaksono@nvidia.com>,
+	Ma Ke <make24@iscas.ac.cn>,
+	Chengwen Feng <fengchengwen@huawei.com>,
+	linux-arm-kernel@lists.infradead.org,
+	imx@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	linuxppc-dev@lists.ozlabs.org,
+	linux-perf-users@vger.kernel.org,
+	linux-acpi@vger.kernel.org,
+	driver-core@lists.linux.dev,
+	linux-pm@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com, netdev@vger.kernel.org,
-	linux-remoteproc@vger.kernel.org, linux-amlogic@lists.infradead.org,
-	linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: Consolidate "sram" property definition
-Message-ID: <agLvoBCkUf_TN5b-@lore-desk>
-References: <20260511165942.2774868-1-robh@kernel.org>
+	linux-fpga@vger.kernel.org,
+	linux-rdma@vger.kernel.org,
+	nvdimm@lists.linux.dev,
+	linux-pci@vger.kernel.org,
+	linux-amlogic@lists.infradead.org,
+	linux-cxl@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org
+Subject: [PATCH 01/16] psci: simplify hotplug_tests()
+Date: Thu, 28 May 2026 14:36:08 -0400
+Message-ID: <20260528183625.870813-2-ynorov@nvidia.com>
+X-Mailer: git-send-email 2.51.0
+In-Reply-To: <20260528183625.870813-1-ynorov@nvidia.com>
+References: <20260528183625.870813-1-ynorov@nvidia.com>
+X-ClientProxiedBy: SJ0PR13CA0061.namprd13.prod.outlook.com
+ (2603:10b6:a03:2c4::6) To LV3PR12MB9356.namprd12.prod.outlook.com
+ (2603:10b6:408:20c::21)
 MIME-Version: 1.0
-In-Reply-To: <20260511165942.2774868-1-robh@kernel.org>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV3PR12MB9356:EE_|SA3PR12MB9228:EE_
+X-MS-Office365-Filtering-Correlation-Id: 49ea52b1-3d98-4ecd-df73-08debce80b13
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|7416014|376014|10070799003|366016|18002099003|11063799006|56012099006|22082099003;
+X-Microsoft-Antispam-Message-Info: gECErUiHdwYoV9qiGjvQsZ7R0Wi/8P436GhjLsDnfBAZMocvDmRYxAFdpEGpGsHaB7g7yaPIldgO7inSd9RmcwXJklrYHdQ/WD60/jpanpLPWELWVHY9CuZ9M1RyiINHlCqv0Quuf3aHn2lrgVGtqpkZ4yfAghBZAdGFU8psOxEurwniCLj7UtpEN6O0+uYtmM1p27nPbL1Bx92jTMTo/mRdo8TKOXfpolClgdFW3HCJ19pkZRhRAjJQ/CieiodC0LT0+D0vgWZZed49Y5JuK/H3bQSS7OfgoKY1JsOiD/Js8yGZVRXv5Tfgnwijbgpep6v5hyoLHF7dTnGLFgPibLwQkQ15Ux2RNCPpOmnuqAg7lUgPby+hCODCIAaojHgxj97XSAYrnuUxOBv+yhpaFh+FqQxdvgOiPlCMXncqMZNr4l2Tbgh6D9cKNgBmsgkbLoedeZcUMg/ECl5wTeGaQkJ31a0cJx1Oxa4PZ8id7XBNP6uBOdPtB6ILJe1AhyxRnmIk5/Kb6GFQnAt26UKf1kWde32AdPL4XL2XjWTffhqsBlYVXezXeQLhDbThlTWcyEyHgqqSoGG/q3gcTpfmjf2clpRNX69zMRTrRfW8awlL2bYEe1j2iHN29BtAAAV4qbUB89XSlWDIYSJGwDcZ4NJt+aE8KWSXLyqHjwSsuzWUAj69Q+6vSGn1UT7AhM3e
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV3PR12MB9356.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(7416014)(376014)(10070799003)(366016)(18002099003)(11063799006)(56012099006)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ASoCUM3zk7XaiWVRdEe2iSI73G6aUIdAnsxsiok+wvWQM2FbjFSkos5k40Ae?=
+ =?us-ascii?Q?vKTy0aCevWyRm4359PGCQ89D+cToyKKHbLcMHr07UI+9+Ngxr18AtNviUzJO?=
+ =?us-ascii?Q?jL+QpZs4vNNfZgBpltuWZALJpt5qiOzywyRh5V7CkGVckbFAfsJsKpF2f/ni?=
+ =?us-ascii?Q?h3YmqJTqLqaghtortsavJPxAoePxc+W/LGikWSX2tPuuJywmEwTBaYipu1fv?=
+ =?us-ascii?Q?kPw2SqdKFTOz1CTLuCy4OgQqrA+v4mUX0KIetVva2k3LcaV2EX9gJ059jb6X?=
+ =?us-ascii?Q?17pmM1+V8oxo92Qd9qmXtFmbXbpyTYDme7IcblQ5vjjJAUjLwgkuiP7edFgC?=
+ =?us-ascii?Q?se7+H6BS3yQYxzbdN7GsqpiRrOQEBsUUb5oq8He2EaSD2gnepM6ONGcQs19T?=
+ =?us-ascii?Q?LrMPhvo1AM1oG6EZ1CwH5ab4T2b8BMEOcmHQVib9+81v5ZbIlRl7BJn20LDQ?=
+ =?us-ascii?Q?qz6trmSrRqa6/wlSuApMw6Jl7yMvYxKzymq9hEjOZ51m3l0DEOPWFa+3+aPW?=
+ =?us-ascii?Q?9geD1pNTBUChsrcuGZmzqgAT+51abwz8zIEIbxwazR5/9MsAQ0I6BLBho2fx?=
+ =?us-ascii?Q?mROOgnVN2VPmWRtdElE50AweMxZu/r0bXot/IQ4Hz63LKGvdTIni1vJHONqj?=
+ =?us-ascii?Q?+lexjBHB59BT72zUyc3VoI1IjWvUw9RpgXEsmmPnL37JnoKsQ9d54Ovu25eB?=
+ =?us-ascii?Q?bIfkcppIvvfdpdQfVUXX5KFlyrg9CJIzFvWuoWu48jmcCCxBmjtJH+mp9jxV?=
+ =?us-ascii?Q?2lKkOtUbx1c6CcgkXXvBPxcbpPnakddkuzBkvXayWygSE2QM/7bIAcsQFadR?=
+ =?us-ascii?Q?2VFowDqgCmcSl3vmq2k++yT0uo3Vw+2JaT2VonhHhJWqVDQdV/rUfhKti0xp?=
+ =?us-ascii?Q?PsVWQqDEYtpqmqVOHufpG2ECpfuSuJkJMYiDYD0yoRVCZzmcb+vfplXjdh3Z?=
+ =?us-ascii?Q?NLEfa0ikKvbu7D42t7mW3GF6UfLwjZnAJrjd2/JNjgYukE7vzDEbCEP4WXIU?=
+ =?us-ascii?Q?FLXyWrkjOtv8ADG98hDRjRJBomnLUnfFzMjVubV0n7PFjw5VEnwrIkuikB1/?=
+ =?us-ascii?Q?+Kxk2PtuFFgNUpW3kJsn8feXvNR1peQjWEp3JZ62V8V8pub5+dLv0t16C5sB?=
+ =?us-ascii?Q?N+sYWXNj/34ppurbc4LorcXyhqhTJrF5DhYOjXH00qUkjGkd0Ik7vyWWr27/?=
+ =?us-ascii?Q?gO/VzKmTk+c33jG2B1/DNQ72PEQEGgUI1eJniaYzRISk6C1l1WnDVf2+tGJC?=
+ =?us-ascii?Q?gwuDGne/sd+7iHthWVMjJfv6Kq1g20x9hiV+0impMCchlCZ2OB2hHd4g3eki?=
+ =?us-ascii?Q?vkRgoF64KGL8IWmM9drDfwrMwQJJAgoXwyqmVjtkwHrwWTXauX8uB1U5u/dp?=
+ =?us-ascii?Q?3EgziV8X9fOvWfB2hJPmaZDrMoWN/tVcg3jQVCOhQI9kMbY7ho5/lQCgB4V7?=
+ =?us-ascii?Q?+kRIkTLhRd0obKM4qYCv05DMgubnrWBjMs/5TZzN8VD9VIrvGFsS8rGZGVhf?=
+ =?us-ascii?Q?3uBPY81+Nmbqx09L8EE72RK2Q1zOZX7kdSQIGszbMpCm1PAYlytDxpTAhBX0?=
+ =?us-ascii?Q?a0Pe7Ws+ovNXUymbbHzAJ1lrmiqGhJ20tL8IJrSIF8aKBz0BZGOD5Bp1Py16?=
+ =?us-ascii?Q?Jyjci5S0PvC3P0kHQCNbXQAh1Oln0c96qxuIc0mWCWj16i03MynvCWwjJozJ?=
+ =?us-ascii?Q?YLfGpBNnl78ngFzp/ju8hzySLPgx/+D1DrID3wpTZ7EpfQcdO7oVKmoMGzCZ?=
+ =?us-ascii?Q?DtD9PGfIhASDYil/m6GSj4VoT3Qbh6IXdNJp8HlU2TBbEMlbRJdf?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 49ea52b1-3d98-4ecd-df73-08debce80b13
+X-MS-Exchange-CrossTenant-AuthSource: LV3PR12MB9356.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 28 May 2026 18:36:33.9195
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: vuar3oM1QcfwD8kQnGbPL70TBtz9XNIfqitCCbBmjNl/XHy8vi8ZhCNlfFPZGgwtskVQdcd0BYC87oRI3BCfcA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA3PR12MB9228
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260528_113650_533095_600B0536 
+X-CRM114-Status: GOOD (  14.68  )
 X-Mailman-Approved-At: Thu, 09 Jul 2026 01:48:23 -0700
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -124,411 +218,67 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============5356278730808971492=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Switch to pr_info("... %pbl"), and drop the temporary buffer allocation.
 
---===============5356278730808971492==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="DRGrXT3EJq+RYIF3"
-Content-Disposition: inline
+This prepares for removing cpumap_print_to_pagebuf().
 
+Signed-off-by: Yury Norov <ynorov@nvidia.com>
+---
+ drivers/firmware/psci/psci_checker.c | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
 
---DRGrXT3EJq+RYIF3
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+diff --git a/drivers/firmware/psci/psci_checker.c b/drivers/firmware/psci/psci_checker.c
+index e67ba9891082..ecd745bb90bf 100644
+--- a/drivers/firmware/psci/psci_checker.c
++++ b/drivers/firmware/psci/psci_checker.c
+@@ -186,7 +186,6 @@ static int hotplug_tests(void)
+ {
+ 	int i, nb_cpu_group, err = -ENOMEM;
+ 	cpumask_var_t offlined_cpus, *cpu_groups;
+-	char *page_buf;
+ 
+ 	if (!alloc_cpumask_var(&offlined_cpus, GFP_KERNEL))
+ 		return err;
+@@ -194,10 +193,6 @@ static int hotplug_tests(void)
+ 	nb_cpu_group = alloc_init_cpu_groups(&cpu_groups);
+ 	if (nb_cpu_group < 0)
+ 		goto out_free_cpus;
+-	page_buf = (char *)__get_free_page(GFP_KERNEL);
+-	if (!page_buf)
+-		goto out_free_cpu_groups;
+-
+ 	/*
+ 	 * Of course the last CPU cannot be powered down and cpu_down() should
+ 	 * refuse doing that.
+@@ -210,16 +205,11 @@ static int hotplug_tests(void)
+ 	 * off, the cpu group itself should shut down.
+ 	 */
+ 	for (i = 0; i < nb_cpu_group; ++i) {
+-		ssize_t len = cpumap_print_to_pagebuf(true, page_buf,
+-						      cpu_groups[i]);
+-		/* Remove trailing newline. */
+-		page_buf[len - 1] = '\0';
+-		pr_info("Trying to turn off and on again group %d (CPUs %s)\n",
+-			i, page_buf);
++		pr_info("Trying to turn off and on again group %d (CPUs %*pbl)\n",
++			i, cpumask_pr_args(cpu_groups[i]));
+ 		err += down_and_up_cpus(cpu_groups[i], offlined_cpus);
+ 	}
+ 
+-	free_page((unsigned long)page_buf);
+ out_free_cpu_groups:
+ 	free_cpu_groups(nb_cpu_group, &cpu_groups);
+ out_free_cpus:
+-- 
+2.51.0
 
-> The "sram" property has become a de facto standard property, so create a
-> common schema for it and drop all the duplicated definitions.
->=20
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
-
-> ---
->  .../imx/fsl,imx8qxp-dc-command-sequencer.yaml |  2 +-
->  .../devicetree/bindings/display/msm/gpu.yaml  |  6 +----
->  .../bindings/dma/stericsson,dma40.yaml        |  8 ++----
->  .../bindings/media/cnm,wave521c.yaml          |  2 +-
->  .../bindings/media/nxp,imx8-jpeg.yaml         |  6 ++---
->  .../bindings/media/rockchip,vdec.yaml         |  5 ++--
->  .../bindings/media/st,stm32-dcmi.yaml         |  6 ++---
->  .../devicetree/bindings/net/mediatek,net.yaml |  3 +--
->  .../bindings/net/ti,icssg-prueth.yaml         |  2 +-
->  .../bindings/net/ti,icssm-prueth.yaml         |  2 +-
->  .../remoteproc/amlogic,meson-mx-ao-arc.yaml   |  7 +----
->  .../bindings/remoteproc/ti,k3-dsp-rproc.yaml  |  8 ------
->  .../bindings/remoteproc/ti,k3-r5f-rproc.yaml  |  8 ------
->  .../remoteproc/xlnx,zynqmp-r5fss.yaml         |  9 +------
->  .../devicetree/bindings/spi/st,stm32-spi.yaml | 10 +++----
->  .../bindings/sram/sram-consumer.yaml          | 26 +++++++++++++++++++
->  16 files changed, 48 insertions(+), 62 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/sram/sram-consumer.=
-yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc=
--command-sequencer.yaml b/Documentation/devicetree/bindings/display/imx/fsl=
-,imx8qxp-dc-command-sequencer.yaml
-> index 27118f4c0d28..fd095e5742c5 100644
-> --- a/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-comman=
-d-sequencer.yaml
-> +++ b/Documentation/devicetree/bindings/display/imx/fsl,imx8qxp-dc-comman=
-d-sequencer.yaml
-> @@ -41,7 +41,7 @@ properties:
->        - const: sw3
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description: phandle pointing to the mmio-sram device node
-> =20
->  required:
-> diff --git a/Documentation/devicetree/bindings/display/msm/gpu.yaml b/Doc=
-umentation/devicetree/bindings/display/msm/gpu.yaml
-> index 04b2328903ca..358759fad8dc 100644
-> --- a/Documentation/devicetree/bindings/display/msm/gpu.yaml
-> +++ b/Documentation/devicetree/bindings/display/msm/gpu.yaml
-> @@ -84,13 +84,9 @@ properties:
->      maxItems: 64
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
->      minItems: 1
->      maxItems: 4
-> -    items:
-> -      maxItems: 1
-> -    description: |
-> -      phandles to one or more reserved on-chip SRAM regions.
-> +    description:
->        phandle to the On Chip Memory (OCMEM) that's present on some a3xx =
-and
->        a4xx Snapdragon SoCs. See
->        Documentation/devicetree/bindings/sram/qcom,ocmem.yaml
-> diff --git a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml =
-b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-> index 607da11e7baa..d8f92838f4c9 100644
-> --- a/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-> +++ b/Documentation/devicetree/bindings/dma/stericsson,dma40.yaml
-> @@ -136,13 +136,9 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
-> -    description: A phandle array with inner size 1 (no arg cells).
-> -      First phandle is the LCPA (Logical Channel Parameter Address) memo=
-ry.
-> -      Second phandle is the  LCLA (Logical Channel Link base Address) me=
-mory.
-> -    maxItems: 2
->      items:
-> -      maxItems: 1
-> +      - description: LCPA (Logical Channel Parameter Address) memory.
-> +      - description: LCLA (Logical Channel Link base Address) memory.
-> =20
->    memcpy-channels:
->      $ref: /schemas/types.yaml#/definitions/uint32-array
-> diff --git a/Documentation/devicetree/bindings/media/cnm,wave521c.yaml b/=
-Documentation/devicetree/bindings/media/cnm,wave521c.yaml
-> index 6a11c1d11fb5..6cd33dfd095d 100644
-> --- a/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
-> +++ b/Documentation/devicetree/bindings/media/cnm,wave521c.yaml
-> @@ -37,7 +37,7 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
->        The VPU uses the SRAM to store some of the reference data instead =
-of
->        storing it on DMA memory. It is mainly used for the purpose of red=
-ucing
-> diff --git a/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml b=
-/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
-> index 18cc6315a821..6ba668aa633d 100644
-> --- a/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
-> +++ b/Documentation/devicetree/bindings/media/nxp,imx8-jpeg.yaml
-> @@ -56,10 +56,10 @@ properties:
->      maxItems: 5               # Wrapper and 4 slots
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
-> -      Optional phandle to a reserved on-chip SRAM regions. The SRAM can
-> -      be used for descriptor storage, which may improve bus utilization.
-> +      The SRAM can be used for descriptor storage, which may improve bus
-> +      utilization.
-> =20
->  required:
->    - compatible
-> diff --git a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml b=
-/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> index 42022401d0ff..4f38a0ef29d8 100644
-> --- a/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> +++ b/Documentation/devicetree/bindings/media/rockchip,vdec.yaml
-> @@ -91,9 +91,8 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description: |
-> -      phandle to a reserved on-chip SRAM regions.
-> +    maxItems: 1
-> +    description:
->        Some SoCs, like rk3588 provide on-chip SRAM to store temporary
->        buffers during decoding.
-> =20
-> diff --git a/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml b=
-/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
-> index d9fbb90b0977..7c2ddd27780f 100644
-> --- a/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
-> +++ b/Documentation/devicetree/bindings/media/st,stm32-dcmi.yaml
-> @@ -47,10 +47,10 @@ properties:
->      maxItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
-> -      phandle to a reserved SRAM region which is used as temporary
-> -      storage memory between DMA and MDMA engines.
-> +      SRAM region which is used as temporary storage memory between DMA =
-and
-> +      MDMA engines.
-> =20
->    port:
->      $ref: /schemas/graph.yaml#/$defs/port-base
-> diff --git a/Documentation/devicetree/bindings/net/mediatek,net.yaml b/Do=
-cumentation/devicetree/bindings/net/mediatek,net.yaml
-> index cc346946291a..6bbd83c6aaf7 100644
-> --- a/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> +++ b/Documentation/devicetree/bindings/net/mediatek,net.yaml
-> @@ -67,8 +67,7 @@ properties:
->        - const: ppe
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description: phandle to mmio SRAM
-> +    maxItems: 1
-> =20
->    mediatek,ethsys:
->      $ref: /schemas/types.yaml#/definitions/phandle
-> diff --git a/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml b=
-/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
-> index c296e5711848..883033b19b8f 100644
-> --- a/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
-> +++ b/Documentation/devicetree/bindings/net/ti,icssg-prueth.yaml
-> @@ -21,7 +21,7 @@ properties:
->        - ti,am654-sr1-icssg-prueth  # for AM65x SoC family, SR1.0
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
->        phandle to MSMC SRAM node
-> =20
-> diff --git a/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml b=
-/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
-> index a98ad45ca66f..9370c43bc66a 100644
-> --- a/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
-> +++ b/Documentation/devicetree/bindings/net/ti,icssm-prueth.yaml
-> @@ -24,7 +24,7 @@ properties:
->        - ti,am3359-prueth   # for AM33x SoC family
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> +    maxItems: 1
->      description:
->        phandle to OCMC SRAM node
-> =20
-> diff --git a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-m=
-x-ao-arc.yaml b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-=
-mx-ao-arc.yaml
-> index 76e8ca44906a..3f710433e937 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-ar=
-c.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/amlogic,meson-mx-ao-ar=
-c.yaml
-> @@ -48,12 +48,7 @@ properties:
->      minItems: 1
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description:
-> -      phandles to a reserved SRAM region which is used as the memory of
-> -      the ARC core. The region should be defined as child nodes of the
-> -      AHB SRAM node as per the generic bindings in
-> -      Documentation/devicetree/bindings/sram/sram.yaml
-> +    maxItems: 1
-> =20
->    amlogic,secbus2:
->      $ref: /schemas/types.yaml#/definitions/phandle
-> diff --git a/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc=
-=2Eyaml b/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
-> index b51bb863d759..8b1ed384ef22 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/ti,k3-dsp-rproc.yaml
-> @@ -75,16 +75,8 @@ properties:
->  # --------------------
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle-array
->      minItems: 1
->      maxItems: 4
-> -    items:
-> -      maxItems: 1
-> -    description: |
-> -      phandles to one or more reserved on-chip SRAM regions. The regions
-> -      should be defined as child nodes of the respective SRAM node, and
-> -      should be defined as per the generic bindings in,
-> -      Documentation/devicetree/bindings/sram/sram.yaml
-> =20
->  allOf:
->    - if:
-> diff --git a/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc=
-=2Eyaml b/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
-> index 775e9b3a1938..14e6b2f817b3 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/ti,k3-r5f-rproc.yaml
-> @@ -224,16 +224,8 @@ patternProperties:
->            at 0x0) or 0 (BTCM at 0x0), default value is 1 if omitted.
-> =20
->        sram:
-> -        $ref: /schemas/types.yaml#/definitions/phandle-array
->          minItems: 1
->          maxItems: 4
-> -        items:
-> -          maxItems: 1
-> -        description: |
-> -          phandles to one or more reserved on-chip SRAM regions. The reg=
-ions
-> -          should be defined as child nodes of the respective SRAM node, =
-and
-> -          should be defined as per the generic bindings in,
-> -          Documentation/devicetree/bindings/sram/sram.yaml
-> =20
->      required:
->        - compatible
-> diff --git a/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5f=
-ss.yaml b/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.ya=
-ml
-> index ee63c03949c9..c7d5e58330d6 100644
-> --- a/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
-> +++ b/Documentation/devicetree/bindings/remoteproc/xlnx,zynqmp-r5fss.yaml
-> @@ -106,20 +106,13 @@ patternProperties:
->            - const: rx
-> =20
->        sram:
-> -        $ref: /schemas/types.yaml#/definitions/phandle-array
->          minItems: 1
->          maxItems: 8
-> -        items:
-> -          maxItems: 1
-> -        description: |
-> +        description:
->            phandles to one or more reserved on-chip SRAM regions. Other t=
-han TCM,
->            the RPU can execute instructions and access data from the OCM =
-memory,
->            the main DDR memory, and other system memories.
-> =20
-> -          The regions should be defined as child nodes of the respective=
- SRAM
-> -          node, and should be defined as per the generic bindings in
-> -          Documentation/devicetree/bindings/sram/sram.yaml
-> -
->        memory-region:
->          description: |
->            List of phandles to the reserved memory regions associated wit=
-h the
-> diff --git a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml b/Do=
-cumentation/devicetree/bindings/spi/st,stm32-spi.yaml
-> index 472e92974714..6d7d595e4ab3 100644
-> --- a/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-> +++ b/Documentation/devicetree/bindings/spi/st,stm32-spi.yaml
-> @@ -89,12 +89,10 @@ properties:
->        - const: rxm2m
-> =20
->    sram:
-> -    $ref: /schemas/types.yaml#/definitions/phandle
-> -    description: |
-> -      Phandles to a reserved SRAM region which is used as temporary
-> -      storage memory between DMA and MDMA engines.
-> -      The region should be defined as child node of the AHB SRAM node
-> -      as per the generic bindings in Documentation/devicetree/bindings/s=
-ram/sram.yaml
-> +    maxItems: 1
-> +    description:
-> +      SRAM region which is used as temporary storage memory between DMA =
-and
-> +      MDMA engines.
-> =20
->    power-domains:
->      maxItems: 1
-> diff --git a/Documentation/devicetree/bindings/sram/sram-consumer.yaml b/=
-Documentation/devicetree/bindings/sram/sram-consumer.yaml
-> new file mode 100644
-> index 000000000000..f00087bd2879
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sram/sram-consumer.yaml
-> @@ -0,0 +1,26 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sram/sram-consumer.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: SRAM Consumers
-> +
-> +maintainers:
-> +  - Rob Herring <robh@kernel.org>
-> +
-> +select: true
-> +
-> +properties:
-> +  sram:
-> +    description:
-> +      Phandles to one or more reserved on-chip SRAM regions. The regions
-> +      should be defined as child nodes of the respective SRAM node, and
-> +      should be defined as per the generic bindings in,
-> +      Documentation/devicetree/bindings/sram/sram.yaml
-> +    $ref: /schemas/types.yaml#/definitions/phandle-array
-> +    items:
-> +      maxItems: 1
-> +
-> +additionalProperties: true
-> +...
-> --=20
-> 2.53.0
->=20
-
---DRGrXT3EJq+RYIF3
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCagLvoAAKCRA6cBh0uS2t
-rB3PAQDUyipx/50v+HQH37ZQgQgNXN+WyuErXdljPkPOAGPQXQEA5AF8C1BtXXr0
-ThfwiDvqyao6viviV65dKTdINUDRXA4=
-=S+zT
------END PGP SIGNATURE-----
-
---DRGrXT3EJq+RYIF3--
-
-
---===============5356278730808971492==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============5356278730808971492==--
-
