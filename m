@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 863A6CD6E49
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 16:17:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD226CD6E49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 16:18:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=qU7dWK3RTWA0xHSg86feEzt1A83YooRjvP9Nfvl8enI=; b=iz6WNlkGe99EIB
-	E8HFXL2C0BKCyz5yL23TsR3SLr0C8dMMS8KvbBXg0/+Z+rRnYsg18wHWauaoYrUaRNy6uIYE/iHJi
-	8sQbaT+dm2qylW7JflKScGaPbV5Tdpa8ZpZN2rfR+wN9ud2dd207mxvTXpR0ojdJKwogh9u62cmJI
-	xldbDk+f/WMipLQ4PzEorMoHx2xsqjY8b5z/FC78kY0uhDuVfkkuuMKMStJaDOhiEiuCrVJhH+LGk
-	qXcrpPdtsRIiAvzkoMJkgLD5PgueNgS0jSK9X7tiL8cwoo1FDq6BreEaxAPq/jCqi1WFnwwku8cbd
-	AYjD0LfprDf2JUyIb4wg==;
+	List-Owner; bh=AhfQqocFryTanfpA5OqVHtiYh1btPOWYPj96LsHudLo=; b=mWqReZC4LzRdr+
+	VdjEHzMvChrt3R21HYhpOB6IQTlnSyzAj9Tejzf2ngjRIvzlEu7bPdWo7+0S0k5u+DUtQ3B1uH7Tj
+	PgmJgBTXOO/fzB5Tkj9ignTnjzvKoRVibSGz6BIsR+RBt7bYmEukrly3WqKwsLpi8yNty6CvFE0GZ
+	CjGu2YmXR4YQuJCiQCNT2ZXeX5+zUtWYWN2LYXcFyhzySOxHbi5qTOfToL8UsCa5caeiNYzIJkP3U
+	Ci681fNesw316yZYh/j4k4uBRInol2uW/Uy5yd7QddrCYyORHIHIiwGUe55goBO8yrpzncYi+ixW3
+	nnGVs0EBid/3hOJ4Hdmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSztp-00000007rbW-00Zo;
-	Fri, 29 May 2026 16:17:29 +0000
+	id 1wSzuj-00000007rq2-2GSK;
+	Fri, 29 May 2026 16:18:25 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSztn-00000007rav-3JTA;
-	Fri, 29 May 2026 16:17:27 +0000
+	id 1wSzuf-00000007rp6-2ZN0;
+	Fri, 29 May 2026 16:18:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1BBBE605CF;
-	Fri, 29 May 2026 16:17:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D9B671F00893;
-	Fri, 29 May 2026 16:17:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CC458605DE;
+	Fri, 29 May 2026 16:18:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D55CD1F00893;
+	Fri, 29 May 2026 16:18:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780071446;
-	bh=c1QR2LQzaSkBcrsEtlqVivrKMt9D/HuRW5WxsHgnw0g=;
+	s=k20260515; t=1780071500;
+	bh=KGn8v2jq7Ub01ZUuqZ6CdyaIBmuX1eNalYc9sbLJMfA=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=hXhQpwbwETVAg4ABZ1v1n/MraC+JI9PfoXQk3aYsFxMqD1Joj4z+E437V/DoE5KGD
-	 4SU149busxNl+FHWdTtQn9Gn3Vi09MmIkscxZPuc6ywNyrjh3LdO8iXkQvVMGNo+4w
-	 gW1sNdp28M7CWKzMaE5fWOKqrwQJWa1GwAq4JCe55lCS0gvTM9cIJa7FFnstj2lSRT
-	 v3vmmeztEtOlkWo243smTnEIitKK69B8AMxS2Wm9asrAp9ZsO1Qwt5n2uQ8ZSsnVUT
-	 tiI0M2EuzVg6UkH5Ko6DsLckc8kmxYOC7J2MtglS8qzPeJ2FABST6gWCeoHRzSDP+E
-	 J/hjbeyDmq4vw==
-Message-ID: <26069b3b-43c0-45fa-92ee-729d270a8b6b@kernel.org>
-Date: Fri, 29 May 2026 18:17:21 +0200
+	b=RYFwOSJB2R8uWFGJmYZvbrS4OGvNF/dip/DFzrRCRJ8L5ufY1nWRjPUm+Oy39/DAF
+	 8+aBEGY6i20k4jyZ1rNRUv5r9pwKzPBEIHcadZ2sDZq9gC5r/u+mtRXWczalvx/sXM
+	 QGhixX4LNZow4HsuYz4gRT8BG/hBlzS+f3vgT5mSlTvtoQQgxkjJ22GvxJKUB2gBjU
+	 Bwd+aO9aBlcX2DCwAeyyDriXGTTNTNlmNMRFLOt2k+/+i9LdGfx7M4t4Ge3OlmIwsg
+	 +1vBMixMroi3iUlM6KzF9z3mngZDrj/nojFzWaSHrXCO6kPBnZyjhLXGVuc+ufcT14
+	 f54jGV4AWVFJA==
+Message-ID: <53c4249e-8d6c-4bf7-86ff-b8d02117338a@kernel.org>
+Date: Fri, 29 May 2026 18:18:16 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] accel: rocket: Add RK3568 NPU support
+Subject: Re: [PATCH v2 2/4] dt-bindings: npu: rockchip,rk3588-rknn-core: Add
+ RK3568 support
 To: MidG971 <midgy971@gmail.com>, Tomeu Vizoso <tomeu@tomeuvizoso.net>,
  Oded Gabbay <ogabbay@kernel.org>
 Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -54,6 +55,7 @@ Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org
 References: <20260529155824.3099831-1-midgy971@gmail.com>
+ <20260529155824.3099831-3-midgy971@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -99,7 +101,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  jWt87ecuHlpL3uuQ0ZZNWqHgZoQLXoqC2ZV5KrtKWb/jyiFX/sxSrodALf0zf+tfHv0FZWT2
  zHjUqd0t4njD/UOsuIMOQn4Ig0SdivYPfZukb5cdasKJukG1NOpbW7yRNivaCnfZz6dTawXw
  XRIV/KDsHQiyVxKvN73bThKhONkcX2LWuD928tAR6XMM2G5ovxLe09vuOzzfTWQDsm++9UKF a/A=
-In-Reply-To: <20260529155824.3099831-1-midgy971@gmail.com>
+In-Reply-To: <20260529155824.3099831-3-midgy971@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,21 +113,57 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-T24gMjkvMDUvMjAyNiAxNzo1OCwgTWlkRzk3MSB3cm90ZToKPiAKPiBUaGlzIHNlcmllcyBidWls
-ZHMgYWdhaW5zdCBjdXJyZW50IHY2LjE5LXJjNSB3aXRoIG5vIGNoZWNrcGF0Y2ggd2FybmluZ3Ms
-Cj4gdGhlIGR0YiBidWlsZHMsIGFuZCBkdGJzX2NoZWNrIHBhc3Nlcy4gIFRoZSBBcHJpbCB2MSBz
-ZXJpZXMgaW5jbHVkZWQgYQo+IGZpZnRoIHBhdGNoICgiVXNlIG9mX2ZpbmRfbWF0Y2hpbmdfbm9k
-ZSgpIGluc3RlYWQgb2YgZm9yX2VhY2hfb2ZfYWxsbm9kZXMiKQo+IHdoaWNoIGlzIG5vIGxvbmdl
-ciByZXF1aXJlZCDigJQgdXBzdHJlYW0gcm9ja2V0IGFscmVhZHkgdXNlcwo+IGZvcl9lYWNoX2Nv
-bXBhdGlibGVfbm9kZSgpIHNpbmNlIHY2LjE5LXJjNS4KPiAKPiBDaGFuZ2VzIHNpbmNlIHYxIChB
-cHJpbCAyMDI2LCBuZXZlciBzZW50IG9uLWxpc3QpOgoKVGhlbiB0aGVyZSB3YXMgbmV2ZXIgYSB2
-MS4gdjEgaXMgdGhlIGZpcnN0IHZlcnNpb24geW91IHNlbmQsIHJlZ2FyZGxlc3MKb2YgaXRzIHN0
-YXR1cy4KCkJlc3QgcmVnYXJkcywKS3J6eXN6dG9mCgpfX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgt
-cm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9t
-YWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 29/05/2026 17:58, MidG971 wrote:
+> From: Midgy BALON <midgy971@gmail.com>
+> 
+> Add rockchip,rk3568-rknn-core to the compatible enum, document the
+> new rockchip,pmu phandle that RK3568 needs for the NPU NOC bus de-idle
+> sequence, and make sram-supply only required on RK3588 (RK3568 has no
+> NPU SRAM rail).
+> 
+> The driver supports both RK3568 and RK3588 RKNN cores; the binding now
+> documents both. The rockchip,pmu phandle is consumed by the driver to
+> issue PMU register writes (BUS_IDLE_SFTCON0, NOC_AUTO_CON0,
+
+You need to start explaining the hardware, not drivers.
+
+> PWR_GATE_SFTCON, BUS_IDLE_ST) on RK3568 only.
+> 
+> Signed-off-by: Midgy BALON <midgy971@gmail.com>
+> ---
+>  .../npu/rockchip,rk3588-rknn-core.yaml         | 18 +++++++++++++++++-
+>  1 file changed, 17 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+> index caca2a490..6582a0c5c 100644
+> --- a/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+> +++ b/Documentation/devicetree/bindings/npu/rockchip,rk3588-rknn-core.yaml
+> @@ -21,6 +21,7 @@ properties:
+>  
+>    compatible:
+>      enum:
+> +      - rockchip,rk3568-rknn-core
+>        - rockchip,rk3588-rknn-core
+>  
+>    reg:
+> @@ -50,6 +51,13 @@ properties:
+>  
+>    npu-supply: true
+>  
+> +  rockchip,pmu:
+> +    : /schemas/types.yaml#/definitions/phandle
+
+I don't think you tested this.
+
+Best regards,
+Krzysztof
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
