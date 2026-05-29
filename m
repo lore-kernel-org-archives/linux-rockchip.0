@@ -4,54 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E140CD6E51
-	for <linux-rockchip@archiver.kernel.org>; Thu, 28 May 2026 23:24:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08617CD6E43
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 01:18:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SDvEuY/O61gM2f6sE0tS+v5KVDB3kEPdlT8hf+vVIAk=; b=3auA0Cdnx0r2h3
-	iFS5LvUfn/GgC0TsyQRZUFv/sQ1zkEI73Glc3FHA54TFv5V4wS8yISEkti1JAeB4H07pu66IEWQmD
-	MSWCDivLRFLaXZC0cn4vZ3H7f67LKFPH1pNE7Ja5NFkD10/BuH9j64kXSdKDz+Kg/GsE+OwijgC1T
-	rfvbExarCrBZduhmn5wufYx4ikpWfkPN+0a+jv5SnPeipR2v5myXYvdh8S5RWQHqA/GEDbpJbjgNq
-	gw5R+l4STjynIPw3hniiLvAz9jUxSAQguwegB2ZlufPAmZaYeFZ/PbUJi/Ja00yMaTK2RyVsHinSc
-	uWDEcfOQ0Xgh4oa1I7HA==;
+	List-Owner; bh=x93fnCBJSwxaNHzseHLmcfJhqHLBm1PRrtahokrX4+U=; b=J6mbFdDjAtKTRi
+	vuYjceo7zzKLIX+Y1biyBcf1j5mMfVhDgYvBO3zTAj4jluK6fs4NrwPRdeqV2egDv9sFZxH6obwZ8
+	RSjT10nDCrDyw5IS52eu3JSJjM3fHAfucVGe3CrPye14+piS8s3M3mlzAN4EdgASSfd7AIoxoQE5u
+	Zgg9HA/E/vCHTaqdNgxTX1OmrTZhWlfR+i27tpNsErkDwon5b202Jj2incBBjN+AMxwUKys9xRrKS
+	1sKDH/trJbjQE/ngj0S4DYbZWkjhkAIMkzmc6oRYQ5LCh6WNt+qIk+VvD4DCcA2BIVA8wihJZohAj
+	UMRl7PLz0m6nPUwEOsiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSk5W-00000006WjT-48s5;
-	Thu, 28 May 2026 23:24:30 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wSlrk-00000006bLe-2On8;
+	Fri, 29 May 2026 01:18:24 +0000
+Received: from mail-m17233.xmail.ntesmail.com ([45.195.17.233])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSk5Q-00000006Wdc-1eBu;
-	Thu, 28 May 2026 23:24:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
-	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=yDcx6lW5aytrLTXfKmWILbstBnIgvrFkJjC3wzo813A=; b=tnl1vefNE0jodkLw2SQoJyDOBM
-	OFqs+VmF6Ub81ecu8Ny64Gc9nL4ys834kBr0IhQbd57OSkzIHN4f27lhRlzd5xw6WwZtFMnhcLF1q
-	SPoak313OlyowApb9ySRuFJsgHGD/7k+QgrGQ0rDdcrNRBSG+6jUq0+J1db87J62a3PwGpmhHZ+fV
-	54BPt3oBqAquZZjvMa2rp5DFKw+jVHZtELppv/GxX0uyo3KwJc1SOWm6xg+uWJimuWduaLhwWxvNu
-	U8iSUtRWyM/QKJo4weE80r1sChPR5ksWv5kQ+qJHA6LJVjYzcM4GSUaffKrsRIrU7NRs1UZJZSzs5
-	Iuu0DDlw==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: heiko@sntech.de
-Cc: linux-rockchip@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	amadeus@jmu.edu.cn,
-	jonas@kwiboo.se
-Subject: [PATCH v3 1/5] arm64: dts: rockchip: Add USB nodes for RK3528
-Date: Fri, 29 May 2026 01:23:54 +0200
-Message-ID: <20260528232358.4054610-2-heiko@sntech.de>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260528232358.4054610-1-heiko@sntech.de>
-References: <20260528232358.4054610-1-heiko@sntech.de>
+	id 1wSlrg-00000006bL9-2Xe7;
+	Fri, 29 May 2026 01:18:23 +0000
+Received: from [172.16.12.90] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 403fe69fb;
+	Fri, 29 May 2026 09:18:05 +0800 (GMT+08:00)
+Message-ID: <162da16e-6fec-4d47-ba67-46ec2ffa8e2f@rock-chips.com>
+Date: Fri, 29 May 2026 09:18:03 +0800
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v15 1/9] drm/bridge: Implement generic USB Type-C DP HPD
+ bridge
+To: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Cc: Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Peter Chen <hzpeterchen@gmail.com>, Luca Ceresoli
+ <luca.ceresoli@bootlin.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+ Kishon Vijay Abraham I <kishon@kernel.org>, Heiko Stuebner
+ <heiko@sntech.de>, Sandy Huang <hjc@rock-chips.com>,
+ Andy Yan <andy.yan@rock-chips.com>,
+ Yubing Zhang <yubing.zhang@rock-chips.com>,
+ Frank Wang <frank.wang@rock-chips.com>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Amit Sunil Dhamne <amitsd@google.com>, Dragan Simic <dsimic@manjaro.org>,
+ Johan Jonker <jbx6244@gmail.com>, Diederik de Haas <didi.debian@cknow.org>,
+ Peter Robinson <pbrobinson@gmail.com>, Hugh Cole-Baker <sigmaris@gmail.com>,
+ dri-devel@lists.freedesktop.org, linux-usb@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-phy@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>
+References: <20260304094152.92-1-kernel@airkyi.com>
+ <20260304094152.92-2-kernel@airkyi.com>
+ <q6ufdWF5QJ60i9KlIiE_AA@collabora.com>
+Content-Language: en-US
+From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+In-Reply-To: <q6ufdWF5QJ60i9KlIiE_AA@collabora.com>
+X-HM-Tid: 0a9e714f575603a7kunm02f79646c276f
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDTkkYVkJCS01DQ0pLQx1KTVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=XH3HAMkJS0xVohcQuMdKTriE7Bx8yFw6eb42zoSKsvGfn7hX654CyUvDAI5X7TDt3QLQKsY0JYgFk82I6qcr7FwY1sB0NglC9697BPY9uHlC0kePlaHxXstQmxJq3qRRm5aETC3C2H7j2/19/UHeGZCfVTUs9fJAGvk+bTsSZpI=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=IFhWtiTca4KN7jNJbQ39dVsqplJfAuEyUAlnwh0AXXA=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260528_162424_456295_8EA5C2E9 
-X-CRM114-Status: GOOD (  11.29  )
+X-CRM114-CacheID: sfid-20260528_181821_256596_560804F8 
+X-CRM114-Status: GOOD (  32.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,129 +97,209 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Jonas Karlman <jonas@kwiboo.se>
+Hello Nicolas,
 
-Rockchip RK3528 has one USB 3.0 DWC3 controller and oneUSB 2.0 EHCI/OHCI
-controller and uses an Innosilicon-USB2PHY for USB 2.0. The DWC3
-controller additionally uses the Naneng Combo PHY for USB3.
+On 5/28/2026 11:37 PM, Nicolas Frattaroli wrote:
+> On Wednesday, 4 March 2026 10:41:44 Central European Summer Time Chaoyi Chen wrote:
+>> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>>
+>> The HPD function of Type-C DP is implemented through
+>> drm_connector_oob_hotplug_event(). For embedded DP, it is required
+>> that the DRM connector fwnode corresponds to the Type-C port fwnode.
+>>
+>> To describe the relationship between the DP controller and the Type-C
+>> port device, we usually using drm_bridge to build a bridge chain.
+>>
+>> Now several USB-C controller drivers have already implemented the DP
+>> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
+>> HPD bridge on USB-C connector port device.
+>>
+>> But this requires the USB-C controller driver to manually register the
+>> HPD bridge. If the driver does not implement this feature, the bridge
+>> will not be create.
+>>
+>> So this patch implements a generic DP HPD bridge based on
+>> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
+>> Type-C port device containing the DP svid is registered, it will
+>> create an HPD bridge for it without the need for the USB-C controller
+>> driver to implement it.
+>>
+>> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+>> ---
+>>
+>> (no changes since v14)
+>>
+>> Changes in v13:
+>> - Only register drm dp hpd bridge for typec port altmode device.
+>>
+>> (no changes since v12)
+>>
+>> Changes in v11:
+>> - Switch to using typec bus notifiers.
+>>
+>> (no changes since v10)
+>>
+>> Changes in v9:
+>> - Remove the exposed DRM_AUX_HPD_BRIDGE option, and select
+>> DRM_AUX_HPD_TYPEC_BRIDGE when it is available.
+>> - Add more commit comment about problem background.
+>>
+>> Changes in v8:
+>> - Merge generic DP HPD bridge into one module.
+>> ---
+>>
+>>  drivers/gpu/drm/bridge/Kconfig                | 10 ++++
+>>  drivers/gpu/drm/bridge/Makefile               |  1 +
+>>  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 49 +++++++++++++++++++
+>>  3 files changed, 60 insertions(+)
+>>  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+>>
+>> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
+>> index a250afd8d662..559487aa09a9 100644
+>> --- a/drivers/gpu/drm/bridge/Kconfig
+>> +++ b/drivers/gpu/drm/bridge/Kconfig
+>> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
+>>  	  Simple bridge that terminates the bridge chain and provides HPD
+>>  	  support.
+>>  
+>> +if DRM_AUX_HPD_BRIDGE
+>> +config DRM_AUX_HPD_TYPEC_BRIDGE
+>> +	tristate
+>> +	depends on TYPEC || !TYPEC
+>> +	default TYPEC
+>> +	help
+>> +	  Simple bridge that terminates the bridge chain and provides HPD
+>> +	  support. It build bridge on each USB-C connector device node.
+>> +endif
+>> +
+>>  menu "Display Interface Bridges"
+>>  	depends on DRM && DRM_BRIDGE
+>>  
+>> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
+>> index c7dc03182e59..a3a0393d2e72 100644
+>> --- a/drivers/gpu/drm/bridge/Makefile
+>> +++ b/drivers/gpu/drm/bridge/Makefile
+>> @@ -1,6 +1,7 @@
+>>  # SPDX-License-Identifier: GPL-2.0
+>>  obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
+>>  obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
+>> +obj-$(CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE) += aux-hpd-typec-dp-bridge.o
+>>  obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
+>>  obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
+>>  obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
+>> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+>> new file mode 100644
+>> index 000000000000..d915e0fb0668
+>> --- /dev/null
+>> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
+>> @@ -0,0 +1,49 @@
+>> +// SPDX-License-Identifier: GPL-2.0+
+> 
+> Having a copyright statement added here is likely required.
+> Something like
+> 
+> /*
+>  * Copyright (C) 2026 Rockchip Electronics Co., Ltd.
+>  *
+>  * Author: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+>  */
+> 
+> will suffice. While I hope it's never relevant for a driver this
+> small, explicit copyright statements in this form have a legal
+> effect in some jurisdictions like the US, where by law it
+> automatically dismisses the defense that the copyright holder
+> wasn't known.
+> 
 
-Add device tree nodes to describe these USB controllers along with the
-USB 2.0 PHYs.
+Oh! I hadn't noticed that. Thank you for your legal advice.
 
-Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-Signed-off-by: Heiko Stuebner <heiko@sntech.de>
----
- arch/arm64/boot/dts/rockchip/rk3528.dtsi | 80 ++++++++++++++++++++++++
- 1 file changed, 80 insertions(+)
+>> +#include <linux/of.h>
+>> +#include <linux/usb/typec_altmode.h>
+>> +#include <linux/usb/typec_dp.h>
+>> +
+>> +#include <drm/bridge/aux-bridge.h>
+>> +
+>> +static int drm_typec_bus_event(struct notifier_block *nb,
+>> +			       unsigned long action, void *data)
+>> +{
+>> +	struct device *dev = (struct device *)data;
+> 
+> Small nitpick: The explicit (struct device *) cast of data isn't
+> needed here. Just
+> 
+>     struct device *dev = data;
+> 
+> will work fine. The benefit is that if the type of "data" ever changes
+> (e.g. from void *data to const void *data) then we're not silencing
+> a warning/error through an explicit cast.
+>
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528.dtsi b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-index 77d314716b43..03cd00f88dbb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3528.dtsi
-@@ -336,6 +336,33 @@ pcie_intc: legacy-interrupt-controller {
- 			};
- 		};
- 
-+		usb_host0_xhci: usb@fe500000 {
-+			compatible = "rockchip,rk3528-dwc3", "snps,dwc3";
-+			reg = <0x0 0xfe500000 0x0 0x400000>;
-+			clocks = <&cru CLK_REF_USB3OTG>,
-+				 <&cru CLK_SUSPEND_USB3OTG>,
-+				 <&cru ACLK_USB3OTG>;
-+			clock-names = "ref_clk", "suspend_clk", "bus_clk";
-+			interrupts = <GIC_SPI 152 IRQ_TYPE_LEVEL_HIGH>;
-+			power-domains = <&power RK3528_PD_VPU>;
-+			resets = <&cru SRST_A_USB3OTG>;
-+			dr_mode = "otg";
-+			phys = <&usb2phy_otg>, <&combphy PHY_TYPE_USB3>;
-+			phy-names = "usb2-phy", "usb3-phy";
-+			phy_type = "utmi_wide";
-+			snps,dis_enblslpm_quirk;
-+			snps,dis_rxdet_inp3_quirk;
-+			snps,dis-del-phy-power-chg-quirk;
-+			snps,dis-tx-ipgap-linecheck-quirk;
-+			snps,dis-u1-entry-quirk;
-+			snps,dis-u2-entry-quirk;
-+			snps,dis-u2-freeclk-exists-quirk;
-+			snps,dis_u2_susphy_quirk;
-+			snps,parkmode-disable-hs-quirk;
-+			snps,parkmode-disable-ss-quirk;
-+			status = "disabled";
-+		};
-+
- 		gic: interrupt-controller@fed01000 {
- 			compatible = "arm,gic-400";
- 			reg = <0x0 0xfed01000 0 0x1000>,
-@@ -349,6 +376,30 @@ gic: interrupt-controller@fed01000 {
- 			#interrupt-cells = <3>;
- 		};
- 
-+		usb_host0_ehci: usb@ff100000 {
-+			compatible = "generic-ehci";
-+			reg = <0x0 0xff100000 0x0 0x40000>;
-+			clocks = <&cru HCLK_USBHOST>, <&cru HCLK_USBHOST_ARB>,
-+				 <&usb2phy>;
-+			interrupts = <GIC_SPI 143 IRQ_TYPE_LEVEL_HIGH>;
-+			phys = <&usb2phy_host>;
-+			phy-names = "usb";
-+			power-domains = <&power RK3528_PD_VO>;
-+			status = "disabled";
-+		};
-+
-+		usb_host0_ohci: usb@ff140000 {
-+			compatible = "generic-ohci";
-+			reg = <0x0 0xff140000 0x0 0x40000>;
-+			clocks = <&cru HCLK_USBHOST>, <&cru HCLK_USBHOST_ARB>,
-+				 <&usb2phy>;
-+			interrupts = <GIC_SPI 144 IRQ_TYPE_LEVEL_HIGH>;
-+			phys = <&usb2phy_host>;
-+			phy-names = "usb";
-+			power-domains = <&power RK3528_PD_VO>;
-+			status = "disabled";
-+		};
-+
- 		qos_crypto_a: qos@ff200000 {
- 			compatible = "rockchip,rk3528-qos", "syscon";
- 			reg = <0x0 0xff200000 0x0 0x20>;
-@@ -1281,6 +1332,35 @@ combphy: phy@ffdc0000 {
- 			rockchip,pipe-phy-grf = <&pipe_phy_grf>;
- 			status = "disabled";
- 		};
-+
-+		usb2phy: usb2phy@ffdf0000 {
-+			compatible = "rockchip,rk3528-usb2phy";
-+			reg = <0x0 0xffdf0000 0x0 0x10000>;
-+			clocks = <&cru CLK_REF_USBPHY>, <&cru PCLK_USBPHY>;
-+			clock-names = "phyclk", "pclk";
-+			#clock-cells = <0>;
-+			clock-output-names = "clk_usbphy_480m";
-+			power-domains = <&power RK3528_PD_VO>;
-+			rockchip,usbgrf = <&vo_grf>;
-+			status = "disabled";
-+
-+			usb2phy_otg: otg-port {
-+				interrupts = <GIC_SPI 146 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 147 IRQ_TYPE_LEVEL_HIGH>,
-+					     <GIC_SPI 148 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "otg-bvalid", "otg-id",
-+						  "linestate";
-+				#phy-cells = <0>;
-+				status = "disabled";
-+			};
-+
-+			usb2phy_host: host-port {
-+				interrupts = <GIC_SPI 150 IRQ_TYPE_LEVEL_HIGH>;
-+				interrupt-names = "linestate";
-+				#phy-cells = <0>;
-+				status = "disabled";
-+			};
-+		};
- 	};
- };
- 
+Yep. Will fix in v2.
+
+>> +	struct typec_altmode *alt = to_typec_altmode(dev);
+>> +
+>> +	if (action != BUS_NOTIFY_ADD_DEVICE)
+>> +		goto done;
+>> +
+>> +	/*
+>> +	 * alt->dev.parent->parent : USB-C controller device
+>> +	 * alt->dev.parent         : USB-C connector device
+>> +	 */
+>> +	if (is_typec_port_altmode(&alt->dev) && alt->svid == USB_TYPEC_DP_SID)
+>> +		drm_dp_hpd_bridge_register(alt->dev.parent->parent,
+>> +					   to_of_node(alt->dev.parent->fwnode));
+>> +
+>> +done:
+>> +	return NOTIFY_OK;
+>> +}
+> 
+> Nitpicking: the "done" label and "goto done" here is redundant.
+> You could remove the label and replace the goto with another
+> "return NOTIFY_OK;". There's no functional change here though.
+> 
+
+Will fix in v2.
+
+>> +
+>> +static struct notifier_block drm_typec_event_nb = {
+>> +	.notifier_call = drm_typec_bus_event,
+>> +};
+>> +
+>> +static void drm_aux_hpd_typec_dp_bridge_module_exit(void)
+>> +{
+>> +	bus_unregister_notifier(&typec_bus, &drm_typec_event_nb);
+>> +}
+>> +
+>> +static int __init drm_aux_hpd_typec_dp_bridge_module_init(void)
+>> +{
+>> +	bus_register_notifier(&typec_bus, &drm_typec_event_nb);
+>> +
+>> +	return 0;
+>> +}
+>> +
+>> +module_init(drm_aux_hpd_typec_dp_bridge_module_init);
+>> +module_exit(drm_aux_hpd_typec_dp_bridge_module_exit);
+>> +
+>> +MODULE_DESCRIPTION("DRM TYPEC DP HPD BRIDGE");
+>> +MODULE_LICENSE("GPL");
+>>
+> 
+> Feel free to add yourself as MODULE_AUTHOR here. :)
+> 
+> With those things changed:
+> 
+> Reviewed-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> Kind regards,
+> Nicolas Frattaroli
+> 
+> 
+> 
+
 -- 
-2.47.3
-
+Best, 
+Chaoyi
 
 _______________________________________________
 Linux-rockchip mailing list
