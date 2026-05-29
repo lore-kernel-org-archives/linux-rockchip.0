@@ -4,55 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 533ADCD4F54
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 18:20:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F53ECD6E49
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 19:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5DUT7KJJRapB1gusqBdxGXbMyKJD8CjdvDcrkE8Jlw4=; b=CFpKHa/yRHeDYH
-	gHgeqeBCyFqlP1qMF1QhMCnHpKRXsTToOcXvZAPaRMMUv5EXwXiOsESk/8YsIfmzTQj+rTV/YL8xs
-	x3/HgTaJ4r7Qu9tWPwLmfCLBnuo+HU8nVgNEYvtQ/9ysqYWCnVb38Vyw9yRbeMP71W9ITmSd6OhCU
-	K5+XqZ4o5y4lnhhnJ90IZL1lEfBLxaw56co8n2DKKcAhBKgDc4XqTUexc96b80dFej/xTIVRLz0+k
-	k76oIWekFB184H8a5Z1n1PUTSN3CXlOrrA1fWZYA3iKlRmwincOSLvWmJgdHu6KWLoN2VOXzaLp9U
-	VLdsyQeD9Q+It0+86+mg==;
+	List-Owner; bh=lixLU6Eq7pyKljcQ5eyaSaggPL7Gg6reUsGgPo+cAuU=; b=3T7GsJXFqdVzU1
+	d8sf8pmTECIdqx+kvue+qy93K0y3Q17dbC7qUus0t6XNjJviidiDimwDZHBTpheeWGe3Co+3lxNSK
+	nf1gOLoce/taMLPN9AF/cedaei6j8tJF8tMGlh5mNWpAKKfPJwbEWra+w2ukZBaTZlM9K19+F1vwj
+	6+fMao4i6vabC3JVmqdaq5kaqqt3riB2sKa/johx7oS1kxjXqXJ2MMaNcDvPSSqtmodqrFhsQKBYT
+	wwA4b9GXZZByc1BnxdE+J6UtdowN1Yq2/C/JqvGmQTz9XYEHef+6eH67cEh8N50EOlWzWqc/VkKVg
+	ZHKtETvEs9vqOm2lXESQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wT1oM-000000085t2-2gk3;
-	Fri, 29 May 2026 18:19:58 +0000
+	id 1wT2V5-000000089lC-2c3J;
+	Fri, 29 May 2026 19:04:07 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wT1oJ-000000085s7-1rx8;
-	Fri, 29 May 2026 18:19:56 +0000
+	id 1wT2V3-000000089jT-19nw;
+	Fri, 29 May 2026 19:04:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=MezAljbMtu/a/IWnbTDAtFD/p1r8DFJmzsXD7QfO5sE=; b=iudeHZxJStlryOmQAUHhsleY6G
-	6XU21yner9VdSVJz2LnIP66KoBRM3GZ3FMalVNbytmY4chArURs0O4Um31YsLhxSP9UTyIuvArUnr
-	pBGSlvQyxFlIV9a7MRAPChCJ6sewkACEUUtK80hGptBuDlq5bOXMgBph63rx5Y/70Pg9cClKVjBbe
-	alBOV5l6R8Yivt0+ULO6bzAQiwKRScSZ1Po2AjcaSpWhJKxpkZV6B974c8sCnfmy1R5ppPEgk+xjg
-	2/2M59Qq6ylmGuu8I5GcIDs/cUXizKa+cYPYXKQ+yGa3OJYrwUYgV9u0OuW8Q/aC+PgkFYeKPlDNb
-	H3E2FJjw==;
+	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
+	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
+	bh=B0i2l9rmJG/vn/wo//SdqtapwvCPkTpI4NEickiZAa4=; b=L7XjVZlkce/mpdKdBZu6v5XTL0
+	QNWmQKZjBTyjWZ/YcwhsB+CljYx4qvg4rMuBTuqxuHmtD104O/XR1spWq55np/EdpU6OrchsiipgU
+	6rsqdwLNLWFPdG1pVBJ6fn/2M+Ezp/A8/rH9O4lNkGWRJscNbA7mYL4bmCXPaIkQYb0vbYLlht2lM
+	QxY2+qX3rGLrcibosf6Rp0uep2vNl5eUdT9BJ/rUJX2X6UnCu0JqCmq42Y701bousQ5YdApUwQX+A
+	sbcvazW9H5wtiaGe63kt++L1sUMdY4a0ufmA2i54O7VZj+M3oq5iPrZRd3caKhI19lwA4Luxlc2MX
+	+RMaC1GQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Tomeu Vizoso <tomeu@tomeuvizoso.net>, Oded Gabbay <ogabbay@kernel.org>,
- MidG971 <midgy971@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, dri-devel@lists.freedesktop.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
- Midgy BALON <midgy971@gmail.com>
-Subject: Re: [PATCH v2 1/4] accel: rocket: Add support for Rockchip RK3568
-Date: Fri, 29 May 2026 20:19:50 +0200
-Message-ID: <5132269.NnENhoQgcM@phil>
-In-Reply-To: <20260529155824.3099831-2-midgy971@gmail.com>
-References: <20260529155824.3099831-1-midgy971@gmail.com>
- <20260529155824.3099831-2-midgy971@gmail.com>
+To: heiko@sntech.de
+Cc: linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	amadeus@jmu.edu.cn,
+	jonas@kwiboo.se
+Subject: [PATCH v4 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
+Date: Fri, 29 May 2026 21:03:54 +0200
+Message-ID: <20260529190355.4148175-5-heiko@sntech.de>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260529190355.4148175-1-heiko@sntech.de>
+References: <20260529190355.4148175-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260529_111955_483678_5EDC9493 
-X-CRM114-Status: GOOD (  25.59  )
+X-CRM114-CacheID: sfid-20260529_120405_369720_343CDBA0 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,83 +63,65 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBGcmVpdGFnLCAyOS4gTWFpIDIwMjYsIDE3OjU4OjIxIE1pdHRlbGV1cm9ww6Rpc2No
-ZSBTb21tZXJ6ZWl0IHNjaHJpZWIgTWlkRzk3MToKPiBGcm9tOiBNaWRneSBCQUxPTiA8bWlkZ3k5
-NzFAZ21haWwuY29tPgo+IAo+IFRoZSBSSzM1NjggaGFzIGEgc2luZ2xlIE5WRExBLWRlcml2ZWQg
-TlBVIGNvcmUgKDAuOCBUT1BTKSwgdGhlIHNhbWUgSVAKPiBmYW1pbHkgYXMgdGhlIHRocmVlLWNv
-cmUgUkszNTg4IE5QVSBhbHJlYWR5IHN1cHBvcnRlZCBieSB0aGUgUm9ja2V0Cj4gZHJpdmVyLiBU
-byBhY2NvbW1vZGF0ZSBib3RoIFNvQ3M6Cj4gCj4gICAtIEludHJvZHVjZSBhIHBlci1Tb0Mgcm9j
-a2V0X3NvY19kYXRhIHN0cnVjdHVyZSBjYXJyeWluZyBkbWFfYml0cyBhbmQKPiBhbiBvcHRpb25h
-bCBub2NfaW5pdCBjYWxsYmFjaywgcGx1bWJlZCB0aHJvdWdoIG9mX2RldmljZV9nZXRfbWF0Y2hf
-ZGF0YSgpLgo+ICAgLSByb2NrZXRfZGV2aWNlX2luaXQoKSBub3cgc2NhbnMgZm9yIGJvdGggcmsz
-NTY4IGFuZCByazM1ODggUktOTiBjb3Jlcwo+IGFuZCBwaWNrcyB0aGUgbmFycm93ZXIgRE1BIHdp
-ZHRoICgzMi1iaXQpIHdoZW4gYW4gUkszNTY4IGNvcmUgaXMgcHJlc2VudC4KPiAgIC0gQWRkIHJr
-MzU2OF9zb2NfZGF0YSBhbmQgcmszNTY4X25vY19pbml0KCkgaGFuZGxpbmcgdGhlIHRocmVlIFJL
-MzU2OC0KPiBzcGVjaWZpYyBpbml0aWFsaXNhdGlvbiBzdGVwcyB0aGF0IG11c3QgcnVuIGFmdGVy
-IHRoZSBwb3dlciBkb21haW4gaXMKPiBvbiBhbmQgY2xvY2tzIGFyZSBlbmFibGVkOgoKaWYgeW91
-IG5lZWQgYnVsbGV0IHBvaW50cyB0byBkZXNjcmliZSB5b3VyIHBhdGNoLCB0aGF0IHN0cm9uZ2x5
-IGluZGljYXRlcwp0aGVzZSBuZWVkIHRvIGJlIG11bHRwbGUgcGF0Y2hlcy4KSS5lLiB0aGUgbW92
-ZSBvZiB0aGUgcmVsZXZhbnQgcGFydHMgdG8gYSBwZXItc29jIGRhdGEgaXMgb25lIHBhdGNoCihh
-bmQgb25seSBoYXZpbmcgdGhlIHJrMzU4OCBzb2MtZGF0YSBpbiB0aGF0IG9uZSkuCgoKCj4gCj4g
-MS4gUFZUUExMIGluaXRpYWxpc2F0aW9uOiBUaGUgTlBVIHVzZXMgYSBQVlRQTEwgcmluZyBvc2Np
-bGxhdG9yCj4gICAgbWFuYWdlZCBieSBURi1BIHZpYSBTQ01JIGZvciByYXRlcyBhYm92ZSA0MDAg
-TUh6LiBBIHR3by1zdGVwCj4gICAgY2xrX3NldF9yYXRlKCkgc2VxdWVuY2UgKDYwMCBNSHogdGhl
-biAxIEdIeikgZm9yY2VzIHR3byBTQ01JIGNhbGxzCj4gICAgdG8gVEYtQSBldmVuIGlmIHRoZSBr
-ZXJuZWwgY2xvY2sgZnJhbWV3b3JrIHdvdWxkIHNraXAgYW4gdW5jaGFuZ2VkCj4gICAgcmF0ZS4g
-VGhlIFBWVFBMTCBtdXN0IGJlIHJ1bm5pbmcgYmVmb3JlIHRoZSBOUFUgTk9DIGJ1cyB3aWxsCj4g
-ICAgYWNrbm93bGVkZ2UgYSBkZS1pZGxlIHJlcXVlc3QuCj4gCj4gMi4gRXhwbGljaXQgTlBVIHBv
-d2VyLW9uIChQV1JfR0FURV9TRlRDT04pOiBUaGUgUkszNTY4X1BEX05QVSBwb3dlcgo+ICAgIGRv
-bWFpbiBpcyBtYXJrZWQgYWx3YXlzX29uIGluIHBtLWRvbWFpbnMuYywgc28gdGhlIGdlbmVyaWMg
-cG93ZXIKPiAgICBkb21haW4gZnJhbWV3b3JrIHBvd2VyX29uKCkgY2FsbGJhY2sgaXMgYSBuby1v
-cC4gVGhlIE5QVSBoYXJkd2FyZQo+ICAgIGNhbiByZW1haW4gcG93ZXItZ2F0ZWQgYXQgYm9vdC4g
-V3JpdGluZyBiaXQgMSA9IDAgdG8gUFdSX0dBVEVfU0ZUQ09OCj4gICAgKFBNVSBvZmZzZXQgMHhh
-MCkgZXhwbGljaXRseSBwb3dlcnMgb24gdGhlIE5QVSBoYXJkd2FyZSBiZWZvcmUgdGhlCj4gICAg
-ZGUtaWRsZSByZXF1ZXN0IGlzIGlzc3VlZC4KPiAKPiAzLiBOT0MgYnVzIGRlLWlkbGU6IERpc2Fi
-bGUgTlBVIE5PQyBhdXRvLWlkbGUgKE5PQ19BVVRPX0NPTjAgYml0IDIpLAo+ICAgIHJlcXVlc3Qg
-ZGUtaWRsZSAoQlVTX0lETEVfU0ZUQ09OMCBiaXQgMiA9IDApLCB0aGVuIHBvbGwKPiAgICBCVVNf
-SURMRV9TVCAoUE1VIG9mZnNldCAweDYwKSB1bnRpbCBiaXQgMiBjbGVhcnMgKGJ1cyBhY3RpdmUp
-Lgo+IAo+IFRoZSBSSzM1NjggRE1BIGFkZHJlc3Mgc3BhY2UgaXMgbGltaXRlZCB0byAzMiBiaXRz
-LCBhcyB0aGUgTlBVIEFYSSBidXMKPiBhbmQgSU9NTVUgcGFnZSB3YWxrZXIgY2Fubm90IGFkZHJl
-c3MgbWVtb3J5IGFib3ZlIDQgR0IuCj4gCj4gQWxsIFBNVSBhY2Nlc3NlcyBmb2xsb3cgdGhlIFJL
-MzU2OCB3cml0ZS1tYXNrIHByb3RvY29sOiB1cHBlciAxNiBiaXRzIGFyZQo+IHRoZSB3cml0ZS1l
-bmFibGUgbWFzayBmb3IgdGhlIGxvd2VyIDE2IGJpdHMuCj4gCj4gU2lnbmVkLW9mZi1ieTogTWlk
-Z3kgQkFMT04gPG1pZGd5OTcxQGdtYWlsLmNvbT4KClsuLi5dCgo+IGRpZmYgLS1naXQgYS9kcml2
-ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZGV2aWNlLmMgYi9kcml2ZXJzL2FjY2VsL3JvY2tldC9y
-b2NrZXRfZGV2aWNlLmMKPiBpbmRleCA0NmU2ZWUxZTcuLjBlZDgyNTFjOCAxMDA2NDQKPiAtLS0g
-YS9kcml2ZXJzL2FjY2VsL3JvY2tldC9yb2NrZXRfZGV2aWNlLmMKPiArKysgYi9kcml2ZXJzL2Fj
-Y2VsL3JvY2tldC9yb2NrZXRfZGV2aWNlLmMKPiBAQCAtMjcsNiArMjcsOSBAQCBzdHJ1Y3Qgcm9j
-a2V0X2RldmljZSAqcm9ja2V0X2RldmljZV9pbml0KHN0cnVjdCBwbGF0Zm9ybV9kZXZpY2UgKnBk
-ZXYsCj4gIAlkZGV2ID0gJnJkZXYtPmRkZXY7Cj4gIAlkZXZfc2V0X2RydmRhdGEoZGV2LCByZGV2
-KTsKPiAgCj4gKwlmb3JfZWFjaF9jb21wYXRpYmxlX25vZGUoY29yZV9ub2RlLCBOVUxMLCAicm9j
-a2NoaXAscmszNTY4LXJrbm4tY29yZSIpCj4gKwkJaWYgKG9mX2RldmljZV9pc19hdmFpbGFibGUo
-Y29yZV9ub2RlKSkKPiArCQkJbnVtX2NvcmVzKys7Cj4gIAlmb3JfZWFjaF9jb21wYXRpYmxlX25v
-ZGUoY29yZV9ub2RlLCBOVUxMLCAicm9ja2NoaXAscmszNTg4LXJrbm4tY29yZSIpCj4gIAkJaWYg
-KG9mX2RldmljZV9pc19hdmFpbGFibGUoY29yZV9ub2RlKSkKPiAgCQkJbnVtX2NvcmVzKys7Cj4g
-QEAgLTM3LDkgKzQwLDI1IEBAIHN0cnVjdCByb2NrZXRfZGV2aWNlICpyb2NrZXRfZGV2aWNlX2lu
-aXQoc3RydWN0IHBsYXRmb3JtX2RldmljZSAqcGRldiwKPiAgCj4gIAlkbWFfc2V0X21heF9zZWdf
-c2l6ZShkZXYsIFVJTlRfTUFYKTsKPiAgCj4gLQllcnIgPSBkbWFfc2V0X21hc2tfYW5kX2NvaGVy
-ZW50KGRldiwgRE1BX0JJVF9NQVNLKDQwKSk7Cj4gLQlpZiAoZXJyKQo+IC0JCXJldHVybiBFUlJf
-UFRSKGVycik7Cgpmb3IgYm90aCBjaGFuZ2VzIGluIHJvY2tldF9kZXZpY2VfaW5pdCgpOgoKcm9j
-a2V0X2RldmljZV9pbml0KCkgZ2V0cyBjYWxsZWQgZnJvbSB0aGUgbWFpbiBwcm9iZSBmdW5jdGlv
-biwgc28gYmVmb3JlCmNhbGxpbmcgcm9ja2V0X2RldmljZV9pbml0KCkgeW91IGNhbiBhbHJlYWR5
-IGFjY2VzcyB0aGUgc3BlY2lmaWMgc29jIGRhdGEKZnJvbSB0aGUgY29tcGF0aWJsZSBhbmQgY2Fu
-IGRlcml2ZSBib3RoIHRoYXQgZm9yX2VhY2ggYWJvdmUsIGFuZCB0aGUgZG1hLQp3aWR0aCwgZGly
-ZWN0bHkgZnJvbSB0aGF0LgoKTm8gbmVlZCBmb3IgdGhhdCBsb29wIGJlbG93LgoKPiArCS8qIFVz
-ZSB0aGUgRE1BIHdpZHRoIG9mIHRoZSBmaXJzdCBhdmFpbGFibGUgUktOTiBjb3JlLiAgUkszNTY4
-IGNvcmVzCj4gKwkgKiBhcmUgMzItYml0OyBSSzM1ODggYXJlIDQwLWJpdC4gIElmIGJvdGggYXJl
-IHByZXNlbnQgd2UgcGljayB0aGUKPiArCSAqIG5hcnJvd2VyIG1hc2suCj4gKwkgKi8KPiArCXsK
-PiArCQlzdHJ1Y3QgZGV2aWNlX25vZGUgKm47Cj4gKwkJdW5zaWduZWQgaW50IGRtYV9iaXRzID0g
-NDA7Cj4gKwo+ICsJCWZvcl9lYWNoX2NvbXBhdGlibGVfbm9kZShuLCBOVUxMLCAicm9ja2NoaXAs
-cmszNTY4LXJrbm4tY29yZSIpCj4gKwkJCWlmIChvZl9kZXZpY2VfaXNfYXZhaWxhYmxlKG4pKSB7
-Cj4gKwkJCQlkbWFfYml0cyA9IDMyOwo+ICsJCQkJb2Zfbm9kZV9wdXQobik7Cj4gKwkJCQlicmVh
-azsKPiArCQkJfQo+ICsKPiArCQllcnIgPSBkbWFfc2V0X21hc2tfYW5kX2NvaGVyZW50KGRldiwg
-RE1BX0JJVF9NQVNLKGRtYV9iaXRzKSk7Cj4gKwkJaWYgKGVycikKPiArCQkJcmV0dXJuIEVSUl9Q
-VFIoZXJyKTsKPiArCX0KCgpIZWlrbwoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+From: Jonas Karlman <jonas@kwiboo.se>
+
+The ArmSoM Sige1 has two USB 2.0 Type-A HOST ports behind an onboard
+USB hub, and one USB 2.0 Type-C OTG port.
+
+Add support for using the USB 2.0 ports on ArmSoM Sige1.
+
+The onboard USB hub handles OHCI so only the EHCI controller is enabled.
+
+Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
+[added phy-supply for otg port]
+Signed-off-by: Heiko Stuebner <heiko@sntech.de>
+---
+ .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+index c41af8fc0c8d..ee4183fb980d 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
+@@ -480,3 +480,28 @@ bluetooth {
+ 		vddio-supply = <&vcc_1v8>;
+ 	};
+ };
++
++&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_xhci {
++	extcon = <&usb2phy>;
++	maximum-speed = "high-speed";
++	phys = <&usb2phy_otg>;
++	phy-names = "usb2-phy";
++	status = "okay";
++};
++
++&usb2phy {
++	status = "okay";
++};
++
++&usb2phy_host {
++	status = "okay";
++};
++
++&usb2phy_otg {
++	phy-supply = <&vcc5v0_usb_otg>;
++	status = "okay";
++};
+-- 
+2.47.3
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
