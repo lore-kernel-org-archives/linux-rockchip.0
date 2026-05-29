@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32196CD6E45
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 06:51:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB5B3CD6E45
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 07:00:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=EVABRldvLzWgPPuICY3RpqxCzO+MM/o5+kDlBBJk0EI=; b=RTI1pXmRryRjR4
-	jVp2ZFmgt+MXXDpfljTZoxlM3slKPqQvhvyXTxNypKx8I4zp9LgiQnNXIm2awb0WDf7Fsm+TqBt1M
-	k359zl41jQF8NrjzOpAs0c6stPzhH+/Sh/bghC76R4f9o6QWBPq9Ajb4sivG96S2ANk0UrVadCZ6I
-	6g3V0yHEUTTYGZSyMmBf0VzKUyg1qFs1O+nrPtqQvdgXbm1EhRRs0+eTQsTjPuEie6FIr8PbY9jSX
-	Kuh7uUzZeSwp+gMkCMlkh9o1YbNx5qtSPA1RwRYKcfHoO9aEOmOayMYBQuLv9f9pfUMxo2+tmCAxV
-	xhGechQhKzqC0ftLLoSQ==;
+	List-Owner; bh=numruPTjv6JlDk2m9r7xi3dYL+2C0laf0qqWdTO/3F4=; b=0uKmnDok2ymEz6
+	tWxQl77mI6U4OW00zT5mq9Gh9YmH9XMIN3br78SzBb+pcgxgqLqmKIosTkOWgmdJH990N17EeIriZ
+	oyQeyAzfI+NyxAMKAD9VikMOBxdzOXkTyfzcjwm4cYtc0nDar/ifiXpDGzCILzBYCIBdE3/f+v/h3
+	hMRnCSjYqL+lF5VxH6KHYEp0gC1+WWpMmhdBVynZ2sdtJk4R3+u0WxmDw2+qbEqe+MoEGQ9V8569J
+	FvN/ZVs9T8McA+tge9cewDktCWiUyr9QNaxHz8EIEQBxqD1c/GaUkLXsNUz35uo/hdZbQKVvQa/4+
+	JWWTnRLQrqkm1AOOr1XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSr42-00000006qCn-2ftV;
-	Fri, 29 May 2026 06:51:26 +0000
-Received: from mail-m24116.xmail.netease.com ([45.195.24.116])
+	id 1wSrCg-00000006qlU-0jIx;
+	Fri, 29 May 2026 07:00:22 +0000
+Received: from mail-m12819.netease.com ([103.209.128.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wSr3z-00000006qBl-1Yif;
-	Fri, 29 May 2026 06:51:25 +0000
+	id 1wSrCd-00000006ql5-1MBn;
+	Fri, 29 May 2026 07:00:20 +0000
 Received: from localhost.localdomain (unknown [113.80.141.91])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 404a795bb;
-	Fri, 29 May 2026 14:51:07 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 404b9eac1;
+	Fri, 29 May 2026 15:00:14 +0800 (GMT+08:00)
 From: Chukun Pan <amadeus@jmu.edu.cn>
 To: heiko@sntech.de
 Cc: amadeus@jmu.edu.cn,
@@ -36,22 +36,22 @@ Cc: amadeus@jmu.edu.cn,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	linux-rockchip@lists.infradead.org
-Subject: Re: [PATCH v3 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
-Date: Fri, 29 May 2026 14:51:00 +0800
-Message-Id: <20260529065100.554468-1-amadeus@jmu.edu.cn>
+Subject: Re: [PATCH v2 2/5] arm64: dts: rockchip: Enable USB 2.0 ports on Radxa E20C
+Date: Fri, 29 May 2026 15:00:08 +0800
+Message-Id: <20260529070008.558036-1-amadeus@jmu.edu.cn>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260528232358.4054610-5-heiko@sntech.de>
-References: <20260528232358.4054610-5-heiko@sntech.de>
+In-Reply-To: <3879225.zToM8qfIzz@phil>
+References: <3879225.zToM8qfIzz@phil>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e72803b0303a2kunm5b7351cbaf12a
+X-HM-Tid: 0a9e728896b903a2kunm7fff2069af89b
 X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUtXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCS0oYVkJPGBgYQx9NS0xLGVYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKSkhVQ0tVSk9KVUJKWVdZFhoPEhUdFFlBWUtVS1VLVUtZBg
-	++
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZGEtCVhpJHx8dQx8ZQh0fTlYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKSkhVQ0tVSk9KVUJKWVdZFhoPEhUdFFlBWU9LSFVCQklOS1
+	VKS0tVSkJLQlkG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260528_235123_641403_5D6645C0 
-X-CRM114-Status: UNSURE (   5.54  )
+X-CRM114-CacheID: sfid-20260529_000019_603432_67260B8B 
+X-CRM114-Status: UNSURE (   5.36  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -71,20 +71,12 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi,
 
-> +&usb_host0_xhci {
-> +	extcon = <&usb2phy>;
-> +	maximum-speed = "high-speed";
-> +	phys = <&usb2phy_otg>;
-> +	phy-names = "usb2-phy";
-> +	vbus-supply = <&vcc5v0_usb_otg>
+> So if anything, that controller should probably have dr_mode=peripheral
+> I think?
 
-The semicolon is missing at the end.
-It should be located in the otg node:
-
-&usb2phy0_otg {
-	phy-supply = <&vcc5v0_usb_otg>;
-	status = "okay";
-};
+I forgot to enable CONFIG_USB_DWC3_DUAL_ROLE.
+With CONFIG_USB_DWC3_DUAL_ROLE=y, the warning disappeared.
+No need to change to peripheral. Sorry for the noise.
 
 Thanks,
 Chukun
