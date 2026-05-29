@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F53ECD6E49
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAC9ACD4F54
 	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 19:04:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=lixLU6Eq7pyKljcQ5eyaSaggPL7Gg6reUsGgPo+cAuU=; b=3T7GsJXFqdVzU1
-	d8sf8pmTECIdqx+kvue+qy93K0y3Q17dbC7qUus0t6XNjJviidiDimwDZHBTpheeWGe3Co+3lxNSK
-	nf1gOLoce/taMLPN9AF/cedaei6j8tJF8tMGlh5mNWpAKKfPJwbEWra+w2ukZBaTZlM9K19+F1vwj
-	6+fMao4i6vabC3JVmqdaq5kaqqt3riB2sKa/johx7oS1kxjXqXJ2MMaNcDvPSSqtmodqrFhsQKBYT
-	wwA4b9GXZZByc1BnxdE+J6UtdowN1Yq2/C/JqvGmQTz9XYEHef+6eH67cEh8N50EOlWzWqc/VkKVg
-	ZHKtETvEs9vqOm2lXESQ==;
+	List-Owner; bh=xGUb11CKsE4wE4y+iZm6e7fI+mq1dwCDWFEUlDgLVFk=; b=T2Mt9Gq3liv9z2
+	ZnDFy29OkSlCkmlELZ6384ow0mOveKll6EMQJ5vwGK6w7EBcgQk08ye4WJJi1BDq3uwQQuRd/qeZP
+	S6UFOhzcmmbPoC8hZw3RhEykWP/dLV7s4LFfTIbiR67ohtzFOxigckJV5BMfr6VgACuLi+HLIyqLN
+	24GQo8THmLfGDgarMBsSKRQBm1yH9N5/c233kQWka+5Tgm0l4mN3011HHo7UiVna7GClXZxHsyFdI
+	n4T/x5OqvDAjdp9Q2vKlcRH8M9LJr1WNm2fxp7XZh+aEMisR3+hIqEvgJMXDUdEMSQJwDxE8gYXHG
+	Rg8Sz6Ov1xJKNR+ZfzVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wT2V5-000000089lC-2c3J;
-	Fri, 29 May 2026 19:04:07 +0000
+	id 1wT2V7-000000089mM-3GOD;
+	Fri, 29 May 2026 19:04:09 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wT2V3-000000089jT-19nw;
-	Fri, 29 May 2026 19:04:06 +0000
+	id 1wT2V3-000000089jS-1AMB;
+	Fri, 29 May 2026 19:04:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:MIME-Version:References:
 	In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type;
-	bh=B0i2l9rmJG/vn/wo//SdqtapwvCPkTpI4NEickiZAa4=; b=L7XjVZlkce/mpdKdBZu6v5XTL0
-	QNWmQKZjBTyjWZ/YcwhsB+CljYx4qvg4rMuBTuqxuHmtD104O/XR1spWq55np/EdpU6OrchsiipgU
-	6rsqdwLNLWFPdG1pVBJ6fn/2M+Ezp/A8/rH9O4lNkGWRJscNbA7mYL4bmCXPaIkQYb0vbYLlht2lM
-	QxY2+qX3rGLrcibosf6Rp0uep2vNl5eUdT9BJ/rUJX2X6UnCu0JqCmq42Y701bousQ5YdApUwQX+A
-	sbcvazW9H5wtiaGe63kt++L1sUMdY4a0ufmA2i54O7VZj+M3oq5iPrZRd3caKhI19lwA4Luxlc2MX
-	+RMaC1GQ==;
+	bh=kVhbNGRA9/1U4zr01JFCIiYUqAzoqbgB2Uy8C1LiRyI=; b=bxYZKY8SMo+pIwlYZmgW92XZET
+	AYGEB8rautngNDly4qCmhuXEAsnmu0kAYXJPimYKT2StBKr5gyuAiPEDR5evwqsiv7HItu+QZz3TG
+	gfVcU96Y7Nap9jmgmKD2Iiys5ysbd+T3NnAcQyuGj0U5tG2vsKVBEe7okKmMWT+IT9nDSoe4eOuEw
+	64jFh3Zw01InOMjANbthjCtCKZE2x+SdwV0AMvkoaimfXC5Qg5HiFBjNJBsK1f3g4HJzHL26UCVtu
+	Vh/zD9hqlS9HS+ttlrMT/s60T4qkZYSFNJmURiCSBQuGus2gwEhBasElMII4VUxnp5k+Vj9z+wtIw
+	X9QN+AhQ==;
 From: Heiko Stuebner <heiko@sntech.de>
 To: heiko@sntech.de
 Cc: linux-rockchip@lists.infradead.org,
@@ -42,16 +42,17 @@ Cc: linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	amadeus@jmu.edu.cn,
 	jonas@kwiboo.se
-Subject: [PATCH v4 4/5] arm64: dts: rockchip: Enable USB 2.0 ports on ArmSoM Sige1
-Date: Fri, 29 May 2026 21:03:54 +0200
-Message-ID: <20260529190355.4148175-5-heiko@sntech.de>
+Subject: [PATCH v4 5/5] arm64: dts: rockchip: Enable USB 2.0 ports on NanoPi Zero2
+Date: Fri, 29 May 2026 21:03:55 +0200
+Message-ID: <20260529190355.4148175-6-heiko@sntech.de>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260529190355.4148175-1-heiko@sntech.de>
 References: <20260529190355.4148175-1-heiko@sntech.de>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260529_120405_369720_343CDBA0 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20260529_120405_360881_B3107DEF 
+X-CRM114-Status: UNSURE (   9.54  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,30 +71,31 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Jonas Karlman <jonas@kwiboo.se>
 
-The ArmSoM Sige1 has two USB 2.0 Type-A HOST ports behind an onboard
-USB hub, and one USB 2.0 Type-C OTG port.
+The NanoPi Zero2 has one USB 2.0 Type-A HOST port and one USB 2.0 Type-C
+OTG port.
 
-Add support for using the USB 2.0 ports on ArmSoM Sige1.
-
-The onboard USB hub handles OHCI so only the EHCI controller is enabled.
+Add support for using the USB 2.0 ports on NanoPi Zero2.
 
 Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-[added phy-supply for otg port]
 Signed-off-by: Heiko Stuebner <heiko@sntech.de>
 ---
- .../boot/dts/rockchip/rk3528-armsom-sige1.dts | 25 +++++++++++++++++++
- 1 file changed, 25 insertions(+)
+ .../boot/dts/rockchip/rk3528-nanopi-zero2.dts | 29 +++++++++++++++++++
+ 1 file changed, 29 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-index c41af8fc0c8d..ee4183fb980d 100644
---- a/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3528-armsom-sige1.dts
-@@ -480,3 +480,28 @@ bluetooth {
- 		vddio-supply = <&vcc_1v8>;
- 	};
+diff --git a/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+index 9f683033c5f3..97d85124d21b 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
++++ b/arch/arm64/boot/dts/rockchip/rk3528-nanopi-zero2.dts
+@@ -338,3 +338,32 @@ &uart0 {
+ 	pinctrl-0 = <&uart0m0_xfer>;
+ 	status = "okay";
  };
 +
 +&usb_host0_ehci {
++	status = "okay";
++};
++
++&usb_host0_ohci {
 +	status = "okay";
 +};
 +
@@ -110,11 +112,11 @@ index c41af8fc0c8d..ee4183fb980d 100644
 +};
 +
 +&usb2phy_host {
++	phy-supply = <&usb2_host_5v>;
 +	status = "okay";
 +};
 +
 +&usb2phy_otg {
-+	phy-supply = <&vcc5v0_usb_otg>;
 +	status = "okay";
 +};
 -- 
