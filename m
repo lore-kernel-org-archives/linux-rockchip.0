@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CFC1CD6E49
-	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 16:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0984FCD4F54
+	for <linux-rockchip@archiver.kernel.org>; Fri, 29 May 2026 17:47:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GjSvRzK+RGo0pSF5HZdrKh5jyFY87I2NvX3reu/y1jM=; b=yVyrVs3KuX/WaBL+KmsvnrlJQ9
-	9jtwHCunmPja4JjtXZ0VUtP8jIU8HxVJEcpMrgEiT8ZFd3dO9rIAyWOiwFblMQ7eh0WJALJEE0Q16
-	9RX8w0xYe7xtCXazhHVEUomUMcFcfCLknpPjGtBmOL7ko+6k/nprIq8qox+lCSLRgyTVZVFEyTumY
-	qxz0acZ1RGSYYQRUqAixl6QxHp+nogZ1PphwlzJvE5+Vw2v0KMLxyjPz2vBCV24tbVjSyiznXpN4V
-	kcA72fc14CDHd1S9VmuJ5TQsRKmGgRKkHHcqXY/69w7I8AeyGD/5ytGrSD3+qLb6dVDLxW67RxGyY
-	QYoeM1ZA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=K4gkDAp6B7E7ksdMRY83ErYZ+ZoFknrEKRFBgjp+nKM=; b=QXjaH5uePljwoo
+	v6vy9+WDKvT9BdO6u4lMnS8vNOSPP4IhVxkflV9cztFDJQpvvzFKqUtYRJvAjMmh5Qedsm6ex8JPw
+	/N6jxCDDOko2YK+JXY4JSlUPvwey/mhZp3NUuYHVJLX2Btb7Wrc86P1cM+AKAj9QzJu68DoXe/TH9
+	ip0DAXKGohf45XqLrZ5r1EQ7ygPleFKyz8I6Ado1cfW1Ir9B7FlXxBOQVx3KEuECNmVZYuRe5sgtm
+	zE2bthmWGSuj/u+jtqPekOyntDJjuaB7CIg782PBWaATZSJlU8C/Uw0Vxl0bFeAfzZWJAwiCu0GzN
+	NqqkLwBR7B6Qa/P/sabw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wT0J0-00000007usN-1agh;
-	Fri, 29 May 2026 16:43:30 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wT1J4-000000082QE-42gU;
+	Fri, 29 May 2026 17:47:38 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wT0Iy-00000007uru-3Und;
-	Fri, 29 May 2026 16:43:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 081E46022D;
-	Fri, 29 May 2026 16:43:28 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6CB111F00898;
-	Fri, 29 May 2026 16:43:22 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780073007;
-	bh=r957v2CWrz1MjIvRcsu269D9FVC83NzhoDB9LUW/yek=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eSi9kAZXupGxFPLy4ASfu+n36iRVBcamZ6fRqO8A5ZbTueEu4FXeAUjsrq/S9oQjd
-	 dIWHg53c6IqAnk732NmRuFNnq3KWRtAmBQ4DVhTKf4YX9oSau0/+c1EOcnvBB6sPYN
-	 mHvkZdq6+CaNH5PPsSYEln9oGOA4hBJfthYGNjk4gW4p/Q651oM4yuUUcyBQ8KjV0O
-	 fMQeTKArAwX7f6Nwfv0SHKdowN8ZVaQ+IcrsN9dXgOphz8ckUjzrTrVkD1F1hn6IVB
-	 zvlTX/+ByKxMQ2mXKL75mxb0QT/IdTHqfTqH1/ue/rSGqVYqeQWwNZpSKjghIFbsYk
-	 V0eMJ7oYmML/A==
-Date: Fri, 29 May 2026 17:43:20 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Damon Ding <damon.ding@rock-chips.com>
-Subject: Re: [PATCH v4 1/3] dt-bindings: display: bridge: analogix-dp: Add
- data-lanes support for endpoint
-Message-ID: <20260529-concur-grandly-745bb08c1d3f@spud>
-References: <20260529040530.741336-1-damon.ding@rock-chips.com>
- <20260529040530.741336-2-damon.ding@rock-chips.com>
+	id 1wT1J2-000000082P0-2NGt;
+	Fri, 29 May 2026 17:47:37 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=JmCG5c7ZdraaUuv5adtXfMR+L/IgQPNcJErvSgyx1bo=; b=qowQRPp+vmiLNlYsmQPNOAQ1Ec
+	lVyVhrZDC21fF+NNodAjsFn5ZcLORaY/3O9HnWneNKzwlKVyzCaMqEFCD6YpXPQZaIlu/jkFjH4LU
+	shW79nPyr9Vuw/7MBwOe7jTui9E+JApfeBCOZOzB/0c4IgXOM27YFzvxDtMlZzCjqKdwTDNuNkl69
+	2eFDFVrKn1c0x7H1Zs+aT/uWRNeYVF0EFSVs9xxFHNH4kIJjw4llpUhFwnfvg9jGOo31b85YL9i3f
+	8NX0teUlNxgLr0V+HO7co/tkX2+E9EsRUkLST/cvFeqX7TOsiiYr64h27lHtYCMwcOwp3EOh1cVgO
+	yEyYoYPQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Joerg Roedel <joro@8bytes.org>, Will Deacon <will@kernel.org>,
+ Robin Murphy <robin.murphy@arm.com>,
+ Sven =?UTF-8?B?UMO8c2NoZWw=?= <s.pueschel@pengutronix.de>
+Cc: iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Simon Xue <xxm@rock-chips.com>, kernel@pengutronix.de,
+ Sven =?UTF-8?B?UMO8c2NoZWw=?= <s.pueschel@pengutronix.de>
+Subject: Re: [PATCH v2] iommu/rockchip: disable fetch dte time limit
+Date: Fri, 29 May 2026 19:47:27 +0200
+Message-ID: <5524351.eFTFzoEnKi@phil>
+In-Reply-To: <20260428-spu-iommudtefix-v2-1-f592f579e508@pengutronix.de>
+References: <20260428-spu-iommudtefix-v2-1-f592f579e508@pengutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20260529040530.741336-2-damon.ding@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260529_104736_664956_CBF90E14 
+X-CRM114-Status: GOOD (  16.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,144 +63,45 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
-Content-Type: multipart/mixed; boundary="===============2383741917634028240=="
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
---===============2383741917634028240==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="5luu5ycDxMPs2Thy"
-Content-Disposition: inline
-
-
---5luu5ycDxMPs2Thy
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, May 29, 2026 at 12:05:28PM +0800, Damon Ding wrote:
-> Add data-lanes property support to the port@1 endpoint for physical
-> lane mapping configuration.
->=20
-> Lane mapping is mainly used for below scenarios:
-> 1. Correct PCB lane swap and differential line routing crossover
->    without hardware changes;
-> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
-> 3. Support multiple panel hardware variants on the same board
->    by configuring data-lanes in device tree only.
->=20
-> Additionally, add data-lanes setting in Rockchip eDP DT node example
-> to show actual lane mapping usage.
->=20
-> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-
-Not entirely sure if this is correct, but I'll leave that decision up to
-the display folks who know the hardware.
-pw-bot: not-applicable
-Acked-by: Conor Dooley <conor.dooley@microchip.com>
-
-Cheers,
-Conor.
-
->=20
-> ---
->=20
-> Changes in v2:
-> - Add lane mapping application scenarios in commit message.
-> - Remove redundant deprecated property 'data-lanes' for eDP node.
-> - Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
->=20
-> Changes in v3:
-> - Squash data-lanes adjustment of Rockchip eDP DT example into this
->   commit.
-> - Add unevaluatedProperties: false to both the port@1 and endpoint
->   nodes.
-> ---
->  .../bindings/display/bridge/analogix,dp.yaml  | 19 ++++++++++++++-----
->  .../rockchip/rockchip,analogix-dp.yaml        |  1 +
->  2 files changed, 15 insertions(+), 5 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,dp=
-=2Eyaml b/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
-> index 62f0521b0924..ecf206871cdd 100644
-> --- a/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
-> +++ b/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
-> @@ -42,13 +42,22 @@ properties:
->      properties:
->        port@0:
->          $ref: /schemas/graph.yaml#/properties/port
-> -        description:
-> -          Input node to receive pixel data.
-> +        description: Input node to receive pixel data.
-> =20
->        port@1:
-> -        $ref: /schemas/graph.yaml#/properties/port
-> -        description:
-> -          Port node with one endpoint connected to a dp-connector node.
-> +        $ref: /schemas/graph.yaml#/$defs/port-base
-> +        unevaluatedProperties: false
-> +        description: Port node with one endpoint connected to sink devic=
-e node.
-> +        properties:
-> +          endpoint:
-> +            $ref: /schemas/media/video-interfaces.yaml#
-> +            unevaluatedProperties: false
-> +            properties:
-> +              data-lanes:
-> +                minItems: 1
-> +                maxItems: 4
-> +                items:
-> +                  enum: [ 0, 1, 2, 3 ]
-> =20
->      required:
->        - port@0
-> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,=
-analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockc=
-hip,analogix-dp.yaml
-> index d99b23b88cc5..f690ee393fdb 100644
-> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
-x-dp.yaml
-> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
-x-dp.yaml
-> @@ -117,6 +117,7 @@ examples:
->            reg =3D <1>;
-> =20
->            edp_out_panel: endpoint {
-> +            data-lanes =3D <0 1>;
->              remote-endpoint =3D <&panel_in_edp>;
->            };
->          };
-> --=20
-> 2.34.1
->=20
->=20
-
---5luu5ycDxMPs2Thy
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCahnCKAAKCRB4tDGHoIJi
-0krpAP9zkNijMkKB+OlQAVfE8qu8J6APtlizk/cPwZuBFwjGmQEA1qzuR9AdmjN2
-NDIExP/FQCGHdc3jKLG6nIP56dmsvAQ=
-=Mv2x
------END PGP SIGNATURE-----
-
---5luu5ycDxMPs2Thy--
-
-
---===============2383741917634028240==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============2383741917634028240==--
-
+QW0gRGllbnN0YWcsIDI4LiBBcHJpbCAyMDI2LCAxODowNTozMSBNaXR0ZWxldXJvcMOkaXNjaGUg
+U29tbWVyemVpdCBzY2hyaWViIFN2ZW4gUMO8c2NoZWw6Cj4gRnJvbTogU2ltb24gWHVlIDx4eG1A
+cm9jay1jaGlwcy5jb20+Cj4gCj4gRGlzYWJsZSB0aGUgQml0IDMxIG9mIHRoZSBBVVRPX0dBVElO
+RyBpb21tdSByZWdpc3RlciwgYXMgaXQgY2F1c2VzCj4gaGFuZ3VwcyB3aXRoIHRoZSBSR0EzIChS
+YXN0ZXIgR3JhcGhpY3MgQWNjZWxlcmF0aW9uIDMpIHBlcmlwaGVyYWwuCj4gVGhlIFJHQTMgcmVn
+aXN0ZXIgZGVzY3JpcHRpb24gb2YgdGhlIFRSTSBhbHJlYWR5IHN0YXRlcyB0aGF0IHRoZSBiaXQK
+PiBtdXN0IGJlIHNldCB0byAxLiBUaGUgdmVuZG9yIGtlcm5lbCBzZXRzIHRoZSBiaXQgdW5jb25k
+aXRpb25hbGx5IHRvCj4gMSB0byBmaXggVk9QIChWaWRlbyBPdXRwdXQgUHJvY2Vzc29yKSBzY3Jl
+ZW4gYmxhY2sgaXNzdWVzLiBUaGlzIHBhdGNoCj4gc3F1YXNoZXMgdGhlIDIgdmVuZG9yIGtlcm5l
+bCBjb21taXRzIHdpdGggdGhlIGZvbGxvd2luZyBjb21taXQgbWVzc2FnZXM6Cj4gCj4gTWFzdGVy
+IGZldGNoIGRhdGEgYW5kIGNwdSB1cGRhdGUgcGFnZSB0YWJsZSBtYXkgd29yayBpbiBwYXJhbGxl
+bCwgbWF5Cj4gaGF2ZSB0aGUgZm9sbG93aW5nIHByb2NlZHVyZToKPiAKPiAJbWFzdGVyICAgICAg
+ICAgICAgICAgICAgY3B1Cj4gCWZldGNoIGR0ZSAgICAgICAgICAgICAgIHVwZGF0ZSBwYWdlIHRh
+YmwKPiAJICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICB8Cj4gCShtYWtlIGR0ZSBpbnZh
+bGlkKSAgPC0gIHphcCBpb3RsYiBlbnRyeQo+IAkgICAgICAgIHwgICAgICAgICAgICAgICAgICAg
+ICAgIHwKPiAJZmV0Y2ggZHRlIGFnYWluCj4gCShtYWtlIGR0ZSBpbnZhbGlkKSAgPC0gIHphcCBp
+b3RsYiBlbnRyeQo+IAkgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgIHwKPiAJZmV0Y2gg
+ZHRlIGFnYWluCj4gCShtYWtlIGR0ZSBpbnZhbGlkKSAgPC0gIHphcCBpb3RsYiBlbnRyeQo+IAkg
+ICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgIHwKPiAJZmV0Y2ggZHRlIGFnYWluCj4gCSht
+YWtlIGlvbW11IGJsb2NrKSAgPC0gIHphcCBpb3RsYiBlbnRyeQo+IAo+IE5ldyBpb21tdSB2ZXJz
+aW9uIGhhcyB0aGUgYWJvdmUgYnVnLCBpZiBmZXRjaCBkdGUgY29uc2VjdXRpdmVseSBmb3VyCj4g
+dGltZXMsIHRoZW4gaXQgd2lsbCBiZSBibG9ja2VkLiBGb3J0dW5hdGVseSwgd2UgY2FuIHNldCBi
+aXQgMzEgb2YKPiByZWdpc3RlciBNTVVfQVVUT19HQVRJTkcgdG8gMSB0byBtYWtlIGl0IHdvcmsg
+YXMgb2xkIHZlcnNpb24gd2hpY2ggZG9lcwo+IG5vdCBoYXZlIHRoaXMgaXNzdWUuCj4gCj4gVGhp
+cyBpc3N1ZSBvbmx5IGFwcGVhcnMgb24gUlYxMTI2IHNvIGZhciwgc28gbWFrZSBhIHdvcmthcm91
+bmQgZGVkaWNhdGVkCj4gdG8gInJvY2tjaGlwLHJ2MTEyNiIgbWFjaGluZSB0eXBlLgo+IAo+IGlv
+bW11L3JvY2tjaGlwOiBmaXggdm9wIGJsb2NrZWQgYW5kIHNjcmVlbiBibGFjayBvbiBSSzM1Nlgg
+YW5kIFJLMzU4OAo+IAo+IFJLMzU2OCBhbmQgUkszNTg4IGhhcyB0aGUgc2FtZSBpc3N1ZSBhcyBS
+VjExMjYvUlYxMTA5IHRoYXQgY2F1c2VkIGJ5Cj4gZHRlIGZldGNoIHRpbWUgbGltaXQsIFNvIHdl
+IGNhbiBzZXQgQklUKDMxKSBvZiByZWdpc3RlciAweDI0IGRlZmF1bHQKPiB0byAxIGFzIGEgd29y
+a2Fyb3VuZC4KPiAKPiBTaWduZWQtb2ZmLWJ5OiBTaW1vbiBYdWUgPHh4bUByb2NrLWNoaXBzLmNv
+bT4KPiBTaWduZWQtb2ZmLWJ5OiBTdmVuIFDDvHNjaGVsIDxzLnB1ZXNjaGVsQHBlbmd1dHJvbml4
+LmRlPgoKQWNrZWQtYnk6IEhlaWtvIFN0dWVibmVyIDxoZWlrb0BzbnRlY2guZGU+CgpASm9lcmc6
+IGNvdWxkIHdlIGdldCB0aGlzIG1lcmdlZD8KClRoYW5rcwpIZWlrbwoKCgpfX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
+IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
+cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
