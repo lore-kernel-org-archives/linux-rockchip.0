@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FEEECD6E56
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 03:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3170FCD6E55
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 03:20:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=ifYiZwKF3VidyaX8YOTWrqiEAX8Wfvs9OzuemPvCXt4=; b=fUmmYVdahsJE2i
-	iJOZR9wW8z07ckNIIASylUKoRSKqyeT1gMMDhjMOv6AmUQ3wrFimngAinG3AYj5+V5Oxt0fk8hs7s
-	j/TP2byaM+MqJ9cKEYBLzBdOf+rMtyQoTZaf7UM+IsdJ9s7I5Jr5VI3ni0RfWa3CxeE+GWQauYgvw
-	HgW1z0peo4TA0rfGscbv/USoendkrVG71JDqodkBo5js7Nw8CinIpXI42wzxInaJ03ATNWeQDJNxw
-	aiLIs+LOdKqiWCKBh/P/ZH2jVOBJA81ccI4kKwYLpQEsg6i0yVFZVrUyqqD9ycAur45DDXcXvkBkg
-	WAOaJc3OgVAp29ENFfvQ==;
+	List-Owner; bh=ou/SLax3wQkfbDJDvtYKm6X270cP7+fJ3BN8N4v0lPc=; b=3uJDRdj04YhCea
+	f+QTat1kRJgKl9SwaH8b+JxgICoPgPD7QoOyCYGXe0ig61t8aSt0K1zCglkiAXJVh7yBGit1pED7H
+	kWtO3Lezj1ujkxiF3tvs1Hx+Prmm28ImZTzpPMzw36E0F7pnObYQtNlzLOjLEFhG5XNK3/Aj2YSS2
+	IgqjmtFiaFVrLQIx5h1m09NeFdwsf8U6yOapy6RoHr5ee/8NF+etxwHXYLaV4j9/sRwm8CUNGQUSs
+	EDbJZTSX19o38vW2dqV76Sj5r+bci+9U8zhPHrbQSObQFQ+9aiSk0YHNAIyvNv+WxBhBxpn1vP5E9
+	FOfg2sf+CdJiVn+DYVfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTAFL-00000008PHq-2KH1;
-	Sat, 30 May 2026 03:20:23 +0000
-Received: from mail-oa1-x2a.google.com ([2001:4860:4864:20::2a])
+	id 1wTAFP-00000008PKp-3eot;
+	Sat, 30 May 2026 03:20:27 +0000
+Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTAFH-00000008PGT-3a8S
+	id 1wTAFL-00000008PHd-2C58
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 May 2026 03:20:21 +0000
-Received: by mail-oa1-x2a.google.com with SMTP id 586e51a60fabf-439712b3416so5137416fac.2
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 May 2026 20:20:19 -0700 (PDT)
+	Sat, 30 May 2026 03:20:24 +0000
+Received: by mail-oo1-xc2f.google.com with SMTP id 006d021491bc7-69de16f5e80so1866944eaf.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 29 May 2026 20:20:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780111218; x=1780716018; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1780111222; x=1780716022; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=HlxE7a7A1hYG8iJU+uhlIgot+rmDCOXv+BiMp386Qmg=;
-        b=rcg1S6IsgV4HkoHL2lazfIOMsByDQk9qMFEfzzfHe7ib3AeWfdK0AfrvfCQWcJG5HV
-         KpsKmSqi3ef162BlrYBEfyEjchpBtHpHCBJS3y+IgLggvHohawuQiKFOz4H8lHxh64eV
-         F6gqEa/R8dTE1ecbDbQuB+bt1YyFDS+bOAKFTUS72Dnl2MqS5kna5kKED+nwGPznQ6oK
-         P5/xtKSwP37cYSEHbqKLfYtz4kixcMAPPIZI9UNKv27tEGPceOeBD030OI++NS2w6XKx
-         IVSJUkam9k3QkcjeDgyEKf7OYGD8ra6lTf4w0MD5GMZLNAQ2ymIgLVjt+O1MWcus3xZz
-         UVow==
+        bh=NsOg6kHbZfdOrUAsQL3HV4WrqKcR5iUMKI9BICBkMjY=;
+        b=hmvJIfUiDT92cvhXALLuk0txf4+a3K6KCTwNX/4oAMkNfMxF8o068JHLfECEWFgMIo
+         xdG2Vjo0X1bIPv3v2C+qiLQeNxjYr42vVcKpS+jGLKkVR4+FC7kGutwgBv4cOqXF22eR
+         /daMgL/rpTw8j7icnkdJnSQuh5j5O558yUfaAE65U8JxuDRWxZRb48Wrjg/xPtJmay7M
+         TvANQno7pF6MQ4+dg0XEanliG/glS/K1nMYVXQJ5pOVyuChg63e/PAoKqHzC72tZ+G+w
+         cz2ETaCFJYVN84h10zLGC/ibRTABq0LVYEe/ik5jSpXbK7UDZcyHT622Yx5ehR35L672
+         YswQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780111218; x=1780716018;
+        d=1e100.net; s=20251104; t=1780111222; x=1780716022;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=HlxE7a7A1hYG8iJU+uhlIgot+rmDCOXv+BiMp386Qmg=;
-        b=G8CFNOB6Gopk4lMbETg8ZDBQfy0lHWVW/nIvtdXbp0j0wGVe3Jr4xINXKpZJelBXIf
-         GHjZLEmmbfYhJfw4F0GDMKOa2Iy++laCjBt7G0wDMBJIdRFCwIAORlaLXYw52+dsjXM9
-         V2ksAaoS6TzoPBFWxbiXemD3G+eFnjCZnC2094UfuxXKiCsWxBusvEcNSBEe3wXEzeqU
-         z6fb6vrjSXIxILprDoun5vH+hzc5XpGBsW6ydZ1KVNuO3xtmRgnOby2sk+N6HGo+kxhg
-         willqt/zZP8IcDnvLsjUmdG/oVY2tKS+tN+ciVEbNAh7AMKc4/vgXvJFIJvOu5+SPpUb
-         0PLw==
-X-Forwarded-Encrypted: i=1; AFNElJ8p92VsdtdKxiN9Gf/hNnrGY6cdRzMGqsgecZwFWalsDEmdE6PN5iGwsT8AtBDcMFCBfjUOOhU0Zy26Y1U4kg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxehhhzFzZ9k6pkLCcn8Eu5424ExAZGH42mV4v3VRW4PoGIn3Oo
-	uANuykgpmbKCUKuN9MsU3ZvhGYgeVFcY3yAYWw8et9EeRtHF6swmtWPo
-X-Gm-Gg: Acq92OG7GLciFHjds2+UQ4Ll4N9uz+dnfvOPMaa99A4l4zWXMAAClWUBFZjFh8NxXDX
-	6vn+riLBB8Y5zj2ZXi9Zcngo/IJSSUYVXma+ohLfYhnfIR8XtMCnHenFh8UW8AJlA3SO/DDYnYh
-	i5PyXffq9GcZgo8bXyhE5ITwSCtw2BqWMum9We4v02ujNw2A09WY1+2sJ7mVj+oM8U+Zolju0+g
-	oSHOjNO/JZadx1DG/wwONcAG0PmuFWkBX8EX8Et/QtZZ2brec42BKqd1QUcxRHHqdvy34R9dcYU
-	8+bCP9Gr4Ur6CEcwCWJ3ZJCodk4+2wbDkciV9qsKAZrFG55Xau1S0mcZY9Gjz/Vjh9i1vnaoWTS
-	puoSvuCyWHVesarNGjGEgVCr0gOYYWXwHwA3ykXuxYLPBS9wbsaVC8tRW4eSLM08hmTnamlwv85
-	uZVuXBJDHVh5txM4JlVldFeAWa7FrTij4=
-X-Received: by 2002:a05:6820:1506:b0:69d:f8ac:500a with SMTP id 006d021491bc7-69e1052b0cdmr1073835eaf.25.1780111218416;
-        Fri, 29 May 2026 20:20:18 -0700 (PDT)
+        bh=NsOg6kHbZfdOrUAsQL3HV4WrqKcR5iUMKI9BICBkMjY=;
+        b=DLEUMzyBOMyAG70SjGNcGQnDIUsuUn7GPNs4sYl0Sy8LYFfxrHpWnjE5hXPOkko4oY
+         V5PvpTXIEAL+smVcPRiGsnU7n48kAK4VnUVLqfBxMv+FSi8hfVXO87cT2uBYyuSByCll
+         mPSxVZDsnD8LH+aLjCt6CGTWkZF7IhEPSqJScszVd6ckEm33kLNFFHKBpyKhgIV5NM6d
+         6++yMCLU1liUxu1jt+Z4PqRtmFl0Ch2AGXtVpovOGWQBNHLgDV3vFjqrchAbK102kZm5
+         3BBLQmgCvkzXjKfPG01wkNXD2bzVfbqr7zIQNbSoPEUTiqklHa11cjt850DisKNQIJ98
+         oyHQ==
+X-Forwarded-Encrypted: i=1; AFNElJ9RADIIGelU52Gz2H6fA3ToDag5s48Ox5mpJuKRyXqb4x4/pd7Z4KIp5bOwOjbXPIV1QVWtnUvCIszZYyIWAw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyeT3y9LFFF9VFzDpKWGc9jvSD+NR/oDry8dsH0l2+k38OM8xGb
+	OI0ulugOuz8JQZrTeIPKK6SVJQI3qlbKx9NEbDqW0kcqaWAScLKukNVn89zrMqzO
+X-Gm-Gg: Acq92OEDEgVuDkpu3vLD4kYCuJi8BQgeKWEqoAYibjYH8Mzlq3fiftljcSQNAba7FQ5
+	/jt2bJuO2GExjgov1CV55bei2UPLYiRj2KqnHsxO94RzyRRn4PGiGpEnNNE6+1mrf8WUFegmHWS
+	wBkT+BaYnQTXjdpRO6MN/yoTw+hP2ULZUmF8g90tItOOPJuXP2JRgBe3tilMDuUYMgv6ilLcZ7i
+	qv6oT2dJOnLrpjP7nPnZ2kQGeUL6/IcKVM4o/IEOsyvS5wls2f8X/I1TWuJAo7AbUYkhBIi5FrR
+	wl5mAooKCnB9d7nO+447yYRpKWi6PC+cfy8XR8kIQns1ibIFCrTSGonVx1e4mPUZf+HgFHnr0h0
+	KTOu8hsfI1zyyQzD56j553a5s0l9cb2KnAmT5RTWDnaRv4aAEWDuj4Tq258ahjZrl348gmYo6c4
+	EwI2XcRNSx/CGVvx+BiJcvLCImid9pIN4=
+X-Received: by 2002:a05:6820:4de7:b0:694:8683:3860 with SMTP id 006d021491bc7-69e103d694dmr1032165eaf.48.1780111222253;
+        Fri, 29 May 2026 20:20:22 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-69e067e911csm2130737eaf.5.2026.05.29.20.20.17
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-69e067e911csm2130737eaf.5.2026.05.29.20.20.21
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 May 2026 20:20:18 -0700 (PDT)
+        Fri, 29 May 2026 20:20:21 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -84,16 +84,16 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V9 03/11] iio: imu: inv_icm42607: Add inv_icm42607 Core Driver
-Date: Fri, 29 May 2026 22:17:30 -0500
-Message-ID: <20260530031739.109063-4-macroalpha82@gmail.com>
+Subject: [PATCH V9 06/11] iio: imu: inv_icm42607: Add Buffer support for icm42607
+Date: Fri, 29 May 2026 22:17:33 -0500
+Message-ID: <20260530031739.109063-7-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260530031739.109063-1-macroalpha82@gmail.com>
 References: <20260530031739.109063-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260529_202020_333589_5090FD6C 
-X-CRM114-Status: GOOD (  16.05  )
+X-CRM114-CacheID: sfid-20260529_202023_658393_38F2135F 
+X-CRM114-Status: GOOD (  29.42  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,572 +112,769 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add the core component of a new inv_icm42607 driver. This includes
-a few setup functions and the full register definition in the
-header file.
+Add all FIFO parsing and reading functions to support
+inv_icm42607 hardware.
 
 Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
 ---
- drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 336 ++++++++++++++++++
- .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 206 +++++++++++
- 2 files changed, 542 insertions(+)
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+ drivers/iio/imu/inv_icm42607/Makefile         |   1 +
+ drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  26 +
+ .../imu/inv_icm42607/inv_icm42607_buffer.c    | 483 ++++++++++++++++++
+ .../imu/inv_icm42607/inv_icm42607_buffer.h    |  93 ++++
+ .../iio/imu/inv_icm42607/inv_icm42607_core.c  |  52 +-
+ 5 files changed, 654 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
 
+diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
+index be109102e203..3c9d08509793 100644
+--- a/drivers/iio/imu/inv_icm42607/Makefile
++++ b/drivers/iio/imu/inv_icm42607/Makefile
+@@ -2,6 +2,7 @@
+ 
+ obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
+ inv-icm42607-y += inv_icm42607_core.o
++inv-icm42607-y += inv_icm42607_buffer.o
+ 
+ obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
+ inv-icm42607-i2c-y += inv_icm42607_i2c.o
 diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-new file mode 100644
-index 000000000000..fe565c423c98
---- /dev/null
+index 00c8dfe20717..cb878de970d4 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
 +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-@@ -0,0 +1,336 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Copyright (C) 2026 InvenSense, Inc.
-+ */
+@@ -14,6 +14,10 @@
+ #include <linux/regmap.h>
+ #include <linux/regulator/consumer.h>
+ 
++#include <linux/iio/common/inv_sensors_timestamp.h>
 +
-+#ifndef INV_ICM42607_H_
-+#define INV_ICM42607_H_
++#include "inv_icm42607_buffer.h"
 +
-+#include <linux/bitfield.h>
-+#include <linux/bitops.h>
-+#include <linux/iio/iio.h>
-+#include <linux/mutex.h>
-+#include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
-+
-+enum inv_icm42607_sensor_mode {
-+	INV_ICM42607_SENSOR_MODE_OFF,
-+	INV_ICM42607_SENSOR_MODE_STANDBY,
-+	INV_ICM42607_SENSOR_MODE_LOW_POWER,
-+	INV_ICM42607_SENSOR_MODE_LOW_NOISE,
-+	INV_ICM42607_SENSOR_MODE_NB
-+};
-+
-+/* gyroscope fullscale values */
-+enum inv_icm42607_gyro_fs {
-+	INV_ICM42607_GYRO_FS_2000DPS,
-+	INV_ICM42607_GYRO_FS_1000DPS,
-+	INV_ICM42607_GYRO_FS_500DPS,
-+	INV_ICM42607_GYRO_FS_250DPS,
-+	INV_ICM42607_GYRO_FS_NB
-+};
-+
-+/* accelerometer fullscale values */
-+enum inv_icm42607_accel_fs {
-+	INV_ICM42607_ACCEL_FS_16G,
-+	INV_ICM42607_ACCEL_FS_8G,
-+	INV_ICM42607_ACCEL_FS_4G,
-+	INV_ICM42607_ACCEL_FS_2G,
-+	INV_ICM42607_ACCEL_FS_NB
-+};
-+
-+/* ODR values */
-+enum inv_icm42607_odr {
-+	INV_ICM42607_ODR_1600HZ = 5,
-+	INV_ICM42607_ODR_800HZ,
-+	INV_ICM42607_ODR_400HZ,
-+	INV_ICM42607_ODR_200HZ,
-+	INV_ICM42607_ODR_100HZ,
-+	INV_ICM42607_ODR_50HZ,
-+	INV_ICM42607_ODR_25HZ,
-+	INV_ICM42607_ODR_12_5HZ,
-+	INV_ICM42607_ODR_6_25HZ_LP,
-+	INV_ICM42607_ODR_3_125HZ_LP,
-+	INV_ICM42607_ODR_1_5625HZ_LP,
-+	INV_ICM42607_ODR_NB
-+};
-+
-+enum inv_icm42607_filter_bw {
-+	/* Low-Noise mode sensor data filter (bandwidth) */
-+	INV_ICM42607_FILTER_BYPASS,
-+	INV_ICM42607_FILTER_BW_180HZ,
-+	INV_ICM42607_FILTER_BW_121HZ,
-+	INV_ICM42607_FILTER_BW_73HZ,
-+	INV_ICM42607_FILTER_BW_53HZ,
-+	INV_ICM42607_FILTER_BW_34HZ,
-+	INV_ICM42607_FILTER_BW_25HZ,
-+	INV_ICM42607_FILTER_BW_16HZ,
-+	INV_ICM42607_FILTER_BW_NB
-+};
-+
-+struct inv_icm42607_sensor_conf {
-+	int mode;
-+	int fs;
-+	int odr;
-+	int filter;
-+};
-+
-+struct inv_icm42607_conf {
-+	struct inv_icm42607_sensor_conf gyro;
-+	struct inv_icm42607_sensor_conf accel;
-+	bool temp_en;
-+};
-+
-+struct inv_icm42607_hw {
-+	uint8_t whoami;
-+	const char *name;
-+	const struct inv_icm42607_conf *conf;
+ /*
+  * Serial bus slew rates. Rates are expressed as range between the two
+  * values with the midpoint as the typical rate. For the final value of
+@@ -114,6 +118,10 @@ struct inv_icm42607_hw {
+  *  @irq:		chip irq, required to enable/disable and set wakeup
+  *  @orientation:	sensor chip orientation relative to main hardware.
+  *  @conf:		chip sensors configurations.
++ *  @indio_gyro:	gyroscope IIO device.
++ *  @indio_accel:	accelerometer IIO device.
++ *  @fifo:		FIFO management structure.
++ *  @buffer:		data transfer buffer aligned for DMA.
+  */
+ struct inv_icm42607_state {
+ 	struct mutex lock;
+@@ -124,6 +132,22 @@ struct inv_icm42607_state {
+ 	int irq;
+ 	struct iio_mount_matrix orientation;
+ 	struct inv_icm42607_conf conf;
++	struct iio_dev *indio_gyro;
++	struct iio_dev *indio_accel;
++	struct inv_icm42607_fifo fifo;
++	__be16 buffer[3] __aligned(IIO_DMA_MINALIGN);
 +};
 +
 +/**
-+ *  struct inv_icm42607_state - driver state variables
-+ *  @lock:		lock for serializing multiple registers access.
-+ *  @hw:		Hardware specific data.
-+ *  @map:		regmap pointer.
-+ *  @vddio_supply:	I/O voltage regulator for the chip.
-+ *  @irq:		chip irq, required to enable/disable and set wakeup
-+ *  @orientation:	sensor chip orientation relative to main hardware.
-+ *  @conf:		chip sensors configurations.
++ * struct inv_icm42607_sensor_state - sensor state variables
++ * @power_mode:		sensor requested power mode (for common frequencies)
++ * @filter:		sensor filter.
++ * @ts:			timestamp module states.
 + */
-+struct inv_icm42607_state {
-+	struct mutex lock;
-+	const struct inv_icm42607_hw *hw;
-+	struct regmap *map;
-+	struct regulator *vddio_supply;
-+	int irq;
-+	struct iio_mount_matrix orientation;
-+	struct inv_icm42607_conf conf;
-+};
++struct inv_icm42607_sensor_state {
++	enum inv_icm42607_sensor_mode power_mode;
++	int filter;
++	struct inv_sensors_timestamp ts;
+ };
+ 
+ /* Virtual register addresses: @bank on MSB (4 upper bits), @address on LSB */
+@@ -355,6 +379,8 @@ extern const struct inv_icm42607_hw inv_icm42607_hw_data;
+ extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
+ extern const struct dev_pm_ops inv_icm42607_pm_ops;
+ 
++u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr);
 +
-+/* Virtual register addresses: @bank on MSB (4 upper bits), @address on LSB */
-+
-+/* Register Map for User Bank 0 */
-+#define INV_ICM42607_REG_MCLK_RDY			0x00
-+
-+#define INV_ICM42607_REG_DEVICE_CONFIG			0x01
-+#define INV_ICM42607_DEVICE_CONFIG_SPI_AP_4WIRE		BIT(2)
-+#define INV_ICM42607_DEVICE_CONFIG_SPI_MODE		BIT(0)
-+
-+#define INV_ICM42607_REG_SIGNAL_PATH_RESET		0x02
-+#define INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET	BIT(4)
-+#define INV_ICM42607_SIGNAL_PATH_RESET_FIFO_FLUSH	BIT(2)
-+
-+#define INV_ICM42607_REG_DRIVE_CONFIG1			0x03
-+#define INV_ICM42607_DRIVE_CONFIG1_I3C_DDR_MASK		GENMASK(5, 3)
-+#define INV_ICM42607_DRIVE_CONFIG1_I3C_SDR_MASK		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_DRIVE_CONFIG2			0x04
-+#define INV_ICM42607_DRIVE_CONFIG2_I2C_MASK		GENMASK(5, 3)
-+#define INV_ICM42607_DRIVE_CONFIG2_ALL_MASK		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_DRIVE_CONFIG3			0x05
-+#define INV_ICM42607_DRIVE_CONFIG3_SPI_MASK		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_INT_CONFIG			0x06
-+#define INV_ICM42607_INT_CONFIG_INT2_LATCHED		BIT(5)
-+#define INV_ICM42607_INT_CONFIG_INT2_PUSH_PULL		BIT(4)
-+#define INV_ICM42607_INT_CONFIG_INT2_ACTIVE_HIGH	BIT(3)
-+#define INV_ICM42607_INT_CONFIG_INT2_ACTIVE_LOW		0x00
-+#define INV_ICM42607_INT_CONFIG_INT1_LATCHED		BIT(2)
-+#define INV_ICM42607_INT_CONFIG_INT1_PUSH_PULL		BIT(1)
-+#define INV_ICM42607_INT_CONFIG_INT1_ACTIVE_HIGH	BIT(0)
-+#define INV_ICM42607_INT_CONFIG_INT1_ACTIVE_LOW		0x00
-+
-+/* all sensor data are 16 bits (2 registers wide) in big-endian */
-+#define INV_ICM42607_REG_TEMP_DATA1			0x09
-+#define INV_ICM42607_REG_TEMP_DATA0			0x0A
-+#define INV_ICM42607_REG_ACCEL_DATA_X1			0x0B
-+#define INV_ICM42607_REG_ACCEL_DATA_X0			0x0C
-+#define INV_ICM42607_REG_ACCEL_DATA_Y1			0x0D
-+#define INV_ICM42607_REG_ACCEL_DATA_Y0			0x0E
-+#define INV_ICM42607_REG_ACCEL_DATA_Z1			0x0F
-+#define INV_ICM42607_REG_ACCEL_DATA_Z0			0x10
-+#define INV_ICM42607_REG_GYRO_DATA_X1			0x11
-+#define INV_ICM42607_REG_GYRO_DATA_X0			0x12
-+#define INV_ICM42607_REG_GYRO_DATA_Y1			0x13
-+#define INV_ICM42607_REG_GYRO_DATA_Y0			0x14
-+#define INV_ICM42607_REG_GYRO_DATA_Z1			0x15
-+#define INV_ICM42607_REG_GYRO_DATA_Z0			0x16
-+#define INV_ICM42607_DATA_INVALID			-32768
-+
-+#define INV_ICM42607_REG_TMST_FSYNCH			0x17
-+#define INV_ICM42607_REG_TMST_FSYNCL			0x18
-+
-+/* APEX Data Registers */
-+#define INV_ICM42607_REG_APEX_DATA0			0x31
-+#define INV_ICM42607_REG_APEX_DATA1			0x32
-+#define INV_ICM42607_REG_APEX_DATA2			0x33
-+#define INV_ICM42607_REG_APEX_DATA3			0x34
-+#define INV_ICM42607_REG_APEX_DATA4			0x1D
-+#define INV_ICM42607_REG_APEX_DATA5			0x1E
-+
-+#define INV_ICM42607_REG_PWR_MGMT0			0x1F
-+#define INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL		BIT(7)
-+#define INV_ICM42607_PWR_MGMT0_IDLE			BIT(4)
-+#define INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK		GENMASK(3, 2)
-+#define INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK		GENMASK(1, 0)
-+
-+#define INV_ICM42607_REG_GYRO_CONFIG0			0x20
-+#define INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK		GENMASK(6, 5)
-+#define INV_ICM42607_GYRO_CONFIG0_ODR_MASK		GENMASK(3, 0)
-+
-+#define INV_ICM42607_REG_ACCEL_CONFIG0			0x21
-+#define INV_ICM42607_ACCEL_CONFIG0_FS_SEL_MASK		GENMASK(6, 5)
-+#define INV_ICM42607_ACCEL_CONFIG0_ODR_MASK		GENMASK(3, 0)
-+
-+#define INV_ICM42607_REG_TEMP_CONFIG0			0x22
-+#define INV_ICM42607_TEMP_CONFIG0_FILTER_MASK		GENMASK(6, 4)
-+
-+#define INV_ICM42607_REG_GYRO_CONFIG1			0x23
-+#define INV_ICM42607_GYRO_CONFIG1_FILTER_MASK		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_ACCEL_CONFIG1			0x24
-+#define INV_ICM42607_ACCEL_CONFIG1_AVG_MASK		GENMASK(6, 4)
-+#define INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_APEX_CONFIG0			0x25
-+#define INV_ICM42607_APEX_CONFIG0_DMP_POWER_SAVE_EN	BIT(3)
-+#define INV_ICM42607_APEX_CONFIG0_DMP_INIT_EN		BIT(2)
-+#define INV_ICM42607_APEX_CONFIG0_DMP_MEM_RESET_EN	BIT(0)
-+
-+#define INV_ICM42607_REG_APEX_CONFIG1			0x26
-+#define INV_ICM42607_APEX_CONFIG1_SMD_ENABLE		BIT(6)
-+#define INV_ICM42607_APEX_CONFIG1_FF_ENABLE		BIT(5)
-+#define INV_ICM42607_APEX_CONFIG1_TILT_ENABLE		BIT(4)
-+#define INV_ICM42607_APEX_CONFIG1_PED_ENABLE		BIT(3)
-+#define INV_ICM42607_APEX_CONFIG1_DMP_ODR_MASK		GENMASK(1, 0)
-+
-+#define INV_ICM42607_REG_WOM_CONFIG			0x27
-+#define INV_ICM42607_WOM_CONFIG_INT_DUR_MASK		GENMASK(4, 3)
-+#define INV_ICM42607_WOM_CONFIG_INT_MODE		BIT(2)
-+#define INV_ICM42607_WOM_CONFIG_MODE			BIT(1)
-+#define INV_ICM42607_WOM_CONFIG_EN			BIT(0)
-+
-+#define INV_ICM42607_REG_FIFO_CONFIG1			0x28
-+#define INV_ICM42607_FIFO_CONFIG1_MODE			BIT(1)
-+#define INV_ICM42607_FIFO_CONFIG1_BYPASS		BIT(0)
-+
-+#define INV_ICM42607_REG_FIFO_CONFIG2			0x29
-+#define INV_ICM42607_REG_FIFO_CONFIG3			0x2A
-+#define INV_ICM42607_FIFO_WATERMARK_VAL(_wm)		\
-+		cpu_to_le16((_wm) & GENMASK(11, 0))
-+/* FIFO is 2048 bytes, let 12 samples for reading latency */
-+#define INV_ICM42607_FIFO_WATERMARK_MAX			(2048 - 12 * 16)
-+#define INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE		8
-+#define INV_ICM42607_FIFO_2SENSORS_PACKET_SIZE		16
-+
-+#define INV_ICM42607_REG_INT_SOURCE0			0x2B
-+#define INV_ICM42607_INT_SOURCE0_ST_INT1_EN		BIT(7)
-+#define INV_ICM42607_INT_SOURCE0_FSYNC_INT1_EN		BIT(6)
-+#define INV_ICM42607_INT_SOURCE0_PLL_RDY_INT1_EN	BIT(5)
-+#define INV_ICM42607_INT_SOURCE0_RESET_DONE_INT1_EN	BIT(4)
-+#define INV_ICM42607_INT_SOURCE0_DRDY_INT1_EN		BIT(3)
-+#define INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN	BIT(2)
-+#define INV_ICM42607_INT_SOURCE0_FIFO_FULL_INT1_EN	BIT(1)
-+#define INV_ICM42607_INT_SOURCE0_AGC_RDY_INT1_EN	BIT(0)
-+
-+#define INV_ICM42607_REG_INT_SOURCE1			0x2C
-+#define INV_ICM42607_INT_SOURCE1_I3C_ERROR_INT1_EN	BIT(6)
-+#define INV_ICM42607_INT_SOURCE1_SMD_INT1_EN		BIT(3)
-+#define INV_ICM42607_INT_SOURCE1_WOM_INT1_EN		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_INT_SOURCE3			0x2D
-+#define INV_ICM42607_INT_SOURCE3_ST_INT2_EN		BIT(7)
-+#define INV_ICM42607_INT_SOURCE3_FSYNC_INT2_EN		BIT(6)
-+#define INV_ICM42607_INT_SOURCE3_PLL_RDY_INT2_EN	BIT(5)
-+#define INV_ICM42607_INT_SOURCE3_RESET_DONE_INT2_EN	BIT(4)
-+#define INV_ICM42607_INT_SOURCE3_DRDY_INT2_EN		BIT(3)
-+#define INV_ICM42607_INT_SOURCE3_FIFO_THS_INT2_EN	BIT(2)
-+#define INV_ICM42607_INT_SOURCE3_FIFO_FULL_INT2_EN	BIT(1)
-+#define INV_ICM42607_INT_SOURCE3_AGC_RDY_INT2_EN	BIT(0)
-+
-+#define INV_ICM42607_REG_INT_SOURCE4			0x2E
-+#define INV_ICM42607_INT_SOURCE4_I3C_ERROR_INT2_EN	BIT(6)
-+#define INV_ICM42607_INT_SOURCE4_SMD_INT2_EN		BIT(3)
-+#define INV_ICM42607_INT_SOURCE4_WOM_Z_INT2_EN		BIT(2)
-+#define INV_ICM42607_INT_SOURCE4_WOM_Y_INT2_EN		BIT(1)
-+#define INV_ICM42607_INT_SOURCE4_WOM_X_INT2_EN		BIT(0)
-+
-+#define INV_ICM42607_REG_FIFO_LOST_PKT0			0x2F
-+#define INV_ICM42607_REG_FIFO_LOST_PKT1			0x30
-+
-+#define INV_ICM42607_REG_INTF_CONFIG0			0x35
-+#define INV_ICM42607_INTF_CONFIG0_FIFO_COUNT_FORMAT	BIT(6)
-+#define INV_ICM42607_INTF_CONFIG0_FIFO_COUNT_ENDIAN	BIT(5)
-+#define INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN	BIT(4)
-+#define INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK	GENMASK(1, 0)
-+#define INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_SPI_DIS	\
-+	FIELD_PREP(INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK, 2)
-+#define INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_I2C_DIS	\
-+	FIELD_PREP(INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK, 3)
-+
-+#define INV_ICM42607_REG_INTF_CONFIG1			0x36
-+#define INV_ICM42607_INTF_CONFIG1_I3C_SDR_EN		BIT(3)
-+#define INV_ICM42607_INTF_CONFIG1_I3C_DDR_EN		BIT(2)
-+#define INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK		GENMASK(1, 0)
-+#define INV_ICM42607_INTF_CONFIG1_CLKSEL_INT		0
-+#define INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL		1
-+#define INV_ICM42607_INTF_CONFIG1_CLKSEL_OFF		2
-+
-+#define INV_ICM42607_REG_INT_STATUS_DRDY		0x39
-+#define INV_ICM42607_INT_STATUS_DRDY_DATA_RDY		BIT(0)
-+
-+#define INV_ICM42607_REG_INT_STATUS			0x3A
-+#define INV_ICM42607_INT_STATUS_ST			BIT(7)
-+#define INV_ICM42607_INT_STATUS_FSYNC			BIT(6)
-+#define INV_ICM42607_INT_STATUS_PLL_RDY			BIT(5)
-+#define INV_ICM42607_INT_STATUS_RESET_DONE		BIT(4)
-+#define INV_ICM42607_INT_STATUS_FIFO_THS		BIT(2)
-+#define INV_ICM42607_INT_STATUS_FIFO_FULL		BIT(1)
-+#define INV_ICM42607_INT_STATUS_AGC_RDY			BIT(0)
-+
-+#define INV_ICM42607_REG_INT_STATUS2			0x3B
-+#define INV_ICM42607_INT_STATUS2_SMD			BIT(3)
-+#define INV_ICM42607_INT_STATUS2_WOM_INT		GENMASK(2, 0)
-+
-+#define INV_ICM42607_REG_INT_STATUS3			0x3C
-+#define INV_ICM42607_INT_STATUS3_STEP_DET		BIT(5)
-+#define INV_ICM42607_INT_STATUS3_STEP_CNT_OVF		BIT(4)
-+#define INV_ICM42607_INT_STATUS3_TILT_DET		BIT(3)
-+#define INV_ICM42607_INT_STATUS3_FF_DET			BIT(2)
-+
-+/*
-+ * FIFO access registers
-+ * FIFO count is 16 bits (2 registers) big-endian
-+ * FIFO data is a continuous read register to read FIFO content
-+ */
-+#define INV_ICM42607_REG_FIFO_COUNTH			0x3D
-+#define INV_ICM42607_REG_FIFO_COUNTL			0x3E
-+#define INV_ICM42607_REG_FIFO_DATA			0x3F
-+
-+#define INV_ICM42607_REG_ACCEL_WOM_X_THR		0x4b
-+#define INV_ICM42607_REG_ACCEL_WOM_Y_THR		0x4c
-+#define INV_ICM42607_REG_ACCEL_WOM_Z_THR		0x4d
-+
-+#define INV_ICM42607_REG_WHOAMI				0x75
-+#define INV_ICM42607P_WHOAMI				0x60
-+#define INV_ICM42607_WHOAMI				0x67
-+
-+/* Timings as listed in section 3 of datasheet */
-+#define INV_ICM42607_POWER_UP_TIME_US			100000
-+#define INV_ICM42607_RESET_TIME_MS			1
-+#define INV_ICM42607_ACCEL_STARTUP_TIME_MS		10
-+#define INV_ICM42607_GYRO_STARTUP_TIME_MS		30
-+#define INV_ICM42607_TEMP_STARTUP_TIME_MS		77
-+
-+typedef int (*inv_icm42607_bus_setup)(struct inv_icm42607_state *);
-+
-+extern const struct regmap_config inv_icm42607_regmap_config;
-+extern const struct inv_icm42607_hw inv_icm42607_hw_data;
-+extern const struct inv_icm42607_hw inv_icm42607p_hw_data;
-+
-+int inv_icm42607_core_probe(struct regmap *regmap,
-+			    const struct inv_icm42607_hw *hw,
-+			    inv_icm42607_bus_setup bus_setup);
-+
-+#endif
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+ int inv_icm42607_core_probe(struct regmap *regmap,
+ 			    const struct inv_icm42607_hw *hw,
+ 			    inv_icm42607_bus_setup bus_setup);
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
 new file mode 100644
-index 000000000000..4801ece28058
+index 000000000000..e065d60ac119
 --- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-@@ -0,0 +1,206 @@
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
+@@ -0,0 +1,483 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + * Copyright (C) 2026 InvenSense, Inc.
 + */
 +
 +#include <linux/delay.h>
-+#include <linux/dev_printk.h>
-+#include <linux/interrupt.h>
++#include <linux/iio/buffer.h>
 +#include <linux/iio/iio.h>
-+#include <linux/irq.h>
-+#include <linux/module.h>
++#include <linux/minmax.h>
 +#include <linux/mutex.h>
-+#include <linux/property.h>
++#include <linux/pm_runtime.h>
 +#include <linux/regmap.h>
-+#include <linux/regulator/consumer.h>
++#include <linux/unaligned.h>
++
++#include <linux/iio/common/inv_sensors_timestamp.h>
 +
 +#include "inv_icm42607.h"
++#include "inv_icm42607_buffer.h"
 +
-+static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
-+				 const struct inv_icm42607_conf *conf)
++/* FIFO header: 1 byte */
++#define INV_ICM42607_FIFO_HEADER_MSG		BIT(7)
++#define INV_ICM42607_FIFO_HEADER_ACCEL		BIT(6)
++#define INV_ICM42607_FIFO_HEADER_GYRO		BIT(5)
++#define INV_ICM42607_FIFO_HEADER_TMST_FSYNC	GENMASK(3, 2)
++#define INV_ICM42607_FIFO_HEADER_ODR_ACCEL	BIT(1)
++#define INV_ICM42607_FIFO_HEADER_ODR_GYRO	BIT(0)
++
++struct inv_icm42607_fifo_1sensor_packet {
++	u8 header;
++	struct inv_icm42607_fifo_sensor_data data;
++	s8 temp;
++} __packed;
++
++struct inv_icm42607_fifo_2sensors_packet {
++	u8 header;
++	struct inv_icm42607_fifo_sensor_data accel;
++	struct inv_icm42607_fifo_sensor_data gyro;
++	s8 temp;
++	__be16 timestamp;
++} __packed;
++
++ssize_t inv_icm42607_fifo_decode_packet(const void *packet, const void **accel,
++					const void **gyro, const int8_t **temp,
++					const void **timestamp)
++{
++	const struct inv_icm42607_fifo_1sensor_packet *pack1 = get_unaligned(&packet);
++	const struct inv_icm42607_fifo_2sensors_packet *pack2 = get_unaligned(&packet);
++	u8 header = *((const u8 *)packet);
++
++	/* FIFO empty */
++	if (header & INV_ICM42607_FIFO_HEADER_MSG) {
++		*accel = NULL;
++		*gyro = NULL;
++		*temp = NULL;
++		*timestamp = NULL;
++		return 0;
++	}
++
++	/* accel + gyro */
++	if ((header & INV_ICM42607_FIFO_HEADER_ACCEL) &&
++	    (header & INV_ICM42607_FIFO_HEADER_GYRO)) {
++		*accel = &pack2->accel;
++		*gyro = &pack2->gyro;
++		*temp = &pack2->temp;
++		*timestamp = &pack2->timestamp;
++		return INV_ICM42607_FIFO_2SENSORS_PACKET_SIZE;
++	}
++
++	/* accel only */
++	if (header & INV_ICM42607_FIFO_HEADER_ACCEL) {
++		*accel = &pack1->data;
++		*gyro = NULL;
++		*temp = &pack1->temp;
++		*timestamp = NULL;
++		return INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE;
++	}
++
++	/* gyro only */
++	if (header & INV_ICM42607_FIFO_HEADER_GYRO) {
++		*accel = NULL;
++		*gyro = &pack1->data;
++		*temp = &pack1->temp;
++		*timestamp = NULL;
++		return INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE;
++	}
++
++	/* invalid packet if here */
++	return -EINVAL;
++}
++
++void inv_icm42607_buffer_update_fifo_period(struct inv_icm42607_state *st)
++{
++	u32 period_gyro, period_accel;
++
++	if (st->fifo.en & INV_ICM42607_SENSOR_GYRO)
++		period_gyro = inv_icm42607_odr_to_period(st->conf.gyro.odr);
++	else
++		period_gyro = U32_MAX;
++
++	if (st->fifo.en & INV_ICM42607_SENSOR_ACCEL)
++		period_accel = inv_icm42607_odr_to_period(st->conf.accel.odr);
++	else
++		period_accel = U32_MAX;
++
++	st->fifo.period = min(period_gyro, period_accel);
++}
++
++int inv_icm42607_buffer_set_fifo_en(struct inv_icm42607_state *st,
++				    unsigned int fifo_en)
 +{
 +	unsigned int val;
 +	int ret;
 +
-+	val = FIELD_PREP(INV_ICM42607_PWR_MGMT0_GYRO_MODE_MASK, conf->gyro.mode);
-+	val |= FIELD_PREP(INV_ICM42607_PWR_MGMT0_ACCEL_MODE_MASK, conf->accel.mode);
-+	/*
-+	 * No temperature enable reg in datasheet, but BSP driver selected RC
-+	 * oscillator clock in LP mode when temperature was disabled.
-+	 */
-+	if (!conf->temp_en)
-+		val |= INV_ICM42607_PWR_MGMT0_ACCEL_LP_CLK_SEL;
-+	ret = regmap_write(st->map, INV_ICM42607_REG_PWR_MGMT0, val);
++	if ((fifo_en & INV_ICM42607_SENSOR_GYRO) ||
++		(fifo_en & INV_ICM42607_SENSOR_ACCEL) ||
++		(fifo_en & INV_ICM42607_SENSOR_TEMP)) {
++		/* Enable FIFO mode and disable bypass mode if any sensor on */
++		val = FIELD_PREP(INV_ICM42607_FIFO_CONFIG1_MODE, 1);
++		val |= FIELD_PREP(INV_ICM42607_FIFO_CONFIG1_BYPASS, 0);
++	} else {
++		/* Disable FIFO mode and enable bypass mode if all sensor off */
++		val = FIELD_PREP(INV_ICM42607_FIFO_CONFIG1_MODE, 0);
++		val |= FIELD_PREP(INV_ICM42607_FIFO_CONFIG1_BYPASS, 1);
++	}
++
++	ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1, val);
 +	if (ret)
 +		return ret;
 +
-+	val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_FS_SEL_MASK, conf->gyro.fs);
-+	val |= FIELD_PREP(INV_ICM42607_GYRO_CONFIG0_ODR_MASK, conf->gyro.odr);
-+	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG0, val);
-+	if (ret)
-+		return ret;
-+
-+	val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_FS_SEL_MASK, conf->accel.fs);
-+	val |= FIELD_PREP(INV_ICM42607_ACCEL_CONFIG0_ODR_MASK, conf->accel.odr);
-+	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG0, val);
-+	if (ret)
-+		return ret;
-+
-+	val = FIELD_PREP(INV_ICM42607_GYRO_CONFIG1_FILTER_MASK, conf->gyro.filter);
-+	ret = regmap_write(st->map, INV_ICM42607_REG_GYRO_CONFIG1, val);
-+	if (ret)
-+		return ret;
-+
-+	val = FIELD_PREP(INV_ICM42607_ACCEL_CONFIG1_FILTER_MASK, conf->accel.filter);
-+	ret = regmap_write(st->map, INV_ICM42607_REG_ACCEL_CONFIG1, val);
-+	if (ret)
-+		return ret;
-+
-+	st->conf = *conf;
++	st->fifo.en = fifo_en;
++	inv_icm42607_buffer_update_fifo_period(st);
 +
 +	return 0;
++}
++
++static size_t inv_icm42607_get_packet_size(unsigned int fifo_en)
++{
++	size_t packet_size;
++
++	if ((fifo_en & INV_ICM42607_SENSOR_GYRO) &&
++	    (fifo_en & INV_ICM42607_SENSOR_ACCEL))
++		packet_size = INV_ICM42607_FIFO_2SENSORS_PACKET_SIZE;
++	else
++		packet_size = INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE;
++
++	return packet_size;
++}
++
++static unsigned int inv_icm42607_wm_truncate(unsigned int watermark,
++					     size_t packet_size)
++{
++	size_t wm_size;
++
++	wm_size = watermark * packet_size;
++	wm_size = min(wm_size, INV_ICM42607_FIFO_WATERMARK_MAX);
++
++	return wm_size / packet_size;
 +}
 +
 +/**
-+ *  inv_icm42607_setup() - check and setup chip
-+ *  @st:	driver internal state
-+ *  @bus_setup:	callback for setting up bus specific registers
++ * inv_icm42607_buffer_update_watermark - update watermark FIFO threshold
++ * @st:	driver internal state
 + *
-+ *  Returns 0 on success, a negative error code otherwise.
++ * Returns 0 on success, a negative error code otherwise.
 + */
-+static int inv_icm42607_setup(struct inv_icm42607_state *st,
-+			      inv_icm42607_bus_setup bus_setup)
++int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st)
 +{
 +	const struct device *dev = regmap_get_device(st->map);
-+	unsigned int val;
++	unsigned int wm_gyro, wm_accel, watermark;
++	u32 latency_gyro, latency_accel, latency;
++	u32 period_gyro, period_accel;
++	size_t packet_size, wm_size;
++	__le16 raw_wm;
++	bool restore;
 +	int ret;
 +
-+	ret = regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
++	packet_size = inv_icm42607_get_packet_size(st->fifo.en);
++
++	/* compute sensors latency, depending on sensor watermark and odr */
++	wm_gyro = inv_icm42607_wm_truncate(st->fifo.watermark.gyro, packet_size);
++	wm_accel = inv_icm42607_wm_truncate(st->fifo.watermark.accel, packet_size);
++	/* use us for odr to avoid overflow using 32 bits values */
++	period_gyro = inv_icm42607_odr_to_period(st->conf.gyro.odr) / 1000UL;
++	period_accel = inv_icm42607_odr_to_period(st->conf.accel.odr) / 1000UL;
++	latency_gyro = period_gyro * wm_gyro;
++	latency_accel = period_accel * wm_accel;
++
++	/* 0 value for watermark means that the sensor is turned off */
++	if (wm_gyro == 0 && wm_accel == 0)
++		return 0;
++
++	if (latency_gyro == 0) {
++		watermark = wm_accel;
++		st->fifo.watermark.eff_accel = wm_accel;
++	} else if (latency_accel == 0) {
++		watermark = wm_gyro;
++		st->fifo.watermark.eff_gyro = wm_gyro;
++	} else {
++		/* compute the smallest latency that is a multiple of both */
++		if (latency_gyro <= latency_accel)
++			latency = latency_gyro - (latency_accel % latency_gyro);
++		else
++			latency = latency_accel - (latency_gyro % latency_accel);
++		/* all this works because periods are multiple of each others */
++		watermark = latency / min(period_gyro, period_accel);
++		watermark = max(watermark, 1);
++		/* update effective watermark */
++		st->fifo.watermark.eff_gyro = max(latency / period_gyro, 1);
++		st->fifo.watermark.eff_accel = max(latency / period_accel, 1);
++	}
++
++	/* changing FIFO watermark requires to turn off watermark interrupt */
++	ret = regmap_update_bits_check(st->map, INV_ICM42607_REG_INT_SOURCE0,
++				       INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
++				       0, &restore);
 +	if (ret)
 +		return ret;
 +
-+	if (val != st->hw->whoami)
-+		dev_warn(dev, "Unknown whoami %#02x expected %#02x (%s)\n",
-+			 val, st->hw->whoami, st->hw->name);
++	/* compute watermark value in bytes */
++	wm_size = watermark * packet_size;
++	raw_wm = INV_ICM42607_FIFO_WATERMARK_VAL(wm_size);
++	memcpy(st->buffer, &raw_wm, sizeof(raw_wm));
++	ret = regmap_bulk_write(st->map, INV_ICM42607_REG_FIFO_CONFIG2,
++				st->buffer, sizeof(raw_wm));
++	if (ret) {
++		dev_err(dev, "Unable to change watermark value: %d\n", ret);
++		if (restore)
++			regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
++					   INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
++					   INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
++		return ret;
++	}
 +
++	/* restore watermark interrupt */
++	if (restore) {
++		ret = regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
++					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN,
++					 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
++		if (ret)
++			return ret;
++	}
++
++	return 0;
++}
++
++static int inv_icm42607_buffer_preenable(struct iio_dev *indio_dev)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	struct inv_icm42607_sensor_state *sensor_st = iio_priv(indio_dev);
++	struct inv_sensors_timestamp *ts = &sensor_st->ts;
++	struct device *dev = regmap_get_device(st->map);
++	int ret;
++
++	ret = pm_runtime_resume_and_get(dev);
++	if (ret)
++		return ret;
++
++	guard(mutex)(&st->lock);
++	inv_sensors_timestamp_reset(ts);
++
++	return 0;
++}
++
++/*
++ * update_scan_mode callback is turning sensors on and setting data FIFO enable
++ * bits.
++ */
++static int inv_icm42607_buffer_postenable(struct iio_dev *indio_dev)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	int ret;
++
++	guard(mutex)(&st->lock);
++
++	/* exit if FIFO is already on */
++	if (st->fifo.on) {
++		st->fifo.on++;
++		return 0;
++	}
++
++	/* set FIFO threshold interrupt */
++	ret = regmap_set_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
++			      INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN);
++	if (ret)
++		return ret;
++
++	/* flush FIFO data */
 +	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
-+			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
++			   INV_ICM42607_SIGNAL_PATH_RESET_FIFO_FLUSH);
 +	if (ret)
 +		return ret;
 +
-+	fsleep(INV_ICM42607_RESET_TIME_MS * 1000);
-+
-+	ret = regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
-+				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
-+				       INV_ICM42607_RESET_TIME_MS * 100,
-+				       INV_ICM42607_RESET_TIME_MS * 10000);
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "reset error, reset done bit not set\n");
-+
-+	/* Sync the regcache again after a reset. */
-+	ret = regcache_sync(st->map);
++	/* set FIFO in streaming mode */
++	ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
++			   INV_ICM42607_FIFO_CONFIG1_MODE);
 +	if (ret)
 +		return ret;
 +
-+	ret = bus_setup(st);
++	/* workaround: first read of FIFO count after reset is always 0 */
++	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_FIFO_COUNTH,
++			       st->buffer, sizeof(__be16));
 +	if (ret)
 +		return ret;
 +
++	st->fifo.on++;
++
++	return 0;
++}
++
++static int inv_icm42607_buffer_predisable(struct iio_dev *indio_dev)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	int ret;
++
++	guard(mutex)(&st->lock);
++
++	if (st->fifo.on > 1) {
++		st->fifo.on--;
++		return 0;
++	}
++
++	/* Set FIFO to 0 since iio core ignores teardown errors. */
++	st->fifo.on = 0;
++
++	/* set FIFO in bypass mode */
++	ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
++			   INV_ICM42607_FIFO_CONFIG1_BYPASS);
++	if (ret)
++		return ret;
++
++	/* flush FIFO data */
++	ret = regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
++			   INV_ICM42607_SIGNAL_PATH_RESET_FIFO_FLUSH);
++	if (ret)
++		return ret;
++
++	/* disable FIFO threshold interrupt */
++	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INT_SOURCE0,
++				 INV_ICM42607_INT_SOURCE0_FIFO_THS_INT1_EN, 0);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++
++static int inv_icm42607_buffer_postdisable(struct iio_dev *indio_dev)
++{
++	struct inv_icm42607_state *st = iio_device_get_drvdata(indio_dev);
++	struct device *dev = regmap_get_device(st->map);
++	unsigned int sensor;
++	unsigned int *watermark;
++	int ret;
++
++	if (indio_dev == st->indio_gyro) {
++		sensor = INV_ICM42607_SENSOR_GYRO;
++		watermark = &st->fifo.watermark.gyro;
++	} else if (indio_dev == st->indio_accel) {
++		sensor = INV_ICM42607_SENSOR_ACCEL;
++		watermark = &st->fifo.watermark.accel;
++	} else {
++		return -EINVAL;
++	}
++
++	mutex_lock(&st->lock);
++
++	/*
++	 * FIFO enabled at update scan mode for accel or gyro, and
++	 * disabled here.
++	 */
++	ret = inv_icm42607_buffer_set_fifo_en(st, st->fifo.en & ~sensor);
++	if (ret)
++		goto out_unlock;
++
++	*watermark = 0;
++	ret = inv_icm42607_buffer_update_watermark(st);
++	if (ret)
++		goto out_unlock;
++
++out_unlock:
++	mutex_unlock(&st->lock);
++
++	pm_runtime_put_autosuspend(dev);
++
++	return ret;
++}
++
++const struct iio_buffer_setup_ops inv_icm42607_buffer_ops = {
++	.preenable = inv_icm42607_buffer_preenable,
++	.postenable = inv_icm42607_buffer_postenable,
++	.predisable = inv_icm42607_buffer_predisable,
++	.postdisable = inv_icm42607_buffer_postdisable,
++};
++
++int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
++				  unsigned int max)
++{
++	const void *accel, *gyro, *timestamp;
++	size_t i, max_count;
++	const s8 *temp;
++	ssize_t size;
++	int ret;
++
++	guard(mutex)(&st->lock);
++
++	/* reset all samples counters */
++	st->fifo.count = 0;
++	st->fifo.nb.gyro = 0;
++	st->fifo.nb.accel = 0;
++	st->fifo.nb.total = 0;
++
++	/* compute maximum FIFO read size */
++	if (max == 0)
++		max_count = sizeof(st->fifo.data);
++	else
++		max_count = min((max * inv_icm42607_get_packet_size(st->fifo.en)),
++				sizeof(st->fifo.data));
++
++	/* read FIFO count value */
++	ret = regmap_bulk_read(st->map, INV_ICM42607_REG_FIFO_COUNTH,
++			       st->buffer, sizeof(u8) * 2);
++	if (ret)
++		return ret;
++	st->fifo.count = be16_to_cpup(st->buffer);
++
++	/* check and clamp FIFO count value */
++	if (st->fifo.count == 0)
++		return 0;
++
++	st->fifo.count = min(st->fifo.count, max_count);
++
++	/* read all FIFO data in internal buffer */
++	ret = regmap_noinc_read(st->map, INV_ICM42607_REG_FIFO_DATA,
++				st->fifo.data, st->fifo.count);
++	if (ret)
++		return ret;
++
++	/* compute number of samples for each sensor */
++	for (i = 0; i < st->fifo.count; i += size) {
++		size = inv_icm42607_fifo_decode_packet(&st->fifo.data[i],
++				&accel, &gyro, &temp, &timestamp);
++		/* Make sure the size is at least 1 valid packet. */
++		if (size < INV_ICM42607_FIFO_1SENSOR_PACKET_SIZE)
++			break;
++		/* Error if we are going to overflow the buffer. */
++		if (i + size > st->fifo.count)
++			return -EIO;
++		if (gyro != NULL && inv_icm42607_fifo_is_data_valid(gyro))
++			st->fifo.nb.gyro++;
++		if (accel != NULL && inv_icm42607_fifo_is_data_valid(accel))
++			st->fifo.nb.accel++;
++		st->fifo.nb.total++;
++	}
++
++	return 0;
++}
++
++int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
++				     unsigned int count)
++{
++	int ret;
++
++	ret = inv_icm42607_buffer_fifo_read(st, count);
++
++	return ret;
++}
++
++int inv_icm42607_buffer_init(struct inv_icm42607_state *st)
++{
++	int ret;
++
++	st->fifo.watermark.eff_gyro = 1;
++	st->fifo.watermark.eff_accel = 1;
++
++	/* Configure FIFO_COUNT format in bytes and big endian */
 +	ret = regmap_set_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
-+			      INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN);
++			      INV_ICM42607_INTF_CONFIG0_FIFO_COUNT_ENDIAN);
 +	if (ret)
 +		return ret;
 +
-+	ret = regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
-+				 INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK,
-+				 INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL);
-+	if (ret)
-+		return ret;
-+
-+	return inv_icm42607_set_conf(st, st->hw->conf);
++	/* Initialize FIFO in bypass mode */
++	return regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
++			    INV_ICM42607_FIFO_CONFIG1_BYPASS);
 +}
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+new file mode 100644
+index 000000000000..b77deb66f8bd
+--- /dev/null
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.h
+@@ -0,0 +1,93 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * Copyright (C) 2026 InvenSense, Inc.
++ */
 +
-+static int inv_icm42607_enable_vddio_reg(struct inv_icm42607_state *st)
++#ifndef INV_ICM42607_BUFFER_H_
++#define INV_ICM42607_BUFFER_H_
++
++#include <linux/bitops.h>
++
++struct inv_icm42607_state;
++
++#define INV_ICM42607_SENSOR_GYRO	BIT(0)
++#define INV_ICM42607_SENSOR_ACCEL	BIT(1)
++#define INV_ICM42607_SENSOR_TEMP	BIT(2)
++
++/**
++ * struct inv_icm42607_fifo - FIFO state variables
++ * @on:		reference counter for FIFO on.
++ * @en:		bits field of INV_ICM42607_SENSOR_* for FIFO EN bits.
++ * @period:	FIFO internal period.
++ * @watermark:	watermark configuration values for accel and gyro.
++ * @count:	number of bytes in the FIFO data buffer.
++ * @nb:		gyro, accel and total samples in the FIFO data buffer.
++ * @data:	FIFO data buffer aligned for DMA (2kB + 32 bytes of read cache).
++ */
++struct inv_icm42607_fifo {
++	unsigned int on;
++	unsigned int en;
++	u32 period;
++	struct {
++		unsigned int gyro;
++		unsigned int accel;
++		unsigned int eff_gyro;
++		unsigned int eff_accel;
++	} watermark;
++	size_t count;
++	struct {
++		size_t gyro;
++		size_t accel;
++		size_t total;
++	} nb;
++	u8 data[2080] __aligned(IIO_DMA_MINALIGN);
++};
++
++/* FIFO data packet */
++struct inv_icm42607_fifo_sensor_data {
++	__be16 x;
++	__be16 y;
++	__be16 z;
++};
++
++#define INV_ICM42607_FIFO_DATA_INVALID		-32768
++
++static inline bool
++inv_icm42607_fifo_is_data_valid(const struct inv_icm42607_fifo_sensor_data *s)
 +{
-+	int ret;
++	s16 x, y, z;
 +
-+	ret = regulator_enable(st->vddio_supply);
-+	if (ret)
-+		return ret;
++	x = be16_to_cpu(s->x);
++	y = be16_to_cpu(s->y);
++	z = be16_to_cpu(s->z);
 +
-+	fsleep(INV_ICM42607_POWER_UP_TIME_US);
++	if (x == INV_ICM42607_FIFO_DATA_INVALID &&
++	    y == INV_ICM42607_FIFO_DATA_INVALID &&
++	    z == INV_ICM42607_FIFO_DATA_INVALID)
++		return false;
 +
-+	return 0;
++	return true;
 +}
 +
-+static void inv_icm42607_disable_vddio_reg(void *_data)
++ssize_t inv_icm42607_fifo_decode_packet(const void *packet, const void **accel,
++					const void **gyro, const s8 **temp,
++					const void **timestamp);
++
++extern const struct iio_buffer_setup_ops inv_icm42607_buffer_ops;
++
++int inv_icm42607_buffer_init(struct inv_icm42607_state *st);
++
++void inv_icm42607_buffer_update_fifo_period(struct inv_icm42607_state *st);
++
++int inv_icm42607_buffer_set_fifo_en(struct inv_icm42607_state *st,
++				    unsigned int fifo_en);
++
++int inv_icm42607_buffer_update_watermark(struct inv_icm42607_state *st);
++
++int inv_icm42607_buffer_fifo_read(struct inv_icm42607_state *st,
++				  unsigned int max);
++
++int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
++				     unsigned int count);
++
++#endif
+diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+index cfdce70ce25d..16ead03a59f9 100644
+--- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
++++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+@@ -16,6 +16,7 @@
+ #include <linux/regulator/consumer.h>
+ 
+ #include "inv_icm42607.h"
++#include "inv_icm42607_buffer.h"
+ 
+ static bool inv_icm42607_is_volatile_reg(struct device *dev, unsigned int reg)
+ {
+@@ -74,6 +75,38 @@ const struct inv_icm42607_hw inv_icm42607p_hw_data = {
+ };
+ EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
+ 
++u32 inv_icm42607_odr_to_period(enum inv_icm42607_odr odr)
 +{
-+	struct inv_icm42607_state *st = _data;
++	static const u32 odr_periods[INV_ICM42607_ODR_NB] = {
++		/* 1600Hz */
++		[INV_ICM42607_ODR_1600HZ] = 625000,
++		/* 800Hz */
++		1250000,
++		/* 400Hz */
++		2500000,
++		/* 200Hz */
++		5000000,
++		/* 100 Hz */
++		10000000,
++		/* 50Hz */
++		20000000,
++		/* 25Hz */
++		40000000,
++		/* 12.5Hz */
++		80000000,
++		/* 6.25Hz */
++		160000000,
++		/* 3.125Hz */
++		320000000,
++		/* 1.5625Hz */
++		640000000,
++	};
 +
-+	regulator_disable(st->vddio_supply);
++	odr = clamp(odr, INV_ICM42607_ODR_1600HZ, INV_ICM42607_ODR_1_5625HZ_LP);
++
++	return odr_periods[odr];
 +}
 +
-+int inv_icm42607_core_probe(struct regmap *regmap,
-+			    const struct inv_icm42607_hw *hw,
-+			    inv_icm42607_bus_setup bus_setup)
-+{
-+	struct device *dev = regmap_get_device(regmap);
-+	struct inv_icm42607_state *st;
-+	int irq;
-+	int ret;
-+
-+	irq = fwnode_irq_get_byname(dev_fwnode(dev), "INT1");
-+	if (irq < 0)
-+		return dev_err_probe(dev, irq, "Unable to get INT1 interrupt\n");
-+
-+	st = devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
-+	if (!st)
-+		return -ENOMEM;
-+
-+	dev_set_drvdata(dev, st);
-+
-+	ret = devm_mutex_init(dev, &st->lock);
+ static int inv_icm42607_set_pwr_mgmt0(struct inv_icm42607_state *st,
+ 				      enum inv_icm42607_sensor_mode gyro,
+ 				      enum inv_icm42607_sensor_mode accel,
+@@ -309,6 +342,11 @@ int inv_icm42607_core_probe(struct regmap *regmap,
+ 	if (ret)
+ 		return ret;
+ 
++	/* Initialize buffer/FIFO handling */
++	ret = inv_icm42607_buffer_init(st);
 +	if (ret)
 +		return ret;
 +
-+	st->hw = hw;
-+	st->map = regmap;
-+	st->irq = irq;
+ 	ret = devm_pm_runtime_set_active_enabled(dev);
+ 	if (ret)
+ 		return ret;
+@@ -334,6 +372,13 @@ static int inv_icm42607_suspend(struct device *dev)
+ 	if (ret)
+ 		return ret;
+ 
++	if (st->fifo.on) {
++		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
++				   INV_ICM42607_FIFO_CONFIG1_BYPASS);
++		if (ret)
++			return ret;
++	}
 +
-+	ret = iio_read_mount_matrix(dev, &st->orientation);
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "failed to retrieve mounting matrix %d\n", ret);
-+
-+	ret = devm_regulator_get_enable(dev, "vdd");
-+	if (ret)
-+		return dev_err_probe(dev, ret,
-+				     "Failed to get vdd regulator\n");
-+
-+	st->vddio_supply = devm_regulator_get(dev, "vddio");
-+	if (IS_ERR(st->vddio_supply))
-+		return dev_err_probe(dev, PTR_ERR(st->vddio_supply),
-+				     "Failed to get vddio regulator\n");
-+
-+	ret = inv_icm42607_enable_vddio_reg(st);
-+	if (ret)
-+		return ret;
-+
-+	ret = devm_add_action_or_reset(dev, inv_icm42607_disable_vddio_reg, st);
-+	if (ret)
-+		return ret;
-+
-+	/* Setup chip registers (includes WHOAMI check, reset check, bus setup) */
-+	ret = inv_icm42607_setup(st, bus_setup);
-+	if (ret)
-+		return ret;
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_NS_GPL(inv_icm42607_core_probe, "IIO_ICM42607");
-+
-+MODULE_AUTHOR("InvenSense, Inc.");
-+MODULE_DESCRIPTION("InvenSense ICM-42607x device driver");
-+MODULE_LICENSE("GPL");
-+MODULE_IMPORT_NS("IIO_INV_SENSORS_TIMESTAMP");
+ 	ret = inv_icm42607_set_pwr_mgmt0(st, INV_ICM42607_SENSOR_MODE_OFF,
+ 					 INV_ICM42607_SENSOR_MODE_OFF,
+ 					 false, NULL);
+@@ -363,7 +408,12 @@ static int inv_icm42607_resume(struct device *dev)
+ 	if (ret)
+ 		return ret;
+ 
+-	/* Nothing else to restore at this time. */
++	if (st->fifo.on) {
++		ret = regmap_write(st->map, INV_ICM42607_REG_FIFO_CONFIG1,
++				   INV_ICM42607_FIFO_CONFIG1_MODE);
++		if (ret)
++			return ret;
++	}
+ 
+ 	return 0;
+ }
 -- 
 2.43.0
 
