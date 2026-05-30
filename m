@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0AE1CD4F54
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 07:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE479CD6E4A
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 10:44:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=TjKmzXw58ZdB0NEFmBzMbGXPCfKIk7kfavJfUaCh0ug=; b=F2MnbCSVFUhwuf
-	X5DkUsXtSFrmOuVDNAXhF8TEuN4qPaxCLqcUIo16Z5d8WACUe3iwIloeGz3vv9GDSGh1nxXTsdE5A
-	FQyfLhFN601ZP9c/fb+7gkFXr3FFRMCULk7mv6LIv3XsMKOrmgBMIE8x3ZxSxSBGazyjvip1TEipP
-	Ubg687zyFxZCFF+D3Ydcd161RljRn5PoT9X05Y2msBNqHn+Inp/Li9NLLj1o7IKbXl3z+WjrQwCgQ
-	mokF3QZ3NjgCMcTNuIbOREXsWx+TYoqVtnBHqJvMCVuo8V3MA0TFt7e11YmkKFTmSBwQIo2IM1u7f
-	FDCThax+FK6JtiDyu6Uw==;
+	List-Owner; bh=MlqaaYesvNQUu9XSL2t+KTYNYpJVXv3JFqB3DZn4ZqA=; b=PmBI5nQK8S8i1Y
+	lli3gVQ+LTjq87NqmuC156QAVoEIg6/yNMhQogTSSC6bIHeKHqC8Oc6av0KEqcYT7WIYH0kOGOgeI
+	V+frvlLEspFBwgR4MDnumRNSxGEZ7NmuNcQzQhgwDCqy9hd+PMxP8rlN0CLJNrjJ0ocah1lz0OTsN
+	jMR0quS14VBlZTGz9hWjwSv1jncvuKeQcBfyl9huqur+JtSu5pAtnBEeEyFmOAGWYDgkjjpHZeDW1
+	1vy/QOJzEQQ/U8ts80wo/8KWrKPbw+VBxHsiYjtiklJbJkqtPagVKrF9KCV37CfKqAnkGYm+muf8i
+	FgxmMCAVYDv7JBMVIBZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTE5d-00000008Vvd-24ui;
-	Sat, 30 May 2026 07:26:37 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wTHBT-00000008eDp-1JUB;
+	Sat, 30 May 2026 10:44:51 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTE5a-00000008VvJ-2aUy
-	for linux-rockchip@lists.infradead.org;
-	Sat, 30 May 2026 07:26:35 +0000
+	id 1wTHBS-00000008eDa-15Eg;
+	Sat, 30 May 2026 10:44:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B3ED042DBC;
-	Sat, 30 May 2026 07:26:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0C1851F00893;
-	Sat, 30 May 2026 07:26:32 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 5FCE1600BB;
+	Sat, 30 May 2026 10:44:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81BC41F00893;
+	Sat, 30 May 2026 10:44:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780125993;
-	bh=PqWZMesufGSADxpTqQPlSy22s5kraAgknEeQvWkj2xA=;
+	s=k20260515; t=1780137889;
+	bh=Ah0BAmd+lwHuZO6zRBiL0+MEQYrEVAKIQyjvoixgNRI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=TP1Rll2yVM0TvwuX8sXHW+0nAF5SsZtlGnmJULUJ4Mhyd/6ehbAe1aUJgW7Os7X9/
-	 Y8ttun9KqKI1m3elc8lTKji8D1tH42OhTCJXIyLmggiQ+UkgqY1eUkR58sO+se2itt
-	 ar5waRqM6WiLdzF1Ka+YKwKZ+JR5Qu8OvSBvxEXQ20YQtwazKtlFPkGZlPSZFi1hqy
-	 edBDCTbd4u6R6fongzITMDB/RG2qXJRzVwe5S5gx0HvvNkRlzDgoUZ+8/Xr/to9GHD
-	 vSb+yGRgwdFMQgGEVehMzM/oT7Cs5l/ahtIfTZN5FbbvL++tW9eXGplZ5YbGGjyz0t
-	 ecN7VJRnpboNw==
-Date: Sat, 30 May 2026 09:26:31 +0200
+	b=c/Mwva5Hzm5FVkloKcxpDPjbejs7gN/gCXj04ZWIkg4crNYrhY5SkWrpmG1XHjKLH
+	 qvCFZq10iibjzf7jSgKqQFJCWC1k55O4CVETgqY0IEYrFg5+gvmh8T0YrOQPsfkYyy
+	 kyIGnovk2EbYY4BZZTiUhEL7gYUFYVlIW7r3C2xYDXfK4L9GrUXVMPDMj6YYe8rYcR
+	 wyz8uTDD16ZMGu6f+QkNa+N94p8+egLsOVdqcWWEyoDLo17hKQI1qyVFbfUj1zXhJj
+	 NVzqWz8o6VTYjadhwKUzBTrep3hP1QLVy0Lris/dT790L+Qz4KIFiCL7gTNHteglom
+	 X0ZTBGk6NIMdA==
+Date: Sat, 30 May 2026 12:44:46 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com, 
-	dlechner@baylibre.com, jic23@kernel.org, jean-baptiste.maneyrol@tdk.com, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, 
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V9 02/11] dt-bindings: iio: imu: icm42600: Add icm42607
- binding
-Message-ID: <20260530-certain-goose-from-neptune-96e8ae@quoll>
-References: <20260530031739.109063-1-macroalpha82@gmail.com>
- <20260530031739.109063-3-macroalpha82@gmail.com>
+To: phucduc.bui@gmail.com
+Cc: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, 
+	tiwai@suse.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/3] ASoC: dt-bindings: rockchip-spdif: Correct SPDIF
+ clock descriptions
+Message-ID: <20260530-adventurous-basilisk-of-happiness-def6fa@quoll>
+References: <20260522100318.73474-1-phucduc.bui@gmail.com>
+ <20260522100318.73474-2-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260530031739.109063-3-macroalpha82@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260530_002634_718517_4B2A932B 
-X-CRM114-Status: UNSURE (   8.43  )
-X-CRM114-Notice: Please train this message.
+In-Reply-To: <20260522100318.73474-2-phucduc.bui@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,21 +73,45 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 29, 2026 at 10:17:29PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Fri, May 22, 2026 at 05:03:16PM +0700, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> Add devicetree binding for the Invensense ICM42607 and Invensense
-> ICM42607P inertial measurement unit. This unit is a combined
-> accelerometer, gyroscope, and thermometer available via I2C or SPI.
+> The clock descriptions are currently swapped relative to the
+> clock names used by the driver.
 
-Implement feedback from v3. Subject is still incorrect.
-	
+Why would order of clock names in the driver matter here? I do not
+understand that explanation.
+
 > 
-> This device is functionally very similar to the icm42600 series with a
-> very different register layout, however unlike the icm42600 driver we
-> require a interrupt-names property be present.
+> Update the binding descriptions to match the actual clock
+> usage, where 'mclk' is the controller clock and 'hclk' is
+> the bus clock.
 
-Why do we require it? Who needs it?
+Please wrap commit message according to Linux coding style / submission
+process (neither too early nor over the limit):
+https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
+
+> 
+> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/sound/rockchip-spdif.yaml | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+> index 502907dd28b3..b174d7498029 100644
+> --- a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+> +++ b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
+> @@ -45,8 +45,8 @@ properties:
+>  
+>    clocks:
+>      items:
+> -      - description: clock for SPDIF bus
+>        - description: clock for SPDIF controller
+> +      - description: clock for SPDIF bus
+
+So example is wrong?
+
+What about all the users?
 
 Best regards,
 Krzysztof
