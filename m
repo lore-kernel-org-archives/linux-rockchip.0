@@ -4,59 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE479CD6E4A
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 10:44:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A964CD5BD0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 11:29:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:From:Subject:
+	Cc:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MlqaaYesvNQUu9XSL2t+KTYNYpJVXv3JFqB3DZn4ZqA=; b=PmBI5nQK8S8i1Y
-	lli3gVQ+LTjq87NqmuC156QAVoEIg6/yNMhQogTSSC6bIHeKHqC8Oc6av0KEqcYT7WIYH0kOGOgeI
-	V+frvlLEspFBwgR4MDnumRNSxGEZ7NmuNcQzQhgwDCqy9hd+PMxP8rlN0CLJNrjJ0ocah1lz0OTsN
-	jMR0quS14VBlZTGz9hWjwSv1jncvuKeQcBfyl9huqur+JtSu5pAtnBEeEyFmOAGWYDgkjjpHZeDW1
-	1vy/QOJzEQQ/U8ts80wo/8KWrKPbw+VBxHsiYjtiklJbJkqtPagVKrF9KCV37CfKqAnkGYm+muf8i
-	FgxmMCAVYDv7JBMVIBZA==;
+	List-Owner; bh=0BhFBtpfSmxSEXXJKQ/0Qv8iN40feKWRlcTbrmt3pws=; b=pX294/tKGUrNYD
+	4yCzzVDajWppGDabVV1Lx4dQr5aStL3SfHmljl40pQokzfxaJW/tZHiJKmAK7ro1qaQ7BRORcN9jN
+	qQwl405wWk3k/aOqOCe3fOegVDFnuSlrcKbE9APvMvxAWlPseSK9kNQCBXPi9Fbzj5WqgzWNvDFWv
+	bPFsixxDN0X1MjdwsASpGyI33KUCAcZdnw154MxFm//oQcXqPm2jfM0HEX5nbXS9cwtwEkezvo3h/
+	RhBOw2WzBdNzPzhOSR5MHtStMLrMnLmlXOAJKErl2VJXluwqFap3/wTYDrGhTqY79MFmyffO7tKnc
+	5w++BedQS6zpYmBwS2Fg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTHBT-00000008eDp-1JUB;
-	Sat, 30 May 2026 10:44:51 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wTHsx-00000008gFO-1q0p;
+	Sat, 30 May 2026 11:29:47 +0000
+Received: from out-179.mta0.migadu.com ([91.218.175.179])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTHBS-00000008eDa-15Eg;
-	Sat, 30 May 2026 10:44:50 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 5FCE1600BB;
-	Sat, 30 May 2026 10:44:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81BC41F00893;
-	Sat, 30 May 2026 10:44:48 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780137889;
-	bh=Ah0BAmd+lwHuZO6zRBiL0+MEQYrEVAKIQyjvoixgNRI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=c/Mwva5Hzm5FVkloKcxpDPjbejs7gN/gCXj04ZWIkg4crNYrhY5SkWrpmG1XHjKLH
-	 qvCFZq10iibjzf7jSgKqQFJCWC1k55O4CVETgqY0IEYrFg5+gvmh8T0YrOQPsfkYyy
-	 kyIGnovk2EbYY4BZZTiUhEL7gYUFYVlIW7r3C2xYDXfK4L9GrUXVMPDMj6YYe8rYcR
-	 wyz8uTDD16ZMGu6f+QkNa+N94p8+egLsOVdqcWWEyoDLo17hKQI1qyVFbfUj1zXhJj
-	 NVzqWz8o6VTYjadhwKUzBTrep3hP1QLVy0Lris/dT790L+Qz4KIFiCL7gTNHteglom
-	 X0ZTBGk6NIMdA==
-Date: Sat, 30 May 2026 12:44:46 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: phucduc.bui@gmail.com
-Cc: broonie@kernel.org, lgirdwood@gmail.com, perex@perex.cz, 
-	tiwai@suse.com, heiko@sntech.de, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org, linux-rockchip@lists.infradead.org, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH 1/3] ASoC: dt-bindings: rockchip-spdif: Correct SPDIF
- clock descriptions
-Message-ID: <20260530-adventurous-basilisk-of-happiness-def6fa@quoll>
-References: <20260522100318.73474-1-phucduc.bui@gmail.com>
- <20260522100318.73474-2-phucduc.bui@gmail.com>
-MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260522100318.73474-2-phucduc.bui@gmail.com>
+	id 1wTHss-00000008gF2-3KCy
+	for linux-rockchip@lists.infradead.org;
+	Sat, 30 May 2026 11:29:45 +0000
+Mime-Version: 1.0
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
+	s=key1; t=1780140576;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=koc182XcypwgblVKdeSIgVWifpWgkzVIW/22VPMmUuU=;
+	b=nlm0SqO6Ux6TBklBXdGkKJEhTao7Z3+0nn5LH1tPMJo2DQt4I9eDda93iXQAfl233TfX/d
+	hVWX2IQs35puA2gA1D+ARI8hH3MFSvJTWxuDWIkzPNoXRwC2WQSFA0n4560+X/4h85nI18
+	PlFueIwyicAQ9W0RcsNaMC6iOjqa4B+R8xq53ok9zyh3YSzgMjjXRPKVkcIj/YlOMnMCNk
+	62MqCCklM3TifYLU/NQNTnxIEcqgHhtzw/q31/dqWjLUwmYgf+atmPv3EPhVgK7+S69xsl
+	NzFuQRGJsPSyKkWOCtQMPioQOMJSLywovGfbdL+Kzuoe7gEWjhsuC3VKh31DOg==
+Date: Sat, 30 May 2026 13:29:18 +0200
+Message-Id: <DIVZ5UVI8BNH.2KC7WUNECAMZS@cknow-tech.com>
+Cc: <kernel@collabora.com>, <dri-devel@lists.freedesktop.org>,
+ <linux-arm-kernel@lists.infradead.org>,
+ <linux-rockchip@lists.infradead.org>, <linux-kernel@vger.kernel.org>
+Subject: Re: [PATCH v3 0/2] Rockchip DRM use-after-free & null-ptr-deref
+ fixes
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
+From: "Diederik de Haas" <diederik@cknow-tech.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>, "Sandy Huang"
+ <hjc@rock-chips.com>, =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ "Andy Yan" <andy.yan@rock-chips.com>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "David Airlie"
+ <airlied@gmail.com>, "Simona Vetter" <simona@ffwll.ch>, "Dmitry Baryshkov"
+ <dmitry.baryshkov@oss.qualcomm.com>, "Dmitry Baryshkov" <lumag@kernel.org>,
+ "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>
+References: <20260327-drm-rk-fixes-v3-0-fd2e6900c08c@collabora.com>
+In-Reply-To: <20260327-drm-rk-fixes-v3-0-fd2e6900c08c@collabora.com>
+X-Migadu-Flow: FLOW_OUT
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260530_042943_767425_8575945C 
+X-CRM114-Status: GOOD (  12.21  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,48 +82,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, May 22, 2026 at 05:03:16PM +0700, phucduc.bui@gmail.com wrote:
-> From: bui duc phuc <phucduc.bui@gmail.com>
-> 
-> The clock descriptions are currently swapped relative to the
-> clock names used by the driver.
+On Sat May 30, 2026 at 1:26 PM CEST, Cristian Ciocaltea wrote:
+> The first three patches in the series are fixes for use-after-free &
+> null-ptr-deref related issues found in dw_dp and inno-hdmi Rockchip DRM
+> drivers.
+>
+> The following three patches provide a few minor improvements to dw_dp
+> and dw_hdmi_qp, while the remaining two address use-after-free and
+> memory allocation in DW DP core library.
 
-Why would order of clock names in the driver matter here? I do not
-understand that explanation.
+What's the status of this patch set?
 
-> 
-> Update the binding descriptions to match the actual clock
-> usage, where 'mclk' is the controller clock and 'hclk' is
-> the bus clock.
+Cheers,
+  Diederik
 
-Please wrap commit message according to Linux coding style / submission
-process (neither too early nor over the limit):
-https://elixir.bootlin.com/linux/v6.4-rc1/source/Documentation/process/submitting-patches.rst#L597
-
-> 
-> Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > ---
->  Documentation/devicetree/bindings/sound/rockchip-spdif.yaml | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
-> index 502907dd28b3..b174d7498029 100644
-> --- a/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
-> +++ b/Documentation/devicetree/bindings/sound/rockchip-spdif.yaml
-> @@ -45,8 +45,8 @@ properties:
->  
->    clocks:
->      items:
-> -      - description: clock for SPDIF bus
->        - description: clock for SPDIF controller
-> +      - description: clock for SPDIF bus
-
-So example is wrong?
-
-What about all the users?
-
-Best regards,
-Krzysztof
+> Changes in v3:
+> - Dropped patches 1..6,8 already applied by Heiko
+> - Reworked remaining patch "drm/bridge: synopsys: dw-dp: Unregister AUX
+>   channel on bridge detach" into:
+>   * drm/bridge: synopsys: dw-dp: Support unregistering the AUX channel
+>   * drm/rockchip: dw_dp: Release core resources
+> - Link to v2: https://lore.kernel.org/r/20260310-drm-rk-fixes-v2-0-645ecfb43f49@collabora.com
+>
+> Changes in v2:
+> - Fixed conflicts while rebasing onto latest drm-misc-next
+> - Added two more patches:
+>   * drm/bridge: synopsys: dw-dp: Unregister AUX channel on bridge detach
+>   * drm/bridge: synopsys: dw-dp: Drop useless memory allocation
+> - Link to v1: https://lore.kernel.org/r/20260122-drm-rk-fixes-v1-0-3942f185750e@collabora.com
+>
+> ---
+> Cristian Ciocaltea (2):
+>       drm/bridge: synopsys: dw-dp: Support unregistering the AUX channel
+>       drm/rockchip: dw_dp: Release core resources
+>
+>  drivers/gpu/drm/bridge/synopsys/dw-dp.c   |  6 ++++++
+>  drivers/gpu/drm/rockchip/dw_dp-rockchip.c | 20 +++++++++++++++++---
+>  include/drm/bridge/dw_dp.h                |  1 +
+>  3 files changed, 24 insertions(+), 3 deletions(-)
+> ---
+> base-commit: 46c31e1604d121221167cb09380de8c7d53290b9
+> change-id: 20260122-drm-rk-fixes-a7622c71553e
 
 
 _______________________________________________
