@@ -4,72 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 174AECD6E52
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 14:03:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1A37CD5BD0
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 16:07:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=5pPOgEP18iNEXiEuiYqvPxYSPz3OaPihCrsqPBZFo38=; b=Q5H/+ARQxptyHe
-	aeRrmqE69xdL/BRgWHEgMLA/rxz/e3bPOwcot0c3B9Ct+DQucBrJujCFPJi1PhyMBaZmVltjbAXvV
-	a4W9dEDAnHTiXkorohIoCYbkYpEHDWb79ncix9mWWUaBk5ZJhtGaj9U2zT29hG2P4bhQoIiYLyZNM
-	OsQJ0T0D1MpbkqEfZVmTuVwWld7C1IkjpWmQUEJ2Vqt56N4SvGHno4hmtDWioSXiBxkwckhCGOtyT
-	5ZJ6KwilxE9JO1CZSs+MaQYDeBUsmhVce/1oAq6vtZpQC+EaeyGG1ffbqCK8NrbxIIpg9XV1S89QT
-	XA1jCFxXBCSFaj4gFoKA==;
+	List-Owner; bh=RYU1d+aDdgPlx4UDh6advEdZ++hnftWa39ay+JlWwOs=; b=LnX/ufhYJVdH3g
+	2U37vsulSNtWKnQah11kAXmLhS8DrzFCAY0ZMtkwn2AXsoP4XRhYp2X+oZW4m/4nGpy+OUsE8AwEg
+	NBFDC1gA0iuqn3Yvsut+f++XzwpMvGs1MmWfnNy3FEN8AX1ubeB4Xe/kEzouMJYowCmjSBiu0ay5R
+	nwzP1IpfgtNlZE14jTV9w5Qad2LQX20H3sMZUTnJAxygH+M2BfCaHtJkzfzYTcNl/wctSyXe6e9+u
+	5U3dbhQeqvtO9O72mzyS5OYdsmi2KHNHavYo2yYya2LcmyatfIiMZxkuws1faFiAOifKgrddeaPW7
+	brrJjxKz18uk6ZGyxxLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTKHA-00000008nsb-2VmA;
-	Sat, 30 May 2026 14:02:56 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wTMDV-00000008u96-0gAi;
+	Sat, 30 May 2026 16:07:17 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTKGw-00000008nk3-24i1;
-	Sat, 30 May 2026 14:02:42 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EACD2600BB;
-	Sat, 30 May 2026 14:02:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BE231F00893;
-	Sat, 30 May 2026 14:02:41 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780149761;
-	bh=jzYdoEGmr65bjxJWetD/EjVXn4e5Tnw21bJieLO8qC8=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=n7MTmz+3z9CZmukZBdNfen+ZOVhcFHEfUVwO+bk/BWTpbyrX2OepmzocsqEfh5qYY
-	 Z0QturNb+3xF6R4b+Z1woGXB6HPg8Ex4f4na3vMzMo0MmFWVncxEaGKTEScexrpHzt
-	 coEjOi1FsJYIDC2oqhJ+a7NckwHNnFBVQIADzBdw1wXylK9RzhejS5Jc11lbdx7ox/
-	 ekkXuelvf7uQJJaVhlpN88HfWBH+WuX9TtBD/3NrDd6ta12ec2kAEIvUj9eoL6rY24
-	 q28AyyjSolNlmuN1VpSMa1bfBx+53fdxnwHQFBAVQZhLZoUH+tOCW28V4pMyRN2fIM
-	 7OlO1cfbXdbxQ==
-From: Maxime Ripard <mripard@kernel.org>
-Date: Sat, 30 May 2026 16:00:07 +0200
-Subject: [PATCH 62/76] drm/rockchip: cdn-dp: Switch to atomic_create_state
+	id 1wTMDS-00000008u7U-3eKO
+	for linux-rockchip@lists.infradead.org;
+	Sat, 30 May 2026 16:07:16 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-45eea3448f2so1554674f8f.2
+        for <linux-rockchip@lists.infradead.org>; Sat, 30 May 2026 09:07:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780157233; x=1780762033; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=sh+f2AliULr9Rp7wvXUw2a0MafO9SPx6nLUlNFzn0RI=;
+        b=l2zuropmHC6AXB+AZV1CFL4GMWvy6bS800/iexUqgn06dEU+d05rxyaIZkjcwrmz/I
+         EIKz72vqGft51YJ4vgTIi8HYDA9GWdWo7DMrn7+sldP1be0Q4uLsYjU6oFUaigff9Cym
+         QeOx+uK/9POhoStCTsnyNkFoVjz9urfCQp/EZ+RWyFJdHibxdruOLYuoEg9YxytDmHiV
+         VXnpKT+osqDadwgtIBvQFvRTE5HwEGh8zjLQKsU7zsRmptG0WvzWVVHc3sS7r6DK5wR/
+         QQuNBKnTJEG/rciBMSON9zwzN/lmdEiewy4yjEYsDKJS4BQSuzDBoR3ZJoavZUBMIOUd
+         zwyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780157233; x=1780762033;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=sh+f2AliULr9Rp7wvXUw2a0MafO9SPx6nLUlNFzn0RI=;
+        b=O3sD2/rZndS8TXpXmHEJFWM0jdi2ff7oJo6e0yo3naYReHcg+DDMdKqs19SkE3hKX+
+         p2fX4M4GFO3NqCjRIKWWix0+GI6blGo2MGGpdX1thiD/14tXt6OqS0jXYdPnVGtA91Vr
+         MtWyswsPegLwRIWZotMDXc6fmIEO1kWNpLE05I63IUwmmFuVSA5SAZ5gX7rT6LIc4Eho
+         4nj3C+HXDREGR90rWNwfiQctMcOJ5+dMSE8PzmP7/hdvF0JwCyaTUmivk3wk8VcCVhKv
+         fIi16b1rtNcgH90sBESTVupqwYpTDwU4Cmxt0to0SaVHpcb0GlqTk+hFTcDMZiYJN0CQ
+         1wnQ==
+X-Forwarded-Encrypted: i=1; AFNElJ8fWN7IANWgdkFEcl5GiyvGSXOfys2C08Hp0R5c5/2OouOMVxkxd64a1h9qtW/Bro1723+KD6UTzO1RcRGmCw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyj8tL7CBlCj3Q7SBLbIfmc1ioksXhC8XpLpeMxilsuaGrU7l5H
+	8vcJ3M9l5ZLpu2Z6MsjRfdADU/7rolz/4wZfAENpFju+TSwd+WOjjYp+
+X-Gm-Gg: Acq92OHhvNHFgUL8uCfN9m53mr/BuNUohrs7X+bd55ZJJ1v+Ut/WsL5ITOep0nQeqvu
+	FAZrLtoZh/1ZEmLwAJzuEUVkxhd+ySJ4aiF6ZM3VLQ1J/1lIq0ja/ILaoQQfU5qbNGVE3e7xJfN
+	uezCNHf7BbNJgxKKpKqoJqVGqi2RI/M8vW/zGChNnD1QSJ1pN7g0QaPYQppfHiBYW70VRXKAkqE
+	0nomGX6yy+iJ2n1B4l0r6vPqwVjCOUXP5wKzFxd4e/a9LJ930FsFur9vELdL+HJ1RTUF93/5uQD
+	tLReWXWWYawSmqHca2y27uMscldTg5UsN2k31fTHw/MQIdzsiQmAFQtWwjM9zTrV9ugT781NZ4O
+	hkYW0HWdfqnLh7rwVxfg+boiUf4NQanTUg4gSrPMadAP/aCE7ugp4zUKw9Lnd1CbkfG+v/I+ELU
+	gwPQ9Vmq45aNpPCbAcl3B4CKGoB9E=
+X-Received: by 2002:a05:6000:22c7:b0:43d:762e:76ba with SMTP id ffacd0b85a97d-45ef6b19b8emr8623681f8f.17.1780157232877;
+        Sat, 30 May 2026 09:07:12 -0700 (PDT)
+Received: from olympus.. ([2a0a:ef40:ea3:3f01:2e0:4cff:fe68:285])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-45ef32fabcasm11667339f8f.0.2026.05.30.09.07.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 30 May 2026 09:07:12 -0700 (PDT)
+From: Dawid Olesinski <dawidro@gmail.com>
+To: herbert@gondor.apana.org.au,
+	davem@davemloft.net,
+	heiko@sntech.de
+Cc: linux-crypto@vger.kernel.org,
+	linux-rockchip@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	clabbe@baylibre.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	linux-kernel@vger.kernel.org,
+	Dawid Olesinski <dawidro@gmail.com>
+Subject: [PATCH 1/4] dt-bindings: crypto: rockchip: Add RK356x/RK3588 crypto engine binding
+Date: Sat, 30 May 2026 17:06:42 +0100
+Message-ID: <20260530160704.3453555-2-dawidro@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260530160704.3453555-1-dawidro@gmail.com>
+References: <20260530160704.3453555-1-dawidro@gmail.com>
 MIME-Version: 1.0
-Message-Id: <20260530-drm-no-more-bridge-reset-v1-62-875d828d31bc@kernel.org>
-References: <20260530-drm-no-more-bridge-reset-v1-0-875d828d31bc@kernel.org>
-In-Reply-To: <20260530-drm-no-more-bridge-reset-v1-0-875d828d31bc@kernel.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>
-Cc: Dmitry Baryshkov <lumag@kernel.org>, dri-devel@lists.freedesktop.org, 
- Maxime Ripard <mripard@kernel.org>, Sandy Huang <hjc@rock-chips.com>, 
- =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
- Andy Yan <andy.yan@rock-chips.com>, linux-arm-kernel@lists.infradead.org, 
- linux-rockchip@lists.infradead.org
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1488; i=mripard@kernel.org;
- h=from:subject:message-id; bh=U4WwqBHB0mVgkbUd2c7ZiSu3xx3F36y2Ertg0bKK/mQ=;
- b=owGbwMvMwCmsHn9OcpHtvjLG02pJDFlSbwMiZ+0rbux8sSx/3iLnD2JWap+/LHWd35nI3Jhgv
- Fr854KkjqksDMKcDLJiiixPZMJOL29fXOVgv/IHzBxWJpAhDFycAjCRmwcZ6/QmRQrGb9qWfVnQ
- LPl8hdOL4DO25wJP6N9pP+CfILzBJPPc5rZdImYKmlnMG1MPCT1VZqwV28HdX/lK/uukXwUSyc2
- sO3oVzY/LLulgWn02adJnl+WXnp2dVV0qUNSZ1/TI92yTbxsA
-X-Developer-Key: i=mripard@kernel.org; a=openpgp;
- fpr=BE5675C37E818C8B5764241C254BCFC56BF6CE8D
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260530_090714_940391_BA9D3AE0 
+X-CRM114-Status: GOOD (  13.36  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,37 +104,113 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-VGhlIGRybV9icmlkZ2VfZnVuY3MuYXRvbWljX3Jlc2V0IGNhbGxiYWNrIGFuZCBpdHMKZHJtX2F0
-b21pY19oZWxwZXJfYnJpZGdlX3Jlc2V0KCkgaGVscGVyIGFyZSBkZXByZWNhdGVkLgoKU3dpdGNo
-IHRvIHRoZSBhdG9taWNfY3JlYXRlX3N0YXRlIGNhbGxiYWNrIGFuZCBpdHMKZHJtX2F0b21pY19o
-ZWxwZXJfYnJpZGdlX2NyZWF0ZV9zdGF0ZSgpIGNvdW50ZXJwYXJ0LgoKU2lnbmVkLW9mZi1ieTog
-TWF4aW1lIFJpcGFyZCA8bXJpcGFyZEBrZXJuZWwub3JnPgoKLS0tClRvOiBTYW5keSBIdWFuZyA8
-aGpjQHJvY2stY2hpcHMuY29tPgpUbzogIkhlaWtvIFN0w7xibmVyIiA8aGVpa29Ac250ZWNoLmRl
-PgpUbzogQW5keSBZYW4gPGFuZHkueWFuQHJvY2stY2hpcHMuY29tPgpDYzogZHJpLWRldmVsQGxp
-c3RzLmZyZWVkZXNrdG9wLm9yZwpDYzogbGludXgtYXJtLWtlcm5lbEBsaXN0cy5pbmZyYWRlYWQu
-b3JnCkNjOiBsaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCi0tLQogZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL2Nkbi1kcC1jb3JlLmMgfCAyICstCiAxIGZpbGUgY2hhbmdlZCwgMSBp
-bnNlcnRpb24oKyksIDEgZGVsZXRpb24oLSkKCmRpZmYgLS1naXQgYS9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvY2RuLWRwLWNvcmUuYyBiL2RyaXZlcnMvZ3B1L2RybS9yb2NrY2hpcC9jZG4tZHAt
-Y29yZS5jCmluZGV4IDE5MGNjZTk1MzBjOC4uZTE1OWUxNjI3ZjNjIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2dwdS9kcm0vcm9ja2NoaXAvY2RuLWRwLWNvcmUuYworKysgYi9kcml2ZXJzL2dwdS9kcm0v
-cm9ja2NoaXAvY2RuLWRwLWNvcmUuYwpAQCAtODIzLDExICs4MjMsMTEgQEAgc3RhdGljIGludCBj
-ZG5fZHBfYXVkaW9fbXV0ZV9zdHJlYW0oc3RydWN0IGRybV9icmlkZ2UgKmJyaWRnZSwKIH0KIAog
-c3RhdGljIGNvbnN0IHN0cnVjdCBkcm1fYnJpZGdlX2Z1bmNzIGNkbl9kcF9icmlkZ2VfZnVuY3Mg
-PSB7CiAJLmF0b21pY19kdXBsaWNhdGVfc3RhdGUgPSBkcm1fYXRvbWljX2hlbHBlcl9icmlkZ2Vf
-ZHVwbGljYXRlX3N0YXRlLAogCS5hdG9taWNfZGVzdHJveV9zdGF0ZSA9IGRybV9hdG9taWNfaGVs
-cGVyX2JyaWRnZV9kZXN0cm95X3N0YXRlLAotCS5hdG9taWNfcmVzZXQgPSBkcm1fYXRvbWljX2hl
-bHBlcl9icmlkZ2VfcmVzZXQsCisJLmF0b21pY19jcmVhdGVfc3RhdGUgPSBkcm1fYXRvbWljX2hl
-bHBlcl9icmlkZ2VfY3JlYXRlX3N0YXRlLAogCS5kZXRlY3QgPSBjZG5fZHBfYnJpZGdlX2RldGVj
-dCwKIAkuZWRpZF9yZWFkID0gY2RuX2RwX2JyaWRnZV9lZGlkX3JlYWQsCiAJLmF0b21pY19lbmFi
-bGUgPSBjZG5fZHBfYnJpZGdlX2F0b21pY19lbmFibGUsCiAJLmF0b21pY19kaXNhYmxlID0gY2Ru
-X2RwX2JyaWRnZV9hdG9taWNfZGlzYWJsZSwKIAkubW9kZV92YWxpZCA9IGNkbl9kcF9icmlkZ2Vf
-bW9kZV92YWxpZCwKCi0tIAoyLjU0LjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2No
-aXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFu
-L2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Add a YAML device tree binding for the Rockchip second-generation (V2)
+cryptographic hardware accelerator present on the RK3568 and RK3588 SoCs.
+
+The IP block exposes AES-ECB, AES-CBC, AES-XTS block ciphers, SHA-1,
+SHA-224, SHA-256, SHA-384, SHA-512, MD5, and SM3 hash algorithms, each
+with a hardware DMA engine controlled via linked-list descriptors.
+
+The binding covers two compatible strings:
+
+  - rockchip,rk3568-crypto: clocks and resets are driven directly by the
+    non-secure CRU (accessible to Linux at EL1).
+  - rockchip,rk3588-crypto: clocks and resets live in SECURECRU, a
+    register bank sandboxed to TrustZone. Linux must request them through
+    the ARM SCMI firmware interface (scmi_clk / scmi_reset), as direct
+    MMIO access to SECURECRU from EL1 triggers a bus fault.
+
+Signed-off-by: Dawid Olesinski <dawidro@gmail.com>
+---
+ .../crypto/rockchip,rk3588-crypto.yaml        | 69 +++++++++++++++++++
+ 1 file changed, 69 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+
+diff --git a/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+new file mode 100644
+index 000000000000..4188ed8920db
+--- /dev/null
++++ b/Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+@@ -0,0 +1,69 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/crypto/rockchip,rk3588-crypto.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Rockchip cryptographic offloader
++
++maintainers:
++  - Heiko Stuebner <heiko@sntech.de>
++  - Corentin Labbe <clabbe@baylibre.com>
++  - Dawid Olesinski <dawidro@gmail.com>
++
++properties:
++  compatible:
++    enum:
++      - rockchip,rk3568-crypto
++      - rockchip,rk3588-crypto
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 1
++
++  clocks:
++    items:
++      - description: Core clock for the crypto IP internal logic
++      - description: AXI interconnect clock interface
++      - description: AHB interface clock
++
++  clock-names:
++    items:
++      - const: core
++      - const: aclk
++      - const: hclk
++
++  resets:
++    maxItems: 1
++
++  reset-names:
++    items:
++      - const: core
++
++required:
++  - compatible
++  - reg
++  - interrupts
++  - clocks
++  - clock-names
++  - resets
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    crypto@fe370000 {
++        compatible = "rockchip,rk3588-crypto";
++        reg = <0x0 0xfe370000 0x0 0x2000>;
++        interrupts = <GIC_SPI 209 IRQ_TYPE_LEVEL_HIGH 0>;
++        clocks = <&scmi_clk SCMI_CRYPTO_CORE>,
++                 <&scmi_clk SCMI_ACLK_SECURE_NS>,
++                 <&scmi_clk SCMI_HCLK_SECURE_NS>;
++        clock-names = "core", "aclk", "hclk";
++        resets = <&scmi_reset SCMI_SRST_CRYPTO_CORE>;
++        reset-names = "core";
++    };
+-- 
+2.47.3
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
