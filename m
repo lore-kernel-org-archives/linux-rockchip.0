@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F02CCD6E51
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 03:20:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA096CD6E57
+	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 03:20:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=9DgyK0IRV0NMusvwFgtKtJL3nGMqARwzJ1XULlpPVAk=; b=cMjBLzG2LTbGky
-	UyQUY4kfTRGgp+W9mOcCFbhhpodF7Ob33qbgSxBU1aGwxqJURNCLeZmxZzxYC1g3sgFp3Qg8qVHjl
-	0yL/SpGx3/EDC+bBiGSdkbVmfpmS1u7h9TmCOC3jmkT/AIsquVqg54g/2PCtppgdbRTWk1d7Zvifi
-	gUngVAUKqTaKOkKAdS5PjWHaQemNBfTPZzOyuWBtM4oCx6YiRXJH4xzUgz2dhH4zX9itoVTKG8FHM
-	oGRgdkEuzZy/k/9+IHfFlVwMmtI/OrE8Yy31LTMau/pBw90+qYjroRD9CSl9u1BObO0nWkSUMn5Y9
-	2QUdjW6mtkxUwbSdLjZA==;
+	List-Owner; bh=rtvXL9dPFHjtYM7bvlB5PsRsBSsox4Y3RRNuzmZagNw=; b=QCCyV5sP0Op+1B
+	ykACJu+XVkZrwPKVhnUcoTfbNNR7JYLa6IA8YD1S6TKnruGtrlBt9LpwtGFJ9VcnPSt4U1apLYLlc
+	vM7SfAQ2F+PPa0+Zjc5D+Hl7l08uogqvXeKeqi/UQddjXAEGVBP4UKYkYclwfHXowHBz9Z1vwcZco
+	gIAE9IgfdpNcA8iA7zcKE0wsTxTOJq3AUi5I62LTPx/ufSkkrndILk8ZwG4WuMZweLXytegkpbb5O
+	jyrJ31xfiqYk0p27Q4ae307JIBd+JijzW15pz77I4DU2+LfqF1bFx7kAi/MbnyAQMo4u1E8nWZMzQ
+	IRxovJDFAds8+PBiAx8g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTAFL-00000008PI2-2oSP;
-	Sat, 30 May 2026 03:20:23 +0000
-Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
+	id 1wTAFQ-00000008PLF-054p;
+	Sat, 30 May 2026 03:20:28 +0000
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTAFI-00000008PGV-2kzM
+	id 1wTAFM-00000008PIP-1ZTQ
 	for linux-rockchip@lists.infradead.org;
-	Sat, 30 May 2026 03:20:21 +0000
-Received: by mail-oo1-xc2c.google.com with SMTP id 006d021491bc7-69de16f5e80so1866927eaf.0
-        for <linux-rockchip@lists.infradead.org>; Fri, 29 May 2026 20:20:20 -0700 (PDT)
+	Sat, 30 May 2026 03:20:25 +0000
+Received: by mail-oo1-xc2d.google.com with SMTP id 006d021491bc7-69d7f4cc61aso3350211eaf.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 29 May 2026 20:20:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780111219; x=1780716019; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1780111223; x=1780716023; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=1X/Iq/4IsOkkrCdn0OHFeJgAteZ/50ipfy5B6qlf0J0=;
-        b=AIUsWbSuVFIbVBja+3uwttMfoSbKIPqE+UPW697G0CrWgsscoc7hlT5eT8qmehPTYQ
-         z2a9p0xB8Nwh43LxnROQgTTbIofBNnvGAN9maS59Fki+C0/8QqvyUVgK491PQ3aFScsI
-         Z2/OM6fv8rxupCZu44dNRRjd+vMMwd9YwPcEDuCmlE4nnOXxvvX/fr4RpvN28R+FvI4o
-         Lhg30RzvERIX5yNtxWC638QmuEL6mSC5zK+WjUsk4rRVpfvRewDHX8VDXtazJFjV0QEj
-         v2BMwtoUqqG4mMdlGiI7+KtVamO3/p1i9YkKfdCkCtabYYlVVmeRvYsAtGQA2HoRHZYN
-         VSeA==
+        bh=RnwoxwabVhbDbMkRzoM5vsAFsTBGbwkNUwJ3O13YP5o=;
+        b=SL2wjDworQuKtcBaAvqVEXL/SoZ0v14wC/KCZ4m0TL3GiZR58OG3VnzJv46eGrls7r
+         pREI7eRxAsFqbqAbM6vcBrvBVh8xBu/uixeic+VBBcDaVY1vi1AT+FSlknJr9ssz/xTx
+         vRbSqqeZ1Mlx+IRXYjs7TKhQanc3ukom+6z/odVWPwVtXwNg8goM2iuNC97dReF8WGpy
+         25i1uFMJ1ZHh9MxkrCGx88Mp4y+zL4W5B8ofgJ0H29gX5bmwzP3okBeUf5b71izRDgUn
+         yaSfvsGuWfXLH4+rC0osdujDC/LpGoNLz9k49YyCFLTCsiPTkf862q7fsD5mdlNxCruq
+         CxrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780111219; x=1780716019;
+        d=1e100.net; s=20251104; t=1780111223; x=1780716023;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=1X/Iq/4IsOkkrCdn0OHFeJgAteZ/50ipfy5B6qlf0J0=;
-        b=sVCQjBFpE92Ehv9ziLkTvZvpf8ZMJSrYbAX3V5lRmrZFwYGBY+7T4ly58N+rjqzave
-         DMWJjN8XeA8lUSN/EcjWUKveoqISLdyDT2GZuBYEHv+pVK3ZLY5goaKuriTtxP5X2bsl
-         F0jiRZrGDb1PfFbznZGCh7mQzEuj2H15RlOT4QoycRpRH39ONaATpD0f4D0e12yqis9S
-         hRhztIc8qptAIlYVmeCAHwWFHqJgLMK2azM6bLXNftK/Y7vhOQAAvzWPcub6ex/bhWJs
-         HOjiwhqAe2pqVshXsEhNG/ilqBuu6yL6andrdjaEVc6og5Q3y2HviC1J/BLJncGyC3uc
-         4KOw==
-X-Forwarded-Encrypted: i=1; AFNElJ8xuRo6YUf8dZo13kUlGaPx4kqA8SBv9xb4Q5u8Hh2zppbRP93PnEEIwS/jk6SsBoC/w0Qyv+J18/dTlvNSWg==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxQztPHG1kt2gEp6HRh2uITigDrS/kcLO6hKIk2IT+kJ9ZMvAg5
-	ZXlIRYcoqC6XyuMYB8385FwZhKTicWxtkUvBpZLZqcIfzl83nXLgF1U9
-X-Gm-Gg: Acq92OHGisNFsuxyX+AlJ/GfHoLXUTl2GB++chjcexy5rilj3TPyNxZJpxAWHuorzlb
-	lyEzuENYNg/DQDCY02qXsLHn3H88fgdm1yVQU0PTaOty1eW0Jf+K2Z3SlWvczDTOoLwqwDgpht0
-	meBDU4r3w/q5MH589MY0SD+yDkeyEoc9jw/0X+U+hskXrmp98gzrjHP1n3hpqJEekACOIHOgFT0
-	XByenxlRBwLsUV/Bt+IXkwvUJbqrZxlXcQGjVRsGolgJordgcxVsb7qA8AOdnjBZK+fuTD+GCLF
-	c5AROxPdY2bIqLsx5hvc+bi2CABsyCICwRpGWeDojcP/26m481JJuEeX7fP7LNe4RugWZCTC0Nz
-	lzk4Sud8e/Xmv4iPsvoOdtiMDwRVAy2yr/nozUyPwe+G3jgvtDTNZ+vHCYyd+pNmW0YiEJjie8B
-	tOXJbdEJoaoRzqGACh8kX6LHkPStEwrv8=
-X-Received: by 2002:a05:6820:1908:b0:696:8098:b0e5 with SMTP id 006d021491bc7-69e10410417mr935680eaf.55.1780111219470;
-        Fri, 29 May 2026 20:20:19 -0700 (PDT)
+        bh=RnwoxwabVhbDbMkRzoM5vsAFsTBGbwkNUwJ3O13YP5o=;
+        b=DXHsgo9XEAYNVSEhDshr0vVcMIHlX7zciBAVaBEzCYPVSAsCWU7e9waNh5eNUpfxIh
+         C29lLqa7jATOEt1D62wRBz3TCQW+/OU+Ru6uIIi6BbvopRuXIrmWfTMLBjojiITZm2fL
+         +1fs2Scgl+/g947SEsBusZiyhIFM9KhwJMQurYF7w8/duwgIyGLZl2Ht+7DQvnRHOPZB
+         2vAUbfQT7lHeCSPdHSpGIvQh3uMh93ygkYqMPKgoRykVyRvpmDM43cWtzPZgHuR7FcZV
+         wC7VQZOPbqF1Rxu3O3r5RBDFYC7ZJ4Fqtw2FmlSARurbhOcjAsewwwfh/btT9omQuszo
+         beZA==
+X-Forwarded-Encrypted: i=1; AFNElJ8gDKhWfr15/EG/ZMzFKOYHlCDrtJEmgJr3YDHltu9mdQOyIqitMnusAzf4OnfotZNJpbRUCxTIFnEStzaMrg==@lists.infradead.org
+X-Gm-Message-State: AOJu0YwzU5wvaQ6RDsbGYPaXZ68my390Kmrm+aTZI1oNBuxxLyB7QoVE
+	N78yu8aptAJpnrbk4sDm/VDZYw0JnAeLgy+0vpvgUcYcCVshXm827vdO
+X-Gm-Gg: Acq92OG2PZqIBvo9e8yD36ePwrCDd/q4gnbmMCEJusMsgRdFrOZ+RbwriUOyR4ppqwP
+	OgH0BbuIHnJsRPUvAR+YY5Wsxlx0pwqkJ9KtSPw4yhmIO7MjH6X6cx6/COwU1LBsp2QvfgPzncF
+	KQiX0jxDenwXbsexD2jcfgCi1Q0zaMJp93171SR1OctWmwPHDx7uw3NKyT1gQ2I726qpHmOuxt2
+	Byn2mdCbbFxBO2dTcXb+XOojS7oguMgD18OvrOaYsM/gVgX8V5Z1X4iaty1nUsEk4oJ9V2CrDVn
+	Q3BseURhroPxQA1JcWCTA+JceJd335Yb8gxlKydtQFwuhfGx+9khttFAkNsB5GZvPNDPxZd6fuS
+	vs0OOx0QNKKI7Q7IRK7DafRp5Qm4j3FVwxbbvPal7iCzfwuLSNUVD+f8pRP/iyERnmNumGj4dq8
+	kM1uOz0rhTE5Hfq620/rolaYSB1NJ2U8I=
+X-Received: by 2002:a05:6820:2909:b0:694:8cd5:10c9 with SMTP id 006d021491bc7-69e105d8a2emr1079848eaf.51.1780111223684;
+        Fri, 29 May 2026 20:20:23 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-69e067e911csm2130737eaf.5.2026.05.29.20.20.18
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-69e067e911csm2130737eaf.5.2026.05.29.20.20.22
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 29 May 2026 20:20:18 -0700 (PDT)
+        Fri, 29 May 2026 20:20:23 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -84,16 +84,16 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V9 04/11] iio: imu: inv_icm42607: Add I2C and SPI For icm42607
-Date: Fri, 29 May 2026 22:17:31 -0500
-Message-ID: <20260530031739.109063-5-macroalpha82@gmail.com>
+Subject: [PATCH V9 07/11] iio: imu: inv_icm42607: Add Temp Support in icm42607
+Date: Fri, 29 May 2026 22:17:34 -0500
+Message-ID: <20260530031739.109063-8-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260530031739.109063-1-macroalpha82@gmail.com>
 References: <20260530031739.109063-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260529_202020_735833_89300B1E 
-X-CRM114-Status: GOOD (  22.92  )
+X-CRM114-CacheID: sfid-20260529_202024_603764_C91B4C02 
+X-CRM114-Status: GOOD (  18.90  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,421 +105,114 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chris Morgan <macromorgan@hotmail.com>
-
-Add I2C and SPI driver support for InvenSense ICM-42607 devices.
-Add necessary Kconfig and Makefile to allow building of (incomplete)
-driver.
-
-Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
----
- drivers/iio/imu/Kconfig                       |   1 +
- drivers/iio/imu/Makefile                      |   1 +
- drivers/iio/imu/inv_icm42607/Kconfig          |  30 +++++
- drivers/iio/imu/inv_icm42607/Makefile         |  10 ++
- drivers/iio/imu/inv_icm42607/inv_icm42607.h   |  16 +++
- .../iio/imu/inv_icm42607/inv_icm42607_core.c  |  57 ++++++++++
- .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |  94 ++++++++++++++++
- .../iio/imu/inv_icm42607/inv_icm42607_spi.c   | 106 ++++++++++++++++++
- 8 files changed, 315 insertions(+)
- create mode 100644 drivers/iio/imu/inv_icm42607/Kconfig
- create mode 100644 drivers/iio/imu/inv_icm42607/Makefile
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
- create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
-
-diff --git a/drivers/iio/imu/Kconfig b/drivers/iio/imu/Kconfig
-index 7e0181c27bb6..8bab4616be20 100644
---- a/drivers/iio/imu/Kconfig
-+++ b/drivers/iio/imu/Kconfig
-@@ -109,6 +109,7 @@ config KMX61
- 	  be called kmx61.
- 
- source "drivers/iio/imu/inv_icm42600/Kconfig"
-+source "drivers/iio/imu/inv_icm42607/Kconfig"
- source "drivers/iio/imu/inv_icm45600/Kconfig"
- source "drivers/iio/imu/inv_mpu6050/Kconfig"
- 
-diff --git a/drivers/iio/imu/Makefile b/drivers/iio/imu/Makefile
-index 13fb7846e9c9..3268dc2371ae 100644
---- a/drivers/iio/imu/Makefile
-+++ b/drivers/iio/imu/Makefile
-@@ -25,6 +25,7 @@ obj-$(CONFIG_FXOS8700_I2C) += fxos8700_i2c.o
- obj-$(CONFIG_FXOS8700_SPI) += fxos8700_spi.o
- 
- obj-y += inv_icm42600/
-+obj-y += inv_icm42607/
- obj-y += inv_icm45600/
- obj-y += inv_mpu6050/
- 
-diff --git a/drivers/iio/imu/inv_icm42607/Kconfig b/drivers/iio/imu/inv_icm42607/Kconfig
-new file mode 100644
-index 000000000000..7ba64e6e8d80
---- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/Kconfig
-@@ -0,0 +1,30 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+config INV_ICM42607
-+	tristate
-+	select IIO_BUFFER
-+	select IIO_INV_SENSORS_TIMESTAMP
-+
-+config INV_ICM42607_I2C
-+	tristate "InvenSense ICM-42607X I2C driver"
-+	depends on I2C
-+	select INV_ICM42607
-+	select REGMAP_I2C
-+	help
-+	  This driver supports the InvenSense ICM-42607 motion tracking
-+	  device over I2C.
-+
-+	  This driver can be built as a module. The module will be called
-+	  inv-icm42607-i2c.
-+
-+config INV_ICM42607_SPI
-+	tristate "InvenSense ICM-42607X SPI driver"
-+	depends on SPI_MASTER
-+	select INV_ICM42607
-+	select REGMAP_SPI
-+	help
-+	  This driver supports the InvenSense ICM-42607 motion tracking
-+	  device over SPI.
-+
-+	  This driver can be built as a module. The module will be called
-+	  inv-icm42607-spi.
-diff --git a/drivers/iio/imu/inv_icm42607/Makefile b/drivers/iio/imu/inv_icm42607/Makefile
-new file mode 100644
-index 000000000000..be109102e203
---- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/Makefile
-@@ -0,0 +1,10 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+obj-$(CONFIG_INV_ICM42607) += inv-icm42607.o
-+inv-icm42607-y += inv_icm42607_core.o
-+
-+obj-$(CONFIG_INV_ICM42607_I2C) += inv-icm42607-i2c.o
-+inv-icm42607-i2c-y += inv_icm42607_i2c.o
-+
-+obj-$(CONFIG_INV_ICM42607_SPI) += inv-icm42607-spi.o
-+inv-icm42607-spi-y += inv_icm42607_spi.o
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607.h b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-index fe565c423c98..7a73c917fe8a 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607.h
-@@ -13,6 +13,22 @@
- #include <linux/regmap.h>
- #include <linux/regulator/consumer.h>
- 
-+/*
-+ * Serial bus slew rates. Rates are expressed as range between the two
-+ * values with the midpoint as the typical rate. For the final value of
-+ * 2ns, 2ns is considered the max value with no expressed minimum or
-+ * typical value.
-+ */
-+enum inv_icm42607_slew_rate {
-+	INV_ICM42607_SLEW_RATE_20_60NS,
-+	INV_ICM42607_SLEW_RATE_12_36NS,
-+	INV_ICM42607_SLEW_RATE_6_19NS,
-+	INV_ICM42607_SLEW_RATE_4_14NS,
-+	INV_ICM42607_SLEW_RATE_2_8NS,
-+	INV_ICM42607_SLEW_RATE_2NS,
-+	INV_ICM42607_SLEW_RATE_NB
-+};
-+
- enum inv_icm42607_sensor_mode {
- 	INV_ICM42607_SENSOR_MODE_OFF,
- 	INV_ICM42607_SENSOR_MODE_STANDBY,
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-index 4801ece28058..3dd4cc8c6b1d 100644
---- a/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
-@@ -16,6 +16,63 @@
- 
- #include "inv_icm42607.h"
- 
-+static bool inv_icm42607_is_volatile_reg(struct device *dev, unsigned int reg)
-+{
-+	switch (reg) {
-+	case INV_ICM42607_REG_MCLK_RDY:
-+	case INV_ICM42607_REG_SIGNAL_PATH_RESET:
-+	case INV_ICM42607_REG_TEMP_DATA1 ... INV_ICM42607_REG_APEX_DATA5:
-+	case INV_ICM42607_REG_APEX_CONFIG0:
-+	case INV_ICM42607_REG_FIFO_CONFIG2 ... INV_ICM42607_REG_FIFO_CONFIG3:
-+	case INV_ICM42607_REG_FIFO_LOST_PKT0 ... INV_ICM42607_REG_APEX_DATA3:
-+	case INV_ICM42607_REG_INT_STATUS_DRDY:
-+	case INV_ICM42607_REG_INT_STATUS ... INV_ICM42607_REG_FIFO_DATA:
-+		return true;
-+	}
-+
-+	return false;
-+}
-+
-+const struct regmap_config inv_icm42607_regmap_config = {
-+	.reg_bits = 8,
-+	.val_bits = 8,
-+	.max_register = INV_ICM42607_REG_WHOAMI,
-+	.cache_type = REGCACHE_MAPLE,
-+	.volatile_reg = inv_icm42607_is_volatile_reg,
-+};
-+EXPORT_SYMBOL_NS_GPL(inv_icm42607_regmap_config, "IIO_ICM42607");
-+
-+/* chip initial default configuration */
-+static const struct inv_icm42607_conf inv_icm42607_default_conf = {
-+	.gyro = {
-+		.mode = INV_ICM42607_SENSOR_MODE_OFF,
-+		.fs = INV_ICM42607_GYRO_FS_1000DPS,
-+		.odr = INV_ICM42607_ODR_100HZ,
-+		.filter = INV_ICM42607_FILTER_BW_25HZ,
-+	},
-+	.accel = {
-+		.mode = INV_ICM42607_SENSOR_MODE_OFF,
-+		.fs = INV_ICM42607_ACCEL_FS_4G,
-+		.odr = INV_ICM42607_ODR_100HZ,
-+		.filter = INV_ICM42607_FILTER_BW_25HZ,
-+	},
-+	.temp_en = false,
-+};
-+
-+const struct inv_icm42607_hw inv_icm42607_hw_data = {
-+	.whoami = INV_ICM42607_WHOAMI,
-+	.name = "icm42607",
-+	.conf = &inv_icm42607_default_conf,
-+};
-+EXPORT_SYMBOL_NS_GPL(inv_icm42607_hw_data, "IIO_ICM42607");
-+
-+const struct inv_icm42607_hw inv_icm42607p_hw_data = {
-+	.whoami = INV_ICM42607P_WHOAMI,
-+	.name = "icm42607p",
-+	.conf = &inv_icm42607_default_conf,
-+};
-+EXPORT_SYMBOL_NS_GPL(inv_icm42607p_hw_data, "IIO_ICM42607");
-+
- static int inv_icm42607_set_conf(struct inv_icm42607_state *st,
- 				 const struct inv_icm42607_conf *conf)
- {
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
-new file mode 100644
-index 000000000000..22ac51108cd3
---- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
-@@ -0,0 +1,94 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (C) 2026 InvenSense, Inc.
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/i2c.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/property.h>
-+#include <linux/regmap.h>
-+
-+#include "inv_icm42607.h"
-+
-+static int inv_icm42607_i2c_bus_setup(struct inv_icm42607_state *st)
-+{
-+	unsigned int val;
-+	int ret;
-+
-+	ret = regmap_clear_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
-+				INV_ICM42607_INTF_CONFIG1_I3C_DDR_EN |
-+				INV_ICM42607_INTF_CONFIG1_I3C_SDR_EN);
-+	if (ret)
-+		return ret;
-+
-+	val = FIELD_PREP(INV_ICM42607_DRIVE_CONFIG2_I2C_MASK,
-+			 INV_ICM42607_SLEW_RATE_12_36NS);
-+	ret = regmap_update_bits(st->map, INV_ICM42607_REG_DRIVE_CONFIG2,
-+				 INV_ICM42607_DRIVE_CONFIG2_I2C_MASK, val);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
-+				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
-+				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_SPI_DIS);
-+}
-+
-+static int inv_icm42607_probe(struct i2c_client *client)
-+{
-+	const struct inv_icm42607_hw *hw;
-+	struct regmap *regmap;
-+
-+	hw = i2c_get_match_data(client);
-+	if (!hw)
-+		return dev_err_probe(&client->dev, -ENODEV,
-+				     "Failed to get i2c data\n");
-+
-+	regmap = devm_regmap_init_i2c(client, &inv_icm42607_regmap_config);
-+	if (IS_ERR(regmap))
-+		return dev_err_probe(&client->dev, PTR_ERR(regmap),
-+				     "Failed to register i2c regmap %ld\n",
-+				     PTR_ERR(regmap));
-+
-+	return inv_icm42607_core_probe(regmap, hw, inv_icm42607_i2c_bus_setup);
-+}
-+
-+static const struct i2c_device_id inv_icm42607_id[] = {
-+	{
-+		.name = "icm42607",
-+		.driver_data = (kernel_ulong_t)&inv_icm42607_hw_data
-+	}, {
-+		.name = "icm42607p",
-+		.driver_data = (kernel_ulong_t)&inv_icm42607p_hw_data
-+	},
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(i2c, inv_icm42607_id);
-+
-+static const struct of_device_id inv_icm42607_of_matches[] = {
-+	{
-+		.compatible = "invensense,icm42607",
-+		.data = &inv_icm42607_hw_data,
-+	}, {
-+		.compatible = "invensense,icm42607p",
-+		.data = &inv_icm42607p_hw_data,
-+	},
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);
-+
-+static struct i2c_driver inv_icm42607_driver = {
-+	.driver = {
-+		.name = "inv-icm42607-i2c",
-+		.of_match_table = inv_icm42607_of_matches,
-+	},
-+	.id_table = inv_icm42607_id,
-+	.probe = inv_icm42607_probe,
-+};
-+module_i2c_driver(inv_icm42607_driver);
-+
-+MODULE_AUTHOR("InvenSense, Inc.");
-+MODULE_DESCRIPTION("InvenSense ICM-42607x I2C driver");
-+MODULE_LICENSE("GPL");
-+MODULE_IMPORT_NS("IIO_ICM42607");
-diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
-new file mode 100644
-index 000000000000..421d3ec1cded
---- /dev/null
-+++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
-@@ -0,0 +1,106 @@
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+/*
-+ * Copyright (C) 2026 InvenSense, Inc.
-+ */
-+
-+#include <linux/device.h>
-+#include <linux/mod_devicetable.h>
-+#include <linux/module.h>
-+#include <linux/property.h>
-+#include <linux/regmap.h>
-+#include <linux/spi/spi.h>
-+
-+#include "inv_icm42607.h"
-+
-+static int inv_icm42607_spi_bus_setup(struct inv_icm42607_state *st)
-+{
-+	unsigned int val;
-+	int ret;
-+
-+	/* Only support 4-wire mode for now. */
-+	ret = regmap_set_bits(st->map, INV_ICM42607_REG_DEVICE_CONFIG,
-+				      INV_ICM42607_DEVICE_CONFIG_SPI_AP_4WIRE);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_clear_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
-+				INV_ICM42607_INTF_CONFIG1_I3C_DDR_EN |
-+				INV_ICM42607_INTF_CONFIG1_I3C_SDR_EN);
-+	if (ret)
-+		return ret;
-+
-+	val = FIELD_PREP(INV_ICM42607_DRIVE_CONFIG3_SPI_MASK,
-+			 INV_ICM42607_SLEW_RATE_2NS);
-+	ret = regmap_update_bits(st->map, INV_ICM42607_REG_DRIVE_CONFIG3,
-+				 INV_ICM42607_DRIVE_CONFIG3_SPI_MASK, val);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
-+				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_MASK,
-+				  INV_ICM42607_INTF_CONFIG0_UI_SIFS_CFG_I2C_DIS);
-+}
-+
-+static int inv_icm42607_probe(struct spi_device *spi)
-+{
-+	const struct inv_icm42607_hw *hw;
-+	struct regmap *regmap;
-+
-+	hw = spi_get_device_match_data(spi);
-+	if (!hw)
-+		return dev_err_probe(&spi->dev, -ENODEV,
-+				     "Failed to get SPI data\n");
-+
-+	if (spi->mode & SPI_3WIRE)
-+		return dev_err_probe(&spi->dev, -ENODEV,
-+				     "SPI 3-wire mode not supported\n");
-+
-+	regmap = devm_regmap_init_spi(spi, &inv_icm42607_regmap_config);
-+	if (IS_ERR(regmap))
-+		return dev_err_probe(&spi->dev, PTR_ERR(regmap),
-+				     "Failed to register spi regmap %ld\n",
-+				     PTR_ERR(regmap));
-+
-+	return inv_icm42607_core_probe(regmap, hw,
-+				       inv_icm42607_spi_bus_setup);
-+}
-+
-+static const struct spi_device_id inv_icm42607_spi_id_table[] = {
-+	{
-+		.name = "icm42607",
-+		.driver_data = (kernel_ulong_t)&inv_icm42607_hw_data
-+	}, {
-+		.name = "icm42607p",
-+		.driver_data = (kernel_ulong_t)&inv_icm42607p_hw_data
-+	},
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(spi, inv_icm42607_spi_id_table);
-+
-+static const struct of_device_id inv_icm42607_of_matches[] = {
-+	{
-+		.compatible = "invensense,icm42607",
-+		.data = &inv_icm42607_hw_data,
-+	},
-+	{
-+		.compatible = "invensense,icm42607p",
-+		.data = &inv_icm42607p_hw_data,
-+	},
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, inv_icm42607_of_matches);
-+
-+static struct spi_driver inv_icm42607_driver = {
-+	.driver = {
-+		.name = "inv-icm42607-spi",
-+		.of_match_table = inv_icm42607_of_matches,
-+	},
-+	.id_table = inv_icm42607_spi_id_table,
-+	.probe = inv_icm42607_probe,
-+};
-+module_spi_driver(inv_icm42607_driver);
-+
-+MODULE_AUTHOR("InvenSense, Inc.");
-+MODULE_DESCRIPTION("InvenSense ICM-42607x SPI driver");
-+MODULE_LICENSE("GPL");
-+MODULE_IMPORT_NS("IIO_ICM42607");
--- 
-2.43.0
-
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+RnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KCkFkZCBmdW5jdGlv
+bnMgZm9yIHJlYWRpbmcgdGVtcGVyYXR1cmUgc2Vuc29yIGRhdGEuCgpTaWduZWQtb2ZmLWJ5OiBD
+aHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgotLS0KIGRyaXZlcnMvaWlvL2lt
+dS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgICAgICAgICB8ICAxICsKIGRyaXZlcnMvaWlvL2ltdS9p
+bnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3LmggICB8ICAzICsKIC4uLi9paW8vaW11L2ludl9pY200
+MjYwNy9pbnZfaWNtNDI2MDdfY29yZS5jICB8IDE4ICsrKysrCiAuLi4vaWlvL2ltdS9pbnZfaWNt
+NDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYyAgfCA4MSArKysrKysrKysrKysrKysrKysrCiAuLi4v
+aWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaCAgfCAzMyArKysrKysrKwog
+NSBmaWxlcyBjaGFuZ2VkLCAxMzYgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
+aXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYwogY3JlYXRlIG1v
+ZGUgMTAwNjQ0IGRyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAu
+aAoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgYi9k
+cml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2VmaWxlCmluZGV4IDNjOWQwODUwOTc5My4u
+Y2NiOGUwMDdjZGViIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01h
+a2VmaWxlCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUKQEAgLTMs
+NiArMyw3IEBACiBvYmotJChDT05GSUdfSU5WX0lDTTQyNjA3KSArPSBpbnYtaWNtNDI2MDcubwog
+aW52LWljbTQyNjA3LXkgKz0gaW52X2ljbTQyNjA3X2NvcmUubwogaW52LWljbTQyNjA3LXkgKz0g
+aW52X2ljbTQyNjA3X2J1ZmZlci5vCitpbnYtaWNtNDI2MDcteSArPSBpbnZfaWNtNDI2MDdfdGVt
+cC5vCiAKIG9iai0kKENPTkZJR19JTlZfSUNNNDI2MDdfSTJDKSArPSBpbnYtaWNtNDI2MDctaTJj
+Lm8KIGludi1pY200MjYwNy1pMmMteSArPSBpbnZfaWNtNDI2MDdfaTJjLm8KZGlmZiAtLWdpdCBh
+L2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3LmggYi9kcml2ZXJzL2lp
+by9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwNy5oCmluZGV4IGNiODc4ZGU5NzBkNC4uYzY1
+MWYwYjY2ZDQzIDEwMDY0NAotLS0gYS9kcml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9p
+Y200MjYwNy5oCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3
+LmgKQEAgLTM4MSw2ICszODEsOSBAQCBleHRlcm4gY29uc3Qgc3RydWN0IGRldl9wbV9vcHMgaW52
+X2ljbTQyNjA3X3BtX29wczsKIAogdTMyIGludl9pY200MjYwN19vZHJfdG9fcGVyaW9kKGVudW0g
+aW52X2ljbTQyNjA3X29kciBvZHIpOwogCitpbnQgaW52X2ljbTQyNjA3X3NldF90ZW1wX2NvbmYo
+c3RydWN0IGludl9pY200MjYwN19zdGF0ZSAqc3QsIGJvb2wgZW5hYmxlLAorCQkJICAgICAgIHVu
+c2lnbmVkIGludCAqc2xlZXBfbXMpOworCiBpbnQgaW52X2ljbTQyNjA3X2NvcmVfcHJvYmUoc3Ry
+dWN0IHJlZ21hcCAqcmVnbWFwLAogCQkJICAgIGNvbnN0IHN0cnVjdCBpbnZfaWNtNDI2MDdfaHcg
+Kmh3LAogCQkJICAgIGludl9pY200MjYwN19idXNfc2V0dXAgYnVzX3NldHVwKTsKZGlmZiAtLWdp
+dCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X2NvcmUuYyBiL2Ry
+aXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X2NvcmUuYwppbmRleCAxNmVh
+ZDAzYTU5ZjkuLmNmOWQwYzZmM2Y0YiAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8vaW11L2ludl9p
+Y200MjYwNy9pbnZfaWNtNDI2MDdfY29yZS5jCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNt
+NDI2MDcvaW52X2ljbTQyNjA3X2NvcmUuYwpAQCAtMTUyLDYgKzE1MiwyNCBAQCBzdGF0aWMgaW50
+IGludl9pY200MjYwN19zZXRfcHdyX21nbXQwKHN0cnVjdCBpbnZfaWNtNDI2MDdfc3RhdGUgKnN0
+LAogCXJldHVybiAwOwogfQogCitpbnQgaW52X2ljbTQyNjA3X3NldF90ZW1wX2NvbmYoc3RydWN0
+IGludl9pY200MjYwN19zdGF0ZSAqc3QsIGJvb2wgZW5hYmxlLAorCQkJICAgICAgIHVuc2lnbmVk
+IGludCAqc2xlZXBfbXMpCit7CisJdW5zaWduZWQgaW50IHZhbDsKKwlpbnQgcmV0OworCisJdmFs
+ID0gRklFTERfUFJFUChJTlZfSUNNNDI2MDdfVEVNUF9DT05GSUcwX0ZJTFRFUl9NQVNLLAorCQkJ
+IElOVl9JQ000MjYwN19GSUxURVJfQldfMzRIWik7CisJcmV0ID0gcmVnbWFwX3VwZGF0ZV9iaXRz
+KHN0LT5tYXAsIElOVl9JQ000MjYwN19SRUdfVEVNUF9DT05GSUcwLAorCQkJCSBJTlZfSUNNNDI2
+MDdfVEVNUF9DT05GSUcwX0ZJTFRFUl9NQVNLLCB2YWwpOworCWlmIChyZXQpCisJCXJldHVybiBy
+ZXQ7CisKKwlyZXR1cm4gaW52X2ljbTQyNjA3X3NldF9wd3JfbWdtdDAoc3QsIHN0LT5jb25mLmd5
+cm8ubW9kZSwKKwkJCQkJICBzdC0+Y29uZi5hY2NlbC5tb2RlLCBlbmFibGUsCisJCQkJCSAgc2xl
+ZXBfbXMpOworfQorCiBzdGF0aWMgaW50IGludl9pY200MjYwN19zZXRfY29uZihzdHJ1Y3QgaW52
+X2ljbTQyNjA3X3N0YXRlICpzdCwKIAkJCQkgY29uc3Qgc3RydWN0IGludl9pY200MjYwN19jb25m
+ICpjb25mKQogewpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZf
+aWNtNDI2MDdfdGVtcC5jIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2
+MDdfdGVtcC5jCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CmluZGV4IDAwMDAwMDAwMDAwMC4uNDE4MDk4
+NDUwNTkyCi0tLSAvZGV2L251bGwKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9p
+bnZfaWNtNDI2MDdfdGVtcC5jCkBAIC0wLDAgKzEsODEgQEAKKy8vIFNQRFgtTGljZW5zZS1JZGVu
+dGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyCisvKgorICogQ29weXJpZ2h0IChDKSAyMDI2IEludmVu
+U2Vuc2UsIEluYy4KKyAqLworCisjaW5jbHVkZSA8bGludXgvZGV2aWNlLmg+CisjaW5jbHVkZSA8
+bGludXgvaWlvL2lpby5oPgorI2luY2x1ZGUgPGxpbnV4L211dGV4Lmg+CisjaW5jbHVkZSA8bGlu
+dXgvcG1fcnVudGltZS5oPgorI2luY2x1ZGUgPGxpbnV4L3JlZ21hcC5oPgorCisjaW5jbHVkZSAi
+aW52X2ljbTQyNjA3LmgiCisjaW5jbHVkZSAiaW52X2ljbTQyNjA3X3RlbXAuaCIKKworc3RhdGlj
+IGludCBpbnZfaWNtNDI2MDdfdGVtcF9yZWFkKHN0cnVjdCBpbnZfaWNtNDI2MDdfc3RhdGUgKnN0
+LCBzMTYgKnRlbXApCit7CisJc3RydWN0IGRldmljZSAqZGV2ID0gcmVnbWFwX2dldF9kZXZpY2Uo
+c3QtPm1hcCk7CisJX19iZTE2ICpyYXc7CisJaW50IHJldDsKKworCVBNX1JVTlRJTUVfQUNRVUlS
+RV9BVVRPU1VTUEVORChkZXYsIHBtKTsKKwlyZXQgPSBQTV9SVU5USU1FX0FDUVVJUkVfRVJSKCZw
+bSk7CisJaWYgKHJldCkKKwkJcmV0dXJuIHJldDsKKworCWd1YXJkKG11dGV4KSgmc3QtPmxvY2sp
+OworCisJcmV0ID0gaW52X2ljbTQyNjA3X3NldF90ZW1wX2NvbmYoc3QsIHRydWUsIE5VTEwpOwor
+CWlmIChyZXQpCisJCXJldHVybiByZXQ7CisKKwlyYXcgPSAmc3QtPmJ1ZmZlclswXTsKKwlyZXQg
+PSByZWdtYXBfYnVsa19yZWFkKHN0LT5tYXAsIElOVl9JQ000MjYwN19SRUdfVEVNUF9EQVRBMSwg
+cmF3LCBzaXplb2YoKnJhdykpOworCWlmIChyZXQpCisJCXJldHVybiByZXQ7CisKKwkqdGVtcCA9
+IGJlMTZfdG9fY3B1cChyYXcpOworCWlmICgqdGVtcCA9PSBJTlZfSUNNNDI2MDdfREFUQV9JTlZB
+TElEKQorCQlyZXR1cm4gLUVJTlZBTDsKKworCXJldHVybiAwOworfQorCitpbnQgaW52X2ljbTQy
+NjA3X3RlbXBfcmVhZF9yYXcoc3RydWN0IGlpb19kZXYgKmluZGlvX2RldiwKKwkJCQlzdHJ1Y3Qg
+aWlvX2NoYW5fc3BlYyBjb25zdCAqY2hhbiwKKwkJCQlpbnQgKnZhbCwgaW50ICp2YWwyLCBsb25n
+IG1hc2spCit7CisJc3RydWN0IGludl9pY200MjYwN19zdGF0ZSAqc3QgPSBpaW9fZGV2aWNlX2dl
+dF9kcnZkYXRhKGluZGlvX2Rldik7CisJczE2IHRlbXA7CisJaW50IHJldDsKKworCWlmIChjaGFu
+LT50eXBlICE9IElJT19URU1QKQorCQlyZXR1cm4gLUVJTlZBTDsKKworCXN3aXRjaCAobWFzaykg
+eworCWNhc2UgSUlPX0NIQU5fSU5GT19SQVc6CisJCWlmICghaWlvX2RldmljZV9jbGFpbV9kaXJl
+Y3QoaW5kaW9fZGV2KSkKKwkJCXJldHVybiAtRUJVU1k7CisJCXJldCA9IGludl9pY200MjYwN190
+ZW1wX3JlYWQoc3QsICZ0ZW1wKTsKKwkJaWlvX2RldmljZV9yZWxlYXNlX2RpcmVjdChpbmRpb19k
+ZXYpOworCQlpZiAocmV0KQorCQkJcmV0dXJuIHJldDsKKwkJKnZhbCA9IHRlbXA7CisJCXJldHVy
+biBJSU9fVkFMX0lOVDsKKwkvKgorCSAqIFTCsEMgPSAodGVtcCAvIDEyOCkgKyAyNQorCSAqIFRt
+wrBDID0gMTAwMCAqICgodGVtcCAqIDEwMCAvIDEyODAwKSArIDI1KQorCSAqIHNjYWxlOiAxMDAw
+MDAgLyAxMjgwMCB+PSA3LjgxMjUKKwkgKiBvZmZzZXQ6IDMyMDAKKwkgKi8KKwljYXNlIElJT19D
+SEFOX0lORk9fU0NBTEU6CisJCSp2YWwgPSA3OworCQkqdmFsMiA9IDgxMjUwMDAwMDsKKwkJcmV0
+dXJuIElJT19WQUxfSU5UX1BMVVNfTkFOTzsKKwljYXNlIElJT19DSEFOX0lORk9fT0ZGU0VUOgor
+CQkqdmFsID0gMzIwMDsKKwkJcmV0dXJuIElJT19WQUxfSU5UOworCWRlZmF1bHQ6CisJCXJldHVy
+biAtRUlOVkFMOworCX0KK30KZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2
+MDcvaW52X2ljbTQyNjA3X3RlbXAuaCBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52
+X2ljbTQyNjA3X3RlbXAuaApuZXcgZmlsZSBtb2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAu
+LmUwMzkyNGUzMDg2NgotLS0gL2Rldi9udWxsCisrKyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNt
+NDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaApAQCAtMCwwICsxLDMzIEBACisvKiBTUERYLUxpY2Vu
+c2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlciAqLworLyoKKyAqIENvcHlyaWdodCAoQykg
+MjAyNiBJbnZlblNlbnNlLCBJbmMuCisgKi8KKworI2lmbmRlZiBJTlZfSUNNNDI2MDdfVEVNUF9I
+XworI2RlZmluZSBJTlZfSUNNNDI2MDdfVEVNUF9IXworCisjaW5jbHVkZSA8bGludXgvYml0b3Bz
+Lmg+CisKK3N0cnVjdCBpaW9fZGV2Oworc3RydWN0IGlpb19jaGFuX3NwZWM7CisKKyNkZWZpbmUg
+SU5WX0lDTTQyNjA3X1RFTVBfQ0hBTihfaW5kZXgpCQkJCVwKK3sJCQkJCQkJCVwKKwkudHlwZSA9
+IElJT19URU1QLAkJCQkJXAorCS5pbmZvX21hc2tfc2VwYXJhdGUgPQkJCQkJXAorCQlCSVQoSUlP
+X0NIQU5fSU5GT19SQVcpIHwJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX09GRlNFVCkgfAkJCVwK
+KwkJQklUKElJT19DSEFOX0lORk9fU0NBTEUpLAkJCVwKKwkuc2Nhbl9pbmRleCA9IF9pbmRleCwJ
+CQkJCVwKKwkuc2Nhbl90eXBlID0gewkJCQkJCVwKKwkJLnNpZ24gPSAncycsCQkJCQlcCisJCS5y
+ZWFsYml0cyA9IDE2LAkJCQkJXAorCQkuc3RvcmFnZWJpdHMgPSAxNiwJCQkJXAorCX0sCQkJCQkJ
+CVwKK30KKworaW50IGludl9pY200MjYwN190ZW1wX3JlYWRfcmF3KHN0cnVjdCBpaW9fZGV2ICpp
+bmRpb19kZXYsCisJCQkgICAgICAgc3RydWN0IGlpb19jaGFuX3NwZWMgY29uc3QgKmNoYW4sCisJ
+CQkgICAgICAgaW50ICp2YWwsIGludCAqdmFsMiwgbG9uZyBtYXNrKTsKKworI2VuZGlmCi0tIAoy
+LjQzLjAKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpM
+aW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFk
+Lm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJv
+Y2tjaGlwCg==
