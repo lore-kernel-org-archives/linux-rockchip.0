@@ -4,59 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB453CD6E55
-	for <linux-rockchip@archiver.kernel.org>; Sat, 30 May 2026 20:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB869CD6E56
+	for <linux-rockchip@archiver.kernel.org>; Sun, 31 May 2026 10:27:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Subject:Message-Id:References:
-	In-Reply-To:To:Cc:From:MIME-Version:Date:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Owner;
-	bh=9DI3ExrjWxlTPmTjfat9Vh6GeQiecQigdPJHFdv4ezw=; b=BRRDdah/a17XcPO7ogpJsOxqPJ
-	ma+u2HTxaDKf6PnIPr7sA6lRyMpyDbRHFbvj9B40GBw3cxPU3ehGXattbfbfqPIlr2ocuLYkTs8j1
-	kSUslYvT1AwwSRd28Bgvkausy9nlvEA9oisdjku3MLcsHCy3nSVrSBTkHGq3Wm5oFzHhsv/Dcybr4
-	Lp8sPQSoKs2TVr5Nf6TEk5HyXOEnPkhBpei5tGAr26s9ArGV144Na4nmL1/s1BE30ebP17Uv3pIaZ
-	8TAZQJBarr38XVTZeiVK73jDQf4zjBjnF3BPoKMkyCrFVAz0S44lVZPRFlnPvsP0+psR0cqcMqD8/
-	zjthNbHw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=PJUO0yZlWsBN5/opP9XFDDTuUscw/BqiIRb4A5cSSgI=; b=iQJI2nTnoDM1fJ
+	QoupcUOGC4CaYO122FDkSarIgf6CLrEh//VIvy16TSvjQkB7QTrge1G5lUQb+VZzJJ4+ls3q8Zwjm
+	R5QJ59TuLCPXGGc87tLJBdmUYC8Oj4H3Ye5v4I7ECrD0Rl0Wa1qwDVcGMpAPxcXPStVmMdY6TiOv4
+	2HNQvV7HW1INzhX3f/NGE/bHQZ65gSp7MRuEjK9qLQ7smzDUl3PCvVbeH23ECIctShs466SclFKCw
+	A/IXJ0+7WK1RY1VI3GCSQOl1fmOLrjeZMg55SMa8FYSSmXWmjyn8mDK8clYb0qCccnN6jzCd1qDht
+	gr2WfuDaeB9USRqEH4sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTQbl-000000093n5-0Zww;
-	Sat, 30 May 2026 20:48:37 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wTdOV-00000009UMm-30WP;
+	Sun, 31 May 2026 10:27:47 +0000
+Received: from mail-m128136.netease.com ([103.209.128.136])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTQbj-000000093mZ-1fc3;
-	Sat, 30 May 2026 20:48:35 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 60DAE60126;
-	Sat, 30 May 2026 20:48:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C87B51F00898;
-	Sat, 30 May 2026 20:48:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780174113;
-	bh=c9vLKWYG42FEGYkXWgIv3uwvb3u+dOyLKJzsNTX1l4A=;
-	h=Date:From:Cc:To:In-Reply-To:References:Subject;
-	b=a2OtfUrlXutm5ZE8Fug07AhMbKv2H+ooDEDCNjWQj7Os/kjhxrbeJYEaGpLvKB/6a
-	 YQbWhJ2wtFjeCMCUlHRkDZlkL3tyD8t+JLq6uYtmCQ2EskyuV1AUAfyhUezTSM9V6/
-	 bG+Ak7oIy0lfr0iB9SM/FKwUXVq2ctDEzne16pGErdYjLE1JME6NAbujLTXfCFImph
-	 VEFXOzAkfxac+bgbbn8iO9uOfdMbl7XoL+Z0kP38eElQC5NNbc9nJSA2IbPrZ/V0mB
-	 qtS3v266kMpKxXZAFPoCvGXKpE5BubD9bBY83omk70CmdaXpy67bChnc8yx0BL9wna
-	 Qul5ncVjOlGZQ==
-Date: Sat, 30 May 2026 15:48:31 -0500
+	id 1wTdOQ-00000009UKU-3Ags;
+	Sun, 31 May 2026 10:27:46 +0000
+Received: from [172.16.12.77] (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 407772abc;
+	Sun, 31 May 2026 18:27:27 +0800 (GMT+08:00)
+Message-ID: <9dc8e781-d03b-481b-808c-93b4855aa14c@rock-chips.com>
+Date: Sun, 31 May 2026 18:27:14 +0800
 MIME-Version: 1.0
-From: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: devicetree@vger.kernel.org, clabbe@baylibre.com, 
- linux-rockchip@lists.infradead.org, heiko@sntech.de, 
- linux-arm-kernel@lists.infradead.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, davem@davemloft.net, linux-kernel@vger.kernel.org, 
- linux-crypto@vger.kernel.org, herbert@gondor.apana.org.au
-To: Dawid Olesinski <dawidro@gmail.com>
-In-Reply-To: <20260530160704.3453555-2-dawidro@gmail.com>
-References: <20260530160704.3453555-1-dawidro@gmail.com>
- <20260530160704.3453555-2-dawidro@gmail.com>
-Message-Id: <178017410969.3710466.3951554039156108335.robh@kernel.org>
-Subject: Re: [PATCH 1/4] dt-bindings: crypto: rockchip: Add RK356x/RK3588
- crypto engine binding
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/2] drm/bridge: synopsys: dw-dp: Support unregistering
+ the AUX channel
+To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
+ Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
+ <heiko@sntech.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260327-drm-rk-fixes-v3-0-fd2e6900c08c@collabora.com>
+ <20260327-drm-rk-fixes-v3-1-fd2e6900c08c@collabora.com>
+Content-Language: en-US
+From: Andy Yan <andy.yan@rock-chips.com>
+In-Reply-To: <20260327-drm-rk-fixes-v3-1-fd2e6900c08c@collabora.com>
+X-HM-Tid: 0a9e7d93036509d8kunm8afc72a22c895f
+X-HM-MType: 1
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDSUxCVkpNGRhNTB4eThlCGVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
+	9PT0hVSktLVUpCS0tZBg++
+DKIM-Signature: a=rsa-sha256;
+	b=ZIq/YCVtOl35D1xQ8MzmffgcSCqU8+cY9Hu2qI8SbIw+XMakCpttBw0OFii0+PJHSNz8m8krVqk6aGlgYvRrjvC7iGSaNGsh4uVmMBf/cIGxuIvU4pSdx3NRPDEgJjsbuPLXQ5QUW9KSSLfg3tkWJwIT6Q51cpnBX0sbYGmX9B4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=+ruVGsuPQy0eatTFKb5OBeOFRqUGuVR1RYE/wDl/f+Y=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260531_032743_383703_0175E75E 
+X-CRM114-Status: GOOD (  13.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,67 +78,60 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Hello,
 
-On Sat, 30 May 2026 17:06:42 +0100, Dawid Olesinski wrote:
-> Add a YAML device tree binding for the Rockchip second-generation (V2)
-> cryptographic hardware accelerator present on the RK3568 and RK3588 SoCs.
+On 3/27/26 08:55, Cristian Ciocaltea wrote:
+> The DisplayPort AUX channel gets initialized and registered during
+> dw_dp_bind(), but it is never unregistered, which may lead to resource
+> leaks and/or use-after-free.
 > 
-> The IP block exposes AES-ECB, AES-CBC, AES-XTS block ciphers, SHA-1,
-> SHA-224, SHA-256, SHA-384, SHA-512, MD5, and SM3 hash algorithms, each
-> with a hardware DMA engine controlled via linked-list descriptors.
+> Add the missing dw_dp_unbind() function to allow the users of the
+> library to handle the required cleanup, i.e. unregister the AUX adapter.
 > 
-> The binding covers two compatible strings:
-> 
->   - rockchip,rk3568-crypto: clocks and resets are driven directly by the
->     non-secure CRU (accessible to Linux at EL1).
->   - rockchip,rk3588-crypto: clocks and resets live in SECURECRU, a
->     register bank sandboxed to TrustZone. Linux must request them through
->     the ARM SCMI firmware interface (scmi_clk / scmi_reset), as direct
->     MMIO access to SECURECRU from EL1 triggers a bus fault.
-> 
-> Signed-off-by: Dawid Olesinski <dawidro@gmail.com>
+> Fixes: 86eecc3a9c2e ("drm/bridge: synopsys: Add DW DPTX Controller support library")
+> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+
+    Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
+
+Thanks.
 > ---
->  .../crypto/rockchip,rk3588-crypto.yaml        | 69 +++++++++++++++++++
->  1 file changed, 69 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.yaml
+>   drivers/gpu/drm/bridge/synopsys/dw-dp.c | 6 ++++++
+>   include/drm/bridge/dw_dp.h              | 1 +
+>   2 files changed, 7 insertions(+)
 > 
-
-My bot found errors running 'make dt_binding_check' on your patch:
-
-yamllint warnings/errors:
-
-dtschema/dtc warnings/errors:
-Lexical error: Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.example.dts:30.33-49 Unexpected 'SCMI_CRYPTO_CORE'
-Lexical error: Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.example.dts:31.33-52 Unexpected 'SCMI_ACLK_SECURE_NS'
-Lexical error: Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.example.dts:32.33-52 Unexpected 'SCMI_HCLK_SECURE_NS'
-Lexical error: Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.example.dts:34.35-56 Unexpected 'SCMI_SRST_CRYPTO_CORE'
-FATAL ERROR: Syntax error parsing input tree
-make[2]: *** [scripts/Makefile.dtbs:140: Documentation/devicetree/bindings/crypto/rockchip,rk3588-crypto.example.dtb] Error 1
-make[2]: *** Waiting for unfinished jobs....
-make[1]: *** [/builds/robherring/dt-review-ci/linux/Makefile:1660: dt_binding_check] Error 2
-make: *** [Makefile:248: __sub-make] Error 2
-
-doc reference errors (make refcheckdocs):
-
-See https://patchwork.kernel.org/project/devicetree/patch/20260530160704.3453555-2-dawidro@gmail.com
-
-The base for the series is generally the latest rc1. A different dependency
-should be noted in *this* patch.
-
-If you already ran 'make dt_binding_check' and didn't see the above
-error(s), then make sure 'yamllint' is installed and dt-schema is up to
-date:
-
-pip3 install dtschema --upgrade
-
-Please check and re-submit after running the above command yourself. Note
-that DT_SCHEMA_FILES can be set to your schema file to speed up checking
-your schema. However, it must be unset to test all examples with your schema.
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> index 3f4530c117c7..6211ba6ba7bd 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> @@ -2093,6 +2093,12 @@ struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+>   }
+>   EXPORT_SYMBOL_GPL(dw_dp_bind);
+>   
+> +void dw_dp_unbind(struct dw_dp *dp)
+> +{
+> +	drm_dp_aux_unregister(&dp->aux);
+> +}
+> +EXPORT_SYMBOL_GPL(dw_dp_unbind);
+> +
+>   MODULE_AUTHOR("Andy Yan <andyshrk@163.com>");
+>   MODULE_DESCRIPTION("DW DP Core Library");
+>   MODULE_LICENSE("GPL");
+> diff --git a/include/drm/bridge/dw_dp.h b/include/drm/bridge/dw_dp.h
+> index 25363541e69d..22105c3e8e4d 100644
+> --- a/include/drm/bridge/dw_dp.h
+> +++ b/include/drm/bridge/dw_dp.h
+> @@ -24,4 +24,5 @@ struct dw_dp_plat_data {
+>   
+>   struct dw_dp *dw_dp_bind(struct device *dev, struct drm_encoder *encoder,
+>   			 const struct dw_dp_plat_data *plat_data);
+> +void dw_dp_unbind(struct dw_dp *dp);
+>   #endif /* __DW_DP__ */
+> 
 
 
 _______________________________________________
