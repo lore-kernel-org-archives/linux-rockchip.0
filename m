@@ -4,88 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674B4CD6E55
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 13:26:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DBECD6E55
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 13:45:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=gqZVJ3bc9S4eoY1yAqwfc+jmNFRFzkciaq2TD3E4AAM=; b=YUTRSKRQe6jeO6
-	w60zV7yXbFGF274GczVshJDCDdv7BF7Hs22bo3zEJ2JWPYZh/rLDI394DyDyVfT2BNtP+v8SHHDNr
-	h3b10JSMneEWwmBF/OtPKFGBUcAdgFtHDOsbCI0UzpBh8YuyrB/cZw0XnUNU0yO5MvdI7dAf2cKaR
-	ODPjuNL0TzYliC1YC0y4lIZ2wW7TGpNcIy2rdSTgamHvAWVZcaW0eLmjvL44e74RsexxmkTLsoQhJ
-	HERUNK2NE517Tly+lDYAqBAkWMzNwOEQjk09z/06ka6lQYUZBi+ZRXEjKv42My+0VsHut5FW37FX8
-	ckwnx+H7FVXNxH1stEhg==;
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=XodAKtF+DFJtyWVnHQlWvXt/31lAX0HM2WAnmRGvTDQ=; b=GHlVchgavZuuu2
+	4aRstAZQcC3QgQR+N6O3RnyfuMrtB7Bz3aJCG9qBMYMUUQu+4FxfzUXjQoBpP/hB60dQ9gzNK4CdQ
+	hztmMKdTxbAOaNbjOnYyTNu4Rv908f8wJ5m9LimS79zqLhp2tsbpxGSoJZP0GwalEWsoKIrldycPU
+	OWhH56d1kBe7A9jIp1O45OIYJ0vP1S7nGyFHrDq4GZrrInK0jO3qmpf10+b89rl14m7xSulaB4SEM
+	RSwhv79eDRg3fQUyJYC+C+LFV+WdenC6y0ekDlHHW83LpFcDURpIiM9OJY49A+fUKhrEtPXKmiixZ
+	TiTVYGlAzA3DtMZtcEWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU2eN-0000000BChr-3odo;
-	Mon, 01 Jun 2026 13:25:51 +0000
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+	id 1wU2ww-0000000BE56-2WnJ;
+	Mon, 01 Jun 2026 13:45:02 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU2eL-0000000BCh9-2ZGg
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 Jun 2026 13:25:50 +0000
-Received: by mail-pj1-x1033.google.com with SMTP id 98e67ed59e1d1-36d630c0e35so1755346a91.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 01 Jun 2026 06:25:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780320349; x=1780925149; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=DnHBZf9FwnOpjIKwf/TmkrH6aiNn+aT//tH7U9Z8tL0=;
-        b=p4CvhBs32nHr4NRqquMMmrUKU0VK6t1BSTp/eo0QqQS1lKv5soQALxAh7KUSPBOn6m
-         2d9QmYkfkxoc0OoDtmZiOrA2ov8oDqUkg8dCs0d2PGM8XBWBkiNtg2ZhdXRWCIew2RSn
-         y2qaVfO77rQyfV0Sr6jiSxhTa6Is2fp5SXscIjh1dfMT4PwhKrfcMOfTPmLRDD/XtEp4
-         pAQN7bdAPDBHGAUyBvb9ZF/QZ59EyuxlJHv6LaXPAAk5Fg69WpLbKwCoIBwHy1BKWIyE
-         yjlg6UKn0+29YGl7/9IBnPrsK3yNKs+vvM9H1JVL3wLiZ/CI7x7KrZCCr8IPeLVeuolc
-         Zuiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780320349; x=1780925149;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=DnHBZf9FwnOpjIKwf/TmkrH6aiNn+aT//tH7U9Z8tL0=;
-        b=VWtjzu/kyYPecmMfrf2yNzrMa/gmhSdG6AqxsTdAqyitbWKNjCmhe80hVMMXzcBgGF
-         awwCb+zGSeG89GfbW5RuFyA8DEb6QSKDf6DRCE2ByIGvzoIa4vkoc5ZGGtPBqgw46Jqj
-         sZJcF7mjqScciXwr2+TXS0r4hMUSDEUV1D3/4xPMEl3gC54sNmM45Sxxv4gGyMp3EsDj
-         77pDyECGY7MFkGfTtQxIrTf/P0RLzKcn43K5ya8Eld2CUs2CblyPi2uMaZDoxWcWhGTx
-         +cb1M4rkVRIJnvvUIfEaRKcxbKsq5UBCZ1mXcpmXaytdEyRs932zB13DJyGOgE/h7kFt
-         3U0g==
-X-Forwarded-Encrypted: i=1; AFNElJ9oCGiIAU/G3DxZwh06/xmue67Tp6GoTmBHX6NsmrC2orgTygkiX2oTj2m6wadp/VIVlha2Yr8YSroMZNp13w==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwRUFEk1uPCZL0Bx3rZS9j08diAYgaGY3+tkQVbaHZxKKZZaNHo
-	ovCbbccx9dJkA8+Fj+64vhCUnjk+r/sUASRtTHW3hULbzaY6Hb7YYn63
-X-Gm-Gg: Acq92OFZd+BazyX8ihsQ/62HckYbDyyQUMYpm17Lgnl2XH4MwMRivLC0IF4c6lIv95n
-	N4Gn3Zq2yhf0uOC1p4ku3iI5NjgS7dlfplPDRgufjtx9rm1mUf73l7Mgl2cmpm40ChiHHHcgSLy
-	D2mdRB32+W9Gx+ALCOyuSOsCjO20a6vzC0PcTNJiTJ7J4RxJ7L6imvS6cGXqc0ksXPTaOrOMW0i
-	nKbuiunuZfCGWmY7D5v8vuGAs/FjC1oufWjYrtolxrIBYEJ/X/SbzPwg7VYehkwrF69sFSYPc4x
-	Skk3875D+AVM7kB6+9GuDNK2t8wxSgK4ShcTtUcz+MZYZlZL0XmzTlIvgKazGy7/cudzX+279Sh
-	If97cHs88aLEuH3LgXeGQDwutCiO9T/wWrX9KysRTcgov4Ogf/IL/nJB3unS9u4IvgM848Wo/V4
-	iQLLxgTawjPj+W0xU7C+7gC9/5wLg6NJUnCVHgF2JH
-X-Received: by 2002:a17:90b:5704:b0:36a:f612:e6a3 with SMTP id 98e67ed59e1d1-36c501b8fb2mr11081482a91.17.1780320348705;
-        Mon, 01 Jun 2026 06:25:48 -0700 (PDT)
-Received: from i386.168.1.127 ([2402:a00:163:2ce9:9c6f:e28:3da8:7980])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-36bc02d0a22sm11444234a91.8.2026.06.01.06.25.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 01 Jun 2026 06:25:46 -0700 (PDT)
-From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
-To: Heiko Stuebner <heiko@sntech.de>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	devicetree@vger.kernel.org,
+	id 1wU2wt-0000000BE44-1Krn;
+	Mon, 01 Jun 2026 13:45:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=oXODjuqrY4OBNW73p3++vJQePAvD2CddI9jj9bMuC9U=; b=N
+	kqfjVGTMhJtZs6BaN/bpi1eK9gxiOQbO9W7+kp7SPmHco1+Ac3WcJG2fSRl2S2DL
+	hPysTQkGX6t4UnzvLvt6QeAuNoQCl7QHMQASsPWjrK/CHtETaw+fCsE53oOEPzEn
+	o4JNoYhinzSy3a+7fR+mFhVU06d5avW7cdgRmWVad4=
+Received: from andyshrk$163.com ( [61.154.14.86] ) by
+ ajax-webmail-wmsvr-40-120 (Coremail) ; Mon, 1 Jun 2026 21:44:15 +0800 (CST)
+X-Originating-IP: [61.154.14.86]
+Date: Mon, 1 Jun 2026 21:44:15 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
+Cc: "Sandy Huang" <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+	"Andy Yan" <andy.yan@rock-chips.com>,
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
+	"Maxime Ripard" <mripard@kernel.org>,
+	"Thomas Zimmermann" <tzimmermann@suse.de>,
+	"David Airlie" <airlied@gmail.com>,
+	"Simona Vetter" <simona@ffwll.ch>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Subject: [PATCH v2 0/2] arm64: dts: rockchip: add Vicharak Axon board support
-Date: Mon,  1 Jun 2026 18:55:27 +0530
-Message-ID: <20260601132529.139172-1-hrushirajg23@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re:[PATCH 0/2] YUV support for VOP2 background color
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20260403(27802f6d) Copyright (c) 2002-2026 www.mailtech.cn 163com
+In-Reply-To: <20260524-vop2-bg-yuv-v1-0-dcb6a52923f5@collabora.com>
+References: <20260524-vop2-bg-yuv-v1-0-dcb6a52923f5@collabora.com>
+X-CM-CTRLMSGS: FN07+3BsdXM9MTc4MDMyMTQ1NTA1MF9kNmRjY2YzNjU0MmEwNTIyYjc0YWExM
+ mI1MmZiMDMyMg==
+X-NTES-SC: AL_Qu2TAv+Zvkwu4yObYukfmUgWjuw/WsG1v/Ul1YBSP556jDLp4yQsdlhFB13k6v+RMTGlqAieVTxg0OFXWa1WfaYt+PjPcFvWK/NZy9+E76AqHw==
 MIME-Version: 1.0
+Message-ID: <8061cc0.a9f1.19e836d8cf0.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eCgvCgD3_0ivjB1q9MivAA--.26891W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxg8wjmodjK9X4AAA3U
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_062549_677124_313806A4 
-X-CRM114-Status: UNSURE (   9.86  )
+X-CRM114-CacheID: sfid-20260601_064459_845804_37618D3E 
+X-CRM114-Status: UNSURE (   5.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -103,51 +84,38 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-This series adds initial device tree support for the Vicharak Axon
-single-board computer, which is based on the Rockchip RK3588 SoC.
 
-The Vicharak Axon is a feature-rich SBC targeting developer and embedded
-use cases. It ships with:
+Hello Cristian,
 
-  - Rockchip RK3588 (4x Cortex-A76 + 4x Cortex-A55)
-  - RK806 PMIC providing all SoC power domains
-  - eMMC 5.1 (on-board) and microSD slot
-  - Gigabit Ethernet via RGMII (RTL8211F)
-  - Dual HDMI 2.1 output and one HDMI 2.0 input (receiver)
-  - PCIe 3.0 x4 and two PCIe 2.0 slots
-  - SATA 3.0
-  - SDIO Wi-Fi
-  - USB 2.0 host ports (EHCI/OHCI)
-  - NXP PCA9554 I/O expander for status LEDs
-  - Haoyu HYM8563 RTC
-
-Changes since v1:
-- Renamed the dts file from rk3588-axon.dts to rk3588-vicharak-axon.dts
-- Added binding patches for the board (rockchip.yaml) and vendor (vendor-prefixes.yaml)
-- Renamed regulator nodes to the standard `regulator-name` pattern
-- Removed `mem-supply` properties and phandles from cpu nodes (vendor-kernel specific)
-- Fixed pcie20_avdd0v85 vin-supply mismatch
-- Removed obsolete `regulator-compatible` property
-- Removed invalid `regulator-init-microvolt` property
-- Removed dangling `enable-active-high` properties from fixed regulators
-- Cleaned up unneeded i2c3 / es8388 nodes
-- Added missing `vpcie3v3-supply` properties to PCIe nodes
-
-Hrushiraj Gandhi (2):
-  arm64: dts: rockchip: add Vicharak Axon board
-  dt-bindings: arm: rockchip: add Vicharak Axon board
-
- .../devicetree/bindings/arm/rockchip.yaml     |    5 +
- .../devicetree/bindings/vendor-prefixes.yaml  |    2 +
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../dts/rockchip/rk3588-vicharak-axon.dts     | 1038 +++++++++++++++++
- 4 files changed, 1046 insertions(+)
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-vicharak-axon.dts
-
--- 
-2.47.3
+At 2026-05-25 00:27:27, "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com> wrote:
+>Since commit bec7cbfa7d4f ("drm/rockchip: vop2: Support setting custom
+>background color") the VOP2 display controller allows configuring the
+>background color of each video output port.
+>
+>However, this is currently limited to RGB formats.  When operating in
+>YUV overlay mode, the color must be programmed using YUV format.
+>
+>Add the necessary RGB-to-YCbCr conversion logic, covering all color
+>spaces supported by the display controller: BT601L, BT601F, BT709L and
+>BT2020L.
+>
 
 
+Do you currently have a branch that makes dw-hdmi-qp output in YUV mode ?
+
+>Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>---
+>Cristian Ciocaltea (2):
+>      drm/rockchip: vop2: Rename CSC_BT2020 to CSC_BT2020L
+>      drm/rockchip: vop2: Add YUV support to background color
+>
+> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 154 ++++++++++++++++++++++++---
+> drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |   2 +-
+> 2 files changed, 139 insertions(+), 17 deletions(-)
+>---
+>base-commit: 213c92ac9717e4951f052a499f91c89302889813
+>change-id: 20260524-vop2-bg-yuv-1b0e6a09c579
+>
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
