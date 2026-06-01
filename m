@@ -4,54 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E453CD6E60
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 10:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 836BBCD6E60
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 10:20:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=hSYrJWW+zfE+uhSeijHvdJ1/pBEvynUBRXMPjZ/hY+Q=; b=YmzTwU4nft8k1M
-	zJu2eq8ekfE5VsaMysgdZhlhch5BtGdysla9rXlxmXgomRFagYWsxw4JGjThlliRWZmkjH2SNbaRE
-	zFnPZCr8cC9R0QoPHHD9PyzHdzllm13XH9V1EAtO7jzORcHtkjFtcpC2wNQWuoNi18XRJxMJzBB4T
-	Jo6pkK7uf0+WdPwGa2I9yrqqnQ09ayGkQ/gf3k/8Vr+9MNR2r9wCyew6Yx7CPRdgFw1VVWOF2p6LV
-	t/LRqogOidQrKPkBFAn/Na4XL1o/bo0ZOp0CxBgG1c3g0PlM8PRssJUjcch/ZUDp9p3ZGEzhWX++f
-	PYiucXwkMCmqXDN5Ze3A==;
+	List-Owner; bh=PepfNsY/Wl5C9ADpVSdKVaH0p+JAiQ50InpD+1p1ngk=; b=W7ejG/yzwbJsrq
+	r0FsGdWx8jpSQmbyC0ZRPJjt3FLe6D+VqaQtaAe7PmywZ7+ngkFjbFTAq5OsHRtIAH2bdCXKr4eJI
+	2WKL3W0IpxHGMW8MIPKR+A4HAoAAml164cWcpgerDffuIrvT4FsCeWOQuKvkGFUF/WeM4YmKVXSRz
+	gjimakxKBgvO180a9riWBfm+qFUbVyFOANQboDkGqC2pXlFAI/YQ/1UzXGm8KqZvAhx/T/OahCwGt
+	sKyZXeH6cEntTpFEEH6RWF857cCEGiKSnc/S4f0xhUCqRQaudyHMphgg1eIxShvOAULw71PCTX9Y2
+	CaQM3NlUNtPM3B9yORsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTzkl-0000000AbCi-0kx2;
-	Mon, 01 Jun 2026 10:20:15 +0000
+	id 1wTzkm-0000000AbDn-1eVs;
+	Mon, 01 Jun 2026 10:20:16 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTzkj-0000000AbBN-1MV3
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 Jun 2026 10:20:14 +0000
+	id 1wTzkk-0000000AbBa-2369;
+	Mon, 01 Jun 2026 10:20:15 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=vih2sX10b+YArA5nJOOYULDdBvv4rp3a7PZWZiMVUhs=; b=D9ON6zcbalTLogTwXgo7c1NWnM
-	Up6/GzpKX+SPOdmb5q+1aOa1+KFsx1bUtj1XeTNv5vUpxXWoQkk24E9Xx5OnWGuUzE4adybg6fioK
-	AqExpHpHbg1+yiui+kZsne4Lxhn1Lk72cO0sT+Y78Iqgqfv1t8c54GYzK5LZoL6QhfdgOrybN+dUB
-	2xYdR16d/m6to+Urwic488xkTO5h5WNkb29XesXxLO0Plg3rWyh8ZnoyseLVpPFUfavXimdtOPUVi
-	x3YAs6v1fISNr4V0cQ7O16CzD5Z3MjF9Syqd+Rf8zqyPgaY1NoKG1el5ldvnNOczFO2RkLhpDHTpb
-	XzRgVBtw==;
+	bh=SrImUZyjT4lmb9BXIxXyMNGdgHElksCa33HHo6A2zRM=; b=k+OpxkXjey2Lmif/YVYJXqdS98
+	v6TZM1Wo/TjHarw8jxVT8LASmto3lUevq7IivZw9mcm8YnF9ZFC5nbxLY6AiH0kzCmMwQaXkzEIv9
+	kzC+AnOC8yktwJToXXt6qKT73ZkFENaOwpflqybM9auVh7Q6TB/lBZt8dD7mMk4fFDCpHOGlSACqa
+	hHyhALN3No0U0Jm8YDGw+JzZkQTNyhZaybYV7gL2eK2FnDVwKpM3KUm23i+2QBw0DPzwhwYjwAUsP
+	vDyRJMweGynDNNS1PdEp7XyyKbSYXE/LeUu0+71wD2c/EBd5diCLqfQtRS3Yuw92R+88G5FrzGTQ+
+	UwkpzMLg==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Chen-Yu Tsai <wens@kernel.org>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	Gray Huang <gray.huang@wesion.com>
 Cc: Heiko Stuebner <heiko@sntech.de>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: Re: [PATCH] arm64: dts: rockchip: rk3399-nanopi-r4s: Disable removed devices
-Date: Mon,  1 Jun 2026 12:20:02 +0200
-Message-ID: <178030918398.239725.10006310705727779216.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	nick@khadas.com
+Subject: Re: [PATCH v3 0/2] arm64: dts: rockchip: Add peripheral support for Khadas Edge 2L
+Date: Mon,  1 Jun 2026 12:20:01 +0200
+Message-ID: <178030918401.239725.2769966054558634435.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260505172903.33271-1-wens@kernel.org>
-References: <20260505172903.33271-1-wens@kernel.org>
+In-Reply-To: <20260507033541.2576335-1-gray.huang@wesion.com>
+References: <20260507033541.2576335-1-gray.huang@wesion.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_032013_382499_0A1D7FA5 
-X-CRM114-Status: UNSURE (   9.60  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260601_032014_526121_2972D9A6 
+X-CRM114-Status: GOOD (  12.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,20 +73,23 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Wed, 06 May 2026 01:29:02 +0800, Chen-Yu Tsai wrote:
-> While the design of the NanoPi R4S is based on the common NanoPi 4
-> family, it is trimmed down a lot.
+On Thu, 07 May 2026 11:35:39 +0800, Gray Huang wrote:
+> This patch series adds support for several key peripherals to the
+> Khadas Edge 2L board, which is based on the Rockchip RK3576 SoC.
 > 
-> Disable all the peripherals on the SoC that are not used, and delete
-> all the external components that are not present.
-> 
+> These patches build upon the basic board support that was previously
+> applied to the rockchip tree. This series enables essential
+> functionalities including power management, RTC, wireless connectivity,
+> graphics, display output, and USB support.
 > 
 > [...]
 
 Applied, thanks!
 
-[1/1] arm64: dts: rockchip: rk3399-nanopi-r4s: Disable removed devices
-      commit: 8333fe46b0010d110b36f1628dd8dfc77d2c389a
+[1/2] arm64: dts: rockchip: Enable USB for Khadas Edge 2L
+      commit: 720fe68fd9f138ada2936ffcf3dd0129a889455a
+[2/2] arm64: dts: rockchip: Add Bluetooth support for Khadas Edge 2L
+      commit: ef81db2fdd5a75e3834a4726dc7837f6d2a7229d
 
 Best regards,
 -- 
