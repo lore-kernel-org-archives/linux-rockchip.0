@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B4ABCD5BD1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 22:45:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9685CD6E65
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 22:45:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BvGLW9k5TH1vf4ffxQrD2ZM6OBp79Dyjp7YBOApXaGc=; b=t5o9MZ/hsGsoQE
-	cxxC0cn/0eBiXKHBW0D1nSk0qMvkxRI1FgQLlixJQd3bKzS/xXJpEYfVIrU6v0nL/IPeDCcF2XB4O
-	Aq1FrNyMGfFWuYgY5iHbKnjGT0on3VeU74pn/bfGxPTwF+6wfbjN47j15POQMjbDhHlShymwYegA3
-	PBXtudkznNR2kKFla4LHfgYofyS6o0o6z3QoafA0Odw+7W6iMMKABSfQlK5sWSFvjSx4/StQJbnzx
-	vsz7NzuHuHM/W5yzIng5MKhIxLkEvLpCeVcsFaHCuyXbI/qkI0iyayPN+LWK9/Rlevv8d0AJdaK5j
-	8hQHQ9K9a51FJDCGVFfQ==;
+	List-Owner; bh=cGMbCX66CruXr93p/Ob9rV74yE/kvX4eNpWHg0/CdPU=; b=dy98+v/gXJvd0K
+	zczpV20geZ4E3V7bMLVjYOyq8W+mWW4OWKcLB1YKlV/7UU0QxVRG4bYJxrA6oknPBxYs4a3+bMnDk
+	Bcw/eLaP8VE9HeKUy9k68IAe5YYxf32fMD5k9zEcNlvQMMsoZ1mVNFjDmrnNQ88tl3yL0wAqeuD4W
+	glhiWKmtxOIIURu7nW7IabhQXEYxF1rxARIs3w5owB+igZN73g3T8eUx1UAhV1PaDbcj0CxhMD4rU
+	sq/Ujnz6z+EJu2lUNImkgLQPARE9r/PEo3S0LfEg4nacjRcYEeD9wL4y2cP9M2XgYXxv4nKMwGLzk
+	6YHQKj7x5dFmr7nHkW2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUBOG-0000000Bz22-0e1c;
-	Mon, 01 Jun 2026 22:45:48 +0000
+	id 1wUBOM-0000000BzKl-11f4;
+	Mon, 01 Jun 2026 22:45:54 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUBNt-0000000ByFQ-07YF;
-	Mon, 01 Jun 2026 22:45:27 +0000
+	id 1wUBNv-0000000ByKH-1w6K;
+	Mon, 01 Jun 2026 22:45:33 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1780353923;
-	bh=ZJkZbZinkYW2/9ujWgQTHHbPgel0K7gaSQEekVmR0Ys=;
+	s=mail; t=1780353925;
+	bh=zyVYCq2WRoxnKrGeF/o7p+aT7ASCbQqm8Mt8MtlMBZo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=M3tWroImPEASepXoPGVR+eBuf3khOqiLQC/DdeiiE4bp+qdtbv+Aq247Gadm3czX+
-	 IHioIRMNdejmVsuCuIqyWOqf8O+CLrtjJUD53/ljhMoLIEFMYYcfWWv+JODN2SV6rO
-	 Y1oewhn0fE5pIKaNTDvoRksi9o9V4ajriPEa1AwEwuKpuyVG3dBYE/3KNJgC2lu3XC
-	 WqesGbNHfrx3ke6O1t8TEEa38L5ae3z3/9Z6GJe/8U8zA9L23M0fGuto7SMexKIfwZ
-	 itxTeWrEDIasKjesZcHC79KdPWd/pHxDWs2ZgWX2AHBFFocwh+UAcNimfoOGZQhI+0
-	 YRz/Fw9l5+0zg==
+	b=Ep/xlSqCmxWexIU2a3Cr6BPuFsWOJJ14AiBv+4o7bwgbTA1DSGeWhBPEJysKHt+rM
+	 +t5gSBDZUJVYZJxk2DU+zIPUOZcdLTMLVKI1A/KwmxAWPIF/qfwK7Z/nhaxKaKJzjE
+	 /kyGN5+4vzUuDLEoGdRAuw9w87U0reb8mGOMZOykdOYsBUUnypaKcmclMX5aI8Ti5s
+	 8l1am+fX4Xh5qaeHie0kfasic7U6lEOxPU0CwsWZ85NbYHl1G4i63U6MgSxVbAW/Nl
+	 +7t90gVHgQctRrqYHYf48WW2gh4H9Y38jdLsk6Ce++G4hPurxJ/PHNZexulwNOa9Tg
+	 +q8AN05hbt9dQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 206B217E0B69;
-	Tue,  2 Jun 2026 00:45:23 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7033717E0086;
+	Tue,  2 Jun 2026 00:45:25 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 02 Jun 2026 01:44:17 +0300
-Subject: [PATCH v7 17/30] drm/rockchip: dw_hdmi_qp: Use local dev variable
- consistently in bind()
+Date: Tue, 02 Jun 2026 01:44:20 +0300
+Subject: [PATCH v7 20/30] drm/rockchip: dw_hdmi_qp: Mask HPD IRQ in
+ rk3576_io_init()
 MIME-Version: 1.0
-Message-Id: <20260602-dw-hdmi-qp-scramb-v7-17-445eb54ee1ed@collabora.com>
+Message-Id: <20260602-dw-hdmi-qp-scramb-v7-20-445eb54ee1ed@collabora.com>
 References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
 In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -69,8 +69,9 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_154525_359772_E7A15B49 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20260601_154527_705121_06F74FFD 
+X-CRM114-Status: UNSURE (   9.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,125 +88,28 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace indirect struct device accesses via hdmi->dev and pdev->dev with
-the local dev parameter already available in dw_hdmi_qp_rockchip_bind(),
-for consistency and readability.
+Mask the RK3576 HPD interrupt in io_init() so it starts disabled,
+matching the RK3588 behavior.  This prevents spurious interrupts before
+the bridge framework enables HPD via the .hpd_enable() callback.
 
-Reviewed-by: Heiko Stuebner <heiko@sntech.de>
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 33 +++++++++++++-------------
- 1 file changed, 16 insertions(+), 17 deletions(-)
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-index 296f9a3ba66a..46df5abe31a4 100644
+index 27342094958c..62ea5c7cbbe6 100644
 --- a/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
 +++ b/drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c
-@@ -475,7 +475,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	struct clk *ref_clk;
- 	int ret, irq, i;
+@@ -346,7 +346,7 @@ static void dw_hdmi_qp_rk3576_io_init(struct rockchip_hdmi_qp *hdmi)
  
--	if (!pdev->dev.of_node)
-+	if (!dev->of_node)
- 		return -ENODEV;
+ 	regmap_write(hdmi->vo_regmap, RK3576_VO0_GRF_SOC_CON14, val);
  
- 	hdmi = drmm_kzalloc(drm, sizeof(*hdmi), GFP_KERNEL);
-@@ -495,7 +495,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		return dev_err_probe(dev, -ENODEV, "Missing platform ctrl ops\n");
+-	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 0);
++	val = FIELD_PREP_WM16(RK3576_HDMI_HPD_INT_MSK, 1);
+ 	regmap_write(hdmi->regmap, RK3576_IOC_MISC_CON0, val);
+ }
  
- 	hdmi->ctrl_ops = cfg->ctrl_ops;
--	hdmi->dev = &pdev->dev;
-+	hdmi->dev = dev;
- 	hdmi->port_id = -ENODEV;
- 
- 	/* Identify port ID by matching base IO address */
-@@ -506,7 +506,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 		}
- 	}
- 	if (hdmi->port_id < 0)
--		return dev_err_probe(hdmi->dev, hdmi->port_id,
-+		return dev_err_probe(dev, hdmi->port_id,
- 				     "Failed to match HDMI port ID\n");
- 
- 	plat_data.phy_ops = cfg->phy_ops;
-@@ -530,37 +530,36 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	hdmi->regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
- 						       "rockchip,grf");
- 	if (IS_ERR(hdmi->regmap))
--		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->regmap),
-+		return dev_err_probe(dev, PTR_ERR(hdmi->regmap),
- 				     "Unable to get rockchip,grf\n");
- 
- 	hdmi->vo_regmap = syscon_regmap_lookup_by_phandle(dev->of_node,
- 							  "rockchip,vo-grf");
- 	if (IS_ERR(hdmi->vo_regmap))
--		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->vo_regmap),
-+		return dev_err_probe(dev, PTR_ERR(hdmi->vo_regmap),
- 				     "Unable to get rockchip,vo-grf\n");
- 
--	ret = devm_clk_bulk_get_all_enabled(hdmi->dev, &clks);
-+	ret = devm_clk_bulk_get_all_enabled(dev, &clks);
- 	if (ret < 0)
--		return dev_err_probe(hdmi->dev, ret, "Failed to get clocks\n");
-+		return dev_err_probe(dev, ret, "Failed to get clocks\n");
- 
--	ref_clk = clk_get(hdmi->dev, "ref");
-+	ref_clk = clk_get(dev, "ref");
- 	if (IS_ERR(ref_clk))
--		return dev_err_probe(hdmi->dev, PTR_ERR(ref_clk),
-+		return dev_err_probe(dev, PTR_ERR(ref_clk),
- 				     "Failed to get ref clock\n");
- 
- 	plat_data.ref_clk_rate = clk_get_rate(ref_clk);
- 	clk_put(ref_clk);
- 
--	hdmi->frl_enable_gpio = devm_gpiod_get_optional(hdmi->dev, "frl-enable",
-+	hdmi->frl_enable_gpio = devm_gpiod_get_optional(dev, "frl-enable",
- 							GPIOD_OUT_LOW);
- 	if (IS_ERR(hdmi->frl_enable_gpio))
--		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->frl_enable_gpio),
-+		return dev_err_probe(dev, PTR_ERR(hdmi->frl_enable_gpio),
- 				     "Failed to request FRL enable GPIO\n");
- 
- 	hdmi->phy = devm_of_phy_get_by_index(dev, dev->of_node, 0);
- 	if (IS_ERR(hdmi->phy))
--		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->phy),
--				     "Failed to get phy\n");
-+		return dev_err_probe(dev, PTR_ERR(hdmi->phy), "Failed to get phy\n");
- 
- 	cfg->ctrl_ops->io_init(hdmi);
- 
-@@ -578,7 +577,7 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	if (irq < 0)
- 		return irq;
- 
--	ret = devm_request_threaded_irq(hdmi->dev, irq,
-+	ret = devm_request_threaded_irq(dev, irq,
- 					cfg->ctrl_ops->hardirq_callback,
- 					cfg->ctrl_ops->irq_callback,
- 					IRQF_SHARED, "dw-hdmi-qp-hpd",
-@@ -589,18 +588,18 @@ static int dw_hdmi_qp_rockchip_bind(struct device *dev, struct device *master,
- 	drm_encoder_helper_add(encoder, &dw_hdmi_qp_rockchip_encoder_helper_funcs);
- 	ret = drmm_encoder_init(drm, encoder, NULL, DRM_MODE_ENCODER_TMDS, NULL);
- 	if (ret)
--		return dev_err_probe(hdmi->dev, ret, "Failed to init encoder\n");
-+		return dev_err_probe(dev, ret, "Failed to init encoder\n");
- 
- 	platform_set_drvdata(pdev, hdmi);
- 
- 	hdmi->hdmi = dw_hdmi_qp_bind(pdev, encoder, &plat_data);
- 	if (IS_ERR(hdmi->hdmi))
--		return dev_err_probe(hdmi->dev, PTR_ERR(hdmi->hdmi),
-+		return dev_err_probe(dev, PTR_ERR(hdmi->hdmi),
- 				     "Failed to bind dw-hdmi-qp\n");
- 
- 	connector = drm_bridge_connector_init(drm, encoder);
- 	if (IS_ERR(connector))
--		return dev_err_probe(hdmi->dev, PTR_ERR(connector),
-+		return dev_err_probe(dev, PTR_ERR(connector),
- 				     "Failed to init bridge connector\n");
- 
- 	return 0;
 
 -- 
 2.54.0
