@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7FDACD6E63
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 06:51:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD1DCCD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 06:51:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=qrWziJ+C42oPhSrXb8WH7G0vjZNMvvPKJYVYkThIVfE=; b=abhb+L/F7NemVw
-	e0kj33OrNZf9bnTK11hYmvjjf32CaI9Bu8W+3UFk+Q5GlRBJUdQL6YPkGqdDGIzNi/CxD99ROMxf/
-	dzVB8A8fPrBYgWuwZrFIV68jn8c3hGZHpvfew+e8CJIdAc9IxBRbr46YAf2yT5bqxN7868n3irQvi
-	w3yyoFhoAv6g01pjDcNdI9xQIrCSYHD2nluboWGmf59ALG1lmSY3Rhv6EN1FwvaErKBLCT12wy93w
-	lavFFTLEzZQn1O4kRQl3DsQPBhr0Go4y2AmE8znhpMs1cJ9n2D+DUsZEHtRpasbXE83Mv1l9nVpL9
-	VnuoqrtFKxcEYrf+JV2w==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=HiKpRtBc+F5L/K+y0BVY5MAAhbGvUEltU0ejcJ9A5h0=; b=2bJNU4mbJ5K6hf
+	BcSuZoQ5A66MGRicNBeyWrSLV9RFyF5qtzrkggugBAmC418sJrnRBW7sNKWTOWh8NA94queZEQ6tF
+	qGdaKxsz/MNcSIKPVXtaSXSdSVqvNRmMbpvV3zVhuxRJy4MGBOz6WyGOfuPNv2MHxzj+vSEG1N/uJ
+	NRA88u18PdvzukrUrimpVDYPdr6L9l+98ACf+gl0vLE20MtaqcoyWRgyYjYRb6smAyggl7ix5Agil
+	Ag4pshXy0foxJI74jqH7I148rt4742kIViLT0BzZDd66U7Y0z+ZS7G4kv0dxlWGNi+gGEHxO8hLji
+	2Mh249ydZfR29nyrO4SQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTwUV-0000000AEZF-14Ad;
-	Mon, 01 Jun 2026 06:51:15 +0000
-Received: from mail-m128197.netease.com ([103.209.128.197])
+	id 1wTwUd-0000000AEfx-3g17;
+	Mon, 01 Jun 2026 06:51:23 +0000
+Received: from mail-m9315.xmail.ntesmail.com ([103.126.93.15])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTwUR-0000000AEXZ-25Va;
-	Mon, 01 Jun 2026 06:51:14 +0000
+	id 1wTwUU-0000000AEYE-2ZE5;
+	Mon, 01 Jun 2026 06:51:16 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 408ded03f;
-	Mon, 1 Jun 2026 14:51:04 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 408ded06b;
+	Mon, 1 Jun 2026 14:51:09 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: hjc@rock-chips.com,
 	heiko@sntech.de,
@@ -44,24 +44,26 @@ To: hjc@rock-chips.com,
 	andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
 	rfoss@kernel.org
-Subject: [PATCH v10 00/11] Add eDP support for RK3576
-Date: Mon,  1 Jun 2026 14:50:49 +0800
-Message-Id: <20260601065100.1103873-1-damon.ding@rock-chips.com>
+Subject: [PATCH v10 04/11] arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+Date: Mon,  1 Jun 2026 14:50:53 +0800
+Message-Id: <20260601065100.1103873-5-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260601065100.1103873-1-damon.ding@rock-chips.com>
+References: <20260601065100.1103873-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e81f344ad03a8kunm111da268257dd3
+X-HM-Tid: 0a9e81f3597d03a8kunm111da268257e0e
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZSkIZVktLTkgdGEsYGEpJGVYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaHhpOVhhPTk1MSRhPQh0aTFYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=BbEFmojqL5VuWNR/cP/JHKYZGtkKTBQPNDakZkYZftYU2sRev9DDh51Wbt9c2yXBsAgIWDNe2pNxfSuM20F9QTQZoac5kzhw65vcb9qGLOggxpsw0lpXPrytSp7R83FtA49PaLeuYGovGLaH3BRkFGKWHKTMoPcibWrtlieebS0=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=B0wiE8GgyXz8eIceQeCC4HinJBNyLgrIHBKykFHjKJ4=;
+	b=FOaOZdFUo5b36/m/fOHE8C895iDtTBOf/SAuHGdBZQxu0lrf4D72hE2e//ay7N4SfIxdSUQoufkpRpd7wdx2rmY8JHf5FFm3CjyvedDA5SYZJ58bFFG5BnuSN9VvWhs9OLsrP87gjrnU+Lst/qlxsUeWsb1U/8x+jE1a8m7UuBo=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=FSnd82QhzgsTc9VLihugRZhMWxwKpTg7Bj65m7IRRDM=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260531_235112_085121_826A0FC9 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20260531_235114_874526_014DD584 
+X-CRM114-Status: UNSURE (   9.82  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,73 +82,39 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Patch 1-5 are to add missing clock "hclk" for RK3588 eDP nodes.
-Patch 6 is to use automatic cleanup to fix OF node reference leak
-        reported by Sashiko.
-Patch 7-8 are to add the RK3576 eDP node.
-Patch 9-11 are to support the RK3576 Analogix DP controller.
+Add the required HCLK_VO1 bus clock to RK3588 eDP1 node with
+corresponding clock-name "hclk". This clock is necessary for
+the eDP controller to access video output GRF and work properly.
 
-Damon Ding (11):
-  dt-bindings: display: rockchip: analogix-dp: Fix hclk as third clock
-    for RK3588
-  dt-bindings: display: rockchip: analogix-dp: Add per-clock
-    descriptions
-  arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
-  arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
-  drm/rockchip: analogix_dp: Enable hclk for RK3588
-  drm/rockchip: analogix_dp: Fix OF node reference leak via auto cleanup
-  dt-bindings: display: rockchip: analogix-dp: Add support for RK3576
-  arm64: dts: rockchip: Add eDP node for RK3576
-  drm/bridge: analogix_dp: Rename and simplify is_rockchip()
-  drm/bridge: analogix_dp: Add support for RK3576
-  drm/rockchip: analogix_dp: Add support for RK3576
+Previously the clock was enabled implicitly via GRF phandle
+reference. Add it explicitly now to align with updated binding.
 
- .../rockchip/rockchip,analogix-dp.yaml        | 47 ++++++++++++++++++-
- arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 28 +++++++++++
- arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  4 +-
- .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |  4 +-
- .../drm/bridge/analogix/analogix_dp_core.c    |  3 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c | 18 +++----
- .../gpu/drm/rockchip/analogix_dp-rockchip.c   | 31 +++++++++---
- include/drm/bridge/analogix_dp.h              | 13 ++++-
- 8 files changed, 124 insertions(+), 24 deletions(-)
+Fixes: a481bb0b1ad9 ("arm64: dts: rockchip: Add eDP1 dt node for rk3588")
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
 ---
 
-Changes in v2:
-- Split out separate patches to add the "hclk" clock reference.
-- Split out separate patches to enable the "hclk" clock.
-- Add Reviewed-by tag.
-
-Changes in v3:
-- Add a patch to expand descriptions for clocks of the eDP node.
-- Add Reviewed-by tag.
-
 Changes in v4:
-- Modify commit msg.
+- Modify the commit msg.
+---
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Changes in v5:
-- Enforce the correct third clock name on a per-compatible basis.
-- Modify the commit msg simultaneously.
-- Add Acked-by tag.
-
-Changes in v6:
-- Expand more detail commit msg about using hclk instead of grf clock.
-
-Changes in v7:
-- List all valid clock names at the top level, and constrain the clock
-  count for each platform with minItems/maxItems in allOf.
-
-Changes in v8:
-- Fix indentation to 10 for enum in clock-names property.
-
-Changes in v9:
-- Restore the explicit clock-names for RK3399 and RK3588 eDP dt-bindings.
-
-Changes in v10:
-- Use automatic cleanup to fix OF node reference leak reported by
-  Sashiko.
-
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+index a2640014ee04..b251bb129cdb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+@@ -285,8 +285,8 @@ hdmi1_out: port@1 {
+ 	edp1: edp@fded0000 {
+ 		compatible = "rockchip,rk3588-edp";
+ 		reg = <0x0 0xfded0000 0x0 0x1000>;
+-		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>;
+-		clock-names = "dp", "pclk";
++		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>, <&cru HCLK_VO1>;
++		clock-names = "dp", "pclk", "hclk";
+ 		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		phys = <&hdptxphy1>;
+ 		phy-names = "dp";
 -- 
 2.34.1
 
