@@ -4,70 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4528FCD6E4C
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 04:07:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05B58CD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 06:51:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
-	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=R0XAbMeBAYBXy27S1YhVbCSI1o23y0kTMRIzOnnTVuA=; b=qZ3JUlDB7lFd0v
-	GfLMwyG2X/dN4eWLQAFE//MQEfZ0nAJaDoeK8s4ZsTq42xIEEjYJA14gsRr0e4pNgW4CQbXp/rQsp
-	I3MqxFYxP/KWj1OujSJD28V3o+/5+Gv1nqp9qIpCh2rBAzY46DZxW7gSeRNczMx2GWWXhw+MbTjYZ
-	fzhNbTKIUh573q1nI9QVL7JmK2SqE30PNN6lT8dQqBV9gQv9PKVhZmbTPA9CYLFQw+WVzG7Aam+Iy
-	C9BRVY0r95YSYuf4v13Bbuu3j7jptmO00rWstxrKWb+vjpTs9kR0e+L8IBvj5ETLsGPPge3KE8+rp
-	FJOK62PMX04fZ2tYkQwA==;
+	List-Owner; bh=I5fd7dxCCQLw0NvlXdrCUSY54YeCzOIRwCX+2SaAnbI=; b=DQbdhl9GDWCRL+
+	XxOaKWv/j8ack6xs1oQDP97mCxY0z1HnISuAtDIVvIalRVBK/4bheJMSJ6/ioEreYE5EF2ay9f3Wc
+	CTOV03d/4m3ipur76oPBerUtSU+blry0k2VkWMXJD5ksJYseziZE6sajwUtkU5gTHBpfwWXA+A26v
+	GGFrcEZidHdu3DeX/kEgohYDwO9/eAS40sVitcrVBuYqsfmFkRKz1P89crE3w6YiWvqSIaPBIJMql
+	c7uten/SW4bH0jewObCgnKdYBTTZ1rLi4sE0HpN+UuAllmZBNCUsQK8aRcvghpL5KqyY1eCPdIpbW
+	szNFjJV+VFsUHmYYFx+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTtvN-0000000A7AV-0nuB;
-	Mon, 01 Jun 2026 04:06:49 +0000
-Received: from mail-m254108.xmail.ntesmail.com ([103.129.254.108])
+	id 1wTwUY-0000000AEbh-2va3;
+	Mon, 01 Jun 2026 06:51:18 +0000
+Received: from mail-m60122.netease.com ([210.79.60.122])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTtvI-0000000A79q-1FQm;
-	Mon, 01 Jun 2026 04:06:48 +0000
-Received: from [172.16.12.77] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 40886331e;
-	Mon, 1 Jun 2026 12:06:37 +0800 (GMT+08:00)
-Message-ID: <9a7855a7-6b0c-4aa2-8516-13d94beabac6@rock-chips.com>
-Date: Mon, 1 Jun 2026 12:06:37 +0800
+	id 1wTwUR-0000000AEXa-20np;
+	Mon, 01 Jun 2026 06:51:15 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 408ded050;
+	Mon, 1 Jun 2026 14:51:05 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: hjc@rock-chips.com,
+	heiko@sntech.de,
+	andy.yan@rock-chips.com,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	andrzej.hajda@intel.com,
+	neil.armstrong@linaro.org,
+	rfoss@kernel.org
+Subject: [PATCH v10 01/11] dt-bindings: display: rockchip: analogix-dp: Fix hclk as third clock for RK3588
+Date: Mon,  1 Jun 2026 14:50:50 +0800
+Message-Id: <20260601065100.1103873-2-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260601065100.1103873-1-damon.ding@rock-chips.com>
+References: <20260601065100.1103873-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 05/10] drm/bridge: dw-hdmi-qp: Add HDMI 2.0 SCDC
- scrambling and high TMDS clock ratio support
-To: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>,
- Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>
-Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org,
- Diederik de Haas <diederik@cknow-tech.com>,
- Maud Spierings <maud_spierings@hotmail.com>
-References: <20260426-dw-hdmi-qp-scramb-v5-0-d778e70c317b@collabora.com>
- <20260426-dw-hdmi-qp-scramb-v5-5-d778e70c317b@collabora.com>
-Content-Language: en-US
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20260426-dw-hdmi-qp-scramb-v5-5-d778e70c317b@collabora.com>
-X-HM-Tid: 0a9e815cb66b09d8kunm1304045b34b196
+X-HM-Tid: 0a9e81f34a4803a8kunm111da268257de7
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkaSxlMVkxCSBpDQ00fGklJTVYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHUJKVklOQ04ZTU9JTEoaGVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=QQov8Rb4dnNQBMbsVmDBFtU6l/xXf8ishvwt3UTIx9DJPlxOJx45/2rfVpGoJdwjJWBhUBPxCEnWzmLOsMJ+jqHutehOIcywAkJRcAQ5HrBDkNRgzoblh8R29PrLlVnlyl0hzZXEXpU8m87T67X+NrBlw6OKqZnnqlIiXgUMvaQ=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=Tga5971EEa630O6n+PhHzaOHaTe0vvPmQiFQjog/n0Q=;
+	b=B3K04ss7d3MgFXSvuGvot9Gb/oUqpM31+R3q0K3kLtpUL5JQu9bIJk/XRzlKZgSdSb1KQ7zGe1hd6mXi55LSlwt9HfAZ+HPZtpDSMf5N62YRUc8R1U6ldjGgoj+1TqeX/1FGMHvEfcApST2NQsTFIrplozIf/rb9ysRN+w11/Ug=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=JCOiC5xHahz6m4GJmafwimWE7DoGsWs8/hxxzpCEUwk=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260531_210645_825556_D602AF60 
-X-CRM114-Status: GOOD (  27.75  )
+X-CRM114-CacheID: sfid-20260531_235112_084711_4557BDB8 
+X-CRM114-Status: UNSURE (   9.93  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,336 +76,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: dmitry.baryshkov@oss.qualcomm.com, devicetree@vger.kernel.org, jonas@kwiboo.se, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, dianders@chromium.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, Laurent.pinchart@ideasonboard.com, luca.ceresoli@bootlin.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org, m.szyprowski@samsung.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
+RK3588 eDP controller requires HCLK_VO1 to access the VO1 GRF
+registers and enable the video datapath.
 
-On 4/26/26 08:20, Cristian Ciocaltea wrote:
-> Enable HDMI 2.0 display modes (e.g. 4K@60Hz) by adding SCDC management
-> for the high TMDS clock ratio and scrambling, required when the TMDS
-> character rate exceeds the 340 MHz HDMI 1.4b limit.
-> 
-> A periodic work item monitors the sink's scrambling status to recover
-> from sink-side resets.  On hotplug detect, if SCDC scrambling state is
-> out of sync with the driver, trigger a CRTC reset to re-establish the
-> link.
-> 
-> Reject modes requiring TMDS rates above 600 MHz, as those fall in the
-> HDMI 2.1 FRL domain which is not supported. In no_hpd configurations,
-> further restrict to 340 MHz since SCDC requires a connected sink.
-> 
-> Tested-by: Diederik de Haas <diederik@cknow-tech.com>
-> Tested-by: Maud Spierings <maud_spierings@hotmail.com>
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> ---
->   drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 188 ++++++++++++++++++++++++---
->   1 file changed, 172 insertions(+), 16 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> index d649a1cf07f5..c482a8e7da25 100644
-> --- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> +++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-> @@ -2,6 +2,7 @@
->   /*
->    * Copyright (c) 2021-2022 Rockchip Electronics Co., Ltd.
->    * Copyright (c) 2024 Collabora Ltd.
-> + * Copyright (c) 2025 Amazon.com, Inc. or its affiliates.
->    *
->    * Author: Algea Cao <algea.cao@rock-chips.com>
->    * Author: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> @@ -21,9 +22,11 @@
->   #include <drm/display/drm_hdmi_helper.h>
->   #include <drm/display/drm_hdmi_cec_helper.h>
->   #include <drm/display/drm_hdmi_state_helper.h>
-> +#include <drm/display/drm_scdc_helper.h>
->   #include <drm/drm_atomic.h>
->   #include <drm/drm_atomic_helper.h>
->   #include <drm/drm_bridge.h>
-> +#include <drm/drm_bridge_helper.h>
->   #include <drm/drm_connector.h>
->   #include <drm/drm_edid.h>
->   #include <drm/drm_modes.h>
-> @@ -39,7 +42,9 @@
->   #define DDC_SEGMENT_ADDR	0x30
->   
->   #define HDMI14_MAX_TMDSCLK	340000000
-> +#define HDMI20_MAX_TMDSRATE	600000000
->   
-> +#define SCDC_MAX_SOURCE_VERSION	0x1
->   #define SCRAMB_POLL_DELAY_MS	3000
->   
->   /*
-> @@ -164,6 +169,11 @@ struct dw_hdmi_qp {
->   	} phy;
->   
->   	unsigned long ref_clk_rate;
-> +
-> +	struct drm_connector *curr_conn;
-> +	struct delayed_work scramb_work;
-> +	bool scramb_enabled;
-> +
->   	struct regmap *regm;
->   	int main_irq;
->   
-> @@ -749,28 +759,124 @@ static struct i2c_adapter *dw_hdmi_qp_i2c_adapter(struct dw_hdmi_qp *hdmi)
->   	return adap;
->   }
->   
-> +static bool dw_hdmi_qp_supports_scrambling(struct drm_display_info *display)
-> +{
-> +	if (!display->is_hdmi)
-> +		return false;
-> +
-> +	return display->hdmi.scdc.supported &&
-> +		display->hdmi.scdc.scrambling.supported;
-> +}
-> +
-> +static int dw_hdmi_qp_set_scramb(struct dw_hdmi_qp *hdmi)
-> +{
-> +	bool done;
-> +
-> +	dev_dbg(hdmi->dev, "set scrambling\n");
-> +
-> +	done = drm_scdc_set_high_tmds_clock_ratio(hdmi->curr_conn, true);
-> +	if (!done)
-> +		return -EIO;
-> +
-> +	done = drm_scdc_set_scrambling(hdmi->curr_conn, true);
-> +	if (!done) {
-> +		drm_scdc_set_high_tmds_clock_ratio(hdmi->curr_conn, false);
-> +		return -EIO;
-> +	}
-> +
-> +	schedule_delayed_work(&hdmi->scramb_work,
-> +			      msecs_to_jiffies(SCRAMB_POLL_DELAY_MS));
-> +	return 0;
-> +}
-> +
-> +static void dw_hdmi_qp_scramb_work(struct work_struct *work)
-> +{
-> +	struct dw_hdmi_qp *hdmi = container_of(to_delayed_work(work),
-> +					       struct dw_hdmi_qp,
-> +					       scramb_work);
-> +	if (READ_ONCE(hdmi->scramb_enabled) &&
-> +	    !drm_scdc_get_scrambling_status(hdmi->curr_conn))
-> +		dw_hdmi_qp_set_scramb(hdmi);
-> +}
-> +
-> +static void dw_hdmi_qp_enable_scramb(struct dw_hdmi_qp *hdmi)
-> +{
-> +	int ret;
-> +	u8 ver;
-> +
-> +	if (!dw_hdmi_qp_supports_scrambling(&hdmi->curr_conn->display_info))
-> +		return;
-> +
-> +	ret = drm_scdc_readb(hdmi->bridge.ddc, SCDC_SINK_VERSION, &ver);
-> +	if (ret) {
-> +		dev_err(hdmi->dev, "Failed to read SCDC_SINK_VERSION: %d\n", ret);
-> +		return;
-> +	}
-> +
-> +	ret = drm_scdc_writeb(hdmi->bridge.ddc, SCDC_SOURCE_VERSION,
-> +			      min_t(u8, ver, SCDC_MAX_SOURCE_VERSION));
-> +	if (ret) {
-> +		dev_err(hdmi->dev, "Failed to write SCDC_SOURCE_VERSION: %d\n", ret);
-> +		return;
-> +	}
-> +
-> +	WRITE_ONCE(hdmi->scramb_enabled, true);
-> +
-> +	ret = dw_hdmi_qp_set_scramb(hdmi);
-> +	if (ret) {
-> +		hdmi->scramb_enabled = false;
-> +		return;
-> +	}
-> +
-> +	dw_hdmi_qp_write(hdmi, 1, SCRAMB_CONFIG0);
-> +
-> +	/* Wait at least 1 ms before resuming TMDS transmission */
-> +	usleep_range(1000, 5000);
-> +}
-> +
-> +static void dw_hdmi_qp_disable_scramb(struct dw_hdmi_qp *hdmi)
-> +{
-> +	if (!hdmi->scramb_enabled)
-> +		return;
-> +
-> +	dev_dbg(hdmi->dev, "disable scrambling\n");
-> +
-> +	WRITE_ONCE(hdmi->scramb_enabled, false);
-> +	cancel_delayed_work_sync(&hdmi->scramb_work);
-> +
-> +	dw_hdmi_qp_write(hdmi, 0, SCRAMB_CONFIG0);
-> +
-> +	if (hdmi->curr_conn->status == connector_status_connected) {
-> +		drm_scdc_set_scrambling(hdmi->curr_conn, false);
-> +		drm_scdc_set_high_tmds_clock_ratio(hdmi->curr_conn, false);
-> +	}
-> +}
-> +
->   static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
->   					    struct drm_atomic_state *state)
->   {
->   	struct dw_hdmi_qp *hdmi = bridge->driver_private;
->   	struct drm_connector_state *conn_state;
-> -	struct drm_connector *connector;
->   	unsigned int op_mode;
->   
-> -	connector = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
-> -	if (WARN_ON(!connector))
-> +	hdmi->curr_conn = drm_atomic_get_new_connector_for_encoder(state,
-> +								   bridge->encoder);
-> +	if (WARN_ON(!hdmi->curr_conn))
->   		return;
->   
-> -	conn_state = drm_atomic_get_new_connector_state(state, connector);
-> +	conn_state = drm_atomic_get_new_connector_state(state, hdmi->curr_conn);
->   	if (WARN_ON(!conn_state))
->   		return;
->   
-> -	if (connector->display_info.is_hdmi) {
-> +	if (hdmi->curr_conn->display_info.is_hdmi) {
->   		dev_dbg(hdmi->dev, "%s mode=HDMI %s rate=%llu bpc=%u\n", __func__,
->   			drm_hdmi_connector_get_output_format_name(conn_state->hdmi.output_format),
->   			conn_state->hdmi.tmds_char_rate, conn_state->hdmi.output_bpc);
->   		op_mode = 0;
->   		hdmi->tmds_char_rate = conn_state->hdmi.tmds_char_rate;
-> +
-> +		if (conn_state->hdmi.tmds_char_rate > HDMI14_MAX_TMDSCLK)
-> +			dw_hdmi_qp_enable_scramb(hdmi);
->   	} else {
->   		dev_dbg(hdmi->dev, "%s mode=DVI\n", __func__);
->   		op_mode = OPMODE_DVI;
-> @@ -781,7 +887,7 @@ static void dw_hdmi_qp_bridge_atomic_enable(struct drm_bridge *bridge,
->   	dw_hdmi_qp_mod(hdmi, HDCP2_BYPASS, HDCP2_BYPASS, HDCP2LOGIC_CONFIG0);
->   	dw_hdmi_qp_mod(hdmi, op_mode, OPMODE_DVI, LINK_CONFIG0);
->   
-> -	drm_atomic_helper_connector_hdmi_update_infoframes(connector, state);
-> +	drm_atomic_helper_connector_hdmi_update_infoframes(hdmi->curr_conn, state);
->   }
->   
->   static void dw_hdmi_qp_bridge_atomic_disable(struct drm_bridge *bridge,
-> @@ -791,14 +897,49 @@ static void dw_hdmi_qp_bridge_atomic_disable(struct drm_bridge *bridge,
->   
->   	hdmi->tmds_char_rate = 0;
->   
-> +	dw_hdmi_qp_disable_scramb(hdmi);
-> +
-> +	hdmi->curr_conn = NULL;
->   	hdmi->phy.ops->disable(hdmi, hdmi->phy.data);
->   }
->   
-> -static enum drm_connector_status
-> -dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector)
-> +static int dw_hdmi_qp_reset_crtc(struct dw_hdmi_qp *hdmi,
-> +				 struct drm_connector *connector,
-> +				 struct drm_modeset_acquire_ctx *ctx)
-> +{
-> +	u8 config;
-> +	int ret;
-> +
-> +	ret = drm_scdc_readb(hdmi->bridge.ddc, SCDC_TMDS_CONFIG, &config);
-> +	if (ret < 0) {
-> +		dev_err(hdmi->dev, "Failed to read TMDS config: %d\n", ret);
-> +		return ret;
-> +	}
-> +
-> +	if (!!(config & SCDC_SCRAMBLING_ENABLE) == hdmi->scramb_enabled)
-> +		return 0;
-> +
-> +	drm_atomic_helper_connector_hdmi_hotplug(connector,
-> +						 connector_status_connected);
-> +	/*
-> +	 * Conform to HDMI 2.0 spec by ensuring scrambled data is not sent
-> +	 * before configuring the sink scrambling, as well as suspending any
-> +	 * TMDS transmission while changing the TMDS clock rate in the sink.
-> +	 */
-> +
-> +	dev_dbg(hdmi->dev, "resetting crtc\n");
-> +
-> +	return drm_bridge_helper_reset_crtc(&hdmi->bridge, ctx);
-> +}
-> +
-> +static int dw_hdmi_qp_bridge_detect_ctx(struct drm_bridge *bridge,
-> +					struct drm_connector *connector,
-> +					struct drm_modeset_acquire_ctx *ctx)
->   {
->   	struct dw_hdmi_qp *hdmi = bridge->driver_private;
-> +	enum drm_connector_status status;
->   	const struct drm_edid *drm_edid;
-> +	int ret;
->   
->   	if (hdmi->no_hpd) {
->   		drm_edid = drm_edid_read_ddc(connector, bridge->ddc);
-> @@ -808,7 +949,20 @@ dw_hdmi_qp_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connec
->   			return connector_status_disconnected;
->   	}
->   
-> -	return hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
-> +	status = hdmi->phy.ops->read_hpd(hdmi, hdmi->phy.data);
-> +
-> +	dev_dbg(hdmi->dev, "%s status=%d scramb=%d\n", __func__,
-> +		status, hdmi->scramb_enabled);
-> +
-> +	if (status == connector_status_connected && hdmi->scramb_enabled) {
-> +		ret = dw_hdmi_qp_reset_crtc(hdmi, connector, ctx);
-> +		if (ret == -EDEADLK)
-> +			return ret;
-> +		if (ret < 0)
-> +			status = connector_status_unknown;
-> +	}
-> +
-> +	return status;
->   }
->   
->   static const struct drm_edid *
-> @@ -832,12 +986,12 @@ dw_hdmi_qp_bridge_tmds_char_rate_valid(const struct drm_bridge *bridge,
->   {
->   	struct dw_hdmi_qp *hdmi = bridge->driver_private;
->   
-> -	/*
-> -	 * TODO: when hdmi->no_hpd is 1 we must not support modes that
-> -	 * require scrambling, including every mode with a clock above
-> -	 * HDMI14_MAX_TMDSCLK.
-> -	 */
-> -	if (rate > HDMI14_MAX_TMDSCLK) {
+Previously, the clock was enabled implicitly via the 'rockchip,vo-grf'
+phandle reference, which allowed the eDP to work without explicitly
+managing the hclk_vo1 clock. However, this is not safe or explicit.
 
-The locally defined HDMI14_MAX_TMDSCLK has been removed, we should now use HDMI_1_3_CHAR_RATE_MAX,
-and I think we should apply the same change to HDMI20_MAX_TMDSRATE
+To make the clock dependency explicit, enforce per-SoC clock-names
+requirements:
+ - RK3288: 2 clocks (dp, pclk)
+ - RK3399: 3 clocks (dp, pclk, grf)
+ - RK3588: 3 clocks (dp, pclk, hclk)
 
+Do not reuse the 'grf' clock name for RK3588 because it represents
+a different clock with distinct control logic:
+- The 'grf' clock is only for GRF register access and is toggled
+  dynamically during register access.
+- The 'hclk' clock controls both GRF access and video datapath
+  gating, and must remain enabled during probe.
 
-> +	if (hdmi->no_hpd && rate > HDMI14_MAX_TMDSCLK) {
-> +		dev_dbg(hdmi->dev, "Unsupported TMDS char rate in no_hpd mode: %lld\n", rate);
-> +		return MODE_CLOCK_HIGH;
-> +	}
-> +
-> +	if (rate > HDMI20_MAX_TMDSRATE) {
->   		dev_dbg(hdmi->dev, "Unsupported TMDS char rate: %lld\n", rate);
->   		return MODE_CLOCK_HIGH;
->   	}
-> @@ -1197,7 +1351,7 @@ static const struct drm_bridge_funcs dw_hdmi_qp_bridge_funcs = {
->   	.atomic_reset = drm_atomic_helper_bridge_reset,
->   	.atomic_enable = dw_hdmi_qp_bridge_atomic_enable,
->   	.atomic_disable = dw_hdmi_qp_bridge_atomic_disable,
-> -	.detect = dw_hdmi_qp_bridge_detect,
-> +	.detect_ctx = dw_hdmi_qp_bridge_detect_ctx,
->   	.edid_read = dw_hdmi_qp_bridge_edid_read,
->   	.hdmi_tmds_char_rate_valid = dw_hdmi_qp_bridge_tmds_char_rate_valid,
->   	.hdmi_clear_avi_infoframe = dw_hdmi_qp_bridge_clear_avi_infoframe,
-> @@ -1287,6 +1441,8 @@ struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
->   	if (IS_ERR(hdmi))
->   		return ERR_CAST(hdmi);
->   
-> +	INIT_DELAYED_WORK(&hdmi->scramb_work, dw_hdmi_qp_scramb_work);
-> +
->   	hdmi->dev = dev;
->   
->   	regs = devm_platform_ioremap_resource(pdev, 0);
-> 
+Fixes: f855146263b1 ("dt-bindings: display: rockchip: analogix-dp: Add support for RK3588")
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+
+---
+
+Changes in v4:
+- Modify the commit msg.
+
+Changes in v5:
+- Enforce the correct third clock name on a per-compatible basis.
+- Modify the commit msg simultaneously.
+
+Changes in v6:
+- Expand more detail commit msg about using hclk instead of grf clock.
+
+Changes in v7:
+- List all valid clock names at the top level, and constrain the clock
+  count for each platform with minItems/maxItems in allOf.
+
+Changes in v8:
+- Fix indentation to 10 for enum in clock-names property.
+
+Changes in v9:
+- Restore the explicit clock-names for RK3399 and RK3588.
+---
+ .../rockchip/rockchip,analogix-dp.yaml        | 40 ++++++++++++++++++-
+ 1 file changed, 39 insertions(+), 1 deletion(-)
+
+diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+index d99b23b88cc5..6643889f2a9c 100644
+--- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
++++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogix-dp.yaml
+@@ -26,7 +26,9 @@ properties:
+     items:
+       - const: dp
+       - const: pclk
+-      - const: grf
++      - enum:
++          - grf
++          - hclk
+ 
+   power-domains:
+     maxItems: 1
+@@ -60,6 +62,35 @@ required:
+ allOf:
+   - $ref: /schemas/display/bridge/analogix,dp.yaml#
+ 
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3288-dp
++    then:
++      properties:
++        clocks:
++          maxItems: 2
++        clock-names:
++          maxItems: 2
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - rockchip,rk3399-edp
++    then:
++      properties:
++        clocks:
++          minItems: 3
++        clock-names:
++          items:
++            - const: dp
++            - const: pclk
++            - const: grf
++
+   - if:
+       properties:
+         compatible:
+@@ -68,6 +99,13 @@ allOf:
+               - rockchip,rk3588-edp
+     then:
+       properties:
++        clocks:
++          minItems: 3
++        clock-names:
++          items:
++            - const: dp
++            - const: pclk
++            - const: hclk
+         resets:
+           minItems: 2
+         reset-names:
+-- 
+2.34.1
 
 
 _______________________________________________
