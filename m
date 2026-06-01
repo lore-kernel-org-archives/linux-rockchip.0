@@ -4,55 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE3FBCD6E67
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 18:00:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D810CD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 18:00:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
-	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=ZzhwsQKauar5rce+7JzH5C+GCnU1tBiT2HzWf7JwlcM=; b=Olwdw9XWSCeL/n
-	qYeD4PyIJ6fCuhc1fZA/R5qbx40cWHS3IZsJTt5npCi0cUI3ZnjRM31gtFqiJRi7h0MeYILBbpFUl
-	zCnwzl2hVo/6QpNt0O4tMDNS0UAq1epO8Z3lSjqnlDc9BWCwCiXwd7VEyewf3UgSClCNKLTORlNC5
-	o5mhjIGwOS1kD84Qp1O/7JP5FUNX2sUXtJNzZn7YPjrCeaD8wurv7oI77w+BYRiBigJX/A/uyLz4y
-	92up2y8XzQY33G15VXD0+k64Zkts36ycTli9V2FYscw7ShPcf9RLz4Z+lGhz4pZqODTarS1lTN3zm
-	J7/mHNX5Khz0Zno1MZGg==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=1AcCVvuEJaFvRLM7hvhif2RDxlvDZEjGZr0bO8R2/gY=; b=EZjbP1eH75X8Ee
+	M0ad6O4t3K2SPrbyF3MlYZLcK9zeCUcMl7RNWvwvv3POlx/abAbIobonmImW2DA3KPnlF3Qw8rcTx
+	9g2q8q+yZRljV7KNgO9YqBRhZWbwDbYUFTC0CSSinHsWAob470h7dKEbW0GzjZL1kY6DyZ6A1n1lv
+	+POOP5T/FrsiKgasdU0w3/AZHj3cAGZT/VZQYIepiuDDpyh/ChVXlEphcUpZW0/fhfZLBIiDAzWP0
+	0XXmV5iO1XusWoMhDeESm3jTGsKZfE9jF87zd9qUD5dKVx5R//ywK1VkejBYLv6vMoYHsUwNyCYhV
+	9b+EMLFGwrffN+MtksqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU6wJ-0000000Bd4L-1fwy;
-	Mon, 01 Jun 2026 18:00:39 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wU6wK-0000000Bd5V-2Rw0;
+	Mon, 01 Jun 2026 18:00:40 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU6wF-0000000Bd2a-1YHn;
-	Mon, 01 Jun 2026 18:00:36 +0000
+	id 1wU6wG-0000000Bd2i-2gCv;
+	Mon, 01 Jun 2026 18:00:38 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1780336832;
-	bh=f3hUMNFcEdyqeQuUHaPUg6wYaJ5ED/dmqbO5zRa5LnM=;
-	h=From:Subject:Date:To:Cc:From;
-	b=kGIUJ8ve3/hI+JQuzo60CZ83t7lc3FfA6ay+h3etetqrznxwIkEW4spp7rfFmdSxS
-	 IIv7VBp2eGjVhVm/YTyZT8BEfUnHxvLjzAqbUsr1/GrExPomvXqMvH82qdvSIHNWb9
-	 wqY021pJKPqh9Hb3VrKFL18ey8VV0zzUNIcHzqSuJhbX4H5FaIPUoivzYCqTQwgTAQ
-	 WmYQRU15/4kzc/xsz4J0C7OegRSQaNJfBDZRlcVDA0V2YHi/Z0p/0JOc3v2XF+hFHN
-	 7SFKpRa3AcWCLCk7Eb914qC2qHZCuevZdF8Kck/DrFFHmsFbI9HK5NhPOLKnPpAdMN
-	 iWK57FPpVIqUQ==
+	s=mail; t=1780336834;
+	bh=NSO9+f4UyIYv1pCXUWepWAtPKVP4X8bGJTPLn/MhlxI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=gzcjYXhVld80Ke1ImNq1+v7Q4A9/7RabfGuVBUjc7sVEAAJM396ZJ0anY30zpjqgx
+	 8hJPA18INtvBFt55uHn6Iyvg7ec08zO1nMARF6Qp4p4Ek+ZOt+7vATm5ag05hA+BGo
+	 A//jBQYB7EQHcbBe63cyHksrijaeg3I1h9aFIMt9rZHaL6JaLn+D1B0nbjO5q5EyKD
+	 tnoTHVH62NIbk/XPelyJXEFhugaI3a1fqaYOd6Pr4O6Nr3djzH+jiFHcCoXrXe5cQB
+	 kjLEWaomgBwwkW5F8bqtefW5dfYv5wJ1DsqyNKJwzbPIjZEBD6FnhL/3AgX1df/uhE
+	 0aKkv1zdziwMw==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 62CF417E03DA;
-	Mon,  1 Jun 2026 20:00:32 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E26117E0852;
+	Mon,  1 Jun 2026 20:00:34 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Subject: [PATCH v2 0/2] YUV support for VOP2 background color
-Date: Mon, 01 Jun 2026 21:00:02 +0300
-Message-Id: <20260601-vop2-bg-yuv-v2-0-e5aef1d16fec@collabora.com>
+Date: Mon, 01 Jun 2026 21:00:04 +0300
+Subject: [PATCH v2 2/2] drm/rockchip: vop2: Add YUV support to background
+ color
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/22NQQ6CMBBFr0Jm7ZgyWgyuvIdh0ZYBapCSFhoJ4
- e4W3Lp8yfvvrxDYWw5wz1bwHG2wbkhApwxMp4aW0daJgQQVQtIVoxsJdYvLHDHXggslSiNvJaT
- F6Lmxn6P2rH4cZv1iM+2J3ehsmJxfjruY797/csxRYG10oSSVdGnkw7i+V9p5dTbuDdW2bV/F8
- 53YvAAAAA==
-X-Change-ID: 20260524-vop2-bg-yuv-1b0e6a09c579
+Message-Id: <20260601-vop2-bg-yuv-v2-2-e5aef1d16fec@collabora.com>
+References: <20260601-vop2-bg-yuv-v2-0-e5aef1d16fec@collabora.com>
+In-Reply-To: <20260601-vop2-bg-yuv-v2-0-e5aef1d16fec@collabora.com>
 To: Sandy Huang <hjc@rock-chips.com>, 
  =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  Andy Yan <andy.yan@rock-chips.com>, 
@@ -64,9 +62,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-kernel@vger.kernel.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_110035_572389_A9AE085B 
-X-CRM114-Status: UNSURE (   9.44  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260601_110036_830504_E3999BE3 
+X-CRM114-Status: GOOD (  16.58  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +75,246 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-U2luY2UgY29tbWl0IGJlYzdjYmZhN2Q0ZiAoImRybS9yb2NrY2hpcDogdm9wMjogU3VwcG9ydCBz
-ZXR0aW5nIGN1c3RvbQpiYWNrZ3JvdW5kIGNvbG9yIikgdGhlIFZPUDIgZGlzcGxheSBjb250cm9s
-bGVyIGFsbG93cyBjb25maWd1cmluZyB0aGUKYmFja2dyb3VuZCBjb2xvciBvZiBlYWNoIHZpZGVv
-IG91dHB1dCBwb3J0LgoKSG93ZXZlciwgdGhpcyBpcyBjdXJyZW50bHkgbGltaXRlZCB0byBSR0Ig
-Zm9ybWF0cy4gIFdoZW4gb3BlcmF0aW5nIGluCllVViBvdmVybGF5IG1vZGUsIHRoZSBjb2xvciBt
-dXN0IGJlIHByb2dyYW1tZWQgdXNpbmcgWVVWIGZvcm1hdC4KCkFkZCB0aGUgbmVjZXNzYXJ5IFJH
-Qi10by1ZQ2JDciBjb252ZXJzaW9uIGxvZ2ljLCBjb3ZlcmluZyBhbGwgY29sb3IKc3BhY2VzIHN1
-cHBvcnRlZCBieSB0aGUgZGlzcGxheSBjb250cm9sbGVyOiBCVDYwMUwsIEJUNjAxRiwgQlQ3MDlM
-IGFuZApCVDIwMjBMLgoKU2lnbmVkLW9mZi1ieTogQ3Jpc3RpYW4gQ2lvY2FsdGVhIDxjcmlzdGlh
-bi5jaW9jYWx0ZWFAY29sbGFib3JhLmNvbT4KLS0tCkNoYW5nZXMgaW4gdjI6Ci0gVXNlZCB2b3Ay
-X2NvbnZlcnRfY3NjX21vZGUoKSBoZWxwZXIgdG8gYWRkcmVzcyBhbiBpc3N1ZSByZXBvcnRlZCBi
-eQogIHZjc3RhdGUtPmNvbG9yX3NwYWNlIGhvbGRzIGEgVjRMMiBjb2xvcnNwYWNlIGVudW0KLSBS
-ZWJhc2VkIG9udG8gbGF0ZXN0IGRybS1taXNjLW5leHQKLSBMaW5rIHRvIHYxOiBodHRwczovL3Bh
-dGNoLm1zZ2lkLmxpbmsvMjAyNjA1MjQtdm9wMi1iZy15dXYtdjEtMC1kY2I2YTUyOTIzZjVAY29s
-bGFib3JhLmNvbQoKVG86IFNhbmR5IEh1YW5nIDxoamNAcm9jay1jaGlwcy5jb20+ClRvOiBIZWlr
-byBTdMO8Ym5lciA8aGVpa29Ac250ZWNoLmRlPgpUbzogQW5keSBZYW4gPGFuZHkueWFuQHJvY2st
-Y2hpcHMuY29tPgpUbzogTWFhcnRlbiBMYW5raG9yc3QgPG1hYXJ0ZW4ubGFua2hvcnN0QGxpbnV4
-LmludGVsLmNvbT4KVG86IE1heGltZSBSaXBhcmQgPG1yaXBhcmRAa2VybmVsLm9yZz4KVG86IFRo
-b21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPgpUbzogRGF2aWQgQWlybGllIDxh
-aXJsaWVkQGdtYWlsLmNvbT4KVG86IFNpbW9uYSBWZXR0ZXIgPHNpbW9uYUBmZndsbC5jaD4KQ2M6
-IGtlcm5lbEBjb2xsYWJvcmEuY29tCkNjOiBkcmktZGV2ZWxAbGlzdHMuZnJlZWRlc2t0b3Aub3Jn
-CkNjOiBsaW51eC1hcm0ta2VybmVsQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LXJvY2tj
-aGlwQGxpc3RzLmluZnJhZGVhZC5vcmcKQ2M6IGxpbnV4LWtlcm5lbEB2Z2VyLmtlcm5lbC5vcmcK
-U2FzaGlrbzogdm9wMl9yZ2IxNl90b195dXYxNigpIGV4cGVjdHMgYW4gZW51bSB2b3BfY3NjX2Zv
-cm1hdCwgYnV0CgotLS0KQ3Jpc3RpYW4gQ2lvY2FsdGVhICgyKToKICAgICAgZHJtL3JvY2tjaGlw
-OiB2b3AyOiBSZW5hbWUgQ1NDX0JUMjAyMCB0byBDU0NfQlQyMDIwTAogICAgICBkcm0vcm9ja2No
-aXA6IHZvcDI6IEFkZCBZVVYgc3VwcG9ydCB0byBiYWNrZ3JvdW5kIGNvbG9yCgogZHJpdmVycy9n
-cHUvZHJtL3JvY2tjaGlwL3JvY2tjaGlwX2RybV92b3AyLmMgfCAxNTUgKysrKysrKysrKysrKysr
-KysrKysrKysrLS0tCiBkcml2ZXJzL2dwdS9kcm0vcm9ja2NoaXAvcm9ja2NoaXBfZHJtX3ZvcDIu
-aCB8ICAgMiArLQogMiBmaWxlcyBjaGFuZ2VkLCAxNDAgaW5zZXJ0aW9ucygrKSwgMTcgZGVsZXRp
-b25zKC0pCi0tLQpiYXNlLWNvbW1pdDogZTg0YjA3ZTBhMzBiMzcxMTE3ZjlhMTEyMGE0NjQ1YzIx
-M2YzOWNkOQpjaGFuZ2UtaWQ6IDIwMjYwNTI0LXZvcDItYmcteXV2LTFiMGU2YTA5YzU3OQoKCl9f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tj
-aGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6
-Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+The VOP2 background color must be programmed with 10-bit precision,
+using YUV format when the overlay operates in YUV mode, and RGB
+otherwise.
+
+Add the required RGB-to-YCbCr conversion logic, covering all color
+spaces supported by the display controller: BT601L, BT601F, BT709L and
+BT2020L.
+
+Since the color is currently programmed to hardware on every atomic
+commit, minimize the computation cost by splitting the work across the
+two paths: in atomic_enable(), perform the conversion unconditionally
+(the hardware state is unknown after power-on), while in atomic_flush(),
+perform it only when the DRM property has actually changed.
+
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 153 ++++++++++++++++++++++++---
+ 1 file changed, 138 insertions(+), 15 deletions(-)
+
+diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+index 64ac07cb1b0d..9b261f0c7eec 100644
+--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
++++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+@@ -728,6 +728,89 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
+ 	vop2_win_write(win, VOP2_WIN_CSC_MODE, csc_mode);
+ }
+ 
++/*
++ * RGB-to-YCbCr conversion based on color_to_ycbcr() and rgb2ycbcr() from
++ * drivers/media/common/v4l2-tpg/v4l2-tpg-core.c.
++ *
++ * Limited-range Y offset & chroma midpoint are expressed in 16-bit space.
++ */
++#define RGB2YUV_LIMITED_Y_OFFSET	(16 << 8)
++#define RGB2YUV_CHROMA_OFFSET		(128 << 8)
++#define COEFF(v, r)			((s32)(0.5 + (v) * (r) * 256.0))
++
++struct rgb2yuv_matrix {
++	s32 y_r,  y_g,  y_b;
++	s32 cb_r, cb_g, cb_b;
++	s32 cr_r, cr_g, cr_b;
++	s32 y_offset;
++};
++
++/* BT.601 Limited range */
++static const struct rgb2yuv_matrix rgb2yuv_bt601l = {
++	.y_r  = COEFF(0.299, 219),   .y_g  = COEFF(0.587, 219),   .y_b  = COEFF(0.114, 219),
++	.cb_r = COEFF(-0.1687, 224), .cb_g = COEFF(-0.3313, 224), .cb_b = COEFF(0.5, 224),
++	.cr_r = COEFF(0.5, 224),     .cr_g = COEFF(-0.4187, 224), .cr_b = COEFF(-0.0813, 224),
++	.y_offset = RGB2YUV_LIMITED_Y_OFFSET,
++};
++
++/* BT.601 Full range */
++static const struct rgb2yuv_matrix rgb2yuv_bt601f = {
++	.y_r  = COEFF(0.299, 255),   .y_g  = COEFF(0.587, 255),   .y_b  = COEFF(0.114, 255),
++	.cb_r = COEFF(-0.1687, 255), .cb_g = COEFF(-0.3313, 255), .cb_b = COEFF(0.5, 255),
++	.cr_r = COEFF(0.5, 255),     .cr_g = COEFF(-0.4187, 255), .cr_b = COEFF(-0.0813, 255),
++	.y_offset = 0,
++};
++
++/* BT.709 Limited range */
++static const struct rgb2yuv_matrix rgb2yuv_bt709l = {
++	.y_r  = COEFF(0.2126, 219),  .y_g  = COEFF(0.7152, 219),  .y_b  = COEFF(0.0722, 219),
++	.cb_r = COEFF(-0.1146, 224), .cb_g = COEFF(-0.3854, 224), .cb_b = COEFF(0.5, 224),
++	.cr_r = COEFF(0.5, 224),     .cr_g = COEFF(-0.4542, 224), .cr_b = COEFF(-0.0458, 224),
++	.y_offset = RGB2YUV_LIMITED_Y_OFFSET,
++};
++
++/* BT.2020 Limited range */
++static const struct rgb2yuv_matrix rgb2yuv_bt2020l = {
++	.y_r  = COEFF(0.2627, 219),  .y_g  = COEFF(0.6780, 219),  .y_b  = COEFF(0.0593, 219),
++	.cb_r = COEFF(-0.1396, 224), .cb_g = COEFF(-0.3604, 224), .cb_b = COEFF(0.5, 224),
++	.cr_r = COEFF(0.5, 224),     .cr_g = COEFF(-0.4598, 224), .cr_b = COEFF(-0.0402, 224),
++	.y_offset = RGB2YUV_LIMITED_Y_OFFSET,
++};
++
++static const struct rgb2yuv_matrix *
++vop2_rgb2yuv_get_matrix(enum vop_csc_format csc)
++{
++	switch (csc) {
++	case CSC_BT601L:
++		return &rgb2yuv_bt601l;
++	case CSC_BT601F:
++		return &rgb2yuv_bt601f;
++	case CSC_BT2020L:
++		return &rgb2yuv_bt2020l;
++	case CSC_BT709L:
++	default:
++		return &rgb2yuv_bt709l;
++	}
++}
++
++/* Convert an RGB (16bpc) to YUV444 (16bpc). */
++static void vop2_rgb16_to_yuv16(int v4l2_cs, u16 r, u16 g, u16 b,
++				u16 *y, u16 *cb, u16 *cr)
++{
++	enum vop_csc_format csc = vop2_convert_csc_mode(v4l2_cs);
++	const struct rgb2yuv_matrix *m = vop2_rgb2yuv_get_matrix(csc);
++	s64 rs = r, gs = g, bs = b;
++	s64 ys, cbs, crs;
++
++	ys  = m->y_r  * rs + m->y_g  * gs + m->y_b  * bs;
++	cbs = m->cb_r * rs + m->cb_g * gs + m->cb_b * bs;
++	crs = m->cr_r * rs + m->cr_g * gs + m->cr_b * bs;
++
++	*y  = (ys  >> 16) + m->y_offset;
++	*cb = (cbs >> 16) + RGB2YUV_CHROMA_OFFSET;
++	*cr = (crs >> 16) + RGB2YUV_CHROMA_OFFSET;
++}
++
+ static void vop2_crtc_enable_irq(struct vop2_video_port *vp, u32 irq)
+ {
+ 	struct vop2 *vop2 = vp->vop2;
+@@ -1554,12 +1637,58 @@ static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
+ 				DITHER_DOWN_ALLEGRO);
+ }
+ 
+-static void vop2_post_config(struct drm_crtc *crtc)
++static void vop2_bgcolor_setup(struct drm_crtc *crtc, bool force,
++			       struct drm_crtc_state *new_crtc_state,
++			       struct drm_crtc_state *old_crtc_state)
++{
++	struct rockchip_crtc_state *new_vcstate = to_rockchip_crtc_state(new_crtc_state);
++	struct rockchip_crtc_state *old_vcstate = to_rockchip_crtc_state(old_crtc_state);
++	struct vop2_video_port *vp = to_vop2_video_port(crtc);
++	u64 bgcolor = new_crtc_state->background_color;
++	u16 y, cb, cr;
++	u32 val;
++
++	if (!force && old_crtc_state->background_color == bgcolor &&
++	    old_vcstate->color_space == new_vcstate->color_space)
++		return;
++
++	/*
++	 * Background color is programmed with 10 bits of precision, using YUV
++	 * format when operating in YUV overlay mode, and RGB otherwise.
++	 */
++	if (new_vcstate->yuv_overlay) {
++		vop2_rgb16_to_yuv16(new_vcstate->color_space,
++				    DRM_ARGB64_GETR(bgcolor),
++				    DRM_ARGB64_GETG(bgcolor),
++				    DRM_ARGB64_GETB(bgcolor),
++				    &y, &cb, &cr);
++
++		val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, cr >> 6);
++		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, y >> 6);
++		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, cb >> 6);
++	} else {
++		/*
++		 * Since performance is more important than accuracy here, make
++		 * use of the DRM_ARGB64_GET*_BPCS() helpers.
++		 */
++		val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED,
++				 DRM_ARGB64_GETR_BPCS(bgcolor, 10));
++		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val,
++			     DRM_ARGB64_GETG_BPCS(bgcolor, 10));
++		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val,
++			     DRM_ARGB64_GETB_BPCS(bgcolor, 10));
++	}
++
++	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
++}
++
++static void vop2_post_config(struct drm_crtc *crtc, bool force,
++			     struct drm_crtc_state *new_crtc_state,
++			     struct drm_crtc_state *old_crtc_state)
+ {
+ 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+ 	struct vop2 *vop2 = vp->vop2;
+-	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
+-	u64 bgcolor = crtc->state->background_color;
++	struct drm_display_mode *mode = &new_crtc_state->adjusted_mode;
+ 	u16 vtotal = mode->crtc_vtotal;
+ 	u16 hdisplay = mode->crtc_hdisplay;
+ 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
+@@ -1605,15 +1734,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
+ 		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
+ 	}
+ 
+-	/*
+-	 * Background color is programmed with 10 bits of precision.
+-	 * Since performance is more important than accuracy here,
+-	 * make use of the DRM_ARGB64_GET*_BPCS() helpers.
+-	 */
+-	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR_BPCS(bgcolor, 10));
+-	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, DRM_ARGB64_GETG_BPCS(bgcolor, 10));
+-	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, DRM_ARGB64_GETB_BPCS(bgcolor, 10));
+-	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
++	vop2_bgcolor_setup(crtc, force, new_crtc_state, old_crtc_state);
+ }
+ 
+ static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+@@ -1628,8 +1749,9 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 	struct vop2 *vop2 = vp->vop2;
+ 	const struct vop2_data *vop2_data = vop2->data;
+ 	const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
++	struct drm_crtc_state *old_crtc_state = drm_atomic_get_old_crtc_state(state, crtc);
+ 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
+-	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
++	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc_state);
+ 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
+ 	unsigned long clock = mode->crtc_clock * 1000;
+ 	u16 hsync_len = mode->crtc_hsync_end - mode->crtc_hsync_start;
+@@ -1799,7 +1921,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+ 
+ 	clk_set_rate(vp->dclk, clock);
+ 
+-	vop2_post_config(crtc);
++	vop2_post_config(crtc, true, crtc_state, old_crtc_state);
+ 
+ 	vop2_cfg_done(vp);
+ 
+@@ -1874,6 +1996,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+ 				   struct drm_atomic_commit *state)
+ {
+ 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
++	struct drm_crtc_state *old_crtc_state = drm_atomic_get_old_crtc_state(state, crtc);
+ 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+ 	struct vop2 *vop2 = vp->vop2;
+ 
+@@ -1881,7 +2004,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	if (!drm_atomic_crtc_needs_modeset(crtc_state) && crtc_state->color_mgmt_changed)
+ 		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
+ 
+-	vop2_post_config(crtc);
++	vop2_post_config(crtc, false, crtc_state, old_crtc_state);
+ 
+ 	vop2_cfg_done(vp);
+ 
+
+-- 
+2.54.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
