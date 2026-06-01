@@ -4,60 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF3FDCD5BD1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 12:30:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980FACD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 12:36:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:Cc:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AMtjaKYOymWlUBWFxvpz/vgrfh/QyFWu0HHC2Vp5RD4=; b=b8wIsGV4WI9G+M70XptRc91310
-	XEhkw6Ft+FmU/ruMonYDH7SMSFlUPBRfNNzbgqbuZqMvlQZZloU4WJKl+Or/H6Ucs4/rMGiC87x9H
-	Q9g3y9AXqVeP21oFD0q+lh7WKx84EF1FN7lF8KX3G/zoBq5T9+Iiy5XvPZLhuz/RRBnkb5o10i0ZP
-	wCIx/WoVxXv6OEbL3esQEp0CxLWR/MkmLrDBcrTBMe+rKWc+C9CkqgqUiZQs1bLyX+VEJQnrzUSj9
-	4TX485kXl91HrWwloxrlptz8fgmaeQz3GdyTG6/sQpYru8AtX5Z1Pk8XE4osTft5eVS7mQtVDAhJq
-	CD4WHcaw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qoyP+YrDk+BafDWZ2BZIPfgLzgx0YIrGX+yiFubYH4E=; b=biZlKcSbvkOrLk
+	p+mSLYA5v86jnBfoB6EwyzoskYognMqgiIczK+l7Xqs0syIqQqO1AFH0BEkpPPDMPKuKEuMA+3CdV
+	8MZl65RmifUWSy+LlwlP5wu0f8ni0ulJ0WYjC3JeYc11a6GMi499GJITY3y7V7qbyLjh2c1c4ZJFX
+	NxxvckAJSx5MTWR6I54dHUCjnNZHpzZJ8JmdMKosHLBosqbWjxQe4L13lfIHR7owjtApYofiJCK2C
+	1cT+tmZ21ZiL/vlzUQ/rReDRBx2aenOibg1xzdtk0uTcCYY87zNS5GXNrMiGCGPoMBcGwQYBVM7Me
+	oLMeohhR9CMoeYz+YKfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU1mC-0000000B8JF-2LzT;
-	Mon, 01 Jun 2026 12:29:52 +0000
-Received: from mail-m15588.qiye.163.com ([101.71.155.88])
+	id 1wU1se-0000000B95i-172y;
+	Mon, 01 Jun 2026 12:36:32 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU1m9-0000000B8I1-23VS;
-	Mon, 01 Jun 2026 12:29:51 +0000
-Received: from [172.16.12.74] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 409a07d3d;
-	Mon, 1 Jun 2026 20:24:42 +0800 (GMT+08:00)
-Message-ID: <ba122231-0def-4b62-add7-be3382f07805@rock-chips.com>
-Date: Mon, 1 Jun 2026 20:24:42 +0800
+	id 1wU1sc-0000000B94v-1GMa
+	for linux-rockchip@bombadil.infradead.org;
+	Mon, 01 Jun 2026 12:36:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=ulq7zD4ctN0+5WRFW+oZ1/qxY6rbHFNEsFrgeGiPH/c=; b=bGuDwHDjb7BReDVQT5eMofpCAj
+	a+6Oj+aAyMDYsSOCmBc1G26lxFwbF3HxUfIkPRS8HuhoWiIo33Wo2ciktviQ2ABApXi6o7e8PAf5R
+	1c6oR2jAipE5f+pOr4eYjLW3Xpr/LGHdOLSP0c8G2+82gWPiyJilgNiJEibpoGktfTHlU7/PBYt/d
+	hqcN+2C5m3vF6WQrempneqykPNyMWZr8/BRKzWMMoPtMkoyVSJktrAxFwFsyBpyvhZUOFyhULBDNL
+	G0WI8QzfUzHRnRaaIah9qCAt9amxAYAKjV1onGEGcqaSbuMdib0j0HGnRoUIYVH9K1MwxDJHJazjF
+	y0m9XD0g==;
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wU1sY-00000006hUa-3xq3
+	for linux-rockchip@lists.infradead.org;
+	Mon, 01 Jun 2026 12:36:28 +0000
+Received: by mail-pf1-x42f.google.com with SMTP id d2e1a72fcca58-8422c327755so723515b3a.2
+        for <linux-rockchip@lists.infradead.org>; Mon, 01 Jun 2026 05:36:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780317384; x=1780922184; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ulq7zD4ctN0+5WRFW+oZ1/qxY6rbHFNEsFrgeGiPH/c=;
+        b=VL235ipEAdyoamaxmOMItG24hzmYhrGqZDa31yzQrZU8jXBOslqODFp0CaTwaEgn56
+         8eFt4wOa7C2LbMQtinE13TBElwu1efHFammIJWblZA8uSq4L8WSN++d11aSPikhEhr06
+         og00vLx7P+AEnEYnkyP5CsGgRk9VMNF75N30skSs6JEG7VcTx4wKsrM2D5plaauiD/JY
+         3D7ocuLdp0rj51e4AgfqCox4rAbGwg1kcRO1btr/cplMUqekvvjp1ttnpG8WBFcNc3He
+         i5cMuAnEHg0ioTDRwuTGl4cqXXd5KnOF6ep9akTaYLqGpmbJBRqu3IYXZvZC8c8Q6x38
+         lC5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780317384; x=1780922184;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ulq7zD4ctN0+5WRFW+oZ1/qxY6rbHFNEsFrgeGiPH/c=;
+        b=OFRPbv9xM0Pwghwk9/UOe2UJAqNwlnn9CMTaE6jbMo+z6+wcK/OD+3TQ08coMCHnRN
+         hDWlXz5kwDZ9KDjXhBKCQ3oh5UmuEv9DQFrE2Ss7zbIZ4NlguHCqwJdYj6j+QlrETc6+
+         HntZpVYOPhdTVAuCck1sTyhWQJ6DUdi7gIZKaKGWknc+2TOuxgj6enKqL5ybaXOv+oUI
+         JrTNTybaR978yzpnl3YejueFv6HXkidre2zCbwWmqi/AkLhyBbDScWt1b9kr5E8MUj9h
+         92erQW++bYtqWSA6/Y6nQv5jgn3gOL5uo3lulMejFAMTg76oo22GPlqN40lSeqENPwA5
+         iNJg==
+X-Forwarded-Encrypted: i=1; AFNElJ//CfueX8q7pxKt21+o+hkq/R81M4HLyQ6DOZcF8vwbp0b913g7vC3eRMkz4e40aRZL+Vc/eJ7QgcM91xjOFQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz0ro/YCtbz3PMdpnhghtjsFskYjETMkbnXCC4KA2HoTpM/vMfH
+	Xd9y9kHfKDDyv2u3KTg1HxcftPqkIf7YcgwXrinuCEdEsSMts+bOgRZ+
+X-Gm-Gg: Acq92OFA+rCsmKF9ScZk1Z+fgzHH7Wg8VrIHIminpY35TCWKxzgRneOREk/3mytGBM0
+	cxO/5jirJ/evTucRxnO71zQcd/tE+ZFyZavwbWrGzGRDAOfpaJdLGYuqRYY9VwBwMFAbkDjMbQy
+	lUBsgyzJHxVnF+ma3ZN2Be7hJsGuRU1W6yEeBATALVPDV8sFGSfJ4ldNNT/MgDhfBTBRhnW8jku
+	DvDKPE4K3yb52u+vYyhy/eUZwIPu4sp3lgnnKjAKorNouocq5VlRo4hHT3kfdlvduQaBcOE/SMZ
+	Tm8g2G9oBv7EX+JihNGQWlH68rJ1AzOss5Ljw7dUcFdIUBbfWO73JrE0+k/Fp8kZZM7u5Vncpdu
+	nZrVgoufcqTvBde2nm3GjcwP7PV7GWJ++vzPbXXOoGuDiyPZorjF73aP+Ry8PZr86W+C2KvjhqZ
+	DUPOjkXSqPiBIpLmF3TT74Hn+IT3dlLK/PwRovofa05oAwETtgHh0=
+X-Received: by 2002:a05:6a00:4296:b0:82f:5726:be23 with SMTP id d2e1a72fcca58-8422575fed2mr10037266b3a.49.1780317384389;
+        Mon, 01 Jun 2026 05:36:24 -0700 (PDT)
+Received: from i386.168.1.127 ([2402:a00:163:2ce9:9c6f:e28:3da8:7980])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8424defc024sm3765997b3a.47.2026.06.01.05.36.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Jun 2026 05:36:21 -0700 (PDT)
+From: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Subject: [PATCH 0/1] arm64: dts: rockchip: add Vicharak Axon board support
+Date: Mon,  1 Jun 2026 18:06:02 +0530
+Message-ID: <20260601123603.129679-1-hrushirajg23@gmail.com>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/3] drm/bridge: analogix_dp: Add validation for
- samsung,lane-count property
-To: Luca Ceresoli <luca.ceresoli@bootlin.com>
-References: <20260529040530.741336-1-damon.ding@rock-chips.com>
- <20260529040530.741336-3-damon.ding@rock-chips.com>
- <178014803941.21632.16225608049285101452.b4-review@b4>
- <DIW1WGLL0GW5.1BGU194UXN0HO@bootlin.com>
- <17160115-6c30-434b-9dab-b768110cd8d6@rock-chips.com>
- <178031536852.7135.7751258958371598959.b4-reply@b4>
-Content-Language: en-US
-From: Damon Ding <damon.ding@rock-chips.com>
-In-Reply-To: <178031536852.7135.7751258958371598959.b4-reply@b4>
-X-HM-Tid: 0a9e8324b9ba03a8kunme45a265c281ad8
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQxlDVk5KTh5NTEhKHh5JSFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
-	pKQk1VSktLVUpCWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=KegN8No0Ul0g1aqkwFnVCU6MRRiskVQe+WisAx9eAMChEDDT3viYwbhU1XN65LT9ebEvkJOWvihiZci7HRQHo4FUp/8Sn1l+ubqE9gxZ4o8l8cp7xNKXSy8DxHomGPyqLdKVrAMfk0NLXDEi4PZuKElRlVOH2HSQQ8eEjwwsqbw=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=o8OCB2l+ncUQMl80H2dawRBtZl8BrvrP7FFvN2SV8qM=;
-	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_052950_030592_2DC3AEB2 
-X-CRM114-Status: GOOD (  14.47  )
+X-CRM114-CacheID: sfid-20260601_133627_438895_7F553B81 
+X-CRM114-Status: GOOD (  10.33  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,56 +112,43 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, sebastian.reichel@collabora.com, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 6/1/2026 8:02 PM, Luca Ceresoli wrote:
-> Hello Damon,
-> 
-> On 2026-06-01 10:59:27+08:00, Damon Ding wrote:
->> Hi Luca,
->>
->> On 5/30/2026 9:38 PM, Luca Ceresoli wrote:
->>
->>> On Sat May 30, 2026 at 3:33 PM CEST, Luca Ceresoli wrote:
->>>
->>> Meh, messed up with 'b4 review' :-/ Apologies
->>>
->>> "This sashiko report" [0] was about an enum being signed, so '== 0' could miss
->>> negative numbers coming from bogus DT values higher than 1^31.
->>
->> Ah, I agree. It would be better to add a new inline function to validate
->> that the lane count passed from DT is exactly 1, 2, or 4, just as
->> Sashiko suggested.
->>
->>>>
->>>
->>> And this was about "Additionally, does this check inadvertently allow 3,
->>> which is an invalid DisplayPort lane count?"
->>
->> Yes, the DisplayPort specification only allows lane counts of 1, 2, or
->> 4. I did miss the check for the invalid value 3 in the current code.
->>
->> (BTW: I did not find a common helper function in drm_dp_helper.h to
->> validate valid DP lane counts (1, 2, 4). I'm not sure if it would be
->> better to add a generic lane count validation function to the DP helper
->> library instead, to avoid duplicating the same functionality across
->> individual DP drivers. Perhaps other DP experts could provide some
->> advice on this.)
-> 
-> A bool function in common code, to be reused by all DP drivers, would be
-> good.
-> 
-> 
-> 
+This series adds initial device tree support for the Vicharak Axon
+single-board computer, which is based on the Rockchip RK3588 SoC.
 
-Yes, will do in v5.
+The Vicharak Axon is a feature-rich SBC targeting developer and embedded
+use cases. It ships with:
 
-Best regards,
-Damon
+  - Rockchip RK3588 (4x Cortex-A76 + 4x Cortex-A55)
+  - RK806 PMIC providing all SoC power domains
+  - eMMC 5.1 (on-board) and microSD slot
+  - Gigabit Ethernet via RGMII (RTL8211F)
+  - Dual HDMI 2.1 output and one HDMI 2.0 input (receiver)
+  - PCIe 3.0 x4 and two PCIe 2.0 slots
+  - SATA 3.0
+  - SDIO Wi-Fi
+  - USB 2.0 host ports (EHCI/OHCI)
+  - NXP PCA9554 I/O expander for status LEDs
+  - Haoyu HYM8563 RTC
+
+This patch adds the DTS file and wires it into the Makefile. Binding
+documentation for the vendor prefix "vicharak" and the compatible string
+"vicharak,axon" will be submitted as a follow-up to this series.
+
+Hrushiraj Gandhi (1):
+  arm64: dts: rockchip: add Vicharak Axon board
+
+ arch/arm64/boot/dts/rockchip/Makefile        |    1 +
+ arch/arm64/boot/dts/rockchip/rk3588-axon.dts | 1069 ++++++++++++++++++
+ 2 files changed, 1070 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3588-axon.dts
+
+-- 
+2.47.3
 
 
 _______________________________________________
