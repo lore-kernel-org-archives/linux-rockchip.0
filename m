@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4F50CD5BD1
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 22:46:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7C4BCD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 22:46:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
 	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+w1Sn3AVrpKQFeFWDBggy8HkNH/sLHVqcl0uRGzVs3A=; b=f5kgvcJwQGPZ/Y
-	aUBcUpm6UAnXWRU8VtXr3XFMml7vZuulOfnKBmbXWc+xLzvU0lVST0kiqFDlQJjA0TTtahOiMAAwW
-	J6tmjU5uhwKoJId1EoOvTHolLR4zk5tZ4rD5bpv63bCGpMf22QREzZqrDNi2bX7s4WCKF/DqmlxZy
-	B9YOr2goJCd/bNrk4QK2c1bkl5th00xmC5KZMR9iuoqRC4p6xxaNyqgvf4H4sCsgNWKwRDI498lA7
-	vkeo7YIuIvyHnc5bZDPx1VFXeKVtWalM+1P3BSfbIbEmZGaKKlUAVcm/oPB79hxWjeDDCidvDjvmc
-	PcNcg+1GgbrFwg9rYI9w==;
+	List-Owner; bh=a+steghX53IAyhxHWXTHSEFjviKImKYNwK9sqxVeyis=; b=mkxD6jWXtI2MOR
+	ECk8tveDuLcfAQMRcgkQwsm91SnyUJr5pHyvtaz5lDmZXI6BJYXd5PGqwUq6ZoinMQOomqA6v73ie
+	1WdIQ4HkIfCoZSLgxUocgZS68pIOdZ7Tl1tMhfli+0OOmSlOtzxcq+Y/U6zmtik2Fh6NzuRIjqJCH
+	+DaVEkpqyHKJKc2Wx4B+xpp1cChEMjL789ET66BBgJa6xO0nWXToW1N8O0SlEkRAQx4eDgG0M4FXX
+	Y8VkNW+Nr9M5GiGcJiAi+Gl9vRtSl1KU9EiaYM+QBNQ8WYbAwIkslvfPqV17ky+vWrijpITjb5Thy
+	4WI6FDiW4L9RwCm+YjVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUBOQ-0000000BzWU-0Nmm;
-	Mon, 01 Jun 2026 22:45:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wUBOU-0000000Bzlz-460a;
+	Mon, 01 Jun 2026 22:46:02 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUBNx-0000000ByOs-2n4W;
-	Mon, 01 Jun 2026 22:45:35 +0000
+	id 1wUBO0-0000000ByVR-3OXe;
+	Mon, 01 Jun 2026 22:45:42 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1780353927;
-	bh=2YOZtIOzsaKUDvl49jxh1pMsviLuI3ZtxOvFsyPw6lA=;
+	s=mail; t=1780353930;
+	bh=MevDvGZ18yJpfUWkQpvx/6/Xn9V/IwMY7jgZGAE3dXM=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=Z7O29uk0ODJ66WIT6k9Ofr8e/k7vYWmGzq395fqxU5XK+Vtlwyvt14lfXyYgM4iFn
-	 gE7haN23XTSH7mcR3nS5fAJ6NYisewh1os11/+Vyi/88HI0IiZkrIRu0MHyoJ1Ayb1
-	 qs3QWIdTHtkbkj2TokBz9qIlHaMbAh/8mOKSN5ijq7gUIkDPkiDh4Xw21XuFE/ow+c
-	 UubWPUyycvCOIQuuvUEXyobnkk2NzG0QmGNLjrSX2VcIeZfbV7Gb4XruwkllxniLfU
-	 qdsdwYh2oilUAFJ9M9IiXHN2Waj+1nikb/TKm7tVqcnUo2Zx0HhCnvZ9XOd8wqMkBE
-	 kadgLgnGk47dw==
+	b=K7a74rkENfEq7Z18cF7M/X9/J1fB3Gll3mxbF8if8XIA3ImbRelaOpg5uqC7rp+/x
+	 sdfVo7WsN7Xzh19kgiBnoS2PHyV5n16dRJva53i+ErButBysIxVrV0vH2gAp+Q0oO2
+	 QqI0qgdo2oH+QNI7Z3ZrkK/5zH8X862rq3YN9+V540HerPgB0YSyMU8GxvKRtr8zCr
+	 un5K2LSqa94Blv/Ixd8IghWl3xklPxyLvcr7ChaVZVoECM83FkXt7eAtBhJJv28g0w
+	 gn63huxszceZUZ8cI6NhWi6kJPLO8Z4VhhwxnHw5GzNE6kCBsADvTAOZ2LOJeL6PFa
+	 rYEsXPIoM+QaQ==
 Received: from localhost (unknown [100.64.0.241])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B3E5717E0C88;
-	Tue,  2 Jun 2026 00:45:27 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id A2A0D17E01B6;
+	Tue,  2 Jun 2026 00:45:30 +0200 (CEST)
 From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Date: Tue, 02 Jun 2026 01:44:23 +0300
-Subject: [PATCH v7 23/30] drm/bridge: dw-hdmi-qp: Remove obsolete
- .setup_hpd() phy op
+Date: Tue, 02 Jun 2026 01:44:27 +0300
+Subject: [PATCH v7 27/30] drm/tests: edid: Add 4K@60Hz EDID with 600MHz
+ TMDS
 MIME-Version: 1.0
-Message-Id: <20260602-dw-hdmi-qp-scramb-v7-23-445eb54ee1ed@collabora.com>
+Message-Id: <20260602-dw-hdmi-qp-scramb-v7-27-445eb54ee1ed@collabora.com>
 References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
 In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -69,9 +69,8 @@ Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
  linux-rockchip@lists.infradead.org
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_154530_067047_5A3AAE0E 
-X-CRM114-Status: UNSURE (   8.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260601_154533_365390_68C32297 
+X-CRM114-Status: GOOD (  12.95  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,42 +87,184 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-With the transition to .{enable|disable}_hpd() phy ops complete in both
-the bridge and platform drivers, .setup_hpd() has no remaining callers.
-Drop it.
+Add a new test EDID advertising the following capabilities:
+
+Max resolution: 3840x2160@60Hz with RGB, YUV444, YUV422, YUV420
+Max BPC:        16
+Max TMDS clock: 600 MHz
+
+This is needed to exercise the new HDMI infrastructure that decides
+whether scrambling needs to be enabled for a given display mode and
+to validate that high-rate modes are properly rejected/accepted
+depending on the source/sink scrambling capability.
+
+The EDID is derived from test_edid_hdmi_4k_rgb_yuv420_dc_max_340mhz
+with the following changes:
+
+- Upgraded the first DTD from 3840x2160@30 (297 MHz) to 3840x2160@60
+  (594 MHz).  The H/V totals (4400x2250) and porches already match the
+  HDMI 2.0 4K@60Hz standard timing, so only the pixel clock had to be
+  bumped.
+- Widened Display Range Limits descriptor to cover the new timing, i.e.
+  24-140 kHz H, max dotclock 600 MHz.
+- Updated CTA-861 Video Data Block to advertise VIC 97 (4K@60Hz) instead
+  of VIC 95 (4k30).
+- Bumped HF-VSDB Max TMDS Character Rate to 600 MHz, keeping
+  SCDC_Present set so that the sink advertises scrambling support.
+- Cleared HDMI VSDB Max TMDS clock byte, as required by HDMI 2.0 when
+  the HF-VSDB declares a Max TMDS Character Rate above 340 MHz.
+- Provided a Video Capability Data Block advertising selectable RGB and
+  YCC quantization range plus underscan for IT/CE formats; also set the
+  'IT Video Formats Underscanned' bit in the CTA-861 extension header to
+  match.
+- Aligned base block image size with the DTD (160x90 cm) and replaced
+  the bogus 'Week of Manufacture = 0xff' with the Model Year code, both
+  fixing inherited EDID conformity warnings.
+- Dropped the empty YCbCr 4:2:0 Video Data Block inherited from the
+  parent EDID, which is flagged as a failure by edid-decode v1.33.0
 
 Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 ---
- drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c | 3 ---
- include/drm/bridge/dw_hdmi_qp.h              | 1 -
- 2 files changed, 4 deletions(-)
+ drivers/gpu/drm/tests/drm_kunit_edid.h | 128 +++++++++++++++++++++++++++++++++
+ 1 file changed, 128 insertions(+)
 
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-index 999229705ffb..3cb06fe43087 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-hdmi-qp.c
-@@ -1318,9 +1318,6 @@ static void dw_hdmi_qp_init_hw(struct dw_hdmi_qp *hdmi)
- 	/* Clear DONE and ERROR interrupts */
- 	dw_hdmi_qp_write(hdmi, I2CM_OP_DONE_CLEAR | I2CM_NACK_RCVD_CLEAR,
- 			 MAINUNIT_1_INT_CLEAR);
--
--	if (hdmi->phy.ops->setup_hpd)
--		hdmi->phy.ops->setup_hpd(hdmi, hdmi->phy.data);
- }
- 
- struct dw_hdmi_qp *dw_hdmi_qp_bind(struct platform_device *pdev,
-diff --git a/include/drm/bridge/dw_hdmi_qp.h b/include/drm/bridge/dw_hdmi_qp.h
-index b4fb1c578a5b..ad33f9cafdeb 100644
---- a/include/drm/bridge/dw_hdmi_qp.h
-+++ b/include/drm/bridge/dw_hdmi_qp.h
-@@ -16,7 +16,6 @@ struct dw_hdmi_qp_phy_ops {
- 	int (*init)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*disable)(struct dw_hdmi_qp *hdmi, void *data);
- 	enum drm_connector_status (*read_hpd)(struct dw_hdmi_qp *hdmi, void *data);
--	void (*setup_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*enable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
- 	void (*disable_hpd)(struct dw_hdmi_qp *hdmi, void *data);
+diff --git a/drivers/gpu/drm/tests/drm_kunit_edid.h b/drivers/gpu/drm/tests/drm_kunit_edid.h
+index f4923157f5bf..9b318f7d364e 100644
+--- a/drivers/gpu/drm/tests/drm_kunit_edid.h
++++ b/drivers/gpu/drm/tests/drm_kunit_edid.h
+@@ -980,4 +980,132 @@ static const unsigned char test_edid_hdmi_4k_rgb_yuv420_dc_max_340mhz[] = {
+ 	0x00, 0x00, 0x00, 0x84
  };
+ 
++/*
++ * Max resolution: 3840x2160@60Hz with RGB, YUV444, YUV422, YUV420
++ * Max BPC:        16 for all modes
++ * Max TMDS clock: 600 MHz
++ *
++ * edid-decode (hex):
++ *
++ * 00 ff ff ff ff ff ff 00 31 d8 34 00 00 00 00 00
++ * 00 23 01 03 80 a0 5a 78 0f ee 91 a3 54 4c 99 26
++ * 0f 50 54 20 00 00 01 01 01 01 01 01 01 01 01 01
++ * 01 01 01 01 01 01 08 e8 00 30 f2 70 5a 80 b0 58
++ * 8a 00 40 84 63 00 00 1e 00 00 00 fc 00 54 65 73
++ * 74 20 45 44 49 44 0a 20 20 20 00 00 00 fd 00 18
++ * 55 18 8c 3c 00 0a 20 20 20 20 20 20 00 00 00 10
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 a9
++ *
++ * 02 03 28 b1 41 61 6c 03 0c 00 10 00 78 00 20 00
++ * 00 01 03 6d d8 5d c4 01 78 80 07 00 00 00 00 00
++ * 00 e2 00 ca e3 0f 01 00 00 00 00 00 00 00 00 00
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
++ * 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 54
++ *
++ * ----------------
++ *
++ * Block 0, Base EDID:
++ *   EDID Structure Version & Revision: 1.3
++ *   Vendor & Product Identification:
++ *     Manufacturer: LNX
++ *     Model: 52
++ *     Made in: 2025
++ *   Basic Display Parameters & Features:
++ *     Digital display
++ *     Maximum image size: 160 cm x 90 cm
++ *     Gamma: 2.20
++ *     RGB color display
++ *     Default (sRGB) color space is primary color space
++ *     First detailed timing is the preferred timing
++ *     Supports GTF timings within operating range
++ *   Color Characteristics:
++ *     Red  : 0.6396, 0.3300
++ *     Green: 0.2998, 0.5996
++ *     Blue : 0.1503, 0.0595
++ *     White: 0.3125, 0.3291
++ *   Established Timings I & II:
++ *     DMT 0x04:   640x480    59.940476 Hz   4:3     31.469 kHz     25.175000 MHz
++ *   Standard Timings: none
++ *   Detailed Timing Descriptors:
++ *     DTD 1:  3840x2160   60.000000 Hz  16:9    135.000 kHz    594.000000 MHz (1600 mm x 900 mm)
++ *                  Hfront  176 Hsync  88 Hback  296 Hpol P
++ *                  Vfront    8 Vsync  10 Vback   72 Vpol P
++ *     Display Product Name: 'Test EDID'
++ *     Display Range Limits:
++ *       Monitor ranges (GTF): 24-85 Hz V, 24-140 kHz H, max dotclock 600 MHz
++ *     Dummy Descriptor:
++ *   Extension blocks: 1
++ * Checksum: 0xa9
++ *
++ * ----------------
++ *
++ * Block 1, CTA-861 Extension Block:
++ *   Revision: 3
++ *   Underscans IT Video Formats by default
++ *   Supports YCbCr 4:4:4
++ *   Supports YCbCr 4:2:2
++ *   Native detailed modes: 1
++ *   Video Data Block:
++ *     VIC  97:  3840x2160   60.000000 Hz  16:9    135.000 kHz    594.000000 MHz
++ *   Vendor-Specific Data Block (HDMI), OUI 00-0C-03:
++ *     Source physical address: 1.0.0.0
++ *     DC_48bit
++ *     DC_36bit
++ *     DC_30bit
++ *     DC_Y444
++ *     Maximum TMDS clock: 0 MHz
++ *     Extended HDMI video details:
++ *   Vendor-Specific Data Block (HDMI Forum), OUI C4-5D-D8:
++ *     Version: 1
++ *     Maximum TMDS Character Rate: 600 MHz
++ *     SCDC Present
++ *     Supports 16-bits/component Deep Color 4:2:0 Pixel Encoding
++ *     Supports 12-bits/component Deep Color 4:2:0 Pixel Encoding
++ *     Supports 10-bits/component Deep Color 4:2:0 Pixel Encoding
++ *     VRRmin: 0 Hz
++ *     VRRmax: 0 Hz
++ *   Video Capability Data Block:
++ *     YCbCr quantization: Selectable (via AVI YQ)
++ *     RGB quantization: Selectable (via AVI Q)
++ *     PT scan behavior: No Data
++ *     IT scan behavior: Always Underscanned
++ *     CE scan behavior: Always Underscanned
++ *   YCbCr 4:2:0 Capability Map Data Block:
++ *     VIC  97:  3840x2160   60.000000 Hz  16:9    135.000 kHz    594.000000 MHz
++ * Checksum: 0x54  Unused space in Extension Block: 87 bytes
++ *
++ * ----------------
++ *
++ * edid-decode 1.33.0
++ *
++ * EDID conformity: PASS
++ */
++static const unsigned char test_edid_hdmi_4k_rgb_yuv420_dc_max_600mhz[] = {
++	0x00, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00, 0x31, 0xd8, 0x34, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x23, 0x01, 0x03, 0x80, 0xa0, 0x5a, 0x78,
++	0x0f, 0xee, 0x91, 0xa3, 0x54, 0x4c, 0x99, 0x26, 0x0f, 0x50, 0x54, 0x20,
++	0x00, 0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
++	0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x08, 0xe8, 0x00, 0x30, 0xf2, 0x70,
++	0x5a, 0x80, 0xb0, 0x58, 0x8a, 0x00, 0x40, 0x84, 0x63, 0x00, 0x00, 0x1e,
++	0x00, 0x00, 0x00, 0xfc, 0x00, 0x54, 0x65, 0x73, 0x74, 0x20, 0x45, 0x44,
++	0x49, 0x44, 0x0a, 0x20, 0x20, 0x20, 0x00, 0x00, 0x00, 0xfd, 0x00, 0x18,
++	0x55, 0x18, 0x8c, 0x3c, 0x00, 0x0a, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
++	0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0xa9, 0x02, 0x03, 0x28, 0xb1,
++	0x41, 0x61, 0x6c, 0x03, 0x0c, 0x00, 0x10, 0x00, 0x78, 0x00, 0x20, 0x00,
++	0x00, 0x01, 0x03, 0x6d, 0xd8, 0x5d, 0xc4, 0x01, 0x78, 0x80, 0x07, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0xe2, 0x00, 0xca, 0xe3, 0x0f, 0x01, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++	0x00, 0x00, 0x00, 0x54,
++};
++
+ #endif // DRM_KUNIT_EDID_H_
 
 -- 
 2.54.0
