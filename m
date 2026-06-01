@@ -4,77 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57F9BCD6E55
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 22:29:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E212CD6E55
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 22:45:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TCHzyAyRISZNZxfhGynq2cEjRdqErLgEfLF2/07xjho=; b=4swAcC39N7u2sG7hKZ9zhmB2Ts
-	/B6QKlihsef21CI4yDMUIbGApltbjNst9dprrR//nXvKMOKaNjy4iTvZJWD34UP1LREKVvTNAbPmD
-	W5OOjgSJ1TcV/xenX9xFyoSjqmtGgr5DioOB+HktYkQv9dBSzooHvRHEzIP28TwLzYj/bXAsyZIUj
-	sO6RsQ5n8FYpKs7Vmr79b44DwkUNIHWoTaHudoUicG0bE6N7hgytHrgtem5cQovI8HMmM2O2972cA
-	cj5ai4NWOXJ7wkSUiFXpHpoVC82UFvpzDZHI653wTGsOYnmkg3lawMV3hjuEWiKqR8FAhb5GlOCOJ
-	VLgxaMqA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Y7Xe1pVTdut9X1RU7/xZFvFv6MmeaErhiSSuIEzOdzo=; b=dX6Hw6TQWZYY3G
+	8Wm4Hv8hLF+/sinPbkZGaZmrXewj80kQA0LpMZODreNoH/a3GhWlL3Ol7xp17WcZCx8t4AdhxlbvA
+	SqkEMrrrxckQt2OhE9THEB6QxFKLE/HB3I6+aQe2d9ORIv9Yj70U34c2nkigaKeS8ckVO7Ramzjqx
+	EEOUGo4W4ILPMtHLBvLP1wIB2/+OjR/PqoKLKZk4IIZxuESUVRFxt39oKhdqSpA2hn111d0vgjsGo
+	17Bir9d25V+afrIVtllCk6iZfTivkc84tqrQvskZFZRVaZPRdgs8MC4YS+Tt70YV8mFn1qyhnehZp
+	lZ27rjtKbnL1Y0108RrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUB83-0000000BwWN-3Nyf;
-	Mon, 01 Jun 2026 22:29:03 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wUBNl-0000000By4E-2ulv;
+	Mon, 01 Jun 2026 22:45:17 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUB80-0000000BwUi-01x8;
-	Mon, 01 Jun 2026 22:29:02 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1780352910; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=EBa4rEJKUjMggfBN4WqO10eaB0RHrw1pwY/4cwhx5FL71fNEv14JC2gJdfQ355mCrlrqeJMOSVvE9JrFzHfGrlN61suy4qugBsgosp/THYCohzhQ3lJNJu2B3ctczd6ee73XvUUVn6QXDBgxUPE/bszy+Tz6yjv1y/nMtRaYePg=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1780352910; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=AA8Fj6bzRSMBMFNGM9dw0WJ6PAlf3cOl099jN99Op18=; 
-	b=UO0En8fZvNc2TToDF3D0G2D/9C/Ph2vt0uXPp6mn8NId7P3eJMl82RF8MxEybWMlddWJZfde2asZToSwqDwC2xmSuMsdBgJoWvrOxb9WM6ZRAHeeJwwCNkfryoMjSQm4m9fEWWW7CgEK+5hlfHFNkIFct0v3aaiel674Y8rPIbU=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
-	dmarc=pass header.from=<sebastian.reichel@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780352910;
-	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
-	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
-	bh=AA8Fj6bzRSMBMFNGM9dw0WJ6PAlf3cOl099jN99Op18=;
-	b=NBtOqyb5VpXucL5UuQ0l/70jSHr+zkS7X9GYFTlbraoEIAhFYUkSQ3EC0BbqBkSm
-	6vDUrS+uaqab/+Bblze+nQljEKG6ZscoADEdMEktLSIDIgtow97CeYLRdyRyzEx88vU
-	crY2C7XeRBgeYnXVpx4z6wrqa0wBVqXWdRQ+wi08=
-Received: by mx.zohomail.com with SMTPS id 1780352907800763.4228970296604;
-	Mon, 1 Jun 2026 15:28:27 -0700 (PDT)
-Received: by venus (Postfix, from userid 1000)
-	id EE616183854; Tue, 02 Jun 2026 00:28:20 +0200 (CEST)
-Date: Tue, 2 Jun 2026 00:28:20 +0200
-From: Sebastian Reichel <sebastian.reichel@collabora.com>
-To: Chaoyi Chen <kernel@airkyi.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman <jonas@kwiboo.se>, 
-	Jernej Skrabec <jernej.skrabec@gmail.com>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Sandy Huang <hjc@rock-chips.com>, Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, 
-	Andy Yan <andy.yan@rock-chips.com>, Vinod Koul <vkoul@kernel.org>, 
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, 
-	Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
-	linux-phy@lists.infradead.org, Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: Re: [PATCH 3/5] phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
-Message-ID: <ah4Ha3Y0I68i9j1z@venus>
-References: <20260521032854.103-1-kernel@airkyi.com>
- <20260521032854.103-4-kernel@airkyi.com>
+	id 1wUBNi-0000000By0r-2U24;
+	Mon, 01 Jun 2026 22:45:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1780353912;
+	bh=rpL3MHwmbukVAMlSNrXnpHWWnXcNs/kbJP+qO9PfFXw=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=I1v1vuS5ZqOMXJ1VecZnWOGHAFaqHZFuKyUmSOcDNY3/4SZ+nM7yBeo3Jyx/NED7S
+	 rKmkH3SBRA9bHzL1p+KyiJh08WevT+WZ5gDZQXAjl9+/h66ylEjb7oMU2uqY9/5sAo
+	 EarPIsmu47wefj2cQRciNErVejVeo4A3bEaFPdB6ShGGB/38RblVfymFYjGAXe7eTg
+	 azV8zgrro4rKn90UPQ2Ihg8Pho8eekTjhrVW84+ea+cM00fXS4sZIOWxCw3XOfoSA/
+	 MxU4AU+B7fb20pHLVioFtN0awq+YqRDN2pZa+x3LZ13ULwr1DNlW0iP7gtvjCzffHb
+	 d17VbA7bYh4Fw==
+Received: from localhost (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (prime256v1) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 86BC617E0A6C;
+	Tue,  2 Jun 2026 00:45:12 +0200 (CEST)
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+Date: Tue, 02 Jun 2026 01:44:03 +0300
+Subject: [PATCH v7 03/30] drm/display: scdc_helper: Add macro for
+ connector-prefixed debug messages
 MIME-Version: 1.0
-In-Reply-To: <20260521032854.103-4-kernel@airkyi.com>
-X-Zoho-Virus-Status: 1
-X-Zoho-AV-Stamp: zmail-av-0.1.0.1.4.3/280.325.56
-X-ZohoMailClient: External
+Message-Id: <20260602-dw-hdmi-qp-scramb-v7-3-445eb54ee1ed@collabora.com>
+References: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
+In-Reply-To: <20260602-dw-hdmi-qp-scramb-v7-0-445eb54ee1ed@collabora.com>
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, Sandy Huang <hjc@rock-chips.com>, 
+ =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
+ Andy Yan <andy.yan@rock-chips.com>, Daniel Stone <daniels@collabora.com>, 
+ Dave Stevenson <dave.stevenson@raspberrypi.com>, 
+ =?utf-8?q?Ma=C3=ADra_Canal?= <mcanal@igalia.com>, 
+ Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_152900_090423_E37FCAC6 
-X-CRM114-Status: GOOD (  20.26  )
+X-CRM114-CacheID: sfid-20260601_154514_805745_F7B4AD17 
+X-CRM114-Status: UNSURE (   8.73  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,138 +83,96 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============3945165843917100403=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Introduce the drm_scdc_dbg() wrapper over drm_dbg_kms() to help getting
+rid of the boilerplate around prefixing the debug messages with the
+connector information.
 
---===============3945165843917100403==
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qin6jzopmvvno7lx"
-Content-Disposition: inline
+Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+---
+ drivers/gpu/drm/display/drm_scdc_helper.c | 24 +++++++++---------------
+ 1 file changed, 9 insertions(+), 15 deletions(-)
 
+diff --git a/drivers/gpu/drm/display/drm_scdc_helper.c b/drivers/gpu/drm/display/drm_scdc_helper.c
+index df878aad4a36..cb6632346aad 100644
+--- a/drivers/gpu/drm/display/drm_scdc_helper.c
++++ b/drivers/gpu/drm/display/drm_scdc_helper.c
+@@ -55,6 +55,10 @@
+ 
+ #define SCDC_I2C_SLAVE_ADDRESS 0x54
+ 
++#define drm_scdc_dbg(connector, fmt, ...)					\
++	drm_dbg_kms((connector)->dev, "[CONNECTOR:%d:%s] " fmt,			\
++		    (connector)->base.id, (connector)->name, ##__VA_ARGS__)
++
+ /**
+  * drm_scdc_read - read a block of data from SCDC
+  * @adapter: I2C controller
+@@ -158,9 +162,7 @@ bool drm_scdc_get_scrambling_status(struct drm_connector *connector)
+ 
+ 	ret = drm_scdc_readb(connector->ddc, SCDC_SCRAMBLER_STATUS, &status);
+ 	if (ret < 0) {
+-		drm_dbg_kms(connector->dev,
+-			    "[CONNECTOR:%d:%s] Failed to read scrambling status: %d\n",
+-			    connector->base.id, connector->name, ret);
++		drm_scdc_dbg(connector, "Failed to read scrambling status: %d\n", ret);
+ 		return false;
+ 	}
+ 
+@@ -188,9 +190,7 @@ bool drm_scdc_set_scrambling(struct drm_connector *connector,
+ 
+ 	ret = drm_scdc_readb(connector->ddc, SCDC_TMDS_CONFIG, &config);
+ 	if (ret < 0) {
+-		drm_dbg_kms(connector->dev,
+-			    "[CONNECTOR:%d:%s] Failed to read TMDS config: %d\n",
+-			    connector->base.id, connector->name, ret);
++		drm_scdc_dbg(connector, "Failed to read TMDS config: %d\n", ret);
+ 		return false;
+ 	}
+ 
+@@ -201,9 +201,7 @@ bool drm_scdc_set_scrambling(struct drm_connector *connector,
+ 
+ 	ret = drm_scdc_writeb(connector->ddc, SCDC_TMDS_CONFIG, config);
+ 	if (ret < 0) {
+-		drm_dbg_kms(connector->dev,
+-			    "[CONNECTOR:%d:%s] Failed to enable scrambling: %d\n",
+-			    connector->base.id, connector->name, ret);
++		drm_scdc_dbg(connector, "Failed to enable scrambling: %d\n", ret);
+ 		return false;
+ 	}
+ 
+@@ -248,9 +246,7 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector,
+ 
+ 	ret = drm_scdc_readb(connector->ddc, SCDC_TMDS_CONFIG, &config);
+ 	if (ret < 0) {
+-		drm_dbg_kms(connector->dev,
+-			    "[CONNECTOR:%d:%s] Failed to read TMDS config: %d\n",
+-			    connector->base.id, connector->name, ret);
++		drm_scdc_dbg(connector, "Failed to read TMDS config: %d\n", ret);
+ 		return false;
+ 	}
+ 
+@@ -261,9 +257,7 @@ bool drm_scdc_set_high_tmds_clock_ratio(struct drm_connector *connector,
+ 
+ 	ret = drm_scdc_writeb(connector->ddc, SCDC_TMDS_CONFIG, config);
+ 	if (ret < 0) {
+-		drm_dbg_kms(connector->dev,
+-			    "[CONNECTOR:%d:%s] Failed to set TMDS clock ratio: %d\n",
+-			    connector->base.id, connector->name, ret);
++		drm_scdc_dbg(connector, "Failed to set TMDS clock ratio: %d\n", ret);
+ 		return false;
+ 	}
+ 
 
---qin6jzopmvvno7lx
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 3/5] phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
-MIME-Version: 1.0
+-- 
+2.54.0
 
-Hi,
-
-On Thu, May 21, 2026 at 11:28:52AM +0800, Chaoyi Chen wrote:
-> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->=20
-> Using the DRM_AUX_BRIDGE helper to create the transparent DRM bridge
-> device.
->=20
-> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-> Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
-> ---
-
-Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-
-Greetings,
-
--- Sebastian
-
->  drivers/phy/rockchip/Kconfig              |  2 ++
->  drivers/phy/rockchip/phy-rockchip-typec.c | 13 +++++++++++--
->  2 files changed, 13 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/phy/rockchip/Kconfig b/drivers/phy/rockchip/Kconfig
-> index 14698571b607..9173d3b4fef4 100644
-> --- a/drivers/phy/rockchip/Kconfig
-> +++ b/drivers/phy/rockchip/Kconfig
-> @@ -119,6 +119,8 @@ config PHY_ROCKCHIP_SNPS_PCIE3
->  config PHY_ROCKCHIP_TYPEC
->  	tristate "Rockchip TYPEC PHY Driver"
->  	depends on OF && (ARCH_ROCKCHIP || COMPILE_TEST)
-> +	depends on DRM || DRM=3Dn
-> +	select DRM_AUX_BRIDGE if DRM_BRIDGE
->  	select EXTCON
->  	select GENERIC_PHY
->  	select RESET_CONTROLLER
-> diff --git a/drivers/phy/rockchip/phy-rockchip-typec.c b/drivers/phy/rock=
-chip/phy-rockchip-typec.c
-> index d9701b6106d5..48070b50416e 100644
-> --- a/drivers/phy/rockchip/phy-rockchip-typec.c
-> +++ b/drivers/phy/rockchip/phy-rockchip-typec.c
-> @@ -54,6 +54,7 @@
-> =20
->  #include <linux/mfd/syscon.h>
->  #include <linux/phy/phy.h>
-> +#include <drm/bridge/aux-bridge.h>
-> =20
->  #define CMN_SSM_BANDGAP			(0x21 << 2)
->  #define CMN_SSM_BIAS			(0x22 << 2)
-> @@ -1162,16 +1163,24 @@ static int rockchip_typec_phy_probe(struct platfo=
-rm_device *pdev)
-> =20
->  	for_each_available_child_of_node(np, child_np) {
->  		struct phy *phy;
-> +		ret =3D 0;
-> =20
-> -		if (of_node_name_eq(child_np, "dp-port"))
-> +		if (of_node_name_eq(child_np, "dp-port")) {
->  			phy =3D devm_phy_create(dev, child_np,
->  					      &rockchip_dp_phy_ops);
-> -		else if (of_node_name_eq(child_np, "usb3-port"))
-> +			ret =3D drm_aux_bridge_register_from_node(dev, child_np);
-> +		} else if (of_node_name_eq(child_np, "usb3-port"))
->  			phy =3D devm_phy_create(dev, child_np,
->  					      &rockchip_usb3_phy_ops);
->  		else
->  			continue;
-> =20
-> +		if (ret) {
-> +			pm_runtime_disable(dev);
-> +			of_node_put(child_np);
-> +			return ret;
-> +		}
-> +
->  		if (IS_ERR(phy)) {
->  			dev_err(dev, "failed to create phy: %pOFn\n",
->  				child_np);
-> --=20
-> 2.53.0
->=20
->=20
-
---qin6jzopmvvno7lx
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmoeB4QACgkQ2O7X88g7
-+potHhAApMK7BcNqtAuBen0JlY4pfpPJBWMvliktBqgcJxbfXjGgj2cte05nfKJf
-gBMxX3L2PrBd8tVopdyzwIpaJtjeUbgg8Mb93TLik1jQql3akhKGqZpaYwE3gsG+
-5ArTDJeEQFI/N4hvE+LoUYPKHyB32ZGPs3fTd/MdAkyesmwWKQeE1VN1fFFC+OuF
-j6w0kevJhqBV41pCi9Z9k7nL/ZxTzQSiMZiOF5X+R7I549oYLfQqTRgZkf0PXNTY
-fGwoBisvAcNyBNZqVVH9SbXVq2wlpKw8DxkSV9FBSH/gz11C84SSfMTi+ElktePk
-sLTFE2A0N0ZjIpI31rGR+F7rHZ+3MYdgiVGMC0rbqoNkiN6z6IVHftjufw2zE4XA
-tcddzIiqc4TrPb20Ly3btLfOqebn7a9Hen7PSzpQ0UcoczaoUlFK+6MN454bK+Yb
-TZXtfsGTmVBxdWr3TH7gA40c40rYDBW3HuVneSptz2ui2DA1XjK52ZJuBLkdYdNA
-nDZsL+NQx91+TV47ibIFuMQa/2bVyjDAHBFNZ+HmTWhOencln1UYvCzS6GBK/Nw8
-xxzTcvWS78OffbXeoB8BfqukpEne1YFMNl6PLa9wj61VnT7IZ6JkLAk5SOVP+ekl
-yxKnc5imF4fXw3bmBLwsAKOvMeOGEqYRzubNR/BzMtZXKOQCMyw=
-=tOw3
------END PGP SIGNATURE-----
-
---qin6jzopmvvno7lx--
-
-
---===============3945165843917100403==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============3945165843917100403==--
-
