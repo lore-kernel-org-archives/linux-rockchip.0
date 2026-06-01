@@ -4,53 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05CA0CD6E56
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 12:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBABCD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 12:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=1PII2x5PNhf7ap1zOJXMAYyYQbhOfO4ORYR4IeaEGpo=; b=lWpx8BmlEQvqqi
-	RLOw/anuU7Whq7ld2u5DdCwHm0fPdYWa9cCyPmKDHn6SN8q4WixT5lO5AB7A1RlMf7ednM4cSXTXk
-	WvDbnELxsljf6YUGYy6ZIi5/ZV16miYjQX2HREwQ+WbrzLvPEsWc0NxvNF0G9fRPtJW2QutrZ9XC/
-	6Hfm9rua3kZPBXgUbEbRGwVLDUAvKIB2dBqrcs9C0qjaCPzkoPoUHUNSp4ILQ/2kBSwHyEDrpRm2t
-	TKYcme480QTUn6rMu8Jj1pwBIi2Xl2bNPetjqXxEJdJsKyoVaFsckpM7EEKGzjAemuyGvdI4y8vcN
-	YqeA8gQhLJOhDYT/fL1w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=o5xC0bW4RFostEUOiVEZiXuQkgm/RCA5q/8iIaYDXAI=; b=f0SufD2a3jtl1tAUDrOEyqQLBP
+	cvnuKu6CKyEqXFQwZMrrj7L/zqlATTXtYO0nFsyZyOQaZ5zrtZSYANQm00j3ejLPDKM6h48Bjf0rS
+	7Yzjy3kQ3hYlQJusXowhZIr4EFZlBuSTA2yA7YQO3OWlmf5nWwBff13r0EOA+raFYFcSAuCt+5mjB
+	sddLQs1+L+xQoLaMr5OWpyWfM4E5JVE0DniKKUc5dZpmSxgX++zE8BskrWPidNzAdXMKpOy1/p4ml
+	0HlDool/qcPXiNsMNWE8zI1hGZbaBxdY9Z9NFD+9tT3w3tCoq1cLIZV6Lt+Xfv10Qf3bwcSmz1Kvw
+	MOwbaHFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU276-0000000BATw-0HQE;
-	Mon, 01 Jun 2026 12:51:28 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wU2BF-0000000BAxv-2Yuc;
+	Mon, 01 Jun 2026 12:55:45 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU273-0000000BATR-1eSx;
-	Mon, 01 Jun 2026 12:51:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=ipOTjP7LXkH4pE0+RZI23Zur3lgBYVWldPcYkb4vemU=; b=o5DN2HeWo+QQqsoPWET0z5Yz2u
-	PVYCdJAu1TR+65E60gMED+5VJhdwoQ44aFFfChAG4LLZTmd0y3WFaHp/QCkcmLH0/fiO3AHo177sB
-	F83N8esdzgVidMGWbOIuN1MSDHBwHsxs9BZ88rN8abPfl5E4I7YigqjOUxSkSu5NB86jSsp3tnSEf
-	Oa/okvRtx+yYJ4UFg2BMyBfnk8JNFlYaAiSdHanIr0DY3QpR3i/kzx3tricLhrjajNfbYcQCEfPPH
-	8peeTD0vvDRQW7Ta7jfHwJaq7bVPVQYI5hPIT3zKl8USKZ8MhKTFX5fmK+OmjCSfZjliFjNCbUrJ1
-	Og3s3lZQ==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Subject: Re: [PATCH 1/1] arm64: dts: rockchip: add Vicharak Axon board
-Date: Mon, 01 Jun 2026 14:51:22 +0200
-Message-ID: <10605990.5OynTdThKG@phil>
-In-Reply-To: <20260601123603.129679-2-hrushirajg23@gmail.com>
-References: <20260601123603.129679-1-hrushirajg23@gmail.com>
- <20260601123603.129679-2-hrushirajg23@gmail.com>
+	id 1wU2BE-0000000BAxW-1KjA;
+	Mon, 01 Jun 2026 12:55:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=UHNPF/1Qwplu6Nd1JZHbugRfr3BJ3omzZ7zRPHLtfLY=; b=CGZA/vn+KpcmI5g3kAE0u3xSUX
+	BOGfA4DQ0gG/qxCSwMa/3y+y1yRDOVCv+nYg+wkh/TrX1B3ZkRKnf3kmIPwvZZcPZIfp85F9mJOt8
+	ojHvYSkTsj661FzkcvbtuWLGXRZNNZtIIFgGpl7TnxZ3PTiLPQa2DiaPFy3Ei+VWDDczfVrGKVOct
+	llfTaOzUgPETxc0w/W2Cu7XbbSVEZd8FxLjBx3bkcAEHzvOUr224k4padpstAsO7BiTlpfMlvfUT4
+	pLZQnBUKlUkVg/liCcGqvNLqv4S1S8FHORx52Oi9y5hCOUuwlJ5Cexa4ngY+yCcZ82ePr2qbUcXdZ
+	DESb8+5w==;
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	by desiato.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wU2BA-00000006kEQ-2Hbb;
+	Mon, 01 Jun 2026 12:55:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1780318531; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=GcTDPbHSICavOEZLVA5lq9UVLrzp7S7FKh/dQEzhGHnL9u9HsPv70mv0QDPE/hDIeMVbO4oAMCws/QUvJW79cSJg5wep7Co4KWe8SnajOxA8Z4beG4nKgGKSllnIP+FR74lpQ5Bz2NCyinBNtdIMa807LmI/fSUS3hoSUnctTmo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1780318531; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=UHNPF/1Qwplu6Nd1JZHbugRfr3BJ3omzZ7zRPHLtfLY=; 
+	b=nrsnvnJlObEBo5yWGB266Aoqpa5ZfTHTHUTgYjJkDomUe+ps7m89Eoxl1OkCmtSrzI/Bvb2aX9zJhwzinHjnj6L4DzqAW2vBCq2BN9lMPBTZNJDl2kudQ7zAF9dfza8EslFEQkzsOUSr+P8pp6FmMQ62d6zc/JqEvz5f1l7mD78=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780318531;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=UHNPF/1Qwplu6Nd1JZHbugRfr3BJ3omzZ7zRPHLtfLY=;
+	b=U/RXgUNi+6FLEiu+feEZAkUkoUPwl03tCCZol/nq5GXLJAKLkC68fXdtB4IxgCRH
+	7mgv514wfUJYXUy6oyw/5P2M2NKvsI9W8ewQrTnJoIXS5S3zX5+2x/FVcub8d+ziN25
+	g0zvCouPSJZ9L9ymvHTYEUlgNFKbGnY+Ki8yNofM=
+Received: by mx.zohomail.com with SMTPS id 1780318528697566.8024877077298;
+	Mon, 1 Jun 2026 05:55:28 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 667F2181D80; Mon, 01 Jun 2026 14:55:25 +0200 (CEST)
+Date: Mon, 1 Jun 2026 14:55:25 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: ricardo@pardini.net
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Heiko Stuebner <heiko@sntech.de>, devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: fix PCIe regulator name on
+ NanoPC-T6
+Message-ID: <ah2AYT4XmYR03I7z@venus>
+References: <20260529-rk3588-dts-rtl-eth-describe-dt-alias-v2-0-49700248143f@pardini.net>
+ <20260529-rk3588-dts-rtl-eth-describe-dt-alias-v2-2-49700248143f@pardini.net>
 MIME-Version: 1.0
+In-Reply-To: <20260529-rk3588-dts-rtl-eth-describe-dt-alias-v2-2-49700248143f@pardini.net>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.2.1.5.2/280.300.36
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_055125_589927_F1ABBF33 
-X-CRM114-Status: GOOD (  17.02  )
+X-CRM114-CacheID: sfid-20260601_135541_207325_F859FA53 
+X-CRM114-Status: GOOD (  21.63  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,80 +93,127 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: multipart/mixed; boundary="===============6104598278079792162=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGksCgpBbSBNb250YWcsIDEuIEp1bmkgMjAyNiwgMTQ6MzY6MDMgTWl0dGVsZXVyb3DDpGlzY2hl
-IFNvbW1lcnplaXQgc2NocmllYiBIcnVzaGlyYWogR2FuZGhpOgo+IEFkZCBpbml0aWFsIHN1cHBv
-cnQgZm9yIHRoZSBWaWNoYXJhayBBeG9uIHNpbmdsZS1ib2FyZCBjb21wdXRlciBiYXNlZCBvbgo+
-IHRoZSBSb2NrY2hpcCBSSzM1ODggU29DLgo+IAo+IFRoZSBib2FyZCBzdXBwb3J0czoKPiAKPiAt
-IGVNTUMgc3RvcmFnZQo+IC0gbWljcm9TRCBjYXJkCj4gLSBHaWdhYml0IEV0aGVybmV0Cj4gLSBI
-RE1JIG91dHB1dCAoZHVhbCBIRE1JKQo+IC0gSERNSSBpbnB1dAo+IC0gVVNCIDIuMCBob3N0IHBv
-cnRzCj4gLSBQQ0llIDIuMCBzbG90cwo+IC0gUENJZSAzLjAgeDQgc2xvdAo+IC0gU0FUQQo+IC0g
-UlRDCj4gLSBTdGF0dXMgTEVEcwo+IAo+IFRoZSBib2FyZCB1c2VzIGFuIFJLODA2IFBNSUMgYW5k
-IHByb3ZpZGVzIHRoZSByZWd1bGF0b3JzIHJlcXVpcmVkIGJ5Cj4gdGhlIFJLMzU4OCBTb0MuCj4g
-Cj4gU2lnbmVkLW9mZi1ieTogSHJ1c2hpcmFqIEdhbmRoaSA8aHJ1c2hpcmFqZzIzQGdtYWlsLmNv
-bT4KPiAtLS0KPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAg
-fCAgICAxICsKPiAgYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtYXhvbi5kdHMg
-fCAxMDY5ICsrKysrKysrKysrKysrKysrKwoKdGhpcyBpcyBtaXNzaW5nIHRoZSBhZGRpdGlvbiBv
-ZiB0aGUgYm9hcmQgZHQgYmluZGluZy4KKGluIGEgc2VwYXJhdGUgcGF0Y2gpCgpQbGVhc2Ugc2Vl
-IGhvdyBvdGhlciBib2FyZHMgYXJlIGhhbmRsZWQgaW4gdGhlIGdpdCBoaXN0b3kuCgoKPiAgMiBm
-aWxlcyBjaGFuZ2VkLCAxMDcwIGluc2VydGlvbnMoKykKPiAgY3JlYXRlIG1vZGUgMTAwNjQ0IGFy
-Y2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LWF4b24uZHRzCj4gCj4gZGlmZiAtLWdp
-dCBhL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUgYi9hcmNoL2FybTY0L2Jv
-b3QvZHRzL3JvY2tjaGlwL01ha2VmaWxlCj4gaW5kZXggY2I1NWM2YjcwZDBlLi41MDM5MjdmZmE4
-NDkgMTAwNjQ0Cj4gLS0tIGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZQo+
-ICsrKyBiL2FyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvTWFrZWZpbGUKPiBAQCAtMTc5LDYg
-KzE3OSw3IEBAIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1NzYtcm9jay00ZC5k
-dGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4Mi1yYWR4YS1lNTJjLmR0
-Ygo+ICBkdGItJChDT05GSUdfQVJDSF9ST0NLQ0hJUCkgKz0gcmszNTg4LWFybXNvbS1zaWdlNy5k
-dGIKPiAgZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1hcm1zb20tdzMuZHRi
-Cj4gK2R0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtYXhvbi5kdGIKPiAgZHRi
-LSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1jb29scGktY201LWV2Yi5kdGIKPiAg
-ZHRiLSQoQ09ORklHX0FSQ0hfUk9DS0NISVApICs9IHJrMzU4OC1jb29scGktY201LWdlbmJvb2su
-ZHRiCj4gIGR0Yi0kKENPTkZJR19BUkNIX1JPQ0tDSElQKSArPSByazM1ODgtZWRnZWJsZS1uZXU2
-YS1pby5kdGIKPiBkaWZmIC0tZ2l0IGEvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-ODgtYXhvbi5kdHMgYi9hcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzU4OC1heG9uLmR0
-cwoKcGxlYXNlIG5hbWUgdGhhdApyazM1ODgtdmljaGFyYWstYXhvbi5kdHMKCgo+IG5ldyBmaWxl
-IG1vZGUgMTAwNjQ0Cj4gaW5kZXggMDAwMDAwMDAwMDAwLi5kY2FiOTQ2MmY1MWIKPiAtLS0gL2Rl
-di9udWxsCj4gKysrIGIvYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1ODgtYXhvbi5k
-dHMKPiBAQCAtMCwwICsxLDEwNjkgQEAKPiArLy8gU1BEWC1MaWNlbnNlLUlkZW50aWZpZXI6IChH
-UEwtMi4wKyBPUiBNSVQpCj4gKwo+ICsvZHRzLXYxLzsKPiArCj4gKyNpbmNsdWRlIDxkdC1iaW5k
-aW5ncy9ncGlvL2dwaW8uaD4KPiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL2lucHV0L2xpbnV4LWV2
-ZW50LWNvZGVzLmg+Cj4gKyNpbmNsdWRlIDxkdC1iaW5kaW5ncy9sZWRzL2NvbW1vbi5oPgo+ICsj
-aW5jbHVkZSA8ZHQtYmluZGluZ3MvcGluY3RybC9yb2NrY2hpcC5oPgo+ICsjaW5jbHVkZSA8ZHQt
-YmluZGluZ3Mvc29jL3JvY2tjaGlwLHZvcDIuaD4KPiArI2luY2x1ZGUgPGR0LWJpbmRpbmdzL3Vz
-Yi9wZC5oPgo+ICsjaW5jbHVkZSAicmszNTg4LmR0c2kiCj4gKwo+ICsvIHsKPiArCW1vZGVsID0g
-IlZpY2hhcmFrIEF4b24iOwo+ICsJY29tcGF0aWJsZSA9ICJ2aWNoYXJhayxheG9uIiwgInJvY2tj
-aGlwLHJrMzU4OCI7Cj4gKwo+ICsJYWxpYXNlcyB7Cj4gKwkJbW1jMCA9ICZzZG1tYzsKPiArCQlt
-bWMxID0gJnNkaGNpOwo+ICsJCW1tYzIgPSAmc2RpbzsKPiArCQlzZXJpYWwyID0gJnVhcnQyOwo+
-ICsJfTsKPiArCj4gKwljaG9zZW4gewo+ICsJCXN0ZG91dC1wYXRoID0gInNlcmlhbDI6MTUwMDAw
-MG44IjsKPiArCX07Cj4gKwo+ICsJaGRtaTAtY29uIHsKPiArCQljb21wYXRpYmxlID0gImhkbWkt
-Y29ubmVjdG9yIjsKPiArCQl0eXBlID0gImEiOwo+ICsKPiArCQlwb3J0IHsKPiArCQkJaGRtaTBf
-Y29uX2luOiBlbmRwb2ludCB7Cj4gKwkJCQlyZW1vdGUtZW5kcG9pbnQgPSA8JmhkbWkwX291dF9j
-b24+Owo+ICsJCQl9Owo+ICsJCX07Cj4gKwl9Owo+ICsKPiArCWhkbWkxLWNvbiB7Cj4gKwkJY29t
-cGF0aWJsZSA9ICJoZG1pLWNvbm5lY3RvciI7Cj4gKwkJdHlwZSA9ICJhIjsKPiArCj4gKwkJcG9y
-dCB7Cj4gKwkJCWhkbWkxX2Nvbl9pbjogZW5kcG9pbnQgewo+ICsJCQkJcmVtb3RlLWVuZHBvaW50
-ID0gPCZoZG1pMV9vdXRfY29uPjsKPiArCQkJfTsKPiArCQl9Owo+ICsJfTsKPiArCj4gKwlsZWRz
-IHsKPiArCQljb21wYXRpYmxlID0gImdwaW8tbGVkcyI7Cj4gKwkJc3RhdHVzID0gIm9rYXkiOwo+
-ICsKPiArCQlwb3dlcl9sZWQ6IHBvd2VyLWxlZCB7Cj4gKwkJCWNvbG9yID0gPExFRF9DT0xPUl9J
-RF9HUkVFTj47Cj4gKwkJCWZ1bmN0aW9uID0gTEVEX0ZVTkNUSU9OX1NUQVRVUzsKPiArCQkJZ3Bp
-b3MgPSA8JnBjYTk1NTQgMCBHUElPX0FDVElWRV9ISUdIPjsKPiArCQkJbGludXgsZGVmYXVsdC10
-cmlnZ2VyID0gImhlYXJ0YmVhdCI7Cj4gKwkJfTsKPiArCj4gKwkJc3RhdHVzX2xlZDogc3RhdHVz
-LWxlZCB7Cj4gKwkJCWNvbG9yID0gPExFRF9DT0xPUl9JRF9SRUQ+Owo+ICsJCQlmdW5jdGlvbiA9
-IExFRF9GVU5DVElPTl9TVEFUVVM7Cj4gKwkJCWdwaW9zID0gPCZwY2E5NTU0IDEgR1BJT19BQ1RJ
-VkVfSElHSD47Cj4gKwkJCWxpbnV4LGRlZmF1bHQtdHJpZ2dlciA9ICJub25lIjsKPiArCQl9Owo+
-ICsJfTsKPiArCj4gKwlwY2llMjBfYXZkZDB2ODU6IHBjaWUyMC1hdmRkMHY4NS1yZWd1bGF0b3Ig
-ewoKcmVndWxhdG9yIG5vZGVzLCBzaG91bGQgYmUgbGlrZSAicGNpZTIwX2F2ZGQwdjg1OiByZWd1
-bGF0b3ItcGNpZTIwLWF2ZGQwdjg1IHsiCgo+ICsmY3B1X2IwIHsKPiArCWNwdS1zdXBwbHkgPSA8
-JnZkZF9jcHVfYmlnMF9zMD47Cj4gKwltZW0tc3VwcGx5ID0gPCZ2ZGRfY3B1X2JpZzBfbWVtX3Mw
-PjsKCm1lbS1zdXBwbHkgZm9yIGNwdS1jb3JlcyBpcyB2ZW5kb3Ita2VybmVsIHN0dWZmIChhbmQg
-aXQncyB0aGUgc2FtZQpyZWd1bGF0b3IgYW55d2F5KSwgc28gcGxlYXNlCi0gZHJvcCB0aG9zZSBw
-cm9wZXJ0aWVzLAotIGRyb3AgdGhlIHBoYW5kbGUKCmFuZCBydW4KbWFrZSBBUkNIPWFybTY0IENI
-RUNLX0RUQlM9eSByb2NrY2hpcC9yazM1ODgtYXhvbi5kdGIKCmFuZCBmaXggYWxsIHRoZSByZXBv
-cnRlZCBpc3N1ZXMgcGxlYXNlLgoKClRoYW5rcwpIZWlrbwoKCgoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+
+--===============6104598278079792162==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="zvgvt4wic33r6t4d"
+Content-Disposition: inline
+
+
+--zvgvt4wic33r6t4d
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 2/2] arm64: dts: rockchip: fix PCIe regulator name on
+ NanoPC-T6
+MIME-Version: 1.0
+
+Hi,
+
+On Fri, May 29, 2026 at 05:31:25PM +0200, Ricardo Pardini via B4 Relay wrot=
+e:
+> From: Ricardo Pardini <ricardo@pardini.net>
+>=20
+> The GPIO-switched 3v3 regulator on the NanoPC-T6 is labeled
+> vcc3v3_pcie2x1l0, but it is wired to and consumed by &pcie2x1l1, and
+> its enable is the pcie_m2_1_pwren pin - i.e. it powers the M.2 slot on
+> pcie2x1l1, not pcie2x1l0. The two soldered RTL8125 NICs on pcie2x1l0
+> and pcie2x1l2 instead share the always-on vcc_3v3_pcie20 rail, so
+> nothing actually uses an "l0" switched supply.
+>=20
+> Rename the label, node name and regulator-name to vcc3v3_pcie2x1l1 so
+> they match the controller the rail actually supplies.
+>=20
+> Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+> ---
+
+You should use the regulator name from the schematics. I had a quick
+look and https://wiki.friendlyelec.com/wiki/images/9/97/NanoPC-T6_2301_SCH.=
+PDF
+describes the GPIO as PCIE_M2_1_PWREN as you mention in your commit
+message. That GPIO controls a regulator for the power net "VDD_MPCIE_3.3V".
+So that's the expected name :)
+
+Greetings,
+
+-- Sebastian
+
+>  arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>=20
+> diff --git a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi b/arch/ar=
+m64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> index 04c4479f08170..7d314df3f947b 100644
+> --- a/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> +++ b/arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi
+> @@ -203,13 +203,13 @@ vbus5v0_usb: regulator-vbus5v0-usb {
+>  		vin-supply =3D <&vcc5v0_sys>;
+>  	};
+> =20
+> -	vcc3v3_pcie2x1l0: regulator-vcc3v3-pcie2x1l0 {
+> +	vcc3v3_pcie2x1l1: regulator-vcc3v3-pcie2x1l1 {
+>  		compatible =3D "regulator-fixed";
+>  		enable-active-high;
+>  		gpio =3D <&gpio4 RK_PC2 GPIO_ACTIVE_HIGH>;
+>  		pinctrl-names =3D "default";
+>  		pinctrl-0 =3D <&pcie_m2_1_pwren>;
+> -		regulator-name =3D "vcc3v3_pcie2x1l0";
+> +		regulator-name =3D "vcc3v3_pcie2x1l1";
+>  		regulator-min-microvolt =3D <3300000>;
+>  		regulator-max-microvolt =3D <3300000>;
+>  		vin-supply =3D <&vcc5v0_sys>;
+> @@ -655,7 +655,7 @@ rtl_eth0: ethernet@0,0 {
+> =20
+>  &pcie2x1l1 {
+>  	reset-gpios =3D <&gpio4 RK_PA2 GPIO_ACTIVE_HIGH>;
+> -	vpcie3v3-supply =3D <&vcc3v3_pcie2x1l0>;
+> +	vpcie3v3-supply =3D <&vcc3v3_pcie2x1l1>;
+>  	pinctrl-names =3D "default";
+>  	pinctrl-0 =3D <&pcie2_1_rst>;
+>  	status =3D "okay";
+>=20
+> --=20
+> 2.54.0
+>=20
+>=20
+
+--zvgvt4wic33r6t4d
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmodgTkACgkQ2O7X88g7
++pq3Gg/+M/zLNTAVZl9fG/flrN7PT03vm7m7gBgTQoRz6Nmzw/dM3TqM31RCl5A7
+qI5qdPdfDy2h9i6QesKvy5ZvH+Ek0bAIGNXQHygFEUZGla9VbrYdT3d6VoSmG6vT
+Ia9zT7tqYtQr17ydH3m7T/APsdHbWqoyYEFfA7q4xp8RabY67uxcTgYCdem0LZDQ
+EsNjRIrlkSycLh+/gCUCCY9wY694hN+9689Mn1x6V/qKQdXkg1X1cafwXoIuEHuT
+E7q1EiMtCEABIPKtSI5cbW43z6w0VrHNzu22wnT//CQfl17l06yQBmBGdICaBfZN
+FUEmUPOGPexk8gIHXbZxM+7w14agZHO4JIhf8etZFelrQk/lcXct4REOy7QaIgMD
+lyN0QqxKHGvmfEDcuwA1g1wnz9iTKa0Hxrea5b6+Pg+Yjg/Ak7Rzjp+D9csu1kar
+JOsAsjqnYbfugNIaNX9/tktc6/mpXTfC1QZo0rtPNrN9iCY87VY90mTcjVDhczXO
+j2+4VuD5HuF0fMPtQFu1bjEn21rdmnmGOfUSCYhCAWnyt2sBm/ronhzKFTIV6A7P
+WeICTkitYonY5kpUfgFQ7Q/EjaPFW4wWn/hVA9fM14VlkcPj9qYwSIysT4V8r/Gx
+IQdjZFmVieT3WoTLPjik1IYWxSc9gjGK6mbVrvuHj5g2tPt6Th0=
+=Kd1g
+-----END PGP SIGNATURE-----
+
+--zvgvt4wic33r6t4d--
+
+
+--===============6104598278079792162==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6104598278079792162==--
+
