@@ -4,62 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9641CD6E61
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 16:40:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83F56CD5BD1
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 16:48:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Es+XJcgmTdQBrHj5jpQAbgr9GBrpah6Ig05VWsACcSQ=; b=CsqPSxlUrlRiKl
-	Igw/CmcrO0utnCbXefMRvRzxQjj2srQ7odm6PQNzgLXVl+tStC6n3kCcaDLFFwHZ7YN2fGhpn0tLH
-	ozsjFMV8Hnd4EkuoCUbtbUfUEWIxknCGFXeMgP0ZYHJ4bNXfNR5eKmqsWoRfzQTR5rMeZ5eGAhfwp
-	8wGYXiL4dQf9lU3ms98t8QwNy/1tYDwVFV7dPL29z/4tYK1TPkJpK6gWILvf2fkn4qO4t3xF9YISy
-	RXspLCEFfRQUq43Mhh2UODTTHEYcUG29GZY1G9LHBux106beQc4GlN6ehB3cKt7TrrExgCnVoUVSh
-	ShGoFL+tgaDHBHhSlb1Q==;
+	List-Owner; bh=N7Cas2x2LTFYQ6G2Ptq7K/RGCNhZn6ZiplJGiCLcy54=; b=ZdfZKtnwgGO0n0
+	L+fZbzD+ehgRCME9lNWgWuwuEaGOG/ZfkQYMagyehXdJ01G9+qHuNsGtnMGzwZiK6Vu89gy2HJbkt
+	sJoVbsDfzwLGSB3kKll8gYtRtkZ8dvvOE5Lr/dzvi6ls5JKOlPOSKzQu7napHdc2i04g3Y19nlX/5
+	nKX3l6++T3LM5UbZt/XusFv8Kv8T49o1NDLQEbBIF4VE5Z/yofEI++IQZPXmpxLNfn2qcMARkimYS
+	hQUGsgVMoofvnE4smPR5UBgGf8H7w4iOt5K5CJfEcHqaJVq8gpEzeenEkyGTmvsDvk0v/YssCq/n+
+	uwXa02E6UwOx6W4knIPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU5gT-0000000BVJ1-0BFG;
-	Mon, 01 Jun 2026 16:40:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wU5oM-0000000BVvO-0VeP;
+	Mon, 01 Jun 2026 16:48:22 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU5gR-0000000BVIP-0eot
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 Jun 2026 16:40:11 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 21A09600AA;
-	Mon,  1 Jun 2026 16:40:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B9A011F00893;
-	Mon,  1 Jun 2026 16:40:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780332009;
-	bh=ZB98BzvKP6fl3cj8oj/hVyb/i6Q/IymLScAvGq1i3yE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=LuIJxUMmAtXhcMsPZvC0Ma4LmZxwVw1UmO6IrFZAkXq7xYOSLpFTfJIZZB+nKZBFG
-	 NpAZNrhLxjTwiAEjLjg5UQ45PLQkpi9rvE0s2oSrs0sNwQ/6UUu9Tfc62WuXq5lDUM
-	 l/A+INr01iLtVpenB7CcZ+573gRdYVfPlfDh/kSOjrh899JTw3YgvlKXY5nFDQbeAe
-	 3hMLhbAyrc1l7y2mjDOovU4FzDv3Ntmgmyq6N0sDmnKoro4I5/EGt+EQJpdUd89sG0
-	 N2PdMyiUkIlcE4mx+x5UUNpPXQIB1DlUChrMw0fqmiYnW6CQ7zDK93Ne4a83Ek26um
-	 8f+Kaw6MzML6g==
-Date: Mon, 1 Jun 2026 17:39:59 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Chris Morgan <macromorgan@hotmail.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
- andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
- jean-baptiste.maneyrol@tdk.com, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org,
- krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com
-Subject: Re: [PATCH V9 10/11] iio: imu: inv_icm42607: Add Gyroscope to
- icm42607
-Message-ID: <20260601173959.24082b01@jic23-huawei>
-In-Reply-To: <PH0PR19MB997338A6EE5428FC9B058F2E07A5152@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260530031739.109063-1-macroalpha82@gmail.com>
-	<20260530031739.109063-11-macroalpha82@gmail.com>
-	<20260531135823.015c4fd1@jic23-huawei>
-	<PH0PR19MB997338A6EE5428FC9B058F2E07A5152@PH0PR19MB997338.namprd19.prod.outlook.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1wU5oK-0000000BVup-0n4E;
+	Mon, 01 Jun 2026 16:48:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1780332497;
+	bh=NTaDUY8eOQHTKjUFmYcoOIApWjAEo5g8l7ZWglNrbgg=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=cTx6tHwSAwb12yUdGuysgtaNxR2kcZf+aFA7QEYiBEPU/dwAXu061YuogmpUM9OYI
+	 i+ZmW75pd8GMbtbnbUxcG6X1bB2xvsiu3SD/43Wge4xiEoGmsVsXVh51dG4pojfigA
+	 lxfbbmepqndjGWCzz8xZFEAdSsCWcMuGcADbvu45bhLcZwZHTN1kCngRERDjyW5SiT
+	 3CVPXoqHR3dTf/FkTN8wywdqYM7RzypQN0cdqlHZSXxDOcC42UbhHX++eS1pPSuPTn
+	 VVuMWYFimBO/HOxWoAgJnmNa9X1E2SlCgPsHOamAFk65ORURMfcUR5XZTTfNaFQsDM
+	 yAW+rVThjVhCg==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1447C17E0157;
+	Mon,  1 Jun 2026 18:48:17 +0200 (CEST)
+Message-ID: <47cf1380-e36b-4e09-943d-88351cbc7915@collabora.com>
+Date: Mon, 1 Jun 2026 19:48:16 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/5] drm/rockchip: vop2: Fix layer cfg done timeout on
+ multi-output setups
+To: Andy Yan <andy.yan@rock-chips.com>, Sandy Huang <hjc@rock-chips.com>,
+ =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: kernel@collabora.com, dri-devel@lists.freedesktop.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org
+References: <20260504-vop2-layer-cfg-tmout-v1-0-730226a7331e@collabora.com>
+ <2d2b6308-ae46-46fd-b1ce-e4f199b6eb27@rock-chips.com>
+Content-Language: en-US
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+In-Reply-To: <2d2b6308-ae46-46fd-b1ce-e4f199b6eb27@rock-chips.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260601_094820_377650_A5336009 
+X-CRM114-Status: GOOD (  14.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,101 +81,49 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, 1 Jun 2026 09:37:56 -0500
-Chris Morgan <macromorgan@hotmail.com> wrote:
+Hi Andy,
 
-> On Sun, May 31, 2026 at 01:58:23PM +0100, Jonathan Cameron wrote:
-> > On Fri, 29 May 2026 22:17:37 -0500
-> > Chris Morgan <macroalpha82@gmail.com> wrote:
-> >   
-> > > From: Chris Morgan <macromorgan@hotmail.com>
-> > > 
-> > > Add gyroscope functions to the icm42607 driver.
-> > > 
-> > > Signed-off-by: Chris Morgan <macromorgan@hotmail.com>  
-> > 
-> > Hi Chris,
-> > Various things inline.
-> > 
-> > Thanks,
-> > 
-> > Jonathan
-> >   
-> > > diff --git a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
-> > > index 5b69bf895b35..c45239613344 100644
-> > > --- a/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c
-> > > +++ b/drivers/iio/imu/inv_icm42607/inv_icm42607_buffer.c  
-> >   
-> > >  int inv_icm42607_buffer_fifo_parse(struct inv_icm42607_state *st)
-> > >  {
-> > > +	struct inv_icm42607_sensor_state *gyro_st = iio_priv(st->indio_gyro);
-> > >  	struct inv_icm42607_sensor_state *accel_st = iio_priv(st->indio_accel);
-> > >  	struct inv_sensors_timestamp *ts;
-> > >  	int ret;
-> > > @@ -491,6 +494,16 @@ int inv_icm42607_buffer_fifo_parse(struct inv_icm42607_state *st)
-> > >  	if (st->fifo.nb.total == 0)
-> > >  		return 0;
-> > >  
-> > > +	/* handle gyroscope timestamp and FIFO data parsing */
-> > > +	if (st->fifo.nb.gyro > 0) {
-> > > +		ts = &gyro_st->ts;
-> > > +		inv_sensors_timestamp_interrupt(ts, st->fifo.watermark.eff_gyro,
-> > > +						st->timestamp.gyro);
-> > > +		ret = inv_icm42607_gyro_parse_fifo(st->indio_gyro);
-> > > +		if (ret)
-> > > +			return ret;
-> > > +	}
-> > > +
-> > >  	/* handle accelerometer timestamp and FIFO data parsing */
-> > >  	if (st->fifo.nb.accel > 0) {
-> > >  		ts = &accel_st->ts;
-> > > @@ -507,12 +520,14 @@ int inv_icm42607_buffer_fifo_parse(struct inv_icm42607_state *st)
-> > >  int inv_icm42607_buffer_hwfifo_flush(struct inv_icm42607_state *st,
-> > >  				     unsigned int count)
-> > >  {
-> > > +	struct inv_icm42607_sensor_state *gyro_st = iio_priv(st->indio_gyro);
-> > >  	struct inv_icm42607_sensor_state *accel_st = iio_priv(st->indio_accel);
-> > >  	struct inv_sensors_timestamp *ts;
-> > > -	s64 accel_ts;
-> > > +	s64 gyro_ts, accel_ts;
-> > >  	int ret;
-> > >  
-> > >  	accel_ts = iio_get_time_ns(st->indio_accel);
-> > > +	gyro_ts = iio_get_time_ns(st->indio_gyro);  
-> > 
-> > Sashiko calls out correctly that there is a race with devices finishing
-> > coming up that might be hit here.  Probably need some sort of presence
-> > check and locking to be sure those are both valid.
-> >   
+On 6/1/26 1:54 PM, Andy Yan wrote:
+> Hello Cristian,
 > 
-> While I'm not sure how to fix this exactly, I think (attempting to)
-> test deadlocks I found a bigger issue... I don't think my interrupt
-> line is hooked up at all...
-ouch.  Wouldn't be the first time a given device has saved on pins
-to the extent of not wiring any interrupts.
-
+> On 5/5/26 02:23, Cristian Ciocaltea wrote:
+>> On RK3588/RK3568 boards with multiple active display outputs, start/stop
+>> transitions may trigger a timeout during overlay layer configuration:
+>>
+>>    rockchip-drm display-subsystem: [drm] *ERROR* wait layer cfg done timeout
+>>
+>> The shared OVL_LAYER_SEL and OVL_PORT_SEL shadow registers are committed
+>> to the active configuration at the vsync of whichever Video Port is
+>> selected by LAYERSEL_REGDONE_SEL.  When two Video Ports race through
+>> atomic commits, rk3568_vop2_setup_layer_mixer() has two issues that
+>> cause the wait to poll for a value the hardware might not be able to
+>> produce.
+>>
+>> Patch 1 fixes passing the wrong target to the wait function, since the
+>> expected value was already overwritten with the current VP's new
+>> layer_sel before reaching the wait.
+>>
+>> Patch 2 moves the wait before the LAYERSEL_REGDONE_SEL switch, so the
+>> previous VP's vsync can still latch the pending configuration.
+>>
+>> Patches 3 through 5 contain only minor follow-up cleanup.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 > 
-> Assuming I should be getting interrupts when enabling the buffer
-> (and also assuming I can do that with sysfs) I'm not getting any calls
-> to the IRQ routine.
 > 
-> Would you know a better way to test the hardware buffers? Thus far
-> my tests for data correctness involved either `monitor-sensor -a`
-> or reading the values directly from sysfs.
+> Thank you very much for your work, these fixes all look sensible.
 
-There is a basic buffer example in the kernel tree under tools/iio
-that should work for this. iio_generic_buffer 
+Thanks for checking this out!
 
-> 
-> Assuming I am in fact working with a device with no interrupt line, I
-> can just modify this to remove the hardware buffer stuff and the IRQ
-> stuff and work with an even more simplified driver. Probably going to
-> miss the 7.2 merge window at this time, but still...
+> However, I haven't been able to construct a scenario via weston that
+> reproduce these issues. Could you please tell me how you triggered them?
 
-Indeed an option to do this as a temporary step. If we get
-other users hopefully someone has the interrupt line wired!
+It was really tricky to reproduce - a customer usecase repeatedly restarting one
+of their apps under a customized Weston, and all that when having both HDMI
+output ports active, where at least one drives a 4K display.
 
-Jonathan
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
