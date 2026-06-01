@@ -4,70 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82DBECD6E55
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 13:45:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F918CD6E55
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 14:02:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
-	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=XodAKtF+DFJtyWVnHQlWvXt/31lAX0HM2WAnmRGvTDQ=; b=GHlVchgavZuuu2
-	4aRstAZQcC3QgQR+N6O3RnyfuMrtB7Bz3aJCG9qBMYMUUQu+4FxfzUXjQoBpP/hB60dQ9gzNK4CdQ
-	hztmMKdTxbAOaNbjOnYyTNu4Rv908f8wJ5m9LimS79zqLhp2tsbpxGSoJZP0GwalEWsoKIrldycPU
-	OWhH56d1kBe7A9jIp1O45OIYJ0vP1S7nGyFHrDq4GZrrInK0jO3qmpf10+b89rl14m7xSulaB4SEM
-	RSwhv79eDRg3fQUyJYC+C+LFV+WdenC6y0ekDlHHW83LpFcDURpIiM9OJY49A+fUKhrEtPXKmiixZ
-	TiTVYGlAzA3DtMZtcEWg==;
+	List-Owner; bh=6aPOf692crrZk2oNRxXI5c5540UkA5AnrHEJV7kkfQs=; b=qHFciVPtJvaK5m
+	2/1IxEBBzoQHAvqqCtq/Ku2xrGbvXuRMdAn9kbCJtegFLKNIr5kU8jkfZITh3P+Qb2yAIL/mo68Jg
+	gopYfG5HoNTxDv6FNXygYHqlJ2I5nfGtia+qWE9Epudw0BTe3NTwAbR+x13wwUTyVoI+VTdqrTLzu
+	SHxozMciGoy4X7bHsO0fBtnLvzVShIWrjSq0E6UZKDskp0Foqd2Mt4T8wZrnl1qgXeRpr+Z2AEqXC
+	taUyRCH/HK/VC1pnGBjeIYXziqBhXVWvQ82QPlC5besCqRG6AP8/rk/a4EqSdnwuYHnB5Z3ppFHiC
+	NXnTiLD8QEdkpmQNXvhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU2ww-0000000BE56-2WnJ;
-	Mon, 01 Jun 2026 13:45:02 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+	id 1wU3DJ-0000000BFMI-2tOV;
+	Mon, 01 Jun 2026 14:01:57 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU2wt-0000000BE44-1Krn;
-	Mon, 01 Jun 2026 13:45:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
-	Message-ID; bh=oXODjuqrY4OBNW73p3++vJQePAvD2CddI9jj9bMuC9U=; b=N
-	kqfjVGTMhJtZs6BaN/bpi1eK9gxiOQbO9W7+kp7SPmHco1+Ac3WcJG2fSRl2S2DL
-	hPysTQkGX6t4UnzvLvt6QeAuNoQCl7QHMQASsPWjrK/CHtETaw+fCsE53oOEPzEn
-	o4JNoYhinzSy3a+7fR+mFhVU06d5avW7cdgRmWVad4=
-Received: from andyshrk$163.com ( [61.154.14.86] ) by
- ajax-webmail-wmsvr-40-120 (Coremail) ; Mon, 1 Jun 2026 21:44:15 +0800 (CST)
-X-Originating-IP: [61.154.14.86]
-Date: Mon, 1 Jun 2026 21:44:15 +0800 (CST)
-From: "Andy Yan" <andyshrk@163.com>
-To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
-Cc: "Sandy Huang" <hjc@rock-chips.com>,
-	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
-	"Andy Yan" <andy.yan@rock-chips.com>,
-	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
-	"Maxime Ripard" <mripard@kernel.org>,
-	"Thomas Zimmermann" <tzimmermann@suse.de>,
-	"David Airlie" <airlied@gmail.com>,
-	"Simona Vetter" <simona@ffwll.ch>, kernel@collabora.com,
-	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re:[PATCH 0/2] YUV support for VOP2 background color
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
- 20260403(27802f6d) Copyright (c) 2002-2026 www.mailtech.cn 163com
-In-Reply-To: <20260524-vop2-bg-yuv-v1-0-dcb6a52923f5@collabora.com>
-References: <20260524-vop2-bg-yuv-v1-0-dcb6a52923f5@collabora.com>
-X-CM-CTRLMSGS: FN07+3BsdXM9MTc4MDMyMTQ1NTA1MF9kNmRjY2YzNjU0MmEwNTIyYjc0YWExM
- mI1MmZiMDMyMg==
-X-NTES-SC: AL_Qu2TAv+Zvkwu4yObYukfmUgWjuw/WsG1v/Ul1YBSP556jDLp4yQsdlhFB13k6v+RMTGlqAieVTxg0OFXWa1WfaYt+PjPcFvWK/NZy9+E76AqHw==
+	id 1wU3DG-0000000BFLq-3Bm9;
+	Mon, 01 Jun 2026 14:01:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
+	bh=BWbTpayQTM0Gx96Gg+SvhuaJwtUEzeScK/94+YHwkXM=; b=xSKIwsHTmTtIJ6L3wEy+XknIH4
+	9MBclto9aEnpLIX5yR8h7wsgjAJGlFl45ufb+IJB1ihjF8qdXbejGjjYse9C7FBoBYz6772sqnYhd
+	HBRtzPkpi3oeCtHQGwgjVK5ZSz4W2GRlfqv9Ob5fcK+GnhH6s/EEaDNkGHzhvpr32sKZ7bprEOwns
+	NKxvwaBG57kUEDF6WEB/UwCwP+75q0wUrwyYFb2OBsti981mnVQgAmcQpmo+T3pXd6njW45K5J0RE
+	F5uf5HXeojR0ewvF4ynjCWZRtHx7uTKrt8LDutFCw9lnDl1GPj5LXvs+fNkHhkU2c9B2+d+RZq0O9
+	9caWjf/w==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Subject: Re: [PATCH v2 2/2] dt-bindings: arm: rockchip: add Vicharak Axon board
+Date: Mon, 01 Jun 2026 16:01:50 +0200
+Message-ID: <13821740.F0gNSz5aLb@phil>
+In-Reply-To: <20260601132529.139172-3-hrushirajg23@gmail.com>
+References: <20260601132529.139172-1-hrushirajg23@gmail.com>
+ <20260601132529.139172-3-hrushirajg23@gmail.com>
 MIME-Version: 1.0
-Message-ID: <8061cc0.a9f1.19e836d8cf0.Coremail.andyshrk@163.com>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: eCgvCgD3_0ivjB1q9MivAA--.26891W
-X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxg8wjmodjK9X4AAA3U
-X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_064459_845804_37618D3E 
-X-CRM114-Status: UNSURE (   5.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260601_070154_822543_610F472F 
+X-CRM114-Status: GOOD (  13.64  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +62,44 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-
-Hello Cristian,
-
-At 2026-05-25 00:27:27, "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com> wrote:
->Since commit bec7cbfa7d4f ("drm/rockchip: vop2: Support setting custom
->background color") the VOP2 display controller allows configuring the
->background color of each video output port.
->
->However, this is currently limited to RGB formats.  When operating in
->YUV overlay mode, the color must be programmed using YUV format.
->
->Add the necessary RGB-to-YCbCr conversion logic, covering all color
->spaces supported by the display controller: BT601L, BT601F, BT709L and
->BT2020L.
->
-
-
-Do you currently have a branch that makes dw-hdmi-qp output in YUV mode ?
-
->Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->---
->Cristian Ciocaltea (2):
->      drm/rockchip: vop2: Rename CSC_BT2020 to CSC_BT2020L
->      drm/rockchip: vop2: Add YUV support to background color
->
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 154 ++++++++++++++++++++++++---
-> drivers/gpu/drm/rockchip/rockchip_drm_vop2.h |   2 +-
-> 2 files changed, 139 insertions(+), 17 deletions(-)
->---
->base-commit: 213c92ac9717e4951f052a499f91c89302889813
->change-id: 20260524-vop2-bg-yuv-1b0e6a09c579
->
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+QW0gTW9udGFnLCAxLiBKdW5pIDIwMjYsIDE1OjI1OjI5IE1pdHRlbGV1cm9ww6Rpc2NoZSBTb21t
+ZXJ6ZWl0IHNjaHJpZWIgSHJ1c2hpcmFqIEdhbmRoaToKPiBBZGQgdGhlIGRldmljZSB0cmVlIGJp
+bmRpbmcgZm9yIHRoZSBWaWNoYXJhayBBeG9uIHNpbmdsZS1ib2FyZAo+IGNvbXB1dGVyIGJhc2Vk
+IG9uIHRoZSBSb2NrY2hpcCBSSzM1ODggU29DLCBhbmQgYWRkIHRoZSB2aWNoYXJhawo+IHZlbmRv
+ciBwcmVmaXggdG8gdGhlIHZlbmRvci1wcmVmaXhlcyBsaXN0Lgo+IAo+IFNpZ25lZC1vZmYtYnk6
+IEhydXNoaXJhaiBHYW5kaGkgPGhydXNoaXJhamcyM0BnbWFpbC5jb20+CgpJIGRvIGJlbGlldmUg
+dGhvc2UgYWxzbyBuZWVkIHRvIGJlIHNlcGFyYXRlIHBhdGNoZXMuCk9uZSB0byBhZGQgdGhlIHZl
+bmRvci1wcmVmaXgsIG9uZSBmb3IgdGhlIGJpbmRpbmcuCgoKSGVpa28KCj4gLS0tCj4gIERvY3Vt
+ZW50YXRpb24vZGV2aWNldHJlZS9iaW5kaW5ncy9hcm0vcm9ja2NoaXAueWFtbCAgICB8IDUgKysr
+KysKPiAgRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVmaXhlcy55
+YW1sIHwgMiArKwo+ICAyIGZpbGVzIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQo+IAo+IGRpZmYg
+LS1naXQgYS9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlh
+bWwgYi9Eb2N1bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwK
+PiBpbmRleCAxYTlkZGUxODYyNmQuLmIwMjNkNGNjOTg0MiAxMDA2NDQKPiAtLS0gYS9Eb2N1bWVu
+dGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKPiArKysgYi9Eb2N1
+bWVudGF0aW9uL2RldmljZXRyZWUvYmluZGluZ3MvYXJtL3JvY2tjaGlwLnlhbWwKPiBAQCAtMTMw
+Niw2ICsxMzA2LDExIEBAIHByb3BlcnRpZXM6Cj4gICAgICAgICAgICAtIGNvbnN0OiB0dXJpbmcs
+cmsxCj4gICAgICAgICAgICAtIGNvbnN0OiByb2NrY2hpcCxyazM1ODgKPiAgCj4gKyAgICAgIC0g
+ZGVzY3JpcHRpb246IFZpY2hhcmFrIEF4b24KPiArICAgICAgICBpdGVtczoKPiArICAgICAgICAg
+IC0gY29uc3Q6IHZpY2hhcmFrLGF4b24KPiArICAgICAgICAgIC0gY29uc3Q6IHJvY2tjaGlwLHJr
+MzU4OAo+ICsKPiAgICAgICAgLSBkZXNjcmlwdGlvbjogV29sZlZpc2lvbiBQRjUgbWFpbmJvYXJk
+Cj4gICAgICAgICAgaXRlbXM6Cj4gICAgICAgICAgICAtIGNvbnN0OiB3b2xmdmlzaW9uLHJrMzU2
+OC1wZjUKPiBkaWZmIC0tZ2l0IGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Zl
+bmRvci1wcmVmaXhlcy55YW1sIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3Zl
+bmRvci1wcmVmaXhlcy55YW1sCj4gaW5kZXggMjg3ODRkNjZhZTdiLi41MDRhNjkxYTMzYjkgMTAw
+NjQ0Cj4gLS0tIGEvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRvci1wcmVm
+aXhlcy55YW1sCj4gKysrIGIvRG9jdW1lbnRhdGlvbi9kZXZpY2V0cmVlL2JpbmRpbmdzL3ZlbmRv
+ci1wcmVmaXhlcy55YW1sCj4gQEAgLTE3OTEsNiArMTc5MSw4IEBAIHBhdHRlcm5Qcm9wZXJ0aWVz
+Ogo+ICAgICAgZGVzY3JpcHRpb246IFZJQSBUZWNobm9sb2dpZXMsIEluYy4KPiAgICAiXnZpYWxh
+YiwuKiI6Cj4gICAgICBkZXNjcmlwdGlvbjogVklBIExhYnMsIEluYy4KPiArICAiXnZpY2hhcmFr
+LC4qIjoKPiArICAgIGRlc2NyaXB0aW9uOiBWaWNoYXJhayBDb21wdXRlcnMgUHZ0LiBMdGQuCj4g
+ICAgIl52aWNvciwuKiI6Cj4gICAgICBkZXNjcmlwdGlvbjogVmljb3IgQ29ycG9yYXRpb24KPiAg
+ICAiXnZpZGVvc3Ryb25nLC4qIjoKPiAKCgoKCgpfX19fX19fX19fX19fX19fX19fX19fX19fX19f
+X19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5nIGxpc3QKTGludXgtcm9j
+a2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5mcmFkZWFkLm9yZy9tYWls
+bWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
