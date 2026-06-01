@@ -4,31 +4,31 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C95C2CD6E56
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 06:52:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB890CD6E4C
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 06:56:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=oNQWKjUnNhe3AqzQ1i87NSaQd3eFr4L61FLsEwVAfaw=; b=CIZNKLiXwyMFf1
-	jPKw4uMMZfRMxgEoyshWPTpb75FxGlXeHZD76HW0ioWccQ7MFTW51yCqOFW4RudGvqbHesNCAASCu
-	muVmFe01Q1OfGpiVsUW0Us7Ux/OJ4lnXOiI7KxYnFSq3tYYjwm3RPv+gTdck94PlfcG20dcKH0A3J
-	1vouR3/aXu8qNvaYreDQAS8We/6w6mgZkP3eEvy5eeYHgLCdM0ROnM9U8CeMLdtN/iA4zqELuXN3m
-	XMFo4CbOvbnVT06TTB7TLsdGMVOM+tU8I5H8zsyUuDV0Kd7w0cD2G5w6zDh2tErYRz1oYt+lHHDTO
-	fGuXcntajcxx4EWfXYPA==;
+	List-Owner; bh=C1Z2k6MbjsE09dKi4N6uZQQ1whrushUWpNPBkQNOwTk=; b=IS1E+6dl/eL590
+	mc5gUi18kw+I9o7OIzLT6ywHuMQY+66zDVcUIG1N//kYIV1lYH5dQXU5y9bizbK2SWAAnGpQsGBBi
+	sqBjmP1/tGTFKr86bMmkgiQWxbv72meeuDVc/ph6MBaBiymx0E9ay7YCll9BWRwzTLxKy6mYmL4mn
+	uxV8pUYO/j4SCH6HTLpQ81uHn5qiYMUunny7uVCmzIUeEl4uFT95cwAwrOFZFeNJjKu1pfjHNZ7YF
+	ERX2tPdmne0a3WoufRzvTmlD/PdY5i9Abkw+xUJ2C0wYwGd1qThkY1EZQSy6huneg87Ch4zcom3De
+	9aOO257u61ZcP/EIX7mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTwVC-0000000AF7g-0bkz;
-	Mon, 01 Jun 2026 06:51:58 +0000
-Received: from mail-m83149.xmail.ntesmail.com ([156.224.83.149])
+	id 1wTwZS-0000000AFoE-1R3A;
+	Mon, 01 Jun 2026 06:56:22 +0000
+Received: from mail-m15577.qiye.163.com ([101.71.155.77])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wTwUa-0000000AEbD-2inr;
-	Mon, 01 Jun 2026 06:51:22 +0000
+	id 1wTwZP-0000000AFnM-2x2W;
+	Mon, 01 Jun 2026 06:56:21 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 408ded0a3;
-	Mon, 1 Jun 2026 14:51:16 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 408ded083;
+	Mon, 1 Jun 2026 14:51:12 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: hjc@rock-chips.com,
 	heiko@sntech.de,
@@ -44,26 +44,26 @@ To: hjc@rock-chips.com,
 	andrzej.hajda@intel.com,
 	neil.armstrong@linaro.org,
 	rfoss@kernel.org
-Subject: [PATCH v10 09/11] drm/bridge: analogix_dp: Rename and simplify is_rockchip()
-Date: Mon,  1 Jun 2026 14:50:58 +0800
-Message-Id: <20260601065100.1103873-10-damon.ding@rock-chips.com>
+Subject: [PATCH v10 06/11] drm/rockchip: analogix_dp: Fix OF node reference leak via auto cleanup
+Date: Mon,  1 Jun 2026 14:50:55 +0800
+Message-Id: <20260601065100.1103873-7-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260601065100.1103873-1-damon.ding@rock-chips.com>
 References: <20260601065100.1103873-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e81f3738003a8kunm111da268257e71
+X-HM-Tid: 0a9e81f363b403a8kunm111da268257e31
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCThlKVktLGUkeTkxIHh5MSFYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTBhDVk9LH0JLGBkfTUxNSVYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=W1jocCCOnlGYN7PqD5J/jIAztLvgHD663bjdcbd+TJPS6F3kvZ7glVAwZ60FG46aJ/iAZpQ+X/IuqHcxo/tWcT/+lXjSHFvGC3T5KIQkx7qT1b4HLojekkLA6MEcwShM0pWSFrHlN6H8dTSez4oL2rA6SKnGqGkS7Cp8pcz7HAA=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=LOMeAIx+KSl1dkBA7xVs1jEHQ7IWNjTCWlPoHezWkhE=;
+	b=deFm5InC/687QsO2wD9nxR5fYYZQR36H5WyR7KJF0KeTUyaPkU8STH2VQz9pvWnj+2TE+JLIUqml7W+sBG58qJPg7nIH26eVRdsz0uOZkpOrBsfWXBoefa1qhQuMveCPVho4oNMRF65guiFZTdh8hDTp8lOke0EzfjvWwkH81kY=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=yJZuY68i6MDKTHNn2ykBZ5f5HU1REKA2FFFIWObwSW8=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260531_235120_997091_42A3A214 
-X-CRM114-Status: GOOD (  12.95  )
+X-CRM114-CacheID: sfid-20260531_235619_956885_7445D472 
+X-CRM114-Status: GOOD (  10.07  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,147 +81,68 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Rename inline helper is_rockchip() to analogix_dp_is_rockchip()
-to follow driver namespace convention consistently across code.
+Sashiko reported a reference leak in rockchip_dp_drm_encoder_enable(),
+the of_get_child_by_name() function does not call of_node_put() in a
+symmetrical way [1].
 
-Replace chained equality comparisons with switch-case layout
-to improve readability and simplify adding new SoC entries later.
+Fix the device node reference leak by using __free(device_node) to
+automatically manage of_node_put() for all device nodes.
 
+Fixes: 729f8eefdcad ("drm/rockchip: analogix_dp: Add support for RK3588")
+Link: https://sashiko.dev/#/patchset/20260527024336.191433-1-damon.ding@rock-chips.com?part=5 #1
 Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
-Suggested-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
-
 ---
+ drivers/gpu/drm/rockchip/analogix_dp-rockchip.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
 
-Changes in v3:
-- Add Reviewed-by tag.
-
-Changes in v4:
-- Modify the commit msg.
----
- .../gpu/drm/bridge/analogix/analogix_dp_core.c |  2 +-
- .../gpu/drm/bridge/analogix/analogix_dp_reg.c  | 18 +++++++++---------
- include/drm/bridge/analogix_dp.h               | 11 +++++++++--
- 3 files changed, 19 insertions(+), 12 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-index 8cf6b73bceac..116de3bd83a3 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_core.c
-@@ -870,7 +870,7 @@ static int analogix_dp_bridge_atomic_check(struct drm_bridge *bridge,
- 	struct drm_display_info *di = &conn_state->connector->display_info;
- 	u32 mask = BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR444) | BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422);
+diff --git a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+index d2af5eb29dbb..b1ed25cefe5e 100644
+--- a/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
++++ b/drivers/gpu/drm/rockchip/analogix_dp-rockchip.c
+@@ -8,6 +8,7 @@
+  *         Jeff Chen <jeff.chen@rock-chips.com>
+  */
  
--	if (is_rockchip(dp->plat_data->dev_type)) {
-+	if (analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		if ((di->color_formats & mask)) {
- 			DRM_DEBUG_KMS("Swapping display color format from YUV to RGB\n");
- 			di->color_formats &= ~mask;
-diff --git a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-index 38fd8d5014d2..6207ded7ffd5 100644
---- a/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-+++ b/drivers/gpu/drm/bridge/analogix/analogix_dp_reg.c
-@@ -72,7 +72,7 @@ void analogix_dp_init_analog_param(struct analogix_dp_device *dp)
- 	reg = SEL_24M | TX_DVDD_BIT_1_0625V;
- 	writel(reg, dp->reg_base + ANALOGIX_DP_ANALOG_CTL_2);
++#include <linux/cleanup.h>
+ #include <linux/component.h>
+ #include <linux/mfd/syscon.h>
+ #include <linux/of.h>
+@@ -206,7 +207,6 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
+ 	struct drm_crtc *crtc;
+ 	struct drm_crtc_state *old_crtc_state;
+ 	struct of_endpoint endpoint;
+-	struct device_node *remote_port, *remote_port_parent;
+ 	char name[32];
+ 	u32 port_id;
+ 	int ret;
+@@ -230,18 +230,22 @@ static void rockchip_dp_drm_encoder_enable(struct drm_encoder *encoder,
+ 	if (ret < 0)
+ 		return;
  
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		reg = REF_CLK_24M;
- 		if (dp->plat_data->dev_type == RK3288_DP)
- 			reg ^= REF_CLK_MASK;
-@@ -123,7 +123,7 @@ void analogix_dp_reset(struct analogix_dp_device *dp)
- 	analogix_dp_stop_video(dp);
- 	analogix_dp_enable_video_mute(dp, 0);
+-	remote_port_parent = of_graph_get_remote_port_parent(endpoint.local_node);
++	struct device_node *remote_port_parent __free(device_node) =
++		of_graph_get_remote_port_parent(endpoint.local_node);
+ 	if (remote_port_parent) {
+-		if (of_get_child_by_name(remote_port_parent, "ports")) {
+-			remote_port = of_graph_get_remote_port(endpoint.local_node);
++		struct device_node *ports __free(device_node) =
++			of_get_child_by_name(remote_port_parent, "ports");
++
++		if (ports) {
++			struct device_node *remote_port __free(device_node) =
++				of_graph_get_remote_port(endpoint.local_node);
++
+ 			of_property_read_u32(remote_port, "reg", &port_id);
+-			of_node_put(remote_port);
+ 			sprintf(name, "%s vp%d", remote_port_parent->full_name, port_id);
+ 		} else {
+ 			sprintf(name, "%s %s",
+ 				remote_port_parent->full_name, endpoint.id ? "vopl" : "vopb");
+ 		}
+-		of_node_put(remote_port_parent);
  
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		reg = RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N |
- 			SW_FUNC_EN_N;
- 	else
-@@ -233,7 +233,7 @@ void analogix_dp_set_pll_power_down(struct analogix_dp_device *dp, bool enable)
- 	u32 mask = DP_PLL_PD;
- 	u32 pd_addr = ANALOGIX_DP_PLL_CTL;
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		pd_addr = ANALOGIX_DP_PD;
- 		mask = RK_PLL_PD;
+ 		DRM_DEV_DEBUG(dp->dev, "vop %s output to dp\n", (ret) ? "LIT" : "BIG");
  	}
-@@ -254,12 +254,12 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 	u32 phy_pd_addr = ANALOGIX_DP_PHY_PD;
- 	u32 mask;
- 
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		phy_pd_addr = ANALOGIX_DP_PD;
- 
- 	switch (block) {
- 	case AUX_BLOCK:
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			mask = RK_AUX_PD;
- 		else
- 			mask = AUX_PD;
-@@ -317,7 +317,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 		 * to power off everything instead of DP_PHY_PD in
- 		 * Rockchip
- 		 */
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			mask = DP_INC_BG;
- 		else
- 			mask = DP_PHY_PD;
-@@ -329,7 +329,7 @@ void analogix_dp_set_analog_power_down(struct analogix_dp_device *dp,
- 			reg &= ~mask;
- 
- 		writel(reg, dp->reg_base + phy_pd_addr);
--		if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+		if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 			usleep_range(10, 15);
- 		break;
- 	case POWER_ALL:
-@@ -465,7 +465,7 @@ void analogix_dp_init_aux(struct analogix_dp_device *dp)
- 	analogix_dp_reset_aux(dp);
- 
- 	/* AUX_BIT_PERIOD_EXPECTED_DELAY doesn't apply to Rockchip IP */
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type))
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type))
- 		reg = 0;
- 	else
- 		reg = AUX_BIT_PERIOD_EXPECTED_DELAY(3);
-@@ -837,7 +837,7 @@ void analogix_dp_config_video_slave_mode(struct analogix_dp_device *dp)
- 	u32 reg;
- 
- 	reg = readl(dp->reg_base + ANALOGIX_DP_FUNC_EN_1);
--	if (dp->plat_data && is_rockchip(dp->plat_data->dev_type)) {
-+	if (dp->plat_data && analogix_dp_is_rockchip(dp->plat_data->dev_type)) {
- 		reg &= ~(RK_VID_CAP_FUNC_EN_N | RK_VID_FIFO_FUNC_EN_N);
- 	} else {
- 		reg &= ~(MASTER_VID_FUNC_EN_N | SLAVE_VID_FUNC_EN_N);
-diff --git a/include/drm/bridge/analogix_dp.h b/include/drm/bridge/analogix_dp.h
-index 854af692229b..7b670dd769e9 100644
---- a/include/drm/bridge/analogix_dp.h
-+++ b/include/drm/bridge/analogix_dp.h
-@@ -19,9 +19,16 @@ enum analogix_dp_devtype {
- 	RK3588_EDP,
- };
- 
--static inline bool is_rockchip(enum analogix_dp_devtype type)
-+static inline bool analogix_dp_is_rockchip(enum analogix_dp_devtype type)
- {
--	return type == RK3288_DP || type == RK3399_EDP || type == RK3588_EDP;
-+	switch (type) {
-+	case RK3288_DP:
-+	case RK3399_EDP:
-+	case RK3588_EDP:
-+		return true;
-+	default:
-+		return false;
-+	}
- }
- 
- struct analogix_dp_plat_data {
 -- 
 2.34.1
 
