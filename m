@@ -4,57 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3A99CD6E55
-	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 11:02:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54F51CD6E56
+	for <linux-rockchip@archiver.kernel.org>; Mon,  1 Jun 2026 11:56:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
-	List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:MIME-Version:
-	Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4m9K2v2u705TWyVsUKZZMqCOZ1m7JHoSM2367EP6iiU=; b=KI8s/cfVDvUfIIEekJ/qzZhECR
-	4qb+8IBGNQ7g2Xqj0k0YffqECl0fM9u4wucLZvrB9mCfRCh3QuFxDsFROfxkbTsA8Jc2BYlY1+fw0
-	UF7D+eANCv7107HkGid7LDsk4JS3J5BOFfcJp+9wREXa+ThFUzmkKJ0lAv1lKwGegutllhp9a3WXB
-	Z3sFKgI3p0oU2QPPhhn1ZuUHtfuWZ//VCGzXRZNPtxMZBsN5lnCJs3zP9/WD1g6yBUzrXz2rbzWNi
-	T5QFpR7J7w5UWC2383sb9of3fA180CIY/iC2XvDZm69n7RukX3e56bjEnQBdiIiZAzWGnguzMVNtz
-	GdBkvaSA==;
+	bh=tvr6zc7sVbwCM0JLbiVbLUiDjqm5QRc+P8QJbOlnkCY=; b=dutIIDfJ6IwDRTuZ9NEvajFWBr
+	mGkLvsCkJWMwe8WRp6GXTQIiLTKZBTyrh+ctRXnKhthevGVu4nziIofWwJnxq6ziFZzEgyC0lcME3
+	jPysc4wJdy4ZOKiq+H+UU7q9nwN2zhJd3zCd5LhKVNQjUJyIxkx/xUoevFGRUDbhayp0YnIwNw6dk
+	1QeAU76zd89gq9tPeA5uwofb0Z97YB7DsbYwYd2em6pZf9JDxmlJEuzHMKF+CNKNy8pnIOltXpaBd
+	UW2Q5tdTDvN9GORHB6NI8oqsTdso75+6tzSY9juoXZ7b52Qy0hny14d/EMiGTvdrVDSPDTVbuFAgo
+	10oM5lsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU0Pd-0000000Ah5w-3998;
-	Mon, 01 Jun 2026 11:02:29 +0000
-Received: from mail-m19731104.qiye.163.com ([220.197.31.104])
+	id 1wU1Fl-0000000AmR0-2ase;
+	Mon, 01 Jun 2026 11:56:21 +0000
+Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wU0Pb-0000000Ah5D-3J51
-	for linux-rockchip@lists.infradead.org;
-	Mon, 01 Jun 2026 11:02:29 +0000
-Received: from [172.16.12.77] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 40978370c
-	for <linux-rockchip@lists.infradead.org>; Mon, 1 Jun 2026 18:47:24 +0800 (GMT+08:00)
-Message-ID: <fa6a9fac-9d87-4fa8-b3ae-6e9365130152@rock-chips.com>
-Date: Mon, 1 Jun 2026 18:47:24 +0800
+	id 1wU1Fj-0000000AmQA-19jt;
+	Mon, 01 Jun 2026 11:56:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1780314945; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=FNRftmKnS7T4TSB+t9muQC7THXzDRm3zS59CpQmQXcfR+lD+sjK+3tcrJhNzULSvMP9iFe6zhia6Er7/3D0+ORHk/jkvrq6OqgErsItAuS0JGYtsajOfUPlgChS+89Yd/E67QrR6yXLqLSKOa5NKv55NaBJaHuYMpv0Sij0NibY=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1780314945; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=NhicfsH5K90NxOsrnACheuqKG+2D1PbU+GtDXc1tNpE=; 
+	b=UPvYofb/4uqXxIKz930hU65li2WDA/0umEcWJiCaq63BDNRizgQKDD4r4gKELhgFKIDeyOoI8TsXRqenSrhWTEvcTJIbA+DJt9dTGtNa1N9Lfxj2nAwF++/+9V0cQLkLjNbFt5autS3UbHwhMPXwmjq3lEJMp+ySzHYS6K5IIqk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780314945;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=NhicfsH5K90NxOsrnACheuqKG+2D1PbU+GtDXc1tNpE=;
+	b=GF2oyKWgegPpU7BqIuuEq9O1/RNy2sKIo3tJI+XAAgmkFH1teZa2kBFt1ewppfhY
+	FTcXN9GE3Q9TuTAr4N8+B4lGE+E+w6nImJl+d38IyBttQEPH3y4roDTwGUaGPd51cu9
+	lRud7zprKpvKYfeeGSa6Z2/17tVg9IWskRJAhg+o=
+Received: by mx.zohomail.com with SMTPS id 178031494377259.66847238214382;
+	Mon, 1 Jun 2026 04:55:43 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 04019181D80; Mon, 01 Jun 2026 13:55:36 +0200 (CEST)
+Date: Mon, 1 Jun 2026 13:55:36 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Damon Ding <damon.ding@rock-chips.com>
+Subject: Re: [PATCH v4 1/3] dt-bindings: display: bridge: analogix-dp: Add
+ data-lanes support for endpoint
+Message-ID: <ah1y8hRl9M40YNfF@venus>
+References: <20260529040530.741336-1-damon.ding@rock-chips.com>
+ <20260529040530.741336-2-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] drm/rockchip: vop2: Use vop2->old_layer_sel directly
- in wait_for_layer_cfg_done()
-To: linux-rockchip@lists.infradead.org
-References: <20260504-vop2-layer-cfg-tmout-v1-0-730226a7331e@collabora.com>
- <20260504-vop2-layer-cfg-tmout-v1-5-730226a7331e@collabora.com>
-Content-Language: en-US
-From: Andy Yan <andy.yan@rock-chips.com>
-In-Reply-To: <20260504-vop2-layer-cfg-tmout-v1-5-730226a7331e@collabora.com>
-X-HM-Tid: 0a9e82cba35309d8kunm2514161238d303
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZHU0eVkNJQk0dTx8fTx4aTFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=TFLucAbO7pB9/jP0ZMY7lyJTBp+Dm3H3hsm+KeI+39NefMacnvSE8g2lGTgOQhf37foTMKkqEOlR0gOy2ol9B8rhnY1TxDk8TfzYpfl1j0UjL5F1+UyefbNuBw7WV14luetNqtByymLBEUEtR4vigvPXLSg7waXgkP+UllkbbuE=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=pgfTBZFHZhT0sbtCXDzyWjLIv+X/9w4XJVmh1kQanQI=;
-	h=date:mime-version:subject:message-id:from;
+In-Reply-To: <20260529040530.741336-2-damon.ding@rock-chips.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.2.1.5.2/280.300.36
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_040227_991408_21685E72 
-X-CRM114-Status: GOOD (  11.48  )
+X-CRM114-CacheID: sfid-20260601_045619_349034_321975DC 
+X-CRM114-Status: GOOD (  21.89  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -66,70 +75,154 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain; charset="us-ascii"; Format="flowed"
+Cc: heiko@sntech.de, dri-devel@lists.freedesktop.org, dianders@chromium.org, Laurent.pinchart@ideasonboard.com, andrzej.hajda@intel.com, airlied@gmail.com, m.szyprowski@samsung.com, simona@ffwll.ch, robh@kernel.org, rfoss@kernel.org, jernej.skrabec@gmail.com, linux-rockchip@lists.infradead.org, luca.ceresoli@bootlin.com, devicetree@vger.kernel.org, conor+dt@kernel.org, jonas@kwiboo.se, maarten.lankhorst@linux.intel.com, mripard@kernel.org, linux-arm-kernel@lists.infradead.org, dmitry.baryshkov@oss.qualcomm.com, neil.armstrong@linaro.org, hjc@rock-chips.com, linux-kernel@vger.kernel.org, tzimmermann@suse.de, andy.yan@rock-chips.com, krzk+dt@kernel.org, nicolas.frattaroli@collabora.com
+Content-Type: multipart/mixed; boundary="===============7731220736178524685=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello,
 
-On 5/5/26 02:24, Cristian Ciocaltea wrote:
-> After the old_layer_sel local was removed, the only caller of
-> rk3568_vop2_wait_for_layer_cfg_done() already passes vop2->old_layer_sel
-> as the expected value.
-> 
-> Drop the redundant parameter and read the member directly inside the
-> function.
-> 
-> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-
-    
-    Reviewed-by: Andy Yan <andy.yan@rock-chips.com>
+--===============7731220736178524685==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="l4yu2mk2qw7tpdei"
+Content-Disposition: inline
 
 
+--l4yu2mk2qw7tpdei
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v4 1/3] dt-bindings: display: bridge: analogix-dp: Add
+ data-lanes support for endpoint
+MIME-Version: 1.0
+
+Hi,
+
+On Fri, May 29, 2026 at 12:05:28PM +0800, Damon Ding wrote:
+> Add data-lanes property support to the port@1 endpoint for physical
+> lane mapping configuration.
+>=20
+> Lane mapping is mainly used for below scenarios:
+> 1. Correct PCB lane swap and differential line routing crossover
+>    without hardware changes;
+> 2. Adapt mismatched lane pin definitions between SoC and eDP panel;
+> 3. Support multiple panel hardware variants on the same board
+>    by configuring data-lanes in device tree only.
+>=20
+> Additionally, add data-lanes setting in Rockchip eDP DT node example
+> to show actual lane mapping usage.
+>=20
+> Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+>=20
 > ---
->   drivers/gpu/drm/rockchip/rockchip_vop2_reg.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> index 0849bd922ffb..1d8473a6dfd1 100644
-> --- a/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> +++ b/drivers/gpu/drm/rockchip/rockchip_vop2_reg.c
-> @@ -2115,7 +2115,7 @@ static u32 rk3568_vop2_read_layer_cfg(struct vop2 *vop2)
->   	return vop2_readl(vop2, RK3568_OVL_LAYER_SEL);
->   }
->   
-> -static void rk3568_vop2_wait_for_layer_cfg_done(struct vop2 *vop2, u32 cfg)
-> +static void rk3568_vop2_wait_for_layer_cfg_done(struct vop2 *vop2)
->   {
->   	u32 atv_layer_cfg;
->   	int ret;
-> @@ -2124,10 +2124,10 @@ static void rk3568_vop2_wait_for_layer_cfg_done(struct vop2 *vop2, u32 cfg)
->   	 * Spin until the previous layer configuration is done.
->   	 */
->   	ret = readx_poll_timeout_atomic(rk3568_vop2_read_layer_cfg, vop2, atv_layer_cfg,
-> -					atv_layer_cfg == cfg, 10, 50 * 1000);
-> +					atv_layer_cfg == vop2->old_layer_sel, 10, 50 * 1000);
->   	if (ret)
->   		drm_err_ratelimited(vop2->drm, "wait layer cfg done timeout: 0x%x--0x%x\n",
-> -				    atv_layer_cfg, cfg);
-> +				    atv_layer_cfg, vop2->old_layer_sel);
->   }
->   
->   static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
-> @@ -2292,7 +2292,7 @@ static void rk3568_vop2_setup_layer_mixer(struct vop2_video_port *vp)
->   		 * Changes of other VPs' overlays have not taken effect
->   		 */
->   		if (cfg_done)
-> -			rk3568_vop2_wait_for_layer_cfg_done(vop2, vop2->old_layer_sel);
-> +			rk3568_vop2_wait_for_layer_cfg_done(vop2);
->   	}
->   
->   	if (layer_sel != vop2->old_layer_sel || port_sel != vop2->old_port_sel)
-> 
 
+Reviewed-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+
+Greetings,
+
+-- Sebastian
+
+> Changes in v2:
+> - Add lane mapping application scenarios in commit message.
+> - Remove redundant deprecated property 'data-lanes' for eDP node.
+> - Update port@1 $ref to /schemas/graph.yaml#/$defs/port-base.
+>=20
+> Changes in v3:
+> - Squash data-lanes adjustment of Rockchip eDP DT example into this
+>   commit.
+> - Add unevaluatedProperties: false to both the port@1 and endpoint
+>   nodes.
+> ---
+>  .../bindings/display/bridge/analogix,dp.yaml  | 19 ++++++++++++++-----
+>  .../rockchip/rockchip,analogix-dp.yaml        |  1 +
+>  2 files changed, 15 insertions(+), 5 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/display/bridge/analogix,dp=
+=2Eyaml b/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
+> index 62f0521b0924..ecf206871cdd 100644
+> --- a/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/bridge/analogix,dp.yaml
+> @@ -42,13 +42,22 @@ properties:
+>      properties:
+>        port@0:
+>          $ref: /schemas/graph.yaml#/properties/port
+> -        description:
+> -          Input node to receive pixel data.
+> +        description: Input node to receive pixel data.
+> =20
+>        port@1:
+> -        $ref: /schemas/graph.yaml#/properties/port
+> -        description:
+> -          Port node with one endpoint connected to a dp-connector node.
+> +        $ref: /schemas/graph.yaml#/$defs/port-base
+> +        unevaluatedProperties: false
+> +        description: Port node with one endpoint connected to sink devic=
+e node.
+> +        properties:
+> +          endpoint:
+> +            $ref: /schemas/media/video-interfaces.yaml#
+> +            unevaluatedProperties: false
+> +            properties:
+> +              data-lanes:
+> +                minItems: 1
+> +                maxItems: 4
+> +                items:
+> +                  enum: [ 0, 1, 2, 3 ]
+> =20
+>      required:
+>        - port@0
+> diff --git a/Documentation/devicetree/bindings/display/rockchip/rockchip,=
+analogix-dp.yaml b/Documentation/devicetree/bindings/display/rockchip/rockc=
+hip,analogix-dp.yaml
+> index d99b23b88cc5..f690ee393fdb 100644
+> --- a/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
+x-dp.yaml
+> +++ b/Documentation/devicetree/bindings/display/rockchip/rockchip,analogi=
+x-dp.yaml
+> @@ -117,6 +117,7 @@ examples:
+>            reg =3D <1>;
+> =20
+>            edp_out_panel: endpoint {
+> +            data-lanes =3D <0 1>;
+>              remote-endpoint =3D <&panel_in_edp>;
+>            };
+>          };
+> --=20
+> 2.34.1
+>=20
+
+--l4yu2mk2qw7tpdei
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmodczQACgkQ2O7X88g7
++prqbg//W/6q4iL4Z+96KG17dC3Romdv0RIDL4hqiVccAYjIRdOxOyCXB/3Zvt1K
+v76++g9tq+K89vejb04n5m0qNsnQshLsMqpD9yS4naPQg7wIQMuGsra87qAkhozF
+lFeImUWIMSS/2dbagApnsatXBrQOkXTky+zkyBNmTe71txgkB401J/MUlBJyz70w
+9NUjYAR6bb+8I5WDJUaTbkvu8zjEsAYMQ8PW59+D3aFkn2n/bLHqBqRQDSFyP28T
+J1GZqwZhSCp3dO2PLLzs4M8tAyowz498gApB8zLo9/yG57U4yBzdrrskbx9MVYUn
+/kZMFRzbUbaqwqwwWcVjb/C19iMS5T3iTNLfbenJ7v8HHoOHDRqFXEeoMI1FdCKM
+piUuysqVp/Ub7omiD2myBAPwJ8wuEAaUaKV/bcmC76oU7yX2iCB8xZFkbKuEvVB9
+UFEpje/F4gWwP3tK+uoqRLDoQ7pxpcCg81WBWKnCNRqavfD/OfalFth4W9ClaUSQ
+UjNqx7xF5o2zrxUd5BxTuiNnJjalo3olhcD3c3nVSgdvvHQOdpU4iAp91nAU7whm
+U+9eq0CE326GKt+hQSdKH3GbqqxUSf6tQ/KypdlFIhPunpzUoARdE1HrwIYbyO5O
+GJ2sUtue3CQZ3nl0/SyuZIJB1jEGMBA5sigFw6TvOZrilwm4GyI=
+=I06R
+-----END PGP SIGNATURE-----
+
+--l4yu2mk2qw7tpdei--
+
+
+--===============7731220736178524685==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============7731220736178524685==--
+
