@@ -4,97 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96725CD6E57
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 10:17:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 318D9CD6E4A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 13:27:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=tj9ZVJj7yZbiDXzZEXycLSj9lfacd6v4S3WAYKQj72U=; b=IidLdlgX9njjq3
-	BNNyIh9k1wT/BdjvQfQ7WKkBfodfj36tHsgUol7YIGIZ1smfnjbkIN5WvCHPjM3R1eTsofC2CX/Bg
-	xmFVr37TyaREt1MzP06Yf29I5XCJ35UmmlPGVj0BwrDqNPNQ5OfMCnn2/r9smwEjfU0c+R4gsVIwH
-	K4xaDq/fKrgHECSJpTZo6NMDDHVytIiVjO2gETt6MsKnndqIoGkp/CFd8DL+vZkroVExFE4vhPY2H
-	HKksK/0iE/hPnDTeHVfuMDXNdNsvtH2tdvaEutqMTZT84zuNqhvxIDP7TgPA25SJy8J/ujiggiprN
-	LPn70mmWDPcHPDHCigBg==;
+	List-Owner; bh=PQm98UTttM+6WZ3WsvpS9wgAFuu1lZpSl8Kgv6h0y80=; b=s/VwUsI1miFyjJ
+	57Z20mDKtxELom95rp4TBBYJ+VLyfeCmZAJ1VHR3NZmTRH6qrNP0DJLynsjImFPR6muctmc+epUyf
+	yGeZY+wYKDq/o6YQSmcTSHr77kT8g3SoPOflj1/AI38NaQm+eSpu0emfMtnPWmNaDm3NtETiSw5eZ
+	xUIzPQyncqgJWhW5Usu0mLrCq2unj8BVlmLwMbIySMJ2iB/2se9KCuftf+NpjcuD+NPm4JpKtWH+Y
+	60fjMgKiQTdkhzDh3L1oNdLMsQyjcA+3ZcKcyu9krdNBEg3gIn5AMpqhnzahtKrUuWv1eNjWtzAf4
+	P1RQtKWJbPnL7x8s6YNA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUMBJ-0000000CklN-20vP;
-	Tue, 02 Jun 2026 10:17:09 +0000
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+	id 1wUP9A-0000000D6rM-0a7k;
+	Tue, 02 Jun 2026 13:27:08 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUMBE-0000000CkhJ-34W6
-	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jun 2026 10:17:07 +0000
-Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2bf1cda2b17so31781195ad.1
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jun 2026 03:17:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780395424; x=1781000224; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=lT+JLRZTXmUkizcf52XaQYhGVpogr5HSaG3W4C826mA=;
-        b=R6M9rR51nLNP+TPUsa8ofm443+SrhrSSHa7mS+TC7DW6BkJ8XVNJL97Zh9/tFOjC6h
-         iBwaPUZUDGXO72OouPlJn0MYQQM7LmIrp2paFGVGXyZ38SUYHXk/qjx0UdTEtojK9UKm
-         lqFpbrZFb2T8XTzurYqZw8M6CsaC9pf0O5reUm2bYnG5u7GZy/hfCWw+KmBEYZVGp6ZR
-         SxcpTUVntOJwekHqefluApNEcx/XAlM6shlBtcjsXkhh6KXBp/5DlpLznjYBjz9FygOH
-         GFAZAjgX1MTr1UHYknFjBrU5ilh80ULMK2GvwEmeq8nWN8/BJLkyL4/AcQzmkbK7wiHk
-         WDlA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780395424; x=1781000224;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=lT+JLRZTXmUkizcf52XaQYhGVpogr5HSaG3W4C826mA=;
-        b=MAf5M0TGrctMMMOiGJZbAn/vouw0sLVxzuDnQM0HL+mHolTVGuS27bB3LDArl8gPgN
-         GpDdhLabCK8zLMQUGMiKq3/mvrZqGbhb6ywpfTrg41xhwq4bTIByteZUZnzI3J70wumQ
-         Q0EZpTcfFpgPWFa8tc0EyWBa0RFJ+g0jI4DL/AF8ANkaL3W4ufx5Hp6Uz7qrsH1qtDDh
-         7ixIOtGO6uDRArAOe9WPzFHvrMD8Dm667MANM5Wdq8LZ0nhPfLJPCMg/zDGznhpjfO0V
-         PirYzQ9+cvyJGqsfDgKrNQXGAZ08x+xWpbg/MmoiVsTdHft6d3n/ace0NcmqR0qUuZfb
-         mRYA==
-X-Forwarded-Encrypted: i=1; AFNElJ8XS575MZgyNvGd0RjRk3rpPkLRGiiIkLaGIVJxcI+n2IPrKjsM26ds4dsaFuQYVXhCww3h4LAk4dGdCLGWLQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxZxScTIykQGMy762cKrIqhFyw8JOWrzLA87sz92Mqeb2B5eVhN
-	SGjDR2xCrMUqZ9L6ZNudL12v48hTeesOsDOsq7PL3W0/d+5ucBY9gogx
-X-Gm-Gg: Acq92OF1KE8uM4WIIGoex8QrdDVUCBYfNC+/OmX4BnvBhF1Sr5Qq8cm7SrjgABL1XRK
-	gw51chhftiQbhAzYg7oxePtKydln/nq5CPm/h5g9RJusH27ElmWJk25wXmyjRvqfxGM8NVAoy4r
-	7kAyPHNmHQJ3EW/+CyemaTwevS0iOLer3XdjDWzyz0aY74f7hAG8kvdzmushyBJfNueamSR3KPS
-	gr9NHRiMVoS7oAzJ45WZfjfbzL1xoaxe7j2PnHZq4Hwqy9lJYqrCq4RpN6neSiFYRZ3Nvhxqhh7
-	z02BVEJOdDVRKF8d+1YA0EMo80ZlOojZx5YuWTEJ57Y79H2p939b+dBnxQTASTwgtTXRre9tSst
-	jvgMejL9fQpvtazRJ3rqLYgei2Vo0uUOPfx53avf+Yg8H1rPNSHQoU95aKEyZcUdWmvz6hC5BGf
-	B2SDoiDOA6liUUn4C3bHGwLYJd0IlKMlzoOh+lm4PCG0L+hJqELf5kZJyu1cZ/Z0SrZN94
-X-Received: by 2002:a17:903:3848:b0:2c0:a4c3:d7a with SMTP id d9443c01a7336-2c10ccfb095mr31503255ad.26.1780395423749;
-        Tue, 02 Jun 2026 03:17:03 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2bf239fd84fsm132766305ad.23.2026.06.02.03.16.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jun 2026 03:17:03 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Heiko Stuebner <heiko@sntech.de>,
-	Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>
-Cc: Rob Herring <robh@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	devicetree@vger.kernel.org,
-	linux-sound@vger.kernel.org,
-	linux-rockchip@lists.infradead.org,
+	id 1wUP96-0000000D6py-3bs5;
+	Tue, 02 Jun 2026 13:27:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=bP2ANxwuuOES1mTdtAiqmnTvpDv/mDDlSNAPjsv7rZQ=; b=V
+	6AVODvnHjISMfgASw1Lh2u5NZWTqELTXbnRNeC7A73A71XwabBzhoIuPnGYBkvR/
+	xiOeR+QAPzPu0IRNPUGSyeC0y/0C0xMgKwVTCkoE+AvkwMg72qHm5DkQ1i4XHapg
+	soi1M0R97JpPe7OKWg9JD+KYC5GeGeIutdrdQiG0xI=
+Received: from andyshrk$163.com ( [61.154.14.86] ) by
+ ajax-webmail-wmsvr-40-120 (Coremail) ; Tue, 2 Jun 2026 21:25:47 +0800 (CST)
+X-Originating-IP: [61.154.14.86]
+Date: Tue, 2 Jun 2026 21:25:47 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
+Cc: "Sandy Huang" <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+	"Andy Yan" <andy.yan@rock-chips.com>,
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
+	"Maxime Ripard" <mripard@kernel.org>,
+	"Thomas Zimmermann" <tzimmermann@suse.de>,
+	"David Airlie" <airlied@gmail.com>,
+	"Simona Vetter" <simona@ffwll.ch>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>,
-	Sashiko AI Review <sashiko-bot@kernel.org>
-Subject: [PATCH v2 5/5] ASoC: rockchip: rockchip_pdm: Handle runtime PM resume failures in set_fmt
-Date: Tue,  2 Jun 2026 17:16:08 +0700
-Message-ID: <20260602101608.45137-6-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260602101608.45137-1-phucduc.bui@gmail.com>
-References: <20260602101608.45137-1-phucduc.bui@gmail.com>
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re:[PATCH v2 2/2] drm/rockchip: vop2: Add YUV support to background
+ color
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20260403(27802f6d) Copyright (c) 2002-2026 www.mailtech.cn 163com
+In-Reply-To: <20260601-vop2-bg-yuv-v2-2-e5aef1d16fec@collabora.com>
+References: <20260601-vop2-bg-yuv-v2-0-e5aef1d16fec@collabora.com>
+ <20260601-vop2-bg-yuv-v2-2-e5aef1d16fec@collabora.com>
+X-CM-CTRLMSGS: vD1K9HBsdXM9MTc4MDQwNjc0NjE5NV9iYjg2MzIyYjBjNzQ3OTQ2YmZkMzEwZ
+ TA1MjZmYmJhYg==
+X-NTES-SC: AL_Qu2TAvibuU8v4SOQZekfmUgWjuw/WsG1v/Ul1YBSP556jDLp4yQsdlhFB13k6v+RMTGlqAieVTxg0OFXWa1WfaYt7OLgfxJ+5O+MMISvGnstqw==
 MIME-Version: 1.0
+Message-ID: <6909deb4.a38b.19e888300fe.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eCgvCgDnD_Xb2R5qOdcAAA--.8951W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbCxRvOLWoe2dvWdAAA3p
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_031704_797130_B33066B7 
-X-CRM114-Status: GOOD (  12.62  )
+X-CRM114-CacheID: sfid-20260602_062705_395003_74BF63F5 
+X-CRM114-Status: GOOD (  11.19  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,54 +85,248 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
 
-rockchip_pdm_set_fmt() calls pm_runtime_get_sync() before accessing
-hardware registers, but ignores its return value.
-If the runtime resume fails, the function continues to perform register
-accesses while the device state is undefined.
-Replace pm_runtime_get_sync() with pm_runtime_resume_and_get() and
-return early on failure to avoid unpowered register accesses.
+Hello,
 
-Reported-by: Sashiko AI Review <sashiko-bot@kernel.org>
-Closes: https://lore.kernel.org/all/20260522110302.349421F000E9@smtp.kernel.org/
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
----
-
-NOTE: This patch is compile-tested only. Please help test if you have 
-    the relevant Rockchip hardware.
-
- sound/soc/rockchip/rockchip_pdm.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/sound/soc/rockchip/rockchip_pdm.c b/sound/soc/rockchip/rockchip_pdm.c
-index 8f78f7bc1806..115e90d3bbfe 100644
---- a/sound/soc/rockchip/rockchip_pdm.c
-+++ b/sound/soc/rockchip/rockchip_pdm.c
-@@ -321,6 +321,7 @@ static int rockchip_pdm_set_fmt(struct snd_soc_dai *cpu_dai,
- {
- 	struct rk_pdm_dev *pdm = to_info(cpu_dai);
- 	unsigned int mask = 0, val = 0;
-+	int ret;
- 
- 	mask = PDM_CKP_MSK;
- 	switch (fmt & SND_SOC_DAIFMT_INV_MASK) {
-@@ -334,7 +335,10 @@ static int rockchip_pdm_set_fmt(struct snd_soc_dai *cpu_dai,
- 		return -EINVAL;
- 	}
- 
--	pm_runtime_get_sync(cpu_dai->dev);
-+	ret = pm_runtime_resume_and_get(cpu_dai->dev);
-+	if (ret)
-+		return ret;
-+
- 	regmap_update_bits(pdm->regmap, PDM_CLK_CTRL, mask, val);
- 	pm_runtime_put(cpu_dai->dev);
- 
--- 
-2.43.0
+At 2026-06-02 02:00:04, "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com> wrote:
+>The VOP2 background color must be programmed with 10-bit precision,
+>using YUV format when the overlay operates in YUV mode, and RGB
+>otherwise.
+>
+>Add the required RGB-to-YCbCr conversion logic, covering all color
+>spaces supported by the display controller: BT601L, BT601F, BT709L and
+>BT2020L.
+>
+>Since the color is currently programmed to hardware on every atomic
+>commit, minimize the computation cost by splitting the work across the
+>two paths: in atomic_enable(), perform the conversion unconditionally
+>(the hardware state is unknown after power-on), while in atomic_flush(),
+>perform it only when the DRM property has actually changed.
+>
+>Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
 
 
+    Acked-by: Andy Yan <andyshrk@163.com>
+
+    Thanks.
+
+>---
+> drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 153 ++++++++++++++++++++++++---
+> 1 file changed, 138 insertions(+), 15 deletions(-)
+>
+>diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>index 64ac07cb1b0d..9b261f0c7eec 100644
+>--- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
+>@@ -728,6 +728,89 @@ static void vop2_setup_csc_mode(struct vop2_video_port *vp,
+> 	vop2_win_write(win, VOP2_WIN_CSC_MODE, csc_mode);
+> }
+> 
+>+/*
+>+ * RGB-to-YCbCr conversion based on color_to_ycbcr() and rgb2ycbcr() from
+>+ * drivers/media/common/v4l2-tpg/v4l2-tpg-core.c.
+>+ *
+>+ * Limited-range Y offset & chroma midpoint are expressed in 16-bit space.
+>+ */
+>+#define RGB2YUV_LIMITED_Y_OFFSET	(16 << 8)
+>+#define RGB2YUV_CHROMA_OFFSET		(128 << 8)
+>+#define COEFF(v, r)			((s32)(0.5 + (v) * (r) * 256.0))
+>+
+>+struct rgb2yuv_matrix {
+>+	s32 y_r,  y_g,  y_b;
+>+	s32 cb_r, cb_g, cb_b;
+>+	s32 cr_r, cr_g, cr_b;
+>+	s32 y_offset;
+>+};
+>+
+>+/* BT.601 Limited range */
+>+static const struct rgb2yuv_matrix rgb2yuv_bt601l = {
+>+	.y_r  = COEFF(0.299, 219),   .y_g  = COEFF(0.587, 219),   .y_b  = COEFF(0.114, 219),
+>+	.cb_r = COEFF(-0.1687, 224), .cb_g = COEFF(-0.3313, 224), .cb_b = COEFF(0.5, 224),
+>+	.cr_r = COEFF(0.5, 224),     .cr_g = COEFF(-0.4187, 224), .cr_b = COEFF(-0.0813, 224),
+>+	.y_offset = RGB2YUV_LIMITED_Y_OFFSET,
+>+};
+>+
+>+/* BT.601 Full range */
+>+static const struct rgb2yuv_matrix rgb2yuv_bt601f = {
+>+	.y_r  = COEFF(0.299, 255),   .y_g  = COEFF(0.587, 255),   .y_b  = COEFF(0.114, 255),
+>+	.cb_r = COEFF(-0.1687, 255), .cb_g = COEFF(-0.3313, 255), .cb_b = COEFF(0.5, 255),
+>+	.cr_r = COEFF(0.5, 255),     .cr_g = COEFF(-0.4187, 255), .cr_b = COEFF(-0.0813, 255),
+>+	.y_offset = 0,
+>+};
+>+
+>+/* BT.709 Limited range */
+>+static const struct rgb2yuv_matrix rgb2yuv_bt709l = {
+>+	.y_r  = COEFF(0.2126, 219),  .y_g  = COEFF(0.7152, 219),  .y_b  = COEFF(0.0722, 219),
+>+	.cb_r = COEFF(-0.1146, 224), .cb_g = COEFF(-0.3854, 224), .cb_b = COEFF(0.5, 224),
+>+	.cr_r = COEFF(0.5, 224),     .cr_g = COEFF(-0.4542, 224), .cr_b = COEFF(-0.0458, 224),
+>+	.y_offset = RGB2YUV_LIMITED_Y_OFFSET,
+>+};
+>+
+>+/* BT.2020 Limited range */
+>+static const struct rgb2yuv_matrix rgb2yuv_bt2020l = {
+>+	.y_r  = COEFF(0.2627, 219),  .y_g  = COEFF(0.6780, 219),  .y_b  = COEFF(0.0593, 219),
+>+	.cb_r = COEFF(-0.1396, 224), .cb_g = COEFF(-0.3604, 224), .cb_b = COEFF(0.5, 224),
+>+	.cr_r = COEFF(0.5, 224),     .cr_g = COEFF(-0.4598, 224), .cr_b = COEFF(-0.0402, 224),
+>+	.y_offset = RGB2YUV_LIMITED_Y_OFFSET,
+>+};
+>+
+>+static const struct rgb2yuv_matrix *
+>+vop2_rgb2yuv_get_matrix(enum vop_csc_format csc)
+>+{
+>+	switch (csc) {
+>+	case CSC_BT601L:
+>+		return &rgb2yuv_bt601l;
+>+	case CSC_BT601F:
+>+		return &rgb2yuv_bt601f;
+>+	case CSC_BT2020L:
+>+		return &rgb2yuv_bt2020l;
+>+	case CSC_BT709L:
+>+	default:
+>+		return &rgb2yuv_bt709l;
+>+	}
+>+}
+>+
+>+/* Convert an RGB (16bpc) to YUV444 (16bpc). */
+>+static void vop2_rgb16_to_yuv16(int v4l2_cs, u16 r, u16 g, u16 b,
+>+				u16 *y, u16 *cb, u16 *cr)
+>+{
+>+	enum vop_csc_format csc = vop2_convert_csc_mode(v4l2_cs);
+>+	const struct rgb2yuv_matrix *m = vop2_rgb2yuv_get_matrix(csc);
+>+	s64 rs = r, gs = g, bs = b;
+>+	s64 ys, cbs, crs;
+>+
+>+	ys  = m->y_r  * rs + m->y_g  * gs + m->y_b  * bs;
+>+	cbs = m->cb_r * rs + m->cb_g * gs + m->cb_b * bs;
+>+	crs = m->cr_r * rs + m->cr_g * gs + m->cr_b * bs;
+>+
+>+	*y  = (ys  >> 16) + m->y_offset;
+>+	*cb = (cbs >> 16) + RGB2YUV_CHROMA_OFFSET;
+>+	*cr = (crs >> 16) + RGB2YUV_CHROMA_OFFSET;
+>+}
+>+
+> static void vop2_crtc_enable_irq(struct vop2_video_port *vp, u32 irq)
+> {
+> 	struct vop2 *vop2 = vp->vop2;
+>@@ -1554,12 +1637,58 @@ static void vop2_dither_setup(struct drm_crtc *crtc, u32 *dsp_ctrl)
+> 				DITHER_DOWN_ALLEGRO);
+> }
+> 
+>-static void vop2_post_config(struct drm_crtc *crtc)
+>+static void vop2_bgcolor_setup(struct drm_crtc *crtc, bool force,
+>+			       struct drm_crtc_state *new_crtc_state,
+>+			       struct drm_crtc_state *old_crtc_state)
+>+{
+>+	struct rockchip_crtc_state *new_vcstate = to_rockchip_crtc_state(new_crtc_state);
+>+	struct rockchip_crtc_state *old_vcstate = to_rockchip_crtc_state(old_crtc_state);
+>+	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+>+	u64 bgcolor = new_crtc_state->background_color;
+>+	u16 y, cb, cr;
+>+	u32 val;
+>+
+>+	if (!force && old_crtc_state->background_color == bgcolor &&
+>+	    old_vcstate->color_space == new_vcstate->color_space)
+>+		return;
+>+
+>+	/*
+>+	 * Background color is programmed with 10 bits of precision, using YUV
+>+	 * format when operating in YUV overlay mode, and RGB otherwise.
+>+	 */
+>+	if (new_vcstate->yuv_overlay) {
+>+		vop2_rgb16_to_yuv16(new_vcstate->color_space,
+>+				    DRM_ARGB64_GETR(bgcolor),
+>+				    DRM_ARGB64_GETG(bgcolor),
+>+				    DRM_ARGB64_GETB(bgcolor),
+>+				    &y, &cb, &cr);
+>+
+>+		val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, cr >> 6);
+>+		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, y >> 6);
+>+		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, cb >> 6);
+>+	} else {
+>+		/*
+>+		 * Since performance is more important than accuracy here, make
+>+		 * use of the DRM_ARGB64_GET*_BPCS() helpers.
+>+		 */
+>+		val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED,
+>+				 DRM_ARGB64_GETR_BPCS(bgcolor, 10));
+>+		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val,
+>+			     DRM_ARGB64_GETG_BPCS(bgcolor, 10));
+>+		FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val,
+>+			     DRM_ARGB64_GETB_BPCS(bgcolor, 10));
+>+	}
+>+
+>+	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
+>+}
+>+
+>+static void vop2_post_config(struct drm_crtc *crtc, bool force,
+>+			     struct drm_crtc_state *new_crtc_state,
+>+			     struct drm_crtc_state *old_crtc_state)
+> {
+> 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> 	struct vop2 *vop2 = vp->vop2;
+>-	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
+>-	u64 bgcolor = crtc->state->background_color;
+>+	struct drm_display_mode *mode = &new_crtc_state->adjusted_mode;
+> 	u16 vtotal = mode->crtc_vtotal;
+> 	u16 hdisplay = mode->crtc_hdisplay;
+> 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
+>@@ -1605,15 +1734,7 @@ static void vop2_post_config(struct drm_crtc *crtc)
+> 		vop2_vp_write(vp, RK3568_VP_POST_DSP_VACT_INFO_F1, val);
+> 	}
+> 
+>-	/*
+>-	 * Background color is programmed with 10 bits of precision.
+>-	 * Since performance is more important than accuracy here,
+>-	 * make use of the DRM_ARGB64_GET*_BPCS() helpers.
+>-	 */
+>-	val = FIELD_PREP(RK3568_VP_DSP_BG__DSP_BG_RED, DRM_ARGB64_GETR_BPCS(bgcolor, 10));
+>-	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_GREEN, &val, DRM_ARGB64_GETG_BPCS(bgcolor, 10));
+>-	FIELD_MODIFY(RK3568_VP_DSP_BG__DSP_BG_BLUE, &val, DRM_ARGB64_GETB_BPCS(bgcolor, 10));
+>-	vop2_vp_write(vp, RK3568_VP_DSP_BG, val);
+>+	vop2_bgcolor_setup(crtc, force, new_crtc_state, old_crtc_state);
+> }
+> 
+> static int us_to_vertical_line(struct drm_display_mode *mode, int us)
+>@@ -1628,8 +1749,9 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+> 	struct vop2 *vop2 = vp->vop2;
+> 	const struct vop2_data *vop2_data = vop2->data;
+> 	const struct vop2_video_port_data *vp_data = &vop2_data->vp[vp->id];
+>+	struct drm_crtc_state *old_crtc_state = drm_atomic_get_old_crtc_state(state, crtc);
+> 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
+>-	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
+>+	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc_state);
+> 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
+> 	unsigned long clock = mode->crtc_clock * 1000;
+> 	u16 hsync_len = mode->crtc_hsync_end - mode->crtc_hsync_start;
+>@@ -1799,7 +1921,7 @@ static void vop2_crtc_atomic_enable(struct drm_crtc *crtc,
+> 
+> 	clk_set_rate(vp->dclk, clock);
+> 
+>-	vop2_post_config(crtc);
+>+	vop2_post_config(crtc, true, crtc_state, old_crtc_state);
+> 
+> 	vop2_cfg_done(vp);
+> 
+>@@ -1874,6 +1996,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+> 				   struct drm_atomic_commit *state)
+> {
+> 	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
+>+	struct drm_crtc_state *old_crtc_state = drm_atomic_get_old_crtc_state(state, crtc);
+> 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
+> 	struct vop2 *vop2 = vp->vop2;
+> 
+>@@ -1881,7 +2004,7 @@ static void vop2_crtc_atomic_flush(struct drm_crtc *crtc,
+> 	if (!drm_atomic_crtc_needs_modeset(crtc_state) && crtc_state->color_mgmt_changed)
+> 		vop2_crtc_atomic_try_set_gamma_locked(vop2, vp, crtc, crtc_state);
+> 
+>-	vop2_post_config(crtc);
+>+	vop2_post_config(crtc, false, crtc_state, old_crtc_state);
+> 
+> 	vop2_cfg_done(vp);
+> 
+>
+>-- 
+>2.54.0
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
