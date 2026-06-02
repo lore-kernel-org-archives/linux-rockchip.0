@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50E3DCD6E68
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 17:01:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D484BCD6E60
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 17:01:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
-	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=xL8K0wyN8FXAO2TTIwQd5A5uygNGovgTzp2YROe76tY=; b=g80TkkNa6eJU3A
-	6Mb6vht2xnhiIb2DoWXcXJ3N8ybrkIz3QDZ8sqyHSy07vx3D51SaMuO7Hw83/he7x77uofKz+2BlG
-	bzTtJpZ673bxANHcQIYQwqDn+N1Q2cwm+Obx3rN9R80V94hcQmGeyFhcCK+49Eonca+t8HXOaiX6j
-	j+gtuvf8qyX4y+lDmqC2HbsOtYOS1uTB3jGssDblkysUKYuf+jX5CSlQhQXnBahZ0spQKe+kydN/0
-	4eE1L1ltRK3tOqVWfg27LxYG5svJDYpEskZ8RRGF4fXfSNUs1GmmxKID7YOwANir1vGBYC8tSdDas
-	liLZtOQvV+kY2cy1tZRQ==;
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=wJCyXameVmq4wUOdCYO3TrmHVUaRqmexPz56FkbRpu8=; b=r3WgdvVbwdCZrI
+	yWhlh/Uc8Enc6iGpjOoG43Oz7M9HgoJ0nsOpGyHaUlOj+ruxABjgmy1lrUBktCfB+FTs0iNVjRefe
+	z7Y6XDHRpkuDLZO7jQMgtGwuwMQ07j6oD0OwXkHXi2S2ZHWgxYbiKR1ktZAzY3FifZO8hO8OJYYEC
+	F1NzZNUy3Fy+aaCyniYVXHTcE9H1CKi5xT7wpI5irAYj/98XEJOi6GH3N/9toSURT+h+rTCjKC5db
+	8Tmmhj1Iu7WSXgPxx6ZggoGEpLDZxk0e907PZniFw1ypDnKGCijlJB8Uvq5JTBQRcPtICfxwHcntM
+	meayL3Girx598r4sljGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUSUW-0000000DWRg-1nDP;
+	id 1wUSUW-0000000DWQo-0dO3;
 	Tue, 02 Jun 2026 17:01:24 +0000
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUSUU-0000000DWP5-3FIe
+	id 1wUSUS-0000000DWNW-1haF
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jun 2026 17:01:23 +0000
-Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-45ef372c58aso2307019f8f.0
-        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jun 2026 10:01:22 -0700 (PDT)
+	Tue, 02 Jun 2026 17:01:22 +0000
+Received: by mail-wr1-x432.google.com with SMTP id ffacd0b85a97d-45ef616daf6so4228395f8f.3
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jun 2026 10:01:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=flipper.net; s=google; t=1780419681; x=1781024481; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to;
-        bh=X8xIPFYU6wfDv0UXLz0s+nj/6PQ14Xci+jABKOcPGUI=;
-        b=Q3JIbKkO17M117jHOXlJxqwdG0z9XiH/PNuD4l4B9jTyzJR1Uniozq+0Je7GdUf+M4
-         U9dDIrUAbZSXqC3NJRPBq+BKpywND6T0B4MzsDOC2HaP9uYe+e8WZpx8Zlhptzw9t6IS
-         HSO4vuuc7f7HByAeUPh4CxQRWpGMHZ838OeGLdzEduH4WOf8jAPJJdzVqG7cQ5yofc2e
-         N9tmhbP72UH+S55lLs73GZvPNeONmAjbSqj700gkQzc2CdkdKf6tucKruTXLnbcd/6OJ
-         ZycbLfEeo+Nk63tIFmHaIGYZRTagj54BM9HQR0TxjaRs9/cQjoDlnJ35vloDOGhGC4WG
-         2Big==
+        d=flipper.net; s=google; t=1780419677; x=1781024477; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=ivGt1S0OiiOp249bVc4Q7TnMYrm/Fs6AUzb1TqWbuUM=;
+        b=LXXXvaT3qLJaVvQqCzwlqsfPjoKZCv7l05xdMt43ZlTDI197cIOG2pLC4C2MNt/RNe
+         yawVlgF+RD9AwHCoIpi9QktelUXJK653IZhsP+GdFlKvXbjnSokpvbrFAGN30UIBrwyp
+         ibAE2gfxwx0io7oix5lICgZ/lfzQqZaNgHoOWFvOkAK6NWXjP3zyPKGvEslcRf3xLiGE
+         LmKKNkMXicvjp6yigvtIq1/LuoqMGiv3uP/pq0HOI7N8I4+NAIALeIBZ9m12XCD96ndU
+         I7QMty+/n0Ui/NMYzQ4yWr9qSrRhhZoGpJUIocSwjv9WwpjVpeQxp/GuYGbWU4wx83PG
+         YeRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780419681; x=1781024481;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to;
-        bh=X8xIPFYU6wfDv0UXLz0s+nj/6PQ14Xci+jABKOcPGUI=;
-        b=DsIiGO5M3dnCM5cnqPQlQ3aEXiLDVYbKVYW0OE2CLrQ1lOg9v/vRVvvXf5cKEyycNG
-         w6NlJ3rfD9zkEIxvkxrb9hmN6FdlWvu7/o6Gv7Dxzyp/la7hmXQoGGvdX+IjGu2Vc268
-         Wp/uRdn04l5B0NLRoxHVlC8Eke+OCBaNkS5QC4cyvbq79gNiwo7n1ghy7m7Ht49zQigb
-         GyYOaPGX9D+1X9NTSKqoBARUkhCKKgQFDficqqleLwBjZiPNuxzw8XYcKLetx42TuP+h
-         JlW+LNTE/Yk/h16widfIdg1vVK0JIfeq2c/6JFA5HUbK7m51Wc512BjQfdwKRNNfncUr
-         Qujw==
-X-Forwarded-Encrypted: i=1; AFNElJ/Zw781Ywh+wql9SyVO/BPwDzawPvX5g/eL/39ijKBwLqug1oCQXrV49rjDIKStKd9CizKDL6k6JIN9wJjL+A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YxiWDQHiqdaU8bM+vAiOp9vODC9TRJh+p+8PeqX59mdpGVrSp/n
-	nlCx3aOBBVLd0AmtijUseS9o1Y9V4f5WxlqB2ubNpw0Cm0to1dBd7QniNIdDXdLZAjgJnwnaElN
-	ffcJcb4VjIRSG
-X-Gm-Gg: Acq92OG8mti2m1DQ64GRKRpyiSCjrHz11xnB41RTHJfwDkmoH/uIQ3D8mf1ff4Lbi78
-	V6VcNUbQxh7wjpE0ne44qNlyBHWqYjHmtpbezspwj76lAtxP82YQ7X6BZ+zQtSkTmKbnTCu4gWz
-	G2otW9HEdfTAYEBlb7JHnX1zzUxwmqiaZLBekXv2YbmJR1qgaP6kcuPdwCnOBU71Co5dH+AcorF
-	L+pbRDDiD7HlYOOWTYPRr6OAcxovhE3cg6fhEbamkmWCt5HFv3bC+6b482mR/IOQuxeaJLj06ww
-	N68VVOdgXojG+FzPf5fh4GkE1p5/bw0mvqXsGbXEqlCoAWeJ7Vs/rrtb7UuF7LJT1J6LRu6B0X1
-	zBLhG/O4DJ70L0+b2wSEqCPzKt9YbA/Gto4yXq+n1mtv/G/MQaBnYYVATRzbrtjyHStSci2XcaJ
-	QbngIOOZRDegnvNorUEIdIsq9BMj2/dKw89zZV2x+0iXH9n8T4Fik=
-X-Received: by 2002:a5d:5c8a:0:b0:43c:ffee:ee94 with SMTP id ffacd0b85a97d-4601f4e5644mr315246f8f.11.1780419680809;
-        Tue, 02 Jun 2026 10:01:20 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1780419677; x=1781024477;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=ivGt1S0OiiOp249bVc4Q7TnMYrm/Fs6AUzb1TqWbuUM=;
+        b=bHPQo3kxyX+fF1nur3vH//3zf3tTiMvYJSzCziz1ybVm6Xf2BqEd3RszriiFErlgas
+         6xbaV4M8f7gUoUEcDCMyXpuipSQ8OCiJwB5fA0Gkrhx649Rt8Ilo+RnJlFnHOjhapUyL
+         61v7k+viVsKuCYiJY6I8n9+I4w7mv3v4oRZa3wzt6IoPXzk21C8KQEXjtVJqZZ9V53AS
+         SWv72YOWZS+4SMcl71n/PqOlQNQo/MVQf0d9BKXB6g5Tmx2EKPvcEGXDrnLe9ghTR3eZ
+         dgX62W/W30NeTmGMVokftE1MKChSamcnGIIP4vbduz76P4AmD4BQruLQr/bbAkkJk1jd
+         0H4A==
+X-Forwarded-Encrypted: i=1; AFNElJ+7KM+eUbkv1gz7nodFwViiniZBDKUq7CFSmJ2GV0z/m/i8IJ0AK0WUN00cEM21qceaLQuYZa9wOQNlgJxgDQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx/zGGyEo7RnWwXDteK85Q9mkwLsfR/JrQewBQ0H3+qp/EBa3Jv
+	QBg2/sVMnBTMCQt7Ywhnwg0FlX+sIS9ae1WJ2QjRzUnM6j0F5Xjtcj8iPQVE0ckJ2mOrKFHQJGx
+	SpySAAkjFcKJE
+X-Gm-Gg: Acq92OGI8XtsFaKH1gxvtqVBcQS6o6PxJlJXwwz9l/Pr3DTs0KchJh9TPHj4tGn/lKP
+	+WNkByoXC/cH/adWZn7ik1QMAoPq9AqSqny8iknF95Ug1ohVgqGv11EOrxHsMYA41w9tIVu77WE
+	ZCbIt9EkJMhbm5ZLL97NhI8/wnrj26XB8+xeXAC4Kj3zMUvpvc4DGWO4joxwGuCI8NVM/5yTRiZ
+	a4+a/kw9OlDYdlOME3qrdP/qS78h2KI/sIvHzsTmbwrp5bQmGDOPqcK/BR+9gw2dLwv6zABgi7C
+	UakuQy/VTAVXTBdDuzKxx3OomulfPhSAKS7/wlJ6Af1NLXwkQhTRh206OXoOfoV7k8Y0cXraR7U
+	4FVTZum+bV0e5Gl3kH+d90aso16lgwAi1mA7vGgXCheubBDCbJnCtsR8BhtLJpINEuOfG5Y6M8M
+	zh7YOmcrKjuJDR7mb2jpBjK/nCJHwxS1K7uHHCFV6f2vmgkOOpy2Q=
+X-Received: by 2002:a05:600c:1384:b0:490:6869:46c3 with SMTP id 5b1f17b1804b1-490b50c2008mr8721775e9.30.1780419677363;
+        Tue, 02 Jun 2026 10:01:17 -0700 (PDT)
 Received: from alchark-surface.localdomain ([5.194.92.128])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4601f2dcbe3sm588495f8f.8.2026.06.02.10.01.17
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4601f2dcbe3sm588495f8f.8.2026.06.02.10.01.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 02 Jun 2026 10:01:20 -0700 (PDT)
+        Tue, 02 Jun 2026 10:01:16 -0700 (PDT)
 From: Alexey Charkov <alchark@flipper.net>
-Date: Tue, 02 Jun 2026 21:00:39 +0400
-Subject: [PATCH 1/2] drm/rockchip: vop2: honor TV margins from CRTC state
- for overscan compensation
+Subject: [PATCH 0/2] drm/rockchip: dw_hdmi_qp: Add support for HDMI
+ overscan compensation
+Date: Tue, 02 Jun 2026 21:00:38 +0400
+Message-Id: <20260602-hdmi-overscan-v1-0-31f71b817c80@flipper.net>
 MIME-Version: 1.0
-Message-Id: <20260602-hdmi-overscan-v1-1-31f71b817c80@flipper.net>
-References: <20260602-hdmi-overscan-v1-0-31f71b817c80@flipper.net>
-In-Reply-To: <20260602-hdmi-overscan-v1-0-31f71b817c80@flipper.net>
+X-B4-Tracking: v=1; b=H4sIADYMH2oC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDMwMj3YyU3Ezd/LLUouLkxDxdkzSDFAvLpLQUSwtDJaCegqLUtMwKsHn
+ RsbW1ADtlkBpfAAAA
+X-Change-ID: 20260602-hdmi-overscan-4f0d89bfd981
 To: Sandy Huang <hjc@rock-chips.com>, 
  =?utf-8?q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, 
  Andy Yan <andy.yan@rock-chips.com>, 
@@ -89,17 +90,18 @@ Cc: dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
  linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org, 
  Alexey Charkov <alchark@flipper.net>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3039; i=alchark@flipper.net;
- h=from:subject:message-id; bh=4HOiDswIVjSXnFgQ5UeLjf28Vzb7ocv1OaHcngkgLQk=;
- b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTJ84TmGZ3sfxZTdFhC7ewCsdiPOkFTdsjtlf7RoeLDe
- 0E+y0a5YyILgxgXg6WYIsvcb0tspxrxzdrl4fEVZg4rE8gQaZEGBiBgYeDLTcwrNdIx0jPVNtQz
- NNIx1jFi4OIUgKn2L2NkuLLg2GlFg+nnnxamX6+ptZyqFFHX61jNr374x5utgZ+ebmRkeHnt+5m
- ZsUsOltdqF03wbsuumrZ1tdMVnUXPZkqtTDi0mwMA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1055; i=alchark@flipper.net;
+ h=from:subject:message-id; bh=mr+rOHka+rwyOFfzI59/eJ3S3PjIo4G5+vOSklSi9WQ=;
+ b=owGbwMvMwCW2adGNfoHIK0sZT6slMWTJ8/gmM7HPdFlsfzlmuwfbuhvmzJMVmc2YUs1tgi/oO
+ 8eE7DPtmMjCIMbFYCmmyDL32xLbqUZ8s3Z5eHyFmcPKBDJEWqSBAQhYGPhyE/NKjXSM9Ey1DfUM
+ jXSMdYwYuDgFYKoXNzD84b59tIy5/sjtcxN85I+zlATPjdlpnNfjarprsWnEVN9IM4b/CY+3igg
+ 9Tl5w0PjVp7Up58/IFnm7Mz14lfc74wsjU1IQOwA=
 X-Developer-Key: i=alchark@flipper.net; a=openpgp;
  fpr=9DF6A43D95320E9ABA4848F5B2A2D88F1059D4A5
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_100122_839909_455F5F6B 
-X-CRM114-Status: GOOD (  11.41  )
+X-CRM114-CacheID: sfid-20260602_100120_472524_FFB0CFC5 
+X-CRM114-Status: UNSURE (   7.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,86 +118,31 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Replace the hard-coded percent values with pixel margins carried in struct
-rockchip_crtc_state, sourced from the standard DRM "left/right/top/bottom
-margin" connector properties (struct drm_connector_tv_margins) to pave way
-for HDMI overscan compensation support.
+When using a TV as a display, output image may be cropped due to overscan.
+Rockchip VOP2 supports post-composition scaling in hardware, which can be
+used to compensate for the overscan.
+
+This adds the necessary pixel margin fields to the CRTC state, and sets
+them from the TV overscan property of the connector which is understood
+by the userspace (tested with KWin's display configuration module).
 
 Signed-off-by: Alexey Charkov <alchark@flipper.net>
 ---
- drivers/gpu/drm/rockchip/rockchip_drm_drv.h  |  2 ++
- drivers/gpu/drm/rockchip/rockchip_drm_vop2.c | 17 +++++++++++------
- 2 files changed, 13 insertions(+), 6 deletions(-)
+Alexey Charkov (2):
+      drm/rockchip: vop2: honor TV margins from CRTC state for overscan compensation
+      drm/rockchip: dw_hdmi_qp: expose "overscan" property
 
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-index 2e86ad00979c..83f8ec4f3319 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_drv.h
-@@ -10,6 +10,7 @@
- #define _ROCKCHIP_DRM_DRV_H
- 
- #include <drm/drm_atomic_helper.h>
-+#include <drm/drm_connector.h>
- #include <drm/drm_gem.h>
- 
- #include <linux/bits.h>
-@@ -53,6 +54,7 @@ struct rockchip_crtc_state {
- 	u32 bus_format;
- 	u32 bus_flags;
- 	int color_space;
-+	struct drm_connector_tv_margins tv_margins;
- };
- #define to_rockchip_crtc_state(s) \
- 		container_of(s, struct rockchip_crtc_state, base)
-diff --git a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-index a160077a507f..55307b8493ae 100644
---- a/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-+++ b/drivers/gpu/drm/rockchip/rockchip_drm_vop2.c
-@@ -1558,30 +1558,35 @@ static void vop2_post_config(struct drm_crtc *crtc)
- {
- 	struct vop2_video_port *vp = to_vop2_video_port(crtc);
- 	struct vop2 *vop2 = vp->vop2;
-+	struct rockchip_crtc_state *vcstate = to_rockchip_crtc_state(crtc->state);
- 	struct drm_display_mode *mode = &crtc->state->adjusted_mode;
-+	const struct drm_connector_tv_margins *m = &vcstate->tv_margins;
- 	u64 bgcolor = crtc->state->background_color;
- 	u16 vtotal = mode->crtc_vtotal;
- 	u16 hdisplay = mode->crtc_hdisplay;
- 	u16 hact_st = mode->crtc_htotal - mode->crtc_hsync_start;
- 	u16 vdisplay = mode->crtc_vdisplay;
- 	u16 vact_st = mode->crtc_vtotal - mode->crtc_vsync_start;
--	u32 left_margin = 100, right_margin = 100;
--	u32 top_margin = 100, bottom_margin = 100;
--	u16 hsize = hdisplay * (left_margin + right_margin) / 200;
--	u16 vsize = vdisplay * (top_margin + bottom_margin) / 200;
-+	u16 hsize = hdisplay;
-+	u16 vsize = vdisplay;
- 	u16 hact_end, vact_end;
- 	u32 val;
- 
- 	vop2->ops->setup_bg_dly(vp);
- 
-+	if (m->left + m->right < hdisplay)
-+		hsize = hdisplay - m->left - m->right;
-+	if (m->top + m->bottom < vdisplay)
-+		vsize = vdisplay - m->top - m->bottom;
-+
- 	vsize = rounddown(vsize, 2);
- 	hsize = rounddown(hsize, 2);
--	hact_st += hdisplay * (100 - left_margin) / 200;
-+	hact_st += m->left;
- 	hact_end = hact_st + hsize;
- 	val = hact_st << 16;
- 	val |= hact_end;
- 	vop2_vp_write(vp, RK3568_VP_POST_DSP_HACT_INFO, val);
--	vact_st += vdisplay * (100 - top_margin) / 200;
-+	vact_st += m->top;
- 	vact_end = vact_st + vsize;
- 	val = vact_st << 16;
- 	val |= vact_end;
+ drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c | 16 ++++++++++++++++
+ drivers/gpu/drm/rockchip/rockchip_drm_drv.h    |  2 ++
+ drivers/gpu/drm/rockchip/rockchip_drm_vop2.c   | 17 +++++++++++------
+ 3 files changed, 29 insertions(+), 6 deletions(-)
+---
+base-commit: 08484c504b55a98bd100527fbe10a3caf55ff3ff
+change-id: 20260602-hdmi-overscan-4f0d89bfd981
 
+Best regards,
 -- 
-2.52.0
+Alexey Charkov <alchark@flipper.net>
 
 
 _______________________________________________
