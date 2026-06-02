@@ -4,72 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B358CD6E5D
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 21:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07816CD6E5D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 21:27:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=/bgFx+uETRXqvBB+v9Zd4Dle8qcGrv9TNpQTUwcCC1Q=; b=bCS4RMzgJUDmAj
-	clpfJJe9GfWJbB/fswgOp30rFQ+hyFzptkofVsKLnJ2mQOys4kv8lQ3xMTFNMzn6UfvC1chGxP2Rb
-	EzphM3bodNqbIiq8RUhaITrPMdcgIgmj3I6kCXXf/97ss586GTYoN5Rwey4v2IBS+9/aJGlGMl3rU
-	2DzAXo9tbqGVhZhhJ2DJAf9Je1QQaGCjGYv/Apiqme1P3p0EWr+yGDhL98XxYMbbtrTOwAAQVWoFx
-	tGlENRDL2DC59OSWMCXzb/FDHxHh0Q69ZaO6qf9QErtIMsc80A0An/kl2kqIb5luV4d2/JoAKh4LG
-	wY656W/Yw3PsPtGwj2Gg==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=yAr4tlRfpZbAfZMGHtfiXs7rgqeFSRyHaUYdzYOeuf4=; b=HFbcz/vMn1WkSb
+	v5eRlFF1UDusiG6V6krjY5VSIvmCkPisXy3i1O5HXOu1KbW2LPnbcTBQ9533bMHfxenYcZrOMLrwd
+	Q8O82fZMIEtvFZdRDjnWKqrpm8hylvxm8eXxoIxfpCTNJgKLpLqRmQCUmTev4zw0Nh4JQtyJYrEck
+	/IOWTNRFhn23pny3aSklKc7E3QSMDAjdiKNXPHY7q67L7zJqcYDepF7tzrPqxx7PE3wUi0MZ6JeIF
+	uj2gkekMK0oz8xAUfc6iWzlvD2KfIXNWDoWicniWrAgSi3AiQgvHpfhFEaTCCeJohriCWVl/YmkOd
+	NGxt62sNiAI+z6tu3rww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUWbk-0000000DokP-24C2;
-	Tue, 02 Jun 2026 21:25:08 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1wUWeN-0000000Dp7z-06PV;
+	Tue, 02 Jun 2026 21:27:51 +0000
+Received: from mail-oi1-x22b.google.com ([2607:f8b0:4864:20::22b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUWbh-0000000Dojo-1Yrn
+	id 1wUWeJ-0000000Dp68-0nhU
 	for linux-rockchip@lists.infradead.org;
-	Tue, 02 Jun 2026 21:25:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1780435502;
-	bh=Lee243RAZYN2iotwnQCtXiZ1Zjke9zD4F6uMm5s/2GM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=hAtICkWnT8hfet4ArCllU66Ap/BRAih0RWPLTycBx/EBWgSWzMjvsI/R447p/EqIP
-	 e8lcmmQ11l8nHctryxXeoSN/6XNRDIfeMtJXprF7uWd655dFruRpibo9O2TpG4d4W9
-	 jozQkgX9ssowC1VZTnGrAew4j3nj7Ie4hJ55yCWtEehlVHMVtW7wXOkiIbw3fPcb36
-	 nrgVHP/H+l+1E7keSJSr59WPn+hbs52zs3ow//Dgxtsnu2jGYHCJa8846c05ChWnxR
-	 9DUlJK6/4V8xM/cEMhnOzAf8tY4HAHfqJbogrdIHglgV9eiwbp3gd3h3TUiOrsD4gY
-	 K7dTz1dbQziHA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits))
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E0B2717E093F;
-	Tue,  2 Jun 2026 23:25:01 +0200 (CEST)
-Message-ID: <92ac1962-e43a-45a0-958e-e32385af098c@collabora.com>
-Date: Wed, 3 Jun 2026 00:25:01 +0300
+	Tue, 02 Jun 2026 21:27:49 +0000
+Received: by mail-oi1-x22b.google.com with SMTP id 5614622812f47-48611cd1e1eso1235506b6e.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jun 2026 14:27:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780435666; x=1781040466; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=qIuVsum5u/jtIKFcQXo9Dzpm5tHPCbQA+WWkBGyWbio=;
+        b=iz70C04sWlqKmhQlOBdEd1oyD8I1Pkcj/GVsnk8nulVjHZjOkaewnNQb/LFFzOpQHe
+         AWYjNkfp3Z6TzljwT8m02WzrWprdaXsNo+eWAtwy+fTqxOLMtS4dW2U82T/Vj7WjhMLg
+         bTA3JRvT2eWIbcJvju69MjdmbjpJenknv3Fs8tr3Rv9bry+r8j1Elgvnq20q7NAkqr3X
+         pMHxyejBKCSuF/T8KjfjTVNlkB2YzbNxLwsEoj/0iYT5ZRYDGSoLboo0cYkqPJJGAUyd
+         +TwvKEYin5MCaKzEKlxt18+UOmsJPoUAKUzUNGg3MFA30QbNWLhCuaTSeQuPJNaP8HPi
+         JhSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780435666; x=1781040466;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=qIuVsum5u/jtIKFcQXo9Dzpm5tHPCbQA+WWkBGyWbio=;
+        b=eiOZIgZLSRltiCM1eNP26DjQAGQMtaN5P3qMU178tBIOqzVXqdwQNrPXc4h/6nA7gd
+         AnjcnJCOfqsCYWT3Iddk0b//SgD0Oa3l+UP6XNqd57KbbW4hFZjjWr3B2zvnSqS4SQN9
+         4iXTrA/87NwqQe7+w9I6T/77ggAVU+C/NlQw1j6RpaHdBhTT10aUL+lHd7d+EDqAm0Ed
+         DDq8gh/WuTsPdMv2F6RTBhPbeVeXGslYnm8s+WrNEnGOH7YJrL04ayXaVdfS4N53dyHe
+         KtKyiqJnJiAhVFSzxgvIuugH4c8Z2/zCSUJLPfqIy0VBBsofdY+Q8ntYwkfveSQmmErR
+         LugQ==
+X-Gm-Message-State: AOJu0YwX5U7YHc4hLKfy9T7yAS9V6qPigODsvty0ouG2AmhISpLqeZMH
+	nsXitRmcl46yAGQjIdflqWhfUDZgzYsaDPHE8kGFj1FW+FaYVf/CFkwYdRvWmfSt
+X-Gm-Gg: Acq92OF4PHlBwwXsvGbuPg7CgKjC1xKtLKL+dEowqVYrbiVmxkPcXrsFjnMm4L8IkrD
+	I3XlULt1vWgzq7LYu1bfuPnLtU2jKBq9y8gsZadIES3bKqqfPK1oBotqgsY/tvNRgZh3XyMxsCU
+	Ya0d/xeGEd4Qu4fYfo/L+IakbFQs0vriVcMDxbhoBmaHvHeltR5Tv0VDaWwAYgO2yEqxNnGOeq0
+	hvjCYA3yqCMpHoZ7VPPb+IfGpSnNXusBOK4hYCre7EPJH8HGV1RM7fJJq881IDL0ooGHVY+uP6o
+	MDt2M2flyAX7Drpb1uuGkrWZ8CvTHlHdxVyo0UgxTwguGFhGo9RcmzxY33mROr2Xwf2Cd4gcpL5
+	bMnVqEfzGL3uMu2hiYobVePUx890Us0oz3TCE9B8C5QfQzk1UxPnAybc0PmwN1HNDOlU8T8UP63
+	sDA56nDuy1OwwA00qyo4+NajejN464CEs=
+X-Received: by 2002:a05:6808:2225:b0:486:45c7:34c5 with SMTP id 5614622812f47-4865a963134mr374870b6e.17.1780435665685;
+        Tue, 02 Jun 2026 14:27:45 -0700 (PDT)
+Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-4865b5a53bcsm216722b6e.3.2026.06.02.14.27.44
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Jun 2026 14:27:45 -0700 (PDT)
+From: Chris Morgan <macroalpha82@gmail.com>
+To: linux-rockchip@lists.infradead.org
+Cc: devicetree@vger.kernel.org,
+	xsf@rock-chips.com,
+	sre@kernel.org,
+	simona@ffwll.ch,
+	airlied@gmail.com,
+	tzimmermann@suse.de,
+	mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com,
+	jesszhan0024@gmail.com,
+	neil.armstrong@linaro.org,
+	heiko@sntech.de,
+	conor+dt@kernel.org,
+	krzk+dt@kernel.org,
+	robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: [PATCH V4 0/6] Add Anbernic RG Vita-Pro
+Date: Tue,  2 Jun 2026 16:25:06 -0500
+Message-ID: <20260602212512.418166-1-macroalpha82@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] drm/bridge: dw-hdmi-qp: use drm_hdmi_acr_get_n_cts()
- helper for audio N/CTS
-To: Simon Wright <simon@symple.nz>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Heiko Stuebner <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Algea Cao <algea.cao@rock-chips.com>, dri-devel@lists.freedesktop.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <86fcf349-0a7a-4618-9001-612371b0f71b@symple.nz>
-Content-Language: en-US
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-In-Reply-To: <86fcf349-0a7a-4618-9001-612371b0f71b@symple.nz>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_142505_565084_26BE4D64 
-X-CRM114-Status: GOOD (  20.54  )
+X-CRM114-CacheID: sfid-20260602_142747_237275_D33CEFDB 
+X-CRM114-Status: GOOD (  11.87  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,86 +108,58 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Simon,
+From: Chris Morgan <macromorgan@hotmail.com>
 
-On 5/21/26 10:36 AM, Simon Wright wrote:
-> dw_hdmi_qp_set_sample_rate() open-coded its own N and CTS lookup
-> tables and search/compute helpers, but it lacked the out-of-table
-> CTS fallback needed by strict HDMI sinks at TMDS rates not in the
-> table.  The original LG G3 OLED audio mute (linux-rockchip 070633)
-> was caused by dw_hdmi_qp_find_cts() returning 0 at 185.625 MHz,
-> leaving AUDPKT_ACR_CTS_OVR_EN clear and falling back to the
-> controller's internal CTS auto-measurement, which produces incorrect
-> timing on the wire at out-of-table rates.
-> 
-> The shared drm_hdmi_acr_get_n_cts() helper in
-> drivers/gpu/drm/display/drm_hdmi_helper.c already implements the
-> correct behaviour: it has the HDMI 1.4b spec N/CTS tables, and for
-> TMDS rates not in the table it computes CTS = (TMDS * N) / (128 * Fs)
-> inline (the canonical HDMI spec formula).  It is already used by
-> drivers/gpu/drm/msm/hdmi/hdmi_audio.c.
-> 
-> Convert dw_hdmi_qp_set_sample_rate() to call the helper.  This
-> removes ~200 lines of open-coded tables and search functions
-> (dw_hdmi_qp_find_n, _compute_n, _find_cts, _audio_math_diff,
-> _match_tmds_n_table, common_tmds_n_table[], common_tmds_cts_table[])
-> and fixes the strict-sink audio mute as a side effect of using the
-> helper's complete N+CTS path.
-> 
-> Tested on R76S (RK3576) running Linux 7.0.1, against the LG G3 OLED
-> (the sink that originally reported the mute in linux-rockchip
-> 070633) at four TMDS rates spanning HDMI 1.4 and HDMI 2.0:
-> 
->   TMDS         Mode              Audio with v3
->   148.5 MHz    1080p60   8-bit   plays
->   185.625 MHz  1080p60  10-bit   plays
->   297 MHz      1080p100  8-bit   plays
->   594 MHz      3840p60   8-bit   plays
-> 
-> Without this change, the LG G3 mutes audio at 185.625, 297, and
-> 594 MHz (every rate outside dw-hdmi-qp's open-coded CTS table,
-> which contained only 148.5 MHz and below).  With this change,
-> drm_hdmi_acr_get_n_cts() supplies the correct CTS at every rate --
-> table-canonical at 148.5 / 297 / 594 MHz, and computed via the
-> HDMI 1.4b formula at 185.625 MHz.  The 148.5 MHz row is a
-> regression check confirming the in-table path is unchanged.
-> 
-> The Kogan KALED43XU9210STA (a permissive HDMI 2.0 sink that plays
-> audio at all rates with or without this change) was used as a
-> no-regression control: audio plays at 594 MHz with v3 loaded.
-> 
-> The open-coded N table in dw-hdmi-qp included optimised N values
-> for some TMDS rates that are not in the helper's table (e.g.
-> various non-CEA rates between 28-162 MHz).  For those rates the
-> helper's fallback returns N = 128 * Fs / 1000, which is the same
-> value dw_hdmi_qp_compute_n() returned when no table optimisation
-> was needed; no audio regression has been observed at the rates
-> tested above.
-> 
-> Reported-by: Simon Wright <simon@symple.nz>
-> Closes: https://lore.kernel.org/linux-rockchip/ME3P282MB21960D9D68BFF520316BDFCEA83E2@ME3P282MB2196.AUSP282.PROD.OUTLOOK.COM/
-> Suggested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-> Suggested-by: Jonas Karlman <jonas@kwiboo.se>
-> Tested-by: Simon Wright <simon@symple.nz>
+Add support for the Anbernic RG Vita-Pro, based on the Rockchip RK3576 SoC.
 
-I think T-b can be dropped, as the commit description implies you've actually
-tested this before submitting.
+Changes Since V1:
+ - Updated documentation filename to matche compatible string.
+ - Corrected order of allocating IRQ in charger driver and switched
+   to using devm managed function to allocate work queue.
 
-> Assisted-by: Claude:claude-opus-4-7
-> Signed-off-by: Simon Wright <simon@symple.nz>
+Changes Since V2:
+ - Corrected issue with naming of panel binding document and added
+   fallback compatible string.
+ - Switched to devm helpers in panel driver. Note that
+   devm_drm_panel_add() is currently only in the drm-next branch.
+ - Optimized setting GPIOs for panel driver.
 
-The patch looks good to me. 
+Changes Since V3:
+ - Fixed numerous issues identifed by Sashiko bot, mainly relating
+   to unclamped or improperly clamped values from within the
+   charger driver.
+ - Corrected hard-coded values in the panel driver unprepare routine
+   as well as correcting an improperly checked return condition.
 
-I'm unable to reproduce the reported issues, but I can confirm audio continues
-to work as expected on my end.  
+Chris Morgan (6):
+  dt-bindings: power: supply: sgm41542: document sgm41542
+  power: supply: sgm41542: Add SG Micro sgm41542 charger
+  dt-bindings: display: panel: document Anbernic TD4310 panel
+  drm/panel: anbernic-td4310: Add RG Vita Pro panel
+  dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
+  arm64: dts: rockchip: Add Anbernic RG Vita-Pro
 
-Feel free to include:
+ .../devicetree/bindings/arm/rockchip.yaml     |    6 +
+ .../display/panel/anbernic,td4310.yaml        |   66 +
+ .../power/supply/sgmicro,sgm41542.yaml        |  104 ++
+ arch/arm64/boot/dts/rockchip/Makefile         |    1 +
+ .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 1327 +++++++++++++++++
+ drivers/gpu/drm/panel/Kconfig                 |   10 +
+ drivers/gpu/drm/panel/Makefile                |    1 +
+ drivers/gpu/drm/panel/panel-anbernic-td4310.c |  254 ++++
+ drivers/power/supply/Kconfig                  |    8 +
+ drivers/power/supply/Makefile                 |    1 +
+ drivers/power/supply/sgm41542_charger.c       | 1065 +++++++++++++
+ 11 files changed, 2843 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
+ create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
+ create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+ create mode 100644 drivers/gpu/drm/panel/panel-anbernic-td4310.c
+ create mode 100644 drivers/power/supply/sgm41542_charger.c
 
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-Tested-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+-- 
+2.43.0
 
-Regards,
-Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
