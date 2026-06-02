@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06259CD6E60
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 18:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF1A6CD6E5D
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 18:48:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=crCCpFg/y/flqHHz5/bz3MWvLncHsqYVMD/aa00O8Lw=; b=yNrQXwBiodm1Fp
-	lhDr7rVFSF1V0icOc6ulk5WP5cIwADQHand1zbvuyxYq9pO2iKGyOGbhpqG6pqCMN0g5NjepunN2b
-	vNcD1f8w4pPJRSsQ98wyUFVq3xEZTNgUzv0lqDIdR3jHchO2RHyVr1FHSAHW9lTj3Z1L4D1Komr4X
-	7fmgteME1AMbwnXYZqbDksvsdASIi4T5X1IaYpmWPyI11RnkKnHMNQqt6uvdx6o9tZmQShbZUd8hx
-	dnvKGEYZJBwGjq/41kKk3VAj18/UkT0KJK15cWb6Mh+lR06bK6A0q3Qz5vXaMK0Cpkv0ByE23PhJQ
-	okNXt8/4Thkujk+/me1w==;
+	List-Owner; bh=OffGMGicesiHkZGSw69UMm3ngxqh4GcHHS16kI0Vlko=; b=EPLocd9C493k5W
+	pm6J64ymb+zAI1cY01TwI74rqDumDzcKPN/slPLmOXgMjHCpEH8rN/o95HBkalJNZWQ912buhW+/d
+	eZFWQU4vl/WfT4HMzWKjeXnC/EjWJXUCUGI149YCpcybp/nuJe12Uq/9LtWpg4/rYz6Y+YZ9OIiG1
+	i4vKt9/nIAHxT9R5fun3n8WwdS91vU12Au/4LrIN3+Z+gvpFkR5uUTrrtBCtL8qVqgQDHLFAl+jdM
+	CJgMYlDWVoVrMGQijLNawUBGKxgHj2lOoY94GhrwH5LaTWJmoq6UWUkr7ky+9YvpYGtWllrvFISpY
+	xlU02p2Dyu+ZgxlD7r3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUU9l-0000000DevP-3lVR;
-	Tue, 02 Jun 2026 18:48:05 +0000
+	id 1wUUAO-0000000Df21-0RZf;
+	Tue, 02 Jun 2026 18:48:44 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUU9j-0000000Deuz-2Z4e;
-	Tue, 02 Jun 2026 18:48:04 +0000
+	id 1wUUAK-0000000Df15-3TBc;
+	Tue, 02 Jun 2026 18:48:41 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Transfer-Encoding:Content-Type:MIME-Version:
 	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=bQ/ShSVerF3nHBt9YMs/KOfemqRk/C2hqrvxvJUY/r4=; b=eQyt91Hb+iKzpD2z/Q5HdzC7oA
-	lHgvBQlcohpqxZ+e9FUIj0hRWFQfql8KO99YeAHgK31Vaquv/H0Olqkp/OHWwyrtF2mFntCDmdkno
-	8Q3IBhnsWeTsxTQsMMeM8m+cyTustAU3n9MimjOsgM+MdlN5mkD7m2H0XtixuKE/REP5E/g2C1HMb
-	yu791S02UFO/PLF5zJcrILVZwy8pZmajXAK2N18QsM/itIg1V5Ioh8fk9NpZzs328yUi2LaghMX4h
-	EpH1bOBKqGnUg2zQvxpv/lf7SqwiEnNuIuuzvHj2bLcQZ8PJH8RDqoZ1yOBGKJZUDZ3VWu1fY3KXY
-	RkXrbA1w==;
+	bh=7t8xpC2Gxg1/a7tRUHOdz+cAWyjmba/5I1131NwRPwI=; b=RtevXQnJEupgna/t1cryNL51nL
+	QE1dJsLsSaPtEpHaoKVwHDdtSNKLrInOY0dpzA5f5y0T9+brriRqSMoKyeQl9Ppa5xgWbzbMFQ7zn
+	isA2qHcGnQFLiF3KJ3wCQs08TtKaM50hvDMPJ4l6duzc+tft3ZJErZnz8iUFWCJjwQ1c4zabBnQdu
+	AspqR0kJgK/TiTydibe6VnsuWMC1xxXgJiAmAVRom1E8H10fr4rbJOmM1xchdGY2efwMTWcEbRt/m
+	BaOfy5uAKFfyS8i/a5OJRctOFfh1afjyXW135jcMURA6cLAT0JAbju/a5PYvNHpR21KSvutrb4CFj
+	OfrQVXSA==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Sandy Huang <hjc@rock-chips.com>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Chukun Pan <amadeus@jmu.edu.cn>
 Cc: Heiko Stuebner <heiko@sntech.de>,
-	kernel@collabora.com,
-	dri-devel@lists.freedesktop.org,
+	Rob Herring <robh@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 0/2] YUV support for VOP2 background color
-Date: Tue,  2 Jun 2026 20:47:41 +0200
-Message-ID: <178042605608.614111.131135337224991312.b4-ty@sntech.de>
+	linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org
+Subject: Re: [PATCH 1/1] arm64: dts: rockchip: enable button for Radxa E25
+Date: Tue,  2 Jun 2026 20:48:29 +0200
+Message-ID: <178042610721.614536.13908287937215191728.b4-ty@sntech.de>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260601-vop2-bg-yuv-v2-0-e5aef1d16fec@collabora.com>
-References: <20260601-vop2-bg-yuv-v2-0-e5aef1d16fec@collabora.com>
+In-Reply-To: <20260601101000.2076721-1-amadeus@jmu.edu.cn>
+References: <20260601101000.2076721-1-amadeus@jmu.edu.cn>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_114803_684394_089CB934 
-X-CRM114-Status: UNSURE (   9.88  )
+X-CRM114-CacheID: sfid-20260602_114840_861631_56788111 
+X-CRM114-Status: UNSURE (   8.24  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,22 +73,15 @@ Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 01 Jun 2026 21:00:02 +0300, Cristian Ciocaltea wrote:
-> Since commit bec7cbfa7d4f ("drm/rockchip: vop2: Support setting custom
-> background color") the VOP2 display controller allows configuring the
-> background color of each video output port.
+On Mon, 01 Jun 2026 18:10:00 +0800, Chukun Pan wrote:
+> The Radxa E25 board has an ADC button. Enable it.
 > 
-> However, this is currently limited to RGB formats.  When operating in
-> YUV overlay mode, the color must be programmed using YUV format.
 > 
-> [...]
 
 Applied, thanks!
 
-[1/2] drm/rockchip: vop2: Rename CSC_BT2020 to CSC_BT2020L
-      commit: 09dfa47fc557f945871dcf279c8e687e55d3550d
-[2/2] drm/rockchip: vop2: Add YUV support to background color
-      commit: 28e670a0885cf2501fd51189ce7b6f5b7cacebf9
+[1/1] arm64: dts: rockchip: enable button for Radxa E25
+      commit: dc98bd71f41db3666aa8505cc8c72d02653d2980
 
 Best regards,
 -- 
