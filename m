@@ -4,71 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E62BCD6E56
-	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 01:28:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AF5FCD6E4A
+	for <linux-rockchip@archiver.kernel.org>; Tue,  2 Jun 2026 08:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=UBDtMM3NCp7HY1Y+HDv1hPrxpYaNXKBU1PH4JnQWJPA=; b=bSSbEoXdjVnuyL
-	/vv8hp0k41hY1YY6yoksQzqcnpvPtv59u1c7mDka73CTH6a4gt2Tgu8q7skE2H4MFf2bSYYbzo1+4
-	Ku1GV1xNKWOg9Jn4GlL1cIpfXeUlqkuHxqr9Zc69CNIr+mdKFRGU06+nRhsJpzr2gknmhO0/Pj1CB
-	ZmjGm0GIGKQATlM8S7vKlJixw5JzCv7/y2X7tPDjiZtLX+BSzYzLONXkxXbpjABlTq/ir/8Fcy/EC
-	PMQdlCPOw1Lxb/E+5BvsydaNrg/npRheXNCSNdTSjnWY5tu6STK7sKdzB994szvTXjO9eoFOfxq+y
-	C0B5z9pBRr6AiNoeUesQ==;
+	List-Owner; bh=EfKDvQurdj3QCPwsJ9RYP7fz7I9bw2UHtpwZnajLrD0=; b=uMxnQVDZGbzQNa
+	XiDK6kWQKnYyKqu+TfaBiW426jfRQ2SkK5N32V5hyN/XE4sOcFsgGVNzIFfQHkOods0g+7Nip+2np
+	GHrj+Ew6tBOZB1GpMe8jkvB89WeIm/bRy1bpvL3MUsnHL7oJcPAoRRrZd/Tkrbbj7F8CdLz9wKUnz
+	u9U6YeYQO5zTz8A/uRr1iLyclyEJW1m1ZMu4aKEg3Vg8V3pREzFeksIB1lrfHdAT21u1yuufb4Qet
+	VCKoLmsISa0DEXp9qtZGp06MJYNJl/C17jy4GJ1EP+/q+XKeZinS/VJ3KdhzPpzPR2EpoAvsiP0FB
+	v5Bq0RAIJSN74QQ6VTCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUDw1-0000000C9Ga-0YUr;
-	Tue, 02 Jun 2026 01:28:49 +0000
-Received: from mail-m128144.netease.com ([103.209.128.144])
+	id 1wUKWl-0000000CZOH-0pSY;
+	Tue, 02 Jun 2026 08:31:11 +0000
+Received: from mail-m60171.netease.com ([210.79.60.171])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUDvx-0000000C9Fp-0MB1;
-	Tue, 02 Jun 2026 01:28:47 +0000
+	id 1wUKWg-0000000CZN1-3qCs;
+	Tue, 02 Jun 2026 08:31:09 +0000
 Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 40ab83ee7;
-	Tue, 2 Jun 2026 09:28:33 +0800 (GMT+08:00)
-Message-ID: <bee9fdba-536f-4296-a9be-db35ab8d4172@rock-chips.com>
-Date: Tue, 2 Jun 2026 09:28:32 +0800
+	by smtp.qiye.163.com (Hmail) with ESMTP id 40bc4550f;
+	Tue, 2 Jun 2026 16:31:00 +0800 (GMT+08:00)
+Message-ID: <4f4ff085-80ae-4144-b040-be9b136574ee@rock-chips.com>
+Date: Tue, 2 Jun 2026 16:30:59 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] drm/bridge: Implement generic USB Type-C DP HPD
- bridge
+Subject: Re: [PATCH v2 07/12] drm/rockchip: dw_dp: Implement out-of-band HPD
+ handling
 To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: Andrzej Hajda <andrzej.hajda@intel.com>,
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Sandy Huang <hjc@rock-chips.com>, =?UTF-8?Q?Heiko_St=C3=BCbner?=
- <heiko@sntech.de>, Andy Yan <andy.yan@rock-chips.com>,
- Vinod Koul <vkoul@kernel.org>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>,
- Luca Ceresoli <luca.ceresoli@bootlin.com>, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-phy@lists.infradead.org
-References: <20260521032854.103-1-kernel@airkyi.com>
- <20260521032854.103-2-kernel@airkyi.com> <ah3-auKugGCVojOp@venus>
+References: <20260501-synopsys-dw-dp-improvements-v2-0-d7e7f6bac77f@collabora.com>
+ <20260501-synopsys-dw-dp-improvements-v2-7-d7e7f6bac77f@collabora.com>
 Content-Language: en-US
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <ah3-auKugGCVojOp@venus>
-X-HM-Tid: 0a9e85f25b4c03a7kunm8d21327629bc6f
+In-Reply-To: <20260501-synopsys-dw-dp-improvements-v2-7-d7e7f6bac77f@collabora.com>
+X-HM-Tid: 0a9e87751e4e03a7kunm8e11791c2d3216
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZGRkaVk5KSElOSk9OTk1NS1YVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDQklJVkseS0pITE9KTUtOSFYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
 	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=R5sU8Xowx13A7b3tEpXEjh68l/6BcGouqkVH9cIcjydpMUe+bcLLnLBhrYB8NITiM2QDaYlcz8cbGbRu8/aEwYC4JinvABAmYkGevvUGt6KfDj8+JwsYZv/3TqtkLPaMIIVZ0S1pykGEATLAaBZHyX6+H1q3JDt8ZFS/sOK4O3o=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=gvBTxmnkMtYSMLhCFymsQ41jj4G+NLVy+qkjJoW9Up0=;
+	b=QfBoCmyEgpoenhswOoF/yKeUbTuxC9EVhGvEaAxRGsfG65iwiUWilCqWRkQMXBJJJRpVEwrSs1M1osaREHDbW7weEXveiQmAc1431woQ92hbOWFgBun80jvoxHNSm4sVE50IyzGNKvhAwX5f3PfPxGXAK/ouRy8shvw1IMoYgS4=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
+	bh=JAIbtg6t1nkmAMDBYVOgCCRD8NVdgH1lo/7QZXXpTgs=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260601_182845_715212_64E0D7F1 
-X-CRM114-Status: GOOD (  28.24  )
+X-CRM114-CacheID: sfid-20260602_013107_544438_A7A98294 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,6 +65,7 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: =?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, Luca Ceresoli <luca.ceresoli@bootlin.com>, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
@@ -87,132 +73,40 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 Hi Sebastian,
 
-On 6/2/2026 6:08 AM, Sebastian Reichel wrote:
-> Hi,
+On 5/1/2026 6:20 AM, Sebastian Reichel wrote:
+> Implement out-of-band hotplug handling, which will be used to receive
+> external hotplug information from the USB-C state machine. This is
+> currently handled by the USBDP PHY, which brings quite some trouble
+> as the register being accessed requires the power-domain from the DP
+> controller and also requires custom TypeC HPD info parsing in the
+> USBDP PHY driver.
 > 
-> On Thu, May 21, 2026 at 11:28:50AM +0800, Chaoyi Chen wrote:
->> From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->>
->> The HPD function of Type-C DP is implemented through
->> drm_connector_oob_hotplug_event(). For embedded DP, it is required
->> that the DRM connector fwnode corresponds to the Type-C port fwnode.
->>
->> To describe the relationship between the DP controller and the Type-C
->> port device, we usually using drm_bridge to build a bridge chain.
->>
->> Now several USB-C controller drivers have already implemented the DP
->> HPD bridge function provided by aux-hpd-bridge.c, it will build a DP
->> HPD bridge on USB-C connector port device.
->>
->> But this requires the USB-C controller driver to manually register the
->> HPD bridge. If the driver does not implement this feature, the bridge
->> will not be create.
->>
->> So this patch implements a generic DP HPD bridge based on
->> aux-hpd-bridge.c. It will monitor Type-C bus events, and when a
->> Type-C port device containing the DP svid is registered, it will
->> create an HPD bridge for it without the need for the USB-C controller
->> driver to implement it.
->>
->> Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
->> Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
->> ---
->>  drivers/gpu/drm/bridge/Kconfig                | 10 ++++
->>  drivers/gpu/drm/bridge/Makefile               |  1 +
->>  .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  | 49 +++++++++++++++++++
+> In contrast to the USBDP PHY this does not just enable the hotplug
+> signal when a DP AltMode capable adapter is plugged in, but instead
+> properly detects if a cable is plugged in for things like USB-C to
+> HDMI adapters.
 > 
-> Doesn't this require removing the manual registration of the HPD
-> auxillary bridge in the USB-C controller drivers to avoid that
-> two bridges are registered for them?
-> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-I believe this will not affect existing controller drivers,
-as they call drm_bridge_attach during registration. Of course,
-while it won't affect the main bridge chain, you'll still see
-an additional HPD bridge.
+[...]
 
->>  3 files changed, 60 insertions(+)
->>  create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->>
->> diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
->> index c3209b0f4678..d92e93875793 100644
->> --- a/drivers/gpu/drm/bridge/Kconfig
->> +++ b/drivers/gpu/drm/bridge/Kconfig
->> @@ -30,6 +30,16 @@ config DRM_AUX_HPD_BRIDGE
->>  	  Simple bridge that terminates the bridge chain and provides HPD
->>  	  support.
->>  
->> +if DRM_AUX_HPD_BRIDGE
->> +config DRM_AUX_HPD_TYPEC_BRIDGE
->> +	tristate
->> +	depends on TYPEC || !TYPEC
->> +	default TYPEC
->> +	help
->> +	  Simple bridge that terminates the bridge chain and provides HPD
->> +	  support. It build bridge on each USB-C connector device node.
->> +endif
->> +
->>  menu "Display Interface Bridges"
->>  	depends on DRM && DRM_BRIDGE
->>  
->> diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
->> index beab5b695a6e..c4761526ba0a 100644
->> --- a/drivers/gpu/drm/bridge/Makefile
->> +++ b/drivers/gpu/drm/bridge/Makefile
->> @@ -1,6 +1,7 @@
->>  # SPDX-License-Identifier: GPL-2.0
->>  obj-$(CONFIG_DRM_AUX_BRIDGE) += aux-bridge.o
->>  obj-$(CONFIG_DRM_AUX_HPD_BRIDGE) += aux-hpd-bridge.o
->> +obj-$(CONFIG_DRM_AUX_HPD_TYPEC_BRIDGE) += aux-hpd-typec-dp-bridge.o
->>  obj-$(CONFIG_DRM_CHIPONE_ICN6211) += chipone-icn6211.o
->>  obj-$(CONFIG_DRM_CHRONTEL_CH7033) += chrontel-ch7033.o
->>  obj-$(CONFIG_DRM_CROS_EC_ANX7688) += cros-ec-anx7688.o
->> diff --git a/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> new file mode 100644
->> index 000000000000..d915e0fb0668
->> --- /dev/null
->> +++ b/drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
->> @@ -0,0 +1,49 @@
->> +// SPDX-License-Identifier: GPL-2.0+
->> +#include <linux/of.h>
->> +#include <linux/usb/typec_altmode.h>
->> +#include <linux/usb/typec_dp.h>
->> +
->> +#include <drm/bridge/aux-bridge.h>
->> +
->> +static int drm_typec_bus_event(struct notifier_block *nb,
->> +			       unsigned long action, void *data)
->> +{
->> +	struct device *dev = (struct device *)data;
->> +	struct typec_altmode *alt = to_typec_altmode(dev);
->> +
->> +	if (action != BUS_NOTIFY_ADD_DEVICE)
->> +		goto done;
->> +
->> +	/*
->> +	 * alt->dev.parent->parent : USB-C controller device
->> +	 * alt->dev.parent         : USB-C connector device
->> +	 */
->> +	if (is_typec_port_altmode(&alt->dev) && alt->svid == USB_TYPEC_DP_SID)
->> +		drm_dp_hpd_bridge_register(alt->dev.parent->parent,
->> +					   to_of_node(alt->dev.parent->fwnode));
-> 
-> IIUIC this is called when the USB-C controller spawns a sub-device
-> for the DP AltMode and then registers a HPD bridge to the USB-C
-> controller itself. Wouldn't that register new HPD bridges on every
-> USB-C replug?
-> 
-> Also doesn't this result in the bridge not being registered when
-> nothing is plugged and thus the DRM pipeline not being able to bind
-> properly?
->
+> +static void dw_dp_rockchip_hpd_sw_cfg(void *data, bool hpd)
+> +{
+> +	struct rockchip_dw_dp *dp = data;
+> +	u32 hpd_reg = dp->pdata->hpd_reg[dp->id];
+> +
+> +	dev_dbg(dp->dev, "Force HPD connected=%s\n", str_yes_no(hpd));
+> +
+> +	dp->hpd_cfg = hpd;
+> +
+> +	regmap_write(dp->vo_grf, hpd_reg,
+> +		     FIELD_PREP_WM16_CONST(ROCKCHIP_VO_GRF_DP_SINK_HPD_CFG, dp->hpd_cfg));
 
-That's a good question. The port altmode device here is only registered
-once during initialization. While the parnter altmode device will
-register and unregister during the plugging and unplugging process.
-So you don't need to worry about that :)
+FIELD_PREP_WM16() should be used here because "dp->hpd_cfg" is not a
+constant expression.
 
-https://lore.kernel.org/all/4fddba9a-b073-4bca-bd13-64a415f4bc47@rock-chips.com/
+Other patches in this series have similar issues. Doesn't your compiler
+warn you about this? Thanks.
 
 -- 
 Best, 
