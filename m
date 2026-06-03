@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1079BCD6E55
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jun 2026 09:50:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CEB6CD6E64
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jun 2026 10:27:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
+	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
 	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=QCP4Cxoy7ooQvS7sjiPLbVQTN1PCc9B72aItFh7YYGo=; b=qo8k3kZ/oi7hbj
-	/UKSNr63vbOdvGYw1+kBLf9myUCYMalBmxtcIq4UT908ReG0OrHI0FNWb5ATTDV+qXnLOXF+fRWwL
-	eKY8milCQckaqN8N0qqKcLgJbv4yGjN8/tiJ+//kM6Vck47ryKQfTz9RvdyOMSV92Q171xYob/vwP
-	K4hSBBmTk6wjEHuNdHi9l2x2trOXQ4lVfuNUZyweV+zozJTWYQBTBWegesi72fJwkWe3bp+qVYH60
-	c+W5odKRsCNG9S8vMSkic0M0bfhZ6DZeZ9TEXbOix4GnDqo/1+eG8Bk4Qu9YRUU0/4Wufz78a8C5m
-	wnN+u5Y0hIHFdoqpxBNA==;
+	List-Owner; bh=BoSTEZgyQWuIG381sWzFHG5jxVtRns+D0sXsLg7WU3g=; b=loRnHiM1BINfU0
+	LKXTOMIOi6G/fUUmgLjFU48+E6a1uZ5YSrFF4/+Ce2A4vMlCccg5XaNOMXs0DnYzAQXzF1/289VQl
+	k3bTo3eFMgaFYTzzwtIxKV2EjwAzoJXupJjmsfoNZJTCY003ZnlavhHBPimvKWjztC7CDq2Ya7hGt
+	pZoh3gitfbR5hd2G3j77qXxybC0yL8ukCX29qA10zp38v2m1XklumV5w79+TUuOvUkenU+f6qPBll
+	EkulAbQuAABeSMvRmWVnlryVs2Ez6NROezNapgAYXWxBpUr/kx7YwRRjG11v4By+rTJQ1qkt2zJ7h
+	fiQiOHwZ0UtjIgbmdnFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUiFK-0000000EkBv-474M;
-	Wed, 03 Jun 2026 09:50:46 +0000
-Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
+	id 1wUioq-0000000EoMA-3jaR;
+	Wed, 03 Jun 2026 10:27:28 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUiFI-0000000EkBI-1i1P;
-	Wed, 03 Jun 2026 09:50:45 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1780480236; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=MA70eK+bFGLjjVj+v3J16+vPsqLFjqfRRq7mvnEIWOvMlkieD5d9mLtry1r5V+9nJf2yFmyzIDTXD0HgG4Y8QTZaSj5ARaY3vbpOqw1JDj/x76uSHCtRlwC7MRsf+SIogXl17sWcGJIJjgqm7FiR4qUb17sa2uobOf0aWeaV8iQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1780480236; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=oyAmqc74tPeSqmdOneDeQhCxyrBsJsodvaoN1wzTpP0=; 
-	b=B4/PTzPW//F7DZ1zrNRhqvzwlB4lAH++tCSKPcmsx0G4SB7KFMxca6kvt3bT1L3fioj1+dDDBjA4ft5ruMwtxgj63ssSjQ+4nrgBFbbMIFx5PvKEExGF6Hc4yKPhoporIodJyPmBa5sRG+way0t+MGWUG2zbxu5/AQRpT9jNlds=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=michael.riesch@collabora.com;
-	dmarc=pass header.from=<michael.riesch@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780480236;
-	s=zohomail; d=collabora.com; i=michael.riesch@collabora.com;
-	h=Message-ID:Date:Date:MIME-Version:Subject:Subject:To:To:Cc:Cc:References:From:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:Message-Id:Reply-To;
-	bh=oyAmqc74tPeSqmdOneDeQhCxyrBsJsodvaoN1wzTpP0=;
-	b=M8bQZJTIvUTA95lVuo8E4jz5bFadZ5tELZLhHVsPRc8PsAn9uQzw4jyx2/H11jCv
-	JAKmCpYK3v0h5nzSpzLaob8pg5aAvYAUoWZwqZsCzW2Ruk/Frv4nsamb+aS124SB0sR
-	IVEVk9Yyv4F3/NVXtTBWtqalgajlkNjnAzumY6Bg=
-Received: by mx.zohomail.com with SMTPS id 1780480234850793.9722590953027;
-	Wed, 3 Jun 2026 02:50:34 -0700 (PDT)
-Message-ID: <a80c978f-65e8-436e-a3d6-74cf50b5ea6a@collabora.com>
-Date: Wed, 3 Jun 2026 11:50:31 +0200
+	id 1wUion-0000000EoJL-215r;
+	Wed, 03 Jun 2026 10:27:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1780482441;
+	bh=6aL4l3Ur3jsCLfcmTxD3VhVZp8AyRsbYnFcCugx26NA=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
+	b=EOjyakpep+v7+Xow5oK32R8tPEBjHwdEeHbPheiYcss/3buxi01AAA7ua5JJIVn/j
+	 al2o63aRvF7fpplbvgGp3DVCVVolK1iQPAFLDD0FcgXyQPe3JEAqOn7e7bPuM8wFCW
+	 9TDq+62/gZIMWiM+6P1GAhEv4TDw6/YrTQLi7WdEaIkiiWTT+YN8H1zFxNwLp4qeSy
+	 vKv/yOFhPl0Am0Nf59Dibe3/G4IOCPPajZjpnXLjNCDIdEl9aBXghMyGoFhtiHFfby
+	 qsP7qcGpRxQe5C1tUwbbSjq55T7eM7Ab3DnktF68go+WtfutOjV/ud8Sc9uf5KpfS/
+	 LLVsjHPkgAVvA==
+Received: from [100.64.0.241] (unknown [100.64.0.241])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: cristicc)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5678A17E05DE;
+	Wed,  3 Jun 2026 12:27:21 +0200 (CEST)
+Message-ID: <ebcad67e-e14a-4d0e-b3e0-79ae1d146eaf@collabora.com>
+Date: Wed, 3 Jun 2026 13:27:20 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: rockchip: rkcif: Fix error handling for
- media_entity_remote_source_pad_unique()
-To: Chen Ni <nichen@iscas.ac.cn>, mehdi.djait@linux.intel.com
-Cc: mchehab@kernel.org, heiko@sntech.de, hverkuil+cisco@kernel.org,
- gerald.loacker@wolfvision.net, bryan.odonoghue@linaro.org,
- linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260522065548.2438545-1-nichen@iscas.ac.cn>
+Subject: Re: [PATCH v2 0/6] phy: rockchip: samsung-hdptx: Clock fixes and API
+ transition cleanups
+From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+To: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
+ <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
+ Algea Cao <algea.cao@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>
+Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
+ linux-kernel@vger.kernel.org, =?UTF-8?Q?Thomas_Niederpr=C3=BCm?=
+ <dubito@online.de>, Simon Wright <simon@symple.nz>
+References: <20260511-hdptx-clk-fixes-v2-0-664e41379cab@collabora.com>
+ <e0eeb794-11b9-4ba6-bee2-f6cc607d3a16@collabora.com>
 Content-Language: en-US
-From: Michael Riesch <michael.riesch@collabora.com>
-In-Reply-To: <20260522065548.2438545-1-nichen@iscas.ac.cn>
-X-ZohoMailClient: External
+In-Reply-To: <e0eeb794-11b9-4ba6-bee2-f6cc607d3a16@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_025044_512695_3F5000A2 
-X-CRM114-Status: GOOD (  13.94  )
+X-CRM114-CacheID: sfid-20260603_032725_682937_DC811655 
+X-CRM114-Status: GOOD (  15.55  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,41 +80,47 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Chen,
-
-Thanks for the fix!
-
-On 5/22/26 08:55, Chen Ni wrote:
-> The media_entity_remote_source_pad_unique() function returns an error
-> pointer on failure, not NULL. Fix the check to use IS_ERR() and return
-> PTR_ERR() to correctly handle allocation failures.
+On 5/20/26 10:05 PM, Cristian Ciocaltea wrote:
+> Hi Vinod,
 > 
-> Fixes: 501802e2ad51 ("media: rockchip: rkcif: add abstraction for dma blocks")
-> Signed-off-by: Chen Ni <nichen@iscas.ac.cn>
-
-Reviewed-by: Michael Riesch <michael.riesch@collabora.com>
-
-Best regards,
-Michael
-
-> ---
->  drivers/media/platform/rockchip/rkcif/rkcif-stream.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> On 5/11/26 9:21 PM, Cristian Ciocaltea wrote:
+>> This series provides a set of bug fixes and cleanups for the Rockchip
+>> Samsung HDPTX PHY driver.
+>>
+>> The first part of the series (i.e. PATCH 1 & 2) addresses clock rate
+>> calculation and synchronization issues.  Specifically, it fixes edge
+>> cases where the PHY PLL is pre-programmed by an external component (like
+>> a bootloader) or when changing the color depth (bpc) while keeping the
+>> modeline constant.  Because the Common Clock Framework .set_rate()
+>> callback might not be invoked if the pixel clock remains unchanged, this
+>> previously led to out-of-sync states between CCF and the actual HDMI PHY
+>> configuration.
+>>
+>> The second part focuses on code cleanups and modernizing the register
+>> access.  Now that dw_hdmi_qp driver has fully switched to using
+>> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
+>> and the restrict_rate_change flag logic.  Finally, it refactors the
+>> driver to consistently use standard bitfield macros.
+>>
+>> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+>> ---
+>> Changes in v2:
+>> - Collected Tested-by tags from Thomas and Simon
+>> - Fixed a typo in commit description of patch 1
+>> - Added a comment in patch 2 explaining why PLL config errors are
+>>   ignored for rk_hdptx_phy_consumer_get()
+>> - Added a missed FIELD_GET conversion for lcpll_hw.pms_sdiv in patch 6
+>> - Rebased onto latest phy/fixes
+>> - Link to v1: https://lore.kernel.org/r/20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com
 > 
-> diff --git a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> index 3130d420ad55..542aa877919d 100644
-> --- a/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> +++ b/drivers/media/platform/rockchip/rkcif/rkcif-stream.c
-> @@ -466,7 +466,7 @@ static int rkcif_stream_link_validate(struct media_link *link)
->  	struct rkcif_stream *stream = to_rkcif_stream(vdev);
->  	int ret = -EINVAL;
->  
-> -	if (!media_entity_remote_source_pad_unique(link->sink->entity))
-> +	if (IS_ERR(media_entity_remote_source_pad_unique(link->sink->entity)))
->  		return -ENOTCONN;
->  
->  	sd = media_entity_to_v4l2_subdev(link->source->entity);
+> In case you missed my comments from last week on the Sashiko AI review findings
+> - in short, I don't think there is anything to worry about and the series should
+> be fine to apply as-is.  Please let me know if you would still prefer a new
+> revision.
+Kind reminder..
 
+Regards,
+Cristian
 
 _______________________________________________
 Linux-rockchip mailing list
