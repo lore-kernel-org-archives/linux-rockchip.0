@@ -4,66 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CEB6CD6E64
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jun 2026 10:27:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 680B9CD6E55
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jun 2026 13:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	List-Archive:List-Unsubscribe:List-Id:Message-ID:MIME-Version:References:
+	In-Reply-To:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=BoSTEZgyQWuIG381sWzFHG5jxVtRns+D0sXsLg7WU3g=; b=loRnHiM1BINfU0
-	LKXTOMIOi6G/fUUmgLjFU48+E6a1uZ5YSrFF4/+Ce2A4vMlCccg5XaNOMXs0DnYzAQXzF1/289VQl
-	k3bTo3eFMgaFYTzzwtIxKV2EjwAzoJXupJjmsfoNZJTCY003ZnlavhHBPimvKWjztC7CDq2Ya7hGt
-	pZoh3gitfbR5hd2G3j77qXxybC0yL8ukCX29qA10zp38v2m1XklumV5w79+TUuOvUkenU+f6qPBll
-	EkulAbQuAABeSMvRmWVnlryVs2Ez6NROezNapgAYXWxBpUr/kx7YwRRjG11v4By+rTJQ1qkt2zJ7h
-	fiQiOHwZ0UtjIgbmdnFg==;
+	List-Owner; bh=RRYWXGkHbPSK+6T+RNXfSfZg6f5hGDd17PFgjfZz4sw=; b=RShHE1kWUVngic
+	kUo3Iw6nF6aEheUBh+2G37E9jRrx4DmH5tYl6d2HsZuKusgVWw1YmlR999fOynCeCpfqkZtF1M+eh
+	sOqOaUohmx1rYahv/Tf9Q4/CVliOAuuCFGL50UgT71HLHm1zaiJL0nJ9VGORF31+RLVHAddi6RHR3
+	Bh2sgQ/CquIoLBmSuDTjK+faWjS6igj6AHozrCGAtnL5evWgJBSLJxjmOCa246TxKp67XOCJ9+ZDT
+	vBJhhr5F29aedwzsDSHCN8/+VIWJEEV8Tbb8FCB4GRKe7Oc4psBZZw4KasYqGcAIU2kBeVvvkVOD0
+	OquI3BV6Z4AkPssBlRnw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUioq-0000000EoMA-3jaR;
-	Wed, 03 Jun 2026 10:27:28 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1wUlG3-0000000F6zL-2rB4;
+	Wed, 03 Jun 2026 13:03:43 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUion-0000000EoJL-215r;
-	Wed, 03 Jun 2026 10:27:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1780482441;
-	bh=6aL4l3Ur3jsCLfcmTxD3VhVZp8AyRsbYnFcCugx26NA=;
-	h=Date:Subject:From:To:Cc:References:In-Reply-To:From;
-	b=EOjyakpep+v7+Xow5oK32R8tPEBjHwdEeHbPheiYcss/3buxi01AAA7ua5JJIVn/j
-	 al2o63aRvF7fpplbvgGp3DVCVVolK1iQPAFLDD0FcgXyQPe3JEAqOn7e7bPuM8wFCW
-	 9TDq+62/gZIMWiM+6P1GAhEv4TDw6/YrTQLi7WdEaIkiiWTT+YN8H1zFxNwLp4qeSy
-	 vKv/yOFhPl0Am0Nf59Dibe3/G4IOCPPajZjpnXLjNCDIdEl9aBXghMyGoFhtiHFfby
-	 qsP7qcGpRxQe5C1tUwbbSjq55T7eM7Ab3DnktF68go+WtfutOjV/ud8Sc9uf5KpfS/
-	 LLVsjHPkgAVvA==
-Received: from [100.64.0.241] (unknown [100.64.0.241])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: cristicc)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5678A17E05DE;
-	Wed,  3 Jun 2026 12:27:21 +0200 (CEST)
-Message-ID: <ebcad67e-e14a-4d0e-b3e0-79ae1d146eaf@collabora.com>
-Date: Wed, 3 Jun 2026 13:27:20 +0300
+	id 1wUlG1-0000000F6yi-1xo3;
+	Wed, 03 Jun 2026 13:03:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=Date:From:To:Subject:Content-Type:MIME-Version:
+	Message-ID; bh=zfDd761s+X3hyIoj3B1q+1h4o7T39matEyS3iUvoXWk=; b=G
+	8FYbKl+e7W8KCNBdbS38gnRZSEtGUeus8M1UyVPOmodqCJCgB/yyUaYatY4gQ7Vy
+	ESdseUJAIOQWNlhtDAcBjDhTvydSX9WqlDY/GEQWjQ4+JakOu6H2BjYPKb5TR+VB
+	ODGnQHpp/R4ruR1wNX2x6qjwb7jvn41LVQZzzQ2+GQ=
+Received: from andyshrk$163.com ( [58.22.7.114] ) by
+ ajax-webmail-wmsvr-40-120 (Coremail) ; Wed, 3 Jun 2026 21:01:52 +0800 (CST)
+X-Originating-IP: [58.22.7.114]
+Date: Wed, 3 Jun 2026 21:01:52 +0800 (CST)
+From: "Andy Yan" <andyshrk@163.com>
+To: "Cristian Ciocaltea" <cristian.ciocaltea@collabora.com>
+Cc: "Sandy Huang" <hjc@rock-chips.com>,
+	=?UTF-8?Q?Heiko_St=C3=BCbner?= <heiko@sntech.de>,
+	"Andy Yan" <andy.yan@rock-chips.com>,
+	"Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
+	"Maxime Ripard" <mripard@kernel.org>,
+	"Thomas Zimmermann" <tzimmermann@suse.de>,
+	"David Airlie" <airlied@gmail.com>,
+	"Simona Vetter" <simona@ffwll.ch>,
+	"Dmitry Baryshkov" <dmitry.baryshkov@oss.qualcomm.com>,
+	"Dmitry Baryshkov" <lumag@kernel.org>,
+	"Andrzej Hajda" <andrzej.hajda@intel.com>,
+	"Neil Armstrong" <neil.armstrong@linaro.org>,
+	"Robert Foss" <rfoss@kernel.org>,
+	"Laurent Pinchart" <Laurent.pinchart@ideasonboard.com>,
+	"Jonas Karlman" <jonas@kwiboo.se>,
+	"Jernej Skrabec" <jernej.skrabec@gmail.com>,
+	"Luca Ceresoli" <luca.ceresoli@bootlin.com>, kernel@collabora.com,
+	dri-devel@lists.freedesktop.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re:[PATCH v4 2/3] drm/rockchip: dw_dp: Add missing newline in
+ dev_err_probe() message
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2023.4-cmXT build
+ 20260403(27802f6d) Copyright (c) 2002-2026 www.mailtech.cn 163com
+In-Reply-To: <20260601-drm-rk-fixes-v4-2-c3f3f123e1da@collabora.com>
+References: <20260601-drm-rk-fixes-v4-0-c3f3f123e1da@collabora.com>
+ <20260601-drm-rk-fixes-v4-2-c3f3f123e1da@collabora.com>
+X-CM-CTRLMSGS: qZbwZXBsdXM9MTc4MDQ5MTcxMjIxMF9kZjVlMTMwOTYzYmNkMmEzMGMxMzFhZ
+ jZiNzM5MWRkNQ==
+X-NTES-SC: AL_Qu2TAviSvk8q5CScY+kfmUgWjuw/WsG1v/Ul1YBSP556jDLp4yQsdlhFB13k6v+RMTGlqAieVTxg0OFXWa1WfaYteoTY/kK5PpuPMPGk3cYYuA==
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/6] phy: rockchip: samsung-hdptx: Clock fixes and API
- transition cleanups
-From: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
-To: Vinod Koul <vkoul@kernel.org>, Neil Armstrong
- <neil.armstrong@linaro.org>, Heiko Stuebner <heiko@sntech.de>,
- Algea Cao <algea.cao@rock-chips.com>, Dmitry Baryshkov <lumag@kernel.org>
-Cc: kernel@collabora.com, linux-phy@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org,
- linux-kernel@vger.kernel.org, =?UTF-8?Q?Thomas_Niederpr=C3=BCm?=
- <dubito@online.de>, Simon Wright <simon@symple.nz>
-References: <20260511-hdptx-clk-fixes-v2-0-664e41379cab@collabora.com>
- <e0eeb794-11b9-4ba6-bee2-f6cc607d3a16@collabora.com>
-Content-Language: en-US
-In-Reply-To: <e0eeb794-11b9-4ba6-bee2-f6cc607d3a16@collabora.com>
+Message-ID: <3db55ac2.a5b3.19e8d9377c6.Coremail.andyshrk@163.com>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: eCgvCgDnD_XAJSBqVsQBAA--.17746W
+X-CM-SenderInfo: 5dqg52xkunqiywtou0bp/xtbC7QAcemogJcBl+QAA34
+X-Coremail-Antispam: 1U5529EdanIXcx71UUUUU7vcSsGvfC2KfnxnUU==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_032725_682937_DC811655 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20260603_060341_968204_3D6370F9 
+X-CRM114-Status: UNSURE (   6.77  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,54 +90,32 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On 5/20/26 10:05 PM, Cristian Ciocaltea wrote:
-> Hi Vinod,
-> 
-> On 5/11/26 9:21 PM, Cristian Ciocaltea wrote:
->> This series provides a set of bug fixes and cleanups for the Rockchip
->> Samsung HDPTX PHY driver.
->>
->> The first part of the series (i.e. PATCH 1 & 2) addresses clock rate
->> calculation and synchronization issues.  Specifically, it fixes edge
->> cases where the PHY PLL is pre-programmed by an external component (like
->> a bootloader) or when changing the color depth (bpc) while keeping the
->> modeline constant.  Because the Common Clock Framework .set_rate()
->> callback might not be invoked if the pixel clock remains unchanged, this
->> previously led to out-of-sync states between CCF and the actual HDMI PHY
->> configuration.
->>
->> The second part focuses on code cleanups and modernizing the register
->> access.  Now that dw_hdmi_qp driver has fully switched to using
->> phy_configure(), we can drop the deprecated TMDS rate setup workarounds
->> and the restrict_rate_change flag logic.  Finally, it refactors the
->> driver to consistently use standard bitfield macros.
->>
->> Signed-off-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
->> ---
->> Changes in v2:
->> - Collected Tested-by tags from Thomas and Simon
->> - Fixed a typo in commit description of patch 1
->> - Added a comment in patch 2 explaining why PLL config errors are
->>   ignored for rk_hdptx_phy_consumer_get()
->> - Added a missed FIELD_GET conversion for lcpll_hw.pms_sdiv in patch 6
->> - Rebased onto latest phy/fixes
->> - Link to v1: https://lore.kernel.org/r/20260227-hdptx-clk-fixes-v1-0-f998f2762d0f@collabora.com
-> 
-> In case you missed my comments from last week on the Sashiko AI review findings
-> - in short, I don't think there is anything to worry about and the series should
-> be fine to apply as-is.  Please let me know if you would still prefer a new
-> revision.
-Kind reminder..
-
-Regards,
-Cristian
-
-_______________________________________________
-Linux-rockchip mailing list
-Linux-rockchip@lists.infradead.org
-http://lists.infradead.org/mailman/listinfo/linux-rockchip
+CkhlbGxvIENyaXN0aWFu77yMCgpBdCAyMDI2LTA2LTAyIDAwOjEzOjQ1LCAiQ3Jpc3RpYW4gQ2lv
+Y2FsdGVhIiA8Y3Jpc3RpYW4uY2lvY2FsdGVhQGNvbGxhYm9yYS5jb20+IHdyb3RlOgo+QWRkIHRo
+ZSBtaXNzaW5nIHRyYWlsaW5nIG5ld2xpbmUgdG8gZGV2X2Vycl9wcm9iZSgpIGNhbGwgaW4KPmR3
+X2RwX3JvY2tjaGlwX2JpbmQoKS4KPgo+Rml4ZXM6IGQ2OGJhN2JhYzk1NSAoImRybS9yb2NrY2hp
+cDogQWRkIFJLMzU4OCBEUFRYIG91dHB1dCBzdXBwb3J0IikKPkZpeGVzOiAyNmNiM2UyNmVmYTcg
+KCJkcm0vcm9ja2NoaXA6IGR3X2RwOiBTaW1wbGlmeSBlcnJvciBoYW5kbGluZyIpCgoKSnVzdCBv
+bmUgRml4ZXMgdGFn77yfCgoKPlNpZ25lZC1vZmYtYnk6IENyaXN0aWFuIENpb2NhbHRlYSA8Y3Jp
+c3RpYW4uY2lvY2FsdGVhQGNvbGxhYm9yYS5jb20+Cj4tLS0KPiBkcml2ZXJzL2dwdS9kcm0vcm9j
+a2NoaXAvZHdfZHAtcm9ja2NoaXAuYyB8IDIgKy0KPiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRp
+b24oKyksIDEgZGVsZXRpb24oLSkKPgo+ZGlmZiAtLWdpdCBhL2RyaXZlcnMvZ3B1L2RybS9yb2Nr
+Y2hpcC9kd19kcC1yb2NrY2hpcC5jIGIvZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2RwLXJv
+Y2tjaGlwLmMKPmluZGV4IDMyYmM3M2ExZDVlNC4uZjEzN2Y2OTk3MzdjIDEwMDY0NAo+LS0tIGEv
+ZHJpdmVycy9ncHUvZHJtL3JvY2tjaGlwL2R3X2RwLXJvY2tjaGlwLmMKPisrKyBiL2RyaXZlcnMv
+Z3B1L2RybS9yb2NrY2hpcC9kd19kcC1yb2NrY2hpcC5jCj5AQCAtMTA5LDcgKzEwOSw3IEBAIHN0
+YXRpYyBpbnQgZHdfZHBfcm9ja2NoaXBfYmluZChzdHJ1Y3QgZGV2aWNlICpkZXYsIHN0cnVjdCBk
+ZXZpY2UgKm1hc3Rlciwgdm9pZCAqCj4gCWNvbm5lY3RvciA9IGRybV9icmlkZ2VfY29ubmVjdG9y
+X2luaXQoZHJtX2RldiwgZW5jb2Rlcik7Cj4gCWlmIChJU19FUlIoY29ubmVjdG9yKSkKPiAJCXJl
+dHVybiBkZXZfZXJyX3Byb2JlKGRldiwgUFRSX0VSUihjb25uZWN0b3IpLAo+LQkJCQkgICAgICJG
+YWlsZWQgdG8gaW5pdCBicmlkZ2UgY29ubmVjdG9yIik7Cj4rCQkJCSAgICAgIkZhaWxlZCB0byBp
+bml0IGJyaWRnZSBjb25uZWN0b3JcbiIpOwo+IAo+IAlyZXR1cm4gMDsKPiB9Cj4KPi0tIAo+Mi41
+NC4wCl9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4
+LXJvY2tjaGlwIG1haWxpbmcgbGlzdApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3Jn
+Cmh0dHA6Ly9saXN0cy5pbmZyYWRlYWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2No
+aXAK
