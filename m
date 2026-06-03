@@ -4,87 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B147ECD6E4A
-	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jun 2026 03:37:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88DE7CD6E4A
+	for <linux-rockchip@archiver.kernel.org>; Wed,  3 Jun 2026 03:58:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+r+TGmpnI0ly6fAksEOliMGpwHzWy5iQwWE8esES574=; b=S3sH6TLxraBaAg
-	ZO7wpvBHNG9xd1tjjVV/ssnvbufpJgC4H7iiCj9/fA7MLfbA9rZocgW4cjQ8e4hP/dG/7VGW3K5Y8
-	ap/5knnfM/LH9kLazct82q/GF9ao/QBvhTWbTALjCvC7Cx/okT/DrJLgEvMAa3us6+T8evb9lEdiJ
-	TKjr1XcPI+Mi4E7cRT4/juoP0cU7+1jhPoVdfUlBBRaBwoUyLkTSrqJg+0P4Eyztf1ZQXPF7saM2y
-	YeliipCixxIc0zIdLRm8eRFdyQ5aC7xHDC/ztCpIFMfWsqsEvWnn8gmjJ8pCsLpSX2o55DT2/cECS
-	Om9BfTcLIzbDQgdTCKlw==;
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=qzQqZlmBs8z6fSTvZNWSRBTCl3B4sex+uYiLfmMgXzY=; b=tc43ut17bMkJO2
+	Qm2V47UzBqPzvyp5glwsnC0M7TwrCdTYyuXCsEYZTzPycfslAXK2xz5ppbarhhSnbxFLzM6iqxCWG
+	xDhe0WnA/YfaMSzbm3yns5C21ghChm6ECmZtGWNXUq92Mls8hLoCrAwoSuiO4tklzJVD1pBEFJAiX
+	W+7LLx8nPiSfSH5VHe0diCj36yS/+HSTzt2U1ilIjKnmSkziucmR0b0nwg58Q7Xn8USP7rlPqUPjm
+	PCmH8H36OeiPA/8b+7eMQuaCeKpO4SuizQVx1yJc9AaI91tU0cXzFTMX0lHa+axolISnwZzYqAxtx
+	ZwaQgnUe68tD/ip7Lv4w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUcPd-0000000EC8W-40KW;
-	Wed, 03 Jun 2026 03:37:01 +0000
-Received: from smtpbguseast3.qq.com ([54.243.244.52])
+	id 1wUckW-0000000EDim-3aLe;
+	Wed, 03 Jun 2026 03:58:36 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUcPa-0000000EBvO-0vAu;
-	Wed, 03 Jun 2026 03:37:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1780457751;
-	bh=3osqFgBIrekk0aasLKdM5b2OMYUqCjmmQPGJNM+Bp4I=;
-	h=From:To:Subject:Date:Message-Id;
-	b=gvJSlXfD+PsAsdJHkgL9ttFyxaR0I/ZEEd8dENvWyqZHqAifjIfvX9jeJHNXes5hi
-	 4IGmFdQcEpA4FMSjD4j809rccid/N2Uux5E2ic7YoxJfcsBwi7gbWHRYqi6PM8of8j
-	 c1yLNSYF2vXOvVfU6pLxpN/519TxuoyJfIUha5Cs=
-X-QQ-mid: zesmtpsz3t1780457749t34a776f7
-X-QQ-Originating-IP: CPrpKAdSZ/ltdFjp1z8IAthR2uE4Y8wFlpZ9Tj6q6XI=
-Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
-	by bizesmtp.qq.com (ESMTP) with 
-	id ; Wed, 03 Jun 2026 11:35:46 +0800 (CST)
-X-QQ-SSF: 0000000000000000000000000000000
-X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 2992502231679952474
-From: Chaoyi Chen <kernel@airkyi.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Guochun Huang <hero.huang@rock-chips.com>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1wUckU-0000000EDi4-0RXi
+	for linux-rockchip@lists.infradead.org;
+	Wed, 03 Jun 2026 03:58:35 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2c0c3543590so22643325ad.2
+        for <linux-rockchip@lists.infradead.org>; Tue, 02 Jun 2026 20:58:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780459113; x=1781063913; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=n5ygFXPwsJQO8ymWnjVkYNZg4lOorcqeH1A5jF0msXE=;
+        b=GvEuC/Dl1RVMH+9R9AJe+i9F4wNF9MAkHlDm06KevCTHf58KRLvLrQfWyDc2eZmdtO
+         WQY8hwguBDKdo44di3cgpGBCa6O3bklASJMac0/9Y9tSejHdjjwokLFxMAdPsbuq5ynB
+         8/q5Q5Qg7qEs5hasZgnZJNlaH9hP7DLUqthgWRbzzgpJrcx1rDo/AuqXq0UVWwKQggF1
+         ekbPl5Vx/Yh8CkKdnpbANqukjv4jlXWchcPlt5wKw1KYcKEp5+fQFTGccZ5QOFdBDyCP
+         zIuv9dIony6RzpyXq9tMzWrs//6SuaRPu0Y0VacdgIjYE4r6bOhSRbvfEWYIgSIEP5PP
+         zI9A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780459113; x=1781063913;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=n5ygFXPwsJQO8ymWnjVkYNZg4lOorcqeH1A5jF0msXE=;
+        b=K9oX7PtPbwgOSMIuZF6n4HP4m+v4SMRiEO8Dua1EJUsckfrZ5OFZ8Y5W5/gfbOHt3S
+         8/lnVTsRvXQ1yKPncjt/Is/Eb+mbYsz3/GPVJdylV9CgjXsVxTz04sPl7sE6mlc/Elsx
+         Xw1Qh/PYPPkbhX4mIBxHGsAowLkGBImPzJuGwCkJYzFjPfSCkE+YUbWnAu/8JQwJUoeN
+         EXPOJpY0DgEZ7dNORSPm3y2dVaFVr4stWG9tv5vxmtiyhSzTHD0JkIfETwo2Vr0NYv86
+         y4dBHs1dHtQfoPdtHUQ2UK7B8eehPzfBVn8sWYj0dcXXt+HhXYnxADIcYD8E+hGF5mc1
+         dPIA==
+X-Forwarded-Encrypted: i=1; AFNElJ/RytUN0yXXvoFkwaQStmbLIRynAwkE6d/z3AnEpEIIDw3blorLw93Ii3jGhkgr7P7LyTnfX0ZbhHuWWlCgNw==@lists.infradead.org
+X-Gm-Message-State: AOJu0YyReUzo9FLzk/mcmk5iUghb9avl7B3jGPQTvuASUhCqaIRyB+n+
+	r8aaUJhhCEq+nOp0zbsgjZP+XV3MKuDqxIIzZDL6HguqJBCdnI1+z30Z
+X-Gm-Gg: Acq92OHDT2icmde47ilcBgMOoi5FNKaf+MIPe1bN5u8hsUZ5Nu6vHlKI8mXHHs3QdOZ
+	82aac+eDt5F0nJmp+x8n5K21ePASY1AVnpvkueqHWSeB6GYA+5zbIA87uF4i1d4vptHay/g23ne
+	yQnc7TbwKv5ltEuH4dFzL0s7SZb47KUyCVugjmEOtYhaaIjpIC0D85vCQOyR/HDXjwjD6xiJcWQ
+	ACG7ps880Oe1uD7jl5DsajDkuHmk8tz5gs3q/FWklVyet61S1z9F6/SljVrlkHU3S++bOq9ThGr
+	B5z0f4MbmhJchTSJ23OaaFWlAxH3Rb/u+ZIiEOmqUbnp2lpoxXDb55TpYAs5qSwQJHbDLnOQSju
+	vw6VNpAzHaEXsS2mVtRo0hB9wMIYVNH+TLBUoT+3cKB8XiXQ02AYaNXgagY2t5wTJqcNhUdd11X
+	hErQOQSv7puHtQEy6mGPWO7QCXSnBAxlbhdkzRjhZq015xhi/MP395r7p/gkctzvbSJgsP
+X-Received: by 2002:a17:902:f785:b0:2bc:b80f:677e with SMTP id d9443c01a7336-2c163d8ebccmr16632755ad.25.1780459113142;
+        Tue, 02 Jun 2026 20:58:33 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2c164f6e294sm8461085ad.6.2026.06.02.20.58.29
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 02 Jun 2026 20:58:32 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Heiko Stuebner <heiko@sntech.de>,
+	Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>
+Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	linux-sound@vger.kernel.org,
 	linux-rockchip@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH v2 2/3] drm/rockchip: dsi: Add dphy_get_timing support for multiple PHY types
-Date: Wed,  3 Jun 2026 11:35:31 +0800
-Message-Id: <20260603033532.164-3-kernel@airkyi.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20260603033532.164-1-kernel@airkyi.com>
-References: <20260603033532.164-1-kernel@airkyi.com>
-X-QQ-SENDSIZE: 520
-Feedback-ID: zesmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: M3vv73qU6a4uywa5T2AnRL6EIQAHH/XOu9LDGz7BOSmPu1DEwe4Uv/X9
-	Ja5mH1RQ4kXo+G1fFvwGs+jg+duS9pzC5mfEZ8BtBg08AqTI7QfZ4kNCBoljEHvwI2E9qpt
-	/9+Fx6kehX0j1Mj7DD630FMXJe2INVUlcuWu0PsXum8aaguOI+i4e6+m5BavFApuCG0PUU7
-	abP6pf/e00vrDUdqDSVJJFMxHHTwEDsXjYw24+PT05JfRD9IhfDmOJvbhiZm73d+EfDYjCy
-	Kmwgm8oNuGYat7CZ3UKf7SIZh46kWX/o9F8tBWwTt9njh8y4fa/WlgbbdarLEtCp2BcadDR
-	gVk9+OaM8raWFdHlLwRQA9excKKbo+bRZb5EnsIshgIklFQXJT6i3Ulb0VkYrXaxpdn6www
-	cBbElRRpY5lIMj9zXDp3IATuK+nNGGzqv12Cyfz/hkU/2oF9Z8sumTnr+DC4VggjaUVwgQp
-	Xuky10Qib1F0tigs+X7+ybYN2KdxqlMeyOz9wm7LaMAAy+KocB16F52hN+gEKQkP7Q341nS
-	MDNQRl982ypVIlm5VQ6i78bYNQRVRYskTssQmhSJbAqNpIgdSo0N5e06EC9XyziptpeBeMU
-	D7Fh9R1Lp7IRJCZNuI2eC9WLeDJapQ+8vInzsquavsPtp34s7D+f1Q83iQ5CRcKBJrezkuC
-	w+LKSFp2Bx2oTTFxZqCawYaz6Py37nCFYnietMUg/cW4mgRC6VeDsJh6IEBOfiGriyRlyjY
-	qNKMdwnUdi9/RMS75ZGPDfQFRxMqvt6HYfdK56cjijYOVptJKHRHJ8hVEpL6Pxt7uE1qorJ
-	xY6izUoUXVUBalUVypexZM+xM8tmsVDQ2coMzCuLo7TUlcVub8RCbQHDv+pEwYWFwD4i0C7
-	2JA5mx0M0JVZxyl1CJ/SedpSWtUFGRnE9eqC0C5dnUxaZFmdn5Q65FXZ007w7pS3pBxxMz/
-	Ppv5iIpOAe+D1owKYgVqX8ItRoC64miQukdMdPYlj4q5WDwP8AUttRL09Dp77utZm3nztZq
-	gNJFA+yEC7VvfxCAa0W3xH0KvPjFXtexpwj3gohQ==
-X-QQ-XMRINFO: MPJ6Tf5t3I/ylTmHUqvI8+Wpn+Gzalws3A==
-X-QQ-RECHKSPAM: 0
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 0/3] ASoC: rockchip: Use guard() for spin locks
+Date: Wed,  3 Jun 2026 10:57:38 +0700
+Message-ID: <20260603035741.68893-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260602_203658_761831_ABD6FAD3 
-X-CRM114-Status: GOOD (  16.03  )
+X-CRM114-CacheID: sfid-20260602_205834_153265_4584ABC5 
+X-CRM114-Status: UNSURE (   7.50  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,185 +100,35 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-MIME-Version: 1.0
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-Currently, there are generally two types of DPHY for Rockchip. One is
-the DPHY used by RK3288/RK3399, whose timing is described by Table A-3
-High-Speed Transition Times in the databook. The other is the DPHY used
-by PX30 and its successors. If its timing is still described using
-RK3288/RK3399, it may not perform correctly on some DSI panel.
+Hi all,
 
-Add dphy_get_timing for different D-PHY types to adapt to timing
-differences. The configuration details are as follows:
+This series converts spinlock handling in the Rockchip sound drivers
+to use guard() helpers.
+The changes are code cleanup only and should have no functional impact.
+Compile tested only.
 
-- RK3288/RK3399: Select the corresponding entry from the timing table based
-                 on the data rate.
-- PX30 and later platforms: Use a fixed timing configuration.
+Best regards,
+Phuc
 
-Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
----
-Changes in v2:
-- Add more comment about timing config.
+bui duc phuc (3):
+  ASoC: rockchip: rockchip_i2s: Use guard() for spin locks
+  ASoC: rockchip: i2s-tdm: Use guard() for spin locks
+  ASoC: rockchip: rockchip_sai: Use guard() for spin locks
 
----
- .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   | 45 ++++++++++++++++++-
- 1 file changed, 43 insertions(+), 2 deletions(-)
+ sound/soc/rockchip/rockchip_i2s.c     | 160 ++++++++--------
+ sound/soc/rockchip/rockchip_i2s_tdm.c |   8 +-
+ sound/soc/rockchip/rockchip_sai.c     | 258 +++++++++++++-------------
+ 3 files changed, 209 insertions(+), 217 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 1060abec9f29..e64dfc327891 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -247,6 +247,7 @@ enum {
- 	BIASEXTR_127_7,
- };
- 
-+struct dw_mipi_dsi_rockchip;
- struct rockchip_dw_dsi_chip_data {
- 	u32 reg;
- 
-@@ -262,6 +263,9 @@ struct rockchip_dw_dsi_chip_data {
- 	u32 lanecfg2_grf_reg;
- 	u32 lanecfg2;
- 
-+	int (*dphy_get_timing)(struct dw_mipi_dsi_rockchip *dsi, unsigned int lane_mbps,
-+			       struct dw_mipi_dsi_dphy_timing *timing);
-+
- 	int (*dphy_rx_init)(struct phy *phy);
- 	int (*dphy_rx_power_on)(struct phy *phy);
- 	int (*dphy_rx_power_off)(struct phy *phy);
-@@ -721,8 +725,9 @@ static struct hstt hstt_table[] = {
- };
- 
- static int
--dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
--			   struct dw_mipi_dsi_dphy_timing *timing)
-+dw_mipi_dsi_phy_rk3288_get_timing(struct dw_mipi_dsi_rockchip *dsi,
-+				  unsigned int lane_mbps,
-+				  struct dw_mipi_dsi_dphy_timing *timing)
- {
- 	int i;
- 
-@@ -738,6 +743,32 @@ dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
- 	return 0;
- }
- 
-+static const struct dw_mipi_dsi_dphy_timing dphy_timing_px30 = {
-+	.clk_lp2hs = 0x40,
-+	.clk_hs2lp = 0x40,
-+	.data_lp2hs = 0x10,
-+	.data_hs2lp = 0x14,
-+};
-+
-+static int
-+dw_mipi_dsi_phy_px30_get_timing(struct dw_mipi_dsi_rockchip *dsi,
-+				unsigned int lane_mbps,
-+				struct dw_mipi_dsi_dphy_timing *timing)
-+{
-+	*timing = dphy_timing_px30;
-+
-+	return 0;
-+}
-+
-+static int
-+dw_mipi_dsi_phy_get_timing(void *priv_data, unsigned int lane_mbps,
-+			   struct dw_mipi_dsi_dphy_timing *timing)
-+{
-+	struct dw_mipi_dsi_rockchip *dsi = priv_data;
-+
-+	return dsi->cdata->dphy_get_timing(dsi, lane_mbps, timing);
-+}
-+
- static const struct dw_mipi_dsi_phy_ops dw_mipi_dsi_rockchip_phy_ops = {
- 	.init = dw_mipi_dsi_phy_init,
- 	.power_on = dw_mipi_dsi_phy_power_on,
-@@ -1506,6 +1537,7 @@ static const struct rockchip_dw_dsi_chip_data px30_chip_data[] = {
- 
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1000000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
-@@ -1519,6 +1551,7 @@ static const struct rockchip_dw_dsi_chip_data rk3128_chip_data[] = {
- 						RK3128_DSI_FORCETXSTOPMODE), 0),
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1000000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
-@@ -1532,6 +1565,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
- 
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1500000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_rk3288_get_timing,
- 	},
- 	{
- 		.reg = 0xff964000,
-@@ -1541,6 +1575,7 @@ static const struct rockchip_dw_dsi_chip_data rk3288_chip_data[] = {
- 
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1500000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_rk3288_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
-@@ -1554,6 +1589,7 @@ static const struct rockchip_dw_dsi_chip_data rk3368_chip_data[] = {
- 						RK3368_DSI_FORCERXMODE), 0),
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1500000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
-@@ -1642,6 +1678,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
- 		.flags = DW_MIPI_NEEDS_PHY_CFG_CLK | DW_MIPI_NEEDS_GRF_CLK,
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1500000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_rk3288_get_timing,
- 	},
- 	{
- 		.reg = 0xff968000,
-@@ -1671,6 +1708,7 @@ static const struct rockchip_dw_dsi_chip_data rk3399_chip_data[] = {
- 		.dphy_rx_init = rk3399_dphy_tx1rx1_init,
- 		.dphy_rx_power_on = rk3399_dphy_tx1rx1_power_on,
- 		.dphy_rx_power_off = rk3399_dphy_tx1rx1_power_off,
-+		.dphy_get_timing = dw_mipi_dsi_phy_rk3288_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
-@@ -1698,6 +1736,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
- 			     FIELD_PREP_WM16_CONST(RK3568_DSI0_FORCERXMODE, 0)),
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1200000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
- 	},
- 	{
- 		.reg = 0xfe070000,
-@@ -1708,6 +1747,7 @@ static const struct rockchip_dw_dsi_chip_data rk3568_chip_data[] = {
- 			     FIELD_PREP_WM16_CONST(RK3568_DSI1_FORCERXMODE, 0)),
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1200000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
-@@ -1721,6 +1761,7 @@ static const struct rockchip_dw_dsi_chip_data rv1126_chip_data[] = {
- 			     FIELD_PREP_WM16_CONST(RV1126_DSI_FORCETXSTOPMODE, 0)),
- 		.max_data_lanes = 4,
- 		.max_bit_rate_per_lane = 1000000000UL,
-+		.dphy_get_timing = dw_mipi_dsi_phy_px30_get_timing,
- 	},
- 	{ /* sentinel */ }
- };
 -- 
-2.53.0
+2.43.0
 
 
 _______________________________________________
