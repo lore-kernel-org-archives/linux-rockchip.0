@@ -4,92 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EDD6CD6E4A
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 12:34:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93893CD6E79
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 13:53:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=n5fxcSkyNCxto107fOuoFCgv9Uhq8Dey4vmKrJgp3O4=; b=SL0hosMBh2R+hK
-	iznxUzmiHNViWrJPpSbk9qCWW0oBB/VrhPSQecd3z4YsQtRGK0LihZKMWRoIG0GnzkPOh5Jskh8P3
-	BIFjjv3PyDZDXoV9u84yX9N5J4BIvSv8vSE3G6m7MK9GenDoT8QpEpGxzKwYshnHVsAZgc+2KbL6t
-	b+gCH+eEF495ja5bYWUr+ARreAUcFyCaLUVBxLva/PfN503OcOL52daqchDdFVHzFonGKh6mC4DHN
-	jNhhJnZRXwxJ6Mc1RRNun0kvKo6UgaMF3JcxtHOYCsFghbt132sIwF9zN4HQRl1mwJqHvub66Zxhx
-	75JVPPh9Sv8CJrBg9Npw==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=azzETZvy4gN3/95JZq2XQSiUMF2EHaaH7bJYvdGqn7E=; b=AMPpZTohyxZBpk
+	TzWZmk8QuNLrN8Z+6FVRePjcXo7jOxbGYlHKU/o3UPFDmaZgCa0M4RyNNhqSGor7nvpQM47BtwAva
+	q7JNj/MjUiCOMaxpdZ5WW0zYvEiACu9CYiAFszPJaNowPmWZ0ZXc/zp1vTCXvwTWnVsoncSkdl8Qb
+	N2kwNysBTBXGwi8SKRxMVhFARuabFukFXFpH+7qFYl6fM/T385GR0t+Bz/AMNuPE4xE47JMK0I06A
+	CCYjmr973BmYkNJVBNJZk2MCczCc2oTnwQJy4L/x3AM2O9m/qznyHoEcX4U/Io9ppm91i3QFtxnfY
+	wPK6sb/erPyYKDYzESRw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wV7HZ-0000000Gj5M-1hi2;
-	Thu, 04 Jun 2026 12:34:45 +0000
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+	id 1wV8VN-0000000Gpki-06EF;
+	Thu, 04 Jun 2026 13:53:05 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wV7HX-0000000Gj4c-0TXu
+	id 1wV8VK-0000000Gpic-3it1
+	for linux-rockchip@bombadil.infradead.org;
+	Thu, 04 Jun 2026 13:53:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=CoHc1Zlbr3pNOE70Y4k5QiMyrmoz//QwwHMvtTDGYPc=; b=Gkf89oZCQ9vw0WL+Ahcam39n3x
+	PhQCCW9AWGa3QtRp/noIx8siwjglBhKp82v6R4yI5Z7EBZ+IaRt/qKlM34XFORVSdE0BFmdSM4r/C
+	6o1cBJqCS4dnttrARWCFFRaMkILMOxtCR6ZCrORxKWq4UN5I7QkAotj7vFxRqwIPcdTEuvrq3W5LV
+	S8mbfd+kfgbGus65Mx1eeGx/2fqdCxEviN1RoAS/BOeyO7pz5MzCivhPVNkzknWpQGVXufz4pChkq
+	IHYfe7DeaHl/HWcbhei8BH2S7DQV6npF3H+cpBc8zF/9dlMQG0JlYCIhC0q4ZvRmnPYpcrTEVfmIx
+	P7B95+rQ==;
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1wV8VI-0000000EOqA-0WY7
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jun 2026 12:34:44 +0000
-Received: by mail-wm1-x32a.google.com with SMTP id 5b1f17b1804b1-4906869f0cbso8244405e9.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jun 2026 05:34:42 -0700 (PDT)
+	Thu, 04 Jun 2026 13:53:01 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-45eea68dd6fso413497f8f.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jun 2026 06:52:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780576481; x=1781181281; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=rRDPEW9sbPRXAPtuKH5War+e9LS+bqZ/3dB+HlmzKJU=;
-        b=GlpiNOfySueuVZckozEURsRql6p+R3YL7YpMjgfw2L9Upa2aCiWxRyQprf8y0hj9VE
-         8gEvKBRjLJtnYUoBlfYP8P8a0yscMoXWZl90II2YGDu5IpV+aRF8Qx9PUhFGOnyy4Lml
-         XQF38Ai5fq0LhP09Cccu6Qn7Ldr+3M+LcX5uKlW3GhulVstKqtucha7uBz8ANHoXsi9m
-         ClTPsltCO6drTKEH6KNM5DXS/iPjpd8lUq6ACHLTLa5HpqHcnF3NTPDUEQDO/Z6zXrsZ
-         NwT8Ez2zV9jvjb0PcEOO51o3KafOzSElCTPeLznugWZ5wdAlD+ZHwoniqeLj9wQHMe//
-         dpLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780576481; x=1781181281;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1780581178; x=1781185978; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=rRDPEW9sbPRXAPtuKH5War+e9LS+bqZ/3dB+HlmzKJU=;
-        b=dpoUwdZ+8Z/CTm93MSB9WdB6BAtAyu0WIFgIC0oVaulUZ/oPkjcKAZS7xNFn0x4iwj
-         l1RxD7+sJlYh5Eocnzw2fWy7oMqnPfUUgBs5htqrGTsC4IpEOIbIvWzxcLI2gB6y5ppZ
-         lU8s4AsDwO35t5dLQC1EUT/5qykSyf9ZLnSvS37rwsd+DjJKC2AEz1MBGL3J0viwhWOQ
-         Qsf/KwrO7Y4D4xf4T+oUKUT8wCLre25sPCCX9+0WA3YODY+hQnfEJzzLOeYO+u4mSZg5
-         ICKgSSz4mWSE0gROZ6tL4sC9btcKbqF2Gg4HhXuxDGQKH6irtrOHaoSfxbixaSrUQ4pF
-         FKkg==
-X-Forwarded-Encrypted: i=1; AFNElJ9J7XEZj8U47w8qj3sM3LckYoS9OrbOddkeMIlUjiSx4FgxZwXCoQ9WE4oQhCUWIRgkZ1A73NDWogK/YhAQdQ==@lists.infradead.org
-X-Gm-Message-State: AOJu0Yzecvh4LNUR+Ios+FSbKbIC1ic7UzHUIa1OFRXaBS8FZFW/EtC2
-	h1NV9pVL8aLs0gr95IyDo8i1Z57UXHLgmT2zV7LK8iuR5Oj5T7ttl+et
-X-Gm-Gg: Acq92OE/qrlvN3ZRir7hFnnp8ijDyqg+yAharjQqbvO6XsMWx1KWHLtHX8wUpK/GHpL
-	VupaFYw296NHzCjOJpwZVb1qS2z54bJFB0uFOw8BvRb28VmDrOjIAmMOr0p3wSVYKtazrqGLUj2
-	wf4ktq63LthDhZJpkG24qfM0HPa5MxMptZvTOYYR2YKXobm6y0yl9SDy/37megHQl8VVK10AU5Q
-	RqO2/4Yc05PguNXZwx5okEXt2nT19drSKvLT0btwhRWfSNzs++0E+zWMXBDqOjJhBZ4dA5n3Pcm
-	2kdrxvgBaBdPBUuBwhz8jadKjlE/BHQ0WuzrDEbV2EMXTEpQ+zSaSXdaKAmTpLjYrXkve7Y0uxH
-	rBbsmRyhg/NeX+iru62jdvgv7e5TbBJLB6OTJ6u3DKn2Gz7CXUdIqgFp2AdZalTyslng5DGzKQb
-	wv0/2qHBGIuk+J1wTDo8GBQFRlaOS7qjNkCQJNhuQkOJDLpGjQIATsb2hHaTGNcM4=
-X-Received: by 2002:a05:600c:8519:b0:490:bccf:2bd6 with SMTP id 5b1f17b1804b1-490bda66048mr47084715e9.15.1780576480229;
-        Thu, 04 Jun 2026 05:34:40 -0700 (PDT)
-Received: from tiolaptop.tail72d7bd.ts.net ([194.35.121.123])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-490bc413adbsm70036085e9.15.2026.06.04.05.34.38
+        bh=CoHc1Zlbr3pNOE70Y4k5QiMyrmoz//QwwHMvtTDGYPc=;
+        b=joNIkdjRl7S+gB0dfufKhonvst+uO101EcRIpm7cuHbiuCNUfLCP2BCPmxnyfsJTc+
+         kv9xRPKtTCqtJCh1QxaIsmDKlnz2P+K0RMB51P6jSqz6l6HhZfgcfIdmBIUnRpFQLdhb
+         npVMayZxWAPLGlKRnOCmt67PD+O53eK0A5hY0IKaYBiov5fGyQ2DSlPqYE0atqM11Inm
+         EfT0k9hsRzx0/SGb+vu7XLKR1js5P1GfG7IosRuQva2WJMowIWm1oNiNwb5Y5VVY7P06
+         KMG48HotwtrQppHQMv/8v7A/2AhxAmMc7NO1hc6Db0t83Q1I/Kn1BrypFRfflaoqfWZx
+         su5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780581178; x=1781185978;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=CoHc1Zlbr3pNOE70Y4k5QiMyrmoz//QwwHMvtTDGYPc=;
+        b=DrrWmMqBkVoZQQfDMkZwGjU5ctSqUINR8hU8vMGO7Kd2CFrQo0GNbbydcfCSWwqSa0
+         V39iJiRrn8RCIx0nFXLvXjwuU9bbxNkfDO2644PRfgDIKvPYiUwhJp1dpB7gbOOYKYaz
+         el5dIs7j71eYx8DkIlAtR3oYenxz4+v8zsX5Dt3xssjtvl6wnSWKIpW65bH6TMNzu5gu
+         Jxoc4RZNn1pf+pzFjLiU4vjQQaii0PqiofVAq1xP5Z34mG4fa22vYluRFgVb6hBvNeiV
+         mMgBjT4WZBswDVdnjNzU6kFyzMoHUkNiBHmw7apJLC0m64H++MS6HsG6YMj+AAwkoGjF
+         OWDQ==
+X-Forwarded-Encrypted: i=1; AFNElJ+hKE5MyI9BKGpIQAQoOm2GuiF5xylp149oizcMGBQV5SYQ3mD+6DZFQ1LgUuuZr0ySq6RssrvafcncJgm3SQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxHh4SWrn+iAo9jWhc2In7Lr/Lts/U/WxwHiYJ5nH3jFcPp4FnE
+	w6GF2eDzc7HPtJocButnkHRnm1r0qug6LYlRxqXguaog6/L7uQStjpjm
+X-Gm-Gg: Acq92OG+pmgvRKhPWMDS9rQR/M8Tb7jDJFlt/Q0yUzM9oeIrhSyQCwjnXimEez9dLQa
+	7JZLuqoMf5CgFCOxYF+mM5kZM71vB1lFjFyFzePCKXtuOxTZmDY6OruUThX6lDP+e3ZmXammpQq
+	dJ/fkGzqgpi7X1AwYIIE8P1lf4FB0TZ1SLBadZwDZw4yTVFbsmVqQqSiaj58eNlleZY70A6BdEj
+	EpqtObMNXfuj8+zwurC/KG5rPA+Bh2CpYjhlgx6t5FJ+U9vfATOq3kmnC8dsjYcE7TtUzuzrf1m
+	ODMKQKPeOSbK/Nb/1Eaw/42Aq2SWNqwzC58SZwclc5f4r930ftTwXCXiMWLRZ4GxvZvf02MSJjF
+	yO//IRVKjHJSvVj9Z04jt+wPIr40NceatyqLazTmQv4gYm2HcnLeekJo58sSPcrMjZFznHaL0X9
+	58etXdsUBtD7bLbisYHahhuXoWPvPD3043LfvM9ZCMzVbW6ckhdwdwSmZGg8xFjTY=
+X-Received: by 2002:adf:f8c4:0:b0:460:e0f:8d19 with SMTP id ffacd0b85a97d-4602179121cmr10232727f8f.9.1780581177846;
+        Thu, 04 Jun 2026 06:52:57 -0700 (PDT)
+Received: from compiler-rock3b.tailb81abf.ts.net ([2a01:e0a:104a:4d80:be24:11ff:fe12:2776])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4601f0a43e9sm16661068f8f.0.2026.06.04.06.52.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jun 2026 05:34:39 -0700 (PDT)
-From: Diogo Silva <diogompaissilva@gmail.com>
-To: Sandy Huang <hjc@rock-chips.com>,
-	=?UTF-8?q?Heiko=20St=C3=BCbner?= <heiko@sntech.de>,
-	Andy Yan <andy.yan@rock-chips.com>
-Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
+        Thu, 04 Jun 2026 06:52:57 -0700 (PDT)
+From: Midgy BALON <midgy971@gmail.com>
+To: tomeu@tomeuvizoso.net,
+	ogabbay@kernel.org,
+	heiko@sntech.de,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	joro@8bytes.org,
+	will@kernel.org
+Cc: robin.murphy@arm.com,
 	dri-devel@lists.freedesktop.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Diogo Silva <diogompaissilva@gmail.com>
-Subject: [PATCH] drm/rockchip: dsi: Open-code drm_simple_encoder_init()
-Date: Thu,  4 Jun 2026 14:32:25 +0200
-Message-ID: <20260604123224.192543-2-diogompaissilva@gmail.com>
-X-Mailer: git-send-email 2.51.2
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	iommu@lists.linux.dev,
+	linux-kernel@vger.kernel.org
+Subject: [RFC PATCH v3 1/9] accel: rocket: Introduce per-SoC rocket_soc_data
+Date: Thu,  4 Jun 2026 13:52:47 +0000
+Message-Id: <20260604135255.62682-2-midgy971@gmail.com>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20260604135255.62682-1-midgy971@gmail.com>
+References: <20260604135255.62682-1-midgy971@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_053443_163789_C228B7C9 
-X-CRM114-Status: GOOD (  10.46  )
+X-CRM114-CacheID: sfid-20260604_145300_259418_6CFBBF33 
+X-CRM114-Status: GOOD (  15.62  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,50 +126,100 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Remove the dependency on drm_simple_kms_helper by open-coding the
-drm_simple_encoder_init call.
+Add a per-SoC data structure carried in the OF match table, currently
+holding only the NPU AXI address width, and use it for the per-core DMA
+mask instead of a hardcoded 40-bit value.  No functional change: the
+RK3588 AXI master is 40-bit.  This prepares for SoCs with a narrower
+address width.
 
-Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
+Signed-off-by: Midgy BALON <midgy971@gmail.com>
 ---
- drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ drivers/accel/rocket/rocket_core.c |  7 ++++++-
+ drivers/accel/rocket/rocket_core.h | 11 +++++++++++
+ drivers/accel/rocket/rocket_drv.c  |  6 +++++-
+ 3 files changed, 22 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-index 3547d91b25d3..a09b382d208e 100644
---- a/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-+++ b/drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c
-@@ -25,7 +25,6 @@
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
- #include <drm/drm_print.h>
--#include <drm/drm_simple_kms_helper.h>
+diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
+index b3b2fa9ba645a..09c445af7de73 100644
+--- a/drivers/accel/rocket/rocket_core.c
++++ b/drivers/accel/rocket/rocket_core.c
+@@ -7,6 +7,7 @@
+ #include <linux/dma-mapping.h>
+ #include <linux/err.h>
+ #include <linux/iommu.h>
++#include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ #include <linux/reset.h>
+@@ -21,6 +22,10 @@ int rocket_core_init(struct rocket_core *core)
+ 	u32 version;
+ 	int err = 0;
  
- #include "rockchip_drm_drv.h"
++	core->soc_data = of_device_get_match_data(dev);
++	if (!core->soc_data)
++		return dev_err_probe(dev, -EINVAL, "missing SoC match data\n");
++
+ 	core->resets[0].id = "srst_a";
+ 	core->resets[1].id = "srst_h";
+ 	err = devm_reset_control_bulk_get_exclusive(&pdev->dev, ARRAY_SIZE(core->resets),
+@@ -52,7 +57,7 @@ int rocket_core_init(struct rocket_core *core)
  
-@@ -825,6 +824,10 @@ static void dw_mipi_dsi_encoder_enable(struct drm_encoder *encoder)
- 	clk_disable_unprepare(dsi->grf_clk);
- }
+ 	dma_set_max_seg_size(dev, UINT_MAX);
  
-+static const struct drm_encoder_funcs dw_mipi_dsi_encoder_funcs = {
-+	.destroy = drm_encoder_cleanup,
+-	err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(40));
++	err = dma_set_mask_and_coherent(dev, DMA_BIT_MASK(core->soc_data->dma_bits));
+ 	if (err)
+ 		return err;
+ 
+diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
+index f6d7382854ca9..8ee105a0be40e 100644
+--- a/drivers/accel/rocket/rocket_core.h
++++ b/drivers/accel/rocket/rocket_core.h
+@@ -12,6 +12,16 @@
+ 
+ #include "rocket_registers.h"
+ 
++struct rocket_core;
++
++/**
++ * struct rocket_soc_data - per-SoC configuration data
++ * @dma_bits: Physical address width reachable by the NPU's AXI master.
++ */
++struct rocket_soc_data {
++	unsigned int dma_bits;
 +};
 +
- static const struct drm_encoder_helper_funcs
- dw_mipi_dsi_encoder_helper_funcs = {
- 	.atomic_check = dw_mipi_dsi_encoder_atomic_check,
-@@ -840,7 +843,9 @@ static int rockchip_dsi_drm_create_encoder(struct dw_mipi_dsi_rockchip *dsi,
- 	encoder->possible_crtcs = drm_of_find_possible_crtcs(drm_dev,
- 							     dsi->dev->of_node);
+ #define rocket_pc_readl(core, reg) \
+ 	readl((core)->pc_iomem + (REG_PC_##reg))
+ #define rocket_pc_writel(core, reg, value) \
+@@ -31,6 +41,7 @@ struct rocket_core {
+ 	struct device *dev;
+ 	struct rocket_device *rdev;
+ 	unsigned int index;
++	const struct rocket_soc_data *soc_data;
  
--	ret = drm_simple_encoder_init(drm_dev, encoder, DRM_MODE_ENCODER_DSI);
-+	ret = drm_encoder_init(drm_dev, encoder,
-+				&dw_mipi_dsi_encoder_funcs,
-+				DRM_MODE_ENCODER_DSI, NULL);
- 	if (ret) {
- 		DRM_ERROR("Failed to initialize encoder with drm\n");
- 		return ret;
+ 	int irq;
+ 	void __iomem *pc_iomem;
+diff --git a/drivers/accel/rocket/rocket_drv.c b/drivers/accel/rocket/rocket_drv.c
+index 8bbbce594883e..384c38e13acce 100644
+--- a/drivers/accel/rocket/rocket_drv.c
++++ b/drivers/accel/rocket/rocket_drv.c
+@@ -213,8 +213,12 @@ static void rocket_remove(struct platform_device *pdev)
+ 	}
+ }
+ 
++static const struct rocket_soc_data rk3588_soc_data = {
++	.dma_bits = 40,
++};
++
+ static const struct of_device_id dt_match[] = {
+-	{ .compatible = "rockchip,rk3588-rknn-core" },
++	{ .compatible = "rockchip,rk3588-rknn-core", .data = &rk3588_soc_data },
+ 	{}
+ };
+ MODULE_DEVICE_TABLE(of, dt_match);
 -- 
-2.51.2
+2.39.5
 
 
 _______________________________________________
