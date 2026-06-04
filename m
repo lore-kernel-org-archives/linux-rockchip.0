@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E84BCD6E71
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 03:36:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13954CD6E6E
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 03:36:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=+8Veu0j3MrsV1B0LOVXoyciV/ZUXFpemCPx1qGNzJKU=; b=kQvW1GJR9Fuvp/
-	TN9rw1GS2WxxqoCpzD9P4MbBGow4NNKtWPE99p2xxqnIaMK5lcXmP14Mg6xU0Xp2/4Pm5bAnYDr9s
-	Rf/u7qsClgNash87Weh7O3woqEPtlzSYoJFCDxSXNsdEHiJmsMzMko/dEyf8AUc6KregSu4CRfcNg
-	kejMpRqsi3vNB0nYSnKttEB7KzKROU9+kSj+2tjbRvtdragk+IwKDVHpBkn7XLLP91VhNn4v9XyiG
-	/s0BcBFxs5OMP3+PF+zylpey34sRGquEtWOHjK9b4lKqFj8OIWVH8BEezYuTDt2eqewAfT0L3Iz9x
-	j5o3NgBC/pEwYlsG4Ppg==;
+	List-Owner; bh=U4/bUgD9oR5FAhxGgEHGOlej9X1ZgcNbuSRERsUVcYM=; b=O2r2Kaf2DfBKqA
+	1o5AzzflNggV5GDVdYqzJg3F9ec3x54gI3dz8S4LEANxQBp7Rdgb8xJnEuV+1Tg/75Tk5t8Q1RblJ
+	exIrt7m+z472KPM9YtCZWYT76a8ARlTGDmuFtI36gQyQuE2lsScrMzjI9RTK+PvdzLHkowZXbD0ly
+	cDE7Zlj+RqQWVXQ6cPCf4V3fTdkTAdgB9EZ4BqOjej+ac+OFAgzUL67xhNgzoE1C/raZmnrwGlHBb
+	U+c2bzufLWEPcQwPH2Xns28RsqM6Qk9Gj2SFTMNX/Qzlb4I3eNzVYi/VnRg4zCTP2eGtKUDW8hT6A
+	OLjPUvxfvevlWGpIGPXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUysR-0000000G6zH-3Q1h;
-	Thu, 04 Jun 2026 03:36:15 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1wUysW-0000000G72T-3fyx;
+	Thu, 04 Jun 2026 03:36:20 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wUysP-0000000G6xL-2gjp
+	id 1wUysT-0000000G709-2LmW
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jun 2026 03:36:14 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-8422871b42dso118847b3a.3
-        for <linux-rockchip@lists.infradead.org>; Wed, 03 Jun 2026 20:36:13 -0700 (PDT)
+	Thu, 04 Jun 2026 03:36:19 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8423f236418so107815b3a.1
+        for <linux-rockchip@lists.infradead.org>; Wed, 03 Jun 2026 20:36:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780544173; x=1781148973; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1780544177; x=1781148977; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=TEBgbFdEMrwR0Bbx/xOW9IyMneCSJBVo6qr7YB9TYfA=;
-        b=SixoUEN+TCFpremiLpzrUXYoANknE/fn2yl34hC2puYSxMiUNu0Mjz0aQj0bvh+X32
-         tea9YrHyH2O6z0gwr4xP1OG3iZxVK/RDSnkLNOv44VL4Uh+DFIOtKqeqEiFqRk40NfLd
-         ZQEJf+dP7lB40+Gj3SFK+MaTs20SGjXrfY3adcsI+yk19zQCEDe9ic4dM7RET3mpFm4v
-         KEiBeohPfU1OPNVeMfDPmQzauTm15JEImOm8ta+iEfVHVar8fbZ8HKWmKLVBldBS9IoN
-         KXfifqqrk4BDVSH2R7vnbrL1IMBv2QacT2ymUjS3/WVLWmpz3cW662yjENJnBO8HE+Xq
-         P72w==
+        bh=QqiGW/dz4YSeZ3jaBcWBt4ocDaFmKXFEK9JnLN8NHsw=;
+        b=fvMOCxprIGQ0wDZXjvS2h8Imc7cNziD3ELmP6WN7i1ewQqNzD7knUUYlZTAbrn8ywg
+         BqvgXNukS+U/VZvAhTWwyyzDxCS7MpBtVMavxNUvSwwRu+h9/isaPreG/fWtJgnAtDIj
+         lyZVEIQJ1q0yajpo36dFKPSFeIyI1fdulAQ9O9ioF6Aari5jXtEVkYOmy+TNOXUVw7hu
+         J4IL8F2Bt4IzJhMYz9qcEeLdmjKvE8OYbL3P9h7wGDsLcvX4Ke0vPoTetc/unVz0LWqu
+         4GcwRdBdHsFozEUH1Mx3bx0JOpzp3+GzAx1z0g5kLuyOfo/3SJgrGEAQxnUzqiaXTVU2
+         x7FA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780544173; x=1781148973;
+        d=1e100.net; s=20251104; t=1780544177; x=1781148977;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=TEBgbFdEMrwR0Bbx/xOW9IyMneCSJBVo6qr7YB9TYfA=;
-        b=MLOt5RQ1oitbVE2Az1HGmq8EqsPa+IaH/ziDziJ3O5mvvnwnZRPwu1dj38LiUssnJg
-         1S9gQbxw6eM9GDhkjVcnCeDmBFePNnMm3YW7CRtEzZmiV+cQv9t0VopTbMNZR1LzkLHx
-         akJevCXkV9ieQ18lJxvA5x0c+e8oBsfNpXQCUbaH4V3d5+4C07I7/JHvcDws79lSH6A6
-         SvWgdEHeDhEnCeagOX7jaYkLP5Yyzoh7XFk6s0ucKMc6zwggE+IGWyFc7A99I+HCeN9e
-         KhPkbuWqwfaOSar6uTPlbreL1eAmBYPV/n7EFq2EZvkBgXu8P9Niq8E2nHTUwaQJhhao
-         IXwA==
-X-Forwarded-Encrypted: i=1; AFNElJ9zmS84ygkVbHTCuZL66lWxcTOHVJVHpg99nYCVCQEKaTIdfU/jIMw1ilJtBPziq9zee0sth7nhGvBSQwyRTA==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwF67JGxt3GyjMTXbF0hPYtABHImkXI8tkSQhrTWPG8n4HST+K4
-	PdaBF90Pb1BAcN3VqnxozdDjnWoyc5KmVIG4nQ32Kye30FdLit/vhmbN
-X-Gm-Gg: Acq92OGsa4lZa5bQ+rGmFlTkyExK7+dqS1b9MhmcrL2uiRDMxbFHIUMKTEavciDXgsd
-	KytglARMc8fehBW9eu0DRW3D3EFl6mimAaRZwTYUK2OR4DlbCCRBptCK4QjHPPI6mPOPpsDjMgN
-	Bg3kRYFRP3XS7wNiOdkMe1xlFC/1vXqphFYt8CjTqd8jFaowuGRnFsNwZC3HKuA5qDx9h9PWSzZ
-	sbynYUAyIdtFDmZAEogmWJChZzmqJ/leapjRjjSOLmj2+IqrHsPGNYvp55iqBmsjj4/Zgi02qyD
-	yPucVPAwhY42+zWn0OsD1INkSpOTOPhzfwT5NryoC2aLI+4ZEr+Dhd60EkVAo5jqFmg4xRADwI7
-	6J7ePeiQuPM1owOP4qMghK1S8Dz5Nr89O62XLMOJRa9UEQkpwrIiZNZmaCe308ZUg4FOKQPPVWt
-	j5W2CtQq3P2iyjult2hfhAX1yPiCQDxveXyiKnxRvf2c6QBb9cUx5pMokqrUS6Mt7UEAi0
-X-Received: by 2002:a05:6a00:b483:b0:842:2ddb:e303 with SMTP id d2e1a72fcca58-84284da5a08mr6132587b3a.12.1780544172780;
-        Wed, 03 Jun 2026 20:36:12 -0700 (PDT)
+        bh=QqiGW/dz4YSeZ3jaBcWBt4ocDaFmKXFEK9JnLN8NHsw=;
+        b=Zl5XyQfpMdABObMY7JMGaKF3MxXwgGjdyRpgXKfh1fc4fAWWt2PIsBSJm7C+fGgrJO
+         e4bhkGvFxPRAqfMRW7+wthSwfILFOfYuDPs7bK24F7njRYvvJ5N598ut6TjRpCglnChc
+         aUMD1SzeJJZepZuso/T37Hy9HFzzCI9Ow4IAgr18M5XtzZshP07h+8laFrK01/WugTmZ
+         sB/ALuV2DsU3I4l2o0KdzKiR7wPwextu5rFr6JvQYNFXm5SPBSlWgItDz7ttE0pASCVm
+         ksAtuMHgc4XLTuvP98wM0c0+RVGJ++Y+Vbqa/pVMeGUjqBrXkxuorMI+Phe05cX6oXHK
+         XeYA==
+X-Forwarded-Encrypted: i=1; AFNElJ/mpQ08Pj482JwJ0soDaNUw7jqmSN008kUG4Ci6Q3VrpC3BAnuxwvBRwMllUh3iqeegCd+yQGZCr2qeImuBtQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0YxBthxfjytwuzB5dWO7rVPo5A8LCoy5bCZZZ/cUR88iFFlYTWkc
+	oXTcoTc+SZRXPrCssCfCf/G5qHYHGtTU7oo14hGDuRrYbdyyjP+hPXqN
+X-Gm-Gg: Acq92OH2d4NgCKD40zm0/bLJ8KhYloFqLF5jJyYyRxoVATHritoxwPK1V7glkeUKAqE
+	GZiT6qFybyFbc/lLa2R9oANA5RRqYBeYTe+31to7h1W2QPS/03melJcRsMBWaSBQUDRpT2QTHNP
+	Es1mMRxtRPnp3OjZOEVP/uhZYVPQCKCdd0WiTzaO+0LPZiVNH0pWaoHqW9XWmbrS+tor+1igZ/Y
+	12VxbTKFHJDW5PXU4wLASNwGAgAZrf1B1KXW7zNiPdIXGZsyYKMrAyF/sm5qXEsvpCvONUC1XcN
+	ffD74PDCHXC51O1xj0jCvkSETSBfH/jH8YHPlh3g/nqjivNLJaIAmGBY4IEAA2bEsuYKLc0ZEyR
+	L0AoyUteV7UtHfSUrAwnW0IEI9AkHyGBf/KlVvVr4OG+3X+AyZRjdi3vBoG4/iMXSuI+uAclX0l
+	FwsE9XEC4DG44vM1XakNaKwKI5/cY8SGYcpYoEJW9aoDL6D/B61puAtpgd8aERTqJCqV9GQkr+q
+	G+CQL0=
+X-Received: by 2002:a05:6a00:1302:b0:837:80a:5abe with SMTP id d2e1a72fcca58-84284fd0951mr6418129b3a.37.1780544176738;
+        Wed, 03 Jun 2026 20:36:16 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8428221a7e9sm5539745b3a.11.2026.06.03.20.36.09
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8428221a7e9sm5539745b3a.11.2026.06.03.20.36.13
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 03 Jun 2026 20:36:12 -0700 (PDT)
+        Wed, 03 Jun 2026 20:36:16 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Heiko Stuebner <heiko@sntech.de>,
 	Mark Brown <broonie@kernel.org>,
@@ -81,16 +82,16 @@ Cc: Nicolas Frattaroli <frattaroli.nicolas@gmail.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v2 1/3] ASoC: rockchip: rockchip_i2s: Use guard() for spin locks
-Date: Thu,  4 Jun 2026 10:35:51 +0700
-Message-ID: <20260604033554.96996-2-phucduc.bui@gmail.com>
+Subject: [PATCH v2 2/3] ASoC: rockchip: i2s-tdm: Use guard() for spin locks
+Date: Thu,  4 Jun 2026 10:35:52 +0700
+Message-ID: <20260604033554.96996-3-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260604033554.96996-1-phucduc.bui@gmail.com>
 References: <20260604033554.96996-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260603_203613_744932_1DEAF37E 
-X-CRM114-Status: GOOD (  13.66  )
+X-CRM114-CacheID: sfid-20260603_203617_599438_76D851BE 
+X-CRM114-Status: GOOD (  11.05  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,200 +118,54 @@ Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 
 NOTE: This patch is compile-tested only.
 
- sound/soc/rockchip/rockchip_i2s.c | 160 +++++++++++++++---------------
- 1 file changed, 80 insertions(+), 80 deletions(-)
+ sound/soc/rockchip/rockchip_i2s_tdm.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/sound/soc/rockchip/rockchip_i2s.c b/sound/soc/rockchip/rockchip_i2s.c
-index 0a0a95b4f520..5a5087f4ae03 100644
---- a/sound/soc/rockchip/rockchip_i2s.c
-+++ b/sound/soc/rockchip/rockchip_i2s.c
-@@ -127,52 +127,52 @@ static int rockchip_snd_txctrl(struct rk_i2s_dev *i2s, int on)
- 	unsigned int val = 0;
- 	int ret = 0;
+diff --git a/sound/soc/rockchip/rockchip_i2s_tdm.c b/sound/soc/rockchip/rockchip_i2s_tdm.c
+index fc52149ed6ae..3f3db28b8940 100644
+--- a/sound/soc/rockchip/rockchip_i2s_tdm.c
++++ b/sound/soc/rockchip/rockchip_i2s_tdm.c
+@@ -285,9 +285,8 @@ static void rockchip_snd_txrxctrl(struct snd_pcm_substream *substream,
+ 				  struct snd_soc_dai *dai, int on)
+ {
+ 	struct rk_i2s_tdm_dev *i2s_tdm = to_info(dai);
+-	unsigned long flags;
  
--	spin_lock(&i2s->lock);
--	if (on) {
--		ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
--					 I2S_DMACR_TDE_ENABLE,
--					 I2S_DMACR_TDE_ENABLE);
--		if (ret < 0)
--			goto end;
--		ret = regmap_update_bits(i2s->regmap, I2S_XFER,
--					 I2S_XFER_TXS_START | I2S_XFER_RXS_START,
--					 I2S_XFER_TXS_START | I2S_XFER_RXS_START);
--		if (ret < 0)
--			goto end;
--		i2s->tx_start = true;
--	} else {
--		i2s->tx_start = false;
--
--		ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
--					 I2S_DMACR_TDE_ENABLE,
--					 I2S_DMACR_TDE_DISABLE);
--		if (ret < 0)
--			goto end;
--
--		if (!i2s->rx_start) {
-+	scoped_guard(spinlock, &i2s->lock) {
-+		if (on) {
-+			ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
-+						 I2S_DMACR_TDE_ENABLE,
-+						 I2S_DMACR_TDE_ENABLE);
-+			if (ret < 0)
-+				break;
- 			ret = regmap_update_bits(i2s->regmap, I2S_XFER,
- 						 I2S_XFER_TXS_START | I2S_XFER_RXS_START,
--						 I2S_XFER_TXS_STOP | I2S_XFER_RXS_STOP);
-+						 I2S_XFER_TXS_START | I2S_XFER_RXS_START);
- 			if (ret < 0)
--				goto end;
--			udelay(150);
--			ret = regmap_update_bits(i2s->regmap, I2S_CLR,
--						 I2S_CLR_TXC | I2S_CLR_RXC,
--						 I2S_CLR_TXC | I2S_CLR_RXC);
--			if (ret < 0)
--				goto end;
--			ret = regmap_read_poll_timeout_atomic(i2s->regmap,
--							      I2S_CLR,
--							      val,
--							      val == 0,
--							      20,
--							      200);
-+				break;
-+			i2s->tx_start = true;
-+		} else {
-+			i2s->tx_start = false;
-+
-+			ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
-+						 I2S_DMACR_TDE_ENABLE,
-+						 I2S_DMACR_TDE_DISABLE);
- 			if (ret < 0)
--				dev_warn(i2s->dev, "fail to clear: %d\n", ret);
-+				break;
-+
-+			if (!i2s->rx_start) {
-+				ret = regmap_update_bits(i2s->regmap, I2S_XFER,
-+							 I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-+							 I2S_XFER_TXS_STOP | I2S_XFER_RXS_STOP);
-+				if (ret < 0)
-+					break;
-+				udelay(150);
-+				ret = regmap_update_bits(i2s->regmap, I2S_CLR,
-+							 I2S_CLR_TXC | I2S_CLR_RXC,
-+						 I2S_CLR_TXC | I2S_CLR_RXC);
-+				if (ret < 0)
-+					break;
-+				ret = regmap_read_poll_timeout_atomic(i2s->regmap,
-+								      I2S_CLR,
-+								      val,
-+								      val == 0,
-+								      20,
-+								      200);
-+				if (ret < 0)
-+					dev_warn(i2s->dev, "fail to clear: %d\n", ret);
-+			}
+-	spin_lock_irqsave(&i2s_tdm->lock, flags);
++	guard(spinlock_irqsave)(&i2s_tdm->lock);
+ 	if (on) {
+ 		if (substream->stream == SNDRV_PCM_STREAM_PLAYBACK)
+ 			rockchip_enable_tde(i2s_tdm->regmap);
+@@ -313,7 +312,6 @@ static void rockchip_snd_txrxctrl(struct snd_pcm_substream *substream,
+ 						I2S_CLR_TXC | I2S_CLR_RXC);
  		}
  	}
--end:
--	spin_unlock(&i2s->lock);
-+
- 	if (ret < 0)
- 		dev_err(i2s->dev, "lrclk update failed\n");
+-	spin_unlock_irqrestore(&i2s_tdm->lock, flags);
+ }
  
-@@ -184,53 +184,53 @@ static int rockchip_snd_rxctrl(struct rk_i2s_dev *i2s, int on)
- 	unsigned int val = 0;
- 	int ret = 0;
+ static void rockchip_snd_txctrl(struct rk_i2s_tdm_dev *i2s_tdm, int on)
+@@ -587,12 +585,11 @@ static int rockchip_i2s_trcm_mode(struct snd_pcm_substream *substream,
+ 				  unsigned int fmt)
+ {
+ 	struct rk_i2s_tdm_dev *i2s_tdm = to_info(dai);
+-	unsigned long flags;
  
--	spin_lock(&i2s->lock);
--	if (on) {
--		ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
--					 I2S_DMACR_RDE_ENABLE,
--					 I2S_DMACR_RDE_ENABLE);
--		if (ret < 0)
--			goto end;
--
--		ret = regmap_update_bits(i2s->regmap, I2S_XFER,
--					 I2S_XFER_TXS_START | I2S_XFER_RXS_START,
--					 I2S_XFER_TXS_START | I2S_XFER_RXS_START);
--		if (ret < 0)
--			goto end;
--		i2s->rx_start = true;
--	} else {
--		i2s->rx_start = false;
--
--		ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
--					 I2S_DMACR_RDE_ENABLE,
--					 I2S_DMACR_RDE_DISABLE);
--		if (ret < 0)
--			goto end;
-+	scoped_guard(spinlock, &i2s->lock) {
-+		if (on) {
-+			ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
-+						 I2S_DMACR_RDE_ENABLE,
-+						 I2S_DMACR_RDE_ENABLE);
-+			if (ret < 0)
-+				break;
+ 	if (!i2s_tdm->clk_trcm)
+ 		return 0;
  
--		if (!i2s->tx_start) {
- 			ret = regmap_update_bits(i2s->regmap, I2S_XFER,
- 						 I2S_XFER_TXS_START | I2S_XFER_RXS_START,
--						 I2S_XFER_TXS_STOP | I2S_XFER_RXS_STOP);
-+						 I2S_XFER_TXS_START | I2S_XFER_RXS_START);
- 			if (ret < 0)
--				goto end;
--			udelay(150);
--			ret = regmap_update_bits(i2s->regmap, I2S_CLR,
--						 I2S_CLR_TXC | I2S_CLR_RXC,
--						 I2S_CLR_TXC | I2S_CLR_RXC);
--			if (ret < 0)
--				goto end;
--			ret = regmap_read_poll_timeout_atomic(i2s->regmap,
--							      I2S_CLR,
--							      val,
--							      val == 0,
--							      20,
--							      200);
-+				break;
-+			i2s->rx_start = true;
-+		} else {
-+			i2s->rx_start = false;
-+
-+			ret = regmap_update_bits(i2s->regmap, I2S_DMACR,
-+						 I2S_DMACR_RDE_ENABLE,
-+						 I2S_DMACR_RDE_DISABLE);
- 			if (ret < 0)
--				dev_warn(i2s->dev, "fail to clear: %d\n", ret);
-+				break;
-+
-+			if (!i2s->tx_start) {
-+				ret = regmap_update_bits(i2s->regmap, I2S_XFER,
-+							 I2S_XFER_TXS_START | I2S_XFER_RXS_START,
-+							 I2S_XFER_TXS_STOP | I2S_XFER_RXS_STOP);
-+				if (ret < 0)
-+					break;
-+				udelay(150);
-+				ret = regmap_update_bits(i2s->regmap, I2S_CLR,
-+							 I2S_CLR_TXC | I2S_CLR_RXC,
-+							 I2S_CLR_TXC | I2S_CLR_RXC);
-+				if (ret < 0)
-+					break;
-+				ret = regmap_read_poll_timeout_atomic(i2s->regmap,
-+								      I2S_CLR,
-+								      val,
-+								      val == 0,
-+								      20,
-+								      200);
-+				if (ret < 0)
-+					dev_warn(i2s->dev, "fail to clear: %d\n", ret);
-+			}
- 		}
- 	}
--end:
--	spin_unlock(&i2s->lock);
-+
- 	if (ret < 0)
- 		dev_err(i2s->dev, "lrclk update failed\n");
+-	spin_lock_irqsave(&i2s_tdm->lock, flags);
++	guard(spinlock_irqsave)(&i2s_tdm->lock);
+ 	if (i2s_tdm->refcount)
+ 		rockchip_i2s_tdm_xfer_pause(substream, i2s_tdm);
  
+@@ -614,7 +611,6 @@ static int rockchip_i2s_trcm_mode(struct snd_pcm_substream *substream,
+ 
+ 	if (i2s_tdm->refcount)
+ 		rockchip_i2s_tdm_xfer_resume(substream, i2s_tdm);
+-	spin_unlock_irqrestore(&i2s_tdm->lock, flags);
+ 
+ 	return 0;
+ }
 -- 
 2.43.0
 
