@@ -4,52 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E21FCD6E57
-	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 08:59:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D7EACD6E57
+	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 09:27:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=whLXlQLWuDkXyU15JBuE46kFdjs51YjUJs9SQZegNGY=; b=qdkiv3IrV2e4Ka
-	ia+iyf+gqelrx/2wBc6lmMUYFrm6HTE9GYDq7WhXEjpTzrR+FkbVQNSybmNmnMxTy9j6VAKdkY7iO
-	2z0ukdkXvA9EV59svg+svb75OVKclnMps8RzbVowQP/EF3MCxn4svaMcNLxTRmApfPYh7cF75XncJ
-	PT5nyXh205/meXD7vQPbs78n0VPWuoU06go+HQ/owb2ODgWFBpXS02Bg4bmGacmIeGyvhQ6UqiQva
-	7Q1U42pi1WuBKD2jpWb6ebEgOYMrtBrPs/3Z8v5ptdr8/MmX2mjOWrTPQxpySnA+PvR7Jw7EMCxB9
-	TtzqP0TmzrOXHk8XhrcQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Y2UDyMdqa1XnmugksNo8lC4k67vsTu23nV7S/Gu6cew=; b=afsHAZpCWcFOmw
+	NxdKf5IH6bJ9oCECR4n6hqAXvGAak66Ax9gUTLQ3u1SMDYDtoD/+wja9z+VdTHh3Wkzgk4GteuJIh
+	/r/nnnsB2yjbJ97OUFTx/nqh4lWzBN4fqlIKa/q1jekzbJiGBC3utqVoT1q3Bfb0nAP8B8Ta9kYEz
+	p7b21bxBCWjRx91+hq7750Rnaa88VmCmxJYUXoywy8Ssmb9ypvAb5nvgFScvEbEwoYhD1ZQ5LZaEw
+	I0cg3UiPi0cAtvH2iI+dgQ/bR52WxF2mfKXv1cyj7Usa45N3VsQZeYMPsR5lwLxuXidmm8nKdCmL+
+	Ve7CGGsAsVwoOFBFABUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wV3vC-0000000GS4T-0Ihi;
-	Thu, 04 Jun 2026 08:59:26 +0000
+	id 1wV4MU-0000000GV4K-1AuS;
+	Thu, 04 Jun 2026 09:27:38 +0000
 Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wV3v9-0000000GS2e-1Kl3;
-	Thu, 04 Jun 2026 08:59:24 +0000
+	id 1wV4MS-0000000GV3r-2gVY;
+	Thu, 04 Jun 2026 09:27:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
 	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Reply-To;
-	bh=2as4PCRWsv024ZlqsXEqA3VU/UiipqE5hLi9l4v3VV0=; b=tpOKHMCzOlrTYuEe6r9BtA84Uf
-	HE3p6z9xrQ9DgQUtIys9Xr0eyg6UBq1xAwd82I8kflHagSdSQH58knxLzSnde24ThZve7tCiUqPoy
-	85Ybm5DcoDOs6fHpFfp8pyZ3mM7OIAM5CvZ0S1ekEFbQ6bU8jRXLHWec+0tlKH0k0x1XRsjgmQg5b
-	NCgSpv/4KZnY08KejmmGp49UI7vnNNMxJiR59N7hN3iDrGFtYgaxYrb6DsoA1KLhePOkdoNQwizWO
-	uox35V31a8Ql05pPuUlBSAtp0NV0GcS94CiW2acWw0s5KbzWy3njN6OdDsOoXGmn7D1UB0cVpiu9U
-	mtHS++tw==;
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=+JPtmIpKJxkCCHhFEXHwMh6xG5uc6TqOuOvNrIN6iU0=; b=0TD4G51dpPFZcOXT6rd4xHwOJe
+	6bN/A4XEMo3hrWK7YcH7kDTvJiibpCuKWtLMUnwbsWA02kDJ+4D/oFdX1lmkCY6JZPvnFRDHD/Rbe
+	JJS/ieamJWI9EFIvTzG1l0uHJyTSMTGbqVnf9NkFfb3TtecI2W76uRl7xgt+vne8EwL0DRcohm1P7
+	vmjo9eDBTZhPXsLvbshVigoJTLVg4zty3kTb6PNESl8YLQnCk+WTdQdVPfZPLsBj460ZcKVDI9yy9
+	7wZRGS1cPrQfZazsToBukBxlaGro9OyvIIc0t5mTSXlD6k4knlsqpwO2fi6k+68KHpOx+Oiv9kBu8
+	gA2d9YtQ==;
 From: Heiko Stuebner <heiko@sntech.de>
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: rosenp@gmail.com, linux-arm-kernel@lists.infradead.org,
- linux-rockchip@lists.infradead.org, linux-clk@vger.kernel.org,
- kernel test robot <lkp@intel.com>
-Subject: Re: [PATCH] clk: rockchip: don't COMPILE_TEST builds on M68K
-Date: Thu, 04 Jun 2026 10:59:19 +0200
-Message-ID: <36034140.aRNtrjHk3s@phil>
-In-Reply-To: <CAMuHMdUAoUmCNMBVRGgZzSt9SbZqV6SVW2brkvsBKuHrfWHKvw@mail.gmail.com>
-References: <20260603213726.1025094-1-heiko@sntech.de>
- <CAMuHMdUAoUmCNMBVRGgZzSt9SbZqV6SVW2brkvsBKuHrfWHKvw@mail.gmail.com>
+To: arm@kernel.org
+Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+Subject: [GIT PULL] Rockchip arm32 fix for the current 7.1-rc
+Date: Thu, 04 Jun 2026 11:27:34 +0200
+Message-ID: <4474108.o2A3GueYyp@phil>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_015923_354951_24E28B3C 
-X-CRM114-Status: GOOD (  16.82  )
+X-CRM114-CacheID: sfid-20260604_022736_684329_0392E24C 
+X-CRM114-Status: UNSURE (   7.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -61,47 +58,54 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgR2VlcnQsCgpBbSBEb25uZXJzdGFnLCA0LiBKdW5pIDIwMjYsIDA5OjU2OjA0IE1pdHRlbGV1
-cm9ww6Rpc2NoZSBTb21tZXJ6ZWl0IHNjaHJpZWIgR2VlcnQgVXl0dGVyaG9ldmVuOgo+IE9uIFdl
-ZCwgMyBKdW4gMjAyNiBhdCAyMzozNywgSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4g
-d3JvdGU6Cj4gPiBSb2NrY2hpcCBjbG9jayBkcml2ZXJzIHVzZSBoYXNoLXRhYmxlcyB3aXRoIGVu
-dW1zIGFzIGlucHV0cy4KPiA+Cj4gPiBNNjhLIGRvZXMgaW50ZXJlc3RpbmcgdGhpbmdzIGluIGl0
-cyBfX2hhc2hfMzIoKSBpbXBsZW1lbnRhdGlvbiwgY2FzdGluZwo+ID4gdGhhdCB1MzIgaW5wdXQg
-dG8gYW4gdTE2IGFuZCB0aGVyZWZvcmUgdHJpZ2dlcmluZyB3YXJuaW5ncyBsaWtlOgo+ID4KPiA+
-ICAgIGRyaXZlcnMvY2xrL3JvY2tjaGlwL2Nsay1yazM1MjguYzogbm90ZTogaW4gaW5jbHVkZWQg
-ZmlsZSAodGhyb3VnaCBpbmNsdWRlL2xpbnV4L2hhc2guaCwgaW5jbHVkZS9saW51eC9zbGFiLmgp
-Ogo+ID4gICAgICBhcmNoL202OGsvaW5jbHVkZS9hc20vaGFzaC5oOjU3OjI0OiBzcGFyc2U6IHNw
-YXJzZTogY2FzdCB0cnVuY2F0ZXMgYml0cyBmcm9tIGNvbnN0YW50IHZhbHVlICgxODcyMCBiZWNv
-bWVzIDg3MjApCj4gPiAgICAgIGFyY2gvbTY4ay9pbmNsdWRlL2FzbS9oYXNoLmg6NTc6MjQ6IHNw
-YXJzZTogc3BhcnNlOiBjYXN0IHRydW5jYXRlcyBiaXRzIGZyb20gY29uc3RhbnQgdmFsdWUgKDFl
-OGU4IGJlY29tZXMgZThlOCkKPiA+Cj4gPiBBcyBNNjhLIHNob3VsZCBuZXZlciBldmVyIG5lZWQg
-Um9ja2NoaXAgY2xvY2sgZHJpdmVycywgc2ltcGx5IGRpc2FibGUKPiA+IGNvbXBpbGUtdGVzdHMg
-Zm9yIE02OEsuCj4gPgo+ID4gRml4ZXM6IDdlZGZiN2ZiNThlZSAoImNsazogcm9ja2NoaXA6IGFs
-bG93IENPTVBJTEVfVEVTVCBidWlsZHMiKQo+ID4gUmVwb3J0ZWQtYnk6IGtlcm5lbCB0ZXN0IHJv
-Ym90IDxsa3BAaW50ZWwuY29tPgo+ID4gQ2xvc2VzOiBodHRwczovL2xvcmUua2VybmVsLm9yZy9v
-ZS1rYnVpbGQtYWxsLzIwMjYwNTE5MTQzNC5QUWtqMlJraS1sa3BAaW50ZWwuY29tLwo+ID4gU2ln
-bmVkLW9mZi1ieTogSGVpa28gU3R1ZWJuZXIgPGhlaWtvQHNudGVjaC5kZT4KPiAKPiBUaGFua3Mg
-Zm9yIHlvdXIgcGF0Y2ghCj4gCj4gPiAtLS0gYS9kcml2ZXJzL2Nsay9yb2NrY2hpcC9LY29uZmln
-Cj4gPiArKysgYi9kcml2ZXJzL2Nsay9yb2NrY2hpcC9LY29uZmlnCj4gPiBAQCAtNCw2ICs0LDcg
-QEAKPiA+ICBjb25maWcgQ09NTU9OX0NMS19ST0NLQ0hJUAo+ID4gICAgICAgICBib29sICJSb2Nr
-Y2hpcCBjbG9jayBjb250cm9sbGVyIGNvbW1vbiBzdXBwb3J0Igo+ID4gICAgICAgICBkZXBlbmRz
-IG9uIEFSQ0hfUk9DS0NISVAgfHwgQ09NUElMRV9URVNUCj4gPiArICAgICAgIGRlcGVuZHMgb24g
-IU02OEsKPiA+ICAgICAgICAgZGVmYXVsdCBBUkNIX1JPQ0tDSElQCj4gPiAgICAgICAgIGhlbHAK
-PiA+ICAgICAgICAgICBTYXkgeSBoZXJlIHRvIGVuYWJsZSBjb21tb24gY2xvY2sgY29udHJvbGxl
-ciBmb3IgUm9ja2NoaXAgcGxhdGZvcm1zLgo+IAo+IE9idmlvdXNseSB0aGlzIGlzIHRoZSB3cm9u
-ZyBmaXggOy0pCj4gCj4gSSBoYXZlIHNlbnQgYSBiZXR0ZXIgb25lLCBmaXhpbmcgdGhlIGlzc3Vl
-IGZvciBldmVyeSB1c2VyOgo+ICJbUEFUQ0hdIG02OGs6IGhhc2g6IFVzZSBsb3dlcl8xNl9iaXRz
-KCkgaGVscGVyIgo+IGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL2I1NWU5YmQwNTMyYzBjYWQ1MTk4
-MDljODZlMGE4NDAwMDYwZDc1YTEuMTc4MDU1OTU2MS5naXQuZ2VlcnRAbGludXgtbTY4ay5vcmcK
-Cm9oIG5pY2UgLSBmaXhpbmcgdGhlIGFjdHVhbCBwcm9ibGVtIGluc3RlYWQgb2Ygd29ya2luZyBh
-cm91bmQgdGhlCmlzc3VlLiBJIGhhZCBubyBjbHVlIGFib3V0IG02OGsgYW5kIHRodXMgbm8gaWRl
-YSBvZiBob3cgdG8gdGVzdAphbnl0aGluZywgc28gd2VudCBmb3IgdGhlIGVhc3ggImZpeCIgOi0p
-CgoKU28gdGhhbmtzIGZvciBsb29raW5nIGludG8gdGhhdApIZWlrbwoKCgpfX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hpcCBtYWlsaW5n
-IGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8vbGlzdHMuaW5m
-cmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+Hi SoC maintainers,
+
+please find a below a fix for an issue in the ARCH code for 32bit
+Rockchip SoCs, that appeared with 7.1-rc .
+
+
+Please pull
+
+Thanks
+Heiko
+
+
+The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
+
+  Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
+
+are available in the Git repository at:
+
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.1-rockchip-arm32fixe
+
+for you to fetch changes up to 6fc5666aa576c6c3bec256fa31d72653210319d5:
+
+  ARM: rockchip: keep reset control around (2026-05-26 23:20:39 +0200)
+
+----------------------------------------------------------------
+A change in 7.1-rc improved the general handling for reset controllers
+using SRCU, but at the same time broke really early users before work-
+queues are available.
+
+So adapt the SMP bringup to keep the core-resets around, instead
+of aquiring/releasing them on ever SMP action.
+
+----------------------------------------------------------------
+Heiko Stuebner (1):
+      ARM: rockchip: keep reset control around
+
+ arch/arm/mach-rockchip/platsmp.c | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
