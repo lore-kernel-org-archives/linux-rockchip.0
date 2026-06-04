@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56146CD6E4A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3694BCD8C80
 	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 13:53:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
@@ -12,76 +12,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NBGS7i68gOAiZ+oykmeYw1pLWrmaXa33INZVv3LKcPU=; b=1+H1IFsOH41vPq
-	JM4MbRTz1ORVV/eg5ddt12XdQtwlDrct940Q3Zx5yzbNLMwy5CX3w4il2iTkamhAIsrkf+4B4kVX0
-	ExkoSSzHFMt6SzvFOv3TMiD1J7tmt8xrO8fYf1zZx0IqJUssdBLY9cCpYOCvs4YeuILpkXSz1ZE/n
-	NfJXBsR8xLwMzd7BeKrmJxOO/D+tWGgl1/BJEIK1xpEwoUIqBpGAE0+uzTdzsR0ZEAe5Cgfmz4C+r
-	yjONWteXBgWWwmAKkERTZYUrQ+mg3WdlSoZYocS0H4BqsZOmMVubstRYWF7hnhkfMztgeHzmhGbva
-	yRDMQKNW4lYAEttYuHPA==;
+	List-Owner; bh=svGHBPO9LjRV53ftuUhVI1reR4l16KhP2WdKJYLm7vU=; b=2tGf5qiFn8JgRd
+	3We/xt6vo61zfmdbRzBieaV3Tg9O0DiilMj/HRI0DrkQqIlAftrw9MiiWo8a34NhB853VZl/v0r26
+	CUOXsr0GXR9gSh6iA4EnDidspv9njAVT7D8DsABFChJPoKpOHV7bTTba9MjHvwSfqCD2Dg/PvvwHH
+	jlHjEME24dyIhz6IfalSVk1w2sFsovhp7CnQhPUD+9tQd/kDXJtowCiGPmypWuQDS76YAAy4EZod6
+	Y+U4ik81C58oe/1cvF+M8phgZolNvzg0SyNDtPBG0gsN8AqpeKlhzxRHTiaa0FlO+GIaKIeKJmsXB
+	nIj0ajB9BIapoKUNnuZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wV8VR-0000000Gprp-0L3k;
-	Thu, 04 Jun 2026 13:53:09 +0000
+	id 1wV8VQ-0000000Gpr7-3VMA;
+	Thu, 04 Jun 2026 13:53:08 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wV8VP-0000000Gpmj-0f6c
+	id 1wV8VO-0000000GplA-0mh1
 	for linux-rockchip@bombadil.infradead.org;
-	Thu, 04 Jun 2026 13:53:07 +0000
+	Thu, 04 Jun 2026 13:53:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=7zTkYHigKQy3WkeWXyJsWd48o8A6LM0P0gm1ZhPIld0=; b=g4jznLxKBErpok38F7qmztdi40
-	dWJVjafh6M1eo1jfUQKidp6V7f+NxvkWF7Fq9wmWwmfMxAR8dtSlWULtu+KP8ViORbEoqU0Gokiax
-	1ohWEoce6gnf6Mw6TPHx/YlRpKG0dZkSBPufwW6SAqOIfHDoLHo+chldpqRtf+dHcvmsVzZp6b+kL
-	v+FG2y92JSRsshIBs6h+zWAoTScGCV+BZZNqVeqnE4pEwHwecRRMO+1zICXtKPnmM0RyQVPnwBY1R
-	KJSpNErc/1NB9kJ2NBgOWLlYU+mvtcVYowCdrlgptzRIjlEhmCS2PnxJ7RsAQStiODp0+A/rU1XjH
-	j4Ad/bbg==;
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	bh=peByEg9qkw/NuaYmCEAUEFnpiWasS3prWUS+hf7e7ys=; b=kz3w2rHFxLkfMYAtPDCtk/TtjJ
+	pmm3MO8t7o1Uv1lkKsRu5AJCrT3LmGd8PrsH5YxDsGXk8kbERBRADbPY84cCgC7TmqtMWpkSBGZQ3
+	e+fhRToP+Y9HbsebHmQ2CtRMyMP0PnGw3+538003OrD+zFaQJ23xOlpArq2FQN9/AtMG8lOniyw38
+	6jLYEZo94wrx8sUbmL+MZCTZaugkX87+R1lopnaAjRG8MhLtK8g09NHps7aUt405wkMv3aDq7CF+e
+	AF6LGiBZ149X7bfGlh5ulrrlVpe/AGUa3htMSnUHT/D/Mq6BVQFnvBR18tqy8FYotraZeAmA1zs/G
+	UHy6boxw==;
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wV8VL-0000000EOsh-3lBb
+	id 1wV8VL-0000000EOrt-0edv
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jun 2026 13:53:05 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-45ee6d32402so421629f8f.1
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jun 2026 06:53:03 -0700 (PDT)
+	Thu, 04 Jun 2026 13:53:04 +0000
+Received: by mail-wr1-x429.google.com with SMTP id ffacd0b85a97d-45ee6d32402so421622f8f.1
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jun 2026 06:53:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780581182; x=1781185982; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1780581181; x=1781185981; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=7zTkYHigKQy3WkeWXyJsWd48o8A6LM0P0gm1ZhPIld0=;
-        b=f+y2PzK+8FJpj1XF7R/WEwD8UJ0ARuCSe47N3XI9R0DOViLEGAHFlygb/BrgLKMXEt
-         L9JrEK8U0ChlCVmqUmwealnC5Qm09sAW8IzZZ14kxuZTx5hgWGw43eA/fm15oxZjvgCO
-         eCW6SPaymXRyhH7fZn3jZRMxmspyXxbh+44JmFoUmLLwJEkrfdPjcJ65kDJ8lAgbPP91
-         gvay79QCUIpwTXPvNgOxp1gO9uaqwJCgGjZSyw6jmvBY3zCuG1CI/iWQa708RNjwywYb
-         GBi9j5ETyhzD/BX5v7lYNMLSNaD2Cw8JJeuqWm9ho23jHSGtx7aX4jeBgoowErx1pnUM
-         hKfw==
+        bh=peByEg9qkw/NuaYmCEAUEFnpiWasS3prWUS+hf7e7ys=;
+        b=RYrr0ULX1/Nh8lBb1DyM0bNfsYr6ovXBpJb5QmJf+QQoHRwY3mSJDJCPl7OHUvidNO
+         YrJZltwtgLrf6CgvcQyplfYj77ZQqvAC+nXoOSahSYkX7Ug2oXGmb3U7/7Wa809wx4Y5
+         kEYRzbZr2gSI4OWYg/WxmFIaW8NbKnt2doILeULhVu9bSR4ZYe4QSptnXJrV1dET9wOF
+         G0nNf9LV4Nmi2MHj61PDolssK/1whoBnizI45Oy3y+ZKQ6gKXGDbEunTU8SSObO/vMmw
+         rtwpH1JFADBN3Ba6fOdMaBdi3uLG9UT0ZkdVbrNkLmqM/8+08C4SIvwzyE4UvIHtTYib
+         u1CQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780581182; x=1781185982;
+        d=1e100.net; s=20251104; t=1780581181; x=1781185981;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to;
-        bh=7zTkYHigKQy3WkeWXyJsWd48o8A6LM0P0gm1ZhPIld0=;
-        b=SVIeEhmePfhSyLtygysgRvPhAxyepV05t5RIecrU+RNieJKV1EfxzQshl6eHRGJu5Z
-         Q6PQoU7LDdq73v0Fd5FOvx6f14Sa38pAYL41NnFkBfb5GZup6CBnr+po5cLk7e6XDnzV
-         a63blm0qEr1CoAYCTpvXga/5aV0BbfC+DABZhaGHUeR9v2cFlHCovJ3SFwnrf7mcWWZB
-         AXt2ZnpVCgkN3CuiMBl2cz9aepdoMP8wF+v5yZY0cZaEL9BWja8Sq09+b88mnqJYvXGq
-         aAiSDsf9QWKqiNT1JIcO7qt7+SDUnqIEBzQSk6ILWigMgC1qQhS3aVhpilKauS9dj+Ag
-         093A==
-X-Forwarded-Encrypted: i=1; AFNElJ9cz35iNAOByKngInD21Kx2JeswxGTpLuWdBGtohgjRkEx3i7YS+qwe6J+fFAPD+2zQbd4s3Oviy1uwdImriw==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwSbgalIu8/3hcy/2+weO9GLzxjftxafhut9UIIP10dA0aKvv5p
-	Tnz4PUumGFcpYH5fyYl+mDH7sYtQO4QxSf2I/RjySSPtTr1XD/DGMPTV
-X-Gm-Gg: Acq92OHpSt6oO4yOz0kZ/4amWiC1W9K3r6y0AYtT7ZtF4xoKeU9Oq2t2vc9FhsC0X67
-	HMNSta1mxmK8FCZo+yALZrXBB8XSnORjHDKynBQHLJMSJuGJAgcpP0hxgZxYNTlSmCcLUIZwaDt
-	/ThXPfmf5UImUbWg4++km9K0Pq2MiqyUbpJuQUQFkFcW0xsnJ6raJy5ac6Jwg+ek1+RyCYBp/8X
-	6VdA5x22GztIIayiz7B0hRqUNmMi1+K4ilfWI0CSul3pr1fkEiDfMSUoKMlsQ29BGTUXDiSc4Rc
-	kNiK8XYoT0c54wfmt6n8KGzv+vIgw5FApaW2A5rq54Yl5iN7sACdtvqHOZyP94ItEM1cA+eSJuF
-	WyEOWVoaV6FESFbLTG85PvsMG/mdGzAyA9IhpYvd0LPnG0zdlCeL1YHlk6YTPIp17rnzeiTrMAL
-	XyTy67K1KzRdJV1pftmIf9BJUrqZo7OvLIRarweE/Qzx95rGtaTHqJq0SGzSEin7M=
-X-Received: by 2002:adf:e00c:0:10b0:45e:f381:cd7f with SMTP id ffacd0b85a97d-460217831bamr9227520f8f.5.1780581182173;
-        Thu, 04 Jun 2026 06:53:02 -0700 (PDT)
+        bh=peByEg9qkw/NuaYmCEAUEFnpiWasS3prWUS+hf7e7ys=;
+        b=DiIuqEnDuKOUxVhjdHbgepa3J6DKcEaD8GckrtwUG48q1xxwqfSBOMkFZsa6Hv1+36
+         MF8OIj8RTepIcJfg5UJe9/AphFPfPBkrniUJ6si9j4U0Chp6Ly1kjPr56r0u/LmB0JcV
+         eimnSpcrG5YXOBgGbd6Ia3YzSh/bStTCBXw65ALbPp9HMADBrc0z1w5oneTjjt6Q1ghO
+         J0Dfu7CHHWK0eaFZO3GPnoOLmsr76fpktZVb9TsHGa020rtT3OwZpXhLj+TlTYVqNDqi
+         jceosaU6kH1pU8C4pmyQldEDAaxnEHizFYuVtTm7dnU78V+AtJfLM6j1+pK1+G00Eesu
+         YDfw==
+X-Forwarded-Encrypted: i=1; AFNElJ8ty5PqoR7KCNhgh0J5gZbQPOmmJwW/pn1ryu9G7262g9HXjccU4C35S/anHrx6o+1RQXXC+/dPvEtx7mrF1A==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yzt3EAm1nwbC4EviHKc4yzOkVbKuQ5sb+7BLjAAl7GSdzGqXnaX
+	MjErRZWoQunN+/VqBzvlGWEbNHeDNnS2AoId0wR6+PbFpO81w2IGn2Ty
+X-Gm-Gg: Acq92OHSiTbF4tP9FtfWfLiJcxJ4tf7Wy/pxjL0EyNmHFw+pw3bO61nNK8f6NkTO24I
+	ix06UQISabBMVOq0eWZGHeN2axr7KhIa/NrfTyUlnFUfV7fZlwcYp1tQlhKxYAcDqH6JzLtd1NN
+	JRzEFFgcGK1N8X6obUqTrGqgV7LPRU1I2FsIp/8nlO21hryRCB0tVUybV1LVMnJFCVYI1j6oRU5
+	WZxus2qUNkNA1TdDq825wx1wt/cE/R6M81H8IcnxPiR/Uu++foIDgX17f81areD/kNlndIeZjz/
+	jOfXMPUDqUwfHk/6QyPsc8zWAeQ+dqyM/AJ29R8/mDIdI42iGRN7zs8jzLIaveoni7a3iPxd6M3
+	5JVIPVFmlVDcDTKj57I5erc54cBp5qYMg+hl7Oi1SD2qlgVErStLt60wx0PH6PemQoajgwrqQPm
+	8Zc/ollNrBCp2pthqQRv+dc9rTxYx+g45WaC5Ou6DMOIDWnb7VorIpb+lr3iUyBdw=
+X-Received: by 2002:a5d:44d2:0:b0:45e:9431:ee3c with SMTP id ffacd0b85a97d-46021792538mr9334388f8f.10.1780581181471;
+        Thu, 04 Jun 2026 06:53:01 -0700 (PDT)
 Received: from compiler-rock3b.tailb81abf.ts.net ([2a01:e0a:104a:4d80:be24:11ff:fe12:2776])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4601f0a43e9sm16661068f8f.0.2026.06.04.06.53.01
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4601f0a43e9sm16661068f8f.0.2026.06.04.06.53.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Thu, 04 Jun 2026 06:53:01 -0700 (PDT)
 From: Midgy BALON <midgy971@gmail.com>
@@ -100,16 +100,16 @@ Cc: robin.murphy@arm.com,
 	linux-arm-kernel@lists.infradead.org,
 	iommu@lists.linux.dev,
 	linux-kernel@vger.kernel.org
-Subject: [RFC PATCH v3 6/9] iommu/rockchip: Clear AUTO_GATING bit 1 on the RK356x v1 IOMMU
-Date: Thu,  4 Jun 2026 13:52:52 +0000
-Message-Id: <20260604135255.62682-7-midgy971@gmail.com>
+Subject: [RFC PATCH v3 5/9] accel: rocket: Keep the IOMMU domain attached across jobs
+Date: Thu,  4 Jun 2026 13:52:51 +0000
+Message-Id: <20260604135255.62682-6-midgy971@gmail.com>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20260604135255.62682-1-midgy971@gmail.com>
 References: <20260604135255.62682-1-midgy971@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_145304_024008_E50C6B1E 
-X-CRM114-Status: GOOD (  11.82  )
+X-CRM114-CacheID: sfid-20260604_145303_318543_72261491 
+X-CRM114-Status: GOOD (  18.32  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,42 +126,130 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On the RK356x v1 IOMMU, RK_MMU_AUTO_GATING resets to 0x3. Bit 1 enables
-auto clock-gating of the page-table walker, so the walker's AXI master
-loses its clock between transactions; a TLB-miss page walk then never
-completes and the IOMMU is left stuck (PAGING_ENABLED, never IDLE).
+rocket attached the job's IOMMU domain in rocket_job_run() and
+detached it again on every completion and reset. Each attach/detach
+toggles the rk_iommu stall/force-reset/paging handshake, and on
+RK3568 the NPU MMU is idle between jobs, so that handshake times out
+and logs a burst of "stall/paging request timed out" errors for
+every job.
 
-Clear bit 1 (keeping bit 0, the slave-port gate) once paging is enabled
-so the walker keeps its clock. This is required for the RK3568 NPU MMU.
+Attach the per-context domain once and keep it: track the attached
+domain in the core, swap it only when a job from a different context
+runs, and detach it at core teardown. A reference on the attached
+domain is held so it outlives the job that first attached it and is
+released on swap/teardown.
 
 Signed-off-by: Midgy BALON <midgy971@gmail.com>
 ---
- drivers/iommu/rockchip-iommu.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ drivers/accel/rocket/rocket_core.c |  6 ++++++
+ drivers/accel/rocket/rocket_core.h |  3 +++
+ drivers/accel/rocket/rocket_job.c  | 27 +++++++++++++++++++++------
+ 3 files changed, 30 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 4da80136933c4..e3d8b6e9ca12b 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -953,6 +953,18 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
+diff --git a/drivers/accel/rocket/rocket_core.c b/drivers/accel/rocket/rocket_core.c
+index a8de876365873..634f78dfe2887 100644
+--- a/drivers/accel/rocket/rocket_core.c
++++ b/drivers/accel/rocket/rocket_core.c
+@@ -13,6 +13,7 @@
+ #include <linux/reset.h>
  
- 	ret = rk_iommu_enable_paging(iommu);
+ #include "rocket_core.h"
++#include "rocket_drv.h"
+ #include "rocket_job.h"
  
-+	if (!ret) {
-+		/*
-+		 * RK356x v1 IOMMU: RK_MMU_AUTO_GATING bit 1 enables page-walker
-+		 * auto clock-gating; the walker's AXI master then loses its clock
-+		 * between transactions and a TLB-miss page walk never completes,
-+		 * leaving the IOMMU stuck (PAGING_ENABLED, never IDLE).  Clear
-+		 * bit 1 (keep bit 0, the slave-port gate) once paging is enabled.
-+		 */
-+		for (i = 0; i < iommu->num_mmu; i++)
-+			rk_iommu_write(iommu->bases[i], RK_MMU_AUTO_GATING, 0x2);
+ int rocket_core_init(struct rocket_core *core)
+@@ -112,6 +113,11 @@ void rocket_core_fini(struct rocket_core *core)
+ {
+ 	pm_runtime_dont_use_autosuspend(core->dev);
+ 	pm_runtime_disable(core->dev);
++	if (core->attached_domain) {
++		iommu_detach_group(NULL, core->iommu_group);
++		rocket_iommu_domain_put(core->attached_domain);
++		core->attached_domain = NULL;
 +	}
+ 	iommu_group_put(core->iommu_group);
+ 	core->iommu_group = NULL;
+ 	rocket_job_fini(core);
+diff --git a/drivers/accel/rocket/rocket_core.h b/drivers/accel/rocket/rocket_core.h
+index 66d138a8ed773..05a197a9c0113 100644
+--- a/drivers/accel/rocket/rocket_core.h
++++ b/drivers/accel/rocket/rocket_core.h
+@@ -42,6 +42,8 @@ struct rocket_soc_data {
+ #define rocket_core_writel(core, reg, value) \
+ 	writel(value, (core)->core_iomem + (REG_CORE_##reg) - REG_CORE_S_STATUS)
+ 
++struct rocket_iommu_domain;
 +
- out_disable_stall:
- 	rk_iommu_disable_stall(iommu);
- out_disable_clocks:
+ struct rocket_core {
+ 	struct device *dev;
+ 	struct rocket_device *rdev;
+@@ -56,6 +58,7 @@ struct rocket_core {
+ 	struct reset_control_bulk_data resets[2];
+ 
+ 	struct iommu_group *iommu_group;
++	struct rocket_iommu_domain *attached_domain;
+ 
+ 	struct mutex job_lock;
+ 	struct rocket_job *in_flight_job;
+diff --git a/drivers/accel/rocket/rocket_job.c b/drivers/accel/rocket/rocket_job.c
+index e25234261536b..b248371be8a1e 100644
+--- a/drivers/accel/rocket/rocket_job.c
++++ b/drivers/accel/rocket/rocket_job.c
+@@ -9,6 +9,7 @@
+ #include <drm/rocket_accel.h>
+ #include <linux/interrupt.h>
+ #include <linux/iommu.h>
++#include <linux/kref.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
+ 
+@@ -314,9 +315,26 @@ static struct dma_fence *rocket_job_run(struct drm_sched_job *sched_job)
+ 	if (ret < 0)
+ 		return fence;
+ 
+-	ret = iommu_attach_group(job->domain->domain, core->iommu_group);
+-	if (ret < 0)
+-		return fence;
++	/*
++	 * Attach the job's IOMMU domain only when it differs from the one
++	 * already attached. Re-attaching per job toggles the rk_iommu
++	 * stall/reset handshake on an idle NPU MMU, which is slow and
++	 * noisy; keep the domain attached across jobs instead.
++	 */
++	if (core->attached_domain != job->domain) {
++		if (core->attached_domain) {
++			iommu_detach_group(NULL, core->iommu_group);
++			rocket_iommu_domain_put(core->attached_domain);
++			core->attached_domain = NULL;
++		}
++
++		ret = iommu_attach_group(job->domain->domain, core->iommu_group);
++		if (ret < 0)
++			return fence;
++
++		kref_get(&job->domain->kref);
++		core->attached_domain = job->domain;
++	}
+ 
+ 	scoped_guard(mutex, &core->job_lock) {
+ 		core->in_flight_job = job;
+@@ -340,7 +358,6 @@ static void rocket_job_handle_irq(struct rocket_core *core)
+ 				return;
+ 			}
+ 
+-			iommu_detach_group(NULL, iommu_group_get(core->dev));
+ 			dma_fence_signal(core->in_flight_job->done_fence);
+ 			pm_runtime_put_autosuspend(core->dev);
+ 			core->in_flight_job = NULL;
+@@ -376,8 +393,6 @@ rocket_reset(struct rocket_core *core, struct drm_sched_job *bad)
+ 	 */
+ 	rocket_core_reset(core);
+ 
+-	iommu_detach_group(NULL, core->iommu_group);
+-
+ 	/* NPU has been reset, we can clear the reset pending bit. */
+ 	atomic_set(&core->reset.pending, 0);
+ 
 -- 
 2.39.5
 
