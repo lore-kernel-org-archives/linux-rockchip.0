@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7BC3CD6E7E
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A63A8CD6E7D
 	for <linux-rockchip@archiver.kernel.org>; Thu,  4 Jun 2026 20:21:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=3OSnn4x+chMIgDeSLneZGhucIL1DWzyRjgDSFY/9+js=; b=FMDNM40ntsHEF3
-	Xt7geTIdPfOHAsfg5uWakiayQrXWAeUU0baVRMnKEPWzKzksyAMi4B8BjdHhhXefQePDILZFmHrel
-	q8rWssLlQGWvyruPkjJLp6yFiL2Kb4nzwr0Vbp2L3+T68MNBBQ17duJLgvK+qluFIE+yqz7NY/vVs
-	wo5+Pae4cSPm8dYWhJ54uGIxpcB/ldN/GXoa3sbHB0dRLIgpYVoWxG+9GOzz7Rp/a57/ujrR/5z5t
-	41LGPHxN9JsK0W1YcpoZAkzjAlq/0+7ySTJq0j6YUHARMKahmU89Uz45GGIC617QLFWOSU5o40TbA
-	5CPlNjOLIoyL+jvWi3eA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=AFJTESswU7uWotApE8wSm0vRtQ9HHPbKQByo+et7KNY=; b=S7VRsUhBmxKm7w
+	WWz/gr8YqFNfBC96R0u5QiNH5QBL385cm8HCHRAGH9a195my4oR2N72OdUcmU6eFZSqe0KOS5aaLl
+	lo8bQRxhLOVxzd8QgYlPfA0RtqKL4JrZQucN1iQ4TY5ApkUwJQlNGjVYe+v5n9DlwSmZmmfahjITR
+	R0Z9VMLg8SEX34wRHYaecABaKulYZijFWBvHyEkTnch+fUfuWosbb2vA2vpHgN0bwyRiGdUGVqnJi
+	WuARXp+Tn2EDdzMHsylkWcd25RJQQI4BRcJu5ranguxpOtzvwHfhkxbBCkw9VCyHejf9RjiW/2j+j
+	CPUOKls5exkHgfIENh9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVEYm-0000000HFk5-1q6f;
-	Thu, 04 Jun 2026 20:21:00 +0000
-Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+	id 1wVEYi-0000000HFgJ-1LF4;
+	Thu, 04 Jun 2026 20:20:56 +0000
+Received: from mail-ot1-x333.google.com ([2607:f8b0:4864:20::333])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVEYj-0000000HFh8-34XO
+	id 1wVEYf-0000000HFf4-3JYf
 	for linux-rockchip@lists.infradead.org;
-	Thu, 04 Jun 2026 20:20:58 +0000
-Received: by mail-ot1-x32b.google.com with SMTP id 46e09a7af769-7e6b554044fso818525a34.0
-        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jun 2026 13:20:57 -0700 (PDT)
+	Thu, 04 Jun 2026 20:20:55 +0000
+Received: by mail-ot1-x333.google.com with SMTP id 46e09a7af769-7e6cfdc8382so769043a34.2
+        for <linux-rockchip@lists.infradead.org>; Thu, 04 Jun 2026 13:20:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780604457; x=1781209257; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to;
-        bh=kpQDLS8ZoARSZkj6MTlVfd7g2UIh+WsARYUcUwqipgs=;
-        b=QA242niiX7oBsU4BYrHC1tWQ1JaRFdqkcrm71Phvj2yqf5Avz6H+8XAnCqC9H8a4Vh
-         w8aU09naj35w77tZz7dPCYnO8XEDG2jlrBkulXfntpX67I8AtDFyiASrWEPGkM5Syd3j
-         CYrXEe/gh+48KTZKU1oIubmkgKkOpUSoOudMt3nOITB4ZkzfUnhzT42MGgvlJjm/lNY8
-         caIRaKrTlSyGCsOzgGnzHR3H0vyrWez8l/whqfgqshTB/25F2jmlwLPAD8NldWtBJoTS
-         XiX5KhQQIVQHrBEENGO4QXlX01xhtwvKn2PqQR4yGLDkJvjCiJ1fMzTMUBrV5w3BwVNj
-         rhZA==
+        d=gmail.com; s=20251104; t=1780604452; x=1781209252; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=9oEuLk7XB9tvetuqp5vhLFFB3pUTzFDIh+xJJF43t34=;
+        b=EFgWKP1ksSPCrFxLNlwy/TykCEcEu44VsRY5p1kR/rQpyriuhTDGJrLjCD1bzrkxzo
+         QQ8GqKua9NtIt6Jrb25V3b5+AoCJqwvTUaIAQtsIHRZ3ab6iO1BrVcjyJecy1ohEYRYU
+         +WSUkjNQHmcH1amc1Kx68Vct4ojcRKbo6lkEI/DzIBHgKWPoYp47T+Zc+ELLXAkRNyB7
+         Rk5unkfAuK+dqfWvP2tL9fTENjJseQU9TCtN9MkqkLZHEwshYEKAlXi/GD/qbLSr8GtT
+         PkxjI+amRYvZrzMaMb39hVY1kpn5qRQGbsvJ5RIuI9zJMZ2zVa9BHPXK0vdreL36Ajpm
+         BaTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780604457; x=1781209257;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to;
-        bh=kpQDLS8ZoARSZkj6MTlVfd7g2UIh+WsARYUcUwqipgs=;
-        b=JAUKzj4UDiYnE7KrTzSSmwj8WkyRuiglPSeQ/3E/RXtG6Ke8Sro3qcTcixfY8DJ2/z
-         QeFhnfA2Rt1T9xCGNFhvGI2Ni5Qv4gAPcaHfHNYduTGB+wy/VdES8qlxuNXQH7pnCH3z
-         4AwhE+TxoocNGWQdefHB4FWofJx9XM8tIsVW9vAJ1zD7YtxuUwXMsXQOe+wUsl2KJnGN
-         KqZg0gknK1VIoJHTQaXsdysa4Zojgfj9VWPlfjbOigQkhSjDuq6SkiyQCF+D8fWVSUYt
-         kCo4U3pNj86pGYfVIdcgU70+q2T7ypS8GYI8apQdtAJOuOeX7uOZ2puubMZf7BC65iDC
-         xfiw==
-X-Forwarded-Encrypted: i=1; AFNElJ9TPOJSsu1wUpxNazDu3nKP6ulGnpE/cc9GmUmcHiHguejGdOdfwDvcBsD7WboOmE0nCpJobzSJjqcUU27T8A==@lists.infradead.org
-X-Gm-Message-State: AOJu0YwbLA0VuguMYkPeaRsTgLvsLFc+zj8RwKNmC8NxQT1v0t46Qsl1
-	de3/F9tOaHp2cH08hyKDpprs3K7arRyVGjMlXENw2AoShMzX2ZTYnCqJ
-X-Gm-Gg: Acq92OF/j/WAZZ0VcozrSEOkHNGdRv8WbPUwSFG88pytDf/MSwdolSBU2413pKMvxCw
-	+rhUqVbIPA8xYN4aeRToKWZokesDuDfirjQ/r4fHmt5eTo/5M71hJ7+JTlIpDJ7RM38ajj+ABYC
-	IGqoPzJ63pcjwn/VnCp5GZthQIfeVBK8AU54+Jj42xFJHoFOgoO2RRBOznNx332IcnQXCcsJu+p
-	4e/7ZIHRUHVrJyMboCOhCYVEbfpIpv3I6Ji/SkkrkoSzdcF+a7yn6b8nBZ0D9GOncH4Lwyt1pIJ
-	SYeU/nAgKFEWaxJa2k8NMukOgQeagh3V4Fy49osssXxsZjEKNiMztjX9FebOHmexV345iY9uLJc
-	NwDb7QP7+87lcAb1zf4+rR2LqDpaLJTen7VgtrHlGANr/Yi717cAAEJeNkCPHZ2nCyTHkvTeV3P
-	uaznrGvWM6GagcrlzNRguQuS2XbhZXu84=
-X-Received: by 2002:a05:6830:829a:b0:7dc:dd58:50ab with SMTP id 46e09a7af769-7e70c7c8b1dmr140279a34.14.1780604456988;
-        Thu, 04 Jun 2026 13:20:56 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1780604452; x=1781209252;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=9oEuLk7XB9tvetuqp5vhLFFB3pUTzFDIh+xJJF43t34=;
+        b=pKRZ+3Q95q7wX6HjfKwaH+UmJ3VwMrrgtJqEXI7US4wbUqGxrur/zRuiJHE8l9/DXr
+         Mtz+n5md1bUBArx50cdZUmmPqoZGtjnEm2YPAAqfsomnqvcXmcQ+dscTgqAZ1V2AcfP9
+         8HN3735/uv2CuTEdmB79BecliuBDQoKZkaB9/3z8mxC8ncsaAHn8pcEVO0+TWCQ0GC6C
+         v7jnqofAYmdrrN26GU0h64prIXwZuQ2zVunWyZR/bpL+06TZuSFSs28inMcRE7dRQlYC
+         xtWzcV9/A8nxGNz5Vvhb7ZujbzNMt3DtkUhQdKw7XB4AoHy3wV3bpG+bXYqxRNs4nwg6
+         PvBA==
+X-Forwarded-Encrypted: i=1; AFNElJ+hrDxkLlrfPGjBXrLkvjuK2iD3gMJOUtc8JJcqJfeUOn0ICuIqpZdS/DFMsazSMJchMoHam9a5bZ1AjG4WZg==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yx4YtKr5VOh+/ol56rHRc6ErJNUo3XODxQdyHjIQdumiA1ZQ4gZ
+	KNe05axsWf/sA6Tm8HVA7myv/Qd4cTav58i1RR+w1+kPyvLPxvAYFiFG
+X-Gm-Gg: Acq92OG2/IUSTBLkG1hjdQASZnkVE+QKBn/QVjmqHiBSb288Pb53BxIvOE/M4vjKhD9
+	svhDmajX3bm/mpXMciqu9VkRXQbIzmSjPjfP0RfUVD2/EFrddmlC2jtY6t6vPcZ0AIZtzRuIpYk
+	9zHCQQpRPiTTai0K2WWdQ/FRE1Nsddll5y0sgEUoWGMm4W+nSuYy/6QLMgJcKKFj82xTYM4K0u0
+	xYDT+nhcd+Hzy9r2mHTigKKmRVExerLmlUal+PK7vFhKFmyDzPvfGbzuqeWpe92Y6SGzUkYP3JR
+	cJWxTjbHOPSiQ4rzfF2uWlbdD0xdw5dMpyx+dXetep4FDlZPaE4l469LmvZtPMGPRx0iYCPkGL4
+	PNlSZrsy/EZK8Z5QcO351wOQTIr+IuBPHIznAnCtqnyU8qoiB4q8/06svHo1FyHNqgmEXfz4DPv
+	a3061AqPqIKze2E3F/e2DQB2BC65q1WN0=
+X-Received: by 2002:a05:6830:2643:b0:7e6:fed6:3c33 with SMTP id 46e09a7af769-7e70caa9215mr135327a34.22.1780604452284;
+        Thu, 04 Jun 2026 13:20:52 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e6e796c675sm4541800a34.24.2026.06.04.13.20.56
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-7e6e796c675sm4541800a34.24.2026.06.04.13.20.51
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 04 Jun 2026 13:20:56 -0700 (PDT)
+        Thu, 04 Jun 2026 13:20:51 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-iio@vger.kernel.org
 Cc: andy@kernel.org,
@@ -84,16 +83,14 @@ Cc: andy@kernel.org,
 	robh@kernel.org,
 	andriy.shevchenko@intel.com,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V10 6/9] iio: imu: inv_icm42607: Add Temp Support in icm42607
-Date: Thu,  4 Jun 2026 15:18:28 -0500
-Message-ID: <20260604201832.60656-7-macroalpha82@gmail.com>
+Subject: [PATCH V10 0/9] Add Invensense ICM42607
+Date: Thu,  4 Jun 2026 15:18:22 -0500
+Message-ID: <20260604201832.60656-1-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260604201832.60656-1-macroalpha82@gmail.com>
-References: <20260604201832.60656-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_132057_786238_B668F7BF 
-X-CRM114-Status: GOOD (  19.85  )
+X-CRM114-CacheID: sfid-20260604_132053_845615_0F24F3D3 
+X-CRM114-Status: GOOD (  28.66  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,125 +102,143 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-RnJvbTogQ2hyaXMgTW9yZ2FuIDxtYWNyb21vcmdhbkBob3RtYWlsLmNvbT4KCkFkZCBmdW5jdGlv
-bnMgZm9yIHJlYWRpbmcgdGVtcGVyYXR1cmUgc2Vuc29yIGRhdGEuCgpTaWduZWQtb2ZmLWJ5OiBD
-aHJpcyBNb3JnYW4gPG1hY3JvbW9yZ2FuQGhvdG1haWwuY29tPgotLS0KIGRyaXZlcnMvaWlvL2lt
-dS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgICAgICAgICB8ICAxICsKIGRyaXZlcnMvaWlvL2ltdS9p
-bnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3LmggICB8ICA1ICsrCiAuLi4vaWlvL2ltdS9pbnZfaWNt
-NDI2MDcvaW52X2ljbTQyNjA3X2NvcmUuYyAgfCAxOCArKysrCiAuLi4vaWlvL2ltdS9pbnZfaWNt
-NDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYyAgfCA4MiArKysrKysrKysrKysrKysrKysrCiAuLi4v
-aWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaCAgfCAzMyArKysrKysrKwog
-NSBmaWxlcyBjaGFuZ2VkLCAxMzkgaW5zZXJ0aW9ucygrKQogY3JlYXRlIG1vZGUgMTAwNjQ0IGRy
-aXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYwogY3JlYXRlIG1v
-ZGUgMTAwNjQ0IGRyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAu
-aAoKZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvTWFrZWZpbGUgYi9k
-cml2ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L01ha2VmaWxlCmluZGV4IGJlMTA5MTAyZTIwMzUu
-LmMwNDk1M2VkNDJjZTkgMTAwNjQ0Ci0tLSBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcv
-TWFrZWZpbGUKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9NYWtlZmlsZQpAQCAt
-Miw2ICsyLDcgQEAKIAogb2JqLSQoQ09ORklHX0lOVl9JQ000MjYwNykgKz0gaW52LWljbTQyNjA3
-Lm8KIGludi1pY200MjYwNy15ICs9IGludl9pY200MjYwN19jb3JlLm8KK2ludi1pY200MjYwNy15
-ICs9IGludl9pY200MjYwN190ZW1wLm8KIAogb2JqLSQoQ09ORklHX0lOVl9JQ000MjYwN19JMkMp
-ICs9IGludi1pY200MjYwNy1pMmMubwogaW52LWljbTQyNjA3LWkyYy15ICs9IGludl9pY200MjYw
-N19pMmMubwpkaWZmIC0tZ2l0IGEvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNt
-NDI2MDcuaCBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3LmgKaW5k
-ZXggNzIzMjczODFiNmRiYy4uMTNhNWIwNmU4MDE0MiAxMDA2NDQKLS0tIGEvZHJpdmVycy9paW8v
-aW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDcuaAorKysgYi9kcml2ZXJzL2lpby9pbXUvaW52
-X2ljbTQyNjA3L2ludl9pY200MjYwNy5oCkBAIC0xMjAsNiArMTIwLDcgQEAgc3RydWN0IGludl9p
-Y200MjYwN19zdXNwZW5kZWQgewogICogIEBvcmllbnRhdGlvbjoJc2Vuc29yIGNoaXAgb3JpZW50
-YXRpb24gcmVsYXRpdmUgdG8gbWFpbiBoYXJkd2FyZS4KICAqICBAY29uZjoJCWNoaXAgc2Vuc29y
-cyBjb25maWd1cmF0aW9ucy4KICAqICBAc3VzcGVuZGVkOgkJc3VzcGVuZGVkIHNlbnNvcnMgY29u
-ZmlndXJhdGlvbi4KKyAqICBAYnVmZmVyOgkJZGF0YSB0cmFuc2ZlciBidWZmZXIgYWxpZ25lZCBm
-b3IgRE1BLgogICovCiBzdHJ1Y3QgaW52X2ljbTQyNjA3X3N0YXRlIHsKIAlzdHJ1Y3QgbXV0ZXgg
-bG9jazsKQEAgLTEzMCw2ICsxMzEsNyBAQCBzdHJ1Y3QgaW52X2ljbTQyNjA3X3N0YXRlIHsKIAlz
-dHJ1Y3QgaWlvX21vdW50X21hdHJpeCBvcmllbnRhdGlvbjsKIAlzdHJ1Y3QgaW52X2ljbTQyNjA3
-X2NvbmYgY29uZjsKIAlzdHJ1Y3QgaW52X2ljbTQyNjA3X3N1c3BlbmRlZCBzdXNwZW5kZWQ7CisJ
-X19iZTE2IGJ1ZmZlclszXSBfX2FsaWduZWQoSUlPX0RNQV9NSU5BTElHTik7CiB9OwogCiAvKiBW
-aXJ0dWFsIHJlZ2lzdGVyIGFkZHJlc3NlczogQGJhbmsgb24gTVNCICg0IHVwcGVyIGJpdHMpLCBA
-YWRkcmVzcyBvbiBMU0IgKi8KQEAgLTM2MSw2ICszNjMsOSBAQCBleHRlcm4gY29uc3Qgc3RydWN0
-IGludl9pY200MjYwN19odyBpbnZfaWNtNDI2MDdfaHdfZGF0YTsKIGV4dGVybiBjb25zdCBzdHJ1
-Y3QgaW52X2ljbTQyNjA3X2h3IGludl9pY200MjYwN3BfaHdfZGF0YTsKIGV4dGVybiBjb25zdCBz
-dHJ1Y3QgZGV2X3BtX29wcyBpbnZfaWNtNDI2MDdfcG1fb3BzOwogCitpbnQgaW52X2ljbTQyNjA3
-X3NldF90ZW1wX2NvbmYoc3RydWN0IGludl9pY200MjYwN19zdGF0ZSAqc3QsIGJvb2wgZW5hYmxl
-LAorCQkJICAgICAgIHVuc2lnbmVkIGludCAqc2xlZXBfbXMpOworCiBpbnQgaW52X2ljbTQyNjA3
-X2NvcmVfcHJvYmUoc3RydWN0IHJlZ21hcCAqcmVnbWFwLAogCQkJICAgIGNvbnN0IHN0cnVjdCBp
-bnZfaWNtNDI2MDdfaHcgKmh3LAogCQkJICAgIGludl9pY200MjYwN19idXNfc2V0dXAgYnVzX3Nl
-dHVwKTsKZGlmZiAtLWdpdCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQy
-NjA3X2NvcmUuYyBiL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X2Nv
-cmUuYwppbmRleCAzOTYyMGRhOTJiZDQzLi5hNDM4ZTZmYmU1MDhiIDEwMDY0NAotLS0gYS9kcml2
-ZXJzL2lpby9pbXUvaW52X2ljbTQyNjA3L2ludl9pY200MjYwN19jb3JlLmMKKysrIGIvZHJpdmVy
-cy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfY29yZS5jCkBAIC0xMTgsNiArMTE4
-LDI0IEBAIHN0YXRpYyBpbnQgaW52X2ljbTQyNjA3X3NldF9wd3JfbWdtdDAoc3RydWN0IGludl9p
-Y200MjYwN19zdGF0ZSAqc3QsCiAJcmV0dXJuIDA7CiB9CiAKK2ludCBpbnZfaWNtNDI2MDdfc2V0
-X3RlbXBfY29uZihzdHJ1Y3QgaW52X2ljbTQyNjA3X3N0YXRlICpzdCwgYm9vbCBlbmFibGUsCisJ
-CQkgICAgICAgdW5zaWduZWQgaW50ICpzbGVlcF9tcykKK3sKKwl1bnNpZ25lZCBpbnQgdmFsOwor
-CWludCByZXQ7CisKKwl2YWwgPSBGSUVMRF9QUkVQKElOVl9JQ000MjYwN19URU1QX0NPTkZJRzBf
-RklMVEVSX01BU0ssCisJCQkgSU5WX0lDTTQyNjA3X0ZJTFRFUl9CV18zNEhaKTsKKwlyZXQgPSBy
-ZWdtYXBfdXBkYXRlX2JpdHMoc3QtPm1hcCwgSU5WX0lDTTQyNjA3X1JFR19URU1QX0NPTkZJRzAs
-CisJCQkJIElOVl9JQ000MjYwN19URU1QX0NPTkZJRzBfRklMVEVSX01BU0ssIHZhbCk7CisJaWYg
-KHJldCkKKwkJcmV0dXJuIHJldDsKKworCXJldHVybiBpbnZfaWNtNDI2MDdfc2V0X3B3cl9tZ210
-MChzdCwgc3QtPmNvbmYuZ3lyby5tb2RlLAorCQkJCQkgIHN0LT5jb25mLmFjY2VsLm1vZGUsIGVu
-YWJsZSwKKwkJCQkJICBzbGVlcF9tcyk7Cit9CisKIHN0YXRpYyBpbnQgaW52X2ljbTQyNjA3X3Nl
-dF9jb25mKHN0cnVjdCBpbnZfaWNtNDI2MDdfc3RhdGUgKnN0LAogCQkJCSBjb25zdCBzdHJ1Y3Qg
-aW52X2ljbTQyNjA3X2NvbmYgKmNvbmYpCiB7CmRpZmYgLS1naXQgYS9kcml2ZXJzL2lpby9pbXUv
-aW52X2ljbTQyNjA3L2ludl9pY200MjYwN190ZW1wLmMgYi9kcml2ZXJzL2lpby9pbXUvaW52X2lj
-bTQyNjA3L2ludl9pY200MjYwN190ZW1wLmMKbmV3IGZpbGUgbW9kZSAxMDA2NDQKaW5kZXggMDAw
-MDAwMDAwMDAwMC4uNTUyNjAwODJhMTllZAotLS0gL2Rldi9udWxsCisrKyBiL2RyaXZlcnMvaWlv
-L2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuYwpAQCAtMCwwICsxLDgyIEBACisv
-LyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlcgorLyoKKyAqIENvcHly
-aWdodCAoQykgMjAyNiBJbnZlblNlbnNlLCBJbmMuCisgKi8KKworI2luY2x1ZGUgPGxpbnV4L2Rl
-dmljZS5oPgorI2luY2x1ZGUgPGxpbnV4L2lpby9paW8uaD4KKyNpbmNsdWRlIDxsaW51eC9tdXRl
-eC5oPgorI2luY2x1ZGUgPGxpbnV4L3BtX3J1bnRpbWUuaD4KKyNpbmNsdWRlIDxsaW51eC9yZWdt
-YXAuaD4KKworI2luY2x1ZGUgImludl9pY200MjYwNy5oIgorI2luY2x1ZGUgImludl9pY200MjYw
-N190ZW1wLmgiCisKK3N0YXRpYyBpbnQgaW52X2ljbTQyNjA3X3RlbXBfcmVhZChzdHJ1Y3QgaW52
-X2ljbTQyNjA3X3N0YXRlICpzdCwgczE2ICp0ZW1wKQoreworCXN0cnVjdCBkZXZpY2UgKmRldiA9
-IHJlZ21hcF9nZXRfZGV2aWNlKHN0LT5tYXApOworCV9fYmUxNiAqcmF3OworCWludCByZXQ7CisK
-KwlQTV9SVU5USU1FX0FDUVVJUkVfQVVUT1NVU1BFTkQoZGV2LCBwbSk7CisJcmV0ID0gUE1fUlVO
-VElNRV9BQ1FVSVJFX0VSUigmcG0pOworCWlmIChyZXQpCisJCXJldHVybiByZXQ7CisKKwlndWFy
-ZChtdXRleCkoJnN0LT5sb2NrKTsKKworCXJldCA9IGludl9pY200MjYwN19zZXRfdGVtcF9jb25m
-KHN0LCB0cnVlLCBOVUxMKTsKKwlpZiAocmV0KQorCQlyZXR1cm4gcmV0OworCisJcmF3ID0gJnN0
-LT5idWZmZXJbMF07CisJcmV0ID0gcmVnbWFwX2J1bGtfcmVhZChzdC0+bWFwLCBJTlZfSUNNNDI2
-MDdfUkVHX1RFTVBfREFUQTEsCisJCQkgICAgICAgcmF3LCBzaXplb2YoKnJhdykpOworCWlmIChy
-ZXQpCisJCXJldHVybiByZXQ7CisKKwkqdGVtcCA9IGJlMTZfdG9fY3B1cChyYXcpOworCWlmICgq
-dGVtcCA9PSBJTlZfSUNNNDI2MDdfREFUQV9JTlZBTElEKQorCQlyZXR1cm4gLUVJTlZBTDsKKwor
-CXJldHVybiAwOworfQorCitpbnQgaW52X2ljbTQyNjA3X3RlbXBfcmVhZF9yYXcoc3RydWN0IGlp
-b19kZXYgKmluZGlvX2RldiwKKwkJCQlzdHJ1Y3QgaWlvX2NoYW5fc3BlYyBjb25zdCAqY2hhbiwK
-KwkJCQlpbnQgKnZhbCwgaW50ICp2YWwyLCBsb25nIG1hc2spCit7CisJc3RydWN0IGludl9pY200
-MjYwN19zdGF0ZSAqc3QgPSBpaW9fZGV2aWNlX2dldF9kcnZkYXRhKGluZGlvX2Rldik7CisJczE2
-IHRlbXA7CisJaW50IHJldDsKKworCWlmIChjaGFuLT50eXBlICE9IElJT19URU1QKQorCQlyZXR1
-cm4gLUVJTlZBTDsKKworCXN3aXRjaCAobWFzaykgeworCWNhc2UgSUlPX0NIQU5fSU5GT19SQVc6
-CisJCWlmICghaWlvX2RldmljZV9jbGFpbV9kaXJlY3QoaW5kaW9fZGV2KSkKKwkJCXJldHVybiAt
-RUJVU1k7CisJCXJldCA9IGludl9pY200MjYwN190ZW1wX3JlYWQoc3QsICZ0ZW1wKTsKKwkJaWlv
-X2RldmljZV9yZWxlYXNlX2RpcmVjdChpbmRpb19kZXYpOworCQlpZiAocmV0KQorCQkJcmV0dXJu
-IHJldDsKKwkJKnZhbCA9IHRlbXA7CisJCXJldHVybiBJSU9fVkFMX0lOVDsKKwkvKgorCSAqIFTC
-sEMgPSAodGVtcCAvIDEyOCkgKyAyNQorCSAqIFRtwrBDID0gMTAwMCAqICgodGVtcCAqIDEwMCAv
-IDEyODAwKSArIDI1KQorCSAqIHNjYWxlOiAxMDAwMDAgLyAxMjgwMCB+PSA3LjgxMjUKKwkgKiBv
-ZmZzZXQ6IDMyMDAKKwkgKi8KKwljYXNlIElJT19DSEFOX0lORk9fU0NBTEU6CisJCSp2YWwgPSA3
-OworCQkqdmFsMiA9IDgxMjUwMDAwMDsKKwkJcmV0dXJuIElJT19WQUxfSU5UX1BMVVNfTkFOTzsK
-KwljYXNlIElJT19DSEFOX0lORk9fT0ZGU0VUOgorCQkqdmFsID0gMzIwMDsKKwkJcmV0dXJuIElJ
-T19WQUxfSU5UOworCWRlZmF1bHQ6CisJCXJldHVybiAtRUlOVkFMOworCX0KK30KZGlmZiAtLWdp
-dCBhL2RyaXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaCBiL2Ry
-aXZlcnMvaWlvL2ltdS9pbnZfaWNtNDI2MDcvaW52X2ljbTQyNjA3X3RlbXAuaApuZXcgZmlsZSBt
-b2RlIDEwMDY0NAppbmRleCAwMDAwMDAwMDAwMDAwLi5lMDM5MjRlMzA4NjYyCi0tLSAvZGV2L251
-bGwKKysrIGIvZHJpdmVycy9paW8vaW11L2ludl9pY200MjYwNy9pbnZfaWNtNDI2MDdfdGVtcC5o
-CkBAIC0wLDAgKzEsMzMgQEAKKy8qIFNQRFgtTGljZW5zZS1JZGVudGlmaWVyOiBHUEwtMi4wLW9y
-LWxhdGVyICovCisvKgorICogQ29weXJpZ2h0IChDKSAyMDI2IEludmVuU2Vuc2UsIEluYy4KKyAq
-LworCisjaWZuZGVmIElOVl9JQ000MjYwN19URU1QX0hfCisjZGVmaW5lIElOVl9JQ000MjYwN19U
-RU1QX0hfCisKKyNpbmNsdWRlIDxsaW51eC9iaXRvcHMuaD4KKworc3RydWN0IGlpb19kZXY7Citz
-dHJ1Y3QgaWlvX2NoYW5fc3BlYzsKKworI2RlZmluZSBJTlZfSUNNNDI2MDdfVEVNUF9DSEFOKF9p
-bmRleCkJCQkJXAorewkJCQkJCQkJXAorCS50eXBlID0gSUlPX1RFTVAsCQkJCQlcCisJLmluZm9f
-bWFza19zZXBhcmF0ZSA9CQkJCQlcCisJCUJJVChJSU9fQ0hBTl9JTkZPX1JBVykgfAkJCVwKKwkJ
-QklUKElJT19DSEFOX0lORk9fT0ZGU0VUKSB8CQkJXAorCQlCSVQoSUlPX0NIQU5fSU5GT19TQ0FM
-RSksCQkJXAorCS5zY2FuX2luZGV4ID0gX2luZGV4LAkJCQkJXAorCS5zY2FuX3R5cGUgPSB7CQkJ
-CQkJXAorCQkuc2lnbiA9ICdzJywJCQkJCVwKKwkJLnJlYWxiaXRzID0gMTYsCQkJCQlcCisJCS5z
-dG9yYWdlYml0cyA9IDE2LAkJCQlcCisJfSwJCQkJCQkJXAorfQorCitpbnQgaW52X2ljbTQyNjA3
-X3RlbXBfcmVhZF9yYXcoc3RydWN0IGlpb19kZXYgKmluZGlvX2RldiwKKwkJCSAgICAgICBzdHJ1
-Y3QgaWlvX2NoYW5fc3BlYyBjb25zdCAqY2hhbiwKKwkJCSAgICAgICBpbnQgKnZhbCwgaW50ICp2
-YWwyLCBsb25nIG1hc2spOworCisjZW5kaWYKLS0gCjIuNDMuMAoKCl9fX19fX19fX19fX19fX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fCkxpbnV4LXJvY2tjaGlwIG1haWxpbmcgbGlz
-dApMaW51eC1yb2NrY2hpcEBsaXN0cy5pbmZyYWRlYWQub3JnCmh0dHA6Ly9saXN0cy5pbmZyYWRl
-YWQub3JnL21haWxtYW4vbGlzdGluZm8vbGludXgtcm9ja2NoaXAK
+From: Chris Morgan <macromorgan@hotmail.com>
+
+Add support for the ICM42607 IMU. This sensor shares the same
+functionality but a different register layout with the existing
+ICM42600.
+
+This driver should work with the ICM42607 and ICM42607P over both I2C
+and SPI, however only the ICM42607P over I2C could be tested.
+
+Changes Since V1:
+ - Instead of creating a new driver, merged with the existing inv_icm42600
+   driver. This necessitated adding some code to the existing driver to
+   permit using a different register layout for the same functionality.
+ - Split changes up a bit more to decrease the size of the individual
+   patches. Note that patch 0004 is still pretty hefty; if I need to split
+   further I may need to create some temporary stub functions.
+ - Used guard() and PM_RUNTIME_ACQUIRE_AUTOSUSPEND() on the new functions
+   per Jonathan's recommendations.
+
+Changes Since V2:
+ - Went back to using a new driver on advice from Invensense engineer.
+ - Further split changes up into smaller chunks of functionality. Note
+   still that the largest patch is approximately 900 lines, and that while
+   the driver compiles cleanly at each commit it is not able to drive the
+   hardware until the commit that adds the Interrupt (as it also adds the
+   Makefile).
+ - Change the error to a warning when the devicetree binding does not match
+   the hardware ID.
+ - Dropped the ack on the devicetree bindings, as I am creating a new file
+   (for a new driver) instead of modifying the existing one.
+
+Changes Since V3:
+ - Numerous small fixes (too many to list here). Thank you to everyone who
+   provided feedback.
+ - Split power management additions into an additional commit to break
+   things up further.
+ - Consolidated devicetree documentation in existing
+   invensense,icm42600.yaml file.
+ - Removed most of the FIELD_PREP from header file to c files to make code
+   easier to read.
+ - Changed scale values to 2D arrays for Gyro and Accelerometer.
+ - Removed IIO_CHAN_INFO_CALIBBIAS attribute.
+
+Changes Since V4:
+ - Additional numerous small fixes, thank you again for all the feedback.
+ - Dropped power control API and instead run device in low noise mode.
+ - Split devicetree bindings into two distinct changes.
+ - Reordered adding of enums and structs to main header file so that they
+   are only brought in when needed.
+ - Stopped using enum for driver data and instead am using pointer to
+   device specific driver data.
+
+Changes Since V5:
+ - Corrected use of "dev_warn_probe" to just "dev_warn".
+ - Fixed some return scenarios which would unconditionally return 0
+   when an error was present.
+ - Corrected use of max() to min() for bounds checking. max() was
+   incorrect.
+ - Fixed using "st->conf.accel.odr" in the gyroscope function. It
+   should have been "st->conf.gyro.odr" which it now is.
+ - Additional small fixes suggested by "sashiko.dev".
+ - Added a regmap cache. I used the datasheet to try and determine
+   which registers might change without explicit writes.
+
+Changes Since V6:
+ - Corrected additional errors identified by sashiko.dev, mostly
+   fixing potential deadlocks, missing calls for pm runtime, and
+   potential overflow issues.
+
+Changes Since V7:
+ - Dropped Wake on Movement patches, since some of the functionality
+   was only available for a device on which I cannot test.
+ - Dropped support for SPI 3-Wire mode, since it complicated the
+   bus setup (and I lack the hardware to test such features anyway).
+ - Fixed a few additional bugs identified by sashiko.dev bot.
+
+Changes Since V8:
+ - Added back IRQ dropped accidentally when dropping wake on movement
+   patches.
+ - Dropped "Reviewed-By" tag on patch 2 because of substantial changes
+   made to devicetree binding documentation.
+ - Additional small fixes as suggested.
+
+Changes Since V9:
+ - Removed interrupts (and buffers) from the driver. I previously was
+   unable to detect deadlocks because it turns out my IRQ was not even
+   wired correctly in my device.
+ - Updated devicetree binding commits to make interrupts optional for
+   users of the icm42607 driver.
+
+Chris Morgan (9):
+  dt-bindings: iio: imu: icm42600: Add mount-matrix to icm42600
+  dt-bindings: iio: imu: icm42600: Add icm42607 binding
+  iio: imu: inv_icm42607: Add inv_icm42607 Core Driver
+  iio: imu: inv_icm42607: Add I2C and SPI For icm42607
+  iio: imu: inv_icm42607: Add PM support for icm42607
+  iio: imu: inv_icm42607: Add Temp Support in icm42607
+  iio: imu: inv_icm42607: Add Accelerometer for icm42607
+  iio: imu: inv_icm42607: Add Gyroscope to icm42607
+  arm64: dts: rockchip: Add icm42607p IMU for RG-DS
+
+ .../bindings/iio/imu/invensense,icm42600.yaml |  20 +-
+ .../dts/rockchip/rk3568-anbernic-rg-ds.dts    |   8 +-
+ drivers/iio/imu/Kconfig                       |   1 +
+ drivers/iio/imu/Makefile                      |   1 +
+ drivers/iio/imu/inv_icm42607/Kconfig          |  30 +
+ drivers/iio/imu/inv_icm42607/Makefile         |  13 +
+ drivers/iio/imu/inv_icm42607/inv_icm42607.h   | 421 ++++++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_accel.c | 465 +++++++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_core.c  | 539 ++++++++++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_gyro.c  | 437 ++++++++++++++
+ .../iio/imu/inv_icm42607/inv_icm42607_i2c.c   |  95 +++
+ .../iio/imu/inv_icm42607/inv_icm42607_spi.c   | 107 ++++
+ .../iio/imu/inv_icm42607/inv_icm42607_temp.c  |  82 +++
+ .../iio/imu/inv_icm42607/inv_icm42607_temp.h  |  33 ++
+ 14 files changed, 2250 insertions(+), 2 deletions(-)
+ create mode 100644 drivers/iio/imu/inv_icm42607/Kconfig
+ create mode 100644 drivers/iio/imu/inv_icm42607/Makefile
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607.h
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_accel.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_core.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_gyro.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_i2c.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_spi.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_temp.c
+ create mode 100644 drivers/iio/imu/inv_icm42607/inv_icm42607_temp.h
+
+-- 
+2.43.0
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
