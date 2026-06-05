@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28CCCD6E7D
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 16:39:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A97C2CD6E7C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 16:43:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:Cc:
 	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dXTpnWWXvOIq6ffXoqfhG6z8bYmdQyOmr+w3YYZqHIo=; b=fCdO7hNg2/vZqAm8q6CR/g+pxv
-	uj0lASui8GxAVq234ornE+F8TScmVLoU4Oi4bPdl3SE2dlHwnkAPHAV0PgCbxNI8HYJgOSZwsbj2n
-	EF7HYrq/yCCY5z+3/CnrhAPWHHYeEY7xXotf47u/n+ZGVH1b3CkZvJFuSn2rRnCBVpV/0OCq0D3Su
-	1erLDmtcAmU/q0KK1nQfpVfYzi7wgPicXy7IV6JZvvH1eSQbfpxDH/H0j45d/16MRFbdxtgIRsg2W
-	kv5weBydgOqWALb3JHmIHiXND3d33s1QXhepPCYKySp7h4v9t0UNXsoUAgEvGrZDJ6Ctrp9sI7RR3
-	b72oD/nw==;
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=41OKJu6jv0wf/ZrV5aqy/nRoNcbKxwG1UtLvbzpPjjM=; b=z/RH+bBgHLSc612H549Yb4Hax7
+	3LOKUVmcffvdVZLVhAQmOuh3KJqeo4TvUnaGPSY7YB4LKtjZ8lABxkE6Q2pIv7Va4MKLGJ/YmDlAq
+	iRCP4FYzTIVWGljBGUxixjb2Bfz+Nu186x8sUIfECXPCMB5Xn6h2nHlmf5YJkDP5CwlTf64vsqSPE
+	jRRrEtqkIgZdtwDyFtuXkcVJ0jEtRAChgUVReNWgWa7ncvj+so3tp5/FPmqSkwkvwss1JLdeQYF9w
+	+mB+TFvofyZinMV4BfN9nmeWCrLbfHCDlFeevCeLT59r6EV/3VPdn8s2dxbblMD9PGX/GeAvk7RLT
+	PiA3z/FQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVXZn-00000000v7g-22Ns;
-	Fri, 05 Jun 2026 16:39:19 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1wVXdN-00000000vEm-00jD;
+	Fri, 05 Jun 2026 16:43:01 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVXZl-00000000v7a-3YKL
-	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Jun 2026 16:39:17 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id DDCB6601DD;
-	Fri,  5 Jun 2026 16:39:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6596E1F00893;
-	Fri,  5 Jun 2026 16:39:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780677556;
-	bh=Q55KjNa1M1fmOrAnHlb6q5BKlT5aMGyYW7wRoZ6jvqw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=SyjBJu5Fkq5JvVAS4J89YoKHq/U7bRCmjHO8cLm8z4lOLO13eiwTFcKdjR4RKNb9G
-	 wK5CkizVQ0S6QGnmyCNjygJ0oizvgUxD3BB0WWv+FKpTxbn/dH7HKhlLLEAA92awbA
-	 01AGbngZ4obq7xo0GQCiQUCHcUdxnVcQMUpATwdVhK66BRxgrr2kC2jZaJRfMIghYE
-	 46dQVyXrqFHfgjBBEuUNGv2dO9UkZtC0rL/lT81WW1ajgp+nuBTn+iao158Yo604J+
-	 kwBXfllRPdqradhjSWs27W1RwaRhMEyoHgJsOft3256DOYBBx75ciRGljKwc7XLq/k
-	 Z++DUbeYsYTAA==
-Date: Fri, 5 Jun 2026 17:39:11 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	xsf@rock-chips.com, sre@kernel.org, simona@ffwll.ch,
-	airlied@gmail.com, tzimmermann@suse.de, mripard@kernel.org,
-	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com,
-	neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org,
-	krzk+dt@kernel.org, robh@kernel.org,
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V5 1/6] dt-bindings: power: supply: sgm41542: document
- sgm41542
-Message-ID: <20260605-browsing-unhealthy-9fa48d8b91e9@spud>
-References: <20260604220802.119107-1-macroalpha82@gmail.com>
- <20260604220802.119107-2-macroalpha82@gmail.com>
+	id 1wVXdK-00000000vEK-1h4i;
+	Fri, 05 Jun 2026 16:43:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1780677735; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=kf3peC3t98Ib9KZYHmO3v+Vj/1d7k/dGYEP3n5awo3CqJoS4nr+EmTGunekAm/OjbB8Hh7Ln4fnQ2k3bX7tzwiWmAJlv5/Qql806HoMfjbQO1w1etKQ8RpIa+tBcSSLaDT9gEoOVAyigIh0RgBZbWWixB5AfooC3WUbsdLjuwGg=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1780677735; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Tgqhsze06HfbpZq35K9dBzb4bY+s/AG3gLWTDVJ0ELc=; 
+	b=jddLMWFQ7e9GrDSSQ1kAmrwsIlFZ8EZBpfzVoXDj89Kd3iaa6rzeWfoNoHpKbs1s4dT5FTVMKs2gmn/GRnxL8ofaZxpKB5hkra5OptUl8SK5CH/7JIiopg/B9V5FMBmgY84tmobiKZraYR2vptFmfYM63Fy7hAPPa+6zASKTM/o=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780677735;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=Tgqhsze06HfbpZq35K9dBzb4bY+s/AG3gLWTDVJ0ELc=;
+	b=T56ePz11B9/m9NhHDl03em3oN80y6mfJfVFi8zqf1iVBjHLeZVMqFwVtHJdGxUGt
+	6EZ7UdXO+hjOsfo4wjehYz4pkZ1Xec2picOXlI7Z6XzOlKcWee+TJ323FtQudYmMh0r
+	/qLIS+mORuVNG0MI451IC38y1gvmY2ONavrw5maA=
+Received: by mx.zohomail.com with SMTPS id 1780677733010276.20170001455165;
+	Fri, 5 Jun 2026 09:42:13 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id 82C56181D83; Fri, 05 Jun 2026 18:42:06 +0200 (CEST)
+Date: Fri, 5 Jun 2026 18:42:06 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Luca Ceresoli <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v2 05/12] drm/bridge: synopsys: dw-dp: Add follow-up
+ bridge support
+Message-ID: <aiL4lUUa9j6_irAz@venus>
+References: <20260501-synopsys-dw-dp-improvements-v2-0-d7e7f6bac77f@collabora.com>
+ <20260501-synopsys-dw-dp-improvements-v2-5-d7e7f6bac77f@collabora.com>
+ <177918892313.537125.10814687633426590148.b4-review@b4>
 MIME-Version: 1.0
-In-Reply-To: <20260604220802.119107-2-macroalpha82@gmail.com>
+In-Reply-To: <177918892313.537125.10814687633426590148.b4-review@b4>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.2.1.5.2/280.674.88
+X-ZohoMailClient: External
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260605_094258_476883_1F0A88FF 
+X-CRM114-Status: GOOD (  19.52  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,188 +76,102 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============8393872986999072928=="
+Cc: Heiko =?utf-8?Q?St=C3=BCbner?= <heiko@sntech.de>, dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Andrzej Hajda <andrzej.hajda@intel.com>, kernel@collabora.com, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Robert Foss <rfoss@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>, Jonas Karlman <jonas@kwiboo.se>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Damon Ding <damon.ding@rock-chips.com>, linux-arm-kernel@lists.infradead.org, Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>, Neil Armstrong <neil.armstrong@linaro.org>, Dmitry Baryshkov <lumag@kernel.org>, Sandy Huang <hjc@rock-chips.com>, Alexey Charkov <alchark@gmail.com>, Thomas Zimmermann <tzimmermann@suse.de>, Andy Yan <andy.yan@rock-chips.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>
+Content-Type: multipart/mixed; boundary="===============0010427640584300729=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
 
---===============8393872986999072928==
+--===============0010427640584300729==
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qPUAUEUfyNDhO6Kw"
+	protocol="application/pgp-signature"; boundary="m4w4l56frz4pgctv"
 Content-Disposition: inline
 
 
---qPUAUEUfyNDhO6Kw
-Content-Type: text/plain; charset=us-ascii
+--m4w4l56frz4pgctv
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v2 05/12] drm/bridge: synopsys: dw-dp: Add follow-up
+ bridge support
+MIME-Version: 1.0
 
-On Thu, Jun 04, 2026 at 05:07:56PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+Hello Luca,
+
+On Tue, May 19, 2026 at 01:08:43PM +0200, Luca Ceresoli wrote:
+> On Fri, 01 May 2026 00:20:32 +0200, Sebastian Reichel <sebastian.reichel@=
+collabora.com> wrote:
+> > diff --git a/drivers/gpu/drm/bridge/synopsys/dw-dp.c b/drivers/gpu/drm/=
+bridge/synopsys/dw-dp.c
+> > index fc4ddb7792d7..ccc55e40e81c 100644
+> > --- a/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> > +++ b/drivers/gpu/drm/bridge/synopsys/dw-dp.c
+> > @@ -2064,6 +2064,20 @@ struct dw_dp *dw_dp_bind(struct device *dev, str=
+uct drm_encoder *encoder,
+> >  		goto unregister_aux;
+> >  	}
+> > =20
+> > +	next_bridge =3D devm_drm_of_get_bridge(dev, dev->of_node, 1, 0);
 >=20
-> Document the SG Micro sgm41542 battery charger/boost converter.
-> The parameters of input-current-limit-microamp and
-> input-voltage-limit-microvolt are defined as such since they are in
-> common use among multiple bindings currently.
+> devm_drm_of_get_bridge() looks for either a panel or a bridge. Is it
+> possible to have a panel connected here?
 >=20
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../power/supply/sgmicro,sgm41542.yaml        | 104 ++++++++++++++++++
->  1 file changed, 104 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicr=
-o,sgm41542.yaml
+> If it isn't, then using of_drm_get_bridge_by_endpoint() which has just be=
+en
+> merged [0] would be much simpler and cleaner.
+
+Technically this should always be connected to the USBDP PHY
+on the Rockchip platforms using this IP (RK3588 & RK3576) and
+there are no other upstream platforms using this code so far.
+
+Having said that, we do have some upstream DTs, which directly
+connect it to a DP connector instead (as the PHY does not yet
+expose a DRM bridge, that's being handled in a different series).
+But there is no upstream board connecting it to an eDP panel,
+so I will switch over to of_drm_get_bridge_by_endpoint().
+
+Thanks for the info.
+
+Greetings,
+
+-- Sebastian
+
 >=20
-> diff --git a/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41=
-542.yaml b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.=
-yaml
-> new file mode 100644
-> index 000000000000..a97afea83700
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
-> @@ -0,0 +1,104 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/power/supply/sgmicro,sgm41542.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: SGM41542 Battery Charger
-> +
-> +description:
-> +  The SGMicro SGM41542 is a single cell battery charger/boost controller.
-> +
-> +maintainers:
-> +  - Chris Morgan <macromorgan@hotmail.com>
-> +  - Xu Shengfei <xsf@rock-chips.com>
-> +
-> +allOf:
-> +  - $ref: power-supply.yaml#
-> +
-> +properties:
-> +  compatible:
-> +    const: sgmicro,sgm41542
-> +
-> +  input-current-limit-microamp:
-> +    description:
-> +      Optional value to clamp the maximum input current limit to for
-> +      the device. If omitted, the default value for the hardware will
-> +      be used (2400000).
-> +    minimum: 100000
-> +    maximum: 3800000
-
-Instead of the text,
-default: 2400000
-
-> +
-> +  input-voltage-limit-microvolt:
-> +    description:
-> +      Optional value to clamp the maximum input voltage limit to for
-> +      the device. If omitted, the default value for the hardware will
-> +      be used (4500000).
-> +    minimum: 3900000
-> +    maximum: 12000000
-
-Same here.
-pw-bot: changes-requested
-
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  monitored-battery:
-> +    description: |
-> +        A phandle to a monitored battery node. Values for the following
-> +        are used by the driver and if not present will result in default
-> +        values being applied:
-
-I saw the wording "The charger uses the following battery properties"
-elsewhere, and I think that's superior to what's here.
-
-I had a quick check and didn't notice other devices that talked about
-defaults here. I feel like it's probably a good idea to state in the
-binding what the defaults are, so that if u-boot or whatever grows a
-support for this hardware that it uses the same ones.
-
-Cheers,
-Conor.
-
-> +        constant-charge-current-max-microamp
-> +        constant-charge-voltage-max-microvolt
-> +        charge-term-current-microamp
-> +        precharge-current-microamp
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  regulators:
-> +    type: object
-> +    properties:
-> +      otg-vbus:
-> +        type: object
-> +        description: OTG boost regulator
-> +        $ref: /schemas/regulator/regulator.yaml
-> +        unevaluatedProperties: false
-> +    additionalProperties: false
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +unevaluatedProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/gpio/gpio.h>
-> +    #include <dt-bindings/interrupt-controller/irq.h>
-> +
-> +    battery: battery {
-> +      compatible =3D "simple-battery";
-> +      constant-charge-current-max-microamp =3D <10000000>;
-> +      constant-charge-voltage-max-microvolt =3D <4350000>;
-> +      precharge-current-microamp =3D <180000>;
-> +      charge-term-current-microamp =3D <300000>;
-> +    };
-> +
-> +    i2c {
-> +      #address-cells =3D <1>;
-> +      #size-cells =3D <0>;
-> +
-> +      charger@3b {
-> +        compatible =3D "sgmicro,sgm41542";
-> +        reg =3D <0x3b>;
-> +        input-current-limit-microamp =3D <3000000>;
-> +        input-voltage-limit-microvolt =3D <4500000>;
-> +        interrupt-parent =3D <&gpio0>;
-> +        interrupts =3D <26 IRQ_TYPE_EDGE_FALLING>;
-> +        monitored-battery =3D <&battery>;
-> +
-> +        regulators {
-> +          otg-vbus {
-> +            regulator-max-microvolt =3D <5000000>;
-> +            regulator-min-microvolt =3D <5000000>;
-> +          };
-> +        };
-> +      };
-> +    };
+> [0] https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/03d1078112fdd=
+d706b2c1e4a7d98cf18700eb5df
+>=20
+> Luca
+>=20
 > --=20
-> 2.43.0
+> Luca Ceresoli, Bootlin
+> Embedded Linux and Kernel engineering
+> https://bootlin.com
 >=20
 
---qPUAUEUfyNDhO6Kw
+--m4w4l56frz4pgctv
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaiL7rwAKCRB4tDGHoIJi
-0mKMAP9UBWWsn0nk706W2BW6upSfQePXcQHPHZjnStuT5icFSQD8DRsbvFIwJ7di
-mIQLiuGkoY5qnuCCy+mKIF1oYI5sWgE=
-=z3h5
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmoi/FMACgkQ2O7X88g7
++pphnA//Ybl+zfoxQYVFEOrEKJfflb05xZ7uBHTS161zwMfNHamKHq0m5XtJ0Cfy
+5HrJ/AQ8R5Eizb3kI09PWMimzpjr/9pDFo7d1xb25zzP42pPFsCniXq1W4p/+D39
+tsiUc7RruHWxniCf4xsZHSyYQd1L05KUwPbldLV1n7P+GEp5qGdmpsCPtlCxNJxr
+SJv1dGUo6Oq/enMdVd7Qs7gfE6ZQWXQ3+EHACruc7OldzfQoxi9L6+LFigsk8eAJ
+9zxlu/MVy7rDhRNLzZ0JApYpXpbPz/G5mbCQFEbAhRrf1YRhiSwE3XtVyvicBUXL
+8YeA+0/2e2W4WygQnC8B7bbOwnwaCYaek2hr5ftlVSjax8pLSJyH9LxGAgxY0tLF
+hxTl88B9PjKJUF8zTJLasGn/amgbB2amzfQKFxn8HYxQHy3k4MuP4uyhPE4PoVWH
+5CH5HQF/sHk9eEwoMowUI9Lvn8hM6iRkh2djcm4LzdAlfeVMRiV45V0nYlhvMIHZ
+d6h182Vgk6yxsIhTv0bNHjkU4VTi9nslIyOhGi4hnin9BrdLdhfl+5RHQVNCb4pX
+Re7DOKH8LtCN9TJkwJL7pHsN6dCdnWyYkiJc8Am2nkiNZQDXrpoZGDzxDrwU8aJZ
+uyDrcem4Z+CEK8DSg6I24U5a5vJa/WPLK5VN7EF1QpXO/vij2S0=
+=dAt0
 -----END PGP SIGNATURE-----
 
---qPUAUEUfyNDhO6Kw--
+--m4w4l56frz4pgctv--
 
 
---===============8393872986999072928==
+--===============0010427640584300729==
 Content-Type: text/plain; charset="us-ascii"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7bit
@@ -262,5 +182,5 @@ Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
 
---===============8393872986999072928==--
+--===============0010427640584300729==--
 
