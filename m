@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEFD1CD6E6E
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 01:59:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66580CD6E7C
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 02:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=MYqYrqbgwMZGLtsJ0+JGUBRKFOC2e8eFUeKL2j0PPPY=; b=JlpYyRnff0+WCc
-	n3KTBoTsWnv9b0vl8hNwsodxf6FGOeQWuk9pdYHoVdNOE8xXLmfvLSNm8g/DbP17MiW9We3AEaJMg
-	tgL9ek/1GxNH+VKY1J/BnlRDpAzVCmrl5X0DbFXTC6OfnLlP7z6dICrxoY+sXtv0vux27DMOcm8fY
-	6mJVkV+8wP3trkYxCKeSWRrAbPAljBsKSS3ZJ2KuZEajuodJVH6vA5ROzcgyxjFgUnnmyQm5mzNGx
-	Yxh5tMNxN8acgXSVVbijGm1/PixzOuNfUrirc6wsh5l76pR+iKBcTse2xrums7RVk0O2a9m4lx7yi
-	oVglQbco8uf4xHdL3f5w==;
+	List-Owner; bh=HiKpRtBc+F5L/K+y0BVY5MAAhbGvUEltU0ejcJ9A5h0=; b=AdIoobx6UmRiEA
+	YhhxxIAGYVdXPjM5AXWJIIropx8lmrM2pPt8zwqmpmc0ACmwtnCe94C/VCTZ6nuEpGkvGL0YSy73y
+	2BfQif2zQrgwpukbXBm2K5B9/NaCM5NM5ZtmgihKPAzkKfHNs3Uy6ayIpunUWi16wntoz/ALDKC+O
+	By2hDQSHjpPr3VD160Yjc7sRAyqr8kTjbz6t7BI/dcuX4RVnsYudXkHL5TAB/DqTHVmDpPT3GxINB
+	61GyzLeiACDnPsYqJ81/uIfm4c2oZL9qaE+3gbtUqdhfPq5Ono1CsDMo+t+6+iHXTRArhyGSvOixa
+	Dnhjm4scFy+1YJDKiQOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVJqP-0000000HYJh-1dr6;
-	Fri, 05 Jun 2026 01:59:33 +0000
-Received: from mail-m24112.xmail.netease.com ([45.195.24.112])
+	id 1wVKDV-0000000HZsp-0lok;
+	Fri, 05 Jun 2026 02:23:25 +0000
+Received: from mail-m2416.xmail.ntesmail.com ([45.195.24.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVJqM-0000000HYIl-1zXM;
-	Fri, 05 Jun 2026 01:59:32 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 412827f77;
-	Fri, 5 Jun 2026 09:59:26 +0800 (GMT+08:00)
-Message-ID: <e44b506e-e9d2-48e3-acea-ab28b7be9b37@rock-chips.com>
-Date: Fri, 5 Jun 2026 09:59:24 +0800
+	id 1wVKDS-0000000HZqz-1ie7;
+	Fri, 05 Jun 2026 02:23:24 +0000
+Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 412944cfa;
+	Fri, 5 Jun 2026 10:23:18 +0800 (GMT+08:00)
+From: Damon Ding <damon.ding@rock-chips.com>
+To: robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	heiko@sntech.de
+Subject: [PATCH v11 2/3] arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+Date: Fri,  5 Jun 2026 10:23:04 +0800
+Message-Id: <20260605022305.3058853-3-damon.ding@rock-chips.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260605022305.3058853-1-damon.ding@rock-chips.com>
+References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 6/9] iommu/rockchip: Clear AUTO_GATING bit 1 on the
- RK356x v1 IOMMU
-To: Midgy BALON <midgy971@gmail.com>
-Cc: Simon Xue <xxm@rock-chips.com>, tomeu@tomeuvizoso.net,
- ogabbay@kernel.org, heiko@sntech.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, joro@8bytes.org, will@kernel.org, robin.murphy@arm.com,
- dri-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org,
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- iommu@lists.linux.dev, linux-kernel@vger.kernel.org
-References: <20260604135255.62682-1-midgy971@gmail.com>
- <20260604135255.62682-7-midgy971@gmail.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260604135255.62682-7-midgy971@gmail.com>
-X-HM-Tid: 0a9e9581b64203a7kunm811ff8bb36f5c
+X-HM-Tid: 0a9e9597906603a8kunm9494c848401a1
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTUtDVk1PTUMZSk1LSElDTlYVFA
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHRpKVh1LGRpPGBpOTkkeTFYVFA
 	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
 	9PT0hVSktLVUpCS0tZBg++
 DKIM-Signature: a=rsa-sha256;
-	b=Y3Bvc45CIW1NaueqHEUkrrc13tHP57PqG6D2cUlho677APrf8hPJYnVsf6QyD0Zk7yVvbfA0ZPSedpeaoQA52ct4LgKHetxAmjcdQmZWwmJ+EqDR7sdzv54ClZGO6nzhL/GGcQNa0SaMChUshrzbZtTRabCXibPw3II/YdwRamU=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=JhwLEVlbuMyJ2TM379GNJ3NbYdaquaVpgzGyK/FsXPQ=;
+	b=QeR2R4AH26+DWH/4sQHJtZA53PIVdzRoRMUGCyr4r9nijT5A0cxY95AaCuTx0Ay1UbY9QU722TgU7LfHCXEU1LShxXrlny9N9TIFhZ4eWYFFPF7Xx7KyTH6Lxa6l+yteNpstd2CCsVB9Z5p+hLsKKve5Ys8OihuGeReZ/X2ApM0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=FSnd82QhzgsTc9VLihugRZhMWxwKpTg7Bj65m7IRRDM=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_185931_104597_DD9CCC6C 
-X-CRM114-Status: GOOD (  17.17  )
+X-CRM114-CacheID: sfid-20260604_192322_666666_D301470A 
+X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,81 +66,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Cc: detlev.casanova@collabora.com, devicetree@vger.kernel.org, sebastian.reichel@collabora.com, linux-kernel@vger.kernel.org, linux-rockchip@lists.infradead.org, Damon Ding <damon.ding@rock-chips.com>, alchark@gmail.com, michael.riesch@collabora.com, andy.yan@rock-chips.com, nicolas.frattaroli@collabora.com, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hello Midgy,
+Add the required HCLK_VO1 bus clock to RK3588 eDP1 node with
+corresponding clock-name "hclk". This clock is necessary for
+the eDP controller to access video output GRF and work properly.
 
-On 6/4/2026 9:52 PM, Midgy BALON wrote:
-> On the RK356x v1 IOMMU, RK_MMU_AUTO_GATING resets to 0x3. Bit 1 enables
-> auto clock-gating of the page-table walker, so the walker's AXI master
-> loses its clock between transactions; a TLB-miss page walk then never
-> completes and the IOMMU is left stuck (PAGING_ENABLED, never IDLE).
-> 
-> Clear bit 1 (keeping bit 0, the slave-port gate) once paging is enabled
-> so the walker keeps its clock. This is required for the RK3568 NPU MMU.
-> 
-> Signed-off-by: Midgy BALON <midgy971@gmail.com>
-> ---
->  drivers/iommu/rockchip-iommu.c | 12 ++++++++++++
->  1 file changed, 12 insertions(+)
-> 
-> diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-> index 4da80136933c4..e3d8b6e9ca12b 100644
-> --- a/drivers/iommu/rockchip-iommu.c
-> +++ b/drivers/iommu/rockchip-iommu.c
-> @@ -953,6 +953,18 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
->  
->  	ret = rk_iommu_enable_paging(iommu);
->  
-> +	if (!ret) {
-> +		/*
-> +		 * RK356x v1 IOMMU: RK_MMU_AUTO_GATING bit 1 enables page-walker
-> +		 * auto clock-gating; the walker's AXI master then loses its clock
-> +		 * between transactions and a TLB-miss page walk never completes,
-> +		 * leaving the IOMMU stuck (PAGING_ENABLED, never IDLE).  Clear
-> +		 * bit 1 (keep bit 0, the slave-port gate) once paging is enabled.
-> +		 */
-> +		for (i = 0; i < iommu->num_mmu; i++)
-> +			rk_iommu_write(iommu->bases[i], RK_MMU_AUTO_GATING, 0x2);
-> +	}
-> +
->  out_disable_stall:
->  	rk_iommu_disable_stall(iommu);
->  out_disable_clocks:
+Previously the clock was enabled implicitly via GRF phandle
+reference. Add it explicitly now to align with updated binding.
 
-As I said, it is v2. Could you please try using the code below
-instead and see if it works? Thank you.
+Fixes: a481bb0b1ad9 ("arm64: dts: rockchip: Add eDP1 dt node for rk3588")
+Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
 
-diff --git a/drivers/iommu/rockchip-iommu.c b/drivers/iommu/rockchip-iommu.c
-index 0013cf196c57..89e3a83a0251 100644
---- a/drivers/iommu/rockchip-iommu.c
-+++ b/drivers/iommu/rockchip-iommu.c
-@@ -930,6 +930,7 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
-        struct iommu_domain *domain = iommu->domain;
-        struct rk_iommu_domain *rk_domain = to_rk_domain(domain);
-        int ret, i;
-+       u32 auto_gate;
- 
-        ret = clk_bulk_enable(iommu->num_clocks, iommu->clocks);
-        if (ret)
-@@ -948,6 +949,10 @@ static int rk_iommu_enable(struct rk_iommu *iommu)
-                               rk_ops->mk_dtentries(rk_domain->dt_dma));
-                rk_iommu_base_command(iommu->bases[i], RK_MMU_CMD_ZAP_CACHE);
-                rk_iommu_write(iommu->bases[i], RK_MMU_INT_MASK, RK_MMU_IRQ_MASK);
-+
-+               auto_gate = rk_iommu_read(iommu->bases[i], RK_MMU_AUTO_GATING);
-+               auto_gate |= BIT(31);
-+               rk_iommu_write(iommu->bases[i], RK_MMU_AUTO_GATING, auto_gate);
-        }
- 
-        ret = rk_iommu_enable_paging(iommu);
+---
 
+Changes in v4:
+- Modify the commit msg.
+---
+ arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+index a2640014ee04..b251bb129cdb 100644
+--- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
++++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
+@@ -285,8 +285,8 @@ hdmi1_out: port@1 {
+ 	edp1: edp@fded0000 {
+ 		compatible = "rockchip,rk3588-edp";
+ 		reg = <0x0 0xfded0000 0x0 0x1000>;
+-		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>;
+-		clock-names = "dp", "pclk";
++		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>, <&cru HCLK_VO1>;
++		clock-names = "dp", "pclk", "hclk";
+ 		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH 0>;
+ 		phys = <&hdptxphy1>;
+ 		phy-names = "dp";
 -- 
-Best, 
-Chaoyi
+2.34.1
+
 
 _______________________________________________
 Linux-rockchip mailing list
