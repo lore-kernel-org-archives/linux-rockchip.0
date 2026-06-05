@@ -4,59 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F980CD6E74
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 10:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC6C1CD6E74
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 10:15:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
 	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=AM+GTQnNGbaRkGXY9khFI/5JgP+FW8tTJxUseGwLNds=; b=nZ3iC1C8beiZ/A
-	0FzXCOvJNXKP+cTVnCz9x8XILcst3gp0aGM1rwp38WiItFWEOs/7jKZLnZdRv2rZg1P6V0AFz1gRU
-	t7t5FEHY0wR9r52wpV6G6vLLbPlly3gkw2Nzvsz9EgjDYJpKlo+jmkeLRE+AvQgs2lnST10KNOJkn
-	29HjbgnY22UR4WgN91Kq48dwlMaRLuiZ0nxQIzs6JdJP3sWL/6wYkj18TmDpyn7IX1+6hXcS38TiV
-	kt6p7KykCvdZy5xDDAFePDrFSviQ7Z2uTJdnI01jFcwehu/e7DrZHJlZskWmrSYQ+hhmXZ6mSxQIc
-	iXZ2jN8eoqvrql7V0AoQ==;
+	List-Owner; bh=JKxZGchJVsLZfxKwaWBr1HcKao+vIvhZa5zbdY5sRMQ=; b=MMWkx3JyyXsagt
+	oS3FiyInwmpBV2cDgYEVe5cIhX61+GTk9vv8JxNs2vhy6gsBqzX5sr2x3WmMeoEoBSiE6cvYNTkIv
+	EjtdzFo4UgGn/9BM5OlmkPc+6WhiTaeEKs9wvoy3YVGJpZjzobTET+UOYx7MlSGt14uLNMptvxQuv
+	RAsSoPY+Y648EXLP7atNskqmvSKxZ73B0PvKUiQnnVCxW4t0NK3fBeuM9InBGUIgIc8lwOz8tb3u2
+	hiQhptVgqgvw8SvVz9iJ/yVNz0sD10Pb2o6Z+rSsHDEFnEI0Dgyztav6qmPY9728lWjWg4oo06ubd
+	3I7EKytoTRQRqOkfnjhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVROf-00000000SXp-1R0c;
-	Fri, 05 Jun 2026 10:03:25 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1wVRa3-00000000T8r-3Qho;
+	Fri, 05 Jun 2026 10:15:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVROd-00000000SXa-3SjH
-	for linux-rockchip@lists.infradead.org;
-	Fri, 05 Jun 2026 10:03:23 +0000
+	id 1wVRa1-00000000T8U-3Mss;
+	Fri, 05 Jun 2026 10:15:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 22FF542CBD;
-	Fri,  5 Jun 2026 10:03:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A9D31F00893;
-	Fri,  5 Jun 2026 10:03:21 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 41D78601DD;
+	Fri,  5 Jun 2026 10:15:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2124B1F00893;
+	Fri,  5 Jun 2026 10:15:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780653803;
-	bh=S7BMO8cpcnRmf/pdVAVdW2RAssH+EVoJVhCq/grmx9E=;
+	s=k20260515; t=1780654509;
+	bh=r7y2qdW5Y46qla434jE+ACDcxuUp7VYaUzScisOjV1M=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=eg8GsaXu63euOYEvi0ZAFb3GboTIFgfUUQgee2nHiYbTzEsCdsvBfif7HlHFW2ZBA
-	 AInNaXOsSRkuXAlaX4doBl36un7RRwUvI7kVKqd6aMegM7zfLAsv/diHk2T6vE1OXe
-	 G+JyftXGdvDsuVAt6o4rd/jUkV2Pxphfj/uP9BP++8TkJUdv/AbWCUsRViN8GlyejZ
-	 +53PeGzULhrUnWKpC1AWDmMCV9P/TEFA7fmpdCEKMcR8XC6hGfyhRPeTNE4LPxhgPT
-	 hIUSmaLnxQF3L27J/FqFWFXvqIhdEa3gSGM9JG51D4qci2OzOHTXCsWe4bylYzr0wK
-	 h9h+/xvu1VncA==
-Date: Fri, 5 Jun 2026 12:03:19 +0200
+	b=F82/u//5JDX2dTDcRFEv9je27+ld+9WY+9ZCskT7v2oJXptF382qOUzVClTmsuo+V
+	 xeHRgOMpeotK49P6LPZtnH9DZCpKTIkoV9xp2zPH4/JfizCqH3kkc5Py2+r/Hfl5ij
+	 iMXNQbp+gjntUH458ZSsJS+vCgTDmrXgY1cBvfXn84kMXV/sDadXvxQDem17HEAUgO
+	 yib3mv6czHrFlBXlPtf2fcT85vFWz79w551fanyRDlTVQFsIbaIJWdZFjzOWSt0dLT
+	 Ml7+94C0eJn8igOLHJmy/mN3LWuY6/ftO5IyTqCfNXk2MpSanrgeuFCRgbSPVxfuWr
+	 ZY7+QTyhcNZpg==
+Date: Fri, 5 Jun 2026 12:15:05 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Chris Morgan <macroalpha82@gmail.com>
-Cc: linux-iio@vger.kernel.org, andy@kernel.org, nuno.sa@analog.com, 
-	dlechner@baylibre.com, jic23@kernel.org, jean-baptiste.maneyrol@tdk.com, 
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, heiko@sntech.de, conor+dt@kernel.org, 
-	krzk+dt@kernel.org, robh@kernel.org, andriy.shevchenko@intel.com, 
-	Chris Morgan <macromorgan@hotmail.com>
-Subject: Re: [PATCH V10 2/9] dt-bindings: iio: imu: icm42600: Add icm42607
-Message-ID: <20260605-big-auk-of-progress-c99b3a@quoll>
-References: <20260604201832.60656-1-macroalpha82@gmail.com>
- <20260604201832.60656-3-macroalpha82@gmail.com>
+To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
+Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 0/3] arm64: dts: rockchip: add Vicharak Axon board
+ support
+Message-ID: <20260605-supportive-exuberant-serval-cc42c0@quoll>
+References: <20260601162143.170030-1-hrushirajg23@gmail.com>
 MIME-Version: 1.0
 Content-Disposition: inline
-In-Reply-To: <20260604201832.60656-3-macroalpha82@gmail.com>
+In-Reply-To: <20260601162143.170030-1-hrushirajg23@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,21 +70,14 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Thu, Jun 04, 2026 at 03:18:24PM -0500, Chris Morgan wrote:
-> From: Chris Morgan <macromorgan@hotmail.com>
+On Mon, Jun 01, 2026 at 09:51:39PM +0530, Hrushiraj Gandhi wrote:
+> This series adds initial device tree support for the Vicharak Axon
+> single-board computer, which is based on the Rockchip RK3588 SoC.
 > 
-> Add the ICM42607 and ICM42607P inertial measurement unit.
-> 
-> This device is functionally very similar to the icm42600 series with a
-> very different register layout. The driver does not require an
-> interrupt for these specific chip revisions.
-> 
-> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
-> ---
->  .../bindings/iio/imu/invensense,icm42600.yaml  | 18 +++++++++++++++++-
->  1 file changed, 17 insertions(+), 1 deletion(-)
+> The Vicharak Axon is a feature-rich SBC targeting developer and embedded
+> use cases. It ships with:
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Slow down, please. One patchset per 24h.
 
 Best regards,
 Krzysztof
