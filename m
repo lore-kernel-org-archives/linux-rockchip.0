@@ -4,56 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66580CD6E7C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E6D1CD6E6E
 	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 02:23:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:To:From:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=HiKpRtBc+F5L/K+y0BVY5MAAhbGvUEltU0ejcJ9A5h0=; b=AdIoobx6UmRiEA
-	YhhxxIAGYVdXPjM5AXWJIIropx8lmrM2pPt8zwqmpmc0ACmwtnCe94C/VCTZ6nuEpGkvGL0YSy73y
-	2BfQif2zQrgwpukbXBm2K5B9/NaCM5NM5ZtmgihKPAzkKfHNs3Uy6ayIpunUWi16wntoz/ALDKC+O
-	By2hDQSHjpPr3VD160Yjc7sRAyqr8kTjbz6t7BI/dcuX4RVnsYudXkHL5TAB/DqTHVmDpPT3GxINB
-	61GyzLeiACDnPsYqJ81/uIfm4c2oZL9qaE+3gbtUqdhfPq5Ono1CsDMo+t+6+iHXTRArhyGSvOixa
-	Dnhjm4scFy+1YJDKiQOQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-Id:Date:Subject:To
+	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=zluy+2lfjWFgLjIqt0nf6POT6tnFYrpjfTZ7aI7Qu9g=; b=U577bmEKJ5E/Dl
+	4TwuF1wQFXcNx1Zuz5G2Ps8arUMxPi3oZMuJLPqBq9ij6P3M8YU6eJczzidxALYrhROb9cp37qdHE
+	c2RxDhc1UoeQpaFHlDXlnYlKZa4cZNRyLTNKvWM5TidppDJuHs0O56+1OdcVCDRRaeTMKhbU54eyG
+	G9ymLOwcmt5a5pRKRvJ5q+RNvx0ABUUY5sYUXuTbC7tndYf/bL4N9mGHOgj3lU7KOmgDUuVflnkL4
+	dg+K0ZFrE/L/ESGiwLHjRLuwuuzvW/qgDkliPZDgAg7Huo3bBNafGBUeZUCeCSe0SRqR8qo3LAOiP
+	yjMSd/rRZYCWsqSBaYlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVKDV-0000000HZsp-0lok;
+	id 1wVKDV-0000000HZsc-01gh;
 	Fri, 05 Jun 2026 02:23:25 +0000
-Received: from mail-m2416.xmail.ntesmail.com ([45.195.24.16])
+Received: from mail-m82185.xmail.ntesmail.com ([156.224.82.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVKDS-0000000HZqz-1ie7;
-	Fri, 05 Jun 2026 02:23:24 +0000
+	id 1wVKDR-0000000HZqx-0P6G;
+	Fri, 05 Jun 2026 02:23:23 +0000
 Received: from zyb-HP-ProDesk-680-G2-MT.. (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 412944cfa;
-	Fri, 5 Jun 2026 10:23:18 +0800 (GMT+08:00)
+	by smtp.qiye.163.com (Hmail) with ESMTP id 412944ced;
+	Fri, 5 Jun 2026 10:23:16 +0800 (GMT+08:00)
 From: Damon Ding <damon.ding@rock-chips.com>
 To: robh@kernel.org,
 	krzk+dt@kernel.org,
 	conor+dt@kernel.org,
 	heiko@sntech.de
-Subject: [PATCH v11 2/3] arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
-Date: Fri,  5 Jun 2026 10:23:04 +0800
-Message-Id: <20260605022305.3058853-3-damon.ding@rock-chips.com>
+Subject: [PATCH v11 0/3] Add eDP support for RK3576
+Date: Fri,  5 Jun 2026 10:23:02 +0800
+Message-Id: <20260605022305.3058853-1-damon.ding@rock-chips.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260605022305.3058853-1-damon.ding@rock-chips.com>
-References: <20260605022305.3058853-1-damon.ding@rock-chips.com>
 MIME-Version: 1.0
-X-HM-Tid: 0a9e9597906603a8kunm9494c848401a1
+X-HM-Tid: 0a9e9597895003a8kunm9494c84840184
 X-HM-MType: 1
 X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDHRpKVh1LGRpPGBpOTkkeTFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCSR4eVkofS0xDSx4dH0wdSVYVFA
+	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSE
+	pKQk1VSktLVUpCWQY+
 DKIM-Signature: a=rsa-sha256;
-	b=QeR2R4AH26+DWH/4sQHJtZA53PIVdzRoRMUGCyr4r9nijT5A0cxY95AaCuTx0Ay1UbY9QU722TgU7LfHCXEU1LShxXrlny9N9TIFhZ4eWYFFPF7Xx7KyTH6Lxa6l+yteNpstd2CCsVB9Z5p+hLsKKve5Ys8OihuGeReZ/X2ApM0=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
-	bh=FSnd82QhzgsTc9VLihugRZhMWxwKpTg7Bj65m7IRRDM=;
+	b=ewF0gHb2zHUhiXplbtvTOiSdLmIrvk2wdjGSa3oZuRSgLnSPGyinOjtTNeX5rpkfpgKs072cLKevW9ysr47eTnYLsDIBn6J2iO3nec+AcinsH9ATOiNb9/5IdegKIM9mEDxA7wgYh8KrYDTP1lxk4ka0KJw3/QKikNHIsqnB58U=; s=default; c=relaxed/relaxed; d=rock-chips.com; v=1;
+	bh=qmd31Xl8YEPF78aS746HOGoMm6a1yS/+/Q2ASXjijrU=;
 	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260604_192322_666666_D301470A 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20260604_192321_897802_EF94366A 
+X-CRM114-Status: UNSURE (   9.02  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -72,39 +70,61 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Add the required HCLK_VO1 bus clock to RK3588 eDP1 node with
-corresponding clock-name "hclk". This clock is necessary for
-the eDP controller to access video output GRF and work properly.
+Picked from:
+https://lore.kernel.org/all/20260601065100.1103873-1-damon.ding@rock-chips.com/
 
-Previously the clock was enabled implicitly via GRF phandle
-reference. Add it explicitly now to align with updated binding.
+Patch 1-2 are to add missing clock "hclk" for RK3588 eDP nodes.
+Patch 3 is to add the RK3576 eDP node.
 
-Fixes: a481bb0b1ad9 ("arm64: dts: rockchip: Add eDP1 dt node for rk3588")
-Signed-off-by: Damon Ding <damon.ding@rock-chips.com>
+Damon Ding (3):
+  arm64: dts: rockchip: Add missing hclk for RK3588 eDP0
+  arm64: dts: rockchip: Add missing hclk for RK3588 eDP1
+  arm64: dts: rockchip: Add eDP node for RK3576
+
+ arch/arm64/boot/dts/rockchip/rk3576.dtsi      | 28 +++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk3588-base.dtsi |  4 +--
+ .../arm64/boot/dts/rockchip/rk3588-extra.dtsi |  4 +--
+ 3 files changed, 32 insertions(+), 4 deletions(-)
 
 ---
+
+Changes in v2:
+- Split out separate patches to add the "hclk" clock reference.
+- Split out separate patches to enable the "hclk" clock.
+- Add Reviewed-by tag.
+
+Changes in v3:
+- Add a patch to expand descriptions for clocks of the eDP node.
+- Add Reviewed-by tag.
 
 Changes in v4:
-- Modify the commit msg.
----
- arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+- Modify commit msg.
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-index a2640014ee04..b251bb129cdb 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-extra.dtsi
-@@ -285,8 +285,8 @@ hdmi1_out: port@1 {
- 	edp1: edp@fded0000 {
- 		compatible = "rockchip,rk3588-edp";
- 		reg = <0x0 0xfded0000 0x0 0x1000>;
--		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>;
--		clock-names = "dp", "pclk";
-+		clocks = <&cru CLK_EDP1_24M>, <&cru PCLK_EDP1>, <&cru HCLK_VO1>;
-+		clock-names = "dp", "pclk", "hclk";
- 		interrupts = <GIC_SPI 164 IRQ_TYPE_LEVEL_HIGH 0>;
- 		phys = <&hdptxphy1>;
- 		phy-names = "dp";
+Changes in v5:
+- Enforce the correct third clock name on a per-compatible basis.
+- Modify the commit msg simultaneously.
+- Add Acked-by tag.
+
+Changes in v6:
+- Expand more detail commit msg about using hclk instead of grf clock.
+
+Changes in v7:
+- List all valid clock names at the top level, and constrain the clock
+  count for each platform with minItems/maxItems in allOf.
+
+Changes in v8:
+- Fix indentation to 10 for enum in clock-names property.
+
+Changes in v9:
+- Restore the explicit clock-names for RK3399 and RK3588 eDP dt-bindings.
+
+Changes in v10:
+- Use automatic cleanup to fix OF node reference leak reported by
+  Sashiko.
+
+Changes in v11:
+- Pick and rebase DT related patches.
+
 -- 
 2.34.1
 
