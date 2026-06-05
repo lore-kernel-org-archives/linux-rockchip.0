@@ -4,56 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC6C1CD6E74
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 10:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5977CD6E79
+	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 11:49:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:MIME-Version:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=JKxZGchJVsLZfxKwaWBr1HcKao+vIvhZa5zbdY5sRMQ=; b=MMWkx3JyyXsagt
-	oS3FiyInwmpBV2cDgYEVe5cIhX61+GTk9vv8JxNs2vhy6gsBqzX5sr2x3WmMeoEoBSiE6cvYNTkIv
-	EjtdzFo4UgGn/9BM5OlmkPc+6WhiTaeEKs9wvoy3YVGJpZjzobTET+UOYx7MlSGt14uLNMptvxQuv
-	RAsSoPY+Y648EXLP7atNskqmvSKxZ73B0PvKUiQnnVCxW4t0NK3fBeuM9InBGUIgIc8lwOz8tb3u2
-	hiQhptVgqgvw8SvVz9iJ/yVNz0sD10Pb2o6Z+rSsHDEFnEI0Dgyztav6qmPY9728lWjWg4oo06ubd
-	3I7EKytoTRQRqOkfnjhg==;
+	Content-Transfer-Encoding:Content-Type:Reply-To:List-Subscribe:List-Help:
+	List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id
+	:Date:Subject:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=DNgmj32uMwmCQXmh7ua+t/m4qW7jYuE61uoegrUyD8E=; b=E4UNRa0v5KW8YQ
+	bn55xfEoVl06/CCgQvYtFip4hhYN1Ut21VChNnF0cO0ei1fWbEV16CmeSrwZ/4S00z7ZEhhIWTWQS
+	uu+ZcmSy3KmpFpMb3tll+V4oizme8zNBa7SyebfLIPKsrkW5MFklWa1WcU3FfeC1FLo9k4yFix+mo
+	R3fAPAjuyYWreAqaM+NE6bohI1mvM3I+TP/ZsGsJhkSGT3j/KygLcJ+w95h3vWWnfbfDuDkQwqE5C
+	uInpeJebEAlut8qlrW3yeoc503iWbbTH9+RgHOvFh+xHAZAtn19a6ORGdV5q4fITgcAH008efg4H3
+	FFZPpZu3D8ymAgdRQU6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVRa3-00000000T8r-3Qho;
-	Fri, 05 Jun 2026 10:15:11 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1wVT3E-00000000ZU2-0TDx;
+	Fri, 05 Jun 2026 11:49:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVRa1-00000000T8U-3Mss;
-	Fri, 05 Jun 2026 10:15:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 41D78601DD;
-	Fri,  5 Jun 2026 10:15:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2124B1F00893;
-	Fri,  5 Jun 2026 10:15:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1780654509;
-	bh=r7y2qdW5Y46qla434jE+ACDcxuUp7VYaUzScisOjV1M=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=F82/u//5JDX2dTDcRFEv9je27+ld+9WY+9ZCskT7v2oJXptF382qOUzVClTmsuo+V
-	 xeHRgOMpeotK49P6LPZtnH9DZCpKTIkoV9xp2zPH4/JfizCqH3kkc5Py2+r/Hfl5ij
-	 iMXNQbp+gjntUH458ZSsJS+vCgTDmrXgY1cBvfXn84kMXV/sDadXvxQDem17HEAUgO
-	 yib3mv6czHrFlBXlPtf2fcT85vFWz79w551fanyRDlTVQFsIbaIJWdZFjzOWSt0dLT
-	 Ml7+94C0eJn8igOLHJmy/mN3LWuY6/ftO5IyTqCfNXk2MpSanrgeuFCRgbSPVxfuWr
-	 ZY7+QTyhcNZpg==
-Date: Fri, 5 Jun 2026 12:15:05 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Hrushiraj Gandhi <hrushirajg23@gmail.com>
-Cc: Heiko Stuebner <heiko@sntech.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 0/3] arm64: dts: rockchip: add Vicharak Axon board
- support
-Message-ID: <20260605-supportive-exuberant-serval-cc42c0@quoll>
-References: <20260601162143.170030-1-hrushirajg23@gmail.com>
+	id 1wVT38-00000000ZQT-0i1h;
+	Fri, 05 Jun 2026 11:49:18 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 45878601DD;
+	Fri,  5 Jun 2026 11:49:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id DADB3C2BCB4;
+	Fri,  5 Jun 2026 11:49:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1780660156;
+	bh=tfvXGYpzHzgUbT4fabiFINiO/Hli57gjTIUW/sYiq14=;
+	h=From:Subject:Date:To:Cc:Reply-To:From;
+	b=TpEJ3aTqK3Ke/9+fIlU+olDB3VyMDoJDXr0r9jj66qTMUwbeANvZdSD1VeFr8zgYf
+	 gkTX4nj09ggSmo5VCvY6OIEQAq/T/cHfAEor9jgEzxtekk73N0clLTjgxSSGv/7OVd
+	 h7jqBo58NSmSUiNAqojEJiYXMArELZxIUkH26lugOrjCp5ouiGtLrDex83hNWJ7iB8
+	 7gl+EU0eH6k2VEtA/i1ArvceLVUAwHtF1TfHKDNRAKXfIlY1cgJLNDY/wvm9qTAyhi
+	 4O/SuGxqdhJqswAxgT2mcjxsP44VpHTryXZSIZXkeuONdaQ4+LEpoFWMsDYsbDRU7B
+	 dE8bUTIgRFmAQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id BF733CD6E79;
+	Fri,  5 Jun 2026 11:49:15 +0000 (UTC)
+From: Ricardo Pardini via B4 Relay <devnull+ricardo.pardini.net@kernel.org>
+Subject: [PATCH v3 0/3] describe RTL8125 PCIe NICs on Rockchip boards (and
+ add DT binding)
+Date: Fri, 05 Jun 2026 13:49:07 +0200
+Message-Id: <20260605-rk3588-dts-rtl-eth-describe-dt-alias-v3-0-8a8857b39daf@pardini.net>
 MIME-Version: 1.0
-Content-Disposition: inline
-In-Reply-To: <20260601162143.170030-1-hrushirajg23@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42OzQ6CMBAGX4X07Jq2UH48+R7GQ2kXWTWFtJVoC
+ O8uYEz0xnE2X2Z2ZAE9YWCHZGQeBwrUuRnSXcJMq90FgezMTHKZcyUz8LdUlSXYGMDHO2BswWI
+ wnmqcj6DvpAMYgVaURV0Yxdms6j029Fwzp/OHw6O+oomLe1m0FGLnX+sfg1h236TalhwECNB5Y
+ 6xWeapNcey1t+Ro7zCyJTrIX221USuBQ1YVnMusFFna/GunaXoDhth9zkMBAAA=
+X-Change-ID: 20260524-rk3588-dts-rtl-eth-describe-dt-alias-c1ed187b7c50
+To: Heiner Kallweit <hkallweit1@gmail.com>, nic_swsd@realtek.com, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ netdev@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, Ricardo Pardini <ricardo@pardini.net>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3319;
+ i=ricardo@pardini.net; h=from:subject:message-id;
+ bh=tfvXGYpzHzgUbT4fabiFINiO/Hli57gjTIUW/sYiq14=;
+ b=owGbwMvMwMFoHWf/eN7xty8ZT6slMWQpbd8l9ppxGm9Z+qldOh58e89cS7V+FJzGyqzcGLDzo
+ FtUWf7KTkZ/FgZGDgZLMUWWNRLKPN/Wvzp1x6NjMswgViaQKdIiDQxAwMLAl5uYV2qkY6Rnqm2o
+ Z2ikY6BjzMDFKQBTXfiC/X+iBof8pSn+UyotKn6xTXr3xbUg2Pj34n/ztRb/DtSuWOa0b8GhCcH
+ MFz8oeW2T7Yov5/5f5vXKTeOXhLAyn4PVp+1BvFGqy69/uyJguMPyynW93YrLNvFyl2SbRwfNe3
+ Pmc2P1wjQ2yYq5n9bY+2z6/+DvkZLL8QyvPOW/i7v38f0OsmVKflC1/ny8hOQRljmZL810+xeF3
+ SxUyrh69ECWzlZFHRkG9p2dZ4xWiuWdbPPs7vGRuSpjavPkRE695iU9g8b/mvePp+bdYNKaPz3T
+ Z+lHIb4dc/i3mjEW7LWM3ftQ6ewmw/VNvYmPF6v90ZW0K5yhxV52YnLyWcOPEott6suLbi9hX6R
+ +TVEnHAA=
+X-Developer-Key: i=ricardo@pardini.net; a=openpgp;
+ fpr=AC18230CF6AFEACADC4888933B5E3FE39EC7EDE9
+X-Endpoint-Received: by B4 Relay for ricardo@pardini.net/default with
+ auth_id=588
+X-Original-From: Ricardo Pardini <ricardo@pardini.net>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,22 +93,86 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
+Reply-To: ricardo@pardini.net
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Mon, Jun 01, 2026 at 09:51:39PM +0530, Hrushiraj Gandhi wrote:
-> This series adds initial device tree support for the Vicharak Axon
-> single-board computer, which is based on the Rockchip RK3588 SoC.
-> 
-> The Vicharak Axon is a feature-rich SBC targeting developer and embedded
-> use cases. It ships with:
+Several Rockchip rk35xx boards carry on-board Realtek RTL8125 2.5GbE
+NICs whose PCI function nodes are not described in the DT. Describing
+them allows for stable ethernetN aliases (matching the GMAC alias
+convention on these boards) and lets U-Boot's fdt_fixup_ethernet()
+inject mac-address properties from its ethaddr/ethNaddr env, so MACs
+stay stable across boots and U-Boot and kernel MAC match.
 
-Slow down, please. One patchset per 24h.
+Patch 1 adds a DT binding for Realtek r8169 family PCIe Ethernet
+controllers.
+
+Patch 2 describes the on-board RTL8125 function nodes on the
+FriendElec NanoPC-T6 (and variants).
+
+Patch 3 is the same, but for the Radxa ROCK 5B / 5B+ / 5T family
+done based on lspci output provided by helpful Armbian folks.
+
+---
+Changes in v3:
+- new patch: add a DT binding for Realtek r8169 family PCIe Ethernet
+  controllers, per Sebastian Reichel's review (the "pciVVVV,DDDD" OF
+  spelling still needs a binding when used in a board DT).
+- new patch for Rock5 series, and include a brief rationale in each.
+- retitle the series, since it now covers a few boards and a binding
+  rather than just DeviceTree changes for the NanoPC-T6.
+- drop the v2 "rename vcc3v3_pcie2x1l0 regulator" patch from this
+  series; it will be sent separately as it is not relevant to this.
+- Link to v2: https://patch.msgid.link/20260529-rk3588-dts-rtl-eth-describe-dt-alias-v2-0-49700248143f@pardini.net
+
+Changes in v2:
+- fix: pcie2x1l0, not pcie2x1l1; indirectly caught by Sashiko's review [1]
+- while-at-it: rename regulator vcc3v3_pcie2x1l0 to l1
+- Link to v1: https://patch.msgid.link/20260525-rk3588-dts-rtl-eth-describe-dt-alias-v1-1-a6fcda563ac7@pardini.net
+
+[1] https://sashiko.dev/#/patchset/20260525-rk3588-dts-rtl-eth-describe-dt-alias-v1-1-a6fcda563ac7%40pardini.net
+
+To: Heiner Kallweit <hkallweit1@gmail.com>
+To: nic_swsd@realtek.com
+To: Andrew Lunn <andrew+netdev@lunn.ch>
+To: "David S. Miller" <davem@davemloft.net>
+To: Eric Dumazet <edumazet@google.com>
+To: Jakub Kicinski <kuba@kernel.org>
+To: Paolo Abeni <pabeni@redhat.com>
+To: Rob Herring <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>
+To: Conor Dooley <conor+dt@kernel.org>
+To: Heiko Stuebner <heiko@sntech.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>
+Cc: netdev@vger.kernel.org
+Cc: devicetree@vger.kernel.org
+Cc: linux-kernel@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-rockchip@lists.infradead.org
+Signed-off-by: Ricardo Pardini <ricardo@pardini.net>
+
+---
+Ricardo Pardini (3):
+      dt-bindings: net: add Realtek r8169 family PCIe Ethernet
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on NanoPC-T6
+      arm64: dts: rockchip: describe PCIe RTL8125 Ethernet on Radxa ROCK 5 family
+
+ .../devicetree/bindings/net/realtek,r8169.yaml     | 54 ++++++++++++++++++++++
+ MAINTAINERS                                        |  1 +
+ arch/arm64/boot/dts/rockchip/rk3588-nanopc-t6.dtsi | 30 ++++++++++++
+ .../boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi   | 15 ++++++
+ arch/arm64/boot/dts/rockchip/rk3588-rock-5t.dts    | 18 ++++++++
+ 5 files changed, 118 insertions(+)
+---
+base-commit: e7ae89a0c97ce2b68b0983cd01eda67cf373517d
+change-id: 20260524-rk3588-dts-rtl-eth-describe-dt-alias-c1ed187b7c50
 
 Best regards,
-Krzysztof
+--  
+Ricardo Pardini <ricardo@pardini.net>
+
 
 
 _______________________________________________
