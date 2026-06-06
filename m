@@ -4,48 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACAA1CD6E7C
-	for <linux-rockchip@archiver.kernel.org>; Fri,  5 Jun 2026 22:19:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A33FCD6E75
+	for <linux-rockchip@archiver.kernel.org>; Sat,  6 Jun 2026 05:04:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=SGUiObMOel5wNJDz/qzvK6CsVgLvEspj7dVDyvokLkg=; b=EOu+2wz3/O/ggZ
-	qodXCzD2QeIxO2fnnuliJppPbzBSyhwzi0YoR4EztmzT1tQOCAWhRyPz3JoQCSr+4CeBL5ZfKMybW
-	SbF0YQYFKwZtHhT2YzQzKDwg+q4Rqe8NztgonDSjHoP8skEbSW2iQvgmGOcTMdZ6YzUq21QwVQk+E
-	+zZVtiQkuyBSYjrbviJBEgcb73wrBW5Nm4l9XxhaZR7q8T4o0R/7ley/ICNs7AwWej7ZpO04Qzq6e
-	7nsSutbiI/KWZkoUM/HcEMQvcxINJTTuQXNdFGX5/gCg0ZEJfjNMjaAltuVO1Hvq/V3BSHZrbWbGK
-	yhp/wDoxqpn0TXkqTqzg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	Content-Transfer-Encoding:List-Subscribe:List-Help:List-Post:List-Archive:
+	List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:Subject:
+	MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=Txg4XfQT43Y2ZnTUPYOfs8f8ys3FciYTuKi//R3jD+I=; b=3dX3VwoDPlm/ke
+	i6l6P96L6rxFpwefHNNtyoJP2aaxcFq6V5OIs6TqGQmGlRYRuXC/r1Ebw7W4OYX0Iqh0ks20m8Jr+
+	ku6Nhw35DzAkbC2y0pRjkCdxA09cSMevWn1qEaunAKLgcpzQZf8UXFcRgKCDGpOfxyHrJ9/KLvHLO
+	jgJx6wQyULhePw/OtLlZrb0lHrYW0+eMO8l3Og36ITVy9ECht032G4KgCotJ1ukjGWizxYbykyu+J
+	2TB+mUDabrHl2Sf5AcTPjwD2fW6gW49Sf72AnF3oWgF+CZ69NPvGVTcR+96zbp+ETsMgE0rTz9y6T
+	8sQzI28EBc9uZx/UArlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVcsY-00000001GcR-1jCO;
-	Fri, 05 Jun 2026 22:19:02 +0000
-Received: from gloria.sntech.de ([185.11.138.130])
+	id 1wVjCZ-00000001SHr-12Fl;
+	Sat, 06 Jun 2026 05:04:07 +0000
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wVcsW-00000001GbI-04xG;
-	Fri, 05 Jun 2026 22:19:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
-	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
-	bh=SyL+KhKJOkLBPVYqIVEYemJAAJqjAzpI1nf+X+CuAeI=; b=loz66b8dq7vrC22SV6JKCgdn34
-	hgTPGakmdzwdWJHUXt9X50+NVZoUo4lxK4zPXerHNV+3lgNVgXi07/g2qP+wswru4+ErYkLjRTmYO
-	p4PuwoqA3RAIFR8gYelrynX0d1CifSbPci/Kba8VUI10IkHhCQhnaDhi5xFBuRWED3Q3hkrjHqdL/
-	hX8hiGO9UZU1Fl1SkWBgl3SJ3zfHcJSzIFiYXmO8vD8KRedruytvxXAj7LwfTfKbdlKRThbGeBCKt
-	NcqteKD0kr7CZKGlyDSNVwECPFYjF2DD61BQD0QLUNUy7BFubjlgNsEp8hjlU+JU06EYoR7nwdWe0
-	QUlqP5KA==;
-From: Heiko Stuebner <heiko@sntech.de>
-To: arm@kernel.org
-Cc: soc@kernel.org, linux-rockchip@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org
-Subject: [GIT PULL] Rockchip dts64 changes for 7.2 #2
-Date: Sat, 06 Jun 2026 00:18:53 +0200
-Message-ID: <21578066.fAMKPKieAE@phil>
+	id 1wVjCW-00000001SH5-0Rt0
+	for linux-rockchip@lists.infradead.org;
+	Sat, 06 Jun 2026 05:04:05 +0000
+Received: by mail-ed1-x52c.google.com with SMTP id 4fb4d7f45d1cf-6914a658115so716263a12.0
+        for <linux-rockchip@lists.infradead.org>; Fri, 05 Jun 2026 22:04:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=pardini.net; s=google; t=1780722242; x=1781327042; darn=lists.infradead.org;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=Ad3Risuri9Oy23ttuXXObF+tJAD6dYgEl+kDhesPP88=;
+        b=fhJzi3b4acBqOFSq3Mf/wRsp7AGZYsE4yi8KeNKMldG7u7SraPDT2WdEfIUATmpcwZ
+         0CCe0S7F7QhWJ5PwKNcEWLSsIBHwRipUJ4DyTdnPJCrplDmamc8pIaHOt5MwJySSF21B
+         RZK7IJ587q2xnRgOsRDk0/pnam5tCNPoNAFYksudHMDV+E8aCXb9Af1ec8xE0EPmxafl
+         verKAW733pGurIpmokyyu14vzrfsJ5f3cqQF7fPf+L+FWGPJ28TjZfQwfmijphnJkUiv
+         dzIanCUswOHuLoJUXONmPa0R+n4fldy0dUH6qbiOmCrDKlCGtBLd2zwXBRwDSU5+V3Pf
+         pBFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780722242; x=1781327042;
+        h=content-transfer-encoding:in-reply-to:from:content-language
+         :references:cc:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=Ad3Risuri9Oy23ttuXXObF+tJAD6dYgEl+kDhesPP88=;
+        b=eh+Ac8yCLf9AsoJESpGg0/8wKkkM4+mtVwLWzhRZWblQwrMsNiyLndjZ0VKr9I8FiC
+         C5gNmIKpgDomNhwUJfzjTm1AiX2Lk7KYbkJeJ/Ky9tLLiyevqGEwypVyKHmpTWSLFA92
+         XA3C84GPP+ZoO9vCGSwzvEx0Sl4QOSf9LcHYzbu3WYFyDUMl2lnF1Ep6PWCMYDde1nNy
+         cA3mmriRlvG/BN29d9JZROC8jdNhEAd9IvTPLQusl2BQwS3koKhslM1QchuINk8f8U+D
+         V7KjQNe4rzGFifZ/uGacSxJBrbL5jg6U4K0l6QZUgfOyM4F64yQKm68Dde2XbqGgGkhX
+         m9ZA==
+X-Forwarded-Encrypted: i=1; AFNElJ/I+xog/v4bW5Mm+OwIz8QmHdGpbNkGMcwAY++LRvtT1zNaFbS+NB5+PJrCP0GnxvM1bc8otvcPILSjM4WIWQ==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yz/Eetva3eFst2V6nHjdbONKzMgfQPz8//tf7ri4nAMqDCWuB5Y
+	3eY2jf7b6Bomi1FAifrgCGjvd4u2oG2zBrvx20tV8eQ2dB2MfPP3/LkS5oD/fTQ0Ow==
+X-Gm-Gg: Acq92OE8koHZn+gwsXvA6Ju2qInPDc4c17f+x4kTfWw+9NtzN2V7UYOMx3UWXJVEBJ1
+	A2mjKe808Pn5dsPPhbvg4CdFzGHx+LnYy1XHP8HUxK81zgBjSrRByxvs7hCdy9dkbAEanIkF4cF
+	2WfnC0fygE3BcTazpYsTQKgUeLjAka1akzSG0rsp1Z9mSjHm7r/FDIazbaGGORfFnTMhIFEkEMW
+	eqXnfIBXUmzYu+hL7cq7Q+dJ81i8TxTTijGvW3qXk8Zp/jJ+/VbrN1ACjNWDSfOWbIwIlwIRcb3
+	YNXldCbdD7ValjRyR0NaFUaxHpObINN7MseORM7OkY4ZHdOL7SLnAzCMk5A0lB5E2KiYWqO83Cy
+	m2ySlDBRKRZyzeCGjMLnqZC8vcxR7rZ3nXGW16GXysHn2GEjq/4dR+H6/9rkmyxDb5yRMMsBKFJ
+	itosj9VoJzSzrjRTGYVBZ0N1FBdpnChQnelahVKtnw5kD8WcZx2haVXWbuplXR3UkFRazg80U1A
+	4vaGl8U3leSf9xJ74dSDb+iw0PY3wh1djArrwsxl7Y0cBNvWljKHeGKBQ0iCuftD/mYYhRHSSTn
+X-Received: by 2002:a05:6402:268f:b0:68e:4c0:f599 with SMTP id 4fb4d7f45d1cf-68fa4c16b80mr3088882a12.5.1780722241268;
+        Fri, 05 Jun 2026 22:04:01 -0700 (PDT)
+Received: from ?IPV6:2a02:a466:4d7a:0:c439:8cdb:ad2:c0fb? (2a02-a466-4d7a-0-c439-8cdb-ad2-c0fb.fixed6.kpn.net. [2a02:a466:4d7a:0:c439:8cdb:ad2:c0fb])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6915a637180sm421874a12.26.2026.06.05.22.03.59
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 05 Jun 2026 22:04:00 -0700 (PDT)
+Message-ID: <26da1dfa-3408-4654-9046-36ed6d57059c@pardini.net>
+Date: Sat, 6 Jun 2026 07:03:59 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/3] dt-bindings: net: add Realtek r8169 family PCIe
+ Ethernet
+To: Heiner Kallweit <hkallweit1@gmail.com>, nic_swsd@realtek.com,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rockchip@lists.infradead.org
+References: <20260605-rk3588-dts-rtl-eth-describe-dt-alias-v3-0-8a8857b39daf@pardini.net>
+ <20260605-rk3588-dts-rtl-eth-describe-dt-alias-v3-1-8a8857b39daf@pardini.net>
+ <b7cc8eba-ff6e-417d-8e74-b3bb24e08a26@gmail.com>
+Content-Language: en-US
+From: Ricardo Pardini <ricardo@pardini.net>
+In-Reply-To: <b7cc8eba-ff6e-417d-8e74-b3bb24e08a26@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260605_151900_116343_4F7AD196 
-X-CRM114-Status: GOOD (  12.68  )
+X-CRM114-CacheID: sfid-20260605_220404_188768_65EDCEB5 
+X-CRM114-Status: GOOD (  14.34  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -57,77 +107,84 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset="us-ascii"; Format="flowed"
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-SGkgc29jIG1haW50YWluZXJzLAoKcGxlYXNlIGZpbmQgYmVsb3cgc29tZSBtb3JlIFJvY2tjaGlw
-IERUIGNoYW5nZXMgZm9yIHRoZSBtZXJnZS13aW5kb3cKZm9yIDcuMiAuCgpUaGUgbW9zdCBpbnRl
-cmVzdGluZyBhZGRpdGlvbiBpcyBvZiBjb3Vyc2UgYmFzaWMgY2FtZXJhIHN1cHBvcnQKb24gUksz
-NTg4IHdoaWNoIGVuYWJsZXMgdW5maWx0ZXJlZCBjYW1lcmEgY2FwdHVyZSAoaS5lLiB3aXRob3V0
-CnBvc3Rwcm9jZXNzaW5nIGZvciB3aGl0ZWJhbGFuY2UgZXRjKQoKClBsZWFzZSBwdWxsLgpUaGFu
-a3MKSGVpa28KCgpUaGUgZm9sbG93aW5nIGNoYW5nZXMgc2luY2UgY29tbWl0IGViMjRiNjA1NTNl
-MDY5MmNiYmVjMjg2M2NhMzFkMmE1NmJmZjA5OGQ6CgogIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBB
-ZGQgd2F0Y2hkb2cgbm9kZSBmb3IgUkszNTI4ICgyMDI2LTA1LTA3IDEzOjI3OjUzICswMjAwKQoK
-YXJlIGF2YWlsYWJsZSBpbiB0aGUgR2l0IHJlcG9zaXRvcnkgYXQ6CgogIGh0dHBzOi8vZ2l0Lmtl
-cm5lbC5vcmcvcHViL3NjbS9saW51eC9rZXJuZWwvZ2l0L21taW5kL2xpbnV4LXJvY2tjaGlwLmdp
-dCB0YWdzL3Y3LjItcm9ja2NoaXAtZHRzNjQtMgoKZm9yIHlvdSB0byBmZXRjaCBjaGFuZ2VzIHVw
-IHRvIDg1NDVlZGEwMGZkZjNkN2UxNzkzM2NlMGY3MDZkMDA1YjFiYWQ0MmQ6CgogIGFybTY0OiBk
-dHM6IHJvY2tjaGlwOiBGaXggdmNjX3NkaW8gcmVndWxhdG9yIG1heCB2b2x0YWdlIG9uIFBpbmVi
-b29rIFBybyAoMjAyNi0wNi0wMiAyMjo0NzoxOCArMDIwMCkKCi0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0KV2UndmUgZ290IGJh
-c2ljIGNhbWVyYSBzdXBwb3J0IG9uIFJLMzU4OCEKCk5ldyBwZXJpcGhlcmFscyBSSzM1ODggdmlj
-YXAgcGx1cyBjYW1lcmEgYWRkaXRpb24gdG8gc29tZSBib2FyZHMsClJLMzUyOCBVU0IgYW5kIFVT
-QiBlbmFibGVtZW50IG9uIHNvbWUgYm9hcmRzLCBSR0EzIHN1cHBvcnQgb24gUkszNTg4LgpNaXNz
-aW5nIEVMMiB2aXJ0dWFsIHRpbWVyIGludGVycnVwdCBhZGRlZCB0byBSSzM1ODguCgpTb21lIG1v
-cmUgYWRkZWQgcGVyaXBoZXJhbHMgZm9yIHRoZSBLaGFkYXMgRWRnZSAyTCBib2FyZC4KCi0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LS0KQ2hlbi1ZdSBUc2FpICgyKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZpeCBFRVBS
-T00gY29tcGF0aWJsZSBvbiByazMzOTktbmFub3BpLXI0cy1lbnRlcnByaXNlCiAgICAgIGFybTY0
-OiBkdHM6IHJvY2tjaGlwOiBEaXNhYmxlIHJlbW92ZWQgZGV2aWNlcyBmcm9tIHJrMzM5OS1uYW5v
-cGktcjRzCgpDaHVrdW4gUGFuICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGVuYWJs
-ZSBhZGMgYnV0dG9uIGZvciBSYWR4YSBFMjUKCkdyYXkgSHVhbmcgKDIpOgogICAgICBhcm02NDog
-ZHRzOiByb2NrY2hpcDogRW5hYmxlIFVTQiBmb3IgS2hhZGFzIEVkZ2UgMkwKICAgICAgYXJtNjQ6
-IGR0czogcm9ja2NoaXA6IEFkZCBCbHVldG9vdGggc3VwcG9ydCBmb3IgS2hhZGFzIEVkZ2UgMkwK
-Ckh1Z28gT3N2YWxkbyBCYXJyZXJhICgxKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEZp
-eCB2Y2Nfc2RpbyByZWd1bGF0b3IgbWF4IHZvbHRhZ2Ugb24gUGluZWJvb2sgUHJvCgpKb25hcyBL
-YXJsbWFuICg1KToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBVU0Igbm9kZXMgZm9y
-IFJLMzUyOAogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogRW5hYmxlIFVTQiAyLjAgcG9ydHMg
-b24gUmFkeGEgRTIwQwogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogRW5hYmxlIFVTQiBwb3J0
-cyBvbiBSYWR4YSBST0NLIDJBLzJGCiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBFbmFibGUg
-VVNCIDIuMCBwb3J0cyBvbiBBcm1Tb00gU2lnZTEKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6
-IEVuYWJsZSBVU0IgMi4wIHBvcnRzIG9uIE5hbm9QaSBaZXJvMgoKTWFyYyBaeW5naWVyICgxKToK
-ICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IEFkZCBFTDIgdmlydHVhbCB0aW1lciBpbnRlcnJ1
-cHQKCk1pY2hhZWwgUmllc2NoICgzKToKICAgICAgYXJtNjQ6IGR0czogcm9ja2NoaXA6IGFkZCB2
-aWNhcCBub2RlIHRvIHJrMzU4OAogICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogYWRkIHJhZHhh
-IGNhbWVyYSA0ayBvbiByb2NrIDViKyBjYW0wCiAgICAgIGFybTY0OiBkdHM6IHJvY2tjaGlwOiBh
-ZGQgcmFkeGEgY2FtZXJhIDRrIG9uIHJvY2sgNWIrIGNhbTEKClN2ZW4gUMO8c2NoZWwgKDEpOgog
-ICAgICBhcm02NDogZHRzOiByb2NrY2hpcDogYWRkIHJnYTMgZHQgbm9kZXMgdG8gcmszNTg4Cgog
-YXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9NYWtlZmlsZSAgICAgICAgICAgICAgfCAgIDcg
-KysKIC4uLi9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9waS1yNHMtZW50ZXJwcmlzZS5kdHMgIHwg
-ICAyICstCiAuLi4vYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszMzk5LW5hbm9waS1yNHMuZHRz
-aSB8ICA2OCArKysrKysrKysrKwogLi4uL2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzM5OS1waW5lYm9v
-ay1wcm8uZHRzICAgICAgfCAgIDIgKy0KIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1MjgtYXJt
-c29tLXNpZ2UxLmR0cyAgICAgIHwgIDI1ICsrKysKIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1
-MjgtbmFub3BpLXplcm8yLmR0cyAgICAgIHwgIDI5ICsrKysrCiBhcmNoL2FybTY0L2Jvb3QvZHRz
-L3JvY2tjaGlwL3JrMzUyOC1yYWR4YS1lMjBjLmR0cyB8ICA2MCArKysrKysrKysKIGFyY2gvYXJt
-NjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LXJvY2stMi5kdHNpICAgIHwgIDE3ICsrKwogYXJj
-aC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1Mjgtcm9jay0yYS5kdHMgICAgfCAgMTEgKysK
-IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTI4LXJvY2stMmYuZHRzICAgIHwgIDEy
-ICsrCiBhcmNoL2FybTY0L2Jvb3QvZHRzL3JvY2tjaGlwL3JrMzUyOC5kdHNpICAgICAgICAgICB8
-ICA4MCArKysrKysrKysrKysKIGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTY4LXJh
-ZHhhLWUyNS5kdHMgIHwgIDE0ICsrKwogYXJjaC9hcm02NC9ib290L2R0cy9yb2NrY2hpcC9yazM1
-NngtYmFzZS5kdHNpICAgICAgfCAgIDMgKy0KIC4uLi9ib290L2R0cy9yb2NrY2hpcC9yazM1NzYt
-a2hhZGFzLWVkZ2UtMmwuZHRzICAgIHwgIDgyICsrKysrKysrKysrKysKIGFyY2gvYXJtNjQvYm9v
-dC9kdHMvcm9ja2NoaXAvcmszNTg4LWJhc2UuZHRzaSAgICAgIHwgMTM1ICsrKysrKysrKysrKysr
-KysrKysrKwogLi4uL3JrMzU4OC1yb2NrLTViLXBsdXMtcmFkeGEtY2FtNGstY2FtMC5kdHNvICAg
-ICAgfCAgOTkgKysrKysrKysrKysrKysrCiAuLi4vcmszNTg4LXJvY2stNWItcGx1cy1yYWR4YS1j
-YW00ay1jYW0xLmR0c28gICAgICB8ICA5OSArKysrKysrKysrKysrKysKIDE3IGZpbGVzIGNoYW5n
-ZWQsIDc0MiBpbnNlcnRpb25zKCspLCAzIGRlbGV0aW9ucygtKQogY3JlYXRlIG1vZGUgMTAwNjQ0
-IGFyY2gvYXJtNjQvYm9vdC9kdHMvcm9ja2NoaXAvcmszNTg4LXJvY2stNWItcGx1cy1yYWR4YS1j
-YW00ay1jYW0wLmR0c28KIGNyZWF0ZSBtb2RlIDEwMDY0NCBhcmNoL2FybTY0L2Jvb3QvZHRzL3Jv
-Y2tjaGlwL3JrMzU4OC1yb2NrLTViLXBsdXMtcmFkeGEtY2FtNGstY2FtMS5kdHNvCgoKCgpfX19f
-X19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fXwpMaW51eC1yb2NrY2hp
-cCBtYWlsaW5nIGxpc3QKTGludXgtcm9ja2NoaXBAbGlzdHMuaW5mcmFkZWFkLm9yZwpodHRwOi8v
-bGlzdHMuaW5mcmFkZWFkLm9yZy9tYWlsbWFuL2xpc3RpbmZvL2xpbnV4LXJvY2tjaGlwCg==
+On 05/06/2026 17:48, Heiner Kallweit wrote:
+> On 05.06.2026 13:49, Ricardo Pardini via B4 Relay wrote:
+>> From: Ricardo Pardini <ricardo@pardini.net>
+>>
+>> Add a binding for fixed/soldered Realtek PCIe Ethernet controllers
+>> driven by the r8169 driver (RTL8125/8126/8127/8168 and variants).
+>>
+>> The "pciVVVV,DDDD" compatibles are the Open Firmware PCI Bus Binding
+>> spelling, auto-derived from PCI-SIG vendor/device IDs, but they still
+>> need a binding when used in a board DT - analogous to "usbVVVV,PPPP"
+>> compatibles documented in their own bindings (e.g. microchip,lan95xx)
+>> so board DTs attaching properties (fixed MAC, nvmem cell, ...) to
+>> these PCI function nodes can be validated.
+>>
+> 
+> The of node seems to be created by of_pci_make_dev_node(). But this
+> function is called for bridges only in pci_bus_add_device().
+> So where is the node created in your case? Did you test node creation?
+> 
+
+Hi Heiner,
+
+Seems to me of_pci_make_dev_node() is not at play here - that's the 
+DT-synthesis path. For nodes already present in DT, the of_node is bound 
+earlier, during pci_setup_device() -> pci_set_of_node() -> 
+of_pci_find_child_device() via the 5-cell reg.
+
+Ref testing: yes; with this series on a NanoPC-T6 I get, for example:
+/sys/bus/pci/devices/0004:41:00.0/of_node -> 
+/sys/firmware/devicetree/base/pcie@fe190000/pcie@0,0/ethernet@0,0 and 
+u-boot correctly adds local-mac-address property there which is 
+correctly picked up kernel-side:
+
+=> setenv eth1addr 8e:b4:90:66:66:66
+=> boot
+
+...
+
+# readlink -f /sys/bus/pci/devices/0004:41:00.0/of_node
+/sys/firmware/devicetree/base/pcie@fe190000/pcie@0,0/ethernet@0,0
+
+# xxd /sys/bus/pci/devices/0004:41:00.0/of_node/local-mac-address
+00000000: 8eb4 9066 6666                           ...fff
+
+# ip link show dev end1 | grep ether
+     link/ether 8e:b4:90:66:66:66 brd ff:ff:ff:ff:ff:ff
+
+
+>> +properties:
+>> +  compatible:
+>> +    enum:
+>> +      - pci10ec,8125  # RTL8125 2.5GbE
+>> +      - pci10ec,8126  # RTL8126 5GbE
+>> +      - pci10ec,8127  # RTL8127
+>> +      - pci10ec,8161  # RTL8168 variant
+>> +      - pci10ec,8162  # RTL8168 variant
+>> +      - pci10ec,8168  # RTL8168/8111 GbE
+> 
+> This list reflects just some of the PCI id's handled by r8169.
+> Any specific reason for this exact selection?
+I went for "chips likely to be soldered down on an SBC", but that was 
+indeed speculative.
+
+I guess I should trim to pci10ec,8125, which is all this series 
+describes? (further IDs can be added by the patches that introduce 
+boards using them)
+
+--
+Regards,
+Ricardo
+
+
+_______________________________________________
+Linux-rockchip mailing list
+Linux-rockchip@lists.infradead.org
+http://lists.infradead.org/mailman/listinfo/linux-rockchip
