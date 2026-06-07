@@ -4,58 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89F39CD8C9F
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Jun 2026 23:05:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15B38CD8C8C
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Jun 2026 23:05:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
 	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
 	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=U6sXAqtJoGANFsYaY6IRkWI+5fNaQlVA034JXI4KwF0=; b=4P56xVF+EjBrCw
-	Ia6s1/HsdNqcUkncd8OHa+rqTlRvLrLBh2Hkkj9DeUUazPwgVBhrq4vci6X0Fh/oCA/NE2t6lxzJl
-	YkGg9D6gP+7mrzsPataZvO7WtRDAEjVrhRvdNCfLZTtbkX51VVfPCH4SGJHrC+CM69DG6jT0BCWmI
-	54YW9Nfk+iS1MroUco+2vqsYd90RmLEBojI/F+F+OJqdMySxWkLW7SDwGcMym2cPAcYyagyI7r69a
-	PYJ8jeZoQJIH1SlQPty9j8abWjPojl/yAFhPKKMU07YlXbpoqICNdpeXSBsCrcQqOPc65QBNzP4An
-	fdFGt7NavRqXXwrUERVw==;
+	List-Owner; bh=7Ph7lz3Bm3kc0gyXFxx+vpeaQjPndSqXjQOx4/gDOcA=; b=G2TvanI8ROWKLn
+	8HMy1yziL+Hmn2AvMZ9B7KVCO0i/MmQkQ3ehwSLSB4k6Bm81nd4qinvlObsJWRRsXgh0JcX/8A5dP
+	hBMsBQy2TPMsb2aDbln7rETLjmrHSnSWiILDEc9OxvdrGsfBlFJ4OHySUuk1OAwQBaPPFheT0EaEn
+	7F6YwzZ9QeWbaVJGMLpCRUS6kyCXQRzvKaFMesUAMnczmk+IuQk+yX9fWcMWq1KGN4hqWo2K8+sIT
+	tGf7h2CNCH+/wHs4+lmRC+uM2FQWfApDP/YwuHl8YZ6Sq5dFWD+FaCRaxGv6bseJPxOd1fbowxwe9
+	Hw4Nb99y7RKY30FM4y4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWMYZ-00000002arD-1dKH;
-	Sun, 07 Jun 2026 23:05:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWMYX-00000002apv-3Vob;
-	Sun, 07 Jun 2026 23:05:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=nIjY1eeOUHP6TsN3/G2g4miYXOjQ6gGHxOCz2hPjQzA=; b=E3Vz5xwqYRIf5dcYpTPCN86ebm
-	ZtbzQhOoIwsO3pWVCmGiLO5R1TTePWTc51f8lz4/RVTmY3R5LeuPMQ6TZWmUrZ8NEFZWtqfT0R0iu
-	VV+fXSIO3Owmsd4t8zhRlx58AW9QaBj+Prr7EFZAQZObPT2CiJjMURs43hOjap3krKttPjhAha39Y
-	RfOzW4jRkaa0sgjxBurtaFXspR9SKqDjYmtl2C6yrgSYW1Kd/APdetMhh123saL253AcNg2Me3uGs
-	JsgY3WWsLdgBwwHaG/iPsIhS9KDOZt92JbSmwRFhqcbsN0Al9urYdkyqQOFf2MbbRsKA6k1iJ/v2R
-	jlDS1PCQ==;
+	id 1wWMYc-00000002atK-2tuY;
+	Sun, 07 Jun 2026 23:05:30 +0000
 Received: from layka.disroot.org ([178.21.23.139])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1wWMYU-00000000Gci-1PNe;
-	Sun, 07 Jun 2026 23:05:24 +0000
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1wWMYW-00000002apq-3G3c;
+	Sun, 07 Jun 2026 23:05:26 +0000
 Received: from mail01.disroot.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 0035B26FB0;
-	Mon,  8 Jun 2026 01:05:19 +0200 (CEST)
+	by disroot.org (Postfix) with ESMTP id 2C9FF2763D;
+	Mon,  8 Jun 2026 01:05:20 +0200 (CEST)
 X-Virus-Scanned: SPAM Filter at disroot.org
 Received: from layka.disroot.org ([127.0.0.1])
  by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id MEYT4_UcjqVS; Mon,  8 Jun 2026 01:05:18 +0200 (CEST)
+ id annWcSptkWLZ; Mon,  8 Jun 2026 01:05:19 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1780873518; bh=Zz4Hn5p9Yljerh3+9LIY9ZhIchk/XuvhmnwJB0hVIoQ=;
+	t=1780873519; bh=9KdW77VqNR0noyJraGKncMh9TbDUKb8mBPe4vbpDVjs=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=AYvx/miQSqHwHn3q556VCXi54+QdXIKgTNJfmMg7zfoxRbBU1uLP1WX7LD3UASm7i
-	 T+2GTpK0YYT61UJ3OvbU/3Un74vK3O4TV+97y0SJS4AOoBMY+x9fPtHI2pNlXOeWId
-	 Rqljh8C7JfLTt+mNVWtolI1nVN/3siCR1WZ2sy0QaA0E3SsF//tpuSTM2ardpLSGJk
-	 QUbYZDyKRvsOa8B/h10J4kCLljeH4U7sGpdnZDhIhVz7ULWrlWbS63vr2isAtRZnUa
-	 nTzHv6R7hbl2b/qkOLUnTK4nOt6xqF3BpaEURHCEoWQgHHgXjr22O/NBytDTuy73TQ
-	 rvM7x/kLSUNFQ==
+	b=YXhOGjDyM6n2YKjLbZ4dIqumOAWBzKD4nZjQLzdPu6SKKeLX0XRFNPyi5lFRDr0Wf
+	 YMBAcUHph1W3ivcIbgQ2pOX5G4lx3C3Jra7xb7obCmMWDZJHrO4xsScU4LSS7/+2gA
+	 /qL/Gc5OEvXSsc3gvDGyPUM05CoEq0640SQzNoDuhsCjUA7krNZ05k5OSG3M1zilQa
+	 iY12+x9x1DZi8/2M2z5CFQXFJLqB8Z6/SBxCS+HIvJr4CbcU9+IswWA6gBAAVt7fHh
+	 WpE4Cn72pga5vADXEYHhC3b+7dkqX66XJnsnGaVEbppXrU0mEcgfE3QwnrTK3CsRaj
+	 GaJuSuHfJfJpw==
 From: Marco Scardovi <scardracs@disroot.org>
 To: Linus Walleij <linusw@kernel.org>,
 	Bartosz Golaszewski <brgl@kernel.org>
@@ -65,15 +51,15 @@ Cc: Heiko Stuebner <heiko@sntech.de>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-rockchip@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] gpio: rockchip: fix generic IRQ chip leak on remove
-Date: Mon,  8 Jun 2026 01:05:02 +0200
-Message-ID: <20260607230504.35392-2-scardracs@disroot.org>
+Subject: [PATCH 3/3] gpio: rockchip: use platform_get_irq() to retrieve interrupt
+Date: Mon,  8 Jun 2026 01:05:04 +0200
+Message-ID: <20260607230504.35392-4-scardracs@disroot.org>
 In-Reply-To: <20260607230504.35392-1-scardracs@disroot.org>
 References: <20260607230504.35392-1-scardracs@disroot.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260608_000523_017798_BF789E95 
-X-CRM114-Status: GOOD (  11.70  )
+X-CRM114-CacheID: sfid-20260607_160525_226119_CFDBEDEA 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,45 +76,36 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-The driver allocates domain generic chips using
-irq_alloc_domain_generic_chips() during probe. However, on driver
-remove/teardown, the generic chips are not automatically freed when the
-IRQ domain is removed because the domain flags do not include
-IRQ_DOMAIN_FLAG_DESTROY_GC.
+The driver currently uses irq_of_parse_and_map() to parse and map the
+GPIO bank interrupt from the device tree node. Since the bank device is
+represented by a platform_device, use the standard platform_get_irq()
+API instead. This integrates cleanly with the platform device framework
+and ensures proper error propagation (such as -EPROBE_DEFER).
 
-This causes both the domain generic chips structure and the associated
-generic chips to be leaked. Additionally, the generic chips remain on
-the global gc_list and may later be visited by generic IRQ chip suspend,
-resume, or shutdown callbacks after the GPIO bank has been removed,
-potentially resulting in a use-after-free and kernel crash.
-
-Fix the resource leak by explicitly calling
-irq_domain_remove_generic_chips() before removing the IRQ domain in
-rockchip_gpio_remove().
-
-Fixes: 936ee2675eee ("gpio/rockchip: add driver for rockchip gpio")
 Assisted-by: Antigravity:gemini-3.5-flash
 Signed-off-by: Marco Scardovi <scardracs@disroot.org>
 ---
- drivers/gpio/gpio-rockchip.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ drivers/gpio/gpio-rockchip.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/gpio/gpio-rockchip.c b/drivers/gpio/gpio-rockchip.c
-index bc97d5d5d329..9478a58f1caa 100644
+index 8647d006d103..77b239a9a601 100644
 --- a/drivers/gpio/gpio-rockchip.c
 +++ b/drivers/gpio/gpio-rockchip.c
-@@ -802,8 +802,10 @@ static void rockchip_gpio_remove(struct platform_device *pdev)
- 	struct rockchip_pin_bank *bank = platform_get_drvdata(pdev);
+@@ -654,9 +654,10 @@ static int rockchip_get_bank_data(struct rockchip_pin_bank *bank)
+ 	if (IS_ERR(bank->reg_base))
+ 		return PTR_ERR(bank->reg_base);
  
- 	irq_set_chained_handler_and_data(bank->irq, NULL, NULL);
--	if (bank->domain)
-+	if (bank->domain) {
-+		irq_domain_remove_generic_chips(bank->domain);
- 		irq_domain_remove(bank->domain);
-+	}
- 	gpiochip_remove(&bank->gpio_chip);
- }
+-	bank->irq = irq_of_parse_and_map(bank->of_node, 0);
+-	if (!bank->irq)
+-		return -EINVAL;
++	ret = platform_get_irq(pdev, 0);
++	if (ret < 0)
++		return ret;
++	bank->irq = ret;
  
+ 	bank->clk = devm_clk_get_enabled(bank->dev, NULL);
+ 	if (IS_ERR(bank->clk))
 -- 
 2.54.0
 
