@@ -4,66 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06626CD8C89
-	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Jun 2026 17:01:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A513BCD8C90
+	for <linux-rockchip@archiver.kernel.org>; Sun,  7 Jun 2026 21:00:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:From:References:Cc:To:
-	Subject:MIME-Version:Date:Message-ID:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=NRIT66oLXziMwZN+fTgoA96yGOEONuprya3ygG/fGxs=; b=vqJt90P/I8BEah
-	YMD7MB/znWMJ99iCfJ5iHbXkr+H79GUEmSMiMpqB619xHdF/O1uIrJ5gLKBsLhPop1401cvHyDOfI
-	EwkP/QafU9H2ses1B+eHp2joRHUr/yd8SkjEM6qvRGBSn7QOQiy1Qzt3ftzubfiyCogBp8mWFEns8
-	ItaIAlz/2dddKkWYfdBURWHbTM+SEKjE/ZSRMQcPdSPspFxlONc5oifPOQHBqfui/dipX2G2flrqM
-	J1Q+yegGW2rlVuHPINatyC/CZ5CokXpzOwgO8zaAmxBozgpVl3c8fZPVeVccDO4pvVythsGOzSAkR
-	rdAFfWKx6U/xqGCFqjfA==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
+	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=fkFI4xRMXW5EuzVpF7v2r1iwXCrJAK+a877mJMjnY/8=; b=eMYxY7QhamlX32
+	xJQYyrP98Qg5JGl8aQiJNP2GctdUwSzIOPgH2OvdTkdrdIgCiYg/bF5I56dqsMp8hEYnahLT+nXYn
+	XVoeqzr1uQNsvYMe+gG01aUCb0ASUde5KWFehXZ/ehZCp61yxmzGeEjTA8mc/QZkT0JDyUxJAnCrF
+	lA2KgNRAIvWPabgK9UO74Uk3XsciO42MfgttzQddYq3YZxNYUKLTB7nOyYdIuls+EcXP473KwzVCv
+	Vo0zTqePvjcZl0JHbzLayCUfiYtxOkv6QfFmXVYgA7r5cPtPO57hUvhO2ud3rENO/p+OR/lrjNuDk
+	mwzvHpEXQjFRNsItNOZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWGsH-00000002M6E-24uG;
-	Sun, 07 Jun 2026 17:01:25 +0000
-Received: from smtp.forwardemail.net ([121.127.44.66])
+	id 1wWKas-00000002URc-2NvH;
+	Sun, 07 Jun 2026 20:59:42 +0000
+Received: from gloria.sntech.de ([185.11.138.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWGsD-00000002M5P-0JOk
+	id 1wWKap-00000002URH-25QI
 	for linux-rockchip@lists.infradead.org;
-	Sun, 07 Jun 2026 17:01:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kwiboo.se;
- h=Content-Transfer-Encoding: Content-Type: In-Reply-To: From: References:
- Cc: To: Subject: MIME-Version: Date: Message-ID; q=dns/txt;
- s=fe-e1b5cab7be; t=1780851678;
- bh=/KOKsw71E6GZdJzTzoVwlKCoJhLgUSQVcRLLZNcFO5I=;
- b=qtgAhbYINp3UG73MeqbESMFO5oIlJm3U0XowpJpZYoUQCph37W1RKKHijpV+e1dsLd7vf3ecZ
- WJICJLHD6Lewwq6A18CQEfVgLBuLxpCXlSj/RIaUPjIdpnCnFMT0T0oPxq5N2zsUzBPJeIc7W8Q
- UfgKU9FeBM5N+IMf6Iur+A0BMUgbYqJrlybS3pw0otm8nc05LnympCE/OJDfiwOHAndm7dFCwov
- D6QvCFnnvJH/oju6bDt5YiRCUX/SQPLIMgxdVV1fcEbi3L4pzQhneb1zsR/AFzNibnvF7q6RjJZ
- NpiYwWZKpjV4AJsEZ45Ou23kTzG8EbDZCSdqGMyLCdeA==
-X-Forward-Email-ID: 6a25a3da9dabeed5113106ce
-X-Forward-Email-Sender: rfc822; jonas@kwiboo.se, smtp.forwardemail.net,
- 121.127.44.66
-X-Forward-Email-Version: 2.8.22
-X-Forward-Email-Website: https://forwardemail.net
-X-Complaints-To: abuse@forwardemail.net
-X-Report-Abuse: abuse@forwardemail.net
-X-Report-Abuse-To: abuse@forwardemail.net
-Message-ID: <c8f30973-450e-4995-b6f5-03e7b6afc75b@kwiboo.se>
-Date: Sun, 7 Jun 2026 19:01:10 +0200
+	Sun, 07 Jun 2026 20:59:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=sntech.de;
+	s=gloria202408; h=Content-Type:Content-Transfer-Encoding:MIME-Version:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:In-Reply-To:References;
+	bh=4NlgDV4TsT6w9EnMlZlG3KYV9Ye7aOC12HGWEXLPzwQ=; b=n5Rqs+xqbCzLFNuTJer3hO90nJ
+	PeXBBvCoE4xYqlA5LO7HDyVAr001Eqwy2y04czk9f4rzcwad02QjMzJjxcvkRsiRChLo++MDQDCs4
+	9Nyth6SopWz9WnDPHH1WffXLwSbalB/WtcT46NAkObiFDQeVfBXEXaQA/rBq9Jo+YrGdguwZHfNq5
+	Cv4KRaxI/pjwm0kfLMPtOQfiXCMt8QHoVFBrhZYWwWXl3i190Ih3MtiLFXPXX+meJ/k0jXQp2yqzV
+	ljBr8JyLS9r4aljgBCIS7fJVBcegmXY+VliNVaZ9JN4t+xmUaJaNEM6GULDO/VTMhq6OxU8VzWyax
+	XsUysyJQ==;
+From: Heiko Stuebner <heiko@sntech.de>
+To: mturquette@baylibre.com, Stephen Boyd <sboyd@kernel.org>
+Cc: linux-clk@vger.kernel.org, linux-rockchip@lists.infradead.org
+Subject: [GIT PULL] Rockchip clock changes for 7.2 #1
+Date: Sun, 07 Jun 2026 22:59:31 +0200
+Message-ID: <4272848.9fHWaBTJ5E@phil>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] drm/rockchip: dsi: Open-code drm_simple_encoder_init()
-To: Diogo Silva <diogompaissilva@gmail.com>, heiko@sntech.de
-Cc: airlied@gmail.com, andy.yan@rock-chips.com,
- dri-devel@lists.freedesktop.org, hjc@rock-chips.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-rockchip@lists.infradead.org, maarten.lankhorst@linux.intel.com,
- mripard@kernel.org, simona@ffwll.ch, tzimmermann@suse.de
-References: <5277524.h16uAIiOU7@phil>
- <20260607123739.393974-2-diogompaissilva@gmail.com>
-Content-Language: en-US
-From: Jonas Karlman <jonas@kwiboo.se>
-In-Reply-To: <20260607123739.393974-2-diogompaissilva@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260607_100121_525261_B0BE12E5 
-X-CRM114-Status: GOOD (  15.43  )
+X-CRM114-CacheID: sfid-20260607_135939_604437_664846CA 
+X-CRM114-Status: UNSURE (   8.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,77 +63,60 @@ Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Diogo,
+Hi Mike, Stephen,
 
-On 6/7/2026 2:37 PM, Diogo Silva wrote:
-> Simple KMS helper are deprecated since they only add an intermediate
-> layer between drivers and the atomic modesetting.
-> This patch removes the dependency on drm_simple_encoder_init from rockchip
-> DRM drivers by inlining this helper.
-> 
-> Signed-off-by: Diogo Silva <diogompaissilva@gmail.com>
-> ---
->  drivers/gpu/drm/rockchip/analogix_dp-rockchip.c  | 9 ++++++---
->  drivers/gpu/drm/rockchip/cdn-dp-core.c           | 9 ++++++---
->  drivers/gpu/drm/rockchip/dw-mipi-dsi-rockchip.c  | 9 +++++++--
->  drivers/gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c | 8 ++++++--
->  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c      | 8 ++++++--
->  drivers/gpu/drm/rockchip/dw_hdmi_qp-rockchip.c   | 8 ++++++--
->  drivers/gpu/drm/rockchip/rk3066_hdmi.c           | 8 ++++++--
->  drivers/gpu/drm/rockchip/rockchip_lvds.c         | 9 +++++++--
->  drivers/gpu/drm/rockchip/rockchip_rgb.c          | 8 ++++++--
->  9 files changed, 56 insertions(+), 20 deletions(-)
+please find below a pull-request with a Rockchip clock change for 7.2
 
-[snip]
+Please pull.
 
-> diff --git a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> index 0dc1eb5d2ae3..906264d65db3 100644
-> --- a/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> +++ b/drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c
-> @@ -16,7 +16,6 @@
->  #include <drm/drm_edid.h>
->  #include <drm/drm_of.h>
->  #include <drm/drm_probe_helper.h>
-> -#include <drm/drm_simple_kms_helper.h>
->  
->  #include "rockchip_drm_drv.h"
->  
-> @@ -322,6 +321,10 @@ dw_hdmi_rockchip_encoder_atomic_check(struct drm_encoder *encoder,
->  	return 0;
->  }
->  
-> +static const struct drm_encoder_funcs dw_hdmi_rockchip_encoder_funcs = {
-> +	.destroy    = drm_encoder_cleanup,
-> +};
-> +
->  static const struct drm_encoder_helper_funcs dw_hdmi_rockchip_encoder_helper_funcs = {
->  	.mode_fixup = dw_hdmi_rockchip_encoder_mode_fixup,
->  	.mode_set   = dw_hdmi_rockchip_encoder_mode_set,
-> @@ -604,7 +607,8 @@ static int dw_hdmi_rockchip_bind(struct device *dev, struct device *master,
->  	}
->  
->  	drm_encoder_helper_add(encoder, &dw_hdmi_rockchip_encoder_helper_funcs);
-> -	drm_simple_encoder_init(drm, encoder, DRM_MODE_ENCODER_TMDS);
-> +	drm_encoder_init(drm, encoder, &dw_hdmi_rockchip_encoder_funcs,
-> +			 DRM_MODE_ENCODER_TMDS, NULL);
+Thanks
+Heiko
 
-Please base your work on latest drm-misc tree, this has already been
-addressed in commit 3de723684be5 ("drm/rockchip: dw_hdmi: Use drmres
-helpers for encoder resources") [1].
 
-Also instead of open-code, maybe a change to use drmm_encoder_init() is
-more appropriate for some of the other drivers?
+The following changes since commit 254f49634ee16a731174d2ae34bc50bd5f45e731:
 
-[1] https://cgit.freedesktop.org/drm/drm-misc/commit/?id=3de723684be5c13517dea3dba287d06e12678c86
+  Linux 7.1-rc1 (2026-04-26 14:19:00 -0700)
 
-Regards,
-Jonas
+are available in the Git repository at:
 
->  
->  	platform_set_drvdata(pdev, hdmi);
->  
+  https://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git tags/v7.2-rockchip-clk1
 
-[snip]
+for you to fetch changes up to 7edfb7fb58ee058298e18fde76a6077ef17d19d8:
+
+  clk: rockchip: allow COMPILE_TEST builds (2026-05-13 12:35:57 +0200)
+
+----------------------------------------------------------------
+gate-clocks for i2s outputs on rk3588 and allowing compile-tests
+for the whole clock driver.
+The sparse warning when the Rockchip clock is compiled on M68K gets
+fixed by:
+https://lore.kernel.org/lkml/b55e9bd0532c0cad519809c86e0a8400060d75a1.1780559561.git.geert@linux-m68k.org/
+
+----------------------------------------------------------------
+Daniele Briguglio (5):
+      dt-bindings: clock: rockchip,rk3588-cru: add I2S MCLK output to IO clock IDs
+      clk: rockchip: allow grf_type_sys lookup in aux_grf_table
+      clk: rockchip: add helper to register auxiliary GRFs
+      soc: rockchip: rk3588: add SYS_GRF SOC_CON6 register offset
+      clk: rockchip: rk3588: add GATE_GRF clocks for I2S MCLK output to IO
+
+Heiko Stuebner (1):
+      Merge branch 'v7.2-shared/socids' into v7.2-clk/next
+
+Rosen Penev (1):
+      clk: rockchip: allow COMPILE_TEST builds
+
+ drivers/clk/Makefile                            |  2 +-
+ drivers/clk/rockchip/Kconfig                    |  2 +-
+ drivers/clk/rockchip/clk-rk3588.c               | 16 ++++++++++++++++
+ drivers/clk/rockchip/clk.c                      | 25 +++++++++++++++++++++----
+ drivers/clk/rockchip/clk.h                      |  3 +++
+ include/dt-bindings/clock/rockchip,rk3588-cru.h |  4 ++++
+ include/soc/rockchip/rk3588_grf.h               |  2 ++
+ 7 files changed, 48 insertions(+), 6 deletions(-)
+
+
+
 
 _______________________________________________
 Linux-rockchip mailing list
