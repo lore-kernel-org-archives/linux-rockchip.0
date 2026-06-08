@@ -4,139 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67C4FCD8CA4
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 20:52:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D39DCD8CA7
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 21:20:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:References:
-	Message-ID:Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=SzuxNa8ueAvWRpdgK02yUIvjHybCQ9pNclzgYn5kddg=; b=0eMWm79RpkFiYi
-	GwgVfLm4v95+Z9ZhQlnsz6J9phTOEqXRMf2ulmHMLyxJJt92YIH40wGtDWI+ehAk4lh4lra3kgE48
-	pIiF1bf+3ZS54rkITaId13+X9hrzivUfU3mBknzARx/1kCkblmFsZHVNPFUrfViFF+vvq+/bXEd2q
-	3kW4zvgw8Qb1bGdzIjKOqzhC5OWk5n7AEtjsZgKhlCTUP/JOpPd3+jdJJvR5cS9pyvwpKljGuX60z
-	AB1IOM8dGz/McZX0zUB/5HKLzcOrLzsbS/n7+m9S4H50AxIRYxGT90v8gDyOn74feewRsMXkwjF/m
-	Tw5CcrApSvvXVZaPUA+Q==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hi4JjGqePbAGPc/j4HlkdG0M28ECXAZNuqv9WSbOTWk=; b=k4hm2099Dea9x1Yhsn8m1+xLIP
+	q4UbGjPyLMuv61fQV4OntSPvUmUiWBKoPiHb8LN2I5YLDzwRFK52mpYeVFXo8QUkmHGweQMcwu4BJ
+	A07YGRZK1a6mJ+3odK+YQHufGpoIZMLrn5DXIPY8lftscFW2LgWQaaOxY7QzBzqUtCI599D2g67wN
+	Y2V/o3KICKQDsfOnU/NOE6Se2lxb1v/wq4/vyXaUsTJ+qnr8TrCgZNuIYoTNNqLRJ94/Xp1DIbhzI
+	H2HibpIE4TrHHbIdK1a7wVSd+cLQ6MHR969dptFosK9qCzV11irsVM2NDMFaZa45bbV/5MRNHDXHW
+	ytPE1t4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWgxm-00000004OOn-2ur0;
-	Mon, 08 Jun 2026 20:52:50 +0000
-Received: from mail-southcentralusazolkn19011029.outbound.protection.outlook.com ([52.103.14.29] helo=SN4PR0501CU005.outbound.protection.outlook.com)
+	id 1wWhOQ-00000004QGr-26lY;
+	Mon, 08 Jun 2026 21:20:22 +0000
+Received: from sender4-op-o11.zoho.com ([136.143.188.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWgxk-00000004ONm-32Tp
+	id 1wWhOO-00000004QGT-22SY
 	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Jun 2026 20:52:49 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SpMRtCkwQdRQCDxGeeIh3iYPbc6XxAM7XrmQke9K7lP7FXba7LhJ1N2dqWbERj16FeX3ThtjlEuXZ6jFjUHMAmAzc5fDnl81dChZ9x80e+p0vE7ZhRUKuH/G6bekOOKsh03XNrrLX0CRUDEWI/d8opMm9vkD2X6oaIg73dmhMHVfA/QwUp/QNtP4mjobV3guUApHxMowWWyl2Pz4V6Y1ymJQVriM71RcuStMQdoYOxaveadx0kGHa7ZajXSBIROFHnPBodt+QwT5xLu8tYCw2N5vPmk2N1INHzNN6sDYHx9tQ9J5qhOm8BGBDift7jf2RmJJRvp+fmuTHgMxjuYt8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=AfeQoYpMToXKejH9+Cq7FjtALv7nJpha61eLVk39EKc=;
- b=buokE2Bhf9cDXfXqppmQK/YDAgEHtNCS9Y1mQfhxfICQ81+12T4IcQ/F1fKh2iaHxYd542gsjtRuMpAJGL78B72SwkyOHJjGTYECI2FznmvSKP2OU5z9q2ZIQfb95lVrDoOU5oqr/8Nrn6ddN1M25Cr2eDrR8idvF6bXQwphIN3/A00glv0bpzCNS5TnSEG4nSOxzWQJT9OgyktTA9AM/upkamax1k2+MZlVDEXjcwFkQ+GbcRQQ6HmLzAXRSncob/dPtDg9bGdD7TpovYk9lYhNalWEBnqDzGM1wYNJzZxGYdCRkuiMeKpRz4Umg0ouS7CTJoydgJ2W+UMZUQZ4xA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=hotmail.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=AfeQoYpMToXKejH9+Cq7FjtALv7nJpha61eLVk39EKc=;
- b=InBMtHNwGSdAK3vjiZRiFk0P4wA0ZI0Ub1RPtFMdoiuDOAukIzdFVniDGiLz/y0QV5jR9hKLeRS1s2AAMtrlWlSJdXc4vfFBzR7V/Ye7DWirq1MD1PHKzPwB1qBsMsm0zzJhcbmUxT5cbatHMyX0+NxXA7tMhN6u04thpta3rpgUIff96AKJTmxXjp+LHnu5VhTRCJwgr1Va8+YLSiejeMNnNnRZuLsRD4LZA8PVXUMcdeZzu28HddkKvEN5G2dPrAEdilkr7y41AdomXWY+VTZIa+RIsYjAWU15txch2Ore4eJjXQuMZfRbAX52lL8wd5ykWFToa2DgGGYwVe4F2w==
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18) by SJ0PR19MB5558.namprd19.prod.outlook.com
- (2603:10b6:a03:427::21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.92.12; Mon, 8 Jun 2026
- 20:52:42 +0000
-Received: from PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172]) by PH0PR19MB997338.namprd19.prod.outlook.com
- ([fe80::fd22:ee23:3e25:3172%6]) with mapi id 15.21.0092.011; Mon, 8 Jun 2026
- 20:52:42 +0000
-Date: Mon, 8 Jun 2026 15:52:38 -0500
-From: Chris Morgan <macromorgan@hotmail.com>
-To: Andy Shevchenko <andriy.shevchenko@intel.com>
-Cc: Chris Morgan <macroalpha82@gmail.com>, linux-iio@vger.kernel.org,
-	andy@kernel.org, nuno.sa@analog.com, dlechner@baylibre.com,
-	jic23@kernel.org, jean-baptiste.maneyrol@tdk.com,
-	linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
-	heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org,
-	robh@kernel.org
-Subject: Re: [PATCH V10 3/9] iio: imu: inv_icm42607: Add inv_icm42607 Core
- Driver
-Message-ID: <PH0PR19MB99733851DADB0671AE5F76B788A51C2@PH0PR19MB997338.namprd19.prod.outlook.com>
-References: <20260604201832.60656-1-macroalpha82@gmail.com>
- <20260604201832.60656-4-macroalpha82@gmail.com>
- <aiL0g8d0Y_JeAC5c@ashevche-desk.local>
-Content-Disposition: inline
-In-Reply-To: <aiL0g8d0Y_JeAC5c@ashevche-desk.local>
-X-ClientProxiedBy: SA1P222CA0118.NAMP222.PROD.OUTLOOK.COM
- (2603:10b6:806:3c5::6) To PH0PR19MB997338.namprd19.prod.outlook.com
- (2603:10b6:510:3b1::18)
-X-Microsoft-Original-Message-ID: <aicrljrjYg_R7Llu@wintermute.localhost.fail>
+	Mon, 08 Jun 2026 21:20:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1780953606; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=jG263+DS9Fw87K4TA1LVvSQ3CZfSIbUqza/lKyY0kZ2S4ElrbRwDA96RZg0kCoe5spvpW0mkcVttUg+omXpIDFpDaMynvEOxU+WQvtnVMU/n++oOBoKfPLSavRBXxLf0Ce/nWyunfDfOy0IIUBmvP6m/VdwqTT/LOdBE2El8yxk=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1780953606; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=IQjvXllQJscKn7i+I8ubhM+/AQ6Ry31b6cOUj9O+wgc=; 
+	b=LcbRC4uwRv8P29gQAJ/ug2fZjjFp+tFGVMcmRU8106J8SpCuGCP06P+svfwxC1j7lh6NYQwiKNInG3jYgDI4BtGQxjdZH2P4GDrLTUeIolpHQ46xf1iQ27tjcj/Pol7/E/H78Lryj1KxBOvG7a/s0+UFz2fkNcAiQQRqRwhZMkc=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1780953606;
+	s=zohomail; d=collabora.com; i=sebastian.reichel@collabora.com;
+	h=Date:Date:From:From:To:To:Cc:Cc:Subject:Subject:Message-ID:References:MIME-Version:Content-Type:In-Reply-To:Message-Id:Reply-To;
+	bh=IQjvXllQJscKn7i+I8ubhM+/AQ6Ry31b6cOUj9O+wgc=;
+	b=KZW2Jf+vXOkFIASURHjPh/X/dSiiGlAn1x2ghD3lYZQB00/52cSvS33lxyMeIx3y
+	i/ptQk0anJ4+AYPchEvxHK22DeeVgi0vwN+YZhklFOr00VNefdwSWMKp0dYrD5QH1Oz
+	ICnu0utgu4dt98T9rahDvs+ejrDZdohNWefJNVxU=
+Received: by mx.zohomail.com with SMTPS id 1780953604718869.7760144683933;
+	Mon, 8 Jun 2026 14:20:04 -0700 (PDT)
+Received: by venus (Postfix, from userid 1000)
+	id B0DC8180380; Mon, 08 Jun 2026 23:19:54 +0200 (CEST)
+Date: Mon, 8 Jun 2026 23:19:54 +0200
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org, 
+	xsf@rock-chips.com, simona@ffwll.ch, airlied@gmail.com, tzimmermann@suse.de, 
+	mripard@kernel.org, maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com, 
+	neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org, krzk+dt@kernel.org, 
+	robh@kernel.org, Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V6 2/6] power: supply: sgm41542: Add SG Micro sgm41542
+ charger
+Message-ID: <aicv4neDA5Ke0FAB@venus>
+References: <20260608175521.67449-1-macroalpha82@gmail.com>
+ <20260608175521.67449-3-macroalpha82@gmail.com>
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR19MB997338:EE_|SJ0PR19MB5558:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1f197c9b-dcbf-443f-b613-08dec59fe21e
-X-MS-Exchange-SLBlob-MailProps: znQPCv1HvwUXBahuwteIkQeW30lJPuxO3pHOGDU5H2qJMGFC34uzINA3XcTgr6rxcsYpRf8SrtTW6i3wef6Dp5RNOHV5+3EBb6VQULj569GF3mvD2RGKJpvHfSPwllyNvm3EJE2MYoDkbtZuwtY8pbKlY2we8auaMgFFiw01cis/4S9AidCKNGO6hMsV3aQOLTmpIBxDlpTO9qACfsjq1nyOyRl76osd3eji59R6DfVwDo20Wid3vzNCwtRKqTx8mE3h+xSL4E1my0T1oq1HlavhsWy55ySeiKYUGnbE4OEQ3ObqsOksUFrqJSMqF9aVeBdefF1uYBoUS5s37MkYv1jeZdUk7QOWv7rS1vxjONAMS6NRcLvebl5Q33H/B0ls/A+7vysf16ev9TqQcRkx1P7irExCQq12vpVCcXwG2jEqN5QGuD6Uc1ej+QHh8QfIgY5HV+R9mPXYpyTtbIkgWU+xWjndV+5LFOqYe3UzFqPzXL86ipwEyKsZdMXpZ7RbD4uodTatWpqHLa/aTiFa0fogHmAumDpfohlh7MZWmlhTVb4h0fAcO+GtNOrm9TFKxPANUDaJ3KC+14LbOtoLXVonOMgP3wCLReAlGhwSXl4EXGZ2nXi6Mpxq+CjFzyVmtY2XxTgvO5Ecu+EMzTzB1Ni/xcvdaBUEgFHFf3aBRumjMKbHP80X9PbTEbzWkJq/I5MRNWqQpfrCGNaZZFFLcpd/BGvQ7/BW1ZgCmjwDFCwlvpw9kZ+UJoxxFmqGg2M6EWbRUb3As7Y=
-X-Microsoft-Antispam: BCL:0;ARA:14566002|24021099003|6090799003|25031999004|13031999006|51005399006|37011999003|41001999006|5072599009|15080799012|12121999013|8060799015|19110799012|23021999003|40105399003|440099028|3412199025;
-X-Microsoft-Antispam-Message-Info: =?iso-8859-1?Q?xDaTRhHubrtwG60s+lxNjpQYziFtlpAMoiTlbY1PeHA7Ayc/hilPx9NwVK?=
- =?iso-8859-1?Q?nFHmPfyUrTu/mq6TiP507r7BVDNh7dXSl3hquJSBSIUshOBNcGwP40Cj6x?=
- =?iso-8859-1?Q?T61a+raeimSKuk+mZfSCWDxm7X458b19GC03sNlqIQrd1Avh/3kOJErO1D?=
- =?iso-8859-1?Q?Q0ng6Ih8dSsBZ/iUx6r8NFqSURrvV/MwHLkYL645dIZ/K4Jvg3aBfMxUlQ?=
- =?iso-8859-1?Q?6/x2sHGjaPDtAIvx0hPBNqdSxeivxkEzn+TeXibP6FJrFaaAcsbpiYR21B?=
- =?iso-8859-1?Q?6sZq4ZMbaL38Ay2ZQacxO6yaokbJ5HAPY4AMijMbgvgMV1CBgcNhbDJHp5?=
- =?iso-8859-1?Q?T/xHRqEhD/Kk6yXFkBZUcukUVpxo4mVdJWRghupw9Lh7R7Qn773iQ1ZmYQ?=
- =?iso-8859-1?Q?WeY/vBi+8F34kyB682YngUh6xodQ7j54LvLSujQrCDUWupES4C4hHv6nja?=
- =?iso-8859-1?Q?c/U9dfETPZM6fXoiC+ERFOzzol4qeUiz7Khcq00NyJTueVD5juwyWvpr4s?=
- =?iso-8859-1?Q?VtKqzeKhHliGVjpvmkFtX3c9mD7H1hwyyuN9G5ePi4FQLhN+ciQYAn60hM?=
- =?iso-8859-1?Q?EoGBkF2b8dRv/OOko0jtPBrzFXKK3xOmKDZpwcHGPv30Qm0SA6+B1l62Xx?=
- =?iso-8859-1?Q?+y/XbXCBE9owCu67/mJx+rfPxKkQGkphMiSvi5yItMaRBXifVzAPFEFTz2?=
- =?iso-8859-1?Q?imoPO0mwTdoCUpBCJxYW8NqZvtdjrtWGJz30E1OPrb1HHdq/ANf3IOfxEh?=
- =?iso-8859-1?Q?UsMamJQxoE4riC5/WvltvzQcAqWK/XeIByhgnt1pYAJzWM4Z7wjbMrQXqD?=
- =?iso-8859-1?Q?tIIWht0RtqWSeqi6nuZ8fKqJ9N/biRXxnHC2f73sjdugDgIP3cXuTd7CVv?=
- =?iso-8859-1?Q?bRjiA5DXlCJMdhfgfMR5t95IufeXwOJeX30jH/DFhak2uo/GvDy9/Dc/kU?=
- =?iso-8859-1?Q?ygN4rh5UD9swoFo2t4po62KnxYkZecc/RiTuaBX0/hX2+nWS1o2dTp6YBw?=
- =?iso-8859-1?Q?zb7kFPdTTqdb7P3IRA5Glrxqp+rPJg1NIul5wypajP5WF2Ew5q3ZNWXR9Q?=
- =?iso-8859-1?Q?D/7voRG24fEB+vGAzz5cQxHRiaaV+4Y38OpbwtNErVZzRAdx4D7GJr/L6C?=
- =?iso-8859-1?Q?TsILhVCiy2luE0aL/5CKFaMRrESOU21qJ7PxQFJSP8Oq944PRI?=
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?iso-8859-1?Q?uFjgNq4uo9CglOMy3GkGIwgRmaTFsCBkKU4TmhscoZCEtcYUCjfMxn897u?=
- =?iso-8859-1?Q?zfoNZNjlK9ctTEEbKAk5hhdghPldg/05K5qGfAJ7TzyKW5k3QSZnE29RYr?=
- =?iso-8859-1?Q?YAxNQxQQrkA29Pe8QKRjdLGtVn7hazlJHnZ49m1Vyuroyl9fhuFgdZUqYx?=
- =?iso-8859-1?Q?LEhhqthJs48IEzPsaytWmUTqTzbVMYSekXxIQhZkgR2MgdFXPb6Ebd/zOI?=
- =?iso-8859-1?Q?zHNSigVlV1s23KIoCZQlMywHLMd+u6Q1VZJQF+fj9Lc/5AFaayqgWH0aH5?=
- =?iso-8859-1?Q?TSXw1H7QS4K/yB4Mq6QFU3xME5FBUwh6xmmCFGvn97BBI0mGkw7rqEZPCl?=
- =?iso-8859-1?Q?bkXbvwAWNvlsFcEW3/q/r07shCj8tkOn5YIsquLqUxOeTuWwdm+KTWWweP?=
- =?iso-8859-1?Q?Kl3ZCderaxIyOKlS0GZpycQwRGG/76cdN6wdWbCEmgR+Hib6xAWvaDvlEw?=
- =?iso-8859-1?Q?HPYHq2p4VMC4lbiW7M6tOZ7czw5QdLTRXn14NcQhDCTNB16JM3AEvIUx9m?=
- =?iso-8859-1?Q?KKvmavmeU6jHWeuEZPctUO63XQZLOVWpkaNugwi02IVYgW4GkeQowPMfYv?=
- =?iso-8859-1?Q?MRlLIpKk2VFo8IZ+isG9uxVdxHi2aABXr7dVOvTKyq98bln4NyVQNk46Gq?=
- =?iso-8859-1?Q?g1gAIE2eTe4FYUKnj1HPQRdaDxXXk6qBY5kd91rIVtwregWlvJ174v+HU/?=
- =?iso-8859-1?Q?zEWh4OZTjnNFz4ZARjqAUfzd7l7hFffY0npEzbk2wM0sHy90aQro92PGG0?=
- =?iso-8859-1?Q?yPXacCl4CeH4U0QtwSpWLGhIvXU3at6k+txw+2jZO3ZzH7FJxTtwPlX8tA?=
- =?iso-8859-1?Q?lWRhNh0N3Uos2a5q3l0OmfluqHZocS1t0ExWig/HaAv8tj3atwwRxTr1Q/?=
- =?iso-8859-1?Q?g4OqoKq/fdCL6ZEGgH/LRVJdWaa1ROYzXbe27iJCa89p6yDCOtVuosmT+u?=
- =?iso-8859-1?Q?kHdyJ83U+CJvF3jwzq/jK6J7zNJS24S8+LXzw7xVxYWSTXNFWcJ08UzUds?=
- =?iso-8859-1?Q?/0F3wlf0BmHAOQFydcru5RYOdRx60cQYtzLVJh5F7bxfFnmS9bHCj7yQlU?=
- =?iso-8859-1?Q?TSFIZ3ifZ+hPt1+hS5JE6JMSMWvjt7PLHaU4DCFBZ5JJi766zOSicsI3gF?=
- =?iso-8859-1?Q?bG+x6ZpRABEvWdiQvkdEb22t7k3O0VX+al/PbmXJFK8YIdCMrX1V2erNXF?=
- =?iso-8859-1?Q?oICQrH4OvF4k47pwx0wVNSQU4xdqO1l54jRHoaW25wwZbYRewd1vE0rvPK?=
- =?iso-8859-1?Q?2OcvfS5v+hcG1E2GDHCTvzh2shyBZBPzdpEfyLFsHXbcn10/EeWHtuAj9h?=
- =?iso-8859-1?Q?q8wqMLtxzegoeDb3g0sbsEEj9YEdfVS0isF1mSV78NCHcxMBUhiQl+vHn7?=
- =?iso-8859-1?Q?5eQsCitYxWFTwb0o+ybiyO5TH+BulUWP0lL6Ej8tHN0AGYVF2YECjoCIc2?=
- =?iso-8859-1?Q?Cd+tMsvrkJiua3EtQGcalI10cVd2JQK7Dc30vw=3D=3D?=
-X-OriginatorOrg: sct-15-20-9412-4-msonline-outlook-990eb.templateTenant
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1f197c9b-dcbf-443f-b613-08dec59fe21e
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR19MB997338.namprd19.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Jun 2026 20:52:42.0438
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR19MB5558
+In-Reply-To: <20260608175521.67449-3-macroalpha82@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.10.1.5.2/280.943.11
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260608_135248_829877_C308B657 
-X-CRM114-Status: GOOD (  33.94  )
+X-CRM114-CacheID: sfid-20260608_142020_583681_18BCD128 
+X-CRM114-Status: GOOD (  13.35  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,383 +81,106 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/mixed; boundary="===============6908973875574097703=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-On Fri, Jun 05, 2026 at 07:08:35PM +0300, Andy Shevchenko wrote:
-> On Thu, Jun 04, 2026 at 03:18:25PM -0500, Chris Morgan wrote:
-> =
 
-> > Add the core component of a new inv_icm42607 driver. This includes
-> > a few setup functions and the full register definition in the
-> > header file.
-> =
-
-> ...
-> =
-
-> > +#ifndef INV_ICM42607_H_
-> > +#define INV_ICM42607_H_
-> > +
-> > +#include <linux/bitfield.h>
-> > +#include <linux/bitops.h>
-> =
-
-> I haven't found users for these two.
-> =
-
-> + bits.h // BIT() / GENMASK()
-
-I'll correct this.
-
-> =
-
-> > +#include <linux/iio/iio.h>
-> > +#include <linux/mutex.h>
-> > +#include <linux/regmap.h>
-> =
-
-> =
-
-> > +#include <linux/regulator/consumer.h>
-> =
-
-> No users for this one.
-> =
-
-> + types.h // for bool
-> =
-
-> ...
-> =
-
-
-And this.
-
-> > +enum inv_icm42607_sensor_mode {
-> > +	INV_ICM42607_SENSOR_MODE_OFF,
-> > +	INV_ICM42607_SENSOR_MODE_STANDBY,
-> > +	INV_ICM42607_SENSOR_MODE_LOW_POWER,
-> > +	INV_ICM42607_SENSOR_MODE_LOW_NOISE,
-> =
-
-> Are those enums map 1:1 to HW bits or bitfields? If so, assign explicitly=
- each
-> of them.
-
-I'll explicitly set every value in the enums to be clear.
-
-> =
-
-> > +	INV_ICM42607_SENSOR_MODE_NB
-> =
-
-> Is this a terminator like NUMBER_OF ?
-
-This is a terminator, yes. I will not set these explicitly and keep
-commas off of them to keep them easily identifable as terminators.
-
-> =
-
-> > +};
-> =
-
-> ...
-> =
-
-> > +/* ODR values */
-> > +enum inv_icm42607_odr {
-> > +	INV_ICM42607_ODR_1600HZ =3D 5,
-> =
-
-> See above. This one is problematic. No one should rely on Linux/C enums w=
-hen
-> it's about HW bits. All HW related stuff has to be explicit.
-> =
-
-
-I will explicitly set the values here.
-
-> > +	INV_ICM42607_ODR_800HZ,
-> > +	INV_ICM42607_ODR_400HZ,
-> > +	INV_ICM42607_ODR_200HZ,
-> > +	INV_ICM42607_ODR_100HZ,
-> > +	INV_ICM42607_ODR_50HZ,
-> > +	INV_ICM42607_ODR_25HZ,
-> > +	INV_ICM42607_ODR_12_5HZ,
-> > +	INV_ICM42607_ODR_6_25HZ_LP,
-> > +	INV_ICM42607_ODR_3_125HZ_LP,
-> > +	INV_ICM42607_ODR_1_5625HZ_LP,
-> > +	INV_ICM42607_ODR_NB
-> > +};
-> =
-
-> ...
-> =
-
-> > +struct inv_icm42607_sensor_conf {
-> > +	int mode;
-> > +	int fs;
-> > +	int odr;
-> > +	int filter;
-> =
-
-> All of them are supposed to be signed? Why?
-> =
-
-> > +};
-> =
-
-
-A later commit will use -1 for invalid values.
-
-> ...
-> =
-
-> > +struct inv_icm42607_hw {
-> > +	uint8_t whoami;
-> =
-
-> What's wrong with u8?
-
-Nothing, I'll make the change.
-
-> =
-
-> > +	const char *name;
-> > +	const struct inv_icm42607_conf *conf;
-> > +};
-> =
-
-> ...
-> =
-
-> > +#include <linux/delay.h>
-> > +#include <linux/dev_printk.h>
-> > +#include <linux/interrupt.h>
-> > +#include <linux/iio/iio.h>
-> > +#include <linux/module.h>
-> > +#include <linux/mutex.h>
-> > +#include <linux/property.h>
-> > +#include <linux/regmap.h>
-> > +#include <linux/regulator/consumer.h>
-> =
-
-> IWYU, please.
-> =
-
-> ...
-> =
-
-
-This may sound like a dumb question, but what's the best way to invoke
-iwyu for a kernel? None of the readmes or man pages seem to be getting
-me anywhere...
-
-> > +/**
-> > + *  inv_icm42607_setup() - check and setup chip
-> > + *  @st:	driver internal state
-> > + *  @bus_setup:	callback for setting up bus specific registers
-> > + *
-> > + *  Returns 0 on success, a negative error code otherwise.
-> =
-
-> If you do kernel-doc, validate it. Return section is missing here.
-> =
-
-
-I'll just nuke it, most of the stuff is fairly self explanatory anyway.
-
-> > + */
-> =
-
-> ...
-> =
-
-> > +{
-> > +	const struct device *dev =3D regmap_get_device(st->map);
-> > +	unsigned int val;
-> > +	int ret;
-> > +
-> > +	ret =3D regmap_read(st->map, INV_ICM42607_REG_WHOAMI, &val);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	if (val !=3D st->hw->whoami)
-> > +		dev_warn(dev, "Unknown whoami %#02x expected %#02x (%s)\n",
-> > +			 val, st->hw->whoami, st->hw->name);
-> =
-
-> dev_warn_probe() ?
-> =
-
-> > +	ret =3D regmap_write(st->map, INV_ICM42607_REG_SIGNAL_PATH_RESET,
-> > +			   INV_ICM42607_SIGNAL_PATH_RESET_SOFT_RESET);
-> > +	if (ret)
-> > +		return ret;
-> =
-
-> > +	fsleep(INV_ICM42607_RESET_TIME_MS * 1000);
-> =
-
-> USEC_PER_MSEC (needs time.h)
-
-> =
-
-> > +	ret =3D regmap_read_poll_timeout(st->map, INV_ICM42607_REG_INT_STATUS,
-> > +				       val, val & INV_ICM42607_INT_STATUS_RESET_DONE,
-> > +				       INV_ICM42607_RESET_TIME_MS * 100,
-> > +				       INV_ICM42607_RESET_TIME_MS * 10000);
-> =
-
-> These are weird, as in the first case it's actually 1/10th of _RESET_TIME=
-_MS.
-> Perhaps you need to reconsider what you use as that constant. Personally I
-> prefer to see just plain values with the multipliers (to convert to =B5s).
-> =
-
-
-I honestly don't know what a good wait period between polling should
-be, so I guessed at 1/10th the timeout period. I will however change
-the timeout to us.
-
-> > +	if (ret)
-> > +		return dev_err_probe(dev, ret,
-> > +				     "reset error, reset done bit not set\n");
-> > +
-> > +	/* Sync the regcache again after a reset. */
-> > +	regcache_mark_dirty(st->map);
-> > +	ret =3D regcache_sync(st->map);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret =3D bus_setup(st);
-> =
-
-> Hmm... This is bad name with potential of name collision in the future (i=
-n case
-> driver bus code wants to have the same name for the function).
-
-Thanks, I'll rename the function.
-
-> =
-
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret =3D regmap_set_bits(st->map, INV_ICM42607_REG_INTF_CONFIG0,
-> > +			      INV_ICM42607_INTF_CONFIG0_SENSOR_DATA_ENDIAN);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret =3D regmap_update_bits(st->map, INV_ICM42607_REG_INTF_CONFIG1,
-> > +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_MASK,
-> > +				 INV_ICM42607_INTF_CONFIG1_CLKSEL_PLL);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	return inv_icm42607_set_conf(st, st->hw->conf);
-> > +}
-> =
-
-> ...
-> =
-
-> > +int inv_icm42607_core_probe(struct regmap *regmap,
-> > +			    const struct inv_icm42607_hw *hw,
-> > +			    inv_icm42607_bus_setup bus_setup)
-> > +{
-> > +	struct device *dev =3D regmap_get_device(regmap);
-> > +	struct inv_icm42607_state *st;
-> > +	int ret;
-> > +
-> > +	st =3D devm_kzalloc(dev, sizeof(*st), GFP_KERNEL);
-> > +	if (!st)
-> > +		return -ENOMEM;
-> > +
-> > +	ret =3D devm_mutex_init(dev, &st->lock);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	st->hw =3D hw;
-> > +	st->map =3D regmap;
-> > +
-> > +	ret =3D iio_read_mount_matrix(dev, &st->orientation);
-> > +	if (ret)
-> =
-
-> > +		return dev_err_probe(dev, ret,
-> > +				     "failed to retrieve mounting matrix %d\n", ret);
-> =
-
-> Remove duplicate ret printing.
-> =
-
-
-Understood.
-
-> > +
-> > +	ret =3D devm_regulator_get_enable(dev, "vdd");
-> > +	if (ret)
-> > +		return dev_err_probe(dev, ret,
-> > +				     "Failed to get vdd regulator\n");
-> > +
-> > +	st->vddio_supply =3D devm_regulator_get(dev, "vddio");
-> > +	if (IS_ERR(st->vddio_supply))
-> > +		return dev_err_probe(dev, PTR_ERR(st->vddio_supply),
-> > +				     "Failed to get vddio regulator\n");
-> > +
-> > +	ret =3D inv_icm42607_enable_vddio_reg(st);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	ret =3D devm_add_action_or_reset(dev, inv_icm42607_disable_vddio_reg,=
- st);
-> > +	if (ret)
-> > +		return ret;
-> =
-
-> > +	/* Setup chip registers (includes WHOAMI check, reset check, bus setu=
-p) */
-> > +	ret =3D inv_icm42607_setup(st, bus_setup);
-> > +	if (ret)
-> > +		return ret;
-> > +
-> > +	return 0;
-> =
-
-> Just
-> =
-
-> 	return inv_icm42607_setup(st, bus_setup);
-> =
-
-> ? Or is it going to be extended in the next changes?
-> =
-
-> > +}
-
-It will get extended, so I'll keep this for now if that's okay.
-
-> =
-
-> -- =
-
-> With Best Regards,
-> Andy Shevchenko
-> =
-
-> =
-
-
-Thank you for your feedback. And please let me know about the iwyu
-tool, that seems like it would be useful.
-
-- Chris
+--===============6908973875574097703==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="jdqx244eltbi25x2"
+Content-Disposition: inline
+
+
+--jdqx244eltbi25x2
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH V6 2/6] power: supply: sgm41542: Add SG Micro sgm41542
+ charger
+MIME-Version: 1.0
+
+Hi,
+
+On Mon, Jun 08, 2026 at 12:55:17PM -0500, Chris Morgan wrote:
+> Add support for the SG Micro SGM41542 charger/boost converter.
+> Driver was adapted from Rockchip BSP driver [1] and confirmed
+> with vendor datasheet [2].
+>=20
+> [1] https://github.com/rockchip-linux/kernel/blob/develop-6.6/drivers/pow=
+er/supply/sgm41542_charger.c
+> [2] https://www.sg-micro.de/rect/assets/1e8de70b-657e-4156-be68-a64fdbe8e=
+418/SGM41541_SGM41542.pdf
+>=20
+> Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+> ---
+>  drivers/power/supply/Kconfig            |    8 +
+>  drivers/power/supply/Makefile           |    1 +
+>  drivers/power/supply/sgm41542_charger.c | 1057 +++++++++++++++++++++++
+>  3 files changed, 1066 insertions(+)
+>  create mode 100644 drivers/power/supply/sgm41542_charger.c
+> [...]
+> +static int sgm4154x_set_recharge_volt_ua(struct sgm4154x_device *sgm, in=
+t recharge_volt)
+> +{
+> +	int reg_val;
+> +	int ret;
+> +
+> +	recharge_volt =3D recharge_volt / 1000;
+> +
+> +	reg_val =3D (recharge_volt - SGM4154X_VRECHRG_OFFSET_MV) / SGM4154X_VRE=
+CHRG_STEP_MV;
+
+These are the only millivolt offset/steps, so drop the 1000 divison
+and simply do:
+
+#define SGM4154X_VRECHRG_OFFSET_UV      100000
+#define SGM4154X_VRECHRG_STEP_UV        100000
+
+reg_val =3D (recharge_volt - SGM4154X_VRECHRG_OFFSET_UV) / SGM4154X_VRECHRG=
+_STEP_UV;
+
+Otherwise LGTM.
+
+> [...]
+
+Greetings,
+
+-- Sebastian
+
+--jdqx244eltbi25x2
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmonMfcACgkQ2O7X88g7
++pqYYg/+LcYsNUAi80bpA0ntxXi9FElhS41n8dRtZW7Urt+idmo3tajin08Embdn
+F2UPWJ0+MmkKco54E1yzeUQrJHobFqIFgzCEwN8f5JqpapWAdr+hFmPmmVQh+sAT
+xkbegwQroiSGlr9HuOqwbKMb9Rqt1XzDfGMEJUrxQIZr2zDzHkm8yd0UPu/72+mh
+0evgdTzyXH0RF5hkOUOg183dbqpZie9wZqF0uKc092WvrRmuRmWgTXcKfFzBHNka
+6WWuMioOqEIk1jlLk5HUNMsWBMyuMxsfLZ0zVJei/dA+5lT64jgmnQh5Y4rdI+Q8
+HTwTloR7Eb97iULL5y+qf8501nJnBvUMxr1p7W5gHWfDqyqiZYOAzzQ3gz5+QSQF
+yBD8JqjVMl49apI+uDWN+WVtYbwoH5jm4eSwFaBrtWashjohqEvBOwiHp+2pWiZF
+q9bEqoXn9vDGZppFqNFHb+9KojnmikN1WVZCZTFpgzqR048ximCynEl/VY2m0Syt
+UEls9M5WdMDKUQ4z1N2uh/Tn0Zq1kMhT2IvN+jQYC2QJnZUqBb+OwoV8KzrNfSuR
+CiMCl9+YmwYlrqKy7cxNFco3gum/gW+dDctBANB7+Me2ehhQDxuAJb5rENRviy/g
+s+oizR8vQ3mNnlWLz57M5Co9TrEjwIqT10ujLy1jnIkVGMdZMJc=
+=8RYq
+-----END PGP SIGNATURE-----
+
+--jdqx244eltbi25x2--
+
+
+--===============6908973875574097703==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============6908973875574097703==--
+
