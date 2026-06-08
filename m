@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5790ECD8C9D
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 17:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61AB5CD8C9F
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 17:57:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:MIME-Version:Message-ID:Date:Subject:Cc
-	:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=TpX3JUHoJeZdYpGP4OSG6zdXQIendPfHCadVcpTYd1I=; b=zSpP9wu/fOeA+0
-	xJ5uNwIoUhtsBsfFNo4tKq9ptM737gENEXRJqI3Vci82BauSu1snU4NRbqf95L9/IrWZUIZW/ty8h
-	srJF+QD5FVQDvFJOo9gMbBTOJo8q47r3cZbEU3yiY5k6HrZuyAHgKsPtr9rcvY2/jlK9ryeNy3ET/
-	Y8j+7kd0RoxGbxcNarxe+t4CCskBbPwpOOeeOKhYUbxhTui9G1OpZpRoZz4ukVTrUBrHgZm5LAOzg
-	chBf6/qgNBkNL23LeODIbo0zykZn271RC7Xz59n9A0Fx4ZG7UtM6/VIv4pthjaSnUcC3SWcIbUXZN
-	jSuogE1HwLspvKvwGOiQ==;
+	List-Archive:List-Unsubscribe:List-Id:MIME-Version:References:In-Reply-To:
+	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=g+Mw/cYFXrCi7XWVX5nuMONS/1biniecQ2TsH6uY5oA=; b=cb5lop1QisqWH5
+	2JrWdW944B3ePS5JwUCYYXkPV3I4orWyPlUOvCfseBNh+CVws7a+TRgediUhZJ9v6vbY3E3cJJ2h0
+	ByKmcAEY5TgU/Hc/bXOWsvnNOrQvEKeC4xH8fnGekguI7YOkuN4s8smPZqsIHTQ93MRFYmpfyFRr2
+	IfOdeIFvnQ/5uKfk82YHh1avvQhKaVzr/5phgdXgJ/6916NDUskTrJzsmtIsKGhc5UO4tabb3NhdD
+	eQ+wrJJ2oAWBrIabrI7AguKoh9wCG+PzSQN+6zh+mKETNHbCqMgwj27Siy3M75pD9t/Krq9RR7Q6F
+	lEQj3zI+q7nsYw9H7PLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWeEE-00000004EQh-0r8K;
-	Mon, 08 Jun 2026 17:57:38 +0000
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
+	id 1wWeEH-00000004ESS-1icn;
+	Mon, 08 Jun 2026 17:57:41 +0000
+Received: from mail-oo1-xc2d.google.com ([2607:f8b0:4864:20::c2d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWeEB-00000004EPe-2s1D
+	id 1wWeEE-00000004EQg-3d3e
 	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Jun 2026 17:57:36 +0000
-Received: by mail-oi1-x231.google.com with SMTP id 5614622812f47-486b93fc7c8so760337b6e.3
-        for <linux-rockchip@lists.infradead.org>; Mon, 08 Jun 2026 10:57:34 -0700 (PDT)
+	Mon, 08 Jun 2026 17:57:40 +0000
+Received: by mail-oo1-xc2d.google.com with SMTP id 006d021491bc7-69e8583107aso801973eaf.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 08 Jun 2026 10:57:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1780941454; x=1781546254; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to;
-        bh=OVSlvqqOMvr0bzIovKyMDYV1sRHWvTORPbcBmLSFAzQ=;
-        b=K49o99WFWkULJVsIQNdpeA5UZtImF8REN1b7V7nWjSYGKI0oukI7v9dT9F4qkSgcXP
-         L7rel4Tq6k9H4EOaH7rBomo4liB2jjU1YA4O10c9fD9KiG55Fc0iTiZDG+4s8aARg5o5
-         BZzHobChBhj9l7TW0kQkgOdrMXBaE2wNmkFm8K2Pa5POSv5zZKHrjhHafdkWRwYHnipy
-         29JxJphAzS7Wf8UMtgrsbB7/E8e+Rie15QfVQufUhYirSMQ5KgW5At1qhLCarg9K3I6Y
-         LN4tCwCWMwCE5qCMrWJtGP5ll8K6+UgpDszFS7Kf/E2Pdx0ji6++pVd1RvpCAwYi5Imf
-         53Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780941454; x=1781546254;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1780941457; x=1781546257; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to;
-        bh=OVSlvqqOMvr0bzIovKyMDYV1sRHWvTORPbcBmLSFAzQ=;
-        b=VsCUsxTBPdn/6aFE0MzpxjnTcfdsJR1X1rqQZXZHidUHqfaHV1Vmxu8sqYfRVrfn1i
-         q+r6sst/Gx/3LfO7dpk/nJ1ZAQFaFvqAHKSC+riduJ/OZE1L3+4iFlugpQfEEj33lKsk
-         wAdtK4l2BvkX9IOdJmoGaob3jTTISJp7mLZionGhh/cVTV51/et/wBRbOukjL1KwZsNb
-         kXM9lHSEokg/TH2bG6xphYQuK8x9NaU1O/Bl/PN1hUgeEXwVkmy0/pJzVYC2WFyhuOSO
-         bHdHQ1MggA0NilLu/L1YARYcT8xCZC0m1KxIi2+ZEHDIWwv3yrMY3ZELHB9mgvKaRxUi
-         i/cw==
-X-Gm-Message-State: AOJu0YyDivVdS9BqdDd4ls0vGdgC+9jpfEZ28shNwKGz9DTjcjvxYz//
-	3hbxTpq52XInnqN7wJBo8RP4hq4Nsma3gndWxEpnsQnNmlk1KuHaDXVbxULhvdaj
-X-Gm-Gg: Acq92OF3ERwGeyYyD4gnsFk2eb/PF1pWjBBQySnTuM97OuPEx4jDVv5iU8BgBQvqea1
-	YBLhx6x9zGD02wl+LJvH100judDBjnuJxEAA9LsuAHG9d/NWg0JcKuYAxRkvZf2V/XB3vHx2eef
-	yozc717SfJGusyWvpGkzExZmm4zRresBknKHJcsWZUwfWsaCXHt9tEnz86R0CiPxLRBi1LhLQfi
-	TMK6aR1BuFC65mdL/QNIpQjhZi9bdQ9KByDmibFK7TG0dkJe7S/Nm4Ikww4eT1U0s/PsrTPcvJy
-	5T/E4Y2kbcNwQOndF5fzESo0Fkogne/LgrheWe4PodJYkBVTPzARNXibdP93S44sPxUOW6TbSKb
-	HEpXk6axORlNP6UI2rJHEuGL5QzJZrinfNvbQ/cBD4DVuILp01ug94wdOjV4yrxdAkVIbGObzEh
-	hvbAE86GWQnBvQ+jVKJLCOAVN8nr6L8z0=
-X-Received: by 2002:a05:6808:1185:b0:47b:c2a2:1c89 with SMTP id 5614622812f47-4868dcb287emr8786503b6e.21.1780941453860;
-        Mon, 08 Jun 2026 10:57:33 -0700 (PDT)
+        bh=mFoYdAxl4NolMJmpm2ZDGLTzkpcIZ1kRqHVd6sBUF0s=;
+        b=sO1hnPDr5oJ85Qj+cQtx4/z7dI7ixVyzrRDEucQ3/kSQ7LMBfKYkp7u7aDYzxKUAV+
+         KDgHdMmzRr8k+w+WaY6S92uQsLU+zDxHarfcOykPhWKT8Pqji3hJutozlarck8BF1nul
+         Zx3HY9+Z88ztBSY1Q/amrVgbxGOk0uGJznvpwUNFRDpdXE817O2XzygxWOVC5AYDRmY1
+         HbjWx8Rl57V1+l4oPKb++PrLsEezlMaFpbuksf8tXq7Boex27pqBTfKCxMSfqBIugdLS
+         +xiIvtmrTnChfOONaj4X1Kji/NASIcFvtwKv+7TlqxJc4T4UR5hbatw27TSml89RkLPM
+         ke/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780941457; x=1781546257;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=mFoYdAxl4NolMJmpm2ZDGLTzkpcIZ1kRqHVd6sBUF0s=;
+        b=ji76y9sdoadu82XoXbxc4B3mLO8jdasqVhuqFKcCTttBdWVBOWPCj/+rZYXAnmv862
+         gfs3/UhP2Jvt1z1prjvia4NfmFuZtjVeKrAzL1rt2CDisoup5Hb0wR1Vlwd6MKp2R9Z1
+         sW84ptn7Yf1b29U/6JrSQMJ9ZGnEjkmxPVz9RzWZ4dgWgytcAK0/vV7Mg6clyj29C2i/
+         lHt7ApYUyd5YBAM2HV/PrgqZNlm5y0c4wh9FdQ++iIpCqutkt/h1Htxo5sl8qrRxdUp5
+         BM3dMCG5VwsECGX3y8Epra2SJa8a1wrlfSbex0Z2/Fom8PFxHhT1Da1RnYcXVyo4sFjY
+         Bo/w==
+X-Gm-Message-State: AOJu0YyNCc/EWTXSBQ/QuU7u7IwJWOqoydaFvs9JGzco3+OX16CK/UK2
+	PBnAQJV4ZbYFbFbnj8MnPgbkuBIfyiLIPqvCeGQybZbXDwr+L3lLGsTPUF/Fq5ui
+X-Gm-Gg: Acq92OF+RYlNexd5Hcp97OND2f5lzeT7y7f2azBKjlcNg7JZXwrJsgP8axTNnuM/SRM
+	ON9kEc2eeiAv0UeksuX9xs+M/XyrQhKVUZcKHwXAw6xScDLSiwn7Xf3kPe6nuMbuuHiLiz8Jxfg
+	0xpMg7yFNjCPG6npk94zEdNVaDcyuAqP7cHqg5o0DdzOK83of5FlYlmZwf1q/J+S7zAOjldTPMP
+	vN1HdhJODEXnikcJQ1ca3fdqbeWT+f5xN5loiI2VnOJrjkDMUGoKbo6Rnwa2XF4zRX3PbFQRVv6
+	l8ZDbUzH+KkV/BDWGf3rMD8T+HaAiLiX+eQFMyvIZMSvT9wb/GbVQsMXredmVxyn3IrPAbxgld5
+	LasP+kmXZ26Fn5s5goh2PV9xJep4GotImcjRl3NHhzUMmDA89ZrZDCfTFJ1FlusYh4tS1u5pqfp
+	vpHPzKX7S2C4vVgJK8l+HRUKFhGPXvczM=
+X-Received: by 2002:a4a:ee83:0:b0:69d:e5f6:cefb with SMTP id 006d021491bc7-69e68cad71fmr8086780eaf.53.1780941457514;
+        Mon, 08 Jun 2026 10:57:37 -0700 (PDT)
 Received: from localhost.localdomain ([2600:1700:fb0:1bc0::54])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-440d8297395sm15214316fac.11.2026.06.08.10.57.32
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-440d8297395sm15214316fac.11.2026.06.08.10.57.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jun 2026 10:57:33 -0700 (PDT)
+        Mon, 08 Jun 2026 10:57:36 -0700 (PDT)
 From: Chris Morgan <macroalpha82@gmail.com>
 To: linux-rockchip@lists.infradead.org
 Cc: devicetree@vger.kernel.org,
@@ -84,14 +85,16 @@ Cc: devicetree@vger.kernel.org,
 	krzk+dt@kernel.org,
 	robh@kernel.org,
 	Chris Morgan <macromorgan@hotmail.com>
-Subject: [PATCH V6 0/6] Add Anbernic RG Vita-Pro
-Date: Mon,  8 Jun 2026 12:55:15 -0500
-Message-ID: <20260608175521.67449-1-macroalpha82@gmail.com>
+Subject: [PATCH V6 4/6] drm/panel: anbernic-td4310: Add RG Vita Pro panel
+Date: Mon,  8 Jun 2026 12:55:19 -0500
+Message-ID: <20260608175521.67449-5-macroalpha82@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260608175521.67449-1-macroalpha82@gmail.com>
+References: <20260608175521.67449-1-macroalpha82@gmail.com>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260608_105735_753488_33F57D42 
-X-CRM114-Status: GOOD (  12.90  )
+X-CRM114-CacheID: sfid-20260608_105739_011721_F4BA4A7B 
+X-CRM114-Status: GOOD (  22.70  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,58 +113,313 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chris Morgan <macromorgan@hotmail.com>
 
-Add support for the Anbernic RG Vita-Pro, based on the Rockchip RK3576 SoC.
+The panel used by Anbernic in the RG Vita-Pro is a DSI panel based
+on the TD4310 controller IC. It measures approximately 5.5 inches
+diagonally and is 1080x1920 in resolution.
 
-Changes Since V1:
- - Updated documentation filename to matche compatible string.
- - Corrected order of allocating IRQ in charger driver and switched
-   to using devm managed function to allocate work queue.
-Changes Since V2:
- - Corrected issue with naming of panel binding document and added
-   fallback compatible string.
- - Switched to devm helpers in panel driver. Note that
-   devm_drm_panel_add() is currently only in the drm-next branch.
- - Optimized setting GPIOs for panel driver.
-Changes Since V3:
- - Fixed numerous issues identifed by Sashiko bot, mainly relating
-   to unclamped or improperly clamped values from within the
-   charger driver.
- - Corrected hard-coded values in the panel driver unprepare routine
-   as well as correcting an improperly checked return condition.
-Changes Since V4:
- - Fixed errors identified by Sashiko bot on charger driver that could
-   result in an improper value being written to the registers.
- - Corrected some error handling in the panel driver.
-Changes Since V5:
- - Corrected minor errors in documentation and added default values.
- - Further corrected clamping behavior in charger driver.
-
-Chris Morgan (6):
-  dt-bindings: power: supply: sgm41542: document sgm41542
-  power: supply: sgm41542: Add SG Micro sgm41542 charger
-  dt-bindings: display: panel: Add Anbernic TD4310 panel
-  drm/panel: anbernic-td4310: Add RG Vita Pro panel
-  dt-bindings: arm: rockchip: Add Anbernic RG Vita-Pro
-  arm64: dts: rockchip: Add Anbernic RG Vita-Pro
-
- .../devicetree/bindings/arm/rockchip.yaml     |    6 +
- .../display/panel/anbernic,td4310.yaml        |   66 +
- .../power/supply/sgmicro,sgm41542.yaml        |   96 ++
- arch/arm64/boot/dts/rockchip/Makefile         |    1 +
- .../rockchip/rk3576-anbernic-rg-vita-pro.dts  | 1327 +++++++++++++++++
- drivers/gpu/drm/panel/Kconfig                 |   10 +
- drivers/gpu/drm/panel/Makefile                |    1 +
- drivers/gpu/drm/panel/panel-anbernic-td4310.c |  257 ++++
- drivers/power/supply/Kconfig                  |    8 +
- drivers/power/supply/Makefile                 |    1 +
- drivers/power/supply/sgm41542_charger.c       | 1057 +++++++++++++
- 11 files changed, 2830 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/display/panel/anbernic,td4310.yaml
- create mode 100644 Documentation/devicetree/bindings/power/supply/sgmicro,sgm41542.yaml
- create mode 100644 arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
+Signed-off-by: Chris Morgan <macromorgan@hotmail.com>
+---
+ drivers/gpu/drm/panel/Kconfig                 |  10 +
+ drivers/gpu/drm/panel/Makefile                |   1 +
+ drivers/gpu/drm/panel/panel-anbernic-td4310.c | 257 ++++++++++++++++++
+ 3 files changed, 268 insertions(+)
  create mode 100644 drivers/gpu/drm/panel/panel-anbernic-td4310.c
- create mode 100644 drivers/power/supply/sgm41542_charger.c
 
+diff --git a/drivers/gpu/drm/panel/Kconfig b/drivers/gpu/drm/panel/Kconfig
+index d592f4f4b939..61dd00297ecc 100644
+--- a/drivers/gpu/drm/panel/Kconfig
++++ b/drivers/gpu/drm/panel/Kconfig
+@@ -17,6 +17,16 @@ config DRM_PANEL_ABT_Y030XX067A
+ 	  Y030XX067A 320x480 3.0" panel as found in the YLM RG-280M, RG-300
+ 	  and RG-99 handheld gaming consoles.
+ 
++config DRM_PANEL_ANBERNIC_TD4310
++	tristate "Anbernic TD4310 LCD panel"
++	depends on GPIOLIB && OF
++	depends on DRM_MIPI_DSI
++	depends on BACKLIGHT_CLASS_DEVICE
++	help
++	  Say Y here to enable support for Anbernic designed panels with the
++	  TD4310 panel controller such as the ones used on the Anbernic RG
++	  Vita Pro.
++
+ config DRM_PANEL_ARM_VERSATILE
+ 	tristate "ARM Versatile panel driver"
+ 	depends on OF
+diff --git a/drivers/gpu/drm/panel/Makefile b/drivers/gpu/drm/panel/Makefile
+index a4291dc3905b..9d8f70c9de3e 100644
+--- a/drivers/gpu/drm/panel/Makefile
++++ b/drivers/gpu/drm/panel/Makefile
+@@ -1,5 +1,6 @@
+ # SPDX-License-Identifier: GPL-2.0
+ obj-$(CONFIG_DRM_PANEL_ABT_Y030XX067A) += panel-abt-y030xx067a.o
++obj-$(CONFIG_DRM_PANEL_ANBERNIC_TD4310) += panel-anbernic-td4310.o
+ obj-$(CONFIG_DRM_PANEL_ARM_VERSATILE) += panel-arm-versatile.o
+ obj-$(CONFIG_DRM_PANEL_ASUS_Z00T_TM5P5_NT35596) += panel-asus-z00t-tm5p5-n35596.o
+ obj-$(CONFIG_DRM_PANEL_AUO_A030JTN01) += panel-auo-a030jtn01.o
+diff --git a/drivers/gpu/drm/panel/panel-anbernic-td4310.c b/drivers/gpu/drm/panel/panel-anbernic-td4310.c
+new file mode 100644
+index 000000000000..9a1b4525423c
+--- /dev/null
++++ b/drivers/gpu/drm/panel/panel-anbernic-td4310.c
+@@ -0,0 +1,257 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Driver for Anbernic panels with TD4310 panel controller.
++ *
++ * Copyright (C) 2026 Chris Morgan <macromorgan@hotmail.com>
++ *
++ */
++
++#include <linux/gpio/consumer.h>
++#include <linux/module.h>
++#include <linux/of.h>
++#include <linux/regulator/consumer.h>
++
++#include <drm/drm_mipi_dsi.h>
++#include <drm/drm_panel.h>
++#include <drm/drm_probe_helper.h>
++
++#include <video/mipi_display.h>
++
++struct anbernic_panel_td4310_info {
++	const struct drm_display_mode *display_mode;
++	u16 width_mm;
++	u16 height_mm;
++	u32 bus_flags;
++	unsigned long mode_flags;
++	u32 format;
++	u32 lanes;
++	u16 prepare_delay;
++	u16 reset_delay;
++	u16 init_delay;
++	u16 enable_delay;
++	u16 disable_delay;
++	u16 unprepare_delay;
++};
++
++struct anbernic_panel_td4310 {
++	struct device *dev;
++	struct mipi_dsi_device *dsi;
++	struct drm_panel panel;
++	const struct anbernic_panel_td4310_info *panel_info;
++	struct gpio_desc *reset_gpio;
++	struct gpio_desc *enable_gpio;
++	struct regulator *vdd;
++	enum drm_panel_orientation orientation;
++};
++
++static inline struct anbernic_panel_td4310 *panel_to_anbernic_panel_td4310(struct drm_panel *panel)
++{
++	return container_of(panel, struct anbernic_panel_td4310, panel);
++}
++
++static int panel_anbernic_td4310_prepare(struct drm_panel *panel)
++{
++	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
++	struct mipi_dsi_device *dsi = ctx->dsi;
++	struct mipi_dsi_multi_context dsi_ctx = { .dsi = dsi };
++	int ret;
++
++	ret = regulator_enable(ctx->vdd);
++	if (ret)
++		return ret;
++
++	ret = gpiod_set_value_cansleep(ctx->enable_gpio, 1);
++	if (ret)
++		goto err_enable;
++
++	if (ctx->panel_info->enable_delay)
++		mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->enable_delay);
++
++	ret = gpiod_set_value_cansleep(ctx->reset_gpio, 1);
++	if (ret)
++		goto err_reset;
++
++	mipi_dsi_msleep(&dsi_ctx, 10);
++
++	ret = gpiod_set_value_cansleep(ctx->reset_gpio, 0);
++	if (ret)
++		goto err_reset;
++
++	if (ctx->panel_info->reset_delay)
++		mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->reset_delay);
++
++	mipi_dsi_dcs_exit_sleep_mode_multi(&dsi_ctx);
++	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->prepare_delay);
++	mipi_dsi_dcs_set_display_on_multi(&dsi_ctx);
++	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->prepare_delay);
++
++	if (dsi_ctx.accum_err) {
++		ret = dsi_ctx.accum_err;
++		goto err_reset;
++	}
++
++	return 0;
++
++err_reset:
++	gpiod_set_value_cansleep(ctx->enable_gpio, 0);
++err_enable:
++	regulator_disable(ctx->vdd);
++	return ret;
++}
++
++static int panel_anbernic_td4310_unprepare(struct drm_panel *panel)
++{
++	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
++	struct mipi_dsi_device *dsi = ctx->dsi;
++	struct mipi_dsi_multi_context dsi_ctx = { .dsi = dsi };
++
++	mipi_dsi_dcs_set_display_off_multi(&dsi_ctx);
++	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->unprepare_delay);
++	mipi_dsi_dcs_enter_sleep_mode_multi(&dsi_ctx);
++	mipi_dsi_msleep(&dsi_ctx, ctx->panel_info->disable_delay);
++
++	gpiod_set_value_cansleep(ctx->enable_gpio, 0);
++
++	gpiod_set_value_cansleep(ctx->reset_gpio, 1);
++
++	regulator_disable(ctx->vdd);
++
++	return 0;
++}
++
++static int panel_anbernic_td4310_get_mode(struct drm_panel *panel,
++				    struct drm_connector *connector)
++{
++	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
++	const struct anbernic_panel_td4310_info *panel_info = ctx->panel_info;
++
++	connector->display_info.bpc = 8;
++	connector->display_info.width_mm = panel_info->width_mm;
++	connector->display_info.height_mm = panel_info->height_mm;
++	connector->display_info.bus_flags = panel_info->bus_flags;
++
++	return drm_connector_helper_get_modes_fixed(connector, panel_info->display_mode);
++}
++
++static enum drm_panel_orientation panel_anbernic_td4310_get_orientation(struct drm_panel *panel)
++{
++	struct anbernic_panel_td4310 *ctx = panel_to_anbernic_panel_td4310(panel);
++
++	return ctx->orientation;
++}
++
++static const struct drm_panel_funcs panel_anbernic_td4310_funcs = {
++	.prepare = panel_anbernic_td4310_prepare,
++	.unprepare = panel_anbernic_td4310_unprepare,
++	.get_modes = panel_anbernic_td4310_get_mode,
++	.get_orientation = panel_anbernic_td4310_get_orientation,
++};
++
++static int panel_anbernic_td4310_probe(struct mipi_dsi_device *dsi)
++{
++	struct device *dev = &dsi->dev;
++	struct anbernic_panel_td4310 *ctx;
++	int ret;
++
++	ctx = devm_drm_panel_alloc(dev, struct anbernic_panel_td4310, panel,
++				   &panel_anbernic_td4310_funcs,
++				   DRM_MODE_CONNECTOR_DSI);
++	if (IS_ERR(ctx))
++		return PTR_ERR(ctx);
++
++	ctx->dev = dev;
++
++	ctx->panel_info = of_device_get_match_data(dev);
++	if (!ctx->panel_info)
++		return -EINVAL;
++
++	ret = of_drm_get_panel_orientation(dev->of_node, &ctx->orientation);
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to get panel orientation\n");
++
++	ctx->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
++	if (IS_ERR(ctx->reset_gpio))
++		return dev_err_probe(dev, PTR_ERR(ctx->reset_gpio),
++				     "Cannot get reset gpio\n");
++
++	ctx->enable_gpio = devm_gpiod_get_optional(dev, "enable", GPIOD_OUT_LOW);
++	if (IS_ERR(ctx->enable_gpio))
++		return dev_err_probe(dev, PTR_ERR(ctx->enable_gpio),
++				     "Cannot get enable gpio\n");
++
++	ctx->vdd = devm_regulator_get(dev, "vdd");
++	if (IS_ERR(ctx->vdd))
++		return dev_err_probe(dev, PTR_ERR(ctx->vdd),
++				     "Failed to request vdd regulator\n");
++
++	ctx->dsi = dsi;
++	mipi_dsi_set_drvdata(dsi, ctx);
++
++	dsi->lanes = ctx->panel_info->lanes;
++	dsi->format = ctx->panel_info->format;
++	dsi->mode_flags = ctx->panel_info->mode_flags;
++
++	ret = drm_panel_of_backlight(&ctx->panel);
++	if (ret)
++		return ret;
++
++	devm_drm_panel_add(dev, &ctx->panel);
++
++	ret = devm_mipi_dsi_attach(dev, dsi);
++	if (ret < 0)
++		return dev_err_probe(dev, ret, "Failed to attach to DSI host\n");
++
++	return 0;
++}
++
++static const struct drm_display_mode anbernic_vitapro_mode = {
++	.clock = 140020,
++	.hdisplay = 1080,
++	.hsync_start = 1080 + 50,
++	.hsync_end = 1080 + 50 + 4,
++	.htotal = 1080 + 50 + 4 + 50,
++	.vdisplay = 1920,
++	.vsync_start = 1920 + 15,
++	.vsync_end = 1920 + 15 + 4,
++	.vtotal = 1920 + 15 + 4 + 32,
++	.flags = DRM_MODE_FLAG_NHSYNC | DRM_MODE_FLAG_NVSYNC,
++};
++
++static const struct anbernic_panel_td4310_info anbernic_vitapro_info = {
++	.display_mode = &anbernic_vitapro_mode,
++	.width_mm = 69,
++	.height_mm = 121,
++	.bus_flags = DRM_BUS_FLAG_DE_LOW | DRM_BUS_FLAG_PIXDATA_DRIVE_NEGEDGE,
++	.mode_flags = MIPI_DSI_MODE_VIDEO | MIPI_DSI_MODE_VIDEO_BURST |
++		      MIPI_DSI_MODE_LPM | MIPI_DSI_MODE_NO_EOT_PACKET |
++		      MIPI_DSI_CLOCK_NON_CONTINUOUS,
++	.format = MIPI_DSI_FMT_RGB888,
++	.lanes = 4,
++	.prepare_delay = 50,
++	.reset_delay = 220,
++	.enable_delay = 120,
++	.disable_delay = 50,
++	.unprepare_delay = 20,
++};
++
++static const struct of_device_id panel_anbernic_td4310_of_match[] = {
++	{
++		.compatible = "anbernic,panel-vita-pro",
++		.data = &anbernic_vitapro_info,
++	},
++	{ }
++};
++MODULE_DEVICE_TABLE(of, panel_anbernic_td4310_of_match);
++
++static struct mipi_dsi_driver anbernic_panel_td4310_driver = {
++	.driver = {
++		.name = "panel-anbernic-td4310",
++		.of_match_table = panel_anbernic_td4310_of_match,
++	},
++	.probe	= panel_anbernic_td4310_probe,
++};
++module_mipi_dsi_driver(anbernic_panel_td4310_driver);
++
++MODULE_AUTHOR("Chris Morgan <macromorgan@hotmail.com>");
++MODULE_DESCRIPTION("DRM driver for Anbernic TD4310 MIPI DSI panels");
++MODULE_LICENSE("GPL");
 -- 
 2.43.0
 
