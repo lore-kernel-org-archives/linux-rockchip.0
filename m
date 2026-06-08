@@ -4,105 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49748CD8CA4
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 20:22:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7C48CD6E79
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 20:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
-	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	MIME-Version:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0zFzO88useRbWRRlDq+fdcf65Q7jgmhvDolSLszW0+o=; b=M9mG2I8ISePFccCz8Vc+ovDfRc
-	yffktQqUhidvztrK7dt+ErtMaPPs3a8xopvj56wac8b2TEzugf/LIz7HDVrptASN3hVI8n3liyFsy
-	Owf6iZFw4kya7oErGfFegfk7ZEo16LoUYgRCFBXxlh7ULSQOqTp8frfeIWcaFYm77g6/oycM2WPam
-	4seiyGAETUk9ne19FUxfRe16bgzhTQPRsVcHchJMRDIPHCkYnBgqb2dqKOheVQAILqtZiFDjtHO+Q
-	PbE+YAX4V57x175Ll2emC92WhtNjReQkGSpKtOfYLp4k5R5UOuRg1Lay0UuGpmeIdNak4MPlXlnrc
-	QAG7fH0A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:MIME-Version:Message-Id:Date:
+	Subject:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=mZ/FJXAe6TKxofB7KdD6ZIEqb3J/NGj4B/2XtPP6KgY=; b=fkUU61ocni5y69
+	yZjDAV0CUPjB2A6ZDgGHYB8Vkg4lhCGOEh0sRuWjJSVk4sXwl4hkz5dXEWtKlvikUNk/oTKahz2lm
+	sDlHQ7K2YNJmy7oDmESA9BCGu89uaVHxO46Z7ScjUHSquj1sEpC1cCHYZKYCviLjUG7qyqEa6A5CN
+	Pzvq2RTRJKz32LQyJOQPrFJaNUUSpQ0tjpH2B6oNv3ZU6eRLdmAYSgu7fvcq0Ed+3IS48Uj6l4GlN
+	KtjE7BpNQvdZ7MePyS9VX6RDCU110Oa0pQ7atG+bfrkIQVT0WuPnikoz8SFtgts4ANFdrxrvxS3ul
+	g5RFJ9UJD95xiJIbs4+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWgUg-00000004MCh-2ZbJ;
-	Mon, 08 Jun 2026 20:22:46 +0000
-Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
+	id 1wWgps-00000004NG2-2pzB;
+	Mon, 08 Jun 2026 20:44:40 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWgUe-00000004MCJ-43pE
+	id 1wWgpq-00000004NEt-1hEM
 	for linux-rockchip@lists.infradead.org;
-	Mon, 08 Jun 2026 20:22:46 +0000
-Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-8ccea53f35cso50590476d6.1
-        for <linux-rockchip@lists.infradead.org>; Mon, 08 Jun 2026 13:22:44 -0700 (PDT)
+	Mon, 08 Jun 2026 20:44:39 +0000
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 658Ix7ne314986
+	for <linux-rockchip@lists.infradead.org>; Mon, 8 Jun 2026 20:44:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:message-id
+	:mime-version:subject:to; s=qcppdkim1; bh=JZcc6TPeUx/2ww8Z8bbTx4
+	r6S+aoLRf/jpoC61OzVbc=; b=MGT7HmAOHcVdj0yATV7HMAwbU5uk4J313+T5nm
+	84kICFmcHfToU9Lqm9Zj1W8my/y4+rF2I1dGopuun62rFv8Fw2trVIkKDB3yKySW
+	qydpBOtZnfMRszANz62Pt50+mwOEp0Ujx4Zp18DgPJCVsRwORM4Er5MujfDwelpy
+	ptJDMUpbk/tCmC6s1na0lS+aQUhoepuuYyFJBT0tP7qg8AZABd46rd0j/jD4sGWe
+	Pih62qqCqyu29l++9QOUW7MKDU7kcjJF5AxMJXi8jD4J37DBGonSUMg6w0aopY6s
+	ItlzeTEe2ujWvVOt4J54RBTMEjcYrpwJuSquw8sPHnljJNCg==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com [209.85.160.197])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4entr0k59k-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-rockchip@lists.infradead.org>; Mon, 08 Jun 2026 20:44:37 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id d75a77b69052e-5174a23afcbso58696181cf.3
+        for <linux-rockchip@lists.infradead.org>; Mon, 08 Jun 2026 13:44:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1780950164; x=1781554964; darn=lists.infradead.org;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:from:to:cc:subject:date:message-id:reply-to;
-        bh=vQEEMft7f0pvYlAEq6RrP5hBFk6klhTFUMQXwCgeb60=;
-        b=Ykd1XWLq3HE3YIKqapGdoFfUhiXZr6BU6g7/uTKztuC2QwdAuThBKY8o6Uz2QQouv/
-         eVsO1lbiG+qUPj0L2j5JC8bpg53+j01M45TpBddSFfHCV55qu0HC427E2tysJVQS6BtU
-         m06nFO2UDdjhyxIhVPzd1Q972CwzFJrY0AUnHMY+ojkg0VPOiuZ7vS8QhhJgb8kVYBHi
-         GoId9kkzvjfAwEsAuOE6b4P/KXnQxzcGKUo8VhTsFqPj5du5X/hOcue96z+8hfmTl/hY
-         qh6I5SWgXY15Ong0keg/yYlyYDCjzed2tHrwUDLfHUvRfGgi50TVxbFOrQfHICXUO1YH
-         vbvg==
+        d=oss.qualcomm.com; s=google; t=1780951476; x=1781556276; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:from:to:cc:subject:date:message-id:reply-to;
+        bh=JZcc6TPeUx/2ww8Z8bbTx4r6S+aoLRf/jpoC61OzVbc=;
+        b=GK1xXeB5jM4lYDk2MuBiyeJXjAXCRJ6Jt/K/lz3ps2iYfWQmVHksE+IE2P1CGRgMWE
+         DUkxxIj/SdgRX2M84LBKoMtFwZtFvCnvYcSCGjhlCcdMVUaKi2rN89AN33YPn7RGCd1e
+         BPivTi53Gv1XVpMsbZDwGwvdbTDCn6hG+q5JlqICzuiFOdaZorlPdwshe70EvoAroTXf
+         h+OCkRq4NRzSNAJmJ+KAK68GUfIeg+420HIFT8qO/luRbK+LU1yye6VXJ56jM74KXqxA
+         wAy8AyJcAa+vuMzF8naZ/Xi5vVRN2lFLwbGic4KNeV3zo7Djbwbbdj+8WfgH2yQ3/TWV
+         Jg/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1780950164; x=1781554964;
-        h=mime-version:user-agent:autocrypt:references:in-reply-to:date:cc:to
-         :from:subject:message-id:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to;
-        bh=vQEEMft7f0pvYlAEq6RrP5hBFk6klhTFUMQXwCgeb60=;
-        b=rndMuLTiDIVWlRWkm2sNcMg9OQqdf2xzWRmptMmyxeo8OhOWXm66jPoMwg51RtMlNe
-         r6a2px2rJAhj6dl9Hdv3PciZcUtuWdNUXy7P/b9CLvM8lnpzQ5Mij8c1/DE6Z/zZRaiu
-         I/58bRCiPha/VZZplaO05C7R5Q9HVCmzW5Wjb7gATXcqS+yNwWdKmbJUfvgAV+6IxXi0
-         DspmrPti/1QqW217RnzgUjlHDrpuBPKh7avU2NYqvRs2o6rg1LLa6O4wWKX6jOt9D/AP
-         ef8YRXHOBmXg0PAr/dKamce8k6aAUApDOZ/snlz7IFunvGtzBMPW3dNlsV3d4ZmQm5Cd
-         D5Ww==
-X-Gm-Message-State: AOJu0YwWVpgq626PMhT79x+nL9smjriiUWo2xf1HGr3nNVcZwRKX2MiE
-	qPDeS8CrEuhm/mVvQVE2zbknV1nhANCDxMm8l3JEvqJK6QeiYSJoUmlZNCISh2nzWllneqwWFb2
-	ghbAr8/3GHQ==
-X-Gm-Gg: Acq92OFHb1P2t7laC4Wa/395gADYmxapZagNH+7F01vH2C8awyLdOp4uvXZ+gJp8o83
-	OrpHQ00pEZ1eFW5Yx4EOyzkLuR7I4/CeU9t9i2RiewqMXOxUJeaiwZfqjkS6uSPYbvDrbq5T57e
-	VvbOqEz9rqFtqxUHFooWSOtHEaFGSfEbUnKEhRrZd1YOYMtJdqrtRAKSkzjcP7njzuArrZ4LEUl
-	EglDPIjRg9kjlaGATK0pPHGjZXnFBZ3mlowd98u/EPJpYm73Vlz8rh+mQuYr7pxszvq6v99YWRy
-	a1oFHEgVgMjstfh6FYGco11HX5JmRAjbb4UXUfCBQFi2JimQi7mL9ffdJjGyJbt8fpt5xQsFmB3
-	XYvhcgP22ybwduPSNXpI/vyc6Ok8zEjKUcHdNskaw9InpjobhFgKN93xn/Ra2QqQOllLZ/hx06H
-	dulE7xSfJFkqfQWbXvvK0GOL9r+ms3eQ6ZIaCRp0fjRPYvlXPbPOv6y4Hbqdavbr6q9k2YvB0DO
-	unGW70=
-X-Received: by 2002:a0c:f147:0:20b0:8ac:8938:ee55 with SMTP id 6a1803df08f44-8cee5fe0585mr223459246d6.11.1780950163732;
-        Mon, 08 Jun 2026 13:22:43 -0700 (PDT)
-Received: from ?IPv6:2606:6d00:15:e06b:3a7c:76ff:fea1:2ac0? ([2606:6d00:15:e06b:3a7c:76ff:fea1:2ac0])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-8cecd0521f2sm177874226d6.31.2026.06.08.13.22.42
+        d=1e100.net; s=20251104; t=1780951476; x=1781556276;
+        h=cc:to:content-transfer-encoding:mime-version:message-id:date
+         :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=JZcc6TPeUx/2ww8Z8bbTx4r6S+aoLRf/jpoC61OzVbc=;
+        b=HT3hTFoTpCk5il+udPt05C2Q9ZZsWhStgCOdVUhiGJi5hZK6SRC60bVF0nLLaf91PC
+         l58JodwE26PHMe6F8aqoqHu04WYQdDNTI1aKBZjDYfoN+5axh7RiEV5ZKEuBeBs2OY+F
+         FFgT5W3cxOP6ehvC28KyS+lWxOww3zPjNfNR40WFUYcVL2hex7HTaND4ri/hXLjEfw+R
+         KqWxt4qHdZYCKvxLzlvftTBQK2NcsDZeP5nvg/Cll41i11CsYhQmdxqJDQSYPKvRdsrU
+         4tWd5jHIX2BW5MfnKNVm9IcpJo4Z/3vJZKLUZmswc00eok8w26GoBR4WDbO300Wn7nfM
+         IClg==
+X-Forwarded-Encrypted: i=1; AFNElJ+7USVaL6d87MVF8Lpvio/VEtOJ3gkYXuNWBIX2w13ej+ebTzLiczGtHLW3L14LfgfTkcpgN49WRGe9Cul9dw==@lists.infradead.org
+X-Gm-Message-State: AOJu0Yyd9PrOkPvhg+HR95uExWK8aBS/EEaWjTrrO5F93jna8wkaITio
+	dOl89OzEYaVsxemFclddZoAz/X7XxreD8aEUuM7JSiQQeE3FQVWMrBjdik7UpccX1JWR95R0FbI
+	vSROvx8EuMBmRgiI+/jbpXa1IFmbZ5RgTMbig+KvFAREcU6r4I7WylSRju4V0mljtfxv1yJhuZz
+	A=
+X-Gm-Gg: Acq92OFZpiElDJWpWsnuXdEUJwT0QvCiv8lZZuFhIj/6BbxEY08h+x3VVXgGdQg9YqV
+	jtYUxFq1DBr5LjVqdxTOpY8tbsmb2+D/ygpu82J6itGpALL9s/gQn4BMwbbdhwWfXLX8w84ZZZP
+	zisyjnaQeZAByrYU0y0gOLKmAnK/vmNyQx9XA+eqz23ONGeH+r9C2BIXl72HZJu1dFO+t3GoWJe
+	kxNDpp6oEGCvH3crr2G5pl7D0lNPw6o/xLUX3BTD0xqDfXAcpV7NJjOncuCvxwjMb0B7Y9sz+0R
+	1NpIlD5ORa6sMW7m1f6exm24TyeaiE+geI1tEZIxAdW0l0XG9N9nL2AT8JAC0UP9EmnG92iRwsD
+	+20S2HM4UfKmtaKcXrPCi/wEpOWcRCdwmszOBU+ZbXqjntJ+8dtMURhA=
+X-Received: by 2002:a05:622a:1f90:b0:517:75d8:b95d with SMTP id d75a77b69052e-51795c0cf7bmr247057201cf.40.1780951476565;
+        Mon, 08 Jun 2026 13:44:36 -0700 (PDT)
+X-Received: by 2002:a05:622a:1f90:b0:517:75d8:b95d with SMTP id d75a77b69052e-51795c0cf7bmr247056621cf.40.1780951475888;
+        Mon, 08 Jun 2026 13:44:35 -0700 (PDT)
+Received: from [127.0.1.1] ([178.197.219.94])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4602cda3651sm44018439f8f.32.2026.06.08.13.44.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Jun 2026 13:22:42 -0700 (PDT)
-Message-ID: <25a232dca0236788c75231c43ee8a01741148c37.camel@ndufresne.ca>
-Subject: Re: [BUG] rkvdec-vdpu383-h264: wrong pixels at horizontal
- de-blocking edges y=4 and y=12
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Simon Wright <simon@symple.nz>, Detlev Casanova
-	 <detlev.casanova@collabora.com>, linux-media@vger.kernel.org
-Cc: linux-rockchip@lists.infradead.org
-Date: Mon, 08 Jun 2026 16:22:41 -0400
-In-Reply-To: <66768711-6943-43f5-95fa-3d97dc638844@symple.nz>
-References: <52a01f1f-5b36-429b-96cf-f1a0a1c8f5e4@symple.nz>
-	 <5797ac61-dc61-4182-ac60-cc377564ff90@collabora.com>
-	 <2565c949-a558-415f-8c79-e47812db8341@symple.nz>
-	 <e3b93bda-fed8-4f21-b3d8-cdf28bfaba1c@collabora.com>
-	 <4358f22d-247c-43d3-89d4-27b57bbe90aa@symple.nz>
-	 <66768711-6943-43f5-95fa-3d97dc638844@symple.nz>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+        Mon, 08 Jun 2026 13:44:35 -0700 (PDT)
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: [PATCH v3 0/3] dt-bindings: mfd: syscon: Tighten checks
+Date: Mon, 08 Jun 2026 22:44:23 +0200
+Message-Id: <20260608-n-dt-bindings-simple-bus-syscon-v3-0-4eba9ec1212a@oss.qualcomm.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42OwQqDMBBEf0Vy7soSRbSn/kfxoMmqWzSxrkpF/
+ PdG+wO9DPNgmJldCU1Mou7RriZaWdi7AMktUqarXEvANrDSqDPMMAcHdoaanWXXCggPY09QL8F
+ uYrwDSgrbpJhXqK0KLeNEDX+uhWf5Y1nqF5n5rD0THcvsp+26sOoz9//aqgEBNSaUGZ0W1jy8S
+ Pxeqt74YYiDqPI4ji9iGIV15wAAAA==
+X-Change-ID: 20260608-n-dt-bindings-simple-bus-syscon-e39df408a02d
+To: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Jacky Huang <ychuang3@nuvoton.com>,
+        Shan-Chun Hung <schung@nuvoton.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>, Heiko Stuebner <heiko@sntech.de>,
+        Aaro Koskinen <aaro.koskinen@iki.fi>,
+        Andreas Kemnade <andreas@kemnade.info>,
+        Kevin Hilman <khilman@baylibre.com>, Roger Quadros <rogerq@kernel.org>,
+        Tony Lindgren <tony@atomide.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, linux-renesas-soc@vger.kernel.org,
+        linux-rockchip@lists.infradead.org, linux-omap@vger.kernel.org,
+        Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1955;
+ i=krzysztof.kozlowski@oss.qualcomm.com; h=from:subject:message-id;
+ bh=5Xa72kw9Ltgd7CByB7B5latAUb0JYhrgHD01OqlPHas=;
+ b=owEBbQKS/ZANAwAKAcE3ZuaGi4PXAcsmYgBqJymqXzctnjCZTlgfqtTkKkReZfSxm69dcth3s
+ +3KPVCaK/qJAjMEAAEKAB0WIQTd0mIoPREbIztuuKjBN2bmhouD1wUCaicpqgAKCRDBN2bmhouD
+ 12o+D/9dEqmiBDrunvPNTigrYZ65joY0Y404B5kMuUHwxnjcIcSDy0bYTIMZus92hnmDEYvpC9U
+ i2tw9EoYNrO1EeZYBOWcj+FJKTG5wLwU8EqAG5w3fIa2zQ5rVTe+zDoNtqRzLgckMUTIEZVoWSl
+ xx/h49ZbzgXV9CJzte6U0Fp3ycwf0J/HUsNBQqNpdja+HyIoWu5Qd4HWIFShKkueEUH8KcNSwnJ
+ 1TC2Rn4T9MbSDCBS/0klhPlGPyYvR1WG42P3wjHdLDH8pUHPHYBBPrRNq85x/OK1BKmigWgYkam
+ 7ZIy5F0wlV+4bECVkaIfnFpsg2p78TeS9WWPQgGmIdmfb0GPbMkK9PkDozcrjmLEJk/QRny2IS2
+ 79lvO18dQiOU738h5JoKCuWKzvLCoBtiw627Gbqo21BHDrLWo8oF3ZWR3kXm5RUPVnRTQ8EVr7x
+ F07R0Zx2p4W1tYV4zFk1IV+3EbHBSbfAJQle3zzH24lTJr8rOPXXbnu+2F2CbirwcO++zy7xoTb
+ dXOxD+QhaGr6V/LYklyLnTx9IdHl0LJsEnzLdfpfUal5h6SuMSxFInElOpARadLe8wgkHeegyap
+ mybKDxrB8IWZUlFjKaqVHhruAjaUBKUEjuTpgmBT44Z5ACshQzaraQj4ifeRN4qFcde73irdf/H
+ QC7QfMmQpvt0MRg==
+X-Developer-Key: i=krzysztof.kozlowski@oss.qualcomm.com; a=openpgp;
+ fpr=9BD07E0E0C51F8D59677B7541B93437D3B41629B
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNjA4MDE4OCBTYWx0ZWRfX6OXymlpCKuNH
+ uB+iuSVOX3C6Y6Ol4DA7QKl0k3ZMKE6jKEw4ym7A8A9xBaZt+FAE4xwC+X7jdbM0C9xryf91c1p
+ 7G91T6W6SRz5OOpmrxkP/e1FntaR4oGtP2cvAXJyCaB9aiC7+J6BElx21Xgk5+IYOKr3YKbTUCb
+ etgPLpfz/jSE3SS2LJxwx8NWvoQBVukjhlVoeXNKxPlbNQmpKC+gXFB//8y6W9D7L+nKllSnSZx
+ VR93jBaGfi8ixLJdi+RoEj4/J5lSaFRhhbWyiwJbC2m8eyl2YzYrT/L6jypn7dmrOPVfxrXOe5H
+ pG5sQmjdu/aXSQHiz3CbKXiLw2mLYSYFtCHqjEtq4XzzwaGQsGOdqzegEIb3g6VwcgBEdiL/qh2
+ NvJOrEd5VTzu5SVoCxSI574a7zoVRqclolwGzaqPyQtIc42+aWCs/6ikPtenV0LoSMH0ifmHagW
+ trbIwUyc9BAiXUle7zQ==
+X-Proofpoint-ORIG-GUID: 1SHCG_EeaJzWTu5dnoVpzXvdu5VHsSl5
+X-Proofpoint-GUID: 1SHCG_EeaJzWTu5dnoVpzXvdu5VHsSl5
+X-Authority-Analysis: v=2.4 cv=VowTxe2n c=1 sm=1 tr=0 ts=6a2729b5 cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=gOEeR9iKwsj33Yj5oN/cWg==:17
+ a=IkcTkHD0fZMA:10 a=FelO9ux0wxsA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=bC-a23v3AAAA:8 a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=s4keiGDSzyMyFUzW_nEA:9
+ a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22 a=FO4_E8m0qiDe52t0p3_H:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.125,FMLib:17.12.100.49
+ definitions=2026-06-08_05,2026-06-05_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 spamscore=0 phishscore=0 priorityscore=1501
+ lowpriorityscore=0 malwarescore=0 suspectscore=0 bulkscore=0 clxscore=1015
+ adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2605210000
+ definitions=main-2606080188
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260608_132245_037969_BAC7F8FB 
-X-CRM114-Status: UNSURE (   9.83  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260608_134438_576823_40B56267 
+X-CRM114-Status: GOOD (  11.74  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,67 +172,58 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: multipart/mixed; boundary="===============6627952589898388751=="
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
+Changes in v3:
+- Drop patch #2:
+  dt-bindings: mfd: syscon: Drop unneeded case for syscon + simple-mfd
+- Bump dtschema requirement
+- Link to v2: https://patch.msgid.link/20260608-n-dt-bindings-simple-bus-syscon-v2-0-0203e6c249dc@oss.qualcomm.com
 
---===============6627952589898388751==
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-CvLQQKJzZSf22y9CSCbT"
+Changes in v2:
+1. New patches #2 and #3
+1. Add missing part of patch #1, thus not adding Rob's Ack.
+https://lore.kernel.org/all/20260531110404.12768-3-krzysztof.kozlowski@oss.qualcomm.com/
 
+I tested dt_binding_check and dtbs_check for arm, arm64 and riscv and I
+think I did not introduce new dtbs_check warnings. Old code anyway has
+multiple abuses of syscon, thus tricky to judge for arm at least.
 
---=-CvLQQKJzZSf22y9CSCbT
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Best regards,
+Krzysztof
 
-Hi Simon,
+---
+Krzysztof Kozlowski (3):
+      dt-bindings: mfd: syscon: Disallow simple-bus with syscon
+      dt-bindings: mfd: syscon: Drop custom select for older dtschema
+      ARM: dts: ti: Add specific compatibles for SCM conf nodes
 
-Le lundi 08 juin 2026 =C3=A0 17:11 +1200, Simon Wright a =C3=A9crit=C2=A0:
-> It's an un-primed hardware state after power-up, not BL31 and not a
-> per-frame register. The Rockchip BSP runs a one-shot priming decode at
-> every decoder power-on -- rk3576_workaround_run() in
-> drivers/video/rockchip/mpp/hack/mpp_hack_rk3576.c builds a tiny
-> self-contained H.264 task and runs it through the decoder at probe and
-> on every pm_runtime resume. Mainline rkvdec has no equivalent, so the
-> first decode(s) after each power-up run with indeterminate internal
-> deblock state.
+ Documentation/devicetree/bindings/Makefile         |   2 +-
+ .../devicetree/bindings/mfd/syscon-common.yaml     |  34 ++++++
+ Documentation/devicetree/bindings/mfd/syscon.yaml  | 116 ---------------------
+ arch/arm/boot/dts/ti/omap/am33xx-l4.dtsi           |   2 +-
+ arch/arm/boot/dts/ti/omap/am437x-l4.dtsi           |   2 +-
+ arch/arm/boot/dts/ti/omap/dm814x.dtsi              |   2 +-
+ arch/arm/boot/dts/ti/omap/dm816x.dtsi              |   2 +-
+ arch/arm/boot/dts/ti/omap/dra7-l4.dtsi             |   2 +-
+ arch/arm/boot/dts/ti/omap/omap2430.dtsi            |   2 +-
+ arch/arm/boot/dts/ti/omap/omap3.dtsi               |   2 +-
+ arch/arm/boot/dts/ti/omap/omap4-l4.dtsi            |   2 +-
+ arch/arm/boot/dts/ti/omap/omap5-l4.dtsi            |   6 +-
+ 12 files changed, 46 insertions(+), 128 deletions(-)
+---
+base-commit: 78f5e68a8d0a1123dd1b007688ccf0e6876a5c15
+change-id: 20260608-n-dt-bindings-simple-bus-syscon-e39df408a02d
 
-another one, in the link, it says you have compared SRAM vs DRAM for RCB, t=
-o
-rule out the location of the RCB data as a problem. You haven't dumped the =
-RCB
-data before and after in a way that the state of the RCB data could not be
-compared against Detlev (working) case. It if was an RCB data state, it way
-simpler to just initialize it.
+Best regards,
+--  
+Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Nicolas
-
---=-CvLQQKJzZSf22y9CSCbT
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaickkQAKCRDZQZRRKWBy
-9EtkAP9weWAy5NLYKRn7EY1Ggsgr5cAq1cssShILvEtBU4INagD/bFytns+fyCZU
-R4jXlzRX20D2NO/HyrfvKhg0fyGMVwE=
-=XYhp
------END PGP SIGNATURE-----
-
---=-CvLQQKJzZSf22y9CSCbT--
-
-
---===============6627952589898388751==
-Content-Type: text/plain; charset="us-ascii"
-MIME-Version: 1.0
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
-
---===============6627952589898388751==--
-
