@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE042CD8C8E
-	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 07:09:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED487CD8CA6
+	for <linux-rockchip@archiver.kernel.org>; Mon,  8 Jun 2026 07:10:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:List-Subscribe:List-Help:
-	List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:Subject:Cc:To
-	:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=cK56nAy56hu5EhtC//UrC0Oo6a+ARsUX54qkO55p90k=; b=XiAfTIlhNFyJN9
-	DgEydIphbPtml8R6JkG3FdR1w4k9x3jX5uIHS5MxE/XsGRtvRXKAEaYADpp3d3Yvogn73VOHW8TUJ
-	BTjfhiiRJEZ7bfUV5l8P/+1jcNJVlAm/aBY0u2F5lta9qK9vcfPeu5qPzkBYTOWopMvAeXiHQ9jKL
-	JQBpHEGukCm8N9iMkGFaipuSnhxMmZ7PJjzXKrcBKb+HKBXIGjQ7279+aF9pb295Eb4TyR9KbRlWr
-	Rf7cEoUW3RXyWnI9xrTjIzGj+qkARuv1qHHSwFuxTWMHYP89afLZ06ldLvBvqe3KEMR8XJ0d0As/w
-	E6HG43wCLzw8lrfihMYg==;
+	List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Owner; bh=tkoxs58g+cVQKzOJEniBjA/NyUv8IKFgJt4Ib3trEkA=; b=x06TrErulcE/i0
+	G1i2bYTnm56Szd/mUW3lNuSE9VB9PlE91Yj/lDmZMEfbRQC/4vZO/buGuaomB4wIAM0WVPoBIFovt
+	7przGd9ob6aokgujKEJBxNzFe2SbSNnkkePDHKAPyO3Lcy+u/2ymxEl4BclgNFNV9lpLWNpHnUEhx
+	jEwm//tDifMWT6FEGIn1X/nxyf3YInyHajDdqTc4vZtXsjexUxCA9/EE5kTpI+/cetP5uT1w5Y2MQ
+	q8iKMMmHC3WHME3qiSY1zWQPjPiezcHYrqXxNhH63mJe6i4pGDTcKJXZWWweughn5U03Tu0fF8O07
+	vOmrGx0HM+acx5tmIomg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWU7N-00000002xGs-0nNT;
-	Mon, 08 Jun 2026 07:09:53 +0000
-Received: from smtpbgbr2.qq.com ([54.207.22.56])
+	id 1wWU7U-00000002xOn-2DUU;
+	Mon, 08 Jun 2026 07:10:00 +0000
+Received: from smtpbgau2.qq.com ([54.206.34.216])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWU7I-00000002x5k-45JS;
-	Mon, 08 Jun 2026 07:09:51 +0000
+	id 1wWU7Q-00000002x9p-0Zne;
+	Mon, 08 Jun 2026 07:09:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=airkyi.com;
-	s=altu2504; t=1780902496;
-	bh=c8bAbxQipQScLcXxmIAXdGHi58J7IG7meuZVe7IO+SA=;
+	s=altu2504; t=1780902525;
+	bh=BJBXqIdMo0uJb9odMwXPl2LzKb3wWNT/icd4kKoMmsw=;
 	h=From:To:Subject:Date:Message-Id;
-	b=mDK6YMdpRY7m9SRtJHypLdlzY+VhKt5fQVhT7unz3PJHjc4NFBxceSGSFKAS4Qrg/
-	 dJ/NYREd0JCx9c+w+8umwEIlGtTWiLO6MdkkEDAodP7OlEMTBS36vxJcybY1qPhjgA
-	 Q6b2HaOmmcHhUF8u382DCglH3EFL7Ku2Pl3sMfi8=
-X-QQ-mid: esmtpsz10t1780902493tf527980e
-X-QQ-Originating-IP: xBVLmXb3lGPeq0AFgUf7H3AOXSDXzX2o6/6guapiblY=
+	b=SD+s+nC3W+DsOCGoU1QcxXW4EWqB6d2JP1f95gV/OOD9gnl4cML8RdrjC/e767VwI
+	 RnEDvavwREQgWBW/bBpZAKvaBkZzQFNsDllV79kA3VWpakr95knryR7a1Qcjgc3X3m
+	 4EwR3mUUeYcIV+DIPODzOdHU0Z/Wulk4rXsyXHEA=
+X-QQ-mid: esmtpsz10t1780902520t711901a3
+X-QQ-Originating-IP: Jz5ZQWmRqpeGhkm7cKGk5fyrmUiArGhysVK7jI09zek=
 Received: from DESKTOP-8BT1A2O.localdomain ( [58.22.7.114])
 	by bizesmtp.qq.com (ESMTP) with 
-	id ; Mon, 08 Jun 2026 15:08:09 +0800 (CST)
+	id ; Mon, 08 Jun 2026 15:08:35 +0800 (CST)
 X-QQ-SSF: 0000000000000000000000000000000
 X-QQ-GoodBg: 0
-X-BIZMAIL-ID: 7290291170136112092
+X-BIZMAIL-ID: 15018740618981124911
 From: Chaoyi Chen <kernel@airkyi.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -68,33 +68,35 @@ Cc: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
 	linux-rockchip@lists.infradead.org,
 	linux-phy@lists.infradead.org,
 	Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Subject: [PATCH 0/5] drm/bridge: Implement generic USB Type-C DP HPD bridge
-Date: Mon,  8 Jun 2026 15:08:00 +0800
-Message-Id: <20260608070805.88-1-kernel@airkyi.com>
+Subject: [PATCH 4/5] drm/rockchip: cdn-dp: Support handle lane info without extcon
+Date: Mon,  8 Jun 2026 15:08:04 +0800
+Message-Id: <20260608070805.88-5-kernel@airkyi.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20260608070805.88-1-kernel@airkyi.com>
+References: <20260608070805.88-1-kernel@airkyi.com>
 X-QQ-SENDSIZE: 520
 Feedback-ID: esmtpsz:airkyi.com:qybglogicsvrgz:qybglogicsvrgz6b-0
-X-QQ-XMAILINFO: NE9Hhheu2x9vYVHE9T0teSdVzas5yRHi8T9ZnaC45SfQWTZ6NujyCRkU
-	NMCQglqAw15r06skp2D1kgxJlNhqDE0rfWLQWohDQ448RzxNIOVc3ovO+2GqMO/hDwx41uu
-	WO4+gOYn2XuwW8D2pp95W2LgYedI/c6UMIQDuSOpDVrEchX6pUQiYMVPP4H9pT6YoU2utdw
-	kUG5LUWDpQSD3FzgiGcWN/KUDFLiVIKTMjADvuKLE4FpBg0qHHlvbdLGYFdC/DnIrgliHT6
-	DrbtU1HDbqaVF+uGZn0gBk4RKfKW6lSuHmGN9Oa9iSd3TfB+XKqM3On9Hbn1Auma9z1zydu
-	ZSXPD4zWYI/74H7ePoLptoxQZjggxFKg8ZC50o3+3paxfWJUN2iTYAx+ZNj6T6JxYTxoHOx
-	MmCo+6BtTR7hw38gLbvjGoeyILj/jdys59QdBwG7flwP0pGjYBGuKLs2zHnFPYCe3d66rDu
-	6qndCcLTZagkBIO975s8auyY0cpYEvJQkNmzTtwoy/XYsVzb5h17LABHfRTgMMKe7L212Fq
-	zOdJuTc2q98kml+N80Q4FygPpScdqSG2/k+SvJ3UlmIO6QFtnoQNffytu5ATLlNPTkBHN9R
-	adEI6VqBiuHIfq3lxGnoQT5gCeuVmcYVzIpKTuJUtt126+Hffe/774z4GwO4In14l7D1pIr
-	E/jy3YJRLFUOUQzVds+OZ3utYjTOcKYe73DdS4Behp2c4MZoHC/ropxaASrz/HooR48H1mo
-	JQ5syMzO7DX8hpRel0gdpwqPr6Kc28sb5w/xlA5YXHqTC91dxcbVErf7Vtx13kN4vOB+uOD
-	0336yvRpQHW+nc+VH42eECR/wGlAhWRN/uvCDhVKQ6QnsYzz8+WikK/IzkV5FkYs3ygjRne
-	MJTGBK493ppMMkqhq7N2LqUV/qcQtptzohcEanopYDon4zGgLBe51HkZ8ogg7L8C3DAwpHL
-	wV6OAKOjgEiEKiI+j9LX6MAmUEJFeWrHXU2tNFu1RWLJghPKxuSIxlX1nB5fNJYicEW6NMe
-	ygOaPJbTWrOAJqnKFYmoT+slUsg1Y=
-X-QQ-XMRINFO: Nq+8W0+stu50tPAe92KXseR0ZZmBTk3gLg==
+X-QQ-XMAILINFO: MIAHdi1iQo+z1GmPE0rKtuhunHepKwu2QTXP5QZ7eFdleOfePEgY5NH0
+	QVzvXJg1x0c2a/Gt0jIJlxu6Sgb+4Rb927BifXkNuidf4ABON3de+0rzGt1iWL0FhBxiR8Z
+	WStYOvrkpVIfcmYFuP+1DGa8yauLsRfjcWLrOCD+x6SVThQcOON75tItbIFnWl3OJv1VeCv
+	o/U+ny+tDSkI5U3AHK9tEvkyyQay0ZbMrVopneZaZmYnOAOca1BWXq3WInEcGDw6bYd8clo
+	Z7kdbK4mui3MaJ4nm2JRYwvp1/DPuuhBIMNbGV7GTfE1uxz5EWWCOE7r3GA51pwkkUh5QwU
+	tiRYQSX0Ma+n5iujLMIkFiJUybVgX45M/sA8qcxki/WaUZj5IdLavIQjKrMpWnx3p0sxuDm
+	MEg91cW1yi8SzIsF8vdVNKUTvU4WMpXLzHOjinKUt2XtEkIATFdLfFo24uFmtaP8YL8AZvo
+	kFUOEybLdVfAxhSmmMEQMDJga+8qqianA5yA29Ocke6sV+al31g6GFge93QOGzO99V/5i+b
+	jTM4hA3zRSbUHfT+sqflTYKshrRYk2wBwIW4qwjIFjPkAkZt6NoYM9r7phgqnCDZGUaZ0vx
+	ME4E/xWwYMX93o0wV5t3YV7L534EnJc6LCXCJGg91178zRaQ2TAhPGB4BUV6XJ9GQjrqaOx
+	8TO9c+8/uY5EC7W6vUitDsNIvlZ7tyshnX0L0EQ0ZDBHNFvc1mS9MKZod3/HSPkSjB44K+U
+	bYDVXy9dV3E3vIuSSb7SM98SaoxHqPVJWjqMM5Z1Zl3PkZxyJbICkMqObSaXe4eKPG7VwcO
+	5zD4yGT2ZW0W8VatdkZQofoSpK7ZLI2j6kcmuCqWJhkTj9QtEC6UO/ZbeQhfolSjRdQFCzD
+	3Zu9mGM2g5oVXHi34YZbYO5dMQLCoadhEJdyabTQUuFT/6MPH44WUUQSbCl5CwnxmpsZnuL
+	c7AzXmSZ0VYlBCGZIVCKtzzfugTm1+3C2R8wXrdufxanBNpvyzTPcqDFqkypSGU6vWyrEI1
+	vCVb75bUH0BcuYNQ0kWeykG9Gzw0X+8nibzIqX+pKh7OuWlUy6
+X-QQ-XMRINFO: NI4Ajvh11aEjEMj13RCX7UuhPEoou2bs1g==
 X-QQ-RECHKSPAM: 0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260608_000949_825137_26972342 
-X-CRM114-Status: GOOD (  11.49  )
+X-CRM114-CacheID: sfid-20260608_000956_974517_179921B9 
+X-CRM114-Status: GOOD (  15.40  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,70 +116,93 @@ Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infra
 
 From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
 
-This series is split from the v15 "Add Type-C DP support for RK3399 EVB
-IND board" series [1]. It focuses on the DRM bridge and Rockchip
-platform CDN-DP controller changes.
+This patch add support for get PHY lane info without help of extcon.
 
-[1] https://lore.kernel.org/all/20260304094152.92-1-kernel@airkyi.com/
+There is no extcon needed if the Type-C controller is present. In this
+case, the lane info can be get from PHY instead of extcon.
 
-====
-1. Generic Type-C DP HPD bridge
+The extcon device should still be supported if Type-C controller is
+not present.
 
-Currently, several USB-C controller drivers register their own DP HPD
-bridge via aux-hpd-bridge.c, each duplicating the same logic. For
-devicetree based platforms, the USB-C controller may vary across boards,
-and not every USB-C controller driver implements this feature. Patch 1
-implements a generic DP HPD bridge that monitors Type-C bus events and
-automatically creates an HPD bridge when a Type-C port device with DP
-SVID is registered.
+Signed-off-by: Chaoyi Chen <chaoyi.chen@rock-chips.com>
+Reviewed-by: Heiko Stuebner <heiko@sntech.de>
+---
+(no changes since v1)
 
-2. Multiple bridge model for CDN-DP
+---
+ drivers/gpu/drm/rockchip/cdn-dp-core.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
-The RK3399 has two USB/DP combo PHY and one CDN-DP controller. Patch 5
-introduces a multi-bridge model where each PHY port gets a separate
-encoder and bridge, allowing flexible selection of the output PHY port.
-This is based on the DRM AUX HPD bridge rather than extcon.
-
-====
-Patch 1 adds generic USB Type-C DP HPD bridge (Dmitry, Heikki).
-Patch 2 adds new API drm_aux_bridge_register_from_node() (Neil).
-Patch 3 adds DRM AUX bridge support for RK3399 USBDP PHY (Neil).
-Patch 4 drops CDN-DP's extcon dependency when Type-C is present (Dmitry).
-Patch 5 adds multiple bridges to support PHY port selection (Dmitry, Luca).
-
-Changes in v2:
-- Link to v1: https://lore.kernel.org/all/20260521032854.103-1-kernel@airkyi.com/
-- Add copyright text.
-- Remove useless goto.
-- Fix incorrect function names in the documentation comments.
-- Fix the check logic for dp->active_port (0 is valid).
-- Fix the uninitialized prev_port.
-- Remove duplicate logic from cdn_dp_switch_port().
-- Fix the prototype of cdn_dp_bridge_hpd_notify().
-- Properly release connector->fwnode.
-- Properly release next_bridge.
-
-Chaoyi Chen (5):
-  drm/bridge: Implement generic USB Type-C DP HPD bridge
-  drm/bridge: aux: Add drm_aux_bridge_register_from_node()
-  phy: rockchip: phy-rockchip-typec: Add DRM AUX bridge
-  drm/rockchip: cdn-dp: Support handle lane info without extcon
-  drm/rockchip: cdn-dp: Add multiple bridges to support PHY port
-    selection
-
- drivers/gpu/drm/bridge/Kconfig                |  10 +
- drivers/gpu/drm/bridge/Makefile               |   1 +
- drivers/gpu/drm/bridge/aux-bridge.c           |  26 +-
- .../gpu/drm/bridge/aux-hpd-typec-dp-bridge.c  |  54 +++
- drivers/gpu/drm/rockchip/Kconfig              |   1 +
- drivers/gpu/drm/rockchip/cdn-dp-core.c        | 358 ++++++++++++++----
- drivers/gpu/drm/rockchip/cdn-dp-core.h        |  18 +-
- drivers/phy/rockchip/Kconfig                  |   2 +
- drivers/phy/rockchip/phy-rockchip-typec.c     |  13 +-
- include/drm/bridge/aux-bridge.h               |   6 +
- 10 files changed, 418 insertions(+), 71 deletions(-)
- create mode 100644 drivers/gpu/drm/bridge/aux-hpd-typec-dp-bridge.c
-
+diff --git a/drivers/gpu/drm/rockchip/cdn-dp-core.c b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+index 177e30445ee8..9068118859e2 100644
+--- a/drivers/gpu/drm/rockchip/cdn-dp-core.c
++++ b/drivers/gpu/drm/rockchip/cdn-dp-core.c
+@@ -157,6 +157,9 @@ static int cdn_dp_get_port_lanes(struct cdn_dp_port *port)
+ 	int dptx;
+ 	u8 lanes;
+ 
++	if (!edev)
++		return phy_get_bus_width(port->phy);
++
+ 	dptx = extcon_get_state(edev, EXTCON_DISP_DP);
+ 	if (dptx > 0) {
+ 		extcon_get_property(edev, EXTCON_DISP_DP,
+@@ -220,7 +223,7 @@ static bool cdn_dp_check_sink_connection(struct cdn_dp_device *dp)
+ 	 * some docks need more time to power up.
+ 	 */
+ 	while (time_before(jiffies, timeout)) {
+-		if (!extcon_get_state(port->extcon, EXTCON_DISP_DP))
++		if (port->extcon && !extcon_get_state(port->extcon, EXTCON_DISP_DP))
+ 			return false;
+ 
+ 		if (!cdn_dp_get_sink_count(dp, &sink_count))
+@@ -386,11 +389,14 @@ static int cdn_dp_enable_phy(struct cdn_dp_device *dp, struct cdn_dp_port *port)
+ 		goto err_power_on;
+ 	}
+ 
+-	ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
+-				  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
+-	if (ret) {
+-		DRM_DEV_ERROR(dp->dev, "get property failed\n");
+-		goto err_power_on;
++	property.intval = 0;
++	if (port->extcon) {
++		ret = extcon_get_property(port->extcon, EXTCON_DISP_DP,
++					  EXTCON_PROP_USB_TYPEC_POLARITY, &property);
++		if (ret) {
++			DRM_DEV_ERROR(dp->dev, "get property failed\n");
++			goto err_power_on;
++		}
+ 	}
+ 
+ 	port->lanes = cdn_dp_get_port_lanes(port);
+@@ -1029,6 +1035,9 @@ static int cdn_dp_bind(struct device *dev, struct device *master, void *data)
+ 	for (i = 0; i < dp->ports; i++) {
+ 		port = dp->port[i];
+ 
++		if (!port->extcon)
++			continue;
++
+ 		port->event_nb.notifier_call = cdn_dp_pd_event;
+ 		ret = devm_extcon_register_notifier(dp->dev, port->extcon,
+ 						    EXTCON_DISP_DP,
+@@ -1121,14 +1130,14 @@ static int cdn_dp_probe(struct platform_device *pdev)
+ 		    PTR_ERR(phy) == -EPROBE_DEFER)
+ 			return -EPROBE_DEFER;
+ 
+-		if (IS_ERR(extcon) || IS_ERR(phy))
++		if (IS_ERR(phy) || PTR_ERR(extcon) != -ENODEV)
+ 			continue;
+ 
+ 		port = devm_kzalloc(dev, sizeof(*port), GFP_KERNEL);
+ 		if (!port)
+ 			return -ENOMEM;
+ 
+-		port->extcon = extcon;
++		port->extcon = IS_ERR(extcon) ? NULL : extcon;
+ 		port->phy = phy;
+ 		port->dp = dp;
+ 		port->id = i;
 -- 
 2.54.0
 
