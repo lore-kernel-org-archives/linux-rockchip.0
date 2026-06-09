@@ -4,63 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67753CD8CB9
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 16:32:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F56ECD8CB9
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 16:33:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:Cc:To:From:
-	Subject:Message-Id:Date:Mime-Version:Reply-To:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=LwMaxXT2YZZJ56pogrr1XGsQkG9BXU8jkdq8XgjgYWo=; b=quGJ/A9N+YC6xH
-	pG/jloYsPULKZ6w4wxm7z0q973YddCEVjHKvmSFNOLpHdUvJEuvPH4/GzwO0HmDnljzjGz/lH3bPH
-	R1ZqijjPiTYT0wnVRIX8PAPe/L4itrftYZgochv3h149eEcXejXvZ1tglVPg5NKe2AQnA0DzqsnuR
-	PBeNl203I9IonbTwmvAn5vvElqELoQR9JXeG4sFNLc2lz/9zjXqStBAFIsQODPlLcLzWLnLJa26BN
-	EaUmMLPswlbyn6wAQ9ZphPpnUbx4QoSp7/gleOW0Agj3AhtvOTjYD04hBOnHa2OhanQVW7mzLh1+x
-	xwZ4OHdvDwHnkHDYkXQg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Content-Type:
+	List-Subscribe:List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	In-Reply-To:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Reply-To:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zowsf6Ra3+taiUxE1VkMF464rdFtBAX2wBvm+c9z/6c=; b=qXEUQmceHrk7tB5VHFKK2DXO1s
+	Xrtg9i+BpaTBDNbwWu88g8oGQwn8fDUZ79OsS11FKwzu1SotB1LiVkWS5b/ysvCa8jbxdeMTFznbk
+	QtVUhoLntwDTXwTuNzCDwka6GLxweiiycaIRSfc+eXPDueh91XdS6uJ8dDt+zS4WIBV/mmVMwR8pV
+	vL1pQjeAyZ86aZzIpYh/EOH1ICrxQb11KjFuS9yylTcDqKYJOxi+UhhbsKGsasekrHj+wiveHgcoN
+	LW98X/k4OQkLPHKjPieM8skIqjJeQcEEN4l90EuTNH0+t7MsXQ3cnJsX6+S+C6YrCiptX3m19x2dD
+	C83JMQfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWzNg-0000000632G-1QIM;
-	Tue, 09 Jun 2026 16:32:48 +0000
-Received: from out-188.mta0.migadu.com ([2001:41d0:1004:224b::bc])
+	id 1wWzNp-0000000633R-2H6q;
+	Tue, 09 Jun 2026 16:32:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWzNc-0000000631f-40AL
+	id 1wWzNo-0000000633G-2bka
 	for linux-rockchip@lists.infradead.org;
-	Tue, 09 Jun 2026 16:32:47 +0000
-Mime-Version: 1.0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cknow-tech.com;
-	s=key1; t=1781022750;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=GU6hxEB3LrImYHmp13AtCCpp8e8bRkCTpxK/TD8cOpY=;
-	b=QOUagz86dzoPrDjhHrSwN/06Sdmkq2iGHnAcJWwwkB4jGy9cpZbeuBVKzUQ2wMbiBEhNfS
-	fkXZcqO/FX8Da8Q0Jb9q0Ri64dwxeIwsei3wq03ji5x/sDo2a0B2GzHSiIlmdfbqDYKmid
-	EBrn1SB3ts5kXNKC6WG9f27WKnnLVyBVAsiozmaoQqJlJEKXdh+T01Ds0t55ucLSSadvdw
-	uUknq9hMXc6S/2Q00PMkA2/C5aaG+6n43UK9L2qDQhzLWDO7kxIpqzKkWDvYmcreWWk91w
-	ytsziuJNh2KWUV6GtxJWxrmErpQ4KJkuERcFgsEFkG1uOfZG+MkDxu5o+509UA==
-Date: Tue, 09 Jun 2026 18:32:16 +0200
-Message-Id: <DJ4NVA328NUV.LSPMVBFE0PD8@cknow-tech.com>
-Subject: Re: [PATCH 1/2] dt-bindings: usb: Add Rockchip RK3568 compatible
- for EHCI and OHCI
-X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and include these headers.
-From: "Diederik de Haas" <diederik@cknow-tech.com>
-To: "Jonas Karlman" <jonas@kwiboo.se>, "Heiko Stuebner" <heiko@sntech.de>,
- "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Greg
- Kroah-Hartman" <gregkh@linuxfoundation.org>
-Cc: "Diederik de Haas" <diederik@cknow-tech.com>,
- <devicetree@vger.kernel.org>, <linux-rockchip@lists.infradead.org>,
- <linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
- <linux-kernel@vger.kernel.org>
-References: <20260609154124.445182-1-jonas@kwiboo.se>
- <20260609154124.445182-2-jonas@kwiboo.se>
-In-Reply-To: <20260609154124.445182-2-jonas@kwiboo.se>
-X-Migadu-Flow: FLOW_OUT
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260609_093245_599045_D1E25F6F 
-X-CRM114-Status: GOOD (  17.07  )
+	Tue, 09 Jun 2026 16:32:56 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 914A260238;
+	Tue,  9 Jun 2026 16:32:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 313291F00893;
+	Tue,  9 Jun 2026 16:32:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1781022774;
+	bh=ncLMA11F1fiWEvmsQUhSK6p9vIDQ6T4vA50ZOxw1HOA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=hZvJE5V/sTnBqsyLgN8b9FTCbuNYgkLU2cTIM2JDubJqAjNOy3WnPZS/3cC2LHEz2
+	 ivRW314q68z6kST3qqjIVlBia3KlG8H5Y5hUScx+2SXXYophYoU8bsulk2iF1Z3kbt
+	 dt3q6C4hYVqLfVdvJEv/fZitgl5mGtL2myY10jlIrGM7/lTHW//nxqoRHH8cPFBkoG
+	 dlcqYWurOGt4YPxKxbbjn/q24P2RKh+eIGCb8sep9+Uu85xCrqP4i6hsYc9tKlWco0
+	 phkuvrtkGCRKLELUURq8mYhkZwxNwEsEqzebvW9Y4v9ePCpSHQaEKUq5Wv30QSm6Pa
+	 OPVz3F+4/6nLg==
+Date: Tue, 9 Jun 2026 17:32:49 +0100
+From: Conor Dooley <conor@kernel.org>
+To: Chris Morgan <macroalpha82@gmail.com>
+Cc: linux-rockchip@lists.infradead.org, devicetree@vger.kernel.org,
+	xsf@rock-chips.com, sre@kernel.org, simona@ffwll.ch,
+	airlied@gmail.com, tzimmermann@suse.de, mripard@kernel.org,
+	maarten.lankhorst@linux.intel.com, jesszhan0024@gmail.com,
+	neil.armstrong@linaro.org, heiko@sntech.de, conor+dt@kernel.org,
+	krzk+dt@kernel.org, robh@kernel.org,
+	Chris Morgan <macromorgan@hotmail.com>
+Subject: Re: [PATCH V6 1/6] dt-bindings: power: supply: sgm41542: document
+ sgm41542
+Message-ID: <20260609-excusable-overall-197cc08d4e43@spud>
+References: <20260608175521.67449-1-macroalpha82@gmail.com>
+ <20260608175521.67449-2-macroalpha82@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <20260608175521.67449-2-macroalpha82@gmail.com>
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,99 +70,48 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Type: multipart/mixed; boundary="===============5342712607672329202=="
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Hi Jonas,
 
-On Tue Jun 9, 2026 at 5:41 PM CEST, Jonas Karlman wrote:
-> The Rockchip RK3568 EHCI/OHCI controller depends on clk_usbphy1_480m
-> being enabled, or the system may freeze when registers are accessed.
->
-> Add Rockchip RK3568 EHCI and OHCI compatibles with a similar four-clock
-> constraint as RK3588.
->
-> Signed-off-by: Jonas Karlman <jonas@kwiboo.se>
-> ---
-> Existing DTs for RK3568 use the plain generic-ehci/ohci compatible,
-> next patch make use of these new compatibles and adds the missing
-> clk_usbphy1_480m clock references.
-> ---
->  .../devicetree/bindings/usb/generic-ehci.yaml          | 10 ++++++++++
->  .../devicetree/bindings/usb/generic-ohci.yaml          |  5 ++++-
->  2 files changed, 14 insertions(+), 1 deletion(-)
->
-> diff --git a/Documentation/devicetree/bindings/usb/generic-ehci.yaml b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
-> index 55a5aa7d7a54..c49a1bbc8cfd 100644
-> --- a/Documentation/devicetree/bindings/usb/generic-ehci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/generic-ehci.yaml
-> @@ -52,6 +52,7 @@ properties:
->                - ibm,476gtr-ehci
->                - nxp,lpc1850-ehci
->                - qca,ar7100-ehci
-> +              - rockchip,rk3568-ehci
->                - rockchip,rk3588-ehci
->                - snps,hsdk-v1.0-ehci
->                - socionext,uniphier-ehci
-> @@ -186,6 +187,15 @@ allOf:
->        required:
->          - clocks
->          - clock-names
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: rockchip,rk3568-ehci
-> +    then:
-> +      properties:
-> +        clocks:
-> +          minItems: 4
+--===============5342712607672329202==
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="e7Lp4ziyWaFrI1Cq"
+Content-Disposition: inline
 
-I think that the constraint for rk3588 is this:
-- minItems: 1
-- maxItems: 4
 
-Like ~ every other compatible; there's no 'branch' for rk3588-ehci.
+--e7Lp4ziyWaFrI1Cq
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-That's different from what you add for rk3568. Is that deliberate?
-Because from the commit message I assumed they should be the same.
+Reviewed-by: Conor Dooley <conor.dooley@microchip.com>
+pw-bot: not-applicable
 
->  unevaluatedProperties: false
->  
-> diff --git a/Documentation/devicetree/bindings/usb/generic-ohci.yaml b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
-> index d42f448fa204..5f1b4d2bff89 100644
-> --- a/Documentation/devicetree/bindings/usb/generic-ohci.yaml
-> +++ b/Documentation/devicetree/bindings/usb/generic-ohci.yaml
-> @@ -47,6 +47,7 @@ properties:
->                - hpe,gxp-ohci
->                - ibm,476gtr-ohci
->                - ingenic,jz4740-ohci
-> +              - rockchip,rk3568-ohci
->                - rockchip,rk3588-ohci
->                - snps,hsdk-v1.0-ohci
->            - const: generic-ohci
-> @@ -198,7 +199,9 @@ allOf:
->        properties:
->          compatible:
->            contains:
-> -            const: rockchip,rk3588-ohci
-> +            enum:
-> +              - rockchip,rk3568-ohci
-> +              - rockchip,rk3588-ohci
+--e7Lp4ziyWaFrI1Cq
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Here they clearly do have the same constraint.
+-----BEGIN PGP SIGNATURE-----
 
-Cheers,
-  Diederik
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCaihAMQAKCRB4tDGHoIJi
+0hOeAP0TYJxzWFrb7x6TPmcnqH5OS7GiMz2Ri/7MR0sYrUyajQD/Ua/v57PBVG5t
+bVA94ekDqwARoJxHC9wh7wlC2+DuCQ4=
+=zwmu
+-----END PGP SIGNATURE-----
 
->      then:
->        properties:
->          clocks:
+--e7Lp4ziyWaFrI1Cq--
 
+
+--===============5342712607672329202==
+Content-Type: text/plain; charset="us-ascii"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
 
 _______________________________________________
 Linux-rockchip mailing list
 Linux-rockchip@lists.infradead.org
 http://lists.infradead.org/mailman/listinfo/linux-rockchip
+
+--===============5342712607672329202==--
+
