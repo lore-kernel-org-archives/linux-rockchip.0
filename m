@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 892EECD8CA4
-	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 12:45:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27317CD8CAA
+	for <linux-rockchip@archiver.kernel.org>; Tue,  9 Jun 2026 12:45:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:
-	Content-Transfer-Encoding:Content-Type:Cc:List-Subscribe:List-Help:List-Post:
-	List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:References:Message-Id:
-	MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
+	Content-Transfer-Encoding:Content-Type:List-Subscribe:List-Help:List-Post:
+	List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References:Message-Id
+	:MIME-Version:Subject:Date:From:Reply-To:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=Ei819e9HT3iy39X0RW72uyQOIiLcqVb7EHgjJD/z8LE=; b=xTtMkvmUh0Wa15
-	oyiMZIjaQR1u9pkmKcWNnUIdcgDKv2GcKpXlhO4TvoaKhyQaRNSxJvraqFhDhhaZFiZXQh+IpL8Kj
-	vwTL3sVyM95sQ6So3CXrW4FStXnJRS+TpOSDvJClbBUE18IC54XOQIL/U9uvMCT0RXUNaava605UQ
-	wrspRGFlbRu0LCCeVjTb97pnG4nJe5mEASdQ16pv88oIgC2gtvRh9Q94YmgMguSs/pusUodnTkb8p
-	DKcgKM3X7jH8Ni3KkeFJBBLhNuu9okG4VFiqFLn4/N0GWc9CBQ0JIc+TtOChf+gUdDtL/H4GXjlAU
-	e4wfrxbDFXfDK75X90KQ==;
+	List-Owner; bh=mHolg2qkhqaNeL3vZdfeMSBNE1gn0FAHJAz71Ix08Mo=; b=mhCPKPPeDpmpNY
+	/EwpCUdIROSJxjnMNPYoYaKmhQvRi0FAr9P+f1Mheo/cIPaAv/64X5Y2fhJ1eA05p+lQKgv8VPCrP
+	9HazrJZlVA28UCGC6YWlNZLNwvxgy0Hgwfbq4n4ilPl6BG6kTnC5jc1eYIyOTIpcvunsL7BmZwo+x
+	AZjqyS0q3YA4h8VFmX6allD1liIkS0RxN7kr52u1DCb0T6xuR0aMRERThqBxPsgUJD5nF3/cEbzZt
+	VzCkthFHLUpwQfOsLPoritrQgUSJHpgE/5IhPehT09Uu9/qMIpJ5/6yzm4PMCpLM94w0U7EU3Rzv1
+	cqEmVzjazBxhjn11gHkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWvpZ-00000005XGT-2SBW;
-	Tue, 09 Jun 2026 12:45:21 +0000
+	id 1wWvpd-00000005XIn-45I1;
+	Tue, 09 Jun 2026 12:45:26 +0000
 Received: from sender4-pp-f112.zoho.com ([136.143.188.112])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1wWvpW-00000005XEv-1ZLi;
-	Tue, 09 Jun 2026 12:45:19 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1781009075; cv=none; 
+	id 1wWvpW-00000005XEu-1ZDM;
+	Tue, 09 Jun 2026 12:45:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1781009067; cv=none; 
 	d=zohomail.com; s=zohoarc; 
-	b=IQqrUJv3v73mBlNpnTrq/db8Tl2np3v/pDYtoPFDxNB7KPYxSCKADSOsGwH223l7gVkxBNTv9N+1suxlplYdpYQMd7NmlMaoBwlo1vSKOgflVomX0pPNg1Kq/dEAixVpVd+p+XasTYhzGigYnPaWbT40+xR+ZdNr+YBdrQU1MzY=
+	b=ax2QdsygMJVq8ljSE/LXMUg7AOotWgEj00UjZyx2mZUU1RHICmF3z6EgY8d9F7n3XgsLd17cbLR5CvXs6m82SaR5r5umfaEJ+kEMNnJS8VwS5a10A49yzhY07TgLFFTxGwiNglzHVzyM2g6aPKgtkCegmUrvhW5c0jVTa+amxlc=
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1781009075; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=IJIoq2lbW6FRY5oyhMQg8Qr0bvZCZUks/wUc5jCEynE=; 
-	b=UVJ7Tp+tu/QzVWpLKUEkZtckxhtJP9SKXIg2qMpnNidLLIMT3qFXZJQ27DtX7bOLKJHpgQKAkQ/LarlipJhM+rjUF/tXxQe7jjwQ5zQjw75HDfkaR2sm8s4+frjX82RsBKBpi59LoeIovpdD8HOqQ+VaHLdUA4wQDWvxBMd8v60=
+	t=1781009067; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=uMEEZn+x23X3/iGLCH74HTpR0e0r7hhMuh0rntSsrbY=; 
+	b=BK2wUO1dMCaDvxOXA1yaEzrqapUcoUrvwHaLcE3DdN+dHjsepS6pL4cxFI3/RE8cF8a/Secjr8B596+t4IMXmj6bR+vByw7lzNMcdHMwMYEgmLqqhKk4wWJ0G+kLK6jbm59TaKbJRFDulpG8rad9hbKlR951avyeMkJdXKi/4/s=
 ARC-Authentication-Results: i=1; mx.zohomail.com;
 	dkim=pass  header.i=collabora.com;
 	spf=pass  smtp.mailfrom=nicolas.frattaroli@collabora.com;
 	dmarc=pass header.from=<nicolas.frattaroli@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781009075;
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1781009067;
 	s=zohomail; d=collabora.com; i=nicolas.frattaroli@collabora.com;
 	h=From:From:Date:Date:Subject:Subject:MIME-Version:Content-Type:Content-Transfer-Encoding:Message-Id:Message-Id:References:In-Reply-To:To:To:Cc:Cc:Reply-To;
-	bh=IJIoq2lbW6FRY5oyhMQg8Qr0bvZCZUks/wUc5jCEynE=;
-	b=JpPnxvtzJlMslo4mK6q9UX5BH5eBH/A+YoL4tcWudAwXPCW21N4eWzLO0nLvBQny
-	m2zKRCG42MB7y8cdJwwqZMcLabI+qRfDeJu9ufwkwDUjeRLoAOCHM1+n+jbCvOyxHEY
-	O/X1osE51njsX0PXFmR1G/Ul5p/1Dea+Mekkb/uw=
-Received: by mx.zohomail.com with SMTPS id 178100907436179.35397232750938;
-	Tue, 9 Jun 2026 05:44:34 -0700 (PDT)
+	bh=uMEEZn+x23X3/iGLCH74HTpR0e0r7hhMuh0rntSsrbY=;
+	b=TZomcdcEHn96ubSbOeMvkeYBBBtH+3g3zfO4u/BPTuTPJYj/XcMaLFaHM1Ft3R42
+	ndddHnPYZgBs/ZFFwSH6BCJqTy2/lOhyfR/uGK+MS8ytttlElPdQUv10PwSV2gcQzDq
+	dAXW7G/tVbzLNibP4yzx7CrnVeBlOJdi9kMUKEgk=
+Received: by mx.zohomail.com with SMTPS id 1781009064798756.4329618291858;
+	Tue, 9 Jun 2026 05:44:24 -0700 (PDT)
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Date: Tue, 09 Jun 2026 14:43:49 +0200
-Subject: [PATCH v17 02/28] drm/display: hdmi-state-helper: Use default case
- for unsupported formats
+Date: Tue, 09 Jun 2026 14:43:48 +0200
+Subject: [PATCH v17 01/28] drm/amd/display: Remove unnecessary
+ SIGNAL_TYPE_HDMI_TYPE_A check
 MIME-Version: 1.0
-Message-Id: <20260609-color-format-v17-2-35739b5782cc@collabora.com>
+Message-Id: <20260609-color-format-v17-1-35739b5782cc@collabora.com>
 References: <20260609-color-format-v17-0-35739b5782cc@collabora.com>
 In-Reply-To: <20260609-color-format-v17-0-35739b5782cc@collabora.com>
 To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>, 
@@ -75,10 +75,18 @@ To: Harry Wentland <harry.wentland@amd.com>, Leo Li <sunpeng.li@amd.com>,
  Sascha Hauer <s.hauer@pengutronix.de>, Rob Herring <robh@kernel.org>, 
  Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, 
  Daniel Stone <daniel@fooishbar.org>
+Cc: kernel@collabora.com, amd-gfx@lists.freedesktop.org, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+ intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org, 
+ linux-doc@vger.kernel.org, wayland-devel@lists.freedesktop.org, 
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Werner Sembach <wse@tuxedocomputers.com>, 
+ Andri Yngvason <andri@yngvason.is>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260609_054518_510944_78ED0D27 
-X-CRM114-Status: GOOD (  10.52  )
+X-CRM114-CacheID: sfid-20260609_054518_512094_8AE5DB57 
+X-CRM114-Status: GOOD (  13.01  )
 X-BeenThere: linux-rockchip@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,50 +98,53 @@ List-Post: <mailto:linux-rockchip@lists.infradead.org>
 List-Help: <mailto:linux-rockchip-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-rockchip>,
  <mailto:linux-rockchip-request@lists.infradead.org?subject=subscribe>
-Cc: linux-doc@vger.kernel.org, intel-gfx@lists.freedesktop.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, wayland-devel@lists.freedesktop.org, linux-rockchip@lists.infradead.org, amd-gfx@lists.freedesktop.org, Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, kernel@collabora.com, intel-xe@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org
 Content-Type: text/plain; charset="us-ascii"
 Content-Transfer-Encoding: 7bit
 Sender: "Linux-rockchip" <linux-rockchip-bounces@lists.infradead.org>
 Errors-To: linux-rockchip-bounces+linux-rockchip=archiver.kernel.org@lists.infradead.org
 
-Switch statements that do not handle all possible values of an
-enumeration will generate a warning during compilation. In preparation
-for adding a COUNT value to the end of the enum, this needs to be dealt
-with.
+From: Werner Sembach <wse@tuxedocomputers.com>
 
-Add a default case to sink_supports_format_bpc's DRM_OUTPUT_COLOR_FORMAT
-switch statement, and move the log-and-return unknown pixel format
-handling into it.
+Remove unnecessary SIGNAL_TYPE_HDMI_TYPE_A check that was performed in the
+drm_mode_is_420_only() case, but not in the drm_mode_is_420_also() &&
+force_yuv420_output case.
 
-No functional change.
+Without further knowledge if YCbCr 4:2:0 is supported outside of HDMI,
+there is no reason to use RGB when the display
+reports drm_mode_is_420_only() even on a non HDMI connection.
 
-Reviewed-by: Maxime Ripard <mripard@kernel.org>
-Reviewed-by: Cristian Ciocaltea <cristian.ciocaltea@collabora.com>
+This patch also moves both checks in the same if-case. This  eliminates an
+extra else-if-case.
+
+Signed-off-by: Werner Sembach <wse@tuxedocomputers.com>
+Signed-off-by: Andri Yngvason <andri@yngvason.is>
+Tested-by: Andri Yngvason <andri@yngvason.is>
 Reviewed-by: Daniel Stone <daniel@fooishbar.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 ---
- drivers/gpu/drm/display/drm_hdmi_state_helper.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/gpu/drm/display/drm_hdmi_state_helper.c b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-index a331ebdd65af..c68b159f0a7f 100644
---- a/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-+++ b/drivers/gpu/drm/display/drm_hdmi_state_helper.c
-@@ -542,10 +542,11 @@ sink_supports_format_bpc(const struct drm_connector *connector,
- 		drm_dbg_kms(dev, "YUV444 format supported in that configuration.\n");
- 
- 		return true;
--	}
- 
--	drm_dbg_kms(dev, "Unsupported pixel format.\n");
--	return false;
-+	default:
-+		drm_dbg_kms(dev, "Unsupported pixel format.\n");
-+		return false;
-+	}
- }
- 
- static enum drm_mode_status
+diff --git a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+index ba7f98a87808..dfe97897127c 100644
+--- a/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
++++ b/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c
+@@ -6917,12 +6917,9 @@ static void fill_stream_properties_from_drm_display_mode(
+ 	timing_out->v_border_top = 0;
+ 	timing_out->v_border_bottom = 0;
+ 	/* TODO: un-hardcode */
+-	if (drm_mode_is_420_only(info, mode_in)
+-			&& stream->signal == SIGNAL_TYPE_HDMI_TYPE_A)
+-		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+-	else if (drm_mode_is_420_also(info, mode_in)
+-			&& aconnector
+-			&& aconnector->force_yuv420_output)
++	if (drm_mode_is_420_only(info, mode_in) ||
++	    (aconnector && aconnector->force_yuv420_output &&
++	     drm_mode_is_420_also(info, mode_in)))
+ 		timing_out->pixel_encoding = PIXEL_ENCODING_YCBCR420;
+ 	else if ((connector->display_info.color_formats & BIT(DRM_OUTPUT_COLOR_FORMAT_YCBCR422))
+ 			&& aconnector
 
 -- 
 2.54.0
